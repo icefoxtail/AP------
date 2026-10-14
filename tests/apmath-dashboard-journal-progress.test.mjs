@@ -78,8 +78,8 @@ test('historical journal loads persistent progress as of the journal date withou
   const content = context.buildJournalContent('2026-10-01');
 
   assert.match(calls[0], /date=2026-10-01/);
-  assert.match(content, /2022 개정 · 중1 과정 · 2학기: 평면도형 · 다각형/);
-  assert.match(content, /2022 개정 · 중2 과정 · 1학기: 수와 식 · 유리수와 순환소수/);
+  assert.match(content, /다각형/);
+  assert.match(content, /유리수와 순환소수/);
   assert.doesNotMatch(content, /수업 기록 미입력/);
   assert.doesNotMatch(content, /미래단원/);
 });
@@ -106,7 +106,7 @@ test('journal prints only the last selected unit for each canonical course', asy
   const content = context.buildJournalContent('2026-10-01');
 
   assert.doesNotMatch(content, /유리수와 순환소수/);
-  assert.match(content, /중2 과정 · 1학기: 연립일차방정식 · 연립일차방정식의 활용/);
+  assert.match(content, /연립일차방정식의 활용/);
 });
 
 test('existing draft placeholder is upgraded without overwriting teacher notes', async () => {
@@ -132,7 +132,7 @@ test('existing draft placeholder is upgraded without overwriting teacher notes',
   ].join('\n');
 
   const upgraded = context.dashboardUpgradeJournalProgressPlaceholders(draft, generated);
-  assert.match(upgraded, /2022 개정 · 중1 과정 · 2학기/);
+  assert.match(upgraded, /다각형/);
   assert.match(upgraded, /- 특이사항: 직접 적은 메모/);
 });
 
@@ -154,14 +154,14 @@ test('editable draft refreshes stale generated progress while preserving teacher
     '- 출석: 6/6',
     '- 숙제: 6/6',
     '- 진도:',
-    '  * 2022 개정 · 중1 과정 · 2학기: 오래된 단원',
+    '  * 다각형: 오래된 단원',
     '- 특이사항: 직접 적은 메모',
     ''
   ].join('\n');
 
   const refreshed = context.dashboardUpgradeJournalProgressPlaceholders(draft, generated);
   assert.doesNotMatch(refreshed, /오래된 단원/);
-  assert.match(refreshed, /2022 개정 · 중2 과정 · 1학기: 수와 식 · 유리수와 순환소수/);
+  assert.match(refreshed, /유리수와 순환소수/);
   assert.match(refreshed, /- 특이사항: 직접 적은 메모/);
 });
 
@@ -183,7 +183,7 @@ test('journal lists the textbook above its canonical progress without empty reco
 
   await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1' }]);
   const content = context.buildJournalContent('2026-10-01');
-  assert.match(content, /- 교재: 개념유형 1-2\n- 진도:\n/);
+  assert.match(content, /- 진도:\n  \* 개념유형 1-2/);
   assert.match(content, /입체도형의 겉넓이와 부피/);
   assert.equal((content.match(/개념유형 1-2/g) || []).length, 1);
   assert.doesNotMatch(content, /\(기록 없음\)/);
@@ -198,7 +198,7 @@ test('registered textbook appears even with no separate progress record', async 
 
   await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1' }]);
   const content = context.buildJournalContent('2026-10-01');
-  assert.match(content, /- 교재: 개념유형 1-2\n- 진도:\n/);
+  assert.match(content, /- 진도:\n  \* 개념유형 1-2/);
   assert.doesNotMatch(content, /다음 학기 교재|\(기록 없음\)/);
 });
 
@@ -211,7 +211,7 @@ test('legacy page progress remains visible only when canonical progress is absen
 
   await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{ id: 'c1' }]);
   const content = context.buildJournalContent('2026-10-01');
-  assert.match(content, /- 교재: 개념유형 1-2\n- 진도:\n  \* 개념유형 1-2: p\.10~25/);
+  assert.match(content, /- 진도:\n  \* 개념유형 1-2 - p\.10~25/);
   assert.doesNotMatch(content, /\(기록 없음\)/);
 });
 
@@ -234,16 +234,37 @@ test('old draft migrates textbook out of the progress block without losing teach
     '- 출석: 6/6',
     '- 숙제: 6/6',
     '- 진도:',
-    '  * 2022 개정 · 중1 과정 · 2학기: 이전 단원',
+    '  * 다각형: 이전 단원',
     '  * 개념유형 1-2: (기록 없음)',
     '- 특이사항: 학생별 메모 유지',
     ''
   ].join('\n');
   const refreshed = context.dashboardUpgradeJournalProgressPlaceholders(draft, generated);
-  assert.match(refreshed, /- 교재: 개념유형 1-2\n- 진도:\n/);
+  assert.match(refreshed, /- 진도:\n  \* 개념유형 1-2/);
   assert.doesNotMatch(refreshed, /이전 단원|\(기록 없음\)/);
   assert.match(refreshed, /- 특이사항: 학생별 메모 유지/);
   assert.equal(context.dashboardUpgradeJournalProgressPlaceholders(refreshed, generated), refreshed);
+});
+
+
+test('journal pairs up to three bound textbooks with only their own last unit', async () => {
+  const { context } = makeContext(async () => ({
+    success: true,
+    snapshot: { id: 'three', effective_date: '2026-10-01' },
+    items: [
+      { snapshot_id: 'three', curriculum_key: '2022', level_key: 'middle', course_key: 'M1-2', l2_snapshot: '입체도형의 부피', sort_order: 0 },
+      { snapshot_id: 'three', curriculum_key: '2022', level_key: 'middle', course_key: 'M2-1', l2_snapshot: '연립일차방정식의 활용', sort_order: 1 },
+      { snapshot_id: 'three', curriculum_key: '2022', level_key: 'middle', course_key: 'M3-1', l2_snapshot: '이차함수의 그래프', sort_order: 2 }
+    ]
+  }));
+  context.state.db.class_textbooks = ['현행', '선행', '시험대비'].map((title, i) => ({
+    id: 'b' + i, title, class_id: 'c1', status: 'active', start_date: '2026-09-01',
+    progress_curriculum_key: '2022', progress_level_key: 'middle', progress_course_key: ['M1-2','M2-1','M3-1'][i]
+  }));
+  await context.dashboardPrimeJournalProgressForDate('2026-10-01', [{id:'c1'}]);
+  const content = context.buildJournalContent('2026-10-01');
+  assert.match(content, /- 진도:\n  \* 현행 - 입체도형의 부피\n  \* 선행 - 연립일차방정식의 활용\n  \* 시험대비 - 이차함수의 그래프/);
+  assert.doesNotMatch(content, /개정|과정 · 2학기|교재:|기록 없음/);
 });
 
 test('force refresh bypasses stale journal progress cache', async () => {
