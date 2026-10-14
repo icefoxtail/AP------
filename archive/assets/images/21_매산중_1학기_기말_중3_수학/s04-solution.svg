@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620" role="img" aria-labelledby="title desc">
+<title id="title">이차함수 그래프에서 사다리꼴 넓이와 정삼각형 조건</title>
+<desc id="desc">왼쪽은 꼭짓점 A, 축과 x축의 교점 B, y절편 C로 이루어진 사다리꼴의 평행한 변 길이와 높이를 표시한다. 오른쪽은 포물선 y=-x squared plus n에서 x절편 A와 B, y절편 C가 만드는 정삼각형의 밑변과 높이를 표시한다.</desc>
+<rect width="1100" height="620" fill="#fff"/>
+<text x="40" y="48" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#1f2937">그래프에서 필요한 길이만 읽어 식으로 연결하기</text>
+<line x1="550" y1="85" x2="550" y2="580" stroke="#e2e8f0" stroke-width="2"/>
+<!-- left trapezoid panel -->
+<text x="55" y="98" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#334155">① 사다리꼴 ABOC</text>
+<line x1="150" y1="480" x2="470" y2="480" stroke="#475569" stroke-width="2"/>
+<line x1="310" y1="135" x2="310" y2="505" stroke="#475569" stroke-width="2"/>
+<text x="476" y="488" font-family="Arial,sans-serif" font-size="16" fill="#475569">x</text><text x="316" y="139" font-family="Arial,sans-serif" font-size="16" fill="#475569">y</text>
+<path d="M170 410 Q240 130 310 410" fill="none" stroke="#64748b" stroke-width="3"/>
+<!-- trapezoid A(-1,3), B(-1,0), O(0,0), C(0,1), scale 70 -->
+<path d="M240 270 L240 480 L310 480 L310 410 Z" fill="#ccfbf1" stroke="#0f766e" stroke-width="4"/>
+<circle cx="240" cy="270" r="5" fill="#0f766e"/><circle cx="240" cy="480" r="5" fill="#0f766e"/><circle cx="310" cy="480" r="5" fill="#0f766e"/><circle cx="310" cy="410" r="5" fill="#0f766e"/>
+<g font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#0f172a"><text x="217" y="260">A(−1,3)</text><text x="205" y="503">B(−1,0)</text><text x="315" y="503">O</text><text x="315" y="407">C(0,1)</text></g>
+<line x1="216" y1="270" x2="216" y2="480" stroke="#c2410c" stroke-width="2" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<line x1="310" y1="397" x2="310" y2="410" stroke="#c2410c" stroke-width="2"/>
+<text x="180" y="377" font-family="Arial,sans-serif" font-size="17" fill="#c2410c">AB = 3</text>
+<text x="318" y="446" font-family="Arial,sans-serif" font-size="17" fill="#c2410c">OC = 1</text>
+<line x1="240" y1="525" x2="310" y2="525" stroke="#475569" stroke-width="2" marker-start="url(#arr)" marker-end="url(#arr)"/>
+<text x="263" y="550" font-family="Arial,sans-serif" font-size="16" fill="#475569">거리 1</text>
+<text x="65" y="585" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#0f766e">넓이 = ½(3 + 1)×1 = 2</text>
+<!-- right panel -->
+<text x="590" y="98" font-family="Arial,sans-serif" font-size="21" font-weight="700" fill="#334155">② 정삼각형 ABC</text>
+<line x1="630" y1="455" x2="1030" y2="455" stroke="#475569" stroke-width="2"/>
+<line x1="830" y1="145" x2="830" y2="500" stroke="#475569" stroke-width="2"/>
+<text x="1035" y="462" font-family="Arial,sans-serif" font-size="16" fill="#475569">x</text><text x="836" y="149" font-family="Arial,sans-serif" font-size="16" fill="#475569">y</text>
+<!-- schematic parabola with intercepts +/-sqrt(n) and vertex C -->
+<path d="M675 455 Q720 305 830 240 Q940 305 985 455" fill="none" stroke="#64748b" stroke-width="3"/>
+<path d="M700 455 L830 240 L960 455 Z" fill="#dbeafe" fill-opacity=".55" stroke="#2563eb" stroke-width="4"/>
+<line x1="830" y1="240" x2="830" y2="455" stroke="#c2410c" stroke-width="3" stroke-dasharray="8 6"/>
+<circle cx="700" cy="455" r="5" fill="#2563eb"/><circle cx="960" cy="455" r="5" fill="#2563eb"/><circle cx="830" cy="240" r="5" fill="#2563eb"/>
+<g font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#0f172a"><text x="668" y="486">A(−√n,0)</text><text x="943" y="486">B(√n,0)</text><text x="838" y="235">C(0,n)</text></g>
+<text x="747" y="350" font-family="Arial,sans-serif" font-size="16" fill="#c2410c">높이 n</text>
+<text x="808" y="501" font-family="Arial,sans-serif" font-size="16" fill="#2563eb">AB = 2√n</text>
+<text x="590" y="538" font-family="Arial,sans-serif" font-size="17" fill="#334155">AO = √n, CO = n, AC = AB = 2√n</text>
+<text x="590" y="565" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#334155">(2√n)² = (√n)² + n² (피타고라스 정리)</text><text x="590" y="592" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#0f766e">n² − 3n = 0, n &gt; 0 이므로 n = 3</text>
+<defs><marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="#425466"/></marker></defs>
+</svg>
