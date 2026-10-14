@@ -94,6 +94,26 @@ context.state.db.class_daily_progress = [{ id: 'legacy-progress', record_id: 'le
 const legacyProgress = context.getTimetableRecentProgress('other-class');
 assert.equal(legacyProgress.legacy, true);
 assert.equal(legacyProgress.text, '수학책 p.10~25');
+assert.equal(legacyProgress.rows[0].unit, 'p.10~25');
+
+
+context.state.db.timetable_class_textbooks = ['현행','선행','시험대비'].map((title, i) => ({
+  id: 'b' + i, class_id: 'other-class', title, status: 'active', start_date: '2026-08-01',
+  progress_curriculum_key: '2022', progress_level_key: 'middle', progress_course_key: ['M1-2','M2-1','M3-1'][i], sort_order: i
+}));
+context.state.db.class_progress_snapshots = [{ id: 'new', class_id: 'other-class', effective_date: '2026-08-11' }];
+context.state.db.class_progress_items = ['입체도형의 부피','연립일차방정식의 활용','이차함수의 그래프'].map((l2, i) => ({
+  snapshot_id: 'new', class_id:'other-class', curriculum_key:'2022', level_key:'middle',
+  course_key:['M1-2','M2-1','M3-1'][i], l2_snapshot:l2, sort_order:i
+}));
+const paired = context.getTimetableTextbookProgressRows('other-class');
+assert.deepEqual(Array.from(paired, row=>row.title + ' - ' + row.unit), [
+  '현행 - 입체도형의 부피', '선행 - 연립일차방정식의 활용', '시험대비 - 이차함수의 그래프'
+]);
+assert.doesNotMatch(paired.map(row=>row.unit).join(' '), /개정|학기|과정/);
+context.state.db.timetable_class_textbooks[1].progress_course_key = 'M9-9';
+assert.equal(context.getTimetableTextbookProgressRows('other-class')[1].unit, '',
+  'a textbook with an unknown binding must not inherit another course');
 
 const syncFunction = classroom.match(/function syncClassDailyRecordToState\(classId, dateStr, record, progressRows\) \{[\s\S]*?\n\}/);
 assert.ok(syncFunction, 'syncClassDailyRecordToState should remain available');

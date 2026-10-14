@@ -221,7 +221,7 @@ function installTimetableStyle() {
         '.tt-cls-name { font-size:13px; font-weight:700; color:var(--text); cursor:pointer; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.2; letter-spacing:-0.2px; }',
         '.tt-cls-name:hover { color:var(--primary); text-decoration:underline; }',
         '.tt-book { flex-shrink:0; display:flex; flex-direction:column; gap:1px; margin-bottom:2px; }',
-        '.tt-book-line { font-size:10px; color:var(--secondary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.2; letter-spacing:-0.2px; }',
+        '.tt-book-line { font-size:10px; color:var(--text-soft); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.2; letter-spacing:-0.2px; }',
         '.tt-progress { font-size:10px; color:var(--primary); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; flex-shrink:0; display:block; line-height:1.2; letter-spacing:-0.2px; }',
         '.tt-std-list { display:grid; grid-template-columns:1fr 1fr; row-gap:2px; column-gap:4px; margin-top:2px; flex:1 1 auto; min-height:0; }',
         '.tt-std-slot { min-width:0; min-height:18px; display:flex; align-items:center; justify-content:flex-start; border-radius:4px; overflow:hidden; }',
@@ -2772,37 +2772,27 @@ function getTimetablePeriodKey(cls) {
 function getTimetableActiveTextbooks(classId) {
     var db = _getAllDb();
     var mainDb = (typeof state !== 'undefined' && state.db) ? state.db : {};
-    var allDb = (typeof state !== 'undefined' && state.allDb) ? state.allDb : {};
-
-    var textbookSource =
-        mainDb.timetable_class_textbooks ||
-        db.timetable_class_textbooks ||
-        allDb.timetable_class_textbooks ||
-        mainDb.class_textbooks ||
-        db.class_textbooks ||
-        allDb.class_textbooks ||
-        [];
-
-    var books = textbookSource.filter(function(tb) {
-        return String(tb.class_id) === String(classId) && tb.status === 'active';
+    var archive = isTimetableMonthArchiveMode();
+    var sources = archive
+        ? [db.timetable_class_textbooks, db.class_textbooks]
+        : [mainDb.timetable_class_textbooks, db.timetable_class_textbooks, mainDb.class_textbooks, db.class_textbooks];
+    var source = sources.find(function(rows) { return Array.isArray(rows) && rows.length > 0; }) || [];
+    var queryDate = getTimetableTodayDateString();
+    var books = source.filter(function(tb) {
+        return String(tb.class_id) === String(classId) && tb.status === 'active' &&
+            (!tb.start_date || String(tb.start_date).slice(0, 10) <= queryDate) &&
+            (!tb.end_date || String(tb.end_date).slice(0, 10) >= queryDate);
+    });
+    if (books.length) return books.slice().sort(function(a, b) {
+        return Number(a.sort_order || 0) - Number(b.sort_order || 0) ||
+            String(a.title || '').localeCompare(String(b.title || ''), 'ko');
     });
 
-    if (books.length > 0) {
-        return books.map(function(tb) { return String(tb.title || '').trim(); }).filter(Boolean);
-    }
-
-    var classSource =
-        mainDb.timetable_classes ||
-        db.timetable_classes ||
-        allDb.timetable_classes ||
-        mainDb.classes ||
-        db.classes ||
-        allDb.classes ||
-        [];
-
+    var classSource = archive
+        ? (db.timetable_classes || db.classes || [])
+        : (mainDb.timetable_classes || db.timetable_classes || mainDb.classes || db.classes || []);
     var cls = classSource.find(function(c) { return String(c.id) === String(classId); });
-    if (cls && cls.textbook) return [cls.textbook];
-    return ['교재 미등록'];
+    return cls && cls.textbook ? [{ title: String(cls.textbook), isFallback: true }] : [];
 }
 
 function getTimetableLegacyDailyProgress(classId, queryDate, db) {
@@ -2811,94 +2801,102 @@ function getTimetableLegacyDailyProgress(classId, queryDate, db) {
         if (row && row.id) recordById[String(row.id)] = row;
     });
     var records = Object.keys(recordById).map(function(id) { return recordById[id]; })
-        .filter(function(row) {
-            return String(row.class_id) === String(classId) &&
-                String(row.date || '') <= String(queryDate || '');
-        })
+        .filter(function(row) { return String(row.class_id) === String(classId) && String(row.date || '') <= String(queryDate || ''); })
         .sort(function(a, b) {
             return String(b.date || '').localeCompare(String(a.date || '')) ||
-                String(b.updated_at || '').localeCompare(String(a.updated_at || '')) ||
-                String(b.id || '').localeCompare(String(a.id || ''));
+                String(b.updated_at || '').localeCompare(String(a.updated_at || ''));
         });
     var latest = records[0];
     if (!latest) return null;
-
     var progressById = {};
-    (db.timetable_class_daily_progress || []).concat(db.class_daily_progress || []).forEach(function(row) {
-        if (row && row.id) progressById[String(row.id)] = row;
+    (db.timetable_class_daily_progress || []).concat(db.class_daily_progress || []).forEach(function(row, index) {
+        if (row) progressById[String(row.id || 'row-' + index)] = row;
     });
-    var items = Object.keys(progressById).map(function(id) { return progressById[id]; })
+    var rows = Object.keys(progressById).map(function(id) { return progressById[id]; })
         .filter(function(row) { return String(row.record_id) === String(latest.id); })
         .map(function(row) {
-            var textbook = String(row.textbook_title_snapshot || '').trim();
-            var progress = String(row.progress_text || '').trim().replace(/^\[단원선택\][^\n]*\n?/, '').trim();
-            return textbook && progress ? textbook + ' ' + progress : (textbook || progress);
-        })
-        .filter(Boolean);
-    return items.length ? { date: latest.date, text: items.join(' / '), legacy: true } : null;
+            return {
+                textbookId: String(row.textbook_id || ''),
+                title: String(row.textbook_title_snapshot || '').trim(),
+                unit: String(row.progress_text || '').trim().replace(/^\[단원선택\][^\n]*\n?/, '').trim()
+            };
+        }).filter(function(row) { return row.title || row.unit; });
+    return rows.length ? {
+        date: latest.date, legacy: true, rows: rows,
+        text: rows.map(function(row) { return [row.title, row.unit].filter(Boolean).join(' '); }).join(' / ')
+    } : null;
 }
 
 function getTimetableRecentProgress(classId) {
-    // 월별 historical archive에는 persistent progress snapshot이 포함되어 있지 않다.
-    // 현재 진도를 과거 시간표에 덮어쓰지 않도록 archive에서는 fail-closed 한다.
+    // Current progress has no guaranteed historical/draft snapshot authority.
     if (isTimetableMonthArchiveMode()) return null;
-
     var db = _getAllDb();
     var queryDate = getTimetableTodayDateString();
     var snapshots = (db.class_progress_snapshots || [])
-        .filter(function(snapshot) {
-            return String(snapshot.class_id) === String(classId) &&
-                String(snapshot.effective_date || '') <= String(queryDate || '');
-        })
+        .filter(function(snapshot) { return String(snapshot.class_id) === String(classId) &&
+            String(snapshot.effective_date || '') <= queryDate; })
         .sort(function(a, b) {
             return String(b.effective_date || '').localeCompare(String(a.effective_date || '')) ||
                 String(b.updated_at || '').localeCompare(String(a.updated_at || '')) ||
                 String(b.id || '').localeCompare(String(a.id || ''));
         });
-
     var latest = snapshots[0];
     if (!latest) return getTimetableLegacyDailyProgress(classId, queryDate, db);
-
-    var progressItems = (db.class_progress_items || [])
+    var catalog = {};
+    (db.class_progress_taxonomy || []).forEach(function(item) {
+        var key = String(item && (item.canonicalPathKey || item.canonical_path_key) || '');
+        if (key) catalog[key] = item;
+    });
+    var groups = {};
+    (db.class_progress_items || [])
         .filter(function(item) { return String(item.snapshot_id) === String(latest.id); })
-        .sort(function(a, b) {
-            return Number(a.sort_order || 0) - Number(b.sort_order || 0) ||
-                String(a.id || '').localeCompare(String(b.id || ''));
+        .forEach(function(item, index) {
+            var c = catalog[String(item.canonical_path_key || item.canonicalPathKey || '')] || {};
+            var curriculum = String(item.curriculum_key || item.curriculumKey || c.curriculumKey || '');
+            var level = String(item.level_key || item.level || c.level || '');
+            var course = String(item.course_key || item.courseKey || c.courseKey || '');
+            var unit = String(item.l2_snapshot || item.l2 || c.l2 ||
+                item.l1_snapshot || item.l1 || c.l1 || '').trim();
+            var order = Number.isFinite(Number(item.sort_order)) ? Number(item.sort_order) : index;
+            var key = [curriculum, level, course].join('|');
+            if (unit && (!groups[key] || order >= groups[key].order)) {
+                groups[key] = { curriculum: curriculum, level: level, course: course, unit: unit, order: order };
+            }
         });
-    if (!progressItems.length) return null;
+    var rows = Object.keys(groups).map(function(key) { return groups[key]; });
+    return rows.length ? {
+        date: latest.effective_date, legacy: false, rows: rows,
+        text: rows.map(function(row) { return row.unit; }).join(' / ')
+    } : null;
+}
 
-    var catalog = Array.isArray(db.class_progress_taxonomy) ? db.class_progress_taxonomy : [];
-    var catalogByPath = {};
-    catalog.forEach(function(item) {
-        if (item && item.canonicalPathKey) catalogByPath[String(item.canonicalPathKey)] = item;
-    });
-    var courseGroups = {};
-    progressItems.forEach(function(item) {
-        var pathKey = String(item.canonical_path_key || item.canonicalPathKey || '');
-        var catalogItem = catalogByPath[pathKey] || {};
-        var curriculumKey = String(item.curriculum_key || item.curriculumKey || catalogItem.curriculumKey || '');
-        var level = String(item.level_key || item.level || catalogItem.level || '');
-        var courseKey = String(item.course_key || item.courseKey || catalogItem.courseKey || '');
-        var groupKey = [curriculumKey, level, courseKey].join('|');
-        if (!courseGroups[groupKey]) {
-            courseGroups[groupKey] = {
-                label: String(catalogItem.courseLabel || courseKey || '과정'),
-                curriculumKey: curriculumKey,
-                items: []
-            };
-        }
-        var l1 = String(item.l1_snapshot || item.l1 || catalogItem.l1 || '').trim();
-        var l2 = String(item.l2_snapshot || item.l2 || catalogItem.l2 || '').trim();
-        var unitLabel = l1 && l2 && l1 !== l2 ? l1 + ' · ' + l2 : (l2 || l1);
-        if (unitLabel) courseGroups[groupKey].items.push(unitLabel);
-    });
-
-    var text = Object.keys(courseGroups).map(function(key) {
-        var group = courseGroups[key];
-        var units = Array.from(new Set(group.items));
-        return group.curriculumKey + ' 개정 ' + group.label + ': ' + units.join(', ');
-    }).filter(Boolean).join(' / ');
-    return text ? { date: latest.effective_date, text: text } : null;
+function getTimetableTextbookProgressRows(classId) {
+    var books = getTimetableActiveTextbooks(classId);
+    var progress = isTimetableDraftMode() ? null : getTimetableRecentProgress(classId);
+    var groups = progress && !progress.legacy ? progress.rows : [];
+    var legacy = progress && progress.legacy ? progress.rows : [];
+    if (!books.length) return progress && progress.rows ? progress.rows.map(function(row) {
+        return { title: String(row.title || ''), unit: String(row.unit || ''), date: progress.date };
+    }) : [];
+    var boundCount = books.filter(function(book) { return !!String(book.progress_course_key || ''); }).length;
+    return books.map(function(book) {
+        var title = String(book.title || '').trim();
+        var curriculum = String(book.progress_curriculum_key || '');
+        var level = String(book.progress_level_key || '');
+        var course = String(book.progress_course_key || '');
+        var matched = groups.filter(function(group) {
+            return curriculum && course && group.curriculum === curriculum && group.course === course &&
+                (!level || !group.level || group.level === level);
+        });
+        var selected = matched.length === 1 ? matched[0] : null;
+        // Unambiguous legacy case only: one course, one textbook, no binding.
+        if (!selected && books.length === 1 && groups.length === 1 && boundCount === 0) selected = groups[0];
+        var pageProgress = legacy.find(function(row) {
+            return (row.textbookId && String(book.id || '') === row.textbookId) || row.title === title;
+        });
+        return { title: title, unit: selected ? selected.unit : (pageProgress ? pageProgress.unit : ''),
+            date: progress ? progress.date : '' };
+    }).filter(function(row) { return row.title || row.unit; });
 }
 
 // ────────────────────────────────────────────
@@ -3251,8 +3249,7 @@ function buildTimetableStudentSlots(students, classId) {
 function buildTimetableCard(cls, options) {
     options = options || {};
     var classId = cls.id;
-    var books = getTimetableActiveTextbooks(classId);
-    var progress = getTimetableRecentProgress(classId);
+    var textbookRows = getTimetableTextbookProgressRows(classId);
     var students = getTimetableClassStudentsWithInfo(classId);
 
     var headerClick = (isTimetableDraftMode() || isTimetableMonthArchiveMode()) ? 'event.stopPropagation();' : 'event.stopPropagation();openTimetableClass(\'' + apEscapeHtml(String(classId)) + '\')';
@@ -3262,15 +3259,12 @@ function buildTimetableCard(cls, options) {
         '</span>' +
     '</div>';
 
-    var bookHtml = books.length > 0
-        ? '<div class="tt-book">' + books.map(function(b) {
-            return '<span class="tt-book-line">' + apEscapeHtml(b) + '</span>';
+    var bookHtml = textbookRows.length
+        ? '<div class="tt-book">' + textbookRows.map(function(row) {
+            var label = [row.title, row.unit].filter(Boolean).join(' - ');
+            return '<span class="tt-book-line" title="' + apEscapeHtml(label) + '">' + apEscapeHtml(label) + '</span>';
         }).join('') + '</div>'
         : '<div class="tt-book"><span class="tt-book-line">교재 미등록</span></div>';
-
-    var progressHtml = progress
-        ? '<div class="tt-progress" title="' + apEscapeHtml(progress.date) + '">' + apEscapeHtml(progress.text) + '</div>'
-        : '<div class="tt-progress" style="color:transparent;user-select:none;">-</div>';
     var cardDragAttrs = !isTimetableMonthArchiveMode() && isTimetableAdminMode() && options.enableClassDrag !== false
         ? ' draggable="true" data-drag-class-id="' + apEscapeHtml(String(classId)) + '" ondragstart="handleTimetableClassCardDragStart(event)"'
         : '';
@@ -3281,7 +3275,7 @@ function buildTimetableCard(cls, options) {
     var cardClass = 'tt-card';
     var gradeToneClass = getTimetableGradeToneClass(cls);
     if (gradeToneClass) cardClass += ' ' + gradeToneClass;
-    return '<div class="' + cardClass + '"' + cardDragAttrs + dropAttrs + '>' + hdrHtml + bookHtml + progressHtml + buildTimetableStudentSlots(students, classId) + '</div>';
+    return '<div class="' + cardClass + '"' + cardDragAttrs + dropAttrs + '>' + hdrHtml + bookHtml + buildTimetableStudentSlots(students, classId) + '</div>';
 }
 
 function getTimetableHighScheduleLines(cls) {
@@ -3501,8 +3495,7 @@ function getTimetablePrintableClasses(section) {
 
 function buildTimetablePrintClassBlock(cls, includeSchedule) {
     var classId = cls && cls.id;
-    var books = getTimetableActiveTextbooks(classId);
-    var progress = getTimetableRecentProgress(classId);
+    var textbookRows = getTimetableTextbookProgressRows(classId);
     var students = getTimetableClassStudentsWithInfo(classId);
     var scheduleHtml = '';
 
@@ -3517,12 +3510,12 @@ function buildTimetablePrintClassBlock(cls, includeSchedule) {
         }
     }
 
-    var bookHtml = books.length
-        ? '<div class="pt-class-books">' + books.map(function(book) { return apEscapeHtml(book); }).join(' / ') + '</div>'
+    var bookHtml = textbookRows.length
+        ? '<div class="pt-class-books">' + textbookRows.map(function(row) {
+            var label = [row.title, row.unit].filter(Boolean).join(' - ');
+            return '<div class="pt-class-book-line">' + apEscapeHtml(label) + '</div>';
+        }).join('') + '</div>'
         : '<div class="pt-class-books">교재 미등록</div>';
-    var progressHtml = progress
-        ? '<div class="pt-class-progress">' + apEscapeHtml(progress.text) + '</div>'
-        : '';
     var studentHtml = students.length
         ? '<div class="pt-students">' + students.map(function(student) {
             return '<span>' + apEscapeHtml(student.name || '') + '</span>';
@@ -3537,7 +3530,6 @@ function buildTimetablePrintClassBlock(cls, includeSchedule) {
         scheduleHtml +
         '<div class="pt-class-name">' + apEscapeHtml(cls && cls.name || '') + '</div>' +
         bookHtml +
-        progressHtml +
         studentHtml +
     '</div>';
 }
