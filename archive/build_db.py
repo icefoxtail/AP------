@@ -1017,7 +1017,25 @@ def extract_question_array_text(text):
             break
 
     if start == -1:
-        return ""
+        assignments = list(re.finditer(r"\bwindow\.examData\s*=\s*\{", text))
+        if len(assignments) != 1:
+            return ""
+
+        object_start = text.find("{", assignments[0].start())
+        object_end = find_matching_bracket(text, object_start, "{", "}")
+        if object_end == -1:
+            return ""
+
+        exam_data = text[object_start:object_end + 1]
+        question_fields = list(re.finditer(r"(['\"])questions\1\s*:\s*\[", exam_data))
+        if len(question_fields) != 1:
+            return ""
+
+        array_start = exam_data.find("[", question_fields[0].start())
+        array_end = find_matching_bracket(exam_data, array_start, "[", "]")
+        if array_end == -1:
+            return ""
+        return exam_data[array_start:array_end + 1]
 
     array_start = text.find("[", start)
     if array_start == -1:
