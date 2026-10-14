@@ -449,7 +449,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 극대 조건으로 $a$를 정한 뒤 닫힌구간의 끝점과 극점에서 함수값을 비교한다.\n조건 정리: $f'(x)=6x^2+2ax$이고 $f'(-2)=0$이다.\n풀이 방향: $a$를 구한 다음 $[-4,2]$에서 최솟값이 생기는 위치를 확인한다.\n정석 풀이: $f'(-2)=24-4a=0$이므로 $a=6$이다. 이때 $f'(x)=6x(x+2)$이므로 $x=-2$에서 극대, $x=0$에서 극소이다. 후보값은 $f(-4)=b-32$, $f(0)=b$, $f(2)=b+40$이고 가장 작은 값은 $b-32$이다. $b-32=-37$에서 $b=-5$이다. 따라서 $f(1)=2+6-5=3$이다.\n따라서 정답은 ②이다.",
+    "solution": "극대가 일어나는 $x=-2$에서 도함수가 $0$이다.\n$f(x)=2x^3+ax^2+b$\n$f'(x)=6x^2+2ax$이므로\n$f'(-2)=24-4a=0$이다.\n따라서 $a=6$이다.\n\n이때\n$f'(x)=6x^2+12x=6x(x+2)$이다.\n도함수의 부호는\n$x<-2$에서 양,\n$-2<x<0$에서 음,\n$x>0$에서 양이다.\n따라서 $x=-2$에서 극대, $x=0$에서 극소가 된다.\n\n닫힌구간 $[-4,2]$에서는 양 끝점과 극점의 함수값을 비교한다.\n$f(-4)=-128+96+b=b-32$\n$f(-2)=-16+24+b=b+8$\n$f(0)=b$\n$f(2)=16+24+b=b+40$이다.\n\n가장 작은 값은 $f(-4)=b-32$이므로\n$b-32=-37$\n$b=-5$이다.\n\n따라서\n$f(1)=2+6-5=3$이므로\n정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -477,7 +477,7 @@ window.questionBank = [
       "$22$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 공통 접점에서 두 함수의 기울기가 모두 $0$이라는 조건으로 접점과 이차함수를 먼저 확정한다.\n조건 정리: $f'(x)=-3x^2+3$이고 $a$는 음수이다.\n풀이 방향: $a$를 구해 $g(x)$를 꼭짓점형으로 정한 뒤 두 함수의 교점과 차를 적분한다.\n정석 풀이: $f'(a)=0$에서 $a=\\pm1$이고 $a\\lt0$이므로 $a=-1$이다. $f(-1)=-2$이고 $g'(-1)=0$, 최고차항 계수가 $-1$이므로 $g(x)=-(x+1)^2-2$이다. $f(x)-g(x)=-x^3+x^2+5x+3=-(x-3)(x+1)^2$이므로 두 곡선은 $x=-1,3$에서 만나고 $-1\\le x\\le3$에서 $f(x)\\ge g(x)$이다. 따라서 넓이는 $\\displaystyle\\int_{-1}^{3}(-x^3+x^2+5x+3)dx$이다. 원시함수는 $-\\dfrac{x^4}{4}+\\dfrac{x^3}{3}+\\dfrac{5x^2}{2}+3x$이므로 넓이는 $\\displaystyle\\left[-\\dfrac{x^4}{4}+\\dfrac{x^3}{3}+\\dfrac{5x^2}{2}+3x\\right]_{-1}^{3}=\\dfrac{81}{4}-\\left(-\\dfrac{13}{12}\\right)=\\dfrac{64}{3}$이다.\n따라서 정답은 ③이다.",
+    "solution": "두 곡선이 기울기 $0$으로 만나는 음수 $a$부터 찾는다.\n$f(x)=-x^3+3x$이므로\n$f'(x)=-3x^2+3$이다.\n$f'(a)=0$에서\n$-3a^2+3=0$\n$a^2=1$이다.\n$a<0$이므로 $a=-1$이다.\n\n$f(-1)=-2$이고 $g'(-1)=0$이다.\n$g$의 최고차항 계수가 $-1$이므로\n$g(x)=-(x+1)^2-2$\n$=-x^2-2x-3$이다.\n\n두 함수의 차는\n$f(x)-g(x)=-x^3+x^2+5x+3$\n$=(3-x)(x+1)^2$이다.\n\n교점의 $x$좌표는 $-1,3$이다.\n$-1\\le x\\le3$에서 $(3-x)(x+1)^2\\ge0$이므로 이 구간에서는 $f(x)$가 위쪽이다.\n\n따라서 둘러싸인 넓이는\n$\\displaystyle S=\\int_{-1}^{3}\\{f(x)-g(x)\\}\\,dx$\n$\\displaystyle=\\int_{-1}^{3}(-x^3+x^2+5x+3)\\,dx$\n$\\displaystyle=\\left[-\\dfrac{x^4}{4}+\\dfrac{x^3}{3}+\\dfrac{5x^2}{2}+3x\\right]_{-1}^{3}$이다.\n\n위끝값은\n$\\displaystyle-\\dfrac{81}{4}+9+\\dfrac{45}{2}+9=\\dfrac{81}{4}$,\n아래끝값은\n$\\displaystyle-\\dfrac14-\\dfrac13+\\dfrac52-3=-\\dfrac{13}{12}$이다.\n\n$\\displaystyle S=\\dfrac{81}{4}-\\left(-\\dfrac{13}{12}\\right)$\n$\\displaystyle=\\dfrac{243+13}{12}=\\dfrac{64}{3}$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -505,7 +505,7 @@ window.questionBank = [
       "$\\dfrac9{14}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 왼쪽 두 피적분함수는 곱 $x^2f(x)$를 미분한 식으로 묶인다.\n조건 정리: 양변을 미분하면 $2xf(x)+x^2f'(x)=4x^3-3ax^2+8x$이다.\n풀이 방향: 왼쪽을 $(x^2f(x))'$로 보고 적분상수를 검토한 뒤, 다항함수 조건을 이용한다.\n정석 풀이: $(x^2f(x))'=4x^3-3ax^2+8x$이므로 $x^2f(x)=x^4-ax^3+4x^2+C$이다. $f(x)$가 다항함수이므로 $C=0$이어야 하며 $f(x)=x^2-ax+4$이다. 따라서 $0=\\int_0^4f(x)dx=\\left[\\dfrac{x^3}{3}-\\dfrac a2x^2+4x\\right]_0^4=\\dfrac{112}{3}-8a$이므로 $a=\\dfrac{14}{3}$이다. 그러므로 $\\dfrac3a=\\dfrac9{14}$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "왼쪽 두 적분의 피적분함수를 합치면 곱을 미분한 꼴이다.\n$\\{x^2f(x)\\}'=2xf(x)+x^2f'(x)$이다.\n\n주어진 등식의 양변을 미분하면\n$2xf(x)+x^2f'(x)=4x^3-3ax^2+8x$이므로\n$\\{x^2f(x)\\}'=4x^3-3ax^2+8x$이다.\n\n양변을 적분하면\n$x^2f(x)=x^4-ax^3+4x^2+C$이다.\n$f(x)$가 다항함수이므로 $x=0$을 대입하면 왼쪽이 $0$이고 오른쪽이 $C$이다.\n따라서 $C=0$이다.\n\n$x^2f(x)=x^2(x^2-ax+4)$이므로\n$f(x)=x^2-ax+4$이다.\n\n이제 정적분 조건을 쓴다.\n$\\displaystyle 0=\\int_0^4(x^2-ax+4)\\,dx$\n$\\displaystyle=\\left[\\dfrac{x^3}{3}-\\dfrac{ax^2}{2}+4x\\right]_0^4$\n$\\displaystyle=\\dfrac{64}{3}-8a+16$\n$\\displaystyle=\\dfrac{112}{3}-8a$이다.\n\n$\\displaystyle8a=\\dfrac{112}{3}$\n$\\displaystyle a=\\dfrac{14}{3}$이다.\n따라서\n$\\displaystyle\\dfrac3a=3\\div\\dfrac{14}{3}=\\dfrac9{14}$이므로\n정답은 ⑤이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "candidate_evidence",
@@ -533,7 +533,7 @@ window.questionBank = [
       "$\\dfrac4{\\sqrt3}$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 경계점 $x=k$에서의 함수값·미분계수 일치와 $f(k)=f'(k)$를 함께 사용한다.\n조건 정리: 왼쪽에서 $f(k)=ak$, $f'(k)=a$이므로 $ak=a$이고 $a\\gt0$이다.\n풀이 방향: 먼저 $k$를 구한 뒤 미분가능 조건으로 $a,b$를 정하고, 양의 부분을 적분한다.\n정석 풀이: $ak=a$에서 $k=1$이다. 미분계수의 일치로 $a=-2+4b$이다. 함수값의 연속성으로 $a=-1+4b-3b^2$이다. 두 식을 비교하면 $3b^2=1$이고 $b\\gt0$이므로 $b=\\dfrac1{\\sqrt3}$, $a=\\dfrac4{\\sqrt3}-2$이다. 오른쪽 이차식은 $-(x-b)(x-3b)$이고 $3b=\\sqrt3\\gt1$이므로 둘러싸인 넓이는 두 구간으로 나뉜다. 먼저 $\\displaystyle\\int_0^1axdx=\\dfrac a2=\\dfrac2{\\sqrt3}-1$이다. 또 $b=\\dfrac1{\\sqrt3}$를 대입하면 오른쪽 식은 $-x^2+\\dfrac4{\\sqrt3}x-1$이므로 $\\displaystyle\\int_1^{\\sqrt3}\\left(-x^2+\\dfrac4{\\sqrt3}x-1\\right)dx=\\left[-\\dfrac{x^3}{3}+\\dfrac2{\\sqrt3}x^2-x\\right]_1^{\\sqrt3}=\\dfrac43-\\dfrac2{\\sqrt3}$이다. 따라서 전체 넓이는 $\\left(\\dfrac2{\\sqrt3}-1\\right)+\\left(\\dfrac43-\\dfrac2{\\sqrt3}\\right)=\\dfrac13$이다.\n따라서 정답은 ②이다.",
+    "solution": "경계점 $x=k$에서 미분가능하므로 함수값과 기울기가 양쪽에서 일치한다.\n\n왼쪽 식 $f(x)=ax$에서 $f'(x)=a$이고,\n주어진 $f(k)=f'(k)$에 의해\n$ak=a$이다.\n$a>0$이므로 $k=1$이다.\n\n$x=1$에서 도함수의 연속 조건은\n$a=-2+4b$이고,\n함수값의 연속 조건은\n$a=-1+4b-3b^2$이다.\n\n두 식을 같게 놓으면\n$-2+4b=-1+4b-3b^2$\n$3b^2=1$이다.\n$b>0$이므로 $b=\\dfrac1{\\sqrt3}$이고\n$\\displaystyle a=\\dfrac4{\\sqrt3}-2$이다.\n\n따라서 함수는\n$f(x)=\\begin{cases}(\\dfrac4{\\sqrt3}-2)x&(x<1)\\\\-x^2+\\dfrac4{\\sqrt3}x-1&(x\\ge1)\\end{cases}$이다.\n\n오른쪽 이차식은\n$\\displaystyle -(x-\\dfrac1{\\sqrt3})(x-\\sqrt3)$으로 인수분해된다.\n$\\dfrac1{\\sqrt3}<1<\\sqrt3$이므로 $0<x<\\sqrt3$에서 그래프는 $x$축 위에 있다.\n\n둘러싸인 넓이를 $x=1$에서 나누어 계산한다.\n$\\displaystyle S_1=\\int_0^1\\left(\\dfrac4{\\sqrt3}-2\\right)x\\,dx$\n$\\displaystyle=\\left(\\dfrac4{\\sqrt3}-2\\right)\\dfrac12$\n$\\displaystyle=\\dfrac2{\\sqrt3}-1$이다.\n\n$\\displaystyle S_2=\\int_1^{\\sqrt3}\\left(-x^2+\\dfrac4{\\sqrt3}x-1\\right)dx$\n$\\displaystyle=\\left[-\\dfrac{x^3}{3}+\\dfrac2{\\sqrt3}x^2-x\\right]_1^{\\sqrt3}$이다.\n위끝값은 $-\\sqrt3+2\\sqrt3-\\sqrt3=0$,\n아래끝값은 $-\\dfrac13+\\dfrac2{\\sqrt3}-1=\\dfrac2{\\sqrt3}-\\dfrac43$이다.\n따라서 $\\displaystyle S_2=\\dfrac43-\\dfrac2{\\sqrt3}$이다.\n\n$\\displaystyle S=S_1+S_2=\\dfrac13$이므로\n정답은 ②이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
@@ -561,7 +561,7 @@ window.questionBank = [
       "$\\dfrac73$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 위치의 영점 개수로 $a=b$를 먼저 확정하고, 이동거리는 위치함수의 증감에 따른 위치 변화량의 절댓값으로 계산한다.\n조건 정리: 출발 후 원점을 한 번만 지나므로 양의 영점 $a,b$가 같아야 한다. $a=b=r$라 두면 $x(t)=kt(t-r)^2$이다.\n풀이 방향: 극댓값 조건으로 $k$와 $r$의 관계를 만들고, $0$부터 $2$까지의 이동거리 조건으로 $r$을 정한다.\n정석 풀이: $x'(t)=k(t-r)(3t-r)$이므로 $t=\\dfrac r3$에서 극댓값을 가지며 그 값은 $\\dfrac{4kr^3}{27}=2$이다. 따라서 $k=\\dfrac{27}{2r^3}$이다. 위치는 $0$에서 극댓값 $2$까지 갔다가 $t=r$에서 다시 $0$이 된다. $2\\lt r\\le6$이면 $r/3\\le2\\lt r$이므로 시각 $2$까지의 이동거리는 $2+\\{2-x(2)\\}=4-x(2)\\lt4$이다. $r\\gt6$이면 $2\\lt r/3$이라 시각 $2$까지 계속 증가 중이므로 이동거리는 $x(2)\\lt2\\lt4$이다. 반대로 $0\\lt r\\lt2$이면 시각 $r$에서 이미 원점으로 돌아온 뒤 다시 증가하므로 시각 $2$까지의 이동거리는 $4+x(2)\\gt4$이다. 따라서 (나)를 만족하는 경우는 $r=2$뿐이다. 그러므로 $k=\\dfrac{27}{16}$이다. 시각 $2$까지의 이동거리가 $4$이고 $t\\gt2$에서는 $x'(t)=\\dfrac{27}{16}(t-2)(3t-2)\\gt0$이므로 $\\int_0^c|v(t)|dt=6$은 $x(c)=2$와 같다. 즉 $\\dfrac{27}{16}c(c-2)^2=2$, 다시 말해 $27c(c-2)^2=32$이다. $c=\\dfrac83$을 대입하면 $27\\cdot\\dfrac83\\cdot\\left(\\dfrac23\\right)^2=32$이므로 식을 만족한다. 또한 $t\\gt2$에서 $x(t)$가 단조증가하므로 이 해는 유일하다.\n따라서 정답은 ④이다.",
+    "solution": "출발 이후 원점을 한 번만 지나므로 양수인 두 영점 $a,b$는 일치해야 한다.\n$a=b=r$ $(r>0)$로 두면\n$x(t)=kt(t-r)^2$이다.\n\n속도는\n$v(t)=x'(t)=k(t-r)(3t-r)$이다.\n$t=\\dfrac r3$에서 속도가 양에서 음으로 바뀌므로 이때 위치가 극대이다.\n$\\displaystyle x\\left(\\dfrac r3\\right)=k\\cdot\\dfrac r3\\cdot\\left(-\\dfrac{2r}{3}\\right)^2$\n$\\displaystyle=\\dfrac{4kr^3}{27}=2$이다.\n따라서 $\\displaystyle k=\\dfrac{27}{2r^3}$이다.\n\n시각 $0$부터 극대점까지 위치가 $0\\to2$, 그 뒤 $t=r$까지 $2\\to0$으로 이동하므로 이 왕복 이동거리는 $4$이다.\n\n① $0<r<2$라면 $t=2$는 왕복 이후이다. $x(2)>0$이므로 시각 $2$까지의 이동거리는 $4+x(2)>4$이다.\n② $r>2$라면 시각 $2$까지 원점으로 돌아오지 못한다. $t=2$까지 극대를 지났으면 이동거리는 $4-x(2)<4$이고, 아직 극대 이전이면 이동거리는 $x(2)<2$이다.\n③ $r=2$라면 시각 $2$에 원점으로 돌아오므로 이동거리가 정확히 $4$이다.\n\n따라서 $r=2$이고\n$\\displaystyle k=\\dfrac{27}{2\\cdot2^3}=\\dfrac{27}{16}$이다.\n$\\displaystyle x(t)=\\dfrac{27}{16}t(t-2)^2$이다.\n\n시각 $2$ 이후 속도가 양수이고 이미 이동한 거리는 $4$이다. 전체 이동거리가 $6$이 되려면 $c>2$에서 위치가 $2$여야 한다.\n$\\displaystyle\\dfrac{27}{16}c(c-2)^2=2$\n$27c(c-2)^2=32$\n$27c^3-108c^2+108c-32=0$\n$(3c-8)(3c-2)^2=0$이다.\n\n$c>2$를 만족하는 해는\n$\\displaystyle c=\\dfrac83$뿐이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "candidate_evidence",
