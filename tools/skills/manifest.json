@@ -52,6 +52,20 @@
       "status": "active"
     },
     {
+      "name": "apmath-source-intake-batch",
+      "path": ".agents/skills/apmath-source-intake-batch",
+      "entrypoint": "SKILL.md",
+      "requiredFiles": [
+        "SKILL.md",
+        "roster.json",
+        "scripts/clean_asset.py",
+        "scripts/render_pdf.py",
+        "scripts/validate_batch.cjs"
+      ],
+      "scope": "source-only-exam-intake-batch",
+      "status": "active"
+    },
+    {
       "name": "gemini-multimodal-intake-pipeline",
       "path": ".agents/skills/gemini-multimodal-intake-pipeline",
       "entrypoint": "SKILL.md",
