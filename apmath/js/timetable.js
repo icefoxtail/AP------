@@ -2778,10 +2778,11 @@ function getTimetableActiveTextbooks(classId) {
         : [mainDb.timetable_class_textbooks, db.timetable_class_textbooks, mainDb.class_textbooks, db.class_textbooks];
     var source = sources.find(function(rows) { return Array.isArray(rows) && rows.length > 0; }) || [];
     var queryDate = getTimetableTodayDateString();
+    var stagedOrHistorical = archive || isTimetableDraftMode();
     var books = source.filter(function(tb) {
         return String(tb.class_id) === String(classId) && tb.status === 'active' &&
-            (!tb.start_date || String(tb.start_date).slice(0, 10) <= queryDate) &&
-            (!tb.end_date || String(tb.end_date).slice(0, 10) >= queryDate);
+            (stagedOrHistorical || ((!tb.start_date || String(tb.start_date).slice(0, 10) <= queryDate) &&
+            (!tb.end_date || String(tb.end_date).slice(0, 10) >= queryDate)));
     });
     if (books.length) return books.slice().sort(function(a, b) {
         return Number(a.sort_order || 0) - Number(b.sort_order || 0) ||
