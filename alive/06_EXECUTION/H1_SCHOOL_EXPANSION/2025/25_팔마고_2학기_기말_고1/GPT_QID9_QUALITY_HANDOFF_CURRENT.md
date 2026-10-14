@@ -1,3 +1,12 @@
+# CURRENT TOP — q11 AUTHOR COMPLETE / q12 NEXT (2026-10-15)
+- Branch `work/alive-25-palma-h1-2final-qid9`; q01~q10 보호 90/207, q11 A1~C3 신규 9개 제작, 누적 **99/207**, 108개 남음, firstMissing=q12.
+- Original q11: f(x)=x²−6x+a (x≥3), 역함수 그래프 접점, original answer a=49/4. 원본 JS·원본 q11 해설 SVG 및 기존 유사문제 불변.
+- Locked H1-RPM-256 역함수; ACTIVE PT_INVERSE_GRAPH/TPL_INVERSE_GRAPH_INTERSECTION. H22-C2-07-FUNCTION_INVERSE PT binding 확인; RPM crosswalk DIRECT_ACTIVE 오인 금지.
+- A1~C3 9문항·객관식 보기 45·실제 오답경로 36, 학생용 상세 해설, level/1~5 difficulty 독립 이유, 역발문 KEEP.
+- 문제 SVG 필요 없음 9; 해설용 실제 SVG 9 blob. Python 수학 검산, SVG 균등축 좌표 모델 및 author static 점 검사. 실제 Chrome/브라우저 NOT_RUN.
+- SourceUid exact 9 EVIDENCE_DEBT, 누적 99. Formal independent, Consumer/index, main NOT_RUN. 다음 q12의 원본과 이미지부터 조사.
+- q11 PREFLIGHT/BLUEPRINT/CREATE_DRAFT/AUTHOR_RECEIPT, assets/q11/A1~C3-solution.svg, Meta registry와 progress 원장 갱신.
+
 # CURRENT TOP — q10 AUTHOR COMPLETE / q11 NEXT (2026-10-15)
 - Branch `work/alive-25-palma-h1-2final-qid9`; previous q01~q09 81/207 preserved unchanged, q10 A1~C3 +9 AUTHOR candidates: **90/207**, pending 117, firstMissing=q11. All original exam and legacy similar untouched.
 - Original q10 `archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js` Git blob `0d12b75e824ab47f08fc3b5a6180be595f882c6e`: f=x+k, g=kx+1, g∘f=f∘g, k≠0, answer k=1(④). No original problem picture.
