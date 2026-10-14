@@ -900,6 +900,57 @@ def find_matching_bracket(text, start_idx, open_char="[", close_char="]"):
     return -1
 
 
+EXAM_DATA_SUBJECT_TITLE_SUFFIXES = (
+    "확률과 통계", "확률과통계", "공통수학1", "공통수학2",
+    "수학Ⅰ", "수학Ⅱ", "수학I", "수학II", "미적분Ⅰ", "미적분II",
+    "미적분", "대수", "기하", "수학",
+)
+
+
+def extract_exam_data_subject(filepath):
+    try:
+        text = read_text_file(filepath)
+    except Exception:
+        return ""
+
+    assignments = list(re.finditer(r"\bwindow\.examData\s*=\s*\{", text))
+    if len(assignments) != 1:
+        return ""
+    object_start = text.find("{", assignments[0].start())
+    object_end = find_matching_bracket(text, object_start, "{", "}")
+    if object_end == -1:
+        return ""
+    try:
+        exam_data = json.loads(text[object_start:object_end + 1])
+    except (TypeError, ValueError):
+        return ""
+    if not isinstance(exam_data, dict):
+        return ""
+
+    explicit_subject = exam_data.get("subject")
+    if isinstance(explicit_subject, str) and explicit_subject.strip():
+        return explicit_subject.strip()
+
+    title = exam_data.get("title")
+    if not isinstance(title, str):
+        return ""
+    title = title.strip()
+    matches = [
+        subject for subject in EXAM_DATA_SUBJECT_TITLE_SUFFIXES
+        if title.endswith("_" + subject)
+    ]
+    return matches[0] if len(matches) == 1 else ""
+
+
+def parse_source_metadata(filename, rel_path, filepath):
+    meta = parse_filename(filename, rel_path)
+    if meta and not str(meta.get("subject", "") or "").strip():
+        subject = extract_exam_data_subject(filepath)
+        if subject:
+            meta["subject"] = subject
+    return meta
+
+
 def count_top_level_objects_in_array(array_text):
     # 최상위 배열 요소 개수를 센다. 요소는 객체 리터럴 `{...}`일 수도,
     # `q(...)` 같은 헬퍼 함수 호출일 수도 있으므로 콤마 구분자로 계수한다.
@@ -1667,7 +1718,7 @@ def build_engine_db():
         filename = file_info["filename"]
         rel_path = file_info["rel_path"]
 
-        meta = parse_filename(filename, rel_path)
+        meta = parse_source_metadata(filename, rel_path, file_info["abs_path"])
         if meta and meta.get("file"):
             meta = normalize_meta_file_path(meta, rel_path)
             parsed_meta_map[rel_path] = meta

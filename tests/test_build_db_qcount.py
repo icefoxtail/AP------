@@ -29,6 +29,30 @@ class BuildDbQCountTests(unittest.TestCase):
 
             self.assertEqual(build_db.extract_qcount_from_js(exam_path), 2)
 
+    def test_exam_data_subject_requires_explicit_value_or_known_title_suffix(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            exam_path = Path(temp_dir) / "24_sample_1학기_중간_중3_기출.js"
+            exam_path.write_text(
+                'window.examData = {"title":"24_sample_1학기_중간_중3_수학", "questions": []};',
+                encoding="utf-8",
+            )
+            meta = build_db.parse_source_metadata(exam_path.name, "original/middle/m3/1mid", exam_path)
+            self.assertEqual(meta["subject"], "수학")
+
+            exam_path.write_text(
+                'window.examData = {"title":"sample exam", "subject":"확률과 통계", "questions": []};',
+                encoding="utf-8",
+            )
+            meta = build_db.parse_source_metadata(exam_path.name, "original/middle/m3/1mid", exam_path)
+            self.assertEqual(meta["subject"], "확률과 통계")
+
+            exam_path.write_text(
+                'window.examData = {"title":"sample 수학 exam", "questions": []};',
+                encoding="utf-8",
+            )
+            meta = build_db.parse_source_metadata(exam_path.name, "original/middle/m3/1mid", exam_path)
+            self.assertEqual(meta["subject"], "")
+
 
 if __name__ == "__main__":
     unittest.main()
