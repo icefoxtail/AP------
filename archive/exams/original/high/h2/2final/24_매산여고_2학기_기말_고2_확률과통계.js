@@ -619,11 +619,15 @@ window.questionBank = [
     "content": "[주관식1 (서술형)] 어느 도서관에서 보유한 도서 현황을 조사하였더니 전체 도서의 $20\\%$가 종교 도서였다. 이 도서관에서 보유한 도서 400권을 임의로 택하였을 때, 종교 도서가 92권 이상일 확률을 구하는 풀이 과정을 자세히 서술하시오. (단, $Z$가 표준정규분포를 따르는 확률변수일 때, $P(0 \\le Z \\le z)$는 아래 표의 값을 이용한다.)[6점]\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<thead>\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\n</thead>\n<tbody>\n<tr><td>0.5</td><td>0.1915</td></tr>\n<tr><td>1.0</td><td>0.3413</td></tr>\n<tr><td>1.5</td><td>0.4332</td></tr>\n<tr><td>2.0</td><td>0.4772</td></tr>\n<tr><td>2.5</td><td>0.4938</td></tr>\n<tr><td>3.0</td><td>0.4987</td></tr>\n</tbody>\n</table>\n</div>",
     "choices": [],
     "answer": "0.0668",
-    "solution": "[키포인트] 표본의 크기 $n$이 충분히 클 때 이항분포 $B(n, p)$가 정규분포 $N(np, np(1-p))$에 근사함을 이용한다.\\n조건 정리: 선택 도서 수 $n = 400$, 종교 도서일 확률 $p = 0.2$이다.\\n풀이 방향: 종교 도서의 권수를 이산확률변수 $X$로 두고 정규분포 근사를 거쳐 표준정규분포로 변환한다.\\n정석 풀이:\\n400권 중 종교 도서의 권수를 확률변수 $X$라 하자. $X$는 이항분포 $B(400, 0.2)$를 따른다.\\n이때 $X$의 평균과 분산은 다음과 같다.\\n$E(X) = 400 \\times 0.2 = 80$\\n$V(X) = 400 \\times 0.2 \\times 0.8 = 64 = 8^2$\\n시행 횟수 $n=400$은 충분히 크므로 확률변수 $X$는 근사적으로 정규분포 $N(80, 8^2)$을 따른다고 볼 수 있다.\\n따라서 종교 도서가 92권 이상일 확률 $P(X \\ge 92)$를 표준화하면 다음과 같다.\\n$P(X \\ge 92) = P\\left(\\dfrac{X - 80}{8} \\ge \\dfrac{92 - 80}{8}\\right) = P\\left(Z \\ge \\dfrac{12}{8}\\right) = P(Z \\ge 1.5)$\\n표준정규분포의 성질에 의하여\\n$P(Z \\ge 1.5) = 0.5 - P(0 \\le Z \\le 1.5)$\\n표에서 $P(0 \\le Z \\le 1.5) = 0.4332$이므로 대입하면\\n$= 0.5 - 0.4332 = 0.0668$이다.\\n따라서 구하는 값은 $0.0668$이다.",
+    "solution": "400권 중 종교 도서의 권수를 $X$라 하자.\n종교 도서를 고를 확률이 $0.2$이므로 $X\\sim B(400,0.2)$이다.\n평균과 분산을 계산하면\n$E(X)=400\\times0.2=80$\n$V(X)=400\\times0.2\\times0.8=64$이다.\n따라서 표준편차는 $\\sqrt{64}=8$이다.\n시행 횟수가 충분히 크므로 이항분포를 평균 $80$, 표준편차 $8$인 정규분포로 근사한다.\n$P(X\\ge92)$\n$\\approx P\\left(Z\\ge\\dfrac{92-80}{8}\\right)$\n$=P(Z\\ge1.5)$이다.\n주어진 표에서 $P(0\\le Z\\le1.5)=0.4332$이므로\n$P(Z\\ge1.5)=0.5-0.4332=0.0668$이다.\n따라서 구하는 확률은 약 $0.0668$이다.",
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "정규근사 후 표준정규분포에서 z=1.5 이상 오른쪽 꼬리 넓이 0.0668을 표시한 그림",
+    "solutionImageCaption": "92권 이상은 평균 80권보다 1.5표준편차 이상인 영역이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 22,
@@ -643,11 +647,15 @@ window.questionBank = [
     "content": "[주관식2 (서술형)] 어느 게임에서는 한 개의 주사위를 던져서 $4$의 약수의 눈이 나오면 $2$점을 얻고, $4$의 약수가 아닌 눈이 나오면 $4$점을 얻는다. 한 개의 주사위를 400번 던져서 얻은 점수가 1160점 이상일 확률을 구하는 과정을 자세히 서술하시오. (단, $Z$가 표준정규분포를 따르는 확률변수일 때, $P(0 \\le Z \\le 2)=0.4772$로 계산한다.)[7점]",
     "choices": [],
     "answer": "0.9772",
-    "solution": "[키포인트] 특정 사건이 일어날 횟수를 이항분포 변수로 정의하고 총 득점에 대한 식을 일차식 구조로 표현하여 정규분포 근사화한다.\\n조건 정리: 주사위를 한 번 던질 때 4의 약수($1, 2, 4$)가 나올 확률 $p = \\dfrac{3}{6} = \\dfrac{1}{2}$이다.\\n풀이 방향: 4의 약수의 눈이 나오는 횟수를 $X$로 잡고 점수 식 $Y$를 $X$의 관계식으로 도출한 후 부등식을 표준화한다.\\n정석 풀이:\\n400번의 시행 중 4의 약수의 눈이 나오는 횟수를 확률변수 $X$라 하자. $X$는 이항분포 $B\\left(400, \\dfrac{1}{2}\\right)$를 따른다.\\n$X$의 평균과 분산은 다음과 같다.\\n$E(X) = 400 \\times \\dfrac{1}{2} = 200$, $V(X) = 400 \\times \\dfrac{1}{2} \\times \\dfrac{1}{2} = 100 = 10^2$\\n시행 횟수가 충분히 크므로 $X$는 근사적으로 정규분포 $N(200, 10^2)$을 따른다.\\n이때 게임을 통해 얻은 총 점수를 확률변수 $Y$라 하면 다음과 같다.\\n$Y = 2X + 4(400 - X) = 1600 - 2X$\\n총 점수가 1160점 이상일 확률은 다음과 같다.\\n$P(Y \\ge 1160) = P(1600 - 2X \\ge 1160) = P(-2X \\ge -440) = P(X \\le 220)$\\n이 확률구간을 표준화 공식을 이용해 $Z$로 변환하면\\n$P(X \\le 220) = P\\left(\\dfrac{X - 200}{10} \\le \\dfrac{220 - 200}{10}\\right) = P(Z \\le 2)$\\n$= 0.5 + P(0 \\le Z \\le 2) = 0.5 + 0.4772 = 0.9772$이다.\\n따라서 구하는 값은 $0.9772$이다.",
+    "solution": "주사위의 눈 중 $4$의 약수는 $1,2,4$이고, 약수가 아닌 눈은 $3,5,6$이다.\n약수가 아닌 눈이 나올 확률은 $\\dfrac36=\\dfrac12$이다.\n400번 중 약수가 아닌 눈이 나온 횟수를 $X$라 하면\n$X\\sim B\\left(400,\\dfrac12\\right)$이다.\n약수의 눈은 $2$점, 약수가 아닌 눈은 $4$점이므로 전체 점수는\n$2(400-X)+4X=800+2X$이다.\n$800+2X\\ge1160$\n$2X\\ge360$\n$X\\ge180$이다.\n$X$의 평균과 표준편차는\n$E(X)=400\\times\\dfrac12=200$\n$\\sigma(X)=\\sqrt{400\\times\\dfrac12\\times\\dfrac12}=10$이다.\n시행 횟수가 충분히 커서 정규분포로 근사하면\n$P(X\\ge180)\\approx P\\left(Z\\ge\\dfrac{180-200}{10}\\right)$\n$=P(Z\\ge-2)$이다.\n대칭성을 이용하면\n$P(Z\\ge-2)=0.5+P(0\\le Z\\le2)$\n$=0.5+0.4772=0.9772$이다.\n따라서 구하는 확률은 약 $0.9772$이다.",
     "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
     "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "표준정규분포에서 z=-2부터 오른쪽 전체 영역의 넓이 0.9772를 표시한 그림",
+    "solutionImageCaption": "1160점 이상은 약수가 아닌 눈이 180회 이상인 사건이다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 23,
@@ -668,10 +676,14 @@ window.questionBank = [
     "content": "[주관식3 (서술형)] 어느 고등학교 2학년의 수학 점수는 표준편차가 6점인 정규분포를 따른다고 한다. 이 학교 2학년 학생 중에서 36명을 임의추출하여 2학년 전체의 수학 점수 평균 $m$을 신뢰도 $90\\%$로 추정한 신뢰구간을 $a \\le m \\le b$이고, 신뢰도 $s\\%$로 추정하면 신뢰구간을 $c \\le m \\le d$라 할 때, $5(b-a) \\ge 16(d-c)$를 만족시키는 실수 $s$의 최댓값을 표준정규분포표를 이용하여 구하고 그 과정을 자세히 서술하시오.[7점]\n<div class=\"question-table-wrap\">\n<table class=\"question-table\">\n<thead>\n<tr><th>$z$</th><th>$P(0 \\le Z \\le z)$</th></tr>\n</thead>\n<tbody>\n<tr><td>0.3</td><td>0.13</td></tr>\n<tr><td>0.5</td><td>0.19</td></tr>\n<tr><td>1</td><td>0.341</td></tr>\n<tr><td>1.6</td><td>0.45</td></tr>\n<tr><td>1.9</td><td>0.475</td></tr>\n</tbody>\n</table>\n</div>",
     "choices": [],
     "answer": "38",
-    "solution": "[키포인트] 각 신뢰도 조건에 따른 신뢰구간의 길이 공식 $l = 2k \\dfrac{\\sigma}{\\sqrt{n}}$을 수식으로 정리해 조건 부등식을 해결한다.\\n조건 정리: 모표준편차 $\\sigma = 6$, 표본의 크기 $n = 36 \\implies \\sqrt{n} = 6$이므로 $\\dfrac{\\sigma}{\\sqrt{n}} = 1$이 된다.\\n신뢰도 $90\\%$에 해당하는 신뢰상수 $k_1$은 표에서 $P(0 \\le Z \\le k_1) = 0.45 \\implies k_1 = 1.6$이다.\\n신뢰도 $s\\%$에 해당하는 신뢰상수를 $k_2$라 하면 신뢰구간의 길이는 $2k_2$가 된다.\\n풀이 방향: 두 신뢰구간의 길이 공식을 조건식에 채워 넣고 $k_2$의 범위를 추적한다.\\n정석 풀이:\\n두 신뢰구간의 길이를 각각 식으로 기술하면 다음과 같다.\\n$b-a = 2 \\times 1.6 \\times 1 = 3.2$\\n$d-c = 2 \\times k_2 \\times 1 = 2k_2$\\n주어진 부등식 조건인 $5(b-a) \\ge 16(d-c)$에 식을 대입하면\\n$5 \\times 3.2 \\ge 16 \\times 2k_2 \\implies 16 \\ge 32k_2$\\n따라서 $k_2 \\le \\dfrac{16}{32} = 0.5$이다.\\n$k_2$의 상한값이 $0.5$이므로 신뢰도가 최대가 될 때는 $k_2 = 0.5$일 때이다.\\n오른쪽 표에서 $z=0.5$일 때 $P(0 \\le Z \\le 0.5) = 0.19$이다.\\n신뢰도 $s\\%$는 대칭적인 양측 구간의 총합 확률을 나타내므로\\n$\\dfrac{s}{100} = 2 \\times 0.19 = 0.38 \\implies s = 38$이다.\\n따라서 만족하는 실수 $s$의 최댓값은 $38$이다.\\n따라서 구하는 값은 $38$이다.",
+    "solution": "모표준편차는 $6$, 표본의 크기는 $36$이므로\n$\\dfrac{\\sigma}{\\sqrt n}=\\dfrac6{\\sqrt{36}}=1$이다.\n신뢰도 $90\\%$일 때 양쪽 꼬리 확률의 합은 $0.1$이고\n$P(0\\le Z\\le z_{90})=\\dfrac{0.9}{2}=0.45$이다.\n표에서 $z_{90}=1.6$을 얻는다.\n따라서 첫 신뢰구간의 길이는\n$b-a=2\\times1.6\\times1=3.2$이다.\n신뢰도 $s\\%$에 해당하는 양의 신뢰상수를 $z_s$라 하면 두 번째 신뢰구간의 길이는\n$d-c=2z_s\\times1=2z_s$이다.\n주어진 조건에 대입하면\n$5(b-a)\\ge16(d-c)$\n$5\\times3.2\\ge16\\times2z_s$\n$16\\ge32z_s$\n$z_s\\le0.5$이다.\n신뢰도는 $z_s$가 클수록 커지므로 최댓값은 $z_s=0.5$일 때 얻는다.\n표에서 $P(0\\le Z\\le0.5)=0.19$이므로\n$\\dfrac{s}{100}=P(-0.5\\le Z\\le0.5)=2\\times0.19=0.38$이다.\n따라서 $s$의 최댓값은 $38$이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "표준정규분포에서 -1.6부터 1.6까지 90퍼센트 중앙 영역과 -0.5부터 0.5까지 38퍼센트 중앙 영역을 겹쳐 표시한 그림",
+    "solutionImageCaption": "신뢰구간 길이의 제한으로 두 번째 신뢰상수는 0.5 이하여야 한다.",
+    "solutionImageSize": "medium"
   }
 ];
