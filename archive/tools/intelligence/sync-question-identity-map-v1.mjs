@@ -177,11 +177,14 @@ function buildLookups(records) {
       sourceOrdinal: r.sourceOrdinal,
       sourceQuestionNo: r.sourceQuestionNo
     };
-    addArray(byLegacyQKey, r.legacyQKey, r.questionUid);
     if (!bySourceFileAndOrdinal[r.sourceArchiveFile]) bySourceFileAndOrdinal[r.sourceArchiveFile] = {};
     bySourceFileAndOrdinal[r.sourceArchiveFile][String(r.sourceOrdinal)] = r.questionUid;
-    if (!bySourceFileAndQuestionNo[r.sourceArchiveFile]) bySourceFileAndQuestionNo[r.sourceArchiveFile] = {};
-    addArray(bySourceFileAndQuestionNo[r.sourceArchiveFile], String(r.sourceQuestionNo ?? ''), r.questionUid);
+    const sourceQuestionNo = String(r.sourceQuestionNo ?? '');
+    if (sourceQuestionNo.trim()) {
+      addArray(byLegacyQKey, r.legacyQKey, r.questionUid);
+      if (!bySourceFileAndQuestionNo[r.sourceArchiveFile]) bySourceFileAndQuestionNo[r.sourceArchiveFile] = {};
+      addArray(bySourceFileAndQuestionNo[r.sourceArchiveFile], sourceQuestionNo, r.questionUid);
+    }
   }
   return {
     byQuestionUid: sortObject(byQuestionUid),
