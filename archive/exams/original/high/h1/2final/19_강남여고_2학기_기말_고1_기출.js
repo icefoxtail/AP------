@@ -60,7 +60,8 @@ window.questionBank = [
     "tags": [
       "객관식",
       "원의 방정식",
-      "중심과 반지름"
+      "중심과 반지름",
+      "도형"
     ],
     "content": "방정식 $(x-2)^2+(y-1)^2=9$이 나타내는 원의 중심의 좌표를 $(a,b)$, 반지름을 $r$이라고 할 때, 실수 $a$, $b$, $r$에 대하여 $a+b+r$의 값은? [2.5점]",
     "choices": [
@@ -72,6 +73,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "원의 방정식은 중심이 $(a,b)$, 반지름이 $r>0$일 때\n$(x-a)^2+(y-b)^2=r^2$의 꼴로 나타낸다.\n주어진 식\n$(x-2)^2+(y-1)^2=9$\n를 비교하면 중심의 좌표는 $(2,1)$이다.\n반지름의 제곱이 $9$이므로 반지름은 양수인 $r=3$이다.\n$a=2,\\quad b=1,\\quad r=3$이므로\n$a+b+r=2+1+3=6$이다.\n\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/19_강남여고_2학기_기말_고1_기출/q02-solution.svg",
+    "solutionImageAlt": "중심 C(2,1), 반지름 3인 원과 반지름의 관계",
+    "solutionImageCaption": "중심의 좌표 (2,1)과 양수인 반지름 3을 읽는다.",
+    "solutionImageSize": "medium",
     "category": "원의 방정식",
     "originalCategory": "원의 방정식",
     "standardCourse": "수학(상)",
@@ -167,7 +172,8 @@ window.questionBank = [
     "tags": [
       "객관식",
       "유리함수",
-      "그래프의 평행이동"
+      "그래프의 평행이동",
+      "그래프"
     ],
     "content": "유리함수 $y=-\\dfrac{2}{x}$의 그래프를 $x$축의 방향으로 $-3$만큼, $y$축의 방향으로 $2$만큼 평행이동한 그래프가 점 $(-1,k)$를 지날 때, $k$의 값은? [2.5점]",
     "choices": [
@@ -179,6 +185,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "함수 $y=-\\dfrac{2}{x}$를 왼쪽으로 $3$만큼 평행이동하므로 식의 $x$를 $x+3$으로 바꾼다.\n$y=-\\dfrac{2}{x+3}$\n여기서 위쪽으로 $2$만큼 평행이동하므로\n$y=-\\dfrac{2}{x+3}+2$이다.\n이 그래프가 점 $(-1,k)$를 지나므로 $x=-1$을 대입하면\n$k=-\\dfrac{2}{-1+3}+2$\n$=-\\dfrac{2}{2}+2$\n$=-1+2=1$이다.\n따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/19_강남여고_2학기_기말_고1_기출/q04-solution.svg",
+    "solutionImageAlt": "평행이동된 유리함수의 두 가지, 점근선 x=-3과 y=2, 점 (-1,1)",
+    "solutionImageCaption": "평행이동 후 점근선과 주어진 점 (-1,1)을 확인한다.",
+    "solutionImageSize": "large",
     "category": "함수의 대응",
     "originalCategory": "함수의 대응",
     "standardCourse": "수학(하)",
@@ -496,7 +506,8 @@ window.questionBank = [
     "tags": [
       "객관식",
       "도형의 이동",
-      "직선의 평행이동"
+      "직선의 평행이동",
+      "그래프"
     ],
     "content": "직선 $(k+3)x-2y-8=0$을 $x$축의 방향으로 $-3$만큼 평행이동한 직선의 실수 $k$의 값에 관계없이 항상 지나는 점의 좌표를 $(a,b)$라 할 때, $a+b$의 값을 구하면? [3.5점]",
     "choices": [
@@ -508,6 +519,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "직선을 $x$축의 음의 방향으로 $3$만큼 평행이동하려면 원래 식의 $x$를 $x+3$으로 바꾼다.\n$(k+3)(x+3)-2y-8=0$\n전개하여 $k$에 관한 항을 모으면\n$kx+3x+3k+9-2y-8=0$\n$k(x+3)+3x-2y+1=0$이다.\n이 직선이 $k$의 값에 관계없이 항상 지나는 점 $(a,b)$에서는 $k$의 계수가 $0$이어야 한다.\n따라서 $a+3=0$에서 $a=-3$이다.\n또 $3a-2b+1=0$이므로\n$3(-3)-2b+1=0$\n$-8-2b=0$\n$b=-4$이다.\n그러므로 $a+b=-3-4=-7$이다.\n\n따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/19_강남여고_2학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "서로 다른 세 직선이 고정점 (-3,-4)를 통과하는 그래프",
+    "solutionImageCaption": "k값이 달라도 공통점 (-3,-4)는 움직이지 않는다.",
+    "solutionImageSize": "large",
     "category": "평행이동",
     "originalCategory": "평행이동",
     "standardCourse": "수학(상)",
@@ -658,7 +673,9 @@ window.questionBank = [
       "객관식",
       "직육면체",
       "공간대각선",
-      "겉넓이"
+      "겉넓이",
+      "도형",
+      "곱셈공식"
     ],
     "content": "그림과 같이 모든 모서리 길이의 합이 $20$인 직육면체 ABCD-EFGH가 있다. $\\overline{AG}=\\sqrt{13}$일 때, 직육면체 ABCD-EFGH의 겉넓이는? [4점]",
     "choices": [
@@ -672,40 +689,40 @@ window.questionBank = [
 
     "answer": "②",
     "solution": "직육면체의 한 꼭짓점에서 만나는 세 모서리의 길이를 각각 $a,b,c$라 하자.\n세 길이의 모서리는 각각 네 개씩 있으므로 모든 모서리 길이의 합은\n$4a+4b+4c=20$\n$4(a+b+c)=20$\n$a+b+c=5$이다.\n그림에서 $AG$는 직육면체의 공간 대각선이다.\n밑면 대각선의 길이의 제곱은 $a^2+b^2$이고, 이 대각선과 높이 $c$로 이루어진 직각삼각형에 다시 피타고라스 정리를 적용하면\n$AG^2=a^2+b^2+c^2$이다.\n$AG=\\sqrt{13}$이므로\n$a^2+b^2+c^2=13$이다.\n직육면체의 겉넓이는\n$S=2(ab+bc+ca)$이다.\n한편\n$(a+b+c)^2=a^2+b^2+c^2+2(ab+bc+ca)$이므로\n$5^2=13+S$\n$25=13+S$\n$S=12$이다.\n\n따라서 정답은 ②이다.",
-    "category": "직육면체의 겉넓이",
+    "category": "다항식의 연산",
     "originalCategory": "직육면체의 겉넓이",
-    "standardCourse": "중1 수학",
+    "standardCourse": "수학(상)",
     "layoutTag": "grid",
     "wide": false,
     "level": "중",
-    "standardUnitOrder": 7,
+    "standardUnitOrder": 1,
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
-    "problemTypeKey": "PT_M1_SOLID_FIGURE_MEASURE",
-    "templateKey": "TPL_M1_SOLID_FIGURE_STANDARD_MEASURE",
+    "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+    "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
     "crossConceptKeys": ["CC_PYTHAGOREAN"],
     "conditionKeys": [],
-    "integrationPattern": "NONE",
+    "integrationPattern": "SEQUENTIAL",
     "rpmPath": {
-      "majorUnit": "EVIDENCE_DEBT",
-      "midUnit": "EVIDENCE_DEBT",
-      "l3": "EVIDENCE_DEBT",
-      "l4": "EVIDENCE_DEBT"
+      "majorUnit": "다항식",
+      "midUnit": "다항식의 연산",
+      "l3": "곱셈공식의 활용",
+      "l4": "세 수의 제곱 공식으로 곱의 합 구하기"
     },
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "difficultyReason": "문항의 실제 풀이에서 직육면체의 겉넓이을 중심으로 필요한 계산·조건 판단 단계를 세어 중 / 3로 분류했다.",
+    "difficultyReason": "세 모서리의 합·공간대각선 조건을 피타고라스 정리와 세 수의 제곱 공식으로 연결해야 하므로 학습 중, 평가 난이도 3",
     "sourceQid": 13,
     "sourceOrdinal": 13,
     "sourceArchiveFile": "original/high/h1/2final/19_강남여고_2학기_기말_고1_기출.js",
     "questionUid": "qid_v1_f9060b5b4d1242e81dcbd9c8174c0d55a0dc1d384bcd944471a853c711ca0d03",
     "provenance": {"sourceId":"2019|강남여고|h1|2final","sourceArchiveFile":"original/high/h1/2final/19_강남여고_2학기_기말_고1_기출.js","sourceOrdinal":13,"sourceQid":13,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\19_강남여고_2학기_기말_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\source-intake.evidence.json","sourcePdfSha256":"DE92E55E541BB0D823C9A98A8D2868D8DC33391D3CF99F0C92C7E8F382580717","sourceInputJsSha256":"a75034dd8db10242632bf5b6e2755ec853600811244f76dffb3fb2bb074b186c","sourcePage":2},
-    "standardUnitKey": "M1-07",
-    "standardUnit": "입체도형의 성질",
-    "subUnitKey": "M1-07-SOLID_FIGURE_MEASURE",
-    "subUnit": "입체도형의 측정",
+    "standardUnitKey": "H15-SA-01",
+    "standardUnit": "다항식의 연산",
+    "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+    "subUnit": "다항식의 기본 연산",
     "metadataEvidenceDebt": [
       {
         "field": "standardUnitKey/subUnitKey",
@@ -1115,7 +1132,8 @@ window.questionBank = [
       "객관식",
       "함수",
       "일대일대응",
-      "매개변수"
+      "매개변수",
+      "그래프"
     ],
     "content": "정의역이 실수 전체의 집합 $\\mathbb{R}$인 함수 $f(x)$가 $f(x)=\\begin{cases}-\\sqrt{ax+6}+2a&(x\\le-\\dfrac{6}{a})\\\\\\dfrac{cx+d}{x+b}&(x>-\\dfrac{6}{a})\\end{cases}$\n함수 $f(x)$가 다음 조건을 만족시키도록 하는 네 상수 $a$, $b$, $c$, $d$의 모든 순서쌍 $(a,b,c,d)$의 개수는? [5점]\n(단, $a\\ne0$)\n(가) $a$, $b$, $c$, $d$는 모두 $-14$ 이상이고 $14$ 이하인 정수\n(나) 함수 $f(x)$는 $\\mathbb{R}$에서 $\\mathbb{R}$로의 일대일 대응이다.",
     "choices": [
@@ -1127,6 +1145,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "함수 $f$가 실수 전체에서 정의되고 일대일대응이 되려면 두 식의 정의역과 치역이 정확히 이어져야 한다.\n\n① 제곱근이 있는 부분\n$x\\le-\\dfrac6a$에서 $ax+6\\ge0$이어야 한다.\n이 구간 전체에서 제곱근이 정의되려면 $a<0$이다.\n$a<0$이면 $x$가 증가할수록 $ax+6$은 감소하므로\n$-\\sqrt{ax+6}+2a$는 증가한다.\n$x=-\\dfrac6a$일 때 함수값은 $2a$이고, $x$가 한없이 작아질 때 함수값은 한없이 작아진다.\n따라서 첫 번째 부분의 치역은\n$(-\\infty,2a]$이며 서로 다른 $x$에서 서로 다른 값을 가진다.\n\n② 유리함수가 있는 부분\n나머지 구간 $x>-\\dfrac6a$에서의 치역은 첫 번째 치역과 겹치지 않으면서 남은 실수 전체\n$(2a,\\infty)$\n이어야 한다.\n유리식을 나누어 쓰면\n$\\dfrac{cx+d}{x+b}=c+\\dfrac{d-bc}{x+b}$이다.\n왼쪽 경계 $x=-\\dfrac6a$ 바로 오른쪽에서 함수값이 한없이 커지고, $x$가 커질수록 $2a$에 접근하여야 한다.\n따라서 분모가 $0$이 되는 경계는\n$-\\dfrac6a=-b$,\n즉 $b=\\dfrac6a$여야 하고,\n수평으로 가까워지는 값은 $c=2a$여야 한다.\n이때\n$bc=\\dfrac6a\\cdot2a=12$이므로\n$f(x)=2a+\\dfrac{d-12}{x+\\dfrac6a}$이다.\n현재 구간에서는 분모가 양수이다.\n이 식의 값이 $2a$보다 크고 $(2a,\\infty)$를 한 번씩 모두 나타내려면\n$d-12>0$, 즉 $d>12$여야 한다.\n\n③ 정수 조건\n$a,b,c,d$는 모두 $-14$ 이상 $14$ 이하의 정수이다.\n$a<0$이고 $b=\\dfrac6a$도 정수여야 하므로 $a$는 $-6$의 음의 약수\n$-1,-2,-3,-6$\n중 하나이다.\n이때 각각\n$(a,b,c)=(-1,-6,-2),(-2,-3,-4),(-3,-2,-6),(-6,-1,-12)$\n로 모두 허용 범위에 있다.\n$d>12$를 만족하는 허용 정수는 $13,14$의 두 개이다.\n따라서 가능한 $(a,b,c,d)$는\n$4\\cdot2=8$개이다.\n\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/19_강남여고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "a=-1, b=-6, c=-2, d=13인 한 가지 예에서 구간별 함수가 겹치지 않는 치역을 갖는 그래프",
+    "solutionImageCaption": "가능한 한 가지 예시: 첫째 치역은 y≤-2, 둘째 치역은 y>-2이다.",
+    "solutionImageSize": "full",
     "category": "일대일대응",
     "originalCategory": "일대일대응",
     "standardCourse": "수학(하)",
@@ -1223,12 +1245,17 @@ window.questionBank = [
       "서술형",
       "무리함수",
       "그래프의 평행이동",
-      "대칭이동"
+      "대칭이동",
+      "그래프"
     ],
     "content": "[서술형1] 함수 $y=-\\sqrt{ax}$의 그래프를 $x$축의 방향으로 $b$만큼, $y$축의 방향으로 $3$만큼 평행이동한 다음 $x$축에 대하여 대칭이동 하면 함수 $y=\\sqrt{3x+6}+c$의 그래프와 일치한다. 이때 상수 $a$, $b$, $c$에 대하여 $a+b+c$의 값을 구하시오. (단, 풀이과정을 자세히 쓰시오.) [5점]",
     "choices": [],
     "answer": "-2",
     "solution": "처음 함수는 $y=-\\sqrt{ax}$이다.\n이를 $x$축의 방향으로 $b$만큼, $y$축의 방향으로 $3$만큼 평행이동하면\n$y=-\\sqrt{a(x-b)}+3$이다.\n다시 $x$축에 대하여 대칭이동하면 $y$값의 부호가 바뀌므로\n$y=\\sqrt{a(x-b)}-3$이다.\n\n이 함수가\n$y=\\sqrt{3x+6}+c$\n와 같은 그래프이므로 제곱근 안의 일차식과 바깥 상수를 각각 비교한다.\n$a(x-b)=ax-ab$이므로\n$a=3,\\quad-ab=6$이다.\n$a=3$에서\n$-3b=6$\n$b=-2$이다.\n또 바깥 상수는 $c=-3$이다.\n따라서\n$a+b+c=3+(-2)+(-3)$\n$=-2$이다.\n\n따라서 구하는 값은 $-2$이다.",
+    "solutionImage": "assets/images/19_강남여고_2학기_기말_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "무리함수의 평행이동과 x축 대칭이동 전후 그래프 및 새로운 시작점 (-2,-3)",
+    "solutionImageCaption": "이동 뒤 그래프의 정의역 시작점은 (-2,-3)이다.",
+    "solutionImageSize": "large",
     "category": "함수 그래프의 이동",
     "originalCategory": "함수 그래프의 이동",
     "standardCourse": "수학(하)",
