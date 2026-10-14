@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -90,33 +90,23 @@ jobs:
           done
           printf '%s\n' "${changed[@]}"
 
-      - name: Commit generated Archive registration artifacts
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      - name: Confirm generated Archive registration artifacts are built from current main
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
         shell: bash
         run: |
           set -euo pipefail
-          git add -- archive/db.js archive/data/question_identity_map.json archive/data/question_metadata.json archive/question-identity.js archive/question-index.js archive/question-index-report.md archive/question-index-audit.md archive/data/archive2-catalog.json archive/data/archive2-crosswalk-inventory.json archive/data/archive2-canonical-input-manifest.json archive/data/archive2-canonical-projection-policy.json archive/data/archive2-item-review-overrides.json archive/data/basic-scope-parent-links.json archive/data/meta-foundation/runtime/*.json
-          if git diff --cached --quiet; then
-            echo "Archive registration artifacts already current."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "chore(archive): sync registration artifacts [skip ci]"
-            git push origin HEAD:main
-          fi
           git fetch --no-tags origin main
           registered_sha="$(git rev-parse HEAD)"
           remote_sha="$(git rev-parse origin/main)"
           if [[ "$registered_sha" != "$remote_sha" ]]; then
             echo "main advanced while Archive registration ran; refusing to release stale output" >&2
-            echo "registered=$registered_sha remote=$remote_sha" >&2
+            echo "registration_input=$registered_sha remote=$remote_sha" >&2
             exit 1
           fi
           {
             printf 'registration_input_sha=%s\n' "$GITHUB_SHA"
-            printf 'registration_commit_sha=%s\n' "$registered_sha"
+            printf 'registration_main_sha=%s\n' "$registered_sha"
             printf 'registration_remote_main_sha=%s\n' "$remote_sha"
           } >> "$RELEASE_EVIDENCE_DIR/context.txt"
 
