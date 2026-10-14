@@ -470,7 +470,7 @@ window.questionBank = [
       "130"
     ],
     "answer": "①",
-    "solution": "[키포인트] 독립시행의 반복이므로 확률변수 $X$는 이항분포 $B(n, p)$를 따름을 인지하고 확률변수 성질을 연립한다.\\n조건 정리: 주머니 속 공은 총 $6+a$개이며 매 시행 검은 공 확율 $p = \\dfrac{a}{6+a}$이다.\\n풀이 방향: 변환된 기댓값과 분산으로부터 $E(X)$, $V(X)$ 본래 수치를 구한 후 이항분포 공식으로 $n$과 $a$를 역산한다.\\n정석 풀이:\\n1단계: 확률변수 $X$의 평균과 분산 도출\\n$E(X-15) = E(X) - 15 = 40 \\implies E(X) = 55$\\n$V(X-15) = V(X) = 30$\\n2단계: 이항분포 매개변수 $n, p$ 계산\\n$E(X) = np = 55$\\n$V(X) = np(1-p) = 30$\\n$np=55$를 분산 식에 대입하면 $55(1-p) = 30 \\implies 1-p = \\dfrac{30}{55} = \\dfrac{6}{11}$이 되므로 $p = \\dfrac{5}{11}$이다.\\n$np = 55$에서 $n \\times \\dfrac{5}{11} = 55 \\implies n = 121$이다.\\n3단계: 공의 개수 $a$ 계산\\n$p = \\dfrac{a}{6+a} = \\dfrac{5}{11} \\implies 11a = 30 + 5a \\implies 6a = 30 \\implies a = 5$이다.\\n따라서 최종 구하고자 하는 수치는 $a + n = 5 + 121 = 126$이며 이는 ①번에 위치한다.\\n따라서 정답은 ①이다.",
+    "solution": "공을 뽑은 뒤 다시 넣으므로 검은 공이 나오는 횟수는 이항분포를 따른다.\n검은 공이 나올 확률을 $p=\\dfrac{a}{a+6}$이라 두면 $X\\sim B(n,p)$이다.\n평균 조건에서\n$E(X-15)=np-15=40$\n$np=55$이다.\n상수를 빼도 분산은 같으므로\n$V(X-15)=V(X)=np(1-p)=30$이다.\n$np=55$를 대입하면\n$55(1-p)=30$\n$1-p=\\dfrac6{11},\\quad p=\\dfrac5{11}$이다.\n$\\dfrac{a}{a+6}=\\dfrac5{11}$이므로\n$11a=5a+30$\n$6a=30,\\quad a=5$이다.\n$np=55$에서\n$n=55\\div\\dfrac5{11}=121$이다.\n따라서 $a+n=5+121=126$이므로 정답은 ①이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -500,11 +500,15 @@ window.questionBank = [
       "0.01"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 정규분포의 대칭 성질을 이용해 불량률 대칭 구간의 확률을 단측 확률 영역으로 단순화하여 표준화한다.\\n조건 정리: 나사못 길이 $X \\sim N(3, \\sigma^2)$이다. 불량률 조건 영역은 $X \\le 2.98$ 또는 $X \\ge 3.02$이다.\\n풀이 방향: 두 임계값이 평균 $3$을 기준으로 양측 대칭임을 파악하고 표준정규분포표의 수치와 매칭한다.\\n정석 풀이:\\n$2.98$과 $3.02$는 평균 $3$으로부터 정밀하게 $\\pm 0.02$만큼 대칭 낙차가 발생하므로 두 꼬리 영역 확률은 동일하다.\\n즉,전체 불량률 $P(X \\le 2.98) + P(X \\ge 3.02) = 2 \\times P(X \\ge 3.02) = 0.0456$이다.\\n따라서 한쪽 꼬리 확률은 $P(X \\ge 3.02) = 0.0228$이다.\\n이를 표준화 공식으로 나타내면 다음과 같다.\\n$P\\left(Z \\ge \\dfrac{3.02 - 3}{\\sigma}\\right) = 0.0228 \\implies P\\left(Z \\ge \\dfrac{0.02}{\\sigma}\\right) = 0.0228$\\n표준정규분포의 전체 절반 면적 $0.5$를 이용하여 내부 구간으로 환산하면\\n$P\\left(0 \\le Z \\le \\dfrac{0.02}{\\sigma}\\right) = 0.5 - 0.0228 = 0.4772$이다.\\n제시된 표에서 수치 $0.4772$에 매칭되는 표준점수는 $z=2.0$이므로\\n$\\dfrac{0.02}{\\sigma} = 2.0 \\implies 2.0\\sigma = 0.02 \\implies \\sigma = 0.01$이다.\\n계산 완료된 표준편차 $\\sigma = 0.01$은 ⑤번 선택지에 정확히 대응된다.\\n따라서 정답은 ⑤이다.",
+    "solution": "길이를 $X$라 하면 $X\\sim N(3,\\sigma^2)$이다.\n불량 구간은 $X\\le2.98$ 또는 $X\\ge3.02$로 평균 $3$을 중심으로 대칭이다.\n따라서 한쪽 꼬리 확률은\n$\\dfrac{0.0456}{2}=0.0228$이다.\n$P(X\\ge3.02)=0.0228$이므로\n$P\\left(Z\\ge\\dfrac{3.02-3}{\\sigma}\\right)=0.0228$이다.\n표에서 $P(0\\le Z\\le2)=0.4772$이므로\n$P(Z\\ge2)=0.5-0.4772=0.0228$이다.\n따라서 $\\dfrac{0.02}{\\sigma}=2$이다.\n$0.02=2\\sigma,\\quad\\sigma=0.01$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "표준정규분포 곡선의 좌우 양쪽 꼬리 z=-2 이하, z=2 이상이 각각 0.0228로 표시된 그림",
+    "solutionImageCaption": "전체 불량률 0.0456을 대칭인 두 꼬리로 나눈다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 18,
@@ -530,11 +534,15 @@ window.questionBank = [
       "89.56"
     ],
     "answer": "④",
-    "solution": "[키포인트] 통계적 정의식을 변환해 성적의 평균과 분산을 구하고, 합격권에 드는 상위 누적 확률을 구해 정규분포 표준화를 진행한다.\\n조건 정리: $\\sum$ 기호 표현을 분석하면 평균 $m=60$, 편차 제곱의 평균인 분산 $\\sigma^2 = 100 \\implies \\sigma = 10$이다. 즉 $X \\sim N(60, 10^2)$이다.\\n풀이 방향: 선발인원 비중으로 확률을 도출한 후, 합격 커트라인 성적 $k$에 대한 부등식을 설계한다.\\n정석 풀이:\\n총 $1000$명 중 $25$등 안에 속해야 하므로 합격할 확률은 다음과 같다.\\n$P(X \\ge k) = \\dfrac{25}{1000} = 0.025$\\n이를 표준화 변수 $Z$로 변환하면 다음과 같다.\\n$P\\left(Z \\ge \\dfrac{k - 60}{10}\\right) = 0.025$\\n표준정규분포 곡선의 절반 면적 구조상 $P\\left(0 \\le Z \\le \\dfrac{k - 60}{10}\\right) = 0.5 - 0.025 = 0.4750$이어야 한다.\\n오른쪽 표에서 확률 $0.4750$을 만족하는 표준화 점수는 $1.96$이다.\\n$\\dfrac{k - 60}{10} = 1.96 \\implies k - 60 = 19.6 \\implies k = 79.6$\\n따라서 합격자 성적의 최솟값은 $79.6$점이며 이는 ④번 선지에 대응된다.\\n따라서 정답은 ④이다.",
+    "solution": "주어진 식에서 전체 성적의 평균은\n$\\overline x=\\dfrac1{1000}\\sum_{i=1}^{1000}x_i=60$이다.\n분산은 $\\dfrac1{1000}\\sum_{i=1}^{1000}(x_i-60)^2=100$이므로 표준편차는 $10$이다.\n합격자는 $1000$명 중 상위 $25$명이므로 합격 비율은\n$\\dfrac{25}{1000}=0.025$이다.\n합격 최저점을 $c$라 하면\n$P(X\\ge c)=0.025$이다.\n$Z=\\dfrac{X-60}{10}$으로 표준화하면\n$P\\left(Z\\ge\\dfrac{c-60}{10}\\right)=0.025$이다.\n$P(0\\le Z\\le1.96)=0.4750$이므로 $P(Z\\ge1.96)=0.025$이다.\n$\\dfrac{c-60}{10}=1.96$\n$c-60=19.6,\\quad c=79.6$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q18-solution.svg",
+    "solutionImageAlt": "표준정규분포에서 z=1.96 이상 우측 꼬리 상위 2.5퍼센트를 색칠한 그림",
+    "solutionImageCaption": "합격자 25명은 지원자 1000명의 상위 2.5%에 해당한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 19,
@@ -558,7 +566,7 @@ window.questionBank = [
       "$\\dfrac{5}{72}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 주사위의 눈에 따라 분기되는 시행에서 1회 결과물의 확률분포를 각각 구한 뒤, 독립적인 2회 시행의 평균이 $3$이 되는 확률을 구한다.\\n조건 정리: 주사위에서 짝수가 나올 확률은 $\\dfrac{1}{2}$, 홀수가 나올 확률은 $\\dfrac{1}{2}$이다. 주머니에서 공 $4$개 중 $2$개를 동시에 꺼내는 경우의 수는 ${}_{4}C_{2} = 6$가지이다.\\n풀이 방향: 1회 시행 후 기록되는 수를 확률변수 $Y$라 하고, $Y$가 가질 수 있는 값들과 그 확률을 구한다. 그 후 두 수의 평균이 $3$이 되려면 두 수의 합이 $6$이 되어야 하므로 이를 만족하는 $(Y_1, Y_2)$의 순서쌍을 찾아 확률을 계산한다.\\n정석 풀이:\\n1단계: 주사위가 짝수일 때 (두 수의 합 기록)\\n꺼낸 두 공의 조합에 따른 합은 다음과 같다.\\n$\\{1, 3\\} \\rightarrow 4$, $\\{1, 5\\} \\rightarrow 6$, $\\{1, 7\\} \\rightarrow 8$, $\\{3, 5\\} \\rightarrow 8$, $\\{3, 7\\} \\rightarrow 10$, $\\{5, 7\\} \\rightarrow 12$\\n각 조합이 선택될 확률은 $\\dfrac{1}{6}$이모로, 주사위가 짝수일 조건($\\dfrac{1}{2}$)과 결합하면 각 합이 기록될 확률은 다음과 같다.\\n$P(Y=4) = \\dfrac{1}{2} \\times \\dfrac{1}{6} = \\dfrac{1}{12}$\\n$P(Y=6) = \\dfrac{1}{2} \\times \\dfrac{1}{6} = \\dfrac{1}{12}$\\n$P(Y=8) = \\dfrac{1}{2} \\times \\dfrac{2}{6} = \\dfrac{2}{12}$\\n$P(Y=10) = \\dfrac{1}{2} \\times \\dfrac{1}{6} = \\dfrac{1}{12}$\\n$P(Y=12) = \\dfrac{1}{2} \\times \\dfrac{1}{6} = \\dfrac{1}{12}$\\n2단계: 주사위가 홀수일 때 (두 수 중 작은 수 기록)\\n꺼낸 두 공의 조합에 따른 작은 수는 다음과 같다.\\n$\\{1, 3\\} \\rightarrow 1$, $\\{1, 5\\} \\rightarrow 1$, $\\{1, 7\\} \\rightarrow 1$, $\\{3, 5\\} \\rightarrow 3$, $\\{3, 7\\} \\rightarrow 3$, $\\{5, 7\\} \\rightarrow 5$\\n주사위가 홀수일 조건($\\dfrac{1}{2}$)과 결합하여 각 작은 수가 기록될 확률은 다음과 같다.\\n$P(Y=1) = \\dfrac{1}{2} \\times \\dfrac{3}{6} = \\dfrac{3}{12}$\\n$P(Y=3) = \\dfrac{1}{2} \\times \\dfrac{2}{6} = \\dfrac{2}{12}$\\n$P(Y=5) = \\dfrac{1}{2} \\times \\dfrac{1}{6} = \\dfrac{1}{12}$\\n3단계: 2회 시행의 평균 $\\overline{X}=3$일 확률 계산\\n$\\overline{X} = \\dfrac{Y_1 + Y_2}{2} = 3 \\implies Y_1 + Y_2 = 6$을 만족해야 한다.\\n구해진 $Y$의 값들 중에서 합이 $6$이 되는 순서쌍 $(Y_1, Y_2)$는 $(1, 5), (3, 3), (5, 1)$뿐이다.\\n각 경우의 확률은 독립시행이므로 곱하여 구한다.\\ncase 1) $(1, 5)$인 경우: $P(Y=1) \\times P(Y=5) = \\dfrac{3}{12} \\times \\dfrac{1}{12} = \\dfrac{3}{144}$\\ncase 2) $(3, 3)$인 경우: $P(Y=3) \\times P(Y=3) = \\dfrac{2}{12} \\times \\dfrac{2}{12} = \\dfrac{4}{144}$\\ncase 3) $(5, 1)$인 경우: $P(Y=5) \\times P(Y=1) = \\dfrac{1}{12} \\times \\dfrac{3}{12} = \\dfrac{3}{144}$\\n따라서 구하고자 하는 총 확률은 다음과 같다.\\n$P(\\overline{X}=3) = \\dfrac{3}{144} + \\dfrac{4}{144} + \\dfrac{3}{144} = \\dfrac{10}{144} = \\dfrac{5}{72}$\\n이 결과값은 선택지 ⑤번에 정확히 존재한다.\\n따라서 정답은 ⑤이다.",
+    "solution": "한 번 시행하여 기록한 수를 $Y$라 하자.\n짝수 눈일 확률과 홀수 눈일 확률은 각각 $\\dfrac12$이고, 공 두 개의 조합은 $\\binom42=6$가지이다.\n짝수 눈이면 두 수의 합을 기록한다. 여섯 쌍의 합은\n$4,\\ 6,\\ 8,\\ 8,\\ 10,\\ 12$이다.\n홀수 눈이면 작은 수를 기록한다. 여섯 쌍의 작은 수는\n$1,\\ 1,\\ 1,\\ 3,\\ 3,\\ 5$이다.\n따라서 구하는 확률에 필요한 값은\n$P(Y=1)=\\dfrac12\\times\\dfrac36=\\dfrac14$\n$P(Y=3)=\\dfrac12\\times\\dfrac26=\\dfrac16$\n$P(Y=5)=\\dfrac12\\times\\dfrac16=\\dfrac1{12}$이다.\n두 번의 기록을 $Y_1,Y_2$라 하면\n$\\overline X=3\\ \\Longleftrightarrow\\ Y_1+Y_2=6$이다.\n가능한 순서쌍은 $(1,5),(3,3),(5,1)$뿐이다.\n두 시행은 서로 독립이므로\n$P(\\overline X=3)=\\dfrac14\\cdot\\dfrac1{12}+\\dfrac16\\cdot\\dfrac16+\\dfrac1{12}\\cdot\\dfrac14$\n$=\\dfrac1{48}+\\dfrac1{36}+\\dfrac1{48}$\n$=\\dfrac3{72}+\\dfrac2{72}=\\dfrac5{72}$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
     "subUnit": "conditional probability",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -586,7 +594,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "②",
-    "solution": "[키포인트] 신뢰구간 길이 계산 공식과 이항분포 변수의 변형 공식 $E(Y^2) = V(Y) + \\{E(Y)\\}^2$의 구조를 연립한다.\\n조건 정리: 모표준편차 $\\sigma = \\dfrac{1}{5.88}$이며 95% 신뢰구간 계수 $1.96$이다.\\n풀이 방향: 신뢰구간의 길이 $f(n)$을 수식화하여 $M$과 $k$의 관계식을 구하고 이항분포 식에 대입한다.\\n정석 풀이:\\n1단계: $f(n)$ 수식화 및 $M$ 구하기\\n$f(n) = b-a = 2 \\times 1.96 \\times \\dfrac{1}{5.88\\sqrt{n}} = \\dfrac{3.92}{5.88\\sqrt{n}} = \\dfrac{2}{3\\sqrt{n}}$이다.\\n부등식 대입: $\\dfrac{2}{3\\sqrt{n}} \\ge \\dfrac{2}{3k} \\implies \\sqrt{n} \\le k \\implies n \\le k^2$이다.\\n따라서 자연수 $n$의 최댓값은 $M = k^2$이다.\\n2단계: 이항분포의 성질에 대입\\n$Y \\sim B\\left(k^2, \\dfrac{1}{3}\\right)$이므로 기댓값과 분산은 다음과 같다.\\n$E(Y) = \\dfrac{1}{3}k^2$, $V(Y) = k^2 \\times \\dfrac{1}{3} \\times \\dfrac{2}{3} = \\dfrac{2}{9}k^2$\\n제곱의 평균 공식을 세우면\\n$E(Y^2) = V(Y) + \\{E(Y)\\}^2 = \\dfrac{2}{9}k^2 + \\dfrac{1}{9}k^4 = 11$이다.\\n양변에 $9$를 곱해 이항하여 정리하면\\n$k^4 + 2k^2 - 99 = 0 \\implies (k^2 + 11)(k^2 - 9) = 0$\\n$k^2 \\gt 0$이므로 $k^2 = 9$이다. $k$는 자연수이므로 $k = 3$이다.\\n산출된 $k$의 값은 $3$이며 이는 ②번 선택지에 매칭된다.\\n따라서 정답은 ②이다.",
+    "solution": "모표준편차가 $\\sigma=\\dfrac1{5.88}$이므로 신뢰도 $95\\%$의 신뢰구간 길이는\n$f(n)=2\\times1.96\\times\\dfrac{\\sigma}{\\sqrt n}$\n$=\\dfrac{3.92}{5.88\\sqrt n}$\n$=\\dfrac2{3\\sqrt n}$이다.\n주어진 부등식에 대입하면\n$\\dfrac2{3\\sqrt n}\\ge\\dfrac2{3k}$\n$\\sqrt n\\le k,\\quad n\\le k^2$이다.\n$k$는 자연수이므로 가능한 자연수 $n$의 최댓값은 $M=k^2$이다.\n$Y\\sim B\\left(M,\\dfrac13\\right)$에서\n$E(Y)=\\dfrac M3,\\quad V(Y)=\\dfrac{2M}{9}$이다.\n$E(Y^2)=V(Y)+\\{E(Y)\\}^2$를 이용하면\n$11=\\dfrac{2M}{9}+\\dfrac{M^2}{9}$\n$M^2+2M-99=0$\n$(M+11)(M-9)=0$이다.\n$M$은 자연수이므로 $M=9$이다.\n$k^2=9,\\ k>0$에서 $k=3$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
