@@ -23,7 +23,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 팩토리얼의 값을 작은 자연수부터 차례로 확인한다.\n조건 정리: $n!=24$이고 $n$은 자연수이다.\n풀이 방향: $1!,2!,3!,4!$를 계산하여 $24$가 되는 지점을 찾는다.\n정석 풀이: $1!=1$, $2!=2$, $3!=6$, $4!=4\\times3\\times2\\times1=24$이다. 따라서 $n=4$이다.\n따라서 정답은 ③이다.",
+    "solution": "$n!$은 $1$부터 $n$까지의 자연수를 모두 곱한 값이다.\n$1!=1$\n$2!=2\\times1=2$\n$3!=3\\times2\\times1=6$\n$4!=4\\times3\\times2\\times1=24$\n$n!=24$이므로 $n=4$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -51,7 +51,7 @@ window.questionBank = [
       "$\\dfrac{x}{x+3}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 분자와 분모에 같은 수를 곱하여 복분수를 없앤다.\n조건 정리: 분자와 분모에 $x$가 포함되어 있으므로 전체 식의 분자와 분모에 $x$를 곱한다.\n풀이 방향: $1-\\dfrac{3}{x}$와 $1+\\dfrac{3}{x}$를 각각 하나의 분수로 정리한다.\n정석 풀이: $1-\\dfrac{3}{x}=\\dfrac{x-3}{x}$, $1+\\dfrac{3}{x}=\\dfrac{x+3}{x}$이므로\n$\\dfrac{1-\\dfrac{3}{x}}{1+\\dfrac{3}{x}}=\\dfrac{\\dfrac{x-3}{x}}{\\dfrac{x+3}{x}}=\\dfrac{x-3}{x+3}$이다.\n따라서 정답은 ①이다.",
+    "solution": "분모에 $x$가 있으므로 먼저 $x\\ne0$이다. 또한 전체 분모가 $0$이 되지 않아야 하므로 $x\\ne-3$이다.\n분자와 분모를 각각 통분하면\n$1-\\dfrac{3}{x}=\\dfrac{x-3}{x}$\n$1+\\dfrac{3}{x}=\\dfrac{x+3}{x}$\n따라서\n$\\dfrac{1-\\dfrac{3}{x}}{1+\\dfrac{3}{x}}$\n$=\\dfrac{(x-3)/x}{(x+3)/x}$\n$=\\dfrac{x-3}{x+3}\\quad(x\\ne0,-3)$\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -81,7 +81,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] $y=\\dfrac{1}{x+a}+2$의 수직점근선과 수평점근선을 각각 읽는다.\n조건 정리: 분모가 $0$이 되는 직선은 $x=-a$이고, 수평점근선은 $y=2$이다.\n풀이 방향: 주어진 점근선 $x=-2$, $y=b$와 계수를 비교한다.\n정석 풀이: $-a=-2$이므로 $a=2$이고, $b=2$이다. 따라서 $a+b=2+2=4$이다.\n따라서 정답은 ④이다.",
+    "solution": "유리함수 $y=\\dfrac{1}{x+a}+2$에서 분모가 $0$이 되는 $x=-a$는 수직점근선이다.\n$x=-a=-2$\n$\\therefore\\ a=2$\n또 $\\dfrac{1}{x+a}$의 값이 $0$에 가까워질 때 $y$는 $2$에 가까워지므로 수평점근선은 $y=2$이다.\n$y=b=2$\n$\\therefore\\ b=2$\n$a+b=2+2=4$\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q03-solution.svg",
     "solutionImageAlt": "유리함수의 두 점근선 x=−2, y=2를 나타낸 해설 그래프",
     "solutionImageCaption": "수직점근선과 수평점근선을 확인하여 a=2, b=2를 읽는다.",
@@ -113,7 +113,7 @@ window.questionBank = [
       "$80$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 조합의 대칭 성질 ${}_{n}C_{r}={}_{n}C_{n-r}$를 이용한다.\n조건 정리: ${}_{20}C_{18}={}_{20}C_{2}$이다.\n풀이 방향: 두 개를 고르는 조합으로 바꾸어 계산량을 줄인다.\n정석 풀이: ${}_{20}C_{2}=\\dfrac{20\\times19}{2\\times1}=190$이다.\n따라서 정답은 ①이다.",
+    "solution": "$20$개 중 $18$개를 고르는 것은 고르지 않을 $2$개를 정하는 것과 같다.\n$ {}_{20}C_{18}={}_{20}C_{20-18}$\n$={}_{20}C_2$\n$=\\dfrac{20!}{2!\\,18!}$\n$=\\dfrac{20\\times19}{2\\times1}$\n$=10\\times19=190$\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-SB-08-COMBINATION_BASIC",
     "subUnit": "조합",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -143,7 +143,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 제곱근은 항상 $0$ 이상이라는 사실을 이용한다.\n조건 정리: 정의역은 $x\\le2$이고, $\\sqrt{-x+2}\\ge0$이다.\n풀이 방향: 제곱근 부분이 가장 작아지는 때를 찾는다.\n정석 풀이: $-x+2=0$일 때 제곱근이 $0$이므로 $x=2$에서 최솟값 $3$을 갖는다. 따라서 $a=2$, $b=3$이고 $a\\times b=6$이다.\n따라서 정답은 ④이다.",
+    "solution": "제곱근 안은 $0$ 이상이어야 한다.\n$-x+2\\ge0\\ \\Rightarrow\\ x\\le2$\n또 제곱근의 값은 항상 $0$ 이상이므로\n$\\sqrt{-x+2}\\ge0$\n$y=\\sqrt{-x+2}+3\\ge3$\n등호는 $-x+2=0$, 즉 $x=2$일 때 성립한다.\n따라서 $a=2$, $b=3$이고\n$a\\times b=2\\times3=6$\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q05-solution.svg",
     "solutionImageAlt": "무리함수의 끝점과 최솟값을 나타낸 해설 그래프",
     "solutionImageCaption": "정의역 x≤2에서 끝점 (2,3)이 최솟값을 주는 위치를 확인한다.",
@@ -175,7 +175,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] $f^{-1}(2)=k$는 $f(k)=2$와 같은 뜻이다.\n조건 정리: $f(k)=k-3$이다.\n풀이 방향: 역함수 식을 직접 구하지 않고 원래 함수에 대입한다.\n정석 풀이: $f(k)=2$이므로 $k-3=2$이고, $k=5$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$f(x)=x-3$은 일대일대응이므로 역함수가 존재한다.\n$f^{-1}(2)=k$는 $f$가 $k$를 $2$로 보내는 함수라는 뜻이다.\n$f^{-1}(2)=k\\ \\Longleftrightarrow\\ f(k)=2$\n$f(k)=k-3$이므로\n$k-3=2$\n$k=2+3=5$\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
@@ -203,7 +203,7 @@ window.questionBank = [
       "$75$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 책꽂이가 서로 다르므로 책을 고른 뒤 배치 순서까지 구분한다.\n조건 정리: 첫째 책꽂이에 꽂을 책은 $6$가지, 둘째 책꽂이에 꽂을 책은 남은 $5$가지이다.\n풀이 방향: 서로 다른 두 자리에 서로 다른 책을 배치하는 순열로 계산한다.\n정석 풀이: 모든 방법의 수는 ${}_{6}P_{2}=6\\times5=30$이다.\n따라서 정답은 ②이다.",
+    "solution": "책꽂이 두 개가 서로 다르므로 어떤 책을 어느 책꽂이에 꽂는지까지 구별한다.\n첫째 책꽂이에 꽂을 책은 $6$권 중 하나이므로 $6$가지이다.\n둘째 책꽂이에는 이미 고른 책을 제외한 $5$권 중 하나를 꽂으므로 $5$가지이다.\n$6\\times5=30$\n또는\n$ {}_6P_2=\\dfrac{6!}{(6-2)!}=6\\times5=30$\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -233,7 +233,11 @@ window.questionBank = [
       "$\\dfrac{19}{6}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 점근선에서 $a$, $b$를 먼저 정한 뒤 함수값의 변화 방향을 확인한다.\n조건 정리: 수직점근선 $x=-a=-1$에서 $a=1$, 수평점근선 $y=b=2$에서 $b=2$이다.\n풀이 방향: 함수를 $2-\\dfrac{1}{x+1}$의 꼴로 바꾸어 구간의 양 끝값을 비교한다.\n정석 풀이: $y=\\dfrac{2x+1}{x+1}=2-\\dfrac{1}{x+1}$이다. $1\\le x\\le2$에서 $x+1$은 $2$에서 $3$까지 증가하므로 $\\dfrac{1}{x+1}$은 감소하고 $y$는 증가한다. 따라서 최솟값은 $x=1$에서 $\\dfrac{3}{2}$, 최댓값은 $x=2$에서 $\\dfrac{5}{3}$이다. 그 합은 $\\dfrac{3}{2}+\\dfrac{5}{3}=\\dfrac{19}{6}$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "수직점근선이 $x=-1$이므로 $-a=-1$, 따라서 $a=1$이다.\n수평점근선이 $y=2$이므로 $b=2$이다.\n$y=\\dfrac{2x+1}{x+1}$\n$=\\dfrac{2(x+1)-1}{x+1}$\n$=2-\\dfrac{1}{x+1}\\quad(x\\ne-1)$\n$1\\le x\\le2$에서 $x+1$은 증가하므로 $\\dfrac{1}{x+1}$은 감소한다. 따라서 $y$는 증가한다.\n최솟값은 $x=1$일 때\n$2-\\dfrac12=\\dfrac32$\n최댓값은 $x=2$일 때\n$2-\\dfrac13=\\dfrac53$\n두 값의 합은\n$\\dfrac32+\\dfrac53=\\dfrac{9+10}{6}=\\dfrac{19}{6}$\n따라서 정답은 ⑤이다.",
+    "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q08-solution.svg",
+    "solutionImageAlt": "구간 1부터 2까지 증가하는 유리함수와 양 끝 함수값",
+    "solutionImageCaption": "x=1일 때 3/2, x=2일 때 5/3이므로 끝점에서 최소·최대가 결정된다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_APPLICATION",
     "subUnit": "유리함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -261,7 +265,7 @@ window.questionBank = [
       "$130$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 역함수가 존재하는 함수는 일대일대응이다.\n조건 정리: $n(X)=5$이고 $f:X\\to Y$가 일대일대응이므로 $n(Y)=5$이다.\n풀이 방향: 두 집합의 원소를 일대일로 대응시키는 모든 순열을 센다.\n정석 풀이: 원소가 $5$개인 두 집합 사이의 일대일대응의 개수는 $5!=120$이다. 따라서 구하는 합은 $n(Y)+120=5+120=125$이다.\n따라서 정답은 ④이다.",
+    "solution": "역함수가 존재하는 함수는 서로 다른 원소를 서로 다른 원소로 대응시키고, 공역의 모든 원소에 대응되는 원소가 있어야 한다. 즉 일대일대응이다.\n$n(X)=5$이므로 일대일대응의 공역도 원소가 $5$개이다.\n$n(Y)=5$\n$X$의 첫째 원소에 대응시킬 $Y$의 원소는 $5$가지,\n둘째 원소에는 남은 $4$가지, 차례로 $3,2,1$가지이다.\n함수의 개수는\n$5!=5\\times4\\times3\\times2\\times1=120$\n구하는 합은\n$n(Y)+120=5+120=125$\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
@@ -291,7 +295,7 @@ window.questionBank = [
       "$-\\dfrac{1}{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 제곱근 값을 새로운 문자로 두면 교점의 개수를 이차식의 값으로 판단할 수 있다.\n조건 정리: $t=\\sqrt{2-2x}\\ge0$이라 두면 $x=1-\\dfrac{t^2}{2}$이고, 교점 조건은 $-t=x+k$이다.\n풀이 방향: $k$를 $t$에 대한 완전제곱식으로 나타내고 같은 $k$를 만드는 서로 다른 음이 아닌 $t$의 개수를 센다.\n정석 풀이: $-t=1-\\dfrac{t^2}{2}+k$에서 $k=\\dfrac{t^2}{2}-t-1=\\dfrac{(t-1)^2}{2}-\\dfrac{3}{2}$이다. $-\\dfrac{3}{2}<k<-1$이면 $t=1\\pm\\sqrt{2k+3}$이 모두 양수여서 교점이 두 개이다. $k=-1$이면 $t=0,2$로 서로 다른 두 교점이 생긴다. 그러나 $k>-1$이면 두 해 중 하나가 음수가 되어 교점은 하나뿐이다. 따라서 범위는 $-\\dfrac{3}{2}<k\\le-1$이고, $a+b=-\\dfrac{3}{2}-1=-\\dfrac{5}{2}$이다.\n따라서 정답은 ①이다.",
+    "solution": "제곱근 안이 $0$ 이상이므로 $x\\le1$이다.\n$t=\\sqrt{2-2x}$로 놓으면 $t\\ge0$이고\n$t^2=2-2x\\ \\Rightarrow\\ x=1-\\dfrac{t^2}{2}$\n두 그래프의 교점에서 $-t=x+k$이므로\n$-t=1-\\dfrac{t^2}{2}+k$\n$k=\\dfrac{t^2}{2}-t-1$\n$=\\dfrac{(t-1)^2}{2}-\\dfrac32$\n따라서\n$(t-1)^2=2k+3$\n$t=1\\pm\\sqrt{2k+3}$\n서로 다른 두 교점이 생기려면 두 $t$가 서로 다르고 모두 $0$ 이상이어야 한다.\n$2k+3>0\\ \\Rightarrow\\ k>-\\dfrac32$\n$1-\\sqrt{2k+3}\\ge0\\ \\Rightarrow\\ k\\le-1$\n$k=-1$일 때 $t=0,2$이므로 두 점이고, $k=-\\dfrac32$에서는 $t=1$로 한 점이다.\n따라서 $-\\dfrac32<k\\le-1$이고\n$a+b=-\\dfrac32+(-1)=-\\dfrac52$\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q10-solution.svg",
     "solutionImageAlt": "무리함수와 직선의 두 교점을 나타낸 해설 그래프",
     "solutionImageCaption": "k=−1.4인 직선과 무리함수의 두 교점을 표시하고 −3/2<k≤−1 범위의 경계를 확인한다.",
@@ -325,7 +329,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 두 점의 $x$좌표를 제곱근으로 치환하면 기울기의 분모가 인수분해된다.\n조건 정리: $u=\\sqrt{a}$, $v=\\sqrt{c}$라 두면 $0<u<v$, $b=3u$, $d=3v$이고 $u+v=1$이다.\n풀이 방향: 기울기 공식을 적용한 뒤 $v^2-u^2=(v-u)(v+u)$를 이용한다.\n정석 풀이: 직선 $PQ$의 기울기는 $\\dfrac{d-b}{c-a}=\\dfrac{3v-3u}{v^2-u^2}=\\dfrac{3(v-u)}{(v-u)(v+u)}=\\dfrac{3}{u+v}=3$이다.\n따라서 정답은 ②이다.",
+    "solution": "두 점이 그래프 위에 있으므로\n$b=3\\sqrt a,\\quad d=3\\sqrt c$\n$b+d=3$에서\n$3\\sqrt a+3\\sqrt c=3$\n$\\sqrt a+\\sqrt c=1$\n직선 $PQ$의 기울기는\n$\\dfrac{d-b}{c-a}$\n$=\\dfrac{3\\sqrt c-3\\sqrt a}{c-a}$\n$=\\dfrac{3(\\sqrt c-\\sqrt a)}{(\\sqrt c-\\sqrt a)(\\sqrt c+\\sqrt a)}$\n$=\\dfrac{3}{\\sqrt c+\\sqrt a}$\n$=\\dfrac31=3$\n단, $0<a<c$이므로 $\\sqrt c-\\sqrt a>0$이고 약분할 수 있다.\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q11-solution.svg",
     "solutionImageAlt": "무리함수 위의 두 점과 현 PQ를 나타낸 해설 그래프",
     "solutionImageCaption": "y=3√x 위에서 b+d=3이 되는 두 점을 표시하고 직선 PQ의 기울기 3을 확인한다.",
@@ -357,7 +361,7 @@ window.questionBank = [
       "$24000$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 선수 구성뿐 아니라 승부차기 순서까지 구분해야 한다.\n조건 정리: 1학년에서 $3$명, 2학년에서 $2$명을 고르고, 뽑힌 $5$명을 순서 있게 배치한다.\n풀이 방향: 조합으로 선수들을 고른 뒤 $5!$을 곱한다.\n정석 풀이: 경우의 수는 ${}_{6}C_{3}\\times{}_{5}C_{2}\\times5!=20\\times10\\times120=24000$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "1학년 $6$명 중 $3$명을 먼저 고르는 방법은\n$ {}_6C_3=\\dfrac{6\\times5\\times4}{3\\times2\\times1}=20$\n2학년 $5$명 중 $2$명을 고르는 방법은\n$ {}_5C_2=\\dfrac{5\\times4}{2\\times1}=10$\n이렇게 고른 다섯 명은 서로 다른 선수이다.\n승부차기 순서도 구별하므로 $5!$을 곱해야 한다.\n$5!=5\\times4\\times3\\times2\\times1=120$\n전체 경우의 수는\n$20\\times10\\times120$\n$=200\\times120=24000$\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-SB-07-PERMUTATION_BASIC",
     "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -385,7 +389,7 @@ window.questionBank = [
       "$-4$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 함수값은 모두 $4$ 이하이므로 합이 $8$인 조건에서 각 항이 모두 $4$임을 먼저 확정한다.\n조건 정리: $(f\\circ f)(-2)$와 $f^{-1}(-4)$는 모두 $X$의 원소이고 최댓값이 $4$이다.\n풀이 방향: (가)로 두 함수값을 고정한 뒤 $f(-2)$의 가능한 값을 (나)와 일대일대응 조건으로 좁힌다.\n정석 풀이: (가)에서 $(f\\circ f)(-2)=4$, $f^{-1}(-4)=4$이므로 $f(4)=-4$이다. $p=f(-2)$라 두면 $f(p)=4$이다. $p=-4$이면 $f(-2)=f(4)=-4$가 되어 일대일이 아니고, $p=-2$이면 $f(p)=p=-2$라서 $4$가 될 수 없다. $p=2$이면 $f(2)=4$이므로 $f(2)f(-2)=8>0$이 되어 (나)에 어긋난다. $p=4$이면 $f(p)=f(4)=-4$가 되어 $f(p)=4$와 모순이다. 따라서 $p=0$이고 $f(-2)=0$, $f(0)=4$이다. 남은 값과 $f(4)=-4$를 고려하면 $f(-4),f(2)$는 $-2,2$이다. $f(0)f(-4)\\le0$이므로 $f(-4)=-2$, $f(2)=2$이다. 따라서 $3f(0)+f(2)+2f(4)=3\\times4+2+2\\times(-4)=6$이다.\n따라서 정답은 ②이다.",
+    "solution": "역함수가 존재하므로 $f$는 $X$에서 $X$로의 일대일대응이다.\n(가)의 두 항은 모두 $X$의 원소이며 각 항은 $4$ 이하이다.\n$(f\\circ f)(-2)+f^{-1}(-4)=8$\n따라서 두 항이 모두 $4$이어야 한다.\n$f(f(-2))=4,\\quad f^{-1}(-4)=4$\n두 번째 식에서 $f(4)=-4$이다.\n$p=f(-2)$라 두면 $f(p)=4$이다.\n$p=-4$이면 $f(-2)=f(4)=-4$로 일대일이 아니다.\n$p=-2$이면 $f(p)=f(-2)=-2\\ne4$이다.\n$p=2$이면 $f(2)=4$이고, (나)의 $k=2$에서 $f(2)f(-2)=4\\cdot2>0$이다.\n$p=4$이면 $f(p)=f(4)=-4\\ne4$이다.\n그러므로 $p=0$이다.\n$f(-2)=0,\\quad f(0)=4,\\quad f(4)=-4$\n아직 쓰지 않은 함숫값은 $-2,2$이므로\n$\\{f(-4),f(2)\\}=\\{-2,2\\}$\n(나)의 $k=0$에서\n$f(0)f(-4)=4f(-4)\\le0$\n$f(-4)=-2,\\quad f(2)=2$\n구하는 값은\n$3f(0)+f(2)+2f(4)$\n$=3\\times4+2+2\\times(-4)$\n$=12+2-8=6$\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
     "subUnit": "합성함수",
     "subUnitConfidence": "rule_inferred",
@@ -415,7 +419,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 곡선 조각은 원점을 중심으로 $90^\\circ$ 반시계 방향으로 회전하면 서로 겹치므로, 삼각형에서 더해지는 넓이와 빠지는 넓이가 같다.\n조건 정리: $O=(0,0)$이라 하고 $0\\le x\\le2$에서 곡선 $y=x^2$ 위의 점을 $P=(x,x^2)$라 하자. 점 $P$를 원점 중심으로 $90^\\circ$ 반시계 회전하면 $P'=(-x^2,x)$가 된다. $x\\ge0$이므로 $x=\\sqrt{x^2}=\\sqrt{-(-x^2)}$이고, 따라서 $P'$는 곡선 $y=\\sqrt{-x}$ 위에 있다. 또한 $A(2,4)$는 $B(-4,2)$로 옮겨진다.\n풀이 방향: 곡선 $OA$와 선분 $OA$ 사이의 영역이 회전에 의해 곡선 $OB$와 선분 $OB$ 사이의 영역으로 정확히 옮겨짐을 이용한다.\n정석 풀이: 구하는 영역을 삼각형 $OAB$와 비교하면, 오른쪽에서는 곡선 $OA$가 선분 $OA$보다 아래에 있어 두 선 사이의 넓이가 삼각형에 더해지고, 왼쪽에서는 곡선 $OB$가 선분 $OB$보다 위에 있어 같은 넓이가 삼각형에서 빠진다. 두 넓이는 회전으로 서로 합동이므로 상쇄된다. 따라서 구하는 넓이는 삼각형 $OAB$의 넓이와 같다. 좌표를 이용하면 $\\dfrac{1}{2}|2\\times2-4\\times(-4)|=\\dfrac{1}{2}\\times20=10$이다.\n따라서 정답은 ④이다.",
+    "solution": "$O=(0,0)$이라 하자. $A=(2,4)$, $B=(-4,2)$이다.\n$x\\ge0$의 곡선 위 점 $P=(t,t^2)$를 원점 중심으로 반시계 방향 $90^\\circ$ 회전하면\n$P'=(-t^2,t)$가 된다.\n$t\\ge0$이므로\n$\\sqrt{-(-t^2)}=\\sqrt{t^2}=t$\n즉 $P'$는 왼쪽 곡선 $y=\\sqrt{-x}$ 위에 놓인다.\n또한 회전에 의해\n$A=(2,4)\\longrightarrow B=(-4,2)$\n따라서 곡선 $OA$와 선분 $OA$ 사이 부분은 곡선 $OB$와 선분 $OB$ 사이 부분과 넓이가 같다.\n오른쪽에서는 $0\\le x\\le2$일 때 $x^2\\le2x$이므로, 선분 $OA$ 아래에 있는 곡선 때문에 삼각형 $OAB$보다 넓이가 그만큼 늘어난다.\n왼쪽에서는 곡선 $OB$가 선분 $OB$ 위에 있어 똑같은 넓이만큼 줄어든다.\n따라서 두 넓이는 서로 상쇄되어 구하는 넓이는 $\\triangle OAB$의 넓이와 같다.\n$S=\\dfrac12|2\\cdot2-4\\cdot(-4)|$\n$=\\dfrac12|4+16|$\n$=10$\n따라서 정답은 ④이다.",
 
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q14-solution.svg",
 
@@ -456,7 +460,11 @@ window.questionBank = [
       "$\\sqrt{2}$"
     ],
     "answer": "③",
-    "solution": "[키포인트] $QH$는 점 $Q$와 직선 $l$ 사이의 거리이다.\n조건 정리: $P=(a,\\dfrac{1}{a})$이고 $Q=(a,0)$이다. 직선 $OP$의 기울기는 $\\dfrac{1}{a^2}$이므로 $l$의 방정식은 $x-a^2y=0$이다.\n풀이 방향: 점과 직선 사이의 거리 공식을 적용한 뒤 제곱한 값을 산술평균과 기하평균의 관계로 최대화한다.\n정석 풀이: $QH=\\dfrac{a}{\\sqrt{1+a^4}}$이므로 $(QH)^2=\\dfrac{a^2}{1+a^4}$. $t=a^2>0$이라 두면 $(QH)^2=\\dfrac{t}{1+t^2}=\\dfrac{1}{t+\\dfrac{1}{t}}\\le\\dfrac{1}{2}$이다. 등호는 $t=1$, 즉 $a=1$일 때 성립한다. 따라서 $QH$의 최댓값은 $\\dfrac{\\sqrt{2}}{2}$이다.\n따라서 정답은 ③이다.",
+    "solution": "$P$가 $y=\\dfrac1x$ 위에 있고 $a>0$이므로\n$P=(a,\\dfrac1a),\\quad Q=(a,0)$이다.\n원점 $O$와 $P$를 지나는 직선 $l$의 기울기는\n$\\dfrac{1/a}{a}=\\dfrac1{a^2}$\n따라서 $l$의 방정식은\n$y=\\dfrac{x}{a^2}$, 즉 $x-a^2y=0$이다.\n$QH$는 $Q$에서 직선 $l$까지의 거리이므로\n$QH=\\dfrac{|a-a^2\\cdot0|}{\\sqrt{1+a^4}}$\n$=\\dfrac{a}{\\sqrt{1+a^4}}$\n양수인 $QH$를 제곱하면\n$(QH)^2=\\dfrac{a^2}{1+a^4}$\n$(a^2-1)^2\\ge0$에서\n$a^4+1\\ge2a^2$\n$\\dfrac{a^2}{1+a^4}\\le\\dfrac12$\n따라서 $QH\\le\\dfrac1{\\sqrt2}=\\dfrac{\\sqrt2}{2}$이다.\n등호는 $a=1$일 때 성립한다. 이때 $P=(1,1)$, $Q=(1,0)$, $H=(\\dfrac12,\\dfrac12)$이다.\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "a가 1일 때의 유리함수, 원점과 P를 지나는 직선, 수선 QH",
+    "solutionImageCaption": "최댓값을 만드는 P(1,1), Q(1,0), H(1/2,1/2)를 나타낸 그림",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -486,7 +494,7 @@ window.questionBank = [
       "$6+4\\sqrt{2}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 점 $A$를 좌표로 나타내고 직선 $BC$와 점 $A$ 사이의 거리를 이용하여 삼각형의 넓이를 구한다.\n조건 정리: $A=(t,\\dfrac{2}{t})$로 둘 수 있고 $t>0$이다. 두 점 $B(-1,-2)$, $C(3,-6)$을 지나는 직선은 $x+y+3=0$이고, $\\overline{BC}=4\\sqrt{2}$이다.\n풀이 방향: $BC$를 밑변으로 잡고 점 $A$에서 직선 $BC$까지의 거리를 높이로 구한다.\n정석 풀이: 점 $A$에서 직선 $x+y+3=0$까지의 거리는 $\\dfrac{t+\\dfrac{2}{t}+3}{\\sqrt{2}}$이다. 따라서 삼각형 $ABC$의 넓이는 $\\dfrac{1}{2}\\times4\\sqrt{2}\\times\\dfrac{t+\\dfrac{2}{t}+3}{\\sqrt{2}}=2(t+\\dfrac{2}{t}+3)$이다. $t>0$이므로 $t+\\dfrac{2}{t}\\ge2\\sqrt{2}$이고, 넓이의 최솟값은 $2(2\\sqrt{2}+3)=6+4\\sqrt{2}$이다. 등호는 $t=\\sqrt{2}$일 때 성립한다.\n따라서 정답은 ⑤이다.",
+    "solution": "제1사분면의 점 $A$를\n$A=(t,\\dfrac2t)\\quad(t>0)$\n로 놓는다.\n$B(-1,-2)$, $C(3,-6)$에서\n$\\overline{BC}=\\sqrt{(3+1)^2+(-6+2)^2}$\n$=\\sqrt{16+16}=4\\sqrt2$\n직선 $BC$는 기울기가 $-1$이므로\n$y+2=-(x+1)$, 즉 $x+y+3=0$이다.\n$A$에서 이 직선까지의 거리는\n$h=\\dfrac{|t+\\dfrac2t+3|}{\\sqrt2}$\n$=\\dfrac{t+\\dfrac2t+3}{\\sqrt2}$이다. ($t>0$)\n따라서 삼각형의 넓이는\n$S=\\dfrac12\\cdot4\\sqrt2\\cdot h$\n$=2(t+\\dfrac2t+3)$\n$(t-\\sqrt2)^2\\ge0$에서\n$t^2+2\\ge2\\sqrt2t$\n$t+\\dfrac2t\\ge2\\sqrt2$\n따라서 $S\\ge2(2\\sqrt2+3)=6+4\\sqrt2$이다.\n$t=\\sqrt2$일 때 등호가 성립하여 이 넓이를 실제로 얻는다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q16-solution.svg",
     "solutionImageAlt": "유리함수 위의 점 A와 선분 BC를 나타낸 해설 그래프",
     "solutionImageCaption": "A=(√2,√2)에서 직선 BC까지의 높이가 최소가 되는 관계를 확인한다.",
@@ -522,7 +530,11 @@ window.questionBank = [
       "$69$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 두 직선이 이루는 각으로 기울기 비를 구하고, 두 교점의 좌표로 삼각형의 넓이를 계산한다.\n조건 정리: $f(x)=mx$이고 그림에서 $m>1$이다. 두 직선 $y=mx$, $y=x$가 이루는 각이 $30^\\circ$이므로 $\\dfrac{m-1}{m+1}=\\tan30^\\circ=\\dfrac{1}{\\sqrt{3}}$이다.\n풀이 방향: $g(x)=\\dfrac{x}{m}$를 이용하여 이동한 직선과 두 직선의 교점을 각각 구한다.\n정석 풀이: $y=g(x-k)+k=\\dfrac{x}{m}+k(1-\\dfrac{1}{m})$이다. 이 직선과 $y=x$의 교점은 $(k,k)$이고, $y=mx$와의 교점은 $(\\dfrac{k}{m+1},\\dfrac{mk}{m+1})$이다. 따라서 삼각형의 넓이는 $\\dfrac{1}{2}\\left|\\dfrac{k}{m+1}\\cdot k-\\dfrac{mk}{m+1}\\cdot k\\right|=\\dfrac{k^2}{2}\\cdot\\dfrac{m-1}{m+1}=\\dfrac{k^2}{2\\sqrt{3}}$이다. 이것이 $9\\sqrt{3}$이므로 $k^2=54$이다.\n따라서 정답은 ④이다.",
+    "solution": "그림에서 $y=f(x)$는 $y=x$보다 기울기가 크므로 $f(x)=mx$ $(m>1)$로 놓는다.\n직선 $y=x$ 위에 원점 $O$에서 내려 그은 수선의 발을 $H$라 하고, $y=mx$ 위의 점 $M=(1,m)$을 잡자.\n$y=x$의 기울기가 $1$이므로\n$H=(\\dfrac{m+1}{2},\\dfrac{m+1}{2})$이다.\n직각삼각형 $OMH$에서\n$MH=\\dfrac{m-1}{\\sqrt2},\\quad OH=\\dfrac{m+1}{\\sqrt2}$\n$\\tan30^\\circ=\\dfrac{MH}{OH}=\\dfrac{m-1}{m+1}$\n$\\therefore\\ \\dfrac{m-1}{m+1}=\\dfrac1{\\sqrt3}$\n역함수는 $g(x)=\\dfrac{x}{m}$이다.\n따라서 옮긴 직선의 식은\n$y=g(x-k)+k$\n$=\\dfrac{x}{m}+k(1-\\dfrac1m)$\n$y=x$와 만나는 점 $A$에서는\n$x=\\dfrac{x}{m}+k(1-\\dfrac1m)$\n$\\therefore\\ A=(k,k)$\n$y=mx$와 만나는 점 $B$에서는\n$mx=\\dfrac{x}{m}+k(1-\\dfrac1m)$\n$(m^2-1)x=k(m-1)$\n$x=\\dfrac{k}{m+1}$\n$\\therefore\\ B=(\\dfrac{k}{m+1},\\dfrac{mk}{m+1})$\n좌표를 이용한 삼각형의 넓이는\n$\\dfrac12\\left|k\\cdot\\dfrac{mk}{m+1}-k\\cdot\\dfrac{k}{m+1}\\right|$\n$=\\dfrac{k^2}{2}\\cdot\\dfrac{m-1}{m+1}$\n$=\\dfrac{k^2}{2\\sqrt3}$\n이 넓이가 $9\\sqrt3$이므로\n$\\dfrac{k^2}{2\\sqrt3}=9\\sqrt3$\n$k^2=9\\sqrt3\\cdot2\\sqrt3=54$\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "역함수의 평행이동 직선과 두 원점 통과 직선의 교점 A, B",
+    "solutionImageCaption": "y=x와 y=f(x)의 각 30도, 이동한 직선과의 교점으로 삼각형을 만든다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-03-INVERSE_FUNCTION",
     "subUnit": "역함수",
     "subUnitConfidence": "rule_inferred",
@@ -546,7 +558,7 @@ window.questionBank = [
     "content": "<단답형 1> 두 함수 $y=\\dfrac{x+1}{x-1}$, $y=\\sqrt{x-k}$의 그래프가 한 점에서 만나도록 하는 실수 $k$의 값의 범위를 구하시오. [4점]",
     "choices": [],
     "answer": "$k>-1$",
-    "solution": "[키포인트] 교점의 $y$좌표를 매개변수로 두고, 두 구간에서 같은 $k$를 만드는 해의 개수를 센다.\n조건 정리: $y=\\sqrt{x-k}\\ge0$이고 $y\\ne1$이다. $y=\\dfrac{x+1}{x-1}$에서 $x=\\dfrac{y+1}{y-1}$이므로 $k=\\dfrac{y+1}{y-1}-y^2=1+\\dfrac{2}{y-1}-y^2$이다.\n풀이 방향: $0\\le y<1$과 $y>1$에서 이 식의 값의 범위를 각각 확인한다.\n정석 풀이: 같은 구간의 $u<v$에 대하여 두 값의 차는 $\\dfrac{2(v-u)}{(u-1)(v-1)}+(v-u)(u+v)>0$이므로 $k$의 식은 각 구간에서 감소한다. $0\\le y<1$에서는 $y=0$일 때 $k=-1$이고 $y$가 $1$에 가까워질수록 값이 한없이 작아지므로 범위는 $k\\le-1$이다. $y>1$에서는 $y$가 $1$에 가까울 때 값이 한없이 크고 $y$가 커질수록 한없이 작아지므로 모든 실수 $k$에 대해 해가 하나 있다. 따라서 $k\\le-1$이면 교점이 두 개이고, $k>-1$이면 교점이 한 개이다.\n따라서 구하는 범위는 $k>-1$이다.",
+    "solution": "교점의 $y$좌표를 $u$라 두면 무리함수에서 $u\\ge0$이다.\n유리함수의 식을 $x$에 대해 풀면\n$u=\\dfrac{x+1}{x-1}$\n$u(x-1)=x+1$\n$x=\\dfrac{u+1}{u-1}\\quad(u\\ne1)$\n또 $u=\\sqrt{x-k}$에서 $x=u^2+k$이므로\n$k=\\dfrac{u+1}{u-1}-u^2$\n$=1+\\dfrac2{u-1}-u^2$\n이 식을 $K(u)$라 하자. $u\\ge0$, $u\\ne1$이다.\n같은 구간의 $0\\le p<q<1$ 또는 $1<p<q$에 대하여\n$K(p)-K(q)$\n$=\\dfrac{2(q-p)}{(p-1)(q-1)}+(q-p)(p+q)>0$\n그러므로 $K(u)$는 $[0,1)$과 $(1,\\infty)$에서 각각 감소한다.\n$0\\le u<1$에서는\n$K(0)=-1$, $u\\to1$에 가까워질수록 $K(u)$는 한없이 작아진다.\n따라서 이 구간에는 $k\\le-1$일 때 교점이 하나 있다.\n$u>1$에서는 $u$가 $1$에 가까우면 $K(u)$는 한없이 크고, $u$가 커지면 한없이 작아진다.\n따라서 모든 실수 $k$에 대하여 이 구간에 교점이 정확히 하나 있다.\n결국 $k\\le-1$이면 교점이 두 개이고, $k>-1$이면 교점이 하나이다.\n따라서 구하는 범위는 $k>-1$이다.",
 
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q18-solution.svg",
 
@@ -580,7 +592,7 @@ window.questionBank = [
     "content": "<단답형 2> 그림과 같이 두 개의 정삼각형과 세 개의 직사각형으로 이루어진 도형이 있다.<br>숫자 $1,2,3,4,5,6$ 중에서 같은 수를 여러 번 사용하는 것을 허락하여 다섯 개를 택해 다섯 개의 다각형 내부에 하나씩 적을 때, 다음 조건을 만족시키는 경우의 수를 구하시오. [6점]<br><div class=\"note-box\">(가) 세 개의 직사각형에 적혀있는 수는 두 정삼각형에 적혀있는 수보다 작다.<br>(나) 변을 공유하는 두 직사각형에 있는 수는 서로 다르다.</div>",
     "choices": [],
     "answer": "$262$",
-    "solution": "[키포인트] 세 직사각형에 적힌 수의 최댓값을 기준으로 경우를 나눈다.\n조건 정리: 직사각형의 수를 왼쪽부터 순서 있게 정하고, 가운데 수는 양옆의 수와 달라야 한다. 직사각형의 최댓값이 $m$이면 두 정삼각형의 수는 각각 $m+1$부터 $6$까지 가능하다.\n풀이 방향: $1$부터 $m$까지 사용한 직사각형 배열 중 최댓값이 정확히 $m$인 배열 수를 구한다.\n정석 풀이: $1$부터 $m$까지로 세 직사각형을 채우는 방법은 가운데를 $m$가지, 양옆을 각각 가운데와 다르게 $m-1$가지로 정하므로 $m(m-1)^2$가지이다. 최댓값이 정확히 $m$인 방법은 $m(m-1)^2-(m-1)(m-2)^2$가지이다. 두 정삼각형은 각각 $6-m$가지이므로 전체 경우의 수는\n$m=2$일 때 $2\\times4^2=32$,\n$m=3$일 때 $10\\times3^2=90$,\n$m=4$일 때 $24\\times2^2=96$,\n$m=5$일 때 $44\\times1^2=44$이다. 합은 $32+90+96+44=262$이다.\n따라서 구하는 경우의 수는 $262$이다.",
+    "solution": "변을 공유하는 직사각형끼리 수가 달라야 하므로, 왼쪽·가운데·오른쪽 직사각형의 수를 차례로 $p,q,r$라 하면\n$p\\ne q,\\quad q\\ne r$이다. 단, $p=r$은 가능하다.\n세 직사각형에 쓴 수의 최댓값을 $m$이라 하자.\n두 정삼각형의 수는 모두 $m$보다 커야 하므로 각각 $m+1,\\ldots,6$ 중에서 고른다.\n따라서 각 삼각형에 쓸 수 있는 수는 $6-m$가지이다.\n직사각형에 $1$부터 $m$까지를 사용하면서 이웃한 수를 다르게 놓는 경우는\n$m(m-1)^2$\n그중 $m$을 전혀 사용하지 않은 경우는\n$(m-1)(m-2)^2$\n따라서 최댓값이 정확히 $m$인 직사각형 배열 수는\n$m(m-1)^2-(m-1)(m-2)^2$이다.\n$m=1$이면 직사각형 조건을 만족하지 않고, $m=6$이면 삼각형에 쓸 수가 없다.\n가능한 경우를 각각 계산하면\n$m=2:\\ (2-0)\\times4^2=32$\n$m=3:\\ (12-2)\\times3^2=90$\n$m=4:\\ (36-12)\\times2^2=96$\n$m=5:\\ (80-36)\\times1^2=44$\n서로 다른 $m$의 경우는 겹치지 않으므로\n$32+90+96+44=262$\n따라서 구하는 경우의 수는 $262$이다.",
     "subUnitKey": "H15-SB-06-COUNTING_PRINCIPLE",
     "subUnit": "경우의 수의 기본 원리",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -605,7 +617,11 @@ window.questionBank = [
     "content": "<서·논술형 1> 함수 $f(x)=\\sqrt{ax-4}+2$ $(a\\ge2)$에 대하여 집합 $\\{x\\mid x\\ge\\dfrac{4}{a}\\}$에서 정의된 함수<br>$g(x)=$ ⎧ $f(x)$　($f(x)\\ge f^{-1}(x)$인 경우)<br>　　　 ⎩ $f^{-1}(x)$　($f(x)\\lt f^{-1}(x)$인 경우)<br>가 있다. 실수 $t$ $(t\\ge0)$에 대하여 함수 $y=g(x)$의 그래프와 직선 $y=x+t$가 만나는 서로 다른 점의 개수를 $h(t)$라 하자. $h(t)=2$를 만족하는 $t$가 $t=0$, $t=\\dfrac{1}{2}$일 때, $g(10)$의 값을 풀이과정과 함께 상세하게 서술하시오. (단, $a$는 상수이다.) [10점]",
     "choices": [],
     "answer": "$34$",
-    "solution": "[키포인트] 역함수의 정의역으로 $a$를 먼저 확정하고, $g$의 두 가지 식을 구간별로 비교한다.\n조건 정리: $f$의 치역은 $[2,\\infty)$이므로 $f^{-1}$의 정의역은 $[2,\\infty)$이다. 그런데 $g$가 $x\\ge\\dfrac{4}{a}$ 전체에서 정의되므로 $\\dfrac{4}{a}\\ge2$이어야 한다.\n풀이 방향: $a$를 정한 뒤 $f$와 $f^{-1}$의 교점을 구하고, 각 구간에서 직선 $y=x+t$와의 교점 수를 확인한다.\n정석 풀이: $a\\ge2$이고 $\\dfrac{4}{a}\\ge2$이므로 $a=2$이다. 따라서 $f(x)=\\sqrt{2x-4}+2$, $f^{-1}(x)=\\dfrac{(x-2)^2}{2}+2$이다. 두 함수는 $x=2,4$에서 만나며 $2\\le x\\le4$에서는 $g(x)=f(x)$, $x\\ge4$에서는 $g(x)=f^{-1}(x)$이다. 첫 구간에서 $u=\\sqrt{2x-4}$라 두면 $0\\le u\\le2$이고, $f(x)=x+t$는 $t=u-\\dfrac{u^2}{2}=\\dfrac{1}{2}-\\dfrac{(u-1)^2}{2}$가 된다. 따라서 이 구간의 교점은 $t=0$에서 두 개, $0<t<\\dfrac{1}{2}$에서 두 개, $t=\\dfrac{1}{2}$에서 한 개, $t>\\dfrac{1}{2}$에서 없다. 둘째 구간에서는 $t=f^{-1}(x)-x=\\dfrac{(x-2)(x-4)}{2}$이고 $x\\ge4$에서 각 $t\\ge0$에 대해 교점이 하나씩 있다. $t=0$일 때 $x=4$는 두 구간의 공통점이므로 중복하여 세지 않는다. 따라서 $h(t)=2$인 값은 정확히 $0$, $\\dfrac{1}{2}$이다. 이제 $f(10)=6$, $f^{-1}(10)=\\dfrac{8^2}{2}+2=34$이므로 $g(10)=34$이다.\n따라서 구하는 값은 $34$이다.",
+    "solution": "[1] $a$를 결정한다.\n$f(x)=\\sqrt{ax-4}+2$의 정의역은 $x\\ge\\dfrac4a$이고 치역은 $y\\ge2$이다.\n따라서 $f^{-1}$의 정의역은 $x\\ge2$이다.\n$g$는 $x\\ge\\dfrac4a$ 전체에서 $f$와 $f^{-1}$을 비교하여 정의되어야 하므로\n$\\dfrac4a\\ge2$이어야 한다.\n$a\\ge2$이므로 $\\dfrac4a\\le2$이다.\n따라서 $a=2$이다.\n\n[2] $f$와 역함수의 식을 구한다.\n$f(x)=\\sqrt{2x-4}+2$\n$y-2=\\sqrt{2x-4}$\n$(y-2)^2=2x-4$\n$\\therefore\\ f^{-1}(x)=\\dfrac{(x-2)^2}{2}+2\\quad(x\\ge2)$\n두 그래프는 $x=2$, $x=4$에서 만난다.\n$2\\le x\\le4$에서는 $f(x)\\ge f^{-1}(x)$이고, $x>4$에서는 그 반대이다.\n따라서\n$g(x)=\\sqrt{2x-4}+2\\quad(2\\le x\\le4)$\n$g(x)=\\dfrac{(x-2)^2}{2}+2\\quad(x>4)$\n\n[3] 직선 $y=x+t$와의 교점 수를 센다.\n첫 구간에서 $u=\\sqrt{2x-4}$로 두면 $0\\le u\\le2$이고 $x=\\dfrac{u^2}{2}+2$이다.\n$\\sqrt{2x-4}+2=x+t$\n$u+2=\\dfrac{u^2}{2}+2+t$\n$t=u-\\dfrac{u^2}{2}$\n$=\\dfrac12-\\dfrac{(u-1)^2}{2}$\n$t=0$에서는 $u=0,2$로 두 점이고,\n$0<t<\\dfrac12$에서는 두 점,\n$t=\\dfrac12$에서는 $u=1$로 한 점,\n$t>\\dfrac12$에서는 교점이 없다.\n둘째 구간 $x>4$에서는\n$t=\\dfrac{(x-2)^2}{2}+2-x$\n$=\\dfrac{(x-2)(x-4)}{2}$\n이 값은 $x>4$에서 $0$보다 크고 계속 증가하므로 $t>0$마다 교점이 하나 있다.\n$t=0$일 때에는 $x=4$에서 첫 구간의 교점과 같으므로 중복하여 세지 않는다.\n따라서\n$h(0)=2$\n$h(t)=3\\quad(0<t<\\dfrac12)$\n$h(\\dfrac12)=2$\n$h(t)=1\\quad(t>\\dfrac12)$\n주어진 교점 개수 조건과 일치한다.\n\n[4] $g(10)$을 구한다.\n$f(10)=\\sqrt{16}+2=6$\n$f^{-1}(10)=\\dfrac{(10-2)^2}{2}+2$\n$=\\dfrac{64}{2}+2=34$\n$10>4$이므로 $g(10)=f^{-1}(10)=34$이다.\n따라서 구하는 값은 $34$이다.",
+    "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "g의 두 조각과 직선 y=x 및 y=x+1/2의 교점",
+    "solutionImageCaption": "t=0과 t=1/2에서 각각 서로 다른 교점이 두 개인 모습을 나타낸다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-05-IRRATIONAL_GRAPH",
     "subUnit": "무리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -631,7 +647,11 @@ window.questionBank = [
     "content": "<서·논술형 2> 곡선 $y=-\\dfrac{2}{x}$와 직선 $y=x+k$가 제2사분면에서 만나는 서로 다른 두 점을 각각 $A$, $B$라 하자. $\\angle ABC=90^\\circ$인 점 $C$가 곡선 $y=-\\dfrac{2}{x}$ 위에 있다. $\\overline{AC}=2\\sqrt{5}$가 되도록 하는 상수 $k$에 대하여 $k^2$의 값을 풀이과정과 함께 상세하게 서술하시오. (단, $k>2\\sqrt{2}$이다.) [10점]",
     "choices": [],
     "answer": "$9$",
-    "solution": "[키포인트] 두 교점의 $x$좌표를 이차방정식의 두 근으로 두고, 수직 조건으로 점 $C$의 좌표를 구한다.\n조건 정리: 두 교점의 $x$좌표를 $\\alpha$, $\\beta$라 하면 $x^2+kx+2=0$의 두 근이므로 $\\alpha+\\beta=-k$, $\\alpha\\beta=2$이다. 두 점은 $A=(\\alpha,-\\beta)$, $B=(\\beta,-\\alpha)$로 나타낼 수 있다.\n풀이 방향: 직선 $AB$의 기울기가 $1$임을 이용하여 $BC$의 기울기를 $-1$로 정하고, 곡선과 다시 만나는 점을 찾는다.\n정석 풀이: 점 $B$를 지나고 기울기가 $-1$인 직선은 $y=-x+\\beta-\\alpha$이다. 이 직선과 $y=-\\dfrac{2}{x}$의 교점의 $x$좌표는 $x^2-(\\beta-\\alpha)x-2=0$을 만족한다. 한 근은 $x=\\beta$이고 두 근의 곱이 $-2$이므로 다른 근은 $-\\alpha$이다. 따라서 $C=(-\\alpha,\\beta)$이다. 그러므로 $AC^2=(-2\\alpha)^2+(2\\beta)^2=4(\\alpha^2+\\beta^2)$이다. $AC=2\\sqrt{5}$이므로 $\\alpha^2+\\beta^2=5$이다. 따라서 $k^2=(\\alpha+\\beta)^2=\\alpha^2+2\\alpha\\beta+\\beta^2=5+4=9$이다.\n따라서 구하는 값은 $9$이다.",
+    "solution": "[1] 두 교점의 좌표를 정한다.\n$y=-\\dfrac2x$와 $y=x+k$를 연립하면\n$-\\dfrac2x=x+k$\n$x^2+kx+2=0$\n제2사분면의 서로 다른 두 점이므로 두 근 $\\alpha,\\beta$는 음수이고\n$\\alpha+\\beta=-k,\\quad\\alpha\\beta=2$이다.\n또 $-\\dfrac2\\alpha=-\\beta$, $-\\dfrac2\\beta=-\\alpha$이므로\n$A=(\\alpha,-\\beta),\\quad B=(\\beta,-\\alpha)$로 놓을 수 있다.\n\n[2] 직각 조건으로 $C$를 구한다.\n$A,B$는 직선 $y=x+k$ 위에 있어 직선 $AB$의 기울기는 $1$이다.\n$\\angle ABC=90^\\circ$이므로 직선 $BC$의 기울기는 $-1$이다.\n점 $B$를 지나는 직선 $BC$는\n$y+\\alpha=-(x-\\beta)$\n$y=-x+\\beta-\\alpha$\n이를 $y=-\\dfrac2x$와 연립하면\n$-\\dfrac2x=-x+\\beta-\\alpha$\n$x^2-(\\beta-\\alpha)x-2=0$\n이 방정식은 $B$의 $x$좌표인 $\\beta$를 한 근으로 가진다.\n두 근의 곱이 $-2$이므로 나머지 근은\n$\\dfrac{-2}{\\beta}=-\\alpha$이다.\n따라서 $B$가 아닌 교점은\n$C=(-\\alpha,\\beta)$이다.\n\n[3] 길이 조건으로 $k^2$을 구한다.\n$A=(\\alpha,-\\beta)$, $C=(-\\alpha,\\beta)$이므로\n$AC^2=(-\\alpha-\\alpha)^2+(\\beta+\\beta)^2$\n$=4\\alpha^2+4\\beta^2$\n$AC=2\\sqrt5$이므로\n$20=4(\\alpha^2+\\beta^2)$\n$\\alpha^2+\\beta^2=5$\n또\n$k^2=(\\alpha+\\beta)^2$\n$=\\alpha^2+2\\alpha\\beta+\\beta^2$\n$=5+2\\cdot2=9$\n$k>2\\sqrt2$에서 $k=3$은 조건을 만족한다.\n따라서 구하는 값은 $9$이다.",
+    "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "유리함수 y=-2/x, 직선 AB와 수직인 직선 BC, 두 교점과 점 C",
+    "solutionImageCaption": "k=3인 경우 A(-2,1), B(-1,2), C(2,-1)에서 AB와 BC는 수직이다.",
+    "solutionImageSize": "medium",
     "subUnitKey": "H15-SB-04-RATIONAL_GRAPH",
     "subUnit": "유리함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
