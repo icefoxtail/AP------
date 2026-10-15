@@ -546,7 +546,7 @@ window.questionBank = [
       "$13$"
     ],
     "answer": "④",
-    "solution": "$p\\gt0$이므로 $\\sqrt{px+q}+r$는 정의역의 왼쪽 끝에서 가장 작은 값을 갖고 이후 증가한다.\n치역의 시작값이 $3$이라는 조건을 이용한다.\n\n① $q\\ge0$인 경우\n$x\\ge0$에서 근호가 정의되므로 왼쪽 끝은 $x=0$이다.\n$\\sqrt q+r=3$\n$\\Rightarrow\\sqrt q=3-r\\ge0$\n$\\Rightarrow q=(3-r)^2,\\quad r\\le3$\n\n따라서\n$q-4r^2=(3-r)^2-4r^2$\n$=9-6r-3r^2$\n$=12-3(r+1)^2$\n$\\le12$이다.\n등호는 $r=-1$, $q=16$일 때 성립한다. 이때 임의의 $p\\gt0$에 대하여 함수의 치역은 실제로 $[3,\\infty)$이다.\n\n② $q\\lt0$인 경우\n근호가 정의되기 시작하는 점은 $x=-\\dfrac qp\\gt0$이고 이때 함수값은 $r$이다.\n따라서 $r=3$이어야 하며\n$q-4r^2=q-36\\lt0$이다.\n이 경우는 $12$보다 큰 값을 줄 수 없다.\n\n따라서 전체 최댓값은 $12$이다.\n따라서 정답은 ④이다.",
+    "solution": "$p\\gt0$이므로 함수 $y=\\sqrt{px+q}+r$는 정의역에서 $x$가 커질수록 증가한다.\n치역이 $[3,\\infty)$이므로 함수값이 처음 $3$이 되는 정의역의 왼쪽 끝을 $x=\\alpha$라 두면 $\\alpha\\ge0$이다.\n\n$\\sqrt{p\\alpha+q}+r=3$\n$\\Rightarrow\\sqrt{p\\alpha+q}=3-r$\n따라서 $r\\le3$이고\n$p\\alpha+q=(3-r)^2$이다.\n$\\Rightarrow q=(3-r)^2-p\\alpha$\n\n$p\\gt0$, $\\alpha\\ge0$이므로 $p\\alpha\\ge0$이다.\n따라서\n$q\\le(3-r)^2$이고\n$q-4r^2\\le(3-r)^2-4r^2$\n$=9-6r-3r^2$\n$=12-3(r+1)^2$\n$\\le12$이다.\n\n등호는 $\\alpha=0,\\ r=-1$일 때 가능하다.\n이때 $q=(3+1)^2=16$이고, 임의의 $p\\gt0$에 대하여\n$y=\\sqrt{px+16}-1\\quad(x\\ge0)$\n의 치역은 실제로 $[3,\\infty)$이다.\n\n따라서 구하는 최댓값은 $12$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
     "subUnit": "무리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",
