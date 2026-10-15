@@ -826,8 +826,7 @@ for (const [sourceFile, sourceRows] of sourceRecords) {
   const mixedShardPath = mixedSourceShardPrefix + hash(sourceFile) + ".json";
   mixedSourceShardTexts.set(mixedShardPath, mixedShardText);
   mixedSourceIndexRows.push({
-    sourceFile,
-    path: mixedShardPath,
+    sourceIndex: sourceIndexRows.length - 1,
     sha256: hash(mixedShardText),
     byteLength: Buffer.byteLength(mixedShardText),
     recordCount: mixedRecords.length,
@@ -870,6 +869,7 @@ for (const [prefix, records] of mixedBucketRecords) {
   const bucketText = JSON.stringify({
     schemaVersion: "archive2-mixed-source-verification-uid-bucket-v1",
     prefix,
+    ...(prefix === "f" ? { context: mixedContext } : {}),
     records,
   }) + "\n";
   mixedUidBucketTexts.set(bucketPath, bucketText);
@@ -879,6 +879,7 @@ for (const [prefix, records] of mixedBucketRecords) {
     sha256: hash(bucketText),
     byteLength: Buffer.byteLength(bucketText),
     recordCount: records.length,
+    ...(prefix === "f" ? { includesContext: true } : {}),
   });
 }
 const sourceIndex = {

@@ -42,8 +42,6 @@ const isGeneratedPath = (file) => [
   "archive/data/archive2-crosswalk-inventory.json"
 ].includes(file) || /^archive\/data\/meta-foundation\/runtime\/[^/]+\.json$/.test(file) ||
   /^archive\/data\/archive2-source-verification\/v1\/[^/]+\.json$/.test(file) ||
-  /^archive\/data\/archive2-source-verification\/mixed-v1\/context\.json$/.test(file) ||
-  /^archive\/data\/archive2-source-verification\/mixed-v1\/(?:sources|uid-buckets)\/[^/]+\.json$/.test(file) ||
   /^archive\/data\/meta-foundation\/evidence\/review-overrides\/v1\/qid_v1_[0-9a-f]{64}\.json$/.test(file);
 
 function inspect() {
