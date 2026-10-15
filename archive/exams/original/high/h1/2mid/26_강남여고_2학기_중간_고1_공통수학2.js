@@ -771,7 +771,7 @@ window.questionBank = [
     ],
     "image": "",
     "answer": "③",
-    "solution": "집합의 차와 여집합을 이용하여 각 보기를 차례로 판단한다.\nㄱ. $A^C-B=A^C\\cap B^C$이므로\n$(A^C-B)^C=(A^C\\cap B^C)^C$\n$=A\\cup B$이다.\n일반적으로 $A\\cup B\\ne A\\cap B$이므로 거짓이다.\n\nㄴ. 드모르간 법칙에 따라\n$(A^C\\cup B)^C=A\\cap B^C$이다.\n따라서\n$(A\\cap B)\\cup(A^C\\cup B)^C$\n$=(A\\cap B)\\cup(A\\cap B^C)$\n$=A\\cap(B\\cup B^C)=A$이므로 참이다.\n\nㄷ. $(A\\cap B)^C=A^C\\cup B^C$이므로\n$(A\\cap B)^C\\cap B$\n$=(A^C\\cup B^C)\\cap B$\n$=(A^C\\cap B)\\cup(B^C\\cap B)$\n$=A^C\\cap B=B-A$이다.\n일반적으로 $B-A\\ne A-B$이므로 거짓이다.\n\nㄹ. $(A\\cup B)=(A-B)\\cup B$이고\n$(A-B)\\cap B=\\emptyset$이다.\n따라서\n$(A\\cup B)-(A\\cap B^C)$\n$=[(A-B)\\cup B]-(A-B)$\n$=B$이므로 참이다.\n\n항상 옳은 것은 ㄴ, ㄹ의 $2$개이다.\n정답은 ③이다.",
+    "solution": "집합의 차와 여집합을 이용하여 각 보기를 판단한다.\nㄱ. $A^C-B=A^C\\cap B^C$이므로\n$(A^C-B)^C=(A^C\\cap B^C)^C=A\\cup B$이다.\n$U=\\{1\\},\\ A=\\{1\\},\\ B=\\emptyset$이면 좌변은 $\\{1\\}$, 우변은 $\\emptyset$이므로 거짓이다.\n\nㄴ. 드모르간 법칙에 따라\n$(A^C\\cup B)^C=A\\cap B^C$이다.\n따라서\n$(A\\cap B)\\cup(A^C\\cup B)^C$\n$=(A\\cap B)\\cup(A\\cap B^C)$\n$=A\\cap(B\\cup B^C)=A$이므로 참이다.\n\nㄷ. $(A\\cap B)^C=A^C\\cup B^C$이므로\n$(A\\cap B)^C\\cap B$\n$=(A^C\\cup B^C)\\cap B$\n$=(A^C\\cap B)\\cup(B^C\\cap B)$\n$=A^C\\cap B=B-A$이다.\n$U=\\{1,2\\},\\ A=\\{1\\},\\ B=\\{2\\}$이면 좌변은 $\\{2\\}$, 우변은 $\\{1\\}$이므로 거짓이다.\n\nㄹ. $(A\\cup B)=(A-B)\\cup B$이고\n$(A-B)\\cap B=\\emptyset$이다.\n따라서\n$(A\\cup B)-(A\\cap B^C)$\n$=[(A-B)\\cup B]-(A-B)$\n$=B$이므로 참이다.\n\n항상 옳은 것은 ㄴ, ㄹ의 $2$개이다.\n정답은 ③이다.",
     "sourceDocumentSha256": "sha256:f1e0cb0b266816f92b379c8ebe8c3685e4b69922647e18cc2959fa91779b04bc",
     "sourceQuestionNo": "16",
     "sourcePageNo": 3,
