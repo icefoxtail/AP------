@@ -1,9 +1,44 @@
+# CURRENT HARD — q14부터 RPM·확장 L3/L4 → CrossConcept → 난이도 순서 고정 (2026-10-15 원장 직접 지시)
+
+> **최우선 제작 핸드오프.** 다음 q14 A1~C3의 사전설계부터 모든 후속 원본 qid에 적용한다. 단순한 'Meta 확인' 문구가 아니라 **각 UID에서 실제 검색·판정·등록·난이도 반영을 마감하는 의무**다. 기존 q01~q13의 정상 문항을 일괄 재제작하거나, RPM LOCKED 정본을 고쳐 해결한 것으로 처리하지 않는다.
+
+## 1. Primary를 찾는 순서 — 기존 RPM + 이미 확장된 L3/L4 모두 검색
+
+1. 최신 `main`의 `docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json`과 `archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json`에서 **학생에게 실제 요구한 결정적 사고**를 의미 검색한다. 원본 문서의 학교·학기·단원 이름이나 앞서 등장한 공식으로 Primary를 자동 확정하지 않는다. 같은 학년의 **관련 2022 과목 전체, 기존 학년·이전 교육과정의 동형 RPM**도 대조하여 `record ID → L1/L2/L3/L4 → curriculum/scope`를 기록한다.
+2. **RPM에만 한정하지 않는다.** 기존 ALIVE/Generated 확장 분류를 `archive/generated/lite/v1/2022/H1/**/extension-l3/*.json`, `archive/generated/lite/v1/2022/H1/**/extension-l4/*.json`에서 **`registry.json` 및 학교/qid별 파일 전부** 검색한다. 현재 브랜치와 `main`에 등록된 생성 패킷·metadata·handoff도 대조한다. 이름이 달라도 정의/decisive step이 같으면 기존 key/parent/상태를 재사용한다. 새 L3/L4 후보를 만들기 전 기존 RPM과 EXT의 조사 분모·비교 근거를 남긴다.
+3. 맞는 기존 RPM/EXT Primary가 있으면 그대로 재사용한다. **PT/TPL의 binding이 비어 있다는 것은 L3가 없다는 뜻이 아니다.** `DIRECT_BINDING_GAP`·projection gap은 **매핑 기술 부채**로만 따로 적고, 정확히 존재하는 Primary를 다른 L3로 대체하지 않는다. 정말 없을 때만 허용된 Generated-only 확장 경로에 부모 L1/L2, 핵심 추론, 기존 대조, UID 근거를 결속하며, RPM 정본에는 임의 ID를 쓰지 않는다.
+4. **원본 출처와 Generated의 목표 분류를 분리한다.** 원본 시험지의 과목·표준단원 키는 provenance에 불변 보존하고, 최종 풀이 주개념이 다른 정본 과목·단원에 있다면 생성 UID의 `standardCourse / standardUnitKey / subUnitKey / rpm L1~L4`를 **그 실제 Primary**에 맞춘다. 교육과정 선후/학생 공급 가능 범위는 별도로 판단한다.
+
+## 2. CrossConcept는 문제 확장을 위한 필수 독립 축 — 검색 후 없으면 즉시 등록
+
+1. **Primary L3/L4가 확정된 직후, A1~C3 각각의 마지막 발문과 실제 풀이에 필요한 *추가* 개념을 먼저 추출한다.** 산술·기하평균, 최댓값·최솟값 실현, 판별식, 함수의 성질 등 개념적 추가 판단을 `CrossConcept`, 자연수·범위·양수 등 제약을 `Condition`, 사고 간 연결 방식을 `IntegrationPattern`에 구분한다. **Primary L4의 의미를 CrossConcept로 중복 계산하지 않는다.**
+2. 기존 ACTIVE CrossConcept를 `archive/data/meta-foundation/canonical/concepts/*.json`, `archive/data/meta-foundation/compiled/concept_registry.json`(파생 조회용), 기존 Generated `archive/generated/lite/v1/2022/H1/**/extension-meta/*.json`의 `main` 및 작업 브랜치에서 의미·alias·parent를 검색한다. **단어만 찾고 종료 금지:** 설명/풀이 단계가 실제 같은지 보고 재사용한다. `CC_FUNCTION_EXTREMA`처럼 미분 맥락의 '극대·극소'를 고1 AMGM '최댓값·최솟값' 대신 억지로 쓰지 않는다.
+3. **필요한 추가 개념이 아직 없으면 작업자가 직접 신규 CrossConcept를 확장·등록한다.** 별도 키 승인 대기나 단순 `EVIDENCE_DEBT`로 종료하지 않는다. 허용된 Generated-only `extension-meta`에 `EXT-CROSS-...` 고유키, 한국어 이름/정의, Primary 부모(L3/L4/ID), **원문항과의 추가 결정 단계**, 기존 유사 키와 비중복 근거, source exam/qid/SHA, 실제 example UID, 적용 대상 scope, 상태 `GENERATED_ACTIVE`를 저장한다. 신규 생성 후 **draft·Blueprint·Meta Registry·handoff의 UID별 참조와 Git 실파일까지 일치**시킨다. Generated ACTIVE와 전역 Canonical ACTIVE를 혼동하지 않는다.
+4. CrossConcept는 한 문항에 **여러 개 허용**한다. 필요하면 여러 키를 등록하되 서로 다른 실제 풀이 단계로 입증한다. `[]`는 추가 개념이 정말 없을 때만 사용하며, 검색을 안 했거나 키가 없어서 비운 상태를 `NOT_APPLICABLE`로 가장하지 않는다.
+5. A→B→C의 변화는 **Primary를 보존하면서 추가 CrossConcept/Condition/Integration 및 실제 결정적 사고를 달리 설계**한다. 여러 개념을 적었다는 사실만으로 변형의 품질이나 독립성을 주장하지 않는다. 최종 발문·풀이에서 적용하지 않은 '장식 키'는 삭제한다.
+
+## 3. CrossConcept가 난이도에 미치는 영향까지 UID별 근거화
+
+- 각 UID의 **Primary 핵심 판단 → CrossConcept별 추가 판단 → Condition에 따른 분기·예외·경계 → Integration 선후 의존성 → 오답 유발 단계**를 구체적인 풀이식/분기와 1:1로 연결한다.
+- 학습 `level=하/중/상`과 평가 `difficultyBucket=1..5`는 **별개의 독립 근거**로 판정한다. 추가 CrossConcept가 사고 단계를 늘리거나 동시에 여러 제약을 통합·검산하게 만들어 평가 난도가 높아질 수 있으나, **키의 개수나 A/B/C 슬롯만으로 자동 가산하지 않는다.** 단순 계산량, 숫자 크기, 외형상 복잡함과 실제 개념 결합 난도를 구별한다.
+- 제작 Blueprint에 문항별 `primaryRPM (ID·L1~L4·권위)`, `searchedRPMAndExtPaths`, `crossConceptKeys[] + perKeyDecisiveStep + extensionEvidence`, `conditionKeys[]`, `integrationPattern`, `learningLevelReason`, `difficultyBucketReason`을 남기고, **최종 학생 발문·해설 기준으로 역판정**한다. 모든 필드가 저장용 생성 JS/Meta Registry에 연결되어야 하며, 학생용 출시가 포함될 때는 Consumer/index UID 동등성까지 확인한다.
+- 종료/인계 증거: **9 UID 모두** 기존 L3/L4 대조 여부, 유효 CrossConcept(기존 ACTIVE 또는 신규 GENERATED_ACTIVE)와 등록 실파일, 실제 추가 사고, Condition·Integration 구별, 난도 두 축의 구체적 이유, `NOT_RUN` 항목을 빠짐없이 확인한다. 정본 검색·신규키 등록을 미수행하고 '메타 완료' 금지.
+
+## 4. q13 네거티브 사례 — 다음 q14에서 반복 금지
+
+- **잘못된 처리(폐기된 판단):** 원본이 공통수학2 명제라는 이유로 `H1-RPM-250 (증명)`을 먼저 붙임 → `CC_AM_GM`을 뒤늦게 추가 → 최솟값 L3 없음이라는 모호한 부채 선언. 이것은 기존 RPM L3/L4 의미검색과 CrossConcept 확장을 모두 충분히 수행하지 않은 사례다.
+- **실제 수정 완료된 정본:** q13 A1~C3 9 UID의 **Primary `H1-RPM-182`** (2022 공통수학1, L3 절대부등식 / L4 산술·기하평균), 활성 PT/TPL `PT_ABSOLUTE_INEQUALITY_EXTREMUM` / `TPL_AMGM_MINIMUM`. `CC_AM_GM`은 Primary L4와 중복되므로 추가 축에서 제외하고, 추가 CrossConcept **`EXT-CROSS-H1-C-06-MAXMIN` (최댓값·최솟값 판단)** 을 `GENERATED_ACTIVE`로 등록해 9/9 UID 연결함.
+- 해당 생성 확장 실파일: `archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json`. 원본 공통수학2 출처와 생성 타깃 공통수학1 분류는 분리 보존. **`H1-RPM-182 DIRECT_BINDING_GAP`은 L3 미존재가 아니라 해당 과목의 PT 직접 binding 부재**이며 별도 기술 부채일 뿐, 올바른 Primary·CrossConcept 배정을 막지 않는다.
+- q13은 이미 메타 핀포인트 수정으로 마감됐으므로 **q14 이후 제작에 위 검색→확장→난도 반영을 선행 적용**한다. q13 이력 아래의 옛 `H1-RPM-250 / CC_AM_GM` 기록은 `SUPERSEDED`일 뿐 현재 지시나 신규 생성의 기준이 아니다.
+
+---
+
 # CURRENT CORRECTION — q13 Primary + CrossConcept realignment (2026-10-15)
 - Actual q13 9/9 Primary **H1-RPM-182**: 2022 공통수학1, L1 방정식과 부등식 / L2 여러 가지 부등식 / L3 절대부등식 / L4 산술·기하평균. The original 2025 팔마고 고1 2기말 q13 remains 공통수학2 source; generated target course/unit changed to H22-C-06 / H22-C-06-HIGHER_INEQUALITY.
 - CrossConcept **EXT-CROSS-H1-C-06-MAXMIN (최댓값·최솟값 판단) GENERATED_ACTIVE** registered at `archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json` and bound 9/9. Original CC_AM_GM is absorbed into Primary L4, not duplicated as CrossConcept. B equalities and C constrained integer minima remain covered.
 - Canonical H1-RPM-182 crosswalk says DIRECT_BINDING_GAP: actual RPM L3 is resolved, but 2022 commonmath1 exact PT binding remains absent, recorded accurately. No canonical RPM mutation. Draft 117/207, next q14; formal independent, browser, consumer, main NOT_RUN.
 
-# CURRENT TOP — q13 AUTHOR COMPLETE / q14 NEXT (2026-10-15)
+# HISTORY — q13 최초 제작 당시 기록 / SUPERSEDED BY CURRENT HARD ABOVE (2026-10-15)
 - Branch `work/alive-25-palma-h1-2final-qid9`; q01~q12 108 protected, q13 A1~C3 new 9 AUTHOR candidates; cumulative **117/207**, remaining 90, firstMissing=q14.
 - Original q13: `(x+y)(4/x+9/y)` for x,y>0, minimum25, equality 2y=3x. Original and legacy unchanged (0d12b75e824ab47f08fc3b5a6180be595f882c6e).
 - Semantic nearest H1-RPM-250, but 2022 H22-C2-06 exact AMGM extremum RPM L3 is NOT verified: EVIDENCE_DEBT (do not call DIRECT_ACTIVE). ACTIVE PT_ABSOLUTE_INEQUALITY_EXTREMUM and TPL_AMGM_MINIMUM, H22-C2-06-CORE binding.
