@@ -26,9 +26,8 @@ function normalizeQid9Svg(input, uid, labels = {}) {
   if (!safeUid) throw new Error('QID9_SVG_UID_REQUIRED');
 
   let rootMatch = svg.match(/<(?:[A-Za-z_][\w.-]*:)?svg\b[^>]*>/i);
-  const countElements = name => [...svg.matchAll(new RegExp('<(?:[A-Za-z_][\\\\w.-]*:)?' + name + '\\\\b', 'gi'))].length;
-  let titleCount = countElements('title');
-  let descCount = countElements('desc');
+  const titleCount = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?title\b/gi)].length;
+  const descCount = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?desc\b/gi)].length;
   if (!rootMatch || titleCount > 1 || descCount > 1) {
     throw new Error('QID9_SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED:' + safeUid);
   }
