@@ -26,7 +26,7 @@ window.questionBank = [
       "$\\dfrac17$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 주어진 확률변수의 분포와 확률 조건을 식으로 정리하여 계산한다.\n조건 정리: 확률변수의 분포, 매개변수 조건과 구하려는 확률·기댓값을 정리한다.\n풀이 방향: 분포의 정의와 확률의 성질을 이용하여 필요한 확률과 기댓값을 차례로 계산한다.\n정석 풀이: 이항분포의 분산은 np(1−p)이므로 48p(1−p)=9, 즉 16p²−16p+3=0이다. 인수분해하면 (4p−1)(4p−3)=0이어서 p=1/4 또는 3/4인데, p<1/2 조건을 만족하는 것은 p=1/4이다.\n따라서 정답은 ②이다.",
+    "solution": "확률변수 $X$는 $B(48,p)$를 따르므로 분산은 $48p(1-p)$이다.\n$48p(1-p)=9$\n$16p^2-16p+3=0$\n$(4p-1)(4p-3)=0$\n따라서 $p=\\dfrac14$ 또는 $p=\\dfrac34$이다.\n그런데 $0\\le p<\\dfrac12$이므로 $p=\\dfrac14$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -91,7 +91,7 @@ window.questionBank = [
       "영어, 수학"
     ],
     "answer": "①",
-    "solution": "[키포인트] 서로 다른 과목의 상대적 성적은 표준점수로 비교한다.\n조건 정리: 표준점수는 점수에서 평균을 뺀 값을 표준편차로 나눈 값이다.\n풀이 방향: 세 과목의 표준점수를 구하여 가장 큰 값과 가장 작은 값을 비교한다.\n정석 풀이: 국어의 표준점수는 $\\dfrac{70-55}{6}=2.5$, 영어는 $\\dfrac{80-75}{5}=1$, 수학은 $\\dfrac{83-68}{10}=1.5$이다. 따라서 가장 높은 상대 성적은 국어이고 가장 낮은 상대 성적은 영어이다.\n따라서 정답은 ①이다.",
+    "solution": "과목마다 평균과 표준편차가 다르므로 표준점수 $z=\\dfrac{\\text{점수}-\\text{평균}}{\\text{표준편차}}$로 비교한다.\n국어:\n$z=\\dfrac{70-55}{6}=\\dfrac{15}{6}=2.5$\n영어:\n$z=\\dfrac{80-75}{5}=\\dfrac55=1$\n수학:\n$z=\\dfrac{83-68}{10}=\\dfrac{15}{10}=1.5$\n$2.5>1.5>1$이므로 상대적으로 가장 높은 과목은 국어, 가장 낮은 과목은 영어이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -123,7 +123,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 확률질량함수의 확률 합이 1이라는 조건으로 $a$를 정한 뒤 기댓값의 선형성을 이용한다.\n조건 정리: $P(X=x)=\\dfrac{x+a}{12}$ $(x=-2,-1,0)$, $P(X=x)=\\dfrac{ax}{12}$ $(x=1,2)$이다.\n풀이 방향: 먼저 모든 확률의 합으로 $a$를 구하고 $E(X)$를 계산한다.\n정석 풀이: 확률의 합이 1이므로 $\\dfrac{a-2+a-1+a+a+2a}{12}=1$이다. 따라서 $6a-3=12$에서 $a=\\dfrac52$이다.\n$E(X)=\\dfrac{-2(a-2)-(a-1)+a+4a}{12}=\\dfrac{2a+5}{12}=\\dfrac56$이므로 $E(6X)=6E(X)=5$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "확률질량함수의 모든 확률을 더하면 $1$이다.\n$\\dfrac{a-2}{12}+\\dfrac{a-1}{12}+\\dfrac a{12}+\\dfrac a{12}+\\dfrac{2a}{12}=1$\n$6a-3=12$\n$a=\\dfrac52$\n이제 기댓값을 구하면\n$E(X)=(-2)\\dfrac{a-2}{12}+(-1)\\dfrac{a-1}{12}+0\\cdot\\dfrac a{12}+1\\cdot\\dfrac a{12}+2\\cdot\\dfrac{2a}{12}$\n$=\\dfrac{-2a+4-a+1+a+4a}{12}$\n$=\\dfrac{2a+5}{12}=\\dfrac56$이다.\n따라서 $E(6X)=6E(X)=6\\cdot\\dfrac56=5$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -155,7 +155,7 @@ window.questionBank = [
       "$2564$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 표본평균의 분산과 제곱의 평균 사이의 관계를 이용한다.\n조건 정리: 모집단은 $N(50,64)$이고 표본의 크기는 $8$이다.\n풀이 방향: $E(\\overline X)$와 $V(\\overline X)$를 구한 뒤 $E(\\overline X^2)=V(\\overline X)+\\{E(\\overline X)\\}^2$를 적용한다.\n정석 풀이: $E(\\overline X)=50$이고 $V(\\overline X)=\\dfrac{64}{8}=8$이다. 따라서 $E(\\overline X^2)=8+50^2=8+2500=2508$이다.\n따라서 정답은 ②이다.",
+    "solution": "모집단의 평균은 $50$, 분산은 $64$이다.\n크기가 $8$인 표본의 표본평균에 대하여\n$E(\\overline X)=50$\n$V(\\overline X)=\\dfrac{64}{8}=8$이다.\n분산의 성질 $V(Y)=E(Y^2)-\\{E(Y)\\}^2$을 이용하면\n$E(\\overline X^2)=V(\\overline X)+\\{E(\\overline X)\\}^2$\n$=8+50^2=2508$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
