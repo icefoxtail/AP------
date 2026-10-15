@@ -112,6 +112,11 @@ test("parent-link generation binds stable authority inputs instead of its own fi
   const generator = read("archive/tools/build-basic-scope-parent-links.mjs");
   assert.match(generator, /authorityInputsSha256/,
     "parent-link provenance must identify the manifest-listed authority inputs");
+  assert.equal(
+    (generator.match(/data\/archive2-source-verification-index\.json/g) || []).length,
+    2,
+    "the derived source lookup index is excluded from both parent-link input projections",
+  );
   assert.doesNotMatch(generator, /generatedAgainst:\s*\{\s*catalogSha256:/,
     "the generated parent links cannot fingerprint the catalog that fingerprints those links");
 });
