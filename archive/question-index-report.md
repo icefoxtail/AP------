@@ -1,62 +1,63 @@
 # question-index 생성 리포트
 
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated) (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
-- 시험지 수(db.js): 741
-- 시험지 파일 수: 741
-- 원본 문항 수(중복 제거 전): 17459
-- 최종 인덱스 문항 수(중복 제거 후): 17437
-- 중복 qKey로 제외된 레코드: 22 (그룹 1)
+- 시험지 수(db.js): 755
+- 시험지 파일 수: 755
+- 원본 문항 수(중복 제거 전): 17787
+- 최종 인덱스 문항 수(중복 제거 후): 17743
+- 중복 qKey로 제외된 레코드: 44 (그룹 2)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
-- db.js 크기: 736181 bytes
-- 시험지 JS 총 크기: 34709090 bytes
-- 인덱스 크기: 18642757 bytes
+- db.js 크기: 745049 bytes
+- 시험지 JS 총 크기: 35143822 bytes
+- 인덱스 크기: 18878346 bytes
 - 로드 실패 파일: 0
 
-> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(17437)" 기준이다.
+> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(17743)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 143개 기준)
 
-- 공식(official): 17246
+- 공식(official): 17269
 - RAW-(임시 규약, 허용): 25 (distinct 7)
 - 비공식(invalid): 94 (distinct 21)
-- 빈 키(empty): 72
+- 빈 키(empty): 355
 
 상세 비공식 키 목록은 question-index-audit.md 참조.
 
 ## 필드 누락 (최종 인덱스 기준)
 
-- 누락 id: 1
-- 누락 content: 94
+- 누락 id: 2
+- 누락 content: 377
 - 누락 choices: 5
-- 누락 level: 521
-- 누락 standardUnit: 48
-- 누락 standardUnitKey: 72
-- 누락 standardCourse: 59
-- 누락 tags: 47
+- 누락 level: 804
+- 누락 standardUnit: 331
+- 누락 standardUnitKey: 355
+- 누락 standardCourse: 342
+- 누락 tags: 330
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
 - q.image 보유: 3396
-- content 내부 <img>: 453
+- content 내부 <img>: 467
 - content 내부 <svg>: 77
-- content 내부 <table>: 234
-- 시각요소 보유(hasImage=true, OR 합산): 4115
+- content 내부 <table>: 237
+- 시각요소 보유(hasImage=true, OR 합산): 4132
 
 ## 누락 예시
 
 ### id
+  - original/middle/m3/2mid/18_연향중_2학기_중간_중3_수학.js#(빈 id)
   - original/middle/m3/2mid/19_신흥중_2학기_중간_중3_수학.js#(빈 id)
 
 ### content
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#1
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#2
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#3
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#4
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#5
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#6
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#7
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#8
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#1
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#2
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#3
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#4
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#5
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#6
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#7
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#8
 
 ### choices
   - original/high/h1/1mid/23_매산여고_1학기_중간_고1_기출.js#19
@@ -76,44 +77,44 @@
   - original/high/h1/1mid/24_금당고_1학기_중간_고1_기출.js#8
 
 ### standardUnit
-  - original/middle/m3/1mid/22_연향중_1학기_중간_중3_기출c.js#20
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#1
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#2
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#3
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#4
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#5
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#6
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#7
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#1
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#2
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#3
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#4
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#5
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#6
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#7
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#8
 
 ### standardUnitKey
-  - original/middle/m3/1mid/22_연향중_1학기_중간_중3_기출c.js#20
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#1
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#2
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#3
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#4
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#5
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#6
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#7
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#1
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#2
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#3
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#4
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#5
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#6
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#7
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#8
 
 ### standardCourse
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#13
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#14
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#15
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#16
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#17
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#18
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#19
-  - original/middle/m3/1mid/21_신흥중_1학기_중간_중3_기출.js#20
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#1
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#2
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#3
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#4
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#5
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#6
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#7
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#8
 
 ### tags
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#1
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#2
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#3
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#4
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#5
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#6
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#7
-  - original/middle/m3/1mid/24_향림중_1학기_중간_중3_기출.js#8
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#1
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#2
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#3
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#4
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#5
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#6
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#7
+  - original/middle/m3/1final/20_신흥중_1학기_기말_중3_수학.js#8
 
 ### undefined/비객체 문항
   - 없음
