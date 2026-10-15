@@ -1,18 +1,18 @@
 'use strict';
 
 function getAttribute(tag, name) {
-  const match = tag.match(new RegExp("\\\\b" + name + "\\\\s*=\\\\s*(?:\"([^\"]*)\"|'([^']*)'|([^\\\\s>]+))", "i"));
+  const match = tag.match(new RegExp("\\b" + name + "\\s*=\\s*(?:\"([^\"]*)\"|'([^']*)'|([^\\s>]+))", "i"));
   return match ? (match[1] ?? match[2] ?? match[3] ?? '') : '';
 }
 
 function setAttribute(tag, name, value) {
-  const pattern = new RegExp("\\\\s+" + name + "\\\\s*=\\\\s*(?:\"[^\"]*\"|'[^']*'|[^\\\\s>]+)", "ig");
+  const pattern = new RegExp("\\s+" + name + "\\s*=\\s*(?:\"[^\"]*\"|'[^']*'|[^\\s>]+)", "ig");
   const clean = tag.replace(pattern, '');
   return clean.replace(/>$/, ' ' + name + '="' + value + '">');
 }
 
 function removeAttribute(tag, name) {
-  const pattern = new RegExp("\\\\s+" + name + "\\\\s*=\\\\s*(?:\"[^\"]*\"|'[^']*'|[^\\\\s>]+)", "ig");
+  const pattern = new RegExp("\\s+" + name + "\\s*=\\s*(?:\"[^\"]*\"|'[^']*'|[^\\s>]+)", "ig");
   return tag.replace(pattern, '');
 }
 
