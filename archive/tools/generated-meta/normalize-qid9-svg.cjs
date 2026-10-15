@@ -16,7 +16,7 @@ function removeAttribute(tag, name) {
   return tag.replace(pattern, '');
 }
 
-const SCALE_GUIDANCE = /축척|\\bscale(?:d|s|ing)?\\b/i;
+const SCALE_GUIDANCE = /축척|\bscale(?:d|s|ing)?\b/i;
 
 function removeScaleGuidanceSentences(value) {
   const text = String(value ?? '');
@@ -25,13 +25,13 @@ function removeScaleGuidanceSentences(value) {
   for (let index = 0; index < text.length; index++) {
     const character = text[index];
     if (!/[.!?。！？]/.test(character)) continue;
-    if (character === '.' && /\\d/.test(text[index - 1] || '') && /\\d/.test(text[index + 1] || '')) continue;
-    if (character === '.' && text[index + 1] && !/\\s/.test(text[index + 1])) continue;
+    if (character === '.' && /\d/.test(text[index - 1] || '') && /\d/.test(text[index + 1] || '')) continue;
+    if (character === '.' && text[index + 1] && !/\s/.test(text[index + 1])) continue;
     sentences.push(text.slice(start, index + 1));
     start = index + 1;
   }
   if (start < text.length) sentences.push(text.slice(start));
-  return sentences.filter(sentence => !SCALE_GUIDANCE.test(sentence)).join('').replace(/\\s+/g, ' ').trim();
+  return sentences.filter(sentence => !SCALE_GUIDANCE.test(sentence)).join('').replace(/\s+/g, ' ').trim();
 }
 
 function escapeXmlText(value) {
@@ -88,11 +88,11 @@ function normalizeQid9Svg(input, uid, labels = {}) {
   if (!titleId) titleId = allocate('title');
   if (!descId) descId = allocate('desc');
 
-  const descElementMatches = [...svg.matchAll(/<(?:[A-Za-z_][\\w.-]*:)?desc\\b[^>]*>[\\s\\S]*?<\\/(?:[A-Za-z_][\\w.-]*:)?desc\\s*>/gi)];
+  const descElementMatches = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?desc\b[^>]*>[\s\S]*?<\/(?:[A-Za-z_][\w.-]*:)?desc\s*>/gi)];
   if (descElementMatches.length !== 1) throw new Error('QID9_SVG_ACCESSIBILITY_DESCRIPTION_SCALE_GUIDANCE_UNRESOLVED:' + safeUid);
   const oldTitle = titleMatches[0][0], oldDesc = descElementMatches[0][0], oldRoot = rootMatch[0];
-  const descOpen = oldDesc.match(/^<(?:[A-Za-z_][\\w.-]*:)?desc\\b[^>]*>/i)[0];
-  const descClose = oldDesc.match(/<\\/(?:[A-Za-z_][\\w.-]*:)?desc\\s*>$/i)[0];
+  const descOpen = oldDesc.match(/^<(?:[A-Za-z_][\w.-]*:)?desc\b[^>]*>/i)[0];
+  const descClose = oldDesc.match(/<\/(?:[A-Za-z_][\w.-]*:)?desc\s*>$/i)[0];
   const originalDescription = oldDesc.slice(descOpen.length, oldDesc.length - descClose.length);
   let normalizedDescription = originalDescription;
   if (SCALE_GUIDANCE.test(originalDescription)) {
