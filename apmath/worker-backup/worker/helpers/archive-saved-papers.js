@@ -211,7 +211,7 @@ async function embedSavedPaperAssets(env, questions) {
   }
 }
 
-export async function prepareSavedPaperBatch(env, input) {
+export async function prepareSavedPaperBatch(env, input, metadataAuthority = null) {
   if (input.schema_version !== SAVED_PAPER_SCHEMA) fail("schema_version mismatch", 400);
   if (!SAVED_PAPER_BATCH_ID.test(String(input.save_batch_id || "")))
     fail("save_batch_id must be a UUID", 400);
@@ -312,7 +312,7 @@ export async function prepareSavedPaperBatch(env, input) {
       { question_count: paper.questions.length },
       paper.questions,
       meta,
-      { canonicalAuthority: currentCatalog.canonicalAuthority },
+      { canonicalAuthority: currentCatalog.canonicalAuthority, metadataAuthority },
     );
     const snapshot = {
       questions: paper.questions,

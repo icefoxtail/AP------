@@ -2200,8 +2200,21 @@ function buildStudentWrongClinicReissuePayload(sid, sourcePacket, candidates) {
         examDate: row.exam_date || row.item?.examDate || '',
         archiveFile: row.archive_file || row.item?.archiveFile || '',
         questionNo: Number(row.question_no || row.item?.questionNo || 0),
-        sourceArchiveFile: row.item?.sourceArchiveFile || row.archive_file || '',
-        sourceQuestionNo: Number(row.item?.sourceQuestionNo || row.question_no || 0),
+        displayArchiveFile: row.item?.displayArchiveFile || row.archive_file || row.item?.archiveFile || '',
+        displayQuestionNo: Number(row.item?.displayQuestionNo || row.question_no || row.item?.questionNo || 0),
+        sourceArchiveFile: row.item?.sourceArchiveFile ?? null,
+        sourceQuestionNo: row.item?.sourceQuestionNo ?? null,
+        sourceQuestionOrdinal: row.item?.sourceQuestionOrdinal ?? null,
+        sourceQuestionUid: row.item?.sourceQuestionUid || '',
+        sourceIdentityStatus: row.item?.sourceIdentityStatus || 'UNRESOLVED',
+        metadataRevision: row.item?.metadataRevision ?? null,
+        metadataHash: row.item?.metadataHash ?? null,
+        metadataJson: row.item?.metadataJson ?? null,
+        metadataSnapshotStatus: row.item?.metadataSnapshotStatus || 'UNRESOLVED',
+        sourceOriginRefs: [
+            ...(Array.isArray(row.item?.sourceOriginRefs) ? row.item.sourceOriginRefs : []),
+            { clinicPacketKey: row.packet_key || '', clinicOrderNo: Number(row.order_no || 0), reviewSource: true }
+        ],
         reviewSourcePacketKey: row.packet_key || '',
         reviewSourceOrderNo: Number(row.order_no || 0)
     })).filter(item => item.archiveFile && item.questionNo);

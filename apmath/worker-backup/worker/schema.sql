@@ -108,6 +108,48 @@ CREATE TABLE IF NOT EXISTS wrong_answers (
   student_id TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS assessment_result_items (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  session_id TEXT NOT NULL,
+  assignment_id TEXT,
+  pack_id TEXT,
+  student_id TEXT,
+  class_id TEXT,
+  order_no INTEGER NOT NULL,
+  question_no INTEGER,
+  result_status TEXT DEFAULT 'unchecked' CHECK (result_status IN ('correct', 'wrong', 'partial', 'unchecked')),
+  is_correct INTEGER CHECK (is_correct IN (0, 1) OR is_correct IS NULL),
+  student_answer TEXT,
+  correct_answer TEXT,
+  score REAL,
+  max_score REAL,
+  source_archive_file TEXT,
+  source_question_no INTEGER,
+  standard_unit_key TEXT,
+  standard_unit TEXT,
+  concept_cluster_key TEXT,
+  type_key TEXT,
+  difficulty TEXT,
+  analysis_note TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_assessment_result_items_session_order_unique
+  ON assessment_result_items(session_id, order_no);
+CREATE INDEX IF NOT EXISTS idx_assessment_result_items_session
+  ON assessment_result_items(session_id);
+CREATE INDEX IF NOT EXISTS idx_assessment_result_items_student
+  ON assessment_result_items(student_id);
+CREATE INDEX IF NOT EXISTS idx_assessment_result_items_class
+  ON assessment_result_items(class_id);
+CREATE INDEX IF NOT EXISTS idx_assessment_result_items_pack
+  ON assessment_result_items(pack_id);
+CREATE INDEX IF NOT EXISTS idx_assessment_result_items_source
+  ON assessment_result_items(source_archive_file, source_question_no);
+CREATE INDEX IF NOT EXISTS idx_assessment_result_items_assignment
+  ON assessment_result_items(assignment_id);
+
 CREATE TABLE IF NOT EXISTS questions (
   id TEXT PRIMARY KEY,
   standard_unit TEXT,
