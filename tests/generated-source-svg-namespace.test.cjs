@@ -62,7 +62,7 @@ test('QID9 derived SVG removes scale guidance from description while keeping the
  const normalized=normalizeQid9Svg(source,'ALITE-JEIL25-2FINAL-Q14-A1-solution');
  assert.equal(validateSvgStudentLanguage(normalized,{assetRef:'derived/q14-solution.svg'}).status,'PASS');
  assert.doesNotMatch(normalized,/축척/);
- assert.match(normalized,/<desc id="desc">수직 점근선 x=2, x=5와 수평 점근선 y=0, y=5가 만드는 직사각형\. 가로 3, 세로 5, 넓이 15\.<\\/desc>/);
+ assert.match(normalized,/<desc id="desc">수직 점근선 x=2, x=5와 수평 점근선 y=0, y=5가 만드는 직사각형\. 가로 3, 세로 5, 넓이 15\.<\/desc>/);
  assert.equal(normalized.match(/<rect[^>]*>/)[0],source.match(/<rect[^>]*>/)[0]);
  assert.equal(normalized.match(/<path[^>]*>/)[0],source.match(/<path[^>]*>/)[0]);
 });
