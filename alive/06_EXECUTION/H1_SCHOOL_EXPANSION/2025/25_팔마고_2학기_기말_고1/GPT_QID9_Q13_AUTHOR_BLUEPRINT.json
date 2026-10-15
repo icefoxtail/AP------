@@ -2,12 +2,12 @@
   "schemaVersion": "PALMA25_QID9_Q13_AUTHOR_BLUEPRINT_v1",
   "sourceQid": 13,
   "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
-  "primaryRpmL3": "H1-RPM-250",
-  "rpmL3": "증명(인접)",
-  "rpmL4": "절대부등식 증명(최솟값 정확 RPM 직접 연결 부채)",
+  "primaryRpmL3": "H1-RPM-182",
+  "rpmL3": "절대부등식",
+  "rpmL4": "산술·기하평균",
   "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
   "tpl": "TPL_AMGM_MINIMUM",
-  "invariant": "전개 후 양의 두 교차항의 곱이 p²q²이며 AMGM로 전체 하한 (p+q)^2를 증명한다. 등호 x:y=p:q. 정수 조건이면 정수 분모를 직접 비교한다.",
+  "invariant": "전개 후 양의 두 교차항의 곱이 p²q²이며 AMGM로 전체 하한 (p+q)^2를 증명한다. 등호 x:y=p:q. 정수 조건이면 정수 분모를 직접 비교한다. 원래 산술·기하평균이 Primary L4이며 최댓값·최솟값 실현 판단은 CrossConcept.",
   "designModes": {
     "A": "계수 및 최솟값 직접 변화",
     "B": "등호 비율과 합 조건",
@@ -19,12 +19,12 @@
       "slot": "A1",
       "mode": "STRICT_VARIANT",
       "stem": "$x\\gt0$, $y\\gt0$일 때 $(x+y)\\left(\\dfrac4x+\\dfrac{25}y\\right)$의 최솟값은?",
-      "primaryRpmL3": "H1-RPM-250",
-      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "primaryRpmL3": "H1-RPM-182",
+      "l4": "산술·기하평균",
       "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
       "tpl": "TPL_AMGM_MINIMUM",
       "cross": [
-        "CC_AM_GM"
+        "EXT-CROSS-H1-C-06-MAXMIN"
       ],
       "conditions": [
         "COND_POSITIVE"
@@ -69,19 +69,21 @@
         }
       ],
       "reverseStem": "KEEP",
-      "mathEvidence": "(2+5)^2=49; equality 2y=5x"
+      "mathEvidence": "(2+5)^2=49; equality 2y=5x",
+      "primaryL3Evidence": "H1-RPM-182 2022 공통수학1 L3 절대부등식 / L4 산술·기하평균",
+      "crossEvidence": "EXT-CROSS-H1-C-06-MAXMIN GENERATED_ACTIVE max/min and attainment, archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json"
     },
     {
       "uid": "ALITE-PALMA25-2FINAL-Q13-A2",
       "slot": "A2",
       "mode": "STRICT_VARIANT",
       "stem": "양수 $x,y$에 대하여 $(x+y)\\left(\\dfrac9x+\\dfrac{16}y\\right)$의 최솟값을 구하면?",
-      "primaryRpmL3": "H1-RPM-250",
-      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "primaryRpmL3": "H1-RPM-182",
+      "l4": "산술·기하평균",
       "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
       "tpl": "TPL_AMGM_MINIMUM",
       "cross": [
-        "CC_AM_GM"
+        "EXT-CROSS-H1-C-06-MAXMIN"
       ],
       "conditions": [
         "COND_POSITIVE"
@@ -126,19 +128,21 @@
         }
       ],
       "reverseStem": "KEEP",
-      "mathEvidence": "(3+4)^2=49"
+      "mathEvidence": "(3+4)^2=49",
+      "primaryL3Evidence": "H1-RPM-182 2022 공통수학1 L3 절대부등식 / L4 산술·기하평균",
+      "crossEvidence": "EXT-CROSS-H1-C-06-MAXMIN GENERATED_ACTIVE max/min and attainment, archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json"
     },
     {
       "uid": "ALITE-PALMA25-2FINAL-Q13-A3",
       "slot": "A3",
       "mode": "STRICT_VARIANT",
       "stem": "$x,y$가 양수일 때 $(x+y)\\left(\\dfrac1x+\\dfrac{16}y\\right)$의 최솟값은?",
-      "primaryRpmL3": "H1-RPM-250",
-      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "primaryRpmL3": "H1-RPM-182",
+      "l4": "산술·기하평균",
       "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
       "tpl": "TPL_AMGM_MINIMUM",
       "cross": [
-        "CC_AM_GM"
+        "EXT-CROSS-H1-C-06-MAXMIN"
       ],
       "conditions": [
         "COND_POSITIVE"
@@ -183,19 +187,21 @@
         }
       ],
       "reverseStem": "KEEP",
-      "mathEvidence": "(1+4)^2=25"
+      "mathEvidence": "(1+4)^2=25",
+      "primaryL3Evidence": "H1-RPM-182 2022 공통수학1 L3 절대부등식 / L4 산술·기하평균",
+      "crossEvidence": "EXT-CROSS-H1-C-06-MAXMIN GENERATED_ACTIVE max/min and attainment, archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json"
     },
     {
       "uid": "ALITE-PALMA25-2FINAL-Q13-B1",
       "slot": "B1",
       "mode": "FOLLOWUP",
       "stem": "양수 $x,y$가 $x+y=7$을 만족할 때 $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$가 최솟값을 갖도록 하는 $\\dfrac{x}{y}$의 값은?",
-      "primaryRpmL3": "H1-RPM-250",
-      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "primaryRpmL3": "H1-RPM-182",
+      "l4": "산술·기하평균",
       "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
       "tpl": "TPL_AMGM_MINIMUM",
       "cross": [
-        "CC_AM_GM"
+        "EXT-CROSS-H1-C-06-MAXMIN"
       ],
       "conditions": [
         "COND_POSITIVE",
@@ -241,19 +247,21 @@
         }
       ],
       "reverseStem": "KEEP",
-      "mathEvidence": "x/y=2/3; sum 7 =>14/5,21/5"
+      "mathEvidence": "x/y=2/3; sum 7 =>14/5,21/5",
+      "primaryL3Evidence": "H1-RPM-182 2022 공통수학1 L3 절대부등식 / L4 산술·기하평균",
+      "crossEvidence": "EXT-CROSS-H1-C-06-MAXMIN GENERATED_ACTIVE max/min and attainment, archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json"
     },
     {
       "uid": "ALITE-PALMA25-2FINAL-Q13-B2",
       "slot": "B2",
       "mode": "FOLLOWUP",
       "stem": "$x,y>0$이고 $x+y=10$이다. $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$가 최솟값을 가질 때의 $x$의 값은?",
-      "primaryRpmL3": "H1-RPM-250",
-      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "primaryRpmL3": "H1-RPM-182",
+      "l4": "산술·기하평균",
       "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
       "tpl": "TPL_AMGM_MINIMUM",
       "cross": [
-        "CC_AM_GM"
+        "EXT-CROSS-H1-C-06-MAXMIN"
       ],
       "conditions": [
         "COND_POSITIVE",
@@ -299,19 +307,21 @@
         }
       ],
       "reverseStem": "KEEP",
-      "mathEvidence": "sum10 x4 y6"
+      "mathEvidence": "sum10 x4 y6",
+      "primaryL3Evidence": "H1-RPM-182 2022 공통수학1 L3 절대부등식 / L4 산술·기하평균",
+      "crossEvidence": "EXT-CROSS-H1-C-06-MAXMIN GENERATED_ACTIVE max/min and attainment, archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json"
     },
     {
       "uid": "ALITE-PALMA25-2FINAL-Q13-B3",
       "slot": "B3",
       "mode": "FOLLOWUP",
       "stem": "양수 $x,y$가 $x+y=15$를 만족한다. $(x+y)\\left(\\dfrac9x+\\dfrac4y\\right)$가 최솟값을 가질 때 $y$의 값은?",
-      "primaryRpmL3": "H1-RPM-250",
-      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "primaryRpmL3": "H1-RPM-182",
+      "l4": "산술·기하평균",
       "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
       "tpl": "TPL_AMGM_MINIMUM",
       "cross": [
-        "CC_AM_GM"
+        "EXT-CROSS-H1-C-06-MAXMIN"
       ],
       "conditions": [
         "COND_POSITIVE",
@@ -357,19 +367,21 @@
         }
       ],
       "reverseStem": "KEEP",
-      "mathEvidence": "p3 q2 x9 y6"
+      "mathEvidence": "p3 q2 x9 y6",
+      "primaryL3Evidence": "H1-RPM-182 2022 공통수학1 L3 절대부등식 / L4 산술·기하평균",
+      "crossEvidence": "EXT-CROSS-H1-C-06-MAXMIN GENERATED_ACTIVE max/min and attainment, archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json"
     },
     {
       "uid": "ALITE-PALMA25-2FINAL-Q13-C1",
       "slot": "C1",
       "mode": "PLUS_ONE",
       "stem": "양의 정수 $x,y$가 $x+y=14$를 만족한다. $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$의 값이 가장 작아지도록 하는 $x$의 값은?",
-      "primaryRpmL3": "H1-RPM-250",
-      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "primaryRpmL3": "H1-RPM-182",
+      "l4": "산술·기하평균",
       "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
       "tpl": "TPL_AMGM_MINIMUM",
       "cross": [
-        "CC_AM_GM"
+        "EXT-CROSS-H1-C-06-MAXMIN"
       ],
       "conditions": [
         "COND_POSITIVE",
@@ -416,19 +428,21 @@
         }
       ],
       "reverseStem": "KEEP",
-      "mathEvidence": "x=6,y=8; E=301/12"
+      "mathEvidence": "x=6,y=8; E=301/12",
+      "primaryL3Evidence": "H1-RPM-182 2022 공통수학1 L3 절대부등식 / L4 산술·기하평균",
+      "crossEvidence": "EXT-CROSS-H1-C-06-MAXMIN GENERATED_ACTIVE max/min and attainment, archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json"
     },
     {
       "uid": "ALITE-PALMA25-2FINAL-Q13-C2",
       "slot": "C2",
       "mode": "PLUS_ONE",
       "stem": "양의 정수 $x,y$가 $x+y=13$을 만족한다. $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$의 최솟값은?",
-      "primaryRpmL3": "H1-RPM-250",
-      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "primaryRpmL3": "H1-RPM-182",
+      "l4": "산술·기하평균",
       "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
       "tpl": "TPL_AMGM_MINIMUM",
       "cross": [
-        "CC_AM_GM"
+        "EXT-CROSS-H1-C-06-MAXMIN"
       ],
       "conditions": [
         "COND_POSITIVE",
@@ -475,19 +489,21 @@
         }
       ],
       "reverseStem": "KEEP",
-      "mathEvidence": "x=5,y=8; E=1001/40"
+      "mathEvidence": "x=5,y=8; E=1001/40",
+      "primaryL3Evidence": "H1-RPM-182 2022 공통수학1 L3 절대부등식 / L4 산술·기하평균",
+      "crossEvidence": "EXT-CROSS-H1-C-06-MAXMIN GENERATED_ACTIVE max/min and attainment, archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json"
     },
     {
       "uid": "ALITE-PALMA25-2FINAL-Q13-C3",
       "slot": "C3",
       "mode": "PLUS_ONE",
       "stem": "양의 정수 $x,y$가 $x+y=25$를 만족한다. $(x+y)\\left(\\dfrac9x+\\dfrac{16}y\\right)$의 값이 가장 작아지도록 하는 $x$의 값은?",
-      "primaryRpmL3": "H1-RPM-250",
-      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "primaryRpmL3": "H1-RPM-182",
+      "l4": "산술·기하평균",
       "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
       "tpl": "TPL_AMGM_MINIMUM",
       "cross": [
-        "CC_AM_GM"
+        "EXT-CROSS-H1-C-06-MAXMIN"
       ],
       "conditions": [
         "COND_POSITIVE",
@@ -534,7 +550,11 @@
         }
       ],
       "reverseStem": "KEEP",
-      "mathEvidence": "x=11 y=14 E=3775/77"
+      "mathEvidence": "x=11 y=14 E=3775/77",
+      "primaryL3Evidence": "H1-RPM-182 2022 공통수학1 L3 절대부등식 / L4 산술·기하평균",
+      "crossEvidence": "EXT-CROSS-H1-C-06-MAXMIN GENERATED_ACTIVE max/min and attainment, archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json"
     }
-  ]
+  ],
+  "crossConceptAdditional": "EXT-CROSS-H1-C-06-MAXMIN",
+  "crossConceptRegistry": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json"
 }

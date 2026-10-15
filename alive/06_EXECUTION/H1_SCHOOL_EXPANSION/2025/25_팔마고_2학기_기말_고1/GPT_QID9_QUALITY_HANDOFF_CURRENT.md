@@ -1,3 +1,8 @@
+# CURRENT CORRECTION — q13 Primary + CrossConcept realignment (2026-10-15)
+- Actual q13 9/9 Primary **H1-RPM-182**: 2022 공통수학1, L1 방정식과 부등식 / L2 여러 가지 부등식 / L3 절대부등식 / L4 산술·기하평균. The original 2025 팔마고 고1 2기말 q13 remains 공통수학2 source; generated target course/unit changed to H22-C-06 / H22-C-06-HIGHER_INEQUALITY.
+- CrossConcept **EXT-CROSS-H1-C-06-MAXMIN (최댓값·최솟값 판단) GENERATED_ACTIVE** registered at `archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json` and bound 9/9. Original CC_AM_GM is absorbed into Primary L4, not duplicated as CrossConcept. B equalities and C constrained integer minima remain covered.
+- Canonical H1-RPM-182 crosswalk says DIRECT_BINDING_GAP: actual RPM L3 is resolved, but 2022 commonmath1 exact PT binding remains absent, recorded accurately. No canonical RPM mutation. Draft 117/207, next q14; formal independent, browser, consumer, main NOT_RUN.
+
 # CURRENT TOP — q13 AUTHOR COMPLETE / q14 NEXT (2026-10-15)
 - Branch `work/alive-25-palma-h1-2final-qid9`; q01~q12 108 protected, q13 A1~C3 new 9 AUTHOR candidates; cumulative **117/207**, remaining 90, firstMissing=q14.
 - Original q13: `(x+y)(4/x+9/y)` for x,y>0, minimum25, equality 2y=3x. Original and legacy unchanged (0d12b75e824ab47f08fc3b5a6180be595f882c6e).

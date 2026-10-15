@@ -68,8 +68,8 @@
       "action": "CC_AM_GM ACTIVE; q13 9/9 연결"
     }
   ],
-  "rpm": "H1-RPM-250",
-  "rpmStatus": "AMGM_EXTREMUM_DIRECT_H22_C2_06_RPM_L3_NOT_VERIFIED",
+  "rpm": "H1-RPM-182",
+  "rpmStatus": "DIRECT_BINDING_GAP_2022_COMMONMATH1_H22_C_06",
   "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE",
   "tpl": "TPL_AMGM_MINIMUM ACTIVE",
   "curriculum": "2022 공통수학2 명제, 미분 벡터 극한 금지",
@@ -78,10 +78,16 @@
   "browser": "NOT_RUN",
   "main": "NOT_RUN",
   "crossConcept": {
-    "key": "CC_AM_GM",
-    "status": "ACTIVE",
-    "source": "archive/data/meta-foundation/canonical/concepts/algebra.json",
-    "sha": "bac94c0e7899b9a23e36d5c4f30178a490211f7a",
+    "key": "EXT-CROSS-H1-C-06-MAXMIN",
+    "status": "GENERATED_ACTIVE",
+    "registry": "archive/generated/lite/v1/2022/H1/H22-C-06-HIGHER_INEQUALITY/extension-meta/palma25-2final-q13-maxmin.json",
     "appliedUidCount": 9
+  },
+  "amendment": {
+    "correctedFrom": "H1-RPM-250 / CC_AM_GM (category driven, wrong Primary)",
+    "correctedTo": "H1-RPM-182 / EXT-CROSS-H1-C-06-MAXMIN",
+    "reason": "Actual mathematics drives Primary; CrossConcept is max/min judgment, and original exam course stays provenance",
+    "originalSourceCourse": "공통수학2",
+    "targetGeneratedCourse": "공통수학1"
   }
 }
