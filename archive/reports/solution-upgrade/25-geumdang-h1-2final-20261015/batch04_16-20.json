@@ -1,0 +1,52 @@
+{
+  "batch": 4,
+  "scope": "16-20",
+  "mathAnswersMatch": 5,
+  "correctionsToAnswers": 0,
+  "items": [
+    {
+      "id": 16,
+      "disposition": "UPGRADE",
+      "change": "new q16 solution SVG + solutionImage fields",
+      "math": "원본 그림에서 수직 x=−2, 수평 y=3, 점 (0,1), a=3,b=2,c=2. y=√(3x+2)+2, 정의역 [-2/3,∞), 치역 [2,∞), 제1·2사분면만 통과",
+      "visual": "Python 수치 검산 선행 → 421 samples + 시작점 마커, 해설 위치·축·사분면 표시"
+    },
+    {
+      "id": 17,
+      "disposition": "KEEP",
+      "math": "A∩B={3,7} 또는 {2,3,5}, 15≤k≤34로 제한, 실제 k=21,30, 합51",
+      "visual": "NO_VISUAL; 집합의 약수·배수 경우분리에 시각화 추가 이점 없음"
+    },
+    {
+      "id": 18,
+      "disposition": "KEEP",
+      "math": "지름 AB인 원 중심(0,0), r=√10; 직선 2x−y=k, |k|≤5√2, 정수 −7…7, 15개. 경계는 정수가 아니고 A/B를 제외해도 다른 교점 있음.",
+      "visual": "기존 SVG 원 중심·반지름·A,B 좌표·접선 경계 직선 x/y 실제 geometry 검산, 변경 없음"
+    },
+    {
+      "id": 19,
+      "disposition": "UPGRADE",
+      "change": "new q19 solution SVG + graph tag",
+      "math": "|x²−6x+4|=k는 (x−3)²=5+k, 5−k로 분기. 네 실근은 0<k<5; k=0일 때 두 개, k=5일 때 세 개, k>5일 때 두 개. 정수 합10.",
+      "visual": "Python 수치 검증, 3 branch polylines total 903 samples, k=2와 네 실근, 근호 경계·영점 라벨"
+    },
+    {
+      "id": 20,
+      "disposition": "UPGRADE",
+      "change": "new q20 solution SVG + graph tag",
+      "math": "x<1의 치역 (−∞,5); 역함수를 위해 x≥1 이차식은 [5,∞) 일대일 대응, a+b=−2, a>0, 꼭짓점 ≤1 ⇒ a≥2. a=2,b=−4, g(3)=13.",
+      "visual": "Python 수치 검증, x=1 경계 (1,5) 포함, 직선/포물선 별도 652 sample, 각 구간의 치역 표시"
+    }
+  ],
+  "existingSvg9_15_18_22": "unchanged except q09/q15 accessible title/desc (other batches)",
+  "sourceProtected": [
+    "content",
+    "choices",
+    "answer",
+    "image",
+    "UID",
+    "provenance"
+  ],
+  "curriculum": "공통수학2 선행 이하, 미분·벡터 사용 없음",
+  "renderStatus": "NOT_TESTED (브라우저 접속/재현 환경 미실행)"
+}
