@@ -339,8 +339,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "$t=2x+1$이라 놓으면 $x=\\dfrac{t-1}{2}$이다.\n주어진 식에 대입하면\n$f(t)=3\\cdot\\dfrac{t-1}{2}+5$\n$=\\dfrac{3t-3+10}{2}$\n$=\\dfrac{3t+7}{2}$이다.\n\n이 일차함수의 기울기는 $\\dfrac32\\ne0$이므로 일대일대응이며 역함수가 존재한다.\n$f^{-1}(14)$는 $f(t)=14$가 되게 하는 입력 $t$이다.\n\n$\\dfrac{3t+7}{2}=14$\n$3t+7=28$\n$3t=21$\n$t=7$이다.\n\n따라서 정답은 ①이다.",
-    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
-    "subUnit": "함수의 뜻과 그래프",
+    "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+    "subUnit": "역함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -455,8 +455,8 @@ window.questionBank = [
     "solutionImageCaption": "a=12에서 (4,4), (6,6)의 두 고정점을 확인한다.",
 
     "solutionImageSize": "full",
-    "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
-    "subUnit": "함수의 뜻과 그래프",
+    "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+    "subUnit": "역함수",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
