@@ -1,0 +1,30 @@
+{
+  "batch": 5,
+  "scope": "21-22",
+  "mathAnswersMatch": 2,
+  "answersChanged": 0,
+  "items": [
+    {
+      "id": 21,
+      "disposition": "UPGRADE",
+      "change": "solution",
+      "math": "서로소의 의미 A∩B=∅ 및 서로 다른 두 수치/원소 집합 사례를 각각 별도 예시로 증명",
+      "reason": "서술형 채점에 필요한 정의와 두 예시가 구분되도록 재조판"
+    },
+    {
+      "id": 22,
+      "disposition": "UPGRADE",
+      "change": "solution + existing SVG POLISH",
+      "math": "t=√(x−2)≥0 치환 → t²−t+k+2=0, D=−4k−7>0, 작은 근 (1−√(-4k−7))/2≥0 ⇒ k≥−2; 따라서 −2≤k<−7/4.",
+      "bounds": [
+        "k=−2: t=0,1로 서로 다른 교점 두 개, 포함",
+        "k=−7/4: 중근 한 개, 제외",
+        "k<−2: 작은 근 음수, 교점 한 개, 제외",
+        "k>−7/4: 실근 없음, 제외"
+      ],
+      "reason": "작은칠판 계산 연속·근호 조건·경계값의 실제 교점수 완성; 기존 SVG 물리 geometry 유지, title/desc만 보강."
+    }
+  ],
+  "curriculum": "중등 선행 개념 및 고1 공통수학2: 집합, 방정식, 근의 공식, 함수 정의역",
+  "guard": "content/choices/answer/image/identity/provenance unchanged"
+}
