@@ -44,7 +44,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "함수의 감소"
+      "함수의 감소",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=x^3+6x^2+9x+1$이 감소하는 구간이 $[a,b]$일 때, $b-a$의 값은? [3.6점]",
@@ -78,7 +79,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "극댓값과 극솟값"
+      "극댓값과 극솟값",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=x^3-6x^2+9x+4$의 극댓값을 $M$, 극솟값을 $m$이라 할 때, $M-m$의 값은? [3.8점]",
@@ -112,7 +114,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "방정식의 실근의 개수"
+      "방정식의 실근의 개수",
+      "그래프"
     ],
     "wide": false,
     "content": "방정식 $3x^4+4x^3-12x^2=a$의 서로 다른 실근의 개수가 $4$일 때, 정수 $a$의 개수는? [3.8점]",
@@ -177,7 +180,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "곡선과 x축 사이의 넓이"
+      "곡선과 x축 사이의 넓이",
+      "그래프"
     ],
     "wide": false,
     "content": "곡선 $y=ax-x^2$과 $x$축으로 둘러싸인 도형의 넓이가 $\\dfrac{9}{2}$일 때, 양수 $a$의 값은? [3.8점]",
@@ -251,7 +255,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "극댓값과 극솟값"
+      "극댓값과 극솟값",
+      "그래프"
     ],
     "wide": false,
     "content": "함수 $f(x)=-x^3+ax^2+a^2x-1$이 $-1\\lt x\\lt1$에서 극솟값, $x\\gt1$에서 극댓값을 갖도록 하는 실수 $a$의 값의 범위가 $n\\lt a\\lt m$일 때, $nm$의 값은? [4.2점]",
@@ -266,7 +271,7 @@ window.questionBank=[
     "solutionImage": "assets/images/25_제일고_2학기_기말_고2_수학II/q8-solution.svg",
     "solutionImageAlt": "도함수의 두 영점 (a=2 예시): 실제 함수 곡선과 핵심 극점·영점을 표현한 해설 그래프",
     "solutionImageSize": "full",
-    "solution": "극솟값을 갖는 점과 극댓값을 갖는 점을 도함수의 영점으로 구한다.\n$f'(x)=-3x^2+2ax+a^2$\n$=-(3x+a)(x-a)$\n따라서 두 영점은 $x=-\\dfrac a3,\\ a$이다.\n\n$f'$는 최고차항의 계수가 음수인 이차식이므로, 서로 다른 두 영점 중 작은 점에서 $-$에서 $+$로, 큰 점에서 $+$에서 $-$로 부호가 변한다.\n즉 작은 영점이 극솟점, 큰 영점이 극댓점이다.\n\n① $a>0$이면 $-\\dfrac a3<a$이다.\n극솟점이 $(-1,1)$ 안에 있고 극댓점이 $1$보다 커야 하므로\n$-1<-\\dfrac a3<1,\\qquad a>1$\n$0<a<3,\\qquad a>1$\n따라서 $1<a<3$이다.\n\n② $a<0$이면 $a<-\\dfrac a3$이다.\n극솟점이 $(-1,1)$ 안에 있으려면 $-1<a<0$이어야 한다.\n그러나 이때 극댓점은 $0<-\\dfrac a3<\\dfrac13<1$이므로 조건을 만족할 수 없다.\n\n③ $a=0$이면 $f'(x)=-3x^2$이고 극값이 생기지 않는다.\n\n따라서 $n=1,\\ m=3$이므로 $nm=3$이다.\n따라서 정답은 ③이다.",
+    "solution": "극솟값을 갖는 점과 극댓값을 갖는 점을 도함수의 영점으로 구한다.\n$f'(x)=-3x^2+2ax+a^2$\n$=-(3x+a)(x-a)$\n따라서 두 영점은 $x=-\\dfrac a3,\\ a$이다.\n\n$f'$는 최고차항의 계수가 음수인 이차식이므로, 서로 다른 두 영점 중 작은 점에서 $-$에서 $+$로, 큰 점에서 $+$에서 $-$로 부호가 변한다.\n즉 작은 영점이 극소가 되는 점, 큰 영점이 극대가 되는 점이다.\n\n① $a>0$이면 $-\\dfrac a3<a$이다.\n극소가 되는 점이 $(-1,1)$ 안에 있고 극대가 되는 점이 $1$보다 커야 하므로\n$-1<-\\dfrac a3<1,\\qquad a>1$\n$0<a<3,\\qquad a>1$\n따라서 $1<a<3$이다.\n\n② $a<0$이면 $a<-\\dfrac a3$이다.\n극소가 되는 점이 $(-1,1)$ 안에 있으려면 $-1<a<0$이어야 한다.\n그러나 이때 극대가 되는 점은 $0<-\\dfrac a3<\\dfrac13<1$이므로 조건을 만족할 수 없다.\n\n③ $a=0$이면 $f'(x)=-3x^2$이고 극값이 생기지 않는다.\n\n따라서 $n=1,\\ m=3$이므로 $nm=3$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -322,7 +327,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "상자의 부피의 최댓값"
+      "상자의 부피의 최댓값",
+      "그래프"
     ],
     "wide": false,
     "content": "한 변의 길이가 $6$인 정사각형 모양의 두꺼운 종이의 네 귀퉁이에서 같은 크기의 정사각형을 잘라내고, 나머지 부분을 접어서 뚜껑이 없는 직육면체 모양의 상자를 만들려고 한다. 이 상자의 부피의 최댓값은? [4.4점]",
@@ -356,7 +362,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "가속도가 같아지는 순간"
+      "가속도가 같아지는 순간",
+      "그래프"
     ],
     "wide": false,
     "content": "수직선 위를 움직이는 두 점 $P$, $Q$의 시각 $t$에서의 위치가 각각 $-\\dfrac{1}{2}t^4+2t^3+3t^2$, $kt^2$이다. $t\\gt0$에서 두 점 $P$, $Q$의 가속도가 같아지는 순간이 $2$번 있도록 하는 모든 정수 $k$의 값의 합은? [4.3점]",
@@ -494,7 +501,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "삼차함수의 결정"
+      "삼차함수의 결정",
+      "그래프"
     ],
     "wide": false,
     "content": "삼차함수 $f(x)$와 상수 $a$ $(a\\ne0,1)$에 대하여 $f(0)=f(1)=f(a)$, $f'(0)=f'(a)$를 만족시키고, 함수 $f'(x)$의 최댓값이 $1$이며, $(1,f(1))$에서 접선의 $y$절편이 $6$일 때, $f(3)$의 값은? [4.7점]",
@@ -528,7 +536,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "닫힌구간의 최댓값과 최솟값"
+      "닫힌구간의 최댓값과 최솟값",
+      "그래프"
     ],
     "wide": false,
     "content": "닫힌 구간 $[1,t]$에서 함수 $f(x)=2x^3-9x^2+12x$의 최댓값이 $5$, 최솟값이 $4$가 되도록 하는 실수 $t$의 최댓값과 최솟값을 각각 $a$, $b$라 하자. $ab$의 값은? (단, $t\\gt1$) [4.7점]",
@@ -562,7 +571,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "적분으로 정의된 함수의 극값"
+      "적분으로 정의된 함수의 극값",
+      "그래프"
     ],
     "wide": false,
     "content": "정의역이 $\\{x\\mid0\\lt x\\lt3\\}$인 함수 $f(x)=\\displaystyle\\int_0^3(x-t)|x-t|dt$에 대하여 함수 $f'(x)$의 극솟값은? [4.7점]",
@@ -596,7 +606,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "사차함수의 극값"
+      "사차함수의 극값",
+      "그래프"
     ],
     "wide": false,
     "content": "서로 다른 두 정수 $a$, $b$ $(a\\lt b)$에 대하여 사차함수 $f(x)=(x-a)^3(x-b)+3$이 $x=3$에서 극솟값을 가질 때, $f'(x)=0$을 만족시키는 서로 다른 모든 근의 합의 최댓값은? [4.9점]",
@@ -630,7 +641,8 @@ window.questionBank=[
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "최댓값 함수와 넓이"
+      "최댓값 함수와 넓이",
+      "그래프"
     ],
     "wide": false,
     "content": "실수 전체의 집합에서 정의된 함수 $f(x)$가 다음 조건을 만족시킨다.<br><div class=\"question-note-box\">(가) $x\\ge0$일 때, $f(x)=-x^2+2x$이다.<br>(나) 함수 $f(x)$의 그래프는 원점에 대하여 대칭이다.</div><br>실수 $t$에 대하여 닫힌구간 $[t,t+1]$에서 함수 $f(x)$의 최댓값을 $g(t)$라 하자. 두 곡선 $y=f(x)$, $y=g(x)$와 두 직선 $x=-\\dfrac32$, $x=0$으로 둘러싸인 부분의 넓이를 $\\dfrac{q}{p}$라 하자. $p+q$의 값은? [4.9점] (단, $p$, $q$는 서로소인 자연수이다.)",
@@ -692,7 +704,8 @@ window.questionBank=[
     "layoutTag": "grid",
     "tags": [
       "서술형",
-      "도형과 함수의 극값"
+      "도형과 함수의 극값",
+      "그래프"
     ],
     "wide": false,
     "content": "<div class=\"question-note-box\"><b>서술형 2</b></div><br>직선 $x=t$가 곡선 $y=x^3$, 직선 $y=x$와 만나는 점을 각각 $P$, $Q$라 하자. 선분 $PQ$를 $3:1$로 외분하는 점을 $R$이라 할 때, 점 $R$의 $y$좌표를 $f(t)$라 하자. 함수 $f(t)$의 극솟값과 극댓값을 구하시오. [6점]",
