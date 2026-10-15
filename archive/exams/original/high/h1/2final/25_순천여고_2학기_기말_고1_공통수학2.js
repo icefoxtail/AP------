@@ -1468,6 +1468,9 @@ window.questionBank = [
   },
   "tags": ["함수", "역함수", "정의역", "그래프"],
   "wide": false,
-  "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q21-solution.svg"
+  "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q21-solution.svg",
+  "solutionImageAlt": "역함수 y=2+√(x−1)와 직선 y=x−2의 한 교점 P를 나타낸 좌표 그래프",
+  "solutionImageCaption": "제곱하기 전에 x≥4를 확인하면 교점 P의 x좌표만 해가 된다.",
+  "solutionImageSize": "medium"
 }
 ];
