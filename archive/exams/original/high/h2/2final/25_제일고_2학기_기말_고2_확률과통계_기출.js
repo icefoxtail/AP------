@@ -91,7 +91,7 @@ window.questionBank = [
       "영어, 수학"
     ],
     "answer": "①",
-    "solution": "과목마다 평균과 표준편차가 다르므로 표준점수 개인의 점수를 $x$, 과목 평균을 $m$, 표준편차를 $\\sigma$라 하면 $z=\\dfrac{x-m}{\\sigma}$이다.로 비교한다.\n국어:\n$z=\\dfrac{70-55}{6}=\\dfrac{15}{6}=2.5$\n영어:\n$z=\\dfrac{80-75}{5}=\\dfrac55=1$\n수학:\n$z=\\dfrac{83-68}{10}=\\dfrac{15}{10}=1.5$\n$2.5\\gt 1.5\\gt 1$이므로 상대적으로 가장 높은 과목은 국어, 가장 낮은 과목은 영어이다.\n따라서 정답은 ①이다.",
+    "solution": "과목마다 평균과 표준편차가 다르므로 표준점수를 구해 비교한다.\n개인의 점수를 $x$, 과목의 평균을 $m$, 표준편차를 $\\sigma$라 하면 표준점수는 $z=\\dfrac{x-m}{\\sigma}$이다.\n국어:\n$z=\\dfrac{70-55}{6}=\\dfrac{15}{6}=2.5$\n영어:\n$z=\\dfrac{80-75}{5}=\\dfrac55=1$\n수학:\n$z=\\dfrac{83-68}{10}=\\dfrac{15}{10}=1.5$\n$2.5\\gt 1.5\\gt 1$이므로 상대적으로 가장 높은 과목은 국어, 가장 낮은 과목은 영어이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
