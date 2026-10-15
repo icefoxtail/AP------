@@ -36,6 +36,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Verify the explicit Pages package manifest and safeguards
+        run: node --test tests/archive-pages-site-package.test.mjs
+
       - name: Create release evidence context
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
@@ -191,6 +194,32 @@ jobs:
           SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event.before }}
         run: node tools/check-archive2-runtime.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive2-runtime.log"
 
+      - name: Build the explicit student Pages file set
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: |
+          set -euo pipefail
+          node tools/build-archive-pages-site.mjs \
+            --root "$GITHUB_WORKSPACE" \
+            --output "$GITHUB_WORKSPACE/_site" \
+            --report "$RELEASE_EVIDENCE_DIR/pages-site-package.json" \
+            2>&1 | tee "$RELEASE_EVIDENCE_DIR/pages-site-package-build.log"
+
+      - name: Verify the staged Pages frontend and archive output in real Chrome
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+          ARCHIVE_PAGES_SITE_ROOT: ${{ github.workspace }}/_site
+          ARCHIVE_PAGES_BASE_PATH: /AP------/
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: |
+          set -euo pipefail
+          node tools/check-archive-pages-site-browser.cjs \
+            --site-root "$ARCHIVE_PAGES_SITE_ROOT" \
+            --base-path "$ARCHIVE_PAGES_BASE_PATH" \
+            2>&1 | tee "$RELEASE_EVIDENCE_DIR/pages-site-browser-smoke.log"
+          node tools/check-generated-bank-browser.cjs \
+            2>&1 | tee "$RELEASE_EVIDENCE_DIR/generated-bank-staged-site-browser.log"
+
       - name: Confirm deployment is built from current registered main
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
@@ -218,7 +247,7 @@ jobs:
       - name: Upload the verified student site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
   deploy:
     name: Deploy the verified student release

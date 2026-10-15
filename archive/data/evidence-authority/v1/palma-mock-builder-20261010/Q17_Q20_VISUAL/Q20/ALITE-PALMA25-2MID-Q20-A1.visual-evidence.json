@@ -1,0 +1,707 @@
+{
+  "schemaVersion": "PALMA_Q20_VISUAL_ITEM_PHYSICAL_EVIDENCE_V1",
+  "uid": "ALITE-PALMA25-2MID-Q20-A1",
+  "sourceQid": 20,
+  "need": "BENEFICIAL",
+  "problemNeed": "EXEMPT",
+  "assetAction": "NEW_SVG",
+  "sourcePackagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q20_PACKAGE.json",
+  "sourcePackageSha256": "4763022A03626ED815A3A043263F9192117B8D00B12DDE9B5B6712D626A6DBDF",
+  "sourcePackageGitBlobSha1": "64005c59f8c425588396f4c28dde6e39245ccc2b",
+  "sourcePackageWorktreeRawSha256": "C9D6059C78D63E1E8B8770AB67A6DB85C24000317FF083CE5B37E37D687AFB17",
+  "sourcePackageWorktreeRawGitBlobSha1": "c226105d86c4964dbdfb4e3d4b0b4c8746a16046",
+  "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+  "approvalReceiptSha256": "38BEFC817FB0FC07659BA35F13709C54F07C12715D7680975A3955DAE39C2B2D",
+  "approvalReceiptGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+  "approvalReceiptHeadBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+  "sourceExamBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "approvedPackageUidSet": [
+    "ALITE-PALMA25-2MID-Q20-A1",
+    "ALITE-PALMA25-2MID-Q20-A2",
+    "ALITE-PALMA25-2MID-Q20-A3",
+    "ALITE-PALMA25-2MID-Q20-B1",
+    "ALITE-PALMA25-2MID-Q20-B2",
+    "ALITE-PALMA25-2MID-Q20-B3",
+    "ALITE-PALMA25-2MID-Q20-C1",
+    "ALITE-PALMA25-2MID-Q20-C2",
+    "ALITE-PALMA25-2MID-Q20-C3"
+  ],
+  "approvedUid": "ALITE-PALMA25-2MID-Q20-A1",
+  "sourceProblemSha256": "ebcc14c5c1aa34b912b64454e3c0e5209630041eecfd5cefa689b8c16d5a56e0",
+  "sourceSolutionSha256": "81f7f53c0ed7e6c17f3c51263f886a9b74700a1e41048e6afda99f9f0111cfb1",
+  "sourceConditionCoverage": [
+    "Set sizes A/B and total N are taken from the stem.",
+    "The solution's interval or fixed intersection value is frozen from its text.",
+    "Each displayed witness assigns nonnegative counts to R11, R10, R01, R00.",
+    "The region counts sum to N and recover both set cardinalities."
+  ],
+  "decisiveRelationCovered": true,
+  "uncoveredCriticalConditions": [],
+  "expectedFactCompletenessStatus": "PASS",
+  "expectedFacts": {
+    "setCardinalities": {
+      "values": {
+        "A": 19,
+        "B": 21
+      },
+      "role": "GIVEN"
+    },
+    "totalCardinality": {
+      "value": 32,
+      "role": "GIVEN"
+    },
+    "cardinalityByRegion": {
+      "values": [
+        {
+          "R11": 8,
+          "R10": 11,
+          "R01": 13,
+          "R00": 0
+        },
+        {
+          "R11": 19,
+          "R10": 0,
+          "R01": 2,
+          "R00": 11
+        }
+      ],
+      "role": "DERIVED_INTERMEDIATE"
+    },
+    "intersectionCardinality": {
+      "values": [
+        8,
+        19
+      ],
+      "role": "DERIVED_INTERMEDIATE"
+    },
+    "unionCardinality": {
+      "values": [
+        32,
+        21
+      ],
+      "role": "DERIVED_INTERMEDIATE"
+    },
+    "outsideCardinality": {
+      "values": [
+        0,
+        11
+      ],
+      "role": "DERIVED_INTERMEDIATE"
+    },
+    "extremeConfiguration": {
+      "values": [
+        {
+          "intersection": 8,
+          "aOnly": 11,
+          "bOnly": 13,
+          "neither": 0,
+          "union": 32,
+          "exclusive": 24,
+          "total": 32
+        },
+        {
+          "intersection": 19,
+          "aOnly": 0,
+          "bOnly": 2,
+          "neither": 11,
+          "union": 21,
+          "exclusive": 2,
+          "total": 32
+        }
+      ],
+      "role": "CONCLUSION"
+    }
+  },
+  "pythonInputs": {
+    "setSizes": {
+      "A": 19,
+      "B": 21
+    },
+    "universeTotal": 32,
+    "witnessIntersectionValues": [
+      8,
+      19
+    ],
+    "regionFormula": "R10=|A|-|A∩B|; R01=|B|-|A∩B|; R00=N-|A∪B|; R11=|A∩B|"
+  },
+  "pythonCalculatedOutputs": {
+    "witnesses": [
+      {
+        "intersection": 8,
+        "aOnly": 11,
+        "bOnly": 13,
+        "neither": 0,
+        "union": 32,
+        "exclusive": 24,
+        "total": 32
+      },
+      {
+        "intersection": 19,
+        "aOnly": 0,
+        "bOnly": 2,
+        "neither": 11,
+        "union": 21,
+        "exclusive": 2,
+        "total": 32
+      }
+    ]
+  },
+  "coordinateModel": {
+    "visualType": "table",
+    "semantics": "Exact cell values; row/cell area has no cardinality meaning.",
+    "layout": {
+      "rows": 9,
+      "columns": 3,
+      "width": 720,
+      "height": 600
+    }
+  },
+  "actualSvgPrimitives": {
+    "tableRectCount": 27,
+    "tableTextCount": 27,
+    "tableRows": 9,
+    "tableColumns": 3,
+    "cellTexts": [
+      "구역",
+      "교집합 최소 사례",
+      "교집합 최대 사례",
+      "집합 A",
+      "영어학원",
+      "",
+      "집합 B",
+      "수학학원",
+      "",
+      "A∩B",
+      "8",
+      "19",
+      "A만",
+      "11",
+      "0",
+      "B만",
+      "13",
+      "2",
+      "둘 다 아님",
+      "0",
+      "11",
+      "A∪B",
+      "32",
+      "21",
+      "전체",
+      "32",
+      "32"
+    ],
+    "cells": [
+      {
+        "row": 0,
+        "column": 0,
+        "text": "구역",
+        "centerPx": [
+          130.666667,
+          47.555556
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 15.6
+      },
+      {
+        "row": 0,
+        "column": 1,
+        "text": "교집합 최소 사례",
+        "centerPx": [
+          360.0,
+          47.555556
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 70.2
+      },
+      {
+        "row": 0,
+        "column": 2,
+        "text": "교집합 최대 사례",
+        "centerPx": [
+          589.333333,
+          47.555556
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 70.2
+      },
+      {
+        "row": 1,
+        "column": 0,
+        "text": "집합 A",
+        "centerPx": [
+          130.666667,
+          110.666667
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 31.2
+      },
+      {
+        "row": 1,
+        "column": 1,
+        "text": "영어학원",
+        "centerPx": [
+          360.0,
+          110.666667
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 31.2
+      },
+      {
+        "row": 1,
+        "column": 2,
+        "text": "",
+        "centerPx": [
+          589.333333,
+          110.666667
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 0.0
+      },
+      {
+        "row": 2,
+        "column": 0,
+        "text": "집합 B",
+        "centerPx": [
+          130.666667,
+          173.777778
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 31.2
+      },
+      {
+        "row": 2,
+        "column": 1,
+        "text": "수학학원",
+        "centerPx": [
+          360.0,
+          173.777778
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 31.2
+      },
+      {
+        "row": 2,
+        "column": 2,
+        "text": "",
+        "centerPx": [
+          589.333333,
+          173.777778
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 0.0
+      },
+      {
+        "row": 3,
+        "column": 0,
+        "text": "A∩B",
+        "centerPx": [
+          130.666667,
+          236.888889
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 23.4
+      },
+      {
+        "row": 3,
+        "column": 1,
+        "text": "8",
+        "centerPx": [
+          360.0,
+          236.888889
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 7.8
+      },
+      {
+        "row": 3,
+        "column": 2,
+        "text": "19",
+        "centerPx": [
+          589.333333,
+          236.888889
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 15.6
+      },
+      {
+        "row": 4,
+        "column": 0,
+        "text": "A만",
+        "centerPx": [
+          130.666667,
+          300.0
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 15.6
+      },
+      {
+        "row": 4,
+        "column": 1,
+        "text": "11",
+        "centerPx": [
+          360.0,
+          300.0
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 15.6
+      },
+      {
+        "row": 4,
+        "column": 2,
+        "text": "0",
+        "centerPx": [
+          589.333333,
+          300.0
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 7.8
+      },
+      {
+        "row": 5,
+        "column": 0,
+        "text": "B만",
+        "centerPx": [
+          130.666667,
+          363.111111
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 15.6
+      },
+      {
+        "row": 5,
+        "column": 1,
+        "text": "13",
+        "centerPx": [
+          360.0,
+          363.111111
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 15.6
+      },
+      {
+        "row": 5,
+        "column": 2,
+        "text": "2",
+        "centerPx": [
+          589.333333,
+          363.111111
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 7.8
+      },
+      {
+        "row": 6,
+        "column": 0,
+        "text": "둘 다 아님",
+        "centerPx": [
+          130.666667,
+          426.222222
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 46.8
+      },
+      {
+        "row": 6,
+        "column": 1,
+        "text": "0",
+        "centerPx": [
+          360.0,
+          426.222222
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 7.8
+      },
+      {
+        "row": 6,
+        "column": 2,
+        "text": "11",
+        "centerPx": [
+          589.333333,
+          426.222222
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 15.6
+      },
+      {
+        "row": 7,
+        "column": 0,
+        "text": "A∪B",
+        "centerPx": [
+          130.666667,
+          489.333333
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 23.4
+      },
+      {
+        "row": 7,
+        "column": 1,
+        "text": "32",
+        "centerPx": [
+          360.0,
+          489.333333
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 15.6
+      },
+      {
+        "row": 7,
+        "column": 2,
+        "text": "21",
+        "centerPx": [
+          589.333333,
+          489.333333
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 15.6
+      },
+      {
+        "row": 8,
+        "column": 0,
+        "text": "전체",
+        "centerPx": [
+          130.666667,
+          552.444444
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 15.6
+      },
+      {
+        "row": 8,
+        "column": 1,
+        "text": "32",
+        "centerPx": [
+          360.0,
+          552.444444
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 15.6
+      },
+      {
+        "row": 8,
+        "column": 2,
+        "text": "32",
+        "centerPx": [
+          589.333333,
+          552.444444
+        ],
+        "cellWidthPx": 229.33333333333334,
+        "cellHeightPx": 63.111111111111114,
+        "approxTextWidthPx": 15.6
+      }
+    ]
+  },
+  "observedFacts": {
+    "cellTextParity": "PASS",
+    "rowCount": 9,
+    "columnCount": 3,
+    "cardinalityByRegionParity": "PASS",
+    "unionOutsideTotalParity": "PASS",
+    "setCardinalityRecovery": "PASS",
+    "witnesses": [
+      {
+        "regions": {
+          "R11": 8,
+          "R10": 11,
+          "R01": 13,
+          "R00": 0
+        },
+        "computedUnion": 32,
+        "computedOutside": 0,
+        "computedTotal": 32,
+        "ARecovered": 19,
+        "BRecovered": 21
+      },
+      {
+        "regions": {
+          "R11": 19,
+          "R10": 0,
+          "R01": 2,
+          "R00": 11
+        },
+        "computedUnion": 21,
+        "computedOutside": 11,
+        "computedTotal": 32,
+        "ARecovered": 19,
+        "BRecovered": 21
+      }
+    ]
+  },
+  "deltaTolerance": {
+    "cellCenterPx": 1e-06,
+    "approxTextWidthOverflowPx": 0
+  },
+  "labelOwnerBindings": [
+    {
+      "text": "A∩B",
+      "screenCell": {
+        "row": 3,
+        "column": 0,
+        "centerPx": [
+          130.666667,
+          236.888889
+        ]
+      },
+      "semanticOwner": "R11",
+      "result": "PASS"
+    },
+    {
+      "text": "A만",
+      "screenCell": {
+        "row": 4,
+        "column": 0,
+        "centerPx": [
+          130.666667,
+          300.0
+        ]
+      },
+      "semanticOwner": "R10",
+      "result": "PASS"
+    },
+    {
+      "text": "B만",
+      "screenCell": {
+        "row": 5,
+        "column": 0,
+        "centerPx": [
+          130.666667,
+          363.111111
+        ]
+      },
+      "semanticOwner": "R01",
+      "result": "PASS"
+    },
+    {
+      "text": "둘 다 아님",
+      "screenCell": {
+        "row": 6,
+        "column": 0,
+        "centerPx": [
+          130.666667,
+          426.222222
+        ]
+      },
+      "semanticOwner": "R00",
+      "result": "PASS"
+    },
+    {
+      "text": "A∪B",
+      "screenCell": {
+        "row": 7,
+        "column": 0,
+        "centerPx": [
+          130.666667,
+          489.333333
+        ]
+      },
+      "semanticOwner": "R10 ∪ R11 ∪ R01",
+      "result": "PASS"
+    },
+    {
+      "text": "전체",
+      "screenCell": {
+        "row": 8,
+        "column": 0,
+        "centerPx": [
+          130.666667,
+          552.444444
+        ]
+      },
+      "semanticOwner": "U",
+      "result": "PASS"
+    }
+  ],
+  "sourceSemanticIdentity": {
+    "applicable": true,
+    "checks": [
+      {
+        "semanticRole": "A",
+        "sourceLabel": "영어학원",
+        "artifactLabel": "영어학원",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "B",
+        "sourceLabel": "수학학원",
+        "artifactLabel": "수학학원",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "universe",
+        "sourceLabel": "전체 N",
+        "artifactLabel": "전체",
+        "result": "PASS"
+      }
+    ]
+  },
+  "factVisualizations": [
+    {
+      "fact": "A and B set cardinalities and total population",
+      "role": "GIVEN",
+      "encoding": "set-name and total rows"
+    },
+    {
+      "fact": "A∩B, A-only, B-only and neither counts",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "one exact count per canonical membership region"
+    },
+    {
+      "fact": "union and outside counts",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "explicit table cells recomputed from four regions"
+    },
+    {
+      "fact": "the solution's endpoint or fixed witness configurations",
+      "role": "CONCLUSION",
+      "encoding": "case columns keyed to minimum/maximum witness"
+    }
+  ],
+  "xmlParse": "PASS",
+  "renderer": "alive.engine.visual_renderer.render_visual_spec",
+  "rendererVersion": "0.5.2-circle-geometry-label-layout",
+  "styleFloorStatus": "STATIC_ONLY_RENDER_PENDING",
+  "styleVersion": "visual_renderer_0.5.2-circle-geometry-label-layout",
+  "semanticGeometryPreserved": true,
+  "visualSpecPath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/Q20/ALITE-PALMA25-2MID-Q20-A1.visual-spec.json",
+  "visualSpecSha256": "9E21FCFC2BA136557D39E389060457BFDECB0B0D9AC6D5F81B590E3FEC9B4F9B",
+  "rendererReportPath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/Q20/ALITE-PALMA25-2MID-Q20-A1.render-report.json",
+  "rendererReportSha256": "CCBD6F6AB06061D6E1E05B8E633589C4D34FE4944B2BE75A1FB18CED8859AA9E",
+  "sourceSvgPath": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q20-A1-solution.svg",
+  "sourceSvgSha256": "573A3CD5A75E49C46CC873333E5ABBAB8E688A1D42BCB871A9088CC427B64AB3",
+  "sourceSvgGitBlobSha1": "8ca9de87eda27c28c5fd344491a7118975cc3c2d",
+  "browserRenderEvidence": {
+    "status": "RENDER_PENDING",
+    "reason": "Actual HTTP Archive mode=sol browser QA follows projection; no browser render was attempted before projection."
+  },
+  "consumerReference": "PENDING_PROJECTION",
+  "newVisualInformation": [
+    "exact four-region membership witness in each solution case",
+    "union and outside counts verified against total"
+  ]
+}

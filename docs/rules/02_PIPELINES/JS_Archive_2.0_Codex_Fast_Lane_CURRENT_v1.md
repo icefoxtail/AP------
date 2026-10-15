@@ -5,6 +5,14 @@ updated: 2026-10-13
 authority: 사용자 직접 지시 — CREATE → R1 → R2 → R3 → 프로덕션 main 간소화
 qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
 
+## 2026-10-16 — Git production scope and ROOT cold-evidence closeout
+
+Git retains production JS/assets, current runtime/build/test tools and contracts, and the versioned byte-bound offline authorities declared in `archive/data/evidence-authority/v1/index.json`. The index and ROOT receipt bind exact source aliases, baseline Git blob/SHA-256/size, roles, and consumers; consult them for current counts and total bytes. This storage lane does not claim that an item passed review.
+
+Raw `archive/analysis` originals, captures, rebuildable catalog/conflict copies, backups, and intermediate outputs belong in the Drive vault. Keep the originals until every Drive pack and full path sidecar has a verified metadata readback and full downloaded-byte hash check. After verification, retain only the compact ROOT pack receipt and approved offline hot authorities in Git. The older blanket-ignore prohibition for `archive/analysis/` is superseded by this explicit user direction after that verification.
+
+ROOT consumes compact verified completion receipts and fetches raw proof only when a closeout or a specific technical review needs it. Hydration must verify the exact Drive file identity, pack and index SHA/size, ZIP member integrity, and reconstructed raw SHA-256, byte count, and Git blob SHA-1 before returning bytes. Workers still perform the actual independent review on complete student-facing inputs. Missing or corrupt proof remains unavailable; it does not satisfy or bypass CREATE/R1/R2/R3, a validator, or a quality PASS. No OAuth or Drive network access is required by GitHub CI.
+
 ## 2026-10-13 사용자 직접 지시 — 신규 문항 HOLD 발행 금지
 
 신규 Codex 문항 작업에서 HOLD를 발행하지 않는다. 문항 결함은 담당자가 완성해야 할 수정 작업이며, 임시 item HOLD·시험지 HOLD·roster/run HOLD 인계도 사용하지 않는다. 아래의 blocker 반환·과거 HOLD 운반/유지·terminal HOLD 문구보다 이 지시가 우선한다. 과거 HOLD 기록은 변경하지 않고 이력으로만 보존한다.

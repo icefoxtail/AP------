@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_BOUNDED_L2_SEMANTIC_AUTHORITY_ADDENDUM_V1",
+  "executionLine": "CODEX",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "reviewerId": "r1_10",
+  "decisionAuthority": "ROOT_DELEGATED_GLOBAL_H15_M1_03_04_L2_SEMANTIC_SCOPE",
+  "status": "SEMANTIC_DEFINITIONS_APPROVED_FOR_CANONICAL_REGISTRATION",
+  "scope": {"curriculum":"2015","grade":"H2","standardCourse":"수학I","standardUnitKeys":["H15-M1-03","H15-M1-04"],"sourceExams":6,"crossExamQidClassification":"OWN_R1_REQUIRED"},
+  "definitions": [
+    {
+      "standardUnitKey":"H15-M1-03",
+      "standardUnit":"지수함수",
+      "subUnitKey":"H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+      "subUnit":"지수함수의 활용",
+      "conceptClusterKey":"EXPONENTIAL_FUNCTION_APPLICATION",
+      "semanticStatus":"APPROVED",
+      "scope":"Use the exponential function relation to determine function values or parameters, solve equations and inequalities, optimize over a stated domain, or model exponential growth or decay in an application context.",
+      "boundary":"Use H15-M1-03-EXPONENTIAL_FUNCTION_GRAPH when the decisive demand is interpreting graph shape, transformation, asymptote, intersection, or root geometry. Use H15-M1-01-EXPONENT for power laws or exponent expressions that do not depend on exponential-function behavior.",
+      "supportingCurrentStudentExamples":[
+        {"examUid":"23_강남여고_1학기_중간_고2_수학I","qid":8,"bundleSha256":"c17ddaff3182630d8cb414d286d4e233f6427064a2fd0da276d961c29fc92308","basis":"Real-world exponential decay of light intensity with depth."},
+        {"examUid":"23_금당고_1학기_중간_고2_수학I","qid":12,"bundleSha256":"fb540de2bef9c0dbfe4ed934401e38b59cd0c81e1b8245928591d9c52ddf27c5","basis":"Maximum and minimum of an exponential function on a closed interval."},
+        {"examUid":"23_매산여고_1학기_중간_고2_수학I","qid":15,"bundleSha256":"d11119bba4a76eb068c961ad35672d0d85faa92ef96dc45b29b3af88efd917fd","basis":"Parameter range in an inequality involving exponential-function terms."},
+        {"examUid":"23_순천여고_1학기_중간_고2_수학I","qid":7,"bundleSha256":"cc9d36db8116ff2fe9e413b62b462d1592e0d6f6925abfd60a893095a7658c18","basis":"Maximum condition for an exponential function on a closed interval."}
+      ],
+      "qidBindingRule":"These examples support the concept definition only; each target R1 must confirm the current standardUnitKey and decisive mathematical demand before applying the key."
+    },
+    {
+      "standardUnitKey":"H15-M1-04",
+      "standardUnit":"로그함수",
+      "subUnitKey":"H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+      "subUnit":"로그함수의 활용",
+      "conceptClusterKey":"LOGARITHMIC_FUNCTION_APPLICATION",
+      "semanticStatus":"APPROVED",
+      "scope":"Apply logarithmic-function monotonicity, domain, and range to function-value bounds, extrema, inequalities, compositions, discrete solution counts, or function level sets.",
+      "boundary":"Use H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH when the decisive demand is graph transformation, asymptote, or graph intersection. Use H15-M1-02-LOGARITHM for log-law simplification or equations and inequalities resolved only by logarithm laws and argument conditions; do not assign those items to this child solely because a logarithm symbol appears.",
+      "supportingCurrentStudentExamples":[
+        {"examUid":"23_금당고_1학기_중간_고2_수학I","qid":4,"bundleSha256":"fb540de2bef9c0dbfe4ed934401e38b59cd0c81e1b8245928591d9c52ddf27c5","basis":"Extrema of a monotone logarithmic function on a closed interval; the existing linked RPM record labels this family logarithmic-function application."},
+        {"examUid":"23_매산여고_1학기_중간_고2_수학I","qid":16,"bundleSha256":"d11119bba4a76eb068c961ad35672d0d85faa92ef96dc45b29b3af88efd917fd","basis":"Integer solutions of a composed inequality involving a logarithmic function and a quadratic function."},
+        {"examUid":"23_순천여고_1학기_중간_고2_수학I","qid":15,"bundleSha256":"cc9d36db8116ff2fe9e413b62b462d1592e0d6f6925abfd60a893095a7658c18","basis":"A condition on the count of integer inputs for which a logarithmic-function value is natural."}
+      ],
+      "qidBindingRule":"These examples support the concept definition only; each target R1 must confirm the current standardUnitKey. Pure logarithm-law items remain under H15-M1-02 even if a source row has a mismatched function parent."
+    }
+  ],
+  "authorityEvidence": {
+    "canonicalMaster": {"path":"docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md","sha256":"89f195e5eb6e959837bd90b482583225cc7d77e33b64eef5414b18f13ee8af4e","finding":"H15-M1-03 and H15-M1-04 are the 2015 Math I exponential/logarithmic function L1 parents."},
+    "compiledMaster": {"path":"archive/data/master_tables/js_archive_tag_master.json","sha256":"68459ea08b79b0935271afdb079e72fc7e28aa3fa4570ed0e565dff850fd8a","finding":"Neither parent currently has registered child rows; these child key strings do not collide."},
+    "crosswalk": {"path":"archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json","sha256":"ad0324b91fb61edd96f584d4221a1585f3149b6b5aa260f4c1946ea44d9f0bd1","finding":"Current H2 2015 Math I semantic records include log-function application and exponential-function application families, supporting the L2 distinction; current crosswalk has no materialized child projection."},
+    "directExistingPattern": {"path":"archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/CREATE.meta-resolution-check.revision3.json","sha256":"598bf838b2f03388acaa764afa298fa3f1c6a4346764f2f0ce7a76eeb819498d","finding":"Existing exact-course records label q4 as logarithmic-function application and q12/q17 as exponential-function application; used only as semantic precedent, not as a finalized qid classification."},
+    "currentStudentInput":"The cited bundle hashes are ROOT.current-student-meta-authority.v1.json; they contain only current student fields. No answers, solutions, or PDFs were read for this addendum.",
+    "pdfReview": {"mode":"DEFECT_ONLY","opened":false,"reason":"No transcription or condition defect; extracted current student content is sufficient for concept semantics."}
+  },
+  "limitations": ["No other exam JS or Meta field was edited.","No per-qid classification for another exam is approved by this addendum.","No compiled master, canonical master, resolver, validator, or registry has been changed by R1_10.","R1_10 graph-key qid bindings remain solely in the separate R1 authority record."]
+}

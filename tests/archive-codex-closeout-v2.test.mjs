@@ -1,6 +1,7 @@
 import fs from 'node:fs';import path from 'node:path';import os from 'node:os';import {createHash} from 'node:crypto';import {execFileSync} from 'node:child_process';import assert from 'node:assert/strict';import test from 'node:test';
 import {QUALITY_CONTRACT_V2} from '../archive/tools/archive-stage-validator-artifact-v2.mjs';
 import {gitBlobSha} from '../archive/tools/archive-stage-validator.mjs';
+import {EVIDENCE_AUTHORITY_INDEX_PATH,EVIDENCE_AUTHORITY_SCHEMA,readHotEvidenceAuthority} from '../archive/tools/evidence-authority-v1.mjs';
 import {validateCodexRenderReceipt,validateCodexMainDoneReceipt,validateCodexUserWaivedStaticReceipt,validateCodexUserWaivedMainDoneReceipt,CODEX_USER_RENDER_WAIVER_DIRECTIVE} from '../archive/tools/archive-codex-closeout-v2.mjs';
 import {buildContinuation,consumeValidationPass,consumeCodexRenderPass,consumeCodexMainDone,consumeCodexUserWaivedMainDone} from '../archive/tools/archive-stage-runtime-v2.mjs';
 function fixture({question='{id:1,image:"assets/images/test/q01.svg"}',files={'q01.svg':Buffer.from('<svg/>')},loadedModes={exam:['q01.svg'],sol:[],ans:[]}}={}){
@@ -18,7 +19,9 @@ function fixture({question='{id:1,image:"assets/images/test/q01.svg"}',files={'q
 function userWaiverFixture({candidateQuestionCount}={}){
  const f=fixture(),git=(...args)=>execFileSync('git',['-C',f.root,...args],{stdio:'pipe'}),runId='archive2-m2-codex-20261006-03';
  git('init','-q');git('config','user.name','test');git('config','user.email','test@example.invalid');git('config','core.autocrlf','false');
- const rosterPath='archive/analysis/archive2-m2-codex-20261006-03/roster.json',rosterBytes=fs.readFileSync(path.resolve(process.cwd(),rosterPath)),rosterSource=JSON.parse(rosterBytes),rosterRow=rosterSource.rows[0],examUid=rosterRow.examUid,productionPath=rosterRow.productionPath;
+ const rosterPath='archive/analysis/archive2-m2-codex-20261006-03/roster.json',rosterAuthority=readHotEvidenceAuthority({root:process.cwd(),originalPath:rosterPath}),rosterBytes=rosterAuthority.bytes,rosterSource=JSON.parse(rosterBytes),rosterRow=rosterSource.rows[0],examUid=rosterRow.examUid,productionPath=rosterRow.productionPath;
+ const authorityFile=path.join(f.root,rosterAuthority.entry.authorityPath);fs.mkdirSync(path.dirname(authorityFile),{recursive:true});fs.writeFileSync(authorityFile,rosterBytes);
+ const authorityIndexPath=path.join(f.root,EVIDENCE_AUTHORITY_INDEX_PATH);fs.mkdirSync(path.dirname(authorityIndexPath),{recursive:true});fs.writeFileSync(authorityIndexPath,JSON.stringify({schemaVersion:EVIDENCE_AUTHORITY_SCHEMA,baselineCommit:rosterAuthority.entry.baselineCommit,entries:[rosterAuthority.entry]}));
  const questionCount=candidateQuestionCount??rosterRow.questionCount,qids=Array.from({length:questionCount},(_,i)=>i+1),questions=qids.map(id=>id===1?{id,image:'assets/images/test/q01.svg'}:{id});
  const candidateBytes=Buffer.from(`window.questionBank=${JSON.stringify(questions)};`),artifactSha=gitBlobSha(candidateBytes),artifactRawSha256=createHash('sha256').update(candidateBytes).digest('hex');
  const loadedJs=f.write(productionPath,candidateBytes);f.receipt.loadedJs=loadedJs;f.receipt.artifactSha=artifactSha;f.artifactSha=artifactSha;f.qids=qids;

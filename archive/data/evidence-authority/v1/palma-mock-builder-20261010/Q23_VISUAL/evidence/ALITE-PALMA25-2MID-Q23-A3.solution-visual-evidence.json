@@ -1,0 +1,2463 @@
+{
+  "schemaVersion": "PALMA_Q23_SOLUTION_VISUAL_PHYSICAL_EVIDENCE_V1",
+  "uid": "ALITE-PALMA25-2MID-Q23-A3",
+  "sourceQid": 23,
+  "slot": "A3",
+  "stage": "VISUAL_REPAIR",
+  "disposition": "ADD_BENEFICIAL",
+  "assetAction": "NEW_SVG",
+  "sourcePackagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q23_PACKAGE.json",
+  "sourcePackageRawSha256": "57d8cbf6870aad23169695ae16b00a209a220dfd65e1fca646db47618117d8da",
+  "sourcePackageHeadBytesSha256": "35bc07b4c58ec211da164f163799ade285d78fc72d2a478b8bdc40c62a5a6c22",
+  "sourcePackageHeadBlobSha1": "bf8028c151f991592631e399459171363e59ec0a",
+  "sourcePackageWorkingRawBlobObjectSha1": "550719b037e6e01b5a71f1ad0764bde2986a649a",
+  "sourcePackageCurrentCleanGitBlobSha1": "bf8028c151f991592631e399459171363e59ec0a",
+  "sourcePackageApprovedSha256": "35bc07b4c58ec211da164f163799ade285d78fc72d2a478b8bdc40c62a5a6c22",
+  "sourcePackageApprovedGitBlobSha1": "bf8028c151f991592631e399459171363e59ec0a",
+  "packageMutation": "NONE",
+  "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+  "approvalReceiptRawSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+  "approvalReceiptCanonicalSha256": "38befc817fb0fc07659ba35f13709c54f07c12715d7680975a3955dae39c2b2d",
+  "approvalReceiptWorkingRawBlobObjectSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+  "approvalReceiptCurrentCleanGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+  "approvalReceiptHeadBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+  "approvalBasis": "USER_DIRECTED_QUALITY_APPROVED_20261010_PALMA_Q17_Q23_63",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "lockedApprovalSourceExamBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "approvedSourceExamBlobSha256": "1c7c2c331464aa214331d844e32f9378c86654b1b8e495c8c3cdf759b26beaef",
+  "sourceExamCurrentWorkingSha256": "60049ec6a7def1ec9d1e15a6319ecfcf916fc3ba63f4bfc55e128d3a05cb12a1",
+  "sourceExamCurrentWorkingRawBlobObjectSha1": "dd6eb8aeb7de12ad655e9d7ef086a751a40a6096",
+  "sourceExamCurrentCleanGitBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+  "sourceExamCurrentHeadBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+  "sourceExamGitBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "originalQ23SolutionSvgPath": "archive/assets/images/25_팔마고_2학기_중간_고1_기출/q23-solution.svg",
+  "originalQ23SolutionSvgSha256": "d3ff24683f3e2d88d1fb39ed9d938ad6b032f1d55b7a2d46be8132df8a765c17",
+  "originalQ23SolutionSvgGitBlobSha1": "8524bc9834a1b5417b20dc018a062a800b62eecd",
+  "originalVsGeneratedQ23Note": "Original Q23 asset exists and encodes x=±2, 4x−3y=±10, area 80/3. Generated Q23 geometry is separately derived per approved generated item; no original asset is treated as missing or reused.",
+  "approvalReceiptReadReceiptPath": "archive/analysis/palma-mock-builder-20261010/Q23_VISUAL/read-receipt.json",
+  "approvalReadReceiptSha256": "2e984485ca8bd7164345ee5dc4f9549d840833dc9fc74b07ab049e3d43b7c90e",
+  "calibrationPreflightPath": "archive/analysis/palma-mock-builder-20261010/Q23_VISUAL/visual-calibration-preflight.json",
+  "calibrationPreflightSha256": "26643e8e7d2e3c71ff1321d9ce31729f6844436da80ca43dd3e5c0a0304a2a9c",
+  "problemDecision": {
+    "need": "NO_VISUAL",
+    "reason": "문제는 거리식만으로 완결되지만 해설은 네 교점과 평행사변형 높이 관계의 SVG가 교육적으로 유익함"
+  },
+  "solutionDecision": {
+    "need": "BENEFICIAL",
+    "reason": "거리 조건만으로 문제는 완결되지만, 네 교점 평행사변형과 owner-bound strip dimensions는 넓이·둘레·매개변수 관계를 공간적으로 재현하기 쉽게 한다."
+  },
+  "sourceProblemSha256": "b469f1500b288bd5fa95568b1436d073445761a5e2c4966af192b0cfe82bac57",
+  "sourceSolutionSha256": "e8b1ae671096e69395f7a4ebc5b28a6a7cf4a787a93d4954b0c98e23f1a4312a",
+  "sourceConditionCoverage": [
+    "직선 x=0에서 거리 5인 두 수직선 x=±5",
+    "직선 8x-15y+0=0에서 거리 3인 두 평행선 8x-15y+0=±51",
+    "네 교점 평행사변형의 base 34/5, 수직 strip width 10, 넓이 68"
+  ],
+  "decisiveRelationCovered": true,
+  "uncoveredCriticalConditions": [],
+  "expectedFactCompletenessStatus": "PASS",
+  "expectedFacts": {
+    "slot": "A3",
+    "uid": "ALITE-PALMA25-2MID-Q23-A3",
+    "mode": "VERTICAL_X_STRIP",
+    "distanceParameters": {
+      "a": 5,
+      "b": 3,
+      "lineCoefficients": [
+        8,
+        -15,
+        0
+      ],
+      "normalLength": 17,
+      "offsetD": 51
+    },
+    "sourceEquation": {
+      "first": "x=±a",
+      "second": "8x-15y+0=±51"
+    },
+    "sourceIntersectionCoordinates": {
+      "P0": [
+        "-5",
+        "-91/15"
+      ],
+      "P1": [
+        "5",
+        "-11/15"
+      ],
+      "P2": [
+        "5",
+        "91/15"
+      ],
+      "P3": [
+        "-5",
+        "11/15"
+      ]
+    },
+    "sourceConditionResiduals": [
+      {
+        "pointId": "P0",
+        "xFromVerticalLine": "5",
+        "expectedXDistance": "5",
+        "xDistanceResidual": 0.0,
+        "lineValue": "51",
+        "lineNormalLength": 17,
+        "expectedLineDistance": "3",
+        "observedLineDistance": "3",
+        "lineDistanceResidual": 0.0
+      },
+      {
+        "pointId": "P1",
+        "xFromVerticalLine": "5",
+        "expectedXDistance": "5",
+        "xDistanceResidual": 0.0,
+        "lineValue": "51",
+        "lineNormalLength": 17,
+        "expectedLineDistance": "3",
+        "observedLineDistance": "3",
+        "lineDistanceResidual": 0.0
+      },
+      {
+        "pointId": "P2",
+        "xFromVerticalLine": "5",
+        "expectedXDistance": "5",
+        "xDistanceResidual": 0.0,
+        "lineValue": "-51",
+        "lineNormalLength": 17,
+        "expectedLineDistance": "3",
+        "observedLineDistance": "3",
+        "lineDistanceResidual": 0.0
+      },
+      {
+        "pointId": "P3",
+        "xFromVerticalLine": "5",
+        "expectedXDistance": "5",
+        "xDistanceResidual": 0.0,
+        "lineValue": "-51",
+        "lineNormalLength": 17,
+        "expectedLineDistance": "3",
+        "observedLineDistance": "3",
+        "lineDistanceResidual": 0.0
+      }
+    ],
+    "pointCoordinates": {
+      "P0": [
+        0.0,
+        0.0
+      ],
+      "P1": [
+        5.333333333333333,
+        10.0
+      ],
+      "P2": [
+        12.133333333333333,
+        10.0
+      ],
+      "P3": [
+        6.8,
+        0.0
+      ],
+      "H0": [
+        6.066666666666666,
+        0.0
+      ],
+      "H1": [
+        6.066666666666666,
+        10.0
+      ]
+    },
+    "pointCoordinatesExact": {
+      "P0": [
+        "0",
+        "0"
+      ],
+      "P1": [
+        "16/3",
+        "10"
+      ],
+      "P2": [
+        "182/15",
+        "10"
+      ],
+      "P3": [
+        "34/5",
+        "0"
+      ],
+      "H0": [
+        "91/15",
+        "0"
+      ],
+      "H1": [
+        "91/15",
+        "10"
+      ]
+    },
+    "sideLengths": {
+      "verticalSide": 6.8,
+      "slantedSide": 11.333333333333334,
+      "perpendicularStripWidth": 10.0
+    },
+    "exactSideLengths": {
+      "verticalSide": "34/5",
+      "perpendicularStripWidth": "10",
+      "slantedSide": "34/3"
+    },
+    "area": 68.0,
+    "areaExact": "68",
+    "perimeter": 36.266666666666666,
+    "heightOwnerPoints": [
+      "H0",
+      "H1"
+    ],
+    "normalizationOrigin": "P0",
+    "normalizationXAxisPoint": "P3",
+    "normalizationUnitScale": 6.8,
+    "approvedSolutionWitnessValidation": {
+      "kind": "DIRECT_AREA_WITNESS",
+      "value": 68,
+      "verified": true
+    },
+    "packageSolutionSha256": "e8b1ae671096e69395f7a4ebc5b28a6a7cf4a787a93d4954b0c98e23f1a4312a",
+    "packageStemSha256": "b469f1500b288bd5fa95568b1436d073445761a5e2c4966af192b0cfe82bac57",
+    "problemVisualDecision": "NO_VISUAL",
+    "solutionVisualDecision": "SOLUTION_SVG_BENEFICIAL_SEPARATE_PALMA_LINE",
+    "problemVisualReason": "문제는 거리식만으로 완결되지만 해설은 네 교점과 평행사변형 높이 관계의 SVG가 교육적으로 유익함",
+    "solutionVisualReason": "The four distance-locus intersections form a parallelogram; owner-bound base/strip dimensions make the area or perimeter relation easier to see while the solution prose retains the algebra and conclusion.",
+    "sourceConditionCoverage": [
+      "첫 번째 거리 조건의 두 평행 경계와 그 위 네 교점",
+      "두 번째 점-직선 거리 조건의 ± 경계와 그 위 네 교점",
+      "두 평행선 쌍이 만드는 단순·비퇴화 평행사변형",
+      "면적·둘레 또는 매개변수에 직접 쓰이는 base/strip 치수"
+    ],
+    "decisiveRelationCovered": true,
+    "uncoveredCriticalConditions": [],
+    "factRoles": {
+      "distanceLoci": "GIVEN",
+      "oppositeParallelSides": "DERIVED_INTERMEDIATE",
+      "perpendicularStripWidth": "DERIVED_INTERMEDIATE",
+      "areaOrPerimeterRelation": "CONCLUSION"
+    }
+  },
+  "pythonInputs": {
+    "distanceParameters": {
+      "a": 5,
+      "b": 3,
+      "lineCoefficients": [
+        8,
+        -15,
+        0
+      ],
+      "normalLength": 17,
+      "offsetD": 51
+    },
+    "sourceEquation": {
+      "first": "x=±a",
+      "second": "8x-15y+0=±51"
+    },
+    "sourceIntersectionCoordinates": {
+      "P0": [
+        "-5",
+        "-91/15"
+      ],
+      "P1": [
+        "5",
+        "-11/15"
+      ],
+      "P2": [
+        "5",
+        "91/15"
+      ],
+      "P3": [
+        "-5",
+        "11/15"
+      ]
+    },
+    "coordinateConstruction": "see constructed coordinate evidence"
+  },
+  "pythonCalculatedOutputs": {
+    "sideLengths": {
+      "verticalSide": 6.8,
+      "slantedSide": 11.333333333333334,
+      "perpendicularStripWidth": 10.0
+    },
+    "exactSideLengths": {
+      "verticalSide": "34/5",
+      "perpendicularStripWidth": "10",
+      "slantedSide": "34/3"
+    },
+    "area": 68.0,
+    "areaExact": "68",
+    "perimeter": 36.266666666666666,
+    "approvedSolutionRelation": {
+      "kind": "DIRECT_AREA_WITNESS",
+      "value": 68,
+      "verified": true
+    },
+    "sourceConditionResiduals": [
+      {
+        "pointId": "P0",
+        "xFromVerticalLine": "5",
+        "expectedXDistance": "5",
+        "xDistanceResidual": 0.0,
+        "lineValue": "51",
+        "lineNormalLength": 17,
+        "expectedLineDistance": "3",
+        "observedLineDistance": "3",
+        "lineDistanceResidual": 0.0
+      },
+      {
+        "pointId": "P1",
+        "xFromVerticalLine": "5",
+        "expectedXDistance": "5",
+        "xDistanceResidual": 0.0,
+        "lineValue": "51",
+        "lineNormalLength": 17,
+        "expectedLineDistance": "3",
+        "observedLineDistance": "3",
+        "lineDistanceResidual": 0.0
+      },
+      {
+        "pointId": "P2",
+        "xFromVerticalLine": "5",
+        "expectedXDistance": "5",
+        "xDistanceResidual": 0.0,
+        "lineValue": "-51",
+        "lineNormalLength": 17,
+        "expectedLineDistance": "3",
+        "observedLineDistance": "3",
+        "lineDistanceResidual": 0.0
+      },
+      {
+        "pointId": "P3",
+        "xFromVerticalLine": "5",
+        "expectedXDistance": "5",
+        "xDistanceResidual": 0.0,
+        "lineValue": "-51",
+        "lineNormalLength": 17,
+        "expectedLineDistance": "3",
+        "observedLineDistance": "3",
+        "lineDistanceResidual": 0.0
+      }
+    ],
+    "actualSvgSourceDistanceObservations": [
+      {
+        "pointId": "P0",
+        "firstDistance": 5.0,
+        "expectedFirstDistance": 5,
+        "firstDelta": 0.0,
+        "lineDistance": 2.9999999999834293,
+        "expectedLineDistance": 3,
+        "lineDelta": -1.6570744776345236e-11,
+        "lineValue": 50.9999999997183
+      },
+      {
+        "pointId": "P1",
+        "firstDistance": 5.0,
+        "expectedFirstDistance": 5,
+        "firstDelta": 0.0,
+        "lineDistance": 3.0000000000165703,
+        "expectedLineDistance": 3,
+        "lineDelta": 1.6570300687135386e-11,
+        "lineValue": 51.000000000281695
+      },
+      {
+        "pointId": "P2",
+        "firstDistance": 5.0,
+        "expectedFirstDistance": 5,
+        "firstDelta": 0.0,
+        "lineDistance": 2.999999999983431,
+        "expectedLineDistance": 3,
+        "lineDelta": -1.6568968419505836e-11,
+        "lineValue": -50.99999999971833
+      },
+      {
+        "pointId": "P3",
+        "firstDistance": 5.0,
+        "expectedFirstDistance": 5,
+        "firstDelta": 0.0,
+        "lineDistance": 3.000000000016571,
+        "expectedLineDistance": 3,
+        "lineDelta": 1.6571188865555087e-11,
+        "lineValue": -51.00000000028171
+      }
+    ]
+  },
+  "coordinateModel": {
+    "provenance": "CONSTRUCTED_REALIZATION",
+    "coordinateSystem": "Axis-free equal-unit rigid realization of the exact distance-locus intersections.",
+    "normalization": {
+      "originPoint": "P0",
+      "xAxisPoint": "P3",
+      "unitScale": 6.8
+    },
+    "pointCoordinates": {
+      "P0": [
+        "0",
+        "0"
+      ],
+      "P1": [
+        "16/3",
+        "10"
+      ],
+      "P2": [
+        "182/15",
+        "10"
+      ],
+      "P3": [
+        "34/5",
+        "0"
+      ],
+      "H0": [
+        "91/15",
+        "0"
+      ],
+      "H1": [
+        "91/15",
+        "10"
+      ]
+    },
+    "screenTransform": {
+      "originX": 87.31666666666666,
+      "originY": 294.75,
+      "sx": 17.75,
+      "sy": 17.75
+    },
+    "coordinateEvidenceSha256": "0776fa69637015ea57e5d51ab104e780aecc886870e3660efacfd7fde7dcd7f2"
+  },
+  "coordinateEvidence": {
+    "mode": "CONSTRUCTED_REALIZATION",
+    "rationale": "Original coordinates are intersections of the two stated distance-locus line pairs. The diagram uses a rigid translation/reflection of those four exact intersections so the first base lies on the positive x-axis; perpendicular strip width, both parallel side pairs, exact side lengths, and area are preserved. These are constructed coordinates, not source coordinate claims.",
+    "normalization": {
+      "originPoint": "P0",
+      "xAxisPoint": "P3",
+      "unitScale": 6.8
+    },
+    "freeVariables": [
+      {
+        "id": "a",
+        "value": 5
+      },
+      {
+        "id": "b",
+        "value": 3
+      },
+      {
+        "id": "lineCoefficients0",
+        "value": 8
+      },
+      {
+        "id": "lineCoefficients1",
+        "value": -15
+      },
+      {
+        "id": "lineCoefficients2",
+        "value": 0
+      },
+      {
+        "id": "normalLength",
+        "value": 17
+      },
+      {
+        "id": "offsetD",
+        "value": 51
+      }
+    ],
+    "pointCoordinates": {
+      "P0": [
+        0.0,
+        0.0
+      ],
+      "P1": [
+        5.333333333333333,
+        10.0
+      ],
+      "P2": [
+        12.133333333333333,
+        10.0
+      ],
+      "P3": [
+        6.8,
+        0.0
+      ],
+      "H0": [
+        6.066666666666666,
+        0.0
+      ],
+      "H1": [
+        6.066666666666666,
+        10.0
+      ]
+    },
+    "conditions": [
+      {
+        "id": "base-side-length",
+        "kind": "DISTANCE",
+        "refs": [
+          "P0",
+          "P3"
+        ],
+        "tolerance": 1e-09,
+        "expected": 6.8
+      },
+      {
+        "id": "opposite-base-side-length",
+        "kind": "DISTANCE",
+        "refs": [
+          "P1",
+          "P2"
+        ],
+        "tolerance": 1e-09,
+        "expected": 6.8
+      },
+      {
+        "id": "first-oblique-side-length",
+        "kind": "DISTANCE",
+        "refs": [
+          "P0",
+          "P1"
+        ],
+        "tolerance": 1e-09,
+        "expected": 11.333333333333334
+      },
+      {
+        "id": "opposite-oblique-side-length",
+        "kind": "DISTANCE",
+        "refs": [
+          "P3",
+          "P2"
+        ],
+        "tolerance": 1e-09,
+        "expected": 11.333333333333334
+      },
+      {
+        "id": "strip-height-length",
+        "kind": "DISTANCE",
+        "refs": [
+          "H0",
+          "H1"
+        ],
+        "tolerance": 1e-09,
+        "expected": 10.0
+      },
+      {
+        "id": "parallel-base-sides",
+        "kind": "PARALLEL",
+        "refs": [
+          "P0",
+          "P3",
+          "P1",
+          "P2"
+        ],
+        "tolerance": 1e-09
+      },
+      {
+        "id": "parallel-oblique-sides",
+        "kind": "PARALLEL",
+        "refs": [
+          "P0",
+          "P1",
+          "P3",
+          "P2"
+        ],
+        "tolerance": 1e-09
+      },
+      {
+        "id": "height-perpendicular-to-base",
+        "kind": "PERPENDICULAR",
+        "refs": [
+          "P0",
+          "P3",
+          "H0",
+          "H1"
+        ],
+        "tolerance": 1e-09
+      },
+      {
+        "id": "height-foot-on-base",
+        "kind": "COLLINEAR",
+        "refs": [
+          "P0",
+          "P3",
+          "H0"
+        ],
+        "tolerance": 1e-09
+      },
+      {
+        "id": "height-head-on-opposite-base",
+        "kind": "COLLINEAR",
+        "refs": [
+          "P1",
+          "P2",
+          "H1"
+        ],
+        "tolerance": 1e-09
+      }
+    ],
+    "constructionSteps": [
+      {
+        "id": "construct-p0",
+        "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+        "output": "P0",
+        "inputs": []
+      },
+      {
+        "id": "construct-p1",
+        "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+        "output": "P1",
+        "inputs": []
+      },
+      {
+        "id": "construct-p2",
+        "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+        "output": "P2",
+        "inputs": []
+      },
+      {
+        "id": "construct-p3",
+        "operation": "INTERSECTION_AND_ISOMETRIC_NORMALIZATION",
+        "output": "P3",
+        "inputs": []
+      },
+      {
+        "id": "construct-height-foot",
+        "operation": "PERPENDICULAR_HEIGHT_FOOT",
+        "output": "H0",
+        "inputs": [
+          "P0",
+          "P3",
+          "P1",
+          "P2"
+        ]
+      },
+      {
+        "id": "construct-height-head",
+        "operation": "PARALLEL_SIDE_HEIGHT_HEAD",
+        "output": "H1",
+        "inputs": [
+          "P1",
+          "P2",
+          "H0"
+        ]
+      }
+    ],
+    "residualChecks": [
+      {
+        "conditionId": "base-side-length",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "opposite-base-side-length",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "first-oblique-side-length",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "opposite-oblique-side-length",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "strip-height-length",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "parallel-base-sides",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "parallel-oblique-sides",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "height-perpendicular-to-base",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "height-foot-on-base",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      },
+      {
+        "conditionId": "height-head-on-opposite-base",
+        "residual": 0.0,
+        "tolerance": 1e-09
+      }
+    ],
+    "degeneracyChecks": [
+      {
+        "id": "parallelogram-nondegenerate",
+        "kind": "NONCOLLINEAR",
+        "refs": [
+          "P0",
+          "P1",
+          "P3"
+        ],
+        "observed": 0.8823529411764707,
+        "minimum": 1e-08
+      },
+      {
+        "id": "height-endpoints-distinct",
+        "kind": "DISTINCT_POINTS",
+        "refs": [
+          "H0",
+          "H1"
+        ],
+        "observed": 10.0,
+        "minimum": 1e-08
+      }
+    ]
+  },
+  "actualSvgPrimitives": {
+    "points": {
+      "P0": {
+        "sourceLabel": "P",
+        "screenCenter": [
+          87.316666667,
+          294.75
+        ],
+        "observedCoordinate": [
+          1.8779944735464418e-11,
+          0.0
+        ],
+        "expectedCoordinate": [
+          0.0,
+          0.0
+        ],
+        "delta": 1.8779944735464418e-11,
+        "radiusPx": 2.0,
+        "owner": "P0",
+        "xmlDataRole": "point"
+      },
+      "P1": {
+        "sourceLabel": "Q",
+        "screenCenter": [
+          181.983333333,
+          117.25
+        ],
+        "observedCoordinate": [
+          5.333333333314553,
+          10.0
+        ],
+        "expectedCoordinate": [
+          5.333333333333333,
+          10.0
+        ],
+        "delta": 1.8779644506139448e-11,
+        "radiusPx": 2.0,
+        "owner": "P1",
+        "xmlDataRole": "point"
+      },
+      "P2": {
+        "sourceLabel": "R",
+        "screenCenter": [
+          302.683333333,
+          117.25
+        ],
+        "observedCoordinate": [
+          12.133333333314555,
+          10.0
+        ],
+        "expectedCoordinate": [
+          12.133333333333333,
+          10.0
+        ],
+        "delta": 1.8777868149300048e-11,
+        "radiusPx": 2.0,
+        "owner": "P2",
+        "xmlDataRole": "point"
+      },
+      "P3": {
+        "sourceLabel": "S",
+        "screenCenter": [
+          208.016666667,
+          294.75
+        ],
+        "observedCoordinate": [
+          6.80000000001878,
+          0.0
+        ],
+        "expectedCoordinate": [
+          6.8,
+          0.0
+        ],
+        "delta": 1.8780532684559148e-11,
+        "radiusPx": 2.0,
+        "owner": "P3",
+        "xmlDataRole": "point"
+      },
+      "H0": {
+        "sourceLabel": "H",
+        "screenCenter": [
+          195.0,
+          294.75
+        ],
+        "observedCoordinate": [
+          6.066666666666667,
+          0.0
+        ],
+        "expectedCoordinate": [
+          6.066666666666666,
+          0.0
+        ],
+        "delta": 8.881784197001252e-16,
+        "radiusPx": 2.0,
+        "owner": "H0",
+        "xmlDataRole": "point"
+      },
+      "H1": {
+        "sourceLabel": "K",
+        "screenCenter": [
+          195.0,
+          117.25
+        ],
+        "observedCoordinate": [
+          6.066666666666667,
+          10.0
+        ],
+        "expectedCoordinate": [
+          6.066666666666666,
+          10.0
+        ],
+        "delta": 8.881784197001252e-16,
+        "radiusPx": 2.0,
+        "owner": "H1",
+        "xmlDataRole": "point"
+      }
+    },
+    "segments": [
+      {
+        "id": "edge-P0-P1",
+        "ownerPoints": [
+          "P0",
+          "P1"
+        ],
+        "screenEndpoints": [
+          [
+            87.316666667,
+            294.75
+          ],
+          [
+            181.983333333,
+            117.25
+          ]
+        ],
+        "observedEndpoints": [
+          [
+            1.8779944735464418e-11,
+            0.0
+          ],
+          [
+            5.333333333314553,
+            10.0
+          ]
+        ],
+        "observedLength": 11.333333333315657,
+        "expectedLength": 11.333333333315657,
+        "xmlDataRole": "line",
+        "lengthDelta": 0.0
+      },
+      {
+        "id": "edge-P1-P2",
+        "ownerPoints": [
+          "P1",
+          "P2"
+        ],
+        "screenEndpoints": [
+          [
+            181.983333333,
+            117.25
+          ],
+          [
+            302.683333333,
+            117.25
+          ]
+        ],
+        "observedEndpoints": [
+          [
+            5.333333333314553,
+            10.0
+          ],
+          [
+            12.133333333314555,
+            10.0
+          ]
+        ],
+        "observedLength": 6.800000000000002,
+        "expectedLength": 6.800000000000002,
+        "xmlDataRole": "line",
+        "lengthDelta": 0.0
+      },
+      {
+        "id": "edge-P2-P3",
+        "ownerPoints": [
+          "P2",
+          "P3"
+        ],
+        "screenEndpoints": [
+          [
+            302.683333333,
+            117.25
+          ],
+          [
+            208.016666667,
+            294.75
+          ]
+        ],
+        "observedEndpoints": [
+          [
+            12.133333333314555,
+            10.0
+          ],
+          [
+            6.80000000001878,
+            0.0
+          ]
+        ],
+        "observedLength": 11.33333333331566,
+        "expectedLength": 11.33333333331566,
+        "xmlDataRole": "line",
+        "lengthDelta": 0.0
+      },
+      {
+        "id": "edge-P0-P3",
+        "ownerPoints": [
+          "P0",
+          "P3"
+        ],
+        "screenEndpoints": [
+          [
+            87.316666667,
+            294.75
+          ],
+          [
+            208.016666667,
+            294.75
+          ]
+        ],
+        "observedEndpoints": [
+          [
+            1.8779944735464418e-11,
+            0.0
+          ],
+          [
+            6.80000000001878,
+            0.0
+          ]
+        ],
+        "observedLength": 6.800000000000001,
+        "expectedLength": 6.800000000000001,
+        "xmlDataRole": "line",
+        "lengthDelta": 0.0
+      },
+      {
+        "id": "height-H0-H1",
+        "ownerPoints": [
+          "H0",
+          "H1"
+        ],
+        "screenEndpoints": [
+          [
+            195.0,
+            294.75
+          ],
+          [
+            195.0,
+            117.25
+          ]
+        ],
+        "observedEndpoints": [
+          [
+            6.066666666666667,
+            0.0
+          ],
+          [
+            6.066666666666667,
+            10.0
+          ]
+        ],
+        "observedLength": 10.0,
+        "expectedLength": 10.0,
+        "xmlDataRole": "line",
+        "lengthDelta": 0.0
+      }
+    ],
+    "regions": [
+      {
+        "id": "parallelogramArea",
+        "ownerPoints": [
+          "P0",
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "screenVertices": [
+          [
+            87.316666667,
+            294.75
+          ],
+          [
+            181.983333333,
+            117.25
+          ],
+          [
+            302.683333333,
+            117.25
+          ],
+          [
+            208.016666667,
+            294.75
+          ]
+        ],
+        "observedVertices": [
+          [
+            1.8779944735464418e-11,
+            0.0
+          ],
+          [
+            5.333333333314553,
+            10.0
+          ],
+          [
+            12.133333333314555,
+            10.0
+          ],
+          [
+            6.80000000001878,
+            0.0
+          ]
+        ],
+        "observedArea": 68.00000000000001,
+        "expectedArea": 68.0,
+        "areaDelta": 1.4210854715202004e-14,
+        "factRole": "CONCLUSION",
+        "owner": "parallelogramArea",
+        "annotation": "parallelogramArea"
+      }
+    ],
+    "dimensionLines": [
+      {
+        "id": "baseLength-dimension",
+        "screenEndpoints": [
+          [
+            87.316666667,
+            333.75
+          ],
+          [
+            208.016666667,
+            333.75
+          ]
+        ],
+        "observedEndpoints": [
+          [
+            1.8779944735464418e-11,
+            -2.1971830985915495
+          ],
+          [
+            6.80000000001878,
+            -2.1971830985915495
+          ]
+        ],
+        "owner": "edge-P0-P3",
+        "annotation": "baseLength",
+        "ownerKind": "LENGTH",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "observedLength": 6.800000000000001
+      },
+      {
+        "id": "stripWidth-dimension",
+        "screenEndpoints": [
+          [
+            234.0,
+            294.75
+          ],
+          [
+            234.0,
+            117.25
+          ]
+        ],
+        "observedEndpoints": [
+          [
+            8.263849765258216,
+            0.0
+          ],
+          [
+            8.263849765258216,
+            10.0
+          ]
+        ],
+        "owner": "height-H0-H1",
+        "annotation": "stripWidth",
+        "ownerKind": "LENGTH",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "observedLength": 10.0
+      }
+    ],
+    "labels": [
+      {
+        "id": "H0-name",
+        "kind": "POINT_NAME",
+        "text": "H",
+        "owner": "H0",
+        "annotation": null,
+        "ownerKind": null,
+        "factRole": null,
+        "screenAnchor": [
+          190.05,
+          322.75
+        ],
+        "fontSize": 15.0
+      },
+      {
+        "id": "H1-name",
+        "kind": "POINT_NAME",
+        "text": "K",
+        "owner": "H1",
+        "annotation": null,
+        "ownerKind": null,
+        "factRole": null,
+        "screenAnchor": [
+          190.05,
+          102.75
+        ],
+        "fontSize": 15.0
+      },
+      {
+        "id": "P0-name",
+        "kind": "POINT_NAME",
+        "text": "P",
+        "owner": "P0",
+        "annotation": null,
+        "ownerKind": null,
+        "factRole": null,
+        "screenAnchor": [
+          67.416666667,
+          322.75
+        ],
+        "fontSize": 15.0
+      },
+      {
+        "id": "P1-name",
+        "kind": "POINT_NAME",
+        "text": "Q",
+        "owner": "P1",
+        "annotation": null,
+        "ownerKind": null,
+        "factRole": null,
+        "screenAnchor": [
+          162.083333333,
+          102.75
+        ],
+        "fontSize": 15.0
+      },
+      {
+        "id": "P2-name",
+        "kind": "POINT_NAME",
+        "text": "R",
+        "owner": "P2",
+        "annotation": null,
+        "ownerKind": null,
+        "factRole": null,
+        "screenAnchor": [
+          312.683333333,
+          102.75
+        ],
+        "fontSize": 15.0
+      },
+      {
+        "id": "P3-name",
+        "kind": "POINT_NAME",
+        "text": "S",
+        "owner": "P3",
+        "annotation": null,
+        "ownerKind": null,
+        "factRole": null,
+        "screenAnchor": [
+          218.016666667,
+          322.75
+        ],
+        "fontSize": 15.0
+      },
+      {
+        "id": "baseLength-label",
+        "kind": "LENGTH_LABEL",
+        "text": "34/5",
+        "owner": "edge-P0-P3",
+        "annotation": "baseLength",
+        "ownerKind": "LENGTH",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "screenAnchor": [
+          147.666666667,
+          314.25
+        ],
+        "fontSize": 15.0
+      },
+      {
+        "id": "parallelogramArea-label",
+        "kind": "AREA_LABEL",
+        "text": "68",
+        "owner": "parallelogramArea",
+        "annotation": "parallelogramArea",
+        "ownerKind": "REGION",
+        "factRole": "CONCLUSION",
+        "screenAnchor": [
+          216.536666667,
+          170.5
+        ],
+        "fontSize": 15.0
+      },
+      {
+        "id": "stripWidth-label",
+        "kind": "LENGTH_LABEL",
+        "text": "10",
+        "owner": "height-H0-H1",
+        "annotation": "stripWidth",
+        "ownerKind": "LENGTH",
+        "factRole": "DERIVED_INTERMEDIATE",
+        "screenAnchor": [
+          214.5,
+          206.0
+        ],
+        "fontSize": 15.0
+      }
+    ]
+  },
+  "reconstructedSourceIntersections": {
+    "P0": {
+      "expectedSourceIntersection": [
+        -5.0,
+        -6.066666666666666
+      ],
+      "observedSourceIntersection": [
+        -5.0,
+        -6.066666666647887
+      ],
+      "delta": 1.8779644506139448e-11
+    },
+    "P1": {
+      "expectedSourceIntersection": [
+        5.0,
+        -0.7333333333333333
+      ],
+      "observedSourceIntersection": [
+        5.0,
+        -0.733333333352113
+      ],
+      "delta": 1.877975552844191e-11
+    },
+    "P2": {
+      "expectedSourceIntersection": [
+        5.0,
+        6.066666666666666
+      ],
+      "observedSourceIntersection": [
+        5.0,
+        6.066666666647889
+      ],
+      "delta": 1.8777868149300048e-11
+    },
+    "P3": {
+      "expectedSourceIntersection": [
+        -5.0,
+        0.7333333333333333
+      ],
+      "observedSourceIntersection": [
+        -5.0,
+        0.7333333333521139
+      ],
+      "delta": 1.878064370686161e-11
+    }
+  },
+  "observedFacts": {
+    "allFourIntersectionPointDeltasBelow1e-6": true,
+    "sourceIntersectionReconstructionDeltasBelow1e-6": true,
+    "sourceDistanceLocusResidualsBelow1e-6": true,
+    "observedArea": 68.00000000000001,
+    "expectedArea": 68.0,
+    "areaDelta": 1.4210854715202004e-14,
+    "independentStaticAuditStatus": "PASS"
+  },
+  "deltaTolerance": {
+    "localPointCoordinate": 1e-06,
+    "sourceIntersectionCoordinate": 1e-06,
+    "distanceResidual": 1e-06,
+    "length": 1e-07,
+    "area": 1e-07
+  },
+  "labelOwnerBindings": [
+    {
+      "annotation": "baseLength",
+      "labelText": "34/5",
+      "ownerSegment": "edge-P0-P3",
+      "ownerPointNames": [
+        "P",
+        "S"
+      ],
+      "dimensionPrimitive": "baseLength-dimension",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "result": "PASS"
+    },
+    {
+      "annotation": "stripWidth",
+      "labelText": "10",
+      "ownerSegment": "height-H0-H1",
+      "ownerPointNames": [
+        "H",
+        "K"
+      ],
+      "dimensionPrimitive": "stripWidth-dimension",
+      "factRole": "DERIVED_INTERMEDIATE",
+      "result": "PASS"
+    },
+    {
+      "annotation": "parallelogramArea",
+      "labelText": "68",
+      "ownerRegion": "parallelogramArea",
+      "ownerPoints": [
+        "P0",
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "factRole": "CONCLUSION",
+      "result": "PASS"
+    },
+    {
+      "annotation": "P0-name",
+      "labelText": "P",
+      "semanticOwner": "P0",
+      "ownerKind": "POINT",
+      "result": "PASS"
+    },
+    {
+      "annotation": "P1-name",
+      "labelText": "Q",
+      "semanticOwner": "P1",
+      "ownerKind": "POINT",
+      "result": "PASS"
+    },
+    {
+      "annotation": "P2-name",
+      "labelText": "R",
+      "semanticOwner": "P2",
+      "ownerKind": "POINT",
+      "result": "PASS"
+    },
+    {
+      "annotation": "P3-name",
+      "labelText": "S",
+      "semanticOwner": "P3",
+      "ownerKind": "POINT",
+      "result": "PASS"
+    },
+    {
+      "annotation": "H0-name",
+      "labelText": "H",
+      "semanticOwner": "H0",
+      "ownerKind": "POINT",
+      "result": "PASS"
+    },
+    {
+      "annotation": "H1-name",
+      "labelText": "K",
+      "semanticOwner": "H1",
+      "ownerKind": "POINT",
+      "result": "PASS"
+    }
+  ],
+  "sourceSemanticIdentity": {
+    "applicable": false,
+    "reason": "Generated problem contains no source-named points; diagram uses conventional P,Q,R,S,H,K names only to identify the four vertices and perpendicular-height endpoints.",
+    "checks": [
+      {
+        "semanticRole": "four parallelogram vertices",
+        "sourceLabel": null,
+        "artifactLabel": "P,Q,R,S",
+        "result": "PASS_INTERNAL_DIAGRAM_LABELS"
+      },
+      {
+        "semanticRole": "height segment endpoints",
+        "sourceLabel": null,
+        "artifactLabel": "H,K",
+        "result": "PASS_INTERNAL_DIAGRAM_LABELS"
+      }
+    ]
+  },
+  "factVisualizations": [
+    {
+      "fact": "거리 조건으로 정해지는 두 평행선 쌍과 그 네 교점",
+      "role": "GIVEN",
+      "encoding": "두 평행한 변 쌍을 이루는 점 P,Q,R,S"
+    },
+    {
+      "fact": "base와 strip width",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "owner-segment에 결속한 dimension line/caps/label"
+    },
+    {
+      "fact": "평행사변형 넓이 68",
+      "role": "CONCLUSION",
+      "encoding": "해당 region 내부의 AREA_LABEL"
+    }
+  ],
+  "visualScope": "The SVG shows the actual four intersections and owner-bound dimensions used by the approved solution relation.",
+  "newVisualInformation": [
+    "Four actual distance-locus intersections are shown as one filled parallelogram.",
+    "Base and perpendicular strip width have explicit owner-bound dimension lines.",
+    "The region area label is owner-bound and role-matched to this UID."
+  ],
+  "renderer": "archive/tools/geometry-equation/visual_engine/geometry-publication-v1",
+  "builderStatus": "CANDIDATE_REQUIRES_QA",
+  "builderAuthority": "BUILD_SIDE_ONLY; NOT PUBLICATION AUTHORITY",
+  "builderWitnessPath": ".tmp/archive/palma-q23-visual-20261010/alive-palma25-2mid-q23/candidate/palma-q23-a3/witness.json",
+  "builderWitnessSha256": "3266a80fecb1173205af34efdf08ee47acdddb19dfa6e01a9bfa57be297d5515",
+  "builderWitness": {
+    "engineVersion": "geometry-visual-v1",
+    "authority": "BUILD_SIDE_ONLY",
+    "publicationAuthorized": false,
+    "classification": "STANDARD",
+    "visualSpecSha256": "2496dddbc64056836cb0e4a54eaf55a39b61f0a8dd4fe3075d5d27ea3cc93087",
+    "normalizedSvgSha256": "fe673783f132cc5ec868a64c8bf047db0859e1a724add9e3909776a86b7df0ad",
+    "texSha256": "943999fbcb10af14b67937e14e1be8b1647b029db302dc8e8a3037c6f845b76e",
+    "coordinateModel": {
+      "originX": 87.31666666666666,
+      "originY": 294.75,
+      "sx": 17.75,
+      "sy": 17.75,
+      "aspectPolicy": "EQUAL_UNIT"
+    },
+    "relations": [],
+    "layout": {
+      "labels": [
+        {
+          "id": "H0-name",
+          "kind": "POINT_NAME",
+          "target": "H0",
+          "text": "H",
+          "at": [
+            195.0,
+            294.75
+          ],
+          "font": 15.0,
+          "priority": 1,
+          "allowSuppress": false,
+          "owner": "H0",
+          "sourceLabel": "H",
+          "allowPanel": false,
+          "gaps": [
+            10,
+            16,
+            24
+          ],
+          "directions": [
+            "S",
+            "SE",
+            "SW",
+            "E",
+            "W",
+            "NE",
+            "NW",
+            "N"
+          ],
+          "box": {
+            "x": 190.05,
+            "y": 304.75,
+            "width": 9.9,
+            "height": 22.5
+          },
+          "baseline": [
+            190.05,
+            322.75
+          ],
+          "placement": "COORDINATE_RELOCATION_S"
+        },
+        {
+          "id": "H1-name",
+          "kind": "POINT_NAME",
+          "target": "H1",
+          "text": "K",
+          "at": [
+            195.0,
+            117.25
+          ],
+          "font": 15.0,
+          "priority": 1,
+          "allowSuppress": false,
+          "owner": "H1",
+          "sourceLabel": "K",
+          "allowPanel": false,
+          "gaps": [
+            10,
+            16,
+            24
+          ],
+          "directions": [
+            "N",
+            "NE",
+            "NW",
+            "E",
+            "W",
+            "SE",
+            "SW",
+            "S"
+          ],
+          "box": {
+            "x": 190.05,
+            "y": 84.75,
+            "width": 9.9,
+            "height": 22.5
+          },
+          "baseline": [
+            190.05,
+            102.75
+          ],
+          "placement": "COORDINATE_RELOCATION_N"
+        },
+        {
+          "id": "P0-name",
+          "kind": "POINT_NAME",
+          "target": "P0",
+          "text": "P",
+          "at": [
+            87.31666666666666,
+            294.75
+          ],
+          "font": 15.0,
+          "priority": 1,
+          "allowSuppress": false,
+          "owner": "P0",
+          "sourceLabel": "P",
+          "allowPanel": false,
+          "gaps": [
+            10,
+            16,
+            24
+          ],
+          "directions": [
+            "SW",
+            "W",
+            "S",
+            "NW",
+            "SE",
+            "N",
+            "NE",
+            "E"
+          ],
+          "box": {
+            "x": 67.41666666666666,
+            "y": 304.75,
+            "width": 9.9,
+            "height": 22.5
+          },
+          "baseline": [
+            67.41666666666666,
+            322.75
+          ],
+          "placement": "COORDINATE_RELOCATION_SW"
+        },
+        {
+          "id": "P1-name",
+          "kind": "POINT_NAME",
+          "target": "P1",
+          "text": "Q",
+          "at": [
+            181.98333333333332,
+            117.25
+          ],
+          "font": 15.0,
+          "priority": 1,
+          "allowSuppress": false,
+          "owner": "P1",
+          "sourceLabel": "Q",
+          "allowPanel": false,
+          "gaps": [
+            10,
+            16,
+            24
+          ],
+          "directions": [
+            "NW",
+            "N",
+            "W",
+            "NE",
+            "SE",
+            "S",
+            "SW",
+            "E"
+          ],
+          "box": {
+            "x": 162.08333333333331,
+            "y": 84.75,
+            "width": 9.9,
+            "height": 22.5
+          },
+          "baseline": [
+            162.08333333333331,
+            102.75
+          ],
+          "placement": "COORDINATE_RELOCATION_NW"
+        },
+        {
+          "id": "P2-name",
+          "kind": "POINT_NAME",
+          "target": "P2",
+          "text": "R",
+          "at": [
+            302.68333333333334,
+            117.25
+          ],
+          "font": 15.0,
+          "priority": 1,
+          "allowSuppress": false,
+          "owner": "P2",
+          "sourceLabel": "R",
+          "allowPanel": false,
+          "gaps": [
+            10,
+            16,
+            24
+          ],
+          "directions": [
+            "NE",
+            "E",
+            "N",
+            "SE",
+            "NW",
+            "S",
+            "SW",
+            "W"
+          ],
+          "box": {
+            "x": 312.68333333333334,
+            "y": 84.75,
+            "width": 9.9,
+            "height": 22.5
+          },
+          "baseline": [
+            312.68333333333334,
+            102.75
+          ],
+          "placement": "COORDINATE_RELOCATION_NE"
+        },
+        {
+          "id": "P3-name",
+          "kind": "POINT_NAME",
+          "target": "P3",
+          "text": "S",
+          "at": [
+            208.01666666666668,
+            294.75
+          ],
+          "font": 15.0,
+          "priority": 1,
+          "allowSuppress": false,
+          "owner": "P3",
+          "sourceLabel": "S",
+          "allowPanel": false,
+          "gaps": [
+            10,
+            16,
+            24
+          ],
+          "directions": [
+            "SE",
+            "S",
+            "E",
+            "SW",
+            "NW",
+            "N",
+            "NE",
+            "W"
+          ],
+          "box": {
+            "x": 218.01666666666668,
+            "y": 304.75,
+            "width": 9.9,
+            "height": 22.5
+          },
+          "baseline": [
+            218.01666666666668,
+            322.75
+          ],
+          "placement": "COORDINATE_RELOCATION_SE"
+        },
+        {
+          "id": "baseLength-label",
+          "kind": "LENGTH_LABEL",
+          "text": "34/5",
+          "markup": "34/5",
+          "math": true,
+          "font": 15.0,
+          "priority": 1,
+          "centered": true,
+          "allowPanel": false,
+          "owner": "edge-P0-P3",
+          "annotation": "baseLength",
+          "ownerKind": "LENGTH",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "at": [
+            147.66666666666669,
+            352.5
+          ],
+          "candidateCenters": [
+            [
+              147.66666666666669,
+              352.5
+            ],
+            [
+              129.56166666666667,
+              352.5
+            ],
+            [
+              165.77166666666668,
+              352.5
+            ],
+            [
+              147.66666666666669,
+              314.25
+            ],
+            [
+              129.56166666666667,
+              314.25
+            ],
+            [
+              165.77166666666668,
+              314.25
+            ],
+            [
+              147.66666666666669,
+              363.75
+            ],
+            [
+              129.56166666666667,
+              363.75
+            ],
+            [
+              165.77166666666668,
+              363.75
+            ]
+          ],
+          "nearestSegmentOwner": false,
+          "ownerSegment": [
+            [
+              87.31666666666666,
+              294.75
+            ],
+            [
+              208.01666666666668,
+              294.75
+            ]
+          ],
+          "otherSegments": [
+            [
+              [
+                87.31666666666666,
+                294.75
+              ],
+              [
+                181.98333333333332,
+                117.25
+              ]
+            ],
+            [
+              [
+                181.98333333333332,
+                117.25
+              ],
+              [
+                302.68333333333334,
+                117.25
+              ]
+            ],
+            [
+              [
+                302.68333333333334,
+                117.25
+              ],
+              [
+                208.01666666666668,
+                294.75
+              ]
+            ],
+            [
+              [
+                195.0,
+                294.75
+              ],
+              [
+                195.0,
+                117.25
+              ]
+            ]
+          ],
+          "box": {
+            "x": 127.86666666666669,
+            "y": 303.0,
+            "width": 39.6,
+            "height": 22.5
+          },
+          "baseline": [
+            147.66666666666669,
+            314.25
+          ],
+          "placement": "OWNER_BOUND_RELOCATION"
+        },
+        {
+          "id": "parallelogramArea-label",
+          "kind": "AREA_LABEL",
+          "text": "68",
+          "markup": "68",
+          "math": true,
+          "font": 15.0,
+          "priority": 1,
+          "centered": true,
+          "allowPanel": false,
+          "owner": "parallelogramArea",
+          "annotation": "parallelogramArea",
+          "ownerKind": "REGION",
+          "factRole": "CONCLUSION",
+          "at": [
+            195.0,
+            206.0
+          ],
+          "candidateCenters": [
+            [
+              195.0,
+              206.0
+            ],
+            [
+              194.99999999999997,
+              205.99999999999991
+            ],
+            [
+              216.53666666666666,
+              170.5
+            ],
+            [
+              173.46333333333334,
+              241.5
+            ],
+            [
+              195.0,
+              188.25
+            ],
+            [
+              195.0,
+              223.75
+            ],
+            [
+              216.53666666666666,
+              188.25
+            ],
+            [
+              173.46333333333334,
+              223.75
+            ],
+            [
+              195.0,
+              170.5
+            ],
+            [
+              195.0,
+              241.5
+            ],
+            [
+              216.53666666666666,
+              152.75
+            ],
+            [
+              173.46333333333334,
+              259.25
+            ],
+            [
+              238.07333333333332,
+              152.75
+            ],
+            [
+              151.92666666666668,
+              259.25
+            ],
+            [
+              173.46333333333334,
+              206.0
+            ],
+            [
+              216.53666666666666,
+              206.0
+            ],
+            [
+              151.92666666666668,
+              241.5
+            ],
+            [
+              238.07333333333332,
+              170.5
+            ],
+            [
+              195.0,
+              152.75
+            ],
+            [
+              195.0,
+              259.25
+            ],
+            [
+              173.46333333333334,
+              188.25
+            ],
+            [
+              216.53666666666666,
+              223.75
+            ],
+            [
+              151.92666666666668,
+              223.75
+            ],
+            [
+              238.07333333333332,
+              188.25
+            ],
+            [
+              259.61,
+              152.75
+            ],
+            [
+              130.39,
+              259.25
+            ],
+            [
+              195.0,
+              135.0
+            ],
+            [
+              195.0,
+              277.0
+            ],
+            [
+              216.53666666666666,
+              135.0
+            ],
+            [
+              173.46333333333334,
+              277.0
+            ],
+            [
+              238.07333333333332,
+              135.0
+            ],
+            [
+              151.92666666666668,
+              277.0
+            ],
+            [
+              259.61,
+              135.0
+            ],
+            [
+              130.39,
+              277.0
+            ],
+            [
+              173.46333333333334,
+              170.5
+            ],
+            [
+              216.53666666666666,
+              241.5
+            ],
+            [
+              151.92666666666668,
+              206.0
+            ],
+            [
+              238.07333333333332,
+              206.0
+            ],
+            [
+              259.61,
+              170.5
+            ],
+            [
+              130.39,
+              241.5
+            ],
+            [
+              281.14666666666665,
+              135.0
+            ],
+            [
+              108.85333333333332,
+              277.0
+            ],
+            [
+              173.46333333333334,
+              152.75
+            ],
+            [
+              216.53666666666666,
+              259.25
+            ],
+            [
+              151.92666666666668,
+              188.25
+            ],
+            [
+              238.07333333333332,
+              223.75
+            ],
+            [
+              130.39,
+              223.75
+            ],
+            [
+              259.61,
+              188.25
+            ],
+            [
+              281.14666666666665,
+              152.75
+            ],
+            [
+              108.85333333333332,
+              259.25
+            ],
+            [
+              216.53666666666666,
+              277.0
+            ],
+            [
+              173.46333333333334,
+              135.0
+            ]
+          ],
+          "ownerPolygon": [
+            [
+              87.31666666666666,
+              294.75
+            ],
+            [
+              181.98333333333332,
+              117.25
+            ],
+            [
+              302.68333333333334,
+              117.25
+            ],
+            [
+              208.01666666666668,
+              294.75
+            ]
+          ],
+          "box": {
+            "x": 206.63666666666666,
+            "y": 159.25,
+            "width": 19.8,
+            "height": 22.5
+          },
+          "baseline": [
+            216.53666666666666,
+            170.5
+          ],
+          "placement": "OWNER_BOUND_RELOCATION"
+        },
+        {
+          "id": "stripWidth-label",
+          "kind": "LENGTH_LABEL",
+          "text": "10",
+          "markup": "10",
+          "math": true,
+          "font": 15.0,
+          "priority": 1,
+          "centered": true,
+          "allowPanel": false,
+          "owner": "height-H0-H1",
+          "annotation": "stripWidth",
+          "ownerKind": "LENGTH",
+          "factRole": "DERIVED_INTERMEDIATE",
+          "at": [
+            252.75,
+            206.0
+          ],
+          "candidateCenters": [
+            [
+              252.75,
+              206.0
+            ],
+            [
+              252.75,
+              232.625
+            ],
+            [
+              252.75,
+              179.375
+            ],
+            [
+              214.5,
+              206.0
+            ],
+            [
+              214.5,
+              232.625
+            ],
+            [
+              214.5,
+              179.375
+            ],
+            [
+              264.0,
+              206.0
+            ],
+            [
+              264.0,
+              232.625
+            ],
+            [
+              264.0,
+              179.375
+            ]
+          ],
+          "nearestSegmentOwner": false,
+          "ownerSegment": [
+            [
+              195.0,
+              294.75
+            ],
+            [
+              195.0,
+              117.25
+            ]
+          ],
+          "otherSegments": [
+            [
+              [
+                87.31666666666666,
+                294.75
+              ],
+              [
+                181.98333333333332,
+                117.25
+              ]
+            ],
+            [
+              [
+                181.98333333333332,
+                117.25
+              ],
+              [
+                302.68333333333334,
+                117.25
+              ]
+            ],
+            [
+              [
+                302.68333333333334,
+                117.25
+              ],
+              [
+                208.01666666666668,
+                294.75
+              ]
+            ],
+            [
+              [
+                87.31666666666666,
+                294.75
+              ],
+              [
+                208.01666666666668,
+                294.75
+              ]
+            ]
+          ],
+          "box": {
+            "x": 204.6,
+            "y": 194.75,
+            "width": 19.8,
+            "height": 22.5
+          },
+          "baseline": [
+            214.5,
+            206.0
+          ],
+          "placement": "OWNER_BOUND_RELOCATION"
+        }
+      ],
+      "suppressed": [],
+      "unresolved": [],
+      "trace": [
+        {
+          "id": "H0-name",
+          "fallback": "COORDINATE_RELOCATION_S"
+        },
+        {
+          "id": "H1-name",
+          "fallback": "COORDINATE_RELOCATION_N"
+        },
+        {
+          "id": "P0-name",
+          "fallback": "COORDINATE_RELOCATION_SW"
+        },
+        {
+          "id": "P1-name",
+          "fallback": "COORDINATE_RELOCATION_NW"
+        },
+        {
+          "id": "P2-name",
+          "fallback": "COORDINATE_RELOCATION_NE"
+        },
+        {
+          "id": "P3-name",
+          "fallback": "COORDINATE_RELOCATION_SE"
+        },
+        {
+          "id": "baseLength-label",
+          "fallback": "OWNER_BOUND_RELOCATION"
+        },
+        {
+          "id": "parallelogramArea-label",
+          "fallback": "OWNER_BOUND_RELOCATION"
+        },
+        {
+          "id": "stripWidth-label",
+          "fallback": "OWNER_BOUND_RELOCATION"
+        }
+      ],
+      "repairs": [],
+      "leaders": [],
+      "status": "PASS",
+      "basis": "APPROXIMATE_BUILD_SIDE_ONLY",
+      "publicationWarnings": []
+    },
+    "sampling": [],
+    "semanticStatus": "PASS",
+    "status": "CANDIDATE_REQUIRES_QA",
+    "publicationProfile": "geometry-publication-v1",
+    "requiredGates": [
+      "INDEPENDENT_PUBLICATION_AUDIT",
+      "RENDERED_LAYOUT",
+      "ARCHIVE_MODE_SOL_390",
+      "INDEPENDENT_VISUAL_REVIEW"
+    ],
+    "publicationSpecSha256": "b5eb63bbf6c4f2810f7382a3b035ddc2eb8eff4ea0b64c7b044d7fa256b38bc4",
+    "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+    "coordinateEvidenceSha256": "0776fa69637015ea57e5d51ab104e780aecc886870e3660efacfd7fde7dcd7f2",
+    "texStatus": "LEGACY_DRAFT_NOT_PUBLICATION_PARITY",
+    "semanticWitnessSha256": "4bece89dafdaeabf5e11e11054a203cfe247da1c832ad63a89feda0c1ce6f15d",
+    "independentFactHash": "792a12cbd93ac5bf88cbc6b406db9e2ad430e5beab4fc448d32fc2ac83e4dcf9"
+  },
+  "independentStaticAuditPath": ".tmp/archive/palma-q23-visual-20261010/alive-palma25-2mid-q23/static-audit/ALITE-PALMA25-2MID-Q23-A3.static-audit.json",
+  "independentStaticAuditSha256": "fede9a944ff20a2f1c86dd3586bba4494cba6e58045801305a65b69c358f41cb",
+  "independentStaticAudit": {
+    "schemaVersion": "geometry-publication-audit-v1",
+    "authority": "INDEPENDENT_STATIC_OBSERVER",
+    "publicationAuthorized": false,
+    "renderStatus": "NOT_RUN",
+    "scope": "frozen expected facts versus actual SVG; source-solve correctness and visual review remain external",
+    "svgSha256": "fe673783f132cc5ec868a64c8bf047db0859e1a724add9e3909776a86b7df0ad",
+    "errors": [],
+    "observations": [
+      {
+        "type": "COORDINATE_EVIDENCE",
+        "mode": "CONSTRUCTED_REALIZATION",
+        "conditionCount": 10,
+        "residualPassCount": 10,
+        "degeneracyPassCount": 2
+      },
+      {
+        "id": "P0",
+        "type": "POINT_IDENTITY",
+        "observed": [
+          1.8779944735464418e-11,
+          0.0
+        ],
+        "sourceLabel": "P",
+        "labelPlacement": "OWNER_ADJACENT"
+      },
+      {
+        "id": "P1",
+        "type": "POINT_IDENTITY",
+        "observed": [
+          5.333333333314553,
+          10.0
+        ],
+        "sourceLabel": "Q",
+        "labelPlacement": "OWNER_ADJACENT"
+      },
+      {
+        "id": "P2",
+        "type": "POINT_IDENTITY",
+        "observed": [
+          12.133333333314555,
+          10.0
+        ],
+        "sourceLabel": "R",
+        "labelPlacement": "OWNER_ADJACENT"
+      },
+      {
+        "id": "P3",
+        "type": "POINT_IDENTITY",
+        "observed": [
+          6.80000000001878,
+          0.0
+        ],
+        "sourceLabel": "S",
+        "labelPlacement": "OWNER_ADJACENT"
+      },
+      {
+        "id": "H0",
+        "type": "POINT_IDENTITY",
+        "observed": [
+          6.066666666666667,
+          0.0
+        ],
+        "sourceLabel": "H",
+        "labelPlacement": "OWNER_ADJACENT"
+      },
+      {
+        "id": "H1",
+        "type": "POINT_IDENTITY",
+        "observed": [
+          6.066666666666667,
+          10.0
+        ],
+        "sourceLabel": "K",
+        "labelPlacement": "OWNER_ADJACENT"
+      },
+      {
+        "id": "edge-P0-P1",
+        "type": "SEGMENT",
+        "observedEndpoints": [
+          [
+            1.8779944735464418e-11,
+            0.0
+          ],
+          [
+            5.333333333314553,
+            10.0
+          ]
+        ]
+      },
+      {
+        "id": "edge-P1-P2",
+        "type": "SEGMENT",
+        "observedEndpoints": [
+          [
+            5.333333333314553,
+            10.0
+          ],
+          [
+            12.133333333314555,
+            10.0
+          ]
+        ]
+      },
+      {
+        "id": "edge-P2-P3",
+        "type": "SEGMENT",
+        "observedEndpoints": [
+          [
+            12.133333333314555,
+            10.0
+          ],
+          [
+            6.80000000001878,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": "edge-P0-P3",
+        "type": "SEGMENT",
+        "observedEndpoints": [
+          [
+            1.8779944735464418e-11,
+            0.0
+          ],
+          [
+            6.80000000001878,
+            0.0
+          ]
+        ]
+      },
+      {
+        "id": "height-H0-H1",
+        "type": "SEGMENT",
+        "observedEndpoints": [
+          [
+            6.066666666666667,
+            0.0
+          ],
+          [
+            6.066666666666667,
+            10.0
+          ]
+        ]
+      },
+      {
+        "id": "baseLength",
+        "type": "LENGTH",
+        "ownerSegment": "edge-P0-P3",
+        "observedLength": 6.800000000000001,
+        "projectionFraction": 0.4999999999999999,
+        "offsetPx": 19.5,
+        "labelPlacement": "OWNER_SEGMENT"
+      },
+      {
+        "id": "stripWidth",
+        "type": "LENGTH",
+        "ownerSegment": "height-H0-H1",
+        "observedLength": 10.0,
+        "projectionFraction": 0.5,
+        "offsetPx": 19.5,
+        "labelPlacement": "OWNER_SEGMENT"
+      },
+      {
+        "id": "parallelogramArea",
+        "type": "REGION",
+        "observedArea": 68.00000000000001,
+        "ownerPoints": [
+          "P0",
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "leader": false
+      }
+    ],
+    "sourceSha256": "b469f1500b288bd5fa95568b1436d073445761a5e2c4966af192b0cfe82bac57",
+    "solutionSha256": "e8b1ae671096e69395f7a4ebc5b28a6a7cf4a787a93d4954b0c98e23f1a4312a",
+    "reviewSha256": "f03b4032b800b4de1b535df547c2a4a1830ef41e603a537ef8bf85f103b21fae",
+    "coordinateEvidenceMode": "CONSTRUCTED_REALIZATION",
+    "coordinateEvidenceSha256": "0776fa69637015ea57e5d51ab104e780aecc886870e3660efacfd7fde7dcd7f2",
+    "coverage": {
+      "declaredFacts": 14,
+      "observations": 15,
+      "primitiveCount": 18,
+      "labelCount": 9,
+      "unreviewedPrimitives": 0,
+      "unreviewedLabels": 0
+    },
+    "status": "PASS"
+  },
+  "xmlParse": "PASS",
+  "staticPrimitiveExtractionExecuted": true,
+  "staticStatus": "STATIC_READY",
+  "styleFloorStatus": "STATIC_ONLY_RENDER_PENDING",
+  "styleVersion": "geometry-publication-v1 / AP_GEOMETRY_PRINT_V1_0_DRAFT",
+  "semanticGeometryPreserved": true,
+  "sourceSvgPath": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q23-A3-solution.svg",
+  "sourceSvgSha256": "fe673783f132cc5ec868a64c8bf047db0859e1a724add9e3909776a86b7df0ad",
+  "sourceSvgGitBlobSha1": "de9de98010ff0893042fcf4a31edff1cbbdc2458",
+  "browserRenderEvidence": {
+    "status": "PENDING_POST_PROJECTION_ARCHIVE_MODE_SOL",
+    "reason": "Actual HTTP Archive desktop mode=sol render is assigned to the post-projection student UI QA lane; no browser render was run in this visual materialization."
+  },
+  "consumerReference": "PENDING_PROJECTION"
+}

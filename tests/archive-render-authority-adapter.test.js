@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { readPrintRenderAuthorityFixture } = require('./helpers/print-render-authority-fixtures.cjs');
 const root = path.join(__dirname, '..');
 const engine = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
 const layout = fs.readFileSync(path.join(root, 'archive', 'layout-authority.js'), 'utf8');
@@ -90,7 +91,7 @@ test('Archive solution executor is a DOM transaction module with injected engine
 });
 
 test('Phase A report uses legacy/shared executor A/B as the authority gate', () => {
-  const report = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-a-solution-layout-bridge.json'), 'utf8'));
+  const report = readPrintRenderAuthorityFixture('phase-a-solution-layout-bridge.json');
   assert.equal(report.status, 'PASS');
   assert.equal(report.implementation, 'archive/solution-render-executor.js');
   assert.equal(report.browserEvidence.kind, 'actual-browser-legacy-vs-shared-executor-ab');
@@ -122,7 +123,7 @@ test('Archive exam executor is a mechanical DOM extraction with explicit legacy 
 });
 
 test('Archive golden browser fixture records semantic parity across all three output modes', () => {
-  const evidence = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-3-archive-browser-fixture.json'), 'utf8'));
+  const evidence = readPrintRenderAuthorityFixture('phase-3-archive-browser-fixture.json');
   assert.equal(evidence.kind, 'actual-browser-dual-run');
   assert.equal(evidence.legacyRendererRetained, true);
   assert.deepEqual(evidence.results.map(result => result.mode), ['exam', 'solution', 'answer']);
@@ -131,7 +132,7 @@ test('Archive golden browser fixture records semantic parity across all three ou
 });
 
 test('Archive semantic golden fixture verifies table, image, and view-block subset without claiming the full catalog', () => {
-  const evidence = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-3-archive-semantic-browser-fixture.json'), 'utf8'));
+  const evidence = readPrintRenderAuthorityFixture('phase-3-archive-semantic-browser-fixture.json');
   assert.equal(evidence.kind, 'actual-browser-dual-run');
   assert.ok(evidence.results.every(result => result.dualRunEqual === true && result.renderError === ''));
   assert.deepEqual(evidence.renderedFixtureIds, ['question-choice-columns', 'question-fullwidth', 'question-table-math', 'question-problem-png', 'question-solution-svg', 'question-long-solution-continuation', 'question-inline-view-word', 'question-standalone-view-label']);
