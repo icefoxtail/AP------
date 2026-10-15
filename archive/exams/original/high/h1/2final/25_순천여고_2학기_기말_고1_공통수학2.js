@@ -425,7 +425,7 @@ window.questionBank = [
     "content": "다음 중 실수 전체의 집합 $R$에서 $R$로의 일대일대응의 그래프인 것은? [4.1점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q07.png\" style=\"max-width: 520px; display: block; margin: 10px 0;\">",
     "image": "",
     "answer": "②",
-    "solution": "일대일대응은 수평선 검사를 통과하고, 치역이 실수 전체여야 한다.\n\n②의 그래프는 꺾이는 점의 왼쪽 가지가 아래쪽으로 한없이 이어지고 오른쪽 가지가 위쪽으로 한없이 이어진다. 따라서 모든 수평선이 그래프와 한 번만 만나고, 모든 실수 $y$값이 나온다.\n\n다른 그림은 정의역 또는 치역이 실수 전체가 아니거나, 같은 수평선이 그래프와 두 번 이상 만난다.\n따라서 정답은 ②이다.",
+    "solution": "실수 전체에서 실수 전체로의 일대일대응이려면\n① 모든 실수 $x$에 함수값이 있어야 하고,\n② 서로 다른 $x$의 함수값이 달라야 하며,\n③ 모든 실수 $y$가 함수값으로 한 번씩 나와야 한다.\n\n각 그래프를 확인한다.\n\n① 그래프가 $x\\ge0$ 쪽에서만 시작하므로 정의역이 실수 전체가 아니다.\n\n② 그래프가 모든 $x$에서 정의되고 왼쪽 아래에서 오른쪽 위까지 계속 증가한다.\n모든 수평선과 정확히 한 번 만나므로 일대일대응이다.\n\n③ 두 선분 형태의 가지 사이에 나타나지 않는 $y$값이 있다.\n치역이 실수 전체가 아니므로 일대일대응이 아니다.\n\n④ 그래프가 올라갔다 내려가는 구간이 있어 같은 수평선이 여러 점에서 만난다.\n일대일이 아니다.\n\n⑤ 수평인 구간에서는 서로 다른 $x$에 같은 함수값이 대응한다.\n일대일이 아니다.\n\n따라서 정답은 ②이다.",
     "sourceDocumentSha256": "sha256:5729d6f3d8cac3c69fbbfa8c2fb27533b51868a4c00b8c3b010b6c30f6c7e947",
     "sourceQuestionNo": "7",
     "sourcePageNo": 1,
@@ -462,7 +462,7 @@ window.questionBank = [
     "answerStatus": "candidate",
     "solutionStatus": "candidate",
     "reviewStatus": "pending",
-    "decisiveStep": "다른 그림은 정의역 또는 치역이 실수 전체가 아니거나, 같은 수평선이 그래프와 두 번 이상 만난다.\n따라서 정답은 ②이다.",
+    "decisiveStep": "②는 정의역이 실수 전체이고 모든 수평선과 한 번만 만난다. ①·③은 정의역/치역 공백, ④·⑤는 일대일성 위반이다.",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "REQUIRED",
@@ -923,7 +923,7 @@ window.questionBank = [
     "content": "함수 $y=\\frac{ax+1}{x-1}$의 역함수가 그 자신이 되도록 하는 상수 $a$의 값은? [4.3점]",
     "image": "",
     "answer": "③",
-    "solution": "$y=\\dfrac{ax+1}{x-1}$을 $x$에 대해 풀면\n$xy-x=ax+1$\n$x(y-a)=y+1$이므로\n$f^{-1}(x)=\\dfrac{x+1}{x-a}$이다.\n\n역함수가 자기 자신이 되려면\n$\\dfrac{ax+1}{x-1}=\\dfrac{x+1}{x-a}$이어야 한다. 분모가 0이 아닌 정의역에서 교차 곱하면\n$(ax+1)(x-a)=(x+1)(x-1)$이다. 계수를 비교하면 $a=1$이고, 이 값은 식을 항등적으로 같게 한다.\n\n따라서 정답은 ③이다.",
+    "solution": "$f(x)=\\dfrac{ax+1}{x-1}$의 역함수가 자기 자신이라고 하였으므로\n$y=\\dfrac{ax+1}{x-1}$에서 $x$와 $y$를 바꿔 역함수를 구한다.\n\n$y(x-1)=ax+1$\n$xy-y=ax+1$\n$x(y-a)=y+1$이므로\n$f^{-1}(x)=\\dfrac{x+1}{x-a}$이다.\n\n$f=f^{-1}$이려면\n$\\dfrac{ax+1}{x-1}=\\dfrac{x+1}{x-a}$가 성립해야 한다.\n양변의 분모가 $0$이 아닌 곳에서 교차 곱하면\n$(ax+1)(x-a)=(x+1)(x-1)$이다.\n\n왼쪽과 오른쪽을 각각 전개한다.\n$ax^2+(1-a^2)x-a=x^2-1$이다.\n$x^2$의 계수를 비교하면 $a=1$이다.\n이때 양쪽 함수식이 모두 $\\dfrac{x+1}{x-1}$이므로 조건이 성립한다.\n\n따라서 정답은 ③이다.",
     "sourceDocumentSha256": "sha256:5729d6f3d8cac3c69fbbfa8c2fb27533b51868a4c00b8c3b010b6c30f6c7e947",
     "sourceQuestionNo": "14",
     "sourcePageNo": 1,
@@ -960,7 +960,7 @@ window.questionBank = [
     "answerStatus": "candidate",
     "solutionStatus": "candidate",
     "reviewStatus": "pending",
-    "decisiveStep": "따라서 정답은 ③이다.",
+    "decisiveStep": "역함수 식을 구한 뒤 (ax+1)(x−a)=(x+1)(x−1)을 전개하여 x² 계수로 a=1을 확정한다.",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "EXEMPT",
