@@ -1061,7 +1061,7 @@ def extract_question_array_text(text):
     # Detect a literal array assignment, not a questionBank alias such as
     # window.questionBank = window.examData.questions.
     literal_array = re.search(
-        r"\\b(?:window\\.)?(?:questionBank|문항데이터)\\s*=\\s*\\[",
+        r"\b(?:window\.)?(?:questionBank|문항데이터)\s*=\s*\[",
         text,
     )
     start = literal_array.start() if literal_array else -1
