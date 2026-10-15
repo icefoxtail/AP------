@@ -526,7 +526,7 @@ function openQrSubmitStatus(classId, examTitle = '', examDate = '') {
 /**
  * 성적 직접 입력 모달 (OMR) 오픈
  */
-async function openOMR(sid, presetTitle = '', presetQuestionCount = null, presetClassId = '', presetSessionId = '', presetArchiveFile = '', returnMode = '', presetExamDate = '') {
+async function openOMR(sid, presetTitle = '', presetQuestionCount = null, presetClassId = '', presetSessionId = '', presetArchiveFile = '', returnMode = '', presetExamDate = '', presetAssignmentId = '') {
     if (returnMode && isQrArchiveLike(presetSessionId) && /^\d{4}-\d{2}-\d{2}$/.test(String(presetArchiveFile || ''))) {
         presetExamDate = presetArchiveFile;
         presetArchiveFile = presetSessionId;
@@ -537,31 +537,40 @@ async function openOMR(sid, presetTitle = '', presetQuestionCount = null, preset
     }
 
     const todayExam = getTodayExamConfig();
-    const defaultTitle = presetTitle || todayExam?.title || '단원평가';
+    const selectedSession = presetSessionId
+        ? (state.db?.exam_sessions || []).find(row => String(row.id || '') === String(presetSessionId))
+        : null;
+    const defaultTitle = presetTitle || selectedSession?.exam_title || todayExam?.title || '단원평가';
+    const mapObj = (state.db.class_students || []).find(m => String(m.student_id) === String(sid));
+    const classId = String(selectedSession?.class_id || presetClassId || mapObj?.class_id || '');
     
-    const mapObj = state.db.class_students.find(m => m.student_id === sid);
-    const classId = presetClassId || (mapObj ? mapObj.class_id : '');
-    
-    const defaultExamDate = presetExamDate || new Date().toLocaleDateString('sv-SE');
+    const defaultExamDate = presetExamDate || selectedSession?.exam_date || new Date().toLocaleDateString('sv-SE');
+    const defaultPresetQuestionCount = presetQuestionCount || selectedSession?.question_count || todayExam?.q || 0;
     const defaultArchiveFile = resolveOmrArchiveFile({
-        presetArchiveFile,
+        presetArchiveFile: presetArchiveFile || selectedSession?.archive_file || '',
         classId,
         examTitle: defaultTitle,
         examDate: defaultExamDate,
-        questionCount: presetQuestionCount || 0,
+        questionCount: defaultPresetQuestionCount,
         sessionId: presetSessionId
     });
+    const selectedAssignmentId = String(presetAssignmentId || selectedSession?.assignment_id || '').trim();
     const defaultQResolved = await resolveOmrQuestionCount({
         archiveFile: defaultArchiveFile,
-        presetQ: presetQuestionCount || todayExam?.q || 0,
+        presetQ: defaultPresetQuestionCount,
         classId,
         examTitle: defaultTitle,
         examDate: defaultExamDate,
         sessionId: presetSessionId
     });
-    const defaultQ = Math.min(Math.max(parseInt(defaultQResolved.count, 10) || 20, 1), 80);
+    const defaultQ = Math.min(Math.max(parseInt(selectedSession?.question_count || defaultQResolved.count, 10) || 20, 1), 80);
 
-    const checkedWrongIds = [];
+    const checkedWrongIds = selectedSession
+        ? Array.from(new Set((state.db?.wrong_answers || [])
+            .filter(row => String(row.session_id || '') === String(selectedSession.id))
+            .map(row => String(row.question_id || '').trim())
+            .filter(value => /^\d+$/.test(value) && Number(value) >= 1 && Number(value) <= defaultQ)))
+        : [];
 
     showModal('성적 직접 입력', `
         <div style="display:flex;flex-direction:column;gap:18px;">
@@ -580,6 +589,8 @@ async function openOMR(sid, presetTitle = '', presetQuestionCount = null, preset
                 <input id="omr-archiveFile" type="hidden" value="${omrEscape(defaultArchiveFile)}">
                 <input id="omr-exam-date-hidden" type="hidden" value="${omrEscape(defaultExamDate)}">
                 <input id="omr-session-id-hidden" type="hidden" value="${omrEscape(presetSessionId || '')}">
+                <input id="omr-assignment-id-hidden" type="hidden" value="${omrEscape(selectedAssignmentId)}">
+                <input id="omr-class-id-hidden" type="hidden" value="${omrEscape(classId)}">
                 <div id="omr-archive-status" style="font-size:12px;font-weight:500;color:${getOmrArchiveStatusColor(defaultArchiveFile)};background:var(--bg);border-radius:12px;padding:11px 13px;">${getOmrQuestionCountStatusText(defaultArchiveFile, defaultQResolved.source, defaultQ)}</div>
             </div>
 
@@ -647,9 +658,14 @@ async function handleOMRSave(sid) {
     const wrs = Array.from(document.querySelectorAll('.omr-q:checked')).map(el => el.value);
     const savedExamDate = document.getElementById('omr-exam-date-hidden')?.value || new Date().toLocaleDateString('sv-SE');
     
-    let classId = state.ui?.currentClassId;
+    const selectedSessionId = String(document.getElementById('omr-session-id-hidden')?.value || '').trim();
+    const selectedSession = selectedSessionId
+        ? (state.db?.exam_sessions || []).find(row => String(row.id || '') === selectedSessionId)
+        : null;
+    let classId = String(document.getElementById('omr-class-id-hidden')?.value || selectedSession?.class_id || '').trim();
+    if (!classId) classId = state.ui?.currentClassId;
     if (!classId) {
-        const mapObj = state.db.class_students.find(m => m.student_id === sid);
+        const mapObj = (state.db.class_students || []).find(m => String(m.student_id) === String(sid));
         classId = mapObj ? mapObj.class_id : null;
     }
 
@@ -669,7 +685,10 @@ async function handleOMRSave(sid) {
         examDate: savedExamDate,
         sessionId: document.getElementById('omr-session-id-hidden')?.value || ''
     });
-    const q = Math.max(1, Math.min(80, Number(resolvedQ.count) || 20));
+    const enteredQuestionCount = parseInt(document.getElementById('omr-q')?.value, 10) || 0;
+    const q = Math.max(1, Math.min(80, Number(selectedSessionId
+        ? (enteredQuestionCount || selectedSession?.question_count || resolvedQ.count)
+        : resolvedQ.count) || 20));
     const score = Math.round((q - wrs.length) * (100 / q));
 
     const payload = {
@@ -681,6 +700,10 @@ async function handleOMRSave(sid) {
         question_count: q, 
         class_id: classId
     };
+
+    const selectedAssignmentId = String(document.getElementById('omr-assignment-id-hidden')?.value || '').trim();
+    if (selectedSessionId) payload.session_id = selectedSessionId;
+    if (selectedAssignmentId) payload.assignment_id = selectedAssignmentId;
 
     if (archiveFile) {
         payload.archive_file = archiveFile;
@@ -826,17 +849,20 @@ function getOmrExistingSession(studentId) {
     const archiveFile = normalizeQrArchiveFile(ui.archiveFile || '');
     if ((!examTitle && !archiveFile) || !examDate) return null;
 
-    const classId = getOmrClassIdForStudent(studentId);
-    return (state.db.exam_sessions || [])
+    const classId = String(ui.classId || '');
+    // Keep the loaded history's original count as its identity even when a teacher corrects a legacy row's count.
+    const sourceQuestionCount = Math.max(0, parseInt(ui.selectedHistoryQuestionCount || ui.questionCount, 10) || 0);
+    const matches = (state.db.exam_sessions || [])
         .filter(e =>
             String(e.student_id) === String(studentId) &&
             String(e.exam_date || '') === examDate &&
-            (archiveFile
-                ? normalizeQrArchiveFile(e.archive_file || '') === archiveFile
-                : String(e.exam_title || '') === examTitle) &&
-            (!e.class_id || !classId || String(e.class_id) === String(classId))
+            String(e.exam_title || '').trim().replace(/\s+/g, ' ') === examTitle.replace(/\s+/g, ' ') &&
+            normalizeQrArchiveFile(e.archive_file || '') === archiveFile &&
+            (!classId || !e.class_id || String(e.class_id) === classId) &&
+            (!sourceQuestionCount || (parseInt(e.question_count, 10) || 0) === sourceQuestionCount)
         )
-        .sort((a, b) => String(b.updated_at || b.created_at || '').localeCompare(String(a.updated_at || a.created_at || '')))[0] || null;
+        .sort((a, b) => String(b.updated_at || b.created_at || '').localeCompare(String(a.updated_at || a.created_at || '')));
+    return matches.length === 1 ? matches[0] : null;
 }
 
 function getOmrExistingWrongSet(studentId) {
@@ -881,7 +907,7 @@ function getOmrHistoricalExamList() {
         const archiveFile = normalizeQrArchiveFile(es.archive_file || '');
         let item = { examTitle, originalExamTitle: examTitle, examDate, questionCount, archiveFile };
         const key = makeOmrHistoryKey(item);
-        item = { ...item, examTitle: getOmrExamDisplayTitle(item) };
+        item = { ...item, displayTitle: getOmrExamDisplayTitle(item) };
 
         if (!map.has(key)) {
             map.set(key, { ...item, count: 0, updatedAt: '' });
@@ -915,6 +941,7 @@ function getOmrSelectedHistoryKey() {
     const archiveFile = normalizeQrArchiveFile(ui.archiveFile || '');
     if (archiveFile) {
         const matched = getOmrHistoricalExamList().find(item =>
+            String(item.originalExamTitle || item.examTitle || '').trim().replace(/\s+/g, ' ') === String(ui.examTitle || '').trim().replace(/\s+/g, ' ') &&
             normalizeQrArchiveFile(item.archiveFile || '') === archiveFile &&
             String(item.examDate || '') === String(ui.examDate || '') &&
             String(item.questionCount || '') === String(ui.questionCount || 25)
@@ -939,7 +966,11 @@ function buildOmrHistoryOptions() {
 
     return '<option value="">기존 시험 불러오기</option>' + list.map(item => {
         const key = makeOmrHistoryKey(item);
-        const label = `${item.examDate} · ${item.examTitle} · ${item.questionCount}문항${item.count ? ` · ${item.count}명` : ''}`;
+        const actualTitle = item.originalExamTitle || item.examTitle || '';
+        const displayTitle = item.displayTitle && item.displayTitle !== actualTitle
+            ? ` (${item.displayTitle})`
+            : '';
+        const label = `${item.examDate} · ${actualTitle}${displayTitle} · ${item.questionCount}문항${item.count ? ` · ${item.count}명` : ''}`;
         return `<option value="${omrEscape(key)}"${selectedKey === key ? ' selected' : ''}>${omrEscape(label)}</option>`;
     }).join('');
 }
@@ -955,10 +986,12 @@ function handleOmrHistoryChange() {
     }
 
     const ui = ensureOmrInputState();
-    ui.examTitle = getOmrExamDisplayTitle(item) || item.examTitle || '';
+    ui.examTitle = item.originalExamTitle || item.examTitle || '';
     ui.examDate = item.examDate || new Date().toLocaleDateString('sv-SE');
     ui.questionCount = item.questionCount || 25;
     ui.archiveFile = normalizeQrArchiveFile(item.archiveFile || '');
+    ui.selectedHistoryQuestionCount = Math.max(0, parseInt(item.questionCount, 10) || 0);
+    ui.selectedStudentIds = null;
     ui.questionCountSource = '';
     ui.answers = {};
     ui.examSelected = true;
@@ -1053,6 +1086,8 @@ function updateOmrInputFromControls({ resetAnswers = true, resetExamSelection = 
     const ui = ensureOmrInputState();
     const prevKey = `${ui.examTitle}|${ui.examDate}|${ui.questionCount}|${ui.grade}|${ui.classId}`;
     const prevExamKey = `${ui.examTitle}|${ui.examDate}|${ui.questionCount}|${ui.archiveFile || ''}`;
+    const prevSessionContext = `${ui.examTitle}|${ui.examDate}|${ui.archiveFile || ''}|${ui.classId || ''}`;
+    const prevRosterFilter = `${ui.grade || ''}|${ui.classId || ''}`;
 
     ui.examTitle = document.getElementById('omr-exam-title')?.value.trim() || '';
     ui.examDate = document.getElementById('omr-exam-date')?.value || ui.examDate || new Date().toLocaleDateString('sv-SE');
@@ -1069,8 +1104,16 @@ function updateOmrInputFromControls({ resetAnswers = true, resetExamSelection = 
 
     const nextKey = `${ui.examTitle}|${ui.examDate}|${ui.questionCount}|${ui.grade}|${ui.classId}`;
     const nextExamKey = `${ui.examTitle}|${ui.examDate}|${ui.questionCount}|${ui.archiveFile || ''}`;
+    const nextSessionContext = `${ui.examTitle}|${ui.examDate}|${ui.archiveFile || ''}|${ui.classId || ''}`;
+    const nextRosterFilter = `${ui.grade || ''}|${ui.classId || ''}`;
 
     if (resetAnswers && prevKey !== nextKey) ui.answers = {};
+    // A count edit keeps the selected session; changing its title/date/source/class clears that selection.
+    if (prevSessionContext !== nextSessionContext) {
+        ui.selectedHistoryQuestionCount = 0;
+        ui.selectedStudentIds = null;
+    }
+    if (prevRosterFilter !== nextRosterFilter) ui.selectedStudentIds = null;
     if (resetExamSelection && prevExamKey !== nextExamKey) {
         ui.examSelected = false;
         ui.answers = {};
@@ -1106,8 +1149,10 @@ async function syncOmrArchiveQuestionCount(ui) {
         examTitle: ui.examTitle || '',
         examDate: ui.examDate || ''
     });
-    ui.questionCount = Math.max(1, Math.min(80, Number(resolved.count) || 20));
-    ui.questionCountSource = resolved.source;
+    const selectedHistoryCount = Math.max(0, parseInt(ui.selectedHistoryQuestionCount, 10) || 0);
+    const preservedHistoryCount = selectedHistoryCount ? (parseInt(ui.questionCount, 10) || selectedHistoryCount) : 0;
+    ui.questionCount = Math.max(1, Math.min(80, Number(preservedHistoryCount || resolved.count) || 20));
+    ui.questionCountSource = selectedHistoryCount ? 'history' : resolved.source;
 }
 
 function buildOmrGradeOptions(selectedGrade) {
@@ -1146,9 +1191,13 @@ function activateCurrentOmrExam() {
 
 function renderOmrInputTable(students, questionCount) {
     const ready = isOmrExamReady();
+    const selectedIds = Array.isArray(state.ui?.omrInput?.selectedStudentIds)
+        ? new Set(state.ui.omrInput.selectedStudentIds.map(String))
+        : null;
     const head = Array.from({ length: questionCount }, (_, idx) => `<th>${idx + 1}</th>`).join('');
     const rows = students.map(s => {
         const className = getOmrClassName(getOmrClassIdForStudent(s.id));
+        const isSelectedForSave = !selectedIds || selectedIds.has(String(s.id));
         const cells = Array.from({ length: questionCount }, (_, idx) => {
             const q = idx + 1;
             if (!ready) {
@@ -1160,8 +1209,13 @@ function renderOmrInputTable(students, questionCount) {
         return `
             <tr>
                 <td class="omr-name-cell">
-                    <div class="omr-name-main">${omrEscape(s.name)}</div>
-                    <div class="omr-name-sub">${omrEscape(className || '미배정')}</div>
+                    <div style="display:flex;align-items:center;gap:6px;min-width:0;">
+                        <input type="checkbox" class="omr-student-recipient" data-student-id="${omrEscape(s.id)}" aria-label="${omrEscape(s.name)} 저장 대상" ${isSelectedForSave ? 'checked' : ''} onchange="toggleOmrStudentRecipient(this.dataset.studentId, this.checked)" style="flex:0 0 auto;margin:0;">
+                        <div style="min-width:0;">
+                            <div class="omr-name-main">${omrEscape(s.name)}</div>
+                            <div class="omr-name-sub">${omrEscape(className || '미배정')}</div>
+                        </div>
+                    </div>
                 </td>
                 ${cells}
             </tr>
@@ -1210,12 +1264,15 @@ async function renderOmrInput() {
     await syncOmrArchiveQuestionCount(ui);
 
     const students = getOmrVisibleStudents();
+    const selectedStudents = getOmrSelectedStudents();
     const examReady = isOmrExamReady();
-    const wrongTotal = examReady ? students.reduce((sum, s) => {
+    const wrongTotal = examReady ? selectedStudents.reduce((sum, s) => {
         const set = getOmrWrongSet(s.id);
         return sum + Object.keys(set).filter(k => set[k]).length;
     }, 0) : 0;
-    const footerInfoText = examReady ? `대상 ${students.length}명 · X ${wrongTotal}개` : `대상 ${students.length}명 · 시험 선택 전`;
+    const footerInfoText = examReady
+        ? `선택 ${selectedStudents.length}명 / 전체 ${students.length}명 · X ${wrongTotal}개`
+        : `선택 ${selectedStudents.length}명 / 전체 ${students.length}명 · 시험 선택 전`;
 
     root.innerHTML = `
         <div id="omr-main">
@@ -1243,6 +1300,7 @@ async function renderOmrInput() {
                 <span class="omr-guide-item"><span style="color:var(--success); font-weight:600;">O</span> 맞음</span>
                 <span class="omr-guide-item"><span style="color:var(--error); font-weight:600;">X</span> 틀림</span>
                 <span class="omr-guide-item">틀린 문제만 눌러 X로 바꾼 뒤 저장</span>
+                <span class="omr-guide-item">체크된 학생만 저장 · 기본 전체 선택</span>
                 <span class="omr-guide-item">기존 시험 선택 시 저장된 X 상태 복원</span>
             </div>
 
@@ -1250,10 +1308,33 @@ async function renderOmrInput() {
 
             <div class="omr-footer">
                 <div class="omr-footer-info">${omrEscape(footerInfoText)}</div>
-                <button class="btn btn-primary omr-save-btn" onclick="saveOmrInputBulk(this)">전체 저장</button>
+                <button class="btn btn-primary omr-save-btn" onclick="saveOmrInputBulk(this)">선택 저장</button>
             </div>
         </div>
     `;
+}
+
+function getOmrSelectedStudents() {
+    const visibleStudents = getOmrVisibleStudents();
+    const selectedIds = state.ui?.omrInput?.selectedStudentIds;
+    if (!Array.isArray(selectedIds)) return visibleStudents;
+    const selected = new Set(selectedIds.map(String));
+    return visibleStudents.filter(student => selected.has(String(student.id)));
+}
+
+function toggleOmrStudentRecipient(studentId, checked) {
+    const ui = ensureOmrInputState();
+    const selectedIds = Array.isArray(ui.selectedStudentIds)
+        ? new Set(ui.selectedStudentIds.map(String))
+        : new Set(getOmrVisibleStudents().map(student => String(student.id)));
+    if (checked) selectedIds.add(String(studentId));
+    else selectedIds.delete(String(studentId));
+    ui.selectedStudentIds = Array.from(selectedIds);
+    const info = document.querySelector('.omr-footer-info');
+    if (info) info.textContent = `${isOmrExamReady() ? `선택 ${getOmrSelectedStudents().length}명 / 전체 ${getOmrVisibleStudents().length}명 · X ${getOmrSelectedStudents().reduce((sum, student) => {
+        const wrongSet = getOmrWrongSet(student.id);
+        return sum + Object.keys(wrongSet).filter(key => wrongSet[key]).length;
+    }, 0)}개` : `선택 ${getOmrSelectedStudents().length}명 / 전체 ${getOmrVisibleStudents().length}명 · 시험 선택 전`}`;
 }
 
 function toggleOmrCell(studentId, questionNo) {
@@ -1272,23 +1353,23 @@ function toggleOmrCell(studentId, questionNo) {
         btn.textContent = set[key] ? 'X' : 'O';
     }
 
-    const students = getOmrVisibleStudents();
+    const students = getOmrSelectedStudents();
     const wrongTotal = students.reduce((sum, s) => sum + Object.keys(getOmrWrongSet(s.id)).filter(k => getOmrWrongSet(s.id)[k]).length, 0);
     const info = document.querySelector('.omr-footer-info');
-    if (info) info.textContent = `대상 ${students.length}명 · X ${wrongTotal}개`;
+    if (info) info.textContent = `선택 ${students.length}명 / 전체 ${getOmrVisibleStudents().length}명 · X ${wrongTotal}개`;
 }
 
 async function saveOmrInputBulk(button) {
     updateOmrInputFromControls({ resetAnswers: false });
     const ui = ensureOmrInputState();
-    const students = getOmrVisibleStudents();
+    const students = getOmrSelectedStudents();
 
     if (!ui.examTitle || !ui.examDate) {
         toast('시험명과 시험일을 입력하세요.', 'warn');
         return;
     }
     if (!students.length) {
-        toast('저장할 학생이 없습니다.', 'warn');
+        toast('저장 대상을 1명 이상 선택하세요.', 'warn');
         return;
     }
 
@@ -1299,7 +1380,10 @@ async function saveOmrInputBulk(button) {
         examTitle: ui.examTitle || '',
         examDate: ui.examDate || ''
     });
-    const qCount = Math.max(1, Math.min(80, Number(resolvedQ.count) || 20));
+    const selectedHistoryCount = Math.max(0, parseInt(ui.selectedHistoryQuestionCount, 10) || 0);
+    const qCount = Math.max(1, Math.min(80, Number(selectedHistoryCount
+        ? (parseInt(ui.questionCount, 10) || selectedHistoryCount)
+        : resolvedQ.count) || 20));
     ui.questionCount = qCount;
     ui.questionCountSource = resolvedQ.source;
     const rows = students.map(s => {
@@ -1310,11 +1394,15 @@ async function saveOmrInputBulk(button) {
             .filter(n => Number.isFinite(n) && n >= 1 && n <= qCount)
             .sort((a, b) => a - b)
             .map(String);
-        return {
+        const existingSession = getOmrExistingSession(s.id);
+        const row = {
             student_id: String(s.id),
-            class_id: getOmrClassIdForStudent(s.id),
+            class_id: String(existingSession?.class_id || ui.classId || getOmrClassIdForStudent(s.id) || ''),
             wrong_ids: wrongIds
         };
+        if (existingSession?.id) row.session_id = String(existingSession.id);
+        if (existingSession?.assignment_id) row.assignment_id = String(existingSession.assignment_id);
+        return row;
     });
 
     if (typeof setButtonBusy === 'function') setButtonBusy(button, true, '저장 중');
@@ -1356,6 +1444,7 @@ function goOmrInputHome() {
 window.openOmrInput = openOmrInput;
 window.renderOmrInput = renderOmrInput;
 window.toggleOmrCell = toggleOmrCell;
+window.toggleOmrStudentRecipient = toggleOmrStudentRecipient;
 window.saveOmrInputBulk = saveOmrInputBulk;
 window.handleOmrGradeChange = handleOmrGradeChange;
 window.handleOmrClassChange = handleOmrClassChange;

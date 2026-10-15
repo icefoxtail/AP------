@@ -189,6 +189,10 @@ const requiredCommands = [
     args: ['--test', 'tests/apms-result-clinic-uid-bridge.test.mjs']
   },
   {
+    label: 'tests/apmath-omr-result-identity.test.mjs',
+    args: ['--test', 'tests/apmath-omr-result-identity.test.mjs']
+  },
+  {
     label: 'tests/apms-clinic-uid-refresh.test.cjs',
     args: ['--test', 'tests/apms-clinic-uid-refresh.test.cjs']
   },
