@@ -1,0 +1,1406 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q19_CREATE_DRAFT_v1",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceFileSha256": "ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91",
+  "sourceQid": 19,
+  "sourceUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
+  "sourceUidBinding": "VERIFIED_IDENTITY_MAP_SOURCE_LOCK_PASS",
+  "sourceLock": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/GPT_QID9_Q19_SOURCE_LOCK.json",
+  "sourceOriginalImage": "archive/assets/images/25_팔마고_2학기_기말_고1_기출/q19.png",
+  "primaryRpmL3": {
+    "id": "H1-RPM-253",
+    "l3": "합성함수",
+    "newGeneratedL4": "EXT-PALMA25-Q19-L4-QUADRATIC-COMPOSITION-PREIMAGE"
+  },
+  "rpmMappingStatus": "DIRECT_ACTIVE_L3_WITH_GENERATED_L4",
+  "actualActivePt": "PT_COMPOSITION_PROPERTIES",
+  "actualActiveTpl": "TPL_COMPOSITION_RELATION_CONDITION",
+  "summary": {
+    "uidCount": 9,
+    "choices": 45,
+    "wrongRoutes": 36,
+    "svgProblem": 0,
+    "svgSolution": 9,
+    "answerDistribution": {
+      "①": 2,
+      "②": 2,
+      "③": 1,
+      "④": 2,
+      "⑤": 2
+    },
+    "answerGrid": [
+      [
+        "②",
+        "④",
+        "②"
+      ],
+      [
+        "③",
+        "①",
+        "①"
+      ],
+      [
+        "⑤",
+        "④",
+        "⑤"
+      ]
+    ],
+    "answerDistributionGate": "PASS_AUTHOR_EXHAUSTIVE_113400",
+    "verticalDeviationBefore": 47,
+    "verticalDeviationAfter": 44,
+    "independent": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "consumer": "NOT_RUN",
+    "main": "NOT_RUN"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-PALMA25-2FINAL-Q19-A1",
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
+      "slot": "A1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "합성함수의 방정식과 역상",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "이차함수",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "이차함수 $f(x)=x^2-2x-3$에 대하여 방정식 $f(f(x))=0$의 서로 다른 모든 실근의 합은?",
+      "choices": [
+        "$2$",
+        "$4$",
+        "$-4$",
+        "$8$",
+        "$0$"
+      ],
+      "answer": "②",
+      "solution": "$f(y)=0$을 먼저 풀면 $(y-3)(y+1)=0$이므로 $y=-1$ 또는 $y=3$이다.\n따라서 $f(x)=-1$ 또는 $f(x)=3$이다.\n$f(x)=(x-1)^2-4$이므로\n$f(x)=-1$에서 $(x-1)^2=3$, 즉 $x=1\\pm\\sqrt3$이다.\n$f(x)=3$에서 $(x-1)^2=7$, 즉 $x=1\\pm\\sqrt7$이다.\n두 쌍은 서로 다른 네 실근이며, 각 쌍의 합은 $2$이다. 따라서 전체 합은 $2+2=4$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/A1-solution.svg",
+      "solutionImageAlt": "A1 합성방정식의 바깥 영점에 따른 이차함수 수평선과 실근 위치를 표시한 해설 그래프",
+      "solutionImageCaption": "바깥 영점: −1, 3; 중간값: f(x)=−1 또는 3; 각 쌍의 중심: x=1; 서로 다른 실근: 4개",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "EXT-PALMA25-Q19-L4-QUADRATIC-COMPOSITION-PREIMAGE",
+        "rpmCanonicalL4": "합성함수 계산",
+        "rpmMappingStatus": "GENERATED_L4_SCOPE_ONLY",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "ptTplBindingStatus": "ACTIVE_2022_SCOPE_OTHER_RPM_L4",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_QUADRATIC_EQUATION": "바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다.",
+          "CC_ROOTS_COEFFICIENTS": "각 역상 근쌍의 합·곱 또는 제곱합을 근과 계수의 관계로 정리한다."
+        },
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "ROOT_PREIMAGE",
+        "metadataDebt": [
+          "GENERATED_L4_NOT_GLOBAL_CANONICAL",
+          "PRIMARY_RPM_PT_TPL_CROSSWALK_NONPRIMARY_BINDING",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "합성 f∘f 또는 f∘g=목표값의 중간값을 먼저 결정하는 판단이 필수; Primary H1-RPM-253.",
+          "l4": "기존 합성함숫값 계산과 달리 합성방정식의 역상 분기·중근·구간 조건을 다루므로 Generated-only L4 활용.",
+          "cross": "CC_QUADRATIC_EQUATION: 바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다. | CC_ROOTS_COEFFICIENTS: 각 역상 근쌍의 합·곱 또는 제곱합을 근과 계수의 관계로 정리한다.",
+          "condition": "NONE_CONFIRMED",
+          "integration": "SEQUENTIAL",
+          "learningLevel": "바깥 이차함수의 두 영점을 중간값으로 나누고 두 이차방정식을 순서대로 해석한다.",
+          "assessmentBucket": "중간값 두 갈래의 실근을 중복 없이 합산해야 하며 일차항 부호 착각 위험이 있다.",
+          "problemVisual": "EXEMPT — 모든 수학적 입력을 문장과 함수식으로 완전히 제공. 필요한 '그림처럼' 지시 없음.",
+          "solutionVisual": "REQUIRED — 두 중간값의 수평선·교점으로 합성방정식의 경우 분기를 설명.",
+          "curriculum": "2022 개정 공통수학2 합성함수, 이차함수·이차방정식·근과 계수의 관계의 기습득 과정 안의 풀이만 사용. 미분·적분·벡터 불사용.",
+          "sourceOrigin": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "status": "KEEP",
+          "reconstructedQuestion": "이차함수 $f(x)=x^2-2x-3$에 대하여 방정식 $f(f(x))=0$의 서로 다른 모든 실근의 합은?",
+          "primaryNecessary": true,
+          "questionNaturalness": "학교 객관식 용어·변수·조건과 최종 질문을 점검",
+          "unnecessaryAnswerNormalizer": false,
+          "wrongRouteDerivationReproduced": "4/4",
+          "answerManipulation": false
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "2",
+              "errorCalculation": "$f(x)=-1$만 풀어 $(1-\\sqrt3)+(1+\\sqrt3)=2$로 끝낸다."
+            },
+            {
+              "index": "③",
+              "value": "-4",
+              "errorCalculation": "$-2x$를 $+2x$로 잘못 보고 각 근의 중심을 $-1$로 계산해 $(-2)+(-2)=-4$를 얻는다."
+            },
+            {
+              "index": "④",
+              "value": "8",
+              "errorCalculation": "네 근의 합 $4$를 중복 계산해 $2\\cdot4=8$로 만든다."
+            },
+            {
+              "index": "⑤",
+              "value": "0",
+              "errorCalculation": "일차항 $-2x$를 버리고 $x^2-3=-1,3$을 풀어 $\\pm\\sqrt2,\\pm\\sqrt6$의 합 $0$을 얻는다."
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "4",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "최종 학생 발문에 함수식·정의역·조건을 모두 명시하여 그림 없이 조건이 유일하게 정해짐; 해설 그래프와는 독립 판정",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/A1-solution.svg",
+          "svgGitBlobSha": "c97d4dff8c2e8b3ca089ddedbe029ffa8a4f5cd5",
+          "authorCoordinateXCheck": "PASS",
+          "actualXmlParse": "NOT_RUN",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-PALMA25-2FINAL-Q19-A2",
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
+      "slot": "A2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "합성함수의 방정식과 역상",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "이차함수",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "이차함수 $f(x)=x^2+4x+3$에 대하여 방정식 $f(f(x))=0$의 서로 다른 모든 실근의 합은?",
+      "choices": [
+        "$-4$",
+        "$-3$",
+        "$-1$",
+        "$-2$",
+        "$0$"
+      ],
+      "answer": "④",
+      "solution": "$f(y)=0$은 $(y+1)(y+3)=0$이므로 $y=-1$ 또는 $y=-3$이다.\n$f(x)=(x+2)^2-1$이므로 $f(x)=-1$이면 $(x+2)^2=0$에서 $x=-2$이다.\n한편 $f(x)=-3$이면 $(x+2)^2=-2$로 실근이 없다.\n따라서 서로 다른 실근은 $-2$ 하나이며 그 합도 $-2$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/A2-solution.svg",
+      "solutionImageAlt": "A2 합성방정식의 바깥 영점에 따른 이차함수 수평선과 실근 위치를 표시한 해설 그래프",
+      "solutionImageCaption": "바깥 영점: −1, −3; y=−1: 꼭짓점 접촉; y=−3: 실수 교점 없음; 서로 다른 실근: 1개",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "EXT-PALMA25-Q19-L4-QUADRATIC-COMPOSITION-PREIMAGE",
+        "rpmCanonicalL4": "합성함수 계산",
+        "rpmMappingStatus": "GENERATED_L4_SCOPE_ONLY",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "ptTplBindingStatus": "ACTIVE_2022_SCOPE_OTHER_RPM_L4",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_DISCRIMINANT"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_QUADRATIC_EQUATION": "바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다.",
+          "CC_DISCRIMINANT": "실근의 존재·중근 여부와 그 개수 변화를 판정한다."
+        },
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "REAL_ROOT_MULTIPLICITY_AND_BOUNDARY",
+        "metadataDebt": [
+          "GENERATED_L4_NOT_GLOBAL_CANONICAL",
+          "PRIMARY_RPM_PT_TPL_CROSSWALK_NONPRIMARY_BINDING",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "합성 f∘f 또는 f∘g=목표값의 중간값을 먼저 결정하는 판단이 필수; Primary H1-RPM-253.",
+          "l4": "기존 합성함숫값 계산과 달리 합성방정식의 역상 분기·중근·구간 조건을 다루므로 Generated-only L4 활용.",
+          "cross": "CC_QUADRATIC_EQUATION: 바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다. | CC_DISCRIMINANT: 실근의 존재·중근 여부와 그 개수 변화를 판정한다.",
+          "condition": "COND_RANGE — 최종 풀이의 실근/정수/범위 적용",
+          "integration": "CASE_BRANCH",
+          "learningLevel": "합성함수 방정식을 두 중간값으로 분해하되 중근과 실근 부재를 별도로 판단한다.",
+          "assessmentBucket": "바깥 영점 2개가 있어도 실제 x의 실근은 1개라는 경계 판단이 필요하다.",
+          "problemVisual": "EXEMPT — 모든 수학적 입력을 문장과 함수식으로 완전히 제공. 필요한 '그림처럼' 지시 없음.",
+          "solutionVisual": "REQUIRED — 두 중간값의 수평선·교점으로 합성방정식의 경우 분기를 설명.",
+          "curriculum": "2022 개정 공통수학2 합성함수, 이차함수·이차방정식·근과 계수의 관계의 기습득 과정 안의 풀이만 사용. 미분·적분·벡터 불사용.",
+          "sourceOrigin": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "status": "KEEP",
+          "reconstructedQuestion": "이차함수 $f(x)=x^2+4x+3$에 대하여 방정식 $f(f(x))=0$의 서로 다른 모든 실근의 합은?",
+          "primaryNecessary": true,
+          "questionNaturalness": "학교 객관식 용어·변수·조건과 최종 질문을 점검",
+          "unnecessaryAnswerNormalizer": false,
+          "wrongRouteDerivationReproduced": "4/4",
+          "answerManipulation": false
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "-4",
+              "errorCalculation": "중근 $x=-2$를 서로 다른 두 근으로 중복하여 $-2+(-2)=-4$로 계산한다."
+            },
+            {
+              "index": "②",
+              "value": "-3",
+              "errorCalculation": "바깥 방정식의 해 $y=-3$을 내부 방정식의 해 $x$로 혼동한다."
+            },
+            {
+              "index": "③",
+              "value": "-1",
+              "errorCalculation": "바깥 방정식의 해 $y=-1$만 보고 $x=-1$이라 착각한다."
+            },
+            {
+              "index": "⑤",
+              "value": "0",
+              "errorCalculation": "$(x+2)^2=0$에서 평행이동된 $+2$를 빠뜨려 $x=0$으로 푼다."
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "-2",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "최종 학생 발문에 함수식·정의역·조건을 모두 명시하여 그림 없이 조건이 유일하게 정해짐; 해설 그래프와는 독립 판정",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/A2-solution.svg",
+          "svgGitBlobSha": "9759a1cea8a1e92e5da13ae7167bf46758382cdd",
+          "authorCoordinateXCheck": "PASS",
+          "actualXmlParse": "NOT_RUN",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-PALMA25-2FINAL-Q19-A3",
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
+      "slot": "A3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "합성함수의 방정식과 역상",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "이차함수",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "이차함수 $f(x)=x^2-2x$에 대하여 방정식 $f(f(x))=0$의 서로 다른 모든 실근을 $a,b,c,d$라 할 때, $a^2+b^2+c^2+d^2$의 값은?",
+      "choices": [
+        "$4$",
+        "$12$",
+        "$8$",
+        "$20$",
+        "$16$"
+      ],
+      "answer": "②",
+      "solution": "$f(y)=y(y-2)=0$이므로 $y=0$ 또는 $y=2$이다.\n$f(x)=0$에서는 $x(x-2)=0$이므로 $x=0,2$이다.\n$f(x)=2$에서는 $x^2-2x-2=0$, 즉 $x=1\\pm\\sqrt3$이다.\n네 실근은 서로 다르다. 따라서 구하는 제곱합은\n$0^2+2^2+(1-\\sqrt3)^2+(1+\\sqrt3)^2$\n$=4+(4-2\\sqrt3)+(4+2\\sqrt3)=12$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/A3-solution.svg",
+      "solutionImageAlt": "A3 합성방정식의 바깥 영점에 따른 이차함수 수평선과 실근 위치를 표시한 해설 그래프",
+      "solutionImageCaption": "바깥 영점: 0, 2; 실근: 0, 2, 1±√3; 구하는 값: 네 근의 제곱합; (근의 합)²과 구별",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "EXT-PALMA25-Q19-L4-QUADRATIC-COMPOSITION-PREIMAGE",
+        "rpmCanonicalL4": "합성함수 계산",
+        "rpmMappingStatus": "GENERATED_L4_SCOPE_ONLY",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "ptTplBindingStatus": "ACTIVE_2022_SCOPE_OTHER_RPM_L4",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_QUADRATIC_EQUATION": "바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다.",
+          "CC_ROOTS_COEFFICIENTS": "각 역상 근쌍의 합·곱 또는 제곱합을 근과 계수의 관계로 정리한다."
+        },
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "ROOT_PREIMAGE",
+        "metadataDebt": [
+          "GENERATED_L4_NOT_GLOBAL_CANONICAL",
+          "PRIMARY_RPM_PT_TPL_CROSSWALK_NONPRIMARY_BINDING",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "합성 f∘f 또는 f∘g=목표값의 중간값을 먼저 결정하는 판단이 필수; Primary H1-RPM-253.",
+          "l4": "기존 합성함숫값 계산과 달리 합성방정식의 역상 분기·중근·구간 조건을 다루므로 Generated-only L4 활용.",
+          "cross": "CC_QUADRATIC_EQUATION: 바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다. | CC_ROOTS_COEFFICIENTS: 각 역상 근쌍의 합·곱 또는 제곱합을 근과 계수의 관계로 정리한다.",
+          "condition": "NONE_CONFIRMED",
+          "integration": "SEQUENTIAL",
+          "learningLevel": "합성방정식의 네 근을 구한 뒤 제곱합으로 질문 대상을 한 단계 확장한다.",
+          "assessmentBucket": "두 근씩 제곱합을 구하면서 근의 합의 제곱과 혼동할 위험이 있다.",
+          "problemVisual": "EXEMPT — 모든 수학적 입력을 문장과 함수식으로 완전히 제공. 필요한 '그림처럼' 지시 없음.",
+          "solutionVisual": "REQUIRED — 두 중간값의 수평선·교점으로 합성방정식의 경우 분기를 설명.",
+          "curriculum": "2022 개정 공통수학2 합성함수, 이차함수·이차방정식·근과 계수의 관계의 기습득 과정 안의 풀이만 사용. 미분·적분·벡터 불사용.",
+          "sourceOrigin": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "status": "KEEP",
+          "reconstructedQuestion": "이차함수 $f(x)=x^2-2x$에 대하여 방정식 $f(f(x))=0$의 서로 다른 모든 실근을 $a,b,c,d$라 할 때, $a^2+b^2+c^2+d^2$의 값은?",
+          "primaryNecessary": true,
+          "questionNaturalness": "학교 객관식 용어·변수·조건과 최종 질문을 점검",
+          "unnecessaryAnswerNormalizer": false,
+          "wrongRouteDerivationReproduced": "4/4",
+          "answerManipulation": false
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "4",
+              "errorCalculation": "$f(x)=0$에서 나온 $0,2$만 사용해 $0^2+2^2=4$로 끝낸다."
+            },
+            {
+              "index": "③",
+              "value": "8",
+              "errorCalculation": "$f(x)=2$에서 나온 $1\\pm\\sqrt3$만 제곱하여 $(1-\\sqrt3)^2+(1+\\sqrt3)^2=8$로 구한다."
+            },
+            {
+              "index": "④",
+              "value": "20",
+              "errorCalculation": "두 번째 근쌍의 제곱합 $8$을 두 번 세어 $4+2\\cdot8=20$으로 계산한다."
+            },
+            {
+              "index": "⑤",
+              "value": "16",
+              "errorCalculation": "제곱의 합을 합의 제곱으로 바꾸어 $(0+2+1-\\sqrt3+1+\\sqrt3)^2=4^2=16$으로 계산한다."
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "12",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "최종 학생 발문에 함수식·정의역·조건을 모두 명시하여 그림 없이 조건이 유일하게 정해짐; 해설 그래프와는 독립 판정",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/A3-solution.svg",
+          "svgGitBlobSha": "ebc720a92f8198908fd29f221e9625bbe2f4c806",
+          "authorCoordinateXCheck": "PASS",
+          "actualXmlParse": "NOT_RUN",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-PALMA25-2FINAL-Q19-B1",
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
+      "slot": "B1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "합성함수의 방정식과 역상",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "이차함수",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "실수 $a$에 대하여 $f_a(x)=(x-a)^2-4$라 하자. 방정식 $f_a(f_a(x))=0$의 서로 다른 실근이 정확히 $3$개가 되도록 하는 $a$의 값은?",
+      "choices": [
+        "$-6$",
+        "$-4$",
+        "$-2$",
+        "$2$",
+        "$-1$"
+      ],
+      "answer": "③",
+      "solution": "$f_a(y)=0$이면 $(y-a)^2=4$이므로 $y=a-2$ 또는 $y=a+2$이다.\n따라서 $f_a(x)=a-2$에서는 $(x-a)^2=a+2$,\n$f_a(x)=a+2$에서는 $(x-a)^2=a+6$을 얻는다.\n$(x-a)^2=c$는 $c<0$이면 실근 $0$개, $c=0$이면 실근 $1$개, $c>0$이면 실근 $2$개이다.\n두 중간값 $a-2$와 $a+2$는 서로 달라 두 갈래의 실근은 겹치지 않는다.\n정확히 세 근이 나오려면 한 갈래에서 $1$개, 다른 갈래에서 $2$개가 나와야 한다.\n$a+2=0$이면 $a=-2$이고, 이때 $a+6=4>0$이므로 $1+2=3$개이다.\n반대로 $a+6=0$이면 $a=-6$이고 $a+2=-4<0$이므로 $1+0=1$개뿐이다.\n따라서 $a=-2$이다. 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/B1-solution.svg",
+      "solutionImageAlt": "B1 합성방정식의 바깥 영점에 따른 이차함수 수평선과 실근 위치를 표시한 해설 그래프",
+      "solutionImageCaption": "a=−2인 경우의 그래프; y=0: 서로 다른 두 교점; y=−4: 접점 하나; 실근 총 3개",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "EXT-PALMA25-Q19-L4-QUADRATIC-COMPOSITION-PREIMAGE",
+        "rpmCanonicalL4": "합성함수 계산",
+        "rpmMappingStatus": "GENERATED_L4_SCOPE_ONLY",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "ptTplBindingStatus": "ACTIVE_2022_SCOPE_OTHER_RPM_L4",
+        "crossConceptKeys": [
+          "CC_DISCRIMINANT",
+          "CC_QUADRATIC_FUNCTION"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_DISCRIMINANT": "실근의 존재·중근 여부와 그 개수 변화를 판정한다.",
+          "CC_QUADRATIC_FUNCTION": "이차함수의 꼭짓점·최솟값을 이용해 역상 실근 수를 판단한다."
+        },
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "REAL_ROOT_MULTIPLICITY_AND_BOUNDARY",
+        "metadataDebt": [
+          "GENERATED_L4_NOT_GLOBAL_CANONICAL",
+          "PRIMARY_RPM_PT_TPL_CROSSWALK_NONPRIMARY_BINDING",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "합성 f∘f 또는 f∘g=목표값의 중간값을 먼저 결정하는 판단이 필수; Primary H1-RPM-253.",
+          "l4": "기존 합성함숫값 계산과 달리 합성방정식의 역상 분기·중근·구간 조건을 다루므로 Generated-only L4 활용.",
+          "cross": "CC_DISCRIMINANT: 실근의 존재·중근 여부와 그 개수 변화를 판정한다. | CC_QUADRATIC_FUNCTION: 이차함수의 꼭짓점·최솟값을 이용해 역상 실근 수를 판단한다.",
+          "condition": "COND_RANGE — 최종 풀이의 실근/정수/범위 적용",
+          "integration": "CASE_BRANCH",
+          "learningLevel": "두 역상 분기의 판별·접점 경계를 매개변수로 분류하고 3개가 되는 경우를 찾는다.",
+          "assessmentBucket": "0/1/2개 실근이 되는 각 역상 분기 수를 합쳐야 해 경계 등호 실수가 발생하기 쉽다.",
+          "problemVisual": "EXEMPT — 모든 수학적 입력을 문장과 함수식으로 완전히 제공. 필요한 '그림처럼' 지시 없음.",
+          "solutionVisual": "REQUIRED — 두 중간값의 수평선·교점으로 합성방정식의 경우 분기를 설명.",
+          "curriculum": "2022 개정 공통수학2 합성함수, 이차함수·이차방정식·근과 계수의 관계의 기습득 과정 안의 풀이만 사용. 미분·적분·벡터 불사용.",
+          "sourceOrigin": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "status": "KEEP",
+          "reconstructedQuestion": "실수 $a$에 대하여 $f_a(x)=(x-a)^2-4$라 하자. 방정식 $f_a(f_a(x))=0$의 서로 다른 실근이 정확히 $3$개가 되도록 하는 $a$의 값은?",
+          "primaryNecessary": true,
+          "questionNaturalness": "학교 객관식 용어·변수·조건과 최종 질문을 점검",
+          "unnecessaryAnswerNormalizer": false,
+          "wrongRouteDerivationReproduced": "4/4",
+          "answerManipulation": false
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "-6",
+              "errorCalculation": "$a+6=0$이면 한 갈래 중근 $1$개와 다른 갈래 $2$개가 생긴다고 잘못 세지만 실제는 $1+0=1$개이다."
+            },
+            {
+              "index": "②",
+              "value": "-4",
+              "errorCalculation": "$(x-a)^2=a+2$의 상수 $2$를 $4$로 오계산하여 $a+4=0$, 곧 $a=-4$로 둔다."
+            },
+            {
+              "index": "④",
+              "value": "2",
+              "errorCalculation": "$(x-a)^2=a+2$를 $(x-a)^2=2-a$로 잘못 옮겨 $2-a=0$에서 $a=2$로 둔다."
+            },
+            {
+              "index": "⑤",
+              "value": "-1",
+              "errorCalculation": "$(x-a)^2=a+2$를 $(x-a)^2=a+1$로 전개 오류를 내어 중근 조건 $a+1=0$에서 $a=-1$로 둔다."
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "-2",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "최종 학생 발문에 함수식·정의역·조건을 모두 명시하여 그림 없이 조건이 유일하게 정해짐; 해설 그래프와는 독립 판정",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/B1-solution.svg",
+          "svgGitBlobSha": "3379808b7f5dd9350afc649e86e9b419560cfa84",
+          "authorCoordinateXCheck": "PASS",
+          "actualXmlParse": "NOT_RUN",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-PALMA25-2FINAL-Q19-B2",
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
+      "slot": "B2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "합성함수의 방정식과 역상",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "이차함수",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "이차함수 $f(x)=(x-2)^2-1$에 대하여 방정식 $f(f(x))=0$의 서로 다른 실근 중 $0<x<4$인 두 근의 곱은?",
+      "choices": [
+        "$2$",
+        "$4$",
+        "$6$",
+        "$0$",
+        "$8$"
+      ],
+      "answer": "①",
+      "solution": "바깥 함수의 영점은 $(y-2)^2-1=0$에서 $y=1,3$이다.\n$f(x)=1$이면 $(x-2)^2=2$에서 $x=2\\pm\\sqrt2$이다.\n$f(x)=3$이면 $(x-2)^2=4$에서 $x=0,4$이다.\n네 근은 서로 다르지만 $0<x<4$에는 $2-\\sqrt2$와 $2+\\sqrt2$만 포함된다.\n따라서 두 근의 곱은 $(2-\\sqrt2)(2+\\sqrt2)=4-2=2$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/B2-solution.svg",
+      "solutionImageAlt": "B2 합성방정식의 바깥 영점에 따른 이차함수 수평선과 실근 위치를 표시한 해설 그래프",
+      "solutionImageCaption": "바깥 영점: 1, 3; 서로 다른 실근: 4개; 열린구간 0<x<4; 끝점 0,4는 제외",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "EXT-PALMA25-Q19-L4-QUADRATIC-COMPOSITION-PREIMAGE",
+        "rpmCanonicalL4": "합성함수 계산",
+        "rpmMappingStatus": "GENERATED_L4_SCOPE_ONLY",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "ptTplBindingStatus": "ACTIVE_2022_SCOPE_OTHER_RPM_L4",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_QUADRATIC_EQUATION": "바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다.",
+          "CC_ROOTS_COEFFICIENTS": "각 역상 근쌍의 합·곱 또는 제곱합을 근과 계수의 관계로 정리한다."
+        },
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "ROOT_RANGE_FILTER",
+        "metadataDebt": [
+          "GENERATED_L4_NOT_GLOBAL_CANONICAL",
+          "PRIMARY_RPM_PT_TPL_CROSSWALK_NONPRIMARY_BINDING",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "합성 f∘f 또는 f∘g=목표값의 중간값을 먼저 결정하는 판단이 필수; Primary H1-RPM-253.",
+          "l4": "기존 합성함숫값 계산과 달리 합성방정식의 역상 분기·중근·구간 조건을 다루므로 Generated-only L4 활용.",
+          "cross": "CC_QUADRATIC_EQUATION: 바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다. | CC_ROOTS_COEFFICIENTS: 각 역상 근쌍의 합·곱 또는 제곱합을 근과 계수의 관계로 정리한다.",
+          "condition": "COND_RANGE — 최종 풀이의 실근/정수/범위 적용",
+          "integration": "CASE_BRANCH",
+          "learningLevel": "합성방정식 네 근을 구하고 주어진 열린구간으로 걸러 두 근의 곱을 판단한다.",
+          "assessmentBucket": "끝점 0,4 배제와 켤레근의 곱 적용 두 판단을 연결해야 한다.",
+          "problemVisual": "EXEMPT — 모든 수학적 입력을 문장과 함수식으로 완전히 제공. 필요한 '그림처럼' 지시 없음.",
+          "solutionVisual": "REQUIRED — 두 중간값의 수평선·교점으로 합성방정식의 경우 분기를 설명.",
+          "curriculum": "2022 개정 공통수학2 합성함수, 이차함수·이차방정식·근과 계수의 관계의 기습득 과정 안의 풀이만 사용. 미분·적분·벡터 불사용.",
+          "sourceOrigin": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "status": "KEEP",
+          "reconstructedQuestion": "이차함수 $f(x)=(x-2)^2-1$에 대하여 방정식 $f(f(x))=0$의 서로 다른 실근 중 $0<x<4$인 두 근의 곱은?",
+          "primaryNecessary": true,
+          "questionNaturalness": "학교 객관식 용어·변수·조건과 최종 질문을 점검",
+          "unnecessaryAnswerNormalizer": false,
+          "wrongRouteDerivationReproduced": "4/4",
+          "answerManipulation": false
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "②",
+              "value": "4",
+              "errorCalculation": "$(2-\\sqrt2)(2+\\sqrt2)$에서 $\\sqrt2$를 무시해 $2\\cdot2=4$로 계산한다."
+            },
+            {
+              "index": "③",
+              "value": "6",
+              "errorCalculation": "$(2-\\sqrt2)(2+\\sqrt2)$를 $2^2+(\\sqrt2)^2=4+2=6$으로 잘못 계산한다."
+            },
+            {
+              "index": "④",
+              "value": "0",
+              "errorCalculation": "열린구간 $0<x<4$에 끝점 $x=0$을 포함하여 근의 곱을 $0$으로 만든다."
+            },
+            {
+              "index": "⑤",
+              "value": "8",
+              "errorCalculation": "두 켤레근의 곱을 $(2\\sqrt2)^2=8$로 잘못 바꾼다."
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "2",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "최종 학생 발문에 함수식·정의역·조건을 모두 명시하여 그림 없이 조건이 유일하게 정해짐; 해설 그래프와는 독립 판정",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/B2-solution.svg",
+          "svgGitBlobSha": "f9e5f5d5f0ff033e1e669457627353226ee07d69",
+          "authorCoordinateXCheck": "PASS",
+          "actualXmlParse": "NOT_RUN",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-PALMA25-2FINAL-Q19-B3",
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
+      "slot": "B3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "합성함수의 방정식과 역상",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "이차함수",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "이차함수 $f(x)=x^2-4x$에 대하여 방정식 $f(f(x))=0$의 서로 다른 실근 중 양수인 모든 근의 합은?",
+      "choices": [
+        "$6+2\\sqrt2$",
+        "$6-2\\sqrt2$",
+        "$4+2\\sqrt2$",
+        "$2+2\\sqrt2$",
+        "$8$"
+      ],
+      "answer": "①",
+      "solution": "$f(y)=y(y-4)=0$이므로 $y=0$ 또는 $y=4$이다.\n$f(x)=0$이면 $x=0,4$이다.\n$f(x)=4$이면 $x^2-4x-4=0$이므로 $x=2\\pm2\\sqrt2$이다.\n$\\sqrt2>1$이므로 $2-2\\sqrt2<0$이고, $x=0$은 양수가 아니다.\n따라서 양수인 근은 $4$, $2+2\\sqrt2$이고 그 합은 $6+2\\sqrt2$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/B3-solution.svg",
+      "solutionImageAlt": "B3 합성방정식의 바깥 영점에 따른 이차함수 수평선과 실근 위치를 표시한 해설 그래프",
+      "solutionImageCaption": "바깥 영점: 0, 4; 양수근: 4, 2+2√2; 0과 음수근은 제외; 양수 조건 적용",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "EXT-PALMA25-Q19-L4-QUADRATIC-COMPOSITION-PREIMAGE",
+        "rpmCanonicalL4": "합성함수 계산",
+        "rpmMappingStatus": "GENERATED_L4_SCOPE_ONLY",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "ptTplBindingStatus": "ACTIVE_2022_SCOPE_OTHER_RPM_L4",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_QUADRATIC_EQUATION": "바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다.",
+          "CC_ROOTS_COEFFICIENTS": "각 역상 근쌍의 합·곱 또는 제곱합을 근과 계수의 관계로 정리한다."
+        },
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "ROOT_RANGE_FILTER",
+        "metadataDebt": [
+          "GENERATED_L4_NOT_GLOBAL_CANONICAL",
+          "PRIMARY_RPM_PT_TPL_CROSSWALK_NONPRIMARY_BINDING",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "합성 f∘f 또는 f∘g=목표값의 중간값을 먼저 결정하는 판단이 필수; Primary H1-RPM-253.",
+          "l4": "기존 합성함숫값 계산과 달리 합성방정식의 역상 분기·중근·구간 조건을 다루므로 Generated-only L4 활용.",
+          "cross": "CC_QUADRATIC_EQUATION: 바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다. | CC_ROOTS_COEFFICIENTS: 각 역상 근쌍의 합·곱 또는 제곱합을 근과 계수의 관계로 정리한다.",
+          "condition": "COND_POSITIVE — 최종 풀이의 실근/정수/범위 적용",
+          "integration": "CASE_BRANCH",
+          "learningLevel": "네 근의 부호를 직접 판별해 양수인 두 근만 합한다.",
+          "assessmentBucket": "근호가 있는 음수 근의 부호를 판별하고 0을 제외해야 한다.",
+          "problemVisual": "EXEMPT — 모든 수학적 입력을 문장과 함수식으로 완전히 제공. 필요한 '그림처럼' 지시 없음.",
+          "solutionVisual": "REQUIRED — 두 중간값의 수평선·교점으로 합성방정식의 경우 분기를 설명.",
+          "curriculum": "2022 개정 공통수학2 합성함수, 이차함수·이차방정식·근과 계수의 관계의 기습득 과정 안의 풀이만 사용. 미분·적분·벡터 불사용.",
+          "sourceOrigin": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "status": "KEEP",
+          "reconstructedQuestion": "이차함수 $f(x)=x^2-4x$에 대하여 방정식 $f(f(x))=0$의 서로 다른 실근 중 양수인 모든 근의 합은?",
+          "primaryNecessary": true,
+          "questionNaturalness": "학교 객관식 용어·변수·조건과 최종 질문을 점검",
+          "unnecessaryAnswerNormalizer": false,
+          "wrongRouteDerivationReproduced": "4/4",
+          "answerManipulation": false
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "②",
+              "value": "6-2√2",
+              "errorCalculation": "음수인 $2-2\\sqrt2$를 양수로 오인하고 $4+(2-2\\sqrt2)=6-2\\sqrt2$로 합한다."
+            },
+            {
+              "index": "③",
+              "value": "4+2√2",
+              "errorCalculation": "양수근 $2+2\\sqrt2$의 상수항 $2$를 누락하여 $4+2\\sqrt2$로 계산한다."
+            },
+            {
+              "index": "④",
+              "value": "2+2√2",
+              "errorCalculation": "$f(x)=0$에서 생기는 양수근 $4$를 빠뜨리고 $2+2\\sqrt2$만 구한다."
+            },
+            {
+              "index": "⑤",
+              "value": "8",
+              "errorCalculation": "부호 조건을 무시하고 네 근 $0,4,2\\pm2\\sqrt2$의 전체 합 $8$을 답한다."
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "6+2√2",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "최종 학생 발문에 함수식·정의역·조건을 모두 명시하여 그림 없이 조건이 유일하게 정해짐; 해설 그래프와는 독립 판정",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/B3-solution.svg",
+          "svgGitBlobSha": "7f516357172b32ca1f1a1762b0924cb17e5aca18",
+          "authorCoordinateXCheck": "PASS",
+          "actualXmlParse": "NOT_RUN",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-PALMA25-2FINAL-Q19-C1",
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
+      "slot": "C1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "합성함수의 방정식과 역상",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "이차함수",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "이차함수 $f(x)=(x-1)^2-4$에 대하여, 방정식 $f(f(x))=t$가 서로 다른 실근을 정확히 $4$개 갖도록 하는 정수 $t$의 개수는?",
+      "choices": [
+        "$25$",
+        "$26$",
+        "$23$",
+        "$20$",
+        "$24$"
+      ],
+      "answer": "⑤",
+      "solution": "$f(y)=t$이면 $(y-1)^2=t+4$이다.\n$t<-4$이면 실수 $y$가 없고, $t=-4$이면 중간값 $y=1$ 하나뿐이므로 네 근이 생길 수 없다.\n$t>-4$이면 서로 다른 두 중간값 $y=1\\pm\\sqrt{t+4}$를 얻는다.\n각 중간값에 대하여 $f(x)=y$를 풀면\n$(x-1)^2=5+\\sqrt{t+4}$ 또는 $(x-1)^2=5-\\sqrt{t+4}$이다.\n첫 번째는 항상 서로 다른 두 근을 갖는다. 두 번째도 서로 다른 두 근을 가지려면\n$5-\\sqrt{t+4}>0$, 즉 $\\sqrt{t+4}<5$이고 $t<21$이어야 한다.\n$t=21$에서는 두 번째 갈래가 중근 한 개이므로 총 세 근이다.\n따라서 정확히 네 실근을 갖는 조건은 $-4<t<21$이다.\n정수 $t=-3,-2,\\ldots,20$은 $20-(-3)+1=24$개이다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/C1-solution.svg",
+      "solutionImageAlt": "C1 합성방정식의 바깥 영점에 따른 이차함수 수평선과 실근 위치를 표시한 해설 그래프",
+      "solutionImageCaption": "t=0의 대표 교점 예시; t=−4: 두 갈래 합침; t=21: 한 갈래 접점; 정확히 4개: −4<t<21",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "EXT-PALMA25-Q19-L4-QUADRATIC-COMPOSITION-PREIMAGE",
+        "rpmCanonicalL4": "합성함수 계산",
+        "rpmMappingStatus": "GENERATED_L4_SCOPE_ONLY",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "ptTplBindingStatus": "ACTIVE_2022_SCOPE_OTHER_RPM_L4",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_FUNCTION",
+          "CC_DISCRIMINANT"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_QUADRATIC_FUNCTION": "이차함수의 꼭짓점·최솟값을 이용해 역상 실근 수를 판단한다.",
+          "CC_DISCRIMINANT": "실근의 존재·중근 여부와 그 개수 변화를 판정한다."
+        },
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "REAL_ROOT_MULTIPLICITY_AND_BOUNDARY",
+        "metadataDebt": [
+          "GENERATED_L4_NOT_GLOBAL_CANONICAL",
+          "PRIMARY_RPM_PT_TPL_CROSSWALK_NONPRIMARY_BINDING",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "합성 f∘f 또는 f∘g=목표값의 중간값을 먼저 결정하는 판단이 필수; Primary H1-RPM-253.",
+          "l4": "기존 합성함숫값 계산과 달리 합성방정식의 역상 분기·중근·구간 조건을 다루므로 Generated-only L4 활용.",
+          "cross": "CC_QUADRATIC_FUNCTION: 이차함수의 꼭짓점·최솟값을 이용해 역상 실근 수를 판단한다. | CC_DISCRIMINANT: 실근의 존재·중근 여부와 그 개수 변화를 판정한다.",
+          "condition": "COND_INTEGER, COND_RANGE — 최종 풀이의 실근/정수/범위 적용",
+          "integration": "INTERDEPENDENT",
+          "learningLevel": "외부 매개변수 t에 따른 두 중간값의 합성 역상 개수를 경계별로 분류한다.",
+          "assessmentBucket": "최솟값 접점과 한 중간값의 접점까지 둘 다 정확한 열린경계로 판정하고 정수 개수를 세야 한다.",
+          "problemVisual": "EXEMPT — 모든 수학적 입력을 문장과 함수식으로 완전히 제공. 필요한 '그림처럼' 지시 없음.",
+          "solutionVisual": "REQUIRED — 두 중간값의 수평선·교점으로 합성방정식의 경우 분기를 설명.",
+          "curriculum": "2022 개정 공통수학2 합성함수, 이차함수·이차방정식·근과 계수의 관계의 기습득 과정 안의 풀이만 사용. 미분·적분·벡터 불사용.",
+          "sourceOrigin": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "status": "KEEP",
+          "reconstructedQuestion": "이차함수 $f(x)=(x-1)^2-4$에 대하여, 방정식 $f(f(x))=t$가 서로 다른 실근을 정확히 $4$개 갖도록 하는 정수 $t$의 개수는?",
+          "primaryNecessary": true,
+          "questionNaturalness": "학교 객관식 용어·변수·조건과 최종 질문을 점검",
+          "unnecessaryAnswerNormalizer": false,
+          "wrongRouteDerivationReproduced": "4/4",
+          "answerManipulation": false
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "25",
+              "errorCalculation": "$t=-4$에서도 네 근이 생긴다고 보아 $t=-4,-3,\\ldots,20$을 세어 $25$개로 계산한다."
+            },
+            {
+              "index": "②",
+              "value": "26",
+              "errorCalculation": "경계 $t=-4$와 $t=21$을 모두 포함시켜 정수 $-4,-3,\\ldots,21$의 $26$개로 계산한다."
+            },
+            {
+              "index": "③",
+              "value": "23",
+              "errorCalculation": "$t=-3$을 추가로 배제하고 $-2,-1,\\ldots,20$의 $23$개만 센다."
+            },
+            {
+              "index": "④",
+              "value": "20",
+              "errorCalculation": "매개변수 $t$가 양수여야 한다고 오인해 $t=1,2,\\ldots,20$의 $20$개만 센다."
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "24",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "최종 학생 발문에 함수식·정의역·조건을 모두 명시하여 그림 없이 조건이 유일하게 정해짐; 해설 그래프와는 독립 판정",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/C1-solution.svg",
+          "svgGitBlobSha": "e74165dafcca993b4dfeb0420c1d751fd5849b03",
+          "authorCoordinateXCheck": "PASS",
+          "actualXmlParse": "NOT_RUN",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-PALMA25-2FINAL-Q19-C2",
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
+      "slot": "C2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "합성함수의 방정식과 역상",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "이차함수",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "두 이차함수 $f(x)=x^2-2x$, $g(x)=x^2-2x-2$에 대하여 방정식 $f(g(x))=0$의 서로 다른 실근 중 $-2\\le x\\le3$에 속하는 모든 근의 합은?",
+      "choices": [
+        "$4$",
+        "$2+\\sqrt3-\\sqrt5$",
+        "$3+\\sqrt5$",
+        "$3-\\sqrt5$",
+        "$3-\\sqrt3$"
+      ],
+      "answer": "④",
+      "solution": "$f(y)=y(y-2)=0$이므로 $g(x)=0$ 또는 $g(x)=2$이다.\n$g(x)=0$이면 $x^2-2x-2=0$에서 $x=1\\pm\\sqrt3$이다.\n$g(x)=2$이면 $x^2-2x-4=0$에서 $x=1\\pm\\sqrt5$이다.\n$1+\\sqrt3<3$인 반면 $1+\\sqrt5>3$이다. 두 음의 근 $1-\\sqrt3$, $1-\\sqrt5$는 모두 $-2$ 이상이다.\n따라서 구간 $-2\\le x\\le3$에 속하는 근은 $1-\\sqrt3$, $1+\\sqrt3$, $1-\\sqrt5$의 세 개이다.\n합은 $(1-\\sqrt3)+(1+\\sqrt3)+(1-\\sqrt5)=3-\\sqrt5$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/C2-solution.svg",
+      "solutionImageAlt": "C2 합성방정식의 바깥 영점에 따른 이차함수 수평선과 실근 위치를 표시한 해설 그래프",
+      "solutionImageCaption": "바깥 영점: 0, 2; g(x)=0 또는 g(x)=2; 구간: −2≤x≤3; 1+√5는 범위 밖",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "EXT-PALMA25-Q19-L4-QUADRATIC-COMPOSITION-PREIMAGE",
+        "rpmCanonicalL4": "합성함수 계산",
+        "rpmMappingStatus": "GENERATED_L4_SCOPE_ONLY",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "ptTplBindingStatus": "ACTIVE_2022_SCOPE_OTHER_RPM_L4",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_QUADRATIC_EQUATION": "바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다.",
+          "CC_ROOTS_COEFFICIENTS": "각 역상 근쌍의 합·곱 또는 제곱합을 근과 계수의 관계로 정리한다."
+        },
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "ROOT_RANGE_FILTER",
+        "metadataDebt": [
+          "GENERATED_L4_NOT_GLOBAL_CANONICAL",
+          "PRIMARY_RPM_PT_TPL_CROSSWALK_NONPRIMARY_BINDING",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "합성 f∘f 또는 f∘g=목표값의 중간값을 먼저 결정하는 판단이 필수; Primary H1-RPM-253.",
+          "l4": "기존 합성함숫값 계산과 달리 합성방정식의 역상 분기·중근·구간 조건을 다루므로 Generated-only L4 활용.",
+          "cross": "CC_QUADRATIC_EQUATION: 바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다. | CC_ROOTS_COEFFICIENTS: 각 역상 근쌍의 합·곱 또는 제곱합을 근과 계수의 관계로 정리한다.",
+          "condition": "COND_RANGE — 최종 풀이의 실근/정수/범위 적용",
+          "integration": "CASE_BRANCH",
+          "learningLevel": "이질 함수 합성의 역상을 구한 뒤 네 근의 구간 포함 여부를 정확한 근호 비교로 판정한다.",
+          "assessmentBucket": "상한 3 근처에서 √3과 √5의 대소관계를 구별해야 하고, 세 근만 선택해야 한다.",
+          "problemVisual": "EXEMPT — 모든 수학적 입력을 문장과 함수식으로 완전히 제공. 필요한 '그림처럼' 지시 없음.",
+          "solutionVisual": "REQUIRED — 두 중간값의 수평선·교점으로 합성방정식의 경우 분기를 설명.",
+          "curriculum": "2022 개정 공통수학2 합성함수, 이차함수·이차방정식·근과 계수의 관계의 기습득 과정 안의 풀이만 사용. 미분·적분·벡터 불사용.",
+          "sourceOrigin": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "status": "KEEP",
+          "reconstructedQuestion": "두 이차함수 $f(x)=x^2-2x$, $g(x)=x^2-2x-2$에 대하여 방정식 $f(g(x))=0$의 서로 다른 실근 중 $-2\\le x\\le3$에 속하는 모든 근의 합은?",
+          "primaryNecessary": true,
+          "questionNaturalness": "학교 객관식 용어·변수·조건과 최종 질문을 점검",
+          "unnecessaryAnswerNormalizer": false,
+          "wrongRouteDerivationReproduced": "4/4",
+          "answerManipulation": false
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "4",
+              "errorCalculation": "상한 $3$을 무시하고 네 근 $1\\pm\\sqrt3$, $1\\pm\\sqrt5$를 모두 더해 $4$를 얻는다."
+            },
+            {
+              "index": "②",
+              "value": "2+√3−√5",
+              "errorCalculation": "조건에 맞는 $1-\\sqrt3$을 빠뜨리고 $(1+\\sqrt3)+(1-\\sqrt5)=2+\\sqrt3-\\sqrt5$로 계산한다."
+            },
+            {
+              "index": "③",
+              "value": "3+√5",
+              "errorCalculation": "범위 밖의 $1+\\sqrt5$를 포함하고 $1-\\sqrt5$를 누락하여 $(1-\\sqrt3)+(1+\\sqrt3)+(1+\\sqrt5)=3+\\sqrt5$로 계산한다."
+            },
+            {
+              "index": "⑤",
+              "value": "3−√3",
+              "errorCalculation": "범위 밖 근을 $1+\\sqrt5$ 대신 $1+\\sqrt3$으로 혼동해 전체 합 $4-(1+\\sqrt3)=3-\\sqrt3$으로 계산한다."
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "3−√5",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "최종 학생 발문에 함수식·정의역·조건을 모두 명시하여 그림 없이 조건이 유일하게 정해짐; 해설 그래프와는 독립 판정",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/C2-solution.svg",
+          "svgGitBlobSha": "c3419c4d7c765c245fcd21302d4194cb75dea384",
+          "authorCoordinateXCheck": "PASS",
+          "actualXmlParse": "NOT_RUN",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-PALMA25-2FINAL-Q19-C3",
+      "sourceQid": 19,
+      "sourceUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
+      "slot": "C3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "합성함수의 방정식과 역상",
+      "originalCategory": "함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-07",
+      "standardUnit": "함수",
+      "standardUnitOrder": 7,
+      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "합성함수",
+        "이차함수",
+        "그래프"
+      ],
+      "wide": false,
+      "content": "이차함수 $f(x)=(x-4)^2-4$에 대하여 방정식 $f(f(x))=0$의 서로 다른 네 실근의 곱은?",
+      "choices": [
+        "$-36$",
+        "$100$",
+        "$36$",
+        "$-60$",
+        "$60$"
+      ],
+      "answer": "⑤",
+      "solution": "$f(y)=0$이면 $(y-4)^2-4=0$에서 $y=2$ 또는 $y=6$이다.\n$f(x)=2$이면 $(x-4)^2=6$이므로 $x=4\\pm\\sqrt6$이다.\n$f(x)=6$이면 $(x-4)^2=10$이므로 $x=4\\pm\\sqrt{10}$이다.\n네 실근은 서로 다르며, 각 근쌍의 곱은\n$(4-\\sqrt6)(4+\\sqrt6)=16-6=10$,\n$(4-\\sqrt{10})(4+\\sqrt{10})=16-10=6$이다.\n따라서 네 근의 곱은 $10\\cdot6=60$이다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/C3-solution.svg",
+      "solutionImageAlt": "C3 합성방정식의 바깥 영점에 따른 이차함수 수평선과 실근 위치를 표시한 해설 그래프",
+      "solutionImageCaption": "바깥 영점: 2, 6; 각 갈래에서 실근 2개; 켤레곱: 10, 6; 두 곱을 다시 곱함",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-253",
+        "rpmL1": "함수",
+        "rpmL2": "함수",
+        "rpmL3": "합성함수",
+        "rpmL4": "EXT-PALMA25-Q19-L4-QUADRATIC-COMPOSITION-PREIMAGE",
+        "rpmCanonicalL4": "합성함수 계산",
+        "rpmMappingStatus": "GENERATED_L4_SCOPE_ONLY",
+        "problemTypeKey": "PT_COMPOSITION_PROPERTIES",
+        "templateKey": "TPL_COMPOSITION_RELATION_CONDITION",
+        "ptTplBindingStatus": "ACTIVE_2022_SCOPE_OTHER_RPM_L4",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_EQUATION",
+          "CC_ROOTS_COEFFICIENTS"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_QUADRATIC_EQUATION": "바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다.",
+          "CC_ROOTS_COEFFICIENTS": "각 역상 근쌍의 합·곱 또는 제곱합을 근과 계수의 관계로 정리한다."
+        },
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "ROOT_PREIMAGE",
+        "metadataDebt": [
+          "GENERATED_L4_NOT_GLOBAL_CANONICAL",
+          "PRIMARY_RPM_PT_TPL_CROSSWALK_NONPRIMARY_BINDING",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "합성 f∘f 또는 f∘g=목표값의 중간값을 먼저 결정하는 판단이 필수; Primary H1-RPM-253.",
+          "l4": "기존 합성함숫값 계산과 달리 합성방정식의 역상 분기·중근·구간 조건을 다루므로 Generated-only L4 활용.",
+          "cross": "CC_QUADRATIC_EQUATION: 바깥 영점으로 정한 중간값에 대하여 내부 이차방정식의 실제 실근을 결정한다. | CC_ROOTS_COEFFICIENTS: 각 역상 근쌍의 합·곱 또는 제곱합을 근과 계수의 관계로 정리한다.",
+          "condition": "NONE_CONFIRMED",
+          "integration": "SEQUENTIAL",
+          "learningLevel": "합성 역상 네 근을 두 켤레근 쌍으로 조직하여 곱을 계산한다.",
+          "assessmentBucket": "두 중간값을 모두 취하고 각각의 차의 제곱꼴을 곱하는 구조화가 필요하다.",
+          "problemVisual": "EXEMPT — 모든 수학적 입력을 문장과 함수식으로 완전히 제공. 필요한 '그림처럼' 지시 없음.",
+          "solutionVisual": "REQUIRED — 두 중간값의 수평선·교점으로 합성방정식의 경우 분기를 설명.",
+          "curriculum": "2022 개정 공통수학2 합성함수, 이차함수·이차방정식·근과 계수의 관계의 기습득 과정 안의 풀이만 사용. 미분·적분·벡터 불사용.",
+          "sourceOrigin": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "status": "KEEP",
+          "reconstructedQuestion": "이차함수 $f(x)=(x-4)^2-4$에 대하여 방정식 $f(f(x))=0$의 서로 다른 네 실근의 곱은?",
+          "primaryNecessary": true,
+          "questionNaturalness": "학교 객관식 용어·변수·조건과 최종 질문을 점검",
+          "unnecessaryAnswerNormalizer": false,
+          "wrongRouteDerivationReproduced": "4/4",
+          "answerManipulation": false
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "-36",
+              "errorCalculation": "첫 번째 갈래 $x=4\\pm\\sqrt6$에서 $+4$를 놓쳐 $x=\\pm\\sqrt6$의 곱 $-6$을 사용하고, 다른 갈래의 곱 $6$을 곱해 $-36$을 얻는다."
+            },
+            {
+              "index": "②",
+              "value": "100",
+              "errorCalculation": "첫 번째 갈래의 곱 $16-6=10$만 두 번 적용해 $10^2=100$으로 계산한다."
+            },
+            {
+              "index": "③",
+              "value": "36",
+              "errorCalculation": "두 번째 갈래의 곱 $16-10=6$만 두 번 적용해 $6^2=36$으로 계산한다."
+            },
+            {
+              "index": "④",
+              "value": "-60",
+              "errorCalculation": "한 근쌍의 켤레곱 부호를 반대로 써 $(-10)\\cdot6=-60$으로 계산한다."
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "60",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "reason": "최종 학생 발문에 함수식·정의역·조건을 모두 명시하여 그림 없이 조건이 유일하게 정해짐; 해설 그래프와는 독립 판정",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q19/C3-solution.svg",
+          "svgGitBlobSha": "14762131bfb7c96e6a9b8dac784e0238639f3c24",
+          "authorCoordinateXCheck": "PASS",
+          "actualXmlParse": "NOT_RUN",
+          "actualBrowser": "NOT_RUN"
+        }
+      }
+    }
+  ],
+  "sourceOriginalCourse": "공통수학2",
+  "targetStandardCourse": "공통수학2"
+}

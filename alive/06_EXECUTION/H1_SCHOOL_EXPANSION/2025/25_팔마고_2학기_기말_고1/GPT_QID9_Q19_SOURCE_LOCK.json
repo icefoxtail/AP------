@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q19_SOURCE_LOCK_v1",
+  "createdDate": "2026-10-15",
+  "branch": "work/alive-25-palma-h1-2final-qid9",
+  "baseBranchHead": "eb0da3ea271ed0fd03535ad80c01ec96c4cfcefb",
+  "mainObservedHead": "79a6039c1e78681b83f44054cf42d8b86b74355f",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceFileRawSha256": "ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91",
+  "sourceQid": 19,
+  "sourceOriginalId": 19,
+  "sourceOrdinal": 19,
+  "examTitle": "25_팔마고_2학기_기말_고1_기출",
+  "sourceUid": "qid_v1_b1ef4aefb482fa2171245b66ae54cad509e5cdc779e59e45f4e8a52005adcb02",
+  "sourceUidProof": {
+    "identityMapPath": "archive/data/question_identity_map.json",
+    "identityMapGitBlobSha": "a57b1be7171b8995c3229c5dc921c1b8b693482a",
+    "sourceArchiveFile": "original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+    "sourceOrdinal": 19,
+    "sourceQuestionNo": "19",
+    "mapRecordSourceFingerprint": "afbdf926ff498bc5481ec0922514cb3f0180499f6723b40e3de6ab0df51473a2",
+    "algorithm": "qid_v1_ + sha256(NFC(sourceArchiveFile+'#'+sourceOrdinal))",
+    "identityMapExactUidRecordRead": true,
+    "identityParity": "PASS"
+  },
+  "sourceQuestion": {
+    "content": "오른쪽 그림과 같은 이차함수 $y=f(x)$에 대하여 방정식 $(f\\circ f)(x)=0$의 서로 다른 모든 실근의 합을 구하시오. [5.2점]",
+    "choices": [
+      "$-2$",
+      "$-\\dfrac32$",
+      "$-1$",
+      "$-\\dfrac12$",
+      "$1$"
+    ],
+    "answer": "①",
+    "sourceSolutionSummary": "f(x)=x²+x−2. f(f(x))=0 iff f(x)=−2 or 1; first x=−1,0, latter two roots have sum −1; total −2."
+  },
+  "sourceImage": {
+    "path": "archive/assets/images/25_팔마고_2학기_기말_고1_기출/q19.png",
+    "gitBlobSha": "2ae20abb53f11d928e2209493927ce94e8647b48",
+    "visualActuallyRead": true,
+    "visualFacts": {
+      "roots": [
+        -2,
+        1
+      ],
+      "interceptY": -2,
+      "axisX": "-1/2",
+      "parabola": "opens_up"
+    }
+  },
+  "sourceIndependentDerivation": {
+    "interpolation": "x-intercepts -2,1 and y-intercept -2 give f(x)=(x+2)(x-1)",
+    "equationSplit": [
+      "f(x)=-2 => x(x+1)=0 => x=0,-1",
+      "f(x)=1 => x²+x−3=0 => sum=-1"
+    ],
+    "distinctRealRootsCount": 4,
+    "computedRootSum": "-2",
+    "correctChoice": "①",
+    "allChoices": [
+      {
+        "index": "①",
+        "valid": true
+      },
+      {
+        "index": "②",
+        "valid": false
+      },
+      {
+        "index": "③",
+        "valid": false
+      },
+      {
+        "index": "④",
+        "valid": false
+      },
+      {
+        "index": "⑤",
+        "valid": false
+      }
+    ],
+    "independentReview": "NOT_RUN",
+    "authorMathCheck": "PASS"
+  },
+  "duplicateScan": {
+    "branchDirectoryQ19Artifacts": 0,
+    "branchExistingMetaAssignmentsQ19": 0,
+    "legacyExistingSimilarUnchanged": true,
+    "duplicateGeneratedUids": false
+  },
+  "SOURCE_LOCK_STATUS": "PASS",
+  "sourceLockStatus": "PASS"
+}
