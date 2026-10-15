@@ -46,3 +46,13 @@ test('QID9 derived SVG fills a missing description from existing labels and pres
 test('QID9 derived SVG still fails closed without existing title/description labels',()=>{
  assert.throws(()=>normalizeQid9Svg('<svg><path d="M0 0"/></svg>','ALITE-TEST-Q01-A1'),/QID9_SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED/);
 });
+
+
+test('QID9 normalized SVG drops stale root aria-label after title/desc binding',()=>{
+ const source='<svg xmlns="http://www.w3.org/2000/svg" aria-label="비율이 실제와 다를 수 있는 개념도"><title>두 함수의 그래프</title><desc>교점 관계를 나타낸다.</desc><path d="M1 2L3 4"/></svg>';
+ const normalized=normalizeQid9Svg(source,'ALITE-JEIL25-2FINAL-Q12-A1');
+ assert.doesNotMatch(normalized, /aria-label=/);
+ assert.match(normalized, /aria-labelledby=/);
+ assert.equal(validateSvgStudentLanguage(normalized,{assetRef:'derived/q12.svg'}).status,'PASS');
+ assert.equal(normalized.match(/<path[^>]*>/)[0],source.match(/<path[^>]*>/)[0]);
+});
