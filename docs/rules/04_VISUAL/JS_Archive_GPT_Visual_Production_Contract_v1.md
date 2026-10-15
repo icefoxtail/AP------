@@ -49,6 +49,19 @@ Codex skill에는 skill router, local command, Python/Node validator, browser/re
 - 풀이 전체 문장을 그림 안에 복사하지 않음
 - 학생 노출 문구는 한국어 우선
 
+### 학생용 SVG 문구와 접근성 설명
+
+학생용 SVG의 화면 문구와 `<title>`, `<desc>`, `aria-label`, `aria-labelledby` 등 보조기술에 노출되는 문구에는
+[JS아카이브 학생용 해설 운영 규칙 §5](../01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md)의 용어 순서를 적용한다.
+공식 교육과정 용어, 교과서·학교 수학 표현, 승인된 한국어 용어를 우선하며, 내부 key/debug/footer와 불필요한 영어 설명어는 출력하지 않는다.
+수학 변수·점 이름·기호·표준 함수명은 문맥상 필요한 경우 허용한다.
+
+모든 학생용 SVG는 학생과 보조기술에 의미 있는 한국어 이름과 설명을 제공한다. 제목은 시각자료의 대상을 간결히 밝히고,
+설명은 실제 그림의 핵심 수학 관계와 필요한 조건을 전달한다. 발문 전체 복사, source code, 작업 provenance,
+잘린 내용의 설명은 금지한다. 외부 `<img>` 연결도 실제 접근성 이름에 대상과 핵심 관계가 드러나야 하며,
+공유 SVG의 설명에 특정 문항의 숫자·조건을 섞지 않는다. 수식 표기는 raw TeX 명령을 제거하는 식으로 단순화하지 말고
+분수·근호·집합 기호·각·거듭제곱의 의미를 보존한다.
+
 ### SYSTEM_VISUAL
 shared generator/validator/engine/repository-wide visual system 자체가 작업 대상일 때만 사용.
 개별 시험지 SVG repair를 SYSTEM_VISUAL로 확대하지 않는다.

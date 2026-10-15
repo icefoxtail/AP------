@@ -65,7 +65,8 @@ test('wrapLatex keeps q9 inline HTML and cache-buster normalization is idempoten
   const rendered = context.formatQuestionContent(context.wrapLatex(context.stripInlineImagesFromContent(content, false)), {});
   assert.match(rendered, /<br><img src="assets\/images\/example\.png">/);
   assert.match(rendered, /<div class="note-box">/);
-  assert.equal(context.withArchiveAssetCacheBuster('assets/images/example.png?foo=1#frag'), 'assets/images/example.png?foo=1&v=20260903.1#frag');
+  assert.equal(context.withArchiveAssetCacheBuster('assets/images/example.png?foo=1#frag'), 'assets/images/example.png?foo=1&v=20261014.1#frag');
+  assert.equal(context.withArchiveAssetCacheBuster('assets/generated-lite/example.svg#diagram'), 'assets/generated-lite/example.svg?v=20261014.1#diagram');
   assert.equal(context.withArchiveAssetCacheBuster('assets/images/example.png?foo=1&v=old#frag'), 'assets/images/example.png?foo=1&v=old#frag');
   assert.equal(context.withArchiveAssetCacheBuster('data:image/png;base64,abc'), 'data:image/png;base64,abc');
   assert.equal(context.withArchiveAssetCacheBuster('blob:https://example.test/id'), 'blob:https://example.test/id');

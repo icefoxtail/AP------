@@ -9,10 +9,10 @@
     const contract = typeof module === 'object' && module.exports
         ? require('./print-contract.js')
         : root && root.APPrintContract;
-    const api = factory(contract);
+    const api = factory(contract, root);
     if (typeof module === 'object' && module.exports) module.exports = api;
     if (root) root.APRenderAuthority = api;
-}(typeof globalThis !== 'undefined' ? globalThis : this, function buildRenderAuthority(C) {
+}(typeof globalThis !== 'undefined' ? globalThis : this, function buildRenderAuthority(C, root) {
     'use strict';
 
     const VERSION = 'ap-render-authority-v2.2-phase1a';
@@ -258,7 +258,24 @@
         const solutionLayout = field === 'solutionImage' ? optionalString(question,'solutionImageLayout') : '';
         if (solutionLayout && solutionLayout !== 'fullwidth') throw new Error('INVALID_SOLUTION_IMAGE_LAYOUT');
         const layoutClass = solutionLayout ? ` layout-${solutionLayout}` : '';
-        const alt = field === 'solutionImage' ? optionalString(question, 'solutionImageAlt') || `문항 ${question.displayNo} 해설 그래프` : '';
+        const sourceProblemAlt = field === 'image'
+            ? question.sourcePayload?.imageAlt ?? question.sourcePayload?.image_alt
+            : undefined;
+        const existingAlt = field === 'solutionImage'
+            ? optionalString(question, 'solutionImageAlt')
+            : typeof sourceProblemAlt === 'string' ? sourceProblemAlt.trim() : '';
+        const svgAccessibility = root && root.APSvgAccessibility;
+        const resolveImageDescription = options.resolveImageDescription || svgAccessibility?.resolveImageDescription;
+        const curatedDescription = typeof resolveImageDescription === 'function'
+            ? text(resolveImageDescription(assetRef, field, question, existingAlt)).trim()
+            : '';
+        const fallbackAlt = field === 'solutionImage' ? '해설 그림' : '문제 그림';
+        const alt = curatedDescription
+            || (svgAccessibility && typeof svgAccessibility.selectAccessibleAlt === 'function'
+                ? svgAccessibility.selectAccessibleAlt(assetRef, field, question, existingAlt, fallbackAlt)
+                : '')
+            || existingAlt
+            || fallbackAlt;
         const caption = field === 'solutionImage' && question.solutionImageCaption
             ? `<span class="sol-image-caption">${question.solutionImageCaption}</span>`
             : '';

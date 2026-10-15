@@ -188,6 +188,7 @@ jobs:
       - name: Verify Archive 2.0 runtime contract
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+          SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event.before }}
         run: node tools/check-archive2-runtime.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive2-runtime.log"
 
       - name: Confirm deployment is built from current registered main
