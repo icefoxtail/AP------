@@ -16,18 +16,40 @@ function removeAttribute(tag, name) {
   return tag.replace(pattern, '');
 }
 
-function normalizeQid9Svg(input, uid) {
-  const svg = String(input ?? '');
+function escapeXmlText(value) {
+  return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function normalizeQid9Svg(input, uid, labels = {}) {
+  let svg = String(input ?? '');
   const safeUid = String(uid ?? '').replace(/[^A-Za-z0-9_-]/g, '-');
   if (!safeUid) throw new Error('QID9_SVG_UID_REQUIRED');
 
-  const rootMatch = svg.match(/<(?:[A-Za-z_][\w.-]*:)?svg\b[^>]*>/i);
-  const titleMatches = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?title\b[^>]*>/gi)];
-  const descMatches = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?desc\b[^>]*>/gi)];
-  if (!rootMatch || titleMatches.length !== 1 || descMatches.length !== 1) {
+  let rootMatch = svg.match(/<(?:[A-Za-z_][\w.-]*:)?svg\b[^>]*>/i);
+  const countElements = name => [...svg.matchAll(new RegExp('<(?:[A-Za-z_][\\\\w.-]*:)?' + name + '\\\\b', 'gi'))].length;
+  let titleCount = countElements('title');
+  let descCount = countElements('desc');
+  if (!rootMatch || titleCount > 1 || descCount > 1) {
     throw new Error('QID9_SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED:' + safeUid);
   }
 
+  const titleText = String(labels.title ?? '').trim();
+  const descriptionText = String(labels.description ?? '').trim();
+  if ((titleCount === 0 && !titleText) || (descCount === 0 && !descriptionText)) {
+    throw new Error('QID9_SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED:' + safeUid);
+  }
+
+  const additions = [];
+  if (titleCount === 0) additions.push('<title>' + escapeXmlText(titleText) + '</title>');
+  if (descCount === 0) additions.push('<desc>' + escapeXmlText(descriptionText) + '</desc>');
+  if (additions.length) {
+    const rootEnd = rootMatch.index + rootMatch[0].length;
+    svg = svg.slice(0, rootEnd) + additions.join('') + svg.slice(rootEnd);
+  }
+
+  rootMatch = svg.match(/<(?:[A-Za-z_][\w.-]*:)?svg\b[^>]*>/i);
+  const titleMatches = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?title\b[^>]*>/gi)];
+  const descMatches = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?desc\b[^>]*>/gi)];
   const allIds = [...svg.matchAll(/\bid\s*=\s*(["'])(.*?)\1/gi)].map(match => match[2]);
   const counts = new Map();
   for (const id of allIds) counts.set(id, (counts.get(id) || 0) + 1);
