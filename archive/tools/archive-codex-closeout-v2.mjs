@@ -6,6 +6,7 @@ import { execFileSync } from 'node:child_process';
 import { gitBlobReader } from './archive-codex-artifact-io.mjs';
 import { QUALITY_CONTRACT_V2 } from './archive-stage-validator-artifact-v2.mjs';
 import { gitBlobSha } from './archive-stage-validator-compat-v1.mjs';
+import { readHotEvidenceAuthority } from './evidence-authority-v1.mjs';
 
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const CASES = ['exam/desktop','exam/mobile','sol/desktop','sol/mobile','ans/desktop','ans/mobile'];
@@ -64,6 +65,11 @@ function expandSvgDependencies(refs,bank,cases,assets,root) {
 }
 function readBound(root, ref) {
   if (!ref || typeof ref.path !== 'string' || path.isAbsolute(ref.path)) throw new Error('PHYSICAL_REF_REQUIRED');
+  if(ref.path===CODEX_USER_RENDER_WAIVER_ROSTER_PATH){
+    const bytes=readHotEvidenceAuthority({root,originalPath:ref.path}).bytes;
+    if(hash(bytes)!==ref.sha256)throw new Error('PHYSICAL_REF_SHA_MISMATCH');
+    return bytes;
+  }
   const file=path.resolve(root,ref.path),rel=path.relative(path.resolve(root),file);
   if(rel.startsWith('..') || path.isAbsolute(rel))throw new Error('REF_PATH_ESCAPE');
   const real=fs.realpathSync(file),rr=path.relative(fs.realpathSync(root),real);

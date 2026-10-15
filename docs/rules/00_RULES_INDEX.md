@@ -1,3 +1,8 @@
+## CURRENT HARD — Production-only Git and Drive cold evidence (2026-10-16 user direction)
+- Git contains production source/assets, current runtime/build/test tools/contracts, and the versioned, index-declared byte-bound offline authorities in `archive/data/evidence-authority/v1/index.json`. That index and the ROOT receipt define the exact aliases and current counts/bytes. Full raw review archives and rebuildable outputs move to the Drive vault only after complete pack/index metadata and downloaded-byte readback verification.
+- ROOT's compact receipt binds Drive identity and SHA/size; raw proofs are fetched on demand through the verified pack resolver into the ignored cache. Workers still perform actual independent reviews. Missing/corrupt proof remains unavailable and cannot satisfy a validator or quality gate. GitHub CI remains offline-capable.
+- `docs/operations/Git_Footprint_and_Evidence_Retention_v1.md` is the storage policy; this boundary supersedes earlier blanket-ignore prohibitions after verified migration. Original archive files stay until Drive readback is complete.
+
 ## CURRENT — 2026-10-07 — Codex Archive 2.0 실행 개선
 
 Codex 일반 실행 authority는 [Codex Execution v1.1](02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md)과 [Common Quality Contract](02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md)다. Execution §§16–23은 렌더 경로 사전 확인, stage 컨베이어, absolute assignment, blind bundle, item HOLD 이동, 수정 후 validator 재검증, R3 receipt 및 ledger를 정의한다. Canary/5시험지 qualification은 종료된 역사이며 재개 authority가 아니다. 이 항목은 Codex 라인에만 적용하고 아래 GPT 예약/M2-1 운영을 변경하지 않는다.

@@ -8,6 +8,7 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {registerApprovedGeneratedMeta,metaSha256,sha256Bytes,gitBlobSha} from './register-approved-generated-meta.mjs';
 import gate from '../generated-meta-retention-gate.cjs';
+import { loadEvidenceAuthorityIndex, readHotEvidenceAuthority } from '../evidence-authority-v1.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');
 const DIR='alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/';
 const INDEX='archive/data/generated-lite-consumer/v1/index.json';
@@ -20,12 +21,29 @@ const q21ParameterRpmResolutionPath=uid=>uid==='ALITE-PALMA25-2MID-Q21-C1'
  ?'archive/analysis/palma-mock-builder-20261010/Q21_C1_RPM_RECORD_RESOLUTION.json'
  :`archive/analysis/palma-mock-builder-20261010/Q21_RPM_RECORD_RESOLUTION/${uid}.json`;
 const q22B2RpmResolutionPath='archive/analysis/palma-mock-builder-20261010/Q22_B2_RPM_RECORD_RESOLUTION.json';
-const read=rel=>fs.readFileSync(path.join(root,rel));
+const read=rel=>rel.startsWith('archive/analysis/')
+ ?readHotEvidenceAuthority({root,originalPath:rel}).bytes
+ :fs.readFileSync(path.join(root,rel));
 const json=rel=>JSON.parse(read(rel).toString('utf8'));
 const buf=x=>Buffer.from(JSON.stringify(x,null,2)+'\n','utf8');
 const hex=b=>sha256Bytes(b);
-const exists=rel=>fs.existsSync(path.join(root,rel));
-const write=(rel,bytes)=>{const full=path.join(root,rel);fs.mkdirSync(path.dirname(full),{recursive:true});fs.writeFileSync(full,bytes);};
+const exists=rel=>{
+ if(rel.startsWith('archive/analysis/')){
+  try{readHotEvidenceAuthority({root,originalPath:rel});return true;}catch{return false;}
+ }
+ return fs.existsSync(path.join(root,rel));
+};
+const write=(rel,bytes)=>{
+ const index=rel.startsWith('archive/analysis/')?loadEvidenceAuthorityIndex(root):null;
+ const entry=index?.entries.find(row=>row.originalPath===rel);
+ if(rel.startsWith('archive/analysis/')&&!entry)throw Error('HOT_EVIDENCE_AUTHORITY_WRITE_PATH_NOT_DECLARED:'+rel);
+ if(entry){
+  const current=readHotEvidenceAuthority({root,originalPath:rel}).bytes;
+  requireTrue(current.equals(Buffer.from(bytes)),'HOT_EVIDENCE_AUTHORITY_IMMUTABLE_BYTES_MISMATCH:'+rel);
+  return;
+ }
+ const full=path.join(root,rel);fs.mkdirSync(path.dirname(full),{recursive:true});fs.writeFileSync(full,bytes);
+};
 const label=s=>String(s||'').split('|').at(-1);
 const requireTrue=(v,code)=>{if(!v)throw Error(code);};
 const dedup=a=>[...new Set(a)];
@@ -44,6 +62,10 @@ function trackedBlob(root,rel){
  return {blobSha1:headBlob,bytes:canonical,sha256:hex(canonical)};
 }
 function canonicalOrWorkingBytes(root,rel){
+ if(rel.startsWith('archive/analysis/')){
+  const bytes=readHotEvidenceAuthority({root,originalPath:rel}).bytes;
+  return {bytes,sha256:hex(bytes),blobSha1:gitBlobSha(bytes)};
+ }
  let tracked=false;
  try{execFileSync('git',['rev-parse',`HEAD:${rel}`],{cwd:root,encoding:'utf8',stdio:['ignore','pipe','ignore']});tracked=true;}catch{}
  if(tracked)return trackedBlob(root,rel);
@@ -226,25 +248,23 @@ export function verifyExplicitPackageApproval({root,manifest,manifestRow,receipt
 function safeRepoFile(root,rel,labelName){
  const normalized=String(rel||'').replaceAll('\\','/');
  requireTrue(normalized===rel&&!normalized.startsWith('/')&&!normalized.split('/').includes('..'),labelName+'_PATH_INVALID');
+ if(normalized.startsWith('archive/analysis/')){
+  const entry=loadEvidenceAuthorityIndex(root).entries.find(row=>row.originalPath===normalized);
+  requireTrue(!!entry,labelName+'_HOT_AUTHORITY_NOT_DECLARED');
+  const authority=path.resolve(root,entry.authorityPath),base=path.resolve(root)+path.sep;
+  requireTrue(authority.startsWith(base),labelName+'_PATH_OUT_OF_ROOT');
+  requireTrue(fs.realpathSync(authority).startsWith(fs.realpathSync(root)+path.sep),labelName+'_REALPATH_OUT_OF_ROOT');
+  return authority;
+ }
  const full=path.resolve(root,normalized),base=path.resolve(root)+path.sep;
  requireTrue(full.startsWith(base),labelName+'_PATH_OUT_OF_ROOT');
  if(fs.existsSync(full))requireTrue(fs.realpathSync(full).startsWith(fs.realpathSync(root)+path.sep),labelName+'_REALPATH_OUT_OF_ROOT');
  return full;
 }
 function externalVisualManifests(root){
- const base=path.join(root,'archive','analysis','palma-mock-builder-20261010');
- if(!fs.existsSync(base))return [];
- const found=[];
- const visit=dir=>{
-  for(const entry of fs.readdirSync(dir,{withFileTypes:true})){
-   const full=path.join(dir,entry.name);
-   if(entry.isDirectory())visit(full);
-   else if(entry.isFile()&&entry.name.toLowerCase().endsWith('.json')){
-    try{const value=JSON.parse(fs.readFileSync(full,'utf8'));if(value?.schemaVersion==='PALMA_QID9_VISUAL_ASSET_MANIFEST_V1')found.push({path:path.relative(root,full).replaceAll('\\','/'),value});}catch{}
-   }
-  }
- };
- visit(base);return found;
+ const index=loadEvidenceAuthorityIndex(root);
+ return index.entries.filter(entry=>entry.evidenceRole==='qid9-active-visual-manifest-q17-q20'||entry.evidenceRole==='qid9-active-visual-manifest-q23')
+  .map(entry=>({path:entry.originalPath,value:JSON.parse(readHotEvidenceAuthority({root,originalPath:entry.originalPath}).bytes.toString('utf8'))}));
 }
 function qid9Manifests(root){
  const base=path.join(root,'alive','06_EXECUTION','H1_SCHOOL_EXPANSION');

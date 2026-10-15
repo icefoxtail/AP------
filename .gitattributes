@@ -6,3 +6,9 @@
 /archive/evidence/visual-publication-2025-m3-full-rebuild/archive-render-desktop-20261009-v8/** -text
 # Preserve the byte-bound Q18 visual evidence produced on Windows.
 archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/Q18/*.solution-visual-evidence.json -text
+
+# Keep versioned authority copies byte-identical to their historical sources.
+/archive/data/evidence-authority/v1/** -text
+
+# Keep migrated print-render test fixtures byte-identical to baseline 5519 blobs.
+/tests/fixtures/print-render-authority-v2.2/*.json -text

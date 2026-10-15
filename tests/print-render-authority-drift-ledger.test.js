@@ -2,9 +2,10 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { readPrintRenderAuthorityFixture } = require('./helpers/print-render-authority-fixtures.cjs');
 
 const root = path.resolve(__dirname, '..');
-const ledger = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-0.6-known-drift-ledger.json'), 'utf8'));
+const ledger = readPrintRenderAuthorityFixture('phase-0.6-known-drift-ledger.json');
 const fixtures = JSON.parse(fs.readFileSync(path.join(root, 'tests', 'fixtures', 'print-render-authority-v2.2-fixtures.json'), 'utf8'));
 const allowedDispositions = new Set([
   'PRESERVE_DIFFERENCE',
