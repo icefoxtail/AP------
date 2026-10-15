@@ -11,7 +11,11 @@ const read = rel => fs.readFileSync(path.join(root, rel), 'utf8').replace(/^\uFE
 const sha = text => crypto.createHash('sha256').update(text).digest('hex');
 const inputManifest = JSON.parse(read('archive/data/archive2-canonical-input-manifest.json'));
 const authorityInputFiles = (inputManifest.files || [])
-  .filter(row => !['data/archive2-catalog.json', 'data/basic-scope-parent-links.json'].includes(row.path))
+  .filter(row => ![
+    'data/archive2-catalog.json',
+    'data/basic-scope-parent-links.json',
+    'data/archive2-source-verification-index.json',
+  ].includes(row.path))
   .map(({ path: inputPath }) => ({
     path: inputPath,
     sha256: sha(inputPath.startsWith('../') ? read(inputPath.slice(3)) : read(`archive/${inputPath}`)),
@@ -86,7 +90,9 @@ const canonical = {
     // Rebind the existing manifest in memory to current source bytes so a
     // master/policy advance can be projected before the catalog builder writes
     // the final manifest. The catalog builder remains the manifest authority.
-    const files = inputManifest.files.map(row => {
+    const files = inputManifest.files
+      .filter(row => row.path !== 'data/archive2-source-verification-index.json')
+      .map(row => {
       const inputPath = row.path;
       const sourcePath = inputPath.startsWith('../')
         ? inputPath.slice(3)

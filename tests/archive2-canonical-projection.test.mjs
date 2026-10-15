@@ -499,7 +499,7 @@ test("input bundle rejects mixed bytes, an old browser version, and missing cano
   });
 });
 
-test("runtime canonical bootstrap keeps all 63 authority digests including original-source Meta while fetching only resolver inputs", async () => {
+test("runtime canonical bootstrap keeps all 64 authority digests including source verification while fetching only resolver inputs", async () => {
   const archiveDir = path.join(root, "archive");
   const manifest = JSON.parse(fs.readFileSync(path.join(archiveDir, "data/archive2-canonical-input-manifest.json"), "utf8"));
   const baseUrl = "https://apmath.test/AP------/archive/workspace.html";
@@ -517,13 +517,17 @@ test("runtime canonical bootstrap keeps all 63 authority digests including origi
   };
 
   const bundle = await canonical.loadInputBundle(fetcher, baseUrl);
-  assert.equal(manifest.files.length, 63);
+  assert.equal(manifest.files.length, 64);
   assert.equal(bundle.projectionVersion, manifest.projectionVersion);
   assert.equal(Object.keys(bundle.files).length, manifest.files.length,
     "projection version remains bound to every manifest digest");
+  assert.ok(bundle.files[canonical.SOURCE_VERIFICATION_INDEX_PATH],
+    "the source verification index digest is part of the current projection");
   assert.equal(Object.keys(bundle.resources).length, canonical.REQUIRED_INPUT_PATHS.length);
   assert.equal(requested.length, canonical.REQUIRED_INPUT_PATHS.length + 1,
     "only the manifest and resolver inputs are fetched");
+  assert.equal(requested.includes(`archive/${canonical.SOURCE_VERIFICATION_INDEX_PATH}`), false,
+    "the full resolver does not download the source index unless its lookup path is used");
   assert.ok(requested.length < manifest.files.length + 1);
   assert.equal(requested.includes("archive/data/question_metadata.json"), false);
   assert.equal(requested.includes("archive/data/question_identity_map.json"), false);

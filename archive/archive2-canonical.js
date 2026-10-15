@@ -49,6 +49,10 @@
     "L2",
   ];
   const CANONICAL_MASTER_PATH = "../docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
+  // The manifest commits to this index; the index commits to each source shard.
+  // Shards omit the final projection version to avoid a digest cycle.
+  const SOURCE_VERIFICATION_INDEX_PATH = "data/archive2-source-verification-index.json";
+  const SOURCE_VERIFICATION_SHARD_PREFIX = "data/archive2-source-verification/v1/";
   function canonicalPathsFromMaster(master = {}) {
     const parents = new Map();
     const advanced = [];
@@ -478,6 +482,126 @@
     if (requiredManifestPaths.some((path) => !listed.has(path)))
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is incomplete");
     return { manifest, projectionVersion, files, resources };
+  }
+
+  async function loadSourceVerificationShard(
+    fetcher,
+    baseUrl,
+    expectedVersion = "",
+    sourceFile = "",
+  ) {
+    if (typeof fetcher !== "function")
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source loader is unavailable");
+    const normalizedSource = normalizeFile(sourceFile);
+    if (!normalizedSource || normalizedSource.split("/").some((part) => part === ".." || part === "."))
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source path is invalid");
+    const base = new URL(String(baseUrl));
+    const read = async (relativePath) => {
+      let url;
+      try { url = new URL(relativePath, base); }
+      catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source URL is invalid"); }
+      if (url.origin !== base.origin)
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source escaped the archive origin");
+      let response;
+      try { response = await fetcher(url.toString()); }
+      catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source request failed: " + relativePath); }
+      if (!response || !response.ok)
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source unavailable: " + relativePath);
+      return response.text();
+    };
+
+    let manifest;
+    try {
+      manifest = JSON.parse(await read("data/archive2-canonical-input-manifest.json"));
+    } catch (error) {
+      if (error.code) throw error;
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is invalid");
+    }
+    if (
+      manifest?.schemaVersion !== "archive2-canonical-input-manifest-v1" ||
+      manifest.resolverVersion !== RESOLVER_VERSION ||
+      !Array.isArray(manifest.files)
+    )
+      throw makeError("CANONICAL_RESOLVER_VERSION_MISMATCH", "browser/Worker canonical resolver version mismatch");
+    const listed = new Set(manifest.files.map((row) => text(row.path)));
+    if (MANIFEST_REQUIRED_PATHS.some((path) => !listed.has(path)))
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is incomplete");
+    const projectionVersion = await computeProjectionVersion(manifest.files);
+    if (projectionVersion !== manifest.projectionVersion)
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical input manifest digest mismatch");
+    if (expectedVersion && expectedVersion !== projectionVersion)
+      throw makeError("CANONICAL_PROJECTION_REFRESH_REQUIRED", "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요.");
+    if (!listed.has(SOURCE_VERIFICATION_INDEX_PATH))
+      return { projectionVersion, sourceIndex: null, shard: null, legacyManifest: true };
+
+    const manifestFiles = Object.fromEntries(manifest.files.map((entry) => [
+      text(entry.path), { sha256: text(entry.sha256).toLowerCase() },
+    ]));
+    const indexEntry = manifestFiles[SOURCE_VERIFICATION_INDEX_PATH];
+    const baseProjectionVersion = await computeProjectionVersion(
+      manifest.files.filter((entry) => text(entry.path) !== SOURCE_VERIFICATION_INDEX_PATH),
+      RESOLVER_VERSION,
+    );
+    let indexBody;
+    try { indexBody = (await read(SOURCE_VERIFICATION_INDEX_PATH)).replace(/\r\n/g, "\n"); }
+    catch (error) {
+      if (error.code) throw error;
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index unavailable");
+    }
+    if (await sha256(indexBody) !== indexEntry.sha256)
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index digest mismatch");
+    let sourceIndex;
+    try { sourceIndex = JSON.parse(indexBody); }
+    catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index is invalid"); }
+    if (
+      sourceIndex?.schemaVersion !== "archive2-source-verification-index-v1" ||
+      sourceIndex.resolverVersion !== RESOLVER_VERSION ||
+      sourceIndex.baseProjectionVersion !== baseProjectionVersion ||
+      sourceIndex.generatedFromCatalogIndexVersion !== manifest.generatedFromCatalogIndexVersion ||
+      !Array.isArray(sourceIndex.files)
+    )
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index does not match the current projection");
+
+    const seenFiles = new Set();
+    for (const row of sourceIndex.files) {
+      const file = normalizeFile(row?.sourceFile);
+      if (
+        !file || seenFiles.has(file) || file !== text(row?.sourceFile) ||
+        !String(row?.path || "").startsWith(SOURCE_VERIFICATION_SHARD_PREFIX) ||
+        !String(row?.path || "").endsWith(".json") ||
+        !SHA256.test(text(row?.sha256)) ||
+        !Number.isInteger(Number(row?.qCount)) || Number(row.qCount) < 1
+      )
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index row is invalid");
+      seenFiles.add(file);
+    }
+    const sourceEntry = sourceIndex.files.find((row) => normalizeFile(row.sourceFile) === normalizedSource);
+    if (!sourceEntry)
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source is not indexed");
+    const expectedShardPath = SOURCE_VERIFICATION_SHARD_PREFIX + await sha256(normalizedSource) + ".json";
+    if (sourceEntry.path !== expectedShardPath)
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source shard path is invalid");
+    let shardBody;
+    try { shardBody = (await read(sourceEntry.path)).replace(/\r\n/g, "\n"); }
+    catch (error) {
+      if (error.code) throw error;
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source shard unavailable");
+    }
+    if (await sha256(shardBody) !== text(sourceEntry.sha256).toLowerCase())
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source shard digest mismatch");
+    let shard;
+    try { shard = JSON.parse(shardBody); }
+    catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source shard is invalid"); }
+    if (
+      shard?.schemaVersion !== "archive2-source-verification-v1" ||
+      normalizeFile(shard.sourceFile) !== normalizedSource ||
+      shard.sourceFile !== normalizedSource ||
+      !shard.exam || normalizeFile(shard.exam.file) !== normalizedSource ||
+      Number(shard.exam.qCount) !== Number(sourceEntry.qCount) ||
+      !Array.isArray(shard.records) || shard.records.length !== Number(sourceEntry.qCount)
+    )
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source shard does not match the index");
+    return { projectionVersion, sourceIndex, shard };
   }
 
   function decodeCatalog(data) {
@@ -975,6 +1099,8 @@
 
   return {
     CANONICAL_MASTER_PATH,
+    SOURCE_VERIFICATION_INDEX_PATH,
+    SOURCE_VERIFICATION_SHARD_PREFIX,
     RESOLVER_VERSION,
     MANIFEST_REQUIRED_PATHS,
     REQUIRED_INPUT_PATHS,
@@ -989,6 +1115,7 @@
     validateAdvancedAssignment,
     computeProjectionVersion,
     loadInputBundle,
+    loadSourceVerificationShard,
     decodeCatalog,
     resolveSubjectProjection,
     resolveCatalog,
