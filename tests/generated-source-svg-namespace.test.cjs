@@ -46,3 +46,15 @@ test('QID9 derived SVG fills a missing description from existing labels and pres
 test('QID9 derived SVG still fails closed without existing title/description labels',()=>{
  assert.throws(()=>normalizeQid9Svg('<svg><path d="M0 0"/></svg>','ALITE-TEST-Q01-A1'),/QID9_SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED/);
 });
+
+test('QID9 derived SVG drops redundant root scale guidance and keeps linked labels',()=>{
+ const source='<svg xmlns="http://www.w3.org/2000/svg" width="480" height="375" role="img" aria-label="정확한 동일 축척의 함수 그래프와 직선 y=x" data-math-scale-x="14" data-math-scale-y="14"><title>q12 A1 함수 그래프</title><desc>수학적 x축과 y축의 단위 길이는 각 14px로 같다. 함수의 모든 지정 좌표는 대응하는 점에 배치하였다.</desc><rect width="480" height="375" fill="white"/><path d="M1 2L3 4"/></svg>';
+ const normalized=normalizeQid9Svg(source,'ALITE-JEIL25-2FINAL-Q12-A1-problem');
+ assert.equal(validateSvgStudentLanguage(normalized,{assetRef:'derived/q12.svg'}).status,'PASS');
+ assert.doesNotMatch(normalized, /aria-label=/);
+ assert.match(normalized,/aria-labelledby="qid9-ALITE-JEIL25-2FINAL-Q12-A1-problem-title qid9-ALITE-JEIL25-2FINAL-Q12-A1-problem-desc"/);
+ assert.match(normalized,/<title id="qid9-ALITE-JEIL25-2FINAL-Q12-A1-problem-title">q12 A1 함수 그래프<\/title>/);
+ assert.match(normalized,/<desc id="qid9-ALITE-JEIL25-2FINAL-Q12-A1-problem-desc">수학적 x축과 y축의 단위 길이는 각 14px로 같다\. 함수의 모든 지정 좌표는 대응하는 점에 배치하였다\.<\/desc>/);
+ assert.equal(normalized.match(/<rect[^>]*>/)[0],source.match(/<rect[^>]*>/)[0]);
+ assert.equal(normalized.match(/<path[^>]*>/)[0],source.match(/<path[^>]*>/)[0]);
+});
