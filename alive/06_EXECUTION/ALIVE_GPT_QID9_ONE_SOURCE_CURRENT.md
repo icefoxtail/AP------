@@ -1,3 +1,10 @@
+## CURRENT HARD — QID9 반복 제작 핸드오프·가로/세로 정답 배분 (2026-10-15 원장 지시)
+- 매 원본 qid × A1~C3 신규 제작은 [QID9 표준 실행 템플릿](GPT_QID9_CREATE_HANDOFF_TEMPLATE_CURRENT.md)을 사용한다. Notion [GPT QID9 유사문항 제작 표준계약 CURRENT](https://app.notion.com/p/3fa0e68bd69f81c4abdaffdcd1a969a1)을 Archive 시작 페이지에서 읽고 qid·시험지·브랜치·진도만 갱신한다.
+- 각 qid의 객관식 9개 정답 위치는 ①~⑤ 각각 1~2회(2/2/2/2/1 순열)를 **HARD**로 적용한다. 한 qid 안의 3×3 세로 중복 여부는 *세로 누적 배분*이 아니다. 동일 슬롯 A1~C3 각각의 q01~직전 qid 누적 정답번호 빈도 5개를 별도로 계산하고, 기존 복수정답/비객관식은 별도 분모로 관리한다.
+- 가로 HARD를 만족하는 보기순서 배치에서 세로 슬롯별 (max-min) 합 → 최악 슬롯 (max-min) → 슬롯 빈도 제곱합을 순차 최소화한다. 개선을 임의 보장하거나 답·발문·고정 보기를 조작하지 않는다. 후보 탐색과 불가능한 제약을 Receipt에 기록한다. [배분 검사기](tools/qid9-answer-distribution-check.mjs)를 생성/검증 단계에 실제 실행하며 미실행은 PASS 금지.
+- Source Lock 실파일/원본 SHA·UID 결속, Primary RPM/L4/CrossConcept/Condition/Integration, level·difficultyBucket, 학생 재현 해설·45보기·36오답경로, 문제/해설 SVG 필요성·실파일/SHA, 문항별 Reverse Stem Check, 원격 HEAD 재조회를 거친다. 제작자 AUTHOR_COMPLETE와 독립검수·Consumer·main 출시 상태는 구별하고 NOT_RUN을 보존한다.
+- 기존 다른 qid의 산출물 및 운영 데이터를 이 문서 업데이트만으로 수정·재검·출시하지 않는다. 수동 QID9 브랜치 제작 경로와 예약 Library 인계 경로를 혼동하지 않는다.
+
 ## CURRENT HARD — 제작 전 숙독·사전 설계·UID별 근거 기록 (2026-10-14)
 - 작업자는 Notion 필독 라우터·생명주기·제작 5단계와 Git AGENTS·Meta·교육과정·해설·Visual/Golden 정본의 해당 조항을 본문까지 읽고, 각 문서의 경로·SHA·작업 적용 이유를 preflight에 기록한다. 검색 결과나 목차 확인만으로 숙독 완료 금지.
 - 후보 UID 설계는 원본 Primary RPM L3·추가 풀이 단계·교육과정 내 허용 방법·질문·보기·문제/해설 SVG 필요성부터 정한다.
