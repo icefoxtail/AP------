@@ -7,6 +7,9 @@ const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT = path.resolve(SCRIPT_DIR, '..');
 const DEFAULT_MANIFEST = path.join(SCRIPT_DIR, 'archive-pages-release-manifest.json');
 const SHA256_RE = /^[a-f0-9]{64}$/i;
+const MIXED_VERIFICATION_CONTEXT_PATH = 'data/archive2-source-verification/mixed-v1/context.json';
+const MIXED_SOURCE_SHARD_PREFIX = 'data/archive2-source-verification/mixed-v1/sources/';
+const MIXED_UID_BUCKET_PREFIX = 'data/archive2-source-verification/mixed-v1/uid-buckets/';
 
 function fail(message) {
   throw new Error(`Archive Pages package: ${message}`);
@@ -64,6 +67,14 @@ function normalizedTextSha256(absolute) {
   return crypto.createHash('sha256')
     .update(fs.readFileSync(absolute, 'utf8').replace(/\r\n/g, '\n'))
     .digest('hex');
+}
+
+function normalizedTextByteLength(absolute) {
+  return Buffer.byteLength(fs.readFileSync(absolute, 'utf8').replace(/\r\n/g, '\n'), 'utf8');
+}
+
+function sha256Text(value) {
+  return crypto.createHash('sha256').update(value, 'utf8').digest('hex');
 }
 
 function addFile(selection, root, relative, reason) {
@@ -165,6 +176,157 @@ function addSourceVerificationShards(selection, root, config) {
       fail(`source verification shard digest mismatch: ${relative}`);
     addFile(selection, root, relative, `source verification index (${config.index})`);
   }
+  if (Object.prototype.hasOwnProperty.call(index, 'mixedLookup'))
+    addMixedSourceVerificationFiles(selection, root, index, config.index);
+}
+
+function readMixedReference(root, pathValue, expectedPrefix, reference, label) {
+  const itemPath = String(pathValue || '').replace(/\\/g, '/');
+  if (!itemPath.startsWith(expectedPrefix)) fail(`${label} has an unapproved path prefix: ${itemPath}`);
+  const relative = normalizeRelative(`archive/${itemPath}`, `${label} path`);
+  const absolute = resolveInside(root, relative, `${label} path`);
+  assertNoSymlinkComponents(root, absolute, `${label} path`);
+  const stat = fs.statSync(absolute);
+  if (!stat.isFile()) fail(`${label} is not a regular file: ${relative}`);
+  const byteLength = normalizedTextByteLength(absolute);
+  if (byteLength !== Number(reference?.byteLength)) fail(`${label} byteLength mismatch: ${relative}`);
+  if (normalizedTextSha256(absolute) !== String(reference?.sha256 || '').toLowerCase())
+    fail(`${label} digest mismatch: ${relative}`);
+  let value;
+  try { value = JSON.parse(fs.readFileSync(absolute, 'utf8').replace(/\r\n/g, '\n')); }
+  catch { fail(`${label} is not valid JSON: ${relative}`); }
+  return { relative, absolute, byteLength, value };
+}
+
+function addMixedSourceVerificationFiles(selection, root, sourceIndex, indexPath) {
+  const lookup = sourceIndex?.mixedLookup;
+  if (!lookup || lookup.schemaVersion !== 'archive2-mixed-source-verification-index-v1' ||
+      lookup.resolverVersion !== sourceIndex.resolverVersion ||
+      lookup.baseProjectionVersion !== sourceIndex.baseProjectionVersion ||
+      !Array.isArray(sourceIndex.files) || !Array.isArray(lookup.files) ||
+      !Array.isArray(lookup.uidBuckets) || lookup.files.length !== sourceIndex.files.length ||
+      lookup.uidBuckets.length !== 16 || !lookup.context ||
+      lookup.context.path !== MIXED_VERIFICATION_CONTEXT_PATH ||
+      !SHA256_RE.test(String(lookup.context.sha256 || '')) ||
+      !Number.isInteger(Number(lookup.context.byteLength)) || Number(lookup.context.byteLength) < 1)
+    fail('mixed source verification index has an unsupported schema or coverage');
+
+  const contextFile = readMixedReference(
+    root,
+    lookup.context.path,
+    MIXED_VERIFICATION_CONTEXT_PATH,
+    lookup.context,
+    'mixed verification context',
+  );
+  const context = contextFile.value;
+  if (context?.schemaVersion !== 'archive2-mixed-source-verification-context-v1' ||
+      context.resolverVersion !== lookup.resolverVersion ||
+      context.baseProjectionVersion !== lookup.baseProjectionVersion ||
+      !context.authority || typeof context.authority !== 'object' || Array.isArray(context.authority) ||
+      !String(context.authority.taxonomyVersion || '').trim() ||
+      !Array.isArray(context.authority.gradeCourses) ||
+      !Array.isArray(context.authority.canonicalParents) ||
+      !Array.isArray(context.authority.canonicalAdvancedPaths) ||
+      !context.authority.projectionPolicy || typeof context.authority.projectionPolicy !== 'object' ||
+      Array.isArray(context.authority.projectionPolicy) ||
+      !Array.isArray(context.authority.problemTypeKeys) ||
+      !context.authority.templatesByKey || typeof context.authority.templatesByKey !== 'object' ||
+      Array.isArray(context.authority.templatesByKey) ||
+      !Array.isArray(context.authority.bindingKeys))
+    fail('mixed verification context has an unsupported schema');
+  const canonicalContextText = `${JSON.stringify(context)}\n`;
+  if (canonicalContextText !== fs.readFileSync(contextFile.absolute, 'utf8').replace(/\r\n/g, '\n') ||
+      Buffer.byteLength(canonicalContextText, 'utf8') !== Number(lookup.context.byteLength) ||
+      sha256Text(canonicalContextText) !== String(lookup.context.sha256).toLowerCase())
+    fail('mixed verification context canonical bytes do not match its index reference');
+
+  const indexedSourceFiles = new Set();
+  const mixedPaths = new Set([contextFile.relative]);
+  let sourceRecordCount = 0;
+  let bucketRecordCount = 0;
+  const sourceUids = new Set();
+  const bucketUids = new Set();
+  for (let i = 0; i < lookup.files.length; i += 1) {
+    const row = lookup.files[i];
+    const baseRow = sourceIndex.files[i];
+    const sourceFile = String(baseRow?.sourceFile || '').replace(/\\/g, '/');
+    const normalizedSourceFile = normalizeRelative(sourceFile, 'mixed source file');
+    const mixedFileKeys = row && typeof row === 'object' && !Array.isArray(row)
+      ? Object.keys(row).sort().join(',')
+      : '';
+    if (mixedFileKeys !== 'byteLength,recordCount,sha256,sourceIndex' ||
+        row.sourceIndex !== i || normalizedSourceFile !== sourceFile ||
+        sourceFile !== String(baseRow?.sourceFile || '') || indexedSourceFiles.has(sourceFile))
+      fail(`mixed source index has an invalid or duplicate source: ${sourceFile}`);
+    indexedSourceFiles.add(sourceFile);
+    const expectedPath = `${MIXED_SOURCE_SHARD_PREFIX}${sha256Text(sourceFile)}.json`;
+    if (!SHA256_RE.test(String(row.sha256 || '')) ||
+        !Number.isInteger(Number(row.byteLength)) || Number(row.byteLength) < 1 ||
+        !Number.isInteger(Number(row.recordCount)) || Number(row.recordCount) < 0 ||
+        Number(row.recordCount) > Number(baseRow.qCount))
+      fail(`mixed source index has an invalid shard reference: ${expectedPath}`);
+    const file = readMixedReference(root, expectedPath, MIXED_SOURCE_SHARD_PREFIX, row, 'mixed source shard');
+    if (mixedPaths.has(file.relative)) fail(`mixed source index repeats a file: ${file.relative}`);
+    mixedPaths.add(file.relative);
+    const shard = file.value;
+    if (shard?.schemaVersion !== 'archive2-mixed-source-verification-v1' ||
+        shard.sourceFile !== sourceFile || !Array.isArray(shard.records) ||
+        shard.records.length !== Number(row.recordCount))
+      fail(`mixed source shard does not match its index: ${file.relative}`);
+    for (const record of shard.records) {
+      const uid = String(record?.questionUid || '');
+      if (!/^qid_v1_[a-f0-9]{64}$/.test(uid) || sourceUids.has(uid) ||
+          record.sourceFile !== sourceFile || !Number.isInteger(Number(record.sourceOrdinal)) || Number(record.sourceOrdinal) < 1)
+        fail(`mixed source shard contains an invalid or duplicate identity: ${file.relative}`);
+      sourceUids.add(uid);
+    }
+    sourceRecordCount += shard.records.length;
+    addFile(selection, root, file.relative, `mixed source verification index (${indexPath})`);
+  }
+  if (indexedSourceFiles.size !== sourceIndex.files.length)
+    fail('mixed source index coverage does not match the original source index');
+
+  const prefixes = new Set();
+  for (const row of lookup.uidBuckets) {
+    const prefix = String(row?.prefix || '');
+    const expectedPath = `${MIXED_UID_BUCKET_PREFIX}${prefix}.json`;
+    const inlineContextExpected = prefix === 'f';
+    const hasContextMarker = Object.prototype.hasOwnProperty.call(row || {}, 'includesContext');
+    if (!/^[0-9a-f]$/.test(prefix) || prefixes.has(prefix) || row.path !== expectedPath ||
+        !SHA256_RE.test(String(row.sha256 || '')) ||
+        !Number.isInteger(Number(row.byteLength)) || Number(row.byteLength) < 1 ||
+        !Number.isInteger(Number(row.recordCount)) || Number(row.recordCount) < 0 ||
+        (inlineContextExpected ? row.includesContext !== true : hasContextMarker))
+      fail(`mixed UID bucket index has an invalid reference: ${String(row?.path || '')}`);
+    prefixes.add(prefix);
+    const file = readMixedReference(root, row.path, MIXED_UID_BUCKET_PREFIX, row, 'mixed UID bucket');
+    if (mixedPaths.has(file.relative)) fail(`mixed lookup index repeats a file: ${file.relative}`);
+    mixedPaths.add(file.relative);
+    const bucket = file.value;
+    if (bucket?.schemaVersion !== 'archive2-mixed-source-verification-uid-bucket-v1' ||
+        bucket.prefix !== prefix || !Array.isArray(bucket.records) ||
+        bucket.records.length !== Number(row.recordCount))
+      fail(`mixed UID bucket does not match its index: ${file.relative}`);
+    const embedsContext = Object.prototype.hasOwnProperty.call(bucket, 'context');
+    if (embedsContext !== inlineContextExpected)
+      fail(`mixed UID bucket context marker mismatch: ${file.relative}`);
+    if (inlineContextExpected && JSON.stringify(bucket.context) !== JSON.stringify(context))
+      fail(`mixed UID bucket inline context differs from the shared context: ${file.relative}`);
+    for (const record of bucket.records) {
+      const uid = String(record?.questionUid || '');
+      if (!/^qid_v1_[a-f0-9]{64}$/.test(uid) || uid.slice('qid_v1_'.length, 'qid_v1_'.length + 1) !== prefix ||
+          bucketUids.has(uid) || !indexedSourceFiles.has(String(record?.sourceFile || '')) ||
+          !Number.isInteger(Number(record?.sourceOrdinal)) || Number(record.sourceOrdinal) < 1)
+        fail(`mixed UID bucket contains an invalid or duplicate identity: ${file.relative}`);
+      bucketUids.add(uid);
+    }
+    bucketRecordCount += bucket.records.length;
+    addFile(selection, root, file.relative, `mixed source verification index (${indexPath})`);
+  }
+  if (prefixes.size !== 16 || sourceRecordCount !== bucketRecordCount || sourceUids.size !== bucketUids.size ||
+      [...sourceUids].some((uid) => !bucketUids.has(uid)))
+    fail('mixed UID bucket coverage does not match mixed source shards');
+  addFile(selection, root, contextFile.relative, `mixed source verification index (${indexPath})`);
 }
 
 function addReviewOverrides(selection, root, config) {

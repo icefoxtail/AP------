@@ -713,21 +713,17 @@
       const row = mixedLookup.files[i],
         sourceRow = sourceIndex.files[i],
         file = normalizeFile(sourceRow?.sourceFile),
-        indexedFile = normalizeFile(row?.sourceFile),
-        indexedPath = text(row?.path),
         sourceEntry = sourceFiles.get(file);
       if (
-        !file || file !== text(sourceRow?.sourceFile) || indexedFile !== file ||
+        row?.sourceIndex !== i || !file || file !== text(sourceRow?.sourceFile) ||
         mixedFiles.has(file) || !sourceEntry ||
-        !indexedPath.startsWith(MIXED_SOURCE_SHARD_PREFIX) ||
-        !/^[a-f0-9]{64}\.json$/.test(indexedPath.slice(MIXED_SOURCE_SHARD_PREFIX.length)) ||
         !SHA256.test(text(row?.sha256)) ||
         !Number.isInteger(Number(row?.byteLength)) || Number(row.byteLength) < 1 ||
         !Number.isInteger(Number(row?.recordCount)) || Number(row.recordCount) < 0 ||
         Number(row.recordCount) > Number(sourceEntry.qCount)
       )
         throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed source index row is invalid");
-      mixedFiles.set(file, { ...row, sourceFile: file, path: indexedPath });
+      mixedFiles.set(file, { ...row, sourceFile: file, sourceIndex: i });
     }
     const uidBuckets = new Map();
     for (const row of mixedLookup.uidBuckets) {
@@ -735,6 +731,7 @@
       if (
         !/^[0-9a-f]$/.test(prefix) || uidBuckets.has(prefix) ||
         row?.path !== MIXED_UID_BUCKET_PREFIX + prefix + ".json" ||
+        (prefix === "f" ? row?.includesContext !== true : Object.hasOwn(row || {}, "includesContext")) ||
         !SHA256.test(text(row?.sha256)) ||
         !Number.isInteger(Number(row?.byteLength)) || Number(row.byteLength) < 1 ||
         !Number.isInteger(Number(row?.recordCount)) || Number(row.recordCount) < 0
@@ -767,17 +764,22 @@
       ? sourcePlan.reduce((sum, row) => sum + Number(row.byteLength), 0)
       : Number.POSITIVE_INFINITY;
     const bucketBytes = bucketPlan.reduce((sum, row) => sum + Number(row.byteLength), 0);
+    const contextBytes = Number(mixedLookup.context.byteLength),
+      bucketIncludesContext = requestedPrefixes.includes("f"),
+      sourcePlanBytes = sourceBytes + contextBytes,
+      bucketPlanBytes = bucketBytes + (bucketIncludesContext ? 0 : contextBytes);
     // Keep the source plan small enough to stay comfortably under Free's
     // subrequest ceiling; otherwise coalesce by the fixed UID prefix buckets.
-    const useSourceShards = sourcePlanValid && sourcePlan.length <= 40 && sourceBytes <= bucketBytes;
+    const useSourceShards = sourcePlanValid && sourcePlan.length <= 15 && sourcePlanBytes <= bucketPlanBytes;
     const resources = [];
     if (useSourceShards) {
       for (const row of sourcePlan) {
-        const expectedPath = MIXED_SOURCE_SHARD_PREFIX + await sha256(row.sourceFile) + ".json";
-        if (row.path !== expectedPath)
-          throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed source shard path is invalid");
         resources.push({
           ...row,
+          // Source paths are schema-derived from the indexed canonical source;
+          // the sourceIndex field binds that source to this row without
+          // repeating its file and path strings in the shared index.
+          path: MIXED_SOURCE_SHARD_PREFIX + await sha256(row.sourceFile) + ".json",
           kind: "source",
         });
       }
@@ -797,32 +799,46 @@
       try { return JSON.parse(body); }
       catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed resource is invalid"); }
     };
-    const context = await readVerifiedJson({
+    const inlineContextBucket = !useSourceShards && bucketIncludesContext;
+    let context = inlineContextBucket ? null : await readVerifiedJson({
       path: mixedLookup.context.path,
       sha256: mixedLookup.context.sha256,
-      byteLength: Number(mixedLookup.context.byteLength),
+      byteLength: contextBytes,
     });
-    const authority = context?.authority;
-    if (
-      context?.schemaVersion !== "archive2-mixed-source-verification-context-v1" ||
-      context.resolverVersion !== RESOLVER_VERSION ||
-      context.baseProjectionVersion !== baseProjectionVersion ||
-      !authority || typeof authority !== "object" ||
-      !text(authority.taxonomyVersion) ||
-      !Array.isArray(authority.gradeCourses) ||
-      !Array.isArray(authority.canonicalParents) ||
-      !Array.isArray(authority.canonicalAdvancedPaths) ||
-      !authority.projectionPolicy || typeof authority.projectionPolicy !== "object" ||
-      !Array.isArray(authority.problemTypeKeys) ||
-      !authority.templatesByKey || typeof authority.templatesByKey !== "object" ||
-      !Array.isArray(authority.bindingKeys)
-    )
-      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed authority context is invalid");
+    const validateContext = (value) => {
+      const authority = value?.authority;
+      if (
+        value?.schemaVersion !== "archive2-mixed-source-verification-context-v1" ||
+        value.resolverVersion !== RESOLVER_VERSION ||
+        value.baseProjectionVersion !== baseProjectionVersion ||
+        !authority || typeof authority !== "object" ||
+        !text(authority.taxonomyVersion) ||
+        !Array.isArray(authority.gradeCourses) ||
+        !Array.isArray(authority.canonicalParents) ||
+        !Array.isArray(authority.canonicalAdvancedPaths) ||
+        !authority.projectionPolicy || typeof authority.projectionPolicy !== "object" ||
+        !Array.isArray(authority.problemTypeKeys) ||
+        !authority.templatesByKey || typeof authority.templatesByKey !== "object" ||
+        !Array.isArray(authority.bindingKeys)
+      )
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed authority context is invalid");
+      return authority;
+    };
+    const readInlineContext = async (value) => {
+      if (!value || typeof value !== "object" || Array.isArray(value))
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed inline context is invalid");
+      const body = JSON.stringify(value) + "\n";
+      if (new TextEncoder().encode(body).byteLength !== contextBytes ||
+          await sha256(body) !== text(mixedLookup.context.sha256).toLowerCase())
+        throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed inline context digest mismatch");
+      return value;
+    };
+    if (context) validateContext(context);
 
     const indexedSourceFiles = new Set(mixedFiles.keys()),
       requestedUidSet = new Set(validRequests.map((row) => row.questionUid)),
       resolvedByUid = new Map();
-    const processResource = (entry, resource) => {
+    const processResource = async (entry, resource) => {
       let rows;
       if (entry.kind === "source") {
         const file = normalizeFile(entry.sourceFile);
@@ -838,9 +854,14 @@
         if (
           resource?.schemaVersion !== "archive2-mixed-source-verification-uid-bucket-v1" ||
           resource.prefix !== prefix || !Array.isArray(resource.records) ||
-          resource.records.length !== Number(entry.recordCount)
+          resource.records.length !== Number(entry.recordCount) ||
+          (prefix === "f" ? !Object.hasOwn(resource, "context") : Object.hasOwn(resource, "context"))
         )
           throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed UID bucket does not match the index");
+        if (prefix === "f" && inlineContextBucket) {
+          context = await readInlineContext(resource.context);
+          validateContext(context);
+        }
         rows = resource.records;
       }
       const seenInResource = new Set();
@@ -879,8 +900,11 @@
     };
     for (let i = 0; i < resources.length; i += 2) {
       const entries = resources.slice(i, i + 2), values = await Promise.all(entries.map(readVerifiedJson));
-      for (let j = 0; j < entries.length; j++) processResource(entries[j], values[j]);
+      for (let j = 0; j < entries.length; j++) await processResource(entries[j], values[j]);
     }
+    if (!context)
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed authority context is missing");
+    const authority = validateContext(context);
     return {
       projectionVersion,
       sourceIndex,
