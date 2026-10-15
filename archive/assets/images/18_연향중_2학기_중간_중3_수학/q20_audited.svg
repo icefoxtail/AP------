@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="430" viewBox="0 0 760 430" role="img" aria-labelledby="title desc">
+  <title id="title">원뿔 옆면을 한 바퀴 도는 경로</title>
+  <desc id="desc">원뿔의 모선 OB는 12cm이고 밑면 반지름은 2cm이다. M은 OB의 중점이다. 경로는 B에서 옆면을 한 바퀴 돌아 M에 이른다.</desc>
+  <defs>
+    <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#b24b36"/></marker>
+    <marker id="dimArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#555"/></marker>
+    <style>text{font-family:Arial,'Noto Sans KR',sans-serif;fill:#20252b}.pt{font-size:21px;font-style:italic}.dim{font-size:18px;font-weight:600}.label{font-size:16px}.cone{stroke:#20252b;stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <rect x="0" y="0" width="760" height="430" fill="#fff"/>
+  <!-- cone silhouette -->
+  <path class="cone" d="M380 55 L205 305 M380 55 L555 305"/>
+  <!-- base ellipse: hidden back arc dashed, visible front arc solid -->
+  <path d="M205 305 A175 46 0 0 1 555 305" fill="none" stroke="#20252b" stroke-width="2.5" stroke-dasharray="7 6"/>
+  <path d="M205 305 A175 46 0 0 0 555 305" fill="none" stroke="#20252b" stroke-width="2.8"/>
+  <!-- axial line and base center -->
+  <line x1="380" y1="55" x2="380" y2="305" stroke="#888" stroke-width="1.4" stroke-dasharray="5 5"/>
+  <circle cx="380" cy="305" r="3.5" fill="#20252b"/><text class="pt" x="359" y="334">H</text>
+  <!-- B on the rim and midpoint M on the same generatrix OB -->
+  <circle cx="555" cy="305" r="4.6" fill="#20252b"/><text class="pt" x="565" y="316">B</text>
+  <circle cx="467.5" cy="180" r="4.6" fill="#20252b"/><text class="pt" x="478" y="181">M</text>
+  <circle cx="380" cy="55" r="4.6" fill="#20252b"/><text class="pt" x="362" y="42">O</text>
+  <!-- equal marks on OM and MB -->
+  <path d="M418.75 121 L428.75 114 M506.25 246 L516.25 239" fill="none" stroke="#20252b" stroke-width="2.4"/>
+  <!-- slant length and radius labels -->
+  <rect x="486" y="98" width="65" height="27" rx="4" fill="#fff"/><text class="dim" x="492" y="118">12 cm</text>
+  <line x1="382" y1="310" x2="550" y2="310" stroke="#555" stroke-width="1.8" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <rect x="437" y="316" width="54" height="26" rx="4" fill="#fff"/><text class="dim" x="441" y="335">2 cm</text>
+  <!-- one-winding schematic: front portion solid, rear/hidden portion dashed -->
+  <path d="M555.00 305.00 L552.35 307.87 L547.57 310.59 L540.76 313.09 L532.04 315.32 L521.56 317.22 L509.49 318.75 L496.01 319.87 L481.32 320.54 L465.62 320.73 L449.15 320.42 L432.12 319.60 L414.77 318.26 L397.32 316.39 L380.00 314.00 L363.03 311.11 L346.62 307.73 L330.97 303.88 L316.27 299.61 L302.69 294.93 L290.37 289.90 L279.46 284.55 L270.05 278.94 L262.25 273.11 L256.12 267.11 L251.69 261.00 L248.99 254.82 L248.02 248.64 L248.75 242.50" fill="none" stroke="#b24b36" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M248.75 242.50 L249.58 239.87 L250.71 237.26 L252.14 234.68 L253.87 232.12 L255.87 229.60 L258.15 227.11 L260.71 224.67 L263.51 222.26 L266.57 219.90 L269.87 217.59 L273.40 215.33 L277.14 213.12 L281.09 210.97 L285.24 208.88 L289.56 206.85 L294.06 204.88 L298.71 202.97 L303.51 201.14 L308.43 199.36 L313.47 197.66 L318.61 196.03 L323.85 194.47 L329.15 192.98 L334.52 191.56 L339.94 190.22 L345.38 188.94 L350.85 187.74 L356.32 186.61" fill="none" stroke="#b24b36" stroke-width="4" stroke-dasharray="8 7" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowhead)"/>
+  <path d="M356.32 186.61 L363.49 185.24 L370.61 183.99 L377.66 182.85 L384.61 181.84 L391.42 180.94 L398.08 180.15 L404.55 179.47 L410.81 178.89 L416.84 178.41 L422.61 178.02 L428.11 177.72 L433.31 177.51 L438.20 177.37 L442.76 177.30 L446.99 177.30 L450.85 177.35 L454.35 177.46 L457.48 177.61 L460.22 177.79 L462.58 178.01 L464.55 178.25 L466.13 178.50 L467.31 178.77 L468.11 179.04 L468.52 179.30 L468.55 179.55 L468.21 179.79 L467.50 180.00" fill="none" stroke="#b24b36" stroke-width="4" stroke-dasharray="8 7" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Keep the labeled endpoint M clear above the schematic path. -->
+  <circle cx="467.5" cy="180" r="5.8" fill="#fff" stroke="#20252b" stroke-width="1.4"/>
+  <circle cx="467.5" cy="180" r="2.4" fill="#20252b"/>
+  <!-- visually identify the single turn without exposing an unrolled construction -->
+  <rect x="240" y="352" width="180" height="31" rx="7" fill="#fff7f3" stroke="#d8a398" stroke-width="1.2"/>
+  <text class="label" x="258" y="373" fill="#8f3d2c">옆면 한 바퀴 경로(도식)</text>
+</svg>

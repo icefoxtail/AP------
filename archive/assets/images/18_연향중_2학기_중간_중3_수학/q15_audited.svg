@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="360" viewBox="0 0 820 360" role="img" aria-labelledby="title desc">
+  <title id="title">점 P가 선분 BD 위를 움직이는 도형</title>
+  <desc id="desc">A와 C는 BD의 같은 쪽에 있고, AB와 CD는 BD에 수직이다. AB의 길이는 5cm, CD의 길이는 3cm, BD의 길이는 15cm이다.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 Z" fill="#555"/></marker>
+    <style>text{font-family:Arial,'Noto Sans KR',sans-serif;fill:#20252b}.dim{font-size:19px;font-weight:600}.pt{font-size:21px;font-style:italic}.small{font-size:16px}.line{stroke:#20252b;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}</style>
+  </defs>
+  <rect x="0" y="0" width="820" height="360" fill="#fff"/>
+  <!-- BD and perpendiculars BA, CD -->
+  <path class="line" d="M120 260 L700 260 M120 65 L120 260 M700 143 L700 260"/>
+  <!-- A schematic broken path through the movable point P -->
+  <path d="M120 65 L405 260 L700 143" fill="none" stroke="#386cb0" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- right-angle markers -->
+  <path d="M120 240 L140 240 L140 260 M680 260 L680 240 L700 240" fill="none" stroke="#20252b" stroke-width="2.4"/>
+  <!-- points -->
+  <circle cx="120" cy="65" r="4.5" fill="#20252b"/><circle cx="120" cy="260" r="4.5" fill="#20252b"/><circle cx="405" cy="260" r="4.5" fill="#20252b"/><circle cx="700" cy="260" r="4.5" fill="#20252b"/><circle cx="700" cy="143" r="4.5" fill="#20252b"/>
+  <text class="pt" x="92" y="58">A</text><text class="pt" x="104" y="290">B</text><text class="pt" x="398" y="291">P</text><text class="pt" x="705" y="290">D</text><text class="pt" x="705" y="140">C</text>
+  <!-- perpendicular length labels -->
+  <line x1="78" y1="68" x2="78" y2="257" stroke="#555" stroke-width="1.7" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <rect x="25" y="143" width="47" height="28" rx="5" fill="#fff"/><text class="dim" x="31" y="163">5 cm</text>
+  <line x1="744" y1="146" x2="744" y2="257" stroke="#555" stroke-width="1.7" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <rect x="750" y="185" width="55" height="28" rx="5" fill="#fff"/><text class="dim" x="753" y="205">3 cm</text>
+  <!-- BD length -->
+  <line x1="123" y1="323" x2="697" y2="323" stroke="#555" stroke-width="1.7" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <line x1="120" y1="298" x2="120" y2="332" stroke="#777" stroke-width="1.3"/><line x1="700" y1="298" x2="700" y2="332" stroke="#777" stroke-width="1.3"/>
+  <rect x="374" y="305" width="72" height="29" rx="5" fill="#fff"/><text class="dim" x="382" y="326">15 cm</text>
+</svg>
