@@ -1254,9 +1254,9 @@ window.questionBank = [
       },
       "solutionVisual": {
         "requirement": "BENEFICIAL",
-        "disposition": "KEEP",
+        "disposition": "POLISH",
         "ref": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-solution.svg",
-        "reason": "Existing overlay shows intersections of f(u) and 2−u, not jointly drawn in the problem graph.",
+        "reason": "The existing intersection geometry is correct; accessibility description and label readability were improved.",
         "newVisualInformation": [
           "u=1/2 and u=2"
         ]
@@ -1266,7 +1266,10 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-solution.svg"
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-solution.svg",
+    "solutionImageAlt": "함수 f(u)와 직선 y=2-u가 u=1/2, 2에서 만나는 그래프",
+    "solutionImageCaption": "f(u)=2-u의 교점을 구한 다음 f(x)=u를 다시 푼다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 19,
