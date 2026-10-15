@@ -220,7 +220,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 표본평균의 표준편차를 구한 뒤 주어진 확률을 표준정규분포표와 연결한다.\n조건 정리: 모집단의 평균은 $30$, 표준편차는 $\\sigma$, 표본 크기는 $16$이다.\n풀이 방향: $\\overline X$의 표준편차를 구하고 구간의 양 끝을 표준화한다.\n정석 풀이: $\\overline X$의 평균은 $30$, 표준편차는 $\\dfrac{\\sigma}{\\sqrt{16}}=\\dfrac\\sigma4$이다. 따라서 $P(30\\le\\overline X\\le36)=P\\left(0\\le Z\\le\\dfrac{6}{\\sigma/4}\\right)=P\\left(0\\le Z\\le\\dfrac{24}{\\sigma}\\right)=0.4772$이다. 표에서 $P(0\\le Z\\le2)=0.4772$이므로 $\\dfrac{24}{\\sigma}=2$, 즉 $\\sigma=12$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "모집단의 평균은 $30$, 표준편차는 $\\sigma$이고 표본의 크기는 $16$이다.\n따라서 표본평균 $\\overline X$에 대하여\n$E(\\overline X)=30$\n$\\sigma_{\\overline X}=\\dfrac{\\sigma}{\\sqrt{16}}=\\dfrac{\\sigma}{4}$이다.\n주어진 확률을 표준화하면\n$P(30\\le\\overline X\\le36)$\n$=P\\left(0\\le Z\\le\\dfrac{36-30}{\\sigma/4}\\right)$\n$=P\\left(0\\le Z\\le\\dfrac{24}{\\sigma}\\right)=0.4772$이다.\n표에서 $P(0\\le Z\\le2)=0.4772$이므로\n$\\dfrac{24}{\\sigma}=2$, 즉 $\\sigma=12$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -253,16 +253,19 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 삼각형의 넓이와 누적확률을 연결하여 $a,b,c$를 차례로 정한다.\n조건 정리: 전체 삼각형의 넓이는 1이고, $F(x)=P(X\\le x)$라 하자.\n풀이 방향: 먼저 $P(X\\le b)-P(X\\ge b)$로 $F(b)$를 구한 뒤, $1$의 위치를 확인하여 넓이식을 세운다.\n정석 풀이: 연속확률변수이므로 $P(X\\le b)+P(X\\ge b)=1$이다. 따라서 $2F(b)-1=\\dfrac13$에서 $F(b)=\\dfrac23$이다. 왼쪽 작은 삼각형과 전체 삼각형의 넓이 비는 $\\dfrac ba$이므로 $\\dfrac ba=\\dfrac23$, 즉 $b=\\dfrac{2a}{3}$이다.\n$F(1)=\\dfrac16<F(b)$이므로 $1<b$이다. 따라서 $x=1$은 증가하는 직선 부분에 있고, 그때까지의 넓이는 $\\dfrac12\\times1\\times\\dfrac cb=\\dfrac16$이다. 그러므로 $\\dfrac cb=\\dfrac13$이다.\n전체 넓이에서 $\\dfrac12ac=1$이므로 $c=\\dfrac2a$이고, $\\dfrac cb=\\dfrac13$에서 $ab=6$을 얻는다. $b=\\dfrac{2a}{3}$과 $ab=6$을 함께 쓰면 $a=3$, $b=2$, $c=\\dfrac23$이다.\n따라서 $abc=3\\times2\\times\\dfrac23=4$이다.\n핵심 확인: 조건에 맞는 분포와 계산 과정을 다시 대조하여 최종값이 문제의 요구와 일치하는지 확인한다.\n따라서 정답은 ④이다.",
+    "solution": "확률밀도함수 그래프의 전체 넓이는 $1$이다.\n$P(X\\le b)+P(X\\ge b)=1$이므로, 주어진 차이와 함께 풀면\n$P(X\\le b)=\\dfrac23$이다.\n즉, 왼쪽 삼각형의 넓이에서\n$\\dfrac12bc=\\dfrac23$\n$bc=\\dfrac43$이다.\n\n또 $P(X\\le1)=\\dfrac16<\\dfrac23=P(X\\le b)$이므로 $1<b$이다.\n구간 $0\\le x\\le b$에서는 그래프가 직선이고 $f(1)=\\dfrac cb$이다.\n따라서 $0$부터 $1$까지 작은 삼각형의 넓이는\n$\\dfrac12\\cdot1\\cdot\\dfrac cb=\\dfrac16$\n$\\dfrac cb=\\dfrac13$, 즉 $b=3c$이다.\n\n전체 삼각형의 넓이에서도\n$\\dfrac12ac=1$, 즉 $ac=2$이다.\n$bc=\\dfrac43$, $b=3c$에서\n$3c^2=\\dfrac43$\n$c=\\dfrac23$이다. ($c>0$)\n따라서 $b=2$, $a=\\dfrac2c=3$이다.\n$a\\times b\\times c=3\\cdot2\\cdot\\dfrac23=4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf",
     "image": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q08.png",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q08-solution.png",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q08-solution.svg",
     "imageKind": "graph",
-    "visualAssetStatus": "asset_verified"
+    "visualAssetStatus": "asset_verified",
+    "solutionImageAlt": "삼각형 확률밀도함수에서 0부터 1까지의 넓이는 1/6, 0부터 b=2까지의 넓이는 2/3이다.",
+    "solutionImageCaption": "넓이와 확률이 같음을 이용해 a=3, b=2, c=2/3을 구한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -289,7 +292,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 치역의 원소 개수별 함수의 개수를 세어 기댓값을 계산한다.\n조건 정리: $A=\\{1,2,3\\}$에서 $A$로 가는 함수는 모두 $3^3=27$개이고, $X$는 치역의 원소 개수이다.\n풀이 방향: 치역의 원소 개수가 1, 2, 3인 경우를 나누어 함수의 개수를 구한다.\n정석 풀이: 치역의 원소 개수가 1이면 상수함수이므로 $3$개이다. 치역으로 사용할 두 원소를 고르는 방법은 $\\binom{3}{2}=3$개이고, 세 원소가 모두 사용되는 함수는 $2^3-2=6$개이므로 이 경우는 $18$개이다. 치역의 원소 개수가 3이면 전단사함수이므로 $3!=6$개이다.\n따라서 $E(X)=\\dfrac{1\\times3+2\\times18+3\\times6}{27}=\\dfrac{19}{9}$이고, $E\\left(X-\\dfrac19\\right)=\\dfrac{19}{9}-\\dfrac19=2$이다.\n따라서 정답은 ③이다.",
+    "solution": "집합 $A$의 원소가 $3$개이므로 $A$에서 $A$로 가는 함수는 모두 $3^3=27$개이다.\n치역의 원소의 개수 $X$는 $1$, $2$, $3$ 중 하나이다.\n\n$X=1$인 경우: 상수함수이므로 $3$개이다.\n$X=2$인 경우: 치역으로 쓸 두 원소를 고르는 방법은 $\\binom{3}{2}=3$가지이다.\n고른 두 원소가 모두 함숫값으로 나와야 하므로 $2^3-2=6$가지이다.\n따라서 $3\\cdot6=18$개이다.\n$X=3$인 경우: 세 함숫값이 모두 달라야 하므로 $3!=6$개이다.\n\n따라서\n$P(X=1)=\\dfrac3{27}$, $P(X=2)=\\dfrac{18}{27}$, $P(X=3)=\\dfrac6{27}$이다.\n$E(X)=1\\cdot\\dfrac3{27}+2\\cdot\\dfrac{18}{27}+3\\cdot\\dfrac6{27}$\n$=\\dfrac{57}{27}=\\dfrac{19}{9}$이다.\n$E\\left(X-\\dfrac19\\right)=\\dfrac{19}{9}-\\dfrac19=2$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -321,7 +324,7 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 이항분포의 두 확률 비와 평균을 이용하여 $n,p$를 결정한다.\n조건 정리: $X\\sim B(n,p)$이고 $P(X=1)=\\dfrac{40}{3}P(X=0)$, $E(X)=8$이다.\n풀이 방향: $P(X=1)$과 $P(X=0)$의 비에서 $np$와 $1-p$의 관계를 구한 뒤 평균 조건과 연립한다.\n정석 풀이: $P(X=1)=np(1-p)^{n-1}$, $P(X=0)=(1-p)^n$이므로 $\\dfrac{P(X=1)}{P(X=0)}=\\dfrac{np}{1-p}=\\dfrac{40}{3}$이다. 또 $np=E(X)=8$이므로 $\\dfrac8{1-p}=\\dfrac{40}{3}$에서 $1-p=\\dfrac35$, $p=\\dfrac25$이다. 따라서 $n=\\dfrac8{2/5}=20$이고 $n+5p=20+2=22$이다.\n따라서 정답은 ②이다.",
+    "solution": "$X\\sim B(n,p)$이므로\n$P(X=0)=(1-p)^n$\n$P(X=1)=np(1-p)^{n-1}$이다.\n조건 (가)의 양변을 $P(X=0)>0$으로 나누면\n$\\dfrac{P(X=1)}{P(X=0)}=\\dfrac{np}{1-p}=\\dfrac{40}{3}$이다.\n조건 (나)에서 $np=E(X)=8$이므로\n$\\dfrac8{1-p}=\\dfrac{40}{3}$\n$1-p=\\dfrac35$, $p=\\dfrac25$이다.\n$n=\\dfrac8p=8\\cdot\\dfrac52=20$이므로\n$n+5p=20+5\\cdot\\dfrac25=22$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
