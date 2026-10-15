@@ -26,7 +26,7 @@ window.questionBank = [
       "$\\dfrac17$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 주어진 확률변수의 분포와 확률 조건을 식으로 정리하여 계산한다.\n조건 정리: 확률변수의 분포, 매개변수 조건과 구하려는 확률·기댓값을 정리한다.\n풀이 방향: 분포의 정의와 확률의 성질을 이용하여 필요한 확률과 기댓값을 차례로 계산한다.\n정석 풀이: 이항분포의 분산은 np(1−p)이므로 48p(1−p)=9, 즉 16p²−16p+3=0이다. 인수분해하면 (4p−1)(4p−3)=0이어서 p=1/4 또는 3/4인데, p<1/2 조건을 만족하는 것은 p=1/4이다.\n따라서 정답은 ②이다.",
+    "solution": "확률변수 $X$는 $B(48,p)$를 따르므로 분산은 $48p(1-p)$이다.\n$48p(1-p)=9$\n$16p^2-16p+3=0$\n$(4p-1)(4p-3)=0$\n따라서 $p=\\dfrac14$ 또는 $p=\\dfrac34$이다.\n그런데 $0\\le p\\lt \\dfrac12$이므로 $p=\\dfrac14$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -91,7 +91,7 @@ window.questionBank = [
       "영어, 수학"
     ],
     "answer": "①",
-    "solution": "[키포인트] 서로 다른 과목의 상대적 성적은 표준점수로 비교한다.\n조건 정리: 표준점수는 점수에서 평균을 뺀 값을 표준편차로 나눈 값이다.\n풀이 방향: 세 과목의 표준점수를 구하여 가장 큰 값과 가장 작은 값을 비교한다.\n정석 풀이: 국어의 표준점수는 $\\dfrac{70-55}{6}=2.5$, 영어는 $\\dfrac{80-75}{5}=1$, 수학은 $\\dfrac{83-68}{10}=1.5$이다. 따라서 가장 높은 상대 성적은 국어이고 가장 낮은 상대 성적은 영어이다.\n따라서 정답은 ①이다.",
+    "solution": "과목마다 평균과 표준편차가 다르므로 표준점수를 구해 비교한다.\n개인의 점수를 $x$, 과목의 평균을 $m$, 표준편차를 $\\sigma$라 하면 표준점수는 $z=\\dfrac{x-m}{\\sigma}$이다.\n국어:\n$z=\\dfrac{70-55}{6}=\\dfrac{15}{6}=2.5$\n영어:\n$z=\\dfrac{80-75}{5}=\\dfrac55=1$\n수학:\n$z=\\dfrac{83-68}{10}=\\dfrac{15}{10}=1.5$\n$2.5\\gt 1.5\\gt 1$이므로 상대적으로 가장 높은 과목은 국어, 가장 낮은 과목은 영어이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -123,7 +123,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 확률질량함수의 확률 합이 1이라는 조건으로 $a$를 정한 뒤 기댓값의 선형성을 이용한다.\n조건 정리: $P(X=x)=\\dfrac{x+a}{12}$ $(x=-2,-1,0)$, $P(X=x)=\\dfrac{ax}{12}$ $(x=1,2)$이다.\n풀이 방향: 먼저 모든 확률의 합으로 $a$를 구하고 $E(X)$를 계산한다.\n정석 풀이: 확률의 합이 1이므로 $\\dfrac{a-2+a-1+a+a+2a}{12}=1$이다. 따라서 $6a-3=12$에서 $a=\\dfrac52$이다.\n$E(X)=\\dfrac{-2(a-2)-(a-1)+a+4a}{12}=\\dfrac{2a+5}{12}=\\dfrac56$이므로 $E(6X)=6E(X)=5$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "확률질량함수의 모든 확률을 더하면 $1$이다.\n$\\dfrac{a-2}{12}+\\dfrac{a-1}{12}+\\dfrac a{12}+\\dfrac a{12}+\\dfrac{2a}{12}=1$\n$6a-3=12$\n$a=\\dfrac52$\n이제 기댓값을 구하면\n$E(X)=(-2)\\dfrac{a-2}{12}+(-1)\\dfrac{a-1}{12}+0\\cdot\\dfrac a{12}+1\\cdot\\dfrac a{12}+2\\cdot\\dfrac{2a}{12}$\n$=\\dfrac{-2a+4-a+1+a+4a}{12}$\n$=\\dfrac{2a+5}{12}=\\dfrac56$이다.\n따라서 $E(6X)=6E(X)=6\\cdot\\dfrac56=5$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -155,7 +155,7 @@ window.questionBank = [
       "$2564$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 표본평균의 분산과 제곱의 평균 사이의 관계를 이용한다.\n조건 정리: 모집단은 $N(50,64)$이고 표본의 크기는 $8$이다.\n풀이 방향: $E(\\overline X)$와 $V(\\overline X)$를 구한 뒤 $E(\\overline X^2)=V(\\overline X)+\\{E(\\overline X)\\}^2$를 적용한다.\n정석 풀이: $E(\\overline X)=50$이고 $V(\\overline X)=\\dfrac{64}{8}=8$이다. 따라서 $E(\\overline X^2)=8+50^2=8+2500=2508$이다.\n따라서 정답은 ②이다.",
+    "solution": "모집단의 평균은 $50$, 분산은 $64$이다.\n크기가 $8$인 표본의 표본평균에 대하여\n$E(\\overline X)=50$\n$V(\\overline X)=\\dfrac{64}{8}=8$이다.\n분산의 성질 $V(Y)=E(Y^2)-\\{E(Y)\\}^2$을 이용하면\n$E(\\overline X^2)=V(\\overline X)+\\{E(\\overline X)\\}^2$\n$=8+50^2=2508$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -220,7 +220,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 표본평균의 표준편차를 구한 뒤 주어진 확률을 표준정규분포표와 연결한다.\n조건 정리: 모집단의 평균은 $30$, 표준편차는 $\\sigma$, 표본 크기는 $16$이다.\n풀이 방향: $\\overline X$의 표준편차를 구하고 구간의 양 끝을 표준화한다.\n정석 풀이: $\\overline X$의 평균은 $30$, 표준편차는 $\\dfrac{\\sigma}{\\sqrt{16}}=\\dfrac\\sigma4$이다. 따라서 $P(30\\le\\overline X\\le36)=P\\left(0\\le Z\\le\\dfrac{6}{\\sigma/4}\\right)=P\\left(0\\le Z\\le\\dfrac{24}{\\sigma}\\right)=0.4772$이다. 표에서 $P(0\\le Z\\le2)=0.4772$이므로 $\\dfrac{24}{\\sigma}=2$, 즉 $\\sigma=12$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "모집단의 평균은 $30$, 표준편차는 $\\sigma$이고 표본의 크기는 $16$이다.\n따라서 표본평균 $\\overline X$에 대하여\n$E(\\overline X)=30$\n$\\sigma_{\\overline X}=\\dfrac{\\sigma}{\\sqrt{16}}=\\dfrac{\\sigma}{4}$이다.\n주어진 확률을 표준화하면\n$P(30\\le\\overline X\\le36)$\n$=P\\left(0\\le Z\\le\\dfrac{36-30}{\\sigma/4}\\right)$\n$=P\\left(0\\le Z\\le\\dfrac{24}{\\sigma}\\right)=0.4772$이다.\n표에서 $P(0\\le Z\\le2)=0.4772$이므로\n$\\dfrac{24}{\\sigma}=2$, 즉 $\\sigma=12$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -253,16 +253,19 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 삼각형의 넓이와 누적확률을 연결하여 $a,b,c$를 차례로 정한다.\n조건 정리: 전체 삼각형의 넓이는 1이고, $F(x)=P(X\\le x)$라 하자.\n풀이 방향: 먼저 $P(X\\le b)-P(X\\ge b)$로 $F(b)$를 구한 뒤, $1$의 위치를 확인하여 넓이식을 세운다.\n정석 풀이: 연속확률변수이므로 $P(X\\le b)+P(X\\ge b)=1$이다. 따라서 $2F(b)-1=\\dfrac13$에서 $F(b)=\\dfrac23$이다. 왼쪽 작은 삼각형과 전체 삼각형의 넓이 비는 $\\dfrac ba$이므로 $\\dfrac ba=\\dfrac23$, 즉 $b=\\dfrac{2a}{3}$이다.\n$F(1)=\\dfrac16<F(b)$이므로 $1<b$이다. 따라서 $x=1$은 증가하는 직선 부분에 있고, 그때까지의 넓이는 $\\dfrac12\\times1\\times\\dfrac cb=\\dfrac16$이다. 그러므로 $\\dfrac cb=\\dfrac13$이다.\n전체 넓이에서 $\\dfrac12ac=1$이므로 $c=\\dfrac2a$이고, $\\dfrac cb=\\dfrac13$에서 $ab=6$을 얻는다. $b=\\dfrac{2a}{3}$과 $ab=6$을 함께 쓰면 $a=3$, $b=2$, $c=\\dfrac23$이다.\n따라서 $abc=3\\times2\\times\\dfrac23=4$이다.\n핵심 확인: 조건에 맞는 분포와 계산 과정을 다시 대조하여 최종값이 문제의 요구와 일치하는지 확인한다.\n따라서 정답은 ④이다.",
+    "solution": "확률밀도함수 그래프의 전체 넓이는 $1$이다.\n$P(X\\le b)+P(X\\ge b)=1$이므로, 주어진 차이와 함께 풀면\n$P(X\\le b)=\\dfrac23$이다.\n즉, 왼쪽 삼각형의 넓이에서\n$\\dfrac12bc=\\dfrac23$\n$bc=\\dfrac43$이다.\n\n또 $P(X\\le1)=\\dfrac16\\lt \\dfrac23=P(X\\le b)$이므로 $1\\lt b$이다.\n구간 $0\\le x\\le b$에서는 그래프가 직선이고 $f(1)=\\dfrac cb$이다.\n따라서 $0$부터 $1$까지 작은 삼각형의 넓이는\n$\\dfrac12\\cdot1\\cdot\\dfrac cb=\\dfrac16$\n$\\dfrac cb=\\dfrac13$, 즉 $b=3c$이다.\n\n전체 삼각형의 넓이에서도\n$\\dfrac12ac=1$, 즉 $ac=2$이다.\n$bc=\\dfrac43$, $b=3c$에서\n$3c^2=\\dfrac43$\n$c=\\dfrac23$이다. ($c\\gt 0$)\n따라서 $b=2$, $a=\\dfrac2c=3$이다.\n$a\\times b\\times c=3\\cdot2\\cdot\\dfrac23=4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf",
     "image": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q08.png",
-    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q08-solution.png",
+    "solutionImage": "assets/images/25_제일고_2학기_기말_고2_확률과통계_기출/q08-solution.svg",
     "imageKind": "graph",
-    "visualAssetStatus": "asset_verified"
+    "visualAssetStatus": "asset_verified",
+    "solutionImageAlt": "삼각형 확률밀도함수에서 0부터 1까지의 넓이는 1/6, 0부터 b=2까지의 넓이는 2/3이다.",
+    "solutionImageCaption": "넓이와 확률이 같음을 이용해 a=3, b=2, c=2/3을 구한다.",
+    "solutionImageSize": "medium"
   },
   {
     "id": 9,
@@ -289,7 +292,7 @@ window.questionBank = [
       "$3$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 치역의 원소 개수별 함수의 개수를 세어 기댓값을 계산한다.\n조건 정리: $A=\\{1,2,3\\}$에서 $A$로 가는 함수는 모두 $3^3=27$개이고, $X$는 치역의 원소 개수이다.\n풀이 방향: 치역의 원소 개수가 1, 2, 3인 경우를 나누어 함수의 개수를 구한다.\n정석 풀이: 치역의 원소 개수가 1이면 상수함수이므로 $3$개이다. 치역으로 사용할 두 원소를 고르는 방법은 $\\binom{3}{2}=3$개이고, 세 원소가 모두 사용되는 함수는 $2^3-2=6$개이므로 이 경우는 $18$개이다. 치역의 원소 개수가 3이면 전단사함수이므로 $3!=6$개이다.\n따라서 $E(X)=\\dfrac{1\\times3+2\\times18+3\\times6}{27}=\\dfrac{19}{9}$이고, $E\\left(X-\\dfrac19\\right)=\\dfrac{19}{9}-\\dfrac19=2$이다.\n따라서 정답은 ③이다.",
+    "solution": "집합 $A$의 원소가 $3$개이므로 $A$에서 $A$로 가는 함수는 모두 $3^3=27$개이다.\n치역의 원소의 개수 $X$는 $1$, $2$, $3$ 중 하나이다.\n\n$X=1$인 경우: 상수함수이므로 $3$개이다.\n$X=2$인 경우: 치역으로 쓸 두 원소를 고르는 방법은 $\\binom{3}{2}=3$가지이다.\n고른 두 원소가 모두 함숫값으로 나와야 하므로 $2^3-2=6$가지이다.\n따라서 $3\\cdot6=18$개이다.\n$X=3$인 경우: 세 함숫값이 모두 달라야 하므로 $3!=6$개이다.\n\n따라서\n$P(X=1)=\\dfrac3{27}$, $P(X=2)=\\dfrac{18}{27}$, $P(X=3)=\\dfrac6{27}$이다.\n$E(X)=1\\cdot\\dfrac3{27}+2\\cdot\\dfrac{18}{27}+3\\cdot\\dfrac6{27}$\n$=\\dfrac{57}{27}=\\dfrac{19}{9}$이다.\n$E\\left(X-\\dfrac19\\right)=\\dfrac{19}{9}-\\dfrac19=2$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -321,7 +324,7 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 이항분포의 두 확률 비와 평균을 이용하여 $n,p$를 결정한다.\n조건 정리: $X\\sim B(n,p)$이고 $P(X=1)=\\dfrac{40}{3}P(X=0)$, $E(X)=8$이다.\n풀이 방향: $P(X=1)$과 $P(X=0)$의 비에서 $np$와 $1-p$의 관계를 구한 뒤 평균 조건과 연립한다.\n정석 풀이: $P(X=1)=np(1-p)^{n-1}$, $P(X=0)=(1-p)^n$이므로 $\\dfrac{P(X=1)}{P(X=0)}=\\dfrac{np}{1-p}=\\dfrac{40}{3}$이다. 또 $np=E(X)=8$이므로 $\\dfrac8{1-p}=\\dfrac{40}{3}$에서 $1-p=\\dfrac35$, $p=\\dfrac25$이다. 따라서 $n=\\dfrac8{2/5}=20$이고 $n+5p=20+2=22$이다.\n따라서 정답은 ②이다.",
+    "solution": "$X\\sim B(n,p)$이므로\n$P(X=0)=(1-p)^n$\n$P(X=1)=np(1-p)^{n-1}$이다.\n조건 (가)의 양변을 $P(X=0)\\gt 0$으로 나누면\n$\\dfrac{P(X=1)}{P(X=0)}=\\dfrac{np}{1-p}=\\dfrac{40}{3}$이다.\n조건 (나)에서 $np=E(X)=8$이므로\n$\\dfrac8{1-p}=\\dfrac{40}{3}$\n$1-p=\\dfrac35$, $p=\\dfrac25$이다.\n$n=\\dfrac8p=8\\cdot\\dfrac52=20$이므로\n$n+5p=20+5\\cdot\\dfrac25=22$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -354,7 +357,7 @@ window.questionBank = [
       "$0.9772$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 독립인 제품 무게의 합의 평균과 표준편차를 구하여 표준화한다.\n조건 정리: 한 봉지의 무게는 평균 $124$, 표준편차 $6$인 정규분포이고 $9$개를 한 세트로 묶는다.\n풀이 방향: 합의 분포에서 평균은 9배, 표준편차는 $\\sqrt9$배가 된다는 점을 이용한다.\n정석 풀이: 세트 무게를 $W$라 하면 $E(W)=9\\times124=1116$, $\\sigma_W=6\\sqrt9=18$이다. 따라서 $P(W\\le1134)=P\\left(Z\\le\\dfrac{1134-1116}{18}\\right)=P(Z\\le1)$이다. 표에서 $P(0\\le Z\\le1)=0.3413$이므로 $P(Z\\le1)=0.5+0.3413=0.8413$이다.\n따라서 정답은 ③이다.",
+    "solution": "과자 한 봉지의 무게를 $X_i$라 하고, $9$개를 합친 무게를 $W=X_1+\\cdots+X_9$라 하자.\n독립적으로 추출한 무게의 합에 대하여\n$E(W)=9\\cdot124=1116$\n$V(W)=9\\cdot6^2=324$\n$\\sigma_W=\\sqrt{324}=18$이다.\n따라서 $W$는 평균 $1116$, 표준편차 $18$인 정규분포를 따른다.\n$P(W\\le1134)=P\\left(Z\\le\\dfrac{1134-1116}{18}\\right)$\n$=P(Z\\le1)$\n$=0.5+P(0\\le Z\\le1)$\n$=0.5+0.3413=0.8413$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -386,7 +389,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "④",
-    "solution": "[키포인트] 신뢰구간의 길이가 신뢰계수와 표본 크기에 따라 어떻게 변하는지 비교한다.\n조건 정리: 신뢰구간의 길이는 $2z\\dfrac{\\sigma}{\\sqrt n}$에 비례한다.\n풀이 방향: 한 조건을 고정했을 때 신뢰도와 표본 크기의 변화가 구간 길이에 미치는 영향을 각각 판단한다.\n정석 풀이: 표본 크기가 일정하면 신뢰도가 높아질수록 $z$가 커지므로 구간의 길이 $b-a$는 커진다. 따라서 ㄱ은 거짓이다. 신뢰도가 일정하면 $z$가 일정하므로 표본 크기가 커질수록 $\\dfrac1{\\sqrt n}$이 작아져 구간의 길이가 작아진다. 따라서 ㄴ은 참이다. 구간의 길이가 일정한데 신뢰도가 높아지면, $z/\\sqrt n$을 일정하게 유지하기 위해 $n$이 커져야 한다. 따라서 ㄷ도 참이다.\n따라서 정답은 ④이다.",
+    "solution": "모표준편차가 $\\sigma$, 표본의 크기가 $n$, 신뢰도에 따른 양의 신뢰상수가 $z$일 때 신뢰구간의 길이는\n$L=b-a=2z\\dfrac{\\sigma}{\\sqrt n}$이다.\n\nㄱ. 표본의 크기 $n$이 일정하면 신뢰도가 높아질수록 $z$가 커진다.\n따라서 $L$은 커지므로 ㄱ은 거짓이다.\n\nㄴ. 신뢰도가 일정하면 $z$는 일정하다.\n$n$이 커지면 $\\sqrt n$이 커지므로 $L$은 작아진다. 따라서 ㄴ은 참이다.\n\nㄷ. $L$이 일정하려면 $\\dfrac z{\\sqrt n}$이 일정해야 한다.\n신뢰도가 높아져 $z$가 커지면 $\\sqrt n$도 커져야 하므로 $n$은 커진다. 따라서 ㄷ은 참이다.\n\n옳은 것은 ㄴ, ㄷ이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
@@ -418,7 +421,7 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 95% 신뢰구간에서 표본평균과 표준오차를 구한 뒤 99% 구간을 만든다.\n조건 정리: 표본 크기는 $9$, 95% 신뢰구간은 $40.2\\le m\\le59.8$이다.\n풀이 방향: 구간의 중심과 오차한계를 구하고, 신뢰도 99%의 오차한계로 바꾸어 자연수의 개수를 센다.\n정석 풀이: 표본평균은 $\\dfrac{40.2+59.8}{2}=50$이고 95% 오차한계는 $9.8$이다. 따라서 $1.96\\dfrac{\\sigma}{\\sqrt9}=9.8$에서 $\\dfrac\\sigma3=5$이다. 99% 오차한계는 $2.58\\times5=12.9$이므로 신뢰구간은 $50-12.9\\le m\\le50+12.9$, 즉 $37.1\\le m\\le62.9$이다. 이 구간의 자연수는 $38$부터 $62$까지이므로 $62-38+1=25$개이다.\n따라서 정답은 ⑤이다.",
+    "solution": "95% 신뢰구간의 중심이 표본평균이므로\n$\\overline x=\\dfrac{40.2+59.8}{2}=50$이다.\n오차한계는 $59.8-50=9.8$이다.\n신뢰도 95%에 대응하는 신뢰상수는 $1.96$이고 $n=9$이므로\n$1.96\\cdot\\dfrac{\\sigma}{\\sqrt9}=9.8$\n$\\dfrac{\\sigma}{3}=5$이다.\n\n같은 표본으로 신뢰도를 99%로 높이면 신뢰상수는 $2.58$이다.\n새 오차한계는\n$2.58\\cdot\\dfrac{\\sigma}{3}=2.58\\cdot5=12.9$이다.\n따라서 신뢰구간은\n$50-12.9\\le m\\le50+12.9$\n$37.1\\le m\\le62.9$이다.\n이 구간에 속하는 자연수는 $38,39,\\ldots,62$이므로\n$62-38+1=25$개이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
@@ -451,7 +454,7 @@ window.questionBank = [
       "$0.9938$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 정규분포의 대칭성과 표준화를 이용하여 $m$과 $\\sigma$를 차례로 구한다.\n조건 정리: $X\\sim N(m,4^2)$, $Y\\sim N(20,\\sigma^2)$이고 $f(x+7)=f(23-x)$이다.\n풀이 방향: 밀도함수의 대칭축으로 $m$을 구한 뒤 두 확률의 공통값을 표준화하여 $\\sigma$를 구한다.\n정석 풀이: $f(x+7)=f(23-x)$가 모든 $x$에서 성립하므로 두 입력의 중점인 $\\dfrac{(x+7)+(23-x)}2=15$가 정규분포의 평균이다. 따라서 $m=15$이다.\n$P(X\\ge17)=P\\left(Z\\ge\\dfrac{17-15}{4}\\right)=P(Z\\ge0.5)=0.5-0.1915=0.3085$이다. 조건에 의해 $P(Y\\le17)=0.3085$이고, $P(Z\\le-0.5)=0.3085$이므로 $\\dfrac{17-20}{\\sigma}=-0.5$에서 $\\sigma=6$이다.\n따라서 $P(X>m-\\sigma)=P(X>9)=P\\left(Z>\\dfrac{9-15}{4}\\right)=P(Z>-1.5)=0.5+0.4332=0.9332$이다.\n따라서 정답은 ③이다.",
+    "solution": "정규분포의 확률밀도함수는 평균을 중심으로 좌우 대칭이다.\n모든 $x$에 대하여 $f(x+7)=f(23-x)$이고\n$(x+7)+(23-x)=30$이므로 대칭축은 $15$이다.\n따라서 $m=15$이다.\n\n$X$의 표준편차는 $4$이므로\n$P(X\\ge17)=P\\left(Z\\ge\\dfrac{17-15}{4}\\right)$\n$=P(Z\\ge0.5)=0.5-0.1915=0.3085$이다.\n조건 (나)에 의해\n$P(Y\\le17)=P\\left(Z\\le\\dfrac{17-20}{\\sigma}\\right)=0.3085$이다.\n$P(Z\\le-0.5)=0.3085$이므로\n$-\\dfrac3{\\sigma}=-0.5$, 즉 $\\sigma=6$이다.\n\n그러므로\n$P(X\\gt m-\\sigma)=P(X\\gt 15-6)$\n$=P\\left(Z\\gt \\dfrac{9-15}{4}\\right)$\n$=P(Z\\gt -1.5)=0.5+0.4332=0.9332$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -484,7 +487,7 @@ window.questionBank = [
       "$0.31$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 1등급 상품의 개수를 이항분포로 나타낸 뒤 정규근사한다.\n조건 정리: 한 키위가 1등급일 확률은 $P(X\\ge60)=P(Z\\ge2)=0.5-0.48=0.02$이다.\n풀이 방향: $2500$개 중 1등급 개수를 이항분포로 두고 평균과 표준편차를 구하여 $57$개를 표준화한다.\n정석 풀이: 1등급 상품의 개수를 $Y$라 하면 $Y\\sim B(2500,0.02)$이다. 따라서 $E(Y)=2500\\times0.02=50$, $\\sigma_Y=\\sqrt{2500\\times0.02\\times0.98}=7$이다. 정규근사하면 $P(Y\\ge57)\\approx P\\left(Z\\ge\\dfrac{57-50}{7}\\right)=P(Z\\ge1)$이다. 표에서 $P(0\\le Z\\le1)=0.34$이므로 $P(Z\\ge1)=0.5-0.34=0.16$이다.\n따라서 정답은 ④이다.",
+    "solution": "키위 한 개의 무게를 $X$라 하면 $X\\sim N(50,5^2)$이다.\n1등급일 확률 $p$는\n$p=P(X\\ge60)$\n$=P\\left(Z\\ge\\dfrac{60-50}{5}\\right)$\n$=P(Z\\ge2)=0.5-0.48=0.02$이다.\n\n2500개 중 1등급인 키위의 개수를 $Y$라 하면\n$Y\\sim B(2500,0.02)$로 나타낼 수 있다.\n$E(Y)=2500\\cdot0.02=50$\n$V(Y)=2500\\cdot0.02\\cdot0.98=49$\n$\\sigma_Y=\\sqrt{49}=7$이다.\n\n이항분포를 정규분포로 근사하면\n$P(Y\\ge57)\\approx P\\left(Z\\ge\\dfrac{57-50}{7}\\right)$\n$=P(Z\\ge1)$\n$\\approx0.5-0.34=0.16$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "rule_inferred",
@@ -517,7 +520,7 @@ window.questionBank = [
       "$0.3085$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 표본평균의 분포를 표준화하여 주어진 확률과 표의 값을 연결한다.\n조건 정리: 모집단의 평균은 $m$, 표준편차는 $4$, 표본 크기는 $16$이고 $P(m\\le X\\le a)=0.3413$이다.\n풀이 방향: 먼저 $a-m$을 구한 다음 표본평균의 표준편차로 $a-2$를 표준화한다.\n정석 풀이: $P(m\\le X\\le a)=P\\left(0\\le Z\\le\\dfrac{a-m}{4}\\right)=0.3413$이므로 표에서 $\\dfrac{a-m}{4}=1$이다. 따라서 $a=m+4$이다. 표본평균 $\\overline X$의 표준편차는 $\\dfrac4{\\sqrt{16}}=1$이므로 $a-2=m+2$에 대하여\n$P(\\overline X\\ge a-2)=P(\\overline X\\ge m+2)=P(Z\\ge2)=0.5-0.4772=0.0228$이다.\n따라서 정답은 ②이다.",
+    "solution": "한 제품의 길이 $X$는 평균 $m$, 표준편차 $4$인 정규분포를 따른다.\n$P(m\\le X\\le a)=P\\left(0\\le Z\\le\\dfrac{a-m}{4}\\right)=0.3413$이다.\n표에서 $P(0\\le Z\\le1)=0.3413$이므로\n$\\dfrac{a-m}{4}=1$\n$a=m+4$이다.\n\n표본의 크기가 $16$이므로 표본평균 $\\overline X$는\n$E(\\overline X)=m$\n$\\sigma_{\\overline X}=\\dfrac4{\\sqrt{16}}=1$이다.\n$a-2=m+2$이므로\n$P(\\overline X\\ge a-2)=P(\\overline X\\ge m+2)$\n$=P\\left(Z\\ge\\dfrac{m+2-m}{1}\\right)$\n$=P(Z\\ge2)=0.5-0.4772=0.0228$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -550,7 +553,7 @@ window.questionBank = [
       "$99$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 신뢰구간의 길이는 신뢰계수에 비례하므로 길이의 비로 새 신뢰계수를 구한다.\n조건 정리: 같은 모집단과 표본 크기 $400$에서 95% 신뢰구간의 길이는 $l$, 다른 신뢰도의 길이는 $\\dfrac34l$이다.\n풀이 방향: 95% 신뢰계수는 표에서 $z=2$로 근사하고, 새 구간의 신뢰계수를 구해 중앙확률로 바꾼다.\n정석 풀이: 신뢰구간의 길이는 $2z\\dfrac{10}{\\sqrt{400}}$이므로 표본 크기와 표준편차가 같을 때 길이의 비는 $z$의 비와 같다. 따라서 새 신뢰도에 대응하는 $z$는 $2\\times\\dfrac34=1.5$이다.\n표에서 $P(0\\le Z\\le1.5)=0.430$이므로 중앙확률은 $2\\times0.430=0.860$이다. 따라서 신뢰도는 $86\\%$이다.\n따라서 정답은 ③이다.",
+    "solution": "신뢰구간의 길이는 신뢰상수를 $z$라 할 때\n$L=2z\\dfrac{\\sigma}{\\sqrt n}$이다.\n현재 $\\sigma=10$, $n=400$이므로\n$L=2z\\cdot\\dfrac{10}{20}=z$이다.\n\n신뢰도 95%에 대해서는 표에서 $z=2$이므로 $l=2$이다.\n다른 신뢰도의 구간 길이가 $\\dfrac34l$이므로\n$L_a=\\dfrac34\\cdot2=1.5$이다.\n따라서 새로운 신뢰상수는 $z_a=1.5$이다.\n표에서 $P(0\\le Z\\le1.5)=0.430$이므로\n$a\\%=P(-1.5\\le Z\\le1.5)$\n$=2\\cdot0.430=0.860$이다.\n따라서 $a=86$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
@@ -615,7 +618,7 @@ window.questionBank = [
       "$0.4332$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 모집단의 평균과 표준편차를 구한 뒤 표본평균을 표준화한다.\n조건 정리: $X$는 정규분포를 따르고 $P(X\\ge4.5)=\\dfrac12$, $P(X\\le5)+P(Z\\le-1)=1$이다.\n풀이 방향: 첫 조건으로 평균을 정하고, 둘째 조건으로 표준편차를 구한 뒤 표본 크기 $25$에 맞게 표준화한다.\n정석 풀이: 정규분포는 평균을 기준으로 대칭이므로 $P(X\\ge4.5)=\\dfrac12$에서 평균은 $4.5$이다. $P(Z\\le-1)=0.1587$이므로 $P(X\\le5)=0.8413=P(Z\\le1)$이다. 따라서 $\\dfrac{5-4.5}{\\sigma}=1$에서 $\\sigma=0.5$이다.\n표본평균의 표준편차는 $\\dfrac{0.5}{\\sqrt{25}}=0.1$이므로 $P(\\overline X\\ge4.6)=P\\left(Z\\ge\\dfrac{4.6-4.5}{0.1}\\right)=P(Z\\ge1)=0.5-0.3413=0.1587$이다.\n따라서 정답은 ①이다.",
+    "solution": "정규분포는 평균을 기준으로 좌우 대칭이다.\n$P(X\\ge4.5)=\\dfrac12$이므로 모집단 평균은\n$m=4.5$이다.\n\n$P(X\\le5)+P(Z\\le-1)=1$이고\n$P(Z\\le-1)=0.5-0.3413=0.1587$이므로\n$P(X\\le5)=1-0.1587=0.8413$이다.\n또 $P(Z\\le1)=0.8413$이므로 모집단 표준편차 $\\sigma$는\n$\\dfrac{5-4.5}{\\sigma}=1$\n$\\sigma=0.5$이다.\n\n25마리의 몸무게의 표본평균 $\\overline X$는\n$E(\\overline X)=4.5$\n$\\sigma_{\\overline X}=\\dfrac{0.5}{\\sqrt{25}}=0.1$이다.\n따라서\n$P(\\overline X\\ge4.6)=P\\left(Z\\ge\\dfrac{4.6-4.5}{0.1}\\right)$\n$=P(Z\\ge1)=0.5-0.3413=0.1587$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -647,7 +650,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 신뢰구간 길이의 공식에 신뢰도와 표본 크기를 각각 대입한다.\n조건 정리: $l_1=2z_{95}\\dfrac{\\sigma}{\\sqrt{n_1}}$, $l_2=2z_{99}\\dfrac{\\sigma}{\\sqrt{n_2}}$, $\\dfrac{n_2}{n_1}=25$이다.\n풀이 방향: 두 길이의 비에서 공통인 항을 소거하고 표의 신뢰계수를 사용한다.\n정석 풀이: $z_{95}=2$, $z_{99}=2.5$로 근사하면\n$\\dfrac{l_1}{l_2}=\\dfrac{z_{95}}{z_{99}}\\sqrt{\\dfrac{n_2}{n_1}}=\\dfrac2{2.5}\\times5=4$이다.\n따라서 정답은 ④이다.",
+    "solution": "신뢰구간의 길이는 신뢰상수 $z$와 표본 크기 $n$에 대해\n$L=2z\\dfrac{\\sigma}{\\sqrt n}$이다.\n문제의 표에서 신뢰도 95%는 $z=2$, 99%는 $z=2.5$이므로\n$l_1=2\\cdot2\\cdot\\dfrac{\\sigma}{\\sqrt{n_1}}$\n$l_2=2\\cdot2.5\\cdot\\dfrac{\\sigma}{\\sqrt{n_2}}$이다.\n두 길이를 나누면\n$\\dfrac{l_1}{l_2}=\\dfrac{2}{2.5}\\sqrt{\\dfrac{n_2}{n_1}}$이다.\n$\\dfrac{n_2}{n_1}=25$이므로\n$\\dfrac{l_1}{l_2}=\\dfrac45\\cdot\\sqrt{25}=\\dfrac45\\cdot5=4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
@@ -675,7 +678,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형 1] 한 개의 주사위를 $n$번 던져 나온 눈의 수가 소수인 횟수를 확률변수 $X$라고 하자. $P\\left(\\left|X-\\dfrac n2\\right|\\le9\\right)\\ge0.86$을 만족시키는 자연수 $n$의 최댓값을 표준정규분포표를 이용하여 구하는 과정을 구체적으로 서술하시오. (단, $n\\ge40$이다.) [6점, 부분점수 있음]<br><div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$z$</th><th>$P(0\\le Z\\le z)$</th></tr></thead><tbody><tr><td>0.5</td><td>0.19</td></tr><tr><td>1.0</td><td>0.34</td></tr><tr><td>1.5</td><td>0.43</td></tr><tr><td>2.0</td><td>0.48</td></tr><tr><td>2.5</td><td>0.49</td></tr></tbody></table></div>",
     "answer": "144",
-    "solution": "[키포인트] 이항분포를 정규분포로 근사하여 주어진 중앙확률 조건을 부등식으로 바꾼다.\n조건 정리: 소수는 $2,3,5$ 세 가지이므로 $X\\sim B\\left(n,\\dfrac12\\right)$이고, $P\\left(\\left|X-\\dfrac n2\\right|\\le9\\right)\\ge0.86$이다.\n풀이 방향: $X$를 표준화하여 중앙확률 $0.86$에 대응하는 $z$값을 표에서 찾는다.\n정석 풀이: $E(X)=\\dfrac n2$, $\\sigma_X=\\sqrt{n\\times\\dfrac12\\times\\dfrac12}=\\dfrac{\\sqrt n}{2}$이다. 따라서 정규근사에서\n$P\\left(\\left|X-\\dfrac n2\\right|\\le9\\right)=P\\left(|Z|\\le\\dfrac{9}{\\sqrt n/2}\\right)=P\\left(|Z|\\le\\dfrac{18}{\\sqrt n}\\right)$이다. 표에서 $P(0\\le Z\\le1.5)=0.430$이므로 $P(|Z|\\le1.5)=0.86$이다. 중앙확률은 경계값이 클수록 커지므로 $\\dfrac{18}{\\sqrt n}\\ge1.5$이어야 한다.\n$\\sqrt n\\le12$이므로 $n\\le144$이고, 자연수 $n$의 최댓값은 $144$이다.\n핵심 확인: 조건에 맞는 분포와 계산 과정을 다시 대조하여 최종값이 문제의 요구와 일치하는지 확인한다.\n따라서 구하는 값은 144이다.",
+    "solution": "주사위 한 번에 소수인 눈은 $2,3,5$의 $3$개이므로 소수가 나올 확률은 $\\dfrac36=\\dfrac12$이다.\n따라서 $X\\sim B\\left(n,\\dfrac12\\right)$이고\n$E(X)=n\\cdot\\dfrac12=\\dfrac n2$,\n$V(X)=n\\cdot\\dfrac12\\cdot\\dfrac12=\\dfrac n4$,\n$\\sigma_X=\\dfrac{\\sqrt n}{2}$이다.\n\n$n\\ge40$이므로 이항분포를 정규분포로 근사하여 주어진 조건을 표준화한다.\n$P\\left(\\left|X-\\dfrac n2\\right|\\le9\\right)$\n$\\approx P\\left(\\left|Z\\right|\\le\\dfrac{9}{\\sqrt n/2}\\right)$\n$=P\\left(-\\dfrac{18}{\\sqrt n}\\le Z\\le\\dfrac{18}{\\sqrt n}\\right)$이다.\n\n표에서 $P(0\\le Z\\le1.5)=0.43$이므로\n$P(-1.5\\le Z\\le1.5)=2\\cdot0.43=0.86$이다.\n중앙에 대칭인 구간의 확률은 구간의 폭이 넓을수록 커지므로, 정규근사에서\n$\\dfrac{18}{\\sqrt n}\\ge1.5$이어야 한다.\n$18\\ge1.5\\sqrt n$\n$\\sqrt n\\le12$\n$n\\le144$이다.\n$n=144$는 $n\\ge40$도 만족하므로 구하는 자연수 $n$의 최댓값은 $144$이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -702,7 +705,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형 2] 주머니 속에 흰 구슬 $4$개, 검은 구슬 $6$개가 들어 있다. $1$이 적힌 카드 $2$장과 $2$가 적힌 카드 $1$장 중 임의의 카드를 한 장 선택하여 카드에 적힌 수만큼 주머니에서 구슬을 임의로 꺼낼 때, 꺼낸 구슬 중에서 흰 구슬의 개수를 확률변수 $X$라 하자. 확률변수 $X$의 확률분포표를 만들고 확률변수 $X$의 평균을 구하는 과정을 구체적으로 서술하시오. [7점, 부분점수 있음]",
     "answer": "8/15",
-    "solution": "[키포인트] 카드 종류별 조건부 확률을 구한 뒤 카드 선택 확률로 가중평균한다.\n조건 정리: $1$이 적힌 카드를 고를 확률은 $\\dfrac23$, $2$가 적힌 카드를 고를 확률은 $\\dfrac13$이다.\n풀이 방향: 카드에 적힌 수가 1인 경우와 2인 경우의 확률분포를 각각 구하고 전체확률정리를 적용한다.\n정석 풀이: 카드 1을 고르면 구슬 한 개를 꺼내므로 $P(X=0\\mid1)=\\dfrac6{10}=\\dfrac35$, $P(X=1\\mid1)=\\dfrac4{10}=\\dfrac25$이다. 카드 2를 고르면 구슬 두 개를 꺼내므로\n$P(X=0\\mid2)=\\dfrac{\\binom62}{\\binom{10}{2}}=\\dfrac13$, $P(X=1\\mid2)=\\dfrac{\\binom41\\binom61}{\\binom{10}{2}}=\\dfrac8{15}$, $P(X=2\\mid2)=\\dfrac{\\binom42}{\\binom{10}{2}}=\\dfrac2{15}$이다.\n따라서 확률분포표는 다음과 같다.\n<div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$X$</th><th>$0$</th><th>$1$</th><th>$2$</th></tr></thead><tbody><tr><th>$P(X=x)$</th><td>$\\dfrac{23}{45}$</td><td>$\\dfrac49$</td><td>$\\dfrac2{45}$</td></tr></tbody></table></div>\n각 확률은 $P(X=0)=\\dfrac23\\times\\dfrac35+\\dfrac13\\times\\dfrac13=\\dfrac{23}{45}$, $P(X=1)=\\dfrac23\\times\\dfrac25+\\dfrac13\\times\\dfrac8{15}=\\dfrac49$, $P(X=2)=\\dfrac13\\times\\dfrac2{15}=\\dfrac2{45}$이다.\n그러므로 $E(X)=0\\times\\dfrac{23}{45}+1\\times\\dfrac49+2\\times\\dfrac2{45}=\\dfrac8{15}$이다.\n핵심 확인: 조건에 맞는 분포와 계산 과정을 다시 대조하여 최종값이 문제의 요구와 일치하는지 확인한다.\n따라서 구하는 값은 8/15이다.",
+    "solution": "먼저 $1$이 적힌 카드를 뽑을 확률은 $\\dfrac23$, $2$가 적힌 카드를 뽑을 확률은 $\\dfrac13$이다.\n카드가 $1$인 사건을 $A$, 카드가 $2$인 사건을 $B$라 하자.\n\n사건 $A$가 일어나면 구슬을 $1$개 뽑으므로\n$P(X=0\\mid A)=\\dfrac6{10}=\\dfrac35$,\n$P(X=1\\mid A)=\\dfrac4{10}=\\dfrac25$이다.\n\n사건 $B$가 일어나면 구슬을 $2$개 뽑고, 전체 방법은 $\\binom{10}{2}=45$가지이다.\n흰 구슬이 $0$개이면 검은 구슬만 $2$개이므로\n$P(X=0\\mid B)=\\dfrac{\\binom{6}{2}}{45}=\\dfrac13$이다.\n흰 구슬이 $1$개이면 흰색과 검은색을 하나씩 뽑으므로\n$P(X=1\\mid B)=\\dfrac{\\binom{4}{1}\\binom{6}{1}}{45}=\\dfrac8{15}$이다.\n흰 구슬이 $2$개이면\n$P(X=2\\mid B)=\\dfrac{\\binom{4}{2}}{45}=\\dfrac2{15}$이다.\n\n각 카드가 선택될 확률을 곱해 더하면\n$P(X=0)=\\dfrac23\\cdot\\dfrac35+\\dfrac13\\cdot\\dfrac13=\\dfrac{23}{45}$,\n$P(X=1)=\\dfrac23\\cdot\\dfrac25+\\dfrac13\\cdot\\dfrac8{15}=\\dfrac49$,\n$P(X=2)=\\dfrac13\\cdot\\dfrac2{15}=\\dfrac2{45}$이다.\n\n따라서 확률분포표는 다음과 같다.\n<div class=\"question-table-wrap\"><table class=\"question-table\"><thead><tr><th>$X$</th><th>$0$</th><th>$1$</th><th>$2$</th></tr></thead><tbody><tr><th>$P(X=x)$</th><td>$\\dfrac{23}{45}$</td><td>$\\dfrac49$</td><td>$\\dfrac2{45}$</td></tr></tbody></table></div>\n확률의 합은 $\\dfrac{23}{45}+\\dfrac{20}{45}+\\dfrac2{45}=1$이다.\n$E(X)=0\\cdot\\dfrac{23}{45}+1\\cdot\\dfrac49+2\\cdot\\dfrac2{45}$\n$=\\dfrac{20}{45}+\\dfrac4{45}=\\dfrac{24}{45}=\\dfrac8{15}$이다.\n따라서 구하는 평균은 $\\dfrac8{15}$이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -729,7 +732,7 @@ window.questionBank = [
     "wide": false,
     "content": "[서술형 3] 모평균이 $m$, 모표준편차가 $\\sigma$인 정규분포를 따르는 모집단에 크기가 $36$인 표본을 임의추출하여 얻은 표본평균이 $\\overline x$일 때, 모평균 $m$에 대한 신뢰도 $99\\%$의 신뢰구간이 $a\\le m\\le37$이었다. 같은 모집단에서 크기가 $81$인 표본을 임의추출하여 얻은 표본평균이 $\\overline x+2$일 때, 모평균 $m$에 대한 신뢰도 $99\\%$의 신뢰구간이 $b\\le m\\le37$이었다. 이때, $a+b$의 값을 구하는 과정을 구체적으로 서술하시오. (단, $P(0\\le Z\\le3)=0.495$로 계산한다.) [7점, 부분점수 있음]",
     "answer": "54",
-    "solution": "[키포인트] 같은 신뢰도의 신뢰구간에서 오차한계와 표본평균의 관계를 비교한다.\n조건 정리: 99% 신뢰구간의 신뢰계수는 $3$이고, 표본 크기는 각각 $36,81$이다. 첫 구간의 상한과 둘째 구간의 상한이 모두 $37$이다.\n풀이 방향: 두 구간의 상한식을 세워 $\\sigma$와 첫 표본평균을 구한 뒤 하한을 계산한다.\n정석 풀이: 첫 표본평균을 $\\overline x$라 하면 첫 구간의 상한에서 $\\overline x+3\\dfrac\\sigma6=37$, 즉 $\\overline x+\\dfrac\\sigma2=37$이다. 둘째 표본평균은 $\\overline x+2$이므로 둘째 구간의 상한에서 $\\overline x+2+3\\dfrac\\sigma9=37$, 즉 $\\overline x+2+\\dfrac\\sigma3=37$이다.\n두 식을 빼면 $2-\\dfrac\\sigma6=0$이므로 $\\sigma=12$이다. 따라서 $\\overline x=37-6=31$, 첫 하한 $a=31-6=25$이다. 둘째 표본평균은 $33$이고 오차한계는 $3\\times\\dfrac{12}{9}=4$이므로 $b=33-4=29$이다.\n따라서 $a+b=25+29=54$이다.\n핵심 확인: 조건에 맞는 분포와 계산 과정을 다시 대조하여 최종값이 문제의 요구와 일치하는지 확인한다.\n따라서 구하는 값은 54이다.",
+    "solution": "신뢰도 $99\\%$에 대응하는 신뢰상수는 문제의 표에 의해 $3$이다.\n첫 표본 크기가 $36$이므로 오차한계는\n$3\\cdot\\dfrac{\\sigma}{\\sqrt{36}}=\\dfrac{\\sigma}{2}$이다.\n둘째 표본 크기가 $81$이므로 오차한계는\n$3\\cdot\\dfrac{\\sigma}{\\sqrt{81}}=\\dfrac{\\sigma}{3}$이다.\n\n두 신뢰구간의 상한은 모두 $37$이므로\n$\\overline x+\\dfrac{\\sigma}{2}=37$ ①\n$\\overline x+2+\\dfrac{\\sigma}{3}=37$ ②\n가 성립한다.\n①에서 ②를 빼면\n$\\dfrac{\\sigma}{2}-\\dfrac{\\sigma}{3}=2$\n$\\dfrac{\\sigma}{6}=2$\n$\\sigma=12$이다.\n\n①에 대입하여\n$\\overline x=37-\\dfrac{12}{2}=31$이다.\n따라서 첫째 구간의 하한은\n$a=\\overline x-\\dfrac{\\sigma}{2}=31-6=25$이다.\n\n둘째 표본평균은 $\\overline x+2=33$이고 오차한계는 $\\dfrac{12}{3}=4$이므로\n$b=33-4=29$이다.\n따라서 $a+b=25+29=54$이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
