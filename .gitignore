@@ -89,6 +89,7 @@ rules.zip
 .codex_deps/
 .codex_tmp/
 .codex_work/
+/.codex/archive-analysis-drive-cache/
 _tmp/pdf_extracted_images/
 _tmp/int_rat_images/
 _tmp/r2-archive-assets-manifest.json
@@ -263,9 +264,17 @@ reports/high*_exam_inventory_*/**
 !archive/assets/images/**
 # Logic-visual review bundles and reports are regeneratable evidence.
 /archive/tools/logic-visual-audit/reports/
-# Rebuildable catalog conflict snapshots are workspace outputs. Preserve their
-# small source receipts beside them; the focused Git footprint guard checks
-# changed blobs under archive/analysis even when a file is force-added.
+# Cold raw-evidence roots are local working/cache locations. Ignore rules do
+# not untrack existing history; the focused Git footprint guard also catches
+# force-staged additions under these roots.
+/archive/analysis/
+/archive/evidence/
+/archive-work/
+/artifacts/
+/render_review/
+/output/
+/evidence/
+/스캔_인테이크_산출물/
 /archive/analysis/**/conflict-stage-snapshots/
 /archive/analysis/**/pre-keyfilter-derived-snapshot/
 /archive/analysis/**/post-keyfilter-derived-snapshot/

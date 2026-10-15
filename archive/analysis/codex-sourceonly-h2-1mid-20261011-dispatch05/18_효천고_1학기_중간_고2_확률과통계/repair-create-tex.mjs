@@ -1,4 +1,0 @@
-import fs from 'node:fs';import vm from 'node:vm';
-const p='archive/exams/original/high/h2/1mid/18_효천고_1학기_중간_고2_확률과통계.js';const b=fs.readFileSync(p),c={window:{}};vm.runInNewContext(b.toString('utf8'),c);
-const rows=[];for(const q of c.window.questionBank){const before=q.solution||'';const after=before.replace(/(?<!\\)(dfrac|mathrm|cdot|le)\b/g,(_,x)=>'\\'+x);if(before!==after){rows.push({qid:q.id,before,after});q.solution=after;}}
-fs.writeFileSync(p,'window.examTitle = '+JSON.stringify(c.window.examTitle)+';\nwindow.questionBank = '+JSON.stringify(c.window.questionBank,null,2)+';\n');console.log(JSON.stringify({changed:rows.map(x=>x.qid),locus:rows.map(x=>({qid:x.qid,beforeSha256:require('crypto').createHash('sha256').update(x.before).digest('hex'),afterSha256:require('crypto').createHash('sha256').update(x.after).digest('hex')}))},null,2));

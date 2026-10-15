@@ -1,8 +1,0 @@
-import fs from 'node:fs';import path from 'node:path';
-import {readExam,sha256,physical,writeFresh} from '../../../../../tools/archive-codex-artifact-io.mjs';
-import {STUDENT_FIELDS,studentAssetRefs,normalizeStudentBundle} from '../../../../../tools/archive-student-bundle.mjs';
-const source=path.resolve('archive/exams/original/high/h2/1mid/17_효천고_1학기_중간_고2_확률과통계.js'),expected='05a65c52125abb6e2b0efbd25f76d5a0deab8abd1525dc70bcd425daf03df03c';
-const exam=readExam(source);if(exam.rawSha256!==expected)throw Error('CURRENT_SOURCE_SHA_MISMATCH');
-const rows=exam.questions.map(q=>{const qid=Number(q.id??q.qid),student=Object.fromEntries([...STUDENT_FIELDS].filter(k=>Object.hasOwn(q,k)).map(k=>[k,q[k]])),assets=[];for(const ref of new Set(studentAssetRefs(student))){if(typeof ref!=='string'||!ref.startsWith('assets/images/'))throw Error('INVALID_ASSET_REF:'+qid+':'+ref);const file=path.resolve('archive',...ref.split('/')),bytes=fs.readFileSync(file);assets.push({ref,path:file,sha256:sha256(bytes)});}return{qid,student,assets};});
-const bundle=normalizeStudentBundle({schemaVersion:'R2_CURRENT_STUDENT_ONLY_BUNDLE_V1',sourceRawSha256:exam.rawSha256,sourceRawBlobSha1:exam.rawBufferGitBlobSha1,questionCount:rows.length,qids:rows.map(r=>r.qid),rows},{expectedSourceRawSha256:expected});
-const out=path.resolve('archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/17_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q15/R2_qid_review_clean/current-student-bundle-23.json');console.log(JSON.stringify({bundle:writeFresh(out,bundle),sourceRawSha256:exam.rawSha256,questionCount:bundle.questionCount,qids:bundle.qids,assetBindings:bundle.rows.flatMap(r=>r.assets.map(a=>({qid:r.qid,ref:a.ref,sha256:a.sha256})))},null,2));

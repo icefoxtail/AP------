@@ -26,6 +26,10 @@ JS Archive 2.0 keeps one product-quality contract and separates execution into t
 
 A PASS in one execution line is not automatically inherited or invalidated by the other line. Artifact bytes, evidence, and the current contract decide.
 
+## 2026-10-16 — evidence storage is separate from evidence status
+
+The user-directed Git scope preserves production source/assets, current runtime/build/test tools/contracts, and the exact byte-bound offline evidence authorities in `archive/data/evidence-authority/v1/index.json`. Raw analysis histories, captures, rebuildable outputs, and intermediate files move to the Drive vault only after verified pack and index readback. ROOT may fetch raw proof on demand through the Drive pack resolver; workers still inspect the actual source and proof and complete their assigned independent review. Storage or a hash-bound completion receipt does not create a review PASS, validator PASS, or render PASS. A missing/corrupt object remains unavailable, and GitHub CI has no Drive/OAuth prerequisite.
+
 ## 2. Existing canonical quality authorities remain active
 
 This contract does not replace the existing canonical rules. It binds them into one exam-completion definition.

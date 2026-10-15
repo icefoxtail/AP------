@@ -1,8 +1,0 @@
-import {spawnSync} from 'node:child_process';import fs from 'node:fs';import crypto from 'node:crypto';
-const root=process.cwd(),js='C:/Users/USER/Desktop/AP------/archive/exams/original/high/h2/1mid/18_강남여고_1학기_중간_고2_확률과통계.js',evidence='C:/Users/USER/Desktop/AP------/archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_강남여고_1학기_중간_고2_확률과통계/CREATE.evidence.bound.v2.json';
-const argv=['archive/tools/archive-stage-validator.mjs','--stage','CREATE','--exam',js,'--evidence',evidence,'--quality-contract','JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006','--execution-line','CODEX','--json'];
-const started=new Date().toISOString(),result=spawnSync(process.execPath,argv,{cwd:root,encoding:'utf8',maxBuffer:64*1024*1024}),ended=new Date().toISOString();
-const outDir='archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/18_강남여고_1학기_중간_고2_확률과통계';
-fs.writeFileSync(outDir+'/CREATE.validator.raw.json',result.stdout||'');fs.writeFileSync(outDir+'/CREATE.validator.stderr.txt',result.stderr||'');
-const proc={schemaVersion:'JS_ARCHIVE_VALIDATOR_PROCESS_CAPTURE_V1',command:'node '+argv.join(' '),cwd:root,startedAt:started,endedAt:ended,exitCode:result.status,error:result.error?.message||null,stdoutRef:outDir+'/CREATE.validator.raw.json',stdoutSha256:crypto.createHash('sha256').update(result.stdout||'').digest('hex'),stderrRef:outDir+'/CREATE.validator.stderr.txt',stderrSha256:crypto.createHash('sha256').update(result.stderr||'').digest('hex')};fs.writeFileSync(outDir+'/CREATE.validator.process.json',JSON.stringify(proc,null,2)+'\n',{flag:'wx'});
-process.stdout.write(result.stdout||'');process.stderr.write(result.stderr||'');process.stdout.write('\nPROCESS_EXIT='+result.status+'\n');if(result.status!==0)process.exitCode=result.status??1;
