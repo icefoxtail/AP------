@@ -261,11 +261,12 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$JSON_EVIDENCE_DIR"
-          git fetch --no-tags origin main
-          source_sha="$(git rev-parse HEAD)"
-          main_sha="$(git rev-parse origin/main)"
-          if [[ "$source_sha" != "$main_sha" ]]; then
-            echo "Checked-out source is stale relative to main: checkout=$source_sha main=$main_sha" >&2
+          git fetch --no-tags origin refs/heads/main
+          source_sha="$(git rev-parse FETCH_HEAD)"
+          git checkout --detach "$source_sha"
+          checked_out_sha="$(git rev-parse HEAD)"
+          if [[ "$source_sha" != "$checked_out_sha" ]]; then
+            echo "Could not freeze fetched main source: fetched=$source_sha checkout=$checked_out_sha" >&2
             exit 1
           fi
           {
@@ -352,16 +353,15 @@ jobs:
           set -euo pipefail
           node archive/tools/sync-question-json.mjs --repo-root "$GITHUB_WORKSPACE" --out-dir "$JSON_BANK_DIR" --temp-root "$RUNNER_TEMP" --status-file "$JSON_STATUS_FILE" 2>&1 | tee "$JSON_EVIDENCE_DIR/question-json-sync.log"
 
-      - name: Confirm question JSON source still matches main
+      - name: Confirm question JSON checkout still matches frozen source
         env:
           JSON_EVIDENCE_DIR: ${{ runner.temp }}/question-json-sync-evidence
           SOURCE_SHA: ${{ steps.question_json_source.outputs.source_sha }}
         run: |
           set -euo pipefail
-          git fetch --no-tags origin main
-          main_sha="$(git rev-parse origin/main)"
-          if [[ "$SOURCE_SHA" != "$main_sha" ]]; then
-            echo "main advanced during question JSON sync: source=$SOURCE_SHA main=$main_sha" >&2
+          checkout_sha="$(git rev-parse HEAD)"
+          if [[ "$SOURCE_SHA" != "$checkout_sha" ]]; then
+            echo "Question JSON checkout changed after source freeze: source=$SOURCE_SHA checkout=$checkout_sha" >&2
             exit 1
           fi
           printf 'verified_source_revision=%s\n' "$SOURCE_SHA" >> "$JSON_EVIDENCE_DIR/context.txt"
