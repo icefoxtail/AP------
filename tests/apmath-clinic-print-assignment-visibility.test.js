@@ -22,9 +22,14 @@ assert(
 
 assert(
   clinicPrint.includes('async function clinicPrintRefreshClassAssignments') &&
-    clinicPrint.includes('class-exam-assignments?class=') &&
-    clinicPrint.includes('clinicPrintMergeClassAssignments'),
-  'clinic print should refresh class assignment rows when the modal opens'
+    clinicPrint.includes('api.get(`exam-sessions/by-class?class=${encodeURIComponent(classId)}`)') &&
+    clinicPrint.includes('if (!res || res.success !== true || res.error)') &&
+    clinicPrint.includes('clinicPrintReplaceClassAssignments(classId, incomingAssignments)') &&
+    clinicPrint.includes("clinicPrintReplaceSessionIdentityRows('exam_sessions', sessionIds, incomingSessions)") &&
+    clinicPrint.includes("clinicPrintReplaceSessionIdentityRows('wrong_answers', sessionIds, wrongAnswers)") &&
+    clinicPrint.includes("if (Array.isArray(res.result_items)) clinicPrintReplaceSessionIdentityRows('assessment_result_items', sessionIds, res.result_items)") &&
+    clinicPrint.includes('clinicPrintReplaceAssignmentQuestionRows(assignmentIds, res.assignment_questions)'),
+  'clinic print should refresh assignments and identity rows from the by-class results response'
 );
 
 assert(
@@ -51,8 +56,9 @@ assert(
 
 assert(
   clinicPrint.includes('clinicPrintGetGradeExamAssignments(classId) : clinicPrintGetClassExamAssignments(classId)).forEach') &&
-    clinicPrint.includes('.filter(group => group.printable || group.sessions.length > 0)'),
-  'clinic print should show printable assigned exams even before any student session exists'
+    clinicPrint.includes('.filter(group => group.printable || group.sessions.length > 0)') &&
+    clinicPrint.includes('state.db.class_exam_assignments || state.db.exam_assignments'),
+  'clinic print should preserve legacy assignment reads and show printable assignments before any student session exists'
 );
 
 assert(
