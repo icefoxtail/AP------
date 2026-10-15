@@ -2,9 +2,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import {createRequire} from 'node:module';
 import {verifySvgCoordinateParity} from './verify-svg-coordinate-parity.mjs';
 import {observeExtraPrimitives} from './verify-visual-extra-primitives.mjs';
 import {assertOutput} from './visual-browser-runtime.mjs';
+
+const require=createRequire(import.meta.url);
+const {validateSvgStudentLanguage}=require('../svg-language-contract.cjs');
 
 export const sha256 = value => crypto.createHash('sha256').update(value).digest('hex');
 const decode = text => text.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#x([0-9a-f]+);/gi,(_,x)=>String.fromCodePoint(parseInt(x,16))).replace(/&#(\d+);/g,(_,x)=>String.fromCodePoint(Number(x)));
@@ -52,9 +56,10 @@ export function displayedMath(svg,expected) {
 
 export function verifyVisualEngineStatic({root=process.cwd(),input}) {
   const svg=fs.readFileSync(path.resolve(root,input.svg),'utf8');
-  const checks={structural:structural(svg),actual:verifySvgCoordinateParity({root,input}),extra:observeExtraPrimitives(svg,input),display:displayedMath(svg,input.expectedLabels)};
+  const checks={structural:structural(svg),language:validateSvgStudentLanguage(svg,{assetRef:input.svg}),actual:verifySvgCoordinateParity({root,input}),extra:observeExtraPrimitives(svg,input),display:displayedMath(svg,input.expectedLabels)};
   const errors=[];
   if(checks.structural.status!=='PASS')errors.push(...checks.structural.errors);
+  if(checks.language.status!=='PASS')errors.push(...checks.language.errors.map(v=>`${v.code}${v.token?':'+v.token:''}`));
   if(checks.actual.svgMathStatus!=='PASS')errors.push('ACTUAL_SVG_PARITY_FAIL');
   if(checks.extra.status!=='PASS')errors.push(...checks.extra.errors.map(v=>v.error));
   if(checks.display.status!=='PASS')errors.push(...checks.display.errors);

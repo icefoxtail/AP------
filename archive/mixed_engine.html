@@ -60,8 +60,10 @@
     <script src="concept_map.js" onerror="console.warn('[3B-MIXED] concept_map.js 로드 실패 — conceptClusterKey 비워서 진행')"></script>
     <script src="question-meta.js?v=archive-metadata-v1-phase1b-20260826b" onerror="console.warn('[metadata] question-meta.js 로드 실패 — approved sidecar metadata 없이 진행')"></script>
     <script src="question-identity.js?v=20260820.2" onerror="console.warn('[identity] question-identity.js 로드 실패 — legacy lookup으로 제한')"></script>
+    <script src="data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
+    <script src="svg-accessibility.js?v=20261014.1"></script>
     <script src="print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
-    <script src="render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="layout-authority.js?v=20260906.15" onerror="console.warn('[layout-authority] promotion bridge 로드 실패 — legacy pagination 유지')"></script>
     <script src="print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
@@ -514,7 +516,7 @@ function createMixerSourceAdapter(buildContext = null) {
  */
 // GitHub Pages/Fastly may keep an unchanged image URL for up to 10 minutes.
 // Bump this value when replacing an archive image so clients receive the new bytes.
-const ARCHIVE_ASSET_CACHE_VERSION = '20260828.1';
+const ARCHIVE_ASSET_CACHE_VERSION = '20261014.1';
 
 const SE_OVERHEAD_COL = 10;
 const SE_OVERHEAD_GRID = 20;
@@ -1987,12 +1989,13 @@ function renderQuestionImageHTML(q) {
     if (!q.image) return '';
     const size = ['small','half','medium','large','full','tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.image))}"></div>`;
+    const alt = window.APSvgAccessibility?.selectAccessibleAlt(q.image, 'image', q, q.imageAlt || '', '문제 그림') || q.imageAlt || '문제 그림';
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeArchiveHtmlAttribute(withArchiveAssetCacheBuster(q.image))}" alt="${escapeArchiveHtmlAttribute(alt)}"></div>`;
 }
 
 function withArchiveAssetCacheBuster(src) {
     const raw = String(src == null ? '' : src).trim();
-    if (!raw || /^(?:data:|blob:)/i.test(raw) || !/(^|\/)assets\/images\//i.test(raw)) return raw;
+    if (!raw || /^(?:data:|blob:)/i.test(raw) || !/(^|\/)assets\/(?:images|generated-lite)\//i.test(raw)) return raw;
     const hashIndex = raw.indexOf('#');
     const base = hashIndex >= 0 ? raw.slice(0, hashIndex) : raw;
     const hash = hashIndex >= 0 ? raw.slice(hashIndex) : '';
@@ -2013,7 +2016,7 @@ function escapeArchiveHtmlAttribute(value) {
 function renderSolutionImageHTML(q) {
     if (!q || !q.solutionImage) return '';
     const size = ['small','medium','large','full'].includes(q.solutionImageSize) ? q.solutionImageSize : 'medium';
-    const alt = q.solutionImageAlt || `문항 ${q.id ?? ''} 해설 그래프`;
+    const alt = window.APSvgAccessibility?.selectAccessibleAlt(q.solutionImage, 'solutionImage', q, q.solutionImageAlt || '', '해설 그림') || q.solutionImageAlt || '해설 그림';
     const caption = q.solutionImageCaption
         ? `<span class="sol-image-caption">${escapeArchiveHtmlAttribute(q.solutionImageCaption)}</span>`
         : '';
