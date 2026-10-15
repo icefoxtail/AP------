@@ -643,7 +643,7 @@ window.questionBank = [
     "id": 13,
     "questionType": "객관식",
     "layoutTag": "grid",
-    "content": "다음은 실수 $a, b, x, y$에 대하여 $a^2+b^2=1$, $x^2+y^2=1$이면 $-1 \\le ax+by \\le 1$임을 증명하는 과정이다.\n\n[증명]\n$(a-x)^2 \\ge 0$, $(b-y)^2 \\ge 0$이므로\n$a^2+x^2 \\ge \\text{(가)} \\quad \\cdots\\ \\text{㉠}\n$b^2+y^2 \\ge \\text{(나)} \\quad \\cdots\\ \\text{㉡}\n㉠, ㉡에서 $(a^2+b^2)+(x^2+y^2) \\ge \\text{(다)}$\n$\\therefore ax+by \\le \\text{(라)} \\quad \\cdots\\ \\text{㉢}\n마찬가지로 $(a+x)^2 \\ge 0$, $(b+y)^2 \\ge 0$이므로\n$\\vdots$\n$\\therefore ax+by \\ge -1 \\quad \\cdots\\ \\text{㉣}\n따라서 ㉢, ㉣에서 $-1 \\le ax+by \\le 1$\n\n위의 증명에서 (가), (나), (다), (라)에 알맞은 것을 순서대로 나열한 것은? [4.3점]",
+    "content": "다음은 실수 $a, b, x, y$에 대하여 $a^2+b^2=1$, $x^2+y^2=1$이면 $-1 \\le ax+by \\le 1$임을 증명하는 과정이다.\n\n[증명]\n$(a-x)^2 \\ge 0$, $(b-y)^2 \\ge 0$이므로\n$a^2+x^2 \\ge \\text{(가)} \\quad \\cdots\\ \\text{㉠}$\n$b^2+y^2 \\ge \\text{(나)} \\quad \\cdots\\ \\text{㉡}$\n㉠, ㉡에서 $(a^2+b^2)+(x^2+y^2) \\ge \\text{(다)}$\n$\\therefore ax+by \\le \\text{(라)} \\quad \\cdots\\ \\text{㉢}$\n마찬가지로 $(a+x)^2 \\ge 0$, $(b+y)^2 \\ge 0$이므로\n$\\vdots$\n$\\therefore ax+by \\ge -1 \\quad \\cdots\\ \\text{㉣}$\n따라서 ㉢, ㉣에서 $-1 \\le ax+by \\le 1$\n\n위의 증명에서 (가), (나), (다), (라)에 알맞은 것을 순서대로 나열한 것은? [4.3점]",
     "choices": [
       "$ax, by, ax+by, 1$",
       "$-2ax, -2by, -(ax+by), -1$",
