@@ -25,17 +25,34 @@ const PRODUCTION_ASSET_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.gif', '.
 const ANALYSIS_ROOT = 'archive/analysis/';
 const TRANSIENT_SEGMENTS = /(?:^|\/)(?:conflict-stage-snapshots|pre-keyfilter-derived-snapshot|post-keyfilter-derived-snapshot|captures?|snapshots?|backups?|patchpacks?)(?:\/|$)/i;
 const TRANSIENT_SUFFIX = /(?:\.patch|\.diff|\.capture(?:\.json)?|\.worktree\.bin)$/i;
+const RAW_OUTPUT_ROOTS = Object.freeze([
+  'output/',
+  'reports/',
+  'render_review/',
+  'artifacts/',
+  'archive-work/',
+  'archive/evidence/',
+  'evidence/',
+  '스캔_인테이크_산출물/'
+]);
+const CANONICAL_GENERATED_DATA = new Set([
+  'archive/_generated/intelligence/meta-foundation/h2-math2-continuity/STAGE6_FINAL_FOUNDATION.json',
+  'archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json',
+  'archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_SOURCE_NORMALIZATION_RECEIPT.json'
+]);
 
-function runGit(root, args, { encoding = 'utf8' } = {}) {
+function runGit(root, args, { encoding = 'utf8', input, metrics } = {}) {
+  if (metrics) metrics.gitCommands = (metrics.gitCommands || 0) + 1;
   return execFileSync('git', ['-C', root, '-c', 'core.quotepath=false', ...args], {
     encoding,
+    input,
     stdio: ['ignore', 'pipe', 'pipe'],
     maxBuffer: 128 * 1024 * 1024
   });
 }
 
-function tryGit(root, args) {
-  try { return runGit(root, args).trim(); } catch { return ''; }
+function tryGit(root, args, metrics) {
+  try { return runGit(root, args, { metrics }).trim(); } catch { return ''; }
 }
 
 function repoRootFromScript() {
@@ -54,40 +71,67 @@ function splitNul(value) {
   return value.split('\0').filter(Boolean);
 }
 
-function diffPaths(root, args) {
+function diffPaths(root, args, metrics) {
   try {
-    return splitNul(runGit(root, ['diff', '--no-renames', '--name-only', '-z', ...args], { encoding: 'utf8' }));
+    return splitNul(runGit(root, ['diff', '--no-renames', '--name-only', '-z', ...args], { encoding: 'utf8', metrics }));
   } catch (error) {
     throw new Error(`GIT_DIFF_FAILED:${String(error.stderr ?? error.message).trim()}`);
   }
 }
 
-function objectId(root, spec) {
-  const value = tryGit(root, ['rev-parse', '--verify', spec]);
-  return /^[0-9a-f]{40,64}$/i.test(value) ? value : null;
+function treeObjects(root, ref, metrics) {
+  const records = splitNul(runGit(root, ['ls-tree', '-r', '-l', '-z', ref], { metrics }));
+  const objects = new Map();
+  for (const record of records) {
+    const separator = record.indexOf('\t');
+    if (separator < 0) continue;
+    const fields = record.slice(0, separator).split(' ');
+    const repoPath = record.slice(separator + 1);
+    if (fields.length !== 4 || fields[1] !== 'blob' || !/^[0-9a-f]{40,64}$/i.test(fields[2]) || !/^\d+$/.test(fields[3])) continue;
+    objects.set(repoPath, { oid: fields[2], size: Number(fields[3]) });
+  }
+  return objects;
 }
 
-function objectSize(root, object) {
-  if (!object) return null;
-  const value = tryGit(root, ['cat-file', '-s', object]);
-  return /^\d+$/.test(value) ? Number(value) : null;
+function indexObjects(root, metrics) {
+  const records = splitNul(runGit(root, ['ls-files', '--stage', '-z'], { metrics }));
+  const objects = new Map();
+  for (const record of records) {
+    const separator = record.indexOf('\t');
+    if (separator < 0) continue;
+    const fields = record.slice(0, separator).split(' ');
+    const repoPath = record.slice(separator + 1);
+    if (fields.length !== 3 || !/^[0-9a-f]{40,64}$/i.test(fields[1])) continue;
+    // Match the former per-path lookup: take the first stage when a path is
+    // unmerged, since such files are not a durable tree candidate anyway.
+    if (!objects.has(repoPath)) objects.set(repoPath, { oid: fields[1] });
+  }
+  return objects;
 }
 
-function indexObject(root, repoPath) {
-  const entries = tryGit(root, ['ls-files', '--stage', '-z', '--', repoPath]);
-  const entry = splitNul(entries).find(value => value.endsWith(`\t${repoPath}`));
-  const match = entry?.match(/^\d+ ([0-9a-f]{40,64}) \d\t/);
-  return match ? match[1] : null;
+function objectSizes(root, objects, metrics) {
+  const unique = [...new Set(objects)].filter(value => /^[0-9a-f]{40,64}$/i.test(value));
+  if (unique.length === 0) return new Map();
+  const output = runGit(root, ['cat-file', '--batch-check=%(objectname) %(objecttype) %(objectsize)'], {
+    input: `${unique.join('\n')}\n`,
+    metrics
+  });
+  const sizes = new Map();
+  for (const line of output.split(/\r?\n/)) {
+    const match = line.match(/^([0-9a-f]{40,64}) blob (\d+)$/i);
+    if (match) sizes.set(match[1], Number(match[2]));
+  }
+  return sizes;
 }
 
-function workingObject(root, repoPath) {
+function workingObject(root, repoPath, metrics) {
   const absolute = path.resolve(root, repoPath);
   const prefix = `${path.resolve(root)}${path.sep}`;
   if (!absolute.startsWith(prefix) || !fs.existsSync(absolute)) return null;
   const stat = fs.statSync(absolute);
   if (!stat.isFile()) return null;
-  const object = tryGit(root, ['hash-object', `--path=${repoPath}`, '--', absolute])
-    || tryGit(root, ['hash-object', '--no-filters', '--', absolute]);
+  const object = tryGit(root, ['hash-object', `--path=${repoPath}`, '--', absolute], metrics)
+    || tryGit(root, ['hash-object', '--no-filters', '--', absolute], metrics);
   return /^[0-9a-f]{40,64}$/i.test(object) ? object : null;
 }
 
@@ -99,9 +143,9 @@ function workingSizeFromFilesystem(root, repoPath) {
   return stat.isFile() ? stat.size : null;
 }
 
-function baseObjectIds(root, base) {
+function baseObjectIds(root, base, metrics) {
   try {
-    return new Set(runGit(root, ['rev-list', '--objects', '--no-object-names', base]).split(/\r?\n/).filter(Boolean));
+    return new Set(runGit(root, ['rev-list', '--objects', '--no-object-names', base], { metrics }).split(/\r?\n/).filter(Boolean));
   } catch {
     // A complete commit history is expected in CI. Keeping a missing-object
     // set empty is conservative: every changed blob counts toward the cap.
@@ -121,6 +165,12 @@ function isTransient(repoPath) {
     || TRANSIENT_SUFFIX.test(repoPath);
 }
 
+function isForbiddenRawOutput(repoPath) {
+  if (repoPath.toLowerCase().startsWith(ANALYSIS_ROOT)) return true;
+  if (repoPath.startsWith('archive/_generated/')) return !CANONICAL_GENERATED_DATA.has(repoPath);
+  return RAW_OUTPUT_ROOTS.some(prefix => repoPath.startsWith(prefix));
+}
+
 function classify(repoPath) {
   if (CANONICAL_LARGE_DATA.includes(repoPath)) return 'canonical-production-data';
   if (PRODUCTION_ASSET_PREFIXES.some(prefix => repoPath.startsWith(prefix))) return 'production-asset';
@@ -133,34 +183,61 @@ function classify(repoPath) {
  * Check only changed files and index/worktree additions. The base tree is a
  * grandfathered size baseline; unchanged legacy blobs never enter the audit.
  */
-export function auditGitGrowth({ root, base = 'HEAD^', head = 'HEAD' } = {}) {
+export function auditGitGrowth({ root, base = 'HEAD^', head = 'HEAD', metrics = null } = {}) {
+  if (metrics) metrics.gitCommands = 0;
   const normalizedBase = normalizeRef(base);
+  const untrackedPaths = splitNul(tryGit(root, ['ls-files', '--others', '--exclude-standard', '-z'], metrics));
+  const nonignoredUntracked = new Set(untrackedPaths);
   const paths = new Set([
-    ...diffPaths(root, [`${normalizedBase}...${head}`]),
-    ...diffPaths(root, ['HEAD']),
-    ...diffPaths(root, ['--cached', 'HEAD']),
-    ...splitNul(tryGit(root, ['ls-files', '--others', '--exclude-standard', '-z']))
+    ...diffPaths(root, [`${normalizedBase}...${head}`], metrics),
+    ...diffPaths(root, ['HEAD'], metrics),
+    ...diffPaths(root, ['--cached', 'HEAD'], metrics),
+    ...untrackedPaths
   ]);
   const files = [];
   const errors = [];
-  const baseObjects = baseObjectIds(root, normalizedBase);
+  const baseTree = treeObjects(root, normalizedBase, metrics);
+  const headTree = treeObjects(root, head, metrics);
+  const stagedTree = indexObjects(root, metrics);
+  const baseObjects = baseObjectIds(root, normalizedBase, metrics);
   const introducedObjects = new Map();
+  const candidates = [];
 
   for (const repoPath of [...paths].sort()) {
-    const baseOid = objectId(root, `${normalizedBase}:${repoPath}`);
-    const baseSize = objectSize(root, baseOid);
-    const currentWorkOid = workingObject(root, repoPath);
-    const candidateOids = [
-      objectId(root, `${head}:${repoPath}`),
-      indexObject(root, repoPath),
-      currentWorkOid
-    ].filter(Boolean);
-    const uniqueCandidates = [...new Set(candidateOids)];
+    const headObject = headTree.get(repoPath);
+    const stagedObject = stagedTree.get(repoPath);
+    // A path removed from both HEAD and the index may still exist locally as
+    // ignored cold evidence. It is not a candidate Git addition; do not hash
+    // that retained copy (there may be thousands after a cold-root cleanup).
+    // Nonignored untracked files and forced-staged paths remain candidates.
+    if (!headObject && !stagedObject && !nonignoredUntracked.has(repoPath)) continue;
+    const currentWorkOid = workingObject(root, repoPath, metrics);
+    const uniqueCandidates = [...new Set([headObject?.oid, stagedObject?.oid, currentWorkOid].filter(Boolean))];
     if (uniqueCandidates.length === 0) continue;
-    const candidateSize = Math.max(...uniqueCandidates.map(oid => currentWorkOid === oid
-      ? workingSizeFromFilesystem(root, repoPath)
-      : objectSize(root, oid)).filter(Number.isFinite));
+    candidates.push({ repoPath, headObject, stagedObject, currentWorkOid, uniqueCandidates });
+  }
+
+  const knownSizes = new Map();
+  for (const objects of [baseTree, headTree]) {
+    for (const { oid, size } of objects.values()) knownSizes.set(oid, size);
+  }
+  const unresolvedObjects = candidates.flatMap(candidate => candidate.uniqueCandidates.filter(oid => !knownSizes.has(oid)));
+  for (const [oid, size] of objectSizes(root, unresolvedObjects, metrics)) knownSizes.set(oid, size);
+
+  for (const { repoPath, headObject, currentWorkOid, uniqueCandidates } of candidates) {
+    const baseObject = baseTree.get(repoPath);
+    const baseOid = baseObject?.oid ?? null;
+    const baseSize = baseObject?.size ?? null;
+    const workSize = currentWorkOid ? workingSizeFromFilesystem(root, repoPath) : null;
+    const candidateSize = Math.max(...uniqueCandidates.map(oid => oid === currentWorkOid
+      ? (knownSizes.get(oid) ?? workSize)
+      : knownSizes.get(oid)).filter(Number.isFinite));
     const changedObjects = uniqueCandidates.filter(oid => oid !== baseOid);
+    if (changedObjects.length > 0 && isForbiddenRawOutput(repoPath)) {
+      errors.push(`GIT_RAW_OUTPUT_FORBIDDEN:${repoPath}`);
+      files.push({ path: repoPath, classification: classify(repoPath), baseBytes: baseSize, candidateBytes: candidateSize, checked: true });
+      continue;
+    }
     if (changedObjects.length === 0 || isProductionExemption(repoPath)) {
       files.push({ path: repoPath, classification: classify(repoPath), baseBytes: baseSize, candidateBytes: candidateSize, checked: false });
       continue;
@@ -173,7 +250,7 @@ export function auditGitGrowth({ root, base = 'HEAD^', head = 'HEAD' } = {}) {
         ? FOOTPRINT_LIMITS.transientBlobBytes
         : FOOTPRINT_LIMITS.changedBlobBytes;
     for (const oid of changedObjects) {
-      const size = objectSize(root, oid) ?? (currentWorkOid === oid ? workingSizeFromFilesystem(root, repoPath) : null);
+      const size = knownSizes.get(oid) ?? (currentWorkOid === oid ? workSize : null);
       if (size === null) continue;
       if (!baseObjects.has(oid)) introducedObjects.set(oid, size);
       if (size > limit) errors.push(`GIT_GROWTH_FILE_LIMIT:${repoPath}:${size}:${limit}:${classification}`);

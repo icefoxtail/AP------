@@ -6,7 +6,12 @@ import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 
-import { loadRecoveryManifest, restoreRecoveryPaths } from '../tools/archive-analysis-recovery.mjs';
+import {
+  assertHistoricalReferenceParity,
+  checkRecoveryManifest,
+  loadRecoveryManifest,
+  restoreRecoveryPaths
+} from '../tools/archive-analysis-recovery.mjs';
 
 const repoRoot = execFileSync('git', ['rev-parse', '--show-toplevel'], {
   cwd: path.resolve(import.meta.dirname, '..'),
@@ -29,6 +34,9 @@ test('all 11 removed catalog paths rehydrate to their recorded bytes and refuse 
     const restored = restoreRecoveryPaths({ root: repoRoot, paths, destinationRoot: destination });
 
     assert.equal(restored.restored.length, 11);
+    assert.equal(restored.status, 'ARCHIVED_BASELINE_BOUND');
+    assert.equal(restored.technicalOnly, true);
+    assert.equal(restored.missingHeadReferenceCount, 25);
     assert.equal(restored.restored.reduce((total, entry) => total + entry.sizeBytes, 0), 326839777);
     for (const entry of manifest.entries) {
       const restoredPath = path.join(destination, ...entry.originalPath.split('/'));
@@ -47,6 +55,60 @@ test('all 11 removed catalog paths rehydrate to their recorded bytes and refuse 
     assert.deepEqual(fs.readFileSync(restoredPath), before);
   } finally {
     removeOwnedTempDirectory(destination);
+  }
+});
+
+test('post-migration HEAD binds absent history references to the verified Drive root receipt', () => {
+  const report = checkRecoveryManifest({ root: repoRoot });
+  assert.equal(report.status, 'ARCHIVED_BASELINE_BOUND');
+  assert.equal(report.technicalOnly, true);
+  assert.equal(report.baselineAvailable, true);
+  assert.equal(report.missingHeadReferenceCount, 25);
+  assert.equal(report.baselineArchiveAnalysisPathCount, 19548);
+  assert.equal(report.baselineArchiveAnalysisBytes, 5396870829);
+  assert.equal(report.driveRootReceiptPath, 'archive/data/archive-analysis-drive-root-receipt.v1.json');
+  assert.match(report.driveIndexSha256, /^[0-9a-f]{64}$/);
+
+  assert.throws(
+    () => checkRecoveryManifest({
+      root: repoRoot,
+      receiptPath: path.join(repoRoot, 'archive/data/missing-drive-root-receipt.json')
+    }),
+    /RECOVERY_DRIVE_ROOT_RECEIPT_MISSING/
+  );
+});
+
+test('a changed existing historical reference still rejects against the baseline Git blob', () => {
+  const reference = 'archive/analysis/example/historical-reference.json';
+  const baselineObject = '1'.repeat(40);
+  assert.equal(assertHistoricalReferenceParity(reference, { baselineObject, headObject: baselineObject }), 'unchanged');
+  assert.equal(assertHistoricalReferenceParity(reference, { baselineObject, headObject: null }), 'archived-baseline');
+  assert.throws(
+    () => assertHistoricalReferenceParity(reference, { baselineObject, headObject: '2'.repeat(40) }),
+    /RECOVERY_HISTORICAL_REFERENCE_CHANGED/
+  );
+  assert.throws(
+    () => assertHistoricalReferenceParity(reference, {
+      baselineObject,
+      headObject: null,
+      committedHeadObject: '2'.repeat(40)
+    }),
+    /RECOVERY_HISTORICAL_REFERENCE_CHANGED/
+  );
+});
+
+test('a shallow checkout without baseline or retained HEAD objects returns a migration message', () => {
+  const shallowRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'archive-analysis-recovery-'));
+  try {
+    const manifestFile = path.join(repoRoot, 'tools/archive-analysis-recovery-manifest.v1.json');
+    const localManifest = path.join(shallowRoot, 'archive-analysis-recovery-manifest.v1.json');
+    fs.copyFileSync(manifestFile, localManifest);
+    assert.throws(
+      () => checkRecoveryManifest({ root: shallowRoot, manifestPath: localManifest }),
+      /MIGRATED_TO_DRIVE:.*tools\/archive-cold-evidence\.mjs/
+    );
+  } finally {
+    removeOwnedTempDirectory(shallowRoot);
   }
 });
 

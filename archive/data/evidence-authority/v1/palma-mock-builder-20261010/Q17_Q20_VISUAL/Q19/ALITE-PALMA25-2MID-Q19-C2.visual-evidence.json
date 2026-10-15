@@ -1,0 +1,701 @@
+{
+  "schemaVersion": "PALMA_Q19_VISUAL_ITEM_PHYSICAL_EVIDENCE_V1",
+  "uid": "ALITE-PALMA25-2MID-Q19-C2",
+  "sourceQid": 19,
+  "need": "BENEFICIAL",
+  "problemNeed": "EXEMPT",
+  "assetAction": "NEW_SVG",
+  "sourcePackagePath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q19_PACKAGE.json",
+  "sourcePackageRawSha256": "CCA9D8A93E10FCE4428C817F6FDA2CC9533F58E3F9427E3854AB2A5D6464EFC9",
+  "sourcePackageRawGitBlobSha1": "5b1af10be968fa2050af8f9000bb9e9f6b2f1616",
+  "sourcePackageHeadBytesSha256": "4FE6A3E4A884682C5B8E02258D426FA22B5CBF786778CF7AE4591840C6EF501F",
+  "sourcePackageHeadBlobSha1": "4a4636fe6f7412520b9752b82ebef14ea2f4fd3a",
+  "sourceExamPath": "archive/exams/original/high/h1/2mid/25_팔마고_2학기_중간_고1_기출.js",
+  "sourceExamSha256": "60049EC6A7DEF1EC9D1E15A6319ECFCF916FC3BA63F4BFC55E128D3A05CB12A1",
+  "sourceExamWorkingTreeBlobSha1": "dd6eb8aeb7de12ad655e9d7ef086a751a40a6096",
+  "sourceExamHeadBlobSha1": "e7ead9fb1404f0fdb01dbfeafdee268f617b992e",
+  "lockedApprovalSourceExamBlobSha1": "4cfce909c023e5c4df4a759945c8cc3e0a63ec76",
+  "sourceIdentityNote": "The approved receipt points to the earlier whole-exam blob; saved Q19 calibration proves unchanged q19 content/solution bytes against current exam blob.",
+  "frozenOriginalQ19ContentSha256": "6986b7a9817498ce54dd416ff383f06dc3d3276f53a68e225d7b9512db68e2ab",
+  "frozenOriginalQ19SolutionSha256": "171699eaf7cbbb05a371f85d23c1027b5ceb949e74a6df7d0c7c8f912bc9af97",
+  "approvalReceiptPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_중간_고1/GPT_QID9_Q17_Q23_USER_DIRECTED_APPROVAL_20261010.json",
+  "approvalReceiptSha256": "38BEFC817FB0FC07659BA35F13709C54F07C12715D7680975A3955DAE39C2B2D",
+  "approvalReceiptRawGitBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+  "approvalReceiptCleanGitBlobSha1": "2b5290107e4c204ceb76a88468c19104e5074089",
+  "approvalReceiptHeadBlobSha1": "5813555d09e63d3afeb5c3c4e0d941bc2383b0d2",
+  "approvedUid": "ALITE-PALMA25-2MID-Q19-C2",
+  "calibrationPreflightPath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/Q19/Q19.calibration-preflight.json",
+  "calibrationPreflightSha256": "344C666D1D18EA41CF87005DD4D27FD6BC2608E5C319D36281345608B48E59C2",
+  "preflightApprovalReceiptGitBlobClaim": "2b5290107e4c204ceb76a88468c19104e5074089",
+  "preflightApprovalReceiptBlobClaimParity": "PASS",
+  "sourceProblemSha256": "6328C8297AE9DD86376F1959049FA19A5BDBB67FCDAFC6C341E195EC6FBE718F",
+  "sourceSolutionSha256": "D93D6324BE054054E4477E5ABDEABB309250DF10962F9B308785EED1D68F613B",
+  "slot": "C2",
+  "sourceConditionCoverage": [
+    "큰 원의 중심과 반지름",
+    "S1 중심·반지름·y 반평면",
+    "S2 중심·반지름·y 반평면",
+    "source line equation and fixed x-anchor",
+    "source line slope sign/value or natural-number parameter restriction",
+    "서로 다른 교점의 중복 제거",
+    "접선 경계는 한 교점으로 센다",
+    "수평선 끝점의 중복/큰 원 교차를 구분한다"
+  ],
+  "decisiveRelationCovered": true,
+  "uncoveredCriticalConditions": [],
+  "expectedFactCompletenessStatus": "PASS",
+  "expectedFacts": {
+    "bigCircleCenterAndRadius": {
+      "center": [
+        0,
+        0
+      ],
+      "radius": 10,
+      "role": "GIVEN"
+    },
+    "lowerSemicircle": {
+      "sourceLabel": "S1",
+      "center": [
+        2,
+        0
+      ],
+      "radius": 1,
+      "halfPlane": "y>=0",
+      "role": "GIVEN"
+    },
+    "upperSemicircle": {
+      "sourceLabel": "S2",
+      "center": [
+        5,
+        0
+      ],
+      "radius": 1,
+      "halfPlane": "y>=0",
+      "role": "GIVEN"
+    },
+    "lineFamily": {
+      "equation": "y=m(x-anchor)",
+      "anchorX": -1,
+      "role": "GIVEN"
+    },
+    "representativeLine": {
+      "slope": 0.25,
+      "role": "DERIVED_INTERMEDIATE"
+    },
+    "representativeDistinctIntersections": {
+      "count": 4,
+      "role": "DERIVED_INTERMEDIATE",
+      "points": [
+        [
+          -9.757394750835271,
+          -2.1893486877088177
+        ],
+        [
+          9.63974769201174,
+          2.659936923002935
+        ],
+        [
+          1.1580171471185436,
+          0.5395042867796359
+        ],
+        [
+          2.489041676410868,
+          0.872260419102717
+        ]
+      ]
+    },
+    "tangentThresholds": [
+      0.1690308509457033,
+      0.35355339059327373
+    ],
+    "horizontalEndpointBoundary": {
+      "m": 0,
+      "role": "DERIVED_INTERMEDIATE"
+    }
+  },
+  "pythonInputs": {
+    "geometry": {
+      "big": [
+        0,
+        0,
+        10
+      ],
+      "lower": [
+        2,
+        0,
+        1,
+        1
+      ],
+      "upper": [
+        5,
+        0,
+        1,
+        1
+      ],
+      "anchor": -1,
+      "mValue": 0.25,
+      "case": "n=5, m=1/4: 4개",
+      "thresholds": [
+        0.1690308509457033,
+        0.35355339059327373
+      ]
+    },
+    "sourceStem": "큰 원 $C:x^2+y^2=100$, 위쪽 반원호 $S_1:(x-2)^2+y^2=1\\ (y\\ge0)$, 위쪽 반원호 $S_2:(x-5)^2+y^2=1\\ (y\\ge0)$이 있다. 자연수 $n$에 대하여 직선 $y=\\dfrac n{20}(x+1)$이 세 곡선의 합집합과 서로 다른 네 점에서 만나는 $n$의 개수는?",
+    "intersectionFormula": "substitute y=m(x-a) into each circle equation; retain roots on source half-plane; deduplicate shared coordinates within 1e-8"
+  },
+  "pythonCalculatedOutputs": {
+    "representative": {
+      "bigCircle": [
+        [
+          -9.757394750835271,
+          -2.1893486877088177
+        ],
+        [
+          9.63974769201174,
+          2.659936923002935
+        ]
+      ],
+      "lowerArc": [
+        [
+          1.1580171471185436,
+          0.5395042867796359
+        ],
+        [
+          2.489041676410868,
+          0.872260419102717
+        ]
+      ],
+      "upperArc": [],
+      "distinctUnion": [
+        [
+          -9.757394750835271,
+          -2.1893486877088177
+        ],
+        [
+          9.63974769201174,
+          2.659936923002935
+        ],
+        [
+          1.1580171471185436,
+          0.5395042867796359
+        ],
+        [
+          2.489041676410868,
+          0.872260419102717
+        ]
+      ],
+      "distinctCount": 4
+    },
+    "tangentBoundaries": [
+      {
+        "m": 0.1690308509457033,
+        "bigCircle": [
+          [
+            -9.886541191582916,
+            -1.5020996195773044
+          ],
+          [
+            9.83098563602736,
+            1.8307707186383944
+          ]
+        ],
+        "lowerArc": [
+          [
+            1.0627541028367,
+            0.3486690812942282
+          ],
+          [
+            2.770579230496634,
+            0.6373442158890412
+          ]
+        ],
+        "upperArc": [
+          [
+            4.833333333333334,
+            0.9860132971832694
+          ]
+        ],
+        "distinctUnion": [
+          [
+            -9.886541191582916,
+            -1.5020996195773044
+          ],
+          [
+            9.83098563602736,
+            1.8307707186383944
+          ],
+          [
+            1.0627541028367,
+            0.3486690812942282
+          ],
+          [
+            2.770579230496634,
+            0.6373442158890412
+          ],
+          [
+            4.833333333333334,
+            0.9860132971832694
+          ]
+        ],
+        "distinctCount": 5
+      },
+      {
+        "m": 0.35355339059327373,
+        "bigCircle": [
+          [
+            -9.533962243161861,
+            -3.017211286264856
+          ],
+          [
+            9.31174002093964,
+            3.645750647319565
+          ]
+        ],
+        "lowerArc": [
+          [
+            1.6666666666666667,
+            0.9428090415820634
+          ]
+        ],
+        "upperArc": [],
+        "distinctUnion": [
+          [
+            -9.533962243161861,
+            -3.017211286264856
+          ],
+          [
+            9.31174002093964,
+            3.645750647319565
+          ],
+          [
+            1.6666666666666667,
+            0.9428090415820634
+          ]
+        ],
+        "distinctCount": 3
+      }
+    ],
+    "horizontalBoundary": {
+      "bigCircle": [
+        [
+          -10.0,
+          -0.0
+        ],
+        [
+          10.0,
+          0.0
+        ]
+      ],
+      "lowerArc": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          3.0,
+          0.0
+        ]
+      ],
+      "upperArc": [
+        [
+          4.0,
+          0.0
+        ],
+        [
+          6.0,
+          0.0
+        ]
+      ],
+      "distinctUnion": [
+        [
+          -10.0,
+          -0.0
+        ],
+        [
+          10.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          3.0,
+          0.0
+        ],
+        [
+          4.0,
+          0.0
+        ],
+        [
+          6.0,
+          0.0
+        ]
+      ],
+      "distinctCount": 6
+    }
+  },
+  "coordinateModel": {
+    "provenance": "SOURCE_COORDINATES",
+    "xRange": [
+      -13.200000000000001,
+      13.200000000000001
+    ],
+    "yRange": [
+      -13.200000000000001,
+      13.200000000000001
+    ],
+    "equalScale": true,
+    "rendererTransform": "margin=32; sx=(width-64)/(xHigh-xLow); sy=(height-64)/(yHigh-yLow); screenX=32+(x-xLow)*sx; screenY=height-32-(y-yLow)*sy",
+    "arcRepresentation": "Python-sampled source semicircle polylines in curves[].points; circle_geometry v0.5.2 has no native arc primitive"
+  },
+  "actualSvgPrimitives": {
+    "outerCircle": {
+      "center": [
+        0.0,
+        0.0
+      ],
+      "radius": 10.000000013793105
+    },
+    "axes": [
+      {
+        "from": [
+          0.0,
+          13.200000000000001
+        ],
+        "to": [
+          0.0,
+          -13.200000000000001
+        ],
+        "class": "axis",
+        "horizontal": false,
+        "yValue": 0.0
+      },
+      {
+        "from": [
+          -13.200000000000001,
+          0.0
+        ],
+        "to": [
+          13.200000000000001,
+          0.0
+        ],
+        "class": "axis",
+        "horizontal": true,
+        "yValue": 0.0
+      }
+    ],
+    "lines": [
+      {
+        "from": [
+          -13.200000000000001,
+          -3.0500000034482753
+        ],
+        "to": [
+          13.200000000000001,
+          3.5499999965517244
+        ],
+        "class": "shape",
+        "expectedSlope": 0.25,
+        "observedSlope": 0.24999999999999997,
+        "slopeDelta": -2.7755575615628914e-17,
+        "endpointLineResiduals": [
+          -3.4482749988740125e-09,
+          -3.448275887052432e-09
+        ]
+      },
+      {
+        "from": [
+          -13.200000000000001,
+          -2.062176372413793
+        ],
+        "to": [
+          13.200000000000001,
+          2.400238082758621
+        ],
+        "class": "guide",
+        "expectedSlope": 0.1690308509457033,
+        "observedSlope": 0.16903085057471265,
+        "slopeDelta": -3.709906548632347e-10,
+        "endpointLineResiduals": [
+          9.123787503284575e-09,
+          -6.70365984944965e-10
+        ]
+      },
+      {
+        "from": [
+          -13.200000000000001,
+          -4.313351368965517
+        ],
+        "to": [
+          13.200000000000001,
+          5.020458148275862
+        ],
+        "class": "guide",
+        "expectedSlope": 0.35355339059327373,
+        "observedSlope": 0.3535533908045977,
+        "slopeDelta": 2.113239583323434e-10,
+        "endpointLineResiduals": [
+          -3.727576469714222e-09,
+          1.8513750532633821e-09
+        ]
+      }
+    ],
+    "arcPolylines": [
+      {
+        "sourceArc": "S1",
+        "sampleCount": 129,
+        "first": [
+          2.999999996551727,
+          0.0
+        ],
+        "last": [
+          0.9999999862068965,
+          0.0
+        ],
+        "maxCircleResidual": 2.1476916911566946e-08,
+        "halfPlaneMinimum": 0.0
+      },
+      {
+        "sourceArc": "S2",
+        "sampleCount": 129,
+        "first": [
+          5.999999993103449,
+          0.0
+        ],
+        "last": [
+          3.999999982758622,
+          0.0
+        ],
+        "maxCircleResidual": 2.2111958153381295e-08,
+        "halfPlaneMinimum": 0.0
+      }
+    ],
+    "intersectionPoints": [
+      [
+        -9.757394748275862,
+        -2.1893487
+      ],
+      [
+        9.639747700000003,
+        2.6599369310344834
+      ],
+      [
+        1.1580171482758619,
+        0.5395042931034499
+      ],
+      [
+        2.4890416896551724,
+        0.8722604379310344
+      ]
+    ],
+    "annotations": [
+      "n=5, m=1/4: 4개",
+      "반지름: C 10, S₁ 1, S₂ 1",
+      "원호 접선 경계 1: 1점",
+      "원호 접선 경계 2: 1점",
+      "두 접선 경계 모두 제외",
+      "m=0 (x축): 끝점 중복, 제외"
+    ],
+    "annotationTextNodes": [
+      {
+        "text": "n=5, m=1/4: 4개",
+        "screenAnchor": [
+          52.88,
+          77.24
+        ]
+      },
+      {
+        "text": "반지름: C 10, S₁ 1, S₂ 1",
+        "screenAnchor": [
+          52.88,
+          113.78
+        ]
+      },
+      {
+        "text": "원호 접선 경계 1: 1점",
+        "screenAnchor": [
+          52.88,
+          150.32
+        ]
+      },
+      {
+        "text": "원호 접선 경계 2: 1점",
+        "screenAnchor": [
+          52.88,
+          186.86
+        ]
+      },
+      {
+        "text": "두 접선 경계 모두 제외",
+        "screenAnchor": [
+          52.88,
+          223.4
+        ]
+      },
+      {
+        "text": "m=0 (x축): 끝점 중복, 제외",
+        "screenAnchor": [
+          52.88,
+          259.94
+        ]
+      }
+    ]
+  },
+  "observedFacts": {
+    "outerCircleParity": "PASS",
+    "arcHalfPlaneAndRadiusParity": "PASS",
+    "linePointParity": "PASS",
+    "representativeDistinctIntersectionCount": 4,
+    "representativeIntersectionCoordinates": [
+      [
+        -9.757394748275862,
+        -2.1893487
+      ],
+      [
+        9.639747700000003,
+        2.6599369310344834
+      ],
+      [
+        1.1580171482758619,
+        0.5395042931034499
+      ],
+      [
+        2.4890416896551724,
+        0.8722604379310344
+      ]
+    ],
+    "horizontalEndpointBoundaryUsesActualXAxis": true,
+    "tangentBoundaryAndEndpointCaseShown": true
+  },
+  "deltaTolerance": {
+    "coordinates": 1e-05,
+    "radius": 1e-06,
+    "arcRadiusResidual": 0.002,
+    "dedupDistance": 1e-08
+  },
+  "labelOwnerBindings": [
+    {
+      "text": "n=5, m=1/4: 4개",
+      "screenAnchor": [
+        52.88,
+        77.24
+      ],
+      "semanticOwner": "representative slope/intersection case",
+      "result": "PASS"
+    },
+    {
+      "text": "반지름: C 10, S₁ 1, S₂ 1",
+      "screenAnchor": [
+        52.88,
+        113.78
+      ],
+      "semanticOwner": "three stated circle radii",
+      "result": "PASS"
+    },
+    {
+      "text": "원호 접선 경계 1: 1점",
+      "screenAnchor": [
+        52.88,
+        150.32
+      ],
+      "semanticOwner": "semicircle tangency boundary",
+      "result": "PASS"
+    },
+    {
+      "text": "원호 접선 경계 2: 1점",
+      "screenAnchor": [
+        52.88,
+        186.86
+      ],
+      "semanticOwner": "semicircle tangency boundary",
+      "result": "PASS"
+    },
+    {
+      "text": "두 접선 경계 모두 제외",
+      "screenAnchor": [
+        52.88,
+        223.4
+      ],
+      "semanticOwner": "semicircle tangency boundary",
+      "result": "PASS"
+    },
+    {
+      "text": "m=0 (x축): 끝점 중복, 제외",
+      "screenAnchor": [
+        52.88,
+        259.94
+      ],
+      "semanticOwner": "representative slope/intersection case",
+      "result": "PASS"
+    }
+  ],
+  "sourceSemanticIdentity": {
+    "applicable": true,
+    "checks": [
+      {
+        "semanticRole": "큰 원",
+        "sourceLabel": "C",
+        "artifactLabel": "circle primitive 1 (unlabeled by design)",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "첫 번째 source 반원호",
+        "sourceLabel": "S1",
+        "artifactLabel": "curve primitive 1 (sampled in source equation order)",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "두 번째 source 반원호",
+        "sourceLabel": "S2",
+        "artifactLabel": "curve primitive 2 (sampled in source equation order)",
+        "result": "PASS"
+      },
+      {
+        "semanticRole": "교점 직선",
+        "sourceLabel": "line through the stated anchor",
+        "artifactLabel": "line primitive 1 (solid representative case)",
+        "result": "PASS"
+      }
+    ]
+  },
+  "factVisualizations": [
+    {
+      "fact": "C, S1, S2 source loci and line family anchor",
+      "role": "GIVEN",
+      "encoding": "outer circle, two half-plane filtered sampled polylines, representative line through stated anchor"
+    },
+    {
+      "fact": "representative case point count",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "one point primitive per deduplicated actual intersection"
+    },
+    {
+      "fact": "tangent and m=0 endpoint boundary cases",
+      "role": "DERIVED_INTERMEDIATE",
+      "encoding": "guide lines, actual x-axis and Korean case annotations"
+    }
+  ],
+  "xmlParse": "PASS",
+  "staticPrimitiveExtractionExecuted": true,
+  "styleFloorStatus": "STATIC_ONLY_RENDER_PENDING",
+  "styleVersion": "visual_renderer_0.5.2-circle-geometry-label-layout",
+  "semanticGeometryPreserved": true,
+  "visualSpecPath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/Q19/ALITE-PALMA25-2MID-Q19-C2.visual-spec.json",
+  "visualSpecSha256": "9D77A21DA590704EC044F763EC1A674D78F0BE6C9972401C21545E632CE72176",
+  "rendererReportPath": "archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/Q19/ALITE-PALMA25-2MID-Q19-C2.render-report.json",
+  "rendererReportSha256": "FF845B8A942B4DB3B209137CC19E87CA3C07B1BB0B6DCB9B1C48B9A12B6446B0",
+  "sourceSvgPath": "archive/assets/generated-lite/palma-speed-pilot/ALITE-PALMA25-2MID-Q19-C2-solution.svg",
+  "sourceSvgSha256": "D67F2C807411840B96F833EC7E00A7142375C0E20DF251EAA80605A5ABC679E0",
+  "sourceSvgGitBlobSha1": "bc9f67c795999b9b36149253304bcfab256050c1",
+  "browserRenderEvidence": {
+    "status": "RENDER_PENDING",
+    "reason": "Actual HTTP Archive mode=sol browser QA is assigned after projection; no browser render was run in this materialization."
+  },
+  "consumerReference": "PENDING_PROJECTION",
+  "newVisualInformation": [
+    "source half-plane clipping of each semicircle",
+    "representative line's point count and exact intersection coordinates",
+    "tangent boundary count and m=0 endpoint coincidence are visibly distinguished"
+  ]
+}

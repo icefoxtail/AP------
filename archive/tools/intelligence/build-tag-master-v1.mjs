@@ -2,6 +2,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readHotEvidenceAuthority } from '../evidence-authority-v1.mjs';
 
 /**
  * Compiles the documented archive tag contract into a machine-readable master.
@@ -224,11 +225,19 @@ function sameJson(left, right) {
 }
 
 function readBoundJson(relativePath, expectedSha256, label) {
-    const file = path.join(repoDir, ...relativePath.split('/'));
-    const bytes = fs.readFileSync(file);
+    const bytes = relativePath.startsWith('archive/analysis/')
+        ? readHotEvidenceAuthority({ root: repoDir, originalPath: relativePath }).bytes
+        : fs.readFileSync(path.join(repoDir, ...relativePath.split('/')));
     const actualSha256 = sha256(bytes);
     if (actualSha256 !== expectedSha256) throw new Error(`${label}_SHA256_MISMATCH:${relativePath}:${actualSha256}`);
     return { value: JSON.parse(bytes.toString('utf8').replace(/^\uFEFF/, '')), bytes };
+}
+
+function readHistoricalWorkingSourceSnapshot(row) {
+    const relativePath = `archive/analysis/h2-intake-batch01-20261009/${row.examUid}/working-package-snapshot.r1-v1/${row.examUid}.js.bytes.txt`;
+    const resolved = readHotEvidenceAuthority({ root: repoDir, originalPath: relativePath });
+    if (resolved.entry.sourceReferencePath !== row.workingJsAbsolute) throw new Error(`ROOT_H15_M1_SOURCE_REFERENCE_MISMATCH:${row.examUid}`);
+    return resolved.bytes;
 }
 
 function loadApprovedH15M1Definitions() {
@@ -239,7 +248,7 @@ function loadApprovedH15M1Definitions() {
         || !rootAuthority.allowedActions?.some(action => String(action).includes('registered child keys'))
         || rootAuthority.rows?.length !== 6) throw new Error('ROOT_H15_M1_SUBUNIT_RECOVERY_AUTHORITY_INVALID');
     for (const row of rootAuthority.rows) {
-        const sourceBytes = fs.readFileSync(row.workingJsAbsolute);
+        const sourceBytes = readHistoricalWorkingSourceSnapshot(row);
         if (sha256(sourceBytes) !== row.currentJsRawSha256) throw new Error(`ROOT_H15_M1_SOURCE_SHA_MISMATCH:${row.examUid}`);
     }
     const graphRef = readBoundJson(SUBUNIT_RECOVERY.graphAuthorityPath, SUBUNIT_RECOVERY.graphAuthoritySha256, 'R1_GRAPH_AUTHORITY');
@@ -352,8 +361,7 @@ export function renderApprovedSourceAppendix(definitions) {
 export function buildApprovedSubunitAppendV1() {
     const authority = loadApprovedH15M1Definitions();
     const sourceBytes = fs.readFileSync(sourcePath);
-    const baselineDocPath = path.join(repoDir, ...SUBUNIT_RECOVERY.sourceDocumentBaselineSnapshot.split('/'));
-    const baselineDocBytes = fs.readFileSync(baselineDocPath);
+    const baselineDocBytes = readHotEvidenceAuthority({ root: repoDir, originalPath: SUBUNIT_RECOVERY.sourceDocumentBaselineSnapshot }).bytes;
     if (sha256(baselineDocBytes) !== SUBUNIT_RECOVERY.sourceDocumentBaselineSha256) throw new Error('SUBUNIT_SOURCE_BASELINE_SNAPSHOT_SHA256_MISMATCH');
     const baselineDocText = baselineDocBytes.toString('utf8');
     const eol = baselineDocText.includes('\r\n') ? '\r\n' : '\n';
@@ -361,8 +369,7 @@ export function buildApprovedSubunitAppendV1() {
     const expectedSourceBytes = Buffer.concat([baselineDocBytes, appendixBytes]);
     if (!sourceBytes.equals(expectedSourceBytes)) throw new Error('SUBUNIT_CANONICAL_SOURCE_NOT_EXACT_APPROVED_APPENDIX');
 
-    const baselineMasterPath = path.join(repoDir, ...SUBUNIT_RECOVERY.compiledMasterBaselineSnapshot.split('/'));
-    const baselineMasterBytes = fs.readFileSync(baselineMasterPath);
+    const baselineMasterBytes = readHotEvidenceAuthority({ root: repoDir, originalPath: SUBUNIT_RECOVERY.compiledMasterBaselineSnapshot }).bytes;
     if (sha256(baselineMasterBytes) !== SUBUNIT_RECOVERY.compiledMasterBaselineSha256) throw new Error('SUBUNIT_MASTER_BASELINE_SNAPSHOT_SHA256_MISMATCH');
     const baselineMaster = JSON.parse(baselineMasterBytes.toString('utf8'));
     const currentMasterBytes = fs.readFileSync(outputPath);

@@ -39,28 +39,30 @@ test('ignore rules hide only rebuildable snapshot folders and the static-site ou
   try {
     fs.copyFileSync(path.join(import.meta.dirname, '..', '.gitignore'), path.join(tempRoot, '.gitignore'));
     execFileSync('git', ['init', '--quiet'], { cwd: tempRoot, stdio: 'ignore' });
-    for (const relative of ['archive/analysis/run/conflict-stage-snapshots/catalog.bin', '_site/index.html']) {
+    for (const relative of ['archive/analysis/run/conflict-stage-snapshots/catalog.bin', 'archive/evidence/run/physical-evidence.json', '_site/index.html']) {
       assert.doesNotThrow(() => execFileSync('git', ['check-ignore', '--no-index', '-q', '--', relative], { cwd: tempRoot, stdio: 'ignore' }));
     }
     assert.throws(() => execFileSync('git', ['check-ignore', '--no-index', '-q', '--',
-      'archive/analysis/run/receipt.json'], { cwd: tempRoot, stdio: 'ignore' }));
+      'archive/data/evidence-authority/v1/index.json'], { cwd: tempRoot, stdio: 'ignore' }));
   } finally {
     fs.rmSync(tempRoot, { recursive: true, force: true });
   }
 });
 
-test('new large analysis catalog and conflict snapshots fail while small receipts pass', () => {
+test('all changed analysis outputs are forbidden while production authority receipts remain allowed', () => {
   const repo = makeRepo();
   try {
     write(repo.root, 'archive/analysis/run/catalog.snapshot.json', Buffer.alloc(3 * 1024 * 1024));
     write(repo.root, 'archive/analysis/run/receipt.json', JSON.stringify({ status: 'captured', count: 2 }));
-    execFileSync('git', ['add', '-f', 'archive/analysis/run/catalog.snapshot.json', 'archive/analysis/run/receipt.json'], { cwd: repo.root });
+    write(repo.root, 'archive/data/evidence-authority/v1/receipt.json', JSON.stringify({ status: 'FULL_BYTES_VERIFIED', count: 2 }));
+    execFileSync('git', ['add', '-f', 'archive/analysis/run/catalog.snapshot.json', 'archive/analysis/run/receipt.json', 'archive/data/evidence-authority/v1/receipt.json'], { cwd: repo.root });
     commit(repo.root, 'add analysis evidence');
     const report = auditGitGrowth({ root: repo.root, base: repo.base, head: 'HEAD' });
     assert.equal(report.ok, false);
-    assert.ok(report.errors.some(error => error.includes('catalog.snapshot.json')));
-    assert.ok(report.files.some(file => file.path.endsWith('receipt.json') && file.checked));
-    assert.ok(!report.errors.some(error => error.includes('receipt.json')));
+    assert.ok(report.errors.some(error => error === 'GIT_RAW_OUTPUT_FORBIDDEN:archive/analysis/run/catalog.snapshot.json'));
+    assert.ok(report.errors.some(error => error === 'GIT_RAW_OUTPUT_FORBIDDEN:archive/analysis/run/receipt.json'));
+    assert.ok(report.files.some(file => file.path === 'archive/data/evidence-authority/v1/receipt.json' && file.checked));
+    assert.ok(!report.errors.some(error => error.includes('archive/data/evidence-authority/v1/receipt.json')));
   } finally {
     cleanRepo(repo);
   }
@@ -101,6 +103,79 @@ test('visible untracked output is checked before it is staged', () => {
     const report = auditGitGrowth({ root: repo.root, base: repo.base, head: 'HEAD' });
     assert.equal(report.ok, false);
     assert.ok(report.errors.some(error => error.includes('untracked-capture.capture.json')));
+  } finally {
+    cleanRepo(repo);
+  }
+});
+
+test('raw artifacts are forbidden in designated output roots even when small', () => {
+  const repo = makeRepo();
+  try {
+    for (const relative of [
+      'output/run.json',
+      'reports/run.json',
+      'render_review/run.json',
+      'artifacts/run.json',
+      'archive-work/run.json',
+      'archive/evidence/run.json',
+      'evidence/run.json',
+      '스캔_인테이크_산출물/run.json'
+    ]) write(repo.root, relative, '{"ok":true}\n');
+    commit(repo.root, 'add small raw outputs');
+    const report = auditGitGrowth({ root: repo.root, base: repo.base, head: 'HEAD' });
+    assert.equal(report.ok, false);
+    for (const relative of [
+      'output/run.json',
+      'reports/run.json',
+      'render_review/run.json',
+      'artifacts/run.json',
+      'archive-work/run.json',
+      'archive/evidence/run.json',
+      'evidence/run.json',
+      '스캔_인테이크_산출물/run.json'
+    ]) assert.ok(report.errors.includes(`GIT_RAW_OUTPUT_FORBIDDEN:${relative}`), relative);
+  } finally {
+    cleanRepo(repo);
+  }
+});
+
+test('a force-staged small archive/evidence file remains forbidden despite the ignore rule', () => {
+  const repo = makeRepo();
+  try {
+    fs.copyFileSync(path.join(import.meta.dirname, '..', '.gitignore'), path.join(repo.root, '.gitignore'));
+    execFileSync('git', ['add', '.gitignore'], { cwd: repo.root });
+    commit(repo.root, 'install production cold-root ignores');
+    const base = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo.root, encoding: 'utf8' }).trim();
+    const relative = 'archive/evidence/run/physical-evidence.json';
+    write(repo.root, relative, '{"status":"captured"}\n');
+    assert.doesNotThrow(() => execFileSync('git', ['check-ignore', '-q', '--', relative], { cwd: repo.root, stdio: 'ignore' }));
+    execFileSync('git', ['add', '-f', relative], { cwd: repo.root });
+    const report = auditGitGrowth({ root: repo.root, base, head: 'HEAD' });
+    assert.equal(report.ok, false);
+    assert.ok(report.errors.includes(`GIT_RAW_OUTPUT_FORBIDDEN:${relative}`));
+  } finally {
+    cleanRepo(repo);
+  }
+});
+
+test('only the three canonical generated inputs are allowed under archive/_generated', () => {
+  const repo = makeRepo();
+  try {
+    const allowed = [
+      'archive/_generated/intelligence/meta-foundation/h2-math2-continuity/STAGE6_FINAL_FOUNDATION.json',
+      'archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json',
+      'archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_SOURCE_NORMALIZATION_RECEIPT.json'
+    ];
+    for (const relative of [...allowed, 'archive/_generated/intelligence/other/generated-output.json']) {
+      const destination = path.join(repo.root, relative);
+      fs.mkdirSync(path.dirname(destination), { recursive: true });
+      fs.writeFileSync(destination, '{"ok":true}\n');
+    }
+    commit(repo.root, 'add canonical generated inputs');
+    const report = auditGitGrowth({ root: repo.root, base: repo.base, head: 'HEAD' });
+    assert.equal(report.ok, false);
+    assert.ok(report.errors.includes('GIT_RAW_OUTPUT_FORBIDDEN:archive/_generated/intelligence/other/generated-output.json'));
+    for (const relative of allowed) assert.ok(!report.errors.some(error => error.includes(relative)), relative);
   } finally {
     cleanRepo(repo);
   }
@@ -208,6 +283,58 @@ test('zero-before initial push requires a full-history audit for a multi-commit 
       () => auditGitGrowth({ root: repo.root, base: '0'.repeat(40), head: 'HEAD' }),
       /INITIAL_PUSH_BASE_UNAVAILABLE: full-history audit is required/
     );
+  } finally {
+    cleanRepo(repo);
+  }
+});
+
+test('bulk committed deletions use a bounded number of Git processes', () => {
+  const repo = makeRepo();
+  try {
+    execFileSync('git', ['config', 'core.autocrlf', 'false'], { cwd: repo.root });
+    const directory = 'archive/analysis/bulk-delete-fixture';
+    for (let index = 0; index < 3000; index += 1) {
+      write(repo.root, `${directory}/receipt-${String(index).padStart(4, '0')}.json`, '{"ok":true}\n');
+    }
+    execFileSync('git', ['add', '-f', '--', directory], { cwd: repo.root });
+    commit(repo.root, 'add bulk deletion fixture');
+    const base = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo.root, encoding: 'utf8' }).trim();
+    fs.rmSync(path.join(repo.root, directory), { recursive: true, force: true });
+    commit(repo.root, 'delete bulk analysis receipts');
+
+    const metrics = {};
+    const report = auditGitGrowth({ root: repo.root, base, head: 'HEAD', metrics });
+    assert.equal(report.ok, true, report.errors.join('\n'));
+    assert.equal(report.countedChangedBytes, 0);
+    assert.equal(report.files.length, 0);
+    assert.ok(metrics.gitCommands <= 12, `expected a bounded audit, got ${metrics.gitCommands} Git processes`);
+  } finally {
+    cleanRepo(repo);
+  }
+});
+
+test('ignored local evidence retained after rm --cached is skipped with bounded Git processes', () => {
+  const repo = makeRepo();
+  try {
+    const paths = Array.from({ length: 48 }, (_, index) => `archive/evidence/retained-${String(index).padStart(3, '0')}.json`);
+    for (const [index, relative] of paths.entries()) write(repo.root, relative, `baseline evidence ${index}\n`);
+    execFileSync('git', ['add', '-f', '--', ...paths], { cwd: repo.root });
+    commit(repo.root, 'seed tracked cold evidence');
+    const base = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo.root, encoding: 'utf8' }).trim();
+
+    fs.appendFileSync(path.join(repo.root, '.gitignore'), '/archive/evidence/\n');
+    execFileSync('git', ['rm', '--cached', '--', ...paths], { cwd: repo.root, stdio: 'ignore' });
+    commit(repo.root, 'remove cold evidence from Git while retaining local copies');
+    for (const [index, relative] of paths.entries()) {
+      write(repo.root, relative, `locally modified retained evidence ${index}\n`);
+    }
+    assert.doesNotThrow(() => execFileSync('git', ['check-ignore', '-q', '--', paths[0]], { cwd: repo.root, stdio: 'ignore' }));
+
+    const metrics = {};
+    const report = auditGitGrowth({ root: repo.root, base, head: 'HEAD', metrics });
+    assert.equal(report.ok, true, report.errors.join('\n'));
+    assert.ok(metrics.gitCommands <= 12, `expected bounded Git work, got ${metrics.gitCommands} commands`);
+    assert.ok(!report.files.some(file => paths.includes(file.path)));
   } finally {
     cleanRepo(repo);
   }
