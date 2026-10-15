@@ -300,8 +300,51 @@ export async function resolveSavedPaperSourceGrades(_env, questions) {
 // Original issue needs verified source bytes/ordinal identity, not automatic
 // selection approval. All raw fields (including visual/layout fields) are hashed.
 export async function validateOriginalSnapshot(env, payload, input) {
-  const data = await loadCanonicalCatalog(env, requireProjectionVersion(input)),
+  const expectedVersion = requireProjectionVersion(input),
     file = norm(input.archive_file);
+  let data;
+  try {
+    // Original issuance names one source file, so its rows can be checked from
+    // the projection-bound shard. A valid pre-shard manifest keeps the existing
+    // full resolver path for rolling compatibility.
+    const sourceBundle = await canonical.loadSourceVerificationShard(
+      (url) => env.ARCHIVE2_ASSETS ? env.ARCHIVE2_ASSETS.fetch(url) : fetch(url),
+      String(
+        env.ARCHIVE_PUBLIC_BASE_URL ||
+          "https://icefoxtail.github.io/AP------/archive",
+      ).replace(/\/+$/, "") + "/",
+      expectedVersion,
+      file,
+    );
+    if (sourceBundle.legacyManifest) {
+      data = await loadCanonicalCatalog(env, expectedVersion);
+    } else {
+      const { shard } = sourceBundle;
+      const identityByUid = Object.fromEntries(shard.records
+        .filter((row) => row.questionUid)
+        .map((row) => [row.questionUid, {
+          questionUid: row.questionUid,
+          sourceArchiveFile: row.identitySourceFile || "",
+          sourceOrdinal: Number(row.identitySourceOrdinal || 0),
+          status: row.identityStatus || "UNRESOLVED",
+        }]));
+      data = {
+        exams: [shard.exam],
+        records: shard.records,
+        sourceHashes: [[file, shard.sourceSha256 || ""]],
+        canonicalAuthority: {
+          identityByUid,
+          examGradeByFile: { [file]: shard.exam.grade || "" },
+        },
+      };
+    }
+  } catch (error) {
+    const refreshRequired = error?.code === "CANONICAL_PROJECTION_REFRESH_REQUIRED";
+    fail(
+      error?.message || "승인된 canonical authority를 확인할 수 없습니다.",
+      refreshRequired ? 409 : 503,
+    );
+  }
   const exam = data.exams.find((e) => e.file === file),
     raw = payload?.questions;
   if (

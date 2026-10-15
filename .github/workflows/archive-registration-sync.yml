@@ -125,7 +125,7 @@ jobs:
               git ls-files --others --exclude-standard
             } | sort -u
           )
-          allowed='^(archive/db\.js|archive/data/question_identity_map\.json|archive/data/question_metadata\.json|archive/question-identity\.js|archive/question-index\.js|archive/question-index-report\.md|archive/question-index-audit\.md|archive/data/archive2-catalog\.json|archive/data/archive2-crosswalk-inventory\.json|archive/data/archive2-canonical-input-manifest\.json|archive/data/archive2-canonical-projection-policy\.json|archive/data/archive2-item-review-overrides\.json|archive/data/basic-scope-parent-links\.json|archive/data/meta-foundation/runtime/[^/]+\.json)$'
+          allowed='^(archive/db\.js|archive/data/question_identity_map\.json|archive/data/question_metadata\.json|archive/question-identity\.js|archive/question-index\.js|archive/question-index-report\.md|archive/question-index-audit\.md|archive/data/archive2-catalog\.json|archive/data/archive2-source-verification-index\.json|archive/data/archive2-source-verification/v1/[^/]+\.json|archive/data/archive2-crosswalk-inventory\.json|archive/data/archive2-canonical-input-manifest\.json|archive/data/archive2-canonical-projection-policy\.json|archive/data/archive2-item-review-overrides\.json|archive/data/basic-scope-parent-links\.json|archive/data/meta-foundation/runtime/[^/]+\.json)$'
           for file in "${changed[@]}"; do
             if [[ -n "$file" && ! "$file" =~ $allowed ]]; then
               echo "Unexpected generated file: $file"

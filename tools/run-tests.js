@@ -213,10 +213,30 @@ const requiredCommands = [
     args: ['--test', 'tests/archive2-canonical-projection.test.mjs']
   },
   {
+    label: 'tests/archive2-original-source-verification-shard.test.mjs',
+    args: ['--test', 'tests/archive2-original-source-verification-shard.test.mjs']
+  },
+  {
     label: 'tests/generated-source-svg-namespace.test.cjs',
     args: ['--test', 'tests/generated-source-svg-namespace.test.cjs']
   }
 ];
+
+// Source-verification tests exercise generated canonical artifacts. Build them
+// from the checked-out source tree so code-only pull requests do not depend on
+// already-committed shard outputs.
+const canonicalProjectionBuild = spawnSync(process.execPath, [
+  'archive/tools/build-archive2-catalog.mjs'
+], {
+  cwd: root,
+  stdio: 'inherit',
+  timeout: 120000
+});
+if (canonicalProjectionBuild.error) console.error(canonicalProjectionBuild.error.message);
+if (canonicalProjectionBuild.status !== 0 || canonicalProjectionBuild.error) {
+  console.error('Failed to build canonical Archive2 test projection.');
+  process.exit(1);
+}
 
 let passed = 0;
 const failed = [];
