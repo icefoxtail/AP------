@@ -50,6 +50,109 @@ test('Question authority carries a fullwidth solution-image layout through its r
   assert.match(solution, /class="sol-image-wrap image-medium layout-fullwidth"/);
 });
 
+test('Question authority emits a curated accessible name for an external problem SVG', () => {
+  const description = '원과 접선의 위치 관계 & 교점';
+  const exam = A.renderQuestionHTML(question({ image: 'diagrams/circle-tangent.svg' }), {
+    ...renderOptions,
+    mode: 'exam',
+    resolveImageDescription(assetRef, field) {
+      assert.equal(assetRef, 'diagrams/circle-tangent.svg');
+      assert.equal(field, 'image');
+      return description;
+    }
+  });
+  assert.match(exam, /<img src="\/assets\/diagrams\/circle-tangent\.svg" alt="원과 접선의 위치 관계 &amp; 교점">/);
+});
+
+test('Question authority lets a curated description replace a generic solution-image alt', () => {
+  const solution = A.renderQuestionHTML(question({
+    solutionImage: 'diagrams/circle-tangent-solution.svg',
+    solutionImageAlt: '문항 1 해설 그래프'
+  }), {
+    ...renderOptions,
+    mode: 'solution',
+    resolveImageDescription(assetRef, field, canonicalQuestion, existingAlt) {
+      assert.equal(assetRef, 'diagrams/circle-tangent-solution.svg');
+      assert.equal(field, 'solutionImage');
+      assert.equal(existingAlt, '문항 1 해설 그래프');
+      return '원과 두 접선의 접점 및 교점을 나타낸 그림';
+    }
+  });
+  assert.match(solution, /alt="원과 두 접선의 접점 및 교점을 나타낸 그림"/);
+});
+
+test('Question authority preserves a meaningful source problem-image alt when no curated record applies', () => {
+  const exam = A.renderQuestionHTML(question({
+    image: 'assets/images/sample/unindexed.svg',
+    sourcePayload: { id: 1, imageAlt: '원 위의 점과 중심을 잇는 반지름을 나타낸 그림' }
+  }), { ...renderOptions, mode: 'exam' });
+  assert.match(exam, /alt="원 위의 점과 중심을 잇는 반지름을 나타낸 그림"/);
+});
+
+test('Question authority automatically uses the shared SVG index when the browser page loads it', () => {
+  const previousIndex = globalThis.APSvgAccessibilityIndex;
+  const previousHelper = globalThis.APSvgAccessibility;
+  const helper = require('../archive/svg-accessibility.js');
+  globalThis.APSvgAccessibilityIndex = {
+    schemaVersion: 'SVG_STUDENT_ACCESSIBILITY_V1',
+    records: [{
+      assetRef: 'assets/images/sample/circle.svg',
+      visualRole: 'problem',
+      titleKo: '원과 접선',
+      descriptionKo: '원과 접선이 만나는 위치 관계를 나타낸 그림',
+      sourceExamRef: 'archive/exams/sample.js',
+      sourceQid: '1',
+      provenanceStatus: 'SOURCE_BOUND',
+      answerHintFree: true
+    }]
+  };
+  try {
+    const exam = A.renderQuestionHTML(question({ image: 'assets/images/sample/circle.svg' }), { ...renderOptions, mode: 'exam' });
+    assert.match(exam, /alt="원과 접선\. 원과 접선이 만나는 위치 관계를 나타낸 그림"/);
+  } finally {
+    if (previousIndex === undefined) delete globalThis.APSvgAccessibilityIndex;
+    else globalThis.APSvgAccessibilityIndex = previousIndex;
+    if (previousHelper === undefined) delete globalThis.APSvgAccessibility;
+    else globalThis.APSvgAccessibility = previousHelper;
+  }
+});
+
+test('Question authority retains meaningful Korean context and adds curated solution relation detail', () => {
+  const previousIndex = globalThis.APSvgAccessibilityIndex;
+  const previousHelper = globalThis.APSvgAccessibility;
+  globalThis.APSvgAccessibility = require('../archive/svg-accessibility.js');
+  globalThis.APSvgAccessibilityIndex = {
+    schemaVersion: 'SVG_STUDENT_ACCESSIBILITY_V1',
+    records: [{
+      assetRef: 'assets/images/sample/solution.svg',
+      visualRole: 'solution',
+      titleKo: '두 접선과 교점',
+      descriptionKo: '원에 접하는 두 직선의 접점과 교점을 나타낸 그림',
+      sourceExamRef: 'archive/exams/sample.js',
+      sourceQid: '1',
+      provenanceStatus: 'SOURCE_BOUND',
+      answerHintFree: true
+    }]
+  };
+  try {
+    const meaningful = A.renderQuestionHTML(question({
+      solutionImage: 'assets/images/sample/solution.svg',
+      solutionImageAlt: '원과 접점의 위치를 나타낸 그림'
+    }), { ...renderOptions, mode: 'solution' });
+    const genericEnglish = A.renderQuestionHTML(question({
+      solutionImage: 'assets/images/sample/solution.svg',
+      solutionImageAlt: 'Question 1 solution graph'
+    }), { ...renderOptions, mode: 'solution' });
+    assert.match(meaningful, /alt="원과 접점의 위치를 나타낸 그림\. 두 접선과 교점\. 원에 접하는 두 직선의 접점과 교점을 나타낸 그림"/);
+    assert.match(genericEnglish, /alt="두 접선과 교점\. 원에 접하는 두 직선의 접점과 교점을 나타낸 그림"/);
+  } finally {
+    if (previousIndex === undefined) delete globalThis.APSvgAccessibilityIndex;
+    else globalThis.APSvgAccessibilityIndex = previousIndex;
+    if (previousHelper === undefined) delete globalThis.APSvgAccessibility;
+    else globalThis.APSvgAccessibility = previousHelper;
+  }
+});
+
 test('Question authority requires adapter-owned asset resolution and compares semantic parity deterministically', () => {
   assert.throws(() => A.renderQuestionHTML(question(), { mode: 'exam' }), /MISSING_ASSET_RESOLVER/);
   const shared = A.renderQuestionHTML(question(), { ...renderOptions, mode: 'solution' });

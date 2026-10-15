@@ -8,7 +8,9 @@ const layout = fs.readFileSync(path.join(root, 'archive', 'layout-authority.js')
 
 test('Mixer adapter dual-runs canonical normalization without changing storage, pack, QPP, or legacy renderer behavior', () => {
   assert.match(html, /src="print-contract\.js\?v=20260906\.2"/);
-  assert.match(html, /src="render-authority\.js\?v=20260906\.5"/);
+  assert.match(html, /src="render-authority\.js\?v=20261014-svg-alt-1"/);
+  assert.match(html, /src="data\/svg-accessibility-index\.js\?v=20261014\.1"/);
+  assert.match(html, /src="svg-accessibility\.js\?v=20261014\.1"/);
   assert.match(html, /function buildMixedCanonicalData\(\)/);
   assert.match(html, /AppState\.canonicalData = buildMixedCanonicalData\(\)/);
   assert.match(html, /async function recordMixedDualRun\(area\)/);
