@@ -1,0 +1,695 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q15_AUTHOR_BLUEPRINT_v1",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 15,
+  "sourceUid": "qid_v1_0a17b0647447adb5fae155e88e981c428430394d97480833530bcac5aafe34b5",
+  "invariant": "합성항등식 f∘f=id에 대한 유리식 계수비교→a=-p (비퇴화 p²+q≠0)→추가 질문(역함숫값·고정점·판별식). 원본 분모 x+a와 결정적 합성 사고 유지.",
+  "rpmSearch": [
+    "Canonical RPM: H1-RPM-102/103(2015 합성함수), H1-RPM-253/254(2022 합성함수), H1-RPM-255/256 역함수, H1-RPM-258 항등함수. 최종 H1-RPM-254.",
+    "Full high1 crosswalk mapping and canonical master checked; direct ACTIVE PT_COMPOSITION_PROPERTIES/TPL_COMPOSITION_RELATION_CONDITION."
+  ],
+  "canonicalConceptSearch": [
+    "functions.json 21 Canonical ACTIVE including CC_FUNCTION_COMPOSITION (same as Primary, excluded), CC_INVERSE_FUNCTION, CC_RATIONAL_FUNCTION.",
+    "algebra.json Canonical ACTIVE CC_QUADRATIC_EQUATION / CC_DISCRIMINANT / CC_ROOTS_COEFFICIENTS.",
+    "All 12 Generated extension-meta files, including original q14 graph coincidence, inspected; no ACTIVE exact coefficient equality."
+  ],
+  "extSearchScope": "archive/generated/lite/v1/2022/H1 recursive 777 tree entries checked; extension-l3 5, extension-l4 all schools; composition q07 branch-only coefficient-equality compared, q10 commuting and Geumdang cycle L4 NOT exact.",
+  "newCrossConceptRegistry": "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-meta/palma25-2final-q15-composition-involution.json",
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q15-A1",
+      "slot": "A1",
+      "mode": "STRICT_VARIANT",
+      "studentStem": "실수 $a$에 대하여 함수 $f(x)=\\dfrac{2x+5}{x+a}$가 합성이 정의되는 모든 실수 $x$에서 $(f\\circ f)(x)=x$를 만족한다. $f^{-1}(7)$의 값은?",
+      "choices": [
+        "$\\dfrac{19}{5}$",
+        "$\\dfrac{19}{9}$",
+        "$7$",
+        "$\\dfrac{14}{5}$",
+        "$-\\dfrac95$"
+      ],
+      "answer": "①",
+      "answerValue": "$\\dfrac{19}{5}$",
+      "solution": "먼저 합성함수의 조건으로 $a$를 결정한다.\n$f(f(x))=\\dfrac{9x+5(a+2)}{(a+2)x+a^2+5}$이다.\n이 식이 정의되는 모든 $x$에 대하여 $x$와 같으므로 분모를 곱해 비교한다. 오른쪽에서 $x^2$의 계수는 $a+2$인데 왼쪽에는 $x^2$항이 없다. 따라서 $a+2=0$, 즉 $a=-2$이다.\n이때 $f(x)=\\dfrac{2x+5}{x-2}=2+\\dfrac9{x-2}$이고 $f(f(x))=x$이므로 $f^{-1}(x)=f(x)$이다. 분모가 $0$인 $x=2$는 제외한다.\n따라서 $f^{-1}(7)=f(7)=\\dfrac{2\\cdot7+5}{7-2}=\\dfrac{19}{5}$이므로 정답은 ①이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-254",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "합성함수",
+        "l4": "정의역 조건",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "crossConceptKeys": [
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY",
+        "CC_INVERSE_FUNCTION",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY": "$f(f(x))=x$의 유리식 항등식에서 우변 $x^2$항 계수 $a+p$ 또는 $a+b$가 0이어야 함을 직접 비교",
+        "CC_INVERSE_FUNCTION": "합성항등식 결정 후 역함숫값을 본래 함수값으로 환원",
+        "CC_RATIONAL_FUNCTION": "분모 $x-2\\neq0$을 확인하고 유리식을 계산"
+      },
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentBucket": 2,
+      "levelReason": "계수비교 한 번으로 매개변수 결정 후 자기역함숫값 직접 대입",
+      "bucketReason": "항등식 계수와 역함수의 관계를 구별해야 하지만 경우 분기 없음",
+      "studentMentalPath": "$(f\\circ f)(x)=x$의 $x^2$계수 소거로 $a=-2$, $f^{-1}=f$",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/A1-solution.svg",
+      "solutionSvgBlob": "9f585f2f6583886ba3691e3af716eec450d1f081",
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "$\\dfrac{19}{9}$",
+          "errorCalculation": "$a=2$로 부호를 반대로 정하여 $f(7)=19/(7+2)=19/9$"
+        },
+        {
+          "index": "③",
+          "value": "$7$",
+          "errorCalculation": "$f\\circ f=\\mathrm{id}$를 $f=\\mathrm{id}$로 혼동하여 $f^{-1}(7)=7$"
+        },
+        {
+          "index": "④",
+          "value": "$\\dfrac{14}{5}$",
+          "errorCalculation": "분자 상수항 $5$를 빠뜨려 $14/(7-2)=14/5$"
+        },
+        {
+          "index": "⑤",
+          "value": "$-\\dfrac95$",
+          "errorCalculation": "잘못된 $a=2$의 함수 $(2x+5)/(x+2)=7$을 풀어 $5x=-9$, $x=-9/5$"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q15-A2",
+      "slot": "A2",
+      "mode": "STRICT_VARIANT",
+      "studentStem": "실수 $a$에 대하여 함수 $f(x)=\\dfrac{-x+5}{x+a}$가 합성이 정의되는 모든 실수 $x$에서 $(f\\circ f)(x)=x$를 만족한다. $f^{-1}(2)$의 값은?",
+      "choices": [
+        "$3$",
+        "$1$",
+        "$2$",
+        "$-\\dfrac23$",
+        "$-\\dfrac73$"
+      ],
+      "answer": "②",
+      "answerValue": "$1$",
+      "solution": "주어진 함수를 한 번 더 합성하여 정리하면\n$f(f(x))=\\dfrac{6x+5(a-1)}{(a-1)x+a^2+5}$이다.\n이 값이 모든 허용된 $x$에서 $x$이므로 항등식 $6x+5(a-1)=(a-1)x^2+(a^2+5)x$를 얻는다.\n$x^2$의 계수를 비교하면 $a-1=0$이므로 $a=1$이다. 이때 $a^2+5=6$으로 나머지 항도 일치한다.\n$f(f(x))=x$이므로 $f^{-1}=f$이고, $x=-1$은 정의역에서 제외한다.\n$f^{-1}(2)=f(2)=\\dfrac{-2+5}{2+1}=\\dfrac33=1$이므로 정답은 ②이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-254",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "합성함수",
+        "l4": "정의역 조건",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "crossConceptKeys": [
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY",
+        "CC_INVERSE_FUNCTION",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY": "$f(f(x))=x$의 유리식 항등식에서 우변 $x^2$항 계수 $a+p$ 또는 $a+b$가 0이어야 함을 직접 비교",
+        "CC_INVERSE_FUNCTION": "자기역함수라는 결론으로 역함숫값 계산",
+        "CC_RATIONAL_FUNCTION": "분모 $x+1$의 영점을 제외"
+      },
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentBucket": 2,
+      "levelReason": "음의 일차항 부호를 유지하며 계수 비교 후 역함숫값 한 번 계산",
+      "bucketReason": "부호 오류 위험은 있으나 합성항등식 후 분기가 없음",
+      "studentMentalPath": "$x^2$ 계수에서 $a=1$을 얻고 $f^{-1}(2)=f(2)$",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/A2-solution.svg",
+      "solutionSvgBlob": "36ebdfde09d10092cd0860c53f415dc81c9066d0",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$3$",
+          "errorCalculation": "$a=-1$로 뒤집어 대입하여 $(-2+5)/(2-1)=3$"
+        },
+        {
+          "index": "③",
+          "value": "$2$",
+          "errorCalculation": "$f\\circ f=\\mathrm{id}$를 $f=\\mathrm{id}$로 오인해 $f^{-1}(2)=2$"
+        },
+        {
+          "index": "④",
+          "value": "$-\\dfrac23$",
+          "errorCalculation": "분자 $+5$를 빼먹어 $(-2)/(2+1)=-2/3$"
+        },
+        {
+          "index": "⑤",
+          "value": "$-\\dfrac73$",
+          "errorCalculation": "분자 $+5$를 $-5$로 읽어 $(-2-5)/(2+1)=-7/3$"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q15-A3",
+      "slot": "A3",
+      "mode": "STRICT_VARIANT",
+      "studentStem": "실수 $a$에 대하여 함수 $f(x)=\\dfrac{3x+7}{x+a}$가 합성이 정의되는 모든 실수 $x$에서 $(f\\circ f)(x)=x$를 만족한다. $f^{-1}(9)$의 값은?",
+      "choices": [
+        "$\\dfrac{17}{6}$",
+        "$\\dfrac92$",
+        "$\\dfrac{17}{3}$",
+        "$9$",
+        "$\\dfrac{10}{3}$"
+      ],
+      "answer": "③",
+      "answerValue": "$\\dfrac{17}{3}$",
+      "solution": "합성함수의 식을 직접 정리하면\n$f(f(x))=\\dfrac{16x+7(a+3)}{(a+3)x+a^2+7}$이다.\n항등식 $16x+7(a+3)=(a+3)x^2+(a^2+7)x$에서 $x^2$의 계수를 비교하여 $a=-3$을 얻는다. 이 값일 때 양쪽 $x$계수는 모두 $16$이다.\n따라서 $f(x)=\\dfrac{3x+7}{x-3}$이고, $(f\\circ f)(x)=x$이므로 $f^{-1}(x)=f(x)$이다. $x=3$은 분모가 $0$이므로 제외한다.\n$f^{-1}(9)=f(9)=\\dfrac{3\\cdot9+7}{9-3}=\\dfrac{34}{6}=\\dfrac{17}{3}$이므로 정답은 ③이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-254",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "합성함수",
+        "l4": "정의역 조건",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "crossConceptKeys": [
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY",
+        "CC_INVERSE_FUNCTION",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY": "$f(f(x))=x$의 유리식 항등식에서 우변 $x^2$항 계수 $a+p$ 또는 $a+b$가 0이어야 함을 직접 비교",
+        "CC_INVERSE_FUNCTION": "합성항등식으로 역함수 관계를 확정",
+        "CC_RATIONAL_FUNCTION": "분모 $x-3$의 영점 제외와 분수 계산"
+      },
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "levelReason": "합성유리식의 항등조건, 자기역함수 관계, 분수 약분을 순서대로 적용",
+      "bucketReason": "역함수 계산을 따로 하지 않는 사고 전환과 분모 제외 확인",
+      "studentMentalPath": "$a=-3$, $f=f^{-1}$, 값 $17/3$",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/A3-solution.svg",
+      "solutionSvgBlob": "097e6fb8be08770c399df02cbf79c951d43bc19f",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$\\dfrac{17}{6}$",
+          "errorCalculation": "$a=3$을 써서 $34/(9+3)=17/6$"
+        },
+        {
+          "index": "②",
+          "value": "$\\dfrac92$",
+          "errorCalculation": "분자의 상수항을 놓쳐 $27/(9-3)=9/2$"
+        },
+        {
+          "index": "④",
+          "value": "$9$",
+          "errorCalculation": "합성항등식을 항등함수 자체로 오인하여 $f^{-1}(9)=9$"
+        },
+        {
+          "index": "⑤",
+          "value": "$\\dfrac{10}{3}$",
+          "errorCalculation": "$3x+7$을 $3x-7$로 잘못 읽어 $(27-7)/6=10/3$"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q15-B1",
+      "slot": "B1",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 $a$에 대하여 함수 $f(x)=\\dfrac{x+3}{x+a}$가 합성이 정의되는 모든 실수 $x$에서 $(f\\circ f)(x)=x$를 만족한다. $f(t)=t$를 만족하는 양수 $t$의 값은?",
+      "choices": [
+        "$-3$",
+        "$-1$",
+        "$1$",
+        "$3$",
+        "$\\sqrt3$"
+      ],
+      "answer": "④",
+      "answerValue": "$3$",
+      "solution": "합성식은 $f(f(x))=\\dfrac{4x+3(a+1)}{(a+1)x+a^2+3}$이다.\n$f(f(x))=x$가 항등적으로 성립하므로 $x^2$의 계수를 비교하여 $a+1=0$, 즉 $a=-1$이다. 이때 $f(x)=\\dfrac{x+3}{x-1}$이며 $x=1$은 제외한다.\n$f(t)=t$에서 $\\dfrac{t+3}{t-1}=t$이므로 $t+3=t(t-1)=t^2-t$이다.\n$t^2-2t-3=(t-3)(t+1)=0$이므로 $t=3$ 또는 $t=-1$이다.\n조건 $t>0$을 만족하는 값은 $3$뿐이므로 정답은 ④이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-254",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "합성함수",
+        "l4": "정의역 조건",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "crossConceptKeys": [
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY",
+        "CC_QUADRATIC_EQUATION",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY": "$f(f(x))=x$의 유리식 항등식에서 우변 $x^2$항 계수 $a+p$ 또는 $a+b$가 0이어야 함을 직접 비교",
+        "CC_QUADRATIC_EQUATION": "고정점 식 $t^2-2t-3=0$을 인수분해",
+        "CC_RATIONAL_FUNCTION": "$t\\neq1$ 분모 금지점 배제"
+      },
+      "conditionKeys": [
+        "COND_NONZERO",
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "levelReason": "합성계수 결정과 고정점 이차방정식을 연결하고 양수 가지를 선택",
+      "bucketReason": "허용되지 않는 분모값과 음수근 제외의 이중 확인",
+      "studentMentalPath": "$a=-1$ 이후 $f(t)=t$ 이차식 근 중 $t=3>0$",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/B1-solution.svg",
+      "solutionSvgBlob": "8867ba7e20f8a6a867715ef874f1a1bb295d64ff",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$-3$",
+          "errorCalculation": "$t^2-2t-3$을 $t^2+2t-3=(t+3)(t-1)$로 잘못 바꾸고 음수근 $-3$을 선택"
+        },
+        {
+          "index": "②",
+          "value": "$-1$",
+          "errorCalculation": "$(t-3)(t+1)=0$의 두 번째 해 $t=-1$을 양수 조건 확인 없이 선택"
+        },
+        {
+          "index": "③",
+          "value": "$1$",
+          "errorCalculation": "분모를 $0$으로 만드는 $t=1$을 고정점인 것처럼 선택"
+        },
+        {
+          "index": "⑤",
+          "value": "$\\sqrt3$",
+          "errorCalculation": "$t^2-2t-3=0$에서 $-2t$를 빠뜨려 $t^2=3$, $t=\\sqrt3$"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q15-B2",
+      "slot": "B2",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 $a$에 대하여 함수 $f(x)=\\dfrac{2x-1}{x+a}$가 합성이 정의되는 모든 실수 $x$에서 $(f\\circ f)(x)=x$를 만족한다. $f(t)=t$의 서로 다른 두 실근을 $t_1<t_2$라 할 때, $t_2-t_1$의 값은?",
+      "choices": [
+        "$\\sqrt3$",
+        "$3$",
+        "$4\\sqrt3$",
+        "$-2\\sqrt3$",
+        "$2\\sqrt3$"
+      ],
+      "answer": "⑤",
+      "answerValue": "$2\\sqrt3$",
+      "solution": "$f(f(x))=\\dfrac{3x-(a+2)}{(a+2)x+a^2-1}$이다.\n$x^2$의 계수 비교에서 $a+2=0$이므로 $a=-2$이고, $a^2-1=3\\ne0$으로 합성항등식은 유효하다.\n따라서 $f(x)=\\dfrac{2x-1}{x-2}$이며 $x=2$는 제외한다.\n고정점 식 $\\dfrac{2t-1}{t-2}=t$를 정리하면 $2t-1=t^2-2t$, 즉 $t^2-4t+1=0$이다.\n근의 공식으로 $t=\\dfrac{4\\pm\\sqrt{16-4}}{2}=2\\pm\\sqrt3$을 얻는다. 두 값 모두 분모를 $0$으로 하지 않는다.\n따라서 $t_2-t_1=(2+\\sqrt3)-(2-\\sqrt3)=2\\sqrt3$이므로 정답은 ⑤이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-254",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "합성함수",
+        "l4": "정의역 조건",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "crossConceptKeys": [
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY",
+        "CC_QUADRATIC_EQUATION",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY": "$f(f(x))=x$의 유리식 항등식에서 우변 $x^2$항 계수 $a+p$ 또는 $a+b$가 0이어야 함을 직접 비교",
+        "CC_QUADRATIC_EQUATION": "고정점 이차방정식의 두 실근 도출",
+        "CC_RATIONAL_FUNCTION": "분모 $t-2\\neq0$ 배제 확인"
+      },
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "중",
+      "assessmentBucket": 4,
+      "levelReason": "합성항등식→고정점 근의공식→두 근의 순서와 차 계산",
+      "bucketReason": "무리근·분모 제외·차의 방향을 연달아 검토",
+      "studentMentalPath": "$a=-2$, $(t-2)^2=3$, $t_2-t_1=2\\sqrt3$",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/B2-solution.svg",
+      "solutionSvgBlob": "cd08a3adf3cbb5030de396e6dec4b2267cf5732d",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$\\sqrt3$",
+          "errorCalculation": "두 근을 $2\\pm\\sqrt3$으로 구한 뒤 근 사이 간격을 한쪽 편차 $\\sqrt3$로 착각"
+        },
+        {
+          "index": "②",
+          "value": "$3$",
+          "errorCalculation": "$(t-2)^2=3$의 상수 $3$을 근의 거리로 답함"
+        },
+        {
+          "index": "③",
+          "value": "$4\\sqrt3$",
+          "errorCalculation": "근 사이 거리를 두 번 합하여 $2\\cdot 2\\sqrt3=4\\sqrt3$"
+        },
+        {
+          "index": "④",
+          "value": "$-2\\sqrt3$",
+          "errorCalculation": "$t_1-t_2=(2-\\sqrt3)-(2+\\sqrt3)=-2\\sqrt3$로 순서를 바꿈"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q15-B3",
+      "slot": "B3",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 $a$에 대하여 함수 $f(x)=\\dfrac{x-5}{x+a}$가 합성이 정의되는 모든 실수 $x$에서 $(f\\circ f)(x)=x$를 만족한다. 다음 설명 중 옳은 것은?",
+      "choices": [
+        "$y=f(x)$의 그래프는 직선 $y=x$에 대하여 대칭이다.",
+        "$f(x)=x$가 정의역의 모든 $x$에서 성립한다.",
+        "$y=f(x)$와 $y=x$는 서로 다른 두 점에서 만난다.",
+        "$y=f(x)$와 $y=x$는 한 점에서 접한다.",
+        "$f(0)=-5$이다."
+      ],
+      "answer": "①",
+      "answerValue": "직선 $y=x$에 대칭",
+      "solution": "합성식을 정리하면\n$f(f(x))=\\dfrac{-4x-5(a+1)}{(a+1)x+a^2-5}$이다.\n합성항등식에서 $x^2$의 계수를 비교하면 $a+1=0$이므로 $a=-1$이다. 따라서 $f(x)=\\dfrac{x-5}{x-1}$이고, 실제로 $f(f(x))=x$이다.\n그러므로 $f^{-1}=f$이며 원함수의 그래프와 역함수의 그래프는 직선 $y=x$에 대하여 대칭이므로 ①이 옳다.\n한편 $f(x)=x$를 풀면 $x-5=x(x-1)$, 즉 $x^2-2x+5=0$이다. 판별식 $D=(-2)^2-4\\cdot1\\cdot5=-16<0$이므로 실수 고정점이 없으며 ②, ③, ④는 옳지 않다.\n또 $f(0)=(-5)/(-1)=5$이므로 ⑤도 옳지 않다. 따라서 정답은 ①이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-254",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "합성함수",
+        "l4": "정의역 조건",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "crossConceptKeys": [
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY",
+        "CC_INVERSE_FUNCTION",
+        "CC_DISCRIMINANT",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY": "$f(f(x))=x$의 유리식 항등식에서 우변 $x^2$항 계수 $a+p$ 또는 $a+b$가 0이어야 함을 직접 비교",
+        "CC_INVERSE_FUNCTION": "$f=f^{-1}$이므로 그래프 $y=x$ 대칭 확정",
+        "CC_DISCRIMINANT": "$f(x)=x$의 이차식에서 $D<0$으로 실근 부재",
+        "CC_RATIONAL_FUNCTION": "$x=1$ 제외·$f(0)=5$를 계산"
+      },
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "중",
+      "assessmentBucket": 4,
+      "levelReason": "자기역함수의 대칭과 고정점 존재를 분리하고 판별식·함수값으로 보기 판정",
+      "bucketReason": "함수의 그래프 대칭과 대각선 교점의 차이가 함정이며 음수 분모 확인",
+      "studentMentalPath": "$a=-1$ 자기역함수지만 $D=-16$이어서 대각선 교점 없음",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/B3-solution.svg",
+      "solutionSvgBlob": "dce1144e4236ade07e2672a311a7bf95f1cae869",
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "$f(x)=x$가 정의역의 모든 $x$에서 성립한다.",
+          "errorCalculation": "$f(f(x))=x$로부터 $f(x)=x$라고 잘못 결론 내리며 ② 선택. 실제 $f(0)=5\\\\ne0$"
+        },
+        {
+          "index": "③",
+          "value": "$y=f(x)$와 $y=x$는 서로 다른 두 점에서 만난다.",
+          "errorCalculation": "자기역함수이면 $y=x$와 두 번 만난다고 오인해 ③ 선택. 실제 $D=-16<0$"
+        },
+        {
+          "index": "④",
+          "value": "$y=f(x)$와 $y=x$는 한 점에서 접한다.",
+          "errorCalculation": "두 그래프의 대칭을 $y=x$에서의 접선으로 오인해 ④ 선택. 실제 고정점 없음"
+        },
+        {
+          "index": "⑤",
+          "value": "$f(0)=-5$이다.",
+          "errorCalculation": "$f(0)=(-5)/(-1)=5$에서 분모의 음수를 놓치면 $-5$가 되어 ⑤ 선택"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q15-C1",
+      "slot": "C1",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 $a,b$에 대하여 함수 $f(x)=\\dfrac{2x+b}{x+a}$가 합성이 정의되는 모든 실수 $x$에서 $(f\\circ f)(x)=x$를 만족한다. 곡선 $y=f(x)$와 직선 $y=x$가 서로 다른 두 점에서 만나고, 두 교점의 $x$좌표 중 큰 값에서 작은 값을 뺀 차가 $6$일 때 $b$의 값은?",
+      "choices": [
+        "$-5$",
+        "$5$",
+        "$9$",
+        "$13$",
+        "$32$"
+      ],
+      "answer": "②",
+      "answerValue": "$5$",
+      "solution": "먼저 합성조건에서 $f(f(x))=\\dfrac{(4+b)x+b(a+2)}{(a+2)x+a^2+b}$이다.\n계수 비교에 의해 $a=-2$이고, 합성항등식이 성립하려면 $4+b\\ne0$이다.\n따라서 $f(x)=\\dfrac{2x+b}{x-2}$이다.\n직선 $y=x$와의 교점 $x$좌표 $r_1<r_2$는 $\\dfrac{2x+b}{x-2}=x$에서 정해지므로 $x^2-4x-b=0$의 두 근이다. 근의 합은 $r_1+r_2=4$이다.\n두 좌표의 차는 $r_2-r_1=6$이므로 연립하면 $r_1=-1$, $r_2=5$이다.\n근의 곱 $r_1r_2=-5=-b$이므로 $b=5$이다. 이때 $4+b=9\\ne0$, 두 근은 $x=2$와 다르므로 모두 유효하다.\n따라서 정답은 ②이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-254",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "합성함수",
+        "l4": "정의역 조건",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "crossConceptKeys": [
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY",
+        "CC_ROOTS_COEFFICIENTS",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY": "$f(f(x))=x$의 유리식 항등식에서 우변 $x^2$항 계수 $a+p$ 또는 $a+b$가 0이어야 함을 직접 비교",
+        "CC_ROOTS_COEFFICIENTS": "고정점의 근의 합·곱과 차를 동시에 결합",
+        "CC_RATIONAL_FUNCTION": "분모 영점 및 비퇴화 $4+b\\neq0$ 검증"
+      },
+      "conditionKeys": [
+        "COND_NONZERO",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "levelReason": "항등적 합성에서 a 결정→두 고정점의 합과 거리→근의 곱→b 결정",
+      "bucketReason": "두 교점 존재, 분모 제외, 합·차·곱 관계를 함께 사용해야 함",
+      "studentMentalPath": "$a=-2$, 고정점 근 합4·차6⇒(-1,5)⇒$b=5$",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/C1-solution.svg",
+      "solutionSvgBlob": "0fd995ed60f7074e364f97adc9193adf6ffce749",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$-5$",
+          "errorCalculation": "근의 곱이 $-b$인데 $b=r_1r_2=(-1)\\cdot5=-5$로 부호를 잃음"
+        },
+        {
+          "index": "③",
+          "value": "$9$",
+          "errorCalculation": "$(x-2)^2=4+b$와 $r_2-r_1=6$에서 $4+b=9$를 얻고 $b$ 대신 $9$를 답함"
+        },
+        {
+          "index": "④",
+          "value": "$13$",
+          "errorCalculation": "$4+b=9$에서 $b=9+4=13$으로 이항 부호를 반대로 함"
+        },
+        {
+          "index": "⑤",
+          "value": "$32$",
+          "errorCalculation": "$r_2-r_1=2\\sqrt{4+b}=6$인데 $\\sqrt{4+b}=6$으로 놓아 $b=36-4=32$"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q15-C2",
+      "slot": "C2",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 $a,b,c$에 대하여 함수 $f(x)=\\dfrac{bx+c}{x+a}$가 합성이 정의되는 모든 실수 $x$에서 $(f\\circ f)(x)=x$를 만족한다. 곡선 $y=f(x)$와 직선 $y=x$의 서로 다른 두 교점의 $x$좌표가 $0,6$일 때, $f^{-1}(12)$의 값은?",
+      "choices": [
+        "$\\dfrac{12}{5}$",
+        "$6$",
+        "$4$",
+        "$12$",
+        "$-\\dfrac{12}{5}$"
+      ],
+      "answer": "③",
+      "answerValue": "$4$",
+      "solution": "유리함수를 다시 합성하면\n$f(f(x))=\\dfrac{(b^2+c)x+c(a+b)}{(a+b)x+a^2+c}$이다.\n이 값이 정의되는 모든 $x$에서 $x$와 같으므로 $x^2$의 계수 비교로 $a+b=0$, 곧 $a=-b$이다. 합성이 항등함수가 되려면 $b^2+c\\ne0$도 만족해야 한다.\n이제 고정점 식 $\\dfrac{bx+c}{x-b}=x$에서 $x^2-2bx-c=0$이다.\n그 두 근이 $0$과 $6$이므로 근의 합 $0+6=2b$에서 $b=3$, 근의 곱 $0\\cdot6=-c$에서 $c=0$이다. 따라서 $a=-3$이다.\n$f(x)=\\dfrac{3x}{x-3}$으로 $x=3$을 제외하며, $(f\\circ f)(x)=x$이므로 $f^{-1}(12)=f(12)$이다.\n$f(12)=\\dfrac{3\\cdot12}{12-3}=\\dfrac{36}{9}=4$이므로 정답은 ③이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-254",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "합성함수",
+        "l4": "정의역 조건",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "crossConceptKeys": [
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY",
+        "CC_ROOTS_COEFFICIENTS",
+        "CC_INVERSE_FUNCTION",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY": "$f(f(x))=x$의 유리식 항등식에서 우변 $x^2$항 계수 $a+p$ 또는 $a+b$가 0이어야 함을 직접 비교",
+        "CC_ROOTS_COEFFICIENTS": "고정점 근의 합과 곱으로 계수 두 개 결정",
+        "CC_INVERSE_FUNCTION": "$f=f^{-1}$ 관계로 마지막 값을 직접 계산",
+        "CC_RATIONAL_FUNCTION": "분모 $x-3\\neq0$과 비퇴화 검증"
+      },
+      "conditionKeys": [
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "levelReason": "합성항등식 구조와 고정점 두 근의 정보로 계수 세 개를 역산한 뒤 역함숫값 계산",
+      "bucketReason": "계수 추론·함수 비퇴화·정의역·역함숫값을 잇는 다중 조건 통합",
+      "studentMentalPath": "$a=-b$, 근 0,6⇒$b=3,c=0,a=-3$⇒$f^{-1}(12)=4$",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/C2-solution.svg",
+      "solutionSvgBlob": "8d01272b14b496236de7cbfc7bb99702c17eba33",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$\\dfrac{12}{5}$",
+          "errorCalculation": "$a=-3$을 $a=3$으로 바꾸어 $f(12)=36/(12+3)=12/5$"
+        },
+        {
+          "index": "②",
+          "value": "$6$",
+          "errorCalculation": "고정점 $6$을 $f^{-1}(12)$와 혼동하여 $6$이라고 답함. 실제 $f(6)=6\\\\ne12$"
+        },
+        {
+          "index": "④",
+          "value": "$12$",
+          "errorCalculation": "$f\\circ f=\\\\mathrm{id}$를 $f=\\\\mathrm{id}$로 오해하여 $f^{-1}(12)=12$"
+        },
+        {
+          "index": "⑤",
+          "value": "$-\\dfrac{12}{5}$",
+          "errorCalculation": "근의 합의 부호를 반대로 읽어 $b=-3$, $a=3$을 대입하면 $f(12)=-36/15=-12/5$"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q15-C3",
+      "slot": "C3",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "정수 $a$는 $-10\\le a\\le2$를 만족하고 $b$는 실수이다. 함수 $f_a(x)=\\dfrac{2x+a}{x+b}$에 대하여 합성함수 $f_a\\circ f_a$의 정의역은 공집합이 아니며, 정의되는 모든 $x$에서 $(f_a\\circ f_a)(x)=x$가 성립한다. 이때 곡선 $y=f_a(x)$와 직선 $y=x$가 만나지 않게 하는 정수 $a$의 개수는?",
+      "choices": [
+        "$5$",
+        "$7$",
+        "$8$",
+        "$6$",
+        "$10$"
+      ],
+      "answer": "④",
+      "answerValue": "$6$",
+      "solution": "먼저 합성함수를 계산하면\n$f_a(f_a(x))=\\dfrac{(4+a)x+a(b+2)}{(b+2)x+b^2+a}$이다.\n합성항등식이 모든 허용된 $x$에서 성립하려면 $x^2$의 계수를 비교하여 $b+2=0$, 즉 $b=-2$이다.\n이때 $f_a(x)=\\dfrac{2x+a}{x-2}=2+\\dfrac{a+4}{x-2}$이다. $a=-4$이면 $f_a(x)=2$인 상수함수가 되어 두 번 합성하는 것이 정의되지 않으므로 합성항등식을 만족하지 못한다. 따라서 $a\\ne-4$이다.\n직선 $y=x$와의 교점은 $\\dfrac{2x+a}{x-2}=x$에서 $x^2-4x-a=0$의 실근에 대응한다. 판별식은 $D=(-4)^2-4(1)(-a)=16+4a$이다.\n교점이 없을 조건은 $D<0$, 곧 $a<-4$이다. 이 범위에서는 $a+4\\ne0$이고 제외점 $x=2$는 근이 아니므로 추가 예외가 없다.\n$-10\\le a\\le2$인 정수 가운데 $a<-4$인 것은 $-10,-9,-8,-7,-6,-5$로 $6$개이다.\n따라서 정답은 ④이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-254",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "합성함수",
+        "l4": "정의역 조건",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_COMPOSITION_PROPERTIES",
+      "tpl": "TPL_COMPOSITION_RELATION_CONDITION",
+      "crossConceptKeys": [
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY",
+        "CC_DISCRIMINANT",
+        "CC_RATIONAL_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY": "$f(f(x))=x$의 유리식 항등식에서 우변 $x^2$항 계수 $a+p$ 또는 $a+b$가 0이어야 함을 직접 비교",
+        "CC_DISCRIMINANT": "고정점의 존재를 판별식의 부호로 판정",
+        "CC_RATIONAL_FUNCTION": "$a=-4$ 상수퇴화, $x=2$ 분모 불가 검사"
+      },
+      "conditionKeys": [
+        "COND_NONZERO",
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "levelReason": "합성항등식 결정→퇴화예외→고정점 판별식→정수구간 개수",
+      "bucketReason": "특이값 a=-4와 판별식 경계를 분리하고 정수 범위 끝점을 적용",
+      "studentMentalPath": "$b=-2$, $a\\neq-4$, $D=16+4a<0$⇒$a=-10\\dots-5$ 6개",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/C3-solution.svg",
+      "solutionSvgBlob": "1516b36f20b2e0c7ed7cb63e517f7f257d776d3f",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$5$",
+          "errorCalculation": "$a=-5$도 $D=16+4(-5)=-4<0$인데 끝값을 빼면 $-10$부터 $-6$까지 $5$개"
+        },
+        {
+          "index": "②",
+          "value": "$7$",
+          "errorCalculation": "$D\\\\le0$을 무교점으로 오인해 $a=-4$를 포함하면 $7$개. 실제 $a=-4$는 상수함수로 합성항등식 불성립"
+        },
+        {
+          "index": "③",
+          "value": "$8$",
+          "errorCalculation": "$a<-2$로 판별식 경계를 잘못 옮기면 $-10$부터 $-3$까지 $8$개"
+        },
+        {
+          "index": "⑤",
+          "value": "$10$",
+          "errorCalculation": "무교점 조건 대신 단지 $a<0$으로 세면 $-10$부터 $-1$까지 $10$개"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    }
+  ]
+}

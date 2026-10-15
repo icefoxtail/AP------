@@ -1,0 +1,130 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q15_NUMERIC_SVG_EVIDENCE_v1",
+  "numericMethod": "Python SymPy symbolic + fixed-point numeric facts prior to SVG generation",
+  "symbolicExpression": "f(f(x))-x=-(a+p)*(a*x-p*x-q+x^2)/(a^2+(a+p)*x+q), f=(p*x+q)/(x+a)",
+  "nondegenerate": "a=-p and p^2+q≠0; fixed points x=p±sqrt(p²+q) when k>=0",
+  "coordinateModel": {
+    "originX": 250,
+    "originY": 200,
+    "sx": 24,
+    "sy": 24,
+    "screenX": "250+24*x",
+    "screenY": "200-24*y",
+    "viewBox": "0 0 500 400"
+  },
+  "cases": [
+    {
+      "slot": "A1",
+      "p": 2,
+      "q": 5,
+      "k": 9,
+      "verticalAsymptote": 2,
+      "fixedPointX": [
+        -1,
+        5
+      ],
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/A1-solution.svg",
+      "gitBlobSha": "9f585f2f6583886ba3691e3af716eec450d1f081"
+    },
+    {
+      "slot": "A2",
+      "p": -1,
+      "q": 5,
+      "k": 6,
+      "verticalAsymptote": -1,
+      "fixedPointX": [
+        -3.449489742783178,
+        1.4494897427831779
+      ],
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/A2-solution.svg",
+      "gitBlobSha": "36ebdfde09d10092cd0860c53f415dc81c9066d0"
+    },
+    {
+      "slot": "A3",
+      "p": 3,
+      "q": 7,
+      "k": 16,
+      "verticalAsymptote": 3,
+      "fixedPointX": [
+        -1,
+        7
+      ],
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/A3-solution.svg",
+      "gitBlobSha": "097e6fb8be08770c399df02cbf79c951d43bc19f"
+    },
+    {
+      "slot": "B1",
+      "p": 1,
+      "q": 3,
+      "k": 4,
+      "verticalAsymptote": 1,
+      "fixedPointX": [
+        -1,
+        3
+      ],
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/B1-solution.svg",
+      "gitBlobSha": "8867ba7e20f8a6a867715ef874f1a1bb295d64ff"
+    },
+    {
+      "slot": "B2",
+      "p": 2,
+      "q": -1,
+      "k": 3,
+      "verticalAsymptote": 2,
+      "fixedPointX": [
+        0.2679491924311228,
+        3.732050807568877
+      ],
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/B2-solution.svg",
+      "gitBlobSha": "cd08a3adf3cbb5030de396e6dec4b2267cf5732d"
+    },
+    {
+      "slot": "B3",
+      "p": 1,
+      "q": -5,
+      "k": -4,
+      "verticalAsymptote": 1,
+      "fixedPointX": [],
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/B3-solution.svg",
+      "gitBlobSha": "dce1144e4236ade07e2672a311a7bf95f1cae869"
+    },
+    {
+      "slot": "C1",
+      "p": 2,
+      "q": 5,
+      "k": 9,
+      "verticalAsymptote": 2,
+      "fixedPointX": [
+        -1,
+        5
+      ],
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/C1-solution.svg",
+      "gitBlobSha": "0fd995ed60f7074e364f97adc9193adf6ffce749"
+    },
+    {
+      "slot": "C2",
+      "p": 3,
+      "q": 0,
+      "k": 9,
+      "verticalAsymptote": 3,
+      "fixedPointX": [
+        0,
+        6
+      ],
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/C2-solution.svg",
+      "gitBlobSha": "8d01272b14b496236de7cbfc7bb99702c17eba33"
+    },
+    {
+      "slot": "C3",
+      "p": 2,
+      "q": null,
+      "k": "a+4",
+      "verticalAsymptote": 2,
+      "fixedPointX": "discriminant D=16+4a",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q15/C3-solution.svg",
+      "gitBlobSha": "1516b36f20b2e0c7ed7cb63e517f7f257d776d3f"
+    }
+  ],
+  "fullSVGStaticQA": "Self author coordinate-model alignment; actual independent SVG/print/browser verification NOT_RUN",
+  "browser": "NOT_RUN"
+}

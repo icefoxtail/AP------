@@ -1,3 +1,14 @@
+# CURRENT — q15 AUTHOR 완료 / 다음 q16 (2026-10-15)
+
+- 기준 브랜치: `work/alive-25-palma-h1-2final-qid9`; **q15 A1~C3 9 UID 신규 추가, 135/207 완료, 다음 원본 q16**. q01~q14/source/기존 유사문항 불변.
+- Primary `H1-RPM-254` (2022 공통수학2 / 합성함수 / 정의역 조건) DIRECT_ACTIVE. PT `PT_COMPOSITION_PROPERTIES` / TPL `TPL_COMPOSITION_RELATION_CONDITION` ACTIVE. q14 역함수 Primary 256을 재사용하지 않음.
+- 신규 CrossConcept `EXT-CROSS-H1-C2-07-COMPOSITION-COEFF-IDENTITY` → `archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_COMPOSITION/extension-meta/palma25-2final-q15-composition-involution.json` GENERATED_ACTIVE (9/9 UID). 기존 `CC_INVERSE_FUNCTION`, `CC_RATIONAL_FUNCTION`, `CC_QUADRATIC_EQUATION`, `CC_DISCRIMINANT`, `CC_ROOTS_COEFFICIENTS`는 실제 적용 UID에 재사용. 별도 메타 Registry UID 135개.
+- 원본 q15 UID `qid_v1_0a17b0647447adb5fae155e88e981c428430394d97480833530bcac5aafe34b5`는 현재 question_identity_map.json의 `original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js#15`와 정확 일치. q14 sourceUidBinding 기존 EVIDENCE_DEBT 그대로 보존.
+- q15의 문제 SVG 9/9 EXEMPT, 해설 SVG 9/9 Git 실파일(그래프 8+정수 수직선1) AUTHOR numeric self-check. 45보기·36오답 계산 경로·9개 level/bucket 근거 기록. **독립 검수, 실제 브라우저, 학생 Consumer/index, main = NOT_RUN**.
+- 상세 자료: `GPT_QID9_Q15_CREATE_DRAFT.json`, `GPT_QID9_Q15_AUTHOR_BLUEPRINT.json`, `GPT_QID9_Q15_AUTHOR_RECEIPT.json`, `GPT_QID9_Q15_PREFLIGHT.json`, `GPT_QID9_Q15_VISUAL_NUMERIC_EVIDENCE.json`.
+
+---
+
 # CURRENT HARD — q14부터 RPM·확장 L3/L4 → CrossConcept → 난이도 순서 고정 (2026-10-15 원장 직접 지시)
 
 > **최우선 제작 핸드오프.** 다음 q14 A1~C3의 사전설계부터 모든 후속 원본 qid에 적용한다. 단순한 'Meta 확인' 문구가 아니라 **각 UID에서 실제 검색·판정·등록·난이도 반영을 마감하는 의무**다. 기존 q01~q13의 정상 문항을 일괄 재제작하거나, RPM LOCKED 정본을 고쳐 해결한 것으로 처리하지 않는다.
