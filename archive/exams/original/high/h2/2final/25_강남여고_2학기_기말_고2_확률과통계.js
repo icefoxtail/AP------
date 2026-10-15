@@ -22,11 +22,12 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표에서 $X=2$와 $X=3$인 확률만 더하면 $P(X\\ge 2)$를 구할 수 있다.\n조건 정리: $P(X=1)=\\dfrac{3}{5}$, $P(X=2)=\\dfrac{3}{10}$, $P(X=3)=\\dfrac{1}{10}$이다.\n풀이 방향: 사건 $X\\ge 2$는 $X=2$ 또는 $X=3$인 경우이므로 두 확률의 합을 구한다.\n정석 풀이: $P(X\\ge 2)=P(X=2)+P(X=3)$이다.\n$P(X\\ge 2)=\\dfrac{3}{10}+\\dfrac{1}{10}=\\dfrac{4}{10}=\\dfrac{2}{5}$\n보기에서 $\\dfrac{2}{5}$는 ⑤이다.\n따라서 정답은 ⑤이다.",
+    "solution": "확률분포표에서 $X\\ge 2$에 해당하는 값은 $2,\\ 3$이다.\n$P(X\\ge 2)=P(X=2)+P(X=3)$\n$=\\dfrac{3}{10}+\\dfrac{1}{10}$\n$=\\dfrac{4}{10}=\\dfrac25$\n따라서 정답은 ⑤이다.",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -69,7 +70,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 이항분포 $B(n,p)$의 평균은 $np$이다.\n조건 정리: 확률변수 $X$는 이항분포 $B\\left(54,\\dfrac{1}{9}\\right)$를 따른다.\n풀이 방향: 이항분포의 시행 횟수 $n=54$, 성공확률 $p=\\dfrac{1}{9}$를 평균식 $E(X)=np$에 적용한다.\n정석 풀이: $E(X)=np$이므로\n$E(X)=54\\times\\dfrac{1}{9}=6$\n따라서 $X$의 평균은 6이고, 보기에서 6은 ③이다.\n따라서 정답은 ③이다.",
+    "solution": "$X\\sim B\\left(54,\\dfrac19\\right)$에서 시행 횟수는 $n=54$, 한 번의 성공확률은 $p=\\dfrac19$이다.\n이항분포의 평균은 $E(X)=np$이므로\n$E(X)=54\\times\\dfrac19$\n$=6$이다.\n따라서 정답은 ③이다.",
     "solutionStatus": "round4_gibbs_solution_source_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -117,11 +118,16 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표준정규분포는 0을 기준으로 대칭이므로 $P(-1\\le Z\\le 1)=2P(0\\le Z\\le 1)$이다.\n조건 정리: $Z$는 표준정규분포를 따르고, 표에서 $P(0\\le Z\\le 1)=0.3413$이다.\n풀이 방향: 구간 $[-1,1]$을 $[-1,0]$과 $[0,1]$로 나누고 대칭성을 이용한다.\n정석 풀이: 표준정규분포의 대칭성에 의해\n$P(-1\\le Z\\le 0)=P(0\\le Z\\le 1)=0.3413$이다.\n따라서\n$P(-1\\le Z\\le 1)=0.3413+0.3413=0.6826$\n보기에서 $0.6826$은 ②이다.\n따라서 정답은 ②이다.",
+    "solution": "표준정규분포는 평균 $0$을 중심으로 좌우 대칭이다.\n$P(-1\\le Z\\le0)=P(0\\le Z\\le1)=0.3413$\n따라서\n$P(-1\\le Z\\le1)$\n$=P(-1\\le Z\\le0)+P(0\\le Z\\le1)$\n$=0.3413+0.3413$\n$=0.6826$\n따라서 정답은 ②이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q03-solution.svg",
+    "solutionImageAlt": "표준정규분포의 중앙 확률",
+    "solutionImageCaption": "-1 이상 1 이하",
+    "solutionImageSize": "medium",
     "solutionStatus": "solution_prefix_normalized_pending_math_review",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -165,7 +171,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 정규분포 $N(10,2^2)$를 표준화하면 $Z=\\dfrac{X-10}{2}$이다.\n조건 정리: $X\\sim N(10,2^2)$이고 $P(X\\le 14)=P(Z\\le a)$이다.\n풀이 방향: $X=14$를 표준화하여 같은 누적확률을 주는 $Z$값을 찾는다.\n정석 풀이: 표준화식은\n$Z=\\dfrac{X-10}{2}$\n이다. $X=14$를 넣으면\n$Z=\\dfrac{14-10}{2}=\\dfrac{4}{2}=2$\n이므로 $P(X\\le 14)=P(Z\\le 2)$이다. 따라서 $a=2$이고, 보기에서 2는 ⑤이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$X\\sim N(10,2^2)$이므로 평균은 $10$, 표준편차는 $2$이다.\n$Z=\\dfrac{X-10}{2}$\n$X=14$를 표준화하면\n$Z=\\dfrac{14-10}{2}=2$이다.\n따라서 $P(X\\le14)=P(Z\\le2)$이고 $a=2$이다.\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_prefix_normalized_pending_math_review",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -213,11 +219,16 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] $X\\sim N(64,2^2)$에서 62와 68을 각각 표준화한 뒤 표의 넓이를 더한다.\n조건 정리: 평균은 64, 표준편차는 2이며, 표에서 $P(0\\le Z\\le 1)=0.3413$, $P(0\\le Z\\le 2)=0.4772$이다.\n풀이 방향: $62\\le X\\le 68$을 표준정규분포의 구간으로 바꾸고 대칭성을 이용한다.\n정석 풀이: $Z=\\dfrac{X-64}{2}$이므로\n$X=62$일 때 $Z=\\dfrac{62-64}{2}=-1$,\n$X=68$일 때 $Z=\\dfrac{68-64}{2}=2$이다.\n따라서\n$P(62\\le X\\le 68)=P(-1\\le Z\\le 2)$\n$=P(-1\\le Z\\le 0)+P(0\\le Z\\le 2)$\n$=0.3413+0.4772=0.8185$\n보기에서 $0.8185$는 ①이다.\n따라서 정답은 ①이다.",
+    "solution": "$X\\sim N(64,2^2)$에서 평균은 $64$, 표준편차는 $2$이다.\n$Z=\\dfrac{X-64}{2}$\n$X=62$일 때 $Z=-1$,\n$X=68$일 때 $Z=2$이다.\n$P(62\\le X\\le68)=P(-1\\le Z\\le2)$\n$=P(-1\\le Z\\le0)+P(0\\le Z\\le2)$\n$=0.3413+0.4772$\n$=0.8185$\n따라서 정답은 ①이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q05-solution.svg",
+    "solutionImageAlt": "비대칭 구간의 정규확률",
+    "solutionImageCaption": "-1 이상 2 이하",
+    "solutionImageSize": "medium",
     "solutionStatus": "round4_gibbs_solution_source_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -260,7 +271,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 확률변수의 일차변환에서 평균은 같은 방식으로 변하고, 분산은 계수의 제곱이 곱해진다.\n조건 정리: $E(X)=10$, $V(X)=4$, $Y=2X+5$이다.\n풀이 방향: $E(Y)$와 $V(Y)$를 각각 구한 뒤 $E(Y)-V(Y)$를 구한다.\n정석 풀이: 평균은\n$E(Y)=E(2X+5)=2E(X)+5=2\\times10+5=25$이다.\n분산은 상수항 5의 영향을 받지 않고 계수 2의 제곱이 곱해지므로\n$V(Y)=V(2X+5)=2^2V(X)=4\\times4=16$이다.\n따라서\n$E(Y)-V(Y)=25-16=9$\n보기에서 9는 ③이다.\n따라서 정답은 ③이다.",
+    "solution": "$Y=2X+5$이므로 평균과 분산을 각각 구한다.\n$E(Y)=2E(X)+5$\n$=2\\times10+5=25$\n상수항 $5$는 분산을 바꾸지 않으므로\n$V(Y)=2^2V(X)$\n$=4\\times4=16$\n따라서\n$E(Y)-V(Y)=25-16=9$\n따라서 정답은 ③이다.",
     "solutionStatus": "solution_prefix_normalized_pending_math_review",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -308,7 +319,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 정규분포의 그래프는 평균 $m$을 중심으로 대칭이다.\n조건 정리: $X\\sim N(m,\\sigma^2)$이고 $P(X\\ge 48)=P(X\\le 52)$이다.\n풀이 방향: 오른쪽 꼬리 $X\\ge 48$의 넓이와 왼쪽 꼬리 $X\\le 52$의 넓이가 같아지려면 두 기준점 48, 52가 평균을 기준으로 대칭이어야 한다.\n정석 풀이: 정규분포에서 평균을 중심으로 같은 거리만큼 떨어진 두 점은 서로 같은 꼬리넓이를 만든다.\n따라서 48과 52의 가운데가 평균 $m$이다.\n$m=\\dfrac{48+52}{2}=\\dfrac{100}{2}=50$\n보기에서 50은 ③이다.\n따라서 정답은 ③이다.",
+    "solution": "정규분포의 그래프는 평균 $m$을 중심으로 좌우 대칭이다.\n왼쪽의 $48$ 이상인 넓이와 오른쪽의 $52$ 이하인 넓이가 같으려면 두 경계점은 평균에서 같은 거리만큼 떨어져야 한다.\n$m-48=52-m$\n$2m=100$\n$m=50$\n따라서 정답은 ③이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q07-solution.svg",
+    "solutionImageAlt": "평균의 좌우에 같은 간격으로 있는 48과 52",
+    "solutionImageCaption": "48과 52의 가운데가 평균 50",
+    "solutionImageSize": "medium",
     "solutionStatus": "solution_prefix_normalized_pending_math_review",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -356,7 +371,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 확률밀도함수의 전체 넓이는 1이다.\n조건 정리: $f(x)=a(x-2)$이고 정의역은 $2\\le x\\le 5$이다.\n풀이 방향: $x=2$부터 $x=5$까지의 넓이가 1이 되도록 $a$를 정한다.\n정석 풀이: 그래프는 $x=2$에서 높이 0, $x=5$에서 높이 $3a$인 삼각형이다.\n밑변의 길이는 $5-2=3$, 높이는 $3a$이므로 전체 넓이는\n$\\dfrac{1}{2}\\times3\\times3a=\\dfrac{9a}{2}$이다.\n확률밀도함수의 전체 넓이는 1이므로\n$\\dfrac{9a}{2}=1$\n$9a=2$\n$a=\\dfrac{2}{9}$\n보기에서 $\\dfrac{2}{9}$는 ④이다.\n따라서 정답은 ④이다.",
+    "solution": "$2\\le x\\le5$에서 $f(x)=a(x-2)$이므로\n$f(2)=0,\\quad f(5)=3a$이다.\n확률밀도함수의 그래프 아래 전체 넓이가 $1$이므로 삼각형 넓이를 구한다.\n$\\dfrac12\\times(5-2)\\times3a=1$\n$\\dfrac{9a}{2}=1$\n$9a=2$\n$a=\\dfrac29$\n따라서 정답은 ④이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q08-solution.svg",
+    "solutionImageAlt": "2에서 높이 0, 5에서 높이 3a인 확률밀도함수 삼각형",
+    "solutionImageCaption": "밑변 3, 높이 3a, 전체 넓이 1",
+    "solutionImageSize": "medium",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -404,11 +423,12 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 정규분포 그래프에서 대칭축의 위치는 평균, 그래프의 퍼짐 정도는 표준편차를 나타낸다.\n조건 정리: 세 학교의 학생 수는 같고, 그래프에서 $A$의 중심은 가장 왼쪽, $B$와 $C$의 중심은 같으며, $C$는 $B$보다 낮고 넓다.\n풀이 방향: 각 진술을 평균과 표준편차의 의미에 맞추어 하나씩 판단한다.\n정석 풀이: ㄱ에서 정규분포는 평균을 중심으로 좌우 넓이가 각각 $\\dfrac{1}{2}$이므로 $P(X_A\\ge m_A)=0.5$, $P(X_B\\le m_B)=0.5$이고 합은 1이다. ㄱ은 참이다.\nㄴ에서 그래프의 대칭축 위치를 보면 $A$의 평균이 $B,C$보다 작고, $B$와 $C$의 대칭축은 같다. 따라서 $m_A<m_B=m_C$이므로 ㄴ은 참이다.\nㄷ에서 $A$와 $B$의 그래프 폭은 같고 $C$는 더 넓게 퍼져 있다. 따라서 $\\sigma_A=\\sigma_B<\\sigma_C$이므로 ㄷ은 참이다.\nㄹ은 $A$와 $B$의 폭이 같은 이유를 평균이 같기 때문이라고 하였으나, 폭은 표준편차가 결정한다. 또한 $A$와 $B$의 대칭축 위치 차이는 평균 차이 때문이다. ㄹ은 거짓이다.\nㅁ은 $B$와 $C$의 대칭축이 같은 이유를 평균이 같기 때문이라고 보고, $C$가 더 낮고 넓은 이유를 표준편차가 더 크기 때문이라고 보았으므로 참이다.\n참인 것은 ㄱ, ㄴ, ㄷ, ㅁ의 4개이다. 보기에서 4는 ②이다.\n따라서 정답은 ②이다.",
+    "solution": "정규분포의 대칭축 위치는 평균, 그래프의 퍼짐은 표준편차가 결정한다.\n그림에서 $m_A<m_B=m_C$, $\\sigma_A=\\sigma_B<\\sigma_C$이다.\n\nㄱ. 평균 양쪽의 넓이는 각각 $\\dfrac12$이다.\n$P(X_A\\ge m_A)+P(X_B\\le m_B)=\\dfrac12+\\dfrac12=1$이므로 참이다.\n\nㄴ. $m_A<m_B=m_C$이므로 참이다.\n\nㄷ. $A$와 $B$의 폭은 같고 $C$가 더 넓으므로 $\\sigma_A=\\sigma_B<\\sigma_C$이다. 참이다.\n\nㄹ. 그래프의 폭이 같은 이유는 평균이 아니라 표준편차가 같기 때문이다. 또 $A$와 $B$의 대칭축 위치가 다른 이유는 평균이 다르기 때문이다. 거짓이다.\n\nㅁ. $B$와 $C$의 평균은 같고, $C$의 표준편차가 더 커서 그래프가 낮고 넓다. 참이다.\n\n옳은 것은 ㄱ, ㄴ, ㄷ, ㅁ의 $4$개이다.\n따라서 정답은 ②이다.",
     "solutionStatus": "round4_gibbs_solution_source_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "그래프"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -451,7 +471,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 이항분포 $B(100,0.5)$를 평균 50, 표준편차 5인 정규분포로 근사한다.\n조건 정리: 자율 학습 참여 학생 수 $X$는 $B(100,0.5)$를 따르고, $P(a\\le X\\le 55)=0.8185$이다.\n풀이 방향: $X$의 평균과 표준편차를 구한 뒤, 55의 표준화값과 주어진 넓이로부터 $a$의 표준화값을 찾는다.\n정석 풀이: $E(X)=100\\times0.5=50$, $V(X)=100\\times0.5\\times0.5=25$이므로 표준편차는 5이다.\n따라서 $X$를 $N(50,5^2)$로 근사한다.\n$X=55$의 표준화값은\n$Z=\\dfrac{55-50}{5}=1$이다.\n표에서 $P(50\\le X\\le 55)=P(0\\le Z\\le 1)=0.3413$이다.\n주어진 넓이가 $P(a\\le X\\le 55)=0.8185$이므로\n$P(a\\le X\\le 50)=0.8185-0.3413=0.4772$이다.\n표에서 $P(0\\le Z\\le 2)=0.4772$이므로 $a$는 평균보다 표준편차 2개만큼 작다.\n$a=50-2\\times5=40$\n보기에서 40은 ①이다.\n따라서 정답은 ①이다.",
+    "solution": "참여 학생 수는 $X\\sim B(100,0.5)$이다.\n$E(X)=100\\times0.5=50$\n$V(X)=100\\times0.5\\times0.5=25$\n$\\sigma_X=\\sqrt{25}=5$\n따라서 $X$를 $N(50,5^2)$로 근사한다.\n$55$를 표준화하면\n$z=\\dfrac{55-50}{5}=1$이다.\n$P(a\\le X\\le55)\\approx0.8185$이므로\n$P(a\\le X\\le50)$\n$\\approx0.8185-P(0\\le Z\\le1)$\n$=0.8185-0.3413=0.4772$이다.\n표에서 $P(-2\\le Z\\le0)=0.4772$이므로\n$\\dfrac{a-50}{5}=-2$\n$a=50-10=40$\n따라서 정답은 ①이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q10-solution.svg",
+    "solutionImageAlt": "참여자 수를 표준화했을 때 -2부터 1까지 음영 구간",
+    "solutionImageCaption": "40에서 55까지의 확률 0.8185",
+    "solutionImageSize": "medium",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -498,7 +522,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표본평균의 표준편차는 모집단 표준편차를 $\\sqrt n$으로 나눈 값이다.\n조건 정리: 모집단은 $N(150,6^2)$이고 표본의 크기는 36이다.\n풀이 방향: 표본평균 $\\overline X$의 분포를 구하고, 149를 표준화한다.\n정석 풀이: 표본평균의 평균은 150이고 표준편차는\n$\\dfrac{6}{\\sqrt{36}}=\\dfrac{6}{6}=1$이다.\n따라서 $\\overline X\\sim N(150,1^2)$이다.\n$\\overline X=149$를 표준화하면\n$Z=\\dfrac{149-150}{1}=-1$이다.\n그러므로\n$P(\\overline X\\ge149)=P(Z\\ge-1)$\n$=0.5+P(0\\le Z\\le1)=0.5+0.3413=0.8413$\n보기에서 $0.8413$은 ②이다.\n따라서 정답은 ②이다.",
+    "solution": "모집단이 $N(150,6^2)$이고 표본 크기가 $n=36$이므로\n표본평균의 평균은 $150$, 표준편차는\n$\\sigma_{\\overline X}=\\dfrac6{\\sqrt{36}}=1$이다.\n따라서 $\\overline X\\sim N(150,1^2)$이다.\n$Z=\\dfrac{\\overline X-150}{1}$에서\n$\\overline X=149$는 $Z=-1$에 대응한다.\n$P(\\overline X\\ge149)=P(Z\\ge-1)$\n$=\\dfrac12+P(0\\le Z\\le1)$\n$=0.5+0.3413$\n$=0.8413$\n따라서 정답은 ②이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "표본평균 149 이상인 오른쪽 음영 영역",
+    "solutionImageCaption": "149는 표준화한 경계 -1",
+    "solutionImageSize": "medium",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -545,11 +573,16 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 확률밀도함수의 전체 넓이가 1임을 이용해 $a$를 구한 뒤, $x\\ge1$인 부분의 넓이를 구한다.\n조건 정리: 그래프는 $(0,a)$에서 $(3,0)$으로 내려가는 선분과 $(3,0)$에서 $(4,a)$로 올라가는 선분으로 이루어져 있다.\n풀이 방향: 전체 넓이로 $a$를 먼저 정하고, $1\\le x\\le3$ 부분과 $3\\le x\\le4$ 부분의 넓이를 더한다.\n정석 풀이: 전체 넓이는 밑변 3, 높이 $a$인 삼각형과 밑변 1, 높이 $a$인 삼각형의 합이다.\n$\\dfrac{1}{2}\\times3\\times a+\\dfrac{1}{2}\\times1\\times a=2a$\n확률밀도함수의 전체 넓이는 1이므로 $2a=1$, 즉 $a=\\dfrac{1}{2}$이다.\n구하는 확률 $P(X\\ge1)$은 $1\\le x\\le3$의 삼각형 넓이와 $3\\le x\\le4$의 삼각형 넓이의 합이다.\n$x=1$에서의 높이는 직선의 닮음비로 $\\dfrac{2}{3}a$이다. 따라서\n$1\\le x\\le3$의 넓이는 $\\dfrac{1}{2}\\times2\\times\\dfrac{2a}{3}=\\dfrac{2a}{3}$이고,\n$3\\le x\\le4$의 넓이는 $\\dfrac{1}{2}\\times1\\times a=\\dfrac{a}{2}$이다.\n따라서\n$P(X\\ge1)=\\dfrac{2a}{3}+\\dfrac{a}{2}=\\dfrac{7a}{6}=\\dfrac{7}{12}$\n보기에서 $\\dfrac{7}{12}$는 ④이다.\n따라서 정답은 ④이다.",
+    "solution": "그래프는 $(0,a)$에서 $(3,0)$으로 내려갔다가 $(4,a)$로 올라간다.\n전체 넓이가 $1$이므로\n$\\dfrac12\\times3\\times a+\\dfrac12\\times1\\times a=1$\n$2a=1,\\quad a=\\dfrac12$이다.\n\n구하는 넓이는 $x=1$부터 $4$까지이다.\n왼쪽 직선에서 닮음비를 이용하면\n$f(1)=\\dfrac{3-1}{3}a=\\dfrac{2a}{3}$이다.\n\n$1\\le x\\le3$의 삼각형 넓이:\n$\\dfrac12\\times2\\times\\dfrac{2a}{3}=\\dfrac{2a}{3}$\n\n$3\\le x\\le4$의 삼각형 넓이:\n$\\dfrac12\\times1\\times a=\\dfrac a2$\n\n따라서\n$P(X\\ge1)=\\dfrac{2a}{3}+\\dfrac a2$\n$=\\dfrac{7a}{6}=\\dfrac{7}{12}$\n따라서 정답은 ④이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "확률밀도함수 전체 삼각형과 1 이상인 음영 부분",
+    "solutionImageCaption": "전체 넓이 1, 음영 넓이 7/12",
+    "solutionImageSize": "medium",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "그래프"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -592,7 +625,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 같은 신뢰도에서는 신뢰구간의 길이가 표본크기의 제곱근에 반비례한다.\n조건 정리: 표본크기가 100일 때 신뢰구간의 길이는 12이고, 표본크기가 $n$일 때 신뢰구간의 길이는 6이다.\n풀이 방향: 신뢰구간의 길이 $2k\\dfrac{\\sigma}{\\sqrt n}$을 두 표본크기에 적용하여 비례식을 세운다.\n정석 풀이: 신뢰도와 모집단 표준편차가 같으므로 $2k\\sigma$는 두 경우에서 같다.\n표본크기가 100일 때\n$12=2k\\dfrac{\\sigma}{\\sqrt{100}}=2k\\dfrac{\\sigma}{10}$이다.\n따라서 $k\\sigma=60$이다.\n표본크기가 $n$일 때 길이가 6이므로\n$6=2k\\dfrac{\\sigma}{\\sqrt n}$\n$3=\\dfrac{k\\sigma}{\\sqrt n}=\\dfrac{60}{\\sqrt n}$\n$\\sqrt n=20$\n$n=400$\n보기에서 400은 ⑤이다.\n따라서 정답은 ⑤이다.",
+    "solution": "같은 모집단, 같은 신뢰도이므로 신뢰상수 $z$와 모집단 표준편차 $\\sigma$는 같다.\n신뢰구간의 길이는 $L=\\dfrac{2z\\sigma}{\\sqrt n}$이다.\n\n표본 크기 $100$에서 길이가 $12$이므로\n$12=\\dfrac{2z\\sigma}{\\sqrt{100}}$\n$12=\\dfrac{2z\\sigma}{10}$\n$2z\\sigma=120$이다.\n\n표본 크기 $n$에서 길이가 $6$이므로\n$6=\\dfrac{120}{\\sqrt n}$\n$\\sqrt n=20$\n$n=400$\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_prefix_normalized_pending_math_review",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -615,7 +648,7 @@ window.questionBank = [
     "unitInferStatus": "content_keyword",
     "sourceDisplayNoLabel": "13",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -640,7 +673,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 한 번의 시행에서 두 번째로 큰 수의 확률분포를 먼저 만든 뒤, 표본평균의 평균과 분산을 이용한다.\n조건 정리: 1부터 6까지 적힌 카드 중 4장을 동시에 뽑고, 그중 두 번째로 큰 수를 확률변수 $X$라 둔다. 같은 시행을 14번 반복하여 평균을 $\\overline X$라 한다.\n풀이 방향: $X$가 가질 수 있는 값 3, 4, 5의 확률을 구하고 $E(X)$, $V(X)$를 구한 뒤 $\\overline X$의 평균과 분산으로 옮긴다.\n정석 풀이: 전체 경우의 수는 $\\binom{6}{4}=15$이다.\n두 번째로 큰 수가 3이려면 1, 2, 3을 뽑고 4, 5, 6 중 하나를 뽑아야 하므로 경우의 수는 $\\binom{2}{2}\\binom{3}{1}=3$이다. 따라서 $P(X=3)=\\dfrac{3}{15}=\\dfrac{1}{5}$이다.\n두 번째로 큰 수가 4이려면 1, 2, 3 중 두 장, 4, 그리고 5, 6 중 한 장을 뽑아야 하므로 경우의 수는 $\\binom{3}{2}\\binom{2}{1}=6$이다. 따라서 $P(X=4)=\\dfrac{6}{15}=\\dfrac{2}{5}$이다.\n두 번째로 큰 수가 5이려면 1, 2, 3, 4 중 두 장, 5, 그리고 6을 뽑아야 하므로 경우의 수는 $\\binom{4}{2}\\binom{1}{1}=6$이다. 따라서 $P(X=5)=\\dfrac{6}{15}=\\dfrac{2}{5}$이다.\n그러므로\n$E(X)=3\\cdot\\dfrac{1}{5}+4\\cdot\\dfrac{2}{5}+5\\cdot\\dfrac{2}{5}=\\dfrac{21}{5}$\n$E(X^2)=3^2\\cdot\\dfrac{1}{5}+4^2\\cdot\\dfrac{2}{5}+5^2\\cdot\\dfrac{2}{5}=\\dfrac{91}{5}$\n$V(X)=E(X^2)-\\{E(X)\\}^2=\\dfrac{91}{5}-\\left(\\dfrac{21}{5}\\right)^2=\\dfrac{14}{25}$이다.\n14번 반복한 평균이므로\n$E(\\overline X)=E(X)=\\dfrac{21}{5}$, $V(\\overline X)=\\dfrac{V(X)}{14}=\\dfrac{1}{25}$이다.\n따라서\n$E(5\\overline X-15)=5\\cdot\\dfrac{21}{5}-15=6$\n$V(5\\overline X+10)=5^2\\cdot\\dfrac{1}{25}=1$\n구하는 값은 $6+1=7$이고, 보기에서 7은 ③이다.\n따라서 정답은 ③이다.",
+    "solution": "한 번에 4장을 뽑아 두 번째로 큰 수를 $X$라 하자.\n전체 경우의 수는 $\\binom{6}{4}=15$이다.\n두 번째로 큰 수는 $3,4,5$ 중 하나이다.\n\n$X=3$: $1,2,3$과 $4,5,6$ 중 1장을 뽑는다.\n$P(X=3)=\\dfrac{{}_2C_2\\,{}_3C_1}{15}=\\dfrac3{15}=\\dfrac15$\n\n$X=4$: $1,2,3$ 중 2장, $4$와 $5,6$ 중 1장을 뽑는다.\n$P(X=4)=\\dfrac{{}_3C_2\\,{}_2C_1}{15}=\\dfrac6{15}=\\dfrac25$\n\n$X=5$: $1,2,3,4$ 중 2장, $5,6$을 뽑는다.\n$P(X=5)=\\dfrac{{}_4C_2}{15}=\\dfrac6{15}=\\dfrac25$\n\n$E(X)=3\\cdot\\dfrac15+4\\cdot\\dfrac25+5\\cdot\\dfrac25=\\dfrac{21}{5}$\n$E(X^2)=9\\cdot\\dfrac15+16\\cdot\\dfrac25+25\\cdot\\dfrac25=\\dfrac{91}{5}$\n$V(X)=\\dfrac{91}{5}-\\left(\\dfrac{21}{5}\\right)^2$\n$=\\dfrac{455-441}{25}=\\dfrac{14}{25}$\n\n독립인 시행 14번의 표본평균이 $\\overline X$이므로\n$E(\\overline X)=\\dfrac{21}{5}$,\n$V(\\overline X)=\\dfrac{14/25}{14}=\\dfrac1{25}$이다.\n\n$E(5\\overline X-15)=5\\cdot\\dfrac{21}{5}-15=6$\n$V(5\\overline X+10)=5^2\\cdot\\dfrac1{25}=1$\n구하는 값은 $6+1=7$이다.\n따라서 정답은 ③이다.",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -687,7 +720,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 두 이항분포의 확률을 각각 전개한 뒤, 양수 $p$라는 조건으로 공통인 $p^3$을 나눈다.\n조건 정리: $X\\sim B(3,p)$, $Y\\sim B(4,2p)$이고 $10P(X=3)=P(Y\\ge3)$이다.\n풀이 방향: $P(X=3)$, $P(Y=3)$, $P(Y=4)$를 각각 구해 등식을 만든다.\n정석 풀이: $X\\sim B(3,p)$이므로\n$P(X=3)=p^3$이다.\n또 $Y\\sim B(4,2p)$이므로\n$P(Y\\ge3)=P(Y=3)+P(Y=4)$\n$=\\binom{4}{3}(2p)^3(1-2p)+\\binom{4}{4}(2p)^4$\n$=4\\cdot8p^3(1-2p)+16p^4$\n$=32p^3-64p^4+16p^4=32p^3-48p^4$이다.\n주어진 식에 넣으면\n$10p^3=32p^3-48p^4$이다. $p$는 양수이므로 $p^3$으로 나누어\n$10=32-48p$\n$48p=22$\n$p=\\dfrac{11}{24}$\n보기에서 $\\dfrac{11}{24}$는 ①이다.\n따라서 정답은 ①이다.",
+    "solution": "$X\\sim B(3,p)$에서\n$P(X=3)=p^3$이다.\n\n$Y\\sim B(4,2p)$에서\n$P(Y\\ge3)=P(Y=3)+P(Y=4)$\n$={}_4C_3(2p)^3(1-2p)+{}_4C_4(2p)^4$\n$=32p^3(1-2p)+16p^4$\n$=32p^3-48p^4$이다.\n\n$10P(X=3)=P(Y\\ge3)$이므로\n$10p^3=32p^3-48p^4$\n$p>0$에서 $p^3$으로 나누면\n$10=32-48p$\n$48p=22$\n$p=\\dfrac{11}{24}$이다.\n$0<2p\\le1$도 만족하므로 가능하다.\n따라서 정답은 ①이다.",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -734,7 +767,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 같은 표본에서 만든 신뢰구간이므로 표준오차 $\\dfrac{\\sigma}{\\sqrt n}$는 변하지 않는다.\n조건 정리: 99% 신뢰구간은 $9.42\\le m\\le14.58$이고, 95% 신뢰구간을 구해야 한다.\n풀이 방향: 99% 신뢰구간의 중심과 반길이를 이용하여 표준오차를 구하고, 95% 신뢰구간의 반길이를 새로 구한다.\n정석 풀이: 99% 신뢰구간의 중심은\n$\\dfrac{9.42+14.58}{2}=12$이고, 반길이는\n$14.58-12=2.58$이다.\n99% 신뢰구간에서 임계값이 2.58이므로\n$2.58\\cdot\\dfrac{\\sigma}{\\sqrt n}=2.58$이다. 따라서 $\\dfrac{\\sigma}{\\sqrt n}=1$이다.\n95% 신뢰구간의 임계값은 1.96이므로 반길이는\n$1.96\\cdot1=1.96$이다.\n따라서 95% 신뢰구간은\n$12-1.96\\le m\\le12+1.96$\n$10.04\\le m\\le13.96$이다.\n이 구간에 속하는 자연수는 11, 12, 13의 3개이다. 보기에서 3은 ④이다.\n따라서 정답은 ④이다.",
+    "solution": "신뢰구간의 중심은 표본평균이고, 반길이는 신뢰상수와 표준오차의 곱이다.\n\n99% 신뢰구간의 중심:\n$\\overline x=\\dfrac{9.42+14.58}{2}=12$\n99% 신뢰구간의 반길이:\n$14.58-12=2.58$\n\n99% 신뢰상수가 $2.58$이므로\n$2.58\\times\\dfrac{\\sigma}{\\sqrt n}=2.58$\n$\\dfrac{\\sigma}{\\sqrt n}=1$이다.\n\n같은 표본으로 구한 95% 신뢰구간에서는 중심과 표준오차가 그대로이다.\n95% 신뢰상수는 $1.96$이므로\n$12-1.96\\times1\\le m\\le12+1.96\\times1$\n$10.04\\le m\\le13.96$\n\n포함되는 자연수는 $11,\\ 12,\\ 13$으로 $3$개이다.\n따라서 정답은 ④이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q16-solution.svg",
+    "solutionImageAlt": "99% 및 95% 신뢰구간의 중심과 양끝 비교",
+    "solutionImageCaption": "95% 구간 10.04~13.96 안에 11, 12, 13",
+    "solutionImageSize": "medium",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -756,7 +793,7 @@ window.questionBank = [
     "unitInferStatus": "content_keyword",
     "sourceDisplayNoLabel": "16",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -781,7 +818,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 이차방정식이 실근을 가지려면 판별식이 0 이상이어야 하며, 이 조건을 $X$의 범위로 바꾼다.\n조건 정리: $X\\sim B\\left(180,\\dfrac{1}{6}\\right)$이고 방정식 $t^2-2Xt+55X-700=0$이 실근을 가져야 한다.\n풀이 방향: 판별식 조건으로 $X\\le20$ 또는 $X\\ge35$를 얻고, 이항분포를 정규분포로 근사하여 확률을 구한다.\n정석 풀이: 판별식을 $D$라 하면\n$D=(-2X)^2-4(55X-700)$\n$=4X^2-220X+2800=4(X^2-55X+700)$이다.\n실근 조건은 $D\\ge0$이므로\n$X^2-55X+700\\ge0$\n$(X-20)(X-35)\\ge0$\n따라서 $X\\le20$ 또는 $X\\ge35$이다.\n이항분포의 평균과 분산은\n$E(X)=180\\cdot\\dfrac{1}{6}=30$,\n$V(X)=180\\cdot\\dfrac{1}{6}\\cdot\\dfrac{5}{6}=25$이다.\n따라서 $X$를 $N(30,5^2)$로 근사한다.\n$X=20$은 $Z=\\dfrac{20-30}{5}=-2$, $X=35$는 $Z=\\dfrac{35-30}{5}=1$이다.\n구하는 확률은\n$P(X\\le20)+P(X\\ge35)=P(Z\\le-2)+P(Z\\ge1)$\n$=(0.5-0.4772)+(0.5-0.3413)$\n$=0.0228+0.1587=0.1815$\n보기에서 $0.1815$는 ①이다.\n따라서 정답은 ①이다.",
+    "solution": "이차방정식 $t^2-2Xt+55X-700=0$이 실근을 가지려면 판별식이 $0$ 이상이다.\n$D=(-2X)^2-4(55X-700)$\n$=4(X^2-55X+700)$\n$=4(X-20)(X-35)$\n따라서\n$(X-20)(X-35)\\ge0$\n$X\\le20$ 또는 $X\\ge35$이다.\n\n$X\\sim B\\left(180,\\dfrac16\\right)$이므로\n$E(X)=180\\times\\dfrac16=30$\n$V(X)=180\\times\\dfrac16\\times\\dfrac56=25$\n$\\sigma_X=5$이다.\n따라서 $X$를 $N(30,5^2)$로 근사한다.\n\n$X=20$은 $Z=-2$, $X=35$는 $Z=1$에 대응한다.\n$P(X\\le20)+P(X\\ge35)$\n$\\approx P(Z\\le-2)+P(Z\\ge1)$\n$=(0.5-0.4772)+(0.5-0.3413)$\n$=0.0228+0.1587=0.1815$\n따라서 정답은 ①이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q17-solution.svg",
+    "solutionImageAlt": "실근 판별식이 허용하는 두 꼬리 확률 구간",
+    "solutionImageCaption": "Z≤−2 또는 Z≥1",
+    "solutionImageSize": "medium",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -828,11 +869,12 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 두 분포는 모두 5를 중심으로 대칭이므로 평균은 5이고, $Y$의 분산은 $X$의 확률 변화량만 반영해 구할 수 있다.\n조건 정리: $X$의 확률은 $a,b,c,b,a$이고, $Y$의 확률은 양끝에서 각각 $\\dfrac{1}{20}$씩 증가하고 가운데에서 $\\dfrac{1}{10}$ 감소한다. 또한 $V(X)=\\dfrac{31}{5}$이다.\n풀이 방향: $X$와 $Y$의 평균이 모두 5임을 이용하고, $E(Y^2)$를 $E(X^2)$에서 변화량만 더해 구한다.\n정석 풀이: 두 확률분포는 5를 중심으로 대칭이므로\n$E(X)=E(Y)=5$이다.\n$V(X)=E(X^2)-\\{E(X)\\}^2$이므로\n$\\dfrac{31}{5}=E(X^2)-25$\n$E(X^2)=\\dfrac{31}{5}+25=\\dfrac{156}{5}$이다.\n$Y$는 $X$와 비교하여 $y=1,9$에서 각각 확률이 $\\dfrac{1}{20}$씩 증가하고, $y=5$에서 확률이 $\\dfrac{1}{10}$ 감소한다. 따라서\n$E(Y^2)=E(X^2)+1^2\\cdot\\dfrac{1}{20}+9^2\\cdot\\dfrac{1}{20}-5^2\\cdot\\dfrac{1}{10}$\n$=\\dfrac{156}{5}+\\dfrac{82}{20}-\\dfrac{25}{10}$\n$=\\dfrac{156}{5}+\\dfrac{41}{10}-\\dfrac{5}{2}$\n$=\\dfrac{164}{5}$이다.\n그러므로\n$V(Y)=E(Y^2)-\\{E(Y)\\}^2=\\dfrac{164}{5}-25=\\dfrac{39}{5}$이다.\n따라서 $5V(Y)=39$이고, 보기에서 39는 ②이다.\n따라서 정답은 ②이다.",
+    "solution": "두 확률분포는 모두 $5$를 중심으로 좌우 대칭이므로\n$E(X)=E(Y)=5$이다.\n$V(X)=E(X^2)-\\{E(X)\\}^2$에서\n$\\dfrac{31}{5}=E(X^2)-25$\n$E(X^2)=\\dfrac{156}{5}$이다.\n\n$Y$에서는 $X$에 비해 양끝 값 $1,9$의 확률이 각각 $\\dfrac1{20}$만큼 늘고, 가운데 값 $5$의 확률은 $\\dfrac1{10}$만큼 줄었다.\n따라서\n$E(Y^2)-E(X^2)$\n$=1^2\\cdot\\dfrac1{20}+9^2\\cdot\\dfrac1{20}-5^2\\cdot\\dfrac1{10}$\n$=\\dfrac{1+81}{20}-\\dfrac{25}{10}$\n$=\\dfrac{82-50}{20}=\\dfrac85$이다.\n\n평균이 같으므로 분산의 차도 $\\dfrac85$이다.\n$V(Y)=\\dfrac{31}{5}+\\dfrac85=\\dfrac{39}{5}$\n$5V(Y)=39$\n따라서 정답은 ②이다.",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -875,7 +917,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 한 상자 평균의 불량 확률을 먼저 구하고, 400상자 중 불량 상자 수를 다시 이항분포로 본다.\n조건 정리: 한 병의 용량은 $N(240,12^2)$이고, 한 상자에는 9병이 들어 있다. 표본평균 $\\overline X$가 234.4보다 작거나 249.6보다 크면 불량이다.\n풀이 방향: $\\overline X$의 표준편차를 구해 한 상자의 불량 확률을 구한 뒤, 불량 상자 수를 정규분포로 근사한다.\n정석 풀이: 한 상자 9병의 표본평균은\n$\\overline X\\sim N\\left(240,\\left(\\dfrac{12}{\\sqrt9}\\right)^2\\right)=N(240,4^2)$이다.\n불량 확률은\n$P(\\overline X<234.4)+P(\\overline X>249.6)$이다.\n표준화하면\n$\\dfrac{234.4-240}{4}=-1.4$, $\\dfrac{249.6-240}{4}=2.4$이다.\n따라서 한 상자의 불량 확률은\n$P(Z<-1.4)+P(Z>2.4)$\n$=(0.5-0.41)+(0.5-0.49)=0.09+0.01=0.10$이다.\n400개 상자 중 불량품인 상자 수를 $Y$라 하면 $Y\\sim B(400,0.10)$이고,\n$E(Y)=400\\cdot0.10=40$, $V(Y)=400\\cdot0.10\\cdot0.90=36$이다.\n따라서 $Y$를 $N(40,6^2)$로 근사한다.\n$P(Y\\le43)=P\\left(Z\\le\\dfrac{43-40}{6}\\right)=P(Z\\le0.5)$\n$=0.5+0.19=0.69$\n보기에서 $0.69$는 ⑤이다.\n따라서 정답은 ⑤이다.",
+    "solution": "한 병의 용량은 $N(240,12^2)$를 따른다.\n한 상자의 9병 평균 $\\overline X$는\n$\\overline X\\sim N\\left(240,\\left(\\dfrac{12}{\\sqrt9}\\right)^2\\right)$\n$=N(240,4^2)$이다.\n\n불량 판정 경계를 표준화하면\n$\\dfrac{234.4-240}{4}=-1.4$\n$\\dfrac{249.6-240}{4}=2.4$이다.\n따라서 한 상자의 불량 확률은\n$P(Z<-1.4)+P(Z>2.4)$이다.\n확률표의 값을 $0.41,\\ 0.49$로 근사하여 계산하면\n$p\\approx(0.5-0.41)+(0.5-0.49)$\n$=0.09+0.01=0.10$이다.\n\n불량 상자 수를 $Y$라 하면 $Y\\sim B(400,0.10)$으로 근사하여\n$E(Y)=400\\times0.10=40$\n$V(Y)=400\\times0.10\\times0.90=36$\n$\\sigma_Y=6$이다.\n다시 $Y$를 $N(40,6^2)$로 근사하면\n$P(Y\\le43)\\approx P\\left(Z\\le\\dfrac{43-40}{6}\\right)$\n$=P(Z\\le0.5)$\n$=0.5+0.19=0.69$\n따라서 정답은 ⑤이다.",
     "solutionStatus": "round4_gibbs_solution_source_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -922,7 +964,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] $f(m)$을 표준정규분포의 누적확률로 바꾸고, 부등식이 되려면 두 번째 누적확률이 0.05 이하가 되어야 함을 이용한다.\n조건 정리: 모집단의 평균은 $m$, 표준편차는 4이고, 표본평균 $\\overline X$에 대하여 $f(m)=P\\left(\\overline X\\le1.96\\cdot\\dfrac{4}{\\sqrt n}\\right)$이다.\n풀이 방향: $f(0)$과 $f(1.8)$을 각각 표준화하여 $n$에 대한 부등식을 만든다.\n정석 풀이: 표본평균은 $\\overline X\\sim N\\left(m,\\left(\\dfrac{4}{\\sqrt n}\\right)^2\\right)$이다.\n따라서\n$f(m)=P\\left(Z\\le\\dfrac{1.96\\cdot\\frac{4}{\\sqrt n}-m}{\\frac{4}{\\sqrt n}}\\right)$\n$=P\\left(Z\\le1.96-\\dfrac{m\\sqrt n}{4}\\right)$이다.\n먼저\n$f(0)=P(Z\\le1.96)=0.5+0.475=0.975$이다.\n조건 $f(0)+f(1.8)\\le1.025$에서\n$f(1.8)\\le1.025-0.975=0.05$이어야 한다.\n표에서 $P(0\\le Z\\le1.64)=0.450$이므로 $P(Z\\le-1.64)=0.05$이다. 따라서\n$1.96-\\dfrac{1.8\\sqrt n}{4}\\le-1.64$\n$\\dfrac{1.8\\sqrt n}{4}\\ge3.60$\n$1.8\\sqrt n\\ge14.4$\n$\\sqrt n\\ge8$\n$n\\ge64$이다.\n조건을 만족시키는 최소 자연수는 64이고, 보기에서 64는 ④이다.\n따라서 정답은 ④이다.",
+    "solution": "표본평균은 $\\overline X\\sim N\\left(m,\\dfrac{16}{n}\\right)$이므로\n표준편차는 $\\dfrac4{\\sqrt n}$이다.\n$f(m)=P\\left(\\overline X\\le1.96\\cdot\\dfrac4{\\sqrt n}\\right)$\n$=P\\left(Z\\le\\dfrac{1.96(4/\\sqrt n)-m}{4/\\sqrt n}\\right)$\n$=P\\left(Z\\le1.96-\\dfrac{m\\sqrt n}{4}\\right)$이다.\n\n$m=0$일 때\n$f(0)=P(Z\\le1.96)=0.5+0.475=0.975$\n\n따라서 $f(0)+f(1.8)\\le1.025$는\n$f(1.8)\\le1.025-0.975=0.05$이다.\n$P(Z\\le-1.64)=0.5-0.450=0.05$이므로\n$1.96-\\dfrac{1.8\\sqrt n}{4}\\le-1.64$\n$\\dfrac{1.8\\sqrt n}{4}\\ge3.60$\n$1.8\\sqrt n\\ge14.4$\n$\\sqrt n\\ge8$\n$n\\ge64$이다.\n최소 자연수는 $64$이다.\n따라서 정답은 ④이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q20-solution.svg",
+    "solutionImageAlt": "표본 크기 64의 한계에서 표준화 경계 마이너스 1.64",
+    "solutionImageCaption": "f(1.8)≤0.05에 대응하는 왼쪽 꼬리",
+    "solutionImageSize": "medium",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -961,11 +1007,16 @@ window.questionBank = [
     "choices": [],
     "answer": "0.0228",
     "answerStatus": "direct_solved_round5",
-    "solution": "[키포인트] 앞면의 횟수를 확률변수로 두면 최종 점수 조건을 이항분포의 꼬리확률로 바꿀 수 있다.\n조건 정리: 동전을 100번 던지고, 앞면이 나오면 4점을 얻고 뒷면이 나오면 3점을 잃는다. 최종 점수가 120 이상일 확률을 구한다.\n풀이 방향: 앞면이 나오는 횟수를 $X$라 두고 점수식을 만든 뒤, $X\\sim B\\left(100,\\dfrac{1}{2}\\right)$를 정규분포로 근사한다.\n정석 풀이: 앞면이 나온 횟수를 $X$라 하면 뒷면이 나온 횟수는 $100-X$이다.\n최종 점수는\n$4X-3(100-X)=4X-300+3X=7X-300$이다.\n최종 점수가 120 이상이어야 하므로\n$7X-300\\ge120$\n$7X\\ge420$\n$X\\ge60$이다.\n또 $X\\sim B\\left(100,\\dfrac{1}{2}\\right)$이므로\n$E(X)=50$, $V(X)=25$이고, $X$를 $N(50,5^2)$로 근사한다.\n따라서\n$P(X\\ge60)=P\\left(Z\\ge\\dfrac{60-50}{5}\\right)=P(Z\\ge2)$\n$=0.5-P(0\\le Z\\le2)=0.5-0.4772=0.0228$\n따라서 구하는 값은 $0.0228$이다.",
+    "solution": "앞면이 나온 횟수를 $X$라 하면 뒷면이 나온 횟수는 $100-X$이다.\n총점은\n$4X-3(100-X)$\n$=4X-300+3X=7X-300$이다.\n\n총점이 $120$점 이상인 조건은\n$7X-300\\ge120$\n$7X\\ge420$\n$X\\ge60$이다.\n\n앞면이 나올 확률은 $\\dfrac12$이므로\n$X\\sim B\\left(100,\\dfrac12\\right)$이다.\n$E(X)=100\\times\\dfrac12=50$\n$V(X)=100\\times\\dfrac12\\times\\dfrac12=25$\n$\\sigma_X=5$이다.\n따라서 $X$를 $N(50,5^2)$로 근사한다.\n$P(X\\ge60)\\approx P\\left(Z\\ge\\dfrac{60-50}{5}\\right)$\n$=P(Z\\ge2)$\n$=0.5-0.4772=0.0228$\n따라서 구하는 확률은 $0.0228$이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q21-solution.svg",
+    "solutionImageAlt": "동전 앞면 수 60 이상인 오른쪽 꼬리확률",
+    "solutionImageCaption": "Z≥2 영역의 확률 0.0228",
+    "solutionImageSize": "medium",
     "solutionStatus": "direct_written_round5",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "서술형"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -978,7 +1029,7 @@ window.questionBank = [
     "standardUnitKey": "H15-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
-    "questionType": "주관식",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
@@ -1002,11 +1053,16 @@ window.questionBank = [
     "choices": [],
     "answer": "0.8413",
     "answerStatus": "direct_solved_round5",
-    "solution": "[키포인트] 정규분포를 따르는 확률변수의 일차변환도 정규분포를 따르며, 평균과 표준편차를 먼저 구한다.\n조건 정리: $X\\sim N(100,9)$이고 $Y=3X-100$이다. 구하는 확률은 $P(Y\\ge191)$이다.\n풀이 방향: $Y$의 평균과 표준편차를 구한 뒤, 191을 표준화하여 표준정규분포표를 이용한다.\n정석 풀이: $X\\sim N(100,9)$에서 표준편차는 3이다.\n$Y=3X-100$이므로\n$E(Y)=3E(X)-100=3\\times100-100=200$이다.\n또\n$V(Y)=3^2V(X)=9\\times9=81$이므로 $Y$의 표준편차는 9이다.\n따라서 $Y\\sim N(200,9^2)$이다.\n$Y=191$을 표준화하면\n$Z=\\dfrac{191-200}{9}=-1$이다.\n그러므로\n$P(Y\\ge191)=P(Z\\ge-1)$\n$=0.5+P(0\\le Z\\le1)=0.5+0.3413=0.8413$\n따라서 구하는 값은 $0.8413$이다.",
+    "solution": "$X\\sim N(100,9)$이므로\n$E(X)=100,\\quad \\sigma_X=\\sqrt9=3$이다.\n\n$Y=3X-100$에서\n$E(Y)=3E(X)-100$\n$=3\\times100-100=200$이다.\n$V(Y)=3^2V(X)=9\\times9=81$,\n$\\sigma_Y=\\sqrt{81}=9$이다.\n따라서 $Y\\sim N(200,9^2)$이다.\n\n$Y=191$을 표준화하면\n$Z=\\dfrac{191-200}{9}=-1$이다.\n$P(Y\\ge191)=P(Z\\ge-1)$\n$=0.5+P(0\\le Z\\le1)$\n$=0.5+0.3413$\n$=0.8413$\n따라서 구하는 확률은 $0.8413$이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q22-solution.svg",
+    "solutionImageAlt": "변환된 정규분포 Y에서 191 이상인 확률",
+    "solutionImageCaption": "평균 200, 표준편차 9에서 Z≥−1",
+    "solutionImageSize": "medium",
     "solutionStatus": "direct_written_round5",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "서술형"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -1019,7 +1075,7 @@ window.questionBank = [
     "standardUnitKey": "H15-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
-    "questionType": "주관식",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
@@ -1043,11 +1099,16 @@ window.questionBank = [
     "choices": [],
     "answer": "625",
     "answerStatus": "direct_solved_round5",
-    "solution": "[키포인트] 표본평균의 표준편차 $\\dfrac{25}{\\sqrt n}$를 이용하여 주어진 중앙확률 $0.9544$의 표준화 경계값을 찾는다.\n조건 정리: 모집단은 $N(300,625)$를 따르므로 표준편차는 25이다. 표본평균 $\\overline X$에 대하여 $P(298\\le\\overline X\\le302)=0.9544$이다.\n풀이 방향: $298$과 $302$가 평균 300을 중심으로 대칭이므로 표준화한 양끝값도 $-z$와 $z$ 꼴이 된다.\n정석 풀이: 표본평균의 분포는\n$\\overline X\\sim N\\left(300,\\left(\\dfrac{25}{\\sqrt n}\\right)^2\\right)$이다.\n따라서\n$P(298\\le\\overline X\\le302)$\n$=P\\left(\\dfrac{298-300}{25/\\sqrt n}\\le Z\\le\\dfrac{302-300}{25/\\sqrt n}\\right)$\n$=P\\left(-\\dfrac{2\\sqrt n}{25}\\le Z\\le\\dfrac{2\\sqrt n}{25}\\right)$이다.\n주어진 확률이 $0.9544$이므로 한쪽 넓이는 $\\dfrac{0.9544}{2}=0.4772$이다.\n표에서 $P(0\\le Z\\le2)=0.4772$이므로\n$\\dfrac{2\\sqrt n}{25}=2$이다.\n따라서\n$2\\sqrt n=50$\n$\\sqrt n=25$\n$n=625$\n따라서 구하는 값은 $625$이다.",
+    "solution": "모집단이 $N(300,625)$이므로\n평균은 $300$, 표준편차는 $\\sqrt{625}=25$이다.\n크기 $n$인 표본평균의 분포는\n$\\overline X\\sim N\\left(300,\\dfrac{625}{n}\\right)$이고\n표준오차는 $\\dfrac{25}{\\sqrt n}$이다.\n\n$298$과 $302$는 평균 $300$의 좌우에서 각각 $2$만큼 떨어져 있다.\n표준화하면\n$P(298\\le\\overline X\\le302)$\n$=P\\left(-\\dfrac{2\\sqrt n}{25}\\le Z\\le\\dfrac{2\\sqrt n}{25}\\right)$\n$=0.9544$이다.\n\n평균의 양쪽 넓이가 같으므로\n$P\\left(0\\le Z\\le\\dfrac{2\\sqrt n}{25}\\right)$\n$=\\dfrac{0.9544}{2}=0.4772$이다.\n표에서 $P(0\\le Z\\le2)=0.4772$이므로\n$\\dfrac{2\\sqrt n}{25}=2$\n$\\sqrt n=25$\n$n=625$\n따라서 구하는 표본 크기는 $625$이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q23-solution.svg",
+    "solutionImageAlt": "표본평균 298부터 302의 대칭 확률구간",
+    "solutionImageCaption": "표준화 −2~2의 넓이 0.9544",
+    "solutionImageSize": "medium",
     "solutionStatus": "direct_written_round5",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "서술형"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -1060,7 +1121,7 @@ window.questionBank = [
     "standardUnitKey": "H15-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
-    "questionType": "주관식",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
@@ -1086,11 +1147,17 @@ window.questionBank = [
     "choices": [],
     "answer": "a=295, b=70",
     "answerStatus": "direct_solved_round5",
-    "solution": "[키포인트] $P(b\\le X\\le75)$로 $b$를 먼저 구하고, $Y=-3X+a$의 평균과 표준편차를 이용하여 $a$를 구한다.\n조건 정리: $X\\sim N(80,5^2)$, $Y=-3X+a$이고 $P(b\\le X\\le75)=0.1359$, $P(a-240\\le Y\\le b)=0.3413$이다.\n풀이 방향: $75$의 표준화값은 $-1$이다. 넓이 $0.1359$가 표에서 $1$과 $2$ 사이의 넓이임을 이용하여 $b$의 표준화값을 정한다. 그다음 $Y$의 평균과 표준편차로 두 번째 확률을 처리한다.\n정석 풀이: $X=75$를 표준화하면\n$Z=\\dfrac{75-80}{5}=-1$이다.\n$P(b\\le X\\le75)=0.1359$이고, 표에서\n$P(1\\le Z\\le2)=0.4772-0.3413=0.1359$이다.\n따라서 $b$의 표준화값은 $-2$이므로\n$\\dfrac{b-80}{5}=-2$\n$b-80=-10$\n$b=70$이다.\n이제 $Y=-3X+a$이므로\n$E(Y)=-3E(X)+a=-3\\times80+a=a-240$이고,\n$V(Y)=(-3)^2V(X)=9\\times25=225$이므로 $Y$의 표준편차는 15이다.\n따라서 $Y\\sim N(a-240,15^2)$이다.\n주어진 확률은\n$P(a-240\\le Y\\le b)=0.3413$이다. 아래쪽 경계 $a-240$은 $Y$의 평균이므로, 표준화하면\n$P\\left(0\\le Z\\le\\dfrac{b-(a-240)}{15}\\right)=0.3413$이다.\n표에서 $P(0\\le Z\\le1)=0.3413$이므로\n$\\dfrac{b-a+240}{15}=1$이다.\n$b=70$을 넣으면\n$\\dfrac{70-a+240}{15}=1$\n$310-a=15$\n$a=295$이다.\n따라서 구하는 값은 $a=295,\\ b=70$이다.",
+    "solution": "먼저 $X\\sim N(80,5^2)$에서 $b$를 구한다.\n$X=75$를 표준화하면\n$\\dfrac{75-80}{5}=-1$이다.\n\n$P(b\\le X\\le75)=0.1359$이고\n$P(1\\le Z\\le2)$\n$=0.4772-0.3413=0.1359$이다.\n따라서 구간의 표준화한 양끝값은 $-2,\\ -1$이다.\n$\\dfrac{b-80}{5}=-2$\n$b-80=-10$\n$b=70$이다.\n\n이제 $Y=-3X+a$의 평균과 표준편차를 구한다.\n$E(Y)=-3\\times80+a=a-240$\n$V(Y)=(-3)^2\\times5^2=225$\n$\\sigma_Y=15$이므로\n$Y\\sim N(a-240,15^2)$이다.\n\n$P(a-240\\le Y\\le b)=0.3413$에서 아래끝 $a-240$은 바로 $Y$의 평균이다.\n따라서\n$P\\left(0\\le Z\\le\\dfrac{b-(a-240)}{15}\\right)=0.3413$이다.\n표에서 $P(0\\le Z\\le1)=0.3413$이므로\n$\\dfrac{b-a+240}{15}=1$\n$b-a+240=15$이다.\n$b=70$을 대입하면\n$70-a+240=15$\n$310-a=15$\n$a=295$이다.\n따라서 구하는 값은 $a=295,\\ b=70$이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q24-solution.svg",
+    "solutionImageAlt": "X의 70~75와 Y의 55~70 두 확률구간 대조",
+    "solutionImageCaption": "X는 −2~−1, Y는 0~1로 표준화",
+    "solutionImageSize": "medium",
     "solutionStatus": "direct_written_round5",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "표",
+      "서술형"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -1103,7 +1170,7 @@ window.questionBank = [
     "standardUnitKey": "H15-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
-    "questionType": "주관식",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
