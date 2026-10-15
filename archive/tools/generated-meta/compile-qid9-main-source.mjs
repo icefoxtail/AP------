@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import normalizeQid9Svg from './normalize-qid9-svg.cjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');
 const specPath='archive/data/generated-source-import-roots-v1.json';
@@ -61,7 +62,8 @@ for(const entry of spec.roots){
     const bytes=fs.readFileSync(sourceFile);
     if(ext==='.svg'&&(!bytes.includes(Buffer.from('<svg'))||!bytes.includes(Buffer.from('</svg>'))))throw Error('QID9_SVG_INVALID:'+sourceRel);
     const dest=assetsRoot+'/'+item.uid+'-'+(field==='image'?'problem':'solution')+ext;
-    store(dest,bytes);copy[field]=dest.slice('archive/'.length);
+    const derivedBytes=ext==='.svg'?Buffer.from(normalizeQid9Svg(bytes.toString('utf8'),item.uid),'utf8'):bytes;
+    store(dest,derivedBytes);copy[field]=dest.slice('archive/'.length);
    }
    student.push(copy);
   }
