@@ -73,12 +73,15 @@ function normalizeQid9Svg(input, uid, labels = {}) {
   const newTitle = setAttribute(oldTitle, 'id', titleId);
   const newDesc = setAttribute(oldDesc, 'id', descId);
   const newRoot = removeAttribute(
-    setAttribute(
-      setAttribute(oldRoot, 'role', 'img'),
-      'aria-labelledby',
-      titleId + ' ' + descId
+    removeAttribute(
+      setAttribute(
+        setAttribute(oldRoot, 'role', 'img'),
+        'aria-labelledby',
+        titleId + ' ' + descId
+      ),
+      'aria-describedby'
     ),
-    'aria-describedby'
+    'aria-label'
   );
   return svg.replace(oldTitle, newTitle).replace(oldDesc, newDesc).replace(oldRoot, newRoot);
 }
