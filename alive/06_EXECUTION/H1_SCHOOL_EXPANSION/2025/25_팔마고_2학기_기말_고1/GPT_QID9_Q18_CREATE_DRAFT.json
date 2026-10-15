@@ -1,0 +1,1369 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q18_CREATE_DRAFT_v1",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceFileSha256": "ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91",
+  "sourceQid": 18,
+  "sourceUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+  "sourceUidBinding": "VERIFIED_IDENTITY_MAP",
+  "sourceLock": "GPT_QID9_Q18_SOURCE_LOCK.json",
+  "sourceOriginalImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q18.png",
+  "primaryRpmL3": "H1-RPM-267",
+  "rpmMappingStatus": "DIRECT_BINDING_GAP",
+  "actualActivePt": "PT_FUNCTION_GRAPH_TRANSFORM",
+  "actualActiveTpl": "TPL_FUNCTION_GRAPH_TRANSLATION",
+  "summary": {
+    "uidCount": 9,
+    "choices": 45,
+    "wrongRoutes": 36,
+    "svgProblem": 9,
+    "svgSolution": 9,
+    "answerDistribution": {
+      "①": 2,
+      "②": 2,
+      "③": 1,
+      "④": 2,
+      "⑤": 2
+    },
+    "answerGrid": [
+      [
+        "⑤",
+        "④",
+        "②"
+      ],
+      [
+        "②",
+        "④",
+        "③"
+      ],
+      [
+        "⑤",
+        "①",
+        "①"
+      ]
+    ],
+    "answerDistributionGate": "PASS",
+    "verticalDeviationBefore": 51,
+    "verticalDeviationAfter": 47,
+    "independent": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "consumer": "NOT_RUN",
+    "main": "NOT_RUN"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-PALMA25-2FINAL-Q18-A1",
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+      "slot": "A1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "무리함수 그래프의 평행이동과 넓이",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "무리함수",
+        "그래프",
+        "도형",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "두 무리함수 $f(x)=\\sqrt{x}+1$, $g(x)=\\sqrt{x-4}$의 그래프와 직선 $x+4y=16$이 각각 점 $A(4,3)$, $B(8,2)$에서 만난다. 그림의 음영처럼 두 그래프의 일부, 선분 $AB$, $x$축, $y$축으로 둘러싸인 부분의 넓이는?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A1-problem.svg",
+      "choices": [
+        "$12$",
+        "$10$",
+        "$16$",
+        "$20$",
+        "$14$"
+      ],
+      "answer": "⑤",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n$b=1$, $h=4$, $u=2$이므로 $S=1\\cdot4+4\\cdot2+\\dfrac{1\\cdot4}2=14$이다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A1-solution.svg",
+      "solutionImageAlt": "곡선 대응 부분을 상쇄하고 두 직선 도형의 넓이를 계산하는 평행이동 해설 그림",
+      "solutionImageCaption": "평행이동한 두 곡선의 대응 넓이를 상쇄하고 평행사변형·좌표축 삼각형을 더한다.",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-267",
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "rpmL3": "무리함수의 그래프",
+        "rpmL4": "평행이동",
+        "rpmMappingStatus": "DIRECT_BINDING_GAP",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "ptTplBindingStatus": "DIRECT_BINDING_GAP",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+        },
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "SHAPE_AREA",
+        "metadataDebt": [
+          "RPM_PT_TPL_DIRECT_BINDING_GAP",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "두 무리함수 그래프가 (h,-b)의 평행이동으로 대응함을 찾아야 비적분 기하 넓이 계산이 가능하다.",
+          "l4": "2022 공통수학2 H1-RPM-267 L4 평행이동 재사용",
+          "cross": "실제 CC_AREA가 모든 문항에 필수, C2/C3의 직선과 C2의 이차근 판정 추가",
+          "condition": "별도 매개변수 조건 없음",
+          "integration": "SEQUENTIAL",
+          "learningLevel": "곡선 넓이를 도형 넓이로 바꾸는 핵심 변형을 익힌다. 평행이동으로 곡선부분 상쇄",
+          "assessmentBucket": "정확한 2차원 영역을 재배열하는 핵심 판단",
+          "problemVisual": "REQUIRED — 곡선·직선·축 경계 음영 영역",
+          "solutionVisual": "REQUIRED — 대응 곡선·평행사변형·삼각형 구분",
+          "curriculum": "2022 공통수학2 그래프/직선, 중학교 평면도형 넓이, 고1 이차방정식만 사용; 미적분·벡터 배제",
+          "sourceOrigin": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "decision": "KEEP",
+          "sourceDifference": "원본 구조의 수치 변형",
+          "questionNaturalness": "닫힌 음영 영역과 매개변수를 명시",
+          "studentInputSufficient": true
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$12$",
+              "errorCalculation": "삼각형 $OPQ$를 누락하여 $4+8=12$를 구함"
+            },
+            {
+              "index": "②",
+              "value": "$10$",
+              "errorCalculation": "삼각형을 더하지 않고 빼서 $12-2=10$을 구함"
+            },
+            {
+              "index": "③",
+              "value": "$16$",
+              "errorCalculation": "삼각형을 두 번 더하여 $12+2\\cdot2=16$을 구함"
+            },
+            {
+              "index": "④",
+              "value": "$20$",
+              "errorCalculation": "곡선의 가로·세로 증가량을 바꾸어 $1\\cdot2+4\\cdot4+2=20$을 구함"
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "$14$",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A1-problem.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "43d6f915beb495b628ee2b60ca36f7c16d43487d",
+          "svgSha256": "6adf90c0c177b4db8b48f3368c3d48628de53ce037be60f492039625ebe43304"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A1-solution.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "0101937877c4e6b4eb982ab036a7b49151b2054d",
+          "svgSha256": "ad1254ad487c48ad1ed48c11a911cbd06985a5d84c8869e9c5aa833574810f95"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-PALMA25-2FINAL-Q18-A2",
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+      "slot": "A2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "무리함수 그래프의 평행이동과 넓이",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "무리함수",
+        "그래프",
+        "도형",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "두 무리함수 $f(x)=\\sqrt{x}+3$, $g(x)=\\sqrt{x-2}$의 그래프와 직선 $3x+2y=22$이 각각 점 $A(4,5)$, $B(6,2)$에서 만난다. 그림의 음영처럼 두 그래프의 일부, 선분 $AB$, $x$축, $y$축으로 둘러싸인 부분의 넓이는?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A2-problem.svg",
+      "choices": [
+        "$16$",
+        "$13$",
+        "$22$",
+        "$19$",
+        "$17$"
+      ],
+      "answer": "④",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n$b=3$, $h=2$, $u=2$이므로 $S=3\\cdot4+2\\cdot2+\\dfrac{3\\cdot2}2=19$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A2-solution.svg",
+      "solutionImageAlt": "곡선 대응 부분을 상쇄하고 두 직선 도형의 넓이를 계산하는 평행이동 해설 그림",
+      "solutionImageCaption": "평행이동한 두 곡선의 대응 넓이를 상쇄하고 평행사변형·좌표축 삼각형을 더한다.",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-267",
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "rpmL3": "무리함수의 그래프",
+        "rpmL4": "평행이동",
+        "rpmMappingStatus": "DIRECT_BINDING_GAP",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "ptTplBindingStatus": "DIRECT_BINDING_GAP",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+        },
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "SHAPE_AREA",
+        "metadataDebt": [
+          "RPM_PT_TPL_DIRECT_BINDING_GAP",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "두 무리함수 그래프가 (h,-b)의 평행이동으로 대응함을 찾아야 비적분 기하 넓이 계산이 가능하다.",
+          "l4": "2022 공통수학2 H1-RPM-267 L4 평행이동 재사용",
+          "cross": "실제 CC_AREA가 모든 문항에 필수, C2/C3의 직선과 C2의 이차근 판정 추가",
+          "condition": "별도 매개변수 조건 없음",
+          "integration": "SEQUENTIAL",
+          "learningLevel": "곡선 넓이를 도형 넓이로 바꾸는 핵심 변형을 익힌다. 평행이동으로 곡선부분 상쇄",
+          "assessmentBucket": "정확한 2차원 영역을 재배열하는 핵심 판단",
+          "problemVisual": "REQUIRED — 곡선·직선·축 경계 음영 영역",
+          "solutionVisual": "REQUIRED — 대응 곡선·평행사변형·삼각형 구분",
+          "curriculum": "2022 공통수학2 그래프/직선, 중학교 평면도형 넓이, 고1 이차방정식만 사용; 미적분·벡터 배제",
+          "sourceOrigin": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "decision": "KEEP",
+          "sourceDifference": "원본 구조의 수치 변형",
+          "questionNaturalness": "닫힌 음영 영역과 매개변수를 명시",
+          "studentInputSufficient": true
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$16$",
+              "errorCalculation": "삼각형 넓이 $3$을 누락하여 $12+4=16$"
+            },
+            {
+              "index": "②",
+              "value": "$13$",
+              "errorCalculation": "삼각형을 빼서 $16-3=13$"
+            },
+            {
+              "index": "③",
+              "value": "$22$",
+              "errorCalculation": "삼각형을 두 번 더해 $16+6=22$"
+            },
+            {
+              "index": "⑤",
+              "value": "$17$",
+              "errorCalculation": "곡선의 가로·세로 증가량을 바꾸어 $3\\cdot2+2\\cdot4+3=17$"
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "$19$",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A2-problem.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "9fcdda6d5512859cda3d828cb946ce85abf97d08",
+          "svgSha256": "89ad8287c798a72e3b30d5c627aa35c9b813b74958edbf7e04e9c8a6d558de9c"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A2-solution.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "e2bb4831efcfbe849ea5ec99627926c5591d7614",
+          "svgSha256": "071989bd0d2f3fa620a9162f421be609628c8a8b1d095dcdf9ffad8d96c9dbc0"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-PALMA25-2FINAL-Q18-A3",
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+      "slot": "A3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "무리함수 그래프의 평행이동과 넓이",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "무리함수",
+        "그래프",
+        "도형",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "두 무리함수 $f(x)=\\sqrt{x}+2$, $g(x)=\\sqrt{x-5}$의 그래프와 직선 $2x+5y=43$이 각각 점 $A(9,5)$, $B(14,3)$에서 만난다. 그림의 음영처럼 두 그래프의 일부, 선분 $AB$, $x$축, $y$축으로 둘러싸인 부분의 넓이는?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A3-problem.svg",
+      "choices": [
+        "$33$",
+        "$38$",
+        "$28$",
+        "$43$",
+        "$56$"
+      ],
+      "answer": "②",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n$b=2$, $h=5$, $u=3$이므로 $S=2\\cdot9+5\\cdot3+\\dfrac{2\\cdot5}2=38$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A3-solution.svg",
+      "solutionImageAlt": "곡선 대응 부분을 상쇄하고 두 직선 도형의 넓이를 계산하는 평행이동 해설 그림",
+      "solutionImageCaption": "평행이동한 두 곡선의 대응 넓이를 상쇄하고 평행사변형·좌표축 삼각형을 더한다.",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-267",
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "rpmL3": "무리함수의 그래프",
+        "rpmL4": "평행이동",
+        "rpmMappingStatus": "DIRECT_BINDING_GAP",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "ptTplBindingStatus": "DIRECT_BINDING_GAP",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+        },
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "SHAPE_AREA",
+        "metadataDebt": [
+          "RPM_PT_TPL_DIRECT_BINDING_GAP",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "두 무리함수 그래프가 (h,-b)의 평행이동으로 대응함을 찾아야 비적분 기하 넓이 계산이 가능하다.",
+          "l4": "2022 공통수학2 H1-RPM-267 L4 평행이동 재사용",
+          "cross": "실제 CC_AREA가 모든 문항에 필수, C2/C3의 직선과 C2의 이차근 판정 추가",
+          "condition": "별도 매개변수 조건 없음",
+          "integration": "SEQUENTIAL",
+          "learningLevel": "곡선 넓이를 도형 넓이로 바꾸는 핵심 변형을 익힌다. 평행이동으로 곡선부분 상쇄",
+          "assessmentBucket": "정확한 2차원 영역을 재배열하는 핵심 판단",
+          "problemVisual": "REQUIRED — 곡선·직선·축 경계 음영 영역",
+          "solutionVisual": "REQUIRED — 대응 곡선·평행사변형·삼각형 구분",
+          "curriculum": "2022 공통수학2 그래프/직선, 중학교 평면도형 넓이, 고1 이차방정식만 사용; 미적분·벡터 배제",
+          "sourceOrigin": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "decision": "KEEP",
+          "sourceDifference": "원본 구조의 수치 변형",
+          "questionNaturalness": "닫힌 음영 영역과 매개변수를 명시",
+          "studentInputSufficient": true
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$33$",
+              "errorCalculation": "삼각형 넓이 $5$를 생략해 $18+15=33$"
+            },
+            {
+              "index": "③",
+              "value": "$28$",
+              "errorCalculation": "삼각형을 빼서 $33-5=28$"
+            },
+            {
+              "index": "④",
+              "value": "$43$",
+              "errorCalculation": "삼각형을 두 번 더하여 $33+10=43$"
+            },
+            {
+              "index": "⑤",
+              "value": "$56$",
+              "errorCalculation": "가로·세로 증가량을 바꾸어 $2\\cdot3+5\\cdot9+5=56$"
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "$38$",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A3-problem.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "ab38bf018f6a44ab5e489956847a437072f75603",
+          "svgSha256": "912f68c22427a6aea773fa53bb0a7fe55af71419d70c94d5b7f7e5bbcf511d62"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A3-solution.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "ff6f9e49579466cbbaf2e41ddba55e627e97ce50",
+          "svgSha256": "f7b7601547057cc0cb33bdd026cdf98a249725120ccdf363dca71725d33834c2"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-PALMA25-2FINAL-Q18-B1",
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+      "slot": "B1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "무리함수 그래프의 평행이동과 넓이",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "무리함수",
+        "그래프",
+        "도형",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "양수 $h$에 대하여 두 무리함수 $f(x)=\\sqrt{x}+2$, $g(x)=\\sqrt{x-h}$의 그래프 위에 각각 점 $A(4,4)$, $B(4+h,2)$가 있다. 두 그래프의 일부, 선분 $AB$, $x$축, $y$축으로 둘러싸인 그림의 음영 부분의 넓이가 $23$일 때, $h$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B1-problem.svg",
+      "choices": [
+        "$\\dfrac{15}{2}$",
+        "$5$",
+        "$\\dfrac{15}{4}$",
+        "$\\dfrac{7}{3}$",
+        "$15$"
+      ],
+      "answer": "②",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n$b=2$, $u=2$를 대입하면 $S=8+2h+h=8+3h$이다.\n$S=23$이므로 $8+3h=23$, $3h=15$에서 $h=5>0$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B1-solution.svg",
+      "solutionImageAlt": "곡선 대응 부분을 상쇄하고 두 직선 도형의 넓이를 계산하는 평행이동 해설 그림",
+      "solutionImageCaption": "평행이동한 두 곡선의 대응 넓이를 상쇄하고 평행사변형·좌표축 삼각형을 더한다.",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-267",
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "rpmL3": "무리함수의 그래프",
+        "rpmL4": "평행이동",
+        "rpmMappingStatus": "DIRECT_BINDING_GAP",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "ptTplBindingStatus": "DIRECT_BINDING_GAP",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+        },
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "POSITIVE_PARAMETER",
+        "metadataDebt": [
+          "RPM_PT_TPL_DIRECT_BINDING_GAP",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "두 무리함수 그래프가 (h,-b)의 평행이동으로 대응함을 찾아야 비적분 기하 넓이 계산이 가능하다.",
+          "l4": "2022 공통수학2 H1-RPM-267 L4 평행이동 재사용",
+          "cross": "실제 CC_AREA가 모든 문항에 필수, C2/C3의 직선과 C2의 이차근 판정 추가",
+          "condition": "매개변수 양수에 따른 유효해 제한",
+          "integration": "SEQUENTIAL",
+          "learningLevel": "곡선 넓이를 도형 넓이로 바꾸는 핵심 변형을 익힌다. 넓이와 추가 질문의 역산·비교",
+          "assessmentBucket": "주어진 면적 역산이나 삼각형의 비율 판단",
+          "problemVisual": "REQUIRED — 곡선·직선·축 경계 음영 영역",
+          "solutionVisual": "REQUIRED — 대응 곡선·평행사변형·삼각형 구분",
+          "curriculum": "2022 공통수학2 그래프/직선, 중학교 평면도형 넓이, 고1 이차방정식만 사용; 미적분·벡터 배제",
+          "sourceOrigin": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "decision": "KEEP",
+          "sourceDifference": "넓이 결과의 역산·비율 확장",
+          "questionNaturalness": "닫힌 음영 영역과 매개변수를 명시",
+          "studentInputSufficient": true
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$\\dfrac{15}{2}$",
+              "errorCalculation": "삼각형을 누락해 $8+2h=23$으로부터 $h=\\dfrac{15}{2}$"
+            },
+            {
+              "index": "③",
+              "value": "$\\dfrac{15}{4}$",
+              "errorCalculation": "높이 $4$의 넓이로 오인해 $8+4h=23$에서 $h=\\dfrac{15}{4}$"
+            },
+            {
+              "index": "④",
+              "value": "$\\dfrac{7}{3}$",
+              "errorCalculation": "왼쪽 직사각형의 높이를 $4$로 오인해 $16+3h=23$, $h=\\dfrac73$"
+            },
+            {
+              "index": "⑤",
+              "value": "$15$",
+              "errorCalculation": "아래 삼각형을 빼서 $8+h=23$, $h=15$"
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "$5$",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B1-problem.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "0fa2fad47289008ea3c9e47fa78f0cff20729e34",
+          "svgSha256": "55ab57f2881888289e539a81fc98dedc9824b3c8fca5f1c8ff09e776f30f16f7"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B1-solution.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "01b540369366b05a79166dfa590e17ba06cb7608",
+          "svgSha256": "5447bd1b18974638a966190d4e6e9fa0a3f8c19d88f345b038fcf7ca34ffcefc"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-PALMA25-2FINAL-Q18-B2",
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+      "slot": "B2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "무리함수 그래프의 평행이동과 넓이",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "무리함수",
+        "그래프",
+        "도형",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "양수 $b$에 대하여 두 무리함수 $f(x)=\\sqrt{x}+b$, $g(x)=\\sqrt{x-2}$의 그래프 위에 각각 점 $A(4,b+2)$, $B(6,2)$가 있다. 두 그래프의 일부, 선분 $AB$, $x$축, $y$축으로 둘러싸인 그림의 음영 부분의 넓이가 $24$일 때, $b$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B2-problem.svg",
+      "choices": [
+        "$5$",
+        "$\\dfrac{10}{3}$",
+        "$20$",
+        "$4$",
+        "$\\dfrac{20}{3}$"
+      ],
+      "answer": "④",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n$h=2$, $u=2$를 대입하면 $S=4b+4+b=5b+4$이다.\n$S=24$이므로 $5b+4=24$, $b=4>0$이다.\n따라서 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B2-solution.svg",
+      "solutionImageAlt": "곡선 대응 부분을 상쇄하고 두 직선 도형의 넓이를 계산하는 평행이동 해설 그림",
+      "solutionImageCaption": "평행이동한 두 곡선의 대응 넓이를 상쇄하고 평행사변형·좌표축 삼각형을 더한다.",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-267",
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "rpmL3": "무리함수의 그래프",
+        "rpmL4": "평행이동",
+        "rpmMappingStatus": "DIRECT_BINDING_GAP",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "ptTplBindingStatus": "DIRECT_BINDING_GAP",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+        },
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "POSITIVE_PARAMETER",
+        "metadataDebt": [
+          "RPM_PT_TPL_DIRECT_BINDING_GAP",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "두 무리함수 그래프가 (h,-b)의 평행이동으로 대응함을 찾아야 비적분 기하 넓이 계산이 가능하다.",
+          "l4": "2022 공통수학2 H1-RPM-267 L4 평행이동 재사용",
+          "cross": "실제 CC_AREA가 모든 문항에 필수, C2/C3의 직선과 C2의 이차근 판정 추가",
+          "condition": "매개변수 양수에 따른 유효해 제한",
+          "integration": "SEQUENTIAL",
+          "learningLevel": "곡선 넓이를 도형 넓이로 바꾸는 핵심 변형을 익힌다. 넓이와 추가 질문의 역산·비교",
+          "assessmentBucket": "주어진 면적 역산이나 삼각형의 비율 판단",
+          "problemVisual": "REQUIRED — 곡선·직선·축 경계 음영 영역",
+          "solutionVisual": "REQUIRED — 대응 곡선·평행사변형·삼각형 구분",
+          "curriculum": "2022 공통수학2 그래프/직선, 중학교 평면도형 넓이, 고1 이차방정식만 사용; 미적분·벡터 배제",
+          "sourceOrigin": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "decision": "KEEP",
+          "sourceDifference": "넓이 결과의 역산·비율 확장",
+          "questionNaturalness": "닫힌 음영 영역과 매개변수를 명시",
+          "studentInputSufficient": true
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$5$",
+              "errorCalculation": "삼각형을 누락해 $4b+4=24$, $b=5$"
+            },
+            {
+              "index": "②",
+              "value": "$\\dfrac{10}{3}$",
+              "errorCalculation": "아래 삼각형을 두 번 더해 $6b+4=24$, $b=\\dfrac{10}{3}$"
+            },
+            {
+              "index": "③",
+              "value": "$20$",
+              "errorCalculation": "왼쪽 직사각형을 누락해 $b+4=24$, $b=20$"
+            },
+            {
+              "index": "⑤",
+              "value": "$\\dfrac{20}{3}$",
+              "errorCalculation": "아래 삼각형을 빼서 $3b+4=24$, $b=\\dfrac{20}{3}$"
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "$4$",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B2-problem.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "bf09736a1615a066e394051e04c5e77daabde463",
+          "svgSha256": "1e13737dd1efc55b947912fa2d4e08530131332168711030577c116c71515dfb"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B2-solution.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "83f65c4defc7a3848d77254bfecf0a6428ab6f9e",
+          "svgSha256": "0a0fdad5979b3d697e2f19799038fb90a804f7fb116396a3ecf27e581896b323"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-PALMA25-2FINAL-Q18-B3",
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+      "slot": "B3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "중",
+      "category": "무리함수 그래프의 평행이동과 넓이",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "무리함수",
+        "그래프",
+        "도형",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "두 무리함수 $f(x)=\\sqrt{x}+2$, $g(x)=\\sqrt{x-4}$의 그래프 위에 각각 점 $A(9,5)$, $B(13,3)$을 잡는다. 그림의 음영 부분의 넓이를 $S$라 하자. $O(0,0)$, $P(0,2)$, $Q(4,0)$일 때, $\\dfrac{S}{[\\triangle OPQ]}$의 값은? (단, $[\\triangle OPQ]$는 삼각형 $OPQ$의 넓이이다.)",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B3-problem.svg",
+      "choices": [
+        "$\\dfrac{15}{2}$",
+        "$\\dfrac{19}{2}$",
+        "$\\dfrac{17}{2}$",
+        "$\\dfrac{23}{2}$",
+        "$\\dfrac{17}{4}$"
+      ],
+      "answer": "③",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n$b=2$, $h=4$, $u=3$이므로 $S=18+12+4=34$이다.\n한편 $[\\triangle OPQ]=\\dfrac12\\cdot2\\cdot4=4$이다. 따라서 비는 $\\dfrac{34}{4}=\\dfrac{17}{2}$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B3-solution.svg",
+      "solutionImageAlt": "곡선 대응 부분을 상쇄하고 두 직선 도형의 넓이를 계산하는 평행이동 해설 그림",
+      "solutionImageCaption": "평행이동한 두 곡선의 대응 넓이를 상쇄하고 평행사변형·좌표축 삼각형을 더한다.",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-267",
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "rpmL3": "무리함수의 그래프",
+        "rpmL4": "평행이동",
+        "rpmMappingStatus": "DIRECT_BINDING_GAP",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "ptTplBindingStatus": "DIRECT_BINDING_GAP",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+        },
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "SHAPE_AREA",
+        "metadataDebt": [
+          "RPM_PT_TPL_DIRECT_BINDING_GAP",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "두 무리함수 그래프가 (h,-b)의 평행이동으로 대응함을 찾아야 비적분 기하 넓이 계산이 가능하다.",
+          "l4": "2022 공통수학2 H1-RPM-267 L4 평행이동 재사용",
+          "cross": "실제 CC_AREA가 모든 문항에 필수, C2/C3의 직선과 C2의 이차근 판정 추가",
+          "condition": "별도 매개변수 조건 없음",
+          "integration": "SEQUENTIAL",
+          "learningLevel": "곡선 넓이를 도형 넓이로 바꾸는 핵심 변형을 익힌다. 넓이와 추가 질문의 역산·비교",
+          "assessmentBucket": "주어진 면적 역산이나 삼각형의 비율 판단",
+          "problemVisual": "REQUIRED — 곡선·직선·축 경계 음영 영역",
+          "solutionVisual": "REQUIRED — 대응 곡선·평행사변형·삼각형 구분",
+          "curriculum": "2022 공통수학2 그래프/직선, 중학교 평면도형 넓이, 고1 이차방정식만 사용; 미적분·벡터 배제",
+          "sourceOrigin": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "decision": "KEEP",
+          "sourceDifference": "넓이 결과의 역산·비율 확장",
+          "questionNaturalness": "닫힌 음영 영역과 매개변수를 명시",
+          "studentInputSufficient": true
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$\\dfrac{15}{2}$",
+              "errorCalculation": "삼각형을 빼고 $S=30$으로 계산하여 $30/4=\\dfrac{15}{2}$"
+            },
+            {
+              "index": "②",
+              "value": "$\\dfrac{19}{2}$",
+              "errorCalculation": "삼각형을 두 번 더해 $S=38$로 계산하여 $38/4=\\dfrac{19}{2}$"
+            },
+            {
+              "index": "④",
+              "value": "$\\dfrac{23}{2}$",
+              "errorCalculation": "가로·세로 증가량을 뒤집어 $S=2\\cdot3+4\\cdot9+4=46$을 구해 $46/4=\\dfrac{23}{2}$"
+            },
+            {
+              "index": "⑤",
+              "value": "$\\dfrac{17}{4}$",
+              "errorCalculation": "삼각형 넓이를 $4$가 아닌 $8$로 계산하여 $34/8=\\dfrac{17}{4}$"
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "$\\dfrac{17}{2}$",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B3-problem.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "f35e398b9c5bae9b12536b7fee55d7e3a7150a1d",
+          "svgSha256": "9cc8e063eb417ddd1351b0ee185d938319d18ed1ef670b83f991bf7204a65c4a"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B3-solution.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "43e095ff40c7f50fcdd1b01a06d46e9e02ad1ec4",
+          "svgSha256": "b9d5cfbff0a9068ad7024e80b76eb55a546d125e2309cf0aef88cdddfe3bf525"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-PALMA25-2FINAL-Q18-C1",
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+      "slot": "C1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "무리함수 그래프의 평행이동과 넓이",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "무리함수",
+        "그래프",
+        "도형",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "양수 $h$에 대하여 $f(x)=\\sqrt{x}+2$, $g(x)=\\sqrt{x-h}$라 한다. 그림 (가)는 두 그래프 위의 점 $A(1,3)$, $B(1+h,1)$을 잇는 선분과 두 그래프, 양의 두 좌표축으로 둘러싸인 영역이고, 그림 (나)는 점 $A(4,4)$, $B(4+h,2)$를 사용한 같은 방식의 영역이다. (나)의 넓이가 (가)의 넓이의 $2$배일 때, $h$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C1-problem.svg",
+      "choices": [
+        "$2$",
+        "$8$",
+        "$\\dfrac{2}{3}$",
+        "$6$",
+        "$4$"
+      ],
+      "answer": "⑤",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n(가)에서는 $u=1$이므로 $S_1=2+2h$이다. (나)에서는 $u=2$이므로 $S_2=8+3h$이다.\n$S_2=2S_1$에서 $8+3h=2(2+2h)$이므로 $h=4>0$이다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C1-solution.svg",
+      "solutionImageAlt": "곡선 대응 부분을 상쇄하고 두 직선 도형의 넓이를 계산하는 평행이동 해설 그림",
+      "solutionImageCaption": "평행이동한 두 곡선의 대응 넓이를 상쇄하고 평행사변형·좌표축 삼각형을 더한다.",
+      "solutionImageSize": "full",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-267",
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "rpmL3": "무리함수의 그래프",
+        "rpmL4": "평행이동",
+        "rpmMappingStatus": "DIRECT_BINDING_GAP",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "ptTplBindingStatus": "DIRECT_BINDING_GAP",
+        "crossConceptKeys": [
+          "CC_AREA"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+        },
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "COMPARATIVE",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "POSITIVE_PARAMETER",
+        "metadataDebt": [
+          "RPM_PT_TPL_DIRECT_BINDING_GAP",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "두 무리함수 그래프가 (h,-b)의 평행이동으로 대응함을 찾아야 비적분 기하 넓이 계산이 가능하다.",
+          "l4": "2022 공통수학2 H1-RPM-267 L4 평행이동 재사용",
+          "cross": "실제 CC_AREA가 모든 문항에 필수, C2/C3의 직선과 C2의 이차근 판정 추가",
+          "condition": "매개변수 양수에 따른 유효해 제한",
+          "integration": "COMPARATIVE",
+          "learningLevel": "두 이상의 수학 조건·예외를 연결한다. 두 그림의 넓이 비교",
+          "assessmentBucket": "이차근 필터/둘 이상의 영역비/절편과 넓이를 연결하는 추가 판단",
+          "problemVisual": "REQUIRED — 곡선·직선·축 경계 음영 영역",
+          "solutionVisual": "REQUIRED — 대응 곡선·평행사변형·삼각형 구분",
+          "curriculum": "2022 공통수학2 그래프/직선, 중학교 평면도형 넓이, 고1 이차방정식만 사용; 미적분·벡터 배제",
+          "sourceOrigin": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "decision": "KEEP",
+          "sourceDifference": "두 영역의 비로 변화",
+          "questionNaturalness": "닫힌 음영 영역과 매개변수를 명시",
+          "studentInputSufficient": true
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$2$",
+              "errorCalculation": "큰 영역의 축 삼각형을 누락해 $8+2h=2(2+2h)$에서 $h=2$"
+            },
+            {
+              "index": "②",
+              "value": "$8$",
+              "errorCalculation": "작은 영역의 $bu^2=2$를 누락해 $8+3h=4h$에서 $h=8$"
+            },
+            {
+              "index": "③",
+              "value": "$\\dfrac{2}{3}$",
+              "errorCalculation": "면적비 $2$배를 $3$배로 오독해 $8+3h=3(2+2h)$에서 $h=\\dfrac23$"
+            },
+            {
+              "index": "④",
+              "value": "$6$",
+              "errorCalculation": "작은 영역 직사각형 $2$를 $1$로 오인해 $8+3h=2(1+2h)$에서 $h=6$"
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "$4$",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C1-problem.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "841928b0a4ce65fc8cc7536ffd5a3b467b9c1473",
+          "svgSha256": "d0f6b905bbd2b76002ff8a35b2fb1f74ecc29e594474da8b61404a365f2cc6d8"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C1-solution.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "614b9cc1ebff894f12af71540b2959df2c2f1e4e",
+          "svgSha256": "88296a49293040686a111fa59d49aaea4d87ba333e42f8e3e1c850f24d4cd16d"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-PALMA25-2FINAL-Q18-C2",
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+      "slot": "C2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "무리함수 그래프의 평행이동과 넓이",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "무리함수",
+        "그래프",
+        "도형",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "두 양수 $b$, $h$에 대하여 $f(x)=\\sqrt{x}+b$, $g(x)=\\sqrt{x-h}$의 그래프 위에 각각 점 $A(4,b+2)$, $B(4+h,2)$가 있다. 직선 $AB$의 기울기가 $-\\dfrac12$이고, 두 그래프의 일부, 선분 $AB$, 양의 두 좌표축으로 둘러싸인 그림의 음영 부분의 넓이가 $20$일 때, $b+h$의 값은?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C2-problem.svg",
+      "choices": [
+        "$6$",
+        "$-30$",
+        "$\\dfrac{15}{2}$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": "①",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n점 $A$에서 $B$로 이동할 때 $x$좌표는 $h$ 증가하고 $y$좌표는 $b$ 감소하므로 기울기는 $-\\dfrac bh$이다.\n$-\\dfrac bh=-\\dfrac12$에서 $h=2b$이다. $u=2$를 넓이식에 대입하면 $S=4b+2h+\\dfrac12bh=8b+b^2$이다.\n$b^2+8b=20$이므로 $(b-2)(b+10)=0$이다. 양수 조건에 따라 $b=2$이고, $h=4$이므로 $b+h=6$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C2-solution.svg",
+      "solutionImageAlt": "곡선 대응 부분을 상쇄하고 두 직선 도형의 넓이를 계산하는 평행이동 해설 그림",
+      "solutionImageCaption": "평행이동한 두 곡선의 대응 넓이를 상쇄하고 평행사변형·좌표축 삼각형을 더한다.",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-267",
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "rpmL3": "무리함수의 그래프",
+        "rpmL4": "평행이동",
+        "rpmMappingStatus": "DIRECT_BINDING_GAP",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "ptTplBindingStatus": "DIRECT_BINDING_GAP",
+        "crossConceptKeys": [
+          "CC_AREA",
+          "CC_LINE_EQUATION",
+          "CC_QUADRATIC_EQUATION"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다.",
+          "CC_LINE_EQUATION": "점 A,B의 기울기·절편에서 그래프 이동량을 결정한다.",
+          "CC_QUADRATIC_EQUATION": "넓이 방정식에서 두 근을 판정하여 양수 조건을 적용한다."
+        },
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "POSITIVE_PARAMETER",
+        "metadataDebt": [
+          "RPM_PT_TPL_DIRECT_BINDING_GAP",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "두 무리함수 그래프가 (h,-b)의 평행이동으로 대응함을 찾아야 비적분 기하 넓이 계산이 가능하다.",
+          "l4": "2022 공통수학2 H1-RPM-267 L4 평행이동 재사용",
+          "cross": "실제 CC_AREA가 모든 문항에 필수, C2/C3의 직선과 C2의 이차근 판정 추가",
+          "condition": "매개변수 양수에 따른 유효해 제한",
+          "integration": "INTERDEPENDENT",
+          "learningLevel": "두 이상의 수학 조건·예외를 연결한다. 기울기→이차방정식→양수근",
+          "assessmentBucket": "이차근 필터/둘 이상의 영역비/절편과 넓이를 연결하는 추가 판단",
+          "problemVisual": "REQUIRED — 곡선·직선·축 경계 음영 영역",
+          "solutionVisual": "REQUIRED — 대응 곡선·평행사변형·삼각형 구분",
+          "curriculum": "2022 공통수학2 그래프/직선, 중학교 평면도형 넓이, 고1 이차방정식만 사용; 미적분·벡터 배제",
+          "sourceOrigin": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "decision": "KEEP",
+          "sourceDifference": "기울기와 이차해 조건 추가",
+          "questionNaturalness": "닫힌 음영 영역과 매개변수를 명시",
+          "studentInputSufficient": true
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "②",
+              "value": "$-30$",
+              "errorCalculation": "음수근 $b=-10$을 버리지 않고 $h=-20$, $b+h=-30$"
+            },
+            {
+              "index": "③",
+              "value": "$\\dfrac{15}{2}$",
+              "errorCalculation": "삼각형을 누락해 $8b=20$, $b=\\dfrac52$, $b+h=\\dfrac{15}{2}$"
+            },
+            {
+              "index": "④",
+              "value": "$2$",
+              "errorCalculation": "최종합 대신 $b=2$만 답함"
+            },
+            {
+              "index": "⑤",
+              "value": "$4$",
+              "errorCalculation": "최종합 대신 $h=4$만 답함"
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "$6$",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C2-problem.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "e1bca374578b1f5d5654cb360ae1e20bfa00a643",
+          "svgSha256": "a08cafb3bbff73d51400149e02f8ab71d5f06253b5a31392ae89866c36862bcf"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C2-solution.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "93910408d1f9006ecd8de1dd6626c42bc15288e1",
+          "svgSha256": "6a7a86ab531a495f31e2e938ee461e15bd1f7d79068bd59cbf2a6c85939f60c7"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-PALMA25-2FINAL-Q18-C3",
+      "sourceQid": 18,
+      "sourceUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+      "slot": "C3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "EXAM_FOLLOWUP",
+      "level": "상",
+      "category": "무리함수 그래프의 평행이동과 넓이",
+      "originalCategory": "무리함수",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-09",
+      "standardUnit": "무리함수",
+      "standardUnitOrder": 9,
+      "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "무리함수",
+        "그래프",
+        "도형",
+        "넓이"
+      ],
+      "wide": false,
+      "content": "양수 $h$에 대하여 두 무리함수 $f(x)=\\sqrt{x}+2$, $g(x)=\\sqrt{x-h}$의 그래프 위에 각각 점 $A(4,4)$, $B(4+h,2)$가 있다. 직선 $AB$의 $y$절편이 $6$일 때, 두 그래프의 일부, 선분 $AB$, 양의 두 좌표축으로 둘러싸인 그림의 음영 부분의 넓이는?",
+      "image": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C3-problem.svg",
+      "choices": [
+        "$20$",
+        "$14$",
+        "$16$",
+        "$24$",
+        "$32$"
+      ],
+      "answer": "①",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n직선 $AB$의 기울기는 $\\dfrac{2-4}{(4+h)-4}=-\\dfrac2h$이다. 점 $A(4,4)$를 지나므로 $y-4=-\\dfrac2h(x-4)$이다.\n$y$절편이 $6$이라는 조건에서 $6=4+\\dfrac8h$이므로 $h=4$이다.\n$b=2$, $u=2$이므로 $S=8+2h+h=8+12=20$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C3-solution.svg",
+      "solutionImageAlt": "곡선 대응 부분을 상쇄하고 두 직선 도형의 넓이를 계산하는 평행이동 해설 그림",
+      "solutionImageCaption": "평행이동한 두 곡선의 대응 넓이를 상쇄하고 평행사변형·좌표축 삼각형을 더한다.",
+      "solutionImageSize": "large",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-267",
+        "rpmL1": "함수",
+        "rpmL2": "무리함수",
+        "rpmL3": "무리함수의 그래프",
+        "rpmL4": "평행이동",
+        "rpmMappingStatus": "DIRECT_BINDING_GAP",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+        "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+        "ptTplBindingStatus": "DIRECT_BINDING_GAP",
+        "crossConceptKeys": [
+          "CC_AREA",
+          "CC_LINE_EQUATION"
+        ],
+        "crossConceptDecisiveSteps": {
+          "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다.",
+          "CC_LINE_EQUATION": "점 A,B의 기울기·절편에서 그래프 이동량을 결정한다."
+        },
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "POSITIVE_PARAMETER",
+        "metadataDebt": [
+          "RPM_PT_TPL_DIRECT_BINDING_GAP",
+          "INDEPENDENT_QUALITY_NOT_RUN",
+          "ACTUAL_BROWSER_NOT_RUN",
+          "CONSUMER_INDEX_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "두 무리함수 그래프가 (h,-b)의 평행이동으로 대응함을 찾아야 비적분 기하 넓이 계산이 가능하다.",
+          "l4": "2022 공통수학2 H1-RPM-267 L4 평행이동 재사용",
+          "cross": "실제 CC_AREA가 모든 문항에 필수, C2/C3의 직선과 C2의 이차근 판정 추가",
+          "condition": "매개변수 양수에 따른 유효해 제한",
+          "integration": "INTERDEPENDENT",
+          "learningLevel": "두 이상의 수학 조건·예외를 연결한다. 절편→이동량→넓이",
+          "assessmentBucket": "이차근 필터/둘 이상의 영역비/절편과 넓이를 연결하는 추가 판단",
+          "problemVisual": "REQUIRED — 곡선·직선·축 경계 음영 영역",
+          "solutionVisual": "REQUIRED — 대응 곡선·평행사변형·삼각형 구분",
+          "curriculum": "2022 공통수학2 그래프/직선, 중학교 평면도형 넓이, 고1 이차방정식만 사용; 미적분·벡터 배제",
+          "sourceOrigin": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9"
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "reverseStem": {
+          "decision": "KEEP",
+          "sourceDifference": "절편에서 평행이동량을 역산",
+          "questionNaturalness": "닫힌 음영 영역과 매개변수를 명시",
+          "studentInputSufficient": true
+        },
+        "distractorAudit": {
+          "count": 4,
+          "derivations": [
+            {
+              "index": "②",
+              "value": "$14$",
+              "errorCalculation": "직선 절편 계산에서 $x_A=4$를 $\\sqrt4=2$로 오인해 $h=2$, $S=14$"
+            },
+            {
+              "index": "③",
+              "value": "$16$",
+              "errorCalculation": "삼각형 넓이 $4$를 누락해 $S=16$"
+            },
+            {
+              "index": "④",
+              "value": "$24$",
+              "errorCalculation": "삼각형을 두 번 더해 $S=24$"
+            },
+            {
+              "index": "⑤",
+              "value": "$32$",
+              "errorCalculation": "A에서 B로의 세로 이동을 $2$가 아닌 $4$로 계산해 $h=8$, $S=32$"
+            }
+          ]
+        },
+        "mathSelfCheck": {
+          "computedAnswerValue": "$20$",
+          "fiveChoicesChecked": true,
+          "fourWrongRoutesBound": true,
+          "independent": "NOT_RUN",
+          "answerSolutionParity": "PASS_AUTHOR"
+        },
+        "problemVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C3-problem.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "87803bd6bbc6a2193fd6f8332230152bf53feff3",
+          "svgSha256": "df31252674dac7b979140c2f54160b52f69930ef0dffedb0f762290ca82d4baf"
+        },
+        "solutionVisual": {
+          "necessity": "REQUIRED",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C3-solution.svg",
+          "browser": "NOT_RUN",
+          "svgGitBlobSha": "60a33e270c88790c0f0bc89bd4ad864dff21373d",
+          "svgSha256": "5077334191aa09402c073ed5cbe70946689b76e965d254a5aa94dafcc592ef56"
+        }
+      }
+    }
+  ],
+  "sourceOriginalCourse": "공통수학2",
+  "targetStandardCourse": "공통수학2"
+}

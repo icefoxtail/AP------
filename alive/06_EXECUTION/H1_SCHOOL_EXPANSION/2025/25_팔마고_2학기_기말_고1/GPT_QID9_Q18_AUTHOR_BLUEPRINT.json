@@ -1,0 +1,659 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q18_AUTHOR_BLUEPRINT_v1",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 18,
+  "sourceUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+  "sourceLock": "GPT_QID9_Q18_SOURCE_LOCK.json",
+  "invariant": "평행이동으로 대응하는 두 무리함수 곡선의 등넓이 부분을 상쇄해 음영을 평행사변형과 좌표축 삼각형으로 환원.",
+  "rpmSearch": {
+    "primary": "H1-RPM-267",
+    "l3": "무리함수의 그래프",
+    "l4": "평행이동",
+    "status": "DIRECT_BINDING_GAP",
+    "pt": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "tpl": "TPL_FUNCTION_GRAPH_TRANSLATION",
+    "compared": [
+      "H1-RPM-116",
+      "H1-RPM-266",
+      "H1-RPM-267",
+      "H1-RPM-272"
+    ]
+  },
+  "conceptSearch": {
+    "registry": "archive/data/meta-foundation/compiled/concept_registry.json",
+    "reused": [
+      "CC_AREA",
+      "CC_LINE_EQUATION",
+      "CC_QUADRATIC_EQUATION"
+    ],
+    "excludedPrimaryDuplicate": [
+      "CC_TRANSLATION"
+    ],
+    "newKeys": []
+  },
+  "conditionSearch": {
+    "registry": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "used": [
+      "COND_POSITIVE"
+    ]
+  },
+  "answerGrid": [
+    [
+      "⑤",
+      "④",
+      "②"
+    ],
+    [
+      "②",
+      "④",
+      "③"
+    ],
+    [
+      "⑤",
+      "①",
+      "①"
+    ]
+  ],
+  "horizontalAnswerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 1,
+    "④": 2,
+    "⑤": 2
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q18-A1",
+      "slot": "A1",
+      "studentStem": "두 무리함수 $f(x)=\\sqrt{x}+1$, $g(x)=\\sqrt{x-4}$의 그래프와 직선 $x+4y=16$이 각각 점 $A(4,3)$, $B(8,2)$에서 만난다. 그림의 음영처럼 두 그래프의 일부, 선분 $AB$, $x$축, $y$축으로 둘러싸인 부분의 넓이는?",
+      "choices": [
+        "$12$",
+        "$10$",
+        "$16$",
+        "$20$",
+        "$14$"
+      ],
+      "answer": "⑤",
+      "answerValue": "$14$",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n$b=1$, $h=4$, $u=2$이므로 $S=1\\cdot4+4\\cdot2+\\dfrac{1\\cdot4}2=14$이다.\n따라서 정답은 ⑤이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-267",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 그래프",
+        "l4": "평행이동",
+        "status": "DIRECT_BINDING_GAP"
+      },
+      "pt": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "tpl": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+      },
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "levelReason": "곡선 넓이를 도형 넓이로 바꾸는 핵심 변형을 익힌다. 평행이동으로 곡선부분 상쇄",
+      "bucketReason": "정확한 2차원 영역을 재배열하는 핵심 판단",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$12$",
+          "errorCalculation": "삼각형 $OPQ$를 누락하여 $4+8=12$를 구함"
+        },
+        {
+          "index": "②",
+          "value": "$10$",
+          "errorCalculation": "삼각형을 더하지 않고 빼서 $12-2=10$을 구함"
+        },
+        {
+          "index": "③",
+          "value": "$16$",
+          "errorCalculation": "삼각형을 두 번 더하여 $12+2\\cdot2=16$을 구함"
+        },
+        {
+          "index": "④",
+          "value": "$20$",
+          "errorCalculation": "곡선의 가로·세로 증가량을 바꾸어 $1\\cdot2+4\\cdot4+2=20$을 구함"
+        }
+      ],
+      "problemSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A1-problem.svg",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A1-solution.svg",
+      "reverseStem": "AUTHOR_RECHECK_KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q18-A2",
+      "slot": "A2",
+      "studentStem": "두 무리함수 $f(x)=\\sqrt{x}+3$, $g(x)=\\sqrt{x-2}$의 그래프와 직선 $3x+2y=22$이 각각 점 $A(4,5)$, $B(6,2)$에서 만난다. 그림의 음영처럼 두 그래프의 일부, 선분 $AB$, $x$축, $y$축으로 둘러싸인 부분의 넓이는?",
+      "choices": [
+        "$16$",
+        "$13$",
+        "$22$",
+        "$19$",
+        "$17$"
+      ],
+      "answer": "④",
+      "answerValue": "$19$",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n$b=3$, $h=2$, $u=2$이므로 $S=3\\cdot4+2\\cdot2+\\dfrac{3\\cdot2}2=19$이다.\n따라서 정답은 ④이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-267",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 그래프",
+        "l4": "평행이동",
+        "status": "DIRECT_BINDING_GAP"
+      },
+      "pt": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "tpl": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+      },
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "levelReason": "곡선 넓이를 도형 넓이로 바꾸는 핵심 변형을 익힌다. 평행이동으로 곡선부분 상쇄",
+      "bucketReason": "정확한 2차원 영역을 재배열하는 핵심 판단",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$16$",
+          "errorCalculation": "삼각형 넓이 $3$을 누락하여 $12+4=16$"
+        },
+        {
+          "index": "②",
+          "value": "$13$",
+          "errorCalculation": "삼각형을 빼서 $16-3=13$"
+        },
+        {
+          "index": "③",
+          "value": "$22$",
+          "errorCalculation": "삼각형을 두 번 더해 $16+6=22$"
+        },
+        {
+          "index": "⑤",
+          "value": "$17$",
+          "errorCalculation": "곡선의 가로·세로 증가량을 바꾸어 $3\\cdot2+2\\cdot4+3=17$"
+        }
+      ],
+      "problemSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A2-problem.svg",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A2-solution.svg",
+      "reverseStem": "AUTHOR_RECHECK_KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q18-A3",
+      "slot": "A3",
+      "studentStem": "두 무리함수 $f(x)=\\sqrt{x}+2$, $g(x)=\\sqrt{x-5}$의 그래프와 직선 $2x+5y=43$이 각각 점 $A(9,5)$, $B(14,3)$에서 만난다. 그림의 음영처럼 두 그래프의 일부, 선분 $AB$, $x$축, $y$축으로 둘러싸인 부분의 넓이는?",
+      "choices": [
+        "$33$",
+        "$38$",
+        "$28$",
+        "$43$",
+        "$56$"
+      ],
+      "answer": "②",
+      "answerValue": "$38$",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n$b=2$, $h=5$, $u=3$이므로 $S=2\\cdot9+5\\cdot3+\\dfrac{2\\cdot5}2=38$이다.\n따라서 정답은 ②이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-267",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 그래프",
+        "l4": "평행이동",
+        "status": "DIRECT_BINDING_GAP"
+      },
+      "pt": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "tpl": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+      },
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "levelReason": "곡선 넓이를 도형 넓이로 바꾸는 핵심 변형을 익힌다. 평행이동으로 곡선부분 상쇄",
+      "bucketReason": "정확한 2차원 영역을 재배열하는 핵심 판단",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$33$",
+          "errorCalculation": "삼각형 넓이 $5$를 생략해 $18+15=33$"
+        },
+        {
+          "index": "③",
+          "value": "$28$",
+          "errorCalculation": "삼각형을 빼서 $33-5=28$"
+        },
+        {
+          "index": "④",
+          "value": "$43$",
+          "errorCalculation": "삼각형을 두 번 더하여 $33+10=43$"
+        },
+        {
+          "index": "⑤",
+          "value": "$56$",
+          "errorCalculation": "가로·세로 증가량을 바꾸어 $2\\cdot3+5\\cdot9+5=56$"
+        }
+      ],
+      "problemSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A3-problem.svg",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/A3-solution.svg",
+      "reverseStem": "AUTHOR_RECHECK_KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q18-B1",
+      "slot": "B1",
+      "studentStem": "양수 $h$에 대하여 두 무리함수 $f(x)=\\sqrt{x}+2$, $g(x)=\\sqrt{x-h}$의 그래프 위에 각각 점 $A(4,4)$, $B(4+h,2)$가 있다. 두 그래프의 일부, 선분 $AB$, $x$축, $y$축으로 둘러싸인 그림의 음영 부분의 넓이가 $23$일 때, $h$의 값은?",
+      "choices": [
+        "$\\dfrac{15}{2}$",
+        "$5$",
+        "$\\dfrac{15}{4}$",
+        "$\\dfrac{7}{3}$",
+        "$15$"
+      ],
+      "answer": "②",
+      "answerValue": "$5$",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n$b=2$, $u=2$를 대입하면 $S=8+2h+h=8+3h$이다.\n$S=23$이므로 $8+3h=23$, $3h=15$에서 $h=5>0$이다.\n따라서 정답은 ②이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-267",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 그래프",
+        "l4": "평행이동",
+        "status": "DIRECT_BINDING_GAP"
+      },
+      "pt": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "tpl": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+      },
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 4,
+      "levelReason": "곡선 넓이를 도형 넓이로 바꾸는 핵심 변형을 익힌다. 넓이와 추가 질문의 역산·비교",
+      "bucketReason": "주어진 면적 역산이나 삼각형의 비율 판단",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$\\dfrac{15}{2}$",
+          "errorCalculation": "삼각형을 누락해 $8+2h=23$으로부터 $h=\\dfrac{15}{2}$"
+        },
+        {
+          "index": "③",
+          "value": "$\\dfrac{15}{4}$",
+          "errorCalculation": "높이 $4$의 넓이로 오인해 $8+4h=23$에서 $h=\\dfrac{15}{4}$"
+        },
+        {
+          "index": "④",
+          "value": "$\\dfrac{7}{3}$",
+          "errorCalculation": "왼쪽 직사각형의 높이를 $4$로 오인해 $16+3h=23$, $h=\\dfrac73$"
+        },
+        {
+          "index": "⑤",
+          "value": "$15$",
+          "errorCalculation": "아래 삼각형을 빼서 $8+h=23$, $h=15$"
+        }
+      ],
+      "problemSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B1-problem.svg",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B1-solution.svg",
+      "reverseStem": "AUTHOR_RECHECK_KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q18-B2",
+      "slot": "B2",
+      "studentStem": "양수 $b$에 대하여 두 무리함수 $f(x)=\\sqrt{x}+b$, $g(x)=\\sqrt{x-2}$의 그래프 위에 각각 점 $A(4,b+2)$, $B(6,2)$가 있다. 두 그래프의 일부, 선분 $AB$, $x$축, $y$축으로 둘러싸인 그림의 음영 부분의 넓이가 $24$일 때, $b$의 값은?",
+      "choices": [
+        "$5$",
+        "$\\dfrac{10}{3}$",
+        "$20$",
+        "$4$",
+        "$\\dfrac{20}{3}$"
+      ],
+      "answer": "④",
+      "answerValue": "$4$",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n$h=2$, $u=2$를 대입하면 $S=4b+4+b=5b+4$이다.\n$S=24$이므로 $5b+4=24$, $b=4>0$이다.\n따라서 정답은 ④이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-267",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 그래프",
+        "l4": "평행이동",
+        "status": "DIRECT_BINDING_GAP"
+      },
+      "pt": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "tpl": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+      },
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 4,
+      "levelReason": "곡선 넓이를 도형 넓이로 바꾸는 핵심 변형을 익힌다. 넓이와 추가 질문의 역산·비교",
+      "bucketReason": "주어진 면적 역산이나 삼각형의 비율 판단",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$5$",
+          "errorCalculation": "삼각형을 누락해 $4b+4=24$, $b=5$"
+        },
+        {
+          "index": "②",
+          "value": "$\\dfrac{10}{3}$",
+          "errorCalculation": "아래 삼각형을 두 번 더해 $6b+4=24$, $b=\\dfrac{10}{3}$"
+        },
+        {
+          "index": "③",
+          "value": "$20$",
+          "errorCalculation": "왼쪽 직사각형을 누락해 $b+4=24$, $b=20$"
+        },
+        {
+          "index": "⑤",
+          "value": "$\\dfrac{20}{3}$",
+          "errorCalculation": "아래 삼각형을 빼서 $3b+4=24$, $b=\\dfrac{20}{3}$"
+        }
+      ],
+      "problemSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B2-problem.svg",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B2-solution.svg",
+      "reverseStem": "AUTHOR_RECHECK_KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q18-B3",
+      "slot": "B3",
+      "studentStem": "두 무리함수 $f(x)=\\sqrt{x}+2$, $g(x)=\\sqrt{x-4}$의 그래프 위에 각각 점 $A(9,5)$, $B(13,3)$을 잡는다. 그림의 음영 부분의 넓이를 $S$라 하자. $O(0,0)$, $P(0,2)$, $Q(4,0)$일 때, $\\dfrac{S}{[\\triangle OPQ]}$의 값은? (단, $[\\triangle OPQ]$는 삼각형 $OPQ$의 넓이이다.)",
+      "choices": [
+        "$\\dfrac{15}{2}$",
+        "$\\dfrac{19}{2}$",
+        "$\\dfrac{17}{2}$",
+        "$\\dfrac{23}{2}$",
+        "$\\dfrac{17}{4}$"
+      ],
+      "answer": "③",
+      "answerValue": "$\\dfrac{17}{2}$",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n$b=2$, $h=4$, $u=3$이므로 $S=18+12+4=34$이다.\n한편 $[\\triangle OPQ]=\\dfrac12\\cdot2\\cdot4=4$이다. 따라서 비는 $\\dfrac{34}{4}=\\dfrac{17}{2}$이다.\n따라서 정답은 ③이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-267",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 그래프",
+        "l4": "평행이동",
+        "status": "DIRECT_BINDING_GAP"
+      },
+      "pt": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "tpl": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+      },
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 4,
+      "levelReason": "곡선 넓이를 도형 넓이로 바꾸는 핵심 변형을 익힌다. 넓이와 추가 질문의 역산·비교",
+      "bucketReason": "주어진 면적 역산이나 삼각형의 비율 판단",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$\\dfrac{15}{2}$",
+          "errorCalculation": "삼각형을 빼고 $S=30$으로 계산하여 $30/4=\\dfrac{15}{2}$"
+        },
+        {
+          "index": "②",
+          "value": "$\\dfrac{19}{2}$",
+          "errorCalculation": "삼각형을 두 번 더해 $S=38$로 계산하여 $38/4=\\dfrac{19}{2}$"
+        },
+        {
+          "index": "④",
+          "value": "$\\dfrac{23}{2}$",
+          "errorCalculation": "가로·세로 증가량을 뒤집어 $S=2\\cdot3+4\\cdot9+4=46$을 구해 $46/4=\\dfrac{23}{2}$"
+        },
+        {
+          "index": "⑤",
+          "value": "$\\dfrac{17}{4}$",
+          "errorCalculation": "삼각형 넓이를 $4$가 아닌 $8$로 계산하여 $34/8=\\dfrac{17}{4}$"
+        }
+      ],
+      "problemSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B3-problem.svg",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/B3-solution.svg",
+      "reverseStem": "AUTHOR_RECHECK_KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q18-C1",
+      "slot": "C1",
+      "studentStem": "양수 $h$에 대하여 $f(x)=\\sqrt{x}+2$, $g(x)=\\sqrt{x-h}$라 한다. 그림 (가)는 두 그래프 위의 점 $A(1,3)$, $B(1+h,1)$을 잇는 선분과 두 그래프, 양의 두 좌표축으로 둘러싸인 영역이고, 그림 (나)는 점 $A(4,4)$, $B(4+h,2)$를 사용한 같은 방식의 영역이다. (나)의 넓이가 (가)의 넓이의 $2$배일 때, $h$의 값은?",
+      "choices": [
+        "$2$",
+        "$8$",
+        "$\\dfrac{2}{3}$",
+        "$6$",
+        "$4$"
+      ],
+      "answer": "⑤",
+      "answerValue": "$4$",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n(가)에서는 $u=1$이므로 $S_1=2+2h$이다. (나)에서는 $u=2$이므로 $S_2=8+3h$이다.\n$S_2=2S_1$에서 $8+3h=2(2+2h)$이므로 $h=4>0$이다.\n따라서 정답은 ⑤이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-267",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 그래프",
+        "l4": "평행이동",
+        "status": "DIRECT_BINDING_GAP"
+      },
+      "pt": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "tpl": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다."
+      },
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "COMPARATIVE",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "levelReason": "두 이상의 수학 조건·예외를 연결한다. 두 그림의 넓이 비교",
+      "bucketReason": "이차근 필터/둘 이상의 영역비/절편과 넓이를 연결하는 추가 판단",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$2$",
+          "errorCalculation": "큰 영역의 축 삼각형을 누락해 $8+2h=2(2+2h)$에서 $h=2$"
+        },
+        {
+          "index": "②",
+          "value": "$8$",
+          "errorCalculation": "작은 영역의 $bu^2=2$를 누락해 $8+3h=4h$에서 $h=8$"
+        },
+        {
+          "index": "③",
+          "value": "$\\dfrac{2}{3}$",
+          "errorCalculation": "면적비 $2$배를 $3$배로 오독해 $8+3h=3(2+2h)$에서 $h=\\dfrac23$"
+        },
+        {
+          "index": "④",
+          "value": "$6$",
+          "errorCalculation": "작은 영역 직사각형 $2$를 $1$로 오인해 $8+3h=2(1+2h)$에서 $h=6$"
+        }
+      ],
+      "problemSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C1-problem.svg",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C1-solution.svg",
+      "reverseStem": "AUTHOR_RECHECK_KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q18-C2",
+      "slot": "C2",
+      "studentStem": "두 양수 $b$, $h$에 대하여 $f(x)=\\sqrt{x}+b$, $g(x)=\\sqrt{x-h}$의 그래프 위에 각각 점 $A(4,b+2)$, $B(4+h,2)$가 있다. 직선 $AB$의 기울기가 $-\\dfrac12$이고, 두 그래프의 일부, 선분 $AB$, 양의 두 좌표축으로 둘러싸인 그림의 음영 부분의 넓이가 $20$일 때, $b+h$의 값은?",
+      "choices": [
+        "$6$",
+        "$-30$",
+        "$\\dfrac{15}{2}$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": "①",
+      "answerValue": "$6$",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n점 $A$에서 $B$로 이동할 때 $x$좌표는 $h$ 증가하고 $y$좌표는 $b$ 감소하므로 기울기는 $-\\dfrac bh$이다.\n$-\\dfrac bh=-\\dfrac12$에서 $h=2b$이다. $u=2$를 넓이식에 대입하면 $S=4b+2h+\\dfrac12bh=8b+b^2$이다.\n$b^2+8b=20$이므로 $(b-2)(b+10)=0$이다. 양수 조건에 따라 $b=2$이고, $h=4$이므로 $b+h=6$이다.\n따라서 정답은 ①이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-267",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 그래프",
+        "l4": "평행이동",
+        "status": "DIRECT_BINDING_GAP"
+      },
+      "pt": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "tpl": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "crossConceptKeys": [
+        "CC_AREA",
+        "CC_LINE_EQUATION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다.",
+        "CC_LINE_EQUATION": "점 A,B의 기울기·절편에서 그래프 이동량을 결정한다.",
+        "CC_QUADRATIC_EQUATION": "넓이 방정식에서 두 근을 판정하여 양수 조건을 적용한다."
+      },
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "levelReason": "두 이상의 수학 조건·예외를 연결한다. 기울기→이차방정식→양수근",
+      "bucketReason": "이차근 필터/둘 이상의 영역비/절편과 넓이를 연결하는 추가 판단",
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "$-30$",
+          "errorCalculation": "음수근 $b=-10$을 버리지 않고 $h=-20$, $b+h=-30$"
+        },
+        {
+          "index": "③",
+          "value": "$\\dfrac{15}{2}$",
+          "errorCalculation": "삼각형을 누락해 $8b=20$, $b=\\dfrac52$, $b+h=\\dfrac{15}{2}$"
+        },
+        {
+          "index": "④",
+          "value": "$2$",
+          "errorCalculation": "최종합 대신 $b=2$만 답함"
+        },
+        {
+          "index": "⑤",
+          "value": "$4$",
+          "errorCalculation": "최종합 대신 $h=4$만 답함"
+        }
+      ],
+      "problemSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C2-problem.svg",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C2-solution.svg",
+      "reverseStem": "AUTHOR_RECHECK_KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q18-C3",
+      "slot": "C3",
+      "studentStem": "양수 $h$에 대하여 두 무리함수 $f(x)=\\sqrt{x}+2$, $g(x)=\\sqrt{x-h}$의 그래프 위에 각각 점 $A(4,4)$, $B(4+h,2)$가 있다. 직선 $AB$의 $y$절편이 $6$일 때, 두 그래프의 일부, 선분 $AB$, 양의 두 좌표축으로 둘러싸인 그림의 음영 부분의 넓이는?",
+      "choices": [
+        "$20$",
+        "$14$",
+        "$16$",
+        "$24$",
+        "$32$"
+      ],
+      "answer": "①",
+      "answerValue": "$20$",
+      "solution": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가로 $u^2+h$, 세로 $b+u$인 직사각형에서 양쪽의 높이 $u$인 삼각형 둘과 높이 $b$인 삼각형 둘을 빼면,\n$[PABQ]=(u^2+h)(b+u)-u^3-bh=bu^2+hu$이다. $[OPQ]=\\dfrac12bh$이므로 $S=bu^2+hu+\\dfrac12bh$이다.\n직선 $AB$의 기울기는 $\\dfrac{2-4}{(4+h)-4}=-\\dfrac2h$이다. 점 $A(4,4)$를 지나므로 $y-4=-\\dfrac2h(x-4)$이다.\n$y$절편이 $6$이라는 조건에서 $6=4+\\dfrac8h$이므로 $h=4$이다.\n$b=2$, $u=2$이므로 $S=8+2h+h=8+12=20$이다.\n따라서 정답은 ①이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-267",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 그래프",
+        "l4": "평행이동",
+        "status": "DIRECT_BINDING_GAP"
+      },
+      "pt": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "tpl": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "crossConceptKeys": [
+        "CC_AREA",
+        "CC_LINE_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_AREA": "대응하는 곡선 부분을 상쇄하고 삼각형·평행사변형 넓이를 계산한다.",
+        "CC_LINE_EQUATION": "점 A,B의 기울기·절편에서 그래프 이동량을 결정한다."
+      },
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "levelReason": "두 이상의 수학 조건·예외를 연결한다. 절편→이동량→넓이",
+      "bucketReason": "이차근 필터/둘 이상의 영역비/절편과 넓이를 연결하는 추가 판단",
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "$14$",
+          "errorCalculation": "직선 절편 계산에서 $x_A=4$를 $\\sqrt4=2$로 오인해 $h=2$, $S=14$"
+        },
+        {
+          "index": "③",
+          "value": "$16$",
+          "errorCalculation": "삼각형 넓이 $4$를 누락해 $S=16$"
+        },
+        {
+          "index": "④",
+          "value": "$24$",
+          "errorCalculation": "삼각형을 두 번 더해 $S=24$"
+        },
+        {
+          "index": "⑤",
+          "value": "$32$",
+          "errorCalculation": "A에서 B로의 세로 이동을 $2$가 아닌 $4$로 계산해 $h=8$, $S=32$"
+        }
+      ],
+      "problemSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C3-problem.svg",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q18/C3-solution.svg",
+      "reverseStem": "AUTHOR_RECHECK_KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    }
+  ]
+}

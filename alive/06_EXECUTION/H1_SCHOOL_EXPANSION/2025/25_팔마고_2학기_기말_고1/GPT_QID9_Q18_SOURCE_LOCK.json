@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q18_SOURCE_LOCK_v1",
+  "createdDate": "2026-10-15",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceFileSha256": "ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91",
+  "sourceQid": 18,
+  "sourceUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+  "sourceUidProof": {
+    "identityMapPath": "archive/data/question_identity_map.json",
+    "identityMapGitBlobSha": "a57b1be7171b8995c3229c5dc921c1b8b693482a",
+    "identityAlgorithm": "qid_v1_ + sha256(NFC(sourceArchiveFile)+'#'+sourceOrdinal)",
+    "record": {
+      "questionUid": "qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9",
+      "legacyQKey": "original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js_18",
+      "sourceArchiveFile": "original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "sourceFingerprint": "6d60717d31c29ba1098349a482d07b76907794bd9b6ef9467553c6d4ee0d4d14"
+    },
+    "actualJsQuestionId": 18,
+    "actualJsOrdinalOneBased": 18,
+    "sourceQidIdParity": "PASS"
+  },
+  "sourceObjectSha256": "81fb6dfd3c2ce39e6d51cf71124f2586ab07e1d16aaddcb249f35de1c6184b80",
+  "sourceContentSha256": "287e36e534a21ef1a0d4403e59b06aa6d1672ae9346faa45f6ad49e6debcc7bc",
+  "sourceChoicesSha256": "386aaeaee5646d1127817ba7f67cfe5d63ab1a63cdbf476e06e3e8947ba0a407",
+  "sourceAnswerSha256": "3d3bc389df58f47aef91bc1182122d181e2c628a2d5b93939c903507938814de",
+  "sourceSolutionSha256": "f8dafcbdabab38b95c407e327695c907932775ae66429241f7a3fcdca2dae521",
+  "sourceImageDependency": {
+    "problemImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q18.png",
+    "gitBlobSha": "38bb562ef870fe0a5c566f7097ef5c91fade7a7d",
+    "visualRead": true,
+    "criticalPoints": {
+      "P": [
+        0,
+        2
+      ],
+      "Q": [
+        3,
+        0
+      ],
+      "A": [
+        4,
+        4
+      ],
+      "B": [
+        7,
+        2
+      ]
+    },
+    "status": "VERIFIED"
+  },
+  "sourceMathBlindSolve": {
+    "status": "AUTHOR_REDERIVED_PARITY_PASS",
+    "strictBlindIndependence": "NOT_CLAIMED_SOURCE_ANSWER_VISIBLE",
+    "derivation": [
+      "f(x)=sqrt(x)+2, g(x)=sqrt(x-3): (3,-2) parallel translation.",
+      "Curved caps cancel; area=PABQ+OPQ=2*4+3*2+3*2/2=17.",
+      "Python Sympy definite integral confirms 17 independently from author geometric method."
+    ],
+    "computedAnswerValue": "17",
+    "computedChoiceIndex": "③",
+    "uniqueCorrectChoiceIndices": [
+      "③"
+    ],
+    "allFiveChoiceResults": [
+      "15 false",
+      "16 false",
+      "17 true",
+      "18 false",
+      "19 false"
+    ],
+    "independentVerifier": "NOT_RUN"
+  },
+  "sourceAnswerParity": "PASS_AUTHOR",
+  "sourceIdentityStatus": "PASS",
+  "duplicateQ18Found": false,
+  "duplicateSearch": {
+    "existingMeta": 0,
+    "branchHead": "cc06abde4353ab1e65a453bae9737c8ed5c1c14d",
+    "previousCount": 153
+  },
+  "sourceLockStatus": "PASS",
+  "SOURCE_LOCK_STATUS": "PASS"
+}

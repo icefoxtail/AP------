@@ -1,3 +1,22 @@
+# CURRENT — q18 SOURCE LOCK·A1~C3 9문항 AUTHOR 완료 / 다음 q19 (2026-10-15)
+
+- branch `work/alive-25-palma-h1-2final-qid9`, 신규 q18 9 UID, **누적 162/207**. 이전 q01~q17 153 UID 및 원본/기존 유사문제 보호. 다음 q19.
+- SOURCE LOCK PASS: 원본 Git blob `0d12b75e824ab47f08fc3b5a6180be595f882c6e`, raw SHA256 `ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91`, sourceUid `qid_v1_195eb212435eac707348337369896e14b4542b58f3745834d7bdf68c391945e9` identity map 직접 검증, 그림 P(0,2),Q(3,0),A(4,4),B(7,2), 넓이 17(③).
+- Primary H1-RPM-267 (무리함수의 그래프/평행이동), PT/TPL DIRECT_BINDING_GAP 메타 기술 부채. 기존 CC_AREA/CC_LINE_EQUATION/CC_QUADRATIC_EQUATION 필요 UID별 재사용, 신규 CrossConcept 0.
+- 문제 SVG 9·해설 SVG 9 실물 Git Blob SHA와 SHA256. Python SymPy 수학·도형 좌표 검산, 실제 XML parser/Browser·독립검수는 NOT_RUN.
+- q18 정답 ①2②2③1④2⑤2; q01 복수정답 별도, q02~17 세로 누적 편차 51 → q02~18 **47**, 최악 **8→7**, 가로 제약 `113400`개 배치 전수 최적화.
+
+| | 1 | 2 | 3 |
+|---|---|---|---|
+| A | ⑤ | ④ | ② |
+| B | ② | ④ | ③ |
+| C | ⑤ | ① | ① |
+
+- 9문항 보기 45개·오답 오류경로 36개. SOURCE_LOCK/PREFLIGHT/CREATE_DRAFT/AUTHOR_BLUEPRINT/AUTHOR_RECEIPT/VISUAL_NUMERIC_EVIDENCE, Registry·Progress·NextChat 갱신. 독립검수/Browser/Consumer/index/학생등록/main **NOT_RUN**.
+- q19 별도 SOURCE LOCK 진입, 기존 162 UID 재작성 금지.
+
+---
+
 # CURRENT — q17 SOURCE LOCK·9문항 AUTHOR 완료 / 다음 q18 (2026-10-15)
 
 - 브랜치 `work/alive-25-palma-h1-2final-qid9`, 부모 HEAD `de80b864a21bb565934b8c88c3396112b50c3a0e`. **q17 A1~C3 신규 9 UID, 누적 153/207**, firstMissing **q18**. q01~q16 144개 UID 내용·원본 시험지·기존 유사문항 불변.
