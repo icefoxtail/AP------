@@ -56,3 +56,17 @@ test('QID9 normalized SVG drops stale root aria-label after title/desc binding',
  assert.equal(validateSvgStudentLanguage(normalized,{assetRef:'derived/q12.svg'}).status,'PASS');
  assert.equal(normalized.match(/<path[^>]*>/)[0],source.match(/<path[^>]*>/)[0]);
 });
+
+test('QID9 derived SVG removes scale guidance from description while keeping the source explanation and artwork',()=>{
+ const source='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 410"><title id="title">A1 점근선 직사각형 해설</title><desc id="desc">수직 점근선 x=2, x=5와 수평 점근선 y=0, y=5가 만드는 직사각형. 가로 3, 세로 5, 넓이 15. x축과 y축의 단위 축척 동일.</desc><rect x="0" y="0" width="620" height="410" fill="white"/><path d="M1 2L3 4"/></svg>';
+ const normalized=normalizeQid9Svg(source,'ALITE-JEIL25-2FINAL-Q14-A1-solution');
+ assert.equal(validateSvgStudentLanguage(normalized,{assetRef:'derived/q14-solution.svg'}).status,'PASS');
+ assert.doesNotMatch(normalized,/축척/);
+ assert.match(normalized,/<desc id="desc">수직 점근선 x=2, x=5와 수평 점근선 y=0, y=5가 만드는 직사각형\. 가로 3, 세로 5, 넓이 15\.<\/desc>/);
+ assert.equal(normalized.match(/<rect[^>]*>/)[0],source.match(/<rect[^>]*>/)[0]);
+ assert.equal(normalized.match(/<path[^>]*>/)[0],source.match(/<path[^>]*>/)[0]);
+});
+
+test('QID9 derived SVG fails closed when scale guidance is its only description',()=>{
+ assert.throws(()=>normalizeQid9Svg('<svg><title>점근선 직사각형</title><desc>x축과 y축의 단위 축척은 같다.</desc></svg>','ALITE-TEST-Q14-A1'),/QID9_SVG_ACCESSIBILITY_DESCRIPTION_SCALE_GUIDANCE_UNRESOLVED/);
+});

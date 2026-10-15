@@ -16,6 +16,24 @@ function removeAttribute(tag, name) {
   return tag.replace(pattern, '');
 }
 
+const SCALE_GUIDANCE = /축척|\bscale(?:d|s|ing)?\b/i;
+
+function removeScaleGuidanceSentences(value) {
+  const text = String(value ?? '');
+  const sentences = [];
+  let start = 0;
+  for (let index = 0; index < text.length; index++) {
+    const character = text[index];
+    if (!/[.!?。！？]/.test(character)) continue;
+    if (character === '.' && /\d/.test(text[index - 1] || '') && /\d/.test(text[index + 1] || '')) continue;
+    if (character === '.' && text[index + 1] && !/\s/.test(text[index + 1])) continue;
+    sentences.push(text.slice(start, index + 1));
+    start = index + 1;
+  }
+  if (start < text.length) sentences.push(text.slice(start));
+  return sentences.filter(sentence => !SCALE_GUIDANCE.test(sentence)).join('').replace(/\s+/g, ' ').trim();
+}
+
 function escapeXmlText(value) {
   return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
@@ -34,13 +52,14 @@ function normalizeQid9Svg(input, uid, labels = {}) {
 
   const titleText = String(labels.title ?? '').trim();
   const descriptionText = String(labels.description ?? '').trim();
-  if ((titleCount === 0 && !titleText) || (descCount === 0 && !descriptionText)) {
+  const safeDescriptionText = removeScaleGuidanceSentences(descriptionText);
+  if ((titleCount === 0 && !titleText) || (descCount === 0 && !safeDescriptionText)) {
     throw new Error('QID9_SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED:' + safeUid);
   }
 
   const additions = [];
   if (titleCount === 0) additions.push('<title>' + escapeXmlText(titleText) + '</title>');
-  if (descCount === 0) additions.push('<desc>' + escapeXmlText(descriptionText) + '</desc>');
+  if (descCount === 0) additions.push('<desc>' + escapeXmlText(safeDescriptionText) + '</desc>');
   if (additions.length) {
     const rootEnd = rootMatch.index + rootMatch[0].length;
     svg = svg.slice(0, rootEnd) + additions.join('') + svg.slice(rootEnd);
@@ -69,9 +88,20 @@ function normalizeQid9Svg(input, uid, labels = {}) {
   if (!titleId) titleId = allocate('title');
   if (!descId) descId = allocate('desc');
 
-  const oldTitle = titleMatches[0][0], oldDesc = descMatches[0][0], oldRoot = rootMatch[0];
-  const newTitle = setAttribute(oldTitle, 'id', titleId);
-  const newDesc = setAttribute(oldDesc, 'id', descId);
+  const descElementMatches = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?desc\b[^>]*>[\s\S]*?<\/(?:[A-Za-z_][\w.-]*:)?desc\s*>/gi)];
+  if (descElementMatches.length !== 1) throw new Error('QID9_SVG_ACCESSIBILITY_DESCRIPTION_SCALE_GUIDANCE_UNRESOLVED:' + safeUid);
+  const oldTitle = titleMatches[0][0], oldDesc = descElementMatches[0][0], oldRoot = rootMatch[0];
+  const descOpen = oldDesc.match(/^<(?:[A-Za-z_][\w.-]*:)?desc\b[^>]*>/i)[0];
+  const descClose = oldDesc.match(/<\/(?:[A-Za-z_][\w.-]*:)?desc\s*>$/i)[0];
+  const originalDescription = oldDesc.slice(descOpen.length, oldDesc.length - descClose.length);
+  let normalizedDescription = originalDescription;
+  if (SCALE_GUIDANCE.test(originalDescription)) {
+    normalizedDescription = removeScaleGuidanceSentences(originalDescription);
+    if (!normalizedDescription) normalizedDescription = safeDescriptionText;
+    if (!normalizedDescription) throw new Error('QID9_SVG_ACCESSIBILITY_DESCRIPTION_SCALE_GUIDANCE_UNRESOLVED:' + safeUid);
+  }
+  const newTitle = setAttribute(titleMatches[0][0], 'id', titleId);
+  const newDesc = setAttribute(descOpen, 'id', descId) + normalizedDescription + descClose;
   const newRoot = removeAttribute(
     removeAttribute(
       setAttribute(
