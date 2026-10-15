@@ -268,6 +268,7 @@ class Phase2ArtifactTests(unittest.TestCase):
                 draft_dir.mkdir(parents=True)
                 spec = {
                     "version": "0.1", "type": "coordinate_plane",
+                    "title": "좌표평면에서 점 P와 선분",
                     "width": 200, "height": 200, "xRange": [-2, 2], "yRange": [-2, 2],
                     "points": [{"x": 1, "y": 1, "label": label.upper()}],
                 }

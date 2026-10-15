@@ -23,8 +23,10 @@
     <script src="../archive/vendor/qrious/qrious.min.js?v=4.0.2"></script>
     <script src="../archive/vendor/html2canvas/html2canvas.min.js?v=1.4.1"></script>
     <script src="../archive/native_print.js?v=20260915.2"></script>
+    <script src="../archive/data/svg-accessibility-index.js?v=20261014.1" onerror="console.warn('[svg-accessibility] 색인 로드 실패 — 그림 이름 한국어 기본값 사용')"></script>
+    <script src="../archive/svg-accessibility.js?v=20261014.1"></script>
     <script src="../archive/print-contract.js?v=20260906.2" onerror="console.warn('[render-authority] print contract 로드 실패 — legacy renderer 유지')"></script>
-    <script src="../archive/render-authority.js?v=20260906.5" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
+    <script src="../archive/render-authority.js?v=20261014-svg-alt-1" onerror="console.warn('[render-authority] normalizer 로드 실패 — legacy renderer 유지')"></script>
     <script src="../archive/layout-authority.js?v=20260906.15" onerror="console.warn('[layout-authority] composition gate 로드 실패 — legacy composition 유지')"></script>
     <script src="../archive/print-runtime.js?v=20260906.2" onerror="console.warn('[print-runtime] readiness tracker 로드 실패 — existing transport 유지')"></script>
     <style>
@@ -218,7 +220,7 @@ function createWrongSourceAdapter(buildContext = null) {
 // transaction-owned state, DOM, cancellation, MathJax and readiness barriers.
 const STORAGE_KEY = 'AP_CLINIC_PRINT_PAYLOAD';
 const ARCHIVE_BASE_URL = new URL('../archive/', document.baseURI).href;
-const ARCHIVE_ASSET_CACHE_VERSION = '20260828.1';
+const ARCHIVE_ASSET_CACHE_VERSION = '20261014.1';
 // 내부망/로컬에서 출력해도 QR은 항상 공개 URL로 생성한다(학생/학부모 폰에서 열려야 하므로).
 const WRONG_PRINT_PUBLIC_URL = 'https://icefoxtail.github.io/AP------/apmath/wrong_print_engine.html';
 const WRONG_CLINIC_API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
@@ -565,7 +567,7 @@ function getArchiveUrl(file) {
 
 function withArchiveAssetCacheBuster(url) {
     const raw = String(url || '').trim();
-    if (!raw || /^(?:data:|blob:)/i.test(raw) || !/(^|\/)assets\/images\//i.test(raw)) return raw;
+    if (!raw || /^(?:data:|blob:)/i.test(raw) || !/(^|\/)assets\/(?:images|generated-lite)\//i.test(raw)) return raw;
     const hashIndex = raw.indexOf('#');
     const base = hashIndex >= 0 ? raw.slice(0, hashIndex) : raw;
     const hash = hashIndex >= 0 ? raw.slice(hashIndex) : '';
@@ -598,6 +600,28 @@ function rewriteImgSrcInHtml(html, archiveFile) {
             return `${pre}${quote}${withArchiveAssetCacheBuster(resolved || src)}${quote}`;
         }
     );
+}
+
+function decodeImgAttribute(value) {
+    return String(value || '')
+        .replace(/&quot;/gi, '"')
+        .replace(/&#39;|&apos;/gi, "'")
+        .replace(/&lt;/gi, '<')
+        .replace(/&gt;/gi, '>')
+        .replace(/&amp;/gi, '&');
+}
+
+function addAccessibleAltToImgHtml(html, question) {
+    return String(html || '').replace(/<img\b[^>]*>/gi, tag => {
+        const srcMatch = tag.match(/\bsrc\s*=\s*(["'])([\s\S]*?)\1/i);
+        const assetRef = srcMatch ? decodeImgAttribute(srcMatch[2]) : '';
+        const existingMatch = tag.match(/\balt\s*=\s*(["'])([\s\S]*?)\1/i);
+        const existingAlt = existingMatch ? decodeImgAttribute(existingMatch[2]) : '';
+        const alt = window.APSvgAccessibility?.selectAccessibleAlt(assetRef, 'image', question, existingAlt, '문제 그림') || existingAlt || '문제 그림';
+        const escapedAlt = escapeHtml(alt);
+        if (existingMatch) return tag.replace(existingMatch[0], `alt="${escapedAlt}"`);
+        return tag.replace(/^<img\b/i, `<img alt="${escapedAlt}"`);
+    });
 }
 
 function getQuestionImageRaw(q) {
@@ -1540,19 +1564,20 @@ function renderQuestionImageHTML(q) {
     const archiveFile = getQuestionArchiveFile(q);
     // imageTag (or any field) may carry a full <img …> tag — rewrite its src in place.
     if (/<img/i.test(image)) {
-        return `<div class="q-image-wrap">${rewriteImgSrcInHtml(image, archiveFile)}</div>`;
+        return `<div class="q-image-wrap">${addAccessibleAltToImgHtml(rewriteImgSrcInHtml(image, archiveFile), q)}</div>`;
     }
     const url = resolveArchiveAssetUrl(image, archiveFile);
     if (!url) return '';
     const size = ['small', 'half', 'medium', 'large', 'full', 'tall'].includes(q.imageSize) ? q.imageSize : '';
     const sizeClass = size ? ` image-${size}` : '';
-    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeHtml(withArchiveAssetCacheBuster(url))}" alt=""></div>`;
+    const alt = window.APSvgAccessibility?.selectAccessibleAlt(image, 'image', q, q.imageAlt || '', '문제 그림') || q.imageAlt || '문제 그림';
+    return `<div class="q-image-wrap${sizeClass}"><img src="${escapeHtml(withArchiveAssetCacheBuster(url))}" alt="${escapeHtml(alt)}"></div>`;
 }
 
 function renderSolutionImageHTML(q) {
     if (!q || !q.solutionImage) return '';
     const size = ['small', 'medium', 'large', 'full'].includes(q.solutionImageSize) ? q.solutionImageSize : 'medium';
-    const alt = q.solutionImageAlt || `문항 ${q.id ?? ''} 해설 그래프`;
+    const alt = window.APSvgAccessibility?.selectAccessibleAlt(q.solutionImage, 'solutionImage', q, q.solutionImageAlt || '', '해설 그림') || q.solutionImageAlt || '해설 그림';
     const caption = q.solutionImageCaption
         ? `<span class="sol-image-caption">${escapeHtml(q.solutionImageCaption)}</span>`
         : '';

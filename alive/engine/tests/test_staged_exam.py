@@ -458,6 +458,7 @@ class StagedExamTests(unittest.TestCase):
         payload = self.draft(manifest, task)
         payload["questions"][0]["visualSpec"] = {
             "type": "coordinate_plane",
+            "title": "좌표평면에서 점 P와 선분",
             "width": 240,
             "height": 240,
             "xRange": [-3, 3],
@@ -565,6 +566,7 @@ class StagedExamTests(unittest.TestCase):
         payload["questions"][0]["solutionVisualSpec"] = {
             "version": "0.1",
             "type": "circle_geometry",
+            "title": "원과 접선의 수직 관계",
             "width": 300,
             "height": 300,
             "xRange": [-5, 5],

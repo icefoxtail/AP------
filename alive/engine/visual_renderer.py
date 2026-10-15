@@ -6,6 +6,8 @@ import json
 import math
 import os
 import uuid
+import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Any
 
@@ -13,11 +15,103 @@ from .run_store import atomic_write_json, sha256_file
 
 
 VISUAL_SPEC_VERSION = "0.1"
-RENDERER_VERSION = "0.5.2-circle-geometry-label-layout"
+RENDERER_VERSION = "0.5.3-student-language-accessibility"
 SUPPORTED_TYPES = {
     "coordinate_plane", "simple_function_graph", "segment_geometry",
     "polygon", "circle", "circle_geometry", "table",
 }
+
+_MATH_WORDS = {
+    "sin", "cos", "tan", "cot", "sec", "csc", "log", "ln", "lim", "max", "min", "sqrt", "pi",
+    "theta", "alpha", "beta", "gamma", "delta", "omega", "xy", "xz", "yz", "mm", "cm", "km", "m", "kg", "g", "ha",
+}
+_INTERNAL_WORDS = {"svg", "apmath", "source", "bound", "debug", "generator", "renderer", "candidate", "provenance"}
+_COMPOUND_VARIABLE_PRODUCTS = {"ab", "uv", "nm"}
+_MIXED_CASE_POINT_LABELS = {"Apr", "Bpr", "Cp", "Tx", "Ty"}
+_DESCRIPTION_MARKERS = {
+    "관계", "위치", "조건", "교점", "접점", "중심", "반지름", "접선", "수직", "평행", "변", "각", "넓이", "길이",
+    "그래프", "표", "구간", "영역", "대칭", "이동", "원", "점", "선분", "직선", "곡선", "변화", "분포", "확률",
+    "값", "풀이", "단계", "수량", "거리", "최댓값", "최솟값", "선택지", "참", "거짓", "겉면", "곡면", "도형의", "함수",
+    "비교", "보여", "도식", "다이어그램", "벤", "내분", "사분면", "볼록", "인수", "약분", "여집합", "포함", "집합", "합집합", "교집합", "수직선", "대응",
+}
+
+
+def _validate_student_text(value: str, surface: str) -> None:
+    if "축척" in value or re.search(r"\bscale(?:d|s|ing)?\b", value, re.IGNORECASE):
+        raise ValueError(f"SVG_SCALE_GUIDANCE_FORBIDDEN:{surface}:{value}")
+    for match in re.finditer(r"[A-Za-z]+", value):
+        token = match.group(0)
+        lower = token.lower()
+        if lower in _INTERNAL_WORDS:
+            raise ValueError(f"SVG_INTERNAL_STUDENT_TEXT_FORBIDDEN:{surface}:{token}:{value}")
+        before = value[match.start() - 1] if match.start() else ""
+        after = value[match.end()] if match.end() < len(value) else ""
+        nearby = value[max(0, match.start() - 3) : min(len(value), match.end() + 3)]
+        compact_math = bool(re.fullmatch(r"[A-Za-z]{2,4}", token)) and (
+            bool(before) and before in "0123456789=+-*/^_([{≤≥±−×÷⋅·"
+            or bool(after) and after in "0123456789₀₁₂₃₄₅₆₇₈₉⁰¹²³⁴⁵⁶⁷⁸⁹=+-*/^_)}]≤≥±−×÷⋅·(′’'"
+        )
+        inline_equation_identifier = bool(re.fullmatch(r"[a-z]{2,3}", token)) and bool(re.search(r"[=+*/^_≤≥±−×÷⋅·]", nearby))
+        integral_marker = lower == "int" and after in "0123456789₀₁₂₃₄₅₆₇₈₉ₐₑₕᵢⱼₖₗₘₙₒₚᵣₛₜ⁰¹²³⁴⁵⁶⁷⁸⁹[(" and bool(re.search(r"[=+]", value[max(0, match.start() - 3) : match.start()]))
+        differential = lower in {"dx", "dt"} and (
+            bool(re.search(r"(?:∫|\\int|\bint)", value, re.IGNORECASE))
+            or bool(before) and before in ")]}|0123456789" and bool(after) and after in " ,.;:)]}[가를은는이에"
+            or bool(re.match(r"d[xt][[(]", value[match.start() : match.start() + 4]))
+        )
+        mixed_case_math_label = token in _MIXED_CASE_POINT_LABELS or bool(re.fullmatch(r"[A-Z]{1,2}(?:min|max)", token)) or bool(re.fullmatch(r"[xy][A-Z]{1,3}", token))
+        if lower in _MATH_WORDS or len(token) == 1 or re.fullmatch(r"[A-Z]{2,4}", token) or mixed_case_math_label or lower in _COMPOUND_VARIABLE_PRODUCTS or compact_math or inline_equation_identifier or integral_marker or differential:
+            continue
+        raise ValueError(f"SVG_ENGLISH_STUDENT_TEXT_REQUIRES_REVIEW:{surface}:{token}:{value}")
+
+
+def _validate_student_svg(svg: str, title: str, description: str) -> None:
+    try:
+        root = ET.fromstring(svg)
+    except ET.ParseError as error:
+        raise ValueError("visual renderer emitted malformed SVG") from error
+    local = lambda name: name.rsplit("}", 1)[-1].casefold()
+    if local(root.tag) != "svg" or root.attrib.get("role") != "img":
+        raise ValueError("SVG_ACCESSIBILITY_ROLE_IMG_REQUIRED")
+    elements = list(root.iter())
+    titles = [node for node in elements if local(node.tag) == "title"]
+    descriptions = [node for node in elements if local(node.tag) == "desc"]
+    if len(titles) != 1 or len(descriptions) != 1:
+        raise ValueError("SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED")
+    ids = [node.attrib["id"] for node in elements if "id" in node.attrib]
+    if len(set(ids)) != len(ids):
+        raise ValueError("SVG_ACCESSIBILITY_DUPLICATE_ID")
+    title_id = titles[0].attrib.get("id")
+    description_id = descriptions[0].attrib.get("id")
+    labelled_by = root.attrib.get("aria-labelledby", "").split()
+    described_by = root.attrib.get("aria-describedby", "").split()
+    if not title_id or not description_id or title_id == description_id or title_id not in labelled_by or (
+        description_id not in labelled_by and description_id not in described_by
+    ):
+        raise ValueError("SVG_ACCESSIBILITY_ARIA_REFERENCE_INVALID")
+    if any(ids.count(identifier) != 1 for identifier in labelled_by + described_by):
+        raise ValueError("SVG_ACCESSIBILITY_ARIA_REFERENCE_INVALID")
+    for surface, node, minimum_korean in (("title", titles[0], 2), ("desc", descriptions[0], 8)):
+        value = " ".join("".join(node.itertext()).split())
+        if len(re.findall(r"[가-힣]", value)) < minimum_korean:
+            raise ValueError(f"SVG_ACCESSIBILITY_KOREAN_MEANING_REQUIRED:{surface}")
+        _validate_student_text(value, surface)
+    title_text = " ".join("".join(titles[0].itertext()).split())
+    description_text = " ".join("".join(descriptions[0].itertext()).split())
+    if title_text == description_text or not any(marker in description_text for marker in _DESCRIPTION_MARKERS):
+        raise ValueError(f"SVG_ACCESSIBILITY_DESCRIPTION_NOT_SUBSTANTIVE:{description_text}")
+    for index, node in enumerate(elements):
+        if local(node.tag) == "text":
+            _validate_student_text(" ".join("".join(node.itertext()).split()), f"text[{index}]")
+        if node.attrib.get("aria-label"):
+            _validate_student_text(node.attrib["aria-label"], f"aria-label[{index}]")
+        if node.attrib.get("title"):
+            _validate_student_text(node.attrib["title"], f"title-attribute[{index}]")
+        for attribute in ("aria-labelledby", "aria-describedby"):
+            refs = node.attrib.get(attribute, "").split()
+            if len(set(refs)) != len(refs) or any(ids.count(identifier) != 1 for identifier in refs):
+                raise ValueError(f"SVG_ACCESSIBILITY_ARIA_REFERENCE_INVALID:{attribute}[{index}]")
+    if title != " ".join("".join(titles[0].itertext()).split()) or description != " ".join("".join(descriptions[0].itertext()).split()):
+        raise ValueError("SVG_ACCESSIBILITY_SPEC_MISMATCH")
 
 
 def _number(value: Any, name: str) -> float:
@@ -45,6 +139,53 @@ def _safe_label(value: Any, name: str) -> str:
     if not isinstance(value, str) or not value.strip() or len(value) > 40:
         raise ValueError(f"visualSpec {name} must be a non-empty label of at most 40 characters")
     return html.escape(value.strip(), quote=True)
+
+
+def _accessibility_text(value: Any, name: str, maximum: int) -> str:
+    if not isinstance(value, str) or not value.strip() or len(value.strip()) > maximum:
+        raise ValueError(f"visualSpec {name} must be non-empty Korean student-facing text of at most {maximum} characters")
+    return html.escape(value.strip(), quote=True)
+
+
+def _derive_accessibility_description(spec: dict[str, Any]) -> str:
+    title = spec.get("title")
+    if not isinstance(title, str) or not title.strip():
+        raise ValueError("visualSpec title is required for an accessible student visual")
+    parts: list[str] = []
+    point_labels = [item.get("label") for item in spec.get("points", []) if isinstance(item, dict) and isinstance(item.get("label"), str)]
+    circle_labels = [item.get("center", {}).get("label") for item in spec.get("circles", []) if isinstance(item, dict) and isinstance(item.get("center"), dict) and isinstance(item.get("center", {}).get("label"), str)]
+    labels = list(dict.fromkeys(point_labels + circle_labels))
+    if labels:
+        parts.append("점 " + ", ".join(labels))
+    segments = [item.get("label") for item in spec.get("segments", []) if isinstance(item, dict) and isinstance(item.get("label"), str)]
+    lines = [item.get("label") for item in spec.get("lines", []) if isinstance(item, dict) and isinstance(item.get("label"), str)]
+    curves = [item.get("label") for item in spec.get("curves", []) if isinstance(item, dict) and isinstance(item.get("label"), str)]
+    if segments:
+        parts.append("선분 " + ", ".join(dict.fromkeys(segments)))
+    if lines:
+        parts.append("직선 " + ", ".join(dict.fromkeys(lines)))
+    if spec.get("circles"):
+        parts.append("중심과 반지름을 갖는 원")
+    if curves:
+        parts.append("함수 그래프 " + ", ".join(dict.fromkeys(curves)))
+    annotations = [item.get("text") for item in spec.get("annotations", []) if isinstance(item, dict) and isinstance(item.get("text"), str) and item.get("text").strip()]
+    if annotations:
+        parts.append("풀이에 필요한 관계 " + "; ".join(annotations[:2]))
+    if spec.get("type") == "table":
+        rows = spec.get("rows", [])
+        columns = len(rows[0]) if rows and isinstance(rows[0], list) else 0
+        parts.append(f"{len(rows)}행 {columns}열의 조건과 값")
+    if not parts:
+        visual_type = spec.get("type")
+        if visual_type in {"coordinate_plane", "simple_function_graph"}:
+            parts.append("좌표와 그래프의 관계")
+        elif visual_type in {"circle", "circle_geometry"}:
+            parts.append("원의 중심과 반지름")
+        elif visual_type in {"segment_geometry", "polygon"}:
+            parts.append("도형의 점과 변의 위치 관계")
+        elif visual_type == "table":
+            parts.append("조건과 값의 표 관계")
+    return f"{title.strip()}: {'; '.join(parts)}를 나타낸 그림."
 
 
 def _fmt(value: float) -> str:
@@ -338,6 +479,9 @@ def render_visual_spec(spec: dict[str, Any]) -> str:
         raise ValueError("visualSpec type is unsupported")
     width = _integer(spec.get("width"), "width", 120, 1200)
     height = _integer(spec.get("height"), "height", 120, 1200)
+    title = _accessibility_text(spec.get("title"), "title", 120)
+    description_source = spec.get("description") or _derive_accessibility_description(spec)
+    description = _accessibility_text(description_source, "description", 1000)
     if visual_type == "circle_geometry":
         if not isinstance(spec.get("circles"), list) or not spec["circles"]:
             raise ValueError("circle_geometry requires at least one circle")
@@ -358,12 +502,16 @@ def render_visual_spec(spec: dict[str, Any]) -> str:
         "text{font:14px sans-serif;fill:#111}.cell{fill:#fff;stroke:#111;stroke-width:1}"
         ".cell-text{text-anchor:middle;dominant-baseline:middle;font:13px sans-serif}"
     )
-    return (
+    svg = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
-        f'viewBox="0 0 {width} {height}" role="img">\n'
+        f'viewBox="0 0 {width} {height}" role="img" aria-labelledby="visual-title" aria-describedby="visual-description">\n'
+        f'<title id="visual-title">{title}</title>\n'
+        f'<desc id="visual-description">{description}</desc>\n'
         f'<style>{style}</style>\n' + "\n".join(body) + "\n</svg>\n"
     )
+    _validate_student_svg(svg, html.unescape(title), html.unescape(description))
+    return svg
 
 
 def render_visual_file(spec_path: Path, output_path: Path, report_path: Path) -> dict[str, Any]:

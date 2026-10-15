@@ -3,6 +3,10 @@ import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const { assertSvgStudentLanguage } = require('../svg-language-contract.cjs');
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
 const EXAM_ROOT = path.join(ROOT, 'archive', 'exams', 'original', 'high', 'h1');
@@ -53,7 +57,7 @@ function renderSvg(key, diagram) {
   for (const note of diagram.notes.slice(0, 13)) { panel += `<text x="566" y="${y}" class="note">${esc(note)}</text>`; y += 22; }
   const [file, id] = key.split('#');
   const factHash = crypto.createHash('sha256').update(JSON.stringify({ key, diagram })).digest('hex');
-  return `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 480" width="840" height="480" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc" data-fact-hash="${factHash}" data-scale-policy="${diagram.policy}" data-axis-scale-mode="EQUAL_UNIT" data-geometry-style-version="AP_GEOMETRY_PRINT_V1_0_DRAFT" data-visual-provenance="external-review-independent-content-solution"><style>.axis{font:italic 13px serif;fill:#111827}.point{font:700 12px sans-serif}.coord{font:10px sans-serif;fill:#475569}.panel{font:700 16px sans-serif;fill:#0f172a}.note{font:12px sans-serif;fill:#334155}</style><title id="title">직선의 방정식 해설 도형 · 문항 ${id}</title><desc id="desc">문제 content와 solution에서 독립 계산한 실제 점·직선·관계를 표시한 좌표 도형</desc><rect width="840" height="480" fill="#fff"/><text x="38" y="32" font-size="22" font-weight="700">직선의 방정식 해설 도형 · 문항 ${id}</text><text x="38" y="55" font-size="12" fill="#475569">독립 계산값과 문제 핵심 관계를 표시</text>${body.join('')}${panel}<text x="38" y="462" font-size="11" fill="#64748b">축척: x,y 동일 단위 · content/solution 독립 계산 기반</text></svg>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 480" width="840" height="480" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="title desc" data-fact-hash="${factHash}" data-scale-policy="${diagram.policy}" data-axis-scale-mode="EQUAL_UNIT" data-geometry-style-version="AP_GEOMETRY_PRINT_V1_0_DRAFT" data-visual-provenance="external-review-independent-content-solution"><style>.axis{font:italic 13px serif;fill:#111827}.point{font:700 12px sans-serif}.coord{font:10px sans-serif;fill:#475569}.panel{font:700 16px sans-serif;fill:#0f172a}.note{font:12px sans-serif;fill:#334155}</style><title id="title">직선의 방정식 해설 도형 · 문항 ${id}</title><desc id="desc">문제의 발문과 해설에서 따로 계산한 실제 점·직선·관계를 표시한 좌표 도형</desc><rect width="840" height="480" fill="#fff"/><text x="38" y="32" font-size="22" font-weight="700">직선의 방정식 해설 도형 · 문항 ${id}</text><text x="38" y="55" font-size="12" fill="#475569">독립 계산값과 문제 핵심 관계를 표시</text>${body.join('')}${panel}</svg>\n`;
 }
 
 const diagrams = new Map();
@@ -286,7 +290,10 @@ for (const [key, diagram] of diagrams) {
   if (!target) throw new Error(`diagram target not found: ${key}`);
   const asset = path.join(ROOT, 'archive', 'assets', 'images', path.basename(target.file, '.js'), `q${String(target.q.id).padStart(2, '0')}-solution.svg`);
   fs.mkdirSync(path.dirname(asset), { recursive: true });
-  fs.writeFileSync(asset, renderSvg(key, diagram), 'utf8');
+  const rendered = renderSvg(key, diagram);
+  const assetRef = path.relative(path.join(ROOT, 'archive'), asset).replaceAll(path.sep, '/');
+  assertSvgStudentLanguage(rendered, { assetRef });
+  fs.writeFileSync(asset, rendered, 'utf8');
   const fields = { tags: normalizeTags(target.q, diagram) };
   if (metadataFixes.has(key)) { const [subUnitKey, subUnit] = metadataFixes.get(key); fields.subUnitKey = subUnitKey; fields.subUnit = subUnit; }
   if (Object.keys(fields).length) updateMetadata(target.file, target.q, fields);

@@ -13,6 +13,10 @@ import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+const { validateSvgStudentLanguage } = require('../archive/tools/svg-language-contract.cjs');
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const REPORT_DIR = path.join(ROOT, 'reports', 'h2-2final-math2-visual');
@@ -271,16 +275,14 @@ function sourceCard(row) {
   const panelBottomY = Math.max(panelY + 300, contentBottomY + 28);
   const panelHeight = panelBottomY - panelY;
   const conclusionY = panelBottomY + 24;
-  const footerLines = wrapText(`${row.examId} · q${row.q.id} · source-bound solution visual`, 92);
-  const footerY = conclusionY + 48 + 28;
-  const height = Math.max(620, footerY + footerLines.length * 16 + 24);
+  const height = Math.max(620, conclusionY + 48 + 24);
   const answer = htmlToPlain(row.q.answer);
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="760" height="${height}" viewBox="0 0 760 ${height}" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
-  <title id="title">${xmlEscape(row.examId)} · q${row.q.id} 해설 시각화</title>
-  <desc id="desc">문항 ${row.q.id}의 원문과 해설 흐름을 source-bound 텍스트 카드로 정리한 SVG</desc>
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="760" height="${height}" viewBox="0 0 760 ${height}" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet" data-visual-kind="source-bound-text-card-v1">
+  <title id="title">문항 ${row.q.id}의 조건과 해설 핵심 단계</title>
+  <desc id="desc">문항의 조건과 해설의 주요 단계를 두 패널로 나란히 정리한 그림.</desc>
   <rect width="760" height="${height}" fill="#fff"/>
   <g font-family="Noto Sans KR, Pretendard, Apple SD Gothic Neo, Malgun Gothic, sans-serif" fill="#111">
-    <text x="380" y="32" font-size="21" font-weight="700" text-anchor="middle">${xmlEscape(row.examId)} · q${row.q.id} 해설 시각화</text>
+    <text x="380" y="32" font-size="21" font-weight="700" text-anchor="middle">문항 ${row.q.id} 핵심 내용과 풀이</text>
     <text x="380" y="59" font-size="15" text-anchor="middle" fill="#475569">문항 원문과 해설의 핵심 흐름</text>
     <rect x="18" y="${panelY}" width="350" height="${panelHeight}" rx="12" fill="#eff6ff" stroke="#93c5fd"/>
     <rect x="390" y="${panelY}" width="352" height="${panelHeight}" rx="12" fill="#f0fdf4" stroke="#86efac"/>
@@ -290,7 +292,6 @@ function sourceCard(row) {
     ${textLines(sLines, 398, 140, 'font-size="14"')}
     <rect x="18" y="${conclusionY}" width="724" height="48" rx="10" fill="#fff7ed" stroke="#fdba74"/>
     <text x="380" y="${conclusionY + 30}" font-size="17" text-anchor="middle" fill="#9a3412">결론: ${xmlEscape(answer)}</text>
-    ${textLines(footerLines, 380, footerY, 'font-size="11" text-anchor="middle" fill="#64748b"')}
   </g>
 </svg>`;
 }
@@ -305,7 +306,7 @@ function specialSvg(row) {
     }).join(' ');
     return `<svg xmlns="http://www.w3.org/2000/svg" width="760" height="620" viewBox="0 0 760 620" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet">
   <title id="title">f(x)+|f(x)+x|=7x+k의 네 실근 조건</title>
-  <desc id="desc">원문 함수에서 유도한 K(x)의 piecewise graph. x&lt;0에서는 K(x)=-8x, x≥0에서는 K(x)=x(x-3)^2이며, 수평선 k가 0과 4 사이일 때 네 교점을 갖는다.</desc>
+  <desc id="desc">원문 함수에서 유도한 K(x)의 구간별 함수 그래프. x&lt;0에서는 K(x)=-8x, x≥0에서는 K(x)=x(x-3)^2이며, 수평선 k가 0과 4 사이일 때 네 교점을 갖는다.</desc>
   <rect width="760" height="620" fill="#fff"/>
   <g font-family="Arial, Noto Sans KR, sans-serif" fill="#111">
     <text x="380" y="30" font-size="22" font-weight="700" text-anchor="middle">f(x)+|f(x)+x|=7x+k</text>
@@ -339,11 +340,10 @@ function specialSvg(row) {
       <text x="14" y="72" font-size="14">f(x)+x의 부호는</text><text x="14" y="96" font-size="14">x의 부호와 같다.</text>
       <text x="14" y="138" font-size="14" fill="#b91c1c">x&lt;0:</text><text x="14" y="162" font-size="14">−x=7x+k</text><text x="14" y="186" font-size="14" fill="#b91c1c">K(x)=−8x</text>
       <text x="14" y="232" font-size="14" fill="#1d4ed8">x≥0:</text><text x="14" y="256" font-size="14">x(x−3)²=k</text>
-      <text x="14" y="302" font-size="14" fill="#15803d">0&lt;k&lt;4</text><text x="14" y="326" font-size="14">negative branch 1개</text><text x="14" y="350" font-size="14">nonnegative branch 3개</text>
+      <text x="14" y="302" font-size="14" fill="#15803d">0&lt;k&lt;4</text><text x="14" y="326" font-size="14">음수 구간의 교점 1개</text><text x="14" y="350" font-size="14">0 이상인 구간의 교점 3개</text>
       <text x="90" y="378" text-anchor="middle" font-size="16" font-weight="700" fill="#166534">서로 다른 네 실근</text>
     </g>
     <text x="380" y="570" text-anchor="middle" font-size="17" font-weight="700" fill="#166534">정답 범위: 0&lt;k&lt;4</text>
-    <text x="380" y="596" text-anchor="middle" font-size="12" fill="#64748b">source-bound repaired visual · piecewise geometry and root count are explicit</text>
   </g>
 </svg>`;
   }
@@ -387,7 +387,12 @@ function targetSvgText(row) {
   const current = fs.readFileSync(row.assetPath, 'utf8');
   const special = specialSvg(row);
   if (special) return special;
-  return current.includes('source-bound 텍스트 카드') ? sourceCard(row) : sanitizeExistingSvg(current);
+  return isSourceCard(current) ? sourceCard(row) : sanitizeExistingSvg(current);
+}
+
+function isSourceCard(svg) {
+  return /\bdata-visual-kind="source-bound-text-card-v1"/.test(svg)
+    || svg.includes('source-bound 텍스트 카드');
 }
 
 function textNodes(svg) {
@@ -453,7 +458,7 @@ function lint(rows) {
     const svg = fs.readFileSync(row.assetPath, 'utf8');
     const texts = textNodes(svg);
     const allText = texts.join(' ');
-    const isCard = svg.includes('source-bound 텍스트 카드');
+    const isCard = isSourceCard(svg);
     const sourceSolution = normalizeForParity(row.q.solution);
     const observed = normalizeForParity(allText);
     const solutionParity = isCard
@@ -469,16 +474,12 @@ function lint(rows) {
       const panelHeight = Number(svg.match(/<rect x="18" y="82" width="350" height="([\d.]+)"/)?.[1] ?? NaN);
       const conclusionTop = Number(svg.match(/<rect x="18" y="([\d.]+)" width="724" height="48"/)?.[1] ?? NaN);
       const contentYs = [...svg.matchAll(/<text x="(?:34|398)" y="([\d.]+)" font-size="(?:14|15)"/g)].map((m) => Number(m[1])).filter((n) => n >= 140);
-      const footerYs = [...svg.matchAll(/<text [^>]*y="([\d.]+)"[^>]*font-size="11"/g)].map((m) => Number(m[1]));
       const panelBottom = 82 + panelHeight;
-      const conclusionBottom = conclusionTop + 48;
       const contentBottom = contentYs.length ? Math.max(...contentYs) : 0;
-      const footerTop = footerYs.length ? Math.min(...footerYs) : 0;
       if (!Number.isFinite(panelHeight) || !Number.isFinite(conclusionTop)) issues.push('layout_contract_missing_geometry');
       else {
         if (contentBottom > panelBottom - 24) issues.push('layout_content_bottom_padding');
         if (conclusionTop < panelBottom + 20) issues.push('layout_conclusion_gap');
-        if (footerTop && footerTop < conclusionBottom + 28) issues.push('layout_footer_gap');
       }
     }
     if (!/^\s*<svg\b/.test(svg)) issues.push('missing_svg_root');
@@ -489,6 +490,8 @@ function lint(rows) {
     if (banned.test(allText) || /n따라서|n조건 정리|cases:|\bxmid\b|&/.test(allText)) issues.push('raw_latex_or_escape');
     if (isCard && !solutionParity) issues.push('solution_text_parity');
     if (isCard && !fractionParity) issues.push('fraction_fact_parity');
+    const language = validateSvgStudentLanguage(svg, { assetRef: row.assetRel });
+    if (language.status !== 'PASS') issues.push(...language.errors.map((error) => error.code + (error.token ? `:${error.token}` : '')));
     results.push({
       asset: row.assetRel,
       examId: row.examId,
@@ -526,8 +529,14 @@ function lint(rows) {
 function runGenerate() {
   const rows = targetQuestions();
   if (rows.length !== 74) throw new Error(`Expected 74 target SVGs, found ${rows.length}`);
-  for (const row of rows) fs.writeFileSync(row.assetPath, targetSvgText(row), 'utf8');
-  console.log(JSON.stringify({ generated: rows.length, sourceCards: rows.filter((r) => fs.readFileSync(r.assetPath, 'utf8').includes('source-bound 텍스트 카드')).length }, null, 2));
+  const outputs = rows.map((row) => ({ row, svg: targetSvgText(row) }));
+  const failures = outputs.flatMap(({ row, svg }) => {
+    const result = validateSvgStudentLanguage(svg, { assetRef: row.assetRel });
+    return result.status === 'PASS' ? [] : result.errors.map((error) => `${row.assetRel}:${error.code}${error.token ? `:${error.token}` : ''}`);
+  });
+  if (failures.length) throw new Error(`SVG_STUDENT_LANGUAGE_GATE_FAIL:${failures.join(',')}`);
+  for (const { row, svg } of outputs) fs.writeFileSync(row.assetPath, svg, 'utf8');
+  console.log(JSON.stringify({ generated: rows.length, sourceCards: rows.filter((r) => isSourceCard(fs.readFileSync(r.assetPath, 'utf8'))).length }, null, 2));
 }
 
 function runLint() {
@@ -639,8 +648,12 @@ function runFactParity() {
   if (report.specialVisualLocalFactParity === 'FAIL' || report.retainedExisting.localSourceFactParity === 'FAIL') process.exitCode = 1;
 }
 
-const command = process.argv[2] ?? 'lint';
-if (command === 'generate') runGenerate();
-else if (command === 'lint') runLint();
-else if (command === 'fact-parity') runFactParity();
-else throw new Error(`Unknown command: ${command}`);
+export { sourceCard, isSourceCard, specialSvg };
+
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const command = process.argv[2] ?? 'lint';
+  if (command === 'generate') runGenerate();
+  else if (command === 'lint') runLint();
+  else if (command === 'fact-parity') runFactParity();
+  else throw new Error(`Unknown command: ${command}`);
+}

@@ -69,6 +69,7 @@ class SolutionQualityTests(unittest.TestCase):
         spec = {
             "version": "0.1",
             "type": "circle_geometry",
+            "title": "원과 접선의 수직 관계",
             "width": 300,
             "height": 300,
             "xRange": [-5, 5],

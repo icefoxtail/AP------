@@ -203,6 +203,7 @@ class Phase3Tests(unittest.TestCase):
         visual_dir.mkdir(parents=True)
         spec = {
             "version": "0.1", "type": "simple_function_graph",
+            "title": "일차함수의 그래프",
             "width": 240, "height": 240, "xRange": [-3, 3], "yRange": [-3, 3],
             "curves": [{"points": [{"x": -3, "y": -1}, {"x": 0, "y": 0}, {"x": 3, "y": 1}]}],
         }

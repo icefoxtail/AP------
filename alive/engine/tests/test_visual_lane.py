@@ -28,6 +28,7 @@ class VisualLaneTests(unittest.TestCase):
     def spec() -> dict:
         return {
             "type": "coordinate_plane",
+            "title": "좌표평면에서 두 점을 잇는 선분",
             "width": 240,
             "height": 240,
             "xRange": [-3, 3],
