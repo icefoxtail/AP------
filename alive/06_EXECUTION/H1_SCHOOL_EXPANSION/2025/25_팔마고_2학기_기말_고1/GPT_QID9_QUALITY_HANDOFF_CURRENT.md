@@ -1,3 +1,22 @@
+# CURRENT — q17 SOURCE LOCK·9문항 AUTHOR 완료 / 다음 q18 (2026-10-15)
+
+- 브랜치 `work/alive-25-palma-h1-2final-qid9`, 부모 HEAD `de80b864a21bb565934b8c88c3396112b50c3a0e`. **q17 A1~C3 신규 9 UID, 누적 153/207**, firstMissing **q18**. q01~q16 144개 UID 내용·원본 시험지·기존 유사문항 불변.
+- SOURCE LOCK PASS: 원본 Git Blob `0d12b75e824ab47f08fc3b5a6180be595f882c6e`, raw-byte SHA-256 `ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91`, qid_v1 `qid_v1_11c5032f8271bb046040f8c07d6592b45deb004c68e7bea49976813b991e2698`. 원본 q17은 조각함수 일대일대응에서 `a>0, b≥1, b+c=a(b-1)^2-a-3`; 최소 t=1, `a+c=-4` (①)와 일치. q17 기존 UID **0**.
+- Primary **H1-RPM-257** (2022 공통수학2 / 함수의 성질 / 일대일함수), PT `PT_ONE_TO_ONE_BIJECTION`, TPL `TPL_BIJECTION_JUDGMENT_CONDITION` DIRECT_ACTIVE. H1-RPM-255/256 역함수 직접구하기/대칭과 구별해 실제 주판단으로 독립 선택. 기존 Canonical ACTIVE CrossConcept `CC_QUADRATIC_FUNCTION`, `CC_QUADRATIC_EQUATION`, `CC_INVERSE_FUNCTION` 재사용, 신규 EXT-CROSS **0**. Canonical Condition `COND_RANGE`, `COND_POSITIVE`, `COND_NEGATIVE` UID별 사용.
+- **정답 번호 ①2 ②2 ③2 ④2 ⑤1**; 가로·세로 모두 중복0, q16 패턴 미반복, 보기 45개·오답 계산 36경로 결속. `ANSWER_DISTRIBUTION_GATE=PASS`.
+
+| | 1 | 2 | 3 |
+|---|---|---|---|
+| A | ② | ③ | ① |
+| B | ⑤ | ① | ④ |
+| C | ③ | ④ | ② |
+
+- 문제 SVG 9개 EXEMPT. 해설 SVG **B2/B3/C1/C2/C3 5개** Git 실파일 제작·SHA256 결속; 다른 4개 EXEMPT. Python SymPy 경계·좌표 수치 검증 및 SVG 정적 구조검사는 AUTHOR 범위에서 실시. **독립검수, 실제 Browser, Consumer/index, 학생 등록, main 병합 = NOT_RUN**. 후보 제작 마감이지 출시 완료나 R1/R2/R3 PASS는 아님.
+- 이번 파일: `GPT_QID9_Q17_SOURCE_LOCK.json`, `GPT_QID9_Q17_PREFLIGHT.json`, `GPT_QID9_Q17_CREATE_DRAFT.json`, `GPT_QID9_Q17_AUTHOR_BLUEPRINT.json`, `GPT_QID9_Q17_AUTHOR_RECEIPT.json`, `GPT_QID9_Q17_VISUAL_NUMERIC_EVIDENCE.json`, `assets/q17/*-solution.svg`. Meta Registry는 기존 144개 deep equal 보호 + 신규 9개 append; Progress 153/207.
+- 다음 q18에서 원본 ID·그림·수학 SOURCE LOCK부터 별도 시작한다. 기존 q17·q01~q16 정상 제작물을 재작성하지 않는다.
+
+---
+
 # CURRENT — q16 AUTHOR 제작·자기점검 완료 / 다음 q17 (2026-10-15)
 
 - 브랜치 `work/alive-25-palma-h1-2final-qid9`, 기준 부모 HEAD `2d5a3f18412a995d7d17f29be8a02c9a15d778c0`. q16 A1~C3 9 신규 UID (144/207); q01~q15와 원본·기존 유사문항 불변. 원본 q16 UID `qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7` VERIFIED.

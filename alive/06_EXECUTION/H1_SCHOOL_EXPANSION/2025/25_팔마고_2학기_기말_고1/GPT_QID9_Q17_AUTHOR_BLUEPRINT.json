@@ -1,0 +1,730 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q17_AUTHOR_BLUEPRINT_v1",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 17,
+  "sourceUid": "qid_v1_11c5032f8271bb046040f8c07d6592b45deb004c68e7bea49976813b991e2698",
+  "sourceLock": "GPT_QID9_Q17_SOURCE_LOCK.json",
+  "invariant": "실수 전체의 조각함수가 역함수를 갖기 위한 조각별 일대일성 + 두 치역의 정확한 접합; 원본 q17의 경계 최솟값·미지수 결정",
+  "rpmSearch": {
+    "master": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "crosswalk": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "compared": [
+      "H1-RPM-255: 역함수/역함수 구하기 (secondary only B2/C3)",
+      "H1-RPM-256: 역함수/그래프 대칭 (not a main decisive step)",
+      "H1-RPM-257: 함수의 성질/일대일함수 (actual primary match)",
+      "H1-RPM-258: 항등함수·상수함수 (not applicable)"
+    ],
+    "primary": "H1-RPM-257",
+    "status": "DIRECT_ACTIVE",
+    "pt": "PT_ONE_TO_ONE_BIJECTION",
+    "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION"
+  },
+  "canonicalConceptSearch": {
+    "path": "archive/data/meta-foundation/compiled/concept_registry.json",
+    "count": 91,
+    "reused": [
+      "CC_QUADRATIC_FUNCTION",
+      "CC_QUADRATIC_EQUATION",
+      "CC_INVERSE_FUNCTION"
+    ],
+    "newKeys": [],
+    "reason": "모든 추가 풀이 단계가 기존 ACTIVE CrossConcept 정의로 표현됨. CC_ONE_TO_ONE_FUNCTION은 RPM Primary L4와 의미 중복이라 배제."
+  },
+  "conditionSearch": {
+    "registry": "archive/data/meta-foundation/canonical/condition_registry.json",
+    "activeCount": 6,
+    "used": [
+      "COND_RANGE",
+      "COND_POSITIVE",
+      "COND_NEGATIVE"
+    ]
+  },
+  "extSearchScope": [
+    "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/geumdang-2025-2final-q06-registry.json",
+    "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/geumdang-2025-2final-qid9-registry.json",
+    "archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/extension-l4/palma-2025-2final-q09-registry.json"
+  ],
+  "newCrossConceptRegistry": "NOT_REQUIRED_CANONICAL_EXISTING_ACTIVE_COVERS_ALL",
+  "answerGrid": [
+    [
+      "②",
+      "③",
+      "①"
+    ],
+    [
+      "⑤",
+      "①",
+      "④"
+    ],
+    [
+      "③",
+      "④",
+      "②"
+    ]
+  ],
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q17-A1",
+      "slot": "A1",
+      "mode": "STRICT_VARIANT",
+      "studentStem": "실수 전체의 집합을 정의역과 공역으로 하는 함수 $f(x)=\\begin{cases}x+c&(x\\lt b)\\\\2(x-2)^2-1&(x\\ge b)\\end{cases}$의 역함수가 존재하도록 하는 $b$의 최솟값을 $t$라 한다. $b=t$일 때 $c$의 값은?",
+      "choices": [
+        "$7$",
+        "$-3$",
+        "$0$",
+        "$-2$",
+        "$-1$"
+      ],
+      "answer": "②",
+      "answerValue": "$-3$",
+      "solution": "$x\\lt b$에서 $x+c$의 치역은 $(-\\infty,b+c)$이다.\n둘째 조각 $2(x-2)^2-1$은 $x=2$를 기준으로 감소하다 증가한다. $x\\ge b$에서 일대일이 되려면 $b\\ge2$이다.\n실수 전체로 일대일대응하려면 두 치역이 겹치지 않으면서 빈틈도 없어야 하므로 오른쪽 조각의 시작값과 왼쪽 치역의 끝값이 같아야 한다.\n$b=2$일 때 이 조건은 $2+c=2(2-2)^2-1=-1$이므로 $c=-3$이다.\n이때 치역은 각각 $(-\\infty,-1)$, $[-1,\\infty)$로 이어져 실제로 역함수가 존재한다. 따라서 $t=2$이다.\n따라서 정답은 ②이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "오른쪽 이차식의 꼭짓점과 단조 구간을 찾아 왼쪽 직선과 일대일대응 가능한 접합 경계를 결정한다."
+      },
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentBucket": 2,
+      "levelReason": "포물선 꼭짓점의 오른쪽에서만 일대일인 사실과 두 치역의 접합을 판단한다.",
+      "bucketReason": "경계 한 번과 등식 하나로 끝나지만 분기 포함 여부를 확인해야 한다.",
+      "studentMentalPath": "꼭짓점 x=2 확인 → b의 최소 2 → 두 치역 접합 → c 결정",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionSvgPath": null,
+      "solutionSvgBlob": null,
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$7$",
+          "errorCalculation": "$b=0$도 가능하다고 하여 $c=2(0-2)^2-1=7$로 계산함"
+        },
+        {
+          "index": "③",
+          "value": "$0$",
+          "errorCalculation": "$b=1$을 경계로 오인하여 $1+c=2(1-2)^2-1=1$, $c=0$으로 계산함"
+        },
+        {
+          "index": "④",
+          "value": "$-2$",
+          "errorCalculation": "$b=3$을 최소라고 오인하여 $3+c=2(3-2)^2-1=1$, $c=-2$로 계산함"
+        },
+        {
+          "index": "⑤",
+          "value": "$-1$",
+          "errorCalculation": "올바른 경계 $b=2$에서 왼쪽 경계값 $2+c$ 대신 $c$만 놓아 $c=-1$로 계산함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN",
+      "answerDistributionGate": "PASS"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q17-A2",
+      "slot": "A2",
+      "mode": "STRICT_VARIANT",
+      "studentStem": "실수 전체의 집합을 정의역과 공역으로 하는 함수 $f(x)=\\begin{cases}2x+c&(x\\lt b)\\\\3(x-3)^2-4&(x\\ge b)\\end{cases}$의 역함수가 존재하도록 하는 $b$의 최솟값을 $t$라 한다. $b=t$일 때 $c$의 값은?",
+      "choices": [
+        "$-5$",
+        "$-7$",
+        "$-10$",
+        "$23$",
+        "$-9$"
+      ],
+      "answer": "③",
+      "answerValue": "$-10$",
+      "solution": "$x\\lt b$에서 $2x+c$의 치역은 $(-\\infty,2b+c)$이다.\n둘째 조각의 꼭짓점은 $(3,-4)$이고 $x\\ge3$에서 증가한다. 역함수의 존재를 위해 $b\\ge3$이어야 하며 최솟값 후보는 $3$이다.\n$b=3$에서 오른쪽 조각의 시작값은 $-4$이다. 두 치역이 실수 전체를 빈틈없이 나누려면 $2\\cdot3+c=-4$이다.\n따라서 $c=-10$이고, 실제 두 치역은 $(-\\infty,-4)$와 $[-4,\\infty)$여서 역함수가 존재한다. 그러므로 $t=3$이다.\n따라서 정답은 ③이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "오른쪽 이차식의 꼭짓점과 단조 구간을 찾아 왼쪽 직선과 일대일대응 가능한 접합 경계를 결정한다."
+      },
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentBucket": 2,
+      "levelReason": "기울기가 2인 왼쪽 조각의 상한과 오른쪽 이차식의 꼭짓점 값을 정확히 연결한다.",
+      "bucketReason": "배율 2를 접합식에 넣어야 하지만 경우 분기는 없다.",
+      "studentMentalPath": "꼭짓점 x=3 → 최솟값 b=3 → 왼쪽 2b+c와 오른쪽 -4 일치",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionSvgPath": null,
+      "solutionSvgBlob": null,
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$-5$",
+          "errorCalculation": "$b=2$도 일대일이라고 오인해 $4+c=3(2-3)^2-4=-1$에서 $c=-5$라고 함"
+        },
+        {
+          "index": "②",
+          "value": "$-7$",
+          "errorCalculation": "왼쪽 조각 $2x+c$를 $x+c$로 잘못 읽어 $3+c=-4$, $c=-7$로 계산함"
+        },
+        {
+          "index": "④",
+          "value": "$23$",
+          "errorCalculation": "$b=0$을 최솟값으로 보아 $c=3(0-3)^2-4=23$이라 함"
+        },
+        {
+          "index": "⑤",
+          "value": "$-9$",
+          "errorCalculation": "$b=4$를 최솟값으로 잘못 택해 $8+c=3(4-3)^2-4=-1$, $c=-9$로 계산함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN",
+      "answerDistributionGate": "PASS"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q17-A3",
+      "slot": "A3",
+      "mode": "STRICT_VARIANT",
+      "studentStem": "실수 전체의 집합을 정의역과 공역으로 하는 함수 $f(x)=\\begin{cases}-2x+c&(x\\lt b)\\\\-3(x+1)^2+2&(x\\ge b)\\end{cases}$의 역함수가 존재하도록 하는 $b$의 최솟값을 $t$라 한다. $b=t$일 때 $c$의 값은?",
+      "choices": [
+        "$0$",
+        "$-1$",
+        "$2$",
+        "$4$",
+        "$-8$"
+      ],
+      "answer": "①",
+      "answerValue": "$0$",
+      "solution": "$x\\lt b$에서 $-2x+c$는 감소하며 치역은 $(-2b+c,\\infty)$이다.\n둘째 조각 $-3(x+1)^2+2$도 $x\\ge b$에서 감소해야 일대일이므로 꼭짓점의 오른쪽인 $b\\ge-1$이어야 한다.\n두 조각은 감소하는 방향으로 실수 전체를 채우므로 오른쪽 조각의 최댓값과 왼쪽 조각의 하한이 같아야 한다.\n$b=-1$일 때 왼쪽 경계값은 $-2(-1)+c=2+c$이고 오른쪽 시작값은 $-3(0)^2+2=2$이다.\n$2+c=2$에서 $c=0$이다. 이때 두 치역이 $(-\\infty,2]$, $(2,\\infty)$를 이루므로 역함수가 실제로 존재한다.\n따라서 정답은 ①이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "오른쪽 이차식의 꼭짓점과 단조 구간을 찾아 왼쪽 직선과 일대일대응 가능한 접합 경계를 결정한다."
+      },
+      "conditionKeys": [
+        "COND_RANGE",
+        "COND_NEGATIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "levelReason": "두 조각이 모두 감소하는 경우에도 치역을 위·아래로 정확히 접합해야 함을 사용한다.",
+      "bucketReason": "양의 계수 포물선과 달리 열린 하한·닫힌 상한을 뒤집어 해석해야 한다.",
+      "studentMentalPath": "오른쪽 아래로 열린 포물선의 꼭짓점 -1 → 두 감소 치역 접합 → c=0",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionSvgPath": null,
+      "solutionSvgBlob": null,
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "$-1$",
+          "errorCalculation": "$b=0$을 꼭짓점으로 잘못 판정해 $c=-3(0+1)^2+2=-1$이라 함"
+        },
+        {
+          "index": "③",
+          "value": "$2$",
+          "errorCalculation": "왼쪽 경계식 $-2(-1)+c$에서 $-2(-1)$을 빼먹어 $c=2$로 계산함"
+        },
+        {
+          "index": "④",
+          "value": "$4$",
+          "errorCalculation": "$-2(-1)=-2$라고 부호를 틀려 $-2+c=2$, $c=4$로 계산함"
+        },
+        {
+          "index": "⑤",
+          "value": "$-8$",
+          "errorCalculation": "$b=1$을 경계로 오인해 $-2+c=-3(1+1)^2+2=-10$, $c=-8$이라 함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN",
+      "answerDistributionGate": "PASS"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q17-B1",
+      "slot": "B1",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 전체의 집합을 정의역과 공역으로 하는 함수 $f(x)=\\begin{cases}x+c&(x\\lt 3)\\\\(x-1)^2+p&(x\\ge 3)\\end{cases}$의 역함수가 존재하고 $f(4)=10$이다. 상수 $c$의 값은? (단, $c,p$는 실수이다.)",
+      "choices": [
+        "$6$",
+        "$-2$",
+        "$7$",
+        "$5$",
+        "$2$"
+      ],
+      "answer": "⑤",
+      "answerValue": "$2$",
+      "solution": "$x\\lt3$에서 왼쪽 치역은 $(-\\infty,3+c)$이다. 오른쪽 조각 $(x-1)^2+p$는 $x\\ge3$에서 증가하므로 치역은 $[4+p,\\infty)$이다.\n$4\\ge3$이므로 $f(4)=(4-1)^2+p=9+p=10$에서 $p=1$이다.\n역함수가 존재하려면 두 치역이 겹치거나 비어 있지 않도록 $3+c=4+p$이어야 한다.\n$3+c=5$이므로 $c=2$이다. 두 치역은 $(-\\infty,5)$와 $[5,\\infty)$로 정확히 이어진다.\n따라서 정답은 ⑤이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "오른쪽 이차식의 꼭짓점과 단조 구간을 찾아 왼쪽 직선과 일대일대응 가능한 접합 경계를 결정한다."
+      },
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "levelReason": "조건 f(4)=10이 오른쪽 가지에 속함을 판정하고 접합식에 연결한다.",
+      "bucketReason": "값 조건으로 p를 먼저 정한 다음 별도 치역 경계 등식을 적용한다.",
+      "studentMentalPath": "x=4 가지 판정 → p 계산 → 경계 x=3에서 치역 접합 → c",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionSvgPath": null,
+      "solutionSvgBlob": null,
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$6$",
+          "errorCalculation": "$x=4$에도 왼쪽 조각을 적용해 $4+c=10$으로 놓고 $c=6$을 구함"
+        },
+        {
+          "index": "②",
+          "value": "$-2$",
+          "errorCalculation": "오른쪽 조각의 시작값 $(3-1)^2+p=5$ 대신 꼭짓점 값 $p=1$을 사용해 $3+c=1$, $c=-2$라 함"
+        },
+        {
+          "index": "③",
+          "value": "$7$",
+          "errorCalculation": "$(4-1)^2=9$를 $4$로 오계산하여 $p=6$, $3+c=4+6$에서 $c=7$이라 함"
+        },
+        {
+          "index": "④",
+          "value": "$5$",
+          "errorCalculation": "두 치역 경계에서 왼쪽 $3+c$를 $c$로 놓아 $c=4+p=5$라 함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN",
+      "answerDistributionGate": "PASS"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q17-B2",
+      "slot": "B2",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 전체의 집합을 정의역과 공역으로 하는 함수 $f(x)=\\begin{cases}x+c&(x\\lt b)\\\\3(x-1)^2-2&(x\\ge b)\\end{cases}$의 역함수가 존재하도록 하는 $b$의 최솟값을 $t$라 한다. $b=t$일 때 $f^{-1}(10)$의 값은?",
+      "choices": [
+        "$3$",
+        "$-1$",
+        "$1$",
+        "$2$",
+        "$4$"
+      ],
+      "answer": "①",
+      "answerValue": "$3$",
+      "solution": "오른쪽 조각 $3(x-1)^2-2$가 일대일이려면 $b\\ge1$이다. 왼쪽은 증가하는 직선이므로 두 치역을 맞추면 $b=1$을 실현할 수 있다.\n$b=t=1$에서 왼쪽 경계값 $1+c$와 오른쪽 시작값 $-2$가 같아 $c=-3$이다.\n따라서 왼쪽 조각의 치역은 $(-\\infty,-2)$, 오른쪽 치역은 $[-2,\\infty)$이다.\n$f^{-1}(10)$은 $f(x)=10$의 유일한 해이다. $10\\ge-2$이므로 오른쪽 식을 이용한다.\n$3(x-1)^2-2=10$, $(x-1)^2=4$이므로 $x=3$ 또는 $x=-1$이다.\n오른쪽 조각의 정의역 $x\\ge1$을 만족하는 해는 $x=3$뿐이다. 따라서 $f^{-1}(10)=3$이다.\n따라서 정답은 ①이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION",
+        "CC_INVERSE_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "오른쪽 이차식의 꼭짓점과 단조 구간을 찾아 왼쪽 직선과 일대일대응 가능한 접합 경계를 결정한다.",
+        "CC_QUADRATIC_EQUATION": "치역 경계 접합으로 나온 이차방정식의 모든 근을 구하고, 반드시 b의 허용 구간으로 걸러낸다.",
+        "CC_INVERSE_FUNCTION": "원래 함수의 목표 함숫값을 주는 원상을 각 조각에서 풀고 정의역에 맞는 유일한 역함숫값만 선택한다."
+      },
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "levelReason": "치역 접합 후 역함수의 입력을 원래 함수 방정식으로 되돌려 구간별 근을 선별한다.",
+      "bucketReason": "제곱방정식의 두 근 가운데 오른쪽 정의역에 속하는 근을 걸러야 한다.",
+      "studentMentalPath": "최소 경계 t=1 → c=-3 → f(x)=10의 두 해 → x≥1 선별",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q17/B2-solution.svg",
+      "solutionSvgBlob": "e5ea23a67ad7fe2f7577d4669df88cfa6a89d6ad",
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "$-1$",
+          "errorCalculation": "$(x-1)^2=4$의 해 $x=-1$을 구간 제한 $x\\ge1$ 없이 그대로 택함"
+        },
+        {
+          "index": "③",
+          "value": "$1$",
+          "errorCalculation": "$f(1)=-2$를 확인한 뒤 역함숫값 $f^{-1}(10)$도 $1$로 오인함"
+        },
+        {
+          "index": "④",
+          "value": "$2$",
+          "errorCalculation": "$\\sqrt4=2$에서 수평이동 $+1$을 빼먹어 $x=2$로 답함"
+        },
+        {
+          "index": "⑤",
+          "value": "$4$",
+          "errorCalculation": "$3(x-1)^2=12$를 풀 때 $x=(10+2)/3=4$로 놓아 제곱과 수평이동을 누락함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN",
+      "answerDistributionGate": "PASS"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q17-B3",
+      "slot": "B3",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 전체의 집합을 정의역과 공역으로 하는 함수 $f(x)=\\begin{cases}-x+c&(x\\lt 4)\\\\-a(x-2)^2+2&(x\\ge 4)\\end{cases}$의 역함수가 존재하고 $f(5)=-7$이다. $a+c$의 값은? (단, $a\\gt0$)",
+      "choices": [
+        "$-3$",
+        "$-1$",
+        "$-5$",
+        "$3$",
+        "$7$"
+      ],
+      "answer": "④",
+      "answerValue": "$3$",
+      "solution": "$x\\lt4$에서 $-x+c$는 감소하며 치역은 $(-4+c,\\infty)$이다.\n$x\\ge4$에서 $-a(x-2)^2+2$는 $a>0$이므로 감소하며 치역은 $(-\\infty,-4a+2]$이다.\n$x=5$는 오른쪽 가지에 있으므로 $f(5)=-a(5-2)^2+2=-9a+2=-7$이다. 따라서 $a=1$이다.\n두 치역이 실수 전체를 빈틈없이 나누려면 $-4+c=-4a+2=-2$이어야 한다.\n따라서 $c=2$이고 $a+c=1+2=3$이다.\n따라서 정답은 ④이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "오른쪽 이차식의 꼭짓점과 단조 구간을 찾아 왼쪽 직선과 일대일대응 가능한 접합 경계를 결정한다."
+      },
+      "conditionKeys": [
+        "COND_RANGE",
+        "COND_NEGATIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 4,
+      "levelReason": "감소형 조각의 치역을 역순으로 붙이고 오른쪽 함수값 제약으로 a를 먼저 결정한다.",
+      "bucketReason": "부호가 바뀐 두 치역의 열린·닫힌 경계와 함수값 제약을 연쇄 적용한다.",
+      "studentMentalPath": "오른쪽 함수값 f(5)→a → 감소형 치역 경계 등식 → c → a+c",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q17/B3-solution.svg",
+      "solutionSvgBlob": "9ed68446bbcaa91eab8d88052eb981280c891951",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$-3$",
+          "errorCalculation": "$(5-2)^2$를 $5-2=3$으로 계산하여 $-3a+2=-7$에서 $a=3$, 이어 $-4+c=-10$으로 $c=-6$, $a+c=-3$을 얻음"
+        },
+        {
+          "index": "②",
+          "value": "$-1$",
+          "errorCalculation": "$a=1$까지 구하고 경계의 왼쪽 값 $-4+c$ 대신 $c$를 써서 $c=-2$, $a+c=-1$이라 함"
+        },
+        {
+          "index": "③",
+          "value": "$-5$",
+          "errorCalculation": "왼쪽 식을 $x+c$로 잘못 사용해 $4+c=-2$에서 $c=-6$, $a+c=-5$라 함"
+        },
+        {
+          "index": "⑤",
+          "value": "$7$",
+          "errorCalculation": "오른쪽 경계값 $f(4)=-2$ 대신 꼭짓점 값 $2$를 놓고 $-4+c=2$에서 $c=6$, $a+c=7$이라 함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN",
+      "answerDistributionGate": "PASS"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q17-C1",
+      "slot": "C1",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 전체의 집합을 정의역과 공역으로 하는 함수 $f(x)=\\begin{cases}x+1&(x\\lt b)\\\\(x-2)^2-3&(x\\ge b)\\end{cases}$의 역함수가 존재할 때, 실수 $b$의 값은?",
+      "choices": [
+        "$0$",
+        "$2$",
+        "$5$",
+        "$3$",
+        "$-5$"
+      ],
+      "answer": "③",
+      "answerValue": "$5$",
+      "solution": "첫째 조각 $x+1$은 증가하고, 둘째 조각 $(x-2)^2-3$은 $x=2$에서 방향이 바뀐다.\n오른쪽 조각에서 일대일이 되려면 $b\\ge2$이다. 이때 두 치역은 $(-\\infty,b+1)$과 $[(b-2)^2-3,\\infty)$이다.\n실수 전체로의 일대일대응 조건은 두 치역의 경계가 같다는 것이므로 $b+1=(b-2)^2-3$이다.\n$b+4=b^2-4b+4$에서 $b^2-5b=0$, $b(b-5)=0$이다.\n따라서 $b=0$ 또는 $b=5$이나, 단조 조건 $b\\ge2$를 만족하는 것은 $b=5$뿐이다.\n실제로 $b=5$일 때 양쪽 치역은 $(-\\infty,6)$과 $[6,\\infty)$여서 역함수가 존재한다.\n따라서 정답은 ③이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "오른쪽 이차식의 꼭짓점과 단조 구간을 찾아 왼쪽 직선과 일대일대응 가능한 접합 경계를 결정한다.",
+        "CC_QUADRATIC_EQUATION": "치역 경계 접합으로 나온 이차방정식의 모든 근을 구하고, 반드시 b의 허용 구간으로 걸러낸다."
+      },
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 4,
+      "levelReason": "치역 접합식의 두 근을 구한 뒤 포물선 단조 정의역 조건으로 한 근을 제거한다.",
+      "bucketReason": "대수적으로 가능한 경계 둘 중 하나가 함수 전체의 일대일성을 깨는 함정이다.",
+      "studentMentalPath": "b≥2 → 치역 접합 방정식 → b=0/5 → 정의역 필터",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "REQUIRED",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q17/C1-solution.svg",
+      "solutionSvgBlob": "b16ec4143efed904974d6624ac4715c2ca2d1b6a",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$0$",
+          "errorCalculation": "경계식 $b(b-5)=0$의 다른 해 $b=0$을 오른쪽 포물선의 일대일 조건 $b\\ge2$ 없이 받아들임"
+        },
+        {
+          "index": "②",
+          "value": "$2$",
+          "errorCalculation": "일대일이 되려면 꼭짓점에서 시작해야 한다고 오인하여 $b=2$만 대입하고 두 치역 접합 등식을 생략함"
+        },
+        {
+          "index": "④",
+          "value": "$3$",
+          "errorCalculation": "$(b-2)^2$를 $b^2-2b+4$로 잘못 전개해 $b+4=b^2-2b+4$, $b=3$이라 함"
+        },
+        {
+          "index": "⑤",
+          "value": "$-5$",
+          "errorCalculation": "$b^2-5b=0$의 인수분해를 $b(b+5)=0$으로 잘못 하여 $b=-5$라 함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN",
+      "answerDistributionGate": "PASS"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q17-C2",
+      "slot": "C2",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 전체의 집합을 정의역과 공역으로 하는 함수 $f(x)=\\begin{cases}x+c&(x\\lt b)\\\\a(x-2)^2-2a-1&(x\\ge b)\\end{cases}$의 역함수가 존재하고 $f(0)=-6$, $f(4)=3$이다. 실수 $b$의 값은? (단, $a\\gt0$)",
+      "choices": [
+        "$\\dfrac{3}{2}$",
+        "$2$",
+        "$4$",
+        "$3$",
+        "$1$"
+      ],
+      "answer": "④",
+      "answerValue": "$3$",
+      "solution": "오른쪽은 $a>0$인 포물선이고 꼭짓점의 $x$좌표는 $2$이다. 따라서 오른쪽 조각이 일대일이려면 $b\\ge2$이다.\n$0<b$이므로 $f(0)$은 왼쪽 식의 값 $c$이고 $c=-6$이다.\n만약 $b>4$이면 $f(4)=4+c=-2$가 되어 조건 $3$에 어긋난다. 따라서 $2\\le b\\le4$이다.\n그러므로 $f(4)=a(4-2)^2-2a-1=2a-1=3$이고 $a=2$이다.\n두 치역이 빈틈없이 이어지려면 $b+c=a(b-2)^2-2a-1$이다. $a=2$, $c=-6$을 넣으면 $b-6=2(b-2)^2-5$이다.\n$b-1=2b^2-8b+8$이므로 $2b^2-9b+9=0$, $(2b-3)(b-3)=0$이다.\n$b=\\dfrac32$ 또는 $b=3$인데, $b\\ge2$를 만족하는 값은 $3$뿐이다.\n이때 왼쪽 치역 $(-\\infty,-3)$, 오른쪽 치역 $[-3,\\infty)$가 실수 전체를 이룬다.\n따라서 정답은 ④이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "오른쪽 이차식의 꼭짓점과 단조 구간을 찾아 왼쪽 직선과 일대일대응 가능한 접합 경계를 결정한다.",
+        "CC_QUADRATIC_EQUATION": "치역 경계 접합으로 나온 이차방정식의 모든 근을 구하고, 반드시 b의 허용 구간으로 걸러낸다."
+      },
+      "conditionKeys": [
+        "COND_RANGE",
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "levelReason": "f(0), f(4)의 서로 다른 가지 소속을 먼저 판단하여 계수 a,c를 정하고 경계방정식의 허용 해를 판정한다.",
+      "bucketReason": "입력 4의 조각 소속 자체를 경우로 검사해야 하며 두 근의 도메인 필터가 필수다.",
+      "studentMentalPath": "b≥2 → f0에서 c → f4의 가지 검증→a → 경계 이차식 → b 해 필터",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "REQUIRED",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q17/C2-solution.svg",
+      "solutionSvgBlob": "3d055182c549f8145a2ee45c6641722cde20842d",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$\\dfrac{3}{2}$",
+          "errorCalculation": "접합식의 해 $b=\\dfrac32$를 구간 조건 $b\\ge2$ 없이 선택함"
+        },
+        {
+          "index": "②",
+          "value": "$2$",
+          "errorCalculation": "오른쪽 조각이 증가하려면 무조건 $b=2$라고 단정하고 실제 경계 접합 방정식을 풀지 않음"
+        },
+        {
+          "index": "③",
+          "value": "$4$",
+          "errorCalculation": "주어진 $f(4)$의 입력 $4$를 경계 $b$로 혼동해 $b=4$로 정하고 치역의 상한/하한 불일치를 확인하지 않음"
+        },
+        {
+          "index": "⑤",
+          "value": "$1$",
+          "errorCalculation": "$2b^2-9b+9$를 $(2b-3)(b-1)$로 잘못 인수분해하여 $b=1$을 답으로 선택함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN",
+      "answerDistributionGate": "PASS"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q17-C3",
+      "slot": "C3",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "실수 전체의 집합을 정의역과 공역으로 하는 함수 $f(x)=\\begin{cases}-x+1&(x\\lt b)\\\\-2(x-1)^2+p&(x\\ge b)\\end{cases}$의 역함수가 존재하고 $f(3)=-7$일 때, $f^{-1}(-17)$의 값은? (단, $b,p$는 실수이다.)",
+      "choices": [
+        "$-2$",
+        "$4$",
+        "$18$",
+        "$10$",
+        "$1+\\dfrac{\\sqrt{34}}{2}$"
+      ],
+      "answer": "②",
+      "answerValue": "$4$",
+      "solution": "왼쪽 조각 $-x+1$은 감소하므로 오른쪽 조각도 감소하며 두 치역이 위아래로 이어져야 역함수가 존재한다.\n오른쪽 조각 $-2(x-1)^2+p$가 $x\\ge b$에서 감소하려면 $b\\ge1$이다.\n만약 $b>3$이라면 $f(3)=-3+1=-2$가 되어 주어진 $-7$과 다르다. 따라서 $1\\le b\\le3$이다.\n이제 $f(3)=-2(3-1)^2+p=-8+p=-7$이므로 $p=1$이다.\n치역 접합 조건은 $-b+1=-2(b-1)^2+1$이다. 따라서 $b=2(b-1)^2$이고 $2b^2-5b+2=(2b-1)(b-2)=0$이다.\n$b=\\dfrac12$ 또는 $2$인데 $b\\ge1$에서 $b=2$만 가능하다.\n$f^{-1}(-17)$을 구하려면 $f(x)=-17$을 푼다. 왼쪽 식은 $-x+1=-17$에서 $x=18$이지만 $x\\lt2$가 아니므로 제외한다.\n오른쪽 식은 $-2(x-1)^2+1=-17$이므로 $(x-1)^2=9$, $x=-2$ 또는 $x=4$이다.\n$x\\ge2$인 해는 $x=4$뿐이므로 $f^{-1}(-17)=4$이다.\n따라서 정답은 ②이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION",
+        "CC_INVERSE_FUNCTION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "오른쪽 이차식의 꼭짓점과 단조 구간을 찾아 왼쪽 직선과 일대일대응 가능한 접합 경계를 결정한다.",
+        "CC_QUADRATIC_EQUATION": "치역 경계 접합으로 나온 이차방정식의 모든 근을 구하고, 반드시 b의 허용 구간으로 걸러낸다.",
+        "CC_INVERSE_FUNCTION": "원래 함수의 목표 함숫값을 주는 원상을 각 조각에서 풀고 정의역에 맞는 유일한 역함숫값만 선택한다."
+      },
+      "conditionKeys": [
+        "COND_RANGE",
+        "COND_NEGATIVE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "levelReason": "주어진 f(3)으로 조각 소속을 확정한 뒤 경계이차식의 잘못된 근을 버리고 역함숫값의 양쪽 조각 해를 재검사한다.",
+      "bucketReason": "구간 소속 2회 판정, 역함수 존재, 경계방정식과 이차방정식 근 필터가 연동된다.",
+      "studentMentalPath": "감소·꼭짓점 → f3로 p → 경계 b 두 근 → 허용 b=2 → f(x)=-17 두 조각 검증",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "REQUIRED",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q17/C3-solution.svg",
+      "solutionSvgBlob": "776e8d29035a48d69e10ae2ce0a79929164ae32a",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$-2$",
+          "errorCalculation": "오른쪽 제곱방정식의 해 $-2,4$ 가운데 $x=-2$도 해당 조각에 속한다고 오인함"
+        },
+        {
+          "index": "③",
+          "value": "$18$",
+          "errorCalculation": "$-x+1=-17$에서 $x=18$을 구하고 왼쪽 정의역 $x\\lt2$를 무시함"
+        },
+        {
+          "index": "④",
+          "value": "$10$",
+          "errorCalculation": "$(x-1)^2=9$에서 제곱근을 취하지 않고 $x-1=9$로 놓아 $x=10$이라 함"
+        },
+        {
+          "index": "⑤",
+          "value": "$1+\\dfrac{\\sqrt{34}}{2}$",
+          "errorCalculation": "오른쪽 식의 상수 $+1$을 누락하여 $-2(x-1)^2=-17$로 풀고 $x=1+\\dfrac{\\sqrt{34}}2$를 얻음"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN",
+      "answerDistributionGate": "PASS"
+    }
+  ]
+}
