@@ -22,8 +22,8 @@ test('QID9 derived SVG receives deterministic title and description bindings wit
  assert.equal(validateSvgStudentLanguage(normalized,{assetRef:'derived/q07.svg'}).status,'PASS');
  assert.match(normalized,/role="img"/);
  assert.match(normalized,/aria-labelledby="qid9-ALITE-JEIL25-2FINAL-Q07-A1-solution-title qid9-ALITE-JEIL25-2FINAL-Q07-A1-solution-desc"/);
- assert.match(normalized,/<title id="qid9-ALITE-JEIL25-2FINAL-Q07-A1-solution-title">q07 A1 두 접선과 접점<\\/title>/);
- assert.match(normalized,/<desc id="qid9-ALITE-JEIL25-2FINAL-Q07-A1-solution-desc">외부점 P에서 원의 접점 T1 T2까지 그은 두 접선, 중심 C와 접점의 반지름 및 수직 관계<\\/desc>/);
+ assert.match(normalized,/<title id="qid9-ALITE-JEIL25-2FINAL-Q07-A1-solution-title">q07 A1 두 접선과 접점<\/title>/);
+ assert.match(normalized,/<desc id="qid9-ALITE-JEIL25-2FINAL-Q07-A1-solution-desc">외부점 P에서 원의 접점 T1 T2까지 그은 두 접선, 중심 C와 접점의 반지름 및 수직 관계<\/desc>/);
  assert.equal(normalized.match(/<rect[^>]*>/)[0],source.match(/<rect[^>]*>/)[0]);
  assert.equal(normalized.match(/<path[^>]*>/)[0],source.match(/<path[^>]*>/)[0]);
 });
