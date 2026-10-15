@@ -166,7 +166,7 @@ window.questionBank = [
       "$P\\cup Q^c=U$"
     ],
     "answer": "②",
-    "solution": "$p$가 $q$이기 위한 충분조건이라는 것은 $p\\to q$가 참이라는 뜻이다.\n따라서 $p$의 진리집합에 속하는 원소는 모두 $q$의 진리집합에도 속한다.\n즉 $P\\subseteq Q$이다.\n그러므로\n$P\\cap Q=P$이다.\n항상 옳은 것은 ②이다.",
+    "solution": "$p$가 $q$이기 위한 충분조건이라는 것은 $p\\to q$가 참이라는 뜻이다.\n따라서 $p$의 진리집합은 $q$의 진리집합에 포함되어\n$P\\subseteq Q$이다.\n\n이 포함관계에서 $P\\cap Q=P$, $P\\cup Q=Q$가 성립한다.\n\n① $P\\cap Q=\\varnothing$은 $P$가 공집합일 때만 성립한다.\n② $P\\cap Q=P$는 항상 성립한다.\n③ $P\\cup Q=P$는 추가로 $Q\\subseteq P$여야 성립한다.\n④ $Q-P=\\varnothing$도 $Q\\subseteq P$가 필요하다.\n⑤ $P\\cup Q^c=U$는 $Q\\subseteq P$일 때 성립하며, 주어진 조건만으로 보장되지 않는다.\n\n따라서 항상 옳은 것은 ②이다.",
     "subUnitKey": "H22-C2-06-CORE",
     "subUnit": "명제 핵심 개념",
     "subUnitConfidence": "rule_inferred",
