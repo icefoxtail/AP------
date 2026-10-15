@@ -476,7 +476,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "tags": [],
     "wide": false,
-    "content": "두 행렬 $A,B$에 대하여 $A-B=E$, $A^3-B^3=\\begin{pmatrix}7&9\\\\12&1\\end{pmatrix}$일 때, 행렬 $AB$의 모든 성분의 합은? [4.2점]",
+    "content": "두 이차정사각행렬 $A,B$에 대하여 $A-B=E$, $A^3-B^3=\\begin{pmatrix}7&9\\\\12&1\\end{pmatrix}$일 때, 행렬 $AB$의 모든 성분의 합은? (단, $E$는 단위행렬이다.) [4.2점]",
     "choices": [
       "$9$",
       "$10$",
