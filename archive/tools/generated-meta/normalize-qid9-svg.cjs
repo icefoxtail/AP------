@@ -16,9 +16,9 @@ function removeAttribute(tag, name) {
   return tag.replace(pattern, '');
 }
 
-const SCALE_GUIDANCE = /축척|\bscale(?:d|s|ing)?\b/i;
+const FORBIDDEN_DESCRIPTION_TEXT = /축척|\bscale(?:d|s|ing)?\b|\b(?:svg|apmath|source|bound|sourcebound|debug|generator|renderer|candidate|provenance)\b/i;
 
-function removeScaleGuidanceSentences(value) {
+function removeForbiddenDescriptionSentences(value) {
   const text = String(value ?? '');
   const sentences = [];
   let start = 0;
@@ -31,7 +31,7 @@ function removeScaleGuidanceSentences(value) {
     start = index + 1;
   }
   if (start < text.length) sentences.push(text.slice(start));
-  return sentences.filter(sentence => !SCALE_GUIDANCE.test(sentence)).join('').replace(/\s+/g, ' ').trim();
+  return sentences.filter(sentence => !FORBIDDEN_DESCRIPTION_TEXT.test(sentence)).join('').replace(/\s+/g, ' ').trim();
 }
 
 function escapeXmlText(value) {
@@ -52,7 +52,7 @@ function normalizeQid9Svg(input, uid, labels = {}) {
 
   const titleText = String(labels.title ?? '').trim();
   const descriptionText = String(labels.description ?? '').trim();
-  const safeDescriptionText = removeScaleGuidanceSentences(descriptionText);
+  const safeDescriptionText = removeForbiddenDescriptionSentences(descriptionText);
   if ((titleCount === 0 && !titleText) || (descCount === 0 && !safeDescriptionText)) {
     throw new Error('QID9_SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED:' + safeUid);
   }
@@ -95,8 +95,8 @@ function normalizeQid9Svg(input, uid, labels = {}) {
   const descClose = oldDesc.match(/<\/(?:[A-Za-z_][\w.-]*:)?desc\s*>$/i)[0];
   const originalDescription = oldDesc.slice(descOpen.length, oldDesc.length - descClose.length);
   let normalizedDescription = originalDescription;
-  if (SCALE_GUIDANCE.test(originalDescription)) {
-    normalizedDescription = removeScaleGuidanceSentences(originalDescription);
+  if (FORBIDDEN_DESCRIPTION_TEXT.test(originalDescription)) {
+    normalizedDescription = removeForbiddenDescriptionSentences(originalDescription);
     if (!normalizedDescription) normalizedDescription = safeDescriptionText;
     if (!normalizedDescription) throw new Error('QID9_SVG_ACCESSIBILITY_DESCRIPTION_SCALE_GUIDANCE_UNRESOLVED:' + safeUid);
   }
