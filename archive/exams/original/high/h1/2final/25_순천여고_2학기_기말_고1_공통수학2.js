@@ -289,7 +289,7 @@ window.questionBank = [
     "content": "전체집합 $U$에 대하여 세 조건 $p, q, r$의 진리집합을 각각 $P, Q, R$이라 하자. 세 집합이 다음 조건을 만족할 때, 항상 참인 명제는? [4.6점]<br><br><div style=\"border: 1px solid #000; padding: 10px; margin: 10px 0;\">(가) $Q \\cup R = R$<br>(나) $P \\cap Q^c = P$</div>",
     "image": "",
     "answer": "②",
-    "solution": "(가)에서 $Q\\subseteq R$이므로 $q\\to r$이다.\n(나)에서 $P\\subseteq Q^c$이므로 $p\\to\\sim q$이다. 따라서 항상 참인 명제는 ②이다.\n\n⑤ $\\sim q\\to\\sim r$는 조건만으로는 보장되지 않는다. 예를 들어 $U=\\{a,b\\}$, $Q=\\varnothing$, $R=\\{a\\}$, $P=\\varnothing$이면 두 조건을 모두 만족하지만, 원소 $a$에서 $q$는 거짓이고 $r$은 참이므로 $\\sim q\\to\\sim r$는 거짓이다.\n\n또 $Q\\subseteq R$에서 얻는 대우는 $\\sim r\\to\\sim q$이며, ⑤와는 방향이 다르다.",
+    "solution": "집합 조건을 포함관계로 바꾼다.\n(가) $Q\\cup R=R$에서 $Q\\subseteq R$이다.\n(나) $P\\cap Q^c=P$에서 $P\\subseteq Q^c$, 즉 $P\\cap Q=\\varnothing$이다.\n따라서 $p$이면 항상 $\\sim q$이므로 ②는 참이다.\n\n나머지 명제가 항상 참인 것은 아님을 확인한다.\n예를 들어 $U=\\{a,b,c\\}$,\n$P=\\{a\\}$, $Q=\\{b\\}$, $R=\\{b,c\\}$이면 (가), (나)를 모두 만족한다.\n\n① $a\\in P$이지만 $a\\notin Q$이므로 $p\\to q$는 거짓이다.\n③ $b\\in R$이지만 $b\\notin P$이므로 $r\\to p$는 거짓이다.\n④ $a\\notin R$, $a\\notin Q$이므로 $\\sim r\\to q$는 거짓이다.\n⑤ $c\\notin Q$, $c\\in R$이므로 $\\sim q\\to\\sim r$는 거짓이다.\n\n따라서 항상 참인 명제는 ②뿐이다.",
     "sourceDocumentSha256": "sha256:5729d6f3d8cac3c69fbbfa8c2fb27533b51868a4c00b8c3b010b6c30f6c7e947",
     "sourceQuestionNo": "5",
     "sourcePageNo": 1,
