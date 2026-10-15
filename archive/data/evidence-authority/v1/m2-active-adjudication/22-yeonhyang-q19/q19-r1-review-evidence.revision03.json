@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R1_QID_SCOPED_REVIEW_V1",
+  "qualityContractVersion": "JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006",
+  "executionLine": "CODEX",
+  "stage": "R1",
+  "reviewScope": "QID_ONLY",
+  "examUid": "22_연향중_1학기_기말_중2_기출",
+  "qid": 19,
+  "candidateAbsolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\codex-20261010-yeonhyang-m2-q19-item-recovery\\22_연향중_1학기_기말_중2_기출\\22_연향중_1학기_기말_중2_기출.js",
+  "candidateRawSha256": "add91ca1f15bfc17ab6ad5610d2d0d1aa330b7a61497973874d5e5dac3f70a76",
+  "candidateGitBlobSha1": "40560d9f62a2bf414b2b9ab1c25a6b5dd263b764",
+  "authorityReceiptAbsolutePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\archive\\analysis\\r1-source-refresh-20261010\\22_연향중_1학기_기말_중2_기출\\question-only-replacement-authorization.v2.json",
+  "authorityReceiptSha256": "f66e91b5019393f50f815ae7cd71c0b741245d48e3797e4eeb204b16ead83324",
+  "replacementScope": "QUESTION_ONLY",
+  "originalSourceParity": "NOT_APPLICABLE_QUESTION_ONLY_REPLACEMENT",
+  "freeze": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\codex-20261010-yeonhyang-m2-q19-item-recovery\\R1-q19-fresh\\q19-independent-freeze.json",
+    "sha256": "0572e7b04e551004c9442aed52d179986c6c0c28a428c3f42f8ebac7416ca850",
+    "studentBundlePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\codex-20261010-yeonhyang-m2-q19-item-recovery\\R1-q19-fresh\\q19-student-bundle.json",
+    "studentBundleSha256": "1a47e1e1d89c5130a69aaa4c77948ddc2de04fdf92de936b86759857d8916a0c",
+    "studentParity": "QID_19_EXACT",
+    "independentAnswer": "④",
+    "storedAnswer": "④",
+    "answerMatch": "PASS",
+    "assetOpenedRef": "assets/images/22_연향중_1학기_기말_중2_기출/q19.png",
+    "assetSha256": "25fef042a2fd693b7a23ec7c18c7b02e952ff957a04834c9d0167a0499b295c3",
+    "currentCandidateRawSha256": "add91ca1f15bfc17ab6ad5610d2d0d1aa330b7a61497973874d5e5dac3f70a76",
+    "originalFreezeSourceRawSha256": "8ddbf63cf714160c9e0866179ccd2952bbaf43d14202da561cbdee03aa993709",
+    "studentPayloadSha256": "eff7822334733ab97114b05ff5ced4cf0d140f0a309a280022a223c7a940fedb"
+  },
+  "mathReview": {
+    "verdict": "PASS",
+    "reason": "Candidate graph establishes a<0 and b>0. Only ㉡ and ㉣ have positive slope and negative y-intercept, hence y<0 for all x<0; the other two pass through quadrant II.",
+    "uniqueChoice": "④ / ㉡, ㉣",
+    "distractors": "All four other choices include at least one of ㉠ or ㉢, each of which passes through quadrant II."
+  },
+  "axes": {
+    "QUESTION_LAYOUT": {
+      "status": "STATIC_REVIEW_PASS",
+      "basis": "Exact candidate prompt and choices plus opened q19.png; line break separates setup from four definitions; graph and choices are unambiguous.",
+      "archiveConsumerRender": "NOT_RUN"
+    },
+    "SOLUTION_LAYOUT": {
+      "status": "STATIC_REVIEW_PASS",
+      "basis": "Reasoning order is sign inference, four labeled cases, conclusion; blank lines and display equations preserve case boundaries.",
+      "archiveConsumerRender": "NOT_RUN"
+    },
+    "META": {
+      "status": "PASS_ADJUDICATED_AND_BOUND",
+      "fields": {
+        "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
+        "standardUnitOrder": 4,
+        "difficultyBoundaryFlag": "B34",
+        "standardCourse": "중2 수학",
+        "difficultyBucket": 3,
+        "standardUnitKey": "M2-04",
+        "templateKey": "TPL_FUNCTION_QUADRANT_FROM_OTHER_FUNCTION",
+        "subUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+        "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      },
+      "freshSemanticReview": "Independent qid-19 review accepts difficultyBucket 3 as a standard sign/quadrant reasoning item requiring one appropriate method choice, not the structural complexity of Bucket 4. level=상 is an adjacent B34 legacy boundary; after this direct review, BORDERLINE_ACCEPTABLE is supported.",
+      "minimumCorrection": null,
+      "difficultyBoundaryAdjudication": {
+        "priorLegacyLevel": "상",
+        "independentDifficultyBucket": 3,
+        "boundary": "B34",
+        "result": "BORDERLINE_ACCEPTABLE",
+        "reason": "The graph contributes only a<0 and b>0. The work is routine sign analysis for four linear forms, with no multi-branch condition structure, range/integer filtering, or nonstandard transformation at the solution core. Bucket 3 fits; the adjacent legacy level mismatch is acceptable after this independent qid review.",
+        "candidateMutation": "QID_19_META_FIELD_ONLY",
+        "fieldValueOnCandidateRemains": "BORDERLINE_REVIEW",
+        "candidateCurrentValue": "BORDERLINE_ACCEPTABLE",
+        "priorCandidateValue": "BORDERLINE_REVIEW"
+      }
+    },
+    "VISUAL_SVG": {
+      "status": "SEMANTIC_STATIC_PASS_RENDER_NOT_VERIFIED",
+      "problemAssetRef": "assets/images/22_연향중_1학기_기말_중2_기출/q19.png",
+      "problemAssetSha256": "25fef042a2fd693b7a23ec7c18c7b02e952ff957a04834c9d0167a0499b295c3",
+      "solutionAssetRef": "assets/images/22_연향중_1학기_기말_중2_기출/q19-solution.svg",
+      "solutionAssetPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\codex-20261010-yeonhyang-m2-q19-item-recovery\\22_연향중_1학기_기말_중2_기출\\assets\\images\\22_연향중_1학기_기말_중2_기출\\q19-solution.svg",
+      "solutionAssetSha256": "5b044f57487a9cf1bff686d3b48a0a0944b4b6cb6edb1f11c106bbdc35cdffc2",
+      "authorizedReceiptAssetSha256": "5b044f57487a9cf1bff686d3b48a0a0944b4b6cb6edb1f11c106bbdc35cdffc2",
+      "svgShaMatchesAuthority": true,
+      "staticRasterPath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\codex-20261010-yeonhyang-m2-q19-item-recovery\\R1-q19-fresh\\q19-solution-render.png",
+      "staticRasterSha256": "a10b6233c2f120536ffa4a836639a1854c2d6345f5983116eeb53b5264d530aa",
+      "geometryReview": "Four graphs use the correct sign cases; axes and QII highlight align; ㉢ x-intercept is left of origin and line enters QII.",
+      "renderLimitation": "ImageMagick static raster shows missing Korean glyph boxes with its generic sans-serif mapping; this is converter font behavior evidence only. Official Archive/Chrome consumer render NOT_RUN."
+    }
+  },
+  "validator": {
+    "disposition": "NOT_RUN_SCHEMA_NOT_SCOPED",
+    "reason": "R1 V2 validator requires full current qid denominator; this authorization remains qid 19 only.",
+    "genericValidatorRun": false,
+    "standardPostfreezeAttempt": "FAILED_CLOSED",
+    "standardPostfreezeError": "FULL_ORIGINAL_FREEZE_AND_BUNDLE_REQUIRED: helper requires full-exam freeze; qid-only freeze was preserved.",
+    "nextRequiredAction": "R3 official consumer render; ROOT handles scoped evidence intake and later full-exam stages."
+  },
+  "result": "QID_19_R1_CONTENT_AND_META_PASS_SCOPED_GENERIC_VALIDATOR_UNSUPPORTED",
+  "productionMutation": false,
+  "qidCandidateRevision": {
+    "changedLoci": [
+      "questions[id=19].legacyLevelCompatibility"
+    ],
+    "oldValue": "BORDERLINE_REVIEW",
+    "newValue": "BORDERLINE_ACCEPTABLE",
+    "updateEvidencePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\codex-20261010-yeonhyang-m2-q19-item-recovery\\R1-q19-fresh\\q19-meta-adjudication-update.json",
+    "updateEvidenceSha256": "d3eab2cebae77469b509c433a2e664a0565e0c3ff8d7198b0f440cc0175b651e",
+    "preimagePath": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\codex-20261010-yeonhyang-m2-q19-item-recovery\\R1-q19-fresh\\candidate-pre-difficulty-adjudication.js",
+    "preimageSha256": "8ddbf63cf714160c9e0866179ccd2952bbaf43d14202da561cbdee03aa993709",
+    "studentFieldsUnchanged": true,
+    "studentPayloadSha256Before": "eff7822334733ab97114b05ff5ced4cf0d140f0a309a280022a223c7a940fedb",
+    "studentPayloadSha256After": "eff7822334733ab97114b05ff5ced4cf0d140f0a309a280022a223c7a940fedb",
+    "nonTargetQuestionObjectsUnchanged": true,
+    "productionMutation": false
+  },
+  "postfreezeDisclosure": {
+    "path": "C:\\Users\\USER\\Desktop\\AP-worktrees\\repair-source-holds\\AP------\\.tmp\\archive\\codex-20261010-yeonhyang-m2-q19-item-recovery\\R1-q19-fresh\\q19-postfreeze-disclosure.scoped.revision02.json",
+    "sha256": "274f663ba70379c8e74affe407e3097c0c21e6b640d0c719c17b2c139ff32e6e",
+    "studentParity": "QID_19_EXACT",
+    "changeSinceFreeze": "META_ONLY",
+    "originalFreezeSourceRawSha256": "8ddbf63cf714160c9e0866179ccd2952bbaf43d14202da561cbdee03aa993709",
+    "currentSourceRawSha256": "add91ca1f15bfc17ab6ad5610d2d0d1aa330b7a61497973874d5e5dac3f70a76"
+  }
+}

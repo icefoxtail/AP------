@@ -6,6 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { applyFalseHoldAdjudication } from './adjudicate-create-false-hold.mjs';
 import { validatePhysicalEvidence } from './review-evidence-gate.mjs';
+import { readAuthorityOrLocalAnalysisBytes } from './evidence-authority-v1.mjs';
 
 const sourceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'create-false-hold-'));
@@ -22,7 +23,10 @@ const deltaManifest = `${base}/q24-only-source-delta-manifest.v2.json`;
 const copy = rel => {
   const target = path.join(temp, rel);
   fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.copyFileSync(path.join(sourceRoot, rel), target);
+  const bytes = rel.startsWith('archive/analysis/')
+    ? readAuthorityOrLocalAnalysisBytes({ root: sourceRoot, originalPath: rel })
+    : fs.readFileSync(path.join(sourceRoot, rel));
+  fs.writeFileSync(target, bytes);
 };
 for (const rel of [exam, evidence, adjudication, `${base}/q24-SOURCE_HOLD.json`, `${base}/fresh-original-freeze.json`,
   'archive/assets/images/24_금당중_1학기_기말_중2_기출/q24.png',
@@ -119,7 +123,10 @@ fs.mkdirSync(path.join(temp2, '.git'));
 const copy2 = rel => {
   const target = path.join(temp2, rel);
   fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.copyFileSync(path.join(sourceRoot, rel), target);
+  const bytes = rel.startsWith('archive/analysis/')
+    ? readAuthorityOrLocalAnalysisBytes({ root: sourceRoot, originalPath: rel })
+    : fs.readFileSync(path.join(sourceRoot, rel));
+  fs.writeFileSync(target, bytes);
 };
 for (const rel of [exam, evidence, adjudication, adjudicationV2, deltaManifest, visualPhysical, r3VisualReview, `${base}/q24-SOURCE_HOLD.json`, `${base}/fresh-original-freeze.json`,
   'archive/assets/images/24_금당중_1학기_기말_중2_기출/q24.png', solutionSvg,

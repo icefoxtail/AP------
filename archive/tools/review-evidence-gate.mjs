@@ -7,6 +7,7 @@ import vm from 'node:vm';
 import { pathToFileURL } from 'node:url';
 import { validateSolutionCalibration } from './solution-calibration-gate.mjs';
 import { questionOnlyReplacementProfile } from './question-only-replacement-v2.mjs';
+import { readAuthorityOrLocalAnalysisBytes } from './evidence-authority-v1.mjs';
 
 const SCHEMA = 'JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1';
 const PASS = 'PASS';
@@ -69,6 +70,23 @@ function loadExam(file) {
 }
 
 function array(value) { return Array.isArray(value) ? value : []; }
+
+function readRepoEvidenceBytes(repoRoot, repoPath) {
+  const normalized = normalize(repoPath);
+  const file = path.resolve(repoRoot, normalized);
+  if (!file.startsWith(path.resolve(repoRoot) + path.sep)) throw new Error('EVIDENCE_PATH_OUTSIDE_REPOSITORY');
+  if (normalized.startsWith('archive/analysis/')) {
+    return readAuthorityOrLocalAnalysisBytes({ root: repoRoot, originalPath: normalized });
+  }
+  return fs.readFileSync(file);
+}
+
+function repositoryRootForExam(examFile) {
+  const absolute = path.resolve(examFile).replaceAll('\\', '/');
+  const marker = absolute.lastIndexOf('/archive/');
+  if (marker < 0) throw new Error('EXAM_PATH_NOT_INSIDE_ARCHIVE_REPOSITORY');
+  return path.resolve(absolute.slice(0, marker));
+}
 
 function collectEnumLabels(content) {
   const labels = [];
@@ -146,16 +164,19 @@ function checkQuestionRows(questions, evidence, issues, questionOnlyAcceptedQids
 
 function checkQuestionOnlyReplacementAdjudications(examFile, source, questions, evidence, issues) {
   const entries = array(evidence.questionOnlyReplacementAdjudications);
-  const repoRoot = path.resolve(examFile.slice(0, examFile.lastIndexOf(`${path.sep}archive${path.sep}`)));
+  const repoRoot = repositoryRootForExam(examFile);
   const byQid = new Map((evidence.questionRows || []).map(row => [Number(row.qid), row]));
   const accepted = new Set();
   const readBoundJson = (ref, label, qid) => {
     const file = path.resolve(repoRoot, ref?.path || '');
-    if (!file.startsWith(repoRoot + path.sep) || !fs.existsSync(file)) {
+    if (!file.startsWith(repoRoot + path.sep)) {
       issues.push(`QUESTION_ONLY_${label}_FILE_MISSING:q${qid}`);
       return null;
     }
-    const bytes = fs.readFileSync(file), digest = crypto.createHash('sha256').update(bytes).digest('hex');
+    let bytes;
+    try { bytes = readRepoEvidenceBytes(repoRoot, ref.path); }
+    catch { issues.push(`QUESTION_ONLY_${label}_FILE_MISSING:q${qid}`); return null; }
+    const digest = crypto.createHash('sha256').update(bytes).digest('hex');
     if (!ref?.sha256 || digest !== ref.sha256) {
       issues.push(`QUESTION_ONLY_${label}_SHA_MISMATCH:q${qid}`);
       return null;
@@ -401,14 +422,17 @@ function checkSummary(evidence, derived, issues) {
 
 function checkFalseHoldAdjudications(examFile, source, questions, evidence, issues) {
   const entries = array(evidence.falseHoldAdjudications);
-  const repoRoot = path.resolve(examFile.slice(0, examFile.lastIndexOf(`${path.sep}archive${path.sep}`)));
+  const repoRoot = repositoryRootForExam(examFile);
   const byQid = new Map((evidence.questionRows || []).map(row => [Number(row.qid), row]));
   for (const entry of entries) {
     const qid = Number(entry?.qid), row = byQid.get(qid);
     if (qid !== 24 || entry?.schemaVersion !== 'JS_ARCHIVE_CREATE_FALSE_HOLD_HISTORY_V1') { issues.push(`FALSE_HOLD_ADJUDICATION_SCHEMA_OR_SCOPE_INVALID:q${qid}`); continue; }
     const file = path.resolve(repoRoot, entry.adjudicationPath || '');
-    if (!file.startsWith(repoRoot + path.sep) || !fs.existsSync(file)) { issues.push(`FALSE_HOLD_ADJUDICATION_FILE_MISSING:q${qid}`); continue; }
-    const bytes = fs.readFileSync(file), digest = crypto.createHash('sha256').update(bytes).digest('hex');
+    if (!file.startsWith(repoRoot + path.sep)) { issues.push(`FALSE_HOLD_ADJUDICATION_FILE_MISSING:q${qid}`); continue; }
+    let bytes;
+    try { bytes = readRepoEvidenceBytes(repoRoot, entry.adjudicationPath); }
+    catch { issues.push(`FALSE_HOLD_ADJUDICATION_FILE_MISSING:q${qid}`); continue; }
+    const digest = crypto.createHash('sha256').update(bytes).digest('hex');
     if (digest !== entry.adjudicationSha256) { issues.push(`FALSE_HOLD_ADJUDICATION_SHA_MISMATCH:q${qid}`); continue; }
     const decision = JSON.parse(bytes.toString('utf8'));
     const q = questions.find(item => Number(item.id) === qid), hashText = value => crypto.createHash('sha256').update(String(value ?? '')).digest('hex');
@@ -436,8 +460,11 @@ function checkFalseHoldAdjudications(examFile, source, questions, evidence, issu
     }
     for (const ref of [{ path: holdRef.priorHoldPath, sha256: holdRef.priorHoldSha256 }, { path: holdRef.originalFreezePath, sha256: holdRef.originalFreezeSha256 }]) {
       const target = path.resolve(repoRoot, ref.path || '');
-      if (!target.startsWith(repoRoot + path.sep) || !fs.existsSync(target)
-        || crypto.createHash('sha256').update(fs.readFileSync(target)).digest('hex') !== ref.sha256) issues.push(`FALSE_HOLD_ADJUDICATION_PRIOR_BYTES_MISMATCH:q${qid}`);
+      let bytes = null;
+      try {
+        if (target.startsWith(repoRoot + path.sep)) bytes = readRepoEvidenceBytes(repoRoot, ref.path);
+      } catch {}
+      if (!bytes || crypto.createHash('sha256').update(bytes).digest('hex') !== ref.sha256) issues.push(`FALSE_HOLD_ADJUDICATION_PRIOR_BYTES_MISMATCH:q${qid}`);
     }
     const durable = entry.durableReceiptCopy;
     if (durable) {

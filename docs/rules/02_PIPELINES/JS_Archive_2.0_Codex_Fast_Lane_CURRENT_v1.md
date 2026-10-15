@@ -7,7 +7,7 @@ qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
 
 ## 2026-10-16 — Git production scope and ROOT cold-evidence closeout
 
-Git retains production JS/assets, current runtime/build/test tools and contracts, and exact byte-bound offline authorities in `archive/data/evidence-authority/v1/index.json`. The current lane has 65 source aliases, baseline Git blob/SHA-256/size bindings, and role/consumer metadata. This storage lane does not claim that an item passed review.
+Git retains production JS/assets, current runtime/build/test tools and contracts, and the versioned byte-bound offline authorities declared in `archive/data/evidence-authority/v1/index.json`. The index and ROOT receipt bind exact source aliases, baseline Git blob/SHA-256/size, roles, and consumers; consult them for current counts and total bytes. This storage lane does not claim that an item passed review.
 
 Raw `archive/analysis` originals, captures, rebuildable catalog/conflict copies, backups, and intermediate outputs belong in the Drive vault. Keep the originals until every Drive pack and full path sidecar has a verified metadata readback and full downloaded-byte hash check. After verification, retain only the compact ROOT pack receipt and approved offline hot authorities in Git. The older blanket-ignore prohibition for `archive/analysis/` is superseded by this explicit user direction after that verification.
 
