@@ -273,7 +273,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "무게중심의 좌표는 세 꼭짓점 좌표의 평균이다.\n\n$G=\\left(\\dfrac{5+2+(-1)}3,\\dfrac{2+4+(-3)}3\\right)$\n$=(2,1)$\n\n따라서 $a+b=2+1=3$이다. 정답은 ③이다.",
+    "solution": "무게중심의 좌표는 세 꼭짓점의 각 좌표를 평균한 값이다.\n\n$G=\\left(\\dfrac{5+2+(-1)}3,\\dfrac{2+4+(-3)}3\\right)$\n$=\\left(\\dfrac63,\\dfrac33\\right)=(2,1)$\n\n따라서 $a+b=2+1=3$이고, 정답은 ③이다.",
     "decisiveStep": "세 꼭짓점의 x좌표와 y좌표를 각각 평균하여 무게중심을 구한다.",
     "primaryMethod": "세 꼭짓점의 좌표 평균을 구한다"
   },
@@ -319,7 +319,7 @@ window.questionBank = [
       "$-1$"
     ],
     "answer": "⑤",
-    "solution": "수직이등분선의 기울기가 $2$이므로 $AB$의 기울기는 $-\\dfrac12$이다.\n\n$\\dfrac{-2-a}{b+5}=-\\dfrac12$\n$2a+4=b+5$\n$b=2a-1$\n\n중점 $M\\left(\\dfrac{b-5}{2},\\dfrac{a-2}{2}\\right)$이 $y=2x+2$ 위에 있다.\n$\\dfrac{a-2}{2}=2\\cdot\\dfrac{b-5}{2}+2$\n$a+4=2b$\n\n$b=2a-1$을 대입하면 $a=2$, $b=3$이다.\n따라서 $a-b=-1$이고 정답은 ⑤이다.",
+    "solution": "수직이등분선의 기울기가 $2$이므로 선분 $AB$의 기울기는 $-\\dfrac12$이다. 따라서 $b+5\\ne0$이고\n$\\dfrac{-2-a}{b+5}=-\\dfrac12$이다.\n양변을 교차곱하면\n$2(-2-a)=-(b+5)$\n$-4-2a=-b-5$\n$b=2a-1$이다.\n\n중점 $M\\left(\\dfrac{b-5}{2},\\dfrac{a-2}{2}\\right)$은 수직이등분선 위에 있으므로\n$\\dfrac{a-2}{2}=2\\cdot\\dfrac{b-5}{2}+2$\n$\\dfrac{a-2}{2}=b-3$\n$a+4=2b$이다.\n\n$b=2a-1$을 대입하면\n$a+4=2(2a-1)$\n$a+4=4a-2$\n$3a=6$, 따라서 $a=2$, $b=3$이다.\n\n그러므로 $a-b=2-3=-1$이고 정답은 ⑤이다.",
     "decisiveStep": "AB의 기울기는 -1/2이고 그 중점은 주어진 수직이등분선 위에 있다는 두 조건을 함께 쓴다.",
     "primaryMethod": "수직이등분선의 기울기와 중점 위치를 함께 쓴다"
   },
@@ -643,7 +643,7 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "③",
-    "solution": "주어진 직선은\n$x-2y+3=0$\n$y=\\dfrac12x+\\dfrac32$\n이므로 기울기는 $\\dfrac12$이다. 이에 수직인 직선의 기울기는 $-2$이다.\n\n점 $(1,-4)$를 지나므로\n$y+4=-2(x-1)$\n$2x+y+2=0$\n\n$a=2$, $c=2$이므로 $ac=4$이다. 정답은 ③이다.",
+    "solution": "직선 $x-2y+3=0$을 $y$에 대하여 정리하면\n$y=\\dfrac12x+\\dfrac32$이므로 기울기는 $\\dfrac12$이다.\n이에 수직인 직선의 기울기는 $-2$이다.\n\n점 $(1,-4)$를 지나므로\n$y+4=-2(x-1)$\n$y+4=-2x+2$\n$2x+y+2=0$이다.\n\n따라서 $a=2$, $c=2$이고 $ac=2\\cdot2=4$이다. 정답은 ③이다.",
     "decisiveStep": "주어진 직선의 기울기를 1/2로 읽어 수직인 기울기 -2를 얻고 점을 대입한다.",
     "primaryMethod": "수직 기울기와 한 점을 이용해 직선을 구한다"
   },
@@ -690,7 +690,7 @@ window.questionBank = [
       "$\\frac{1}{2}$"
     ],
     "answer": "①",
-    "solution": "직선 $y=x-1$ 위의 점을 $(t,t-1)$로 두면 수선의 발은 정사영으로 구할 수 있다.\n\n$C=(a+1,a)$, $D=(a+\\dfrac12,a-\\dfrac12)$\n\n선분 $AB$ 위에서 $P$가 직선 $y=x-1$에 놓이는 비를 구한다. 직선 식을 $x-y-1=0$으로 두면\n$A$에서의 값은 $-2$, $B$에서의 값은 $1$이다.\n따라서 $AP:PB=2:1$이다.\n\n$P=A+\\dfrac23(B-A)=(a+\\dfrac23,a-\\dfrac13)$\n\n$CP=\\dfrac{\\sqrt2}{3}$, $DP=\\dfrac{\\sqrt2}{6}$이다.\n또한 두 점에서 직선까지의 거리는\n$AC=\\sqrt2$, $BD=\\dfrac{\\sqrt2}{2}$이다.\n\n$\\dfrac{\\triangle ACP}{\\triangle BDP}=\\dfrac{CP\\cdot AC}{DP\\cdot BD}$\n$=2\\cdot2=4$\n\n따라서 정답은 ①이다.",
+    "solution": "직선 $y=x-1$의 기울기는 $1$이므로, 이 직선에 내린 수선은 기울기가 $-1$이다.\n\n점 $A(a,a+1)$을 지나는 수선은\n$y-(a+1)=-(x-a)$이다.\n이 직선과 $y=x-1$의 교점을 구하면\n$x-1=-x+2a+1$\n$2x=2a+2$\n$C=(a+1,a)$이다.\n\n점 $B(a+1,a-1)$을 지나는 수선은\n$y-(a-1)=-(x-(a+1))$이다.\n이 직선과 $y=x-1$의 교점을 구하면\n$x-1=-x+2a$\n$2x=2a+1$\n$D=\\left(a+\\dfrac12,a-\\dfrac12\\right)$이다.\n\n두 점 $A$, $B$를 지나는 직선의 기울기는\n$\\dfrac{(a-1)-(a+1)}{(a+1)-a}=-2$이다.\n점 $A(a,a+1)$을 지나므로 직선 $AB$의 방정식은\n$y-(a+1)=-2(x-a)$\n$y=-2x+3a+1$이다.\n\n$P$는 이 직선과 $y=x-1$의 교점이므로\n$x-1=-2x+3a+1$\n$3x=3a+2$\n$x=a+\\dfrac23$, $y=a-\\dfrac13$이다.\n따라서 $P=\\left(a+\\dfrac23,a-\\dfrac13\\right)$이다.\n\n이 좌표로 길이를 계산하면\n$AC=\\sqrt{1^2+(-1)^2}=\\sqrt2$,\n$BD=\\sqrt{\\left(-\\dfrac12\\right)^2+\\left(+\\dfrac12\\right)^2}=\\dfrac{\\sqrt2}{2}$,\n$CP=\\sqrt{\\left(-\\dfrac13\\right)^2+\\left(-\\dfrac13\\right)^2}=\\dfrac{\\sqrt2}{3}$,\n$DP=\\sqrt{\\left(\\dfrac16\\right)^2+\\left(\\dfrac16\\right)^2}=\\dfrac{\\sqrt2}{6}$이다.\n$AC\\perp CP$, $BD\\perp DP$이므로 두 삼각형의 넓이 비는\n$\\dfrac{\\triangle ACP}{\\triangle BDP}=\\dfrac{AC\\cdot CP}{BD\\cdot DP}$\n$=\\dfrac{\\sqrt2\\cdot\\frac{\\sqrt2}{3}}{\\frac{\\sqrt2}{2}\\cdot\\frac{\\sqrt2}{6}}=\\dfrac{2/3}{1/6}=4$이다.\n따라서 정답은 ①이다.",
     "decisiveStep": "두 삼각형의 넓이비를 밑변비 CP:DP와 높이비 AC:BD로 나누어 계산한다.",
     "primaryMethod": "수선의 발과 교점에서 밑변·높이 관계를 구해 넓이비를 계산한다",
     "image": "assets/images/22_강남여고_1학기_기말_고1_기출/q15.png",
@@ -839,7 +839,7 @@ window.questionBank = [
       "$9$"
     ],
     "answer": "①",
-    "solution": "$AB$가 $l$에 수직이므로 방향벡터를 $(1,2)$로 둔다.\n\n$B=A+t(1,2)$라 하면 $C$는 $AB$를 $1:2$로 내분하므로\n$C=A+\\dfrac13t(1,2)=(2+\\dfrac t3,3+\\dfrac{2t}3)$이다.\n\n$C$가 $x+2y-3=0$ 위에 있으므로\n$2+\\dfrac t3+2(3+\\dfrac{2t}3)-3=0$\n$5+\\dfrac{5t}3=0$\n$t=-3$\n\n$B=(-1,-3)$이므로 $ab=(-1)(-3)=3$이다. 정답은 ①이다.",
+    "solution": "직선 $l:x+2y-3=0$을 정리하면 $y=-\\dfrac12x+\\dfrac32$이므로 기울기는 $-\\dfrac12$이다.\n$AB\\perp l$이므로 $AB$의 기울기는 $2$이다.\n\n점 $A(2,3)$에서 $B$까지 $x$좌표가 $t$만큼 변한다고 두면, 기울기가 $2$이므로 $y$좌표는 $2t$만큼 변한다.\n따라서 $B=(2+t,3+2t)$이다.\n\n$AC:CB=1:2$이므로 $C$는 $A$에서 $B$까지의 길이 중 $\\dfrac13$만큼 간 점이다.\n$C=\\left(2+\\dfrac t3,3+\\dfrac{2t}{3}\\right)$이다.\n또 $C$가 $l$ 위에 있으므로\n$2+\\dfrac t3+2\\left(3+\\dfrac{2t}{3}\\right)-3=0$\n$5+\\dfrac{5t}{3}=0$\n$t=-3$이다.\n\n따라서 $B=(-1,-3)$이고 $ab=(-1)(-3)=3$이다. 정답은 ①이다.",
     "decisiveStep": "수직인 선분의 방향을 직선의 법선벡터 (1,2)로 두고 내분점 C를 직선식에 대입한다.",
     "primaryMethod": "법선 방향 AB의 내분점 C가 주어진 직선 위에 있음을 이용한다"
   },
@@ -935,7 +935,7 @@ window.questionBank = [
       "$y=8x-1$"
     ],
     "answer": "③",
-    "solution": "원래 직선 $l$은 $y=x-1$이므로 방향각은 $45^\\circ$이다. 대칭축 $y=2x-1$의 기울기를 $2$라 하자.\n\n$\\tan 2\\alpha=\\dfrac{2\\cdot2}{1-2^2}=-\\dfrac43$\n대칭된 직선의 기울기는\n$\\tan(2\\alpha-45^\\circ)=\\dfrac{-\\frac43-1}{1-\\frac43}=7$이다.\n\n$l$과 대칭축의 교점은\n$x-1=2x-1$에서 $(0,-1)$이다. 대칭 후에도 이 점은 고정되므로\n$l':y=7x-1$\n\n따라서 정답은 ③이다.",
+    "solution": "직선 $l$은 $y=x-1$이다.\n대칭축 $y=2x-1$과의 교점 $E$는\n$x-1=2x-1$에서 $x=0$을 얻으므로 $E=(0,-1)$이다.\n대칭할 때 $E$는 축 위의 점이므로 그대로 남는다.\n\n$l$ 위의 다른 점 $T=(1,0)$을 잡는다.\n대칭축의 기울기가 $2$이므로 $T$에서 대칭축에 내린 수선의 기울기는 $-\\dfrac12$이다.\n수선의 방정식은\n$y=-\\dfrac12(x-1)$이다.\n대칭축과의 교점 $H$를 구하면\n$-\\dfrac12(x-1)=2x-1$\n$-x+1=4x-2$\n$x=\\dfrac35$, $y=\\dfrac15$이므로 $H=\\left(\\dfrac35,\\dfrac15\\right)$이다.\n\n반사축은 $TT'$의 수직이등분선이므로 $H$는 $TT'$의 중점이다.\n따라서 반사된 점은\n$T'=\\left(2\\cdot\\dfrac35-1,2\\cdot\\dfrac15-0\\right)=\\left(\\dfrac15,\\dfrac25\\right)$이다.\n\n$l'$은 $E$와 $T'$을 지나므로 기울기는\n$\\dfrac{\\frac25-(-1)}{\\frac15-0}=7$이다.\n점 $E(0,-1)$을 지나고 기울기가 $7$인 직선은\n$y+1=7x$, 즉 $y=7x-1$이다. 정답은 ③이다.",
     "decisiveStep": "직선의 방향각을 대칭축 방향각에 대해 반사해 기울기 7을 얻고 고정 교점 (0,-1)을 대입한다.",
     "primaryMethod": "대칭축에 대한 방향각과 고정 교점으로 반사 직선을 구한다"
   },
@@ -1059,7 +1059,7 @@ window.questionBank = [
     "content": "서술형 3. 세 점 $A(a+2, 0)$, $B(11, b-4)$, $C(-a, b+3)$에 대하여 선분 $\\overline{AB}$를 $4:1$로 외분하는 점의 좌표가 $(13, -4)$이고 선분 $\\overline{BC}$를 $4:3$으로 내분하는 점의 좌표가 $(x, y)$이다. $x+y$의 값을 구하시오. [5점]",
     "choices": [],
     "answer": "$4$",
-    "solution": "$\\overline{AB}$의 $4:1$ 외분점 좌표가 $(13,-4)$이므로\n$\\left(\\dfrac{4(11)-(a+2)}{4-1},\\dfrac{4(b-4)-0}{4-1}\\right)=(13,-4)$이다.\n\n$\\dfrac{42-a}{3}=13$에서 $a=3$이다.\n$\\dfrac{4b-16}{3}=-4$에서 $b=1$이다.\n\n따라서 $A=(5,0)$, $B=(11,-3)$, $C=(-3,4)$이다.\n$\\overline{BC}$를 $4:3$으로 내분하는 점은\n$(x,y)=\\left(\\dfrac{3(11)+4(-3)}7,\\dfrac{3(-3)+4(4)}7\\right)$\n$=(3,1)$이다.\n\n따라서 $x+y=4$이다.",
+    "solution": "선분 $AB$를 $4:1$로 외분하는 점의 좌표는\n$\\left(\\dfrac{4\\cdot11-(a+2)}{4-1},\\dfrac{4(b-4)-0}{4-1}\\right)=(13,-4)$이다.\n첫째 좌표에서\n$\\dfrac{42-a}{3}=13$\n$42-a=39$\n$a=3$이다.\n둘째 좌표에서\n$\\dfrac{4b-16}{3}=-4$\n$4b-16=-12$\n$b=1$이다.\n\n따라서 $A=(5,0)$, $B=(11,-3)$, $C=(-3,4)$이다.\n$BC$를 $4:3$으로 내분하는 점은\n$(x,y)=\\left(\\dfrac{3\\cdot11+4\\cdot(-3)}7,\\dfrac{3\\cdot(-3)+4\\cdot4}7\\right)$\n$=\\left(\\dfrac{21}{7},\\dfrac77\\right)=(3,1)$이다.\n그러므로 $x+y=3+1=4$이다.",
     "decisiveStep": "외분점 공식으로 a,b를 결정한 뒤 내부 4:3 내분점 공식에 대입한다.",
     "primaryMethod": "외분점으로 매개변수를 구한 뒤 내부 내분점에 대입한다"
   },
