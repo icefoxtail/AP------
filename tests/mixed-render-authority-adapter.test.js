@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { readPrintRenderAuthorityFixture } = require('./helpers/print-render-authority-fixtures.cjs');
 const root = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'utf8');
 const layout = fs.readFileSync(path.join(root, 'archive', 'layout-authority.js'), 'utf8');
@@ -42,7 +43,7 @@ test('Mixer adapter dual-runs canonical normalization without changing storage, 
 });
 
 test('Mixer pack-fallback browser fixture records parity across exam, solution, and answer outputs', () => {
-  const evidence = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-4-mixer-browser-fixture.json'), 'utf8'));
+  const evidence = readPrintRenderAuthorityFixture('phase-4-mixer-browser-fixture.json');
   assert.equal(evidence.kind, 'actual-browser-dual-run');
   assert.equal(evidence.source.kind, 'MIXED_PACK');
   assert.equal(evidence.source.packId, 'M3_FINAL_UNIT_POLY_10');
@@ -63,7 +64,7 @@ test('Mixer storage fixture preserves same-id/different-source identity and exer
   assert.match(launcher, /requestedMode === 'solution' \? 'sol'/);
   assert.match(launcher, /renderAuthorityDualRun=1/);
 
-  const evidence = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-4-mixer-browser-fixture.json'), 'utf8'));
+  const evidence = readPrintRenderAuthorityFixture('phase-4-mixer-browser-fixture.json');
   const coverage = evidence.storageSourceCoverage;
   assert.equal(coverage.kind, 'actual-browser-render');
   assert.deepEqual(coverage.observedRuns.map(run => [run.mode, run.qpp]), [['exam', 4], ['solution', 6], ['answer', 8]]);

@@ -1,19 +1,26 @@
 'use strict';
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path'),http=require('node:http');
 const {spawn}=require('node:child_process');
-const root=path.resolve(__dirname,'..'),sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const repoRoot=path.resolve(__dirname,'..'),sleep=ms=>new Promise(r=>setTimeout(r,ms));
 async function main(){
+  const root=path.resolve(process.env.ARCHIVE_PAGES_SITE_ROOT||repoRoot);
+  const basePath=process.env.ARCHIVE_PAGES_BASE_PATH||'/';
+  if(!basePath.startsWith('/')||!basePath.endsWith('/')||basePath.includes('..'))throw Error('Invalid ARCHIVE_PAGES_BASE_PATH');
   const chrome=process.env.CHROME_BIN||['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium'].find(p=>fs.existsSync(p));
   if(!chrome||!fs.existsSync(chrome))throw Error('Real Chrome unavailable: smoke PASS prohibited');
   const server=http.createServer((req,res)=>{
-    try{const n=decodeURIComponent(new URL(req.url,'http://localhost').pathname),p=path.resolve(root,'.'+n);
-      if(!p.startsWith(root+path.sep)||!fs.existsSync(p)||fs.statSync(p).isDirectory()){res.writeHead(404);res.end();return;}
-      res.writeHead(200,{'Content-Type':(n.endsWith('.css')?'text/css':n.endsWith('.json')?'application/json':n.endsWith('.svg')?'image/svg+xml':n.endsWith('.png')?'image/png':n.endsWith('.js')?'text/javascript':'text/html')+'; charset=utf-8'});
+    try{const n=decodeURIComponent(new URL(req.url,'http://localhost').pathname);if(!n.startsWith(basePath)){res.writeHead(404);res.end();return;}
+      let relative=n.slice(basePath.length);if(!relative||relative.endsWith('/'))relative+='index.html';
+      const p=path.resolve(root,...relative.split('/'));
+      if(!p.startsWith(root+path.sep)||!fs.existsSync(p)||!fs.statSync(p).isFile()){res.writeHead(404);res.end();return;}
+      const ext=path.extname(p).toLowerCase();
+      const mime={'.css':'text/css','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.js':'text/javascript','.woff':'font/woff','.woff2':'font/woff2','.ttf':'font/ttf'}[ext]||'text/html';
+      res.writeHead(200,{'Content-Type':mime+'; charset=utf-8','Cache-Control':'no-store'});
       fs.createReadStream(p).pipe(res);
     }catch(e){res.writeHead(500);res.end(String(e));}
   });
   await new Promise(r=>server.listen(0,'127.0.0.1',r));
-  const url='http://127.0.0.1:'+server.address().port+'/archive/generated-bank.html';
+  const url='http://127.0.0.1:'+server.address().port+basePath+'archive/generated-bank.html';
   const temp=fs.mkdtempSync(path.join(os.tmpdir(),'b03-chrome-'));
   const browser=spawn(chrome,['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage',
     '--no-first-run','--disable-background-networking','--remote-allow-origins=*',
@@ -46,7 +53,11 @@ async function main(){
       if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));
       return r.result.value;
     };
-    await send('Runtime.enable');await send('Page.enable');await send('Page.navigate',{url});
+    await send('Runtime.enable');await send('Page.enable');
+    if(process.env.ARCHIVE_PAGES_SITE_ROOT){
+      await send('Page.addScriptToEvaluateOnNewDocument',{source:`(()=>{const nativeFetch=window.fetch.bind(window);window.fetch=(input,init={})=>{const request=input instanceof Request?input:null;const url=new URL(request?.url||String(input),location.href);const method=String(init.method||request?.method||'GET').toUpperCase();if(url.hostname.includes('workers.dev')||url.pathname.includes('/api/')){if(method!=='GET'&&method!=='HEAD')return Promise.reject(new Error('Pages smoke blocked a non-read-only API request'));return Promise.resolve(new Response(JSON.stringify({success:true,data:[],students:[],assignments:[],records:[]}),{status:200,headers:{'Content-Type':'application/json'}}));}return nativeFetch(input,init);};window.print=()=>{window.__pagesSmokePrintCount=(window.__pagesSmokePrintCount||0)+1;};})();`});
+    }
+    await send('Page.navigate',{url});
     async function wait(expression,label){
       for(let i=0;i<120;i++){try{if(await ev(expression))return;}catch(e){if(i>115)throw e;}await sleep(100);}
       throw Error('Real Chrome mock-exam failure: '+label);
@@ -122,7 +133,7 @@ async function main(){
 
     const table=await ev("(async()=>{const row=rows.find(x=>x.uid==='ALITE-BSG26-B04R2-Q23-S01');const q=await questionFor(row);const root=document.createElement('section');questionMarkup(root,q,row,true);return {table:root.querySelectorAll('table.question-table').length,rows:root.querySelectorAll('tr').length,noRaw:!root.textContent.includes('<table'),answer:root.textContent.includes('정답:')};})()");
     if(table.table!==1||table.rows!==3||!table.noRaw||!table.answer)throw Error('HTML table/subjective regression '+JSON.stringify(table));
-    console.log('GENERATED_BANK_REAL_CHROME_SMOKE_PASS '+JSON.stringify({screen:'source-filters-purpose-difficulty-preview-lock-replace-print',bokseongPrinted:22,hyocheonPrinted:19,registered:source.total,bokseongAvailable:191,hyocheonAvailable:94,palmaAvailable:source.palma,palmaNewLookupVerified:palmaQid9.count,mainSourceAvailableIndependentOfReview:true,tableSubjective:true}));
+    console.log('GENERATED_BANK_REAL_CHROME_SMOKE_PASS '+JSON.stringify({screen:'source-filters-purpose-difficulty-preview-lock-replace-print',bokseongPrinted:22,hyocheonPrinted:19,registered:source.total,bokseongAvailable:191,hyocheonAvailable:94,palmaAvailable:source.palma,palmaNewLookupVerified:palmaQid9.count,mainSourceAvailableIndependentOfReview:true,tableSubjective:true,...(process.env.ARCHIVE_PAGES_SITE_ROOT?{siteRoot:root,basePath,apiMode:'in-memory GET fixtures; non-read-only methods rejected',liveApiIntegration:false}: {})}));
   }finally{
     if(ws)ws.close();
     browser.kill('SIGTERM');

@@ -55,5 +55,30 @@ jobs:
       - name: Verify Git-managed project skills
         run: node tools/skills/verify-skills.mjs --json
 
+      - name: Git footprint regression
+        run: node --test tests/git-growth.test.mjs
+
+      - name: Offline evidence authority and recovery regression
+        run: node --test tests/archive-cold-evidence.test.mjs tests/evidence-authority-v1.test.mjs tests/archive-analysis-recovery.test.mjs
+
+      - name: Guard changed Git objects against footprint growth
+        if: github.event_name == 'pull_request' || github.event_name == 'push'
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BEFORE_SHA: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            base_ref=origin/main
+          else
+            base_ref="$BEFORE_SHA"
+            if [[ "$base_ref" =~ ^0+$ ]]; then
+              echo "Initial push has no before SHA; a full-history footprint audit is required."
+              exit 2
+            fi
+          fi
+          node tools/check-git-growth.mjs --base "$base_ref" --head HEAD
+
       - name: Run tests
         run: node tools/run-tests.js

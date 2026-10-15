@@ -11,6 +11,12 @@ historical authority: Canary / Phase 10 / 5시험지 qualification 기록은 역
 qualityContractVersion: `JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006`
 parent quality authority: `JS_Archive_2.0_Common_Quality_Contract_v1.md`
 
+## 2026-10-16 — evidence storage and ROOT receipt boundary
+
+The user-directed Git scope is production-only: production source/assets, current tools/contracts/tests, and the versioned offline authorities declared by `archive/data/evidence-authority/v1/index.json` stay in Git. The index and ROOT receipt are the source for exact aliases, current counts, and total bytes. Full raw review archives, captures, backups, catalog/conflict snapshots, and intermediate outputs use the Drive evidence vault and ignored local cache. Remove/untrack original paths only after the pack, full path index, Drive metadata, and complete downloaded bytes have passed SHA-256/size/Git-blob verification. The previous blanket-ignore prohibition for `archive/analysis/` is superseded after that verification.
+
+ROOT's compact verified completion receipt identifies the evidence cohort and Drive packs. ROOT fetches raw proof only when needed and verifies the exact Drive file ID/parent, pack/index size and SHA-256, ZIP manifest/member CRC, and reconstructed raw size/SHA-256/Git blob SHA-1 before inspection. A pointer or receipt records technical identity and completion state; it never replaces a worker's actual source review, R1/R2/R3 proof, validator report, or quality conclusion. Missing/corrupt data remains unavailable, and GitHub CI stays offline-capable with no Drive OAuth dependency.
+
 ## 2026-10-10 — 최신 작업 범위·종료 조건 우선
 
 루트 `AGENTS.md`의 ‘최신 요청의 작업 범위·종료 조건 우선’을 먼저 적용한다. 기존 문항의 명시적 한정 수정은 지정 대상과 필수 직접 의존 부분만 수정·영향 검증하고 지정된 종료 조건에서 끝낸다. 아래 전체 stage/전수 분모는 명시적으로 맡긴 전체 제작·전수 검수에 적용한다. 한정 수정을 CREATE/R1/R2/R3 전체 재실행이나 unchanged 시험지 재풀이로 승격하지 않는다. 범위 밖 발견은 보고만 하고 확장에는 사용자 승인이 필요하다. 이 구분은 품질 기준·qualityContractVersion·예약 실행 설정을 변경하지 않는다.

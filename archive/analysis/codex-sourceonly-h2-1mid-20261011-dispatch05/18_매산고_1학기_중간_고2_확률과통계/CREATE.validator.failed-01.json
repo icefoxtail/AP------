@@ -1,8 +1,0 @@
-{
-  "attempt": "CREATE generic validator attempt 1",
-  "result": "FAIL",
-  "exitCode": 1,
-  "issues": ["ARTIFACT_GOLDEN_PROVENANCE_INVALID:NEGATIVE_SAMPLE_BINDING_REQUIRED"],
-  "diagnosis": "Generic artifact contract goldenCalibration SHA fields require unprefixed SHA-256 hex. The separate solutionQualityCalibration fields correctly retain sha256:-prefixed values for solution-calibration-gate.",
-  "repair": "Keep the failed evidence/report unchanged; write raw 64-hex SHA values only into goldenCalibration sample/item/visual/negative refs, bind a fresh evidence revision, rerun generic validator."
-}

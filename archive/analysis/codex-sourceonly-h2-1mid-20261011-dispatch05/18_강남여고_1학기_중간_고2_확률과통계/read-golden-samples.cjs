@@ -1,3 +1,0 @@
-const fs=require('fs'),vm=require('vm'),crypto=require('crypto');
-const files=['archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js','archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js','archive/exams/original/high/h1/2mid/25_제일고_2학기_중간_고1_기출.js'];
-for(const file of files){const w={};vm.runInNewContext(fs.readFileSync(file,'utf8'),{window:w}); console.log('\nFILE '+file); for(const q of w.questionBank.slice(0,2)){const sol=String(q.solution||''); console.log(JSON.stringify({qid:q.id,solutionSha256:crypto.createHash('sha256').update(sol).digest('hex'),solutionImage:q.solutionImage||null,solution:sol},null,2));}}

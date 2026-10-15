@@ -1,5 +1,9 @@
 # Archive implementation instructions
 
+## CURRENT storage boundary — production Git and Drive cold evidence
+
+Use root `AGENTS.md`'s 2026-10-16 Git/Drive policy. Keep source, required assets, current tools/contracts/tests, and the versioned, index-declared byte-bound offline authorities listed by `archive/data/evidence-authority/v1/index.json` in Git; consult that index and the ROOT receipt for current alias counts and total bytes. Raw `archive/analysis` histories and rebuildable outputs move to the Drive vault only after full pack/index/readback verification. The previous ban on a blanket `archive/analysis/` ignore is superseded after that verification; do not remove originals early. ROOT consumes compact verified completion receipts and hydrates requested raw bytes through `tools/archive-cold-evidence.mjs` into the ignored cache. Workers still inspect full inputs and perform actual independent quality review. A missing or mismatched Drive pack stays unavailable; it never becomes PASS and never bypasses a validator or quality stage. GitHub CI must remain offline-capable.
+
 Codex 원본 시험지 생산은 `../docs/rules/02_PIPELINES/JS_Archive_2.0_Codex_Fast_Lane_CURRENT_v1.md`를 우선한다. JS·실제 asset 직접 검수로 진행하고 preflight/bind/seal/verify/intake/등록 candidate를 필수 호출하지 않는다. 시험지 run에서 공통 도구 수정·새 wrapper·MASTER 자동 수리는 금지한다. 아래 런타임 구현 지시는 실제 런타임 수정 작업에만 적용하며 단순 시험지 생산의 추가 gate가 아니다.
 
 신규 문항 HOLD 발행 금지: 결함은 해당 qid 담당자의 수정→필요한 원문 영역 대조→승인 ALIVE 대체→영향 검수로 완성한다. 임시 item/시험지/run HOLD로 반환하지 않는다. ROOT는 담당자·다음 행동을 연결하고 완료를 수납한다. 과거 HOLD 이력과 원 freeze는 보존하며 실제 권한·실행 오류 및 미실행 검수는 사실대로 기록한다.
