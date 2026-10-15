@@ -6,6 +6,7 @@ const { spawnSync } = require('node:child_process');
 const root = path.resolve(__dirname, '..');
 const files = [
   'tests/archive2-original-source-route.test.cjs',
+  'tests/archive2-original-source-verification-shard.test.mjs',
   'tests/archive2-compose-performance.test.cjs',
   'tests/archive2-preview-feedback.test.cjs',
   'tests/archive2-output-transport.test.cjs',
@@ -33,6 +34,11 @@ const accessibility = spawnSync(process.execPath, ['archive/tools/build-svg-acce
 });
 if (accessibility.error) console.error(accessibility.error.message);
 if (accessibility.status !== 0 || accessibility.error) process.exit(1);
+const canonicalProjection = spawnSync(process.execPath, ['archive/tools/build-archive2-catalog.mjs'], {
+  cwd: root, stdio: 'inherit', timeout: 120000,
+});
+if (canonicalProjection.error) console.error(canonicalProjection.error.message);
+if (canonicalProjection.status !== 0 || canonicalProjection.error) process.exit(1);
 const result = spawnSync(process.execPath, ['--test', '--test-concurrency=1', ...files], {
   cwd: root, stdio: 'inherit', timeout: 120000,
 });
