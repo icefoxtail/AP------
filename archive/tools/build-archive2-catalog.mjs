@@ -645,12 +645,139 @@ const manifestFiles = allInputPaths.map((inputPath) => {
       : Buffer.from(read("archive/" + inputPath), "utf8");
   return { path: inputPath, sha256: hash(bytes) };
 });
+const baseProjectionVersion = await core.Canonical.computeProjectionVersion(
+  manifestFiles,
+  core.Canonical.RESOLVER_VERSION,
+);
+const baseManifest = {
+  schemaVersion: "archive2-canonical-input-manifest-v1",
+  resolverVersion: core.Canonical.RESOLVER_VERSION,
+  generatedFromCatalogIndexVersion: indexVersion,
+  projectionVersion: baseProjectionVersion,
+  files: manifestFiles,
+};
+const builderFetcher = async (requestUrl) => {
+  const pathname = decodeURIComponent(new URL(requestUrl).pathname);
+  const isArchivePath = pathname.startsWith("/archive/");
+  const relativePath = isArchivePath
+    ? pathname.slice("/archive/".length)
+    : pathname.replace(/^\//, "");
+  let body;
+  if (relativePath === "data/archive2-canonical-input-manifest.json") {
+    body = JSON.stringify(baseManifest) + "\n";
+  } else if (relativePath === "data/archive2-catalog.json") {
+    body = packedText;
+  } else if (relativePath === "data/archive2-item-review-overrides.json") {
+    body = overrideIndexText;
+  } else {
+    const inputPath = isArchivePath
+      ? path.resolve(root, "archive", relativePath)
+      : path.resolve(root, relativePath);
+    if (inputPath !== root && !inputPath.startsWith(root + path.sep))
+      throw new Error("Canonical source shard builder path escaped the repository root");
+    body = fs.readFileSync(inputPath, "utf8");
+  }
+  return { ok: true, text: async () => body };
+};
+const versionBundle = await core.Canonical.loadInputBundle(
+  builderFetcher,
+  "https://archive2-builder.invalid/archive/",
+  baseProjectionVersion,
+);
+const resolvedCatalog = core.Canonical.resolveCatalog({ versionBundle });
+if (resolvedCatalog.indexVersion !== baseProjectionVersion)
+  throw new Error("Canonical source shard resolver did not use the base projection version");
+
+const sourceShardPrefix = "data/archive2-source-verification/v1/";
+const sourceIndexPath = core.Canonical.SOURCE_VERIFICATION_INDEX_PATH ||
+  "data/archive2-source-verification-index.json";
+const sourceShardDir = path.join(root, "archive", sourceShardPrefix);
+const sourceIndexTarget = path.join(root, "archive", sourceIndexPath);
+const recordsBySource = new Map();
+for (const record of resolvedCatalog.records) {
+  const sourceFile = core.normalizeFile(record.sourceFile);
+  if (!sourceFile) throw new Error("Canonical source shard row has no source file");
+  if (!recordsBySource.has(sourceFile)) recordsBySource.set(sourceFile, []);
+  recordsBySource.get(sourceFile).push(record);
+}
+const sourceShaByFile = new Map((resolvedCatalog.sourceHashes || []).map(([file, sha]) =>
+  [core.normalizeFile(file), String(sha || "").toLowerCase()],
+));
+const shardTexts = new Map();
+const sourceIndexRows = [];
+const sourceRecords = [...recordsBySource.entries()].sort(([a], [b]) =>
+  a < b ? -1 : a > b ? 1 : 0,
+);
+let sourceShardQuestionCount = 0;
+for (const [sourceFile, sourceRows] of sourceRecords) {
+  const exam = resolvedCatalog.exams.find((row) => core.normalizeFile(row.file) === sourceFile);
+  if (!exam || Number(exam.qCount) !== sourceRows.length)
+    throw new Error(`Canonical source shard count does not match exam: ${sourceFile}`);
+  const orderedRows = sourceRows.sort((a, b) => Number(a.sourceOrdinal) - Number(b.sourceOrdinal));
+  if (orderedRows.some((row, index) => Number(row.sourceOrdinal) !== index + 1))
+    throw new Error(`Canonical source shard ordinal sequence is invalid: ${sourceFile}`);
+  const records = orderedRows.map((row) => {
+    const identity = resolvedCatalog.canonicalAuthority.identityByUid[row.questionUid] || null;
+    const sourceRecord = {
+      sourceOrdinal: Number(row.sourceOrdinal),
+      sourceQuestionNo: row.sourceQuestionNo,
+      questionUid: row.questionUid || "",
+      identityStatus: row.identityStatus || "UNRESOLVED",
+      sourceFile,
+      identitySourceFile: identity?.sourceArchiveFile || "",
+      identitySourceOrdinal: Number(identity?.sourceOrdinal || 0),
+      sourceGrade: row.sourceGrade || "",
+      sourceFingerprint: row.sourceFingerprint || "",
+      rawQuestionHash: row.rawQuestionHash || "",
+    };
+    for (const field of core.META_FIELDS)
+      if (Object.prototype.hasOwnProperty.call(row, field)) sourceRecord[field] = row[field];
+    return sourceRecord;
+  });
+  const shard = {
+    schemaVersion: "archive2-source-verification-v1",
+    sourceFile,
+    sourceSha256: sourceShaByFile.get(sourceFile) || "",
+    exam: {
+      file: sourceFile,
+      qCount: Number(exam.qCount),
+      grade: exam.grade || exam.sourceGrade || "",
+      identityTitle: exam.identityTitle || "",
+    },
+    records,
+  };
+  const shardText = JSON.stringify(shard) + "\n";
+  const shardPath = sourceShardPrefix + hash(sourceFile) + ".json";
+  shardTexts.set(shardPath, shardText);
+  sourceIndexRows.push({
+    sourceFile,
+    path: shardPath,
+    sha256: hash(shardText),
+    qCount: Number(exam.qCount),
+  });
+  sourceShardQuestionCount += records.length;
+}
+if (sourceShardQuestionCount !== resolvedCatalog.records.length ||
+    sourceIndexRows.length !== resolvedCatalog.exams.length)
+  throw new Error("Canonical source shard coverage is incomplete");
+const sourceIndex = {
+  schemaVersion: "archive2-source-verification-index-v1",
+  resolverVersion: core.Canonical.RESOLVER_VERSION,
+  generatedFromCatalogIndexVersion: indexVersion,
+  baseProjectionVersion,
+  files: sourceIndexRows,
+};
+const sourceIndexText = JSON.stringify(sourceIndex) + "\n";
+const manifestFilesWithSourceIndex = [...manifestFiles, {
+  path: sourceIndexPath,
+  sha256: hash(sourceIndexText),
+}].sort((a, b) => a.path.localeCompare(b.path));
 const manifest = {
   schemaVersion: "archive2-canonical-input-manifest-v1",
   resolverVersion: core.Canonical.RESOLVER_VERSION,
   generatedFromCatalogIndexVersion: indexVersion,
-  projectionVersion: await core.Canonical.computeProjectionVersion(manifestFiles, core.Canonical.RESOLVER_VERSION),
-  files: manifestFiles,
+  projectionVersion: await core.Canonical.computeProjectionVersion(manifestFilesWithSourceIndex, core.Canonical.RESOLVER_VERSION),
+  files: manifestFilesWithSourceIndex,
 };
 const manifestTarget = path.join(root, "archive/data/archive2-canonical-input-manifest.json");
 if (process.argv.includes("--check")) {
@@ -668,6 +795,19 @@ if (process.argv.includes("--check")) {
     : null;
   if (actualOverrideIndex !== overrideIndexText)
     throw new Error("Archive 2.0 reviewed item override index is stale");
+  const actualSourceIndex = fs.existsSync(sourceIndexTarget)
+    ? fs.readFileSync(sourceIndexTarget, "utf8").replace(/\r\n/g, "\n")
+    : null;
+  if (actualSourceIndex !== sourceIndexText)
+    throw new Error("Archive 2.0 canonical source verification index is stale");
+  for (const [shardPath, expected] of shardTexts) {
+    const targetPath = path.join(root, "archive", shardPath);
+    const actualShard = fs.existsSync(targetPath)
+      ? fs.readFileSync(targetPath, "utf8").replace(/\r\n/g, "\n")
+      : null;
+    if (actualShard !== expected)
+      throw new Error(`Archive 2.0 canonical source verification shard is stale: ${shardPath}`);
+  }
   const actualManifest = fs.existsSync(manifestTarget)
     ? fs.readFileSync(manifestTarget, "utf8").replace(/\r\n/g, "\n")
     : null;
@@ -676,6 +816,16 @@ if (process.argv.includes("--check")) {
 } else {
   fs.writeFileSync(target, packedText);
   fs.writeFileSync(overrideIndexTarget, overrideIndexText);
+  fs.mkdirSync(sourceShardDir, { recursive: true });
+  for (const [shardPath, shardText] of shardTexts)
+    fs.writeFileSync(path.join(root, "archive", shardPath), shardText);
+  fs.writeFileSync(sourceIndexTarget, sourceIndexText);
   fs.writeFileSync(manifestTarget, JSON.stringify(manifest) + "\n");
 }
-console.log(JSON.stringify({ indexVersion, projectionVersion: manifest.projectionVersion, ...catalog.health }, null, 2));
+console.log(JSON.stringify({
+  indexVersion,
+  projectionVersion: manifest.projectionVersion,
+  sourceShardCount: sourceIndexRows.length,
+  sourceShardQuestionCount,
+  ...catalog.health,
+}, null, 2));
