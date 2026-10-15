@@ -28,6 +28,6 @@
 
 ## 출고 연결
 
-기존 main Pages release의 source materialization과 기존 출고 검증 뒤에 별도 JSON sync 단계를 실행한다. 해당 단계는 Pages artifact 경로 밖으로 결과를 저장하고, run evidence에 JSON sync 상태와 로그를 남긴다. 성공 snapshot은 Actions cache에 저장하고 해당 run의 Actions artifact로도 보관해 다음 실행에서 last-good를 복구한다. 이전 cache가 없으면 남아 있는 마지막 성공 artifact를 찾아 복구한다. 두 복구 경로 모두 없으면 exporter 실패 status에 `lastGoodAvailable: false`를 기록한다.
+`question-json-sync`는 Pages `build`와 분리된 job이다. `build`가 실패해도 사용자가 workflow를 취소하지 않았다면 계속 실행하며, persisted `main`을 새로 checkout해 실제 source HEAD를 기록한다. JSON bank는 이 checkout의 main-resident JS·Meta를 기준으로 하고, Pages build 안에서만 생성된 미커밋 materialization output과 같다고 주장하지 않는다. Exporter와 sync test 24개를 실행한 뒤 Pages artifact 경로 밖에서 snapshot을 만든다. 동기화 중 main이 바뀌면 cache/artifact를 갱신하지 않는다. run evidence에는 source SHA, test/sync/cache/artifact 결과와 로그를 남긴다. 성공 snapshot은 Actions cache와 해당 run의 Actions artifact로 보관해 다음 실행에서 last-good를 복구한다. 이전 cache가 없으면 남아 있는 마지막 성공 artifact를 찾아 복구한다. 두 복구 경로 모두 없으면 exporter 실패 status에 `lastGoodAvailable: false`를 기록한다.
 
-Actions cache와 artifact는 Pages 사이트에 배포되지 않지만 GitHub 저장소 접근 권한의 적용을 받는다. 이들은 공개 저장소에서 비공개 저장소처럼 취급하지 않는다. JSON sync 오류는 기존 출고 검증 결과를 덮지 않고 신규 student selection gate로 추가하지 않는다. JSON status job은 오류를 별도로 표시하지만 Pages deploy job은 기존 `build` 성공만 의존하므로 JSON 실패가 기존 사이트 배포를 막지 않는다. 기존 Pages build 또는 실제 배포의 실패는 기존 workflow 조건대로 실패로 남는다.
+Actions cache와 artifact는 Pages 사이트에 배포되지 않지만 GitHub 저장소 접근 권한의 적용을 받는다. 공개 저장소에서는 비공개 데이터처럼 취급하지 않는다. JSON sync가 실패하면 JSON job 자체가 실패로 표시된다. Pages deploy job은 기존처럼 `build` 성공만 의존하므로 JSON job 결과가 학생 사이트 배포를 막지 않는다. 기존 Pages build 또는 실제 배포의 실패는 기존 workflow 조건대로 실패로 남는다.
