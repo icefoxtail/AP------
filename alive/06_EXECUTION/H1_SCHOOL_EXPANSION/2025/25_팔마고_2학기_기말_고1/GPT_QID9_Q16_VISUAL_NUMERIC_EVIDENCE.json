@@ -1,0 +1,155 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q16_VISUAL_NUMERIC_EVIDENCE_v1",
+  "sourceUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+  "script": "Python itertools.permutations(range(1,n+1)) filtered by each final stem constraints, n=5 or6",
+  "runExecuted": true,
+  "counts": {
+    "A1": {
+      "n": 6,
+      "count": 30,
+      "expectedAnswer": "①"
+    },
+    "A2": {
+      "n": 5,
+      "count": 4,
+      "expectedAnswer": "②"
+    },
+    "A3": {
+      "n": 6,
+      "count": 20,
+      "expectedAnswer": "③"
+    },
+    "B1": {
+      "n": 5,
+      "count": 10,
+      "expectedAnswer": "④"
+    },
+    "B2": {
+      "n": 6,
+      "count": 36,
+      "expectedAnswer": "⑤"
+    },
+    "B3": {
+      "n": 5,
+      "count": 6,
+      "expectedAnswer": "①"
+    },
+    "C1": {
+      "n": 6,
+      "count": 7,
+      "expectedAnswer": "②"
+    },
+    "C2": {
+      "n": 6,
+      "count": 2,
+      "expectedAnswer": "③"
+    },
+    "C3": {
+      "n": 6,
+      "count": 6,
+      "expectedAnswer": "④"
+    }
+  },
+  "svgCoordinatePreflight": {
+    "svgWidth": 600,
+    "svgHeight": 224,
+    "cardTop": 57,
+    "cardHeight": 51,
+    "cardWidth": 70,
+    "positions": [
+      {
+        "index": 1,
+        "x": 38,
+        "cx": 73,
+        "relationTextX": 118
+      },
+      {
+        "index": 2,
+        "x": 127,
+        "cx": 162,
+        "relationTextX": 207
+      },
+      {
+        "index": 3,
+        "x": 216,
+        "cx": 251,
+        "relationTextX": 296
+      },
+      {
+        "index": 4,
+        "x": 305,
+        "cx": 340,
+        "relationTextX": 385
+      },
+      {
+        "index": 5,
+        "x": 394,
+        "cx": 429,
+        "relationTextX": 474
+      },
+      {
+        "index": 6,
+        "x": 483,
+        "cx": 518,
+        "relationTextX": 563
+      }
+    ],
+    "fontSize": 15
+  },
+  "proofNotes": {
+    "B2": "6 free choices for f6; among remaining five f3 is maximum, choose remaining two of four for increasing first pair: C(4,2)=6.",
+    "B3": "Even f3 in {2,4}; 2 insufficient lower distinct values; 4 yields C(3,2)×2!=6.",
+    "C1": "f1 odd and cross f2<f5 implies f1=1. f2=2 gives4 choices, f2=3 gives3.",
+    "C2": "global minimum1 must be first of one of two increasing blocks, f1+f4=5 forces paired min4; only swapped triples.",
+    "C3": "two chain maxima f3>f4 forces f3=6; odd f1=1 gives4 choices, odd f1=3 gives2."
+  },
+  "svgFiles": [
+    {
+      "slot": "B2",
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/B2-solution.svg",
+      "gitBlobSha": "503a22cfd92e853419f6e1db180092edde1731c5",
+      "physicalGeometry": "axis-free value-order card diagram; no metric scale, points or graph to verify",
+      "authorLayoutPrecalc": true,
+      "xmlParsing": "NOT_RUN",
+      "actualBrowser": "NOT_RUN"
+    },
+    {
+      "slot": "B3",
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/B3-solution.svg",
+      "gitBlobSha": "79e5cb1305c4573ba404935c94347ed91720c642",
+      "physicalGeometry": "axis-free value-order card diagram; no metric scale, points or graph to verify",
+      "authorLayoutPrecalc": true,
+      "xmlParsing": "NOT_RUN",
+      "actualBrowser": "NOT_RUN"
+    },
+    {
+      "slot": "C1",
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/C1-solution.svg",
+      "gitBlobSha": "825594474002b65fd0e0748efbbf28e920ba91df",
+      "physicalGeometry": "axis-free value-order card diagram; no metric scale, points or graph to verify",
+      "authorLayoutPrecalc": true,
+      "xmlParsing": "NOT_RUN",
+      "actualBrowser": "NOT_RUN"
+    },
+    {
+      "slot": "C2",
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/C2-solution.svg",
+      "gitBlobSha": "2b4aca94381b421b158a4d3586a8f6c43af3356b",
+      "physicalGeometry": "axis-free value-order card diagram; no metric scale, points or graph to verify",
+      "authorLayoutPrecalc": true,
+      "xmlParsing": "NOT_RUN",
+      "actualBrowser": "NOT_RUN"
+    },
+    {
+      "slot": "C3",
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/C3-solution.svg",
+      "gitBlobSha": "c66740f41189ae5648219aa1b2c21950f3d2f410",
+      "physicalGeometry": "axis-free value-order card diagram; no metric scale, points or graph to verify",
+      "authorLayoutPrecalc": true,
+      "xmlParsing": "NOT_RUN",
+      "actualBrowser": "NOT_RUN"
+    }
+  ],
+  "actualBrowser": "NOT_RUN",
+  "formalIndependent": "NOT_RUN"
+}

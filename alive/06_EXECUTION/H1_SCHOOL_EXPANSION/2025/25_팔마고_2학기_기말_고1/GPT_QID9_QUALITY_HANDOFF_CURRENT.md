@@ -1,3 +1,15 @@
+# CURRENT — q16 AUTHOR 제작·자기점검 완료 / 다음 q17 (2026-10-15)
+
+- 브랜치 `work/alive-25-palma-h1-2final-qid9`, 기준 부모 HEAD `2d5a3f18412a995d7d17f29be8a02c9a15d778c0`. q16 A1~C3 9 신규 UID (144/207); q01~q15와 원본·기존 유사문항 불변. 원본 q16 UID `qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7` VERIFIED.
+- **Primary H1-RPM-257** (공통수학2 함수의 성질 / 일대일함수) `DIRECT_ACTIVE`; PT `PT_ONE_TO_ONE_BIJECTION`, TPL `TPL_BIJECTION_JUDGMENT_CONDITION` ACTIVE. q15의 합성함수 H1-RPM-254 자동승계 금지.
+- Canonical ACTIVE CrossConcept `CC_COMBINATORICS_COUNTING` (9 UID), `CC_NUMBER_PARITY` (B3/C1/C3 3 UID). 신규 EXT-CROSS **0개**: 기존 ACTIVE 키가 실제 모든 추가 개념을 커버하므로 의미 중복을 만들지 않음. Condition은 ACTIVE `COND_FUNCTION_BIJECTION`, `COND_STRICT_MONOTONE_VALUES`, 필요 시 `COND_FUNCTION_VALUE_CONSTRAINT`; 난이도 level/bucket 독립 이유 UID별 보존.
+- A1~C3 문제 SVG 9/9 **EXEMPT**. 해설 SVG B2/B3/C1/C2/C3 5개 Git blob 실파일 제작; 나머지 4개 **EXEMPT**. 수학적 경우의 수 Python 전수열거 A1 30/A2 4/A3 20/B1 10/B2 36/B3 6/C1 7/C2 2/C3 6; 45보기/36 실제 오답 경로 기록. Python 수치·카드 좌표 사전점검, **XML 파서 검사·실제 Browser NOT_RUN**.
+- 제작 9 UID, 자체 풀이·역발문 KEEP 9/9. **독립검수·Browser·학생 Consumer/index·main = NOT_RUN**; CREATE 후보이지 학생 출시·독립 PASS는 아님.
+- 신규 파일: `GPT_QID9_Q16_CREATE_DRAFT.json`, `GPT_QID9_Q16_AUTHOR_BLUEPRINT.json`, `GPT_QID9_Q16_AUTHOR_RECEIPT.json`, `GPT_QID9_Q16_PREFLIGHT.json`, `GPT_QID9_Q16_VISUAL_NUMERIC_EVIDENCE.json`, `assets/q16/*-solution.svg`.
+- 누적 `GPT_QID9_PROGRESS_CURRENT.json` 144/207, firstMissing 17. 다음 원본 q17의 실제 수학과 Primary를 독립 확정한다.
+
+---
+
 # CURRENT — q15 AUTHOR 완료 / 다음 q16 (2026-10-15)
 
 - 기준 브랜치: `work/alive-25-palma-h1-2final-qid9`; **q15 A1~C3 9 UID 신규 추가, 135/207 완료, 다음 원본 q16**. q01~q14/source/기존 유사문항 불변.

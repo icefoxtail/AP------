@@ -1,0 +1,415 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q16_AUTHOR_RECEIPT_v1",
+  "branch": "work/alive-25-palma-h1-2final-qid9",
+  "parentHead": "2d5a3f18412a995d7d17f29be8a02c9a15d778c0",
+  "mainHeadObserved": "d32a38e858a937306041365643a1e6a5978117bf",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceExamGitBlob": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 16,
+  "sourceUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+  "sourceUidBinding": "VERIFIED_QID_V1_IDENTITY_MAP_AND_HASH",
+  "sourceOriginalImage": "NONE_TEXT_ONLY",
+  "lockedPrimaryRpmL3": "H1-RPM-257",
+  "lockedPrimaryRpmL4": "일대일함수",
+  "rpmMappingStatus": "DIRECT_ACTIVE",
+  "actualActivePt": "PT_ONE_TO_ONE_BIJECTION",
+  "actualActiveTpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+  "uidCount": 9,
+  "choicesChecked": 45,
+  "distractorRoutes": 36,
+  "problemSvg": 0,
+  "problemSvgExempt": 9,
+  "solutionSvg": 5,
+  "solutionSvgExempt": 4,
+  "answerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 2,
+    "④": 2,
+    "⑤": 1
+  },
+  "authorMathChecks": {
+    "method": "Python itertools.permutations exhaustive five/six element permutations; mathematical exact counting solutions; 45 options and 36 index-specific wrong paths",
+    "pythonRun": true,
+    "observedBySlot": {
+      "A1": 30,
+      "A2": 4,
+      "A3": 20,
+      "B1": 10,
+      "B2": 36,
+      "B3": 6,
+      "C1": 7,
+      "C2": 2,
+      "C3": 6
+    },
+    "svgLayoutPythonPreflight": "6 cell x=38+89i; center=73+89i; constant width70; svg 600×224",
+    "browser": "NOT_RUN"
+  },
+  "canonicalReusedCrossConcepts": [
+    "CC_COMBINATORICS_COUNTING",
+    "CC_NUMBER_PARITY"
+  ],
+  "newCrossConcepts": [],
+  "generatedRegistryCreated": "NOT_REQUIRED_CANONICAL_COVERS_ALL_ADDITIONAL_CONCEPTS",
+  "visualAssets": [
+    {
+      "slot": "B2",
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/B2-solution.svg",
+      "gitBlobSha": "503a22cfd92e853419f6e1db180092edde1731c5",
+      "kind": "solution_partial_order_case_diagram",
+      "pythonNumeric": true,
+      "browser": "NOT_RUN"
+    },
+    {
+      "slot": "B3",
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/B3-solution.svg",
+      "gitBlobSha": "79e5cb1305c4573ba404935c94347ed91720c642",
+      "kind": "solution_partial_order_case_diagram",
+      "pythonNumeric": true,
+      "browser": "NOT_RUN"
+    },
+    {
+      "slot": "C1",
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/C1-solution.svg",
+      "gitBlobSha": "825594474002b65fd0e0748efbbf28e920ba91df",
+      "kind": "solution_partial_order_case_diagram",
+      "pythonNumeric": true,
+      "browser": "NOT_RUN"
+    },
+    {
+      "slot": "C2",
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/C2-solution.svg",
+      "gitBlobSha": "2b4aca94381b421b158a4d3586a8f6c43af3356b",
+      "kind": "solution_partial_order_case_diagram",
+      "pythonNumeric": true,
+      "browser": "NOT_RUN"
+    },
+    {
+      "slot": "C3",
+      "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/C3-solution.svg",
+      "gitBlobSha": "c66740f41189ae5648219aa1b2c21950f3d2f410",
+      "kind": "solution_partial_order_case_diagram",
+      "pythonNumeric": true,
+      "browser": "NOT_RUN"
+    }
+  ],
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-A1",
+      "slot": "A1",
+      "answer": "①",
+      "answerValue": "$30$",
+      "wrongRouteCount": 4,
+      "level": "하",
+      "bucket": 2,
+      "levelReason": "일대일대응을 순열로 바꾸고 한 묶음을 선택하여 정렬한 뒤 나머지 두 자리만 배열한다.",
+      "bucketReason": "감소 조건이 네 자리 배치를 고정한다는 판단은 필요하지만 중첩 분기·경계가 없다.",
+      "primaryRpmL3Id": "H1-RPM-257",
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "crossConceptDecisiveSteps": {
+        "CC_COMBINATORICS_COUNTING": "선택한 네 값을 내림차순으로 고정, 남는 두 입력은 자유배열."
+      },
+      "conditions": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES"
+      ],
+      "integration": "SEQUENTIAL",
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "EXEMPT",
+      "solutionSvg": null,
+      "solutionSvgGitBlobSha": null,
+      "reverseStem": "KEEP",
+      "sourceUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-A2",
+      "slot": "A2",
+      "answer": "②",
+      "answerValue": "$4$",
+      "wrongRouteCount": 4,
+      "level": "중",
+      "bucket": 2,
+      "levelReason": "고정된 함숫값에 따른 잔여 값 집합을 먼저 바꾼 뒤 증가하는 세 자리를 정한다.",
+      "bucketReason": "사슬의 배치가 유일하며 남은 값 한 개가 자동 결정되므로 계산은 단순하다.",
+      "primaryRpmL3Id": "H1-RPM-257",
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "crossConceptDecisiveSteps": {
+        "CC_COMBINATORICS_COUNTING": "f(5)=5 뒤 남은 네 함숫값에서 증가 사슬의 세 값을 선택."
+      },
+      "conditions": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integration": "SEQUENTIAL",
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "EXEMPT",
+      "solutionSvg": null,
+      "solutionSvgGitBlobSha": null,
+      "reverseStem": "KEEP",
+      "sourceUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-A3",
+      "slot": "A3",
+      "answer": "③",
+      "answerValue": "$20$",
+      "wrongRouteCount": 4,
+      "level": "중",
+      "bucket": 3,
+      "levelReason": "연속하지 않은 입력 위치를 같은 감소 사슬로 묶는 해석과 빈자리 배치가 필요하다.",
+      "bucketReason": "조건이 인접한 자리에 쓰이지 않아 놓치기 쉽지만 독립적인 경우 나눔은 없다.",
+      "primaryRpmL3Id": "H1-RPM-257",
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "crossConceptDecisiveSteps": {
+        "CC_COMBINATORICS_COUNTING": "f(1)=1 뒤 선택한 세 값을 입력 2,4,6에 감소배열, 잔여 두 입력은 순열."
+      },
+      "conditions": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integration": "SEQUENTIAL",
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "EXEMPT",
+      "solutionSvg": null,
+      "solutionSvgGitBlobSha": null,
+      "reverseStem": "KEEP",
+      "sourceUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-B1",
+      "slot": "B1",
+      "answer": "④",
+      "answerValue": "$10$",
+      "wrongRouteCount": 4,
+      "level": "중",
+      "bucket": 3,
+      "levelReason": "서로 독립된 두 증가·감소 사슬의 값 선택과 순서 확정을 결합한다.",
+      "bucketReason": "정렬 두 번이지만 교차 제약이 없어 조합 하나로 전체를 셀 수 있다.",
+      "primaryRpmL3Id": "H1-RPM-257",
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "crossConceptDecisiveSteps": {
+        "CC_COMBINATORICS_COUNTING": "두 독립된 증가·감소 사슬로 나누어 첫 사슬에 쓸 세 값을 선택."
+      },
+      "conditions": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES"
+      ],
+      "integration": "SEQUENTIAL",
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "EXEMPT",
+      "solutionSvg": null,
+      "solutionSvgGitBlobSha": null,
+      "reverseStem": "KEEP",
+      "sourceUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-B2",
+      "slot": "B2",
+      "answer": "⑤",
+      "answerValue": "$36$",
+      "wrongRouteCount": 4,
+      "level": "상",
+      "bucket": 4,
+      "levelReason": "공유 꼭짓점이 양쪽 사슬의 최댓값이라는 조건과 잔여 네 값의 분배가 동시에 작동한다.",
+      "bucketReason": "서로 겹치는 사슬을 독립된 두 묶음으로 잘못 세는 함정이 있다.",
+      "primaryRpmL3Id": "H1-RPM-257",
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "crossConceptDecisiveSteps": {
+        "CC_COMBINATORICS_COUNTING": "공유 f(3)이 선택한 다섯 값의 최댓값이므로 나머지 네 값은 두 사슬에 2+2로 선택."
+      },
+      "conditions": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES"
+      ],
+      "integration": "INTERDEPENDENT",
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/B2-solution.svg",
+      "solutionSvgGitBlobSha": "503a22cfd92e853419f6e1db180092edde1731c5",
+      "reverseStem": "KEEP",
+      "sourceUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-B3",
+      "slot": "B3",
+      "answer": "①",
+      "answerValue": "$6$",
+      "wrongRouteCount": 4,
+      "level": "중",
+      "bucket": 4,
+      "levelReason": "짝수 후보를 먼저 나누고 불가능한 최대값 2를 제거하는 존재 조건 판정이 핵심이다.",
+      "bucketReason": "짝수 경우를 단순 곱하지 않고 선택값 아래에 원소 두 개가 있는지 확인해야 한다.",
+      "primaryRpmL3Id": "H1-RPM-257",
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING",
+        "CC_NUMBER_PARITY"
+      ],
+      "crossConceptDecisiveSteps": {
+        "CC_COMBINATORICS_COUNTING": "조건 f(3)=4인 경우 작은 세 수 중 두 개를 선택, 잔여 두 값 순열.",
+        "CC_NUMBER_PARITY": "f(3)이 짝수라는 조건으로 후보 2,4를 분기하고 2의 불가능성을 판정."
+      },
+      "conditions": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integration": "INTERDEPENDENT",
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/B3-solution.svg",
+      "solutionSvgGitBlobSha": "79e5cb1305c4573ba404935c94347ed91720c642",
+      "reverseStem": "KEEP",
+      "sourceUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-C1",
+      "slot": "C1",
+      "answer": "②",
+      "answerValue": "$7$",
+      "wrongRouteCount": 4,
+      "level": "상",
+      "bucket": 5,
+      "levelReason": "홀수 최소값의 실현 가능성과 교차 부등식의 상호의존성을 동시에 확인한다.",
+      "bucketReason": "겉보기 20가지 분배 중 교차 대소·홀짝 조건의 정확한 분기와 누락 위험이 크다.",
+      "primaryRpmL3Id": "H1-RPM-257",
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING",
+        "CC_NUMBER_PARITY"
+      ],
+      "crossConceptDecisiveSteps": {
+        "CC_COMBINATORICS_COUNTING": "두 증가 사슬 분배와 교차 부등식 f(2)<f(5)를 동시에 확인.",
+        "CC_NUMBER_PARITY": "f(1) 홀수로 1,3,5를 분기하고 3,5를 제외."
+      },
+      "conditions": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integration": "INTERDEPENDENT",
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/C1-solution.svg",
+      "solutionSvgGitBlobSha": "825594474002b65fd0e0748efbbf28e920ba91df",
+      "reverseStem": "KEEP",
+      "sourceUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-C2",
+      "slot": "C2",
+      "answer": "③",
+      "answerValue": "$2$",
+      "wrongRouteCount": 4,
+      "level": "상",
+      "bucket": 4,
+      "levelReason": "전역 최소값은 반드시 사슬 시작점에 온다는 관찰로 가능한 합 조건을 두 쌍으로 줄인다.",
+      "bucketReason": "식 계산은 짧으나 순서쌍 네 개 중 실제 가능한 두 개만 골라야 하는 구조적 사고가 필요하다.",
+      "primaryRpmL3Id": "H1-RPM-257",
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "crossConceptDecisiveSteps": {
+        "CC_COMBINATORICS_COUNTING": "두 증가 사슬의 시작값은 각 최소이므로 두 묶음의 선택과 합 조건으로 실현가능성을 판정."
+      },
+      "conditions": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integration": "INTERDEPENDENT",
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/C2-solution.svg",
+      "solutionSvgGitBlobSha": "2b4aca94381b421b158a4d3586a8f6c43af3356b",
+      "reverseStem": "KEEP",
+      "sourceUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-C3",
+      "slot": "C3",
+      "answer": "④",
+      "answerValue": "$6$",
+      "wrongRouteCount": 4,
+      "level": "상",
+      "bucket": 5,
+      "levelReason": "두 사슬의 최고값 관계로 6을 고정한 뒤 홀수 최소값의 가능한 분기를 따진다.",
+      "bucketReason": "최대값의 전역 위치 판단과 홀짝 가지치기를 같이 하지 않으면 20개로 과대계산된다.",
+      "primaryRpmL3Id": "H1-RPM-257",
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING",
+        "CC_NUMBER_PARITY"
+      ],
+      "crossConceptDecisiveSteps": {
+        "CC_COMBINATORICS_COUNTING": "두 사슬의 최대값 비교로 f(3)=6을 확정하고 작은 두 값을 선택.",
+        "CC_NUMBER_PARITY": "f(1) 홀수 최소값 후보 1,3,5에서 선택 가짓수를 각각 판정."
+      },
+      "conditions": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integration": "INTERDEPENDENT",
+      "problemVisual": "EXEMPT",
+      "solutionVisual": "BENEFICIAL",
+      "solutionSvg": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/C3-solution.svg",
+      "solutionSvgGitBlobSha": "c66740f41189ae5648219aa1b2c21950f3d2f410",
+      "reverseStem": "KEEP",
+      "sourceUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    }
+  ],
+  "oldQ01ToQ15Protected": true,
+  "graphAssetCountDelta": 5,
+  "progressAfter": "144/207",
+  "firstMissingAfter": 17,
+  "formalIndependent": "NOT_RUN",
+  "browser": "NOT_RUN",
+  "consumer": "NOT_RUN",
+  "main": "NOT_RUN"
+}

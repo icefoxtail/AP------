@@ -1,0 +1,707 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q16_AUTHOR_BLUEPRINT_v1",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 16,
+  "sourceUid": "qid_v1_40a69143be5c1e772258493db1b05af555129f352996a8e6f65b85da1b84f6b7",
+  "invariant": "원본 q16의 역함수 존재⇒일대일대응, 서로 다른 함숫값 1회씩 사용, 대소 제약에 따라 조합·순열 가짓수 산출. 원본 정답 20.",
+  "rpmSearch": {
+    "canonicalPath": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+    "crosswalkGitBlob": "904b3768b69b300607e52217cad05bf71e34f221",
+    "decisiveCandidate": "H1-RPM-257 함수의 성질 → 일대일함수, PT_ONE_TO_ONE_BIJECTION / TPL_BIJECTION_JUDGMENT_CONDITION DIRECT_ACTIVE",
+    "rejectedComparators": [
+      "H1-RPM-254 합성함수·정의역 조건: 함수의 자기합성이 없음",
+      "H1-RPM-255 역함수 구하기: 역함수 식·값 자체는 계산하지 않음",
+      "H1-RPM-258 항등함수·상수함수: 해당 성질은 쓰지 않음",
+      "고1 공통수학1 순열/조합은 보조 CrossConcept일 뿐 Primary 일대일대응을 대체하지 않음"
+    ],
+    "extSearchScope": "2022 H1/H22-C2-07-FUNCTION_BASIC extension-l4 세 registry (geumdang q06/qid9, palma q09), branch+main; 동일 일대일대응 Primary보다 우선할 기존 EXT 없음",
+    "selectedPrimary": {
+      "id": "H1-RPM-257",
+      "l1": "함수",
+      "l2": "함수",
+      "l3": "함수의 성질",
+      "l4": "일대일함수",
+      "status": "DIRECT_ACTIVE"
+    }
+  },
+  "canonicalConceptSearch": {
+    "sourcePaths": [
+      "archive/data/meta-foundation/canonical/concepts/counting.json",
+      "archive/data/meta-foundation/canonical/concepts/number-theory.json",
+      "archive/data/meta-foundation/canonical/concepts/functions.json",
+      "archive/data/meta-foundation/compiled/concept_registry.json"
+    ],
+    "reused": [
+      "CC_COMBINATORICS_COUNTING",
+      "CC_NUMBER_PARITY"
+    ],
+    "deliberateExclusions": [
+      "CC_ONE_TO_ONE_FUNCTION은 Primary L4와 중복",
+      "CC_INVERSE_FUNCTION은 역함수 식이나 합성의 별도 단계 없음",
+      "CC_FUNCTION_MONOTONICITY는 실수 구간 함수의 단조성 대신 유한 위치 값의 순서 제약이므로 과잉 적용 금지"
+    ],
+    "conditionAuthority": "archive/data/meta-foundation/canonical/condition_registry.json ACTIVE existing COND_FUNCTION_BIJECTION / COND_STRICT_MONOTONE_VALUES / COND_FUNCTION_VALUE_CONSTRAINT",
+    "noExtensionReason": "조합·배열, 홀짝 개념과 증가/고정/합 조건이 기존 ACTIVE CrossConcept와 Condition으로 모두 설명된다. 동일 개념의 EXT-CROSS 중복 생성을 피한다."
+  },
+  "extSearchScope": [
+    "archive/generated/lite/v1/2022/H1/**/extension-l3/*.json",
+    "archive/generated/lite/v1/2022/H1/**/extension-l4/*.json",
+    "archive/generated/lite/v1/2022/H1/**/extension-meta/*.json"
+  ],
+  "newCrossConceptRegistry": null,
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-A1",
+      "slot": "A1",
+      "mode": "STRICT_VARIANT",
+      "studentStem": "집합 $X=\\{1,2,3,4,5,6\\}$에 대하여 함수 $f:X\\to X$의 역함수가 존재한다. $f(2)\\gt f(3)\\gt f(4)\\gt f(5)$이다. 이러한 함수 $f$의 개수를 구하시오.",
+      "choices": [
+        "$30$",
+        "$15$",
+        "$60$",
+        "$360$",
+        "$720$"
+      ],
+      "answer": "①",
+      "answerValue": "$30$",
+      "solution": "역함수가 존재하는 $f:X\\to X$는 일대일대응이다. 따라서 $1,2,3,4,5,6$이 정확히 한 번씩 함숫값으로 나온다.\n$f(2)>f(3)>f(4)>f(5)$이므로 이 네 자리에 들어갈 서로 다른 네 값을 먼저 선택한다. 선택 방법은 $\\binom64=15$가지이다.\n네 값의 배치는 큰 값부터 순서대로 놓는 한 가지뿐이다.\n남은 두 값을 $f(1)$, $f(6)$에 배치하는 방법은 $2!=2$가지이다.\n그러므로 $15\\times2=30$가지이고 정답은 ①이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_COMBINATORICS_COUNTING": "선택한 네 값을 내림차순으로 고정, 남는 두 입력은 자유배열."
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentBucket": 2,
+      "levelReason": "일대일대응을 순열로 바꾸고 한 묶음을 선택하여 정렬한 뒤 나머지 두 자리만 배열한다.",
+      "bucketReason": "감소 조건이 네 자리 배치를 고정한다는 판단은 필요하지만 중첩 분기·경계가 없다.",
+      "studentMentalPath": "네 위치의 감소 사슬 선택 → 유일한 역순 배열 → 남은 두 자리 자유 배열",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionSvgPath": null,
+      "solutionSvgBlob": null,
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "$15$",
+          "errorCalculation": "$\\binom64=15$만 계산하고 $f(1),f(6)$의 $2!$배치를 빠뜨림"
+        },
+        {
+          "index": "③",
+          "value": "$60$",
+          "errorCalculation": "$\\binom64\\cdot2!\\cdot2!=60$으로 네 값의 오름차순·내림차순을 모두 허용함"
+        },
+        {
+          "index": "④",
+          "value": "$360$",
+          "errorCalculation": "$\\binom64\\cdot4!=360$으로 감소 순서가 강제된 네 자리를 자유롭게 순열 배치함"
+        },
+        {
+          "index": "⑤",
+          "value": "$720$",
+          "errorCalculation": "$6!=720$으로 $f(2)>f(3)>f(4)>f(5)$를 아예 적용하지 않음"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-A2",
+      "slot": "A2",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "집합 $X=\\{1,2,3,4,5\\}$에 대하여 함수 $f:X\\to X$의 역함수가 존재한다. $f(1)\\lt f(2)\\lt f(3)$이고 $f(5)=5$이다. 이러한 함수 $f$의 개수를 구하시오.",
+      "choices": [
+        "$1$",
+        "$4$",
+        "$8$",
+        "$20$",
+        "$24$"
+      ],
+      "answer": "②",
+      "answerValue": "$4$",
+      "solution": "역함수가 존재하므로 $f$는 일대일대응이고 $f(1),\\ldots,f(5)$는 서로 다른 다섯 수이다.\n$f(5)=5$가 확정되어 나머지 네 자리에 넣을 값은 $1,2,3,4$이다.\n$f(1)<f(2)<f(3)$을 만족하려면 네 값 중 세 값을 택하여 작은 수부터 배치해야 한다. 선택은 $\\binom43=4$가지이며 세 자리의 순서는 각 선택마다 한 가지로 정해진다.\n남은 한 값은 $f(4)$에 들어간다. 따라서 함수는 $4$가지이고 정답은 ②이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_COMBINATORICS_COUNTING": "f(5)=5 뒤 남은 네 함숫값에서 증가 사슬의 세 값을 선택."
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 2,
+      "levelReason": "고정된 함숫값에 따른 잔여 값 집합을 먼저 바꾼 뒤 증가하는 세 자리를 정한다.",
+      "bucketReason": "사슬의 배치가 유일하며 남은 값 한 개가 자동 결정되므로 계산은 단순하다.",
+      "studentMentalPath": "끝자리 함숫값 고정 → 사용 가능 값 네 개 → 증가 사슬의 조합",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionSvgPath": null,
+      "solutionSvgBlob": null,
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$1$",
+          "errorCalculation": "$f(5)=5$뿐 아니라 잘못 $f(4)=4$까지 고정하여 $(f(1),f(2),f(3))=(1,2,3)$ 한 가지만 셈"
+        },
+        {
+          "index": "③",
+          "value": "$8$",
+          "errorCalculation": "$\\binom43\\cdot2=8$로 순서가 정해진 세 값의 배치를 두 가지로 중복 계산함"
+        },
+        {
+          "index": "④",
+          "value": "$20$",
+          "errorCalculation": "$\\binom53\\cdot2!=20$으로 $f(5)=5$ 고정 조건을 누락함"
+        },
+        {
+          "index": "⑤",
+          "value": "$24$",
+          "errorCalculation": "$4!=24$로 $f(5)=5$만 적용하고 $f(1)<f(2)<f(3)$을 무시함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-A3",
+      "slot": "A3",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "집합 $X=\\{1,2,3,4,5,6\\}$에 대하여 함수 $f:X\\to X$의 역함수가 존재한다. $f(1)=1$이고 $f(2)\\gt f(4)\\gt f(6)$이다. 이러한 함수 $f$의 개수를 구하시오.",
+      "choices": [
+        "$10$",
+        "$40$",
+        "$20$",
+        "$60$",
+        "$120$"
+      ],
+      "answer": "③",
+      "answerValue": "$20$",
+      "solution": "일대일대응이므로 서로 다른 입력에는 서로 다른 함숫값이 대응하고 모든 값이 한 번씩 사용된다.\n$f(1)=1$이므로 나머지 함숫값은 $2,3,4,5,6$이다.\n$f(2)>f(4)>f(6)$에 놓을 세 값을 다섯 값 중에서 고르는 방법은 $\\binom53=10$가지이다. 세 값을 고르면 내림차순이라는 조건에 따라 배치는 한 가지로 정해진다.\n남은 두 값은 $f(3),f(5)$에 $2!=2$가지로 놓을 수 있다.\n따라서 $10\\times2=20$가지이고 정답은 ③이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_COMBINATORICS_COUNTING": "f(1)=1 뒤 선택한 세 값을 입력 2,4,6에 감소배열, 잔여 두 입력은 순열."
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "levelReason": "연속하지 않은 입력 위치를 같은 감소 사슬로 묶는 해석과 빈자리 배치가 필요하다.",
+      "bucketReason": "조건이 인접한 자리에 쓰이지 않아 놓치기 쉽지만 독립적인 경우 나눔은 없다.",
+      "studentMentalPath": "첫 함숫값 1 고정 → 떨어진 세 자리의 감소 관계 적용 → 빈자리 순열",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionSvgPath": null,
+      "solutionSvgBlob": null,
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$10$",
+          "errorCalculation": "$\\binom53=10$에서 자유로운 $f(3),f(5)$의 $2!$를 빠뜨림"
+        },
+        {
+          "index": "②",
+          "value": "$40$",
+          "errorCalculation": "$\\binom53\\cdot2!\\cdot2=40$으로 정렬 방향 두 가지를 허용함"
+        },
+        {
+          "index": "④",
+          "value": "$60$",
+          "errorCalculation": "$\\binom53\\cdot3!=60$으로 감소해야 할 세 자리 값을 마음대로 순열 배치함"
+        },
+        {
+          "index": "⑤",
+          "value": "$120$",
+          "errorCalculation": "$5!=120$으로 $f(1)=1$만 적용하고 나머지 세 자리의 대소 조건을 잊음"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-B1",
+      "slot": "B1",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "집합 $X=\\{1,2,3,4,5\\}$에 대하여 함수 $f:X\\to X$의 역함수가 존재한다. $f(1)\\lt f(2)\\lt f(3)$이고 $f(4)\\gt f(5)$이다. 이러한 함수 $f$의 개수를 구하시오.",
+      "choices": [
+        "$1$",
+        "$20$",
+        "$60$",
+        "$10$",
+        "$120$"
+      ],
+      "answer": "④",
+      "answerValue": "$10$",
+      "solution": "역함수가 존재하므로 다섯 함숫값은 $1,2,3,4,5$를 중복 없이 모두 사용한다.\n먼저 $f(1),f(2),f(3)$에 넣을 서로 다른 세 수를 택하면 $\\binom53=10$가지이다. 이 세 자리는 증가해야 하므로 작은 값부터 차례대로 넣는 방법 한 가지뿐이다.\n나머지 두 수는 $f(4)>f(5)$에 맞추어 큰 값, 작은 값 순서로 배치해야 하므로 역시 한 가지이다.\n따라서 주어진 조건을 만족하는 일대일대응은 $10$가지이고 정답은 ④이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_COMBINATORICS_COUNTING": "두 독립된 증가·감소 사슬로 나누어 첫 사슬에 쓸 세 값을 선택."
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "levelReason": "서로 독립된 두 증가·감소 사슬의 값 선택과 순서 확정을 결합한다.",
+      "bucketReason": "정렬 두 번이지만 교차 제약이 없어 조합 하나로 전체를 셀 수 있다.",
+      "studentMentalPath": "두 독립 사슬로 분할 → 앞 사슬에 쓸 값 세 개 선택 → 두 사슬 각각 순서 고정",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "solutionSvgPath": null,
+      "solutionSvgBlob": null,
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$1$",
+          "errorCalculation": "두 사슬을 연결해 $f(1)<f(2)<f(3)<f(4)<f(5)$로 잘못 생각하여 한 가지로 고정함"
+        },
+        {
+          "index": "②",
+          "value": "$20$",
+          "errorCalculation": "$5!/3!=20$으로 마지막 두 자리의 감소 조건을 놓침"
+        },
+        {
+          "index": "③",
+          "value": "$60$",
+          "errorCalculation": "$5!/2!=60$으로 앞 세 자리의 증가 조건을 놓침"
+        },
+        {
+          "index": "⑤",
+          "value": "$120$",
+          "errorCalculation": "$5!=120$으로 두 대소 조건을 모두 무시함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-B2",
+      "slot": "B2",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "집합 $X=\\{1,2,3,4,5,6\\}$에 대하여 함수 $f:X\\to X$의 역함수가 존재한다. $f(1)\\lt f(2)\\lt f(3)\\gt f(4)\\gt f(5)$이다. 이러한 함수 $f$의 개수를 구하시오.",
+      "choices": [
+        "$6$",
+        "$20$",
+        "$120$",
+        "$144$",
+        "$36$"
+      ],
+      "answer": "⑤",
+      "answerValue": "$36$",
+      "solution": "일대일대응이므로 여섯 함숫값은 $1$부터 $6$까지 서로 다르다.\n조건은 $f(1)<f(2)<f(3)$과 $f(3)>f(4)>f(5)$이므로, $f(3)$은 이 다섯 자리에서 가장 큰 함숫값이다.\n먼저 제한이 없는 $f(6)$의 값을 정하는 방법은 $6$가지이다.\n남은 다섯 값 중 가장 큰 값을 $f(3)$에 넣으면, 나머지 네 값을 두 개씩 $f(1),f(2)$와 $f(4),f(5)$에 나누는 방법은 $\\binom42=6$가지이다.\n각 두 자리의 순서는 증가·감소 조건에 의해 유일하다. 그러므로 $6\\times6=36$가지이고 정답은 ⑤이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_COMBINATORICS_COUNTING": "공유 f(3)이 선택한 다섯 값의 최댓값이므로 나머지 네 값은 두 사슬에 2+2로 선택."
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 4,
+      "levelReason": "공유 꼭짓점이 양쪽 사슬의 최댓값이라는 조건과 잔여 네 값의 분배가 동시에 작동한다.",
+      "bucketReason": "서로 겹치는 사슬을 독립된 두 묶음으로 잘못 세는 함정이 있다.",
+      "studentMentalPath": "자유 값 먼저 선택 → 양쪽 순서 사슬이 공유하는 꼭짓점의 최대값 확정 → 아래 네 값을 양쪽 사슬로 분할",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/B2-solution.svg",
+      "solutionSvgBlob": "503a22cfd92e853419f6e1db180092edde1731c5",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$6$",
+          "errorCalculation": "$\\binom42=6$만 계산하고 제한 없는 $f(6)$에 놓을 값을 선택하는 6가지를 빠뜨림"
+        },
+        {
+          "index": "②",
+          "value": "$20$",
+          "errorCalculation": "$\\binom63=20$으로 $f(3)$이 양쪽 사슬에 공통으로 등장한다는 사실을 무시함"
+        },
+        {
+          "index": "③",
+          "value": "$120$",
+          "errorCalculation": "$6!/3!=120$으로 앞 증가 사슬만 적용하고 $f(3)>f(4)>f(5)$는 세지 않음"
+        },
+        {
+          "index": "④",
+          "value": "$144$",
+          "errorCalculation": "$6\\times4!=144$로 나머지 네 값을 두 증가·감소 사슬에 순서 없이 배열함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-B3",
+      "slot": "B3",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "집합 $X=\\{1,2,3,4,5\\}$에 대하여 함수 $f:X\\to X$의 역함수가 존재한다. $f(1)\\lt f(2)\\lt f(3)$이고 $f(3)$은 짝수이다. 이러한 함수 $f$의 개수를 구하시오.",
+      "choices": [
+        "$6$",
+        "$3$",
+        "$8$",
+        "$20$",
+        "$24$"
+      ],
+      "answer": "①",
+      "answerValue": "$6$",
+      "solution": "역함수가 존재하므로 $f$는 일대일대응이다. 증가하는 세 함숫값 중 가장 큰 $f(3)$은 짝수이므로 $2$ 또는 $4$이다.\n$f(3)=2$이면 그보다 작은 서로 다른 자연수 두 개를 $f(1),f(2)$에 놓을 수 없으므로 불가능하다.\n$f(3)=4$이면 $f(1),f(2)$는 $1,2,3$ 중 서로 다른 두 수를 골라 작은 수부터 놓는다. 그 방법은 $\\binom32=3$가지이다.\n남은 두 함숫값은 $f(4),f(5)$에 $2!=2$가지로 배치한다.\n그러므로 가능한 함수는 $3\\times2=6$가지이고 정답은 ①이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING",
+        "CC_NUMBER_PARITY"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_COMBINATORICS_COUNTING": "조건 f(3)=4인 경우 작은 세 수 중 두 개를 선택, 잔여 두 값 순열.",
+        "CC_NUMBER_PARITY": "f(3)이 짝수라는 조건으로 후보 2,4를 분기하고 2의 불가능성을 판정."
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "중",
+      "assessmentBucket": 4,
+      "levelReason": "짝수 후보를 먼저 나누고 불가능한 최대값 2를 제거하는 존재 조건 판정이 핵심이다.",
+      "bucketReason": "짝수 경우를 단순 곱하지 않고 선택값 아래에 원소 두 개가 있는지 확인해야 한다.",
+      "studentMentalPath": "짝수로 제한된 사슬 최대값을 경우분류 → 작은 값 두 개 존재 판정 → 나머지 두 자리 순열",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/B3-solution.svg",
+      "solutionSvgBlob": "79e5cb1305c4573ba404935c94347ed91720c642",
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "$3$",
+          "errorCalculation": "$\\binom32=3$만 계산하고 $f(4),f(5)$의 $2!=2$배치를 생략함"
+        },
+        {
+          "index": "③",
+          "value": "$8$",
+          "errorCalculation": "가능한 $f(3)=4$의 6가지에 불가능한 $f(3)=2$ 경우를 2가지로 잘못 더하여 8로 계산함"
+        },
+        {
+          "index": "④",
+          "value": "$20$",
+          "errorCalculation": "$\\binom53\\cdot2!=20$으로 $f(3)$의 짝수 조건을 무시함"
+        },
+        {
+          "index": "⑤",
+          "value": "$24$",
+          "errorCalculation": "$f(3)=2,4$ 각 경우에 $4\\cdot3=12$개씩 세어 증가 관계와 작은 값 두 개의 존재 조건을 동시에 무시함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-C1",
+      "slot": "C1",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "집합 $X=\\{1,2,3,4,5,6\\}$에 대하여 함수 $f:X\\to X$의 역함수가 존재한다. $f(1)\\lt f(2)\\lt f(3)$, $f(4)\\lt f(5)\\lt f(6)$, $f(2)\\lt f(5)$이고 $f(1)$은 홀수이다. 이러한 함수 $f$의 개수를 구하시오.",
+      "choices": [
+        "$4$",
+        "$7$",
+        "$10$",
+        "$13$",
+        "$42$"
+      ],
+      "answer": "②",
+      "answerValue": "$7$",
+      "solution": "역함수가 존재하므로 여섯 함숫값에 $1,2,3,4,5,6$을 중복 없이 놓는다. 두 세 자리 묶음은 각각 증가한다.\n첫째 묶음의 최솟값인 $f(1)$이 홀수이므로 $1,3,5$를 살펴본다.\n$f(1)=5$이면 뒤에 더 큰 값 두 개를 놓을 수 없어 불가능하다.\n$f(1)=3$이면 $f(2)\\ge4$인데 둘째 묶음에는 $1,2$가 반드시 들어가서 $f(5)=2$이다. 따라서 $f(2)<f(5)$를 만족할 수 없다.\n결국 $f(1)=1$이다. $f(2)=2$일 때 $f(3)$은 $3,4,5,6$ 중 하나이므로 $4$가지이고, 남은 세 값은 자동으로 오름차순으로 정해진다.\n$f(2)=3$일 때는 $f(3)=4,5,6$으로 $3$가지이며 둘째 묶음의 가운데 값 $f(5)$는 항상 $3$보다 크다.\n$f(2)\\ge4$이면 남은 둘째 묶음의 둘째 값이 $f(2)$보다 작으므로 불가능하다.\n따라서 $4+3=7$가지이고 정답은 ②이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING",
+        "CC_NUMBER_PARITY"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_COMBINATORICS_COUNTING": "두 증가 사슬 분배와 교차 부등식 f(2)<f(5)를 동시에 확인.",
+        "CC_NUMBER_PARITY": "f(1) 홀수로 1,3,5를 분기하고 3,5를 제외."
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "levelReason": "홀수 최소값의 실현 가능성과 교차 부등식의 상호의존성을 동시에 확인한다.",
+      "bucketReason": "겉보기 20가지 분배 중 교차 대소·홀짝 조건의 정확한 분기와 누락 위험이 크다.",
+      "studentMentalPath": "두 증가 사슬 → 홀수 최소값 후보 제거 → 서로 다른 사슬의 중간값 대소 비교 → 경우별 카운트",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/C1-solution.svg",
+      "solutionSvgBlob": "825594474002b65fd0e0748efbbf28e920ba91df",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$4$",
+          "errorCalculation": "$f(1)=1,\\ f(2)=2$인 네 가지 경우만 세고 $f(2)=3$인 세 가지를 누락함"
+        },
+        {
+          "index": "③",
+          "value": "$10$",
+          "errorCalculation": "$f(1)=1$만 고정하고 $\\binom52=10$을 계산하여 교차 조건 $f(2)<f(5)$를 적용하지 않음"
+        },
+        {
+          "index": "④",
+          "value": "$13$",
+          "errorCalculation": "홀수 첫 값만 고려해 $\\binom52+\\binom32=10+3=13$으로 세고 두 사슬 사이의 비교를 빠뜨림"
+        },
+        {
+          "index": "⑤",
+          "value": "$42$",
+          "errorCalculation": "교차 조건까지 걸러 낸 7개의 값 선택에 둘째 증가 사슬을 $3!=6$가지로 다시 곱해 42로 과대계산함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-C2",
+      "slot": "C2",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "집합 $X=\\{1,2,3,4,5,6\\}$에 대하여 함수 $f:X\\to X$의 역함수가 존재한다. $f(1)\\lt f(2)\\lt f(3)$, $f(4)\\lt f(5)\\lt f(6)$이고 $f(1)+f(4)=5$이다. 이러한 함수 $f$의 개수를 구하시오.",
+      "choices": [
+        "$1$",
+        "$4$",
+        "$2$",
+        "$6$",
+        "$20$"
+      ],
+      "answer": "③",
+      "answerValue": "$2$",
+      "solution": "일대일대응이므로 함숫값은 $1,2,3,4,5,6$을 모두 한 번씩 사용한다. 두 묶음은 각각 증가하므로 $f(1)$과 $f(4)$가 각 묶음의 최솟값이다.\n전체에서 가장 작은 값 $1$은 반드시 이 두 묶음의 첫 자리에 들어간다.\n$f(1)+f(4)=5$이므로 그 밖의 첫 자리 값은 $4$이다. 따라서 $(f(1),f(4))=(1,4)$ 또는 $(4,1)$이다.\n$(f(1),f(4))=(1,4)$라면 $4$가 시작하는 묶음에는 $5,6$이 따라야 하므로 $(f(4),f(5),f(6))=(4,5,6)$이고 첫 묶음은 $(1,2,3)$이다.\n반대 순서 $(4,1)$도 두 세 수 묶음을 서로 교환한 함수 하나를 만든다.\n따라서 조건을 만족하는 함수는 정확히 두 개이고 정답은 ③이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_COMBINATORICS_COUNTING": "두 증가 사슬의 시작값은 각 최소이므로 두 묶음의 선택과 합 조건으로 실현가능성을 판정."
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 4,
+      "levelReason": "전역 최소값은 반드시 사슬 시작점에 온다는 관찰로 가능한 합 조건을 두 쌍으로 줄인다.",
+      "bucketReason": "식 계산은 짧으나 순서쌍 네 개 중 실제 가능한 두 개만 골라야 하는 구조적 사고가 필요하다.",
+      "studentMentalPath": "두 사슬의 첫 값은 최솟값 → 전역 최소 1의 위치 확정 → 합 5로 다른 시작값 4 확정 → 대칭된 두 함수",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/C2-solution.svg",
+      "solutionSvgBlob": "2b4aca94381b421b158a4d3586a8f6c43af3356b",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$1$",
+          "errorCalculation": "$(1,2,3)$과 $(4,5,6)$ 두 묶음을 맞바꾼 서로 다른 두 함수를 같은 것으로 취급하여 1개로 셈"
+        },
+        {
+          "index": "②",
+          "value": "$4$",
+          "errorCalculation": "합이 5인 첫 자리 순서쌍 (1,4),(2,3),(3,2),(4,1)을 모두 실현 가능하다고 잘못 판단함"
+        },
+        {
+          "index": "④",
+          "value": "$6$",
+          "errorCalculation": "올바른 첫 자리 두 경우 각각에서 증가 사슬의 나머지 배치를 $3!=6$개라고 착각하여 $2\\cdot3=6$으로 계산함"
+        },
+        {
+          "index": "⑤",
+          "value": "$20$",
+          "errorCalculation": "$\\binom63=20$으로 두 사슬의 증가 조건만 적용하고 첫 자리의 합 5를 누락함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q16-C3",
+      "slot": "C3",
+      "mode": "EXAM_FOLLOWUP",
+      "studentStem": "집합 $X=\\{1,2,3,4,5,6\\}$에 대하여 함수 $f:X\\to X$의 역함수가 존재한다. $f(1)\\lt f(2)\\lt f(3)$, $f(4)\\gt f(5)\\gt f(6)$, $f(3)\\gt f(4)$이고 $f(1)$은 홀수이다. 이러한 함수 $f$의 개수를 구하시오.",
+      "choices": [
+        "$4$",
+        "$10$",
+        "$12$",
+        "$6$",
+        "$20$"
+      ],
+      "answer": "④",
+      "answerValue": "$6$",
+      "solution": "역함수가 존재하므로 모든 함숫값 $1,2,3,4,5,6$이 한 번씩 쓰인다.\n$f(3)$은 앞 증가 사슬의 최댓값이고 $f(4)$는 뒤 감소 사슬의 최댓값이다.\n$f(3)>f(4)$이므로 두 묶음 전체에서 가장 큰 값 $6$은 반드시 $f(3)$에 들어간다.\n이제 $f(1),f(2)$는 $1,2,3,4,5$에서 서로 다른 두 값을 골라 작은 것부터 놓는다. 이 중 $f(1)$이 홀수여야 한다.\n$f(1)=1$이면 $f(2)=2,3,4,5$로 네 가지이다.\n$f(1)=3$이면 $f(2)=4,5$로 두 가지이다. $f(1)=5$이면 그보다 큰 남은 값을 고를 수 없다.\n앞 세 자리를 정하면 뒤 세 함숫값은 내림차순 한 가지로 결정된다.\n그러므로 $4+2=6$가지이고 정답은 ④이다.",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "l4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "pt": "PT_ONE_TO_ONE_BIJECTION",
+      "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_COMBINATORICS_COUNTING",
+        "CC_NUMBER_PARITY"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_COMBINATORICS_COUNTING": "두 사슬의 최대값 비교로 f(3)=6을 확정하고 작은 두 값을 선택.",
+        "CC_NUMBER_PARITY": "f(1) 홀수 최소값 후보 1,3,5에서 선택 가짓수를 각각 판정."
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_STRICT_MONOTONE_VALUES",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "levelReason": "두 사슬의 최고값 관계로 6을 고정한 뒤 홀수 최소값의 가능한 분기를 따진다.",
+      "bucketReason": "최대값의 전역 위치 판단과 홀짝 가지치기를 같이 하지 않으면 20개로 과대계산된다.",
+      "studentMentalPath": "서로 다른 사슬 최댓값 비교 → 전역 최대 6 확정 → 첫 최소값 홀짝 분기 → 뒤 사슬 역순 고정",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "solutionSvgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q16/C3-solution.svg",
+      "solutionSvgBlob": "c66740f41189ae5648219aa1b2c21950f3d2f410",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$4$",
+          "errorCalculation": "$f(1)=1$일 때의 4가지만 세고 $f(1)=3$인 두 가지를 누락함"
+        },
+        {
+          "index": "②",
+          "value": "$10$",
+          "errorCalculation": "$f(3)=6$을 정하고 $\\binom52=10$을 세면서 $f(1)$의 홀수 조건을 잊음"
+        },
+        {
+          "index": "③",
+          "value": "$12$",
+          "errorCalculation": "올바른 두 수 선택 6가지 뒤 둘째 감소 사슬을 2가지로 추가 배치 가능하다고 착각하여 12로 계산함"
+        },
+        {
+          "index": "⑤",
+          "value": "$20$",
+          "errorCalculation": "$\\binom63=20$으로 두 묶음의 순서만 고정하고 $f(3)>f(4)$와 홀수 제약을 모두 무시함"
+        }
+      ],
+      "reverseStem": "KEEP",
+      "independent": "NOT_RUN",
+      "browser": "NOT_RUN"
+    }
+  ]
+}
