@@ -173,7 +173,13 @@ function collectSvgAccessibilitySourceIndex(options = {}) {
 }
 
 function gitText(repoRoot, args, allowMissing = false) {
-  try { return execFileSync('git', ['-C', repoRoot, ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim(); }
+  try {
+    return execFileSync('git', ['-C', repoRoot, ...args], {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+      maxBuffer: 32 * 1024 * 1024
+    }).trim();
+  }
   catch (error) {
     if (allowMissing) return null;
     throw new Error(`SVG_ACCESSIBILITY_GIT_SCOPE_FAILED:${args.join(' ')}:${error.stderr?.toString().trim() || error.message}`);
@@ -210,13 +216,14 @@ function resolveSvgAccessibilityBase(options = {}) {
 
 function collectChangedSourceScope(options = {}) {
   const repoRoot = path.resolve(options.repoRoot || path.resolve(__dirname, '../..'));
+  const productionRoots = options.sourceRoots || SOURCE_ROOTS;
   const base = options.baseRef
     ? { baseRef: gitText(repoRoot, ['rev-parse', '--verify', `${options.baseRef}^{commit}`]), baseMode: 'EXPLICIT_BASE' }
     : resolveSvgAccessibilityBase({ ...options, repoRoot });
-  const diffPaths = gitText(repoRoot, ['diff', '--name-only', '--no-renames', base.baseRef, '--']).split(/\r?\n/).filter(Boolean);
+  const diffPathspecs = [...new Set([...productionRoots, 'archive/assets'])];
+  const diffPaths = gitText(repoRoot, ['diff', '--name-only', '--no-renames', base.baseRef, '--', ...diffPathspecs]).split(/\r?\n/).filter(Boolean);
   const untracked = gitText(repoRoot, ['ls-files', '--others', '--exclude-standard']).split(/\r?\n/).filter(Boolean);
   const changedPaths = [...new Set([...diffPaths, ...untracked].map(value => value.replace(/\\/g, '/')))].sort();
-  const productionRoots = options.sourceRoots || SOURCE_ROOTS;
   const changedJsPaths = changedPaths.filter(file => file.toLowerCase().endsWith('.js') && productionRoots.some(root => file.startsWith(`${root}/`)));
   const changedSvgRefs = [...new Set(changedPaths
     .filter(file => file.toLowerCase().endsWith('.svg') && file.startsWith('archive/assets/'))

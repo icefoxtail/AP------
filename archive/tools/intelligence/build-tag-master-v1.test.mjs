@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildApprovedSubunitAppendV1, buildTagMasterV1, mergeApprovedSubunitRows } from './build-tag-master-v1.mjs';
+import { readHotEvidenceAuthority } from '../evidence-authority-v1.mjs';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const compiledMasterPath = path.join(repoRoot, 'archive/data/master_tables/js_archive_tag_master.json');
@@ -21,8 +22,8 @@ test('full tag master compiler resolves the canonical document path and keeps ol
 
 test('ROOT append-only compilation preserves all existing rows/order and adds only four R1-authorized child/concept pairs', () => {
   const beforeBytes = fs.readFileSync(compiledMasterPath);
-  const baselinePath = path.join(repoRoot, 'archive/analysis/h2-intake-batch01-20261009/technical-subunit-authority-recovery/baseline/tag-master.before.json');
-  const baseline = JSON.parse(fs.readFileSync(baselinePath, 'utf8'));
+  const baselinePath = 'archive/analysis/h2-intake-batch01-20261009/technical-subunit-authority-recovery/baseline/tag-master.before.json';
+  const baseline = JSON.parse(readHotEvidenceAuthority({ root: repoRoot, originalPath: baselinePath }).bytes.toString('utf8'));
   const compiled = buildApprovedSubunitAppendV1();
   const subUnitKeys = [
     'H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION',

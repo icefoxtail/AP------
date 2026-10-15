@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.join(__dirname, '..');
+const { readPrintRenderAuthorityFixture } = require('./helpers/print-render-authority-fixtures.cjs');
 
 test('all three adapters load the shared readiness tracker without collapsing transport capability', () => {
   const archive = fs.readFileSync(path.join(root, 'archive', 'engine.html'), 'utf8');
@@ -50,7 +51,7 @@ test('adapters record success-only RENDER_READY and reject incomplete render/ima
 });
 
 test('readiness phase evidence distinguishes rendered readiness from an intentionally uninvoked print transport', () => {
-  const evidence = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-6-readiness-authority.json'), 'utf8'));
+  const evidence = readPrintRenderAuthorityFixture('phase-6-readiness-authority.json');
   assert.deepEqual(evidence.states, ['DATA_READY', 'MATH_READY', 'IMAGE_READY', 'LAYOUT_READY', 'RENDER_READY', 'PRINT_READY']);
   assert.ok(evidence.browserRenderEvidence.every(item => item.state === 'RENDER_READY' && item.events === 5 && item.renderError === ''));
   assert.equal(evidence.runtimeVersion, '20260906.2');

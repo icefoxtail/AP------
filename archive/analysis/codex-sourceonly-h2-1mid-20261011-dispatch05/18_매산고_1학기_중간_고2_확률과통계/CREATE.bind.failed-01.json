@@ -1,6 +1,0 @@
-{
-  "attempt": "CREATE bind attempt 1",
-  "result": "FAILED_BIND_AUTHORIZATION",
-  "reason": "PowerShell Get-FileHash returned the correct current raw SHA-256 in uppercase, while stage-kit requires the exact lowercase raw string. bind wrote no output and created no quality disposition.",
-  "repair": "Normalize the actual current hash to lowercase and rerun bind in this same CREATE session."
-}

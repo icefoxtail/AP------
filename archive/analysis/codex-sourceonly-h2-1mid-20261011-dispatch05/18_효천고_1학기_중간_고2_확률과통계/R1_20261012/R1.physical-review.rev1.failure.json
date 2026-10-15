@@ -1,9 +1,0 @@
-{
- "schemaVersion":"JS_ARCHIVE_R1_PHYSICAL_REVIEW_FAILURE_V1",
- "stage":"R1",
- "examUid":"18_효천고_1학기_중간_고2_확률과통계",
- "command":"node archive/tools/review-evidence-gate.mjs --exam <current-js> --evidence R1.physical-review.final.json --stage R1 --json",
- "report":{"ok":false,"questionCount":22,"questionEvidenceRows":22,"linkedSolutionVisualCount":4,"visualEvidenceRows":4,"metaEvidenceRows":22,"itemHoldCount":1,"itemHoldQids":[12],"issues":["EVIDENCE_EXAM_SHA_MISMATCH","VISUAL_SHA_MISMATCH:q3","VISUAL_SHA_MISMATCH:q6","VISUAL_SHA_MISMATCH:q7","VISUAL_SHA_MISMATCH:q21","R1_INDEPENDENCE_FLAG_REQUIRED"]},
- "repair":"Bind examSha256 with the physical review helper's sha256: prefix, bind SVG assetSha256 with the helper's sha256: prefix, add the R1 independence flag, preserve report and rerun this physical evidence gate.",
- "sourceMutated":false
-}

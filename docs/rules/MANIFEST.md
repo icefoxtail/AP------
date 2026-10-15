@@ -10,7 +10,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 ## files
 - 04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md | 16938 bytes | sha256 aca7c23683f3fb75c7b8fc93eda7ef6267091be2f1aea1a53dc3fefc26fce4e4
 - 02_PIPELINES/JS_Archive_Scheduled_Worker_Prompt_Canonical_Template_v1.md | 21848 bytes | sha256 13011f58df4f38f8ece653a5dc426420e092334a53806da671029107a1249f86
-- 00_RULES_INDEX.md | 56183 bytes | sha256 27b21c39189d2f09ba953d2887299edf310056d841ed78f89811c8720a1776b6
+- 00_RULES_INDEX.md | 57279 bytes | sha256 d886d7aae43ae9a300fb417ede072c09924dc02668c0af2a9a6aa7ad74be2208
 - 02_PIPELINES/Archive_No_Stop_Pipeline_Final_Debt_v1.md | 15111 bytes | sha256 ec0bfc1cc30d517c0dea7e322b171fc98a9c896b5dc7a35c360c9c0ccd60be3a
 - 02_PIPELINES/Archive_Authority_Write_Pending_Materialization_v1.md | 7541 bytes | sha256 51676f7c508240880da0060d148e021ca6c669dab251118b6fb6cdf46b5e7e9c
 - 02_PIPELINES/공통파이프라인_실행계약_v1.md | 11721 bytes | sha256 dd6c8d7dbc69a8b09e996091c78fcb2a84ea5effa6a503ddd0c731c0a1c8c618
@@ -57,7 +57,7 @@ The hashes below are recomputed from the current working tree. A source-pack or 
 - 02_PIPELINES/Past_Exam_V3_COMPLETE.md | 16860 bytes | sha256 b513f10e380df687af528e4aed846b62098ee7aa92800bc019fe0f51638dbdca
 - 01_CANONICAL/JS아카이브_Meta_RPM_ACTIVE_공용Resolver_계약_v1.md | 12742 bytes | sha256 79dc5498ac8b1223957f1bcf033b143a43442e91fadc0e2db2b6ddb32fbac954
 
-- 02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md | 44978 bytes | sha256 7f790d25652bbb9342cb2f392c6f6c3dfe688958eebcb6fd2944e25901ad699d
+- 02_PIPELINES/JS_Archive_2.0_Codex_Execution_v1.md | 56405 bytes | sha256 0c00925f91246c8a497182a871198ae3ce587d6aeeb55b086e00acea9da73a58
 
-- 02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md | 11874 bytes | sha256 9bdd22255a140587d85b2280e16d136835154c10af42dec92fd53fb35bcc48c9
+- 02_PIPELINES/JS_Archive_2.0_Common_Quality_Contract_v1.md | 23903 bytes | sha256 5b4de3f085193eee8fb055ac2571f2cfc9f76addc9154ac24bc93c6c1bb2cdda
 - 02_PIPELINES/JS_Archive_2.0_Codex_Canary_Canonical_v1.md | 15818 bytes | sha256 85092178397557c2c91cde831cca3c14f3abdd4933fabdb5eddcd41a14666270

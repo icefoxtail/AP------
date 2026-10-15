@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "archive-analysis-recovery/v1",
+  "baselineCommit": "d305af51b01b15e09d37839538ef3baaa269bd55",
+  "baselineArchiveAnalysisTreeSha": "979303b78a9b8daddb048680b7c12a539c310dbb",
+  "scope": {
+    "reason": "Remove only exact duplicate full archive2-catalog blobs from the current HEAD tree.",
+    "removedPathCount": 11,
+    "headCheckoutBytesReduced": 326839777,
+    "historicalGitStorageBytesReduced": 0,
+    "historyRewrite": false,
+    "historicalProofFilesModified": false,
+    "recovery": "The baseline commit remains an ancestor. Every original path, Git blob ID, SHA-256, and byte count is verified against that commit. Restore an exact original path with tools/archive-analysis-recovery.mjs --restore <originalPath>. This only writes a missing path and refuses overwrite.",
+    "historicalReferenceFileCount": 25,
+    "historicalReferenceMentionCount": 41
+  },
+  "entries": [
+    {
+      "originalPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-rebase-final/inputs/canonical-rebuild.archive2-catalog.json",
+      "gitBlobSha1": "41fad417e402d2e72741495b84f43ec124cb2617",
+      "sha256": "a0d5da10ae25f829b3bb74d71a4b7e29bc115f16aa62ea11402467f5e624686e",
+      "sizeBytes": 28087204,
+      "retainedIdenticalPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-rebase-final-02/conflict-blobs/archive__data__archive2-catalog.json.stage3.blob",
+      "historicalReferenceFiles": [
+        "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/main-changed-paths.from-63e.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.binding.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.checkpoint.inputs.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.retry-2026-10-08T14-16-16-950Z.binding.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.retry-2026-10-08T14-16-16-950Z.checkpoint.inputs.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.retry-2026-10-08T14-16-16-950Z.checkpoint.ready.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.retry-2026-10-08T14-38-12-695Z.binding.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.retry-2026-10-08T14-38-12-695Z.checkpoint.inputs.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.retry-2026-10-08T14-38-12-695Z.checkpoint.ready.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.staged-byte-audit.rebase.retry-2026-10-08T14-16-16-950Z.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.staged-byte-audit.rebase.retry-2026-10-08T14-38-12-695Z.json"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-rebase-final/inputs/reconstructed-registry/archive/data/archive2-catalog.json",
+      "gitBlobSha1": "41fad417e402d2e72741495b84f43ec124cb2617",
+      "sha256": "a0d5da10ae25f829b3bb74d71a4b7e29bc115f16aa62ea11402467f5e624686e",
+      "sizeBytes": 28087204,
+      "retainedIdenticalPath": "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/registration-rebase-final-02/conflict-blobs/archive__data__archive2-catalog.json.stage3.blob",
+      "historicalReferenceFiles": [
+        "archive/analysis/26_삼산중_2학기_중간_중3_기출/codex-20261007-2sem-mid-samsan-m3/registration/publication-commit-01/main-changed-paths.from-63e.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.binding.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.checkpoint.inputs.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.retry-2026-10-08T14-16-16-950Z.binding.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.retry-2026-10-08T14-16-16-950Z.checkpoint.inputs.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.retry-2026-10-08T14-16-16-950Z.checkpoint.ready.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.retry-2026-10-08T14-38-12-695Z.binding.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.retry-2026-10-08T14-38-12-695Z.checkpoint.inputs.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.publication.rebase.retry-2026-10-08T14-38-12-695Z.checkpoint.ready.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.staged-byte-audit.rebase.retry-2026-10-08T14-16-16-950Z.json",
+        "archive/analysis/archive-2026-1mid-nine-20261008/26_팔마고_1학기_중간_고3_미적분2/ROOT.staged-byte-audit.rebase.retry-2026-10-08T14-38-12-695Z.json"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/registration/post-rpm-debt-fields-canonical-rev1/archive2-catalog.before-canonical.json",
+      "gitBlobSha1": "d07759a6543f6b9d489da803c843edac252d88d1",
+      "sha256": "f3c8711a911cb9955e84e3eb79a637a7c9a0d0bc2b5eee6ebb3eb0f5f62a6419",
+      "sizeBytes": 34208868,
+      "retainedIdenticalPath": "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/registration/final-rpm-debt-projection-rev1/archive2-catalog.before-canonical.json",
+      "historicalReferenceFiles": [
+        "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/registration/publication-checkpoint.rev6.readback.json",
+        "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/registration/publication-checkpoint.rev8.main-done.json",
+        "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/registration/remote-readback.json",
+        "archive/analysis/codex-sourceonly-h2-1mid-20261010-b2-eb572b88/registration/sourceonly-batch-proof-index.json"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/technical-registration/root-apply-v2/candidate-output-before/archive__data__archive2-catalog.json",
+      "gitBlobSha1": "0084280a64c3f7624f7b89c590f0fdb496be982d",
+      "sha256": "204c2e31bef2d22ca90059db832925789f1b13150f1d631e8668279ce28af9da",
+      "sizeBytes": 32315123,
+      "retainedIdenticalPath": "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/technical-registration/root-apply-v2/candidate-before-04-sync/archive__data__archive2-catalog.json",
+      "historicalReferenceFiles": [
+        "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/ROOT.remote-main-byte-parity.final-a67.v1.json",
+        "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/ROOT.remote-main-byte-parity.v2.json",
+        "archive/analysis/h2-intake-batch01-20261009/23_강남여고_1학기_중간_고2_수학I/technical-registration/root-apply-v2/preapply-baseline.v2.json"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/root-apply-v1/candidate-output-before/archive__data__archive2-catalog.json",
+      "gitBlobSha1": "1eb838762a997db9d4cffdd4cecc1d59a8b4cd2c",
+      "sha256": "8d960d9d638e059b0b34c86842b7eb5cdc421397e864db87e638045761393d97",
+      "sizeBytes": 32374335,
+      "retainedIdenticalPath": "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/root-apply-v1/candidate-before-10-sync/archive__data__archive2-catalog.json",
+      "historicalReferenceFiles": [
+        "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ROOT.remote-main-byte-parity.final-a67.v1.json",
+        "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/ROOT.remote-main-byte-parity.v2.json",
+        "archive/analysis/h2-intake-batch01-20261009/23_금당고_1학기_중간_고2_수학I/technical-registration/root-apply-v1/preapply-baseline.v1.json"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-meta-search-projection/attempt-01-before/archive__data__archive2-catalog.json",
+      "gitBlobSha1": "50cde7ab71c6112be48f5af599e9909f2a52689a",
+      "sha256": "02a221250dce3a48ab6d1a5335d5d1df9d0b80eefa11e5d7aa4e73be75982f21",
+      "sizeBytes": 28696436,
+      "retainedIdenticalPath": "archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811/conflict-stage-snapshots/archive__data__archive2-catalog.json.stage1.bin",
+      "historicalReferenceFiles": [
+        "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/ROOT.remote-main-byte-parity.final-a67.v1.json",
+        "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/ROOT.remote-main-byte-parity.v2.json"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/technical-registration/postapply-catalog-repair-v1/primary-applied-before/archive__data__archive2-catalog.json",
+      "gitBlobSha1": "50cde7ab71c6112be48f5af599e9909f2a52689a",
+      "sha256": "02a221250dce3a48ab6d1a5335d5d1df9d0b80eefa11e5d7aa4e73be75982f21",
+      "sizeBytes": 28696436,
+      "retainedIdenticalPath": "archive/analysis/h2-intake-batch01-20261009/technical-meta-search-projection/main-drift-d66cd689-449e8811/conflict-stage-snapshots/archive__data__archive2-catalog.json.stage1.bin",
+      "historicalReferenceFiles": [
+        "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/ROOT.remote-main-byte-parity.final-a67.v1.json",
+        "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/ROOT.remote-main-byte-parity.v1.json",
+        "archive/analysis/h2-intake-batch01-20261009/23_매산고_1학기_중간_고2_수학I/ROOT.remote-main-byte-parity.v2.json"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/candidate-after-failed-producer-v2/archive/data/archive2-catalog.json",
+      "gitBlobSha1": "f9ebc9f5042f3f625c9a64356cf8c28197f3ce5a",
+      "sha256": "9c54b185e010ccbf2db52ee071e73923958dfe1b8fb20252a94b8771683edb1a",
+      "sizeBytes": 28623025,
+      "retainedIdenticalPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/index-stages-v2/stage-3/archive/data/archive2-catalog.json",
+      "historicalReferenceFiles": [
+        "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/ROOT.index-byte-parity.v1.json"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/candidate-after-failed-producer-v6/archive/data/archive2-catalog.json",
+      "gitBlobSha1": "f9ebc9f5042f3f625c9a64356cf8c28197f3ce5a",
+      "sha256": "9c54b185e010ccbf2db52ee071e73923958dfe1b8fb20252a94b8771683edb1a",
+      "sizeBytes": 28623025,
+      "retainedIdenticalPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/index-stages-v2/stage-3/archive/data/archive2-catalog.json",
+      "historicalReferenceFiles": [
+        "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/ROOT.index-byte-parity.v1.json"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/candidate-remote-baseline-before-augmentation/archive/data/archive2-catalog.json",
+      "gitBlobSha1": "f9ebc9f5042f3f625c9a64356cf8c28197f3ce5a",
+      "sha256": "9c54b185e010ccbf2db52ee071e73923958dfe1b8fb20252a94b8771683edb1a",
+      "sizeBytes": 28623025,
+      "retainedIdenticalPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/index-stages-v2/stage-3/archive/data/archive2-catalog.json",
+      "historicalReferenceFiles": [
+        "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/ROOT.index-byte-parity.v1.json"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/candidate-before-merge-head-reset/archive/data/archive2-catalog.json",
+      "gitBlobSha1": "ff31b4af9e8505fe865d007aa27d29adb61e5700",
+      "sha256": "05d270503b73fc6428016c282cb0ceb4e52ea6525cb609956a1d7a16de2329c8",
+      "sizeBytes": 28505096,
+      "retainedIdenticalPath": "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/index-stages-v2/stage-2/archive/data/archive2-catalog.json",
+      "historicalReferenceFiles": [
+        "archive/analysis/h2-intake-batch01-20261009/technical-main-drift-a4a3/ROOT.index-byte-parity.v1.json"
+      ]
+    }
+  ]
+}

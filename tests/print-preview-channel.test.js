@@ -3,10 +3,11 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
+const { readPrintRenderAuthorityFixture } = require('./helpers/print-render-authority-fixtures.cjs');
 const engine = fs.readFileSync(path.join(root, 'apmath', 'wrong_print_engine.html'), 'utf8');
 const parent = fs.readFileSync(path.join(root, 'apmath', 'js', 'clinic-print.js'), 'utf8');
 const previewFixture = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'wrong-print-preview-parent.html'), 'utf8');
-const clinicBrowserEvidence = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-5-clinic-browser-fixture.json'), 'utf8'));
+const clinicBrowserEvidence = readPrintRenderAuthorityFixture('phase-5-clinic-browser-fixture.json');
 
 test('Clinic preview announces readiness and waits for parent source authority before any URL or storage load', () => {
   assert.match(engine, /type: 'AP_PRINT_READY', engine: 'clinic'/);

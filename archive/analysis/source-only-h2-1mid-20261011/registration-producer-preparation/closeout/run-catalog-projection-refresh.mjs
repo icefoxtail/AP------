@@ -1,7 +1,0 @@
-import fs from 'node:fs'; import path from 'node:path'; import crypto from 'node:crypto'; import {spawnSync} from 'node:child_process';
-const root=process.cwd(),out=path.join(root,'archive/analysis/source-only-h2-1mid-20261011/registration-producer-preparation/closeout');
-const r=spawnSync(process.execPath,['archive/tools/build-archive2-catalog.mjs'],{cwd:root,encoding:null,timeout:180000,windowsHide:true});
-const stdout=Buffer.isBuffer(r.stdout)?r.stdout:Buffer.from(r.stdout||''),stderr=Buffer.isBuffer(r.stderr)?r.stderr:Buffer.from(r.stderr||''),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
-fs.writeFileSync(path.join(out,'08-catalog-projection-refresh.stdout.bin'),stdout); fs.writeFileSync(path.join(out,'08-catalog-projection-refresh.stderr.bin'),stderr);
-const result={command:[process.execPath,'archive/tools/build-archive2-catalog.mjs'],exitCode:r.status,error:r.error?String(r.error.message):null,stdoutPath:'08-catalog-projection-refresh.stdout.bin',stdoutSha256:sha(stdout),stdoutBytes:stdout.length,stderrPath:'08-catalog-projection-refresh.stderr.bin',stderrSha256:sha(stderr),stderrBytes:stderr.length};
-fs.writeFileSync(path.join(out,'08-catalog-projection-refresh.result.json'),JSON.stringify(result,null,2)+'\n'); console.log(JSON.stringify(result,null,2)); if(r.status!==0||r.error)process.exitCode=1;

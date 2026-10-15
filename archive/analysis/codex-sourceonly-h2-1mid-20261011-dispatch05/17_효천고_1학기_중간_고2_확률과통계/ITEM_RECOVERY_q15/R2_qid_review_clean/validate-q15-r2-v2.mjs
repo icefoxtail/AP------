@@ -1,7 +1,0 @@
-import fs from 'node:fs';import path from 'node:path';
-import {readExam,writeFresh} from '../../../../../tools/archive-codex-artifact-io.mjs';
-import {validateR2Evidence} from '../../../../../tools/archive-stage-validator-r2-v2.mjs';
-const root=path.resolve('.'),examFile=path.resolve('archive/exams/original/high/h2/1mid/17_효천고_1학기_중간_고2_확률과통계.js'),evidenceFile=path.resolve('archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/17_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q15/R2_qid_review_clean/R2.evidence.merged-current-q15.json');
-const exam=readExam(examFile),evidence=JSON.parse(fs.readFileSync(evidenceFile,'utf8')),scoped={...evidence,rows:evidence.rows.filter(r=>r.qid===15)};
-const report={schemaVersion:'JS_ARCHIVE_QID_SCOPED_R2_V2_REPORT_V1',executionLine:'CODEX',qualityContractVersion:'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006',scope:{qids:[15],fullDenominator:false},...validateR2Evidence({examUid:evidence.examUid,artifactSha:evidence.artifactSha,actualArtifactSha:exam.rawBufferGitBlobSha1,evidenceRef:evidenceFile,evidence:scoped,expectedQids:[15]})};
-const out=path.resolve('archive/analysis/codex-sourceonly-h2-1mid-20261011-dispatch05/17_효천고_1학기_중간_고2_확률과통계/ITEM_RECOVERY_q15/R2_qid_review_clean/R2.q15.validator-report.json');console.log(JSON.stringify({ref:writeFresh(out,report),ok:report.ok,disposition:report.disposition,issues:report.issues,denominator:report.denominator,rowCount:report.rowCount},null,2));if(!report.ok)process.exitCode=1;
