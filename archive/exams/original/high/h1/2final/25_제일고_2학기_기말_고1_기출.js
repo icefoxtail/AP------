@@ -654,7 +654,7 @@ window.questionBank = [
     "content": "$f(x)=\\dfrac{1}{x(x+1)}$에 대하여 $f(1)+f(2)+\\cdots+f(99)$의 값을 구하는 과정을 서술하시오.",
     "choices": [],
     "answer": "$\\dfrac{99}{100}$",
-    "solution": "각 항을 두 역수의 차로 나타낸다.\n$\\dfrac1{x(x+1)}=\\dfrac1x-\\dfrac1{x+1}$이다. 실제로 오른쪽을 통분하면\n$\\dfrac{x+1-x}{x(x+1)}=\\dfrac1{x(x+1)}$이다.\n따라서 합은\n$(1-\\dfrac12)+(\\dfrac12-\\dfrac13)+\\cdots+(\\dfrac1{99}-\\dfrac1{100})$이다.\n이웃한 항끼리 더하면 중간의 역수들이 모두 없어져\n$1-\\dfrac1{100}=\\dfrac{99}{100}$만 남는다.",
+    "solution": "분모를 분해하여 두 역수의 차로 나타내면\n$\\dfrac{1}{x(x+1)}$\n$=\\dfrac1x-\\dfrac1{x+1}$이다.\n실제로 오른쪽을 통분하면\n$\\dfrac{x+1-x}{x(x+1)}=\\dfrac1{x(x+1)}$이다.\n\n따라서\n$f(1)=1-\\dfrac12$,\n$f(2)=\\dfrac12-\\dfrac13$,\n$\\cdots$,\n$f(99)=\\dfrac1{99}-\\dfrac1{100}$이다.\n\n모든 항을 더하면\n$f(1)+f(2)+\\cdots+f(99)$\n$=\\left(1-\\dfrac12\\right)+\\left(\\dfrac12-\\dfrac13\\right)+\\cdots+\\left(\\dfrac1{99}-\\dfrac1{100}\\right)$이다.\n중간의 역수들은 각각 더해졌다가 빼져 모두 없어지므로\n$=1-\\dfrac1{100}$\n$=\\dfrac{99}{100}$이다.\n\n따라서 구하는 값은 $\\dfrac{99}{100}$이다.",
     "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
