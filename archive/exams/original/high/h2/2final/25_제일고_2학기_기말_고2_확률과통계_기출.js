@@ -520,7 +520,7 @@ window.questionBank = [
       "$0.3085$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 표본평균의 분포를 표준화하여 주어진 확률과 표의 값을 연결한다.\n조건 정리: 모집단의 평균은 $m$, 표준편차는 $4$, 표본 크기는 $16$이고 $P(m\\le X\\le a)=0.3413$이다.\n풀이 방향: 먼저 $a-m$을 구한 다음 표본평균의 표준편차로 $a-2$를 표준화한다.\n정석 풀이: $P(m\\le X\\le a)=P\\left(0\\le Z\\le\\dfrac{a-m}{4}\\right)=0.3413$이므로 표에서 $\\dfrac{a-m}{4}=1$이다. 따라서 $a=m+4$이다. 표본평균 $\\overline X$의 표준편차는 $\\dfrac4{\\sqrt{16}}=1$이므로 $a-2=m+2$에 대하여\n$P(\\overline X\\ge a-2)=P(\\overline X\\ge m+2)=P(Z\\ge2)=0.5-0.4772=0.0228$이다.\n따라서 정답은 ②이다.",
+    "solution": "한 제품의 길이 $X$는 평균 $m$, 표준편차 $4$인 정규분포를 따른다.\n$P(m\\le X\\le a)=P\\left(0\\le Z\\le\\dfrac{a-m}{4}\\right)=0.3413$이다.\n표에서 $P(0\\le Z\\le1)=0.3413$이므로\n$\\dfrac{a-m}{4}=1$\n$a=m+4$이다.\n\n표본의 크기가 $16$이므로 표본평균 $\\overline X$는\n$E(\\overline X)=m$\n$\\sigma_{\\overline X}=\\dfrac4{\\sqrt{16}}=1$이다.\n$a-2=m+2$이므로\n$P(\\overline X\\ge a-2)=P(\\overline X\\ge m+2)$\n$=P\\left(Z\\ge\\dfrac{m+2-m}{1}\\right)$\n$=P(Z\\ge2)=0.5-0.4772=0.0228$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -553,7 +553,7 @@ window.questionBank = [
       "$99$"
     ],
     "answer": "③",
-    "solution": "[키포인트] 신뢰구간의 길이는 신뢰계수에 비례하므로 길이의 비로 새 신뢰계수를 구한다.\n조건 정리: 같은 모집단과 표본 크기 $400$에서 95% 신뢰구간의 길이는 $l$, 다른 신뢰도의 길이는 $\\dfrac34l$이다.\n풀이 방향: 95% 신뢰계수는 표에서 $z=2$로 근사하고, 새 구간의 신뢰계수를 구해 중앙확률로 바꾼다.\n정석 풀이: 신뢰구간의 길이는 $2z\\dfrac{10}{\\sqrt{400}}$이므로 표본 크기와 표준편차가 같을 때 길이의 비는 $z$의 비와 같다. 따라서 새 신뢰도에 대응하는 $z$는 $2\\times\\dfrac34=1.5$이다.\n표에서 $P(0\\le Z\\le1.5)=0.430$이므로 중앙확률은 $2\\times0.430=0.860$이다. 따라서 신뢰도는 $86\\%$이다.\n따라서 정답은 ③이다.",
+    "solution": "신뢰구간의 길이는 신뢰상수를 $z$라 할 때\n$L=2z\\dfrac{\\sigma}{\\sqrt n}$이다.\n현재 $\\sigma=10$, $n=400$이므로\n$L=2z\\cdot\\dfrac{10}{20}=z$이다.\n\n신뢰도 95%에 대해서는 표에서 $z=2$이므로 $l=2$이다.\n다른 신뢰도의 구간 길이가 $\\dfrac34l$이므로\n$L_a=\\dfrac34\\cdot2=1.5$이다.\n따라서 새로운 신뢰상수는 $z_a=1.5$이다.\n표에서 $P(0\\le Z\\le1.5)=0.430$이므로\n$a\\%=P(-1.5\\le Z\\le1.5)$\n$=2\\cdot0.430=0.860$이다.\n따라서 $a=86$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
@@ -618,7 +618,7 @@ window.questionBank = [
       "$0.4332$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 모집단의 평균과 표준편차를 구한 뒤 표본평균을 표준화한다.\n조건 정리: $X$는 정규분포를 따르고 $P(X\\ge4.5)=\\dfrac12$, $P(X\\le5)+P(Z\\le-1)=1$이다.\n풀이 방향: 첫 조건으로 평균을 정하고, 둘째 조건으로 표준편차를 구한 뒤 표본 크기 $25$에 맞게 표준화한다.\n정석 풀이: 정규분포는 평균을 기준으로 대칭이므로 $P(X\\ge4.5)=\\dfrac12$에서 평균은 $4.5$이다. $P(Z\\le-1)=0.1587$이므로 $P(X\\le5)=0.8413=P(Z\\le1)$이다. 따라서 $\\dfrac{5-4.5}{\\sigma}=1$에서 $\\sigma=0.5$이다.\n표본평균의 표준편차는 $\\dfrac{0.5}{\\sqrt{25}}=0.1$이므로 $P(\\overline X\\ge4.6)=P\\left(Z\\ge\\dfrac{4.6-4.5}{0.1}\\right)=P(Z\\ge1)=0.5-0.3413=0.1587$이다.\n따라서 정답은 ①이다.",
+    "solution": "정규분포는 평균을 기준으로 좌우 대칭이다.\n$P(X\\ge4.5)=\\dfrac12$이므로 모집단 평균은\n$m=4.5$이다.\n\n$P(X\\le5)+P(Z\\le-1)=1$이고\n$P(Z\\le-1)=0.5-0.3413=0.1587$이므로\n$P(X\\le5)=1-0.1587=0.8413$이다.\n또 $P(Z\\le1)=0.8413$이므로 모집단 표준편차 $\\sigma$는\n$\\dfrac{5-4.5}{\\sigma}=1$\n$\\sigma=0.5$이다.\n\n25마리의 몸무게의 표본평균 $\\overline X$는\n$E(\\overline X)=4.5$\n$\\sigma_{\\overline X}=\\dfrac{0.5}{\\sqrt{25}}=0.1$이다.\n따라서\n$P(\\overline X\\ge4.6)=P\\left(Z\\ge\\dfrac{4.6-4.5}{0.1}\\right)$\n$=P(Z\\ge1)=0.5-0.3413=0.1587$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -650,7 +650,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 신뢰구간 길이의 공식에 신뢰도와 표본 크기를 각각 대입한다.\n조건 정리: $l_1=2z_{95}\\dfrac{\\sigma}{\\sqrt{n_1}}$, $l_2=2z_{99}\\dfrac{\\sigma}{\\sqrt{n_2}}$, $\\dfrac{n_2}{n_1}=25$이다.\n풀이 방향: 두 길이의 비에서 공통인 항을 소거하고 표의 신뢰계수를 사용한다.\n정석 풀이: $z_{95}=2$, $z_{99}=2.5$로 근사하면\n$\\dfrac{l_1}{l_2}=\\dfrac{z_{95}}{z_{99}}\\sqrt{\\dfrac{n_2}{n_1}}=\\dfrac2{2.5}\\times5=4$이다.\n따라서 정답은 ④이다.",
+    "solution": "신뢰구간의 길이는 신뢰상수 $z$와 표본 크기 $n$에 대해\n$L=2z\\dfrac{\\sigma}{\\sqrt n}$이다.\n문제의 표에서 신뢰도 95%는 $z=2$, 99%는 $z=2.5$이므로\n$l_1=2\\cdot2\\cdot\\dfrac{\\sigma}{\\sqrt{n_1}}$\n$l_2=2\\cdot2.5\\cdot\\dfrac{\\sigma}{\\sqrt{n_2}}$이다.\n두 길이를 나누면\n$\\dfrac{l_1}{l_2}=\\dfrac{2}{2.5}\\sqrt{\\dfrac{n_2}{n_1}}$이다.\n$\\dfrac{n_2}{n_1}=25$이므로\n$\\dfrac{l_1}{l_2}=\\dfrac45\\cdot\\sqrt{25}=\\dfrac45\\cdot5=4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
     "subUnit": "statistical estimation",
     "subUnitConfidence": "rule_inferred",
