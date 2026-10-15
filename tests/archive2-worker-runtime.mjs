@@ -173,6 +173,7 @@ try {
     "exam_blueprints",
     "exam_sessions",
     "wrong_answers",
+    "assessment_result_items",
   ]) {
     const statement = schema.match(
       new RegExp(
@@ -182,6 +183,9 @@ try {
     assert.ok(statement, name);
     await db.prepare(statement[0]).run();
   }
+  const resultOrderIndex = schema.match(/CREATE UNIQUE INDEX IF NOT EXISTS idx_assessment_result_items_session_order_unique[\s\S]*?;/);
+  assert.ok(resultOrderIndex, "schema includes the result session/order unique index");
+  await db.prepare(resultOrderIndex[0]).run();
   await db.exec(
     "CREATE TABLE classes(id TEXT PRIMARY KEY,name TEXT,teacher_name TEXT,grade TEXT DEFAULT '고1');CREATE TABLE students(id TEXT PRIMARY KEY,name TEXT,school_name TEXT DEFAULT '',grade TEXT DEFAULT '고1',student_pin TEXT DEFAULT '',status TEXT DEFAULT '재원');CREATE TABLE class_students(class_id TEXT,student_id TEXT);CREATE TABLE teacher_classes(teacher_id TEXT,class_id TEXT);CREATE TABLE attendance(student_id TEXT,status TEXT,date TEXT);ALTER TABLE exam_sessions ADD COLUMN assignment_id TEXT;",
   );
@@ -199,6 +203,16 @@ try {
     .filter(Boolean))
     await db.prepare(sql).run();
   await db.prepare(migration.slice(migration.indexOf("CREATE TRIGGER"))).run();
+  const resultIdentityMigration = fs.readFileSync(
+    path.join(worker, "migrations/20261015_assessment_result_uid_meta_snapshot.sql"),
+    "utf8",
+  );
+  for (const sql of resultIdentityMigration
+    .replace(/--[^\n]*/g, "")
+    .split(";")
+    .map(value => value.trim())
+    .filter(Boolean))
+    await db.prepare(sql).run();
   const savedPaperMigration = fs.readFileSync(
     path.join(worker, "migrations/20260929_archive_saved_papers.sql"),
     "utf8",

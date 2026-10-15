@@ -185,6 +185,14 @@ const requiredCommands = [
     args: ['tests/archive2-worker-runtime.mjs']
   },
   {
+    label: 'tests/apms-result-clinic-uid-bridge.test.mjs',
+    args: ['--test', 'tests/apms-result-clinic-uid-bridge.test.mjs']
+  },
+  {
+    label: 'tests/apms-clinic-uid-refresh.test.cjs',
+    args: ['--test', 'tests/apms-clinic-uid-refresh.test.cjs']
+  },
+  {
     label: 'tests/archive2-ux-retrieval-d1.test.mjs',
     args: ['--test', 'tests/archive2-ux-retrieval-d1.test.mjs']
   },

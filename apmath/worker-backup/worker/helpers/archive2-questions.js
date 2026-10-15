@@ -396,6 +396,14 @@ export async function buildQuestionSnapshot(
     if (status === "UNRESOLVED" && !options.legacy)
       fail("canonical UID/source ordinal mismatch at " + (i + 1));
     if (status === "VERIFIED") seen.add(uid);
+    const metadataAuthority = options.metadataAuthority;
+    const archiveMetadata = metadataAuthority && typeof metadataAuthority.buildArchiveQuestionMetadata === "function"
+      ? metadataAuthority.buildArchiveQuestionMetadata(q)
+      : null;
+    const metadataRevision = archiveMetadata?.metadataRevision || q.metadataRevision || null;
+    const metadataHash = archiveMetadata && typeof metadataAuthority.buildArchiveMetadataHash === "function"
+      ? await metadataAuthority.buildArchiveMetadataHash(archiveMetadata)
+      : null;
     const snapshot = {};
     for (const field of [
       "curriculumKey",
@@ -415,6 +423,7 @@ export async function buildQuestionSnapshot(
       "metadataRevision",
     ])
       if (q[field] !== undefined) snapshot[field] = q[field];
+    if (archiveMetadata) snapshot.archiveMetadata = archiveMetadata;
     rows.push({
       order_no: i + 1,
       question_uid: status === "VERIFIED" ? uid : null,
@@ -433,7 +442,8 @@ export async function buildQuestionSnapshot(
       difficulty_at_assignment: Number.isInteger(q.difficultyBucket)
         ? String(q.difficultyBucket)
         : "UNKNOWN",
-      metadata_revision: q.metadataRevision || null,
+      metadata_revision: metadataRevision,
+      metadata_hash: metadataHash,
       metadata_json: JSON.stringify(snapshot),
       resolution_status: status,
     });
@@ -463,12 +473,15 @@ export function questionInsertStatements(
     "standard_unit_key",
     "difficulty_at_assignment",
     "metadata_revision",
+    "metadata_hash",
     "metadata_json",
     "resolution_status",
   ];
   const statements = [];
-  for (let i = 0; i < rows.length; i += 8) {
-    const batch = rows.slice(i, i + 8);
+  const bindsPerRow = columns.length + assignmentParams.length;
+  const batchSize = Math.max(1, Math.floor(90 / bindsPerRow));
+  for (let i = 0; i < rows.length; i += batchSize) {
+    const batch = rows.slice(i, i + batchSize);
     statements.push(
       env.DB.prepare(
         `INSERT OR IGNORE INTO class_exam_assignment_questions (assignment_id, ${columns.join(",")}) VALUES

@@ -185,17 +185,46 @@ async function ensureWrongClinicPacketProgressColumns(env) {
 function normalizeItem(item = {}, orderNo = 1) {
   const displayArchiveFile = text(item.archiveFile || item.archive_file);
   const displayQuestionNo = Math.trunc(num(item.questionNo || item.question_no || item.originalId || item.original_id, 0));
-  const archiveFile = text(item.sourceArchiveFile || item.source_archive_file || displayArchiveFile);
-  const questionNo = Math.trunc(num(item.sourceQuestionNo || item.source_question_no || displayQuestionNo, 0));
+  const hasIdentityStatus = Object.prototype.hasOwnProperty.call(item, 'sourceIdentityStatus') || Object.prototype.hasOwnProperty.call(item, 'source_identity_status');
+  const identityStatusInput = text(item.sourceIdentityStatus || item.source_identity_status).toUpperCase();
+  const hasSourceArchiveFile = Object.prototype.hasOwnProperty.call(item, 'sourceArchiveFile') || Object.prototype.hasOwnProperty.call(item, 'source_archive_file');
+  const hasSourceQuestionNo = Object.prototype.hasOwnProperty.call(item, 'sourceQuestionNo') || Object.prototype.hasOwnProperty.call(item, 'source_question_no');
+  const sourceArchiveFile = hasIdentityStatus && hasSourceArchiveFile
+    ? text(item.sourceArchiveFile ?? item.source_archive_file) || null
+    : null;
+  const parsedSourceQuestionNo = Math.trunc(num(item.sourceQuestionNo ?? item.source_question_no, 0));
+  const sourceQuestionNo = hasIdentityStatus && hasSourceQuestionNo
+    ? (parsedSourceQuestionNo > 0 ? parsedSourceQuestionNo : null)
+    : null;
+  const parsedSourceQuestionOrdinal = Number(item.sourceQuestionOrdinal || item.source_question_ordinal);
+  const sourceQuestionOrdinal = hasIdentityStatus && parsedSourceQuestionOrdinal > 0 ? parsedSourceQuestionOrdinal : null;
+  const rawSourceQuestionUid = text(item.sourceQuestionUid || item.source_question_uid) || null;
+  const sourceIdentityStatus = ['VERIFIED', 'LEGACY_INFERRED'].includes(identityStatusInput) &&
+    sourceArchiveFile && sourceQuestionOrdinal && /^qid_v1_[a-f0-9]{64}$/.test(rawSourceQuestionUid || '')
+    ? identityStatusInput
+    : 'UNRESOLVED';
+  const archiveFile = text(sourceArchiveFile || displayArchiveFile);
+  const questionNo = Number(sourceQuestionNo || displayQuestionNo || 0);
+  const sourceQuestionUid = hasIdentityStatus && sourceIdentityStatus !== 'UNRESOLVED' ? rawSourceQuestionUid : null;
   return {
     ...item,
     archiveFile,
     questionNo,
-    sourceArchiveFile: archiveFile,
-    sourceQuestionNo: questionNo,
+    sourceArchiveFile,
+    sourceQuestionNo,
+    sourceQuestionOrdinal,
+    sourceQuestionUid,
+    legacySourceQuestionUid: sourceQuestionUid ? null : (item.legacySourceQuestionUid || rawSourceQuestionUid),
+    sourceFingerprint: item.sourceFingerprint || item.source_fingerprint || null,
+    sourceIdentityStatus,
+    metadataRevision: item.metadataRevision || item.metadata_revision || null,
+    metadataHash: item.metadataHash || item.metadata_hash || null,
+    metadataJson: item.metadataJson ?? item.metadata_json ?? null,
+    metadataSnapshotStatus: item.metadataSnapshotStatus || item.metadata_snapshot_status || 'UNRESOLVED',
+    sourceOriginRefs: Array.isArray(item.sourceOriginRefs) ? item.sourceOriginRefs : (Array.isArray(item.source_origin_refs) ? item.source_origin_refs : []),
     displayArchiveFile,
     displayQuestionNo,
-    sourceQuestionId: text(item.sourceQuestionId || item.source_question_id || item.questionId || item.question_id),
+    sourceQuestionId: text(item.sourceQuestionId || item.source_question_id),
     originalId: text(item.originalId || item.original_id || item.id),
     examTitle: text(item.examTitle || item.exam_title),
     examDate: text(item.examDate || item.exam_date),
@@ -615,16 +644,43 @@ async function createWrongClinic(request, env, teacher) {
 
 function itemFromRow(row) {
   const base = parseJson(row.item_json, {}) || {};
-  const sourceArchiveFile = text(base.sourceArchiveFile || base.source_archive_file || row.archive_file);
-  const sourceQuestionNo = Math.trunc(num(base.sourceQuestionNo || base.source_question_no || row.question_no, 0));
+  const hasIdentityStatus = Object.prototype.hasOwnProperty.call(base, 'sourceIdentityStatus') || Object.prototype.hasOwnProperty.call(base, 'source_identity_status');
+  const identityStatusInput = text(base.sourceIdentityStatus || base.source_identity_status).toUpperCase();
+  const hasSourceArchiveFile = Object.prototype.hasOwnProperty.call(base, 'sourceArchiveFile') || Object.prototype.hasOwnProperty.call(base, 'source_archive_file');
+  const hasSourceQuestionNo = Object.prototype.hasOwnProperty.call(base, 'sourceQuestionNo') || Object.prototype.hasOwnProperty.call(base, 'source_question_no');
+  const sourceArchiveFile = hasIdentityStatus && hasSourceArchiveFile
+    ? (text(base.sourceArchiveFile ?? base.source_archive_file) || null)
+    : null;
+  const parsedSourceQuestionNo = Math.trunc(num(base.sourceQuestionNo ?? base.source_question_no, 0));
+  const sourceQuestionNo = hasIdentityStatus && hasSourceQuestionNo
+    ? (parsedSourceQuestionNo > 0 ? parsedSourceQuestionNo : null)
+    : null;
   const displayArchiveFile = text(base.displayArchiveFile || base.display_archive_file || row.archive_file);
   const displayQuestionNo = Math.trunc(num(base.displayQuestionNo || base.display_question_no || row.question_no, 0));
+  const parsedSourceQuestionOrdinal = Number(base.sourceQuestionOrdinal || base.source_question_ordinal);
+  const sourceQuestionOrdinal = hasIdentityStatus && parsedSourceQuestionOrdinal > 0 ? parsedSourceQuestionOrdinal : null;
+  const rawSourceQuestionUid = text(base.sourceQuestionUid || base.source_question_uid || base.legacySourceQuestionUid) || null;
+  const sourceIdentityStatus = ['VERIFIED', 'LEGACY_INFERRED'].includes(identityStatusInput) &&
+    sourceArchiveFile && sourceQuestionOrdinal && /^qid_v1_[a-f0-9]{64}$/.test(rawSourceQuestionUid || '')
+    ? identityStatusInput
+    : 'UNRESOLVED';
+  const sourceQuestionUid = sourceIdentityStatus !== 'UNRESOLVED' ? rawSourceQuestionUid : null;
   return {
     ...base,
-    archiveFile: sourceArchiveFile,
-    questionNo: sourceQuestionNo,
+    archiveFile: sourceArchiveFile || displayArchiveFile,
+    questionNo: Number(sourceQuestionNo || displayQuestionNo || 0),
     sourceArchiveFile,
     sourceQuestionNo,
+    sourceQuestionOrdinal,
+    sourceQuestionUid,
+    legacySourceQuestionUid: sourceQuestionUid ? null : rawSourceQuestionUid,
+    sourceFingerprint: base.sourceFingerprint || base.source_fingerprint || null,
+    sourceIdentityStatus,
+    metadataRevision: base.metadataRevision || base.metadata_revision || null,
+    metadataHash: base.metadataHash || base.metadata_hash || null,
+    metadataJson: base.metadataJson ?? base.metadata_json ?? null,
+    metadataSnapshotStatus: base.metadataSnapshotStatus || base.metadata_snapshot_status || 'UNRESOLVED',
+    sourceOriginRefs: Array.isArray(base.sourceOriginRefs) ? base.sourceOriginRefs : (Array.isArray(base.source_origin_refs) ? base.source_origin_refs : []),
     displayArchiveFile,
     displayQuestionNo,
     sourceQuestionId: row.source_question_id || base.sourceQuestionId || '',
@@ -635,6 +691,19 @@ function itemFromRow(row) {
     wrongCount: Number(row.wrong_count || 0),
     totalCount: Number(row.total_count || 0)
   };
+}
+
+function clinicItemOwnershipKey(item, row = {}) {
+  const uid = text(item?.sourceQuestionUid);
+  if (uid) return `uid:${uid}|meta:${text(item.metadataRevision)}|${text(item.metadataHash)}`;
+  const file = text(item?.sourceArchiveFile || row.archive_file);
+  const ordinal = Number(item?.sourceQuestionOrdinal || 0);
+  const questionNo = Number(item?.sourceQuestionNo || row.question_no || 0);
+  if (file && ordinal > 0 && item?.sourceIdentityStatus !== 'UNRESOLVED') return `${file}|ordinal:${ordinal}`;
+  const origin = (item?.sourceOriginRefs || [])[0] || {};
+  if (origin.assignmentId || origin.sessionId)
+    return `origin:${origin.assignmentId || origin.sessionId}|order:${Number(origin.orderNo || item?.displayQuestionNo || questionNo || 0)}`;
+  return `${text(row.archive_file)}|${Number(row.question_no || 0)}`;
 }
 
 function basePayloadFromSet(set) {
@@ -998,7 +1067,7 @@ async function listReviewWrongCandidatesForTeacher(env, teacher, url) {
   if (!packets.length) return ok({ items: [], packets: [] });
 
   const ownerRes = await env.DB.prepare(`
-    SELECT p.id AS packet_id, i.archive_file, i.question_no
+    SELECT p.id AS packet_id, i.archive_file, i.question_no, i.item_json
     FROM wrong_clinic_packets p
     JOIN wrong_clinic_sets s ON s.id = p.set_id
     JOIN wrong_clinic_packet_items i ON i.packet_id = p.id
@@ -1008,7 +1077,7 @@ async function listReviewWrongCandidatesForTeacher(env, teacher, url) {
   `).bind(studentId).all();
   const ownersByQuestion = new Map();
   for (const row of ownerRes.results || []) {
-    const questionKey = `${text(row.archive_file)}|${Number(row.question_no || 0)}`;
+    const questionKey = clinicItemOwnershipKey(itemFromRow(row), row);
     if (!ownersByQuestion.has(questionKey)) ownersByQuestion.set(questionKey, new Set());
     ownersByQuestion.get(questionKey).add(row.packet_id);
   }
@@ -1026,10 +1095,10 @@ async function listReviewWrongCandidatesForTeacher(env, teacher, url) {
     for (const row of itemRes.results || []) {
       const orderNo = Number(row.order_no || 0);
       if (!wrongOrderNos.has(orderNo)) continue;
-      const questionKey = `${text(row.archive_file)}|${Number(row.question_no || 0)}`;
+      const item = itemFromRow(row);
+      const questionKey = clinicItemOwnershipKey(item, row);
       const owners = ownersByQuestion.get(questionKey) || new Set();
       if (Array.from(owners).some(id => String(id) !== String(packet.id))) continue;
-      const item = itemFromRow(row);
       items.push({
         packet_key: packet.packet_key,
         packet_title: packet.print_title || packet.title || '오답 클리닉',
@@ -1051,8 +1120,10 @@ async function listReviewWrongCandidatesForTeacher(env, teacher, url) {
           orderNo,
           archiveFile: row.archive_file,
           questionNo: Number(row.question_no || 0),
-          sourceArchiveFile: item.sourceArchiveFile || item.archiveFile || row.archive_file,
-          sourceQuestionNo: Number(item.sourceQuestionNo || item.questionNo || row.question_no || 0),
+          displayArchiveFile: item.displayArchiveFile || row.archive_file,
+          displayQuestionNo: Number(item.displayQuestionNo || row.question_no || 0),
+          sourceArchiveFile: item.sourceArchiveFile ?? null,
+          sourceQuestionNo: item.sourceQuestionNo ?? null,
           reviewSourcePacketKey: packet.packet_key,
           reviewSourceOrderNo: orderNo
         }

@@ -122,7 +122,7 @@ function cursorDecode(value) {
   }
 }
 
-async function handleCreate(request, env, teacher) {
+async function handleCreate(request, env, teacher, metadataAuthority = null) {
   const input = await readBoundedJson(request);
   if (!input || typeof input !== "object" || Array.isArray(input)) fail("JSON object required", 400);
   const requestHash = await computeSavedPaperRequestHash(input);
@@ -180,7 +180,7 @@ async function handleCreate(request, env, teacher) {
       derivationType: lineage.derivation_type,
     });
   }
-  const prepared = await prepareSavedPaperBatch(env, input);
+  const prepared = await prepareSavedPaperBatch(env, input, metadataAuthority);
   if (prepared.requestHash !== requestHash) fail("save request changed during validation", 409);
 
   const createdAt = new Date().toISOString();
@@ -478,7 +478,7 @@ async function handleDelete(id, env, teacher) {
     note: "이미 배포된 학생 시험지는 유지됩니다." });
 }
 
-export async function handleArchiveSavedPapers(request, env, teacher, path, url) {
+export async function handleArchiveSavedPapers(request, env, teacher, path, url, metadataAuthority = null) {
   try {
     if (!isStaffUser(teacher)) fail("Forbidden", teacher ? 403 : 401);
     if (env.ARCHIVE2_ENABLED !== "true") fail("Archive 2.0 server 기능이 아직 활성화되지 않았습니다.", 503);
@@ -494,7 +494,7 @@ export async function handleArchiveSavedPapers(request, env, teacher, path, url)
       return await handleCopy(id, request, env, teacher);
     if (id && subresource === "library" && method === "PATCH")
       return await handleLibraryUpdate(id, request, env, teacher);
-    if (!id && method === "POST") return await handleCreate(request, env, teacher);
+    if (!id && method === "POST") return await handleCreate(request, env, teacher, metadataAuthority);
     if (!id && method === "GET") return await handleList(url, env, teacher);
     if (id && !subresource && method === "GET") return await handleDetail(id, env, teacher);
     if (id && !subresource && method === "DELETE") return await handleDelete(id, env, teacher);

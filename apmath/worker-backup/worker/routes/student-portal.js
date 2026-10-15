@@ -12,6 +12,7 @@ import {
   saveWrongClinicReviewWrongsForStudent,
   submitWrongClinicPacketForStudent
 } from './wrong-clinics.js';
+import { saveAssessmentResultItems } from '../helpers/assessment-result-items.js';
 
 const columnCacheByEnv = new WeakMap();
 
@@ -274,22 +275,36 @@ async function loadStudentClassExamAssignments(env, studentId, limit = 100, assi
   const sessionByAssignment = new Map();
   const sessionByExam = new Map();
   const scopedAssignmentRows = assignments.results || [];
+  const assignmentsByExamKey = new Map();
+  scopedAssignmentRows.forEach(row => {
+    const key = buildOmrSessionKey(row);
+    assignmentsByExamKey.set(key, (assignmentsByExamKey.get(key) || 0) + 1);
+  });
   let sessionRows = sessions.results || [];
   if (classScope !== null) {
     const scopedAssignmentIds = new Set(scopedAssignmentRows.map(row => String(row.id || '')));
-    const scopedExamKeys = new Set(scopedAssignmentRows.map(buildOmrSessionKey));
     const scopedClassIds = new Set(classScope);
     sessionRows = sessionRows.filter(row => {
       if (row.assignment_id) return scopedAssignmentIds.has(String(row.assignment_id));
       const sessionClassId = String(row.class_id || '');
-      return Boolean(sessionClassId && scopedClassIds.has(sessionClassId) && scopedExamKeys.has(buildOmrSessionKey(row)));
+      const key = buildOmrSessionKey(row);
+      return Boolean(sessionClassId && scopedClassIds.has(sessionClassId) && assignmentsByExamKey.get(key) === 1);
     });
   }
+  const legacySessionsByExam = new Map();
   sessionRows.forEach(row => {
-    if (row.assignment_id) sessionByAssignment.set(String(row.assignment_id), row);
+    if (row.assignment_id) {
+      sessionByAssignment.set(String(row.assignment_id), row);
+      return;
+    }
     const key = buildOmrSessionKey(row);
-    if (!sessionByExam.has(key)) sessionByExam.set(key, row);
+    const matches = legacySessionsByExam.get(key) || [];
+    matches.push(row);
+    legacySessionsByExam.set(key, matches);
   });
+  for (const [key, matches] of legacySessionsByExam) {
+    if (assignmentsByExamKey.get(key) === 1 && matches.length === 1) sessionByExam.set(key, matches[0]);
+  }
 
   return dedupeClassExamAssignments(assignments.results || [], sessionByAssignment).map(row => {
     const exactAssignmentSession = sessionByAssignment.get(String(row.id || '')) || null;
@@ -601,18 +616,59 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
     const wrongIds = normalizeWrongIds(d.wrong_ids, questionCount);
     const score = Math.round(((questionCount - wrongIds.length) / questionCount) * 100);
 
-    const existing = await env.DB.prepare(`
-      SELECT *
-      FROM exam_sessions
-      WHERE student_id = ?
-        AND exam_title = ?
-        AND exam_date = ?
-        AND COALESCE(archive_file, '') = COALESCE(?, '')
-      ORDER BY updated_at DESC
-      LIMIT 1
-    `).bind(verified.student.id, assignment.exam_title || '', assignment.exam_date || '', assignment.archive_file || '').first();
+    const sessionColumns = await getTableColumnSet(env, 'exam_sessions');
+    const existing = sessionColumns.has('assignment_id')
+      ? await env.DB.prepare(`
+          SELECT *
+          FROM exam_sessions
+          WHERE assignment_id = ?
+            AND student_id = ?
+            AND exam_title = ?
+            AND exam_date = ?
+            AND COALESCE(archive_file, '') = COALESCE(?, '')
+          ORDER BY updated_at DESC
+          LIMIT 1
+        `).bind(assignmentId, verified.student.id, assignment.exam_title || '', assignment.exam_date || '', assignment.archive_file || '').first()
+      : await env.DB.prepare(`
+          SELECT *
+          FROM exam_sessions
+          WHERE student_id = ?
+            AND exam_title = ?
+            AND exam_date = ?
+            AND COALESCE(archive_file, '') = COALESCE(?, '')
+          ORDER BY updated_at DESC
+          LIMIT 1
+        `).bind(verified.student.id, assignment.exam_title || '', assignment.exam_date || '', assignment.archive_file || '').first();
 
-    const sessionId = existing?.id || `ex_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+    if (existing?.id) {
+      const previousWrongRows = await env.DB.prepare(
+        'SELECT question_id FROM wrong_answers WHERE session_id = ? ORDER BY id'
+      ).bind(existing.id).all();
+      const previousWrongIds = normalizeWrongIds((previousWrongRows.results || []).map(row => row.question_id), Math.max(1, Number(existing.question_count || questionCount)));
+      if (JSON.stringify(previousWrongIds) !== JSON.stringify(wrongIds)) {
+        return jsonResponse({
+          success: false,
+          code: 'OMR_ALREADY_SUBMITTED',
+          message: '이미 제출한 OMR은 수정할 수 없습니다. 새 시험 배정에서 다시 응시해 주세요.'
+        }, 409);
+      }
+      return jsonResponse({
+        success: true,
+        already_submitted: true,
+        session: {
+          id: existing.id,
+          student_id: verified.student.id,
+          assignment_id: assignmentId,
+          exam_title: existing.exam_title || assignment.exam_title || '',
+          exam_date: existing.exam_date || assignment.exam_date || '',
+          question_count: Number(existing.question_count || questionCount),
+          score: existing.score ?? null,
+          wrong_ids: previousWrongIds
+        }
+      });
+    }
+
+    const sessionId = `ex_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
     await env.DB.batch([
       env.DB.prepare(`
         INSERT INTO exam_sessions (
@@ -642,6 +698,16 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
         'INSERT INTO wrong_answers (session_id, question_id, student_id) VALUES (?, ?, ?)'
       ).bind(sessionId, String(qId), verified.student.id))
     ]);
+
+    await saveAssessmentResultItems(env, {
+      session_id: sessionId,
+      assignment_id: assignmentId,
+      pack_id: assignment.pack_id || null,
+      student_id: verified.student.id,
+      class_id: assignment.class_id || null,
+      question_count: questionCount,
+      wrong_ids: wrongIds
+    });
 
     return jsonResponse({
       success: true,
