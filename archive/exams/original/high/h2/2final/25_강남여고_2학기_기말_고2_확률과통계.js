@@ -26,7 +26,8 @@ window.questionBank = [
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -125,7 +126,8 @@ window.questionBank = [
     "solutionStatus": "solution_prefix_normalized_pending_math_review",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -225,7 +227,8 @@ window.questionBank = [
     "solutionStatus": "round4_gibbs_solution_source_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -424,7 +427,8 @@ window.questionBank = [
     "solutionStatus": "round4_gibbs_solution_source_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "그래프"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -577,7 +581,8 @@ window.questionBank = [
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "그래프"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -643,7 +648,7 @@ window.questionBank = [
     "unitInferStatus": "content_keyword",
     "sourceDisplayNoLabel": "13",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -788,7 +793,7 @@ window.questionBank = [
     "unitInferStatus": "content_keyword",
     "sourceDisplayNoLabel": "16",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -868,7 +873,8 @@ window.questionBank = [
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "표"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -1009,7 +1015,8 @@ window.questionBank = [
     "solutionStatus": "direct_written_round5",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "서술형"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -1022,7 +1029,7 @@ window.questionBank = [
     "standardUnitKey": "H15-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
-    "questionType": "주관식",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
@@ -1054,7 +1061,8 @@ window.questionBank = [
     "solutionStatus": "direct_written_round5",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "서술형"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -1067,7 +1075,7 @@ window.questionBank = [
     "standardUnitKey": "H15-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
-    "questionType": "주관식",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
@@ -1099,7 +1107,8 @@ window.questionBank = [
     "solutionStatus": "direct_written_round5",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "서술형"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -1112,7 +1121,7 @@ window.questionBank = [
     "standardUnitKey": "H15-PS-06",
     "standardUnit": "통계적 추정",
     "standardUnitOrder": 6,
-    "questionType": "주관식",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
@@ -1146,7 +1155,9 @@ window.questionBank = [
     "solutionStatus": "direct_written_round5",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
-      "기출"
+      "기출",
+      "표",
+      "서술형"
     ],
     "notes": [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
@@ -1159,7 +1170,7 @@ window.questionBank = [
     "standardUnitKey": "H15-PS-05",
     "standardUnit": "확률분포",
     "standardUnitOrder": 5,
-    "questionType": "주관식",
+    "questionType": "서술형",
     "layoutTag": "grid",
     "wide": false,
     "unitInferStatus": "content_keyword",
