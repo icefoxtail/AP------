@@ -22,7 +22,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표에서 $X=2$와 $X=3$인 확률만 더하면 $P(X\\ge 2)$를 구할 수 있다.\n조건 정리: $P(X=1)=\\dfrac{3}{5}$, $P(X=2)=\\dfrac{3}{10}$, $P(X=3)=\\dfrac{1}{10}$이다.\n풀이 방향: 사건 $X\\ge 2$는 $X=2$ 또는 $X=3$인 경우이므로 두 확률의 합을 구한다.\n정석 풀이: $P(X\\ge 2)=P(X=2)+P(X=3)$이다.\n$P(X\\ge 2)=\\dfrac{3}{10}+\\dfrac{1}{10}=\\dfrac{4}{10}=\\dfrac{2}{5}$\n보기에서 $\\dfrac{2}{5}$는 ⑤이다.\n따라서 정답은 ⑤이다.",
+    "solution": "확률분포표에서 $X\\ge 2$에 해당하는 값은 $2,\\ 3$이다.\n$P(X\\ge 2)=P(X=2)+P(X=3)$\n$=\\dfrac{3}{10}+\\dfrac{1}{10}$\n$=\\dfrac{4}{10}=\\dfrac25$\n따라서 정답은 ⑤이다.",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -69,7 +69,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 이항분포 $B(n,p)$의 평균은 $np$이다.\n조건 정리: 확률변수 $X$는 이항분포 $B\\left(54,\\dfrac{1}{9}\\right)$를 따른다.\n풀이 방향: 이항분포의 시행 횟수 $n=54$, 성공확률 $p=\\dfrac{1}{9}$를 평균식 $E(X)=np$에 적용한다.\n정석 풀이: $E(X)=np$이므로\n$E(X)=54\\times\\dfrac{1}{9}=6$\n따라서 $X$의 평균은 6이고, 보기에서 6은 ③이다.\n따라서 정답은 ③이다.",
+    "solution": "$X\\sim B\\left(54,\\dfrac19\\right)$에서 시행 횟수는 $n=54$, 한 번의 성공확률은 $p=\\dfrac19$이다.\n이항분포의 평균은 $E(X)=np$이므로\n$E(X)=54\\times\\dfrac19$\n$=6$이다.\n따라서 정답은 ③이다.",
     "solutionStatus": "round4_gibbs_solution_source_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -117,7 +117,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표준정규분포는 0을 기준으로 대칭이므로 $P(-1\\le Z\\le 1)=2P(0\\le Z\\le 1)$이다.\n조건 정리: $Z$는 표준정규분포를 따르고, 표에서 $P(0\\le Z\\le 1)=0.3413$이다.\n풀이 방향: 구간 $[-1,1]$을 $[-1,0]$과 $[0,1]$로 나누고 대칭성을 이용한다.\n정석 풀이: 표준정규분포의 대칭성에 의해\n$P(-1\\le Z\\le 0)=P(0\\le Z\\le 1)=0.3413$이다.\n따라서\n$P(-1\\le Z\\le 1)=0.3413+0.3413=0.6826$\n보기에서 $0.6826$은 ②이다.\n따라서 정답은 ②이다.",
+    "solution": "표준정규분포는 평균 $0$을 중심으로 좌우 대칭이다.\n$P(-1\\le Z\\le0)=P(0\\le Z\\le1)=0.3413$\n따라서\n$P(-1\\le Z\\le1)$\n$=P(-1\\le Z\\le0)+P(0\\le Z\\le1)$\n$=0.3413+0.3413$\n$=0.6826$\n따라서 정답은 ②이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q03-solution.svg",
+    "solutionImageAlt": "표준정규분포의 중앙 확률",
+    "solutionImageCaption": "-1 이상 1 이하",
+    "solutionImageSize": "medium",
     "solutionStatus": "solution_prefix_normalized_pending_math_review",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -165,7 +169,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 정규분포 $N(10,2^2)$를 표준화하면 $Z=\\dfrac{X-10}{2}$이다.\n조건 정리: $X\\sim N(10,2^2)$이고 $P(X\\le 14)=P(Z\\le a)$이다.\n풀이 방향: $X=14$를 표준화하여 같은 누적확률을 주는 $Z$값을 찾는다.\n정석 풀이: 표준화식은\n$Z=\\dfrac{X-10}{2}$\n이다. $X=14$를 넣으면\n$Z=\\dfrac{14-10}{2}=\\dfrac{4}{2}=2$\n이므로 $P(X\\le 14)=P(Z\\le 2)$이다. 따라서 $a=2$이고, 보기에서 2는 ⑤이다.\n따라서 정답은 ⑤이다.",
+    "solution": "$X\\sim N(10,2^2)$이므로 평균은 $10$, 표준편차는 $2$이다.\n$Z=\\dfrac{X-10}{2}$\n$X=14$를 표준화하면\n$Z=\\dfrac{14-10}{2}=2$이다.\n따라서 $P(X\\le14)=P(Z\\le2)$이고 $a=2$이다.\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_prefix_normalized_pending_math_review",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -213,7 +217,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] $X\\sim N(64,2^2)$에서 62와 68을 각각 표준화한 뒤 표의 넓이를 더한다.\n조건 정리: 평균은 64, 표준편차는 2이며, 표에서 $P(0\\le Z\\le 1)=0.3413$, $P(0\\le Z\\le 2)=0.4772$이다.\n풀이 방향: $62\\le X\\le 68$을 표준정규분포의 구간으로 바꾸고 대칭성을 이용한다.\n정석 풀이: $Z=\\dfrac{X-64}{2}$이므로\n$X=62$일 때 $Z=\\dfrac{62-64}{2}=-1$,\n$X=68$일 때 $Z=\\dfrac{68-64}{2}=2$이다.\n따라서\n$P(62\\le X\\le 68)=P(-1\\le Z\\le 2)$\n$=P(-1\\le Z\\le 0)+P(0\\le Z\\le 2)$\n$=0.3413+0.4772=0.8185$\n보기에서 $0.8185$는 ①이다.\n따라서 정답은 ①이다.",
+    "solution": "$X\\sim N(64,2^2)$에서 평균은 $64$, 표준편차는 $2$이다.\n$Z=\\dfrac{X-64}{2}$\n$X=62$일 때 $Z=-1$,\n$X=68$일 때 $Z=2$이다.\n$P(62\\le X\\le68)=P(-1\\le Z\\le2)$\n$=P(-1\\le Z\\le0)+P(0\\le Z\\le2)$\n$=0.3413+0.4772$\n$=0.8185$\n따라서 정답은 ①이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q05-solution.svg",
+    "solutionImageAlt": "비대칭 구간의 정규확률",
+    "solutionImageCaption": "-1 이상 2 이하",
+    "solutionImageSize": "medium",
     "solutionStatus": "round4_gibbs_solution_source_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
