@@ -518,7 +518,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 표본평균의 표준편차는 모집단 표준편차를 $\\sqrt n$으로 나눈 값이다.\n조건 정리: 모집단은 $N(150,6^2)$이고 표본의 크기는 36이다.\n풀이 방향: 표본평균 $\\overline X$의 분포를 구하고, 149를 표준화한다.\n정석 풀이: 표본평균의 평균은 150이고 표준편차는\n$\\dfrac{6}{\\sqrt{36}}=\\dfrac{6}{6}=1$이다.\n따라서 $\\overline X\\sim N(150,1^2)$이다.\n$\\overline X=149$를 표준화하면\n$Z=\\dfrac{149-150}{1}=-1$이다.\n그러므로\n$P(\\overline X\\ge149)=P(Z\\ge-1)$\n$=0.5+P(0\\le Z\\le1)=0.5+0.3413=0.8413$\n보기에서 $0.8413$은 ②이다.\n따라서 정답은 ②이다.",
+    "solution": "모집단이 $N(150,6^2)$이고 표본 크기가 $n=36$이므로\n표본평균의 평균은 $150$, 표준편차는\n$\\sigma_{\\overline X}=\\dfrac6{\\sqrt{36}}=1$이다.\n따라서 $\\overline X\\sim N(150,1^2)$이다.\n$Z=\\dfrac{\\overline X-150}{1}$에서\n$\\overline X=149$는 $Z=-1$에 대응한다.\n$P(\\overline X\\ge149)=P(Z\\ge-1)$\n$=\\dfrac12+P(0\\le Z\\le1)$\n$=0.5+0.3413$\n$=0.8413$\n따라서 정답은 ②이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q11-solution.svg",
+    "solutionImageAlt": "표본평균 149 이상인 오른쪽 음영 영역",
+    "solutionImageCaption": "149는 표준화한 경계 -1",
+    "solutionImageSize": "medium",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -565,7 +569,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 확률밀도함수의 전체 넓이가 1임을 이용해 $a$를 구한 뒤, $x\\ge1$인 부분의 넓이를 구한다.\n조건 정리: 그래프는 $(0,a)$에서 $(3,0)$으로 내려가는 선분과 $(3,0)$에서 $(4,a)$로 올라가는 선분으로 이루어져 있다.\n풀이 방향: 전체 넓이로 $a$를 먼저 정하고, $1\\le x\\le3$ 부분과 $3\\le x\\le4$ 부분의 넓이를 더한다.\n정석 풀이: 전체 넓이는 밑변 3, 높이 $a$인 삼각형과 밑변 1, 높이 $a$인 삼각형의 합이다.\n$\\dfrac{1}{2}\\times3\\times a+\\dfrac{1}{2}\\times1\\times a=2a$\n확률밀도함수의 전체 넓이는 1이므로 $2a=1$, 즉 $a=\\dfrac{1}{2}$이다.\n구하는 확률 $P(X\\ge1)$은 $1\\le x\\le3$의 삼각형 넓이와 $3\\le x\\le4$의 삼각형 넓이의 합이다.\n$x=1$에서의 높이는 직선의 닮음비로 $\\dfrac{2}{3}a$이다. 따라서\n$1\\le x\\le3$의 넓이는 $\\dfrac{1}{2}\\times2\\times\\dfrac{2a}{3}=\\dfrac{2a}{3}$이고,\n$3\\le x\\le4$의 넓이는 $\\dfrac{1}{2}\\times1\\times a=\\dfrac{a}{2}$이다.\n따라서\n$P(X\\ge1)=\\dfrac{2a}{3}+\\dfrac{a}{2}=\\dfrac{7a}{6}=\\dfrac{7}{12}$\n보기에서 $\\dfrac{7}{12}$는 ④이다.\n따라서 정답은 ④이다.",
+    "solution": "그래프는 $(0,a)$에서 $(3,0)$으로 내려갔다가 $(4,a)$로 올라간다.\n전체 넓이가 $1$이므로\n$\\dfrac12\\times3\\times a+\\dfrac12\\times1\\times a=1$\n$2a=1,\\quad a=\\dfrac12$이다.\n\n구하는 넓이는 $x=1$부터 $4$까지이다.\n왼쪽 직선에서 닮음비를 이용하면\n$f(1)=\\dfrac{3-1}{3}a=\\dfrac{2a}{3}$이다.\n\n$1\\le x\\le3$의 삼각형 넓이:\n$\\dfrac12\\times2\\times\\dfrac{2a}{3}=\\dfrac{2a}{3}$\n\n$3\\le x\\le4$의 삼각형 넓이:\n$\\dfrac12\\times1\\times a=\\dfrac a2$\n\n따라서\n$P(X\\ge1)=\\dfrac{2a}{3}+\\dfrac a2$\n$=\\dfrac{7a}{6}=\\dfrac{7}{12}$\n따라서 정답은 ④이다.",
+    "solutionImage": "archive/assets/images/25_강남여고_2학기_기말_고2_확률과통계/q12-solution.svg",
+    "solutionImageAlt": "확률밀도함수 전체 삼각형과 1 이상인 음영 부분",
+    "solutionImageCaption": "전체 넓이 1, 음영 넓이 7/12",
+    "solutionImageSize": "medium",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -612,7 +620,7 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 같은 신뢰도에서는 신뢰구간의 길이가 표본크기의 제곱근에 반비례한다.\n조건 정리: 표본크기가 100일 때 신뢰구간의 길이는 12이고, 표본크기가 $n$일 때 신뢰구간의 길이는 6이다.\n풀이 방향: 신뢰구간의 길이 $2k\\dfrac{\\sigma}{\\sqrt n}$을 두 표본크기에 적용하여 비례식을 세운다.\n정석 풀이: 신뢰도와 모집단 표준편차가 같으므로 $2k\\sigma$는 두 경우에서 같다.\n표본크기가 100일 때\n$12=2k\\dfrac{\\sigma}{\\sqrt{100}}=2k\\dfrac{\\sigma}{10}$이다.\n따라서 $k\\sigma=60$이다.\n표본크기가 $n$일 때 길이가 6이므로\n$6=2k\\dfrac{\\sigma}{\\sqrt n}$\n$3=\\dfrac{k\\sigma}{\\sqrt n}=\\dfrac{60}{\\sqrt n}$\n$\\sqrt n=20$\n$n=400$\n보기에서 400은 ⑤이다.\n따라서 정답은 ⑤이다.",
+    "solution": "같은 모집단, 같은 신뢰도이므로 신뢰상수 $z$와 모집단 표준편차 $\\sigma$는 같다.\n신뢰구간의 길이는 $L=\\dfrac{2z\\sigma}{\\sqrt n}$이다.\n\n표본 크기 $100$에서 길이가 $12$이므로\n$12=\\dfrac{2z\\sigma}{\\sqrt{100}}$\n$12=\\dfrac{2z\\sigma}{10}$\n$2z\\sigma=120$이다.\n\n표본 크기 $n$에서 길이가 $6$이므로\n$6=\\dfrac{120}{\\sqrt n}$\n$\\sqrt n=20$\n$n=400$\n따라서 정답은 ⑤이다.",
     "solutionStatus": "solution_prefix_normalized_pending_math_review",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -660,7 +668,7 @@ window.questionBank = [
     ],
     "answer": "③",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 한 번의 시행에서 두 번째로 큰 수의 확률분포를 먼저 만든 뒤, 표본평균의 평균과 분산을 이용한다.\n조건 정리: 1부터 6까지 적힌 카드 중 4장을 동시에 뽑고, 그중 두 번째로 큰 수를 확률변수 $X$라 둔다. 같은 시행을 14번 반복하여 평균을 $\\overline X$라 한다.\n풀이 방향: $X$가 가질 수 있는 값 3, 4, 5의 확률을 구하고 $E(X)$, $V(X)$를 구한 뒤 $\\overline X$의 평균과 분산으로 옮긴다.\n정석 풀이: 전체 경우의 수는 $\\binom{6}{4}=15$이다.\n두 번째로 큰 수가 3이려면 1, 2, 3을 뽑고 4, 5, 6 중 하나를 뽑아야 하므로 경우의 수는 $\\binom{2}{2}\\binom{3}{1}=3$이다. 따라서 $P(X=3)=\\dfrac{3}{15}=\\dfrac{1}{5}$이다.\n두 번째로 큰 수가 4이려면 1, 2, 3 중 두 장, 4, 그리고 5, 6 중 한 장을 뽑아야 하므로 경우의 수는 $\\binom{3}{2}\\binom{2}{1}=6$이다. 따라서 $P(X=4)=\\dfrac{6}{15}=\\dfrac{2}{5}$이다.\n두 번째로 큰 수가 5이려면 1, 2, 3, 4 중 두 장, 5, 그리고 6을 뽑아야 하므로 경우의 수는 $\\binom{4}{2}\\binom{1}{1}=6$이다. 따라서 $P(X=5)=\\dfrac{6}{15}=\\dfrac{2}{5}$이다.\n그러므로\n$E(X)=3\\cdot\\dfrac{1}{5}+4\\cdot\\dfrac{2}{5}+5\\cdot\\dfrac{2}{5}=\\dfrac{21}{5}$\n$E(X^2)=3^2\\cdot\\dfrac{1}{5}+4^2\\cdot\\dfrac{2}{5}+5^2\\cdot\\dfrac{2}{5}=\\dfrac{91}{5}$\n$V(X)=E(X^2)-\\{E(X)\\}^2=\\dfrac{91}{5}-\\left(\\dfrac{21}{5}\\right)^2=\\dfrac{14}{25}$이다.\n14번 반복한 평균이므로\n$E(\\overline X)=E(X)=\\dfrac{21}{5}$, $V(\\overline X)=\\dfrac{V(X)}{14}=\\dfrac{1}{25}$이다.\n따라서\n$E(5\\overline X-15)=5\\cdot\\dfrac{21}{5}-15=6$\n$V(5\\overline X+10)=5^2\\cdot\\dfrac{1}{25}=1$\n구하는 값은 $6+1=7$이고, 보기에서 7은 ③이다.\n따라서 정답은 ③이다.",
+    "solution": "한 번에 4장을 뽑아 두 번째로 큰 수를 $X$라 하자.\n전체 경우의 수는 $\\binom{6}{4}=15$이다.\n두 번째로 큰 수는 $3,4,5$ 중 하나이다.\n\n$X=3$: $1,2,3$과 $4,5,6$ 중 1장을 뽑는다.\n$P(X=3)=\\dfrac{{}_2C_2\\,{}_3C_1}{15}=\\dfrac3{15}=\\dfrac15$\n\n$X=4$: $1,2,3$ 중 2장, $4$와 $5,6$ 중 1장을 뽑는다.\n$P(X=4)=\\dfrac{{}_3C_2\\,{}_2C_1}{15}=\\dfrac6{15}=\\dfrac25$\n\n$X=5$: $1,2,3,4$ 중 2장, $5,6$을 뽑는다.\n$P(X=5)=\\dfrac{{}_4C_2}{15}=\\dfrac6{15}=\\dfrac25$\n\n$E(X)=3\\cdot\\dfrac15+4\\cdot\\dfrac25+5\\cdot\\dfrac25=\\dfrac{21}{5}$\n$E(X^2)=9\\cdot\\dfrac15+16\\cdot\\dfrac25+25\\cdot\\dfrac25=\\dfrac{91}{5}$\n$V(X)=\\dfrac{91}{5}-\\left(\\dfrac{21}{5}\\right)^2$\n$=\\dfrac{455-441}{25}=\\dfrac{14}{25}$\n\n독립인 시행 14번의 표본평균이 $\\overline X$이므로\n$E(\\overline X)=\\dfrac{21}{5}$,\n$V(\\overline X)=\\dfrac{14/25}{14}=\\dfrac1{25}$이다.\n\n$E(5\\overline X-15)=5\\cdot\\dfrac{21}{5}-15=6$\n$V(5\\overline X+10)=5^2\\cdot\\dfrac1{25}=1$\n구하는 값은 $6+1=7$이다.\n따라서 정답은 ③이다.",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
@@ -707,7 +715,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "[키포인트] 두 이항분포의 확률을 각각 전개한 뒤, 양수 $p$라는 조건으로 공통인 $p^3$을 나눈다.\n조건 정리: $X\\sim B(3,p)$, $Y\\sim B(4,2p)$이고 $10P(X=3)=P(Y\\ge3)$이다.\n풀이 방향: $P(X=3)$, $P(Y=3)$, $P(Y=4)$를 각각 구해 등식을 만든다.\n정석 풀이: $X\\sim B(3,p)$이므로\n$P(X=3)=p^3$이다.\n또 $Y\\sim B(4,2p)$이므로\n$P(Y\\ge3)=P(Y=3)+P(Y=4)$\n$=\\binom{4}{3}(2p)^3(1-2p)+\\binom{4}{4}(2p)^4$\n$=4\\cdot8p^3(1-2p)+16p^4$\n$=32p^3-64p^4+16p^4=32p^3-48p^4$이다.\n주어진 식에 넣으면\n$10p^3=32p^3-48p^4$이다. $p$는 양수이므로 $p^3$으로 나누어\n$10=32-48p$\n$48p=22$\n$p=\\dfrac{11}{24}$\n보기에서 $\\dfrac{11}{24}$는 ①이다.\n따라서 정답은 ①이다.",
+    "solution": "$X\\sim B(3,p)$에서\n$P(X=3)=p^3$이다.\n\n$Y\\sim B(4,2p)$에서\n$P(Y\\ge3)=P(Y=3)+P(Y=4)$\n$={}_4C_3(2p)^3(1-2p)+{}_4C_4(2p)^4$\n$=32p^3(1-2p)+16p^4$\n$=32p^3-48p^4$이다.\n\n$10P(X=3)=P(Y\\ge3)$이므로\n$10p^3=32p^3-48p^4$\n$p>0$에서 $p^3$으로 나누면\n$10=32-48p$\n$48p=22$\n$p=\\dfrac{11}{24}$이다.\n$0<2p\\le1$도 만족하므로 가능하다.\n따라서 정답은 ①이다.",
     "solutionStatus": "round4_gibbs_direct_solution_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
