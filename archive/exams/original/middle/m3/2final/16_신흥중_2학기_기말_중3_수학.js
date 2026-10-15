@@ -13,8 +13,8 @@ window.examData = {
         "$1$",
         "$\\dfrac{12}{5}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "직각삼각형에서 $\\overline{\\mathrm{AC}}=5$는 빗변이고, $\\overline{\\mathrm{BC}}=4$, $\\overline{\\mathrm{AB}}=3$이다.<br>$\\sin A=\\dfrac{BC}{AC}=\\dfrac45$<br>$\\cos A=\\dfrac{AB}{AC}=\\dfrac35$<br>$\\sin A\\cos A=\\dfrac45\\times\\dfrac35=\\dfrac{12}{25}$<br>따라서 정답은 ③이다."
     },
     {
       "id": 2,
@@ -55,8 +55,8 @@ window.examData = {
         "$\\dfrac{6}{5}$",
         "$\\dfrac{19}{15}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "②",
+      "solution": "$\\triangle \\mathrm{ABH}\\sim\\triangle \\mathrm{CBA}$이므로 $x=\\angle \\mathrm{ACB}$이다.<br>$\\sin x=\\dfrac{AB}{BC}=\\dfrac6{10}=\\dfrac35$<br>$\\triangle \\mathrm{ACH}\\sim\\triangle \\mathrm{BCA}$이므로 $y=\\angle \\mathrm{ABC}$이다.<br>$\\tan y=\\dfrac{AC}{AB}=\\dfrac86=\\dfrac43$<br>$\\sin x\\times\\tan y=\\dfrac35\\times\\dfrac43=\\dfrac45$<br>따라서 정답은 ②이다."
     },
     {
       "id": 5,
@@ -125,8 +125,8 @@ window.examData = {
         "$16\\pi\\text{ cm}^2$",
         "$17\\pi\\text{ cm}^2$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "그림에서 $OD\\perp AB$, $OE\\perp BC$, $OF\\perp CA$이고 $OD=OE=OF$이다. 원의 중심에서 같은 거리에 있는 현은 길이가 같으므로 $AB=BC=CA$이다.<br>따라서 $\\triangle ABC$는 한 변이 $4\\sqrt3\\text{ cm}$인 정삼각형이다.<br>정삼각형의 외접반지름은 $R=\\dfrac{AB}{\\sqrt3}=\\dfrac{4\\sqrt3}{\\sqrt3}=4\\text{ cm}$이다.<br>원의 넓이는 $\\pi R^2=\\pi\\times4^2=16\\pi\\text{ cm}^2$이다.<br>따라서 정답은 ④이다."
     },
     {
       "id": 10,
@@ -139,8 +139,8 @@ window.examData = {
         "$3$",
         "$\\dfrac{2}{3}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "①",
+      "solution": "한 점에서 원에 그은 두 접선의 길이는 같으므로 $AP=AR$, $BP=BQ$, $CQ=CR$이다.<br>$BP=AB-AP=8-2=6\\text{ cm}$<br>$CR=AC-AR=5-2=3\\text{ cm}$<br>$\\dfrac{CQ}{BQ}=\\dfrac{CR}{BP}=\\dfrac36=\\dfrac12$<br>따라서 정답은 ①이다."
     },
     {
       "id": 11,
@@ -223,8 +223,8 @@ window.examData = {
         "$\\dfrac{16\\sqrt{2}}{3}$",
         "$8\\sqrt{2}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "④",
+      "solution": "원 $O$의 반지름은 $OA=OB=4$이고, $O'$는 $OB$의 중점이므로 $OO'=O'B=O'P=2$이다.<br>$AO'=AO+OO'=4+2=6$<br>접선 반지름은 수직이므로 $\\triangle AO'P$에서 $AP^2=AO'^2-O'P^2=6^2-2^2=32$이다.<br>$AP=4\\sqrt2$이다. 그림에서 $A,P,Q$는 한 직선 위이므로 $\\theta=\\angle OAP=\\angle OAQ$라 두면<br>$\\cos\\theta=\\dfrac{AP}{AO'}=\\dfrac{4\\sqrt2}{6}=\\dfrac{2\\sqrt2}{3}$이다.<br>원 $O$의 현 $AQ$의 중점을 $M$이라 하면 $OM\\perp AQ$이고 $AM=OA\\cos\\theta=4\\times\\dfrac{2\\sqrt2}{3}=\\dfrac{8\\sqrt2}{3}$이다.<br>$AQ=2AM=\\dfrac{16\\sqrt2}{3}$이다.<br>따라서 정답은 ④이다."
     },
     {
       "id": 17,
@@ -251,8 +251,8 @@ window.examData = {
         "$\\dfrac{5}{8}$",
         "$\\dfrac{\\sqrt{39}}{8}$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "③",
+      "solution": "원 $O$에서 $B$를 지나는 지름을 그려 다른 끝점을 $D$라 하면 $BD=2R=2\\times5=10$이다.<br>지름에 대한 원주각은 직각이므로 $\\angle BCD=90^\\circ$이다.<br>점 $A$와 $D$는 $BC$의 같은 큰 호 위에 있으므로 같은 현 $BC$를 보는 원주각은 같아 $\\angle BAC=\\angle BDC$이다.<br>따라서 직각삼각형 $BCD$에서 $\\sin A=\\sin\\angle BDC=\\dfrac{BC}{BD}=\\dfrac{6}{10}=\\dfrac35$이다.<br>따라서 정답은 ③이다."
     },
     {
       "id": 19,
@@ -265,8 +265,8 @@ window.examData = {
         "$120^\\circ$",
         "$125^\\circ$"
       ],
-      "answer": "",
-      "solution": ""
+      "answer": "⑤",
+      "solution": "$\\angle DAB=a$, $\\angle BCD=c$, $\\angle ADC=d$라 하자.<br>그림에서 $E,A,B$와 $E,D,C$가 각각 한 직선 위이므로 $\\triangle EAD$에서<br>$30^\\circ+(180^\\circ-a)+(180^\\circ-d)=180^\\circ$<br>$a+d=210^\\circ$<br>또 $A,D,F$와 $B,C,F$가 각각 한 직선 위이므로 $\\triangle DCF$에서<br>$40^\\circ+(180^\\circ-d)+(180^\\circ-c)=180^\\circ$<br>$c+d=220^\\circ$<br>원에 내접하는 사각형의 마주 보는 각은 보각이므로 $a+c=180^\\circ$이다.<br>앞의 두 식을 더하면 $a+c+2d=430^\\circ$이므로<br>$180^\\circ+2d=430^\\circ$, $d=125^\\circ$이다.<br>따라서 정답은 ⑤이다."
     },
     {
       "id": 20,
@@ -287,8 +287,8 @@ window.examData = {
       "score": 5.0,
       "question": "[서술형 1] 다음 그림과 같이 연못의 가장자리에 있는 두 지점 $\\mathrm{A}$, $\\mathrm{B}$와 지점 $\\mathrm{A}$에서 $8\\text{ m}$ 떨어진 지점 $\\mathrm{C}$에 대하여 $\\angle \\mathrm{BAC} = 75^\\circ$, $\\angle \\mathrm{ABC} = 45^\\circ$일 때, 다음을 구하여라.(5점)<br><img src=\"assets/images/16_신흥중_2학기_기말_중3_수학/s01.png\" /><br>(1) $\\angle \\mathrm{CAH}$의 크기(1점)<br>(2) $\\overline{\\mathrm{AH}}$의 길이(2점)<br>(3) $\\overline{\\mathrm{AB}}$의 길이(2점)",
       "choices": [],
-      "answer": "",
-      "solution": ""
+      "answer": "(1) $30^\\circ$, (2) $4\\sqrt3\\text{ m}$, (3) $4\\sqrt6\\text{ m}$",
+      "solution": "삼각형의 내각의 합에서 $\\angle ACB=180^\\circ-75^\\circ-45^\\circ=60^\\circ$이다.<br>그림에서 $AH\\perp BC$이므로 직각삼각형 $ACH$에서<br>$\\angle CAH=90^\\circ-\\angle ACB=90^\\circ-60^\\circ=30^\\circ$이다.<br>$AH=AC\\sin\\angle ACB=8\\times\\sin60^\\circ=4\\sqrt3\\text{ m}$이다.<br>$\\angle ABH=\\angle ABC=45^\\circ$이므로 직각삼각형 $ABH$에서<br>$\\sin45^\\circ=\\dfrac{AH}{AB}$이다.<br>$AB=\\dfrac{AH}{\\sin45^\\circ}=\\dfrac{4\\sqrt3}{\\sqrt2/2}=4\\sqrt6\\text{ m}$이다.<br>따라서 (1) $30^\\circ$, (2) $4\\sqrt3\\text{ m}$, (3) $4\\sqrt6\\text{ m}$이다."
     },
     {
       "id": 22,
