@@ -1,0 +1,532 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q12_AUTHOR_BLUEPRINT_v1",
+  "sourceQid": 12,
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "primaryRpmL3": "H1-RPM-250",
+  "rpmL3": "증명",
+  "rpmL4": "절대부등식 증명",
+  "pt": "PT_ABSOLUTE_INEQUALITY_PROOF",
+  "tpl": "TPL_SQUARE_COMPARISON_PROOF",
+  "invariant": "근호의 부등식은 먼저 양수임을 밝힌 뒤 제곱의 차 인수분해·부호를 판정한다.",
+  "designModes": {
+    "A": "동형 증명식 빈칸",
+    "B": "등호 조건 및 동치식",
+    "C": "제곱의 차로 유효 자연수 범위·개수를 증명"
+  },
+  "records": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q12-A1",
+      "slot": "A1",
+      "mode": "STRICT_VARIANT",
+      "stem": "$a\\gt b\\gt0$일 때 $\\sqrt{a-b}\\gt\\sqrt a-\\sqrt b$임을 증명하는 과정이다. (가), (나)에 들어갈 식을 차례로 나열한 것은?<div class=\"question-note-box\" style=\"border:1px solid #444;padding:8px 10px;margin-top:8px;line-height:1.7\">$(\\sqrt{a-b})^2-(\\sqrt a-\\sqrt b)^2=$ (가) $-2b=2\\sqrt b\\cdot$ (나) $\\gt0$</div>",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식 증명",
+      "pt": "PT_ABSOLUTE_INEQUALITY_PROOF",
+      "tpl": "TPL_SQUARE_COMPARISON_PROOF",
+      "cross": [
+        "CC_RADICAL_EXPRESSION"
+      ],
+      "conditions": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integration": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningReason": "양수 확인→근호의 제곱 전개→양의 인수분해가 필요하다.",
+      "bucketReason": "교차항 계수·인수의 부호·근호 곱셈이 함정이다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "svgPath": null,
+      "svgBlob": null,
+      "choices": [
+        "$(\\sqrt{ab},\\ \\sqrt a-\\sqrt b)$",
+        "$(2\\sqrt{ab},\\ \\sqrt a+\\sqrt b)$",
+        "$(2\\sqrt{ab},\\ \\sqrt a-\\sqrt b)$",
+        "$(2\\sqrt{ab},\\ a-b)$",
+        "$(2ab,\\ \\sqrt a-\\sqrt b)$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$(\\sqrt{ab},\\ \\sqrt a-\\sqrt b)$",
+          "errorCalculation": "$(\\sqrt a-\\sqrt b)^2$의 교차항 $-2\\sqrt{ab}$에서 계수 2를 누락하면 (가)는 $\\sqrt{ab}$이다."
+        },
+        {
+          "index": "②",
+          "value": "$(2\\sqrt{ab},\\ \\sqrt a+\\sqrt b)$",
+          "errorCalculation": "$2\\sqrt{ab}-2b$에서 $-2b$를 $+2b$로 잘못 읽으면 인수가 $\\sqrt a+\\sqrt b$가 된다."
+        },
+        {
+          "index": "④",
+          "value": "$(2\\sqrt{ab},\\ a-b)$",
+          "errorCalculation": "인수 $\\sqrt a-\\sqrt b$를 항별로 제곱해 $a-b$로 바꾸는 오류이다."
+        },
+        {
+          "index": "⑤",
+          "value": "$(2ab,\\ \\sqrt a-\\sqrt b)$",
+          "errorCalculation": "$\\sqrt a\\sqrt b=\\sqrt{ab}$를 $ab$로 착각하면 (가)를 $2ab$라 계산한다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q12-A2",
+      "slot": "A2",
+      "mode": "STRICT_VARIANT",
+      "stem": "$a\\gt3b\\gt0$일 때 $\\sqrt{a-3b}\\gt\\sqrt a-\\sqrt{3b}$임을 증명하려고 한다. 다음 (가), (나)에 들어갈 식은?<div class=\"question-note-box\" style=\"border:1px solid #444;padding:8px 10px;margin-top:8px;line-height:1.7\">$(\\sqrt{a-3b})^2-(\\sqrt a-\\sqrt{3b})^2=$ (가) $-6b=2\\sqrt{3b}\\cdot$ (나) $\\gt0$</div>",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식 증명",
+      "pt": "PT_ABSOLUTE_INEQUALITY_PROOF",
+      "tpl": "TPL_SQUARE_COMPARISON_PROOF",
+      "cross": [
+        "CC_RADICAL_EXPRESSION"
+      ],
+      "conditions": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integration": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningReason": "원본 제곱 비교를 3b로 확장하여 교차항과 인수분해의 계수를 조정한다.",
+      "bucketReason": "근호 속 3과 밖의 2를 혼동할 위험이 있다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "svgPath": null,
+      "svgBlob": null,
+      "choices": [
+        "$(2\\sqrt{3ab},\\ \\sqrt a+\\sqrt{3b})$",
+        "$(\\sqrt{3ab},\\ \\sqrt a-\\sqrt{3b})$",
+        "$(2\\sqrt{3ab},\\ \\sqrt a-\\sqrt{3b})$",
+        "$(2\\sqrt{ab},\\ \\sqrt a-\\sqrt{3b})$",
+        "$(6\\sqrt{ab},\\ \\sqrt a-\\sqrt{3b})$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$(2\\sqrt{3ab},\\ \\sqrt a+\\sqrt{3b})$",
+          "errorCalculation": "음수항 $-6b$를 $+6b$로 잘못 처리하면 인수가 $\\sqrt a+\\sqrt{3b}$가 된다."
+        },
+        {
+          "index": "②",
+          "value": "$(\\sqrt{3ab},\\ \\sqrt a-\\sqrt{3b})$",
+          "errorCalculation": "$(\\sqrt a-\\sqrt{3b})^2$의 교차항에서 2를 누락하면 (가)를 $\\sqrt{3ab}$라 쓴다."
+        },
+        {
+          "index": "④",
+          "value": "$(2\\sqrt{ab},\\ \\sqrt a-\\sqrt{3b})$",
+          "errorCalculation": "$\\sqrt a\\sqrt{3b}=\\sqrt{3ab}$에서 3을 빠뜨리면 $2\\sqrt{ab}$로 계산한다."
+        },
+        {
+          "index": "⑤",
+          "value": "$(6\\sqrt{ab},\\ \\sqrt a-\\sqrt{3b})$",
+          "errorCalculation": "$\\sqrt3$을 3으로 잘못 계산하면 $2\\sqrt{3ab}$를 $6\\sqrt{ab}$로 오인한다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q12-A3",
+      "slot": "A3",
+      "mode": "STRICT_VARIANT",
+      "stem": "$a\\gt b\\gt0$일 때 $\\sqrt{a^2-b^2}\\gt a-b$를 증명한다. 다음 (가), (나)에 들어갈 식은?<div class=\"question-note-box\" style=\"border:1px solid #444;padding:8px 10px;margin-top:8px;line-height:1.7\">$(\\sqrt{a^2-b^2})^2-(a-b)^2=$ (가) $-2b^2=2b\\cdot$ (나) $\\gt0$</div>",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식 증명",
+      "pt": "PT_ABSOLUTE_INEQUALITY_PROOF",
+      "tpl": "TPL_SQUARE_COMPARISON_PROOF",
+      "cross": [
+        "CC_POLYNOMIAL_FACTORIZATION"
+      ],
+      "conditions": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integration": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningReason": "다항식의 제곱 전개와 근호 대소 증명을 연결한다.",
+      "bucketReason": "제곱과 인수분해 중 부호·계수 오류 가능성이 있다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "svgPath": null,
+      "svgBlob": null,
+      "choices": [
+        "$(ab,\\ a-b)$",
+        "$(2ab,\\ a+b)$",
+        "$(2ab,\\ a-b)$",
+        "$(2a^2b,\\ a-b)$",
+        "$(2ab,\\ a-2b)$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$(ab,\\ a-b)$",
+          "errorCalculation": "$(a-b)^2$의 교차항 $-2ab$를 $-ab$로 전개하면 (가)가 $ab$가 된다."
+        },
+        {
+          "index": "②",
+          "value": "$(2ab,\\ a+b)$",
+          "errorCalculation": "$2ab-2b^2$의 음수항을 양수로 바꾸면 인수가 $a+b$가 된다."
+        },
+        {
+          "index": "④",
+          "value": "$(2a^2b,\\ a-b)$",
+          "errorCalculation": "교차항의 곱 $ab$에 $a$를 하나 더 곱하는 오산으로 $2a^2b$가 된다."
+        },
+        {
+          "index": "⑤",
+          "value": "$(2ab,\\ a-2b)$",
+          "errorCalculation": "$-2b^2$를 $2b$로 나누어 $-b$가 되는 것을 $-2b$로 계산하면 (나)는 $a-2b$가 된다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q12-B1",
+      "slot": "B1",
+      "mode": "FOLLOWUP",
+      "stem": "실수 $a\\ge b\\ge0$에서 $\\sqrt{a-b}\\ge\\sqrt a-\\sqrt b$이다. 등호가 성립하는 경우를 빠짐없이 나타낸 것은?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식 증명",
+      "pt": "PT_ABSOLUTE_INEQUALITY_PROOF",
+      "tpl": "TPL_SQUARE_COMPARISON_PROOF",
+      "cross": [
+        "CC_RADICAL_EXPRESSION"
+      ],
+      "conditions": [
+        "COND_RANGE"
+      ],
+      "integration": "CASE_BRANCH",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningReason": "제곱 차가 0이 되는 두 인수를 나누어 판단한다.",
+      "bucketReason": "등호에 a=b와 b=0이 모두 포함되어야 하는 경계 함정이 있다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "svgPath": null,
+      "svgBlob": null,
+      "choices": [
+        "$a>b>0$인 모든 경우",
+        "$a=b>0$인 경우만",
+        "$a=b$ 또는 $b=0$",
+        "$a=0$ 또는 $b=0$",
+        "$a=2b>0$인 경우"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$a>b>0$인 모든 경우",
+          "errorCalculation": "$a>b>0$이면 두 인수 모두 양수이므로 제곱의 차도 양수인데 이를 0이라고 오판한다."
+        },
+        {
+          "index": "②",
+          "value": "$a=b>0$인 경우만",
+          "errorCalculation": "뒤 인수 $\\sqrt a-\\sqrt b=0$만 풀면 $a=b$만 남아 $b=0,a=4$ 같은 등호 경우를 놓친다."
+        },
+        {
+          "index": "④",
+          "value": "$a=0$ 또는 $b=0$",
+          "errorCalculation": "뒤 인수 $0$을 $\\sqrt a=0$으로 잘못 읽으면 $a=0$ 또는 $b=0$만 남아 $a=b=3$을 빠뜨린다."
+        },
+        {
+          "index": "⑤",
+          "value": "$a=2b>0$인 경우",
+          "errorCalculation": "$\\sqrt a-\\sqrt b=0$을 $a=2b$로 잘못 제곱하면 $a=2b$를 등호 조건으로 제시하게 된다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q12-B2",
+      "slot": "B2",
+      "mode": "FOLLOWUP",
+      "stem": "양수 $a,b$에 대하여 $P=\\sqrt{a+b}$, $Q=\\sqrt a+\\sqrt b$라 하자. $P,Q$의 대소 관계와 $Q^2-P^2$의 값을 올바르게 짝 지은 것은?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식 증명",
+      "pt": "PT_ABSOLUTE_INEQUALITY_PROOF",
+      "tpl": "TPL_SQUARE_COMPARISON_PROOF",
+      "cross": [
+        "CC_RADICAL_EXPRESSION"
+      ],
+      "conditions": [
+        "COND_POSITIVE"
+      ],
+      "integration": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentBucket": 2,
+      "learningReason": "양의 두 제곱식 차이 한 번의 전개로 대소를 판단한다.",
+      "bucketReason": "교차항 오류 외에 별도의 범위 분기가 없다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "svgPath": null,
+      "svgBlob": null,
+      "choices": [
+        "$P\\gt Q,\\ Q^2-P^2=2\\sqrt{ab}$",
+        "$P\\lt Q,\\ Q^2-P^2=\\sqrt{ab}$",
+        "$P\\lt Q,\\ Q^2-P^2=2\\sqrt{ab}$",
+        "$P=Q,\\ Q^2-P^2=0$",
+        "$P\\lt Q,\\ Q^2-P^2=2ab$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$P\\gt Q,\\ Q^2-P^2=2\\sqrt{ab}$",
+          "errorCalculation": "$Q^2-P^2>0$이므로 $Q>P$인데 대소 방향을 반대로 읽어 $P>Q$라 한다."
+        },
+        {
+          "index": "②",
+          "value": "$P\\lt Q,\\ Q^2-P^2=\\sqrt{ab}$",
+          "errorCalculation": "$(\\sqrt a+\\sqrt b)^2$에서 교차항 계수 2를 빠뜨리면 차를 $\\sqrt{ab}$로 계산한다."
+        },
+        {
+          "index": "④",
+          "value": "$P=Q,\\ Q^2-P^2=0$",
+          "errorCalculation": "제곱 전개에서 교차항을 통째로 빼면 $Q^2=a+b=P^2$라 오인한다."
+        },
+        {
+          "index": "⑤",
+          "value": "$P\\lt Q,\\ Q^2-P^2=2ab$",
+          "errorCalculation": "$\\sqrt a\\sqrt b=ab$로 계산해 차를 $2ab$라 적는다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q12-B3",
+      "slot": "B3",
+      "mode": "FOLLOWUP",
+      "stem": "$a\\gt b\\gt0$일 때 $\\sqrt{a-b}+\\sqrt b\\gt\\sqrt a$를 제곱의 차로 증명한다. 다음 빈칸에 들어갈 식은?<div class=\"question-note-box\" style=\"border:1px solid #444;padding:8px 10px;margin-top:8px;line-height:1.7\">$(\\sqrt{a-b}+\\sqrt b)^2-(\\sqrt a)^2=$ (가) $\\gt0$</div>",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식 증명",
+      "pt": "PT_ABSOLUTE_INEQUALITY_PROOF",
+      "tpl": "TPL_SQUARE_COMPARISON_PROOF",
+      "cross": [
+        "CC_RADICAL_EXPRESSION"
+      ],
+      "conditions": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integration": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningReason": "원래 부등식을 동치 덧셈형으로 바꾸어 제곱의 차를 설명한다.",
+      "bucketReason": "합의 제곱의 교차항 및 두 근호 곱셈의 검산이 필요하다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "svgPath": null,
+      "svgBlob": null,
+      "choices": [
+        "$\\sqrt{b(a-b)}$",
+        "$2\\sqrt{b(a-b)}$",
+        "$2b$",
+        "$2\\sqrt{ab}$",
+        "$2b(a-b)$"
+      ],
+      "answer": "②",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$\\sqrt{b(a-b)}$",
+          "errorCalculation": "$(u+v)^2=u^2+2uv+v^2$의 교차항 계수 2를 빠뜨리면 $\\sqrt{b(a-b)}$만 남는다."
+        },
+        {
+          "index": "③",
+          "value": "$2b$",
+          "errorCalculation": "$2\\sqrt{a-b}\\sqrt b$에서 두 근호를 같다고 착각하면 $2b$가 된다."
+        },
+        {
+          "index": "④",
+          "value": "$2\\sqrt{ab}$",
+          "errorCalculation": "$a-b$를 $a$로 잘못 바꾸면 $2\\sqrt{ab}$가 된다."
+        },
+        {
+          "index": "⑤",
+          "value": "$2b(a-b)$",
+          "errorCalculation": "$2\\sqrt{b(a-b)}$를 불필요하게 제곱하여 $2b(a-b)$로 계산한다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q12-C1",
+      "slot": "C1",
+      "mode": "PLUS_ONE",
+      "stem": "자연수 $m,n$이 $m>n$, $m+n=10$을 만족한다. 제곱 비교를 이용하여 부등식 $\\sqrt{m^2-n^2}>2(m-n)$이 성립하도록 하는 $m$의 값을 구하면?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식 증명",
+      "pt": "PT_ABSOLUTE_INEQUALITY_PROOF",
+      "tpl": "TPL_SQUARE_COMPARISON_PROOF",
+      "cross": [
+        "CC_POLYNOMIAL_FACTORIZATION",
+        "CC_RADICAL_EXPRESSION"
+      ],
+      "conditions": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integration": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 4,
+      "learningReason": "증명을 제곱 비교로 변환한 뒤 차의 짝수성과 자연수 조건을 적용한다.",
+      "bucketReason": "계수 제곱·엄격 경계·짝수 조건이 결합된다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q12/C1-solution.svg",
+      "svgBlob": "88651df59cc82d3e926c301582c1011f98c09b6f",
+      "choices": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$"
+      ],
+      "answer": "②",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$5$",
+          "errorCalculation": "$m=n=5$를 허용해 $d=0$을 얻고 $0>0$을 참으로 오인하면 5를 고른다."
+        },
+        {
+          "index": "③",
+          "value": "$7$",
+          "errorCalculation": "$(2d)^2$를 $2d^2$로 계산하면 $10>2d$가 되어 $d=4$, $m=7$을 잘못 허용한다."
+        },
+        {
+          "index": "④",
+          "value": "$8$",
+          "errorCalculation": "$2d$를 제곱하지 않고 $10d>2d$로 비교하면 $d=6$, $m=8$도 잘못 허용한다."
+        },
+        {
+          "index": "⑤",
+          "value": "$9$",
+          "errorCalculation": "계수 2를 버리고 $\\sqrt{10d}>d$를 비교하면 $10>d$여서 $d=8$, $m=9$를 잘못 허용한다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q12-C2",
+      "slot": "C2",
+      "mode": "PLUS_ONE",
+      "stem": "자연수 $m,n$이 $m>n$, $m+n=20$을 만족한다. 제곱 비교로 부등식 $\\sqrt{m^2-n^2}>2(m-n)$이 성립함을 확인할 때, 순서쌍 $(m,n)$의 개수는?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식 증명",
+      "pt": "PT_ABSOLUTE_INEQUALITY_PROOF",
+      "tpl": "TPL_SQUARE_COMPARISON_PROOF",
+      "cross": [
+        "CC_POLYNOMIAL_FACTORIZATION",
+        "CC_RADICAL_EXPRESSION"
+      ],
+      "conditions": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integration": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 4,
+      "learningReason": "부등식 증명과 정수 차의 후보 열거를 연결한다.",
+      "bucketReason": "경계 5 제외와 d 짝수 제한을 동시에 지켜야 한다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q12/C2-solution.svg",
+      "svgBlob": "3db1d8bb83be33c5acd8602ec4de815d1cc4d27d",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$9$"
+      ],
+      "answer": "②",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$1$",
+          "errorCalculation": "$d<5$를 $d<4$로 잘못 좁히면 $d=2$만 세어 한 쌍이라고 답한다."
+        },
+        {
+          "index": "③",
+          "value": "$3$",
+          "errorCalculation": "$d=5$를 경계값으로 포함하고 홀짝 조건까지 생략하면 $d=2,4,5$ 세 경우라고 오인한다."
+        },
+        {
+          "index": "④",
+          "value": "$4$",
+          "errorCalculation": "$(2d)^2$의 4를 2로 잘못 제곱하면 $d<10$이 되어 $d=2,4,6,8$ 네 개를 센다."
+        },
+        {
+          "index": "⑤",
+          "value": "$9$",
+          "errorCalculation": "원식의 계수 2를 빠뜨려 $\\sqrt{20d}>d$로 바꾸면 양의 짝수 $d=2,4,\\dots,18$ 아홉 개를 센다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q12-C3",
+      "slot": "C3",
+      "mode": "PLUS_ONE",
+      "stem": "자연수 $m,n$이 $m>n$, $m+n=20$을 만족한다. 제곱의 차를 이용하여 $2(m-n)<\\sqrt{m^2-n^2}<3(m-n)$이 성립하도록 하는 $m$의 값은?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식 증명",
+      "pt": "PT_ABSOLUTE_INEQUALITY_PROOF",
+      "tpl": "TPL_SQUARE_COMPARISON_PROOF",
+      "cross": [
+        "CC_POLYNOMIAL_FACTORIZATION",
+        "CC_RADICAL_EXPRESSION"
+      ],
+      "conditions": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integration": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "learningReason": "두 방향의 제곱 비교를 각각 풀고 교집합에 정수 짝수 조건을 적용한다.",
+      "bucketReason": "이중 엄격 경계 및 조건 누락 가능성이 높다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q12/C3-solution.svg",
+      "svgBlob": "c10195b7d84dda094249b1a29a5bf003e4d543dd",
+      "choices": [
+        "$10$",
+        "$11$",
+        "$12$",
+        "$13$",
+        "$14$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$10$",
+          "errorCalculation": "$m=n=10$을 허용하여 $d=0$을 대입하고 $0<0<0$을 참이라 오인하면 10을 선택한다."
+        },
+        {
+          "index": "②",
+          "value": "$11$",
+          "errorCalculation": "$d=2$에서 오른쪽 $\\sqrt{40}<6$을 확인하지 않고 왼쪽만 보고 $m=11$을 택한다."
+        },
+        {
+          "index": "④",
+          "value": "$13$",
+          "errorCalculation": "$d=6$에서 왼쪽 $12<\\sqrt{120}$이 거짓인데 오른쪽만 비교해 $m=13$이라 적는다."
+        },
+        {
+          "index": "⑤",
+          "value": "$14$",
+          "errorCalculation": "왼쪽의 계수 2를 누락해 $d<\\sqrt{20d}$만 검증하면 $d=8$도 잘못 허용되어 $m=14$라 적는다."
+        }
+      ],
+      "reverseStem": "KEEP"
+    }
+  ]
+}

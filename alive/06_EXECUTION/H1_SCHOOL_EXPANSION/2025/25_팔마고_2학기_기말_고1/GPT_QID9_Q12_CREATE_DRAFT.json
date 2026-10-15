@@ -1,0 +1,1357 @@
+{
+  "schemaVersion": "PALMA25_QID9_DRAFT_v1",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 12,
+  "sourceOriginalImage": null,
+  "sourceOriginalCondition": "a>b>0 sqrt(a-b)>sqrt a-sqrt b, proof by difference of squares",
+  "primaryRpmL3": "H1-RPM-250",
+  "rpmMappingStatus": "FAMILY_ACTIVE",
+  "actualActivePt": "PT_ABSOLUTE_INEQUALITY_PROOF",
+  "actualActiveTpl": "TPL_SQUARE_COMPARISON_PROOF",
+  "summary": {
+    "authorCreated": 9,
+    "choicesChecked": 45,
+    "wrongRoutes": 36,
+    "problemSvg": 0,
+    "problemSvgExempt": 9,
+    "solutionSvg": 3,
+    "solutionSvgExempt": 6,
+    "answerDistribution": {
+      "①": 0,
+      "②": 3,
+      "③": 6,
+      "④": 0,
+      "⑤": 0
+    },
+    "formalIndependent": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "consumer": "NOT_RUN",
+    "main": "NOT_RUN",
+    "sourceUidEvidenceDebt": 9,
+    "nextQid": 13
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-PALMA25-2FINAL-Q12-A1",
+      "sourceQid": 12,
+      "sourceUid": null,
+      "slot": "A1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "부등식의 증명",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "부등식",
+        "증명"
+      ],
+      "wide": false,
+      "content": "$a\\gt b\\gt0$일 때 $\\sqrt{a-b}\\gt\\sqrt a-\\sqrt b$임을 증명하는 과정이다. (가), (나)에 들어갈 식을 차례로 나열한 것은?<div class=\"question-note-box\" style=\"border:1px solid #444;padding:8px 10px;margin-top:8px;line-height:1.7\">$(\\sqrt{a-b})^2-(\\sqrt a-\\sqrt b)^2=$ (가) $-2b=2\\sqrt b\\cdot$ (나) $\\gt0$</div>",
+      "choices": [
+        "$(\\sqrt{ab},\\ \\sqrt a-\\sqrt b)$",
+        "$(2\\sqrt{ab},\\ \\sqrt a+\\sqrt b)$",
+        "$(2\\sqrt{ab},\\ \\sqrt a-\\sqrt b)$",
+        "$(2\\sqrt{ab},\\ a-b)$",
+        "$(2ab,\\ \\sqrt a-\\sqrt b)$"
+      ],
+      "answer": "③",
+      "solution": "$a>b>0$이므로 $\\sqrt{a-b}$와 $\\sqrt a-\\sqrt b$는 모두 양수이다. 따라서 제곱의 차를 계산한다.\n$(\\sqrt{a-b})^2-(\\sqrt a-\\sqrt b)^2=(a-b)-(a+b-2\\sqrt{ab})$\n$=2\\sqrt{ab}-2b=2\\sqrt b(\\sqrt a-\\sqrt b)>0$이다.\n따라서 (가)는 $2\\sqrt{ab}$, (나)는 $\\sqrt a-\\sqrt b$이다. 두 수가 양수이므로 제곱이 큰 쪽이 원래도 더 크다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_ACTIVE",
+        "rpmBindingEvidence": "2022 공통수학2 H22-C2-06-CORE, PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE, TPL_SQUARE_COMPARISON_PROOF ACTIVE, high1 crosswalk H1-RPM-250 FAMILY_ACTIVE.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+        "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
+        "crossConceptKeys": [
+          "CC_RADICAL_EXPRESSION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q12의 부등식 증명: 비교 대상의 양수성 확인 → 제곱의 차 → 인수분해·등호/경계 판정. H1-RPM-250 Primary L3 증명을 유지한다.",
+          "l4": "절대부등식 증명 RPM L4에서 제곱 비교를 사용한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE; 최종 발문은 제곱 비교 증명·오류 식·등호·증명을 이용한 정수 조건을 묻는다.",
+          "tpl": "TPL_SQUARE_COMPARISON_PROOF ACTIVE, 해당 PT의 구체적 제곱 비교 골격을 사용.",
+          "cross": "CC_RADICAL_EXPRESSION: 근호식 변형 또는 제곱 차의 인수분해에서 실제 사용",
+          "condition": "COND_POSITIVE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용; COND_RANGE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용",
+          "integration": "SEQUENTIAL: 양수성→제곱의 차 계산→증명 결론을 연결.",
+          "learningLevel": "양수 확인→근호의 제곱 전개→양의 인수분해가 필요하다.",
+          "assessmentBucket": "교차항 계수·인수의 부호·근호 곱셈이 함정이다.",
+          "problemVisual": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "solutionVisual": "EXEMPT: 제곱 전개와 인수분해 수식이 완결되어 SVG가 불필요하게 중복된다.",
+          "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음.",
+        "learningLevelReason": "양수 확인→근호의 제곱 전개→양의 인수분해가 필요하다.",
+        "assessmentDifficultyReason": "교차항 계수·인수의 부호·근호 곱셈이 함정이다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "$a\\gt b\\gt0$일 때 $\\sqrt{a-b}\\gt\\sqrt a-\\sqrt b$임을 증명하는 과정이다. (가), (나)에 들어갈 식을 차례로 나열한 것은?<div class=\"question-note-box\" style=\"border:1px solid #444;padding:8px 10px;margin-top:8px;line-height:1.7\">$(\\sqrt{a-b})^2-(\\sqrt a-\\sqrt b)^2=$ (가) $-2b=2\\sqrt b\\cdot$ (나) $\\gt0$</div>",
+          "requiredPrimaryL3Step": "양수 제곱의 차를 실제로 계산하여 부등식·등호·자연수 경계를 증명한다.",
+          "questionNaturalness": "원본과 같은 학교 증명 빈칸 및 실제 추가 판단",
+          "conditionSufficiency": "양수/정의역/자연수 및 열린 경계 명시",
+          "shortcut": "단순 보기 대입으로는 모든 a,b 또는 정수 범위의 증명을 대체할 수 없다.",
+          "answerFromFinalStudentInput": "$(2\\sqrt{ab},\\ \\sqrt a-\\sqrt b)$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "별도 독립검수/브라우저 실제 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$(\\sqrt{ab},\\ \\sqrt a-\\sqrt b)$",
+              "errorCalculation": "$(\\sqrt a-\\sqrt b)^2$의 교차항 $-2\\sqrt{ab}$에서 계수 2를 누락하면 (가)는 $\\sqrt{ab}$이다."
+            },
+            {
+              "index": "②",
+              "value": "$(2\\sqrt{ab},\\ \\sqrt a+\\sqrt b)$",
+              "errorCalculation": "$2\\sqrt{ab}-2b$에서 $-2b$를 $+2b$로 잘못 읽으면 인수가 $\\sqrt a+\\sqrt b$가 된다."
+            },
+            {
+              "index": "④",
+              "value": "$(2\\sqrt{ab},\\ a-b)$",
+              "errorCalculation": "인수 $\\sqrt a-\\sqrt b$를 항별로 제곱해 $a-b$로 바꾸는 오류이다."
+            },
+            {
+              "index": "⑤",
+              "value": "$(2ab,\\ \\sqrt a-\\sqrt b)$",
+              "errorCalculation": "$\\sqrt a\\sqrt b=\\sqrt{ab}$를 $ab$로 착각하면 (가)를 $2ab$라 계산한다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "ALGEBRAIC_SQUARE_DIFFERENCE_SELF_CHECK",
+          "coreFact": "square difference shown explicitly in solution"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 제곱 전개와 인수분해 수식이 완결되어 SVG가 불필요하게 중복된다.",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-PALMA25-2FINAL-Q12-A2",
+      "sourceQid": 12,
+      "sourceUid": null,
+      "slot": "A2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "부등식의 증명",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "부등식",
+        "증명"
+      ],
+      "wide": false,
+      "content": "$a\\gt3b\\gt0$일 때 $\\sqrt{a-3b}\\gt\\sqrt a-\\sqrt{3b}$임을 증명하려고 한다. 다음 (가), (나)에 들어갈 식은?<div class=\"question-note-box\" style=\"border:1px solid #444;padding:8px 10px;margin-top:8px;line-height:1.7\">$(\\sqrt{a-3b})^2-(\\sqrt a-\\sqrt{3b})^2=$ (가) $-6b=2\\sqrt{3b}\\cdot$ (나) $\\gt0$</div>",
+      "choices": [
+        "$(2\\sqrt{3ab},\\ \\sqrt a+\\sqrt{3b})$",
+        "$(\\sqrt{3ab},\\ \\sqrt a-\\sqrt{3b})$",
+        "$(2\\sqrt{3ab},\\ \\sqrt a-\\sqrt{3b})$",
+        "$(2\\sqrt{ab},\\ \\sqrt a-\\sqrt{3b})$",
+        "$(6\\sqrt{ab},\\ \\sqrt a-\\sqrt{3b})$"
+      ],
+      "answer": "③",
+      "solution": "$a>3b>0$이므로 $\\sqrt{a-3b}$와 $\\sqrt a-\\sqrt{3b}$는 양수이다.\n제곱의 차는 $(a-3b)-(a+3b-2\\sqrt{3ab})$\n$=2\\sqrt{3ab}-6b=2\\sqrt{3b}(\\sqrt a-\\sqrt{3b})>0$이다.\n따라서 (가)는 $2\\sqrt{3ab}$, (나)는 $\\sqrt a-\\sqrt{3b}$이다. 제곱의 차가 양수이므로 원래의 두 양수 사이에도 주어진 부등식이 성립한다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_ACTIVE",
+        "rpmBindingEvidence": "2022 공통수학2 H22-C2-06-CORE, PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE, TPL_SQUARE_COMPARISON_PROOF ACTIVE, high1 crosswalk H1-RPM-250 FAMILY_ACTIVE.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+        "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
+        "crossConceptKeys": [
+          "CC_RADICAL_EXPRESSION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q12의 부등식 증명: 비교 대상의 양수성 확인 → 제곱의 차 → 인수분해·등호/경계 판정. H1-RPM-250 Primary L3 증명을 유지한다.",
+          "l4": "절대부등식 증명 RPM L4에서 제곱 비교를 사용한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE; 최종 발문은 제곱 비교 증명·오류 식·등호·증명을 이용한 정수 조건을 묻는다.",
+          "tpl": "TPL_SQUARE_COMPARISON_PROOF ACTIVE, 해당 PT의 구체적 제곱 비교 골격을 사용.",
+          "cross": "CC_RADICAL_EXPRESSION: 근호식 변형 또는 제곱 차의 인수분해에서 실제 사용",
+          "condition": "COND_POSITIVE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용; COND_RANGE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용",
+          "integration": "SEQUENTIAL: 양수성→제곱의 차 계산→증명 결론을 연결.",
+          "learningLevel": "원본 제곱 비교를 3b로 확장하여 교차항과 인수분해의 계수를 조정한다.",
+          "assessmentBucket": "근호 속 3과 밖의 2를 혼동할 위험이 있다.",
+          "problemVisual": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "solutionVisual": "EXEMPT: 제곱 전개와 인수분해 수식이 완결되어 SVG가 불필요하게 중복된다.",
+          "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음.",
+        "learningLevelReason": "원본 제곱 비교를 3b로 확장하여 교차항과 인수분해의 계수를 조정한다.",
+        "assessmentDifficultyReason": "근호 속 3과 밖의 2를 혼동할 위험이 있다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "$a\\gt3b\\gt0$일 때 $\\sqrt{a-3b}\\gt\\sqrt a-\\sqrt{3b}$임을 증명하려고 한다. 다음 (가), (나)에 들어갈 식은?<div class=\"question-note-box\" style=\"border:1px solid #444;padding:8px 10px;margin-top:8px;line-height:1.7\">$(\\sqrt{a-3b})^2-(\\sqrt a-\\sqrt{3b})^2=$ (가) $-6b=2\\sqrt{3b}\\cdot$ (나) $\\gt0$</div>",
+          "requiredPrimaryL3Step": "양수 제곱의 차를 실제로 계산하여 부등식·등호·자연수 경계를 증명한다.",
+          "questionNaturalness": "원본과 같은 학교 증명 빈칸 및 실제 추가 판단",
+          "conditionSufficiency": "양수/정의역/자연수 및 열린 경계 명시",
+          "shortcut": "단순 보기 대입으로는 모든 a,b 또는 정수 범위의 증명을 대체할 수 없다.",
+          "answerFromFinalStudentInput": "$(2\\sqrt{3ab},\\ \\sqrt a-\\sqrt{3b})$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "별도 독립검수/브라우저 실제 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$(2\\sqrt{3ab},\\ \\sqrt a+\\sqrt{3b})$",
+              "errorCalculation": "음수항 $-6b$를 $+6b$로 잘못 처리하면 인수가 $\\sqrt a+\\sqrt{3b}$가 된다."
+            },
+            {
+              "index": "②",
+              "value": "$(\\sqrt{3ab},\\ \\sqrt a-\\sqrt{3b})$",
+              "errorCalculation": "$(\\sqrt a-\\sqrt{3b})^2$의 교차항에서 2를 누락하면 (가)를 $\\sqrt{3ab}$라 쓴다."
+            },
+            {
+              "index": "④",
+              "value": "$(2\\sqrt{ab},\\ \\sqrt a-\\sqrt{3b})$",
+              "errorCalculation": "$\\sqrt a\\sqrt{3b}=\\sqrt{3ab}$에서 3을 빠뜨리면 $2\\sqrt{ab}$로 계산한다."
+            },
+            {
+              "index": "⑤",
+              "value": "$(6\\sqrt{ab},\\ \\sqrt a-\\sqrt{3b})$",
+              "errorCalculation": "$\\sqrt3$을 3으로 잘못 계산하면 $2\\sqrt{3ab}$를 $6\\sqrt{ab}$로 오인한다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "ALGEBRAIC_SQUARE_DIFFERENCE_SELF_CHECK",
+          "coreFact": "square difference shown explicitly in solution"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 제곱 전개와 인수분해 수식이 완결되어 SVG가 불필요하게 중복된다.",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-PALMA25-2FINAL-Q12-A3",
+      "sourceQid": 12,
+      "sourceUid": null,
+      "slot": "A3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "부등식의 증명",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "부등식",
+        "증명"
+      ],
+      "wide": false,
+      "content": "$a\\gt b\\gt0$일 때 $\\sqrt{a^2-b^2}\\gt a-b$를 증명한다. 다음 (가), (나)에 들어갈 식은?<div class=\"question-note-box\" style=\"border:1px solid #444;padding:8px 10px;margin-top:8px;line-height:1.7\">$(\\sqrt{a^2-b^2})^2-(a-b)^2=$ (가) $-2b^2=2b\\cdot$ (나) $\\gt0$</div>",
+      "choices": [
+        "$(ab,\\ a-b)$",
+        "$(2ab,\\ a+b)$",
+        "$(2ab,\\ a-b)$",
+        "$(2a^2b,\\ a-b)$",
+        "$(2ab,\\ a-2b)$"
+      ],
+      "answer": "③",
+      "solution": "$a>b>0$이므로 $\\sqrt{a^2-b^2}$와 $a-b$는 모두 양수이다.\n제곱의 차를 전개하면 $(a^2-b^2)-(a-b)^2$\n$=a^2-b^2-(a^2-2ab+b^2)$\n$=2ab-2b^2=2b(a-b)>0$이다.\n따라서 (가)는 $2ab$, (나)는 $a-b$이다. 두 양수의 제곱의 차가 양수이므로 원래 부등식도 성립한다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_ACTIVE",
+        "rpmBindingEvidence": "2022 공통수학2 H22-C2-06-CORE, PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE, TPL_SQUARE_COMPARISON_PROOF ACTIVE, high1 crosswalk H1-RPM-250 FAMILY_ACTIVE.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+        "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q12의 부등식 증명: 비교 대상의 양수성 확인 → 제곱의 차 → 인수분해·등호/경계 판정. H1-RPM-250 Primary L3 증명을 유지한다.",
+          "l4": "절대부등식 증명 RPM L4에서 제곱 비교를 사용한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE; 최종 발문은 제곱 비교 증명·오류 식·등호·증명을 이용한 정수 조건을 묻는다.",
+          "tpl": "TPL_SQUARE_COMPARISON_PROOF ACTIVE, 해당 PT의 구체적 제곱 비교 골격을 사용.",
+          "cross": "CC_POLYNOMIAL_FACTORIZATION: 근호식 변형 또는 제곱 차의 인수분해에서 실제 사용",
+          "condition": "COND_POSITIVE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용; COND_RANGE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용",
+          "integration": "SEQUENTIAL: 양수성→제곱의 차 계산→증명 결론을 연결.",
+          "learningLevel": "다항식의 제곱 전개와 근호 대소 증명을 연결한다.",
+          "assessmentBucket": "제곱과 인수분해 중 부호·계수 오류 가능성이 있다.",
+          "problemVisual": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "solutionVisual": "EXEMPT: 제곱 전개와 인수분해 수식이 완결되어 SVG가 불필요하게 중복된다.",
+          "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음.",
+        "learningLevelReason": "다항식의 제곱 전개와 근호 대소 증명을 연결한다.",
+        "assessmentDifficultyReason": "제곱과 인수분해 중 부호·계수 오류 가능성이 있다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "$a\\gt b\\gt0$일 때 $\\sqrt{a^2-b^2}\\gt a-b$를 증명한다. 다음 (가), (나)에 들어갈 식은?<div class=\"question-note-box\" style=\"border:1px solid #444;padding:8px 10px;margin-top:8px;line-height:1.7\">$(\\sqrt{a^2-b^2})^2-(a-b)^2=$ (가) $-2b^2=2b\\cdot$ (나) $\\gt0$</div>",
+          "requiredPrimaryL3Step": "양수 제곱의 차를 실제로 계산하여 부등식·등호·자연수 경계를 증명한다.",
+          "questionNaturalness": "원본과 같은 학교 증명 빈칸 및 실제 추가 판단",
+          "conditionSufficiency": "양수/정의역/자연수 및 열린 경계 명시",
+          "shortcut": "단순 보기 대입으로는 모든 a,b 또는 정수 범위의 증명을 대체할 수 없다.",
+          "answerFromFinalStudentInput": "$(2ab,\\ a-b)$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "별도 독립검수/브라우저 실제 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$(ab,\\ a-b)$",
+              "errorCalculation": "$(a-b)^2$의 교차항 $-2ab$를 $-ab$로 전개하면 (가)가 $ab$가 된다."
+            },
+            {
+              "index": "②",
+              "value": "$(2ab,\\ a+b)$",
+              "errorCalculation": "$2ab-2b^2$의 음수항을 양수로 바꾸면 인수가 $a+b$가 된다."
+            },
+            {
+              "index": "④",
+              "value": "$(2a^2b,\\ a-b)$",
+              "errorCalculation": "교차항의 곱 $ab$에 $a$를 하나 더 곱하는 오산으로 $2a^2b$가 된다."
+            },
+            {
+              "index": "⑤",
+              "value": "$(2ab,\\ a-2b)$",
+              "errorCalculation": "$-2b^2$를 $2b$로 나누어 $-b$가 되는 것을 $-2b$로 계산하면 (나)는 $a-2b$가 된다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "ALGEBRAIC_SQUARE_DIFFERENCE_SELF_CHECK",
+          "coreFact": "square difference shown explicitly in solution"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 제곱 전개와 인수분해 수식이 완결되어 SVG가 불필요하게 중복된다.",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-PALMA25-2FINAL-Q12-B1",
+      "sourceQid": 12,
+      "sourceUid": null,
+      "slot": "B1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "부등식의 증명",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "부등식",
+        "증명"
+      ],
+      "wide": false,
+      "content": "실수 $a\\ge b\\ge0$에서 $\\sqrt{a-b}\\ge\\sqrt a-\\sqrt b$이다. 등호가 성립하는 경우를 빠짐없이 나타낸 것은?",
+      "choices": [
+        "$a>b>0$인 모든 경우",
+        "$a=b>0$인 경우만",
+        "$a=b$ 또는 $b=0$",
+        "$a=0$ 또는 $b=0$",
+        "$a=2b>0$인 경우"
+      ],
+      "answer": "③",
+      "solution": "$a\\ge b\\ge0$이면 두 비교 대상 $\\sqrt{a-b}$와 $\\sqrt a-\\sqrt b$는 모두 음이 아니다.\n제곱의 차는 $(a-b)-(\\sqrt a-\\sqrt b)^2$\n$=2\\sqrt b(\\sqrt a-\\sqrt b)\\ge0$이다.\n등호는 이 곱이 $0$일 때 성립하므로 $\\sqrt b=0$ 또는 $\\sqrt a-\\sqrt b=0$이어야 한다.\n따라서 $b=0$ 또는 $a=b$이다. 어느 경우도 원래 두 수가 음이 아니므로 실제로 등호가 성립한다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_ACTIVE",
+        "rpmBindingEvidence": "2022 공통수학2 H22-C2-06-CORE, PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE, TPL_SQUARE_COMPARISON_PROOF ACTIVE, high1 crosswalk H1-RPM-250 FAMILY_ACTIVE.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+        "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
+        "crossConceptKeys": [
+          "CC_RADICAL_EXPRESSION"
+        ],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "RANGE_BOUNDARY",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q12의 부등식 증명: 비교 대상의 양수성 확인 → 제곱의 차 → 인수분해·등호/경계 판정. H1-RPM-250 Primary L3 증명을 유지한다.",
+          "l4": "절대부등식 증명 RPM L4에서 제곱 비교를 사용한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE; 최종 발문은 제곱 비교 증명·오류 식·등호·증명을 이용한 정수 조건을 묻는다.",
+          "tpl": "TPL_SQUARE_COMPARISON_PROOF ACTIVE, 해당 PT의 구체적 제곱 비교 골격을 사용.",
+          "cross": "CC_RADICAL_EXPRESSION: 근호식 변형 또는 제곱 차의 인수분해에서 실제 사용",
+          "condition": "COND_RANGE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용",
+          "integration": "CASE_BRANCH: 양수성→제곱의 차 계산→증명 결론을 연결.",
+          "learningLevel": "제곱 차가 0이 되는 두 인수를 나누어 판단한다.",
+          "assessmentBucket": "등호에 a=b와 b=0이 모두 포함되어야 하는 경계 함정이 있다.",
+          "problemVisual": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "solutionVisual": "EXEMPT: 제곱 전개와 인수분해 수식이 완결되어 SVG가 불필요하게 중복된다.",
+          "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음.",
+        "learningLevelReason": "제곱 차가 0이 되는 두 인수를 나누어 판단한다.",
+        "assessmentDifficultyReason": "등호에 a=b와 b=0이 모두 포함되어야 하는 경계 함정이 있다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "실수 $a\\ge b\\ge0$에서 $\\sqrt{a-b}\\ge\\sqrt a-\\sqrt b$이다. 등호가 성립하는 경우를 빠짐없이 나타낸 것은?",
+          "requiredPrimaryL3Step": "양수 제곱의 차를 실제로 계산하여 부등식·등호·자연수 경계를 증명한다.",
+          "questionNaturalness": "원본과 같은 학교 증명 빈칸 및 실제 추가 판단",
+          "conditionSufficiency": "양수/정의역/자연수 및 열린 경계 명시",
+          "shortcut": "단순 보기 대입으로는 모든 a,b 또는 정수 범위의 증명을 대체할 수 없다.",
+          "answerFromFinalStudentInput": "$a=b$ 또는 $b=0$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "별도 독립검수/브라우저 실제 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$a>b>0$인 모든 경우",
+              "errorCalculation": "$a>b>0$이면 두 인수 모두 양수이므로 제곱의 차도 양수인데 이를 0이라고 오판한다."
+            },
+            {
+              "index": "②",
+              "value": "$a=b>0$인 경우만",
+              "errorCalculation": "뒤 인수 $\\sqrt a-\\sqrt b=0$만 풀면 $a=b$만 남아 $b=0,a=4$ 같은 등호 경우를 놓친다."
+            },
+            {
+              "index": "④",
+              "value": "$a=0$ 또는 $b=0$",
+              "errorCalculation": "뒤 인수 $0$을 $\\sqrt a=0$으로 잘못 읽으면 $a=0$ 또는 $b=0$만 남아 $a=b=3$을 빠뜨린다."
+            },
+            {
+              "index": "⑤",
+              "value": "$a=2b>0$인 경우",
+              "errorCalculation": "$\\sqrt a-\\sqrt b=0$을 $a=2b$로 잘못 제곱하면 $a=2b$를 등호 조건으로 제시하게 된다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "ALGEBRAIC_SQUARE_DIFFERENCE_SELF_CHECK",
+          "coreFact": "square difference shown explicitly in solution"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 제곱 전개와 인수분해 수식이 완결되어 SVG가 불필요하게 중복된다.",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-PALMA25-2FINAL-Q12-B2",
+      "sourceQid": 12,
+      "sourceUid": null,
+      "slot": "B2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "FOLLOWUP",
+      "level": "하",
+      "category": "부등식의 증명",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "부등식",
+        "증명"
+      ],
+      "wide": false,
+      "content": "양수 $a,b$에 대하여 $P=\\sqrt{a+b}$, $Q=\\sqrt a+\\sqrt b$라 하자. $P,Q$의 대소 관계와 $Q^2-P^2$의 값을 올바르게 짝 지은 것은?",
+      "choices": [
+        "$P\\gt Q,\\ Q^2-P^2=2\\sqrt{ab}$",
+        "$P\\lt Q,\\ Q^2-P^2=\\sqrt{ab}$",
+        "$P\\lt Q,\\ Q^2-P^2=2\\sqrt{ab}$",
+        "$P=Q,\\ Q^2-P^2=0$",
+        "$P\\lt Q,\\ Q^2-P^2=2ab$"
+      ],
+      "answer": "③",
+      "solution": "$a,b>0$이므로 $P=\\sqrt{a+b}$와 $Q=\\sqrt a+\\sqrt b$는 양수이다.\n$Q^2=a+b+2\\sqrt{ab}$, $P^2=a+b$이다.\n따라서 $Q^2-P^2=2\\sqrt{ab}>0$이므로 $Q^2>P^2$이다.\n양수끼리의 대소이므로 $Q>P$, 즉 $P<Q$이다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_ACTIVE",
+        "rpmBindingEvidence": "2022 공통수학2 H22-C2-06-CORE, PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE, TPL_SQUARE_COMPARISON_PROOF ACTIVE, high1 crosswalk H1-RPM-250 FAMILY_ACTIVE.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+        "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
+        "crossConceptKeys": [
+          "CC_RADICAL_EXPRESSION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q12의 부등식 증명: 비교 대상의 양수성 확인 → 제곱의 차 → 인수분해·등호/경계 판정. H1-RPM-250 Primary L3 증명을 유지한다.",
+          "l4": "절대부등식 증명 RPM L4에서 제곱 비교를 사용한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE; 최종 발문은 제곱 비교 증명·오류 식·등호·증명을 이용한 정수 조건을 묻는다.",
+          "tpl": "TPL_SQUARE_COMPARISON_PROOF ACTIVE, 해당 PT의 구체적 제곱 비교 골격을 사용.",
+          "cross": "CC_RADICAL_EXPRESSION: 근호식 변형 또는 제곱 차의 인수분해에서 실제 사용",
+          "condition": "COND_POSITIVE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용",
+          "integration": "SEQUENTIAL: 양수성→제곱의 차 계산→증명 결론을 연결.",
+          "learningLevel": "양의 두 제곱식 차이 한 번의 전개로 대소를 판단한다.",
+          "assessmentBucket": "교차항 오류 외에 별도의 범위 분기가 없다.",
+          "problemVisual": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "solutionVisual": "EXEMPT: 제곱 전개와 인수분해 수식이 완결되어 SVG가 불필요하게 중복된다.",
+          "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음.",
+        "learningLevelReason": "양의 두 제곱식 차이 한 번의 전개로 대소를 판단한다.",
+        "assessmentDifficultyReason": "교차항 오류 외에 별도의 범위 분기가 없다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "양수 $a,b$에 대하여 $P=\\sqrt{a+b}$, $Q=\\sqrt a+\\sqrt b$라 하자. $P,Q$의 대소 관계와 $Q^2-P^2$의 값을 올바르게 짝 지은 것은?",
+          "requiredPrimaryL3Step": "양수 제곱의 차를 실제로 계산하여 부등식·등호·자연수 경계를 증명한다.",
+          "questionNaturalness": "원본과 같은 학교 증명 빈칸 및 실제 추가 판단",
+          "conditionSufficiency": "양수/정의역/자연수 및 열린 경계 명시",
+          "shortcut": "단순 보기 대입으로는 모든 a,b 또는 정수 범위의 증명을 대체할 수 없다.",
+          "answerFromFinalStudentInput": "$P\\lt Q,\\ Q^2-P^2=2\\sqrt{ab}$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "별도 독립검수/브라우저 실제 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$P\\gt Q,\\ Q^2-P^2=2\\sqrt{ab}$",
+              "errorCalculation": "$Q^2-P^2>0$이므로 $Q>P$인데 대소 방향을 반대로 읽어 $P>Q$라 한다."
+            },
+            {
+              "index": "②",
+              "value": "$P\\lt Q,\\ Q^2-P^2=\\sqrt{ab}$",
+              "errorCalculation": "$(\\sqrt a+\\sqrt b)^2$에서 교차항 계수 2를 빠뜨리면 차를 $\\sqrt{ab}$로 계산한다."
+            },
+            {
+              "index": "④",
+              "value": "$P=Q,\\ Q^2-P^2=0$",
+              "errorCalculation": "제곱 전개에서 교차항을 통째로 빼면 $Q^2=a+b=P^2$라 오인한다."
+            },
+            {
+              "index": "⑤",
+              "value": "$P\\lt Q,\\ Q^2-P^2=2ab$",
+              "errorCalculation": "$\\sqrt a\\sqrt b=ab$로 계산해 차를 $2ab$라 적는다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "ALGEBRAIC_SQUARE_DIFFERENCE_SELF_CHECK",
+          "coreFact": "square difference shown explicitly in solution"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 제곱 전개와 인수분해 수식이 완결되어 SVG가 불필요하게 중복된다.",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-PALMA25-2FINAL-Q12-B3",
+      "sourceQid": 12,
+      "sourceUid": null,
+      "slot": "B3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "부등식의 증명",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "부등식",
+        "증명"
+      ],
+      "wide": false,
+      "content": "$a\\gt b\\gt0$일 때 $\\sqrt{a-b}+\\sqrt b\\gt\\sqrt a$를 제곱의 차로 증명한다. 다음 빈칸에 들어갈 식은?<div class=\"question-note-box\" style=\"border:1px solid #444;padding:8px 10px;margin-top:8px;line-height:1.7\">$(\\sqrt{a-b}+\\sqrt b)^2-(\\sqrt a)^2=$ (가) $\\gt0$</div>",
+      "choices": [
+        "$\\sqrt{b(a-b)}$",
+        "$2\\sqrt{b(a-b)}$",
+        "$2b$",
+        "$2\\sqrt{ab}$",
+        "$2b(a-b)$"
+      ],
+      "answer": "②",
+      "solution": "$a>b>0$이므로 $\\sqrt{a-b}+\\sqrt b$와 $\\sqrt a$는 양수이다.\n$(\\sqrt{a-b}+\\sqrt b)^2-(\\sqrt a)^2$\n$=(a-b)+2\\sqrt{b(a-b)}+b-a$\n$=2\\sqrt{b(a-b)}>0$이다.\n따라서 빈칸 (가)는 $2\\sqrt{b(a-b)}$이고, 양수 두 수의 제곱 비교이므로 원래 부등식도 성립한다.\n따라서 정답은 ②이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_ACTIVE",
+        "rpmBindingEvidence": "2022 공통수학2 H22-C2-06-CORE, PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE, TPL_SQUARE_COMPARISON_PROOF ACTIVE, high1 crosswalk H1-RPM-250 FAMILY_ACTIVE.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+        "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
+        "crossConceptKeys": [
+          "CC_RADICAL_EXPRESSION"
+        ],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q12의 부등식 증명: 비교 대상의 양수성 확인 → 제곱의 차 → 인수분해·등호/경계 판정. H1-RPM-250 Primary L3 증명을 유지한다.",
+          "l4": "절대부등식 증명 RPM L4에서 제곱 비교를 사용한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE; 최종 발문은 제곱 비교 증명·오류 식·등호·증명을 이용한 정수 조건을 묻는다.",
+          "tpl": "TPL_SQUARE_COMPARISON_PROOF ACTIVE, 해당 PT의 구체적 제곱 비교 골격을 사용.",
+          "cross": "CC_RADICAL_EXPRESSION: 근호식 변형 또는 제곱 차의 인수분해에서 실제 사용",
+          "condition": "COND_POSITIVE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용; COND_RANGE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용",
+          "integration": "SEQUENTIAL: 양수성→제곱의 차 계산→증명 결론을 연결.",
+          "learningLevel": "원래 부등식을 동치 덧셈형으로 바꾸어 제곱의 차를 설명한다.",
+          "assessmentBucket": "합의 제곱의 교차항 및 두 근호 곱셈의 검산이 필요하다.",
+          "problemVisual": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "solutionVisual": "EXEMPT: 제곱 전개와 인수분해 수식이 완결되어 SVG가 불필요하게 중복된다.",
+          "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음.",
+        "learningLevelReason": "원래 부등식을 동치 덧셈형으로 바꾸어 제곱의 차를 설명한다.",
+        "assessmentDifficultyReason": "합의 제곱의 교차항 및 두 근호 곱셈의 검산이 필요하다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "$a\\gt b\\gt0$일 때 $\\sqrt{a-b}+\\sqrt b\\gt\\sqrt a$를 제곱의 차로 증명한다. 다음 빈칸에 들어갈 식은?<div class=\"question-note-box\" style=\"border:1px solid #444;padding:8px 10px;margin-top:8px;line-height:1.7\">$(\\sqrt{a-b}+\\sqrt b)^2-(\\sqrt a)^2=$ (가) $\\gt0$</div>",
+          "requiredPrimaryL3Step": "양수 제곱의 차를 실제로 계산하여 부등식·등호·자연수 경계를 증명한다.",
+          "questionNaturalness": "원본과 같은 학교 증명 빈칸 및 실제 추가 판단",
+          "conditionSufficiency": "양수/정의역/자연수 및 열린 경계 명시",
+          "shortcut": "단순 보기 대입으로는 모든 a,b 또는 정수 범위의 증명을 대체할 수 없다.",
+          "answerFromFinalStudentInput": "$2\\sqrt{b(a-b)}$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "별도 독립검수/브라우저 실제 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$\\sqrt{b(a-b)}$",
+              "errorCalculation": "$(u+v)^2=u^2+2uv+v^2$의 교차항 계수 2를 빠뜨리면 $\\sqrt{b(a-b)}$만 남는다."
+            },
+            {
+              "index": "③",
+              "value": "$2b$",
+              "errorCalculation": "$2\\sqrt{a-b}\\sqrt b$에서 두 근호를 같다고 착각하면 $2b$가 된다."
+            },
+            {
+              "index": "④",
+              "value": "$2\\sqrt{ab}$",
+              "errorCalculation": "$a-b$를 $a$로 잘못 바꾸면 $2\\sqrt{ab}$가 된다."
+            },
+            {
+              "index": "⑤",
+              "value": "$2b(a-b)$",
+              "errorCalculation": "$2\\sqrt{b(a-b)}$를 불필요하게 제곱하여 $2b(a-b)$로 계산한다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "ALGEBRAIC_SQUARE_DIFFERENCE_SELF_CHECK",
+          "coreFact": "square difference shown explicitly in solution"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 제곱 전개와 인수분해 수식이 완결되어 SVG가 불필요하게 중복된다.",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-PALMA25-2FINAL-Q12-C1",
+      "sourceQid": 12,
+      "sourceUid": null,
+      "slot": "C1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "부등식의 증명",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "부등식",
+        "증명",
+        "수직선"
+      ],
+      "wide": false,
+      "content": "자연수 $m,n$이 $m>n$, $m+n=10$을 만족한다. 제곱 비교를 이용하여 부등식 $\\sqrt{m^2-n^2}>2(m-n)$이 성립하도록 하는 $m$의 값을 구하면?",
+      "choices": [
+        "$5$",
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$"
+      ],
+      "answer": "②",
+      "solution": "$m>n>0$이므로 $\\sqrt{m^2-n^2}$와 $2(m-n)$은 양수이고 제곱하여 대소를 비교할 수 있다.\n$d=m-n>0$이라 두면 $m^2-n^2=(m-n)(m+n)=10d$이다.\n주어진 부등식은 $10d>4d^2$이고 $d>0$이므로 $10>4d$, 즉 $0<d<\\dfrac52$이다.\n$m+n=10$이 짝수이므로 자연수 $m,n$의 차 $d$도 양의 짝수이다. 따라서 $d=2$뿐이다.\n$m=(10+2)/2=6$, $n=4$이다. 실제로 $\\sqrt{36-16}=\\sqrt{20}>4$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q12/C1-solution.svg",
+      "solutionImageAlt": "제곱 비교로 확정한 차 d의 열린 범위와 가능한 짝수를 표시한 수직선",
+      "solutionImageCaption": "0<d<5/2에서 d=2",
+      "solutionImageSize": "medium",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_ACTIVE",
+        "rpmBindingEvidence": "2022 공통수학2 H22-C2-06-CORE, PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE, TPL_SQUARE_COMPARISON_PROOF ACTIVE, high1 crosswalk H1-RPM-250 FAMILY_ACTIVE.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+        "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION",
+          "CC_RADICAL_EXPRESSION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "RANGE_BOUNDARY",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q12의 부등식 증명: 비교 대상의 양수성 확인 → 제곱의 차 → 인수분해·등호/경계 판정. H1-RPM-250 Primary L3 증명을 유지한다.",
+          "l4": "절대부등식 증명 RPM L4에서 제곱 비교를 사용한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE; 최종 발문은 제곱 비교 증명·오류 식·등호·증명을 이용한 정수 조건을 묻는다.",
+          "tpl": "TPL_SQUARE_COMPARISON_PROOF ACTIVE, 해당 PT의 구체적 제곱 비교 골격을 사용.",
+          "cross": "CC_POLYNOMIAL_FACTORIZATION: 근호식 변형 또는 제곱 차의 인수분해에서 실제 사용; CC_RADICAL_EXPRESSION: 근호식 변형 또는 제곱 차의 인수분해에서 실제 사용",
+          "condition": "COND_NATURAL_NUMBER: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용; COND_RANGE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용",
+          "integration": "INTERDEPENDENT: 양수성→제곱의 차 계산→짝수 차와 범위 교집합을 연결.",
+          "learningLevel": "증명을 제곱 비교로 변환한 뒤 차의 짝수성과 자연수 조건을 적용한다.",
+          "assessmentBucket": "계수 제곱·엄격 경계·짝수 조건이 결합된다.",
+          "problemVisual": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "solutionVisual": "BENEFICIAL: 제곱의 차로 결정한 열린 경계와 양의 짝수 차를 수직선 위에 확인한다.",
+          "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음.",
+        "learningLevelReason": "증명을 제곱 비교로 변환한 뒤 차의 짝수성과 자연수 조건을 적용한다.",
+        "assessmentDifficultyReason": "계수 제곱·엄격 경계·짝수 조건이 결합된다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "자연수 $m,n$이 $m>n$, $m+n=10$을 만족한다. 제곱 비교를 이용하여 부등식 $\\sqrt{m^2-n^2}>2(m-n)$이 성립하도록 하는 $m$의 값을 구하면?",
+          "requiredPrimaryL3Step": "양수 제곱의 차를 실제로 계산하여 부등식·등호·자연수 경계를 증명한다.",
+          "questionNaturalness": "원본과 같은 학교 증명 빈칸 및 실제 추가 판단",
+          "conditionSufficiency": "양수/정의역/자연수 및 열린 경계 명시",
+          "shortcut": "단순 보기 대입으로는 모든 a,b 또는 정수 범위의 증명을 대체할 수 없다.",
+          "answerFromFinalStudentInput": "$6$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "별도 독립검수/브라우저 실제 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$5$",
+              "errorCalculation": "$m=n=5$를 허용해 $d=0$을 얻고 $0>0$을 참으로 오인하면 5를 고른다."
+            },
+            {
+              "index": "③",
+              "value": "$7$",
+              "errorCalculation": "$(2d)^2$를 $2d^2$로 계산하면 $10>2d$가 되어 $d=4$, $m=7$을 잘못 허용한다."
+            },
+            {
+              "index": "④",
+              "value": "$8$",
+              "errorCalculation": "$2d$를 제곱하지 않고 $10d>2d$로 비교하면 $d=6$, $m=8$도 잘못 허용한다."
+            },
+            {
+              "index": "⑤",
+              "value": "$9$",
+              "errorCalculation": "계수 2를 버리고 $\\sqrt{10d}>d$를 비교하면 $10>d$여서 $d=8$, $m=9$를 잘못 허용한다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "PYTHON_SYMPY_EXACT_RANGE_ENUMERATION",
+          "coreFact": "S10 0<d<5/2 even d=2"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "BENEFICIAL",
+          "why": "BENEFICIAL: 제곱의 차로 결정한 열린 경계와 양의 짝수 차를 수직선 위에 확인한다.",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q12/C1-solution.svg",
+          "svgBlob": "88651df59cc82d3e926c301582c1011f98c09b6f",
+          "staticGeometryStatus": "PYTHON_COORDINATE_AUTHOR_CHECK",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-PALMA25-2FINAL-Q12-C2",
+      "sourceQid": 12,
+      "sourceUid": null,
+      "slot": "C2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "부등식의 증명",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "부등식",
+        "증명",
+        "수직선"
+      ],
+      "wide": false,
+      "content": "자연수 $m,n$이 $m>n$, $m+n=20$을 만족한다. 제곱 비교로 부등식 $\\sqrt{m^2-n^2}>2(m-n)$이 성립함을 확인할 때, 순서쌍 $(m,n)$의 개수는?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$3$",
+        "$4$",
+        "$9$"
+      ],
+      "answer": "②",
+      "solution": "$m>n>0$이므로 두 수는 양수이고, 차 $d=m-n>0$을 두면 $m^2-n^2=20d$이다.\n$\\sqrt{20d}>2d$를 제곱하면 $20d>4d^2$이다.\n$d>0$으로 양변을 나누어 $0<d<5$를 얻는다.\n$m+n=20$이 짝수이고 두 수가 자연수이므로 차 $d$는 양의 짝수이다.\n따라서 $d=2$ 또는 $d=4$이다.\n$d=2$이면 $(m,n)=(11,9)$, $d=4$이면 $(12,8)$이고 둘 다 실제 부등식을 만족한다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q12/C2-solution.svg",
+      "solutionImageAlt": "제곱 비교로 확정한 차 d의 열린 범위와 가능한 짝수를 표시한 수직선",
+      "solutionImageCaption": "0<d<5에서 d=2,4",
+      "solutionImageSize": "medium",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_ACTIVE",
+        "rpmBindingEvidence": "2022 공통수학2 H22-C2-06-CORE, PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE, TPL_SQUARE_COMPARISON_PROOF ACTIVE, high1 crosswalk H1-RPM-250 FAMILY_ACTIVE.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+        "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION",
+          "CC_RADICAL_EXPRESSION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "RANGE_BOUNDARY",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q12의 부등식 증명: 비교 대상의 양수성 확인 → 제곱의 차 → 인수분해·등호/경계 판정. H1-RPM-250 Primary L3 증명을 유지한다.",
+          "l4": "절대부등식 증명 RPM L4에서 제곱 비교를 사용한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE; 최종 발문은 제곱 비교 증명·오류 식·등호·증명을 이용한 정수 조건을 묻는다.",
+          "tpl": "TPL_SQUARE_COMPARISON_PROOF ACTIVE, 해당 PT의 구체적 제곱 비교 골격을 사용.",
+          "cross": "CC_POLYNOMIAL_FACTORIZATION: 근호식 변형 또는 제곱 차의 인수분해에서 실제 사용; CC_RADICAL_EXPRESSION: 근호식 변형 또는 제곱 차의 인수분해에서 실제 사용",
+          "condition": "COND_NATURAL_NUMBER: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용; COND_RANGE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용",
+          "integration": "INTERDEPENDENT: 양수성→제곱의 차 계산→짝수 차와 범위 교집합을 연결.",
+          "learningLevel": "부등식 증명과 정수 차의 후보 열거를 연결한다.",
+          "assessmentBucket": "경계 5 제외와 d 짝수 제한을 동시에 지켜야 한다.",
+          "problemVisual": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "solutionVisual": "BENEFICIAL: 제곱의 차로 결정한 열린 경계와 양의 짝수 차를 수직선 위에 확인한다.",
+          "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음.",
+        "learningLevelReason": "부등식 증명과 정수 차의 후보 열거를 연결한다.",
+        "assessmentDifficultyReason": "경계 5 제외와 d 짝수 제한을 동시에 지켜야 한다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "자연수 $m,n$이 $m>n$, $m+n=20$을 만족한다. 제곱 비교로 부등식 $\\sqrt{m^2-n^2}>2(m-n)$이 성립함을 확인할 때, 순서쌍 $(m,n)$의 개수는?",
+          "requiredPrimaryL3Step": "양수 제곱의 차를 실제로 계산하여 부등식·등호·자연수 경계를 증명한다.",
+          "questionNaturalness": "원본과 같은 학교 증명 빈칸 및 실제 추가 판단",
+          "conditionSufficiency": "양수/정의역/자연수 및 열린 경계 명시",
+          "shortcut": "단순 보기 대입으로는 모든 a,b 또는 정수 범위의 증명을 대체할 수 없다.",
+          "answerFromFinalStudentInput": "$2$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "별도 독립검수/브라우저 실제 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$1$",
+              "errorCalculation": "$d<5$를 $d<4$로 잘못 좁히면 $d=2$만 세어 한 쌍이라고 답한다."
+            },
+            {
+              "index": "③",
+              "value": "$3$",
+              "errorCalculation": "$d=5$를 경계값으로 포함하고 홀짝 조건까지 생략하면 $d=2,4,5$ 세 경우라고 오인한다."
+            },
+            {
+              "index": "④",
+              "value": "$4$",
+              "errorCalculation": "$(2d)^2$의 4를 2로 잘못 제곱하면 $d<10$이 되어 $d=2,4,6,8$ 네 개를 센다."
+            },
+            {
+              "index": "⑤",
+              "value": "$9$",
+              "errorCalculation": "원식의 계수 2를 빠뜨려 $\\sqrt{20d}>d$로 바꾸면 양의 짝수 $d=2,4,\\dots,18$ 아홉 개를 센다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "PYTHON_SYMPY_EXACT_RANGE_ENUMERATION",
+          "coreFact": "S20 0<d<5 even d=2,4"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "BENEFICIAL",
+          "why": "BENEFICIAL: 제곱의 차로 결정한 열린 경계와 양의 짝수 차를 수직선 위에 확인한다.",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q12/C2-solution.svg",
+          "svgBlob": "3db1d8bb83be33c5acd8602ec4de815d1cc4d27d",
+          "staticGeometryStatus": "PYTHON_COORDINATE_AUTHOR_CHECK",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-PALMA25-2FINAL-Q12-C3",
+      "sourceQid": 12,
+      "sourceUid": null,
+      "slot": "C3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "부등식의 증명",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "부등식",
+        "증명",
+        "수직선"
+      ],
+      "wide": false,
+      "content": "자연수 $m,n$이 $m>n$, $m+n=20$을 만족한다. 제곱의 차를 이용하여 $2(m-n)<\\sqrt{m^2-n^2}<3(m-n)$이 성립하도록 하는 $m$의 값은?",
+      "choices": [
+        "$10$",
+        "$11$",
+        "$12$",
+        "$13$",
+        "$14$"
+      ],
+      "answer": "③",
+      "solution": "$m>n>0$이고 $d=m-n>0$이라 하면 $m^2-n^2=20d$이다.\n양수 사이의 부등식 $2d<\\sqrt{20d}<3d$를 제곱해 $4d^2<20d<9d^2$를 얻는다.\n$d>0$으로 나누면 $4d<20<9d$이므로 $\\dfrac{20}{9}<d<5$이다.\n$m+n=20$이 짝수이므로 자연수 $m,n$의 차 $d$도 양의 짝수이고, 이 범위에서는 $d=4$뿐이다.\n따라서 $m=(20+4)/2=12$, $n=8$이다.\n검산하면 $2d=8<\\sqrt{80}<12=3d$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q12/C3-solution.svg",
+      "solutionImageAlt": "제곱 비교로 확정한 차 d의 열린 범위와 가능한 짝수를 표시한 수직선",
+      "solutionImageCaption": "20/9<d<5에서 d=4",
+      "solutionImageSize": "medium",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_ACTIVE",
+        "rpmBindingEvidence": "2022 공통수학2 H22-C2-06-CORE, PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE, TPL_SQUARE_COMPARISON_PROOF ACTIVE, high1 crosswalk H1-RPM-250 FAMILY_ACTIVE.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_PROOF",
+        "templateKey": "TPL_SQUARE_COMPARISON_PROOF",
+        "crossConceptKeys": [
+          "CC_POLYNOMIAL_FACTORIZATION",
+          "CC_RADICAL_EXPRESSION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "RANGE_BOUNDARY",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q12의 부등식 증명: 비교 대상의 양수성 확인 → 제곱의 차 → 인수분해·등호/경계 판정. H1-RPM-250 Primary L3 증명을 유지한다.",
+          "l4": "절대부등식 증명 RPM L4에서 제곱 비교를 사용한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_PROOF ACTIVE; 최종 발문은 제곱 비교 증명·오류 식·등호·증명을 이용한 정수 조건을 묻는다.",
+          "tpl": "TPL_SQUARE_COMPARISON_PROOF ACTIVE, 해당 PT의 구체적 제곱 비교 골격을 사용.",
+          "cross": "CC_POLYNOMIAL_FACTORIZATION: 근호식 변형 또는 제곱 차의 인수분해에서 실제 사용; CC_RADICAL_EXPRESSION: 근호식 변형 또는 제곱 차의 인수분해에서 실제 사용",
+          "condition": "COND_NATURAL_NUMBER: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용; COND_RANGE: 양수·범위·자연수 조건을 증명 전제와 후보 제거에 사용",
+          "integration": "INTERDEPENDENT: 양수성→제곱의 차 계산→짝수 차와 범위 교집합을 연결.",
+          "learningLevel": "두 방향의 제곱 비교를 각각 풀고 교집합에 정수 짝수 조건을 적용한다.",
+          "assessmentBucket": "이중 엄격 경계 및 조건 누락 가능성이 높다.",
+          "problemVisual": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "solutionVisual": "BENEFICIAL: 제곱의 차로 결정한 열린 경계와 양의 짝수 차를 수직선 위에 확인한다.",
+          "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_MATH_AND_SEMANTIC_CHECKED",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제: 부등식의 증명, 근호 계산, 인수분해, 자연수와 부호 범위만 사용. 미분·벡터·극한은 사용하지 않음.",
+        "learningLevelReason": "두 방향의 제곱 비교를 각각 풀고 교집합에 정수 짝수 조건을 적용한다.",
+        "assessmentDifficultyReason": "이중 엄격 경계 및 조건 누락 가능성이 높다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "자연수 $m,n$이 $m>n$, $m+n=20$을 만족한다. 제곱의 차를 이용하여 $2(m-n)<\\sqrt{m^2-n^2}<3(m-n)$이 성립하도록 하는 $m$의 값은?",
+          "requiredPrimaryL3Step": "양수 제곱의 차를 실제로 계산하여 부등식·등호·자연수 경계를 증명한다.",
+          "questionNaturalness": "원본과 같은 학교 증명 빈칸 및 실제 추가 판단",
+          "conditionSufficiency": "양수/정의역/자연수 및 열린 경계 명시",
+          "shortcut": "단순 보기 대입으로는 모든 a,b 또는 정수 범위의 증명을 대체할 수 없다.",
+          "answerFromFinalStudentInput": "$12$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "별도 독립검수/브라우저 실제 미실행"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$10$",
+              "errorCalculation": "$m=n=10$을 허용하여 $d=0$을 대입하고 $0<0<0$을 참이라 오인하면 10을 선택한다."
+            },
+            {
+              "index": "②",
+              "value": "$11$",
+              "errorCalculation": "$d=2$에서 오른쪽 $\\sqrt{40}<6$을 확인하지 않고 왼쪽만 보고 $m=11$을 택한다."
+            },
+            {
+              "index": "④",
+              "value": "$13$",
+              "errorCalculation": "$d=6$에서 왼쪽 $12<\\sqrt{120}$이 거짓인데 오른쪽만 비교해 $m=13$이라 적는다."
+            },
+            {
+              "index": "⑤",
+              "value": "$14$",
+              "errorCalculation": "왼쪽의 계수 2를 누락해 $d<\\sqrt{20d}$만 검증하면 $d=8$도 잘못 허용되어 $m=14$라 적는다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "PYTHON_SYMPY_EXACT_RANGE_ENUMERATION",
+          "coreFact": "S20 20/9<d<5 even d=4"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 문자·식 및 증명 박스만으로 충분. 문제 그림을 넣으면 새 정보 없이 답을 암시한다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "BENEFICIAL",
+          "why": "BENEFICIAL: 제곱의 차로 결정한 열린 경계와 양의 짝수 차를 수직선 위에 확인한다.",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q12/C3-solution.svg",
+          "svgBlob": "c10195b7d84dda094249b1a29a5bf003e4d543dd",
+          "staticGeometryStatus": "PYTHON_COORDINATE_AUTHOR_CHECK",
+          "browser": "NOT_RUN"
+        }
+      }
+    }
+  ]
+}

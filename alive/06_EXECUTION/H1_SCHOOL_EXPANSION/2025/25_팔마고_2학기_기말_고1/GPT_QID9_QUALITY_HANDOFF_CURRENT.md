@@ -1,3 +1,10 @@
+# CURRENT TOP — q12 AUTHOR COMPLETE / q13 NEXT (2026-10-15)
+- Branch `work/alive-25-palma-h1-2final-qid9`. q01~q11 99 unchanged; q12 A1~C3 new 9 AUTHOR candidates; cumulative **108/207**, remaining 99, firstMissing=q13.
+- Original q12 sqrt(a-b)>sqrt(a)-sqrt(b) for a>b>0; square-difference proof. Original exam and legacy similar unchanged (0d12b75e824ab47f08fc3b5a6180be595f882c6e).
+- Primary H1-RPM-250 (증명), L4 절대부등식 증명, FAMILY_ACTIVE; ACTIVE PT_ABSOLUTE_INEQUALITY_PROOF + TPL_SQUARE_COMPARISON_PROOF; H22-C2-06-CORE curriculum binding.
+- 9 complete questions, 45 five choices, 36 index-linked actual error paths, student solutions and UID level/bucket/Meta evidence, reverse stem KEEP.
+- 9 problem SVG EXEMPT, 3 solution numberline SVG C1/C2/C3 from Python verified boundaries; 6 solution SVG EXEMPT. Browser NOT_RUN.
+- sourceUid 9 EVIDENCE_DEBT, cumulative 108. Independent review, Consumer/index, main NOT_RUN. Next q13.
 # CURRENT TOP — q11 AUTHOR COMPLETE / q12 NEXT (2026-10-15)
 - Branch `work/alive-25-palma-h1-2final-qid9`; q01~q10 보호 90/207, q11 A1~C3 신규 9개 제작, 누적 **99/207**, 108개 남음, firstMissing=q12.
 - Original q11: f(x)=x²−6x+a (x≥3), 역함수 그래프 접점, original answer a=49/4. 원본 JS·원본 q11 해설 SVG 및 기존 유사문제 불변.
