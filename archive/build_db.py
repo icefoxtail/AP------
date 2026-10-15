@@ -1058,14 +1058,13 @@ def count_top_level_objects_in_array(array_text):
 
 
 def extract_question_array_text(text):
-    markers = ["window.questionBank", "window.문항데이터", "questionBank"]
-    start = -1
-
-    for marker in markers:
-        idx = text.find(marker)
-        if idx != -1:
-            start = idx
-            break
+    # Detect a literal array assignment, not a questionBank alias such as
+    # window.questionBank = window.examData.questions.
+    literal_array = re.search(
+        r"\\b(?:window\\.)?(?:questionBank|문항데이터)\\s*=\\s*\\[",
+        text,
+    )
+    start = literal_array.start() if literal_array else -1
 
     if start == -1:
         assignments = list(re.finditer(r"\bwindow\.examData\s*=\s*\{", text))
