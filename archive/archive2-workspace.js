@@ -1563,6 +1563,7 @@
     const url = new URL("index.html", location.href);
     url.searchParams.set("archive2Issue", exam.file);
     url.searchParams.set("archive2Embedded", "1");
+    url.searchParams.set("index_version", state.catalog.indexVersion);
     url.searchParams.set("qpp", String(qpp));
     state.originalSettings = settings;
     state.originalReceipts = [];

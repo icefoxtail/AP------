@@ -8,12 +8,13 @@ const output = require("../archive/archive2-output.js");
 test("original QPP 8 stays identical from preview URL through assignment snapshot and PDF identity", async () => {
   const entry = fs.readFileSync(path.join(__dirname, "../archive/archive2-entry.js"), "utf8");
   const workspace = fs.readFileSync(path.join(__dirname, "../archive/archive2-workspace.js"), "utf8");
+  const projectionVersion = "archive2-canonical-v1:current-catalog-version";
   const previewStart = workspace.indexOf("async function buildOriginalSourceOutput(");
   const previewEnd = workspace.indexOf("async function originalOutputUrl(", previewStart);
   const previewProducer = workspace.slice(previewStart, previewEnd);
   assert.notEqual(previewStart, -1);
   assert.match(previewProducer, /qpp:\s*settings\.qpp/);
-  assert.match(workspace, /if \(!saved\) return buildOriginalSourceOutput\(e, mode, s\)/);
+  assert.match(workspace, /if \(!saved\) return buildOriginalSourceOutput\(e, mode, s(?:, preview)?\)/);
   const exam = { file: "original/middle/m1/qpp8.js", subject: "수학", grade: "중1", identityTitle: "QPP 8 시험" };
   const questions = [{ questionUid: "qpp8-question-1", question: "1 + 1 = ?", answer: "2" }];
   const assignmentTarget = { qpp: 4, view: "select", classState: {}, previewOpen: false, progress: null };
@@ -27,9 +28,9 @@ test("original QPP 8 stays identical from preview URL through assignment snapsho
     addEventListener() {},
   };
   const location = {
-    search: "?archive2Issue=original%2Fmiddle%2Fm1%2Fqpp8.js&archive2Embedded=1&qpp=8",
+    search: `?archive2Issue=original%2Fmiddle%2Fm1%2Fqpp8.js&archive2Embedded=1&index_version=${encodeURIComponent(projectionVersion)}&qpp=8`,
     origin: "https://example.test",
-    href: "https://example.test/archive/index.html?archive2Issue=original%2Fmiddle%2Fm1%2Fqpp8.js&archive2Embedded=1&qpp=8",
+    href: `https://example.test/archive/index.html?archive2Issue=original%2Fmiddle%2Fm1%2Fqpp8.js&archive2Embedded=1&index_version=${encodeURIComponent(projectionVersion)}&qpp=8`,
     pathname: "/archive/index.html",
   };
   const catalog = { exams: [exam], sourceHashes: [[exam.file, "source-qpp8-hash"]] };
@@ -60,6 +61,9 @@ test("original QPP 8 stays identical from preview URL through assignment snapsho
 
   assert.equal(assignmentBody.pdf_qpp, 8);
   assert.equal(assignmentBody.original_payload_json.meta.qpp, 8);
+  assert.equal(assignmentBody.index_version, projectionVersion);
+  assert.equal(Object.hasOwn(assignmentBody, "session_token"), false);
+  assert.equal(Object.hasOwn(assignmentBody, "teacher_id"), false);
 
   const { buildPdfIdentity } = await import("../apmath/worker-backup/worker/routes/exam-pdf.js");
   const pdfIdentity = await buildPdfIdentity({
@@ -73,4 +77,38 @@ test("original QPP 8 stays identical from preview URL through assignment snapsho
   });
   assert.equal(pdfIdentity.qpp, 8);
   assert.equal(pdfIdentity.outputEnvelope.meta.qpp, 8);
+});
+
+test("original assignment iframe carries the loaded catalog projection version", () => {
+  const workspace = fs.readFileSync(path.join(__dirname, "../archive/archive2-workspace.js"), "utf8");
+  const start = workspace.indexOf("function openOriginalIssue(exam, step = \"review\") {");
+  const end = workspace.indexOf("function openSavedPaperIssue(id) {", start);
+  assert.notEqual(start, -1);
+  assert.notEqual(end, -1);
+
+  const projectionVersion = "archive2-canonical-v1:current-catalog-version";
+  const state = { catalog: { indexVersion: projectionVersion } };
+  let dialogHtml = "";
+  const modal = { classList: { add() {} } };
+  const context = {
+    state,
+    URL,
+    location: { href: "https://example.test/archive/workspace.html" },
+    originalSettingsForExam: () => ({ qpp: 8, header: { title: "시험지" } }),
+    O: { displayTitle: () => "시험지", markup: () => "" },
+    button: () => "",
+    esc: value => String(value).replace(/&/g, "&amp;"),
+    showDialog(_title, html) { dialogHtml = html; },
+    setOriginalStep() {},
+    $: () => modal,
+  };
+  vm.runInNewContext(workspace.slice(start, end), context, { filename: "archive2-workspace-original-issue.js" });
+  context.openOriginalIssue({ file: "original/sample.js", qCount: 1 }, "targets");
+
+  const iframe = dialogHtml.match(/<iframe id="original-issue-frame"[^>]*src="([^"]+)"/);
+  assert.ok(iframe, "the original assignment iframe is present");
+  const url = new URL(iframe[1].replace(/&amp;/g, "&"));
+  assert.equal(url.searchParams.get("index_version"), projectionVersion);
+  assert.equal(url.searchParams.has("session_token"), false);
+  assert.equal(url.searchParams.has("teacher_id"), false);
 });
