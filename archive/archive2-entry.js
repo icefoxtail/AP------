@@ -53,6 +53,7 @@
     }
     const body = {
       contract_version: "archive2-v1",
+      index_version: params.get("index_version") || "",
       student_ids: options.studentIds,
       exam_title: s.header.title,
       pdf_qpp: s.qpp,
