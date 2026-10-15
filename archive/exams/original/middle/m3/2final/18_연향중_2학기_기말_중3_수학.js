@@ -1,7 +1,8 @@
 window.examData = {
   "title": "2018학년도 연향중학교 3학년 2학기 기말고사 수학",
-  "totalScore": 100,
-  "questions": [
+  "totalScore": 100
+};
+window.questionBank = [
     {
       "id": 1,
       "score": 3,
@@ -425,6 +426,5 @@ window.examData = {
       "sourceUid": null,
       "sourceUidStatus": "ABSENT"
     }
-  ]
-};
-window.questionBank = window.examData.questions;
+  ];
+window.examData.questions = window.questionBank;
