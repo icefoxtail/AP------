@@ -97,6 +97,24 @@ export function readHotEvidenceAuthority({ root, originalPath, indexPath } = {})
   return { entry, bytes, sha256: actualSha, gitBlobSha1: actualBlob };
 }
 
+/**
+ * Read an analysis reference from the verified offline authority lane when it
+ * is indexed, otherwise read its original repository path. The original path
+ * and the alias both pass the same strict path checks; callers retain their
+ * existing digest and schema checks on the returned bytes.
+ */
+export function readAuthorityOrLocalAnalysisBytes({ root, originalPath, indexPath = EVIDENCE_AUTHORITY_INDEX_PATH } = {}) {
+  const normalized = validateIndexPath(originalPath, 'archive/analysis/', 'requestPath');
+  const absoluteIndex = path.join(root, ...indexPath.split('/'));
+  if (fs.existsSync(absoluteIndex)) {
+    const index = loadEvidenceAuthorityIndex(root, indexPath);
+    if (index.entries.some(entry => entry.originalPath === normalized)) {
+      return readHotEvidenceAuthority({ root, originalPath: normalized, indexPath }).bytes;
+    }
+  }
+  return fs.readFileSync(safeRepoPath(root, normalized, 'analysisPath'));
+}
+
 export function validateEvidenceAuthorityBytes(entry, bytes) {
   if (!entry || !Buffer.isBuffer(bytes)) throw new Error('EVIDENCE_AUTHORITY_BYTES_REQUIRED');
   if (bytes.length !== entry.sizeBytes) throw new Error(`EVIDENCE_AUTHORITY_SIZE_MISMATCH:${entry.originalPath}`);

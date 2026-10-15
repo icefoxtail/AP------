@@ -3,8 +3,10 @@
   "status": "EXACT_BYTES_MATERIALIZED_NO_QUALITY_GATE_CHANGE",
   "baselineCommit": "d305af51b01b15e09d37839538ef3baaa269bd55",
   "scope": {
-    "originalPathCount": 65,
-    "rawPayloadBytes": 2800702,
+    "originalPathCount": 78,
+    "rawPayloadBytes": 2897053,
+    "activeM2DependencyCount": 13,
+    "activeM2DependencyRawBytes": 96351,
     "visualProofCount": 45,
     "visualManifestCount": 2,
     "sourceSnapshotCount": 6,
@@ -938,6 +940,191 @@
       "evidenceRole": "qid9-active-visual-manifest-q23",
       "currentConsumers": [
         "archive/tools/generated-meta/auto-register-approved-qid9.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-CREATE-question-only-replacement-adjudication.v1.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/22-yeonhyang-q19/q19-CREATE-question-only-replacement-adjudication.v1.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-CREATE-question-only-replacement-adjudication.v1.json",
+      "gitBlobSha1": "e19dda252be2a8c12741bd3538a16623e5ec0817",
+      "sha256": "53ab2f5ba5e4bc8dd270c8b3d1d5629d19e53d0ace662b4fa1b9003649d4f18c",
+      "sizeBytes": 10632,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q19-question-only-replacement-adjudication",
+      "currentConsumers": [
+        "archive/tools/review-evidence-gate.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/question-only-replacement-authorization.v3.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/22-yeonhyang-q19/question-only-replacement-authorization.v3.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/question-only-replacement-authorization.v3.json",
+      "gitBlobSha1": "f01e28f2f85e7f1984342cf1bc81949dc55f2e68",
+      "sha256": "94f447abf6c73662445c63cbe726cbff96f110e507ce649ed1e989b958741bfa",
+      "sizeBytes": 4913,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q19-question-only-authority",
+      "currentConsumers": [
+        "archive/tools/review-evidence-gate.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-create-question-only-validator.pass.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/22-yeonhyang-q19/q19-create-question-only-validator.pass.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-create-question-only-validator.pass.json",
+      "gitBlobSha1": "593dd698eab79e7fec784864e55b0d3658fb8ad6",
+      "sha256": "57cb68624584b85ef723dd9f2b8a81c9c6dd37daf1401bf8be50cb1462f05554",
+      "sizeBytes": 8054,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q19-question-only-create-validator",
+      "currentConsumers": [
+        "archive/tools/review-evidence-gate.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-r1-review-evidence.revision03.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/22-yeonhyang-q19/q19-r1-review-evidence.revision03.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-r1-review-evidence.revision03.json",
+      "gitBlobSha1": "c3b3aa375d467d599fc1b9509fe4c5d52e62b6e7",
+      "sha256": "38cb27ed0995aa2d45861832f78f5b1f9ca0181db58b18422a5d5c6a3d947e2c",
+      "sizeBytes": 8914,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q19-question-only-r1",
+      "currentConsumers": [
+        "archive/tools/review-evidence-gate.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-r2-postfreeze-rebind.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/22-yeonhyang-q19/q19-r2-postfreeze-rebind.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-r2-postfreeze-rebind.json",
+      "gitBlobSha1": "9b907020f5a0a7c062d17b3e63a772b05601b7b9",
+      "sha256": "4a12669809ed12bdb76e3f973b18e5bd78ccd990479996b17776ecd2511a5904",
+      "sizeBytes": 2797,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q19-question-only-r2",
+      "currentConsumers": [
+        "archive/tools/review-evidence-gate.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/R3-q19-target/r3-qid19-physical-render-review.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/22-yeonhyang-q19/r3-qid19-physical-render-review.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/R3-q19-target/r3-qid19-physical-render-review.json",
+      "gitBlobSha1": "a429c2f7d4f065da370c847495af9f4ee1588c0a",
+      "sha256": "7ea4b2ee73f5267e0736671692e579205b882cd1cebc490d8afe7efaf66e0fd3",
+      "sizeBytes": 5485,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q19-question-only-r3",
+      "currentConsumers": [
+        "archive/tools/review-evidence-gate.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.v2.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/24-geumdang-q24/q24-CREATE-false-hold-adjudication.v2.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.v2.json",
+      "gitBlobSha1": "43a130749a5798a4aaa63c85521ae8c787751021",
+      "sha256": "733045649c378eed7117071deff175505a1efafa2bb8c1c068fb663b40355dbb",
+      "sizeBytes": 7370,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q24-false-hold-adjudication-v2",
+      "currentConsumers": [
+        "archive/tools/review-evidence-gate.mjs",
+        "archive/tools/adjudicate-create-false-hold.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/24-geumdang-q24/q24-SOURCE_HOLD.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
+      "gitBlobSha1": "c26c5f20a9ff9e498b93d6a981c946aaee12c2b1",
+      "sha256": "e5244fadc8814dae986c7363ace83e6dbd693aaae68cbdda99ba4173522169a0",
+      "sizeBytes": 4243,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q24-original-source-hold",
+      "currentConsumers": [
+        "archive/tools/review-evidence-gate.mjs",
+        "archive/tools/adjudicate-create-false-hold.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/fresh-original-freeze.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/24-geumdang-q24/fresh-original-freeze.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/fresh-original-freeze.json",
+      "gitBlobSha1": "decb05fd7a6ad93aaf1c71f457a1825edbc00650",
+      "sha256": "499c835db35395e41a53737708f1f708f8bc33d7ad6f77baf66c3b5d0534b38d",
+      "sizeBytes": 8857,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q24-original-student-freeze",
+      "currentConsumers": [
+        "archive/tools/review-evidence-gate.mjs",
+        "archive/tools/adjudicate-create-false-hold.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/24-geumdang-q24/q24-CREATE-false-hold-adjudication.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.json",
+      "gitBlobSha1": "327babd0499328bbb2547f1476719f54d254c21b",
+      "sha256": "74ce54ea2580fa9e26497887ff8a14bce7f5f3dcb4a45d44fb8cbea96530e880",
+      "sizeBytes": 4871,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q24-superseded-false-hold-adjudication-v1",
+      "currentConsumers": [
+        "archive/tools/adjudicate-create-false-hold.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-only-source-delta-manifest.v2.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/24-geumdang-q24/q24-only-source-delta-manifest.v2.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-only-source-delta-manifest.v2.json",
+      "gitBlobSha1": "0e2512c0a96bc1a5c693de0cb2d5822de6e7ab91",
+      "sha256": "d314f0568a1be79074e59d05f63eb3480e0926d53530b41a1b0e3ceb2a9b8a57",
+      "sizeBytes": 7875,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q24-source-delta-manifest",
+      "currentConsumers": [
+        "archive/tools/adjudicate-create-false-hold.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-solution-svg-physical-evidence.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/24-geumdang-q24/q24-solution-svg-physical-evidence.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-solution-svg-physical-evidence.json",
+      "gitBlobSha1": "73799e3497057cac602010424671f3f19b21ad2f",
+      "sha256": "a74fc70ec777e0877378b98fac0e51e3374b42bfae0d7c11abc9b37d876cea1b",
+      "sizeBytes": 15592,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q24-solution-svg-physical-evidence",
+      "currentConsumers": [
+        "archive/tools/adjudicate-create-false-hold.mjs"
+      ]
+    },
+    {
+      "originalPath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/R3-q24-target/R3-q24-displayfix-v2-sol-review.json",
+      "authorityPath": "archive/data/evidence-authority/v1/m2-active-adjudication/24-geumdang-q24/R3-q24-displayfix-v2-sol-review.json",
+      "baselineCommit": "5519b07d117b741f21e94d3d9e80129ec987168d",
+      "baselinePath": "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/R3-q24-target/R3-q24-displayfix-v2-sol-review.json",
+      "gitBlobSha1": "36316da2a27c54ea51f205b429250f908cf71032",
+      "sha256": "d77786ddd3f7907f78e1af5d084b33f98098991d07c3f5733f90aa476a606b66",
+      "sizeBytes": 6748,
+      "classification": "hot-authority",
+      "evidenceRole": "m2-q24-r3-display-render-review",
+      "currentConsumers": [
+        "archive/tools/adjudicate-create-false-hold.mjs"
       ]
     }
   ]

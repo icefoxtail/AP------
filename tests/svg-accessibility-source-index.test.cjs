@@ -84,17 +84,32 @@ test('production delta scope finds changed SVGs and newly referenced refs withou
   fs.mkdirSync(path.join(root, 'archive/exams/original'), { recursive: true });
   fs.mkdirSync(path.join(root, 'archive/assets/images'), { recursive: true });
   fs.writeFileSync(path.join(root, 'archive/assets/images/old.svg'), '<svg/>');
+  fs.writeFileSync(path.join(root, 'archive/assets/images/deleted.svg'), '<svg/>');
   fs.writeFileSync(path.join(root, 'archive/exams/original/a.js'), `window.questionBank=[{id:1,image:'assets/images/old.svg'}];\n`);
+  const ignoredRoot = path.join(root, 'archive/analysis/unrelated-cold-files');
+  fs.mkdirSync(ignoredRoot, { recursive: true });
+  const longName = 'x'.repeat(120);
+  for (let index = 0; index < 10000; index += 1) {
+    fs.writeFileSync(path.join(ignoredRoot, `${String(index).padStart(5, '0')}-${longName}.json`), 'cold');
+  }
   execFileSync('git', ['-C', root, 'add', '.']);
   execFileSync('git', ['-C', root, 'commit', '-qm', 'baseline']);
   const baseRef = execFileSync('git', ['-C', root, 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
 
+  fs.rmSync(path.join(root, 'archive/analysis'), { recursive: true, force: true });
   fs.writeFileSync(path.join(root, 'archive/assets/images/old.svg'), '<svg><desc>updated</desc></svg>');
+  fs.rmSync(path.join(root, 'archive/assets/images/deleted.svg'));
   fs.writeFileSync(path.join(root, 'archive/assets/images/new.svg'), '<svg><desc>new</desc></svg>');
   fs.writeFileSync(path.join(root, 'archive/exams/original/a.js'), `window.questionBank=[{id:1,image:'assets/images/old.svg'},{id:2,image:'assets/images/new.svg'}];\n`);
   const currentIndex = collectSvgAccessibilitySourceIndex({ repoRoot: root });
   const scope = collectChangedSourceScope({ repoRoot: root, baseRef, currentIndex });
-  assert.deepEqual(scope.changedSvgRefs, ['assets/images/new.svg', 'assets/images/old.svg']);
+  assert.deepEqual(scope.changedSvgRefs, ['assets/images/deleted.svg', 'assets/images/new.svg', 'assets/images/old.svg']);
+  assert.deepEqual(scope.changedPaths, [
+    'archive/assets/images/deleted.svg',
+    'archive/assets/images/new.svg',
+    'archive/assets/images/old.svg',
+    'archive/exams/original/a.js'
+  ]);
   assert.deepEqual(scope.newUses.map(use => [use.assetRef, use.sourceQid, use.visualRole]), [['assets/images/new.svg', '2', 'problem']]);
   assert.equal(scope.baseRef, baseRef);
 });

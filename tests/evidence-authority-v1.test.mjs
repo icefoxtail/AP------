@@ -18,8 +18,10 @@ test('versioned offline authority lane holds exact bytes for all current hot con
   const index = loadEvidenceAuthorityIndex(ROOT);
   assert.equal(index.schemaVersion, EVIDENCE_AUTHORITY_SCHEMA);
   assert.equal(index.baselineCommit, 'd305af51b01b15e09d37839538ef3baaa269bd55');
-  assert.equal(index.scope.originalPathCount, 65);
-  assert.equal(index.scope.rawPayloadBytes, 2_800_702);
+  assert.equal(index.scope.originalPathCount, 78);
+  assert.equal(index.scope.rawPayloadBytes, 2_897_053);
+  assert.equal(index.scope.activeM2DependencyCount, 13);
+  assert.equal(index.scope.activeM2DependencyRawBytes, 96_351);
   assert.equal(index.scope.visualProofCount, 45);
   assert.equal(index.scope.visualManifestCount, 2);
   assert.equal(index.scope.visualAccessibilityParityReceiptCount, 1);

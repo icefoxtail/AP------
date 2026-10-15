@@ -2,6 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const { readPrintRenderAuthorityFixture } = require('./helpers/print-render-authority-fixtures.cjs');
 const root = path.join(__dirname, '..');
 const engine = fs.readFileSync(path.join(root, 'apmath', 'wrong_print_engine.html'), 'utf8');
 const launcher = fs.readFileSync(path.join(root, 'tests', 'fixtures', 'wrong-print-layout-launcher.html'), 'utf8');
@@ -46,7 +47,7 @@ test('Clinic adapter restores source identity before opt-in single-student dual-
 });
 
 test('Clinic single-student restored-source browser fixture records parity across all three modes', () => {
-  const evidence = JSON.parse(fs.readFileSync(path.join(root, 'reports', 'print-render-authority-v2.2', 'phase-5-clinic-browser-fixture.json'), 'utf8'));
+  const evidence = readPrintRenderAuthorityFixture('phase-5-clinic-browser-fixture.json');
   assert.equal(evidence.kind, 'actual-browser-dual-run');
   assert.equal(evidence.source.studentCount, 1);
   assert.deepEqual(evidence.results.map(result => result.mode), ['exam', 'solution', 'answer']);

@@ -1,9 +1,9 @@
 {
   "schemaVersion": "archive-analysis-drive-root-receipt/v1",
   "status": "FULL_BYTES_VERIFIED",
-  "method": "Independent My Drive vault; every ZIP uploaded, metadata ID/parent/size read back, authenticated full download SHA-256 matched; every decompressed raw object/alias verified against original Git blobs; final sidecar independently downloaded and SHA-256 verified",
-  "verifiedAtUtc": "2026-10-15T20:52:28.786Z",
-  "cohort": "ap-cold-evidence-d305-20261016",
+  "method": "Independent My Drive vault; every ZIP uploaded, metadata ID/parent/size read back, authenticated full download SHA-256 matched; every decompressed raw object/alias verified against original Git blobs; final sidecar independently downloaded and SHA-256 verified; release repair preserves all previously verified 200 pack bindings unchanged; rebuilt cold index excludes the complete active offline authority closure and its full downloaded bytes were independently hash-verified",
+  "verifiedAtUtc": "2026-10-15T23:06:19.562Z",
+  "cohort": "ap-cold-evidence-d305-20261016-release-fix",
   "baselineCommit": "d305af51b01b15e09d37839538ef3baaa269bd55",
   "baselineAnalysisTreeSha": "979303b78a9b8daddb048680b7c12a539c310dbb",
   "baselineRootTreeShas": {
@@ -28,40 +28,41 @@
     "스캔_인테이크_산출물/",
     "output/"
   ],
-  "pathCount": 23453,
-  "uniqueBlobCount": 18863,
-  "pathBytes": 5652974102,
-  "uniqueRawBytes": 4652018003,
+  "pathCount": 23440,
+  "uniqueBlobCount": 18850,
+  "pathBytes": 5652877751,
+  "uniqueRawBytes": 4651921652,
   "hotAuthorityExclusion": {
     "sourcePath": "archive/data/evidence-authority/v1/index.json",
-    "entryCount": 65,
-    "indexSha256": "1a5856bd09c4969ccecc73a2b7bcbcb5ba57180ec9e907b73b59f5c0e44fe798",
-    "excludedPathBytes": 2800702
+    "entryCount": 78,
+    "indexSha256": "9253131a9699981bb1de64bd4c42d9b52fecb28efaf1c25051084b12e5e59f8a",
+    "excludedPathBytes": 2897053
   },
-  "indexSizeBytes": 18038835,
-  "indexSha256": "728ce55b1d4ebd9def7114e4fd8b67c434eea1e35d2888f1bcf9b6cd9f0ea71b",
+  "indexSizeBytes": 17629899,
+  "indexSha256": "8e8e081983307a5302cbf88f6ed4e934b82ee6622a519dfcbafc1ba68aa8f478",
   "index": {
-    "name": "ap-cold-evidence-fullpath-index-d305-20261016.json",
-    "sizeBytes": 18038835,
-    "sha256": "728ce55b1d4ebd9def7114e4fd8b67c434eea1e35d2888f1bcf9b6cd9f0ea71b",
-    "driveFileId": "1MOMUMOBQgfrx-Ff9vRhgp9yt1Y8A9wij",
+    "cohort": "ap-cold-evidence-d305-20261016-release-fix",
+    "name": "ap-cold-evidence-fullpath-index-d305-20261016-release-fix.json",
+    "sizeBytes": 17629899,
+    "sha256": "8e8e081983307a5302cbf88f6ed4e934b82ee6622a519dfcbafc1ba68aa8f478",
+    "driveFileId": "13FXYWfG3PCQ0avhQZHjVClCfd49ua08F",
     "driveParentId": "1rCUfGWKyTTVktV7HzEyYhF0p4lZmo9E4",
-    "driveName": "ap-cold-evidence-fullpath-index-d305-20261016.json",
+    "driveName": "ap-cold-evidence-fullpath-index-d305-20261016-release-fix.json",
     "driveMimeType": "application/json",
-    "driveSizeBytes": 18038835,
-    "driveUrl": "https://drive.google.com/file/d/1MOMUMOBQgfrx-Ff9vRhgp9yt1Y8A9wij/view?usp=drivesdk",
+    "driveSizeBytes": 17629899,
+    "driveUrl": "https://drive.google.com/file/d/13FXYWfG3PCQ0avhQZHjVClCfd49ua08F/view?usp=drivesdk",
     "sourceVersion": {
-      "id": "1MOMUMOBQgfrx-Ff9vRhgp9yt1Y8A9wij",
+      "id": "13FXYWfG3PCQ0avhQZHjVClCfd49ua08F",
       "parentIds": [
         "1rCUfGWKyTTVktV7HzEyYhF0p4lZmo9E4"
       ],
-      "observedModifiedTime": "2026-10-15T20:48:00.692Z"
+      "observedModifiedTime": "2026-10-15T23:06:13.310Z"
     },
     "driveReadback": {
       "status": "FULL_BYTES_VERIFIED",
-      "sha256": "728ce55b1d4ebd9def7114e4fd8b67c434eea1e35d2888f1bcf9b6cd9f0ea71b",
-      "sizeBytes": 18038835,
-      "verifiedAtUtc": "2026-10-15T20:48:14.708Z",
+      "sha256": "8e8e081983307a5302cbf88f6ed4e934b82ee6622a519dfcbafc1ba68aa8f478",
+      "sizeBytes": 17629899,
+      "verifiedAtUtc": "2026-10-15T23:06:19.562Z",
       "method": "MCP metadata + authenticated streamed raw download + local full SHA-256"
     }
   },
@@ -5676,8 +5677,8 @@
     "additionalRootPathBytes": 181293262,
     "outputPathCount": 107,
     "outputPathBytes": 77610713,
-    "hotAuthorityPathCount": 65,
-    "hotAuthorityBytes": 2800702
+    "hotAuthorityPathCount": 78,
+    "hotAuthorityBytes": 2897053
   },
   "trackingRemovalSummary": {
     "currentHead": "27647f8b8d98d5d9b253b99032337ba8920d402e",
@@ -5771,5 +5772,33 @@
     }
   ],
   "historicalGitStorageBytesReduced": 0,
-  "historyRewrite": false
+  "historyRewrite": false,
+  "supersedesRootReceipt": {
+    "driveFileId": "177DlJdVnACYGjjmCw6hPr88oNsdEWAmC",
+    "driveUrl": "https://drive.google.com/file/d/177DlJdVnACYGjjmCw6hPr88oNsdEWAmC/view?usp=drivesdk",
+    "sizeBytes": 250160,
+    "sha256": "a0dca3e80a7c730c5117ea2cb3f6952c2c8b21df8f0fefd69de6721fb7268426"
+  },
+  "releaseDependencyRepair": {
+    "preservesExistingQualityChecks": true,
+    "newActiveAuthorityCount": 13,
+    "newActiveAuthorityPathBytes": 96351,
+    "newActiveAuthorityOriginalPaths": [
+      "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/R3-q19-target/r3-qid19-physical-render-review.json",
+      "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-CREATE-question-only-replacement-adjudication.v1.json",
+      "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-create-question-only-validator.pass.json",
+      "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-r1-review-evidence.revision03.json",
+      "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/q19-QID-only/q19-r2-postfreeze-rebind.json",
+      "archive/analysis/r1-source-refresh-20261010/22_연향중_1학기_기말_중2_기출/question-only-replacement-authorization.v3.json",
+      "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/R3-q24-target/R3-q24-displayfix-v2-sol-review.json",
+      "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/fresh-original-freeze.json",
+      "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.json",
+      "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-CREATE-false-hold-adjudication.v2.json",
+      "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-SOURCE_HOLD.json",
+      "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-only-source-delta-manifest.v2.json",
+      "archive/analysis/r1-source-refresh-20261010/24_금당중_1학기_기말_중2_기출/q24-solution-svg-physical-evidence.json"
+    ],
+    "coldPacksChanged": 0,
+    "historicalGitStorageBytesReduced": 0
+  }
 }

@@ -3,6 +3,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { readAuthorityOrLocalAnalysisBytes } from './evidence-authority-v1.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const SCHEMA = 'JS_ARCHIVE_CREATE_FALSE_HOLD_ADJUDICATION_V1';
@@ -17,6 +18,13 @@ const repoFile = (root, rel) => {
   if (!file.startsWith(path.resolve(root) + path.sep)) fail('PATH_OUTSIDE_REPOSITORY', rel);
   return file;
 };
+const repoBytes = (root, rel) => {
+  const file = repoFile(root, rel);
+  const normalized = path.relative(root, file).replaceAll('\\', '/');
+  return normalized.startsWith('archive/analysis/')
+    ? readAuthorityOrLocalAnalysisBytes({ root, originalPath: normalized })
+    : fs.readFileSync(file);
+};
 import vm from 'node:vm';
 function bank(source) {
   const box = { window: {} };
@@ -29,7 +37,7 @@ function bank(source) {
 export function prepareFalseHoldAdjudication({ root = ROOT, exam, evidence, adjudication }) {
   const examFile = repoFile(root, exam), evidenceFile = repoFile(root, evidence), adjudicationFile = repoFile(root, adjudication);
   const examBytes = fs.readFileSync(examFile), evidenceRaw = fs.readFileSync(evidenceFile, 'utf8');
-  const evidenceObject = JSON.parse(evidenceRaw), adjudicationBytes = fs.readFileSync(adjudicationFile);
+  const evidenceObject = JSON.parse(evidenceRaw), adjudicationBytes = repoBytes(root, adjudication);
   const decision = JSON.parse(adjudicationBytes.toString('utf8'));
   if (decision.schemaVersion !== SCHEMA || decision.qualityContractVersion !== 'JS_ARCHIVE_QUALITY_CONTRACT_V2_20261006' || decision.executionLine !== 'CODEX') fail('ADJUDICATION_SCHEMA_OR_CONTRACT_INVALID');
   if (decision.stage !== 'CREATE' || decision.qid !== 24 || decision.status !== 'FALSE_HOLD_CLEARED' || decision.scopeOnly !== true || decision.fullExamCreateComplete !== false) fail('ADJUDICATION_SCOPE_INVALID');
@@ -54,10 +62,10 @@ export function prepareFalseHoldAdjudication({ root = ROOT, exam, evidence, adju
   if (decision.assetBinding?.sha256 !== sha(assetBytes) || decision.assetBinding?.opened !== true) fail('Q24_ASSET_SHA_OR_OPEN_REQUIRED');
   const holdRef = decision.falseHoldAdjudication || {};
   const holdFile = repoFile(root, holdRef.priorHoldPath || '');
-  const holdBytes = fs.readFileSync(holdFile);
+  const holdBytes = repoBytes(root, holdRef.priorHoldPath || '');
   if (sha(holdBytes) !== holdRef.priorHoldSha256 || holdRef.priorHoldPreservedUnchanged !== true) fail('ORIGINAL_HOLD_BINDING_MISMATCH');
   const freezeFile = repoFile(root, holdRef.originalFreezePath || '');
-  if (sha(fs.readFileSync(freezeFile)) !== holdRef.originalFreezeSha256 || holdRef.originalFreezePreservedUnchanged !== true) fail('ORIGINAL_FREEZE_BINDING_MISMATCH');
+  if (sha(repoBytes(root, holdRef.originalFreezePath || '')) !== holdRef.originalFreezeSha256 || holdRef.originalFreezePreservedUnchanged !== true) fail('ORIGINAL_FREEZE_BINDING_MISMATCH');
   if (!Array.isArray(holdRef.proof) || holdRef.proof.length < 3 || !holdRef.proof[0].includes('[ABC]=[DBC]') || !holdRef.proof[1].includes('[OBC]') || !holdRef.proof[2].includes('3:5')) fail('ADJUDICATION_PROOF_INCOMPLETE');
   const row = (evidenceObject.questionRows || []).find(item => Number(item.qid) === 24);
   const existing = evidenceObject.falseHoldAdjudications || [];
@@ -115,7 +123,7 @@ function prepareSupersedingAdjudication({ root, examRel, examBytes, currentSha, 
   if (!previousEntry || previousEntry.schemaVersion !== HISTORY_SCHEMA) fail('Q24_PRIOR_ADJUDICATION_REQUIRED');
   const supersedes = decision.supersedes || {};
   const previousPath = repoFile(root, supersedes.path || '');
-  const previousBytes = fs.readFileSync(previousPath);
+  const previousBytes = repoBytes(root, supersedes.path || '');
   const previousSha = sha(previousBytes);
   const recordedV1 = previousEntry.supersededAdjudication || { path: previousEntry.adjudicationPath, sha256: previousEntry.adjudicationSha256 };
   if (supersedes.path !== recordedV1.path || supersedes.sha256 !== previousSha || recordedV1.sha256 !== previousSha) fail('SUPERSEDES_V1_PATH_OR_SHA_MISMATCH');
@@ -125,7 +133,7 @@ function prepareSupersedingAdjudication({ root, examRel, examBytes, currentSha, 
 
   const deltaBinding = decision.sourceDeltaBinding || {};
   const manifestFile = repoFile(root, deltaBinding.manifestPath || '');
-  const manifestBytes = fs.readFileSync(manifestFile);
+  const manifestBytes = repoBytes(root, deltaBinding.manifestPath || '');
   const manifestSha = sha(manifestBytes);
   if (deltaBinding.manifestSha256 !== manifestSha) fail('Q24_DELTA_MANIFEST_SHA_MISMATCH');
   const manifest = JSON.parse(manifestBytes.toString('utf8'));
@@ -255,7 +263,7 @@ function buildQ24VisualEvidenceRow({ root, currentSha, q, decision }) {
 
   const geometryFileRef = visual.geometryEvidencePath;
   const geometryFile = repoFile(root, geometryFileRef || '');
-  const geometryBytes = fs.readFileSync(geometryFile);
+  const geometryBytes = repoBytes(root, geometryFileRef);
   if (sha(geometryBytes) !== visual.geometryEvidenceSha256) fail('Q24_VISUAL_PHYSICAL_EVIDENCE_SHA_MISMATCH');
   const geometryEvidence = JSON.parse(geometryBytes.toString('utf8'));
   const geometryItem = (geometryEvidence.items || []).find(item => Number(item.qid) === 24);
@@ -269,7 +277,7 @@ function buildQ24VisualEvidenceRow({ root, currentSha, q, decision }) {
 
   const r3Binding = decision.reviewBindings?.r3 || {};
   const r3File = repoFile(root, r3Binding.path || '');
-  const r3Bytes = fs.readFileSync(r3File);
+  const r3Bytes = repoBytes(root, r3Binding.path || '');
   if (sha(r3Bytes) !== r3Binding.sha256) fail('Q24_R3_RENDER_REVIEW_SHA_MISMATCH');
   const r3 = JSON.parse(r3Bytes.toString('utf8'));
   const solCase = (r3.cases || []).find(item => item.id === 'sol/desktop');
