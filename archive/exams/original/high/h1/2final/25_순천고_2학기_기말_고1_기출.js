@@ -79,7 +79,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "두 제곱근의 값이 실수가 되려면 두 근호 안이 각각 $0$ 이상이어야 한다.\n$x-3\\ge0$에서 $x\\ge3$이다.\n$10-2x\\ge0$에서 $x\\le5$이다.\n따라서 $3\\le x\\le5$이고 가능한 정수는 $3,4,5$이다.\n정수 $x$는 3개이다.",
+    "solution": "두 근호의 값이 모두 실수가 되려면 각각 근호 안이 $0$ 이상이어야 한다.\n$\\sqrt{x-3}$에 대해\n$x-3\\ge0$이므로 $x\\ge3$이다.\n$\\sqrt{10-2x}$에 대해\n$10-2x\\ge0$,\n$-2x\\ge-10$이므로 $x\\le5$이다.\n\n두 조건의 공통 범위는 $3\\le x\\le5$이다.\n따라서 가능한 정수는 $3,4,5$이고,\n그 개수는 $5-3+1=3$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
