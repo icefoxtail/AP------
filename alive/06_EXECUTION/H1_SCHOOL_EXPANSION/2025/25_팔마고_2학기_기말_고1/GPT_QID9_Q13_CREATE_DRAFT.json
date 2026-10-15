@@ -1,0 +1,1360 @@
+{
+  "schemaVersion": "PALMA25_QID9_DRAFT_v1",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 13,
+  "sourceOriginalImage": null,
+  "sourceOriginalCondition": "x>0,y>0 and (x+y)(4/x+9/y) AMGM min25 with equality 2y=3x",
+  "primaryRpmL3": "H1-RPM-250",
+  "rpmMappingStatus": "NEAREST_H22_C2_06_L3_WITH_EXACT_AMGM_EXTREMUM_GAP",
+  "actualActivePt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+  "actualActiveTpl": "TPL_AMGM_MINIMUM",
+  "summary": {
+    "authorCreated": 9,
+    "choicesChecked": 45,
+    "wrongRoutes": 36,
+    "problemSvg": 0,
+    "problemSvgExempt": 9,
+    "solutionSvg": 3,
+    "solutionSvgExempt": 6,
+    "answerDistribution": {
+      "①": 2,
+      "②": 2,
+      "③": 2,
+      "④": 2,
+      "⑤": 1
+    },
+    "formalIndependent": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "consumer": "NOT_RUN",
+    "main": "NOT_RUN",
+    "sourceUidEvidenceDebt": 9,
+    "primaryRpmMapping": "SEMANTIC_FAMILY_GAP_EVIDENCE_DEBT",
+    "nextQid": 14
+  },
+  "questions": [
+    {
+      "id": 1,
+      "uid": "ALITE-PALMA25-2FINAL-Q13-A1",
+      "sourceQid": 13,
+      "sourceUid": null,
+      "slot": "A1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "산술평균과 기하평균의 관계",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "산술평균",
+        "기하평균",
+        "최솟값"
+      ],
+      "wide": false,
+      "content": "$x\\gt0$, $y\\gt0$일 때 $(x+y)\\left(\\dfrac4x+\\dfrac{25}y\\right)$의 최솟값은?",
+      "choices": [
+        "$29$",
+        "$39$",
+        "$49$",
+        "$58$",
+        "$79$"
+      ],
+      "answer": "③",
+      "solution": "식은 $4+25+\\dfrac{4y}{x}+\\dfrac{25x}{y}=29+\\dfrac{4y}{x}+\\dfrac{25x}{y}$이다.\n$x,y>0$이므로 $\\dfrac{4y}{x}+\\dfrac{25x}{y}\\ge2\\sqrt{\\dfrac{4y}{x}\\cdot\\dfrac{25x}{y}}=20$이다.\n따라서 전체 식은 $49$ 이상이다. 등호는 $\\dfrac{4y}{x}=\\dfrac{25x}{y}$, 즉 $2y=5x$일 때 성립하며 양수 $x,y$에서 실현할 수 있다(예: $x=2,y=5$).\n따라서 최솟값은 $49$이고 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_CONTEXT_WITH_EXACT_L3_GAP",
+        "rpmBindingEvidence": "2022 H22-C2-06-CORE PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE; TPL_AMGM_MINIMUM ACTIVE; H1-RPM-250 semantic nearest but AMGM extremum direct RPM path not found.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "H22_C2_06_AMGM_EXTREMUM_DIRECT_RPM_L3_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q13은 공통수학2 명제에서 산술·기하평균의 관계를 이용해 최솟값을 확정한다. 현 2022 공통수학2 RPM crosswalk의 가장 가까운 원본 단원 L3는 H1-RPM-250(증명/절대부등식 증명)이고, '산술·기하평균 최솟값' 전용 정확한 C2-06 RPM L3는 찾지 못했으므로 DIRECT_ACTIVE라 부르지 않으며 MAPPING_EVIDENCE_DEBT를 남긴다.",
+          "l4": "현재 RPM 최인접 경로 H1-RPM-250의 부등식 증명 사고를 사용하되 실제 문항의 최솟값은 AMGM ACTIVE PT/TPL로 구분한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE: 최종 질문은 산술·기하평균을 이용한 최솟값 또는 그 등호 조건이다.",
+          "tpl": "TPL_AMGM_MINIMUM ACTIVE: 양의 두 교차항의 곱이 일정함을 이용해 하한과 등호를 판정한다.",
+          "cross": "추가 CrossConcept 키 없음: AMGM 자체와 양수·합 조건만 사용하며, 근거 없는 새 CC를 만들지 않는다.",
+          "condition": "COND_POSITIVE: 양수·정수·합 제약을 실제 계산과 등호/정수 가능성 판정에 사용한다.",
+          "integration": "SEQUENTIAL: 하한 계산, 등호 조건, 지정 질문의 비율/값 확정을 연결한다.",
+          "learningLevel": "원본 구조에서 가중치가 바뀌어도 전개한 두 양수항에 산술·기하평균을 적용한다.",
+          "assessmentBucket": "제곱계수와 등호의 비율 2:5를 구별해야 한다.",
+          "problemVisual": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "solutionVisual": "양수의 산술·기하평균 계산과 등호 관계만으로 설명이 완결되어, 도형을 더해도 결정 단계가 늘지 않는다.",
+          "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음.",
+        "learningLevelReason": "원본 구조에서 가중치가 바뀌어도 전개한 두 양수항에 산술·기하평균을 적용한다.",
+        "assessmentDifficultyReason": "제곱계수와 등호의 비율 2:5를 구별해야 한다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "$x\\gt0$, $y\\gt0$일 때 $(x+y)\\left(\\dfrac4x+\\dfrac{25}y\\right)$의 최솟값은?",
+          "requiredPrimaryL3Step": "AMGM로 양수 교차항의 하한·등호를 증명하여 최솟값을 확정한다.",
+          "questionNaturalness": "원본의 최솟값 문형에 계수·등호·정수 가능성만 단계별 추가",
+          "conditionSufficiency": "양수 조건 및 필요한 합 고정/비율 질문 명시",
+          "shortcut": "전개 없이 단순 선지 대입으로 모든 양수의 전역 최솟값 증명을 대체할 수 없다",
+          "answerFromFinalStudentInput": "$49$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "formal 독립검수와 실브라우저 미실행; RPM 직접 L3와 source UID 해시 근거 부채"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$29$",
+              "errorCalculation": "전개한 4+25+4y/x+25x/y에서 변동하는 두 항을 모두 0으로 처리해 29를 얻는다."
+            },
+            {
+              "index": "②",
+              "value": "$39$",
+              "errorCalculation": "4y/x+25x/y의 기하평균은 10인데, 2배를 누락하여 29+10=39로 계산한다."
+            },
+            {
+              "index": "④",
+              "value": "$58$",
+              "errorCalculation": "기하평균의 2배를 두 제곱계수의 합 4+25=29로 잘못 계산하여 29+29=58이 된다."
+            },
+            {
+              "index": "⑤",
+              "value": "$79$",
+              "errorCalculation": "4y/x와 25x/y의 곱 100에서 제곱근을 25로 오인하여 29+2·25=79로 계산한다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "AMGM_CLOSED_FORM_SYMBOLIC_EQUALITY",
+          "coreFact": "(2+5)^2=49; equality 2y=5x"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "양수의 산술·기하평균 계산과 등호 관계만으로 설명이 완결되어, 도형을 더해도 결정 단계가 늘지 않는다.",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "uid": "ALITE-PALMA25-2FINAL-Q13-A2",
+      "sourceQid": 13,
+      "sourceUid": null,
+      "slot": "A2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "중",
+      "category": "산술평균과 기하평균의 관계",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "산술평균",
+        "기하평균",
+        "최솟값"
+      ],
+      "wide": false,
+      "content": "양수 $x,y$에 대하여 $(x+y)\\left(\\dfrac9x+\\dfrac{16}y\\right)$의 최솟값을 구하면?",
+      "choices": [
+        "$49$",
+        "$50$",
+        "$57$",
+        "$73$",
+        "$98$"
+      ],
+      "answer": "①",
+      "solution": "$(x+y)\\left(\\dfrac9x+\\dfrac{16}y\\right)=25+\\dfrac{9y}{x}+\\dfrac{16x}{y}$이다.\n$\\dfrac{9y}{x}+\\dfrac{16x}{y}\\ge2\\sqrt{9\\cdot16}=24$이므로 전체 식은 $25+24=49$ 이상이다.\n등호는 $\\dfrac{9y}{x}=\\dfrac{16x}{y}$, 즉 $3y=4x$일 때 성립한다(예: $x=3,y=4$).\n따라서 최솟값은 $49$이고 정답은 ①이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_CONTEXT_WITH_EXACT_L3_GAP",
+        "rpmBindingEvidence": "2022 H22-C2-06-CORE PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE; TPL_AMGM_MINIMUM ACTIVE; H1-RPM-250 semantic nearest but AMGM extremum direct RPM path not found.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "H22_C2_06_AMGM_EXTREMUM_DIRECT_RPM_L3_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q13은 공통수학2 명제에서 산술·기하평균의 관계를 이용해 최솟값을 확정한다. 현 2022 공통수학2 RPM crosswalk의 가장 가까운 원본 단원 L3는 H1-RPM-250(증명/절대부등식 증명)이고, '산술·기하평균 최솟값' 전용 정확한 C2-06 RPM L3는 찾지 못했으므로 DIRECT_ACTIVE라 부르지 않으며 MAPPING_EVIDENCE_DEBT를 남긴다.",
+          "l4": "현재 RPM 최인접 경로 H1-RPM-250의 부등식 증명 사고를 사용하되 실제 문항의 최솟값은 AMGM ACTIVE PT/TPL로 구분한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE: 최종 질문은 산술·기하평균을 이용한 최솟값 또는 그 등호 조건이다.",
+          "tpl": "TPL_AMGM_MINIMUM ACTIVE: 양의 두 교차항의 곱이 일정함을 이용해 하한과 등호를 판정한다.",
+          "cross": "추가 CrossConcept 키 없음: AMGM 자체와 양수·합 조건만 사용하며, 근거 없는 새 CC를 만들지 않는다.",
+          "condition": "COND_POSITIVE: 양수·정수·합 제약을 실제 계산과 등호/정수 가능성 판정에 사용한다.",
+          "integration": "SEQUENTIAL: 하한 계산, 등호 조건, 지정 질문의 비율/값 확정을 연결한다.",
+          "learningLevel": "양수 조건과 두 교차항의 곱을 확인하여 최솟값을 구한다.",
+          "assessmentBucket": "등호 가능성과 하한의 2배 계수를 정확히 판정한다.",
+          "problemVisual": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "solutionVisual": "양수의 산술·기하평균 계산과 등호 관계만으로 설명이 완결되어, 도형을 더해도 결정 단계가 늘지 않는다.",
+          "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음.",
+        "learningLevelReason": "양수 조건과 두 교차항의 곱을 확인하여 최솟값을 구한다.",
+        "assessmentDifficultyReason": "등호 가능성과 하한의 2배 계수를 정확히 판정한다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "양수 $x,y$에 대하여 $(x+y)\\left(\\dfrac9x+\\dfrac{16}y\\right)$의 최솟값을 구하면?",
+          "requiredPrimaryL3Step": "AMGM로 양수 교차항의 하한·등호를 증명하여 최솟값을 확정한다.",
+          "questionNaturalness": "원본의 최솟값 문형에 계수·등호·정수 가능성만 단계별 추가",
+          "conditionSufficiency": "양수 조건 및 필요한 합 고정/비율 질문 명시",
+          "shortcut": "전개 없이 단순 선지 대입으로 모든 양수의 전역 최솟값 증명을 대체할 수 없다",
+          "answerFromFinalStudentInput": "$49$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "formal 독립검수와 실브라우저 미실행; RPM 직접 L3와 source UID 해시 근거 부채"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "②",
+              "value": "$50$",
+              "errorCalculation": "최솟값을 두 제곱계수의 합의 2배라고 착각하면 2(9+16)=50이다."
+            },
+            {
+              "index": "③",
+              "value": "$57$",
+              "errorCalculation": "양의 교차항 $9y/x+16x/y$의 하한을 2·16=32로 잘못 대체하면 25+32=57이 된다."
+            },
+            {
+              "index": "④",
+              "value": "$73$",
+              "errorCalculation": "산술·기하평균 하한 $2sqrt{9·16}=24$를 한 번 더 2배 하여 25+48=73으로 계산한다."
+            },
+            {
+              "index": "⑤",
+              "value": "$98$",
+              "errorCalculation": "이미 계산한 최솟값 49를 산술평균의 2배라 다시 2배하여 98을 얻는다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "AMGM_CLOSED_FORM_SYMBOLIC_EQUALITY",
+          "coreFact": "(3+4)^2=49"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "양수의 산술·기하평균 계산과 등호 관계만으로 설명이 완결되어, 도형을 더해도 결정 단계가 늘지 않는다.",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "uid": "ALITE-PALMA25-2FINAL-Q13-A3",
+      "sourceQid": 13,
+      "sourceUid": null,
+      "slot": "A3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "STRICT_VARIANT",
+      "level": "하",
+      "category": "산술평균과 기하평균의 관계",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "산술평균",
+        "기하평균",
+        "최솟값"
+      ],
+      "wide": false,
+      "content": "$x,y$가 양수일 때 $(x+y)\\left(\\dfrac1x+\\dfrac{16}y\\right)$의 최솟값은?",
+      "choices": [
+        "$1$",
+        "$16$",
+        "$17$",
+        "$21$",
+        "$25$"
+      ],
+      "answer": "⑤",
+      "solution": "식은 $17+\\dfrac yx+\\dfrac{16x}{y}$이다.\n$x,y>0$이므로 $\\dfrac yx+\\dfrac{16x}{y}\\ge2\\sqrt{16}=8$이다.\n전체 식은 $17+8=25$ 이상이고 등호는 $\\dfrac yx=\\dfrac{16x}{y}$, 즉 $y=4x$일 때 성립한다(예: $x=1,y=4$).\n따라서 최솟값은 $25$이고 정답은 ⑤이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_CONTEXT_WITH_EXACT_L3_GAP",
+        "rpmBindingEvidence": "2022 H22-C2-06-CORE PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE; TPL_AMGM_MINIMUM ACTIVE; H1-RPM-250 semantic nearest but AMGM extremum direct RPM path not found.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 2,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "H22_C2_06_AMGM_EXTREMUM_DIRECT_RPM_L3_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q13은 공통수학2 명제에서 산술·기하평균의 관계를 이용해 최솟값을 확정한다. 현 2022 공통수학2 RPM crosswalk의 가장 가까운 원본 단원 L3는 H1-RPM-250(증명/절대부등식 증명)이고, '산술·기하평균 최솟값' 전용 정확한 C2-06 RPM L3는 찾지 못했으므로 DIRECT_ACTIVE라 부르지 않으며 MAPPING_EVIDENCE_DEBT를 남긴다.",
+          "l4": "현재 RPM 최인접 경로 H1-RPM-250의 부등식 증명 사고를 사용하되 실제 문항의 최솟값은 AMGM ACTIVE PT/TPL로 구분한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE: 최종 질문은 산술·기하평균을 이용한 최솟값 또는 그 등호 조건이다.",
+          "tpl": "TPL_AMGM_MINIMUM ACTIVE: 양의 두 교차항의 곱이 일정함을 이용해 하한과 등호를 판정한다.",
+          "cross": "추가 CrossConcept 키 없음: AMGM 자체와 양수·합 조건만 사용하며, 근거 없는 새 CC를 만들지 않는다.",
+          "condition": "COND_POSITIVE: 양수·정수·합 제약을 실제 계산과 등호/정수 가능성 판정에 사용한다.",
+          "integration": "SEQUENTIAL: 하한 계산, 등호 조건, 지정 질문의 비율/값 확정을 연결한다.",
+          "learningLevel": "한 계수가 1이라 전개 후 산술·기하평균을 한 번 적용하면 된다.",
+          "assessmentBucket": "교차항의 2배 누락만 피하면 추가 조건 분기는 없다.",
+          "problemVisual": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "solutionVisual": "양수의 산술·기하평균 계산과 등호 관계만으로 설명이 완결되어, 도형을 더해도 결정 단계가 늘지 않는다.",
+          "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음.",
+        "learningLevelReason": "한 계수가 1이라 전개 후 산술·기하평균을 한 번 적용하면 된다.",
+        "assessmentDifficultyReason": "교차항의 2배 누락만 피하면 추가 조건 분기는 없다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "$x,y$가 양수일 때 $(x+y)\\left(\\dfrac1x+\\dfrac{16}y\\right)$의 최솟값은?",
+          "requiredPrimaryL3Step": "AMGM로 양수 교차항의 하한·등호를 증명하여 최솟값을 확정한다.",
+          "questionNaturalness": "원본의 최솟값 문형에 계수·등호·정수 가능성만 단계별 추가",
+          "conditionSufficiency": "양수 조건 및 필요한 합 고정/비율 질문 명시",
+          "shortcut": "전개 없이 단순 선지 대입으로 모든 양수의 전역 최솟값 증명을 대체할 수 없다",
+          "answerFromFinalStudentInput": "$25$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "formal 독립검수와 실브라우저 미실행; RPM 직접 L3와 source UID 해시 근거 부채"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$1$",
+              "errorCalculation": "전개에서 1만 남기고 16 및 두 교차항을 누락하여 1을 답한다."
+            },
+            {
+              "index": "②",
+              "value": "$16$",
+              "errorCalculation": "전개에서 16만 남기고 1 및 두 교차항을 누락하여 16을 답한다."
+            },
+            {
+              "index": "③",
+              "value": "$17$",
+              "errorCalculation": "두 교차항을 0으로 취급하여 1+16=17로 계산한다."
+            },
+            {
+              "index": "④",
+              "value": "$21$",
+              "errorCalculation": "교차항 하한의 계수 2를 누락해 17+√16=21로 계산한다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "AMGM_CLOSED_FORM_SYMBOLIC_EQUALITY",
+          "coreFact": "(1+4)^2=25"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "양수의 산술·기하평균 계산과 등호 관계만으로 설명이 완결되어, 도형을 더해도 결정 단계가 늘지 않는다.",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "uid": "ALITE-PALMA25-2FINAL-Q13-B1",
+      "sourceQid": 13,
+      "sourceUid": null,
+      "slot": "B1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "산술평균과 기하평균의 관계",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "산술평균",
+        "기하평균",
+        "최솟값"
+      ],
+      "wide": false,
+      "content": "양수 $x,y$가 $x+y=7$을 만족할 때 $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$가 최솟값을 갖도록 하는 $\\dfrac{x}{y}$의 값은?",
+      "choices": [
+        "$\\dfrac49$",
+        "$\\dfrac23$",
+        "$1$",
+        "$\\dfrac32$",
+        "$\\dfrac94$"
+      ],
+      "answer": "②",
+      "solution": "주어진 식을 전개하면 $13+\\dfrac{4y}{x}+\\dfrac{9x}{y}$이다. 산술·기하평균에 의하여 $\\dfrac{4y}{x}+\\dfrac{9x}{y}\\ge12$이다.\n등호는 $\\dfrac{4y}{x}=\\dfrac{9x}{y}$, 즉 $2y=3x$일 때 성립한다.\n따라서 $\\dfrac{x}{y}=\\dfrac23$이고, $x+y=7$을 만족시키는 양수 $x=14/5$, $y=21/5$가 실제 존재한다.\n따라서 정답은 ②이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_CONTEXT_WITH_EXACT_L3_GAP",
+        "rpmBindingEvidence": "2022 H22-C2-06-CORE PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE; TPL_AMGM_MINIMUM ACTIVE; H1-RPM-250 semantic nearest but AMGM extremum direct RPM path not found.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_SUM_FIXED"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "H22_C2_06_AMGM_EXTREMUM_DIRECT_RPM_L3_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q13은 공통수학2 명제에서 산술·기하평균의 관계를 이용해 최솟값을 확정한다. 현 2022 공통수학2 RPM crosswalk의 가장 가까운 원본 단원 L3는 H1-RPM-250(증명/절대부등식 증명)이고, '산술·기하평균 최솟값' 전용 정확한 C2-06 RPM L3는 찾지 못했으므로 DIRECT_ACTIVE라 부르지 않으며 MAPPING_EVIDENCE_DEBT를 남긴다.",
+          "l4": "현재 RPM 최인접 경로 H1-RPM-250의 부등식 증명 사고를 사용하되 실제 문항의 최솟값은 AMGM ACTIVE PT/TPL로 구분한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE: 최종 질문은 산술·기하평균을 이용한 최솟값 또는 그 등호 조건이다.",
+          "tpl": "TPL_AMGM_MINIMUM ACTIVE: 양의 두 교차항의 곱이 일정함을 이용해 하한과 등호를 판정한다.",
+          "cross": "추가 CrossConcept 키 없음: AMGM 자체와 양수·합 조건만 사용하며, 근거 없는 새 CC를 만들지 않는다.",
+          "condition": "COND_POSITIVE, COND_SUM_FIXED: 양수·정수·합 제약을 실제 계산과 등호/정수 가능성 판정에 사용한다.",
+          "integration": "SEQUENTIAL: 하한 계산, 등호 조건, 지정 질문의 비율/값 확정을 연결한다.",
+          "learningLevel": "최솟값에서 등호 조건을 역으로 구하고 질문 방향 x/y를 확인한다.",
+          "assessmentBucket": "비율 역전 및 계수에 제곱근을 취하지 않는 오류가 있다.",
+          "problemVisual": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "solutionVisual": "양수의 산술·기하평균 계산과 등호 관계만으로 설명이 완결되어, 도형을 더해도 결정 단계가 늘지 않는다.",
+          "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음.",
+        "learningLevelReason": "최솟값에서 등호 조건을 역으로 구하고 질문 방향 x/y를 확인한다.",
+        "assessmentDifficultyReason": "비율 역전 및 계수에 제곱근을 취하지 않는 오류가 있다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "양수 $x,y$가 $x+y=7$을 만족할 때 $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$가 최솟값을 갖도록 하는 $\\dfrac{x}{y}$의 값은?",
+          "requiredPrimaryL3Step": "AMGM로 양수 교차항의 하한·등호를 증명하여 최솟값을 확정한다.",
+          "questionNaturalness": "원본의 최솟값 문형에 계수·등호·정수 가능성만 단계별 추가",
+          "conditionSufficiency": "양수 조건 및 필요한 합 고정/비율 질문 명시",
+          "shortcut": "전개 없이 단순 선지 대입으로 모든 양수의 전역 최솟값 증명을 대체할 수 없다",
+          "answerFromFinalStudentInput": "$\\dfrac23$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "formal 독립검수와 실브라우저 미실행; RPM 직접 L3와 source UID 해시 근거 부채"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$\\dfrac49$",
+              "errorCalculation": "등호식 $4y/x=9x/y$에서 제곱근을 취하지 않고 $x/y=4/9$라고 계산한다."
+            },
+            {
+              "index": "③",
+              "value": "$1$",
+              "errorCalculation": "합 $x+y=7$만 보고 $x=y=7/2$를 강제하면 $x/y=1$이 된다."
+            },
+            {
+              "index": "④",
+              "value": "$\\dfrac32$",
+              "errorCalculation": "등호의 비율 $y/x=3/2$를 질문인 $x/y$와 뒤바꿔 $3/2$를 선택한다."
+            },
+            {
+              "index": "⑤",
+              "value": "$\\dfrac94$",
+              "errorCalculation": "잘못 구한 $x/y=4/9$의 분자와 분모를 다시 뒤집어 $9/4$를 얻는다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "AMGM_CLOSED_FORM_SYMBOLIC_EQUALITY",
+          "coreFact": "x/y=2/3; sum 7 =>14/5,21/5"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "양수의 산술·기하평균 계산과 등호 관계만으로 설명이 완결되어, 도형을 더해도 결정 단계가 늘지 않는다.",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "uid": "ALITE-PALMA25-2FINAL-Q13-B2",
+      "sourceQid": 13,
+      "sourceUid": null,
+      "slot": "B2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "산술평균과 기하평균의 관계",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "산술평균",
+        "기하평균",
+        "최솟값"
+      ],
+      "wide": false,
+      "content": "$x,y>0$이고 $x+y=10$이다. $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$가 최솟값을 가질 때의 $x$의 값은?",
+      "choices": [
+        "$\\dfrac{40}{13}$",
+        "$\\dfrac{10}{3}$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "③",
+      "solution": "식은 $13+\\dfrac{4y}{x}+\\dfrac{9x}{y}$이고 산술·기하평균에 의하여 최솟값은 $25$이다.\n등호 조건은 $\\dfrac{4y}{x}=\\dfrac{9x}{y}$이므로 $2y=3x$, 즉 $x:y=2:3$이다.\n$x+y=10$에서 $x=10\\cdot\\dfrac2{2+3}=4$, $y=6$으로 등호가 실현된다.\n따라서 정답은 ③이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_CONTEXT_WITH_EXACT_L3_GAP",
+        "rpmBindingEvidence": "2022 H22-C2-06-CORE PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE; TPL_AMGM_MINIMUM ACTIVE; H1-RPM-250 semantic nearest but AMGM extremum direct RPM path not found.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_SUM_FIXED"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "H22_C2_06_AMGM_EXTREMUM_DIRECT_RPM_L3_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q13은 공통수학2 명제에서 산술·기하평균의 관계를 이용해 최솟값을 확정한다. 현 2022 공통수학2 RPM crosswalk의 가장 가까운 원본 단원 L3는 H1-RPM-250(증명/절대부등식 증명)이고, '산술·기하평균 최솟값' 전용 정확한 C2-06 RPM L3는 찾지 못했으므로 DIRECT_ACTIVE라 부르지 않으며 MAPPING_EVIDENCE_DEBT를 남긴다.",
+          "l4": "현재 RPM 최인접 경로 H1-RPM-250의 부등식 증명 사고를 사용하되 실제 문항의 최솟값은 AMGM ACTIVE PT/TPL로 구분한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE: 최종 질문은 산술·기하평균을 이용한 최솟값 또는 그 등호 조건이다.",
+          "tpl": "TPL_AMGM_MINIMUM ACTIVE: 양의 두 교차항의 곱이 일정함을 이용해 하한과 등호를 판정한다.",
+          "cross": "추가 CrossConcept 키 없음: AMGM 자체와 양수·합 조건만 사용하며, 근거 없는 새 CC를 만들지 않는다.",
+          "condition": "COND_POSITIVE, COND_SUM_FIXED: 양수·정수·합 제약을 실제 계산과 등호/정수 가능성 판정에 사용한다.",
+          "integration": "SEQUENTIAL: 하한 계산, 등호 조건, 지정 질문의 비율/값 확정을 연결한다.",
+          "learningLevel": "등호를 만드는 두 변수의 비와 합을 연립해 개별 변수를 구한다.",
+          "assessmentBucket": "제곱계수 비율과 길이 비율을 혼동하거나 x/y 방향을 바꾸기 쉽다.",
+          "problemVisual": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "solutionVisual": "양수의 산술·기하평균 계산과 등호 관계만으로 설명이 완결되어, 도형을 더해도 결정 단계가 늘지 않는다.",
+          "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음.",
+        "learningLevelReason": "등호를 만드는 두 변수의 비와 합을 연립해 개별 변수를 구한다.",
+        "assessmentDifficultyReason": "제곱계수 비율과 길이 비율을 혼동하거나 x/y 방향을 바꾸기 쉽다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "$x,y>0$이고 $x+y=10$이다. $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$가 최솟값을 가질 때의 $x$의 값은?",
+          "requiredPrimaryL3Step": "AMGM로 양수 교차항의 하한·등호를 증명하여 최솟값을 확정한다.",
+          "questionNaturalness": "원본의 최솟값 문형에 계수·등호·정수 가능성만 단계별 추가",
+          "conditionSufficiency": "양수 조건 및 필요한 합 고정/비율 질문 명시",
+          "shortcut": "전개 없이 단순 선지 대입으로 모든 양수의 전역 최솟값 증명을 대체할 수 없다",
+          "answerFromFinalStudentInput": "$4$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "formal 독립검수와 실브라우저 미실행; RPM 직접 L3와 source UID 해시 근거 부채"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$\\dfrac{40}{13}$",
+              "errorCalculation": "등호에서 $x:y=2:3$ 대신 제곱된 계수대로 $x:y=4:9$를 쓰면 $x=10·4/(4+9)=40/13$이다."
+            },
+            {
+              "index": "②",
+              "value": "$\\dfrac{10}{3}$",
+              "errorCalculation": "등호 조건 $2y=3x$를 $y=2x$로 잘못 풀면 $x+y=3x=10$에서 $x=10/3$이다."
+            },
+            {
+              "index": "④",
+              "value": "$5$",
+              "errorCalculation": "합이 10이라는 이유로 $x=y=5$라 두면 $x=5$를 얻는다."
+            },
+            {
+              "index": "⑤",
+              "value": "$6$",
+              "errorCalculation": "등호 비율 $x:y=2:3$을 역으로 $x:y=3:2$로 사용하면 $x=10·3/5=6$이다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "AMGM_CLOSED_FORM_SYMBOLIC_EQUALITY",
+          "coreFact": "sum10 x4 y6"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "양수의 산술·기하평균 계산과 등호 관계만으로 설명이 완결되어, 도형을 더해도 결정 단계가 늘지 않는다.",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "uid": "ALITE-PALMA25-2FINAL-Q13-B3",
+      "sourceQid": 13,
+      "sourceUid": null,
+      "slot": "B3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "FOLLOWUP",
+      "level": "중",
+      "category": "산술평균과 기하평균의 관계",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "산술평균",
+        "기하평균",
+        "최솟값"
+      ],
+      "wide": false,
+      "content": "양수 $x,y$가 $x+y=15$를 만족한다. $(x+y)\\left(\\dfrac9x+\\dfrac4y\\right)$가 최솟값을 가질 때 $y$의 값은?",
+      "choices": [
+        "$3$",
+        "$\\dfrac{60}{13}$",
+        "$5$",
+        "$6$",
+        "$9$"
+      ],
+      "answer": "④",
+      "solution": "식을 전개하면 $13+\\dfrac{9y}{x}+\\dfrac{4x}{y}$이다.\n두 교차항의 합은 산술·기하평균에 의해 $12$ 이상이고, 등호는 $\\dfrac{9y}{x}=\\dfrac{4x}{y}$일 때 성립한다.\n즉 $3y=2x$이므로 $x:y=3:2$이다. $x+y=15$에서 $x=9$, $y=6$이므로 주어진 식의 최솟값이 실제로 성립한다.\n따라서 정답은 ④이다.",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_CONTEXT_WITH_EXACT_L3_GAP",
+        "rpmBindingEvidence": "2022 H22-C2-06-CORE PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE; TPL_AMGM_MINIMUM ACTIVE; H1-RPM-250 semantic nearest but AMGM extremum direct RPM path not found.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_SUM_FIXED"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "difficultyBucket": 3,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "H22_C2_06_AMGM_EXTREMUM_DIRECT_RPM_L3_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q13은 공통수학2 명제에서 산술·기하평균의 관계를 이용해 최솟값을 확정한다. 현 2022 공통수학2 RPM crosswalk의 가장 가까운 원본 단원 L3는 H1-RPM-250(증명/절대부등식 증명)이고, '산술·기하평균 최솟값' 전용 정확한 C2-06 RPM L3는 찾지 못했으므로 DIRECT_ACTIVE라 부르지 않으며 MAPPING_EVIDENCE_DEBT를 남긴다.",
+          "l4": "현재 RPM 최인접 경로 H1-RPM-250의 부등식 증명 사고를 사용하되 실제 문항의 최솟값은 AMGM ACTIVE PT/TPL로 구분한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE: 최종 질문은 산술·기하평균을 이용한 최솟값 또는 그 등호 조건이다.",
+          "tpl": "TPL_AMGM_MINIMUM ACTIVE: 양의 두 교차항의 곱이 일정함을 이용해 하한과 등호를 판정한다.",
+          "cross": "추가 CrossConcept 키 없음: AMGM 자체와 양수·합 조건만 사용하며, 근거 없는 새 CC를 만들지 않는다.",
+          "condition": "COND_POSITIVE, COND_SUM_FIXED: 양수·정수·합 제약을 실제 계산과 등호/정수 가능성 판정에 사용한다.",
+          "integration": "SEQUENTIAL: 하한 계산, 등호 조건, 지정 질문의 비율/값 확정을 연결한다.",
+          "learningLevel": "계수의 위치가 뒤바뀐 식에서 등호 비율을 역산한다.",
+          "assessmentBucket": "y를 묻는 질문에 x의 값을 답하는 전도 오류가 대표적이다.",
+          "problemVisual": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "solutionVisual": "양수의 산술·기하평균 계산과 등호 관계만으로 설명이 완결되어, 도형을 더해도 결정 단계가 늘지 않는다.",
+          "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음.",
+        "learningLevelReason": "계수의 위치가 뒤바뀐 식에서 등호 비율을 역산한다.",
+        "assessmentDifficultyReason": "y를 묻는 질문에 x의 값을 답하는 전도 오류가 대표적이다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "양수 $x,y$가 $x+y=15$를 만족한다. $(x+y)\\left(\\dfrac9x+\\dfrac4y\\right)$가 최솟값을 가질 때 $y$의 값은?",
+          "requiredPrimaryL3Step": "AMGM로 양수 교차항의 하한·등호를 증명하여 최솟값을 확정한다.",
+          "questionNaturalness": "원본의 최솟값 문형에 계수·등호·정수 가능성만 단계별 추가",
+          "conditionSufficiency": "양수 조건 및 필요한 합 고정/비율 질문 명시",
+          "shortcut": "전개 없이 단순 선지 대입으로 모든 양수의 전역 최솟값 증명을 대체할 수 없다",
+          "answerFromFinalStudentInput": "$6$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "formal 독립검수와 실브라우저 미실행; RPM 직접 L3와 source UID 해시 근거 부채"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$3$",
+              "errorCalculation": "등호 비율 $x:y=3:2$에서 y의 분자 2를 빠뜨리고 $y=15/(3+2)=3$으로 계산한다."
+            },
+            {
+              "index": "②",
+              "value": "$\\dfrac{60}{13}$",
+              "errorCalculation": "계수의 제곱을 그대로 비율 $x:y=9:4$로 오인하여 $y=15·4/13=60/13$으로 계산한다."
+            },
+            {
+              "index": "③",
+              "value": "$5$",
+              "errorCalculation": "$3y=2x$를 $2y=x$로 잘못 풀면 $x+y=3y=15$에서 $y=5$를 얻는다."
+            },
+            {
+              "index": "⑤",
+              "value": "$9$",
+              "errorCalculation": "등호의 $x:y=3:2$에서 y와 x를 뒤바꾸면 $y=15·3/5=9$를 얻는다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "AMGM_CLOSED_FORM_SYMBOLIC_EQUALITY",
+          "coreFact": "p3 q2 x9 y6"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "EXEMPT",
+          "why": "양수의 산술·기하평균 계산과 등호 관계만으로 설명이 완결되어, 도형을 더해도 결정 단계가 늘지 않는다.",
+          "svgPath": null,
+          "svgBlob": null,
+          "staticGeometryStatus": "NOT_APPLICABLE",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "uid": "ALITE-PALMA25-2FINAL-Q13-C1",
+      "sourceQid": 13,
+      "sourceUid": null,
+      "slot": "C1",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "산술평균과 기하평균의 관계",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "산술평균",
+        "기하평균",
+        "최솟값",
+        "자연수",
+        "이산 최적화"
+      ],
+      "wide": false,
+      "content": "양의 정수 $x,y$가 $x+y=14$를 만족한다. $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$의 값이 가장 작아지도록 하는 $x$의 값은?",
+      "choices": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$",
+        "$10$"
+      ],
+      "answer": "①",
+      "solution": "$x,y$는 양의 정수이고 $x+y=14$이므로 $y=14-x$, $x=1,2,\\ldots,13$이다.\n산술·기하평균으로 주어진 식은 $25$ 이상이고, 등호의 실수 후보는 $x:y=2:3$, 즉 $x=\\dfrac{28}5=5.6$이다. 정수에서는 등호가 불가능하다.\n$g(n)=\\dfrac4n+\\dfrac9{14-n}$이라 두면\n$g(n+1)-g(n)=-\\dfrac4{n(n+1)}+\\dfrac9{(13-n)(14-n)}$이다.\n첫 항의 절댓값은 n이 증가하면 감소하고 둘째 항은 증가하므로 이 차는 증가한다.\n$g(6)-g(5)=-\\dfrac1{120}<0$, $g(7)-g(6)=\\dfrac{11}{168}>0$이므로 정수 범위의 최솟값은 $n=6$에서 생긴다.\n$x=6,y=8$에서 전체 값은 $14(\\dfrac46+\\dfrac98)=\\dfrac{301}{12}$이다.\n따라서 정답은 ①이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q13/C1-solution.svg",
+      "solutionImageAlt": "연속 등호 후보와 양의 정수 최솟값을 비교하는 수직선",
+      "solutionImageCaption": "실수 등호 x=28/5, 정수 최적 x=6",
+      "solutionImageSize": "medium",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_CONTEXT_WITH_EXACT_L3_GAP",
+        "rpmBindingEvidence": "2022 H22-C2-06-CORE PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE; TPL_AMGM_MINIMUM ACTIVE; H1-RPM-250 semantic nearest but AMGM extremum direct RPM path not found.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_NATURAL_NUMBER",
+          "COND_SUM_FIXED"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "INTEGER_ATTAINABILITY",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "H22_C2_06_AMGM_EXTREMUM_DIRECT_RPM_L3_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q13은 공통수학2 명제에서 산술·기하평균의 관계를 이용해 최솟값을 확정한다. 현 2022 공통수학2 RPM crosswalk의 가장 가까운 원본 단원 L3는 H1-RPM-250(증명/절대부등식 증명)이고, '산술·기하평균 최솟값' 전용 정확한 C2-06 RPM L3는 찾지 못했으므로 DIRECT_ACTIVE라 부르지 않으며 MAPPING_EVIDENCE_DEBT를 남긴다.",
+          "l4": "현재 RPM 최인접 경로 H1-RPM-250의 부등식 증명 사고를 사용하되 실제 문항의 최솟값은 AMGM ACTIVE PT/TPL로 구분한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE: 최종 질문은 산술·기하평균을 이용한 최솟값 또는 그 등호 조건이다.",
+          "tpl": "TPL_AMGM_MINIMUM ACTIVE: 양의 두 교차항의 곱이 일정함을 이용해 하한과 등호를 판정한다.",
+          "cross": "추가 CrossConcept 키 없음: AMGM 자체와 양수·합 조건만 사용하며, 근거 없는 새 CC를 만들지 않는다.",
+          "condition": "COND_POSITIVE, COND_NATURAL_NUMBER, COND_SUM_FIXED: 양수·정수·합 제약을 실제 계산과 등호/정수 가능성 판정에 사용한다.",
+          "integration": "INTERDEPENDENT: 하한 계산, 등호 조건, 정수 범위 비교을 연결한다.",
+          "learningLevel": "실수의 등호값과 자연수 조건을 분리한 뒤 이웃 정수의 값을 비교한다.",
+          "assessmentBucket": "연속 등호가 불가능한 경우를 증명하고 차분 부호 변화를 판정해야 한다.",
+          "problemVisual": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "solutionVisual": "자연수 범위에서 실수 등호 후보와 정수 최솟값의 차이를 수직선상에 확인한다.",
+          "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음.",
+        "learningLevelReason": "실수의 등호값과 자연수 조건을 분리한 뒤 이웃 정수의 값을 비교한다.",
+        "assessmentDifficultyReason": "연속 등호가 불가능한 경우를 증명하고 차분 부호 변화를 판정해야 한다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "양의 정수 $x,y$가 $x+y=14$를 만족한다. $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$의 값이 가장 작아지도록 하는 $x$의 값은?",
+          "requiredPrimaryL3Step": "AMGM로 양수 교차항의 하한·등호를 증명하여 최솟값을 확정한다.",
+          "questionNaturalness": "원본의 최솟값 문형에 계수·등호·정수 가능성만 단계별 추가",
+          "conditionSufficiency": "양의 정수·합 조건 명시, 연속 등호 불성립과 유일한 정수 최소 증명",
+          "shortcut": "실수 AMGM 하한만으로 정수 최적해를 단정할 수 없다",
+          "answerFromFinalStudentInput": "$6$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "formal 독립검수와 실브라우저 미실행; RPM 직접 L3와 source UID 해시 근거 부채"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "②",
+              "value": "$7$",
+              "errorCalculation": "합이 일정하면 x=y일 때 최솟값이라는 잘못된 일반화를 적용해 x=y=7을 선택한다."
+            },
+            {
+              "index": "③",
+              "value": "$8$",
+              "errorCalculation": "등호의 $x:y=2:3$을 역으로 $3:2$로 놓으면 연속 최적 후보 x=14·3/5=8.4이고 이를 버림하여 x=8을 고른다."
+            },
+            {
+              "index": "④",
+              "value": "$9$",
+              "errorCalculation": "같이 잘못 뒤집은 비율 $x:y=3:2$에서 x=8.4를 구한 후 반올림하여 9를 고른다."
+            },
+            {
+              "index": "⑤",
+              "value": "$10$",
+              "errorCalculation": "제곱계수의 역비 $x:y=9:4$를 써서 x=14·9/13=126/13≈9.69를 반올림하면 10이 된다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "EXHAUSTIVE_INTEGER_ENUMERATION_AND_DIFFERENCE",
+          "coreFact": "x=6,y=8; E=301/12"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "BENEFICIAL",
+          "why": "자연수 범위에서 실수 등호 후보와 정수 최솟값의 차이를 수직선상에 확인한다.",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q13/C1-solution.svg",
+          "svgBlob": "8166ba81c5c5a02f93d02171c853522cfe7234aa",
+          "staticGeometryStatus": "EXACT_INTEGER_ENUMERATION_AND_AXIS_AUTHOR_CHECK",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "uid": "ALITE-PALMA25-2FINAL-Q13-C2",
+      "sourceQid": 13,
+      "sourceUid": null,
+      "slot": "C2",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "산술평균과 기하평균의 관계",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "산술평균",
+        "기하평균",
+        "최솟값",
+        "자연수",
+        "이산 최적화"
+      ],
+      "wide": false,
+      "content": "양의 정수 $x,y$가 $x+y=13$을 만족한다. $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$의 최솟값은?",
+      "choices": [
+        "$25$",
+        "$\\dfrac{1001}{40}$",
+        "$\\dfrac{533}{21}$",
+        "$26$",
+        "$\\dfrac{377}{14}$"
+      ],
+      "answer": "②",
+      "solution": "$x,y$는 양의 정수이고 $x+y=13$이므로 $1\\le x\\le12$이며 $y=13-x$이다.\n실수에서 산술·기하평균에 의한 하한은 $25$이고 등호는 $x:y=2:3$, 즉 $x=26/5$일 때인데, 이는 정수가 아니다.\n$g(n)=\\dfrac4n+\\dfrac9{13-n}$으로 두면 $g(n+1)-g(n)=-\\dfrac4{n(n+1)}+\\dfrac9{(12-n)(13-n)}$이다.\n이 차는 n이 증가할수록 증가하고 $g(5)-g(4)=-\\dfrac3{40}<0$, $g(6)-g(5)=\\dfrac{23}{840}>0$이므로 $x=5$가 유일한 정수 최적해이다.\n이때 $y=8$, 전체 식은 $13(\\dfrac45+\\dfrac98)=13\\cdot\\dfrac{77}{40}=\\dfrac{1001}{40}$이다.\n따라서 정답은 ②이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q13/C2-solution.svg",
+      "solutionImageAlt": "연속 등호 후보와 양의 정수 최솟값을 비교하는 수직선",
+      "solutionImageCaption": "실수 등호 x=26/5, 정수 최적 x=5",
+      "solutionImageSize": "medium",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_CONTEXT_WITH_EXACT_L3_GAP",
+        "rpmBindingEvidence": "2022 H22-C2-06-CORE PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE; TPL_AMGM_MINIMUM ACTIVE; H1-RPM-250 semantic nearest but AMGM extremum direct RPM path not found.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_NATURAL_NUMBER",
+          "COND_SUM_FIXED"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 4,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "INTEGER_ATTAINABILITY",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "H22_C2_06_AMGM_EXTREMUM_DIRECT_RPM_L3_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q13은 공통수학2 명제에서 산술·기하평균의 관계를 이용해 최솟값을 확정한다. 현 2022 공통수학2 RPM crosswalk의 가장 가까운 원본 단원 L3는 H1-RPM-250(증명/절대부등식 증명)이고, '산술·기하평균 최솟값' 전용 정확한 C2-06 RPM L3는 찾지 못했으므로 DIRECT_ACTIVE라 부르지 않으며 MAPPING_EVIDENCE_DEBT를 남긴다.",
+          "l4": "현재 RPM 최인접 경로 H1-RPM-250의 부등식 증명 사고를 사용하되 실제 문항의 최솟값은 AMGM ACTIVE PT/TPL로 구분한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE: 최종 질문은 산술·기하평균을 이용한 최솟값 또는 그 등호 조건이다.",
+          "tpl": "TPL_AMGM_MINIMUM ACTIVE: 양의 두 교차항의 곱이 일정함을 이용해 하한과 등호를 판정한다.",
+          "cross": "추가 CrossConcept 키 없음: AMGM 자체와 양수·합 조건만 사용하며, 근거 없는 새 CC를 만들지 않는다.",
+          "condition": "COND_POSITIVE, COND_NATURAL_NUMBER, COND_SUM_FIXED: 양수·정수·합 제약을 실제 계산과 등호/정수 가능성 판정에 사용한다.",
+          "integration": "INTERDEPENDENT: 하한 계산, 등호 조건, 정수 범위 비교을 연결한다.",
+          "learningLevel": "실수 하한과 자연수 최솟값을 구별하고 분수 최솟값을 확정한다.",
+          "assessmentBucket": "등호 불성립, 가장 가까운 후보의 양방향 비교, 분수 통분을 모두 검증한다.",
+          "problemVisual": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "solutionVisual": "자연수 범위에서 실수 등호 후보와 정수 최솟값의 차이를 수직선상에 확인한다.",
+          "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음.",
+        "learningLevelReason": "실수 하한과 자연수 최솟값을 구별하고 분수 최솟값을 확정한다.",
+        "assessmentDifficultyReason": "등호 불성립, 가장 가까운 후보의 양방향 비교, 분수 통분을 모두 검증한다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "양의 정수 $x,y$가 $x+y=13$을 만족한다. $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$의 최솟값은?",
+          "requiredPrimaryL3Step": "AMGM로 양수 교차항의 하한·등호를 증명하여 최솟값을 확정한다.",
+          "questionNaturalness": "원본의 최솟값 문형에 계수·등호·정수 가능성만 단계별 추가",
+          "conditionSufficiency": "양의 정수·합 조건 명시, 연속 등호 불성립과 유일한 정수 최소 증명",
+          "shortcut": "실수 AMGM 하한만으로 정수 최적해를 단정할 수 없다",
+          "answerFromFinalStudentInput": "$\\dfrac{1001}{40}$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "formal 독립검수와 실브라우저 미실행; RPM 직접 L3와 source UID 해시 근거 부채"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$25$",
+              "errorCalculation": "양수 실수에서의 산술·기하평균 하한 25를 정수 조건에도 등호가 성립한다고 간주하여 25를 답한다."
+            },
+            {
+              "index": "③",
+              "value": "$\\dfrac{533}{21}$",
+              "errorCalculation": "등호 후보 x=26/5=5.2를 올림하여 x=6,y=7로만 계산하면 13(4/6+9/7)=533/21을 얻는다."
+            },
+            {
+              "index": "④",
+              "value": "$26$",
+              "errorCalculation": "최적 정수 x=5 대신 x=4,y=9를 대입하면 13(4/4+9/9)=26이 된다."
+            },
+            {
+              "index": "⑤",
+              "value": "$\\dfrac{377}{14}$",
+              "errorCalculation": "최적 정수 x=5 대신 x=7,y=6을 대입하면 13(4/7+9/6)=377/14이다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "EXHAUSTIVE_INTEGER_ENUMERATION_AND_DIFFERENCE",
+          "coreFact": "x=5,y=8; E=1001/40"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "BENEFICIAL",
+          "why": "자연수 범위에서 실수 등호 후보와 정수 최솟값의 차이를 수직선상에 확인한다.",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q13/C2-solution.svg",
+          "svgBlob": "aab134efc7793241307cf029c10d12831b7ad044",
+          "staticGeometryStatus": "EXACT_INTEGER_ENUMERATION_AND_AXIS_AUTHOR_CHECK",
+          "browser": "NOT_RUN"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "uid": "ALITE-PALMA25-2FINAL-Q13-C3",
+      "sourceQid": 13,
+      "sourceUid": null,
+      "slot": "C3",
+      "provenance": "ALIVE_GENERATED",
+      "modeCandidate": "PLUS_ONE",
+      "level": "상",
+      "category": "산술평균과 기하평균의 관계",
+      "originalCategory": "명제",
+      "standardCourse": "공통수학2",
+      "standardUnitKey": "H22-C2-06",
+      "standardUnit": "명제",
+      "standardUnitOrder": 6,
+      "subUnitKey": "H22-C2-06-CORE",
+      "subUnit": "명제 핵심 개념",
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "questionType": "객관식",
+      "layoutTag": "grid",
+      "tags": [
+        "객관식",
+        "명제",
+        "산술평균",
+        "기하평균",
+        "최솟값",
+        "자연수",
+        "이산 최적화"
+      ],
+      "wide": false,
+      "content": "양의 정수 $x,y$가 $x+y=25$를 만족한다. $(x+y)\\left(\\dfrac9x+\\dfrac{16}y\\right)$의 값이 가장 작아지도록 하는 $x$의 값은?",
+      "choices": [
+        "$8$",
+        "$9$",
+        "$10$",
+        "$11$",
+        "$12$"
+      ],
+      "answer": "④",
+      "solution": "$x,y$는 양의 정수이고 $x+y=25$이므로 $y=25-x$이다.\n산술·기하평균으로 식은 $49$ 이상이다. 등호는 $9y/x=16x/y$, 즉 $3y=4x$에서 성립하므로 실수 등호 후보는 $x=75/7$이다. 정수에서는 등호가 불가능하다.\n$g(n)=\\dfrac9n+\\dfrac{16}{25-n}$이라 하면\n$g(n+1)-g(n)=-\\dfrac9{n(n+1)}+\\dfrac{16}{(24-n)(25-n)}$이다. 이 차는 n이 증가할수록 증가한다.\n$g(11)-g(10)=-\\dfrac9{110}+\\dfrac{16}{14\\cdot15}=-\\dfrac{13}{2310}<0$이고\n$g(12)-g(11)=-\\dfrac9{132}+\\dfrac{16}{13\\cdot14}=\\dfrac{79}{4004}>0$이므로 정수에서의 유일한 최솟값은 $x=11$에서 생긴다.\n따라서 $x=11,y=14$이고 정답은 ④이다.",
+      "solutionImage": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q13/C3-solution.svg",
+      "solutionImageAlt": "연속 등호 후보와 양의 정수 최솟값을 비교하는 수직선",
+      "solutionImageCaption": "실수 등호 x=75/7, 정수 최적 x=11",
+      "solutionImageSize": "medium",
+      "meta": {
+        "primaryRpmL3Id": "H1-RPM-250",
+        "rpmL1": "집합과 명제",
+        "rpmL2": "명제",
+        "rpmL3": "증명",
+        "rpmL4": "절대부등식 증명",
+        "rpmMappingStatus": "FAMILY_CONTEXT_WITH_EXACT_L3_GAP",
+        "rpmBindingEvidence": "2022 H22-C2-06-CORE PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE; TPL_AMGM_MINIMUM ACTIVE; H1-RPM-250 semantic nearest but AMGM extremum direct RPM path not found.",
+        "problemTypeKey": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+        "templateKey": "TPL_AMGM_MINIMUM",
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE",
+          "COND_NATURAL_NUMBER",
+          "COND_SUM_FIXED"
+        ],
+        "integrationPattern": "INTERDEPENDENT",
+        "difficultyBucket": 5,
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "INTEGER_ATTAINABILITY",
+        "legacyLevelCompatibility": "UNKNOWN",
+        "metadataDebt": [
+          "SOURCE_UID_V1_HASH_NOT_VERIFIED",
+          "H22_C2_06_AMGM_EXTREMUM_DIRECT_RPM_L3_NOT_VERIFIED",
+          "ACTUAL_BROWSER_NOT_RUN"
+        ],
+        "reasons": {
+          "rpm": "원본 q13은 공통수학2 명제에서 산술·기하평균의 관계를 이용해 최솟값을 확정한다. 현 2022 공통수학2 RPM crosswalk의 가장 가까운 원본 단원 L3는 H1-RPM-250(증명/절대부등식 증명)이고, '산술·기하평균 최솟값' 전용 정확한 C2-06 RPM L3는 찾지 못했으므로 DIRECT_ACTIVE라 부르지 않으며 MAPPING_EVIDENCE_DEBT를 남긴다.",
+          "l4": "현재 RPM 최인접 경로 H1-RPM-250의 부등식 증명 사고를 사용하되 실제 문항의 최솟값은 AMGM ACTIVE PT/TPL로 구분한다.",
+          "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM ACTIVE: 최종 질문은 산술·기하평균을 이용한 최솟값 또는 그 등호 조건이다.",
+          "tpl": "TPL_AMGM_MINIMUM ACTIVE: 양의 두 교차항의 곱이 일정함을 이용해 하한과 등호를 판정한다.",
+          "cross": "추가 CrossConcept 키 없음: AMGM 자체와 양수·합 조건만 사용하며, 근거 없는 새 CC를 만들지 않는다.",
+          "condition": "COND_POSITIVE, COND_NATURAL_NUMBER, COND_SUM_FIXED: 양수·정수·합 제약을 실제 계산과 등호/정수 가능성 판정에 사용한다.",
+          "integration": "INTERDEPENDENT: 하한 계산, 등호 조건, 정수 범위 비교을 연결한다.",
+          "learningLevel": "서로 다른 제곱계수와 자연수 합 조건에서 실수 등호 후보와 실제 이산 최적해를 구분한다.",
+          "assessmentBucket": "정수 양쪽 차분 부호와 등호 실현 가능성을 모두 검증한다.",
+          "problemVisual": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "solutionVisual": "자연수 범위에서 실수 등호 후보와 정수 최솟값의 차이를 수직선상에 확인한다.",
+          "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음."
+        }
+      },
+      "review": {
+        "authorStatus": "AUTHOR_SELF_CHECK_COMPLETED_NOT_INDEPENDENT",
+        "independentQuality": "NOT_RUN",
+        "actualBrowser": "NOT_RUN",
+        "studentRelease": "NOT_RUN",
+        "curriculum": "2022 공통수학2 명제 단원: 산술평균·기하평균의 관계, 등호조건, 양수와 분수 연산 및 자연수 경우분류. 미분·극한·벡터 없음.",
+        "learningLevelReason": "서로 다른 제곱계수와 자연수 합 조건에서 실수 등호 후보와 실제 이산 최적해를 구분한다.",
+        "assessmentDifficultyReason": "정수 양쪽 차분 부호와 등호 실현 가능성을 모두 검증한다.",
+        "reverseStem": {
+          "result": "AUTHOR_RECHECK_KEEP",
+          "recoveredQuestion": "양의 정수 $x,y$가 $x+y=25$를 만족한다. $(x+y)\\left(\\dfrac9x+\\dfrac{16}y\\right)$의 값이 가장 작아지도록 하는 $x$의 값은?",
+          "requiredPrimaryL3Step": "AMGM로 양수 교차항의 하한·등호를 증명하여 최솟값을 확정한다.",
+          "questionNaturalness": "원본의 최솟값 문형에 계수·등호·정수 가능성만 단계별 추가",
+          "conditionSufficiency": "양의 정수·합 조건 명시, 연속 등호 불성립과 유일한 정수 최소 증명",
+          "shortcut": "실수 AMGM 하한만으로 정수 최적해를 단정할 수 없다",
+          "answerFromFinalStudentInput": "$11$",
+          "wrongChoicesReconstructed": 4,
+          "decision": "KEEP",
+          "changedFields": [],
+          "remainingRisk": "formal 독립검수와 실브라우저 미실행; RPM 직접 L3와 source UID 해시 근거 부채"
+        },
+        "distractorAudit": {
+          "count": 4,
+          "distinctIncorrectIndexCount": 4,
+          "derivations": [
+            {
+              "index": "①",
+              "value": "$8$",
+              "errorCalculation": "등호에서 잘못하여 $y=2x$라 놓으면 x=25/3≈8.33이고 반올림해 8을 고른다."
+            },
+            {
+              "index": "②",
+              "value": "$9$",
+              "errorCalculation": "제곱계수를 그대로 $x:y=9:16$으로 놓으면 x=25·9/(9+16)=9로 계산한다."
+            },
+            {
+              "index": "③",
+              "value": "$10$",
+              "errorCalculation": "실수 등호값 x=75/7≈10.71을 무조건 버림하면 x=10을 답한다."
+            },
+            {
+              "index": "⑤",
+              "value": "$12$",
+              "errorCalculation": "합이 25이면 두 수가 비슷한 x=12,y=13에서 최솟값이라는 균등분할 오류를 적용하면 x=12가 된다."
+            }
+          ]
+        },
+        "numericEvidence": {
+          "method": "EXHAUSTIVE_INTEGER_ENUMERATION_AND_DIFFERENCE",
+          "coreFact": "x=11 y=14 E=3775/77"
+        },
+        "problemVisual": {
+          "necessity": "EXEMPT",
+          "why": "EXEMPT: 발문에 표·좌표·그림 정보가 없으며 식과 조건으로 충분하다.",
+          "browser": "NOT_RUN"
+        },
+        "solutionVisual": {
+          "necessity": "BENEFICIAL",
+          "why": "자연수 범위에서 실수 등호 후보와 정수 최솟값의 차이를 수직선상에 확인한다.",
+          "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q13/C3-solution.svg",
+          "svgBlob": "fd1238802d3ae1b0e3cb4f32fa37ff324fc30dc8",
+          "staticGeometryStatus": "EXACT_INTEGER_ENUMERATION_AND_AXIS_AUTHOR_CHECK",
+          "browser": "NOT_RUN"
+        }
+      }
+    }
+  ]
+}

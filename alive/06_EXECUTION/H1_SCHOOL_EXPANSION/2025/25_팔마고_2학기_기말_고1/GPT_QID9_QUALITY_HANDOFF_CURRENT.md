@@ -1,3 +1,12 @@
+# CURRENT TOP — q13 AUTHOR COMPLETE / q14 NEXT (2026-10-15)
+- Branch `work/alive-25-palma-h1-2final-qid9`; q01~q12 108 protected, q13 A1~C3 new 9 AUTHOR candidates; cumulative **117/207**, remaining 90, firstMissing=q14.
+- Original q13: `(x+y)(4/x+9/y)` for x,y>0, minimum25, equality 2y=3x. Original and legacy unchanged (0d12b75e824ab47f08fc3b5a6180be595f882c6e).
+- Semantic nearest H1-RPM-250, but 2022 H22-C2-06 exact AMGM extremum RPM L3 is NOT verified: EVIDENCE_DEBT (do not call DIRECT_ACTIVE). ACTIVE PT_ABSOLUTE_INEQUALITY_EXTREMUM and TPL_AMGM_MINIMUM, H22-C2-06-CORE binding.
+- 9 complete five-choice items; 45 options, 36 number-indexed distractor error derivations, detailed solutions, independent level/bucket reasons, UID Meta, reverse-stem KEEP.
+- Problem SVG9 EXEMPT; C1/C2/C3 beneficial solution numberline SVG3 (actual Git blobs, integer optimization math and coordinates author checked); browser NOT_RUN.
+- sourceUid exact9 EVIDENCE_DEBT; cumulative117. Independent quality, Consumer/index, main NOT_RUN. q14 next.
+- q13 PREFLIGHT/BLUEPRINT/CREATE_DRAFT/AUTHOR_RECEIPT, assets/q13/C1~C3, META/PROGRESS/HANDOFF updated in one Git commit.
+
 # CURRENT TOP — q12 AUTHOR COMPLETE / q13 NEXT (2026-10-15)
 - Branch `work/alive-25-palma-h1-2final-qid9`. q01~q11 99 unchanged; q12 A1~C3 new 9 AUTHOR candidates; cumulative **108/207**, remaining 99, firstMissing=q13.
 - Original q12 sqrt(a-b)>sqrt(a)-sqrt(b) for a>b>0; square-difference proof. Original exam and legacy similar unchanged (0d12b75e824ab47f08fc3b5a6180be595f882c6e).

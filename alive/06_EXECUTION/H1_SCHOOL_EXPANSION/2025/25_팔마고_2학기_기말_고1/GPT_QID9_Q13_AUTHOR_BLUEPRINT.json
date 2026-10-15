@@ -1,0 +1,522 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q13_AUTHOR_BLUEPRINT_v1",
+  "sourceQid": 13,
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "primaryRpmL3": "H1-RPM-250",
+  "rpmL3": "증명(인접)",
+  "rpmL4": "절대부등식 증명(최솟값 정확 RPM 직접 연결 부채)",
+  "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+  "tpl": "TPL_AMGM_MINIMUM",
+  "invariant": "전개 후 양의 두 교차항의 곱이 p²q²이며 AMGM로 전체 하한 (p+q)^2를 증명한다. 등호 x:y=p:q. 정수 조건이면 정수 분모를 직접 비교한다.",
+  "designModes": {
+    "A": "계수 및 최솟값 직접 변화",
+    "B": "등호 비율과 합 조건",
+    "C": "자연수 합 고정과 실제 이산 최솟값"
+  },
+  "records": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q13-A1",
+      "slot": "A1",
+      "mode": "STRICT_VARIANT",
+      "stem": "$x\\gt0$, $y\\gt0$일 때 $(x+y)\\left(\\dfrac4x+\\dfrac{25}y\\right)$의 최솟값은?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "tpl": "TPL_AMGM_MINIMUM",
+      "cross": [],
+      "conditions": [
+        "COND_POSITIVE"
+      ],
+      "integration": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningReason": "원본 구조에서 가중치가 바뀌어도 전개한 두 양수항에 산술·기하평균을 적용한다.",
+      "bucketReason": "제곱계수와 등호의 비율 2:5를 구별해야 한다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "svgPath": null,
+      "svgBlob": null,
+      "choices": [
+        "$29$",
+        "$39$",
+        "$49$",
+        "$58$",
+        "$79$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$29$",
+          "errorCalculation": "전개한 4+25+4y/x+25x/y에서 변동하는 두 항을 모두 0으로 처리해 29를 얻는다."
+        },
+        {
+          "index": "②",
+          "value": "$39$",
+          "errorCalculation": "4y/x+25x/y의 기하평균은 10인데, 2배를 누락하여 29+10=39로 계산한다."
+        },
+        {
+          "index": "④",
+          "value": "$58$",
+          "errorCalculation": "기하평균의 2배를 두 제곱계수의 합 4+25=29로 잘못 계산하여 29+29=58이 된다."
+        },
+        {
+          "index": "⑤",
+          "value": "$79$",
+          "errorCalculation": "4y/x와 25x/y의 곱 100에서 제곱근을 25로 오인하여 29+2·25=79로 계산한다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "(2+5)^2=49; equality 2y=5x"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q13-A2",
+      "slot": "A2",
+      "mode": "STRICT_VARIANT",
+      "stem": "양수 $x,y$에 대하여 $(x+y)\\left(\\dfrac9x+\\dfrac{16}y\\right)$의 최솟값을 구하면?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "tpl": "TPL_AMGM_MINIMUM",
+      "cross": [],
+      "conditions": [
+        "COND_POSITIVE"
+      ],
+      "integration": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningReason": "양수 조건과 두 교차항의 곱을 확인하여 최솟값을 구한다.",
+      "bucketReason": "등호 가능성과 하한의 2배 계수를 정확히 판정한다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "svgPath": null,
+      "svgBlob": null,
+      "choices": [
+        "$49$",
+        "$50$",
+        "$57$",
+        "$73$",
+        "$98$"
+      ],
+      "answer": "①",
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "$50$",
+          "errorCalculation": "최솟값을 두 제곱계수의 합의 2배라고 착각하면 2(9+16)=50이다."
+        },
+        {
+          "index": "③",
+          "value": "$57$",
+          "errorCalculation": "양의 교차항 $9y/x+16x/y$의 하한을 2·16=32로 잘못 대체하면 25+32=57이 된다."
+        },
+        {
+          "index": "④",
+          "value": "$73$",
+          "errorCalculation": "산술·기하평균 하한 $2sqrt{9·16}=24$를 한 번 더 2배 하여 25+48=73으로 계산한다."
+        },
+        {
+          "index": "⑤",
+          "value": "$98$",
+          "errorCalculation": "이미 계산한 최솟값 49를 산술평균의 2배라 다시 2배하여 98을 얻는다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "(3+4)^2=49"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q13-A3",
+      "slot": "A3",
+      "mode": "STRICT_VARIANT",
+      "stem": "$x,y$가 양수일 때 $(x+y)\\left(\\dfrac1x+\\dfrac{16}y\\right)$의 최솟값은?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "tpl": "TPL_AMGM_MINIMUM",
+      "cross": [],
+      "conditions": [
+        "COND_POSITIVE"
+      ],
+      "integration": "SEQUENTIAL",
+      "learningLevel": "하",
+      "assessmentBucket": 2,
+      "learningReason": "한 계수가 1이라 전개 후 산술·기하평균을 한 번 적용하면 된다.",
+      "bucketReason": "교차항의 2배 누락만 피하면 추가 조건 분기는 없다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "svgPath": null,
+      "svgBlob": null,
+      "choices": [
+        "$1$",
+        "$16$",
+        "$17$",
+        "$21$",
+        "$25$"
+      ],
+      "answer": "⑤",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$1$",
+          "errorCalculation": "전개에서 1만 남기고 16 및 두 교차항을 누락하여 1을 답한다."
+        },
+        {
+          "index": "②",
+          "value": "$16$",
+          "errorCalculation": "전개에서 16만 남기고 1 및 두 교차항을 누락하여 16을 답한다."
+        },
+        {
+          "index": "③",
+          "value": "$17$",
+          "errorCalculation": "두 교차항을 0으로 취급하여 1+16=17로 계산한다."
+        },
+        {
+          "index": "④",
+          "value": "$21$",
+          "errorCalculation": "교차항 하한의 계수 2를 누락해 17+√16=21로 계산한다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "(1+4)^2=25"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q13-B1",
+      "slot": "B1",
+      "mode": "FOLLOWUP",
+      "stem": "양수 $x,y$가 $x+y=7$을 만족할 때 $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$가 최솟값을 갖도록 하는 $\\dfrac{x}{y}$의 값은?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "tpl": "TPL_AMGM_MINIMUM",
+      "cross": [],
+      "conditions": [
+        "COND_POSITIVE",
+        "COND_SUM_FIXED"
+      ],
+      "integration": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningReason": "최솟값에서 등호 조건을 역으로 구하고 질문 방향 x/y를 확인한다.",
+      "bucketReason": "비율 역전 및 계수에 제곱근을 취하지 않는 오류가 있다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "svgPath": null,
+      "svgBlob": null,
+      "choices": [
+        "$\\dfrac49$",
+        "$\\dfrac23$",
+        "$1$",
+        "$\\dfrac32$",
+        "$\\dfrac94$"
+      ],
+      "answer": "②",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$\\dfrac49$",
+          "errorCalculation": "등호식 $4y/x=9x/y$에서 제곱근을 취하지 않고 $x/y=4/9$라고 계산한다."
+        },
+        {
+          "index": "③",
+          "value": "$1$",
+          "errorCalculation": "합 $x+y=7$만 보고 $x=y=7/2$를 강제하면 $x/y=1$이 된다."
+        },
+        {
+          "index": "④",
+          "value": "$\\dfrac32$",
+          "errorCalculation": "등호의 비율 $y/x=3/2$를 질문인 $x/y$와 뒤바꿔 $3/2$를 선택한다."
+        },
+        {
+          "index": "⑤",
+          "value": "$\\dfrac94$",
+          "errorCalculation": "잘못 구한 $x/y=4/9$의 분자와 분모를 다시 뒤집어 $9/4$를 얻는다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "x/y=2/3; sum 7 =>14/5,21/5"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q13-B2",
+      "slot": "B2",
+      "mode": "FOLLOWUP",
+      "stem": "$x,y>0$이고 $x+y=10$이다. $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$가 최솟값을 가질 때의 $x$의 값은?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "tpl": "TPL_AMGM_MINIMUM",
+      "cross": [],
+      "conditions": [
+        "COND_POSITIVE",
+        "COND_SUM_FIXED"
+      ],
+      "integration": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningReason": "등호를 만드는 두 변수의 비와 합을 연립해 개별 변수를 구한다.",
+      "bucketReason": "제곱계수 비율과 길이 비율을 혼동하거나 x/y 방향을 바꾸기 쉽다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "svgPath": null,
+      "svgBlob": null,
+      "choices": [
+        "$\\dfrac{40}{13}$",
+        "$\\dfrac{10}{3}$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "answer": "③",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$\\dfrac{40}{13}$",
+          "errorCalculation": "등호에서 $x:y=2:3$ 대신 제곱된 계수대로 $x:y=4:9$를 쓰면 $x=10·4/(4+9)=40/13$이다."
+        },
+        {
+          "index": "②",
+          "value": "$\\dfrac{10}{3}$",
+          "errorCalculation": "등호 조건 $2y=3x$를 $y=2x$로 잘못 풀면 $x+y=3x=10$에서 $x=10/3$이다."
+        },
+        {
+          "index": "④",
+          "value": "$5$",
+          "errorCalculation": "합이 10이라는 이유로 $x=y=5$라 두면 $x=5$를 얻는다."
+        },
+        {
+          "index": "⑤",
+          "value": "$6$",
+          "errorCalculation": "등호 비율 $x:y=2:3$을 역으로 $x:y=3:2$로 사용하면 $x=10·3/5=6$이다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "sum10 x4 y6"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q13-B3",
+      "slot": "B3",
+      "mode": "FOLLOWUP",
+      "stem": "양수 $x,y$가 $x+y=15$를 만족한다. $(x+y)\\left(\\dfrac9x+\\dfrac4y\\right)$가 최솟값을 가질 때 $y$의 값은?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "tpl": "TPL_AMGM_MINIMUM",
+      "cross": [],
+      "conditions": [
+        "COND_POSITIVE",
+        "COND_SUM_FIXED"
+      ],
+      "integration": "SEQUENTIAL",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningReason": "계수의 위치가 뒤바뀐 식에서 등호 비율을 역산한다.",
+      "bucketReason": "y를 묻는 질문에 x의 값을 답하는 전도 오류가 대표적이다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "EXEMPT",
+      "svgPath": null,
+      "svgBlob": null,
+      "choices": [
+        "$3$",
+        "$\\dfrac{60}{13}$",
+        "$5$",
+        "$6$",
+        "$9$"
+      ],
+      "answer": "④",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$3$",
+          "errorCalculation": "등호 비율 $x:y=3:2$에서 y의 분자 2를 빠뜨리고 $y=15/(3+2)=3$으로 계산한다."
+        },
+        {
+          "index": "②",
+          "value": "$\\dfrac{60}{13}$",
+          "errorCalculation": "계수의 제곱을 그대로 비율 $x:y=9:4$로 오인하여 $y=15·4/13=60/13$으로 계산한다."
+        },
+        {
+          "index": "③",
+          "value": "$5$",
+          "errorCalculation": "$3y=2x$를 $2y=x$로 잘못 풀면 $x+y=3y=15$에서 $y=5$를 얻는다."
+        },
+        {
+          "index": "⑤",
+          "value": "$9$",
+          "errorCalculation": "등호의 $x:y=3:2$에서 y와 x를 뒤바꾸면 $y=15·3/5=9$를 얻는다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "p3 q2 x9 y6"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q13-C1",
+      "slot": "C1",
+      "mode": "PLUS_ONE",
+      "stem": "양의 정수 $x,y$가 $x+y=14$를 만족한다. $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$의 값이 가장 작아지도록 하는 $x$의 값은?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "tpl": "TPL_AMGM_MINIMUM",
+      "cross": [],
+      "conditions": [
+        "COND_POSITIVE",
+        "COND_NATURAL_NUMBER",
+        "COND_SUM_FIXED"
+      ],
+      "integration": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 4,
+      "learningReason": "실수의 등호값과 자연수 조건을 분리한 뒤 이웃 정수의 값을 비교한다.",
+      "bucketReason": "연속 등호가 불가능한 경우를 증명하고 차분 부호 변화를 판정해야 한다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q13/C1-solution.svg",
+      "svgBlob": "8166ba81c5c5a02f93d02171c853522cfe7234aa",
+      "choices": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$",
+        "$10$"
+      ],
+      "answer": "①",
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "$7$",
+          "errorCalculation": "합이 일정하면 x=y일 때 최솟값이라는 잘못된 일반화를 적용해 x=y=7을 선택한다."
+        },
+        {
+          "index": "③",
+          "value": "$8$",
+          "errorCalculation": "등호의 $x:y=2:3$을 역으로 $3:2$로 놓으면 연속 최적 후보 x=14·3/5=8.4이고 이를 버림하여 x=8을 고른다."
+        },
+        {
+          "index": "④",
+          "value": "$9$",
+          "errorCalculation": "같이 잘못 뒤집은 비율 $x:y=3:2$에서 x=8.4를 구한 후 반올림하여 9를 고른다."
+        },
+        {
+          "index": "⑤",
+          "value": "$10$",
+          "errorCalculation": "제곱계수의 역비 $x:y=9:4$를 써서 x=14·9/13=126/13≈9.69를 반올림하면 10이 된다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "x=6,y=8; E=301/12"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q13-C2",
+      "slot": "C2",
+      "mode": "PLUS_ONE",
+      "stem": "양의 정수 $x,y$가 $x+y=13$을 만족한다. $(x+y)\\left(\\dfrac4x+\\dfrac9y\\right)$의 최솟값은?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "tpl": "TPL_AMGM_MINIMUM",
+      "cross": [],
+      "conditions": [
+        "COND_POSITIVE",
+        "COND_NATURAL_NUMBER",
+        "COND_SUM_FIXED"
+      ],
+      "integration": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 4,
+      "learningReason": "실수 하한과 자연수 최솟값을 구별하고 분수 최솟값을 확정한다.",
+      "bucketReason": "등호 불성립, 가장 가까운 후보의 양방향 비교, 분수 통분을 모두 검증한다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q13/C2-solution.svg",
+      "svgBlob": "aab134efc7793241307cf029c10d12831b7ad044",
+      "choices": [
+        "$25$",
+        "$\\dfrac{1001}{40}$",
+        "$\\dfrac{533}{21}$",
+        "$26$",
+        "$\\dfrac{377}{14}$"
+      ],
+      "answer": "②",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$25$",
+          "errorCalculation": "양수 실수에서의 산술·기하평균 하한 25를 정수 조건에도 등호가 성립한다고 간주하여 25를 답한다."
+        },
+        {
+          "index": "③",
+          "value": "$\\dfrac{533}{21}$",
+          "errorCalculation": "등호 후보 x=26/5=5.2를 올림하여 x=6,y=7로만 계산하면 13(4/6+9/7)=533/21을 얻는다."
+        },
+        {
+          "index": "④",
+          "value": "$26$",
+          "errorCalculation": "최적 정수 x=5 대신 x=4,y=9를 대입하면 13(4/4+9/9)=26이 된다."
+        },
+        {
+          "index": "⑤",
+          "value": "$\\dfrac{377}{14}$",
+          "errorCalculation": "최적 정수 x=5 대신 x=7,y=6을 대입하면 13(4/7+9/6)=377/14이다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "x=5,y=8; E=1001/40"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q13-C3",
+      "slot": "C3",
+      "mode": "PLUS_ONE",
+      "stem": "양의 정수 $x,y$가 $x+y=25$를 만족한다. $(x+y)\\left(\\dfrac9x+\\dfrac{16}y\\right)$의 값이 가장 작아지도록 하는 $x$의 값은?",
+      "primaryRpmL3": "H1-RPM-250",
+      "l4": "절대부등식의 활용·최솟값(정확 RPM L4 연결 부채)",
+      "pt": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
+      "tpl": "TPL_AMGM_MINIMUM",
+      "cross": [],
+      "conditions": [
+        "COND_POSITIVE",
+        "COND_NATURAL_NUMBER",
+        "COND_SUM_FIXED"
+      ],
+      "integration": "INTERDEPENDENT",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "learningReason": "서로 다른 제곱계수와 자연수 합 조건에서 실수 등호 후보와 실제 이산 최적해를 구분한다.",
+      "bucketReason": "정수 양쪽 차분 부호와 등호 실현 가능성을 모두 검증한다.",
+      "problemSvg": "EXEMPT",
+      "solutionSvg": "BENEFICIAL",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q13/C3-solution.svg",
+      "svgBlob": "fd1238802d3ae1b0e3cb4f32fa37ff324fc30dc8",
+      "choices": [
+        "$8$",
+        "$9$",
+        "$10$",
+        "$11$",
+        "$12$"
+      ],
+      "answer": "④",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$8$",
+          "errorCalculation": "등호에서 잘못하여 $y=2x$라 놓으면 x=25/3≈8.33이고 반올림해 8을 고른다."
+        },
+        {
+          "index": "②",
+          "value": "$9$",
+          "errorCalculation": "제곱계수를 그대로 $x:y=9:16$으로 놓으면 x=25·9/(9+16)=9로 계산한다."
+        },
+        {
+          "index": "③",
+          "value": "$10$",
+          "errorCalculation": "실수 등호값 x=75/7≈10.71을 무조건 버림하면 x=10을 답한다."
+        },
+        {
+          "index": "⑤",
+          "value": "$12$",
+          "errorCalculation": "합이 25이면 두 수가 비슷한 x=12,y=13에서 최솟값이라는 균등분할 오류를 적용하면 x=12가 된다."
+        }
+      ],
+      "reverseStem": "KEEP",
+      "mathEvidence": "x=11 y=14 E=3775/77"
+    }
+  ]
+}
