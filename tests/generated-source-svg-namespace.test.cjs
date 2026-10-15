@@ -70,3 +70,16 @@ test('QID9 derived SVG removes scale guidance from description while keeping the
 test('QID9 derived SVG fails closed when scale guidance is its only description',()=>{
  assert.throws(()=>normalizeQid9Svg('<svg><title>점근선 직사각형</title><desc>x축과 y축의 단위 축척은 같다.</desc></svg>','ALITE-TEST-Q14-A1'),/QID9_SVG_ACCESSIBILITY_DESCRIPTION_SCALE_GUIDANCE_UNRESOLVED/);
 });
+
+test('QID9 derived SVG removes internal format wording from desc and uses the approved student caption without changing artwork',()=>{
+ const source='<svg xmlns="http://www.w3.org/2000/svg" width="440" height="285" viewBox="0 0 440 285" role="img" aria-labelledby="title desc"><title id="title">제일고 q18 A1 합성함수 구간별 해설 그래프</title><desc id="desc">합성함수 그래프의 구간별 꼭짓점과 좌표축을 표시하여 사다리꼴과 삼각형 넓이를 계산하도록 돕는 해설용 SVG.</desc><rect x="0" y="0" width="440" height="285" fill="white"/><path d="M1 2L3 4"/></svg>';
+ const description='내부 함수값의 범위별로 그래프의 분기점과 도형 넓이를 확인한다.';
+ const normalized=normalizeQid9Svg(source,'ALITE-JEIL25-2FINAL-Q18-A1',{description});
+ const desc=normalized.match(/<desc\b[^>]*>([\s\S]*?)<\/desc>/i);
+ assert.equal(validateSvgStudentLanguage(normalized,{assetRef:'derived/q18-solution.svg'}).status,'PASS');
+ assert.ok(desc);
+ assert.equal(desc[1],description);
+ assert.doesNotMatch(desc[1],/\bsvg\b/i);
+ assert.equal(normalized.match(/<rect[^>]*>/)[0],source.match(/<rect[^>]*>/)[0]);
+ assert.equal(normalized.match(/<path[^>]*>/)[0],source.match(/<path[^>]*>/)[0]);
+});
