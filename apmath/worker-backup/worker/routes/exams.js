@@ -923,55 +923,141 @@ async function findExistingExamSessionByIdentity(env, input = {}) {
   if (!studentId || !examDate) return null;
 
   try {
-    if (archiveFile) {
-      const archiveCandidates = getAssignmentArchiveCandidates(input.archive_file || archiveFile);
-      if (archiveCandidates.length) {
-        const markers = archiveCandidates.map(() => '?').join(',');
-        const row = await env.DB.prepare(`
-          SELECT *
-          FROM exam_sessions
-          WHERE student_id = ?
-            AND exam_date = ?
-            AND archive_file IN (${markers})
-          ORDER BY updated_at DESC, created_at DESC
-          LIMIT 1
-        `).bind(studentId, examDate, ...archiveCandidates).first();
-        if (row?.id) return row;
-      }
-
-      if (examTitle && questionCount) {
-        const legacy = await env.DB.prepare(`
-          SELECT *
-          FROM exam_sessions
-          WHERE student_id = ?
-            AND exam_title = ?
-            AND exam_date = ?
-            AND COALESCE(question_count, 0) = ?
-            AND TRIM(COALESCE(archive_file, '')) = ''
-          ORDER BY updated_at DESC, created_at DESC
-          LIMIT 1
-        `).bind(studentId, examTitle, examDate, questionCount).first();
-        if (legacy?.id) return legacy;
-      }
+    const columns = await getTableColumnSet(env, 'exam_sessions');
+    const classId = normalizeOptionalText(input.class_id);
+    const assignmentId = normalizeOptionalText(input.assignment_id);
+    const archiveCandidates = getAssignmentArchiveCandidates(input.archive_file || archiveFile);
+    const where = ['student_id = ?', 'exam_date = ?'];
+    const values = [studentId, examDate];
+    if (examTitle) {
+      where.push("LOWER(TRIM(COALESCE(exam_title, ''))) = LOWER(TRIM(?))");
+      values.push(examTitle);
+    }
+    if (archiveCandidates.length) {
+      where.push(`archive_file IN (${archiveCandidates.map(() => '?').join(',')})`);
+      values.push(...archiveCandidates);
+    } else {
+      where.push("TRIM(COALESCE(archive_file, '')) = ''");
+    }
+    if (classId) {
+      where.push('(class_id = ? OR class_id IS NULL)');
+      values.push(classId);
+    }
+    if (assignmentId && columns.has('assignment_id')) {
+      where.push('assignment_id = ?');
+      values.push(assignmentId);
     }
 
-    if (!archiveFile && examTitle) {
-      return await env.DB.prepare(`
-        SELECT *
-        FROM exam_sessions
-        WHERE student_id = ?
-          AND exam_title = ?
-          AND exam_date = ?
-          AND TRIM(COALESCE(archive_file, '')) = ''
-        ORDER BY updated_at DESC, created_at DESC
-        LIMIT 1
-      `).bind(studentId, examTitle, examDate).first();
-    }
+    const result = await env.DB.prepare(`
+      SELECT *
+      FROM exam_sessions
+      WHERE ${where.join(' AND ')}
+      ORDER BY updated_at DESC, created_at DESC
+      LIMIT 50
+    `).bind(...values).all();
+    const rows = result.results || [];
+    if (!rows.length) return null;
+
+    const sameQuestionCount = questionCount
+      ? rows.filter(row => Number(row.question_count || 0) === questionCount)
+      : [];
+    if (sameQuestionCount.length === 1) return sameQuestionCount[0];
+    if (sameQuestionCount.length > 1) return { ambiguous: true };
+    if (rows.length === 1) return rows[0];
+    return { ambiguous: true };
   } catch (e) {
     console.warn('[exam-session-identity] existing session lookup failed:', e);
   }
 
   return null;
+}
+
+function sameAssignmentArchiveFile(left, right) {
+  const leftCandidates = getAssignmentArchiveCandidates(left || '');
+  const rightCandidates = getAssignmentArchiveCandidates(right || '');
+  if (!leftCandidates.length || !rightCandidates.length) return leftCandidates.length === rightCandidates.length;
+  return leftCandidates.some(value => rightCandidates.includes(value));
+}
+
+function examContextMatchesAssignment(input, assignment, existingSession = null) {
+  const classId = normalizeOptionalText(input.class_id || existingSession?.class_id);
+  const examTitle = normalizeExamTitleKey(input.exam_title);
+  const examDate = normalizeOptionalText(input.exam_date);
+  const questionCount = normalizeOptionalPositiveInteger(input.question_count);
+  const archiveFile = input.archive_file || '';
+  if (!assignment?.id || !classId || String(assignment.class_id || '') !== classId) return false;
+  if (!examTitle || normalizeExamTitleKey(assignment.exam_title) !== examTitle) return false;
+  if (!examDate || String(assignment.exam_date || '') !== examDate) return false;
+  if (Number(assignment.question_count || 0) > 0 && Number(assignment.question_count) !== questionCount) return false;
+  if (!sameAssignmentArchiveFile(archiveFile, assignment.archive_file || '')) return false;
+
+  if (existingSession) {
+    if (existingSession.class_id && String(existingSession.class_id) !== String(assignment.class_id)) return false;
+    if (existingSession.exam_title && normalizeExamTitleKey(existingSession.exam_title) !== normalizeExamTitleKey(assignment.exam_title)) return false;
+    if (existingSession.exam_date && String(existingSession.exam_date) !== String(assignment.exam_date)) return false;
+    if (Number(existingSession.question_count || 0) > 0 && Number(assignment.question_count || 0) > 0 &&
+      Number(existingSession.question_count) !== Number(assignment.question_count)) return false;
+    if (!sameAssignmentArchiveFile(existingSession.archive_file || '', assignment.archive_file || '')) return false;
+  }
+  return true;
+}
+
+async function loadTeacherOmrSessionSelection(env, input, sessionId) {
+  const id = normalizeOptionalText(sessionId);
+  if (!id) return { session: null };
+  const session = await env.DB.prepare('SELECT * FROM exam_sessions WHERE id = ? LIMIT 1').bind(id).first();
+  if (!session?.id) return { error: 'OMR_SESSION_NOT_FOUND', status: 404 };
+  if (String(session.student_id || '') !== String(input.student_id || ''))
+    return { error: 'OMR_SESSION_NOT_FOUND', status: 404 };
+
+  const inputClassId = normalizeOptionalText(input.class_id);
+  if (session.class_id && inputClassId && String(session.class_id) !== inputClassId)
+    return { error: 'OMR_SESSION_CONTEXT_MISMATCH', status: 409 };
+
+  const storedAssignmentId = normalizeOptionalText(session.assignment_id);
+  const requestedAssignmentId = normalizeOptionalText(input.assignment_id);
+  if (requestedAssignmentId && requestedAssignmentId !== storedAssignmentId)
+    return { error: 'OMR_ASSIGNMENT_CONTEXT_MISMATCH', status: 409 };
+
+  if (storedAssignmentId) {
+    const validation = await validateTeacherOmrAssignment(env, input, storedAssignmentId, session);
+    if (validation.error) return validation;
+  }
+
+  return { session, assignmentId: storedAssignmentId };
+}
+
+async function validateTeacherOmrAssignment(env, input, assignmentId, existingSession = null) {
+  const id = normalizeOptionalText(assignmentId);
+  if (!id) return { assignment: null };
+  const assignment = await loadClassExamAssignmentById(env, id);
+  if (!examContextMatchesAssignment(input, assignment, existingSession))
+    return { error: 'OMR_ASSIGNMENT_CONTEXT_MISMATCH', status: 409 };
+  if (await isStudentExcludedFromAssignment(env, id, input.student_id))
+    return { error: 'assignment excluded for student', status: 403 };
+  const hasRecipientSnapshot = await hasClassExamAssignmentRecipients(env);
+  const recipient = hasRecipientSnapshot
+    ? await env.DB.prepare(`
+      SELECT 1 FROM class_exam_assignment_recipients
+      WHERE assignment_id = ? AND student_id = ? LIMIT 1
+    `).bind(id, input.student_id).first()
+    : await env.DB.prepare(`
+      SELECT 1 FROM class_students
+      WHERE class_id = ? AND student_id = ? LIMIT 1
+    `).bind(assignment.class_id, input.student_id).first();
+  if (!recipient) {
+    let emptyLegacySnapshot = false;
+    if (hasRecipientSnapshot && existingSession?.id) {
+      const count = await env.DB.prepare(`
+        SELECT COUNT(*) AS count
+        FROM class_exam_assignment_recipients
+        WHERE assignment_id = ?
+      `).bind(id).first();
+      emptyLegacySnapshot = Number(count?.count || 0) === 0;
+    }
+    if (!emptyLegacySnapshot) return { error: 'OMR_ASSIGNMENT_CONTEXT_MISMATCH', status: 409 };
+  }
+  return { assignment };
 }
 
 const ASSIGNMENT_OPERATION_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -2505,32 +2591,74 @@ export async function handleExams(request, env, teacher, path, url) {
           return jsonResponse({ error: 'Forbidden', student_id: studentId }, 403);
         }
 
-        const classId = String(row.class_id || '').trim() || null;
+        let classId = String(row.class_id || '').trim() || null;
         if (classId && !(await canAccessClass(currentTeacher, classId, env))) {
           return jsonResponse({ error: 'Forbidden', class_id: classId }, 403);
         }
 
         const wrongIds = normalizeWrongIds(row.wrong_ids, questionCount);
-
-        const existing = await findExistingExamSessionByIdentity(env, {
+        const selectionInput = {
           student_id: studentId,
-          exam_title: examTitle,
-          exam_date: examDate,
-          question_count: questionCount,
-          archive_file: d.archive_file || archiveFile
-        });
-
-        const sessionId = existing?.id || `ex_${Date.now()}_${i}_${Math.random().toString(36).slice(2, 8)}`;
-        const score = Math.round(((questionCount - wrongIds.length) / questionCount) * 100);
-        const existingSession = existing?.id ? await loadExistingExamSession(env, sessionColumns, existing.id) : null;
-        const assignmentMeta = await resolveExamAssignmentMeta(env, {
-          assignment_id: row.assignment_id || d.assignment_id,
-          pack_id: row.pack_id || d.pack_id,
           class_id: classId,
           exam_title: examTitle,
           exam_date: examDate,
-          archive_file: archiveFile
-        });
+          question_count: questionCount,
+          archive_file: d.archive_file || archiveFile,
+          assignment_id: row.assignment_id || d.assignment_id
+        };
+        const requestedSessionId = normalizeOptionalText(row.session_id);
+        let selectedSession = null;
+        let selectedAssignment = null;
+        if (requestedSessionId) {
+          const selection = await loadTeacherOmrSessionSelection(env, selectionInput, requestedSessionId);
+          if (selection.error) return jsonResponse({ success: false, error: selection.error }, selection.status);
+          selectedSession = selection.session;
+        } else {
+          const existing = await findExistingExamSessionByIdentity(env, selectionInput);
+          if (existing?.ambiguous) return jsonResponse({ success: false, error: 'OMR_SESSION_ID_REQUIRED' }, 409);
+          if (existing?.id) {
+            const selection = await loadTeacherOmrSessionSelection(env, selectionInput, existing.id);
+            if (selection.error) return jsonResponse({ success: false, error: selection.error }, selection.status);
+            selectedSession = selection.session;
+          }
+        }
+
+        if (selectedSession?.class_id) classId = String(selectedSession.class_id);
+        if (classId && !(await canAccessClass(currentTeacher, classId, env))) {
+          return jsonResponse({ error: 'Forbidden', class_id: classId }, 403);
+        }
+        const requestedAssignmentId = normalizeOptionalText(row.assignment_id || d.assignment_id);
+        if (selectedSession?.assignment_id) {
+          selectedAssignment = await loadClassExamAssignmentById(env, selectedSession.assignment_id);
+        } else if (!selectedSession && requestedAssignmentId) {
+          const validation = await validateTeacherOmrAssignment(env, selectionInput, requestedAssignmentId);
+          if (validation.error) return jsonResponse({ success: false, error: validation.error }, validation.status);
+          selectedAssignment = validation.assignment;
+        }
+
+        const sessionId = selectedSession?.id || `ex_${Date.now()}_${i}_${Math.random().toString(36).slice(2, 8)}`;
+        const score = Math.round(((questionCount - wrongIds.length) / questionCount) * 100);
+        const existingSession = selectedSession?.id ? await loadExistingExamSession(env, sessionColumns, selectedSession.id) : null;
+        const assignmentMeta = selectedSession
+          ? (selectedSession.assignment_id
+            ? await resolveExamAssignmentMeta(env, {
+              assignment_id: selectedSession.assignment_id,
+              pack_id: row.pack_id || d.pack_id || selectedSession.pack_id
+            })
+            : { assignment_id: null, pack_id: normalizeOptionalText(row.pack_id || d.pack_id || selectedSession.pack_id) })
+          : selectedAssignment
+            ? { assignment_id: selectedAssignment.id, pack_id: normalizeOptionalText(row.pack_id || d.pack_id || selectedAssignment.pack_id) }
+            : await resolveExamAssignmentMeta(env, {
+              assignment_id: row.assignment_id || d.assignment_id,
+              pack_id: row.pack_id || d.pack_id,
+              class_id: classId,
+              exam_title: examTitle,
+              exam_date: examDate,
+              archive_file: archiveFile
+            });
+        if (assignmentMeta.assignment_id && await isStudentExcludedFromAssignment(env, assignmentMeta.assignment_id, studentId)) {
+          return jsonResponse({ success: false, error: 'assignment excluded for student' }, 403);
+        }
         const resultHash = row.result_hash || d.result_hash || buildResultHash({
           student_id: studentId,
           class_id: classId,
@@ -2604,31 +2732,73 @@ export async function handleExams(request, env, teacher, path, url) {
       const questionCount = d.question_count || 0;
       const wrongIds = normalizeWrongIds(d.wrong_ids, Math.max(1, Math.min(80, parseInt(questionCount, 10) || 80)));
       const archiveFile = normalizeAssignmentArchiveFile(d.archive_file || '');
-      const existingByIdentity = id === 'new' ? await findExistingExamSessionByIdentity(env, {
+      const selectionInput = {
         student_id: d.student_id,
+        class_id: d.class_id || null,
+        assignment_id: d.assignment_id || null,
         exam_title: d.exam_title,
         exam_date: d.exam_date,
         question_count: questionCount,
         archive_file: d.archive_file || archiveFile
-      }) : null;
-      const sid = id === 'new' ? (existingByIdentity?.id || `ex_${Date.now()}`) : id;
-      const existingSession = existingByIdentity?.id
-        ? await loadExistingExamSession(env, sessionColumns, existingByIdentity.id)
-        : (id === 'new' ? null : await loadExistingExamSession(env, sessionColumns, sid));
-      const assignmentMeta = await resolveExamAssignmentMeta(env, {
-        assignment_id: d.assignment_id,
-        pack_id: d.pack_id,
-        class_id: d.class_id || null,
-        exam_title: d.exam_title,
-        exam_date: d.exam_date,
-        archive_file: archiveFile
-      });
+      };
+      const bodySessionId = normalizeOptionalText(d.session_id);
+      if (id !== 'new' && bodySessionId && bodySessionId !== id)
+        return jsonResponse({ success: false, error: 'OMR_SESSION_CONTEXT_MISMATCH' }, 409);
+      const explicitSessionId = id !== 'new' ? id : bodySessionId;
+      let selectedSession = null;
+      let selectedAssignment = null;
+      if (explicitSessionId) {
+        const selection = await loadTeacherOmrSessionSelection(env, selectionInput, explicitSessionId);
+        if (selection.error) return jsonResponse({ success: false, error: selection.error }, selection.status);
+        selectedSession = selection.session;
+      } else {
+        const existing = await findExistingExamSessionByIdentity(env, selectionInput);
+        if (existing?.ambiguous) return jsonResponse({ success: false, error: 'OMR_SESSION_ID_REQUIRED' }, 409);
+        if (existing?.id) {
+          const selection = await loadTeacherOmrSessionSelection(env, selectionInput, existing.id);
+          if (selection.error) return jsonResponse({ success: false, error: selection.error }, selection.status);
+          selectedSession = selection.session;
+        }
+      }
+
+      const classId = normalizeOptionalText(selectedSession?.class_id || d.class_id);
+      if (classId && !(await canAccessClass(currentTeacher, classId, env)))
+        return jsonResponse({ error: 'Forbidden', class_id: classId }, 403);
+      if (selectedSession?.assignment_id) {
+        selectedAssignment = await loadClassExamAssignmentById(env, selectedSession.assignment_id);
+      } else if (!selectedSession && d.assignment_id) {
+        const validation = await validateTeacherOmrAssignment(env, { ...selectionInput, class_id: classId }, d.assignment_id);
+        if (validation.error) return jsonResponse({ success: false, error: validation.error }, validation.status);
+        selectedAssignment = validation.assignment;
+      }
+
+      const sid = selectedSession?.id || `ex_${Date.now()}`;
+      const existingSession = selectedSession?.id
+        ? await loadExistingExamSession(env, sessionColumns, selectedSession.id)
+        : null;
+      const assignmentMeta = selectedSession
+        ? (selectedSession.assignment_id
+          ? await resolveExamAssignmentMeta(env, {
+            assignment_id: selectedSession.assignment_id,
+            pack_id: d.pack_id || selectedSession.pack_id
+          })
+          : { assignment_id: null, pack_id: normalizeOptionalText(d.pack_id || selectedSession.pack_id) })
+        : selectedAssignment
+          ? { assignment_id: selectedAssignment.id, pack_id: normalizeOptionalText(d.pack_id || selectedAssignment.pack_id) }
+          : await resolveExamAssignmentMeta(env, {
+            assignment_id: d.assignment_id,
+            pack_id: d.pack_id,
+            class_id: classId,
+            exam_title: d.exam_title,
+            exam_date: d.exam_date,
+            archive_file: archiveFile
+          });
       if (assignmentMeta.assignment_id && await isStudentExcludedFromAssignment(env, assignmentMeta.assignment_id, d.student_id)) {
         return jsonResponse({ success: false, error: 'assignment excluded for student' }, 403);
       }
       const resultHash = d.result_hash || buildResultHash({
         student_id: d.student_id,
-        class_id: d.class_id || null,
+        class_id: classId,
         exam_title: d.exam_title,
         exam_date: d.exam_date,
         archive_file: archiveFile,
@@ -2647,7 +2817,7 @@ export async function handleExams(request, env, teacher, path, url) {
           score: d.score,
           examDate: d.exam_date,
           questionCount,
-          classId: d.class_id || null,
+          classId,
           archiveFile,
           assignmentId: assignmentMeta.assignment_id,
           packId: assignmentMeta.pack_id,
@@ -2663,7 +2833,7 @@ export async function handleExams(request, env, teacher, path, url) {
         assignment_id: assignmentMeta.assignment_id,
         pack_id: assignmentMeta.pack_id,
         student_id: d.student_id,
-        class_id: d.class_id || null,
+        class_id: classId,
         exam_title: d.exam_title,
         exam_date: d.exam_date,
         archive_file: archiveFile,
