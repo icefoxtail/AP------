@@ -55,5 +55,11 @@ jobs:
       - name: Verify Git-managed project skills
         run: node tools/skills/verify-skills.mjs --json
 
+      - name: Verify checked-in Consumer and browse alias projections
+        run: |
+          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
+          node archive/tools/build-generated-meta-browse-aliases.cjs
       - name: Run tests
         run: node tools/run-tests.js
+
+

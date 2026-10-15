@@ -15,9 +15,15 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify checked-in Consumer and browse alias projections
+        run: |
+          node archive/tools/generated-meta/rebuild-main-source-consumer.mjs --check
+          node archive/tools/build-generated-meta-browse-aliases.cjs
       - name: Meta persistence, recovery and shared consumer contracts
         run: node --test tests/problem-bank-meta.test.cjs tests/problem-bank-meta-consumers.test.cjs tests/generated-meta-backfill.test.cjs tests/generated-meta-browse-aliases.test.cjs
       - uses: browser-actions/setup-chrome@v1
@@ -32,3 +38,5 @@ jobs:
         env:
           CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
         run: node tests/problem-bank-meta-browser.cjs
+
+
