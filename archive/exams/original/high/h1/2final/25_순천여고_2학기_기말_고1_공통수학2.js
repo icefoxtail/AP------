@@ -221,7 +221,7 @@ window.questionBank = [
     "content": "두 실수 $x, y$에 대하여 세 조건 $p, q, r$가<br>$$p: |x|+|y|=0$$<br>$$q: |x|+|y|=|x+y|$$<br>$$r: x^2+2y^2-2xy \\le 0$$<br>일 때, <보기>에서 옳은 것만을 있는 대로 고른 것은? [4.7점]<br><br><div style=\"border: 1px solid #000; padding: 10px; margin: 10px 0;\"><b>&lt; 보 기 &gt;</b><br>ㄱ. $p$는 $q$이기 위한 충분조건이다.<br>ㄴ. 명제 $q \\to r$의 역은 참이다.<br>ㄷ. 명제 $\\sim p \\to \\sim r$의 대우는 거짓이다.<br>ㄹ. $p$는 $r$이기 위한 필요충분조건이다.</div>",
     "image": "",
     "answer": "④",
-    "solution": "먼저 조건의 진리집합을 정리한다.\n\n$p:|x|+|y|=0$은 $x=y=0$일 때만 참이다.\n$q:|x|+|y|=|x+y|$는 $x,y$가 같은 부호일 때 참이므로 원점에서는 참이다. 따라서 $p$는 $q$의 충분조건이다. (ㄱ 참)\n\n$r$의 좌변은\n$x^2+2y^2-2xy=(x-y)^2+y^2\\ge0$이다.\n$r$이 참이려면 이 값이 $0$이어야 하므로 $x=y=0$이다. 따라서 $r$의 진리집합도 원점 하나이다.\n\n그러므로 $r\\to q$는 참이므로 $q\\to r$의 역은 참이다. (ㄴ 참)\n\n명제 $\\sim p\\to\\sim r$과 그 대우 $r\\to p$는 모두 참이다. 따라서 ㄷ의 “거짓”이라는 판정은 틀렸다.\n\n$p$와 $r$의 진리집합이 같으므로 ㄹ도 참이다. 참인 것은 ㄱ, ㄴ, ㄹ이므로 정답은 ④이다.",
+    "solution": "먼저 세 조건의 진리집합을 구한다.\n$p:|x|+|y|=0$에서\n$|x|=0,\\ |y|=0$이므로 $P=\\{(0,0)\\}$이다.\n\n$q:|x|+|y|=|x+y|$는 두 수가 같은 부호이거나 적어도 하나가 $0$일 때 성립한다.\n따라서 $Q=\\{(x,y)\\mid xy\\ge0\\}$이다.\n\n$r:(x-y)^2+y^2\\le0$에서 두 제곱은 각각 $0$이어야 한다.\n$y=0,\\ x-y=0$이므로 $R=\\{(0,0)\\}$이다.\n결국 $P=R\\subseteq Q$이다.\n\nㄱ. $P\\subseteq Q$이므로 $p\\to q$는 참이다. 즉 $p$는 $q$의 충분조건이다.\n\nㄴ. $q\\to r$의 역은 $r\\to q$이다.\n$R\\subseteq Q$이므로 참이다.\n\nㄷ. $\\sim p\\to\\sim r$의 대우는 $r\\to p$이다.\n$R=P$이므로 대우는 참이다. 따라서 ‘거짓이다’라는 ㄷ은 옳지 않다.\n\nㄹ. $P=R$이므로 $p\\to r$와 $r\\to p$가 모두 참이다.\n따라서 $p$는 $r$의 필요충분조건이다.\n\n옳은 것은 ㄱ, ㄴ, ㄹ이므로 정답은 ④이다.",
     "sourceDocumentSha256": "sha256:5729d6f3d8cac3c69fbbfa8c2fb27533b51868a4c00b8c3b010b6c30f6c7e947",
     "sourceQuestionNo": "4",
     "sourcePageNo": 1,
@@ -289,7 +289,7 @@ window.questionBank = [
     "content": "전체집합 $U$에 대하여 세 조건 $p, q, r$의 진리집합을 각각 $P, Q, R$이라 하자. 세 집합이 다음 조건을 만족할 때, 항상 참인 명제는? [4.6점]<br><br><div style=\"border: 1px solid #000; padding: 10px; margin: 10px 0;\">(가) $Q \\cup R = R$<br>(나) $P \\cap Q^c = P$</div>",
     "image": "",
     "answer": "②",
-    "solution": "(가)에서 $Q\\subseteq R$이므로 $q\\to r$이다.\n(나)에서 $P\\subseteq Q^c$이므로 $p\\to\\sim q$이다. 따라서 항상 참인 명제는 ②이다.\n\n⑤ $\\sim q\\to\\sim r$는 조건만으로는 보장되지 않는다. 예를 들어 $U=\\{a,b\\}$, $Q=\\varnothing$, $R=\\{a\\}$, $P=\\varnothing$이면 두 조건을 모두 만족하지만, 원소 $a$에서 $q$는 거짓이고 $r$은 참이므로 $\\sim q\\to\\sim r$는 거짓이다.\n\n또 $Q\\subseteq R$에서 얻는 대우는 $\\sim r\\to\\sim q$이며, ⑤와는 방향이 다르다.",
+    "solution": "집합 조건을 포함관계로 바꾼다.\n(가) $Q\\cup R=R$에서 $Q\\subseteq R$이다.\n(나) $P\\cap Q^c=P$에서 $P\\subseteq Q^c$, 즉 $P\\cap Q=\\varnothing$이다.\n따라서 $p$이면 항상 $\\sim q$이므로 ②는 참이다.\n\n나머지 명제가 항상 참인 것은 아님을 확인한다.\n예를 들어 $U=\\{a,b,c\\}$,\n$P=\\{a\\}$, $Q=\\{b\\}$, $R=\\{b,c\\}$이면 (가), (나)를 모두 만족한다.\n\n① $a\\in P$이지만 $a\\notin Q$이므로 $p\\to q$는 거짓이다.\n③ $b\\in R$이지만 $b\\notin P$이므로 $r\\to p$는 거짓이다.\n④ $a\\notin R$, $a\\notin Q$이므로 $\\sim r\\to q$는 거짓이다.\n⑤ $c\\notin Q$, $c\\in R$이므로 $\\sim q\\to\\sim r$는 거짓이다.\n\n따라서 항상 참인 명제는 ②뿐이다.",
     "sourceDocumentSha256": "sha256:5729d6f3d8cac3c69fbbfa8c2fb27533b51868a4c00b8c3b010b6c30f6c7e947",
     "sourceQuestionNo": "5",
     "sourcePageNo": 1,
@@ -425,7 +425,7 @@ window.questionBank = [
     "content": "다음 중 실수 전체의 집합 $R$에서 $R$로의 일대일대응의 그래프인 것은? [4.1점]<br><br><img src=\"assets/images/25_순천여고_2학기_기말_고1_공통수학2/q07.png\" style=\"max-width: 520px; display: block; margin: 10px 0;\">",
     "image": "",
     "answer": "②",
-    "solution": "일대일대응은 수평선 검사를 통과하고, 치역이 실수 전체여야 한다.\n\n②의 그래프는 꺾이는 점의 왼쪽 가지가 아래쪽으로 한없이 이어지고 오른쪽 가지가 위쪽으로 한없이 이어진다. 따라서 모든 수평선이 그래프와 한 번만 만나고, 모든 실수 $y$값이 나온다.\n\n다른 그림은 정의역 또는 치역이 실수 전체가 아니거나, 같은 수평선이 그래프와 두 번 이상 만난다.\n따라서 정답은 ②이다.",
+    "solution": "실수 전체에서 실수 전체로의 일대일대응이려면\n① 모든 실수 $x$에 함수값이 있어야 하고,\n② 서로 다른 $x$의 함수값이 달라야 하며,\n③ 모든 실수 $y$가 함수값으로 한 번씩 나와야 한다.\n\n각 그래프를 확인한다.\n\n① 그래프가 $x\\ge0$ 쪽에서만 시작하므로 정의역이 실수 전체가 아니다.\n\n② 그래프가 모든 $x$에서 정의되고 왼쪽 아래에서 오른쪽 위까지 계속 증가한다.\n모든 수평선과 정확히 한 번 만나므로 일대일대응이다.\n\n③ 두 선분 형태의 가지 사이에 나타나지 않는 $y$값이 있다.\n치역이 실수 전체가 아니므로 일대일대응이 아니다.\n\n④ 그래프가 올라갔다 내려가는 구간이 있어 같은 수평선이 여러 점에서 만난다.\n일대일이 아니다.\n\n⑤ 수평인 구간에서는 서로 다른 $x$에 같은 함수값이 대응한다.\n일대일이 아니다.\n\n따라서 정답은 ②이다.",
     "sourceDocumentSha256": "sha256:5729d6f3d8cac3c69fbbfa8c2fb27533b51868a4c00b8c3b010b6c30f6c7e947",
     "sourceQuestionNo": "7",
     "sourcePageNo": 1,
@@ -462,7 +462,7 @@ window.questionBank = [
     "answerStatus": "candidate",
     "solutionStatus": "candidate",
     "reviewStatus": "pending",
-    "decisiveStep": "다른 그림은 정의역 또는 치역이 실수 전체가 아니거나, 같은 수평선이 그래프와 두 번 이상 만난다.\n따라서 정답은 ②이다.",
+    "decisiveStep": "②는 정의역이 실수 전체이고 모든 수평선과 한 번만 만난다. ①·③은 정의역/치역 공백, ④·⑤는 일대일성 위반이다.",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "REQUIRED",
@@ -843,8 +843,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "content": "다음 <보기> 중 함수 그래프가 함수 $y=\\frac{x}{x-1}$의 그래프를 평행이동하여 겹칠 수 있는 것으로만 모두 고른 것은? [4.1점]<br><br><div style=\"border: 1px solid #000; padding: 10px; margin: 10px 0;\"><b>&lt; 보 기 &gt;</b><br>ㄱ. $y=\\frac{x-2}{x-1}$<br>ㄴ. $y=\\frac{1}{x-1}$<br>ㄷ. $y=\\frac{3x+4}{x+1}$<br>ㄹ. $y=\\frac{2x-3}{x+1}$</div>",
     "image": "",
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q13-solution.svg",
+    "solutionImageAlt": "원래 유리함수와 ㄴ, ㄷ의 그래프를 두 좌표평면에서 비교한 그림",
+    "solutionImageCaption": "평행이동은 분수항의 계수 1을 그대로 유지한다.",
+    "solutionImageSize": "medium",
     "answer": "④",
-    "solution": "$y=\\dfrac{x}{x-1}=1+\\dfrac1{x-1}$의 점근선은 $x=1$, $y=1$이다. 평행이동하면 두 점근선이 같은 거리만큼 옮겨지고, 분수항의 계수 $1$은 그대로 유지된다.\n\nㄱ은 $1-\\dfrac1{x-1}$이므로 분수항의 부호가 달라져 평행이동으로 겹칠 수 없다.\nㄴ은 $\\dfrac1{x-1}$이고, ㄷ은 $3+\\dfrac1{x+1}$이므로 둘 다 원래 그래프를 평행이동한 형태이다.\nㄹ은 $2-\\dfrac5{x+1}$으로 분수항의 계수가 달라진다.\n\n따라서 ㄴ, ㄷ이고 정답은 ④이다.",
+    "solution": "주어진 유리함수를 먼저 정리한다.\n$y=\\dfrac{x}{x-1}=1+\\dfrac1{x-1}$이다.\n이 그래프의 점근선은 $x=1$, $y=1$이다.\n\n$y=b+\\dfrac{a}{x-h}$를 평행이동하면 $h,b$는 달라질 수 있지만 분수항의 계수 $a$는 바뀌지 않는다.\n따라서 각 보기에서 분수항의 계수가 $1$인지 확인한다.\n\nㄱ. $y=\\dfrac{x-2}{x-1}=1-\\dfrac1{x-1}$\n분수항의 계수가 $-1$이므로 평행이동하여 겹칠 수 없다.\n\nㄴ. $y=\\dfrac1{x-1}$\n원래 그래프를 아래로 $1$만큼 옮긴 것이다. 가능하다.\n\nㄷ. $y=\\dfrac{3x+4}{x+1}=3+\\dfrac1{x+1}$\n원래 그래프를 왼쪽으로 $2$만큼, 위로 $2$만큼 옮긴 것이다. 가능하다.\n\nㄹ. $y=\\dfrac{2x-3}{x+1}=2-\\dfrac5{x+1}$\n분수항의 계수가 $-5$이므로 평행이동으로 겹칠 수 없다.\n\n가능한 것은 ㄴ, ㄷ이므로 정답은 ④이다.",
     "sourceDocumentSha256": "sha256:5729d6f3d8cac3c69fbbfa8c2fb27533b51868a4c00b8c3b010b6c30f6c7e947",
     "sourceQuestionNo": "13",
     "sourcePageNo": 1,
@@ -888,11 +892,18 @@ window.questionBank = [
         "reason": "Conditions are fully represented in text and formulas."
       },
       "solutionVisual": {
-        "requirement": "EXEMPT",
-        "reason": "No new geometric/graphical relationship beyond the algebraic derivation."
+        "requirement": "BENEFICIAL",
+        "disposition": "ADD",
+        "ref": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q13-solution.svg",
+        "reason": "Comparison plots distinguish unchanged fractional coefficient 1 from changed asymptote positions.",
+        "newVisualInformation": [
+          "Original y=1+1/(x−1)",
+          "Choice ㄴ: down 1",
+          "Choice ㄷ: left 2 and up 2"
+        ]
       }
     },
-    "tags": [],
+    "tags": ["그래프"],
     "wide": false
   },
   {
@@ -912,7 +923,7 @@ window.questionBank = [
     "content": "함수 $y=\\frac{ax+1}{x-1}$의 역함수가 그 자신이 되도록 하는 상수 $a$의 값은? [4.3점]",
     "image": "",
     "answer": "③",
-    "solution": "$y=\\dfrac{ax+1}{x-1}$을 $x$에 대해 풀면\n$xy-x=ax+1$\n$x(y-a)=y+1$이므로\n$f^{-1}(x)=\\dfrac{x+1}{x-a}$이다.\n\n역함수가 자기 자신이 되려면\n$\\dfrac{ax+1}{x-1}=\\dfrac{x+1}{x-a}$이어야 한다. 분모가 0이 아닌 정의역에서 교차 곱하면\n$(ax+1)(x-a)=(x+1)(x-1)$이다. 계수를 비교하면 $a=1$이고, 이 값은 식을 항등적으로 같게 한다.\n\n따라서 정답은 ③이다.",
+    "solution": "$f(x)=\\dfrac{ax+1}{x-1}$의 역함수가 자기 자신이라고 하였으므로\n$y=\\dfrac{ax+1}{x-1}$에서 $x$와 $y$를 바꿔 역함수를 구한다.\n\n$y(x-1)=ax+1$\n$xy-y=ax+1$\n$x(y-a)=y+1$이므로\n$f^{-1}(x)=\\dfrac{x+1}{x-a}$이다.\n\n$f=f^{-1}$이려면\n$\\dfrac{ax+1}{x-1}=\\dfrac{x+1}{x-a}$가 성립해야 한다.\n양변의 분모가 $0$이 아닌 곳에서 교차 곱하면\n$(ax+1)(x-a)=(x+1)(x-1)$이다.\n\n왼쪽과 오른쪽을 각각 전개한다.\n$ax^2+(1-a^2)x-a=x^2-1$이다.\n$x^2$의 계수를 비교하면 $a=1$이다.\n이때 양쪽 함수식이 모두 $\\dfrac{x+1}{x-1}$이므로 조건이 성립한다.\n\n따라서 정답은 ③이다.",
     "sourceDocumentSha256": "sha256:5729d6f3d8cac3c69fbbfa8c2fb27533b51868a4c00b8c3b010b6c30f6c7e947",
     "sourceQuestionNo": "14",
     "sourcePageNo": 1,
@@ -949,7 +960,7 @@ window.questionBank = [
     "answerStatus": "candidate",
     "solutionStatus": "candidate",
     "reviewStatus": "pending",
-    "decisiveStep": "따라서 정답은 ③이다.",
+    "decisiveStep": "역함수 식을 구한 뒤 (ax+1)(x−a)=(x+1)(x−1)을 전개하여 x² 계수로 a=1을 확정한다.",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "EXEMPT",
@@ -1118,8 +1129,12 @@ window.questionBank = [
     "layoutTag": "grid",
     "content": "함수 $y=\\sqrt{x-3}$과 $y=x+k$의 그래프의 교점의 개수가 $2$개가 되도록 하는 상수 $k$의 값의 범위를 구하면? [4.9점]",
     "image": "",
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q17-solution.svg",
+    "solutionImageAlt": "무리함수와 직선이 두 점에서 만나거나 한 점에서 만나는 경계 사례",
+    "solutionImageCaption": "k=-3은 두 교점, k=-11/4는 한 교점이므로 오른쪽 끝값은 제외한다.",
+    "solutionImageSize": "medium",
     "answer": "②",
-    "solution": "$t=\\sqrt{x-3}$로 놓으면 $t\\ge0$이고 $x=t^2+3$이다. 교점 조건은\n$t=t^2+3+k$, 즉\n$t^2-t+(3+k)=0$이다.\n\n서로 다른 두 교점이 있으려면 이 방정식이 서로 다른 두 실근을 가져야 한다. 판별식 조건은\n$1-4(3+k)>0$, 따라서 $k< -\\dfrac{11}{4}$이다.\n\n또 두 근이 모두 음이 아니어야 한다. 두 근의 합은 $1$, 곱은 $3+k$이므로 $3+k\\ge0$, 즉 $k\\ge-3$이다.\n\n따라서 $-3\\le k< -\\dfrac{11}{4}$이고 정답은 ②이다.",
+    "solution": "교점의 $x$좌표는 $x\\ge3$이다.\n$t=\\sqrt{x-3}$으로 놓으면 $t\\ge0$, $x=t^2+3$이다.\n교점에서 $t=x+k$이므로\n$t=t^2+3+k$\n$t^2-t+(3+k)=0$이다.\n\n서로 다른 두 교점을 얻으려면 서로 다른 두 근이 모두 $0$ 이상이어야 한다.\n판별식은\n$D=(-1)^2-4(3+k)=-11-4k$이므로\n$D>0\\ \\Longrightarrow\\ k<-\\dfrac{11}{4}$이다.\n\n두 근의 합은 $1>0$, 곱은 $3+k$이다.\n두 실근이 모두 $0$ 이상이려면 $3+k\\ge0$, 즉 $k\\ge-3$이어야 한다.\n따라서 $-3\\le k<-\\dfrac{11}{4}$이다.\n\n끝값을 직접 확인한다.\n$k=-3$이면 $t^2-t=0$에서 $t=0,1$이다.\n교점은 $(3,0)$, $(4,1)$로 서로 다르므로 $-3$은 포함한다.\n\n$k=-\\dfrac{11}{4}$이면\n$\\left(t-\\dfrac12\\right)^2=0$에서 $t=\\dfrac12$ 한 개뿐이다.\n교점은 $\\left(\\dfrac{13}{4},\\dfrac12\\right)$ 하나이므로 $-\\dfrac{11}{4}$는 제외한다.\n\n따라서 정답은 ②이다.",
     "sourceDocumentSha256": "sha256:5729d6f3d8cac3c69fbbfa8c2fb27533b51868a4c00b8c3b010b6c30f6c7e947",
     "sourceQuestionNo": "17",
     "sourcePageNo": 1,
@@ -1163,11 +1178,17 @@ window.questionBank = [
         "reason": "Conditions are fully represented in text and formulas."
       },
       "solutionVisual": {
-        "requirement": "EXEMPT",
-        "reason": "No new geometric/graphical relationship beyond the algebraic derivation."
+        "requirement": "BENEFICIAL",
+        "disposition": "ADD",
+        "ref": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q17-solution.svg",
+        "reason": "Plots show two intersections at k=−3 versus tangency at k=−11/4.",
+        "newVisualInformation": [
+          "At k=−3: (3,0), (4,1)",
+          "At k=−11/4: tangent (13/4,1/2)"
+        ]
       }
     },
-    "tags": [],
+    "tags": ["그래프"],
     "wide": false
   },
     {
@@ -1232,15 +1253,23 @@ window.questionBank = [
         "ref": "embedded content image"
       },
       "solutionVisual": {
-        "requirement": "EXEMPT",
-        "reason": "Current source graph/map is the decisive visual and remains directly referenced; candidate explanation states every value read from it."
+        "requirement": "BENEFICIAL",
+        "disposition": "POLISH",
+        "ref": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-solution.svg",
+        "reason": "The existing intersection geometry is correct; accessibility description and label readability were improved.",
+        "newVisualInformation": [
+          "u=1/2 and u=2"
+        ]
       }
     },
     "tags": [
       "그래프"
     ],
     "wide": false,
-    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-solution.svg"
+    "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-solution.svg",
+    "solutionImageAlt": "함수 f(u)와 직선 y=2-u가 u=1/2, 2에서 만나는 그래프",
+    "solutionImageCaption": "f(u)=2-u의 교점을 구한 다음 f(x)=u를 다시 푼다.",
+    "solutionImageSize": "medium"
   },
   {
     "number": 19,
@@ -1317,7 +1346,7 @@ window.questionBank = [
     "content": "[서술형 2] 두 집합 $X=\\{x|x \\ge -3\\}, Y=\\{y|y \\ge -2\\}$에 대하여 $X$에서 $Y$로의 함수 $f(x)=\\sqrt{ax+b}+c$가 제 $1, 2, 3$ 사분면만을 지나도록 하는 상수 $a, b, c$에 대하여 이를 만족하는 순서쌍 $(a, b, c)$를 모두 구하고, 그 과정을 서술하시오. (단, $-10 \\le a, b, c \\le 10$인 정수) [7점]",
     "image": "",
     "answer": "(1,3,-1), (1,5,-2), (1,6,-2), (1,10,-3), (2,6,-2), (2,6,-1), (2,7,-2), (2,8,-2), (2,9,-2), (2,10,-3), (3,9,-2), (3,9,-1), (3,10,-3), (3,10,-2)",
-    "solution": "정의역 $x\\ge-3$ 전체에서 제곱근이 실수이려면 $a\\ge0$이고 $b-3a\\ge0$이어야 한다. $a=0$이면 함수가 상수여서 세 사분면을 모두 지나지 못하므로 $a>0$이다. 그러면 함수는 증가한다.\n\n그래프가 제3사분면을 지나고 치역이 $Y=[-2,\\infty)$에 포함되려면 $-2\\le f(-3)<0$이어야 한다. 제2사분면과 제1사분면을 지나고 제4사분면은 지나지 않으려면 $f(0)>0$이어야 한다. 따라서\n$-2\\le\\sqrt{b-3a}+c<0$, $\\sqrt b+c>0$, $b-3a\\ge0$이다.\n\n정수 범위에서 $1\\le a\\le3$, $3a\\le b\\le10$이다. 조건을 대입해 가능한 $c$를 모두 확인하면\n$a=1$: $(1,3,-1),(1,5,-2),(1,6,-2),(1,10,-3)$,\n$a=2$: $(2,6,-2),(2,6,-1),(2,7,-2),(2,8,-2),(2,9,-2),(2,10,-3)$,\n$a=3$: $(3,9,-2),(3,9,-1),(3,10,-3),(3,10,-2)$이다.\n\n특히 $(1,10,-3)$에서는 $f(-3)=\\sqrt7-3\\in[-2,0)$, $f(0)=\\sqrt{10}-3>0$이고, $(2,10,-3)$에서는 $f(-3)=-1$, $f(0)=\\sqrt{10}-3>0$이다. 두 쌍도 모든 조건을 만족하므로 빠뜨리면 안 된다.\n\n따라서 위 14개의 순서쌍이 답이다.",
+    "solution": "정의역은 $x\\ge-3$이다. 모든 $x\\ge-3$에서 $ax+b\\ge0$이려면 $a\\ge0$, $b-3a\\ge0$이다.\n$a=0$이면 상수함수이므로 세 사분면을 모두 지나지 않는다. 따라서 $a>0$이고 $f(x)$는 증가한다.\n\n그래프가 제3사분면에서 시작해 제2사분면을 지나고, $x>0$에서 제4사분면을 지나지 않으려면\n$-2\\le f(-3)<0$, $f(0)>0$이어야 한다.\n따라서\n$-2\\le\\sqrt{b-3a}+c<0$,\n$\\sqrt b+c>0$,\n$1\\le a\\le3$, $3a\\le b\\le10$이다.\n\n$c$는 정수이고 첫 부등식에서 $c\\le-1$이다.\n또 $\\sqrt b+c>0$, $b\\le10$이므로\n$c>-\\sqrt b\\ge-\\sqrt{10}>-4$이다.\n따라서 $c=-1,-2,-3$만 확인하면 된다.\n\n① $c=-1$일 때\n$0\\le\\sqrt{b-3a}<1$이므로 $b=3a$이다.\n가능한 순서쌍은\n$(1,3,-1),(2,6,-1),(3,9,-1)$이다.\n\n② $c=-2$일 때\n$0\\le\\sqrt{b-3a}<2$, $\\sqrt b>2$이므로\n$0\\le b-3a\\le3$, $b\\ge5$이다.\n$a=1$: $(1,5,-2),(1,6,-2)$\n$a=2$: $(2,6,-2),(2,7,-2),(2,8,-2),(2,9,-2)$\n$a=3$: $(3,9,-2),(3,10,-2)$로 총 $8$개이다.\n\n③ $c=-3$일 때\n$1\\le\\sqrt{b-3a}<3$, $\\sqrt b>3$이므로\n$1\\le b-3a\\le8$, $b=10$이다.\n따라서\n$(1,10,-3),(2,10,-3),(3,10,-3)$의 $3$개이다.\n\n가능한 순서쌍은 위 $3+8+3=14$개뿐이다.\n따라서 구하는 순서쌍은\n$(1,3,-1),(1,5,-2),(1,6,-2),(1,10,-3)$,\n$(2,6,-2),(2,6,-1),(2,7,-2),(2,8,-2),(2,9,-2),(2,10,-3)$,\n$(3,9,-2),(3,9,-1),(3,10,-3),(3,10,-2)$이다.",
     "sourceDocumentSha256": "sha256:5729d6f3d8cac3c69fbbfa8c2fb27533b51868a4c00b8c3b010b6c30f6c7e947",
     "sourceQuestionNo": "20",
     "sourcePageNo": 1,
@@ -1354,7 +1383,7 @@ window.questionBank = [
     "answerStatus": "candidate",
     "solutionStatus": "candidate",
     "reviewStatus": "pending",
-    "decisiveStep": "따라서 위 12개의 순서쌍이 모두 답이다.",
+    "decisiveStep": "정수 c=-1,-2,-3별로 조건을 열거하면 가능한 순서쌍은 14개이다.",
     "visualDisposition": {
       "problemVisual": {
         "requirement": "EXEMPT",
@@ -1381,7 +1410,7 @@ window.questionBank = [
   "content": "함수 $f:[2,\\infty)\\to[1,\\infty)$를 $f(x)=(x-2)^2+1$로 정의하자. 방정식 $f^{-1}(x)=x-2$를 만족하는 모든 실수 $x$를 구하고, 그 풀이 과정을 서술하시오. [8.0점]",
   "image": "",
   "answer": "\\dfrac{9+\\sqrt{13}}2",
-  "solution": "정의역에서 $x-2\\ge0$이므로 $y=(x-2)^2+1$을 $x$에 대하여 풀면 $x=2+\\sqrt{y-1}$이다. 따라서\n  $f^{-1}(x)=2+\\sqrt{x-1}\\quad(x\\ge1)$이다.\n  \n  방정식 $f^{-1}(x)=x-2$는\n  $2+\\sqrt{x-1}=x-2$이므로 $\\sqrt{x-1}=x-4$이다. 왼쪽은 음이 아니므로 $x\\ge4$이다.\n  \n  양변을 제곱하면\n  $x-1=(x-4)^2$,\n  $x^2-9x+17=0$이다. 따라서\n  $x=\\dfrac{9\\pm\\sqrt{13}}2$이다. 이 중 $x\\ge4$를 만족하는 값은 $\\dfrac{9+\\sqrt{13}}2$뿐이다.\n  \n  따라서 구하는 값은 $\\dfrac{9+\\sqrt{13}}2$이다.",
+  "solution": "$x\\ge2$에서 $x-2\\ge0$이므로\n$y=(x-2)^2+1$을 $x$에 대하여 풀면\n$x=2+\\sqrt{y-1}$이다.\n따라서 역함수는\n$f^{-1}(x)=2+\\sqrt{x-1}\\quad(x\\ge1)$이다.\n\n$f^{-1}(x)=x-2$에 대입하면\n$2+\\sqrt{x-1}=x-2$\n$\\sqrt{x-1}=x-4$이다.\n\n제곱하기 전에 양변의 부호를 확인한다.\n왼쪽이 $0$ 이상이므로 $x-4\\ge0$, 즉 $x\\ge4$여야 한다.\n\n양변을 제곱하면\n$x-1=(x-4)^2$\n$x-1=x^2-8x+16$\n$x^2-9x+17=0$이다.\n따라서\n$x=\\dfrac{9\\pm\\sqrt{13}}2$이다.\n\n$\\dfrac{9-\\sqrt{13}}2<4$이므로 이 근은 제곱 전 조건을 만족하지 않아 제외한다.\n반면 $x=\\dfrac{9+\\sqrt{13}}2>4$는 $x\\ge1$과 $x-4\\ge0$을 모두 만족한다.\n이 값은 제곱한 식을 만족하고 $\\sqrt{x-1}$과 $x-4$가 모두 음이 아니므로 원래 식에도 성립한다.\n\n따라서 구하는 값은 $\\dfrac{9+\\sqrt{13}}2$이다.",
   "sourceDocumentSha256": "sha256:b6f2bfe41c1aa01f8f10859a262741addfcc016cec3e1c22255871afe46eaf9b",
   "sourceQuestionNo": "21",
   "sourcePageNo": 6,
@@ -1400,8 +1429,8 @@ window.questionBank = [
   "standardUnitOrder": 7,
   "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
   "subUnit": "함수의 뜻과 그래프",
-  "subUnitConfidence": "content_reviewed",
-  "subUnitClassificationDepth": "problem_solution_reviewed",
+  "subUnitConfidence": "candidate_evidence",
+  "subUnitClassificationDepth": "complete_candidate",
   "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
   "templateKey": "TPL_QUADRATIC_DOMAIN_BIJECTION",
   "crossConceptKeys": [],
@@ -1426,7 +1455,7 @@ window.questionBank = [
     },
     "solutionVisual": {
       "requirement": "BENEFICIAL",
-      "disposition": "ADD",
+      "disposition": "REBUILD",
       "ref": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q21-solution.svg",
       "reason": "The inverse branch and its intersection with y=x−2 make the x≥4 restriction and unique root easier to see.",
       "newVisualInformation": [
@@ -1437,12 +1466,11 @@ window.questionBank = [
       ]
     }
   },
-  "tags": [
-    "함수",
-    "역함수",
-    "정의역"
-  ],
+  "tags": ["함수", "역함수", "정의역", "그래프"],
   "wide": false,
-  "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q21-solution.svg"
+  "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q21-solution.svg",
+  "solutionImageAlt": "역함수 y=2+√(x−1)와 직선 y=x−2의 한 교점 P를 나타낸 좌표 그래프",
+  "solutionImageCaption": "제곱하기 전에 x≥4를 확인하면 교점 P의 x좌표만 해가 된다.",
+  "solutionImageSize": "medium"
 }
 ];
