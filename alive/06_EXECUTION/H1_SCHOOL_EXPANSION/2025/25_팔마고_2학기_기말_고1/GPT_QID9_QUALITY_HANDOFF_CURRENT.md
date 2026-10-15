@@ -167,3 +167,11 @@
 - 경계 검산: B3 -3<k<0 정수 -2,-1 두 개, C1 a>6 자연수 7~10 네 개, C2 2<m<6에서 최소 3, C3 -2<k<0인 정수 -1 유일. SVG는 함수 좌표 샘플 모델/점근선 정적 결속; 실제 Chrome NOT_RUN.
 - q04 sourceUid 9개 EVIDENCE_DEBT, 독립 품질검수·브라우저·Consumer/main NOT_RUN. 기존 q01~q03 제작물·기출원본·레거시 유사문제 변경 없음.
 - 누적 36/207, 다음 시작 원본 q05. q05 생성도 자연스러운 보기 순서와 정답 번호 누적 모니터링을 제작 단계에서 수행.
+
+
+## q14 AUTHOR DRAFT — 2026-10-15
+- q14 원본 함수 f(x)=1/x 자기역함수 / I·III 사분면 / f와 f⁻¹ 전체 그래프 일치=무한 공통점, y=x 고정점 ±1 두 개. 원본 blob 0d12b75e824ab47f08fc3b5a6180be595f882c6e 불변.
+- Primary H1-RPM-256 (공통수학2·역함수·그래프 대칭) DIRECT_ACTIVE, PT_INVERSE_GRAPH. 기존 TPL_INVERSE_GRAPH_GEOMETRY 거리/대칭형 재사용; 중첩/공통점 전용 Generated template 2종은 archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_INVERSE/extension-meta/palma25-2final-q14-inverse-graph.json에 등록.
+- 신규 CrossConcept EXT-CROSS-H1-C2-07-GRAPH-COINCIDENCE-FIXED-POINT (GENERATED_ACTIVE) A1/A2/B3/C1 4 UID 연결. 다른 5 UID에는 필요한 CC_DISTANCE_TWO_POINTS, CC_DISCRIMINANT, CC_QUADRATIC_EQUATION, CC_SIMULTANEOUS_EQUATION 등 ACTIVE 키만 재사용. CrossConcept-Condition-Integration 구분·난이도 두 축 UID별 저장.
+- q14 신규 9문항, 객관식 45보기/오답 유도 계산 36개, 해설 SVG9 실파일 Git blobs/Python Sympy inverse 및 equal-axis 수치 검증. 문제 SVG9 EXEMPT. 독립검수/실브라우저/Consumer/index/main=NOT_RUN; sourceUid exact hash=EVIDENCE_DEBT.
+- 완료 진도 **126/207**, 다음 **q15**. q01~q13, 원본·기존 유사문항 모두 불변.
