@@ -487,7 +487,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "먼저 $A-B=E$에서\n$A=B+E$\n를 얻는다.\n$AB=(B+E)B$\n$=B^2+EB$\n$=B^2+B$\n이다. 여기서 $EB=B$인 단위행렬 성질을 썼다.\n또한\n$BA=B(B+E)$\n$=B^2+BE$\n$=B^2+B$\n이다. $BE=B$도 단위행렬 성질이다.\n따라서 $AB=BA$이고, 교환하는 행렬의 세제곱 차 공식에 따라\n$A^3-B^3=(A-B)(A^2+AB+B^2)$\n$=E(A^2+AB+B^2)$\n$=A^2+AB+B^2$\n이다.\n여기에 $A=B+E$를 대입하면\n$A^2+AB+B^2$\n$=(B+E)^2+(B+E)B+B^2$\n$=(B^2+2B+E)+(B^2+B)+B^2$\n$=3B^2+3B+E$\n$=3(B^2+B)+E$\n$=3AB+E$\n이다.\n주어진 행렬을 $N$이라 두면\n$3AB+E=N$\n$3AB=N-E$\n이다.\n그러므로\n$AB=\\dfrac13\\left(\\begin{pmatrix}7&9\\\\12&1\\end{pmatrix}-\\begin{pmatrix}1&0\\\\0&1\\end{pmatrix}\\right)$\n$=\\dfrac13\\begin{pmatrix}6&9\\\\12&0\\end{pmatrix}$\n$=\\begin{pmatrix}2&3\\\\4&0\\end{pmatrix}$\n이다.\n모든 성분의 합은\n$2+3+4+0=9$\n이므로 정답은 ①이다.",
     "subUnitKey": "H22-C-09-CORE",
-    "subUnit": "경우의 수 핵심 개념",
+    "subUnit": "행렬의 연산",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
