@@ -62,7 +62,7 @@ for(const entry of spec.roots){
     const bytes=fs.readFileSync(sourceFile);
     if(ext==='.svg'&&(!bytes.includes(Buffer.from('<svg'))||!bytes.includes(Buffer.from('</svg>'))))throw Error('QID9_SVG_INVALID:'+sourceRel);
     const dest=assetsRoot+'/'+item.uid+'-'+(field==='image'?'problem':'solution')+ext;
-    const derivedBytes=ext==='.svg'?Buffer.from(normalizeQid9Svg(bytes.toString('utf8'),item.uid),'utf8'):bytes;
+    const derivedBytes=ext==='.svg'?Buffer.from(normalizeQid9Svg(bytes.toString('utf8'),item.uid,field==='solutionImage'?{title:item.solutionImageAlt,description:item.solutionImageCaption}:{title:item.imageAlt,description:item.imageCaption}),'utf8'):bytes;
     store(dest,derivedBytes);copy[field]=dest.slice('archive/'.length);
    }
    student.push(copy);
