@@ -37,8 +37,8 @@ test('QID9 derived SVG uses existing reviewed labels when source nodes are absen
  const source='<svg xmlns="http://www.w3.org/2000/svg" width="390" height="290"><rect width="390" height="290" fill="white"/><path d="M1 2L3 4"/></svg>';
  const normalized=normalizeQid9Svg(source,'ALITE-SUNCHEON25-2FINAL-Q18-C1',{title:'C1 원·유리함수와 교점 P,Q·현 PQ 그래프',description:'두 교점의 대칭 좌표와 거리·현을 표시한다.'});
  assert.equal(validateSvgStudentLanguage(normalized,{assetRef:'derived/q18.svg'}).status,'PASS');
- assert.match(normalized,/<title id="qid9-ALITE-SUNCHEON25-2FINAL-Q18-C1-title">C1 원·유리함수와 교점 P,Q·현 PQ 그래프<\\/title>/);
- assert.match(normalized,/<desc id="qid9-ALITE-SUNCHEON25-2FINAL-Q18-C1-desc">두 교점의 대칭 좌표와 거리·현을 표시한다\\.<\\/desc>/);
+ assert.match(normalized,/<title id="qid9-ALITE-SUNCHEON25-2FINAL-Q18-C1-title">C1 원·유리함수와 교점 P,Q·현 PQ 그래프<\/title>/);
+ assert.match(normalized,/<desc id="qid9-ALITE-SUNCHEON25-2FINAL-Q18-C1-desc">두 교점의 대칭 좌표와 거리·현을 표시한다\.<\/desc>/);
  assert.equal(normalized.match(/<rect[^>]*>/)[0],source.match(/<rect[^>]*>/)[0]);
  assert.equal(normalized.match(/<path[^>]*>/)[0],source.match(/<path[^>]*>/)[0]);
 });
