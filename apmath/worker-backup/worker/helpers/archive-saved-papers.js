@@ -56,9 +56,11 @@ function validateSelectionFilters(filters) {
     typeof filters.grade !== "string" ||
     !filters.grade.trim() ||
     !Array.isArray(filters.primaryPaths) ||
-    filters.primaryPaths.length === 0 ||
     filters.primaryPaths.length > 2000 ||
-    filters.primaryPaths.some((path) => typeof path !== "string" || !path.trim())
+    filters.primaryPaths.some((path) => typeof path !== "string" || !path.trim()) ||
+    (filters.primaryPaths.length === 0 &&
+      (!Array.isArray(filters.sourceFiles) || filters.sourceFiles.length === 0 ||
+        filters.sourceFiles.some((file) => typeof file !== "string" || !file.trim())))
   ) fail("출제 학년과 범위를 확인해 주세요.", 409);
   for (const key of ["sourceFiles", "scopeQuestionUids", "difficultyBuckets"]) {
     if (filters[key] !== undefined && (!Array.isArray(filters[key]) || filters[key].some((value) => typeof value !== "string")))

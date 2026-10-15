@@ -170,7 +170,7 @@ export async function validateApprovedMixedQuestions(
   questions,
   input,
 ) {
-  const data = await loadCanonicalCatalog(env, requireProjectionVersion(input));
+  const expectedVersion = requireProjectionVersion(input);
   const filters = input?.selection_filters;
   if (
     !filters ||
@@ -179,12 +179,73 @@ export async function validateApprovedMixedQuestions(
     typeof filters.grade !== "string" ||
     !filters.grade.trim() ||
     !Array.isArray(filters.primaryPaths) ||
-    filters.primaryPaths.length === 0 ||
     filters.primaryPaths.some(
       (path) => typeof path !== "string" || !path.trim(),
-    )
+    ) ||
+    (filters.primaryPaths.length === 0 &&
+      (!Array.isArray(filters.sourceFiles) || filters.sourceFiles.length === 0 ||
+        filters.sourceFiles.some((file) => typeof file !== "string" || !file.trim())))
   )
     fail("selection_filters required");
+  let data;
+  try {
+    const lookup = await canonical.loadMixedVerificationRecords(
+      (url) => env.ARCHIVE2_ASSETS ? env.ARCHIVE2_ASSETS.fetch(url) : fetch(url),
+      String(
+        env.ARCHIVE_PUBLIC_BASE_URL ||
+          "https://icefoxtail.github.io/AP------/archive",
+      ).replace(/\/+$/, "") + "/",
+      expectedVersion,
+      (questions || []).map((question) => ({
+        questionUid: question?.questionUid,
+        sourceFile: question?.sourceArchiveFile || question?._sourceFile || question?.sourceFile || question?.source_archive_file,
+        sourceOrdinal: question?.sourceOrdinal ?? question?._sourceQuestionOrdinal ?? question?.source_question_ordinal,
+      })),
+    );
+    if (lookup.legacyManifest) {
+      data = await loadCanonicalCatalog(env, expectedVersion);
+    } else {
+      const authority = {
+        ...lookup.authority,
+        identityByUid: {},
+        examGradeByFile: {},
+        assignmentsByUid: {},
+        advancedAssignmentsByUid: {},
+        problemTypeKeys: new Set(lookup.authority?.problemTypeKeys || []),
+        bindingKeys: new Set(lookup.authority?.bindingKeys || []),
+      };
+      const records = [];
+      for (const row of lookup.records || []) {
+        const uid = String(row.questionUid || ""),
+          file = norm(row.sourceFile),
+          record = row.record;
+        if (
+          !uid || !file || !record ||
+          String(record.questionUid || "") !== uid ||
+          norm(record.sourceFile) !== file ||
+          Number(record.sourceOrdinal) !== Number(row.sourceOrdinal)
+        )
+          fail("canonical mixed record identity is invalid", 503);
+        records.push(record);
+        if (row.identity) authority.identityByUid[uid] = row.identity;
+        authority.examGradeByFile[file] = String(row.registeredGrade || "");
+        authority.assignmentsByUid[uid] = row.assignments;
+        authority.advancedAssignmentsByUid[uid] = row.advancedAssignments;
+      }
+      data = {
+        indexVersion: lookup.projectionVersion,
+        records,
+        canonicalAuthority: authority,
+        projectionPolicy: authority.projectionPolicy,
+      };
+    }
+  } catch (error) {
+    const refreshRequired = error?.code === "CANONICAL_PROJECTION_REFRESH_REQUIRED";
+    fail(
+      error?.message || "승인된 canonical authority를 확인할 수 없습니다.",
+      error?.status || (refreshRequired ? 409 : 503),
+    );
+  }
   const byUid = new Map(
     data.records.filter((r) => r.questionUid).map((r) => [r.questionUid, r]),
   );
@@ -201,11 +262,10 @@ export async function validateApprovedMixedQuestions(
       !record ||
       sourceFile !== record.sourceFile ||
       sourceOrdinal !== Number(record.sourceOrdinal) ||
-      !core.eligibility(record, {
-        includeExtended: input.include_extended === true,
-        canonicalAuthority: data.canonicalAuthority,
-      }).ok ||
+      !core.generalUseEligibility(record).ok ||
       !core.matches(record, input.selection_filters, {
+        useMode: "general",
+        includeExtended: input.include_extended === true,
         catalog: data,
         canonicalAuthority: data.canonicalAuthority,
         projectionPolicy: data.projectionPolicy,
