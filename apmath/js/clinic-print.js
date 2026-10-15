@@ -324,6 +324,8 @@ function clinicPrintMergeDbRows(tableName, rows) {
         if (tableName === 'class_students') return `${row.class_id || ''}|${row.student_id || ''}`;
         if (tableName === 'wrong_answers') return `${row.session_id || ''}|${row.student_id || ''}|${row.question_id || ''}`;
         if (tableName === 'exam_blueprints') return `${row.archive_file || ''}|${row.question_no || ''}`;
+        if (tableName === 'assessment_result_items') return `${row.session_id || ''}|${row.order_no || row.question_no || ''}`;
+        if (tableName === 'class_exam_assignment_questions') return `${row.assignment_id || ''}|${row.order_no || ''}`;
         return `${row.session_id || ''}|${row.student_id || ''}|${row.question_id || ''}`;
     };
     const current = Array.isArray(state.db[tableName]) ? state.db[tableName] : [];
@@ -339,13 +341,41 @@ function clinicPrintMergeDbRows(tableName, rows) {
     state.db[tableName] = [...byKey.values()];
 }
 
+function clinicPrintReplaceSessionIdentityRows(tableName, sessionIds, rows) {
+    if (!state.db) state.db = {};
+    const ids = new Set(Array.from(sessionIds || []).map(value => String(value || '')).filter(Boolean));
+    const current = Array.isArray(state.db[tableName]) ? state.db[tableName] : [];
+    const keyFor = row => String(tableName === 'exam_sessions' ? row.id || '' : row.session_id || '');
+    const keep = current.filter(row => !ids.has(keyFor(row)));
+    state.db[tableName] = [...keep, ...(Array.isArray(rows) ? rows : []).filter(row => ids.has(keyFor(row)))];
+}
+
+function clinicPrintReplaceAssignmentQuestionRows(assignmentIds, rows) {
+    if (!state.db) state.db = {};
+    const ids = new Set(Array.from(assignmentIds || []).map(value => String(value || '')).filter(Boolean));
+    const current = Array.isArray(state.db.class_exam_assignment_questions) ? state.db.class_exam_assignment_questions : [];
+    const keep = current.filter(row => !ids.has(String(row.assignment_id || '')));
+    state.db.class_exam_assignment_questions = [...keep, ...(Array.isArray(rows) ? rows : []).filter(row => ids.has(String(row.assignment_id || '')))];
+}
+
 async function clinicPrintRefreshClassAssignments(classId) {
     if (!classId || typeof api === 'undefined' || typeof api.get !== 'function') return false;
     try {
-        const res = await api.get(`class-exam-assignments?class=${encodeURIComponent(classId)}`);
-        const assignments = res.assignments || res.items || [];
-        clinicPrintReplaceClassAssignments(classId, assignments);
+        const res = await api.get(`exam-sessions/by-class?class=${encodeURIComponent(classId)}`);
+        if (!res || res.success !== true || res.error) throw new Error(res?.error || '반 시험 기록 조회를 확인할 수 없습니다.');
+        const incomingSessions = Array.isArray(res.sessions) ? res.sessions : [];
+        const incomingAssignments = Array.isArray(res.assignments) ? res.assignments : [];
+        const sessionIds = new Set(incomingSessions.map(row => String(row.id || '')).filter(Boolean));
+        const assignmentIds = new Set(incomingSessions.map(row => String(row.assignment_id || '')).filter(Boolean));
+        const allowedSessionIds = sessionIds;
+        const wrongAnswers = (Array.isArray(res.wrong_answers) ? res.wrong_answers : []).filter(row => allowedSessionIds.has(String(row.session_id || '')));
+        clinicPrintReplaceClassAssignments(classId, incomingAssignments);
         clinicPrintReplaceClassAssignmentExclusions(res.exclusions || []);
+        clinicPrintReplaceSessionIdentityRows('exam_sessions', sessionIds, incomingSessions);
+        clinicPrintReplaceSessionIdentityRows('wrong_answers', sessionIds, wrongAnswers);
+        if (Array.isArray(res.result_items)) clinicPrintReplaceSessionIdentityRows('assessment_result_items', sessionIds, res.result_items);
+        if (Array.isArray(res.assignment_questions)) clinicPrintReplaceAssignmentQuestionRows(assignmentIds, res.assignment_questions);
+        clinicPrintMergeDbRows('exam_blueprints', res.blueprints || []);
         return true;
     } catch (e) {
         console.warn('[clinic-print] class exam assignment refresh failed:', e);
@@ -381,6 +411,8 @@ async function clinicPrintRefreshGradeClinicData(classId) {
         clinicPrintMergeDbRows('exam_sessions', res.sessions || []);
         clinicPrintMergeDbRows('wrong_answers', res.wrong_answers || []);
         clinicPrintMergeDbRows('exam_blueprints', res.blueprints || []);
+        clinicPrintMergeDbRows('assessment_result_items', res.result_items || []);
+        clinicPrintMergeDbRows('class_exam_assignment_questions', res.assignment_questions || []);
         clinicPrintMergeClassAssignmentExclusions(res.exclusions || []);
         clinicPrintGradeData.set(key, { ...res, ...range, status: 'ready' });
         return true;
@@ -662,32 +694,129 @@ function clinicPrintFindBlueprint(session, questionNo) {
     }) || null;
 }
 
-// 시험 문항이 가리키는 "원본 아카이브 문항" 식별자.
-// 조립/MIXED 시험은 session.archive_file/question_no가 원본과 다를 수 있으므로
-// blueprint의 source_archive_file/source_question_no를 우선 보존한다(report.js와 동일 계약).
-function clinicPrintGetSourceIdentity(bp, archiveFile, questionNo) {
-    const sourceArchiveFile = clinicPrintNormalizeArchiveFile(bp?.source_archive_file || archiveFile || '');
-    const sourceQuestionNo = Number(bp?.source_question_no) || Number(questionNo) || 0;
-    const sourceQuestionOrdinal = Number(bp?.source_question_ordinal) || null;
-    const sourceQuestionUid = String(bp?.source_question_uid || '').trim();
-    return { sourceArchiveFile, sourceQuestionNo, sourceQuestionOrdinal, sourceQuestionUid };
+function clinicPrintFindQuestionSnapshot(session, questionNo, gradeData = null) {
+    const sessionId = String(session?.id || '');
+    const assignmentId = String(session?.assignment_id || '');
+    const resultRows = gradeData?.status === 'ready'
+        ? (gradeData.result_items || [])
+        : (state.db?.assessment_result_items || []);
+    const resultItem = resultRows.find(row => String(row.session_id || '') === sessionId &&
+        Number(row.order_no || row.question_no) === Number(questionNo)) || null;
+    const hasResultSnapshot = !!resultItem && !!(
+        resultItem.source_identity_status || resultItem.metadata_snapshot_status || resultItem.source_question_uid ||
+        resultItem.metadata_revision || resultItem.metadata_hash || resultItem.metadata_json
+    );
+    if (hasResultSnapshot) return resultItem;
+
+    const assignmentRows = gradeData?.status === 'ready'
+        ? (gradeData.assignment_questions || [])
+        : (state.db?.class_exam_assignment_questions || []);
+    const assignmentQuestion = assignmentRows.find(row => String(row.assignment_id || '') === assignmentId &&
+        Number(row.order_no) === Number(questionNo)) || null;
+    if (assignmentQuestion) return assignmentQuestion;
+    return resultItem;
+}
+
+function clinicPrintReadQuestionMetadata(snapshot) {
+    const raw = snapshot?.metadata_json || snapshot?.metadataJson;
+    if (!raw) return {};
+    try {
+        const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;
+        return parsed?.archiveMetadata && typeof parsed.archiveMetadata === 'object'
+            ? parsed.archiveMetadata
+            : parsed && typeof parsed === 'object' ? parsed : {};
+    } catch (e) {
+        return {};
+    }
+}
+
+// Identity comes only from the result row or the frozen assignment bridge.
+// Display order is kept separately and is never promoted to source question no.
+function clinicPrintGetSourceIdentity(snapshot) {
+    const metadata = clinicPrintReadQuestionMetadata(snapshot);
+    const sourceArchiveFile = clinicPrintNormalizeArchiveFile(snapshot?.source_archive_file || snapshot?.sourceArchiveFile || '') || null;
+    const sourceQuestionNoValue = Number(snapshot?.source_question_no ?? snapshot?.sourceQuestionNo);
+    const sourceQuestionOrdinalValue = Number(snapshot?.source_question_ordinal ?? snapshot?.sourceQuestionOrdinal);
+    const sourceQuestionUid = String(snapshot?.source_question_uid || snapshot?.question_uid || snapshot?.sourceQuestionUid || '').trim();
+    const sourceIdentityStatus = String(snapshot?.source_identity_status || snapshot?.resolution_status || snapshot?.sourceIdentityStatus || 'UNRESOLVED').toUpperCase();
+    const metadataRevision = snapshot?.metadata_revision || snapshot?.metadataRevision || metadata.metadataRevision || null;
+    const metadataHash = snapshot?.metadata_hash || snapshot?.metadataHash || null;
+    const metadataJson = snapshot?.metadata_json ?? snapshot?.metadataJson ?? null;
+    const metadataSnapshotStatus = snapshot?.metadata_snapshot_status || snapshot?.metadataSnapshotStatus ||
+        (metadataRevision && metadataHash && metadataJson ? 'CAPTURED' : (metadataRevision || metadataHash || metadataJson ? 'PARTIAL' : 'UNRESOLVED'));
+    return {
+        sourceArchiveFile,
+        sourceQuestionNo: Number.isFinite(sourceQuestionNoValue) && sourceQuestionNoValue > 0 ? sourceQuestionNoValue : null,
+        sourceQuestionOrdinal: Number.isFinite(sourceQuestionOrdinalValue) && sourceQuestionOrdinalValue > 0 ? sourceQuestionOrdinalValue : null,
+        sourceQuestionUid: sourceIdentityStatus === 'UNRESOLVED' ? '' : sourceQuestionUid,
+        sourceIdentityStatus,
+        sourceFingerprint: snapshot?.source_fingerprint || snapshot?.sourceFingerprint || null,
+        metadataRevision,
+        metadataHash,
+        metadataJson,
+        metadataSnapshotStatus,
+        unitKey: snapshot?.standard_unit_key || snapshot?.standardUnitKey || metadata.standardUnitKey || null,
+        unit: snapshot?.standard_unit || snapshot?.standardUnit || metadata.standardUnit || null,
+        course: snapshot?.standard_course || snapshot?.standardCourse || metadata.standardCourse || null,
+        cluster: snapshot?.concept_cluster_key || snapshot?.conceptClusterKey || metadata.conceptClusterKey || null,
+        typeKey: snapshot?.type_key || snapshot?.typeKey || metadata.typeKey || null,
+        difficulty: snapshot?.difficulty || snapshot?.difficulty_at_assignment || metadata.difficulty || metadata.difficultyBucket || null
+    };
+}
+
+function clinicPrintBuildWrongItemFromSession(session, examKey, questionNo, gradeData = null) {
+    const archiveFile = clinicPrintGetSessionArchiveFile(session);
+    const snapshot = clinicPrintFindQuestionSnapshot(session, questionNo, gradeData);
+    const identity = clinicPrintGetSourceIdentity(snapshot);
+    const originRef = {
+        sessionId: String(session?.id || ''),
+        assignmentId: String(session?.assignment_id || ''),
+        orderNo: Number(questionNo),
+        examTitle: String(session?.exam_title || ''),
+        examDate: String(session?.exam_date || ''),
+        archiveFile
+    };
+    return {
+        examKey,
+        examTitle: session?.exam_title || '',
+        examDate: session?.exam_date || '',
+        archiveFile,
+        questionNo: Number(questionNo),
+        displayArchiveFile: archiveFile,
+        displayQuestionNo: Number(questionNo),
+        ...identity,
+        sourceOriginRefs: originRef.sessionId || originRef.assignmentId ? [originRef] : []
+    };
 }
 
 function clinicPrintGetWrongItemSourceKey(item) {
     const file = clinicPrintNormalizeArchiveFile(item?.sourceArchiveFile || item?.archiveFile || '');
     const ordinal = Number(item?.sourceQuestionOrdinal || 0);
     const no = Number(item?.sourceQuestionNo || item?.questionNo || 0);
-    return ordinal > 0 ? `${file}|ordinal:${ordinal}` : `${file}|${no}`;
+    const revision = String(item?.metadataRevision || '');
+    const hash = String(item?.metadataHash || '');
+    const uid = String(item?.sourceQuestionUid || '').trim();
+    if (uid) return `uid:${uid}|meta:${revision}|${hash}`;
+    if (file && ordinal > 0 && item?.sourceIdentityStatus !== 'UNRESOLVED') return `${file}|ordinal:${ordinal}|meta:${revision}|${hash}`;
+    if (file && no > 0 && item?.sourceIdentityStatus && item.sourceIdentityStatus !== 'UNRESOLVED') return `${file}|source-no:${no}|meta:${revision}|${hash}`;
+    const origin = (item?.sourceOriginRefs || [])[0] || {};
+    if (origin.assignmentId || origin.sessionId) return `origin:${origin.assignmentId || origin.sessionId}|order:${origin.orderNo || item?.displayQuestionNo || item?.questionNo || 0}`;
+    return `legacy:${file}|${Number(item?.displayQuestionNo || item?.questionNo || 0)}`;
 }
 
 function clinicPrintDedupeWrongItemsBySource(items) {
-    const seen = new Set();
-    return (items || []).filter(item => {
+    const byKey = new Map();
+    (items || []).forEach(item => {
         const key = clinicPrintGetWrongItemSourceKey(item);
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
+        const existing = byKey.get(key);
+        if (!existing) byKey.set(key, { ...item, sourceOriginRefs: [...(item.sourceOriginRefs || [])] });
+        else {
+            const refs = new Map((existing.sourceOriginRefs || []).map(ref => [`${ref.assignmentId || ''}|${ref.sessionId || ''}|${ref.orderNo || ''}`, ref]));
+            (item.sourceOriginRefs || []).forEach(ref => refs.set(`${ref.assignmentId || ''}|${ref.sessionId || ''}|${ref.orderNo || ''}`, ref));
+            existing.sourceOriginRefs = [...refs.values()];
+        }
     });
+    return [...byKey.values()];
 }
 
 function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedStudentIds, options = {}) {
@@ -707,25 +836,8 @@ function clinicPrintBuildStudentWrongItems(classId, selectedExamKeys, selectedSt
             if (!archiveFile) return;
 
             const wrongItems = clinicPrintGetWrongIdsBySession(session.id,
-                clinicPrintParseExamKey(examKey).examDate ? null : classId).map(questionNo => {
-                const bp = clinicPrintFindBlueprint(session, questionNo);
-                const { sourceArchiveFile, sourceQuestionNo, sourceQuestionOrdinal, sourceQuestionUid } = clinicPrintGetSourceIdentity(bp, archiveFile, questionNo);
-                return {
-                    examKey,
-                    examTitle: session.exam_title || '',
-                    examDate: session.exam_date || '',
-                    archiveFile,
-                    questionNo,
-                    sourceArchiveFile,
-                    sourceQuestionNo,
-                    sourceQuestionOrdinal,
-                    sourceQuestionUid,
-                    unitKey: bp?.standard_unit_key || '',
-                    unit: bp?.standard_unit || '',
-                    course: bp?.standard_course || '',
-                    cluster: bp?.concept_cluster_key || ''
-                };
-            });
+                clinicPrintParseExamKey(examKey).examDate ? null : classId).map(questionNo =>
+                clinicPrintBuildWrongItemFromSession(session, examKey, questionNo));
 
             if (!wrongItems.length && options.excludeEmpty !== false) return;
 
@@ -781,22 +893,27 @@ function clinicPrintBuildGradeWrongSource(classId, selectedExamKeys) {
         const sessions = clinicPrintDedupeLatestSessionByStudent(clinicPrintGetGradeSessionsForExamGroup(classId, examKey));
         cohortCounts[examKey] = sessions.length;
 
-        // 조립 시험 등 서로 다른 문제지가 같은 원문 문항을 공유할 수 있다.
-        // 오답이 없는 응시자도 포함해 원문 문항별 응시 학생의 합집합을 센다.
-        if (sessions.length) {
-            const representative = sessions[0];
-            const archiveFile = clinicPrintGetSessionArchiveFile(representative);
-            const questionCount = Math.max(clinicPrintParseExamKey(examKey).questionCount,
-                ...sessions.map(session => Number(session.question_count || 0)));
-            const cohortIds = sessions.map(session => String(session.student_id || '')).filter(id => studentMap.has(id));
+        // Count each student's exposure against that session's frozen question
+        // identity. Same-title reissues may carry a different Meta snapshot.
+        const gradeData = clinicPrintGradeData.get(String(classId));
+        sessions.forEach(session => {
+            const studentId = String(session.student_id || '');
+            if (!studentId || !studentMap.has(studentId)) return;
+            const questionCount = Math.max(0, Number(session.question_count || 0));
             for (let questionNo = 1; questionNo <= questionCount; questionNo++) {
-                const bp = clinicPrintFindBlueprint(representative, questionNo);
-                const identity = clinicPrintGetSourceIdentity(bp, archiveFile, questionNo);
-                const key = clinicPrintGetWrongItemSourceKey({ archiveFile, questionNo, ...identity });
+                const snapshot = clinicPrintFindQuestionSnapshot(session, questionNo, gradeData);
+                const identity = clinicPrintGetSourceIdentity(snapshot);
+                const key = clinicPrintGetWrongItemSourceKey({
+                    archiveFile: clinicPrintGetSessionArchiveFile(session),
+                    questionNo,
+                    displayQuestionNo: questionNo,
+                    ...identity,
+                    sourceOriginRefs: [{ sessionId: session.id, assignmentId: session.assignment_id, orderNo: questionNo }]
+                });
                 if (!sourceCohorts.has(key)) sourceCohorts.set(key, new Set());
-                for (const id of cohortIds) sourceCohorts.get(key).add(id);
+                sourceCohorts.get(key).add(studentId);
             }
-        }
+        });
 
         sessions.forEach(session => {
             const studentId = String(session.student_id || '');
@@ -806,25 +923,8 @@ function clinicPrintBuildGradeWrongSource(classId, selectedExamKeys) {
             const archiveFile = clinicPrintGetSessionArchiveFile(session);
             if (!archiveFile) return;
 
-            const wrongItems = clinicPrintGetWrongIdsBySession(session.id, classId).map(questionNo => {
-                const bp = clinicPrintFindBlueprint(session, questionNo);
-                const { sourceArchiveFile, sourceQuestionNo, sourceQuestionOrdinal, sourceQuestionUid } = clinicPrintGetSourceIdentity(bp, archiveFile, questionNo);
-                return {
-                    examKey,
-                    examTitle: session.exam_title || '',
-                    examDate: session.exam_date || '',
-                    archiveFile,
-                    questionNo,
-                    sourceArchiveFile,
-                    sourceQuestionNo,
-                    sourceQuestionOrdinal,
-                    sourceQuestionUid,
-                    unitKey: bp?.standard_unit_key || '',
-                    unit: bp?.standard_unit || '',
-                    course: bp?.standard_course || '',
-                    cluster: bp?.concept_cluster_key || ''
-                };
-            });
+            const wrongItems = clinicPrintGetWrongIdsBySession(session.id, classId).map(questionNo =>
+                clinicPrintBuildWrongItemFromSession(session, examKey, questionNo, clinicPrintGradeData.get(String(classId))));
 
             if (!wrongItems.length) return;
 
@@ -875,10 +975,19 @@ function clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts = {
                     examKey: item.examKey || '',
                     archiveFile: clinicPrintNormalizeArchiveFile(item.archiveFile),
                     questionNo: Number(item.questionNo),
-                    sourceArchiveFile: clinicPrintNormalizeArchiveFile(item.sourceArchiveFile || item.archiveFile),
-                    sourceQuestionNo: Number(item.sourceQuestionNo) || Number(item.questionNo),
+                    displayArchiveFile: item.displayArchiveFile || item.archiveFile || '',
+                    displayQuestionNo: Number(item.displayQuestionNo || item.questionNo),
+                    sourceArchiveFile: item.sourceArchiveFile || null,
+                    sourceQuestionNo: item.sourceQuestionNo || null,
                     sourceQuestionOrdinal: item.sourceQuestionOrdinal || null,
                     sourceQuestionUid: item.sourceQuestionUid || '',
+                    sourceIdentityStatus: item.sourceIdentityStatus || 'UNRESOLVED',
+                    sourceFingerprint: item.sourceFingerprint || null,
+                    metadataRevision: item.metadataRevision || null,
+                    metadataHash: item.metadataHash || null,
+                    metadataJson: item.metadataJson ?? null,
+                    metadataSnapshotStatus: item.metadataSnapshotStatus || 'UNRESOLVED',
+                    sourceOriginRefs: [...(item.sourceOriginRefs || [])],
                     wrongCount: 0,
                     totalCount,
                     correctRate: null,
@@ -886,9 +995,15 @@ function clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts = {
                     unitKey: item.unitKey || '',
                     unit: item.unit || '',
                     course: item.course || '',
-                    cluster: item.cluster || ''
+                    cluster: item.cluster || '',
+                    typeKey: item.typeKey || '',
+                    difficulty: item.difficulty || ''
                 };
             }
+
+            const originRefs = new Map((map[key].sourceOriginRefs || []).map(ref => [`${ref.assignmentId || ''}|${ref.sessionId || ''}|${ref.orderNo || ''}`, ref]));
+            (item.sourceOriginRefs || []).forEach(ref => originRefs.set(`${ref.assignmentId || ''}|${ref.sessionId || ''}|${ref.orderNo || ''}`, ref));
+            map[key].sourceOriginRefs = [...originRefs.values()];
 
             if (totalCount && totalCount > Number(map[key].totalCount || 0)) {
                 map[key].totalCount = totalCount;

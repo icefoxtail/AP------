@@ -13,8 +13,8 @@ function load(savedFilters = {}, now = '2026-09-28T12:00:00+09:00') {
             class_students: [{ class_id: 'c1', student_id: 's1' }, { class_id: 'c2', student_id: 's2' }, { class_id: 'c3', student_id: 's3' }],
             class_exam_assignments: [{ id: 'a1', class_id: 'c1', exam_date: '2026-09-28', exam_title: '중3 중간고사', archive_file: 'MIXED:archive2-fixture', question_count: 3 }],
             exam_sessions: [
-                { id: 'e1', class_id: 'c1', student_id: 's1', exam_date: '2026-09-28', exam_title: '중3 2학기 중간', archive_file: 'MIXED:archive2-fixture', question_count: 3 },
-                { id: 'e2', class_id: 'c2', student_id: 's2', exam_date: '2026-09-20', exam_title: '다른 반 표시 제목', archive_file: 'MIXED:archive2-fixture', question_count: 3 },
+                { id: 'e1', assignment_id: 'a1', class_id: 'c1', student_id: 's1', exam_date: '2026-09-28', exam_title: '중3 2학기 중간', archive_file: 'MIXED:archive2-fixture', question_count: 3 },
+                { id: 'e2', assignment_id: 'a2', class_id: 'c2', student_id: 's2', exam_date: '2026-09-20', exam_title: '다른 반 표시 제목', archive_file: 'MIXED:archive2-fixture', question_count: 3 },
                 { id: 'e3', class_id: 'c3', student_id: 's3', exam_date: '2026-09-28', archive_file: 'MIXED:archive2-fixture', question_count: 3 },
                 { id: 'old', class_id: 'c1', student_id: 's1', exam_date: '2026-08-27', archive_file: 'MIXED:archive2-fixture', question_count: 3 },
                 { id: 'other', class_id: 'c1', student_id: 's1', exam_date: '2026-09-28', archive_file: 'MIXED:other', question_count: 3 }
@@ -23,6 +23,19 @@ function load(savedFilters = {}, now = '2026-09-28T12:00:00+09:00') {
             exam_blueprints: [
                 { archive_file: 'MIXED:archive2-fixture', question_no: 2, source_archive_file: 'exams/original/middle/m3/2mid/source.js', source_question_no: 1, source_question_ordinal: 2, source_question_uid: 'uid-subjective-1' },
                 { archive_file: 'MIXED:archive2-fixture', question_no: 3, source_archive_file: 'exams/original/middle/m3/2mid/source.js', source_question_no: 1, source_question_ordinal: 1, source_question_uid: 'uid-objective-1' }
+            ],
+            class_exam_assignment_questions: [
+                { assignment_id: 'a1', order_no: 1, question_uid: 'uid-objective-1', source_archive_file: 'original/middle/m3/2mid/source.js', source_question_no: '4', source_question_ordinal: 1, resolution_status: 'VERIFIED', metadata_revision: 'rev-1', metadata_hash: 'hash-objective', metadata_json: '{"difficultyBucket":2}' },
+                { assignment_id: 'a1', order_no: 2, question_uid: 'uid-subjective-1', source_archive_file: 'original/middle/m3/2mid/source.js', source_question_no: '1', source_question_ordinal: 2, resolution_status: 'VERIFIED', metadata_revision: 'rev-1', metadata_hash: 'hash-subjective', metadata_json: '{"difficultyBucket":4}' },
+                { assignment_id: 'a1', order_no: 3, question_uid: 'uid-third-1', source_archive_file: 'original/middle/m3/2mid/source.js', source_question_no: '8', source_question_ordinal: 3, resolution_status: 'VERIFIED', metadata_revision: 'rev-1', metadata_hash: 'hash-third', metadata_json: '{"difficultyBucket":3}' },
+                { assignment_id: 'a2', order_no: 1, question_uid: 'uid-objective-1', source_archive_file: 'original/middle/m3/2mid/source.js', source_question_no: '4', source_question_ordinal: 1, resolution_status: 'VERIFIED', metadata_revision: 'rev-1', metadata_hash: 'hash-objective', metadata_json: '{"difficultyBucket":2}' },
+                { assignment_id: 'a2', order_no: 2, question_uid: 'uid-subjective-1', source_archive_file: 'original/middle/m3/2mid/source.js', source_question_no: '1', source_question_ordinal: 2, resolution_status: 'VERIFIED', metadata_revision: 'rev-1', metadata_hash: 'hash-subjective', metadata_json: '{"difficultyBucket":4}' },
+                { assignment_id: 'a2', order_no: 3, question_uid: 'uid-third-1', source_archive_file: 'original/middle/m3/2mid/source.js', source_question_no: '8', source_question_ordinal: 3, resolution_status: 'VERIFIED', metadata_revision: 'rev-1', metadata_hash: 'hash-third', metadata_json: '{"difficultyBucket":3}' }
+            ],
+            assessment_result_items: [
+                { session_id: 'e1', assignment_id: 'a1', order_no: 2, question_no: 2, source_question_uid: 'uid-subjective-1', source_archive_file: 'original/middle/m3/2mid/source.js', source_question_no: '1', source_question_ordinal: 2, source_identity_status: 'VERIFIED', metadata_revision: 'rev-1', metadata_hash: 'hash-subjective', metadata_json: '{"difficultyBucket":4}', metadata_snapshot_status: 'CAPTURED' },
+                { session_id: 'e2', assignment_id: 'a2', order_no: 2, question_no: 2, source_question_uid: 'uid-subjective-1', source_archive_file: 'original/middle/m3/2mid/source.js', source_question_no: '1', source_question_ordinal: 2, source_identity_status: 'VERIFIED', metadata_revision: 'rev-1', metadata_hash: 'hash-subjective', metadata_json: '{"difficultyBucket":4}', metadata_snapshot_status: 'CAPTURED' },
+                { session_id: 'e2', assignment_id: 'a2', order_no: 3, question_no: 3, source_question_uid: 'uid-objective-1', source_archive_file: 'original/middle/m3/2mid/source.js', source_question_no: '4', source_question_ordinal: 1, source_identity_status: 'VERIFIED', metadata_revision: 'rev-1', metadata_hash: 'hash-objective', metadata_json: '{"difficultyBucket":2}', metadata_snapshot_status: 'CAPTURED' }
             ]
         } },
         localStorage: { getItem(key) { return savedFilters[key] || null; }, setItem(key, value) { savedFilters[key] = value; } },
@@ -77,11 +90,18 @@ test('Shared source questions include correct students from every selected paper
     c.state.db.class_students.push({ class_id: 'c2', student_id: 's4' });
     c.state.db.class_exam_assignments = [];
     c.state.db.exam_sessions = [
-        { id: 'a', class_id: 'c1', student_id: 's1', exam_date: '2026-09-28', archive_file: 'MIXED:A', question_count: 1 },
-        { id: 'b', class_id: 'c2', student_id: 's2', exam_date: '2026-09-15', archive_file: 'MIXED:B', question_count: 1 },
-        { id: 'c', class_id: 'c2', student_id: 's4', exam_date: '2026-09-15', archive_file: 'MIXED:B', question_count: 1 }
+        { id: 'a', assignment_id: 'aa', class_id: 'c1', student_id: 's1', exam_date: '2026-09-28', archive_file: 'MIXED:A', question_count: 1 },
+        { id: 'b', assignment_id: 'ab', class_id: 'c2', student_id: 's2', exam_date: '2026-09-15', archive_file: 'MIXED:B', question_count: 1 },
+        { id: 'c', assignment_id: 'ab', class_id: 'c2', student_id: 's4', exam_date: '2026-09-15', archive_file: 'MIXED:B', question_count: 1 }
     ];
     c.state.db.wrong_answers = [{ session_id: 'a', question_id: 1 }];
+    c.state.db.class_exam_assignment_questions = ['aa', 'ab'].map(assignment_id => ({ assignment_id, order_no: 1,
+        question_uid: 'uid-shared', source_archive_file: 'original/middle/m3/2mid/shared.js', source_question_no: '7',
+        source_question_ordinal: 9, resolution_status: 'VERIFIED', metadata_revision: 'rev-1', metadata_hash: 'hash-shared', metadata_json: '{"difficultyBucket":3}' }));
+    c.state.db.assessment_result_items = [{ session_id: 'a', assignment_id: 'aa', order_no: 1, question_no: 1,
+        source_question_uid: 'uid-shared', source_archive_file: 'original/middle/m3/2mid/shared.js', source_question_no: '7',
+        source_question_ordinal: 9, source_identity_status: 'VERIFIED', metadata_revision: 'rev-1', metadata_hash: 'hash-shared',
+        metadata_json: '{"difficultyBucket":3}', metadata_snapshot_status: 'CAPTURED' }];
     c.state.db.exam_blueprints = ['MIXED:A', 'MIXED:B'].map(archive_file => ({ archive_file, question_no: 1,
         source_archive_file: 'exams/original/middle/m3/2mid/shared.js', source_question_no: 7 }));
     const keys = Array.from(c.clinicPrintGetClassExamGroups('c1', 'grade'), group => group.examKey);
@@ -152,13 +172,37 @@ test('Grade and student wrong payloads retain canonical source ordinal and UID w
     assert.equal(payload.gradeWrongItems.length, 2);
     const subjective = payload.gradeWrongItems.find(item => item.sourceQuestionOrdinal === 2);
     assert.equal(subjective.sourceQuestionUid, 'uid-subjective-1');
+    assert.equal(subjective.metadataRevision, 'rev-1');
+    assert.equal(subjective.metadataHash, 'hash-subjective');
     assert.equal(subjective.wrongCount, 2);
     assert.equal(subjective.totalCount, 2);
     assert.equal(subjective.correctRate, 0);
+    assert.ok(subjective.sourceOriginRefs.some(ref => ref.assignmentId === 'a1' && ref.orderNo === 2));
     const objective = payload.gradeWrongItems.find(item => item.sourceQuestionOrdinal === 1);
     assert.equal(objective.sourceQuestionUid, 'uid-objective-1');
     assert.equal(objective.correctRate, 50);
     assert.equal(payload.students[0].wrongItems[0].sourceQuestionOrdinal, 2);
+});
+test('Clinic prefers saved result identity/meta, then frozen assignment, and never current blueprint for legacy rows', () => {
+    const c = load();
+    const group = c.clinicPrintGetClassExamGroups('c1')[0];
+    c.state.db.exam_blueprints.find(bp => bp.question_no === 2).source_question_uid = 'uid-current-mutation';
+    let payload = c.clinicPrintBuildPayload('c1', { selectedExamKeys: [group.examKey], selectedStudentIds: ['s1'], mode: 'student' });
+    assert.equal(payload.students[0].wrongItems[0].sourceQuestionUid, 'uid-subjective-1');
+    assert.equal(payload.students[0].wrongItems[0].metadataHash, 'hash-subjective');
+
+    c.state.db.assessment_result_items = [];
+    payload = c.clinicPrintBuildPayload('c1', { selectedExamKeys: [group.examKey], selectedStudentIds: ['s1'], mode: 'student' });
+    assert.equal(payload.students[0].wrongItems[0].sourceQuestionUid, 'uid-subjective-1');
+    assert.equal(payload.students[0].wrongItems[0].metadataHash, 'hash-subjective');
+
+    c.state.db.class_exam_assignment_questions = [];
+    payload = c.clinicPrintBuildPayload('c1', { selectedExamKeys: [group.examKey], selectedStudentIds: ['s1'], mode: 'student' });
+    assert.equal(payload.students[0].wrongItems[0].sourceQuestionUid, '');
+    assert.equal(payload.students[0].wrongItems[0].sourceQuestionOrdinal, null);
+    assert.equal(payload.students[0].wrongItems[0].sourceQuestionNo, null);
+    assert.equal(payload.students[0].wrongItems[0].sourceIdentityStatus, 'UNRESOLVED');
+    assert.equal(payload.students[0].wrongItems[0].displayQuestionNo, 2);
 });
 test('Legacy relative file spellings normalize before joining OMR sessions to assignment groups', () => {
     const c = load();

@@ -13,6 +13,11 @@ import {
   hasAssignmentLifecycleEvents,
 } from '../helpers/archive2-assignment-lifecycle.js';
 import outputContract from '../../../../archive/archive2-output-contract.js';
+import {
+  loadAssignmentQuestionSnapshots,
+  loadAssessmentResultItemSnapshots,
+  saveAssessmentResultItems,
+} from '../helpers/assessment-result-items.js';
 
 async function verifyAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
@@ -41,12 +46,6 @@ const BLUEPRINT_ARCHIVE_METADATA_COLUMNS = ['sub_unit_key', 'template_key', 'met
 const BLUEPRINT_IDENTITY_COLUMNS = ['source_question_uid', 'source_question_ordinal'];
 const ARCHIVE_METADATA_REVISION = 'archive-metadata-v1';
 const QUESTION_REVIEW_META_COLUMNS = ['concept', 'error_tag', 'difficulty', 'question_type'];
-const RESULT_ITEM_COLUMNS = [
-  'session_id', 'assignment_id', 'pack_id', 'student_id', 'class_id', 'order_no', 'question_no',
-  'result_status', 'is_correct', 'student_answer', 'correct_answer', 'score', 'max_score',
-  'source_archive_file', 'source_question_no', 'standard_unit_key', 'standard_unit',
-  'concept_cluster_key', 'type_key', 'difficulty', 'analysis_note'
-];
 const TARGET_SCOPE_VALUES = new Set(['class', 'grade', 'teacher_grade']);
 const ANALYSIS_STATUS_VALUES = new Set(['none', 'basic_ready', 'premium_ready', 'stale']);
 const columnCacheByEnv = new WeakMap();
@@ -362,6 +361,102 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
   } catch (e) {
     console.warn('[exams] archive blueprint sync failed:', archiveFile, e);
   }
+}
+
+async function snapshotLegacyAssignmentQuestions(env, assignment) {
+  const assignmentId = normalizeOptionalText(assignment?.id);
+  const archiveFile = normalizeAssignmentArchiveFile(assignment?.archive_file || '');
+  const questionCount = Math.max(0, Math.min(400, Number.parseInt(assignment?.question_count, 10) || 0));
+  if (!assignmentId || !archiveFile || !questionCount) return { skipped: true, reason: 'assignment_identity_unavailable' };
+
+  const bridgeColumns = await getTableColumnSet(env, 'class_exam_assignment_questions');
+  if (!['assignment_id', 'order_no', 'question_uid', 'resolution_status'].every(column => bridgeColumns.has(column)))
+    return { skipped: true, reason: 'assignment_question_bridge_unavailable' };
+  const prior = await env.DB.prepare(
+    'SELECT COUNT(*) AS row_count FROM class_exam_assignment_questions WHERE assignment_id = ?'
+  ).bind(assignmentId).first();
+  if (Number(prior?.row_count || 0) > 0) return { skipped: true, reason: 'assignment_snapshot_already_exists' };
+
+  const blueprintColumns = await getTableColumnSet(env, 'exam_blueprints');
+  if (!blueprintColumns.has('archive_file') || !blueprintColumns.has('question_no'))
+    return { skipped: true, reason: 'exam_blueprints_unavailable' };
+  let blueprintRows = [];
+  try {
+    const result = await env.DB.prepare(
+      'SELECT * FROM exam_blueprints WHERE archive_file = ? ORDER BY CAST(question_no AS INTEGER), question_no'
+    ).bind(archiveFile).all();
+    blueprintRows = result.results || [];
+  } catch (error) {
+    console.warn('[assignment-question-snapshot] blueprint lookup failed:', archiveFile, error);
+  }
+  const isMixedArchive = archiveFile.startsWith('MIXED:');
+  const sourceOrdinalAvailable = !isMixedArchive && blueprintRows.some(row => Number(row.source_question_ordinal) > 0);
+  const blueprintByOrder = new Map();
+  const ambiguousOrders = new Set();
+  for (const row of blueprintRows) {
+    const orderNo = isMixedArchive
+      ? Number(row.question_no)
+      : sourceOrdinalAvailable
+        ? Number(row.source_question_ordinal)
+        : Number(row.question_no);
+    if (!(orderNo > 0) || orderNo > questionCount) continue;
+    if (blueprintByOrder.has(orderNo)) ambiguousOrders.add(orderNo);
+    else blueprintByOrder.set(orderNo, row);
+  }
+  const bridgeOptionalColumns = [
+    'source_archive_file', 'source_question_no', 'source_question_ordinal', 'source_fingerprint',
+    'standard_unit_key', 'difficulty_at_assignment', 'metadata_revision', 'metadata_hash', 'metadata_json'
+  ].filter(column => bridgeColumns.has(column));
+  const statements = [];
+
+  for (let orderNo = 1; orderNo <= questionCount; orderNo++) {
+    const blueprint = ambiguousOrders.has(orderNo) ? {} : (blueprintByOrder.get(orderNo) || {});
+    const sourceArchiveFile = normalizeSourceFileForQuestionUid(blueprint.source_archive_file || '');
+    const sourceOrdinal = normalizeOptionalPositiveInteger(blueprint.source_question_ordinal);
+    const storedUid = normalizeOptionalText(blueprint.source_question_uid);
+    const expectedUid = sourceArchiveFile && sourceOrdinal
+      ? await makeCanonicalQuestionUid(sourceArchiveFile, sourceOrdinal)
+      : null;
+    const questionUid = storedUid && expectedUid && storedUid === expectedUid ? storedUid : null;
+    const resolutionStatus = questionUid ? 'LEGACY_INFERRED' : 'UNRESOLVED';
+    const metadataRevision = normalizeOptionalText(blueprint.metadata_revision);
+    const metadataHash = normalizeOptionalText(blueprint.metadata_hash);
+    const metadataJson = Object.keys(blueprint).length ? JSON.stringify({
+      snapshotScope: 'BLUEPRINT_FIELDS_ONLY',
+      standardUnitKey: blueprint.standard_unit_key || null,
+      standardUnit: blueprint.standard_unit || null,
+      standardCourse: blueprint.standard_course || null,
+      subUnitKey: blueprint.sub_unit_key || null,
+      conceptClusterKey: blueprint.concept_cluster_key || null,
+      typeKey: blueprint.type_key || null,
+      templateKey: blueprint.template_key || null,
+      difficulty: blueprint.difficulty || null,
+      metadataRevision
+    }) : null;
+    const row = {
+      assignment_id: assignmentId,
+      order_no: orderNo,
+      question_uid: questionUid,
+      source_archive_file: sourceArchiveFile || null,
+      source_question_no: blueprint.source_question_no || null,
+      source_question_ordinal: sourceOrdinal,
+      source_fingerprint: null,
+      standard_unit_key: blueprint.standard_unit_key || null,
+      difficulty_at_assignment: blueprint.difficulty || null,
+      metadata_revision: metadataRevision,
+      metadata_hash: metadataHash,
+      metadata_json: metadataJson,
+      resolution_status: resolutionStatus
+    };
+    const columns = ['assignment_id', 'order_no', 'question_uid', ...bridgeOptionalColumns, 'resolution_status'];
+    statements.push(env.DB.prepare(`
+      INSERT OR IGNORE INTO class_exam_assignment_questions (${columns.join(', ')})
+      VALUES (${columns.map(() => '?').join(', ')})
+    `).bind(...columns.map(column => row[column] ?? null)));
+  }
+
+  if (statements.length) await env.DB.batch(statements);
+  return { saved: statements.length };
 }
 
 function normalizeExamTitleKey(value) {
@@ -879,79 +974,21 @@ async function findExistingExamSessionByIdentity(env, input = {}) {
   return null;
 }
 
-async function saveAssessmentResultItems(env, input) {
-  const questionCount = Math.max(0, Math.min(100, parseInt(input.question_count, 10) || 0));
-  if (!questionCount) return { skipped: true, reason: 'question_count_empty' };
-
-  const resultColumns = await getTableColumnSet(env, 'assessment_result_items');
-  if (!resultColumns.has('session_id') || !resultColumns.has('order_no')) {
-    return { skipped: true, reason: 'assessment_result_items_unavailable' };
-  }
-
-  const archiveFile = String(input.archive_file || '').trim();
-  const blueprintMap = new Map();
-  if (archiveFile) {
-    try {
-      const res = await env.DB.prepare('SELECT * FROM exam_blueprints WHERE archive_file = ?').bind(archiveFile).all();
-      for (const bp of (res.results || [])) {
-        const no = Number(bp.question_no || 0);
-        if (no > 0) blueprintMap.set(no, bp);
-      }
-    } catch (e) {
-      console.warn('[assessment-result-items] blueprint lookup failed:', e);
-    }
-  }
-
-  const wrongIds = normalizeWrongIds(input.wrong_ids, questionCount);
-  const wrongSet = new Set(wrongIds.map(v => Number(v)));
-  const stmts = [
-    env.DB.prepare('DELETE FROM assessment_result_items WHERE session_id = ? AND order_no > ?').bind(input.session_id, questionCount)
-  ];
-
-  for (let orderNo = 1; orderNo <= questionCount; orderNo++) {
-    const blueprint = blueprintMap.get(orderNo) || {};
-    const item = {
-      session_id: input.session_id,
-      assignment_id: input.assignment_id || null,
-      pack_id: input.pack_id || blueprint.assessment_pack_id || null,
-      student_id: input.student_id || null,
-      class_id: input.class_id || null,
-      order_no: orderNo,
-      question_no: orderNo,
-      result_status: wrongSet.has(orderNo) ? 'wrong' : 'correct',
-      is_correct: wrongSet.has(orderNo) ? 0 : 1,
-      student_answer: null,
-      correct_answer: null,
-      score: null,
-      max_score: null,
-      source_archive_file: blueprint.source_archive_file || null,
-      source_question_no: blueprint.source_question_no || null,
-      standard_unit_key: blueprint.standard_unit_key || null,
-      standard_unit: blueprint.standard_unit || null,
-      concept_cluster_key: blueprint.concept_cluster_key || null,
-      type_key: blueprint.type_key || null,
-      difficulty: blueprint.difficulty || null,
-      analysis_note: null
-    };
-
-    const columns = RESULT_ITEM_COLUMNS.filter(col => resultColumns.has(col));
-    const values = columns.map(col => item[col]);
-    const updateColumns = columns.filter(col => !['session_id', 'order_no'].includes(col));
-
-    stmts.push(env.DB.prepare(`
-      INSERT INTO assessment_result_items (${columns.join(', ')}, created_at, updated_at)
-      VALUES (${values.map(() => '?').join(', ')}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-      ON CONFLICT(session_id, order_no) DO UPDATE SET
-        ${updateColumns.map(col => `${col} = excluded.${col}`).join(',\n        ')},
-        updated_at = CURRENT_TIMESTAMP
-    `).bind(...values));
-  }
-
-  if (stmts.length) await env.DB.batch(stmts);
-  return { saved: stmts.length };
-}
-
 const ASSIGNMENT_OPERATION_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+async function loadClinicQuestionIdentityData(env, sessions = []) {
+  const rows = Array.isArray(sessions) ? sessions : [];
+  const sessionIds = rows.map(row => row.id).filter(Boolean);
+  const assignmentIds = rows.map(row => row.assignment_id).filter(Boolean);
+  const [loadedResultItems, assignmentQuestions] = await Promise.all([
+    loadAssessmentResultItemSnapshots(env, sessionIds),
+    loadAssignmentQuestionSnapshots(env, assignmentIds)
+  ]);
+  const activeQuestionCounts = new Map(rows.map(row => [String(row.id), Math.max(0, Number.parseInt(row.question_count, 10) || 0)]));
+  const resultItems = loadedResultItems.filter(row =>
+    Number(row.order_no) <= (activeQuestionCounts.get(String(row.session_id)) || 0));
+  return { result_items: resultItems, assignment_questions: assignmentQuestions };
+}
 
 function normalizeAssignmentOperationRequestId(value) {
   const id = String(value || "").trim();
@@ -1095,7 +1132,10 @@ export async function handleExams(request, env, teacher, path, url) {
 
   if (resource === 'archive-saved-papers') {
     const currentTeacher = await requireTeacher(request, env, teacher);
-    return handleArchiveSavedPapers(request, env, currentTeacher, path, url);
+    return handleArchiveSavedPapers(request, env, currentTeacher, path, url, {
+      buildArchiveQuestionMetadata,
+      buildArchiveMetadataHash,
+    });
   }
 
   if (resource === 'exam-blueprints') {
@@ -1937,6 +1977,7 @@ export async function handleExams(request, env, teacher, path, url) {
 
       await snapshotClassExamAssignmentRecipients(env, assignment);
       if (archive_file) await syncExamBlueprintsFromArchive(env, archive_file);
+      if (assignment?.id === aid) await snapshotLegacyAssignmentQuestions(env, assignment);
       if (archive_file) assignment = await ensureAssignmentPdf(env, assignment);
       if (archive_file && assignment?.pdf_status !== 'ready') {
         return jsonResponse({ success: false, error: assignment?.pdf_error || '시험지 PDF 생성 실패', assignment }, 502);
@@ -2259,12 +2300,12 @@ export async function handleExams(request, env, teacher, path, url) {
       if (!currentTeacher) return jsonResponse({ error: 'Unauthorized' }, 401);
       const classId = url.searchParams.get('class');
       const examTitle = url.searchParams.get('exam') || null;
-      if (!classId) return jsonResponse({ error: 'class required', students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [] }, 400);
+      if (!classId) return jsonResponse({ error: 'class required', students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [], result_items: [], assignment_questions: [] }, 400);
       if (!(await canAccessClass(currentTeacher, classId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
 
       const studentIds = await env.DB.prepare('SELECT student_id FROM class_students WHERE class_id = ?').bind(classId).all();
       const sIds = studentIds.results.map(r => r.student_id);
-      if (!sIds.length) return jsonResponse({ students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [] });
+      if (!sIds.length) return jsonResponse({ success: true, students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [], result_items: [], assignment_questions: [] });
 
       const p = sIds.map(() => '?').join(',');
       const [students, sessions, wrongs, assignments] = await Promise.all([
@@ -2293,12 +2334,15 @@ export async function handleExams(request, env, teacher, path, url) {
 
       const dedupedAssignments = dedupeClassExamAssignments(assignments.results || []);
       const exclusions = await loadClassAssignmentExclusions(env, dedupedAssignments.map(a => a.id));
+      const identityData = await loadClinicQuestionIdentityData(env, sessions.results || []);
 
       return jsonResponse({
+        success: true,
         students: students.results,
         sessions: sessions.results,
         wrong_answers: wrongs.results,
         blueprints: blueprints.results,
+        ...identityData,
         assignments: dedupedAssignments,
         exclusions
       });
@@ -2314,7 +2358,7 @@ export async function handleExams(request, env, teacher, path, url) {
       const from = normalizeBoardDate(url.searchParams.get('from')) || getPreviousMonthDate(to);
       if (from > to) return jsonResponse({ success: false, error: 'invalid date range' }, 400);
       if (!baseClassId) {
-        return jsonResponse({ error: 'class required', classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [] }, 400);
+        return jsonResponse({ error: 'class required', classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [], result_items: [], assignment_questions: [] }, 400);
       }
       if (!(await canAccessClass(currentTeacher, baseClassId, env))) {
         return jsonResponse({ error: 'Forbidden' }, 403);
@@ -2322,11 +2366,11 @@ export async function handleExams(request, env, teacher, path, url) {
 
       const baseClass = await env.DB.prepare('SELECT id, grade FROM classes WHERE id = ? LIMIT 1').bind(baseClassId).first();
       if (!baseClass) {
-        return jsonResponse({ error: 'class not found', classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [] }, 404);
+        return jsonResponse({ error: 'class not found', classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [], result_items: [], assignment_questions: [] }, 404);
       }
       const grade = normalizeBoardGrade(baseClass.grade || '');
       if (!grade) {
-        return jsonResponse({ error: 'grade required', classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [] }, 400);
+        return jsonResponse({ error: 'grade required', classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [], result_items: [], assignment_questions: [] }, 400);
       }
 
       const classRes = await env.DB.prepare(`
@@ -2339,7 +2383,7 @@ export async function handleExams(request, env, teacher, path, url) {
       const classes = classRes.results || [];
       const classIds = classes.map(row => String(row.id || '').trim()).filter(Boolean);
       if (!classIds.length) {
-        return jsonResponse({ success: true, grade, from, to, classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [] });
+        return jsonResponse({ success: true, grade, from, to, classes: [], class_students: [], students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [], result_items: [], assignment_questions: [] });
       }
 
       // JOIN으로 범위를 정한다. 학년 전체의 학생/응시 ID를 IN()에 나열하면
@@ -2413,6 +2457,7 @@ export async function handleExams(request, env, teacher, path, url) {
 
       const dedupedAssignments = dedupeClassExamAssignments(assignmentsRes.results || []);
       const exclusions = await loadClassAssignmentExclusions(env, dedupedAssignments.map(a => a.id));
+      const identityData = await loadClinicQuestionIdentityData(env, sessionsRes.results || []);
 
       return jsonResponse({
         success: true,
@@ -2425,6 +2470,7 @@ export async function handleExams(request, env, teacher, path, url) {
         sessions: sessionsRes.results || [],
         wrong_answers: wrongs.results || [],
         blueprints,
+        ...identityData,
         assignments: dedupedAssignments,
         exclusions
       });

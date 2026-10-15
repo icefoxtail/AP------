@@ -4,44 +4,58 @@ const assert = require('assert');
 
 const root = path.resolve(__dirname, '..');
 const examsRoute = fs.readFileSync(path.join(root, 'apmath', 'worker-backup', 'worker', 'routes', 'exams.js'), 'utf8');
+const resultItemsHelper = fs.readFileSync(path.join(root, 'apmath', 'worker-backup', 'worker', 'helpers', 'assessment-result-items.js'), 'utf8');
+const studentPortalRoute = fs.readFileSync(path.join(root, 'apmath', 'worker-backup', 'worker', 'routes', 'student-portal.js'), 'utf8');
 const mixedEngine = fs.readFileSync(path.join(root, 'archive', 'mixed_engine.html'), 'utf8');
 
 for (const requiredText of [
   'saveAssessmentResultItems',
   'assessment_result_items',
-  'ON CONFLICT(session_id, order_no) DO UPDATE SET',
-  'DELETE FROM assessment_result_items WHERE session_id = ? AND order_no > ?',
-  "values.split(/[\\s,]+/)",
   'source_archive_file',
   'source_question_no',
+  'source_question_uid',
+  'source_question_ordinal',
+  'metadata_revision',
+  'metadata_hash',
+  'metadata_json',
   'standard_unit_key',
   'concept_cluster_key',
   'type_key',
   'difficulty',
 ]) {
   assert(
-    examsRoute.includes(requiredText),
-    `routes/exams.js should include result item storage marker: ${requiredText}`
+    resultItemsHelper.includes(requiredText),
+    `assessment result helper should include result item storage marker: ${requiredText}`
   );
 }
 
 assert(
-  examsRoute.includes("`${col} = excluded.${col}`") &&
-  examsRoute.includes('updateColumns'),
-  'routes/exams.js should update excluded result item columns dynamically'
+  resultItemsHelper.includes('RESULT_SNAPSHOT_COLUMNS') &&
+  resultItemsHelper.includes('!RESULT_SNAPSHOT_COLUMNS.has(column)'),
+  'result regrades should leave existing identity and Meta snapshots unchanged'
 );
 
 for (const requiredText of [
-  "result_status: wrongSet.has(orderNo) ? 'wrong' : 'correct'",
-  'is_correct: wrongSet.has(orderNo) ? 0 : 1',
+  "result_status: isWrong ? 'wrong' : 'correct'",
+  'is_correct: isWrong ? 0 : 1',
   'for (let orderNo = 1; orderNo <= questionCount; orderNo++)',
-  'SELECT * FROM exam_blueprints WHERE archive_file = ?',
+  'loadFrozenAssignmentQuestions(env, assignmentId)',
 ]) {
   assert(
-    examsRoute.includes(requiredText),
-    `routes/exams.js should build full correct/wrong rows using ${requiredText}`
+    resultItemsHelper.includes(requiredText),
+    `assessment result helper should build frozen rows using ${requiredText}`
   );
 }
+
+assert(
+  !resultItemsHelper.includes('SELECT * FROM exam_blueprints'),
+  'historical result identity must not be inferred from current blueprints'
+);
+
+assert(
+  examsRoute.includes('normalizeWrongIds('),
+  'exam result routes should preserve the existing wrong-id normalization contract'
+);
 
 const manualRouteMatch = examsRoute.match(/if\s*\(method === 'PATCH'\)\s*\{([\s\S]*?)return jsonResponse\(\{ success: true, id: sid \}\);/);
 assert(manualRouteMatch, 'manual exam session save route should exist');
@@ -55,6 +69,13 @@ assert(bulkRouteMatch, 'bulk OMR route should exist');
 assert(
   bulkRouteMatch[1].includes('saveAssessmentResultItems'),
   'bulk OMR flow should call saveAssessmentResultItems'
+);
+
+assert(
+  studentPortalRoute.includes('saveAssessmentResultItems(env, {') &&
+  studentPortalRoute.includes("code: 'OMR_ALREADY_SUBMITTED'") &&
+  studentPortalRoute.includes('WHERE assignment_id = ?'),
+  'student OMR should store frozen identity, keep duplicate submissions immutable, and key sessions by assignment id'
 );
 
 assert(
