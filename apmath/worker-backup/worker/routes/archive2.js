@@ -226,7 +226,7 @@ export async function handleArchive2(
     const savedRows = existing
       ? (
           await env.DB.prepare(
-            "SELECT order_no,question_uid,source_archive_file,source_question_no,source_question_ordinal,source_fingerprint,standard_unit_key,difficulty_at_assignment,metadata_revision,metadata_json,resolution_status FROM class_exam_assignment_questions WHERE assignment_id=? ORDER BY order_no",
+            "SELECT order_no,question_uid,source_archive_file,source_question_no,source_question_ordinal,source_fingerprint,standard_unit_key,difficulty_at_assignment,metadata_revision,metadata_hash,metadata_json,resolution_status FROM class_exam_assignment_questions WHERE assignment_id=? ORDER BY order_no",
           )
             .bind(existing.id)
             .all()
@@ -355,6 +355,7 @@ export async function handleArchive2(
         : await buildQuestionSnapshot(input, questions, meta, {
             legacy: original,
             canonicalAuthority,
+            metadataAuthority,
           });
     const expectedQuestionCount = Number(savedPaperMode ? savedPaper.question_count : input.question_count);
     if (!rows?.length || rows.length !== expectedQuestionCount)

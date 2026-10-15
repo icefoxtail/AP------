@@ -161,6 +161,7 @@ try {
     "exam_blueprints",
     "exam_sessions",
     "wrong_answers",
+    "assessment_result_items",
   ]) {
     const match = schema.match(new RegExp("CREATE TABLE IF NOT EXISTS " + table + " \\([\\s\\S]*?\\n\\);"));
     assert.ok(match, `schema contains ${table}`);
@@ -175,6 +176,7 @@ try {
     ALTER TABLE exam_sessions ADD COLUMN assignment_id TEXT;
   `);
   await migrate(db, fs.readFileSync(path.join(worker, "migrations/20260916_archive2_question_bridge.sql"), "utf8"));
+  await migrate(db, fs.readFileSync(path.join(worker, "migrations/20261015_assessment_result_uid_meta_snapshot.sql"), "utf8"));
   await migrate(db, fs.readFileSync(path.join(worker, "migrations/20260929_archive_saved_papers.sql"), "utf8"));
   await migrate(db, fs.readFileSync(path.join(worker, "migrations/20261002_archive2_paper_lifecycle_foundation.sql"), "utf8"));
   await migrate(db, fs.readFileSync(path.join(worker, "migrations/20261002_archive2_assignment_context.sql"), "utf8"));
