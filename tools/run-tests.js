@@ -203,6 +203,10 @@ const requiredCommands = [
   {
     label: 'tests/archive2-canonical-projection.test.mjs',
     args: ['--test', 'tests/archive2-canonical-projection.test.mjs']
+  },
+  {
+    label: 'tests/generated-source-svg-namespace.test.cjs',
+    args: ['--test', 'tests/generated-source-svg-namespace.test.cjs']
   }
 ];
 
