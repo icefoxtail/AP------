@@ -228,7 +228,7 @@ window.questionBank = [
       "$1$"
     ],
     "answer": "①",
-    "solution": "합성함수에서는 먼저 안쪽 함수 $f$의 값을 구한다.\n$f(1)=3\\cdot1-5=-2$이다.\n따라서\n$(g\\circ f)(1)=g(f(1))=g(-2)$이다.\n$g(-2)=(-2)^2+1=5$이므로 정답은 ①이다.",
+    "solution": "합성함수 $(g\\circ f)(1)$은 먼저 $f(1)$을 구한 다음 그 값을 $g$에 대입한다.\n$f(1)=3\\cdot1-5$\n$=-2$이다.\n따라서\n$(g\\circ f)(1)=g(-2)$\n$=(-2)^2+1$\n$=4+1=5$이다.\n\n따라서 정답은 ①이다.",
     "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
     "subUnit": "합성함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -261,7 +261,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "③",
-    "solution": "$f^{-1}(5)=2$라는 것은 $f(2)=5$라는 뜻이다.\n$f(1)=3$에서\n$a+b=3$이다.\n$f(2)=5$에서\n$2a+b=5$이다.\n두 식을 빼면\n$a=2$,\n$b=1$이다.\n따라서\n$2a-b=2\\cdot2-1=3$이다. 정답은 ③이다.",
+    "solution": "역함수의 관계 $f^{-1}(5)=2$는 $f(2)=5$라는 뜻이다.\n$f(1)=3$에서\n$a+b=3$이다.\n$f(2)=5$에서\n$2a+b=5$이다.\n두 식을 빼면\n$(2a+b)-(a+b)=5-3$\n$a=2$이다.\n$a+b=3$에 대입하면\n$b=3-2=1$이다.\n따라서\n$2a-b=2\\cdot2-1$\n$=3$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
