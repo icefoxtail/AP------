@@ -26,7 +26,7 @@ window.questionBank = [
       "$\\dfrac17$"
     ],
     "answer": "②",
-    "solution": "확률변수 $X$는 $B(48,p)$를 따르므로 분산은 $48p(1-p)$이다.\n$48p(1-p)=9$\n$16p^2-16p+3=0$\n$(4p-1)(4p-3)=0$\n따라서 $p=\\dfrac14$ 또는 $p=\\dfrac34$이다.\n그런데 $0\\le p<\\dfrac12$이므로 $p=\\dfrac14$이다.\n따라서 정답은 ②이다.",
+    "solution": "확률변수 $X$는 $B(48,p)$를 따르므로 분산은 $48p(1-p)$이다.\n$48p(1-p)=9$\n$16p^2-16p+3=0$\n$(4p-1)(4p-3)=0$\n따라서 $p=\\dfrac14$ 또는 $p=\\dfrac34$이다.\n그런데 $0\\le p\\lt \\dfrac12$이므로 $p=\\dfrac14$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -91,7 +91,7 @@ window.questionBank = [
       "영어, 수학"
     ],
     "answer": "①",
-    "solution": "과목마다 평균과 표준편차가 다르므로 표준점수 $z=\\dfrac{\\text{점수}-\\text{평균}}{\\text{표준편차}}$로 비교한다.\n국어:\n$z=\\dfrac{70-55}{6}=\\dfrac{15}{6}=2.5$\n영어:\n$z=\\dfrac{80-75}{5}=\\dfrac55=1$\n수학:\n$z=\\dfrac{83-68}{10}=\\dfrac{15}{10}=1.5$\n$2.5>1.5>1$이므로 상대적으로 가장 높은 과목은 국어, 가장 낮은 과목은 영어이다.\n따라서 정답은 ①이다.",
+    "solution": "과목마다 평균과 표준편차가 다르므로 표준점수 개인의 점수를 $x$, 과목 평균을 $m$, 표준편차를 $\\sigma$라 하면 $z=\\dfrac{x-m}{\\sigma}$이다.로 비교한다.\n국어:\n$z=\\dfrac{70-55}{6}=\\dfrac{15}{6}=2.5$\n영어:\n$z=\\dfrac{80-75}{5}=\\dfrac55=1$\n수학:\n$z=\\dfrac{83-68}{10}=\\dfrac{15}{10}=1.5$\n$2.5\\gt 1.5\\gt 1$이므로 상대적으로 가장 높은 과목은 국어, 가장 낮은 과목은 영어이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -253,7 +253,7 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "확률밀도함수 그래프의 전체 넓이는 $1$이다.\n$P(X\\le b)+P(X\\ge b)=1$이므로, 주어진 차이와 함께 풀면\n$P(X\\le b)=\\dfrac23$이다.\n즉, 왼쪽 삼각형의 넓이에서\n$\\dfrac12bc=\\dfrac23$\n$bc=\\dfrac43$이다.\n\n또 $P(X\\le1)=\\dfrac16<\\dfrac23=P(X\\le b)$이므로 $1<b$이다.\n구간 $0\\le x\\le b$에서는 그래프가 직선이고 $f(1)=\\dfrac cb$이다.\n따라서 $0$부터 $1$까지 작은 삼각형의 넓이는\n$\\dfrac12\\cdot1\\cdot\\dfrac cb=\\dfrac16$\n$\\dfrac cb=\\dfrac13$, 즉 $b=3c$이다.\n\n전체 삼각형의 넓이에서도\n$\\dfrac12ac=1$, 즉 $ac=2$이다.\n$bc=\\dfrac43$, $b=3c$에서\n$3c^2=\\dfrac43$\n$c=\\dfrac23$이다. ($c>0$)\n따라서 $b=2$, $a=\\dfrac2c=3$이다.\n$a\\times b\\times c=3\\cdot2\\cdot\\dfrac23=4$이다.\n따라서 정답은 ④이다.",
+    "solution": "확률밀도함수 그래프의 전체 넓이는 $1$이다.\n$P(X\\le b)+P(X\\ge b)=1$이므로, 주어진 차이와 함께 풀면\n$P(X\\le b)=\\dfrac23$이다.\n즉, 왼쪽 삼각형의 넓이에서\n$\\dfrac12bc=\\dfrac23$\n$bc=\\dfrac43$이다.\n\n또 $P(X\\le1)=\\dfrac16\\lt \\dfrac23=P(X\\le b)$이므로 $1\\lt b$이다.\n구간 $0\\le x\\le b$에서는 그래프가 직선이고 $f(1)=\\dfrac cb$이다.\n따라서 $0$부터 $1$까지 작은 삼각형의 넓이는\n$\\dfrac12\\cdot1\\cdot\\dfrac cb=\\dfrac16$\n$\\dfrac cb=\\dfrac13$, 즉 $b=3c$이다.\n\n전체 삼각형의 넓이에서도\n$\\dfrac12ac=1$, 즉 $ac=2$이다.\n$bc=\\dfrac43$, $b=3c$에서\n$3c^2=\\dfrac43$\n$c=\\dfrac23$이다. ($c\\gt 0$)\n따라서 $b=2$, $a=\\dfrac2c=3$이다.\n$a\\times b\\times c=3\\cdot2\\cdot\\dfrac23=4$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -324,7 +324,7 @@ window.questionBank = [
       "$25$"
     ],
     "answer": "②",
-    "solution": "$X\\sim B(n,p)$이므로\n$P(X=0)=(1-p)^n$\n$P(X=1)=np(1-p)^{n-1}$이다.\n조건 (가)의 양변을 $P(X=0)>0$으로 나누면\n$\\dfrac{P(X=1)}{P(X=0)}=\\dfrac{np}{1-p}=\\dfrac{40}{3}$이다.\n조건 (나)에서 $np=E(X)=8$이므로\n$\\dfrac8{1-p}=\\dfrac{40}{3}$\n$1-p=\\dfrac35$, $p=\\dfrac25$이다.\n$n=\\dfrac8p=8\\cdot\\dfrac52=20$이므로\n$n+5p=20+5\\cdot\\dfrac25=22$이다.\n따라서 정답은 ②이다.",
+    "solution": "$X\\sim B(n,p)$이므로\n$P(X=0)=(1-p)^n$\n$P(X=1)=np(1-p)^{n-1}$이다.\n조건 (가)의 양변을 $P(X=0)\\gt 0$으로 나누면\n$\\dfrac{P(X=1)}{P(X=0)}=\\dfrac{np}{1-p}=\\dfrac{40}{3}$이다.\n조건 (나)에서 $np=E(X)=8$이므로\n$\\dfrac8{1-p}=\\dfrac{40}{3}$\n$1-p=\\dfrac35$, $p=\\dfrac25$이다.\n$n=\\dfrac8p=8\\cdot\\dfrac52=20$이므로\n$n+5p=20+5\\cdot\\dfrac25=22$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -454,7 +454,7 @@ window.questionBank = [
       "$0.9938$"
     ],
     "answer": "③",
-    "solution": "정규분포의 확률밀도함수는 평균을 중심으로 좌우 대칭이다.\n모든 $x$에 대하여 $f(x+7)=f(23-x)$이고\n$(x+7)+(23-x)=30$이므로 대칭축은 $15$이다.\n따라서 $m=15$이다.\n\n$X$의 표준편차는 $4$이므로\n$P(X\\ge17)=P\\left(Z\\ge\\dfrac{17-15}{4}\\right)$\n$=P(Z\\ge0.5)=0.5-0.1915=0.3085$이다.\n조건 (나)에 의해\n$P(Y\\le17)=P\\left(Z\\le\\dfrac{17-20}{\\sigma}\\right)=0.3085$이다.\n$P(Z\\le-0.5)=0.3085$이므로\n$-\\dfrac3{\\sigma}=-0.5$, 즉 $\\sigma=6$이다.\n\n그러므로\n$P(X>m-\\sigma)=P(X>15-6)$\n$=P\\left(Z>\\dfrac{9-15}{4}\\right)$\n$=P(Z>-1.5)=0.5+0.4332=0.9332$이다.\n따라서 정답은 ③이다.",
+    "solution": "정규분포의 확률밀도함수는 평균을 중심으로 좌우 대칭이다.\n모든 $x$에 대하여 $f(x+7)=f(23-x)$이고\n$(x+7)+(23-x)=30$이므로 대칭축은 $15$이다.\n따라서 $m=15$이다.\n\n$X$의 표준편차는 $4$이므로\n$P(X\\ge17)=P\\left(Z\\ge\\dfrac{17-15}{4}\\right)$\n$=P(Z\\ge0.5)=0.5-0.1915=0.3085$이다.\n조건 (나)에 의해\n$P(Y\\le17)=P\\left(Z\\le\\dfrac{17-20}{\\sigma}\\right)=0.3085$이다.\n$P(Z\\le-0.5)=0.3085$이므로\n$-\\dfrac3{\\sigma}=-0.5$, 즉 $\\sigma=6$이다.\n\n그러므로\n$P(X\\gt m-\\sigma)=P(X\\gt 15-6)$\n$=P\\left(Z\\gt \\dfrac{9-15}{4}\\right)$\n$=P(Z\\gt -1.5)=0.5+0.4332=0.9332$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
     "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
