@@ -534,7 +534,7 @@ test("absent and null source numbers keep the original question id fallback acro
   }
 });
 
-test("mixed assignment validation keeps the existing full-catalog path", async () => {
+test("mixed assignment validation uses indexed verification with a legacy full-catalog fallback", async () => {
   const record = catalog.records.find((row) => row.automatic && row.questionUid);
   assert.ok(record);
   const bank = archiveSource.evaluate(
@@ -563,8 +563,16 @@ test("mixed assignment validation keeps the existing full-catalog path", async (
     },
   );
   assert.deepEqual(result.sourceGrades, [record.sourceGrade]);
-  assert.equal(assets.requests.length, canonical.REQUIRED_INPUT_PATHS.length + 1);
-  assert.ok(assets.requests.includes("archive/data/archive2-catalog.json"));
-  assert.equal(assets.requests.includes(indexRelative), false);
-  assert.equal(assets.requests.some((row) => row.startsWith("archive/data/archive2-source-verification/")), false);
+  if (sourceIndex.mixedLookup) {
+    assert.ok(assets.requests.includes(indexRelative));
+    assert.ok(assets.requests.includes("archive/data/archive2-source-verification/mixed-v1/context.json"));
+    assert.equal(assets.requests.includes("archive/data/archive2-catalog.json"), false);
+    assert.equal(assets.requests.some((row) => row.startsWith("archive/data/archive2-source-verification/v1/")), false);
+    assert.equal(assets.requests.some((row) => row.startsWith("archive/data/archive2-source-verification/mixed-v1/")), true);
+  } else {
+    assert.equal(assets.requests.length, canonical.REQUIRED_INPUT_PATHS.length + 3);
+    assert.ok(assets.requests.includes("archive/data/archive2-catalog.json"));
+    assert.equal(assets.requests.includes(indexRelative), true);
+    assert.equal(assets.requests.some((row) => row.startsWith("archive/data/archive2-source-verification/")), false);
+  }
 });

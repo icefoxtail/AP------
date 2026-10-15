@@ -53,6 +53,9 @@
   // Shards omit the final projection version to avoid a digest cycle.
   const SOURCE_VERIFICATION_INDEX_PATH = "data/archive2-source-verification-index.json";
   const SOURCE_VERIFICATION_SHARD_PREFIX = "data/archive2-source-verification/v1/";
+  const MIXED_VERIFICATION_CONTEXT_PATH = "data/archive2-source-verification/mixed-v1/context.json";
+  const MIXED_SOURCE_SHARD_PREFIX = "data/archive2-source-verification/mixed-v1/sources/";
+  const MIXED_UID_BUCKET_PREFIX = "data/archive2-source-verification/mixed-v1/uid-buckets/";
   function canonicalPathsFromMaster(master = {}) {
     const parents = new Map();
     const advanced = [];
@@ -604,6 +607,314 @@
     return { projectionVersion, sourceIndex, shard };
   }
 
+  async function loadMixedVerificationRecords(
+    fetcher,
+    baseUrl,
+    expectedVersion = "",
+    requestedRows = [],
+  ) {
+    if (typeof fetcher !== "function")
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed loader is unavailable");
+    const base = new URL(String(baseUrl));
+    const read = async (relativePath) => {
+      let url;
+      try { url = new URL(relativePath, base); }
+      catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed URL is invalid"); }
+      if (url.origin !== base.origin)
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed lookup escaped the archive origin");
+      let response;
+      try { response = await fetcher(url.toString()); }
+      catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed request failed: " + relativePath); }
+      if (!response || !response.ok)
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed resource unavailable: " + relativePath);
+      return response.text();
+    };
+
+    let manifest;
+    try { manifest = JSON.parse(await read("data/archive2-canonical-input-manifest.json")); }
+    catch (error) {
+      if (error.code) throw error;
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is invalid");
+    }
+    if (
+      manifest?.schemaVersion !== "archive2-canonical-input-manifest-v1" ||
+      manifest.resolverVersion !== RESOLVER_VERSION ||
+      !Array.isArray(manifest.files)
+    )
+      throw makeError("CANONICAL_RESOLVER_VERSION_MISMATCH", "browser/Worker canonical resolver version mismatch");
+    const listed = new Set(manifest.files.map((row) => text(row.path)));
+    if (MANIFEST_REQUIRED_PATHS.some((path) => !listed.has(path)))
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is incomplete");
+    const projectionVersion = await computeProjectionVersion(manifest.files);
+    if (projectionVersion !== manifest.projectionVersion)
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical input manifest digest mismatch");
+    if (expectedVersion && expectedVersion !== projectionVersion)
+      throw makeError("CANONICAL_PROJECTION_REFRESH_REQUIRED", "분류 기준이 갱신되었습니다. 문항 목록을 새로고침하세요.");
+
+    const indexEntry = manifest.files.find((row) => text(row.path) === SOURCE_VERIFICATION_INDEX_PATH);
+    if (!indexEntry)
+      return { projectionVersion, sourceIndex: null, lookup: null, records: [], legacyManifest: true };
+    let indexBody;
+    try { indexBody = (await read(SOURCE_VERIFICATION_INDEX_PATH)).replace(/\r\n/g, "\n"); }
+    catch (error) {
+      if (error.code) throw error;
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index unavailable");
+    }
+    if (await sha256(indexBody) !== text(indexEntry.sha256).toLowerCase())
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index digest mismatch");
+    let sourceIndex;
+    try { sourceIndex = JSON.parse(indexBody); }
+    catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index is invalid"); }
+    const baseProjectionVersion = await computeProjectionVersion(
+      manifest.files.filter((entry) => text(entry.path) !== SOURCE_VERIFICATION_INDEX_PATH),
+      RESOLVER_VERSION,
+    );
+    if (
+      sourceIndex?.schemaVersion !== "archive2-source-verification-index-v1" ||
+      sourceIndex.resolverVersion !== RESOLVER_VERSION ||
+      sourceIndex.baseProjectionVersion !== baseProjectionVersion ||
+      sourceIndex.generatedFromCatalogIndexVersion !== manifest.generatedFromCatalogIndexVersion ||
+      !Array.isArray(sourceIndex.files)
+    )
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical source index does not match the current projection");
+
+    const sourceFiles = new Map();
+    for (const row of sourceIndex.files) {
+      const file = normalizeFile(row?.sourceFile);
+      if (
+        !file || sourceFiles.has(file) || file !== text(row?.sourceFile) ||
+        !String(row?.path || "").startsWith(SOURCE_VERIFICATION_SHARD_PREFIX) ||
+        !String(row?.path || "").endsWith(".json") ||
+        !SHA256.test(text(row?.sha256)) ||
+        !Number.isInteger(Number(row?.qCount)) || Number(row.qCount) < 1
+      )
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical source index row is invalid");
+      sourceFiles.set(file, row);
+    }
+    const mixedLookup = sourceIndex.mixedLookup;
+    if (!mixedLookup)
+      return { projectionVersion, sourceIndex, lookup: null, records: [], legacyManifest: true };
+    if (
+      mixedLookup.schemaVersion !== "archive2-mixed-source-verification-index-v1" ||
+      mixedLookup.resolverVersion !== RESOLVER_VERSION ||
+      mixedLookup.baseProjectionVersion !== baseProjectionVersion ||
+      !Array.isArray(mixedLookup.files) ||
+      !Array.isArray(mixedLookup.uidBuckets) ||
+      mixedLookup.files.length !== sourceFiles.size ||
+      mixedLookup.uidBuckets.length !== 16 ||
+      mixedLookup.context?.path !== MIXED_VERIFICATION_CONTEXT_PATH ||
+      !SHA256.test(text(mixedLookup.context?.sha256)) ||
+      !Number.isInteger(Number(mixedLookup.context?.byteLength)) || Number(mixedLookup.context.byteLength) < 1
+    )
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed source index is invalid");
+
+    const mixedFiles = new Map();
+    for (let i = 0; i < mixedLookup.files.length; i++) {
+      const row = mixedLookup.files[i],
+        sourceRow = sourceIndex.files[i],
+        file = normalizeFile(sourceRow?.sourceFile),
+        sourceEntry = sourceFiles.get(file);
+      if (
+        row?.sourceIndex !== i || !file || file !== text(sourceRow?.sourceFile) ||
+        mixedFiles.has(file) || !sourceEntry ||
+        !SHA256.test(text(row?.sha256)) ||
+        !Number.isInteger(Number(row?.byteLength)) || Number(row.byteLength) < 1 ||
+        !Number.isInteger(Number(row?.recordCount)) || Number(row.recordCount) < 0 ||
+        Number(row.recordCount) > Number(sourceEntry.qCount)
+      )
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed source index row is invalid");
+      mixedFiles.set(file, { ...row, sourceFile: file, sourceIndex: i });
+    }
+    const uidBuckets = new Map();
+    for (const row of mixedLookup.uidBuckets) {
+      const prefix = text(row?.prefix);
+      if (
+        !/^[0-9a-f]$/.test(prefix) || uidBuckets.has(prefix) ||
+        row?.path !== MIXED_UID_BUCKET_PREFIX + prefix + ".json" ||
+        (prefix === "f" ? row?.includesContext !== true : Object.hasOwn(row || {}, "includesContext")) ||
+        !SHA256.test(text(row?.sha256)) ||
+        !Number.isInteger(Number(row?.byteLength)) || Number(row.byteLength) < 1 ||
+        !Number.isInteger(Number(row?.recordCount)) || Number(row.recordCount) < 0
+      )
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed UID bucket index row is invalid");
+      uidBuckets.set(prefix, row);
+    }
+    if ([...Array(16)].some((_, i) => !uidBuckets.has(i.toString(16))))
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed UID bucket index is incomplete");
+    const expectedMixedRecordCount = [...mixedFiles.values()].reduce((sum, row) => sum + Number(row.recordCount), 0),
+      indexedBucketRecordCount = [...uidBuckets.values()].reduce((sum, row) => sum + Number(row.recordCount), 0);
+    if (expectedMixedRecordCount !== indexedBucketRecordCount)
+      throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed lookup coverage does not match the source index");
+
+    const requests = (Array.isArray(requestedRows) ? requestedRows : []).map((row) => ({
+      questionUid: text(row?.questionUid),
+      sourceFile: normalizeFile(row?.sourceFile),
+      sourceOrdinal: Number(row?.sourceOrdinal),
+    }));
+    const validRequests = requests.filter((row) => /^qid_v1_[a-f0-9]{64}$/.test(row.questionUid));
+    if (!validRequests.length)
+      return { projectionVersion, sourceIndex, lookup: mixedLookup, records: [], legacyManifest: false };
+    const requestedFiles = [...new Set(validRequests.map((row) => row.sourceFile).filter(Boolean))],
+      requestedPrefixes = [...new Set(validRequests.map((row) => row.questionUid.slice(7, 8)))],
+      sourcePlan = requestedFiles.map((file) => mixedFiles.get(file)),
+      bucketPlan = requestedPrefixes.map((prefix) => uidBuckets.get(prefix));
+    const sourcePlanValid = sourcePlan.length === requestedFiles.length &&
+      sourcePlan.every((row) => row && Number.isInteger(Number(row.byteLength)) && Number(row.byteLength) > 0);
+    const sourceBytes = sourcePlanValid
+      ? sourcePlan.reduce((sum, row) => sum + Number(row.byteLength), 0)
+      : Number.POSITIVE_INFINITY;
+    const bucketBytes = bucketPlan.reduce((sum, row) => sum + Number(row.byteLength), 0);
+    const contextBytes = Number(mixedLookup.context.byteLength),
+      bucketIncludesContext = requestedPrefixes.includes("f"),
+      sourcePlanBytes = sourceBytes + contextBytes,
+      bucketPlanBytes = bucketBytes + (bucketIncludesContext ? 0 : contextBytes);
+    // Keep the source plan small enough to stay comfortably under Free's
+    // subrequest ceiling; otherwise coalesce by the fixed UID prefix buckets.
+    const useSourceShards = sourcePlanValid && sourcePlan.length <= 15 && sourcePlanBytes <= bucketPlanBytes;
+    const resources = [];
+    if (useSourceShards) {
+      for (const row of sourcePlan) {
+        resources.push({
+          ...row,
+          // Source paths are schema-derived from the indexed canonical source;
+          // the sourceIndex field binds that source to this row without
+          // repeating its file and path strings in the shared index.
+          path: MIXED_SOURCE_SHARD_PREFIX + await sha256(row.sourceFile) + ".json",
+          kind: "source",
+        });
+      }
+    }
+    else resources.push(...bucketPlan.map((row) => ({ ...row, kind: "bucket" })));
+
+    const readVerifiedJson = async (entry) => {
+      let body;
+      try { body = (await read(entry.path)).replace(/\r\n/g, "\n"); }
+      catch (error) {
+        if (error.code) throw error;
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed resource unavailable");
+      }
+      if (new TextEncoder().encode(body).byteLength !== Number(entry.byteLength) ||
+          await sha256(body) !== text(entry.sha256).toLowerCase())
+        throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed resource digest mismatch");
+      try { return JSON.parse(body); }
+      catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed resource is invalid"); }
+    };
+    const inlineContextBucket = !useSourceShards && bucketIncludesContext;
+    let context = inlineContextBucket ? null : await readVerifiedJson({
+      path: mixedLookup.context.path,
+      sha256: mixedLookup.context.sha256,
+      byteLength: contextBytes,
+    });
+    const validateContext = (value) => {
+      const authority = value?.authority;
+      if (
+        value?.schemaVersion !== "archive2-mixed-source-verification-context-v1" ||
+        value.resolverVersion !== RESOLVER_VERSION ||
+        value.baseProjectionVersion !== baseProjectionVersion ||
+        !authority || typeof authority !== "object" ||
+        !text(authority.taxonomyVersion) ||
+        !Array.isArray(authority.gradeCourses) ||
+        !Array.isArray(authority.canonicalParents) ||
+        !Array.isArray(authority.canonicalAdvancedPaths) ||
+        !authority.projectionPolicy || typeof authority.projectionPolicy !== "object" ||
+        !Array.isArray(authority.problemTypeKeys) ||
+        !authority.templatesByKey || typeof authority.templatesByKey !== "object" ||
+        !Array.isArray(authority.bindingKeys)
+      )
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed authority context is invalid");
+      return authority;
+    };
+    const readInlineContext = async (value) => {
+      if (!value || typeof value !== "object" || Array.isArray(value))
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed inline context is invalid");
+      const body = JSON.stringify(value) + "\n";
+      if (new TextEncoder().encode(body).byteLength !== contextBytes ||
+          await sha256(body) !== text(mixedLookup.context.sha256).toLowerCase())
+        throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed inline context digest mismatch");
+      return value;
+    };
+    if (context) validateContext(context);
+
+    const indexedSourceFiles = new Set(mixedFiles.keys()),
+      requestedUidSet = new Set(validRequests.map((row) => row.questionUid)),
+      resolvedByUid = new Map();
+    const processResource = async (entry, resource) => {
+      let rows;
+      if (entry.kind === "source") {
+        const file = normalizeFile(entry.sourceFile);
+        if (
+          resource?.schemaVersion !== "archive2-mixed-source-verification-v1" ||
+          normalizeFile(resource.sourceFile) !== file || resource.sourceFile !== file ||
+          !Array.isArray(resource.records) || resource.records.length !== Number(entry.recordCount)
+        )
+          throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed source shard does not match the index");
+        rows = resource.records;
+      } else {
+        const prefix = text(entry.prefix);
+        if (
+          resource?.schemaVersion !== "archive2-mixed-source-verification-uid-bucket-v1" ||
+          resource.prefix !== prefix || !Array.isArray(resource.records) ||
+          resource.records.length !== Number(entry.recordCount) ||
+          (prefix === "f" ? !Object.hasOwn(resource, "context") : Object.hasOwn(resource, "context"))
+        )
+          throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed UID bucket does not match the index");
+        if (prefix === "f" && inlineContextBucket) {
+          context = await readInlineContext(resource.context);
+          validateContext(context);
+        }
+        rows = resource.records;
+      }
+      const seenInResource = new Set();
+      for (const row of rows) {
+        const uid = text(row?.questionUid);
+        if (
+          !/^qid_v1_[a-f0-9]{64}$/.test(uid) ||
+          (entry.kind === "bucket" && uid.slice(7, 8) !== entry.prefix) ||
+          seenInResource.has(uid)
+        )
+          throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed UID record is invalid");
+        seenInResource.add(uid);
+        if (!requestedUidSet.has(uid)) continue;
+        if (resolvedByUid.has(uid))
+          throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed lookup contains duplicate requested UIDs");
+        const file = normalizeFile(row?.sourceFile), ordinal = Number(row?.sourceOrdinal),
+          record = row?.record, identity = row?.identity;
+        if (
+          !indexedSourceFiles.has(file) || !Number.isInteger(ordinal) || ordinal < 1 ||
+          !record || typeof record !== "object" ||
+          text(record.questionUid) !== uid || normalizeFile(record.sourceFile) !== file ||
+          Number(record.sourceOrdinal) !== ordinal ||
+          !Array.isArray(row.assignments) || !Array.isArray(row.advancedAssignments)
+        )
+          throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed requested record identity is invalid");
+        if (entry.kind === "source" && file !== normalizeFile(entry.sourceFile))
+          throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed source shard contains another requested source");
+        if (record.identityStatus === "VERIFIED" && (
+          !identity || text(identity.questionUid) !== uid ||
+          normalizeFile(identity.sourceArchiveFile) !== file ||
+          Number(identity.sourceOrdinal) !== ordinal || text(identity.status) !== "VERIFIED"
+        ))
+          throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical mixed verified identity does not match its record");
+        resolvedByUid.set(uid, row);
+      }
+    };
+    for (let i = 0; i < resources.length; i += 2) {
+      const entries = resources.slice(i, i + 2), values = await Promise.all(entries.map(readVerifiedJson));
+      for (let j = 0; j < entries.length; j++) await processResource(entries[j], values[j]);
+    }
+    if (!context)
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical mixed authority context is missing");
+    const authority = validateContext(context);
+    return {
+      projectionVersion,
+      sourceIndex,
+      lookup: mixedLookup,
+      authority,
+      records: [...resolvedByUid.values()],
+      legacyManifest: false,
+    };
+  }
+
   function decodeCatalog(data) {
     if (!data || data.encoding !== "column-dictionary-v1") return data;
     const decode = (value) =>
@@ -1116,6 +1427,7 @@
     computeProjectionVersion,
     loadInputBundle,
     loadSourceVerificationShard,
+    loadMixedVerificationRecords,
     decodeCatalog,
     resolveSubjectProjection,
     resolveCatalog,

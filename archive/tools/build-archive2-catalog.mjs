@@ -689,9 +689,14 @@ if (resolvedCatalog.indexVersion !== baseProjectionVersion)
   throw new Error("Canonical source shard resolver did not use the base projection version");
 
 const sourceShardPrefix = "data/archive2-source-verification/v1/";
+const mixedSourceShardPrefix = "data/archive2-source-verification/mixed-v1/sources/";
+const mixedUidBucketPrefix = "data/archive2-source-verification/mixed-v1/uid-buckets/";
+const mixedContextPath = "data/archive2-source-verification/mixed-v1/context.json";
 const sourceIndexPath = core.Canonical.SOURCE_VERIFICATION_INDEX_PATH ||
   "data/archive2-source-verification-index.json";
 const sourceShardDir = path.join(root, "archive", sourceShardPrefix);
+const mixedSourceShardDir = path.join(root, "archive", mixedSourceShardPrefix);
+const mixedUidBucketDir = path.join(root, "archive", mixedUidBucketPrefix);
 const sourceIndexTarget = path.join(root, "archive", sourceIndexPath);
 const recordsBySource = new Map();
 for (const record of resolvedCatalog.records) {
@@ -704,11 +709,39 @@ const sourceShaByFile = new Map((resolvedCatalog.sourceHashes || []).map(([file,
   [core.normalizeFile(file), String(sha || "").toLowerCase()],
 ));
 const shardTexts = new Map();
+const mixedSourceShardTexts = new Map();
+const mixedUidBucketTexts = new Map();
 const sourceIndexRows = [];
+const mixedSourceIndexRows = [];
 const sourceRecords = [...recordsBySource.entries()].sort(([a], [b]) =>
   a < b ? -1 : a > b ? 1 : 0,
 );
 let sourceShardQuestionCount = 0;
+const mixedRecordFields = [...new Set([
+  "sourceFile", "sourceOrdinal", "questionUid", "identityStatus", "sourceGrade",
+  "school", "year", "subject", "topic", "examAxis", "courseFamilies",
+  "sourceIntegrityStatus", "sourceFingerprint", "assignmentFingerprint",
+  "sourceStatus", "metadataConflicts", "unverifiedTaxonomy",
+  ...core.META_FIELDS,
+])];
+const mixedAssignmentFields = [
+  "store", "questionUid", "sourceFile", "sourceOrdinal", "grade", "curriculumKey",
+  "courseKey", "L1", "L2", "problemTypeKey", "templateKey", "standardUnitKey",
+  "subUnitKey", "sourceFingerprint", "assignmentFingerprint", "approvalStatus",
+  "taxonomyVersion", "l4Disposition",
+];
+const mixedReviewEvidenceFields = ["status", "reference", "sha256", "runtimeEvidenceReference", "runtimeEvidenceSha"];
+const compactMixedAssignments = (rows) => (Array.isArray(rows) ? rows : []).map((assignment) => {
+  const row = Object.fromEntries(mixedAssignmentFields
+    .filter((field) => Object.prototype.hasOwnProperty.call(assignment || {}, field))
+    .map((field) => [field, assignment[field]]));
+  if (assignment?.reviewEvidence && typeof assignment.reviewEvidence === "object")
+    row.reviewEvidence = Object.fromEntries(mixedReviewEvidenceFields
+      .filter((field) => Object.prototype.hasOwnProperty.call(assignment.reviewEvidence, field))
+      .map((field) => [field, assignment.reviewEvidence[field]]));
+  return row;
+});
+const mixedRecordsByUid = new Map();
 for (const [sourceFile, sourceRows] of sourceRecords) {
   const exam = resolvedCatalog.exams.find((row) => core.normalizeFile(row.file) === sourceFile);
   if (!exam || Number(exam.qCount) !== sourceRows.length)
@@ -734,6 +767,33 @@ for (const [sourceFile, sourceRows] of sourceRecords) {
       if (Object.prototype.hasOwnProperty.call(row, field)) sourceRecord[field] = row[field];
     return sourceRecord;
   });
+  const mixedRecords = orderedRows.flatMap((row) => {
+    const uid = String(row.questionUid || "");
+    if (!/^qid_v1_[a-f0-9]{64}$/.test(uid)) return [];
+    const identity = resolvedCatalog.canonicalAuthority.identityByUid[uid] || null;
+    const record = Object.fromEntries(mixedRecordFields
+      .filter((field) => Object.prototype.hasOwnProperty.call(row, field))
+      .map((field) => [field, row[field]]));
+    const mixedRow = {
+      questionUid: uid,
+      sourceFile,
+      sourceOrdinal: Number(row.sourceOrdinal),
+      registeredGrade: String(resolvedCatalog.canonicalAuthority.examGradeByFile[sourceFile] || ""),
+      identity: identity ? {
+        questionUid: identity.questionUid,
+        sourceArchiveFile: identity.sourceArchiveFile,
+        sourceOrdinal: Number(identity.sourceOrdinal),
+        status: identity.status,
+      } : null,
+      assignments: compactMixedAssignments(resolvedCatalog.canonicalAuthority.assignmentsByUid[uid]),
+      advancedAssignments: compactMixedAssignments(resolvedCatalog.canonicalAuthority.advancedAssignmentsByUid[uid]),
+      record,
+    };
+    if (mixedRecordsByUid.has(uid))
+      throw new Error(`Canonical mixed lookup UID is duplicated: ${uid}`);
+    mixedRecordsByUid.set(uid, mixedRow);
+    return [mixedRow];
+  });
   const shard = {
     schemaVersion: "archive2-source-verification-v1",
     sourceFile,
@@ -755,16 +815,90 @@ for (const [sourceFile, sourceRows] of sourceRecords) {
     sha256: hash(shardText),
     qCount: Number(exam.qCount),
   });
+  const mixedShard = {
+    schemaVersion: "archive2-mixed-source-verification-v1",
+    sourceFile,
+    sourceSha256: sourceShaByFile.get(sourceFile) || "",
+    qCount: Number(exam.qCount),
+    records: mixedRecords,
+  };
+  const mixedShardText = JSON.stringify(mixedShard) + "\n";
+  const mixedShardPath = mixedSourceShardPrefix + hash(sourceFile) + ".json";
+  mixedSourceShardTexts.set(mixedShardPath, mixedShardText);
+  mixedSourceIndexRows.push({
+    sourceIndex: sourceIndexRows.length - 1,
+    sha256: hash(mixedShardText),
+    byteLength: Buffer.byteLength(mixedShardText),
+    recordCount: mixedRecords.length,
+  });
   sourceShardQuestionCount += records.length;
 }
 if (sourceShardQuestionCount !== resolvedCatalog.records.length ||
     sourceIndexRows.length !== resolvedCatalog.exams.length)
   throw new Error("Canonical source shard coverage is incomplete");
+
+const resolvedAuthorityContext = resolvedCatalog.canonicalAuthority;
+const mixedContext = {
+  schemaVersion: "archive2-mixed-source-verification-context-v1",
+  resolverVersion: core.Canonical.RESOLVER_VERSION,
+  baseProjectionVersion,
+  authority: {
+    taxonomyVersion: resolvedAuthorityContext.taxonomyVersion,
+    gradeCourses: resolvedAuthorityContext.gradeCourses || [],
+    canonicalParents: resolvedAuthorityContext.canonicalParents || [],
+    canonicalAdvancedPaths: resolvedAuthorityContext.canonicalAdvancedPaths || [],
+    projectionPolicy: resolvedAuthorityContext.projectionPolicy || {},
+    problemTypeKeys: [...(resolvedAuthorityContext.problemTypeKeys || [])].sort(),
+    templatesByKey: Object.fromEntries(Object.entries(resolvedAuthorityContext.templatesByKey || {})
+      .map(([key, row]) => [key, {
+        status: row?.status || "",
+        parentProblemTypeKey: row?.parentProblemTypeKey || "",
+      }])
+      .sort(([a], [b]) => a.localeCompare(b))),
+    bindingKeys: [...(resolvedAuthorityContext.bindingKeys || [])].sort(),
+  },
+};
+const mixedContextText = JSON.stringify(mixedContext) + "\n";
+const mixedContextTarget = path.join(root, "archive", mixedContextPath);
+const mixedBucketRecords = new Map(Array.from({ length: 16 }, (_, i) => [i.toString(16), []]));
+for (const [uid, record] of [...mixedRecordsByUid.entries()].sort(([a], [b]) => a.localeCompare(b)))
+  mixedBucketRecords.get(uid.slice("qid_v1_".length, "qid_v1_".length + 1)).push(record);
+const mixedUidBucketRows = [];
+for (const [prefix, records] of mixedBucketRecords) {
+  const bucketPath = mixedUidBucketPrefix + prefix + ".json";
+  const bucketText = JSON.stringify({
+    schemaVersion: "archive2-mixed-source-verification-uid-bucket-v1",
+    prefix,
+    ...(prefix === "f" ? { context: mixedContext } : {}),
+    records,
+  }) + "\n";
+  mixedUidBucketTexts.set(bucketPath, bucketText);
+  mixedUidBucketRows.push({
+    prefix,
+    path: bucketPath,
+    sha256: hash(bucketText),
+    byteLength: Buffer.byteLength(bucketText),
+    recordCount: records.length,
+    ...(prefix === "f" ? { includesContext: true } : {}),
+  });
+}
 const sourceIndex = {
   schemaVersion: "archive2-source-verification-index-v1",
   resolverVersion: core.Canonical.RESOLVER_VERSION,
   generatedFromCatalogIndexVersion: indexVersion,
   baseProjectionVersion,
+  mixedLookup: {
+    schemaVersion: "archive2-mixed-source-verification-index-v1",
+    resolverVersion: core.Canonical.RESOLVER_VERSION,
+    baseProjectionVersion,
+    context: {
+      path: mixedContextPath,
+      sha256: hash(mixedContextText),
+      byteLength: Buffer.byteLength(mixedContextText),
+    },
+    files: mixedSourceIndexRows,
+    uidBuckets: mixedUidBucketRows,
+  },
   files: sourceIndexRows,
 };
 const sourceIndexText = JSON.stringify(sourceIndex) + "\n";
@@ -800,6 +934,11 @@ if (process.argv.includes("--check")) {
     : null;
   if (actualSourceIndex !== sourceIndexText)
     throw new Error("Archive 2.0 canonical source verification index is stale");
+  const actualMixedContext = fs.existsSync(mixedContextTarget)
+    ? fs.readFileSync(mixedContextTarget, "utf8").replace(/\r\n/g, "\n")
+    : null;
+  if (actualMixedContext !== mixedContextText)
+    throw new Error("Archive 2.0 canonical mixed verification context is stale");
   for (const [shardPath, expected] of shardTexts) {
     const targetPath = path.join(root, "archive", shardPath);
     const actualShard = fs.existsSync(targetPath)
@@ -807,6 +946,22 @@ if (process.argv.includes("--check")) {
       : null;
     if (actualShard !== expected)
       throw new Error(`Archive 2.0 canonical source verification shard is stale: ${shardPath}`);
+  }
+  for (const [shardPath, expected] of mixedSourceShardTexts) {
+    const targetPath = path.join(root, "archive", shardPath);
+    const actualShard = fs.existsSync(targetPath)
+      ? fs.readFileSync(targetPath, "utf8").replace(/\r\n/g, "\n")
+      : null;
+    if (actualShard !== expected)
+      throw new Error(`Archive 2.0 mixed source verification shard is stale: ${shardPath}`);
+  }
+  for (const [bucketPath, expected] of mixedUidBucketTexts) {
+    const targetPath = path.join(root, "archive", bucketPath);
+    const actualBucket = fs.existsSync(targetPath)
+      ? fs.readFileSync(targetPath, "utf8").replace(/\r\n/g, "\n")
+      : null;
+    if (actualBucket !== expected)
+      throw new Error(`Archive 2.0 mixed UID verification bucket is stale: ${bucketPath}`);
   }
   const actualManifest = fs.existsSync(manifestTarget)
     ? fs.readFileSync(manifestTarget, "utf8").replace(/\r\n/g, "\n")
@@ -817,8 +972,15 @@ if (process.argv.includes("--check")) {
   fs.writeFileSync(target, packedText);
   fs.writeFileSync(overrideIndexTarget, overrideIndexText);
   fs.mkdirSync(sourceShardDir, { recursive: true });
+  fs.mkdirSync(mixedSourceShardDir, { recursive: true });
+  fs.mkdirSync(mixedUidBucketDir, { recursive: true });
   for (const [shardPath, shardText] of shardTexts)
     fs.writeFileSync(path.join(root, "archive", shardPath), shardText);
+  for (const [shardPath, shardText] of mixedSourceShardTexts)
+    fs.writeFileSync(path.join(root, "archive", shardPath), shardText);
+  for (const [bucketPath, bucketText] of mixedUidBucketTexts)
+    fs.writeFileSync(path.join(root, "archive", bucketPath), bucketText);
+  fs.writeFileSync(mixedContextTarget, mixedContextText);
   fs.writeFileSync(sourceIndexTarget, sourceIndexText);
   fs.writeFileSync(manifestTarget, JSON.stringify(manifest) + "\n");
 }
@@ -827,5 +989,9 @@ console.log(JSON.stringify({
   projectionVersion: manifest.projectionVersion,
   sourceShardCount: sourceIndexRows.length,
   sourceShardQuestionCount,
+  mixedSourceShardCount: mixedSourceIndexRows.length,
+  mixedUidBucketCount: mixedUidBucketRows.length,
+  mixedLookupRecordCount: mixedRecordsByUid.size,
+  mixedLookupContextBytes: Buffer.byteLength(mixedContextText),
   ...catalog.health,
 }, null, 2));
