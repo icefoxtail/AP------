@@ -1,0 +1,208 @@
+name: Question JSON Bank Sync
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_run:
+    workflows: [Archive Pages Release]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: apmath-question-json-main
+  cancel-in-progress: false
+
+jobs:
+  question-json-sync:
+    name: Sync question JSON from persisted main
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      actions: read
+      contents: read
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Create question JSON sync evidence context
+        id: question_json_source
+        env:
+          JSON_EVIDENCE_DIR: ${{ runner.temp }}/question-json-sync-evidence
+        run: |
+          set -euo pipefail
+          mkdir -p "$JSON_EVIDENCE_DIR"
+          git fetch --no-tags origin refs/heads/main
+          source_sha="$(git rev-parse FETCH_HEAD)"
+          git checkout --detach "$source_sha"
+          checked_out_sha="$(git rev-parse HEAD)"
+          if [[ "$source_sha" != "$checked_out_sha" ]]; then
+            echo "Could not freeze fetched main source: fetched=$source_sha checkout=$checked_out_sha" >&2
+            exit 1
+          fi
+          {
+            printf 'source_revision=%s\n' "$source_sha"
+            printf 'source_ref=refs/heads/main\n'
+            printf 'event=%s\n' "$GITHUB_EVENT_NAME"
+            printf 'run_id=%s\n' "$GITHUB_RUN_ID"
+            printf 'run_attempt=%s\n' "$GITHUB_RUN_ATTEMPT"
+          } > "$JSON_EVIDENCE_DIR/context.txt"
+          echo "source_sha=$source_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Restore last-good question JSON snapshot cache
+        id: question_json_cache_restore
+        continue-on-error: true
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/apmath-question-bank
+          key: apmath-question-bank-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            apmath-question-bank-
+
+      - name: Locate previous successful question JSON artifact if cache is unavailable
+        id: question_json_artifact_lookup
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          JSON_BANK_DIR: ${{ runner.temp }}/apmath-question-bank
+        run: |
+          set -euo pipefail
+          if node archive/tools/sync-question-json.mjs --verify-current "$JSON_BANK_DIR" >/dev/null 2>&1; then
+            echo 'run_id=' >> "$GITHUB_OUTPUT"
+            echo 'Last-good question JSON cache restored.'
+            exit 0
+          fi
+          run_id="$(gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts?name=archive-pages-question-json-bank&per_page=100" --jq '.artifacts | map(select(.expired == false and .name == "archive-pages-question-json-bank")) | sort_by(.created_at) | reverse | .[0].workflow_run.id // empty' 2>/dev/null || true)"
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+          if [[ -n "$run_id" ]]; then
+            echo "Found last-good JSON artifact in run $run_id."
+          else
+            echo 'No last-good cache or retained artifact is available.'
+          fi
+
+      - name: Download previous successful question JSON artifact
+        id: question_json_artifact_download
+        if: steps.question_json_artifact_lookup.outputs.run_id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: archive-pages-question-json-bank
+          path: ${{ runner.temp }}/apmath-question-bank-fallback
+          run-id: ${{ steps.question_json_artifact_lookup.outputs.run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Restore downloaded last-good JSON snapshot
+        if: steps.question_json_artifact_download.outcome == 'success'
+        continue-on-error: true
+        env:
+          JSON_BANK_DIR: ${{ runner.temp }}/apmath-question-bank
+          JSON_FALLBACK_DIR: ${{ runner.temp }}/apmath-question-bank-fallback
+        run: |
+          set -euo pipefail
+          if [[ -f "$JSON_FALLBACK_DIR/current.json" ]]; then
+            mkdir -p "$JSON_BANK_DIR"
+            cp -a "$JSON_FALLBACK_DIR/." "$JSON_BANK_DIR/"
+            echo 'Restored last-good question JSON artifact fallback.'
+          else
+            echo 'Downloaded artifact had no current pointer; a new build will not treat it as last-good.'
+          fi
+
+      - name: Run question JSON exporter and sync tests
+        id: question_json_tests
+        env:
+          JSON_EVIDENCE_DIR: ${{ runner.temp }}/question-json-sync-evidence
+        run: node --test archive/tools/export-question-json.test.mjs archive/tools/sync-question-json.test.mjs 2>&1 | tee "$JSON_EVIDENCE_DIR/question-json-tests.log"
+
+      - name: Build question JSON sync snapshot outside Pages
+        id: question_json_sync_run
+        env:
+          JSON_EVIDENCE_DIR: ${{ runner.temp }}/question-json-sync-evidence
+          JSON_BANK_DIR: ${{ runner.temp }}/apmath-question-bank
+          JSON_STATUS_FILE: ${{ runner.temp }}/question-json-sync-evidence/question-json-status.json
+          RUNNER_TEMP: ${{ runner.temp }}
+        run: |
+          set -euo pipefail
+          node archive/tools/sync-question-json.mjs --repo-root "$GITHUB_WORKSPACE" --out-dir "$JSON_BANK_DIR" --temp-root "$RUNNER_TEMP" --status-file "$JSON_STATUS_FILE" 2>&1 | tee "$JSON_EVIDENCE_DIR/question-json-sync.log"
+
+      - name: Confirm question JSON checkout still matches frozen source
+        env:
+          JSON_EVIDENCE_DIR: ${{ runner.temp }}/question-json-sync-evidence
+          SOURCE_SHA: ${{ steps.question_json_source.outputs.source_sha }}
+        run: |
+          set -euo pipefail
+          checkout_sha="$(git rev-parse HEAD)"
+          if [[ "$SOURCE_SHA" != "$checkout_sha" ]]; then
+            echo "Question JSON checkout changed after source freeze: source=$SOURCE_SHA checkout=$checkout_sha" >&2
+            exit 1
+          fi
+          printf 'verified_source_revision=%s\n' "$SOURCE_SHA" >> "$JSON_EVIDENCE_DIR/context.txt"
+
+      - name: Save last-good question JSON snapshot cache
+        id: question_json_cache_save
+        if: steps.question_json_sync_run.outcome == 'success'
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/apmath-question-bank
+          key: apmath-question-bank-${{ github.run_id }}-${{ github.run_attempt }}
+
+      - name: Upload last-good question JSON snapshot artifact outside Pages
+        id: question_json_artifact_upload
+        if: success() && steps.question_json_sync_run.outcome == 'success'
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-pages-question-json-bank
+          path: ${{ runner.temp }}/apmath-question-bank/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Report question JSON sync and persistence outcome
+        if: ${{ !cancelled() }}
+        env:
+          JSON_EVIDENCE_DIR: ${{ runner.temp }}/question-json-sync-evidence
+          JSON_SOURCE_OUTCOME: ${{ steps.question_json_source.outcome }}
+          JSON_TEST_OUTCOME: ${{ steps.question_json_tests.outcome }}
+          JSON_SYNC_OUTCOME: ${{ steps.question_json_sync_run.outcome }}
+          JSON_CACHE_RESTORE_OUTCOME: ${{ steps.question_json_cache_restore.outcome }}
+          JSON_ARTIFACT_LOOKUP_OUTCOME: ${{ steps.question_json_artifact_lookup.outcome }}
+          JSON_CACHE_SAVE_OUTCOME: ${{ steps.question_json_cache_save.outcome }}
+          JSON_ARTIFACT_UPLOAD_OUTCOME: ${{ steps.question_json_artifact_upload.outcome }}
+        run: |
+          mkdir -p "$JSON_EVIDENCE_DIR"
+          {
+            printf 'source_check_outcome=%s\n' "$JSON_SOURCE_OUTCOME"
+            printf 'test_outcome=%s\n' "$JSON_TEST_OUTCOME"
+            printf 'sync_outcome=%s\n' "$JSON_SYNC_OUTCOME"
+            printf 'cache_restore_outcome=%s\n' "$JSON_CACHE_RESTORE_OUTCOME"
+            printf 'artifact_lookup_outcome=%s\n' "$JSON_ARTIFACT_LOOKUP_OUTCOME"
+            printf 'cache_save_outcome=%s\n' "$JSON_CACHE_SAVE_OUTCOME"
+            printf 'artifact_upload_outcome=%s\n' "$JSON_ARTIFACT_UPLOAD_OUTCOME"
+          } >> "$JSON_EVIDENCE_DIR/context.txt"
+          if [[ "$JSON_SYNC_OUTCOME" == "success" && "$JSON_CACHE_SAVE_OUTCOME" != "success" && "$JSON_ARTIFACT_UPLOAD_OUTCOME" != "success" ]]; then
+            echo '::error::Question JSON sync succeeded but neither last-good persistence path succeeded.'
+            exit 1
+          fi
+
+      - name: Upload question JSON sync evidence
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-pages-question-json-sync-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/question-json-sync-evidence/
+          if-no-files-found: warn
+          retention-days: 30
