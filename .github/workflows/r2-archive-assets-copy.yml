@@ -2,11 +2,27 @@ name: R2 Archive Assets Copy
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "delta uploads changed image keys; bootstrap is a one-time full upload and verification"
+        required: true
+        type: choice
+        options:
+          - delta
+          - bootstrap
+        default: delta
   push:
     branches: [main]
     paths:
       - "archive/assets/images/**"
       - ".github/workflows/r2-archive-assets-copy.yml"
+      - ".github/scripts/r2-archive-assets-copy.mjs"
+
+# A stale retry must wait for the current writer and will be rejected against
+# the committed R2 cursor if that newer commit has already completed.
+concurrency:
+  group: r2-archive-assets-copy-main
+  cancel-in-progress: false
 
 jobs:
   copy-archive-assets:
@@ -18,25 +34,19 @@ jobs:
       R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
       R2_BUCKET: ${{ secrets.R2_BUCKET }}
       R2_PUBLIC_BASE_URL: ${{ secrets.R2_PUBLIC_BASE_URL }}
+      R2_SYNC_MODE: ${{ inputs.mode || 'delta' }}
 
     steps:
-      - name: Checkout
+      - name: Checkout full history at the processed commit
         uses: actions/checkout@v4
-
-      - name: Check archive image folder
-        id: archive_assets
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [ ! -d archive/assets/images ]; then
-            echo "archive/assets/images is absent; nothing to copy."
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          echo "exists=true" >> "$GITHUB_OUTPUT"
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          sparse-checkout: |
+            .github/scripts
+            archive/assets/images
 
       - name: Validate secrets
-        if: steps.archive_assets.outputs.exists == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -56,14 +66,12 @@ jobs:
           done
 
       - name: Install rclone
-        if: steps.archive_assets.outputs.exists == 'true'
         shell: bash
         run: |
           set -euo pipefail
           curl -fsSL https://rclone.org/install.sh | sudo bash
 
       - name: Configure Cloudflare R2 remote
-        if: steps.archive_assets.outputs.exists == 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -79,23 +87,10 @@ jobs:
           EOF
           chmod 600 ~/.config/rclone/rclone.conf
 
-      - name: Copy archive image assets
-        if: steps.archive_assets.outputs.exists == 'true'
+      - name: Upload and verify archive image delta
         shell: bash
-        run: |
-          set -euo pipefail
-          rclone copy archive/assets/images "r2-ap-assets:${R2_BUCKET}/exams/images" \
-            --transfers 16 \
-            --checkers 32 \
-            --fast-list \
-            --progress
-
-      - name: Verify uploaded prefixes
-        if: steps.archive_assets.outputs.exists == 'true'
-        shell: bash
-        run: |
-          set -euo pipefail
-          echo "Top exams/images prefixes:"
-          rclone lsf "r2-ap-assets:${R2_BUCKET}/exams/images" --dirs-only --max-depth 1 > /tmp/r2-prefixes.txt
-          head -50 /tmp/r2-prefixes.txt
-
+        env:
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          GITHUB_REF: ${{ github.ref }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: node .github/scripts/r2-archive-assets-copy.mjs
