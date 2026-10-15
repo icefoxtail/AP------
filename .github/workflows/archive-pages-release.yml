@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: read
   contents: write
   pages: write
   id-token: write
@@ -20,12 +19,6 @@ jobs:
     name: Build and verify the student release
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    outputs:
-      question_json_sync_outcome: ${{ steps.question_json_sync.outcome }}
-      question_json_artifact_lookup_outcome: ${{ steps.question_json_artifact_lookup.outcome }}
-      question_json_cache_save_outcome: ${{ steps.question_json_cache_save.outcome }}
-      question_json_artifact_upload_outcome: ${{ steps.question_json_artifact_upload.outcome }}
-      question_json_evidence_record_outcome: ${{ steps.question_json_evidence_record.outcome }}
     defaults:
       run:
         shell: bash
@@ -198,6 +191,92 @@ jobs:
           SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event.before }}
         run: node tools/check-archive2-runtime.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive2-runtime.log"
 
+      - name: Confirm deployment is built from current registered main
+        env:
+          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          release_sha="$(git rev-parse HEAD)"
+          remote_sha="$(git rev-parse origin/main)"
+          if [[ "$release_sha" != "$remote_sha" ]]; then
+            echo "main advanced during Pages verification; refusing to deploy a stale artifact" >&2
+            echo "release=$release_sha remote=$remote_sha" >&2
+            exit 1
+          fi
+          printf 'verified_release_main_sha=%s\n' "$release_sha" >> "$RELEASE_EVIDENCE_DIR/context.txt"
+
+      - name: Upload release diagnostics, including failed runs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive-pages-release-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/archive-pages-release-evidence/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload the verified student site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    name: Deploy the verified student release
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  question-json-sync:
+    name: Sync question JSON from persisted main
+    needs: build
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      actions: read
+      contents: read
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Create question JSON sync evidence context
+        id: question_json_source
+        env:
+          JSON_EVIDENCE_DIR: ${{ runner.temp }}/question-json-sync-evidence
+        run: |
+          set -euo pipefail
+          mkdir -p "$JSON_EVIDENCE_DIR"
+          git fetch --no-tags origin main
+          source_sha="$(git rev-parse HEAD)"
+          main_sha="$(git rev-parse origin/main)"
+          if [[ "$source_sha" != "$main_sha" ]]; then
+            echo "Checked-out source is stale relative to main: checkout=$source_sha main=$main_sha" >&2
+            exit 1
+          fi
+          {
+            printf 'source_revision=%s\n' "$source_sha"
+            printf 'source_ref=refs/heads/main\n'
+            printf 'event=%s\n' "$GITHUB_EVENT_NAME"
+            printf 'run_id=%s\n' "$GITHUB_RUN_ID"
+            printf 'run_attempt=%s\n' "$GITHUB_RUN_ATTEMPT"
+          } > "$JSON_EVIDENCE_DIR/context.txt"
+          echo "source_sha=$source_sha" >> "$GITHUB_OUTPUT"
+
       - name: Restore last-good question JSON snapshot cache
         id: question_json_cache_restore
         continue-on-error: true
@@ -256,37 +335,40 @@ jobs:
             echo 'Downloaded artifact had no current pointer; a new build will not treat it as last-good.'
           fi
 
-      - name: Build question JSON sync snapshot outside Pages
-        id: question_json_sync
-        continue-on-error: true
+      - name: Run question JSON exporter and sync tests
+        id: question_json_tests
         env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+          JSON_EVIDENCE_DIR: ${{ runner.temp }}/question-json-sync-evidence
+        run: node --test archive/tools/export-question-json.test.mjs archive/tools/sync-question-json.test.mjs 2>&1 | tee "$JSON_EVIDENCE_DIR/question-json-tests.log"
+
+      - name: Build question JSON sync snapshot outside Pages
+        id: question_json_sync_run
+        env:
+          JSON_EVIDENCE_DIR: ${{ runner.temp }}/question-json-sync-evidence
           JSON_BANK_DIR: ${{ runner.temp }}/apmath-question-bank
-          JSON_STATUS_FILE: ${{ runner.temp }}/archive-pages-release-evidence/question-json-status.json
+          JSON_STATUS_FILE: ${{ runner.temp }}/question-json-sync-evidence/question-json-status.json
           RUNNER_TEMP: ${{ runner.temp }}
         run: |
           set -euo pipefail
-          node --test archive/tools/export-question-json.test.mjs archive/tools/sync-question-json.test.mjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/question-json-tests.log"
-          node archive/tools/sync-question-json.mjs --repo-root "$GITHUB_WORKSPACE" --out-dir "$JSON_BANK_DIR" --temp-root "$RUNNER_TEMP" --status-file "$JSON_STATUS_FILE" 2>&1 | tee "$RELEASE_EVIDENCE_DIR/question-json-sync.log"
+          node archive/tools/sync-question-json.mjs --repo-root "$GITHUB_WORKSPACE" --out-dir "$JSON_BANK_DIR" --temp-root "$RUNNER_TEMP" --status-file "$JSON_STATUS_FILE" 2>&1 | tee "$JSON_EVIDENCE_DIR/question-json-sync.log"
 
-      - name: Confirm deployment is built from current registered main
+      - name: Confirm question JSON source still matches main
         env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
+          JSON_EVIDENCE_DIR: ${{ runner.temp }}/question-json-sync-evidence
+          SOURCE_SHA: ${{ steps.question_json_source.outputs.source_sha }}
         run: |
           set -euo pipefail
           git fetch --no-tags origin main
-          release_sha="$(git rev-parse HEAD)"
-          remote_sha="$(git rev-parse origin/main)"
-          if [[ "$release_sha" != "$remote_sha" ]]; then
-            echo "main advanced during Pages verification; refusing to deploy a stale artifact" >&2
-            echo "release=$release_sha remote=$remote_sha" >&2
+          main_sha="$(git rev-parse origin/main)"
+          if [[ "$SOURCE_SHA" != "$main_sha" ]]; then
+            echo "main advanced during question JSON sync: source=$SOURCE_SHA main=$main_sha" >&2
             exit 1
           fi
-          printf 'verified_release_main_sha=%s\n' "$release_sha" >> "$RELEASE_EVIDENCE_DIR/context.txt"
+          printf 'verified_source_revision=%s\n' "$SOURCE_SHA" >> "$JSON_EVIDENCE_DIR/context.txt"
 
       - name: Save last-good question JSON snapshot cache
         id: question_json_cache_save
-        if: steps.question_json_sync.outcome == 'success'
+        if: steps.question_json_sync_run.outcome == 'success'
         continue-on-error: true
         uses: actions/cache/save@v4
         with:
@@ -295,7 +377,7 @@ jobs:
 
       - name: Upload last-good question JSON snapshot artifact outside Pages
         id: question_json_artifact_upload
-        if: success() && steps.question_json_sync.outcome == 'success'
+        if: success() && steps.question_json_sync_run.outcome == 'success'
         continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
@@ -304,78 +386,38 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: Record question JSON outcome in release evidence
-        id: question_json_evidence_record
-        if: always()
-        continue-on-error: true
+      - name: Report question JSON sync and persistence outcome
+        if: ${{ !cancelled() }}
         env:
-          RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-          JSON_SYNC_OUTCOME: ${{ steps.question_json_sync.outcome }}
+          JSON_EVIDENCE_DIR: ${{ runner.temp }}/question-json-sync-evidence
+          JSON_SOURCE_OUTCOME: ${{ steps.question_json_source.outcome }}
+          JSON_TEST_OUTCOME: ${{ steps.question_json_tests.outcome }}
+          JSON_SYNC_OUTCOME: ${{ steps.question_json_sync_run.outcome }}
           JSON_CACHE_RESTORE_OUTCOME: ${{ steps.question_json_cache_restore.outcome }}
           JSON_ARTIFACT_LOOKUP_OUTCOME: ${{ steps.question_json_artifact_lookup.outcome }}
           JSON_CACHE_SAVE_OUTCOME: ${{ steps.question_json_cache_save.outcome }}
           JSON_ARTIFACT_UPLOAD_OUTCOME: ${{ steps.question_json_artifact_upload.outcome }}
         run: |
+          mkdir -p "$JSON_EVIDENCE_DIR"
           {
-            printf 'question_json_sync_outcome=%s\n' "$JSON_SYNC_OUTCOME"
-            printf 'question_json_cache_restore_outcome=%s\n' "$JSON_CACHE_RESTORE_OUTCOME"
-            printf 'question_json_artifact_lookup_outcome=%s\n' "$JSON_ARTIFACT_LOOKUP_OUTCOME"
-            printf 'question_json_cache_save_outcome=%s\n' "$JSON_CACHE_SAVE_OUTCOME"
-            printf 'question_json_artifact_upload_outcome=%s\n' "$JSON_ARTIFACT_UPLOAD_OUTCOME"
-          } >> "$RELEASE_EVIDENCE_DIR/context.txt"
+            printf 'source_check_outcome=%s\n' "$JSON_SOURCE_OUTCOME"
+            printf 'test_outcome=%s\n' "$JSON_TEST_OUTCOME"
+            printf 'sync_outcome=%s\n' "$JSON_SYNC_OUTCOME"
+            printf 'cache_restore_outcome=%s\n' "$JSON_CACHE_RESTORE_OUTCOME"
+            printf 'artifact_lookup_outcome=%s\n' "$JSON_ARTIFACT_LOOKUP_OUTCOME"
+            printf 'cache_save_outcome=%s\n' "$JSON_CACHE_SAVE_OUTCOME"
+            printf 'artifact_upload_outcome=%s\n' "$JSON_ARTIFACT_UPLOAD_OUTCOME"
+          } >> "$JSON_EVIDENCE_DIR/context.txt"
+          if [[ "$JSON_SYNC_OUTCOME" == "success" && "$JSON_CACHE_SAVE_OUTCOME" != "success" && "$JSON_ARTIFACT_UPLOAD_OUTCOME" != "success" ]]; then
+            echo '::error::Question JSON sync succeeded but neither last-good persistence path succeeded.'
+            exit 1
+          fi
 
-      - name: Upload release diagnostics, including failed runs
-        if: always()
+      - name: Upload question JSON sync evidence
+        if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
-          name: archive-pages-release-evidence-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ runner.temp }}/archive-pages-release-evidence/
+          name: archive-pages-question-json-sync-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/question-json-sync-evidence/
           if-no-files-found: warn
           retention-days: 30
-
-      - name: Upload the verified student site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-  deploy:
-    name: Deploy the verified student release
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy Pages artifact
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  question-json-status:
-    name: Report question JSON sync outcome outside Pages
-    needs: build
-    if: always()
-    runs-on: ubuntu-latest
-    steps:
-      - name: Keep JSON sync health visible without gating Pages deployment
-        env:
-          BUILD_OUTCOME: ${{ needs.build.result }}
-          JSON_SYNC_OUTCOME: ${{ needs.build.outputs.question_json_sync_outcome }}
-          JSON_ARTIFACT_LOOKUP_OUTCOME: ${{ needs.build.outputs.question_json_artifact_lookup_outcome }}
-          JSON_CACHE_SAVE_OUTCOME: ${{ needs.build.outputs.question_json_cache_save_outcome }}
-          JSON_ARTIFACT_UPLOAD_OUTCOME: ${{ needs.build.outputs.question_json_artifact_upload_outcome }}
-          JSON_EVIDENCE_RECORD_OUTCOME: ${{ needs.build.outputs.question_json_evidence_record_outcome }}
-        run: |
-          set -euo pipefail
-          if [[ "$BUILD_OUTCOME" != "success" ]]; then
-            echo "JSON sync not run because the existing Pages build ended as $BUILD_OUTCOME."
-            exit 0
-          fi
-          if [[ "$JSON_SYNC_OUTCOME" != "success" ]]; then
-            echo "::error::Question JSON sync outcome outside Pages: ${JSON_SYNC_OUTCOME:-missing}. See release evidence and the retained last-good snapshot."
-            exit 1
-          fi
-          if [[ "$JSON_CACHE_SAVE_OUTCOME" != "success" && "$JSON_ARTIFACT_UPLOAD_OUTCOME" != "success" ]]; then
-            echo "::error::Question JSON succeeded but both last-good persistence paths failed (cache=$JSON_CACHE_SAVE_OUTCOME; artifact=$JSON_ARTIFACT_UPLOAD_OUTCOME)."
-            exit 1
-          fi
-          echo "Question JSON sync outside Pages: $JSON_SYNC_OUTCOME; artifact lookup: $JSON_ARTIFACT_LOOKUP_OUTCOME; cache save: $JSON_CACHE_SAVE_OUTCOME; artifact upload: $JSON_ARTIFACT_UPLOAD_OUTCOME; evidence record: $JSON_EVIDENCE_RECORD_OUTCOME."
