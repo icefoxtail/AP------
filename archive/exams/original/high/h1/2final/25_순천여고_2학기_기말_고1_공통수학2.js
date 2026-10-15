@@ -892,11 +892,18 @@ window.questionBank = [
         "reason": "Conditions are fully represented in text and formulas."
       },
       "solutionVisual": {
-        "requirement": "EXEMPT",
-        "reason": "No new geometric/graphical relationship beyond the algebraic derivation."
+        "requirement": "BENEFICIAL",
+        "disposition": "ADD",
+        "ref": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q13-solution.svg",
+        "reason": "Comparison plots distinguish unchanged fractional coefficient 1 from changed asymptote positions.",
+        "newVisualInformation": [
+          "Original y=1+1/(x−1)",
+          "Choice ㄴ: down 1",
+          "Choice ㄷ: left 2 and up 2"
+        ]
       }
     },
-    "tags": [],
+    "tags": ["그래프"],
     "wide": false
   },
   {
@@ -1171,11 +1178,17 @@ window.questionBank = [
         "reason": "Conditions are fully represented in text and formulas."
       },
       "solutionVisual": {
-        "requirement": "EXEMPT",
-        "reason": "No new geometric/graphical relationship beyond the algebraic derivation."
+        "requirement": "BENEFICIAL",
+        "disposition": "ADD",
+        "ref": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q17-solution.svg",
+        "reason": "Plots show two intersections at k=−3 versus tangency at k=−11/4.",
+        "newVisualInformation": [
+          "At k=−3: (3,0), (4,1)",
+          "At k=−11/4: tangent (13/4,1/2)"
+        ]
       }
     },
-    "tags": [],
+    "tags": ["그래프"],
     "wide": false
   },
     {
@@ -1240,8 +1253,13 @@ window.questionBank = [
         "ref": "embedded content image"
       },
       "solutionVisual": {
-        "requirement": "EXEMPT",
-        "reason": "Current source graph/map is the decisive visual and remains directly referenced; candidate explanation states every value read from it."
+        "requirement": "BENEFICIAL",
+        "disposition": "KEEP",
+        "ref": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q18-solution.svg",
+        "reason": "Existing overlay shows intersections of f(u) and 2−u, not jointly drawn in the problem graph.",
+        "newVisualInformation": [
+          "u=1/2 and u=2"
+        ]
       }
     },
     "tags": [
@@ -1434,7 +1452,7 @@ window.questionBank = [
     },
     "solutionVisual": {
       "requirement": "BENEFICIAL",
-      "disposition": "ADD",
+      "disposition": "REBUILD",
       "ref": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q21-solution.svg",
       "reason": "The inverse branch and its intersection with y=x−2 make the x≥4 restriction and unique root easier to see.",
       "newVisualInformation": [
@@ -1445,11 +1463,7 @@ window.questionBank = [
       ]
     }
   },
-  "tags": [
-    "함수",
-    "역함수",
-    "정의역"
-  ],
+  "tags": ["함수", "역함수", "정의역", "그래프"],
   "wide": false,
   "solutionImage": "assets/images/25_순천여고_2학기_기말_고1_공통수학2/q21-solution.svg"
 }
