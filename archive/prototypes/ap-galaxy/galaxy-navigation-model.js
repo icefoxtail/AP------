@@ -11,11 +11,20 @@
 
   function displayCourseName(value) {
     const name = clean(value).replace(/\s+/g, ' ');
-    const compact = name.replace(/\s/g, '');
-    if (compact === '수학(상)' || compact === '수학상') return '공통수학1';
-    if (compact === '수학(하)' || compact === '수학하') return '공통수학2';
-    if (compact === '확률과통계') return '확률과 통계';
-    return name || '과정 미상';
+    // 2015/2022 aliases share one galaxy. Original exam metadata stays intact.
+    const compact = name.normalize('NFKC').replace(/\s/g, '');
+    const aliases = {
+      '수학(상)': '공통수학1', '수학상': '공통수학1',
+      '수학(하)': '공통수학2', '수학하': '공통수학2',
+      '공통수학I': '공통수학1', '공통수학II': '공통수학2',
+      '수학I': '대수', '수학1': '대수',
+      '수학II': '미적분I', '수학2': '미적분I',
+      '미적분I': '미적분I', '미적분1': '미적분I',
+      '미적분': '미적분II', '미적분II': '미적분II', '미적분2': '미적분II',
+      '기하와벡터': '기하',
+      '확률과통계': '확률과 통계',
+    };
+    return aliases[compact] || name || '과정 미상';
   }
 
   function curriculumGroupForExam(exam) {

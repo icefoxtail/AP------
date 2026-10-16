@@ -101,7 +101,8 @@
     if (values.includes(selected)) select.value = selected;
   };
   const subjectFacetValue = (exam) => {
-    return clean(exam.primaryStandardCourse || exam.courseRanges?.[0]?.standardCourse || exam.subject);
+    const sourceCourse = exam.primaryStandardCourse || exam.courseRanges?.[0]?.standardCourse || exam.subject;
+    return galaxyNavigation.displayCourseName(sourceCourse);
   };
   const currentFilters = () => ({
     grade: ui.grade.value,
@@ -187,7 +188,7 @@
           count,
           selected: current[kind] === value,
           disabled: count === 0 && current[kind] !== value,
-          priority: (kind === 'grade' && /^중[123]$/.test(value)) || (kind === 'subject' && /^(공통수학1|공통수학2|대수|미적분|미적분I|확률과 ?통계|기하|기하와벡터)$/.test(value) && state.exams.some((exam) => subjectFacetValue(exam) === value && /^고/.test(clean(exam.grade)))),
+          priority: (kind === 'grade' && /^중[123]$/.test(value)) || (kind === 'subject' && /^(공통수학1|공통수학2|대수|미적분I|미적분II|확률과 통계|기하)$/.test(value) && state.exams.some((exam) => subjectFacetValue(exam) === value && /^고/.test(clean(exam.grade)))),
           worldVisible: count > 0 &&
             (kind !== 'grade' || /^\uC911[123]$/.test(value)) &&
             (kind !== 'subject' || state.exams.some((exam) => subjectFacetValue(exam) === value && /^\uACE0/.test(clean(exam.grade)))) &&
