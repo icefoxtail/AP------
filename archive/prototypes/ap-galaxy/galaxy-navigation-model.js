@@ -12,7 +12,11 @@
   function displayCourseName(value) {
     const name = clean(value).replace(/\s+/g, ' ');
     // 2015/2022 aliases share one galaxy. Original exam metadata stays intact.
-    const compact = name.normalize('NFKC').replace(/\s/g, '');
+    // Curriculum year is source provenance, not part of the visual galaxy ID.
+    const unversioned = name
+      .replace(/^(?:20(?:15|22)|(?:15|22))\s*개정(?:\s*교육과정)?\s*[-·:]?\s*/, '')
+      .replace(/\s*[(（]?\s*20(?:15|22)\s*(?:개정(?:\s*교육과정)?)?\s*[)）]?\s*$/, '');
+    const compact = unversioned.normalize('NFKC').replace(/\s/g, '');
     const aliases = {
       '수학(상)': '공통수학1', '수학상': '공통수학1',
       '수학(하)': '공통수학2', '수학하': '공통수학2',
@@ -24,7 +28,7 @@
       '기하': '기하와벡터', '기하와벡터': '기하와벡터',
       '확률과통계': '확률과 통계',
     };
-    return aliases[compact] || name || '과정 미상';
+    return aliases[compact] || unversioned || '과정 미상';
   }
 
   function curriculumGroupForExam(exam) {
