@@ -4,13 +4,30 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 const ORBIT_COLORS = [0x77a5df, 0xb197dc, 0x66c2bb, 0xd39a86, 0x82a0d2, 0x7fc3ad, 0xd3aa70, 0x7da2ce, 0xc28da8, 0x72b9b7, 0x9f91d2, 0x7ea9c2];
 const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
 const JUPITER_EXAM_FILE = 'original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js';
+// Kept only as a distinctive accent; no galaxy is excluded from 3D core/motion.
+const HERO_GALAXY_ID = 'curriculum:high:공통수학1';
 
 // Keep the Archive's cosmic web renderer focused on galaxies and records.
-const SUN_VERTEX = `varying vec3 vWorld; varying vec3 vNormal; void main(){vNormal=normalize(normalMatrix*normal);vWorld=(modelMatrix*vec4(position,1.)).xyz;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}`;
-const SUN_FRAGMENT = `precision highp float; uniform float uTime; varying vec3 vWorld; varying vec3 vNormal;
+const SUN_VERTEX = `varying vec3 vViewPosition; varying vec3 vViewNormal; varying vec3 vLocal; void main(){vLocal=position;vec4 viewPosition=modelViewMatrix*vec4(position,1.);vViewNormal=normalize(normalMatrix*normal);vViewPosition=-viewPosition.xyz;gl_Position=projectionMatrix*viewPosition;}`;
+const SUN_FRAGMENT = `precision highp float; uniform float uTime; varying vec3 vViewPosition; varying vec3 vViewNormal; varying vec3 vLocal;
 float hash(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);} float noise(vec3 p){vec3 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(mix(hash(i),hash(i+vec3(1,0,0)),f.x),mix(hash(i+vec3(0,1,0)),hash(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash(i+vec3(0,0,1)),hash(i+vec3(1,0,1)),f.x),mix(hash(i+vec3(0,1,1)),hash(i+vec3(1,1,1)),f.x),f.y),f.z);}
-void main(){vec3 p=normalize(vWorld)*3.4;float n=noise(p+vec3(uTime*.025,-uTime*.012,uTime*.018));n=n*.52+noise(p*3.4+uTime*.04)*.3+noise(p*11.-uTime*.08)*.18;float fil=pow(max(noise(p*18.+vec3(uTime*.2)),.01),5.);float gran=smoothstep(.3,.78,n);float spot=smoothstep(.18,.035,length(p.xy-vec2(.42,-.22)))*.34;float limb=pow(max(dot(vNormal,normalize(cameraPosition-vWorld)),0.),.32);vec3 c=mix(vec3(.58,.08,.012),vec3(1.,.33,.025),gran);c=mix(c,vec3(1.,.9,.42),fil*.72+smoothstep(.64,.95,n)*.35);c*=.72+.32*limb;c*=1.-spot;gl_FragColor=vec4(c,1.);}`;
+void main(){vec3 p=normalize(vLocal)*3.4;float n=noise(p+vec3(uTime*.025,-uTime*.012,uTime*.018));n=n*.52+noise(p*3.4+uTime*.04)*.3+noise(p*11.-uTime*.08)*.18;float fil=pow(max(noise(p*18.+vec3(uTime*.2)),.01),5.);float gran=smoothstep(.3,.78,n);float spot=smoothstep(.18,.035,length(p.xy-vec2(.42,-.22)))*.34;float limb=pow(max(dot(normalize(vViewNormal),normalize(vViewPosition)),0.),.32);vec3 c=mix(vec3(.58,.08,.012),vec3(1.,.33,.025),gran);c=mix(c,vec3(1.,.9,.42),fil*.72+smoothstep(.64,.95,n)*.35);c*=.72+.32*limb;c*=1.-spot;gl_FragColor=vec4(c,1.);}`;
 
+// Lightweight tinted glow shared by non-hero cores. The original warm hero
+// shader is retained; every other core gets its own palette rather than orange.
+const GALAXY_CORE_FRAGMENT = `precision highp float;
+uniform float uTime; uniform float uVisibility; uniform vec3 uCoreTint;
+varying vec3 vViewPosition; varying vec3 vViewNormal; varying vec3 vLocal;
+void main() {
+  vec3 p = normalize(vLocal);
+  float grains = sin(p.x * 18.1 + uTime * .18) *
+                 sin(p.y * 23.2 - uTime * .13) *
+                 sin(p.z * 15.6 + uTime * .09);
+  float facing = abs(dot(normalize(vViewNormal), normalize(vViewPosition)));
+  float density = .68 + .18 * grains + .14 * pow(facing, .6);
+  vec3 radiance = mix(uCoreTint, vec3(1.), .16 + .20 * max(0., grains));
+  gl_FragColor = vec4(radiance * density, uVisibility);
+}`;
 function hashText(value) {
   let h = 2166136261;
   for (let i = 0; i < value.length; i += 1) h = Math.imul(h ^ value.charCodeAt(i), 16777619);
@@ -20,10 +37,10 @@ function randomFrom(seed) {
   let value = (seed >>> 0) || 1;
   return () => ((value = (value * 1664525 + 1013904223) >>> 0) / 4294967296);
 }
-function makeGalaxyNebulaTexture() {
+function makeGalaxyNebulaTexture(visualProfile) {
   const canvas = document.createElement('canvas');
-  canvas.width = 256;
-  canvas.height = 160;
+  canvas.width = visualProfile.nebulaWidth;
+  canvas.height = visualProfile.nebulaHeight;
   const context = canvas.getContext('2d');
   const image = context.createImageData(canvas.width, canvas.height);
   const lattice = (x, y, seed) => {
@@ -130,6 +147,18 @@ function smoothStep(start, end, value) {
   const t = THREE.MathUtils.clamp((value - start) / (end - start), 0, 1);
   return t * t * (3 - 2 * t);
 }
+// No flicker or abrupt distance threshold: opacity decreases only when the
+// camera approaches inside the core mesh's comfortable viewing distance.
+function coreProximityFade(distance) {
+  return smoothStep(2.0, 10.5, Math.max(0, distance));
+}
+// A short sideways bend reveals parallax during long-distance camera travel.
+// Both ends have zero displacement and zero lateral speed; direct focus stays exact.
+function cinematicTravelSway(t, travelDistance) {
+  if (t <= 0 || t >= 1 || travelDistance <= 24) return 0;
+  const s = Math.sin(Math.PI * t);
+  return s * s * Math.min(1.65, (travelDistance - 24) * .035);
+}
 function makeOrbit(radius, aspect, material, segments = 112) {
   const points = [];
   for (let i = 0; i <= segments; i += 1) {
@@ -140,6 +169,9 @@ function makeOrbit(radius, aspect, material, segments = 112) {
 }
 export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame, onTravel, onScale, onFacet }) {
   const mobile = window.innerWidth < 760;
+  const visualProfile = window.APGalaxyVisualProfile.select(
+    window.innerWidth, navigator.hardwareConcurrency, navigator.deviceMemory,
+  );
   const starSpriteTexture = makeStarSpriteTexture();
   const coreGlowTexture = makeCoreGlowTexture();
   const renderer = new THREE.WebGLRenderer({
@@ -149,23 +181,25 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.12;
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x030313);
+  // Preserve the navigable 3D scene, while letting the cinematic deep-field sky
+  // show through the WebGL canvas (renderer already has alpha: true).
+  scene.background = null;
   scene.fog = new THREE.FogExp2(0x08071a, .0000012);
   const nebulaTexture = new THREE.TextureLoader().load(new URL('../assets/galaxy-atmosphere.png', import.meta.url).href);
   nebulaTexture.colorSpace = THREE.SRGBColorSpace;
   const similarityHoleTexture = new THREE.TextureLoader().load(new URL('../assets/similarity-blackhole.png', import.meta.url).href);
   similarityHoleTexture.colorSpace = THREE.SRGBColorSpace;
   const nebulaSky = new THREE.Mesh(new THREE.SphereGeometry(340, 64, 40), new THREE.MeshBasicMaterial({
-    map: nebulaTexture, color: 0x9da7be, side: THREE.BackSide, transparent: true, opacity: .48, depthWrite: false,
+    map: nebulaTexture, color: 0x9da7be, side: THREE.BackSide, transparent: true, opacity: visualProfile.nebulaSkyOpacity, depthWrite: false,
   }));
   scene.add(nebulaSky);
-  const depthFar = new THREE.Points(makeDepthField(mobile ? 2200 : 9000, 0, 68, 0x5eed2026, .035), new THREE.PointsMaterial({
+  const depthFar = new THREE.Points(makeDepthField(visualProfile.backgroundFarStars, 0, 68, 0x5eed2026, .035), new THREE.PointsMaterial({
     map: starSpriteTexture, size: mobile ? .28 : .38, sizeAttenuation: true, vertexColors: true,
     transparent: true, opacity: .17, depthWrite: false, alphaTest: .012, blending: THREE.AdditiveBlending, toneMapped: false,
   }));
   depthFar.renderOrder = -6;
   depthFar.rotation.set(.22, -.35, .08);
-  const depthNear = new THREE.Points(makeDepthField(mobile ? 420 : 1500, 8, 64, 0x1a5eed, .055), new THREE.PointsMaterial({
+  const depthNear = new THREE.Points(makeDepthField(visualProfile.backgroundNearStars, 8, 64, 0x1a5eed, .055), new THREE.PointsMaterial({
     map: starSpriteTexture, size: mobile ? .34 : .52, sizeAttenuation: true, vertexColors: true,
     transparent: true, opacity: .2, depthWrite: false, alphaTest: .012, blending: THREE.AdditiveBlending, toneMapped: false,
   }));
@@ -212,7 +246,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   violetFill.position.set(-40, 28, 34);
   scene.add(violetFill);
 
-  const starCount = mobile ? 320 : 720;
+  const starCount = visualProfile.backgroundStars;
   const starPositions = new Float32Array(starCount * 3);
   const starColors = new Float32Array(starCount * 3);
   const skyRandom = randomFrom(81802026);
@@ -233,10 +267,11 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   const starGeometry = new THREE.BufferGeometry();
   starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
   starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
-  scene.add(new THREE.Points(starGeometry, new THREE.PointsMaterial({
+  const starMaterial = new THREE.PointsMaterial({
     map: starSpriteTexture, size: mobile ? .5 : .42, sizeAttenuation: true,
-    vertexColors: true, transparent: true, opacity: .62, depthWrite: false, alphaTest: .012,
-  })));
+    vertexColors: true, transparent: true, opacity: visualProfile.dataStarOpacity, depthWrite: false, alphaTest: .012,
+  });
+  scene.add(new THREE.Points(starGeometry, starMaterial));
 
   const sunRoot = new THREE.Group();
   scene.add(sunRoot);
@@ -297,7 +332,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   const sharedDataStarGeometry = new THREE.SphereGeometry(.2, 24, 18);
   const sharedFacetPickGeometry = new THREE.SphereGeometry(.9, 16, 10);
   const sharedFacetPickMaterial = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, colorWrite: false, depthWrite: false });
-  const galaxyNebulaTexture = makeGalaxyNebulaTexture();
+  const galaxyNebulaTexture = makeGalaxyNebulaTexture(visualProfile);
   const sharedCoreGlowTexture = coreGlowTexture;
   const sharedStarSpriteTexture = starSpriteTexture;
   const dataStarMaterials = new Map();
@@ -361,6 +396,9 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   const tempA = new THREE.Vector3();
   const tempB = new THREE.Vector3();
   const tempProjected = new THREE.Vector3();
+  const viewForward = new THREE.Vector3();
+  const depthHazeTint = new THREE.Color(0xaeb8ca);
+  const depthNeutralTint = new THREE.Color(0xbcc3d0);
   const orbitAxis = new THREE.Vector3(1, 0, 0);
   let simTime = 0;
   let lastFrame = performance.now();
@@ -371,6 +409,10 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   let instantTravel = false;
   let rafId = 0;
   let pointerStart = null;
+  let hoveredGroupId = '';
+  let lastHoverPick = -Infinity;
+  // Hover raycasting is opt-in for mouse pointers and throttled; touch uses tap.
+  const hoverPickInterval = 100;
   const frameInterval = mobile ? 1000 / 24 : 1000 / 30;
 
   // The micro view is an educational concept scene. It deliberately uses a
@@ -478,6 +520,22 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
 function hashUnit(text) {
   return hashText(text) / 4294967295;
 }
+  // Stable real-world depth bands (not a 2D overlap solver): filtering or
+  // reordering cannot reshuffle one galaxy between foreground/background.
+  function galaxyDepthOffset(id, isMobile) {
+    const band = Math.min(4, Math.floor(hashUnit(id + ':depth-band') * 5));
+    const jitter = (hashUnit(id + ':depth-jitter') - .5) * (isMobile ? 1.4 : 2.2);
+    return (band - 2) * (isMobile ? 4.5 : 7) + jitter;
+  }
+  function galaxyDepthCue(cameraDepth, isMobile, suppress) {
+    if (suppress) return { disc: 1, gas: 1, glow: 1, haze: 0 };
+    const start = isMobile ? 42 : 60;
+    const end = isMobile ? 124 : 178;
+    const t = Math.max(0, Math.min(1, (cameraDepth - start) / (end - start)));
+    const blend = t * t * (3 - 2 * t);
+    return { disc: 1 - blend * .28, gas: 1 - blend * .33,
+      glow: 1 - blend * .26, haze: blend * .23 };
+  }
   function groupOrbitLayout(data, index, groupCount) {
   const progress = (index + .5) / Math.max(1, groupCount);
   const minRadius = mobile ? 15 : 22;
@@ -485,13 +543,31 @@ function hashUnit(text) {
   const radius = Math.sqrt(minRadius * minRadius + progress * (maxRadius * maxRadius - minRadius * minRadius));
   const angleJitter = (hashUnit(data.id + ':orbit') - .5) * .32;
   const elevation = (hashUnit(data.id + ':depth') - .5) * (mobile ? 18 : 34);
-  return { radius, angle: index * GOLDEN_ANGLE + angleJitter, elevation };
+  const depthOffset = galaxyDepthOffset(data.id, mobile);
+  return { radius, angle: index * GOLDEN_ANGLE + angleJitter, elevation, depthOffset };
   }
-  function groupCoordinates(angle, radius) {
-    return {
-      x: Math.cos(angle) * radius * (mobile ? .52 : 1),
-      z: Math.sin(angle) * radius * (mobile ? 1 : .9),
-    };
+  // One coordinate transform drives both the moving galaxy and its drawn orbit.
+  // The galaxy's local XZ disc and this path share the same 3D plane orientation.
+  function groupCoordinates(angle, radius, inclination = 0, azimuth = 0) {
+    const point = new THREE.Vector3(
+      Math.cos(angle) * radius * (mobile ? .52 : 1),
+      0,
+      Math.sin(angle) * radius * (mobile ? 1 : .9),
+    );
+    point.applyEuler(new THREE.Euler(inclination, 0, azimuth, 'XYZ'));
+    return { x: point.x, y: point.y, z: point.z };
+  }
+  function makeGroupOrbitPath(inclination, azimuth, material, segments = 128) {
+    const points = [];
+    for (let i = 0; i <= segments; i += 1) {
+      const angle = i / segments * Math.PI * 2;
+      const point = groupCoordinates(angle, 1, inclination, azimuth);
+      points.push(new THREE.Vector3(point.x, point.y, point.z));
+    }
+    const geometry = new THREE.BufferGeometry().setFromPoints(points);
+    const orbitPath = new THREE.Line(geometry, material);
+    orbitPath.name = 'group-orbit-plane';
+    return orbitPath;
   }
   function galaxyProfile(data) {
     const canonicalProfiles = {
@@ -547,6 +623,112 @@ function hashUnit(text) {
     geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
     return geometry;
   }
+  // All six galaxy forms get motion. Spirals shear differentially, ellipses
+  // rotate coherently, edge-on disks drift softly, and irregular clouds wobble.
+  // The parent hub rotation is compensated in the local particle phases.
+  const GALAXY_HUB_SPIN_RATE = .14;
+  function galaxyAngularSpeed(radius) {
+    const r = Math.max(0, radius);
+    return .068 + .178 / (1 + Math.pow(r / .8, 1.7));
+  }
+  function galaxyMotionMode(profile) {
+    if (profile.kind === 'spiral' || profile.kind === 'barred') return 'differential';
+    if (profile.kind === 'elliptical') return 'coherent';
+    if (profile.kind === 'edge-on') return 'gentle';
+    return 'irregular';
+  }
+  function makeDifferentialMotion(points, flattening, mode = 'differential') {
+    const attribute = points.geometry.getAttribute('position');
+    const values = attribute.array;
+    const ratio = Math.max(.08, Math.min(1, flattening));
+    const phases = new Float32Array(attribute.count);
+    const radii = new Float32Array(attribute.count);
+    const localRates = new Float32Array(attribute.count);
+    let maxRadiusSquared = 0;
+    for (let i = 0; i < attribute.count; i += 1) {
+      const offset = i * 3;
+      const x = values[offset];
+      const y = values[offset + 1];
+      const unflattenedZ = values[offset + 2] / ratio;
+      const radius = Math.hypot(x, unflattenedZ);
+      phases[i] = Math.atan2(unflattenedZ, x);
+      radii[i] = radius;
+      const worldRate = mode === 'coherent' ? .085
+        : mode === 'gentle' ? .073 + .055 / (1 + radius)
+        : mode === 'irregular' ? .121
+        : galaxyAngularSpeed(radius);
+      localRates[i] = GALAXY_HUB_SPIN_RATE - worldRate;
+      maxRadiusSquared = Math.max(maxRadiusSquared, radius * radius + y * y);
+    }
+    attribute.setUsage(THREE.DynamicDrawUsage);
+    // Three.js caches the geometry bound; keep a conservative bound for all
+    // phases or the far edge can disappear during frustum culling.
+    points.geometry.boundingSphere = new THREE.Sphere(
+      new THREE.Vector3(0, 0, 0), Math.sqrt(maxRadiusSquared) + .08
+    );
+    return { attribute, phases, radii, localRates, flattening: ratio, mode };
+  }
+  function updateDifferentialMotion(motion, timeSeconds) {
+    const values = motion.attribute.array;
+    for (let i = 0; i < motion.phases.length; i += 1) {
+      // Reversible, bounded angular drift without translating the nucleus.
+      const wobble = motion.mode === 'irregular'
+        ? .035 * Math.min(1, motion.radii[i]) * (
+          Math.sin(timeSeconds * .27 + motion.phases[i] * 2) - Math.sin(motion.phases[i] * 2))
+        : 0;
+      const phase = motion.phases[i] + motion.localRates[i] * timeSeconds + wobble;
+      const offset = i * 3;
+      values[offset] = Math.cos(phase) * motion.radii[i];
+      values[offset + 2] = Math.sin(phase) * motion.radii[i] * motion.flattening;
+      // Y and colors stay fixed; no per-frame allocations or GPU buffer rebuild.
+    }
+    motion.attribute.needsUpdate = true;
+  }
+  // Deterministic 3D particle volume shared by all galaxy types; individual
+  // profile scales make elliptical/edge-on/irregular forms genuinely distinct.
+  function galaxyCoreShape(profile) {
+    if (profile.kind === 'elliptical') return { x: 1.18, y: 1.12, z: 1.08, alpha: .64 };
+    if (profile.kind === 'edge-on') return { x: 1.32, y: .42, z: .5, alpha: .60 };
+    if (profile.kind === 'irregular') return { x: .81, y: .69, z: .94, alpha: .42 };
+    if (profile.kind === 'barred') return { x: 1.36, y: .73, z: .98, alpha: .85 };
+    return { x: 1.10, y: .84, z: 1.02, alpha: .84 };
+  }
+  function galaxyCoreParticleBudget(profile, isMobile, isHero) {
+    if (isHero) return isMobile ? 80 : 200;
+    if (profile.kind === 'irregular') return isMobile ? 36 : 80;
+    if (profile.kind === 'edge-on') return isMobile ? 44 : 96;
+    if (profile.kind === 'elliptical') return isMobile ? 60 : 128;
+    return isMobile ? 64 : 144;
+  }
+  function makeGalaxyCoreVolume(data, palette, count, profile = galaxyProfile(data)) {
+    const random = randomFrom(hashText(data.id + ':core-volume'));
+    const positions = new Float32Array(count * 3);
+    const colors = new Float32Array(count * 3);
+    const baseColor = new THREE.Color(ORBIT_COLORS[palette]);
+    const hot = new THREE.Color(data.id === HERO_GALAXY_ID ? 0xff7c36
+      : profile.kind === 'elliptical' ? 0xffcfa0
+      : profile.kind === 'irregular' ? 0x9adfff : 0xffc6a8);
+    const white = new THREE.Color(0xfff4dc);
+    for (let i = 0; i < count; i += 1) {
+      const radius = Math.pow(random(), 1.65) * .52;
+      const directionY = random() * 2 - 1;
+      const theta = random() * Math.PI * 2;
+      const planar = Math.sqrt(Math.max(0, 1 - directionY * directionY));
+      const x = Math.cos(theta) * planar * radius;
+      const y = directionY * radius * .9;
+      const z = Math.sin(theta) * planar * radius * .82;
+      positions.set([x, y, z], i * 3);
+      const centrality = 1 - radius / .52;
+      const color = baseColor.clone()
+        .lerp(hot, .28 + centrality * .42)
+        .lerp(white, centrality * .38 + random() * .2);
+      color.toArray(colors, i * 3);
+    }
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    return geometry;
+  }
   function makeNebulaCloud(data, palette, profile) {
     const random = randomFrom(hashText(data.id) ^ 0x9e3779b9);
     const count = 54;
@@ -572,6 +754,7 @@ function hashUnit(text) {
     const palette = hashText(data.id) % ORBIT_COLORS.length;
     const color = ORBIT_COLORS[palette];
     const profile = galaxyProfile(data);
+    const isHeroGalaxy = data.id === HERO_GALAXY_ID;
     const root = reusing || new THREE.Group();
     if (reusing) {
       root.clear();
@@ -583,7 +766,10 @@ function hashUnit(text) {
     const majorGalaxyScale = .92 + Math.pow(examCountFraction, .58) * 1.85;
     const hubScale = .76 + Math.pow(examCountFraction, .62) * .38;
     const inclination = .12 + hashUnit(data.id + ':inclination') * .44;
+    const orbitAzimuth = (index % 2 ? -.1 : .07) + (index % 3) * .022;
     const hub = new THREE.Group();
+    hub.rotation.set(inclination, 0, orbitAzimuth);
+    const hubBaseQuaternion = hub.quaternion.clone();
     root.add(hub);
     hub.scale.setScalar(hubScale);
     const cloud = new THREE.Points(makeNebulaCloud(data, palette, profile), new THREE.PointsMaterial({
@@ -591,7 +777,8 @@ function hashUnit(text) {
       transparent: true, opacity: .19 + profile.cloud * .045, blending: THREE.AdditiveBlending, depthWrite: false, alphaTest: .01,
     }));
     cloud.scale.setScalar(majorGalaxyScale);
-    cloud.rotation.x = -.18;
+    cloud.rotation.x = 0;
+    cloud.rotation.y = profile.turn;
     hub.add(cloud);
     const nebulaBillboard = new THREE.Sprite(new THREE.SpriteMaterial({
       map: galaxyNebulaTexture, color: new THREE.Color(color).lerp(new THREE.Color(0x9fb8ff), .38),
@@ -601,15 +788,62 @@ function hashUnit(text) {
     nebulaBillboard.scale.set((13 + profile.cloud * 3.1) * majorGalaxyScale, (8.6 + profile.cloud * 1.8) * majorGalaxyScale, 1);
     nebulaBillboard.position.y = -.08;
     hub.add(nebulaBillboard);
-    const galaxy = new THREE.Points(makeGalaxyDisc(data, palette, profile, 520), new THREE.PointsMaterial({
-      map: sharedStarSpriteTexture, vertexColors: true, size: .46 + profile.cloud * .07, sizeAttenuation: true,
+    const galaxy = new THREE.Points(makeGalaxyDisc(data, palette, profile, visualProfile.galaxyParticles), new THREE.PointsMaterial({
+      map: sharedStarSpriteTexture, vertexColors: true, size: visualProfile.galaxyPointSize + profile.cloud * .07, sizeAttenuation: true,
       transparent: true, opacity: .82, alphaTest: .018,
       blending: THREE.NormalBlending, depthWrite: false, toneMapped: false,
     }));
-    galaxy.rotation.x = -.18;
+    galaxy.rotation.x = 0;
     galaxy.rotation.y = profile.turn;
     galaxy.scale.set((5.15 + profile.bar * .34) * majorGalaxyScale, 1.28 * majorGalaxyScale, (profile.kind === 'edge-on' ? .72 : 3.72 + profile.flattening * .78) * majorGalaxyScale);
     hub.add(galaxy);
+    // Every visible galaxy gets type-specific star/gas animation and 3D core.
+    // Facet and exam stars intentionally remain untouched.
+    const motionMode = galaxyMotionMode(profile);
+    const starMotion = makeDifferentialMotion(galaxy, profile.flattening, motionMode);
+    const cloudMotion = makeDifferentialMotion(cloud, profile.flattening, motionMode);
+    const coreShape = galaxyCoreShape(profile);
+    const coreTint = new THREE.Color(color).lerp(new THREE.Color(0xfff2de), .23);
+    const heroFragment = SUN_FRAGMENT
+      .replace('uniform float uTime;', 'uniform float uTime; uniform float uVisibility;')
+      .replace('gl_FragColor=vec4(c,1.);', 'gl_FragColor=vec4(c,uVisibility);');
+    const coreSurface = new THREE.Mesh(
+      new THREE.SphereGeometry(.34, isHeroGalaxy ? 32 : mobile ? 12 : 18, isHeroGalaxy ? 24 : mobile ? 10 : 14),
+      new THREE.ShaderMaterial({
+        uniforms: { uTime: { value: 0 }, uVisibility: { value: 1 }, uCoreTint: { value: coreTint } },
+        vertexShader: SUN_VERTEX,
+        fragmentShader: isHeroGalaxy ? heroFragment : GALAXY_CORE_FRAGMENT,
+        transparent: true,
+        depthWrite: false,
+        toneMapped: false,
+      }),
+    );
+    coreSurface.name = 'galaxy-core-surface';
+    coreSurface.userData.visualOnly = true;
+    coreSurface.rotation.y = profile.turn;
+    coreSurface.scale.set(coreShape.x * majorGalaxyScale, coreShape.y * majorGalaxyScale, coreShape.z * majorGalaxyScale);
+    coreSurface.renderOrder = 3;
+    hub.add(coreSurface);
+    const coreVolume = new THREE.Points(
+      makeGalaxyCoreVolume(data, palette, galaxyCoreParticleBudget(profile, mobile, isHeroGalaxy), profile),
+      new THREE.PointsMaterial({
+        map: sharedStarSpriteTexture, vertexColors: true,
+        size: mobile ? .24 : .32, sizeAttenuation: true,
+        transparent: true, opacity: .62, alphaTest: .012,
+        blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false,
+      }),
+    );
+    coreVolume.name = 'galaxy-core-volume';
+    coreVolume.userData.visualOnly = true;
+    coreVolume.rotation.y = profile.turn;
+    coreVolume.scale.set(coreShape.x * majorGalaxyScale, coreShape.y * majorGalaxyScale * 1.07, coreShape.z * majorGalaxyScale * 1.03);
+    coreVolume.renderOrder = 4;
+    hub.add(coreVolume);
+    if (simTime > 0) {
+      updateDifferentialMotion(starMotion, simTime);
+      updateDifferentialMotion(cloudMotion, simTime);
+      coreSurface.material.uniforms.uTime.value = simTime;
+    }
     const nucleusGlow = new THREE.Sprite(new THREE.SpriteMaterial({
       map: sharedCoreGlowTexture, color: 0xffe2b7, transparent: true, opacity: .42,
       blending: THREE.AdditiveBlending, depthWrite: false, depthTest: true, toneMapped: false,
@@ -632,12 +866,12 @@ function hashUnit(text) {
       orbit.rotation.z = (shell % 2 ? -1 : 1) * (.12 + index * .018);
       root.add(orbit);
     }
-    const orbitPath = makeOrbit(orbitRadius, .9 + index % 4 * .035, new THREE.LineBasicMaterial({
+    const orbitPath = makeGroupOrbitPath(inclination, orbitAzimuth, new THREE.LineBasicMaterial({
       color, transparent: true, opacity: .075, depthWrite: false,
     }), 128);
-    orbitPath.rotation.x = inclination;
-    orbitPath.rotation.z = (index % 2 ? -.1 : .07) + (index % 3) * .022;
-    orbitPath.position.y = (index % 3 - 1) * .22;
+    orbitPath.position.y = layout.elevation;
+    orbitPath.position.z = layout.depthOffset;
+    orbitPath.scale.setScalar(orbitRadius);
     scene.add(orbitPath);
     const animateLayout = running && !matchMedia('(prefers-reduced-motion: reduce)').matches;
     const targetAngle = layout.angle;
@@ -645,9 +879,16 @@ function hashUnit(text) {
     const transitionStart = performance.now();
     return {
       id: data.id, name: data.name, mode: data.mode, count: data.count, root, hub, hubBaseScale: hubScale, globe, galaxy, cloud, nebulaBillboard, nucleusGlow, profile,
-      orbitPath, palette, color, index, elevation: layout.elevation, orbitRadius, targetRadius: orbitRadius,
+      isHeroGalaxy, coreSurface, coreVolume, coreOpacity: isHeroGalaxy ? 1 : coreShape.alpha,
+      starMotion, cloudMotion, motionMode,
+      // Cache each material's original tint; camera-distance fades must never compound.
+      depthBillboardTint: nebulaBillboard.material.color.clone(),
+      depthCoreTint: nucleusGlow.material.color.clone(),
+      nucleusGlowBaseScale: nucleusGlow.scale.clone(),
+      orbitPath, palette, color, index, elevation: layout.elevation, depthOffset: layout.depthOffset,
+      orbitRadius, targetRadius: orbitRadius,
       angle: initialAngle, layoutAngle: initialAngle, layoutFromAngle: initialAngle,
-      targetAngle, layoutTransitionStart: transitionStart, layoutTransitionDuration: animateLayout ? 900 : 0, orbitPhase: 0, inclination,
+      targetAngle, layoutTransitionStart: transitionStart, layoutTransitionDuration: animateLayout ? 900 : 0, orbitPhase: 0, inclination, orbitAzimuth, hubBaseQuaternion,
       speed: .034 + (hashText(data.id) % 7) * .006,
       shellMaterials, drawnFiles: data.files.slice(),
     };
@@ -872,14 +1113,14 @@ function hashUnit(text) {
         next.speed = group.speed;
       }
       groupRoot.add(next.root);
-      const coordinates = groupCoordinates(next.angle, next.orbitRadius);
-      const elevation = next.elevation - coordinates.z * Math.sin(next.inclination) * .28;
-      next.root.position.set(coordinates.x, elevation, coordinates.z);
+      const coordinates = groupCoordinates(next.angle, next.orbitRadius, next.inclination, next.orbitAzimuth);
+      next.root.position.set(coordinates.x, next.elevation + coordinates.y, coordinates.z + next.depthOffset);
       newGroupMap.set(data.id, next);
     }
     for (const group of unused) clearGroupNode(group);
     groups.clear();
     for (const [id, group] of newGroupMap) groups.set(id, group);
+    if (hoveredGroupId && !groups.has(hoveredGroupId)) hoveredGroupId = '';
 
     const selectedFiles = new Set(details.map((exam) => exam.file));
     for (const [file, entity] of entities) {
@@ -1017,6 +1258,7 @@ function hashUnit(text) {
   }
   const blackholeLabel = makeBlackholeLabel();
 
+  let galaxyMotionFrame = 0;
   function setFrame() {
     const now = performance.now();
     if (now - lastFrame < frameInterval) {
@@ -1028,6 +1270,7 @@ function hashUnit(text) {
     lastFrame = now;
     if (running && pageVisible && !selectedExamFile) simTime += elapsed;
     const animate = running && pageVisible && !selectedExamFile;
+    if (animate) galaxyMotionFrame += 1;
     if (animate) {
       depthFar.rotation.y += elapsed * .0022;
       depthNear.rotation.y -= elapsed * .0048;
@@ -1071,7 +1314,11 @@ function hashUnit(text) {
       if (animate) group.orbitPhase += group.speed * elapsed;
       group.angle = group.layoutAngle + group.orbitPhase;
       const emphasized = group.id === focusedGroupId;
+      const hoverEmphasis = !mobile && !focusedGroupId && !selectedExamFile && hoveredGroupId === group.id;
       group.hub.scale.setScalar(group.hubBaseScale * (emphasized ? 1.08 : 1));
+      group.nucleusGlow.scale.copy(group.nucleusGlowBaseScale).multiplyScalar(
+        emphasized ? 1.13 : hoverEmphasis ? 1.08 : 1,
+      );
       // Keep the overview's shared orbital frame legible at a glance. The
       // focused route still wins by a wide margin, while the quiet paths give
       // the wide shot a stable sense of scale and depth.
@@ -1079,18 +1326,31 @@ function hashUnit(text) {
       for (let i = 0; i < group.shellMaterials.length; i += 1) {
         group.shellMaterials[i].opacity = emphasized ? .36 - i * .035 : focusedGroupId ? .012 : .032;
       }
-      const quietSchoolMode = group.mode === 'school';
-      group.galaxy.material.opacity = emphasized ? .92 : quietSchoolMode ? .54 : .8;
-      group.cloud.material.opacity = emphasized ? .2 : quietSchoolMode ? .035 : .16;
-      group.nebulaBillboard.material.opacity = emphasized ? .24 : quietSchoolMode ? .045 : .2;
-      group.nucleusGlow.material.opacity = emphasized ? .58 : .35;
-      const coordinates = groupCoordinates(group.angle, group.orbitRadius);
-      const x = coordinates.x;
-      const z = coordinates.z;
-      const y = group.elevation - z * Math.sin(group.inclination) * .28;
-      group.root.position.set(x, y, z);
-      group.hub.rotation.y = simTime * .14;
-      group.orbitPath.scale.setScalar(group.orbitRadius / Math.max(group.targetRadius, 1));
+      // Near/focused galaxies animate at full rate; farther ones are staggered
+      // to avoid updating every star buffer on every mobile frame.
+      const nearEnough = camera.position.distanceTo(group.root.position) < (mobile ? 32 : 56);
+      const stagger = mobile ? 3 : 2;
+      if (animate && (emphasized || nearEnough || (galaxyMotionFrame + group.index) % stagger === 0)) {
+        updateDifferentialMotion(group.starMotion, simTime);
+        updateDifferentialMotion(group.cloudMotion, simTime);
+      }
+      if (group.coreSurface && animate) group.coreSurface.material.uniforms.uTime.value = simTime;
+      const coordinates = groupCoordinates(group.angle, group.orbitRadius, group.inclination, group.orbitAzimuth);
+      group.root.position.set(coordinates.x, group.elevation + coordinates.y, coordinates.z + group.depthOffset);
+      // Spin locally around the disk normal without changing the shared plane tilt.
+      group.hub.quaternion.copy(group.hubBaseQuaternion);
+      group.hub.rotateY(simTime * GALAXY_HUB_SPIN_RATE);
+      // Match nucleus spin to the type: coherent ellipses do not shear, and
+      // irregular cores have restrained motion rather than spiral-arm rotation.
+      const coreWorldRate = group.motionMode === 'coherent' ? .085
+        : group.motionMode === 'gentle' ? .128
+        : group.motionMode === 'irregular' ? .121 : galaxyAngularSpeed(0);
+      const coreLocalTurn = group.profile.turn + (coreWorldRate - GALAXY_HUB_SPIN_RATE) * simTime;
+      group.coreSurface.rotation.y = coreLocalTurn;
+      group.coreVolume.rotation.y = coreLocalTurn;
+      group.orbitPath.position.y = group.elevation;
+      group.orbitPath.position.z = group.depthOffset;
+      group.orbitPath.scale.setScalar(group.orbitRadius);
     }
 
     for (const category of facetCategories.values()) {
@@ -1162,6 +1422,7 @@ function hashUnit(text) {
       // Quintic ease-in/out: real camera travel, restrained acceleration and deceleration.
       const eased = t < .5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2;
       camera.position.lerpVectors(cameraTransition.fromPosition, cameraTransition.toPosition, eased);
+      camera.position.addScaledVector(cameraTransition.side, cinematicTravelSway(t, cameraTransition.travelDistance));
       controls.target.lerpVectors(cameraTransition.fromTarget, cameraTransition.toTarget, eased);
       if (travelGuide) {
         const pulse = .4 + Math.sin(simTime * 1.8) * .12;
@@ -1182,6 +1443,29 @@ function hashUnit(text) {
       }
     }
     controls.update();
+    // Apply atmospheric perspective in view space, after controls/tween update.
+    // Actual 3D geometry and Raycaster pick meshes remain untouched. Perspective
+    // projection supplies apparent size; we only lower distant luminosity.
+    camera.getWorldDirection(viewForward);
+    const suppressDepthCue = !!focusedGroupId || !!selectedExamFile || scaleMode !== 'macro';
+    for (const group of groups.values()) {
+      const cameraDepth = tempA.copy(group.root.position).sub(camera.position).dot(viewForward);
+      const cue = galaxyDepthCue(cameraDepth, mobile, suppressDepthCue);
+      const emphasized = group.id === focusedGroupId;
+      const hovered = !mobile && !focusedGroupId && !selectedExamFile && hoveredGroupId === group.id;
+      const quietSchoolMode = group.mode === 'school';
+      group.galaxy.material.opacity = (emphasized ? .92 : quietSchoolMode ? .54 : .8) * cue.disc;
+      group.cloud.material.opacity = (emphasized ? .2 : quietSchoolMode ? .035 : .16) * cue.gas;
+      group.nebulaBillboard.material.opacity = (emphasized ? .24 : hovered ? .225 : quietSchoolMode ? .045 : .2) * cue.gas;
+      group.nucleusGlow.material.opacity = (emphasized ? .58 : hovered ? .47 : .35) * cue.glow;
+      group.nebulaBillboard.material.color.copy(group.depthBillboardTint).lerp(depthHazeTint, cue.haze);
+      group.nucleusGlow.material.color.copy(group.depthCoreTint).lerp(depthNeutralTint, cue.haze);
+      group.coreVolume.material.opacity =
+        (emphasized ? .82 : quietSchoolMode ? .18 : .62) * cue.glow * group.coreOpacity;
+      const proximity = coreProximityFade(camera.position.distanceTo(group.root.position));
+      group.coreSurface.material.uniforms.uVisibility.value = proximity * group.coreOpacity;
+      group.coreVolume.material.opacity *= proximity;
+    }
     if (questionOrbit) {
       const center = entities.get(questionOrbit.file);
       if (center) {
@@ -1260,7 +1544,8 @@ function hashUnit(text) {
     const direction = camera.position.clone().sub(controls.target).normalize();
     const position = target.clone().addScaledVector(direction, distance);
     position.y += lift;
-    const far = controls.target.distanceTo(target) > 24;
+    const travelDistance = controls.target.distanceTo(target);
+    const far = travelDistance > 24;
     if (instantTravel || matchMedia('(prefers-reduced-motion: reduce)').matches) {
       cameraTransition = null;
       clearTravelGuide();
@@ -1274,6 +1559,8 @@ function hashUnit(text) {
     cameraTransition = {
       fromPosition: camera.position.clone(), fromTarget: controls.target.clone(),
       toPosition: position, toTarget: target,
+      side: new THREE.Vector3().crossVectors(camera.up, direction).normalize(),
+      travelDistance,
       start: performance.now(), duration: far ? 1100 : 510,
     };
     onTravel?.(far ? 'warp' : 'flight');
@@ -1419,7 +1706,23 @@ function hashUnit(text) {
     else if (hit.userData.kind === 'catalog-points') onExam?.(hit.userData.files[index]);
     else if (hit.userData.kind === 'blackhole') onBlackhole?.();
   }
-  function pointerDown(event) { pointerStart = { x: event.clientX, y: event.clientY, time: performance.now() }; }
+  function pointerMove(event) {
+    if (mobile || pointerStart || selectedExamFile || scaleMode !== 'macro' ||
+        event.pointerType === 'touch' || !pageVisible) return;
+    const now = performance.now();
+    if (now - lastHoverPick < hoverPickInterval) return;
+    lastHoverPick = now;
+    const rect = renderer.domElement.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(pointer, camera);
+    // Only real Three.js pick meshes participate; glow and core shaders never do.
+    const hits = raycaster.intersectObjects(planetPicks, false);
+    hoveredGroupId = hits.length ? hits[0].object.userData.groupId : '';
+  }
+  function pointerLeave() { hoveredGroupId = ''; }
+  function pointerDown(event) { pointerStart = { x: event.clientX, y: event.clientY, time: performance.now() }; hoveredGroupId = ''; }
   function pointerUp(event) {
     if (!pointerStart) return;
     const moved = Math.hypot(event.clientX - pointerStart.x, event.clientY - pointerStart.y);
@@ -1429,6 +1732,10 @@ function hashUnit(text) {
   }
   canvas.addEventListener('pointerdown', pointerDown);
   canvas.addEventListener('pointerup', pointerUp);
+  if (!mobile) {
+    canvas.addEventListener('pointermove', pointerMove, { passive: true });
+    canvas.addEventListener('pointerleave', pointerLeave);
+  }
   window.addEventListener('resize', setSize, { passive: true });
   setSize();
   rafId = requestAnimationFrame(setFrame);
@@ -1467,14 +1774,22 @@ function hashUnit(text) {
       cancelAnimationFrame(rafId);
       canvas.removeEventListener('pointerdown', pointerDown);
       canvas.removeEventListener('pointerup', pointerUp);
+      if (!mobile) {
+        canvas.removeEventListener('pointermove', pointerMove);
+        canvas.removeEventListener('pointerleave', pointerLeave);
+      }
       window.removeEventListener('resize', setSize);
       controls.dispose();
       clearQuestionOrbit();
       clearTravelGuide();
-      microRoot.traverse((object) => {
-        if (object.geometry) object.geometry.dispose();
-        if (object.material) object.material.dispose();
-      });
+      clearFacetNodes();
+      blackholeLabel.remove();
+      for (const root of [microRoot, sunRoot, blackholeRoot, orbitalFrame]) {
+        root.traverse((object) => {
+          if (object.geometry) object.geometry.dispose();
+          if (object.material) object.material.dispose();
+        });
+      }
       sharedQuestionGeometry.dispose();
       sharedQuestionMaterial.dispose();
       sharedQuestionLineMaterial.dispose();
@@ -1482,6 +1797,7 @@ function hashUnit(text) {
       for (const entity of entities.values()) removeDataNode(entity);
       disposeConstellations();
       starGeometry.dispose();
+      starMaterial.dispose();
       sharedGroupPickGeometry.dispose();
       sharedGroupPickMaterial.dispose();
       sharedFacetPickGeometry.dispose();
@@ -1491,6 +1807,7 @@ function hashUnit(text) {
       sharedStarSpriteTexture.dispose();
       sharedDataStarGeometry.dispose();
       nebulaTexture.dispose();
+      similarityHoleTexture.dispose();
       nebulaSky.geometry.dispose();
       nebulaSky.material.dispose();
       for (const material of dataStarMaterials.values()) material.dispose();
