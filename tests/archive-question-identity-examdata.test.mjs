@@ -82,6 +82,8 @@ test('catalog source loader uses examData only after existing globals and keeps 
 
   const preferred = [{ id: 'preferred' }];
   assert.equal(getBank(undefined, { window: { questions: preferred, examData: { questions: fallback } } }), preferred);
-  assert.equal(Array.isArray(getBank(undefined, { window: { questions: {}, examData: { questions: fallback } } })), false);
+  assert.equal(getBank(undefined, { window: { questions: {}, examData: { questions: fallback } } }), fallback);
+  const wrappedBank = { title: 'sample', questions: fallback };
+  assert.equal(getBank(undefined, { window: { questionBank: wrappedBank, examData: wrappedBank } }), fallback);
   assert.match(catalogSource, /if \(!Array\.isArray\(bank\)\)/);
 });
