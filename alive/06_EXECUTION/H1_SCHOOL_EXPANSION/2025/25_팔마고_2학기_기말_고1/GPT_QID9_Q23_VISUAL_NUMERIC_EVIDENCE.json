@@ -1,0 +1,635 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q23_VISUAL_NUMERIC_EVIDENCE_v1",
+  "createdDate": "2026-10-16",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceGitBlob": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceFileSha256": "ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91",
+  "sourceQid": 23,
+  "sourceUid": "qid_v1_1bc7273944cc5f9767fc39ca7e0bea31015f0cd03198b58ca5cf1c951b07f981",
+  "sourceLockBlob": "c7028121812ad1e7f80b25cf9230aa3a2a698d39",
+  "preflightBlob": "54510b6f4b64a2c0c434b26de9f9e5c125a8dc0d",
+  "primaryRPM": {
+    "id": "H1-RPM-272",
+    "l1": "함수",
+    "l2": "무리함수",
+    "l3": "무리함수의 활용",
+    "l4": "무리함수의 교점",
+    "owner": "H22-C2-09-FUNCTION_BASIC",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "bindingStatus": "DIRECT_ACTIVE"
+  },
+  "branch": "work/alive-25-palma-h1-2final-qid9",
+  "methods": {
+    "symbolic": "SymPy Python 3 / independent root substitution and exact boundary algebra",
+    "deterministicCurve": "301-sample t-parameter polyline with identical x/y pixel scale",
+    "authorRuntime": "JavaScript model and SVG primitive coordinates; no browser claimed"
+  },
+  "cases": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-A1",
+      "slot": "A1",
+      "representativeK": 2.25,
+      "representativeKExact": "9/4",
+      "displayParam": null,
+      "normalForm": "t^2-(b/m)t+(bk/m-a)=0",
+      "sum": 2,
+      "productAtK": 0.5,
+      "pointRootModel": {
+        "k": 2.25,
+        "delta": 2,
+        "realRoots": 2,
+        "tRoots": [
+          0.2928932188134524,
+          1.7071067811865475
+        ],
+        "xRoots": [
+          1.9571067811865475,
+          0.5428932188134525
+        ],
+        "physicalCount": 2,
+        "residuals": [
+          1.1102230246251565e-16,
+          0
+        ]
+      },
+      "low": 2,
+      "high": 2.5,
+      "boundaryReason": "k=2에서 t=0,2(포함), k=5/2에서 t=1 중근(제외)",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/A1-solution.svg",
+      "svgGitBlob": "c2c1c48e6cb4336cd19992d6fb34f746d3531c15",
+      "svgNumeric": {
+        "plotScale": 63.80380696667107,
+        "xRange": [
+          -1.4279761889578029,
+          2.65
+        ],
+        "yRange": [
+          -1,
+          3.3571067811865474
+        ],
+        "screenXOrigin": 286.015114325794,
+        "screenYOrigin": 281.1961930333289,
+        "xScale": 63.80380696667107,
+        "yScale": 63.80380696667107,
+        "samples": 301,
+        "curveDomain": "t >= 0",
+        "endpoint": {
+          "x": 2,
+          "y": 0
+        },
+        "pointP": {
+          "x": 1.9571067811865475,
+          "y": 0.2928932188134524
+        },
+        "pointQ": {
+          "x": 0.5428932188134525,
+          "y": 1.7071067811865475
+        },
+        "intersectionResidualMax": 1.1102230246251565e-16
+      },
+      "svgXmlBuilderVerified": true,
+      "browser": "NOT_RUN",
+      "independentVisual": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-A2",
+      "slot": "A2",
+      "representativeK": 0.75,
+      "representativeKExact": "3/4",
+      "displayParam": null,
+      "normalForm": "t^2-(b/m)t+(bk/m-a)=0",
+      "sum": 4,
+      "productAtK": 2,
+      "pointRootModel": {
+        "k": 0.75,
+        "delta": 8,
+        "realRoots": 2,
+        "tRoots": [
+          0.5857864376269049,
+          3.414213562373095
+        ],
+        "xRoots": [
+          -0.1642135623730951,
+          2.664213562373095
+        ],
+        "physicalCount": 2,
+        "residuals": [
+          0,
+          0
+        ]
+      },
+      "low": 0.25,
+      "high": 1.25,
+      "boundaryReason": "k=1/4에서 t=0,4(포함), k=5/4에서 t=2 중근(제외)",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/A2-solution.svg",
+      "svgGitBlob": "a38196087c869aa59463aeda039155d6d5579746",
+      "svgNumeric": {
+        "plotScale": 45.84271268494226,
+        "xRange": [
+          -0.9,
+          4.529457970144351
+        ],
+        "yRange": [
+          -1,
+          5.064213562373095
+        ],
+        "screenXOrigin": 241.80790053629937,
+        "screenYOrigin": 299.1572873150577,
+        "xScale": 45.84271268494226,
+        "yScale": 45.84271268494226,
+        "samples": 301,
+        "curveDomain": "t >= 0",
+        "endpoint": {
+          "x": -0.25,
+          "y": 0
+        },
+        "pointP": {
+          "x": -0.1642135623730951,
+          "y": 0.5857864376269049
+        },
+        "pointQ": {
+          "x": 2.664213562373095,
+          "y": 3.414213562373095
+        },
+        "intersectionResidualMax": 0
+      },
+      "svgXmlBuilderVerified": true,
+      "browser": "NOT_RUN",
+      "independentVisual": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-A3",
+      "slot": "A3",
+      "representativeK": 1.25,
+      "representativeKExact": "5/4",
+      "displayParam": null,
+      "normalForm": "t^2-(b/m)t+(bk/m-a)=0",
+      "sum": 4,
+      "productAtK": 2,
+      "pointRootModel": {
+        "k": 1.25,
+        "delta": 8,
+        "realRoots": 2,
+        "tRoots": [
+          0.5857864376269049,
+          3.414213562373095
+        ],
+        "xRoots": [
+          1.32842712474619,
+          -4.32842712474619
+        ],
+        "physicalCount": 2,
+        "residuals": [
+          1.1102230246251565e-16,
+          0
+        ]
+      },
+      "low": 0.75,
+      "high": 1.75,
+      "boundaryReason": "k=3/4에서 t=0,4(포함), k=7/4에서 t=2 중근(제외)",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/A3-solution.svg",
+      "svgGitBlob": "cbbea2f53e5bcfdc4172f9d92f928b257f783fe7",
+      "svgNumeric": {
+        "plotScale": 45.84271268494226,
+        "xRange": [
+          -7.408915940288702,
+          2.15
+        ],
+        "yRange": [
+          -1,
+          5.064213562373095
+        ],
+        "screenXOrigin": 445.541486242459,
+        "screenYOrigin": 299.1572873150577,
+        "xScale": 45.84271268494226,
+        "yScale": 45.84271268494226,
+        "samples": 301,
+        "curveDomain": "t >= 0",
+        "endpoint": {
+          "x": 1.5,
+          "y": 0
+        },
+        "pointP": {
+          "x": 1.32842712474619,
+          "y": 0.5857864376269049
+        },
+        "pointQ": {
+          "x": -4.32842712474619,
+          "y": 3.414213562373095
+        },
+        "intersectionResidualMax": 1.1102230246251565e-16
+      },
+      "svgXmlBuilderVerified": true,
+      "browser": "NOT_RUN",
+      "independentVisual": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-B1",
+      "slot": "B1",
+      "representativeK": 1.125,
+      "representativeKExact": "9/8",
+      "displayParam": null,
+      "normalForm": "t^2-(b/m)t+(bk/m-a)=0",
+      "sum": 4,
+      "productAtK": 3.5,
+      "pointRootModel": {
+        "k": 1.125,
+        "delta": 2,
+        "realRoots": 2,
+        "tRoots": [
+          1.2928932188134525,
+          2.7071067811865475
+        ],
+        "xRoots": [
+          0.16789321881345254,
+          1.5821067811865475
+        ],
+        "physicalCount": 2,
+        "residuals": [
+          0,
+          0
+        ]
+      },
+      "low": 1,
+      "high": 1.25,
+      "boundaryReason": "k=1에서 작은 근 t=1 포함; k=5/4 중근 제외",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/B1-solution.svg",
+      "svgGitBlob": "eae839054088861e88ebbc2d39bb64b37f5321d6",
+      "svgNumeric": {
+        "plotScale": 51.893682794656876,
+        "xRange": [
+          -0.9,
+          3.217541485072175
+        ],
+        "yRange": [
+          -1,
+          4.357106781186547
+        ],
+        "screenXOrigin": 264.86711865510324,
+        "screenYOrigin": 293.10631720534315,
+        "xScale": 51.893682794656876,
+        "yScale": 51.893682794656876,
+        "samples": 301,
+        "curveDomain": "t >= 0",
+        "endpoint": {
+          "x": -0.25,
+          "y": 0
+        },
+        "pointP": {
+          "x": 0.16789321881345254,
+          "y": 1.2928932188134525
+        },
+        "pointQ": {
+          "x": 1.5821067811865475,
+          "y": 2.7071067811865475
+        },
+        "intersectionResidualMax": 0
+      },
+      "svgXmlBuilderVerified": true,
+      "browser": "NOT_RUN",
+      "independentVisual": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-B2",
+      "slot": "B2",
+      "representativeK": 1,
+      "representativeKExact": "1",
+      "displayParam": null,
+      "normalForm": "t^2-(b/m)t+(bk/m-a)=0",
+      "sum": 6,
+      "productAtK": 4,
+      "pointRootModel": {
+        "k": 1,
+        "delta": 20,
+        "realRoots": 2,
+        "tRoots": [
+          0.7639320225002102,
+          5.23606797749979
+        ],
+        "xRoots": [
+          0.47213595499957944,
+          -8.47213595499958
+        ],
+        "physicalCount": 2,
+        "residuals": [
+          1.1102230246251565e-16,
+          0
+        ]
+      },
+      "low": 0.3333333333333333,
+      "high": 1.4142135623730951,
+      "boundaryReason": "k=1/3에서 t=0 포함, k=√2에서 작은 근 t=√2(y축) 포함",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/B2-solution.svg",
+      "svgGitBlob": "6cec98730784cf19f8b5729f709b6c6bfa4564e9",
+      "svgNumeric": {
+        "plotScale": 35.25204205608909,
+        "xRange": [
+          -11.531932078582823,
+          1.3166666666666667
+        ],
+        "yRange": [
+          -1,
+          6.88606797749979
+        ],
+        "screenXOrigin": 505.0544829574903,
+        "screenYOrigin": 309.74795794391093,
+        "xScale": 35.25204205608909,
+        "yScale": 35.25204205608909,
+        "samples": 301,
+        "curveDomain": "t >= 0",
+        "endpoint": {
+          "x": 0.6666666666666666,
+          "y": 0
+        },
+        "pointP": {
+          "x": 0.47213595499957944,
+          "y": 0.7639320225002102
+        },
+        "pointQ": {
+          "x": -8.47213595499958,
+          "y": 5.23606797749979
+        },
+        "intersectionResidualMax": 1.1102230246251565e-16
+      },
+      "svgXmlBuilderVerified": true,
+      "browser": "NOT_RUN",
+      "independentVisual": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-B3",
+      "slot": "B3",
+      "representativeK": 1.125,
+      "representativeKExact": "9/8",
+      "displayParam": null,
+      "normalForm": "t^2-(b/m)t+(bk/m-a)=0",
+      "sum": 4,
+      "productAtK": 3.5,
+      "pointRootModel": {
+        "k": 1.125,
+        "delta": 2,
+        "realRoots": 2,
+        "tRoots": [
+          1.2928932188134525,
+          2.7071067811865475
+        ],
+        "xRoots": [
+          -0.16789321881345254,
+          -1.5821067811865475
+        ],
+        "physicalCount": 2,
+        "residuals": [
+          0,
+          0
+        ]
+      },
+      "low": 1,
+      "high": 1.25,
+      "boundaryReason": "k=1에서 x=0 포함 불가; k=5/4 중근 제외",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/B3-solution.svg",
+      "svgGitBlob": "f4e9ea0c526248fdf0308d268ba3c722f7b07bf7",
+      "svgNumeric": {
+        "plotScale": 51.893682794656876,
+        "xRange": [
+          -3.217541485072175,
+          0.9
+        ],
+        "yRange": [
+          -1,
+          4.357106781186547
+        ],
+        "screenXOrigin": 385.13288134489676,
+        "screenYOrigin": 293.10631720534315,
+        "xScale": 51.893682794656876,
+        "yScale": 51.893682794656876,
+        "samples": 301,
+        "curveDomain": "t >= 0",
+        "endpoint": {
+          "x": 0.25,
+          "y": 0
+        },
+        "pointP": {
+          "x": -0.16789321881345254,
+          "y": 1.2928932188134525
+        },
+        "pointQ": {
+          "x": -1.5821067811865475,
+          "y": 2.7071067811865475
+        },
+        "intersectionResidualMax": 0
+      },
+      "svgXmlBuilderVerified": true,
+      "browser": "NOT_RUN",
+      "independentVisual": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-C1",
+      "slot": "C1",
+      "representativeK": 1.25,
+      "representativeKExact": "5/4",
+      "displayParam": null,
+      "normalForm": "t^2-(b/m)t+(bk/m-a)=0",
+      "sum": 6,
+      "productAtK": 5.5,
+      "pointRootModel": {
+        "k": 1.25,
+        "delta": 14,
+        "realRoots": 2,
+        "tRoots": [
+          1.1291713066130293,
+          4.87082869338697
+        ],
+        "xRoots": [
+          0.24165738677394133,
+          -7.241657386773941
+        ],
+        "physicalCount": 2,
+        "residuals": [
+          0,
+          0
+        ]
+      },
+      "low": 1.1666666666666667,
+      "high": 1.4142135623730951,
+      "boundaryReason": "k=7/6 큰 근 t=5 포함, k=√2 작은 근 t=√2 포함",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/C1-solution.svg",
+      "svgGitBlob": "fe33019cba0ce581d6b8882e9ade571d307165eb",
+      "svgNumeric": {
+        "plotScale": 36.964011724458516,
+        "xRange": [
+          -10.143183153908296,
+          1.3166666666666667
+        ],
+        "yRange": [
+          -1,
+          6.520828693386971
+        ],
+        "screenXOrigin": 488.131729460263,
+        "screenYOrigin": 308.0359882755415,
+        "xScale": 36.964011724458516,
+        "yScale": 36.964011724458516,
+        "samples": 301,
+        "curveDomain": "t >= 0",
+        "endpoint": {
+          "x": 0.6666666666666666,
+          "y": 0
+        },
+        "pointP": {
+          "x": 0.24165738677394133,
+          "y": 1.1291713066130293
+        },
+        "pointQ": {
+          "x": -7.241657386773941,
+          "y": 4.87082869338697
+        },
+        "intersectionResidualMax": 0
+      },
+      "svgXmlBuilderVerified": true,
+      "browser": "NOT_RUN",
+      "independentVisual": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-C2",
+      "slot": "C2",
+      "representativeK": 1,
+      "representativeKExact": "1",
+      "displayParam": "a=2",
+      "normalForm": "t^2-(b/m)t+(bk/m-a)=0",
+      "sum": 6,
+      "productAtK": 4,
+      "pointRootModel": {
+        "k": 1,
+        "delta": 20,
+        "realRoots": 2,
+        "tRoots": [
+          0.7639320225002102,
+          5.23606797749979
+        ],
+        "xRoots": [
+          0.47213595499957944,
+          -8.47213595499958
+        ],
+        "physicalCount": 2,
+        "residuals": [
+          1.1102230246251565e-16,
+          0
+        ]
+      },
+      "low": 0.5,
+      "high": 1.6666666666666667,
+      "boundaryReason": "a=3,k=1/2 -> t=0,6 포함; a=1,k=5/3 -> t=3 중근 제외",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/C2-solution.svg",
+      "svgGitBlob": "0f89b4be21b49f64fc043baf2649380c61306fac",
+      "svgNumeric": {
+        "plotScale": 35.25204205608909,
+        "xRange": [
+          -11.531932078582823,
+          1.3166666666666667
+        ],
+        "yRange": [
+          -1,
+          6.88606797749979
+        ],
+        "screenXOrigin": 505.0544829574903,
+        "screenYOrigin": 309.74795794391093,
+        "xScale": 35.25204205608909,
+        "yScale": 35.25204205608909,
+        "samples": 301,
+        "curveDomain": "t >= 0",
+        "endpoint": {
+          "x": 0.6666666666666666,
+          "y": 0
+        },
+        "pointP": {
+          "x": 0.47213595499957944,
+          "y": 0.7639320225002102
+        },
+        "pointQ": {
+          "x": -8.47213595499958,
+          "y": 5.23606797749979
+        },
+        "intersectionResidualMax": 1.1102230246251565e-16
+      },
+      "svgXmlBuilderVerified": true,
+      "browser": "NOT_RUN",
+      "independentVisual": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-C3",
+      "slot": "C3",
+      "representativeK": 1,
+      "representativeKExact": "1",
+      "displayParam": "m=1",
+      "normalForm": "t^2-(b/m)t+(bk/m-a)=0",
+      "sum": 3,
+      "productAtK": 1,
+      "pointRootModel": {
+        "k": 1,
+        "delta": 5,
+        "realRoots": 2,
+        "tRoots": [
+          0.3819660112501051,
+          2.618033988749895
+        ],
+        "xRoots": [
+          0.6180339887498949,
+          -1.618033988749895
+        ],
+        "physicalCount": 2,
+        "residuals": [
+          0,
+          0
+        ]
+      },
+      "low": 0.6666666666666666,
+      "high": 1.4166666666666667,
+      "boundaryReason": "m=1,k=2/3 -> t=0,3 포함; m=1,k=17/12 -> t=3/2 중근 제외",
+      "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/C3-solution.svg",
+      "svgGitBlob": "2757d1eceeb62e374d45ee436d4f300e8b9ca251",
+      "svgNumeric": {
+        "plotScale": 52.77110979042286,
+        "xRange": [
+          -3.5433487172081826,
+          1.3166666666666667
+        ],
+        "yRange": [
+          -1,
+          4.268033988749895
+        ],
+        "screenXOrigin": 383.7522414787451,
+        "screenYOrigin": 292.2288902095771,
+        "xScale": 52.77110979042286,
+        "yScale": 52.77110979042286,
+        "samples": 301,
+        "curveDomain": "t >= 0",
+        "endpoint": {
+          "x": 0.6666666666666666,
+          "y": 0
+        },
+        "pointP": {
+          "x": 0.6180339887498949,
+          "y": 0.3819660112501051
+        },
+        "pointQ": {
+          "x": -1.618033988749895,
+          "y": 2.618033988749895
+        },
+        "intersectionResidualMax": 0
+      },
+      "svgXmlBuilderVerified": true,
+      "browser": "NOT_RUN",
+      "independentVisual": "NOT_RUN"
+    }
+  ],
+  "boundaryVerification": {
+    "A1": "[2,5/2): t={0,2} at low; {1 double} at upper",
+    "A2": "[1/4,5/4): t={0,4} at low; {2 double} at upper",
+    "A3": "[3/4,7/4): t={0,4} at low; {2 double} at upper",
+    "B1": "[1,5/4): smaller t=1 at low; double upper excluded",
+    "B2": "[1/3,sqrt(2)]: t_small=0 at low; t_small=sqrt(2) at high",
+    "B3": "(1,5/4): smaller t=1 gives x=0 at low excluded; upper tangency excluded",
+    "C1": "[7/6,sqrt(2)]: t_big=5 at low; t_small=sqrt(2) at high",
+    "C2": "for all a in[1,3]: k>=a/6, k<a/6+3/2; max lower a=3, min upper a=1",
+    "C3": "for all m in[1/2,1]: k>=2m/3, k<2m/3+3/(4m), upper difference (1-m)(9-8m)/(12m)>=0"
+  }
+}

@@ -1,3 +1,19 @@
+# 2025 팔마고 고1 2학기 기말 — QID9 QUALITY HANDOFF CURRENT (q23 추가: 2026-10-16)
+
+q23 A1~C3 서술형 9 UID 신규 **AUTHOR 제작 후보**, 누적 **207/207**. 원본 q23과 기존 q01~q22 198 UID/이미지/SVG/Meta 불변. q20·q21 서술형 유형 불일치는 별도 인계.
+
+- SOURCE LOCK: 원본 Git Blob `0d12b75e824ab47f08fc3b5a6180be595f882c6e` / raw SHA-256 `ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91` / sourceUid `qid_v1_1bc7273944cc5f9767fc39ca7e0bea31015f0cd03198b58ca5cf1c951b07f981`; 독립 계산으로 원본 정답 `1/3≤k<11/6` 확인.
+- Golden Preflight와 Source Lock은 Blueprint 전에 실제 수행 및 Git blob 작성. Golden q21/q22 서술형 sample·기출 q23 실제 그래프·Notion 반원 경계 반례 대조.
+- Primary `H1-RPM-272` (무리함수의 활용 / 무리함수의 교점); ACTIVE PT/TPL 및 교점 개수·판별식·근 부호 Canonical 메타 키 사용. 확장 키 추가 없음.
+- 실제 신규 9정답: A `[2,5/2)`, `[1/4,5/4)`, `[3/4,7/4)`; B `[1,5/4)`, `[1/3,√2]`, `(1,5/4)`; C `[7/6,√2]`, `[1/2,5/3)`, `[2/3,17/12)`.
+- q23은 **서술형 9/9**·choices 빈 배열 9/9; 선택지 번호 분포/검사기 NOT_APPLICABLE. 문항별 6~8점, 부분점수 rubric/경계 근거 분리. 독립 SymPy 계산 및 저자 수치/좌표 자가검사; 독립 외부검수 아님.
+- SVG: 문제 0개(EXEMPT 9개), 해설 **9개** 실제 blob, 동일 x/y scale로 301-point sampling 및 P/Q/E 좌표, 배점·조건을 SVG 안에서 답 누설하지 않도록 분리. 실제 브라우저 `NOT_RUN`.
+- `GPT_QID9_Q23_AUTHOR_RECEIPT.json` / Blueprint / Numeric Evidence / Written Scoring Audit / Draft를 참조. 품질 독립검수·Chrome·Consumer·main 출시 모두 `NOT_RUN`.
+
+---
+
+## 이전 Quality Handoff (보존)
+
 # 2025 팔마고 고1 2기말 — QID9 QUALITY HANDOFF CURRENT (q21 갱신: 2026-10-16)
 
 브랜치 `work/alive-25-palma-h1-2final-qid9`, q01~q21 189/207 AUTHOR 후보. **이번 추가 범위는 q21 신규 9 UID만**이며 q01~q20, 원본 JS, 기존 유사문제는 불변입니다. 다음은 q22.

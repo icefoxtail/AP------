@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q23_SOURCE_LOCK_v1",
+  "date": "2026-10-16",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceGitBlob": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceRawSha256": "ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91",
+  "rawShaCalculation": "independent JS SHA256 UTF-8 directly over 28399-character fetched source; matched q22 previous independent record",
+  "sourceOrdinal": 23,
+  "id": 23,
+  "sourceUid": "qid_v1_1bc7273944cc5f9767fc39ca7e0bea31015f0cd03198b58ca5cf1c951b07f981",
+  "identityMapGitBlob": "a57b1be7171b8995c3229c5dc921c1b8b693482a",
+  "sourceFingerprint": "5d656d93cec2469e12cb6f24661d5bc20d345d8aa38e4f02879c819f2ef9fd35",
+  "sourceOriginal": {
+    "id": 23,
+    "level": "상",
+    "category": "무리함수와 직선의 교점",
+    "originalCategory": "무리함수",
+    "standardCourse": "공통수학2",
+    "standardUnitKey": "H22-C2-09",
+    "standardUnit": "무리함수",
+    "standardUnitOrder": 9,
+    "questionType": "서술형",
+    "layoutTag": "grid",
+    "tags": [
+      "서술형",
+      "무리함수",
+      "직선",
+      "교점",
+      "범위",
+      "그래프"
+    ],
+    "wide": false,
+    "content": "[서술형 4] 함수 $y=\\sqrt{2-3x}$의 그래프와 직선 $y=-\\dfrac12x+k$가 서로 다른 두 점에서 만나도록 하는 모든 실수 $k$의 값의 범위를 풀이 과정과 함께 서술하시오. [6점]",
+    "choices": [],
+    "answer": "$\\dfrac13\\le k\\lt \\dfrac{11}{6}$",
+    "solution": "무리함수의 그래프 위에서는\n$y\\ge0$이고\n$x=\\dfrac{2-y^2}{3}$이다.\n이를 직선\n$y=-\\dfrac12x+k$\n에 대입한다.\n$y=-\\dfrac12\\cdot\\dfrac{2-y^2}{3}+k$이므로\n$6y=y^2-2+6k$이다.\n따라서\n$y^2-6y+6k-2=0$이다.\n서로 다른 두 교점을 가지려면 이 방정식이 서로 다른 두 실근을 가져야 하므로\n$36-4(6k-2)>0$이다.\n따라서\n$k<\\dfrac{11}{6}$이다.\n또 두 교점이 모두 무리함수의 그래프 위에 있으려면 두 근이 모두 $0$ 이상이어야 한다.\n두 근의 합은 $6>0$이고 곱은 $6k-2$이므로\n$6k-2\\ge0$,\n$k\\ge\\dfrac13$이다.\n$k=\\dfrac13$일 때 두 근은 $0$, $6$으로 서로 다르므로 포함된다.\n따라서\n$\\dfrac13\\le k<\\dfrac{11}{6}$이다.",
+    "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "무리함수와 직선의 두 교점을 나타낸 해설 그래프",
+    "solutionImageCaption": "무리함수의 정의역과 직선의 교점 두 개를 표시하여 1/3≤k<11/6 범위를 확인한다.",
+    "solutionImageSize": "full",
+    "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+    "subUnit": "함수의 뜻과 그래프",
+    "subUnitConfidence": "category_or_cue_inferred",
+    "subUnitClassificationDepth": "complete_category"
+  },
+  "sourceOriginalImageDependency": {
+    "problem": null,
+    "solution": "assets/images/25_팔마고_2학기_기말_고1_기출/q23-solution.svg",
+    "solutionBlob": "931ee4cc5ff067d61fa3bc0c8925bc506d3c0d0a",
+    "problemNativeNoImage": true
+  },
+  "sourceOriginalQuestionType": "서술형",
+  "choicesEmpty": true,
+  "independentSolution": {
+    "inputOnly": "function y=sqrt(2-3x); line y=-(1/2)x+k; two distinct intersections",
+    "constraint": "x<=2/3, y=t>=0; x=(2-t^2)/3",
+    "elimination": "t^2-6t+6k-2=0",
+    "roots": "t=3±sqrt(11-6k)",
+    "discriminant": "D=4(11-6k)>0 => k<11/6",
+    "nonnegativeBoth": "t_- >=0 <=> k>=1/3 (t_+>0 always)",
+    "boundaryLower": "k=1/3 => t=0,6 => two distinct graph points, included",
+    "boundaryUpper": "k=11/6 => t=3 double => one graph intersection, excluded",
+    "range": "1/3 <= k < 11/6",
+    "realRootNotPhysical": "k<1/3 yields t_-<0; spurious root outside y>=0",
+    "boundaryGrid": [
+      {
+        "label": "outside left",
+        "k": 0,
+        "tRoots": [
+          -0.3166247903553998,
+          6.3166247903554
+        ],
+        "physicalIntersections": 1,
+        "validDistinct": false
+      },
+      {
+        "label": "left endpoint",
+        "k": 0.3333333333333333,
+        "tRoots": [
+          0,
+          6
+        ],
+        "physicalIntersections": 2,
+        "validDistinct": true
+      },
+      {
+        "label": "inside",
+        "k": 1,
+        "tRoots": [
+          0.7639320225002102,
+          5.23606797749979
+        ],
+        "physicalIntersections": 2,
+        "validDistinct": true
+      },
+      {
+        "label": "right endpoint",
+        "k": 1.8333333333333333,
+        "tRoots": [
+          3,
+          3
+        ],
+        "physicalIntersections": 1,
+        "validDistinct": false
+      },
+      {
+        "label": "outside right",
+        "k": 2,
+        "intersectionCount": 0,
+        "realRootCount": 0
+      }
+    ],
+    "answerAndSolutionParity": "PASS_SELF_REDERIVED",
+    "sourceAnswer": "$\\dfrac13\\le k\\lt \\dfrac{11}{6}$"
+  },
+  "q23ExistingDraftCount": 0,
+  "priorUniqueDraftUidCount": 198,
+  "prospectiveNewUids": 9,
+  "sourceLockStatus": "PASS",
+  "statusScope": "AUTHOR_SOURCE_LOCK_ONLY",
+  "independentReview": "NOT_RUN",
+  "protected": "q01~q22, original source, prior analogous variants remain READ_ONLY"
+}

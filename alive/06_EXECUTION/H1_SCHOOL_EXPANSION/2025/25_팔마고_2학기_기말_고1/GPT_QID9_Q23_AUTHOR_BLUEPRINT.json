@@ -1,0 +1,726 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q23_AUTHOR_BLUEPRINT_v1",
+  "createdDate": "2026-10-16",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceGitBlob": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceFileSha256": "ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91",
+  "sourceQid": 23,
+  "sourceUid": "qid_v1_1bc7273944cc5f9767fc39ca7e0bea31015f0cd03198b58ca5cf1c951b07f981",
+  "sourceLockBlob": "c7028121812ad1e7f80b25cf9230aa3a2a698d39",
+  "preflightBlob": "54510b6f4b64a2c0c434b26de9f9e5c125a8dc0d",
+  "primaryRPM": {
+    "id": "H1-RPM-272",
+    "l1": "함수",
+    "l2": "무리함수",
+    "l3": "무리함수의 활용",
+    "l4": "무리함수의 교점",
+    "owner": "H22-C2-09-FUNCTION_BASIC",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "bindingStatus": "DIRECT_ACTIVE"
+  },
+  "branch": "work/alive-25-palma-h1-2final-qid9",
+  "designAfterPreflight": true,
+  "originalInvariant": "두 교점 ⇔ t≥0인 서로 다른 두 실근; 음수 근 배제, t=0 끝점 포함, 중근 접점 제외",
+  "modePlan": {
+    "A": "STRICT_VARIANT (original branch, directions or coefficients)",
+    "B": "FOLLOWUP (position/ordinate additional condition)",
+    "C": "FOLLOWUP deep (coupled constraints or universal-parameter conditions)"
+  },
+  "primary": {
+    "id": "H1-RPM-272",
+    "l1": "함수",
+    "l2": "무리함수",
+    "l3": "무리함수의 활용",
+    "l4": "무리함수의 교점",
+    "owner": "H22-C2-09-FUNCTION_BASIC",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "bindingStatus": "DIRECT_ACTIVE"
+  },
+  "metaAuthority": {
+    "rpmCrosswalkBlob": "904b3768b69b300607e52217cad05bf71e34f221",
+    "crossConceptRegistryBlob": "0fdcc7306f22484aa40d9799db01b1b31b3c86bb",
+    "conditionRegistryBlob": "c79d1f13333525eaa1fe02921ab8f3c36f9a0ba1",
+    "generatedExtension": "NOT_NEEDED_CANONICAL_ACTIVE_REUSED"
+  },
+  "itemBlueprints": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-A1",
+      "slot": "A1",
+      "mode": "STRICT_VARIANT",
+      "plannedStudentPath": "t≥0인 이차방정식의 서로 다른 두 근; 끝점 t=0 포함, 중근 제외",
+      "learningLevel": "중",
+      "difficultyBucket": 3,
+      "learningReason": "원본의 끝점·접점 두 경계를 판별식과 비음수 근 조건으로 구별",
+      "bucketReason": "치환·두 실근·부호·경계의 네 단계, 추가 위치 제한은 없음",
+      "primaryRPM": {
+        "id": "H1-RPM-272",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "무리함수의 교점",
+        "authority": "RPM_PRIMARY_CURRENT_DIRECT_ACTIVE"
+      },
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "questionType": "서술형",
+      "problemVisual": {
+        "necessity": "VISUAL_EXEMPT",
+        "action": "NONE",
+        "reason": "그림/수치를 발문에서 읽는 문제가 아니며 모든 함수식·위치 조건이 문자로 명시됨; 문제 SVG는 답 경계 유추 위험",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/A1-solution.svg",
+        "blob": "c2c1c48e6cb4336cd19992d6fb34f746d3531c15",
+        "render": "NOT_RUN"
+      },
+      "answer": "$2\\le k\\lt \\dfrac52$",
+      "reverseStem": {
+        "status": "KEEP",
+        "questionType": "서술형",
+        "primaryL3": "무리함수의 활용",
+        "scoreMarker": 6,
+        "extraDecision": "t≥0인 이차방정식의 서로 다른 두 근; 끝점 t=0 포함, 중근 제외"
+      },
+      "scoring": {
+        "totalPoints": 6,
+        "criteria": [
+          {
+            "points": 2,
+            "criterion": "t≥0, x와 t의 대응 및 교점방정식을 정확히 설정; 치환 1점·식 1점"
+          },
+          {
+            "points": 1,
+            "criterion": "판별식>0으로 서로 다른 두 실근 상한"
+          },
+          {
+            "points": 1,
+            "criterion": "두 근이 모두 음이 아님을 근의 합·곱으로 판정"
+          },
+          {
+            "points": 1,
+            "criterion": "끝점 포함, 중근 접점 제외를 실제 대입"
+          },
+          {
+            "points": 1,
+            "criterion": "최종 범위와 등호를 정확히 표기"
+          }
+        ],
+        "partialCreditRule": "정답만 제시하면 중간 변환·부호·경계 점수를 인정하지 않음. 독립적으로 옳은 각 풀이 단계만 개별 인정"
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-A2",
+      "slot": "A2",
+      "mode": "STRICT_VARIANT",
+      "plannedStudentPath": "우상향 가지의 치역 t≥0 및 중근·끝점의 교점 수 구분",
+      "learningLevel": "중",
+      "difficultyBucket": 3,
+      "learningReason": "우상향 무리함수와 양의 기울기 직선으로 원본 방향을 반전",
+      "bucketReason": "방향 반전으로 부호 실수 위험 증가, 경계 논리는 원본과 동일",
+      "primaryRPM": {
+        "id": "H1-RPM-272",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "무리함수의 교점",
+        "authority": "RPM_PRIMARY_CURRENT_DIRECT_ACTIVE"
+      },
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "questionType": "서술형",
+      "problemVisual": {
+        "necessity": "VISUAL_EXEMPT",
+        "action": "NONE",
+        "reason": "그림/수치를 발문에서 읽는 문제가 아니며 모든 함수식·위치 조건이 문자로 명시됨; 문제 SVG는 답 경계 유추 위험",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/A2-solution.svg",
+        "blob": "a38196087c869aa59463aeda039155d6d5579746",
+        "render": "NOT_RUN"
+      },
+      "answer": "$\\dfrac14\\le k\\lt \\dfrac54$",
+      "reverseStem": {
+        "status": "KEEP",
+        "questionType": "서술형",
+        "primaryL3": "무리함수의 활용",
+        "scoreMarker": 6,
+        "extraDecision": "우상향 가지의 치역 t≥0 및 중근·끝점의 교점 수 구분"
+      },
+      "scoring": {
+        "totalPoints": 6,
+        "criteria": [
+          {
+            "points": 2,
+            "criterion": "t≥0, x와 t의 대응 및 교점방정식을 정확히 설정; 치환 1점·식 1점"
+          },
+          {
+            "points": 1,
+            "criterion": "판별식>0으로 서로 다른 두 실근 상한"
+          },
+          {
+            "points": 1,
+            "criterion": "두 근이 모두 음이 아님을 근의 합·곱으로 판정"
+          },
+          {
+            "points": 1,
+            "criterion": "끝점 포함, 중근 접점 제외를 실제 대입"
+          },
+          {
+            "points": 1,
+            "criterion": "최종 범위와 등호를 정확히 표기"
+          }
+        ],
+        "partialCreditRule": "정답만 제시하면 중간 변환·부호·경계 점수를 인정하지 않음. 독립적으로 옳은 각 풀이 단계만 개별 인정"
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-A3",
+      "slot": "A3",
+      "mode": "STRICT_VARIANT",
+      "plannedStudentPath": "제곱으로 얻은 이차식에서 t≥0 실근 둘만 교점으로 허용",
+      "learningLevel": "중",
+      "difficultyBucket": 3,
+      "learningReason": "원본과 같은 구조에서 근호 내부·기울기·경계 이동을 재계산",
+      "bucketReason": "치환과 판별식·근의 곱·양쪽 경계 독립 검사",
+      "primaryRPM": {
+        "id": "H1-RPM-272",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "무리함수의 교점",
+        "authority": "RPM_PRIMARY_CURRENT_DIRECT_ACTIVE"
+      },
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "questionType": "서술형",
+      "problemVisual": {
+        "necessity": "VISUAL_EXEMPT",
+        "action": "NONE",
+        "reason": "그림/수치를 발문에서 읽는 문제가 아니며 모든 함수식·위치 조건이 문자로 명시됨; 문제 SVG는 답 경계 유추 위험",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/A3-solution.svg",
+        "blob": "cbbea2f53e5bcfdc4172f9d92f928b257f783fe7",
+        "render": "NOT_RUN"
+      },
+      "answer": "$\\dfrac34\\le k\\lt \\dfrac74$",
+      "reverseStem": {
+        "status": "KEEP",
+        "questionType": "서술형",
+        "primaryL3": "무리함수의 활용",
+        "scoreMarker": 6,
+        "extraDecision": "제곱으로 얻은 이차식에서 t≥0 실근 둘만 교점으로 허용"
+      },
+      "scoring": {
+        "totalPoints": 6,
+        "criteria": [
+          {
+            "points": 2,
+            "criterion": "t≥0, x와 t의 대응 및 교점방정식을 정확히 설정; 치환 1점·식 1점"
+          },
+          {
+            "points": 1,
+            "criterion": "판별식>0으로 서로 다른 두 실근 상한"
+          },
+          {
+            "points": 1,
+            "criterion": "두 근이 모두 음이 아님을 근의 합·곱으로 판정"
+          },
+          {
+            "points": 1,
+            "criterion": "끝점 포함, 중근 접점 제외를 실제 대입"
+          },
+          {
+            "points": 1,
+            "criterion": "최종 범위와 등호를 정확히 표기"
+          }
+        ],
+        "partialCreditRule": "정답만 제시하면 중간 변환·부호·경계 점수를 인정하지 않음. 독립적으로 옳은 각 풀이 단계만 개별 인정"
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-B1",
+      "slot": "B1",
+      "mode": "FOLLOWUP",
+      "plannedStudentPath": "교점 수 + 작은 근의 y≥1 하한",
+      "learningLevel": "중",
+      "difficultyBucket": 4,
+      "learningReason": "두 교점의 존재에 더해 두 y좌표 모두 1 이상인지 검사",
+      "bucketReason": "작은 근 하한을 추가로 판정하고 해당 등호 직접 검토",
+      "primaryRPM": {
+        "id": "H1-RPM-272",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "무리함수의 교점",
+        "authority": "RPM_PRIMARY_CURRENT_DIRECT_ACTIVE"
+      },
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CONDITION_FILTER",
+      "questionType": "서술형",
+      "problemVisual": {
+        "necessity": "VISUAL_EXEMPT",
+        "action": "NONE",
+        "reason": "그림/수치를 발문에서 읽는 문제가 아니며 모든 함수식·위치 조건이 문자로 명시됨; 문제 SVG는 답 경계 유추 위험",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/B1-solution.svg",
+        "blob": "eae839054088861e88ebbc2d39bb64b37f5321d6",
+        "render": "NOT_RUN"
+      },
+      "answer": "$1\\le k\\lt \\dfrac54$",
+      "reverseStem": {
+        "status": "KEEP",
+        "questionType": "서술형",
+        "primaryL3": "무리함수의 활용",
+        "scoreMarker": 7,
+        "extraDecision": "교점 수 + 작은 근의 y≥1 하한"
+      },
+      "scoring": {
+        "totalPoints": 7,
+        "criteria": [
+          {
+            "points": 1,
+            "criterion": "치환 및 교점 이차방정식"
+          },
+          {
+            "points": 2,
+            "criterion": "서로 다른 두 실제 교점 기본 범위: 판별식 1점, t≥0 1점"
+          },
+          {
+            "points": 2,
+            "criterion": "추가 y 또는 x 위치 조건을 작은/큰 근에 정확히 적용: 변환 1점, 부등식 1점"
+          },
+          {
+            "points": 1,
+            "criterion": "위치 경계·접점의 포함/제외 확인"
+          },
+          {
+            "points": 1,
+            "criterion": "최종 범위"
+          }
+        ],
+        "partialCreditRule": "정답만 제시하면 중간 변환·부호·경계 점수를 인정하지 않음. 독립적으로 옳은 각 풀이 단계만 개별 인정"
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-B2",
+      "slot": "B2",
+      "mode": "FOLLOWUP",
+      "plannedStudentPath": "x부호를 t≤√2와 t>√2로 변환해 작은 근만 검사",
+      "learningLevel": "상",
+      "difficultyBucket": 4,
+      "learningReason": "근의 크기를 x 부호 조건으로 재해석하고 y축 위 경계를 판정",
+      "bucketReason": "두 교점 수 + x 부호 + 경계 포함을 통합",
+      "primaryRPM": {
+        "id": "H1-RPM-272",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "무리함수의 교점",
+        "authority": "RPM_PRIMARY_CURRENT_DIRECT_ACTIVE"
+      },
+      "crossConceptKeys": [
+        "CC_QUADRATIC_EQUATION",
+        "CC_DISCRIMINANT"
+      ],
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "questionType": "서술형",
+      "problemVisual": {
+        "necessity": "VISUAL_EXEMPT",
+        "action": "NONE",
+        "reason": "그림/수치를 발문에서 읽는 문제가 아니며 모든 함수식·위치 조건이 문자로 명시됨; 문제 SVG는 답 경계 유추 위험",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/B2-solution.svg",
+        "blob": "6cec98730784cf19f8b5729f709b6c6bfa4564e9",
+        "render": "NOT_RUN"
+      },
+      "answer": "$\\dfrac13\\le k\\le\\sqrt2$",
+      "reverseStem": {
+        "status": "KEEP",
+        "questionType": "서술형",
+        "primaryL3": "무리함수의 활용",
+        "scoreMarker": 7,
+        "extraDecision": "x부호를 t≤√2와 t>√2로 변환해 작은 근만 검사"
+      },
+      "scoring": {
+        "totalPoints": 7,
+        "criteria": [
+          {
+            "points": 1,
+            "criterion": "치환 및 교점 이차방정식"
+          },
+          {
+            "points": 2,
+            "criterion": "서로 다른 두 실제 교점 기본 범위: 판별식 1점, t≥0 1점"
+          },
+          {
+            "points": 2,
+            "criterion": "추가 y 또는 x 위치 조건을 작은/큰 근에 정확히 적용: 변환 1점, 부등식 1점"
+          },
+          {
+            "points": 1,
+            "criterion": "위치 경계·접점의 포함/제외 확인"
+          },
+          {
+            "points": 1,
+            "criterion": "최종 범위"
+          }
+        ],
+        "partialCreditRule": "정답만 제시하면 중간 변환·부호·경계 점수를 인정하지 않음. 독립적으로 옳은 각 풀이 단계만 개별 인정"
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-B3",
+      "slot": "B3",
+      "mode": "FOLLOWUP",
+      "plannedStudentPath": "두 x좌표 음수 조건은 작은 t근이 1보다 큰지로 귀착, 등호 제외",
+      "learningLevel": "상",
+      "difficultyBucket": 4,
+      "learningReason": "끝점 x=0은 허용하지 않는 엄격한 위치 조건과 접점 배제",
+      "bucketReason": "두 y근의 하한을 x<0으로 바꾸는 부등식 분기",
+      "primaryRPM": {
+        "id": "H1-RPM-272",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "무리함수의 교점",
+        "authority": "RPM_PRIMARY_CURRENT_DIRECT_ACTIVE"
+      },
+      "crossConceptKeys": [
+        "CC_QUADRATIC_EQUATION",
+        "CC_DISCRIMINANT"
+      ],
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT",
+        "COND_NEGATIVE"
+      ],
+      "integrationPattern": "CONDITION_FILTER",
+      "questionType": "서술형",
+      "problemVisual": {
+        "necessity": "VISUAL_EXEMPT",
+        "action": "NONE",
+        "reason": "그림/수치를 발문에서 읽는 문제가 아니며 모든 함수식·위치 조건이 문자로 명시됨; 문제 SVG는 답 경계 유추 위험",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/B3-solution.svg",
+        "blob": "f4e9ea0c526248fdf0308d268ba3c722f7b07bf7",
+        "render": "NOT_RUN"
+      },
+      "answer": "$1\\lt k\\lt \\dfrac54$",
+      "reverseStem": {
+        "status": "KEEP",
+        "questionType": "서술형",
+        "primaryL3": "무리함수의 활용",
+        "scoreMarker": 7,
+        "extraDecision": "두 x좌표 음수 조건은 작은 t근이 1보다 큰지로 귀착, 등호 제외"
+      },
+      "scoring": {
+        "totalPoints": 7,
+        "criteria": [
+          {
+            "points": 1,
+            "criterion": "치환 및 교점 이차방정식"
+          },
+          {
+            "points": 2,
+            "criterion": "서로 다른 두 실제 교점 기본 범위: 판별식 1점, t≥0 1점"
+          },
+          {
+            "points": 2,
+            "criterion": "추가 y 또는 x 위치 조건을 작은/큰 근에 정확히 적용: 변환 1점, 부등식 1점"
+          },
+          {
+            "points": 1,
+            "criterion": "위치 경계·접점의 포함/제외 확인"
+          },
+          {
+            "points": 1,
+            "criterion": "최종 범위"
+          }
+        ],
+        "partialCreditRule": "정답만 제시하면 중간 변환·부호·경계 점수를 인정하지 않음. 독립적으로 옳은 각 풀이 단계만 개별 인정"
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-C1",
+      "slot": "C1",
+      "mode": "FOLLOWUP",
+      "plannedStudentPath": "서로 다른 두 위치 제한을 작은 근과 큰 근에 따로 적용하고 구간 교집합",
+      "learningLevel": "상",
+      "difficultyBucket": 5,
+      "learningReason": "양쪽 교점 위치와 큰 y값 제한이 서로 다른 경계 k를 결정",
+      "bucketReason": "두 위치조건·두 근의 순서·경계 동시 검증",
+      "primaryRPM": {
+        "id": "H1-RPM-272",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "무리함수의 교점",
+        "authority": "RPM_PRIMARY_CURRENT_DIRECT_ACTIVE"
+      },
+      "crossConceptKeys": [
+        "CC_QUADRATIC_EQUATION",
+        "CC_DISCRIMINANT"
+      ],
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "questionType": "서술형",
+      "problemVisual": {
+        "necessity": "VISUAL_EXEMPT",
+        "action": "NONE",
+        "reason": "그림/수치를 발문에서 읽는 문제가 아니며 모든 함수식·위치 조건이 문자로 명시됨; 문제 SVG는 답 경계 유추 위험",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/C1-solution.svg",
+        "blob": "fe33019cba0ce581d6b8882e9ade571d307165eb",
+        "render": "NOT_RUN"
+      },
+      "answer": "$\\dfrac76\\le k\\le\\sqrt2$",
+      "reverseStem": {
+        "status": "KEEP",
+        "questionType": "서술형",
+        "primaryL3": "무리함수의 활용",
+        "scoreMarker": 8,
+        "extraDecision": "서로 다른 두 위치 제한을 작은 근과 큰 근에 따로 적용하고 구간 교집합"
+      },
+      "scoring": {
+        "totalPoints": 8,
+        "criteria": [
+          {
+            "points": 1,
+            "criterion": "매개변수와 치환변수의 범위 및 교점 이차방정식"
+          },
+          {
+            "points": 2,
+            "criterion": "실근 구분 1점, 두 실제 교점(허용 근의 부호) 1점"
+          },
+          {
+            "points": 2,
+            "criterion": "추가된 복합·전칭 조건을 정확한 부등식으로 환원 및 구간 결합"
+          },
+          {
+            "points": 2,
+            "criterion": "양쪽 경계에서 교점 수·위치 또는 최악 매개변수 정확 대입"
+          },
+          {
+            "points": 1,
+            "criterion": "최종 범위와 부등호"
+          }
+        ],
+        "partialCreditRule": "정답만 제시하면 중간 변환·부호·경계 점수를 인정하지 않음. 독립적으로 옳은 각 풀이 단계만 개별 인정"
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-C2",
+      "slot": "C2",
+      "mode": "FOLLOWUP",
+      "plannedStudentPath": "전칭 a∈[1,3]의 조건 ∩; 서로 다른 a에서 각각 아래/위 경계가 결정",
+      "learningLevel": "상",
+      "difficultyBucket": 5,
+      "learningReason": "모든 a에 대해 교점 둘이라는 전칭 조건을 각 경계 함수의 최댓값·최솟값으로 환원",
+      "bucketReason": "두 실근의 부호 + 전칭 매개변수의 서로 다른 최악 경계",
+      "primaryRPM": {
+        "id": "H1-RPM-272",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "무리함수의 교점",
+        "authority": "RPM_PRIMARY_CURRENT_DIRECT_ACTIVE"
+      },
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT",
+        "COND_RANGE",
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "questionType": "서술형",
+      "problemVisual": {
+        "necessity": "VISUAL_EXEMPT",
+        "action": "NONE",
+        "reason": "그림/수치를 발문에서 읽는 문제가 아니며 모든 함수식·위치 조건이 문자로 명시됨; 문제 SVG는 답 경계 유추 위험",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/C2-solution.svg",
+        "blob": "0f89b4be21b49f64fc043baf2649380c61306fac",
+        "render": "NOT_RUN"
+      },
+      "answer": "$\\dfrac12\\le k\\lt \\dfrac53$",
+      "reverseStem": {
+        "status": "KEEP",
+        "questionType": "서술형",
+        "primaryL3": "무리함수의 활용",
+        "scoreMarker": 8,
+        "extraDecision": "전칭 a∈[1,3]의 조건 ∩; 서로 다른 a에서 각각 아래/위 경계가 결정"
+      },
+      "scoring": {
+        "totalPoints": 8,
+        "criteria": [
+          {
+            "points": 1,
+            "criterion": "매개변수와 치환변수의 범위 및 교점 이차방정식"
+          },
+          {
+            "points": 2,
+            "criterion": "실근 구분 1점, 두 실제 교점(허용 근의 부호) 1점"
+          },
+          {
+            "points": 2,
+            "criterion": "추가된 복합·전칭 조건을 정확한 부등식으로 환원 및 구간 결합"
+          },
+          {
+            "points": 2,
+            "criterion": "양쪽 경계에서 교점 수·위치 또는 최악 매개변수 정확 대입"
+          },
+          {
+            "points": 1,
+            "criterion": "최종 범위와 부등호"
+          }
+        ],
+        "partialCreditRule": "정답만 제시하면 중간 변환·부호·경계 점수를 인정하지 않음. 독립적으로 옳은 각 풀이 단계만 개별 인정"
+      }
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q23-C3",
+      "slot": "C3",
+      "mode": "FOLLOWUP",
+      "plannedStudentPath": "m∈[1/2,1] 전칭 교점 조건; 기울기별 위 경계의 최솟값을 무미분 인수분해로 비교",
+      "learningLevel": "상",
+      "difficultyBucket": 5,
+      "learningReason": "직선 기울기 매개변수 전체에서 두 경계 함수의 극값을 미분 없이 비교",
+      "bucketReason": "전칭 m + 근의 부호·판별식 + 유리식 부등식 인수분해",
+      "primaryRPM": {
+        "id": "H1-RPM-272",
+        "l1": "함수",
+        "l2": "무리함수",
+        "l3": "무리함수의 활용",
+        "l4": "무리함수의 교점",
+        "authority": "RPM_PRIMARY_CURRENT_DIRECT_ACTIVE"
+      },
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "conditionKeys": [
+        "COND_EXACT_INTERSECTION_COUNT",
+        "COND_RANGE",
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "integrationPattern": "INTERDEPENDENT",
+      "questionType": "서술형",
+      "problemVisual": {
+        "necessity": "VISUAL_EXEMPT",
+        "action": "NONE",
+        "reason": "그림/수치를 발문에서 읽는 문제가 아니며 모든 함수식·위치 조건이 문자로 명시됨; 문제 SVG는 답 경계 유추 위험",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "VISUAL_REQUIRED",
+        "action": "ADD",
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q23/C3-solution.svg",
+        "blob": "2757d1eceeb62e374d45ee436d4f300e8b9ca251",
+        "render": "NOT_RUN"
+      },
+      "answer": "$\\dfrac23\\le k\\lt \\dfrac{17}{12}$",
+      "reverseStem": {
+        "status": "KEEP",
+        "questionType": "서술형",
+        "primaryL3": "무리함수의 활용",
+        "scoreMarker": 8,
+        "extraDecision": "m∈[1/2,1] 전칭 교점 조건; 기울기별 위 경계의 최솟값을 무미분 인수분해로 비교"
+      },
+      "scoring": {
+        "totalPoints": 8,
+        "criteria": [
+          {
+            "points": 1,
+            "criterion": "매개변수와 치환변수의 범위 및 교점 이차방정식"
+          },
+          {
+            "points": 2,
+            "criterion": "실근 구분 1점, 두 실제 교점(허용 근의 부호) 1점"
+          },
+          {
+            "points": 2,
+            "criterion": "추가된 복합·전칭 조건을 정확한 부등식으로 환원 및 구간 결합"
+          },
+          {
+            "points": 2,
+            "criterion": "양쪽 경계에서 교점 수·위치 또는 최악 매개변수 정확 대입"
+          },
+          {
+            "points": 1,
+            "criterion": "최종 범위와 부등호"
+          }
+        ],
+        "partialCreditRule": "정답만 제시하면 중간 변환·부호·경계 점수를 인정하지 않음. 독립적으로 옳은 각 풀이 단계만 개별 인정"
+      }
+    }
+  ]
+}
