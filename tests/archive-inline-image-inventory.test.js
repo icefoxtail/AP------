@@ -14,11 +14,11 @@ test('archive/exams inline image inventory covers every content img and validate
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 756);
-  assert.equal(generated.productionTotal, 752);
+  assert.equal(generated.total, 809);
+  assert.equal(generated.productionTotal, 805);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 705, '.svg': 51 });
-  assert.equal(generated.qImageAndInlineTotal, 32);
+  assert.deepEqual(generated.extensionCounts, { '.png': 758, '.svg': 51 });
+  assert.equal(generated.qImageAndInlineTotal, 36);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
     missingProductionAssetCount: 0,
@@ -54,6 +54,10 @@ test('archive/exams inline image inventory covers every content img and validate
   assert.equal(q8?.assetExists, true);
 
   assert.deepEqual(generated.records.filter(record => record.qImagePresent).map(({ file, questionId }) => [file, questionId]), [
+    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 12],
+    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 12],
+    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 20],
+    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 25],
     ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 7],
     ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 12],
     ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 17],
