@@ -1,12 +1,7 @@
-## CURRENT OVERRIDE (2026-10-17) — 원본 qid 단위 END-TO-END 마감 필수
-- 문항 제작 시작 전에 반드시 [원본 qid별 9문항 E2E 완료보고서 강제계약](ALIVE_QID9_PER_ITEM_E2E_COMPLETION_REPORT_CURRENT_v1.md)을 **전문 확인**한다. `q01 진행해` = 해당 9 UID마다 제작·수학·오답4·학생용 해설·난이도 두 축·정본 RPM/Meta 영구저장·독립 품질검수·실제 브라우저 exam/solution/answer/print·UID별 22항목 보고 완료를 의미한다.
-- 위 요건이 9/9 동일 최종 artifact/SHA로 확인되지 않으면 `QID_INCOMPLETE/FAIL`; **다음 원본 qid로 넘어가지 않는다.** 이 문서의 이전 '9개 제작/자체 점검 후 commit'은 전체 qid 작업완료 선언의 충분조건이 아니다.
-- 정답 위치는 **각 슬롯의 qid 간 세로 누적 균형 최우선**, 동률은 랜덤 배정; 본 수동 QID9에 대한 과거 가로 2/2/2/2/1 HARD는 원장 최신 지시로 대체. 구 검사기 충돌은 `CONTRACT_CONFLICT`로 기록하고 가짜 PASS 금지.
-- 예약형 Library NEW14 CREATE→R1→R2→R3→MASTER 라우팅은 적용대상 밖. 격리/스테이징 Chrome 검사는 qid 마감에 필수이고 main 배포 Chrome은 운영 출고에 별도 필수다.
-
-# GPT QID9 CREATE 핸드오프 CURRENT — 원본 한 문항 × A1~C3 (2026-10-15)
-
-> Authority: [ALIVE QID9 ONE_SOURCE](ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md), [Notion QID9 표준계약](https://app.notion.com/p/3fa0e68bd69f81c4abdaffdcd1a969a1), Notion 필독 라우터/Archive 시작·생명주기/생성 5단계. 제작자 후보/수동 Git 브랜치 한정. 예약 Library 인계 및 독립검수/출시 대체 금지.
+## CURRENT HARD — 2026-10-17 제작자 종료·후속 3역할 분리 (원장 최신 직접 정정)
+- **필독:** [9문항 개별 제작완료 보고서 v1.1](ALIVE_QID9_PER_ITEM_E2E_COMPLETION_REPORT_CURRENT_v1.md). `n번 진행해` = 해당 원본 qid의 9 UID/45보기/36오답·상세 해설·독립 난이도2축·확정 정본 Meta와 UID별 source/sidecar 저장·필수 SVG·세로 배분·자기검수·9개 문항별 22항목 실제 보고서 완성. 이 기준 9/9면 `QID_AUTHOR_COMPLETE` 및 다음 원본 qid 제작 허용.
+- **다음 세 항목은 제작 GPT 담당/선행조건이 아님:** ① 다른 GPT의 독립품질검수 ② main 등록 단계의 운영 Meta/Consumer/index 저장·parity ③ Codex의 실제 운영 브라우저·출력 검사. 이 세 항목은 최종 SHA를 동봉하여 별도 담당에게 인계, `PENDING_NEXT_OWNER/NOT_RUN` 표시; 저자 FAIL/다음 qid 차단 근거로 사용 금지.
+- 제작자 범위의 실제 누락·수학 오류·근거 없는 Meta·필수 시각자료 누락 등은 지금 qid 안에서 직접 수정하고 9/9 재확인. 수동 QID9는 세로 정답 누적 우선, 과거 가로 HARD 충돌은 최신 사용자 지시로 대체하되 검사기 미실행을 PASS로 쓰지 않는다. 예약형 Library NEW14는 변경하지 않는다.
 
 ## 매회 치환하는 변수(이외 본문 고정)
 - `REPO`: icefoxtail/AP------
