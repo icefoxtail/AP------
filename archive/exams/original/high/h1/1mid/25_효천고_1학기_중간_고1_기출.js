@@ -734,10 +734,10 @@ window.questionBank = [
       "계산"
     ],
     "wide": false,
-    "content": "[서술형2] 이차방정식 $x^2+ax+b=0$의 두 근이 $\\alpha, \\beta$이다. $x^2$의 계수가 $3$인 이차식 $f(x)$에 대하여 \n$f(\\alpha)=2\\alpha, f(\\beta)=2\\beta$이고, $f(1)=11$일 때 $a+b$의 값을 구하고 그 과정을 서술하시오. (단, $a, b$는 실수이다.) [5점]",
+    "content": "[서술형2] 이차방정식 $x^2+ax+b=0$의 서로 다른 두 근이 $\\alpha, \\beta$이다. $x^2$의 계수가 $3$인 이차식 $f(x)$에 대하여 \n$f(\\alpha)=2\\alpha, f(\\beta)=2\\beta$이고, $f(1)=11$일 때 $a+b$의 값을 구하고 그 과정을 서술하시오. (단, $a, b$는 실수이다.) [5점]",
     "choices": [],
-    "answer": null,
-    "solution": null,
+    "answer": "$2$",
+    "solution": "[키포인트] $f(x)-2x$의 근과 최고차항을 이용해 인수분해한다.\n$f(\\alpha)=2\\alpha$, $f(\\beta)=2\\beta$이므로 $f(x)-2x$는 서로 다른 두 근 $\\alpha$, $\\beta$를 갖는다. 최고차항의 계수가 $3$이므로\n$f(x)-2x=3(x-\\alpha)(x-\\beta)$이다.\n이차방정식 $x^2+ax+b=0$의 근과 계수의 관계에서 $\\alpha+\\beta=-a$, $\\alpha\\beta=b$이므로\n$f(x)-2x=3\\{x^2-(\\alpha+\\beta)x+\\alpha\\beta\\}=3(x^2+ax+b)$이다.\n따라서 $f(x)=3(x^2+ax+b)+2x$이고,\n$11=f(1)=3(1+a+b)+2$이다.\n$3(1+a+b)=9$이므로 $a+b=2$이다.\n따라서 정답은 $2$이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
