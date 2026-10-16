@@ -139,20 +139,23 @@
       metaProjection,
     };
   }
-  async function load(file, sourceHash = "") {
+  async function load(file, sourceHash = "", options = {}) {
     if (!file || file.includes("..") || /^(?:[a-z]+:|\/)/i.test(file))
       throw new Error("잘못된 source 경로");
-    const key = file + ":" + sourceHash;
+    options = options && typeof options === "object" ? options : {};
+    const baseUrl = String(options.baseUrl || document.baseURI);
+    const fetcher = typeof options.fetcher === "function" ? options.fetcher : (url) => fetch(url);
+    const key = file + ":" + sourceHash + ":" + baseUrl;
     if (!cache.has(key))
       cache.set(
         key,
         (async () => {
           const url = new URL(
             "exams/" + file.split("/").map(encodeURIComponent).join("/"),
-            document.baseURI,
+            baseUrl,
           );
           if (sourceHash) url.searchParams.set("v", sourceHash);
-          const response = await fetch(url);
+          const response = await fetcher(url.toString());
           if (!response.ok)
             throw new Error(`원본 로드 실패 (${response.status}): ${file}`);
           const source = await response.text();
@@ -171,12 +174,17 @@
       );
     return cache.get(key);
   }
-  async function restore(records, catalog) {
+  async function restore(records, catalog, options = {}) {
+    options = options && typeof options === "object" ? options : {};
     const hashes = new Map(catalog.sourceHashes);
     const files = [...new Set(records.map((r) => r.sourceFile))];
     const banks = new Map();
-    for (const file of files)
-      banks.set(file, await load(file, hashes.get(file)));
+    for (const file of files) {
+      const sourceHash = String(hashes.get(file) || "").trim();
+      if (options.requireSourceHash && !/^[a-f0-9]{64}$/i.test(sourceHash))
+        throw new Error("문항 원본의 기대 SHA-256을 확인할 수 없습니다: " + file);
+      banks.set(file, await load(file, sourceHash, options));
+    }
     return Promise.all(
       records.map(async (record) => {
         const question = banks.get(record.sourceFile)[record.sourceOrdinal - 1];

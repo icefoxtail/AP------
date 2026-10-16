@@ -12,6 +12,98 @@ const AP_CLINIC_EXAM_PERIODS = [
 const clinicPrintExamPeriodFilters = new Map();
 const clinicPrintExamYearFilters = new Map();
 const clinicPrintGradeData = new Map();
+const clinicPrintClassClinicData = new Map();
+const clinicPrintArchive2ScriptPromises = new Map();
+let clinicPrintArchive2CatalogPromise = null;
+let clinicPrintArchive2CatalogCache = null;
+let clinicPrintRecommendationState = {
+    scope: 'class',
+    status: 'idle',
+    requestId: 0,
+    classId: '',
+    contextKey: '',
+    result: null,
+    selectedKeys: new Set(),
+    pendingKeys: new Set(),
+    validationErrors: new Map(),
+    verifiedByKey: new Map(),
+    error: ''
+};
+
+function clinicPrintGetArchiveBaseUrl() {
+    return new URL('../archive/', window.location.href).href;
+}
+
+function clinicPrintLoadArchive2Script(name, relativeUrl, globalName) {
+    if (window[globalName]) return Promise.resolve(window[globalName]);
+    if (!clinicPrintArchive2ScriptPromises.has(name)) {
+        const promise = new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            const timeoutId = setTimeout(() => {
+                script.remove();
+                reject(new Error(`${name} 스크립트 요청 시간이 초과되었습니다.`));
+            }, 20000);
+            script.src = new URL(relativeUrl, document.baseURI).href;
+            script.async = true;
+            script.onload = () => {
+                clearTimeout(timeoutId);
+                window[globalName]
+                    ? resolve(window[globalName])
+                    : reject(new Error(`${name} 로더를 초기화하지 못했습니다.`));
+            };
+            script.onerror = () => {
+                clearTimeout(timeoutId);
+                reject(new Error(`${name} 스크립트를 불러오지 못했습니다.`));
+            };
+            document.head.appendChild(script);
+        }).catch(error => {
+            clinicPrintArchive2ScriptPromises.delete(name);
+            throw error;
+        });
+        clinicPrintArchive2ScriptPromises.set(name, promise);
+    }
+    return clinicPrintArchive2ScriptPromises.get(name);
+}
+
+async function clinicPrintLoadArchive2CandidateCatalog() {
+    if (clinicPrintArchive2CatalogCache) return clinicPrintArchive2CatalogCache;
+    if (!clinicPrintArchive2CatalogPromise) {
+        clinicPrintArchive2CatalogPromise = (async () => {
+            await clinicPrintLoadArchive2Script('mixer-selector', '../archive/mixer-selector.js?v=20261016-clinic-rec-1', 'ArchiveMixerSelector');
+            await clinicPrintLoadArchive2Script('archive2-canonical', '../archive/archive2-canonical.js?v=20261016-clinic-rec-1', 'Archive2Canonical');
+            await clinicPrintLoadArchive2Script('archive2-core', '../archive/archive2-core.js?v=20261016-clinic-rec-1', 'Archive2Core');
+            const archiveBase = clinicPrintGetArchiveBaseUrl();
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 90000);
+            let bundle;
+            try {
+                bundle = await window.Archive2Canonical.loadInputBundle(
+                    url => fetch(url, { cache: 'no-cache', signal: controller.signal }),
+                    archiveBase
+                );
+            } catch (error) {
+                if (controller.signal.aborted) throw new Error('Archive 2.0 후보 목록 조회 시간이 초과되었습니다.');
+                throw error;
+            } finally {
+                clearTimeout(timeoutId);
+            }
+            const catalog = window.Archive2Canonical.resolveCatalog({ versionBundle: bundle });
+            if (!Array.isArray(catalog?.records) || !catalog.records.length) {
+                throw new Error('Archive 2.0 추천 후보 목록이 비어 있습니다.');
+            }
+            clinicPrintArchive2CatalogCache = {
+                version: String(catalog.indexVersion || bundle.projectionVersion || ''),
+                catalog,
+                records: catalog.records
+            };
+            return clinicPrintArchive2CatalogCache;
+        })().catch(error => {
+            clinicPrintArchive2CatalogPromise = null;
+            throw error;
+        });
+    }
+    return clinicPrintArchive2CatalogPromise;
+}
 
 function clinicPrintGetGradeWindow(classId) {
     const loaded = clinicPrintGradeData.get(String(classId));
@@ -43,6 +135,669 @@ function clinicPrintGetGradeDataMessage(classId) {
     if (data?.status === 'error') return '학년 전체 기록을 불러오지 못했습니다. 다시 불러오기를 눌러 주세요.';
     const { from, to } = clinicPrintGetGradeWindow(classId);
     return `모든 선생님 반 · 최근 1개월 (${from} ~ ${to})`;
+}
+
+function clinicPrintRecommendationKey(studentId, questionUid) {
+    return JSON.stringify([String(studentId || ''), String(questionUid || '')]);
+}
+
+function clinicPrintGetRecommendationContextKey(classId, scope = clinicPrintRecommendationState.scope) {
+    return JSON.stringify([
+        String(classId || ''),
+        document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student',
+        String(scope || 'class'),
+        clinicPrintGetCheckedValues('clinic-print-exam').map(String).sort(),
+        clinicPrintGetCheckedValues('clinic-print-student').map(String).sort()
+    ]);
+}
+
+function clinicPrintResetRecommendationState(scope = 'class', classId = clinicPrintActiveClassId) {
+    const requestId = Number(clinicPrintRecommendationState.requestId || 0) + 1;
+    clinicPrintRecommendationState = {
+        scope: scope === 'grade' ? 'grade' : 'class',
+        status: 'idle',
+        requestId,
+        classId: String(classId || ''),
+        contextKey: '',
+        result: null,
+        selectedKeys: new Set(),
+        pendingKeys: new Set(),
+        validationErrors: new Map(),
+        verifiedByKey: new Map(),
+        error: ''
+    };
+}
+
+function clinicPrintInvalidateRecommendations(classId = clinicPrintActiveClassId) {
+    const scope = clinicPrintRecommendationState.scope || 'class';
+    clinicPrintResetRecommendationState(scope, classId);
+    const body = document.getElementById('clinic-print-recommendation-body');
+    if (body) clinicPrintRenderRecommendationPanel(classId);
+}
+
+function clinicPrintIsRecommendationRequestCurrent(classId, requestId, contextKey) {
+    return Number(clinicPrintRecommendationState.requestId) === Number(requestId) &&
+        String(clinicPrintActiveClassId || '') === String(classId || '') &&
+        !!document.getElementById('clinic-print-recommendation-body') &&
+        clinicPrintGetRecommendationContextKey(classId, clinicPrintRecommendationState.scope) === contextKey;
+}
+
+function clinicPrintRecommendationPathLabel(item = {}) {
+    const reason = item.recommendationReason && typeof item.recommendationReason === 'object'
+        ? item.recommendationReason : {};
+    const path = item.matchedTarget || item.targetPath || reason.targetPath || reason.path || reason.target || item.canonicalMeta || item;
+    return ['L1', 'L2', 'L3', 'L4'].map(key => String(path?.[key] || '').trim()).filter(Boolean).join(' › ');
+}
+
+function clinicPrintRecommendationReasonLabel(item = {}) {
+    const reason = item.recommendationReason;
+    if (!reason || typeof reason !== 'object') return String(reason || '기존 오답의 정본 Meta 경로와 연결');
+    const wrongCount = Number(reason.wrongCount || 0);
+    const sessionCount = Number(reason.sessionCount || 0);
+    return `조회 이력 오답 ${wrongCount}회 · ${sessionCount}개 세션의 정본 Meta 경로와 연결`;
+}
+
+function clinicPrintPrepareArchive2CandidateRecords(records = []) {
+    const core = window.Archive2Core;
+    const fields = [...new Set([
+        ...(Array.isArray(core?.META_FIELDS) ? core.META_FIELDS : []),
+        ...(Array.isArray(core?.OPTIONAL_METADATA_FIELDS) ? core.OPTIONAL_METADATA_FIELDS : [])
+    ])];
+    return records.map(record => {
+        const canonicalMeta = record.canonicalMeta && typeof record.canonicalMeta === 'object'
+            ? { ...record.canonicalMeta }
+            : {};
+        fields.forEach(field => {
+            if (Object.prototype.hasOwnProperty.call(record, field)) canonicalMeta[field] = record[field];
+        });
+        return {
+            ...record,
+            canonicalMeta,
+            canonicalMetaFields: fields
+        };
+    });
+}
+
+function clinicPrintRecommendationCoverageLabel(scope, coverage = {}, classId = '') {
+    const sessions = Number(coverage.sessionCount || 0);
+    if (scope === 'grade') {
+        const from = String(coverage.from || clinicPrintGradeData.get(String(classId))?.from || '').trim();
+        const to = String(coverage.to || clinicPrintGradeData.get(String(classId))?.to || '').trim();
+        return `같은 학년 최근 1개월${from && to ? ` (${from} ~ ${to})` : ''} · 조회 세션 ${sessions}개`;
+    }
+    const limited = coverage.limited === true || sessions >= 200;
+    return `현재 반 최근 최대 200개 세션 · 대상 학생 조회 ${sessions}개${limited ? ' · 전체 이력은 아님' : ''}`;
+}
+
+function clinicPrintRecommendationCoverageNotes(coverage = {}) {
+    const notes = [];
+    const unknown = Number(coverage.unknownResultStatusCount || 0);
+    const missing = Number(coverage.wrongEvidenceWithoutSnapshot || 0);
+    const unresolved = Number(coverage.unresolvedWrongEvidenceCount || 0);
+    const legacySessions = Number(coverage.legacyWrongAnswerSessionCount || 0);
+    if (unknown) notes.push(`결과 상태 미확인 ${unknown}건 제외`);
+    if (missing) notes.push(`동결 문항 snapshot 누락 ${missing}건`);
+    if (unresolved) notes.push(`근거 미해결 ${unresolved}건 제외`);
+    if (legacySessions) notes.push(`result item 없는 ${legacySessions}개 세션은 기존 오답행의 빈도만 사용`);
+    return notes;
+}
+
+function clinicPrintRenderRecommendationPanel(classId = clinicPrintActiveClassId) {
+    const body = document.getElementById('clinic-print-recommendation-body');
+    if (!body) return;
+    const state = clinicPrintRecommendationState;
+    const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
+    const classActive = state.scope !== 'grade';
+    const gradeActive = state.scope === 'grade';
+    const scopeButtons = `
+        <div style="display:flex;gap:8px;margin:8px 0 10px;">
+            <button type="button" class="clinic-print-mini-btn" aria-pressed="${classActive}" style="${classActive ? 'border-color:var(--primary);color:var(--primary);' : ''}" onclick="clinicPrintSetRecommendationScope('${clinicPrintEscapeJsString(classId)}','class')">현재 반</button>
+            <button type="button" class="clinic-print-mini-btn" aria-pressed="${gradeActive}" style="${gradeActive ? 'border-color:var(--primary);color:var(--primary);' : ''}" onclick="clinicPrintSetRecommendationScope('${clinicPrintEscapeJsString(classId)}','grade')">같은 학년</button>
+        </div>`;
+    const scopeLabel = state.scope === 'grade'
+        ? '같은 학년 최근 1개월'
+        : '현재 반 최근 최대 200개 세션';
+    const disabled = mode !== 'student' || state.status === 'loading';
+    const buttonText = mode !== 'student'
+        ? '학생별 오답 모드에서 이용'
+        : state.status === 'loading' ? '추천 기준을 불러오는 중…' : '유사 문항 후보 찾기';
+    let message = '조회된 오답 빈도를 기준으로 후보를 찾습니다. 정답률이나 회복률을 뜻하지 않습니다.';
+    if (mode !== 'student') message = '학생별 추천 문항을 미리보고 배정하려면 출제 기준에서 학생을 선택하세요.';
+    else if (state.status === 'loading') message = `${scopeLabel}의 오답·동결 문항 정보를 확인하고 Archive 2.0 후보를 불러옵니다. 첫 조회에는 준비 시간이 걸릴 수 있습니다.`;
+    else if (state.status === 'error') message = `추천을 불러오지 못했습니다: ${clinicPrintEscapeHtml(state.error || '조회 오류')}. 현재 오답 클리닉은 계속 이용할 수 있습니다.`;
+    else if (state.status === 'stale') message = '학생, 시험 또는 추천 범위가 바뀌었습니다. 새 조건으로 후보를 다시 찾으세요.';
+    else if (state.status === 'empty') {
+        const noEvidence = state.result?.status === 'no_canonical_evidence';
+        const coverage = state.result?.coverage || {};
+        const notes = clinicPrintRecommendationCoverageNotes(coverage);
+        message = `${clinicPrintEscapeHtml(clinicPrintRecommendationCoverageLabel(state.scope, coverage, classId))} · ${noEvidence ? '정본 Meta 경로를 확인한 오답 근거가 없습니다.' : '연결되는 정본 추천 후보가 없습니다.'}${notes.length ? ` · ${clinicPrintEscapeHtml(notes.join(' · '))}` : ''} 현재 오답 클리닉은 계속 이용할 수 있습니다.`;
+    } else if (state.status === 'ready') {
+        const coverage = state.result?.coverage || {};
+        const notes = clinicPrintRecommendationCoverageNotes(coverage);
+        message = `${clinicPrintEscapeHtml(clinicPrintRecommendationCoverageLabel(state.scope, coverage, classId))} · 오답 빈도 기반 추천${notes.length ? ` · ${clinicPrintEscapeHtml(notes.join(' · '))}` : ''}.`;
+    }
+
+    let candidatesHtml = '';
+    if (state.status === 'ready' && Array.isArray(state.result?.candidates)) {
+        const students = new Map(clinicPrintGetClassStudents(classId).map(student => [String(student.id), student]));
+        const groups = state.result.candidates;
+        candidatesHtml = groups.map(group => {
+            const studentId = String(group.studentId || '');
+            const student = students.get(studentId);
+            const items = Array.isArray(group.items) ? group.items : [];
+            if (!items.length) return '';
+            return `<div style="border-top:1px solid var(--border);padding-top:10px;margin-top:10px;">
+                <div style="font-size:12px;font-weight:800;margin-bottom:7px;">${clinicPrintEscapeHtml(student?.name || studentId)}${student?.className ? ` · ${clinicPrintEscapeHtml(student.className)}` : ''}</div>
+                ${items.map(item => {
+                    const uid = String(item.sourceQuestionUid || '');
+                    const key = clinicPrintRecommendationKey(studentId, uid);
+                    const checked = state.selectedKeys?.has(key) || state.pendingKeys?.has(key);
+                    const pending = state.pendingKeys?.has(key);
+                    const source = item.sourceArchiveFile || item.archiveFile || '';
+                    const title = clinicPrintGetArchiveDisplayTitle(source) || '아카이브 문항';
+                    const questionNo = item.sourceQuestionNo || item.questionNo || '';
+                    const path = clinicPrintRecommendationPathLabel(item);
+                    const reason = clinicPrintRecommendationReasonLabel(item);
+                    const error = state.validationErrors?.get(key) || '';
+                    return `<label style="display:flex;gap:9px;align-items:flex-start;border:1px solid var(--border);border-radius:10px;padding:9px;margin:6px 0;">
+                        <input type="checkbox" ${checked ? 'checked' : ''} ${pending ? 'disabled' : ''} onchange="clinicPrintToggleRecommendation('${clinicPrintEscapeJsString(studentId)}','${clinicPrintEscapeJsString(uid)}',this.checked)">
+                        <span style="min-width:0;flex:1;">
+                            <span style="display:block;font-size:12px;font-weight:700;">${clinicPrintEscapeHtml(title)}${questionNo ? ` · 원문 ${clinicPrintEscapeHtml(questionNo)}번` : ''}</span>
+                            ${path ? `<span style="display:block;font-size:11px;color:var(--secondary);margin-top:3px;">${clinicPrintEscapeHtml(path)}${Number.isInteger(Number(item.difficultyBucket)) && Number(item.difficultyBucket) >= 1 && Number(item.difficultyBucket) <= 5 ? ` · 난이도 ${Number(item.difficultyBucket)}/5` : ''}</span>` : ''}
+                            <span style="display:block;font-size:11px;color:var(--secondary);margin-top:3px;">${clinicPrintEscapeHtml(pending ? '원본 UID·파일·문항 위치를 확인 중입니다.' : reason)}</span>
+                            ${error ? `<span style="display:block;font-size:11px;color:var(--error);margin-top:3px;">원본 확인 실패: ${clinicPrintEscapeHtml(error)}</span>` : ''}
+                        </span>
+                    </label>`;
+                }).join('')}
+            </div>`;
+        }).join('');
+        if (!candidatesHtml) candidatesHtml = '<div class="clinic-print-empty">선택 학생에게 연결된 후보가 없습니다.</div>';
+    }
+
+    body.innerHTML = `${scopeButtons}<div class="clinic-print-note" aria-live="polite">${message}</div>
+        <button type="button" class="clinic-print-mini-btn" style="margin-top:8px;" ${disabled ? 'disabled' : ''} onclick="clinicPrintLoadRecommendations('${clinicPrintEscapeJsString(classId)}')">${buttonText}</button>
+        ${candidatesHtml}`;
+}
+
+function clinicPrintSetRecommendationScope(classId, scope) {
+    clinicPrintResetRecommendationState(scope, classId);
+    clinicPrintRenderRecommendationPanel(classId);
+    clinicPrintSchedulePreviewPush(classId);
+}
+
+function clinicPrintWithTimeout(promise, timeoutMs, message) {
+    return new Promise((resolve, reject) => {
+        const timeoutId = setTimeout(() => reject(new Error(message)), timeoutMs);
+        Promise.resolve(promise).then(value => {
+            clearTimeout(timeoutId);
+            resolve(value);
+        }, error => {
+            clearTimeout(timeoutId);
+            reject(error);
+        });
+    });
+}
+
+async function clinicPrintGetRecommendationHistory(classId, scope, studentIds) {
+    if (scope === 'grade') {
+        let gradeData = clinicPrintGradeData.get(String(classId));
+        if (gradeData?.status !== 'ready') {
+            const refreshed = await clinicPrintWithTimeout(
+                clinicPrintRefreshGradeClinicData(classId),
+                45000,
+                '학년 기록 조회 시간이 초과되었습니다.'
+            );
+            if (!refreshed) throw new Error(clinicPrintGetGradeDataMessage(classId));
+            gradeData = clinicPrintGradeData.get(String(classId));
+        }
+        if (gradeData?.status !== 'ready') throw new Error(clinicPrintGetGradeDataMessage(classId));
+        return {
+            sessions: Array.isArray(gradeData.sessions) ? gradeData.sessions : [],
+            resultItems: Array.isArray(gradeData.result_items) ? gradeData.result_items : [],
+            assignmentQuestions: Array.isArray(gradeData.assignment_questions) ? gradeData.assignment_questions : [],
+            wrongAnswers: Array.isArray(gradeData.wrong_answers) ? gradeData.wrong_answers : [],
+            from: gradeData.from,
+            to: gradeData.to
+        };
+    }
+
+    let classData = clinicPrintClassClinicData.get(String(classId));
+    if (classData?.status !== 'ready') {
+        const refreshed = await clinicPrintWithTimeout(
+            clinicPrintRefreshClassAssignments(classId),
+            45000,
+            '현재 반 기록 조회 시간이 초과되었습니다.'
+        );
+        if (!refreshed) throw new Error('현재 반 응시 기록을 불러오지 못했습니다.');
+        classData = clinicPrintClassClinicData.get(String(classId));
+    }
+    if (classData?.status !== 'ready') throw new Error('현재 반 응시 기록을 불러오지 못했습니다.');
+    const sessions = Array.isArray(classData.sessions) ? classData.sessions : [];
+    const sessionIds = new Set(sessions.map(row => String(row.id || '')).filter(Boolean));
+    const assignmentIds = new Set(sessions.map(row => String(row.assignment_id || '')).filter(Boolean));
+    return {
+        sessions,
+        resultItems: (classData.result_items || []).filter(row => sessionIds.has(String(row.session_id || ''))),
+        assignmentQuestions: (classData.assignment_questions || []).filter(row => assignmentIds.has(String(row.assignment_id || ''))),
+        wrongAnswers: (classData.wrong_answers || []).filter(row => sessionIds.has(String(row.session_id || ''))),
+        from: '',
+        to: ''
+    };
+}
+
+async function clinicPrintLoadRecommendations(classId) {
+    const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
+    const selectedStudentIds = clinicPrintGetCheckedValues('clinic-print-student').map(String);
+    if (mode !== 'student') {
+        toast('학생별 유사문항 추천은 학생 모드에서 이용할 수 있습니다.', 'info');
+        return;
+    }
+    if (!selectedStudentIds.length) {
+        toast('추천을 받을 학생을 선택하세요.', 'warn');
+        return;
+    }
+
+    const scope = clinicPrintRecommendationState.scope || 'class';
+    const contextKey = clinicPrintGetRecommendationContextKey(classId, scope);
+    const requestId = Number(clinicPrintRecommendationState.requestId || 0) + 1;
+    clinicPrintRecommendationState = {
+        scope,
+        status: 'loading',
+        requestId,
+        classId: String(classId || ''),
+        contextKey,
+        result: null,
+        selectedKeys: new Set(),
+        pendingKeys: new Set(),
+        validationErrors: new Map(),
+        verifiedByKey: new Map(),
+        error: ''
+    };
+    clinicPrintRenderRecommendationPanel(classId);
+    await new Promise(resolve => setTimeout(resolve, 0));
+
+    try {
+        const history = await clinicPrintGetRecommendationHistory(classId, scope, selectedStudentIds);
+        if (!clinicPrintIsRecommendationRequestCurrent(classId, requestId, contextKey)) return;
+
+        const candidateCatalog = await clinicPrintWithTimeout(
+            clinicPrintLoadArchive2CandidateCatalog(),
+            95000,
+            'Archive 2.0 후보 목록 조회 시간이 초과되었습니다.'
+        );
+        if (!clinicPrintIsRecommendationRequestCurrent(classId, requestId, contextKey)) return;
+
+        if (!window.ClinicRecommendations || typeof window.ClinicRecommendations.build !== 'function') {
+            throw new Error('클리닉 추천 모듈을 불러오지 못했습니다.');
+        }
+        const result = window.ClinicRecommendations.build({
+            sessions: history.sessions,
+            resultItems: history.resultItems,
+            assignmentQuestions: history.assignmentQuestions,
+            wrongAnswers: history.wrongAnswers,
+            studentIds: selectedStudentIds,
+            candidateRecords: clinicPrintPrepareArchive2CandidateRecords(candidateCatalog.records),
+            archive2Core: window.Archive2Core,
+            canonicalAuthority: candidateCatalog.catalog.canonicalAuthority,
+            coverage: {
+                scope: scope === 'grade' ? 'grade' : 'class',
+                from: history.from || '',
+                to: history.to || '',
+                limited: true,
+                sessionLimit: scope === 'class' ? 200 : null
+            },
+            asOf: new Date().toISOString(),
+            countPerStudent: 5
+        });
+        if (!clinicPrintIsRecommendationRequestCurrent(classId, requestId, contextKey)) return;
+
+        const hasCandidates = Array.isArray(result?.candidates) && result.candidates.some(group => Array.isArray(group.items) && group.items.length);
+        clinicPrintRecommendationState.result = result;
+        clinicPrintRecommendationState.status = hasCandidates ? 'ready' : 'empty';
+        clinicPrintRenderRecommendationPanel(classId);
+    } catch (error) {
+        if (!clinicPrintIsRecommendationRequestCurrent(classId, requestId, contextKey)) return;
+        clinicPrintRecommendationState.status = 'error';
+        clinicPrintRecommendationState.error = String(error?.message || error || '추천 조회 실패');
+        clinicPrintRenderRecommendationPanel(classId);
+    }
+}
+
+function clinicPrintFindRecommendationRecord(candidate, catalog) {
+    const uid = String(candidate?.sourceQuestionUid || '').trim();
+    const file = clinicPrintNormalizeArchiveFile(candidate?.sourceArchiveFile || candidate?.sourceFile || '');
+    const ordinal = Number(candidate?.sourceQuestionOrdinal);
+    const rows = (catalog?.records || []).filter(record =>
+        String(record.questionUid || '') === uid &&
+        clinicPrintNormalizeArchiveFile(record.sourceFile || '') === file &&
+        Number(record.sourceOrdinal) === ordinal
+    );
+    if (rows.length !== 1) throw new Error('후보 UID와 원본 파일·문항 위치가 일치하지 않습니다.');
+    const record = rows[0];
+    if (record.identityStatus !== 'VERIFIED' || record.sourceIntegrityStatus !== 'VERIFIED' || record.sourceStatus !== 'VERIFIED') {
+        throw new Error('후보 원본 identity 또는 무결성을 확인할 수 없습니다.');
+    }
+    if (candidate.sourceFingerprint && String(candidate.sourceFingerprint) !== String(record.sourceFingerprint || '')) {
+        throw new Error('후보 원본 fingerprint가 현재 Archive 2.0 목록과 다릅니다.');
+    }
+    if (candidate.sourceQuestionNo != null && String(candidate.sourceQuestionNo) !== String(record.sourceQuestionNo ?? '')) {
+        throw new Error('후보의 원문 번호가 현재 Archive 2.0 목록과 다릅니다.');
+    }
+    return record;
+}
+
+async function clinicPrintEnsureArchive2Source() {
+    await clinicPrintLoadArchive2Script('problem-bank-meta', '../archive/problem-bank-meta.js?v=20261011-rpm-debt-projection1', 'ProblemBankMeta');
+    await clinicPrintLoadArchive2Script('archive2-source', '../archive/archive2-source.js?v=20261016-clinic-source-base-1', 'Archive2Source');
+    if (typeof window.Archive2Source?.restore !== 'function') throw new Error('Archive 2.0 원본 검증기를 불러오지 못했습니다.');
+}
+
+async function clinicPrintRestoreRecommendationSources(records, catalog, timeoutMs, timeoutMessage) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+    try {
+        return await clinicPrintWithTimeout(
+            window.Archive2Source.restore(records, catalog, {
+                baseUrl: clinicPrintGetArchiveBaseUrl(),
+                requireSourceHash: true,
+                fetcher: url => fetch(url, { signal: controller.signal })
+            }),
+            timeoutMs,
+            timeoutMessage
+        );
+    } catch (error) {
+        if (controller.signal.aborted) throw new Error(timeoutMessage);
+        throw error;
+    } finally {
+        clearTimeout(timeoutId);
+        controller.abort();
+    }
+}
+
+async function clinicPrintValidateRecommendationItem(candidate, catalog) {
+    const record = clinicPrintFindRecommendationRecord(candidate, catalog);
+    await clinicPrintEnsureArchive2Source();
+    const restored = await clinicPrintRestoreRecommendationSources(
+        [record], catalog.catalog,
+        45000,
+        '추천 문항 원본 확인 시간이 초과되었습니다.'
+    );
+    if (!Array.isArray(restored) || restored.length !== 1) throw new Error('추천 문항 원본 확인이 완료되지 않았습니다.');
+    return { record, question: restored[0], status: 'VERIFIED' };
+}
+
+function clinicPrintMarkRecommendationVerified(candidate, verification) {
+    const record = verification?.record || {};
+    const restoredQuestion = verification?.question || {};
+    const legacyDifficulty = {};
+    ['level', 'difficulty', 'difficulty_bucket'].forEach(field => {
+        if (Object.prototype.hasOwnProperty.call(restoredQuestion, field) && restoredQuestion[field] != null) {
+            legacyDifficulty[field] = restoredQuestion[field];
+        }
+    });
+    candidate.archiveFile = record.sourceFile || candidate.archiveFile || '';
+    candidate.sourceArchiveFile = record.sourceFile || candidate.sourceArchiveFile || '';
+    candidate.sourceQuestionUid = record.questionUid || candidate.sourceQuestionUid || '';
+    candidate.sourceQuestionOrdinal = Number(record.sourceOrdinal || candidate.sourceQuestionOrdinal || 0);
+    candidate.sourceQuestionNo = record.sourceQuestionNo ?? candidate.sourceQuestionNo ?? null;
+    candidate.questionNo = candidate.sourceQuestionNo;
+    candidate.sourceIdentityStatus = record.identityStatus || 'VERIFIED';
+    candidate.sourceIntegrityStatus = record.sourceIntegrityStatus || '';
+    candidate.sourceStatus = record.sourceStatus || '';
+    candidate.sourceFingerprint = record.sourceFingerprint || candidate.sourceFingerprint || '';
+    candidate.currentSourceJsSha256 = record.currentSourceJsSha256 || '';
+    candidate.canonicalProjectionVersion = record.canonicalProjectionVersion || '';
+    candidate.sourceContentVerificationStatus = 'VERIFIED';
+    candidate.sourceOriginRefs = [];
+    candidate.legacyDifficulty = legacyDifficulty;
+    candidate.sourceVerification = {
+        status: 'VERIFIED',
+        sourceArchiveFile: candidate.sourceArchiveFile,
+        sourceQuestionUid: candidate.sourceQuestionUid,
+        sourceQuestionOrdinal: candidate.sourceQuestionOrdinal,
+        sourceQuestionNo: candidate.sourceQuestionNo,
+        sourceFingerprint: candidate.sourceFingerprint,
+        currentSourceJsSha256: candidate.currentSourceJsSha256,
+        canonicalProjectionVersion: candidate.canonicalProjectionVersion
+    };
+    try {
+        const metadata = typeof candidate.metadataJson === 'string'
+            ? JSON.parse(candidate.metadataJson)
+            : (candidate.metadataJson && typeof candidate.metadataJson === 'object' ? { ...candidate.metadataJson } : {});
+        metadata.sourceContentVerificationStatus = 'VERIFIED';
+        metadata.currentSourceJsSha256 = candidate.currentSourceJsSha256 || null;
+        metadata.sourceProjectionVersion = candidate.canonicalProjectionVersion || null;
+        metadata.legacyDifficulty = legacyDifficulty;
+        metadata.sourceIdentity = {
+            ...(metadata.sourceIdentity || {}),
+            status: 'VERIFIED',
+            sourceArchiveFile: candidate.sourceArchiveFile,
+            normalizedSourceFile: candidate.sourceArchiveFile,
+            sourceQuestionUid: candidate.sourceQuestionUid,
+            sourceQuestionOrdinal: candidate.sourceQuestionOrdinal,
+            sourceQuestionNo: candidate.sourceQuestionNo,
+            sourceFingerprint: candidate.sourceFingerprint,
+            currentSourceJsSha256: candidate.currentSourceJsSha256 || null
+        };
+        candidate.metadataJson = JSON.stringify(metadata);
+    } catch (error) {
+        throw new Error('추천 후보 Meta 근거를 저장할 수 없습니다.');
+    }
+}
+
+async function clinicPrintToggleRecommendation(classId, studentId, questionUid, checked) {
+    const state = clinicPrintRecommendationState;
+    if (state.status !== 'ready' || !state.result || state.classId !== String(classId || '')) return;
+    const key = clinicPrintRecommendationKey(studentId, questionUid);
+    if (!checked) {
+        state.pendingKeys?.delete(key);
+        state.selectedKeys?.delete(key);
+        state.verifiedByKey?.delete(key);
+        state.validationErrors?.delete(key);
+        clinicPrintRenderRecommendationPanel(classId);
+        clinicPrintSchedulePreviewPush(classId);
+        return;
+    }
+
+    const group = (state.result.candidates || []).find(row => String(row.studentId || '') === String(studentId || ''));
+    const candidate = (group?.items || []).find(item => String(item.sourceQuestionUid || '') === String(questionUid || ''));
+    if (!candidate) return;
+    const contextKey = state.contextKey;
+    state.pendingKeys.add(key);
+    state.validationErrors.delete(key);
+    clinicPrintRenderRecommendationPanel(classId);
+    await new Promise(resolve => setTimeout(resolve, 0));
+
+    try {
+        const catalog = await clinicPrintWithTimeout(
+            clinicPrintLoadArchive2CandidateCatalog(),
+            95000,
+            'Archive 2.0 후보 목록 조회 시간이 초과되었습니다.'
+        );
+        if (clinicPrintRecommendationState !== state || !state.pendingKeys.has(key) ||
+            !clinicPrintIsRecommendationRequestCurrent(classId, state.requestId, contextKey)) return;
+        const verification = await clinicPrintValidateRecommendationItem(candidate, catalog);
+        if (clinicPrintRecommendationState !== state || !state.pendingKeys.has(key) ||
+            !clinicPrintIsRecommendationRequestCurrent(classId, state.requestId, contextKey)) return;
+        clinicPrintMarkRecommendationVerified(candidate, verification);
+        state.verifiedByKey.set(key, verification);
+        state.selectedKeys.add(key);
+    } catch (error) {
+        if (clinicPrintRecommendationState === state && state.pendingKeys.has(key) &&
+            clinicPrintIsRecommendationRequestCurrent(classId, state.requestId, contextKey)) {
+            state.validationErrors.set(key, String(error?.message || error || '원본 확인 실패'));
+        }
+    } finally {
+        if (clinicPrintRecommendationState === state && state.pendingKeys.has(key)) {
+            state.pendingKeys.delete(key);
+            clinicPrintRenderRecommendationPanel(classId);
+            clinicPrintSchedulePreviewPush(classId);
+        }
+    }
+}
+
+function clinicPrintGetSelectedRecommendationItems(studentId) {
+    const state = clinicPrintRecommendationState;
+    if (state.status !== 'ready' || !state.result || !state.contextKey ||
+        clinicPrintGetRecommendationContextKey(state.classId, state.scope) !== state.contextKey) return [];
+    const group = (state.result.candidates || []).find(row => String(row.studentId || '') === String(studentId || ''));
+    return (group?.items || []).filter(item => state.selectedKeys.has(
+        clinicPrintRecommendationKey(studentId, item.sourceQuestionUid)
+    ));
+}
+
+function clinicPrintBuildRecommendationPrintItem(studentId, candidate) {
+    const key = clinicPrintRecommendationKey(studentId, candidate?.sourceQuestionUid);
+    const verification = clinicPrintRecommendationState.verifiedByKey?.get(key);
+    const record = verification?.record;
+    if (verification?.status !== 'VERIFIED' || !record) return null;
+    const sourceFile = clinicPrintNormalizeArchiveFile(record.sourceFile || candidate.sourceArchiveFile || '');
+    const sourceQuestionNo = record.sourceQuestionNo ?? candidate.sourceQuestionNo ?? null;
+    const sourceOrdinal = Number(record.sourceOrdinal || candidate.sourceQuestionOrdinal || 0);
+    const sourceUid = String(record.questionUid || candidate.sourceQuestionUid || '');
+    if (!sourceFile || !sourceOrdinal || !sourceUid || sourceQuestionNo == null) return null;
+    const canonicalMetaFields = Array.isArray(candidate.canonicalMetaFields)
+        ? candidate.canonicalMetaFields
+        : [...new Set([...(window.Archive2Core?.META_FIELDS || []), ...(window.Archive2Core?.OPTIONAL_METADATA_FIELDS || [])])];
+    const title = clinicPrintGetArchiveDisplayTitle(sourceFile) || 'Archive 2.0 문항';
+    return {
+        examKey: `recommendation|${sourceUid}`,
+        examTitle: `유사 추천 · ${title}`,
+        examDate: '',
+        archiveFile: sourceFile,
+        questionNo: sourceQuestionNo,
+        displayArchiveFile: sourceFile,
+        displayQuestionNo: sourceQuestionNo,
+        sourceArchiveFile: sourceFile,
+        sourceQuestionNo,
+        sourceQuestionOrdinal: sourceOrdinal,
+        sourceQuestionUid: sourceUid,
+        sourceIdentityStatus: 'VERIFIED',
+        sourceIntegrityStatus: record.sourceIntegrityStatus,
+        sourceStatus: record.sourceStatus,
+        sourceFingerprint: record.sourceFingerprint,
+        sourceContentVerificationStatus: 'VERIFIED',
+        currentSourceJsSha256: record.currentSourceJsSha256 || '',
+        canonicalProjectionVersion: record.canonicalProjectionVersion || '',
+        sourceVerification: candidate.sourceVerification || {
+            status: 'VERIFIED',
+            sourceArchiveFile: sourceFile,
+            sourceQuestionUid: sourceUid,
+            sourceQuestionOrdinal: sourceOrdinal,
+            sourceQuestionNo,
+            sourceFingerprint: record.sourceFingerprint,
+            currentSourceJsSha256: record.currentSourceJsSha256 || '',
+            canonicalProjectionVersion: record.canonicalProjectionVersion || ''
+        },
+        metadataJson: candidate.metadataJson || null,
+        metadataRevision: candidate.metadataRevision || record.metadataRevision || null,
+        metadataHash: candidate.metadataHash || null,
+        metadataContentHash: candidate.metadataContentHash || null,
+        metadataSnapshotStatus: candidate.metadataSnapshotStatus || 'CAPTURED',
+        sourceOriginRefs: [],
+        recommendationReason: candidate.recommendationReason || {},
+        canonicalMeta: candidate.canonicalMeta || {},
+        canonicalMetaFields,
+        legacyDifficulty: candidate.legacyDifficulty || {},
+        difficultyBucket: candidate.difficultyBucket ?? null,
+        wrongCount: 0,
+        totalCount: 0,
+        correctRate: null,
+        wrongStudents: []
+    };
+}
+
+function clinicPrintApplySelectedRecommendations(payload, classId) {
+    if (!payload || payload.mode !== 'student' ||
+        clinicPrintRecommendationState.status !== 'ready' ||
+        clinicPrintGetRecommendationContextKey(classId, clinicPrintRecommendationState.scope) !== clinicPrintRecommendationState.contextKey) return payload;
+    let addedCount = 0;
+    const addedByStudent = {};
+    (payload.students || []).forEach(student => {
+        const studentId = String(student.studentId || '');
+        const existing = new Set((student.wrongItems || []).map(item => String(item.sourceQuestionUid || '')).filter(Boolean));
+        const additions = clinicPrintGetSelectedRecommendationItems(studentId)
+            .filter(item => !existing.has(String(item.sourceQuestionUid || '')))
+            .map(item => clinicPrintBuildRecommendationPrintItem(studentId, item))
+            .filter(Boolean);
+        if (!additions.length) return;
+        student.wrongItems = [...(student.wrongItems || []), ...additions];
+        student.recommendedItemCount = additions.length;
+        addedCount += additions.length;
+        addedByStudent[studentId] = additions.length;
+    });
+    if (addedCount) {
+        const result = clinicPrintRecommendationState.result || {};
+        payload.recommendationInfo = {
+            source: 'archive2_canonical_catalog_verified_candidates',
+            scope: clinicPrintRecommendationState.scope,
+            coverage: result.coverage || {},
+            candidateCatalogVersion: clinicPrintArchive2CatalogCache?.version || '',
+            selectedCount: addedCount,
+            selectedByStudent: addedByStudent,
+            selectionConfirmed: false
+        };
+    }
+    return payload;
+}
+
+async function clinicPrintValidateSelectedRecommendations(classId) {
+    const state = clinicPrintRecommendationState;
+    const selectedIds = clinicPrintGetCheckedValues('clinic-print-student').map(String).sort();
+    const selected = selectedIds.flatMap(studentId => clinicPrintGetSelectedRecommendationItems(studentId)
+        .map(item => ({ studentId, item, key: clinicPrintRecommendationKey(studentId, item.sourceQuestionUid) })));
+    if (!selected.length) return true;
+    const contextKey = state.contextKey;
+    const selectedKeys = selected.map(row => row.key).sort();
+    const isStillSameSelection = () => clinicPrintRecommendationState === state &&
+        clinicPrintRecommendationState.status === 'ready' &&
+        clinicPrintGetRecommendationContextKey(classId, state.scope) === contextKey &&
+        JSON.stringify(clinicPrintGetCheckedValues('clinic-print-student').map(String).sort()) === JSON.stringify(selectedIds) &&
+        JSON.stringify(selectedIds.flatMap(studentId => clinicPrintGetSelectedRecommendationItems(studentId)
+            .map(item => clinicPrintRecommendationKey(studentId, item.sourceQuestionUid))).sort()) === JSON.stringify(selectedKeys);
+    if (!isStillSameSelection()) {
+        clinicPrintInvalidateRecommendations(classId);
+        toast('추천 조건이 바뀌어 선택을 지웠습니다. 후보를 다시 불러오세요.', 'warn');
+        return false;
+    }
+
+    try {
+        const catalog = await clinicPrintWithTimeout(
+            clinicPrintLoadArchive2CandidateCatalog(),
+            95000,
+            'Archive 2.0 후보 목록 조회 시간이 초과되었습니다.'
+        );
+        await clinicPrintEnsureArchive2Source();
+        const records = selected.map(row => clinicPrintFindRecommendationRecord(row.item, catalog));
+        const restored = await clinicPrintRestoreRecommendationSources(
+            records, catalog.catalog,
+            90000,
+            '선택 추천 문항의 원본 확인 시간이 초과되었습니다.'
+        );
+        if (!Array.isArray(restored) || restored.length !== selected.length) throw new Error('선택 추천 문항 원본 확인이 완료되지 않았습니다.');
+        if (!isStillSameSelection()) {
+            clinicPrintInvalidateRecommendations(classId);
+            toast('검증 중 수신 학생이나 추천 선택이 바뀌었습니다. 후보를 다시 불러오세요.', 'warn');
+            return false;
+        }
+        selected.forEach((row, index) => {
+            const verification = { record: records[index], question: restored[index], status: 'VERIFIED' };
+            clinicPrintMarkRecommendationVerified(row.item, verification);
+            state.verifiedByKey.set(row.key, verification);
+        });
+        return true;
+    } catch (error) {
+        if (clinicPrintRecommendationState === state && isStillSameSelection()) {
+            selected.forEach(row => {
+                state.selectedKeys.delete(row.key);
+                state.verifiedByKey.delete(row.key);
+                state.validationErrors.set(row.key, String(error?.message || error || '원본 확인 실패'));
+            });
+            clinicPrintRenderRecommendationPanel(classId);
+        }
+        toast(`추천 문항 원본 확인 실패: ${String(error?.message || error || '오류')}`, 'warn');
+        return false;
+    }
 }
 
 async function clinicPrintRetryGradeData(classId) {
@@ -359,7 +1114,12 @@ function clinicPrintReplaceAssignmentQuestionRows(assignmentIds, rows) {
 }
 
 async function clinicPrintRefreshClassAssignments(classId) {
-    if (!classId || typeof api === 'undefined' || typeof api.get !== 'function') return false;
+    const key = String(classId || '');
+    if (!classId || typeof api === 'undefined' || typeof api.get !== 'function') {
+        clinicPrintClassClinicData.set(key, { status: 'error' });
+        return false;
+    }
+    clinicPrintClassClinicData.set(key, { status: 'loading' });
     try {
         const res = await api.get(`exam-sessions/by-class?class=${encodeURIComponent(classId)}`);
         if (!res || res.success !== true || res.error) throw new Error(res?.error || '반 시험 기록 조회를 확인할 수 없습니다.');
@@ -376,8 +1136,16 @@ async function clinicPrintRefreshClassAssignments(classId) {
         if (Array.isArray(res.result_items)) clinicPrintReplaceSessionIdentityRows('assessment_result_items', sessionIds, res.result_items);
         if (Array.isArray(res.assignment_questions)) clinicPrintReplaceAssignmentQuestionRows(assignmentIds, res.assignment_questions);
         clinicPrintMergeDbRows('exam_blueprints', res.blueprints || []);
+        clinicPrintClassClinicData.set(key, {
+            status: 'ready',
+            sessions: incomingSessions,
+            result_items: Array.isArray(res.result_items) ? res.result_items : [],
+            assignment_questions: Array.isArray(res.assignment_questions) ? res.assignment_questions : [],
+            wrong_answers: wrongAnswers
+        });
         return true;
     } catch (e) {
+        clinicPrintClassClinicData.set(key, { status: 'error', error: String(e?.message || e) });
         console.warn('[clinic-print] class exam assignment refresh failed:', e);
         return false;
     }
@@ -722,9 +1490,34 @@ function clinicPrintReadQuestionMetadata(snapshot) {
     if (!raw) return {};
     try {
         const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;
-        return parsed?.archiveMetadata && typeof parsed.archiveMetadata === 'object'
-            ? parsed.archiveMetadata
-            : parsed && typeof parsed === 'object' ? parsed : {};
+        if (!parsed || typeof parsed !== 'object') return {};
+        const isSnapshotEnvelope = parsed.schemaVersion === 'apms-blueprint-meta-snapshot-v1';
+        if (isSnapshotEnvelope) {
+            return {
+                canonicalMeta: parsed.canonicalMeta && typeof parsed.canonicalMeta === 'object' ? parsed.canonicalMeta : {},
+                archiveMetadata: parsed.archiveMetadata && typeof parsed.archiveMetadata === 'object' ? parsed.archiveMetadata : {},
+                authoringMeta: parsed.authoringMeta && typeof parsed.authoringMeta === 'object' ? parsed.authoringMeta : {},
+                legacyDifficulty: parsed.legacyDifficulty ?? parsed.archiveMetadata?.difficulty ?? null,
+                captureSource: parsed.captureSource || '',
+                metadataRevision: parsed.metadataRevision || null,
+                metadataHash: parsed.metadataHash || null,
+                metadataContentHash: parsed.metadataContentHash || null,
+                metadataSnapshotStatus: parsed.metadataSnapshotStatus || parsed.captureStatus || null
+            };
+        }
+        return {
+            canonicalMeta: {},
+            archiveMetadata: parsed.archiveMetadata && typeof parsed.archiveMetadata === 'object'
+                ? parsed.archiveMetadata
+                : parsed,
+            authoringMeta: parsed.authoringMeta && typeof parsed.authoringMeta === 'object' ? parsed.authoringMeta : {},
+            legacyDifficulty: parsed.legacyDifficulty ?? parsed.archiveMetadata?.difficulty ?? parsed.difficulty ?? null,
+            captureSource: parsed.captureSource || '',
+            metadataRevision: parsed.metadataRevision || null,
+            metadataHash: parsed.metadataHash || null,
+            metadataContentHash: parsed.metadataContentHash || null,
+            metadataSnapshotStatus: parsed.metadataSnapshotStatus || parsed.captureStatus || null
+        };
     } catch (e) {
         return {};
     }
@@ -745,16 +1538,20 @@ function clinicPrintReadMetaContentHash(snapshot) {
 // Display order is kept separately and is never promoted to source question no.
 function clinicPrintGetSourceIdentity(snapshot) {
     const metadata = clinicPrintReadQuestionMetadata(snapshot);
+    const archiveMetadata = metadata.archiveMetadata || {};
+    const canonicalMeta = metadata.canonicalMeta || {};
+    const legacyDifficulty = ['string', 'number'].includes(typeof metadata.legacyDifficulty)
+        ? metadata.legacyDifficulty : null;
     const sourceArchiveFile = clinicPrintNormalizeArchiveFile(snapshot?.source_archive_file || snapshot?.sourceArchiveFile || '') || null;
     const sourceQuestionNoValue = Number(snapshot?.source_question_no ?? snapshot?.sourceQuestionNo);
     const sourceQuestionOrdinalValue = Number(snapshot?.source_question_ordinal ?? snapshot?.sourceQuestionOrdinal);
     const sourceQuestionUid = String(snapshot?.source_question_uid || snapshot?.question_uid || snapshot?.sourceQuestionUid || '').trim();
     const sourceIdentityStatus = String(snapshot?.source_identity_status || snapshot?.resolution_status || snapshot?.sourceIdentityStatus || 'UNRESOLVED').toUpperCase();
-    const metadataRevision = snapshot?.metadata_revision || snapshot?.metadataRevision || metadata.metadataRevision || null;
-    const metadataHash = snapshot?.metadata_hash || snapshot?.metadataHash || null;
+    const metadataRevision = snapshot?.metadata_revision || snapshot?.metadataRevision || metadata.metadataRevision || archiveMetadata.metadataRevision || canonicalMeta.metadataRevision || null;
+    const metadataHash = snapshot?.metadata_hash || snapshot?.metadataHash || metadata.metadataHash || archiveMetadata.metadataHash || canonicalMeta.metadataHash || null;
     const metadataJson = snapshot?.metadata_json ?? snapshot?.metadataJson ?? null;
     const metadataContentHash = clinicPrintReadMetaContentHash(snapshot) || null;
-    const metadataSnapshotStatus = snapshot?.metadata_snapshot_status || snapshot?.metadataSnapshotStatus ||
+    const metadataSnapshotStatus = snapshot?.metadata_snapshot_status || snapshot?.metadataSnapshotStatus || metadata.metadataSnapshotStatus || archiveMetadata.metadataSnapshotStatus ||
         (metadataRevision && metadataHash && metadataJson ? 'CAPTURED' : (metadataRevision || metadataHash || metadataJson ? 'PARTIAL' : 'UNRESOLVED'));
     return {
         sourceArchiveFile,
@@ -768,12 +1565,14 @@ function clinicPrintGetSourceIdentity(snapshot) {
         metadataJson,
         metadataContentHash,
         metadataSnapshotStatus,
-        unitKey: snapshot?.standard_unit_key || snapshot?.standardUnitKey || metadata.standardUnitKey || null,
-        unit: snapshot?.standard_unit || snapshot?.standardUnit || metadata.standardUnit || null,
-        course: snapshot?.standard_course || snapshot?.standardCourse || metadata.standardCourse || null,
-        cluster: snapshot?.concept_cluster_key || snapshot?.conceptClusterKey || metadata.conceptClusterKey || null,
-        typeKey: snapshot?.type_key || snapshot?.typeKey || metadata.typeKey || null,
-        difficulty: snapshot?.difficulty || snapshot?.difficulty_at_assignment || metadata.difficulty || metadata.difficultyBucket || null
+        unitKey: snapshot?.standard_unit_key || snapshot?.standardUnitKey || archiveMetadata.standardUnitKey || null,
+        unit: snapshot?.standard_unit || snapshot?.standardUnit || archiveMetadata.standardUnit || null,
+        course: snapshot?.standard_course || snapshot?.standardCourse || archiveMetadata.standardCourse || null,
+        cluster: snapshot?.concept_cluster_key || snapshot?.conceptClusterKey || archiveMetadata.conceptClusterKey || null,
+        typeKey: snapshot?.type_key || snapshot?.typeKey || archiveMetadata.typeKey || null,
+        difficulty: snapshot?.difficulty || snapshot?.difficulty_at_assignment || legacyDifficulty || archiveMetadata.difficulty || null,
+        canonicalMeta,
+        legacyDifficulty: metadata.legacyDifficulty ?? null
     };
 }
 
@@ -1211,6 +2010,16 @@ function clinicPrintGetCheckedValues(name) {
     return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(input => input.value);
 }
 
+function clinicPrintOnRecipientChange(classId) {
+    clinicPrintInvalidateRecommendations(classId);
+    clinicPrintSchedulePreviewPush(classId);
+}
+
+function clinicPrintSetAllRecipients(classId, checked) {
+    document.querySelectorAll('input[name="clinic-print-student"]').forEach(input => { input.checked = !!checked; });
+    clinicPrintOnRecipientChange(classId);
+}
+
 let clinicPrintPreviewPushTimer = null;
 let clinicPrintActiveClassId = null;
 
@@ -1263,6 +2072,7 @@ function clinicPrintPushPreview(classId) {
     }
 
     if (!payload) return;
+    payload = clinicPrintApplySelectedRecommendations(payload, classId);
     const engineMode = clinicPrintGetPreviewEngineMode();
     frame.contentWindow.postMessage({
         type: 'AP_PRINT_PREVIEW',
@@ -1280,6 +2090,7 @@ function clinicPrintSchedulePreviewPush(classId, delay = 150) {
 
 function clinicPrintSwitchMode(classId) {
     const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
+    clinicPrintInvalidateRecommendations(classId);
 
     document.querySelectorAll('#clinic-print-mode-cards .clinic-print-mode-card').forEach(card => {
         const active = card.getAttribute('data-mode') === mode;
@@ -1361,6 +2172,7 @@ function clinicPrintGetDeliveryScope(mode) {
 
 // 시험 선택이 바뀌면 유형 모드는 문항 미리보기를, 그 외 모드는 학생 목록을 갱신해야 한다.
 function clinicPrintOnExamChange(classId) {
+    clinicPrintInvalidateRecommendations(classId);
     const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
     if (mode === 'type') clinicPrintRenderTypePanel(classId);
     clinicPrintUpdateStudentList(classId);
@@ -1441,6 +2253,7 @@ function clinicPrintBuildTypePayload(classId) {
 }
 
 function clinicPrintSetTypeScope(classId, scope) {
+    clinicPrintInvalidateRecommendations(classId);
     const input = document.getElementById('clinic-print-type-scope');
     if (input) input.value = scope;
     document.querySelectorAll('#clinic-print-type-scope-toggle .clinic-print-scope-btn').forEach(btn => {
@@ -1455,6 +2268,7 @@ function clinicPrintSetTypeScope(classId, scope) {
 }
 
 function clinicPrintSetTypeMode(classId, typeMode) {
+    clinicPrintInvalidateRecommendations(classId);
     const input = document.getElementById('clinic-print-type-mode');
     if (input) input.value = typeMode;
     document.querySelectorAll('#clinic-print-type-cards .clinic-print-type-card').forEach(card => {
@@ -1809,7 +2623,7 @@ function clinicPrintUpdateStudentList(classId) {
         return `
         <label class="clinic-print-student-row">
             <span class="clinic-print-student-row__main">
-                <input type="checkbox" name="clinic-print-student" value="${clinicPrintEscapeAttr(row.studentId)}" ${checked} onchange="clinicPrintSchedulePreviewPush('${clinicPrintEscapeJsString(classId)}')">
+                <input type="checkbox" name="clinic-print-student" value="${clinicPrintEscapeAttr(row.studentId)}" ${checked} onchange="clinicPrintOnRecipientChange('${clinicPrintEscapeJsString(classId)}')">
                 <span class="clinic-print-student-row__name">${clinicPrintEscapeHtml(row.studentName)}${row.className ? ` · ${clinicPrintEscapeHtml(row.className)}` : ''}</span>
             </span>
             <span class="clinic-print-student-row__count">${row.wrongItems.length}문항</span>
@@ -1822,7 +2636,7 @@ function clinicPrintUpdateStudentList(classId) {
 // "미리보기"는 새 창을 띄우지 않고 우측에 이미 떠 있는 임베드 미리보기 패널(clinic-print-preview-frame)을
 // 갱신해서 보여준다. 설정이 바뀔 때마다 이 패널은 어차피 자동 갱신되므로, 이 버튼은 시험/단원/학생 선택이
 // 빠졌는지 확인해 안내 토스트를 띄우고, 패널을 최신 상태로 강제 갱신 + 화면에 보이도록 스크롤만 해준다.
-function clinicPrintPreview(classId) {
+async function clinicPrintPreview(classId) {
     const selectedExamKeys = clinicPrintGetCheckedValues('clinic-print-exam');
     const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
 
@@ -1833,6 +2647,15 @@ function clinicPrintPreview(classId) {
     if (!selectedExamKeys.length) {
         toast('출력할 시험을 선택하세요.', 'warn');
         return;
+    }
+
+    if (mode === 'student' && clinicPrintGetCheckedValues('clinic-print-student').some(studentId =>
+        clinicPrintGetSelectedRecommendationItems(studentId).length)) {
+        const verified = await clinicPrintValidateSelectedRecommendations(classId);
+        if (!verified) {
+            clinicPrintPushPreview(classId);
+            return;
+        }
     }
 
     if (mode === 'type') {
@@ -1852,12 +2675,13 @@ function clinicPrintPreview(classId) {
             return;
         }
 
-        const payload = clinicPrintBuildPayload(classId, {
+        let payload = clinicPrintBuildPayload(classId, {
             selectedExamKeys,
             selectedStudentIds,
             mode,
             headerOptions: clinicPrintGetHeaderOptions(classId)
         });
+        payload = clinicPrintApplySelectedRecommendations(payload, classId);
         const itemCount = mode === 'grade'
             ? payload.gradeWrongItems.length
             : mode === 'class'
@@ -1874,9 +2698,31 @@ function clinicPrintPreview(classId) {
     document.getElementById('clinic-print-preview-frame')?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
 }
 
+function clinicPrintConfirmRecommendationRecipients(classId, payload, selectedStudentIds) {
+    const recommendationCount = Number(payload?.recommendationInfo?.selectedCount || 0);
+    if (!recommendationCount) return true;
+    const targets = clinicPrintBuildWrongClinicTargets(classId, payload, selectedStudentIds);
+    if (!targets.length) {
+        toast('추천 오답지 수신 학생을 확인할 수 없습니다.', 'warn');
+        return false;
+    }
+    const recommendationCounts = payload.recommendationInfo.selectedByStudent || {};
+    const rows = targets.map(target => {
+        const className = target.class_name ? ` · ${target.class_name}` : '';
+        const count = Number(recommendationCounts[String(target.student_id)] || 0);
+        return `• ${target.student_name || '이름 없음'}${className}${count ? ` · 추천 ${count}문항` : ''}`;
+    });
+    const confirmed = confirm(`다음 ${targets.length}명에게 저장형 오답 클리닉을 보냅니다.\n${rows.join('\n')}\n\n이 수신 대상을 확인하고 저장할까요?`);
+    if (confirmed) {
+        payload.recommendationInfo.selectionConfirmed = true;
+        payload.recommendationInfo.confirmedRecipientIds = targets.map(target => String(target.student_id));
+    }
+    return confirmed;
+}
+
 async function clinicPrintSubmit(classId) {
-    const selectedExamKeys = clinicPrintGetCheckedValues('clinic-print-exam');
-    const selectedStudentIds = clinicPrintGetCheckedValues('clinic-print-student');
+    let selectedExamKeys = clinicPrintGetCheckedValues('clinic-print-exam');
+    let selectedStudentIds = clinicPrintGetCheckedValues('clinic-print-student');
     const modeEl = document.querySelector('input[name="clinic-print-mode"]:checked');
     const mode = modeEl?.value || 'student';
 
@@ -1896,6 +2742,24 @@ async function clinicPrintSubmit(classId) {
         return;
     }
 
+    if (mode === 'student' && selectedStudentIds.some(studentId =>
+        clinicPrintGetSelectedRecommendationItems(studentId).length)) {
+        const expectedContextKey = clinicPrintGetRecommendationContextKey(classId, clinicPrintRecommendationState.scope);
+        const verified = await clinicPrintValidateSelectedRecommendations(classId);
+        if (!verified) return;
+        if (clinicPrintGetRecommendationContextKey(classId, clinicPrintRecommendationState.scope) !== expectedContextKey) {
+            clinicPrintInvalidateRecommendations(classId);
+            toast('검증 중 학생·시험·추천 선택이 바뀌었습니다. 다시 확인해 주세요.', 'warn');
+            return;
+        }
+        selectedExamKeys = clinicPrintGetCheckedValues('clinic-print-exam');
+        selectedStudentIds = clinicPrintGetCheckedValues('clinic-print-student');
+        if (!selectedExamKeys.length || !selectedStudentIds.length) {
+            toast('시험과 수신 학생을 다시 선택하세요.', 'warn');
+            return;
+        }
+    }
+
     if (mode === 'type') {
         const typePayload = clinicPrintBuildTypePayload(classId);
         if (typePayload.typeMode === 'unit' && !(typePayload.unitOrder || []).length) {
@@ -1910,12 +2774,13 @@ async function clinicPrintSubmit(classId) {
         return;
     }
 
-    const payload = clinicPrintBuildPayload(classId, {
+    let payload = clinicPrintBuildPayload(classId, {
         selectedExamKeys,
         selectedStudentIds,
         mode,
         headerOptions: clinicPrintGetHeaderOptions(classId)
     });
+    payload = clinicPrintApplySelectedRecommendations(payload, classId);
     const itemCount = mode === 'grade'
         ? payload.gradeWrongItems.length
         : mode === 'class'
@@ -1926,6 +2791,8 @@ async function clinicPrintSubmit(classId) {
         toast('출력 가능한 오답 문항이 없습니다.', 'warn');
         return;
     }
+
+    if (!clinicPrintConfirmRecommendationRecipients(classId, payload, selectedStudentIds)) return;
 
     await clinicPrintOpenStoredOrFallback(classId, payload, selectedStudentIds);
 }
@@ -2166,6 +3033,7 @@ function clinicPrintUpdateExamList(classId) {
 
 async function openClinicPrintCenter(classId, options = {}) {
     clinicPrintActiveClassId = classId;
+    clinicPrintResetRecommendationState('class', classId);
     clinicPrintTypeState.unitSelection = [];
     clinicPrintTypeState.dragKey = null;
     const cls = clinicPrintGetClass(classId);
@@ -2262,11 +3130,19 @@ async function openClinicPrintCenter(classId, options = {}) {
                 <div class="clinic-print-section-head">
                     <div class="clinic-print-section-title">출제할 학생 선택</div>
                     <div class="clinic-print-mini-btn-group">
-                        <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-student\\']').forEach(el=>el.checked=true); clinicPrintSchedulePreviewPush('${safeClassIdForJs}');">전체 선택</button>
-                        <button type="button" class="clinic-print-mini-btn" onclick="document.querySelectorAll('input[name=\\'clinic-print-student\\']').forEach(el=>el.checked=false); clinicPrintSchedulePreviewPush('${safeClassIdForJs}');">전체 해제</button>
+                        <button type="button" class="clinic-print-mini-btn" onclick="clinicPrintSetAllRecipients('${safeClassIdForJs}',true)">전체 선택</button>
+                        <button type="button" class="clinic-print-mini-btn" onclick="clinicPrintSetAllRecipients('${safeClassIdForJs}',false)">전체 해제</button>
                     </div>
                 </div>
                 <div id="clinic-print-student-list" class="clinic-print-student-list"></div>
+            </section>
+
+            <section id="clinic-print-recommendation-section" class="clinic-print-section" style="border:1px solid var(--border);border-radius:12px;padding:12px;">
+                <div class="clinic-print-section-head">
+                    <div class="clinic-print-section-title">유사 문항 추천</div>
+                    <span class="clinic-print-section-title--soft">학생별 후보</span>
+                </div>
+                <div id="clinic-print-recommendation-body"></div>
             </section>
 
             <section class="clinic-print-section clinic-print-header-card">
@@ -2303,6 +3179,7 @@ async function openClinicPrintCenter(classId, options = {}) {
     `);
 
     document.getElementById('modal-content')?.classList.add('clinic-print-fullscreen');
+    clinicPrintRenderRecommendationPanel(classId);
     document.getElementById('clinic-print-preview-frame')?.addEventListener('load', () => {
         clinicPrintSchedulePreviewPush(classId, 0);
     });
