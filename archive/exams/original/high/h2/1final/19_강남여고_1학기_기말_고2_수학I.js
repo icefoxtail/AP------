@@ -358,7 +358,7 @@ window.questionBank = [
     "id": 24,
     "questionNumber": 24,
     "questionType": "객관식",
-    "content": "임의의 두 자연수 $m, n$에 대하여 함수 $f(x)$가 다음 조건을 만족시킨다. [4점]<div class=\"box-content\">&lt;보기&gt;<br>(가) $f(2) = 1$<br>(나) $f(m) - f(n) = f\\left(\\dfrac{m}{n}\\right)$</div><br>$\\sum_{k=2}^{15} \\dfrac{f\\left(\\dfrac{k}{k+1}\\right)}{f(k)f(k+1)}$의 값은? [4점]",
+    "content": "임의의 두 자연수 $m, n$에 대하여 함수 $f(x)$가 다음 조건을 만족시킨다. [4점]<div class=\"box-content\">&lt;보기&gt;<br>(가) $f(2) = 1$<br>(나) $f(m) - f(n) = f\\left(\\dfrac{m}{n}\\right)$</div><br>$\\sum_{k=2}^{15} \\dfrac{f\\left(\\dfrac{k}{k+1}\\right)}{f(k)f(k+1)}$의 값은? (단, $f(k)\\ne0$ $(k=2,3,\\ldots,16)$이다.) [4점]",
     "choices": [
       "-1",
       "-\\dfrac{3}{4}",
@@ -367,7 +367,7 @@ window.questionBank = [
       "0"
     ],
     "answer": "②",
-    "solution": "각 분모가 0이 아니어서 주어진 합이 정의되는 경우를 계산한다.\n조건 (나)에서 $m=k$, $n=k+1$로 두면\n$f(k)-f(k+1)=f\\left(\\dfrac{k}{k+1}\\right)$이다.\n따라서 각 항은\n$\\dfrac{f\\left(\\frac{k}{k+1}\\right)}{f(k)f(k+1)}$\n$=\\dfrac{f(k)-f(k+1)}{f(k)f(k+1)}$\n$=\\dfrac1{f(k+1)}-\\dfrac1{f(k)}$이다.\n이제 조건을 이용해 $f(16)$을 구한다.\n$m=4,n=2$를 대입하면 $f(4)-f(2)=f(2)=1$이므로 $f(4)=2$이다.\n$m=8,n=2$를 대입하면 $f(8)-f(2)=f(4)=2$이므로 $f(8)=3$이다.\n$m=16,n=2$를 대입하면 $f(16)-f(2)=f(8)=3$이므로 $f(16)=4$이다.\n따라서 주어진 합은\n$\\left(\\dfrac1{f(3)}-\\dfrac1{f(2)}\\right)+\\cdots+\\left(\\dfrac1{f(16)}-\\dfrac1{f(15)}\\right)$\n$=\\dfrac1{f(16)}-\\dfrac1{f(2)}=\\dfrac14-1=-\\dfrac34$이다.\n따라서 정답은 ②이다."
+    "solution": "조건에 따라 $f(2),f(3),\\ldots,f(16)$은 모두 0이 아니므로 주어진 합을 계산할 수 있다.\n조건 (나)에서 $m=k$, $n=k+1$로 두면\n$f(k)-f(k+1)=f\\left(\\dfrac{k}{k+1}\\right)$이다.\n따라서 각 항은\n$\\dfrac{f\\left(\\frac{k}{k+1}\\right)}{f(k)f(k+1)}$\n$=\\dfrac{f(k)-f(k+1)}{f(k)f(k+1)}$\n$=\\dfrac1{f(k+1)}-\\dfrac1{f(k)}$이다.\n이제 조건을 이용해 $f(16)$을 구한다.\n$m=4,n=2$를 대입하면 $f(4)-f(2)=f(2)=1$이므로 $f(4)=2$이다.\n$m=8,n=2$를 대입하면 $f(8)-f(2)=f(4)=2$이므로 $f(8)=3$이다.\n$m=16,n=2$를 대입하면 $f(16)-f(2)=f(8)=3$이므로 $f(16)=4$이다.\n따라서 주어진 합은\n$\\left(\\dfrac1{f(3)}-\\dfrac1{f(2)}\\right)+\\cdots+\\left(\\dfrac1{f(16)}-\\dfrac1{f(15)}\\right)$\n$=\\dfrac1{f(16)}-\\dfrac1{f(2)}=\\dfrac14-1=-\\dfrac34$이다.\n따라서 정답은 ②이다."
   },
   {
     "id": 25,
@@ -416,10 +416,10 @@ window.questionBank = [
     "id": 28,
     "questionNumber": 28,
     "questionType": "서술형",
-    "content": "함수 $f(x) = a\\tan(bx+c)+d$가 다음 조건을 만족시킬 때, 상수 $a, b, c, d$에 대하여 $abcd$의 값을 구하시오. (단, $b>0$) [5점]<div class=\"box-content\">&lt;조건&gt;<br>(가) 주기가 $\\dfrac{\\pi}{2}$인 주기함수이다.<br>(나) $f(x)$의 그래프는 $y=a\\tan bx$의 그래프를 $x$축의 방향으로 $\\dfrac{\\pi}{4}$만큼, $y$축의 방향으로 $-1$만큼 평행이동한 것이다.<br>(다) $f\\left(\\dfrac{1}{3}\\pi\\right) = \\sqrt{3}-1$</div>",
+    "content": "함수 $f(x) = a\\tan(bx+c)+d$가 다음 조건을 만족시킬 때, 상수 $a, b, c, d$에 대하여 $abcd$의 값을 구하시오. (단, $b>0$, $-\\pi\\le c<0$) [5점]<div class=\"box-content\">&lt;조건&gt;<br>(가) 최소 양의 주기가 $\\dfrac{\\pi}{2}$인 주기함수이다.<br>(나) $f(x)$의 그래프는 $y=a\\tan bx$의 그래프를 $x$축의 방향으로 $\\dfrac{\\pi}{4}$만큼, $y$축의 방향으로 $-1$만큼 평행이동한 것이다.<br>(다) $f\\left(\\dfrac{1}{3}\\pi\\right) = \\sqrt{3}-1$</div>",
     "choices": [],
-    "answer": "$abcd$는 조건만으로 하나로 정해지지 않는다. 예를 들어 $3\\pi$, $-3\\pi$가 모두 가능하다.",
-    "solution": "$y=a\\tan bx$의 그래프를 $x$축 방향으로 $\\dfrac\\pi4$만큼 평행이동하면\n$y=a\\tan\\left(b\\left(x-\\dfrac\\pi4\\right)\\right)$이므로,\n조건 (나)에서\n$f(x)=a\\tan\\left(bx-\\dfrac{b\\pi}{4}\\right)-1$이다.\n따라서 $d=-1$이다.\n탄젠트 함수는 각에 $\\pi$의 정수배를 더해도 값이 같으므로,\n$c=-\\dfrac{b\\pi}{4}+j\\pi$ ($j$는 정수)로 두어도 같은 그래프를 나타낸다.\n조건 (가)에 맞는 한 예로 $b=2$를 택하면 주기는 $\\dfrac\\pi2$이다.\n이때 $c=-\\dfrac\\pi2$와 $c=\\dfrac\\pi2$는 $\\pi$만큼 차이가 나므로 같은 탄젠트 함수를 만든다.\n$c=-\\dfrac\\pi2$일 때,\n$f\\left(\\dfrac\\pi3\\right)=a\\tan\\left(\\dfrac{2\\pi}{3}-\\dfrac\\pi2\\right)-1\n=a\\tan\\dfrac\\pi6-1\n=\\dfrac{a}{\\sqrt3}-1$이다.\n이 값이 $\\sqrt3-1$이므로 $\\dfrac a{\\sqrt3}=\\sqrt3$,\n$a=3$이다.\n$c=\\dfrac\\pi2$일 때도,\n$f\\left(\\dfrac\\pi3\\right)=a\\tan\\left(\\dfrac{2\\pi}{3}+\\dfrac\\pi2\\right)-1\n=a\\tan\\dfrac{7\\pi}{6}-1\n=\\dfrac{a}{\\sqrt3}-1=\\sqrt3-1$이다.\n따라서 이 경우에도 $a=3$이다.\n그러므로 주어진 조건을 만족하는 두 상수의 조합은\n$(a,b,c,d)=\\left(3,2,-\\dfrac\\pi2,-1\\right)$,\n$(a,b,c,d)=\\left(3,2,\\dfrac\\pi2,-1\\right)$이다.\n첫 번째 조합에서는 $abcd=3\\pi$이고,\n두 번째 조합에서는 $abcd=-3\\pi$이다.\n일반적으로 $c=-\\dfrac\\pi2+j\\pi$ ($j$는 정수)도 같은 탄젠트 함수를 나타낸다.\n이때\n$abcd=3\\times2\\times\\left(-\\dfrac\\pi2+j\\pi\\right)\\times(-1)\n=3\\pi-6j\\pi$이다.\n따라서 $abcd$의 값은 하나로 정해지지 않는다."
+    "answer": "$3\\pi$",
+    "solution": "탄젠트 함수 $y=a\\tan(bx+c)+d$의 최소 양의 주기는 $\\dfrac{\\pi}{b}$이다.\n조건 (가)와 $b>0$에서\n$\\dfrac{\\pi}{b}=\\dfrac{\\pi}{2}$,\n$b=2$이다.\n조건 (나)의 평행이동을 식으로 나타내면\n$f(x)=a\\tan\\left(2\\left(x-\\dfrac{\\pi}{4}\\right)\\right)-1$\n$=a\\tan\\left(2x-\\dfrac{\\pi}{2}\\right)-1$이다.\n따라서 $d=-1$이고, 탄젠트 함수의 주기가 $\\pi$이므로\n$c=-\\dfrac{\\pi}{2}+k\\pi$ ($k$는 정수)로 나타낼 수 있다.\n그런데 $-\\pi\\le c<0$이므로 $k=0$,\n$c=-\\dfrac{\\pi}{2}$이다.\n조건 (다)에서\n$f\\left(\\dfrac{\\pi}{3}\\right)\n=a\\tan\\left(\\dfrac{2\\pi}{3}-\\dfrac{\\pi}{2}\\right)-1\n=a\\tan\\dfrac{\\pi}{6}-1\n=\\dfrac{a}{\\sqrt3}-1$이다.\n$\\dfrac{a}{\\sqrt3}-1=\\sqrt3-1$이므로 $a=3$이다.\n따라서\n$abcd=3\\times2\\times\\left(-\\dfrac{\\pi}{2}\\right)\\times(-1)=3\\pi$이다."
   },
   {
     "id": 29,
