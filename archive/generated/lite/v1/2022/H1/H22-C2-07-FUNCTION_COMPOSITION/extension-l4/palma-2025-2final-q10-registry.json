@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q10_GENERATED_EXT_L4_v1",
+  "date": "2026-10-15",
+  "status": "GENERATED_ACTIVE",
+  "studentPublication": "NOT_RUN",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 10,
+  "parentPrimaryL3Id": "H1-RPM-253",
+  "parentPrimaryL3Label": "합성함수",
+  "parentRpmL4": "합성함수 계산",
+  "rpmLockedModified": false,
+  "actualActivePt": "PT_COMPOSITION_PROPERTIES",
+  "actualActiveTpl": "TPL_COMPOSITION_RELATION_CONDITION",
+  "binding": "2022/공통수학2/H22-C2-07-FUNCTION_COMPOSITION",
+  "existingGeneratedComparators": [
+    "geumdang-2025-2final-q07-registry.json, GENERATED_CANDIDATE_BRANCH_ONLY: composition-order/commuting-identity; later alias review, not canonical promotion"
+  ],
+  "extensions": [
+    {
+      "generatedExtL4Id": "EXT-PALMA25-Q10-AFFINE-COMMUTATION",
+      "parentLockedRpmL3Id": "H1-RPM-253",
+      "labelKo": "일차함수의 합성 순서 교환 조건",
+      "definition": "일차함수의 양방향 합성값을 비교해 상수항의 관계로 계수나 매개변수를 결정하고 경우분기·여러 함수의 교환조건에 적용한다.",
+      "decisiveStepSignature": "f(x)=px+a, g(x)=qx+b -> b(p-1)=a(q-1) via f∘g=g∘f",
+      "sourceQid": 10,
+      "exampleUids": [
+        "ALITE-PALMA25-2FINAL-Q10-A1",
+        "ALITE-PALMA25-2FINAL-Q10-A2",
+        "ALITE-PALMA25-2FINAL-Q10-A3",
+        "ALITE-PALMA25-2FINAL-Q10-B1",
+        "ALITE-PALMA25-2FINAL-Q10-B2",
+        "ALITE-PALMA25-2FINAL-Q10-B3",
+        "ALITE-PALMA25-2FINAL-Q10-C1",
+        "ALITE-PALMA25-2FINAL-Q10-C3"
+      ],
+      "comparisons": "RPM L4 합성함수 계산과 달리 두 합성의 동일성에서 계수 관계를 유도함. Existing Geumdang q07 branch-only candidate와 유사하여 alias 검토 대상.",
+      "conditionRoles": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_NONZERO"
+      ],
+      "crossConceptRoles": [],
+      "integrationPath": "SEQUENTIAL/CASE_BRANCH/INTERDEPENDENT",
+      "lifecycle": "GENERATED_ACTIVE"
+    },
+    {
+      "generatedExtL4Id": "EXT-PALMA25-Q10-QUADRATIC-COMMUTATION",
+      "parentLockedRpmL3Id": "H1-RPM-253",
+      "labelKo": "이차함수와 일차함수의 합성 교환 계수 비교",
+      "definition": "이차함수와 일차함수의 두 방향 합성에서 x², x, 상수항의 계수를 비교하여 필요한 매개변수를 찾고 다시 대입해 확인한다.",
+      "decisiveStepSignature": "f quadratic, g affine; f(g(x))==g(f(x)) for all x -> polynomial coefficient identities",
+      "sourceQid": 10,
+      "exampleUids": [
+        "ALITE-PALMA25-2FINAL-Q10-C2"
+      ],
+      "comparisons": "일차·일차 합성교환과 다르게 이차항과 일차항 비교가 핵심이며 RPM 기본 L4만으로 상세 결정 단계를 구분할 수 없음.",
+      "conditionRoles": [
+        "COND_UNIVERSAL_INPUTS"
+      ],
+      "crossConceptRoles": [],
+      "integrationPath": "INTERDEPENDENT",
+      "lifecycle": "GENERATED_ACTIVE"
+    }
+  ]
+}
+
