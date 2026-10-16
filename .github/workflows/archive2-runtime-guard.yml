@@ -42,7 +42,7 @@ jobs:
           node-version: 22
       - name: Verify original routes, response budgets, and storage failures
         env:
-          SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event.before }}
+          SVG_ACCESSIBILITY_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: node tools/check-archive2-runtime.cjs
       - uses: browser-actions/setup-chrome@v1
         id: chrome
