@@ -36,7 +36,9 @@ campaign authority: JS_Archive_2.0_GPT_Campaign_Generation_v1.md
 
 ## 4. CREATE / R1 품질 역할
 
-CREATE는 Common Quality Contract와 §§16–17에 따라 전 qid를 직접 풀어 해당 교육과정 안의 정답·논리적으로 완성된 해설 초안을 만들고, source identity·QUESTION_LAYOUT·학생용 content/choices·의미 기반 Meta·난이도·Visual 및 실제 에셋을 결속한다. 중간 계산·조건을 쓰는 이유·보조선 목적과 논리 연결을 학생에게 설명한다. Library ID+revision 또는 정확한 실바이트 SHA-256과 근거를 누적 기록한다.
+**2026-10-17 NEW14 GPT Library CREATE 조기 인계 override (사용자 직접 지시):** `SOURCE_ONLY_INTAKE14_20261016`의 CREATE는 최종 수학·Meta·기술 검수 단계가 아닌 *전체 학생용 최초 제작 완료* 단계다. 해당 시험지 전 qid의 source-faithful 발문·보기·정답·교육과정 범위의 재현 가능한 작은칠판 해설 초안과 이해에 필수인 실제 문제 그림·자산을 완성하고, 문제수/100점/누락/기본 문법·자산 바이트를 확인하며 Library 완전 패킷과 누적기록을 원격 저장·file ID+revision 또는 정확한 실바이트 SHA readback으로 확인하면 즉시 `CREATE_DONE/READY_R1`로 인계한다. 결정적 원문·문항·정답·풀이·필수 자산 결함은 제작자가 고친 뒤 인계해야 한다. **정식 UID map 등록, ACTIVE PT/TPL 확정, RPM L3/L4 전수 확정, 심층 Meta·provenance 최종 승인, Golden/Negative 별도 evidence/receipt/전 qid 심층 calibration, 공식 Node22 generic validator PASS, 학생 브라우저 최종 렌더, 별도 curriculum/visual N/N 결과·stage seal·중간 Git은 CREATE_DONE 관문이 아니다.** 미완료 항목은 qid·field·원인을 `EVIDENCE_DEBT`, 검사 미실행은 `NOT_RUN`으로 누적 기록에 전달하고 R1(전 qid 독립 풀이/교과 검수)→R2(전 qid 해설·심층 Meta 보강)→R3(전체 구조·필수 시각자료·공식 기술검사 및 최종 무결성)가 닫는다. 그 자체가 모든 품질 PASS 또는 Git release는 아니다. 이 NEW14 역할 분산은 기타 캠페인, Codex, 학생용 최종 품질 목표를 변경하지 않는다.
+
+그 외 GPT 캠페인의 CREATE는 Common Quality Contract와 §§16–17에 따라 전 qid를 직접 풀어 해당 교육과정 안의 정답·논리적으로 완성된 해설 초안을 만들고, source identity·QUESTION_LAYOUT·학생용 content/choices·의미 기반 Meta·난이도·Visual 및 실제 에셋을 결속한다. 중간 계산·조건을 쓰는 이유·보조선 목적과 논리 연결을 학생에게 설명한다. Library ID+revision 또는 정확한 실바이트 SHA-256과 근거를 누적 기록한다.
 
 R1은 정답·해설·다른 검수자의 답을 보지 않는 별도 세션에서 완전한 학생 지문·보기·필수 그림으로 전 qid 독립 답과 풀이 근거를 먼저 append·저장·동결하고 이후 저장 정답·해설과 비교한다. CREATE 판정을 승계하지 않고 전 qid 수학·해설·Meta·Visual과 실제 풀이의 연도·학년·과목 교육과정 적합성을 판단해 최종 해설 Library ID+revision 또는 실바이트 SHA-256에 결속한다. 중간 계산·조건의 이유·보조선 목적·논리 연결을 적극 개선 검토하고, 문항별 부족점·수정 전후·학생 이점 또는 무수정 충분성 근거를 기록한다. 기술 validator 실행 결과나 `NOT_RUN`은 독립 풀이·수학·교육과정 검수 완료를 대신하지 않는다. 수정 qid·직접 영향만 재확인하며 검수 순서 미준수는 완료로 표시하지 않는다.
 
