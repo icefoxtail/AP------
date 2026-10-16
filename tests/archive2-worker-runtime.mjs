@@ -1542,12 +1542,10 @@ try {
     }
     console.log(JSON.stringify({ middle3MidtermClinic: 'PASS', originalAssignments: midterms.length, omrSubmissions: submitted, storedGradeClinics: submitted, pdf: 'EXPECTED_FAILURE_NO_BROWSER_BINDING' }));
   }
-  const guardedSubjectRecords = catalog.records
+  const guardedCandidateRecords = catalog.records
     .filter((row) => row.automatic && row.sourceGrade === "고2" &&
-      row.curriculumKey === sharedRecord.curriculumKey &&
-      core.subjectProjectionForRecord(row, "", catalog.projectionPolicy) === semanticSubject &&
+      core.subjectProjectionForRecord(row, "", catalog.projectionPolicy) &&
       core.basicEligibility(row, { canonicalAuthority: catalog.canonicalAuthority }).ok);
-  const guardedCandidateRecords = guardedSubjectRecords;
   const guardedQuestionCache = new Map();
   const guardedCandidates = guardedCandidateRecords.map((row) => {
     if (!guardedQuestionCache.has(row.sourceFile)) {
@@ -1562,14 +1560,35 @@ try {
     question.sourceFingerprint = row.sourceFingerprint;
     for (const field of core.META_FIELDS)
       if (row[field] !== undefined) question[field] = row[field];
-    return { row, question };
+    return {
+      row,
+      question,
+      semanticSubject: core.subjectProjectionForRecord(row, "", catalog.projectionPolicy),
+    };
   });
-  const guardedBatch = guardedCandidates
-    .filter(({ question }) => !/assets\/images\//i.test(JSON.stringify(question)))
-    .slice(0, 50);
+  const compactBySubject = new Map();
+  for (const candidate of guardedCandidates) {
+    if (!candidate.semanticSubject || /assets\/images\//i.test(JSON.stringify(candidate.question))) continue;
+    const key = JSON.stringify([candidate.semanticSubject, candidate.row.curriculumKey]);
+    if (!compactBySubject.has(key)) compactBySubject.set(key, {
+      semanticSubject: candidate.semanticSubject,
+      curriculumKey: candidate.row.curriculumKey,
+      candidates: [],
+    });
+    compactBySubject.get(key).candidates.push(candidate);
+  }
+  const savedPaperFixture = [...compactBySubject.values()].find(({ curriculumKey, candidates }) =>
+    curriculumKey === sharedRecord.curriculumKey && candidates.length >= 50);
+  assert.ok(savedPaperFixture,
+    "Saved Paper D1 route regression needs 50 compact questions from a current approved shared-subject pool");
+  const { semanticSubject: savedPaperSemanticSubject, curriculumKey: savedPaperCurriculumKey,
+    candidates: compactApprovedCandidates } = savedPaperFixture;
+  const guardedBatch = compactApprovedCandidates.slice(0, 50);
   const guardedBatchRecords = guardedBatch.map(({ row }) => row);
   const guardedQuestions = guardedBatch.map(({ question }) => question);
   assert.equal(guardedBatchRecords.length, 50, "Saved Paper D1 route regression needs 50 compact approved questions");
+  assert.equal(new Set(guardedBatchRecords.map((row) => row.questionUid)).size, 50,
+    "Saved Paper D1 must use 50 distinct approved UIDs");
   const savedPaperAssignmentMatrix = [];
   const savedPaperGradeAcceptance = [];
   let mixedSourceGradeAcceptance = null;
@@ -1579,8 +1598,8 @@ try {
     const saveBatchId = crypto.randomUUID();
     const selectionFilters = {
       grade: "고2",
-      curriculumKey: selectedRecords[0].curriculumKey,
-      semanticSubject,
+      curriculumKey: savedPaperCurriculumKey,
+      semanticSubject: savedPaperSemanticSubject,
       primaryPaths: [...new Set(selectedRecords.map((row) => core.pathKey(row, 4)))],
       scopeQuestionUids: selectedRecords.map((row) => row.questionUid),
     };
