@@ -348,3 +348,5 @@ window.examData = {
     }
   ]
 };
+window.questionBank = window.examData;
+window.examTitle = window.examData.title;
