@@ -16,7 +16,19 @@ async function main(){
  await new Promise(r=>server.listen(0,'127.0.0.1',r));const url=`http://127.0.0.1:${server.address().port}/archive/generated-bank.html`;
  const temp=fs.mkdtempSync(path.join(os.tmpdir(),'geumdang-archive2-'));const proc=spawn(chrome,['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--disable-popup-blocking','--no-first-run','--disable-background-networking','--remote-allow-origins=*','--remote-debugging-port=0','--user-data-dir='+temp,'about:blank'],{stdio:'ignore'});let ws;
  try{
-  let port=0;for(let i=0;i<100;i++){if(proc.exitCode!==null)throw Error(`Chrome exited ${proc.exitCode}`);const p=path.join(temp,'DevToolsActivePort');if(fs.existsSync(p)){port=Number(fs.readFileSync(p,'utf8').split('\n')[0]);break;}await sleep(100);}if(!port)throw Error('Chrome debugging port unavailable');
+  let port=0;for(let i=0;i<100;i++){
+   if(proc.exitCode!==null)throw Error(`Chrome exited ${proc.exitCode}`);
+   const p=path.join(temp,'DevToolsActivePort');
+   // Chrome may create DevToolsActivePort before its port number is written.
+   // A blank or partial file is not readiness, so keep polling.
+   if(fs.existsSync(p)){
+    try{
+     const candidate=Number(fs.readFileSync(p,'utf8').split('\n')[0]);
+     if(Number.isInteger(candidate)&&candidate>0){port=candidate;break;}
+    }catch(error){if(error.code!=='ENOENT')throw error;}
+   }
+   await sleep(100);
+  }if(!port)throw Error('Chrome debugging port unavailable');
   const targets=await(await fetch(`http://127.0.0.1:${port}/json/list`)).json(),target=targets.find(x=>x.type==='page');if(!target)throw Error('Chrome target missing');
   ws=new WebSocket(target.webSocketDebuggerUrl);await new Promise((resolve,reject)=>{ws.addEventListener('open',resolve,{once:true});ws.addEventListener('error',reject,{once:true});});let id=0;const pending=new Map();ws.addEventListener('message',ev=>{const d=JSON.parse(ev.data);if(!pending.has(d.id))return;const p=pending.get(d.id);pending.delete(d.id);d.error?p.reject(Error(JSON.stringify(d.error))):p.resolve(d.result);});
   const send=(method,params={},sessionId)=>new Promise((resolve,reject)=>{const n=++id;pending.set(n,{resolve,reject});ws.send(JSON.stringify({id:n,method,params,...(sessionId?{sessionId}:{})}));});
