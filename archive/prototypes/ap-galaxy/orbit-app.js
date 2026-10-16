@@ -957,7 +957,7 @@
     renderScene();
   }
   async function startUniverse() {
-    const module = await import('./assets/orbital-world.js?v=20261016-galaxy-nav-2');
+    const module = await import('./assets/orbital-world.js?v=20261016-universe-cinema-1');
     state.world = module.createOrbitWorld({
       canvas: ui.canvas,
       onGroup: (id) => focusGroup(id),

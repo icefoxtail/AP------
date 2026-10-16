@@ -406,3 +406,18 @@ body.search-active .planet-label{color:#fff;text-shadow:0 1px 2px #000}
   .scene-heading{top:max(var(--galaxy-nav-offset,278px),clamp(194px,29vh,222px));left:12px;width:min(225px,58vw)}
 }
 @media(prefers-reduced-motion:reduce){.galaxy-nav-link{transition:none}}
+
+/* Universe stage 2: cinematic, low-contrast deep-field behind the interactive 3D scene. */
+.universe {
+  background-color: #030611;
+  background-image:
+    radial-gradient(ellipse 110% 102% at 52% 48%, transparent 19%, rgba(2, 5, 15, .38) 100%),
+    linear-gradient(180deg, rgba(2, 5, 14, .45) 0%, transparent 25%, transparent 70%, rgba(2, 5, 14, .38) 100%),
+    url('./assets/universe-deepfield.webp');
+  background-position: center, center, center;
+  background-size: cover, cover, cover;
+  background-repeat: no-repeat;
+}
+@media (max-width: 760px) {
+  .universe { background-position: center, center, 56% center; }
+}

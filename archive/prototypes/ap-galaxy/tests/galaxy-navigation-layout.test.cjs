@@ -35,9 +35,22 @@ test('responsive overlay offset follows the rendered navigation height', () => {
 });
 
 test('renderer bundle import and page assets share the current cache revision', () => {
-  const revision = '20261016-galaxy-nav-2';
+  const revision = html.match(/orbit\.css\?v=([\w-]+)/)?.[1];
+  assert.equal(revision, '20261016-universe-cinema-1');
   assert.match(app, new RegExp(`orbital-world\\.js\\?v=${revision}`));
   assert.equal([...html.matchAll(new RegExp(`\\?v=${revision}`, 'g'))].length, 4);
   assert.doesNotMatch(app, /20261014-curriculum-orbit-1/);
   assert.doesNotMatch(html, /20261016-galaxy-nav-1/);
+});
+
+
+test('cinematic sky composites behind 3D without changing the nav surface', () => {
+  const source = fs.readFileSync(path.join(root, 'src/orbital-world.js'), 'utf8');
+  const bundle = fs.readFileSync(path.join(root, 'assets/orbital-world.js'), 'utf8');
+  assert.match(css, /url\('\.\/assets\/universe-deepfield\.webp'\)/);
+  assert.match(source, /scene\.background = null;/);
+  assert.match(bundle, /h\.background=null,h\.fog=/);
+  assert.match(source, /makeGalaxyDisc\(data, palette, profile, mobile \? 560 : 1080\)/);
+  assert.match(bundle, /H\(w,bt,Ft,l\?560:1080\)/);
+  assert.ok(fs.statSync(path.join(root, 'assets/universe-deepfield.webp')).size > 4096);
 });

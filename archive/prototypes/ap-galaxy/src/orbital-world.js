@@ -22,8 +22,8 @@ function randomFrom(seed) {
 }
 function makeGalaxyNebulaTexture() {
   const canvas = document.createElement('canvas');
-  canvas.width = 256;
-  canvas.height = 160;
+  canvas.width = 512;
+  canvas.height = 320;
   const context = canvas.getContext('2d');
   const image = context.createImageData(canvas.width, canvas.height);
   const lattice = (x, y, seed) => {
@@ -149,14 +149,16 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.12;
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x030313);
+  // Preserve the navigable 3D scene, while letting the cinematic deep-field sky
+  // show through the WebGL canvas (renderer already has alpha: true).
+  scene.background = null;
   scene.fog = new THREE.FogExp2(0x08071a, .0000012);
   const nebulaTexture = new THREE.TextureLoader().load(new URL('../assets/galaxy-atmosphere.png', import.meta.url).href);
   nebulaTexture.colorSpace = THREE.SRGBColorSpace;
   const similarityHoleTexture = new THREE.TextureLoader().load(new URL('../assets/similarity-blackhole.png', import.meta.url).href);
   similarityHoleTexture.colorSpace = THREE.SRGBColorSpace;
   const nebulaSky = new THREE.Mesh(new THREE.SphereGeometry(340, 64, 40), new THREE.MeshBasicMaterial({
-    map: nebulaTexture, color: 0x9da7be, side: THREE.BackSide, transparent: true, opacity: .48, depthWrite: false,
+    map: nebulaTexture, color: 0x9da7be, side: THREE.BackSide, transparent: true, opacity: .32, depthWrite: false,
   }));
   scene.add(nebulaSky);
   const depthFar = new THREE.Points(makeDepthField(mobile ? 2200 : 9000, 0, 68, 0x5eed2026, .035), new THREE.PointsMaterial({
@@ -212,7 +214,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   violetFill.position.set(-40, 28, 34);
   scene.add(violetFill);
 
-  const starCount = mobile ? 320 : 720;
+  const starCount = mobile ? 420 : 960;
   const starPositions = new Float32Array(starCount * 3);
   const starColors = new Float32Array(starCount * 3);
   const skyRandom = randomFrom(81802026);
@@ -235,7 +237,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   starGeometry.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
   scene.add(new THREE.Points(starGeometry, new THREE.PointsMaterial({
     map: starSpriteTexture, size: mobile ? .5 : .42, sizeAttenuation: true,
-    vertexColors: true, transparent: true, opacity: .62, depthWrite: false, alphaTest: .012,
+    vertexColors: true, transparent: true, opacity: .71, depthWrite: false, alphaTest: .012,
   })));
 
   const sunRoot = new THREE.Group();
@@ -601,8 +603,8 @@ function hashUnit(text) {
     nebulaBillboard.scale.set((13 + profile.cloud * 3.1) * majorGalaxyScale, (8.6 + profile.cloud * 1.8) * majorGalaxyScale, 1);
     nebulaBillboard.position.y = -.08;
     hub.add(nebulaBillboard);
-    const galaxy = new THREE.Points(makeGalaxyDisc(data, palette, profile, 520), new THREE.PointsMaterial({
-      map: sharedStarSpriteTexture, vertexColors: true, size: .46 + profile.cloud * .07, sizeAttenuation: true,
+    const galaxy = new THREE.Points(makeGalaxyDisc(data, palette, profile, mobile ? 560 : 1080), new THREE.PointsMaterial({
+      map: sharedStarSpriteTexture, vertexColors: true, size: .35 + profile.cloud * .07, sizeAttenuation: true,
       transparent: true, opacity: .82, alphaTest: .018,
       blending: THREE.NormalBlending, depthWrite: false, toneMapped: false,
     }));
