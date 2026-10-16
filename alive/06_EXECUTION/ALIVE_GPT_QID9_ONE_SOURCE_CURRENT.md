@@ -1,3 +1,10 @@
+## CURRENT HARD — 원본 qid별 9 UID E2E 완료보고서 강제 (2026-10-17 원장 직접 지시)
+- **필독 및 종료 계약:** [원본 qid별 9문항 문항별 E2E 완료보고서 CURRENT](ALIVE_QID9_PER_ITEM_E2E_COMPLETION_REPORT_CURRENT_v1.md). 수동 QID9에서 "1번 진행해"는 해당 원본 qid의 A1~C3 9개 각각 **제작·실제 RPM L1~L4/PT/TPL·Cross/Condition/Integration·독립 난도2축·학생용 해설/오답4/문제·해설 SVG → Source/Consumer/index 영구 Meta → 별도 독립 품질검수 → 실제 브라우저 문제/해설/정답/출력 → UID별 22항목 보고서**까지 증명하는 뜻이다.
+- **한 건이라도 증거 미확보/NOT_RUN/메타 미저장/검수 미실시/브라우저 미실시는 원본 qid 전체 `QID_INCOMPLETE/FAIL`; 다음 qid 진입 금지.** 9개 초안, ZIP, 저자 자기검수, 정답 배분만으로 완료 보고 금지. 결함은 현 qid·UID부터 수정·영향 재확인 후 9/9 완료를 다시 판정한다. 판정값은 보고서 명칭이며 런타임 enum을 추가하지 않는다.
+- **세로 누적 우선 (최근 원장 직접 지시):** A1~C3 각 슬롯별 qid 간 정답 ①~⑤ 빈도 편차를 최소화하고 동률 후보는 무작위 배정한다. 이 **수동 QID9 범위**에서는 아래 2026-10-15 가로 `2/2/2/2/1 HARD`가 최신 지시에 따라 대체된다. 구 검사기·Notion 문서 상충은 기록해 적법하게 정합화하되 가짜 PASS 금지.
+- **적용 제외:** 별도 예약 GPT Library `SOURCE_ONLY_INTAKE14_20261016` CREATE→R1→R2→R3→MASTER 라우팅은 기존 인계 우선 계약대로 지속하며, 예약자의 품질 미완료 인계 차단이나 HOLD를 새로 만들지 않는다.
+- **격리본·출시 구별:** qid E2E에는 실제 격리/스테이징 학생 화면 검사 필수, Git main·배포는 형님 별도 지시 범위대로 진행하고 지시된 후에는 post-deploy Chrome/remote readback까지 완료한다. 미실행은 PASS라고 기록 금지.
+
 ## CURRENT HARD — QID9 반복 제작 핸드오프·가로/세로 정답 배분 (2026-10-15 원장 지시)
 - 매 원본 qid × A1~C3 신규 제작은 [QID9 표준 실행 템플릿](GPT_QID9_CREATE_HANDOFF_TEMPLATE_CURRENT.md)을 사용한다. Notion [GPT QID9 유사문항 제작 표준계약 CURRENT](https://app.notion.com/p/3fa0e68bd69f81c4abdaffdcd1a969a1)을 Archive 시작 페이지에서 읽고 qid·시험지·브랜치·진도만 갱신한다.
 - 각 qid의 객관식 9개 정답 위치는 ①~⑤ 각각 1~2회(2/2/2/2/1 순열)를 **HARD**로 적용한다. 한 qid 안의 3×3 세로 중복 여부는 *세로 누적 배분*이 아니다. 동일 슬롯 A1~C3 각각의 q01~직전 qid 누적 정답번호 빈도 5개를 별도로 계산하고, 기존 복수정답/비객관식은 별도 분모로 관리한다.
