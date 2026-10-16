@@ -21,12 +21,12 @@ assert.strictEqual(runtime.counts.catalogUidDirectJoin, 53);
 assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin, 73);
 assert.strictEqual(runtime.counts.defaultSelectable, 125);
 assert.strictEqual(runtime.counts.supplementary, 1);
-assert.strictEqual(runtime.counts.sourceHold, 62);
-assert.strictEqual(runtime.counts.automaticEligibleExpected, 63);
+assert.strictEqual(runtime.counts.sourceHold, 79);
+assert.strictEqual(runtime.counts.automaticEligibleExpected, 47);
 assert.strictEqual(runtime.counts.currentCatalogUidDirectJoin, 126);
 assert.strictEqual(runtime.counts.currentCatalogSourceIdentityRepairJoin, 0);
 assert.strictEqual(runtime.counts.currentCatalogJoinMismatch, 0);
-assert.strictEqual(runtime.counts.currentCatalogSourceHoldDirect, 62);
+assert.strictEqual(runtime.counts.currentCatalogSourceHoldDirect, 79);
 assert.strictEqual(new Set(runtime.records.map((row) => row.questionUid)).size, 126);
 assert.strictEqual(new Set(runtime.records.map((row) => sourceKey(row.sourceArchiveFile, row.sourceOrdinal))).size, 126);
 assert.strictEqual(runtime.records.filter((row) => row.catalogIdentityRepairVerified === true).length, 73);
@@ -62,9 +62,9 @@ for (const overlay of runtime.records) {
   }
 }
 assert.strictEqual(direct + repaired, 126);
-assert.strictEqual(sourceReady, 63);
-assert.strictEqual(supplementary, 1);
-assert.strictEqual(sourceHold, 62);
+assert.strictEqual(sourceReady, 47);
+assert.strictEqual(supplementary, 0);
+assert.strictEqual(sourceHold, 79);
 
 const newlyHeld = [
   {
@@ -84,8 +84,8 @@ const newlyHeld = [
   },
 ];
 const readiness = receipt.checked.currentCanonicalSourceReadinessV1;
-assert.strictEqual(readiness.packs.INTEGRAL_CALCULUS.sourceHoldCount, 62);
-assert.strictEqual(readiness.packs.INTEGRAL_CALCULUS.automaticEligibleExpected, 63);
+assert.strictEqual(readiness.packs.INTEGRAL_CALCULUS.sourceHoldCount, 79);
+assert.strictEqual(readiness.packs.INTEGRAL_CALCULUS.automaticEligibleExpected, 47);
 for (const item of newlyHeld) {
   const base = bySource.get(sourceKey(item.sourceFile, item.ordinal));
   assert(base);
@@ -119,6 +119,6 @@ assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, runtimeRecordCo
 assert.strictEqual(receipt.checked.combinedRuntimeCatalogJoin, runtimeRecordCount);
 assert.strictEqual(receipt.checked.combinedRuntimeCatalogJoinMismatch, 0);
 assert.strictEqual(receipt.checked.integralCalculusRuntimeRecords, 126);
-assert.strictEqual(receipt.checked.integralCalculusAutomaticEligibleExpected, 63);
-assert.strictEqual(receipt.checked.integralCalculusSourceHold, 62);
+assert.strictEqual(receipt.checked.integralCalculusAutomaticEligibleExpected, 47);
+assert.strictEqual(receipt.checked.integralCalculusSourceHold, 79);
 console.log("PASS MathII integral Archive2 runtime bridge");

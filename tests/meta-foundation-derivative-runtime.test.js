@@ -27,12 +27,12 @@ assert.strictEqual(runtime.taxonomyRows.length, 48);
 assert.strictEqual(runtime.counts.catalogUidDirectJoin, 241);
 assert.strictEqual(runtime.counts.catalogSourceIdentityRepairJoin, 79);
 assert.strictEqual(runtime.counts.defaultSelectable, 320);
-assert.strictEqual(runtime.counts.sourceHold, 123);
-assert.strictEqual(runtime.counts.automaticEligibleExpected, 197);
+assert.strictEqual(runtime.counts.sourceHold, 144);
+assert.strictEqual(runtime.counts.automaticEligibleExpected, 176);
 assert.strictEqual(runtime.counts.currentCatalogUidDirectJoin, 320);
 assert.strictEqual(runtime.counts.currentCatalogSourceIdentityRepairJoin, 0);
 assert.strictEqual(runtime.counts.currentCatalogJoinMismatch, 0);
-assert.strictEqual(runtime.counts.currentCatalogSourceHoldDirect, 123);
+assert.strictEqual(runtime.counts.currentCatalogSourceHoldDirect, 144);
 assert.strictEqual(new Set(runtime.records.map((row) => row.questionUid)).size, 320);
 assert.strictEqual(runtime.records.filter((row) => row.catalogIdentityRepairVerified === true).length, 79);
 
@@ -62,8 +62,8 @@ for (const overlay of runtime.records) {
   }
 }
 assert.strictEqual(direct + repaired, 320);
-assert.strictEqual(sourceReady, 197);
-assert.strictEqual(sourceHold, 123);
+assert.strictEqual(sourceReady, 176);
+assert.strictEqual(sourceHold, 144);
 
 const newlyHeld = [
   {
@@ -88,8 +88,8 @@ const newlyHeld = [
   },
 ];
 const readiness = receipt.checked.currentCanonicalSourceReadinessV1;
-assert.strictEqual(readiness.packs.DERIVATIVE.sourceHoldCount, 123);
-assert.strictEqual(readiness.packs.DERIVATIVE.automaticEligibleExpected, 197);
+assert.strictEqual(readiness.packs.DERIVATIVE.sourceHoldCount, 144);
+assert.strictEqual(readiness.packs.DERIVATIVE.automaticEligibleExpected, 176);
 for (const item of newlyHeld) {
   const base = bySource.get(sourceKey(item.sourceFile, item.ordinal));
   assert(base);
@@ -128,6 +128,6 @@ assert.strictEqual(receipt.checked.combinedUniqueSourceIdentity, runtimeRecordCo
 assert.strictEqual(receipt.checked.combinedRuntimeCatalogJoin, runtimeRecordCount);
 assert.strictEqual(receipt.checked.combinedRuntimeCatalogJoinMismatch, 0);
 assert.strictEqual(receipt.checked.derivativeRuntimeRecords, 320);
-assert.strictEqual(receipt.checked.derivativeAutomaticEligibleExpected, 197);
-assert.strictEqual(receipt.checked.derivativeSourceHold, 123);
+assert.strictEqual(receipt.checked.derivativeAutomaticEligibleExpected, 176);
+assert.strictEqual(receipt.checked.derivativeSourceHold, 144);
 console.log("PASS MathII derivative Archive2 runtime bridge");

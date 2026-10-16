@@ -248,7 +248,7 @@ window.questionBank = [
       "비례식의 계산"
     ],
     "wide": false,
-    "content": "$\\dfrac{x+2y}{3}=\\dfrac{4y+z}{4}=\\dfrac{z}{2}=\\dfrac{2x+10y-z}{a}$를 만족시키는 상수 $a$의 값을 구하면?",
+    "content": "$\\dfrac{x+2y}{3}=\\dfrac{4y+z}{4}=\\dfrac{z}{2}=\\dfrac{2x+10y-z}{a}$를 만족시키는 상수 $a$의 값을 구하면? (단, $x,y,z$ 중 적어도 하나는 $0$이 아니다.)",
     "choices": [
       "$4$",
       "$5$",
@@ -257,7 +257,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 연비의 공통값을 하나의 문자로 두면 $x,y,z$의 비를 바로 구할 수 있다.\n조건 정리: 네 비의 공통값을 $t$라 둔다.\n풀이 방향: 앞의 세 비에서 $x,y,z$를 $t$로 나타낸 뒤 마지막 비와 비교한다.\n정석 풀이: $\\dfrac z2=t$에서 $z=2t$이다. $\\dfrac{4y+z}{4}=t$이므로 $4y+2t=4t$에서 $y=\\dfrac t2$이다. 또 $\\dfrac{x+2y}{3}=t$에서 $x+t=3t$이므로 $x=2t$이다. 따라서 $2x+10y-z=4t+5t-2t=7t$이다. 마지막 비가 $t$가 되려면 $\\dfrac{7t}{a}=t$이므로 $a=7$이다.\n따라서 정답은 ④이다.",
+    "solution": "네 비의 공통값을 $t$라 하자.\n$\\dfrac z2=t$에서 $z=2t$이다. 이를 $\\dfrac{4y+z}{4}=t$에 대입하면\n$4y+2t=4t$이므로 $y=\\dfrac t2$이다. 이어서 $\\dfrac{x+2y}{3}=t$에 대입하면\n$x+t=3t$이므로 $x=2t$이다.\n따라서\n$2x+10y-z=4t+5t-2t=7t$이다.\n만약 $t=0$이면 $x=y=z=0$이 되어 발문의 조건에 어긋난다. 따라서 $t\\ne0$이다. 마지막 비의 공통값이 $t$이므로\n$\\dfrac{7t}{a}=t$이다. $t\\ne0$이므로 양변을 $t$로 나누면 $\\dfrac7a=1$, 따라서 $a=7$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
     "subUnit": "유리함수의 뜻과 계산",
     "subUnitConfidence": "category_or_cue_inferred",

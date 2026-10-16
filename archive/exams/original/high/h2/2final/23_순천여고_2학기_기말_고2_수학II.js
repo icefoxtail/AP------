@@ -23,7 +23,7 @@ window.questionBank = [
       "$-8$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 다항함수를 항별로 적분하고 위끝값과 아래끝값을 대입한다.\n$\\displaystyle\\int_0^2(3x^2-2x)dx=[x^3-x^2]_0^2=8-4=4$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 다항함수는 항별로 적분하고, 정적분은 위끝값에서 아래끝값을 뺀다.\n$\\displaystyle\\int_0^2(3x^2-2x)dx=[x^3-x^2]_0^2$이다.\n$=(2^3-2^2)-(0^3-0^2)$\n$=8-4$\n$=4$.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -51,7 +51,7 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 삼차함수의 극댓값과 극솟값의 부호를 확인하면 $x$축과 만나는 횟수를 알 수 있다.\n$F(x)=x^3-12x+1$이라 두면 $F'(x)=3(x-2)(x+2)$이다. $x=-2$에서 극대, $x=2$에서 극소이고 $F(-2)=17>0$, $F(2)=-15<0$이다.\n따라서 그래프는 $x$축과 세 번 만나므로 서로 다른 실근은 $3$개이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 도함수의 부호와 극댓값·극솟값의 부호를 함께 확인해 $x$축과 만나는 횟수를 센다.\n$F(x)=x^3-12x+1$이라 두면 $F'(x)=3x^2-12=3(x+2)(x-2)$이다.\n$F'(x)>0$인 구간은 $x<-2$, $x>2$이고, $F'(x)<0$인 구간은 $-2<x<2$이다.\n따라서 $x=-2$에서 극대, $x=2$에서 극소이다.\n$F(-2)=(-2)^3-12(-2)+1=-8+24+1=17>0$이다.\n$F(2)=2^3-12(2)+1=8-24+1=-15<0$이다.\n또한 $F(x)\\to-\\infty$ $(x\\to-\\infty)$이고 $F(x)\\to\\infty$ $(x\\to\\infty)$이다.\n연속인 $F$는 세 증가·감소 구간에서 각각 한 번씩 $x$축을 만나므로 서로 다른 실근은 $3$개이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -135,7 +135,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "[키포인트] 정적분의 구간 방향, 구간 분할, 짝함수의 대칭 성질을 각각 확인한다.\nㄱ은 적분구간을 뒤집으면 부호가 바뀌므로 참이다.\nㄴ은 $\\int_{-3}^2f=\\int_{-3}^0f+\\int_0^2f$이어야 하므로 거짓이다.\nㄷ은 $f$가 짝함수이면 원점 대칭 구간의 적분은 오른쪽 절반의 두 배이므로 참이다.\n따라서 옳은 것은 ㄱ, ㄷ이고 정답은 ③이다.",
+    "solution": "[키포인트] 적분구간을 뒤집을 때의 부호, 구간 분할, 짝함수의 대칭 성질을 각각 확인한다.\nㄱ: $\\displaystyle\\int_2^1 f(x)dx=-\\int_1^2 f(x)dx$이므로 두 적분의 합은 $0$이다. 참이다.\nㄴ: 구간을 나누면 $\\displaystyle\\int_{-3}^2 f(x)dx=\\int_{-3}^0 f(x)dx+\\int_0^2 f(x)dx$이다.\n제시된 식은 두 번째 적분 앞의 부호가 반대이므로 항상 성립하지 않는다. 거짓이다.\nㄷ: $f(-x)=f(x)$는 짝함수 조건이므로 $\\displaystyle\\int_{-2}^0 f(x)dx=\\int_0^2 f(x)dx$이다.\n따라서 $\\displaystyle\\int_{-2}^2 f(x)dx=2\\int_0^2 f(x)dx$여서 참이다.\n옳은 것은 ㄱ, ㄷ이므로 정답은 ③이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -219,7 +219,7 @@ window.questionBank = [
       "$11$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 접선의 기울기는 도함수이므로 두 점 사이의 함숫값 차이를 도함수의 정적분으로 구한다.\n$f'(x)=3x^2-10x+7$이므로 $f(1)-f(-1)=\\displaystyle\\int_{-1}^{1}(3x^2-10x+7)dx$이다.\n홀수함수 항 $-10x$의 적분은 $0$이고, 나머지는 $2+14=16$이므로 $f(1)=-5+16=11$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 접선의 기울기는 도함수이고, 도함수의 정적분은 두 함수값의 차이다.\n$f'(x)=3x^2-10x+7$이므로\n$f(1)-f(-1)=\\displaystyle\\int_{-1}^1(3x^2-10x+7)dx$이다.\n$-10x$는 홀함수이므로 $\\displaystyle\\int_{-1}^1(-10x)dx=0$이다.\n따라서 $f(1)-f(-1)=\\displaystyle\\int_{-1}^1(3x^2+7)dx=[x^3+7x]_{-1}^1$이다.\n$=(1+7)-((-1)^3+7(-1))$\n$=8-(-8)$\n$=16$이다.\n점 $(-1,-5)$를 지나므로 $f(-1)=-5$이다.\n$f(1)=f(-1)+16=-5+16=11$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -247,7 +247,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 두 함수의 차를 인수분해해 교점을 찾고 절댓값 넓이를 적분한다.\n두 함수의 차는 $x^3-4x=x(x-2)(x+2)$이므로 교점의 $x$좌표는 $-2,0,2$이다. 차함수는 홀함수이므로 좌우 두 넓이는 같다.\n따라서 전체 넓이는 $2\\displaystyle\\int_0^2(4x-x^3)dx=2\\left[2x^2-\\dfrac{x^4}{4}\\right]_0^2=8$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 두 함수의 차로 교점을 찾고, 어느 곡선이 위에 있는지 확인한 뒤 넓이를 적분한다.\n두 함수의 차는 $(x^3+x^2-3x-6)-(x^2+x-6)=x^3-4x$이다.\n$x^3-4x=x(x-2)(x+2)$이므로 교점의 $x$좌표는 $-2,0,2$이다.\n$0<x<2$에서 $x^3-4x<0$이므로 $y=x^2+x-6$이 위쪽 곡선이다.\n차함수 $x^3-4x$는 홀함수이므로 두 구간의 넓이는 같다.\n전체 넓이 $=2\\displaystyle\\int_0^2(4x-x^3)dx$이다.\n$=2[2x^2-\\dfrac{x^4}{4}]_0^2$\n$=2((8-4)-0)$\n$=8$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -275,7 +275,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 움직인 거리는 속도의 절댓값을 적분해야 하므로 속도가 $0$이 되는 시각에서 구간을 나눈다.\n$v(t)=-2t+4=0$에서 $t=2$이다.\n따라서 거리는 $\\displaystyle\\int_0^2(-2t+4)dt+\\int_2^3(2t-4)dt=4+1=5$이다.\n따라서 정답은 ②이다.",
+    "solution": "[키포인트] 움직인 거리는 속도의 절댓값을 적분하고, 속도가 $0$이 되는 시각에서 구간을 나눈다.\n$v(t)=-2t+4=0$에서 $t=2$이다.\n$0\\le t\\le2$에서는 $v(t)\\ge0$, $2\\le t\\le3$에서는 $v(t)\\le0$이다.\n따라서 움직인 거리는 $\\displaystyle\\int_0^2(-2t+4)dt+\\int_2^3(2t-4)dt$이다.\n$=[-t^2+4t]_0^2+[t^2-4t]_2^3$\n$=(4-0)+((9-12)-(4-8))$\n$=4+1$\n$=5$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-M2-09-INTEGRAL_APPLICATION",
     "subUnit": "적분의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -305,7 +305,7 @@ window.questionBank = [
       "$11$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 점 $A$의 $x$좌표를 음수 그대로 쓰기보다 $t=-x$로 두면 길이와 넓이가 간단해진다.\n$t=-x$라 두면 $0<t<2$이고 $OH=t$, $AH=t(2-t)$이다. 따라서 삼각형 넓이는 $S(t)=\\dfrac12t^2(2-t)=t^2-\\dfrac12t^3$이다.\n$S'(t)=t\\left(2-\\dfrac32t\\right)$이므로 $t=\\dfrac43$에서 최대가 되고, 최댓값은 $S(\\frac43)=\\dfrac{16}{27}$이다.\n따라서 $q=16$, $p=27$이고 $p-q=11$이다. 정답은 ⑤이다.",
+    "solution": "[키포인트] $t=-x$로 두어 길이를 양수로 바꾸고, 넓이를 한 변수의 함수로 나타낸다.\n$-2<x<0$이므로 $t=-x$라 두면 $0<t<2$이다.\n점 $A$의 $y$좌표는 $-(-t)(-t+2)=t(2-t)$이다.\n따라서 $OH=t$, $AH=t(2-t)$이고\n$S(t)=\\dfrac12\\cdot OH\\cdot AH=\\dfrac12t^2(2-t)=t^2-\\dfrac12t^3$이다.\n$S'(t)=2t-\\dfrac32t^2=t(2-\\dfrac32t)$이다.\n$0<t<\\dfrac43$에서 $S'(t)>0$이고, $\\dfrac43<t<2$에서 $S'(t)<0$이므로 $t=\\dfrac43$에서 넓이가 최대이다.\n$S(\\dfrac43)=\\dfrac12\\cdot\\dfrac{16}{9}\\cdot\\dfrac23=\\dfrac{16}{27}$이다.\n따라서 $q=16$, $p=27$이고 $p-q=27-16=11$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -339,7 +339,7 @@ window.questionBank = [
       "ㄱ, ㄴ, ㄷ"
     ],
     "answer": "③",
-    "solution": "[키포인트] $f$의 증감과 극값은 $f'$의 부호와 부호 변화를 읽으면 된다.\n그래프에서 $f'$의 부호는 $(-\\infty,-3)$에서 양수, $(-3,1)$에서 음수, $(1,4)$에서 양수, $(4,\\infty)$에서 음수이다. 따라서 $x=4$에서 $f$는 극댓값을 가지므로 ㄱ은 참이고, $[1,4]$에서는 계속 증가하므로 ㄴ은 거짓이다.\n또 $f$는 사차함수이고 $f'$의 좌우 끝 부호로 보아 최고차항의 계수가 음수이므로 $x\\to\\pm\\infty$에서 $f(x)\\to-\\infty$이다. $f(1)>0$이면 $y=f(1)$과는 3번, $y=-f(1)$과는 2번 만나므로 $|f(x)|=f(1)$의 실근은 5개이다. 따라서 ㄷ은 참이다.\n따라서 옳은 것은 ㄱ, ㄷ이고 정답은 ③이다.",
+    "solution": "[키포인트] $f'$의 부호는 $f$의 증감을, 부호가 바뀌는 영점은 $f$의 극값을 알려준다.\n그래프에서 $f'(x)>0$은 $x<-3$, $1<x<4$이고, $f'(x)<0$은 $-3<x<1$, $x>4$이다.\n따라서 $f$는 $x=-3,4$에서 극댓값을 가지므로 ㄱ은 참이다.\n$1<x<4$에서는 $f'(x)>0$이므로 $f$는 계속 증가한다. 따라서 [1,4]에서 증가했다가 감소한다는 ㄴ은 거짓이다.\n$f(1)$은 극솟값이고, 조건에서 $f(1)>0$이다. 그래프에서 $f'$는 삼차함수이며 좌우 끝의 부호가 각각 양수, 음수이므로 최고차항 계수는 음수이다. 따라서 사차함수 $f$의 최고차항 계수도 음수이고, $x\\to\\pm\\infty$에서 $f(x)\\to-\\infty$이다.\n그러므로 $y=f(1)$과 그래프는 왼쪽 가지에서 한 번, $x=1$에서 한 번, 오른쪽 가지에서 한 번 만나 총 3번 만난다.\n또 $y=-f(1)<f(1)$이므로 극솟값보다 낮은 수평선과는 양쪽 끝 가지에서 각각 한 번씩 만나 총 2번 만난다.\n따라서 $|f(x)|=f(1)$의 서로 다른 실근은 $3+2=5$개여서 ㄷ은 참이다.\n옳은 것은 ㄱ, ㄷ이므로 정답은 ③이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -373,7 +373,7 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 정적분 값을 하나의 상수로 두고 양변을 다시 적분해 그 상수를 먼저 정한다.\n$I=\\int_0^2f(t)dt$라 두면 $f(x)=x^3+xI+2$이다.\n양변을 $0$부터 $2$까지 적분하면 $I=4+2I+4=8+2I$이므로 $I=-8$이다.\n따라서 $f(3)=27+3(-8)+2=5$이고 정답은 ④이다.",
+    "solution": "[키포인트] 정적분 값을 $I$로 두고 식에 다시 대입해 $I$부터 결정한다.\n$I=\\displaystyle\\int_0^2 f(t)dt$라 두면 $f(x)=x^3+xI+2$이다.\n양변을 $0$부터 $2$까지 적분하면\n$I=\\displaystyle\\int_0^2(t^3+tI+2)dt$\n$=[\\dfrac{t^4}{4}+\\dfrac{It^2}{2}+2t]_0^2$\n$=4+2I+4$\n$=8+2I$이다.\n$-I=8$이므로 $I=-8$이다.\n$f(3)=3^3+3(-8)+2$\n$=27-24+2$\n$=5$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -457,7 +457,7 @@ window.questionBank = [
       "$-\\dfrac{11}{2}$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 곱의 영점과 중복도를 이용해 $g$의 인수 구조를 먼저 결정한다.\n$g$가 $x=2$에서 극값을 가지려면 $x=2$가 $g$의 중근이어야 한다. 따라서 $g(x)=-2(x-2)^2(x-r)$이고 $r$은 $1$ 또는 $3$이다.\n$r=1$이면 $x=2$ 부근에서 $g(x)\\le0$이므로 극댓값 $0$을 갖고, $r=3$이면 $g(x)\\ge0$이므로 극솟값을 갖는다. 따라서 $g(x)=-2(x-1)(x-2)^2$이다.\n그러므로 $f(x)=-\\dfrac12(x-1)(x-3)^2$이고 $f'(0)=-\\dfrac12(15)=-\\dfrac{15}{2}$이다.\n따라서 정답은 ①이다.",
+    "solution": "[키포인트] 곱의 영점과 중복도, $x=2$에서의 극댓값 조건으로 $g$의 인수를 정한다.\n$f(x)g(x)=(x-1)^2(x-2)^2(x-3)^2$이고 $g$는 삼차함수이다. 곱의 식에서 $g$의 근은 $1,2,3$뿐이고 각 근의 중복도는 2 이하이다.\n$g$가 $x=2$에서 극값을 가지려면 $g'(2)=0$이어야 한다. $g(2)\\ne0$이면 $g(x)=-2(x-1)^2(x-3)$ 또는 $g(x)=-2(x-1)(x-3)^2$인데, 두 경우 모두 $g'(2)=2$이므로 조건에 맞지 않는다.\n$g(2)=0$이어도 $2$가 단근이면 $g'(2)\\ne0$이므로 불가능하다. 따라서 $2$는 $g$의 중근이다.\n나머지 근은 $1$ 또는 $3$이므로 $g(x)=-2(x-2)^2(x-r)$, $r\\in\\{1,3\\}$이다.\n$r=1$이면 $x=2$ 근처에서 $g(x)\\le0$이어서 $0$이 극댓값이고, $r=3$이면 $g(x)\\ge0$이어서 $0$은 극솟값이다.\n따라서 $r=1$이고 $g(x)=-2(x-1)(x-2)^2$이다.\n$f(x)=\\dfrac{(x-1)^2(x-2)^2(x-3)^2}{-2(x-1)(x-2)^2}=-\\dfrac12(x-1)(x-3)^2$이다.\n$f'(x)=-\\dfrac12\\{(x-3)^2+2(x-1)(x-3)\\}$이다.\n$f'(0)=-\\dfrac12(9+6)$이다.\n$f'(0)=-\\dfrac{15}{2}$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -519,7 +519,7 @@ window.questionBank = [
       "$12$"
     ],
     "answer": "②",
-    "solution": "[키포인트] 주기가 $3$이므로 $0$부터 $5$까지의 적분을 한 주기와 앞의 두 구간으로 나눈다. $a>0$이므로 각 조각의 부호를 확인해 절댓값을 처리한다.\n$[0,1]$에서는 $\\int|f|=\\frac a2$이다. $[1,2]$에서는 $4-3x=0$인 $x=\\frac43$에서 나누면 $\\int|f|=\\frac{5a}{6}$이다. $[2,3]$에서는 $x^2-3x<0$이므로 $\\int|f|=\\frac{7a}{6}$이다. 따라서 한 주기 적분은 $\\frac{5a}{2}$이다.\n또 $0$부터 $2$까지의 절댓값 적분은 $\\frac a2+\\frac{5a}{6}=\\frac{4a}{3}$이다. 주기성에 의해 $\\int_0^5|f(x)|dx=\\frac{5a}{2}+\\frac{4a}{3}=\\frac{23a}{6}=23$이다.\n따라서 $a=6$이고 정답은 ②이다.",
+    "solution": "[키포인트] $a>0$을 이용해 각 조각의 부호를 정하고, 주기 $3$을 한 주기와 나머지 구간으로 나눈다.\n$0\\le x<1$에서 $f(x)=ax\\ge0$이므로 $\\displaystyle\\int_0^1|f(x)|dx=[\\dfrac{ax^2}{2}]_0^1=\\dfrac a2$이다.\n$1\\le x<2$에서는 $f(x)=a(4-3x)$이고, $4-3x=0$인 $x=\\dfrac43$에서 부호가 바뀐다.\n$\\displaystyle\\int_1^{4/3}|f(x)|dx=a[4x-\\dfrac32x^2]_1^{4/3}=\\dfrac a6$이다.\n$\\displaystyle\\int_{4/3}^2|f(x)|dx=a[\\dfrac32x^2-4x]_{4/3}^2=\\dfrac{2a}{3}$이다.\n따라서 $\\displaystyle\\int_1^2|f(x)|dx=\\dfrac a6+\\dfrac{2a}{3}=\\dfrac{5a}{6}$이다.\n$2\\le x<3$에서는 $x^2-3x=x(x-3)<0$이므로\n$\\displaystyle\\int_2^3|f(x)|dx=a[\\dfrac32x^2-\\dfrac{x^3}{3}]_2^3=\\dfrac{7a}{6}$이다.\n한 주기의 적분은 $\\displaystyle\\int_0^3|f(x)|dx=\\dfrac a2+\\dfrac{5a}{6}+\\dfrac{7a}{6}=\\dfrac{5a}{2}$이다.\n또 $\\displaystyle\\int_0^2|f(x)|dx=\\dfrac a2+\\dfrac{5a}{6}=\\dfrac{4a}{3}$이다.\n주기성이 있으므로 $\\displaystyle\\int_0^5|f(x)|dx=\\int_0^3|f(x)|dx+\\int_0^2|f(x)|dx$이다.\n$=\\dfrac{5a}{2}+\\dfrac{4a}{3}=\\dfrac{23a}{6}=23$이다.\n$a=6$이므로 정답은 ②이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -549,7 +549,7 @@ window.questionBank = [
       "$-3$"
     ],
     "answer": "①",
-    "solution": "[키포인트] 먼저 극댓값이 존재하도록 하는 $a$의 부호를 확인하고, 오른쪽 조각의 극솟값을 조건과 맞춘다.\n$x<0$에서 $f'(x)=a(3x^2-4)$이다. 극댓값을 가지려면 $a>0$이어야 하며, 이때 왼쪽 조각은 $x=-\\frac{2}{\\sqrt3}$에서 극대가 된다.\n$x\\ge0$에서는 $f'(x)=3x^2-2a$이므로 극솟점은 $x=\\sqrt{\\frac{2a}{3}}$이다. 그때의 값은 $-\\dfrac{4a}{3}\\sqrt{\\dfrac{2a}{3}}$이다.\n이를 $-4\\sqrt2$와 같게 두면 $\\left(\\frac a3\\right)^{3/2}=1$이므로 $a=3$이다. 따라서 정답은 ①이다.",
+    "solution": "[키포인트] 극댓값이 생기는 $a$의 부호를 정하고, 접합점 $x=0$에서도 극값이 생기는지 확인한다.\n$x<0$에서 $f'(x)=a(3x^2-4)$이다. $a>0$이면 $x=-\\dfrac{2}{\\sqrt3}$에서 $f'$의 부호가 양수에서 음수로 바뀌어 극댓값이 생긴다.\n$a<0$이면 왼쪽 조각은 $x=-\\dfrac{2}{\\sqrt3}$에서 극솟값을 갖고, $x=0$ 가까이에서 증가한다. 오른쪽 조각도 $x>0$에서 $f'(x)=3x^2-2a>0$이므로 증가하여 극댓값이 없다.\n$a=0$이면 $f(x)=0$ ($x<0$), $f(x)=x^3$ ($x\\ge0$)이므로 접합점의 극솟값은 $0$이다. 이는 조건의 $-4\\sqrt2$와 다르다. 따라서 $a>0$이다.\n$a>0$일 때 접합점 $x=0$의 좌미분계수는 $-4a$, 우미분계수는 $-2a$로 서로 달라 미분할 수 없다. 양쪽 조각은 $x=0$을 지나며 모두 감소하므로 이 점은 극값이 아니다.\n$x>0$에서 $f'(x)=3x^2-2a$이다. 양의 해는 $x=\\sqrt{\\dfrac{2a}{3}}$이고, 이 점에서 $f'$는 음수에서 양수로 바뀌므로 극솟값을 갖는다.\n$x_0=\\sqrt{\\dfrac{2a}{3}}$라 두면 $f(x_0)=x_0^3-2ax_0$이다.\n$x_0^2=\\dfrac{2a}{3}$이므로 $f(x_0)=x_0\\left(\\dfrac{2a}{3}-2a\\right)$이다.\n$f(x_0)=-\\dfrac{4a}{3}\\sqrt{\\dfrac{2a}{3}}$이다.\n이 값이 $-4\\sqrt2$이므로 $\\dfrac a3\\sqrt{\\dfrac{2a}{3}}=\\sqrt2$이다.\n$a>0$이므로 양변을 제곱하면 $\\dfrac{2a^3}{27}=2$이다.\n$a^3=27$이고 $a>0$이므로 $a=3$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -581,7 +581,7 @@ window.questionBank = [
       "$31$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 먼저 $x^2(x-6)=t$의 서로 다른 실근 개수를 $t$에 따라 조사하고, 항상 존재하는 근 $x=1$과의 중복을 따진다.\n$h(x)=x^2(x-6)$이라 두면 $h'(x)=3x(x-4)$이고 $h(0)=0$은 극댓값, $h(4)=-32$는 극솟값이다. 따라서 $h(x)=t$의 실근 개수는 $t<-32$에서 1, $t=-32$에서 2, $-32<t<0$에서 3, $t=0$에서 2, $t>0$에서 1이다.\n원래 방정식에는 근 $x=1$이 항상 추가되지만 $t=h(1)=-5$일 때에는 중복된다. 따라서 $f(t)$의 불연속점은 $t=-32,-5,0$이다. $f(t)g(t)$가 연속이려면 $g(-32)=g(-5)=g(0)=0$이어야 한다.\n(가)에서 $g$의 차수는 $3$ 이하이므로 $g(x)=c x(x+5)(x+32)$이다. $g(-4)=28$에서 $-112c=28$, $c=-\\frac14$이다. 따라서 $g(-1)=-\\frac14(-1)(4)(31)=31$이다.\n따라서 정답은 ⑤이다.",
+    "solution": "[키포인트] 먼저 $h(x)=x^2(x-6)$의 높이별 실근 수를 세고, 항상 있는 근 $x=1$과 겹치는 경우를 따진다.\n$h(x)=x^3-6x^2$라 두면 $h'(x)=3x(x-4)$이다.\n$h(0)=0$은 극댓값이고 $h(4)=64-96=-32$는 극솟값이다.\n따라서 $h(x)=t$의 서로 다른 실근 수는\n$t<-32$이면 $1$개, $t=-32$이면 $2$개,\n$-32<t<0$이면 $3$개, $t=0$이면 $2$개, $t>0$이면 $1$개이다.\n원래 방정식에는 $x=1$이 항상 근이고, $h(1)=1-6=-5$일 때만 $h(x)=t$의 근과 겹친다.\n그러므로 서로 다른 근의 개수 $f(t)$는 $t=-32,-5,0$에서 불연속이다.\n$f(t)g(t)$가 연속이려면 이 세 점에서 $g(-32)=g(-5)=g(0)=0$이어야 한다.\n$\\displaystyle\\lim_{x\\to\\infty}\\dfrac{g(x)}{x^4}=0$이므로 $g$의 차수는 $3$ 이하이다.\n세 근과 $g(-4)=28$을 이용해 $g(x)=c\\,x(x+5)(x+32)$로 둔다.\n$28=g(-4)=c(-4)(1)(28)=-112c$이므로 $c=-\\dfrac14$이다.\n$g(-1)=-\\dfrac14(-1)(4)(31)=31$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -629,7 +629,7 @@ window.questionBank = [
     "content": "다항함수 $f(x)$와 그 도함수 $f'(x)$에 대하여 $\\displaystyle\\lim_{x\\to\\infty}\\dfrac{f'(x)-3x^2}{x}=-12$, $\\displaystyle\\lim_{x\\to-1}\\dfrac{f(x)+12}{x^2+6x+5}=6$이 성립할 때, $f(x)$를 구하시오. [7점]",
     "choices": [],
     "answer": "$f(x)=x^3-6x^2+9x+4$",
-    "solution": "[키포인트] 첫 번째 극한으로 $f$의 차수와 앞의 계수를 정하고, 두 번째 극한의 유한성으로 $f(-1)$과 $f'(-1)$을 얻는다.\n첫 극한이 유한한 상수이므로 $f(x)=x^3+bx^2+cx+d$로 둘 수 있다. 그러면 $\\dfrac{f'(x)-3x^2}{x}=2b+\\dfrac{c}{x}$이므로 $2b=-12$, $b=-6$이다.\n두 번째 분모는 $(x+1)(x+5)$이고 $x\\to-1$에서 $0$이므로 유한한 극한을 가지려면 $f(-1)+12=0$, 즉 $f(-1)=-12$이어야 한다. 또한 $f(-1)=-12$이므로 $f(x)+12=f(x)-f(-1)$이다. 따라서 $\\displaystyle\\lim_{x\\to-1}\\dfrac{f(x)-f(-1)}{x+1}\\cdot\\dfrac{1}{x+5}=\\dfrac{f'(-1)}{4}=6$이므로 $f'(-1)=24$이다.\n$f'(x)=3x^2-12x+c$이므로 $15+c=24$에서 $c=9$이고, $f(-1)=-1-6-9+d=-12$에서 $d=4$이다.\n따라서 $f(x)=x^3-6x^2+9x+4$이다.",
+    "solution": "[키포인트] 첫 극한으로 삼차항과 이차항 계수를 정하고, 둘째 극한으로 $f(-1)$과 $f'(-1)$을 구한다.\n첫 극한이 유한한 값이므로 $f(x)=x^3+bx^2+cx+d$로 둘 수 있다.\n$f'(x)=3x^2+2bx+c$이므로\n$\\dfrac{f'(x)-3x^2}{x}=2b+\\dfrac cx$이다.\n$x\\to\\infty$에서 $2b=-12$이므로 $b=-6$이다.\n$x^2+6x+5=(x+1)(x+5)$이고 분모는 $x\\to-1$에서 $0$이므로 유한한 둘째 극한을 위해 $f(-1)+12=0$이어야 한다.\n따라서 $f(-1)=-12$이다.\n$\\displaystyle\\lim_{x\\to-1}\\dfrac{f(x)+12}{(x+1)(x+5)}\n=\\lim_{x\\to-1}\\dfrac{f(x)-f(-1)}{x+1}\\cdot\\dfrac1{x+5}\n=\\dfrac{f'(-1)}4=6$이다.\n따라서 $f'(-1)=24$이다.\n$b=-6$을 대입하면 $f'(x)=3x^2-12x+c$이다.\n$24=f'(-1)=3+12+c$이므로 $c=9$이다.\n$-12=f(-1)=-1-6-9+d=d-16$이므로 $d=4$이다.\n따라서 $f(x)=x^3-6x^2+9x+4$이다.",
     "subUnitKey": "H15-M2-04-DERIVATIVE",
     "subUnit": "도함수",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -651,7 +651,7 @@ window.questionBank = [
     "content": "정의역이 $\\{x\\mid0<x<2\\}$인 함수 $f(x)=\\displaystyle\\int_0^2 t|x-t|dt$에 대하여 $f'(1)$의 값을 구하시오. [7점]",
     "choices": [],
     "answer": "$-1$",
-    "solution": "[키포인트] $0<x<2$이므로 절댓값의 부호가 바뀌는 $t=x$에서 적분구간을 나눈다.\n$f(x)=\\displaystyle\\int_0^x t(x-t)dt+\\int_x^2 t(t-x)dt$이다. 계산하면 첫 적분은 $\\frac{x^3}{6}$, 둘째 적분은 $\\frac83-2x+\\frac{x^3}{6}$이므로 $f(x)=\\frac{x^3}{3}-2x+\\frac83$이다.\n따라서 $f'(x)=x^2-2$이고 $f'(1)=-1$이다.\n따라서 구하는 값은 $-1$이다.",
+    "solution": "[키포인트] $0<x<2$에서 절댓값의 부호가 바뀌는 $t=x$에서 적분을 둘로 나눈다.\n$f(x)=\\displaystyle\\int_0^x t(x-t)dt+\\int_x^2 t(t-x)dt$이다.\n첫째 적분은 다음과 같다.\n$\\displaystyle\\int_0^x t(x-t)dt=\\int_0^x(xt-t^2)dt$\n$=\\left[\\dfrac{xt^2}{2}-\\dfrac{t^3}{3}\\right]_0^x$\n$=\\left(\\dfrac{x\\cdot x^2}{2}-\\dfrac{x^3}{3}\\right)-0$\n$=\\dfrac{x^3}{2}-\\dfrac{x^3}{3}$\n$=\\dfrac{x^3}{6}$.\n둘째 적분은 다음과 같다.\n$\\displaystyle\\int_x^2t(t-x)dt=\\int_x^2(t^2-xt)dt$\n$=\\left[\\dfrac{t^3}{3}-\\dfrac{xt^2}{2}\\right]_x^2$\n$=\\left(\\dfrac83-2x\\right)-\\left(\\dfrac{x^3}{3}-\\dfrac{x\\cdot x^2}{2}\\right)$\n$=\\dfrac83-2x-\\dfrac{x^3}{3}+\\dfrac{x^3}{2}$\n$=\\dfrac83-2x+\\dfrac{x^3}{6}$.\n따라서\n$f(x)=\\dfrac{x^3}{6}+\\left(\\dfrac83-2x+\\dfrac{x^3}{6}\\right)$\n$=\\dfrac{x^3}{6}+\\dfrac83-2x+\\dfrac{x^3}{6}$\n$=\\dfrac{x^3}{3}-2x+\\dfrac83$.\n$f'(x)=x^2-2$이다.\n$f'(1)=1^2-2$이다.\n$f'(1)=-1$이다.\n따라서 구하는 값은 $-1$이다.",
     "subUnitKey": "H15-M2-08-DEFINITE_INTEGRAL",
     "subUnit": "정적분",
     "subUnitConfidence": "category_or_cue_inferred",

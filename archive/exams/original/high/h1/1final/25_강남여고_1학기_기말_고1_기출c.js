@@ -415,7 +415,7 @@ window.questionBank = [
       "$\\begin{pmatrix}4&6\\\\8&10\\end{pmatrix}$"
     ],
     "answer": "⑤",
-    "solution": "[키포인트] 문제에서 정의한 $b_{ij}=a_{ji}$를 네 성분에 직접 적용한다.\n\n$a_{11}=(-1)^1+4\\times1+1=4,\\quad a_{12}=(-1)^1+4\\times2+1=8,\\quad a_{21}=(-1)^2+4\\times1+1=6,\\quad a_{22}=(-1)^2+4\\times2+1=10$이다.\n\n따라서 $A=\\begin{pmatrix}4&8\\\\6&10\\end{pmatrix}$이다.\n\n정의 $b_{ij}=a_{ji}$에 따라 $b_{11}=a_{11}=4,\\ b_{12}=a_{21}=6,\\ b_{21}=a_{12}=8,\\ b_{22}=a_{22}=10$이다.\n\n그러므로 $B=\\begin{pmatrix}4&6\\\\8&10\\end{pmatrix}$이고 정답은 ⑤이다.",
+    "solution": "[키포인트] 문제에서 정의한 $b_{ij}=a_{ji}$를 네 성분에 직접 적용한다.\n\n$a_{11}=(-1)^1+4\\times1+1=4$\n$a_{12}=(-1)^1+4\\times2+1=8$\n$a_{21}=(-1)^2+4\\times1+1=6$\n$a_{22}=(-1)^2+4\\times2+1=10$\n\n따라서 $A=\\begin{pmatrix}4&8\\\\6&10\\end{pmatrix}$이다.\n\n정의 $b_{ij}=a_{ji}$에 따라\n$b_{11}=a_{11}=4$\n$b_{12}=a_{21}=6$\n$b_{21}=a_{12}=8$\n$b_{22}=a_{22}=10$\n\n그러므로 $B=\\begin{pmatrix}4&6\\\\8&10\\end{pmatrix}$이고 정답은 ⑤이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
@@ -585,20 +585,30 @@ window.questionBank = [
       "조건해석"
     ],
     "wide": false,
-    "content": "부등식 $|x+1|+|x-2|\\le5$의 해와 이차부등식 $ax^2+bx+c\\le0$의 해가 같을 때, $\\dfrac{bc}{a}$의 값은? (단, $a,b,c$는 상수) [4.5점]",
+    "content": "부등식 $|x+1|+|x-2|\\le7$의 해집합과 같은 해집합을 갖는 이차부등식 $x^2+bx+c\\le0$이 있다. 이때 $b-c$의 값은? [4.5점]",
     "choices": [
-      "$-6$",
-      "$-4$",
-      "$2$",
-      "$4$",
-      "$6$"
+      "$7$",
+      "$9$",
+      "$11$",
+      "$13$",
+      "$15$"
     ],
-    "answer": "⑤",
-    "solution": "[키포인트]\n절댓값부등식의 해를 먼저 정확히 구하고, 같은 해를 갖는 이차부등식을 만든다.\n조건 정리\n$|x+1|+|x-2|\\le5$의 해와 $ax^2+bx+c\\le0$의 해가 같다.\n풀이 과정\n절댓값의 기준점은 $x=-1$, $x=2$이다.\n$|x+1|+|x-2|$는 수직선 위의 점 $x$에서 $-1$까지의 거리와 $2$까지의 거리의 합이다.\n두 점 $-1$과 $2$ 사이에서는 거리의 합이 항상 $3$이고, 양쪽 바깥으로 나가면 거리의 합이 커진다.\n이제 양 끝을 구하면 된다.\n$x\\le-1$일 때\n$|x+1|+|x-2|=-(x+1)-(x-2)=-2x+1$\n$-2x+1\\le5 \\implies -2x\\le4 \\implies x\\ge-2$\n따라서 이 구간에서는 $-2\\le x\\le-1$이다.\n$-1\\le x\\le2$일 때는 거리의 합이 $3$이므로 모두 만족한다.\n$x\\ge2$일 때\n$|x+1|+|x-2|=(x+1)+(x-2)=2x-1$\n$2x-1\\le5 \\implies 2x\\le6 \\implies x\\le3$\n따라서 이 구간에서는 $2\\le x\\le3$이다.\n전체 해는 $-2\\le x\\le3$이다.\n이 구간을 해로 갖는 이차부등식은 위로 열린 포물선에서 두 근 사이가 $0$ 이하가 되어야 하므로\n$(x+2)(x-3)\\le0$로 둘 수 있다.\n전개하면\n$x^2-x-6\\le0$이다.\n따라서 $a=1$, $b=-1$, $c=-6$이므로\n$\\dfrac{bc}{a}=\\dfrac{(-1)(-6)}{1}=6$이다.\n결론\n따라서 정답은 ⑤이다.",
+    "answer": "③",
+    "solution": "[키포인트]\n절댓값의 합이 기준값 이하가 되는 구간을 먼저 구한 뒤, 그 구간을 해로 갖는 최고차항 계수 1인 이차식을 정한다.\n조건 정리\n$|x+1|+|x-2|\\le7$의 해집합과 $x^2+bx+c\\le0$의 해집합이 같다.\n풀이 과정\n절댓값의 기준점은 $x=-1$, $x=2$이다.\n$x\\le-1$일 때\n$|x+1|+|x-2|=-(x+1)-(x-2)=-2x+1$이다.\n$-2x+1\\le7$이므로 $x\\ge-3$이다. 따라서 이 구간에서는 $-3\\le x\\le-1$이다.\n$-1\\le x\\le2$일 때는 두 거리의 합이 $3$이므로 모든 $x$가 부등식을 만족한다.\n$x\\ge2$일 때\n$|x+1|+|x-2|=(x+1)+(x-2)=2x-1$이다.\n$2x-1\\le7$이므로 $x\\le4$이다. 따라서 이 구간에서는 $2\\le x\\le4$이다.\n전체 해집합은 $[-3,4]$이다.\n최고차항 계수가 $1$인 이차부등식의 해집합이 $[-3,4]$이므로 두 근은 $-3$, $4$이다.\n$x^2+bx+c=(x+3)(x-4)=x^2-x-12$이므로 $b=-1$, $c=-12$이다.\n따라서 $b-c=-1-(-12)=11$이다. 정답은 ③이다.",
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourceMode": "ALIVE_REPLACEMENT",
+    "provenance": "ALIVE_REPLACEMENT",
+    "sourceQid": "q17",
+    "sourceExamId": "25_강남여고_1학기_기말_고1_기출",
+    "originalSourceProvenance": "ORIGINAL",
+    "originalSourceGitBlob": "429e0a1b59cde35442d26880894ab62e2c85f908",
+    "originalSourceFileSha256": "12cebc9c2fd97a5761405ab43cb25e080e8b0adc6c22d8b716c0b128ea1f81e5",
+    "replacementReason": "원본 PDF·정답표를 확보하지 못했고 Git 원문에는 이차식의 최고차항 계수 조건이 없어 요청한 값이 유일하게 정해지지 않는다. 원문을 추정해 고치지 않고 기존 원문과 같은 문항이라고 주장하지 않는 새 문항으로 대체한다.",
+    "replacementStage": "CREATE",
+    "replacementDifferentiation": "원문은 절댓값 부등식의 해와 일반 이차부등식을 비교해 bc/a를 물었지만, 대체 문항은 기준값 7인 절댓값 부등식과 최고차항 계수 1인 이차부등식을 사용해 b−c를 구한다."
   },
   {
     "id": 18,
@@ -624,7 +634,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "②",
-    "solution": "[키포인트] 이차함수와 직선의 교점을 구하고 평행선을 이용해 다른 교점을 찾아 넓이를 계산한다.\n조건 정리: 점 $A$, $B$는 이차함수와 직선의 교점이며, $x$축과 평행한 선을 그어 교점 $C$, $D$를 잡는다.\n풀이 과정:\n1. 이차함수 $f(x)=x^2-4x$와 직선 $y=-2x+3$의 교점 $A, B$의 $x$좌표를 구한다.\n$x^2-4x = -2x+3 \\implies x^2-2x-3=0 \\implies (x-3)(x+1)=0$\n$x=-1$ 또는 $x=3$이고 $x_A < x_B$이므로 $x_A = -1, x_B = 3$이다.\n교점의 좌표는 $A(-1, f(-1)) = A(-1, 5)$, $B(3, f(3)) = B(3, -3)$이다.\n2. 점 $C$와 점 $D$의 좌표를 구한다.\n점 $C$는 점 $A$를 지나고 $x$축에 평행한 직선($y=5$)과 이차함수의 교점이므로 $x^2-4x=5 \\implies x^2-4x-5=0 \\implies (x-5)(x+1)=0$. $A$가 아닌 점이므로 $x_C=5$이며, 점 $C$의 좌표는 $(5, 5)$이다.\n점 $D$는 점 $B$를 지나고 $x$축에 평행한 직선($y=-3$)과 이차함수의 교점이므로 $x^2-4x=-3 \\implies x^2-4x+3=0 \\implies (x-3)(x-1)=0$. $B$가 아닌 점이므로 $x_D=1$이며, 점 $D$의 좌표는 $(1, -3)$이다.\n3. 삼각형의 넓이 $S$와 $T$를 구한다.\n삼각형 $ABD$의 밑변 $BD$의 길이는 $|3-1|=2$이고 높이는 $5 - (-3) = 8$이므로\n$S = \\frac{1}{2} \\times 2 \\times 8 = 8$\n삼각형 $ABC$의 밑변 $AC$의 길이는 $|5 - (-1)| = 6$이고 높이는 $5 - (-3) = 8$이므로\n$T = \\frac{1}{2} \\times 6 \\times 8 = 24$\n4. $S:T = 8:24 = 1:3$이므로 $a=1, b=3$이다. $a, b$는 서로소이므로 $a+b = 4$이다.\n결론: 최종 정답은 ②이다.",
+    "solution": "[키포인트] 이차함수와 직선의 교점을 구하고 평행선을 이용해 다른 교점을 찾아 넓이를 계산한다.\n조건 정리: 점 $A$, $B$는 이차함수와 직선의 교점이며, $x$축과 평행한 선을 그어 교점 $C$, $D$를 잡는다.\n풀이 과정:\n1. 이차함수 $f(x)=x^2-4x$와 직선 $y=-2x+3$의 교점 $A, B$의 $x$좌표를 구한다.\n$x^2-4x=-2x+3$\n$\\implies x^2-2x-3=0$\n$\\implies (x-3)(x+1)=0$\n$x=-1$ 또는 $x=3$이다.\n$x_A<x_B$이므로 $x_A=-1, x_B=3$이다.\n$f(-1)=(-1)^2-4(-1)=1+4=5$\n따라서 $A=(-1,5)$이다.\n$f(3)=3^2-4\\times3=9-12=-3$\n따라서 $B=(3,-3)$이다.\n2. 점 $C$와 점 $D$의 좌표를 구한다.\n점 $A$를 지나고 $x$축에 평행한 직선은 $y=5$이다.\n$x^2-4x=5$\n$\\implies x^2-4x-5=0$\n$\\implies (x-5)(x+1)=0$\n두 근은 $x=-1,5$이다.\n$C$는 $A$가 아닌 점이므로 $x_C=5$이다.\n따라서 $C=(5,5)$이다.\n점 $B$를 지나고 $x$축에 평행한 직선은 $y=-3$이다.\n$x^2-4x=-3$\n$\\implies x^2-4x+3=0$\n$\\implies (x-3)(x-1)=0$\n두 근은 $x=1,3$이다.\n$D$는 $B$가 아닌 점이므로 $x_D=1$이다.\n따라서 $D=(1,-3)$이다.\n3. 삼각형 $ABD$, $ABC$의 넓이를 구한다.\n$BD=|3-1|=2$\n$AC=|5-(-1)|=6$\n두 삼각형의 공통 높이는 $|5-(-3)|=8$이다.\n$S=\\frac12\\times2\\times8=8$\n$T=\\frac12\\times6\\times8=24$\n4. $S:T=8:24=1:3$이므로 $a=1,b=3$이다.\n따라서 $a+b=1+3=4$이고 최종 정답은 ②이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -682,20 +692,30 @@ window.questionBank = [
       "그래프"
     ],
     "wide": false,
-    "content": "이차함수 $f(x) = -x^2 + 4x$의 그래프와 직선 $y = x$가 만나는 두 점 중 원점이 아닌 점을 $A$라 하고, 점 $A$의 $x$좌표를 $a$라 하자. $0 < t < a$인 실수 $t$에 대하여 직선 $x = t$가 이차함수 $y = f(x)$의 그래프, 직선 $y = x$와 만나는 점을 각각 $P, Q$라 할 때, 선분 $PQ$의 길이는 $t = \\frac{n}{m}$일 때, 최댓값은 $\\frac{q}{p}$이다. $m + n + p + q$의 값은? (단, $p$와 $q$는 서로소인 자연수이다.) [4.8점]\n<svg width=\"240\" height=\"180\" viewBox=\"0 0 240 180\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"10\" y1=\"140\" x2=\"230\" y2=\"140\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n  <line x1=\"40\" y1=\"170\" x2=\"40\" y2=\"20\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n  <path d=\"M 20.0,196.2 L 23.8,184.5 L 27.7,173.2 L 31.5,162.4 L 35.3,152.0 L 39.2,142.1 L 43.0,132.6 L 46.9,123.6 L 50.7,115.1 L 54.5,107.0 L 58.4,99.4 L 62.2,92.2 L 66.0,85.5 L 69.9,79.3 L 73.7,73.5 L 77.6,68.2 L 81.4,63.3 L 85.2,58.9 L 89.1,55.0 L 92.9,51.5 L 96.7,48.5 L 100.6,45.9 L 104.4,43.8 L 108.2,42.2 L 112.1,41.0 L 115.9,40.3 L 119.8,40.0 L 123.6,40.2 L 127.4,40.9 L 131.3,42.0 L 135.1,43.6 L 138.9,45.6 L 142.8,48.1 L 146.6,51.1 L 150.4,54.5 L 154.3,58.4 L 158.1,62.7 L 162.0,67.5 L 165.8,72.8 L 169.6,78.5 L 173.5,84.7 L 177.3,91.3 L 181.1,98.4 L 185.0,106.0 L 188.8,114.0 L 192.7,122.5 L 196.5,131.4 L 200.3,140.8 L 204.2,150.7 L 208.0,161.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <path d=\"M 20.0,152.5 L 200.0,40.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\n  <path d=\"M 88.0,152.5 L 88.0,35.0\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n  <circle cx=\"40\" cy=\"140\" r=\"2\" fill=\"black\"/>\n  <circle cx=\"160\" cy=\"65\" r=\"2\" fill=\"black\"/>\n  <circle cx=\"88\" cy=\"56\" r=\"2\" fill=\"black\"/>\n  <circle cx=\"88\" cy=\"110\" r=\"2\" fill=\"black\"/>\n  <text x=\"30\" y=\"135\" font-size=\"10px\">O</text>\n  <text x=\"165\" y=\"65\" font-size=\"10px\">A</text>\n  <text x=\"75\" y=\"58\" font-size=\"10px\">P</text>\n  <text x=\"93\" y=\"115\" font-size=\"10px\">Q</text>\n  <text x=\"20\" y=\"25\" font-size=\"10px\">y</text>\n  <text x=\"225\" y=\"155\" font-size=\"10px\">x</text>\n  <text x=\"180\" y=\"45\" font-size=\"10px\">y = x</text>\n  <text x=\"160\" y=\"160\" font-size=\"10px\">y = f(x)</text>\n  <text x=\"75\" y=\"170\" font-size=\"10px\">x = t</text>\n  <defs>\n    <marker id=\"arrow\" markerWidth=\"10\" markerHeight=\"10\" refX=\"0\" refY=\"3\" orient=\"auto\">\n      <path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/>\n    </marker>\n  </defs>\n</svg>",
+    "content": "이차함수 $f(x)=-x^2+4x$의 그래프와 직선 $y=x$가 만나는 두 점 중 원점이 아닌 점을 $A$라 하고, 점 $A$의 $x$좌표를 $a$라 하자. $0<t<a$인 실수 $t$에 대하여 직선 $x=t$가 이차함수 $y=f(x)$의 그래프와 직선 $y=x$와 만나는 점을 각각 $P,Q$라 하자. 선분 $PQ$의 길이가 최대가 되도록 하는 $t$의 값을 $t_0$, 그때의 최댓값을 $M$이라 할 때, $t_0+M$의 값은? [4.8점]\n\n<svg width=\"240\" height=\"180\" viewBox=\"0 0 240 180\" xmlns=\"http://www.w3.org/2000/svg\">\n  <line x1=\"10\" y1=\"140\" x2=\"230\" y2=\"140\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n  <line x1=\"40\" y1=\"170\" x2=\"40\" y2=\"20\" stroke=\"black\" stroke-width=\"1\" marker-end=\"url(#arrow)\"/>\n  <path d=\"M 20.0,196.2 L 23.8,184.5 L 27.7,173.2 L 31.5,162.4 L 35.3,152.0 L 39.2,142.1 L 43.0,132.6 L 46.9,123.6 L 50.7,115.1 L 54.5,107.0 L 58.4,99.4 L 62.2,92.2 L 66.0,85.5 L 69.9,79.3 L 73.7,73.5 L 77.6,68.2 L 81.4,63.3 L 85.2,58.9 L 89.1,55.0 L 92.9,51.5 L 96.7,48.5 L 100.6,45.9 L 104.4,43.8 L 108.2,42.2 L 112.1,41.0 L 115.9,40.3 L 119.8,40.0 L 123.6,40.2 L 127.4,40.9 L 131.3,42.0 L 135.1,43.6 L 138.9,45.6 L 142.8,48.1 L 146.6,51.1 L 150.4,54.5 L 154.3,58.4 L 158.1,62.7 L 162.0,67.5 L 165.8,72.8 L 169.6,78.5 L 173.5,84.7 L 177.3,91.3 L 181.1,98.4 L 185.0,106.0 L 188.8,114.0 L 192.7,122.5 L 196.5,131.4 L 200.3,140.8 L 204.2,150.7 L 208.0,161.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1.5\"/>\n  <path d=\"M 20.0,152.5 L 200.0,40.0\" fill=\"none\" stroke=\"black\" stroke-width=\"1\"/>\n  <path d=\"M 88.0,152.5 L 88.0,35.0\" fill=\"none\" stroke=\"gray\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n  <circle cx=\"40\" cy=\"140\" r=\"2\" fill=\"black\"/>\n  <circle cx=\"160\" cy=\"65\" r=\"2\" fill=\"black\"/>\n  <circle cx=\"88\" cy=\"56\" r=\"2\" fill=\"black\"/>\n  <circle cx=\"88\" cy=\"110\" r=\"2\" fill=\"black\"/>\n  <text x=\"30\" y=\"135\" font-size=\"10px\">O</text>\n  <text x=\"165\" y=\"65\" font-size=\"10px\">A</text>\n  <text x=\"75\" y=\"58\" font-size=\"10px\">P</text>\n  <text x=\"93\" y=\"115\" font-size=\"10px\">Q</text>\n  <text x=\"20\" y=\"25\" font-size=\"10px\">y</text>\n  <text x=\"225\" y=\"155\" font-size=\"10px\">x</text>\n  <text x=\"180\" y=\"45\" font-size=\"10px\">y = x</text>\n  <text x=\"160\" y=\"160\" font-size=\"10px\">y = f(x)</text>\n  <text x=\"75\" y=\"170\" font-size=\"10px\">x = t</text>\n  <defs>\n    <marker id=\"arrow\" markerWidth=\"10\" markerHeight=\"10\" refX=\"0\" refY=\"3\" orient=\"auto\">\n      <path d=\"M0,0 L0,6 L6,3 z\" fill=\"black\"/>\n    </marker>\n  </defs>\n</svg>",
     "choices": [
-      "12",
-      "14",
-      "16",
-      "18",
-      "21"
+      "$\\frac{13}{4}$",
+      "$\\frac{7}{2}$",
+      "$\\frac{15}{4}$",
+      "$4$",
+      "$\\frac{17}{4}$"
     ],
-    "answer": "④",
-    "solution": "[키포인트] 두 그래프의 교점을 구하여 범위를 정하고, 길이에 대한 식을 세워 최댓값을 구한다.\n조건 정리: 점 $P$는 포물선 위, 점 $Q$는 직선 위의 점이며, $t$의 범위 내에서 $\\overline{PQ}$의 길이를 이차식으로 나타낸다.\n풀이 과정:\n1. 이차함수 $f(x) = -x^2 + 4x$와 직선 $y = x$의 교점 $A$를 구한다.\n$-x^2 + 4x = x \\implies x^2 - 3x = 0 \\implies x(x - 3) = 0$\n원점이 아닌 점이 $A$이므로 $x_A = 3$이다. 따라서 $a = 3$이다.\n2. 선분 $PQ$의 길이를 $t$에 관한 식으로 나타낸다.\n점 $P$의 $y$좌표는 $f(t) = -t^2 + 4t$이고, 점 $Q$의 $y$좌표는 $t$이다.\n$0 < t < 3$ 범위에서 포물선이 직선보다 위쪽에 있으므로\n$\\overline{PQ} = (-t^2 + 4t) - t = -t^2 + 3t$\n3. $\\overline{PQ}$의 최댓값을 구한다.\n$L(t) = -t^2 + 3t = -(t^2 - 3t) = -\\left(t - \\frac{3}{2}\\right)^2 + \\frac{9}{4}$\n따라서 $t = \\frac{3}{2}$일 때 최댓값 $\\frac{9}{4}$를 가진다.\n4. $m, n, p, q$ 값을 정한다.\n$t = \\frac{n}{m} = \\frac{3}{2} \\implies n = 3, m = 2$\n최댓값 $\\frac{q}{p} = \\frac{9}{4} \\implies q = 9, p = 4$\n$m + n + p + q = 2 + 3 + 4 + 9 = 18$이다.\n결론: 최종 정답은 ④이다.",
+    "answer": "③",
+    "solution": "[키포인트] 두 그래프의 교점으로 $t$의 범위를 정하고, 세로 길이를 이차식으로 나타내어 최댓값을 구한다.\n조건 정리\n$0<t<a$에서 점 $P$는 포물선 위, 점 $Q$는 직선 $y=x$ 위에 있다.\n풀이 과정\n먼저 두 그래프의 교점을 구한다.\n$-x^2+4x=x$\n$x^2-3x=0$\n$x(x-3)=0$\n원점이 아닌 점 $A$의 $x$좌표는 $a=3$이다.\n직선 $x=t$ 위에서 $P=(t,-t^2+4t)$, $Q=(t,t)$이다.\n$0<t<3$이므로 $t(3-t)>0$이다.\n따라서 $\\overline{PQ}=(-t^2+4t)-t=-t^2+3t$이다.\n완전제곱식으로 바꾸면\n$\\overline{PQ}=-\\left(t-\\frac32\\right)^2+\\frac94$이다.\n따라서 $t_0=\\frac32$, $M=\\frac94$이다.\n$t_0+M=\\frac32+\\frac94=\\frac{15}{4}$이다. 정답은 ③이다.",
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "sourceMode": "ALIVE_REPLACEMENT",
+    "provenance": "ALIVE_REPLACEMENT",
+    "sourceQid": "q20",
+    "sourceExamId": "25_강남여고_1학기_기말_고1_기출",
+    "originalSourceProvenance": "ORIGINAL",
+    "originalSourceGitBlob": "429e0a1b59cde35442d26880894ab62e2c85f908",
+    "originalSourceFileSha256": "12cebc9c2fd97a5761405ab43cb25e080e8b0adc6c22d8b716c0b128ea1f81e5",
+    "replacementReason": "원본 PDF·정답표를 확보하지 못했고 Git 원문은 p,q만 서로소 자연수라고 하여 m,n을 약분된 분수로 정할 수 없다. 원문 조건을 추정 보완하지 않고 원래 문항과 같은 문항이라고 주장하지 않는 새 문항으로 대체한다.",
+    "replacementStage": "CREATE",
+    "replacementDifferentiation": "원문은 최대 길이를 n/m, q/p로 나타내어 m+n+p+q를 물었지만, 대체 문항은 기존 그래프에서 최대가 되는 t와 최대 길이 자체를 구해 t0+M을 묻는다."
   },
   {
     "id": 21,
@@ -808,7 +828,7 @@ window.questionBank = [
     "content": "이차정사각행렬 $A$가 다음 조건을 만족시킨다.<table class=\"question-table\"><tr><td style=\"padding:3px 5px;\">(가) $A^2-A+E=O$</td><td style=\"padding:3px 5px;\">(나) $A\\begin{pmatrix}1\\\\2\\end{pmatrix}=\\begin{pmatrix}3\\\\-2\\end{pmatrix}$</td></tr></table>이 때 행렬 $A\\begin{pmatrix}-9\\\\6\\end{pmatrix}$의 모든 성분의 합을 구하시오. (단, $E$는 단위행렬, $O$는 영행렬이다.)",
     "choices": [],
     "answer": "6",
-    "solution": "[키포인트] 주어진 $2\\times1$ 행렬의 곱과 $A^2-A+E=O$를 이용해 목표 행렬의 성분 합을 구한다.\n\n$V=\\begin{pmatrix}1\\\\2\\end{pmatrix},\\quad W=AV=\\begin{pmatrix}3\\\\-2\\end{pmatrix}$라 하자. 조건 (가)에서 $A^2-A+E=O$이므로 $A^2=A-E$이다.\n\n따라서 $A^2V=(A-E)V=AV-V=W-V=\\begin{pmatrix}2\\\\-4\\end{pmatrix}$이다.\n\n구하려는 $2\\times1$ 행렬을 $V$와 $W$의 계수로 나타내면 $cV+dW=\\begin{pmatrix}-9\\\\6\\end{pmatrix}$이다. 성분을 비교하면 $c+3d=-9,\\ 2c-2d=6$이다. 둘째 식에서 $c-d=3$이므로 $c=d+3$이고, 첫째 식에 대입하면 $d=-3,\\ c=0$이다.\n\n따라서 $\\begin{pmatrix}-9\\\\6\\end{pmatrix}=-3W=-3AV$이다. 양변에 $A$를 곱하면 $A\\begin{pmatrix}-9\\\\6\\end{pmatrix}=-3A^2V=-3\\begin{pmatrix}2\\\\-4\\end{pmatrix}=\\begin{pmatrix}-6\\\\12\\end{pmatrix}$이다. 모든 성분의 합은 6이고 정답은 6이다.",
+    "solution": "[키포인트] 주어진 $2\\times1$ 행렬의 곱과 $A^2-A+E=O$를 이용해 목표 행렬의 성분 합을 구한다.\n\n$V=\\begin{pmatrix}1\\\\2\\end{pmatrix},\\quad W=AV=\\begin{pmatrix}3\\\\-2\\end{pmatrix}$라 하자.\n조건 (가) $A^2-A+E=O$에서\n$A^2=A-E$이다.\n$A^2V=(A-E)V$\n$=AV-V$\n$=W-V$\n$=\\begin{pmatrix}2\\\\-4\\end{pmatrix}$\n\n$\\begin{pmatrix}-9\\\\6\\end{pmatrix}=-3\\begin{pmatrix}3\\\\-2\\end{pmatrix}=-3W$이다.\n$A\\begin{pmatrix}-9\\\\6\\end{pmatrix}=-3AW$\n$=-3A^2V$\n$=-3\\begin{pmatrix}2\\\\-4\\end{pmatrix}$\n$=\\begin{pmatrix}-6\\\\12\\end{pmatrix}$\n$-6+12=6$\n따라서 모든 성분의 합은 6이고 정답은 6이다.",
     "subUnitKey": "H22-C-09-CORE",
     "subUnit": "경우의 수 핵심 개념",
     "subUnitConfidence": "rule_inferred",
