@@ -12,8 +12,7 @@
   function displayCourseName(value) {
     const name = clean(value).replace(/\s+/g, ' ');
     // 2015/2022 aliases share one galaxy. Original exam metadata stays intact.
-    // Normalize curriculum-year annotations only at the course-name boundary.
-    // This never changes an exam's original subject or source metadata.
+    // Curriculum year is source provenance, not part of the visual galaxy ID.
     const unversioned = name
       .replace(/^(?:20(?:15|22)|(?:15|22))\s*개정(?:\s*교육과정)?\s*[-·:]?\s*/, '')
       .replace(/\s*[(（]?\s*20(?:15|22)\s*(?:개정(?:\s*교육과정)?)?\s*[)）]?\s*$/, '');
@@ -26,7 +25,7 @@
       '수학II': '미적분I', '수학2': '미적분I',
       '미적분I': '미적분I', '미적분1': '미적분I',
       '미적분': '미적분II', '미적분II': '미적분II', '미적분2': '미적분II',
-      '기하와벡터': '기하',
+      '기하': '기하와벡터', '기하와벡터': '기하와벡터',
       '확률과통계': '확률과 통계',
     };
     return aliases[compact] || unversioned || '과정 미상';
