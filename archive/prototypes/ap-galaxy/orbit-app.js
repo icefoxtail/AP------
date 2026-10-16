@@ -18,6 +18,7 @@
     atlasExamCount: $('atlasExamCount'), atlasGroupCount: $('atlasGroupCount'), atlasDetailCount: $('atlasDetailCount'),
     atlasExplore: $('atlasExplore'), atlasOverview: $('atlasOverview'), atlasPanel: $('atlasPanel'), atlasCollapse: $('atlasCollapse'),
     scaleRail: $('scaleRail'), scaleLabel: $('scaleLabel'), scaleCaption: $('scaleCaption'),
+    galaxyNav: $('galaxyNav'), galaxyNavGroups: $('galaxyNavGroups'),
     facetNav: $('facetNav'), facetSummary: $('facetSummary'), clearFacetSelections: $('clearFacetSelections'),
     facetGrade: $('facetGrade'), facetTerm: $('facetTerm'), facetYear: $('facetYear'), facetSchool: $('facetSchool'), facetSubject: $('facetSubject'), selectCurrentRange: $('selectCurrentRange'),
   };
@@ -30,7 +31,9 @@
     questionRows: [], selectedQuestion: null, readerMode: 'exam', readerGeneration: 0,
     examGeneration: 0, frameGeneration: 0, entrySnapshot: null, pendingExamFocus: '', instant: false,
     examsByFile: new Map(), scaleMode: 'macro', atlasCollapsed: false, solutionFallback: false,
+    galaxyNavigationSections: [], galaxyNavResizeObserver: null,
   };
+  const galaxyNavigation = window.APGalaxyNavigationModel;
   const clean = (value) => String(value ?? '').normalize('NFC').trim();
   const examTitle = (exam) => {
     const type = exam.examType === 'final' ? '기말고사' : '중간고사';
@@ -243,21 +246,13 @@
       ui.facetSpaceLabels.append(label);
     }
   }
+  const curriculumGroupKeyForExam = (exam) => galaxyNavigation.curriculumGroupForExam(exam);
   const groupKeyForExam = (exam) => {
     if (state.groupMode === 'school') {
       const school = clean(exam.school) || '학교 미상';
       return { id: 'school:' + school, name: school, order: 0 };
     }
-    if (state.groupMode === 'curriculum') {
-      const grade = exam.grade || '학년 미상';
-      if (/^중[123]$/.test(grade)) {
-        return { id: 'curriculum:middle:' + grade, name: grade + ' 은하', order: Number(grade.slice(1)) };
-      }
-      const course = exam.primaryStandardCourse || exam.courseRanges?.[0]?.standardCourse || exam.subject || '과정 미상';
-      return { id: 'curriculum:high:' + course, name: course, order: 10 };
-    }
-    const course = exam.primaryStandardCourse || exam.courseRanges?.[0]?.standardCourse || exam.subject || '과정 미상';
-    return { id: 'curriculum:high:' + course, name: course, order: 10 };
+    return curriculumGroupKeyForExam(exam);
   };
   const groupExams = (exams) => {
     const groups = new Map();
@@ -268,6 +263,73 @@
     }
     return [...groups.values()].sort((a, b) => (a.order - b.order) || a.name.localeCompare(b.name, 'ko'));
   };
+  function syncGalaxyNavigation() {
+    ui.galaxyNavGroups?.querySelectorAll('[data-galaxy-id]').forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.dataset.galaxyId === state.focusedGroupId));
+    });
+  }
+  function renderGalaxyNavigation() {
+    if (!ui.galaxyNavGroups || !galaxyNavigation) return;
+    state.galaxyNavigationSections = galaxyNavigation.buildNavigationSections(state.exams);
+    ui.galaxyNavGroups.replaceChildren();
+    for (const section of state.galaxyNavigationSections) {
+      const sectionElement = document.createElement('section');
+      sectionElement.className = 'galaxy-nav-group';
+      sectionElement.dataset.navGroup = section.id;
+      const heading = document.createElement('h2');
+      heading.textContent = section.label;
+      const items = document.createElement('div');
+      items.className = 'galaxy-nav-items';
+      for (const item of section.items) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'galaxy-nav-link';
+        button.dataset.galaxyId = item.id;
+        button.textContent = item.name;
+        button.disabled = item.count === 0;
+        button.setAttribute('aria-pressed', String(item.id === state.focusedGroupId));
+        const scopeLabel = section.id === 'high2' ? '고2 자료 ' : '';
+        button.setAttribute('aria-label', item.name + ' 은하 · ' + scopeLabel + item.count.toLocaleString() + '개 시험지 · 눌러서 이동');
+        items.append(button);
+      }
+      sectionElement.append(heading, items);
+      ui.galaxyNavGroups.append(sectionElement);
+    }
+    updateGalaxyNavigationOffset();
+  }
+  function updateGalaxyNavigationOffset() {
+    const universe = $('universe');
+    if (!universe || !ui.galaxyNav) return;
+    const navBottom = ui.galaxyNav.getBoundingClientRect().bottom - universe.getBoundingClientRect().top;
+    if (Number.isFinite(navBottom)) universe.style.setProperty('--galaxy-nav-offset', `${Math.ceil(navBottom + 12)}px`);
+  }
+  function syncGroupModeButtons() {
+    $('groupModes').querySelectorAll('[data-group-mode]').forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.dataset.groupMode === state.groupMode));
+    });
+  }
+  function navigateToGalaxy(id) {
+    const target = state.galaxyNavigationSections.flatMap((section) => section.items).find((item) => item.id === id);
+    if (!target || target.count === 0) return;
+    const snapshot = state.entrySnapshot || captureNavigation();
+    if (state.selectedExam) closeExam({ restore: false });
+    state.entrySnapshot = snapshot;
+    if (state.list) toggleList(false);
+    state.groupMode = 'curriculum';
+    syncGroupModeButtons();
+    ui.grade.value = '';
+    ui.school.value = '';
+    ui.year.value = '';
+    if (ui.term) ui.term.value = '';
+    if (ui.subject) ui.subject.value = '';
+    ui.unit.value = '';
+    ui.search.value = '';
+    state.focusedGroupId = '';
+    state.world?.clearFocus();
+    renderScene();
+    focusGroup(id);
+    syncGalaxyNavigation();
+  }
   const selectVisibleData = (allGroups) => {
     const groups = allGroups;
     const visibleExams = [];
@@ -351,6 +413,7 @@
     renderScene();
     if (!state.world?.restoreNavigation(snapshot.camera)) state.world?.resetCamera();
     renderSatelliteLabels();
+    syncGalaxyNavigation();
   }
   function renderQuestionOrbit(rows) {
     ui.questionOrbit.replaceChildren();
@@ -796,6 +859,7 @@
     state.visibleGroups = selection.groups;
     state.visibleExams = selection.visibleExams;
     state.groupsById = new Map(state.visibleGroups.map((group) => [group.id, group]));
+    syncGalaxyNavigation();
     ui.labels.replaceChildren();
     state.groupLabels.clear();
     for (const group of state.visibleGroups) makeGroupLabel(group);
@@ -814,6 +878,7 @@
       details: state.visibleExams,
     });
     renderSatelliteLabels();
+    syncGalaxyNavigation();
     setFilterSummary();
     createAccessibleList();
     const facetNodes = renderFacets();
@@ -854,6 +919,7 @@
     state.focusedGroupId = id;
     state.world?.focusGroup(id);
     renderSatelliteLabels();
+    syncGalaxyNavigation();
   }
 
   function setupFilterOptions() {
@@ -873,6 +939,7 @@
     state.catalogExamCount = catalog.exams.filter((exam) => exam.file).length;
     state.exams = catalog.exams.filter((exam) => exam.file && exam.contentType === '기출');
     state.examsByFile = new Map(state.exams.map(exam => [exam.file, exam]));
+    renderGalaxyNavigation();
     state.records = catalog.records;
     state.tagsByFile.clear();
     state.filesByTag.clear();
@@ -890,7 +957,7 @@
     renderScene();
   }
   async function startUniverse() {
-    const module = await import('./assets/orbital-world.js?v=20261014-curriculum-orbit-1');
+    const module = await import('./assets/orbital-world.js?v=20261016-galaxy-nav-2');
     state.world = module.createOrbitWorld({
       canvas: ui.canvas,
       onGroup: (id) => focusGroup(id),
@@ -914,7 +981,7 @@
       onScale: (mode) => updateScaleUI(mode),
       onBlackhole: () => window.open('../../generated-bank.html', '_blank', 'noopener'),
       onFrame: (positions) => {
-        const reservedRects = [...document.querySelectorAll('.topbar,.scene-heading,.scene-hud,.scene-footer,.entry-chip,.scale-rail,.scale-caption:not([hidden]),.filter-panel:not([hidden]),.list-panel.open,.drawer.open')]
+        const reservedRects = [...document.querySelectorAll('.topbar,.galaxy-nav,.scene-heading,.scene-hud,.scene-footer,.entry-chip,.scale-rail,.scale-caption:not([hidden]),.filter-panel:not([hidden]),.list-panel.open,.drawer.open')]
           .filter((element) => element.getClientRects().length)
           .map((element) => element.getBoundingClientRect());
         const overlapsChrome = (point, halfWidth, halfHeight) => reservedRects.some((rect) =>
@@ -1094,6 +1161,12 @@
   }
 
   async function init() {
+    updateGalaxyNavigationOffset();
+    window.addEventListener('resize', updateGalaxyNavigationOffset, { passive: true });
+    if (typeof ResizeObserver === 'function' && ui.galaxyNav) {
+      state.galaxyNavResizeObserver = new ResizeObserver(updateGalaxyNavigationOffset);
+      state.galaxyNavResizeObserver.observe(ui.galaxyNav);
+    }
     const updateSearchPlaceholder = () => {
       ui.search.placeholder = matchMedia('(max-width:760px)').matches
         ? '학교·학년·과정'
@@ -1118,6 +1191,10 @@
     ui.filterToggle.addEventListener('click', () => toggleFilters());
     $('closeFilters').addEventListener('click', () => toggleFilters(false));
     $('viewToggle').addEventListener('click', () => toggleList());
+    ui.galaxyNavGroups?.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-galaxy-id]');
+      if (button && !button.disabled) navigateToGalaxy(button.dataset.galaxyId);
+    });
     ui.facetNav?.addEventListener('click', (event) => {
       const button = event.target.closest('[data-facet-kind]');
       if (button) applyFacet(button.dataset.facetKind, button.dataset.facetValue);

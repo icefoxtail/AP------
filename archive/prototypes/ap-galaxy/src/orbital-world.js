@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-const ORBIT_COLORS = [0x698cbe, 0x9f8bc6, 0x63a9a6, 0xc49485, 0x8094bf, 0x8bb3a9, 0xbe9e70, 0x819cc0, 0xb887a1, 0x78a7a7, 0x9a8cc1, 0x82a6bd];
+const ORBIT_COLORS = [0x77a5df, 0xb197dc, 0x66c2bb, 0xd39a86, 0x82a0d2, 0x7fc3ad, 0xd3aa70, 0x7da2ce, 0xc28da8, 0x72b9b7, 0x9f91d2, 0x7ea9c2];
 const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
 const JUPITER_EXAM_FILE = 'original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js';
 
@@ -1071,19 +1071,19 @@ function hashUnit(text) {
       if (animate) group.orbitPhase += group.speed * elapsed;
       group.angle = group.layoutAngle + group.orbitPhase;
       const emphasized = group.id === focusedGroupId;
-      group.hub.scale.setScalar(group.hubBaseScale);
+      group.hub.scale.setScalar(group.hubBaseScale * (emphasized ? 1.08 : 1));
       // Keep the overview's shared orbital frame legible at a glance. The
       // focused route still wins by a wide margin, while the quiet paths give
       // the wide shot a stable sense of scale and depth.
-      group.orbitPath.material.opacity = emphasized ? .42 : focusedGroupId ? .002 : .002;
+      group.orbitPath.material.opacity = emphasized ? .46 : focusedGroupId ? .014 : .075;
       for (let i = 0; i < group.shellMaterials.length; i += 1) {
-        group.shellMaterials[i].opacity = emphasized ? .34 - i * .035 : focusedGroupId ? .002 : .003;
+        group.shellMaterials[i].opacity = emphasized ? .36 - i * .035 : focusedGroupId ? .012 : .032;
       }
       const quietSchoolMode = group.mode === 'school';
       group.galaxy.material.opacity = emphasized ? .92 : quietSchoolMode ? .54 : .8;
       group.cloud.material.opacity = emphasized ? .2 : quietSchoolMode ? .035 : .16;
       group.nebulaBillboard.material.opacity = emphasized ? .24 : quietSchoolMode ? .045 : .2;
-      group.nucleusGlow.material.opacity = emphasized ? .52 : .34;
+      group.nucleusGlow.material.opacity = emphasized ? .58 : .35;
       const coordinates = groupCoordinates(group.angle, group.orbitRadius);
       const x = coordinates.x;
       const z = coordinates.z;
