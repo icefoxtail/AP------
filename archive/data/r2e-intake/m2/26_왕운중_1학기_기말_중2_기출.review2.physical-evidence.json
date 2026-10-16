@@ -1,0 +1,1581 @@
+{
+  "schemaVersion": "JS_ARCHIVE_PHYSICAL_REVIEW_EVIDENCE_v1",
+  "stage": "R2",
+  "generation": "M2_1_CREATE_FIRST_2026_10_03",
+  "examPath": "archive/exams/original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.js",
+  "examSha256": "sha256:da835b83d4da4cc723d3e9bc0ae1b797da7d9fe332f8f0d80f266c79148ac0eb",
+  "finalArtifactGitBlob": "a52f3aa0262a2d6463e66077112706d774bc9547",
+  "questionCount": 24,
+  "sourceAuthority": {
+    "inputReview1ReceiptBlob": "fc2f7e4bd6c8e42380c64e46c5ef54b46eb7e2c0",
+    "inputReview1ValidatorGitBlob": "0a7ca6968aef084b2f2014778f573f335cf48cde",
+    "inputReview1ArtifactSha": "373e7a19d65a2ca93bf4e8bdbd834fc73e01d457",
+    "protectedBaselineGitBlob": "ded21559b807d94b699243074533e4d9e01f7d37",
+    "protectedFieldRecheck": "24/24 exact in current R2; deterministic repair changed only q7/q17/q19 subUnitKey/subUnit",
+    "linkedProblemImages": [
+      {
+        "qid": 8,
+        "path": "archive/assets/images/26_왕운중_1학기_기말_중2_기출/q8.png",
+        "gitBlobSha": "55c0123ff6a1b92258fad4f09b402c490d0d8a40",
+        "pixelReview": "PASS_THIS_R2",
+        "observedFact": "11 identical tiles; 3x=5y; total height x+2y"
+      },
+      {
+        "qid": 15,
+        "path": "archive/assets/images/26_왕운중_1학기_기말_중2_기출/q15.png",
+        "gitBlobSha": "2d9ff180a5916a7fee7404426cb425a915669293",
+        "pixelReview": "PASS_THIS_R2",
+        "observedFact": "y=bx-a slopes downward and crosses positive y-axis"
+      },
+      {
+        "qid": 18,
+        "path": "archive/assets/images/26_왕운중_1학기_기말_중2_기출/q18.png",
+        "gitBlobSha": "54712d7230c09b2e373640ebfed74c4d3a4e8e90",
+        "pixelReview": "PASS_THIS_R2",
+        "observedFact": "B on y-axis at y=3; C on y=-2x+9 and y=3; A is intersection structure"
+      },
+      {
+        "qid": 24,
+        "path": "archive/assets/images/26_왕운중_1학기_기말_중2_기출/q24.png",
+        "gitBlobSha": "6bac2e77c50e07cf10565db38b30a3901f2b6333",
+        "pixelReview": "PASS_THIS_R2",
+        "observedFact": "fixed lines -x+y-4=0 and 3x+y+4=0 and their intersection geometry"
+      }
+    ],
+    "rpmCrosswalkBlob": "0b9765009fdf8c1a832d248cf255a3c1fa609b59",
+    "rpmTaxonomyBlob": "5423e0867708382d9d9e3ae58583c6f02affc07d"
+  },
+  "questionRows": [
+    {
+      "qid": 1,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q1에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 식 정리: (a+5)x+(-3-b)y+11=0. 두 미지수 계수가 모두 0이 아니어야 하므로 a≠-5, b≠-3 → ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 식 정리: (a+5)x+(-3-b)y+11=0. 두 미지수 계수가 모두 0이 아니어야 하므로 a≠-5, b≠-3 → ②. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q1의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 2,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q2에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: x=9-2y, x,y가 자연수이면 y=1,2,3,4에서 (7,1),(5,2),(3,3),(1,4). x-y=6,3,0,-3이므로 -6은 불가 → ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. x=9-2y, x,y가 자연수이면 y=1,2,3,4에서 (7,1),(5,2),(3,3),(1,4). x-y=6,3,0,-3이므로 -6은 불가 → ⑤. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q2의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 3,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q3에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: (3,-1)을 5x-2(ay-4)=7에 대입하면 15-2(-a-4)=7, 2a=-16, a=-8 → ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. (3,-1)을 5x-2(ay-4)=7에 대입하면 15-2(-a-4)=7, 2a=-16, a=-8 → ①. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q3의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 4,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q4에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 첫 연립방정식에서 y=5-2x, 3x-2y=11에 대입하여 (m,n)=(3,-1). 두 번째는 3x-y=8, -x-3y=4이므로 (x,y)=(2,-2) → ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 첫 연립방정식에서 y=5-2x, 3x-2y=11에 대입하여 (m,n)=(3,-1). 두 번째는 3x-y=8, -x-3y=4이므로 (x,y)=(2,-2) → ③. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q4의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 5,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q5에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 0.6순환=2/3, 1.3순환=4/3. x+2y=3, x-4y=12을 풀면 y=-3/2, x=6, xy=-9 → ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 0.6순환=2/3, 1.3순환=4/3. x+2y=3, x-4y=12을 풀면 y=-3/2, x=6, xy=-9 → ④. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q5의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 6,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q6에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: y=x+4를 2x-3y=-14에 대입하면 -x-12=-14, x=2, y=6 → ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. y=x+4를 2x-3y=-14에 대입하면 -x-12=-14, x=2, y=6 → ①. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q6의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 7,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q7에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 각 선택지를 두 직선의 위치 관계로 검토하면 ②는 일치로 무수히 많고 ③은 평행으로 해 없음. ④는 수평선과 수직선이라 한 점에서 만나므로 유일하게 참 → ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 각 선택지를 두 직선의 위치 관계로 검토하면 ②는 일치로 무수히 많고 ③은 평행으로 해 없음. ④는 수평선과 수직선이라 한 점에서 만나므로 유일하게 참 → ④. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q7의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. formal R1 compare 후 발견한 subUnit drift를 current semantic에 맞게 deterministic minimal repair했고 protected fields/solution은 변경하지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 8,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q8에 protected-field drift가 없다. current R2 frozen source-pixel checkpoint(blob 55c0123ff6a1b92258fad4f09b402c490d0d8a40)에서 11개 타일 배열, 3x=5y 및 높이 x+2y를 직접 확인해 source 의미와 풀이가 일치한다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 타일 긴 변 x, 짧은 변 y. 원본 그림에서 가로 3x=5y, 세로 x+2y. 둘레 208이므로 2{3x+(x+2y)}=208 → 2x+y=52. x=20,y=12, 넓이 240 → ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 타일 긴 변 x, 짧은 변 y. 원본 그림에서 가로 3x=5y, 세로 x+2y. 둘레 208이므로 2{3x+(x+2y)}=208 → 2x+y=52. x=20,y=12, 넓이 240 → ⑤. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual/source necessity recheck PASS: 문제 이미지가 결정 사실을 제공하며 same-stage frozen pixel evidence로 그 사실을 확인했다. 별도 solutionImage는 필요하지 않다. current R2 frozen source-pixel checkpoint(blob 55c0123ff6a1b92258fad4f09b402c490d0d8a40)에서 11개 타일 배열, 3x=5y 및 높이 x+2y를 직접 확인해 source 의미와 풀이가 일치한다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q8의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 9,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q9에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 함수는 각 x에 y가 하나여야 한다. 자연수 x의 소인수는 예: x=12에서 2,3처럼 여러 값이 가능하므로 함수가 아님 → ⑤."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 함수는 각 x에 y가 하나여야 한다. 자연수 x의 소인수는 예: x=12에서 2,3처럼 여러 값이 가능하므로 함수가 아님 → ⑤. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q9의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 10,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q10에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: f(3)=6-a=3에서 a=3. f(b)=2b-3=5에서 b=4. ab=12 → ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. f(3)=6-a=3에서 a=3. f(b)=2b-3=5에서 b=4. ab=12 → ④. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q10의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 11,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q11에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: y축 방향 -3 평행이동 후 y=-4x+a-3. x절편 -2이므로 0=8+a-3, a=-5 → ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. y축 방향 -3 평행이동 후 y=-4x+a-3. x절편 -2이므로 0=8+a-3, a=-5 → ②. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q11의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 12,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q12에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: ㄱ,-2; ㄴ,-3; ㄷ,1/2; ㄹ,-5; ㅁ,-2의 기울기와 절편을 직접 비교. 증가하는 그래프는 ㄷ 하나뿐이므로 ⑤만 참."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. ㄱ,-2; ㄴ,-3; ㄷ,1/2; ㄹ,-5; ㅁ,-2의 기울기와 절편을 직접 비교. 증가하는 그래프는 ㄷ 하나뿐이므로 ⑤만 참. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board recheck: source의 ㄱ/ㄴ/ㄷ/ㄹ/ㅁ 구조를 solution이 항목별 독립 줄/판정으로 분리하고 마지막 결론을 별도 제시한다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q12의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 13,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q13에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 기울기=Δy/Δx=-8/2=-4. 보기 중 y=-4x → ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 기울기=Δy/Δx=-8/2=-4. 보기 중 y=-4x → ①. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q13의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 14,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q14에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 두 점의 기울기 a=(12-2)/(4-(-1))=2. 직선 y=2x+4에 (b,6) 대입해 b=1, a+b=3 → ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 두 점의 기울기 a=(12-2)/(4-(-1))=2. 직선 y=2x+4에 (b,6) 대입해 b=1, a+b=3 → ③. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q14의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 15,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q15에 protected-field drift가 없다. current R2 frozen source-pixel checkpoint(blob 2d9ff180a5916a7fee7404426cb425a915669293)에서 y=bx-a 직선이 우하향하고 양의 y절편을 가지는 사실을 확인했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 원본 그래프가 오른쪽 아래로 향해 b<0, y축 양의 부분과 만나 -a>0 즉 a<0. 따라서 ab>0, a+b<0이고 새 직선은 제2사분면을 지나지 않음 → ②."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 원본 그래프가 오른쪽 아래로 향해 b<0, y축 양의 부분과 만나 -a>0 즉 a<0. 따라서 ab>0, a+b<0이고 새 직선은 제2사분면을 지나지 않음 → ②. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual/source necessity recheck PASS: 문제 이미지가 결정 사실을 제공하며 same-stage frozen pixel evidence로 그 사실을 확인했다. 별도 solutionImage는 필요하지 않다. current R2 frozen source-pixel checkpoint(blob 2d9ff180a5916a7fee7404426cb425a915669293)에서 y=bx-a 직선이 우하향하고 양의 y절편을 가지는 사실을 확인했다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q15의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 16,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q16에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 100%를 5%씩 줄이는 횟수는 20회, 4분씩이므로 80분=1시간20분 → ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 100%를 5%씩 줄이는 횟수는 20회, 4분씩이므로 80분=1시간20분 → ③. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q16의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 17,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q17에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: -5x+2y+1=0 → y=(5/2)x-1/2. ① y절편 부호가 틀림, ② 증가 참, ③ 같은 기울기·다른 절편이라 평행, ④ x<0이면 y<0이라 제2사분면을 지나지 않음, ⑤ 점 대입 불성립. 정답 ②,④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. -5x+2y+1=0 → y=(5/2)x-1/2. ① y절편 부호가 틀림, ② 증가 참, ③ 같은 기울기·다른 절편이라 평행, ④ x<0이면 y<0이라 제2사분면을 지나지 않음, ⑤ 점 대입 불성립. 정답 ②,④. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q17의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. formal R1 compare 후 발견한 subUnit drift를 current semantic에 맞게 deterministic minimal repair했고 protected fields/solution은 변경하지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 18,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q18에 protected-field drift가 없다. current R2 frozen source-pixel checkpoint(blob 54712d7230c09b2e373640ebfed74c4d3a4e8e90)에서 y=3, B의 y축 위치, C의 y=-2x+9 위 위치와 A의 교점 구조를 확인했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 원본에서 B=(0,3), C는 y=-2x+9와 y=3의 교점 (3,3), BC=3. 넓이 3이므로 A의 y=5, y=-2x+9에서 A=(2,5), k=2. AB:y=x+3=-x+y-3=0이므로 a=-1,b=-3, 합 -2 → ①."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 원본에서 B=(0,3), C는 y=-2x+9와 y=3의 교점 (3,3), BC=3. 넓이 3이므로 A의 y=5, y=-2x+9에서 A=(2,5), k=2. AB:y=x+3=-x+y-3=0이므로 a=-1,b=-3, 합 -2 → ①. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual/source necessity recheck PASS: 문제 이미지가 결정 사실을 제공하며 same-stage frozen pixel evidence로 그 사실을 확인했다. 별도 solutionImage는 필요하지 않다. current R2 frozen source-pixel checkpoint(blob 54712d7230c09b2e373640ebfed74c4d3a4e8e90)에서 y=3, B의 y축 위치, C의 y=-2x+9 위 위치와 A의 교점 구조를 확인했다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q18의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 19,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q19에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: y축에 평행한 직선 위 두 점의 x좌표가 같으므로 2a=-a+9, a=3 → ③."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. y축에 평행한 직선 위 두 점의 x좌표가 같으므로 2a=-a+9, a=3 → ③. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q19의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. formal R1 compare 후 발견한 subUnit drift를 current semantic에 맞게 deterministic minimal repair했고 protected fields/solution은 변경하지 않았다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 20,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q20에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: -x+3y=5의 -2배는 2x-6y=-10이므로 a=2. 또 2배는 -2x+6y=10; -2x+6y=2b가 만나지 않으려면 2b≠10, b≠5. 따라서 a+b=7은 불가 → ④."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. -x+3y=5의 -2배는 2x-6y=-10이므로 a=2. 또 2배는 -2x+6y=10; -2x+6y=2b가 만나지 않으려면 2b≠10, b≠5. 따라서 a+b=7은 불가 → ④. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q20의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 21,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q21에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: x가 y보다 3 작으므로 x=y-3. x+2y=-6에서 y=-1,x=-4. 4x-3y=2k-3에 대입하면 -13=2k-3, k=-5."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. x가 y보다 3 작으므로 x=y-3. x+2y=-6에서 y=-1,x=-4. 4x-3y=2k-3에 대입하면 -13=2k-3, k=-5. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q21의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 22,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q22에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 서원이 승 x, 패 y라 두면 3x-2y=10, 서호 이동으로 3y-2x=20. 연립하면 x=14. 서호가 진 횟수=서원이 승 횟수=14회."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 서원이 승 x, 패 y라 두면 3x-2y=10, 서호 이동으로 3y-2x=20. 연립하면 x=14. 서호가 진 횟수=서원이 승 횟수=14회. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board/layout recheck: 핵심 설정→계산/판정→결론 순서가 학생 재현 가능하며 source의 필요한 구조를 축약해 잃지 않는다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q22의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 23,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q23에 protected-field drift가 없다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 원이 그래프 (5,-1),(2,5)의 기울기 -2이고 y절편은 9이므로 실제 함수의 y절편=9. 미남 그래프 절편 (4,0),(0,-3)의 기울기 3/4이므로 실제 기울기=3/4. 원래 y=3/4 x+9, k=12."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 원이 그래프 (5,-1),(2,5)의 기울기 -2이고 y절편은 9이므로 실제 함수의 y절편=9. 미남 그래프 절편 (4,0),(0,-3)의 기울기 3/4이므로 실제 기울기=3/4. 원래 y=3/4 x+9, k=12. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board recheck: 원이의 오류에서 y절편 복원, 미남의 오류에서 기울기 복원, 원래 함수와 k 계산이 독립 문단으로 분리되어 재현 가능하다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual necessity recheck PASS: 텍스트/식만으로 결정 과정을 재현할 수 있고 별도 solutionImage가 없어도 의미 손실이 없다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q23의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    },
+    {
+      "qid": 24,
+      "sourceExact": {
+        "status": "PASS",
+        "evidence": "R2 direct current-artifact/source parity recheck PASS: protected content/choices/answer/image/questionType는 protected baseline ded21559b807d94b699243074533e4d9e01f7d37와 24/24 exact 범위이며 q24에 protected-field drift가 없다. current R2 frozen source-pixel checkpoint(blob 6bac2e77c50e07cf10565db38b30a3901f2b6333)에서 -x+y-4=0, 3x+y+4=0 두 고정 직선과 교점 구조를 확인했다."
+      },
+      "answerMath": {
+        "status": "PASS",
+        "evidence": "R2 current-pass 독립 재계산: 세 직선이 삼각형을 만들지 않는 경우는 세 번째 y=ax+3이 기존 두 직선 중 하나와 평행하거나 세 직선이 한 점에서 만날 때. 평행 a=1 또는 -3. 기존 두 직선 교점 (-2,2)를 지나면 2=-2a+3 → a=1/2. 따라서 -3,1/2,1."
+      },
+      "solutionMath": {
+        "status": "PASS",
+        "evidence": "R2 current solution을 문제에서 다시 계산해 검증했다. 세 직선이 삼각형을 만들지 않는 경우는 세 번째 y=ax+3이 기존 두 직선 중 하나와 평행하거나 세 직선이 한 점에서 만날 때. 평행 a=1 또는 -3. 기존 두 직선 교점 (-2,2)를 지나면 2=-2a+3 → a=1/2. 따라서 -3,1/2,1. 현재 해설의 핵심식·중간값·결론이 일치하고 상위과정 우회가 없다."
+      },
+      "smallBoard": {
+        "status": "PASS",
+        "evidence": "R2 small-board recheck: 삼각형을 만들지 않는 세 경우를 (1)(2)(3)으로 분리해 각 조건·계산·결론이 학생 재현 가능한 구조다."
+      },
+      "curriculum": {
+        "status": "PASS",
+        "evidence": "R2 curriculum recheck PASS: 2022 중2 1학기 연립일차방정식·일차함수와 하위 선행 산술/대수만 사용하며 상위 학년 기법을 사용하지 않는다."
+      },
+      "visualNecessity": {
+        "status": "PASS",
+        "evidence": "R2 visual/source necessity recheck PASS: 문제 이미지가 결정 사실을 제공하며 same-stage frozen pixel evidence로 그 사실을 확인했다. 별도 solutionImage는 필요하지 않다. current R2 frozen source-pixel checkpoint(blob 6bac2e77c50e07cf10565db38b30a3901f2b6333)에서 -x+y-4=0, 3x+y+4=0 두 고정 직선과 교점 구조를 확인했다."
+      },
+      "meta": {
+        "status": "PASS",
+        "evidence": "R2 current Meta recheck: q24의 standard/subUnit/RPM semantic/projection을 current M2 crosswalk blob 0b9765009fdf8c1a832d248cf255a3c1fa609b59 및 taxonomy blob 5423e0867708382d9d9e3ae58583c6f02affc07d와 대조했다. current semantic과 일치해 추가 repair가 필요 없다."
+      },
+      "difficulty": {
+        "status": "PASS",
+        "evidence": "R2 difficulty current-pass recheck: 필요한 연산 단계·조건 결합·오답 유도 수준을 다시 검토했고 현재 난이도 분류를 바꿀 deterministic 근거가 없다."
+      },
+      "runtimeString": {
+        "status": "PASS",
+        "evidence": "R2 current JS question-bank string audit PASS: content/choices/answer/solution에서 고위험 doubled TeX escape를 발견하지 않았고 canonical validator의 VM runtime 검사로 최종 확인한다."
+      }
+    }
+  ],
+  "visualRows": [],
+  "metaRows": [
+    {
+      "qid": 1,
+      "result": "PASS",
+      "primaryMethod": "식을 한쪽으로 정리해 x,y의 계수가 모두 0이 아닌 조건을 세운다.",
+      "decisiveStep": "a+5≠0, -3-b≠0에서 a≠-5,b≠-3을 확정한다.",
+      "rpmDisposition": "M2-RPM-151:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "r2CurrentSubUnit": "연립일차방정식"
+    },
+    {
+      "qid": 2,
+      "result": "PASS",
+      "primaryMethod": "자연수 조건 아래 가능한 (x,y)를 빠짐없이 열거한다.",
+      "decisiveStep": "(7,1),(5,2),(3,3),(1,4)에서 x-y=-6만 불가능함을 확정한다.",
+      "rpmDisposition": "M2-RPM-150:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "r2CurrentSubUnit": "연립일차방정식"
+    },
+    {
+      "qid": 3,
+      "result": "PASS",
+      "primaryMethod": "주어진 해 (3,-1)을 일차방정식에 대입해 계수를 정한다.",
+      "decisiveStep": "2a=-16에서 a=-8을 확정한다.",
+      "rpmDisposition": "M2-RPM-150:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "r2CurrentSubUnit": "연립일차방정식"
+    },
+    {
+      "qid": 4,
+      "result": "PASS",
+      "primaryMethod": "첫 연립방정식의 해를 구해 m,n을 정한 뒤 두 번째 연립방정식을 대입법으로 푼다.",
+      "decisiveStep": "m=3,n=-1 후 x=2,y=-2를 얻는다.",
+      "rpmDisposition": "M2-RPM-149:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "r2CurrentSubUnit": "연립일차방정식"
+    },
+    {
+      "qid": 5,
+      "result": "PASS",
+      "primaryMethod": "순환소수를 분수로 바꾸고 두 식을 정수 계수로 정리해 가감한다.",
+      "decisiveStep": "x+2y=3,x-4y=12에서 x=6,y=-3/2를 얻어 xy=-9를 확정한다.",
+      "rpmDisposition": "M2-RPM-153:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "r2CurrentSubUnit": "연립일차방정식"
+    },
+    {
+      "qid": 6,
+      "result": "PASS",
+      "primaryMethod": "y=x+4를 첫 식에 직접 대입한다.",
+      "decisiveStep": "x=2,y=6을 얻는다.",
+      "rpmDisposition": "M2-RPM-149:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "r2CurrentSubUnit": "연립일차방정식"
+    },
+    {
+      "qid": 7,
+      "result": "PASS",
+      "primaryMethod": "각 계수 조건을 두 직선의 일치·평행·교차 관계로 해석한다.",
+      "decisiveStep": "수평선과 수직선이 한 점에서 만나는 ④만 항상 성립함을 확정한다.",
+      "rpmDisposition": "M2-RPM-155:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 3,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "r2CurrentSubUnit": "연립일차방정식",
+      "r2DeterministicRepair": "SUBUNIT_SEMANTIC_ALIGNMENT"
+    },
+    {
+      "qid": 8,
+      "result": "PASS",
+      "primaryMethod": "타일의 긴 변과 짧은 변을 미지수로 두고 그림의 동일 길이와 둘레를 연립한다.",
+      "decisiveStep": "3x=5y,2x+y=52에서 x=20,y=12를 얻어 넓이 240을 확정한다.",
+      "rpmDisposition": "M2-RPM-162:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "r2CurrentSubUnit": "연립일차방정식"
+    },
+    {
+      "qid": 9,
+      "result": "PASS",
+      "primaryMethod": "각 관계에서 하나의 x에 y가 하나로 정해지는지 검사한다.",
+      "decisiveStep": "12의 소인수가 2,3 두 개라 ⑤가 함수가 아님을 확정한다.",
+      "rpmDisposition": "M2-RPM-165:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "r2CurrentSubUnit": "일차함수의 뜻과 그래프"
+    },
+    {
+      "qid": 10,
+      "result": "PASS",
+      "primaryMethod": "f(3)=3에서 a를 정한 뒤 f(b)=5에서 b를 구한다.",
+      "decisiveStep": "a=3,b=4에서 ab=12를 확정한다.",
+      "rpmDisposition": "M2-RPM-164:FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_FUNCTION_VALUE",
+      "templateKey": "TPL_FUNCTION_VALUE_DIRECT",
+      "nullReason": "Current post-CREATE exam artifact does not materialize top-level problemTypeKey/templateKey. The RPM_PRIMARY_MIGRATION_GAP crosswalk candidate is retained as R1 lookup evidence only; R1 does not bootstrap missing CREATE Meta.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "r2CurrentSubUnit": "일차함수의 뜻과 그래프"
+    },
+    {
+      "qid": 11,
+      "result": "PASS",
+      "primaryMethod": "y축 방향 -3 평행이동을 상수항 감소로 바꾸고 x절편 조건을 대입한다.",
+      "decisiveStep": "(-2,0)을 y=-4x+a-3에 대입해 a=-5를 확정한다.",
+      "rpmDisposition": "M2-RPM-166:FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+      "nullReason": "Current post-CREATE exam artifact does not materialize top-level problemTypeKey/templateKey. The RPM_PRIMARY_MIGRATION_GAP crosswalk candidate is retained as R1 lookup evidence only; R1 does not bootstrap missing CREATE Meta.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "r2CurrentSubUnit": "일차함수의 뜻과 그래프"
+    },
+    {
+      "qid": 12,
+      "result": "PASS",
+      "primaryMethod": "보기별 기울기·절편·평행·증가 감소 성질을 독립적으로 점검한다.",
+      "decisiveStep": "양의 기울기를 갖는 ㄷ 하나뿐이어서 ⑤를 확정한다.",
+      "rpmDisposition": "M2-RPM-169:FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "nullReason": "Current post-CREATE exam artifact does not materialize top-level problemTypeKey/templateKey. The RPM_PRIMARY_MIGRATION_GAP crosswalk candidate is retained as R1 lookup evidence only; R1 does not bootstrap missing CREATE Meta.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "r2CurrentSubUnit": "일차함수의 뜻과 그래프"
+    },
+    {
+      "qid": 13,
+      "result": "PASS",
+      "primaryMethod": "x와 y의 변화량 비로 기울기를 계산한다.",
+      "decisiveStep": "-8/2=-4이므로 y=-4x를 고른다.",
+      "rpmDisposition": "M2-RPM-166:FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+      "nullReason": "Current post-CREATE exam artifact does not materialize top-level problemTypeKey/templateKey. The RPM_PRIMARY_MIGRATION_GAP crosswalk candidate is retained as R1 lookup evidence only; R1 does not bootstrap missing CREATE Meta.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "r2CurrentSubUnit": "일차함수의 뜻과 그래프"
+    },
+    {
+      "qid": 14,
+      "result": "PASS",
+      "primaryMethod": "두 점으로 기울기와 직선의 식을 정한 뒤 (b,6)을 대입한다.",
+      "decisiveStep": "a=2,y=2x+4,b=1에서 a+b=3을 확정한다.",
+      "rpmDisposition": "M2-RPM-170:FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_TWO_POINTS",
+      "nullReason": "Current post-CREATE exam artifact does not materialize top-level problemTypeKey/templateKey. The RPM_PRIMARY_MIGRATION_GAP crosswalk candidate is retained as R1 lookup evidence only; R1 does not bootstrap missing CREATE Meta.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "r2CurrentSubUnit": "일차함수의 뜻과 그래프"
+    },
+    {
+      "qid": 15,
+      "result": "PASS",
+      "primaryMethod": "원본 그래프에서 기울기와 y절편의 부호를 읽어 a,b의 부호를 정한다.",
+      "decisiveStep": "a<0,b<0이므로 새 직선의 기울기는 양수, y절편은 음수라 제2사분면을 지나지 않음을 확정한다.",
+      "rpmDisposition": "M2-RPM-166:FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+      "nullReason": "Current post-CREATE exam artifact does not materialize top-level problemTypeKey/templateKey. The RPM_PRIMARY_MIGRATION_GAP crosswalk candidate is retained as R1 lookup evidence only; R1 does not bootstrap missing CREATE Meta.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "r2CurrentSubUnit": "일차함수의 뜻과 그래프"
+    },
+    {
+      "qid": 16,
+      "result": "PASS",
+      "primaryMethod": "5% 감소 단위의 횟수와 4분 주기를 곱해 전체 시간을 구한다.",
+      "decisiveStep": "20회×4분=80분=1시간20분을 확정한다.",
+      "rpmDisposition": "M2-RPM-169:FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "nullReason": "Current post-CREATE exam artifact does not materialize top-level problemTypeKey/templateKey. The RPM_PRIMARY_MIGRATION_GAP crosswalk candidate is retained as R1 lookup evidence only; R1 does not bootstrap missing CREATE Meta.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "r2CurrentSubUnit": "일차함수의 뜻과 그래프"
+    },
+    {
+      "qid": 17,
+      "result": "PASS",
+      "primaryMethod": "일차방정식을 y=mx+n 꼴로 바꾸어 기울기·절편·평행·점 대입을 검사한다.",
+      "decisiveStep": "②와 ④만 참임을 독립 판단한다.",
+      "rpmDisposition": "M2-RPM-172:FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_GRAPH_BY_COEFFICIENTS",
+      "nullReason": "Current post-CREATE exam artifact does not materialize top-level problemTypeKey/templateKey. The RPM_PRIMARY_MIGRATION_GAP crosswalk candidate is retained as R1 lookup evidence only; R1 does not bootstrap missing CREATE Meta.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "r2CurrentSubUnit": "일차함수와 일차방정식의 관계",
+      "r2DeterministicRepair": "SUBUNIT_SEMANTIC_ALIGNMENT"
+    },
+    {
+      "qid": 18,
+      "result": "PASS",
+      "primaryMethod": "원본 그래프의 밑변 BC와 넓이로 A를 정한 뒤 A,B를 지나는 직선을 구한다.",
+      "decisiveStep": "A=(2,5),B=(0,3)에서 a=-1,b=-3,k=2를 얻어 합 -2를 확정한다.",
+      "rpmDisposition": "M2-RPM-176:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "r2CurrentSubUnit": "일차함수와 일차방정식의 관계"
+    },
+    {
+      "qid": 19,
+      "result": "PASS",
+      "primaryMethod": "y축에 평행한 직선에서 두 점의 x좌표가 같음을 이용한다.",
+      "decisiveStep": "2a=-a+9에서 a=3을 확정한다.",
+      "rpmDisposition": "M2-RPM-173:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "difficultyBucket": 2,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "r2CurrentSubUnit": "일차함수의 뜻과 그래프",
+      "r2DeterministicRepair": "SUBUNIT_SEMANTIC_ALIGNMENT"
+    },
+    {
+      "qid": 20,
+      "result": "PASS",
+      "primaryMethod": "첫 직선과의 일치 조건으로 a를 정하고 두 번째 직선과의 평행·비일치 조건으로 b를 제한한다.",
+      "decisiveStep": "a=2,b≠5이므로 a+b=7만 불가능함을 확정한다.",
+      "rpmDisposition": "M2-RPM-175:FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_RELATION",
+      "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+      "nullReason": "Current post-CREATE exam artifact does not materialize top-level problemTypeKey/templateKey. The RPM_PRIMARY_MIGRATION_GAP crosswalk candidate is retained as R1 lookup evidence only; R1 does not bootstrap missing CREATE Meta.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "r2CurrentSubUnit": "일차함수와 일차방정식의 관계"
+    },
+    {
+      "qid": 21,
+      "result": "PASS",
+      "primaryMethod": "x=y-3을 첫 방정식에 대입해 x,y를 정한 뒤 둘째 식으로 k를 구한다.",
+      "decisiveStep": "x=-4,y=-1을 넣어 k=-5를 확정한다.",
+      "rpmDisposition": "M2-RPM-151:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "r2CurrentSubUnit": "연립일차방정식"
+    },
+    {
+      "qid": 22,
+      "result": "PASS",
+      "primaryMethod": "두 사람의 승패 횟수를 x,y로 두고 각자의 계단 변화량을 연립방정식으로 세운다.",
+      "decisiveStep": "3x-2y=10,-2x+3y=20에서 x=14를 얻어 서호의 패배 14회를 확정한다.",
+      "rpmDisposition": "M2-RPM-156:FINAL",
+      "projectionDisposition": "RPM_ONLY",
+      "problemTypeKey": null,
+      "templateKey": null,
+      "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-03-SIMULTANEOUS_LINEAR_EQUATION",
+      "r2CurrentSubUnit": "연립일차방정식"
+    },
+    {
+      "qid": 23,
+      "result": "PASS",
+      "primaryMethod": "기울기만 잘못 본 그래프에서 실제 y절편을, y절편만 잘못 본 그래프에서 실제 기울기를 복원한다.",
+      "decisiveStep": "y=3/4 x+9를 복원하고 x=4에서 k=12를 확정한다.",
+      "rpmDisposition": "M2-RPM-177:FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_EQUATION",
+      "templateKey": "TPL_LINE_MULTI_CONDITION",
+      "nullReason": "Current post-CREATE exam artifact does not materialize top-level problemTypeKey/templateKey. The RPM_PRIMARY_MIGRATION_GAP crosswalk candidate is retained as R1 lookup evidence only; R1 does not bootstrap missing CREATE Meta.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_BASIC",
+      "r2CurrentSubUnit": "일차함수의 뜻과 그래프"
+    },
+    {
+      "qid": 24,
+      "result": "PASS",
+      "primaryMethod": "삼각형이 생기지 않는 경우를 두 평행 경우와 세 직선 공점 경우로 분류한다.",
+      "decisiveStep": "a=1,-3,1/2 세 값을 빠짐없이 얻는다.",
+      "rpmDisposition": "M2-RPM-175:FINAL",
+      "projectionDisposition": "RPM_PRIMARY_MIGRATION_GAP",
+      "problemTypeKey": "PT_LINE_RELATION",
+      "templateKey": "TPL_RELATION_MULTIPLE_POSITION",
+      "nullReason": "Current post-CREATE exam artifact does not materialize top-level problemTypeKey/templateKey. The RPM_PRIMARY_MIGRATION_GAP crosswalk candidate is retained as R1 lookup evidence only; R1 does not bootstrap missing CREATE Meta.",
+      "crossConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "lookupRefs": [
+        "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/middle2.json",
+        "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/MIDDLE/M2-1.md"
+      ],
+      "r2CurrentSubUnitKey": "M2-04-LINEAR_FUNCTION_EQUATION",
+      "r2CurrentSubUnit": "일차함수와 일차방정식의 관계"
+    }
+  ],
+  "solutionQualityCalibration": {
+    "sampleReadBeforeWork": true,
+    "calibrationStatus": "PASS",
+    "solutionWorkMode": "INDEPENDENT_REVIEW",
+    "calibrationOrder": "SAMPLES_PREFLIGHT_THEN_TARGET_BLIND_THEN_COMPARE",
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "qualityCompareCount": "24/24",
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:804586432b5d1100740f025700a14092b4cdd57a2443ccda7efb8cff3f9b65d5",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "sha256": "sha256:3eb164f35c323520bbc2c77825c5976b09bd919b9d1b50c91842ac94ea225b99",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd"
+      }
+    ],
+    "goldenSampleQuestionRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:4a72d4273d234574ad3246ff704ab461af5627dd9ae76b61fcab701efda6e7c3",
+        "solutionExcerpt": "먼저 내분점 $P$의 좌표를 구한다.\n점 $P$는 선분 $AB$를 $2:1$로 내분한다.\n내분점 공식에서는 ",
+        "observation": "학생이 재현 가능한 순서로 계산 단계가 이어지고 핵심식·중간값·결론이 연결된다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:b471d096e0e1c9838b6f616ea43556883eb7ce36844abb521239cbb4168e2dba",
+        "solutionExcerpt": "두 직선이 평행하므로 기울기가 서로 같다.\n직선이 $y=mx+n$ 꼴로 주어지면 $x$의 계수 $m$이 기울",
+        "observation": "학생이 재현 가능한 순서로 계산 단계가 이어지고 핵심식·중간값·결론이 연결된다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 1,
+        "solutionSha256": "sha256:027fed72712b800af24c39fa923bd97f0949e7facc5f526e5abccbee7f9e5682",
+        "solutionExcerpt": "두 점 사이의 거리는 두 점의 $x$좌표 차와 $y$좌표 차를 이용해 구한다.\n점 $A(-2,5)$, $B(",
+        "observation": "학생이 재현 가능한 순서로 계산 단계가 이어지고 핵심식·중간값·결론이 연결된다."
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "qid": 2,
+        "solutionSha256": "sha256:84e0fa32e411a8c3059958c6409bb588d26c1a44138e60ce9e1ccd49a7d3f1e2",
+        "solutionExcerpt": "두 직선이 서로 수직이므로 두 직선의 기울기의 곱은 $-1$이다.\n먼저 직선\n$x+3y+2=0$\n을 $y$에",
+        "observation": "학생이 재현 가능한 순서로 계산 단계가 이어지고 핵심식·중간값·결론이 연결된다."
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "sha256": "sha256:dbf9f3d1e6cbedbb0df8b0072e7682a60643d3c94578cd1d99e63dfa444adb23",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa"
+      }
+    ]
+  },
+  "independence": {
+    "blindDecisionFrozenBeforeR1Compare": true,
+    "blindFreezeSha256": "sha256:52292eeb0adb8be46e05e6f8dd923044ae2ec46face263a7e4f745c7ecb3bf53",
+    "freshFromArtifactBytes": true,
+    "priorStageCountsUsedAsEvidence": false,
+    "recheckSnapshotBlob": "595064c70340771b5882045828ad420053afb89d",
+    "formalR1CompareCompleted": true
+  },
+  "summary": {
+    "questionCount": 24,
+    "questionEvidenceRows": 24,
+    "linkedSolutionVisualCount": 0,
+    "visualEvidenceRows": 0,
+    "metaEvidenceRows": 24,
+    "itemHoldCount": 0,
+    "deterministicRepairCount": 3,
+    "deterministicRepairQids": [
+      7,
+      17,
+      19
+    ]
+  }
+}

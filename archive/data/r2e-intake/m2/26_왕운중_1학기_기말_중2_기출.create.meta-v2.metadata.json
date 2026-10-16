@@ -5,7 +5,7 @@
   "canonicalOrdinal": 19,
   "examFile": "26_왕운중_1학기_기말_중2_기출.js",
   "examPath": "archive/exams/original/middle/m2/1final/26_왕운중_1학기_기말_중2_기출.js",
-  "examGitBlob": "373e7a19d65a2ca93bf4e8bdbd834fc73e01d457",
+  "examGitBlob": "a52f3aa0262a2d6463e66077112706d774bc9547",
   "questionCount": 24,
   "tagMetaAuditCount": "24/24",
   "tagMetaCompleteCount": "24/24",
@@ -118,7 +118,9 @@
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
       "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
       "crossConceptKeys": [],
-      "conditionKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
       "integrationPattern": "NONE",
       "metaConfidence": "medium",
       "metaBoundaryFlag": "NEAREST_CANONICAL",
@@ -483,7 +485,9 @@
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
       "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_AREA"
+      ],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
       "metaConfidence": "high",
@@ -913,7 +917,9 @@
       "nullReason": null,
       "projectionReason": "FAMILY_BINDING_GAP: mapped PT/TPL candidate is retained as migration-gap evidence; exact ACTIVE curriculum+L1+L2 binding is not claimed.",
       "crossConceptKeys": [],
-      "conditionKeys": [],
+      "conditionKeys": [
+        "COND_NEGATIVE"
+      ],
       "integrationPattern": "SEQUENTIAL",
       "metaConfidence": "high",
       "metaBoundaryFlag": "NONE",
@@ -1097,7 +1103,9 @@
       "templateKey": null,
       "nullReason": "Current 2022 M2-1 crosswalk record is RPM_ONLY / NO_ACTIVE_MAPPING; exact ACTIVE PT/TPL is not safely resolvable.",
       "projectionReason": "Preserve FINAL RPM semantic and explicit projection debt; do not invent PT/TPL.",
-      "crossConceptKeys": [],
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA"
+      ],
       "conditionKeys": [],
       "integrationPattern": "SEQUENTIAL",
       "metaConfidence": "high",
@@ -1487,6 +1495,25 @@
         "finalExamBlobAtMetaMaterialization": "373e7a19d65a2ca93bf4e8bdbd834fc73e01d457"
       },
       "implicitMetaNullCount": 0
+    }
+  ],
+  "examSha256": "sha256:da835b83d4da4cc723d3e9bc0ae1b797da7d9fe332f8f0d80f266c79148ac0eb",
+  "reviewStage": "R3",
+  "reviewLane": "R3-1",
+  "r3Repairs": [
+    {
+      "scope": "RELATIONAL_META_PINPOINT",
+      "qids": [
+        2,
+        8,
+        15,
+        18
+      ],
+      "changedFields": [
+        "conditionKeys",
+        "crossConceptKeys"
+      ],
+      "lockedScopeMutationCount": 0
     }
   ]
 }
