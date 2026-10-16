@@ -469,7 +469,7 @@ export async function loadAssessmentResultItemSnapshots(env, sessionIds = []) {
   if (!ids.length) return [];
   const columns = await getTableColumnSet(env, 'assessment_result_items');
   const selected = [
-    'session_id', 'assignment_id', 'order_no', 'question_no', 'source_archive_file',
+    'session_id', 'assignment_id', 'order_no', 'question_no', 'result_status', 'is_correct', 'source_archive_file',
     'source_question_no', 'source_question_ordinal', 'source_question_uid', 'source_fingerprint',
     'source_identity_status', 'metadata_revision', 'metadata_hash', 'metadata_json',
     'metadata_snapshot_status', 'standard_unit_key', 'standard_unit', 'concept_cluster_key',
