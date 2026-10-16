@@ -7,15 +7,21 @@
     grade: $('gradeFilter'), school: $('schoolFilter'), year: $('yearFilter'), unit: $('unitFilter'),
     filterPanel: $('filterPanel'), filterToggle: $('filterToggle'), focusedChip: $('focusedChip'),
     drawer: $('examDrawer'), frame: $('examFrame'), title: $('examTitle'), meta: $('examMeta'), source: $('examSource'),
-    openOriginal: $('openOriginal'), labels: $('planetLabels'), satelliteLabels: $('satelliteLabels'),
+    openOriginal: $('openOriginal'), printOriginal: $('printOriginal'), labels: $('planetLabels'), satelliteLabels: $('satelliteLabels'),
     focusName: $('focusedSchoolName'), focusMeta: $('focusedSchoolMeta'), toast: $('toast'),
     listPanel: $('listPanel'), listGroups: $('listGroups'),
+    questionOrbit: $('questionOrbit'), questionStatus: $('questionStatus'),
+    readerToolbar: $('questionToolbar'), readerTitle: $('readerQuestionTitle'),
+    instantTravel: $('instantTravel'),
   };
   const state = {
     exams: [], records: [], filtered: [], visibleGroups: [], visibleExams: [], selectedExam: null,
     focusedGroupId: '', groupMode: 'school', activeTag: '', constellation: false, list: false,
     world: null, tagsByFile: new Map(), filesByTag: new Map(), groupsById: new Map(),
     groupLabels: new Map(), satelliteButtons: new Map(), toastTimer: 0, searchTimer: 0,
+    questionRows: [], selectedQuestion: null, readerMode: 'exam', readerGeneration: 0,
+    examGeneration: 0, frameGeneration: 0, entrySnapshot: null, pendingExamFocus: '', instant: false,
+    examsByFile: new Map(),
   };
   const clean = (value) => String(value ?? '').normalize('NFC').trim();
   const examTitle = (exam) => {
@@ -142,30 +148,150 @@
     return { groups, visibleExams };
   };
 
-  function sourceUrl(exam) {
+  function sourceUrl(exam, { preview = true, loadGeneration = 0 } = {}) {
     const url = new URL('../../engine.html', location.href);
     const params = new URLSearchParams();
     params.set('data', 'exams/' + exam.file);
     params.set('mode', 'exam');
-    params.set('preview', '1');
+    if (preview) {
+      params.set('preview', '1');
+      params.set('ap_galaxy_load', String(loadGeneration));
+    }
     params.set('title', examTitle(exam));
     params.set('subject', exam.subject || '');
     if (exam.qCount) params.set('q', String(exam.qCount));
     url.search = params.toString();
     return url.href;
   }
+  function captureNavigation() {
+    return {
+      camera: state.world?.snapshotNavigation() || null,
+      mode: state.groupMode, groupId: state.focusedGroupId,
+      search: ui.search.value, grade: ui.grade.value, school: ui.school.value,
+      unit: ui.unit.value, year: ui.year.value,
+    };
+  }
+  function restoreNavigation(snapshot) {
+    if (!snapshot) return;
+    state.groupMode = snapshot.mode;
+    state.focusedGroupId = snapshot.groupId;
+    ui.search.value = snapshot.search;
+    for (const field of ['grade', 'school', 'unit', 'year']) ui[field].value = snapshot[field];
+    $('groupModes').querySelectorAll('[data-group-mode]').forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.groupMode === state.groupMode));
+    });
+    renderScene();
+    if (!state.world?.restoreNavigation(snapshot.camera)) state.world?.resetCamera();
+    renderSatelliteLabels();
+  }
+  function renderQuestionOrbit(rows) {
+    ui.questionOrbit.replaceChildren();
+    for (const row of rows) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'question-orbit-node';
+      button.dataset.questionId = row.id;
+      button.textContent = row.id;
+      button.title = '원본 문항 ID ' + row.id + ' · ' + row.ordinal + '번째 문항 열기';
+      button.setAttribute('aria-label', button.title);
+      button.addEventListener('click', () => selectQuestion(row));
+      ui.questionOrbit.appendChild(button);
+    }
+    state.world?.setQuestionOrbit(state.selectedExam?.file, rows);
+  }
+  function clearQuestionOrbit() {
+    ui.questionOrbit.replaceChildren();
+    state.questionRows = [];
+    state.selectedQuestion = null;
+    state.world?.clearQuestionOrbit();
+    ui.readerToolbar.hidden = true;
+    ui.questionStatus.hidden = true;
+    window.APOrbitQuestionReader?.clearFocus(ui.frame);
+  }
+  function setQuestionStatus(message) {
+    ui.questionStatus.hidden = !message;
+    ui.questionStatus.textContent = message;
+  }
+  function modeName(mode) {
+    return mode === 'ans' ? '정답' : mode === 'sol' ? '해설' : '문제';
+  }
+  async function setReaderMode(mode) {
+    const row = state.selectedQuestion;
+    if (!row || !state.selectedExam) return;
+    const token = ++state.readerGeneration;
+    const examToken = state.examGeneration;
+    const frameToken = state.frameGeneration;
+    const file = state.selectedExam.file;
+    state.readerMode = mode;
+    ui.readerTitle.textContent = '문항 ' + row.id + ' · ' + modeName(mode);
+    ui.readerToolbar.querySelectorAll('[data-reader-mode]').forEach(button =>
+      button.setAttribute('aria-pressed', String(button.dataset.readerMode === mode)));
+    setQuestionStatus('문항 ' + row.id + ' ' + modeName(mode) + '를 여는 중…');
+    try {
+      const result = await window.APOrbitQuestionReader.focus(ui.frame, row, mode,
+        { file, loadGeneration: frameToken },
+        () => state.readerGeneration === token && state.examGeneration === examToken &&
+          state.frameGeneration === frameToken && state.selectedExam?.file === file &&
+          state.selectedQuestion === row);
+      if (state.readerGeneration !== token) return;
+      setQuestionStatus('문항 ' + row.id + ' · ' + modeName(mode));
+      return result;
+    } catch (error) {
+      if (state.readerGeneration !== token || error.message === 'STALE_QUESTION_SELECTION') return;
+      setQuestionStatus('문항을 표시하지 못했습니다. 전체 시험지는 아래에서 계속 볼 수 있습니다.');
+      console.warn('[ap-galaxy] selected question render failed:', error.message);
+    }
+  }
+  function selectQuestion(row) {
+    if (!state.selectedExam || !state.questionRows.includes(row)) return;
+    state.selectedQuestion = row;
+    ui.readerToolbar.hidden = false;
+    ui.questionOrbit.querySelectorAll('.question-orbit-node').forEach(button =>
+      button.classList.toggle('selected', button.dataset.questionId === row.id));
+    setReaderMode('exam');
+  }
+  function showWholeExam() {
+    state.readerGeneration++;
+    state.selectedQuestion = null;
+    ui.readerToolbar.hidden = true;
+    ui.questionOrbit.querySelectorAll('.question-orbit-node').forEach(button => button.classList.remove('selected'));
+    window.APOrbitQuestionReader?.clearFocus(ui.frame);
+    // The existing Archive engine owns pagination and print. Do not re-render it.
+    try {
+      const tab = ui.frame.contentDocument?.getElementById('btn-exam');
+      if (tab && !tab.classList.contains('active')) tab.click();
+      ui.frame.contentWindow?.scrollTo(0, 0);
+    } catch (_) { /* An in-flight iframe remains on the original source URL. */ }
+    setQuestionStatus(state.questionRows.length ? state.questionRows.length + '개 실제 문항 궤도 · 전체 시험지' : '');
+  }
+  function arriveAtExam(file) {
+    if (!file || state.selectedExam?.file !== file) return;
+    requestAnimationFrame(() => {
+      if (state.selectedExam?.file !== file) return;
+      if (!state.world?.focusExam(file)) requestAnimationFrame(() => {
+        if (state.selectedExam?.file === file) state.world?.focusExam(file);
+      });
+    });
+  }
   function openExam(exam) {
     if (!exam) return;
-    const wasDetailed = state.visibleExams.some((item) => item.file === exam.file);
+    if (!state.entrySnapshot) state.entrySnapshot = captureNavigation();
+    const token = ++state.examGeneration;
+    state.readerGeneration++;
+    window.APOrbitQuestionReader?.abort();
+    clearQuestionOrbit();
+    const wasDetailed = state.visibleExams.some(item => item.file === exam.file);
     state.selectedExam = exam;
     state.world?.setSelectedExam(exam.file);
-    const url = sourceUrl(exam);
+    const frameToken = ++state.frameGeneration;
+    const url = sourceUrl(exam, { loadGeneration: frameToken });
+    const printableUrl = sourceUrl(exam, { preview: false });
     ui.title.textContent = examTitle(exam);
     ui.meta.replaceChildren();
     for (const value of [
       exam.grade || '학년 미상',
       exam.subject || '과목 미상',
-      exam.qCount ? exam.qCount + '문항' : '문항 수 확인 필요',
+      exam.qCount ? exam.qCount + '문항 (catalog)' : '문항 수 확인 중',
       exam.contentType || '원본 자료',
     ]) {
       const tag = document.createElement('span');
@@ -175,25 +301,46 @@
     ui.source.textContent = 'catalog source · ' + exam.file;
     ui.source.title = exam.file;
     ui.frame.src = url;
-    ui.openOriginal.href = url;
+    ui.openOriginal.href = printableUrl;
+    ui.printOriginal.href = printableUrl;
     ui.drawer.classList.add('open');
     ui.drawer.setAttribute('aria-hidden', 'false');
     $('drawerBack').focus({ preventScroll: true });
-    if (!wasDetailed) {
-      // Open the existing preview first, then promote the selected catalog
-      // point/list item on the next paint. Ignore superseded selections.
-      requestAnimationFrame(() => {
-        if (state.selectedExam?.file === exam.file) renderScene();
+    setQuestionStatus('실제 시험지의 문항 ID를 읽는 중…');
+    if (!wasDetailed) renderScene();
+    state.focusedGroupId = groupKeyForExam(exam).id;
+    renderSatelliteLabels();
+    state.pendingExamFocus = exam.file;
+    state.world?.focusGroup(state.focusedGroupId);
+    window.APOrbitQuestionReader.load(exam.file).then((rows) => {
+      if (token !== state.examGeneration || state.selectedExam?.file !== exam.file) return;
+      state.questionRows = rows;
+      if (state.world) renderQuestionOrbit(rows);
+      else requestAnimationFrame(() => {
+        if (token === state.examGeneration && state.selectedExam?.file === exam.file) renderQuestionOrbit(rows);
       });
-    }
+      setQuestionStatus(rows.length + '개 실제 문항 · 별 주위 번호를 선택하세요.');
+    }).catch((error) => {
+      if (token !== state.examGeneration) return;
+      setQuestionStatus('문항 궤도를 열지 못했습니다 (' + error.message + '). 전체 시험지는 계속 열 수 있습니다.');
+      ui.readerToolbar.hidden = true;
+    });
   }
-  function closeExam() {
+  function closeExam({ restore = true } = {}) {
     const openedExam = state.selectedExam;
+    ++state.examGeneration;
+    ++state.frameGeneration;
+    ++state.readerGeneration;
+    window.APOrbitQuestionReader?.abort();
+    clearQuestionOrbit();
+    state.pendingExamFocus = '';
     ui.drawer.classList.remove('open');
     ui.drawer.setAttribute('aria-hidden', 'true');
     ui.frame.src = 'about:blank';
     state.selectedExam = null;
     state.world?.setSelectedExam(null);
+    if (restore) restoreNavigation(state.entrySnapshot);
+    state.entrySnapshot = null;
     const focusedButton = openedExam && state.satelliteButtons.get(openedExam.file);
     if (focusedButton) focusedButton.focus({ preventScroll: true });
   }
@@ -358,7 +505,7 @@
       state.world?.clearFocus();
       renderSatelliteLabels();
     }
-    if (state.selectedExam && !state.filtered.some((exam) => exam.file === state.selectedExam.file)) closeExam();
+    if (state.selectedExam && !state.filtered.some((exam) => exam.file === state.selectedExam.file)) closeExam({ restore: false });
     state.world?.setData({
       mode: state.groupMode,
       searching: Boolean(ui.search.value.trim()),
@@ -387,6 +534,7 @@
   function focusGroup(id) {
     const group = state.groupsById.get(id);
     if (!group) return;
+    if (!state.entrySnapshot) state.entrySnapshot = captureNavigation();
     state.focusedGroupId = id;
     state.world?.focusGroup(id);
     renderSatelliteLabels();
@@ -406,6 +554,7 @@
     const catalog = window.Archive2Core?.decodeCatalog(raw);
     if (!catalog?.exams || !catalog?.records) throw new Error('공개 Archive catalog 구조를 읽을 수 없습니다.');
     state.exams = catalog.exams.filter((exam) => exam.file && exam.contentType === '기출');
+    state.examsByFile = new Map(state.exams.map(exam => [exam.file, exam]));
     state.records = catalog.records;
     state.tagsByFile.clear();
     state.filesByTag.clear();
@@ -431,8 +580,17 @@
       canvas: ui.canvas,
       onGroup: (id) => focusGroup(id),
       onExam: (file) => {
-        const exam = state.exams.find((item) => item.file === file);
+        const exam = state.examsByFile.get(file);
         if (exam) openExam(exam);
+      },
+      onTravel: (type) => {
+        $('universe').classList.toggle('travel-warp', type === 'warp');
+        $('universe').classList.toggle('travel-flight', type === 'flight');
+        if (!type && state.pendingExamFocus) {
+          const file = state.pendingExamFocus;
+          state.pendingExamFocus = '';
+          arriveAtExam(file);
+        }
       },
       onBlackhole: () => window.open('../../generated-bank.html', '_blank', 'noopener'),
       onFrame: (positions) => {
@@ -444,7 +602,15 @@
           point.y + halfHeight > rect.top && point.y - halfHeight < rect.bottom,
         );
         for (const label of state.groupLabels.values()) label.style.display = 'none';
-        const labelCandidates = [...state.groupLabels].map(([id, label]) => ({ id, label, point: positions.groups.get(id) }))
+        for (const button of ui.questionOrbit.children) {
+          const point = positions.questions?.get(button.dataset.questionId);
+          button.style.display = point?.visible && !overlapsChrome(point, 16, 16) ? 'grid' : 'none';
+          if (point?.visible) {
+            button.style.left = point.x + 'px';
+            button.style.top = point.y + 'px';
+          }
+        }
+        const labelCandidates = (state.selectedExam ? [] : [...state.groupLabels]).map(([id, label]) => ({ id, label, point: positions.groups.get(id) }))
           .filter(({ point }) => point?.visible)
           .sort((a, b) => Number(b.id === state.focusedGroupId) - Number(a.id === state.focusedGroupId) || a.point.depth - b.point.depth);
         const occupiedGroupLabels = [];
@@ -460,7 +626,7 @@
           label.style.top = (point.y - 22) + 'px';
         }
         for (const button of state.satelliteButtons.values()) button.style.display = 'none';
-        const satelliteCandidates = [...state.satelliteButtons].map(([file, button]) => ({ file, button, point: positions.exams.get(file) }))
+        const satelliteCandidates = (state.selectedExam ? [] : [...state.satelliteButtons]).map(([file, button]) => ({ file, button, point: positions.exams.get(file) }))
           .filter(({ point }) => point?.visible && point.depth < 38)
           .sort((a, b) => a.point.depth - b.point.depth);
         const occupiedSatellites = [];
@@ -478,6 +644,7 @@
     });
     const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     state.world.setMotion(!reducedMotion);
+    state.world.setInstantTravel(state.instant || reducedMotion);
     $('motionToggle').setAttribute('aria-pressed', String(reducedMotion));
     $('motionLabel').textContent = reducedMotion ? '공전 시작' : '공전 일시정지';
     if (reducedMotion) showToast('기기의 동작 줄이기 설정에 맞춰 공전을 멈췄습니다.');
@@ -549,14 +716,28 @@
       if (state.constellation) showToast('실제 공개 L2 태그가 겹치는 시험지 노드를 우주 안의 빛으로 잇습니다.');
     });
     $('returnToGalaxy').addEventListener('click', () => {
-      state.focusedGroupId = '';
-      state.world?.resetCamera();
-      ui.focusedChip.hidden = true;
-      renderSatelliteLabels();
-      updateConstellations();
+      if (state.selectedExam) closeExam();
+      else {
+        restoreNavigation(state.entrySnapshot);
+        state.entrySnapshot = null;
+      }
     });
-    $('drawerBack').addEventListener('click', closeExam);
-    $('closeDrawer').addEventListener('click', closeExam);
+    $('drawerBack').addEventListener('click', () => {
+      if (state.selectedQuestion) showWholeExam();
+      else closeExam();
+    });
+    $('closeDrawer').addEventListener('click', () => closeExam());
+    $('wholeExam').addEventListener('click', showWholeExam);
+    $('questionToolbar').addEventListener('click', (event) => {
+      const button = event.target.closest('[data-reader-mode]');
+      if (button) setReaderMode(button.dataset.readerMode);
+    });
+    ui.instantTravel.addEventListener('click', () => {
+      state.instant = !state.instant;
+      ui.instantTravel.setAttribute('aria-pressed', String(state.instant));
+      state.world?.setInstantTravel(state.instant || matchMedia('(prefers-reduced-motion: reduce)').matches);
+      if (state.instant) state.world?.finishTravel();
+    });
     $('closeList').addEventListener('click', () => toggleList(false));
     ui.search.addEventListener('input', () => {
       clearTimeout(state.searchTimer);
@@ -567,7 +748,22 @@
     });
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
-        if (ui.drawer.classList.contains('open')) closeExam();
+        // A focused search input would otherwise clear itself *after* we restore
+        // the saved query, violating navigation return state.
+        if (ui.drawer.classList.contains('open') || state.focusedGroupId || state.list ||
+            !ui.filterPanel.hidden || $('universe').classList.contains('travel-warp') ||
+            $('universe').classList.contains('travel-flight')) event.preventDefault();
+        if (ui.drawer.classList.contains('open')) {
+          if (state.selectedQuestion) showWholeExam();
+          else closeExam();
+        } else if (state.focusedGroupId || $('universe').classList.contains('travel-warp') ||
+            $('universe').classList.contains('travel-flight')) {
+          // Escape is a reliable back action both during the journey and
+          // after arrival; never require the animation to still be running.
+          state.world?.cancelTravel();
+          restoreNavigation(state.entrySnapshot);
+          state.entrySnapshot = null;
+        }
         else if (state.list) toggleList(false);
         else if (!ui.filterPanel.hidden) toggleFilters(false);
       }

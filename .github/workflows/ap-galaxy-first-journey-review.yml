@@ -1,0 +1,61 @@
+name: AP Galaxy first journey targeted review
+on:
+  push:
+    branches: [work/ap-galaxy-first-journey-20261011]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  qa:
+    if: github.ref == 'refs/heads/work/ap-galaxy-first-journey-20261011'
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 3
+          filter: blob:none
+          sparse-checkout: |
+            archive/prototypes/ap-galaxy
+            archive/data/archive2-catalog.json
+            archive/archive2-core.js
+            archive/engine.html
+            archive/vendor
+            archive/css
+            archive/exams/original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js
+            archive/exams/original/middle/m3/1final/26_삼산중_1학기_기말_중3_기출.js
+            archive/assets/images/26_삼산중_1학기_중간_중3_기출
+            archive/assets/images/26_삼산중_1학기_기말_중3_기출
+            docs/reviews/ap-galaxy-first-journey-20261011
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build actual runtime and syntax-check
+        run: |
+          npm ci --prefix archive/prototypes/ap-galaxy
+          npm run build --prefix archive/prototypes/ap-galaxy
+          node --check archive/prototypes/ap-galaxy/orbit-app.js
+          node --check archive/prototypes/ap-galaxy/orbit-question-reader.js
+          node --check archive/prototypes/ap-galaxy/assets/orbital-world.js
+      - name: Install isolated Chromium
+        run: |
+          npm install --prefix /tmp/ap-galaxy-playwright --no-save playwright@1.55.0
+          /tmp/ap-galaxy-playwright/node_modules/.bin/playwright install chromium --with-deps
+      - name: Actual exam journey and matched baseline benchmark
+        run: node archive/prototypes/ap-galaxy/tests/first-journey.cjs
+      - name: Attach generated bundle and evidence to review branch only
+        run: |
+          git diff --check
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- archive/prototypes/ap-galaxy/assets/orbital-world.js docs/reviews/ap-galaxy-first-journey-20261011
+          if ! git diff --cached --quiet; then
+            git commit -m "test(ap-galaxy): preserve actual journey images video and build"
+            git push origin HEAD:work/ap-galaxy-first-journey-20261011
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ap-galaxy-first-journey-evidence
+          path: docs/reviews/ap-galaxy-first-journey-20261011
+          if-no-files-found: warn

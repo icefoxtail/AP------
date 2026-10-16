@@ -76,7 +76,7 @@ function makeOrbit(radius, aspect, material, segments = 112) {
   }
   return new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), material);
 }
-export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame }) {
+export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame, onTravel }) {
   const mobile = window.innerWidth < 760;
   const starSpriteTexture = makeStarSpriteTexture();
   const coreGlowTexture = makeCoreGlowTexture();
@@ -196,6 +196,12 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   const dataGlowMaterials = new Map();
   const groups = new Map();
   const entities = new Map();
+  // A single on-demand orbit; no question mesh is created for unopened exams.
+  const sharedQuestionGeometry = new THREE.SphereGeometry(.095, 10, 8);
+  const sharedQuestionMaterial = new THREE.MeshBasicMaterial({ color: 0xc5e7ff, toneMapped: false });
+  const sharedQuestionLineMaterial = new THREE.LineBasicMaterial({ color: 0x84bde0, transparent: true, opacity: .3, depthWrite: false });
+  let questionOrbit = null;
+  const questionProjections = new Map();
   let catalogPoints = null;
   let catalogPointFiles = [];
   let visibleCatalogPointNodes = [];
@@ -219,6 +225,7 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
   let running = !matchMedia('(prefers-reduced-motion: reduce)').matches;
   let pageVisible = !document.hidden;
   let cameraTransition = null;
+  let instantTravel = false;
   let rafId = 0;
   let pointerStart = null;
   const frameInterval = mobile ? 1000 / 24 : 1000 / 30;
@@ -614,8 +621,8 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     const elapsed = Math.max(0, (now - lastFrame) / 1000);
     const dt = Math.min(elapsed, .08);
     lastFrame = now;
-    if (running && pageVisible) simTime += elapsed;
-    const animate = running && pageVisible;
+    if (running && pageVisible && !selectedExamFile) simTime += elapsed;
+    const animate = running && pageVisible && !selectedExamFile;
 
     for (const group of groups.values()) {
       group.orbitRadius += (group.targetRadius - group.orbitRadius) * Math.min(1, dt * 1.4);
@@ -681,12 +688,13 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     lensB.rotation.y -= animate ? elapsed * .006 : 0;
     if (cameraTransition) {
       const t = Math.min(1, (now - cameraTransition.start) / cameraTransition.duration);
-      const eased = t * t * (3 - 2 * t);
+      // Quintic ease-in/out: real camera travel, restrained acceleration and deceleration.
+      const eased = t < .5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2;
       camera.position.lerpVectors(cameraTransition.fromPosition, cameraTransition.toPosition, eased);
       controls.target.lerpVectors(cameraTransition.fromTarget, cameraTransition.toTarget, eased);
-      if (t >= 1) cameraTransition = null;
+      if (t >= 1) { cameraTransition = null; onTravel?.(''); }
     }
-    if (!cameraTransition && focusedGroupId) {
+    if (!cameraTransition && focusedGroupId && !selectedExamFile) {
       const focusedGroup = groups.get(focusedGroupId);
       if (focusedGroup) {
         focusedGroup.globe.getWorldPosition(tempB);
@@ -696,6 +704,14 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       }
     }
     controls.update();
+    if (questionOrbit) {
+      const center = entities.get(questionOrbit.file);
+      if (center) {
+        questionOrbit.root.position.copy(center.position);
+        questionOrbit.root.quaternion.copy(camera.quaternion);
+        questionOrbit.root.updateMatrixWorld(true);
+      }
+    }
     for (const relation of constellations) {
       const a = relation.from.position;
       const b = relation.to.position;
@@ -731,8 +747,21 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     blackholeLabel.style.display = holePoint.visible ? 'flex' : 'none';
     blackholeLabel.style.left = holePoint.x + 'px';
     blackholeLabel.style.top = (holePoint.y - 24) + 'px';
+    if (questionOrbit) {
+      for (const marker of questionOrbit.markers) {
+        marker.mesh.getWorldPosition(tempProjected);
+        const depth = camera.position.distanceTo(tempProjected);
+        tempProjected.project(camera);
+        const projected = questionProjections.get(marker.key);
+        projected.x = (tempProjected.x * .5 + .5) * width;
+        projected.y = (-tempProjected.y * .5 + .5) * height;
+        projected.visible = tempProjected.z > -1 && tempProjected.z < 1
+          && Math.abs(tempProjected.x) < .98 && Math.abs(tempProjected.y) < .98;
+        projected.depth = depth;
+      }
+    }
     const groupAngles = new Map([...groups.values()].map((group) => [group.id, group.angle]));
-    onFrame?.({ groups: groupPositions, exams: examPositions, examFiles: catalogPointFiles, groupAngles, cameraPosition: camera.position.toArray() });
+    onFrame?.({ groups: groupPositions, exams: examPositions, questions: questionProjections, examFiles: catalogPointFiles, groupAngles, cameraPosition: camera.position.toArray() });
     renderer.render(scene, camera);
     rafId = requestAnimationFrame(setFrame);
   }
@@ -745,40 +774,109 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
   }
-  function focusGroup(id) {
-    const group = groups.get(id);
-    if (!group) return;
-    focusedGroupId = id;
-    const target = group.globe.getWorldPosition(new THREE.Vector3());
-    const fromPosition = camera.position.clone();
-    const fromTarget = controls.target.clone();
+  function travelTo(target, distance, lift = 2) {
     const direction = camera.position.clone().sub(controls.target).normalize();
-    const toPosition = target.clone().addScaledVector(direction, 17);
-    toPosition.y += 2.6;
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      camera.position.copy(toPosition);
+    const position = target.clone().addScaledVector(direction, distance);
+    position.y += lift;
+    const far = controls.target.distanceTo(target) > 24;
+    if (instantTravel || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cameraTransition = null;
+      camera.position.copy(position);
       controls.target.copy(target);
-      cameraTransition = null;
       controls.update();
-      return;
-    }
-    cameraTransition = { fromPosition, fromTarget, toPosition, toTarget: target, start: performance.now(), duration: 900 };
-  }
-  function resetCamera() {
-    const toTarget = new THREE.Vector3(0, 0, 0);
-    focusedGroupId = '';
-    const toPosition = new THREE.Vector3(0, 48, 92);
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      camera.position.copy(toPosition);
-      controls.target.copy(toTarget);
-      cameraTransition = null;
-      controls.update();
+      onTravel?.('');
       return;
     }
     cameraTransition = {
       fromPosition: camera.position.clone(), fromTarget: controls.target.clone(),
-      toPosition, toTarget, start: performance.now(), duration: 980,
+      toPosition: position, toTarget: target,
+      start: performance.now(), duration: far ? 1100 : 510,
     };
+    onTravel?.(far ? 'warp' : 'flight');
+  }
+  function focusGroup(id) {
+    const group = groups.get(id);
+    if (!group) return;
+    focusedGroupId = id;
+    travelTo(group.globe.getWorldPosition(new THREE.Vector3()), 17, 2.6);
+  }
+  function focusExam(file) {
+    const entity = entities.get(file);
+    if (!entity) return false;
+    focusedGroupId = entity.groupId;
+    travelTo(entity.position.clone(), 15, 1.8);
+    return true;
+  }
+  function resetCamera() {
+    focusedGroupId = '';
+    travelTo(new THREE.Vector3(), 92, 0);
+  }
+  function finishTravel() {
+    if (!cameraTransition) return;
+    camera.position.copy(cameraTransition.toPosition);
+    controls.target.copy(cameraTransition.toTarget);
+    cameraTransition = null;
+    controls.update();
+    onTravel?.('');
+  }
+  function snapshotNavigation() {
+    return { position: camera.position.toArray(), target: controls.target.toArray(), focusedGroupId };
+  }
+  function restoreNavigation(snapshot) {
+    const valid = snapshot && [snapshot.position, snapshot.target].every((arr) =>
+      Array.isArray(arr) && arr.length === 3 && arr.every(Number.isFinite));
+    if (!valid) return false;
+    cameraTransition = null;
+    onTravel?.('');
+    focusedGroupId = groups.has(snapshot.focusedGroupId) ? snapshot.focusedGroupId : '';
+    camera.position.fromArray(snapshot.position);
+    controls.target.fromArray(snapshot.target);
+    controls.update();
+    return true;
+  }
+  function clearQuestionOrbit() {
+    if (!questionOrbit) return;
+    dataRoot.remove(questionOrbit.root);
+    for (const line of questionOrbit.lines) line.geometry.dispose();
+    questionOrbit = null;
+    questionProjections.clear();
+  }
+  function setQuestionOrbit(file, rows) {
+    clearQuestionOrbit();
+    if (!file || !entities.has(file) || !Array.isArray(rows) || !rows.length) return false;
+    const root = new THREE.Group();
+    const markers = [];
+    const lines = [];
+    const rings = rows.length > 18 ? 2 : 1;
+    const counts = Array.from({ length: rings }, () => 0);
+    for (let i = 0; i < rows.length; i += 1) counts[i % rings]++;
+    const ordinals = Array.from({ length: rings }, () => 0);
+    for (let ring = 0; ring < rings; ring += 1) {
+      const radius = ring ? 2.85 : 1.95;
+      const points = [];
+      for (let step = 0; step <= 96; step += 1) {
+        const angle = step * Math.PI * 2 / 96;
+        points.push(new THREE.Vector3(Math.cos(angle) * radius, Math.sin(angle) * radius * .78, 0));
+      }
+      const orbit = new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), sharedQuestionLineMaterial);
+      root.add(orbit);
+      lines.push(orbit);
+    }
+    for (let i = 0; i < rows.length; i += 1) {
+      const ring = i % rings;
+      const ordinal = ordinals[ring]++;
+      const angle = ordinal / counts[ring] * Math.PI * 2 - Math.PI / 2;
+      const radius = ring ? 2.85 : 1.95;
+      const mesh = new THREE.Mesh(sharedQuestionGeometry, sharedQuestionMaterial);
+      mesh.position.set(Math.cos(angle) * radius, Math.sin(angle) * radius * .78, 0);
+      root.add(mesh);
+      const key = String(rows[i].id);
+      questionProjections.set(key, { x: 0, y: 0, depth: Infinity, visible: false });
+      markers.push({ key, mesh });
+    }
+    dataRoot.add(root);
+    questionOrbit = { file, root, markers, lines };
+    return true;
   }
   function settleGroupLayouts() {
     const now = performance.now();
@@ -818,7 +916,19 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
 
   return {
     setData,
-    setSelectedExam(file) { selectedExamFile = typeof file === 'string' ? file : ''; },
+    setSelectedExam(file) {
+      selectedExamFile = typeof file === 'string' ? file : '';
+      controls.enabled = !selectedExamFile;
+      if (!selectedExamFile) clearQuestionOrbit();
+    },
+    setQuestionOrbit,
+    clearQuestionOrbit,
+    focusExam,
+    snapshotNavigation,
+    restoreNavigation,
+    cancelTravel() { cameraTransition = null; onTravel?.(''); },
+    finishTravel,
+    setInstantTravel(value) { instantTravel = Boolean(value); if (instantTravel) finishTravel(); },
     setConstellations(anchorFile, relatedFiles, color) {
       pendingLines.length = 0;
       if (anchorFile) for (const file of relatedFiles) pendingLines.push({ from: anchorFile, to: file, color });
@@ -837,6 +947,10 @@ export function createOrbitWorld({ canvas, onGroup, onExam, onBlackhole, onFrame
       canvas.removeEventListener('pointerup', pointerUp);
       window.removeEventListener('resize', setSize);
       controls.dispose();
+      clearQuestionOrbit();
+      sharedQuestionGeometry.dispose();
+      sharedQuestionMaterial.dispose();
+      sharedQuestionLineMaterial.dispose();
       for (const group of groups.values()) clearGroupNode(group);
       for (const entity of entities.values()) removeDataNode(entity);
       disposeConstellations();

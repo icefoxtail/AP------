@@ -46,3 +46,134 @@ body.search-active .planet-label{color:#fff;text-shadow:0 1px 2px #000}
 .world-fallback strong{font-size:11px}
 .world-fallback span{font-size:10px}
 @media(max-width:520px){.world-fallback{left:12px;right:12px;bottom:12px;width:auto;justify-content:center;gap:2px 8px;padding:7px 10px;text-align:center}.world-fallback strong,.world-fallback span{font-size:9px}}
+
+/* AP Galaxy first journey — on-space warp and one canonical question orbit. */
+.warp-trails{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:0;overflow:hidden;transition:opacity .15s}
+.warp-trails span{position:absolute;left:50%;top:50%;width:clamp(75px,14vw,210px);height:1px;
+  background:linear-gradient(90deg,transparent,#93b9ed70 30%,#e8f8ff8a 52%,transparent);
+  transform-origin:left center;transform:rotate(var(--angle)) translateX(30px) scaleX(.14)}
+.travel-warp .warp-trails{opacity:.65}
+.travel-warp .warp-trails span{animation:ap-galaxy-warp .85s ease-in-out both}
+@keyframes ap-galaxy-warp{0%{opacity:0;transform:rotate(var(--angle)) translateX(20px) scaleX(.12)}
+  30%{opacity:.65}75%{opacity:.42}100%{opacity:0;transform:rotate(var(--angle)) translateX(70px) scaleX(1.1)}}
+.travel-warp .planet-label,.travel-warp .satellite-hit,.travel-flight .satellite-hit{opacity:.07;pointer-events:none}
+.question-orbit-layer{position:absolute;inset:0;z-index:7;pointer-events:none}
+.question-orbit-node{position:absolute;display:none;place-items:center;transform:translate(-50%,-50%);
+  pointer-events:auto;width:30px;height:30px;min-width:30px;padding:0;border-radius:50%;
+  background:radial-gradient(circle at 32% 25%,#8cb8e677,#182f4bc9 66%,#0a162bbb);
+  border:1px solid #a6c7e683;color:#f1f8ff;font:600 10px/1 ui-monospace,monospace;
+  box-shadow:0 0 7px #9eccff45,0 0 1px #ffffff9b;white-space:nowrap;
+  text-shadow:0 1px 3px #000;transition:box-shadow .15s,border-color .15s}
+.question-orbit-node:hover,.question-orbit-node:focus-visible,.question-orbit-node.selected{
+  outline:none;border-color:#effaff;box-shadow:0 0 10px #bce6ffaa,0 0 22px #719acc77}
+.question-orbit-status{position:absolute;z-index:8;left:50%;bottom:101px;max-width:min(480px,70vw);
+  transform:translateX(-50%);padding:4px 9px;color:#d8edff;
+  background:#081323a0;text-shadow:0 0 9px #3c82c7;box-shadow:none;
+  text-align:center;font-size:10px;border-radius:8px;pointer-events:none}
+.question-orbit-status[hidden],.question-toolbar[hidden]{display:none!important}
+.question-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 12px;
+  border-top:1px solid #dce9ff25;border-bottom:1px solid #dce9ff19;background:#0b1729da}
+.question-toolbar b{font-size:11px;color:#c4e7ff;margin-right:auto}
+.question-toolbar button{cursor:pointer;border:1px solid #87b1d24a;border-radius:8px;
+  background:transparent;color:#d3e7fc;padding:5px 9px;font-size:10px}
+.question-toolbar button[aria-pressed=true]{background:#dceffc;color:#0d2137}
+.question-toolbar button:hover{border-color:#ccf0ffb0}
+#instantTravel[aria-pressed=true]{color:#0b2035;background:#dbeaff}
+@media(max-width:760px){.question-orbit-node{width:24px;height:24px;min-width:24px;font-size:9px}
+  .question-orbit-status{bottom:110px;font-size:9px;max-width:90vw}
+  .question-toolbar{gap:4px;padding:7px 8px}.question-toolbar button{padding:5px 7px}}
+@media(prefers-reduced-motion:reduce){.warp-trails{display:none}.travel-warp .warp-trails span{animation:none}
+  .question-orbit-node{transition:none}}
+
+/* Reader print route is a true link; keep a pointer-sized clickable area. */
+.question-toolbar #printOriginal{display:inline-flex;align-items:center;min-height:32px;padding:6px 10px;border:1px solid #87b1d24a;border-radius:8px;color:#d5efff;text-decoration:none;font-size:10px;background:#102339}
+.question-toolbar #printOriginal:hover,.question-toolbar #printOriginal:focus-visible{border-color:#ccf0ffb0;background:#193a57}
+
+
+/* Arrival scene refinement — restrained celestial observatory (desktop only). */
+@media (min-width:761px) {
+  /* A quiet pool of light and a peripheral vignette give arrival a near/far
+     relationship. These layers are decorative and never intercept orbit picks. */
+  .universe.focused::before {
+    content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:
+      radial-gradient(ellipse 35% 48% at 43% 48%,#9ec7ff16 0%,#7998e20d 46%,transparent 80%),
+      radial-gradient(ellipse 28% 34% at 28% 66%,#aa91ed0d 0%,transparent 76%),
+      linear-gradient(90deg,#04071252 0%,transparent 27%,transparent 69%,#04071335 100%);
+  }
+  .universe.focused .planet-label {
+    padding:6px 11px 7px; border:1px solid #d7e6ff2b; border-radius:10px;
+    background:linear-gradient(145deg,#0c1831e8,#0b1124c7);
+    box-shadow:0 8px 24px #02061475,0 0 20px #81b6ee16;
+    text-shadow:0 2px 8px #000e; color:#f6f9ff;
+    font-size:12px; letter-spacing:.015em; backdrop-filter:blur(9px);
+  }
+  .universe.focused .planet-label small {
+    color:#bad0eb; font-size:9px; margin-top:3px;
+  }
+  .universe.focused .satellite-hit {
+    padding:5px 10px 6px 27px; min-height:37px; border:1px solid #a6c4f02e;
+    border-radius:9px; background:linear-gradient(110deg,#101d35e8,#0a142aca);
+    box-shadow:0 8px 23px #03081775,inset 0 1px #dcecff0a;
+    backdrop-filter:blur(8px);
+  }
+  .universe.focused .satellite-hit:hover,
+  .universe.focused .satellite-hit:focus-visible {
+    border-color:#b1ddff90; background:#192b47ee;
+    box-shadow:0 0 0 1px #add4ff37,0 10px 26px #0008;
+  }
+  .universe.focused .satellite-period {
+    font-size:10px; color:#a9c8ee; font-weight:600;
+    text-shadow:0 1px 8px #000d;
+  }
+  .universe.focused .satellite-hit b {
+    font-size:12px; font-weight:650; color:#f7f9ff;
+    text-shadow:0 1px 8px #000d;
+  }
+  .universe.focused .question-orbit-node {
+    border-color:#d5eaff9c; color:#fff;
+    background:radial-gradient(circle at 35% 25%,#a3d5f5b5,#355b83e8 47%,#101d3bee 100%);
+    box-shadow:0 0 0 3px #192d4952,0 0 17px #80bbf873;
+  }
+  .universe.focused .question-orbit-node.selected {
+    box-shadow:0 0 0 3px #a4d9ff52,0 0 21px #b0dfffab;
+  }
+  .universe.focused .entry-chip {
+    border-color:#d5e9ff54; background:linear-gradient(125deg,#152947eb,#0a1429e8);
+    box-shadow:0 18px 38px #020716a6,0 0 24px #8dbfff14;
+  }
+  .universe.focused .entry-chip b {color:#f7fbff;font-size:13px}
+  .universe.focused .entry-chip small {color:#b3c9e6}
+  /* The same cool highlight is carried into the original exam drawer.
+     All links, reader modes and iframe measurements remain untouched. */
+  .universe.focused .drawer.open {
+    border:1px solid #d2e7ff58;
+    background:linear-gradient(160deg,#14243ded 0%,#0a162beF 38%,#081021f5 100%);
+    box-shadow:-20px 0 70px #010613b5,0 0 0 1px #e0eeff0a,inset 1px 0 #b0d8ff13;
+  }
+  .universe.focused .drawer-head {
+    border-bottom-color:#b3d5ff32; background:#15274655;
+  }
+  .universe.focused .drawer-kicker {color:#b4d1f5;letter-spacing:.15em}
+  .universe.focused .exam-identity {padding-top:18px;padding-bottom:15px}
+  .universe.focused .exam-identity h2 {
+    color:#f9fcff; font-size:16px; line-height:1.42; letter-spacing:-.015em;
+    text-wrap:pretty;
+  }
+  .universe.focused .exam-meta span {
+    border-color:#a9cbed34; background:#9fc7ff0a; color:#c1d4ed;
+  }
+  .universe.focused .preview-heading {
+    border-top-color:#b4d8ff27; color:#eef6ff;
+  }
+  .universe.focused .preview-heading a {color:#bee5ff}
+  .universe.focused .question-toolbar {
+    background:linear-gradient(90deg,#142944f5,#0c1c33f2);
+    border-top-color:#bddfff4c; border-bottom-color:#a1c9f531;
+  }
+  .universe.focused .question-toolbar b {color:#e2f3ff;font-size:11px}
+  .universe.focused .preview-frame {
+    outline:1px solid #b9d7f44d;box-shadow:0 10px 30px #01071485;
+  }
+  .universe.focused .drawer-foot {color:#a8c0dd}
+}

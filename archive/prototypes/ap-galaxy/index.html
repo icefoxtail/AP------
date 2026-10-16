@@ -51,6 +51,12 @@
       <div class="catalog-status" id="catalogStatus">공개 catalog를 읽는 중…</div>
     </section>
 
+    <div class="warp-trails" aria-hidden="true">
+      <span style="--angle:0deg"></span><span style="--angle:30deg"></span><span style="--angle:60deg"></span>
+      <span style="--angle:90deg"></span><span style="--angle:120deg"></span><span style="--angle:150deg"></span>
+      <span style="--angle:180deg"></span><span style="--angle:210deg"></span><span style="--angle:240deg"></span>
+      <span style="--angle:270deg"></span><span style="--angle:300deg"></span><span style="--angle:330deg"></span>
+    </div>
     <div class="scene-hud">
       <div class="hud-left">
         <div class="group-mode-switch" id="groupModes" role="group" aria-label="자료를 묶는 기준">
@@ -59,6 +65,7 @@
           <button type="button" data-group-mode="unit" aria-pressed="false">단원 성단</button>
         </div>
         <div class="hud-group">
+          <button class="hud-button" id="instantTravel" type="button" aria-pressed="false" aria-label="즉시 이동 모드">↯ 즉시 이동</button>
           <button class="hud-button" id="motionToggle" type="button" aria-pressed="false"><span class="motion-glyph" aria-hidden="true">Ⅱ</span><span id="motionLabel">공전 일시정지</span></button>
           <button class="hud-button" id="constellationToggle" type="button" aria-pressed="false"><span aria-hidden="true">✳</span><span id="constellationLabel">L2 별자리</span></button>
         </div>
@@ -69,6 +76,8 @@
     <div class="planet-label-layer" id="planetLabels" aria-hidden="true"></div>
     <div class="satellite-label-layer" id="satelliteLabels"></div>
     <div class="blackhole-label-layer" id="blackholeLabels"></div>
+    <div id="questionOrbit" class="question-orbit-layer" role="group" aria-label="선택한 시험지의 문항 궤도"></div>
+    <div id="questionStatus" class="question-orbit-status" role="status" aria-live="polite" hidden></div>
 
     <div class="entry-chip glass" id="focusedChip" hidden>
       <span class="entry-orb" aria-hidden="true"></span>
@@ -87,6 +96,14 @@
         <div><span class="eyebrow">EXAM SATELLITE</span><h2 id="examTitle">시험지를 불러오는 중</h2><div class="exam-meta" id="examMeta"></div><code class="exam-source" id="examSource"></code></div>
       </div>
       <div class="preview-heading"><strong>원본 시험지</strong><span>원본 문제 내용과 순서를 유지합니다.</span><a id="openOriginal" href="#" target="_blank" rel="noopener">새 창 ↗</a></div>
+      <div class="question-toolbar" id="questionToolbar" role="group" aria-label="선택한 문항의 빠른 읽기" hidden>
+        <b id="readerQuestionTitle"></b>
+        <button type="button" data-reader-mode="exam" aria-pressed="true">문제</button>
+        <button type="button" data-reader-mode="ans" aria-pressed="false">정답</button>
+        <button type="button" data-reader-mode="sol" aria-pressed="false">해설</button>
+        <button type="button" id="wholeExam">전체 시험지</button>
+        <a id="printOriginal" href="#" target="_blank" rel="noopener">전체 시험지·인쇄 ↗</a>
+      </div>
       <div class="preview-frame"><iframe id="examFrame" title="선택한 원본 시험지 미리보기" loading="lazy"></iframe></div>
       <p class="drawer-foot">공개 Archive catalog와 기존 원본 미리보기 경로를 사용합니다. 문제 생성·저장·학생 배부는 수행하지 않습니다.</p>
     </aside>
@@ -102,6 +119,7 @@
   </main>
 
   <script src="../../archive2-core.js"></script>
+  <script src="./orbit-question-reader.js"></script>
   <script src="./orbit-app.js"></script>
 </body>
 </html>
