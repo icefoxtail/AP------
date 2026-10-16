@@ -1061,11 +1061,29 @@ def extract_question_array_text(text):
     markers = ["window.questionBank", "window.문항데이터", "questionBank"]
     start = -1
 
-    for marker in markers:
-        idx = text.find(marker)
-        if idx != -1:
-            start = idx
-            break
+    # Resolve only the exact runtime alias used by reviewed examData sources.
+    # The existing examData fallback still enforces unique object/field checks.
+    # Count assignments anywhere in the source so a same-line or multiline
+    # later overwrite cannot be mistaken for the single supported alias.
+    question_bank_assignments = list(re.finditer(
+        r"\bwindow\.questionBank[ \t\r\n]*=",
+        text,
+    ))
+    exam_data_question_aliases = list(re.finditer(
+        r"(?m)^[ \t]*window\.questionBank[ \t]*=[ \t]*window\.examData\.questions[ \t]*;",
+        text,
+    ))
+    recognized_exam_data_alias = (
+        len(question_bank_assignments) == 1
+        and len(exam_data_question_aliases) == 1
+    )
+
+    if not recognized_exam_data_alias:
+        for marker in markers:
+            idx = text.find(marker)
+            if idx != -1:
+                start = idx
+                break
 
     if start == -1:
         assignments = list(re.finditer(r"\bwindow\.examData\s*=\s*\{", text))

@@ -316,5 +316,5 @@ window.examData = {
   ]
 };
 
-window.questionBank = window.examData;
+window.questionBank = window.examData.questions;
 window.examTitle = window.examData.title;
