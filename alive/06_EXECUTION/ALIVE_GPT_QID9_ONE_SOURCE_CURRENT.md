@@ -1,9 +1,8 @@
-## CURRENT HARD — 원본 qid별 9 UID E2E 완료보고서 강제 (2026-10-17 원장 직접 지시)
-- **필독 및 종료 계약:** [원본 qid별 9문항 문항별 E2E 완료보고서 CURRENT](ALIVE_QID9_PER_ITEM_E2E_COMPLETION_REPORT_CURRENT_v1.md). 수동 QID9에서 "1번 진행해"는 해당 원본 qid의 A1~C3 9개 각각 **제작·실제 RPM L1~L4/PT/TPL·Cross/Condition/Integration·독립 난도2축·학생용 해설/오답4/문제·해설 SVG → Source/Consumer/index 영구 Meta → 별도 독립 품질검수 → 실제 브라우저 문제/해설/정답/출력 → UID별 22항목 보고서**까지 증명하는 뜻이다.
-- **한 건이라도 증거 미확보/NOT_RUN/메타 미저장/검수 미실시/브라우저 미실시는 원본 qid 전체 `QID_INCOMPLETE/FAIL`; 다음 qid 진입 금지.** 9개 초안, ZIP, 저자 자기검수, 정답 배분만으로 완료 보고 금지. 결함은 현 qid·UID부터 수정·영향 재확인 후 9/9 완료를 다시 판정한다. 판정값은 보고서 명칭이며 런타임 enum을 추가하지 않는다.
-- **세로 누적 우선 (최근 원장 직접 지시):** A1~C3 각 슬롯별 qid 간 정답 ①~⑤ 빈도 편차를 최소화하고 동률 후보는 무작위 배정한다. 이 **수동 QID9 범위**에서는 아래 2026-10-15 가로 `2/2/2/2/1 HARD`가 최신 지시에 따라 대체된다. 구 검사기·Notion 문서 상충은 기록해 적법하게 정합화하되 가짜 PASS 금지.
-- **적용 제외:** 별도 예약 GPT Library `SOURCE_ONLY_INTAKE14_20261016` CREATE→R1→R2→R3→MASTER 라우팅은 기존 인계 우선 계약대로 지속하며, 예약자의 품질 미완료 인계 차단이나 HOLD를 새로 만들지 않는다.
-- **격리본·출시 구별:** qid E2E에는 실제 격리/스테이징 학생 화면 검사 필수, Git main·배포는 형님 별도 지시 범위대로 진행하고 지시된 후에는 post-deploy Chrome/remote readback까지 완료한다. 미실행은 PASS라고 기록 금지.
+## CURRENT HARD — 2026-10-17 최신 원장 지시: 제작 GPT 9문항 마감과 후속 3단계 분리
+- **필독:** [문항별 QID9 제작완료·인계보고서 v1.1](ALIVE_QID9_PER_ITEM_E2E_COMPLETION_REPORT_CURRENT_v1.md). 수동 QID9의 “1번 진행해”는 해당 원본 qid A1~C3 **9개 제작·학생용 해설·오답 4개/문항·정본 RPM/Meta·난이도 두 축·SVG 필요성/필수 자산·세로 배분·자기검수·개별 22항목 보고서 9/9**를 마감하는 명령이다. `QID_AUTHOR_COMPLETE` 판정 이후 다음 qid 제작 가능.
+- **제작자 완료 선행조건에서 제외된 후속 3종:** ① **독립 품질검수는 다른 GPT** ② **운영 Meta 영구 등록·Consumer/index parity는 main 등록 담당** ③ **운영 브라우저·인쇄 검사는 Codex**. 제작자는 완전한 최종 UID·source/sidecar·Meta·정답·해설·자산·SHA와 문항별 보고를 인계하고 각 후속 항목을 `PENDING_NEXT_OWNER/NOT_RUN`으로 남긴다. 후속 미실행만으로 저자 완료를 FAIL로 강등·다음 qid 진입 차단하지 않는다.
+- **제작자 필수 품질은 완화하지 않는다.** SourceLock/9 UID/45 보기/36 실제 오답/학생 재현 해설/level+1~5 별도 판정/정본 RPM L1~L4·PT/TPL·Cross·Condition·Integration 설계와 UID별 source·sidecar 기록/실 SVG 필요성·역발문·자체검수/세로 균형/9×22 보고가 불완전하면 `QID_AUTHOR_INCOMPLETE`. 결과를 단순 9문항 생성만으로 PASS 선언 금지.
+- 이전 2026-10-17 E2E 계약의 “독립 GPT·운영 DB/index·브라우저까지 제작자가 닫아야 qid 성공”이라는 서술은 **잘못된 책임 통합이므로 이 단락과 v1.1로 대체**한다. 후속 승인/배포 PASS는 실제 별도 담당자 결과로만 판정. 예약형 Library NEW14는 별도 계약.
 
 ## CURRENT HARD — QID9 반복 제작 핸드오프·가로/세로 정답 배분 (2026-10-15 원장 지시)
 - 매 원본 qid × A1~C3 신규 제작은 [QID9 표준 실행 템플릿](GPT_QID9_CREATE_HANDOFF_TEMPLATE_CURRENT.md)을 사용한다. Notion [GPT QID9 유사문항 제작 표준계약 CURRENT](https://app.notion.com/p/3fa0e68bd69f81c4abdaffdcd1a969a1)을 Archive 시작 페이지에서 읽고 qid·시험지·브랜치·진도만 갱신한다.
