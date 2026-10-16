@@ -35,6 +35,89 @@
         return Number.isInteger(number) && number > 0 ? number : null;
     }
 
+    function recommendationOptionsOf(input) {
+        const hasOptions = own(input, 'recommendationOptions');
+        const options = object(input?.recommendationOptions);
+        const hasNestedCount = own(options, 'countPerStudent');
+        const hasLegacyCount = own(input, 'countPerStudent');
+        const requestedCount = hasNestedCount ? options.countPerStudent
+            : hasLegacyCount ? input.countPerStudent : 5;
+        const countPerStudent = Number(requestedCount);
+        const errors = [];
+        if (hasOptions && (!input.recommendationOptions || typeof input.recommendationOptions !== 'object' || Array.isArray(input.recommendationOptions))) {
+            errors.push({
+                code: 'invalid_recommendation_options',
+                field: 'recommendationOptions',
+                message: 'recommendationOptions must be an object.',
+            });
+        }
+        if (!Number.isInteger(countPerStudent) || countPerStudent < 1 || countPerStudent > 400) {
+            errors.push({
+                code: 'invalid_count_per_student',
+                field: hasNestedCount ? 'recommendationOptions.countPerStudent' : 'countPerStudent',
+                message: 'countPerStudent must be an integer from 1 to 400.',
+            });
+        }
+
+        const hasDifficultyMode = own(options, 'difficultyMode');
+        const difficultyMode = hasDifficultyMode ? text(options.difficultyMode) : 'match_wrong';
+        if (difficultyMode !== 'match_wrong' && difficultyMode !== 'selected') {
+            errors.push({
+                code: 'invalid_difficulty_mode',
+                field: 'recommendationOptions.difficultyMode',
+                message: 'difficultyMode must be match_wrong or selected.',
+            });
+        }
+
+        const rawBuckets = options.selectedDifficultyBuckets;
+        const selectedDifficultyBuckets = [];
+        if (difficultyMode === 'selected') {
+            if (!Array.isArray(rawBuckets) || rawBuckets.length === 0) {
+                errors.push({
+                    code: 'selected_difficulty_buckets_required',
+                    field: 'recommendationOptions.selectedDifficultyBuckets',
+                    message: 'selected mode requires one or more difficulty buckets from 1 to 5.',
+                });
+            } else {
+                for (const bucket of rawBuckets) {
+                    if (!Number.isInteger(bucket) || bucket < 1 || bucket > 5) {
+                        errors.push({
+                            code: 'invalid_selected_difficulty_bucket',
+                            field: 'recommendationOptions.selectedDifficultyBuckets',
+                            value: bucket,
+                            message: 'Selected difficulty buckets must be integers from 1 to 5.',
+                        });
+                        continue;
+                    }
+                    if (!selectedDifficultyBuckets.includes(bucket)) selectedDifficultyBuckets.push(bucket);
+                }
+                if (!selectedDifficultyBuckets.length && !errors.some(error => error.code === 'invalid_selected_difficulty_bucket')) {
+                    errors.push({
+                        code: 'selected_difficulty_buckets_required',
+                        field: 'recommendationOptions.selectedDifficultyBuckets',
+                        message: 'selected mode requires one or more difficulty buckets from 1 to 5.',
+                    });
+                }
+            }
+        } else if (own(options, 'selectedDifficultyBuckets') && !Array.isArray(rawBuckets)) {
+            errors.push({
+                code: 'invalid_selected_difficulty_buckets',
+                field: 'recommendationOptions.selectedDifficultyBuckets',
+                message: 'selectedDifficultyBuckets must be an array.',
+            });
+        }
+
+        return {
+            normalized: {
+                countPerStudent: Number.isInteger(countPerStudent) && countPerStudent >= 1 && countPerStudent <= 400
+                    ? countPerStudent : null,
+                difficultyMode,
+                selectedDifficultyBuckets,
+            },
+            errors,
+        };
+    }
+
     function object(value) {
         return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
     }
@@ -352,7 +435,7 @@
             : JSON.stringify(PATH_FIELDS.slice(0, depth).map(field => text(meta[field])));
     }
 
-    function buildCandidateIndex(records, archive2Core, canonicalAuthority, exclusions) {
+    function buildCandidateIndex(records, archive2Core, canonicalAuthority, exclusions, targetGrade = '') {
         const prepared = (Array.isArray(records) ? records : []).map(record => ({
             record,
             identity: identityOf(record),
@@ -386,6 +469,14 @@
                 exclusions.candidateSourceIneligible++;
                 continue;
             }
+            if (targetGrade) {
+                const sourceRank = archive2Core?.gradeRank?.(text(record.sourceGrade)) || 0;
+                const targetRank = archive2Core?.gradeRank?.(targetGrade) || 0;
+                if (!sourceRank || !targetRank || sourceRank > targetRank) {
+                    exclusions.candidateGradeIneligible++;
+                    continue;
+                }
+            }
             const bucket = canonicalBucket(meta);
             const difficultyRecord = { ...record, ...meta };
             fact.path = path;
@@ -410,7 +501,7 @@
         return index;
     }
 
-    function clinicItemForCandidate(record, identity, target, meta) {
+    function clinicItemForCandidate(record, identity, target, meta, requestedBucket, filterMode) {
         const candidateCanonicalMeta = meta || candidateMeta(record);
         const revision = firstValue(record, ['metadataRevision', 'metadata_revision']) || candidateCanonicalMeta.metadataRevision || null;
         const metadataJson = candidateMetadataJson(record, identity, candidateCanonicalMeta, revision);
@@ -445,6 +536,9 @@
                 sessionCount: target.sessionCount,
                 path: { ...target.path },
                 pathDepth: target.pathDepth,
+                observedWrongBucket: target.difficultyBucket,
+                requestedBucket,
+                filterMode,
                 difficultyBucket: target.difficultyBucket,
                 outcomeSources: [...target.outcomeSources],
                 evidenceRefs: [...target.sourceOriginRefs],
@@ -461,7 +555,16 @@
         const selectedIds = new Set((Array.isArray(input.studentIds) ? input.studentIds : [])
             .map(value => text(value?.id || value?.studentId || value)).filter(Boolean));
         const archive2Core = input.archive2Core || null;
-        const limit = Math.max(1, Math.min(30, Number.isInteger(input.countPerStudent) ? input.countPerStudent : 5));
+        const recommendationConfig = recommendationOptionsOf(input);
+        const limit = recommendationConfig.normalized.countPerStudent;
+        const targetGrade = text(input.targetGrade);
+        if (targetGrade && !archive2Core?.gradeRank?.(targetGrade)) {
+            recommendationConfig.errors.push({
+                code: 'invalid_target_grade',
+                field: 'targetGrade',
+                message: 'The recipient class grade could not be confirmed.',
+            });
+        }
         const sessionsById = new Map(sessions.map(row => [sessionIdOf(row), row]).filter(([id]) => id));
         const resultsBySession = resultRowsBySession(resultItems);
         const resultItemSessions = new Set(resultItems.map(sessionIdOf).filter(Boolean));
@@ -490,6 +593,8 @@
             candidateAdvancedIneligible: 0,
             candidateRecentUid: 0,
             candidateNoPathMatch: 0,
+            candidateSelectedBucketMismatch: 0,
+            candidateGradeIneligible: 0,
             candidateDifficultyIneligible: 0,
         };
         const students = new Map();
@@ -720,32 +825,47 @@
 
         const candidatesByStudent = [];
         const hasTargets = evidence.some(student => student.targets.length > 0);
-        const candidateIndex = hasTargets
-            ? buildCandidateIndex(candidateRecords, archive2Core, input.canonicalAuthority || null, exclusions)
+        const candidateIndex = hasTargets && !recommendationConfig.errors.length
+            ? buildCandidateIndex(candidateRecords, archive2Core, input.canonicalAuthority || null, exclusions, targetGrade)
             : new Map();
         for (const row of evidence) {
+            if (recommendationConfig.errors.length) {
+                candidatesByStudent.push({
+                    studentId: row.studentId,
+                    requestedCount: recommendationConfig.normalized.countPerStudent,
+                    returnedCount: 0,
+                    shortfall: recommendationConfig.normalized.countPerStudent,
+                    items: [],
+                });
+                continue;
+            }
             const recent = seenQuestionUids.get(row.studentId) || new Set();
             const used = new Set();
             const countedRecent = new Set();
-            const items = [];
+            const availableItems = [];
             for (const target of row.targets) {
-                if (items.length >= limit) break;
+                if (availableItems.length >= limit) break;
                 const group = candidateIndex.get(`${target.pathDepth}|${target.pathKey}`);
-                const pool = target.difficultyBucket == null
+                const filterMode = recommendationConfig.normalized.difficultyMode;
+                const buckets = filterMode === 'selected'
+                    ? recommendationConfig.normalized.selectedDifficultyBuckets
+                    : target.difficultyBucket == null ? null : [target.difficultyBucket];
+                const pool = buckets == null
                     ? (group?.anyBucket || [])
-                    : (group?.byBucket.get(target.difficultyBucket) || []);
+                    : buckets.flatMap(bucket => group?.byBucket.get(bucket) || []);
                 if (!pool.length) {
-                    exclusions.candidateNoPathMatch++;
+                    if (!group) exclusions.candidateNoPathMatch++;
+                    else if (filterMode === 'selected') exclusions.candidateSelectedBucketMismatch++;
                     continue;
                 }
                 for (const fact of pool) {
-                    if (items.length >= limit) break;
+                    if (availableItems.length >= limit) break;
                     const { record: candidate, identity, meta } = fact;
                     if (target.pathDepth > 4 && !fact.advancedPathEligible) {
                         exclusions.candidateAdvancedIneligible++;
                         continue;
                     }
-                    if (target.difficultyBucket != null && !fact.difficultyEligible) {
+                    if (buckets != null && !fact.difficultyEligible) {
                         exclusions.candidateDifficultyIneligible++;
                         continue;
                     }
@@ -758,23 +878,33 @@
                     }
                     if (used.has(identity.questionUid)) continue;
                     used.add(identity.questionUid);
-                    items.push(clinicItemForCandidate(candidate, identity, target, meta));
+                    const requestedBucket = filterMode === 'selected' ? fact.bucket : target.difficultyBucket;
+                    availableItems.push(clinicItemForCandidate(candidate, identity, target, meta, requestedBucket, filterMode));
                 }
             }
-            candidatesByStudent.push({ studentId: row.studentId, items });
+            const items = availableItems;
+            candidatesByStudent.push({
+                studentId: row.studentId,
+                requestedCount: limit,
+                returnedCount: availableItems.length,
+                shortfall: limit == null ? null : Math.max(0, limit - availableItems.length),
+                items,
+            });
         }
 
         const coverageInput = object(input.coverage);
         const fromDates = selectedSessions.map(sessionDate).filter(Boolean).sort();
         const hasEvidence = evidence.some(row => row.targets.length);
         const hasCandidates = candidatesByStudent.some(row => row.items.length);
-        const status = !selectedIds.size ? 'no_selected_students'
+        const status = recommendationConfig.errors.length ? 'invalid_options'
+            : !selectedIds.size ? 'no_selected_students'
             : !hasEvidence ? 'no_canonical_evidence'
             : !hasCandidates ? 'no_candidates' : 'ready';
         return {
             contractVersion: CONTRACT_VERSION,
             status,
             countBasis: 'wrong_frequency',
+            recommendationOptions: recommendationConfig.normalized,
             coverage: {
                 scope: text(coverageInput.scope) || 'unspecified',
                 from: text(coverageInput.from) || fromDates[0] || '',
@@ -801,7 +931,7 @@
             candidates: candidatesByStudent,
             unresolvedEvidence,
             exclusions,
-            errors: [],
+            errors: recommendationConfig.errors,
         };
     }
 
