@@ -571,6 +571,9 @@ async function snapshotLegacyAssignmentQuestions(env, assignment) {
     const questionUid = storedUid && expectedUid && storedUid === expectedUid ? storedUid : null;
     const metadataCapture = metadataCaptureByOrder.get(orderNo) || null;
     const canonicalRecord = metadataCapture?.record || null;
+    const metadataRevision = normalizeOptionalText(blueprint.metadata_revision) ||
+      (sourceFallback ? normalizeOptionalText(canonicalRecord?.metadataRevision) : null);
+    const metadataHash = normalizeOptionalText(blueprint.metadata_hash);
     const blueprintArchiveMetadata = {
       standardUnitKey: blueprint.standard_unit_key ?? null,
       standardUnit: blueprint.standard_unit ?? null,
@@ -591,9 +594,6 @@ async function snapshotLegacyAssignmentQuestions(env, assignment) {
     const resolutionStatus = canonicalIdentityVerified
       ? 'VERIFIED'
       : questionUid ? 'LEGACY_INFERRED' : 'UNRESOLVED';
-    const metadataRevision = normalizeOptionalText(blueprint.metadata_revision) ||
-      (sourceFallback ? normalizeOptionalText(canonicalRecord?.metadataRevision) : null);
-    const metadataHash = normalizeOptionalText(blueprint.metadata_hash);
     const blueprintMetadataJson = normalizeOptionalText(blueprint.metadata_json) ||
       (Object.keys(blueprint).length || canonicalRecord
         ? await buildBlueprintMetadataSnapshot({
