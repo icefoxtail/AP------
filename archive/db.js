@@ -15683,6 +15683,37 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
+      "file": "original/middle/m2/1final/22_풍덕중_1학기_기말_중2_수학.js",
+      "school": "풍덕중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "M2-02",
+      "rangeStartUnit": "일차부등식",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "M2-06",
+      "rangeEndUnit": "도형의 닮음",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-02",
+          "rangeStartUnit": "일차부등식",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "M2-06",
+          "rangeEndUnit": "도형의 닮음",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
       "file": "original/middle/m2/2final/22_풍덕중_2학기_기말_중2_기출.js",
       "school": "풍덕중",
       "topic": "",
