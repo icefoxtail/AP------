@@ -14,7 +14,7 @@ window.examData = {
       "id": "q01",
       "number": 1,
       "score": 3.0,
-      "question": "다음 그림에서 $\\square ABCD$는 원 $O$에 외접하고 네 점 $E, F, G, H$는 그 접점이다. $\\angle C=90^\\circ$이고 원 $O$의 반지름의 길이가 $5\\text{ cm}$일 때, $x$의 값은? [3점]\n<div class=\"question-image\"><img src=\"assets/q01.png\" /></div>",
+      "question": "다음 그림에서 $\\square ABCD$는 원 $O$에 외접하고 네 점 $E, F, G, H$는 그 접점이다. $\\angle C=90^\\circ$이고 원 $O$의 반지름의 길이가 $5\\text{ cm}$일 때, $x$의 값은? [3점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q01.png\" /></div>",
       "choices": [
         "$1\\text{ cm}$",
         "$2\\text{ cm}$",
@@ -29,7 +29,7 @@ window.examData = {
       "id": "q02",
       "number": 2,
       "score": 4.0,
-      "question": "다음 그림과 같이 반지름의 길이가 각각 $5\\text{ cm}, 3\\text{ cm}$인 두 동심원에서 작은 원에 접하는 직선이 큰 원과 만나는 두 점을 각각 $A, B$라 할 때, $\\overline{AB}$의 길이는? (단, $T$는 접점) [4점]\n<div class=\"question-image\"><img src=\"assets/q02.png\" /></div>",
+      "question": "다음 그림과 같이 반지름의 길이가 각각 $5\\text{ cm}, 3\\text{ cm}$인 두 동심원에서 작은 원에 접하는 직선이 큰 원과 만나는 두 점을 각각 $A, B$라 할 때, $\\overline{AB}$의 길이는? (단, $T$는 접점) [4점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q02.png\" /></div>",
       "choices": [
         "$8\\text{ cm}$",
         "$20\\text{ cm}$",
@@ -44,7 +44,7 @@ window.examData = {
       "id": "q03",
       "number": 3,
       "score": 4.0,
-      "question": "다음 그림에서 두 점 $D, E$는 점 $A$에서 원 $O$에 그은 두 접선의 접점이다. $\\overline{BC}$가 원 $O$에 접하고 $\\angle DAE=60^\\circ, \\overline{OD}=40\\text{ cm}$일 때, $\\triangle ABC$의 둘레의 길이는? [4점]\n<div class=\"question-image\"><img src=\"assets/q03.png\" /></div>",
+      "question": "다음 그림에서 두 점 $D, E$는 점 $A$에서 원 $O$에 그은 두 접선의 접점이다. $\\overline{BC}$가 원 $O$에 접하고 $\\angle DAE=60^\\circ, \\overline{OD}=40\\text{ cm}$일 때, $\\triangle ABC$의 둘레의 길이는? [4점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q03.png\" /></div>",
       "choices": [
         "$20\\sqrt{3}\\text{ cm}$",
         "$40\\sqrt{3}\\text{ cm}$",
@@ -59,7 +59,7 @@ window.examData = {
       "id": "q04",
       "number": 4,
       "score": 4.0,
-      "question": "다음 그림에서 $\\angle ABC=90^\\circ, \\angle ADB=65^\\circ$일 때, $\\angle x$의 크기는? [4점]\n<div class=\"question-image\"><img src=\"assets/q04.png\" /></div>",
+      "question": "다음 그림에서 $\\angle ABC=90^\\circ, \\angle ADB=65^\\circ$일 때, $\\angle x$의 크기는? [4점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q04.png\" /></div>",
       "choices": [
         "$10^\\circ$",
         "$15^\\circ$",
@@ -74,7 +74,7 @@ window.examData = {
       "id": "q05",
       "number": 5,
       "score": 3.0,
-      "question": "다음 그림과 같은 원 $O$에서 $\\angle AOB=100^\\circ$일 때, $\\angle APB$의 크기는? [3점]\n<div class=\"question-image\"><img src=\"assets/q05.png\" /></div>",
+      "question": "다음 그림과 같은 원 $O$에서 $\\angle AOB=100^\\circ$일 때, $\\angle APB$의 크기는? [3점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q05.png\" /></div>",
       "choices": [
         "$120^\\circ$",
         "$130^\\circ$",
@@ -89,7 +89,7 @@ window.examData = {
       "id": "q06",
       "number": 6,
       "score": 5.0,
-      "question": "다음 그림과 같이 원 $O$에 내접하는 정오각형 $ABCDE$에서 대각선 $BE$와 $AC$의 교점을 $F$라 할 때, $\\angle BFC$의 크기는? [5점]\n<div class=\"question-image\"><img src=\"assets/q06.png\" /></div>",
+      "question": "다음 그림과 같이 원 $O$에 내접하는 정오각형 $ABCDE$에서 대각선 $BE$와 $AC$의 교점을 $F$라 할 때, $\\angle BFC$의 크기는? [5점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q06.png\" /></div>",
       "choices": [
         "$60^\\circ$",
         "$64^\\circ$",
@@ -104,7 +104,7 @@ window.examData = {
       "id": "q07",
       "number": 7,
       "score": 4.0,
-      "question": "다음 그림에서 $\\square ABCD$는 원에 내접하고 점 $P$는 원 위의 점 $A$에서 그은 접선과 $\\overline{CB}$의 연장선의 교점일 때, $\\angle CAB$의 크기는? [4점]\n<div class=\"question-image\"><img src=\"assets/q07.png\" /></div>",
+      "question": "다음 그림에서 $\\square ABCD$는 원에 내접하고 점 $P$는 원 위의 점 $A$에서 그은 접선과 $\\overline{CB}$의 연장선의 교점일 때, $\\angle CAB$의 크기는? [4점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q07.png\" /></div>",
       "choices": [
         "$54^\\circ$",
         "$56^\\circ$",
@@ -134,7 +134,7 @@ window.examData = {
       "id": "q09",
       "number": 9,
       "score": 4.0,
-      "question": "다음 그림에서 $\\square ABCD$는 원 $O$에 내접하고 두 직선 $l, m$은 각각 두 점 $A, C$에서의 접선이다. $\\angle D=85^\\circ$일 때, $\\angle x + \\angle y$의 크기는? [4점]\n<div class=\"question-image\"><img src=\"assets/q09.png\" /></div>",
+      "question": "다음 그림에서 $\\square ABCD$는 원 $O$에 내접하고 두 직선 $l, m$은 각각 두 점 $A, C$에서의 접선이다. $\\angle D=85^\\circ$일 때, $\\angle x + \\angle y$의 크기는? [4점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q09.png\" /></div>",
       "choices": [
         "$85^\\circ$",
         "$90^\\circ$",
@@ -149,7 +149,7 @@ window.examData = {
       "id": "q10",
       "number": 10,
       "score": 4.0,
-      "question": "다음 그림에서 직선 $PT$는 원 $O$의 접선이고 점 $C$는 접점이다. $\\angle BCT=75^\\circ$일 때, $\\angle BPC$의 크기는? [4점]\n<div class=\"question-image\"><img src=\"assets/q10.png\" /></div>",
+      "question": "다음 그림에서 직선 $PT$는 원 $O$의 접선이고 점 $C$는 접점이다. $\\angle BCT=75^\\circ$일 때, $\\angle BPC$의 크기는? [4점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q10.png\" /></div>",
       "choices": [
         "$55^\\circ$",
         "$60^\\circ$",
@@ -224,7 +224,7 @@ window.examData = {
       "id": "q15",
       "number": 15,
       "score": 4.0,
-      "question": "어떤 자료의 각 변량에 대한 편차가 다음과 같을 때, 이 자료의 표준편차는? [4점]\n<div class=\"question-image\"><img src=\"assets/q15.png\" /></div>",
+      "question": "어떤 자료의 각 변량에 대한 편차가 다음과 같을 때, 이 자료의 표준편차는? [4점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q15.png\" /></div>",
       "choices": [
         "①",
         "②",
@@ -254,7 +254,7 @@ window.examData = {
       "id": "q17",
       "number": 17,
       "score": 4.0,
-      "question": "다음 중 두 변량의 산점도를 그렸을 때, 오른쪽 그림과 같은 모양이 되는 것을 모두 고르면? (정답 2개) [4점]\n<div class=\"question-image\"><img src=\"assets/q17.png\" /></div>",
+      "question": "다음 중 두 변량의 산점도를 그렸을 때, 오른쪽 그림과 같은 모양이 되는 것을 모두 고르면? (정답 2개) [4점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q17.png\" /></div>",
       "choices": [
         "양파 수확량과 양파 가격",
         "키와 시력",
@@ -269,7 +269,7 @@ window.examData = {
       "id": "q18",
       "number": 18,
       "score": 4.0,
-      "question": "[18-19] 아래 그림은 어느 학급 학생 20명의 수학 성적과 영어 성적에 대한 산점도이다. 다음 물음에 답하시오.\n<div class=\"question-image\"><img src=\"assets/q18.png\" /></div>\n\n18. 영어 점수가 60점 미만인 학생들의 수학 점수의 평균은? [4점]",
+      "question": "[18-19] 아래 그림은 어느 학급 학생 20명의 수학 성적과 영어 성적에 대한 산점도이다. 다음 물음에 답하시오.\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q18.png\" /></div>\n\n18. 영어 점수가 60점 미만인 학생들의 수학 점수의 평균은? [4점]",
       "choices": [
         "48점",
         "50점",
@@ -299,7 +299,7 @@ window.examData = {
       "id": "q20",
       "number": 20,
       "score": 5.0,
-      "question": "오른쪽 산점도는 학생 20명의 몸무게와 팔굽혀펴기 횟수를 조사하여 나타낸 것이다. 다음 설명 중 옳지 않은 것을 모두 고르면? (정답 2개) [5점]\n<div class=\"question-image\"><img src=\"assets/q20.png\" /></div>",
+      "question": "오른쪽 산점도는 학생 20명의 몸무게와 팔굽혀펴기 횟수를 조사하여 나타낸 것이다. 다음 설명 중 옳지 않은 것을 모두 고르면? (정답 2개) [5점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/q20.png\" /></div>",
       "choices": [
         "$A$는 $B$보다 몸무게가 많이 나간다.",
         "몸무게가 $50\\text{ kg}$ 이상 $65\\text{ kg}$ 이하인 학생 수는 10명이다.",
@@ -314,7 +314,7 @@ window.examData = {
       "id": "s01",
       "number": 21,
       "score": 4.0,
-      "question": "[서술형 1] 다음 그림의 원 $O$에서 $\\overline{AB} \\perp \\overline{OC}$이고 $\\overline{AM}=8, \\overline{CM}=4$일 때, $x$의 값을 구하시오. [4점]\n<div class=\"question-image\"><img src=\"assets/s01.png\" /></div>",
+      "question": "[서술형 1] 다음 그림의 원 $O$에서 $\\overline{AB} \\perp \\overline{OC}$이고 $\\overline{AM}=8, \\overline{CM}=4$일 때, $x$의 값을 구하시오. [4점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/s01.png\" /></div>",
       "choices": [],
       "answer": "10",
       "solution": "그림에서 OM은 현 AB에 수직이므로 현을 이등분한다. 따라서 MB=AM=8이다. 반지름을 x라 하면 OC=OB=x이고, CM=4이므로 OM=x−4이다. 직각삼각형 OMB에서 피타고라스 정리를 적용하면 x²=(x−4)²+8²이다. 전개하면 x²=x²−8x+16+64이므로 8x=80, x=10이다. 따라서 구하는 길이는 10이다."
@@ -323,7 +323,7 @@ window.examData = {
       "id": "s02",
       "number": 22,
       "score": 4.0,
-      "question": "[서술형 2] 다음 그림에서 점 $P$는 두 현 $AB, CD$의 교점이다. $\\angle ADC=25^\\circ, \\angle DPB=85^\\circ$이고 $\\overparen{DB}=4\\text{ cm}$일 때, 이 원의 둘레의 길이를 구하시오. [4점]\n<div class=\"question-image\"><img src=\"assets/s02.png\" /></div>",
+      "question": "[서술형 2] 다음 그림에서 점 $P$는 두 현 $AB, CD$의 교점이다. $\\angle ADC=25^\\circ, \\angle DPB=85^\\circ$이고 $\\overparen{DB}=4\\text{ cm}$일 때, 이 원의 둘레의 길이를 구하시오. [4점]\n<div class=\"question-image\"><img src=\"assets/images/21_왕의중_2학기_기말_중3_수학/s02.png\" /></div>",
       "choices": [],
       "answer": "12 cm",
       "solution": "∠DPB=85°이고 PA와 PB는 반대 방향의 반직선이므로 ∠APD=180°−85°=95°이다. D, P, C가 한 직선 위이므로 ∠ADP=∠ADC=25°이다. 삼각형 APD에서 ∠DAP=180°−95°−25°=60°이다. A, P, B가 한 직선 위이므로 ∠DAB=∠DAP=60°이다. 원주각 ∠DAB가 호 DB를 보므로 호 DB의 중심각은 2×60°=120°이다. 그림에서 호 DB의 길이가 4 cm이므로 이 호는 원둘레의 120°/360°=1/3이다. 따라서 원의 둘레는 4÷(1/3)=12 cm이다."

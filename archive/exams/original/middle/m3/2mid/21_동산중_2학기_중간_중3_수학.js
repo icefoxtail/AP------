@@ -436,7 +436,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "ALIVE_REPLACEMENT",
     "score": 4,
-    "content": "원점을 지나는 이차함수 $y=a(x-p)^2+q$의 그래프가 그림과 같고 꼭짓점의 좌표가 $(2,-4)$일 때, $a+p+q$의 값을 구하면? (4점)<br><img src=\"assets/figures/q06.svg\" alt=\"꼭짓점 (2,-4)와 원점을 지나는 이차함수 그래프\" />",
+    "content": "원점을 지나는 이차함수 $y=a(x-p)^2+q$의 그래프가 그림과 같고 꼭짓점의 좌표가 $(2,-4)$일 때, $a+p+q$의 값을 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q06.svg\" alt=\"꼭짓점 (2,-4)와 원점을 지나는 이차함수 그래프\" />",
     "choices": [
       "$1$",
       "$-1$",
@@ -1049,7 +1049,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "AUDITED_REPAIR",
     "score": 3,
-    "content": "그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AB=12$, $AC=5$이다. 점 $D$는 선분 $AB$ 위에, 점 $E$는 선분 $BC$ 위에 있고 $DE\\perp BC$이다. $\\angle BDE=x$일 때, $13\\cos x$의 값을 구하면? (3점)<br><img src=\"assets/figures/q13.svg\" alt=\"AB=12, AC=5인 직각삼각형과 BC에 수직인 DE\" />",
+    "content": "그림과 같이 $\\angle A=90^\\circ$인 직각삼각형 $ABC$에서 $AB=12$, $AC=5$이다. 점 $D$는 선분 $AB$ 위에, 점 $E$는 선분 $BC$ 위에 있고 $DE\\perp BC$이다. $\\angle BDE=x$일 때, $13\\cos x$의 값을 구하면? (3점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q13.svg\" alt=\"AB=12, AC=5인 직각삼각형과 BC에 수직인 DE\" />",
     "choices": [
       "$5$",
       "$12$",
@@ -1315,7 +1315,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "ALIVE_REPLACEMENT",
     "score": 3,
-    "content": "중심이 $O$이고 반지름의 길이가 $1$인 사분원에서 점 $P$는 호 위에 있다. $H$는 $P$에서 사분원의 반지름에 내린 수선의 발이고 $\\angle POH=x$ ($0^\\circ<x<90^\\circ$)일 때, 다음 중 옳지 않은 것은? (3점)<br><img src=\"assets/figures/q16.svg\" alt=\"반지름 1인 사분원과 직각삼각형 OPH\" />",
+    "content": "중심이 $O$이고 반지름의 길이가 $1$인 사분원에서 점 $P$는 호 위에 있다. $H$는 $P$에서 사분원의 반지름에 내린 수선의 발이고 $\\angle POH=x$ ($0^\\circ<x<90^\\circ$)일 때, 다음 중 옳지 않은 것은? (3점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q16.svg\" alt=\"반지름 1인 사분원과 직각삼각형 OPH\" />",
     "choices": [
       "$\\sin x=\\overline{PH}$",
       "$\\cos x=\\overline{OH}$",
@@ -1406,7 +1406,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "AUDITED_REPAIR",
     "score": 3,
-    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=100$, $\\angle B=70^\\circ$이다. 다음 삼각비표를 이용하여 $AC$의 길이를 구하면? (3점)<br><table border=\"1\"><tr><th>각도</th><th>sin</th><th>cos</th><th>tan</th></tr><tr><td>68°</td><td>0.9272</td><td>0.3746</td><td>2.4751</td></tr><tr><td>69°</td><td>0.9336</td><td>0.3584</td><td>2.6051</td></tr><tr><td>70°</td><td>0.9397</td><td>0.3420</td><td>2.7475</td></tr><tr><td>71°</td><td>0.9455</td><td>0.3256</td><td>2.9042</td></tr><tr><td>72°</td><td>0.9511</td><td>0.3090</td><td>3.0777</td></tr></table><br><br><img src=\"assets/figures/q17.svg\" alt=\"C가 직각이고 AB가 빗변인 삼각형\" />",
+    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$, $AB=100$, $\\angle B=70^\\circ$이다. 다음 삼각비표를 이용하여 $AC$의 길이를 구하면? (3점)<br><table border=\"1\"><tr><th>각도</th><th>sin</th><th>cos</th><th>tan</th></tr><tr><td>68°</td><td>0.9272</td><td>0.3746</td><td>2.4751</td></tr><tr><td>69°</td><td>0.9336</td><td>0.3584</td><td>2.6051</td></tr><tr><td>70°</td><td>0.9397</td><td>0.3420</td><td>2.7475</td></tr><tr><td>71°</td><td>0.9455</td><td>0.3256</td><td>2.9042</td></tr><tr><td>72°</td><td>0.9511</td><td>0.3090</td><td>3.0777</td></tr></table><br><br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q17.svg\" alt=\"C가 직각이고 AB가 빗변인 삼각형\" />",
     "choices": [
       "$93.97$",
       "$9.397$",
@@ -1586,7 +1586,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "ALIVE_REPLACEMENT",
     "score": 4,
-    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $BD=8\\,\\mathrm{cm}$, $\\angle B=30^\\circ$, $\\angle ADB=120^\\circ$일 때, $AC$의 길이를 구하면? (4점)<br><img src=\"assets/figures/q19.svg\" alt=\"C가 직각이고 D가 BC 위에 있으며 BD=8인 삼각형\" />",
+    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $BD=8\\,\\mathrm{cm}$, $\\angle B=30^\\circ$, $\\angle ADB=120^\\circ$일 때, $AC$의 길이를 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q19.svg\" alt=\"C가 직각이고 D가 BC 위에 있으며 BD=8인 삼각형\" />",
     "choices": [
       "$2\\sqrt{3}$",
       "$3\\sqrt{3}$",
@@ -1765,7 +1765,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "ALIVE_REPLACEMENT",
     "score": 4,
-    "content": "네 변의 길이가 모두 $4\\sqrt3$인 마름모 $ABCD$의 한 각이 $60^\\circ$일 때, 마름모의 넓이를 구하면? (4점)<br><img src=\"assets/figures/q21.svg\" alt=\"변의 길이가 4루트3이고 한 각이 60도인 마름모\" />",
+    "content": "네 변의 길이가 모두 $4\\sqrt3$인 마름모 $ABCD$의 한 각이 $60^\\circ$일 때, 마름모의 넓이를 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q21.svg\" alt=\"변의 길이가 4루트3이고 한 각이 60도인 마름모\" />",
     "choices": [
       "$17\\sqrt{3}$",
       "$18$",
@@ -1856,7 +1856,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "AUDITED_REPAIR",
     "score": 4,
-    "content": "정사각형 $ABCD$에서 $E$는 선분 $AD$의 중점이고, $F$는 선분 $CD$의 삼등분점 중 $C$에 더 가까운 점이다. $\\angle EBF=x$일 때, $\\sin x$의 값을 구하면? (4점)<br><img src=\"assets/figures/q22.svg\" alt=\"정사각형에서 E는 AD의 중점, F는 C에 가까운 CD의 삼등분점\" />",
+    "content": "정사각형 $ABCD$에서 $E$는 선분 $AD$의 중점이고, $F$는 선분 $CD$의 삼등분점 중 $C$에 더 가까운 점이다. $\\angle EBF=x$일 때, $\\sin x$의 값을 구하면? (4점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q22.svg\" alt=\"정사각형에서 E는 AD의 중점, F는 C에 가까운 CD의 삼등분점\" />",
     "choices": [
       "$\\frac{1}{2}$",
       "$\\frac{\\sqrt{2}}{2}$",
@@ -2030,7 +2030,7 @@ window.questionBank = [
     "sourceExamId": "21_동산중_2학기_중간_중3_수학",
     "provenance": "AUDITED_REPAIR",
     "score": 6,
-    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $AB=6$, $AD=4$, $CD=2$일 때, $\\cos B$의 값을 구하여라. (6점)<br><img src=\"assets/figures/q24.svg\" alt=\"C가 직각이고 D가 BC 위에 있는 삼각형, AB=6, AD=4, CD=2\" />",
+    "content": "직각삼각형 $ABC$에서 $\\angle C=90^\\circ$이고 점 $D$는 선분 $BC$ 위에 있다. $AB=6$, $AD=4$, $CD=2$일 때, $\\cos B$의 값을 구하여라. (6점)<br><img src=\"assets/images/21_동산중_2학기_중간_중3_수학/q24.svg\" alt=\"C가 직각이고 D가 BC 위에 있는 삼각형, AB=6, AD=4, CD=2\" />",
     "choices": [],
     "answer": "\\frac{\\sqrt6}{3}",
     "solution": "$D$가 $BC$ 위에 있고 $\\angle C=90^\\circ$이므로 $AC\\perp CD$이다. 직각삼각형 $ACD$에서 $AD^2=AC^2+CD^2$이므로 $AC^2=4^2-2^2=12$, 즉 $AC=2\\sqrt3$이다. 직각삼각형 $ABC$에서 $BC^2=AB^2-AC^2=6^2-12=24$이므로 $BC=2\\sqrt6$이다. 따라서 $\\cos B=BC/AB=2\\sqrt6/6=\\sqrt6/3$이다.",
