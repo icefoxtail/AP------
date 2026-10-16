@@ -28,7 +28,7 @@ test('high-two navigation uses current catalog course labels without duplicate a
   const sections = model.buildNavigationSections(exams);
   const labels = sections[2].items.map(({ name }) => name);
   assert.deepEqual(new Set(labels), new Set([
-    '대수', '기하', '기하와벡터', '미적분I', '미적분II', '확률과 통계',
+    '대수', '기하와벡터', '미적분I', '미적분II', '확률과 통계',
   ]));
   assert.equal(new Set(labels).size, labels.length, 'a course should appear only once in the navigation');
   assert.equal(sections[1].items.length, 2, 'common courses are shared navigation targets, not repeated in high-two');
@@ -77,4 +77,20 @@ test('subject facet uses identical curriculum aliases as galaxy grouping', () =>
   assert.match(app, /const subjectFacetValue = \(exam\) => \{/);
   assert.match(app, /galaxyNavigation\.displayCourseName\(sourceCourse\)/);
   assert.match(app, /subjectFacetValue\(exam\) !== filters\.subject/);
+});
+
+
+test('geometry and geometry-with-vectors are one galaxy and retain original exam metadata', () => {
+  const fake = [
+    { grade: '고2', subject: '기하', primaryStandardCourse: '기하', file: 'geometry.js' },
+    { grade: '고2', subject: '기하와 벡터', primaryStandardCourse: '기하와 벡터', file: 'vector-spaced.js' },
+    { grade: '고2', subject: '기하와벡터', primaryStandardCourse: '기하와벡터', file: 'vector-compact.js' },
+  ];
+  const original = JSON.stringify(fake);
+  const expected = 'curriculum:high:기하와벡터';
+  assert.deepEqual(fake.map((exam) => model.curriculumGroupForExam(exam).id), [expected, expected, expected]);
+  assert.deepEqual(model.buildNavigationSections(fake)[2].items.map(({ id, name, count }) => [id, name, count]), [
+    [expected, '기하와벡터', 3],
+  ]);
+  assert.equal(JSON.stringify(fake), original);
 });

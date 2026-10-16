@@ -16,6 +16,7 @@
     const compact = name.replace(/\s/g, '').replace(/Ⅰ/g, 'I').replace(/Ⅱ/g, 'II').replace(/Ⅲ/g, 'III');
     if (compact === '수학(상)' || compact === '수학상') return '공통수학1';
     if (compact === '수학(하)' || compact === '수학하') return '공통수학2';
+    if (compact === '기하' || compact === '기하와벡터') return '기하와벡터';
     if (compact === '수학I' || compact === '수학1' || compact === '대수') return '대수';
     if (compact === '수학II' || compact === '수학2' || compact === '미적분I' || compact === '미적분1') return '미적분I';
     if (compact === '미적분' || compact === '미적분II' || compact === '미적분2') return '미적분II';
