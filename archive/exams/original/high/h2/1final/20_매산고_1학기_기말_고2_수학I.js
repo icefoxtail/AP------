@@ -22,7 +22,7 @@ window.questionBank = [
     "id": 2,
     "questionNumber": 2,
     "questionType": "객관식",
-    "content": "등차수열 $\\{a_n\\}$이 $a_1=-2$, $a_5=10$일 때, 첫째항부터 제 $5$항까지의 합 $S_5$을 구하면? [3.9점]",
+    "content": "등차수열 $\\\{a_n\\\}$이 $a_1=-2$, $a_5=10$일 때, 첫째항부터 제 $5$항까지의 합 $S_5$을 구하면? [3.9점]",
     "choices": [
       "$12$",
       "$14$",
@@ -147,7 +147,10 @@ window.questionBank = [
       "$\\angle\\mathrm{C}$가 직각인 직각삼각형"
     ],
     "images": [],
-    "answer": "",
+    "answer": "2, 4",
+    "isOriginalDefect": true,
+    "multipleAnswer": [2, 4],
+    "defectNote": "학교 원본 출제 오류: 정삼각형(a=b=c) 조건이 보기에 없어 이등변삼각형 조건인 ②(a=b)와 ④(a=c)를 학교 공식 복수정답 처리함.",
     "solution": ""
   },
   {
@@ -170,7 +173,7 @@ window.questionBank = [
     "id": 11,
     "questionNumber": 11,
     "questionType": "객관식",
-    "content": "다음은 모든 자연수 $n$에 대하여\n$$\\sum_{k=1}^{n} k^3 = \\left\\{\\frac{n(n+1)}{2}\\right\\}^2 \\cdots (*)$$\n이 성립함을 수학적 귀납법으로 증명한 것이다.\n<div class=\"exam-box\">(ⅰ) $n=1$일 때,<br>&nbsp;&nbsp;&nbsp;&nbsp;(좌변)$=1$<br>&nbsp;&nbsp;&nbsp;&nbsp;(우변)$=\\left\\{\\frac{1\\times 2}{2}\\right\\}^2 = 1$<br>&nbsp;&nbsp;&nbsp;&nbsp;이므로 성립한다.<br>(ⅱ) $n=k$일 때 $(*)$이 성립한다고 가정하면<br>&nbsp;&nbsp;&nbsp;&nbsp;$\\sum_{i=1}^{k+1} i^3 = \\fbox{ (가) } + (k+1)^3$<br>&nbsp;&nbsp;&nbsp;&nbsp;$= (k+1)^2 \\times \\fbox{ (나) }$<br>&nbsp;&nbsp;&nbsp;&nbsp;$= \\{\\fbox{ (다) }\\}^2$<br>&nbsp;&nbsp;&nbsp;&nbsp;이다.<br>&nbsp;&nbsp;&nbsp;&nbsp;따라서 $n=k+1$일 때도 $(*)$이 성립한다.<br>(ⅰ), (ⅱ)에 의하여 모든 자연수 $n$에 대하여 $(*)$이 성립한다.</div>\n위의 (가), (나), (다)에 알맞은 식을 각각 $f(k), g(k), h(k)$라고 할 때, $\\frac{5\\times f(5)}{g(3)\\times h(4)}$의 값은? [4.5점]",
+    "content": "다음은 모든 자연수 $n$에 대하여\n$$\\sum_{k=1}^{n} k^3 = \\left\\\{\\frac{n(n+1)}{2}\\right\\\}^2 \\cdots (*)$$\n이 성립함을 수학적 귀납법으로 증명한 것이다.\n<div class=\"exam-box\">(ⅰ) $n=1$일 때,<br>&nbsp;&nbsp;&nbsp;&nbsp;(좌변)$=1$<br>&nbsp;&nbsp;&nbsp;&nbsp;(우변)$=\\left\\\{\\frac{1\\times 2}{2}\\right\\\}^2 = 1$<br>&nbsp;&nbsp;&nbsp;&nbsp;이므로 성립한다.<br>(ⅱ) $n=k$일 때 $(*)$이 성립한다고 가정하면<br>&nbsp;&nbsp;&nbsp;&nbsp;$\\sum_{i=1}^{k+1} i^3 = \\fbox{ (가) } + (k+1)^3$<br>&nbsp;&nbsp;&nbsp;&nbsp;$= (k+1)^2 \\times \\fbox{ (나) }$<br>&nbsp;&nbsp;&nbsp;&nbsp;$= \\\{\\fbox{ (다) }\\\}^2$<br>&nbsp;&nbsp;&nbsp;&nbsp;이다.<br>&nbsp;&nbsp;&nbsp;&nbsp;따라서 $n=k+1$일 때도 $(*)$이 성립한다.<br>(ⅰ), (ⅱ)에 의하여 모든 자연수 $n$에 대하여 $(*)$이 성립한다.</div>\n위의 (가), (나), (다)에 알맞은 식을 각각 $f(k), g(k), h(k)$라고 할 때, $\\frac{5\\times f(5)}{g(3)\\times h(4)}$의 값은? [4.5점]",
     "choices": [
       "$10$",
       "$11$",
@@ -186,7 +189,7 @@ window.questionBank = [
     "id": 12,
     "questionNumber": 12,
     "questionType": "객관식",
-    "content": "수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라 할 때, $(S_{n+1}-S_{n-1})^2 = 4a_n a_{n+1} + 4^n$ $(n=2, 3, 4, \\cdots)$이 성립한다. $a_3=4$일 때, $a_{10}$의 값은? (단, 모든 자연수 $n$에 대하여 $a_{n+1} > a_n$이다.) [4.8점]",
+    "content": "수열 $\\\{a_n\\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라 할 때, $(S_{n+1}-S_{n-1})^2 = 4a_n a_{n+1} + 4^n$ $(n=2, 3, 4, \\cdots)$이 성립한다. $a_3=4$일 때, $a_{10}$의 값은? (단, 모든 자연수 $n$에 대하여 $a_{n+1} > a_n$이다.) [4.8점]",
     "choices": [
       "$1020$",
       "$1022$",
@@ -254,7 +257,7 @@ window.questionBank = [
     "id": 16,
     "questionNumber": 16,
     "questionType": "단답형",
-    "content": "[단답형1] 수열 $\\{a_n\\}$의 첫째항부터 제 $n$항까지의 합 $S_n$이 $S_n = 2n^2-5n+6$ 일 때, 일반항 $a_n$을 구하시오. [4점]",
+    "content": "[단답형1] 수열 $\\\{a_n\\\}$의 첫째항부터 제 $n$항까지의 합 $S_n$이 $S_n = 2n^2-5n+6$ 일 때, 일반항 $a_n$을 구하시오. [4점]",
     "choices": [],
     "images": [],
     "answer": "",
@@ -286,7 +289,7 @@ window.questionBank = [
     "id": 19,
     "questionNumber": 19,
     "questionType": "서술형",
-    "content": "[서술형1] 함수 $f : \\{x | 0 \\le x \\le 3\\} \\to \\{y | 0 \\le y \\le 3\\}$는 아래 그림과 같은 그래프 개형을 갖는다. $0 < x < 2\\pi$에서 방정식 $f(2\\cos x)-1=0$의 서로 다른 실근의 개수를 $\\alpha$라 하자. $0 < x < 2\\pi$에서 $2\\cos^2 x + \\sin x - 2 = k$가 서로 다른 $\\alpha$개의 실근을 갖도록 하는 $k$의 범위를 구하는 과정을 서술하시오. [10점]<br><br><img src=\"assets/images/20_매산고_1학기_기말_고2_수학I/q19.png\" class=\"exam-img\">",
+    "content": "[서술형1] 함수 $f : \\\{x | 0 \\le x \\le 3\\\} \\to \\\{y | 0 \\le y \\le 3\\\}$는 아래 그림과 같은 그래프 개형을 갖는다. $0 < x < 2\\pi$에서 방정식 $f(2\\cos x)-1=0$의 서로 다른 실근의 개수를 $\\alpha$라 하자. $0 < x < 2\\pi$에서 $2\\cos^2 x + \\sin x - 2 = k$가 서로 다른 $\\alpha$개의 실근을 갖도록 하는 $k$의 범위를 구하는 과정을 서술하시오. [10점]<br><br><img src=\"assets/images/20_매산고_1학기_기말_고2_수학I/q19.png\" class=\"exam-img\">",
     "choices": [],
     "images": [
       "assets/images/20_매산고_1학기_기말_고2_수학I/q19.png"
@@ -298,7 +301,7 @@ window.questionBank = [
     "id": 20,
     "questionNumber": 20,
     "questionType": "서술형",
-    "content": "[서술형2] $p < q$를 만족하고 $0$이 아닌 두 정수 $p, q$와 두 수열 $\\{a_n\\}, \\{b_n\\}$에 대하여 $\\sum_{k=1}^n a_k = pn^2 + pn$, $\\sum_{k=1}^n b_k = qn^2 - pn + q$이고 $\\sum_{k=1}^n a_k b_k = -8n^3 - 10n^2 - 2n - 12$일 때, $p, q$를 각각 구하는 과정을 서술하시오. [10점]",
+    "content": "[서술형2] $p < q$를 만족하고 $0$이 아닌 두 정수 $p, q$와 두 수열 $\\\{a_n\\\}, \\\{b_n\\\}$에 대하여 $\\sum_{k=1}^n a_k = pn^2 + pn$, $\\sum_{k=1}^n b_k = qn^2 - pn + q$이고 $\\sum_{k=1}^n a_k b_k = -8n^3 - 10n^2 - 2n - 12$일 때, $p, q$를 각각 구하는 과정을 서술하시오. [10점]",
     "choices": [],
     "images": [],
     "answer": "",
