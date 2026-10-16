@@ -276,8 +276,9 @@ test("source verification index binds every source row to the full canonical res
     shardBytes += Buffer.byteLength(body);
   }
   assert.equal(shardQuestionCount, catalog.records.length);
-  assert.equal(shardQuestionCount, 17787);
-  assert.equal(sourceIndex.files.length, 755);
+  // 12 newly registered middle-school sources add 286 canonical rows vs. 6ffe6768.
+  assert.equal(shardQuestionCount, 18073);
+  assert.equal(sourceIndex.files.length, 767);
   assert.ok(shardBytes > 0);
 });
 
