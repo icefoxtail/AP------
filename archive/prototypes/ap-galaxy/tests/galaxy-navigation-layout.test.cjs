@@ -35,9 +35,10 @@ test('responsive overlay offset follows the rendered navigation height', () => {
 });
 
 test('renderer bundle import and page assets share the current cache revision', () => {
-  const revision = '20261016-galaxy-nav-2';
+  const revision = html.match(/orbit\.css\?v=([\w-]+)/)?.[1];
+  assert.equal(revision, '20261016-universe-cinema-2');
   assert.match(app, new RegExp(`orbital-world\\.js\\?v=${revision}`));
-  assert.equal([...html.matchAll(new RegExp(`\\?v=${revision}`, 'g'))].length, 4);
+  assert.equal([...html.matchAll(new RegExp(`\\?v=${revision}`, 'g'))].length, 5);
   assert.doesNotMatch(app, /20261014-curriculum-orbit-1/);
   assert.doesNotMatch(html, /20261016-galaxy-nav-1/);
 });
