@@ -101,7 +101,8 @@
     if (values.includes(selected)) select.value = selected;
   };
   const subjectFacetValue = (exam) => {
-    return clean(exam.primaryStandardCourse || exam.courseRanges?.[0]?.standardCourse || exam.subject);
+    const sourceCourse = exam.primaryStandardCourse || exam.courseRanges?.[0]?.standardCourse || exam.subject;
+    return galaxyNavigation.displayCourseName(sourceCourse);
   };
   const currentFilters = () => ({
     grade: ui.grade.value,
