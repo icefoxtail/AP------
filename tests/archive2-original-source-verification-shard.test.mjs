@@ -276,9 +276,10 @@ test("source verification index binds every source row to the full canonical res
     shardBytes += Buffer.byteLength(body);
   }
   assert.equal(shardQuestionCount, catalog.records.length);
-  // 12 newly registered middle-school sources add 286 canonical rows vs. 6ffe6768.
-  assert.equal(shardQuestionCount, 18073);
-  assert.equal(sourceIndex.files.length, 767);
+  // Current registered sources: exact total is pinned after full per-source
+  // shard/hash/ordinal parity above (779 exams, 18,348 canonical questions).
+  assert.equal(shardQuestionCount, 18348);
+  assert.equal(sourceIndex.files.length, 779);
   assert.ok(shardBytes > 0);
 });
 
