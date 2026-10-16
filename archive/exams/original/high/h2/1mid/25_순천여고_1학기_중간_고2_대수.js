@@ -628,7 +628,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "①",
-    "solution": "1단계: (나)에서 $\\frac{1}{2}\\log_a b = 2\\log_b a \\Rightarrow (\\log_a b)^2 = 4$이다. (다) $1<a<b$이므로 $\\log_a b = 2 \\Rightarrow b=a^2$이다.\\n2단계: (가)에서 $\\log_{\\sqrt{2}} ab = 18 \\Rightarrow ab = (\\sqrt{2})^{18} = 2^9$이다.\\n3단계: $a(a^2) = a^3 = 2^9 \\Rightarrow a=2^3=8$이고, $b=2^6=64$이다.\\n4단계: $(\\log_a 2)^2 \\times \\log_2 b = (\\log_8 2)^2 \\times \\log_2 64 = (\\frac{1}{3})^2 \\times 6 = \\frac{6}{9} = \\frac{2}{3}$이다.\\n5단계: $p=3, q=2$이므로 $p+q=5$이다.\\n* 검산: $a=8, b=64$를 각 조건에 대입하여 모순이 없음을 확인.",
+    "solution": "(나)에서\n$\\frac{1}{2}\\log_a b=2\\log_b a$이다.\n$\\log_b a=\\frac{1}{\\log_a b}$이므로\n$(\\log_a b)^2=4$이다.\n조건 $1<a<b$에서 $\\log_a b>0$이므로\n$\\log_a b=2$이다.\n따라서\n$b=a^2$이다.\n\n(가)에서\n$\\log_{\\sqrt2}(ab)=18$이다.\n따라서\n$ab=(\\sqrt2)^{18}=2^9$이다.\n$b=a^2$를 대입하면\n$a^3=2^9$이다.\n$a=8$이고\n$b=64$이다.\n\n구하는 값은\n$(\\log_8 2)^2\\cdot\\log_2 64=(\\frac13)^2\\cdot6=\\frac23$이다.\n기약분수 $\\frac pq=\\frac23$이므로\n$p=2$, $q=3$이다.\n따라서\n$p+q=2+3=5$이다.",
     "subUnitKey": "H22-A-01-EXPONENT_LOG",
     "subUnit": "exponent log",
     "subUnitConfidence": "candidate_evidence",
