@@ -1,3 +1,42 @@
+# 2025 팔마고 고1 2기말 — QID9 QUALITY HANDOFF CURRENT (q20 갱신: 2026-10-16)
+
+**현 작업 브랜치:** `work/alive-25-palma-h1-2final-qid9` · **q01~q20 AUTHOR 후보 180/207** · 신규 q20 A1~C3 9개 · **다음 q21**. q01~q19 본문/원본/유사문제 변경 없음.
+
+## q20 SOURCE LOCK · 메타
+- 원본: `archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js` · original Git Blob `0d12b75e824ab47f08fc3b5a6180be595f882c6e` · raw SHA-256 `ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91`.
+- 원본 qid/ordinal 20, sourceUid `qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52`, identity exact record 확인. 독립 제작자 풀이상 원본은 `k=0`.
+- `GPT_QID9_Q20_SOURCE_LOCK.json`: PASS / Git blob `592e53504e536b744741106b7381d06fc6e75b96`. q20 기제작/UID 중복 0.
+- RPM L3 `H1-RPM-257` (함수의 성질), L4 `일대일함수` (canonical reuse), PT `PT_ONE_TO_ONE_BIJECTION`, TPL `TPL_BIJECTION_JUDGMENT_CONDITION` (ACTIVE). CrossConcept Canonical ACTIVE `CC_QUADRATIC_FUNCTION`, `CC_QUADRATIC_EQUATION`; Condition ACTIVE `COND_FUNCTION_BIJECTION`, `COND_RANGE`, `COND_PIECEWISE_DOMAIN_PARTITION`; EXT 생성 없음.
+- q20 문제/해설 별도 판정: 문제 SVG 0개(조건 전부 발문 제공, EXEMPT), 해설 SVG **9개** 실파일/Blob/raw SHA·Python 수치 계산·실제 polyline 역대조 증거 연결. Chrome 학생 렌더는 **NOT_RUN**.
+
+## q20 최종 정답 및 배분 (q01 복수정답 제외)
+| 구분 | 1 | 2 | 3 |
+|---|---|---|---|
+| A | ④ | ④ | ② |
+| B | ① | ② | ⑤ |
+| C | ③ | ① | ⑤ |
+
+- 가로 분포 ①2/②2/③1/④2/⑤2 → PASS.
+- q02~q19 18 Draft 파일 실제 전수 재계산 기준 세로 슬롯 편차 합 **44→39**, 최악 **6→6**, 제곱합 728→777. 전수탐색 113,400후보(직전 패턴 1개 제외), 유일 최적 목적함수 **[39,6,777]**.
+- official main `alive/06_EXECUTION/tools/qid9-answer-distribution-check.mjs`를 로컬 동일 경로 복사로 실제 Node 실행 → `PASS_STATIC_EVIDENCE_ONLY`. 본 작업 브랜치에는 checker 자체가 아직 없으므로 도구를 이번 qid 커밋에 포함하지 않음.
+- 제작자 검산: 9 발문·45보기·36 실제 오답 연산·answer/solution 번호 결속. level(하/중/상)과 1~5 bucket 개별 판정.
+- Golden q18/q19 및 Negative fixture는 최초 Draft 작성 뒤, SVG 최종 revision 전에 읽음. **엄격한 사전 순서 게이트 NOT_MET**로 기록하며 소급 PASS 주장 금지.
+- 독립 품질검수 `NOT_RUN` / 실제 Chrome `NOT_RUN` / Consumer·index `NOT_RUN` / 학생 등록 `NOT_RUN` / main 병합 `NOT_RUN`. 제작 자체 완료와 운영 출고 구분.
+
+## q20 연결 파일
+- `GPT_QID9_Q20_SOURCE_LOCK.json`, `GPT_QID9_Q20_PREFLIGHT.json`
+- `GPT_QID9_Q20_CREATE_DRAFT.json` (9), `GPT_QID9_Q20_AUTHOR_BLUEPRINT.json` (9), `GPT_QID9_Q20_AUTHOR_RECEIPT.json`
+- `GPT_QID9_Q20_VISUAL_NUMERIC_EVIDENCE.json` 및 `assets/q20/A1-solution.svg` ~ `C3-solution.svg`
+- `GPT_QID9_Q20_ANSWER_OPTIMIZATION_PROOF.json`, `GPT_QID9_Q20_ANSWER_DISTRIBUTION_EVIDENCE.json`, `GPT_QID9_Q20_ANSWER_DISTRIBUTION_CHECK_RESULT.json`
+- `GPT_QID9_GENERATED_META_REGISTRY_v1.json` 180 UID, `GPT_QID9_PROGRESS_CURRENT.json`.
+
+## q21 HARD NEXT STEP
+1. 최신 main+branch 및 q20 Receipt 재조회, q21 중복/UID 확인.
+2. q21 원본 **평균속력·유리함수** 완전히 새 SOURCE LOCK, 풀이·그림·학년 L3/L4 재판정; q20 L3 자동 승계 금지.
+3. q02~q20 실제 Draft로 세로 누적을 재계산하고 가로 2/2/2/2/1 최적화·Node 검사기. 기존 q01~q20 보호. q21 9개 제작 → **189/207**.
+
+---
+
 # CURRENT — q19 SOURCE LOCK·AUTHOR 9문항 제작 / 다음 q20 (2026-10-15)
 
 - 작업 브랜치 `work/alive-25-palma-h1-2final-qid9`, parent `eb0da3ea271ed0fd03535ad80c01ec96c4cfcefb`. **q19 A1~C3 신규 9 UID**; 누적 **171/207**, 다음 **q20**. 기존 q01~q18 162문항과 원본·기존 유사문항 불변.

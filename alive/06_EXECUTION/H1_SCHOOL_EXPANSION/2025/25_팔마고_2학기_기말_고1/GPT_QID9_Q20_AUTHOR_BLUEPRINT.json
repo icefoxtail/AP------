@@ -1,0 +1,974 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q20_AUTHOR_BLUEPRINT_v1",
+  "createdDate": "2026-10-16",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 20,
+  "sourceUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+  "sourceLockPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/GPT_QID9_Q20_SOURCE_LOCK.json",
+  "sourceLockGitBlob": "592e53504e536b744741106b7381d06fc6e75b96",
+  "sourceInvariant": {
+    "primaryL3": "H1-RPM-257",
+    "decisiveStep": "같은 집합 또는 지정 공역으로의 일대일대응 여부는 일대일함수 조건과 치역=공역 조건이 모두 필요함",
+    "originalFocal": "음의 이차함수의 정의역 (-∞,k] 제한, 일대일성(꼭짓점)과 전사성(f(k)=k) 교집합"
+  },
+  "primaryRpm": {
+    "id": "H1-RPM-257",
+    "l1": "함수",
+    "l2": "함수",
+    "l3": "함수의 성질",
+    "canonicalL4": "일대일함수",
+    "authority": "RPM_PRIMARY_LOCKED_2022_HIGH1_DIRECT_ACTIVE"
+  },
+  "ptTpl": {
+    "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+    "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+    "bindingStatus": "ACTIVE"
+  },
+  "crossConceptSearch": {
+    "canonicalActiveReused": [
+      "CC_QUADRATIC_FUNCTION",
+      "CC_QUADRATIC_EQUATION"
+    ],
+    "generatedAdded": [],
+    "checkedAgainst": "archive/data/meta-foundation/compiled/concept_registry.json"
+  },
+  "conditionSearch": {
+    "canonicalActiveReused": [
+      "COND_FUNCTION_BIJECTION",
+      "COND_RANGE",
+      "COND_PIECEWISE_DOMAIN_PARTITION"
+    ],
+    "newGenerated": []
+  },
+  "answerGrid": [
+    [
+      "④",
+      "④",
+      "②"
+    ],
+    [
+      "①",
+      "②",
+      "⑤"
+    ],
+    [
+      "③",
+      "①",
+      "⑤"
+    ]
+  ],
+  "horizontalAnswerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 1,
+    "④": 2,
+    "⑤": 2
+  },
+  "answerDistributionStatus": "PASS_STATIC_EVIDENCE_ONLY; AUTHOR_EXHAUSTIVE_PYTHON_113400",
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q20-A1",
+      "slot": "A1",
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+      "stem": "집합 $X=\\{x\\mid x\\le k\\}$에 대하여 $X$에서 $X$로의 함수 $f(x)=-x^2+6x+6$이 일대일대응이 되도록 하는 실수 $k$의 값은?",
+      "choices": [
+        "$6$",
+        "$3$",
+        "$2$",
+        "$-1$",
+        "$3-\\sqrt{15}$"
+      ],
+      "answer": "④",
+      "answerValue": "-1",
+      "solution": "$f(x)=-(x-3)^2+15$이므로 그래프의 꼭짓점의 $x$좌표는 $3$이다.\n$X=(-\\infty,k]$에서 함수가 일대일이 되려면 $k\\le3$이어야 한다.\n이때 $f$는 $X$에서 증가하고, 치역은 $(-\\infty,f(k)]$이다.\n공역이 $X=(-\\infty,k]$이므로 일대일대응이 되려면 $f(k)=k$이어야 한다.\n$-k^2+6k+6=k$에서\n$k^2-5k-6=(k-6)(k+1)=0$이다.\n따라서 $k=6$ 또는 $k=-1$이고, $k\\le3$을 만족하는 값은 $-1$이다.\n따라서 정답은 ④이다.",
+      "mode": "STRICT_VARIANT",
+      "learningLevel": "하",
+      "assessmentBucket": 2,
+      "learningLevelReason": "하 — 증가 구간을 확인하고 치역 상한을 공역 상한과 맞추는 두 판단; 분기에서 한 해를 버림",
+      "assessmentBucketReason": "2 — 증가 구간을 확인하고 치역 상한을 공역 상한과 맞추는 두 판단; 분기에서 한 해를 버림",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "canonicalL4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "이차함수 꼭짓점·단조 구간을 결정해 일대일 함수 조건을 확인",
+        "CC_QUADRATIC_EQUATION": "치역과 공역의 경계 일치식을 이차방정식으로 풀어 실제 매개변수 후보를 판정"
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "6",
+          "errorCalculation": "$f(k)=k$의 해 $-1,6$ 중 꼭짓점 제한 $k\\le3$을 확인하지 않고 $6$을 고른다."
+        },
+        {
+          "index": "②",
+          "value": "3",
+          "errorCalculation": "일대일이 되는 경계값인 꼭짓점의 $x$좌표 $3$만 확인하고 치역과 공역이 같아야 하는 조건 $f(k)=k$를 생략한다."
+        },
+        {
+          "index": "③",
+          "value": "2",
+          "errorCalculation": "상수항 $+6$을 $-6$으로 옮겨 읽으면 $-k^2+6k-6=k$, 즉 $(k-2)(k-3)=0$이 되어 $k=2$를 얻는다."
+        },
+        {
+          "index": "⑤",
+          "value": "3-\\sqrt{15}",
+          "errorCalculation": "치역의 최댓값을 $k$와 비교하지 않고 $f(k)=0$으로 잘못 놓아 $k^2-6k-6=0$의 작은 해 $3-\\sqrt{15}$를 얻는다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "문항 식/구간/대응집합을 명시하므로 학생 입력 정보에 문제용 SVG 불필요",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "REQUIRED — 단조구간, 꼭짓점, 경계에서의 치역 연결을 해설 그래프로 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q20/A1-solution.svg",
+        "alt": "A1 이차함수의 일대일대응과 제한 정의역·치역 경계 관계를 보여주는 해설 그래프",
+        "caption": "일대일 구간과 치역 상한이 공역 상한에 맞는 경계를 확인한다.",
+        "gitBlobSha": "35c3cca428e8cc3c5dd3f4ec0ad69f075ab52f48",
+        "browserRender": "NOT_RUN",
+        "authorGeometry": "PYTHON_EQUAL_XY_AXIS_SAMPLING"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "집합 $X=\\{x\\mid x\\le k\\}$에 대하여 $X$에서 $X$로의 함수 $f(x)=-x^2+6x+6$이 일대일대응이 되도록 하는 실수 $k$의 값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "내신 객관식에서 일대일대응 조건·구할 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "2022 개정 공통수학2의 함수·일대일대응, 공통수학1의 이차함수·이차방정식 인수분해만 사용; 미적분·벡터·고등선행 개념 없음"
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q20-A2",
+      "slot": "A2",
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+      "stem": "집합 $X=\\{x\\mid x\\le k\\}$에서 $X$로의 함수 $f(x)=-x^2+8x+18$이 일대일대응일 때, 실수 $k$의 값은?",
+      "choices": [
+        "$9$",
+        "$4$",
+        "$4-\\sqrt{34}$",
+        "$-2$",
+        "$\\dfrac{9-\\sqrt{153}}{2}$"
+      ],
+      "answer": "④",
+      "answerValue": "-2",
+      "solution": "$f(x)=-(x-4)^2+34$이므로 $x\\le4$에서 증가한다.\n정의역 $(-\\infty,k]$에서 일대일이 되려면 $k\\le4$이어야 한다.\n이 조건을 만족하면 치역은 $(-\\infty,f(k)]$이다.\n치역이 공역 $(-\\infty,k]$와 같으려면 $f(k)=k$이다.\n$-k^2+8k+18=k$에서\n$k^2-7k-18=(k-9)(k+2)=0$이다.\n따라서 $k=9$ 또는 $k=-2$이다.\n이 중 $k\\le4$를 만족하는 값은 $-2$뿐이다.\n따라서 정답은 ④이다.",
+      "mode": "EXAM_FOLLOWUP",
+      "learningLevel": "하",
+      "assessmentBucket": 2,
+      "learningLevelReason": "하 — 두 후보 가운데 일대일 구간을 만족하는 해를 제거하는 명시적 조건 적용",
+      "assessmentBucketReason": "2 — 두 후보 가운데 일대일 구간을 만족하는 해를 제거하는 명시적 조건 적용",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "canonicalL4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "이차함수 꼭짓점·단조 구간을 결정해 일대일 함수 조건을 확인",
+        "CC_QUADRATIC_EQUATION": "치역과 공역의 경계 일치식을 이차방정식으로 풀어 실제 매개변수 후보를 판정"
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "9",
+          "errorCalculation": "$(k-9)(k+2)=0$에서 일대일 조건 $k\\le4$를 적용하지 않고 $9$를 선택한다."
+        },
+        {
+          "index": "②",
+          "value": "4",
+          "errorCalculation": "꼭짓점의 $x$좌표 $4$가 단사 구간의 끝이라는 사실만으로 일대일대응이라고 판단한다."
+        },
+        {
+          "index": "③",
+          "value": "4-\\sqrt{34}",
+          "errorCalculation": "공역 상한과 비교하지 않고 $f(k)=0$이라 놓아 $k^2-8k-18=0$의 작은 해 $4-\\sqrt{34}$를 얻는다."
+        },
+        {
+          "index": "⑤",
+          "value": "\\dfrac{9-\\sqrt{153}}{2}",
+          "errorCalculation": "치역 상한을 $k$가 아닌 $-k$로 놓으면 $-k^2+8k+18=-k$이므로 $k^2-9k-18=0$의 작은 해 $\\dfrac{9-\\sqrt{153}}2$를 얻는다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "문항 식/구간/대응집합을 명시하므로 학생 입력 정보에 문제용 SVG 불필요",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "REQUIRED — 단조구간, 꼭짓점, 경계에서의 치역 연결을 해설 그래프로 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q20/A2-solution.svg",
+        "alt": "A2 이차함수의 일대일대응과 제한 정의역·치역 경계 관계를 보여주는 해설 그래프",
+        "caption": "일대일 구간과 치역 상한이 공역 상한에 맞는 경계를 확인한다.",
+        "gitBlobSha": "fe02a918487938e065cdddd9dc2f29ff6c9e7dfd",
+        "browserRender": "NOT_RUN",
+        "authorGeometry": "PYTHON_EQUAL_XY_AXIS_SAMPLING"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "집합 $X=\\{x\\mid x\\le k\\}$에서 $X$로의 함수 $f(x)=-x^2+8x+18$이 일대일대응일 때, 실수 $k$의 값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "내신 객관식에서 일대일대응 조건·구할 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "2022 개정 공통수학2의 함수·일대일대응, 공통수학1의 이차함수·이차방정식 인수분해만 사용; 미적분·벡터·고등선행 개념 없음"
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q20-A3",
+      "slot": "A3",
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+      "stem": "집합 $X=\\{x\\mid x\\le k\\}$에 대하여 $f(x)=-x^2+4x-2$가 $X$에서 $X$로의 일대일대응이 되도록 하는 실수 $k$의 최댓값은?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$2+\\sqrt2$",
+        "$3$",
+        "$\\dfrac{3+\\sqrt{17}}2$"
+      ],
+      "answer": "②",
+      "answerValue": "2",
+      "solution": "$f(x)=-(x-2)^2+2$이므로 $x\\le2$에서 증가한다.\n정의역이 $(-\\infty,k]$일 때 일대일이 되려면 $k\\le2$이어야 한다.\n이때 치역은 $(-\\infty,f(k)]$이므로 공역 $(-\\infty,k]$와 같으려면 $f(k)=k$이다.\n$-k^2+4k-2=k$에서 $k^2-3k+2=0$,\n즉 $(k-1)(k-2)=0$이다.\n따라서 $k=1$ 또는 $k=2$이고 두 값 모두 $k\\le2$를 만족한다.\n가능한 $k$의 최댓값은 $2$이다.\n따라서 정답은 ②이다.",
+      "mode": "EXAM_FOLLOWUP",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningLevelReason": "중 — 허용되는 고정점 두 개를 보존한 채 '최댓값'이라는 질문으로 최종 판단 추가",
+      "assessmentBucketReason": "3 — 허용되는 고정점 두 개를 보존한 채 '최댓값'이라는 질문으로 최종 판단 추가",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "canonicalL4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "이차함수 꼭짓점·단조 구간을 결정해 일대일 함수 조건을 확인",
+        "CC_QUADRATIC_EQUATION": "치역과 공역의 경계 일치식을 이차방정식으로 풀어 실제 매개변수 후보를 판정"
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "1",
+          "errorCalculation": "가능한 $k=1,2$를 모두 구한 뒤 최댓값 대신 최솟값 $1$을 택한다."
+        },
+        {
+          "index": "③",
+          "value": "2+\\sqrt2",
+          "errorCalculation": "치역 조건을 $f(k)=0$으로 착각하면 $(k-2)^2=2$에서 큰 해 $2+\\sqrt2$를 얻는다."
+        },
+        {
+          "index": "④",
+          "value": "3",
+          "errorCalculation": "상수항 $-2$를 빠뜨리면 $-k^2+4k=k$이므로 $k(k-3)=0$에서 $k=3$을 얻는다."
+        },
+        {
+          "index": "⑤",
+          "value": "\\dfrac{3+\\sqrt{17}}2",
+          "errorCalculation": "상수항 $-2$를 $+2$로 잘못 보면 $k^2-3k-2=0$이 되어 큰 해 $\\dfrac{3+\\sqrt{17}}2$를 얻는다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "문항 식/구간/대응집합을 명시하므로 학생 입력 정보에 문제용 SVG 불필요",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "REQUIRED — 단조구간, 꼭짓점, 경계에서의 치역 연결을 해설 그래프로 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q20/A3-solution.svg",
+        "alt": "A3 이차함수의 일대일대응과 제한 정의역·치역 경계 관계를 보여주는 해설 그래프",
+        "caption": "일대일 구간과 치역 상한이 공역 상한에 맞는 경계를 확인한다.",
+        "gitBlobSha": "5a279cd37b43b83118313f210ff35fdc0c76b1d6",
+        "browserRender": "NOT_RUN",
+        "authorGeometry": "PYTHON_EQUAL_XY_AXIS_SAMPLING"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "집합 $X=\\{x\\mid x\\le k\\}$에 대하여 $f(x)=-x^2+4x-2$가 $X$에서 $X$로의 일대일대응이 되도록 하는 실수 $k$의 최댓값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "내신 객관식에서 일대일대응 조건·구할 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "2022 개정 공통수학2의 함수·일대일대응, 공통수학1의 이차함수·이차방정식 인수분해만 사용; 미적분·벡터·고등선행 개념 없음"
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q20-B1",
+      "slot": "B1",
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+      "stem": "집합 $X=\\{x\\mid x\\ge k\\}$에 대하여 $X$에서 $X$로의 함수 $f(x)=x^2-8x+20$이 일대일대응이 되도록 하는 모든 실수 $k$의 합은?",
+      "choices": [
+        "$9$",
+        "$4$",
+        "$5$",
+        "$18$",
+        "$20$"
+      ],
+      "answer": "①",
+      "answerValue": "9",
+      "solution": "$f(x)=(x-4)^2+4$이므로 $x\\ge4$에서 증가한다.\n정의역 $[k,\\infty)$에서 일대일이 되려면 $k\\ge4$이어야 한다.\n이때 치역은 $[f(k),\\infty)$이고, 공역은 $[k,\\infty)$이다.\n따라서 치역과 공역이 같으려면 $f(k)=k$이다.\n$k^2-8k+20=k$에서\n$k^2-9k+20=(k-4)(k-5)=0$이다.\n$k=4$와 $k=5$가 모두 $k\\ge4$를 만족한다.\n구하는 모든 값의 합은 $4+5=9$이다.\n따라서 정답은 ①이다.",
+      "mode": "EXAM_FOLLOWUP",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningLevelReason": "중 — 정의역 방향 반전과 둘 이상의 허용값을 누락하지 않는 판단",
+      "assessmentBucketReason": "3 — 정의역 방향 반전과 둘 이상의 허용값을 누락하지 않는 판단",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "canonicalL4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "이차함수 꼭짓점·단조 구간을 결정해 일대일 함수 조건을 확인",
+        "CC_QUADRATIC_EQUATION": "치역과 공역의 경계 일치식을 이차방정식으로 풀어 실제 매개변수 후보를 판정"
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "4",
+          "errorCalculation": "$(k-4)(k-5)=0$에서 작은 해 $4$만 남겨 '모든 값의 합'을 놓친다."
+        },
+        {
+          "index": "③",
+          "value": "5",
+          "errorCalculation": "조건을 만족하는 큰 해 $5$만 남겨 작은 해 $4$를 누락한다."
+        },
+        {
+          "index": "④",
+          "value": "18",
+          "errorCalculation": "두 값의 합 $4+5=9$를 각각 한 번씩 더 센 뒤 다시 배로 계산해 $2(4+5)=18$을 얻는다."
+        },
+        {
+          "index": "⑤",
+          "value": "20",
+          "errorCalculation": "두 고정점의 합 대신 곱 $4\\times5=20$을 계산한다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "문항 식/구간/대응집합을 명시하므로 학생 입력 정보에 문제용 SVG 불필요",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "REQUIRED — 단조구간, 꼭짓점, 경계에서의 치역 연결을 해설 그래프로 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q20/B1-solution.svg",
+        "alt": "B1 이차함수의 일대일대응과 제한 정의역·치역 경계 관계를 보여주는 해설 그래프",
+        "caption": "일대일 구간과 치역 상한이 공역 상한에 맞는 경계를 확인한다.",
+        "gitBlobSha": "5fa018f6a9c696436994bfed5e2ebb24540b8e17",
+        "browserRender": "NOT_RUN",
+        "authorGeometry": "PYTHON_EQUAL_XY_AXIS_SAMPLING"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "집합 $X=\\{x\\mid x\\ge k\\}$에 대하여 $X$에서 $X$로의 함수 $f(x)=x^2-8x+20$이 일대일대응이 되도록 하는 모든 실수 $k$의 합은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "내신 객관식에서 일대일대응 조건·구할 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "2022 개정 공통수학2의 함수·일대일대응, 공통수학1의 이차함수·이차방정식 인수분해만 사용; 미적분·벡터·고등선행 개념 없음"
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q20-B2",
+      "slot": "B2",
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+      "stem": "집합 $X=\\{x\\mid x\\le1\\}$에서 $X$로의 함수 $f(x)=-x^2+6x+c$가 일대일대응이 되도록 하는 상수 $c$의 값은?",
+      "choices": [
+        "$-5$",
+        "$-4$",
+        "$-6$",
+        "$-3$",
+        "$4$"
+      ],
+      "answer": "②",
+      "answerValue": "-4",
+      "solution": "$f(x)=-(x-3)^2+9+c$이고 정의역은 $x\\le1$이다.\n이 구간은 꼭짓점의 왼쪽이므로 $f$는 일대일이다.\n또한 $x$가 작아질수록 함수값은 제한 없이 작아지므로 치역은 $(-\\infty,f(1)]$이다.\n공역이 $(-\\infty,1]$이므로 일대일대응 조건은 $f(1)=1$이다.\n$-1+6+c=1$이므로 $5+c=1$, 따라서 $c=-4$이다.\n따라서 정답은 ②이다.",
+      "mode": "EXAM_FOLLOWUP",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningLevelReason": "중 — 정의역 끝점과 상수항의 역할을 분리하여 역산하는 조건 해석",
+      "assessmentBucketReason": "3 — 정의역 끝점과 상수항의 역할을 분리하여 역산하는 조건 해석",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "canonicalL4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "이차함수 꼭짓점·단조 구간을 결정해 일대일 함수 조건을 확인",
+        "CC_QUADRATIC_EQUATION": "치역과 공역의 경계 일치식을 이차방정식으로 풀어 실제 매개변수 후보를 판정"
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "-5",
+          "errorCalculation": "공역의 끝점 $1$을 $0$으로 잘못 보고 $f(1)=0$이라 놓으면 $5+c=0$에서 $c=-5$이다."
+        },
+        {
+          "index": "③",
+          "value": "-6",
+          "errorCalculation": "상한을 $1$ 대신 $-1$이라고 착각해 $f(1)=-1$을 적용하면 $5+c=-1$, $c=-6$이다."
+        },
+        {
+          "index": "④",
+          "value": "-3",
+          "errorCalculation": "일차항 $6x$를 $5x$로 잘못 대입하면 $-1+5+c=1$에서 $c=-3$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "4",
+          "errorCalculation": "$5+c=1$을 풀어 음수 $-4$를 얻은 뒤 상수의 부호를 반대로 적어 $4$로 답한다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "문항 식/구간/대응집합을 명시하므로 학생 입력 정보에 문제용 SVG 불필요",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "REQUIRED — 단조구간, 꼭짓점, 경계에서의 치역 연결을 해설 그래프로 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q20/B2-solution.svg",
+        "alt": "B2 이차함수의 일대일대응과 제한 정의역·치역 경계 관계를 보여주는 해설 그래프",
+        "caption": "일대일 구간과 치역 상한이 공역 상한에 맞는 경계를 확인한다.",
+        "gitBlobSha": "ef4ac49b0e612d3ce634722ceec8058ef2e3775c",
+        "browserRender": "NOT_RUN",
+        "authorGeometry": "PYTHON_EQUAL_XY_AXIS_SAMPLING"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "집합 $X=\\{x\\mid x\\le1\\}$에서 $X$로의 함수 $f(x)=-x^2+6x+c$가 일대일대응이 되도록 하는 상수 $c$의 값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "내신 객관식에서 일대일대응 조건·구할 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "2022 개정 공통수학2의 함수·일대일대응, 공통수학1의 이차함수·이차방정식 인수분해만 사용; 미적분·벡터·고등선행 개념 없음"
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q20-B3",
+      "slot": "B3",
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+      "stem": "집합 $X=\\{x\\mid x\\le k\\}$, $Y=\\{y\\mid y\\le1\\}$에 대하여 $X$에서 $Y$로의 함수 $f(x)=-(x-2)^2+5$가 일대일대응이 되도록 하는 실수 $k$의 값은?",
+      "choices": [
+        "$4$",
+        "$2$",
+        "$-4$",
+        "$1$",
+        "$0$"
+      ],
+      "answer": "⑤",
+      "answerValue": "0",
+      "solution": "$f(x)=-(x-2)^2+5$는 $x\\le2$에서 증가한다.\n따라서 정의역 $(-\\infty,k]$에서 일대일이 되려면 $k\\le2$이어야 한다.\n이때 치역은 $(-\\infty,f(k)]$이다.\n공역 $Y=(-\\infty,1]$에 빈틈없이 대응하려면 $f(k)=1$이어야 한다.\n$-(k-2)^2+5=1$에서\n$(k-2)^2=4$이므로 $k=0$ 또는 $k=4$이다.\n이 중 $k\\le2$를 만족하는 값은 $k=0$이다.\n따라서 정답은 ⑤이다.",
+      "mode": "EXAM_FOLLOWUP",
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningLevelReason": "중 — 서로 다른 집합 X,Y의 상한을 구별하고 이차함수의 단조 구간을 적용",
+      "assessmentBucketReason": "3 — 서로 다른 집합 X,Y의 상한을 구별하고 이차함수의 단조 구간을 적용",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "canonicalL4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "이차함수 꼭짓점·단조 구간을 결정해 일대일 함수 조건을 확인",
+        "CC_QUADRATIC_EQUATION": "치역과 공역의 경계 일치식을 이차방정식으로 풀어 실제 매개변수 후보를 판정"
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "4",
+          "errorCalculation": "$f(k)=1$의 해 $0,4$ 중 꼭짓점 왼쪽이라는 일대일 조건 $k\\le2$를 무시해 $4$를 선택한다."
+        },
+        {
+          "index": "②",
+          "value": "2",
+          "errorCalculation": "꼭짓점의 $x$좌표 $2$만 찾고 치역 상한 $f(2)=5$가 공역 상한 $1$과 다른 점을 생략한다."
+        },
+        {
+          "index": "③",
+          "value": "-4",
+          "errorCalculation": "함수식을 $-(x+2)^2+5$로 잘못 읽으면 $(k+2)^2=4$에서 $k=-4$ 또는 $0$을 얻고 $-4$를 고른다."
+        },
+        {
+          "index": "④",
+          "value": "1",
+          "errorCalculation": "공역 상한을 $1$ 대신 $4$로 놓으면 $-(k-2)^2+5=4$에서 $k=1$ 또는 $3$이 되어 $1$을 얻는다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "문항 식/구간/대응집합을 명시하므로 학생 입력 정보에 문제용 SVG 불필요",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "REQUIRED — 단조구간, 꼭짓점, 경계에서의 치역 연결을 해설 그래프로 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q20/B3-solution.svg",
+        "alt": "B3 이차함수의 일대일대응과 제한 정의역·치역 경계 관계를 보여주는 해설 그래프",
+        "caption": "일대일 구간과 치역 상한이 공역 상한에 맞는 경계를 확인한다.",
+        "gitBlobSha": "387ad237ac0474c55d2e706485d6e0e97ddde178",
+        "browserRender": "NOT_RUN",
+        "authorGeometry": "PYTHON_EQUAL_XY_AXIS_SAMPLING"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "집합 $X=\\{x\\mid x\\le k\\}$, $Y=\\{y\\mid y\\le1\\}$에 대하여 $X$에서 $Y$로의 함수 $f(x)=-(x-2)^2+5$가 일대일대응이 되도록 하는 실수 $k$의 값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "내신 객관식에서 일대일대응 조건·구할 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "2022 개정 공통수학2의 함수·일대일대응, 공통수학1의 이차함수·이차방정식 인수분해만 사용; 미적분·벡터·고등선행 개념 없음"
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q20-C1",
+      "slot": "C1",
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+      "stem": "실수 전체의 집합에서 실수 전체의 집합으로의 함수 $f(x)$가\n$f(x)=\\begin{cases}x+1&(x<k)\\\\(x-2)^2+1&(x\\ge k)\\end{cases}$\n일 때, $f$가 일대일대응이 되도록 하는 실수 $k$의 값은?",
+      "choices": [
+        "$1$",
+        "$2$",
+        "$4$",
+        "$3$",
+        "$5$"
+      ],
+      "answer": "③",
+      "answerValue": "4",
+      "solution": "$x<k$에서 $f(x)=x+1$은 증가하고 치역은 $(-\\infty,k+1)$이다.\n$x\\ge k$에서 $f(x)=(x-2)^2+1$이 일대일이 되려면 $k\\ge2$이어야 한다.\n이때 둘째 조각은 증가하고 치역은 $[(k-2)^2+1,\\infty)$이다.\n두 치역이 서로 겹치지 않으면서 실수 전체를 채우려면\n첫째 치역의 상한과 둘째 치역의 최솟값이 같아야 한다.\n따라서 $k+1=(k-2)^2+1$이다.\n$k=k^2-4k+4$이므로\n$k^2-5k+4=(k-1)(k-4)=0$이다.\n$k=1$ 또는 $k=4$ 중 $k\\ge2$를 만족하는 것은 $k=4$뿐이다.\n$k=4$일 때 치역은 각각 $(-\\infty,5)$와 $[5,\\infty)$이므로 일대일대응이 된다.\n따라서 정답은 ③이다.",
+      "mode": "EXAM_FOLLOWUP",
+      "learningLevel": "상",
+      "assessmentBucket": 4,
+      "learningLevelReason": "상 — 두 치역의 열린/닫힌 끝점을 접합하고 경계 후보를 제거해야 하는 3단계 판단",
+      "assessmentBucketReason": "4 — 두 치역의 열린/닫힌 끝점을 접합하고 경계 후보를 제거해야 하는 3단계 판단",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "canonicalL4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "이차함수 꼭짓점·단조 구간을 결정해 일대일 함수 조건을 확인",
+        "CC_QUADRATIC_EQUATION": "치역과 공역의 경계 일치식을 이차방정식으로 풀어 실제 매개변수 후보를 판정"
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_PIECEWISE_DOMAIN_PARTITION",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "1",
+          "errorCalculation": "접합식의 해 $1,4$ 중 오른쪽 이차함수의 일대일 범위 $k\\ge2$를 확인하지 않고 $1$을 고른다."
+        },
+        {
+          "index": "②",
+          "value": "2",
+          "errorCalculation": "오른쪽 이차함수의 꼭짓점 $x=2$만 보고 두 조각 치역이 이어지는지 검사하지 않는다."
+        },
+        {
+          "index": "④",
+          "value": "3",
+          "errorCalculation": "$k=3$이면 왼쪽 치역은 $(-\\infty,4)$, 오른쪽 치역은 $[2,\\infty)$로 겹치는데 이를 무시하고 $3$을 답한다."
+        },
+        {
+          "index": "⑤",
+          "value": "5",
+          "errorCalculation": "$(k-2)^2$에서 상수항 $+4$를 누락해 $k^2-5k=0$을 만든 뒤 $k=5$를 얻는다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "문항 식/구간/대응집합을 명시하므로 학생 입력 정보에 문제용 SVG 불필요",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "REQUIRED — 단조구간, 꼭짓점, 경계에서의 치역 연결을 해설 그래프로 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q20/C1-solution.svg",
+        "alt": "C1 이차함수의 일대일대응과 제한 정의역·치역 경계 관계를 보여주는 해설 그래프",
+        "caption": "두 조각함수 치역이 겹치지 않고 연결되는 경계와 허용 매개변수를 확인한다.",
+        "gitBlobSha": "4dccec25aca7c17e44c1080536167d155dafd2a7",
+        "browserRender": "NOT_RUN",
+        "authorGeometry": "PYTHON_EQUAL_XY_AXIS_SAMPLING"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "실수 전체의 집합에서 실수 전체의 집합으로의 함수 $f(x)$가\n$f(x)=\\begin{cases}x+1&(x<k)\\\\(x-2)^2+1&(x\\ge k)\\end{cases}$\n일 때, $f$가 일대일대응이 되도록 하는 실수 $k$의 값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "내신 객관식에서 일대일대응 조건·구할 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "2022 개정 공통수학2의 함수·일대일대응, 공통수학1의 이차함수·이차방정식 인수분해만 사용; 미적분·벡터·고등선행 개념 없음"
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q20-C2",
+      "slot": "C2",
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+      "stem": "실수 전체에서 실수 전체로의 함수 $f(x)$가\n$f(x)=\\begin{cases}-(x-3)^2+7&(x<k)\\\\x+2&(x\\ge k)\\end{cases}$\n로 주어진다. $f$가 일대일대응일 때 $f(0)$의 값은?",
+      "choices": [
+        "$-2$",
+        "$2$",
+        "$-9$",
+        "$7$",
+        "$16$"
+      ],
+      "answer": "①",
+      "answerValue": "-2",
+      "solution": "$x\\ge k$에서 $f(x)=x+2$는 증가하고 치역은 $[k+2,\\infty)$이다.\n$x<k$에서 $f(x)=-(x-3)^2+7$이 일대일이고 증가하려면 $k\\le3$이어야 한다.\n이때 왼쪽 조각의 치역은 $(-\\infty,-(k-3)^2+7)$이다.\n두 치역이 겹치지 않고 실수 전체를 이루려면\n$-(k-3)^2+7=k+2$가 필요하다.\n$-k^2+6k-2=k+2$에서\n$k^2-5k+4=(k-1)(k-4)=0$이다.\n$k\\le3$을 만족하는 값은 $k=1$이다.\n$0<1$이므로 $x=0$에서는 첫째 식을 사용한다.\n$f(0)=-(0-3)^2+7=-9+7=-2$이다.\n따라서 정답은 ①이다.",
+      "mode": "EXAM_FOLLOWUP",
+      "learningLevel": "상",
+      "assessmentBucket": 4,
+      "learningLevelReason": "상 — 치역 접합·단조성·최종 함수값 분기 3개 판단과 음수 제곱 오답 위험",
+      "assessmentBucketReason": "4 — 치역 접합·단조성·최종 함수값 분기 3개 판단과 음수 제곱 오답 위험",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "canonicalL4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "이차함수 꼭짓점·단조 구간을 결정해 일대일 함수 조건을 확인",
+        "CC_QUADRATIC_EQUATION": "치역과 공역의 경계 일치식을 이차방정식으로 풀어 실제 매개변수 후보를 판정"
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_PIECEWISE_DOMAIN_PARTITION",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "2",
+          "errorCalculation": "$k=1$을 구하고도 $x=0<1$을 확인하지 않아 오른쪽 식 $x+2$에 대입해 $f(0)=2$로 계산한다."
+        },
+        {
+          "index": "③",
+          "value": "-9",
+          "errorCalculation": "첫째 식에서 상수항 $+7$을 누락하고 $-(0-3)^2=-9$만 구한다."
+        },
+        {
+          "index": "④",
+          "value": "7",
+          "errorCalculation": "$(0-3)^2$ 항을 계산하지 않고 꼭짓점의 함숫값 $7$을 $f(0)$으로 읽는다."
+        },
+        {
+          "index": "⑤",
+          "value": "16",
+          "errorCalculation": "$-(0-3)^2$의 음수 기호를 빠뜨리면 $(0-3)^2+7=9+7=16$이 된다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "문항 식/구간/대응집합을 명시하므로 학생 입력 정보에 문제용 SVG 불필요",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "REQUIRED — 단조구간, 꼭짓점, 경계에서의 치역 연결을 해설 그래프로 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q20/C2-solution.svg",
+        "alt": "C2 이차함수의 일대일대응과 제한 정의역·치역 경계 관계를 보여주는 해설 그래프",
+        "caption": "두 조각함수 치역이 겹치지 않고 연결되는 경계와 허용 매개변수를 확인한다.",
+        "gitBlobSha": "8841190a25c5123ed7dce0e233ca5cb139a8599e",
+        "browserRender": "NOT_RUN",
+        "authorGeometry": "PYTHON_EQUAL_XY_AXIS_SAMPLING"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "실수 전체에서 실수 전체로의 함수 $f(x)$가\n$f(x)=\\begin{cases}-(x-3)^2+7&(x<k)\\\\x+2&(x\\ge k)\\end{cases}$\n로 주어진다. $f$가 일대일대응일 때 $f(0)$의 값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "내신 객관식에서 일대일대응 조건·구할 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "2022 개정 공통수학2의 함수·일대일대응, 공통수학1의 이차함수·이차방정식 인수분해만 사용; 미적분·벡터·고등선행 개념 없음"
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q20-C3",
+      "slot": "C3",
+      "sourceQid": 20,
+      "sourceUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+      "stem": "실수 전체에서 실수 전체로의 함수 $f(x)$가\n$f(x)=\\begin{cases}-(x-4)^2+6&(x<k)\\\\(x-1)^2+1&(x\\ge k)\\end{cases}$\n로 주어져 있다. $f$가 일대일대응이 되도록 하는 모든 실수 $k$의 합은?",
+      "choices": [
+        "$2$",
+        "$3$",
+        "$6$",
+        "$10$",
+        "$5$"
+      ],
+      "answer": "⑤",
+      "answerValue": "5",
+      "solution": "왼쪽 이차함수 $-(x-4)^2+6$이 $x<k$에서 증가하려면 $k\\le4$이어야 한다.\n오른쪽 이차함수 $(x-1)^2+1$이 $x\\ge k$에서 증가하려면 $k\\ge1$이어야 한다.\n따라서 먼저 $1\\le k\\le4$이다.\n이때 왼쪽 치역은 $(-\\infty,-(k-4)^2+6)$이고,\n오른쪽 치역은 $[(k-1)^2+1,\\infty)$이다.\n두 치역이 겹침 없이 실수 전체를 이루려면\n$-(k-4)^2+6=(k-1)^2+1$이다.\n정리하면 $-k^2+8k-10=k^2-2k+2$,\n$2k^2-10k+12=0$, 즉 $(k-2)(k-3)=0$이다.\n$k=2$와 $k=3$은 모두 $1\\le k\\le4$를 만족한다.\n각각 두 치역의 경계는 $2$와 $5$로 일치하므로 모두 일대일대응이 된다.\n따라서 모든 $k$의 합은 $2+3=5$이다.\n따라서 정답은 ⑤이다.",
+      "mode": "EXAM_FOLLOWUP",
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "learningLevelReason": "상 — 양쪽 조각의 꼭짓점 범위와 경계치역을 동시에 검사하고 서로 다른 2개 정답 매개변수를 모두 보존",
+      "assessmentBucketReason": "5 — 양쪽 조각의 꼭짓점 범위와 경계치역을 동시에 검사하고 서로 다른 2개 정답 매개변수를 모두 보존",
+      "primaryRPM": {
+        "id": "H1-RPM-257",
+        "l1": "함수",
+        "l2": "함수",
+        "l3": "함수의 성질",
+        "canonicalL4": "일대일함수",
+        "status": "DIRECT_ACTIVE"
+      },
+      "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
+      "templateKey": "TPL_BIJECTION_JUDGMENT_CONDITION",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_QUADRATIC_FUNCTION": "이차함수 꼭짓점·단조 구간을 결정해 일대일 함수 조건을 확인",
+        "CC_QUADRATIC_EQUATION": "치역과 공역의 경계 일치식을 이차방정식으로 풀어 실제 매개변수 후보를 판정"
+      },
+      "conditionKeys": [
+        "COND_FUNCTION_BIJECTION",
+        "COND_PIECEWISE_DOMAIN_PARTITION",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "2",
+          "errorCalculation": "$k=2,3$ 두 해 가운데 작은 해 $2$만 남겨 합을 구하지 않는다."
+        },
+        {
+          "index": "②",
+          "value": "3",
+          "errorCalculation": "두 해 가운데 큰 해 $3$만 답한다."
+        },
+        {
+          "index": "③",
+          "value": "6",
+          "errorCalculation": "모든 $k$의 합 대신 곱 $2\\cdot3=6$을 계산한다."
+        },
+        {
+          "index": "④",
+          "value": "10",
+          "errorCalculation": "$2k^2-10k+12=0$에서 계수 $2$로 나누지 않은 채 근의 합을 $10$으로 계산한다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "문항 식/구간/대응집합을 명시하므로 학생 입력 정보에 문제용 SVG 불필요",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "REQUIRED — 단조구간, 꼭짓점, 경계에서의 치역 연결을 해설 그래프로 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q20/C3-solution.svg",
+        "alt": "C3 이차함수의 일대일대응과 제한 정의역·치역 경계 관계를 보여주는 해설 그래프",
+        "caption": "두 조각함수 치역이 겹치지 않고 연결되는 경계와 허용 매개변수를 확인한다.",
+        "gitBlobSha": "b346c94d4c874e70575215fb70c40af675f8c6cb",
+        "browserRender": "NOT_RUN",
+        "authorGeometry": "PYTHON_EQUAL_XY_AXIS_SAMPLING"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "실수 전체에서 실수 전체로의 함수 $f(x)$가\n$f(x)=\\begin{cases}-(x-4)^2+6&(x<k)\\\\(x-1)^2+1&(x\\ge k)\\end{cases}$\n로 주어져 있다. $f$가 일대일대응이 되도록 하는 모든 실수 $k$의 합은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "내신 객관식에서 일대일대응 조건·구할 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "2022 개정 공통수학2의 함수·일대일대응, 공통수학1의 이차함수·이차방정식 인수분해만 사용; 미적분·벡터·고등선행 개념 없음"
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    }
+  ]
+}

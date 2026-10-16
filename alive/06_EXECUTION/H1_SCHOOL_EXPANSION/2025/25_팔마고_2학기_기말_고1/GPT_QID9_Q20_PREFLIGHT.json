@@ -1,0 +1,216 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q20_PREFLIGHT_v1",
+  "createdDate": "2026-10-16",
+  "branch": "work/alive-25-palma-h1-2final-qid9",
+  "branchParentHead": "48faed9d10871f5b61495b4a2e3261342aa68b55",
+  "mainObservedHead": "a31224ec620c1d21a7fbed5b4a1660470fea496d",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceFileRawSha256": "ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91",
+  "sourceQid": 20,
+  "sourceOriginalId": 20,
+  "sourceOrdinal": 20,
+  "sourceUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+  "sourceLock": {
+    "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/GPT_QID9_Q20_SOURCE_LOCK.json",
+    "blobSha": "592e53504e536b744741106b7381d06fc6e75b96",
+    "status": "PASS"
+  },
+  "identityMap": {
+    "path": "archive/data/question_identity_map.json",
+    "branchGitBlobSha": "a57b1be7171b8995c3229c5dc921c1b8b693482a",
+    "uidProof": "EXACT_MAP_RECORD_PASS"
+  },
+  "duplicateCheck": {
+    "beforeMetaUidCount": 171,
+    "q20GeneratedExisting": 0,
+    "newGeneratedUidsUnique": 9,
+    "globalGithubCodeSearchQ20": "0_RESULTS",
+    "result": "PASS"
+  },
+  "notionRead": [
+    {
+      "title": "GPT 작업 전 필독 라우터",
+      "id": "3e10e68b-d69f-81f1-9397-e7cd1c8d3cfd",
+      "result": "READ"
+    },
+    {
+      "title": "Archive 2.0 / JS Archive 시작 페이지",
+      "id": "3e10e68b-d69f-8189-8cc8-fb85cb4b1398",
+      "result": "READ"
+    },
+    {
+      "title": "Archive 전체 작업 생명주기",
+      "id": "3e10e68b-d69f-81fd-b161-ffc3f6227b6e",
+      "result": "READ"
+    },
+    {
+      "title": "GPT 유사·변형 문항 생성 5단계",
+      "id": "3f30e68b-d69f-818e-89b3-db9b46ec842d",
+      "result": "READ"
+    },
+    {
+      "title": "GPT QID9 유사문항 제작 표준계약 CURRENT",
+      "id": "3fa0e68b-d69f-81c4-abda-ffdcd1a969a1",
+      "result": "READ_CURRENT_2026-10-15"
+    }
+  ],
+  "gitDocShasMain": {
+    "AGENTS.md": "cb621590b1df11d5be117fff6c09cece56668c71",
+    "alive/06_EXECUTION/ALIVE_GPT_QID9_ONE_SOURCE_CURRENT.md": "a47461ab911e5d3b1b9551740cd5f392fe571978",
+    "alive/06_EXECUTION/GPT_QID9_CREATE_HANDOFF_TEMPLATE_CURRENT.md": "f64f3867affda5c2231aa84a99de0644f073fe44",
+    "docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md": "a501482ef952a1dcc75b7df3ec5c856debfe433d",
+    "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json": "a4ecfca14d45b5537357b8fbc65998a4e9c3bb11",
+    "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json": "904b3768b69b300607e52217cad05bf71e34f221",
+    "archive/data/meta-foundation/compiled/concept_registry.json": "0fdcc7306f22484aa40d9799db01b1b31b3c86bb",
+    "archive/data/meta-foundation/canonical/condition_registry.json": "2fc87ed7e88fa27bdb6384508ed2a62946150409",
+    "docs/rules/01_CANONICAL/JS아카이브_difficultyBucket_5단계_운영규칙_v1.3.md": "51a6b4ae3164be845ba9d90fd49d88378fc32fbe",
+    "docs/rules/02_PIPELINES/해설프로토콜.md": "ba06da0e96be22d0efae1b30766b598bb48ae758",
+    "docs/rules/04_VISUAL/도형추출.md": "1c24df9f3097b7d9f1c9ca8fd2190468e46b1113",
+    "docs/rules/02_PIPELINES/Archive_작업전_Golden_Sample_Calibration_v1.md": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+    ".codex/skills/apmath-visual-upgrade/SKILL.md": "b0db78e273560c3d296dc8db25447a8c5a1412e2",
+    "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+    "alive/06_EXECUTION/tools/qid9-answer-distribution-check.mjs": "8b0af289f8c8415706cd870c37c1e59387872018"
+  },
+  "gitBranchLocalDifferences": [
+    "CURRENT official QID9 template/checker present in main, absent in work branch; main copy executed locally; shared tools not modified",
+    "Main newer than work branch; q01~q19 protected"
+  ],
+  "goldenCalibration": {
+    "samplesActuallyRead": [
+      {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/GPT_QID9_Q18_CREATE_DRAFT.json",
+        "slots": [
+          "A1",
+          "B3",
+          "C3"
+        ],
+        "observation": "무리함수 그래프 관계 및 상세해설, 분기 충분성"
+      },
+      {
+        "path": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/GPT_QID9_Q19_CREATE_DRAFT.json",
+        "slots": [
+          "A1",
+          "B3",
+          "C3"
+        ],
+        "observation": "합성함수 그래프/근 분기·학생용 최종 수식 밀도"
+      }
+    ],
+    "negativeActuallyRead": [
+      "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md"
+    ],
+    "timing": "READ_AFTER_INITIAL_DRAFT_BEFORE_FINAL_SVG_REVISION",
+    "strictPreWorkCalibration": "NOT_MET",
+    "qualityCompareCount": "9/9_AUTHOR_COMPARISON_POST_REVISION",
+    "fullFormalGate": "NOT_RUN"
+  },
+  "search": {
+    "primaryRpmL3": "H1-RPM-257",
+    "rpmL4": "일대일함수",
+    "rpmStatus": "DIRECT_ACTIVE",
+    "comparison": [
+      "H1-RPM-252",
+      "H1-RPM-257",
+      "H1-RPM-170",
+      "H1-RPM-106"
+    ],
+    "pt": "PT_ONE_TO_ONE_BIJECTION",
+    "tpl": "TPL_BIJECTION_JUDGMENT_CONDITION",
+    "ptTplBinding": "ACTIVE",
+    "crossConceptCanonicalReused": [
+      "CC_QUADRATIC_FUNCTION",
+      "CC_QUADRATIC_EQUATION"
+    ],
+    "newExtCross": 0,
+    "conditionCanonicalReused": [
+      "COND_FUNCTION_BIJECTION",
+      "COND_RANGE",
+      "COND_PIECEWISE_DOMAIN_PARTITION"
+    ],
+    "generatedExpansionLookedUp": true
+  },
+  "answerOptimizer": {
+    "q01MultipleAnswerExcluded": true,
+    "recomputedFrom": "q02~q19 ALL 18 latest branch Draft files",
+    "horizontalMultiset": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "enumeratedMultisetPermutations": 113400,
+    "previousPatternExcluded": 1,
+    "validCandidates": 113399,
+    "winner": [
+      "④",
+      "④",
+      "②",
+      "①",
+      "②",
+      "⑤",
+      "③",
+      "①",
+      "⑤"
+    ],
+    "objective": [
+      39,
+      6,
+      777
+    ],
+    "previousMetric": {
+      "bySlot": {
+        "A1": 6,
+        "A2": 5,
+        "A3": 4,
+        "B1": 4,
+        "B2": 5,
+        "B3": 4,
+        "C1": 6,
+        "C2": 4,
+        "C3": 6
+      },
+      "totalDeviation": 44,
+      "worstSlotDeviation": 6,
+      "squareSum": 728
+    },
+    "afterMetric": {
+      "bySlot": {
+        "A1": 6,
+        "A2": 5,
+        "A3": 3,
+        "B1": 4,
+        "B2": 4,
+        "B3": 3,
+        "C1": 6,
+        "C2": 3,
+        "C3": 5
+      },
+      "totalDeviation": 39,
+      "worstSlotDeviation": 6,
+      "squareSum": 777
+    },
+    "proofPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/GPT_QID9_Q20_ANSWER_OPTIMIZATION_PROOF.json",
+    "proofRawSha256": "c302331d71db44386058ce4fc643713383953a70847bb0cfcd727218cd418cd5"
+  },
+  "answerChecker": {
+    "codeMainBlob": "8b0af289f8c8415706cd870c37c1e59387872018",
+    "command": "node alive/06_EXECUTION/tools/qid9-answer-distribution-check.mjs GPT_QID9_Q20_ANSWER_DISTRIBUTION_EVIDENCE.json",
+    "execution": "ACTUALLY_RAN_LOCAL_WORKDIR_MAIN_CHECKER_COPY",
+    "result": "PASS_STATIC_EVIDENCE_ONLY",
+    "resultBlob": "4969dc1cb7c3b63eec5003910867d9b359152fb4",
+    "mathIndependentProof": "NOT_RUN"
+  },
+  "protect": {
+    "q01toQ19": "NO_CHANGES",
+    "originalExam": "NO_CHANGES",
+    "legacySimilar": "NO_CHANGES",
+    "approvedUIDs": "NO_CHANGES"
+  },
+  "scope": "Q20_CANDIDATE_9_ONLY",
+  "independentReview": "NOT_RUN",
+  "actualBrowser": "NOT_RUN",
+  "consumer": "NOT_RUN",
+  "mainMerge": "NOT_RUN"
+}

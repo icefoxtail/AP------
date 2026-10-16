@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q20_SOURCE_LOCK_v1",
+  "createdDate": "2026-10-16",
+  "branch": "work/alive-25-palma-h1-2final-qid9",
+  "baseBranchHead": "48faed9d10871f5b61495b4a2e3261342aa68b55",
+  "mainObservedHead": "a31224ec620c1d21a7fbed5b4a1660470fea496d",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceFileRawSha256": "ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91",
+  "sourceQid": 20,
+  "sourceOriginalId": 20,
+  "sourceOrdinal": 20,
+  "examTitle": "25_팔마고_2학기_기말_고1_기출",
+  "sourceUid": "qid_v1_55954d55f496758cf58316c7e74e77449b9e9fe5e9a97405ec728eef27a48f52",
+  "sourceUidProof": {
+    "identityMapPath": "archive/data/question_identity_map.json",
+    "identityMapGitBlobSha": "a57b1be7171b8995c3229c5dc921c1b8b693482a",
+    "sourceArchiveFile": "original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+    "sourceOrdinal": 20,
+    "sourceQuestionNo": "20",
+    "mapRecordSourceFingerprint": "35ea4fcff9dda0c1529d3b524178530c63e31103617e16e21f1210eab74fdd0c",
+    "algorithm": "qid_v1_ + sha256(NFC(sourceArchiveFile+'#'+sourceOrdinal))",
+    "identityMapExactUidRecordRead": true,
+    "identityParity": "PASS"
+  },
+  "sourceQuestion": {
+    "content": "[서술형 1] 집합 $X=\\{x\\mid x\\le k\\}$에 대하여 $X$에서 $X$로의 함수 $f(x)=-x^2+4x$가 일대일대응이 되도록 하는 실수 $k$의 값을 풀이 과정과 함께 서술하시오. [4점]",
+    "choices": [],
+    "answer": "$0$",
+    "solution": "$f(x)=-(x-2)^2+4$의 그래프는 꼭짓점이 $(2,4)$이고 $x\\le2$에서 증가한다.\n정의역이 $(-\\infty,k]$일 때 $k>2$이면 꼭짓점의 양쪽을 모두 포함하므로 같은 함수값을 만드는 서로 다른 두 $x$가 생긴다.\n따라서 일대일이 되려면\n$k\\le2$\n이어야 한다.\n$k\\le2$이면 정의역 전체에서 함수가 증가하고, $x$가 작아질수록 함수값은 제한 없이 작아진다.\n따라서 치역은\n$(-\\infty,f(k)]$\n이다.\n공역 $X=(-\\infty,k]$와 치역이 같아야 하므로\n$f(k)=k$이다.\n$-(k-2)^2+4=k$\n$-k^2+4k=k$\n$k(k-3)=0$이다.\n따라서\n$k=0$ 또는 $k=3$이다.\n일대일 조건 $k\\le2$를 만족하는 값은\n$k=0$\n뿐이다.\n\n따라서 구하는 값은 $0$이다.",
+    "fieldsRawSha256": {
+      "content": "84ca0ba883782d70254dee7f5aa9601b7e5ef246142d7dddeede80ad00918333",
+      "choices": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "answer": "04059783893b129d925417c55e95e559c8d4be599ebd2ca55aa2472bc9007f90",
+      "solution": "86109345097693029a418bd4cf71f432bba0e5b3f1d656a483d6298852c03800"
+    }
+  },
+  "sourceImage": {
+    "problemImagePresent": false,
+    "problemVisualDependency": "NONE_QUESTION_STEM_COMPLETE",
+    "existingSolutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q20-solution.svg",
+    "existingSolutionImageGitBlobSha": "d58a72825132e3f4f43a63caa8d79ea11ff57766"
+  },
+  "sourceIndependentDerivation": {
+    "solveBeforeSourceAnswerComparison": true,
+    "method": "f(x)=-(x-2)^2+4. f:(-∞,k]→(-∞,k] injective requires k≤2; range=(-∞,f(k)]. Surjectivity requires f(k)=k, giving k=0 or 3; only k=0≤2.",
+    "fixedPointCandidates": [
+      0,
+      3
+    ],
+    "domainMonotoneBound": "k<=2",
+    "computedAnswer": "0",
+    "sourceAnswerMatch": true,
+    "sourceSolutionMatch": true,
+    "independentFormalReview": "NOT_RUN",
+    "authorMathCheck": "PASS"
+  },
+  "duplicateScan": {
+    "branchDirectoryQ20Artifacts": 0,
+    "branchExistingMetaAssignmentsQ20": 0,
+    "branchMetaUidCountBefore": 171,
+    "duplicateGeneratedUids": 0
+  },
+  "SOURCE_LOCK_STATUS": "PASS",
+  "sourceLockStatus": "PASS"
+}
