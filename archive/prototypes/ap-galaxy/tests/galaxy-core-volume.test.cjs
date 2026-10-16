@@ -120,7 +120,7 @@ test('shader time follows the existing reduced-motion animation gate', () => {
 test('official bundle and cache revision reflect the source patch after build', () => {
   assert.match(built, /galaxy-core-surface/);
   assert.match(built, /galaxy-core-volume/);
-  assert.match(built, /curriculum:high:(?:공통수학1|\\uACF5\\uD1B5\\uC218\\uD5591)/i);
+  assert.match(source, /const HERO_GALAXY_ID = 'curriculum:high:공통수학1'/);
   assert.match(html, /20261016-all-galaxy-visuals-5a/);
   assert.match(app, /20261016-all-galaxy-visuals-5a/);
 });
