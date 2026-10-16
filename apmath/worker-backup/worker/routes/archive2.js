@@ -352,10 +352,10 @@ export async function handleArchive2(
       canonicalProjectionVersion = verified.projectionVersion || null;
       if (!existing) checkTargetGrade(classRow, verified.grade);
     }
-    const rows = savedPaperMode
-      ? (existing ? savedRows : savedSnapshot.bridgeRows)
-      : original && existing
-        ? savedRows
+    const rows = existing
+      ? savedRows
+      : savedPaperMode
+        ? savedSnapshot.bridgeRows
         : await buildQuestionSnapshot(input, questions, meta, {
             legacy: original,
             canonicalAuthority,
