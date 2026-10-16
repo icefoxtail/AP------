@@ -16,6 +16,7 @@ const MAX_PACK_BYTES = 64 * 1024 * 1024;
 const MAX_INDEX_BYTES = 32 * 1024 * 1024;
 const MAX_ZIP_MEMBER_COUNT = 10_000;
 const MAX_PACK_EXPANDED_BYTES = 256 * 1024 * 1024;
+const VERIFIED_INDEX_CONTEXTS = new WeakMap();
 export const PERMITTED_COLD_ROOTS = Object.freeze([
   'archive/analysis/',
   'archive/_generated/',
@@ -560,7 +561,10 @@ async function loadVerifiedPack({ root, packRow, downloadDrivePack }) {
   if (typeof downloadDrivePack !== 'function') throw new Error(`COLD_EVIDENCE_DRIVE_ADAPTER_REQUIRED:${packRow.name}`);
   let result;
   try { result = await downloadDrivePack(packRow.driveFileId, packRow); }
-  catch { throw new Error(`COLD_EVIDENCE_DRIVE_FETCH_FAILED:${packRow.name}`); }
+  catch (error) {
+    if (String(error?.message ?? '').startsWith('MIGRATED_TO_DRIVE:')) throw error;
+    throw new Error(`COLD_EVIDENCE_DRIVE_FETCH_FAILED:${packRow.name}`);
+  }
   const bytes = await downloadMcpFile(result, packRow, { maxBytes: MAX_PACK_BYTES, label: packRow.name });
   if (bytes.length !== packRow.sizeBytes || sha256(bytes) !== packRow.sha256.toLowerCase()) {
     throw new Error(`COLD_EVIDENCE_PACK_SHA_OR_SIZE_MISMATCH:${packRow.name}`);
@@ -591,6 +595,36 @@ async function loadFullPathIndexBytes({ receipt, fullPathIndexBytes, fullPathInd
   return bytes;
 }
 
+function freezeDeep(value) {
+  if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
+  for (const child of Object.values(value)) freezeDeep(child);
+  return Object.freeze(value);
+}
+
+export async function loadVerifiedColdEvidenceIndex({
+  root,
+  fullPathIndexBytes,
+  fullPathIndexMetadata,
+  receipt,
+  downloadDriveIndex
+} = {}) {
+  if (typeof root !== 'string' || !root) throw new Error('COLD_EVIDENCE_ROOT_REQUIRED');
+  validateReceipt(receipt, root);
+  const bytes = await loadFullPathIndexBytes({ receipt, fullPathIndexBytes, fullPathIndexMetadata, downloadDriveIndex });
+  const index = parseIndex(bytes, receipt, root);
+  if (receipt.pathCount !== index.pathCount || receipt.uniqueBlobCount !== index.uniqueBlobCount
+      || receipt.pathBytes !== index.pathBytes || receipt.uniqueRawBytes !== index.uniqueRawBytes) {
+    throw new Error('COLD_EVIDENCE_INDEX_RECEIPT_SCOPE_MISMATCH');
+  }
+  freezeDeep(index);
+  const context = Object.freeze({ root: fs.realpathSync(root), indexSha256: sha256(bytes) });
+  VERIFIED_INDEX_CONTEXTS.set(context, {
+    index,
+    receiptSha256: sha256(Buffer.from(JSON.stringify(receipt)))
+  });
+  return { context, index };
+}
+
 function verifyIndexedPackMember(fullPathEntry, objectPack, packManifestRow) {
   for (const field of ['gitBlobSha1', 'sha256', 'sizeBytes']) {
     if (String(fullPathEntry[field]) !== String(packManifestRow[field])) throw new Error(`COLD_EVIDENCE_INDEX_PACK_MEMBER_MISMATCH:${fullPathEntry.originalPath}:${field}`);
@@ -615,18 +649,26 @@ export async function resolveColdEvidenceFromPack({
   fullPathIndexBytes,
   fullPathIndexMetadata,
   receipt,
+  verifiedIndexContext,
   downloadDriveIndex,
   downloadDrivePack
 } = {}) {
   if (typeof root !== 'string' || !root) throw new Error('COLD_EVIDENCE_ROOT_REQUIRED');
   validateReceipt(receipt, root);
-  const indexBytes = await loadFullPathIndexBytes({ receipt, fullPathIndexBytes, fullPathIndexMetadata, downloadDriveIndex });
-  const index = parseIndex(indexBytes, receipt, root);
-  validateRepoPath(originalPath, 'requestPath', index.allowedRoots);
-  if (receipt.pathCount !== index.pathCount || receipt.uniqueBlobCount !== index.uniqueBlobCount
-      || receipt.pathBytes !== index.pathBytes || receipt.uniqueRawBytes !== index.uniqueRawBytes) {
-    throw new Error('COLD_EVIDENCE_INDEX_RECEIPT_SCOPE_MISMATCH');
+  let index;
+  if (verifiedIndexContext) {
+    const context = VERIFIED_INDEX_CONTEXTS.get(verifiedIndexContext);
+    if (!context || verifiedIndexContext.root !== fs.realpathSync(root)
+        || verifiedIndexContext.indexSha256 !== receipt.index.sha256
+        || context.receiptSha256 !== sha256(Buffer.from(JSON.stringify(receipt)))) {
+      throw new Error('COLD_EVIDENCE_VERIFIED_INDEX_CONTEXT_INVALID');
+    }
+    index = context.index;
+  } else {
+    const loaded = await loadVerifiedColdEvidenceIndex({ root, fullPathIndexBytes, fullPathIndexMetadata, receipt, downloadDriveIndex });
+    index = loaded.index;
   }
+  validateRepoPath(originalPath, 'requestPath', index.allowedRoots);
   const matches = index.files.filter(entry => entry.originalPath === originalPath);
   if (matches.length !== 1) throw new Error(`COLD_EVIDENCE_INDEX_PATH_NOT_UNIQUE:${originalPath}`);
   const entry = matches[0];

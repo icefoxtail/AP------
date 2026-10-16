@@ -4,12 +4,14 @@
   "baselineArchiveAnalysisTreeSha": "979303b78a9b8daddb048680b7c12a539c310dbb",
   "scope": {
     "reason": "Remove only exact duplicate full archive2-catalog blobs from the current HEAD tree.",
+    "baselineArchiveAnalysisPathCount": 19548,
+    "baselineArchiveAnalysisPathBytes": 5396870829,
     "removedPathCount": 11,
     "headCheckoutBytesReduced": 326839777,
     "historicalGitStorageBytesReduced": 0,
     "historyRewrite": false,
     "historicalProofFilesModified": false,
-    "recovery": "The baseline commit remains an ancestor. Every original path, Git blob ID, SHA-256, and byte count is verified against that commit. Restore an exact original path with tools/archive-analysis-recovery.mjs --restore <originalPath>. This only writes a missing path and refuses overwrite.",
+    "recovery": "The baseline commit and analysis tree are byte-bound provenance; recovery does not require those Git objects to remain in active history. The scope.historyRewrite:false and historicalGitStorageBytesReduced:0 fields record only the original 11-path index removal, not current Git history. Verify the compact Drive receipt, download the exact receipt-named sidecar and required ZIP packs, then use tools/archive-analysis-recovery.mjs --restore <originalPath> --index-file <local-index.json> --pack-dir <local-pack-directory>. Restored bytes must match the manifest Git blob ID, SHA-256, and byte count; existing destinations are never overwritten.",
     "historicalReferenceFileCount": 25,
     "historicalReferenceMentionCount": 41
   },

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "git-history-rewrite-policy/v1",
+  "status": "ACTIVE",
+  "sourceCommitMapSha256": "fb373eae5443a1e62e97ba2b402f2a6155a8890ef079c1ac64fdec08f437b329",
+  "sourceCommitMap": {
+    "driveFileId": "1lMrSAgv3NBJosj4TxAZz8QoAhycbXtrH",
+    "fileName": "rewrite-candidate-v2-filter-a31224.commit-map.txt",
+    "sizeBytes": 750755,
+    "sha256": "fb373eae5443a1e62e97ba2b402f2a6155a8890ef079c1ac64fdec08f437b329",
+    "verificationStatus": "FULL_BYTES_VERIFIED"
+  },
+  "sourceChangedOldCommitCount": 8985,
+  "sourceAncestorGraphCommitCount": 9155,
+  "baselinePostFilterMain": "82eb90fb5765b361983050af4e66bbaad65b0f1c",
+  "baselinePostFilterTree": "7706275ed2923e03ae56005bbf19a1202a73b79e",
+  "deniedOldFrontier": [
+    "24a178c0355cdfa50f24d5749a695e4b851eec13"
+  ],
+  "candidateVerification": {
+    "sourceBaselineCommit": "a31224ec620c1d21a7fbed5b4a1660470fea496d",
+    "allRefCountBefore": 1157,
+    "allRefCountAfter": 1157,
+    "changedRefTipCount": 1141,
+    "baselineTreeParity": "PASS",
+    "onlyApprovedDeletionsAcrossRefs": "PASS"
+  },
+  "additionalMappedSourceAliases": [
+    {
+      "ref": "refs/heads/codex/high-reviewed-batch-20261016",
+      "sourceCommit": "a31224ec620c1d21a7fbed5b4a1660470fea496d",
+      "filteredCommit": "82eb90fb5765b361983050af4e66bbaad65b0f1c",
+      "verification": "Existing verified commit-map entry; no additional source objects."
+    }
+  ],
+  "additionalSourceAliasReceipt": {
+    "driveFileId": "1NVUndoEkwrye9xXW1fAw4fXM9pxMDEXS",
+    "fileName": "ap-history-preserved-source-aliases-20261016.json",
+    "sizeBytes": 875,
+    "sha256": "87d86a39ef681a01eb1db289fbd088c74559e9f9369aa6572919ce4838b2efa3",
+    "verificationStatus": "FULL_BYTES_VERIFIED"
+  },
+  "additionalVerifiedBranchUpdates": [
+    {
+      "ref": "refs/heads/codex/apms-blueprint-meta-20261016",
+      "sourceCommit": "bc94f55bcec5822bae89f90693cc7ad88650fe7b",
+      "filteredCommit": "d663bf8290f224d8e5cf088287054d9fd00c35a3",
+      "intermediateSourceCommit": "a11e42d5407f761e4d8ee9b242b710bf47645667",
+      "intermediateFilteredCommit": "4732c326ba768762c3a1b9a59dc819e22cdffc17",
+      "verification": "Exact source trees, only named non-cold changes, commit metadata/messages preserved, no old commit ancestry imported.",
+      "firstDeltaReceipt": {
+        "driveFileId": "1QU8bqf1zACtWcsOAm7KyNaVRC2biXWEH",
+        "sizeBytes": 2619,
+        "sha256": "e81b2622737387e44c62b2342496d551a5b3e4883ab13ce9b35f5fbf84dabf81"
+      },
+      "secondDeltaCommitMapSha256": "84af369d2906778e3d5bc498c3fefb1482410626c2758e491b00119b1a061050",
+      "secondDeltaBackup": {
+        "fileName": "ap-history-backup-live-drift2-20261016.bundle",
+        "driveFileId": "1vkO5ucj5v9vOEKEmAQ-njcY2_3YA1Ub8",
+        "sizeBytes": 1330,
+        "sha256": "158aa90b8eaa9074ca6a9dfa1eb35ab6af0e39b2184a9e679db0fe43ffca3d5a",
+        "prerequisite": "ap-history-backup-live-drift-20261016.bundle",
+        "restoreVerification": "Downloaded full bytes, bundle verify, independent Git restore and connectivity fsck PASS."
+      }
+    }
+  ],
+  "backupRootControl": {
+    "fileName": "ap-full-git-drive-backup-root-v2-20261016.json",
+    "driveFileId": "13Uvcje1XhLR3DCpyNcjkhIkCmS3ZHsPp",
+    "driveFolderId": "1Re1nQTc0suanIkrNQxsnboeqALPBNaQY",
+    "sizeBytes": 259915,
+    "sha256": "e1554c1b4f46c811499a740c45744a86e53b9f40eb057098fabd2b024cf9c6fd",
+    "driveUrl": "https://drive.google.com/file/d/13Uvcje1XhLR3DCpyNcjkhIkCmS3ZHsPp/view?usp=drivesdk",
+    "verificationStatus": "FULL_BYTES_VERIFIED",
+    "restoreVerification": "bundle-verify-and-connectivity-fsck-pass"
+  },
+  "finalFrozenSourceRestoreControl": {
+    "fileName": "ap-history-final-source-restore-root-20261016.json",
+    "driveFileId": "1QORbtFGmTIZXuCMhZtW1nJ7Xg8PFGuQE",
+    "sizeBytes": 177487,
+    "sha256": "db0012b63dfdb89ed7a059c0a9ef51b9f784f6cc30d5f7b9dcf41bf99a6616aa",
+    "headCount": 1159,
+    "providerPullRefCount": 613,
+    "verificationStatus": "FULL_BYTES_VERIFIED",
+    "restoreVerification": "Independent Drive-restored Git contains all frozen source ref targets; every additional bundle verified and connectivity fsck passed."
+  },
+  "additionalReviewedSourceBranchPreservation": {
+    "ref": "refs/heads/codex/middle-reviewed-batch-20261016",
+    "sourceCommit": "d09c2b85fdbd0949254a83083eaf8990bae0e38d",
+    "filteredCommit": "435f122aa4764b6ae8b468799927e7cc8bb1f052",
+    "exactChangedNonColdPaths": 100,
+    "verification": "Source tree and commit metadata preserved; only the previously verified parent was replaced. This is storage/byte preservation, not a new semantic quality verdict.",
+    "incrementalCommitMapSha256": "9e98e336e07778d4ae20ebafb8e1142745b5627d273b1bba46e12c174bf1eb5f"
+  }
+}

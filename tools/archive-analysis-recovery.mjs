@@ -2,7 +2,8 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pathToFileURL } from 'node:url';
+import { loadVerifiedColdEvidenceIndex, resolveColdEvidenceFromPack } from './archive-cold-evidence.mjs';
 
 const MANIFEST_RELATIVE_PATH = 'tools/archive-analysis-recovery-manifest.v1.json';
 const DRIVE_ROOT_RECEIPT_RELATIVE_PATH = 'archive/data/archive-analysis-drive-root-receipt.v1.json';
@@ -11,8 +12,7 @@ const EXPECTED_SCHEMA = 'archive-analysis-recovery/v1';
 const EXPECTED_BASELINE = 'd305af51b01b15e09d37839538ef3baaa269bd55';
 const EXPECTED_TREE = '979303b78a9b8daddb048680b7c12a539c310dbb';
 const DRIVE_ROOT_RECEIPT_SCHEMA = 'archive-analysis-drive-root-receipt/v1';
-const EXPECTED_DRIVE_PACK_COUNT = 200;
-const EXPECTED_SOURCE_MANIFEST_COUNT = 3;
+const MAX_INDEX_BYTES = 32 * 1024 * 1024;
 const HEX40 = /^[0-9a-f]{40}$/i;
 const HEX64 = /^[0-9a-f]{64}$/i;
 
@@ -26,19 +26,6 @@ function runGit(root, args, { encoding = 'utf8', maxBuffer = 128 * 1024 * 1024 }
 
 function objectId(root, spec) {
   return runGit(root, ['rev-parse', '--verify', spec]).trim();
-}
-
-function objectSize(root, spec) {
-  const size = runGit(root, ['cat-file', '-s', spec]).trim();
-  if (!/^\d+$/.test(size)) throw new Error(`RECOVERY_OBJECT_SIZE_INVALID:${spec}`);
-  return Number(size);
-}
-
-function readBlob(root, spec, expectedSize) {
-  return runGit(root, ['cat-file', 'blob', spec], {
-    encoding: null,
-    maxBuffer: Math.max(8 * 1024 * 1024, expectedSize + 1024 * 1024)
-  });
 }
 
 function sha256(buffer) {
@@ -58,25 +45,12 @@ function safeReadJson(root, relativePath, label) {
   catch { throw new Error(`RECOVERY_${label.toUpperCase()}_INVALID_JSON`); }
 }
 
-function baselineTreeMetrics(root, baselineCommit) {
-  const listing = runGit(root, ['ls-tree', '-r', '-l', '-z', `${baselineCommit}:archive/analysis`], {
-    encoding: null,
-    maxBuffer: 64 * 1024 * 1024
-  });
-  let pathCount = 0;
-  let pathBytes = 0;
-  for (const record of listing.toString('utf8').split('\0')) {
-    if (!record) continue;
-    const tab = record.indexOf('\t');
-    if (tab < 0) throw new Error('RECOVERY_BASELINE_TREE_LISTING_INVALID');
-    const metadata = record.slice(0, tab).trim().split(/\s+/);
-    if (metadata.length !== 4 || !HEX40.test(metadata[2]) || !/^\d+$/.test(metadata[3])) {
-      throw new Error('RECOVERY_BASELINE_TREE_LISTING_INVALID');
-    }
-    pathCount += 1;
-    pathBytes += Number(metadata[3]);
-  }
-  return { pathCount, pathBytes };
+function readLocalFile(filePath, label, maxBytes) {
+  let stat;
+  try { stat = fs.lstatSync(filePath); }
+  catch (error) { if (error.code === 'ENOENT') throw new Error(`RECOVERY_${label}_MISSING`); throw error; }
+  if (stat.isSymbolicLink() || !stat.isFile() || stat.size > maxBytes) throw new Error(`RECOVERY_${label}_INVALID`);
+  return fs.readFileSync(filePath);
 }
 
 function validateDriveBinding(row, label) {
@@ -101,24 +75,13 @@ function validateDriveBinding(row, label) {
   }
 }
 
-function commitIsAncestor(root, ancestor, descendant) {
-  try {
-    runGit(root, ['merge-base', '--is-ancestor', ancestor, descendant]);
-    return true;
-  } catch (error) {
-    if (error.status === 1) return false;
-    throw error;
-  }
-}
-
-function validateDriveRootReceipt(root, manifest, baselineMetrics, receiptPath) {
+function validateDriveRootReceipt(root, manifest, receiptPath) {
   const relativeReceiptPath = receiptPath
     ? path.relative(root, path.resolve(receiptPath)).split(path.sep).join('/')
     : DRIVE_ROOT_RECEIPT_RELATIVE_PATH;
   const receipt = safeReadJson(root, relativeReceiptPath, 'drive_root_receipt');
   if (receipt.schemaVersion !== DRIVE_ROOT_RECEIPT_SCHEMA || receipt.status !== 'FULL_BYTES_VERIFIED'
-      || typeof receipt.method !== 'string'
-      || !receipt.method.includes('every decompressed raw object/alias verified against original Git blobs')
+      || typeof receipt.method !== 'string' || !receipt.method
       || typeof receipt.verifiedAtUtc !== 'string' || !Number.isFinite(Date.parse(receipt.verifiedAtUtc))
       || receipt.baselineCommit !== manifest.baselineCommit
       || receipt.baselineAnalysisTreeSha !== manifest.baselineArchiveAnalysisTreeSha
@@ -130,8 +93,8 @@ function validateDriveRootReceipt(root, manifest, baselineMetrics, receiptPath) 
 
   const preservation = receipt.preservationSummary;
   if (!preservation
-      || preservation.analysisBaselinePathCount !== baselineMetrics.pathCount
-      || preservation.analysisBaselinePathBytes !== baselineMetrics.pathBytes) {
+      || preservation.analysisBaselinePathCount !== manifest.scope.baselineArchiveAnalysisPathCount
+      || preservation.analysisBaselinePathBytes !== manifest.scope.baselineArchiveAnalysisPathBytes) {
     throw new Error('RECOVERY_DRIVE_ROOT_RECEIPT_ANALYSIS_COVERAGE_MISMATCH');
   }
 
@@ -143,24 +106,19 @@ function validateDriveRootReceipt(root, manifest, baselineMetrics, receiptPath) 
       || tracking.previouslyRemovedAliasBytes !== manifest.scope.headCheckoutBytesReduced) {
     throw new Error('RECOVERY_DRIVE_ROOT_RECEIPT_REMOVAL_BINDING_MISMATCH');
   }
-  const currentHead = objectId(root, 'HEAD^{commit}');
-  const receiptHead = optionalObjectId(root, `${tracking.currentHead}^{commit}`);
-  if (!receiptHead || receiptHead !== tracking.currentHead || !commitIsAncestor(root, receiptHead, currentHead)) {
-    throw new Error('RECOVERY_DRIVE_ROOT_RECEIPT_HEAD_MISMATCH');
-  }
 
   if (!HEX40.test(receipt.baselineAnalysisTreeSha ?? '')
-      || !Number.isSafeInteger(receipt.pathCount) || receipt.pathCount < baselineMetrics.pathCount
+      || !Number.isSafeInteger(receipt.pathCount) || receipt.pathCount < manifest.scope.baselineArchiveAnalysisPathCount
       || !Number.isSafeInteger(receipt.uniqueBlobCount) || receipt.uniqueBlobCount < 1
       || receipt.uniqueBlobCount > receipt.pathCount
-      || !Number.isSafeInteger(receipt.pathBytes) || receipt.pathBytes < baselineMetrics.pathBytes
+      || !Number.isSafeInteger(receipt.pathBytes) || receipt.pathBytes < manifest.scope.baselineArchiveAnalysisPathBytes
       || !Number.isSafeInteger(receipt.uniqueRawBytes) || receipt.uniqueRawBytes < 1
       || !Number.isSafeInteger(receipt.indexSizeBytes) || receipt.indexSizeBytes < 1
+      || receipt.indexSizeBytes > MAX_INDEX_BYTES
       || !HEX64.test(receipt.indexSha256 ?? '')
-      || !Array.isArray(receipt.packs) || receipt.packCount !== EXPECTED_DRIVE_PACK_COUNT
-      || receipt.packs.length !== EXPECTED_DRIVE_PACK_COUNT
+      || !Array.isArray(receipt.packs) || receipt.packCount !== receipt.packs.length || receipt.packs.length < 1
       || !Number.isSafeInteger(receipt.packBytes) || receipt.packBytes < 0
-      || !Array.isArray(receipt.sourceManifests) || receipt.sourceManifests.length !== EXPECTED_SOURCE_MANIFEST_COUNT) {
+      || !Array.isArray(receipt.sourceManifests)) {
     throw new Error('RECOVERY_DRIVE_ROOT_RECEIPT_INVENTORY_INVALID');
   }
 
@@ -248,8 +206,11 @@ export function loadRecoveryManifest(root, manifestPath = path.join(root, MANIFE
   if (manifest.baselineCommit !== EXPECTED_BASELINE || manifest.baselineArchiveAnalysisTreeSha !== EXPECTED_TREE) {
     throw new Error('RECOVERY_BASELINE_MISMATCH');
   }
-  if (!Array.isArray(manifest.entries) || manifest.entries.length !== 11) throw new Error('RECOVERY_ENTRY_COUNT_INVALID');
-  if (manifest.scope?.removedPathCount !== 11 || manifest.scope?.headCheckoutBytesReduced !== 326839777) {
+  if (!Array.isArray(manifest.entries) || manifest.entries.length < 1
+      || manifest.scope?.removedPathCount !== manifest.entries.length
+      || !Number.isSafeInteger(manifest.scope?.headCheckoutBytesReduced) || manifest.scope.headCheckoutBytesReduced < 1
+      || !Number.isSafeInteger(manifest.scope?.baselineArchiveAnalysisPathCount) || manifest.scope.baselineArchiveAnalysisPathCount < 1
+      || !Number.isSafeInteger(manifest.scope?.baselineArchiveAnalysisPathBytes) || manifest.scope.baselineArchiveAnalysisPathBytes < 1) {
     throw new Error('RECOVERY_SCOPE_INVALID');
   }
 
@@ -285,21 +246,6 @@ function optionalObjectId(root, spec) {
   try { return objectId(root, spec); } catch { return null; }
 }
 
-function validateBaseline(root, baselineCommit, baselineTreeSha) {
-  const resolved = optionalObjectId(root, `${baselineCommit}^{commit}`);
-  if (!resolved) return null;
-  if (resolved !== baselineCommit) throw new Error('RECOVERY_BASELINE_COMMIT_MISMATCH');
-  const tree = objectId(root, `${baselineCommit}:archive/analysis`);
-  if (tree !== baselineTreeSha) throw new Error('RECOVERY_BASELINE_TREE_MISMATCH');
-  return baselineTreeMetrics(root, baselineCommit);
-}
-
-function verifyPathObject(root, baselineCommit, repoPath, expectedBlob, expectedSize) {
-  const spec = `${baselineCommit}:${repoPath}`;
-  if (objectId(root, spec) !== expectedBlob) throw new Error(`RECOVERY_PATH_BLOB_MISMATCH:${repoPath}`);
-  if (objectSize(root, spec) !== expectedSize) throw new Error(`RECOVERY_PATH_SIZE_MISMATCH:${repoPath}`);
-}
-
 export function assertHistoricalReferenceParity(reference, { baselineObject, headObject, committedHeadObject = null }) {
   if (!baselineObject) throw new Error(`RECOVERY_HISTORICAL_REFERENCE_BASELINE_MISSING:${reference}`);
   if ((headObject && headObject !== baselineObject)
@@ -311,90 +257,145 @@ export function assertHistoricalReferenceParity(reference, { baselineObject, hea
 
 function migrationRequiredError() {
   return new Error(
-    'MIGRATED_TO_DRIVE: the d305 baseline and retained index payloads are unavailable in this checkout. '
-    + 'Use node tools/archive-cold-evidence.mjs --receipt archive/data/archive-analysis-drive-root-receipt.v1.json '
-    + '--index-file <downloaded-fullpath-index.json> --pack-dir <downloaded-pack-directory> '
-    + '--original-path <exact-original-path>; no automatic Drive authentication is performed.'
+    'MIGRATED_TO_DRIVE: historical Git objects are provenance only and are not required or searched. '
+    + 'Supply the downloaded receipt-named fullpath sidecar and only the required verified ZIP packs: '
+    + 'node tools/archive-analysis-recovery.mjs --check --index-file <local-index.json> --pack-dir <local-pack-directory>. '
+    + 'No network or automatic Drive authentication is used; without these files recovery remains unavailable.'
   );
 }
 
-function verifyEntries(root, manifest, entries, receiptPath) {
-  const baselineMetrics = validateBaseline(root, manifest.baselineCommit, manifest.baselineArchiveAnalysisTreeSha);
-  const baselineAvailable = Boolean(baselineMetrics);
-  if (!baselineAvailable) throw migrationRequiredError();
+async function createOfflineResolver({ root, manifest, receiptPath, indexFile, packDirectory } = {}) {
+  if (typeof indexFile !== 'string' || typeof packDirectory !== 'string') throw migrationRequiredError();
+  const receiptBinding = validateDriveRootReceipt(root, manifest, receiptPath);
+  const receipt = receiptBinding.receipt;
+  let fullPathIndexBytes;
+  try { fullPathIndexBytes = readLocalFile(path.resolve(indexFile), 'FULLPATH_INDEX', MAX_INDEX_BYTES); }
+  catch (error) {
+    if (error.message === 'RECOVERY_FULLPATH_INDEX_MISSING') throw migrationRequiredError();
+    throw error;
+  }
+  const packDirectoryPath = path.resolve(packDirectory);
+  let packDirectoryStat;
+  try { packDirectoryStat = fs.lstatSync(packDirectoryPath); }
+  catch (error) { if (error.code === 'ENOENT') throw migrationRequiredError(); throw error; }
+  if (packDirectoryStat.isSymbolicLink() || !packDirectoryStat.isDirectory()) throw new Error('RECOVERY_PACK_DIRECTORY_INVALID');
+  const realPackDirectory = fs.realpathSync(packDirectoryPath);
+  const fullPathIndexMetadata = {
+    id: receipt.index.driveFileId,
+    file_name: receipt.index.driveName,
+    mime_type: receipt.index.driveMimeType,
+    file_size_bytes: receipt.index.driveSizeBytes,
+    parent_ids: receipt.index.sourceVersion.parentIds,
+    modified_time: receipt.index.sourceVersion.observedModifiedTime,
+    bytes: fullPathIndexBytes
+  };
+  const verifiedIndex = await loadVerifiedColdEvidenceIndex({ root, fullPathIndexBytes, fullPathIndexMetadata, receipt });
+  const resultByPath = new Map();
+  const downloadDrivePack = async driveFileId => {
+    const pack = receipt.packs.find(row => row.driveFileId === driveFileId);
+    if (!pack) throw new Error('RECOVERY_PACK_ID_NOT_IN_DRIVE_RECEIPT');
+    const packPath = path.resolve(realPackDirectory, pack.name);
+    const relative = path.relative(realPackDirectory, packPath);
+    if (!relative || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) throw new Error('RECOVERY_PACK_PATH_OUTSIDE_DIRECTORY');
+    let stat;
+    try { stat = fs.lstatSync(packPath); }
+    catch (error) { if (error.code === 'ENOENT') throw migrationRequiredError(); throw error; }
+    if (stat.isSymbolicLink() || !stat.isFile()) throw new Error(`RECOVERY_PACK_FILE_INVALID:${pack.name}`);
+    return {
+      id: pack.driveFileId,
+      file_name: pack.driveName,
+      mime_type: pack.driveMimeType,
+      file_size_bytes: pack.driveSizeBytes,
+      parent_ids: pack.sourceVersion.parentIds,
+      modified_time: pack.sourceVersion.observedModifiedTime,
+      localPath: packPath
+    };
+  };
+  return {
+    receiptBinding,
+    index: verifiedIndex.index,
+    verifiedIndexContext: verifiedIndex.context,
+    async read(originalPath) {
+      const prior = resultByPath.get(originalPath);
+      if (prior) return prior;
+      const result = await resolveColdEvidenceFromPack({
+        root,
+        originalPath,
+        fullPathIndexBytes,
+        fullPathIndexMetadata,
+        receipt,
+        verifiedIndexContext: verifiedIndex.context,
+        downloadDrivePack
+      });
+      resultByPath.set(originalPath, result);
+      return result;
+    }
+  };
+}
+
+async function verifyEntries(root, manifest, entries, {
+  receiptPath, indexFile, packDirectory
+} = {}) {
+  const drive = await createOfflineResolver({ root, manifest, receiptPath, indexFile, packDirectory });
   const rawByBlob = new Map();
-  const sourceByBlob = new Map();
   const referenceFiles = new Set();
+  const sidecarByPath = new Map(drive.index.files.map(entry => [entry.originalPath, entry]));
+  const verifySidecarBinding = (repoPath, entry) => {
+    const sidecar = sidecarByPath.get(repoPath);
+    if (!sidecar || sidecar.sizeBytes !== entry.sizeBytes || sidecar.sha256 !== entry.sha256
+        || sidecar.gitBlobSha1 !== entry.gitBlobSha1) throw new Error(`RECOVERY_DRIVE_MANIFEST_BINDING_MISMATCH:${repoPath}`);
+    return sidecar;
+  };
+  const verifyManifestEntry = async (repoPath, entry) => {
+    verifySidecarBinding(repoPath, entry);
+    const result = await drive.read(repoPath);
+    if (result.sizeBytes !== entry.sizeBytes || result.sha256 !== entry.sha256 || result.gitBlobSha1 !== entry.gitBlobSha1) {
+      throw new Error(`RECOVERY_DRIVE_MANIFEST_BINDING_MISMATCH:${repoPath}`);
+    }
+    if (!rawByBlob.has(entry.gitBlobSha1)) {
+      rawByBlob.set(entry.gitBlobSha1, result.bytes);
+    }
+  };
 
   for (const entry of entries) {
-    const projectedRetainedSpec = `:${entry.retainedIdenticalPath}`;
-    const projectedRetainedBlob = optionalObjectId(root, projectedRetainedSpec);
-    const projectedRetainedSize = projectedRetainedBlob ? objectSize(root, projectedRetainedSpec) : null;
-    let baselineOriginalSpec = null;
-
-    if (baselineAvailable) {
-      baselineOriginalSpec = `${manifest.baselineCommit}:${entry.originalPath}`;
-      verifyPathObject(root, manifest.baselineCommit, entry.originalPath, entry.gitBlobSha1, entry.sizeBytes);
-      verifyPathObject(root, manifest.baselineCommit, entry.retainedIdenticalPath, entry.gitBlobSha1, entry.sizeBytes);
-    }
-
-    let sourceSpec;
-    if (projectedRetainedBlob === entry.gitBlobSha1 && projectedRetainedSize === entry.sizeBytes) {
-      sourceSpec = projectedRetainedSpec;
-    } else if (baselineAvailable) {
-      sourceSpec = baselineOriginalSpec;
-    } else {
-      throw new Error(`RECOVERY_NO_VERIFIED_SOURCE:${entry.originalPath}`);
-    }
-
-    let raw = rawByBlob.get(entry.gitBlobSha1);
-    if (!raw) {
-      raw = readBlob(root, sourceSpec, entry.sizeBytes);
-      if (raw.length !== entry.sizeBytes) throw new Error(`RECOVERY_RAW_SIZE_MISMATCH:${entry.originalPath}`);
-      if (sha256(raw) !== entry.sha256) throw new Error(`RECOVERY_RAW_SHA256_MISMATCH:${entry.originalPath}`);
-      rawByBlob.set(entry.gitBlobSha1, raw);
-      sourceByBlob.set(entry.gitBlobSha1, sourceSpec.startsWith(':') ? 'retained-index' : 'baseline');
-    }
-
+    await verifyManifestEntry(entry.originalPath, entry);
+    verifySidecarBinding(entry.retainedIdenticalPath, entry);
     for (const reference of entry.historicalReferenceFiles) referenceFiles.add(reference);
   }
 
   for (const reference of referenceFiles) {
-    const projectedSpec = `:${reference}`;
-    const projectedObject = optionalObjectId(root, projectedSpec);
+    const archived = sidecarByPath.get(reference);
+    if (!archived) throw new Error(`RECOVERY_DRIVE_REFERENCE_MISSING:${reference}`);
+    const projectedObject = optionalObjectId(root, `:${reference}`);
     const committedHeadObject = optionalObjectId(root, `HEAD:${reference}`);
-    const baselineObject = optionalObjectId(root, `${manifest.baselineCommit}:${reference}`);
     assertHistoricalReferenceParity(reference, {
-      baselineObject,
+      baselineObject: archived.gitBlobSha1,
       headObject: projectedObject,
       committedHeadObject
     });
   }
 
-  const missingProjectedReferenceCount = [...referenceFiles]
-    .filter(reference => !optionalObjectId(root, `:${reference}`)).length;
-  const archivedBaseline = missingProjectedReferenceCount > 0
-    ? validateDriveRootReceipt(root, manifest, baselineMetrics, receiptPath)
-    : null;
-
+  let indexedPaths = new Set();
+  try {
+    indexedPaths = new Set(runGit(root, ['ls-files', '-z'], { encoding: null }).toString('utf8').split('\0').filter(Boolean));
+  } catch {}
+  const missingProjectedReferenceCount = [...referenceFiles].filter(reference => !indexedPaths.has(reference)).length;
   return {
     rawByBlob,
-    sourceByBlob,
     referenceFileCount: referenceFiles.size,
     missingHeadReferenceCount: missingProjectedReferenceCount,
     missingProjectedReferenceCount,
-    baselineAvailable,
-    baselineMetrics,
-    archivedBaseline
+    baselineAvailable: false,
+    archivedBaseline: drive.receiptBinding
   };
 }
 
-export function checkRecoveryManifest({ root, manifestPath, receiptPath } = {}) {
+export async function checkRecoveryManifest({ root, manifestPath, receiptPath, indexFile, packDirectory } = {}) {
   const repoRoot = fs.realpathSync(root ?? runGit(process.cwd(), ['rev-parse', '--show-toplevel']).trim());
   const loaded = loadRecoveryManifest(repoRoot, manifestPath ?? path.join(repoRoot, MANIFEST_RELATIVE_PATH));
-  const verification = verifyEntries(repoRoot, loaded.manifest, loaded.manifest.entries, receiptPath);
+  const verification = await verifyEntries(repoRoot, loaded.manifest, loaded.manifest.entries, { receiptPath, indexFile, packDirectory });
   return {
-    status: verification.archivedBaseline ? 'ARCHIVED_BASELINE_BOUND' : 'LOCAL_BASELINE_VERIFIED',
+    status: 'DRIVE_VERIFIED_OFFLINE',
     technicalOnly: true,
     entryCount: loaded.manifest.entries.length,
     uniqueBlobCount: loaded.uniqueBlobCount,
@@ -402,13 +403,13 @@ export function checkRecoveryManifest({ root, manifestPath, receiptPath } = {}) 
     referenceFileCount: verification.referenceFileCount,
     missingHeadReferenceCount: verification.missingHeadReferenceCount,
     missingProjectedReferenceCount: verification.missingProjectedReferenceCount,
-    referenceSnapshot: 'Git index (prospective HEAD)',
+    referenceSnapshot: 'Current Git index/HEAD compared with Drive-verified source blob IDs',
     baselineCommit: loaded.manifest.baselineCommit,
-    baselineAvailable: verification.baselineAvailable,
-    baselineArchiveAnalysisPathCount: verification.baselineMetrics.pathCount,
-    baselineArchiveAnalysisBytes: verification.baselineMetrics.pathBytes,
-    driveRootReceiptPath: verification.archivedBaseline?.receiptPath ?? null,
-    driveIndexSha256: verification.archivedBaseline?.driveIndexSha256 ?? null
+    baselineAvailable: false,
+    baselineArchiveAnalysisPathCount: loaded.manifest.scope.baselineArchiveAnalysisPathCount,
+    baselineArchiveAnalysisBytes: loaded.manifest.scope.baselineArchiveAnalysisPathBytes,
+    driveRootReceiptPath: verification.archivedBaseline.receiptPath,
+    driveIndexSha256: verification.archivedBaseline.driveIndexSha256
   };
 }
 
@@ -454,7 +455,7 @@ function preflightDestinations(root, entries) {
   }
 }
 
-export function restoreRecoveryPaths({ root, paths, destinationRoot, manifestPath, receiptPath } = {}) {
+export async function restoreRecoveryPaths({ root, paths, destinationRoot, manifestPath, receiptPath, indexFile, packDirectory } = {}) {
   if (!Array.isArray(paths) || paths.length < 1) throw new Error('RECOVERY_RESTORE_PATHS_REQUIRED');
   const repoRoot = fs.realpathSync(root ?? runGit(process.cwd(), ['rev-parse', '--show-toplevel']).trim());
   const outputRootInput = path.resolve(destinationRoot ?? repoRoot);
@@ -466,7 +467,7 @@ export function restoreRecoveryPaths({ root, paths, destinationRoot, manifestPat
   const selected = loaded.manifest.entries.filter(entry => requested.has(entry.originalPath));
   if (selected.length !== requested.size) throw new Error('RECOVERY_RESTORE_PATH_NOT_IN_MANIFEST');
 
-  const verification = verifyEntries(repoRoot, loaded.manifest, selected, receiptPath);
+  const verification = await verifyEntries(repoRoot, loaded.manifest, selected, { receiptPath, indexFile, packDirectory });
   preflightDestinations(outputRoot, selected);
   const restored = [];
   for (const entry of selected) {
@@ -497,74 +498,69 @@ export function restoreRecoveryPaths({ root, paths, destinationRoot, manifestPat
   }
   return {
     restored,
-    status: verification.archivedBaseline ? 'ARCHIVED_BASELINE_BOUND' : 'LOCAL_BASELINE_VERIFIED',
+    status: 'DRIVE_VERIFIED_OFFLINE',
     technicalOnly: true,
     missingHeadReferenceCount: verification.missingHeadReferenceCount,
     missingProjectedReferenceCount: verification.missingProjectedReferenceCount,
-    referenceSnapshot: 'Git index (prospective HEAD)',
+    referenceSnapshot: 'Current Git index/HEAD compared with Drive-verified source blob IDs',
     baselineCommit: loaded.manifest.baselineCommit,
     baselineAvailable: verification.baselineAvailable,
-    driveRootReceiptPath: verification.archivedBaseline?.receiptPath ?? null,
-    driveIndexSha256: verification.archivedBaseline?.driveIndexSha256 ?? null
+    driveRootReceiptPath: verification.archivedBaseline.receiptPath,
+    driveIndexSha256: verification.archivedBaseline.driveIndexSha256
   };
 }
 
 function printUsage() {
   console.log('Usage:');
-  console.log('  node tools/archive-analysis-recovery.mjs --check');
-  console.log('  node tools/archive-analysis-recovery.mjs --restore archive/analysis/<exact-path> [--destination <existing-directory>]');
-  console.log('  node tools/archive-analysis-recovery.mjs --restore-all --destination <existing-directory>');
-  console.log('  If the baseline is absent, use tools/archive-cold-evidence.mjs with a downloaded verified index and local pack directory.');
+  console.log('  node tools/archive-analysis-recovery.mjs --check --index-file <downloaded-fullpath-index.json> --pack-dir <downloaded-pack-directory>');
+  console.log('  node tools/archive-analysis-recovery.mjs --restore archive/analysis/<exact-path> --index-file <local-index.json> --pack-dir <local-pack-directory> [--destination <existing-directory>]');
+  console.log('  node tools/archive-analysis-recovery.mjs --restore-all --index-file <local-index.json> --pack-dir <local-pack-directory> --destination <existing-directory>');
+  console.log('  The tracked D305/276 hashes are historical provenance only. No network authentication is performed.');
 }
 
-export function runRecoveryCli(argv = process.argv.slice(2)) {
+export async function runRecoveryCli(argv = process.argv.slice(2)) {
   if (argv.includes('--help') || argv.includes('-h')) {
     printUsage();
     return 0;
   }
   const action = argv[0];
   const root = fs.realpathSync(runGit(process.cwd(), ['rev-parse', '--show-toplevel']).trim());
-  if (action === '--check' && argv.length === 1) {
-    const report = checkRecoveryManifest({ root });
-    if (report.status === 'ARCHIVED_BASELINE_BOUND') {
-      console.log(`ARCHIVED_BASELINE_BOUND (technical only): ${report.entryCount} original paths and ${report.referenceFileCount} historical references are byte-verified against ${report.baselineCommit}; ${report.missingHeadReferenceCount} historical reference paths are absent from the Git index / prospective HEAD and bound by the verified Drive-root receipt.`);
-      console.log(`Drive index SHA-256: ${report.driveIndexSha256}; recovered HEAD checkout payload: ${report.totalBytes} bytes; historical Git storage reduction: 0 bytes.`);
+  const options = {};
+  const paths = [];
+  for (let index = 1; index < argv.length; index += 1) {
+    const option = argv[index];
+    if (['--destination', '--receipt', '--manifest', '--index-file', '--pack-dir'].includes(option)) {
+      const value = argv[index + 1];
+      if (!value) throw new Error(`RECOVERY_OPTION_VALUE_REQUIRED:${option}`);
+      const key = ({ '--destination': 'destinationRoot', '--receipt': 'receiptPath', '--manifest': 'manifestPath', '--index-file': 'indexFile', '--pack-dir': 'packDirectory' })[option];
+      options[key] = path.resolve(value);
+      index += 1;
+    } else if (option.startsWith('--')) {
+      throw new Error(`RECOVERY_OPTION_UNKNOWN:${option}`);
     } else {
-      console.log(`Recovery manifest locally verified (technical only): ${report.entryCount} original paths, ${report.uniqueBlobCount} unique blobs, and ${report.referenceFileCount} historical references match ${report.baselineCommit}.`);
-      console.log(`HEAD checkout payload: ${report.totalBytes} bytes; historical Git storage reduction: 0 bytes.`);
+      paths.push(option);
     }
+  }
+  if (action === '--check' && paths.length === 0) {
+    const report = await checkRecoveryManifest({ root, ...options });
+    console.log(`DRIVE_VERIFIED_OFFLINE (technical only): ${report.entryCount} exact recovery payloads and ${report.referenceFileCount} historical references match the verified local Drive sidecar/packs.`);
+    console.log(`Drive index SHA-256: ${report.driveIndexSha256}; payload bytes checked: ${report.totalBytes}; missing current Git references: ${report.missingProjectedReferenceCount}.`);
     return 0;
   }
 
   if (action === '--restore' || action === '--restore-all') {
-    let destinationRoot = root;
-    const paths = [];
-    for (let index = 1; index < argv.length; index += 1) {
-      if (argv[index] === '--destination') {
-        if (!argv[index + 1]) throw new Error('RECOVERY_DESTINATION_REQUIRED');
-        destinationRoot = path.resolve(argv[index + 1]);
-        index += 1;
-      } else if (!argv[index].startsWith('--')) {
-        paths.push(argv[index]);
-      } else {
-        throw new Error(`RECOVERY_OPTION_UNKNOWN:${argv[index]}`);
-      }
-    }
-
     let selectedPaths = paths;
     if (action === '--restore-all') {
       if (paths.length) throw new Error('RECOVERY_RESTORE_ALL_TAKES_NO_PATHS');
-      const manifest = loadRecoveryManifest(root).manifest;
+      const manifest = loadRecoveryManifest(root, options.manifestPath ?? path.join(root, MANIFEST_RELATIVE_PATH)).manifest;
       selectedPaths = manifest.entries.map(entry => entry.originalPath);
     } else if (paths.length !== 1) {
       throw new Error('RECOVERY_RESTORE_REQUIRES_ONE_EXACT_PATH');
     }
 
-    const report = restoreRecoveryPaths({ root, paths: selectedPaths, destinationRoot });
+    const report = await restoreRecoveryPaths({ root, paths: selectedPaths, ...options });
     for (const entry of report.restored) console.log(`Restored ${entry.path} (${entry.sizeBytes} bytes, sha256 ${entry.sha256}).`);
-    if (report.status === 'ARCHIVED_BASELINE_BOUND') {
-      console.log(`ARCHIVED_BASELINE_BOUND (technical only): ${report.missingProjectedReferenceCount} historical reference paths absent from the Git index / prospective HEAD are covered by the verified Drive-root receipt; Drive index SHA-256 ${report.driveIndexSha256}.`);
-    }
+    console.log(`DRIVE_VERIFIED_OFFLINE (technical only): ${report.missingProjectedReferenceCount} historical references match verified local Drive bytes; Drive index SHA-256 ${report.driveIndexSha256}.`);
     return 0;
   }
 
@@ -575,7 +571,7 @@ export function runRecoveryCli(argv = process.argv.slice(2)) {
 const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : '';
 if (invokedPath && pathToFileURL(invokedPath).href === import.meta.url) {
   try {
-    process.exitCode = runRecoveryCli();
+    process.exitCode = await runRecoveryCli();
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;

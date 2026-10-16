@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -40,6 +41,8 @@ const CANONICAL_GENERATED_DATA = new Set([
   'archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json',
   'archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_SOURCE_NORMALIZATION_RECEIPT.json'
 ]);
+const HISTORY_REWRITE_POLICY_PATH = 'tools/git-history-rewrite-policy.v1.json';
+const HEX_OID = /^[0-9a-f]{40}(?:[0-9a-f]{24})?$/i;
 
 function runGit(root, args, { encoding = 'utf8', input, metrics } = {}) {
   if (metrics) metrics.gitCommands = (metrics.gitCommands || 0) + 1;
@@ -85,7 +88,9 @@ function treeObjects(root, ref, metrics) {
   for (const record of records) {
     const separator = record.indexOf('\t');
     if (separator < 0) continue;
-    const fields = record.slice(0, separator).split(' ');
+    // `ls-tree -l` pads the size column, so metadata can contain repeated
+    // spaces. Normalize the header before reading the path's object and size.
+    const fields = record.slice(0, separator).trim().split(/\s+/);
     const repoPath = record.slice(separator + 1);
     if (fields.length !== 4 || fields[1] !== 'blob' || !/^[0-9a-f]{40,64}$/i.test(fields[2]) || !/^\d+$/.test(fields[3])) continue;
     objects.set(repoPath, { oid: fields[2], size: Number(fields[3]) });
@@ -153,6 +158,54 @@ function baseObjectIds(root, base, metrics) {
   }
 }
 
+function checkRewrittenHistoryFrontier(root, head, metrics) {
+  const policyPath = path.join(root, HISTORY_REWRITE_POLICY_PATH);
+  let stat;
+  try { stat = fs.lstatSync(policyPath); }
+  catch (error) { if (error.code === 'ENOENT') return { status: 'NO_POLICY_CONFIGURED', reachableDeniedFrontier: [] }; throw error; }
+  if (stat.isSymbolicLink() || !stat.isFile()) throw new Error('GIT_HISTORY_REWRITE_POLICY_INVALID_PATH');
+  let policy;
+  try { policy = JSON.parse(fs.readFileSync(policyPath, 'utf8')); }
+  catch { throw new Error('GIT_HISTORY_REWRITE_POLICY_INVALID_JSON'); }
+  if (policy?.schemaVersion !== 'git-history-rewrite-policy/v1' || policy.status !== 'ACTIVE'
+      || !Array.isArray(policy.deniedOldFrontier) || policy.deniedOldFrontier.length === 0
+      || policy.deniedOldFrontier.some(oid => typeof oid !== 'string' || !HEX_OID.test(oid))
+      || typeof policy.sourceCommitMapSha256 !== 'string' || !/^[0-9a-f]{64}$/i.test(policy.sourceCommitMapSha256)
+      || !Number.isSafeInteger(policy.sourceChangedOldCommitCount) || policy.sourceChangedOldCommitCount < 1
+      || !Number.isSafeInteger(policy.sourceAncestorGraphCommitCount) || policy.sourceAncestorGraphCommitCount < policy.sourceChangedOldCommitCount) {
+    throw new Error('GIT_HISTORY_REWRITE_POLICY_INVALID');
+  }
+  const frontier = [...new Set(policy.deniedOldFrontier.map(oid => oid.toLowerCase()))];
+  if (frontier.length !== policy.deniedOldFrontier.length) throw new Error('GIT_HISTORY_REWRITE_POLICY_DUPLICATE_FRONTIER');
+  let reachable;
+  try { reachable = new Set(runGit(root, ['rev-list', head], { metrics }).split(/\r?\n/).filter(Boolean).map(oid => oid.toLowerCase())); }
+  catch (error) { throw new Error(`GIT_HISTORY_REWRITE_REACHABILITY_FAILED:${String(error.stderr ?? error.message).trim()}`); }
+  const reachableDeniedFrontier = frontier.filter(oid => reachable.has(oid)).sort();
+  const baseline = policy.baselinePostFilterMain;
+  const baselineValid = typeof baseline === 'string' && HEX_OID.test(baseline);
+  if (baseline !== undefined && !baselineValid) throw new Error('GIT_HISTORY_REWRITE_POLICY_BASELINE_INVALID');
+  const errors = [];
+  if (baselineValid && !reachable.has(baseline.toLowerCase())) errors.push(`GIT_HISTORY_REWRITE_BASELINE_NOT_REACHABLE:${baseline}`);
+  for (const oid of reachableDeniedFrontier) errors.push(`GIT_HISTORY_REWRITTEN_ANCESTRY_FORBIDDEN:${oid}`);
+  return {
+    status: errors.length ? 'BLOCKED_REWRITTEN_ANCESTRY' : 'PASS_NO_REWRITTEN_ANCESTRY',
+    policyPath: HISTORY_REWRITE_POLICY_PATH,
+    policySha256: requirePolicySha256(policyPath),
+    sourceCommitMapSha256: policy.sourceCommitMapSha256.toLowerCase(),
+    sourceChangedOldCommitCount: policy.sourceChangedOldCommitCount,
+    sourceAncestorGraphCommitCount: policy.sourceAncestorGraphCommitCount,
+    baselinePostFilterMain: baselineValid ? baseline.toLowerCase() : null,
+    checkedFrontierCount: frontier.length,
+    reachableDeniedFrontier,
+    errors
+  };
+}
+
+function requirePolicySha256(policyPath) {
+  // The hash makes the exact active policy visible in CI's JSON report.
+  return createHash('sha256').update(fs.readFileSync(policyPath)).digest('hex');
+}
+
 function isProductionExemption(repoPath) {
   return CANONICAL_LARGE_DATA.includes(repoPath)
     || (PRODUCTION_ASSET_PREFIXES.some(prefix => repoPath.startsWith(prefix))
@@ -189,7 +242,10 @@ export function auditGitGrowth({ root, base = 'HEAD^', head = 'HEAD', metrics = 
   const untrackedPaths = splitNul(tryGit(root, ['ls-files', '--others', '--exclude-standard', '-z'], metrics));
   const nonignoredUntracked = new Set(untrackedPaths);
   const paths = new Set([
-    ...diffPaths(root, [`${normalizedBase}...${head}`], metrics),
+    // Compare the endpoint trees directly. Three-dot diff requires a merge
+    // base and silently stops working for the force-update transition that
+    // this guard must inspect.
+    ...diffPaths(root, [normalizedBase, head], metrics),
     ...diffPaths(root, ['HEAD'], metrics),
     ...diffPaths(root, ['--cached', 'HEAD'], metrics),
     ...untrackedPaths
@@ -200,6 +256,8 @@ export function auditGitGrowth({ root, base = 'HEAD^', head = 'HEAD', metrics = 
   const headTree = treeObjects(root, head, metrics);
   const stagedTree = indexObjects(root, metrics);
   const baseObjects = baseObjectIds(root, normalizedBase, metrics);
+  const rewriteHistory = checkRewrittenHistoryFrontier(root, head, metrics);
+  errors.push(...(rewriteHistory.errors || []));
   const introducedObjects = new Map();
   const candidates = [];
 
@@ -268,6 +326,7 @@ export function auditGitGrowth({ root, base = 'HEAD^', head = 'HEAD', metrics = 
     head,
     limits: { ...FOOTPRINT_LIMITS },
     countedChangedBytes: countedBytes,
+    rewriteHistory,
     files,
     errors: [...new Set(errors)].sort()
   };

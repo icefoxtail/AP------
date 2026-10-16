@@ -12,3 +12,9 @@ archive/analysis/palma-mock-builder-20261010/Q17_Q20_VISUAL/Q18/*.solution-visua
 
 # Keep migrated print-render test fixtures byte-identical to baseline 5519 blobs.
 /tests/fixtures/print-render-authority-v2.2/*.json -text
+
+# Byte-bound Golden/Negative inputs must survive Windows clones unchanged.
+/archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js -text
+/archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js -text
+/archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md -text
+/archive/fixtures/visual-negative-regressions/2026-09-29/README.md -text

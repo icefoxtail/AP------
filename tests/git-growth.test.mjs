@@ -288,6 +288,98 @@ test('zero-before initial push requires a full-history audit for a multi-commit 
   }
 });
 
+test('unrelated-root commits with identical trees pass the base-to-head audit', () => {
+  const repo = makeRepo();
+  try {
+    write(repo.root, 'ordinary.txt', 'same tree contents\n');
+    execFileSync('git', ['add', '--', 'ordinary.txt'], { cwd: repo.root });
+    commit(repo.root, 'base history');
+    const base = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo.root, encoding: 'utf8' }).trim();
+    const tree = execFileSync('git', ['rev-parse', `${base}^{tree}`], { cwd: repo.root, encoding: 'utf8' }).trim();
+    const unrelatedHead = execFileSync('git', ['commit-tree', tree, '-m', 'disconnected but identical tree'], { cwd: repo.root, encoding: 'utf8' }).trim();
+    assert.throws(() => execFileSync('git', ['merge-base', base, unrelatedHead], { cwd: repo.root, stdio: 'ignore' }));
+    assert.equal(execFileSync('git', ['rev-parse', `${unrelatedHead}^{tree}`], { cwd: repo.root, encoding: 'utf8' }).trim(), tree);
+
+    const report = auditGitGrowth({ root: repo.root, base, head: unrelatedHead });
+    assert.equal(report.ok, true, report.errors.join('\n'));
+    assert.equal(report.countedChangedBytes, 0);
+  } finally {
+    cleanRepo(repo);
+  }
+});
+
+test('active rewritten-history frontier blocks an identical-tree merge of old ancestry', () => {
+  const repo = makeRepo();
+  try {
+    const oldBase = repo.base;
+    const oldChanged = write(repo.root, 'old-only.txt', 'temporary old content\n');
+    execFileSync('git', ['add', '--', 'old-only.txt'], { cwd: repo.root });
+    commit(repo.root, 'old changed history');
+    const oldChangedOid = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo.root, encoding: 'utf8' }).trim();
+    fs.rmSync(oldChanged);
+    execFileSync('git', ['add', '-A'], { cwd: repo.root });
+    commit(repo.root, 'old revert to baseline tree');
+    const oldRevert = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo.root, encoding: 'utf8' }).trim();
+
+    const baselineTree = execFileSync('git', ['rev-parse', `${oldBase}^{tree}`], { cwd: repo.root, encoding: 'utf8' }).trim();
+    const rewrittenRoot = execFileSync('git', ['commit-tree', baselineTree, '-m', 'post-filter main baseline'], { cwd: repo.root, encoding: 'utf8' }).trim();
+    execFileSync('git', ['checkout', '--quiet', '--detach', rewrittenRoot], { cwd: repo.root });
+    execFileSync('git', ['merge', '--quiet', '--no-ff', '--allow-unrelated-histories', oldRevert, '-m', 'merge old ancestry without tree change'], { cwd: repo.root });
+    const mergedHead = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo.root, encoding: 'utf8' }).trim();
+    assert.equal(execFileSync('git', ['rev-parse', `${mergedHead}^{tree}`], { cwd: repo.root, encoding: 'utf8' }).trim(), baselineTree);
+
+    write(repo.root, 'tools/git-history-rewrite-policy.v1.json', JSON.stringify({
+      schemaVersion: 'git-history-rewrite-policy/v1',
+      status: 'ACTIVE',
+      sourceCommitMapSha256: 'a'.repeat(64),
+      sourceChangedOldCommitCount: 2,
+      sourceAncestorGraphCommitCount: 4,
+      baselinePostFilterMain: rewrittenRoot,
+      deniedOldFrontier: [oldChangedOid]
+    }, null, 2));
+    const report = auditGitGrowth({ root: repo.root, base: rewrittenRoot, head: mergedHead });
+    assert.equal(report.ok, false);
+    assert.equal(report.rewriteHistory.status, 'BLOCKED_REWRITTEN_ANCESTRY');
+    assert.ok(report.errors.includes(`GIT_HISTORY_REWRITTEN_ANCESTRY_FORBIDDEN:${oldChangedOid}`));
+    assert.equal(report.rewriteHistory.baselinePostFilterMain, rewrittenRoot);
+    assert.equal(report.rewriteHistory.sourceCommitMapSha256, 'a'.repeat(64));
+
+    const cleanReport = auditGitGrowth({ root: repo.root, base: rewrittenRoot, head: rewrittenRoot });
+    assert.equal(cleanReport.rewriteHistory.status, 'PASS_NO_REWRITTEN_ANCESTRY');
+  } finally {
+    cleanRepo(repo);
+  }
+});
+
+test('unrelated-root tree comparison still rejects oversized ordinary and raw additions', () => {
+  const repo = makeRepo();
+  try {
+    const base = repo.base;
+    const ordinaryPath = 'receipts/disconnected-large.bin';
+    const rawPath = 'archive/analysis/disconnected-raw.json';
+    write(repo.root, ordinaryPath, Buffer.alloc(33 * 1024 * 1024, 0x5a));
+    write(repo.root, rawPath, '{"status":"cold"}\n');
+    execFileSync('git', ['add', '--', ordinaryPath], { cwd: repo.root });
+    execFileSync('git', ['add', '-f', '--', rawPath], { cwd: repo.root });
+    const tree = execFileSync('git', ['write-tree'], { cwd: repo.root, encoding: 'utf8' }).trim();
+    const unrelatedHead = execFileSync('git', ['commit-tree', tree, '-m', 'disconnected oversized additions'], { cwd: repo.root, encoding: 'utf8' }).trim();
+    const headPaths = execFileSync('git', ['ls-tree', '-r', '--name-only', unrelatedHead], { cwd: repo.root, encoding: 'utf8' });
+    assert.ok(headPaths.split(/\r?\n/).includes(rawPath), 'detached head tree must include the raw file');
+    execFileSync('git', ['read-tree', '--reset', base], { cwd: repo.root });
+    fs.rmSync(path.join(repo.root, ordinaryPath), { force: true });
+    fs.rmSync(path.join(repo.root, 'archive/analysis'), { recursive: true, force: true });
+    assert.throws(() => execFileSync('git', ['merge-base', base, unrelatedHead], { cwd: repo.root, stdio: 'ignore' }));
+
+    const report = auditGitGrowth({ root: repo.root, base, head: unrelatedHead });
+    assert.equal(report.ok, false);
+    assert.ok(report.errors.some(error => error.startsWith('GIT_GROWTH_FILE_LIMIT:receipts/disconnected-large.bin:')));
+    assert.ok(report.errors.includes(`GIT_RAW_OUTPUT_FORBIDDEN:${rawPath}`), report.errors.join('\n'));
+    assert.ok(report.errors.some(error => error.startsWith('GIT_GROWTH_CHANGESET_LIMIT:')));
+  } finally {
+    cleanRepo(repo);
+  }
+});
+
 test('bulk committed deletions use a bounded number of Git processes', () => {
   const repo = makeRepo();
   try {
