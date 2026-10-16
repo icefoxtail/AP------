@@ -340,5 +340,5 @@ window.examData = {
   "sourcePin": "c64c70f7c523f7166a3b7003eb631dd4985f9c20",
   "classificationStatus": "HISTORICAL_TOPIC_ONLY_CANONICAL_MAPPING_UNVERIFIED"
 };
-window.questionBank = window.examData;
+window.questionBank = window.examData.questions;
 window.examTitle = window.examData.examTitle;
