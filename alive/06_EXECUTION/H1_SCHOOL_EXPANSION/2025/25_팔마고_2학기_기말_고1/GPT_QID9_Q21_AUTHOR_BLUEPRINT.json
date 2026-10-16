@@ -1,0 +1,1315 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q21_AUTHOR_BLUEPRINT_v1",
+  "createdDate": "2026-10-16",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 21,
+  "sourceUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+  "sourceLockPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/GPT_QID9_Q21_SOURCE_LOCK.json",
+  "sourceLockGitBlob": "e00f6ad16c7c5892f15a744dc4062f755610cf99",
+  "sourceInvariant": {
+    "primaryL3": "H1-RPM-264",
+    "decisiveStep": "이동거리의 합/전체 소요시간으로 유리함수를 만들어 분모와 계수의 부호로 증감 및 최댓값·최솟값·목표 경계를 결정",
+    "originalFocal": "두 구간 평균속력 y=70+6/(x+1/5), x∈[4/5,29/5] 최대76 최소71"
+  },
+  "primaryRpm": {
+    "id": "H1-RPM-264",
+    "l1": "함수",
+    "l2": "유리함수",
+    "l3": "유리함수의 활용",
+    "canonicalL4": "유리함수의 최대·최소",
+    "authority": "RPM_PRIMARY_LOCKED_2022_HIGH1_RPM_ONLY"
+  },
+  "ptTpl": {
+    "problemTypeKey": null,
+    "templateKey": null,
+    "bindingStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+    "reason": "원본 H1-RPM-264 기준 PT/TPL 없음. 다른 문제유형의 형식상 매핑 금지"
+  },
+  "crossConceptSearch": {
+    "canonicalActiveReused": [
+      "CC_FUNCTION_MONOTONICITY",
+      "CC_INEQUALITY_RATIONAL",
+      "CC_QUADRATIC_EQUATION",
+      "CC_SIMULTANEOUS_EQUATION"
+    ],
+    "generatedAdded": [],
+    "sourceRegistry": "archive/data/meta-foundation/compiled/concept_registry.json"
+  },
+  "conditionSearch": {
+    "canonicalActiveReused": [
+      "COND_POSITIVE",
+      "COND_RANGE"
+    ],
+    "newGenerated": []
+  },
+  "answerGrid": [
+    [
+      "⑤",
+      "①",
+      "④"
+    ],
+    [
+      "②",
+      "②",
+      "⑤"
+    ],
+    [
+      "③",
+      "④",
+      "①"
+    ]
+  ],
+  "horizontalAnswerDistribution": {
+    "①": 2,
+    "②": 2,
+    "③": 1,
+    "④": 2,
+    "⑤": 2
+  },
+  "answerDistributionStatus": "PASS_STATIC_EVIDENCE_ONLY_WITH_AUTHOR_EXHAUSTIVE_113400",
+  "items": [
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q21-A1",
+      "slot": "A1",
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+      "stem": "자동차가 첫 구간을 시속 $90\\text{ km}$로 $10$분 동안 달리고, 이어서 둘째 구간을 시속 $60\\text{ km}$로 $x$시간 동안 달린다. 전체 구간의 평균 속력을 $y\\text{ km/h}$라 할 때, $\\dfrac56\\le x\\le\\dfrac{29}{6}$에서 $y$의 최댓값은?",
+      "choices": [
+        "$60$",
+        "$61$",
+        "$75$",
+        "$90$",
+        "$65$"
+      ],
+      "answer": "⑤",
+      "answerValue": "$65$",
+      "solution": "첫 구간의 시간은 $\\dfrac16$시간이고 이동 거리는 $90\\cdot\\dfrac16=15$ km이다.\n전체 이동 거리는 $15+60x$, 전체 시간은 $x+\\dfrac16$이므로\n$y=\\dfrac{15+60x}{x+\\dfrac16}=60+\\dfrac5{x+\\dfrac16}$이다.\n$x>0$에서 분모가 커지면 양의 분수는 감소한다. 따라서 $y$의 최댓값은 가장 작은 $x=\\dfrac56$에서 나온다.\n$y\\left(\\dfrac56\\right)=60+\\dfrac5{1}=65$이다.\n따라서 정답은 ⑤이다.",
+      "mode": "STRICT_VARIANT",
+      "level": "하",
+      "difficultyBucket": 2,
+      "learningLevel": "하",
+      "assessmentBucket": 2,
+      "learningLevelReason": "두 구간의 거리와 시간을 합치고 양의 분수 감소를 판단",
+      "assessmentBucketReason": "시간의 분수 변환과 닫힌 구간 왼쪽 끝 선택이 핵심; 경우 분기 없음",
+      "primaryRPM": {
+        "id": "H1-RPM-264",
+        "l1": "함수",
+        "l2": "유리함수",
+        "l3": "유리함수의 활용",
+        "canonicalL4": "유리함수의 최대·최소",
+        "status": "RPM_ONLY_CANONICAL_EXISTING"
+      },
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ptTplBindingStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+      "ptTplEvidenceDebt": "원본과 같은 결정적 유리함수 활용 및 극값·경계 판정은 H1-RPM-264에 등록되어 있으나 해당 RPM row에 ACTIVE PT/TPL binding 없음. H1-RPM-263 PT_FUNCTION_RECOVERY / TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT는 주어진 평균속력 모델과 다른 풀이; 부적절한 키 재사용 금지.",
+      "crossConceptKeys": [
+        "CC_FUNCTION_MONOTONICITY"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_FUNCTION_MONOTONICITY": "분모의 양수성과 크기 변화를 이용해 단조성·끝값 또는 목표 역산을 결정"
+      },
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$60$",
+          "errorCalculation": "첫 구간 $15$ km를 누락하고 둘째 구간의 시속 $60$을 전체 평균속력으로 착각한다."
+        },
+        {
+          "index": "②",
+          "value": "$61$",
+          "errorCalculation": "오른쪽 끝 $x=\\dfrac{29}{6}$을 최댓값 위치로 잘못 사용하면 $60+\\dfrac5{5}=61$이다."
+        },
+        {
+          "index": "③",
+          "value": "$75$",
+          "errorCalculation": "구간별 속도 $90$과 $60$의 산술평균 $\\dfrac{90+60}{2}=75$를 시간 가중 없이 적용한다."
+        },
+        {
+          "index": "④",
+          "value": "$90$",
+          "errorCalculation": "처음 구간의 속력 $90$을 전체 평균속력으로 그대로 사용한다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "발문에 모든 이동거리/시간/조건을 텍스트로 완전 제공; 문제 자체에 도형 의존 없음",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "평균속력 유리함수의 증감·끝값·기준속력 또는 목표선 관계를 학생에게 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q21/A1-solution.svg",
+        "gitBlobSha": "7d5a410e3192aadf3e9bf801fcdba386db6926ad",
+        "browserRender": "NOT_RUN",
+        "numericModel": {
+          "expression": "y=60+(5)/(x+0.16666666666666666)",
+          "base": 60,
+          "k": 5,
+          "t": 0.16666666666666666,
+          "domain": [
+            0,
+            6
+          ],
+          "criticalPoints": [
+            {
+              "x": 0.8333333333333334,
+              "y": 65,
+              "exactX": "5/6",
+              "exactY": "65",
+              "screenX": "134.167",
+              "screenY": "234.969"
+            },
+            {
+              "x": 4.833333333333333,
+              "y": 61,
+              "exactX": "29/6",
+              "exactY": "61",
+              "screenX": "466.167",
+              "screenY": "255.157"
+            }
+          ],
+          "xScale": 83,
+          "yScale": 5.046948356807512,
+          "xOrigin": 65,
+          "yBottom": 292,
+          "yMin": 53.7,
+          "yMax": 96.3,
+          "actualCurveSampleCount": 281,
+          "monotonicity": "감소",
+          "coordinateModel": "screenX=65+sx*x, screenY=292-sy*(y-yMin)",
+          "sampleEndpointConsistency": true
+        },
+        "authorGeometry": "PYTHON_MODEL_COMPUTED_AND_JAVASCRIPT_280_INTERVAL_SAMPLE_VERIFIED"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "자동차가 첫 구간을 시속 $90\\text{ km}$로 $10$분 동안 달리고, 이어서 둘째 구간을 시속 $60\\text{ km}$로 $x$시간 동안 달린다. 전체 구간의 평균 속력을 $y\\text{ km/h}$라 할 때, $\\dfrac56\\le x\\le\\dfrac{29}{6}$에서 $y$의 최댓값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "거리/시간의 실제 모델과 구하려는 평균속력·시간·매개변수 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "공통수학2 유리함수의 활용 및 공통수학1 방정식/부등식(도함수, 미적분 미사용)",
+        "problemVisualDataComplete": true
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q21-A2",
+      "slot": "A2",
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+      "stem": "자동차가 처음 $15$분 동안 시속 $120\\text{ km}$로 달리고, 다음 $x$시간 동안 시속 $80\\text{ km}$로 달린다. 전체 평균 속력이 $y\\text{ km/h}$일 때, $\\dfrac34\\le x\\le\\dfrac{15}{4}$에서 $y$의 최솟값은?",
+      "choices": [
+        "$\\dfrac{165}{2}$",
+        "$80$",
+        "$90$",
+        "$100$",
+        "$120$"
+      ],
+      "answer": "①",
+      "answerValue": "$\\dfrac{165}{2}$",
+      "solution": "처음 $15$분은 $\\dfrac14$시간이고 이동 거리는 $120\\cdot\\dfrac14=30$ km이다.\n따라서 $y=\\dfrac{30+80x}{x+\\dfrac14}=80+\\dfrac{10}{x+\\dfrac14}$이다.\n$x$가 증가하면 분모가 커지므로 $y$는 감소한다. 따라서 최솟값은 $x=\\dfrac{15}{4}$일 때 얻는다.\n$y\\left(\\dfrac{15}{4}\\right)=80+\\dfrac{10}{4}=\\dfrac{165}{2}$이다.\n따라서 정답은 ①이다.",
+      "mode": "STRICT_VARIANT",
+      "level": "하",
+      "difficultyBucket": 2,
+      "learningLevel": "하",
+      "assessmentBucket": 2,
+      "learningLevelReason": "평균속력 식과 감소 방향을 직접 적용",
+      "assessmentBucketReason": "유리함수 분모 증가에 따른 끝값 선택; 수치분수 계산 요구",
+      "primaryRPM": {
+        "id": "H1-RPM-264",
+        "l1": "함수",
+        "l2": "유리함수",
+        "l3": "유리함수의 활용",
+        "canonicalL4": "유리함수의 최대·최소",
+        "status": "RPM_ONLY_CANONICAL_EXISTING"
+      },
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ptTplBindingStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+      "ptTplEvidenceDebt": "원본과 같은 결정적 유리함수 활용 및 극값·경계 판정은 H1-RPM-264에 등록되어 있으나 해당 RPM row에 ACTIVE PT/TPL binding 없음. H1-RPM-263 PT_FUNCTION_RECOVERY / TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT는 주어진 평균속력 모델과 다른 풀이; 부적절한 키 재사용 금지.",
+      "crossConceptKeys": [
+        "CC_FUNCTION_MONOTONICITY"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_FUNCTION_MONOTONICITY": "분모의 양수성과 크기 변화를 이용해 단조성·끝값 또는 목표 역산을 결정"
+      },
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "$80$",
+          "errorCalculation": "둘째 구간의 속력 $80$만을 전체 평균속력으로 처리한다."
+        },
+        {
+          "index": "③",
+          "value": "$90$",
+          "errorCalculation": "감소하는 함수인데 왼쪽 끝 $x=\\dfrac34$를 사용하여 $80+\\dfrac{10}{1}=90$을 최솟값으로 선택한다."
+        },
+        {
+          "index": "④",
+          "value": "$100$",
+          "errorCalculation": "시간을 가중하지 않고 두 구간 속력의 평균 $\\dfrac{120+80}{2}=100$을 계산한다."
+        },
+        {
+          "index": "⑤",
+          "value": "$120$",
+          "errorCalculation": "첫 구간의 시속 $120$을 전체 평균속력으로 착각한다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "발문에 모든 이동거리/시간/조건을 텍스트로 완전 제공; 문제 자체에 도형 의존 없음",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "평균속력 유리함수의 증감·끝값·기준속력 또는 목표선 관계를 학생에게 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q21/A2-solution.svg",
+        "gitBlobSha": "ebbfcf44c85b82166068335b0d1575ffcec16d22",
+        "browserRender": "NOT_RUN",
+        "numericModel": {
+          "expression": "y=80+(10)/(x+0.25)",
+          "base": 80,
+          "k": 10,
+          "t": 0.25,
+          "domain": [
+            0,
+            4.5
+          ],
+          "criticalPoints": [
+            {
+              "x": 0.75,
+              "y": 90,
+              "exactX": "3/4",
+              "exactY": "90",
+              "screenX": "148",
+              "screenY": "222.352"
+            },
+            {
+              "x": 3.75,
+              "y": 82.5,
+              "exactX": "15/4",
+              "exactY": "165/2",
+              "screenX": "480",
+              "screenY": "250.741"
+            }
+          ],
+          "xScale": 110.66666666666667,
+          "yScale": 3.785211267605633,
+          "xOrigin": 65,
+          "yBottom": 292,
+          "yMin": 71.6,
+          "yMax": 128.4,
+          "actualCurveSampleCount": 281,
+          "monotonicity": "감소",
+          "coordinateModel": "screenX=65+sx*x, screenY=292-sy*(y-yMin)",
+          "sampleEndpointConsistency": true
+        },
+        "authorGeometry": "PYTHON_MODEL_COMPUTED_AND_JAVASCRIPT_280_INTERVAL_SAMPLE_VERIFIED"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "자동차가 처음 $15$분 동안 시속 $120\\text{ km}$로 달리고, 다음 $x$시간 동안 시속 $80\\text{ km}$로 달린다. 전체 평균 속력이 $y\\text{ km/h}$일 때, $\\dfrac34\\le x\\le\\dfrac{15}{4}$에서 $y$의 최솟값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "거리/시간의 실제 모델과 구하려는 평균속력·시간·매개변수 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "공통수학2 유리함수의 활용 및 공통수학1 방정식/부등식(도함수, 미적분 미사용)",
+        "problemVisualDataComplete": true
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q21-A3",
+      "slot": "A3",
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+      "stem": "자동차가 시속 $80\\text{ km}$로 $30$분을 달린 다음 시속 $60\\text{ km}$로 $x$시간 달린다. 전체 평균 속력의 최댓값을 $M$, 최솟값을 $m$이라 하자. $\\dfrac12\\le x\\le\\dfrac92$에서 $M-m$의 값은?",
+      "choices": [
+        "$70$",
+        "$62$",
+        "$10$",
+        "$8$",
+        "$20$"
+      ],
+      "answer": "④",
+      "answerValue": "$8$",
+      "solution": "첫 구간의 이동 거리는 $80\\cdot\\dfrac12=40$ km, 전체 시간은 $x+\\dfrac12$시간이다.\n따라서 평균속력을 $y$라 하면 $y=\\dfrac{40+60x}{x+\\dfrac12}=60+\\dfrac{10}{x+\\dfrac12}$이다.\n분모가 양수이고 $x$가 커질수록 $y$는 감소한다.\n$M=y\\left(\\dfrac12\\right)=60+10=70$,\n$m=y\\left(\\dfrac92\\right)=60+\\dfrac{10}{5}=62$이다.\n따라서 $M-m=70-62=8$이다.\n따라서 정답은 ④이다.",
+      "mode": "STRICT_VARIANT",
+      "level": "중",
+      "difficultyBucket": 3,
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningLevelReason": "양 끝에서 최댓값과 최솟값을 모두 구해 차를 계산",
+      "assessmentBucketReason": "속도 차와 평균속력 차를 구별하는 오답 위험 추가",
+      "primaryRPM": {
+        "id": "H1-RPM-264",
+        "l1": "함수",
+        "l2": "유리함수",
+        "l3": "유리함수의 활용",
+        "canonicalL4": "유리함수의 최대·최소",
+        "status": "RPM_ONLY_CANONICAL_EXISTING"
+      },
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ptTplBindingStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+      "ptTplEvidenceDebt": "원본과 같은 결정적 유리함수 활용 및 극값·경계 판정은 H1-RPM-264에 등록되어 있으나 해당 RPM row에 ACTIVE PT/TPL binding 없음. H1-RPM-263 PT_FUNCTION_RECOVERY / TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT는 주어진 평균속력 모델과 다른 풀이; 부적절한 키 재사용 금지.",
+      "crossConceptKeys": [
+        "CC_FUNCTION_MONOTONICITY"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_FUNCTION_MONOTONICITY": "분모의 양수성과 크기 변화를 이용해 단조성·끝값 또는 목표 역산을 결정"
+      },
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$70$",
+          "errorCalculation": "최댓값 $M=70$만 구하고 차 $M-m$을 계산하지 않는다."
+        },
+        {
+          "index": "②",
+          "value": "$62$",
+          "errorCalculation": "최솟값 $m=62$만 구하고 차 $M-m$을 계산하지 않는다."
+        },
+        {
+          "index": "③",
+          "value": "$10$",
+          "errorCalculation": "최솟값 $62$ 대신 수평점근선 $60$을 사용하여 $70-60=10$을 구한다."
+        },
+        {
+          "index": "⑤",
+          "value": "$20$",
+          "errorCalculation": "구간 평균속력이 아니라 두 구간 속력의 차 $80-60=20$을 계산한다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "발문에 모든 이동거리/시간/조건을 텍스트로 완전 제공; 문제 자체에 도형 의존 없음",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "평균속력 유리함수의 증감·끝값·기준속력 또는 목표선 관계를 학생에게 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q21/A3-solution.svg",
+        "gitBlobSha": "4d3045d6f711bbc19d0f92ce855769a5ecdd9015",
+        "browserRender": "NOT_RUN",
+        "numericModel": {
+          "expression": "y=60+(10)/(x+0.5)",
+          "base": 60,
+          "k": 10,
+          "t": 0.5,
+          "domain": [
+            0,
+            5
+          ],
+          "criticalPoints": [
+            {
+              "x": 0.5,
+              "y": 70,
+              "exactX": "1/2",
+              "exactY": "70",
+              "screenX": "114.8",
+              "screenY": "184.5"
+            },
+            {
+              "x": 4.5,
+              "y": 62,
+              "exactX": "9/2",
+              "exactY": "62",
+              "screenX": "513.2",
+              "screenY": "245.063"
+            }
+          ],
+          "xScale": 99.6,
+          "yScale": 7.570422535211266,
+          "xOrigin": 65,
+          "yBottom": 292,
+          "yMin": 55.8,
+          "yMax": 84.2,
+          "actualCurveSampleCount": 281,
+          "monotonicity": "감소",
+          "coordinateModel": "screenX=65+sx*x, screenY=292-sy*(y-yMin)",
+          "sampleEndpointConsistency": true
+        },
+        "authorGeometry": "PYTHON_MODEL_COMPUTED_AND_JAVASCRIPT_280_INTERVAL_SAMPLE_VERIFIED"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "자동차가 시속 $80\\text{ km}$로 $30$분을 달린 다음 시속 $60\\text{ km}$로 $x$시간 달린다. 전체 평균 속력의 최댓값을 $M$, 최솟값을 $m$이라 하자. $\\dfrac12\\le x\\le\\dfrac92$에서 $M-m$의 값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "거리/시간의 실제 모델과 구하려는 평균속력·시간·매개변수 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "공통수학2 유리함수의 활용 및 공통수학1 방정식/부등식(도함수, 미적분 미사용)",
+        "problemVisualDataComplete": true
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q21-B1",
+      "slot": "B1",
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+      "stem": "자동차가 시속 $90\\text{ km}$로 $20$분을 달린 뒤 시속 $60\\text{ km}$로 $x$시간 더 달린다. 전체 구간의 평균 속력이 정확히 $72\\text{ km/h}$가 되도록 하는 $x$의 값은? (단, $x>0$)",
+      "choices": [
+        "$\\dfrac56$",
+        "$\\dfrac12$",
+        "$\\dfrac38$",
+        "$\\dfrac32$",
+        "$\\dfrac23$"
+      ],
+      "answer": "②",
+      "answerValue": "$\\dfrac12$",
+      "solution": "처음 $20$분은 $\\dfrac13$시간이고 첫 구간 거리는 $90\\cdot\\dfrac13=30$ km이다.\n전체 평균속력 $y$는\n$y=\\dfrac{30+60x}{x+\\dfrac13}=60+\\dfrac{10}{x+\\dfrac13}$이다.\n$y=72$이므로 $\\dfrac{10}{x+\\dfrac13}=12$,\n$x+\\dfrac13=\\dfrac56$이다.\n따라서 $x=\\dfrac56-\\dfrac13=\\dfrac12$시간이다.\n따라서 정답은 ②이다.",
+      "mode": "L3_EXPANSION",
+      "level": "중",
+      "difficultyBucket": 3,
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningLevelReason": "평균속력 유리식의 목표값에서 역으로 시간을 계산",
+      "assessmentBucketReason": "평균 시간과 둘째 구간 시간의 구별 및 분모 방정식 변형",
+      "primaryRPM": {
+        "id": "H1-RPM-264",
+        "l1": "함수",
+        "l2": "유리함수",
+        "l3": "유리함수의 활용",
+        "canonicalL4": "유리함수의 최대·최소",
+        "status": "RPM_ONLY_CANONICAL_EXISTING"
+      },
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ptTplBindingStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+      "ptTplEvidenceDebt": "원본과 같은 결정적 유리함수 활용 및 극값·경계 판정은 H1-RPM-264에 등록되어 있으나 해당 RPM row에 ACTIVE PT/TPL binding 없음. H1-RPM-263 PT_FUNCTION_RECOVERY / TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT는 주어진 평균속력 모델과 다른 풀이; 부적절한 키 재사용 금지.",
+      "crossConceptKeys": [
+        "CC_FUNCTION_MONOTONICITY"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_FUNCTION_MONOTONICITY": "분모의 양수성과 크기 변화를 이용해 단조성·끝값 또는 목표 역산을 결정"
+      },
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$\\dfrac56$",
+          "errorCalculation": "전체 시간 $x+\\dfrac13=\\dfrac56$을 구한 뒤 첫 구간 시간 $\\dfrac13$을 빼지 않는다."
+        },
+        {
+          "index": "③",
+          "value": "$\\dfrac38$",
+          "errorCalculation": "처음 $20$분을 $15$분으로 잘못 바꿔 $\\dfrac{90-60}{4}=\\dfrac{15}{2}$, $\\dfrac{15/2}{x+1/4}=12$에서 $x=\\dfrac58-\\dfrac14=\\dfrac38$을 얻는다."
+        },
+        {
+          "index": "④",
+          "value": "$\\dfrac32$",
+          "errorCalculation": "처음 $20$분을 $1$시간으로 취급하면 $\\dfrac{90+60x}{1+x}=72$에서 $x=\\dfrac32$이 된다."
+        },
+        {
+          "index": "⑤",
+          "value": "$\\dfrac23$",
+          "errorCalculation": "목표 평균속력 $72$를 $70$으로 잘못 읽으면 $\\dfrac{10}{x+1/3}=10$에서 $x=\\dfrac23$이다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "발문에 모든 이동거리/시간/조건을 텍스트로 완전 제공; 문제 자체에 도형 의존 없음",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "평균속력 유리함수의 증감·끝값·기준속력 또는 목표선 관계를 학생에게 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q21/B1-solution.svg",
+        "gitBlobSha": "e548ff4b9f27c53377d1bebfb685e7620f9ec137",
+        "browserRender": "NOT_RUN",
+        "numericModel": {
+          "expression": "y=60+(10)/(x+0.3333333333333333)",
+          "base": 60,
+          "k": 10,
+          "t": 0.3333333333333333,
+          "domain": [
+            0,
+            2
+          ],
+          "criticalPoints": [
+            {
+              "x": 0.5,
+              "y": 72,
+              "exactX": "1/2",
+              "exactY": "72",
+              "screenX": "189.5",
+              "screenY": "199.641"
+            }
+          ],
+          "xScale": 249,
+          "yScale": 5.046948356807512,
+          "xOrigin": 65,
+          "yBottom": 292,
+          "yMin": 53.7,
+          "yMax": 96.3,
+          "actualCurveSampleCount": 281,
+          "monotonicity": "감소",
+          "coordinateModel": "screenX=65+sx*x, screenY=292-sy*(y-yMin)",
+          "sampleEndpointConsistency": true
+        },
+        "authorGeometry": "PYTHON_MODEL_COMPUTED_AND_JAVASCRIPT_280_INTERVAL_SAMPLE_VERIFIED"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "자동차가 시속 $90\\text{ km}$로 $20$분을 달린 뒤 시속 $60\\text{ km}$로 $x$시간 더 달린다. 전체 구간의 평균 속력이 정확히 $72\\text{ km/h}$가 되도록 하는 $x$의 값은? (단, $x>0$)",
+        "primaryNecessary": true,
+        "questionNaturalness": "거리/시간의 실제 모델과 구하려는 평균속력·시간·매개변수 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "공통수학2 유리함수의 활용 및 공통수학1 방정식/부등식(도함수, 미적분 미사용)",
+        "problemVisualDataComplete": true
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q21-B2",
+      "slot": "B2",
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+      "stem": "자동차가 시속 $100\\text{ km}$로 $12$분 달린 후 시속 $70\\text{ km}$로 $x$시간 더 달린다. 전체 평균 속력이 $75\\text{ km/h}$ 이상이 되도록 하는 $x>0$의 최댓값은?",
+      "choices": [
+        "$\\dfrac65$",
+        "$1$",
+        "$\\dfrac56$",
+        "$\\dfrac75$",
+        "$\\dfrac45$"
+      ],
+      "answer": "②",
+      "answerValue": "$1$",
+      "solution": "첫 구간 시간은 $\\dfrac15$시간, 거리는 $100\\cdot\\dfrac15=20$ km이다.\n따라서 평균속력은 $y=\\dfrac{20+70x}{x+\\dfrac15}=70+\\dfrac6{x+\\dfrac15}$이다.\n$y\\ge75$이므로 $\\dfrac6{x+\\dfrac15}\\ge5$이다.\n$x>0$에서 분모는 양수이므로 $x+\\dfrac15\\le\\dfrac65$, 즉 $0<x\\le1$이다.\n따라서 가능한 가장 큰 $x$는 $1$시간이다.\n따라서 정답은 ②이다.",
+      "mode": "L3_EXPANSION",
+      "level": "중",
+      "difficultyBucket": 3,
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningLevelReason": "양수 분모의 유리부등식과 시간 범위를 함께 확인",
+      "assessmentBucketReason": "양수 조건, 부등호의 방향 및 첫 구간 시간의 중복 계산 함정",
+      "primaryRPM": {
+        "id": "H1-RPM-264",
+        "l1": "함수",
+        "l2": "유리함수",
+        "l3": "유리함수의 활용",
+        "canonicalL4": "유리함수의 최대·최소",
+        "status": "RPM_ONLY_CANONICAL_EXISTING"
+      },
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ptTplBindingStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+      "ptTplEvidenceDebt": "원본과 같은 결정적 유리함수 활용 및 극값·경계 판정은 H1-RPM-264에 등록되어 있으나 해당 RPM row에 ACTIVE PT/TPL binding 없음. H1-RPM-263 PT_FUNCTION_RECOVERY / TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT는 주어진 평균속력 모델과 다른 풀이; 부적절한 키 재사용 금지.",
+      "crossConceptKeys": [
+        "CC_FUNCTION_MONOTONICITY",
+        "CC_INEQUALITY_RATIONAL"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_FUNCTION_MONOTONICITY": "분모의 양수성과 크기 변화를 이용해 단조성·끝값 또는 목표 역산을 결정",
+        "CC_INEQUALITY_RATIONAL": "x>0에서 분모 양수와 유리부등식의 방향을 확정"
+      },
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CONDITION_FILTER",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$\\dfrac65$",
+          "errorCalculation": "부등식에서 전체 시간 $x+\\dfrac15\\le\\dfrac65$을 얻고 첫 구간 시간을 빼지 않아 $\\dfrac65$라고 한다."
+        },
+        {
+          "index": "③",
+          "value": "$\\dfrac56$",
+          "errorCalculation": "$\\dfrac6{x+1/5}\\ge5$의 비를 뒤집어 분모 상한을 $\\dfrac56$으로 잘못 계산한다."
+        },
+        {
+          "index": "④",
+          "value": "$\\dfrac75$",
+          "errorCalculation": "전체 시간 상한 $\\dfrac65$에 처음 시간을 잘못 더해 $\\dfrac65+\\dfrac15=\\dfrac75$을 계산한다."
+        },
+        {
+          "index": "⑤",
+          "value": "$\\dfrac45$",
+          "errorCalculation": "처음 시간 $\\dfrac15$을 두 번 빼 $\\dfrac65-\\dfrac25=\\dfrac45$이라고 한다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "발문에 모든 이동거리/시간/조건을 텍스트로 완전 제공; 문제 자체에 도형 의존 없음",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "평균속력 유리함수의 증감·끝값·기준속력 또는 목표선 관계를 학생에게 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q21/B2-solution.svg",
+        "gitBlobSha": "8095526cf792d697b71cfcc979fea1791af20670",
+        "browserRender": "NOT_RUN",
+        "numericModel": {
+          "expression": "y=70+(6)/(x+0.2)",
+          "base": 70,
+          "k": 6,
+          "t": 0.2,
+          "domain": [
+            0,
+            3
+          ],
+          "criticalPoints": [
+            {
+              "x": 1,
+              "y": 75,
+              "exactX": "1",
+              "exactY": "75",
+              "screenX": "231",
+              "screenY": "234.969"
+            }
+          ],
+          "xScale": 166,
+          "yScale": 5.046948356807512,
+          "xOrigin": 65,
+          "yBottom": 292,
+          "yMin": 63.7,
+          "yMax": 106.3,
+          "actualCurveSampleCount": 281,
+          "monotonicity": "감소",
+          "coordinateModel": "screenX=65+sx*x, screenY=292-sy*(y-yMin)",
+          "sampleEndpointConsistency": true
+        },
+        "authorGeometry": "PYTHON_MODEL_COMPUTED_AND_JAVASCRIPT_280_INTERVAL_SAMPLE_VERIFIED"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "자동차가 시속 $100\\text{ km}$로 $12$분 달린 후 시속 $70\\text{ km}$로 $x$시간 더 달린다. 전체 평균 속력이 $75\\text{ km/h}$ 이상이 되도록 하는 $x>0$의 최댓값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "거리/시간의 실제 모델과 구하려는 평균속력·시간·매개변수 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "공통수학2 유리함수의 활용 및 공통수학1 방정식/부등식(도함수, 미적분 미사용)",
+        "problemVisualDataComplete": true
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q21-B3",
+      "slot": "B3",
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+      "stem": "자동차가 처음 $30$분 동안 시속 $60\\text{ km}$로 달리고, 그다음 시속 $90\\text{ km}$로 $x$시간 더 달린다. 전체 평균 속력이 $85\\text{ km/h}$ 이상이 되도록 하는 $x>0$의 최솟값은?",
+      "choices": [
+        "$3$",
+        "$2$",
+        "$\\dfrac12$",
+        "$\\dfrac72$",
+        "$\\dfrac52$"
+      ],
+      "answer": "⑤",
+      "answerValue": "$\\dfrac52$",
+      "solution": "처음 $30$분은 $\\dfrac12$시간이고 거리는 $60\\cdot\\dfrac12=30$ km이다.\n평균속력은 $y=\\dfrac{30+90x}{x+\\dfrac12}=90-\\dfrac{15}{x+\\dfrac12}$이다.\n$x>0$에서 분모가 양수이므로 $x$가 커질수록 빼는 양이 작아져 $y$는 증가한다.\n$y\\ge85$에서 $\\dfrac{15}{x+\\dfrac12}\\le5$이므로 $x+\\dfrac12\\ge3$이다.\n따라서 $x\\ge\\dfrac52$이고 그 최솟값은 $\\dfrac52$시간이다.\n따라서 정답은 ⑤이다.",
+      "mode": "L3_EXPANSION",
+      "level": "중",
+      "difficultyBucket": 3,
+      "learningLevel": "중",
+      "assessmentBucket": 3,
+      "learningLevelReason": "증가하는 평균속력의 하한을 역으로 계산",
+      "assessmentBucketReason": "첫 속력보다 둘째 속력이 큰 증가형과 분수 부등호 조작",
+      "primaryRPM": {
+        "id": "H1-RPM-264",
+        "l1": "함수",
+        "l2": "유리함수",
+        "l3": "유리함수의 활용",
+        "canonicalL4": "유리함수의 최대·최소",
+        "status": "RPM_ONLY_CANONICAL_EXISTING"
+      },
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ptTplBindingStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+      "ptTplEvidenceDebt": "원본과 같은 결정적 유리함수 활용 및 극값·경계 판정은 H1-RPM-264에 등록되어 있으나 해당 RPM row에 ACTIVE PT/TPL binding 없음. H1-RPM-263 PT_FUNCTION_RECOVERY / TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT는 주어진 평균속력 모델과 다른 풀이; 부적절한 키 재사용 금지.",
+      "crossConceptKeys": [
+        "CC_FUNCTION_MONOTONICITY",
+        "CC_INEQUALITY_RATIONAL"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_FUNCTION_MONOTONICITY": "분모의 양수성과 크기 변화를 이용해 단조성·끝값 또는 목표 역산을 결정",
+        "CC_INEQUALITY_RATIONAL": "x>0에서 분모 양수와 유리부등식의 방향을 확정"
+      },
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CONDITION_FILTER",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$3$",
+          "errorCalculation": "전체 시간 $x+\\dfrac12=3$을 구한 뒤 처음 $30$분을 빼지 않는다."
+        },
+        {
+          "index": "②",
+          "value": "$2$",
+          "errorCalculation": "$3-\\dfrac12$에서 처음 시간 $\\dfrac12$을 한 번 더 빼 $2$라고 한다."
+        },
+        {
+          "index": "③",
+          "value": "$\\dfrac12$",
+          "errorCalculation": "처음 구간 시간 $\\dfrac12$시간을 그대로 둘째 구간의 최솟값으로 착각한다."
+        },
+        {
+          "index": "④",
+          "value": "$\\dfrac72$",
+          "errorCalculation": "전체 시간 $3$에 처음 $30$분을 더해 $\\dfrac72$이라고 한다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "발문에 모든 이동거리/시간/조건을 텍스트로 완전 제공; 문제 자체에 도형 의존 없음",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "평균속력 유리함수의 증감·끝값·기준속력 또는 목표선 관계를 학생에게 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q21/B3-solution.svg",
+        "gitBlobSha": "f9e2c6846c2aea3ad09938df3743703b7d86554f",
+        "browserRender": "NOT_RUN",
+        "numericModel": {
+          "expression": "y=90+(-15)/(x+0.5)",
+          "base": 90,
+          "k": -15,
+          "t": 0.5,
+          "domain": [
+            0,
+            5
+          ],
+          "criticalPoints": [
+            {
+              "x": 2.5,
+              "y": 85,
+              "exactX": "5/2",
+              "exactY": "85",
+              "screenX": "314",
+              "screenY": "134.031"
+            }
+          ],
+          "xScale": 99.6,
+          "yScale": 5.046948356807512,
+          "xOrigin": 65,
+          "yBottom": 292,
+          "yMin": 53.7,
+          "yMax": 96.3,
+          "actualCurveSampleCount": 281,
+          "monotonicity": "증가",
+          "coordinateModel": "screenX=65+sx*x, screenY=292-sy*(y-yMin)",
+          "sampleEndpointConsistency": true
+        },
+        "authorGeometry": "PYTHON_MODEL_COMPUTED_AND_JAVASCRIPT_280_INTERVAL_SAMPLE_VERIFIED"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "자동차가 처음 $30$분 동안 시속 $60\\text{ km}$로 달리고, 그다음 시속 $90\\text{ km}$로 $x$시간 더 달린다. 전체 평균 속력이 $85\\text{ km/h}$ 이상이 되도록 하는 $x>0$의 최솟값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "거리/시간의 실제 모델과 구하려는 평균속력·시간·매개변수 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "공통수학2 유리함수의 활용 및 공통수학1 방정식/부등식(도함수, 미적분 미사용)",
+        "problemVisualDataComplete": true
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q21-C1",
+      "slot": "C1",
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+      "stem": "자동차가 시속 $100\\text{ km}$로 $12$분 달린 후 시속 $70\\text{ km}$로 $x$시간 더 달린다. $a>0$일 때, $a\\le x\\le a+1$에서 전체 평균 속력의 최댓값과 최솟값의 차가 $3\\text{ km/h}$이다. $a$의 값은?",
+      "choices": [
+        "$1$",
+        "$\\dfrac65$",
+        "$\\dfrac45$",
+        "$\\dfrac95$",
+        "$-\\dfrac{11}{5}$"
+      ],
+      "answer": "③",
+      "answerValue": "$\\dfrac45$",
+      "solution": "평균속력은 $y=\\dfrac{20+70x}{x+\\dfrac15}=70+\\dfrac6{x+\\dfrac15}$이다.\n$a>0$에서 $y$는 감소하므로 최댓값은 $x=a$, 최솟값은 $x=a+1$일 때 얻는다.\n두 값의 차는\n$\\dfrac6{a+\\dfrac15}-\\dfrac6{a+\\dfrac65}=\\dfrac6{\\left(a+\\dfrac15\\right)\\left(a+\\dfrac65\\right)}=3$이다.\n$t=a+\\dfrac15$라 놓으면 $t(t+1)=2$이고\n$t^2+t-2=(t-1)(t+2)=0$이다.\n$t>0$이므로 $t=1$, 따라서 $a=1-\\dfrac15=\\dfrac45$이다.\n따라서 정답은 ③이다.",
+      "mode": "L3_EXPANSION",
+      "level": "상",
+      "difficultyBucket": 4,
+      "learningLevel": "상",
+      "assessmentBucket": 4,
+      "learningLevelReason": "변수로 주어진 양끝값의 차를 방정식으로 환원한 뒤 양수 조건으로 해 선별",
+      "assessmentBucketReason": "범위 양끝/분모 차·이차방정식 인수분해·양수성 세 가지 결정 단계",
+      "primaryRPM": {
+        "id": "H1-RPM-264",
+        "l1": "함수",
+        "l2": "유리함수",
+        "l3": "유리함수의 활용",
+        "canonicalL4": "유리함수의 최대·최소",
+        "status": "RPM_ONLY_CANONICAL_EXISTING"
+      },
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ptTplBindingStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+      "ptTplEvidenceDebt": "원본과 같은 결정적 유리함수 활용 및 극값·경계 판정은 H1-RPM-264에 등록되어 있으나 해당 RPM row에 ACTIVE PT/TPL binding 없음. H1-RPM-263 PT_FUNCTION_RECOVERY / TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT는 주어진 평균속력 모델과 다른 풀이; 부적절한 키 재사용 금지.",
+      "crossConceptKeys": [
+        "CC_FUNCTION_MONOTONICITY",
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_FUNCTION_MONOTONICITY": "분모의 양수성과 크기 변화를 이용해 단조성·끝값 또는 목표 역산을 결정",
+        "CC_QUADRATIC_EQUATION": "끝값 차를 매개변수에 대한 이차방정식으로 변환"
+      },
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$1$",
+          "errorCalculation": "$t=a+\\dfrac15=1$을 얻은 뒤 $a$가 아니라 $t=1$을 답으로 제출한다."
+        },
+        {
+          "index": "②",
+          "value": "$\\dfrac65$",
+          "errorCalculation": "$t=1$에서 첫 구간 시간을 빼야 하지만 더해 $a=1+\\dfrac15=\\dfrac65$라고 한다."
+        },
+        {
+          "index": "④",
+          "value": "$\\dfrac95$",
+          "errorCalculation": "$t(t+1)=2$에서 곱셈 구조를 빠뜨리고 $t=2$로 놓아 $a=2-\\dfrac15=\\dfrac95$라고 한다."
+        },
+        {
+          "index": "⑤",
+          "value": "$-\\dfrac{11}{5}$",
+          "errorCalculation": "$(t-1)(t+2)=0$의 음의 해 $t=-2$를 $t>0$ 조건을 무시하고 선택하여 $a=-2-\\dfrac15=-\\dfrac{11}{5}$를 얻는다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "발문에 모든 이동거리/시간/조건을 텍스트로 완전 제공; 문제 자체에 도형 의존 없음",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "평균속력 유리함수의 증감·끝값·기준속력 또는 목표선 관계를 학생에게 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q21/C1-solution.svg",
+        "gitBlobSha": "28eba3d741dc13eaf01f27e812d1cf0bc7670c12",
+        "browserRender": "NOT_RUN",
+        "numericModel": {
+          "expression": "y=70+(6)/(x+0.2)",
+          "base": 70,
+          "k": 6,
+          "t": 0.2,
+          "domain": [
+            0,
+            3
+          ],
+          "criticalPoints": [
+            {
+              "x": 0.8,
+              "y": 76,
+              "exactX": "4/5",
+              "exactY": "76",
+              "screenX": "197.8",
+              "screenY": "229.923"
+            },
+            {
+              "x": 1.8,
+              "y": 73,
+              "exactX": "9/5",
+              "exactY": "73",
+              "screenX": "363.8",
+              "screenY": "245.063"
+            }
+          ],
+          "xScale": 166,
+          "yScale": 5.046948356807512,
+          "xOrigin": 65,
+          "yBottom": 292,
+          "yMin": 63.7,
+          "yMax": 106.3,
+          "actualCurveSampleCount": 281,
+          "monotonicity": "감소",
+          "coordinateModel": "screenX=65+sx*x, screenY=292-sy*(y-yMin)",
+          "sampleEndpointConsistency": true
+        },
+        "authorGeometry": "PYTHON_MODEL_COMPUTED_AND_JAVASCRIPT_280_INTERVAL_SAMPLE_VERIFIED"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "자동차가 시속 $100\\text{ km}$로 $12$분 달린 후 시속 $70\\text{ km}$로 $x$시간 더 달린다. $a>0$일 때, $a\\le x\\le a+1$에서 전체 평균 속력의 최댓값과 최솟값의 차가 $3\\text{ km/h}$이다. $a$의 값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "거리/시간의 실제 모델과 구하려는 평균속력·시간·매개변수 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "공통수학2 유리함수의 활용 및 공통수학1 방정식/부등식(도함수, 미적분 미사용)",
+        "problemVisualDataComplete": true
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q21-C2",
+      "slot": "C2",
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+      "stem": "자동차가 시속 $100\\text{ km}$로 $15$분 달린 뒤 지점 $B$에서 $15$분 정차하고, 다시 시속 $60\\text{ km}$로 $x$시간 달린다. 정차 시간을 포함한 전체 평균 속력이 $56\\text{ km/h}$ 이상이 되게 하는 $x>0$의 최솟값은?",
+      "choices": [
+        "$\\dfrac54$",
+        "$\\dfrac14$",
+        "$\\dfrac12$",
+        "$\\dfrac34$",
+        "$\\dfrac74$"
+      ],
+      "answer": "④",
+      "answerValue": "$\\dfrac34$",
+      "solution": "첫 구간의 거리는 $100\\cdot\\dfrac14=25$ km이고, 정차하는 동안 이동 거리는 $0$이다.\n전체 시간은 주행 $\\dfrac14+x$시간에 정차 $\\dfrac14$시간을 더한 $x+\\dfrac12$시간이다.\n따라서 평균속력은\n$y=\\dfrac{25+60x}{x+\\dfrac12}=60-\\dfrac5{x+\\dfrac12}$이다.\n$x$가 커지면 빼는 양이 줄어 $y$는 증가한다.\n$y\\ge56$에서 $\\dfrac5{x+\\dfrac12}\\le4$이므로\n$x+\\dfrac12\\ge\\dfrac54$, 즉 $x\\ge\\dfrac34$이다.\n따라서 최솟값은 $\\dfrac34$시간이다.\n따라서 정답은 ④이다.",
+      "mode": "L3_EXPANSION",
+      "level": "상",
+      "difficultyBucket": 4,
+      "learningLevel": "상",
+      "assessmentBucket": 4,
+      "learningLevelReason": "주행거리와 정차시간의 서로 다른 역할을 반영하고 증가형 유리부등식을 해결",
+      "assessmentBucketReason": "정차 구간 거리 0/시간 포함 판단과 조건부 역산이 필요",
+      "primaryRPM": {
+        "id": "H1-RPM-264",
+        "l1": "함수",
+        "l2": "유리함수",
+        "l3": "유리함수의 활용",
+        "canonicalL4": "유리함수의 최대·최소",
+        "status": "RPM_ONLY_CANONICAL_EXISTING"
+      },
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ptTplBindingStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+      "ptTplEvidenceDebt": "원본과 같은 결정적 유리함수 활용 및 극값·경계 판정은 H1-RPM-264에 등록되어 있으나 해당 RPM row에 ACTIVE PT/TPL binding 없음. H1-RPM-263 PT_FUNCTION_RECOVERY / TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT는 주어진 평균속력 모델과 다른 풀이; 부적절한 키 재사용 금지.",
+      "crossConceptKeys": [
+        "CC_FUNCTION_MONOTONICITY",
+        "CC_INEQUALITY_RATIONAL"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_FUNCTION_MONOTONICITY": "분모의 양수성과 크기 변화를 이용해 단조성·끝값 또는 목표 역산을 결정",
+        "CC_INEQUALITY_RATIONAL": "x>0에서 분모 양수와 유리부등식의 방향을 확정"
+      },
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CONDITION_FILTER",
+      "wrongRoutes": [
+        {
+          "index": "①",
+          "value": "$\\dfrac54$",
+          "errorCalculation": "$\\dfrac54$는 정차시간까지 포함된 전체 시간 하한인데 이를 그대로 두 번째 주행시간 $x$로 답한다."
+        },
+        {
+          "index": "②",
+          "value": "$\\dfrac14$",
+          "errorCalculation": "전체 시간 $\\dfrac54$에서 첫 주행 $\\dfrac14$와 정차 $\\dfrac14$을 두 번씩 빼 $\\dfrac54-1=\\dfrac14$로 계산한다."
+        },
+        {
+          "index": "③",
+          "value": "$\\dfrac12$",
+          "errorCalculation": "처음 주행과 정차의 합 $\\dfrac12$을 주행시간 $x$의 최소값으로 착각한다."
+        },
+        {
+          "index": "⑤",
+          "value": "$\\dfrac74$",
+          "errorCalculation": "정차를 포함한 첫 $30$분을 더해 $\\dfrac54+\\dfrac12=\\dfrac74$이라고 한다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "발문에 모든 이동거리/시간/조건을 텍스트로 완전 제공; 문제 자체에 도형 의존 없음",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "평균속력 유리함수의 증감·끝값·기준속력 또는 목표선 관계를 학생에게 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q21/C2-solution.svg",
+        "gitBlobSha": "0a0bd404830b4732319e68f39c996090e2583182",
+        "browserRender": "NOT_RUN",
+        "numericModel": {
+          "expression": "y=60+(-5)/(x+0.5)",
+          "base": 60,
+          "k": -5,
+          "t": 0.5,
+          "domain": [
+            0,
+            2.5
+          ],
+          "criticalPoints": [
+            {
+              "x": 0.75,
+              "y": 56,
+              "exactX": "3/4",
+              "exactY": "56",
+              "screenX": "214.4",
+              "screenY": "169.359"
+            }
+          ],
+          "xScale": 199.2,
+          "yScale": 15.140845070422532,
+          "xOrigin": 65,
+          "yBottom": 292,
+          "yMin": 47.9,
+          "yMax": 62.1,
+          "actualCurveSampleCount": 281,
+          "monotonicity": "증가",
+          "coordinateModel": "screenX=65+sx*x, screenY=292-sy*(y-yMin)",
+          "sampleEndpointConsistency": true
+        },
+        "authorGeometry": "PYTHON_MODEL_COMPUTED_AND_JAVASCRIPT_280_INTERVAL_SAMPLE_VERIFIED"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "자동차가 시속 $100\\text{ km}$로 $15$분 달린 뒤 지점 $B$에서 $15$분 정차하고, 다시 시속 $60\\text{ km}$로 $x$시간 달린다. 정차 시간을 포함한 전체 평균 속력이 $56\\text{ km/h}$ 이상이 되게 하는 $x>0$의 최솟값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "거리/시간의 실제 모델과 구하려는 평균속력·시간·매개변수 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "공통수학2 유리함수의 활용 및 공통수학1 방정식/부등식(도함수, 미적분 미사용)",
+        "problemVisualDataComplete": true
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    },
+    {
+      "uid": "ALITE-PALMA25-2FINAL-Q21-C3",
+      "slot": "C3",
+      "sourceQid": 21,
+      "sourceUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+      "stem": "자동차가 첫 구간을 시속 $v\\text{ km}$로 $t$시간 달리고, 둘째 구간을 시속 $60\\text{ km}$로 $x$시간 달린다. $v>60$, $t>0$이고 $\\dfrac34\\le x\\le\\dfrac74$일 때, 전체 평균 속력의 최댓값은 $70\\text{ km/h}$, 최솟값은 $65\\text{ km/h}$이다. $v$의 값은?",
+      "choices": [
+        "$100$",
+        "$70$",
+        "$40$",
+        "$90$",
+        "$120$"
+      ],
+      "answer": "①",
+      "answerValue": "$100$",
+      "solution": "전체 평균속력은 $y=\\dfrac{vt+60x}{t+x}=60+\\dfrac{(v-60)t}{t+x}$이다.\n$v>60$, $t>0$이므로 분자가 양수이고 $x$가 증가하면 $y$는 감소한다.\n$K=(v-60)t>0$이라 놓자. 왼쪽 끝 $x=\\dfrac34$에서 최댓값 $70$, 오른쪽 끝 $x=\\dfrac74$에서 최솟값 $65$이므로\n$\\dfrac K{t+\\dfrac34}=10$, $\\dfrac K{t+\\dfrac74}=5$이다.\n따라서 $K=10t+\\dfrac{15}{2}=5t+\\dfrac{35}{4}$이고,\n$5t=\\dfrac54$, 즉 $t=\\dfrac14$이다.\n첫 식에 대입하면 $K=10$이므로\n$(v-60)\\cdot\\dfrac14=10$, $v-60=40$, $v=100$이다.\n확인하면 $x=\\dfrac74$일 때 $y=60+\\dfrac{10}{2}=65$로 맞는다.\n따라서 정답은 ①이다.",
+      "mode": "L3_EXPANSION",
+      "level": "상",
+      "difficultyBucket": 5,
+      "learningLevel": "상",
+      "assessmentBucket": 5,
+      "learningLevelReason": "두 끝점 평균속력으로 미지 시간과 미지 속력을 연립 역산",
+      "assessmentBucketReason": "유리함수 감소·미지 매개변수 두 개·경계 유일성·거리/시간 단위·역산 확인까지 다섯 판단",
+      "primaryRPM": {
+        "id": "H1-RPM-264",
+        "l1": "함수",
+        "l2": "유리함수",
+        "l3": "유리함수의 활용",
+        "canonicalL4": "유리함수의 최대·최소",
+        "status": "RPM_ONLY_CANONICAL_EXISTING"
+      },
+      "problemTypeKey": null,
+      "templateKey": null,
+      "ptTplBindingStatus": "RPM_ONLY_NO_ACTIVE_MAPPING",
+      "ptTplEvidenceDebt": "원본과 같은 결정적 유리함수 활용 및 극값·경계 판정은 H1-RPM-264에 등록되어 있으나 해당 RPM row에 ACTIVE PT/TPL binding 없음. H1-RPM-263 PT_FUNCTION_RECOVERY / TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT는 주어진 평균속력 모델과 다른 풀이; 부적절한 키 재사용 금지.",
+      "crossConceptKeys": [
+        "CC_FUNCTION_MONOTONICITY",
+        "CC_SIMULTANEOUS_EQUATION"
+      ],
+      "perKeyDecisiveStep": {
+        "CC_FUNCTION_MONOTONICITY": "분모의 양수성과 크기 변화를 이용해 단조성·끝값 또는 목표 역산을 결정",
+        "CC_SIMULTANEOUS_EQUATION": "두 끝점의 평균속력 조건에서 t와 K를 두 식으로 결정"
+      },
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "wrongRoutes": [
+        {
+          "index": "②",
+          "value": "$70$",
+          "errorCalculation": "전체 구간의 최대 평균속력 $70$을 첫 구간 속력 $v$와 같은 것으로 잘못 본다."
+        },
+        {
+          "index": "③",
+          "value": "$40$",
+          "errorCalculation": "$(v-60)t=10$, $t=\\dfrac14$에서 $v-60=40$만 구하고 기준속력 $60$을 더하지 않는다."
+        },
+        {
+          "index": "④",
+          "value": "$90$",
+          "errorCalculation": "정확한 $K=10$을 구한 뒤 첫 구간 시간 $t=\\dfrac14$을 잘못 $\\dfrac13$으로 적용하면 $v=60+\\dfrac{10}{1/3}=90$이다."
+        },
+        {
+          "index": "⑤",
+          "value": "$120$",
+          "errorCalculation": "정확한 $K=10$을 구한 뒤 첫 구간 시간 $t=\\dfrac14$을 잘못 $\\dfrac16$으로 적용하면 $v=60+\\dfrac{10}{1/6}=120$이다."
+        }
+      ],
+      "problemVisual": {
+        "necessity": "EXEMPT",
+        "reason": "발문에 모든 이동거리/시간/조건을 텍스트로 완전 제공; 문제 자체에 도형 의존 없음",
+        "svgPath": null
+      },
+      "solutionVisual": {
+        "necessity": "REQUIRED",
+        "reason": "평균속력 유리함수의 증감·끝값·기준속력 또는 목표선 관계를 학생에게 시각화",
+        "svgPath": "alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_팔마고_2학기_기말_고1/assets/q21/C3-solution.svg",
+        "gitBlobSha": "61804778faa448400598c91c7dbdac57d4e83c0a",
+        "browserRender": "NOT_RUN",
+        "numericModel": {
+          "expression": "y=60+(10)/(x+0.25)",
+          "base": 60,
+          "k": 10,
+          "t": 0.25,
+          "domain": [
+            0,
+            3
+          ],
+          "criticalPoints": [
+            {
+              "x": 0.75,
+              "y": 70,
+              "exactX": "3/4",
+              "exactY": "70",
+              "screenX": "189.5",
+              "screenY": "222.352"
+            },
+            {
+              "x": 1.75,
+              "y": 65,
+              "exactX": "7/4",
+              "exactY": "65",
+              "screenX": "355.5",
+              "screenY": "241.278"
+            }
+          ],
+          "xScale": 166,
+          "yScale": 3.7852112676056335,
+          "xOrigin": 65,
+          "yBottom": 292,
+          "yMin": 51.6,
+          "yMax": 108.4,
+          "actualCurveSampleCount": 281,
+          "monotonicity": "감소",
+          "coordinateModel": "screenX=65+sx*x, screenY=292-sy*(y-yMin)",
+          "sampleEndpointConsistency": true
+        },
+        "authorGeometry": "PYTHON_MODEL_COMPUTED_AND_JAVASCRIPT_280_INTERVAL_SAMPLE_VERIFIED"
+      },
+      "reverseStem": {
+        "status": "KEEP",
+        "reconstructedQuestion": "자동차가 첫 구간을 시속 $v\\text{ km}$로 $t$시간 달리고, 둘째 구간을 시속 $60\\text{ km}$로 $x$시간 달린다. $v>60$, $t>0$이고 $\\dfrac34\\le x\\le\\dfrac74$일 때, 전체 평균 속력의 최댓값은 $70\\text{ km/h}$, 최솟값은 $65\\text{ km/h}$이다. $v$의 값은?",
+        "primaryNecessary": true,
+        "questionNaturalness": "거리/시간의 실제 모델과 구하려는 평균속력·시간·매개변수 대상이 명확함",
+        "unnecessaryAnswerNormalizer": false,
+        "wrongRouteDerivationReproduced": "4/4",
+        "answerManipulation": false
+      },
+      "authorMath": {
+        "status": "PASS_AUTHOR",
+        "answerDerivedFromFinalStem": true,
+        "fiveChoicesChecked": 5,
+        "distractorsComputed": 4,
+        "education": "공통수학2 유리함수의 활용 및 공통수학1 방정식/부등식(도함수, 미적분 미사용)",
+        "problemVisualDataComplete": true
+      },
+      "independentReview": "NOT_RUN",
+      "browserRender": "NOT_RUN"
+    }
+  ],
+  "experienceCoverage": [
+    {
+      "group": "A",
+      "experience": "거리합/시간합을 유리함수로 모델링, 구간 끝값/차"
+    },
+    {
+      "group": "B",
+      "experience": "목표 평균속력의 역산 및 속력 경계 부등식"
+    },
+    {
+      "group": "C",
+      "experience": "미지 구간 역산·정차시간 포함·두 미지수 동시 결정"
+    }
+  ]
+}

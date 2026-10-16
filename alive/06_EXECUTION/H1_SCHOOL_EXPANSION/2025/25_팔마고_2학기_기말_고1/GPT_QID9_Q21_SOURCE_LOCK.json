@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q21_SOURCE_LOCK_v1",
+  "createdDate": "2026-10-16",
+  "branch": "work/alive-25-palma-h1-2final-qid9",
+  "baseBranchHead": "0e6c583e32f15b543b01ba19165641c7db46eb72",
+  "mainObservedHead": "a31224ec620c1d21a7fbed5b4a1660470fea496d",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceGitBlobSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceFileRawSha256": "ec27789038f516137fde02bbf473333051c388c0cb5cd256553327438a2e5f91",
+  "sourceRawShaSource": "q20 verified raw SHA256 of identical immutable blob 0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 21,
+  "sourceOriginalId": 21,
+  "sourceOrdinal": 21,
+  "examTitle": "25_팔마고_2학기_기말_고1_기출",
+  "sourceUid": "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
+  "sourceUidProof": {
+    "identityMapPath": "archive/data/question_identity_map.json",
+    "identityMapGitBlobSha": "a57b1be7171b8995c3229c5dc921c1b8b693482a",
+    "sourceArchiveFile": "original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+    "sourceOrdinal": 21,
+    "sourceQuestionNo": "21",
+    "mapRecordSourceFingerprint": "976f4b1bc561f037237ea8b99b1c8f59fc4236fefbef08cd3b9adade5d8f2854",
+    "exactMapRecordRead": true,
+    "algorithm": "qid_v1_ + sha256(NFC(sourceArchiveFile+'#'+sourceOrdinal))",
+    "identityParity": "PASS"
+  },
+  "sourceQuestion": {
+    "content": "[서술형 2] 자동차가 $A$에서 지점 $B$까지 평균 $100\\text{ km/h}$의 속력으로 $12$분 동안 달리고, 지점 $B$에서 $C$까지 $x$시간 동안 평균 $70\\text{ km/h}$의 속력으로 달렸다고 한다. 지점 $A$에서 $C$까지의 평균 속력을 $y\\text{ km/h}$라고 할 때, 다음 물음을 풀이 과정과 함께 서술하시오. (단, $x\\gt 0$) [총 5점]<br><br>(1) $x$와 $y$ 사이의 관계식을 구하시오. [3점]<br>(2) $0.8\\le x\\le5.8$일 때, 평균 속력 $y$의 최댓값과 최솟값을 구하시오. [2점]",
+    "choices": [],
+    "answer": "(1) $y=\\dfrac{70x+20}{x+\\dfrac15}$ (2) 최댓값 $76$, 최솟값 $71$",
+    "solution": "첫 구간의 시간은\n$12$분 $=\\dfrac15$시간이다.\n따라서 첫 구간의 이동 거리는\n$100\\cdot\\dfrac15=20\\text{ km}$이다.\n\n둘째 구간의 이동 거리는\n$70x\\text{ km}$이다.\n\n(1) 전체 거리는 $20+70x$, 전체 시간은 $x+\\dfrac15$이므로\n$y=\\dfrac{70x+20}{x+\\dfrac15}$이다.\n이를 정리하면\n$y=70+\\dfrac6{x+\\dfrac15}$이다.\n\n(2) $x>0$에서 $x$가 증가하면\n$\\dfrac6{x+\\dfrac15}$\n은 감소한다.\n따라서 $0.8\\le x\\le5.8$에서 최댓값은 $x=0.8$일 때\n$y=70+\\dfrac61=76$이다.\n최솟값은 $x=5.8$일 때\n$y=70+\\dfrac66=71$이다.\n따라서 관계식은\n$y=\\dfrac{70x+20}{x+\\dfrac15}$이고,\n최댓값은 $76$, 최솟값은 $71$이다.",
+    "questionType": "서술형"
+  },
+  "sourceImage": {
+    "problemImagePresent": false,
+    "problemVisualDependency": "NONE_QUESTION_STEM_COMPLETE",
+    "existingSolutionImage": null
+  },
+  "sourceIndependentDerivation": {
+    "solveBeforeSourceAnswerComparison": true,
+    "method": "12min=1/5h, AB distance=20km; BC distance=70x; y=(20+70x)/(x+1/5)=70+6/(x+1/5), strictly decreases for x>0. At x=4/5 gives 76, at x=29/5 gives 71.",
+    "computedPart1": "y=(70x+20)/(x+1/5)",
+    "computedPart2": {
+      "maximum": 76,
+      "minimum": 71
+    },
+    "sourceAnswerMatch": true,
+    "sourceSolutionMatch": true,
+    "independentFormalReview": "NOT_RUN",
+    "authorMathCheck": "PASS"
+  },
+  "duplicateScan": {
+    "branchGeneratedMetaUidCountBefore": 180,
+    "existingGeneratedQ21": 0,
+    "existingQ21ArtifactPaths": 0,
+    "duplicateGeneratedUids": 0
+  },
+  "SOURCE_LOCK_STATUS": "PASS",
+  "sourceLockStatus": "PASS"
+}

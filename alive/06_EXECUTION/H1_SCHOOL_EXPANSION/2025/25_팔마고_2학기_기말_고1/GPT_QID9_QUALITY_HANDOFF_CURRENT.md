@@ -1,3 +1,41 @@
+# 2025 팔마고 고1 2기말 — QID9 QUALITY HANDOFF CURRENT (q21 갱신: 2026-10-16)
+
+브랜치 `work/alive-25-palma-h1-2final-qid9`, q01~q21 189/207 AUTHOR 후보. **이번 추가 범위는 q21 신규 9 UID만**이며 q01~q20, 원본 JS, 기존 유사문제는 불변입니다. 다음은 q22.
+
+## q21 SOURCE / GOLDEN / META
+- SOURCE LOCK `PASS`, source original Blob `0d12b75e824ab47f08fc3b5a6180be595f882c6e`, sourceUid `qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90`. 원본 자동차 평균속력 y=70+6/(x+1/5), q21 답 최대76·최소71 직접 확인.
+- Golden Preflight `PASS` — q18/q19/q20 A1·B3·C3 발문·해설 실제 판독과 Negative fixture 먼저 확인하여 Blueprint/문항 제작 이전 실행. q20의 Golden timing 위반 반복 없음.
+- Primary **H1-RPM-264**, L3 유리함수의 활용·L4 유리함수의 최대·최소. PT/TPL은 `RPM_ONLY_NO_ACTIVE_MAPPING` 부채로 분리; 없는 L3로 오인하거나 부적합 PT를 배정하지 않음. CrossConcept 기존 ACTIVE 4개 재사용, Generated 신규 0.
+- 신규 q21 문제 SVG 0(EXEMPT: 모든 정보가 발문 내 존재), 해설 SVG **9**(수치 계산·Git Blob 결속). Python 수치/저자 수식·그래프 관계 확인. 실제 브라우저·독립 SVG 검수 `NOT_RUN`.
+
+## q21 정답과 누적 세로 분포
+| | 1 | 2 | 3 |
+|---|---|---|---|
+| A | ⑤ | ① | ④ |
+| B | ② | ② | ⑤ |
+| C | ③ | ④ | ① |
+
+가로 ①2 ②2 ③1 ④2 ⑤2 = PASS. q01 복수정답 제외, q02~q20 19개 Draft에서 세로 직접 재계산. 전수 탐색 113,400개, 이전 q20 정답배열 비반복, 최적점수 **[37,6,832]**, 기존 **[39,6,777]** 대비 9슬롯 총 편차 **39→37**, 최악 **6→6**. 동률 최적 5개, 위 배열 선택. Node official checker `PASS_STATIC_EVIDENCE_ONLY`, 독립 수학 PASS는 아님.
+
+| 슬롯 | ① | ② | ③ | ④ | ⑤ |
+|---|---:|---:|---:|---:|---:|
+| A1 | 3 | 3 | 7 | 5 | 2 |
+| A2 | 3 | 5 | 6 | 5 | 1 |
+| A3 | 3 | 3 | 6 | 5 | 3 |
+| B1 | 3 | 4 | 5 | 6 | 2 |
+| B2 | 2 | 3 | 6 | 4 | 5 |
+| B3 | 4 | 3 | 5 | 5 | 3 |
+| C1 | 2 | 3 | 5 | 8 | 2 |
+| C2 | 3 | 4 | 6 | 4 | 3 |
+| C3 | 3 | 3 | 7 | 5 | 2 |
+
+## q21 마감 범위
+9 신규 UID/45 보기/36 오답 유도경로/9 학생용 재현 해설/9 수준·난이도·Meta/Reverse Stem 저자 확인. `GPT_QID9_Q21_{SOURCE_LOCK,PREFLIGHT,CREATE_DRAFT,AUTHOR_BLUEPRINT,AUTHOR_RECEIPT,VISUAL_NUMERIC_EVIDENCE}.json` 및 답안 Distribution 3 evidence/해설 SVG 9개, 누적 Registry/Progress/Next Chat 갱신. 독립검수·브라우저·Consumer·학생 등록·main 병합은 각 `NOT_RUN`. 다음 q22 SOURCE LOCK부터 재시작.
+
+---
+
+## 이력: 이전 q20까지의 품질 인계 (원문 보존)
+
 # 2025 팔마고 고1 2기말 — QID9 QUALITY HANDOFF CURRENT (q20 갱신: 2026-10-16)
 
 **현 작업 브랜치:** `work/alive-25-palma-h1-2final-qid9` · **q01~q20 AUTHOR 후보 180/207** · 신규 q20 A1~C3 9개 · **다음 q21**. q01~q19 본문/원본/유사문제 변경 없음.
