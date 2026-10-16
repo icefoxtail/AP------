@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q22_PREFLIGHT_v1",
+  "date": "2026-10-16",
+  "readOrder": [
+    "Notion 필독 라우터",
+    "Notion Archive 시작/생명주기",
+    "Notion GPT 5단계",
+    "Notion QID9 CURRENT",
+    "Git AGENTS/Meta/교육과정/해설/Visual",
+    "Golden q18/q19/q20 actual A1,B3,C3",
+    "Negative 복성고",
+    "q22 SOURCE LOCK",
+    "RPM 253/254/255",
+    "Blueprint→제작"
+  ],
+  "notionPageIds": [
+    "3e10e68b-d69f-81f1-9397-e7cd1c8d3cfd",
+    "3e10e68b-d69f-8189-8cc8-fb85cb4b1398",
+    "3e10e68b-d69f-81fd-b161-ffc3f6227b6e",
+    "3f30e68b-d69f-818e-89b3-db9b46ec842d",
+    "3fa0e68b-d69f-81c4-abda-ffdcd1a969a1"
+  ],
+  "golden": {
+    "samples": [
+      {
+        "qid": 18,
+        "blob": "362666984f14122d1c790c2ac86c8d6f2a9e945a"
+      },
+      {
+        "qid": 19,
+        "blob": "23dd32c06fc9fce2aab50f03d4d3bbd3bf4c666c"
+      },
+      {
+        "qid": 20,
+        "blob": "f99fcfcf8b4452e787dc32745f1aa9d5de14d803"
+      }
+    ],
+    "slotsRead": [
+      "A1",
+      "B3",
+      "C3"
+    ],
+    "observations": "학생 재현 수식 연속성·조건 누락·답과의 결속, 시각·Meta false PASS 방지",
+    "negative": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+    "negativeBlob": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+    "status": "PASS_AUTHOR_PREFLIGHT",
+    "actualReadRepresentatives": [
+      {
+        "qid": 18,
+        "blob": "362666984f14122d1c790c2ac86c8d6f2a9e945a",
+        "items": [
+          {
+            "slot": "A1",
+            "solutionExcerpt": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가",
+            "qualityObservation": "단계별 변형과 계산과정 자연스러운 이어쓰기"
+          },
+          {
+            "slot": "B3",
+            "solutionExcerpt": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가",
+            "qualityObservation": "단계별 변형과 계산과정 자연스러운 이어쓰기"
+          },
+          {
+            "slot": "C3",
+            "solutionExcerpt": "두 그래프는 $(x,y)$를 $(x+h,y-b)$로 평행이동하면 겹친다. 곡선으로 생기는 대응 부분의 넓이가 서로 같으므로, 음영 부분의 넓이 $S$는 평행사변형 $PABQ$와 삼각형 $OPQ$의 넓이를 더해 구할 수 있다.\n$P(0,b)$, $Q(h,0)$, $A(u^2,b+u)$, $B(u^2+h,u)$라 놓는다. 가",
+            "qualityObservation": "단계별 변형과 계산과정 자연스러운 이어쓰기"
+          }
+        ]
+      },
+      {
+        "qid": 19,
+        "blob": "23dd32c06fc9fce2aab50f03d4d3bbd3bf4c666c",
+        "items": [
+          {
+            "slot": "A1",
+            "solutionExcerpt": "$f(y)=0$을 먼저 풀면 $(y-3)(y+1)=0$이므로 $y=-1$ 또는 $y=3$이다.\n따라서 $f(x)=-1$ 또는 $f(x)=3$이다.\n$f(x)=(x-1)^2-4$이므로\n$f(x)=-1$에서 $(x-1)^2=3$, 즉 $x=1\\pm\\sqrt3$이다.\n$f(x)=3$에서 $(x-1)^2=7$, 즉 $x=1\\pm",
+            "qualityObservation": "합성/역대입 뒤 근거 식 분리"
+          },
+          {
+            "slot": "B3",
+            "solutionExcerpt": "$f(y)=y(y-4)=0$이므로 $y=0$ 또는 $y=4$이다.\n$f(x)=0$이면 $x=0,4$이다.\n$f(x)=4$이면 $x^2-4x-4=0$이므로 $x=2\\pm2\\sqrt2$이다.\n$\\sqrt2>1$이므로 $2-2\\sqrt2<0$이고, $x=0$은 양수가 아니다.\n따라서 양수인 근은 $4$, $2+2\\sqrt2$이",
+            "qualityObservation": "합성/역대입 뒤 근거 식 분리"
+          },
+          {
+            "slot": "C3",
+            "solutionExcerpt": "$f(y)=0$이면 $(y-4)^2-4=0$에서 $y=2$ 또는 $y=6$이다.\n$f(x)=2$이면 $(x-4)^2=6$이므로 $x=4\\pm\\sqrt6$이다.\n$f(x)=6$이면 $(x-4)^2=10$이므로 $x=4\\pm\\sqrt{10}$이다.\n네 실근은 서로 다르며, 각 근쌍의 곱은\n$(4-\\sqrt6)(4+\\sqrt6",
+            "qualityObservation": "합성/역대입 뒤 근거 식 분리"
+          }
+        ]
+      },
+      {
+        "qid": 20,
+        "blob": "f99fcfcf8b4452e787dc32745f1aa9d5de14d803",
+        "items": [
+          {
+            "slot": "A1",
+            "solutionExcerpt": "$f(x)=-(x-3)^2+15$이므로 그래프의 꼭짓점의 $x$좌표는 $3$이다.\n$X=(-\\infty,k]$에서 함수가 일대일이 되려면 $k\\le3$이어야 한다.\n이때 $f$는 $X$에서 증가하고, 치역은 $(-\\infty,f(k)]$이다.\n공역이 $X=(-\\infty,k]$이므로 일대일대응이 되려면 $f(k)=k$이어",
+            "qualityObservation": "조건과 최종 질문이 결론에 귀속되는 풀이"
+          },
+          {
+            "slot": "B3",
+            "solutionExcerpt": "$f(x)=-(x-2)^2+5$는 $x\\le2$에서 증가한다.\n따라서 정의역 $(-\\infty,k]$에서 일대일이 되려면 $k\\le2$이어야 한다.\n이때 치역은 $(-\\infty,f(k)]$이다.\n공역 $Y=(-\\infty,1]$에 빈틈없이 대응하려면 $f(k)=1$이어야 한다.\n$-(k-2)^2+5=1$에서\n$(k-2)",
+            "qualityObservation": "조건과 최종 질문이 결론에 귀속되는 풀이"
+          },
+          {
+            "slot": "C3",
+            "solutionExcerpt": "왼쪽 이차함수 $-(x-4)^2+6$이 $x<k$에서 증가하려면 $k\\le4$이어야 한다.\n오른쪽 이차함수 $(x-1)^2+1$이 $x\\ge k$에서 증가하려면 $k\\ge1$이어야 한다.\n따라서 먼저 $1\\le k\\le4$이다.\n이때 왼쪽 치역은 $(-\\infty,-(k-4)^2+6)$이고,\n오른쪽 치역은 $[(k-1)^",
+            "qualityObservation": "조건과 최종 질문이 결론에 귀속되는 풀이"
+          }
+        ]
+      }
+    ],
+    "readBeforeBlueprint": true
+  },
+  "gitRuleShas": {
+    "AGENTS.md": "740ef3b7c263837aceddd8d15d0391fb9aabcca6",
+    "RPM_HIGH1": "904b3768b69b300607e52217cad05bf71e34f221",
+    "META_REQUIRED": "86687f72077c81500e1cd2a62e01bd0ade92b963",
+    "DIFFICULTY_V1_3": "51a6b4ae3164be845ba9d90fd49d88378fc32fbe",
+    "GOLDEN": "693c7ed76dbd643dedd204bbcec9f707bbc2e2f2",
+    "CONCEPT_REGISTRY": "0c6072aacb5c23cda2b9519e03eb9ddf770fa753",
+    "CONDITION_REGISTRY": "9c55000cb6f878a7f657ad5d496a6a67cb6aecfb"
+  },
+  "sourceLock": "PASS",
+  "protected": "q01~q21 and original; q20/q21 type debt tracked"
+}
