@@ -618,13 +618,16 @@
         const frameToken = state.frameGeneration;
         setInlinePreviewState('loading');
         tab.click();
-        if (exam) waitForInlinePreview(exam, examToken, frameToken);
+        if (exam) waitForInlinePreview(exam, examToken, frameToken).then(() => {
+          if (examToken !== state.examGeneration || state.selectedQuestion) return;
+          try { ui.frame.contentWindow?.scrollTo(0, state.examReturnScrollY); }
+          catch (_) { /* An in-flight iframe remains on the original source URL. */ }
+        });
       }
-      const returnY = state.examReturnScrollY;
       const examToken = state.examGeneration;
       requestAnimationFrame(() => {
         if (examToken !== state.examGeneration || state.selectedQuestion) return;
-        try { ui.frame.contentWindow?.scrollTo(0, returnY); }
+        try { ui.frame.contentWindow?.scrollTo(0, state.examReturnScrollY); }
         catch (_) { /* An in-flight iframe remains on the original source URL. */ }
       });
     } catch (_) { /* An in-flight iframe remains on the original source URL. */ }
