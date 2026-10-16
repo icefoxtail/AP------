@@ -13,6 +13,34 @@ function viewClick(view) {
   return { closest: selector => selector === 'button' ? button : null };
 }
 
+test('Recent keeps fallback target classes selectable and preserves their server class filter', async () => {
+  const requests = [];
+  const h = workspaceHarness(async url => {
+    requests.push(new URL(String(url)));
+    return okJson({ assignments: [] });
+  });
+  h.workspace.setClasses([
+    { id: 'label', name: '졸업반', grade: '', grade_label: '고3' },
+    { id: 'name', name: '고3 이름반', grade: '' },
+    { id: 'space', name: '졸업반', grade: '고 3' },
+    { id: 'invalid', name: '고3 반', grade: '대학', grade_label: '고3' },
+  ]);
+  h.workspace.state.recentFilters.grade = '고3';
+  h.workspace.setView('recent');
+  assert.deepEqual(h.workspace.recentClassOptions().map(option => option.value), ['label', 'name', 'space']);
+  for (const classId of ['label', 'name', 'space']) {
+    h.workspace.state.recentClassId = classId;
+    await h.workspace.loadRecent();
+    assert.equal(h.workspace.state.recentClassId, classId);
+    assert.equal(requests.at(-1).searchParams.get('class'), classId);
+    assert.equal(requests.at(-1).searchParams.get('grade'), '고3');
+  }
+  h.workspace.state.recentClassId = 'invalid';
+  await h.workspace.loadRecent();
+  assert.equal(h.workspace.state.recentClassId, '');
+  assert.equal(requests.at(-1).searchParams.has('class'), false);
+});
+
 test('Archive2 client subject identity maps every Recent alias to its semantic subject', () => {
   const h = workspaceHarness();
   const aliases = [

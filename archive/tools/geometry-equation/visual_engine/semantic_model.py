@@ -25,6 +25,12 @@ def parity(a,b):
     return type(a)==type(b) and a==b
 
 def validate(spec):
+    if isinstance(spec, dict) and "publication" in spec:
+        from .publication import normalize, validate_annotations
+        core, config = normalize(spec)
+        result = validate(core)
+        result["publication"] = validate_annotations(config, core, result["geometry"])
+        return result
     allowed={'id','visualType','viewport','sourceFacts','derivedFacts','displayFacts','objects','axes','title'}
     if not isinstance(spec,dict) or set(spec)-allowed:
         raise ValueError('UNKNOWN_SPEC_FIELD')

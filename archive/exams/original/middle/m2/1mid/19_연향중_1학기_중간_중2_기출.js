@@ -17,7 +17,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -28,7 +28,7 @@ window.questionBank = [
       "순환소수"
     ],
     "wide": false,
-    "solution": "* ① $\\frac{8}{12} = \\frac{2}{3}$ (무한)\n* ② $\\frac{9}{24} = \\frac{3}{8} = \\frac{3}{2^{3}}$ (유한)\n* ③ $\\frac{15}{36} = \\frac{5}{12} = \\frac{5}{2^{2} \\times 3}$ (무한)\n* ④ $\\frac{35}{75} = \\frac{7}{15} = \\frac{7}{3 \\times 5}$ (무한)\n* ⑤ $\\frac{26}{60} = \\frac{13}{30} = \\frac{13}{2 \\times 3 \\times 5}$ (무한)\n정답: ②",
+    "solution": "유한소수는 기약분수의 분모의 소인수가 2와 5뿐일 때 나타난다.\n① $\\frac{8}{12}=\\frac23$, ③ $\\frac{15}{36}=\\frac5{12}$, ④ $\\frac{35}{75}=\\frac7{15}$, ⑤ $\\frac{26}{60}=\\frac{13}{30}$은 분모에 3이 남는다.\n② $\\frac{9}{24}=\\frac38$이고 $8=2^3$이므로 유한소수이다.\n따라서 정답은 ②이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -52,7 +52,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -62,7 +62,7 @@ window.questionBank = [
       "순환소수"
     ],
     "wide": false,
-    "solution": "$\\frac{5}{27} = 0.185185\\cdots = 0.\\dot{1}8\\dot{5}$ 이므로 순환마디는 1, 8, 5이다.\n$40 = 3 \\times 13 + 1$ 이므로 40번째 자리는 순환마디의 첫 번째 숫자인 1이다.",
+    "solution": "$\\frac5{27}=0.185185\\cdots$이므로 순환마디는 $185$이고 길이는 3이다.\n$40=3\\times13+1$이므로 40번째 자리는 순환마디의 첫 번째 숫자 $1$이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -86,7 +86,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -97,7 +97,7 @@ window.questionBank = [
       "순환소수"
     ],
     "wide": false,
-    "solution": "1. $100x = 245.4545\\cdots \\rightarrow a = 100$\n2. $100x - x = 243 \\rightarrow b = 243$\n3. $99x = 243 \\rightarrow x = \\frac{243}{99} = \\frac{27}{11} \\rightarrow c = 11$\n4. $a+b+c = 100 + 243 + 11 = 354$",
+    "solution": "$x=2.\\dot4\\dot5=2.4545\\cdots$라 하자.\n순환마디의 길이가 2이므로 $100x=245.4545\\cdots$이고 $a=100$이다.\n두 식을 빼면 $99x=243$이므로 $b=243$이다.\n$x=\\frac{243}{99}=\\frac{27}{11}$이므로 $c=11$이다.\n따라서 $a+b+c=354$이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -121,7 +121,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -132,7 +132,7 @@ window.questionBank = [
       "순환소수"
     ],
     "wide": false,
-    "solution": "$\\frac{1}{n} - \\frac{1}{n+1} = \\frac{1}{n(n+1)}$ 이 유한소수가 되려면 $n(n+1)$의 소인수가 2 또는 5뿐이어야 한다.\n연속하는 두 수 $n, n+1$의 곱의 소인수가 2, 5뿐인 쌍은 $(1, 2), (4, 5)$뿐이다.\n따라서 $n=1, 4$로 개수는 2개이다.",
+    "solution": "$\\frac1n-\\frac1{n+1}=\\frac1{n(n+1)}$이다.\n유한소수가 되려면 기약분수 분모의 소인수가 2와 5뿐이어야 한다. $n$과 $n+1$은 서로소인 연속한 자연수이므로 두 수의 소인수도 2와 5뿐이어야 한다.\n$1\\le n\\le150$에서 가능한 연속한 쌍은 $(1,2)$, $(4,5)$뿐이다.\n따라서 $n=1,4$로 2개이다.",
     "level": "중",
     "subUnitKey": "M2-01-REPEATING_DECIMAL",
     "subUnit": "유리수와 순환소수",
@@ -145,18 +145,18 @@ window.questionBank = [
     "content": "다음 중에서 옳은 것은? [4점]",
     "choices": [
       "$a^{3} \\times a^{7} = a^{21}$",
-      "$a \\times a^{4} \\times a^{6} = a^{11}$",
+      "$a \\times a^{4} \\times a^{2} = a^{6}$",
       "$(a^{3})^{2} \\times a^{3} = a^{9}$",
       "$2^{3} \\div 2^{6} = 2^{3}$",
       "$a^{28} \\div a^{7} = a^{4}$"
     ],
-    "answer": "2",
+    "answer": "3",
     "originalCategory": "식의 계산",
     "standardCourse": "중2 수학",
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -166,7 +166,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "* ① $a^{10}$\n* ② $a^{11}$ (옳음)\n* ③ $(a^{3})^{2} \\times a^{3} = a^{6} \\times a^{3} = a^{9}$ (옳음)\n* ④ $\\frac{1}{2^{3}}$\n* ⑤ $a^{21}$\n정답은 ②, ③ 중복이나 기성 데이터 기준 ②를 유지함.",
+    "solution": "같은 밑을 곱할 때는 지수를 더하고, 거듭제곱의 거듭제곱은 지수를 곱한다. 각 식을 확인한다.\n① $a^3\\times a^7=a^{3+7}=a^{10}$이므로 $a^{21}$과 같지 않다.\n② $a\\times a^4\\times a^2=a^{1+4+2}=a^7$이므로 $a^6$과 같지 않다.\n③ $(a^3)^2\\times a^3=a^{3\\times2}\\times a^3=a^{6+3}=a^9$이므로 옳다.\n④ $2^3\\div2^6=8\\div64=\\frac18$이므로 $2^3$과 같지 않다.\n⑤ $a^{28}\\div a^7=a^{28-7}=a^{21}$이므로 $a^4$와 같지 않다.\n따라서 옳은 것은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -190,7 +190,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -200,7 +200,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "$\\frac{x^{4a}}{81y^{8b}} = \\frac{x^{8}}{81y^{24}}$\n$4a = 8 \\rightarrow a = 2$\n$8b = 24 \\rightarrow b = 3$\n$a + b = 5$",
+    "solution": "$\\left(\\frac{x^a}{3y^{2b}}\\right)^4=\\frac{x^{4a}}{81y^{8b}}$이다.\n$\\frac{x^8}{81y^{24}}$와 비교하면 $4a=8$, $8b=24$이므로 $a=2$, $b=3$이다.\n따라서 $a+b=5$이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -224,7 +224,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -234,7 +234,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "$5^{4} \\times (2^{2} \\times 5)^{6} = 5^{4} \\times 2^{12} \\times 5^{6} = 2^{12} \\times 5^{10} = 2^{2} \\times 10^{10} = 4 \\times 10^{10}$\n따라서 11자리이다.",
+    "solution": "$20=2^2\\times5$이므로 $5^4\\times20^6=2^{12}\\times5^{10}=2^2\\times10^{10}=4\\times10^{10}$이다.\n따라서 11자리 자연수이므로 $n=11$이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -258,7 +258,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -268,7 +268,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "$20=2^2 \\cdot 5, 30=2 \\cdot 3 \\cdot 5, 40=2^3 \\cdot 5, 50=2 \\cdot 5^2, 60=2^2 \\cdot 3 \\cdot 5, 70=2 \\cdot 5 \\cdot 7$\n$2^{2+1+3+1+2+1} \\times 3^{1+1} \\times 5^{1+1+1+2+1+1} \\times 7^{1} = 2^{10} \\times 3^{2} \\times 5^{7} \\times 7^{1}$\n$10+2+7+1 = 20$",
+    "solution": "$20=2^2\\cdot5$, $30=2\\cdot3\\cdot5$, $40=2^3\\cdot5$, $50=2\\cdot5^2$, $60=2^2\\cdot3\\cdot5$, $70=2\\cdot5\\cdot7$이다.\n따라서 $a=10$, $b=2$, $c=7$, $d=1$이고 $a+b+c+d=20$이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -292,7 +292,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -302,7 +302,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "* ② $8x^{6} \\times 4x = 32x^{7}$ (옳음)\n* ④ $-4ab$ (옳음)",
+    "solution": "각 보기를 확인한다.\n① $-6x^8$이므로 거짓이다.\n② $8x^6\\cdot4x=32x^7$이므로 참이다.\n③ $\\frac{25a^6}{10a^3b}=\\frac{5a^3}{2b}$이므로 거짓이다.\n④ $12a^2b\\div(-3a)=-4ab$이므로 참이다.\n⑤ $(-21x^5)\\div(-3x^2)=7x^3$이므로 거짓이다.\n따라서 옳은 것은 ②, ④이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -326,7 +326,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -336,7 +336,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "$\\frac{3(x-3y)-2(2x-y)}{6} = \\frac{-x-7y}{6} = -\\frac{1}{6}x - \\frac{7}{6}y$\n$A+B = -\\frac{1}{6} - \\frac{7}{6} = -\\frac{8}{6} = -\\frac{4}{3}$",
+    "solution": "$\\frac{x-3y}{2}-\\frac{2x-y}{3}=\\frac{3(x-3y)-2(2x-y)}6=\\frac{-x-7y}{6}$이다.\n따라서 $A=-\\frac16$, $B=-\\frac76$이고 $A+B=-\\frac43$이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -360,7 +360,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -370,7 +370,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "$12x^2 + 8xy + 24x - 5x^2 - 5xy - 10x = 7x^2 + 3xy + 14x$\n$a=7, b=3 \\rightarrow a-b=4$",
+    "solution": "$4x(3x+2y+6)=12x^2+8xy+24x$이고 $5x(x+y+2)=5x^2+5xy+10x$이다.\n따라서 전체 식은 $7x^2+3xy+14x$이다.\n$a=7$, $b=3$이므로 $a-b=4$이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -394,7 +394,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -405,7 +405,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "$A = (6x^2-x+3) - (2x^2-3x+7) = 4x^2+2x-4$\n바른 계산: $(4x^2+2x-4) - (2x^2-3x+7) = 2x^2+5x-11$",
+    "solution": "어떤 식을 $A$라 하자.\n$A+(2x^2-3x+7)=6x^2-x+3$이므로 $A=4x^2+2x-4$이다.\n바른 계산은 $A-(2x^2-3x+7)=2x^2+5x-11$이다.\n따라서 정답은 ①이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -429,7 +429,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -439,7 +439,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "$5a - [3b - a - \\{3b - 2a + b\\}] = 5a - [3b - a - 4b + 2a] = 5a - (a-b) = 4a+b$",
+    "solution": "안쪽부터 정리하면 $3b-(2a-b)=4b-2a$이다.\n따라서 $3b-a-(4b-2a)=a-b$이고, 전체 식은 $5a-(a-b)=4a+b$이다.\n따라서 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -463,7 +463,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -473,7 +473,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "$(2x-1) - (1-3x^2) = 3x^2+2x-2$",
+    "solution": "$\\frac{2x^4-x^3}{x^3}=2x-1$, $\\frac{3x^3-9x^5}{3x^3}=1-3x^2$이다.\n따라서 $(2x-1)-(1-3x^2)=3x^2+2x-2$이다.\n정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -497,7 +497,7 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -507,7 +507,7 @@ window.questionBank = [
       "일차부등식"
     ],
     "wide": false,
-    "solution": "$3x \\le 24 \\rightarrow x \\le 8$\n9는 해가 아니다.",
+    "solution": "$x-8\\le16-2x$에서 $3x\\le24$이므로 $x\\le8$이다.\n보기 중 해가 아닌 것은 $9$이므로 정답은 ⑤이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -531,7 +531,7 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -542,7 +542,7 @@ window.questionBank = [
       "일차부등식"
     ],
     "wide": false,
-    "solution": "⑤ 양변에 음수 -5를 곱하면 부등호 방향이 바뀌어야 한다.",
+    "solution": "$a<b$의 양변에 음수 $-5$를 곱하면 부등호 방향이 바뀌어 $-5a>-5b$이다.\n따라서 $-5a-\\frac13>-5b-\\frac13$이어야 하므로 ⑤가 잘못되었다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -566,7 +566,7 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -576,7 +576,7 @@ window.questionBank = [
       "일차부등식"
     ],
     "wide": false,
-    "solution": "$3x - 6 < -1 + 2x \\rightarrow x < 5$",
+    "solution": "$0.5x-1<-\\frac{1-2x}{6}$의 양변에 6을 곱하면 $3x-6<-1+2x$이다.\n따라서 $x<5$이므로 정답은 ③이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -600,7 +600,7 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -611,7 +611,7 @@ window.questionBank = [
       "일차부등식"
     ],
     "wide": false,
-    "solution": "1. $6-2x > 4x \\rightarrow x < 1$\n2. $x+3 < -\\frac{16}{a} (a<0) \\rightarrow x < -\\frac{16}{a}-3$\n3. $-\\frac{16}{a}-3=1 \\rightarrow a=-4$",
+    "solution": "첫 번째 부등식은 $2(3-x)>4x\\Rightarrow6>6x\\Rightarrow x<1$이다.\n두 번째 부등식이 같은 해를 가지려면 $a<0$이고, $x<-\\frac{16}{a}-3$의 경계가 1이어야 한다.\n$-\\frac{16}{a}-3=1$에서 $a=-4$이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -635,7 +635,7 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -646,7 +646,7 @@ window.questionBank = [
       "일차부등식"
     ],
     "wide": false,
-    "solution": "$\\frac{60+80+72+x}{4} \\ge 70 \\rightarrow 212+x \\ge 280 \\rightarrow x \\ge 68$",
+    "solution": "수학 점수를 $x$점이라 하면 $\\frac{60+80+72+x}{4}\\ge70$이다.\n따라서 $212+x\\ge280$, 즉 $x\\ge68$이다.\n최소 점수는 68점이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
@@ -670,7 +670,7 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -681,7 +681,7 @@ window.questionBank = [
       "일차부등식"
     ],
     "wide": false,
-    "solution": "$0.5 + \\frac{7}{v} \\le 1.5 \\rightarrow \\frac{7}{v} \\le 1 \\rightarrow v \\ge 7$",
+    "solution": "편의점까지 걸리는 시간은 $\\frac24=0.5$시간이다. 이후 남은 거리는 $3+4=7$ km이다.\n평균 속력을 $v$라 하면 $0.5+\\frac7v\\le1.5$이므로 $v\\ge7$이다.\n따라서 최소 평균 속력은 시속 7 km이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",
@@ -699,7 +699,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -709,7 +709,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "$\\frac{3 \\cdot 9^4}{3 \\cdot 3^4} = \\frac{(3^2)^4}{3^4} = \\frac{3^8}{3^4} = 3^4$",
+    "solution": "$\\frac{9^4+9^4+9^4}{3^4+3^4+3^4}=\\frac{3\\cdot9^4}{3\\cdot3^4}=\\frac{(3^2)^4}{3^4}=3^4$이다.",
     "level": "중",
     "subUnitKey": "M2-01-EXPONENT_LAW",
     "subUnit": "지수법칙",
@@ -727,7 +727,7 @@ window.questionBank = [
     "standardUnitKey": "M2-01",
     "standardUnit": "수와 식",
     "standardUnitOrder": 1,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -737,7 +737,7 @@ window.questionBank = [
       "식의계산"
     ],
     "wide": false,
-    "solution": "1. $A = -4b + 5a$\n2. $B = (9a^2-15ab) \\cdot \\frac{2}{3a} = 6a - 10b$\n3. $A+B = 11a - 14b$",
+    "solution": "$A=(16a^2b-20a^3)\\div(-4a^2)=5a-4b$이다.\n$B=(9a^2-15ab)\\div\\frac32a=(9a^2-15ab)\\cdot\\frac{2}{3a}=6a-10b$이다.\n따라서 $A+B=11a-14b$이다.",
     "level": "중",
     "subUnitKey": "M2-01-POLYNOMIAL_OPERATIONS",
     "subUnit": "다항식의 계산",
@@ -755,7 +755,7 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -764,7 +764,7 @@ window.questionBank = [
       "일차부등식"
     ],
     "wide": false,
-    "solution": "$6-3x < 7 \\rightarrow -3x < 1 \\rightarrow x > -\\frac{1}{3}$",
+    "solution": "$3(2-x)<7$에서 $6-3x<7$, 즉 $-3x<1$이다.\n음수 $-3$으로 나누면 부등호 방향이 바뀌므로 $x>-\\frac13$이다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY",
     "subUnit": "일차부등식",
@@ -782,7 +782,7 @@ window.questionBank = [
     "standardUnitKey": "M2-02",
     "standardUnit": "일차부등식",
     "standardUnitOrder": 2,
-    "questionType": "",
+    "questionType": "단답형",
     "layoutTag": "grid",
     "tags": [
       "기출",
@@ -793,7 +793,7 @@ window.questionBank = [
       "일차부등식"
     ],
     "wide": false,
-    "solution": "$240000 + 6000x < 9000x \\rightarrow 240000 < 3000x \\rightarrow x > 80$\n따라서 81개월부터이다.",
+    "solution": "사용 기간을 $x$개월이라 하면 구입 비용은 $240000+6000x$, 대여 비용은 $9000x$이다.\n구입이 더 저렴하려면 $240000+6000x<9000x$, 즉 $x>80$이다.\n따라서 81개월부터 구입이 더 저렴하다.",
     "level": "중",
     "subUnitKey": "M2-02-LINEAR_INEQUALITY_WORD",
     "subUnit": "일차부등식의 활용",

@@ -9,8 +9,8 @@
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
 - db.js 크기: 485632 bytes
-- 시험지 JS 총 크기: 19500720 bytes
-- 인덱스 크기: 12356610 bytes
+- 시험지 JS 총 크기: 19630539 bytes
+- 인덱스 크기: 12373015 bytes
 - 로드 실패 파일: 0
 
 > 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(11620)" 기준이다.
@@ -29,7 +29,7 @@
 - 누락 id: 0
 - 누락 content: 0
 - 누락 choices: 0
-- 누락 level: 501
+- 누락 level: 478
 - 누락 standardUnit: 0
 - 누락 standardUnitKey: 0
 - 누락 standardCourse: 12
@@ -37,11 +37,11 @@
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 2348
+- q.image 보유: 2350
 - content 내부 <img>: 26
 - content 내부 <svg>: 79
 - content 내부 <table>: 177
-- 시각요소 보유(hasImage=true, OR 합산): 2623
+- 시각요소 보유(hasImage=true, OR 합산): 2625
 
 ## 누락 예시
 

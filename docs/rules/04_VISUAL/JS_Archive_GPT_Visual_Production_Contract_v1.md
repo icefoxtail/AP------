@@ -131,26 +131,59 @@ visual의 수학 authority:
 
 GPT가 계산 가능한 수치는 직접 재계산하고, 계산 불가/도구 부재를 PASS로 위장하지 않는다.
 
-## 8. Label Owner Binding
+## 8. Geometry Annotation / Label Owner Binding — CURRENT HARD
+
+**Geometry is primary. Annotation is secondary.**
+
+### 기준 viewport와 글씨 크기
+- solution geometry SVG의 publication reference는 **screen-fit/page-fit 축소가 없는 실제 Archive desktop `mode=sol` 해설 화면**이다.
+- 기본 qualification viewport는 **1440×1000 desktop**이며, 제품 canonical desktop viewport가 따로 있으면 그 값을 따른다.
+- 이 PC reference에서 student-facing point/angle/length/math label은 **11 CSS px 미만 HARD FAIL**, 12px 이상을 기본 목표로 한다.
+- 모바일/좁은 화면에서 A4/page 전체가 비례 축소되는 것은 SVG publication gate가 아니다.
+- 모바일 별도 render PASS나 모바일 absolute font floor는 요구하지 않는다.
+- 같은 도형 안의 점 이름, 각도값, 길이값, 짧은 수학 변수/수치는 **같은 기본 font-size**를 사용한다.
+- point를 크게, numeric을 절반 크기로 만드는 hierarchy는 기본값으로 사용하지 않는다.
+- SVG user-space에서 도형과 함께 비례 scale되게 한다.
+
+### 점 문자
+- owner point와 즉시 결속돼야 한다.
+- 도형 중심에서 바깥쪽 free sector를 우선하되 실제 선/원/arc/숫자와의 여백을 보고 배치한다.
+- point, segment, angle arc, 다른 label, canvas edge에 붙거나 겹치면 FAIL.
 
 ### 각도
-각도 숫자만 선 옆에 띄워 두지 않는다.
-가능하면 실제 owner vertex와 두 ray 사이의 angle arc에 결속한다.
-- ownerVertex
-- ownerRays
-- expectedAngle
-- arc/label이 실제 wedge에 속하는지
+각도 숫자는 실제 owner vertex와 두 ray 사이의 wedge에 결속한다.
+- arc center = 실제 owner vertex
+- arc start/end = 실제 owner rays
+- primitive에서 역산한 observed angle이 expected angle과 허용오차 내 일치
+- degree label은 wedge 안 또는 명확한 인접 위치
 - 직각은 square marker 우선
+- 한 꼭짓점 다중 각은 radius 계층화
+- 같은 semantic angle의 중복 arc / duplicate primitive / duplicate id 금지
+- 위치만으로 owner가 이미 명백하면 불필요한 decorative arc를 강제하지 않음
 
 ### 길이
 길이 수치는 어느 두 점 사이인지 즉시 보여야 한다.
-- owner segment
-- inline / offset dimension / brace / leader 중 자연스러운 방식
-- endpoint 범위가 실제 선분과 일치
-- 단위와 숫자가 같은 owner에 결속
+우선순위:
+1. owner가 명백하면 선분 인접/평행 배치
+2. 애매하거나 밀집하면 offset dimension + end tick
+3. 필요할 때만 짧은 leader/brace
+
+`AB=8`처럼 문장형 label을 기본값으로 쓰지 않는다. 값 `8`만으로 owner가 명백하면 그쪽을 우선한다.
+
+### 영역/넓이
+영역값은 해당 region 내부에 두거나 짧은 region leader로 결속한다.
+
+### 충돌 해결 순서
+`relocate → owner cue 조정 → geometry/viewBox 확대·재프레이밍 → leader/dimension → 마지막에 최소 font 예외`.
+font 축소를 첫 해결책으로 쓰지 않는다.
+
+### semantic identity
+source의 A/B/C/D/P 등 entity identity와 SVG point id/좌표/owner metadata가 일치해야 한다.
+표시 text가 맞아도 다른 점 owner에 결속된 radius/arc/leader면 FAIL이다.
 
 ### 일반 라벨
-점 이름, 각도값, 길이값, 선 이름이 서로 충돌하거나 다른 owner처럼 읽히면 FAIL.
+점 이름, 각도값, 길이값, 선 이름이 서로 겹치거나 다른 owner처럼 읽히면 FAIL.
+실제 화면에서 사실상 같은 위치를 점유하면 static 검사 PASS와 무관하게 FAIL이다.
 
 ## 9. Problem Image와 SolutionImage 분리
 
@@ -171,7 +204,7 @@ KEEP은 다음을 모두 만족해야 한다.
 - typography readable
 - stroke hierarchy 자연스러움
 - 정보 밀도 적절
-- mobile/tablet 축소 가독성
+- desktop publication reference 가독성
 - clipping/collision 우려 없음
 - black-and-white에서도 의미 유지
 - 같은 시험지 내 style consistency
@@ -193,6 +226,18 @@ geometry/owner/decisive relation이 틀리면 REBUILD.
 하지만 decoration이 수학 관계보다 앞서면 FAIL.
 
 ## 12. Render와 GPT 환경의 한계
+
+### Geometry change render HARD
+point/angle/length/region label, arc/dimension/leader, geometry primitive, viewBox, canvas framing 중 하나라도 바꾼 solution SVG는 최종 visual PASS 전에 **실제 Archive desktop `mode=sol` publication reference render review**가 필요하다.
+기본 qualification viewport는 **1440×1000**이며 screen-fit/page-fit 축소 상태는 사용하지 않는다.
+XML/bbox/static inspection은 구조 검증이며 실제 PC 화면 PASS를 대체하지 않는다.
+문항/SVG load 완료 후 final asset SHA/blob과 실제 페이지 asset이 일치하는지 확인한다.
+
+모바일/page-fit 렌더는 SVG publication qualification에서 제외한다.
+완성된 SVG가 `viewBox` 기준으로 비례 확대·축소되는 것은 정상 동작이며, 모바일의 축소된 절대 CSS font px로 SVG를 FAIL 처리하지 않는다.
+
+제작자 자기보고 `PASS`는 최종 seal authority가 아니다.
+전수 visual campaign은 전체 수정 artifact freeze 후 별도 review pass에서 denominator 전체를 다시 보고, 이후 FAIL 수정은 changed SVG + direct dependency만 targeted recheck한다.
 
 GPT 예약 worker는 local browser/Node/Python harness가 없을 수 있다.
 
@@ -272,10 +317,16 @@ GPT 예약 worker는 local browser/Node/Python harness가 없을 수 있다.
 2. current main의 existing visual inventory
 3. geometry/graph/line/function 관련 qid 전수 triage
 4. KEEP/POLISH/REBUILD/ADD/REMOVE/EXEMPT
-5. 필요한 것만 수정
-6. math/owner/style/evidence 재검
-7. 가능한 actual render
-8. final R3-style seal
+5. 필요한 것만 전수 수정
+6. 수정 완료 artifact freeze
+7. **전체 denominator 독립 visual review + actual Archive desktop reference render**
+8. 반복 defect가 있으면 rule/skill 최소 보정
+9. FAIL SVG만 pinpoint repair
+10. changed SVG + direct dependency만 targeted recheck
+11. final R3-style seal
+
+대표 문항 pilot만 PASS했다고 campaign을 닫지 않는다.
+대표 문항으로 rule을 확정한 뒤 target 시험지 전체에 적용하고, **전체 적용 후 다시 전수검수하여 부족한 패턴을 찾고 수정·targeted recheck까지 닫아야 pilot 완료**다.
 
 이 모드에서 과거 CREATE/R1/R2를 이유 없이 재실행하지 않는다.
 
@@ -290,7 +341,7 @@ GPT 예약 worker는 local browser/Node/Python harness가 없을 수 있다.
 - visual이 많을수록 좋다고 판단
 - 모든 좌표문제에 full axis/grid 강제
 - 계산 card가 실제 geometry를 대체
-- mobile에서 라벨이 충돌하지만 XML valid라 PASS
+- desktop publication reference에서 라벨이 충돌하지만 XML valid라 PASS
 - current skill의 local command를 실행하지 못했는데 실행했다고 주장
 
 ## 17. Final Principle

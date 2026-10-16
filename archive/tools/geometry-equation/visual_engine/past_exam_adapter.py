@@ -26,7 +26,7 @@ def adapt_expected_facts(bundle):
     if not isinstance(bundle, dict):
         raise ValueError("EXPECTED_FACT_BUNDLE_REQUIRED")
     required = {"schemaVersion", "questionUid", "route", "visualType", "viewport", "sourceFacts", "derivedFacts", "displayFacts", "objects"}
-    allowed = required | {"axes", "title", "specialVisual"}
+    allowed = required | {"axes", "title", "specialVisual", "publication"}
     if set(bundle) - allowed or not required <= set(bundle):
         raise ValueError("EXPECTED_FACT_BUNDLE_SCHEMA_FAIL")
     if bundle["schemaVersion"] != "past-exam-expected-facts-v1" or not isinstance(bundle["questionUid"], str) or not bundle["questionUid"]:
@@ -45,7 +45,7 @@ def adapt_expected_facts(bundle):
         "displayFacts": bundle["displayFacts"],
         "objects": bundle["objects"],
     }
-    for key in ("axes", "title"):
+    for key in ("axes", "title", "publication"):
         if key in bundle:
             visual_spec[key] = bundle[key]
     if bundle["route"] == "SPECIAL":

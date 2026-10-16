@@ -14,6 +14,10 @@ def safe_math_markup(value):
             raise ValueError('UNSAFE_MATH_MARKUP')
     return value
 
+def owner_attrs(value):
+    fields={'owner':'data-owner','ownerPoints':'data-owner-points','sourceLabel':'data-source-label','annotation':'data-annotation','ownerKind':'data-owner-kind','factRole':'data-fact-role'}
+    return ''.join(' '+name+'="'+esc(' '.join(value[key]) if isinstance(value[key],(list,tuple)) else value[key])+'"' for key,name in fields.items() if key in value)
+
 def compose(prepared,layout,viewport):
     tokens=load();seen={'visual-title','visual-desc'};semantic_labels=set();layers=[]
     def element_id(value):
@@ -24,6 +28,9 @@ def compose(prepared,layout,viewport):
         stroke=tokens[token] if token in tokens else None
         if not isinstance(stroke,(int,float)):raise ValueError('UNKNOWN_STYLE_TOKEN')
         attrs=f'id="{oid}" data-role="{esc(p.get("role",kind))}" stroke="{tokens["primary"]}" stroke-width="{stroke}" fill="none"'
+        attrs+=owner_attrs(p)
+        if p.get('fill'):attrs=attrs.replace('fill="none"','fill="'+esc(p['fill'])+'"')
+        if p.get('noStroke'):attrs=attrs.replace('stroke="'+tokens['primary']+'"','stroke="none"')
         if p.get('dash'):attrs+=' stroke-dasharray="'+esc(p['dash'])+'"'
         if kind=='circle':
             if p.get('role')=='point':attrs=attrs.replace('fill="none"','fill="#111"')
@@ -36,13 +43,15 @@ def compose(prepared,layout,viewport):
         else:raise ValueError('UNKNOWN_COMPOSER_PRIMITIVE')
         layers.append((p['layer'],index,svg))
     for index,label in enumerate(layout['labels']):
-        oid=element_id(label['id']);key=(label['kind'],label.get('target'),label['text'])
+        oid=element_id(label['id']);key=(label['kind'],label.get('owner',label.get('target')),label['text'])
         if key in semantic_labels:raise ValueError('DUPLICATE_SEMANTIC_LABEL')
         semantic_labels.add(key)
         if label['kind']=='COORDINATE_LABEL' and re.search(r'\d+\.\d+',label['text']) and not label.get('sourceDecimalEvidence'):
             raise ValueError('INVALID_STUDENT_DECIMAL_LABEL')
         x,y=label['baseline'];font=label['font'];box=label['box']
         attrs=f'id="{oid}" data-label-kind="{esc(label["kind"])}" data-priority="{label.get("priority",2)}" x="{num(x)}" y="{num(y)}" font-size="{num(font)}"'
+        attrs+=owner_attrs(label)
+        if label.get('centered'):attrs+=' text-anchor="middle" dominant-baseline="central"'
         if label.get('math') or label.get('hasMath'):attrs+=' data-math="true"'
         if label['kind']=='POINT_NAME':attrs+=' font-style="italic"'
         family=tokens['mathFont'] if label.get('math') or label['kind']=='POINT_NAME' else tokens['textFont']
@@ -56,6 +65,8 @@ def compose(prepared,layout,viewport):
         layers.append((90,index,f'<text {attrs}>{content}</text>'))
     model=viewport.model();metadata=prepared.get('factHash','')
     head=f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {num(viewport.width)} {num(viewport.height)}" width="{num(viewport.width)}" height="{num(viewport.height)}" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="visual-title visual-desc" data-engine-version="geometry-visual-v1" data-geometry-style-version="{tokens["geometryVersion"]}" data-geometry-preset="GEOMETRY_STANDARD" data-graph-style-version="{tokens["graphVersion"]}" data-geometry-mode="COORDINATE_GEOMETRY_HYBRID" data-axis-scale-mode="{model["aspectPolicy"]}" data-geometry-fact-hash="{esc(metadata)}" data-visual-provenance="independent-facts-python" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">'
+    if prepared.get('publicationProfile'):
+        head=head[:-1]+' data-publication-profile="'+esc(prepared['publicationProfile'])+'">'
     svg=head+f'<title id="visual-title">{esc(prepared.get("title","해설 도형"))}</title><desc id="visual-desc">{esc(prepared.get("description","점과 도형의 관계를 확인한다."))}</desc>'
     svg+=f'<rect width="{num(viewport.width)}" height="{num(viewport.height)}" fill="#fff"/>'
     svg+=''.join(f'<g data-layer="{layer}">{value}</g>' for layer,index,value in sorted(layers))+'</svg>\n'

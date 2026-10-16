@@ -4,7 +4,7 @@ import http from 'node:http';
 import {fileURLToPath} from 'node:url';
 import {repoRoot,assertOutput,launchBrowser} from './visual-browser-runtime.mjs';
 import {sha256} from './verify-visual-engine-static.mjs';
-import {collectRenderedLayout,analyzeRenderedLayout} from './verify-rendered-layout.mjs';
+import {captureAtDisplaySize,analyzeRenderedLayout} from './verify-rendered-layout.mjs';
 
 export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
   if(!/^[A-Za-z0-9_-]+$/.test(attempt))throw Error('INVALID_EVIDENCE_ATTEMPT');
@@ -51,14 +51,16 @@ export async function recordArchiveEvidence({run,attempt='attempt-01'}) {
           if(!target.loaded){errors.push('TARGET_SVG_LOAD_FAIL:'+target.id);continue;}
           const asset=item.assets.find(v=>v.id===target.id);
           const inspector=await browser.newPage({viewport:{width:Math.max(1,Math.ceil(target.rect.width)),height:Math.max(1,Math.ceil(target.rect.height))}});
-          await inspector.setContent(fs.readFileSync(path.join(repoRoot,asset.path),'utf8'));const capture=await collectRenderedLayout(inspector);const result=analyzeRenderedLayout(capture);layouts.push({id:target.id,...result,svgSha256:asset.sha256,renderedContainer:target.rect});
+          const capture=await captureAtDisplaySize(inspector,fs.readFileSync(path.join(repoRoot,asset.path),'utf8'),target.rect);const result=analyzeRenderedLayout(capture);layouts.push({id:target.id,...result,svgSha256:asset.sha256,renderedContainer:target.rect,measurementMode:'ISOLATED_SVG_REPLAY_AT_ACTUAL_ARCHIVE_IMAGE_SIZE'});
           await inspector.close();if(result.status!=='PASS')errors.push(...result.errors.map(v=>target.id+':'+v));
           const matches=page.locator('#print-area .sol-image-wrap img[src*="'+asset.path.replace(/^archive\//,'')+'"]');
           if(await matches.count())await matches.first().screenshot({path:path.join(folder,prefix+'-'+target.id+'.png')});
         }
         await page.screenshot({path:path.join(folder,prefix+'.png'),fullPage:true});
       }catch(error){errors.push(String(error.stack||error));await page.screenshot({path:path.join(folder,prefix+'-error.png'),fullPage:true}).catch(()=>{});}
-      await Promise.allSettled(responsePromises);if(consoleErrors.length)errors.push(...consoleErrors);
+      await Promise.allSettled(responsePromises);
+        if(item.mode==='sol')for(const target of state.targets||[]){const asset=item.assets.find(v=>v.id===target.id);if(!responses.some(v=>v.url===target.src&&v.status===200&&v.sha256===asset?.sha256))errors.push('ACTUAL_LOADED_ASSET_SHA_MISMATCH:'+target.id);}
+        if(consoleErrors.length)errors.push(...consoleErrors);
       const row={id:prefix,status:errors.length?'FAIL':'PASS',mode:item.mode,viewport:item.viewport,runtime:'playwright-chromium',synthetic:false,url:base+item.urlPath,sourceSha256:item.sourceSha256,candidateSha256:item.candidateSha256,engineSha256:matrix.engineSha256,browserVersion:browser.version(),state,layouts,responses,errors,
         capture:Object.keys(state).length?{status:'MEASURED',missingGlyphCount:layouts.reduce((s,v)=>s+v.missingGlyphCount,0),labelCollisionCount:layouts.reduce((s,v)=>s+v.labelCollisionCount,0),criticalCollisionCount:layouts.reduce((s,v)=>s+v.criticalCollisionCount,0),clippedTextCount:layouts.reduce((s,v)=>s+v.clippedTextCount,0),overflowCount:Number(state.horizontalOverflow||false)+layouts.reduce((s,v)=>s+v.overflowCount,0),loadedSvgCount:item.mode==='sol'?state.targets?.filter(v=>v.loaded).length||0:0,failedSvgCount:item.mode==='sol'?state.targets?.filter(v=>!v.loaded).length||0:0}:{status:'NOT_MEASURED',missingGlyphCount:null,labelCollisionCount:null,criticalCollisionCount:null,clippedTextCount:null,overflowCount:null,loadedSvgCount:null,failedSvgCount:null}};
       fs.writeFileSync(path.join(folder,prefix+'.json'),JSON.stringify(row,null,2)+'\n');rows.push(row);await page.close();

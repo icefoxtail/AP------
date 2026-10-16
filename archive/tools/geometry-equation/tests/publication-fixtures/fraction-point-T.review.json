@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "geometry-publication-review-v1",
+  "sourceSha256": "abfcccdfd73d6501fa0894567ee0bd1bbae8d23683e3deb393f1ce49a45c1db0",
+  "solutionSha256": "855181bc3873f07605e789191f38df97d83c94cc0fb330d4e0bbc189bc0a4376",
+  "coordinateModel": {
+    "originX": 64,
+    "originY": 320,
+    "sx": 16,
+    "sy": 16
+  },
+  "points": [
+    {
+      "id": "A",
+      "at": [
+        0,
+        0
+      ],
+      "name": "A"
+    },
+    {
+      "id": "T",
+      "at": [
+        13.333333333333334,
+        0
+      ],
+      "name": "T"
+    },
+    {
+      "id": "C",
+      "at": [
+        0,
+        10
+      ],
+      "name": "C"
+    }
+  ],
+  "segments": [
+    {
+      "id": "AT",
+      "points": [
+        "A",
+        "T"
+      ]
+    },
+    {
+      "id": "TC",
+      "points": [
+        "T",
+        "C"
+      ]
+    },
+    {
+      "id": "CA",
+      "points": [
+        "C",
+        "A"
+      ]
+    }
+  ],
+  "angles": [],
+  "lengths": [
+    {
+      "id": "lAT",
+      "segment": "AT",
+      "value": 13.333333333333334,
+      "text": "40/3",
+      "mode": "ADJACENT",
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ],
+  "regions": [],
+  "coordinateEvidence": {
+    "mode": "SOURCE_COORDINATES",
+    "rationale": "Synthetic regression source explicitly freezes every point coordinate.",
+    "sourcePointIds": [
+      "A",
+      "T",
+      "C"
+    ]
+  }
+}

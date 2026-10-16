@@ -508,6 +508,243 @@
           }
         ]
       }
+    },
+    "publication": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile",
+        "sourcePointLabels",
+        "segmentPointRefs",
+        "annotations"
+      ],
+      "properties": {
+        "profile": {
+          "const": "geometry-publication-v1"
+        },
+        "fontSize": {
+          "type": "number",
+          "minimum": 14,
+          "maximum": 32
+        },
+        "sourcePointLabels": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 24
+          }
+        },
+        "segmentPointRefs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 2,
+            "maxItems": 2,
+            "uniqueItems": true
+          }
+        },
+        "annotations": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "kind",
+                  "value",
+                  "refs"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]{1,80}$"
+                  },
+                  "value": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "exclusiveMaximum": 360
+                  },
+                  "text": {
+                    "type": "string",
+                    "maxLength": 256
+                  },
+                  "factRole": {
+                    "enum": [
+                      "GIVEN",
+                      "DERIVED_INTERMEDIATE",
+                      "CONCLUSION"
+                    ]
+                  },
+                  "kind": {
+                    "const": "ANGLE"
+                  },
+                  "refs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3,
+                    "uniqueItems": true
+                  },
+                  "marker": {
+                    "enum": [
+                      "AUTO",
+                      "ARC",
+                      "SQUARE"
+                    ]
+                  },
+                  "sweep": {
+                    "enum": [
+                      "CW",
+                      "CCW"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "kind",
+                  "value",
+                  "owner"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]{1,80}$"
+                  },
+                  "value": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "text": {
+                    "type": "string",
+                    "maxLength": 256
+                  },
+                  "factRole": {
+                    "enum": [
+                      "GIVEN",
+                      "DERIVED_INTERMEDIATE",
+                      "CONCLUSION"
+                    ]
+                  },
+                  "kind": {
+                    "const": "LENGTH"
+                  },
+                  "owner": {
+                    "type": "string"
+                  },
+                  "mode": {
+                    "enum": [
+                      "ADJACENT",
+                      "DIMENSION"
+                    ]
+                  },
+                  "side": {
+                    "enum": [
+                      -1,
+                      1
+                    ]
+                  },
+                  "unit": {
+                    "enum": [
+                      "",
+                      "mm",
+                      "cm",
+                      "m",
+                      "km"
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "kind",
+                  "value",
+                  "refs"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]{1,80}$"
+                  },
+                  "value": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "text": {
+                    "type": "string",
+                    "maxLength": 256
+                  },
+                  "factRole": {
+                    "enum": [
+                      "GIVEN",
+                      "DERIVED_INTERMEDIATE",
+                      "CONCLUSION"
+                    ]
+                  },
+                  "kind": {
+                    "const": "REGION"
+                  },
+                  "refs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 3,
+                    "maxItems": 32,
+                    "uniqueItems": true
+                  },
+                  "labelAt": {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "publication"
+        ]
+      },
+      "then": {
+        "properties": {
+          "visualType": {
+            "enum": [
+              "coordinate_geometry",
+              "line_circle_geometry"
+            ]
+          },
+          "axes": {
+            "const": false
+          }
+        }
+      }
+    }
+  ]
 }
