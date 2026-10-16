@@ -38,6 +38,15 @@ jobs:
           const oldExt = /assert\.deepEqual\(generated\.extensionCounts, \{ '[.]png': \d+, '[.]svg': \d+ \}\);/;
           if (!oldExt.test(t)) throw Error('Missing extension golden');
           t=t.replace(oldExt,"assert.deepEqual(generated.extensionCounts, { '.png': "+report.extensionCounts['.png']+", '.svg': "+report.extensionCounts['.svg']+" });");
+          const marker = "  assert.deepEqual(generated.records.filter(record => record.qImagePresent).map(({ file, questionId }) => [file, questionId]), [";
+          const rows = [
+            "    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 12],",
+            "    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 12],",
+            "    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 20],",
+            "    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 25],"
+          ];
+          if (!t.includes(marker)) throw Error('Missing q-image expected list');
+          t=t.replace(marker, marker+'\\n'+rows.join('\\n')); 
           fs.writeFileSync(testPath,t);
           console.log(JSON.stringify({total:report.total,production:report.productionTotal,extension:report.extensionCounts,qImageAndInlineTotal:report.qImageAndInlineTotal,errors:report.validation},null,2));
           NODE
