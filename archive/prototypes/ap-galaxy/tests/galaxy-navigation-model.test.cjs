@@ -80,6 +80,32 @@ test('subject facet and curriculum grouping use the exact same canonical course 
   const app = fs.readFileSync(require('node:path').join(__dirname, '../orbit-app.js'), 'utf8');
   const html = fs.readFileSync(require('node:path').join(__dirname, '../index.html'), 'utf8');
   assert.match(app, /const subjectFacetValue = \(exam\) => \{[\s\S]*?galaxyNavigation\.displayCourseName\(sourceCourse\)/);
-  assert.match(html, /galaxy-navigation-model\.js\?v=20261016-all-galaxy-visuals-5a-curriculum/);
-  assert.match(html, /orbit-app\.js\?v=20261016-all-galaxy-visuals-5a-curriculum/);
+  assert.match(html, /galaxy-navigation-model\.js\?v=20261016-all-galaxy-visuals-5a-curriculum-2/);
+  assert.match(html, /orbit-app\.js\?v=20261016-all-galaxy-visuals-5a-curriculum-2/);
+});
+
+test('curriculum-year annotations cannot split otherwise identical galaxy subjects', () => {
+  const pairs = [
+    ['2015 개정 수학Ⅰ', '대수 (2022 개정)'],
+    ['2015 개정 수학Ⅱ', '2022 개정 미적분Ⅰ'],
+    ['미적분 (2015 개정)', '2022 개정 미적분Ⅱ'],
+    ['2015 개정 교육과정 수학(상)', '2022 개정 공통수학1'],
+    ['확률과통계 (2015 개정)', '2022 개정 확률과 통계'],
+  ];
+  const input = pairs.flatMap(([legacy, modern], i) => [
+    { grade: '고2', subject: legacy, file: 'legacy-' + i, curriculumYear: 2015 },
+    { grade: '고2', subject: modern, file: 'modern-' + i, curriculumYear: 2022 },
+  ]);
+  const before = JSON.stringify(input);
+  for (const [legacy, modern] of pairs) {
+    assert.equal(model.displayCourseName(legacy), model.displayCourseName(modern), legacy + ' vs ' + modern);
+    assert.equal(
+      model.curriculumGroupForExam({ grade: '고2', subject: legacy }).id,
+      model.curriculumGroupForExam({ grade: '고2', subject: modern }).id
+    );
+  }
+  assert.equal(new Set(input.map((exam) => model.curriculumGroupForExam(exam).id)).size, pairs.length);
+  assert.equal(JSON.stringify(input), before, 'original source names and curriculum years must survive');
+  assert.notEqual(model.displayCourseName('미적분Ⅰ'), model.displayCourseName('미적분Ⅱ'));
+  assert.notEqual(model.displayCourseName('행렬'), model.displayCourseName('대수'));
 });
