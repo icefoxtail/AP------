@@ -839,7 +839,7 @@ window.questionBank = [
     ],
     "answer": "②",
     "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "한 상자의 내용량을 $S$ g이라 하자.\n소금빵 16개 무게의 합이므로\n$E(S)=16\\times200=3200$\n$\\sigma(S)=\\sqrt{16}\\times20=80$\n$S\\sim N(3200,80^2)$\n\n$3.12$ kg부터 $3.36$ kg까지는 $3120$ g부터 $3360$ g까지이다.\n두 끝값을 표준화하면\n$\\dfrac{3120-3200}{80}=-1$\n$\\dfrac{3360-3200}{80}=2$\n\n한 상자가 이 범위에 들어올 확률을 $p$라 하면\n$p=P(-1\\le Z\\le2)$\n$=P(0\\le Z\\le1)+P(0\\le Z\\le2)$\n$=0.34+0.48=0.82$\n\n두 상자 중 정확히 한 상자만 조건을 만족하는 경우는\n(가) A만 만족: $0.82\\times0.18$\n(나) B만 만족: $0.18\\times0.82$\n\n두 경우를 더하면\n$2\\times0.82\\times0.18=0.2952$\n\n따라서 정답은 ②이다.",
+    "solution": "한 상자의 내용량을 $S$ g이라 하자.\n소금빵 16개 무게의 합이므로\n$E(S)=16\\times200=3200$\n$\\sigma(S)=\\sqrt{16}\\times20=80$\n$S\\sim N(3200,80^2)$\n\n$3.12$ kg부터 $3.36$ kg까지는 $3120$ g부터 $3360$ g까지이다.\n두 끝값을 표준화하면\n$\\dfrac{3120-3200}{80}=-1$\n$\\dfrac{3360-3200}{80}=2$\n\n한 상자가 이 범위에 들어올 확률을 $p$라 하면\n$p=P(-1\\le Z\\le2)$\n$=P(0\\le Z\\le1)+P(0\\le Z\\le2)$\n$=0.34+0.48=0.82$\n\n두 상자의 내용량은 서로 독립이므로, 두 상자 중 정확히 한 상자만 조건을 만족하는 경우는\n(가) A만 만족: $0.82\\times0.18$\n(나) B만 만족: $0.18\\times0.82$\n\n두 경우를 더하면\n$2\\times0.82\\times0.18=0.2952$\n\n따라서 정답은 ②이다.",
     "solutionStatus": "solution_upgraded_batch4",
     "reviewStatus": "line_ocr_content_answer_filled_needs_final_validation",
     "tags": [

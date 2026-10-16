@@ -301,7 +301,7 @@ window.questionBank=[
       "부등식과 미분"
     ],
     "wide": false,
-    "content": "$2$ 이상의 자연수 $n$에 대하여 모든 실수 $x$에서 부등식 $x^n-nx+(n-1)^2\\gt 0$이 항상 성립하도록 하는 자연수 $n$의 최솟값을 구한 것은? [4.1점]",
+    "content": "$x\\ge1$일 때, $2$ 이상의 자연수 $n$에 대하여 모든 실수 $x$에서 부등식 $x^n-nx+(n-1)^2\\gt 0$이 항상 성립하도록 하는 자연수 $n$의 최솟값을 구한 것은? [4.1점]",
     "choices": [
       "$2$",
       "$3$",
@@ -309,11 +309,11 @@ window.questionBank=[
       "$5$",
       "$6$"
     ],
-    "answer": "③",
+    "answer": "②",
     "solutionImage": "assets/images/25_매산고_2학기_기말_고2_수학II/q10-solution.svg",
     "solutionImageAlt": "25_매산고_2학기_기말_고2_수학II q10의 원문 조건과 해설 흐름을 정리한 SVG 카드",
     "solutionImageSize": "full",
-    "solution": "$n$은 $2$ 이상의 자연수이므로 작은 값부터 조사한다.\n$n=2$이면\n$x^2-2x+1=(x-1)^2$이고,\n$x=1$에서 $0$이므로 항상 양수는 아니다.\n$n=3$이면\n$x^3-3x+4$이고,\n$x=-3$을 대입하면 $-27+9+4=-14<0$이다.\n$n=4$이면 $h(x)=x^4-4x+9$이다.\n$h'(x)=4x^3-4=4(x-1)(x^2+x+1)$이고,\n$x^2+x+1=\\left(x+\\dfrac12\\right)^2+\\dfrac34>0$이다.\n따라서 $h'(x)$는 $x=1$을 지나며 음에서 양으로 바뀐다.\n$h(1)=1-4+9=6>0$이므로 모든 실수에서 $h(x)\\ge6>0$이다.\n처음으로 조건을 만족하는 값은 $n=4$이다.\n정답은 ③이다.",
+    "solution": "$n$은 $2$ 이상의 자연수이므로 작은 값부터 조사한다.\n$n=2$이면\n$x^2-2x+1=(x-1)^2$이고,\n$x=1$에서 $0$이므로 항상 양수는 아니다.\n$n=3$일 때 $h(x)=x^3-3x+4$라 하면\n$h'(x)=3x^2-3=3(x-1)(x+1)$이다.\n$x\\ge1$에서 $h'(x)\\ge0$이므로 $h(x)$는 증가하고,\n$h(x)\\ge h(1)=1-3+4=2>0$이다.\n따라서 처음으로 조건을 만족하는 값은 $n=3$이다.\n정답은 ②이다.",
     "subUnitKey": "H15-M2-06-DERIVATIVE_APPLICATION",
     "subUnit": "도함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -580,7 +580,7 @@ window.questionBank=[
     "wide": false,
     "content": "[서답형 3번] 최고차항의 계수가 $1$인 삼차함수 $f(x)$와 실수 $t$에 대하여 함수 $g(x)=\\begin{cases}f(x)&(x\\le t)\\\\-f(x)&(x\\gt t)\\end{cases}$는 실수 전체의 집합에서 연속이고 다음 조건을 만족한다.<div class=\"question-note-box\">(가) $g(x)$는 서로 다른 세 점 $(\\alpha,g(\\alpha))$, $(\\beta,g(\\beta))$, $(\\gamma,g(\\gamma))$에서 극값을 가진다. (단, $\\alpha\\lt \\beta$)<br>(나) $g(\\gamma)=-20$이고, $g(\\alpha)+g(\\beta)+g(\\gamma)=-20$이다.</div>이때, $2(\\beta-\\alpha)^3$의 값을 구하시오. [6점]",
     "answer": "$270$",
-    "solution": "$g$가 $x=t$에서 연속이므로\n$f(t)=-f(t)$, 따라서 $f(t)=g(t)=0$이다.\n삼차함수의 도함수는 최대 두 실근을 가지므로, 세 극값점 중 하나는 $t$이고 다른 두 점은 $f'(x)=0$인 점이다.\n$g(\\gamma)=-20\\ne0$이므로 $\\gamma\\ne t$이다.\n$g(\\alpha)+g(\\beta)+g(\\gamma)=-20$과 $g(\\gamma)=-20$에서\n$g(\\alpha)+g(\\beta)=0$이다.\n$\\alpha,\\beta$ 중 하나가 $t$로 함수값이 $0$이므로 다른 점의 함수값도 $0$이다.\n즉 $f$는 $\\alpha,\\beta$ 중 한 점을 이중근, 다른 점을 단순근으로 갖는다.\n$d=\\beta-\\alpha>0$이라 하자.\n\n① $\\alpha$가 이중근이면\n$f(x)=(x-\\alpha)^2(x-\\beta)$이고\n$f'(x)=(x-\\alpha)(3x-\\alpha-2\\beta)$이다.\n나머지 극값점은 $\\gamma=\\alpha+\\dfrac{2d}{3}$이고\n$g(\\gamma)=f(\\gamma)=\\left(\\dfrac{2d}{3}\\right)^2\\left(-\\dfrac d3\\right)=-\\dfrac{4d^3}{27}$이다.\n\n② $\\beta$가 이중근이면\n$f(x)=(x-\\alpha)(x-\\beta)^2$이고\n나머지 극값점은 $\\gamma=\\alpha+\\dfrac d3$이다.\n$t=\\alpha$이므로 $\\gamma>t$에서 $g=-f$이고\n$g(\\gamma)=-\\left(\\dfrac d3\\right)\\left(-\\dfrac{2d}{3}\\right)^2=-\\dfrac{4d^3}{27}$이다.\n\n두 경우 모두 $g(\\gamma)=-20$이므로\n$-\\dfrac{4d^3}{27}=-20$\n$d^3=135$이다.\n따라서 $2(\\beta-\\alpha)^3=2d^3=270$이다.\n구하는 값은 $270$이다.",
+    "solution": "$g$가 $x=t$에서 연속이므로\n$f(t)=-f(t)$, 따라서 $f(t)=g(t)=0$이다.\n$t$가 아닌 점에서 $g$는 $f$ 또는 $-f$이므로, 그 점이 극값이면 $f'(x)=0$이다.\n$f'$는 이차식이어서 서로 다른 실근이 최대 두 개이므로 세 극값점 중 하나는 $t$이다.\n만약 $f'(t)=0$이면 $t$ 외의 극값점은 $f'$의 다른 한 근에서만 가능하므로 세 점을 만들 수 없다.\n따라서 $f'(t)\\ne0$이고 $t$는 단순근이며, 나머지 두 극값점은 $f'$의 서로 다른 두 근이다.\n$g(\\gamma)=-20\\ne0$이므로 $\\gamma\\ne t$이다.\n따라서 $t$는 $\\alpha$, $\\beta$ 중 하나이다.\n$g(\\alpha)+g(\\beta)+g(\\gamma)=-20$과 $g(\\gamma)=-20$에서\n$g(\\alpha)+g(\\beta)=0$이다.\n$\\alpha$, $\\beta$ 중 하나가 $t$로 함수값이 $0$이므로 다른 점의 함수값도 $0$이다.\n즉 $f$는 $\\alpha$, $\\beta$ 중 한 점을 이중근, 다른 점을 단순근으로 갖는다.\n$d=\\beta-\\alpha>0$이라 하자.\n\n① $\\alpha$가 이중근이면\n$f(x)=(x-\\alpha)^2(x-\\beta)$이고\n$f'(x)=(x-\\alpha)(3x-\\alpha-2\\beta)$이다.\n이 경우 단순근인 $\\beta$가 $t$이므로, 나머지 극값점은\n$\\gamma=\\alpha+\\dfrac{2d}{3}<\\beta=t$이다.\n따라서 $g(\\gamma)=f(\\gamma)$이고\n$g(\\gamma)=\\left(\\dfrac{2d}{3}\\right)^2\\left(-\\dfrac d3\\right)=-\\dfrac{4d^3}{27}$이다.\n\n② $\\beta$가 이중근이면\n$f(x)=(x-\\alpha)(x-\\beta)^2$이고\n나머지 극값점은 $\\gamma=\\alpha+\\dfrac d3$이다.\n이 경우 단순근인 $\\alpha$가 $t$이므로 $\\gamma>t$이고,\n$g(\\gamma)=-f(\\gamma)=-\\left(\\dfrac d3\\right)\\left(-\\dfrac{2d}{3}\\right)^2=-\\dfrac{4d^3}{27}$이다.\n\n두 경우 모두 $g(\\gamma)=-20$이므로\n$-\\dfrac{4d^3}{27}=-20$\n$d^3=135$이다.\n따라서 $2(\\beta-\\alpha)^3=2d^3=270$이다.\n구하는 값은 $270$이다.",
     "subUnitKey": "H15-M2-02-CONTINUITY",
     "subUnit": "함수의 연속",
     "subUnitConfidence": "category_or_cue_inferred",
