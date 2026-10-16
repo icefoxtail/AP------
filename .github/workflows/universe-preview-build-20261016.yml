@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - work/universe-six-stage-preview-20261016
+  pull_request:
+    branches:
+      - main
 permissions:
   contents: write
 jobs:
