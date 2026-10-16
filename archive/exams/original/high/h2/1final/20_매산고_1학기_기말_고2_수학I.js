@@ -141,14 +141,14 @@ window.questionBank = [
     "content": "삼각형 $\\mathrm{ABC}$의 세 각 $\\mathrm{A, B, C}$에 대하여 대변의 길이를 각각 $a, b, c$라고 하자. 세 변의 길이 $a, b, c$에 대하여 $a, b, c$가 순서대로 등비수열을 이루고, 세 내각의 $\\mathrm{A, B, C}$에 대하여 $\\sin\\mathrm{A}, \\sin\\mathrm{B}, \\sin\\mathrm{C}$가 이 순서대로 등차수열을 이룰 때, 삼각형 $\\mathrm{ABC}$는 어떤 삼각형인지 구하면? [4.3점]",
     "choices": [
       "$\\angle\\mathrm{A}$가 직각인 직각삼각형",
-      "$a=b$인 이등변 삼각형",
+      "$a=b\\ne c$인 이등변 삼각형",
       "$\\angle\\mathrm{B}$가 직각인 직각삼각형",
       "$a=c$인 이등변 삼각형",
       "$\\angle\\mathrm{C}$가 직각인 직각삼각형"
     ],
     "images": [],
-    "answer": "②,④",
-    "solution": "사인법칙에 의해 $\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=2R$이므로 $\\sin A=\\dfrac{a}{2R}$, $\\sin B=\\dfrac{b}{2R}$, $\\sin C=\\dfrac{c}{2R}$이다.<br>$\\sin A,\\sin B,\\sin C$가 등차수열이므로 $2\\sin B=\\sin A+\\sin C$이다.<br>이를 대입하면 $\\dfrac{2b}{2R}=\\dfrac{a+c}{2R}$이고, $R>0$이므로 $2b=a+c$이다.<br>$a,b,c$가 순서대로 등비수열이므로 $b^2=ac$이다.<br>따라서 $(a-c)^2=(a+c)^2-4ac=(2b)^2-4b^2=0$이므로 $a=c$이다.<br>또한 $2b=a+c=2a$에서 $b=a$이다.<br>그러므로 $a=b=c$인 정삼각형이므로 ②와 ④가 모두 해당한다."
+    "answer": "④",
+    "solution": "사인법칙에 의해 $\\dfrac{a}{\\sin A}=\\dfrac{b}{\\sin B}=\\dfrac{c}{\\sin C}=2R$이므로 $\\sin A=\\dfrac{a}{2R}$, $\\sin B=\\dfrac{b}{2R}$, $\\sin C=\\dfrac{c}{2R}$이다.<br>$\\sin A,\\sin B,\\sin C$가 등차수열이므로 $2\\sin B=\\sin A+\\sin C$이다.<br>이를 대입하면 $\\dfrac{2b}{2R}=\\dfrac{a+c}{2R}$이고, $R>0$이므로 $2b=a+c$이다.<br>$a,b,c$가 순서대로 등비수열이므로 $b^2=ac$이다.<br>따라서 $(a-c)^2=(a+c)^2-4ac=(2b)^2-4b^2=0$이므로 $a=c$이다.<br>또한 $2b=a+c=2a$에서 $b=a$이다.<br>그러므로 $a=b=c$인 정삼각형이다.<br>따라서 $a=c$를 만족하므로 ④에 해당한다. 반면 ②는 $a=b\\ne c$를 요구하므로 해당하지 않는다.<br>또한 세 각이 모두 $60^\\circ$이므로 직각삼각형인 ①, ③, ⑤도 아니다.<br>따라서 정답은 ④이다."
   },
   {
     "id": 10,
