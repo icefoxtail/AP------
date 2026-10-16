@@ -114,7 +114,7 @@ jsFiles.forEach((jsPath) => {
     }
 
     // 3. 에셋 퀄리티 및 여백 검증 (그림 참조 문항 태그 결속 및 여백 확보)
-    const mentionsDiagram = /(?:그림과\s*같이|다음\s*그림|그림에서|좌표평면\s*위|그래프는|도형은|그림과\s*같은)/.test(qtext);
+    const mentionsDiagram = /(?:그림과\s*같이|다음\s*그림|그림에서|좌표평면\s*위|(?:다음|오른쪽|아래|주어진)\s*그래프는|도형은|그림과\s*같은)/.test(qtext);
     const imgMatches = Array.from(qtext.matchAll(/<img[^>]+src=["']([^"']+)["']/g));
     let assetStatus = "에셋 없음";
 
