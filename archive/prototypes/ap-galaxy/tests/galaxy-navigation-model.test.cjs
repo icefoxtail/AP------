@@ -28,7 +28,7 @@ test('high-two navigation uses current catalog course labels without duplicate a
   const sections = model.buildNavigationSections(exams);
   const labels = sections[2].items.map(({ name }) => name);
   assert.deepEqual(new Set(labels), new Set([
-    '대수', '기하', '기하와벡터', '미적분', '미적분I', '수학I', '수학II', '확률과 통계',
+    '대수', '기하', '미적분I', '미적분II', '확률과 통계',
   ]));
   assert.equal(new Set(labels).size, labels.length, 'a course should appear only once in the navigation');
   assert.equal(sections[1].items.length, 2, 'common courses are shared navigation targets, not repeated in high-two');
@@ -42,4 +42,44 @@ test('legacy math upper/lower labels resolve to common-math galaxies while prese
   assert.equal(model.curriculumGroupForExam(upper).id, 'curriculum:high:공통수학1');
   assert.equal(model.curriculumGroupForExam(lower).id, 'curriculum:high:공통수학2');
   assert.equal(JSON.stringify([upper, lower]), before);
+});
+
+
+test('2015 and 2022 course names join the same galaxy, subject facet and counts', () => {
+  const pairs = [
+    ['수학(상)', '공통수학1'],
+    ['수학(하)', '공통수학2'],
+    ['수학Ⅰ', '대수'],
+    ['수학Ⅱ', '미적분Ⅰ'],
+    ['미적분', '미적분Ⅱ'],
+    ['기하와벡터', '기하'],
+    ['확률과통계', '확률과 통계'],
+  ];
+  const input = pairs.flatMap(([legacy, modern], i) => [
+    { file: 'old-' + i, grade: '고2', subject: legacy, primaryStandardCourse: legacy, curriculum: '2015' },
+    { file: 'new-' + i, grade: '고2', subject: modern, primaryStandardCourse: modern, curriculum: '2022' },
+  ]);
+  const before = JSON.stringify(input);
+  for (const [legacy, modern] of pairs) {
+    assert.equal(model.displayCourseName(legacy), model.displayCourseName(modern));
+  }
+  const grouped = new Map();
+  for (const exam of input) {
+    const group = model.curriculumGroupForExam(exam);
+    grouped.set(group.id, (grouped.get(group.id) || 0) + 1);
+  }
+  assert.equal(grouped.size, pairs.length);
+  assert.ok([...grouped.values()].every((count) => count === 2));
+  const sections = model.buildNavigationSections(input);
+  assert.ok(sections[1].items.every(({count}) => count === 2));
+  assert.equal(JSON.stringify(input), before, 'source curriculum and course labels are retained');
+});
+
+test('subject facet and curriculum grouping use the exact same canonical course label', () => {
+  const fs = require('node:fs');
+  const app = fs.readFileSync(require('node:path').join(__dirname, '../orbit-app.js'), 'utf8');
+  const html = fs.readFileSync(require('node:path').join(__dirname, '../index.html'), 'utf8');
+  assert.match(app, /const subjectFacetValue = \(exam\) => \{[\s\S]*?galaxyNavigation\.displayCourseName\(sourceCourse\)/);
+  assert.match(html, /galaxy-navigation-model\.js\?v=20261016-all-galaxy-visuals-5a-curriculum/);
+  assert.match(html, /orbit-app\.js\?v=20261016-all-galaxy-visuals-5a-curriculum/);
 });
