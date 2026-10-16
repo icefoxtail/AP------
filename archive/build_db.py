@@ -942,10 +942,21 @@ def extract_exam_data_subject(filepath):
     return matches[0] if len(matches) == 1 else ""
 
 
+# Explicitly identified H15 first-semester originals with legacy bare "_기출"
+# filenames. Contemporary high1 records use "수학(상)"; never assume a subject
+# for other unknown sources or silently weaken the index metadata gate.
+LEGACY_SOURCE_SUBJECTS = {
+    "original/high/h1/1final/19_매산고_1학기_기말_고1_기출.js": "수학(상)",
+    "original/high/h1/1mid/21_강남여고_1학기_중간_고1_기출.js": "수학(상)",
+}
+
+
 def parse_source_metadata(filename, rel_path, filepath):
     meta = parse_filename(filename, rel_path)
     if meta and not str(meta.get("subject", "") or "").strip():
-        subject = extract_exam_data_subject(filepath)
+        subject = extract_exam_data_subject(filepath) or LEGACY_SOURCE_SUBJECTS.get(
+            normalize_slash(rel_path), ""
+        )
         if subject:
             meta["subject"] = subject
     return meta
