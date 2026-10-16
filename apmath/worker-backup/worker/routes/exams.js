@@ -1264,10 +1264,12 @@ async function validateTeacherOmrAssignment(env, input, assignmentId, existingSe
 
 const ASSIGNMENT_OPERATION_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
-async function loadClinicQuestionIdentityData(env, sessions = []) {
+async function loadClinicQuestionIdentityData(env, sessions = [], assignmentIdsOverride = null) {
   const rows = Array.isArray(sessions) ? sessions : [];
   const sessionIds = rows.map(row => row.id).filter(Boolean);
-  const assignmentIds = rows.map(row => row.assignment_id).filter(Boolean);
+  const assignmentIds = Array.isArray(assignmentIdsOverride)
+    ? Array.from(new Set(assignmentIdsOverride.map(value => String(value || '').trim()).filter(Boolean)))
+    : Array.from(new Set(rows.map(row => row.assignment_id).filter(Boolean)));
   const [loadedResultItems, assignmentQuestions] = await Promise.all([
     loadAssessmentResultItemSnapshots(env, sessionIds),
     loadAssignmentQuestionSnapshots(env, assignmentIds)
@@ -2675,6 +2677,86 @@ export async function handleExams(request, env, teacher, path, url) {
       const examTitle = url.searchParams.get('exam') || null;
       if (!classId) return jsonResponse({ error: 'class required', students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [], result_items: [], assignment_questions: [] }, 400);
       if (!(await canAccessClass(currentTeacher, classId, env))) return jsonResponse({ error: 'Forbidden' }, 403);
+
+      const exactAssignmentId = normalizeOptionalText(url.searchParams.get('assignment'));
+      if (exactAssignmentId) {
+        const assignment = await env.DB.prepare(
+          'SELECT * FROM class_exam_assignments WHERE id = ? AND class_id = ? LIMIT 1',
+        ).bind(exactAssignmentId, classId).first();
+        if (!assignment) return jsonResponse({
+          success: false,
+          error: 'assignment not found',
+          students: [], sessions: [], wrong_answers: [], blueprints: [], assignments: [], exclusions: [],
+          result_items: [], assignment_questions: [],
+          coverage: { complete: true, scope: 'assignment', assignment_id: exactAssignmentId, session_limit: null },
+        }, 404);
+
+        const sessionColumns = await getTableColumnSet(env, 'exam_sessions');
+        const canQueryAssignmentSessions = sessionColumns.has('assignment_id') && sessionColumns.has('class_id');
+        const sessions = canQueryAssignmentSessions
+          ? await env.DB.prepare(`
+              SELECT * FROM exam_sessions
+              WHERE assignment_id = ? AND class_id = ?
+              ORDER BY exam_date DESC, updated_at DESC, id DESC
+            `).bind(assignment.id, classId).all()
+          : { results: [] };
+        const sessionIds = (sessions.results || []).map(row => String(row.id || '')).filter(Boolean);
+        const wrongAnswers = canQueryAssignmentSessions
+          ? await env.DB.prepare(`
+              SELECT wa.*
+              FROM wrong_answers wa
+              JOIN exam_sessions es ON es.id = wa.session_id
+              WHERE es.assignment_id = ? AND es.class_id = ?
+              ORDER BY wa.session_id, wa.question_id
+            `).bind(assignment.id, classId).all()
+          : { results: [] };
+        const recipientSnapshotExists = await hasClassExamAssignmentRecipients(env);
+        const exclusionSnapshotExists = await hasClassExamAssignmentExclusions(env);
+        const recipientCoverage = recipientSnapshotExists && exclusionSnapshotExists;
+        const students = recipientCoverage
+          ? await env.DB.prepare(`
+              SELECT s.id, s.name, s.school_name, s.grade, s.status
+              FROM class_exam_assignment_recipients r
+              JOIN students s ON s.id = r.student_id
+              LEFT JOIN class_exam_assignment_exclusions x
+                ON x.assignment_id = r.assignment_id AND x.student_id = r.student_id
+              WHERE r.assignment_id = ?
+                AND (x.student_id IS NULL OR x.reason != 'archive2_target')
+              ORDER BY s.name, s.id
+            `).bind(assignment.id).all()
+          : canQueryAssignmentSessions
+            ? await env.DB.prepare(`
+              SELECT s.id, s.name, s.school_name, s.grade, s.status
+              FROM exam_sessions es JOIN students s ON s.id = es.student_id
+              WHERE es.class_id = ? AND es.assignment_id = ?
+              GROUP BY s.id, s.name, s.school_name, s.grade, s.status
+              ORDER BY s.name, s.id
+            `).bind(classId, assignment.id).all()
+            : { results: [] };
+        const identityData = await loadClinicQuestionIdentityData(env, sessions.results || [], [assignment.id]);
+        const exclusions = await loadClassAssignmentExclusions(env, [assignment.id]);
+        return jsonResponse({
+          success: true,
+          students: students.results || [],
+          sessions: sessions.results || [],
+          wrong_answers: wrongAnswers.results || [],
+          blueprints: [],
+          ...identityData,
+          assignments: [assignment],
+          exclusions,
+          coverage: {
+            complete: canQueryAssignmentSessions && recipientCoverage,
+            scope: 'assignment',
+            assignment_id: assignment.id,
+            session_limit: null,
+            session_count: sessionIds.length,
+            result_item_count: (identityData.result_items || []).length,
+            assignment_question_count: (identityData.assignment_questions || []).length,
+            recipient_scope: 'assignment_snapshot',
+            recipient_coverage_complete: recipientCoverage,
+          },
+        });
+      }
 
       const studentIds = await env.DB.prepare('SELECT student_id FROM class_students WHERE class_id = ?').bind(classId).all();
       const sIds = studentIds.results.map(r => r.student_id);
