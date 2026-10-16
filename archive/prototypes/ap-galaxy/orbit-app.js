@@ -7,7 +7,7 @@
     grade: $('gradeFilter'), school: $('schoolFilter'), year: $('yearFilter'), term: $('termFilter'), subject: $('subjectFilter'), unit: $('unitFilter'),
     filterPanel: $('filterPanel'), filterToggle: $('filterToggle'), focusedChip: $('focusedChip'),
     drawer: $('examDrawer'), frame: $('examFrame'), previewLoadState: $('previewLoadState'), previewLoadMessage: $('previewLoadMessage'),
-    title: $('examTitle'), meta: $('examMeta'), source: $('examSource'),
+    title: $('examTitle'), meta: $('examMeta'), source: $('examSource'), previewHeading: $('previewHeading'), advancedQuestions: $('advancedQuestions'),
     openOriginal: $('openOriginal'), openFullSolution: $('openFullSolution'), composeExam: $('composeExam'), printOriginal: $('printOriginal'), previewHeadingTitle: $('previewHeadingTitle'), previewHeadingDescription: $('previewHeadingDescription'), labels: $('planetLabels'), facetSpaceLabels: $('facetSpaceLabels'), satelliteLabels: $('satelliteLabels'),
     focusName: $('focusedSchoolName'), focusMeta: $('focusedSchoolMeta'), mobileExamList: $('mobileExamList'),
     mobileFocusHeader: $('mobileFocusHeader'), mobileFocusBreadcrumb: $('mobileFocusBreadcrumb'), toast: $('toast'),
@@ -28,7 +28,7 @@
     world: null, tagsByFile: new Map(), filesByTag: new Map(), groupsById: new Map(),
     groupLabels: new Map(), satelliteButtons: new Map(), toastTimer: 0, searchTimer: 0,
     pointer: null, hoveredGroupId: '', hoveredLabelGroupId: '',
-    questionRows: [], selectedQuestion: null, readerMode: 'exam', readerGeneration: 0,
+    questionRows: [], selectedQuestion: null, readerMode: 'exam', readerGeneration: 0, questionLoadGeneration: 0, examReturnScrollY: 0,
     examGeneration: 0, frameGeneration: 0, entrySnapshot: null, pendingExamFocus: '', instant: false,
     examsByFile: new Map(), scaleMode: 'macro', atlasCollapsed: false, solutionFallback: false,
     galaxyNavigationSections: [], galaxyNavResizeObserver: null,
@@ -431,13 +431,13 @@
       button.className = 'question-orbit-node';
       button.dataset.questionId = row.id;
       button.classList.toggle('selected', state.selectedQuestion?.id === row.id);
-      button.textContent = row.id;
+      button.textContent = String(row.ordinal);
       button.title = '원본 문항 ID ' + row.id + ' · ' + row.ordinal + '번째 문항 열기';
       button.setAttribute('aria-label', button.title);
       button.addEventListener('click', () => selectQuestion(row));
       ui.questionOrbit.appendChild(button);
     }
-    state.world?.setQuestionOrbit(state.selectedExam?.file, rows);
+    // Advanced picker stays in the paper panel. No default 3D question satellites.
   }
   function clearQuestionOrbit() {
     ui.questionOrbit.replaceChildren();
@@ -460,7 +460,7 @@
     ui.previewLoadState.dataset.state = kind;
     ui.previewLoadState.setAttribute('role', failed ? 'alert' : 'status');
     ui.previewLoadMessage.textContent = failed
-      ? '원본 미리보기를 불러오지 못했습니다. 위의 “새 창”에서 원본을 열어 주세요.'
+      ? '미리보기를 불러오지 못했습니다. 위의 “출력”에서 시험지를 열어 주세요.'
       : '원본 시험지의 문항을 불러오는 중…';
     ui.previewLoadState.parentElement.setAttribute('aria-busy', String(loading));
   }
@@ -506,8 +506,9 @@
     return mode === 'ans' ? '정답' : mode === 'sol' ? '해설' : '문제';
   }
   function resetPreviewHeading(exam) {
-    ui.previewHeadingTitle.textContent = '원본 시험지';
-    ui.previewHeadingDescription.textContent = '원본 문제 내용과 순서를 유지합니다.';
+    ui.previewHeading.hidden = true;
+    ui.previewHeadingTitle.textContent = '';
+    ui.previewHeadingDescription.textContent = '';
     ui.openOriginal.href = sourceUrl(exam, { preview: false });
     ui.openOriginal.textContent = '새 창 ↗';
     ui.frame.title = '선택한 원본 시험지 미리보기';
@@ -522,7 +523,8 @@
     const solutionUrl = sourceUrl(exam, { mode: 'sol', loadGeneration: frameToken });
     const examUrl = sourceUrl(exam, { mode: 'exam', loadGeneration: frameToken });
     ui.readerTitle.textContent = '문항 ' + row.id + ' · 전체 해설 새 창';
-    ui.previewHeadingTitle.textContent = '원본 시험지 · 전체 해설은 새 창';
+    ui.previewHeading.hidden = false;
+    ui.previewHeadingTitle.textContent = '해설 새 창';
     ui.previewHeadingDescription.textContent = '문항별 해설 전환을 멈추고 정상 원본 경로를 제공합니다.';
     ui.openOriginal.href = solutionUrl;
     ui.openOriginal.textContent = '전체 해설 새 창 ↗';
@@ -586,6 +588,10 @@
   function selectQuestion(row) {
     if (!state.selectedExam || !state.questionRows.includes(row)) return;
     resetPreviewHeading(state.selectedExam);
+    if (!state.selectedQuestion) {
+      try { state.examReturnScrollY = ui.frame.contentWindow?.scrollY || 0; }
+      catch (_) { state.examReturnScrollY = 0; }
+    }
     state.selectedQuestion = row;
     ui.drawer.classList.add('reading-focus');
     ui.readerToolbar.hidden = false;
@@ -612,11 +618,20 @@
         const frameToken = state.frameGeneration;
         setInlinePreviewState('loading');
         tab.click();
-        if (exam) waitForInlinePreview(exam, examToken, frameToken);
+        if (exam) waitForInlinePreview(exam, examToken, frameToken).then(() => {
+          if (examToken !== state.examGeneration || state.selectedQuestion) return;
+          try { ui.frame.contentWindow?.scrollTo(0, state.examReturnScrollY); }
+          catch (_) { /* An in-flight iframe remains on the original source URL. */ }
+        });
       }
-      ui.frame.contentWindow?.scrollTo(0, 0);
+      const examToken = state.examGeneration;
+      requestAnimationFrame(() => {
+        if (examToken !== state.examGeneration || state.selectedQuestion) return;
+        try { ui.frame.contentWindow?.scrollTo(0, state.examReturnScrollY); }
+        catch (_) { /* An in-flight iframe remains on the original source URL. */ }
+      });
     } catch (_) { /* An in-flight iframe remains on the original source URL. */ }
-    setQuestionStatus(state.questionRows.length ? state.questionRows.length + '개 실제 문항 궤도 · 전체 시험지' : '');
+    setQuestionStatus('');
   }
   function arriveAtExam(file) {
     if (!file || state.selectedExam?.file !== file) return;
@@ -633,7 +648,10 @@
     const token = ++state.examGeneration;
     state.readerGeneration++;
     window.APOrbitQuestionReader?.abort();
+    ++state.questionLoadGeneration;
+    ui.advancedQuestions.open = false;
     clearQuestionOrbit();
+    state.examReturnScrollY = 0;
     const wasDetailed = state.visibleExams.some(item => item.file === exam.file);
     state.selectedExam = exam;
     state.world?.setSelectedExam(exam.file);
@@ -681,24 +699,34 @@
       }
     }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 360);
     $('drawerBack').focus({ preventScroll: true });
-    setQuestionStatus('실제 시험지의 문항 ID를 읽는 중…');
     if (!wasDetailed) renderScene();
     state.focusedGroupId = groupKeyForExam(exam).id;
     renderSatelliteLabels();
     state.pendingExamFocus = exam.file;
     state.world?.focusGroup(state.focusedGroupId);
+  }
+  function toggleAdvancedQuestions() {
+    const loadToken = ++state.questionLoadGeneration;
+    if (!ui.advancedQuestions.open) {
+      if (state.selectedQuestion) showWholeExam();
+      window.APOrbitQuestionReader?.abort();
+      clearQuestionOrbit();
+      return;
+    }
+    const exam = state.selectedExam;
+    if (!exam) return;
+    const examToken = state.examGeneration;
+    setQuestionStatus('문항 번호를 불러오는 중…');
     window.APOrbitQuestionReader.load(exam.file).then((rows) => {
-      if (token !== state.examGeneration || state.selectedExam?.file !== exam.file) return;
+      if (loadToken !== state.questionLoadGeneration || examToken !== state.examGeneration ||
+          state.selectedExam?.file !== exam.file || !ui.advancedQuestions.open) return;
       state.questionRows = rows;
-      if (matchMedia('(max-width:760px)').matches && rows[0]) selectQuestion(rows[0]);
-      if (state.world) renderQuestionOrbit(rows);
-      else requestAnimationFrame(() => {
-        if (token === state.examGeneration && state.selectedExam?.file === exam.file) renderQuestionOrbit(rows);
-      });
-      setQuestionStatus(rows.length + '개 실제 문항 · 별 주위 번호를 선택하세요.');
-    }).catch((error) => {
-      if (token !== state.examGeneration) return;
-      setQuestionStatus('문항 궤도를 열지 못했습니다 (' + error.message + '). 전체 시험지는 계속 열 수 있습니다.');
+      renderQuestionOrbit(rows);
+      setQuestionStatus(rows.length ? '' : '선택할 문항이 없습니다.');
+    }).catch(() => {
+      if (loadToken !== state.questionLoadGeneration || examToken !== state.examGeneration ||
+          !ui.advancedQuestions.open) return;
+      setQuestionStatus('문항 탐색을 열 수 없습니다.');
       ui.readerToolbar.hidden = true;
     });
   }
@@ -708,6 +736,8 @@
     ++state.frameGeneration;
     ++state.readerGeneration;
     window.APOrbitQuestionReader?.abort();
+    ++state.questionLoadGeneration;
+    ui.advancedQuestions.open = false;
     clearQuestionOrbit();
     state.pendingExamFocus = '';
     ui.drawer.style.removeProperty('visibility');
@@ -1225,7 +1255,7 @@
       else closeExam();
     });
     $('closeDrawer').addEventListener('click', () => closeExam());
-    $('wholeExam').addEventListener('click', showWholeExam);
+    ui.advancedQuestions.addEventListener('toggle', toggleAdvancedQuestions);
     ui.atlasExplore.addEventListener('click', () => {
       toggleList(true);
       ui.search.focus({ preventScroll: true });

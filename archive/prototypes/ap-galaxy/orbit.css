@@ -421,3 +421,25 @@ body.search-active .planet-label{color:#fff;text-shadow:0 1px 2px #000}
 @media (max-width: 760px) {
   .universe { background-position: center, center, 56% center; }
 }
+
+
+/* Exam-first Archive 2.0 fast flow: direct existing engines, optional question drill-down. */
+.preview-heading[hidden],.question-picker-status[hidden]{display:none!important}
+.exam-workflow-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:6px;margin-bottom:6px}
+.exam-workflow-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:7px 5px;
+  border:1px solid #b4d7f548;border-radius:8px;background:#112a43;color:#f4fbff;text-align:center;font-size:12px;font-weight:700;text-decoration:none}
+.exam-workflow-actions a:hover,.exam-workflow-actions a:focus-visible{background:#1e4664;border-color:#bfe7ffcc;text-decoration:none}
+.exam-workflow-actions a:first-child{background:#d7eaff;color:#10233d}
+.exam-workflow-actions a:first-child:hover,.exam-workflow-actions a:first-child:focus-visible{background:white;color:#10233d}
+.advanced-questions{flex:0 0 auto;margin:0 12px 8px;border:1px solid #9fc7ff26;border-radius:9px;background:#0b192ca8}
+.advanced-questions summary{cursor:pointer;min-height:34px;display:list-item;padding:8px 13px;color:#afc2db;font-size:11px}
+.advanced-questions summary:hover,.advanced-questions summary:focus-visible{color:#ecf6ff}
+.advanced-questions[open] summary{border-bottom:1px solid #b3dcff22}
+.question-picker{display:flex;flex-wrap:wrap;gap:6px;max-height:105px;overflow-y:auto;padding:8px 12px}
+.question-picker:empty{display:none}
+.question-picker .question-orbit-node{position:static;display:inline-flex;transform:none;align-items:center;justify-content:center;
+  min-width:32px;width:32px;height:32px;padding:0;font-size:11px}
+.question-picker-status{padding:9px 12px;color:#bcd7f0;font-size:11px}
+.advanced-questions .question-toolbar{padding:7px 8px}
+@media(max-width:760px){.question-picker{max-height:114px}.question-picker .question-orbit-node{min-width:36px;width:36px;height:36px;font-size:12px}
+  .exam-workflow-actions a{min-height:42px;font-size:12px}.advanced-questions summary{min-height:40px;padding:11px 13px}}

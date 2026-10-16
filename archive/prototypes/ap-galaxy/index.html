@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#050916">
   <title>아카이브 유니버스 · 공개 시험지 탐색</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./orbit.css?v=20261016-all-galaxy-visuals-5a">
+  <link rel="stylesheet" href="./orbit.css?v=20261017-exam-fastflow-1">
 </head>
 <body>
   <main class="universe" id="universe" aria-label="학년과 과정 은하를 탐색하는 공개 시험지 우주">
@@ -140,9 +140,6 @@
     <div class="facet-space-label-layer" id="facetSpaceLabels" aria-hidden="true"></div>
     <div class="satellite-label-layer" id="satelliteLabels"></div>
     <div class="blackhole-label-layer" id="blackholeLabels"></div>
-    <div id="questionOrbit" class="question-orbit-layer" role="group" aria-label="선택한 시험지의 문항 궤도"></div>
-    <div id="questionStatus" class="question-orbit-status" role="status" aria-live="polite" hidden></div>
-
     <div class="entry-chip glass" id="focusedChip" hidden>
       <span class="entry-orb" aria-hidden="true"></span>
       <span><small>선택한 은하</small><b id="focusedSchoolName"></b><small id="focusedSchoolMeta"></small></span>
@@ -164,17 +161,24 @@
         <div class="paper-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
         <div><span class="eyebrow">EXAM SATELLITE</span><h2 id="examTitle">시험지를 불러오는 중</h2><div class="exam-meta" id="examMeta"></div><code class="exam-source" id="examSource"></code></div>
       </div>
-      <div class="preview-heading"><strong id="previewHeadingTitle">원본 시험지</strong><span id="previewHeadingDescription">원본 문제 내용과 순서를 유지합니다.</span><a id="openOriginal" href="#" target="_blank" rel="noopener">원본 ↗</a><a id="openFullSolution" href="#" target="_blank" rel="noopener">전체 해설 ↗</a></div>
-      <div class="exam-workflow-actions"><a id="composeExam" href="#" target="_blank" rel="noopener">이 시험 문항으로 문제지 구성 <span aria-hidden="true">→</span></a><small>공개 원본 문항을 선택한 뒤 실제 출력 미리보기까지 이어집니다.</small></div>
-      <div class="question-toolbar" id="questionToolbar" role="group" aria-label="선택한 문항의 빠른 읽기" hidden>
+      <div class="preview-heading" id="previewHeading" hidden><strong id="previewHeadingTitle"></strong><span id="previewHeadingDescription"></span><a id="openOriginal" href="#" target="_blank" rel="noopener">원본 ↗</a></div>
+      <nav class="exam-workflow-actions" aria-label="시험지 빠른 작업">
+        <a id="composeExam" href="#" target="_blank" rel="noopener">출제</a>
+        <a id="printOriginal" href="#" target="_blank" rel="noopener">출력</a>
+        <a id="openFullSolution" href="#" target="_blank" rel="noopener">정답·해설</a>
+      </nav>
+      <details class="advanced-questions" id="advancedQuestions">
+        <summary>문항 선택 · 고급</summary>
+        <div id="questionStatus" class="question-picker-status" role="status" aria-live="polite" hidden></div>
+        <div id="questionOrbit" class="question-picker" role="group" aria-label="문항 번호 선택"></div>
+        <div class="question-toolbar" id="questionToolbar" role="group" aria-label="선택한 문항의 빠른 읽기" hidden>
         <b id="readerQuestionTitle"></b>
         <select id="questionSelect" class="question-select" aria-label="Question selector"></select>
         <button type="button" data-reader-mode="exam" aria-pressed="true">문제</button>
         <button type="button" data-reader-mode="ans" aria-pressed="false">정답</button>
         <button type="button" data-reader-mode="sol" aria-pressed="false">해설</button>
-        <button type="button" id="wholeExam">전체 시험지</button>
-        <a id="printOriginal" href="#" target="_blank" rel="noopener">전체 시험지·인쇄 ↗</a>
-      </div>
+        </div>
+      </details>
       <div class="preview-frame" aria-busy="false">
         <div class="preview-load-state" id="previewLoadState" role="status" aria-live="polite" aria-atomic="true" hidden>
           <span class="preview-load-spinner" aria-hidden="true"></span>
@@ -182,7 +186,6 @@
         </div>
         <iframe id="examFrame" title="선택한 원본 시험지 미리보기" loading="eager"></iframe>
       </div>
-      <p class="drawer-foot">공개 Archive catalog와 기존 원본 미리보기 경로를 사용합니다. 문제 생성·저장·학생 배부는 수행하지 않습니다.</p>
     </aside>
 
     <aside class="list-panel glass" id="listPanel" aria-hidden="true" aria-label="catalog 시험지 목록">
@@ -199,6 +202,6 @@
   <script src="./visual-profile.js?v=20261016-all-galaxy-visuals-5a"></script>
   <script src="./orbit-question-reader.js?v=20261016-all-galaxy-visuals-5a"></script>
   <script src="./galaxy-navigation-model.js?v=20261016-all-galaxy-visuals-5b-geometry-year"></script>
-  <script src="./orbit-app.js?v=20261016-all-galaxy-visuals-5b-geometry-year"></script>
+  <script src="./orbit-app.js?v=20261017-exam-fastflow-1"></script>
 </body>
 </html>
