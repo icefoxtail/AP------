@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "PALMA25_QID9_Q09_GENERATED_EXT_L4_v1",
+  "date": "2026-10-15",
+  "status": "GENERATED_ACTIVE",
+  "studentPublication": "NOT_RUN",
+  "sourcePath": "archive/exams/original/high/h1/2final/25_팔마고_2학기_기말_고1_기출.js",
+  "sourceSha": "0d12b75e824ab47f08fc3b5a6180be595f882c6e",
+  "sourceQid": 9,
+  "parentPrimaryL3": "H1-RPM-258",
+  "parentL3Label": "함수의 성질",
+  "originalRecordL4": "항등함수·상수함수",
+  "originalRecordL4SemanticApplicability": "NOT_APPLICABLE_TO_Q09",
+  "rpmLockedModified": false,
+  "existingProblemType": "PT_FUNCTIONAL_EQUATION",
+  "existingTemplate": "TPL_FUNCTIONAL_EQUATION_ADDITIVE",
+  "currentActiveBinding": "2022/공통수학2/H22-C2-07/H22-C2-07-FUNCTION_BASIC",
+  "existingGeneratedExtL4Compared": [
+    "geumdang-2025-2final-qid9-registry.json (four integer/real preimages; not additive equation)",
+    "geumdang-2025-2final-q06-registry.json (bijection parameter; not additive equation)"
+  ],
+  "extensions": [
+    {
+      "generatedExtL4Id": "EXT-PALMA25-Q09-ADDITIVE-VALUES",
+      "parentLockedRpmL3Id": "H1-RPM-258",
+      "labelKo": "가법형 함수방정식의 정수배 및 음수 입력",
+      "definition": "실수 전체에 성립하는 f(x+y)=f(x)+f(y)로부터 필요한 정수 입력에서의 반복·음수·역산·부등식 관계를 판정한다.",
+      "decisiveStepSignature": "f(0)=0; f(m)=m f(1) (integer m), f(-m)=-f(m); from one known value recover integer target",
+      "sourceQid": 9,
+      "examples": [
+        "A1",
+        "A2",
+        "A3",
+        "B1",
+        "B2",
+        "C2"
+      ],
+      "comparisons": "기존 RPM H1-RPM-258 L4 항등함수·상수함수는 함수방정식의 값 복원과 다르므로 동일 L4로 오기 금지.",
+      "crossConceptRoles": [],
+      "conditionRoles": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPath": "SEQUENTIAL / REINTERPRETATION / INTERDEPENDENT",
+      "lifecycle": "GENERATED_ACTIVE",
+      "exampleUids": [
+        "ALITE-PALMA25-2FINAL-Q09-A1",
+        "ALITE-PALMA25-2FINAL-Q09-A2",
+        "ALITE-PALMA25-2FINAL-Q09-A3",
+        "ALITE-PALMA25-2FINAL-Q09-B1",
+        "ALITE-PALMA25-2FINAL-Q09-B2",
+        "ALITE-PALMA25-2FINAL-Q09-C2"
+      ]
+    },
+    {
+      "generatedExtL4Id": "EXT-PALMA25-Q09-SHIFTED-ADDITIVITY",
+      "parentLockedRpmL3Id": "H1-RPM-258",
+      "labelKo": "상수항이 더해진 가법형 함수방정식",
+      "definition": "f(x+y)=f(x)+f(y)+c로부터 f(1)과 정수 입력의 추가 상수 누적을 복원한다.",
+      "decisiveStepSignature": "f(2)=2f(1)+c; f(n+1)=f(n)+f(1)+c",
+      "sourceQid": 9,
+      "examples": [
+        "B3"
+      ],
+      "comparisons": "상수항 없는 가법 관계와 달리 매 합성마다 추가항 c가 발생. 기존 RPM 특수함수 L4와 구별.",
+      "crossConceptRoles": [],
+      "conditionRoles": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPath": "SEQUENTIAL",
+      "lifecycle": "GENERATED_ACTIVE",
+      "exampleUids": [
+        "ALITE-PALMA25-2FINAL-Q09-B3"
+      ]
+    },
+    {
+      "generatedExtL4Id": "EXT-PALMA25-Q09-BILINEAR-ADDITIVITY",
+      "parentLockedRpmL3Id": "H1-RPM-258",
+      "labelKo": "곱항이 더해진 함수방정식의 단계적 값 복원",
+      "definition": "f(x+y)=f(x)+f(y)+cxy의 추가 곱항에 따라 달라지는 정수 단계의 증가량을 계산하고 목표 함숫값이나 범위 조건을 판정한다.",
+      "decisiveStepSignature": "f(n+1)=f(n)+f(1)+cn; each n=1,2,... step exact; verify boundaries",
+      "sourceQid": 9,
+      "examples": [
+        "C1",
+        "C3"
+      ],
+      "comparisons": "원본의 순수 가법 관계보다 추가 항 cxy의 n 의존성을 매 단계 추적해야 함. RPM 기존 항등함수·상수함수 L4로 대체 불가.",
+      "crossConceptRoles": [],
+      "conditionRoles": [
+        "COND_UNIVERSAL_INPUTS",
+        "COND_FUNCTION_VALUE_CONSTRAINT",
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPath": "SEQUENTIAL / INTERDEPENDENT",
+      "lifecycle": "GENERATED_ACTIVE",
+      "exampleUids": [
+        "ALITE-PALMA25-2FINAL-Q09-C1",
+        "ALITE-PALMA25-2FINAL-Q09-C3"
+      ]
+    }
+  ]
+}
+
