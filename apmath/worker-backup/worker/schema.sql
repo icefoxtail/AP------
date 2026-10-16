@@ -264,6 +264,7 @@ CREATE TABLE IF NOT EXISTS exam_blueprints (
   difficulty TEXT,
   metadata_revision TEXT,
   metadata_hash TEXT,
+  metadata_json TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (archive_file, question_no)

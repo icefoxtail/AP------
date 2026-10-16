@@ -695,11 +695,19 @@ function itemFromRow(row) {
 
 function clinicItemOwnershipKey(item, row = {}) {
   const uid = text(item?.sourceQuestionUid);
-  if (uid) return `uid:${uid}|meta:${text(item.metadataRevision)}|${text(item.metadataHash)}`;
+  let metadataContentHash = text(item?.metadataContentHash || item?.metadata_content_hash);
+  if (!metadataContentHash && (item?.metadataJson || item?.metadata_json)) {
+    const snapshot = parseJson(item.metadataJson || item.metadata_json, {}) || {};
+    metadataContentHash = text(snapshot.metadataContentHash);
+  }
+  if (uid) return `uid:${uid}|meta:${metadataContentHash
+    ? `content:${metadataContentHash}`
+    : `${text(item.metadataRevision)}|${text(item.metadataHash)}`}`;
   const file = text(item?.sourceArchiveFile || row.archive_file);
   const ordinal = Number(item?.sourceQuestionOrdinal || 0);
   const questionNo = Number(item?.sourceQuestionNo || row.question_no || 0);
-  if (file && ordinal > 0 && item?.sourceIdentityStatus !== 'UNRESOLVED') return `${file}|ordinal:${ordinal}`;
+  if (file && ordinal > 0 && item?.sourceIdentityStatus !== 'UNRESOLVED')
+    return `${file}|ordinal:${ordinal}${metadataContentHash ? `|meta:content:${metadataContentHash}` : ''}`;
   const origin = (item?.sourceOriginRefs || [])[0] || {};
   if (origin.assignmentId || origin.sessionId)
     return `origin:${origin.assignmentId || origin.sessionId}|order:${Number(origin.orderNo || item?.displayQuestionNo || questionNo || 0)}`;

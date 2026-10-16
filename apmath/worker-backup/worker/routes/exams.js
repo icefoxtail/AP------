@@ -3,7 +3,12 @@ import { canAccessClass, canAccessStudent, getAllowedClassIds, isAdminUser, isSt
 import { jsonResponse } from '../helpers/response.js';
 import { createAssignmentPdfDownloadResponse, ensureAssignmentPdf } from './exam-pdf.js';
 import { handleArchive2 } from './archive2.js';
-import { targetClassGradeSql } from '../helpers/archive2-questions.js';
+import {
+  targetClassGradeSql,
+  buildBlueprintMetadataSnapshot,
+  loadBlueprintCanonicalMetadata,
+  loadBlueprintSourceVerification,
+} from '../helpers/archive2-questions.js';
 import { handleArchiveSavedPapers } from './archive-saved-papers.js';
 import {
   assignmentLifecycleError,
@@ -263,10 +268,12 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
     const blueprintIdentityColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_IDENTITY_COLUMNS);
     const blueprintMetaColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_META_COLUMNS);
     const blueprintArchiveMetadataColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_ARCHIVE_METADATA_COLUMNS);
+    const blueprintHasMetadataJson = blueprintColumns.has('metadata_json');
     const canCompareMetadata = blueprintColumns.has('metadata_revision') && blueprintColumns.has('metadata_hash');
     const existingSelect = ['question_no'];
     if (blueprintIdentityColumns.includes('source_question_ordinal')) existingSelect.push('source_question_ordinal');
     if (canCompareMetadata) existingSelect.push('metadata_revision', 'metadata_hash');
+    if (blueprintHasMetadataJson) existingSelect.push('metadata_json', 'source_question_uid', 'source_archive_file', 'source_question_no');
     const existingResult = await env.DB.prepare(
       `SELECT ${existingSelect.join(', ')} FROM exam_blueprints WHERE archive_file = ?`
     ).bind(file).all();
@@ -282,18 +289,19 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
       };
     }));
 
+    const existingByOrdinal = new Map(
+      existingRows
+        .filter(row => Number(row.source_question_ordinal) > 0)
+        .map(row => [Number(row.source_question_ordinal), row])
+    );
+    const existingByQuestionNo = new Map(existingRows.map(row => [Number(row.question_no), row]));
+
     if (canCompareMetadata && existingRows.length === metadataRows.length) {
-      const existingByOrdinal = new Map(
-        existingRows
-          .filter(row => Number(row.source_question_ordinal) > 0)
-          .map(row => [Number(row.source_question_ordinal), row])
-      );
-      const existingByQuestionNo = new Map(existingRows.map(row => [Number(row.question_no), row]));
       const unchanged = metadataRows.every(row => {
         const existing = existingByOrdinal.get(row.sourceOrdinal) || existingByQuestionNo.get(row.questionNo);
-        return existing &&
+        return existing && (
           String(existing.metadata_revision || '') === String(row.metadata.metadataRevision || '') &&
-          String(existing.metadata_hash || '') === String(row.metadataHash || '');
+          String(existing.metadata_hash || '') === String(row.metadataHash || ''));
       });
       if (unchanged) return;
     } else if (!canCompareMetadata && existingRows.length > 0) {
@@ -301,21 +309,96 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
       return;
     }
 
+    let sourceRecordsByOrdinal = new Map();
+    let sourceProjectionVersion = null;
+    if (blueprintHasMetadataJson) {
+      try {
+        const sourceBundle = await loadBlueprintSourceVerification(env, file);
+        if (!sourceBundle.legacyManifest) {
+          const actualSourceHash = await sha256hex(jsText.replace(/\r\n/g, '\n'));
+          if (actualSourceHash === String(sourceBundle.shard.sourceSha256 || '').toLowerCase()) {
+            sourceProjectionVersion = sourceBundle.projectionVersion || null;
+            sourceRecordsByOrdinal = new Map((sourceBundle.shard.records || [])
+              .map(row => [Number(row.sourceOrdinal), row]));
+          } else {
+            console.warn('[exams] archive blueprint Meta source bytes differ from current projection:', file);
+          }
+        }
+      } catch (error) {
+        console.warn('[exams] archive blueprint canonical Meta capture unavailable:', file, error?.message || error);
+      }
+    }
+
     const stmts = (await Promise.all(bank.map(async (q, index) => {
       const questionNo = Number(String(q?.id ?? '').match(/\d+/)?.[0] || 0);
       if (!questionNo) return null;
       const sourceOrdinal = index + 1;
+      const priorBlueprint = existingByOrdinal.get(sourceOrdinal) || existingByQuestionNo.get(questionNo);
+      if (canCompareMetadata && priorBlueprint &&
+          String(priorBlueprint.metadata_revision || '') === String(metadataRows[index].metadata.metadataRevision || '') &&
+          String(priorBlueprint.metadata_hash || '') === String(metadataRows[index].metadataHash || ''))
+        return null;
       const sourceQuestionUid = blueprintIdentityColumns.includes('source_question_uid')
         ? await makeCanonicalQuestionUid(file, sourceOrdinal)
         : null;
       const metadataRow = metadataRows[index];
       const metadata = metadataRow.metadata;
+      const canonicalRecord = sourceRecordsByOrdinal.get(sourceOrdinal) || null;
+      const canonicalIdentityVerified = Boolean(
+        canonicalRecord?.identityStatus === 'VERIFIED' &&
+        String(canonicalRecord.questionUid || '') === String(sourceQuestionUid || '') &&
+        Number(canonicalRecord.sourceOrdinal) === sourceOrdinal &&
+        normalizeSourceFileForQuestionUid(canonicalRecord.sourceFile) === normalizeSourceFileForQuestionUid(file),
+      );
+      let priorSnapshot = null;
+      if (priorBlueprint?.metadata_json) {
+        try { priorSnapshot = JSON.parse(String(priorBlueprint.metadata_json)); }
+        catch {}
+      }
+      const priorIdentity = priorSnapshot?.sourceIdentity;
+      const preservePriorMeta = Boolean(
+        !canonicalRecord && priorSnapshot && sourceQuestionUid &&
+        ['VERIFIED', 'LEGACY_INFERRED'].includes(String(priorIdentity?.status || '').toUpperCase()) &&
+        normalizeSourceFileForQuestionUid(priorIdentity.sourceArchiveFile || priorIdentity.normalizedSourceFile) ===
+          normalizeSourceFileForQuestionUid(file) &&
+        String(priorIdentity.sourceQuestionUid || '') === String(sourceQuestionUid) &&
+        Number(priorIdentity.sourceQuestionOrdinal) === sourceOrdinal &&
+        (priorIdentity.sourceQuestionNo == null || q?.id == null ||
+          String(priorIdentity.sourceQuestionNo) === String(q.id))
+      );
+      const metadataJson = blueprintHasMetadataJson
+        ? await buildBlueprintMetadataSnapshot(q, {
+            buildArchiveQuestionMetadata,
+            buildArchiveMetadataHash,
+          }, {
+            priorSnapshot: preservePriorMeta ? priorSnapshot : null,
+            preservePriorMeta,
+            archiveMetadata: metadata,
+            canonicalRecord,
+            sourceIdentityStatus: canonicalIdentityVerified ? 'VERIFIED' : 'UNRESOLVED',
+            sourceArchiveFile: file,
+            sourceQuestionUid,
+            sourceQuestionOrdinal: sourceOrdinal,
+            sourceQuestionNo: q?.id ?? null,
+            sourceFingerprint: canonicalRecord?.sourceFingerprint || null,
+            projectionVersion: preservePriorMeta
+              ? priorSnapshot?.sourceProjectionVersion || null
+              : sourceProjectionVersion,
+            captureSource: preservePriorMeta
+              ? 'PRIOR_META_RETAINED_NO_CURRENT_SOURCE_AUTHORITY'
+              : canonicalRecord ? 'CANONICAL_SOURCE_AT_BLUEPRINT_SYNC' : 'BLUEPRINT_FIELDS_AT_SYNC',
+            archiveMetadataSource: 'ARCHIVE_SOURCE_JS',
+            authoredFidelity: preservePriorMeta ? 'PRIOR_CAPTURE' : 'SOURCE_SYNC_AT_WRITE',
+            captureStatus: canonicalRecord ? 'CAPTURED' : 'PARTIAL',
+          })
+        : null;
       const columns = [
         'archive_file', 'question_no', 'source_archive_file', 'source_question_no',
         'standard_unit_key', 'standard_unit', 'standard_course', 'concept_cluster_key',
         ...blueprintIdentityColumns,
         ...blueprintMetaColumns,
         ...blueprintArchiveMetadataColumns,
+        ...(blueprintHasMetadataJson ? ['metadata_json'] : []),
         'updated_at'
       ];
       const values = [
@@ -336,6 +419,7 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
         else if (column === 'metadata_revision') values.push(metadata.metadataRevision || ARCHIVE_METADATA_REVISION);
         else if (column === 'metadata_hash') values.push(metadataRow.metadataHash || null);
       }
+      if (blueprintHasMetadataJson) values.push(metadataJson);
       const updateSets = [
         'source_archive_file = excluded.source_archive_file',
         'source_question_no = excluded.source_question_no',
@@ -346,6 +430,7 @@ async function syncExamBlueprintsFromArchive(env, archiveFile) {
         ...blueprintIdentityColumns.map(column => `${column} = excluded.${column}`),
         ...blueprintMetaColumns.map(column => `${column} = excluded.${column}`),
         ...blueprintArchiveMetadataColumns.map(column => `${column} = excluded.${column}`),
+        ...(blueprintHasMetadataJson ? ['metadata_json = excluded.metadata_json'] : []),
         "updated_at = DATETIME('now')"
       ];
       return env.DB.prepare(`
@@ -391,6 +476,8 @@ async function snapshotLegacyAssignmentQuestions(env, assignment) {
   }
   const isMixedArchive = archiveFile.startsWith('MIXED:');
   const sourceOrdinalAvailable = !isMixedArchive && blueprintRows.some(row => Number(row.source_question_ordinal) > 0);
+  const sequentialBlueprintQuestionNos = !isMixedArchive && blueprintRows.length === questionCount &&
+    blueprintRows.every((row, index) => Number(row.question_no) === index + 1);
   const blueprintByOrder = new Map();
   const ambiguousOrders = new Set();
   for (const row of blueprintRows) {
@@ -398,10 +485,65 @@ async function snapshotLegacyAssignmentQuestions(env, assignment) {
       ? Number(row.question_no)
       : sourceOrdinalAvailable
         ? Number(row.source_question_ordinal)
-        : Number(row.question_no);
+        : sequentialBlueprintQuestionNos
+          ? Number(row.question_no)
+          : 0;
     if (!(orderNo > 0) || orderNo > questionCount) continue;
     if (blueprintByOrder.has(orderNo)) ambiguousOrders.add(orderNo);
     else blueprintByOrder.set(orderNo, row);
+  }
+  let sourceFallbackByOrdinal = new Map();
+  let sourceFallbackProjectionVersion = null;
+  if (!isMixedArchive && blueprintByOrder.size < questionCount) {
+    try {
+      const sourceBundle = await loadBlueprintSourceVerification(env, archiveFile);
+      if (!sourceBundle.legacyManifest &&
+          Number(sourceBundle.shard?.exam?.qCount) === questionCount &&
+          Array.isArray(sourceBundle.shard?.records) &&
+          sourceBundle.shard.records.length === questionCount) {
+        sourceFallbackProjectionVersion = sourceBundle.projectionVersion || null;
+        sourceFallbackByOrdinal = new Map(sourceBundle.shard.records
+          .map(record => [Number(record.sourceOrdinal), record]));
+      }
+    } catch (error) {
+      console.warn('[assignment-question-snapshot] direct source Meta capture unavailable:', error?.message || error);
+    }
+  }
+  const metadataRefs = [];
+  for (let orderNo = 1; orderNo <= questionCount; orderNo++) {
+    const blueprint = ambiguousOrders.has(orderNo)
+      ? null
+      : blueprintByOrder.get(orderNo) || (sourceFallbackByOrdinal.has(orderNo)
+        ? {
+            source_archive_file: archiveFile,
+            source_question_no: sourceFallbackByOrdinal.get(orderNo).sourceQuestionNo,
+            source_question_uid: sourceFallbackByOrdinal.get(orderNo).identityStatus === 'VERIFIED'
+              ? sourceFallbackByOrdinal.get(orderNo).questionUid
+              : null,
+            source_question_ordinal: sourceFallbackByOrdinal.get(orderNo).sourceOrdinal,
+          }
+        : null);
+    if (!blueprint || normalizeOptionalText(blueprint.metadata_json)) continue;
+    if (sourceFallbackByOrdinal.has(orderNo)) continue;
+    metadataRefs.push({
+      index: orderNo,
+      sourceFile: blueprint.source_archive_file || archiveFile,
+      sourceQuestionUid: blueprint.source_question_uid,
+      sourceOrdinal: blueprint.source_question_ordinal,
+      sourceQuestionNo: blueprint.source_question_no || null,
+    });
+  }
+  let metadataCaptureByOrder = new Map([...sourceFallbackByOrdinal.entries()].map(([orderNo, record]) => [
+    orderNo,
+    { record, projectionVersion: sourceFallbackProjectionVersion, identityStatus: record.identityStatus || 'UNRESOLVED' },
+  ]));
+  if (metadataRefs.length) {
+    try {
+      const loaded = await loadBlueprintCanonicalMetadata(env, metadataRefs);
+      for (const [orderNo, capture] of loaded) metadataCaptureByOrder.set(orderNo, capture);
+    } catch (error) {
+      console.warn('[assignment-question-snapshot] current source Meta capture unavailable:', error?.message || error);
+    }
   }
   const bridgeOptionalColumns = [
     'source_archive_file', 'source_question_no', 'source_question_ordinal', 'source_fingerprint',
@@ -410,7 +552,16 @@ async function snapshotLegacyAssignmentQuestions(env, assignment) {
   const statements = [];
 
   for (let orderNo = 1; orderNo <= questionCount; orderNo++) {
-    const blueprint = ambiguousOrders.has(orderNo) ? {} : (blueprintByOrder.get(orderNo) || {});
+    const sourceFallback = sourceFallbackByOrdinal.get(orderNo) || null;
+    const blueprint = ambiguousOrders.has(orderNo)
+      ? {}
+      : (blueprintByOrder.get(orderNo) || (sourceFallback ? {
+          source_archive_file: archiveFile,
+          source_question_no: sourceFallback.sourceQuestionNo,
+          source_question_uid: sourceFallback.identityStatus === 'VERIFIED' ? sourceFallback.questionUid : null,
+          source_question_ordinal: sourceFallback.sourceOrdinal,
+          source_fingerprint: sourceFallback.sourceFingerprint || null,
+        } : {}));
     const sourceArchiveFile = normalizeSourceFileForQuestionUid(blueprint.source_archive_file || '');
     const sourceOrdinal = normalizeOptionalPositiveInteger(blueprint.source_question_ordinal);
     const storedUid = normalizeOptionalText(blueprint.source_question_uid);
@@ -418,21 +569,72 @@ async function snapshotLegacyAssignmentQuestions(env, assignment) {
       ? await makeCanonicalQuestionUid(sourceArchiveFile, sourceOrdinal)
       : null;
     const questionUid = storedUid && expectedUid && storedUid === expectedUid ? storedUid : null;
-    const resolutionStatus = questionUid ? 'LEGACY_INFERRED' : 'UNRESOLVED';
-    const metadataRevision = normalizeOptionalText(blueprint.metadata_revision);
+    const metadataCapture = metadataCaptureByOrder.get(orderNo) || null;
+    const canonicalRecord = metadataCapture?.record || null;
+    const blueprintArchiveMetadata = {
+      standardUnitKey: blueprint.standard_unit_key ?? null,
+      standardUnit: blueprint.standard_unit ?? null,
+      standardCourse: blueprint.standard_course ?? null,
+      subUnitKey: blueprint.sub_unit_key ?? null,
+      conceptClusterKey: blueprint.concept_cluster_key ?? null,
+      typeKey: blueprint.type_key ?? null,
+      templateKey: blueprint.template_key ?? null,
+      difficulty: blueprint.difficulty ?? null,
+      metadataRevision,
+    };
+    const canonicalIdentityVerified = Boolean(
+      canonicalRecord?.identityStatus === 'VERIFIED' && questionUid &&
+      String(canonicalRecord.questionUid || '') === questionUid &&
+      normalizeSourceFileForQuestionUid(canonicalRecord.sourceFile) === sourceArchiveFile &&
+      Number(canonicalRecord.sourceOrdinal) === sourceOrdinal,
+    );
+    const resolutionStatus = canonicalIdentityVerified
+      ? 'VERIFIED'
+      : questionUid ? 'LEGACY_INFERRED' : 'UNRESOLVED';
+    const metadataRevision = normalizeOptionalText(blueprint.metadata_revision) ||
+      (sourceFallback ? normalizeOptionalText(canonicalRecord?.metadataRevision) : null);
     const metadataHash = normalizeOptionalText(blueprint.metadata_hash);
-    const metadataJson = Object.keys(blueprint).length ? JSON.stringify({
-      snapshotScope: 'BLUEPRINT_FIELDS_ONLY',
-      standardUnitKey: blueprint.standard_unit_key || null,
-      standardUnit: blueprint.standard_unit || null,
-      standardCourse: blueprint.standard_course || null,
-      subUnitKey: blueprint.sub_unit_key || null,
-      conceptClusterKey: blueprint.concept_cluster_key || null,
-      typeKey: blueprint.type_key || null,
-      templateKey: blueprint.template_key || null,
-      difficulty: blueprint.difficulty || null,
-      metadataRevision
-    }) : null;
+    const blueprintMetadataJson = normalizeOptionalText(blueprint.metadata_json) ||
+      (Object.keys(blueprint).length || canonicalRecord
+        ? await buildBlueprintMetadataSnapshot({
+            standardUnitKey: blueprint.standard_unit_key,
+            standardUnit: blueprint.standard_unit,
+            standardCourse: blueprint.standard_course,
+            subUnitKey: blueprint.sub_unit_key,
+            conceptClusterKey: blueprint.concept_cluster_key,
+            typeKey: blueprint.type_key,
+            templateKey: blueprint.template_key,
+            difficulty: blueprint.difficulty,
+            metadataRevision,
+            sourceArchiveFile: blueprint.source_archive_file || archiveFile,
+            sourceQuestionUid: questionUid,
+            sourceQuestionOrdinal: sourceOrdinal || canonicalRecord?.sourceOrdinal,
+            sourceQuestionNo: blueprint.source_question_no ?? canonicalRecord?.sourceQuestionNo,
+            sourceFingerprint: canonicalRecord?.sourceFingerprint || null,
+          }, {
+            buildArchiveQuestionMetadata,
+            buildArchiveMetadataHash,
+          }, {
+            canonicalRecord,
+            archiveMetadata: blueprintArchiveMetadata,
+            sourceIdentityStatus: canonicalRecord?.identityStatus === 'VERIFIED' &&
+              questionUid && String(canonicalRecord.questionUid || '') === questionUid &&
+              normalizeSourceFileForQuestionUid(canonicalRecord.sourceFile) === sourceArchiveFile &&
+              Number(canonicalRecord.sourceOrdinal) === sourceOrdinal
+              ? 'VERIFIED'
+              : resolutionStatus,
+            sourceArchiveFile: blueprint.source_archive_file || archiveFile,
+            sourceQuestionUid: questionUid,
+            sourceQuestionOrdinal: sourceOrdinal || canonicalRecord?.sourceOrdinal,
+            sourceQuestionNo: blueprint.source_question_no ?? canonicalRecord?.sourceQuestionNo ?? null,
+            sourceFingerprint: canonicalRecord?.sourceFingerprint || null,
+            projectionVersion: metadataCapture?.projectionVersion || null,
+            captureSource: canonicalRecord ? 'CURRENT_SOURCE_AT_NEW_ASSIGNMENT' : 'BLUEPRINT_FIELDS_AT_NEW_ASSIGNMENT',
+            archiveMetadataSource: 'EXISTING_BLUEPRINT_ROW',
+            authoredFidelity: canonicalRecord && sourceFallback ? 'SOURCE_AT_NEW_ASSIGNMENT' : 'UNKNOWN',
+            captureStatus: canonicalRecord && sourceFallback ? 'CAPTURED' : 'PARTIAL',
+          })
+        : null);
     const row = {
       assignment_id: assignmentId,
       order_no: orderNo,
@@ -445,7 +647,7 @@ async function snapshotLegacyAssignmentQuestions(env, assignment) {
       difficulty_at_assignment: blueprint.difficulty || null,
       metadata_revision: metadataRevision,
       metadata_hash: metadataHash,
-      metadata_json: metadataJson,
+      metadata_json: blueprintMetadataJson,
       resolution_status: resolutionStatus
     };
     const columns = ['assignment_id', 'order_no', 'question_uid', ...bridgeOptionalColumns, 'resolution_status'];
@@ -1241,8 +1443,33 @@ export async function handleExams(request, env, teacher, path, url) {
       const blueprintMetaColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_META_COLUMNS);
       const blueprintArchiveMetadataColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_ARCHIVE_METADATA_COLUMNS);
       const blueprintIdentityColumns = pickExistingColumns(blueprintColumns, BLUEPRINT_IDENTITY_COLUMNS);
+      const blueprintHasMetadataJson = blueprintColumns.has('metadata_json');
+      let canonicalBlueprintByItem = new Map();
+      const priorBlueprintByQuestion = new Map();
+      if (blueprintHasMetadataJson) {
+        try {
+          canonicalBlueprintByItem = await loadBlueprintCanonicalMetadata(env, d.items.map((item, index) => ({
+            index,
+            sourceFile: item.source_archive_file || d.archive_file,
+            sourceQuestionUid: item.source_question_uid || item.sourceQuestionUid,
+            sourceOrdinal: item.source_question_ordinal || item.sourceQuestionOrdinal,
+            sourceQuestionNo: item.source_question_no ?? item.sourceQuestionNo ?? item.question_no,
+          })));
+        } catch (error) {
+          console.warn('[exam-blueprints] current source Meta capture unavailable:', error?.message || error);
+        }
+        try {
+          const prior = await env.DB.prepare(
+            'SELECT * FROM exam_blueprints WHERE archive_file = ?',
+          ).bind(d.archive_file).all();
+          for (const row of prior.results || [])
+            priorBlueprintByQuestion.set(String(row.question_no), row);
+        } catch (error) {
+          console.warn('[exam-blueprints] prior Meta snapshot lookup unavailable:', error?.message || error);
+        }
+      }
       const stmts = [];
-      for (const item of d.items) {
+      for (const [itemIndex, item] of d.items.entries()) {
         if (!item.question_no) continue;
 
         const src_archive_file = item.source_archive_file || d.archive_file;
@@ -1258,11 +1485,68 @@ export async function handleExams(request, env, teacher, path, url) {
           typeKey: item.type_key || item.problem_type_key || item.typeKey || item.problemTypeKey,
           templateKey: item.template_key || item.templateKey,
           difficulty: item.difficulty || item.difficulty_bucket || item.difficultyBucket || item.level,
-          tags: item.tags,
+          tags: normalizeArchiveMetadataTags(item.tags),
           metadataRevision: item.metadata_revision || item.metadataRevision || ARCHIVE_METADATA_REVISION
         };
+        const canonicalCapture = canonicalBlueprintByItem.get(itemIndex) || null;
+        const suppliedUid = normalizeOptionalText(item.source_question_uid || item.sourceQuestionUid);
+        const suppliedOrdinal = normalizeOptionalPositiveInteger(item.source_question_ordinal || item.sourceQuestionOrdinal);
+        const canonicalRecord = canonicalCapture?.record || null;
+        const canonicalIdentityVerified = Boolean(
+          canonicalRecord && canonicalCapture.identityStatus === 'VERIFIED' && suppliedUid &&
+          suppliedUid === String(canonicalRecord.questionUid || '') && suppliedOrdinal &&
+          suppliedOrdinal === Number(canonicalRecord.sourceOrdinal),
+        );
+        const priorBlueprint = priorBlueprintByQuestion.get(String(item.question_no)) || null;
+        let priorSnapshot = null;
+        if (priorBlueprint?.metadata_json) {
+          try { priorSnapshot = JSON.parse(String(priorBlueprint.metadata_json)); }
+          catch {}
+        }
+        const priorIdentity = priorSnapshot?.sourceIdentity;
+        const exactPriorIdentity = Boolean(
+          priorSnapshot && !canonicalRecord && suppliedUid && suppliedOrdinal &&
+          ['VERIFIED', 'LEGACY_INFERRED'].includes(String(priorIdentity?.status || '').toUpperCase()) &&
+          normalizeSourceFileForQuestionUid(priorIdentity.sourceArchiveFile || priorIdentity.normalizedSourceFile) ===
+            normalizeSourceFileForQuestionUid(src_archive_file) &&
+          String(priorIdentity.sourceQuestionUid || '') === suppliedUid &&
+          Number(priorIdentity.sourceQuestionOrdinal) === suppliedOrdinal &&
+          (priorIdentity.sourceQuestionNo == null || src_question_no == null ||
+            String(priorIdentity.sourceQuestionNo) === String(src_question_no))
+        );
         const archiveMetadataHash = blueprintArchiveMetadataColumns.includes('metadata_hash')
           ? normalizeOptionalText(item.metadata_hash || item.metadataHash) || await buildArchiveMetadataHash(archiveMetadata)
+          : null;
+        const preservePriorMeta = exactPriorIdentity &&
+          String(priorBlueprint.metadata_hash || '') === String(archiveMetadataHash || '') &&
+          String(priorBlueprint.metadata_revision || '') === String(archiveMetadata.metadataRevision || '');
+        const blueprintMetadataJson = blueprintHasMetadataJson
+          ? await buildBlueprintMetadataSnapshot(item, {
+              buildArchiveQuestionMetadata,
+              buildArchiveMetadataHash,
+            }, {
+              priorSnapshot: preservePriorMeta ? priorSnapshot : null,
+              preservePriorMeta,
+              archiveMetadata,
+              canonicalRecord,
+              sourceIdentityStatus: preservePriorMeta
+                ? priorSnapshot?.sourceIdentity?.status || 'UNRESOLVED'
+                : canonicalIdentityVerified ? 'VERIFIED' : 'UNRESOLVED',
+              sourceArchiveFile: src_archive_file,
+              sourceQuestionUid: suppliedUid,
+              sourceQuestionOrdinal: suppliedOrdinal,
+              sourceQuestionNo: src_question_no,
+              sourceFingerprint: canonicalRecord?.sourceFingerprint || null,
+              projectionVersion: preservePriorMeta
+                ? priorSnapshot?.sourceProjectionVersion || null
+                : canonicalCapture?.projectionVersion || null,
+              captureSource: preservePriorMeta
+                ? 'PRIOR_META_RETAINED_WITHOUT_CURRENT_SOURCE_AUTHORITY'
+                : canonicalRecord ? 'CANONICAL_SOURCE_AT_BLUEPRINT_WRITE' : 'BLUEPRINT_FIELDS_AT_WRITE',
+              archiveMetadataSource: 'BLUEPRINT_POST_INPUT',
+              authoredFidelity: preservePriorMeta ? 'PRIOR_CAPTURE' : 'AT_BLUEPRINT_WRITE',
+              captureStatus: canonicalRecord ? 'CAPTURED' : 'PARTIAL',
+            })
           : null;
         const columns = [
           'archive_file', 'question_no', 'source_archive_file', 'source_question_no',
@@ -1270,6 +1554,7 @@ export async function handleExams(request, env, teacher, path, url) {
           ...blueprintIdentityColumns,
           ...blueprintMetaColumns,
           ...blueprintArchiveMetadataColumns,
+          ...(blueprintHasMetadataJson ? ['metadata_json'] : []),
           'created_at', 'updated_at'
         ];
         const values = [
@@ -1291,6 +1576,7 @@ export async function handleExams(request, env, teacher, path, url) {
           else if (col === 'metadata_revision') values.push(normalizeOptionalText(archiveMetadata.metadataRevision));
           else if (col === 'metadata_hash') values.push(archiveMetadataHash);
         }
+        if (blueprintHasMetadataJson) values.push(blueprintMetadataJson);
         const updateSets = [
           'source_archive_file=excluded.source_archive_file',
           'source_question_no=excluded.source_question_no',
@@ -1301,6 +1587,7 @@ export async function handleExams(request, env, teacher, path, url) {
           ...blueprintIdentityColumns.map(col => `${col}=excluded.${col}`),
           ...blueprintMetaColumns.map(col => `${col}=excluded.${col}`),
           ...blueprintArchiveMetadataColumns.map(col => `${col}=excluded.${col}`),
+          ...(blueprintHasMetadataJson ? ['metadata_json=excluded.metadata_json'] : []),
           "updated_at=DATETIME('now')"
         ];
 
@@ -2679,6 +2966,7 @@ export async function handleExams(request, env, teacher, path, url) {
           score,
           assignmentId: assignmentMeta.assignment_id,
           packId: assignmentMeta.pack_id,
+          allowBlueprintSnapshot: !selectedSession?.id && !assignmentMeta.assignment_id,
           resultHash,
           analysisStatus: resolveNextAnalysisStatus(existingSession, resultHash)
         });
@@ -2704,10 +2992,12 @@ export async function handleExams(request, env, teacher, path, url) {
       }
 
       await env.DB.batch(stmts);
+      const blueprintSnapshotCache = new Map();
       for (const row of sessionRows) {
         await saveAssessmentResultItems(env, {
           session_id: row.sessionId,
           assignment_id: row.assignmentId,
+          allowBlueprintSnapshot: row.allowBlueprintSnapshot,
           pack_id: row.packId,
           student_id: row.studentId,
           class_id: row.classId,
@@ -2718,7 +3008,7 @@ export async function handleExams(request, env, teacher, path, url) {
           score: row.score,
           wrong_ids: row.wrongIds,
           result_hash: row.resultHash
-        });
+        }, { blueprintSnapshotCache });
       }
       return jsonResponse({ success: true, saved: sessionRows.length });
     }
@@ -2831,6 +3121,7 @@ export async function handleExams(request, env, teacher, path, url) {
       await saveAssessmentResultItems(env, {
         session_id: sid,
         assignment_id: assignmentMeta.assignment_id,
+        allowBlueprintSnapshot: !selectedSession?.id && !assignmentMeta.assignment_id,
         pack_id: assignmentMeta.pack_id,
         student_id: d.student_id,
         class_id: classId,

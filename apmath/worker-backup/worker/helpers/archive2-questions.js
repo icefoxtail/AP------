@@ -113,9 +113,301 @@ export async function loadCanonicalCatalog(env, expectedVersion = "") {
     );
   }
 }
+function canonicalAssetBaseUrl(env) {
+  return String(
+    env.ARCHIVE_PUBLIC_BASE_URL ||
+      "https://icefoxtail.github.io/AP------/archive",
+  ).replace(/\/+$/, "") + "/";
+}
+function canonicalAssetFetcher(env) {
+  return (url) => env.ARCHIVE2_ASSETS ? env.ARCHIVE2_ASSETS.fetch(url) : fetch(url);
+}
+function failCanonicalLookup(error) {
+  const refreshRequired = error?.code === "CANONICAL_PROJECTION_REFRESH_REQUIRED";
+  fail(
+    error?.message || "승인된 canonical authority를 확인할 수 없습니다.",
+    refreshRequired ? 409 : 503,
+  );
+}
+// Blueprint metadata capture may use the M65 index and only the selected
+// source rows. Unlike validateNormalBlueprint's rolling compatibility path,
+// this helper deliberately never falls back to the full catalog.
+export async function loadBlueprintSourceVerification(env, sourceFile, expectedVersion = "") {
+  try {
+    return await canonical.loadSourceVerificationShard(
+      canonicalAssetFetcher(env),
+      canonicalAssetBaseUrl(env),
+      expectedVersion,
+      norm(sourceFile),
+    );
+  } catch (error) {
+    failCanonicalLookup(error);
+  }
+}
+export async function loadBlueprintMixedVerificationRecords(env, refs, expectedVersion = "") {
+  try {
+    return await canonical.loadMixedVerificationRecords(
+      canonicalAssetFetcher(env),
+      canonicalAssetBaseUrl(env),
+      expectedVersion,
+      refs,
+    );
+  } catch (error) {
+    failCanonicalLookup(error);
+  }
+}
+export async function loadBlueprintCanonicalMetadata(env, refs, expectedVersion = "") {
+  const requested = (Array.isArray(refs) ? refs : []).map((ref, index) => ({
+    ...ref,
+    index: ref?.index ?? index,
+    sourceFile: norm(ref?.sourceFile),
+    sourceQuestionUid: String(ref?.sourceQuestionUid || "").trim(),
+    sourceOrdinal: normalizeOptionalPositiveInteger(ref?.sourceOrdinal),
+    sourceQuestionNo: ref?.sourceQuestionNo == null ? "" : String(ref.sourceQuestionNo),
+  })).filter((ref) => ref.sourceFile);
+  const byRefIndex = new Map();
+  const identified = requested.filter((ref) =>
+    UID.test(ref.sourceQuestionUid) && ref.sourceOrdinal,
+  );
+  if (identified.length) {
+    const lookup = await loadBlueprintMixedVerificationRecords(
+      env,
+      identified.map((ref) => ({
+        questionUid: ref.sourceQuestionUid,
+        sourceFile: ref.sourceFile,
+        sourceOrdinal: ref.sourceOrdinal,
+      })),
+      expectedVersion,
+    );
+    if (!lookup.legacyManifest) {
+      const requestedByUid = new Map();
+      for (const ref of identified) {
+        if (!requestedByUid.has(ref.sourceQuestionUid)) requestedByUid.set(ref.sourceQuestionUid, []);
+        requestedByUid.get(ref.sourceQuestionUid).push(ref);
+      }
+      for (const row of lookup.records || []) {
+        const candidates = requestedByUid.get(String(row.questionUid || "")) || [],
+          record = row.record;
+        if (!record) continue;
+        for (const ref of candidates) {
+          if (norm(row.sourceFile) !== ref.sourceFile ||
+              Number(row.sourceOrdinal) !== ref.sourceOrdinal ||
+              String(record.questionUid || "") !== ref.sourceQuestionUid ||
+              norm(record.sourceFile) !== ref.sourceFile ||
+              Number(record.sourceOrdinal) !== ref.sourceOrdinal)
+            continue;
+          byRefIndex.set(ref.index, {
+            record,
+            projectionVersion: lookup.projectionVersion,
+            identityStatus: record.identityStatus || "UNRESOLVED",
+          });
+        }
+      }
+    }
+  }
+
+  // The legacy original print view can post only source question numbers. A
+  // single selected source shard can resolve a unique exact sourceQuestionNo;
+  // this preserves common Meta without inventing a UID or ordinal.
+  const unqualified = requested.filter((ref) =>
+    !ref.sourceFile.startsWith("MIXED:") && !UID.test(ref.sourceQuestionUid) && ref.sourceQuestionNo,
+  );
+  const unqualifiedFiles = [...new Set(unqualified.map((ref) => ref.sourceFile))];
+  if (unqualifiedFiles.length === 1) {
+    const sourceFile = unqualifiedFiles[0];
+    const bundle = await loadBlueprintSourceVerification(env, sourceFile, expectedVersion);
+    if (!bundle.legacyManifest) {
+      const matches = new Map();
+      for (const record of bundle.shard.records || []) {
+        const key = String(record.sourceQuestionNo ?? "");
+        if (!key) continue;
+        if (!matches.has(key)) matches.set(key, []);
+        matches.get(key).push(record);
+      }
+      for (const ref of unqualified.filter((row) => row.sourceFile === sourceFile)) {
+        const rows = matches.get(ref.sourceQuestionNo) || [],
+          selected = ref.sourceOrdinal
+            ? rows.filter((row) => Number(row.sourceOrdinal) === ref.sourceOrdinal)
+            : rows;
+        if (selected.length !== 1) continue;
+        byRefIndex.set(ref.index, {
+          record: selected[0],
+          projectionVersion: bundle.projectionVersion,
+          identityStatus: "UNRESOLVED",
+        });
+      }
+    }
+  }
+  return byRefIndex;
+}
+function own(object, key) {
+  return Object.prototype.hasOwnProperty.call(object || {}, key);
+}
+export async function buildBlueprintMetadataSnapshot(question, metadataAuthority, options = {}) {
+  let priorSnapshot = options.priorSnapshot && typeof options.priorSnapshot === "object"
+    ? options.priorSnapshot
+    : null;
+  if (!priorSnapshot && typeof options.priorSnapshot === "string") {
+    try {
+      const parsed = JSON.parse(options.priorSnapshot);
+      if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) priorSnapshot = parsed;
+    } catch {}
+  }
+  const archiveMetadata = options.archiveMetadata && typeof options.archiveMetadata === "object"
+    ? options.archiveMetadata
+    : metadataAuthority && typeof metadataAuthority.buildArchiveQuestionMetadata === "function"
+      ? metadataAuthority.buildArchiveQuestionMetadata(question || {})
+      : null;
+  const canonicalRecord = options.canonicalRecord && typeof options.canonicalRecord === "object"
+    ? options.canonicalRecord
+    : null;
+  const canonicalMeta = {};
+  if (canonicalRecord) {
+    for (const field of core.META_FIELDS)
+      if (own(canonicalRecord, field)) canonicalMeta[field] = canonicalRecord[field];
+  }
+  const preservePriorMeta = options.preservePriorMeta === true && Boolean(priorSnapshot);
+  if (preservePriorMeta && priorSnapshot?.canonicalMeta && typeof priorSnapshot.canonicalMeta === "object")
+    for (const field of core.META_FIELDS)
+      if (own(priorSnapshot.canonicalMeta, field)) canonicalMeta[field] = priorSnapshot.canonicalMeta[field];
+  const authoringMeta = {};
+  for (const field of core.META_FIELDS)
+    if (own(question, field)) authoringMeta[field] = question[field];
+  const priorAuthoringMeta = preservePriorMeta && priorSnapshot?.authoringMeta && typeof priorSnapshot.authoringMeta === "object"
+    ? priorSnapshot.authoringMeta
+    : (preservePriorMeta
+      ? Object.fromEntries(core.META_FIELDS.filter((field) => own(priorSnapshot, field))
+          .map((field) => [field, priorSnapshot[field]]))
+      : {});
+  for (const field of core.META_FIELDS)
+    if (!own(authoringMeta, field) && own(priorAuthoringMeta, field)) authoringMeta[field] = priorAuthoringMeta[field];
+  const legacyDifficulty = preservePriorMeta && priorSnapshot?.legacyDifficulty && typeof priorSnapshot.legacyDifficulty === "object"
+    ? { ...priorSnapshot.legacyDifficulty }
+    : {};
+  for (const field of ["level", "difficulty", "difficulty_bucket"])
+    if (own(question, field)) legacyDifficulty[field] = question[field];
+  if (!own(legacyDifficulty, "difficulty") && own(archiveMetadata, "difficulty"))
+    legacyDifficulty.difficulty = archiveMetadata.difficulty;
+  const sourceArchiveFile = String(
+    options.sourceArchiveFile || question?.sourceArchiveFile || question?._sourceFile ||
+      question?.sourceFile || question?.source_archive_file || "",
+  ).trim() || null;
+  const sourceQuestionUid = String(
+    options.sourceQuestionUid || question?.questionUid || question?.source_question_uid || "",
+  ).trim() || null;
+  const sourceQuestionOrdinal = normalizeOptionalPositiveInteger(
+    options.sourceQuestionOrdinal ?? question?.sourceOrdinal ?? question?._sourceQuestionOrdinal ??
+      question?.source_question_ordinal,
+  );
+  const priorSourceIdentity = preservePriorMeta && priorSnapshot?.sourceIdentity && typeof priorSnapshot.sourceIdentity === "object"
+    ? priorSnapshot.sourceIdentity
+    : null;
+  let identityStatus = String(options.sourceIdentityStatus || priorSourceIdentity?.status || "UNRESOLVED").trim().toUpperCase();
+  if (!new Set(["VERIFIED", "LEGACY_INFERRED", "UNRESOLVED"]).has(identityStatus))
+    identityStatus = "UNRESOLVED";
+  const normalizedFile = norm(sourceArchiveFile || canonicalRecord?.sourceFile || "");
+  const recordFile = norm(canonicalRecord?.sourceFile || "");
+  const recordOrdinal = normalizeOptionalPositiveInteger(canonicalRecord?.sourceOrdinal);
+  const recordUid = String(canonicalRecord?.questionUid || "").trim();
+  const verifiedTuple = Boolean(
+    canonicalRecord && recordFile && normalizedFile === recordFile &&
+    sourceQuestionOrdinal && sourceQuestionOrdinal === recordOrdinal &&
+    sourceQuestionUid && sourceQuestionUid === recordUid &&
+    canonicalRecord.identityStatus === "VERIFIED",
+  );
+  if (identityStatus === "VERIFIED" && !verifiedTuple && !preservePriorMeta) identityStatus = "UNRESOLVED";
+  let identityUid = verifiedTuple && identityStatus === "VERIFIED" ? recordUid : null;
+  if (preservePriorMeta && identityStatus !== "UNRESOLVED" && sourceQuestionUid &&
+      sourceQuestionUid === String(priorSourceIdentity?.sourceQuestionUid || ""))
+    identityUid = sourceQuestionUid;
+  if (
+    !identityUid && identityStatus === "LEGACY_INFERRED" && sourceQuestionUid &&
+    normalizedFile && sourceQuestionOrdinal &&
+    sourceQuestionUid === "qid_v1_" + await sha256hex(`${normalizedFile}#${sourceQuestionOrdinal}`)
+  ) identityUid = sourceQuestionUid;
+  const fieldsCaptured = Object.keys(canonicalMeta);
+  const missingCanonicalFields = core.META_FIELDS.filter((field) => !own(canonicalMeta, field));
+  const authoredFidelity = String(options.authoredFidelity || "UNKNOWN").trim().toUpperCase();
+  const captureStatus = options.captureStatus || (canonicalRecord ? "CAPTURED" : "PARTIAL");
+  const envelope = {
+    ...((canonicalRecord || (preservePriorMeta && Object.keys(canonicalMeta).length))
+      ? canonicalMeta
+      : authoringMeta),
+    schemaVersion: "apms-blueprint-meta-snapshot-v1",
+    snapshotScope: options.snapshotScope || (Object.keys(canonicalMeta).length
+      ? "ARCHIVE_METADATA_V1_PLUS_AVAILABLE_ARCHIVE2_META_FIELDS"
+      : "BLUEPRINT_FIELDS_ONLY"),
+    captureStatus,
+    captureSource: String(options.captureSource || (canonicalRecord ? "CANONICAL_SOURCE_VERIFICATION" : "BLUEPRINT_FIELDS")),
+    archiveMetadataSource: String(options.archiveMetadataSource || (archiveMetadata
+      ? (canonicalRecord ? "SOURCE_OR_BLUEPRINT_INPUT" : "BLUEPRINT_AUTHORING")
+      : "NOT_CAPTURED")),
+    authoredFidelity,
+    sourceProjectionVersion: String(options.projectionVersion || (preservePriorMeta ? priorSnapshot?.sourceProjectionVersion : "") || "") || null,
+    capturedAt: new Date().toISOString(),
+    ...(preservePriorMeta ? {
+      priorSnapshotCapturedAt: priorSnapshot?.capturedAt || null,
+      priorSnapshotProjectionVersion: priorSnapshot?.sourceProjectionVersion || null,
+    } : {}),
+    sourceIdentity: {
+      status: identityStatus,
+      sourceArchiveFile,
+      normalizedSourceFile: normalizedFile || null,
+      sourceQuestionUid: identityUid,
+      sourceQuestionOrdinal,
+      sourceQuestionNo: options.sourceQuestionNo ?? question?.sourceQuestionNo ??
+        question?._sourceQuestionNo ?? question?.source_question_no ?? question?.id ??
+        (preservePriorMeta ? priorSourceIdentity?.sourceQuestionNo : null) ?? null,
+      sourceFingerprint: verifiedTuple
+        ? (canonicalRecord.sourceFingerprint || null)
+        : (options.sourceFingerprint || question?.sourceFingerprint ||
+          (preservePriorMeta ? priorSourceIdentity?.sourceFingerprint : null) || null),
+    },
+    archiveMetadata,
+    canonicalMeta,
+    authoringMeta,
+    ...(Object.keys(legacyDifficulty).length ? { legacyDifficulty } : {}),
+    capturedCanonicalFields: fieldsCaptured,
+    unavailableCanonicalFields: missingCanonicalFields,
+  };
+  envelope.metadataContentHash = await sha256hex(JSON.stringify({
+    sourceIdentity: envelope.sourceIdentity,
+    archiveMetadata: envelope.archiveMetadata,
+    canonicalMeta: envelope.canonicalMeta,
+    authoringMeta: envelope.authoringMeta,
+    legacyDifficulty: envelope.legacyDifficulty || {},
+  }));
+  envelope.snapshotHash = await sha256hex(JSON.stringify(envelope));
+  return JSON.stringify(envelope);
+}
 export async function validateNormalBlueprint(env, questions, input) {
-  const data = await loadCanonicalCatalog(env, requireProjectionVersion(input)),
+  const expectedVersion = requireProjectionVersion(input),
     file = norm(input.archive_file);
+  let data;
+  const sourceBundle = await loadBlueprintSourceVerification(env, file, expectedVersion);
+  if (sourceBundle.legacyManifest) {
+    data = await loadCanonicalCatalog(env, expectedVersion);
+  } else {
+    const records = sourceBundle.shard.records || [],
+      identityByUid = Object.fromEntries(records
+        .filter((row) => row.questionUid)
+        .map((row) => [row.questionUid, {
+          questionUid: row.questionUid,
+          sourceArchiveFile: row.identitySourceFile || "",
+          sourceOrdinal: Number(row.identitySourceOrdinal || 0),
+          status: row.identityStatus || "UNRESOLVED",
+        }]));
+    data = {
+      indexVersion: sourceBundle.projectionVersion,
+      exams: [sourceBundle.shard.exam],
+      records,
+      sourceHashes: [[file, sourceBundle.shard.sourceSha256 || ""]],
+      canonicalAuthority: {
+        identityByUid,
+        examGradeByFile: { [file]: sourceBundle.shard.exam.grade || "" },
+      },
+    };
+  }
   const exam = data.exams.find((e) => e.file === file);
   if (
     !exam ||
@@ -144,6 +436,7 @@ export async function validateNormalBlueprint(env, questions, input) {
     if (grade.status !== "VALID" || grade.grade !== record.sourceGrade)
       fail(grade.reason || grade.status || "SOURCE_GRADE_CONFLICT", 409);
     q.sourceFingerprint = record.sourceFingerprint;
+    for (const field of core.META_FIELDS) delete q[field];
     for (const field of core.META_FIELDS)
       if (record[field] !== undefined) q[field] = record[field];
   }
@@ -163,7 +456,11 @@ export async function validateNormalBlueprint(env, questions, input) {
       new Map(data.sourceHashes).get(file)
   )
     fail("원본 source 파일이 catalog와 일치하지 않습니다.", 409);
-  return { grade: records[0]?.sourceGrade || "", canonicalAuthority: data.canonicalAuthority };
+  return {
+    grade: records[0]?.sourceGrade || "",
+    canonicalAuthority: data.canonicalAuthority,
+    projectionVersion: data.indexVersion || sourceBundle.projectionVersion || null,
+  };
 }
 export async function validateApprovedMixedQuestions(
   env,
@@ -299,10 +596,11 @@ export async function validateApprovedMixedQuestions(
       fail("문항 내용 fingerprint가 일치하지 않습니다.", 409);
     for (const field of core.META_FIELDS)
       if (
-        q[field] !== undefined &&
+        q[field] !== undefined && record[field] !== undefined &&
         JSON.stringify(q[field]) !== JSON.stringify(record[field])
       )
         fail("canonical metadata parity mismatch: " + field, 409);
+    for (const field of core.META_FIELDS) delete q[field];
     for (const field of core.META_FIELDS)
       if (record[field] !== undefined) q[field] = record[field];
   }
@@ -508,25 +806,38 @@ export async function buildQuestionSnapshot(
       ? await metadataAuthority.buildArchiveMetadataHash(archiveMetadata)
       : null;
     const snapshot = {};
-    for (const field of [
-      "curriculumKey",
-      "courseKey",
-      "L1",
-      "L2",
-      "L3",
-      "L4",
-      "secondaryConceptKeys",
-      "curriculumApplicability",
-      "defaultSelectable",
-      "difficultyBucket",
-      "difficultyConfidence",
-      "difficultyBoundaryFlag",
-      "legacyLevelCompatibility",
-      "reviewStatus",
-      "metadataRevision",
-    ])
+    for (const field of core.META_FIELDS)
       if (q[field] !== undefined) snapshot[field] = q[field];
     if (archiveMetadata) snapshot.archiveMetadata = archiveMetadata;
+    const canonicalRecord = options.canonicalAuthority
+      ? {
+          ...q,
+          questionUid: uid,
+          sourceFile: file,
+          sourceOrdinal: ordinal,
+          identityStatus: status,
+          sourceFingerprint: q.sourceFingerprint || null,
+        }
+      : null;
+    const metadataSnapshotJson = await buildBlueprintMetadataSnapshot(
+      q,
+      metadataAuthority,
+      {
+        canonicalRecord,
+        sourceIdentityStatus: status,
+        sourceArchiveFile: q.sourceArchiveFile || q.source_archive_file || file,
+        sourceQuestionUid: uid || null,
+        sourceQuestionOrdinal: ordinal,
+        sourceQuestionNo: q.sourceQuestionNo ?? q._sourceQuestionNo ?? q.source_question_no ?? q.id ?? null,
+        sourceFingerprint: q.sourceFingerprint || null,
+        projectionVersion: options.projectionVersion,
+        captureSource: options.canonicalAuthority
+          ? "CANONICAL_PROJECTION_AT_ASSIGNMENT"
+          : "BLUEPRINT_FIELDS_AT_ASSIGNMENT",
+        authoredFidelity: options.canonicalAuthority ? "CANONICAL_CAPTURE" : "UNKNOWN",
+        captureStatus: options.canonicalAuthority ? "CAPTURED" : "PARTIAL",
+      },
+    );
     rows.push({
       order_no: i + 1,
       question_uid: status === "VERIFIED" ? uid : null,
@@ -547,7 +858,7 @@ export async function buildQuestionSnapshot(
         : "UNKNOWN",
       metadata_revision: metadataRevision,
       metadata_hash: metadataHash,
-      metadata_json: JSON.stringify(snapshot),
+      metadata_json: metadataSnapshotJson || JSON.stringify(snapshot),
       resolution_status: status,
     });
   }
@@ -607,6 +918,12 @@ export async function blueprintInsertStatements(
   metadataAuthority,
   options = {},
 ) {
+  let hasMetadataJson = false;
+  try {
+    const blueprintColumns = new Set((await env.DB.prepare("PRAGMA table_info(exam_blueprints)").all())
+      .results?.map((row) => row.name).filter(Boolean) || []);
+    hasMetadataJson = blueprintColumns.has("metadata_json");
+  } catch {}
   const columns = [
     "archive_file",
     "question_no",
@@ -624,17 +941,47 @@ export async function blueprintInsertStatements(
     "difficulty",
     "metadata_revision",
     "metadata_hash",
+    ...(hasMetadataJson ? ["metadata_json"] : []),
   ];
   const values = await Promise.all(
     questions.map(async (q, i) => {
       const metadata = metadataAuthority.buildArchiveQuestionMetadata(q);
+      const uid = String(q.questionUid || q.source_question_uid || "").trim(),
+        sourceFile = norm(q.sourceArchiveFile || q._sourceFile || q.source_archive_file),
+        sourceOrdinal = normalizeOptionalPositiveInteger(q.sourceOrdinal ?? q._sourceQuestionOrdinal ?? q.source_question_ordinal),
+        identity = options.canonicalAuthority?.identityByUid?.[uid],
+        identityStatus = identity?.status === "VERIFIED" &&
+          norm(identity.sourceArchiveFile) === sourceFile &&
+          Number(identity.sourceOrdinal) === sourceOrdinal
+          ? "VERIFIED"
+          : "UNRESOLVED",
+        canonicalRecord = options.canonicalAuthority
+          ? { ...q, questionUid: uid, sourceFile, sourceOrdinal, identityStatus, sourceFingerprint: q.sourceFingerprint || null }
+          : null,
+        metadataJson = hasMetadataJson
+          ? await buildBlueprintMetadataSnapshot(q, metadataAuthority, {
+              canonicalRecord,
+              sourceIdentityStatus: identityStatus,
+              sourceArchiveFile: q.sourceArchiveFile || q._sourceFile || q.source_archive_file || sourceFile,
+              sourceQuestionUid: uid || null,
+              sourceQuestionOrdinal: sourceOrdinal,
+              sourceQuestionNo: q.sourceQuestionNo ?? q._sourceQuestionNo ?? q.source_question_no ?? q.id ?? null,
+              sourceFingerprint: q.sourceFingerprint || null,
+              projectionVersion: options.projectionVersion,
+              captureSource: options.canonicalAuthority
+                ? "CANONICAL_PROJECTION_AT_BLUEPRINT_WRITE"
+                : "BLUEPRINT_FIELDS_AT_WRITE",
+              authoredFidelity: options.canonicalAuthority ? "CANONICAL_CAPTURE" : "UNKNOWN",
+              captureStatus: options.canonicalAuthority ? "CAPTURED" : "PARTIAL",
+            })
+          : null;
       return [
         file,
         i + 1,
-        norm(q.sourceArchiveFile || q._sourceFile),
+        sourceFile,
         String(q.sourceQuestionNo ?? q._sourceQuestionNo ?? q.id ?? ""),
-        q.questionUid || null,
-        Number(q.sourceOrdinal),
+        uid || null,
+        sourceOrdinal,
         metadata.standardUnitKey || null,
         metadata.standardUnit || null,
         metadata.standardCourse || null,
@@ -645,13 +992,14 @@ export async function blueprintInsertStatements(
         String(metadata.difficulty || "UNKNOWN"),
         metadata.metadataRevision,
         await metadataAuthority.buildArchiveMetadataHash(metadata),
+        ...(hasMetadataJson ? [metadataJson] : []),
       ];
     }),
   );
   const statements = [];
   // A guarded Saved Paper row adds its write-key predicate as one extra bind.
   // Six 16-column rows plus those six guards exceed D1's 100-variable limit.
-  const batchSize = options.assignmentGuard?.writeKey ? 5 : 6;
+  const batchSize = 5;
   for (let i = 0; i < values.length; i += batchSize) {
     const batch = values.slice(i, i + batchSize);
     if (options.assignmentGuard?.writeKey) {

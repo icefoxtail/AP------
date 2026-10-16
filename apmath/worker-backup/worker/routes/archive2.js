@@ -276,7 +276,8 @@ export async function handleArchive2(
     let payload = null,
       questions,
       meta,
-      canonicalAuthority = null;
+      canonicalAuthority = null,
+      canonicalProjectionVersion = null;
     if (savedPaperMode) {
       payload = { questions: savedSnapshot.questions, meta: savedSnapshot.meta };
       questions = savedSnapshot.questions;
@@ -305,6 +306,7 @@ export async function handleArchive2(
         const verified = await validateOriginalSnapshot(env, payload, input);
         questions = verified.questions;
         canonicalAuthority = verified.canonicalAuthority;
+        canonicalProjectionVersion = verified.projectionVersion || null;
         payload.meta.identityTitle = verified.exam.identityTitle;
       } else {
         payload.meta.identityTitle = savedPayload?.meta?.identityTitle || "";
@@ -328,6 +330,7 @@ export async function handleArchive2(
       if (!existing) {
         const verified = await validateApprovedMixedQuestions(env, questions, input);
         canonicalAuthority = verified.canonicalAuthority;
+        canonicalProjectionVersion = verified.indexVersion || null;
         checkTargetGrades(classRow, verified.sourceGrades);
       }
     } else {
@@ -346,6 +349,7 @@ export async function handleArchive2(
       meta = { questionUids: input.question_uids };
       const verified = await validateNormalBlueprint(env, questions, input);
       canonicalAuthority = verified.canonicalAuthority;
+      canonicalProjectionVersion = verified.projectionVersion || null;
       if (!existing) checkTargetGrade(classRow, verified.grade);
     }
     const rows = savedPaperMode
@@ -355,6 +359,7 @@ export async function handleArchive2(
         : await buildQuestionSnapshot(input, questions, meta, {
             legacy: original,
             canonicalAuthority,
+            projectionVersion: canonicalProjectionVersion,
             metadataAuthority,
           });
     const expectedQuestionCount = Number(savedPaperMode ? savedPaper.question_count : input.question_count);
@@ -610,7 +615,12 @@ export async function handleArchive2(
           file,
           questions,
           metadataAuthority,
-          { original, ...(savedPaperMode ? { assignmentGuard: { writeKey } } : {}) },
+          {
+            original,
+            canonicalAuthority,
+            projectionVersion: canonicalProjectionVersion,
+            ...(savedPaperMode ? { assignmentGuard: { writeKey } } : {}),
+          },
         )),
       );
     await env.DB.batch(statements);

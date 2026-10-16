@@ -2210,6 +2210,7 @@ function buildStudentWrongClinicReissuePayload(sid, sourcePacket, candidates) {
         metadataRevision: row.item?.metadataRevision ?? null,
         metadataHash: row.item?.metadataHash ?? null,
         metadataJson: row.item?.metadataJson ?? null,
+        metadataContentHash: row.item?.metadataContentHash ?? null,
         metadataSnapshotStatus: row.item?.metadataSnapshotStatus || 'UNRESOLVED',
         sourceOriginRefs: [
             ...(Array.isArray(row.item?.sourceOriginRefs) ? row.item.sourceOriginRefs : []),
