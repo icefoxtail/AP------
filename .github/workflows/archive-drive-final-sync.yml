@@ -1,0 +1,66 @@
+name: Archive GPT Drive Final Sync
+
+on:
+  schedule:
+    - cron: '29 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archive-gpt-drive-final-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: vars.ARCHIVE_DRIVE_SYNC_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout main with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Prepare isolated synchronization branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git ls-remote --exit-code --heads origin automation/drive-gpt-final >/dev/null; then
+            git fetch origin refs/heads/automation/drive-gpt-final:refs/remotes/origin/automation/drive-gpt-final
+            git checkout -B automation/drive-gpt-final origin/automation/drive-gpt-final
+          else
+            git checkout -b automation/drive-gpt-final origin/main
+          fi
+
+      - name: Install Google Drive read-only client
+        run: python -m pip install --disable-pip-version-check 'google-auth>=2.30,<3'
+
+      - name: Download only reviewed final packets
+        env:
+          ARCHIVE_DRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.ARCHIVE_DRIVE_SERVICE_ACCOUNT_JSON }}
+          ARCHIVE_DRIVE_FINAL_FOLDER_ID: '1DAPS2sKV4bD94UYtC8uUmB4TJmKgEB8S'
+          ARCHIVE_SYNC_PATHS_FILE: ${{ runner.temp }}/archive-drive-sync-paths.txt
+        run: python tools/archive-drive-final-sync.py
+
+      - name: Syntax check and commit finalized files
+        shell: bash
+        env:
+          ARCHIVE_SYNC_PATHS_FILE: ${{ runner.temp }}/archive-drive-sync-paths.txt
+        run: |
+          set -euo pipefail
+          mapfile -t files < "$ARCHIVE_SYNC_PATHS_FILE"
+          for f in "${files[@]}"; do
+            if [[ "$f" == *.js ]]; then node --check "$f"; fi
+            git add -- "$f"
+          done
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No changed final Drive packets."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore(archive): sync finalized GPT Drive packets"
+          git push origin HEAD:refs/heads/automation/drive-gpt-final
