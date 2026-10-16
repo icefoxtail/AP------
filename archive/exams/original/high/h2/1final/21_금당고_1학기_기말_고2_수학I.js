@@ -1,4 +1,5 @@
-var examData = {
+var window = typeof window === 'undefined' ? {} : window;
+var examData = window.examData = {
   "exam": {
     "title": "2021학년도 순천금당고등학교 2학년 1학기 기말고사 수학 I",
     "school": "순천금당고등학교",
@@ -339,5 +340,5 @@ if (typeof module !== 'undefined' && module.exports) {
 }
 if (typeof window !== 'undefined') {
   window.examTitle = examData.exam.title;
-  window.questionBank = examData.questions;
+  window.questionBank = window.examData.questions;
 }

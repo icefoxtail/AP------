@@ -1,4 +1,4 @@
-var examData = {
+var examData = window.examData = {
   "exam": {
     "title": "2021학년도 순천강남여자고등학교 2학년 1학기 기말고사 수학 I",
     "school": "순천강남여자고등학교",
@@ -453,4 +453,4 @@ var examData = {
   ]
 };
 window.examTitle = examData.exam.title;
-window.questionBank = examData.questions;
+window.questionBank = window.examData.questions;

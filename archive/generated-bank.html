@@ -265,6 +265,16 @@ function isTeacherSession(){
  }catch{return false;}
 }
 const unitName=row=>UNIT_LABELS[row.l2]||null;
+function validProblemImagePath(value){
+ return typeof value==="string"&&/^assets\/(?:generated-lite|images)\/[^?#\\%]+\.(?:svg|png|jpe?g|webp)$/i.test(value)&&!value.split("/").some(part=>!part||part==="."||part==="..");
+}
+function objectiveAnswerPositions(value){
+ if(typeof value!=="string")return [];
+ const answer=value.trim();if(!answer)return [];
+ const selected=answer.split(/\s*,\s*/);
+ if(selected.length>positions.length||selected.some(position=>position.length!==1||!positions.includes(position))||new Set(selected).size!==selected.length)return [];
+ return selected;
+}
 async function readJson(path){
  if(typeof path!=="string"||!/^data\/generated-lite-consumer\/v1\/[a-zA-Z0-9_./-]+\.json$/.test(path)||path.includes(".."))throw Error("등록 경로 불일치");
  const response=await fetch(path,{cache:"no-cache"});
@@ -297,14 +307,17 @@ async function questionFor(row){
  const matches=data.records.filter(r=>r.generatedUid===row.uid&&r.localOrdinal===row.localOrdinal);
  if(matches.length!==1||matches[0].sourceKind!=="generated"||!Array.isArray(matches[0].question?.choices))throw Error("문항 UID/보기 결속 오류");
  const question=matches[0].question;
- const objective=question.questionType==="객관식"&&question.choices.length===5&&positions.includes(question.answer);
- const subjective=["서술형","단답형","주관식"].includes(question.questionType)&&question.choices.length===0&&String(question.answer||"").trim()!=="";
+ const answerPositions=objectiveAnswerPositions(question.answer);
+ const textChoices=question.choices.length===5&&question.choices.every(choice=>typeof choice==="string"&&choice.trim()!=="");
+ const pictureChoices=question.choices.length===0&&validProblemImagePath(question.image);
+ const objective=question.questionType==="객관식"&&answerPositions.length>0&&(textChoices||pictureChoices);
+ const subjective=["서술형","단답형","주관식"].includes(question.questionType)&&question.choices.length===0&&typeof question.answer==="string"&&question.answer.trim()!=="";
  if(!objective&&!subjective)throw Error("문항 형식/보기/정답 결속 오류");
  return question;
 }
 function figure(parent,q){
  if(!q.image)return;
- if(typeof q.image!=="string"||!/^assets\/(?:generated-lite|images)\/[^?#\\%]+\.(?:svg|png|jpe?g|webp)$/i.test(q.image)||q.image.split("/").some(part=>!part||part==="."||part===".."))throw Error("문제 이미지 경로 오류");
+ if(!validProblemImagePath(q.image))throw Error("문제 이미지 경로 오류");
  const size=["small","half","medium","large","full","tall"].includes(q.imageSize)?q.imageSize:"";
  const wrap=document.createElement("div");wrap.className="q-image-wrap"+(size?" image-"+size:"");
  const img=document.createElement("img");img.src=q.image;img.alt=q.imageAlt||"문항 수학 시각자료";img.className="math-figure";wrap.appendChild(img);parent.appendChild(wrap);

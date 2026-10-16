@@ -52,6 +52,28 @@ function runFixture({session=null,holdShard=false,popupStartsClosed=false,search
  vm.runInContext(inline,context,{timeout:2000});
  return {el:id=>document.getElementById(id),context,getPrinted:()=>printed,getPublished:()=>published,getPublishCalls:()=>publishCalls,getPopup:()=>popup,getCleanups:()=>cleanups,releaseShard:()=>releaseShard?.()};
 }
+async function readyQuestionFixture(){
+ const fixture=runFixture();await new Promise(resolve=>setTimeout(resolve,25));
+ const sourceRow=vm.runInContext('selectableRows[0]',fixture.context,{timeout:2000});
+ return {...fixture,sourceRow};
+}
+async function questionForFixture(context,sourceRow,question){
+ const row={...sourceRow,uid:question.uid||sourceRow.uid,localOrdinal:Number.isInteger(question.id)?question.id:sourceRow.localOrdinal};
+ const data={schemaVersion:'ALIVE_GENERATED_CONSUMER_SHARD_V1',records:[{generatedUid:row.uid,localOrdinal:row.localOrdinal,sourceKind:'generated',question}]};
+ context.__testRow=row;context.__testShardData=data;
+ vm.runInContext('cache.set(__testRow.shard,Promise.resolve(__testShardData))',context,{timeout:2000});
+ return {row,question:await vm.runInContext('questionFor(__testRow)',context,{timeout:2000})};
+}
+function renderQuestionMarkup(context,row,question){
+ const parent=new Node();context.__testRow=row;context.__testQuestion=question;context.__testParent=parent;
+ vm.runInContext('questionMarkup(__testParent,__testQuestion,__testRow,true)',context,{timeout:2000});
+ return parent;
+}
+function readPalmaQ01Questions(){
+ const source=path.join(__dirname,'../archive/generated/lite/v1/2022/H1/H22-C2-07-FUNCTION_BASIC/shards/palma-2025-2final-qid9-q01.js');
+ const sourceWindow={};vm.runInNewContext(fs.readFileSync(source,'utf8'),{window:sourceWindow},{timeout:2000});
+ return sourceWindow.questionBank;
+}
 test('legacy source exam selection and print remain available; source counts match 23/26',async()=>{
  assert.ok(inline);new vm.Script(inline);
  assert.ok(!html.includes('개별 문항 검색'));assert.ok(!html.includes('검수 승인'));assert.ok(!html.includes('id="advanced"'));
@@ -89,6 +111,72 @@ test('source note boxes retain condition line breaks while unknown nested markup
  assert.equal(note.children.filter(child=>child.tag==='br').length,2);
  assert.ok(note.children.filter(child=>child.tag==='span').some(child=>child.textContent.includes('onclick=alert(1)')));
  assert.ok(note.children.every(child=>child.tag==='span'||child.tag==='br'));
+});
+test('generated output accepts valid single, multiple, picture-choice, and descriptive answers',async()=>{
+ const {context,sourceRow}=await readyQuestionFixture();
+ const samples=[
+  {id:1,uid:'ALITE-TEST-SINGLE',questionType:'객관식',choices:['1','2','3','4','5'],answer:'③',image:null},
+  {id:2,uid:'ALITE-TEST-MULTI',questionType:'객관식',choices:['1','2','3','4','5'],answer:'①,④',image:null},
+  {id:3,uid:'ALITE-TEST-PICTURE-MULTI',questionType:'객관식',choices:[],answer:'①, ④',image:'assets/generated-lite/qid9/ALITE-TEST-PICTURE-MULTI-problem.svg'},
+  {id:4,uid:'ALITE-TEST-DESCRIPTIVE',questionType:'서술형',choices:[],answer:'x=2',image:null}
+ ];
+ for(const sample of samples){
+  const {row,question}=await questionForFixture(context,sourceRow,sample);
+  const rendered=renderQuestionMarkup(context,row,question);
+  const choiceNodes=rendered.children.filter(child=>child.className==='choice');
+  const answer=rendered.children.find(child=>child.className==='answer');
+  assert.ok(answer);assert.ok(answer.textContent.startsWith('정답: '+sample.answer+'\n'));
+  if(sample.choices.length)assert.equal(choiceNodes.length,5);
+  else assert.equal(choiceNodes.length,0);
+  if(sample.image){
+   const imageWrap=rendered.children.find(child=>child.className?.startsWith('q-image-wrap'));
+   assert.equal(imageWrap?.children[0]?.src,sample.image);
+  }
+ }
+});
+test('the nine Palma Q01 full-image choices with multiple answers load and print without rewriting source data',async()=>{
+ const questions=readPalmaQ01Questions();assert.equal(questions.length,9);
+ assert.ok(questions.every(question=>question.questionType==='객관식'&&Array.isArray(question.choices)&&question.choices.length===0&&typeof question.image==='string'));
+ const {context,sourceRow,getPublished}=await readyQuestionFixture();
+ for(const sourceQuestion of questions){
+  assert.ok(fs.existsSync(path.join(__dirname,'../archive',sourceQuestion.image)),sourceQuestion.uid+' problem asset exists');
+  const {row,question}=await questionForFixture(context,sourceRow,sourceQuestion);
+  assert.equal(question.image,sourceQuestion.image,sourceQuestion.uid);
+  const rendered=renderQuestionMarkup(context,row,question);
+  const imageWrap=rendered.children.find(child=>child.className?.startsWith('q-image-wrap'));
+  const answer=rendered.children.find(child=>child.className==='answer');
+  assert.ok(imageWrap,sourceQuestion.uid+' image wrapper is rendered; children='+rendered.children.map(child=>child.className||child.tag).join(','));
+  assert.equal(imageWrap.children[0]?.src,sourceQuestion.image,sourceQuestion.uid);
+  assert.equal(rendered.children.filter(child=>child.className==='choice').length,0,sourceQuestion.uid);
+  assert.ok(answer?.textContent.startsWith('정답: '+sourceQuestion.answer+'\n'),sourceQuestion.uid);
+ }
+ const rows=questions.map(question=>({...sourceRow,uid:question.uid,localOrdinal:question.id}));
+ const consumerData={schemaVersion:'ALIVE_GENERATED_CONSUMER_SHARD_V1',records:questions.map(question=>({generatedUid:question.uid,localOrdinal:question.id,sourceKind:'generated',question}))};
+ context.__testRows=rows;context.__testShardData=consumerData;
+ vm.runInContext('cache.set(__testRows[0].shard,Promise.resolve(__testShardData));selectedGenerated.clear();for(const row of __testRows)selectedGenerated.set(row.uid,row)',context,{timeout:2000});
+ await vm.runInContext('printGeneratedSelection()',context,{timeout:2000});
+ const output=getPublished();
+ assert.equal(output.mode,'exam');assert.equal(output.questionCount,9);
+ assert.deepEqual(Array.from(output.questionUids),Array.from(questions,question=>question.uid));
+ assert.deepEqual(Array.from(output.questions,question=>question.answer),Array.from(questions,question=>question.answer));
+ assert.deepEqual(Array.from(output.questions,question=>question.image),Array.from(questions,question=>question.image));
+});
+test('generated objective and descriptive questions reject invalid answers, blank choices, and missing picture choices',async()=>{
+ const {context,sourceRow}=await readyQuestionFixture();
+ const objective=(answer,choices=['1','2','3','4','5'],image=null)=>({id:1,uid:'ALITE-TEST-INVALID',questionType:'객관식',choices,answer,image});
+ const invalidQuestions=[
+  objective('⑥'),objective('①,⑥'),objective('②, ②'),objective(''),objective('①,'),
+  objective('①',['1','2','3','4']),objective('①',['1','','3','4','5']),
+  objective('①',[],null),objective('①',[],'assets/generated-lite/qid9/../missing.svg'),
+  {id:1,uid:'ALITE-TEST-EMPTY-SUBJECTIVE',questionType:'서술형',choices:[],answer:'  ',image:null}
+ ];
+ for(const [index,question] of invalidQuestions.entries()){
+  if(index<5){
+   context.__testAnswer=question.answer;
+   assert.equal(vm.runInContext('objectiveAnswerPositions(__testAnswer).length',context,{timeout:2000}),0,'invalid answer token '+index);
+  }
+  await assert.rejects(questionForFixture(context,sourceRow,question),/문항 형식\/보기\/정답 결속 오류/,'invalid fixture '+index+' was accepted');
+ }
 });
 test('source problem PNG and SVG paths render exactly while asset traversal fails closed',()=>{
  const {context}=runFixture(),parent=new Node();context.__parent=parent;
