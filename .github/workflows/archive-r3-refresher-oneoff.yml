@@ -46,7 +46,7 @@ jobs:
             "    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 25],"
           ];
           if (!t.includes(marker)) throw Error('Missing q-image expected list');
-          t=t.replace(marker, marker+'\\n'+rows.join('\\n')); 
+          t=t.replace(marker, marker+String.fromCharCode(10)+rows.join(String.fromCharCode(10))); 
           fs.writeFileSync(testPath,t);
           console.log(JSON.stringify({total:report.total,production:report.productionTotal,extension:report.extensionCounts,qImageAndInlineTotal:report.qImageAndInlineTotal,errors:report.validation},null,2));
           NODE
