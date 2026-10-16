@@ -484,6 +484,17 @@ test("legacy unresolved row without Meta remains snapshotable and does not becom
 
 test("absent and null source numbers keep the original question id fallback across full and sharded validation", async () => {
   assert.ok(Object.prototype.hasOwnProperty.call(sourceQuestions[0], "id"));
+  const withoutVolatileSnapshotFields = (metadataJson) => {
+    if (typeof metadataJson !== "string" || !metadataJson) return metadataJson;
+    const snapshot = JSON.parse(metadataJson);
+    delete snapshot.capturedAt;
+    delete snapshot.snapshotHash;
+    return JSON.stringify(snapshot);
+  };
+  const normalizeRows = (rows) => rows.map((row) => ({
+    ...row,
+    metadata_json: withoutVolatileSnapshotFields(row.metadata_json),
+  }));
   const fullFixture = await legacyFullSourceNumberFixture();
   const fullAssets = createAssetEnv({ overrides: fullFixture.overrides });
   const fullResult = await validateOriginalSnapshot(
@@ -519,8 +530,8 @@ test("absent and null source numbers keep the original question id fallback acro
       { legacy: true, canonicalAuthority: fastResult.canonicalAuthority },
     );
     assert.deepEqual(
-      fastRows,
-      fullRows,
+      normalizeRows(fastRows),
+      normalizeRows(fullRows),
       sourceQuestionNoMode + " sourceQuestionNo and sourceFingerprint preserve full-loader snapshot semantics",
     );
     assert.equal(
@@ -530,7 +541,10 @@ test("absent and null source numbers keep the original question id fallback acro
     );
     assert.equal(fastRows[0].source_fingerprint, null);
     assert.equal(fastRows[0].question_uid, sourceRows[0].questionUid);
-    assert.equal(fastRows[0].metadata_json, fullRows[0].metadata_json);
+    assert.equal(
+      withoutVolatileSnapshotFields(fastRows[0].metadata_json),
+      withoutVolatileSnapshotFields(fullRows[0].metadata_json),
+    );
   }
 });
 

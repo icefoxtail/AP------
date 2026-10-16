@@ -730,6 +730,17 @@ function clinicPrintReadQuestionMetadata(snapshot) {
     }
 }
 
+function clinicPrintReadMetaContentHash(snapshot) {
+    const raw = snapshot?.metadata_json || snapshot?.metadataJson;
+    if (!raw) return '';
+    try {
+        const parsed = typeof raw === 'string' ? JSON.parse(raw) : raw;
+        return String(parsed?.metadataContentHash || '').trim();
+    } catch (e) {
+        return '';
+    }
+}
+
 // Identity comes only from the result row or the frozen assignment bridge.
 // Display order is kept separately and is never promoted to source question no.
 function clinicPrintGetSourceIdentity(snapshot) {
@@ -742,6 +753,7 @@ function clinicPrintGetSourceIdentity(snapshot) {
     const metadataRevision = snapshot?.metadata_revision || snapshot?.metadataRevision || metadata.metadataRevision || null;
     const metadataHash = snapshot?.metadata_hash || snapshot?.metadataHash || null;
     const metadataJson = snapshot?.metadata_json ?? snapshot?.metadataJson ?? null;
+    const metadataContentHash = clinicPrintReadMetaContentHash(snapshot) || null;
     const metadataSnapshotStatus = snapshot?.metadata_snapshot_status || snapshot?.metadataSnapshotStatus ||
         (metadataRevision && metadataHash && metadataJson ? 'CAPTURED' : (metadataRevision || metadataHash || metadataJson ? 'PARTIAL' : 'UNRESOLVED'));
     return {
@@ -754,6 +766,7 @@ function clinicPrintGetSourceIdentity(snapshot) {
         metadataRevision,
         metadataHash,
         metadataJson,
+        metadataContentHash,
         metadataSnapshotStatus,
         unitKey: snapshot?.standard_unit_key || snapshot?.standardUnitKey || metadata.standardUnitKey || null,
         unit: snapshot?.standard_unit || snapshot?.standardUnit || metadata.standardUnit || null,
@@ -795,10 +808,12 @@ function clinicPrintGetWrongItemSourceKey(item) {
     const no = Number(item?.sourceQuestionNo || item?.questionNo || 0);
     const revision = String(item?.metadataRevision || '');
     const hash = String(item?.metadataHash || '');
+    const contentHash = String(item?.metadataContentHash || clinicPrintReadMetaContentHash(item) || '').trim();
+    const metadataKey = contentHash ? `content:${contentHash}` : `${revision}|${hash}`;
     const uid = String(item?.sourceQuestionUid || '').trim();
-    if (uid) return `uid:${uid}|meta:${revision}|${hash}`;
-    if (file && ordinal > 0 && item?.sourceIdentityStatus !== 'UNRESOLVED') return `${file}|ordinal:${ordinal}|meta:${revision}|${hash}`;
-    if (file && no > 0 && item?.sourceIdentityStatus && item.sourceIdentityStatus !== 'UNRESOLVED') return `${file}|source-no:${no}|meta:${revision}|${hash}`;
+    if (uid) return `uid:${uid}|meta:${metadataKey}`;
+    if (file && ordinal > 0 && item?.sourceIdentityStatus !== 'UNRESOLVED') return `${file}|ordinal:${ordinal}|meta:${metadataKey}`;
+    if (file && no > 0 && item?.sourceIdentityStatus && item.sourceIdentityStatus !== 'UNRESOLVED') return `${file}|source-no:${no}|meta:${metadataKey}`;
     const origin = (item?.sourceOriginRefs || [])[0] || {};
     if (origin.assignmentId || origin.sessionId) return `origin:${origin.assignmentId || origin.sessionId}|order:${origin.orderNo || item?.displayQuestionNo || item?.questionNo || 0}`;
     return `legacy:${file}|${Number(item?.displayQuestionNo || item?.questionNo || 0)}`;
@@ -986,6 +1001,7 @@ function clinicPrintBuildClassWrongItems(studentWrongItems, examCohortCounts = {
                     metadataRevision: item.metadataRevision || null,
                     metadataHash: item.metadataHash || null,
                     metadataJson: item.metadataJson ?? null,
+                    metadataContentHash: item.metadataContentHash || null,
                     metadataSnapshotStatus: item.metadataSnapshotStatus || 'UNRESOLVED',
                     sourceOriginRefs: [...(item.sourceOriginRefs || [])],
                     wrongCount: 0,
