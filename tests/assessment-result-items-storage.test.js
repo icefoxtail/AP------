@@ -48,8 +48,12 @@ for (const requiredText of [
 }
 
 assert(
-  !resultItemsHelper.includes('SELECT * FROM exam_blueprints'),
-  'historical result identity must not be inferred from current blueprints'
+  /if\s*\(\s*assignmentId\s*\)\s*\{\s*bridgeByOrder\s*=\s*await\s+loadFrozenAssignmentQuestions\(env,\s*assignmentId\);\s*\}\s*else\s+if\s*\(\s*input\.allowBlueprintSnapshot\s*===\s*true\s*\)\s*\{/.test(resultItemsHelper) &&
+  (resultItemsHelper.match(/=\s*loadNewUnassignedBlueprintSnapshots\(env,\s*input,\s*questionCount\);/g) || []).length === 1 &&
+  resultItemsHelper.includes('bridgeByOrder = await pending;') &&
+  (examsRoute.match(/allowBlueprintSnapshot:\s*!selectedSession\?\.id\s*&&\s*!assignmentMeta\.assignment_id/g) || []).length === 2 &&
+  !studentPortalRoute.includes('allowBlueprintSnapshot'),
+  'current Blueprint capture should be limited to new unassigned teacher sessions; assignments use frozen snapshots and student OMR must not opt into fallback'
 );
 
 assert(

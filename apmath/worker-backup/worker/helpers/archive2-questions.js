@@ -13,6 +13,10 @@ const norm = (value) =>
     .replace(/^\/?(?:archive\/)?exams\//, "")
     .replace(/^\/+/, "")
     .trim();
+function normalizeOptionalPositiveInteger(value) {
+  const number = Number(value);
+  return Number.isInteger(number) && number > 0 ? number : null;
+}
 export function fail(message, status = 400) {
   const error = new Error(message);
   error.status = status;
