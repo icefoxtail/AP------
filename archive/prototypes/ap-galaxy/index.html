@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#050916">
   <title>아카이브 유니버스 · 공개 시험지 탐색</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./orbit.css?v=20261014-curriculum-orbit-1">
+  <link rel="stylesheet" href="./orbit.css?v=20261016-galaxy-nav-2">
 </head>
 <body>
   <main class="universe" id="universe" aria-label="학년과 과정 은하를 탐색하는 공개 시험지 우주">
@@ -42,6 +42,11 @@
         <button class="quiet-button" id="viewToggle" type="button" aria-pressed="false"><span aria-hidden="true">☷</span> 목록</button>
       </div>
     </header>
+
+    <nav class="galaxy-nav glass" id="galaxyNav" aria-label="은하 바로가기">
+      <div class="galaxy-nav-intro"><strong>은하 바로가기</strong><span>한 번 눌러 해당 은하로 이동</span></div>
+      <div class="galaxy-nav-groups" id="galaxyNavGroups"></div>
+    </nav>
 
     <section class="filter-panel glass" id="filterPanel" aria-label="우주 자료 필터" hidden>
       <div class="filter-panel-head"><div><strong>시험지 필터</strong><span>학년·과정, 연도, 시험 종류, 학교를 어떤 순서로든 고르세요.</span></div><button class="icon-button" id="closeFilters" type="button" aria-label="필터 닫기">×</button></div>
@@ -191,7 +196,8 @@
   </main>
 
   <script src="../../archive2-core.js"></script>
-  <script src="./orbit-question-reader.js?v=20261014-curriculum-orbit-1"></script>
-  <script src="./orbit-app.js?v=20261014-curriculum-orbit-1"></script>
+  <script src="./orbit-question-reader.js?v=20261016-galaxy-nav-2"></script>
+  <script src="./galaxy-navigation-model.js?v=20261016-galaxy-nav-2"></script>
+  <script src="./orbit-app.js?v=20261016-galaxy-nav-2"></script>
 </body>
 </html>
