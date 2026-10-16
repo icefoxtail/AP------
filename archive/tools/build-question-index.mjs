@@ -420,7 +420,11 @@ for (const file of examFiles) {
                 continue;
             }
 
-            const rawId = q.id ?? '';
+            // Older source exams may expose their stable question number as
+            // `number` instead of `id` (notably window.examData payloads).
+            // Use it for identity so same-file questions do not collapse to
+            // the shared empty qKey.
+            const rawId = q.id ?? q.number ?? '';
             const id = rawId;
             const idKey = String(rawId);
             if (!idSlots.has(idKey)) idSlots.set(idKey, []);

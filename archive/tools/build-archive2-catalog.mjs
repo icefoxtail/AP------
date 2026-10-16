@@ -259,7 +259,12 @@ for (const exam of exams) {
   const scope = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(scope);
   vm.runInContext(source, scope, { filename: file, timeout: 3000 });
-  const bank = scope.window.questions || scope.window.questionBank || scope.window.examData?.questions;
+  const bank = [
+    scope.window.questions,
+    scope.window.questionBank,
+    scope.window.questionBank?.questions,
+    scope.window.examData?.questions,
+  ].find(Array.isArray);
   exam.identityTitle = scope.window.examTitle || file.split('/').pop().replace(/\.js$/,'');
   if (!Array.isArray(bank)) throw new Error("source bank unavailable: " + file);
   if (bank.length !== Number(exam.qCount))

@@ -14,11 +14,11 @@ test('archive/exams inline image inventory covers every content img and validate
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 73);
-  assert.equal(generated.productionTotal, 69);
+  assert.equal(generated.total, 756);
+  assert.equal(generated.productionTotal, 752);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 72, '.svg': 1 });
-  assert.equal(generated.qImageAndInlineTotal, 18);
+  assert.deepEqual(generated.extensionCounts, { '.png': 705, '.svg': 51 });
+  assert.equal(generated.qImageAndInlineTotal, 32);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
     missingProductionAssetCount: 0,
@@ -64,6 +64,13 @@ test('archive/exams inline image inventory covers every content img and validate
     ['original/high/h2/1mid/20_매산여고_1학기_중간_고2_확률과통계.js', 7],
     ['original/high/h2/1mid/20_매산여고_1학기_중간_고2_확률과통계.js', 9],
     ['original/high/h2/1mid/20_매산여고_1학기_중간_고2_확률과통계.js', 10],
+    ['original/high/h2/1mid/21_강남여고_1학기_중간_고2_수학I.js', 23],
+    ['original/high/h2/1mid/21_강남여고_1학기_중간_고2_수학I.js', 25],
+    ['original/high/h2/1mid/21_강남여고_1학기_중간_고2_수학I.js', 26],
+    ['original/high/h2/1mid/21_강남여고_1학기_중간_고2_수학I.js', 29],
+    ['original/high/h2/1mid/22_제일고_1학기_중간_고2_확률과통계.js', 8],
+    ['original/high/h2/1mid/22_제일고_1학기_중간_고2_확률과통계.js', 16],
+    ['original/high/h2/1mid/22_제일고_1학기_중간_고2_확률과통계.js', 21],
     ['original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js', 5],
     ['original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js', 6],
     ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_수학I.js', 13],
@@ -71,6 +78,13 @@ test('archive/exams inline image inventory covers every content img and validate
     ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_확률과통계.js', 1],
     ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_확률과통계.js', 10],
     ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_확률과통계.js', 17],
+    ['original/middle/m3/1final/21_동산중_1학기_기말_중3_기출c.js', 5],
+    ['original/middle/m3/1final/21_동산중_1학기_기말_중3_기출c.js', 25],
+    ['original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js', 10],
+    ['original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js', 18],
+    ['original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js', 19],
+    ['original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js', 21],
+    ['original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js', 22],
     ['test-fixtures/inline-image-readiness.js', 3],
   ]);
 

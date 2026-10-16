@@ -216,6 +216,42 @@ test("direct middle-school curriculum metadata overrides rollout fallback", () =
   assert.equal(core.finderMatches(exam, { curriculumKey: "2022" }, index), false);
 });
 
+test("middle-school year rollout replaces derived curriculum while explicit Meta ranges remain authoritative", () => {
+  const taxonomy = [
+    { curriculumKey: "2015", courseKey: "M1-2" },
+    { curriculumKey: "2022", courseKey: "M1-2" },
+    { curriculumKey: "2015", courseKey: "수학I" },
+  ];
+  const fallbackExam = {
+    file: "middle-derived-record-metadata.js",
+    grade: "중1",
+    effectiveBrowseGrade: "중1",
+    year: 2025,
+    curriculums: [],
+    courseRanges: [{ courseCode: "M1", rangeStartUnitKey: "M1-05", rangeEndUnitKey: "M1-08" }],
+  };
+  const explicitMetaExam = {
+    ...fallbackExam,
+    file: "middle-explicit-meta-range.js",
+    courseRanges: [{ courseCode: "H15-M1", standardCourse: "수학I" }],
+  };
+  const explicitRecordMetaExam = {
+    ...fallbackExam,
+    file: "middle-explicit-record-meta.js",
+  };
+  const index = core.buildFinderIndex({
+    taxonomy,
+    exams: [fallbackExam, explicitMetaExam, explicitRecordMetaExam],
+    records: [{ sourceFile: explicitRecordMetaExam.file, curriculumKey: "2015" }],
+  });
+  assert.equal(core.finderMatches(fallbackExam, { curriculumKey: "2022" }, index), true);
+  assert.equal(core.finderMatches(fallbackExam, { curriculumKey: "2015" }, index), false);
+  assert.equal(core.finderMatches(explicitMetaExam, { curriculumKey: "2015" }, index), true);
+  assert.equal(core.finderMatches(explicitMetaExam, { curriculumKey: "2022" }, index), false);
+  assert.equal(core.finderMatches(explicitRecordMetaExam, { curriculumKey: "2015" }, index), true);
+  assert.equal(core.finderMatches(explicitRecordMetaExam, { curriculumKey: "2022" }, index), false);
+});
+
 test("middle-school catalog range keys normalize to canonical semester course identities", () => {
   const taxonomy = [
     { curriculumKey: "2015", courseKey: "M1-1" },

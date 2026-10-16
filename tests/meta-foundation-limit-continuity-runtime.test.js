@@ -102,9 +102,9 @@ for (const overlay of runtime.records) {
 
 assert.strictEqual(direct + repaired, 184);
 assert.strictEqual(sourceReadyLimit, 73);
-assert.strictEqual(sourceReadyContinuity, 60);
+assert.strictEqual(sourceReadyContinuity, 55);
 assert.strictEqual(sourceHoldLimit, 31);
-assert.strictEqual(sourceHoldContinuity, 20);
+assert.strictEqual(sourceHoldContinuity, 25);
 
 assert.strictEqual(C.finderCourseGrade("수학II", "2015"), "고2");
 assert.strictEqual(C.finderCourseGrade("수학II", "2022"), "고3");

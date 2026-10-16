@@ -328,6 +328,7 @@
     }
     const byFile = new Map();
     for (const exam of catalog.exams || []) {
+      let hasExplicitRecordCurriculum = false;
       const file = normalizeFile(exam.file),
         courseKeys = new Set(),
         curriculumKeys = new Set(exam.curriculums || []),
@@ -337,7 +338,10 @@
       for (const record of recordsByFile.get(file) || []) {
         if (text(record.sourceGrade)) sourceGrades.add(text(record.sourceGrade));
         if (record.courseKey) courseKeys.add(record.courseKey);
-        if (record.curriculumKey) curriculumKeys.add(record.curriculumKey);
+        if (record.curriculumKey) {
+          curriculumKeys.add(record.curriculumKey);
+          hasExplicitRecordCurriculum = true;
+        }
         const subjectProjection = subjectProjectionForRecord(record, "", catalog.projectionPolicy);
         if (subjectProjection) {
           subjectProjections.add(subjectProjection);
@@ -347,10 +351,10 @@
             );
         }
       }
-      let hasNeutralMiddleRange = false;
+      let hasExplicitMiddleCurriculumRange = false;
       for (const range of exam.courseRanges || []) {
-        if (/^M[123]$/.test(text(range.courseCode)))
-          hasNeutralMiddleRange = true;
+        if (/^H(?:15|22)(?:-|$)/.test(text(range.courseCode)))
+          hasExplicitMiddleCurriculumRange = true;
         const middleKeys = middleCourseRange(range).filter((key) =>
           curriculaByCourse.has(key),
         );
@@ -369,12 +373,21 @@
         if (curriculum && candidates.size && !exam.curriculums?.length)
           curriculumKeys.add(curriculum);
       }
-      if (!curriculumKeys.size && hasNeutralMiddleRange) {
+      const middleGrade = text(exam.effectiveBrowseGrade || exam.grade);
+      if (
+        !exam.curriculums?.length &&
+        !hasExplicitRecordCurriculum &&
+        !hasExplicitMiddleCurriculumRange &&
+        /^중[123]$/.test(middleGrade)
+      ) {
         const curriculum = middleCurriculumFromYear(
-          exam.effectiveBrowseGrade || exam.grade,
+          middleGrade,
           exam.year,
         );
-        if (curriculum) curriculumKeys.add(curriculum);
+        if (curriculum) {
+          curriculumKeys.clear();
+          curriculumKeys.add(curriculum);
+        }
       }
       if (!sourceGrades.size) {
         const registeredGrade = text(exam.sourceGrade || exam.grade);

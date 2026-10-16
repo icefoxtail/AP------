@@ -13,12 +13,29 @@ test('question-index 계약은 학교·연도·시험 메타데이터를 보존�
   assert.match(builder, /sourceExamKey: sourceFile/);
 });
 
+const load = file => {
+  const context = { window: {} };
+  vm.runInNewContext(fs.readFileSync(file, 'utf8'), context);
+  return context.window;
+};
+
+test('question-index retains source question numbers, order, and unique identities', () => {
+  const relativeSource = 'original/middle/m3/2mid/18_연향중_2학기_중간_중3_수학.js';
+  const sourcePath = path.resolve(__dirname, '..', 'archive', 'exams', relativeSource);
+  const questions = load(sourcePath).examData.questions;
+  assert.equal(questions.length, 23);
+  assert.ok(questions.every(question => question.id === undefined && Number.isInteger(question.number)));
+
+  const indexPath = path.resolve(__dirname, '..', 'archive', 'question-index.js');
+  const indexed = load(indexPath).questionIndex.filter(item => item.sourceFile === relativeSource);
+  const sourceNumbers = Array.from(questions, question => question.number);
+  assert.equal(indexed.length, sourceNumbers.length, 'each source question must produce one index row');
+  assert.deepEqual(Array.from(indexed, item => item.id), sourceNumbers);
+  assert.deepEqual(Array.from(indexed, item => item.sourceOrdinal), sourceNumbers);
+  assert.equal(new Set(indexed.map(item => item.qKey)).size, sourceNumbers.length);
+});
+
 test('수록 원본의 DB·JS·index 문항 수와 학교·시험 메타데이터가 일치한다', () => {
-  const load = file => {
-    const context = { window: {} };
-    vm.runInNewContext(fs.readFileSync(file, 'utf8'), context);
-    return context.window;
-  };
   const db = load(path.resolve(__dirname, '..', 'archive', 'db.js')).mainDB.exams;
   const index = load(path.resolve(__dirname, '..', 'archive', 'question-index.js')).questionIndex;
   const dbByFile = new Map(db.map(exam => [exam.file, exam]));

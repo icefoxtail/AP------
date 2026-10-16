@@ -23,6 +23,7 @@ function executeFunctions(source, names, globals = {}) {
     encodeURIComponent,
     String
   });
+  context.window = context;
   vm.runInContext(names.map(name => extractFunction(source, name)).join('\n'), context);
   return context;
 }

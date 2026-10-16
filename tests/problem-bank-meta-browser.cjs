@@ -54,9 +54,10 @@ const server=http.createServer((req,res)=>{
   assert.equal(await page.evaluate(()=>matching.some(r=>r.uid==='browser-fixture-unknown-difficulty')),true);
   assert.equal(await page.evaluate(()=>matching.every(r=>r.difficultyBucket===null)),true);
   await page.selectOption('#difficulty','');
-  const l2=await page.evaluate(()=>inventory.find(r=>r.sourceKind==='generated'&&r.L2&&!r.L2.includes('|'))?.L2);
-  assert.ok(l2,'recovered exact RPM L2 exists');
-  await page.selectOption('#L2',l2);
+  const l2=await page.evaluate(()=>inventory.find(r=>r.sourceKind==='generated'&&r.rpmL2&&!r.rpmL2.includes('|'))?.rpmL2);
+  assert.ok(l2,'generated inventory exposes an exact RPM L2');
+  assert.ok(await page.locator('#rpmL2 option').evaluateAll((options,value)=>options.some(option=>option.value===value),l2),`current RPM L2 filter offers ${l2}`);
+  await page.selectOption('#rpmL2',l2);
   assert.ok(await page.evaluate(()=>matching.length>0));
   await page.selectOption('#source','');
   assert.ok(await page.evaluate(()=>matching.some(r=>r.sourceKind==='original')&&matching.some(r=>r.sourceKind==='generated')),'same L2 includes original and Generated');

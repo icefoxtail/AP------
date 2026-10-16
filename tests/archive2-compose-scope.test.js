@@ -360,42 +360,28 @@ test('explicit selected-source entry and saved draft restoration retain the inte
   assert.deepEqual(plain(w.state.sources), [source]);
 });
 
-test('approved shared high2/high3 sources survive Finder-to-Compose in both browse directions', async () => {
-  assert.ok(catalog.exams.some(exam => exam.sourceGrade === '고3'),
-    'the current Archive2 source population includes registered 고3 sources; the reverse direction is fixture-verified');
-  const base = catalog.records.find(row => row.sourceGrade === '고2' &&
-    core.subjectProjectionForRecord(row, '', catalog.projectionPolicy));
-  assert.ok(base, 'test needs a canonical high2 subject projection');
-  const semanticSubject = core.subjectProjectionForRecord(base, '', catalog.projectionPolicy);
-  const makeRecord = grade => {
-    const sourceFile = `original/high/h${grade[1]}/1mid/shared-${grade}.js`;
-    return {
-      ...base,
-      questionUid: 'qid_v1_' + crypto.createHash('sha256').update(`shared-compose:${grade}`).digest('hex'),
-      sourceFile,
-      sourceOrdinal: 1,
-      sourceGrade: grade,
-      effectiveBrowseGrade: grade,
-      __testApprovedAssignment: true,
-    };
-  };
-  const records = ['고2', '고3'].map(makeRecord);
-  const exams = records.map(record => ({
-    file: record.sourceFile,
-    grade: record.sourceGrade,
-    sourceGrade: record.sourceGrade,
-    effectiveBrowseGrade: record.sourceGrade,
-    school: `공유 ${record.sourceGrade}`,
-    year: 2025,
-    courseRanges: [],
-    curriculums: [record.curriculumKey],
-  }));
-  const { w, click } = harness({ ...catalog, records, exams });
+test('a real approved high2 source survives Finder-to-Compose in high2 and shared high3 browse directions', async () => {
+  const { w, click } = harness(catalog);
   const data = w.state.catalog;
+  const currentHigh3Records = data.records.filter(row => row.sourceGrade === '고3');
+  const ineligibleHigh3Uids = currentHigh3Records.filter(row => !core.basicEligibility(row, {
+    canonicalAuthority: data.canonicalAuthority,
+  }).ok).map(row => row.questionUid);
+  if (ineligibleHigh3Uids.length) {
+    w.state.filters = { grade: '고3' };
+    const currentHigh3ScopeUids = new Set(w.scopeOptions().flatMap(scope => scope.scopeQuestionUids));
+    assert.ok(ineligibleHigh3Uids.every(uid => !currentHigh3ScopeUids.has(uid)),
+      'real high3 rows that fail current approval/readiness remain outside selectable Compose scopes');
+  }
+  const record = data.records.find(row => row.automatic && row.sourceGrade === '고2' &&
+    core.subjectProjectionForRecord(row, '', data.projectionPolicy) &&
+    core.basicEligibility(row, { canonicalAuthority: data.canonicalAuthority }).ok);
+  assert.ok(record, 'test needs a current approved and source-ready high2 source');
+  const exam = data.exams.find(row => row.file === record.sourceFile);
+  assert.ok(exam, 'approved source must remain registered in the production Archive2 catalog');
+  const semanticSubject = core.subjectProjectionForRecord(record, '', data.projectionPolicy);
 
-  for (const [browseGrade, sourceGrade] of [['고2', '고3'], ['고3', '고2']]) {
-    const record = data.records.find(row => row.sourceGrade === sourceGrade);
-    const exam = data.exams.find(row => row.file === record.sourceFile);
+  for (const browseGrade of ['고2', '고3']) {
     const filters = {
       grade: browseGrade,
       curriculumKey: record.curriculumKey,
@@ -406,23 +392,24 @@ test('approved shared high2/high3 sources survive Finder-to-Compose in both brow
     const finderRows = w.findExams();
     const listedExam = finderRows.find(row => row.file === record.sourceFile);
     assert.ok(listedExam,
-      `${browseGrade} actual Finder list should include the approved ${sourceGrade} source`);
+      `${browseGrade} actual Finder list should include the approved ${record.sourceGrade} source`);
     const examIndex = w.state.catalog.exams.indexOf(listedExam);
     assert.match(w.renderFind(), new RegExp(`data-action="source-toggle" data-exam="${examIndex}"`),
       'the actual Finder result must render its source-selection control');
     await click({ action: 'source-toggle', exam: String(examIndex) });
     assert.deepEqual(plain(w.state.sources), [record.sourceFile]);
     assert.equal(core.finderMatches(exam, filters, w.state.finderIndex), true,
-      `${browseGrade} Finder should show the approved ${sourceGrade} source`);
+      `${browseGrade} Finder should show the approved ${record.sourceGrade} source`);
 
     const uidsFor = activeFilters => data.records.filter(row => row.sourceFile === record.sourceFile &&
       core.matches(row, activeFilters, { catalog: data, projectionPolicy: data.projectionPolicy }) &&
       core.basicEligibility(row, { canonicalAuthority: data.canonicalAuthority }).ok)
       .map(row => row.questionUid).sort();
     const beforeUids = uidsFor(filters);
+    assert.ok(beforeUids.includes(record.questionUid),
+      `${browseGrade} browse should retain the actual approved source question`);
     const beforeMetadata = data.records.filter(row => row.sourceFile === record.sourceFile)
       .map(({ sourceGrade: rawGrade, curriculumKey, courseKey }) => ({ sourceGrade: rawGrade, curriculumKey, courseKey }));
-    assert.deepEqual(beforeUids, [record.questionUid]);
 
     await click({ action: 'go-compose', useSources: 'true' });
 
@@ -433,6 +420,63 @@ test('approved shared high2/high3 sources survive Finder-to-Compose in both brow
       .map(({ sourceGrade: rawGrade, curriculumKey, courseKey }) => ({ sourceGrade: rawGrade, curriculumKey, courseKey })),
     beforeMetadata, 'source grade and curriculum identity remain unchanged');
   }
+});
+
+test('an isolated test-only high3 source exercises the reverse high3-to-high2 browse route', async () => {
+  const reverseRecord = basicRecord('고3', {
+    questionUid: 'qid_v1_' + crypto.createHash('sha256').update('compose-shared-high3-reverse-fixture-v1').digest('hex'),
+    sourceFile: 'original/high/h3/1mid/test-fixture-shared-high3-reverse.js',
+    testFixtureOnly: true,
+  });
+  assert.equal(reverseRecord.testFixtureOnly, true);
+  assert.match(reverseRecord.sourceFile, /test-fixture-shared-high3-reverse/);
+  assert.equal(catalog.records.some(row => row.questionUid === reverseRecord.questionUid), false,
+    'test-only UID must not collide with a production identity');
+  const reverseExam = {
+    file: reverseRecord.sourceFile,
+    grade: '고3',
+    sourceGrade: '고3',
+    effectiveBrowseGrade: '고3',
+    school: '테스트 전용 공유 과목 fixture',
+    year: 2025,
+    courseRanges: [],
+    curriculums: [reverseRecord.curriculumKey],
+  };
+  const { w, click } = harness({
+    ...catalog,
+    records: [...catalog.records, reverseRecord],
+    exams: [...catalog.exams, reverseExam],
+  });
+  const data = w.state.catalog;
+  assert.equal(core.basicEligibility(reverseRecord, {
+    canonicalAuthority: data.canonicalAuthority,
+  }).ok, true, 'test-only canonical assignment must satisfy the same eligibility gate');
+  const semanticSubject = core.subjectProjectionForRecord(reverseRecord, '', data.projectionPolicy);
+  assert.equal(semanticSubject, 'ALGEBRA');
+  const filters = {
+    grade: '고2',
+    curriculumKey: reverseRecord.curriculumKey,
+    semanticSubject,
+  };
+  w.state.find = filters;
+  const finderRows = w.findExams();
+  const listedExam = finderRows.find(row => row.file === reverseRecord.sourceFile);
+  assert.ok(listedExam, 'high2 Finder should show the isolated test-only high3 fixture by its shared subject');
+  const examIndex = w.state.catalog.exams.indexOf(listedExam);
+  assert.match(w.renderFind(), new RegExp(`data-action="source-toggle" data-exam="${examIndex}"`));
+  await click({ action: 'source-toggle', exam: String(examIndex) });
+  const beforeUids = data.records.filter(row => row.sourceFile === reverseRecord.sourceFile &&
+    core.matches(row, filters, { catalog: data, projectionPolicy: data.projectionPolicy }) &&
+    core.basicEligibility(row, { canonicalAuthority: data.canonicalAuthority }).ok)
+    .map(row => row.questionUid).sort();
+  assert.deepEqual(beforeUids, [reverseRecord.questionUid]);
+  await click({ action: 'go-compose', useSources: 'true' });
+  assert.deepEqual(plain(w.state.sources), [reverseRecord.sourceFile]);
+  assert.deepEqual(data.records.filter(row => row.sourceFile === reverseRecord.sourceFile &&
+    core.matches(row, w.state.filters, { catalog: data, projectionPolicy: data.projectionPolicy }) &&
+    core.basicEligibility(row, { canonicalAuthority: data.canonicalAuthority }).ok)
+    .map(row => row.questionUid).sort(), beforeUids,
+  'the exact same test-only high3 UID remains eligible after Compose entry');
 });
 
 test('actual Finder list and Compose keep an approved high2 source in the high3 browse view', async () => {
