@@ -36,7 +36,15 @@ campaign authority: JS_Archive_2.0_GPT_Campaign_Generation_v1.md
 
 ## 4. CREATE / R1 품질 역할
 
-**2026-10-17 NEW14 GPT Library CREATE 조기 인계 override (사용자 직접 지시):** `SOURCE_ONLY_INTAKE14_20261016`의 CREATE는 최종 수학·Meta·기술 검수 단계가 아닌 *전체 학생용 최초 제작 완료* 단계다. 해당 시험지 전 qid의 source-faithful 발문·보기·정답·교육과정 범위의 재현 가능한 작은칠판 해설 초안과 이해에 필수인 실제 문제 그림·자산을 완성하고, 문제수/100점/누락/기본 문법·자산 바이트를 확인하며 Library 완전 패킷과 누적기록을 원격 저장·file ID+revision 또는 정확한 실바이트 SHA readback으로 확인하면 즉시 `CREATE_DONE/READY_R1`로 인계한다. 결정적 원문·문항·정답·풀이·필수 자산 결함은 제작자가 고친 뒤 인계해야 한다. **정식 UID map 등록, ACTIVE PT/TPL 확정, RPM L3/L4 전수 확정, 심층 Meta·provenance 최종 승인, Golden/Negative 별도 evidence/receipt/전 qid 심층 calibration, 공식 Node22 generic validator PASS, 학생 브라우저 최종 렌더, 별도 curriculum/visual N/N 결과·stage seal·중간 Git은 CREATE_DONE 관문이 아니다.** 미완료 항목은 qid·field·원인을 `EVIDENCE_DEBT`, 검사 미실행은 `NOT_RUN`으로 누적 기록에 전달하고 R1(전 qid 독립 풀이/교과 검수)→R2(전 qid 해설·심층 Meta 보강)→R3(전체 구조·필수 시각자료·공식 기술검사 및 최종 무결성)가 닫는다. 그 자체가 모든 품질 PASS 또는 Git release는 아니다. 이 NEW14 역할 분산은 기타 캠페인, Codex, 학생용 최종 품질 목표를 변경하지 않는다.
+**NEW14 2026-10-17 LATEST OVERRIDE — 무조건 작업 인계 / 최종 HOLD는 MASTER만
+
+이 문단은 형님의 2026-10-17 최신 지시이며 `SOURCE_ONLY_INTAKE14_20261016` GPT Library 예약 5개에 한정된다. 아래/과거의 CREATE 전수 완성·검사 선행규칙이나 중간 단계 품질 마감 규칙보다 **단계 간 인계 시점**에 대해 우선한다. 다른 캠페인·Codex를 변경하지 않는다.
+
+**ROUTED vs VERIFIED:** 모든 예약은 최선을 다해 담당 단계의 실물 문항·해설·시각 자료·Meta를 작성/수정하되, 누락된 발문·선지·답·해설·원본 PNG·SVG·UID·RPM·PT/TPL, 원본 모순, Golden/Negative 증거 부재, Node22 공식 검사 미실행, 학생 브라우저 미검사를 이유로 **다음 stage로 넘기는 것을 금지할 수 없다.** Library 실제 부분 JS/원본/자산/누적기록과 qid별 `MISSING_STEM/MISSING_CHOICES/MISSING_ANSWER/MISSING_SOLUTION/MISSING_PNG/MISSING_SVG/NOT_REVIEWABLE/EVIDENCE_DEBT/NOT_RUN`을 정확히 물리 저장·readback해 전달한다. 전달 완료 상태는 작업 라우팅이지 품질 PASS가 아니다. 기존 `CREATE_DONE` 등을 다른 소비자가 요구할 때에도 `ROUTED` alias임을 명시하고 실제 검수 PASS와 혼동하지 않는다. 수학이나 원본을 추측으로 메우거나 허위 검증 결과를 작성하지 않는다.
+
+**역할별 즉시 인계:** CREATE(:00) `CREATE_ROUTED/READY_R1` → R1(:12) 가능 문항만 독립 blind freeze-before-compare, 누락 입력은 NOT_REVIEWABLE로 남기고 `R1_REVIEW_ROUTED/READY_R2` → R2(:24) 전 문항 가능한 해설·Meta·그림 수리 후 `R2_REVIEW_ROUTED/READY_R3` → R3(:36) 구조·공식 기술검사·시각자료·문항을 가능한 만큼 수리하고 `R3_REVIEWED/READY_MASTER_DECISION` → **MASTER(:48)만 최종 `FINAL_HOLD` 또는 실제 근거가 다 충족된 `R3_PASS/RELEASE_READY`를 결정한다.** CREATE/R1/R2/R3 예약은 HOLD를 판단·발행하거나 이전 단계로 되돌리거나 downstream 수납을 거부하지 않는다. 실제 패킷 저장/원격 readback 불가나 다른 worker의 동시 수정 충돌을 성공으로 위조하지 말고 기록하고 다른 eligible 작업을 계속한다. MASTER는 최종 검수부채를 직접 수리한 뒤 남은 결함의 정확한 qid와 재수리 행동을 기록하며 다른 시험지 흐름을 막지 않는다.
+
+**불변:** 유효한 기존 PASS/freeze 보존, R1 독립성 준수, 학생용 최종 공개 시 실제 완전한 문항/정답/해설/필수 그림과 검증 필수, 한 실행 실질 수정 최대 한 시험지, Library ID/version 또는 실바이트 SHA 결속, 예약 자체 OFF 금지, GPT 예약 중간 Git 쓰기·PR·main·배포 금지. 최종 MASTER 결정 후 Git 출고는 별도 Work/Codex에서 처리한다.
 
 그 외 GPT 캠페인의 CREATE는 Common Quality Contract와 §§16–17에 따라 전 qid를 직접 풀어 해당 교육과정 안의 정답·논리적으로 완성된 해설 초안을 만들고, source identity·QUESTION_LAYOUT·학생용 content/choices·의미 기반 Meta·난이도·Visual 및 실제 에셋을 결속한다. 중간 계산·조건을 쓰는 이유·보조선 목적과 논리 연결을 학생에게 설명한다. Library ID+revision 또는 정확한 실바이트 SHA-256과 근거를 누적 기록한다.
 
