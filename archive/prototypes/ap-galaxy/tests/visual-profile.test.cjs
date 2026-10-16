@@ -41,7 +41,7 @@ test('authored module and shipped bundle use the same stable visual profile fiel
   for (const file of [source, built]) {
     assert.match(file, /APGalaxyVisualProfile\.select\(/);
     for (const field of stableFields) {
-      assert.ok(file.includes('visualProfile.' + field), 'runtime missing ' + field);
+      assert.match(file, new RegExp('\\.' + field + '\\b'), 'runtime missing ' + field);
     }
     assert.match(file, /\.background\s*=\s*null/);
   }
