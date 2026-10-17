@@ -1,0 +1,20 @@
+(async () => {
+  const path = require('path');
+  const { validatePhysicalEvidence } = await import('../archive/tools/review-evidence-gate.mjs');
+  const { validateSolutionCalibrationPreflight } = await import('../archive/tools/solution-calibration-gate.mjs');
+  const exam = path.resolve('archive/exams/original/middle/m2/1final/26_동산중_1학기_기말_중2_기출.js');
+  const ev = path.resolve('archive/data/r2e-intake/m2/26_동산중_1학기_기말_중2_기출.review2.physical-evidence.json');
+  const fs = require('fs');
+  const vm = require('vm');
+  const source = fs.readFileSync(exam,'utf8');
+  const sandbox = { window: {} };
+  vm.createContext(sandbox);
+  vm.runInContext(source,sandbox,{filename:exam,timeout:5000});
+  const questions = sandbox.window.questionBank || sandbox.window.questions;
+  const evidence = JSON.parse(fs.readFileSync(ev,'utf8'));
+  const calibrationIssues = validateSolutionCalibrationPreflight({ examFile: exam, questions, evidence, stage: 'R2' });
+  if (calibrationIssues.length) throw new Error('R2 calibration preflight failed: '+JSON.stringify(calibrationIssues));
+  const report = validatePhysicalEvidence({ examFile: exam, evidenceFile: ev, stage: 'R2' });
+  if (!report.ok) throw new Error('R2 evidence gate failed: '+JSON.stringify(report));
+  console.log('M2 o21 R2 canonical gates PASS');
+})().catch(error => { throw error; });
