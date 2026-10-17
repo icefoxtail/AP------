@@ -11,7 +11,7 @@ window.examData = {
       "id": "q01",
       "number": 1,
       "score": 3.0,
-      "question": "아래 그림과 같은 삼각형 $ADE$에서 $\\angle ADE=90^\\circ$이고, 점 $B$는 선분 $AE$ 위에, 점 $C$는 선분 $AD$ 위에 있으며 $\\overline{BC} \\parallel \\overline{DE}$이다. 그림과 같이 $\\overline{AB}=5\\text{ cm}$, $\\overline{AC}=4\\text{ cm}$일 때, 다음 중 $\\sin A$를 나타내는 것은? (3점)\n<div class=\"question-image\"><img src=\"candidate_assets/repaired/q01.svg\" alt=\"q01 보완 도형\" /></div>",
+      "question": "아래 그림과 같은 삼각형 $ADE$에서 $\\angle ADE=90^\\circ$이고, 점 $B$는 선분 $AE$ 위에, 점 $C$는 선분 $AD$ 위에 있으며 $\\overline{BC} \\parallel \\overline{DE}$이다. 그림과 같이 $\\overline{AB}=5\\text{ cm}$, $\\overline{AC}=4\\text{ cm}$일 때, 다음 중 $\\sin A$를 나타내는 것은? (3점)\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q01.svg\" alt=\"q01 보완 도형\" /></div>",
       "choices": [
         "$\\dfrac{\\overline{BC}}{\\overline{AB}}$",
         "$\\dfrac{\\overline{BC}}{\\overline{AC}}$",
@@ -44,13 +44,13 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "candidate_assets/repaired/q01.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q01.svg"
     },
     {
       "id": "q02",
       "number": 2,
       "score": 4.0,
-      "question": "아래 그림과 같은 직각삼각형 $ABC$에서 $\\overline{AC}=15, \\overline{AB}=17, \\overline{BC}=8$일 때, 다음 중 옳은 것은? (4점)\n<div class=\"question-image\"><img src=\"candidate_assets/repaired/q02.svg\" alt=\"q02 도형\" /></div>",
+      "question": "아래 그림과 같은 직각삼각형 $ABC$에서 $\\overline{AC}=15, \\overline{AB}=17, \\overline{BC}=8$일 때, 다음 중 옳은 것은? (4점)\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q02.svg\" alt=\"q02 도형\" /></div>",
       "choices": [
         "$\\sin A = \\dfrac{12}{15}$",
         "$\\cos A = \\dfrac{15}{17}$",
@@ -83,7 +83,7 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "candidate_assets/repaired/q02.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q02.svg"
     },
     {
       "id": "q03",
@@ -165,7 +165,7 @@ window.examData = {
       "id": "q05",
       "number": 5,
       "score": 4.0,
-      "question": "다음 그림과 같은 직각삼각형 $ABC$에서 $\\angle C=90^\\circ, \\angle A=30^\\circ, \\overline{AB}=4\\sqrt{3}\\text{ cm}$일 때, $\\overline{BC}$의 길이는? (4점) <div class=\"question-image\"><img src=\"candidate_assets/repaired/q05.svg\" alt=\"직각삼각형 ABC\" /></div>",
+      "question": "다음 그림과 같은 직각삼각형 $ABC$에서 $\\angle C=90^\\circ, \\angle A=30^\\circ, \\overline{AB}=4\\sqrt{3}\\text{ cm}$일 때, $\\overline{BC}$의 길이는? (4점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q05.svg\" alt=\"직각삼각형 ABC\" /></div>",
       "choices": [
         "$\\sqrt{3}\\text{ cm}$",
         "$2\\sqrt{3}\\text{ cm}$",
@@ -198,7 +198,7 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "candidate_assets/repaired/q05.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q05.svg"
     },
     {
       "id": "q06",
@@ -242,7 +242,7 @@ window.examData = {
       "id": "q07",
       "number": 7,
       "score": 4.0,
-      "question": "다음 그림에서 $\\angle ABC=60^\\circ, \\angle BAC=90^\\circ, \\angle BDC=45^\\circ, \\angle DCB=90^\\circ$이고 $\\overline{DC}=\\sqrt{3}\\text{ cm}$일 때, $\\overline{AB}$의 길이는? (4점)\n<div class=\"question-image\"><img src=\"candidate_assets/repaired/q07.svg\" alt=\"q07 도형\" /></div>",
+      "question": "다음 그림에서 $\\angle ABC=60^\\circ, \\angle BAC=90^\\circ, \\angle BDC=45^\\circ, \\angle DCB=90^\\circ$이고 $\\overline{DC}=\\sqrt{3}\\text{ cm}$일 때, $\\overline{AB}$의 길이는? (4점)\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q07.svg\" alt=\"q07 도형\" /></div>",
       "choices": [
         "$\\dfrac{\\sqrt{3}}{2}\\text{ cm}$",
         "$\\sqrt{2}\\text{ cm}$",
@@ -275,13 +275,13 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "candidate_assets/repaired/q07.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q07.svg"
     },
     {
       "id": "q08",
       "number": 8,
       "score": 4.0,
-      "question": "다음 그림의 $\\triangle ABC$에서 $\\overline{AH} \\perp \\overline{BC}, \\angle B=60^\\circ, \\angle C=60^\\circ, \\overline{BH}=4\\text{ cm}$일 때, $\\triangle ABC$의 넓이는? (4점)\n<div class=\"question-image\"><img src=\"candidate_assets/repaired/q08.svg\" alt=\"q08 도형\" /></div>",
+      "question": "다음 그림의 $\\triangle ABC$에서 $\\overline{AH} \\perp \\overline{BC}, \\angle B=60^\\circ, \\angle C=60^\\circ, \\overline{BH}=4\\text{ cm}$일 때, $\\triangle ABC$의 넓이는? (4점)\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q08.svg\" alt=\"q08 도형\" /></div>",
       "choices": [
         "$8(\\sqrt{3}-1)\\text{ cm}^2$",
         "$8(\\sqrt{3}+1)\\text{ cm}^2$",
@@ -314,13 +314,13 @@ window.examData = {
         "삼각비의 활용",
         "직각삼각형"
       ],
-      "image": "candidate_assets/repaired/q08.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q08.svg"
     },
     {
       "id": "q09",
       "number": 9,
       "score": 4.0,
-      "question": "다음 그림과 같이 지름의 길이가 $12\\text{ cm}$인 원에 내접하는 정육각형의 넓이는? (4점)\n<div class=\"question-image\"><img src=\"source/assets/q09.png\" alt=\"q09 도형\" /></div>",
+      "question": "다음 그림과 같이 지름의 길이가 $12\\text{ cm}$인 원에 내접하는 정육각형의 넓이는? (4점)\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q09.png\" alt=\"q09 도형\" /></div>",
       "choices": [
         "$12\\sqrt{3}\\text{ cm}^2$",
         "$27\\sqrt{3}\\text{ cm}^2$",
@@ -354,13 +354,13 @@ window.examData = {
         "원",
         "넓이"
       ],
-      "image": "source/assets/q09.png"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q09.png"
     },
     {
       "id": "q10",
       "number": 10,
       "score": 4.0,
-      "question": "다음 그림과 같이 어느 건축물로부터 $5\\sqrt{3}\\text{ m}$ 떨어진 $A$지점에서 건축물의 꼭대기를 올려다 본 각의 크기가 $60^\\circ$이고, 눈높이가 $1.4\\text{ m}$일 때, 이 건축물의 높이는? (4점)\n<div class=\"question-image\"><img src=\"source/assets/q10.png\" alt=\"q10 도형\" /></div>",
+      "question": "다음 그림과 같이 어느 건축물로부터 $5\\sqrt{3}\\text{ m}$ 떨어진 $A$지점에서 건축물의 꼭대기를 올려다 본 각의 크기가 $60^\\circ$이고, 눈높이가 $1.4\\text{ m}$일 때, 이 건축물의 높이는? (4점)\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q10.png\" alt=\"q10 도형\" /></div>",
       "choices": [
         "$15.7\\text{ m}$",
         "$16.4\\text{ m}$",
@@ -393,13 +393,13 @@ window.examData = {
         "삼각비의 활용",
         "직각삼각형"
       ],
-      "image": "source/assets/q10.png"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q10.png"
     },
     {
       "id": "q11",
       "number": 11,
       "score": 5.0,
-      "question": "다음 그림에서 A, B, H가 이 순서로 한 직선 위에 있고 $\\overline{AB}=1000\\text{ m}$, $\\angle CAH=30^\\circ$, $\\angle CBH=45^\\circ$일 때, 산의 높이 $\\overline{CH}$는? (5점) <div class=\"question-image\"><img src=\"candidate_assets/repaired/q11.svg\" alt=\"산의 높이\" /></div>",
+      "question": "다음 그림에서 A, B, H가 이 순서로 한 직선 위에 있고 $\\overline{AB}=1000\\text{ m}$, $\\angle CAH=30^\\circ$, $\\angle CBH=45^\\circ$일 때, 산의 높이 $\\overline{CH}$는? (5점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q11.svg\" alt=\"산의 높이\" /></div>",
       "choices": [
         "$500(\\sqrt{3}+1)\\text{ m}$",
         "$500(\\sqrt{3}-1)\\text{ m}$",
@@ -432,7 +432,7 @@ window.examData = {
         "삼각비의 활용",
         "직각삼각형"
       ],
-      "image": "candidate_assets/repaired/q11.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q11.svg"
     },
     {
       "id": "q12",
@@ -477,7 +477,7 @@ window.examData = {
       "id": "q13",
       "number": 13,
       "score": 3.0,
-      "question": "오른쪽 그림과 같이 반지름의 길이가 $5\\text{ cm}$인 원의 중심 $O$에서 두 현 $AB, CD$에 내린 수선의 길이가 $3\\text{ cm}$일 때, $\\overline{AB}$의 길이는? (3점)\n<div class=\"question-image\"><img src=\"candidate_assets/repaired/q13.svg\" alt=\"q13 도형\" /></div>",
+      "question": "오른쪽 그림과 같이 반지름의 길이가 $5\\text{ cm}$인 원의 중심 $O$에서 두 현 $AB, CD$에 내린 수선의 길이가 $3\\text{ cm}$일 때, $\\overline{AB}$의 길이는? (3점)\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q13.svg\" alt=\"q13 도형\" /></div>",
       "choices": [
         "$4\\text{ cm}$",
         "$6\\text{ cm}$",
@@ -511,13 +511,13 @@ window.examData = {
         "현",
         "원"
       ],
-      "image": "candidate_assets/repaired/q13.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q13.svg"
     },
     {
       "id": "q14",
       "number": 14,
       "score": 4.0,
-      "question": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\overline{AB}\\perp\\overline{CD}$이다. $M$은 두 선분의 교점이며 $\\overline{AB}=12\\text{ cm}, \\overline{AM}=4\\text{ cm}$일 때, $\\overline{CD}$의 길이는? (4점) <div class=\"question-image\"><img src=\"candidate_assets/repaired/q14.svg\" alt=\"지름과 수직인 현\" /></div>",
+      "question": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\overline{AB}\\perp\\overline{CD}$이다. $M$은 두 선분의 교점이며 $\\overline{AB}=12\\text{ cm}, \\overline{AM}=4\\text{ cm}$일 때, $\\overline{CD}$의 길이는? (4점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q14.svg\" alt=\"지름과 수직인 현\" /></div>",
       "choices": [
         "$4\\sqrt{2}\\text{ cm}$",
         "$6\\text{ cm}$",
@@ -551,13 +551,13 @@ window.examData = {
         "현",
         "원"
       ],
-      "image": "candidate_assets/repaired/q14.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q14.svg"
     },
     {
       "id": "q15",
       "number": 15,
       "score": 3.0,
-      "question": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\angle APQ=32^\\circ$이다. 중심각 $x=\\angle AOQ$의 크기는? (3점) <div class=\"question-image\"><img src=\"source/assets/q15.png\" alt=\"원주각과 중심각\" /></div>",
+      "question": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고 $\\angle APQ=32^\\circ$이다. 중심각 $x=\\angle AOQ$의 크기는? (3점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q15.png\" alt=\"원주각과 중심각\" /></div>",
       "choices": [
         "$34^\\circ$",
         "$45^\\circ$",
@@ -590,13 +590,13 @@ window.examData = {
         "원주각",
         "중심각"
       ],
-      "image": "source/assets/q15.png"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q15.png"
     },
     {
       "id": "q16",
       "number": 16,
       "score": 4.0,
-      "question": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고, $\\angle APC=30^\\circ, \\overline{AC}=4\\text{ cm}$일 때, $\\overline{BC}$의 길이는? (4점)\n<div class=\"question-image\"><img src=\"candidate_assets/repaired/q16.svg\" alt=\"q16 도형\" /></div>",
+      "question": "다음 그림에서 $\\overline{AB}$는 원 $O$의 지름이고, $\\angle APC=30^\\circ, \\overline{AC}=4\\text{ cm}$일 때, $\\overline{BC}$의 길이는? (4점)\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q16.svg\" alt=\"q16 도형\" /></div>",
       "choices": [
         "$6\\text{ cm}$",
         "$8\\text{ cm}$",
@@ -630,13 +630,13 @@ window.examData = {
         "현",
         "원"
       ],
-      "image": "candidate_assets/repaired/q16.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q16.svg"
     },
     {
       "id": "q17",
       "number": 17,
       "score": 3.0,
-      "question": "다음 그림에서 점 A, B, C, D는 원 $O$ 위에 있다. $\\angle BCD=85^\\circ$일 때, $\\angle BAD$의 크기는? (3점) <div class=\"question-image\"><img src=\"candidate_assets/repaired/q17.svg\" alt=\"내접사각형\" /></div>",
+      "question": "다음 그림에서 점 A, B, C, D는 원 $O$ 위에 있다. $\\angle BCD=85^\\circ$일 때, $\\angle BAD$의 크기는? (3점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q17.svg\" alt=\"내접사각형\" /></div>",
       "choices": [
         "$85^\\circ$",
         "$90^\\circ$",
@@ -669,13 +669,13 @@ window.examData = {
         "원주각",
         "중심각"
       ],
-      "image": "candidate_assets/repaired/q17.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q17.svg"
     },
     {
       "id": "q18",
       "number": 18,
       "score": 4.0,
-      "question": "다음 그림의 원 $O$에서 $\\overline{AB}$는 지름이고, $\\overline{AB}=10, \\overline{BC}=6$일 때, $\\sin A + \\cos A$의 값은? (4점)\n<div class=\"question-image\"><img src=\"candidate_assets/repaired/q18.svg\" alt=\"q18 도형\" /></div>",
+      "question": "다음 그림의 원 $O$에서 $\\overline{AB}$는 지름이고, $\\overline{AB}=10, \\overline{BC}=6$일 때, $\\sin A + \\cos A$의 값은? (4점)\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q18.svg\" alt=\"q18 도형\" /></div>",
       "choices": [
         "$\\dfrac{4}{5}$",
         "$\\dfrac{6}{5}$",
@@ -708,13 +708,13 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "candidate_assets/repaired/q18.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q18.svg"
     },
     {
       "id": "q19",
       "number": 19,
       "score": 4.0,
-      "question": "다음 그림에서 $\\overline{PA}, \\overline{PB}$는 원 $O$의 두 접선이고 $A,B$는 접점이다. $\\angle APB=35^\\circ$이며 중심각 $x=\\angle AOB$의 크기는? (4점) <div class=\"question-image\"><img src=\"candidate_assets/repaired/q19.svg\" alt=\"두 접선과 중심각\" /></div>",
+      "question": "다음 그림에서 $\\overline{PA}, \\overline{PB}$는 원 $O$의 두 접선이고 $A,B$는 접점이다. $\\angle APB=35^\\circ$이며 중심각 $x=\\angle AOB$의 크기는? (4점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q19.svg\" alt=\"두 접선과 중심각\" /></div>",
       "choices": [
         "$105^\\circ$",
         "$115^\\circ$",
@@ -747,13 +747,13 @@ window.examData = {
         "원의 접선",
         "접점"
       ],
-      "image": "candidate_assets/repaired/q19.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q19.svg"
     },
     {
       "id": "q20",
       "number": 20,
       "score": 4.0,
-      "question": "다음 그림에서 원 $O$는 $\\triangle ABC$의 내접원이고 $D,E,F$는 각 변 위의 접점이다. $AB=7\\text{ cm}, BC=9\\text{ cm}, CA=8\\text{ cm}$일 때, $F$가 $\\overline{CA}$ 위의 접점이면 $\\overline{CF}$의 길이는? (4점) <div class=\"question-image\"><img src=\"candidate_assets/repaired/q20.svg\" alt=\"내접원 접점\" /></div>",
+      "question": "다음 그림에서 원 $O$는 $\\triangle ABC$의 내접원이고 $D,E,F$는 각 변 위의 접점이다. $AB=7\\text{ cm}, BC=9\\text{ cm}, CA=8\\text{ cm}$일 때, $F$가 $\\overline{CA}$ 위의 접점이면 $\\overline{CF}$의 길이는? (4점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q20.svg\" alt=\"내접원 접점\" /></div>",
       "choices": [
         "$4\\text{ cm}$",
         "$4.5\\text{ cm}$",
@@ -786,13 +786,13 @@ window.examData = {
         "원의 접선",
         "접점"
       ],
-      "image": "candidate_assets/repaired/q20.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q20.svg"
     },
     {
       "id": "q21",
       "number": 21,
       "score": 4.0,
-      "question": "다음 그림에서 원 $O$의 지름은 $\\overline{AT}$이고, $\\overline{PT}$는 점 $T$에서 원에 접하는 접선이다. $\\angle TAP=25^\\circ$일 때, $\\angle APT$의 크기는? (4점) <div class=\"question-image\"><img src=\"candidate_assets/repaired/q21.svg\" alt=\"지름 AT와 접선 PT\" /></div>",
+      "question": "다음 그림에서 원 $O$의 지름은 $\\overline{AT}$이고, $\\overline{PT}$는 점 $T$에서 원에 접하는 접선이다. $\\angle TAP=25^\\circ$일 때, $\\angle APT$의 크기는? (4점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/q21.svg\" alt=\"지름 AT와 접선 PT\" /></div>",
       "choices": [
         "$30^\\circ$",
         "$35^\\circ$",
@@ -825,13 +825,13 @@ window.examData = {
         "원의 접선",
         "접점"
       ],
-      "image": "candidate_assets/repaired/q21.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/q21.svg"
     },
     {
       "id": "s01",
       "number": 22,
       "score": 4.0,
-      "question": "[서술형 1] 직각삼각형 $ABC$에서 $\\angle B=90^\\circ, \\overline{AB}=3\\text{ cm}, \\overline{BC}=4\\text{ cm}$이다. $\\overline{AC}$의 길이와 $\\angle C$의 삼각비의 값을 각각 구하여라. (4점) <div class=\"question-image\"><img src=\"candidate_assets/repaired/s01.svg\" alt=\"3-4-5 직각삼각형\" /></div>",
+      "question": "[서술형 1] 직각삼각형 $ABC$에서 $\\angle B=90^\\circ, \\overline{AB}=3\\text{ cm}, \\overline{BC}=4\\text{ cm}$이다. $\\overline{AC}$의 길이와 $\\angle C$의 삼각비의 값을 각각 구하여라. (4점) <div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/s01.svg\" alt=\"3-4-5 직각삼각형\" /></div>",
       "choices": [],
       "answer": "AC=5 cm; sin C=3/5, cos C=4/5, tan C=3/4",
       "solution": "직각삼각형 ABC에서 피타고라스 정리로 $AC=\\sqrt{AB^2+BC^2}=\\sqrt{3^2+4^2}=5$ cm이다.\n각 C에서 맞은편 변은 AB=3, 이웃한 변은 BC=4, 빗변은 AC=5이다.\n따라서 $\\sin C=\\dfrac35$, $\\cos C=\\dfrac45$, $\\tan C=\\dfrac34$이다.",
@@ -858,13 +858,13 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "candidate_assets/repaired/s01.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s01.svg"
     },
     {
       "id": "s02",
       "number": 23,
       "score": 6.0,
-      "question": "[서술형 2] 오른쪽 그림과 같이 반지름의 길이가 1인 사분원을 이용하여 $\\sin 57^\\circ, \\cos 57^\\circ, \\tan 57^\\circ$의 값을 순서대로 구하여라. (6점)\n<div class=\"question-image\"><img src=\"source/assets/s02.png\" alt=\"s02 도형\" /></div>",
+      "question": "[서술형 2] 오른쪽 그림과 같이 반지름의 길이가 1인 사분원을 이용하여 $\\sin 57^\\circ, \\cos 57^\\circ, \\tan 57^\\circ$의 값을 순서대로 구하여라. (6점)\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/s02.png\" alt=\"s02 도형\" /></div>",
       "choices": [],
       "answer": "sin 57°≈0.84; cos 57°≈0.55; tan 57°≈1.54",
       "solution": "반지름이 1인 단위원에서 57°인 점 A의 좌표는 그림에서 약 $(0.55,0.84)$로 읽힌다.\n단위원에서는 가로좌표가 코사인, 세로좌표가 사인이므로 $\\cos57^\\circ\\approx0.55$, $\\sin57^\\circ\\approx0.84$이다.\n그림에서 57°의 반직선은 $x=1$인 접선과 만날 때 높이가 약 $1.54$이다. 이 높이가 $\\tan57^\\circ$이므로 $\\tan57^\\circ\\approx1.54$이다. 가로·세로 좌표는 이미 반올림된 근삿값이므로 $0.84/0.55$를 다시 계산해 탄젠트값을 구하지 않는다.\n문제에서 요구한 순서대로 $\\sin57^\\circ\\approx0.84$, $\\cos57^\\circ\\approx0.55$, $\\tan57^\\circ\\approx1.54$이다.",
@@ -891,13 +891,13 @@ window.examData = {
         "삼각비",
         "직각삼각형"
       ],
-      "image": "source/assets/s02.png"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s02.png"
     },
     {
       "id": "s03",
       "number": 24,
       "score": 6.0,
-      "question": "[서술형 3] 오른쪽 그림과 같이 $x$절편이 $-2$이고, $x$축과 이루는 각의 크기가 $60^\\circ$인 직선의 방정식에 대하여 다음 물음에 답하여라. (6점)\n(1) 기울기를 구하여라.\n(2) $y$절편을 구하여라.\n(3) 직선의 방정식을 구하여라.\n<div class=\"question-image\"><img src=\"candidate_assets/repaired/s03.svg\" alt=\"s03 도형\" /></div>",
+      "question": "[서술형 3] 오른쪽 그림과 같이 $x$절편이 $-2$이고, $x$축과 이루는 각의 크기가 $60^\\circ$인 직선의 방정식에 대하여 다음 물음에 답하여라. (6점)\n(1) 기울기를 구하여라.\n(2) $y$절편을 구하여라.\n(3) 직선의 방정식을 구하여라.\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/s03.svg\" alt=\"s03 도형\" /></div>",
       "choices": [],
       "answer": "(1) √3; (2) 2√3; (3) y=√3x+2√3",
       "solution": "직선의 기울기 m은 x축과 이루는 각의 탄젠트이므로 $m=\\tan60^\\circ=\\sqrt3$이다.\n직선은 x절편 $(-2,0)$을 지나므로 $y=mx+b$에 대입하면 $0=-2\\sqrt3+b$, 즉 $b=2\\sqrt3$이다.\n따라서 y절편은 $2\\sqrt3$이고 직선의 방정식은 $y=\\sqrt3x+2\\sqrt3$이다.",
@@ -925,13 +925,13 @@ window.examData = {
         "기울기",
         "절편"
       ],
-      "image": "candidate_assets/repaired/s03.svg"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s03.svg"
     },
     {
       "id": "s04",
       "number": 25,
       "score": 4.0,
-      "question": "[서술형 4] 다음 그림과 같이 중심이 모두 점 $O$이고 반지름의 길이가 각각 $8\\text{ cm}$와 $6\\text{ cm}$인 두 원이 있다. 큰 원의 현 $\\overline{AB}$가 작은 원과 접할 때, $\\overline{AB}$의 길이를 구하시오. (4점)\n<div class=\"question-image\"><img src=\"source/assets/s04.png\" alt=\"s04 도형\" /></div>",
+      "question": "[서술형 4] 다음 그림과 같이 중심이 모두 점 $O$이고 반지름의 길이가 각각 $8\\text{ cm}$와 $6\\text{ cm}$인 두 원이 있다. 큰 원의 현 $\\overline{AB}$가 작은 원과 접할 때, $\\overline{AB}$의 길이를 구하시오. (4점)\n<div class=\"question-image\"><img src=\"assets/images/19_동산여중_2학기_기말_중3_수학/s04.png\" alt=\"s04 도형\" /></div>",
       "choices": [],
       "answer": "4√7 cm",
       "solution": "큰 원의 반지름은 8 cm이고, 현 AB가 작은 원에 접하므로 중심 O에서 현까지의 거리는 작은 원의 반지름 6 cm이다.\n현의 중점 M을 잡으면 $OM=6$, $OA=8$, $\\angle OMA=90^\\circ$이다. 따라서 $AM=\\sqrt{OA^2-OM^2}=\\sqrt{8^2-6^2}=2\\sqrt7$ cm이다.\n$AB=2AM=4\\sqrt7$ cm이다.",
@@ -959,7 +959,7 @@ window.examData = {
         "현",
         "원"
       ],
-      "image": "source/assets/s04.png"
+      "image": "assets/images/19_동산여중_2학기_기말_중3_수학/s04.png"
     }
   ],
   "sourceRef": "icefoxtail/AP------@18bfb06a8e153b3d91533a53aafbfecaee0b5fca",
