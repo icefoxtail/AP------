@@ -256,7 +256,7 @@ window.questionBank = [
   {
     "id": 19,
     "questionType": "객관식",
-    "content": "<보기>에서 임의의 실수 $x$에 대하여\n$$f(x)=f(-x),\\ f(2+x)=f(2-x)$$\n를 만족시키는 함수만을 있는 대로 고른 것은?\n\n<보기>\nㄱ. $f(x)=-\\cos\\left(\\frac{\\pi}{2}x-\\frac{\\pi}{2}\\right)$\nㄴ. $f(x)=2\\sin\\left(\\pi x+\\frac{3\\pi}{2}\\right)$\nㄷ. $f(x)=\\left|3\\tan\\left(\\pi x-\\frac{1}{2}\\pi\\right)\\right|$ [4.8점]",
+    "content": "보기에서 임의의 실수 $x$에 대하여\n$$f(x)=f(-x),\\ f(2+x)=f(2-x)$$\n를 만족시키는 함수만을 있는 대로 고른 것은?\n\n<보기>\nㄱ. $f(x)=-\\cos\\left(\\frac{\\pi}{2}x-\\frac{\\pi}{2}\\right)$\nㄴ. $f(x)=2\\sin\\left(\\pi x+\\frac{3\\pi}{2}\\right)$\nㄷ. $f(x)=\\left|3\\tan\\left(\\pi x-\\frac{1}{2}\\pi\\right)\\right|$ [4.8점]",
     "choices": [
       "ㄱ",
       "ㄴ",
