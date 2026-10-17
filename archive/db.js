@@ -20235,6 +20235,68 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
+      "file": "original/middle/m2/1final/20_이수중_1학기_기말_중2_수학.js",
+      "school": "이수중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2020,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-01",
+      "rangeStartUnit": "수와 식",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M2-04",
+      "rangeEndUnit": "일차함수와 그래프",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-01",
+          "rangeStartUnit": "수와 식",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M2-04",
+          "rangeEndUnit": "일차함수와 그래프",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
+      "file": "original/middle/m2/1final/20_팔마중_1학기_기말_중2_수학.js",
+      "school": "팔마중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2020,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-01",
+      "rangeStartUnit": "수와 식",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M2-04",
+      "rangeEndUnit": "일차함수와 그래프",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-01",
+          "rangeStartUnit": "수와 식",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M2-04",
+          "rangeEndUnit": "일차함수와 그래프",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
       "file": "original/middle/m2/2final/20_팔마중_2학기_기말_중2_기출.js",
       "school": "팔마중",
       "topic": "",
@@ -20258,6 +20320,37 @@ window.mainDB = {
           "rangeStartUnitKey": "M2-05",
           "rangeStartUnit": "도형의 성질",
           "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M2-08",
+          "rangeEndUnit": "확률",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
+      "file": "original/middle/m2/1final/20_풍덕중_1학기_기말_중2_수학.js",
+      "school": "풍덕중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2020,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "M2-02",
+      "rangeStartUnit": "일차부등식",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "M2-08",
+      "rangeEndUnit": "확률",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-02",
+          "rangeStartUnit": "일차부등식",
+          "rangeStartUnitOrder": 2,
           "rangeEndUnitKey": "M2-08",
           "rangeEndUnit": "확률",
           "rangeEndUnitOrder": 8
@@ -22676,6 +22769,37 @@ window.mainDB = {
       "rangeEndUnitOrder": 999,
       "courseRanges": [],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/middle/m3/1final/16_환호여중_1학기_기말_중3_수학.js",
+      "school": "환호여중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2016,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 26,
+      "rangeStartUnitKey": "M3-03",
+      "rangeStartUnit": "이차방정식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M3-05",
+      "rangeEndUnit": "삼각비",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-03",
+          "rangeStartUnit": "이차방정식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M3-05",
+          "rangeEndUnit": "삼각비",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
     },
     {
       "file": "original/high/h2/2mid/15_강남여고_2학기_중간_고2_기하와벡터_기출.js",
