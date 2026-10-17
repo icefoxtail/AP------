@@ -14,11 +14,15 @@ test('archive/exams inline image inventory covers every content img and validate
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 824);
-  assert.equal(generated.productionTotal, 820);
+  assert.equal(generated.total, 864);
+  assert.equal(generated.productionTotal, 860);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 773, '.svg': 51 });
+  assert.deepEqual(generated.extensionCounts, { '.png': 812, '.svg': 52 });
   assert.equal(generated.qImageAndInlineTotal, 36);
+  // examData-only sources must be counted even when questionBank is not aliased.
+  assert.equal(generated.records.filter(row => row.file === 'original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js').length, 5);
+  assert.equal(generated.records.filter(row => row.file === 'original/middle/m2/1final/22_매산중_1학기_기말_중2_수학.js').length, 5);
+  assert.equal(generated.records.filter(row => row.file === 'original/middle/m3/1final/19_가산중_1학기_기말_중3_수학.js').length, 1);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
     missingProductionAssetCount: 0,
