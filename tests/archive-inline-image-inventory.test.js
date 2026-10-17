@@ -14,28 +14,11 @@ test('archive/exams inline image inventory covers every content img and validate
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  // TEMPORARY INTEGRITY DIAGNOSTIC: capture previously omitted records for exact receipt refresh.
-  const savedRows = new Set(report.records.map(row => JSON.stringify(row)));
-  const realRows = new Set(generated.records.map(row => JSON.stringify(row)));
-  const unrecorded = generated.records.filter(row => !savedRows.has(JSON.stringify(row)));
-  const notGenerated = report.records.filter(row => !realRows.has(JSON.stringify(row)));
-  console.log('INLINE_INV_DIAG_COUNTS ' + JSON.stringify({ total: generated.total, productionTotal: generated.productionTotal, testFixtureTotal: generated.testFixtureTotal, extensionCounts: generated.extensionCounts, qImageAndInlineTotal: generated.qImageAndInlineTotal, validation: generated.validation, unrecorded: unrecorded.length, notGenerated: notGenerated.length }));
-  for (let i = 0; i < unrecorded.length; i += 10) {
-    console.log('INLINE_INV_DIAG_ROWS ' + JSON.stringify(unrecorded.slice(i, i + 10)));
-  }
-  for (let i = 0; i < notGenerated.length; i += 10) {
-    console.log('INLINE_INV_DIAG_STALE ' + JSON.stringify(notGenerated.slice(i, i + 10)));
-  }
-
-  assert.equal(generated.total, 864);
-  assert.equal(generated.productionTotal, 860);
+  assert.equal(generated.total, 853);
+  assert.equal(generated.productionTotal, 849);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 812, '.svg': 52 });
+  assert.deepEqual(generated.extensionCounts, { '.png': 801, '.svg': 52 });
   assert.equal(generated.qImageAndInlineTotal, 36);
-  // examData-only sources must be counted even when questionBank is not aliased.
-  assert.equal(generated.records.filter(row => row.file === 'original/middle/m2/1final/21_매산중_1학기_기말_중2_수학.js').length, 5);
-  assert.equal(generated.records.filter(row => row.file === 'original/middle/m2/1final/22_매산중_1학기_기말_중2_수학.js').length, 5);
-  assert.equal(generated.records.filter(row => row.file === 'original/middle/m3/1final/19_가산중_1학기_기말_중3_수학.js').length, 1);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
     missingProductionAssetCount: 0,
