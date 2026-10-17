@@ -32,6 +32,14 @@ executionLine = GPT_SCHEDULED
 - 중간 Git 저장, 운영 경로 복사, branch/commit/PR, Git writer lease를 단계 인계 조건으로 두지 않는다. 예약은 R3 완료 후 출고 후보 패킷, 정확한 production JS·이미지·SVG identity, 실제 검사 결과와 잔여항목을 Library에 기록한다. 별도 Work/Codex 출고 담당이 후보를 모아 해당 production 파일만 일괄 push/main 병합한다. Git read는 원본 자산 확인에 허용한다.
 - force push, 무관 파일 변경, 다른 stream 대상 처리는 금지한다.
 
+## NEW14 CURRENT HARD — R1·R2 교사판서 해설 업그레이드 적극 권장 / 사실상 무캡 (2026-10-17)
+
+**핵심:** R1/R2는 답 일치·해설 존재·Node22·Meta/UID 채우기로 작업을 대체하지 않고 학생이 칠판 판서를 따라 이해할 수 있도록 실제 현행 `solution`을 적극적으로 업그레이드한다. 줄/글자 수·수정 qid 수·그림 수에 **인위적인 cap/quota 없음**. 길고 복잡한 풀이에는 필요한 만큼 공식의 선택 이유·연속 식/중간 계산·대입/변형·상황별 경우분리·부호·구간·보기·경계·결론, 도움이 되는 해설 SVG/이미지까지 자세히 쓴다. 교사의 수업 수준을 보장하되 단순 장문 늘리기·불필요한 중복·억지 수정 금지. 실행당 실질 수정 **최대 1시험지** 제한은 시험지 수 제한이지 문항 수정 개수 제한이 아니다.
+
+- **R1 COPY 강화:** source-only 원문·보기·모든 참조 시각정보에서 stored answer/solution 없이 qid별 답 **및 중간 풀이근거를 먼저 실제 저장·freeze**, 그 후 저장 답·해설을 열어 비교. 이 순서를 조작하거나 답을 이미 본 자신이 blind PASS 선언 금지. **블라인드 동결이 끝난 qid는 실제 학생용 해설을 수업하듯 다시 읽고**, 핵심 논증/계산 점프·공식/보조선 근거·교육과정·필수 그림을 적극 직접 수정. 독립답 일치만으로 해설 PASS 금지. 사용 가능한 각 qid에서 `UPGRADE(수정 전후·학생 이점)` 또는 `KEEP(충분성 근거)`, 불가능하면 `NOT_REVIEWABLE/EVIDENCE_DEBT` 기록.
+- **R2 COPY 강화:** 최신 학생 입력·원본/필수 시각정보·현재 solution을 **가능한 전 qid 직접 따라 계산**하면서 학생의 풀이 재현성 기준으로 적극 추가 판서한다. '계산하면'으로 생략된 필수 단계와 왜 그 식을 세우는지의 논리, 틀리기 쉬운 조건/경계, 경우분리와 그래프/해설 SVG 필요성을 직접 수리한다. 각 qid `UPGRADE(원결함→추가 식·그림→학습 효과)`, `KEEP(실제 따라풀기 충분성의 구체 근거)`, `NOT_REVIEWED/EVIDENCE_DEBT(놓친 정확한 부분)`. R2는 새 전수 blind freeze를 요구하지 않으며 답 의심/불일치/고위험만 원문에서 독립 재풀이한다.
+- **인계 보호:** 가능한 작업을 깊게 수행한 뒤 남은 qid·근거부채/검사 NOT_RUN을 정직하게 Library에 저장·readback하고 `R1_REVIEW_ROUTED/READY_R2`, `R2_REVIEW_ROUTED/READY_R3`로 **HOLD 없이 인계**한다. 품질 `PASS`와 `ROUTED` 구분 유지. 변경없는 정상 qid/freeze 재작업 금지. 해당 캠페인 이외 예약·시간표·타 역할 및 최신 상위 대화 GPT 최종 판단 변경 없음.
+
 ## NEW14 2026-10-17 LATEST OVERRIDE — 무조건 작업 인계 / 최종 HOLD는 MASTER만
 
 이 문단은 형님의 2026-10-17 최신 지시이며 `SOURCE_ONLY_INTAKE14_20261016` GPT Library 예약 5개에 한정된다. 아래/과거의 CREATE 전수 완성·검사 선행규칙이나 중간 단계 품질 마감 규칙보다 **단계 간 인계 시점**에 대해 우선한다. 다른 캠페인·Codex를 변경하지 않는다.
