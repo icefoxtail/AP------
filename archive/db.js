@@ -21102,6 +21102,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학(상)"
     },
     {
+      "file": "original/middle/m3/1final/19_가산중_1학기_기말_중3_수학.js",
+      "school": "가산중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2019,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "M3-03",
+      "rangeStartUnit": "이차방정식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M3-04",
+      "rangeEndUnit": "이차함수와 그래프",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-03",
+          "rangeStartUnit": "이차방정식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M3-04",
+          "rangeEndUnit": "이차함수와 그래프",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
       "file": "original/middle/m3/1mid/19_금당중_1학기_중간_중3_기출.js",
       "school": "금당중",
       "topic": "",
