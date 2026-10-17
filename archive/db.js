@@ -16104,6 +16104,46 @@ window.mainDB = {
       "primaryStandardCourse": "수학I"
     },
     {
+      "file": "original/high/h2/1mid/21_제일고_1학기_중간_고2_수학I.js",
+      "school": "제일고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/high/h2/1mid/21_효천고_1학기_중간_고2_수학I.js",
+      "school": "효천고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
+    },
+    {
       "file": "original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js",
       "school": "강남여고",
       "topic": "",
@@ -20401,6 +20441,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학II"
     },
     {
+      "file": "original/high/h2/1mid/19_금당고_1학기_중간_고2_수학I.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2019,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H22-A-02",
+      "rangeStartUnit": "지수함수",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-A-04",
+      "rangeEndUnit": "삼각함수",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-02",
+          "rangeStartUnit": "지수함수",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-A-04",
+          "rangeEndUnit": "삼각함수",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "대수"
+    },
+    {
       "file": "original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
       "school": "매산고",
       "topic": "",
@@ -20430,6 +20501,26 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/1mid/19_매산고_1학기_중간_고2_수학I.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2019,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
     },
     {
       "file": "original/high/h2/1final/19_매산여고_1학기_기말_고2_수학I.js",
