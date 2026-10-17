@@ -354,7 +354,7 @@ window.examData = {
     {
       "id": 10,
       "score": 4.0,
-      "question": "【대체 문항】그림과 같이 $\\angle B=30^\\circ$, $\\overline{\\mathrm{AB}}=10\\,\\text{cm}$인 삼각형 $\\mathrm{ABC}$에서 $H$는 $A$에서 $BC$에 내린 수선의 발이다. $\\overline{\\mathrm{AH}}$의 길이는? <br><img src=\"assets/replacements/q10_altitude.png\" />",
+      "question": "【대체 문항】그림과 같이 $\\angle B=30^\\circ$, $\\overline{\\mathrm{AB}}=10\\,\\text{cm}$인 삼각형 $\\mathrm{ABC}$에서 $H$는 $A$에서 $BC$에 내린 수선의 발이다. $\\overline{\\mathrm{AH}}$의 길이는? <br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q10_altitude.png\" />",
       "choices": [
         "$4\\,\\text{cm}$",
         "$5\\,\\text{cm}$",
@@ -388,7 +388,7 @@ window.examData = {
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
       "reviewStatus": "CREATE_DRAFT_SELF_CHECKED_AWAITING_QUALITY_REVIEW",
-      "content": "【대체 문항】그림과 같이 $\\angle B=30^\\circ$, $\\overline{\\mathrm{AB}}=10\\,\\text{cm}$인 삼각형 $\\mathrm{ABC}$에서 $H$는 $A$에서 $BC$에 내린 수선의 발이다. $\\overline{\\mathrm{AH}}$의 길이는? <br><img src=\"assets/replacements/q10_altitude.png\" />"
+      "content": "【대체 문항】그림과 같이 $\\angle B=30^\\circ$, $\\overline{\\mathrm{AB}}=10\\,\\text{cm}$인 삼각형 $\\mathrm{ABC}$에서 $H$는 $A$에서 $BC$에 내린 수선의 발이다. $\\overline{\\mathrm{AH}}$의 길이는? <br><img src=\"assets/images/21_매산중_2학기_중간_중3_수학/q10_altitude.png\" />"
     },
     {
       "id": 11,
