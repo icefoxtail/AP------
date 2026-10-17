@@ -2,12 +2,12 @@
 
 - 생성기: archive/tools/build-question-index.mjs
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated)
-  - git 버전관리에 등재된 시험지 JS만 인덱싱(791파일).
+  - git 버전관리에 등재된 시험지 JS만 인덱싱(794파일).
   - 교과서 파일은 `textbooks/<book>/<title>.js` 경로와 db.js의 명시 등록이 모두 있을 때만 포함한다.
   - DB 미등록 교재 파일과 미추적 _pro 드래프트는 제외한다.
 - 공식 마스터 키 수: 143 (중등 23 + H22 56 + H15 64)
-- 원본 문항 수: 18629
-- 최종 인덱스 문항 수: 18629
+- 원본 문항 수: 18701
+- 최종 인덱스 문항 수: 18701
 - 중복 qKey 그룹: 0 / 제외 레코드(duplicate_skipped): 0
 - 최종 인덱스 중복 qKey: 0 (0이어야 정상)
 
@@ -80,7 +80,7 @@
 
 ---
 
-## 5. 필드 누락 (최종 인덱스 18629건 기준)
+## 5. 필드 누락 (최종 인덱스 18701건 기준)
 
 | 필드 | 누락 수 |
 |------|--------:|
@@ -99,9 +99,9 @@
 | 기준 | 수 |
 |------|---:|
 | q.image 보유 | 3399 |
-| content <img> | 546 |
+| content <img> | 556 |
 | content <svg> | 77 |
 | content <table> | 249 |
-| 시각요소 보유(hasImage=true) | 4223 |
+| 시각요소 보유(hasImage=true) | 4233 |
 
 > hasImage 판정은 mixer.html 의 hasVisualAsset 과 동일(image OR content 내부 img/svg/table).
