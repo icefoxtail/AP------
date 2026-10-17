@@ -1,3 +1,7 @@
+## CURRENT PRECEDENCE — 공용 예약라인 프롬프트 정본 v1.0.0 (2026-10-17)
+
+**신규 생성/수정하는 모든 Archive GPT 예약의 prompt copy source는 [gpt-reservation/README_CURRENT.md](gpt-reservation/README_CURRENT.md) + 같은 디렉터리의 MASTER/CREATE/R1/R2/R3 중 정확한 ROLE_CURRENT.md다.** 아래 이 v1 문서의 NEW14 시기별 override는 해당 캠페인의 HISTORY/역할 특기사항이며, 서로 상충하는 오래된 MASTER 최종 판정·stage 완료/인계 지시를 새 캠페인의 공용 프롬프트로 그대로 복사하지 않는다. 기존 frozen manifest와 이미 발행한 stage 기록은 보존한다. 새 CURRENT는 본문 실제 필독/DOC_READ_RECEIPT, 실행자의 직접 해결·정밀 Meta/Golden 책임, 비차단 ROUTED와 품질 PASS의 구분, MASTER 동적 배정 역할 및 Git 별도 상위 출고를 명시한다. 향후 결함 보강은 [CHANGELOG.md](gpt-reservation/CHANGELOG.md)를 함께 업데이트한다. 이 링크 삽입은 기존 자동화 예약의 prompt/ON/OFF/RRULE을 물리적으로 갱신한 것이 아니다.
+
 ## CURRENT TOP OVERRIDE — NEW14 scheduled MASTER unresolved-qid repair (2026-10-17, user-directed)
 
 Applies **only** to campaign `SOURCE_ONLY_INTAKE14_20261016` and its existing hourly :48 scheduled MASTER. This is **not a conveyor bottleneck gate**: CREATE/R1/R2/R3 do their normal maximal-quality work, record open qids/fields in the cumulative Library ledger, and continue nonblocking stage handoff. Scheduled MASTER independently picks only still-unresolved qids, missing/incorrect problem or solution visual, answer, solution, source or metadata debt left by any of the four stages. Do not rework already-resolved qids or exams published to current production; obey single-writer ownership, at most one exam per run, without a qid-count cap.

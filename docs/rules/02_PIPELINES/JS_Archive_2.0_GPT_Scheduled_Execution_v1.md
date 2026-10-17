@@ -1,3 +1,7 @@
+## CURRENT CANONICAL PROMPT ENTRY — 2026-10-17 v1.0.0
+
+이 실행계약은 품질·라이브러리 stage 계약으로 계속 유효하되 **새 GPT 예약을 개설하거나 기존 프롬프트를 변경할 때 복사할 최신 공용 본문**은 [gpt-reservation/README_CURRENT.md](gpt-reservation/README_CURRENT.md)와 [역할별 CURRENT 파일 5개](gpt-reservation/README_CURRENT.md#3-역할-파일-5개--복사수정은-여기서-시작)다. 캠페인별 소스/manifest·현재 예약 권한·ON/OFF는 기존 정본을 따르고 모든 문서 실제 열람 증거 및 qid 검수·Meta 직접 수리·Golden 실증거와 OWN_AND_FIX를 반영한다. 2026-10-17 현재 예약 프롬프트는 별도 실제 업데이트가 확인된 것만 유효; 본 문서 수정으로 과거 런타임까지 자동 교체됐다고 주장하지 않는다.
+
 # JS Archive 2.0 — GPT Scheduled Execution Contract v1
 
 status: CURRENT COMMON POLICY / ALL GPT SCHEDULED CAMPAIGNS; document-only update
