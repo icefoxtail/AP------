@@ -14,6 +14,19 @@ test('archive/exams inline image inventory covers every content img and validate
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
+  // TEMPORARY INTEGRITY DIAGNOSTIC: capture previously omitted records for exact receipt refresh.
+  const savedRows = new Set(report.records.map(row => JSON.stringify(row)));
+  const realRows = new Set(generated.records.map(row => JSON.stringify(row)));
+  const unrecorded = generated.records.filter(row => !savedRows.has(JSON.stringify(row)));
+  const notGenerated = report.records.filter(row => !realRows.has(JSON.stringify(row)));
+  console.log('INLINE_INV_DIAG_COUNTS ' + JSON.stringify({ total: generated.total, productionTotal: generated.productionTotal, testFixtureTotal: generated.testFixtureTotal, extensionCounts: generated.extensionCounts, qImageAndInlineTotal: generated.qImageAndInlineTotal, validation: generated.validation, unrecorded: unrecorded.length, notGenerated: notGenerated.length }));
+  for (let i = 0; i < unrecorded.length; i += 10) {
+    console.log('INLINE_INV_DIAG_ROWS ' + JSON.stringify(unrecorded.slice(i, i + 10)));
+  }
+  for (let i = 0; i < notGenerated.length; i += 10) {
+    console.log('INLINE_INV_DIAG_STALE ' + JSON.stringify(notGenerated.slice(i, i + 10)));
+  }
+
   assert.equal(generated.total, 864);
   assert.equal(generated.productionTotal, 860);
   assert.equal(generated.testFixtureTotal, 4);
