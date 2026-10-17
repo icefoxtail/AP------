@@ -15898,6 +15898,57 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
+      "file": "original/high/h2/1mid/21_금당고_1학기_중간_고2_확률과통계.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-02",
+      "rangeEndUnit": "이항정리",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-02",
+          "rangeEndUnit": "이항정리",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/1mid/21_매산고_1학기_중간_고2_수학II.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
+    },
+    {
       "file": "original/high/h2/2final/21_매산여고_2학기_기말_고2_수학II.js",
       "school": "매산여고",
       "topic": "",
@@ -15927,6 +15978,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/1mid/21_매산여고_1학기_중간_고2_수학I.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 23,
+      "rangeStartUnitKey": "H15-M1-01",
+      "rangeStartUnit": "지수의 뜻과 성질",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M1-07",
+      "rangeEndUnit": "삼각방정식과 삼각부등식",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-01",
+          "rangeStartUnit": "지수의 뜻과 성질",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M1-07",
+          "rangeEndUnit": "삼각방정식과 삼각부등식",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "수학I"
     },
     {
       "file": "original/high/h2/1mid/21_순천고_1학기_중간_고2_수학I.js",
