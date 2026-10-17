@@ -43,7 +43,7 @@ export function buildInlineImageInventory() {
     }
     const bank = Array.isArray(window.questionBank)
       ? window.questionBank
-      : (window.questionBank?.questions || window.questionBank?.problems || window.examData?.questions || []);
+      : (window.questionBank?.questions || window.questionBank?.problems || []);
     if (!Array.isArray(bank)) continue;
 
     bank.forEach((question, index) => {
