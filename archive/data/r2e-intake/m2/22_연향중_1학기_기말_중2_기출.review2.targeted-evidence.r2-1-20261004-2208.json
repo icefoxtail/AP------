@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "JS_ARCHIVE_R2_TARGETED_RECHECK_EVIDENCE_v1",
+  "certificationGeneration": "M2_1_CREATE_FIRST_2026_10_03",
+  "stage": "R2",
+  "mode": "TARGETED_MINIMAL_CURRENT_2026_10_04",
+  "examUid": "o34",
+  "examFilename": "22_연향중_1학기_기말_중2_기출.js",
+  "canonicalInventoryOrdinal": 34,
+  "inputR1ClosureHead": "6a3d636069092ca014f70b7480e0ae805087c647",
+  "inputArtifactSha": "ed63df30c0c0fffc37e1726f157e6a7104ef950e",
+  "r1ReceiptGitBlob": "c654e61f610cc8cd9d01b71b9bf3ece49b9b753e",
+  "r1PhysicalEvidenceGitBlob": "aff6e53e44fd303eedb9e9ebb911f7e97708850a",
+  "r1ValidatorReceiptGitBlob": "ae835fac007745b7542a7dd5c5f21498a4a3b24c",
+  "currentMainAtStart": "da14f3efddba0a36883346bd5ecc51a4c1d64135",
+  "currentContractGitBlob": "570359bffe09bfc756b484bf110d4035c2e80f80",
+  "currentReviewEvidenceValidatorGitBlob": "c9b50158bec0c931433e8c50913a5a555d3e53f5",
+  "selectorEvidence": {
+    "r1Stage": "REVIEW1_DONE",
+    "r1NextStage": "READY_FOR_REVIEW2",
+    "r1ReviewDecision": "PASS",
+    "r1ItemHoldQids": [],
+    "activeSameStageClaimObserved": false,
+    "priorHandoffAutoReselected": false
+  },
+  "targetedScope": {
+    "openFindingQids": [],
+    "itemHoldQids": [],
+    "r1ChangedQids": [],
+    "r1ChangedFields": [],
+    "directDependencyQids": [],
+    "recheckQids": [],
+    "scopeCount": 0,
+    "rationale": "CURRENT HARD 2026-10-04 makes R2 minimal: only R1 open findings/HOLD, actual changed qid/field, and direct dependencies. o34 R1 has HOLD 0 and deterministic repair 0; CREATE and R1 final artifact blobs are identical."
+  },
+  "formalCompare": {
+    "createFinalArtifactSha": "ed63df30c0c0fffc37e1726f157e6a7104ef950e",
+    "r1FinalArtifactSha": "ed63df30c0c0fffc37e1726f157e6a7104ef950e",
+    "artifactChangedAcrossR1": false,
+    "r1DeterministicRepairCount": 0,
+    "r1ItemHoldCount": 0,
+    "regressionOpenCount": 0,
+    "result": "TARGETED_SCOPE_EMPTY"
+  },
+  "solutionQualityCalibration": {
+    "goldenSampleRefs": [
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_매산여고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "7e811bbe0cb2d440638437588b47ac588e1a47f2",
+        "observed": "q1/q2 actual solution bytes re-read; reproducible intermediate steps and decisive-property-to-equation flow confirmed"
+      },
+      {
+        "path": "archive/exams/original/high/h1/2mid/25_효천고_2학기_중간_고1_기출.js",
+        "gitBlobSha": "eb8776d19989f8f4219f4b80db0daf72310109cd",
+        "observed": "q1/q2 actual solution bytes re-read; inputs are explicit and decisive relation is separated from calculation"
+      }
+    ],
+    "negativeSampleRefs": [
+      {
+        "path": "archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md",
+        "gitBlobSha": "f06387b8bbb5adce4244fbb576c0bd500ab282fa",
+        "observed": "false-PASS families re-read: actual SVG geometry, small-board structure, Meta null-but-resolvable, runtime escapes"
+      },
+      {
+        "path": "archive/fixtures/visual-negative-regressions/2026-09-29/README.md",
+        "gitBlobSha": "f7440339f2532f6e7ea357541c2a09b05847af59",
+        "observed": "owner-ray/angle-label/segment-label/coordinate-semantic regressions re-read"
+      }
+    ],
+    "sampleReadBeforeWork": true,
+    "calibrationAxes": [
+      "STUDENT_REPRODUCIBILITY",
+      "SMALL_BOARD_STRUCTURE",
+      "EXPLANATION_DENSITY",
+      "VISUAL_SEMANTIC_PARITY",
+      "VISUAL_READABILITY"
+    ],
+    "calibrationStatus": "PASS",
+    "qualityCompareScope": "0/0 targeted qids; no R1 changes/HOLD exist"
+  },
+  "decisionSnapshot": {
+    "status": "R2_TARGETED_SCOPE_EMPTY_VALIDATOR_PENDING",
+    "examMutationCount": 0,
+    "deterministicRepairCount": 0,
+    "targetRecheckCount": "0/0",
+    "finalArtifactSha": "ed63df30c0c0fffc37e1726f157e6a7104ef950e",
+    "r2PassDeclared": false,
+    "review2DoneDeclared": false,
+    "r3Eligible": false
+  }
+}
