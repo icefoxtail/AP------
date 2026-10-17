@@ -16,10 +16,10 @@ test('archive/exams questionBank inline image inventory validates referenced pro
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 853);
-  assert.equal(generated.productionTotal, 849);
+  assert.equal(generated.total, 872);
+  assert.equal(generated.productionTotal, 868);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 801, '.svg': 52 });
+  assert.deepEqual(generated.extensionCounts, { '.png': 820, '.svg': 52 });
   assert.equal(generated.qImageAndInlineTotal, 36);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
