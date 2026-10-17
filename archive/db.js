@@ -15847,6 +15847,26 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
+      "file": "original/high/h2/1mid/21_금당고_1학기_중간_고2_수학I.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
+    },
+    {
       "file": "original/high/h2/2final/21_매산여고_2학기_기말_고2_수학II.js",
       "school": "매산여고",
       "topic": "",
