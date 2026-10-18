@@ -2,6 +2,12 @@
 
 **현재 대표 문서:** [README_CURRENT.md](README_CURRENT.md). 파일은 CURRENT 고정 경로이고, 역사적 각 버전은 Git commit/blob SHA로 추적한다. 수정 전 항상 Notion 라우터/예약 CURRENT/Git main 정본을 다시 읽는다. 이 파일은 실제 예약 변경 영수증이나 실험 실행 증거를 대신하지 않는다.
 
+## v1.0.1 — 2026-10-18: 통합 출고 Library 자동 인계
+
+- 사용자 직접 지시: 예약 MASTER의 배정·복구 부담을 늘리지 않고 R3가 stage 종료 직후 최종 패킷/영수증/manifest를 RELEASE_HUB/PENDING에 복사·원격 readback하며 다음 회차에는 누락·MASTER 재수리 revision도 정합 확인.
+- R3_REVIEWED/READY_MASTER_DECISION은 transport이며 RELEASE_READY/MAIN_DONE 아님. 원본 stage 보존, 본문/Meta/Golden/블라인드 품질 규칙, 활성 예약 5개 일정·권한은 유지.
+- 초기 HIGH_DYNAMIC 13건 Library ZIP/영수증/manifest의 저장 현물은 별도로 확인해야 하고 공용 INDEX는 초기 snapshot. Git 운영 출고/배포는 별도 승인과 기술 확인.
+
 ## v1.0.0 — 2026-10-17: 5개 예약 통합 최초 공용판
 
 ### 트리거 / 확인한 회귀 사례
