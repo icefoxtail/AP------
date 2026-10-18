@@ -37,3 +37,11 @@ HIGH_DYNAMIC 2019 금당고 고2 수학Ⅱ 2학기 중간고사 R1: source-only 
 - 기존 예약별 prompt 업데이트/ON·RRULE readback:
 - 첫 실행 Library DOC_READ_RECEIPT·qid 수리 증거:
 - 미완/다음 owner:
+
+
+## v1.0.1 — 2026-10-18: R3 통합 출고 허브 자동 인계
+- 사용자 요청: 반복적인 R3 시험지 탐색 없이 복수 시험지를 통합 Library에서 한꺼번에 Git main 출고할 수 있도록 R3 완료 시 인계 실물을 별도 복제한다.
+- 기존 실물: HIGH_DYNAMIC R3 13개 시험지 각각 latest 패킷·R3 인계 receipt → `/Archive2-GPT/RELEASE_HUB/PENDING/<examUid>/`에 사본 보존; 초기 `INDEX.json` 13건, Git 파일명 부재 4/존재 9. 기존 파일의 내용 parity 미검증, DONE 0. 각 R3 qualityPass=false를 품질 승격하지 않았다.
+- 적용: R3_CURRENT.md §6 및 README_CURRENT.md 링크. R3 최종 Library 인계 후 packet/receipt/manifest remote readback; examUid+SHA 중복 억제; HUB_SYNC_PENDING 재시도; 원본 R3 불변. ROOT INDEX는 스냅샷, exam manifest가 권위.
+- 승인/기술 분리: R3_REVIEWED ≠ QUALITY_PASS ≠ 출고승인. 지정 출고 감독만 최신 main과 실제 차이를 확인하고 user-directed 병합/배포 검증 후 DONE. MASTER 업무 및 예약 5개의 ON/RRULE 유지.
+- Git 문서 작업, 실제 HIGH_DYNAMIC R3 예약 업데이트/readback, 다음 R3 회차의 실행 evidence, Git merge는 서로 구분해서 기록한다.
