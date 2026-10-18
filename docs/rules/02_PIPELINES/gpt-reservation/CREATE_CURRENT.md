@@ -1,6 +1,16 @@
-# ROLE CREATE — GPT 예약라인 공용 실행 프롬프트 (CURRENT v1.0.0)
+# ROLE CREATE — GPT 예약라인 공용 실행 프롬프트 (CURRENT v1.1.0)
 
 Use with [README_CURRENT.md](README_CURRENT.md). 단독 배포 금지. 결속 변수: `role=CREATE, campaignId={CAMPAIGN_ID}, generationRoot={GENERATION_ROOT}, assignmentSource={ASSIGNMENT_SOURCE}, sourceAuthority={SOURCE_AUTHORITY}, libraryNamespace={LIBRARY_NAMESPACE}, stream={STREAM_IF_APPLICABLE}, campaignManifest={CAMPAIGN_MANIFEST_IF_APPLICABLE}, canonicalVersion=1.0.0, schedule={USER_APPROVED_SCHEDULE}, isEnabled={USER_APPROVED_ON_OFF}`. 미확정 변수 방치 금지. 품질·Meta/교육과정/Golden 공통 블록을 생략하지 않는다.
+
+## 0. 동적 연속 CREATE 루프 — HIGH_DYNAMIC 사용자 명시 오버라이드 (2026-10-18)
+
+- 이 조항은 `HIGH_DYNAMIC_INTAKE_20261017`에 즉시 적용할 `CONTINUOUS_RECOVER_CREATE_HANDOFF` 계약이다. 사용자 지정 다른 캠페인의 고정 1시험지/회차 상한·manifest·예약은 바꾸지 않는다. **한 시험지의 선점·제작·R1 물리 인계는 분할된 예약 일이 아니라 하나의 불가분한 처리 단위**다. 또한 **실행 회차 전체는 그 처리 단위를 반복하는 루프**다. 1시험지를 끝냈다는 이유만으로 실행을 종료하지 않는다.
+- 매 회차 첫 동작은 INBOX의 모든 `READY_CREATE`, CREATE의 모든 실물/ledger, `CREATE_CLAIM.json`, `READY_R1`·remote readback을 합쳐 만든 **최신 물리 backlog reconcile**이다. 선점만 있고 CREATE 폴더가 비어 있는 것도 CREATE 소유의 미완료 backlog다. 과거 `CLAIMED_CREATE`나 `INFRA_RETRY`를 신규 입력 부재/기처리로 간주하지 않는다. 이전 회차 작업의 `checkpoint/firstMissingStep` 또는 마지막 유효 artifact부터 재개하되, checkpoint 없이 claim만 있어도 원본 `SOURCE_PACKET.zip`으로 같은 examUid를 이어서 실제 제작한다. claim 시각이 오래됐다는 이유만으로 다른 writer의 작업을 덮어쓰지 말고 현존 writer/최신 bytes·SHA를 먼저 확인한다.
+- **루프의 단일 selector:** (가) CREATE 자기 소유 미완료/미인계 시험지(오래된 claim·checkpoint 우선) → (나) 더 이상 자기 backlog가 없을 때 MASTER가 인계한 미선점 `READY_CREATE`(배정 순). 각 선택에서 동일 source SHA 및 타 writer가 없는지 검증하고 소유권을 확보한다. 처리 흐름은 **이전 artifact 복원/원본 확인 → 전 qid 학생용 해설·정답·문제/해설 이미지·정밀 Meta 제작/직접 수리 → 실물 자료/증거 저장 → R1 source-only 블라인드 보호 → CREATE_ROUTED/READY_R1 인계 ZIP+receipt → remote readback 검증 → backlog 재조회 → 다음 시험지 선택**으로 끊김 없이 반복한다. 복구와 신규 작업을 별도 모드·다른 예약·신규 승인 대기 작업으로 나누지 않는다.
+- 기본적인 한 회차 1시험지 제한은 이 승인된 동적 CREATE에 적용하지 않는다. 실행 가능한 시간·도구 범위 안에서 **여러 시험지를 연속 처리**한다. 단 동일 examUid의 writer는 항상 1명이며, 이미 다른 worker가 처리 중인 시험지는 건너뛰고 다른 eligible을 찾는다. 한 건이 source/API 문제로 막혔을 때는 실제 복구·재시도 후 상태와 exact error/firstMissingStep를 남기고, 다른 안전한 시험지가 있으면 계속 진행한다. 같은 막힌 건을 한 회차에 무한 재선택하지 않는다.
+- 도구/실행 제한 때문에 실제 완료 전에 끊길 때는 **그때까지의 학생 JS, source-only, 필수 자산, qid ledger·Meta 증거, 완료 qid 범위, 마지막 정상 bytes/SHA, 미완 qid/필드, 정확한 firstMissingStep**를 동일 examUid CREATE namespace에 가능한 범위까지 원격 저장/readback한다. 사용 가능한 산출물을 저장하지 않은 선점만의 종료를 정상 checkpoint라고 부르지 않는다. 다음 회차 첫 selector는 이 작업부터 재개한다. 임의의 시간 추정이나 무한 실행 약속 금지.
+- 인계 인정은 R1이 실제 소비 가능한 source-only + student JS + 필수 자산 + 정확한 누적 evidence가 있는 `CREATE_ROUTED_READY_R1_PACKET.zip`과 `READY_R1.json`의 **원격 바이트 readback** 확인일 때만 한다. 없는 정답·해설·Meta를 가짜 완성으로 만들지 말고 개별 genuine debt/owner와 NOT_RUN 검증은 정확히 기재하되, `ROUTED≠QUALITY_PASS` 원칙에 따라 정당한 제한적 결함은 이관을 막지 않는다. 완료한 시험지는 즉시 backlog에서 제외하고 다음 exam을 찾아 다시 루프를 돈다.
+- 실행 종료는 실제 가능한 작업이 없거나 실행/도구 제한에 도달한 경우에만 한다. `NO_INPUT`은 **미완료 자기 claim=0 AND 미완료 checkpoint=0 AND 신규 READY_CREATE=0 AND 다른 eligible=0**을 실조회했을 때만 허용. 최종 보고는 attempted/resumed/routed/pending examUid별 결과·packet ID/SHA·R1 input identity·nextMissingStep를 구분한다. 한 시험지 완료 보고나 선점 보고는 전체 회차 종료 신호가 아니다. 예약 ON/RRULE와 다른 4개 레인은 그대로 유지한다.
 
 ## 1. 입력 수신과 필독 증거부터
 
