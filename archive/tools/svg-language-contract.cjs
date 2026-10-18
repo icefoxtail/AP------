@@ -107,16 +107,20 @@ function validateSvgStudentLanguage(svg, options = {}) {
   const assetRef = options.assetRef || '<memory>';
   const source = String(svg ?? '');
   const errors = [];
-  const rootMatch = source.match(/<(?:[a-z_][\w.-]*:)?svg\b[^>]*>/i);
+  const rootMatch = source.match(/<(?:(?<prefix>[a-z_][\w.-]*):)?svg\b[^>]*>/i);
   if (!rootMatch) return { status: 'FAIL', errors: [{ code: 'SVG_ROOT_MISSING', assetRef }] };
   const root = attributes(rootMatch[0]);
+  const tagPrefix = rootMatch.groups?.prefix ? rootMatch.groups.prefix + ':' : '';
+  const escapeRegExp = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
   const ids = [...source.matchAll(/\bid\s*=\s*(["'])(.*?)\1/g)].map(match => decodeXml(match[2]));
   const idCounts = new Map();
   for (const id of ids) idCounts.set(id, (idCounts.get(id) || 0) + 1);
   if ([...idCounts.values()].some(count => count > 1)) errors.push({ code: 'SVG_ACCESSIBILITY_DUPLICATE_ID', assetRef });
-  const titles = [...source.matchAll(/<(?:[a-z_][\w.-]*:)?title\b([^>]*)>([\s\S]*?)<\/(?:[a-z_][\w.-]*:)?title\s*>/gi)].map(match => ({ attrs: attributes(match[1]), text: decodeXml(match[2]) }));
-  const descriptions = [...source.matchAll(/<(?:[a-z_][\w.-]*:)?desc\b([^>]*)>([\s\S]*?)<\/(?:[a-z_][\w.-]*:)?desc\s*>/gi)].map(match => ({ attrs: attributes(match[1]), text: decodeXml(match[2]) }));
+  const titlePattern = new RegExp('<' + escapeRegExp(tagPrefix) + 'title\\b([^>]*)>([\\s\\S]*?)<\\/' + escapeRegExp(tagPrefix) + 'title\\s*>', 'gi');
+  const descriptionPattern = new RegExp('<' + escapeRegExp(tagPrefix) + 'desc\\b([^>]*)>([\\s\\S]*?)<\\/' + escapeRegExp(tagPrefix) + 'desc\\s*>', 'gi');
+  const titles = [...source.matchAll(titlePattern)].map(match => ({ attrs: attributes(match[1]), text: decodeXml(match[2]) }));
+  const descriptions = [...source.matchAll(descriptionPattern)].map(match => ({ attrs: attributes(match[1]), text: decodeXml(match[2]) }));
 
   if (root.role !== 'img') errors.push({ code: 'SVG_ACCESSIBILITY_ROLE_IMG_REQUIRED', assetRef });
   if (titles.length !== 1 || descriptions.length !== 1) {
