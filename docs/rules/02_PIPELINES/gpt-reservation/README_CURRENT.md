@@ -1,12 +1,16 @@
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — CURRENT
 
 status: CURRENT / CANONICAL COPY SOURCE / 모든 신규·재설정 Archive GPT 예약 공통
-version: 1.0.0
-released: 2026-10-17
+version: 1.0.1
+released: 2026-10-18
 canonicalRoot: docs/rules/02_PIPELINES/gpt-reservation/
 scope: GPT Scheduled / MASTER, CREATE, R1, R2, R3 / 신규 캠페인·기존 예약의 명시적 업그레이드
 policyBoundary: 기존 사용자 최신 명시 지시 및 Git/Notion CURRENT 품질 정본 우선
 operationalBoundary: 문서 저장 ≠ 실제 예약 프롬프트 갱신 ≠ 검사 실행 ≠ main 출고
+
+## CURRENT 추가 — 2026-10-18 R3 통합 출고 허브
+
+HIGH_DYNAMIC R3 종료 후 실제 Library `/Archive2-GPT/RELEASE_HUB/PENDING/<examUid>/` 패킷·인계 영수증·RELEASE_MANIFEST.json 자동 등록은 [R3_CURRENT.md §6](R3_CURRENT.md)의 책임이다. 메인 병합은 별도 감독 GPT/기술 출고 담당, R3의 Git writer 권한 없음. 인덱스는 snapshot이고 시험지별 현물 manifest가 기준이며 R3_REVIEWED≠R3_PASS·DONE이다. 다른 캠페인/예약 ON·RRULE는 자동 확대/변경하지 않는다.
 
 ## 0. 이 문서는 모든 GPT가 예약라인을 개설하거나 수정할 때 찾아야 할 첫 번째 공용 정본이다
 
