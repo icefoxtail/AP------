@@ -2,6 +2,22 @@
 
 **현재 대표 문서:** [README_CURRENT.md](README_CURRENT.md). 파일은 CURRENT 고정 경로이고, 역사적 각 버전은 Git commit/blob SHA로 추적한다. 수정 전 항상 Notion 라우터/예약 CURRENT/Git main 정본을 다시 읽는다. 이 파일은 실제 예약 변경 영수증이나 실험 실행 증거를 대신하지 않는다.
 
+## v1.1.0 — 2026-10-18: HIGH 동적 CREATE 연속 루프 및 orphan claim 복구
+
+### 재현 근거
+- `HIGH_DYNAMIC_INTAKE_20261017`: `20_매산고_2학기_중간_고2_확률과통계` CREATE claim 2026-10-18 07:56 KST, `23_강남여고_2학기_중간_고2_수학II` CREATE claim 09:58 KST. 둘 다 CREATE stage 폴더 빈 상태/READY_R1 없음이 확인됨. 이후 다른 시험지 `22_금당고_2학기_기말_고2_수학II`는 13:12 KST READY_R1가 존재.
+- 실제 HIGH 예약은 "첫 미선점 1시험지"로 선택했고 README 기본 "회차당 최대 하나"와 결합돼 기존 claim을 재개하지 못한 채 새 입력을 소비할 수 있었다. 개별 실행 도구 중단 원인 로그는 미확인; 이는 확인된 선택/마감 위험 구조의 수정이다.
+
+### 사용자 승인 설계 / 대상
+- `CREATE_CURRENT.md` §0에 `CONTINUOUS_RECOVER_CREATE_HANDOFF` 추가: **복구 → 완성 → 실제 R1 인계/readback → 최신 backlog 재조회 → 다음 입력 연속 수신**을 한 회차의 단일 루프로 정의.
+- 미완료 own claim/checkpoint(산출물 없이 claim만 있는 경우 포함)가 새 배정보다 우선. 유효 R1 receipt로 인계한 시험지는 제외, 타 writer 중복/기존 유효 파일 덮어쓰기 금지.
+- 작업이 끊길 때 가능한 최신 학생 JS·source-only·자산·qid/meta/검증·다음 재개 지점을 물리 저장/remote readback. `NO_INPUT`은 미완료/신규 모두 실조회 0인 경우뿐.
+- `README_CURRENT.md`는 **사용자 명시 승인 HIGH CREATE에만** 1시험지/회차 기본 상한의 예외를 부여. R1/R2/R3/MASTER 및 타 캠페인의 조건·ON/OFF·RRULE은 그대로.
+
+### 검증 / 적용 구분
+- 검증 대상: 오래된 claim만 존재, 실제 mid-work checkpoint, 서로 다른 READY_CREATE 두 건, active competing writer, 한 건 도구 오류/다른 eligible, remote readback 실패, 무입력.
+- Git 문서 변경은 실행 증거가 아니며 실제 HIGH CREATE 예약 프롬프트 수정/readback 및 다음 실행의 Library 실물 인계 결과로 별도 확인한다. 품질·Meta·Golden·R1 blind 및 `ROUTED≠PASS` 불변.
+
 ## v1.0.0 — 2026-10-17: 5개 예약 통합 최초 공용판
 
 ### 트리거 / 확인한 회귀 사례
