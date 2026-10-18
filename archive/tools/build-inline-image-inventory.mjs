@@ -9,6 +9,7 @@ const archiveDir = path.resolve(scriptDir, '..');
 const repoRoot = path.resolve(archiveDir, '..');
 const examsDir = path.join(archiveDir, 'exams');
 const reportPath = path.join(repoRoot, 'docs/reports/archive-inline-image-inventory-20260915.json');
+const knownMissingPath = path.join(archiveDir, 'data/inline-image-known-missing-v1.json');
 
 function examFiles(directory, out = []) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -31,6 +32,14 @@ function isArchiveRelativeAssetPath(src) {
 export function buildInlineImageInventory() {
   const records = [];
   const errors = [];
+  const knownMissing = JSON.parse(fs.readFileSync(knownMissingPath, 'utf8')).missing;
+  const keyFor = ({ file, questionId, src }) => JSON.stringify([file, String(questionId), src]);
+  const expectedMissingCounts = new Map();
+  for (const reference of knownMissing) {
+    const key = keyFor(reference);
+    expectedMissingCounts.set(key, (expectedMissingCounts.get(key) || 0) + 1);
+  }
+  const observedMissingCounts = new Map();
 
   for (const file of examFiles(examsDir)) {
     const relative = path.relative(examsDir, file).replace(/\\/g, '/');
@@ -58,7 +67,15 @@ export function buildInlineImageInventory() {
         const testFixture = relative.startsWith('test-fixtures/');
 
         if (!relativePathValid) errors.push(`${relative} q${question?.id ?? index + 1}: image src is not an Archive-relative assets/images path: ${src}`);
-        else if (!assetExists && !testFixture) errors.push(`${relative} q${question?.id ?? index + 1}: image asset is missing: ${src}`);
+        else if (!assetExists && !testFixture) {
+          const reference = { file: relative, questionId: question?.id ?? index + 1, src };
+          const key = keyFor(reference);
+          const observed = (observedMissingCounts.get(key) || 0) + 1;
+          observedMissingCounts.set(key, observed);
+          if (observed > (expectedMissingCounts.get(key) || 0)) {
+            errors.push(`${relative} q${reference.questionId}: image asset is missing and is not in the frozen baseline: ${src}`);
+          }
+        }
 
         records.push({
           file: relative,
@@ -74,6 +91,13 @@ export function buildInlineImageInventory() {
         });
       }
     });
+  }
+
+  for (const reference of knownMissing) {
+    const key = keyFor(reference);
+    if ((observedMissingCounts.get(key) || 0) < expectedMissingCounts.get(key)) {
+      errors.push(`${reference.file} q${reference.questionId}: frozen missing-image baseline entry is stale: ${reference.src}`);
+    }
   }
 
   records.sort((left, right) => left.file.localeCompare(right.file) || left.sourceOrdinal - right.sourceOrdinal);

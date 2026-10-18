@@ -43,9 +43,13 @@ function normalizeQid9Svg(input, uid, labels = {}) {
   const safeUid = String(uid ?? '').replace(/[^A-Za-z0-9_-]/g, '-');
   if (!safeUid) throw new Error('QID9_SVG_UID_REQUIRED');
 
-  let rootMatch = svg.match(/<(?:[A-Za-z_][\w.-]*:)?svg\b[^>]*>/i);
-  const titleCount = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?title\b/gi)].length;
-  const descCount = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?desc\b/gi)].length;
+  let rootMatch = svg.match(/<(?:(?<prefix>[A-Za-z_][\w.-]*):)?svg\b[^>]*>/i);
+  const tagPrefix = rootMatch?.groups?.prefix ? rootMatch.groups.prefix + ':' : '';
+  const escapeRegExp = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const titleOpenPattern = new RegExp('<' + escapeRegExp(tagPrefix) + 'title\\b', 'gi');
+  const descOpenPattern = new RegExp('<' + escapeRegExp(tagPrefix) + 'desc\\b', 'gi');
+  const titleCount = [...svg.matchAll(titleOpenPattern)].length;
+  const descCount = [...svg.matchAll(descOpenPattern)].length;
   if (!rootMatch || titleCount > 1 || descCount > 1) {
     throw new Error('QID9_SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED:' + safeUid);
   }
@@ -58,16 +62,16 @@ function normalizeQid9Svg(input, uid, labels = {}) {
   }
 
   const additions = [];
-  if (titleCount === 0) additions.push('<title>' + escapeXmlText(titleText) + '</title>');
-  if (descCount === 0) additions.push('<desc>' + escapeXmlText(safeDescriptionText) + '</desc>');
+  if (titleCount === 0) additions.push('<' + tagPrefix + 'title>' + escapeXmlText(titleText) + '</' + tagPrefix + 'title>');
+  if (descCount === 0) additions.push('<' + tagPrefix + 'desc>' + escapeXmlText(safeDescriptionText) + '</' + tagPrefix + 'desc>');
   if (additions.length) {
     const rootEnd = rootMatch.index + rootMatch[0].length;
     svg = svg.slice(0, rootEnd) + additions.join('') + svg.slice(rootEnd);
   }
 
-  rootMatch = svg.match(/<(?:[A-Za-z_][\w.-]*:)?svg\b[^>]*>/i);
-  const titleMatches = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?title\b[^>]*>/gi)];
-  const descMatches = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?desc\b[^>]*>/gi)];
+  rootMatch = svg.match(/<(?:(?<prefix>[A-Za-z_][\w.-]*):)?svg\b[^>]*>/i);
+  const titleMatches = [...svg.matchAll(new RegExp('<' + escapeRegExp(tagPrefix) + 'title\\b[^>]*>', 'gi'))];
+  const descMatches = [...svg.matchAll(new RegExp('<' + escapeRegExp(tagPrefix) + 'desc\\b[^>]*>', 'gi'))];
   const allIds = [...svg.matchAll(/\bid\s*=\s*(["'])(.*?)\1/gi)].map(match => match[2]);
   const counts = new Map();
   for (const id of allIds) counts.set(id, (counts.get(id) || 0) + 1);
@@ -88,11 +92,11 @@ function normalizeQid9Svg(input, uid, labels = {}) {
   if (!titleId) titleId = allocate('title');
   if (!descId) descId = allocate('desc');
 
-  const descElementMatches = [...svg.matchAll(/<(?:[A-Za-z_][\w.-]*:)?desc\b[^>]*>[\s\S]*?<\/(?:[A-Za-z_][\w.-]*:)?desc\s*>/gi)];
+  const descElementMatches = [...svg.matchAll(new RegExp('<' + escapeRegExp(tagPrefix) + 'desc\\b[^>]*>[\\s\\S]*?<\\/' + escapeRegExp(tagPrefix) + 'desc\\s*>', 'gi'))];
   if (descElementMatches.length !== 1) throw new Error('QID9_SVG_ACCESSIBILITY_DESCRIPTION_SCALE_GUIDANCE_UNRESOLVED:' + safeUid);
   const oldTitle = titleMatches[0][0], oldDesc = descElementMatches[0][0], oldRoot = rootMatch[0];
-  const descOpen = oldDesc.match(/^<(?:[A-Za-z_][\w.-]*:)?desc\b[^>]*>/i)[0];
-  const descClose = oldDesc.match(/<\/(?:[A-Za-z_][\w.-]*:)?desc\s*>$/i)[0];
+  const descOpen = oldDesc.match(new RegExp('^<' + escapeRegExp(tagPrefix) + 'desc\\b[^>]*>', 'i'))[0];
+  const descClose = oldDesc.match(new RegExp('<\\/' + escapeRegExp(tagPrefix) + 'desc\\s*>$', 'i'))[0];
   const originalDescription = oldDesc.slice(descOpen.length, oldDesc.length - descClose.length);
   let normalizedDescription = originalDescription;
   if (FORBIDDEN_DESCRIPTION_TEXT.test(originalDescription)) {
