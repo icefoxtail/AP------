@@ -15929,6 +15929,26 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
+      "file": "original/high/h2/1mid/21_매산고_1학기_중간_고2_수학I.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2021,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
+    },
+    {
       "file": "original/high/h2/1mid/21_매산고_1학기_중간_고2_수학II.js",
       "school": "매산고",
       "topic": "",
@@ -20565,6 +20585,26 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
+      "file": "original/high/h2/1mid/19_금당고_1학기_중간_고2_확률과통계.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2019,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
+    },
+    {
       "file": "original/high/h2/2final/2019_매산고_2학기_기말_고2_확률과통계.js",
       "school": "매산고",
       "topic": "",
@@ -20645,6 +20685,26 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학I"
+    },
+    {
+      "file": "original/high/h2/1mid/19_매산여고_1학기_중간_고2_수학I.js",
+      "school": "매산여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2019,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
     },
     {
       "file": "original/high/h2/2final/19_복성고_2학기_기말_고2_수학II.js",
