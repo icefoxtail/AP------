@@ -1,8 +1,8 @@
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — CURRENT
 
 status: CURRENT / CANONICAL COPY SOURCE / 모든 신규·재설정 Archive GPT 예약 공통
-version: 1.1.0
-released: 2026-10-17
+version: 1.2.0
+released: 2026-10-18
 canonicalRoot: docs/rules/02_PIPELINES/gpt-reservation/
 scope: GPT Scheduled / MASTER, CREATE, R1, R2, R3 / 신규 캠페인·기존 예약의 명시적 업그레이드
 policyBoundary: 기존 사용자 최신 명시 지시 및 Git/Notion CURRENT 품질 정본 우선
@@ -35,7 +35,7 @@ operationalBoundary: 문서 저장 ≠ 실제 예약 프롬프트 갱신 ≠ 검
 | `{MAX_EXAMS_PER_RUN}` · `{CLAIM_METHOD}` | 예약 처리 범위와 중복 writer 방지. 표준 예시 1시험지/회차, **문항 수정 개수에는 cap 없음** |
 | `{CLOSURE_BOUNDARY}` | 실제 기술 executor와 중간 Git/출판 허용 범위. 기본 예약 5레인은 Library만 수정, Git read 허용, production/main 쓰기 금지 |
 
-조립한 프롬프트 상단에는 `canonicalPromptRoot`, `canonicalVersion=1.1.0`, `canonicalGitMainSha`, `canonicalRolePath`, `canonicalRoleBlobSha`, `campaignManifestIdentity`를 고정한다. 런타임 자체에서 매회 CURRENT로 다시 조회하고 상위 변경이 발견되면 사용자 지시와 충돌 없는 범위에서 즉시 반영하며, 예약의 물리 prompt 갱신은 승인·쓰기 성공·재조회가 있어야만 완료라고 한다. 프롬프트 안에 `{...}` 미해결 변수가 남으면 개설 실패/미완성.
+조립한 프롬프트 상단에는 `canonicalPromptRoot`, `canonicalVersion=1.2.0`, `canonicalGitMainSha`, `canonicalRolePath`, `canonicalRoleBlobSha`, `campaignManifestIdentity`를 고정한다. 런타임 자체에서 매회 CURRENT로 다시 조회하고 상위 변경이 발견되면 사용자 지시와 충돌 없는 범위에서 즉시 반영하며, 예약의 물리 prompt 갱신은 승인·쓰기 성공·재조회가 있어야만 완료라고 한다. 프롬프트 안에 `{...}` 미해결 변수가 남으면 개설 실패/미완성.
 
 ## 2. 공통 예약 실행 블록 — 역할 파일과 함께 그대로 적용
 
@@ -45,6 +45,12 @@ operationalBoundary: 문서 저장 ≠ 실제 예약 프롬프트 갱신 ≠ 검
 - 할 입력이 없으면 `NO_INPUT`과 실조회 분모를, 도구·Notion·Git·Drive·Library가 실패하면 `INFRA_RETRY`와 실제 error/재시도 위치를 남기고 **그 회차만 종료**한다. 사용자의 별도 활성/정지 지시 없이 예약 자체를 OFF/disable/delete하거나 타 예약 일정을 바꾸지 않는다.
 - 동일 stage 실수정 writer는 하나. 다른 writer가 수정 중이면 원본이나 ledger를 덮어쓰지 않고 SKIP/다른 eligible 또는 다음 회차로.
 - 일반 캠페인은 한 회차 실질 수정 시험지 기본 최대 하나이며 각 시험지 내 qid/해설/SVG/Meta cap은 없다. **단, 사용자가 명시적으로 승인한 `HIGH_DYNAMIC_INTAKE_20261017` CREATE는 `CREATE_CURRENT.md` §0의 `CONTINUOUS_RECOVER_CREATE_HANDOFF`에 따라 이 기본 1시험지 상한을 적용하지 않는다.** 매 회차 오래된 CREATE claim/checkpoint를 먼저 회수 → 한 시험지의 실제 `READY_R1` remote readback까지 마감 → 즉시 다음 READY_CREATE를 연속 처리한다. 한 시험지 종료가 회차 종료는 아니다. 시간/도구 한계에서는 실제 산출물·완료 범위·firstMissingStep를 Library에 저장/readback하여 다음 회차 최우선 재개하고, 다른 안전한 대기 시험지가 있으면 가능한 범위에서 계속 처리한다. 다른 역할·캠페인 한도/ON/OFF/RRULE은 불변.
+
+### 2.1.1 HIGH_DYNAMIC 최상위 루프 특별계약 — MASTER 전 단계 연결
+
+- `HIGH_DYNAMIC_INTAKE_20261017` 예약 MASTER는 사용자 최신 명시 지시에 따라 매시 :48 **신규 source-only `READY_CREATE` 배정부터 최우선 마감하고 곧바로 전 단계 CREATE→R1→R2→R3→감독 GPT의 물리 인계 누락을 전수 훑어 본인이 직접 복구·인계**한다. 결함 수리 및 증거 감사 자체를 중단하라는 뜻이 아니라, 배정 및 stage 전환 마감보다 일반 R1/R2/R3 품질 보강을 먼저 하지 말라는 뜻이다. 자세한 실제 인계 경계·R1 blind 보호/단일 writer/remote readback은 `MASTER_CURRENT.md` §0을 따른다.
+- HIGH_DYNAMIC MASTER는 **한 회차에 1개 시험지/하나의 연결만 고친 뒤 종료하지 않는다.** 실제 실행 가능한 범위에서 신규 배정→전 단계 미인계 모두 조사/수리/다음 stage 실물 봉인→다음 후보를 반복. 한 writer/동일 stage 최신 source·artifact SHA 충돌 방지, 이미 유효한 검수와 R1 blind 보존, 명시된 검사 미수행의 허위 PASS 금지는 유지한다.
+- HIGH_DYNAMIC CREATE도 `CREATE_CURRENT.md` §0에 따라 기존 미완료 자기 claim 회수→학생 제작→READY_R1 실제 remote readback→다음 입력 연속 처리한다. 두 역할의 복구가 겹치면 실제 점유 writer가 우선이며, 다른 역할은 다른 미완료 인계로 진행한다. 이 특별계약은 사용자 승인 없는 다른 캠페인·R1/R2/R3 원래 시간표/기본 exam-per-run 조건에는 확장하지 않는다.
 
 ### 2.2 DOC_READ_RECEIPT 실제 본문 열람 증빙
 
@@ -67,7 +73,7 @@ operationalBoundary: 문서 저장 ≠ 실제 예약 프롬프트 갱신 ≠ 검
 
 ## 3. 역할 파일 5개 — 복사/수정은 여기서 시작
 
-- [MASTER_CURRENT.md](MASTER_CURRENT.md): 신규 동적 인테이크 배정 + 기존 못 닫은 qid 핀포인트 수리 + 문서열람/미완 책임 추적. 캠페인 고정 roster의 MASTER는 신규 수집 임무를 자동 부여하지 않는다.
+- [MASTER_CURRENT.md](MASTER_CURRENT.md): 동적 인테이크 배정 **최우선** + HIGH_DYNAMIC CREATE→R1→R2→R3→감독 GPT 전 구간 인계 마감 직접 복구 + 후순위 qid 핀포인트 수리·책임 추적. 캠페인 고정 roster의 MASTER는 신규 수집 임무를 자동 부여하지 않는다.
 - [CREATE_CURRENT.md](CREATE_CURRENT.md): 원본 faithful 제작·작은칠판 초안·정밀 메타·source-only/blind 입력.
 - [R1_CURRENT.md](R1_CURRENT.md): source-only 독립 풀이/먼저 freeze, stored 답 비교 뒤 설명·정밀 Meta 직접 보강.
 - [R2_CURRENT.md](R2_CURRENT.md): 전 qid 설명 적극 심화·전 qid 정밀 Meta 독립 재검, R1 freeze 반복 금지.
