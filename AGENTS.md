@@ -1,3 +1,10 @@
+## CURRENT TOP — 명시적 MAIN 운영병합은 CI 후속 수리와 분리 (2026-10-18, user-directed)
+
+- 사용자가 시험지/산출물의 `main` 운영병합을 지시하면 **인가된 출고 담당 GPT Work/Codex/ROOT는 병합부터 실행한다.** `CI` pending/fail/not_run이나 무관한 오래된 테스트 실패를 선행 승인·중단 게이트로 해석하지 않는다. GitHub가 허용하는 PR 병합을 CI 완료 전에 시도하고 실제 원격 main SHA 및 파일을 readback한다.
+- **CI 결과와 병합은 독립 장부**: `GIT_MAIN_MERGED`는 실제 병합만 뜻하며 CI/Pages/학생 배포 PASS를 뜻하지 않는다. CI 오류는 `CI_DEFERRED/CI_FAIL_FOLLOWUP`으로 사실대로 남기고 **사용자가 따로 지시하기 전에는 CI 수리·공통 도구/워크플로 수정·재검수·게이트 완화를 하지 않는다.**
+- branch protection/required checks가 실제 GitHub 병합 API를 거절하면 강제 push나 보호 해제는 금지하며, PR·정확한 오류를 남긴다. 기존 시험지의 정답/필수 자산 실제 결함도 거짓 PASS로 우회하지 않고 해당 대상만 분리한다. 예약 CREATE/R1/R2/R3 Git writer 금지는 유지한다.
+- **공통 실행 정본:** [Archive MAIN_FIRST / CI_DEFERRED](docs/operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md). 명시적 “main 병합만”은 전체 학생 사이트 배포 및 콘텐츠 재검수 지시가 아니다.
+
 ## CURRENT HARD — 모든 GPT 예약라인 프롬프트 개설·수정 공용 정본 (2026-10-17 / v1.0.0)
 
 - 모든 신규·재설정 JS Archive GPT 예약(MASTER / CREATE / R1 / R2 / R3)은 **[예약라인 프롬프트 공용 CURRENT 정본](docs/rules/02_PIPELINES/gpt-reservation/README_CURRENT.md)**과 같은 디렉터리의 정확한 역할 파일을 실제 본문으로 읽고 캠페인별 manifest·원본·Library·스케줄·ON/OFF 값을 바인딩하여 만든다. 현재 캠페인 HIGH_DYNAMIC만의 시간·원본 ID·학교명은 타 캠페인으로 복사하지 않는다.
