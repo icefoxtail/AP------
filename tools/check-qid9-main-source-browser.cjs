@@ -6,7 +6,12 @@ const spec=JSON.parse(fs.readFileSync(path.join(root,'archive/data/generated-sou
 const first=spec.roots[Number(process.env.QID9_SOURCE_ROOT_INDEX||0)],firstJson=JSON.parse(fs.readFileSync(path.join(root,first.directory,'GPT_QID9_Q01_CREATE_DRAFT.json'),'utf8'));
 const prefix=firstJson.questions[0].uid.replace(/Q\d{2}-[ABC][123]$/,'');
 const expectedCount=first.expectedUidCount,qidCount=first.expectedSourceQidCount;
-const sampleUid=prefix+'Q'+String(Number(process.env.QID9_SAMPLE_QID||qidCount-2)).padStart(2,'0')+'-A1';
+const sampleQid=Number(process.env.QID9_SAMPLE_QID||qidCount-2),sampleQidText=String(sampleQid).padStart(2,'0');
+const sampleUid=prefix+'Q'+sampleQidText+'-A1';
+const samplePackage=JSON.parse(fs.readFileSync(path.join(root,first.directory,`GPT_QID9_Q${sampleQidText}_CREATE_DRAFT.json`),'utf8'));
+const sampleQuestion=samplePackage.questions.find(q=>q.uid===sampleUid);
+if(!sampleQuestion)throw Error(`QID9 source sample missing: ${sampleUid}`);
+const expectedChoiceCount=Array.isArray(sampleQuestion.choices)?sampleQuestion.choices.length:0;
 const school=firstJson.source.examTitle.split('_')[1];
 
 async function main(){
@@ -44,7 +49,7 @@ async function main(){
   if(!search.text.includes(school)||!search.text.includes(sampleUid)||!search.text.includes('기술 상태: READY'))throw Error('Search result not operational '+JSON.stringify(search));
   await evaluate("document.querySelector('#generated-results article button').click()");await wait(`document.querySelector('#generated-preview')?.innerText.includes(${JSON.stringify(sampleUid)})`,'problem preview');
   const problem=await evaluate("(()=>({choices:document.querySelectorAll('#generated-preview .choice').length,math:document.querySelectorAll('#generated-preview mjx-container').length,solutionButton:!!document.querySelector('#generated-preview .solution-preview')}))()");
-  if(problem.choices!==5||!problem.solutionButton)throw Error('Problem choices/solution controls missing '+JSON.stringify(problem));
+  if(problem.choices!==expectedChoiceCount||!problem.solutionButton)throw Error('Problem choices/solution controls missing '+JSON.stringify({...problem,expectedChoiceCount}));
   await send('Target.setDiscoverTargets',{discover:true});await evaluate("document.querySelector('#generated-preview .solution-preview').click()");
   let sol=null;for(let i=0;i<100;i++){const all=await send('Target.getTargets');sol=all.targetInfos.find(t=>t.type==='page'&&t.url.includes('mixed_engine.html')&&t.url.includes('mode=sol'));if(sol)break;await sleep(100);}if(!sol)throw Error('Archive2 sol output envelope did not open');
   const attached=await send('Target.attachToTarget',{targetId:sol.targetId,flatten:true});const session=attached.sessionId;
@@ -64,8 +69,9 @@ async function main(){
   let problemOutput=null;for(let i=0;i<120;i++){const all=await send('Target.getTargets');problemOutput=all.targetInfos.find(t=>t.type==='page'&&t.url.includes('mixed_engine.html')&&t.url.includes('mode=exam')&&t.url.includes('preview=1'));if(problemOutput)break;await sleep(100);}if(!problemOutput)throw Error('Archive2 selected problem output preview did not open');
   const problemAttached=await send('Target.attachToTarget',{targetId:problemOutput.targetId,flatten:true});const problemSession=problemAttached.sessionId;
   await wait("document.body?.innerText.includes('생성문제')",'selected problem output preview',problemSession);
-  const problemOutputView=await evaluate("(()=>({title:document.body.innerText.includes('생성문제'),choiceCount:document.querySelectorAll('.choices').length,questionText:document.body.innerText.includes('조건')}))()",problemSession);
-  if(!problemOutputView.title||!problemOutputView.choiceCount)throw Error('Selected output preview content missing '+JSON.stringify(problemOutputView));
+  const problemOutputView=await evaluate("(()=>({title:document.body.innerText.includes('생성문제'),choiceCount:document.querySelectorAll('.choices').length,answerBoxCount:document.querySelectorAll('.answer-box').length,questionText:document.body.innerText.includes('조건')}))()",problemSession);
+  const hasExpectedAnswerArea=expectedChoiceCount>0?problemOutputView.choiceCount>0:problemOutputView.answerBoxCount>0;
+  if(!problemOutputView.title||!hasExpectedAnswerArea)throw Error('Selected output preview content missing '+JSON.stringify({...problemOutputView,expectedChoiceCount}));
   await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});const mobile=await evaluate('document.documentElement.scrollWidth<=innerWidth');if(!mobile)throw Error('Mobile width horizontal overflow');
   console.log('QID9_SOURCE_CHROME_PASS '+JSON.stringify({searchUid:sampleUid,school,registered:roster.count,unique:roster.unique,perQid:9,problemChoices:problem.choices,mathRendered:problem.math>0,solutionSvgLoaded:solution.svgImages.some(x=>x.loaded),answerMode:answerTransition.mode,answerRequestId:request.outputRequestId,answerCells:answerTransition.answerCells,selectedProblemPreview:true,problemOutputView,mobileWidth:390,mobileOverflow:false}));
  }finally{if(ws)ws.close();proc.kill('SIGTERM');await new Promise(r=>server.close(r));try{fs.rmSync(temp,{recursive:true,force:true});}catch{}}
