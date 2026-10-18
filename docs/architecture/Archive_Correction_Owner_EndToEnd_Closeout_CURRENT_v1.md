@@ -1,3 +1,9 @@
+## CURRENT 사용자 지정 종료조건 오버라이드 — MAIN 먼저, CI는 별도 업무 (2026-10-18)
+
+사용자가 **`main 운영병합만` 또는 `CI 수리는 나중에 별도 지시`**라고 명시한 출고 작업에서는 Git main 병합 및 원격 파일/SHA 확인을 먼저 완료한다. CI running/fail/unexecuted는 Git 병합 여부를 좌우하는 새로운 품질 승인 게이트가 아니다. 해당 출고 담당은 CI 결함 수리·CI 검사 완화·공통 코드 개편·기존 시험지 전체 재검을 자동 추가하지 않는다. `GIT_MAIN_MERGED`, `CI_DEFERRED`, `studentDeploymentStatus`는 별도로 표기하고 학생 사이트 출시 PASS를 주장하지 않는다. 아래 전체 publication/Chrome 완료 규칙은 사용자가 등록·학생 배포까지 맡긴 별도 요청에 그대로 적용한다. GitHub가 병합을 기술적으로 거절하는 경우에는 플랫폼 오류만 정확히 기록하며 강제 push/보호 해제 금지.
+
+자세한 계약: [Archive MAIN_FIRST / CI_DEFERRED](../operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md)
+
 # Archive / ALIVE 수정 AI 책임·Meta 확장·출시 마감 규정 — CURRENT v1.0
 
 > 2026-10-09 원장 직접 지시. JS Archive·ALIVE Generated·문제은행의 제작/검수/수정/출판 담당 GPT 및 Codex 운영 실행자에게 적용. 이 문서는 **품질 추가 승인 단계가 아니라 기존 사용자 지시의 실행 책임·완료조건**을 고정한다. 사용자 최신 명시 지시가 최우선이다.

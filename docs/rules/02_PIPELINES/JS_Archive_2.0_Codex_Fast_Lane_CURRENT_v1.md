@@ -1,3 +1,9 @@
+## CURRENT OVERRIDE — 병합 우선 / CI 수리 후속 분리 (2026-10-18)
+
+사용자가 Git `main` 운영병합을 명시하면 인가된 출고 담당은 정해진 프로덕션 JS/필수 에셋만 병합하고 원격 SHA를 확인한다. 기존 CI 실패, 실행 중, 미실행은 **병합 중단 사유가 아니며 CI PASS를 기다리지 않는다**. CI 수정·공통 검사기/테스트/워크플로 수정은 사용자 별도 지시까지 하지 않는다. `GIT_MAIN_MERGED` / `CI_DEFERRED` / `DEPLOY_NOT_VERIFIED`를 별도 표기한다. 실제 GitHub 보호 규칙으로 병합이 거절되면 강제 push/보호 해제 없이 정확한 platform error를 보고한다. 본문의 원래 단계별 수학 품질 게이트 자체를 바꾸는 지시는 아니다.
+
+정본: [Archive MAIN_FIRST / CI_DEFERRED](../../operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md)
+
 # JS Archive Codex Fast Lane v1
 
 status: CURRENT / CODEX DEFAULT
