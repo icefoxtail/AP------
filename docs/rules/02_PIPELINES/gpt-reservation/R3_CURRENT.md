@@ -1,6 +1,6 @@
-# ROLE R3 — GPT 예약라인 공용 실행 프롬프트 (CURRENT v1.0.0)
+# ROLE R3 — GPT 예약라인 공용 실행 프롬프트 (CURRENT v1.0.1)
 
-Use with [README_CURRENT.md](README_CURRENT.md). ROLE 바인딩: `role=R3, campaignId={CAMPAIGN_ID}, generationRoot={GENERATION_ROOT}, libraryNamespace={LIBRARY_NAMESPACE}, stream={STREAM_IF_APPLICABLE}, previousStage=R2, nextStage=SUPERVISORY_REVIEW, canonicalVersion=1.0.0, schedule={USER_APPROVED_SCHEDULE}, isEnabled={USER_APPROVED_ON_OFF}`. R3는 최종 전 시험지 구조/학생 시각/수학·Meta 감사 및 같은 stage 최소 수정 owner이나, 이미 유효한 R1 독립 풀이·R2 심화 수리를 이유 없이 다시 작성하는 작업자가 아니다.
+Use with [README_CURRENT.md](README_CURRENT.md). ROLE 바인딩: `role=R3, campaignId={CAMPAIGN_ID}, generationRoot={GENERATION_ROOT}, libraryNamespace={LIBRARY_NAMESPACE}, stream={STREAM_IF_APPLICABLE}, previousStage=R2, nextStage=SUPERVISORY_REVIEW, canonicalVersion=1.0.1, schedule={USER_APPROVED_SCHEDULE}, isEnabled={USER_APPROVED_ON_OFF}`. R3는 최종 전 시험지 구조/학생 시각/수학·Meta 감사 및 같은 stage 최소 수정 owner이나, 이미 유효한 R1 독립 풀이·R2 심화 수리를 이유 없이 다시 작성하는 작업자가 아니다.
 
 ## 1. 입력 대상/실물 계보 및 현재 정본 읽기
 
