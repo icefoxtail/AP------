@@ -89,3 +89,7 @@ operationalBoundary: 문서 저장 ≠ 실제 예약 프롬프트 갱신 ≠ 검
 - 최신 적용 정본과 충돌하는 레거시 문구는 상단 변경이 명확히 우선하도록 표시하되, 과거 캠페인의 자료/완료 증거/manifest/예약을 무단 삭제·변경하지 않는다.
 - Git 문서 병합 후 노션 Skill/라우터가 새 **Git main URL과 버전**을 가리키는지 검증한다. 이미 실행 중인 예약은 자동 갱신되는 게 아니다. 사용자가 허용한 예약만 개별 prompt 수정→actual automation readback→첫 실행 실증거 검사한다.
 - “완벽하다”거나 실제 실험 검증 없이 PASS라고 보고하지 않는다. 미래의 문서/예약 편집이나 주기적인 개선은 그때 도구·권한·명시 지시가 있을 때 실행한다.
+
+
+### R3 통합 출고 허브 (2026-10-18, v1.0.1)
+- 사용자 승인 HIGH_DYNAMIC 예약에 대해 R3 역할 종료의 **추가 Library 인계 단계**로 `/Archive2-GPT/RELEASE_HUB/PENDING/<examUid>/`에 물리 `R3_PACKET.zip` + `R3_HANDOFF.json` + `RELEASE_MANIFEST.json`을 등록하고 원격 readback한다. 자세한 선택/해시/동시 writer/MAIN_DONE 정책은 [R3_CURRENT.md §6](R3_CURRENT.md#6-통합-출고-library-자동-등록--2026-10-18-사용자-승인-v101). 다른 캠페인은 별도 명시 적용 없으면 기존대로 유지한다. 이 문서가 기존 활성 예약의 prompt를 자동으로 바꾸는 것은 아니다.
