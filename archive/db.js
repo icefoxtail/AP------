@@ -18700,6 +18700,37 @@ window.mainDB = {
       "primaryStandardCourse": "중1 수학"
     },
     {
+      "file": "original/middle/m2/2mid/21_이수중_2학기_중간_중2_수학.js",
+      "school": "이수중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2021,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 26,
+      "rangeStartUnitKey": "M2-04",
+      "rangeStartUnit": "일차함수와 그래프",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "M2-05",
+      "rangeEndUnit": "도형의 성질",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-04",
+          "rangeStartUnit": "일차함수와 그래프",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "M2-05",
+          "rangeEndUnit": "도형의 성질",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
       "file": "original/middle/m2/1final/21_팔마중_1학기_기말_중2_수학.js",
       "school": "팔마중",
       "topic": "",
