@@ -45,7 +45,7 @@ for(const entry of spec.roots){
   qids.add(qid);
   const student=[];
   for(const [i,item] of doc.questions.entries()){
-   if(!item||!/^ALITE-[A-Z0-9-]+-Q\d{2}-[ABC][123]$/.test(item.uid||'')||item.sourceQid!==qid||!item.content||!item.solution||(!Array.isArray(item.choices)||(item.questionType==='서술형'?item.choices.length!==0:item.choices.length!==5))||!item.answer)throw Error('QID9_ITEM_INVALID:'+name+':'+i);
+   if(!item||!/^(?:ALITE|ALIVE)-[A-Z0-9-]+-Q\d{2}-[ABC][123]$/.test(item.uid||'')||item.sourceQid!==qid||!item.content||!item.solution||(!Array.isArray(item.choices)||(item.questionType==='서술형'?item.choices.length!==0:item.choices.length!==5))||!item.answer)throw Error('QID9_ITEM_INVALID:'+name+':'+i);
    if(seen.has(item.uid))throw Error('QID9_DUPLICATE_UID:'+item.uid);seen.add(item.uid);
    if(item.provenance?.sourceOriginalGitBlobSha&&item.provenance.sourceOriginalGitBlobSha!==originalSha)throw Error('QID9_PROVENANCE_DRIFT:'+item.uid);
    const copy=structuredClone(item);
