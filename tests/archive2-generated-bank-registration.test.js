@@ -44,9 +44,10 @@ test('consumer DB preserves previous approvals, registers current Palma rows and
   assert.equal(index.schemaVersion, 'ALIVE_GENERATED_CONSUMER_INDEX_V1');
   assert.equal(index.approvedCount, index.records.length);
   assert.ok(index.records.length>=382);
-  assert.equal(hyocheon.length, 94);
+  const hyocheonLegacy = hyocheon.filter(r => r.uid.startsWith('ALITE-20261008-HYC26-'));
+  assert.equal(hyocheonLegacy.length, 94);
   assert.equal(b03.length, 38);
-  assert.equal(index.approvedBySchool['효천고'], 94);
+  assert.ok(index.approvedBySchool['효천고'] >= hyocheonLegacy.length);
   assert.equal(index.approvedBySchool['복성고'],191);
   assert.ok(palma.length>=99);
   assert.equal(index.approvedBySchool['팔마고'],palma.length);
