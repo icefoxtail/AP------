@@ -2,6 +2,18 @@
 
 **현재 대표 문서:** [README_CURRENT.md](README_CURRENT.md). 파일은 CURRENT 고정 경로이고, 역사적 각 버전은 Git commit/blob SHA로 추적한다. 수정 전 항상 Notion 라우터/예약 CURRENT/Git main 정본을 다시 읽는다. 이 파일은 실제 예약 변경 영수증이나 실험 실행 증거를 대신하지 않는다.
 
+## v1.2.0 — 2026-10-18: HIGH MASTER 신규 배정 최우선 + 전 단계 실물 인계 연결 책임
+
+### 사용자 시정
+- 기존 MASTER 실물 예약은 신규 배정→R1/R2/R3 일반 qid 수리를 우선했으며, CREATE→R1뿐 아니라 **R1→R2, R2→R3, R3→감독 GPT**의 누락 인계·오래된 checkpoint를 본인이 직접 회수해 복구하는 의무가 충분하지 않았다. 한 회차 1시험지 제한과 단일 결함 선점 때문에 연결 공급이 장시간 굶을 수 있음.
+- 사용자가 우선순위 확정: **신규 배정 최우선 → 각 stage의 미완료 인계 전부 연결/직접 수리 → 나머지 일반 qid 품질/증거 감사**. 한 단계만 완료/보고하고 회차 종료 금지.
+
+### 구현
+- `MASTER_CURRENT.md` §0 동적 MASTER `ASSIGN→RECONCILE_ALL_TRANSITIONS→DIRECT_REPAIR_AND_HANDOFF→NEXT` 연속 루프 추가. Library source + artifact SHA/readback, stage별 READY receipt/ZIP, 원 owner 추적, stale CLAIM 우선 복구, 활성 writer 우회 및 다음 eligible 회전.
+- MASTER 본인이 인계 요건의 빈 부분을 직접 제작/수리하되 유효한 R1 블라인드 freeze/이미 검증한 해설·Meta 보존. MASTER가 답을 본 상태에서 신규 R1 blind 수행했다고 주장하지 않으며 실제 R1이 해야 할 독립 작업은 입력을 바로 사용 가능한 상태로 복원. ROUTED≠PASS, Golden/Meta/검증 품질·출고 승인 경계 불변.
+- `README_CURRENT.md`에 해당 HIGH 캠페인 MASTER 역할 오버라이드 명시. 이 캠페인 CREATE v1.1 연속 루프와 병행하되 타 writer 중복 금지. 다른 캠페인/R1·R2·R3 설정 불변.
+- 실제 MASTER 예약 프롬프트 수정 성공/원래 매시 :48 ON/RRULE readback과 향후 Library 인계의 첫 실증 검증은 **별도** 기록. 문서 변경 자체는 운영 성공 증거가 아니다.
+
 ## v1.1.0 — 2026-10-18: HIGH 동적 CREATE 연속 루프 및 orphan claim 복구
 
 ### 재현 근거
