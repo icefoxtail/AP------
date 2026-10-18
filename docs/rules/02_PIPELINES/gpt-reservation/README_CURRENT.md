@@ -1,7 +1,7 @@
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — CURRENT
 
 status: CURRENT / CANONICAL COPY SOURCE / 모든 신규·재설정 Archive GPT 예약 공통
-version: 1.0.0
+version: 1.1.0
 released: 2026-10-17
 canonicalRoot: docs/rules/02_PIPELINES/gpt-reservation/
 scope: GPT Scheduled / MASTER, CREATE, R1, R2, R3 / 신규 캠페인·기존 예약의 명시적 업그레이드
@@ -35,7 +35,7 @@ operationalBoundary: 문서 저장 ≠ 실제 예약 프롬프트 갱신 ≠ 검
 | `{MAX_EXAMS_PER_RUN}` · `{CLAIM_METHOD}` | 예약 처리 범위와 중복 writer 방지. 표준 예시 1시험지/회차, **문항 수정 개수에는 cap 없음** |
 | `{CLOSURE_BOUNDARY}` | 실제 기술 executor와 중간 Git/출판 허용 범위. 기본 예약 5레인은 Library만 수정, Git read 허용, production/main 쓰기 금지 |
 
-조립한 프롬프트 상단에는 `canonicalPromptRoot`, `canonicalVersion=1.0.0`, `canonicalGitMainSha`, `canonicalRolePath`, `canonicalRoleBlobSha`, `campaignManifestIdentity`를 고정한다. 런타임 자체에서 매회 CURRENT로 다시 조회하고 상위 변경이 발견되면 사용자 지시와 충돌 없는 범위에서 즉시 반영하며, 예약의 물리 prompt 갱신은 승인·쓰기 성공·재조회가 있어야만 완료라고 한다. 프롬프트 안에 `{...}` 미해결 변수가 남으면 개설 실패/미완성.
+조립한 프롬프트 상단에는 `canonicalPromptRoot`, `canonicalVersion=1.1.0`, `canonicalGitMainSha`, `canonicalRolePath`, `canonicalRoleBlobSha`, `campaignManifestIdentity`를 고정한다. 런타임 자체에서 매회 CURRENT로 다시 조회하고 상위 변경이 발견되면 사용자 지시와 충돌 없는 범위에서 즉시 반영하며, 예약의 물리 prompt 갱신은 승인·쓰기 성공·재조회가 있어야만 완료라고 한다. 프롬프트 안에 `{...}` 미해결 변수가 남으면 개설 실패/미완성.
 
 ## 2. 공통 예약 실행 블록 — 역할 파일과 함께 그대로 적용
 
@@ -44,7 +44,7 @@ operationalBoundary: 문서 저장 ≠ 실제 예약 프롬프트 갱신 ≠ 검
 - 매회 **자기 캠페인의 Library 최신 물리 입력**과 누적 ledger를 확인한다. `examUid + artifact file ID + revision 또는 bytes SHA256 + stage + campaign`로 이전 stage 최신 완료 여부, 동일 stage 기처리, 다른 worker 점유를 검증한다. frozen roster는 자기 stream만; 동적 캠페인은 MASTER가 실제 배정한 `READY_CREATE`만. 이미 main에 출시된 동일본/다른 캠페인/유효 완료 stage 중복 처리 금지.
 - 할 입력이 없으면 `NO_INPUT`과 실조회 분모를, 도구·Notion·Git·Drive·Library가 실패하면 `INFRA_RETRY`와 실제 error/재시도 위치를 남기고 **그 회차만 종료**한다. 사용자의 별도 활성/정지 지시 없이 예약 자체를 OFF/disable/delete하거나 타 예약 일정을 바꾸지 않는다.
 - 동일 stage 실수정 writer는 하나. 다른 writer가 수정 중이면 원본이나 ledger를 덮어쓰지 않고 SKIP/다른 eligible 또는 다음 회차로.
-- 한 회차 실질 수정 시험지는 기본 최대 하나. 시험지 내 qid 및 설명·SVG·Meta 수리 개수/길이에 인위적인 cap 없음. 시간이 부족하면 동일 stage checkpoint + firstMissingStep를 실제 Library에 저장한 뒤 다음 회차 재개한다.
+- 일반 캠페인은 한 회차 실질 수정 시험지 기본 최대 하나이며 각 시험지 내 qid/해설/SVG/Meta cap은 없다. **단, 사용자가 명시적으로 승인한 `HIGH_DYNAMIC_INTAKE_20261017` CREATE는 `CREATE_CURRENT.md` §0의 `CONTINUOUS_RECOVER_CREATE_HANDOFF`에 따라 이 기본 1시험지 상한을 적용하지 않는다.** 매 회차 오래된 CREATE claim/checkpoint를 먼저 회수 → 한 시험지의 실제 `READY_R1` remote readback까지 마감 → 즉시 다음 READY_CREATE를 연속 처리한다. 한 시험지 종료가 회차 종료는 아니다. 시간/도구 한계에서는 실제 산출물·완료 범위·firstMissingStep를 Library에 저장/readback하여 다음 회차 최우선 재개하고, 다른 안전한 대기 시험지가 있으면 가능한 범위에서 계속 처리한다. 다른 역할·캠페인 한도/ON/OFF/RRULE은 불변.
 
 ### 2.2 DOC_READ_RECEIPT 실제 본문 열람 증빙
 
