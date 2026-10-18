@@ -16,6 +16,26 @@ test('prefixed SVG must bind its own namespace and close its matching root',()=>
 const normalizeQid9Svg=require('../archive/tools/generated-meta/normalize-qid9-svg.cjs');
 const {validateSvgStudentLanguage}=require('../archive/tools/svg-language-contract.cjs');
 
+test('QID9 accessibility normalization ignores RDF dc:title metadata in the live blocked source',()=>{
+ const sourcePath=require('node:path').join(__dirname,'../alive/06_EXECUTION/H1_SCHOOL_EXPANSION/2025/25_효천고_2학기_기말_고1/assets/q20-B3-solution.svg');
+ const source=fs.readFileSync(sourcePath,'utf8');
+ assert.match(source,/<dc:title>/);
+ const normalized=normalizeQid9Svg(source,'ALIVE-2025-HYOCHEON-H1-2FINAL-Q20-B3');
+ assert.match(normalized,/<title id=/);
+ assert.match(normalized,/<desc id=/);
+ assert.match(normalized,/<dc:title>Matplotlib v3\.10\.8, https:\/\/matplotlib\.org\/<\/dc:title>/);
+});
+
+test('QID9 normalization counts accessibility tags only in the SVG root namespace',()=>{
+ const prefixed='<s:svg xmlns:s="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>metadata</dc:title><s:title>Diagram</s:title><s:desc>Student description.</s:desc><s:path d="M0 0"/></s:svg>';
+ const normalized=normalizeQid9Svg(prefixed,'ALITE-TEST-Q02-A1');
+ assert.match(normalized,/<dc:title>metadata<\/dc:title>/);
+ assert.match(normalized,/<s:title id="qid9-ALITE-TEST-Q02-A1-title">Diagram<\/s:title>/);
+ assert.match(normalized,/<s:desc id="qid9-ALITE-TEST-Q02-A1-desc">Student description\.<\/s:desc>/);
+ assert.match(normalized,/<s:svg[^>]*role="img"[^>]*aria-labelledby="qid9-ALITE-TEST-Q02-A1-title qid9-ALITE-TEST-Q02-A1-desc"/);
+ assert.throws(()=>normalizeQid9Svg(prefixed.replace('</s:desc>','</s:desc><s:title>Duplicate</s:title>'),'ALITE-TEST-Q02-A1'),/QID9_SVG_ACCESSIBILITY_TITLE_DESC_REQUIRED/);
+});
+
 test('QID9 derived SVG receives deterministic title and description bindings without changing artwork',()=>{
  const source='<svg xmlns="http://www.w3.org/2000/svg" width="390" height="290" role="img" aria-label="원 밖의 점에서 그은 두 접선"><title>q07 A1 두 접선과 접점</title><desc>외부점 P에서 원의 접점 T1 T2까지 그은 두 접선, 중심 C와 접점의 반지름 및 수직 관계</desc><rect width="390" height="290" fill="white"/><path d="M1 2L3 4"/></svg>';
  const normalized=normalizeQid9Svg(source,'ALITE-JEIL25-2FINAL-Q07-A1-solution');

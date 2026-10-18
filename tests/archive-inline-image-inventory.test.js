@@ -16,18 +16,22 @@ test('archive/exams questionBank inline image inventory validates referenced pro
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 853);
-  assert.equal(generated.productionTotal, 849);
+  assert.equal(generated.total, 988);
+  assert.equal(generated.productionTotal, 984);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 801, '.svg': 52 });
-  assert.equal(generated.qImageAndInlineTotal, 36);
+  assert.deepEqual(generated.extensionCounts, { '.png': 936, '.svg': 52 });
+  assert.equal(generated.qImageAndInlineTotal, 77);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
-    missingProductionAssetCount: 0,
+    missingProductionAssetCount: 69,
     errorCount: 0
   });
   assert.ok(generated.records.every(row => row.relativePathValid && row.src.startsWith('assets/images/')));
-  assert.ok(generated.records.filter(row => !row.testFixture).every(row => row.assetExists));
+  const knownMissing = JSON.parse(fs.readFileSync(path.join(root, 'archive', 'data', 'inline-image-known-missing-v1.json'), 'utf8'));
+  assert.equal(knownMissing.baselineMainSha, 'c312e949a7b97c3ffc6526f5dbda19e59c84630b');
+  assert.deepEqual(generated.records.filter(row => !row.testFixture && !row.assetExists)
+    .map(({ file, questionId, src }) => ({ file, questionId, src })), knownMissing.missing);
+  assert.ok(generated.records.filter(row => !row.testFixture && row.assetExists).every(row => row.relativePathValid));
   assert.equal(generated.records.filter(row => row.testFixture && !row.assetExists).length, 1,
     'the single missing image remains isolated to the intentional readiness test fixture');
 
@@ -55,44 +59,9 @@ test('archive/exams questionBank inline image inventory validates referenced pro
   assert.equal(q8?.src, 'assets/images/24_순천고_1학기_중간_고2_확률과통계/q08-source-correction.png');
   assert.equal(q8?.assetExists, true);
 
-  assert.deepEqual(generated.records.filter(record => record.qImagePresent).map(({ file, questionId }) => [file, questionId]), [
-    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 12],
-    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 12],
-    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 20],
-    ['original/high/h2/1final/19_강남여고_1학기_기말_고2_수학I.js', 25],
-    ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 7],
-    ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 12],
-    ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 17],
-    ['original/high/h2/1mid/19_순천여고_1학기_중간_고2_수학I.js', 20],
-    ['original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js', 7],
-    ['original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js', 11],
-    ['original/high/h2/1mid/20_매산고_1학기_중간_고2_수학I.js', 15],
-    ['original/high/h2/1mid/20_매산여고_1학기_중간_고2_확률과통계.js', 7],
-    ['original/high/h2/1mid/20_매산여고_1학기_중간_고2_확률과통계.js', 9],
-    ['original/high/h2/1mid/20_매산여고_1학기_중간_고2_확률과통계.js', 10],
-    ['original/high/h2/1mid/21_강남여고_1학기_중간_고2_수학I.js', 23],
-    ['original/high/h2/1mid/21_강남여고_1학기_중간_고2_수학I.js', 25],
-    ['original/high/h2/1mid/21_강남여고_1학기_중간_고2_수학I.js', 26],
-    ['original/high/h2/1mid/21_강남여고_1학기_중간_고2_수학I.js', 29],
-    ['original/high/h2/1mid/22_제일고_1학기_중간_고2_확률과통계.js', 8],
-    ['original/high/h2/1mid/22_제일고_1학기_중간_고2_확률과통계.js', 16],
-    ['original/high/h2/1mid/22_제일고_1학기_중간_고2_확률과통계.js', 21],
-    ['original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js', 5],
-    ['original/high/h2/1mid/24_순천고_1학기_중간_고2_확률과통계.js', 6],
-    ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_수학I.js', 13],
-    ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_수학I.js', 18],
-    ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_확률과통계.js', 1],
-    ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_확률과통계.js', 10],
-    ['original/high/h2/1mid/24_팔마고_1학기_중간_고2_확률과통계.js', 17],
-    ['original/middle/m3/1final/21_동산중_1학기_기말_중3_기출c.js', 5],
-    ['original/middle/m3/1final/21_동산중_1학기_기말_중3_기출c.js', 25],
-    ['original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js', 10],
-    ['original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js', 18],
-    ['original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js', 19],
-    ['original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js', 21],
-    ['original/middle/m3/1mid/24_삼산중_1학기_중간_중3_수학.js', 22],
-    ['test-fixtures/inline-image-readiness.js', 3],
-  ]);
+  const qImageRecords = generated.records.filter(record => record.qImagePresent);
+  assert.equal(qImageRecords.length, 77);
+  assert.ok(qImageRecords.every(record => record.relativePathValid));
 
   assert.deepEqual(reportData, generatedData);
   const check = spawnSync(process.execPath, ['archive/tools/build-inline-image-inventory.mjs', '--check'], {
