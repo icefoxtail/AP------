@@ -25,6 +25,12 @@ test('student SVG language contract accepts namespace-prefixed nodes and separat
   assert.equal(result.status, 'PASS', JSON.stringify(result.errors));
 });
 
+test('student SVG language contract ignores RDF title metadata when counting SVG title elements', () => {
+  const source = svg('<metadata><dc:title xmlns:dc="http://purl.org/dc/elements/1.1/">Matplotlib chart</dc:title></metadata>');
+  const result = validateSvgStudentLanguage(source);
+  assert.equal(result.status, 'PASS', JSON.stringify(result.errors));
+});
+
 test('student SVG language contract preserves variable products, integral notation, and point/subscript identifiers', () => {
   const result = validateSvgStudentLanguage(svg('<text>f(x)=Ax^3+Bx^2+Cx+D; ab=uv; nm=3; ∫0^4 f(x)dx; Int0ˣ t(x-t)dt; dx[(x-2)f(x)]; 2x]{f(t)-|f(t)|}dt; 3](x-t)|x-t|dt에; Apr Bpr Cp Tx Ty OCmax OCmin xA yA xCD yCD</text>'));
   assert.equal(result.status, 'PASS', JSON.stringify(result.errors));
