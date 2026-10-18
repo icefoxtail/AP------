@@ -1,6 +1,6 @@
 # ROLE CREATE — GPT 예약라인 공용 실행 프롬프트 (CURRENT v1.1.0)
 
-Use with [README_CURRENT.md](README_CURRENT.md). 단독 배포 금지. 결속 변수: `role=CREATE, campaignId={CAMPAIGN_ID}, generationRoot={GENERATION_ROOT}, assignmentSource={ASSIGNMENT_SOURCE}, sourceAuthority={SOURCE_AUTHORITY}, libraryNamespace={LIBRARY_NAMESPACE}, stream={STREAM_IF_APPLICABLE}, campaignManifest={CAMPAIGN_MANIFEST_IF_APPLICABLE}, canonicalVersion=1.0.0, schedule={USER_APPROVED_SCHEDULE}, isEnabled={USER_APPROVED_ON_OFF}`. 미확정 변수 방치 금지. 품질·Meta/교육과정/Golden 공통 블록을 생략하지 않는다.
+Use with [README_CURRENT.md](README_CURRENT.md). 단독 배포 금지. 결속 변수: `role=CREATE, campaignId={CAMPAIGN_ID}, generationRoot={GENERATION_ROOT}, assignmentSource={ASSIGNMENT_SOURCE}, sourceAuthority={SOURCE_AUTHORITY}, libraryNamespace={LIBRARY_NAMESPACE}, stream={STREAM_IF_APPLICABLE}, campaignManifest={CAMPAIGN_MANIFEST_IF_APPLICABLE}, canonicalVersion=1.1.0, schedule={USER_APPROVED_SCHEDULE}, isEnabled={USER_APPROVED_ON_OFF}`. 미확정 변수 방치 금지. 품질·Meta/교육과정/Golden 공통 블록을 생략하지 않는다.
 
 ## 0. 동적 연속 CREATE 루프 — HIGH_DYNAMIC 사용자 명시 오버라이드 (2026-10-18)
 
