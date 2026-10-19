@@ -2,6 +2,13 @@
 
 **현재 대표 문서:** [README_CURRENT.md](README_CURRENT.md). 파일은 CURRENT 고정 경로이고, 역사적 각 버전은 Git commit/blob SHA로 추적한다. 수정 전 항상 Notion 라우터/예약 CURRENT/Git main 정본을 다시 읽는다. 이 파일은 실제 예약 변경 영수증이나 실험 실행 증거를 대신하지 않는다.
 
+## HIGH_DYNAMIC R1 v1.1 — 2026-10-19: 연속 R1 수납·컨테이너 세션 오류 복구
+
+- 원인: CREATE는 다건 연속으로 `READY_R1` 인계할 수 있는데 R1은 매 회차 한 시험지만 처리. `20_제일고_1학기_기말_고2_확률과통계` R1은 source-only 22/22 로컬 풀이 후 Library 업로드에서 `container_session_unavailable`로 원격 freeze 미생성. 실제 답 비교/Meta/Golden/R2 인계는 미실행이며 R1 품질 PASS 아님.
+- 최소 변경: **HIGH_DYNAMIC R1에 한정** 1건 cap 해제, 최신 READY_R1/active writer 실물 대조와 orphan-first 반복 소비, 비싼 독립풀이 전 업로드 preflight, 이전 세션 경로 재사용 금지/실제 참조만 사용, 기존 동결본이 사라졌을 때 false freeze 금지, 개별 INFRA_RETRY 후 다른 backlog 수납 지속.
+- 유지: Notion/Git 실제 필독·DOC_READ_RECEIPT, R1 blind, 전 qid 작은칠판/정밀 Meta, Golden/Negative·품질 진실성, READY_R2 비차단, 5레인 ON/시각, 예약 Git writer 금지. 업데이트한 실제 R1 예약과 이 Git 문서 변경을 별도 확인한다. 적체 0 또는 성공률 100%를 주장하지 않는다.
+- 수정 범위: R1_CURRENT.md / README_CURRENT.md / CHANGELOG.md. 신규 시험지·기존 정답·학생 JS/이미지 변경 0.
+
 ## v1.0.0 — 2026-10-17: 5개 예약 통합 최초 공용판
 
 ### 트리거 / 확인한 회귀 사례
