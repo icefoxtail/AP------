@@ -832,6 +832,54 @@ function clinicPrintAssessmentQuestionStatusLabel(status) {
     return ({ correct: '정답', wrong: '오답', partial: '부분 채점', unchecked: '미채점', unresolved: '미확인' })[String(status || '')] || '미확인';
 }
 
+function clinicPrintRenderFollowUpContext(student = {}) {
+    const context = student?.followUpContext;
+    if (!context || typeof context !== 'object' || !context.coverage || typeof context.coverage !== 'object') {
+        return '<div style="color:var(--secondary);margin-top:3px;">후속 유형 근거를 확인할 수 없습니다.</div>';
+    }
+    const coverage = context.coverage;
+    const status = String(context.status || coverage.attemptStatus || '').toLowerCase();
+    const groups = Array.isArray(context.confirmedWrongByMeta) ? context.confirmedWrongByMeta : [];
+    const count = value => Number.isFinite(Number(value)) && Number(value) >= 0 ? Number(value) : 0;
+    const coverageLine = [
+        `배정 문항 ${count(coverage.questionCount)}`,
+        `정답 ${count(coverage.correctCount)}`,
+        `오답 ${count(coverage.wrongCount)}`,
+        `미분류 ${count(coverage.unclassifiedCount)}`,
+        `부분·미채점 ${count(coverage.partialCount)}`,
+        `미확인 ${count(coverage.unresolvedCount)}`
+    ].join(' · ');
+    const evidenceNotes = [
+        count(coverage.missingSnapshotCount) ? `동결 문항 스냅샷 누락 ${count(coverage.missingSnapshotCount)}개` : '',
+        count(coverage.unresolvedSnapshotCount) ? `동결 문항 스냅샷 미확정 ${count(coverage.unresolvedSnapshotCount)}개` : '',
+        count(coverage.unresolvedIdentityCount) ? `문항 identity 미확인 ${count(coverage.unresolvedIdentityCount)}개` : '',
+        count(coverage.missingPathCount) ? `정본 유형 경로 미확인 ${count(coverage.missingPathCount)}개` : '',
+        count(coverage.missingBucketCount) ? `난이도 미확인 ${count(coverage.missingBucketCount)}개` : '',
+        coverage.metaCoverageStatus === 'partial' ? '정본 유형 분류 일부 확인' : '',
+        coverage.metaCoverageStatus === 'unresolved' ? '정본 유형 분류 확인 불가' : ''
+    ].filter(Boolean);
+    const statusNote = status === 'pending' ? '응시 전입니다.'
+        : status === 'excluded' ? '이 학생은 배정에서 제외되었습니다.'
+            : status === 'partial' ? '일부 결과만 확인되어 관측 오답은 표시하며 후속 추천 근거로 확정하지 않습니다.'
+                : status === 'unresolved' ? '결과 또는 동결 근거를 확인할 수 없어 후속 추천 근거로 확정하지 않습니다.'
+                    : '';
+    const targetRows = groups.map(group => {
+        const path = group?.path && typeof group.path === 'object' ? group.path : {};
+        const pathLabel = ['L1', 'L2', 'L3', 'L4'].map(level => String(path[level] || '').trim()).filter(Boolean).join(' › ');
+        if (!pathLabel) return '';
+        const bucket = Number.isInteger(group.difficultyBucket) && group.difficultyBucket >= 1 && group.difficultyBucket <= 5
+            ? `난이도 ${group.difficultyBucket}` : '난이도 미확인';
+        const orderNos = Array.isArray(group.questionOrderNos)
+            ? [...new Set(group.questionOrderNos.map(Number).filter(value => Number.isInteger(value) && value > 0))].sort((a, b) => a - b)
+            : [];
+        const orders = orderNos.length ? ` · 문항 ${orderNos.map(value => `${value}번`).join(', ')}` : '';
+        return `<div style="margin-top:3px;">${clinicPrintEscapeHtml(pathLabel)} · ${clinicPrintEscapeHtml(bucket)} · 문항 ${count(group.questionCount)}개 · 관측 오답 ${count(group.observedWrongCount)}건 · 후속 추천 근거 ${count(group.recommendationEligibleCount)}개${orders}</div>`;
+    }).filter(Boolean).join('');
+    const noWrongNote = status === 'result' && !groups.length && count(coverage.wrongCount) === 0
+        ? '동결 정본 Meta에서 확인된 확정 오답 유형이 없습니다.' : '';
+    return `<div style="font-size:11px;color:var(--secondary);margin-top:3px;"><strong>후속 보충 대상 유형 요약</strong><div style="margin-top:2px;">${clinicPrintEscapeHtml(coverageLine)}</div>${statusNote ? `<div style="margin-top:2px;">${clinicPrintEscapeHtml(statusNote)}</div>` : ''}${noWrongNote ? `<div style="margin-top:2px;">${clinicPrintEscapeHtml(noWrongNote)}</div>` : ''}${targetRows}${evidenceNotes.length ? `<div style="margin-top:2px;">${clinicPrintEscapeHtml(evidenceNotes.join(' · '))}</div>` : ''}<div style="margin-top:2px;">이 요약은 이번 보충시험 응답의 유형별 관측이며, 기존 문항의 회복률을 뜻하지 않습니다.</div></div>`;
+}
+
 function clinicPrintRenderAssessmentDiscovery(state = clinicPrintGetRecommendationAssessmentState()) {
     const assignments = Array.isArray(state.discovered) ? state.discovered : [];
     const outcomesById = new Map((Array.isArray(state.outcomes) ? state.outcomes : [])
@@ -865,7 +913,7 @@ function clinicPrintRenderAssessmentDiscovery(state = clinicPrintGetRecommendati
                     const questionResults = student.sessionId
                         ? (student.questionResults || []).map(row => `${Number(row.orderNo || 0)}번 ${clinicPrintAssessmentQuestionStatusLabel(row.status)}`).join(' · ')
                         : '';
-                    return `<div style="font-size:11px;margin-top:5px;"><strong>${clinicPrintEscapeHtml(student.studentName || student.studentId || '학생')}</strong> · ${clinicPrintEscapeHtml(clinicPrintAssessmentStatusLabel(student.status))}${score}${questionResults ? `<div style="color:var(--secondary);margin-top:2px;">${clinicPrintEscapeHtml(questionResults)}</div>` : ''}</div>`;
+                    return `<div style="font-size:11px;margin-top:5px;"><strong>${clinicPrintEscapeHtml(student.studentName || student.studentId || '학생')}</strong> · ${clinicPrintEscapeHtml(clinicPrintAssessmentStatusLabel(student.status))}${score}${questionResults ? `<div style="color:var(--secondary);margin-top:2px;">${clinicPrintEscapeHtml(questionResults)}</div>` : ''}${clinicPrintRenderFollowUpContext(student)}</div>`;
                 }).join('')}
             </div>`;
         }).join('')}
