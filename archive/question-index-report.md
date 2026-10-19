@@ -1,25 +1,25 @@
 # question-index 생성 리포트
 
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated) (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
-- 시험지 수(db.js): 871
-- 시험지 파일 수: 871
-- 원본 문항 수(중복 제거 전): 20466
-- 최종 인덱스 문항 수(중복 제거 후): 20466
+- 시험지 수(db.js): 880
+- 시험지 파일 수: 880
+- 원본 문항 수(중복 제거 전): 20690
+- 최종 인덱스 문항 수(중복 제거 후): 20690
 - 중복 qKey로 제외된 레코드: 0 (그룹 0)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
-- db.js 크기: 843978 bytes
-- 시험지 JS 총 크기: 40943746 bytes
-- 인덱스 크기: 21631524 bytes
+- db.js 크기: 852568 bytes
+- 시험지 JS 총 크기: 41668416 bytes
+- 인덱스 크기: 21829523 bytes
 - 로드 실패 파일: 0
 
-> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(20466)" 기준이다.
+> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(20690)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 143개 기준)
 
-- 공식(official): 19071
+- 공식(official): 19243
 - RAW-(임시 규약, 허용): 25 (distinct 7)
-- 비공식(invalid): 131 (distinct 24)
+- 비공식(invalid): 183 (distinct 25)
 - 빈 키(empty): 1239
 
 상세 비공식 키 목록은 question-index-audit.md 참조.
@@ -27,7 +27,7 @@
 ## 필드 누락 (최종 인덱스 기준)
 
 - 누락 id: 0
-- 누락 content: 731
+- 누락 content: 909
 - 누락 choices: 5
 - 누락 level: 1607
 - 누락 standardUnit: 1243
@@ -37,11 +37,11 @@
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 3502
-- content 내부 <img>: 880
+- q.image 보유: 3586
+- content 내부 <img>: 898
 - content 내부 <svg>: 77
 - content 내부 <table>: 310
-- 시각요소 보유(hasImage=true, OR 합산): 4638
+- 시각요소 보유(hasImage=true, OR 합산): 4722
 
 ## 누락 예시
 
@@ -49,14 +49,14 @@
   - 없음
 
 ### content
-  - original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js#1
-  - original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js#2
-  - original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js#3
-  - original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js#4
-  - original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js#5
-  - original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js#6
-  - original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js#7
-  - original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js#8
+  - original/middle/m2/2final/21_향림중_2학기_기말_중2_수학.js#1
+  - original/middle/m2/2final/21_향림중_2학기_기말_중2_수학.js#2
+  - original/middle/m2/2final/21_향림중_2학기_기말_중2_수학.js#3
+  - original/middle/m2/2final/21_향림중_2학기_기말_중2_수학.js#4
+  - original/middle/m2/2final/21_향림중_2학기_기말_중2_수학.js#5
+  - original/middle/m2/2final/21_향림중_2학기_기말_중2_수학.js#6
+  - original/middle/m2/2final/21_향림중_2학기_기말_중2_수학.js#7
+  - original/middle/m2/2final/21_향림중_2학기_기말_중2_수학.js#8
 
 ### choices
   - original/high/h1/1mid/23_매산여고_1학기_중간_고1_기출.js#19
