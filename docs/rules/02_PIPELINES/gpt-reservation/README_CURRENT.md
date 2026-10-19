@@ -8,6 +8,10 @@ scope: GPT Scheduled / MASTER, CREATE, R1, R2, R3 / 신규 캠페인·기존 예
 policyBoundary: 기존 사용자 최신 명시 지시 및 Git/Notion CURRENT 품질 정본 우선
 operationalBoundary: 문서 저장 ≠ 실제 예약 프롬프트 갱신 ≠ 검사 실행 ≠ main 출고
 
+## CURRENT 적용 예외 — 2026-10-19 HIGH_DYNAMIC R1 연속 소비·저장 사전점검
+
+`HIGH_DYNAMIC_INTAKE_20261017` **R1만** 사용자 명시 적체 해소 지시에 따라 기본 1시험지/회차 CAP 대신 `미수납 READY_R1 스캔 → 중단 복구 → source-only blind freeze 원격 확인 → 해설/Meta/Golden 자체 책임 검수·수리 → READY_R2 원격 인계 → 다음 eligible 반복`을 적용한다. 자세한 우선순위·실패 복구는 [R1_CURRENT.md](R1_CURRENT.md)의 2026-10-19 HIGH_DYNAMIC 예외 조항. 2026-10-19 실제 :12 R1 예약 프롬프트 별도 업데이트 확인. 실제 시험지 R1 완료/적체 해소는 아직 물리 수납·SHA 결과로 별도 검증해야 한다. 캠페인 외 기본 1시험지/회차, 품질/블라인드·DOC_READ_RECEIPT/Golden·동시 writer·Git writer 금지는 불변.
+
 ## CURRENT 추가 — 2026-10-18 R3 통합 출고 허브
 
 HIGH_DYNAMIC R3 종료 후 실제 Library `/Archive2-GPT/RELEASE_HUB/PENDING/<examUid>/` 패킷·인계 영수증·RELEASE_MANIFEST.json 자동 등록은 [R3_CURRENT.md §6](R3_CURRENT.md)의 책임이다. 메인 병합은 별도 감독 GPT/기술 출고 담당, R3의 Git writer 권한 없음. 인덱스는 snapshot이고 시험지별 현물 manifest가 기준이며 R3_REVIEWED≠R3_PASS·DONE이다. 다른 캠페인/예약 ON·RRULE는 자동 확대/변경하지 않는다.
