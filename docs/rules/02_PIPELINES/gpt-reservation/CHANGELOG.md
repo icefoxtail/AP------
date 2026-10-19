@@ -1,5 +1,13 @@
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — 변경 이력
 
+## v1.0.2 — 2026-10-19: HIGH_DYNAMIC Google Drive 출고 허브 전환
+- 문제: ChatGPT Library 허브가 Codex/Work의 연결된 Google Drive에서 검색되지 않아 PENDING 32건 중 Git 이미 병합된 13건이 중복 대기로 보임.
+- 사용자 결정: Google Drive `Archive2-GPT/RELEASE_HUB`(folder ID `1DQigbs29hiuvwxbS-6i7w6hK6iziNk57`)를 HIGH_DYNAMIC R3→출고의 단일 정본으로 사용. 기존 stage Library 및 5예약 일정/ON 변경 금지.
+- R3: 각 examUid별 raw R3_PACKET.zip+R3_HANDOFF.json+RELEASE_MANIFEST.json 직접 Drive 사본 저장, 원격 readback SHA·ID 확인, 중복 SHA SKIP, 신규 revision만 PENDING, 장애는 HUB_SYNC_PENDING 복구. MAIN_DONE은 별도 출고 담당이 Git main 실증거 확인 후에만 Drive DONE 마킹.
+- 기존 자료: 기존 Library 보존. Google Drive 이관과 권위 변경은 개별 파일 readback에 따라 별도 추적; 과거 PENDING 존재만으로 신규 출고 대상 판정 금지.
+- 적용 범위: R3_CURRENT.md 및 README_CURRENT.md 문구, HIGH_DYNAMIC R3 예약 프롬프트. CREATE/R1/R2/MASTER 불변. 실제 다음 예약 실행의 Drive 등록 및 파일 readback은 별도 증거로 확인.
+
+
 **현재 대표 문서:** [README_CURRENT.md](README_CURRENT.md). 파일은 CURRENT 고정 경로이고, 역사적 각 버전은 Git commit/blob SHA로 추적한다. 수정 전 항상 Notion 라우터/예약 CURRENT/Git main 정본을 다시 읽는다. 이 파일은 실제 예약 변경 영수증이나 실험 실행 증거를 대신하지 않는다.
 
 ## HIGH_DYNAMIC R1 v1.1 — 2026-10-19: 연속 R1 수납·컨테이너 세션 오류 복구
