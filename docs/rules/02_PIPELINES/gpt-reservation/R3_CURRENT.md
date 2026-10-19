@@ -1,5 +1,16 @@
 # ROLE R3 — GPT 예약라인 공용 실행 프롬프트 (CURRENT v1.0.1)
 
+## CURRENT OVERRIDE v1.0.2 — HIGH_DYNAMIC R3 Google Drive RELEASE_HUB (2026-10-19)
+
+**사용자 명시 변경. 이 절이 아래의 구 Library 출고 허브 §6 두 버전보다 우선한다.** 적용 대상은 `HIGH_DYNAMIC_INTAKE_20261017`의 **R3 → 출고 허브 복제**만이다. CREATE/R1/R2/MASTER 기존 Library stage 경로 및 R3 원래 검수 산출물 Library 저장/readback은 유지한다. 예약 R3 :36 Asia/Seoul ON/RRULE 유지, Git main/PR/push/출고 승인 권한 없음.
+
+- 출고 허브 **단일 정본**: Google Drive [Archive2-GPT/RELEASE_HUB](https://drive.google.com/drive/folders/1DQigbs29hiuvwxbS-6i7w6hK6iziNk57). PENDING folder ID=`1LZUwmn1_PCJ-lWEqQQTRv1Bxs-XIKYI_`, DONE folder ID=`1tldXU3vvviet0HhtxI8ibQcdU2i3D_LI`, MIGRATION_LOG ID=`1-axX_7bKyFIn_Upo4AZl1FynTMtIJqX7`. 경로 `/Google Drive/Archive2-GPT/RELEASE_HUB/PENDING/<examUid>/`에 `R3_PACKET.zip`, `R3_HANDOFF.json`, `RELEASE_MANIFEST.json` 원본 바이트 사본과 필요한 검증된 최신 MASTER overlay만 저장한다. 아래의 `/Archive2-GPT/RELEASE_HUB/`는 **기존 ChatGPT Library 구형 보관본**이며 신규 허브로 쓰지 않는다.
+- R3 종료 시 원본 campaign Library stage를 저장/readback 한 후, 동일 실행에서 반드시 Drive 대상 시험지 폴더의 기존 파일·최신 SHA·Git main 상태와 현재 DONE 같은 revision 여부를 먼저 확인한다. Drive 연결을 사용하여 실제 ZIP/JSON raw bytes를 올리고 **Drive 파일 ID·크기·원격 다운로드 SHA256 readback**을 확인한다. 실제 가능한 파일 이송 방식 예: `files.manage_library`의 `upload(source_file_ref.file_id,destination_path=/Google Drive/...)`; 파일 ID는 현재 Library 결과에서 받아야 한다. `container_session_unavailable` 경로 재사용이나 텍스트만 붙여둔 가짜 ZIP 금지. 중복 destination 존재 시 Drive 실제 바이트/SHA readback으로 동일판이면 SKIP; 다르면 revision 별도 폴더/이름으로 불변 보관, 무조건 덮어쓰기 금지.
+- key=`campaign+examUid+finalPacketSha256`. 현재 Git main 동일 판 또는 동일 revision DONE이 확인되면 구형 Library PENDING만을 근거로 재등록하지 않는다. 새로운 MASTER/R3 packet SHA가 실재하면 **새 revision만 PENDING**으로 등록하며 지난 Git 완료는 새 revision의 자동 출고 승인 아님. 품질 `R3_REVIEWED ≠ R3_PASS ≠ GIT_MAIN_MERGED`, `releaseDisposition=SUPERVISORY_REVIEW_REQUIRED`, `readyForUnattendedMerge=false` 원칙 유지.
+- Drive 업로드/readback 실패 시 R3 원본·증거·기존 성공본 보존, `HUB_SYNC_PENDING/INFRA_RETRY`와 대상 파일·원인·firstMissingStep 기록 후 다음 :36 재개. 저장 실패인데 `HUB_REGISTERED` 표시 금지. 다른 시험지는 계속 진행. R2 새 입력이 없어도 과거 HUB_SYNC_PENDING의 Drive 동기화를 우선 회복한다.
+- 출고 담당 Work/Codex는 **Drive PENDING만** 후보로, Git main 병합이 실제 확인된 **같은 revision**만 Drive DONE으로 이동/마킹하고 PR/main SHA·시각·Git 파일 blob SHA를 영속 기록, 원격 readback한다. 출고 담당자가 병합 후 마킹까지 닫는 것이 필수 종료조건이며 R3가 자체 DONE 표시하지 않는다. ChatGPT Library 구형 HUB는 보존용; 초기 이전 확인 목록은 Drive MIGRATION_LOG의 상태 원장 참조. 자료 삭제 금지.
+
+
 Use with [README_CURRENT.md](README_CURRENT.md). ROLE 바인딩: `role=R3, campaignId={CAMPAIGN_ID}, generationRoot={GENERATION_ROOT}, libraryNamespace={LIBRARY_NAMESPACE}, stream={STREAM_IF_APPLICABLE}, previousStage=R2, nextStage=SUPERVISORY_REVIEW, canonicalVersion=1.0.1, schedule={USER_APPROVED_SCHEDULE}, isEnabled={USER_APPROVED_ON_OFF}`. R3는 최종 전 시험지 구조/학생 시각/수학·Meta 감사 및 같은 stage 최소 수정 owner이나, 이미 유효한 R1 독립 풀이·R2 심화 수리를 이유 없이 다시 작성하는 작업자가 아니다.
 
 ## 1. 입력 대상/실물 계보 및 현재 정본 읽기
