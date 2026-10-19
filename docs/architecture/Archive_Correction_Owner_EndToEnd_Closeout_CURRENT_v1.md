@@ -1,3 +1,9 @@
+## CURRENT 사용자 지정 출고 감독 수납 — R3 인계 상태 단독 차단 금지 (2026-10-19)
+
+사용자가 대상 시험지와 Git `main` 병합을 명시적으로 맡겼으면, 지정된 Codex/Work 출고 실행자는 그 업무의 **감독 검토·출고 직접 차단 결함 최소 수리·병합·요청된 Drive DONE 마감**을 수납한다. `SUPERVISORY_REVIEW_REQUIRED`, `PENDING_SUPERVISOR_DECISION`, `R3_REVIEWED`, `readyForUnattendedMerge=false`, `qualityPass=false`, `NOT_RUN` 상태값만을 근거로 사용자에게 별도 승인자를 다시 요청하거나 전체 배치를 PR 0건으로 종료하지 않는다. 이는 사용자 승인 없는 자동 출고 허용 또는 거짓 품질 승격이 아니다. 실제 학생 답·해설·원본·필수 asset/Meta 오류는 해당 examUid에서 근거를 대조하고 필요한 최소 수정과 변경 영향 검증을 수행하며, 해결 불능인 **개별 시험지만** 실제 차단으로 분리한다. 다른 독립 시험지는 진행한다.
+
+구분: `GIT_MAIN_MERGED` + Drive `DONE` (사용자가 지정한 Git 운영병합 출고함 마감) ≠ 전체 소비자 인덱스/브라우저 검증 완료 `MAIN_DONE` 또는 `PUBLISHED_VERIFIED`. CI/Pages/Chrome을 이번 업무에서 제외했다면 `CI_DEFERRED` 및 `NOT_VERIFIED`로 사실대로 남긴다. 기존 §4의 **전체 출시 의뢰**에 대한 검증 의무는 변함없고, 사용자 범위가 `운영병합만`일 때만 이 별도 종료 조건을 적용한다. [MAIN_FIRST 정본](../operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md)과 함께 적용.
+
 ## CURRENT 사용자 지정 종료조건 오버라이드 — MAIN 먼저, CI는 별도 업무 (2026-10-18)
 
 사용자가 **`main 운영병합만` 또는 `CI 수리는 나중에 별도 지시`**라고 명시한 출고 작업에서는 Git main 병합 및 원격 파일/SHA 확인을 먼저 완료한다. CI running/fail/unexecuted는 Git 병합 여부를 좌우하는 새로운 품질 승인 게이트가 아니다. 해당 출고 담당은 CI 결함 수리·CI 검사 완화·공통 코드 개편·기존 시험지 전체 재검을 자동 추가하지 않는다. `GIT_MAIN_MERGED`, `CI_DEFERRED`, `studentDeploymentStatus`는 별도로 표기하고 학생 사이트 출시 PASS를 주장하지 않는다. 아래 전체 publication/Chrome 완료 규칙은 사용자가 등록·학생 배포까지 맡긴 별도 요청에 그대로 적용한다. GitHub가 병합을 기술적으로 거절하는 경우에는 플랫폼 오류만 정확히 기록하며 강제 push/보호 해제 금지.
