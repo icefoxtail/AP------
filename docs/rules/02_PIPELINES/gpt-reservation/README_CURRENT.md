@@ -1,5 +1,10 @@
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — CURRENT
 
+## CURRENT v1.0.2 — HIGH_DYNAMIC 출고 허브 정본 Google Drive 전환 (2026-10-19)
+
+사용자 명시 변경: HIGH_DYNAMIC R3의 내부 Library stage 결과는 그대로 보존하고, **R3 후속 출고 허브 사본만** [Google Drive RELEASE_HUB](https://drive.google.com/drive/folders/1DQigbs29hiuvwxbS-6i7w6hK6iziNk57)의 PENDING에 저장·원격 재조회한다. 기존 `/Archive2-GPT/RELEASE_HUB/` ChatGPT Library는 과거 사본으로 동결한다. 실제 승인 출고 담당 Work/Codex가 Drive PENDING→Git main→Drive DONE 마킹과 증거 기록까지 완료해야 종료. 예약 R3 기존 :36/ON, 다른 4개 예약 시간·ON·프롬프트 및 Git writer 권한 불변. [R3_CURRENT.md](R3_CURRENT.md)의 v1.0.2 override가 이전 v1.0.1 Library 출고 절보다 우선한다. 이전 원본 증거/품질 검수·Meta/Golden·미해결 qid/ROUTED≠PASS는 그대로 적용한다.
+
+
 status: CURRENT / CANONICAL COPY SOURCE / 모든 신규·재설정 Archive GPT 예약 공통
 version: 1.0.1
 released: 2026-10-18
