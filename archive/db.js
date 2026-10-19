@@ -22408,6 +22408,37 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
+      "file": "original/middle/m3/1mid/19_서울세일중_1학기_중간_중3_수학.js",
+      "school": "서울세일중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2019,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "M3-01",
+      "rangeStartUnit": "실수와 그 계산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M3-02",
+      "rangeEndUnit": "다항식의 곱셈과 인수분해",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-01",
+          "rangeStartUnit": "실수와 그 계산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M3-02",
+          "rangeEndUnit": "다항식의 곱셈과 인수분해",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
       "file": "original/middle/m3/1final/19_신흥중_1학기_기말_중3_수학.js",
       "school": "신흥중",
       "topic": "",
@@ -23383,6 +23414,46 @@ window.mainDB = {
       "primaryStandardCourse": "확률과통계"
     },
     {
+      "file": "original/middle/m3/1final/17_경북대도중_1학기_기말_중3_수학.js",
+      "school": "경북대도중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2017,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/middle/m3/1final/17_경북영신중_1학기_기말_중3_수학.js",
+      "school": "경북영신중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2017,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [],
+      "primaryStandardCourse": ""
+    },
+    {
       "file": "original/middle/m3/2final/17_신흥중_2학기_기말_중3_수학.js",
       "school": "신흥중",
       "topic": "",
@@ -23576,6 +23647,37 @@ window.mainDB = {
       "primaryStandardCourse": "중3 수학"
     },
     {
+      "file": "original/middle/m3/1mid/16_경북장흥중_1학기_중간_중3_수학.js",
+      "school": "경북장흥중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2016,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-01",
+      "rangeStartUnit": "실수와 그 계산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M3-03",
+      "rangeEndUnit": "이차방정식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-01",
+          "rangeStartUnit": "실수와 그 계산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M3-03",
+          "rangeEndUnit": "이차방정식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
       "file": "original/middle/m3/1final/16_동원중_1학기_기말_중3_수학.js",
       "school": "동원중",
       "topic": "",
@@ -23602,6 +23704,37 @@ window.mainDB = {
           "rangeEndUnitKey": "M3-04",
           "rangeEndUnit": "이차함수와 그래프",
           "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "original/middle/m3/1mid/16_부산만덕중_1학기_중간_중3_수학.js",
+      "school": "부산만덕중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2016,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 26,
+      "rangeStartUnitKey": "M3-01",
+      "rangeStartUnit": "실수와 그 계산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M3-03",
+      "rangeEndUnit": "이차방정식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-01",
+          "rangeStartUnit": "실수와 그 계산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M3-03",
+          "rangeEndUnit": "이차방정식",
+          "rangeEndUnitOrder": 3
         }
       ],
       "primaryStandardCourse": "중3 수학"
@@ -23707,6 +23840,37 @@ window.mainDB = {
       "rangeEndUnitOrder": 999,
       "courseRanges": [],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+      "school": "왕의중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2016,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 25,
+      "rangeStartUnitKey": "M3-01",
+      "rangeStartUnit": "실수와 그 계산",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M3-02",
+      "rangeEndUnit": "다항식의 곱셈과 인수분해",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-01",
+          "rangeStartUnit": "실수와 그 계산",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M3-02",
+          "rangeEndUnit": "다항식의 곱셈과 인수분해",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
     },
     {
       "file": "original/middle/m3/1final/16_은계중_1학기_기말_중3_수학.js",
