@@ -1,8 +1,8 @@
 (function (root, factory) {
-    const api = factory();
+    const api = factory(root);
     if (typeof module === 'object' && module.exports) module.exports = api;
     else root.ClinicAssessment = api;
-}(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+}(typeof globalThis !== 'undefined' ? globalThis : this, function (root) {
     'use strict';
 
     const CONTRACT_VERSION = 'apms-clinic-recommendation-assessment-v1';
@@ -436,6 +436,7 @@
         if (typeof options.request !== 'function') throw new TypeError('request transport is required');
         const requestTransport = options.request;
         const archive2Core = options.archive2Core || null;
+        const clinicRecommendations = options.clinicRecommendations || root?.ClinicRecommendations || null;
         const isOnline = typeof options.isOnline === 'function' ? options.isOnline : () => true;
         const createId = options.createId;
         const states = new WeakMap();
@@ -1398,10 +1399,24 @@
                 .filter(row => text(row.assignment_id) === assignmentId)
                 .sort((a, b) => Number(a.order_no) - Number(b.order_no));
             const expectedUids = parsed.questionUids;
+            const assignmentRowsByOrder = new Map();
+            for (const row of questionRows) {
+                const orderNo = Number(row.order_no);
+                if (!Number.isInteger(orderNo) || orderNo < 1) continue;
+                if (!assignmentRowsByOrder.has(orderNo)) assignmentRowsByOrder.set(orderNo, []);
+                assignmentRowsByOrder.get(orderNo).push(row);
+            }
             const bridgeVerified = questionRows.length === expectedUids.length &&
                 questionRows.every((row, index) => Number(row.order_no) === index + 1 &&
                     text(row.question_uid) === expectedUids[index] &&
                     text(row.resolution_status).toUpperCase() === 'VERIFIED');
+            const resultItemsBySession = new Map();
+            for (const row of data.result_items) {
+                const sessionId = text(row.session_id || row.sessionId);
+                if (!sessionId) continue;
+                if (!resultItemsBySession.has(sessionId)) resultItemsBySession.set(sessionId, []);
+                resultItemsBySession.get(sessionId).push(row);
+            }
             const sessionsByStudent = new Map();
             for (const session of data.sessions.filter(row => text(row.assignment_id) === assignmentId && text(row.class_id) === classId)) {
                 const studentId = text(session.student_id);
@@ -1412,8 +1427,10 @@
             const students = data.students.map(student => {
                 const studentId = text(student.id || student.student_id);
                 const excluded = excludedIds.has(studentId);
-                const attempts = sortByDateNewest(sessionsByStudent.get(studentId) || []).map(session => {
-                    const result = questionResultsForSession(session, expectedUids, data.result_items, bridgeVerified);
+                const studentSessions = sortByDateNewest(sessionsByStudent.get(studentId) || []);
+                const attempts = studentSessions.map(session => {
+                    const sessionRows = resultItemsBySession.get(text(session.id)) || [];
+                    const result = questionResultsForSession(session, expectedUids, sessionRows, bridgeVerified);
                     const scorePresent = session.score !== null && session.score !== undefined && text(session.score) !== '' && Number.isFinite(Number(session.score));
                     return {
                         sessionId: text(session.id),
@@ -1426,7 +1443,8 @@
                     };
                 });
                 const latest = attempts[0] || null;
-                return {
+                const latestSession = studentSessions[0] || null;
+                const studentResult = {
                     studentId,
                     studentName: text(student.name),
                     excluded,
@@ -1439,6 +1457,23 @@
                     })),
                     attempts,
                 };
+                if (typeof clinicRecommendations?.buildFollowUpContext === 'function') {
+                    studentResult.followUpContext = clinicRecommendations.buildFollowUpContext({
+                        student: studentResult,
+                        studentId,
+                        classId,
+                        assignmentId,
+                        latestSession,
+                        questionResults: studentResult.questionResults,
+                        expectedQuestionUids: expectedUids,
+                        resultRows: latestSession ? resultItemsBySession.get(text(latestSession.id)) || [] : [],
+                        assignmentRowsByOrder,
+                        bridgeVerified,
+                    });
+                } else {
+                    studentResult.followUpContext = null;
+                }
+                return studentResult;
             });
             const resultItemSessionIds = new Set(data.result_items.map(row => text(row.session_id)).filter(Boolean));
             const sessionIds = new Set(data.sessions.map(row => text(row.id)).filter(Boolean));

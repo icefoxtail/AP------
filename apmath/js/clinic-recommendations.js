@@ -9,6 +9,7 @@
     const CANONICAL_UID_RE = /^qid_v1_[0-9a-f]{64}$/;
     const PATH_FIELDS = Object.freeze(['curriculumKey', 'courseKey', 'L1', 'L2', 'L3', 'L4']);
     const REQUIRED_PATH_FIELDS = Object.freeze(['curriculumKey', 'courseKey', 'L1', 'L2']);
+    const followUpFactsBySnapshot = new WeakMap();
     const CANONICAL_META_FIELDS = Object.freeze([
         ...PATH_FIELDS,
         'secondaryConceptKeys', 'problemTypeKey', 'templateKey', 'crossConceptKeys',
@@ -257,6 +258,35 @@
     function canonicalBucket(meta) {
         const value = meta?.difficultyBucket;
         return Number.isInteger(value) && value >= 1 && value <= 5 ? value : null;
+    }
+
+    function metadataSnapshotStatusOf(row) {
+        const explicit = text(firstValue(row, ['metadata_snapshot_status', 'metadataSnapshotStatus'])).toUpperCase();
+        const snapshot = parseJson(metadataJsonOf(row));
+        const snapshotStatus = text(snapshot.metadataSnapshotStatus || snapshot.captureStatus).toUpperCase();
+        if (explicit && snapshotStatus && explicit !== snapshotStatus) return 'UNRESOLVED';
+        if (explicit || snapshotStatus) return explicit || snapshotStatus;
+        return isRecognizedPreEnvelopeSnapshot(row, snapshot) ? 'CAPTURED' : 'UNRESOLVED';
+    }
+
+    function followUpSnapshotFactsOf(row) {
+        if (row && typeof row === 'object' && followUpFactsBySnapshot.has(row)) return followUpFactsBySnapshot.get(row);
+        const meta = canonicalMetaOf(row);
+        const facts = {
+            identity: identityOf(row),
+            path: canonicalPath(meta),
+            difficultyBucket: canonicalBucket(meta),
+            metadataSnapshotStatus: metadataSnapshotStatusOf(row),
+        };
+        if (row && typeof row === 'object') followUpFactsBySnapshot.set(row, facts);
+        return facts;
+    }
+
+    function freezeDeep(value) {
+        if (!value || typeof value !== 'object' || Object.isFrozen(value)) return value;
+        Object.freeze(value);
+        Object.keys(value).forEach(key => freezeDeep(value[key]));
+        return value;
     }
 
     function sessionDate(session) {
@@ -935,12 +965,212 @@
         };
     }
 
+    function explicitlyUnsubmitted(session) {
+        const value = session?.is_submitted ?? session?.isSubmitted;
+        return value === false || value === 0 || ['false', '0'].includes(text(value).toLowerCase());
+    }
+
+    function explicitlySubmitted(session) {
+        const value = session?.is_submitted ?? session?.isSubmitted;
+        return value === true || value === 1 || ['true', '1'].includes(text(value).toLowerCase());
+    }
+
+    function buildFollowUpContext(input = {}) {
+        const student = object(input.student);
+        const session = object(input.latestSession);
+        const sessionId = sessionIdOf(session);
+        const assignmentId = text(input.assignmentId);
+        const classId = text(input.classId);
+        const studentId = text(input.studentId || student.studentId);
+        const expectedUids = Array.isArray(input.expectedQuestionUids) ? input.expectedQuestionUids.map(text) : [];
+        const questionResults = Array.isArray(input.questionResults) ? input.questionResults : [];
+        const excluded = student.excluded === true;
+        const hasSession = Boolean(sessionId);
+        const exactSession = hasSession && Boolean(assignmentId && classId && studentId) &&
+            text(session.assignment_id || session.assignmentId) === assignmentId &&
+            text(session.class_id || session.classId) === classId &&
+            studentIdOf(session) === studentId;
+        const unsubmitted = explicitlyUnsubmitted(session);
+        const rawStatus = text(student.status).toLowerCase();
+        const status = excluded ? 'excluded' : !hasSession ? 'pending'
+            : unsubmitted || !exactSession || !['result', 'partial', 'unresolved'].includes(rawStatus) ? 'unresolved'
+                : rawStatus;
+        const bridgeVerified = input.bridgeVerified === true;
+        const questionCount = expectedUids.length || questionResults.length;
+        const counts = { correctCount: 0, wrongCount: 0, partialCount: 0, unresolvedCount: 0 };
+        if (hasSession) {
+            if (!exactSession || !bridgeVerified) counts.unresolvedCount = questionCount;
+            else {
+                for (const row of questionResults) {
+                    const outcome = text(row?.status).toLowerCase();
+                    if (outcome === 'correct') counts.correctCount++;
+                    else if (outcome === 'wrong') counts.wrongCount++;
+                    else if (outcome === 'partial' || outcome === 'unchecked') counts.partialCount++;
+                    else counts.unresolvedCount++;
+                }
+            }
+        }
+
+        const resultRowsByOrder = new Map();
+        for (const row of Array.isArray(input.resultRows) ? input.resultRows : []) {
+            if (sessionIdOf(row) !== sessionId) continue;
+            const rowAssignmentId = text(row?.assignment_id || row?.assignmentId);
+            const rowStudentId = studentIdOf(row);
+            const rowClassId = text(row?.class_id || row?.classId);
+            if ((rowAssignmentId && rowAssignmentId !== assignmentId) ||
+                (rowStudentId && rowStudentId !== studentId) || (rowClassId && rowClassId !== classId)) continue;
+            const orderNo = orderNoOf(row);
+            if (!orderNo) continue;
+            if (!resultRowsByOrder.has(orderNo)) resultRowsByOrder.set(orderNo, []);
+            resultRowsByOrder.get(orderNo).push(row);
+        }
+
+        const groups = new Map();
+        let verifiedSnapshotCount = 0;
+        let missingSnapshotCount = 0;
+        let unresolvedSnapshotCount = 0;
+        let unresolvedIdentityCount = 0;
+        let missingPathCount = 0;
+        let missingBucketCount = 0;
+        let unresolvedEvidenceCount = 0;
+        let resultSnapshotCount = 0;
+        let assignmentSnapshotCount = 0;
+        const canSummarize = !excluded && !unsubmitted && exactSession && bridgeVerified;
+        const assignmentRowsByOrder = input.assignmentRowsByOrder instanceof Map ? input.assignmentRowsByOrder : new Map();
+
+        if (canSummarize) {
+            for (const result of questionResults) {
+                if (text(result?.status).toLowerCase() !== 'wrong') continue;
+                const orderNo = positiveInteger(result?.orderNo);
+                const questionUid = text(result?.questionUid);
+                if (!orderNo || !CANONICAL_UID_RE.test(questionUid) || expectedUids[orderNo - 1] !== questionUid) {
+                    unresolvedEvidenceCount++;
+                    continue;
+                }
+                const resultRows = resultRowsByOrder.get(orderNo) || [];
+                if (resultRows.length !== 1 || resultOutcome(resultRows[0]) !== 'wrong') {
+                    unresolvedEvidenceCount++;
+                    continue;
+                }
+                const resultRow = uniqueRow(resultRows);
+                const assignmentRow = uniqueRow(assignmentRowsByOrder.get(orderNo) || []);
+                const selected = snapshotFor(session, orderNo,
+                    new Map([[orderNo, resultRow]]), new Map([[orderNo, assignmentRow]]));
+                if (!selected.row) {
+                    missingSnapshotCount++;
+                    continue;
+                }
+                if (selected.source === 'result_snapshot') resultSnapshotCount++;
+                else if (selected.source === 'assignment_snapshot') assignmentSnapshotCount++;
+                const facts = followUpSnapshotFactsOf(selected.row);
+                const unresolvedSnapshot = facts.metadataSnapshotStatus !== 'CAPTURED';
+                if (unresolvedSnapshot) unresolvedSnapshotCount++;
+                if (!facts.identity.verified || facts.identity.questionUid !== questionUid) {
+                    unresolvedIdentityCount++;
+                    continue;
+                }
+                verifiedSnapshotCount++;
+                if (unresolvedSnapshot) continue;
+                if (!facts.path) {
+                    missingPathCount++;
+                    continue;
+                }
+                if (facts.difficultyBucket == null) missingBucketCount++;
+                const groupKey = JSON.stringify([facts.path.key, facts.difficultyBucket]);
+                if (!groups.has(groupKey)) {
+                    groups.set(groupKey, {
+                        path: { ...facts.path.path },
+                        pathDepth: facts.path.depth,
+                        pathKey: facts.path.key,
+                        difficultyBucket: facts.difficultyBucket,
+                        observedWrongCount: 0,
+                        questionUids: new Set(),
+                        questionOrderNos: new Set(),
+                    });
+                }
+                const group = groups.get(groupKey);
+                group.observedWrongCount++;
+                group.questionUids.add(questionUid);
+                group.questionOrderNos.add(orderNo);
+            }
+        }
+
+        const completeAttempt = !excluded && status === 'result' && exactSession && bridgeVerified && !unsubmitted &&
+            questionCount > 0 && questionResults.length === questionCount &&
+            questionResults.every(row => ['correct', 'wrong'].includes(text(row?.status).toLowerCase()));
+        const confirmedWrongByMeta = [...groups.values()].map(group => {
+            const questionCountForMeta = group.questionUids.size;
+            const recommendationEligibleCount = completeAttempt ? questionCountForMeta : 0;
+            return {
+                path: { ...group.path },
+                pathDepth: group.pathDepth,
+                pathKey: group.pathKey,
+                difficultyBucket: group.difficultyBucket,
+                questionCount: questionCountForMeta,
+                questionOrderNos: [...group.questionOrderNos].sort((a, b) => a - b),
+                observedWrongCount: group.observedWrongCount,
+                recommendationEligibleCount,
+            };
+        }).sort((a, b) => b.observedWrongCount - a.observedWrongCount || a.pathKey.localeCompare(b.pathKey) ||
+            Number(a.difficultyBucket || 0) - Number(b.difficultyBucket || 0));
+        const classifiedWrongCount = confirmedWrongByMeta.reduce((sum, row) => sum + row.observedWrongCount, 0);
+        const unclassifiedCount = Math.max(0, counts.wrongCount - classifiedWrongCount);
+        const contextStatus = status === 'result' && !completeAttempt ? 'unresolved' : status;
+        const unresolvedMetaCount = missingSnapshotCount + unresolvedSnapshotCount + unresolvedIdentityCount + missingPathCount;
+        const hasMetadataGaps = unclassifiedCount > 0 || unresolvedEvidenceCount > 0 || unresolvedMetaCount > 0 || missingBucketCount > 0;
+        const metaCoverageStatus = contextStatus === 'pending' || contextStatus === 'excluded' ? 'not_observed'
+            : !exactSession || !bridgeVerified || unsubmitted ? 'unresolved'
+                : contextStatus === 'unresolved' ? 'unresolved'
+                    : contextStatus === 'partial' ? 'partial'
+                        : counts.wrongCount === 0 ? 'complete'
+                            : hasMetadataGaps ? confirmedWrongByMeta.length ? 'partial' : 'unresolved' : 'complete';
+        const recommendationTargets = confirmedWrongByMeta.filter(row => row.recommendationEligibleCount > 0).map(row => ({
+            path: { ...row.path },
+            pathDepth: row.pathDepth,
+            pathKey: row.pathKey,
+            difficultyBucket: row.difficultyBucket,
+            questionCount: row.questionCount,
+            questionOrderNos: [...row.questionOrderNos],
+            observedWrongCount: row.observedWrongCount,
+            recommendationEligibleCount: row.recommendationEligibleCount,
+        }));
+        const recommendationEligible = completeAttempt && recommendationTargets.length > 0;
+        return freezeDeep({
+            status: contextStatus,
+            coverage: {
+                attemptStatus: contextStatus,
+                submissionStatus: unsubmitted ? 'unsubmitted' : explicitlySubmitted(session) ? 'submitted' : 'not_reported',
+                questionCount,
+                ...counts,
+                unclassifiedCount,
+                verifiedSnapshotCount,
+                missingSnapshotCount,
+                unresolvedSnapshotCount,
+                unresolvedIdentityCount,
+                missingPathCount,
+                missingBucketCount,
+                unresolvedEvidenceCount,
+                resultSnapshotCount,
+                assignmentSnapshotCount,
+                metaCoverageStatus,
+                recommendationEligible,
+            },
+            confirmedWrongByMeta,
+            recommendationInput: {
+                basis: 'latest_actual_attempt',
+                eligible: recommendationEligible,
+                targets: recommendationTargets,
+            },
+        });
+    }
+
     return {
         CONTRACT_VERSION,
         META_SCHEMA_VERSION,
         PATH_FIELDS,
         CANONICAL_META_FIELDS,
         build,
+        buildFollowUpContext,
         canonicalMetaOf,
         identityOf,
         canonicalPath,
