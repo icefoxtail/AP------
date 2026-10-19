@@ -20482,6 +20482,37 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
+      "file": "original/middle/m2/2mid/20_금당중_2학기_중간_중2_수학.js",
+      "school": "금당중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2020,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-05",
+      "rangeStartUnit": "도형의 성질",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M2-05",
+      "rangeEndUnit": "도형의 성질",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-05",
+          "rangeStartUnit": "도형의 성질",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M2-05",
+          "rangeEndUnit": "도형의 성질",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
       "file": "original/middle/m2/1final/20_신흥중_1학기_기말_중2_수학.js",
       "school": "신흥중",
       "topic": "",
@@ -20699,6 +20730,37 @@ window.mainDB = {
       "primaryStandardCourse": "중2 수학"
     },
     {
+      "file": "original/middle/m2/2final/20_이수중_2학기_기말_중2_수학.js",
+      "school": "이수중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2020,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-08",
+      "rangeStartUnit": "확률",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "M2-08",
+      "rangeEndUnit": "확률",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-08",
+          "rangeStartUnit": "확률",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "M2-08",
+          "rangeEndUnit": "확률",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
       "file": "original/middle/m2/1final/20_팔마중_1학기_기말_중2_수학.js",
       "school": "팔마중",
       "topic": "",
@@ -20802,6 +20864,37 @@ window.mainDB = {
       "subject": "중2 수학",
       "contentType": "기출",
       "qCount": 25,
+      "rangeStartUnitKey": "M2-03",
+      "rangeStartUnit": "연립일차방정식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M2-08",
+      "rangeEndUnit": "확률",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-03",
+          "rangeStartUnit": "연립일차방정식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M2-08",
+          "rangeEndUnit": "확률",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
+      "file": "original/middle/m2/2mid/20_풍덕중_2학기_중간_중2_수학.js",
+      "school": "풍덕중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2020,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 24,
       "rangeStartUnitKey": "M2-03",
       "rangeStartUnit": "연립일차방정식",
       "rangeStartUnitOrder": 3,
@@ -23016,6 +23109,37 @@ window.mainDB = {
           "rangeStartUnitKey": "M2-05",
           "rangeStartUnit": "도형의 성질",
           "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M2-08",
+          "rangeEndUnit": "확률",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "중2 수학"
+    },
+    {
+      "file": "original/middle/m2/2mid/19_연향중_2학기_중간_중2_수학.js",
+      "school": "연향중",
+      "topic": "",
+      "grade": "중2",
+      "year": 2019,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "M2-07",
+      "rangeStartUnit": "피타고라스 정리",
+      "rangeStartUnitOrder": 7,
+      "rangeEndUnitKey": "M2-08",
+      "rangeEndUnit": "확률",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "중2 수학",
+          "courseCode": "M2",
+          "rangeStartUnitKey": "M2-07",
+          "rangeStartUnit": "피타고라스 정리",
+          "rangeStartUnitOrder": 7,
           "rangeEndUnitKey": "M2-08",
           "rangeEndUnit": "확률",
           "rangeEndUnitOrder": 8
