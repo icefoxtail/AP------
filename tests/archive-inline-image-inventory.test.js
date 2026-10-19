@@ -16,19 +16,19 @@ test('archive/exams questionBank inline image inventory validates referenced pro
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 988);
-  assert.equal(generated.productionTotal, 984);
+  assert.equal(generated.total, 1315);
+  assert.equal(generated.productionTotal, 1311);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 936, '.svg': 52 });
-  assert.equal(generated.qImageAndInlineTotal, 77);
+  assert.deepEqual(generated.extensionCounts, { '.png': 1262, '.svg': 53 });
+  assert.equal(generated.qImageAndInlineTotal, 276);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
-    missingProductionAssetCount: 69,
+    missingProductionAssetCount: 267,
     errorCount: 0
   });
   assert.ok(generated.records.every(row => row.relativePathValid && row.src.startsWith('assets/images/')));
   const knownMissing = JSON.parse(fs.readFileSync(path.join(root, 'archive', 'data', 'inline-image-known-missing-v1.json'), 'utf8'));
-  assert.equal(knownMissing.baselineMainSha, 'c312e949a7b97c3ffc6526f5dbda19e59c84630b');
+  assert.equal(knownMissing.baselineMainSha, '53b723f404c7761de9f302044d91f77810c9ea2b');
   assert.deepEqual(generated.records.filter(row => !row.testFixture && !row.assetExists)
     .map(({ file, questionId, src }) => ({ file, questionId, src })), knownMissing.missing);
   assert.ok(generated.records.filter(row => !row.testFixture && row.assetExists).every(row => row.relativePathValid));
@@ -60,7 +60,7 @@ test('archive/exams questionBank inline image inventory validates referenced pro
   assert.equal(q8?.assetExists, true);
 
   const qImageRecords = generated.records.filter(record => record.qImagePresent);
-  assert.equal(qImageRecords.length, 77);
+  assert.equal(qImageRecords.length, 276);
   assert.ok(qImageRecords.every(record => record.relativePathValid));
 
   assert.deepEqual(reportData, generatedData);
