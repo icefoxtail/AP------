@@ -125,6 +125,37 @@ window.mainDB = {
       "primaryStandardCourse": "대수"
     },
     {
+      "file": "original/high/h2/2mid/26_금당고_2학기_중간_고2_기하.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "기하",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H22-GE-01",
+      "rangeStartUnit": "이차곡선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-GE-03",
+      "rangeEndUnit": "공간도형",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "기하",
+          "courseCode": "H22-GE",
+          "rangeStartUnitKey": "H22-GE-01",
+          "rangeStartUnit": "이차곡선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-GE-03",
+          "rangeEndUnit": "공간도형",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "기하"
+    },
+    {
       "file": "original/high/h2/1mid/26_금당고_1학기_중간_고2_대수.js",
       "school": "금당고",
       "topic": "",
@@ -1104,6 +1135,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "공통수학1"
+    },
+    {
+      "file": "original/high/h1/2mid/26_팔마고_2학기_중간_고1_기출.js",
+      "school": "팔마고",
+      "topic": "",
+      "grade": "고1",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "공통수학2",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-05",
+      "rangeEndUnit": "집합",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
     },
     {
       "file": "original/high/h1/1final/26_효천고_1학기_기말_고1_기출.js",
