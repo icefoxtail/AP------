@@ -246,7 +246,332 @@
         if (!markerUids.length || markerUids.some(uid => !QUESTION_UID.test(uid)) ||
             markerUids.length !== assignmentCount ||
             stableStringify(markerUids) !== stableStringify(metaUids)) return null;
-        return { payload, meta, marker, recommendationMode, questionUids: markerUids };
+        return {
+            payload,
+            meta,
+            marker,
+            recommendationMode,
+            provenanceKind: markerKind === 'TRANSFER' ? 'legacy_transfer' : 'follow_up',
+            questionUids: markerUids,
+        };
+    }
+
+    function historyPathOf(target) {
+        const source = plainObject(target?.path) ? target.path : {};
+        const fields = ['curriculumKey', 'courseKey', 'L1', 'L2', 'L3', 'L4'];
+        const path = Object.fromEntries(fields.map(field => [field, text(source[field])]).filter(([, value]) => value));
+        if (fields.slice(0, 4).some(field => !path[field]) || (path.L4 && !path.L3)) return null;
+        const pathDepth = path.L4 ? 6 : path.L3 ? 5 : 4;
+        const pathKey = JSON.stringify(fields.slice(0, pathDepth).map(field => path[field] || ''));
+        const rawBucket = target?.difficultyBucket;
+        const difficultyBucket = rawBucket == null ? null : rawBucket;
+        return target?.pathDepth === pathDepth && text(target?.pathKey) === pathKey &&
+            (difficultyBucket === null || (Number.isInteger(difficultyBucket) && difficultyBucket >= 1 && difficultyBucket <= 5))
+            ? { path, pathDepth, pathKey, difficultyBucket } : null;
+    }
+
+    function summarizeWrongGroups(student) {
+        const results = Array.isArray(student?.questionResults) ? student.questionResults : [];
+        const wrongRows = results.filter(row => text(row?.status).toLowerCase() === 'wrong');
+        const ordersByUid = new Map();
+        for (const row of results) {
+            const uid = text(row?.questionUid);
+            const orderNo = row?.orderNo;
+            if (!QUESTION_UID.test(uid) || !Number.isInteger(orderNo) || orderNo < 1) continue;
+            if (!ordersByUid.has(uid)) ordersByUid.set(uid, new Set());
+            ordersByUid.get(uid).add(orderNo);
+        }
+        const duplicateUids = new Set([...ordersByUid].filter(([, orders]) => orders.size > 1).map(([uid]) => uid));
+        const byOrder = new Map();
+        let invalidMetaRefCount = 0;
+        let unclassifiedWrongCount = 0;
+        for (const row of wrongRows) {
+            const orderNo = row?.orderNo;
+            const uid = text(row?.questionUid);
+            if (!Number.isInteger(orderNo) || orderNo < 1 || !QUESTION_UID.test(uid)) {
+                invalidMetaRefCount++;
+                unclassifiedWrongCount++;
+            } else if (duplicateUids.has(uid)) {
+                invalidMetaRefCount++;
+                unclassifiedWrongCount++;
+            } else {
+                if (!byOrder.has(orderNo)) byOrder.set(orderNo, []);
+                byOrder.get(orderNo).push(uid);
+            }
+        }
+        const context = plainObject(student?.followUpContext) ? student.followUpContext : null;
+        const targets = Array.isArray(context?.confirmedWrongByMeta) ? context.confirmedWrongByMeta : [];
+        const claims = new Map();
+        if (!context || context.coverage?.wrongCount !== wrongRows.length) {
+            invalidMetaRefCount += Math.max(1, wrongRows.length);
+        } else {
+            for (const target of targets) {
+                const refs = Array.isArray(target?.questionRefs) ? target.questionRefs : [];
+                const canonical = historyPathOf(target);
+                const targetValid = Boolean(canonical && refs.length > 0 && target.observedWrongCount === refs.length);
+                const seenOrders = new Set();
+                if (!targetValid) invalidMetaRefCount++;
+                for (const ref of refs) {
+                    const orderNo = ref?.orderNo;
+                    const uid = text(ref?.sourceQuestionUid);
+                    const answerRows = byOrder.get(orderNo) || [];
+                    const valid = targetValid && Number.isInteger(orderNo) && orderNo > 0 && !seenOrders.has(orderNo) &&
+                        QUESTION_UID.test(uid) && Boolean(text(ref?.sourceArchiveFile)) &&
+                        Number.isInteger(ref?.sourceQuestionOrdinal) && ref.sourceQuestionOrdinal > 0 &&
+                        answerRows.length === 1 && answerRows[0] === uid;
+                    if (!valid) invalidMetaRefCount++;
+                    if (Number.isInteger(orderNo) && orderNo > 0) {
+                        if (!claims.has(orderNo)) claims.set(orderNo, []);
+                        claims.get(orderNo).push({ valid, uid, canonical });
+                    }
+                    seenOrders.add(orderNo);
+                }
+                if (!refs.length) invalidMetaRefCount++;
+            }
+        }
+        const groups = new Map();
+        for (const [orderNo, uids] of byOrder) {
+            const matches = claims.get(orderNo) || [];
+            if (uids.length !== 1 || matches.length !== 1 || !matches[0].valid || matches[0].uid !== uids[0]) {
+                unclassifiedWrongCount += uids.length;
+                if (uids.length > 1) invalidMetaRefCount++;
+                continue;
+            }
+            const { canonical, uid } = matches[0];
+            const key = JSON.stringify([canonical.pathKey, canonical.difficultyBucket]);
+            if (!groups.has(key)) groups.set(key, { ...canonical, observedWrongCount: 0, uidCounts: new Map() });
+            const group = groups.get(key);
+            group.observedWrongCount++;
+            group.uidCounts.set(uid, (group.uidCounts.get(uid) || 0) + 1);
+        }
+        return { groups: [...groups.values()], unclassifiedWrongCount, invalidMetaRefCount };
+    }
+
+    function summarizeHistory(input = {}) {
+        const classId = text(input.classId || input.class_id);
+        const assignments = Array.isArray(input.assignments) ? input.assignments : [];
+        const outcomes = Array.isArray(input.outcomes) ? input.outcomes : [];
+        const coverage = {
+            assignmentCount: assignments.length, processedAssignmentCount: 0, cancelledAssignmentCount: 0,
+            failedOutcomeLookupCount: 0, missingOutcomeCount: 0, duplicateAssignmentCount: 0, duplicateOutcomeCount: 0,
+            foreignClassCount: 0, assignmentOutcomeMismatchCount: 0, duplicateStudentCount: 0,
+            sessionIdentityConflictCount: 0, queryPartialAssignmentCount: 0, completeResultCount: 0,
+            partialResultCount: 0, unresolvedResultCount: 0, pendingCount: 0, excludedCount: 0,
+            cancelledPendingCount: 0, unclassifiedWrongCount: 0, invalidMetaRefCount: 0,
+        };
+        const assignmentsById = new Map();
+        const outcomesById = new Map();
+        const events = [];
+        const studentsById = new Map();
+        let queryIssue = !classId;
+
+        for (const assignment of assignments) {
+            const id = text(assignment?.assignmentId || assignment?.id);
+            if (!classId || text(assignment?.classId || assignment?.class_id) !== classId) {
+                coverage.foreignClassCount++;
+                queryIssue = true;
+            } else if (!id) {
+                coverage.assignmentOutcomeMismatchCount++;
+                queryIssue = true;
+            } else {
+                if (!assignmentsById.has(id)) assignmentsById.set(id, []);
+                assignmentsById.get(id).push(assignment);
+            }
+        }
+        for (const rows of assignmentsById.values()) {
+            if (rows.length > 1) { coverage.duplicateAssignmentCount += rows.length - 1; queryIssue = true; }
+            if (rows.some(row => row.cancelled === true || Boolean(text(row.cancelledAt || row.cancelled_at)))) coverage.cancelledAssignmentCount++;
+        }
+        for (const outcome of outcomes) {
+            const id = text(outcome?.assignmentId || outcome?.assignment_id || outcome?.result?.assignment?.assignmentId);
+            if (!id) { coverage.assignmentOutcomeMismatchCount++; queryIssue = true; continue; }
+            if (!outcomesById.has(id)) outcomesById.set(id, []);
+            outcomesById.get(id).push(outcome);
+        }
+        for (const [id, rows] of outcomesById) if (!assignmentsById.has(id)) {
+            coverage.assignmentOutcomeMismatchCount += rows.length;
+            queryIssue = true;
+        }
+
+        for (const [assignmentId, assignmentRows] of assignmentsById) {
+            if (assignmentRows.length !== 1) continue;
+            const assignment = assignmentRows[0];
+            const rows = outcomesById.get(assignmentId) || [];
+            if (!rows.length) { coverage.missingOutcomeCount++; queryIssue = true; continue; }
+            if (rows.length > 1) { coverage.duplicateOutcomeCount += rows.length - 1; queryIssue = true; continue; }
+            const outcome = rows[0];
+            if (outcome?.error || !plainObject(outcome?.result)) { coverage.failedOutcomeLookupCount++; queryIssue = true; continue; }
+            const result = outcome.result;
+            const found = plainObject(result.assignment) ? result.assignment : {};
+            const expectedMode = text(assignment.recommendationMode);
+            if (text(outcome.assignmentId || outcome.assignment_id || found.assignmentId) !== assignmentId ||
+                text(found.assignmentId) !== assignmentId || text(found.classId) !== classId ||
+                !Array.isArray(result.students) ||
+                (expectedMode && text(found.recommendationMode) !== expectedMode) ||
+                (assignment.operationSignature && text(found.operationSignature) !== text(assignment.operationSignature))) {
+                coverage.assignmentOutcomeMismatchCount++;
+                queryIssue = true;
+                continue;
+            }
+            if (result.coverage?.exactAssignment !== true || result.coverage?.queryCoverage?.complete !== true) {
+                coverage.queryPartialAssignmentCount++;
+                queryIssue = true;
+            }
+            const mode = assignment.provenanceKind === 'legacy_transfer' ? 'legacy_transfer'
+                : ['same_uid', 'similar_uid'].includes(expectedMode) ? expectedMode : '';
+            if (!mode) { coverage.assignmentOutcomeMismatchCount++; queryIssue = true; continue; }
+            const hasResultCancellation = typeof found.cancelled === 'boolean' ||
+                Object.prototype.hasOwnProperty.call(found, 'cancelledAt');
+            const resultCancelled = hasResultCancellation
+                ? found.cancelled === true || Boolean(text(found.cancelledAt))
+                : assignment.cancelled === true || Boolean(text(assignment.cancelledAt || assignment.cancelled_at));
+            const discoveredCancelled = assignment.cancelled === true || Boolean(text(assignment.cancelledAt || assignment.cancelled_at));
+            if (resultCancelled !== discoveredCancelled) coverage.cancelledAssignmentCount += resultCancelled ? 1 : -1;
+            coverage.processedAssignmentCount++;
+            const byStudent = new Map();
+            for (const student of Array.isArray(result.students) ? result.students : []) {
+                const studentId = text(student?.studentId || student?.student_id);
+                if (!studentId) { coverage.duplicateStudentCount++; queryIssue = true; continue; }
+                if (!byStudent.has(studentId)) byStudent.set(studentId, []);
+                byStudent.get(studentId).push(student);
+            }
+            for (const [studentId, duplicates] of byStudent) {
+                if (duplicates.length !== 1) { coverage.duplicateStudentCount += duplicates.length - 1; queryIssue = true; continue; }
+                events.push({ assignment, resultAssignment: found, assignmentId, mode, studentId, student: duplicates[0] });
+            }
+        }
+
+        const sessions = new Map();
+        for (const event of events) {
+            const id = text(event.student.sessionId || event.student.session_id);
+            if (!id) continue;
+            if (!sessions.has(id)) sessions.set(id, new Set());
+            sessions.get(id).add(`${event.assignmentId}\u0000${event.studentId}`);
+        }
+        const conflicts = new Set([...sessions].filter(([, owners]) => owners.size > 1).map(([id]) => id));
+        coverage.sessionIdentityConflictCount = conflicts.size;
+        if (conflicts.size) queryIssue = true;
+
+        for (const event of events) {
+            const { assignment, resultAssignment, assignmentId, mode, studentId, student } = event;
+            const sessionId = text(student.sessionId || student.session_id);
+            if (sessionId && conflicts.has(sessionId)) continue;
+            const contextStatus = text(student.followUpContext?.status).toLowerCase();
+            const rawStatus = text(student.status).toLowerCase();
+            const excluded = student.excluded === true || rawStatus === 'excluded' || contextStatus === 'excluded';
+            const hasResultCancellation = typeof resultAssignment.cancelled === 'boolean' ||
+                Object.prototype.hasOwnProperty.call(resultAssignment, 'cancelledAt');
+            const cancelled = hasResultCancellation
+                ? resultAssignment.cancelled === true || Boolean(text(resultAssignment.cancelledAt))
+                : assignment.cancelled === true || Boolean(text(assignment.cancelledAt || assignment.cancelled_at));
+            const attemptStatus = excluded ? 'excluded' : !sessionId ? cancelled ? 'cancelled_pending' : 'pending'
+                : rawStatus === 'partial' || contextStatus === 'partial' ? 'partial'
+                    : rawStatus === 'result' && contextStatus === 'result' ? 'complete_result' : 'unresolved';
+            const statusCountKey = attemptStatus === 'complete_result' ? 'completeResult'
+                : attemptStatus === 'cancelled_pending' ? 'cancelledPending' : attemptStatus;
+            const coverageKey = {
+                complete_result: 'completeResultCount', partial: 'partialResultCount', unresolved: 'unresolvedResultCount',
+                pending: 'pendingCount', excluded: 'excludedCount', cancelled_pending: 'cancelledPendingCount',
+            }[attemptStatus];
+            coverage[coverageKey]++;
+
+            const observed = excluded || !sessionId
+                ? { groups: [], unclassifiedWrongCount: 0, invalidMetaRefCount: 0 }
+                : summarizeWrongGroups(student);
+            coverage.unclassifiedWrongCount += observed.unclassifiedWrongCount;
+            coverage.invalidMetaRefCount += observed.invalidMetaRefCount;
+            if (!studentsById.has(studentId)) studentsById.set(studentId, {
+                studentId, studentName: text(student.studentName || student.student_name),
+                coverage: { statusCounts: { completeResult: 0, partial: 0, unresolved: 0, pending: 0, excluded: 0, cancelledPending: 0 }, unclassifiedWrongCount: 0 },
+                observedWrongCount: 0, uidCounts: new Map(), types: new Map(), history: [],
+            });
+            const aggregate = studentsById.get(studentId);
+            if (!aggregate.studentName) aggregate.studentName = text(student.studentName || student.student_name);
+            aggregate.coverage.statusCounts[statusCountKey]++;
+            aggregate.coverage.unclassifiedWrongCount += observed.unclassifiedWrongCount;
+
+            let eventWrongCount = 0;
+            for (const group of observed.groups) {
+                eventWrongCount += group.observedWrongCount;
+                const key = JSON.stringify([group.pathKey, group.difficultyBucket]);
+                if (!aggregate.types.has(key)) aggregate.types.set(key, {
+                    path: group.path, pathDepth: group.pathDepth, pathKey: group.pathKey,
+                    difficultyBucket: group.difficultyBucket, observedWrongCount: 0, assignments: new Set(),
+                    uidCounts: new Map(), provenance: new Map(),
+                });
+                const type = aggregate.types.get(key);
+                type.observedWrongCount += group.observedWrongCount;
+                type.assignments.add(assignmentId);
+                if (!type.provenance.has(mode)) type.provenance.set(mode, { uids: new Map(), assignments: new Set() });
+                const provenance = type.provenance.get(mode);
+                provenance.assignments.add(assignmentId);
+                for (const [uid, count] of group.uidCounts) {
+                    provenance.uids.set(uid, (provenance.uids.get(uid) || 0) + count);
+                    type.uidCounts.set(uid, (type.uidCounts.get(uid) || 0) + count);
+                    aggregate.uidCounts.set(uid, (aggregate.uidCounts.get(uid) || 0) + count);
+                }
+            }
+            if (!excluded) aggregate.observedWrongCount += eventWrongCount;
+            const sourceMetaStatus = text(student.followUpContext?.coverage?.metaCoverageStatus).toLowerCase();
+            const hasMetaGaps = observed.unclassifiedWrongCount > 0 || observed.invalidMetaRefCount > 0;
+            const metaCoverageStatus = ['pending', 'cancelled_pending', 'excluded'].includes(attemptStatus) ? 'not_observed'
+                : ['not_observed', 'unresolved', 'partial'].includes(sourceMetaStatus) ? sourceMetaStatus
+                    : attemptStatus === 'unresolved' ? 'unresolved' : attemptStatus === 'partial' ? 'partial'
+                        : hasMetaGaps ? observed.groups.length ? 'partial' : 'unresolved'
+                            : sourceMetaStatus === 'complete' ? 'complete' : 'unresolved';
+            aggregate.history.push({
+                assignmentId, examTitle: text(assignment.examTitle || assignment.exam_title),
+                examDate: text(assignment.examDate || assignment.exam_date), mode, attemptStatus, cancelled,
+                observedWrongCount: eventWrongCount, unclassifiedWrongCount: observed.unclassifiedWrongCount, metaCoverageStatus,
+            });
+        }
+
+        const students = [...studentsById.values()].map(student => {
+            const types = [...student.types.values()].map(type => {
+                const provenanceCounts = {};
+                for (const mode of ['same_uid', 'similar_uid', 'legacy_transfer']) {
+                    const provenance = type.provenance.get(mode) || { uids: new Map(), assignments: new Set() };
+                    const counts = [...provenance.uids.values()];
+                    provenanceCounts[mode] = {
+                        observedWrongCount: counts.reduce((sum, count) => sum + count, 0),
+                        distinctQuestionUidCount: counts.length,
+                        repeatUidCount: counts.filter(count => count > 1).length,
+                        repeatUidObservationCount: counts.reduce((sum, count) => sum + count - 1, 0),
+                        assignmentCount: provenance.assignments.size,
+                    };
+                }
+                return {
+                    path: { ...type.path }, pathDepth: type.pathDepth, pathKey: type.pathKey,
+                    difficultyBucket: type.difficultyBucket, observedWrongCount: type.observedWrongCount,
+                    distinctQuestionUidCount: type.uidCounts.size,
+                    repeatUidCount: [...type.uidCounts.values()].filter(count => count > 1).length,
+                    repeatUidObservationCount: [...type.uidCounts.values()].reduce((sum, count) => sum + count - 1, 0),
+                    assignmentCount: type.assignments.size, provenanceCounts,
+                };
+            }).sort((a, b) => b.observedWrongCount - a.observedWrongCount || a.pathKey.localeCompare(b.pathKey) ||
+                Number(a.difficultyBucket || 0) - Number(b.difficultyBucket || 0));
+            const history = student.history.sort((a, b) => b.examDate.localeCompare(a.examDate) || b.assignmentId.localeCompare(a.assignmentId));
+            return {
+                studentId: student.studentId, studentName: student.studentName, coverage: student.coverage,
+                observedWrongCount: student.observedWrongCount, distinctQuestionUidCount: student.uidCounts.size,
+                repeatUidCount: [...student.uidCounts.values()].filter(count => count > 1).length,
+                repeatUidObservationCount: [...student.uidCounts.values()].reduce((sum, count) => sum + count - 1, 0), types, history,
+            };
+        }).sort((a, b) => a.studentName.localeCompare(b.studentName) || a.studentId.localeCompare(b.studentId));
+        const actualCount = coverage.completeResultCount + coverage.partialResultCount + coverage.unresolvedResultCount;
+        const queryStatus = queryIssue ? 'partial' : !assignments.length ? 'empty' : 'complete';
+        const latestResultStatus = !actualCount ? 'not_observed' : coverage.unresolvedResultCount ? 'unresolved'
+            : coverage.partialResultCount ? 'partial' : 'complete';
+        const metaRows = students.flatMap(student => student.history).filter(row =>
+            !['pending', 'cancelled_pending', 'excluded'].includes(row.attemptStatus));
+        const frozenMetaStatus = !metaRows.length ? 'not_observed' : metaRows.some(row => row.metaCoverageStatus === 'unresolved') ? 'unresolved'
+            : metaRows.some(row => row.metaCoverageStatus === 'partial') ? 'partial'
+                : metaRows.every(row => row.metaCoverageStatus === 'complete') ? 'complete' : 'unresolved';
+        return freezeDeep({
+            status: queryIssue ? 'partial' : !assignments.length ? 'empty' : 'ready',
+            coverage: { ...coverage, queryStatus, latestResultStatus, frozenMetaStatus },
+            students,
+        });
     }
 
     function sortByDateNewest(rows) {
@@ -1394,6 +1719,9 @@
                     operationId: text(parsed.marker.operationId),
                     operationSignature: text(parsed.marker.signature),
                     recommendationMode: parsed.recommendationMode,
+                    provenanceKind: parsed.provenanceKind,
+                    cancelled: Boolean(text(assignment.cancelled_at)),
+                    cancelledAt: text(assignment.cancelled_at),
                     cohortIndex: Number(parsed.marker.cohortIndex),
                     paperIndex: Number(parsed.marker.paperIndex),
                     paperCount: Number(parsed.marker.paperCount),
@@ -1530,6 +1858,9 @@
                     operationId: text(parsed.marker.operationId),
                     operationSignature: text(parsed.marker.signature),
                     recommendationMode: parsed.recommendationMode,
+                    provenanceKind: parsed.provenanceKind,
+                    cancelled: Boolean(text(assignment.cancelled_at)),
+                    cancelledAt: text(assignment.cancelled_at),
                     cohortIndex: Number(parsed.marker.cohortIndex),
                     paperIndex: Number(parsed.marker.paperIndex),
                     paperCount: Number(parsed.marker.paperCount),
@@ -1566,6 +1897,7 @@
             discover,
             loadResults,
             canonicalResultStatus,
+            summarizeHistory,
         });
     }
 
@@ -1578,6 +1910,7 @@
         create,
         canonicalResultStatus,
         assignmentMarker,
+        summarizeHistory,
         stableStringify,
     });
 }));
