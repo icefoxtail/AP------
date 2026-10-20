@@ -20,7 +20,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "지수",
+    "standardUnit": "지수의 뜻과 성질",
     "standardUnitOrder": 1,
     "subUnit": "지수의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -48,7 +48,23 @@ window.questionBank = [
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
     "metaProjectionReviewStatus": "EXACT_ACTIVE_SEMANTIC_MATCH",
     "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-    "templateKey": "TPL_EXPONENT_LAW_EVALUATION"
+    "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q01",
+      "primaryMethod": "거듭제곱근을 지수법칙으로 정리한 후 로그값과 합산",
+      "decisiveStep": "5²+3=28",
+      "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+      "ownerPack": "EXISTING_ACTIVE",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-01",
+        "H15-M1-01-EXPONENT"
+      ]
+    }
   },
   {
     "id": 2,
@@ -69,7 +85,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "로그",
+    "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
     "subUnit": "로그의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -95,8 +111,27 @@ window.questionBank = [
     "score": 4.5,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q02",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_ACTIVE_TEMPLATE_NOT_SEMANTICALLY_IDENTICAL",
-    "problemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY",
+    "templateKey": "TPL_LOG_REAL_DOMAIN_SPLIT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q02",
+      "primaryMethod": "로그의 밑과 진수 정의 조건의 교집합",
+      "decisiveStep": "2<a<5, a≠3",
+      "problemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY",
+      "templateKey": "TPL_LOG_REAL_DOMAIN_SPLIT",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-02",
+        "H15-M1-02-LOGARITHM"
+      ]
+    }
   },
   {
     "id": 3,
@@ -117,7 +152,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "로그",
+    "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
     "subUnit": "로그의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -143,8 +178,25 @@ window.questionBank = [
     "score": 3.8,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q03",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_ACTIVE_TEMPLATE_NOT_SEMANTICALLY_IDENTICAL",
-    "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+    "templateKey": "TPL_LOG_EXPONENT_RECIPROCAL_CANCEL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q03",
+      "primaryMethod": "지수방정식을 로그식으로 변환하여 역수 표현 소거",
+      "decisiveStep": "2/x−3/y=2",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_EXPONENT_RECIPROCAL_CANCEL",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-02",
+        "H15-M1-02-LOGARITHM"
+      ]
+    }
   },
   {
     "id": 4,
@@ -165,7 +217,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "로그",
+    "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
     "subUnit": "로그의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -191,8 +243,25 @@ window.questionBank = [
     "score": 4.4,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q04",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_ACTIVE_TEMPLATE_NOT_SEMANTICALLY_IDENTICAL",
-    "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+    "templateKey": "TPL_LOG_SOUND_DISTANCE_DECIBEL",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q04",
+      "primaryMethod": "상용로그의 몫을 거리비 음압 공식에 대입",
+      "decisiveStep": "log(3/10)=−0.52",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_SOUND_DISTANCE_DECIBEL",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-02",
+        "H15-M1-02-LOGARITHM"
+      ]
+    }
   },
   {
     "id": 5,
@@ -218,11 +287,11 @@ window.questionBank = [
     "subUnit": "지수함수의 활용",
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_documented",
-    "level": "중",
+    "level": "하",
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "UNKNOWN",
-    "legacyLevelCompatibility": "NORMAL",
+    "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "primaryMethod": "밑이 0과 1 사이인 지수부등식의 지수 비교",
     "decisiveStep": "x+4>−x",
     "rpmL3": "지수부등식",
@@ -239,8 +308,25 @@ window.questionBank = [
     "score": 3.9,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q05",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_ACTIVE_TEMPLATE_NOT_SEMANTICALLY_IDENTICAL",
-    "problemTypeKey": "PT_EXPONENTIAL_INEQUALITY"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_EXPONENTIAL_MONOTONIC_INEQUALITY",
+    "templateKey": "TPL_EXP_BASE_BELOW_ONE_COMPARISON",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q05",
+      "primaryMethod": "밑이 0과 1 사이인 지수부등식의 지수 비교",
+      "decisiveStep": "x+4>−x",
+      "problemTypeKey": "PT_EXPONENTIAL_MONOTONIC_INEQUALITY",
+      "templateKey": "TPL_EXP_BASE_BELOW_ONE_COMPARISON",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-03",
+        "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION"
+      ]
+    }
   },
   {
     "id": 6,
@@ -261,7 +347,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "로그",
+    "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
     "subUnit": "로그의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -287,8 +373,25 @@ window.questionBank = [
     "score": 4.3,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q06",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_ACTIVE_TEMPLATE_NOT_SEMANTICALLY_IDENTICAL",
-    "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+    "templateKey": "TPL_LOG_PRODUCT_GRAPH_ABSCISSA",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q06",
+      "primaryMethod": "로그의 곱 성질과 눈금 그래프 대응",
+      "decisiveStep": "log(MN)=0.7",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_PRODUCT_GRAPH_ABSCISSA",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-02",
+        "H15-M1-02-LOGARITHM"
+      ]
+    }
   },
   {
     "id": 7,
@@ -335,7 +438,25 @@ window.questionBank = [
     "score": 4.7,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q07",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_OR_EXACT_BINDING_UNRESOLVED"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q07",
+      "primaryMethod": "로그 그래프의 평행이동 가로·세로 변위 계산",
+      "decisiveStep": "a=1, b=−2",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-04",
+        "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH"
+      ]
+    },
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
   },
   {
     "id": 8,
@@ -356,7 +477,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "로그",
+    "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
     "subUnit": "로그의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -382,8 +503,25 @@ window.questionBank = [
     "score": 4.8,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q08",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_ACTIVE_TEMPLATE_NOT_SEMANTICALLY_IDENTICAL",
-    "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+    "templateKey": "TPL_LOG_DECAY_EXPONENT_SOLVE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q08",
+      "primaryMethod": "감쇠 지수모형에 상용로그를 취해 지수 역산",
+      "decisiveStep": "(log90−log77)/log5=0.1",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_DECAY_EXPONENT_SOLVE",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-02",
+        "H15-M1-02-LOGARITHM"
+      ]
+    }
   },
   {
     "id": 9,
@@ -404,7 +542,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "지수",
+    "standardUnit": "지수의 뜻과 성질",
     "standardUnitOrder": 1,
     "subUnit": "지수의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -432,7 +570,27 @@ window.questionBank = [
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
     "metaProjectionReviewStatus": "EXACT_ACTIVE_SEMANTIC_MATCH",
     "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
-    "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER"
+    "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
+    "crossConceptKeys": [
+      "CC_POLYNOMIAL_FACTORIZATION"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q09",
+      "primaryMethod": "역수 거듭제곱의 치환과 세제곱의 합 인수분해",
+      "decisiveStep": "t²−1+t⁻²=7/3",
+      "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
+      "ownerPack": "EXISTING_ACTIVE",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-01",
+        "H15-M1-01-EXPONENT"
+      ]
+    }
   },
   {
     "id": 10,
@@ -453,7 +611,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "로그",
+    "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
     "subUnit": "로그의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -481,7 +639,26 @@ window.questionBank = [
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
     "metaProjectionReviewStatus": "EXACT_ACTIVE_SEMANTIC_MATCH",
     "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
-    "templateKey": "TPL_LOG_INTEGER_DIFFERENCE_PRODUCT"
+    "templateKey": "TPL_LOG_INTEGER_DIFFERENCE_PRODUCT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE",
+      "COND_INTEGER"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q10",
+      "primaryMethod": "로그차의 정수 조건에서 가능한 지수를 추린 후 곱 계산",
+      "decisiveStep": "3logx∈{3,4,5}",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_INTEGER_DIFFERENCE_PRODUCT",
+      "ownerPack": "EXISTING_ACTIVE",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-02",
+        "H15-M1-02-LOGARITHM"
+      ]
+    }
   },
   {
     "id": 11,
@@ -503,7 +680,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "로그",
+    "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
     "subUnit": "로그의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -529,7 +706,28 @@ window.questionBank = [
     "score": 4.6,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q11",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_OR_EXACT_BINDING_UNRESOLVED"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+    "templateKey": "TPL_LOG_DOUBLE_QUADRATIC_ROOT",
+    "crossConceptKeys": [
+      "CC_QUADRATIC_EQUATION",
+      "CC_COMPLETE_SQUARE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q11",
+      "primaryMethod": "감사 수정된 중근을 로그의 지수 관계에 대입",
+      "decisiveStep": "(x−5/2)²=0 ⇒ α=β",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_DOUBLE_QUADRATIC_ROOT",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-02",
+        "H15-M1-02-LOGARITHM"
+      ]
+    }
   },
   {
     "id": 12,
@@ -550,7 +748,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "로그",
+    "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
     "subUnit": "로그의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -578,7 +776,25 @@ window.questionBank = [
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
     "metaProjectionReviewStatus": "EXACT_ACTIVE_SEMANTIC_MATCH",
     "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
-    "templateKey": "TPL_LOG_CHANGE_BASE_TELESCOPING"
+    "templateKey": "TPL_LOG_CHANGE_BASE_TELESCOPING",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q12",
+      "primaryMethod": "로그합을 곱으로 결합한 망원곱 약분",
+      "decisiveStep": "∏(k+4)/(k+3)=(n+4)/4",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "templateKey": "TPL_LOG_CHANGE_BASE_TELESCOPING",
+      "ownerPack": "EXISTING_ACTIVE",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-02",
+        "H15-M1-02-LOGARITHM"
+      ]
+    }
   },
   {
     "id": 13,
@@ -599,7 +815,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "삼각함수",
+    "standardUnit": "삼각함수의 뜻과 값",
     "standardUnitOrder": 5,
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "candidate_evidence",
@@ -625,8 +841,25 @@ window.questionBank = [
     "score": 4,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q13",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_ACTIVE_TEMPLATE_NOT_SEMANTICALLY_IDENTICAL",
-    "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+    "templateKey": "TPL_GENERAL_ANGLE_SAME_QUADRANT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q13",
+      "primaryMethod": "동경의 360° 동치를 적용한 사분면 판단",
+      "decisiveStep": "−460°≡260° (mod 360°)",
+      "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+      "templateKey": "TPL_GENERAL_ANGLE_SAME_QUADRANT",
+      "ownerPack": "TRIGONOMETRY",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-05",
+        "H15-M1-05-TRIGONOMETRIC_DEFINITION"
+      ]
+    }
   },
   {
     "id": 14,
@@ -647,7 +880,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "삼각함수",
+    "standardUnit": "삼각함수의 뜻과 값",
     "standardUnitOrder": 5,
     "subUnit": "삼각함수의 뜻과 값",
     "subUnitConfidence": "candidate_evidence",
@@ -673,8 +906,25 @@ window.questionBank = [
     "score": 3.5,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q14",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_ACTIVE_TEMPLATE_NOT_SEMANTICALLY_IDENTICAL",
-    "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+    "templateKey": "TPL_SECTOR_CENTRAL_ANGLE_ARC_RADIUS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q14",
+      "primaryMethod": "호 길이와 반지름에서 중심각의 호도법 관계를 사용",
+      "decisiveStep": "θ=l/r=2/3",
+      "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "templateKey": "TPL_SECTOR_CENTRAL_ANGLE_ARC_RADIUS",
+      "ownerPack": "TRIGONOMETRY",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-05",
+        "H15-M1-05-TRIGONOMETRIC_DEFINITION"
+      ]
+    }
   },
   {
     "id": 15,
@@ -695,7 +945,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "삼각함수",
+    "standardUnit": "삼각함수의 뜻과 값",
     "standardUnitOrder": 5,
     "subUnit": "삼각함수의 관계",
     "subUnitConfidence": "candidate_evidence",
@@ -723,7 +973,23 @@ window.questionBank = [
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
     "metaProjectionReviewStatus": "EXACT_ACTIVE_SEMANTIC_MATCH",
     "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
-    "templateKey": "TPL_TRIG_RATIONAL_IDENTITY_RECOVERY"
+    "templateKey": "TPL_TRIG_RATIONAL_IDENTITY_RECOVERY",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q15",
+      "primaryMethod": "삼각함수 제곱 관계에서 곱을 구해 역수 합에 대입",
+      "decisiveStep": "sinx·cosx=−3/8",
+      "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+      "templateKey": "TPL_TRIG_RATIONAL_IDENTITY_RECOVERY",
+      "ownerPack": "EXISTING_ACTIVE",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-05",
+        "H15-M1-05-TRIGONOMETRIC_RELATION"
+      ]
+    }
   },
   {
     "id": 16,
@@ -770,7 +1036,27 @@ window.questionBank = [
     "score": 4.9,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q16",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_OR_EXACT_BINDING_UNRESOLVED"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+    "templateKey": "TPL_TRIG_ABSOLUTE_PERIOD_COMBINATION",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q16",
+      "primaryMethod": "절댓값 사인·코사인·탄젠트 함수 주기를 각각 계산",
+      "decisiveStep": "π+2π+2π=5π",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_TRIG_ABSOLUTE_PERIOD_COMBINATION",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-06",
+        "H15-M1-06-TRIGONOMETRIC_GRAPH"
+      ]
+    },
+    "crossConceptKeys": [
+      "CC_ABSOLUTE_VALUE_FUNCTION"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 17,
@@ -817,7 +1103,25 @@ window.questionBank = [
     "score": 5.3,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q17",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_OR_EXACT_BINDING_UNRESOLVED"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_FUNCTION_RECOVERY",
+    "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q17",
+      "primaryMethod": "코사인 그래프 진폭·주기·위상을 눈금으로 역산",
+      "decisiveStep": "그래프 진폭과 위상 및 주기 관계",
+      "problemTypeKey": "PT_FUNCTION_RECOVERY",
+      "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-06",
+        "H15-M1-06-TRIGONOMETRIC_GRAPH"
+      ]
+    },
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT"
   },
   {
     "id": 18,
@@ -864,7 +1168,28 @@ window.questionBank = [
     "score": 5.2,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q18",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_OR_EXACT_BINDING_UNRESOLVED"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+    "templateKey": "TPL_SINE_INSCRIBED_RECTANGLE_AREA",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q18",
+      "primaryMethod": "사인 그래프 대칭점을 이용하여 내접 직사각형의 높이 계산",
+      "decisiveStep": "대칭축 x=2와 밑변 8/3",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
+      "templateKey": "TPL_SINE_INSCRIBED_RECTANGLE_AREA",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-06",
+        "H15-M1-06-TRIGONOMETRIC_GRAPH"
+      ]
+    },
+    "crossConceptKeys": [
+      "CC_FUNCTION_SYMMETRY",
+      "CC_AREA"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 19,
@@ -905,7 +1230,29 @@ window.questionBank = [
     "score": 6,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q19",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_OR_EXACT_BINDING_UNRESOLVED"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_SINE_HORIZONTAL_PHASE_INTERSECTION",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q19",
+      "primaryMethod": "사인 그래프와 수평선 첫 네 교점의 위상합 제약을 분석",
+      "decisiveStep": "첫 네 교점 위상 합산",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+      "templateKey": "TPL_SINE_HORIZONTAL_PHASE_INTERSECTION",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-06",
+        "H15-M1-06-TRIGONOMETRIC_GRAPH"
+      ]
+    },
+    "crossConceptKeys": [
+      "CC_PERIODIC_FUNCTION"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "INTERDEPENDENT"
   },
   {
     "id": 20,
@@ -949,7 +1296,30 @@ window.questionBank = [
     "score": 7,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q20",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_OR_EXACT_BINDING_UNRESOLVED"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_INVERSE_GRAPH",
+    "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q20",
+      "primaryMethod": "로그·지수의 대응 좌표로 만든 직사각형의 겹침 넓이를 비교",
+      "decisiveStep": "2(4−log₂n)=4 ⇒ n=4",
+      "problemTypeKey": "PT_INVERSE_GRAPH",
+      "templateKey": "TPL_INVERSE_GRAPH_GEOMETRY",
+      "ownerPack": "FUNCTIONS_GRAPHS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-04",
+        "H15-M1-04-LOGARITHMIC_FUNCTION_GRAPH"
+      ]
+    },
+    "crossConceptKeys": [
+      "CC_INVERSE_FUNCTION",
+      "CC_AREA"
+    ],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "INTERDEPENDENT"
   },
   {
     "id": 21,
@@ -964,7 +1334,7 @@ window.questionBank = [
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
     "standardCourse": "수학I",
-    "standardUnit": "로그",
+    "standardUnit": "로그의 뜻과 성질",
     "standardUnitOrder": 2,
     "subUnit": "로그의 뜻과 성질",
     "subUnitConfidence": "candidate_evidence",
@@ -990,6 +1360,29 @@ window.questionBank = [
     "score": 7,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q21",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_OR_EXACT_BINDING_UNRESOLVED"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_LOG_FLOOR_INTERVAL_ENUMERATION",
+    "templateKey": "TPL_LOG_FLOOR_INTEGER_INTERVAL_COUNT",
+    "crossConceptKeys": [
+      "CC_GREATEST_INTEGER_FUNCTION"
+    ],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q21",
+      "primaryMethod": "로그 바닥함수의 정수구간을 분할하여 자연수 개수 집계",
+      "decisiveStep": "5+36+215=256",
+      "problemTypeKey": "PT_LOG_FLOOR_INTERVAL_ENUMERATION",
+      "templateKey": "TPL_LOG_FLOOR_INTEGER_INTERVAL_COUNT",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-02",
+        "H15-M1-02-LOGARITHM"
+      ]
+    }
   }
 ];

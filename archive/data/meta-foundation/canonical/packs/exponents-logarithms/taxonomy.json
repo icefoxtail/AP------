@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 8,
-  "templateCount": 14,
+  "problemTypeCount": 10,
+  "templateCount": 22,
   "problemTypes": [
     {
       "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
@@ -213,6 +213,48 @@
           "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q21",
           "representativePrimaryMethod": "반복 제거의 지수모형과 상용로그 역산",
           "representativeDecisiveStep": "(1−x/100)^7≤0.2→x≥20.6"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_EXPONENTIAL_MONOTONIC_INEQUALITY",
+      "canonicalLabelKo": "밑이 1보다 작은 지수함수의 단조성 비교",
+      "definition": "수학I에서 밑이 1보다 작은 지수함수의 단조성 비교. 핵심 수학적 목표를 밑이 0과 1 사이인 지수부등식의 지수 비교으로 해결한다.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "21_효천고_1학기_중간_고2_수학I:q05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "NEW14_HYOCHEON_QID_SOURCE_SOLUTION",
+          "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q05",
+          "representativePrimaryMethod": "밑이 0과 1 사이인 지수부등식의 지수 비교",
+          "representativeDecisiveStep": "x+4>−x"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_LOG_FLOOR_INTERVAL_ENUMERATION",
+      "canonicalLabelKo": "로그 바닥함수 구간별 자연수 계수",
+      "definition": "수학I에서 로그 바닥함수 구간별 자연수 계수. 핵심 수학적 목표를 로그 바닥함수의 정수구간을 분할하여 자연수 개수 집계으로 해결한다.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "21_효천고_1학기_중간_고2_수학I:q21"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "NEW14_HYOCHEON_QID_SOURCE_SOLUTION",
+          "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q21",
+          "representativePrimaryMethod": "로그 바닥함수의 정수구간을 분할하여 자연수 개수 집계",
+          "representativeDecisiveStep": "5+36+215=256"
         }
       ]
     }
@@ -496,6 +538,166 @@
         "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
         "representativePrimaryMethod": "반복 제거의 지수모형과 상용로그 역산",
         "representativeDecisiveStep": "(1−x/100)^7≤0.2→x≥20.6"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_REAL_DOMAIN_SPLIT",
+      "canonicalLabelKo": "로그 밑·진수의 실수 열린구간 분리",
+      "definition": "로그 밑·진수의 실수 열린구간 분리을 결정적 계산 절차로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "로그 밑·진수의 실수 열린구간 분리",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "21_효천고_1학기_중간_고2_수학I:q02"
+      ],
+      "evidenceProvenance": {
+        "source": "NEW14_HYOCHEON_QID_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "로그의 밑과 진수 정의 조건의 교집합",
+        "representativeDecisiveStep": "2<a<5, a≠3"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_EXPONENT_RECIPROCAL_CANCEL",
+      "canonicalLabelKo": "두 지수방정식의 로그 역수 소거",
+      "definition": "두 지수방정식의 로그 역수 소거을 결정적 계산 절차로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "두 지수방정식의 로그 역수 소거",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "21_효천고_1학기_중간_고2_수학I:q03"
+      ],
+      "evidenceProvenance": {
+        "source": "NEW14_HYOCHEON_QID_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "지수방정식을 로그식으로 변환하여 역수 표현 소거",
+        "representativeDecisiveStep": "2/x−3/y=2"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_SOUND_DISTANCE_DECIBEL",
+      "canonicalLabelKo": "거리비 음압의 상용로그 계산",
+      "definition": "거리비 음압의 상용로그 계산을 결정적 계산 절차로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "거리비 음압의 상용로그 계산",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "21_효천고_1학기_중간_고2_수학I:q04"
+      ],
+      "evidenceProvenance": {
+        "source": "NEW14_HYOCHEON_QID_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "상용로그의 몫을 거리비 음압 공식에 대입",
+        "representativeDecisiveStep": "log(3/10)=−0.52"
+      }
+    },
+    {
+      "templateKey": "TPL_EXP_BASE_BELOW_ONE_COMPARISON",
+      "canonicalLabelKo": "밑이 1보다 작은 지수함수의 단조성 비교",
+      "definition": "밑이 1보다 작은 지수함수의 단조성 비교을 결정적 계산 절차로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "밑이 1보다 작은 지수함수의 단조성 비교",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_EXPONENTIAL_MONOTONIC_INEQUALITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "21_효천고_1학기_중간_고2_수학I:q05"
+      ],
+      "evidenceProvenance": {
+        "source": "NEW14_HYOCHEON_QID_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "밑이 0과 1 사이인 지수부등식의 지수 비교",
+        "representativeDecisiveStep": "x+4>−x"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_PRODUCT_GRAPH_ABSCISSA",
+      "canonicalLabelKo": "로그곱 변환과 그래프 좌표 판독",
+      "definition": "로그곱 변환과 그래프 좌표 판독을 결정적 계산 절차로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "로그곱 변환과 그래프 좌표 판독",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "21_효천고_1학기_중간_고2_수학I:q06"
+      ],
+      "evidenceProvenance": {
+        "source": "NEW14_HYOCHEON_QID_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "로그의 곱 성질과 눈금 그래프 대응",
+        "representativeDecisiveStep": "log(MN)=0.7"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_DECAY_EXPONENT_SOLVE",
+      "canonicalLabelKo": "감쇠 지수모형의 상용로그 역산",
+      "definition": "감쇠 지수모형의 상용로그 역산을 결정적 계산 절차로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "감쇠 지수모형의 상용로그 역산",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "21_효천고_1학기_중간_고2_수학I:q08"
+      ],
+      "evidenceProvenance": {
+        "source": "NEW14_HYOCHEON_QID_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "감쇠 지수모형에 상용로그를 취해 지수 역산",
+        "representativeDecisiveStep": "(log90−log77)/log5=0.1"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_DOUBLE_QUADRATIC_ROOT",
+      "canonicalLabelKo": "중근으로 같은 로그값을 얻어 밑 교환",
+      "definition": "중근으로 같은 로그값을 얻어 밑 교환을 결정적 계산 절차로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "중근으로 같은 로그값을 얻어 밑 교환",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "21_효천고_1학기_중간_고2_수학I:q11"
+      ],
+      "evidenceProvenance": {
+        "source": "NEW14_HYOCHEON_QID_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "감사 수정된 중근을 로그의 지수 관계에 대입",
+        "representativeDecisiveStep": "(x−5/2)²=0 ⇒ α=β"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_FLOOR_INTEGER_INTERVAL_COUNT",
+      "canonicalLabelKo": "로그 바닥함수 구간별 자연수 계수",
+      "definition": "로그 바닥함수 구간별 자연수 계수을 결정적 계산 절차로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "로그 바닥함수 구간별 자연수 계수",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_FLOOR_INTERVAL_ENUMERATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "21_효천고_1학기_중간_고2_수학I:q21"
+      ],
+      "evidenceProvenance": {
+        "source": "NEW14_HYOCHEON_QID_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "로그 바닥함수의 정수구간을 분할하여 자연수 개수 집계",
+        "representativeDecisiveStep": "5+36+215=256"
       }
     }
   ],

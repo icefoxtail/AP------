@@ -4,7 +4,7 @@
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
   "problemTypeCount": 4,
-  "templateCount": 5,
+  "templateCount": 7,
   "problemTypes": [
     {
       "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
@@ -197,6 +197,46 @@
         "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
         "representativePrimaryMethod": "sin+cos 치환과 제곱합 범위",
         "representativeDecisiveStep": "3u²−8u−3=0→u=−1/3"
+      }
+    },
+    {
+      "templateKey": "TPL_GENERAL_ANGLE_SAME_QUADRANT",
+      "canonicalLabelKo": "일반각을 한 회전으로 환원해 같은 사분면 판단",
+      "definition": "일반각을 한 회전으로 환원해 같은 사분면 판단을 반복 가능한 결정적 풀이 순서로 사용하는 유형",
+      "aliases": [],
+      "internalSkeleton": "일반각을 한 회전으로 환원해 같은 사분면 판단",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "21_효천고_1학기_중간_고2_수학I:q13"
+      ],
+      "evidenceProvenance": {
+        "source": "NEW14_HYOCHEON_QID_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "동경의 360° 동치를 적용한 사분면 판단",
+        "representativeDecisiveStep": "−460°≡260° (mod 360°)"
+      }
+    },
+    {
+      "templateKey": "TPL_SECTOR_CENTRAL_ANGLE_ARC_RADIUS",
+      "canonicalLabelKo": "호 길이·반지름에서 호도법 중심각 계산",
+      "definition": "호 길이·반지름에서 호도법 중심각 계산을 반복 가능한 결정적 풀이 순서로 사용하는 유형",
+      "aliases": [],
+      "internalSkeleton": "호 길이·반지름에서 호도법 중심각 계산",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "21_효천고_1학기_중간_고2_수학I:q14"
+      ],
+      "evidenceProvenance": {
+        "source": "NEW14_HYOCHEON_QID_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "호 길이와 반지름에서 중심각의 호도법 관계를 사용",
+        "representativeDecisiveStep": "θ=l/r=2/3"
       }
     }
   ],
