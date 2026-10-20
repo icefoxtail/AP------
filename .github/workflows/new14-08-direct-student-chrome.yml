@@ -63,7 +63,7 @@ jobs:
                 await send('Page.navigate',{url:'http://127.0.0.1:'+p+'/archive/engine.html?'+params});
                 let good=false,detail;
                 for(let i=0;i<160;i++){
-                  detail=await evalJs("({mode:window.AppState?.mode,q:window.AppState?.data?.length||0,state:JSON.parse(document.documentElement?.dataset?.apPrintReadiness||'{}').state,imgs:[...document.querySelectorAll('#print-area img')].map(i=>i.complete&&i.naturalWidth>0)})");
+                  detail=await evalJs("({mode:typeof AppState==='undefined'?null:AppState.mode,q:typeof AppState==='undefined'?0:AppState.data?.length||0,state:JSON.parse(document.documentElement?.dataset?.apPrintReadiness||'{}').state,imgs:[...document.querySelectorAll('#print-area img')].map(i=>i.complete&&i.naturalWidth>0)})");
                   if(detail?.mode===mode&&detail.q===21&&detail.state==='RENDER_READY'){good=true;break;}
                   await delay(120);
                 }
