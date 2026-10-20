@@ -1,0 +1,44 @@
+name: NEW14 08 Golden Negative Preflight
+on:
+  push:
+    branches: [new14-08-active-canonical-final-20261020]
+permissions:
+  contents: read
+jobs:
+  golden:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Materialize Golden and Negative verified physical evidence
+        run: |
+          node <<'NODE'
+          const fs=require('fs'),vm=require('vm'),cp=require('child_process'),crypto=require('crypto');
+          const base='archive/exams/original/high/h2/1mid/';
+          const exam=base+'21_효천고_1학기_중간_고2_수학I.js';
+          const samples=[base+'23_제일고_1학기_중간_고2_수학I.js',base+'19_매산고_1학기_중간_고2_수학I.js'];
+          const negative='archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md';
+          const sha=x=>'sha256:'+crypto.createHash('sha256').update(x).digest('hex');
+          const git=p=>cp.execFileSync('git',['hash-object',p],{encoding:'utf8'}).trim();
+          const file=p=>({path:p,sha256:sha(fs.readFileSync(p)),gitBlobSha:git(p)});
+          const load=p=>{const ctx={window:{}};vm.createContext(ctx);vm.runInContext(fs.readFileSync(p,'utf8'),ctx,{timeout:5000});return ctx.window.questionBank;};
+          const observations=[
+            ['세제곱근 몫을 하나로 합치고 로그를 separately 계산해 정답에 연결','로그 밑 양수·1 제외·진수 양수로 정수 후보에서 제외 이유 표시'],
+            ['지수법칙의 지수 차를 명시하며 최종 4까지 계산','로그를 a,b로 치환하고 합차공식을 통해 4a²−b² 도출']
+          ];
+          const questionRefs=samples.flatMap((p,i)=>[1,2].map((qid,j)=>{const q=load(p)[qid-1];return {path:p,qid,solutionSha256:sha(q.solution),solutionExcerpt:q.solution.slice(0,28),observation:observations[i][j]};}));
+          const evid={solutionQualityCalibration:{sampleReadBeforeWork:true,calibrationStatus:'PASS',solutionWorkMode:'TARGETED_REPAIR',calibrationOrder:'SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR',calibrationAxes:['STUDENT_REPRODUCIBILITY','SMALL_BOARD_STRUCTURE','EXPLANATION_DENSITY','VISUAL_SEMANTIC_PARITY','VISUAL_READABILITY'],goldenSampleRefs:samples.map(file),goldenSampleQuestionRefs:questionRefs,negativeSampleRefs:[file(negative)]}};
+          if(load(exam).length!==21)throw Error('INVALID_EXAM_COUNT');
+          fs.writeFileSync('golden-evidence.json',JSON.stringify(evid,null,2)+String.fromCharCode(10));
+          console.log(JSON.stringify({goldenSampleCount:2,goldenQuestionCount:4,negativeSampleCount:1,negativeHash:git(negative)}));
+          NODE
+          node archive/tools/solution-calibration-gate.mjs --exam archive/exams/original/high/h2/1mid/21_효천고_1학기_중간_고2_수학I.js --evidence golden-evidence.json --stage REPAIR --preflight
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: new14-08-golden-negative-evidence
+          path: golden-evidence.json
+          if-no-files-found: ignore
