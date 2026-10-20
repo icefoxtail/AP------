@@ -787,7 +787,7 @@ window.questionBank = [
   {
     "id": 18,
     "questionType": "객관식",
-    "content": "두 집합\n$A = \\{x \\mid (\\log_2 x)^2 - 2a\\log_2 x + a^2-1 \\le 0\\}$\n$B = \\{x \\mid x^2 - 9x + 8 \\le 0\\}$\n에 대하여 $A \\cap B \\neq \\varnothing$을 만족시키는 정수 $a$의 개수는? [4.9점]",
+    "content": "두 집합\n$$A = \\{x \\mid (\\log_2 x)^2 - 2a\\log_2 x + a^2-1 \\le 0\\}$$\n$$B = \\{x \\mid x^2 - 9x + 8 \\le 0\\}$$\n에 대하여 $A \\cap B \\neq \\varnothing$을 만족시키는 정수 $a$의 개수는? [4.9점]",
     "choices": [
       "4",
       "5",
