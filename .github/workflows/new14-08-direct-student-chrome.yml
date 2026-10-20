@@ -1,0 +1,77 @@
+name: NEW14 08 Direct Student Engine Chrome
+on:
+  push:
+    branches: [new14-08-active-canonical-final-20261020]
+permissions:
+  contents: read
+jobs:
+  direct-student-engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Chrome renders actual exam, solution and answer modes with 21 original questions
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: |
+          node <<'NODE'
+          const fs=require('fs'),http=require('http'),os=require('os'),path=require('path'),{spawn}=require('child_process');
+          const root=process.cwd(),delay=ms=>new Promise(r=>setTimeout(r,ms));
+          const title='21_효천고_1학기_중간_고2_수학I.js';
+          const original='archive/exams/original/high/h2/1mid/'+title;
+          if(!fs.existsSync(original))throw Error('TARGET_ORIGINAL_NOT_FOUND');
+          const server=http.createServer((req,res)=>{
+            try{
+              const url=new URL(req.url,'http://localhost'),dest=path.resolve(root,'.'+decodeURIComponent(url.pathname));
+              if(!dest.startsWith(root+path.sep)||!fs.existsSync(dest)||fs.statSync(dest).isDirectory()){res.writeHead(404);res.end();return;}
+              const ext=path.extname(dest),type={'.html':'text/html','.js':'text/javascript','.json':'application/json','.svg':'image/svg+xml','.png':'image/png','.css':'text/css'}[ext]||'application/octet-stream';
+              res.writeHead(200,{'content-type':type+'; charset=utf-8','cache-control':'no-store'});fs.createReadStream(dest).pipe(res);
+            }catch(e){res.writeHead(500);res.end(e.message);}
+          });
+          const run=async()=>{
+            await new Promise(r=>server.listen(0,'127.0.0.1',r));const p=server.address().port;
+            const profile=fs.mkdtempSync(path.join(os.tmpdir(),'new14-08-chrome-'));
+            const ch=spawn(process.env.CHROME_BIN,['--headless=new','--no-sandbox','--disable-gpu','--disable-dev-shm-usage','--no-first-run','--disable-background-networking','--remote-allow-origins=*','--remote-debugging-port=0','--user-data-dir='+profile,'about:blank'],{stdio:'ignore'});
+            let ws;
+            try{
+              let cdPort=0;
+              for(let i=0;i<120;i++){
+                const f=path.join(profile,'DevToolsActivePort');
+                if(ch.exitCode!==null)throw Error('CHROME_DIED');
+                if(fs.existsSync(f)){cdPort=Number(fs.readFileSync(f,'utf8').split(String.fromCharCode(10))[0]);if(cdPort)break;}
+                await delay(100);
+              }
+              if(!cdPort)throw Error('CHROME_DEVTOOLS_UNAVAILABLE');
+              const list=await (await fetch('http://127.0.0.1:'+cdPort+'/json/list')).json(),tab=list.find(x=>x.type==='page');
+              ws=new WebSocket(tab.webSocketDebuggerUrl);
+              await new Promise((ok,no)=>{ws.addEventListener('open',ok,{once:true});ws.addEventListener('error',no,{once:true});});
+              let n=0;const pending=new Map();
+              ws.addEventListener('message',event=>{const m=JSON.parse(event.data),v=pending.get(m.id);if(v){pending.delete(m.id);m.error?v.reject(Error(JSON.stringify(m.error))):v.resolve(m.result);}});
+              const send=(method,params={})=>new Promise((resolve,reject)=>{let id=++n;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}));});
+              const evalJs=async expression=>{const r=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error('BROWSER_JS_EXCEPTION:'+JSON.stringify(r.exceptionDetails));return r.result?.value;};
+              await send('Page.enable');await send('Runtime.enable');
+              const results=[];
+              for(const mode of ['exam','sol','ans']){
+                const params=new URLSearchParams({data:'exams/original/high/h2/1mid/'+title,mode});
+                await send('Page.navigate',{url:'http://127.0.0.1:'+p+'/archive/engine.html?'+params});
+                let good=false,detail;
+                for(let i=0;i<160;i++){
+                  detail=await evalJs("({mode:window.AppState?.mode,q:window.AppState?.data?.length||0,state:JSON.parse(document.documentElement?.dataset?.apPrintReadiness||'{}').state,imgs:[...document.querySelectorAll('#print-area img')].map(i=>i.complete&&i.naturalWidth>0)})");
+                  if(detail?.mode===mode&&detail.q===21&&detail.state==='RENDER_READY'){good=true;break;}
+                  await delay(120);
+                }
+                if(!good||detail.imgs.some(x=>!x))throw Error('STUDENT_CHROME_RENDER_FAIL:'+mode+':'+JSON.stringify(detail));
+                results.push(detail);
+              }
+              console.log('NEW14_08_ORIGINAL_STUDENT_CHROME_PASS '+JSON.stringify(results));
+            }finally{if(ws)ws.close();ch.kill('SIGTERM');await new Promise(r=>server.close(r));try{fs.rmSync(profile,{recursive:true,force:true,maxRetries:8,retryDelay:250});}catch(e){console.error('CHROME_CLEANUP_WARNING:'+e.message);}}
+          };
+          run().catch(e=>{console.error(e);process.exitCode=1;});
+          NODE
