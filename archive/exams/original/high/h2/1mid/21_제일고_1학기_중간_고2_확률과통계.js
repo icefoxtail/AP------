@@ -376,10 +376,10 @@ window.questionBank = [
       "치환과 가중 정수해"
     ]
   },
-  {
+    {
     "id": 10,
     "questionType": "객관식",
-    "content": "두 집합 $A, B$가 $A=\\{1, 2, 3, 4, 5, 6, 7, 8\\}$, $B=\\{1, 2, 3, 4, 5, 6\\}$일 때, $C \\subset A$, $B \\cap C \\neq \\varnothing$을 만족시키는 집합 $C$의 개수를 구하면? [4.0점]",
+    "content": "두 집합 $A, B$가 $A=\\{1, 2, 3, 4, 5, 6, 7, 8\\}$, $B=\\{1, 2, 3, 4, 5, 6\\}$일 때, $C \\subseteq A$, $B \\cap C \\neq \\varnothing$을 만족시키는 집합 $C$의 개수를 구하면? [4.0점]",
     "choices": [
       "64",
       "124",
@@ -388,7 +388,7 @@ window.questionBank = [
       "508"
     ],
     "answer": "④",
-    "solution": "전체에서 조건에 어긋나는 부분집합을 빼는 여사건 방법이 빠르다.\n① $A$의 원소가 $8$개이므로 $C\\subset A$인 부분집합의 수는 $2^8=256$개다.\n② $B\\cap C=\\varnothing$이라면 $C$는 $B=\\{1,2,3,4,5,6\\}$의 원소를 하나도 포함할 수 없다. 따라서 $A\\setminus B=\\{7,8\\}$에서만 고르는 $2^2=4$개다.\n③ 그러므로 $B\\cap C\\ne\\varnothing$인 경우는 $256-4=252$개다. ④가 정답이다.",
+    "solution": "전체에서 조건에 어긋나는 부분집합을 빼는 여사건 방법이 빠르다.\n① $A$의 원소가 $8$개이므로 $C\\subseteq A$인 부분집합의 수는 $2^8=256$개다.\n② $B\\cap C=\\varnothing$이라면 $C$는 $B=\\{1,2,3,4,5,6\\}$의 원소를 하나도 포함할 수 없다. 따라서 $A\\setminus B=\\{7,8\\}$에서만 고르는 $2^2=4$개다.\n③ 그러므로 $B\\cap C\\ne\\varnothing$인 경우는 $256-4=252$개다. ④가 정답이다.",
     "level": "중",
     "difficultyBucket": 2,
     "category": "순열과 조합",
@@ -404,7 +404,7 @@ window.questionBank = [
     "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
     "templateKey": "TPL_COMBINATION_SELECTION",
     "primaryMethod": "여집합 부분집합 세기",
-    "decisiveStep": "원본 C⊂A(포함 관례), 2^8−2^2=252",
+    "decisiveStep": "C⊆A로 명시, 2^8−2^2=252",
     "crossConceptKeys": [],
     "conditionKeys": [],
     "integrationPattern": "NONE",
@@ -744,10 +744,10 @@ window.questionBank = [
       "배반사건 확률"
     ]
   },
-  {
+    {
     "id": 19,
     "questionType": "객관식",
-    "content": "미화, 희봉, 종연, 현정의 생일이 모두 5월이라고 하자. 이 중 적어도 2명의 생일이 같은 확률을 다음에서 고르면? (5월은 1일~31일까지 존재한다.) [4.2점]",
+    "content": "미화, 희봉, 종연, 현정의 생일이 모두 5월이라고 하자. 네 사람의 생일은 1일~31일 중에서 서로 독립적으로 균등하게 정해진다고 가정한다. 이 중 적어도 2명의 생일이 같은 확률을 다음에서 고르면? (5월은 1일~31일까지 존재한다.) [4.2점]",
     "choices": [
       "$1 - \\dfrac{_{31}\\mathrm{C}_4}{_{31}\\Pi_4}$",
       "$1 - \\dfrac{_{31}\\mathrm{P}_4}{_{31}\\Pi_4}$",
