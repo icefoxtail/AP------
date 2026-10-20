@@ -45,10 +45,18 @@
     {
       "packId": "H1_ORIGINAL_SOURCE",
       "version": "1.0.0"
+    },
+    {
+      "packId": "EXPONENTS_LOGARITHMS",
+      "version": "1.0.0"
+    },
+    {
+      "packId": "TRIGONOMETRY",
+      "version": "1.0.0"
     }
   ],
-  "problemTypeCount": 253,
-  "templateCount": 708,
+  "problemTypeCount": 265,
+  "templateCount": 727,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -10013,6 +10021,307 @@
           "source": "H1_STAGE3_L3_GLOBAL_NORMALIZED_1170",
           "semanticLedger": "accepted H1 L3 baseline",
           "definitionSource": "H1_STAGE3_L3_SYNTHESIS_CHECKPOINT_1170"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "canonicalLabelKo": "지수법칙 적용",
+      "definition": "수학Ⅰ 문항에서 '지수법칙 적용'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 지수식·로그식의 결합 계산; 지수 통일을 통한 삼각함수 비 계산; 거듭제곱근과 로그 성질 진술 검증; 서로 역수인 거듭제곱 치환과 값 결정.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q01",
+        "23_제일고_1학기_중간_고2_수학I:q06",
+        "23_제일고_1학기_중간_고2_수학I:q07",
+        "23_제일고_1학기_중간_고2_수학I:q08"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q01",
+          "representativePrimaryMethod": "세제곱근의 몫과 상용로그",
+          "representativeDecisiveStep": "3−2=1"
+        },
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q06",
+          "representativePrimaryMethod": "지수의 밑 통일과 삼각비",
+          "representativeDecisiveStep": "sin=4cos→tan=4"
+        },
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q07",
+          "representativePrimaryMethod": "짝수근 주값과 로그 밑 변환을 보기별 검산",
+          "representativeDecisiveStep": "ㄷ·ㄹ 참, 2개"
+        },
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q08",
+          "representativePrimaryMethod": "t−1/t 세제곱 항등식과 a 이차방정식",
+          "representativeDecisiveStep": "3(a−1/a)=8→a=3"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY",
+      "canonicalLabelKo": "로그의 정의 조건 판정",
+      "definition": "수학Ⅰ 문항에서 '로그의 정의 조건 판정'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 로그 밑·진수 조건의 정수해.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q02",
+          "representativePrimaryMethod": "로그의 밑·진수 조건 교집합",
+          "representativeDecisiveStep": "2<x<5, x≠3→x=4"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
+      "canonicalLabelKo": "로그방정식의 정의역 검토",
+      "definition": "수학Ⅰ 문항에서 '로그방정식의 정의역 검토'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 로그법칙 적용 후 진수조건으로 허근 제거.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q05"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q05",
+          "representativePrimaryMethod": "로그 합과 진수 일치·정의역",
+          "representativeDecisiveStep": "x=4"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "canonicalLabelKo": "로그 성질과 밑변환의 활용",
+      "definition": "수학Ⅰ 문항에서 '로그 성질과 밑변환의 활용'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 로그차 정수 조건으로 값의 곱 결정; 주어진 로그값으로 복합 로그 표현; 연속 로그 곱의 망원식 간소화.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "supportingItemCount": 3,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q09",
+        "23_제일고_1학기_중간_고2_수학I:q10",
+        "23_제일고_1학기_중간_고2_수학I:q12"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q09",
+          "representativePrimaryMethod": "상용로그 지수 치환과 정수 간격",
+          "representativeDecisiveStep": "2logx=3,4,5→곱10^6"
+        },
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q10",
+          "representativePrimaryMethod": "연쇄 밑 변환과 분수 로그",
+          "representativeDecisiveStep": "log2 5=ab"
+        },
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q12",
+          "representativePrimaryMethod": "로그 합을 곱으로 바꾼 망원곱",
+          "representativeDecisiveStep": "∏ln(x+1)/lnx=8"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+      "canonicalLabelKo": "거듭제곱근의 정수 조건",
+      "definition": "수학Ⅰ 문항에서 '거듭제곱근의 정수 조건'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 거듭제곱근의 정수해 경우의 수.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q11"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q11",
+          "representativePrimaryMethod": "짝수·홀수 거듭제곱근의 정수해 분류",
+          "representativeDecisiveStep": "n=2,3,6→a 5개"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_LOG_INEQUALITY_DOMAIN",
+      "canonicalLabelKo": "로그부등식과 구간의 교집합",
+      "definition": "수학Ⅰ 문항에서 '로그부등식과 구간의 교집합'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 로그 치환의 구간과 다항부등식 구간 교집합.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q18"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q18",
+          "representativePrimaryMethod": "로그 이차부등식의 구간과 집합 교집합",
+          "representativeDecisiveStep": "−1≤a≤4→6개"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_EXPONENTIAL_EQUATION_SUBSTITUTION",
+      "canonicalLabelKo": "지수방정식의 치환과 근의 개수",
+      "definition": "수학Ⅰ 문항에서 '지수방정식의 치환과 근의 개수'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 합성지수의 이차식 치환과 절댓값 근의 개수.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q19"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q19",
+          "representativePrimaryMethod": "지수방정식 이차치환 후 절댓값 해 개수 분기",
+          "representativeDecisiveStep": "(2,2)만 2해"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+      "canonicalLabelKo": "지수부등식의 로그 환원",
+      "definition": "수학Ⅰ 문항에서 '지수부등식의 로그 환원'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 미지 지수 포함 부등식을 로그 치환해 자연수 개수; 반복 감소 지수모형과 로그를 이용한 최소 비율.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q20",
+        "23_제일고_1학기_중간_고2_수학I:q21"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q20",
+          "representativePrimaryMethod": "로그 치환으로 지수부등식을 이차부등식화",
+          "representativeDecisiveStep": "−1<log2x<4→1≤x<16"
+        },
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q21",
+          "representativePrimaryMethod": "반복 제거의 지수모형과 상용로그 역산",
+          "representativeDecisiveStep": "(1−x/100)^7≤0.2→x≥20.6"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "canonicalLabelKo": "호도법과 부채꼴의 관계",
+      "definition": "수학Ⅰ 문항에서 '호도법과 부채꼴의 관계'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 호 길이와 넓이로 부채꼴 반지름 구하기.",
+      "aliases": [],
+      "ownerPack": "TRIGONOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q03",
+          "representativePrimaryMethod": "부채꼴 넓이와 호 길이 관계",
+          "representativeDecisiveStep": "S=rl/2→r=4"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
+      "canonicalLabelKo": "사분면 부호와 삼각함수값",
+      "definition": "수학Ⅰ 문항에서 '사분면 부호와 삼각함수값'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 사분면과 제곱합으로 삼각함수 값 구하기.",
+      "aliases": [],
+      "ownerPack": "TRIGONOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q04",
+          "representativePrimaryMethod": "삼각함수 부호와 관계",
+          "representativeDecisiveStep": "sin=−4/5,tan=4/3"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+      "canonicalLabelKo": "삼각함수 항등식과 관계식",
+      "definition": "수학Ⅰ 문항에서 '삼각함수 항등식과 관계식'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 삼각함수 분수식 변형과 부호 판정; 삼각함수 관계의 대수적 인수분해와 가능 범위.",
+      "aliases": [],
+      "ownerPack": "TRIGONOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q14",
+        "23_제일고_1학기_중간_고2_수학I:q22"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q14",
+          "representativePrimaryMethod": "삼각함수 유리식 항등변형",
+          "representativeDecisiveStep": "2/c=−6→c=−1/3"
+        },
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q22",
+          "representativePrimaryMethod": "sin+cos 치환과 제곱합 범위",
+          "representativeDecisiveStep": "3u²−8u−3=0→u=−1/3"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+      "canonicalLabelKo": "일반각과 동경의 관계",
+      "definition": "수학Ⅰ 문항에서 '일반각과 동경의 관계'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 반대 방향 동경 조건으로 각 결정.",
+      "aliases": [],
+      "ownerPack": "TRIGONOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q15"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q15",
+          "representativePrimaryMethod": "반대 동경의 π 합동식",
+          "representativeDecisiveStep": "θ=3π/4→sinπ/3"
         }
       ]
     }
@@ -29350,6 +29659,386 @@
           "gate": "ACCEPTED_WORKING_L4"
         }
       ]
+    },
+    {
+      "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+      "canonicalLabelKo": "지수식·로그식의 결합 계산",
+      "definition": "'지수법칙 적용' 유형에서 '지수식·로그식의 결합 계산'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "지수식·로그식의 결합 계산",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q01"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "세제곱근의 몫과 상용로그",
+        "representativeDecisiveStep": "3−2=1"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_BASE_ARGUMENT_INTEGER_DOMAIN",
+      "canonicalLabelKo": "로그 밑·진수 조건의 정수해",
+      "definition": "'로그의 정의 조건 판정' 유형에서 '로그 밑·진수 조건의 정수해'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "로그 밑·진수 조건의 정수해",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q02"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "로그의 밑·진수 조건 교집합",
+        "representativeDecisiveStep": "2<x<5, x≠3→x=4"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_EQUATION_ARGUMENT_FILTER",
+      "canonicalLabelKo": "로그법칙 적용 후 진수조건으로 허근 제거",
+      "definition": "'로그방정식의 정의역 검토' 유형에서 '로그법칙 적용 후 진수조건으로 허근 제거'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "로그법칙 적용 후 진수조건으로 허근 제거",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_EQUATION_DOMAIN",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q05"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "로그 합과 진수 일치·정의역",
+        "representativeDecisiveStep": "x=4"
+      }
+    },
+    {
+      "templateKey": "TPL_EXPONENT_LAW_TRIG_EXPONENT_COMPARE",
+      "canonicalLabelKo": "지수 통일을 통한 삼각함수 비 계산",
+      "definition": "'지수법칙 적용' 유형에서 '지수 통일을 통한 삼각함수 비 계산'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "지수 통일을 통한 삼각함수 비 계산",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q06"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "지수의 밑 통일과 삼각비",
+        "representativeDecisiveStep": "sin=4cos→tan=4"
+      }
+    },
+    {
+      "templateKey": "TPL_EXPONENT_LAW_STATEMENT_AUDIT",
+      "canonicalLabelKo": "거듭제곱근과 로그 성질 진술 검증",
+      "definition": "'지수법칙 적용' 유형에서 '거듭제곱근과 로그 성질 진술 검증'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "거듭제곱근과 로그 성질 진술 검증",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q07"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "짝수근 주값과 로그 밑 변환을 보기별 검산",
+        "representativeDecisiveStep": "ㄷ·ㄹ 참, 2개"
+      }
+    },
+    {
+      "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
+      "canonicalLabelKo": "서로 역수인 거듭제곱 치환과 값 결정",
+      "definition": "'지수법칙 적용' 유형에서 '서로 역수인 거듭제곱 치환과 값 결정'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "서로 역수인 거듭제곱 치환과 값 결정",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q08"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "t−1/t 세제곱 항등식과 a 이차방정식",
+        "representativeDecisiveStep": "3(a−1/a)=8→a=3"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_INTEGER_DIFFERENCE_PRODUCT",
+      "canonicalLabelKo": "로그차 정수 조건으로 값의 곱 결정",
+      "definition": "'로그 성질과 밑변환의 활용' 유형에서 '로그차 정수 조건으로 값의 곱 결정'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "로그차 정수 조건으로 값의 곱 결정",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q09"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "상용로그 지수 치환과 정수 간격",
+        "representativeDecisiveStep": "2logx=3,4,5→곱10^6"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_BASE_CHANGE_PARAMETER",
+      "canonicalLabelKo": "주어진 로그값으로 복합 로그 표현",
+      "definition": "'로그 성질과 밑변환의 활용' 유형에서 '주어진 로그값으로 복합 로그 표현'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "주어진 로그값으로 복합 로그 표현",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q10"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "연쇄 밑 변환과 분수 로그",
+        "representativeDecisiveStep": "log2 5=ab"
+      }
+    },
+    {
+      "templateKey": "TPL_ROOT_INTEGER_EXPONENT_CASE_COUNT",
+      "canonicalLabelKo": "거듭제곱근의 정수해 경우의 수",
+      "definition": "'거듭제곱근의 정수 조건' 유형에서 '거듭제곱근의 정수해 경우의 수'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "거듭제곱근의 정수해 경우의 수",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q11"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "짝수·홀수 거듭제곱근의 정수해 분류",
+        "representativeDecisiveStep": "n=2,3,6→a 5개"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_CHANGE_BASE_TELESCOPING",
+      "canonicalLabelKo": "연속 로그 곱의 망원식 간소화",
+      "definition": "'로그 성질과 밑변환의 활용' 유형에서 '연속 로그 곱의 망원식 간소화'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "연속 로그 곱의 망원식 간소화",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q12"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "로그 합을 곱으로 바꾼 망원곱",
+        "representativeDecisiveStep": "∏ln(x+1)/lnx=8"
+      }
+    },
+    {
+      "templateKey": "TPL_LOG_QUADRATIC_INTERVAL_INTERSECTION",
+      "canonicalLabelKo": "로그 치환의 구간과 다항부등식 구간 교집합",
+      "definition": "'로그부등식과 구간의 교집합' 유형에서 '로그 치환의 구간과 다항부등식 구간 교집합'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "로그 치환의 구간과 다항부등식 구간 교집합",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_LOG_INEQUALITY_DOMAIN",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q18"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "로그 이차부등식의 구간과 집합 교집합",
+        "representativeDecisiveStep": "−1≤a≤4→6개"
+      }
+    },
+    {
+      "templateKey": "TPL_NESTED_EXPONENTIAL_ROOT_COUNT",
+      "canonicalLabelKo": "합성지수의 이차식 치환과 절댓값 근의 개수",
+      "definition": "'지수방정식의 치환과 근의 개수' 유형에서 '합성지수의 이차식 치환과 절댓값 근의 개수'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "합성지수의 이차식 치환과 절댓값 근의 개수",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_EXPONENTIAL_EQUATION_SUBSTITUTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q19"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "지수방정식 이차치환 후 절댓값 해 개수 분기",
+        "representativeDecisiveStep": "(2,2)만 2해"
+      }
+    },
+    {
+      "templateKey": "TPL_VARIABLE_EXPONENT_LOG_INEQUALITY",
+      "canonicalLabelKo": "미지 지수 포함 부등식을 로그 치환해 자연수 개수",
+      "definition": "'지수부등식의 로그 환원' 유형에서 '미지 지수 포함 부등식을 로그 치환해 자연수 개수'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "미지 지수 포함 부등식을 로그 치환해 자연수 개수",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q20"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "로그 치환으로 지수부등식을 이차부등식화",
+        "representativeDecisiveStep": "−1<log2x<4→1≤x<16"
+      }
+    },
+    {
+      "templateKey": "TPL_EXPONENTIAL_DECAY_INVERSE_BOUND",
+      "canonicalLabelKo": "반복 감소 지수모형과 로그를 이용한 최소 비율",
+      "definition": "'지수부등식의 로그 환원' 유형에서 '반복 감소 지수모형과 로그를 이용한 최소 비율'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "반복 감소 지수모형과 로그를 이용한 최소 비율",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "parentProblemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q21"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "반복 제거의 지수모형과 상용로그 역산",
+        "representativeDecisiveStep": "(1−x/100)^7≤0.2→x≥20.6"
+      }
+    },
+    {
+      "templateKey": "TPL_SECTOR_RADIUS_FROM_AREA_ARC",
+      "canonicalLabelKo": "호 길이와 넓이로 부채꼴 반지름 구하기",
+      "definition": "'호도법과 부채꼴의 관계' 유형에서 '호 길이와 넓이로 부채꼴 반지름 구하기'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "호 길이와 넓이로 부채꼴 반지름 구하기",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q03"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "부채꼴 넓이와 호 길이 관계",
+        "representativeDecisiveStep": "S=rl/2→r=4"
+      }
+    },
+    {
+      "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO",
+      "canonicalLabelKo": "사분면과 제곱합으로 삼각함수 값 구하기",
+      "definition": "'사분면 부호와 삼각함수값' 유형에서 '사분면과 제곱합으로 삼각함수 값 구하기'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "사분면과 제곱합으로 삼각함수 값 구하기",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q04"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "삼각함수 부호와 관계",
+        "representativeDecisiveStep": "sin=−4/5,tan=4/3"
+      }
+    },
+    {
+      "templateKey": "TPL_TRIG_RATIONAL_IDENTITY_RECOVERY",
+      "canonicalLabelKo": "삼각함수 분수식 변형과 부호 판정",
+      "definition": "'삼각함수 항등식과 관계식' 유형에서 '삼각함수 분수식 변형과 부호 판정'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "삼각함수 분수식 변형과 부호 판정",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q14"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "삼각함수 유리식 항등변형",
+        "representativeDecisiveStep": "2/c=−6→c=−1/3"
+      }
+    },
+    {
+      "templateKey": "TPL_OPPOSITE_RAYS_GENERAL_ANGLE",
+      "canonicalLabelKo": "반대 방향 동경 조건으로 각 결정",
+      "definition": "'일반각과 동경의 관계' 유형에서 '반대 방향 동경 조건으로 각 결정'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "반대 방향 동경 조건으로 각 결정",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q15"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "반대 동경의 π 합동식",
+        "representativeDecisiveStep": "θ=3π/4→sinπ/3"
+      }
+    },
+    {
+      "templateKey": "TPL_TRIG_IDENTITY_ROOT_FEASIBILITY",
+      "canonicalLabelKo": "삼각함수 관계의 대수적 인수분해와 가능 범위",
+      "definition": "'삼각함수 항등식과 관계식' 유형에서 '삼각함수 관계의 대수적 인수분해와 가능 범위'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "삼각함수 관계의 대수적 인수분해와 가능 범위",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q22"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "sin+cos 치환과 제곱합 범위",
+        "representativeDecisiveStep": "3u²−8u−3=0→u=−1/3"
+      }
     }
   ]
 }
