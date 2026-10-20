@@ -304,7 +304,7 @@ function main() {
   const stable = { ...next };
   delete stable.generatedAt;
   next.identityDigest = sha256(JSON.stringify(stable));
-  fs.writeFileSync(identityPath, JSON.stringify(next, null, 2) + '\n', 'utf8');
+  fs.writeFileSync(identityPath, JSON.stringify(next) + '\n', 'utf8');
   console.log(JSON.stringify({
     status: 'UPDATED',
     records: records.length,
