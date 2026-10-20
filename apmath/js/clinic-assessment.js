@@ -108,6 +108,7 @@
         if (!plainObject(operation) || operation.schemaVersion !== RECOVERY_SCHEMA || !UUID_V4.test(text(operation.operationId)) ||
             !/^[0-9a-f]{64}$/i.test(text(operation.signature)) || !text(operation.title) ||
             !dateString(operation.examDate) || !text(operation.indexVersion) ||
+            (operation.recommendationMode != null && !['same_uid', 'similar_uid'].includes(text(operation.recommendationMode))) ||
             !Array.isArray(operation.cohorts) || !operation.cohorts.length) return false;
         const batchIds = new Set();
         const assignmentBatchIds = new Set();
@@ -232,7 +233,11 @@
         const payload = parseAssignmentPayload(assignment);
         const meta = plainObject(payload.meta) ? payload.meta : {};
         const marker = plainObject(meta.clinicRecommendationAssessment) ? meta.clinicRecommendationAssessment : null;
-        if (!marker || marker.schemaVersion !== CONTRACT_VERSION || marker.kind !== 'TRANSFER' ||
+        const markerKind = text(marker?.kind).toUpperCase();
+        const markerMode = text(marker?.recommendationMode).toLowerCase();
+        const recommendationMode = markerKind === 'TRANSFER' && (!markerMode || markerMode === 'similar_uid') ? 'similar_uid'
+            : markerKind === 'FOLLOW_UP' && ['same_uid', 'similar_uid'].includes(markerMode) ? markerMode : '';
+        if (!marker || marker.schemaVersion !== CONTRACT_VERSION || !recommendationMode ||
             !/^[0-9a-f]{64}$/i.test(text(marker.signature))) return null;
         const markerUids = Array.isArray(marker.questionUids) ? marker.questionUids.map(text) : [];
         const metaUids = Array.isArray(meta.questionUids) ? meta.questionUids.map(text)
@@ -241,7 +246,7 @@
         if (!markerUids.length || markerUids.some(uid => !QUESTION_UID.test(uid)) ||
             markerUids.length !== assignmentCount ||
             stableStringify(markerUids) !== stableStringify(metaUids)) return null;
-        return { payload, meta, marker, questionUids: markerUids };
+        return { payload, meta, marker, recommendationMode, questionUids: markerUids };
     }
 
     function sortByDateNewest(rows) {
@@ -429,7 +434,14 @@
                 batchStatuses.includes('SAVE_OUTCOME_UNKNOWN') ? 'OUTCOME_UNKNOWN'
             : statuses.some(value => value === 'FAILED') || batchStatuses.includes('FAILED') ? 'FAILED'
             : 'IN_PROGRESS';
-        return { contractVersion: CONTRACT_VERSION, operationId: plan.operationId, signature: plan.signature, status, cohorts };
+        return {
+            contractVersion: CONTRACT_VERSION,
+            operationId: plan.operationId,
+            signature: plan.signature,
+            ...(plan.recommendationMode ? { recommendationMode: plan.recommendationMode } : {}),
+            status,
+            cohorts,
+        };
     }
 
     function create(options = {}) {
@@ -492,6 +504,7 @@
                 schemaVersion: RECOVERY_SCHEMA,
                 operationId: plan.operationId,
                 signature: plan.signature,
+                ...(plan.recommendationMode ? { recommendationMode: plan.recommendationMode } : {}),
                 title: plan.title,
                 examDate: plan.examDate,
                 indexVersion: plan.indexVersion,
@@ -599,6 +612,10 @@
             if (typeof archive2Core?.gradeRank !== 'function' || typeof archive2Core?.pathKey !== 'function') {
                 throw error('ARCHIVE2_CORE_UNAVAILABLE', 'Archive 2.0 canonical helper를 불러오지 못했습니다.');
             }
+            const recommendationMode = text(input.recommendationMode).toLowerCase();
+            if (recommendationMode && !['same_uid', 'similar_uid'].includes(recommendationMode)) {
+                throw error('INVALID_RECOMMENDATION_MODE', '후속 추천 방식이 올바르지 않습니다.');
+            }
             const recommendationOptions = normalizedRecommendationOptions(input.recommendationOptions);
             const rawSelections = Array.isArray(input.selections) ? input.selections : [];
             const grouped = new Map();
@@ -613,6 +630,12 @@
                     throw error('TARGET_GRADE_UNRESOLVED', '받는 반의 학년을 확인할 수 없어 시험으로 배정할 수 없습니다.');
                 }
                 const rawItems = Array.isArray(selection.items) ? selection.items : [];
+                const itemModes = rawItems.map(entry => text(entry?.candidate?.followUpMode || entry?.followUpMode).toLowerCase());
+                if (recommendationMode
+                    ? itemModes.length !== rawItems.length || itemModes.some(itemMode => itemMode !== recommendationMode)
+                    : itemModes.some(Boolean)) {
+                    throw error('FOLLOW_UP_MODE_MISMATCH', '선택한 후속 추천 방식과 문항 정보가 일치하지 않습니다.');
+                }
                 const items = rawItems.map(entry => itemFacts(entry, archive2Core, targetGradeRank));
                 if (!items.length) continue;
                 const studentKey = `${cls.classId}|${studentId}`;
@@ -676,6 +699,7 @@
                             paperIndex: globalPaperIndex,
                             items: part.items,
                             questionUids: part.items.map(item => item.uid),
+                            recommendationMode: recommendationMode || 'similar_uid',
                             sequenceStart: part.sequenceStart,
                             sequenceEnd: part.sequenceEnd,
                             contentGrade: run.grade,
@@ -701,7 +725,8 @@
                 }
                 const summary = {
                     schemaVersion: CONTRACT_VERSION,
-                    kind: 'TRANSFER',
+                    kind: recommendationMode ? 'FOLLOW_UP' : 'TRANSFER',
+                    ...(recommendationMode ? { recommendationMode } : {}),
                     operationId,
                     cohortIndex,
                     paperCount,
@@ -743,7 +768,11 @@
                                 grade: paper.contentGrade,
                                 subject,
                                 questionUids,
-                                printHeaderOptions: { title: paperTitle, subtitle: '유형 보충 시험' },
+                                printHeaderOptions: {
+                                    title: paperTitle,
+                                    subtitle: recommendationMode === 'same_uid' ? '같은 문항 다시 연습'
+                                        : recommendationMode === 'similar_uid' ? '다른 유사 문항 보충' : '유형 보충 시험',
+                                },
                                 includeQr: true,
                                 qpp: 4,
                                 sourceType: 'mixed',
@@ -777,6 +806,7 @@
                 examDate,
                 indexVersion,
                 recommendationOptions,
+                ...(recommendationMode ? { recommendationMode } : {}),
                 coverage,
                 cohorts,
                 createdAt: new Date().toISOString(),
@@ -907,6 +937,7 @@
             const assignment = matches[0];
             const parsed = assignmentMarker(assignment);
             if (!parsed || stableStringify(parsed.questionUids) !== stableStringify(paper.questionUids) ||
+                parsed.recommendationMode !== (paper.recommendationMode || 'similar_uid') ||
                 text(parsed.marker.operationId) !== paper.operationId ||
                 Number(parsed.marker.cohortIndex) !== paper.cohortIndex ||
                 Number(parsed.marker.paperIndex) !== paper.paperIndex ||
@@ -945,7 +976,8 @@
                 Number(assignment.question_count) !== paper.questionUids.length ||
                 questionUids.length !== paper.questionUids.length ||
                 stableStringify(questionUids) !== stableStringify(paper.questionUids) ||
-                !parsed || stableStringify(parsed.questionUids) !== stableStringify(paper.questionUids) ||
+                !parsed || parsed.recommendationMode !== (paper.recommendationMode || 'similar_uid') ||
+                stableStringify(parsed.questionUids) !== stableStringify(paper.questionUids) ||
                 text(parsed.marker.operationId) !== paper.operationId ||
                 Number(parsed.marker.cohortIndex) !== paper.cohortIndex ||
                 Number(parsed.marker.paperIndex) !== paper.paperIndex ||
@@ -1099,6 +1131,7 @@
                     })),
                 })),
             };
+            if (rawPlan.recommendationMode) signatureInput.recommendationMode = rawPlan.recommendationMode;
             rawPlan.signature = await sha256Hex(stableStringify(signatureInput), options.crypto || globalThis.crypto);
             for (const cohort of rawPlan.cohorts) {
                 for (const batch of cohort.contentBatches) {
@@ -1264,6 +1297,7 @@
                             const assignment = matches[0];
                             const parsed = assignmentMarker(assignment);
                             if (!parsed || stableStringify(parsed.questionUids) !== stableStringify(questionUids) ||
+                                parsed.recommendationMode !== (operation.recommendationMode || 'similar_uid') ||
                                 text(parsed.marker.operationId) !== operation.operationId ||
                                 text(parsed.marker.signature) !== operation.signature ||
                                 Number(parsed.marker.cohortIndex) !== Number(cohort.cohortIndex) ||
@@ -1314,6 +1348,7 @@
                 operations.push({
                     operationId: operation.operationId,
                     signature: operation.signature,
+                    recommendationMode: operation.recommendationMode || 'similar_uid',
                     title: operation.title,
                     examDate: operation.examDate,
                     status: operationStatus,
@@ -1358,6 +1393,7 @@
                     questionUids: [...parsed.questionUids],
                     operationId: text(parsed.marker.operationId),
                     operationSignature: text(parsed.marker.signature),
+                    recommendationMode: parsed.recommendationMode,
                     cohortIndex: Number(parsed.marker.cohortIndex),
                     paperIndex: Number(parsed.marker.paperIndex),
                     paperCount: Number(parsed.marker.paperCount),
@@ -1493,6 +1529,7 @@
                     questionUids: [...expectedUids],
                     operationId: text(parsed.marker.operationId),
                     operationSignature: text(parsed.marker.signature),
+                    recommendationMode: parsed.recommendationMode,
                     cohortIndex: Number(parsed.marker.cohortIndex),
                     paperIndex: Number(parsed.marker.paperIndex),
                     paperCount: Number(parsed.marker.paperCount),

@@ -1086,12 +1086,20 @@
                         observedWrongCount: 0,
                         questionUids: new Set(),
                         questionOrderNos: new Set(),
+                        questionRefs: new Map(),
                     });
                 }
                 const group = groups.get(groupKey);
                 group.observedWrongCount++;
                 group.questionUids.add(questionUid);
                 group.questionOrderNos.add(orderNo);
+                group.questionRefs.set(orderNo, {
+                    orderNo,
+                    sourceQuestionUid: facts.identity.questionUid,
+                    sourceArchiveFile: facts.identity.sourceFile,
+                    sourceQuestionOrdinal: facts.identity.sourceOrdinal,
+                    sourceFingerprint: facts.identity.fingerprint || null,
+                });
             }
         }
 
@@ -1108,6 +1116,7 @@
                 difficultyBucket: group.difficultyBucket,
                 questionCount: questionCountForMeta,
                 questionOrderNos: [...group.questionOrderNos].sort((a, b) => a - b),
+                questionRefs: [...group.questionRefs.values()].sort((a, b) => a.orderNo - b.orderNo),
                 observedWrongCount: group.observedWrongCount,
                 recommendationEligibleCount,
             };
@@ -1131,6 +1140,7 @@
             difficultyBucket: row.difficultyBucket,
             questionCount: row.questionCount,
             questionOrderNos: [...row.questionOrderNos],
+            questionRefs: row.questionRefs.map(ref => ({ ...ref })),
             observedWrongCount: row.observedWrongCount,
             recommendationEligibleCount: row.recommendationEligibleCount,
         }));
@@ -1164,6 +1174,333 @@
         });
     }
 
+    function buildFollowUpCandidates(input = {}) {
+        const mode = text(input.mode).toLowerCase();
+        const studentId = text(input.studentId);
+        const followUpContext = object(input.followUpContext);
+        const questionResults = Array.isArray(input.questionResults) ? input.questionResults : [];
+        const recommendationInput = object(followUpContext.recommendationInput);
+        const rawTargets = Array.isArray(recommendationInput.targets) ? recommendationInput.targets : [];
+        const optionsInput = own(input, 'recommendationOptions')
+            ? { recommendationOptions: input.recommendationOptions }
+            : own(input, 'countPerStudent') ? { countPerStudent: input.countPerStudent } : {};
+        const rawTargetUidCount = new Set(rawTargets.flatMap(target =>
+            (Array.isArray(target?.questionRefs) ? target.questionRefs : []).map(ref => text(ref?.sourceQuestionUid)).filter(Boolean)
+        )).size;
+        const recommendationConfig = mode === 'same_uid'
+            ? { normalized: {
+                countPerStudent: Math.max(1, Math.min(400, rawTargetUidCount)),
+                difficultyMode: 'match_wrong',
+                selectedDifficultyBuckets: [],
+            }, errors: [] }
+            : recommendationOptionsOf(optionsInput);
+        const limit = recommendationConfig.normalized.countPerStudent;
+        const targetGrade = text(input.targetGrade);
+        const archive2Core = input.archive2Core || null;
+        const candidateRecords = Array.isArray(input.candidateRecords) ? input.candidateRecords : [];
+        const errors = recommendationConfig.errors;
+        if (!['same_uid', 'similar_uid'].includes(mode)) {
+            errors.push({ code: 'invalid_follow_up_mode', field: 'mode', message: 'mode must be same_uid or similar_uid.' });
+        }
+        if (!studentId) errors.push({ code: 'invalid_follow_up_student', field: 'studentId', message: 'studentId is required.' });
+        if (followUpContext.status !== 'result' || followUpContext.coverage?.attemptStatus !== 'result' ||
+            followUpContext.coverage?.recommendationEligible !== true || recommendationInput.eligible !== true || !rawTargets.length) {
+            errors.push({ code: 'follow_up_result_not_eligible', field: 'followUpContext', message: 'A complete latest result with canonical follow-up evidence is required.' });
+        }
+        if (!targetGrade || !archive2Core?.gradeRank?.(targetGrade)) {
+            errors.push({ code: 'invalid_target_grade', field: 'targetGrade', message: 'The recipient class grade could not be confirmed.' });
+        }
+
+        const emptyCandidates = () => [{
+            studentId,
+            requestedCount: mode === 'same_uid' ? 0 : limit,
+            returnedCount: 0,
+            shortfall: mode === 'same_uid' ? 0 : Math.max(0, limit || 0),
+            items: [],
+        }];
+        const emptyCoverage = {
+            scope: 'follow_up',
+            mode,
+            attemptStatus: text(followUpContext.coverage?.attemptStatus),
+            targetMetaCount: rawTargets.length,
+            targetUidCount: 0,
+            candidateRecordCount: candidateRecords.length,
+        };
+        if (errors.length) {
+            return {
+                contractVersion: CONTRACT_VERSION,
+                status: errors.some(row => row.code === 'follow_up_result_not_eligible' || row.code === 'invalid_follow_up_mode' || row.code === 'invalid_follow_up_student')
+                    ? 'invalid_context' : 'invalid_options',
+                countBasis: 'latest_attempt_follow_up',
+                recommendationMode: mode,
+                recommendationOptions: recommendationConfig.normalized,
+                coverage: emptyCoverage,
+                evidence: [],
+                candidates: emptyCandidates(),
+                exclusions: {},
+                errors,
+            };
+        }
+
+        const questionResultsByOrder = new Map();
+        for (const row of questionResults) {
+            const orderNo = orderNoOf(row);
+            if (!orderNo) continue;
+            if (!questionResultsByOrder.has(orderNo)) questionResultsByOrder.set(orderNo, []);
+            questionResultsByOrder.get(orderNo).push(row);
+        }
+        const normalizedTargets = [];
+        const targetUids = new Set();
+        let invalidTargetReferenceCount = 0;
+        for (const target of rawTargets) {
+            const canonical = canonicalPath(target?.path);
+            const difficultyBucket = target?.difficultyBucket == null ? null : canonicalBucket({ difficultyBucket: target.difficultyBucket });
+            const orderNos = Array.isArray(target?.questionOrderNos)
+                ? target.questionOrderNos.map(positiveInteger).filter(Boolean) : [];
+            const refs = Array.isArray(target?.questionRefs) ? target.questionRefs : [];
+            const seenOrders = new Set();
+            const targetRefs = [];
+            let valid = Boolean(canonical) && canonical.depth === Number(target.pathDepth) &&
+                canonical.key === text(target.pathKey) && (target.difficultyBucket == null || difficultyBucket != null) &&
+                orderNos.length > 0 && refs.length === orderNos.length;
+            for (const ref of refs) {
+                const orderNo = positiveInteger(ref?.orderNo);
+                const questionUid = text(ref?.sourceQuestionUid);
+                const identity = identityOf({
+                    source_identity_status: 'VERIFIED',
+                    source_question_uid: questionUid,
+                    source_archive_file: ref?.sourceArchiveFile,
+                    source_question_ordinal: ref?.sourceQuestionOrdinal,
+                    source_fingerprint: ref?.sourceFingerprint,
+                });
+                const resultRows = orderNo ? questionResultsByOrder.get(orderNo) || [] : [];
+                const result = uniqueRow(resultRows);
+                const resultMatches = resultRows.length === 1 && text(result?.status).toLowerCase() === 'wrong' &&
+                    text(result?.questionUid) === questionUid;
+                if (!orderNo || seenOrders.has(orderNo) || !orderNos.includes(orderNo) ||
+                    !CANONICAL_UID_RE.test(questionUid) || !identity.verified || !resultMatches) {
+                    valid = false;
+                    invalidTargetReferenceCount++;
+                    continue;
+                }
+                seenOrders.add(orderNo);
+                targetRefs.push({
+                    orderNo,
+                    sourceQuestionUid: identity.questionUid,
+                    sourceArchiveFile: identity.sourceFile,
+                    sourceQuestionOrdinal: identity.sourceOrdinal,
+                    sourceFingerprint: identity.fingerprint || null,
+                });
+            }
+            if (seenOrders.size !== orderNos.length || targetRefs.length !== refs.length ||
+                new Set(targetRefs.map(ref => ref.sourceQuestionUid)).size !== Number(target.questionCount)) valid = false;
+            if (!valid) {
+                invalidTargetReferenceCount++;
+                continue;
+            }
+            const normalizedTarget = {
+                path: { ...canonical.path },
+                pathDepth: canonical.depth,
+                pathKey: canonical.key,
+                difficultyBucket,
+                questionCount: Number(target.questionCount),
+                questionOrderNos: [...seenOrders].sort((a, b) => a - b),
+                questionRefs: targetRefs.sort((a, b) => a.orderNo - b.orderNo),
+                observedWrongCount: Math.max(0, Number(target.observedWrongCount) || 0),
+            };
+            normalizedTargets.push(normalizedTarget);
+            normalizedTarget.questionRefs.forEach(ref => targetUids.add(ref.sourceQuestionUid));
+        }
+        if (invalidTargetReferenceCount || normalizedTargets.length !== rawTargets.length) {
+            errors.push({ code: 'follow_up_target_reference_mismatch', field: 'followUpContext.recommendationInput.targets', message: 'Follow-up question references no longer match the latest result.' });
+            return {
+                contractVersion: CONTRACT_VERSION,
+                status: 'invalid_context',
+                countBasis: 'latest_attempt_follow_up',
+                recommendationMode: mode,
+                recommendationOptions: recommendationConfig.normalized,
+                coverage: { ...emptyCoverage, targetUidCount: targetUids.size, invalidTargetReferenceCount },
+                evidence: [],
+                candidates: emptyCandidates(),
+                exclusions: { invalidTargetReferenceCount },
+                errors,
+            };
+        }
+
+        const exclusions = {
+            invalidCandidateIdentity: 0,
+            duplicateCandidateUid: 0,
+            candidateMissingQuestionNo: 0,
+            candidateMissingCanonicalPath: 0,
+            candidateSourceIneligible: 0,
+            candidateAdvancedIneligible: 0,
+            candidateNoPathMatch: 0,
+            candidateSelectedBucketMismatch: 0,
+            candidateGradeIneligible: 0,
+            candidateDifficultyIneligible: 0,
+            candidateCurrentTargetUid: 0,
+            sameUidCandidateMissing: 0,
+            sameUidCandidateIdentityMismatch: 0,
+        };
+        const candidateIndex = buildCandidateIndex(
+            candidateRecords,
+            archive2Core,
+            input.canonicalAuthority || null,
+            exclusions,
+            targetGrade
+        );
+        const factsByUid = new Map();
+        for (const group of candidateIndex.values()) {
+            for (const fact of group.anyBucket) factsByUid.set(fact.identity.questionUid, fact);
+        }
+        const used = new Set();
+        const items = [];
+        const requestedCount = mode === 'same_uid' ? targetUids.size : limit;
+        const selectedBuckets = recommendationConfig.normalized.selectedDifficultyBuckets;
+        const filterMode = recommendationConfig.normalized.difficultyMode;
+        const requestedLimit = mode === 'same_uid' ? targetUids.size : limit;
+        const addCandidate = (fact, target, requestedBucket, candidateMode, refs = []) => {
+            const { record, identity, meta } = fact;
+            const item = clinicItemForCandidate(record, identity, {
+                path: target.path,
+                pathDepth: target.pathDepth,
+                pathKey: target.pathKey,
+                difficultyBucket: target.difficultyBucket,
+                wrongCount: target.observedWrongCount,
+                sessionCount: 1,
+                sourceOriginRefs: [],
+                outcomeSources: ['result_items'],
+            }, meta, requestedBucket, candidateMode === 'same_uid' ? 'same_uid' : filterMode);
+            item.recommendationReason = {
+                basis: candidateMode === 'same_uid' ? 'follow_up_same_uid' : 'follow_up_similar_uid',
+                recommendationMode: candidateMode,
+                path: { ...target.path },
+                pathDepth: target.pathDepth,
+                difficultyBucket: target.difficultyBucket,
+                requestedBucket,
+                filterMode: candidateMode === 'same_uid' ? 'unfiltered' : filterMode,
+            };
+            item.followUpMode = candidateMode;
+            if (candidateMode === 'same_uid') {
+                const fingerprints = [...new Set(refs.map(ref => text(ref.sourceFingerprint)).filter(Boolean))];
+                const currentFingerprint = text(identity.fingerprint);
+                item.questionOrderNos = [...new Set(refs.map(ref => ref.orderNo))].sort((a, b) => a - b);
+                item.sourceFingerprintRelation = !currentFingerprint || !fingerprints.length ? 'unknown'
+                    : fingerprints.every(fingerprint => fingerprint === currentFingerprint) ? 'fingerprint_match' : 'fingerprint_changed';
+            }
+            items.push(item);
+            used.add(identity.questionUid);
+        };
+
+        if (mode === 'same_uid') {
+            const refsByUid = new Map();
+            for (const target of normalizedTargets) {
+                for (const ref of target.questionRefs) {
+                    if (!refsByUid.has(ref.sourceQuestionUid)) refsByUid.set(ref.sourceQuestionUid, []);
+                    refsByUid.get(ref.sourceQuestionUid).push({ ...ref, target });
+                }
+            }
+            for (const [questionUid, refs] of refsByUid) {
+                const fact = factsByUid.get(questionUid);
+                if (!fact) {
+                    exclusions.sameUidCandidateMissing++;
+                    continue;
+                }
+                if (refs.some(ref => fact.identity.sourceFile !== ref.sourceArchiveFile ||
+                    fact.identity.sourceOrdinal !== ref.sourceQuestionOrdinal)) {
+                    exclusions.sameUidCandidateIdentityMismatch++;
+                    continue;
+                }
+                if (used.has(questionUid)) continue;
+                const firstTarget = refs[0].target;
+                const targetsForUid = [...new Map(refs.map(ref => [ref.target.pathKey + '|' + String(ref.target.difficultyBucket), ref.target])).values()];
+                const target = { ...firstTarget, observedWrongCount: refs.length };
+                target.path = targetsForUid.length === 1 ? firstTarget.path : {
+                    L1: firstTarget.path.L1,
+                    L2: firstTarget.path.L2,
+                    ...(firstTarget.path.L3 ? { L3: firstTarget.path.L3 } : {}),
+                    ...(firstTarget.path.L4 ? { L4: firstTarget.path.L4 } : {}),
+                };
+                if (items.length >= requestedLimit) break;
+                addCandidate(fact, target, fact.bucket, 'same_uid', refs);
+            }
+        } else {
+            for (const target of normalizedTargets) {
+                if (items.length >= requestedLimit) break;
+                const group = candidateIndex.get(`${target.pathDepth}|${target.pathKey}`);
+                const buckets = filterMode === 'selected'
+                    ? selectedBuckets
+                    : target.difficultyBucket == null ? null : [target.difficultyBucket];
+                const pool = buckets == null ? (group?.anyBucket || [])
+                    : buckets.flatMap(bucket => group?.byBucket.get(bucket) || []);
+                if (!pool.length) {
+                    if (!group) exclusions.candidateNoPathMatch++;
+                    else if (filterMode === 'selected') exclusions.candidateSelectedBucketMismatch++;
+                    continue;
+                }
+                for (const fact of pool) {
+                    if (items.length >= requestedLimit) break;
+                    const { identity } = fact;
+                    if (target.pathDepth > 4 && !fact.advancedPathEligible) {
+                        exclusions.candidateAdvancedIneligible++;
+                        continue;
+                    }
+                    if (buckets != null && !fact.difficultyEligible) {
+                        exclusions.candidateDifficultyIneligible++;
+                        continue;
+                    }
+                    if (targetUids.has(identity.questionUid)) {
+                        exclusions.candidateCurrentTargetUid++;
+                        continue;
+                    }
+                    if (used.has(identity.questionUid)) continue;
+                    addCandidate(fact, target, filterMode === 'selected' ? fact.bucket : target.difficultyBucket, 'similar_uid');
+                }
+            }
+        }
+
+        const returnedCount = items.length;
+        return {
+            contractVersion: CONTRACT_VERSION,
+            status: returnedCount ? 'ready' : mode === 'same_uid' ? 'no_candidates' : 'no_candidates',
+            countBasis: 'latest_attempt_follow_up',
+            recommendationMode: mode,
+            recommendationOptions: recommendationConfig.normalized,
+            coverage: {
+                scope: 'follow_up',
+                mode,
+                attemptStatus: 'result',
+                targetMetaCount: normalizedTargets.length,
+                targetUidCount: targetUids.size,
+                candidateRecordCount: candidateRecords.length,
+                requestedCount,
+                returnedCount,
+            },
+            evidence: [{
+                studentId,
+                targets: normalizedTargets.map(target => ({
+                    path: { ...target.path },
+                    pathDepth: target.pathDepth,
+                    pathKey: target.pathKey,
+                    difficultyBucket: target.difficultyBucket,
+                    questionCount: target.questionCount,
+                    questionOrderNos: [...target.questionOrderNos],
+                    observedWrongCount: target.observedWrongCount,
+                    countBasis: 'latest_attempt_confirmed_wrong',
+                })),
+            }],
+            candidates: [{
+                studentId,
+                requestedCount,
+                returnedCount,
+                shortfall: Math.max(0, requestedCount - returnedCount),
+                items,
+            }],
+            exclusions,
+            errors: [],
+        };
+    }
+
     return {
         CONTRACT_VERSION,
         META_SCHEMA_VERSION,
@@ -1171,6 +1508,7 @@
         CANONICAL_META_FIELDS,
         build,
         buildFollowUpContext,
+        buildFollowUpCandidates,
         canonicalMetaOf,
         identityOf,
         canonicalPath,
