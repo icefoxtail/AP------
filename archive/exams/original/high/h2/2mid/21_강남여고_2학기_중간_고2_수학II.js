@@ -1521,8 +1521,8 @@ window.questionBank = [
     ],
     "integrationPattern": "CASE_BRANCH",
     "metaOwnerPack": "DERIVATIVE",
-    "metaBindingStatus": "DIRECT_BINDING_GAP",
-    "metaProjectionStatus": "PROJECTION_BINDING_PENDING",
+    "metaBindingStatus": "EXACT_ACTIVE_PT_TPL_PARENT_AND_2015_BINDING_CONFIRMED",
+    "metaProjectionStatus": "PROJECTION_REUSE",
     "rpmPrimaryPath": {
       "curriculum": "2015",
       "scope": "수학II",
