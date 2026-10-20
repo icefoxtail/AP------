@@ -1,23 +1,23 @@
 # question-index 생성 리포트
 
 - 인덱싱 범위(SCOPE): git-tracked + db-listed production (parity-gated) (git 등재 시험지만; textbook 교재은행·미추적 _pro 드래프트 제외)
-- 시험지 수(db.js): 891
-- 시험지 파일 수: 891
-- 원본 문항 수(중복 제거 전): 20937
-- 최종 인덱스 문항 수(중복 제거 후): 20937
+- 시험지 수(db.js): 897
+- 시험지 파일 수: 897
+- 원본 문항 수(중복 제거 전): 21075
+- 최종 인덱스 문항 수(중복 제거 후): 21075
 - 중복 qKey로 제외된 레코드: 0 (그룹 0)
 - 최종 인덱스 중복 qKey: 0
 - undefined/비객체 문항 skip: 0
-- db.js 크기: 863878 bytes
-- 시험지 JS 총 크기: 42234545 bytes
-- 인덱스 크기: 9106456 bytes
+- db.js 크기: 869750 bytes
+- 시험지 JS 총 크기: 42548182 bytes
+- 인덱스 크기: 9174013 bytes
 - 로드 실패 파일: 0
 
-> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(20937)" 기준이다.
+> 누락/시각요소/키분류 집계는 모두 "최종 인덱스 레코드(21075)" 기준이다.
 
 ## 표준단원키 분류 (공식 마스터 143개 기준)
 
-- 공식(official): 19462
+- 공식(official): 19600
 - RAW-(임시 규약, 허용): 25 (distinct 7)
 - 비공식(invalid): 183 (distinct 25)
 - 빈 키(empty): 1267
@@ -30,18 +30,18 @@
 - 누락 content: 909
 - 누락 choices: 5
 - 누락 level: 1631
-- 누락 standardUnit: 1308
+- 누락 standardUnit: 1330
 - 누락 standardUnitKey: 1267
 - 누락 standardCourse: 1169
 - 누락 tags: 1413
 
 ## 시각요소 집계 (최종 인덱스 기준)
 
-- q.image 보유: 3596
-- content 내부 <img>: 930
+- q.image 보유: 3598
+- content 내부 <img>: 943
 - content 내부 <svg>: 77
 - content 내부 <table>: 321
-- 시각요소 보유(hasImage=true, OR 합산): 4774
+- 시각요소 보유(hasImage=true, OR 합산): 4787
 
 ## 누락 예시
 
