@@ -1,0 +1,682 @@
+window.examTitle = "21_매산고_1학기_기말_고2_수학I";
+
+window.questionBank = [
+  {
+    "id": 1,
+    "questionType": "객관식",
+    "content": "$\\cos \\frac{11}{6}\\pi$의 값은? [3.9점]",
+    "choices": [
+      "$-\\frac{\\sqrt{3}}{2}$",
+      "$-\\frac{\\sqrt{2}}{2}$",
+      "$-\\frac{1}{2}$",
+      "$\\frac{1}{2}$",
+      "$\\frac{\\sqrt{3}}{2}$"
+    ],
+    "answer": "5",
+    "solution": "$\\cos\\dfrac{11\\pi}{6}$은 제4사분면의 코사인값이다.\n$\\dfrac{11\\pi}{6}=2\\pi-\\dfrac{\\pi}{6}$이므로 코사인의 대칭성을 이용하면\n$\\cos\\left(2\\pi-\\dfrac{\\pi}{6}\\right)=\\cos\\dfrac{\\pi}{6}=\\dfrac{\\sqrt3}{2}$이다.\n제4사분면에서 코사인은 양수이므로 부호도 일치한다.\n따라서 정답은 ⑤이다.",
+    "level": "하",
+    "difficultyBucket": 1,
+    "primaryMethod": "단위원 삼각함수값",
+    "decisiveStep": "제4사분면 기준각 환원",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-05",
+    "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 1,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 1
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "dd7b7fba013bda32a7c33a9593d26e77f444a26152bff00825685f8cc9034c5f"
+  },
+  {
+    "id": 2,
+    "questionType": "객관식",
+    "content": "등차수열 $\\{a_n\\}$에 대하여 $a_1 + a_3 = 18$, $a_2 + a_4 = 28$일 때, 수열 $\\{a_n\\}$의 공차는? [3.9점]",
+    "choices": [
+      "4",
+      "5",
+      "6",
+      "7",
+      "8"
+    ],
+    "answer": "2",
+    "solution": "등차수열의 일반항을 $a_n=a_1+(n-1)d$로 둔다. 공차 $d$를 구하기 위해 주어진 두 합을 같은 미지수로 나타낸다.\n$a_1+a_3=2a_1+2d=18$이므로 $a_1+d=9$이다.\n$a_2+a_4=2a_1+4d=28$이므로 $a_1+2d=14$이다.\n두 식을 빼면 $d=14-9=5$이다.\n따라서 정답은 ②이다.",
+    "level": "하",
+    "difficultyBucket": 2,
+    "primaryMethod": "등차수열 일반항",
+    "decisiveStep": "두 조건 차로 공차 계산",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-08",
+    "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 2,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 2
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "62c7104341431e1f67106b83d255c7b528b66ea7f519f3da9b75aefa6e72d2d4"
+  },
+  {
+    "id": 3,
+    "questionType": "객관식",
+    "content": "삼각형 $\\mathrm{ABC}$의 외접원의 반지름의 길이가 $10$이고 $\\sin A = \\frac{3}{5}$일 때, 선분 $\\mathrm{BC}$의 길이는? [4.0점]",
+    "choices": [
+      "4",
+      "6",
+      "8",
+      "10",
+      "12"
+    ],
+    "answer": "5",
+    "solution": "삼각형의 한 변과 그 맞은편 각, 외접원의 반지름이 연결되어 있으므로 사인법칙 $\\dfrac{a}{\\sin A}=2R$을 사용한다.\n$BC=2R\\sin A=2\\cdot10\\cdot\\dfrac35=12$이다.\n따라서 정답은 ⑤이다.",
+    "level": "하",
+    "difficultyBucket": 2,
+    "primaryMethod": "사인법칙",
+    "decisiveStep": "BC=2R sinA",
+    "standardCourse": "수학I",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 3,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 3
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "4c5ba92c75486660a7c1193b2323457004a40ce3fe6528ee1eea4db1d32d33c8"
+  },
+  {
+    "id": 4,
+    "questionType": "객관식",
+    "content": "$\\frac{3\\pi}{2} \\le x \\le 2\\pi$일 때, 방정식 $2\\sin x + \\sqrt{3} = 0$의 해의 값을 구하면? [4.1점]",
+    "choices": [
+      "$\\frac{3}{2}\\pi$",
+      "$\\frac{5}{3}\\pi$",
+      "$\\frac{7}{4}\\pi$",
+      "$\\frac{11}{6}\\pi$",
+      "$2\\pi$"
+    ],
+    "answer": "2",
+    "solution": "$2\\sin x+\\sqrt3=0$을 정리하면 $\\sin x=-\\dfrac{\\sqrt3}{2}$이다.\n사인값이 음수인 각은 제3·4사분면에 있지만, 주어진 범위 $\\dfrac{3\\pi}{2}\\le x\\le2\\pi$는 제4사분면만 포함한다.\n기준각이 $\\dfrac\\pi3$이므로 $x=2\\pi-\\dfrac\\pi3=\\dfrac{5\\pi}{3}$이다.\n이 값은 주어진 구간에 포함된다. 따라서 정답은 ②이다.",
+    "level": "하",
+    "difficultyBucket": 2,
+    "primaryMethod": "삼각방정식",
+    "decisiveStep": "사인 음수와 구간 교집합",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-07",
+    "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 4,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 4
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "134c1da8fc5e8f9ac7d98c90f99e0bc22f6779020da2b10e0058feb0b82dcc80"
+  },
+  {
+    "id": 5,
+    "questionType": "객관식",
+    "content": "등차수열 $\\{a_n\\}$이 $a_4 = 5, a_9 = -25$를 만족하고, 첫째항부터 제 $m$항까지의 합이 $-77$일 때, $m$의 값을 구하면? [4.1점]",
+    "choices": [
+      "7",
+      "8",
+      "9",
+      "10",
+      "11"
+    ],
+    "answer": "5",
+    "solution": "등차수열에서 항 사이의 차이를 이용해 공차를 먼저 구한다.\n$a_9-a_4=5d=-25-5=-30$이므로 $d=-6$이다.\n$a_4=a_1+3d=5$에서 $a_1=23$이다.\n처음 $m$항의 합은 $S_m=\\dfrac m2\\{2a_1+(m-1)d\\}$이므로\n$-77=\\dfrac m2\\{46-6(m-1)\\}=m(26-3m)$이다.\n따라서 $3m^2-26m-77=0=(3m+7)(m-11)$이다.\n$m$은 자연수이므로 $m=11$이다. 정답은 ⑤이다.",
+    "level": "중",
+    "difficultyBucket": 3,
+    "primaryMethod": "등차수열 합",
+    "decisiveStep": "공차와 합 이차방정식",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-08",
+    "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 5,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 5
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "154f7ae69f84c56fc2c5e48cebeb0f378f0dbc939f09377fd6faa63652ff543f"
+  },
+  {
+    "id": 6,
+    "questionType": "객관식",
+    "content": "두 실수 $x, y$에 대하여 $x, 5, y$가 이 순서로 등차수열을 이루고, $x, 4, y$가 이 순서로 등비수열을 이룰 때, $x^2 + y^2$의 값을 구하면? [4.1점]",
+    "choices": [
+      "64",
+      "66",
+      "68",
+      "70",
+      "72"
+    ],
+    "answer": "3",
+    "solution": "세 수 $x,5,y$가 등차수열이므로 가운데항은 양끝항의 평균이다.\n$2\\cdot5=x+y$이므로 $x+y=10$이다.\n또한 $x,4,y$가 등비수열이므로 $4^2=xy$, 즉 $xy=16$이다.\n구하려는 식은 합과 곱으로 바꾸면 계산이 간단하다.\n$x^2+y^2=(x+y)^2-2xy=10^2-2\\cdot16=68$이다.\n따라서 정답은 ③이다.",
+    "level": "중",
+    "difficultyBucket": 3,
+    "primaryMethod": "등차·등비 중항",
+    "decisiveStep": "합과 곱에서 제곱합",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-08",
+    "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+    "crossConceptKeys": [
+      "CC_GEOMETRIC_SEQUENCE"
+    ],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 6,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 6
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "3efcbabaf9b3d561f7c152f946d80a05d5e5e30f7b5f95410e1615b2d35d60af"
+  },
+  {
+    "id": 7,
+    "questionType": "객관식",
+    "content": "$0 \\le x < 2\\pi$일 때, 부등식 $\\sqrt{3} + 3\\cos x < 0$의 해가 $\\alpha < x < \\beta$ 이다. $\\tan\\left(\\frac{\\alpha+\\beta}{3}\\right)$의 값을 구하면? [4.2점]",
+    "choices": [
+      "$-\\sqrt{3}$",
+      "$-1$",
+      "0",
+      "1",
+      "$\\sqrt{3}$"
+    ],
+    "answer": "1",
+    "solution": "$\\sqrt3+3\\cos x<0$에서 $\\cos x<-\\dfrac1{\\sqrt3}$이다.\n$0\\le x<2\\pi$에서 코사인값이 이 음수보다 작은 구간은 제2·3사분면에 걸친 하나의 열린 구간이다.\n경계각을 $\\alpha=\\arccos(-1/\\sqrt3)$, $\\beta=2\\pi-\\alpha$라 두면 $\\alpha+\\beta=2\\pi$이다.\n따라서 $\\tan\\left(\\dfrac{\\alpha+\\beta}{3}\\right)=\\tan\\dfrac{2\\pi}{3}=-\\sqrt3$이다.\n부등식이 엄격하므로 경계는 제외하지만 각의 합에는 영향이 없다. 정답은 ①이다.",
+    "level": "중",
+    "difficultyBucket": 3,
+    "primaryMethod": "삼각부등식",
+    "decisiveStep": "대칭 경계각 합 2π",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-07",
+    "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 7,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 7
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "8df1586b62fe53f248c5ffbeabcde071a3256a7f97cb3ca30b5c3590a3b9222b"
+  },
+  {
+    "id": 8,
+    "questionType": "객관식",
+    "content": "수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합 $S_n$이 $S_n = n^2 + 2n - 2$일 때, $a_1 + a_5 + S_5$의 값을 구하면? [4.3점]",
+    "choices": [
+      "37",
+      "39",
+      "41",
+      "43",
+      "45"
+    ],
+    "answer": "5",
+    "solution": "부분합 $S_n$이 주어졌을 때 첫째항은 $a_1=S_1$이고, $n\\ge2$이면 $a_n=S_n-S_{n-1}$이다.\n$S_1=1^2+2-2=1$이므로 $a_1=1$이다.\n$S_5=25+10-2=33$, $S_4=16+8-2=22$이므로 $a_5=33-22=11$이다.\n따라서 $a_1+a_5+S_5=1+11+33=45$이다.\n정답은 ⑤이다.",
+    "level": "중",
+    "difficultyBucket": 3,
+    "primaryMethod": "부분합과 일반항",
+    "decisiveStep": "a5=S5-S4",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-08",
+    "subUnitKey": "H15-M1-08-SEQUENCE_TERM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 8,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 8
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "7c3452b2c0e45aa16094397f3f16220a4263bdb5e133a96cec3952667ea8334b"
+  },
+  {
+    "id": 9,
+    "questionType": "객관식",
+    "content": "$x$에 관한 삼차방정식 $12x^3 - 14x^2 + kx - 1 = 0$의 세 실근을 $\\alpha, \\beta, \\gamma$라 할 때, $\\frac{1}{\\alpha}, \\frac{1}{\\beta}, \\frac{1}{\\gamma}$이 순서대로 등차수열을 이루고 있다. 이때 상수 $k$의 값을 구하면? [4.4점]",
+    "choices": [
+      "$-3$",
+      "$-6$",
+      "$-9$",
+      "$-12$",
+      "$-15$"
+    ],
+    "answer": "3",
+    "solution": "세 근은 상수항이 $-1$이므로 모두 $0$이 아니다. 따라서 역수를 새로운 미지수 $t=1/x$로 놓을 수 있다.\n$12x^3-14x^2+kx-1=0$에 $x=1/t$를 대입하고 $t^3$을 곱하면 $t^3-kt^2+14t-12=0$이다.\n세 역수는 등차수열이므로 $u-d,u,u+d$로 놓는다. 근과 계수의 관계에서\n$3u=k$, $3u^2-d^2=14$, $u(u^2-d^2)=12$이다.\n둘째 식으로 $d^2=3u^2-14$를 얻어 셋째 식에 대입하면\n$u(14-2u^2)=12$, 즉 $u^3-7u+6=(u-1)(u-2)(u+3)=0$이다.\n실수 공차가 존재하려면 $d^2\\ge0$이어야 한다. $u=1$이면 $d^2=-11$, $u=2$이면 $d^2=-2$로 불가능하다.\n$u=-3$이면 $d^2=13$으로 가능하므로 $k=3u=-9$이다.\n따라서 정답은 ③이다.",
+    "level": "상",
+    "difficultyBucket": 5,
+    "primaryMethod": "근과 계수·등차중항",
+    "decisiveStep": "역수근 치환 후 실수 공차 판별",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-08",
+    "subUnitKey": "H15-M1-08-ARITHMETIC_SEQUENCE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 9,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 9
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "a827098082e36095b1a192eab5441f1e320f9df8312a93f6e36f9c797b878a9f"
+  },
+  {
+    "id": 10,
+    "questionType": "객관식",
+    "content": "함수 $y=\\left|3\\cos\\left(\\frac{5\\pi}{2}-\\pi x\\right)\\right|-1$의 최댓값을 $M$, 최솟값을 $m$, 주기를 $n$이라 할 때, $M+m+n$의 값을 구하면? [4.5점]",
+    "choices": [
+      "$-2$",
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "answer": "4",
+    "solution": "각의 주기성을 이용하면 $\\cos(\\frac{5\\pi}{2}-\\pi x)=\\sin(\\pi x)$이다.\n따라서 함수는 $y=3|\\sin(\\pi x)|-1$로 정리된다.\n$0\\le|\\sin(\\pi x)|\\le1$이므로 최솟값 $m=-1$, 최댓값 $M=2$이다.\n절댓값 때문에 $|\\sin(\\pi(x+1))|=|\\sin(\\pi x)|$이므로 기본주기는 $n=1$이다.\n따라서 $M+m+n=2-1+1=2$이며 정답은 ④이다.",
+    "level": "중",
+    "difficultyBucket": 3,
+    "primaryMethod": "삼각함수 그래프 주기",
+    "decisiveStep": "절댓값 사인 주기 1",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-06",
+    "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 10,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 10
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "a3844f33e5ad502f2f3ac2e57c2846a891fd917ef1669b0b788c90a79353a14e"
+  },
+  {
+    "id": 11,
+    "questionType": "객관식",
+    "content": "모든 실수 $x$에 대하여 부등식 $\\sin^2\\left(x+\\frac{\\pi}{2}\\right) + 4\\sin(x+\\pi) + a \\le 0$이 항상 성립하도록 하는 실수 $a$의 값의 범위가 $a \\le k$일 때, $k$값을 구하면? [4.5점]",
+    "choices": [
+      "$-5$",
+      "$-4$",
+      "$-2$",
+      "2",
+      "4"
+    ],
+    "answer": "2",
+    "solution": "모든 $x$에서 성립해야 하므로 삼각함수 부분의 최댓값을 구해 상수 $a$의 범위를 결정한다.\n$\\sin(x+\\pi)=-\\sin x$, $\\sin^2(x+\\pi/2)=\\cos^2x=1-\\sin^2x$이다.\n$t=\\sin x$라 두면 $-1\\le t\\le1$이고 식은 $1-t^2-4t+a\\le0$이다.\n$1-t^2-4t=5-(t+2)^2$는 이 구간에서 $t$가 작을수록 크므로 최댓값은 $t=-1$일 때 $4$이다.\n따라서 $4+a\\le0$, 즉 $a\\le-4$가 필요충분조건이다.\n$k=-4$이므로 정답은 ②이다.",
+    "level": "중",
+    "difficultyBucket": 3,
+    "primaryMethod": "삼각함수 최댓값",
+    "decisiveStep": "t=sinx 구간 최댓값",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-06",
+    "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_UNIVERSAL_INPUTS",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 11,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 11
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "366aed6ffc7c839d9f1b21d284883b0280c0200860f732370a504f89658cefe1"
+  },
+  {
+    "id": 12,
+    "questionType": "객관식",
+    "content": "등비수열 $\\{a_n\\}$에 대하여 $A_n = a_1 + a_2 + a_3 + \\dots + a_n$, $B_n = a_1 \\times a_2 \\times a_3 \\times \\dots \\times a_n$, $C_n = \\frac{1}{a_1} + \\frac{1}{a_2} + \\frac{1}{a_3} + \\dots + \\frac{1}{a_n}$일 때, $A_{10} = 63$, $C_{10} = 7$일 때, $B_{10}$의 값을 구하면? [4.6점]",
+    "choices": [
+      "$3^{10}$",
+      "$7^{10}$",
+      "$3^5 \\times 7^5$",
+      "$3^{10} \\times 7^{10}$",
+      "$3^{20}$"
+    ],
+    "answer": "1",
+    "solution": "등비수열을 $a_j=ar^{j-1}$로 두고, $A_{10}$과 $C_{10}$을 같은 등비합으로 나타낸다. 역수의 합이 주어져 있으므로 모든 항은 $0$이 아니다.\n$A_{10}=a(1+r+\\cdots+r^9)=63$이다.\n$C_{10}=\\dfrac1{ar^9}(1+r+\\cdots+r^9)=7$이므로 두 식을 나누면 $a^2r^9=\\dfrac{63}{7}=9$이다.\n열 항의 곱은 $B_{10}=a^{10}r^{0+1+\\cdots+9}=a^{10}r^{45}=(a^2r^9)^5$이다.\n따라서 $B_{10}=9^5=3^{10}$이며 정답은 ①이다.",
+    "level": "상",
+    "difficultyBucket": 4,
+    "primaryMethod": "등비수열 합·곱",
+    "decisiveStep": "A10/C10=a²r⁹",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-09",
+    "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NONZERO"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 12,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 12
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "a53cffcb3d6f3d5cfcf4e6cab68b72b593c8c2a97fdf71baa8fe68203f13b31e"
+  },
+  {
+    "id": 13,
+    "questionType": "객관식",
+    "content": "첫째항부터 제 $6$항까지의 합이 $6$, 첫째항부터 제 $12$항까지의 합이 $390$인 등비수열의 제 $13$항부터 제 $18$항까지의 합을 구하면? [4.7점]",
+    "choices": [
+      "$3 \\times 2^{11}$",
+      "$3^2 \\times 2^{11}$",
+      "$3 \\times 2^{12}$",
+      "$3 \\times 2^{13}$",
+      "$3^2 \\times 2^{13}$"
+    ],
+    "answer": "4",
+    "solution": "등비수열에서는 연속한 같은 길이의 항 묶음의 합도 일정한 비로 변한다.\n처음 $6$항의 합이 $S_6=6$이므로 다음 $6$항의 합은 $r^6S_6$이다.\n따라서 $S_{12}=S_6(1+r^6)=390$에서 $1+r^6=65$, $r^6=64$이다.\n제 $13$항부터 제 $18$항까지의 합은 첫 $6$항 합의 $r^{12}$배이므로\n$6r^{12}=6\\cdot64^2=6\\cdot2^{12}=3\\cdot2^{13}$이다.\n따라서 정답은 ④이다.",
+    "level": "중",
+    "difficultyBucket": 3,
+    "primaryMethod": "등비수열 블록합",
+    "decisiveStep": "S12/S6=1+r⁶",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-09",
+    "subUnitKey": "H15-M1-09-GEOMETRIC_SEQUENCE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 13,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 13
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "11b742b771ff4c49a16b638cbfc2314156bc0eb776a525d0abe6c8135854a548"
+  },
+  {
+    "id": 14,
+    "questionType": "객관식",
+    "content": "다음 그림과 같이 $\\overline{\\mathrm{AB}}=11, \\overline{\\mathrm{BC}}=15, \\overline{\\mathrm{AC}}=10$인 삼각형 $\\mathrm{ABC}$에서 선분 $\\mathrm{BC}$를 한 변으로 하는 정사각형 $\\mathrm{BDEC}$를 만들었다. 이때 삼각형 $\\mathrm{ADC}$의 넓이가 $a+b\\sqrt{21}$이라 할 때, $a+b$의 값을 구하면? (단, $a, b$는 유리수) [4.8점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/21_매산고_1학기_기말_고2_수학I/q14.png\" class=\"exam-img\"></div>",
+    "choices": [
+      "60",
+      "63",
+      "64",
+      "68",
+      "70"
+    ],
+    "answer": "2",
+    "solution": "그림의 정사각형은 $BC=15$를 윗변으로 하여 아래쪽에 놓인다. 좌표를 $B=(0,0)$, $C=(15,0)$, $D=(0,-15)$로 정하고 $A=(u,h)$라 두자.\n$AB=11$, $AC=10$이므로 $u^2+h^2=121$, $(u-15)^2+h^2=100$이다.\n두 식을 빼면 $-30u+225=-21$이므로 $u=\\dfrac{41}{5}$이다.\n따라서 $h=\\sqrt{121-(41/5)^2}=\\dfrac{8\\sqrt{21}}5$이다.\n삼각형 $ADC$의 넓이는 삼각형 $ABC$와 $BCD$의 넓이를 더하고 $ABD$의 넓이를 빼면 된다.\n$[ABC]=\\dfrac{15h}{2}=12\\sqrt{21}$, $[BCD]=\\dfrac{15^2}{2}=\\dfrac{225}{2}$, $[ABD]=\\dfrac{15u}{2}=\\dfrac{123}{2}$이다.\n그러므로 $[ADC]=12\\sqrt{21}+\\dfrac{225-123}{2}=51+12\\sqrt{21}$이다.\n$a=51$, $b=12$이므로 $a+b=63$이며 정답은 ②이다.",
+    "level": "상",
+    "difficultyBucket": 4,
+    "primaryMethod": "삼각형 넓이·코사인법칙",
+    "decisiveStep": "좌표 높이와 넓이 합차",
+    "standardCourse": "수학I",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 14,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 14
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "135f441006703a1786a763d8ed2bca015dbad512a0555d77420987e7deed4566"
+  },
+  {
+    "id": 15,
+    "questionType": "객관식",
+    "content": "자연수 $n$에 대하여 $a_n$을 방정식 $\\frac{x}{n\\pi} = \\sin 4x$의 양의 실근의 개수라 정의하자. 수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라 할 때, $S_{10}$의 값을 구하면? [4.9점]",
+    "choices": [
+      "170",
+      "180",
+      "190",
+      "200",
+      "210"
+    ],
+    "answer": "5",
+    "solution": "양의 해의 개수를 세기 위해 $t=4x$로 치환한다. 원래 방정식은 $\\sin t=\\dfrac{t}{4n\\pi}$, $t>0$이다.\n오른쪽이 양수이고 $\\sin t\\le1$이므로 해는 $0<t\\le4n\\pi$에만 있을 수 있다.\n$\\sin t>0$인 반파장은 $(2k\\pi,(2k+1)\\pi)$이며, 이 범위에 들어오는 반파장은 $k=0,1,\\ldots,2n-1$의 총 $2n$개이다.\n첫 반파장에서는 $t=0$도 형식상 교점이지만 양의 해에서 제외한다. 사인 그래프의 첫 양의 반파장은 원점에서 직선보다 위쪽으로 출발하여 봉우리를 지난 뒤 내려오므로 양의 교점이 하나이다.\n나머지 각 반파장에서는 양 끝에서 $\\sin t-\\dfrac{t}{4n\\pi}<0$이고 꼭대기 $t=(2k+\\tfrac12)\\pi$에서 값이 양수이다. 사인 그래프의 한 봉우리 모양과 증가하는 직선을 비교하면 올라가는 쪽과 내려가는 쪽에서 교점이 각각 하나씩, 정확히 두 개이다.\n따라서 $a_n=1+2(2n-1)=4n-1$이다.\n$S_{10}=\\sum_{n=1}^{10}(4n-1)=4\\cdot\\dfrac{10\\cdot11}{2}-10=210$이다.\n정답은 ⑤이다.",
+    "level": "상",
+    "difficultyBucket": 5,
+    "primaryMethod": "삼각함수 그래프 교점",
+    "decisiveStep": "반파장별 1+2(2n-1)",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-06",
+    "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_POSITIVE",
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 15,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 15
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "solutionImage": "assets/images/21_매산고_1학기_기말_고2_수학I/q15-solution.svg",
+    "solutionImageAlt": "n=2일 때 sin t와 t/(8π) 그래프의 양의 교점 7개를 표시한 그림",
+    "solutionImageCaption": "첫 양의 반파장에는 교점 1개, 이후 세 반파장에는 각 2개",
+    "sourceIdentityFingerprint": "f3a2012e047375848423b5c1c01b0611c2fa0a7cad44a7ef84696bf63b1fcaf7"
+  },
+  {
+    "id": 16,
+    "questionType": "서술형",
+    "content": "[단답형 1] 삼각형 $\\mathrm{ABC}$에서 $a=11, b=8, c=4$일 때, $\\cos C$ 값을 구하시오. [5점]<br><br><div class=\"exam-img-box\"><img src=\"assets/images/21_매산고_1학기_기말_고2_수학I/q16.png\" class=\"exam-img\"></div>",
+    "choices": [],
+    "answer": "\\frac{169}{176}",
+    "solution": "삼각형의 변 기호는 보통 $a=BC$, $b=CA$, $c=AB$를 뜻한다. 각 $C$는 길이 $a=11$인 변과 $b=8$인 변 사이에 있으므로 코사인법칙을 쓴다.\n$c^2=a^2+b^2-2ab\\cos C$이다.\n따라서 $\\cos C=\\dfrac{a^2+b^2-c^2}{2ab}=\\dfrac{11^2+8^2-4^2}{2\\cdot11\\cdot8}$이다.\n분자를 계산하면 $121+64-16=169$, 분모는 $176$이다.\n그러므로 $\\boxed{\\cos C=\\dfrac{169}{176}}$이다.",
+    "level": "중",
+    "difficultyBucket": 3,
+    "primaryMethod": "코사인법칙",
+    "decisiveStep": "(a²+b²-c²)/(2ab)",
+    "standardCourse": "수학I",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 16,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 16
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "d6e73d39df4661baa46732cdcc2f7408d61c891abace4eee9f91ba5397ae13aa"
+  },
+  {
+    "id": 17,
+    "questionType": "서술형",
+    "content": "[단답형 2] 삼각형 $\\mathrm{ABC}$에서 변을 $a, b, c$라고 할 때, 각 변의 길이가 $a=3, b=5, c=7$인 삼각형 $\\mathrm{ABC}$의 외접원과 내접원 사이의 넓이를 구하시오. [5점]",
+    "choices": [],
+    "answer": "\\frac{187\\pi}{12}",
+    "solution": "외접원과 내접원 사이의 넓이는 두 원의 넓이 차 $\\pi(R^2-r^2)$이다. 따라서 먼저 삼각형의 넓이를 구한다.\n세 변이 $3,5,7$이므로 반둘레는 $s=\\dfrac{3+5+7}{2}=\\dfrac{15}{2}$이다.\n코사인법칙으로 길이 $3$과 $5$ 사이의 각 $\\theta$를 구하면\n$\\cos\\theta=\\dfrac{3^2+5^2-7^2}{2\\cdot3\\cdot5}=-\\dfrac12$이므로 $\\sin\\theta=\\dfrac{\\sqrt3}{2}$이다.\n따라서 삼각형의 넓이는 $\\Delta=\\dfrac12\\cdot3\\cdot5\\cdot\\dfrac{\\sqrt3}{2}=\\dfrac{15\\sqrt3}{4}$이다.\n외접원의 반지름은 $R=\\dfrac{abc}{4\\Delta}=\\dfrac{3\\cdot5\\cdot7}{15\\sqrt3}=\\dfrac7{\\sqrt3}$이다.\n내접원의 반지름은 $r=\\dfrac\\Delta s=\\dfrac{15\\sqrt3/4}{15/2}=\\dfrac{\\sqrt3}{2}$이다.\n따라서 $\\pi(R^2-r^2)=\\pi\\left(\\dfrac{49}{3}-\\dfrac34\\right)=\\boxed{\\dfrac{187\\pi}{12}}$이다.",
+    "level": "상",
+    "difficultyBucket": 4,
+    "primaryMethod": "코사인법칙·삼각형 넓이",
+    "decisiveStep": "R²-r²",
+    "standardCourse": "수학I",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "INTERDEPENDENT",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 17,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 17
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "2d3fb0350d6fe9901fd068ca12b29d1cc3866eba1c78b28f6ab4ddbd1bbc219b"
+  },
+  {
+    "id": 18,
+    "questionType": "서술형",
+    "content": "[단답형 3] 상수 $a, b$에 대하여 다음 조건을 만족시키는 점 $(a, b)$의 개수를 구하시오. (단, $0 < b < \\pi$) [5점]<br><br><div class=\"exam-box\"><b>&lt;조건&gt;</b><br>(가) $a^{\\log b} > b$ (단, $a$는 자연수)<br>(나) $\\tan(\\pi a + b) = 1$</div>",
+    "choices": [],
+    "answer": "9",
+    "solution": "(나)에서 정수 $a$에 대해 $\\tan(\\pi a+b)=\\tan b$이다. $\\tan b=1$이고 $0<b<\\pi$이므로 $b=\\dfrac\\pi4$만 가능하다.\n이 값은 $0<b<1$이므로 상용로그 $\\log b<0$이다.\n(가)의 $a^{\\log b}>b$에 양변 상용로그를 취하면 $(\\log a)(\\log b)>\\log b$이다. 음수 $\\log b$로 나누므로 부등호 방향이 바뀐다.\n$\\log a<1$이므로 $a<10$이다.\n$a$는 자연수이므로 $a=1,2,\\ldots,9$의 아홉 가지이다. 각 $a$마다 $b=\\pi/4$로 유일하다.\n따라서 점 $(a,b)$의 개수는 $\\boxed{9}$이다.",
+    "level": "상",
+    "difficultyBucket": 4,
+    "primaryMethod": "탄젠트 주기·로그부등식",
+    "decisiveStep": "b=π/4, 음수 로그로 부등호 반전",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-07",
+    "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 18,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 18
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "35777918500df2d0819c6703a3a4fe23314345334ee70e56a13ed48f29de4962"
+  },
+  {
+    "id": 19,
+    "questionType": "서술형",
+    "content": "※ [서술형 1~2] 다음은 서술형 문항입니다. 풀이 과정과 정답을 정확하게 서술형 답안지에 서술하세요. 풀이 과정이 없는 경우 오답으로 처리합니다.<br><br>[서술형 1] 두 함수 $f(x)=\\sqrt{x-\\frac{1}{2}} + \\sqrt{1-x}$ 와 $g(x)=\\sin x$에 대하여 합성함수 $(f \\circ g)(x)$의 공역이 실수가 되기 위한 정의역을 구하고 이때, 최댓값을 $M$, 최솟값을 $m$이라고 할 때, $\\frac{M}{m}$의 값을 구하시오. (단, $0 \\le x < 2\\pi$) [10점]",
+    "choices": [],
+    "answer": "\\sqrt{2}",
+    "solution": "합성함수 $f(g(x))$가 실수값을 가지려면 두 제곱근의 안이 모두 $0$ 이상이어야 한다.\n$t=g(x)=\\sin x$라 두면 $t-\\dfrac12\\ge0$, $1-t\\ge0$이므로 $\\dfrac12\\le\\sin x\\le1$이다.\n$0\\le x<2\\pi$에서 정의역은 $\\boxed{[\\pi/6,5\\pi/6]}$이다.\n이 구간에서 $f(t)=\\sqrt{t-\\dfrac12}+\\sqrt{1-t}$의 최댓값과 최솟값을 구한다.\n두 제곱근 안의 합은 $(t-\\dfrac12)+(1-t)=\\dfrac12$로 일정하다. 따라서 두 값이 같을 때 합이 최대가 된다.\n$t-\\dfrac12=1-t$에서 $t=\\dfrac34$이고 $M=\\dfrac12+\\dfrac12=1$이다.\n반대로 합의 최솟값은 양끝 $t=\\dfrac12$ 또는 $1$에서 $m=\\dfrac1{\\sqrt2}$이다.\n따라서 $\\dfrac Mm=\\boxed{\\sqrt2}$이다.",
+    "level": "상",
+    "difficultyBucket": 4,
+    "primaryMethod": "합성함수 정의역·최댓값",
+    "decisiveStep": "t=sinx, 제곱근 합 최대",
+    "standardCourse": "수학I",
+    "standardUnitKey": "H15-M1-06",
+    "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 19,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 19
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "f027df925235fa05ac14ab065a182810e4fff8efdc17d7159f1b6d0599103937"
+  },
+  {
+    "id": 20,
+    "questionType": "서술형",
+    "content": "[서술형 2] 정의역과 치역이 모두 자연수 집합인 함수 $f(n)=a_n$가 &lt;보기&gt; 조건을 만족한다고 할 때, $n=1$에서부터 $n=2021$까지의 함수값의 합인 $f(1)+f(2)+f(3)+\\dots+f(2021)$의 값을 구하시오. [10점]<br><br><div class=\"exam-box\"><b>&lt;보기&gt;</b><br>(가) $f(2022) = 2022, f(2021) = 2021$<br>(나) 모든 자연수 $n$에 대하여 $(f \\circ f \\circ f)(n) = f(n)$<br>(다) 모든 자연수 $n$에 대하여 $f \\circ f(f(n+2)-2) = n$</div>",
+    "choices": [],
+    "answer": "2043231",
+    "solution": "조건 (나)의 $f\\circ f\\circ f=f$에서 양변에 $f$를 한 번 더 합성하면 $f^4=f^2$이다.\n$h=f^2$로 두면 $h\\circ h=h$, 즉 $h$는 멱등함수이다.\n(다)는 $h(f(n+2)-2)=n$이므로 모든 자연수 $n$이 $h$의 함숫값으로 나온다. 따라서 $h$는 자연수 집합 전체에 대한 전사함수이다.\n전사인 멱등함수는 항등함수이다. 실제로 임의의 자연수 $y$에 대해 $h(x)=y$인 $x$를 잡으면 $h(y)=h(h(x))=h(x)=y$이다.\n그러므로 $f^2(n)=n$이 모든 자연수에 대해 성립한다.\n이제 (다)는 $f(n+2)-2=n$으로 단순화되어 $f(k)=k$가 모든 $k\\ge3$에 대해 성립한다.\n$f^2$가 항등이므로 $f$는 일대일대응이다. 따라서 남은 두 값 $f(1),f(2)$는 $1,2$를 순서만 바꾸어 사용하며 $f(1)+f(2)=3$이다.\n결국 $\\sum_{n=1}^{2021}f(n)=1+2+\\cdots+2021=\\dfrac{2021\\cdot2022}{2}=\\boxed{2043231}$이다.",
+    "level": "상",
+    "difficultyBucket": 5,
+    "primaryMethod": "반복합성 멱등함수",
+    "decisiveStep": "f² 전사 멱등→항등",
+    "standardCourse": "수학(하)",
+    "standardUnitKey": "H15-SB-03",
+    "subUnitKey": "H15-SB-03-COMPOSITE_FUNCTION",
+    "problemTypeKey": "PT_ITERATED_COMPOSITION",
+    "templateKey": "TPL_ITERATION_IDENTITY_ORDER",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_UNIVERSAL_INPUTS"
+    ],
+    "integrationPattern": "DEEP_COMPOSITE",
+    "sourceExamUid": "21_매산고_1학기_기말_고2_수학I",
+    "sourceQid": 20,
+    "provenance": {
+      "campaign": "HIGH_DYNAMIC_INTAKE_20261017",
+      "sourceJsSha256": "945b6db8c4369a904611da86df1de067c0899df191fe036b98b3b2b1459e8925",
+      "sourceQid": 20
+    },
+    "layoutTag": "grid",
+    "wide": false,
+    "sourceIdentityFingerprint": "39edd0d55f81a0b88b4c52cdd6bccdb9fb1aefc3f8c77f636fad55bf854d472b"
+  }
+];
