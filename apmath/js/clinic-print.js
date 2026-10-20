@@ -1343,7 +1343,13 @@ function clinicPrintRenderAssessmentHistorySummary(state = clinicPrintGetRecomme
         const historyHtml = history.length ? history.map(row => {
             const metaStatus = String(row.metaCoverageStatus || '');
             const metaNote = metaStatus && metaStatus !== 'complete' ? ` · ${clinicPrintHistoryMetaCoverageLabel(metaStatus)}` : '';
-            return `<div style="margin-top:3px;">${clinicPrintEscapeHtml(row.examDate || '날짜 미상')} · ${clinicPrintEscapeHtml(row.examTitle || '추천 보충시험')} · ${clinicPrintEscapeHtml(clinicPrintHistoryPurposeLabel(row.mode))} · ${clinicPrintEscapeHtml(clinicPrintAssessmentStatusLabel(row.attemptStatus))} · 관측 오답 ${clinicPrintHistoryCount(row.observedWrongCount)}회 · 미분류 ${clinicPrintHistoryCount(row.unclassifiedWrongCount)}${row.cancelled ? ' · 취소된 배정' : ''}${clinicPrintEscapeHtml(metaNote)}</div>`;
+            const classId = String(state.classId || '');
+            const assignmentId = String(row.assignmentId || '');
+            const studentId = String(student.studentId || '');
+            const navigateButton = classId && assignmentId && studentId
+                ? `<button type="button" class="clinic-print-mini-btn" style="margin-top:3px;" aria-label="${clinicPrintEscapeAttr(`${student.studentName || '학생'} ${row.examDate || ''} ${row.examTitle || '추천 보충시험'} 응시 결과 보기`)}" onclick="clinicPrintNavigateToAssessmentResult('${clinicPrintEscapeJsString(classId)}','${clinicPrintEscapeJsString(assignmentId)}','${clinicPrintEscapeJsString(studentId)}',${Number(state.refreshRequestId || 0)})">응시 결과 보기</button>`
+                : '';
+            return `<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-top:3px;"><span>${clinicPrintEscapeHtml(row.examDate || '날짜 미상')} · ${clinicPrintEscapeHtml(row.examTitle || '추천 보충시험')} · ${clinicPrintEscapeHtml(clinicPrintHistoryPurposeLabel(row.mode))} · ${clinicPrintEscapeHtml(clinicPrintAssessmentStatusLabel(row.attemptStatus))} · 관측 오답 ${clinicPrintHistoryCount(row.observedWrongCount)}회 · 미분류 ${clinicPrintHistoryCount(row.unclassifiedWrongCount)}${row.cancelled ? ' · 취소된 배정' : ''}${clinicPrintEscapeHtml(metaNote)}</span>${navigateButton}</div>`;
         }).join('') : '<div style="margin-top:3px;color:var(--secondary);">표시할 보충시험 이력이 없습니다.</div>';
         return `<details style="border-top:1px solid var(--border);padding-top:6px;margin-top:6px;"><summary style="cursor:pointer;font-size:11px;font-weight:700;">${clinicPrintEscapeHtml(student.studentName || student.studentId || '학생')} · 관측 오답 ${clinicPrintHistoryCount(student.observedWrongCount)}회 · 고유 UID ${clinicPrintHistoryCount(student.distinctQuestionUidCount)}개 · 반복 관측 ${clinicPrintHistoryCount(student.repeatUidObservationCount)}회</summary><div style="font-size:11px;margin-top:5px;"><div style="color:var(--secondary);">완결 ${clinicPrintHistoryCount(studentStatuses.completeResult)} · 부분 ${clinicPrintHistoryCount(studentStatuses.partial)} · 미확인 ${clinicPrintHistoryCount(studentStatuses.unresolved)} · 대기 ${clinicPrintHistoryCount(studentStatuses.pending)} · 제외 ${clinicPrintHistoryCount(studentStatuses.excluded)} · 취소로 미응시 ${clinicPrintHistoryCount(studentStatuses.cancelledPending)} · 미분류 오답 ${clinicPrintHistoryCount(studentCoverage.unclassifiedWrongCount)}</div><div style="margin-top:5px;font-weight:700;">유형별 누적 관측</div>${typesHtml}<div style="margin-top:7px;font-weight:700;">최근 ${history.length}건의 보충 이력</div>${historyHtml}</div></details>`;
     }).join('');
@@ -1439,15 +1445,97 @@ function clinicPrintRenderAssessmentDiscovery(state = clinicPrintGetRecommendati
                 <div style="font-size:11px;color:var(--secondary);margin-top:3px;">배정 ${Number(assignment.questionCount || 0)}문항 · 추천 요청 ${requested}문항${outcome?.coverage ? ` · 실제 응시 ${Number(coverage.sessionCount || 0)}건 · 결과 문항 ${Number(coverage.resultItemCount || 0)}건` : ''}${resultCoverageNotes.length ? ` · ${clinicPrintEscapeHtml(resultCoverageNotes.join(' · '))}` : ''}</div>
                 ${outcomeRow?.error ? `<div style="font-size:11px;color:var(--error);margin-top:4px;">응시 결과를 확인하지 못했습니다: ${clinicPrintEscapeHtml(outcomeRow.error)}</div>` : ''}
                 ${students.map(student => {
+                    const resultClassId = String(state.classId || '');
+                    const resultAssignmentId = String(assignment.assignmentId || assignment.id || '');
+                    const resultStudentId = String(student.studentId || student.student_id || '');
                     const score = student.scoreAvailable === true && student.score != null ? ` · 실제 점수 ${clinicPrintEscapeHtml(student.score)}` : '';
                     const questionResults = student.sessionId
                         ? (student.questionResults || []).map(row => `${Number(row.orderNo || 0)}번 ${clinicPrintAssessmentQuestionStatusLabel(row.status)}`).join(' · ')
                         : '';
-                    return `<div style="font-size:11px;margin-top:5px;"><strong>${clinicPrintEscapeHtml(student.studentName || student.studentId || '학생')}</strong> · ${clinicPrintEscapeHtml(clinicPrintAssessmentStatusLabel(student.status))}${score}${questionResults ? `<div style="color:var(--secondary);margin-top:2px;">${clinicPrintEscapeHtml(questionResults)}</div>` : ''}${clinicPrintRenderFollowUpContext(student, state.classId, assignment)}</div>`;
+                    return `<div data-clinic-assessment-result-row data-clinic-class-id="${clinicPrintEscapeAttr(resultClassId)}" data-clinic-assignment-id="${clinicPrintEscapeAttr(resultAssignmentId)}" data-clinic-student-id="${clinicPrintEscapeAttr(resultStudentId)}" tabindex="-1" style="font-size:11px;margin-top:5px;"><strong>${clinicPrintEscapeHtml(student.studentName || student.studentId || '학생')}</strong> · ${clinicPrintEscapeHtml(clinicPrintAssessmentStatusLabel(student.status))}${score}${questionResults ? `<div style="color:var(--secondary);margin-top:2px;">${clinicPrintEscapeHtml(questionResults)}</div>` : ''}${clinicPrintRenderFollowUpContext(student, state.classId, assignment)}</div>`;
                 }).join('')}
             </div>`;
         }).join('')}
     </div>`;
+}
+
+function clinicPrintNavigateToAssessmentResult(classId, assignmentId, studentId, refreshRequestId) {
+    const unavailable = () => toast('현재 조회된 응시 결과를 하나로 확인할 수 없습니다. 기존 배정·응시 결과를 새로고침해 주세요.', 'warn');
+    const wantedClassId = String(classId || '');
+    const wantedAssignmentId = String(assignmentId || '');
+    const wantedStudentId = String(studentId || '');
+    if (!wantedClassId || !wantedAssignmentId || !wantedStudentId ||
+        String(clinicPrintActiveClassId || '') !== wantedClassId) {
+        unavailable();
+        return false;
+    }
+    const state = clinicPrintRecommendationAssessmentStates.get(wantedClassId);
+    if (!state) {
+        unavailable();
+        return false;
+    }
+    const currentGeneration = Number(state.refreshRequestId || 0);
+    if (String(state.classId || '') !== wantedClassId || currentGeneration !== Number(refreshRequestId) ||
+        !['ready', 'partial'].includes(String(state.historySummaryStatus || '')) ||
+        !['ready', 'partial'].includes(String(state.historySummary?.status || ''))) {
+        unavailable();
+        return false;
+    }
+
+    const matchingStudents = (state.historySummary.students || []).filter(row => String(row.studentId || '') === wantedStudentId);
+    if (matchingStudents.length !== 1) {
+        unavailable();
+        return false;
+    }
+    const matchingHistoryRows = (matchingStudents[0].history || []).filter(row => String(row.assignmentId || '') === wantedAssignmentId);
+    if (matchingHistoryRows.length !== 1) {
+        unavailable();
+        return false;
+    }
+
+    const matchingAssignments = (state.discovered || []).filter(row =>
+        String(row.classId || row.class_id || '') === wantedClassId &&
+        String(row.assignmentId || row.id || '') === wantedAssignmentId);
+    if (matchingAssignments.length !== 1) {
+        unavailable();
+        return false;
+    }
+    const matchingOutcomes = (state.outcomes || []).filter(row =>
+        String(row.assignmentId || row.assignment_id || row.result?.assignment?.assignmentId || row.result?.assignment?.id || '') === wantedAssignmentId);
+    if (matchingOutcomes.length !== 1 || matchingOutcomes[0].error || !matchingOutcomes[0].result || typeof matchingOutcomes[0].result !== 'object') {
+        unavailable();
+        return false;
+    }
+    const result = matchingOutcomes[0].result;
+    const resultAssignment = result.assignment || {};
+    if (String(resultAssignment.classId || resultAssignment.class_id || '') !== wantedClassId ||
+        String(resultAssignment.assignmentId || resultAssignment.id || '') !== wantedAssignmentId) {
+        unavailable();
+        return false;
+    }
+    const matchingResultStudents = (Array.isArray(result.students) ? result.students : []).filter(row =>
+        String(row.studentId || row.student_id || '') === wantedStudentId);
+    if (matchingResultStudents.length !== 1) {
+        unavailable();
+        return false;
+    }
+
+    const targetRows = Array.from(document.querySelectorAll('[data-clinic-assessment-result-row]')).filter(row =>
+        row.getAttribute('data-clinic-class-id') === wantedClassId &&
+        row.getAttribute('data-clinic-assignment-id') === wantedAssignmentId &&
+        row.getAttribute('data-clinic-student-id') === wantedStudentId);
+    if (targetRows.length !== 1) {
+        unavailable();
+        return false;
+    }
+    const target = targetRows[0];
+    target.scrollIntoView?.({ behavior: 'smooth', block: 'center' });
+    try {
+        target.focus({ preventScroll: true });
+    } catch {
+        target.focus?.();
+    }
+    return true;
 }
 
 function clinicPrintSetFollowUpRecipient(classId, studentId) {
