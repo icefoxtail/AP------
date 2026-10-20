@@ -564,7 +564,7 @@ window.questionBank = [
     "standardUnitKey": "H15-M1-04",
     "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
     "problemTypeKey": "PT_FUNCTION_EXTREMUM",
-    "templateKey": null,
+    "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
     "curriculum": "2015",
     "curriculumGrade": "H2",
     "curriculumSubject": "수학I",
