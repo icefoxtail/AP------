@@ -1,0 +1,45 @@
+name: NEW14 08 Student Chrome Target
+on:
+  push:
+    branches: [new14-08-active-canonical-final-20261020]
+permissions:
+  contents: read
+jobs:
+  student-chrome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Build actual student Pages package
+        run: |
+          node tools/build-archive-pages-site.mjs --root "$GITHUB_WORKSPACE" --output "$GITHUB_WORKSPACE/_site" --report "$RUNNER_TEMP/new14-08-pages-build.json"
+      - name: Chrome original-exam student exam answer solution and image checks
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const p='tools/check-archive-pages-site-browser.cjs';
+          let s=fs.readFileSync(p,'utf8');
+          const old="original/high/h2/1final/22_매산고_1학기_기말_고2_기하_기출.js";
+          const target="original/high/h2/1mid/21_효천고_1학기_중간_고2_수학I.js";
+          if(!s.includes(old))throw Error('CHROME_SOURCE_SAMPLE_NOT_FOUND');
+          s=s.replace(old,target);
+          if(!s.includes('rendered.questions < 1'))throw Error('CHROME_COUNT_CHECK_NOT_FOUND');
+          s=s.replace('rendered.questions < 1','rendered.questions !== 21');
+          fs.writeFileSync(p,s);
+          NODE
+          node tools/check-archive-pages-site-browser.cjs --site-root "$GITHUB_WORKSPACE/_site" --base-path /AP------/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: new14-08-chrome-build-record
+          path: ${{ runner.temp }}/new14-08-pages-build.json
+          if-no-files-found: ignore
