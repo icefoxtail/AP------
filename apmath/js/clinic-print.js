@@ -19,7 +19,8 @@ let clinicPrintArchive2CatalogCache = null;
 let clinicPrintRecommendationSettings = {
     countPerStudent: '5',
     difficultyMode: 'match_wrong',
-    selectedDifficultyBuckets: []
+    selectedDifficultyBuckets: [],
+    includeSeenQuestionUids: false
 };
 let clinicPrintAssessmentClient = null;
 let clinicPrintAssessmentFormValues = { classId: '', title: '', examDate: '' };
@@ -189,6 +190,7 @@ function clinicPrintGetRecommendationContextKey(classId, scope = clinicPrintReco
         settings.countPerStudentRaw,
         settings.difficultyMode,
         settings.selectedDifficultyBuckets,
+        settings.includeSeenQuestionUids === true,
         clinicPrintRecommendationState.followUpAction ? [
             String(clinicPrintRecommendationState.followUpAction.classId || ''),
             String(clinicPrintRecommendationState.followUpAction.assignmentId || ''),
@@ -213,6 +215,8 @@ function clinicPrintReadRecommendationSettings() {
     const difficultyMode = document.querySelector('input[name="clinic-print-recommendation-difficulty-mode"]:checked')?.value || clinicPrintRecommendationSettings.difficultyMode || 'match_wrong';
     const selectedDifficultyBuckets = Array.from(document.querySelectorAll('input[name="clinic-print-recommendation-bucket"]:checked'))
         .map(input => Number(input.value)).filter(bucket => Number.isInteger(bucket) && bucket >= 1 && bucket <= 5).sort((a, b) => a - b);
+    const includeSeenQuestionUids = document.getElementById('clinic-print-recommendation-include-seen')?.checked === true ||
+        (!document.getElementById('clinic-print-recommendation-include-seen') && clinicPrintRecommendationSettings.includeSeenQuestionUids === true);
     const count = Number(countPerStudentRaw);
     const errors = [];
     if (!/^\d+$/.test(countPerStudentRaw) || !Number.isInteger(count) || count < 1 || count > 400) {
@@ -225,6 +229,7 @@ function clinicPrintReadRecommendationSettings() {
         countPerStudentRaw,
         difficultyMode,
         selectedDifficultyBuckets,
+        includeSeenQuestionUids,
         errors,
         recommendationOptions: errors.length ? null : {
             countPerStudent: count,
@@ -261,7 +266,11 @@ function clinicPrintRenderRecommendationOptions(classId) {
         </label>
     </div>
     <div aria-label="추천 난이도 선택">${buckets}</div>
-    <div style="font-size:11px;color:var(--secondary);margin-top:3px;">오답 난이도 맞춤을 선택하면 직접 고른 단계는 보관되지만 적용되지 않습니다.</div>`;
+    <div style="font-size:11px;color:var(--secondary);margin-top:3px;">오답 난이도 맞춤을 선택하면 직접 고른 단계는 보관되지만 적용되지 않습니다.</div>
+    <label id="clinic-print-recommendation-include-seen-wrap" style="display:flex;align-items:flex-start;gap:6px;margin-top:8px;font-size:12px;">
+        <input id="clinic-print-recommendation-include-seen" type="checkbox" ${settings.includeSeenQuestionUids === true ? 'checked' : ''} onchange="clinicPrintOnRecommendationOptionsChange('${clinicPrintEscapeJsString(classId)}')">
+        <span><strong>이미 푼 문항도 후보에 포함</strong><span style="display:block;font-size:10px;color:var(--secondary);margin-top:2px;">현재 조회 범위에서 확인된 응시 UID를 기준으로 합니다.</span></span>
+    </label>`;
 }
 
 function clinicPrintOnRecommendationOptionsChange(classId) {
@@ -281,6 +290,8 @@ function clinicPrintOnRecommendationOptionsChange(classId) {
             input.checked = (previous.selectedDifficultyBuckets || []).map(Number).includes(Number(input.value));
             input.disabled = previous.difficultyMode !== 'selected';
         });
+        const includeSeenInput = document.getElementById('clinic-print-recommendation-include-seen');
+        if (includeSeenInput) includeSeenInput.checked = previous.includeSeenQuestionUids === true;
         clinicPrintRenderRecommendationAssessmentPanel(classId);
         toast('시험 배정 확인 중에는 추천 조건을 바꿀 수 없습니다.', 'warn');
         return;
@@ -289,7 +300,8 @@ function clinicPrintOnRecommendationOptionsChange(classId) {
     clinicPrintRecommendationSettings = {
         countPerStudent: settings.countPerStudentRaw,
         difficultyMode: settings.difficultyMode,
-        selectedDifficultyBuckets: settings.selectedDifficultyBuckets
+        selectedDifficultyBuckets: settings.selectedDifficultyBuckets,
+        includeSeenQuestionUids: settings.includeSeenQuestionUids === true
     };
     document.querySelectorAll('input[name="clinic-print-recommendation-bucket"]').forEach(input => {
         input.disabled = settings.difficultyMode !== 'selected';
@@ -481,7 +493,7 @@ function clinicPrintRenderRecommendationAssessmentPanel(classId = clinicPrintAct
     const softTitle = document.querySelector('#clinic-print-recommendation-assessment-section .clinic-print-section-title--soft');
     if (softTitle) softTitle.textContent = typeMode
         ? (typeMode === 'same_uid' ? '같은 UID · 현재 검증 원본 재연습' : '이번 오답 UID와 다른 유사문항')
-        : '유형 보충 시험 · 다른 문항 적용';
+        : '유형 보충 시험 · 선택한 추천 문항';
     const busy = ['planning', 'issuing', 'refreshing', 'reconciling'].includes(state.status);
     if (button) button.disabled = busy;
     const refreshButton = document.getElementById('clinic-print-recommendation-assessment-refresh');
@@ -669,7 +681,10 @@ function clinicPrintAssessmentSelectionConfirmation(plan, selections, summaries,
     const basis = followUpAction?.targetScope
         ? `\n기준시험: ${followUpAction.sourceExamDate || '날짜 미상'} · ${followUpAction.sourceExamTitle || '추천 보충시험'}\n기준시험의 선택 유형 오답 UID: ${Number(followUpAction.targetUidCount || 0)}개 · 누적 관측 오답: ${Number(followUpAction.typeObservedWrongCount || 0)}회`
         : '';
-    return `${lead}\n시험: ${plan.title}\n날짜: ${plan.examDate}${basis}\n대상: ${selectedStudentCount}명 · 시험지 ${paperCount}개\n${rows.join('\n')}\n\n학생별 선택 문항이 정확히 반영됩니다. 문항은 최대 50개씩 나누어 배정합니다. 이 수신 학생과 시험 내용을 확인하고 진행할까요?`;
+    const seenPolicy = plan?.coverage?.includeSeenQuestionUids === true
+        ? '\n이미 푼 문항 포함: 켬 (현재 조회 범위에서 확인된 응시 UID 기준)'
+        : '';
+    return `${lead}\n시험: ${plan.title}\n날짜: ${plan.examDate}${basis}${seenPolicy}\n대상: ${selectedStudentCount}명 · 시험지 ${paperCount}개\n${rows.join('\n')}\n\n학생별 선택 문항이 정확히 반영됩니다. 문항은 최대 50개씩 나누어 배정합니다. 이 수신 학생과 시험 내용을 확인하고 진행할까요?`;
 }
 
 function clinicPrintIsRecommendationAssessmentFormCurrent(title, examDate) {
@@ -1700,9 +1715,11 @@ function clinicPrintRenderRecommendationPanel(classId = clinicPrintActiveClassId
     const followUpAction = state.followUpAction || null;
     const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
     const optionRoot = document.getElementById('clinic-print-recommendation-options');
+    const includeSeenOption = document.getElementById('clinic-print-recommendation-include-seen-wrap');
     const sectionTitle = document.querySelector('#clinic-print-recommendation-section .clinic-print-section-title');
     const sectionSoftTitle = document.querySelector('#clinic-print-recommendation-section .clinic-print-section-title--soft');
     if (optionRoot) optionRoot.style.display = followUpAction?.mode === 'same_uid' ? 'none' : '';
+    if (includeSeenOption) includeSeenOption.style.display = followUpAction ? 'none' : '';
     if (sectionTitle) sectionTitle.textContent = followUpAction ? '후속 보충 후보' : '유사 문항 추천';
     if (sectionSoftTitle) sectionSoftTitle.textContent = followUpAction
         ? (followUpAction.mode === 'same_uid' ? '같은 UID 재연습' : '다른 유사문항')
@@ -1743,7 +1760,8 @@ function clinicPrintRenderRecommendationPanel(classId = clinicPrintActiveClassId
         const noEvidence = state.result?.status === 'no_canonical_evidence';
         const coverage = state.result?.coverage || {};
         const notes = clinicPrintRecommendationCoverageNotes(coverage);
-        message = `${clinicPrintEscapeHtml(clinicPrintRecommendationCoverageLabel(state.scope, coverage, classId))} · ${noEvidence ? '정본 Meta 경로를 확인한 오답 근거가 없습니다.' : '연결되는 정본 추천 후보가 없습니다.'}${notes.length ? ` · ${clinicPrintEscapeHtml(notes.join(' · '))}` : ''} 현재 오답 클리닉은 계속 이용할 수 있습니다.`;
+        const seenPolicyNote = coverage.includeSeenQuestionUids === true ? ' · 이미 푼 문항 포함 (현재 조회 범위에서 확인된 응시 UID 기준)' : '';
+        message = `${clinicPrintEscapeHtml(clinicPrintRecommendationCoverageLabel(state.scope, coverage, classId))} · ${noEvidence ? '정본 Meta 경로를 확인한 오답 근거가 없습니다.' : '연결되는 정본 추천 후보가 없습니다.'}${notes.length ? ` · ${clinicPrintEscapeHtml(notes.join(' · '))}` : ''}${seenPolicyNote} 현재 오답 클리닉은 계속 이용할 수 있습니다.`;
     } else if (state.status === 'invalid_options') {
         const errors = Array.isArray(state.result?.errors) ? state.result.errors : [];
         const guidance = [...new Set(errors.map(clinicPrintRecommendationErrorLabel))].join(' ');
@@ -1754,8 +1772,10 @@ function clinicPrintRenderRecommendationPanel(classId = clinicPrintActiveClassId
         const difficultyLabel = optionSettings.difficultyMode === 'selected'
             ? `난이도 ${optionSettings.selectedDifficultyBuckets.join(', ')}단계`
             : '오답 난이도에 맞춤';
-        message = `${clinicPrintEscapeHtml(clinicPrintRecommendationCoverageLabel(state.scope, coverage, classId))} · 오답 빈도 기반 추천 · ${optionSettings.countPerStudentRaw}개씩 · ${difficultyLabel}${notes.length ? ` · ${clinicPrintEscapeHtml(notes.join(' · '))}` : ''}.`;
+        const seenPolicyNote = coverage.includeSeenQuestionUids === true ? ' · 이미 푼 문항 포함 (현재 조회 범위에서 확인된 응시 UID 기준)' : '';
+        message = `${clinicPrintEscapeHtml(clinicPrintRecommendationCoverageLabel(state.scope, coverage, classId))} · 오답 빈도 기반 추천 · ${optionSettings.countPerStudentRaw}개씩 · ${difficultyLabel}${seenPolicyNote}${notes.length ? ` · ${clinicPrintEscapeHtml(notes.join(' · '))}` : ''}.`;
     }
+    if (followUpAction) message += ' 후속 후보에는 “이미 푼 문항도 후보에 포함” 설정을 적용하지 않습니다.';
 
     let candidatesHtml = '';
     if (state.status === 'ready' && Array.isArray(state.result?.candidates)) {
@@ -1888,7 +1908,8 @@ async function clinicPrintLoadRecommendations(classId) {
     clinicPrintRecommendationSettings = {
         countPerStudent: settings.countPerStudentRaw,
         difficultyMode: settings.difficultyMode,
-        selectedDifficultyBuckets: settings.selectedDifficultyBuckets
+        selectedDifficultyBuckets: settings.selectedDifficultyBuckets,
+        includeSeenQuestionUids: settings.includeSeenQuestionUids === true
     };
     if (!settings.recommendationOptions) {
         clinicPrintResetRecommendationState(clinicPrintRecommendationState.scope || 'class', classId);
@@ -1952,7 +1973,8 @@ async function clinicPrintLoadRecommendations(classId) {
             },
             asOf: new Date().toISOString(),
             countPerStudent: settings.recommendationOptions.countPerStudent,
-            recommendationOptions: settings.recommendationOptions
+            recommendationOptions: settings.recommendationOptions,
+            ...(settings.includeSeenQuestionUids === true ? { includeSeenQuestionUids: true } : {})
         });
         if (!clinicPrintIsRecommendationRequestCurrent(classId, requestId, contextKey)) return;
 

@@ -101,6 +101,7 @@
             to: text(source.to),
             limited: source.limited === true,
             sessionLimit: Number.isInteger(sessionLimit) && sessionLimit > 0 ? sessionLimit : null,
+            ...(source.includeSeenQuestionUids === true ? { includeSeenQuestionUids: true } : {}),
         };
     }
 
