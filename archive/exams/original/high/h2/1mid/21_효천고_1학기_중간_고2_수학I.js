@@ -750,8 +750,25 @@ window.questionBank = [
     "score": 4,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q13",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_ACTIVE_TEMPLATE_NOT_SEMANTICALLY_IDENTICAL",
-    "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+    "templateKey": "TPL_GENERAL_ANGLE_SAME_QUADRANT",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q13",
+      "primaryMethod": "동경의 360° 동치를 적용한 사분면 판단",
+      "decisiveStep": "−460°≡260° (mod 360°)",
+      "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+      "templateKey": "TPL_GENERAL_ANGLE_SAME_QUADRANT",
+      "ownerPack": "TRIGONOMETRY",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-05",
+        "H15-M1-05-TRIGONOMETRIC_DEFINITION"
+      ]
+    }
   },
   {
     "id": 14,
@@ -798,8 +815,25 @@ window.questionBank = [
     "score": 3.5,
     "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q14",
     "sourceQuestionUidStatus": "CANONICAL_UID_NOT_RESOLVED",
-    "metaProjectionReviewStatus": "PT_ACTIVE_TEMPLATE_NOT_SEMANTICALLY_IDENTICAL",
-    "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY"
+    "metaProjectionReviewStatus": "ACTIVE_PT_TPL_EXACT_BINDING",
+    "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+    "templateKey": "TPL_SECTOR_CENTRAL_ANGLE_ARC_RADIUS",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "CASE_BRANCH",
+    "metaLookupEvidence": {
+      "sourceQuestionRef": "21_효천고_1학기_중간_고2_수학I:q14",
+      "primaryMethod": "호 길이와 반지름에서 중심각의 호도법 관계를 사용",
+      "decisiveStep": "θ=l/r=2/3",
+      "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "templateKey": "TPL_SECTOR_CENTRAL_ANGLE_ARC_RADIUS",
+      "ownerPack": "TRIGONOMETRY",
+      "curriculumBinding": [
+        "2015",
+        "H15-M1-05",
+        "H15-M1-05-TRIGONOMETRIC_DEFINITION"
+      ]
+    }
   },
   {
     "id": 15,
