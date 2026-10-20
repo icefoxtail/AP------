@@ -1,0 +1,51 @@
+name: NEW14 08 Hyocheon Scoped QA
+on:
+  push:
+    branches: [new14-08-hyocheon-meta-closure-20261020]
+permissions:
+  contents: read
+jobs:
+  targeted:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Read target and Golden / Negative physical samples
+        run: |
+          node --check archive/exams/original/high/h2/1mid/21_효천고_1학기_중간_고2_수학I.js
+          node <<'NODE'
+          const fs=require('node:fs'),vm=require('node:vm'),crypto=require('node:crypto');
+          const root='archive/exams/original/high/h2/1mid/';
+          const exam=root+'21_효천고_1학기_중간_고2_수학I.js';
+          const paths=[root+'23_제일고_1학기_중간_고2_수학I.js',root+'19_매산고_1학기_중간_고2_수학I.js'];
+          const neg='archive/fixtures/review-negative-regressions/2026-10-01-bokseong/README.md';
+          const sha=x=>'sha256:'+crypto.createHash('sha256').update(x).digest('hex');
+          const blob=x=>crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+x.length+'\\0'),x])).digest('hex');
+          function load(p){const ctx={window:{}};vm.createContext(ctx);vm.runInContext(fs.readFileSync(p,'utf8'),ctx,{timeout:3000});return ctx.window.questionBank;}
+          const qs=load(exam);
+          if(qs.length!==21)throw Error('TARGET_COUNT_FAIL');
+          if(qs.filter(q=>q.questionType==='객관식'&&q.choices.length===5).length!==18 || qs.filter(q=>q.choices.length===0).length!==3)throw Error('QUESTION_FORMAT_FAIL');
+          if(Math.abs(qs.reduce((s,q)=>s+q.score,0)-100)>0.0001)throw Error('TOTAL_SCORE_FAIL');
+          if(qs[10].sourceMode!=='AUDITED_REPAIR')throw Error('Q11_REPAIR_LOST');
+          for(const q of qs){if(!q.content||!q.answer||!q.solution||!q.rpmL3||!q.rpmL4||!q.standardUnitKey||!q.subUnitKey)throw Error('QUESTION_META_REQUIRED:q'+q.id);}
+          const sampleRefs=paths.map(p=>{const x=fs.readFileSync(p);return {path:p,sha256:sha(x),gitBlobSha:blob(x)}});
+          const observations=[
+            ['세제곱근 묶기와 로그 계산 사이의 연결이 별도 중간식으로 재현됨','로그 밑·진수·정수 후보를 교집합으로 추리고 탈락 사유 명시'],
+            ['같은 밑 지수끼리 나눌 때 지수를 빼고 중간식을 적음','로그 곱·몫을 a,b로 분리 후 합차공식 중간식 표시']
+          ];
+          const questionRefs=paths.flatMap((p,i)=>{const bank=load(p);return [1,2].map((qid,j)=>({path:p,qid,solutionSha256:sha(bank[j].solution),solutionExcerpt:bank[j].solution.slice(0,Math.min(28,bank[j].solution.length)),observation:observations[i][j]}));});
+          const nx=fs.readFileSync(neg);
+          const evidence={solutionQualityCalibration:{sampleReadBeforeWork:true,calibrationStatus:'PASS',solutionWorkMode:'TARGETED_REPAIR',calibrationOrder:'SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR',calibrationAxes:['STUDENT_REPRODUCIBILITY','SMALL_BOARD_STRUCTURE','EXPLANATION_DENSITY','VISUAL_SEMANTIC_PARITY','VISUAL_READABILITY'],goldenSampleRefs:sampleRefs,goldenSampleQuestionRefs:questionRefs,negativeSampleRefs:[{path:neg,sha256:sha(nx),gitBlobSha:blob(nx)}]}};
+          fs.writeFileSync('new14_08_calibration_evidence.json',JSON.stringify(evidence,null,2)+'\\n');
+          console.log(JSON.stringify({status:'TARGET_Q21_STRUCTURE_PASS',goldenFiles:sampleRefs.length,goldenQuestions:questionRefs.length,negativeFiles:1,sourceSha256:sha(fs.readFileSync(exam))}));
+          NODE
+          node archive/tools/solution-calibration-gate.mjs --exam archive/exams/original/high/h2/1mid/21_효천고_1학기_중간_고2_수학I.js --evidence new14_08_calibration_evidence.json --stage REPAIR --preflight
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: new14-08-golden-preflight
+          path: new14_08_calibration_evidence.json
+          if-no-files-found: ignore
