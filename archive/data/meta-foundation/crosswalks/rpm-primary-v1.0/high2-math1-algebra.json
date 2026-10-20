@@ -27,18 +27,18 @@
   },
   "summary": {
     "recordCount": 132,
-    "DIRECT_ACTIVE": 1,
-    "FAMILY_ACTIVE": 1,
+    "DIRECT_ACTIVE": 10,
+    "FAMILY_ACTIVE": 6,
     "DIRECT_BINDING_GAP": 23,
     "FAMILY_BINDING_GAP": 3,
-    "RPM_ONLY": 104,
+    "RPM_ONLY": 90,
     "byScope": {
       "수학I": {
-        "DIRECT_ACTIVE": 1,
-        "FAMILY_ACTIVE": 1,
+        "DIRECT_ACTIVE": 10,
+        "FAMILY_ACTIVE": 6,
         "DIRECT_BINDING_GAP": 11,
         "FAMILY_BINDING_GAP": 1,
-        "RPM_ONLY": 52
+        "RPM_ONLY": 38
       },
       "대수": {
         "DIRECT_ACTIVE": 0,
@@ -77,8 +77,15 @@
       },
       "standardUnitKey": "H15-M1-01",
       "subUnitKey": "H15-M1-01-EXPONENT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_ROOT_INTEGER_FEASIBILITY",
+      "problemTypeLabelKo": null,
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q11"
+      ],
+      "templateKey": "TPL_ROOT_INTEGER_EXPONENT_CASE_COUNT"
     },
     {
       "id": "H2-M1-RPM-003",
@@ -122,8 +129,26 @@
       },
       "standardUnitKey": "H15-M1-01",
       "subUnitKey": "H15-M1-01-EXPONENT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "problemTypeLabelKo": null,
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q01",
+        "23_제일고_1학기_중간_고2_수학I:q07"
+      ],
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_EXPONENT_LAW_EVALUATION",
+          "selectionEvidenceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q01"
+        },
+        {
+          "templateKey": "TPL_EXPONENT_LAW_STATEMENT_AUDIT",
+          "selectionEvidenceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q07"
+        }
+      ],
+      "selectionRule": "Determine the exact template from the question's reviewed primaryMethod and decisiveStep, not merely the shared RPM L3/L4 family."
     },
     {
       "id": "H2-M1-RPM-006",
@@ -137,8 +162,26 @@
       },
       "standardUnitKey": "H15-M1-01",
       "subUnitKey": "H15-M1-01-EXPONENT",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
+      "problemTypeLabelKo": null,
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q06",
+        "23_제일고_1학기_중간_고2_수학I:q08"
+      ],
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_EXPONENT_LAW_TRIG_EXPONENT_COMPARE",
+          "selectionEvidenceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q06"
+        },
+        {
+          "templateKey": "TPL_EXPONENT_LAW_RECIPROCAL_POWER",
+          "selectionEvidenceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q08"
+        }
+      ],
+      "selectionRule": "Determine the exact template from the question's reviewed primaryMethod and decisiveStep, not merely the shared RPM L3/L4 family."
     },
     {
       "id": "H2-M1-RPM-007",
@@ -167,8 +210,15 @@
       },
       "standardUnitKey": "H15-M1-02",
       "subUnitKey": "H15-M1-02-LOGARITHM",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_LOG_DOMAIN_ELIGIBILITY",
+      "problemTypeLabelKo": null,
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q02"
+      ],
+      "templateKey": "TPL_LOG_BASE_ARGUMENT_INTEGER_DOMAIN"
     },
     {
       "id": "H2-M1-RPM-009",
@@ -182,8 +232,15 @@
       },
       "standardUnitKey": "H15-M1-02",
       "subUnitKey": "H15-M1-02-LOGARITHM",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "problemTypeLabelKo": null,
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q09"
+      ],
+      "templateKey": "TPL_LOG_INTEGER_DIFFERENCE_PRODUCT"
     },
     {
       "id": "H2-M1-RPM-010",
@@ -197,8 +254,26 @@
       },
       "standardUnitKey": "H15-M1-02",
       "subUnitKey": "H15-M1-02-LOGARITHM",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_LOG_IDENTITY_OPERATIONS",
+      "problemTypeLabelKo": null,
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q10",
+        "23_제일고_1학기_중간_고2_수학I:q12"
+      ],
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_LOG_BASE_CHANGE_PARAMETER",
+          "selectionEvidenceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q10"
+        },
+        {
+          "templateKey": "TPL_LOG_CHANGE_BASE_TELESCOPING",
+          "selectionEvidenceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q12"
+        }
+      ],
+      "selectionRule": "Determine the exact template from the question's reviewed primaryMethod and decisiveStep, not merely the shared RPM L3/L4 family."
     },
     {
       "id": "H2-M1-RPM-011",
@@ -296,9 +371,16 @@
         "l4": "치환"
       },
       "standardUnitKey": "H15-M1-03",
-      "subUnitKey": null,
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_EXPONENTIAL_EQUATION_SUBSTITUTION",
+      "problemTypeLabelKo": null,
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q19"
+      ],
+      "templateKey": "TPL_NESTED_EXPONENTIAL_ROOT_COUNT"
     },
     {
       "id": "H2-M1-RPM-017",
@@ -311,9 +393,28 @@
         "l4": "밑의 범위에 따른 부등호"
       },
       "standardUnitKey": "H15-M1-03",
-      "subUnitKey": null,
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "subUnitKey": "H15-M1-03-EXPONENTIAL_FUNCTION_APPLICATION",
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_EXPONENTIAL_INEQUALITY",
+      "problemTypeLabelKo": "지수부등식의 로그 환원",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q20",
+        "23_제일고_1학기_중간_고2_수학I:q21"
+      ],
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_VARIABLE_EXPONENT_LOG_INEQUALITY",
+          "selectionEvidenceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q20"
+        },
+        {
+          "templateKey": "TPL_EXPONENTIAL_DECAY_INVERSE_BOUND",
+          "selectionEvidenceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q21"
+        }
+      ],
+      "selectionRule": "Determine the exact template from the question's reviewed primaryMethod and decisiveStep, not merely the shared RPM L3/L4 family.",
+      "examScopedSemanticNote": "q20 uses logarithmic inequality transformation; q21 is repeated-decay (1-x/100)^7<=0.2 with admissible 0<x<100 and log-based rate inversion. Both use the exponent inequality method, not the previously recorded logarithmic-inequality RPM label for q21."
     },
     {
       "id": "H2-M1-RPM-018",
@@ -434,9 +535,16 @@
         "l4": "진수 조건"
       },
       "standardUnitKey": "H15-M1-04",
-      "subUnitKey": null,
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_LOG_EQUATION_DOMAIN",
+      "problemTypeLabelKo": null,
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q05"
+      ],
+      "templateKey": "TPL_LOG_EQUATION_ARGUMENT_FILTER"
     },
     {
       "id": "H2-M1-RPM-024",
@@ -464,9 +572,16 @@
         "l4": "정의역·밑 조건"
       },
       "standardUnitKey": "H15-M1-04",
-      "subUnitKey": null,
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "subUnitKey": "H15-M1-04-LOGARITHMIC_FUNCTION_APPLICATION",
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_LOG_INEQUALITY_DOMAIN",
+      "problemTypeLabelKo": null,
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q18"
+      ],
+      "templateKey": "TPL_LOG_QUADRATIC_INTERVAL_INTERSECTION"
     },
     {
       "id": "H2-M1-RPM-026",
@@ -557,8 +672,15 @@
       },
       "standardUnitKey": "H15-M1-05",
       "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+      "problemTypeLabelKo": null,
+      "ownerPack": "TRIGONOMETRY",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q15"
+      ],
+      "templateKey": "TPL_OPPOSITE_RAYS_GENERAL_ANGLE"
     },
     {
       "id": "H2-M1-RPM-030",
@@ -572,8 +694,15 @@
       },
       "standardUnitKey": "H15-M1-05",
       "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "problemTypeLabelKo": null,
+      "ownerPack": "TRIGONOMETRY",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q03"
+      ],
+      "templateKey": "TPL_SECTOR_RADIUS_FROM_AREA_ARC"
     },
     {
       "id": "H2-M1-RPM-031",
@@ -602,8 +731,15 @@
       },
       "standardUnitKey": "H15-M1-05",
       "subUnitKey": "H15-M1-05-TRIGONOMETRIC_DEFINITION",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "DIRECT_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
+      "problemTypeLabelKo": null,
+      "ownerPack": "TRIGONOMETRY",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q04"
+      ],
+      "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO"
     },
     {
       "id": "H2-M1-RPM-033",
@@ -632,8 +768,26 @@
       },
       "standardUnitKey": "H15-M1-05",
       "subUnitKey": "H15-M1-05-TRIGONOMETRIC_RELATION",
-      "mappingStatus": "RPM_ONLY",
-      "bindingStatus": "NO_ACTIVE_MAPPING"
+      "mappingStatus": "FAMILY_ACTIVE",
+      "bindingStatus": "ACTIVE",
+      "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+      "problemTypeLabelKo": null,
+      "ownerPack": "TRIGONOMETRY",
+      "examScopedEvidenceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q14",
+        "23_제일고_1학기_중간_고2_수학I:q22"
+      ],
+      "templateCandidates": [
+        {
+          "templateKey": "TPL_TRIG_RATIONAL_IDENTITY_RECOVERY",
+          "selectionEvidenceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q14"
+        },
+        {
+          "templateKey": "TPL_TRIG_IDENTITY_ROOT_FEASIBILITY",
+          "selectionEvidenceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q22"
+        }
+      ],
+      "selectionRule": "Determine the exact template from the question's reviewed primaryMethod and decisiveStep, not merely the shared RPM L3/L4 family."
     },
     {
       "id": "H2-M1-RPM-035",
