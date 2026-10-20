@@ -1181,6 +1181,8 @@
         const questionResults = Array.isArray(input.questionResults) ? input.questionResults : [];
         const recommendationInput = object(followUpContext.recommendationInput);
         const rawTargets = Array.isArray(recommendationInput.targets) ? recommendationInput.targets : [];
+        const targetScopeSupplied = own(input, 'targetScope');
+        const targetScope = input.targetScope;
         const optionsInput = own(input, 'recommendationOptions')
             ? { recommendationOptions: input.recommendationOptions }
             : own(input, 'countPerStudent') ? { countPerStudent: input.countPerStudent } : {};
@@ -1222,11 +1224,14 @@
             scope: 'follow_up',
             mode,
             attemptStatus: text(followUpContext.coverage?.attemptStatus),
-            targetMetaCount: rawTargets.length,
+            targetMetaCount: targetScopeSupplied ? 0 : rawTargets.length,
             targetUidCount: 0,
             candidateRecordCount: candidateRecords.length,
+            ...(targetScopeSupplied ? { sourceTargetMetaCount: rawTargets.length, sourceTargetUidCount: rawTargetUidCount } : {}),
         };
-        if (errors.length) {
+        const earlyContextError = errors.some(row => ['follow_up_result_not_eligible', 'invalid_follow_up_mode', 'invalid_follow_up_student']
+            .includes(row.code));
+        if (errors.length && (!targetScopeSupplied || earlyContextError)) {
             return {
                 contractVersion: CONTRACT_VERSION,
                 status: errors.some(row => row.code === 'follow_up_result_not_eligible' || row.code === 'invalid_follow_up_mode' || row.code === 'invalid_follow_up_student')
@@ -1319,10 +1324,79 @@
                 countBasis: 'latest_attempt_follow_up',
                 recommendationMode: mode,
                 recommendationOptions: recommendationConfig.normalized,
-                coverage: { ...emptyCoverage, targetUidCount: targetUids.size, invalidTargetReferenceCount },
+                coverage: {
+                    ...emptyCoverage,
+                    targetUidCount: targetScopeSupplied ? 0 : targetUids.size,
+                    invalidTargetReferenceCount,
+                },
                 evidence: [],
                 candidates: emptyCandidates(),
                 exclusions: { invalidTargetReferenceCount },
+                errors,
+            };
+        }
+
+        const sourceTargetMetaCount = normalizedTargets.length;
+        const sourceTargetUidCount = targetUids.size;
+        if (targetScopeSupplied) {
+            const scopeObject = object(targetScope);
+            const scopeBucket = scopeObject.difficultyBucket;
+            const validScope = targetScope && typeof targetScope === 'object' && !Array.isArray(targetScope) &&
+                typeof scopeObject.pathKey === 'string' && scopeObject.pathKey.length > 0 && text(scopeObject.pathKey) === scopeObject.pathKey &&
+                own(scopeObject, 'difficultyBucket') &&
+                (scopeBucket === null || (Number.isInteger(scopeBucket) && scopeBucket >= 1 && scopeBucket <= 5));
+            const invalidScopeResult = (code, message) => {
+                const scopeError = { code, field: 'targetScope', message };
+                return {
+                    contractVersion: CONTRACT_VERSION,
+                    status: 'invalid_context',
+                    countBasis: 'latest_attempt_follow_up',
+                    recommendationMode: mode,
+                    recommendationOptions: recommendationConfig.normalized,
+                    coverage: {
+                        ...emptyCoverage,
+                        targetMetaCount: 0,
+                        targetUidCount: 0,
+                        sourceTargetMetaCount,
+                        sourceTargetUidCount,
+                    },
+                    evidence: [],
+                    candidates: emptyCandidates(),
+                    exclusions: { invalidTargetScope: 1 },
+                    errors: [...errors, scopeError],
+                };
+            };
+            if (!validScope) {
+                return invalidScopeResult('invalid_follow_up_target_scope', 'targetScope must identify one canonical path and a null or integer difficulty bucket.');
+            }
+            const scopedTargets = normalizedTargets.filter(target => target.pathKey === scopeObject.pathKey &&
+                target.difficultyBucket === scopeBucket);
+            if (scopedTargets.length !== 1) {
+                return invalidScopeResult('follow_up_target_scope_unmatched', 'targetScope must match exactly one verified target type.');
+            }
+            normalizedTargets.splice(0, normalizedTargets.length, scopedTargets[0]);
+            targetUids.clear();
+            normalizedTargets[0].questionRefs.forEach(ref => targetUids.add(ref.sourceQuestionUid));
+            if (mode === 'same_uid') recommendationConfig.normalized.countPerStudent = targetUids.size;
+        }
+
+        if (errors.length) {
+            return {
+                contractVersion: CONTRACT_VERSION,
+                status: errors.some(row => row.code === 'invalid_follow_up_mode' || row.code === 'invalid_follow_up_student')
+                    ? 'invalid_context' : 'invalid_options',
+                countBasis: 'latest_attempt_follow_up',
+                recommendationMode: mode,
+                recommendationOptions: recommendationConfig.normalized,
+                coverage: {
+                    ...emptyCoverage,
+                    targetMetaCount: normalizedTargets.length,
+                    targetUidCount: targetUids.size,
+                    ...(targetScopeSupplied ? { sourceTargetMetaCount, sourceTargetUidCount } : {}),
+                },
+                evidence: [],
+                candidates: emptyCandidates(),
+                exclusions: {},
                 errors,
             };
         }
@@ -1472,6 +1546,7 @@
                 attemptStatus: 'result',
                 targetMetaCount: normalizedTargets.length,
                 targetUidCount: targetUids.size,
+                ...(targetScopeSupplied ? { sourceTargetMetaCount, sourceTargetUidCount } : {}),
                 candidateRecordCount: candidateRecords.length,
                 requestedCount,
                 returnedCount,

@@ -437,7 +437,15 @@
             }
             for (const [studentId, duplicates] of byStudent) {
                 if (duplicates.length !== 1) { coverage.duplicateStudentCount += duplicates.length - 1; queryIssue = true; continue; }
-                events.push({ assignment, resultAssignment: found, assignmentId, mode, studentId, student: duplicates[0] });
+                events.push({
+                    assignment,
+                    resultAssignment: found,
+                    assignmentId,
+                    mode,
+                    studentId,
+                    student: duplicates[0],
+                    followUpQueryEligible: result.coverage?.exactAssignment === true && result.coverage?.queryCoverage?.complete === true,
+                });
             }
         }
 
@@ -478,6 +486,9 @@
             const observed = excluded || !sessionId
                 ? { groups: [], unclassifiedWrongCount: 0, invalidMetaRefCount: 0 }
                 : summarizeWrongGroups(student);
+            const followUpSourceEligible = attemptStatus === 'complete_result' && event.followUpQueryEligible === true &&
+                student.followUpContext?.recommendationInput?.eligible === true &&
+                student.followUpContext?.coverage?.recommendationEligible === true;
             coverage.unclassifiedWrongCount += observed.unclassifiedWrongCount;
             coverage.invalidMetaRefCount += observed.invalidMetaRefCount;
             if (!studentsById.has(studentId)) studentsById.set(studentId, {
@@ -497,7 +508,7 @@
                 if (!aggregate.types.has(key)) aggregate.types.set(key, {
                     path: group.path, pathDepth: group.pathDepth, pathKey: group.pathKey,
                     difficultyBucket: group.difficultyBucket, observedWrongCount: 0, assignments: new Set(),
-                    uidCounts: new Map(), provenance: new Map(),
+                    uidCounts: new Map(), provenance: new Map(), followUpSources: new Map(),
                 });
                 const type = aggregate.types.get(key);
                 type.observedWrongCount += group.observedWrongCount;
@@ -509,6 +520,13 @@
                     provenance.uids.set(uid, (provenance.uids.get(uid) || 0) + count);
                     type.uidCounts.set(uid, (type.uidCounts.get(uid) || 0) + count);
                     aggregate.uidCounts.set(uid, (aggregate.uidCounts.get(uid) || 0) + count);
+                }
+                if (followUpSourceEligible) {
+                    type.followUpSources.set(`${assignmentId}\u0000${sessionId}`, {
+                        assignmentId,
+                        sessionId,
+                        targetUidCount: group.uidCounts.size,
+                    });
                 }
             }
             if (!excluded) aggregate.observedWrongCount += eventWrongCount;
@@ -547,6 +565,8 @@
                     repeatUidCount: [...type.uidCounts.values()].filter(count => count > 1).length,
                     repeatUidObservationCount: [...type.uidCounts.values()].reduce((sum, count) => sum + count - 1, 0),
                     assignmentCount: type.assignments.size, provenanceCounts,
+                    followUpSources: [...type.followUpSources.values()].sort((a, b) =>
+                        b.assignmentId.localeCompare(a.assignmentId) || b.sessionId.localeCompare(a.sessionId)),
                 };
             }).sort((a, b) => b.observedWrongCount - a.observedWrongCount || a.pathKey.localeCompare(b.pathKey) ||
                 Number(a.difficultyBucket || 0) - Number(b.difficultyBucket || 0));
