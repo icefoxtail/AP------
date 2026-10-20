@@ -106,6 +106,12 @@ test("normal registration sync refreshes parent links and then rebuilds the boun
     "the final catalog/manifest must be rebuilt after parent links change");
   assert.ok(catalogCheck > catalogWrites.find((index) => index > parentLinks),
     "the generated final catalog must then pass the stale check");
+  const readinessWrite = sync.indexOf('refresh-runtime-source-readiness.mjs", "--write"');
+  const readinessCheck = sync.indexOf('refresh-runtime-source-readiness.mjs", "--check"');
+  assert.ok(readinessWrite > catalogCheck,
+    "runtime readiness must bind the final verified catalog, after registration changes its version");
+  assert.ok(readinessCheck > readinessWrite,
+    "the refreshed readiness receipt must pass its unchanged stale check");
 });
 
 test("parent-link generation binds stable authority inputs instead of its own final catalog hash", () => {
