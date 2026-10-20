@@ -2007,6 +2007,17 @@ def run_archive_registration_sync():
         repo_root,
     )
 
+    run_pipeline_command(
+        "Meta Foundation runtime readiness 최종 catalog 결속",
+        ["node", archive_dir / "tools" / "meta-foundation" / "refresh-runtime-source-readiness.mjs", "--write"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Meta Foundation runtime readiness 결속 검증",
+        ["node", archive_dir / "tools" / "meta-foundation" / "refresh-runtime-source-readiness.mjs", "--check"],
+        repo_root,
+    )
+
     print("\n✅ ARCHIVE REGISTRATION SYNC PASS")
     print("   - 신규 시험지 DB/UID/Archive2 노출은 자동 동기화")
     print("   - 기존 Meta Foundation canonical은 자동 수정하지 않음")
