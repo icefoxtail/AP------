@@ -13423,6 +13423,68 @@ window.mainDB = {
       "primaryStandardCourse": "기하"
     },
     {
+      "file": "original/high/h2/1mid/22_금당고_1학기_중간_고2_수학I.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-M1-01",
+      "rangeStartUnit": "지수의 뜻과 성질",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M1-05",
+      "rangeEndUnit": "삼각함수의 뜻과 값",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-01",
+          "rangeStartUnit": "지수의 뜻과 성질",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M1-05",
+          "rangeEndUnit": "삼각함수의 뜻과 값",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "수학I"
+    },
+    {
+      "file": "original/high/h2/2mid/22_금당고_2학기_중간_고2_수학II.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-05",
+      "rangeEndUnit": "접선의 방정식",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-05",
+          "rangeEndUnit": "접선의 방정식",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
       "file": "original/high/h2/1mid/22_금당고_1학기_중간_고2_확률과통계.js",
       "school": "금당고",
       "topic": "",
@@ -13454,6 +13516,37 @@ window.mainDB = {
       "primaryStandardCourse": "확률과 통계"
     },
     {
+      "file": "original/high/h2/1final/22_매산고_1학기_기말_고2_기하.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "final",
+      "subject": "기하",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-GV-01",
+      "rangeStartUnit": "포물선",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-GV-09",
+      "rangeEndUnit": "공간좌표",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "기하와 벡터",
+          "courseCode": "H15-GV",
+          "rangeStartUnitKey": "H15-GV-01",
+          "rangeStartUnit": "포물선",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-GV-09",
+          "rangeEndUnit": "공간좌표",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "기하와 벡터"
+    },
+    {
       "file": "original/high/h2/1final/22_매산고_1학기_기말_고2_기하_기출.js",
       "school": "매산고",
       "topic": "",
@@ -13483,6 +13576,78 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "기하"
+    },
+    {
+      "file": "original/high/h2/1final/22_매산고_1학기_기말_고2_수학I.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "대수",
+          "courseCode": "H22-A",
+          "rangeStartUnitKey": "H22-A-05",
+          "rangeStartUnit": "사인법칙과 코사인법칙",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-A-08",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 8
+        },
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-08",
+          "rangeStartUnit": "등차수열",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H15-M1-11",
+          "rangeEndUnit": "수학적 귀납법",
+          "rangeEndUnitOrder": 11
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/high/h2/2final/22_매산고_2학기_기말_고2_수학II.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-M2-06",
+      "rangeStartUnit": "도함수의 활용",
+      "rangeStartUnitOrder": 6,
+      "rangeEndUnitKey": "H15-M2-09",
+      "rangeEndUnit": "적분의 활용",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-06",
+          "rangeStartUnit": "도함수의 활용",
+          "rangeStartUnitOrder": 6,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "적분의 활용",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학II"
     },
     {
       "file": "original/high/h2/1mid/22_매산고_1학기_중간_고2_기하와벡터_기출.js",
@@ -13545,6 +13710,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/2final/22_복성고_2학기_기말_고2_수학II.js",
+      "school": "복성고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "2",
+      "examType": "final",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-M2-05",
+      "rangeStartUnit": "접선의 방정식",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H15-M2-09",
+      "rangeEndUnit": "적분의 활용",
+      "rangeEndUnitOrder": 9,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-05",
+          "rangeStartUnit": "접선의 방정식",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-M2-09",
+          "rangeEndUnit": "적분의 활용",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": "수학II"
     },
     {
       "file": "original/high/h2/2final/22_복성고_2학기_기말_고2_확률과통계.js",
@@ -16383,6 +16579,37 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
+      "file": "original/high/h2/2mid/21_금당고_2학기_중간_고2_수학II.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2021,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 21,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
+    },
+    {
       "file": "original/high/h2/1mid/21_금당고_1학기_중간_고2_확률과통계.js",
       "school": "금당고",
       "topic": "",
@@ -16412,6 +16639,47 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "확률과 통계"
+    },
+    {
+      "file": "original/high/h2/1final/21_매산고_1학기_기말_고2_수학I.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2021,
+      "semester": "1",
+      "examType": "final",
+      "subject": "수학I",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "수학(하)",
+          "courseCode": "H15-SB",
+          "rangeStartUnitKey": "H15-SB-03",
+          "rangeStartUnit": "함수",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H15-SB-03",
+          "rangeEndUnit": "함수",
+          "rangeEndUnitOrder": 3
+        },
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-05",
+          "rangeStartUnit": "삼각함수의 뜻과 값",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H15-M1-09",
+          "rangeEndUnit": "등비수열",
+          "rangeEndUnitOrder": 9
+        }
+      ],
+      "primaryStandardCourse": ""
     },
     {
       "file": "original/high/h2/1mid/21_매산고_1학기_중간_고2_수학I.js",
