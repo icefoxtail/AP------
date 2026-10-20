@@ -584,6 +584,7 @@
         const candidateRecords = Array.isArray(input.candidateRecords) ? input.candidateRecords : [];
         const selectedIds = new Set((Array.isArray(input.studentIds) ? input.studentIds : [])
             .map(value => text(value?.id || value?.studentId || value)).filter(Boolean));
+        const includeSeenQuestionUids = input.includeSeenQuestionUids === true;
         const archive2Core = input.archive2Core || null;
         const recommendationConfig = recommendationOptionsOf(input);
         const limit = recommendationConfig.normalized.countPerStudent;
@@ -899,7 +900,7 @@
                         exclusions.candidateDifficultyIneligible++;
                         continue;
                     }
-                    if (recent.has(identity.questionUid)) {
+                    if (!includeSeenQuestionUids && recent.has(identity.questionUid)) {
                         if (!countedRecent.has(identity.questionUid)) {
                             countedRecent.add(identity.questionUid);
                             exclusions.candidateRecentUid++;
@@ -956,6 +957,7 @@
                 candidateRecordCount: candidateRecords.length,
                 resultSnapshotSessionCount: new Set(resultItems.map(sessionIdOf).filter(id => selectedSessionIds.has(id))).size,
                 legacyWrongAnswerSessionCount: legacyEvidenceSessions.size,
+                ...(includeSeenQuestionUids ? { includeSeenQuestionUids: true } : {}),
             },
             evidence,
             candidates: candidatesByStudent,
