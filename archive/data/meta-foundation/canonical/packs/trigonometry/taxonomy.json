@@ -1,0 +1,204 @@
+{
+  "schemaVersion": "trigonometry-taxonomy-pack-v1",
+  "status": "ACTIVE",
+  "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
+  "semanticRegistrySharedAcrossCurricula": true,
+  "problemTypeCount": 4,
+  "templateCount": 5,
+  "problemTypes": [
+    {
+      "problemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "canonicalLabelKo": "호도법과 부채꼴의 관계",
+      "definition": "수학Ⅰ 문항에서 '호도법과 부채꼴의 관계'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 호 길이와 넓이로 부채꼴 반지름 구하기.",
+      "aliases": [],
+      "ownerPack": "TRIGONOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q03"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q03",
+          "representativePrimaryMethod": "부채꼴 넓이와 호 길이 관계",
+          "representativeDecisiveStep": "S=rl/2→r=4"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
+      "canonicalLabelKo": "사분면 부호와 삼각함수값",
+      "definition": "수학Ⅰ 문항에서 '사분면 부호와 삼각함수값'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 사분면과 제곱합으로 삼각함수 값 구하기.",
+      "aliases": [],
+      "ownerPack": "TRIGONOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q04"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q04",
+          "representativePrimaryMethod": "삼각함수 부호와 관계",
+          "representativeDecisiveStep": "sin=−4/5,tan=4/3"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+      "canonicalLabelKo": "삼각함수 항등식과 관계식",
+      "definition": "수학Ⅰ 문항에서 '삼각함수 항등식과 관계식'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 삼각함수 분수식 변형과 부호 판정; 삼각함수 관계의 대수적 인수분해와 가능 범위.",
+      "aliases": [],
+      "ownerPack": "TRIGONOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 2,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q14",
+        "23_제일고_1학기_중간_고2_수학I:q22"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q14",
+          "representativePrimaryMethod": "삼각함수 유리식 항등변형",
+          "representativeDecisiveStep": "2/c=−6→c=−1/3"
+        },
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q22",
+          "representativePrimaryMethod": "sin+cos 치환과 제곱합 범위",
+          "representativeDecisiveStep": "3u²−8u−3=0→u=−1/3"
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+      "canonicalLabelKo": "일반각과 동경의 관계",
+      "definition": "수학Ⅰ 문항에서 '일반각과 동경의 관계'을 주요 풀이 구조로 사용하며 다음 유형을 포함한다: 반대 방향 동경 조건으로 각 결정.",
+      "aliases": [],
+      "ownerPack": "TRIGONOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q15"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+          "sourceQuestionRef": "23_제일고_1학기_중간_고2_수학I:q15",
+          "representativePrimaryMethod": "반대 동경의 π 합동식",
+          "representativeDecisiveStep": "θ=3π/4→sinπ/3"
+        }
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "templateKey": "TPL_SECTOR_RADIUS_FROM_AREA_ARC",
+      "canonicalLabelKo": "호 길이와 넓이로 부채꼴 반지름 구하기",
+      "definition": "'호도법과 부채꼴의 관계' 유형에서 '호 길이와 넓이로 부채꼴 반지름 구하기'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "호 길이와 넓이로 부채꼴 반지름 구하기",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_RADIAN_SECTOR_GEOMETRY",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q03"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "부채꼴 넓이와 호 길이 관계",
+        "representativeDecisiveStep": "S=rl/2→r=4"
+      }
+    },
+    {
+      "templateKey": "TPL_TRIG_SIGN_PYTHAGOREAN_RATIO",
+      "canonicalLabelKo": "사분면과 제곱합으로 삼각함수 값 구하기",
+      "definition": "'사분면 부호와 삼각함수값' 유형에서 '사분면과 제곱합으로 삼각함수 값 구하기'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "사분면과 제곱합으로 삼각함수 값 구하기",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_TRIG_QUADRANT_EVALUATION",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q04"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "삼각함수 부호와 관계",
+        "representativeDecisiveStep": "sin=−4/5,tan=4/3"
+      }
+    },
+    {
+      "templateKey": "TPL_TRIG_RATIONAL_IDENTITY_RECOVERY",
+      "canonicalLabelKo": "삼각함수 분수식 변형과 부호 판정",
+      "definition": "'삼각함수 항등식과 관계식' 유형에서 '삼각함수 분수식 변형과 부호 판정'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "삼각함수 분수식 변형과 부호 판정",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q14"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "삼각함수 유리식 항등변형",
+        "representativeDecisiveStep": "2/c=−6→c=−1/3"
+      }
+    },
+    {
+      "templateKey": "TPL_OPPOSITE_RAYS_GENERAL_ANGLE",
+      "canonicalLabelKo": "반대 방향 동경 조건으로 각 결정",
+      "definition": "'일반각과 동경의 관계' 유형에서 '반대 방향 동경 조건으로 각 결정'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "반대 방향 동경 조건으로 각 결정",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_GENERAL_ANGLE_DIRECTION",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q15"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "반대 동경의 π 합동식",
+        "representativeDecisiveStep": "θ=3π/4→sinπ/3"
+      }
+    },
+    {
+      "templateKey": "TPL_TRIG_IDENTITY_ROOT_FEASIBILITY",
+      "canonicalLabelKo": "삼각함수 관계의 대수적 인수분해와 가능 범위",
+      "definition": "'삼각함수 항등식과 관계식' 유형에서 '삼각함수 관계의 대수적 인수분해와 가능 범위'을 실풀이 결정 단계로 사용하는 풀이 골격.",
+      "aliases": [],
+      "internalSkeleton": "삼각함수 관계의 대수적 인수분해와 가능 범위",
+      "ownerPack": "TRIGONOMETRY",
+      "parentProblemTypeKey": "PT_TRIG_IDENTITY_RELATIONS",
+      "status": "ACTIVE",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [],
+      "supportingSourceQuestionRefs": [
+        "23_제일고_1학기_중간_고2_수학I:q22"
+      ],
+      "evidenceProvenance": {
+        "source": "JEILGO_2023_ORIGINAL_R3_SOURCE_SOLUTION",
+        "representativePrimaryMethod": "sin+cos 치환과 제곱합 범위",
+        "representativeDecisiveStep": "3u²−8u−3=0→u=−1/3"
+      }
+    }
+  ],
+  "ownerPack": "TRIGONOMETRY"
+}
