@@ -9451,6 +9451,37 @@ window.mainDB = {
       "primaryStandardCourse": "수학II"
     },
     {
+      "file": "original/high/h2/2final/23_금당고_2학기_기말_고2_확률과통계.js",
+      "school": "금당고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2023,
+      "semester": "2",
+      "examType": "final",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 22,
+      "rangeStartUnitKey": "H15-PS-04",
+      "rangeStartUnit": "조건부확률",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H15-PS-06",
+      "rangeEndUnit": "통계적 추정",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-04",
+          "rangeStartUnit": "조건부확률",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H15-PS-06",
+          "rangeEndUnit": "통계적 추정",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
+    },
+    {
       "file": "original/high/h2/2mid/23_금당고_2학기_중간_고2_미적분.js",
       "school": "금당고",
       "topic": "",
@@ -13937,6 +13968,37 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "수학II"
+    },
+    {
+      "file": "original/high/h2/1mid/22_효천고_1학기_중간_고2_확률과통계.js",
+      "school": "효천고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2022,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "확률과통계",
+      "contentType": "기출",
+      "qCount": 24,
+      "rangeStartUnitKey": "H15-PS-01",
+      "rangeStartUnit": "순열과 조합",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-PS-02",
+      "rangeEndUnit": "이항정리",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "확률과 통계",
+          "courseCode": "H15-PS",
+          "rangeStartUnitKey": "H15-PS-01",
+          "rangeStartUnit": "순열과 조합",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-PS-02",
+          "rangeEndUnit": "이항정리",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "확률과 통계"
     },
     {
       "file": "original/high/h1/2final/22_강남여고_2학기_기말_고1_기출.js",
@@ -21628,6 +21690,47 @@ window.mainDB = {
       "primaryStandardCourse": "수학I"
     },
     {
+      "file": "original/high/h2/2mid/19_강남여고_2학기_중간_고2_수학II.js",
+      "school": "강남여고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2019,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 30,
+      "rangeStartUnitKey": "",
+      "rangeStartUnit": "",
+      "rangeStartUnitOrder": 999,
+      "rangeEndUnitKey": "",
+      "rangeEndUnit": "",
+      "rangeEndUnitOrder": 999,
+      "courseRanges": [
+        {
+          "standardCourse": "수학I",
+          "courseCode": "H15-M1",
+          "rangeStartUnitKey": "H15-M1-01",
+          "rangeStartUnit": "지수의 뜻과 성질",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M1-10",
+          "rangeEndUnit": "수열의 합",
+          "rangeEndUnitOrder": 10
+        },
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": ""
+    },
+    {
       "file": "original/high/h2/2final/19_금당고_2학기_기말_고2_수학II.js",
       "school": "금당고",
       "topic": "",
@@ -21821,6 +21924,37 @@ window.mainDB = {
       "rangeEndUnitOrder": 999,
       "courseRanges": [],
       "primaryStandardCourse": ""
+    },
+    {
+      "file": "original/high/h2/2mid/19_매산고_2학기_중간_고2_수학II.js",
+      "school": "매산고",
+      "topic": "",
+      "grade": "고2",
+      "year": 2019,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "수학II",
+      "contentType": "기출",
+      "qCount": 20,
+      "rangeStartUnitKey": "H15-M2-01",
+      "rangeStartUnit": "함수의 극한",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H15-M2-06",
+      "rangeEndUnit": "도함수의 활용",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "수학II",
+          "courseCode": "H15-M2",
+          "rangeStartUnitKey": "H15-M2-01",
+          "rangeStartUnit": "함수의 극한",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H15-M2-06",
+          "rangeEndUnit": "도함수의 활용",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "수학II"
     },
     {
       "file": "original/high/h2/1final/19_매산여고_1학기_기말_고2_수학I.js",
