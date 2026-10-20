@@ -39,7 +39,7 @@ jobs:
           const questionRefs=paths.flatMap((p,i)=>{const bank=load(p);return [1,2].map((qid,j)=>({path:p,qid,solutionSha256:sha(bank[j].solution),solutionExcerpt:bank[j].solution.slice(0,Math.min(28,bank[j].solution.length)),observation:observations[i][j]}));});
           const nx=fs.readFileSync(neg);
           const evidence={solutionQualityCalibration:{sampleReadBeforeWork:true,calibrationStatus:'PASS',solutionWorkMode:'TARGETED_REPAIR',calibrationOrder:'SAMPLES_PREFLIGHT_THEN_DEFECT_SCOPE_FREEZE_THEN_REPAIR',calibrationAxes:['STUDENT_REPRODUCIBILITY','SMALL_BOARD_STRUCTURE','EXPLANATION_DENSITY','VISUAL_SEMANTIC_PARITY','VISUAL_READABILITY'],goldenSampleRefs:sampleRefs,goldenSampleQuestionRefs:questionRefs,negativeSampleRefs:[{path:neg,sha256:sha(nx),gitBlobSha:blob(nx)}]}};
-          fs.writeFileSync('new14_08_calibration_evidence.json',JSON.stringify(evidence,null,2)+'\\n');
+          fs.writeFileSync('new14_08_calibration_evidence.json',JSON.stringify(evidence,null,2)+String.fromCharCode(10));
           console.log(JSON.stringify({status:'TARGET_Q21_STRUCTURE_PASS',goldenFiles:sampleRefs.length,goldenQuestions:questionRefs.length,negativeFiles:1,sourceSha256:sha(fs.readFileSync(exam))}));
           NODE
           node archive/tools/solution-calibration-gate.mjs --exam archive/exams/original/high/h2/1mid/21_효천고_1학기_중간_고2_수학I.js --evidence new14_08_calibration_evidence.json --stage REPAIR --preflight
