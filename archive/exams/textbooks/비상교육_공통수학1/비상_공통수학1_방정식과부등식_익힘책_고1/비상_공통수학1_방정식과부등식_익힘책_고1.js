@@ -170,7 +170,7 @@ window.questionBank = [
       "수학 익힘책"
     ],
     "wide": false,
-    "content": "다음 그림과 같이 이차함수 $y=f(x)$의 그래프와 직선 $y=g(x)$가 만나는 두 점의 $x$좌표는 1, 5이다. $h(x)=f(x)-g(x)$라고 하면 $0\\le x\\le4$에서 이차함수 $y=h(x)$의 최솟값이 $-8$일 때, 최댓값을 구하시오.\n<img src=\"q06.png\" />",
+    "content": "다음 그림과 같이 이차함수 $y=f(x)$의 그래프와 직선 $y=g(x)$가 만나는 두 점의 $x$좌표는 1, 5이다. $h(x)=f(x)-g(x)$라고 하면 $0\\le x\\le4$에서 이차함수 $y=h(x)$의 최솟값이 $-8$일 때, 최댓값을 구하시오.\n<img src=\"assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q06.png\" />",
     "choices": [],
     "answer": "",
     "solution": ""
@@ -226,7 +226,7 @@ window.questionBank = [
       "수학 익힘책"
     ],
     "wide": false,
-    "content": "직각을 낀 두 변의 길이가 16, 20인 직각삼각형을 밑면으로 하고 높이가 24인 삼각기둥을 오른쪽 그림과 같이 두 번 잘라 직육면체를 만들 때, 직육면체의 부피의 최댓값을 구하시오.\n<img src=\"q08.png\" />",
+    "content": "직각을 낀 두 변의 길이가 16, 20인 직각삼각형을 밑면으로 하고 높이가 24인 삼각기둥을 오른쪽 그림과 같이 두 번 잘라 직육면체를 만들 때, 직육면체의 부피의 최댓값을 구하시오.\n<img src=\"assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q08.png\" />",
     "choices": [],
     "answer": "",
     "solution": ""
@@ -310,7 +310,7 @@ window.questionBank = [
       "수학 익힘책"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같은 사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=2$, $\\overline{\\mathrm{BC}}=6$, $\\angle\\mathrm{A}=\\angle\\mathrm{C}=90^\\circ$이다. 사각형 $\\mathrm{ABCD}$의 넓이가 30일 때, 사각형 $\\mathrm{ABCD}$의 둘레의 길이를 구하시오.\n<img src=\"q11.png\" />",
+    "content": "오른쪽 그림과 같은 사각형 $\\mathrm{ABCD}$에서 $\\overline{\\mathrm{AB}}=2$, $\\overline{\\mathrm{BC}}=6$, $\\angle\\mathrm{A}=\\angle\\mathrm{C}=90^\\circ$이다. 사각형 $\\mathrm{ABCD}$의 넓이가 30일 때, 사각형 $\\mathrm{ABCD}$의 둘레의 길이를 구하시오.\n<img src=\"assets/images/비상_공통수학1_방정식과부등식_익힘책_고1/q11.png\" />",
     "choices": [],
     "answer": "",
     "solution": ""
