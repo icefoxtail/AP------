@@ -60,6 +60,9 @@ jobs:
               const results=[];
               for(const mode of ['exam','sol','ans']){
                 const params=new URLSearchParams({data:'exams/original/high/h2/1mid/'+title,mode});
+                await send('Runtime.evaluate',{expression:'window.onbeforeunload=null;'});
+                await send('Page.navigate',{url:'about:blank'});
+                await delay(350);
                 await send('Page.navigate',{url:'http://127.0.0.1:'+p+'/archive/engine.html?'+params});
                 let good=false,detail;
                 for(let i=0;i<160;i++){
