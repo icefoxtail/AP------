@@ -35,6 +35,7 @@ let clinicPrintRecommendationState = {
     pendingKeys: new Set(),
     validationErrors: new Map(),
     verifiedByKey: new Map(),
+    followUpAction: null,
     error: ''
 };
 
@@ -149,6 +150,34 @@ function clinicPrintRecommendationKey(studentId, questionUid) {
     return JSON.stringify([String(studentId || ''), String(questionUid || '')]);
 }
 
+function clinicPrintBuildFollowUpResultSignature(assignment, student) {
+    const context = student?.followUpContext || {};
+    const targets = Array.isArray(context.recommendationInput?.targets) ? context.recommendationInput.targets : [];
+    return JSON.stringify([
+        String(assignment?.classId || assignment?.class_id || ''),
+        String(assignment?.assignmentId || assignment?.id || ''),
+        String(student?.studentId || student?.student_id || ''),
+        String(student?.sessionId || ''),
+        String(student?.status || ''),
+        String(context.status || ''),
+        String(context.coverage?.metaCoverageStatus || ''),
+        context.coverage?.recommendationEligible === true,
+        Number(context.coverage?.unclassifiedCount || 0),
+        (Array.isArray(student?.questionResults) ? student.questionResults : []).map(row => [
+            Number(row?.orderNo || 0), String(row?.questionUid || ''), String(row?.status || '')
+        ]),
+        targets.map(target => [
+            String(target?.pathKey || ''), target?.difficultyBucket ?? null,
+            Array.isArray(target?.questionOrderNos) ? target.questionOrderNos.map(Number) : [],
+            (Array.isArray(target?.questionRefs) ? target.questionRefs : []).map(ref => [
+                Number(ref?.orderNo || 0), String(ref?.sourceQuestionUid || ''),
+                String(ref?.sourceArchiveFile || ''), Number(ref?.sourceQuestionOrdinal || 0),
+                String(ref?.sourceFingerprint || '')
+            ])
+        ])
+    ]);
+}
+
 function clinicPrintGetRecommendationContextKey(classId, scope = clinicPrintRecommendationState.scope) {
     const settings = clinicPrintReadRecommendationSettings();
     return JSON.stringify([
@@ -159,7 +188,15 @@ function clinicPrintGetRecommendationContextKey(classId, scope = clinicPrintReco
         clinicPrintGetCheckedValues('clinic-print-student').map(String).sort(),
         settings.countPerStudentRaw,
         settings.difficultyMode,
-        settings.selectedDifficultyBuckets
+        settings.selectedDifficultyBuckets,
+        clinicPrintRecommendationState.followUpAction ? [
+            String(clinicPrintRecommendationState.followUpAction.classId || ''),
+            String(clinicPrintRecommendationState.followUpAction.assignmentId || ''),
+            String(clinicPrintRecommendationState.followUpAction.studentId || ''),
+            String(clinicPrintRecommendationState.followUpAction.sessionId || ''),
+            String(clinicPrintRecommendationState.followUpAction.mode || ''),
+            String(clinicPrintRecommendationState.followUpAction.resultSignature || '')
+        ] : null
     ]);
 }
 
@@ -247,6 +284,7 @@ function clinicPrintResetRecommendationState(scope = 'class', classId = clinicPr
         pendingKeys: new Set(),
         validationErrors: new Map(),
         verifiedByKey: new Map(),
+        followUpAction: null,
         error: ''
     };
 }
@@ -275,6 +313,8 @@ function clinicPrintRecommendationPathLabel(item = {}) {
 function clinicPrintRecommendationReasonLabel(item = {}) {
     const reason = item.recommendationReason;
     if (!reason || typeof reason !== 'object') return String(reason || '기존 오답의 정본 Meta 경로와 연결');
+    if (reason.basis === 'follow_up_same_uid') return '이번 완결 응시에서 확정 오답으로 확인된 UID';
+    if (reason.basis === 'follow_up_similar_uid') return '이번 완결 응시의 동결 정본 유형 경로와 연결';
     const wrongCount = Number(reason.wrongCount || 0);
     const sessionCount = Number(reason.sessionCount || 0);
     return `조회 이력 오답 ${wrongCount}회 · ${sessionCount}개 세션의 정본 Meta 경로와 연결`;
@@ -399,6 +439,11 @@ function clinicPrintRenderRecommendationAssessmentPanel(classId = clinicPrintAct
     const button = document.getElementById('clinic-print-recommendation-assessment-submit');
     if (!body) return;
     const state = clinicPrintGetRecommendationAssessmentState(classId);
+    const followUpAction = clinicPrintRecommendationState.followUpAction || null;
+    const softTitle = document.querySelector('#clinic-print-recommendation-assessment-section .clinic-print-section-title--soft');
+    if (softTitle) softTitle.textContent = followUpAction
+        ? (followUpAction.mode === 'same_uid' ? '같은 UID · 현재 검증 원본 재연습' : '이번 오답 UID와 다른 유사문항')
+        : '유형 보충 시험 · 다른 문항 적용';
     const busy = ['planning', 'issuing', 'refreshing', 'reconciling'].includes(state.status);
     if (button) button.disabled = busy;
     const refreshButton = document.getElementById('clinic-print-recommendation-assessment-refresh');
@@ -501,17 +546,26 @@ function clinicPrintGetRecommendationAssessmentSelections(classId, selectedStude
                 studentName: String(student?.name || studentId),
                 selectedCount: items.length,
                 returnedCount: Array.isArray(group?.items) ? group.items.length : 0,
-                requestedCount: Number(clinicPrintRecommendationSettings.countPerStudent || 5)
+                requestedCount: clinicPrintRecommendationState.followUpAction?.mode === 'same_uid'
+                    ? Number(group?.requestedCount || group?.returnedCount || items.length)
+                    : Number(clinicPrintRecommendationSettings.countPerStudent || 5)
             }
         };
     });
 }
 
 function clinicPrintGetRecommendationSelectionSignature(studentIds) {
-    return JSON.stringify((studentIds || []).map(studentId => [
-        String(studentId),
-        clinicPrintGetSelectedRecommendationItems(studentId).map(item => String(item.sourceQuestionUid || ''))
-    ]));
+    const action = clinicPrintRecommendationState.followUpAction;
+    return JSON.stringify({
+        selections: (studentIds || []).map(studentId => [
+            String(studentId),
+            clinicPrintGetSelectedRecommendationItems(studentId).map(item => String(item.sourceQuestionUid || ''))
+        ]),
+        followUp: action ? [
+            action.classId, action.assignmentId, action.studentId, action.sessionId, action.mode,
+            action.resultSignature
+        ] : null
+    });
 }
 
 function clinicPrintAssessmentErrorMessage(error) {
@@ -538,12 +592,41 @@ function clinicPrintAssessmentErrorMessage(error) {
     return messages[String(error?.code || '')] || String(error?.message || '시험 배정 계획을 만들지 못했습니다. 입력과 선택 문항을 확인하세요.');
 }
 
-function clinicPrintAssessmentSelectionConfirmation(plan, selections, summaries) {
+function clinicPrintAssessmentSelectionConfirmation(plan, selections, summaries, recommendationMode = '') {
     const paperCount = (plan?.cohorts || []).reduce((count, cohort) => count +
         (cohort.contentBatches || []).reduce((batchCount, batch) => batchCount + (batch.papers || []).length, 0), 0);
     const selectedStudentCount = selections.length;
     const rows = summaries.map(row => `• ${row.studentName} · 선택 ${row.selectedCount}문항 (추천된 ${row.returnedCount} / 요청 ${row.requestedCount}문항)`);
-    return `유형 보충 시험을 다음 학생에게 배정합니다.\n시험: ${plan.title}\n날짜: ${plan.examDate}\n대상: ${selectedStudentCount}명 · 시험지 ${paperCount}개\n${rows.join('\n')}\n\n학생별 선택 문항이 정확히 반영됩니다. 문항은 최대 50개씩 나누어 배정합니다. 이 수신 학생과 시험 내용을 확인하고 진행할까요?`;
+    const lead = recommendationMode === 'same_uid' ? '같은 UID 재연습 시험을 다음 학생에게 배정합니다.'
+        : recommendationMode === 'similar_uid' ? '다른 유사문항 후속 시험을 다음 학생에게 배정합니다.'
+            : '유형 보충 시험을 다음 학생에게 배정합니다.';
+    return `${lead}\n시험: ${plan.title}\n날짜: ${plan.examDate}\n대상: ${selectedStudentCount}명 · 시험지 ${paperCount}개\n${rows.join('\n')}\n\n학생별 선택 문항이 정확히 반영됩니다. 문항은 최대 50개씩 나누어 배정합니다. 이 수신 학생과 시험 내용을 확인하고 진행할까요?`;
+}
+
+function clinicPrintIsRecommendationAssessmentFormCurrent(title, examDate) {
+    return clinicPrintClampText(document.getElementById('clinic-print-recommendation-assessment-title')?.value || '', 100) === String(title || '') &&
+        String(document.getElementById('clinic-print-recommendation-assessment-date')?.value || '').trim() === String(examDate || '');
+}
+
+async function clinicPrintVerifyFollowUpStillLatest(action, state, requestId, contextKey, selectionSignature, title, examDate) {
+    try {
+        if (!clinicPrintIsFollowUpActionCurrent(action, state, requestId) || state.contextKey !== contextKey ||
+            clinicPrintGetRecommendationSelectionSignature([action.studentId]) !== selectionSignature ||
+            !clinicPrintIsRecommendationAssessmentFormCurrent(title, examDate)) return false;
+        const result = await clinicPrintGetAssessmentClient().loadResults({
+            classId: action.classId,
+            assignmentId: action.assignmentId
+        });
+        if (!clinicPrintIsFollowUpActionCurrent(action, state, requestId) || state.contextKey !== contextKey ||
+            clinicPrintGetRecommendationSelectionSignature([action.studentId]) !== selectionSignature ||
+            !clinicPrintIsRecommendationAssessmentFormCurrent(title, examDate)) return false;
+        const student = (result?.students || []).find(row => String(row.studentId || '') === String(action.studentId || ''));
+        return !!student && student.status === 'result' && student.followUpContext?.recommendationInput?.eligible === true &&
+            String(student.sessionId || '') === String(action.sessionId || '') &&
+            clinicPrintBuildFollowUpResultSignature(result.assignment || {}, student) === action.resultSignature;
+    } catch {
+        return false;
+    }
 }
 
 async function clinicPrintCreateRecommendationAssessment(classId) {
@@ -562,8 +645,14 @@ async function clinicPrintCreateRecommendationAssessment(classId) {
         return;
     }
     const selectedStudentIds = clinicPrintGetCheckedValues('clinic-print-student').map(String).sort();
+    const followUpAction = clinicPrintRecommendationState.followUpAction || null;
     if (!selectedStudentIds.length) {
         toast('시험을 받을 학생을 선택하세요.', 'warn');
+        return;
+    }
+    if (followUpAction && (selectedStudentIds.length !== 1 || selectedStudentIds[0] !== String(followUpAction.studentId || '') ||
+        String(followUpAction.classId || '') !== String(classId || ''))) {
+        toast('후속 시험에는 결과 카드의 학생 한 명만 수신자로 선택해야 합니다.', 'warn');
         return;
     }
     const targetGrade = clinicPrintGetClassGrade(classId);
@@ -616,7 +705,10 @@ async function clinicPrintCreateRecommendationAssessment(classId) {
         const verifiedSelections = clinicPrintGetRecommendationAssessmentSelections(classId, selectedStudentIds)
             .filter(row => row.selection.items.length);
         const recommendationSettings = clinicPrintReadRecommendationSettings();
-        if (!recommendationSettings.recommendationOptions) {
+        const recommendationOptions = followUpAction?.mode === 'same_uid'
+            ? clinicPrintRecommendationState.result?.recommendationOptions
+            : recommendationSettings.recommendationOptions;
+        if (!recommendationOptions) {
             throw new Error(recommendationSettings.errors.map(row => row.message).join(' '));
         }
         const historyCoverage = clinicPrintRecommendationState.result?.coverage || {};
@@ -634,7 +726,8 @@ async function clinicPrintCreateRecommendationAssessment(classId) {
             title,
             examDate,
             indexVersion: candidateCatalog.version,
-            recommendationOptions: recommendationSettings.recommendationOptions,
+            recommendationOptions,
+            recommendationMode: followUpAction?.mode || undefined,
             coverage: historyCoverage,
             selections: verifiedSelections.map(row => ({
                 ...row.selection,
@@ -658,10 +751,29 @@ async function clinicPrintCreateRecommendationAssessment(classId) {
         }
         state.selectionSummary = plannedSummaries;
         clinicPrintRenderRecommendationAssessmentPanel(classId);
-        if (!window.confirm(clinicPrintAssessmentSelectionConfirmation(plan, plannedSelections, plannedSummaries))) {
+        if (!window.confirm(clinicPrintAssessmentSelectionConfirmation(plan, plannedSelections, plannedSummaries, followUpAction?.mode || ''))) {
             state.status = 'cancelled';
             state.plan = null;
             clinicPrintRenderRecommendationAssessmentPanel(classId);
+            return;
+        }
+        if (followUpAction && !await clinicPrintVerifyFollowUpStillLatest(
+            followUpAction,
+            currentRecommendationState,
+            currentRecommendationState.requestId,
+            contextKey,
+            selectedRecommendationSignature,
+            title,
+            examDate
+        )) {
+            clinicPrintResetRecommendationState('class', classId);
+            state.plan = null;
+            state.status = 'cancelled';
+            state.error = '';
+            clinicPrintRenderRecommendationPanel(classId);
+            clinicPrintRenderRecommendationAssessmentPanel(classId);
+            clinicPrintSchedulePreviewPush(classId);
+            toast('후속 응시 결과 또는 선택이 바뀌었거나 다시 확인할 수 없습니다. 후보를 다시 불러오세요. 시험지는 저장하지 않았습니다.', 'warn');
             return;
         }
         state.plan = plan;
@@ -832,7 +944,7 @@ function clinicPrintAssessmentQuestionStatusLabel(status) {
     return ({ correct: '정답', wrong: '오답', partial: '부분 채점', unchecked: '미채점', unresolved: '미확인' })[String(status || '')] || '미확인';
 }
 
-function clinicPrintRenderFollowUpContext(student = {}) {
+function clinicPrintRenderFollowUpContext(student = {}, classId = '', assignment = {}) {
     const context = student?.followUpContext;
     if (!context || typeof context !== 'object' || !context.coverage || typeof context.coverage !== 'object') {
         return '<div style="color:var(--secondary);margin-top:3px;">후속 유형 근거를 확인할 수 없습니다.</div>';
@@ -877,7 +989,15 @@ function clinicPrintRenderFollowUpContext(student = {}) {
     }).filter(Boolean).join('');
     const noWrongNote = status === 'result' && !groups.length && count(coverage.wrongCount) === 0
         ? '동결 정본 Meta에서 확인된 확정 오답 유형이 없습니다.' : '';
-    return `<div style="font-size:11px;color:var(--secondary);margin-top:3px;"><strong>후속 보충 대상 유형 요약</strong><div style="margin-top:2px;">${clinicPrintEscapeHtml(coverageLine)}</div>${statusNote ? `<div style="margin-top:2px;">${clinicPrintEscapeHtml(statusNote)}</div>` : ''}${noWrongNote ? `<div style="margin-top:2px;">${clinicPrintEscapeHtml(noWrongNote)}</div>` : ''}${targetRows}${evidenceNotes.length ? `<div style="margin-top:2px;">${clinicPrintEscapeHtml(evidenceNotes.join(' · '))}</div>` : ''}<div style="margin-top:2px;">이 요약은 이번 보충시험 응답의 유형별 관측이며, 기존 문항의 회복률을 뜻하지 않습니다.</div></div>`;
+    const followUpTargetUidCount = new Set((Array.isArray(context.recommendationInput?.targets) ? context.recommendationInput.targets : [])
+        .flatMap(target => Array.isArray(target?.questionRefs) ? target.questionRefs.map(ref => String(ref?.sourceQuestionUid || '')).filter(Boolean) : [])).size;
+    const actionButtons = status === 'result' && context.recommendationInput?.eligible === true &&
+        Array.isArray(context.recommendationInput?.targets) && context.recommendationInput.targets.length
+        ? `<div style="margin-top:5px;">이번 결과의 후속 대상 UID ${followUpTargetUidCount}개</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;">
+            <button type="button" class="clinic-print-mini-btn" onclick="clinicPrintStartFollowUpRecommendations('${clinicPrintEscapeJsString(classId)}','${clinicPrintEscapeJsString(assignment?.assignmentId || assignment?.id || '')}','${clinicPrintEscapeJsString(student?.studentId || student?.student_id || '')}','same_uid')">같은 UID 재연습 후보</button>
+            <button type="button" class="clinic-print-mini-btn" onclick="clinicPrintStartFollowUpRecommendations('${clinicPrintEscapeJsString(classId)}','${clinicPrintEscapeJsString(assignment?.assignmentId || assignment?.id || '')}','${clinicPrintEscapeJsString(student?.studentId || student?.student_id || '')}','similar_uid')">다른 유사 문항 후보</button>
+        </div>` : '';
+    return `<div style="font-size:11px;color:var(--secondary);margin-top:3px;"><strong>후속 보충 대상 유형 요약</strong><div style="margin-top:2px;">${clinicPrintEscapeHtml(coverageLine)}</div>${statusNote ? `<div style="margin-top:2px;">${clinicPrintEscapeHtml(statusNote)}</div>` : ''}${noWrongNote ? `<div style="margin-top:2px;">${clinicPrintEscapeHtml(noWrongNote)}</div>` : ''}${targetRows}${evidenceNotes.length ? `<div style="margin-top:2px;">${clinicPrintEscapeHtml(evidenceNotes.join(' · '))}</div>` : ''}<div style="margin-top:2px;">이 요약은 이번 보충시험 응답의 유형별 관측이며, 기존 문항의 회복률을 뜻하지 않습니다.</div>${actionButtons}</div>`;
 }
 
 function clinicPrintRenderAssessmentDiscovery(state = clinicPrintGetRecommendationAssessmentState()) {
@@ -893,6 +1013,8 @@ function clinicPrintRenderAssessmentDiscovery(state = clinicPrintGetRecommendati
             const outcomeRow = outcomesById.get(String(assignment.assignmentId || ''));
             const outcome = outcomeRow?.result;
             const students = Array.isArray(outcome?.students) ? outcome.students : [];
+            const assignmentModeLabel = assignment.recommendationMode === 'same_uid' ? '같은 UID 재연습'
+                : assignment.recommendationMode === 'similar_uid' ? '다른 유사문항' : '';
             const requested = Number(assignment.requestedCount || assignment.questionCount || 0);
             const coverage = outcome?.coverage || {};
             const snapshotMismatch = coverage.frozenQuestionBridgeVerified === false ||
@@ -905,7 +1027,7 @@ function clinicPrintRenderAssessmentDiscovery(state = clinicPrintGetRecommendati
                 snapshotMismatch ? `동결 문항 snapshot ${Number(coverage.frozenQuestionCount || 0)}/${Number(coverage.expectedQuestionCount || 0)}개` : ''
             ].filter(Boolean);
             return `<div style="border:1px solid var(--border);border-radius:9px;padding:8px;margin-top:7px;">
-                <div style="font-size:12px;font-weight:700;">${clinicPrintEscapeHtml(assignment.examTitle || '유형 보충 시험')} · ${clinicPrintEscapeHtml(assignment.examDate || '')} · 시험 ${Number(assignment.paperIndex || 0)}/${Number(assignment.paperCount || 1)}</div>
+                <div style="font-size:12px;font-weight:700;">${clinicPrintEscapeHtml(assignment.examTitle || '유형 보충 시험')} · ${clinicPrintEscapeHtml(assignment.examDate || '')} · ${assignmentModeLabel ? `${clinicPrintEscapeHtml(assignmentModeLabel)} · ` : ''}시험 ${Number(assignment.paperIndex || 0)}/${Number(assignment.paperCount || 1)}</div>
                 <div style="font-size:11px;color:var(--secondary);margin-top:3px;">배정 ${Number(assignment.questionCount || 0)}문항 · 추천 요청 ${requested}문항${outcome?.coverage ? ` · 실제 응시 ${Number(coverage.sessionCount || 0)}건 · 결과 문항 ${Number(coverage.resultItemCount || 0)}건` : ''}${resultCoverageNotes.length ? ` · ${clinicPrintEscapeHtml(resultCoverageNotes.join(' · '))}` : ''}</div>
                 ${outcomeRow?.error ? `<div style="font-size:11px;color:var(--error);margin-top:4px;">응시 결과를 확인하지 못했습니다: ${clinicPrintEscapeHtml(outcomeRow.error)}</div>` : ''}
                 ${students.map(student => {
@@ -913,11 +1035,162 @@ function clinicPrintRenderAssessmentDiscovery(state = clinicPrintGetRecommendati
                     const questionResults = student.sessionId
                         ? (student.questionResults || []).map(row => `${Number(row.orderNo || 0)}번 ${clinicPrintAssessmentQuestionStatusLabel(row.status)}`).join(' · ')
                         : '';
-                    return `<div style="font-size:11px;margin-top:5px;"><strong>${clinicPrintEscapeHtml(student.studentName || student.studentId || '학생')}</strong> · ${clinicPrintEscapeHtml(clinicPrintAssessmentStatusLabel(student.status))}${score}${questionResults ? `<div style="color:var(--secondary);margin-top:2px;">${clinicPrintEscapeHtml(questionResults)}</div>` : ''}${clinicPrintRenderFollowUpContext(student)}</div>`;
+                    return `<div style="font-size:11px;margin-top:5px;"><strong>${clinicPrintEscapeHtml(student.studentName || student.studentId || '학생')}</strong> · ${clinicPrintEscapeHtml(clinicPrintAssessmentStatusLabel(student.status))}${score}${questionResults ? `<div style="color:var(--secondary);margin-top:2px;">${clinicPrintEscapeHtml(questionResults)}</div>` : ''}${clinicPrintRenderFollowUpContext(student, state.classId, assignment)}</div>`;
                 }).join('')}
             </div>`;
         }).join('')}
     </div>`;
+}
+
+function clinicPrintSetFollowUpRecipient(classId, studentId) {
+    const classStudents = clinicPrintGetClassStudents(classId);
+    const student = classStudents.find(row => String(row.id || '') === String(studentId || ''));
+    if (!student) return false;
+    const root = document.getElementById('clinic-print-student-list');
+    if (!root) return false;
+    let target = Array.from(root.querySelectorAll('input[name="clinic-print-student"]'))
+        .find(input => String(input.value || '') === String(studentId || ''));
+    if (!target) {
+        const label = document.createElement('label');
+        label.className = 'clinic-print-student-row';
+        label.innerHTML = `<span class="clinic-print-student-row__main"><input type="checkbox" name="clinic-print-student" value="${clinicPrintEscapeAttr(studentId)}" onchange="clinicPrintOnRecipientChange('${clinicPrintEscapeJsString(classId)}')"><span class="clinic-print-student-row__name">${clinicPrintEscapeHtml(student.name || studentId)}${student.className ? ` · ${clinicPrintEscapeHtml(student.className)}` : ''}</span></span><span class="clinic-print-student-row__count">후속 결과 대상</span>`;
+        root.prepend(label);
+        target = label.querySelector('input[name="clinic-print-student"]');
+    }
+    if (!target) return false;
+    root.querySelectorAll('input[name="clinic-print-student"]').forEach(input => { input.checked = input === target; });
+    target.checked = true;
+    return true;
+}
+
+function clinicPrintIsFollowUpActionCurrent(action, state, requestId = state?.requestId) {
+    return !!action && clinicPrintRecommendationState === state && state?.followUpAction === action &&
+        String(clinicPrintActiveClassId || '') === String(action.classId || '') &&
+        String(state.classId || '') === String(action.classId || '') &&
+        Number(state.requestId) === Number(requestId) &&
+        document.querySelector('input[name="clinic-print-mode"]:checked')?.value === 'student' &&
+        JSON.stringify(clinicPrintGetCheckedValues('clinic-print-student').map(String).sort()) === JSON.stringify([String(action.studentId || '')]) &&
+        clinicPrintGetRecommendationContextKey(action.classId, state.scope) === state.contextKey;
+}
+
+async function clinicPrintStartFollowUpRecommendations(classId, assignmentId, studentId, mode) {
+    const normalizedMode = mode === 'same_uid' || mode === 'similar_uid' ? mode : '';
+    if (!normalizedMode || String(clinicPrintActiveClassId || '') !== String(classId || '')) return;
+    if (document.querySelector('input[name="clinic-print-mode"]:checked')?.value !== 'student') {
+        toast('후속 추천을 시작하려면 학생별 오답 모드로 전환하세요.', 'warn');
+        return;
+    }
+    const assessmentState = clinicPrintGetRecommendationAssessmentState(classId);
+    if (['planning', 'issuing', 'refreshing', 'reconciling'].includes(assessmentState.status) ||
+        assessmentState.plan && assessmentState.status !== 'complete') {
+        toast('진행 중이거나 미확정인 배정 작업을 먼저 확인하세요.', 'warn');
+        return;
+    }
+    const assignment = (assessmentState.discovered || []).find(row =>
+        String(row.assignmentId || '') === String(assignmentId || '') && String(row.classId || '') === String(classId || ''));
+    const outcome = (assessmentState.outcomes || []).find(row =>
+        String(row.assignmentId || row.result?.assignment?.assignmentId || '') === String(assignmentId || ''))?.result;
+    const student = (outcome?.students || []).find(row => String(row.studentId || '') === String(studentId || ''));
+    if (!assignment || !student || student.status !== 'result' || student.followUpContext?.recommendationInput?.eligible !== true) {
+        toast('후속 결과가 최신 완결 응시인지 다시 확인하세요.', 'warn');
+        return;
+    }
+    if (!clinicPrintGetClassStudents(classId).some(row => String(row.id || '') === String(studentId || ''))) {
+        toast('현재 반의 수신 학생인지 확인할 수 없습니다.', 'warn');
+        return;
+    }
+    if (!clinicPrintSetFollowUpRecipient(classId, studentId)) {
+        toast('후속 결과 학생을 수신자 목록에 설정할 수 없습니다.', 'warn');
+        return;
+    }
+
+    clinicPrintResetRecommendationState('class', classId);
+    const state = clinicPrintRecommendationState;
+    const action = {
+        classId: String(classId),
+        assignmentId: String(assignmentId),
+        studentId: String(studentId),
+        studentName: String(student.studentName || ''),
+        sessionId: String(student.sessionId || ''),
+        mode: normalizedMode,
+        resultSignature: clinicPrintBuildFollowUpResultSignature(assignment, student),
+        followUpContext: student.followUpContext,
+        targetUidCount: new Set((student.followUpContext?.recommendationInput?.targets || [])
+            .flatMap(target => Array.isArray(target?.questionRefs) ? target.questionRefs.map(ref => String(ref?.sourceQuestionUid || '')).filter(Boolean) : [])).size,
+        questionResults: student.questionResults,
+        coverage: outcome.coverage || {}
+    };
+    state.followUpAction = action;
+    state.classId = String(classId);
+    state.scope = 'class';
+    state.status = 'loading';
+    state.requestId = Number(state.requestId || 0) + 1;
+    const requestId = state.requestId;
+    state.contextKey = clinicPrintGetRecommendationContextKey(classId, state.scope);
+    const contextKey = state.contextKey;
+    clinicPrintSchedulePreviewPush(classId);
+    clinicPrintRenderRecommendationPanel(classId);
+    await new Promise(resolve => setTimeout(resolve, 0));
+
+    try {
+        const settings = clinicPrintReadRecommendationSettings();
+        if (normalizedMode === 'similar_uid' && !settings.recommendationOptions) {
+            throw new Error(settings.errors.map(row => row.message).join(' '));
+        }
+        const catalog = await clinicPrintWithTimeout(
+            clinicPrintLoadArchive2CandidateCatalog(),
+            95000,
+            'Archive 2.0 후보 목록 조회 시간이 초과되었습니다.'
+        );
+        if (!clinicPrintIsFollowUpActionCurrent(action, state, requestId) || contextKey !== state.contextKey) return;
+        if (!window.ClinicRecommendations || typeof window.ClinicRecommendations.buildFollowUpCandidates !== 'function') {
+            throw new Error('후속 추천 모듈을 불러오지 못했습니다.');
+        }
+        const recommendationOptions = settings.recommendationOptions || {
+            countPerStudent: 5,
+            difficultyMode: 'match_wrong',
+            selectedDifficultyBuckets: []
+        };
+        const result = window.ClinicRecommendations.buildFollowUpCandidates({
+            studentId: action.studentId,
+            followUpContext: action.followUpContext,
+            questionResults: action.questionResults,
+            mode: action.mode,
+            candidateRecords: clinicPrintPrepareArchive2CandidateRecords(catalog.records),
+            archive2Core: window.Archive2Core,
+            canonicalAuthority: catalog.catalog.canonicalAuthority,
+            targetGrade: clinicPrintGetClassGrade(classId),
+            recommendationOptions
+        });
+        if (!clinicPrintIsFollowUpActionCurrent(action, state, requestId) || contextKey !== state.contextKey) return;
+        state.result = result;
+        state.status = result?.status === 'invalid_context' ? 'stale'
+            : result?.status === 'invalid_options' ? 'invalid_options'
+                : Array.isArray(result?.candidates) && result.candidates.some(group => Array.isArray(group.items) && group.items.length)
+                    ? 'ready' : 'empty';
+        state.error = result?.status === 'invalid_context'
+            ? (result.errors || []).map(row => row.message).filter(Boolean).join(' ') : '';
+        clinicPrintRenderRecommendationPanel(classId);
+        document.getElementById('clinic-print-recommendation-body')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } catch (error) {
+        if (!clinicPrintIsFollowUpActionCurrent(action, state, requestId)) return;
+        state.status = 'error';
+        state.error = String(error?.message || error || '후속 후보 조회 실패');
+        clinicPrintRenderRecommendationPanel(classId);
+    }
+}
+
+function clinicPrintClearFollowUpRecommendations(classId) {
+    if (!clinicPrintRecommendationState.followUpAction) return;
+    const assessmentState = clinicPrintGetRecommendationAssessmentState(classId);
+    if (['planning', 'issuing', 'refreshing', 'reconciling'].includes(assessmentState.status) ||
+        assessmentState.plan && assessmentState.status !== 'complete') {
+        toast('진행 중이거나 미확정인 배정 작업을 먼저 확인하세요.', 'warn');
+        return;
+    }
+    clinicPrintResetRecommendationState('class', classId);
+    clinicPrintRenderRecommendationPanel(classId);
+    clinicPrintSchedulePreviewPush(classId);
 }
 
 function clinicPrintPrepareArchive2CandidateRecords(records = []) {
@@ -969,10 +1242,19 @@ function clinicPrintRenderRecommendationPanel(classId = clinicPrintActiveClassId
     const body = document.getElementById('clinic-print-recommendation-body');
     if (!body) return;
     const state = clinicPrintRecommendationState;
+    const followUpAction = state.followUpAction || null;
     const mode = document.querySelector('input[name="clinic-print-mode"]:checked')?.value || 'student';
+    const optionRoot = document.getElementById('clinic-print-recommendation-options');
+    const sectionTitle = document.querySelector('#clinic-print-recommendation-section .clinic-print-section-title');
+    const sectionSoftTitle = document.querySelector('#clinic-print-recommendation-section .clinic-print-section-title--soft');
+    if (optionRoot) optionRoot.style.display = followUpAction?.mode === 'same_uid' ? 'none' : '';
+    if (sectionTitle) sectionTitle.textContent = followUpAction ? '후속 보충 후보' : '유사 문항 추천';
+    if (sectionSoftTitle) sectionSoftTitle.textContent = followUpAction
+        ? (followUpAction.mode === 'same_uid' ? '같은 UID 재연습' : '다른 유사문항')
+        : '학생별 후보';
     const classActive = state.scope !== 'grade';
     const gradeActive = state.scope === 'grade';
-    const scopeButtons = `
+    const scopeButtons = followUpAction ? '' : `
         <div style="display:flex;gap:8px;margin:8px 0 10px;">
             <button type="button" class="clinic-print-mini-btn" aria-pressed="${classActive}" style="${classActive ? 'border-color:var(--primary);color:var(--primary);' : ''}" onclick="clinicPrintSetRecommendationScope('${clinicPrintEscapeJsString(classId)}','class')">현재 반</button>
             <button type="button" class="clinic-print-mini-btn" aria-pressed="${gradeActive}" style="${gradeActive ? 'border-color:var(--primary);color:var(--primary);' : ''}" onclick="clinicPrintSetRecommendationScope('${clinicPrintEscapeJsString(classId)}','grade')">같은 학년</button>
@@ -985,10 +1267,17 @@ function clinicPrintRenderRecommendationPanel(classId = clinicPrintActiveClassId
         ? '학생별 오답 모드에서 이용'
         : state.status === 'loading' ? '추천 기준을 불러오는 중…' : '유사 문항 후보 찾기';
     const optionSettings = clinicPrintReadRecommendationSettings();
-    let message = optionSettings.errors.length
+    let message = followUpAction
+        ? `${followUpAction.mode === 'same_uid' ? '같은 UID 재연습' : '다른 유사 UID 추천'} · ${clinicPrintEscapeHtml(followUpAction.studentName || followUpAction.studentId)} 학생의 선택 후보입니다. 수신 학생은 이 학생 한 명으로 유지됩니다.`
+        : optionSettings.errors.length
         ? optionSettings.errors.map(error => clinicPrintEscapeHtml(error.message)).join(' ')
         : '조회된 오답 빈도를 기준으로 후보를 찾습니다. 정답률이나 회복률을 뜻하지 않습니다.';
-    if (mode !== 'student') message = '학생별 추천 문항을 미리보고 배정하려면 출제 기준에서 학생을 선택하세요.';
+    if (followUpAction && state.status === 'loading') message = `이번 결과의 후속 대상 UID ${Number(followUpAction.targetUidCount || 0)}개에 대해 ${clinicPrintEscapeHtml(followUpAction.mode === 'same_uid' ? '같은 UID 재연습' : '다른 유사 UID 추천')} 후보의 원본 identity와 정본 유형을 확인하고 있습니다.`;
+    else if (followUpAction && state.status === 'error') message = `후속 후보를 불러오지 못했습니다: ${clinicPrintEscapeHtml(state.error || '조회 오류')}. 결과 행에서 다시 선택하세요.`;
+    else if (followUpAction && state.status === 'stale') message = '후속 응시 결과의 문항 UID 또는 동결 Meta가 바뀌었습니다. 결과를 새로고침한 뒤 다시 선택하세요.';
+    else if (followUpAction && state.status === 'empty') message = `이번 결과의 후속 대상 UID ${Number(followUpAction.targetUidCount || 0)}개에 대한 ${clinicPrintEscapeHtml(followUpAction.mode === 'same_uid' ? '같은 UID' : '다른 유사 UID')} 후보를 확인하지 못했습니다. 기존 결과는 유지됩니다.`;
+    else if (followUpAction && state.status === 'ready') message = `이번 결과의 후속 대상 UID ${Number(state.result?.coverage?.targetUidCount || 0)}개를 기준으로 만든 ${clinicPrintEscapeHtml(followUpAction.mode === 'same_uid' ? '같은 UID 재연습' : '다른 유사 UID 추천')} 후보입니다. 항목을 확인하고 체크한 뒤 아래 배정 절차를 사용하세요.`;
+    else if (mode !== 'student') message = '학생별 추천 문항을 미리보고 배정하려면 출제 기준에서 학생을 선택하세요.';
     else if (state.status === 'loading') message = `${scopeLabel}의 오답·동결 문항 정보를 확인하고 Archive 2.0 후보를 불러옵니다. 첫 조회에는 준비 시간이 걸릴 수 있습니다.`;
     else if (state.status === 'error') message = `추천을 불러오지 못했습니다: ${clinicPrintEscapeHtml(state.error || '조회 오류')}. 현재 오답 클리닉은 계속 이용할 수 있습니다.`;
     else if (state.status === 'stale') message = '학생, 시험 또는 추천 범위가 바뀌었습니다. 새 조건으로 후보를 다시 찾으세요.';
@@ -1030,13 +1319,20 @@ function clinicPrintRenderRecommendationPanel(classId = clinicPrintActiveClassId
                     const title = clinicPrintGetArchiveDisplayTitle(source) || '아카이브 문항';
                     const questionNo = item.sourceQuestionNo || item.questionNo || '';
                     const path = clinicPrintRecommendationPathLabel(item);
+                    const currentCanonicalPath = ['L1', 'L2', 'L3', 'L4'].map(level => String(item.canonicalMeta?.[level] || '').trim()).filter(Boolean).join(' › ');
+                    const pathDetails = item.followUpMode === 'same_uid' && path && currentCanonicalPath && path !== currentCanonicalPath
+                        ? `이전 응시 유형: ${path} · 현재 원본 유형: ${currentCanonicalPath}` : path;
                     const reason = clinicPrintRecommendationReasonLabel(item);
                     const error = state.validationErrors?.get(key) || '';
+                    const followUpLabel = item.followUpMode === 'same_uid'
+                        ? `같은 UID · 현재 검증 원본${item.sourceFingerprintRelation === 'fingerprint_changed' ? ' · 이전 내용 지문과 다름' : item.sourceFingerprintRelation === 'fingerprint_match' ? ' · 비교한 내용 지문 일치' : ' · 이전 내용 지문 비교 불가'}`
+                        : item.followUpMode === 'similar_uid' ? '이번 오답 UID와 다른 유사 문항' : '';
                     return `<label style="display:flex;gap:9px;align-items:flex-start;border:1px solid var(--border);border-radius:10px;padding:9px;margin:6px 0;">
                         <input type="checkbox" ${checked ? 'checked' : ''} ${pending ? 'disabled' : ''} onchange="clinicPrintToggleRecommendation('${clinicPrintEscapeJsString(classId)}','${clinicPrintEscapeJsString(studentId)}','${clinicPrintEscapeJsString(uid)}',this.checked)">
                         <span style="min-width:0;flex:1;">
                             <span style="display:block;font-size:12px;font-weight:700;">${clinicPrintEscapeHtml(title)}${questionNo ? ` · 원문 ${clinicPrintEscapeHtml(questionNo)}번` : ''}</span>
-                            ${path ? `<span style="display:block;font-size:11px;color:var(--secondary);margin-top:3px;">${clinicPrintEscapeHtml(path)}${Number.isInteger(Number(item.difficultyBucket)) && Number(item.difficultyBucket) >= 1 && Number(item.difficultyBucket) <= 5 ? ` · 난이도 ${Number(item.difficultyBucket)}/5` : ''}</span>` : ''}
+                            ${pathDetails ? `<span style="display:block;font-size:11px;color:var(--secondary);margin-top:3px;">${clinicPrintEscapeHtml(pathDetails)}${Number.isInteger(Number(item.difficultyBucket)) && Number(item.difficultyBucket) >= 1 && Number(item.difficultyBucket) <= 5 ? ` · 난이도 ${Number(item.difficultyBucket)}/5` : ''}</span>` : ''}
+                            ${followUpLabel ? `<span style="display:block;font-size:11px;color:var(--secondary);margin-top:3px;">${clinicPrintEscapeHtml(followUpLabel)}</span>` : ''}
                             <span style="display:block;font-size:11px;color:var(--secondary);margin-top:3px;">${clinicPrintEscapeHtml(pending ? '원본 UID·파일·문항 위치를 확인 중입니다.' : reason)}</span>
                             ${error ? `<span style="display:block;font-size:11px;color:var(--error);margin-top:3px;">원본 확인 실패: ${clinicPrintEscapeHtml(error)}</span>` : ''}
                         </span>
@@ -1048,7 +1344,7 @@ function clinicPrintRenderRecommendationPanel(classId = clinicPrintActiveClassId
     }
 
     body.innerHTML = `${scopeButtons}<div class="clinic-print-note" aria-live="polite">${message}</div>
-        <button type="button" class="clinic-print-mini-btn" style="margin-top:8px;" ${disabled ? 'disabled' : ''} onclick="clinicPrintLoadRecommendations('${clinicPrintEscapeJsString(classId)}')">${buttonText}</button>
+        ${followUpAction ? `<button type="button" class="clinic-print-mini-btn" style="margin-top:8px;" onclick="clinicPrintClearFollowUpRecommendations('${clinicPrintEscapeJsString(classId)}')">후속 후보 닫기</button>` : `<button type="button" class="clinic-print-mini-btn" style="margin-top:8px;" ${disabled ? 'disabled' : ''} onclick="clinicPrintLoadRecommendations('${clinicPrintEscapeJsString(classId)}')">${buttonText}</button>`}
         ${candidatesHtml}`;
 }
 
@@ -1413,7 +1709,8 @@ function clinicPrintBuildRecommendationPrintItem(studentId, candidate) {
     const title = clinicPrintGetArchiveDisplayTitle(sourceFile) || 'Archive 2.0 문항';
     return {
         examKey: `recommendation|${sourceUid}`,
-        examTitle: `유사 추천 · ${title}`,
+        examTitle: candidate.followUpMode === 'same_uid' ? `같은 UID 재연습 · ${title}`
+            : candidate.followUpMode === 'similar_uid' ? `다른 유사문항 · ${title}` : `유사 추천 · ${title}`,
         examDate: '',
         archiveFile: sourceFile,
         questionNo: sourceQuestionNo,
