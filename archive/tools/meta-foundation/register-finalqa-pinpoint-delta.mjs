@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import crypto from "node:crypto";
+import { execFileSync } from "node:child_process";
 
 const EXAM = "26_제일고_1학기_기말_고2_대수";
 const SOURCE = "original/high/h2/1final/" + EXAM + ".js";
@@ -27,9 +28,19 @@ export function registerFinalqaPinpointDelta({root, request, write = false, veri
   const sourceBytes = fs.readFileSync(path.join(root,"archive/exams",SOURCE));
   const sha = blobSha(sourceBytes);
   if (sha !== request.expectedSourceBlobSha1) fail("source Git blob drift");
-  const ctx = {window:{},console:{log(){},warn(){},error(){}}};
-  vm.createContext(ctx); vm.runInContext(sourceBytes.toString("utf8"),ctx,{timeout:5000});
-  const bank = ctx.window.questionBank;
+  const parseBank = bytes => {
+    const ctx = {window:{},console:{log(){},warn(){},error(){}}};
+    vm.createContext(ctx); vm.runInContext(bytes.toString("utf8"),ctx,{timeout:5000});
+    return ctx.window.questionBank;
+  };
+  if (request.previousSourceBlobSha1 !== "bb9f516f0e4e3a9ce79c5edba20e4b1d21884931") fail("unexpected prior source reference");
+  const previousBytes=execFileSync("git",["cat-file","blob",request.previousSourceBlobSha1],{cwd:root,encoding:null,maxBuffer:40*1024*1024});
+  if (blobSha(previousBytes)!==request.previousSourceBlobSha1) fail("prior source blob unavailable");
+  const bank = parseBank(sourceBytes), previousBank = parseBank(previousBytes);
+  if (!Array.isArray(previousBank) || previousBank.length!==21) fail("prior student question denominator mismatch");
+  for(let i=0;i<21;i++) for(const f of ["content","choices","answer","solution","image","solutionImage"]) {
+    if (!equal(previousBank[i]?.[f],bank[i]?.[f])) fail("student field drift #" + (i+1) + "." + f);
+  }
   if (!Array.isArray(bank) || bank.length !== 21) fail("actual question denominator drift");
   const doc = read(root,META);
   const ids = read(root,IDENTITY);
@@ -40,13 +51,23 @@ export function registerFinalqaPinpointDelta({root, request, write = false, veri
   const byId = new Map(identity.map(x=>[x.sourceOrdinal,x]));
   if (byOrdinal.size!==21 || byId.size!==21) fail("duplicate source ordinal");
   const ords=new Set();
-  let changed=0, changedFields=0;
+  let changed=0, changedFields=0, fingerprintRepairs=0;
   for (const item of request.items) {
     const n=item.sourceOrdinal, old=byOrdinal.get(n), id=byId.get(n), q=bank[n-1];
     if (!Number.isInteger(n) || n<1 || n>21 || ords.has(n) || !old || !id || !q || q.id!==n) fail("item ordinal mismatch");
     ords.add(n);
     if (item.questionUid!==old.questionUid || item.questionUid!==id.questionUid) fail("canonical UID mismatch #" + n);
-    if (old.sourceFingerprint!==fingerprint(q)) fail("unchanged student source fingerprint mismatch #" + n);
+    const currentFingerprint=fingerprint(q);
+    if (old.sourceFingerprint!==currentFingerprint || id.sourceFingerprint!==currentFingerprint) {
+      if (verifyProjection) fail("fingerprint materialization parity missing #" + n);
+      if (old.sourceFingerprint!==id.sourceFingerprint) fail("pre-existing metadata/identity fingerprint divergence #" + n);
+      old.sourceFingerprint=currentFingerprint;
+      old.contentFingerprint=crypto.createHash("sha256").update(JSON.stringify({
+        content:q.content??null,choices:Array.isArray(q.choices)?q.choices:null,image:q.image??null
+      })).digest("hex");
+      id.sourceFingerprint=currentFingerprint;
+      fingerprintRepairs++;
+    }
     if (!item.before || !item.after || !Number.isInteger(item.after.difficultyBucket) ||
         item.after.difficultyBucket<1 || item.after.difficultyBucket>5)
       fail("explicit numeric bucket required #" + n);
@@ -72,13 +93,20 @@ export function registerFinalqaPinpointDelta({root, request, write = false, veri
   if (ords.size!==21) fail("21 unique ordinals required");
   if (verifyProjection) return {status:"PASS",examUid:EXAM,verifiedRows:21,sourceBlobSha:sha,consumerSidecarParity:"STATIC_SOURCE_SIDECAR_MATCH",ptTpl:"NOT_IN_SCOPE"};
   if (write && changed) {
-    // All unrelated UID records and existing PT/TPL fields remain record-equivalent.
+    // The only historical fingerprint repairs are tied to this exact exam's verified
+    // unchanged student fields, leaving all other identities and PT/TPL untouched.
+    if (fingerprintRepairs) {
+      ids.sourceCommit=execFileSync("git",["rev-parse","HEAD"],{cwd:root,encoding:"utf8"}).trim();
+      const identityBytes=JSON.stringify(ids,null,2)+"\n";
+      fs.writeFileSync(path.join(root,IDENTITY),identityBytes,"utf8");
+      doc.sourceDigests={...(doc.sourceDigests||{}),identityMap:crypto.createHash("sha256").update(identityBytes).digest("hex")};
+    }
     // Preserve the shared sidecar digest convention after the authorized server write.
     delete doc.digest;
     doc.digest=crypto.createHash("sha256").update(JSON.stringify(doc)).digest("hex");
     const newText=JSON.stringify(doc,null,2)+"\n";
     fs.writeFileSync(path.join(root,META),newText,"utf8");
   }
-  return {status:"PASS",examUid:EXAM,write,matchedRows:21,changedRows:changed,changedFields,
+  return {status:"PASS",examUid:EXAM,write,matchedRows:21,changedRows:changed,changedFields,fingerprintRepairs,
           sourceBlobSha:sha,ptTpl:"UNTOUCHED_NOT_IN_SCOPE"};
 }
