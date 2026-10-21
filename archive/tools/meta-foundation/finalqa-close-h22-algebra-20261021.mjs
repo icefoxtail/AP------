@@ -22,6 +22,9 @@ const tagLabel=new Map(tags.filter(x=>x.keyType==='subUnitKey').map(x=>[x.key,x.
 const PTGROUP={
 '거듭제곱근':'ROOT_REAL','지수의 확장':'EXPONENT_EXTENSION','지수법칙':'EXPONENT_LAWS',
 '로그의 뜻':'LOG_DEFINITION','로그의 성질':'LOG_PROPERTIES','상용로그':'COMMON_LOG',
+'지수함수의 그래프':'EXP_GRAPH','지수함수의 활용':'EXP_APPLICATION',
+'로그함수의 그래프':'LOG_GRAPH','로그함수의 활용':'LOG_APPLICATION',
+'기본 그래프':'TRIG_BASIC_GRAPH','그래프 활용':'TRIG_GRAPH_APPLICATION',
 '지수방정식':'EXP_EQUATION','지수부등식':'EXP_INEQUALITY',
 '로그방정식':'LOG_EQUATION','로그부등식':'LOG_INEQUALITY',
 '일반각과 호도법':'ANGLE_RADIAN','삼각함수의 뜻':'TRIG_DEFINITION',
