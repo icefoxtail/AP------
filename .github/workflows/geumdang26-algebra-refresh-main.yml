@@ -83,7 +83,10 @@ jobs:
           git diff --cached --check
           git commit -m "merge(main): incorporate concurrent canonical changes and refresh Geumdang PT/TPL projections [skip ci]"
           git fetch origin finalqa-geumdang26-20261021
-          git rebase origin/finalqa-geumdang26-20261021
+          # Generated files outside this exam's staged outputs must not block reconciliation.
+          git restore --worktree .
+          git clean -fd
+          git merge --no-edit origin/finalqa-geumdang26-20261021
           git push origin HEAD:finalqa-geumdang26-20261021
       - uses: browser-actions/setup-chrome@v1
         id: chrome
