@@ -17,7 +17,6 @@ vm.runInNewContext(src,ctx,{timeout:5000});
 const q=JSON.parse(JSON.stringify(ctx.window.questionBank));
 const m=read(metaFile),links=read(parentsFile);
 assert(q.length===21&&Array.isArray(m.records)&&links.status==='REVIEWED_SCOPE_LINKS','schema or denominator incorrect');
-const rows=m.records.filter(x=>String(x.sourceArchiveFile).replace(/^archive\/exams\//,'')===f).sort((a,b)=>x.ordinal-y.ordinal);
 const targets=m.records.filter(x=>String(x.sourceArchiveFile).replace(/^archive\/exams\//,'')===f).sort((a,b)=>Number(a.sourceOrdinal)-Number(b.sourceOrdinal));
 assert(targets.length===21,'QID metadata join cardinality not 21');
 const bank=sourceBank.evaluate(src,f);
