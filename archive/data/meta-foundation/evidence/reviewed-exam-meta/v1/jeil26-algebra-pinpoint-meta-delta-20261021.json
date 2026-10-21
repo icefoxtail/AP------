@@ -6,7 +6,7 @@
   "sourceArchiveFile": "original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js",
   "sourceBlobSha": "bb9f516f0e4e3a9ce79c5edba20e4b1d21884931",
   "mainBaseline": "2f8326a19c725dea117f0a5a585558df8fbd7401",
-  "status": "SEMANTIC_DELTA_RECORDED__NOT_REGISTERED",
+  "status": "SUPERSEDED_SEMANTIC_REVIEW_DO_NOT_REGISTER",
   "scope": {
     "qaMode": "PINPOINT_ONLY",
     "sourcePdfCompare": "NOT_RUN_USER_EXCLUDED",
@@ -145,5 +145,7 @@
     "reason": "Existing metadata registrar support for Algebra FINAL_QA not verified; shared question_metadata.json must not be manually rewritten",
     "nextAction": "Resolve 7 subunit changes via authorized small-JSON registrar, confirm q19 classification and existing UID/bucket values, verify effective loader/search parity, then change source only if atomic sync prevents SOURCE_CONFLICT_HOLD"
   },
-  "qualityStatus": "NOT_DONE"
+  "qualityStatus": "SUPERSEDED_NOT_DONE",
+  "supersededBy": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/jeil26-algebra-finalqa-corrected-scope-20261021.json",
+  "supersessionReason": "Original 7-QID proposal overreached: Q04/Q10 are RPM Σ properties and Q15 is recurrence, legitimately BASIC. New reviewed delta corrects Q03/Q06/Q11 subunit and Q20 sequence unit only."
 }
