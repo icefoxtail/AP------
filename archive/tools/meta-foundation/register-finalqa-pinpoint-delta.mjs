@@ -72,7 +72,10 @@ export function registerFinalqaPinpointDelta({root, request, write = false, veri
   if (ords.size!==21) fail("21 unique ordinals required");
   if (verifyProjection) return {status:"PASS",examUid:EXAM,verifiedRows:21,sourceBlobSha:sha,consumerSidecarParity:"STATIC_SOURCE_SIDECAR_MATCH",ptTpl:"NOT_IN_SCOPE"};
   if (write && changed) {
-    // All unrelated UID records and existing PT/TPL fields remain byte-equivalent at the record level.
+    // All unrelated UID records and existing PT/TPL fields remain record-equivalent.
+    // Preserve the shared sidecar digest convention after the authorized server write.
+    delete doc.digest;
+    doc.digest=crypto.createHash("sha256").update(JSON.stringify(doc)).digest("hex");
     const newText=JSON.stringify(doc,null,2)+"\n";
     fs.writeFileSync(path.join(root,META),newText,"utf8");
   }
