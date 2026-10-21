@@ -30,7 +30,28 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
     "subUnit": "trigonometric function",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-105"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 그래프",
+      "l3": "그래프 변환",
+      "l4": "주기·진폭"
+    },
+    "rpmL3": "그래프 변환",
+    "rpmL4": "주기·진폭",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
   },
   {
     "id": 2,
@@ -61,7 +82,28 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
     "subUnit": "수열의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-115"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "등차수열",
+      "l4": "일반항"
+    },
+    "rpmL3": "등차수열",
+    "rpmL4": "일반항",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
   },
   {
     "id": 3,
@@ -92,7 +134,28 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-109"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 활용",
+      "l3": "사인법칙",
+      "l4": "외접원 반지름"
+    },
+    "rpmL3": "사인법칙",
+    "rpmL4": "외접원 반지름",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
   },
   {
     "id": 4,
@@ -125,7 +188,28 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-113"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 활용",
+      "l3": "삼각형의 넓이",
+      "l4": "두 변과 끼인각"
+    },
+    "rpmL3": "삼각형의 넓이",
+    "rpmL4": "두 변과 끼인각",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
   },
   {
     "id": 5,
@@ -156,7 +240,30 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_EQUATION",
     "subUnit": "삼각방정식과 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-102"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수",
+      "l3": "삼각방정식·부등식",
+      "l4": "주기 구간의 해"
+    },
+    "rpmL3": "삼각방정식·부등식",
+    "rpmL4": "주기 구간의 해",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE"
   },
   {
     "id": 6,
@@ -187,7 +294,28 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
     "subUnit": "수열의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-118"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "등비수열",
+      "l4": "일반항"
+    },
+    "rpmL3": "등비수열",
+    "rpmL4": "일반항",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
   },
   {
     "id": 7,
@@ -218,7 +346,28 @@ window.questionBank = [
     "subUnitKey": "H22-A-07-SEQUENCE_SUM",
     "subUnit": "수열의 합",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-124"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "수열",
+      "midUnit": "수열의 합",
+      "l3": "합의 기호 Σ",
+      "l4": "성질"
+    },
+    "rpmL3": "합의 기호 Σ",
+    "rpmL4": "성질",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
   },
   {
     "id": 8,
@@ -249,7 +398,28 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-100"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수",
+      "l3": "삼각함수의 성질",
+      "l4": "삼각함수 관계"
+    },
+    "rpmL3": "삼각함수의 성질",
+    "rpmL4": "삼각함수 관계",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE"
   },
   {
     "id": 9,
@@ -280,7 +450,28 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-114"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 활용",
+      "l3": "삼각형의 넓이",
+      "l4": "복합도형"
+    },
+    "rpmL3": "삼각형의 넓이",
+    "rpmL4": "복합도형",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 10,
@@ -311,7 +502,28 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-111"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 활용",
+      "l3": "코사인법칙",
+      "l4": "변·각 계산"
+    },
+    "rpmL3": "코사인법칙",
+    "rpmL4": "변·각 계산",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 11,
@@ -342,7 +554,28 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_SUM",
     "subUnit": "수열의 합",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-120"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "등비수열",
+      "l4": "합"
+    },
+    "rpmL3": "등비수열",
+    "rpmL4": "합",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 12,
@@ -373,7 +606,28 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_SUM",
     "subUnit": "수열의 합",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-120"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "등비수열",
+      "l4": "합"
+    },
+    "rpmL3": "등비수열",
+    "rpmL4": "합",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 13,
@@ -404,7 +658,30 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
     "subUnit": "수열의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-121"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "수열의 활용",
+      "l4": "조건으로 수열 결정"
+    },
+    "rpmL3": "수열의 활용",
+    "rpmL4": "조건으로 수열 결정",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 14,
@@ -435,7 +712,30 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-108"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 그래프",
+      "l3": "그래프 활용",
+      "l4": "최대·최소"
+    },
+    "rpmL3": "그래프 활용",
+    "rpmL4": "최대·최소",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 15,
@@ -468,7 +768,32 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-113"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 활용",
+      "l3": "삼각형의 넓이",
+      "l4": "두 변과 끼인각"
+    },
+    "rpmL3": "삼각형의 넓이",
+    "rpmL4": "두 변과 끼인각",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [
+      "CC_AM_GM"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 16,
@@ -499,7 +824,31 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
     "subUnit": "수열의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-121"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "수열의 활용",
+      "l4": "조건으로 수열 결정"
+    },
+    "rpmL3": "수열의 활용",
+    "rpmL4": "조건으로 수열 결정",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 17,
@@ -530,7 +879,30 @@ window.questionBank = [
     "subUnitKey": "H22-A-07-SEQUENCE_SUM",
     "subUnit": "수열의 합",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-117"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "등차수열",
+      "l4": "합"
+    },
+    "rpmL3": "등차수열",
+    "rpmL4": "합",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "CASE_BRANCH"
   },
   {
     "id": 18,
@@ -561,7 +933,31 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-108"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 그래프",
+      "l3": "그래프 활용",
+      "l4": "최대·최소"
+    },
+    "rpmL3": "그래프 활용",
+    "rpmL4": "최대·최소",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE",
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "CASE_BRANCH"
   },
   {
     "id": 19,
@@ -595,7 +991,28 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-109"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 활용",
+      "l3": "사인법칙",
+      "l4": "외접원 반지름"
+    },
+    "rpmL3": "사인법칙",
+    "rpmL4": "외접원 반지름",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 20,
@@ -620,7 +1037,31 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_SUM",
     "subUnit": "수열의 합",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-117"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "등차수열",
+      "l4": "합"
+    },
+    "rpmL3": "등차수열",
+    "rpmL4": "합",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL"
   },
   {
     "id": 21,
@@ -645,6 +1086,30 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-107"
+    ],
+    "rpmPrimaryPath": {
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 그래프",
+      "l3": "그래프 활용",
+      "l4": "교점"
+    },
+    "rpmL3": "그래프 활용",
+    "rpmL4": "교점",
+    "problemTypeKey": null,
+    "templateKey": null,
+    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "INTERDEPENDENT"
   }
 ];
