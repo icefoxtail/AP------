@@ -334,16 +334,16 @@ window.questionBank = [
   {
     "id": 11,
     "level": "중",
-    "category": "통계적 추정",
+    "category": "확률분포",
     "originalCategory": "통계적 추정",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H15-PS-06",
-    "standardUnit": "통계적 추정",
-    "standardUnitOrder": 6,
+    "standardUnitKey": "H15-PS-05",
+    "standardUnit": "확률분포",
+    "standardUnitOrder": 5,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
-      "통계적 추정",
+      "확률분포",
       "확률과 통계",
       "표"
     ],
@@ -358,8 +358,8 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "과자 한 봉지의 무게를 $X_i$라 하고, $9$개를 합친 무게를 $W=X_1+\\cdots+X_9$라 하자.\n독립적으로 추출한 무게의 합에 대하여\n$E(W)=9\\cdot124=1116$\n$V(W)=9\\cdot6^2=324$\n$\\sigma_W=\\sqrt{324}=18$이다.\n따라서 $W$는 평균 $1116$, 표준편차 $18$인 정규분포를 따른다.\n$P(W\\le1134)=P\\left(Z\\le\\dfrac{1134-1116}{18}\\right)$\n$=P(Z\\le1)$\n$=0.5+P(0\\le Z\\le1)$\n$=0.5+0.3413=0.8413$이다.\n따라서 정답은 ③이다.",
-    "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+    "subUnit": "확률분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "sourcePdf": "2025_제일고2_확통_2기말.pdf"
