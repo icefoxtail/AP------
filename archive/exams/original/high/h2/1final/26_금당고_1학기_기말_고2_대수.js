@@ -153,8 +153,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "단위원에서 $\\cos x$는 각 $x$에 대응하는 점의 가로좌표이다.\n먼저 경계가 되는 각을 구한다.\n$\\cos\\dfrac{\\pi}{6}=\\dfrac{\\sqrt3}{2}$이므로\n$\\cos x=-\\dfrac{\\sqrt3}{2}$가 되는 각은 제2사분면과 제3사분면에 있다.\n\n제2사분면에서는\n$x=\\pi-\\dfrac{\\pi}{6}$\n$=\\dfrac{5\\pi}{6}$이고,\n제3사분면에서는\n$x=\\pi+\\dfrac{\\pi}{6}$\n$=\\dfrac{7\\pi}{6}$이다.\n\n가로좌표가 $-\\dfrac{\\sqrt3}{2}$보다 작은 점은 두 경계점 사이의 왼쪽 호에 있다.\n따라서\n$\\dfrac{5\\pi}{6}<x<\\dfrac{7\\pi}{6}$이다.\n엄격한 부등호이므로 두 경계각은 포함하지 않는다.\n\n따라서 정답은 ①이다.",
-    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
-    "subUnit": "삼각함수의 기본",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_EQUATION",
+    "subUnit": "삼각방정식과 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -558,8 +558,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "사인함수 안의 각을 $t$라 두면\n$t=\\dfrac{\\pi}{8}(x+1)$이다.\n$0\\le x\\le n$의 각 변에 $1$을 더하여\n$1\\le x+1\\le n+1$\n양수 $\\dfrac{\\pi}{8}$을 곱하면\n$\\dfrac{\\pi}{8}\\le t\\le\\dfrac{(n+1)\\pi}{8}$이다.\n이 구간에서 $3\\sin t$의 최댓값과 최솟값을 조사한다.\n\n① $1\\le n\\le7$인 경우\n$\\dfrac{(n+1)\\pi}{8}\\le\\pi$이므로 각의 구간 전체에서\n$0\\le\\sin t\\le1$이다.\n따라서 $g(n)\\ge0$, $f(n)\\le3$이므로\n$f(n)-g(n)\\le3$이다.\n주어진 엄격한 부등식을 만족하지 않는다.\n\n② $8\\le n\\le10$인 경우\n$\\pi<\\dfrac{(n+1)\\pi}{8}<\\dfrac{3\\pi}{2}$이다.\n구간 안에 $t=\\dfrac{\\pi}{2}$가 있으므로\n$f(n)=3$이다.\n한편 $\\pi<t<\\dfrac{3\\pi}{2}$에서는 사인값이 $0$에서 $-1$을 향해 감소하므로 오른쪽 끝에서 최솟값을 갖는다.\n오른쪽 끝은 $\\dfrac{9\\pi}{8},\\dfrac{10\\pi}{8},\\dfrac{11\\pi}{8}$ 중 하나이다.\n따라서\n$-3<g(n)<0$\n$0<-g(n)<3$\n$3<3-g(n)<6$이다.\n$f(n)=3$이므로 주어진 부등식을 만족한다.\n\n③ $n\\ge11$인 경우\n$\\dfrac{(n+1)\\pi}{8}\\ge\\dfrac{3\\pi}{2}$이다.\n구간에 $\\dfrac{\\pi}{2}$와 $\\dfrac{3\\pi}{2}$가 모두 포함되므로\n$f(n)=3$, $g(n)=-3$이다.\n따라서\n$f(n)-g(n)=3-(-3)$\n$=6$이므로 조건을 만족하지 않는다.\n\n그러므로 가능한 자연수는 $8,9,10$이고,\n그 합은\n$8+9+10=27$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
-    "subUnit": "삼각함수의 기본",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -617,8 +617,8 @@ window.questionBank = [
     "choices": [],
     "answer": "5",
     "solution": "치역을 구하기 위해 분자를 $x+1$의 배수와 나머지로 나눈다.\n$kx+3k+8=k(x+1)+(2k+8)$이므로\n$f(x)=\\dfrac{k(x+1)+(2k+8)}{x+1}$\n$=k+\\dfrac{2k+8}{x+1}$이다.\n\n$x>0$이므로 $x+1$은 $1$보다 큰 모든 실숫값을 가진다.\n따라서 $\\dfrac1{x+1}$은 $0$보다 크고 $1$보다 작은 모든 값을 가진다.\n$k$가 자연수이므로 $2k+8>0$이다.\n$0<\\dfrac1{x+1}<1$\n$0<\\dfrac{2k+8}{x+1}<2k+8$\n$k<f(x)<3k+8$이다.\n양 끝값은 얻어지지 않으므로 치역에 속하는 정수들은\n$k+1,k+2,\\ldots,3k+7$이다.\n\n항의 개수는\n$(3k+7)-(k+1)+1$\n$=3k+7-k-1+1$\n$=2k+7$이다.\n첫째항과 마지막 항의 평균은\n$\\dfrac{(k+1)+(3k+7)}2$\n$=\\dfrac{4k+8}{2}$\n$=2k+4$이다.\n\n따라서 모든 항의 합이 $238$이라는 조건은\n$(2k+7)(2k+4)=238$이다.\n곱을 전개하면\n$4k^2+8k+14k+28=238$\n$4k^2+22k+28=238$\n$4k^2+22k-210=0$\n양변을 $2$로 나누면\n$2k^2+11k-105=0$\n인수분해하면\n$(2k+21)(k-5)=0$이다.\n따라서\n$k=-\\dfrac{21}{2}$ 또는 $k=5$이다.\n$k$는 자연수이므로 음수인 해는 제외한다.\n\n실제로 $k=5$일 때 정수 항은 $6$부터 $22$까지이고,\n그 합은\n$\\dfrac{17(6+22)}2$\n$=17\\cdot14$\n$=238$이다.\n따라서 구하는 값은 $k=5$이다.",
-    "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
-    "subUnit": "수열의 기본",
+    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -642,8 +642,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$(3,1),(4,1),(2,2),(1,4)$",
     "solution": "먼저 (가)에서 가능한 $b$를 구한다.\n$f(g(x))=\\dfrac2a|g(x)-2|+b$\n$=\\dfrac2a\\left|\\sin\\dfrac{\\pi x}{b}\\right|+b$이다.\n\n직선 $x=2$에 대하여 대칭이면, 그 직선에서 같은 거리만큼 떨어진 $x=0$과 $x=4$에서 함수값이 같아야 한다.\n$x=0$일 때의 값은 $b$이므로\n$\\dfrac2a\\left|\\sin\\dfrac{4\\pi}{b}\\right|+b=b$\n$\\dfrac2a\\left|\\sin\\dfrac{4\\pi}{b}\\right|=0$\n$a>0$이므로\n$\\sin\\dfrac{4\\pi}{b}=0$이다.\n사인값이 $0$인 각은 정수 $m$에 대하여 $m\\pi$이므로\n$\\dfrac{4\\pi}{b}=m\\pi$\n$\\dfrac4b=m$이다.\n$b>0$이므로 $m$은 양의 정수이다.\n따라서 자연수 $b$는 $4$의 약수여야 하므로\n$b=1,2,4$이다.\n\n이 값들이 실제로 대칭 조건을 만족하는지도 확인한다.\n$4/b=m$이 정수일 때\n$\\left|\\sin\\dfrac{\\pi(4-x)}b\\right|$\n$=\\left|\\sin\\left(m\\pi-\\dfrac{\\pi x}b\\right)\\right|$\n$=\\left|\\sin\\dfrac{\\pi x}b\\right|$이다.\n즉 $x$와 $4-x$에서 함수값이 같으므로 직선 $x=2$에 대하여 대칭이다.\n\n이제 (나)의 교점 개수를 센다.\n$g(f(x))=2$\n$\\sin\\left(\\dfrac{\\pi}{b}f(x)\\right)+2=2$\n$\\sin\\left(\\dfrac{\\pi}{b}f(x)\\right)=0$\n따라서 어떤 정수 $j$에 대하여\n$\\dfrac{\\pi}{b}f(x)=j\\pi$\n$f(x)=jb$이다.\n즉 $f(x)$의 값이 $b$의 정수배일 때마다 교점이 생긴다.\n\n$0\\le x\\le4$에서\n$0\\le|x-2|\\le2$\n양수 $2/a$를 곱하면\n$0\\le\\dfrac2a|x-2|\\le\\dfrac4a$\n$b\\le f(x)\\le b+\\dfrac4a$이다.\n최솟값 $b$는 $x=2$에서 한 번 얻는다.\n$b$보다 큰 치역의 값은 $x=2$의 양쪽에서 각각 한 번씩, 모두 두 번 얻는다.\n최댓값도 $x=0,4$의 두 점에서 얻는다.\n\n따라서 교점이 정확히 세 개이려면 $b$ 외에 $2b$만 치역에 포함되고, 다음 배수인 $3b$는 포함되지 않아야 한다.\n$2b\\le b+\\dfrac4a<3b$\n$b\\le\\dfrac4a<2b$\n양수 $a$를 곱하면\n$ab\\le4<2ab$이다.\n이를 $ab$의 범위로 쓰면\n$2<ab\\le4$이다.\n\n① $b=1$이면\n$2<a\\le4$이므로 $a=3,4$이다.\n\n② $b=2$이면\n$2<2a\\le4$\n$1<a\\le2$이므로 $a=2$이다.\n\n③ $b=4$이면\n$2<4a\\le4$\n$\\dfrac12<a\\le1$이므로 $a=1$이다.\n\n따라서 모든 순서쌍은\n$(3,1),(4,1),(2,2),(1,4)$이다.",
-    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
-    "subUnit": "삼각함수의 기본",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }
