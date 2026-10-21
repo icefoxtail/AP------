@@ -1,0 +1,78 @@
+name: Geumdang 2026 Algebra Source Meta Parity Repair
+
+on:
+  push:
+    branches: [finalqa-geumdang26-20261021]
+    paths:
+      - 'archive/tools/meta-foundation/finalqa-geumdang-fingerprint-parity.mjs'
+      - '.github/workflows/geumdang26-algebra-meta-parity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: geumdang26-algebra-meta-parity
+  cancel-in-progress: false
+
+jobs:
+  parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: finalqa-geumdang26-20261021
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact Geumdang source fingerprint, canonical source L1-L2 proof and metadata renewal
+        run: node archive/tools/meta-foundation/finalqa-geumdang-fingerprint-parity.mjs
+      - name: Rebuild actual Archive production source and search consumer projections
+        run: python archive/build_db.py
+      - name: Verify canonical, registration, and updated searchable projections
+        run: |
+          node archive/tools/meta-foundation/compile-meta-foundation.mjs --canonical-only-check
+          node archive/tools/build-archive2-catalog.mjs --check
+          node archive/tools/verify-archive-registration.mjs
+          git diff --check
+      - name: Commit exact metadata and dependent generated projections only
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            archive/data/question_metadata.json \
+            archive/data/basic-scope-source-links.json \
+            archive/data/basic-scope-parent-links.json \
+            archive/data/meta-foundation/runtime \
+            archive/data/question_identity_map.json \
+            archive/data/archive2-catalog.json \
+            archive/data/archive2-canonical-input-manifest.json \
+            archive/data/archive2-crosswalk-inventory.json \
+            archive/data/archive2-source-verification-index.json \
+            archive/data/archive2-source-verification/v1 \
+            archive/db.js \
+            archive/question-index.js \
+            archive/question-index-report.md \
+            archive/question-index-audit.md \
+            archive/question-identity.js
+          git diff --cached --check
+          git diff --cached --quiet && exit 0
+          git diff --cached --stat
+          git commit -m "fix(meta): bind Geumdang 21 QID source fingerprints to verified consumer/search [skip ci]"
+          git fetch origin finalqa-geumdang26-20261021
+          git rebase origin/finalqa-geumdang26-20261021
+          git push origin HEAD:finalqa-geumdang26-20261021
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Verify actual Geumdang 21Q student exam solutions answers and catalog
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tools/check-geumdang26-algebra-finalqa-browser.cjs

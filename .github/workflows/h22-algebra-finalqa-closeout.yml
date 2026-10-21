@@ -1,0 +1,91 @@
+name: Close 2022 Algebra RPM PT TPL and Geumdang FinalQA
+
+on:
+  push:
+    branches: [finalqa-geumdang26-20261021]
+    paths:
+      - 'archive/tools/meta-foundation/finalqa-close-h22-algebra-20261021.mjs'
+      - '.github/workflows/h22-algebra-finalqa-closeout.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: h22-algebra-finalqa-closeout
+  cancel-in-progress: false
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: finalqa-geumdang26-20261021
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Materialize 2022 Algebra ACTIVE canonical PT TPL and only target exam metadata
+        run: node archive/tools/meta-foundation/finalqa-close-h22-algebra-20261021.mjs
+      - name: Compile current canonical registries
+        run: |
+          node archive/tools/meta-foundation/compile-meta-foundation.mjs --write
+          node archive/tools/meta-foundation/compile-meta-foundation.mjs --canonical-only-check
+      - name: Register original exam metadata in consumer and search projections
+        run: python archive/build_db.py
+      - name: Verify source counts, PT/TPL bindings, consumer metadata, and generated assets
+        run: |
+          node archive/tools/meta-foundation/compile-meta-foundation.mjs --canonical-only-check
+          node archive/tools/build-archive2-catalog.mjs --check
+          node archive/tools/verify-archive-registration.mjs
+          git diff --check
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Real Chrome finder smoke
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tools/check-archive2-finder-filter-browser.cjs
+      - name: Commit scoped final QA and affected canonical projections
+        env:
+          TARGET_BRANCH: finalqa-geumdang26-20261021
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            archive/exams/original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js \
+            archive/data/meta-foundation/canonical/registry_index.json \
+            archive/data/meta-foundation/canonical/packs/algebra-2022 \
+            archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json \
+            archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json \
+            archive/data/meta-foundation/compiled \
+            archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json \
+            archive/data/question_metadata.json \
+            archive/data/question_identity_map.json \
+            archive/data/archive2-catalog.json \
+            archive/data/archive2-source-verification-index.json \
+            archive/data/archive2-canonical-input-manifest.json \
+            archive/data/archive2-crosswalk-inventory.json \
+            archive/data/archive2-source-verification/v1 \
+            archive/data/basic-scope-parent-links.json \
+            archive/db.js \
+            archive/question-index.js \
+            archive/question-index-report.md \
+            archive/question-index-audit.md \
+            archive/question-identity.js \
+            archive/data/meta-foundation/runtime
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git diff --cached --stat
+          git commit -m "feat(meta): finish H22 Algebra 66-path ACTIVE PT/TPL and Geumdang QID21 [skip ci]"
+          git push origin "HEAD:$TARGET_BRANCH"

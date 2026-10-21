@@ -27,10 +27,44 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "먼저 사인함수의 값의 범위로 치역을 구한다.\n$-1\\le\\sin(2x)\\le1$\n양수 $3$을 곱하면\n$-3\\le3\\sin(2x)\\le3$\n각 변에 $3$을 더하면\n$0\\le3\\sin(2x)+3\\le6$이다.\n따라서 최댓값은 $6$, 최솟값은 $0$이고,\n치역은 $\\{y\\mid0\\le y\\le6\\}$이다.\n두 끝값은 각각 $\\sin(2x)=1$, $\\sin(2x)=-1$일 때 얻어진다.\n\n$x$의 계수가 $2$이므로 주기는\n$T=\\dfrac{2\\pi}{2}$\n$=\\pi$이다.\n사인함수는 모든 실수에서 정의되므로 정의역은 실수 전체이다.\n\n따라서 옳지 않은 설명은 치역을 잘못 제시한 ④이다.",
-    "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
-    "subUnit": "trigonometric function",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-105"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 그래프",
+      "l3": "그래프 변환",
+      "l4": "주기·진폭"
+    },
+    "rpmL3": "그래프 변환",
+    "rpmL4": "주기·진폭",
+    "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+    "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_bfe8c0429320aafa90ee502db7ec435ebfb67fa2ebe10ae8bbcd762cd2e9f6c7",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 1,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-105"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 2,
@@ -61,7 +95,41 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
     "subUnit": "수열의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-115"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "등차수열",
+      "l4": "일반항"
+    },
+    "rpmL3": "등차수열",
+    "rpmL4": "일반항",
+    "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+    "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_ed08e75459a4d71da9d0eb4fbd0c73c0d2b270f7bf603246c03df99bc1cef8da",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 2,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-115"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 3,
@@ -92,7 +160,41 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-109"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 활용",
+      "l3": "사인법칙",
+      "l4": "외접원 반지름"
+    },
+    "rpmL3": "사인법칙",
+    "rpmL4": "외접원 반지름",
+    "problemTypeKey": "PT_H22A_05_SINE_LAW",
+    "templateKey": "TPL_H22A_05_SINE_LAW_109",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_d5c61dd825ff2ffc7ee09b09919f7f2fbba65424b1c28c2f80295b7279ebacf7",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 3,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-109"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 4,
@@ -125,7 +227,41 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 1,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-113"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 활용",
+      "l3": "삼각형의 넓이",
+      "l4": "두 변과 끼인각"
+    },
+    "rpmL3": "삼각형의 넓이",
+    "rpmL4": "두 변과 끼인각",
+    "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+    "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_407c84ab527d56ec0a33740b7250612e1cb9aa55dc5689c1c3e8cb3b7f1b26e1",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 4,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-113"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 5,
@@ -156,7 +292,43 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_EQUATION",
     "subUnit": "삼각방정식과 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-102"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수",
+      "l3": "삼각방정식·부등식",
+      "l4": "주기 구간의 해"
+    },
+    "rpmL3": "삼각방정식·부등식",
+    "rpmL4": "주기 구간의 해",
+    "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+    "templateKey": "TPL_H22A_04_TRIG_EQUATION_102",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_12007bf060d558f3eb1e232a6ff7d9def833a6c13204f094d103ba17c67d3d4a",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 5,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-102"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 6,
@@ -187,7 +359,41 @@ window.questionBank = [
     "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
     "subUnit": "수열의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-118"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "등비수열",
+      "l4": "일반항"
+    },
+    "rpmL3": "등비수열",
+    "rpmL4": "일반항",
+    "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+    "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_8b585267c97009f9c741d8e887868fd01788482929003f759be05fc7da8204c2",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 6,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-118"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 7,
@@ -218,7 +424,41 @@ window.questionBank = [
     "subUnitKey": "H22-A-07-SEQUENCE_SUM",
     "subUnit": "수열의 합",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-124"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "수열",
+      "midUnit": "수열의 합",
+      "l3": "합의 기호 Σ",
+      "l4": "성질"
+    },
+    "rpmL3": "합의 기호 Σ",
+    "rpmL4": "성질",
+    "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+    "templateKey": "TPL_H22A_07_SIGMA_NOTATION_124",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_d241b83f395b161bb24d01940722a85bee9d7a283e003cc73afd58c5d84dad69",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 7,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-124"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 8,
@@ -249,7 +489,41 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-100"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수",
+      "l3": "삼각함수의 성질",
+      "l4": "삼각함수 관계"
+    },
+    "rpmL3": "삼각함수의 성질",
+    "rpmL4": "삼각함수 관계",
+    "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+    "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_831cf7862e7f0b7e2a0653d6b78dd1d9cf73da1b0c19a49dffe0a058f21d7a61",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 8,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-100"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 9,
@@ -280,7 +554,41 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-114"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 활용",
+      "l3": "삼각형의 넓이",
+      "l4": "복합도형"
+    },
+    "rpmL3": "삼각형의 넓이",
+    "rpmL4": "복합도형",
+    "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+    "templateKey": "TPL_H22A_05_TRIANGLE_AREA_114",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_03ca32006ee2e5204de555e6b352a5f1f321e1c7f302cfc2b6ad5524b7942143",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 9,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-114"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 10,
@@ -311,7 +619,41 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-111"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 활용",
+      "l3": "코사인법칙",
+      "l4": "변·각 계산"
+    },
+    "rpmL3": "코사인법칙",
+    "rpmL4": "변·각 계산",
+    "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+    "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_70de7121443063a541ca56faa6acb5374112860b90588cb8ee308d95353f0aca",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 10,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-111"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 11,
@@ -319,9 +661,9 @@ window.questionBank = [
     "category": "수열의 합",
     "originalCategory": "수열의 합",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-A-07",
-    "standardUnit": "수열의 합",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "H22-A-06",
+    "standardUnit": "등차수열과 등비수열",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -339,10 +681,44 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "등비수열의 공비를 $r$라 하자.\n제3항에서 제5항까지는 공비를 두 번 곱하므로\n$a_5=a_3r^2$\n$6=2r^2$\n$r^2=3$이다.\n\n또한\n$a_3=a_1r^2$\n$2=3a_1$\n$a_1=\\dfrac23$이므로\n$a_1^2=\\dfrac49$이다.\n\n각 항을 제곱한 수열 $\\{a_n^2\\}$은 첫째항이 $\\dfrac49$, 공비가 $r^2=3$인 등비수열이다.\n원래 공비의 부호와 관계없이 제곱한 수열의 공비는 $3$이다.\n따라서 처음 $10$개 항의 합은\n$\\displaystyle\\sum_{n=1}^{10}a_n^2=\\dfrac49\\cdot\\dfrac{3^{10}-1}{3-1}$\n$=\\dfrac49\\cdot\\dfrac{3^{10}-1}{2}$\n$=\\dfrac29(3^{10}-1)$이다.\n\n따라서 정답은 ③이다.",
-    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnitKey": "H22-A-06-SEQUENCE_SUM",
     "subUnit": "수열의 합",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 2,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-120"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "등비수열",
+      "l4": "합"
+    },
+    "rpmL3": "등비수열",
+    "rpmL4": "합",
+    "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+    "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_e3e3be233190e42704ce31684db6c18183a4ad392399317c7c4ad15f7a7a7c09",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 11,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-120"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 12,
@@ -350,9 +726,9 @@ window.questionBank = [
     "category": "수열의 합",
     "originalCategory": "수열의 합",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-A-07",
-    "standardUnit": "수열의 합",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "H22-A-06",
+    "standardUnit": "등차수열과 등비수열",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -370,10 +746,44 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "공비를 $r$라 하면\n$a_5=r^3a_2$,\n$a_7=r^3a_4$이다.\n두 식을 더하면\n$a_5+a_7=r^3(a_2+a_4)$\n$80=10r^3$\n$r^3=8$이다.\n모든 항이 실수이고 $a_2+a_4\\ne0$이므로 공비도 실수이다.\n따라서\n$r=2$이다.\n\n$a_4=a_2r^2$를 첫째 조건에 대입하면\n$a_2+a_2r^2=10$\n$a_2(1+r^2)=10$\n$a_2(1+4)=10$\n$5a_2=10$\n$a_2=2$이다.\n$a_2=a_1r$이므로\n$2=2a_1$\n$a_1=1$이다.\n\n따라서\n$a_n=2^{n-1}$이고,\n$b_n=a_na_{n+1}$\n$=2^{n-1}\\cdot2^n$\n$=2^{2n-1}$이다.\n수열 $\\{b_n\\}$의 첫 다섯 항은 $2,8,32,128,512$이므로\n$b_1+b_2+b_3+b_4+b_5=2+8+32+128+512$\n$=10+32+128+512$\n$=42+128+512$\n$=170+512$\n$=682$이다.\n\n따라서 정답은 ②이다.",
-    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnitKey": "H22-A-06-SEQUENCE_SUM",
     "subUnit": "수열의 합",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-120"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "등비수열",
+      "l4": "합"
+    },
+    "rpmL3": "등비수열",
+    "rpmL4": "합",
+    "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+    "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_c321292f8c2f884df03fe573248e395f4b393ba12a561f81545c6b1112906ab7",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 12,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-120"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 13,
@@ -401,10 +811,46 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "세 길이가 등차수열을 이루므로 가로, 세로, 높이를 각각\n$x-d,\\ x,\\ x+d$라 두자.\n세 길이는 모두 양수이다.\n\n각 길이의 모서리가 네 개씩 있으므로\n$4\\{(x-d)+x+(x+d)\\}=60$\n$4\\cdot3x=60$\n$12x=60$\n$x=5$이다.\n\n서로 마주 보는 면의 넓이가 같으므로 겉넓이 조건은\n$2\\{5(5-d)+5(5+d)+(5-d)(5+d)\\}=142$이다.\n각 곱을 전개하면\n$2\\{(25-5d)+(25+5d)+(25-d^2)\\}=142$\n$2(75-d^2)=142$\n$150-2d^2=142$\n$-2d^2=-8$\n$d^2=4$이다.\n따라서 $d=2$ 또는 $d=-2$이고, 어느 경우에도 세 길이는 $3,5,7$을 순서만 바꾼 것이므로 모두 양수이다.\n\n부피를 $V$라 하면\n$V=(5-d)\\cdot5\\cdot(5+d)$\n$=5(25-d^2)$\n$=5(25-4)$\n$=5\\cdot21$\n$=105$이다.\n\n따라서 정답은 ①이다.",
-    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
-    "subUnit": "수열의 기본",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+    "subUnit": "수열의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-121"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "수열의 활용",
+      "l4": "조건으로 수열 결정"
+    },
+    "rpmL3": "수열의 활용",
+    "rpmL4": "조건으로 수열 결정",
+    "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+    "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_d1c90ab30371e9f5ffcced73f8b57c7acb2491b2735123e6fdfae0b3f135fb0a",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 13,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-121"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 14,
@@ -432,10 +878,46 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "합성함수에서는 먼저 안쪽 함수의 값이 움직이는 범위를 구한다.\n$-1\\le\\sin(\\pi x)\\le1$\n양수 $\\dfrac{\\pi}{3}$을 곱하면\n$-\\dfrac{\\pi}{3}\\le\\dfrac{\\pi}{3}\\sin(\\pi x)\\le\\dfrac{\\pi}{3}$이다.\n따라서 $t=g(x)$라 두면\n$-\\dfrac{\\pi}{3}\\le t\\le\\dfrac{\\pi}{3}$이다.\n\n코사인함수는 $y$축 대칭이고 $0\\le t\\le\\pi$에서 감소한다.\n따라서 이 구간에서 $\\cos t$의 최댓값은 $t=0$일 때 $1$이고,\n최솟값은 $t=\\pm\\dfrac{\\pi}{3}$일 때 $\\dfrac12$이다.\n즉\n$\\dfrac12\\le\\cos t\\le1$\n$\\dfrac32\\le3\\cos t\\le3$\n$\\dfrac72\\le3\\cos t+2\\le5$이다.\n\n$g(0)=0$이므로 합성함수의 최댓값 $5$는 실제로 얻어진다.\n또 $g\\left(\\dfrac12\\right)=\\dfrac{\\pi}{3}$이므로 최솟값 $\\dfrac72$도 실제로 얻어진다.\n따라서 두 값의 합은\n$5+\\dfrac72$\n$=\\dfrac{10}{2}+\\dfrac72$\n$=\\dfrac{17}{2}$이다.\n\n따라서 정답은 ③이다.",
-    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
-    "subUnit": "삼각함수의 기본",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-108"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 그래프",
+      "l3": "그래프 활용",
+      "l4": "최대·최소"
+    },
+    "rpmL3": "그래프 활용",
+    "rpmL4": "최대·최소",
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_d60f0377a8a86ad467ac1f191ba2de778f455c39f4b05aac52c23efa7393fff4",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 14,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-108"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "FUNCTIONS_GRAPHS"
+    }
   },
   {
     "id": 15,
@@ -468,7 +950,45 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 3,
+    "difficultyConfidence": "high",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-113"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 활용",
+      "l3": "삼각형의 넓이",
+      "l4": "두 변과 끼인각"
+    },
+    "rpmL3": "삼각형의 넓이",
+    "rpmL4": "두 변과 끼인각",
+    "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+    "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [
+      "CC_AM_GM"
+    ],
+    "conditionKeys": [
+      "COND_POSITIVE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_494080335645944e4012eee0dd73e08eb16f429a5348809ffc2b743fdabef403",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 15,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-113"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 16,
@@ -496,10 +1016,47 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "첫 항 $1$에서 마지막 항 $3^n$까지 공비를 곱하는 횟수는 $k+1$번이다.\n정수인 공비를 $r$라 하면\n$r^{k+1}=3^n$이다.\n$n$은 자연수이므로 $3^n>1$이고, 따라서 $|r|>1$이다.\n우변의 소인수가 $3$뿐이므로 어떤 자연수 $t$에 대하여\n$|r|=3^t$이다.\n절댓값을 취한 식에 대입하면\n$(3^t)^{k+1}=3^n$\n$3^{t(k+1)}=3^n$\n$t(k+1)=n$이다.\n\n따라서 $k+1$은 $n$의 양의 약수이고, $k\\ge1$이므로 $k+1\\ge2$이다.\n반대로 $n=t(k+1)$이면 양의 정수 공비 $r=3^t$를 택하여 조건을 만족하는 정수 항들을 만들 수 있다.\n음의 공비가 가능한 경우에도 같은 $k+1$을 주므로 $k$의 개수가 더 늘지는 않는다.\n즉 가능한 $k$의 개수는 $n$의 양의 약수의 개수에서 $1$을 뺀 값이다.\n이 개수가 $11$이므로 $n$의 양의 약수는 $12$개여야 한다.\n\n$n=p_1^{e_1}\\cdots p_j^{e_j}$로 소인수분해하면 약수의 개수는\n$(e_1+1)\\cdots(e_j+1)$이다.\n각 인수는 $2$ 이상이므로 $12$의 곱셈 분해는 다음 네 가지뿐이다.\n$12$\n$6\\cdot2$\n$4\\cdot3$\n$3\\cdot2\\cdot2$\n\n따라서 소인수의 지수들은 각각\n$11$,\n$5,1$,\n$3,2$,\n$2,1,1$이다.\n같은 지수들로 가장 작은 수를 만들려면 작은 소수부터 사용하고, 큰 지수를 더 작은 소수에 붙인다.\n예를 들어 $p<q$, $u>v$이면 $\\dfrac{p^uq^v}{p^vq^u}=\\left(\\dfrac pq\\right)^{u-v}<1$이므로 이 배치가 더 작다.\n\n각 경우의 최솟값은\n$2^{11}=2048$,\n$2^5\\cdot3=96$,\n$2^3\\cdot3^2=72$,\n$2^2\\cdot3\\cdot5=60$이다.\n이 중 가장 작은 값은 $60$이다.\n실제로 $60=2^2\\cdot3\\cdot5$의 양의 약수는\n$(2+1)(1+1)(1+1)=12$개이므로 가능한 $k$는 $11$개이다.\n\n따라서 정답은 ④이다.",
-    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
-    "subUnit": "수열의 기본",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+    "subUnit": "수열의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-121"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "수열의 활용",
+      "l4": "조건으로 수열 결정"
+    },
+    "rpmL3": "수열의 활용",
+    "rpmL4": "조건으로 수열 결정",
+    "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+    "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_INTEGER",
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_c8235682b442290f11eb339263df57fb7a4d80bd6f335e8dd4dee926f71f07b7",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 16,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-121"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 17,
@@ -530,7 +1087,43 @@ window.questionBank = [
     "subUnitKey": "H22-A-07-SEQUENCE_SUM",
     "subUnit": "수열의 합",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-117"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "등차수열",
+      "l4": "합"
+    },
+    "rpmL3": "등차수열",
+    "rpmL4": "합",
+    "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+    "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_117",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "questionUid": "qid_v1_e7bb6f59b90abcd03d301498c5fd40a8582f4ced96cfd8f4733ee9f81f6d3bbd",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 17,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-117"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 18,
@@ -561,7 +1154,44 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-108"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 그래프",
+      "l3": "그래프 활용",
+      "l4": "최대·최소"
+    },
+    "rpmL3": "그래프 활용",
+    "rpmL4": "최대·최소",
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_RANGE",
+      "COND_NATURAL_NUMBER"
+    ],
+    "integrationPattern": "CASE_BRANCH",
+    "questionUid": "qid_v1_526adf0cdac0baadb064fc6d64879baf45ef852a9c381a4d35f0db530484b176",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 18,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-108"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "FUNCTIONS_GRAPHS"
+    }
   },
   {
     "id": 19,
@@ -595,7 +1225,41 @@ window.questionBank = [
     "subUnitKey": "H22-A-05-CORE",
     "subUnit": "사인법칙과 코사인법칙 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "curriculum": "2022",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-109"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 활용",
+      "l3": "사인법칙",
+      "l4": "외접원 반지름"
+    },
+    "rpmL3": "사인법칙",
+    "rpmL4": "외접원 반지름",
+    "problemTypeKey": "PT_H22A_05_SINE_LAW",
+    "templateKey": "TPL_H22A_05_SINE_LAW_109",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_7e2340927b2fa8a74ba48984244fc6c31533b7f5422a8e9de0d1a2da2a8cae60",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 19,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-109"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 20,
@@ -603,9 +1267,9 @@ window.questionBank = [
     "category": "수열의 합",
     "originalCategory": "수열의 합",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-A-07",
-    "standardUnit": "수열의 합",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "H22-A-06",
+    "standardUnit": "등차수열과 등비수열",
+    "standardUnitOrder": 6,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -617,10 +1281,47 @@ window.questionBank = [
     "choices": [],
     "answer": "5",
     "solution": "치역을 구하기 위해 분자를 $x+1$의 배수와 나머지로 나눈다.\n$kx+3k+8=k(x+1)+(2k+8)$이므로\n$f(x)=\\dfrac{k(x+1)+(2k+8)}{x+1}$\n$=k+\\dfrac{2k+8}{x+1}$이다.\n\n$x>0$이므로 $x+1$은 $1$보다 큰 모든 실숫값을 가진다.\n따라서 $\\dfrac1{x+1}$은 $0$보다 크고 $1$보다 작은 모든 값을 가진다.\n$k$가 자연수이므로 $2k+8>0$이다.\n$0<\\dfrac1{x+1}<1$\n$0<\\dfrac{2k+8}{x+1}<2k+8$\n$k<f(x)<3k+8$이다.\n양 끝값은 얻어지지 않으므로 치역에 속하는 정수들은\n$k+1,k+2,\\ldots,3k+7$이다.\n\n항의 개수는\n$(3k+7)-(k+1)+1$\n$=3k+7-k-1+1$\n$=2k+7$이다.\n첫째항과 마지막 항의 평균은\n$\\dfrac{(k+1)+(3k+7)}2$\n$=\\dfrac{4k+8}{2}$\n$=2k+4$이다.\n\n따라서 모든 항의 합이 $238$이라는 조건은\n$(2k+7)(2k+4)=238$이다.\n곱을 전개하면\n$4k^2+8k+14k+28=238$\n$4k^2+22k+28=238$\n$4k^2+22k-210=0$\n양변을 $2$로 나누면\n$2k^2+11k-105=0$\n인수분해하면\n$(2k+21)(k-5)=0$이다.\n따라서\n$k=-\\dfrac{21}{2}$ 또는 $k=5$이다.\n$k$는 자연수이므로 음수인 해는 제외한다.\n\n실제로 $k=5$일 때 정수 항은 $6$부터 $22$까지이고,\n그 합은\n$\\dfrac{17(6+22)}2$\n$=17\\cdot14$\n$=238$이다.\n따라서 구하는 값은 $k=5$이다.",
-    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnitKey": "H22-A-06-SEQUENCE_SUM",
     "subUnit": "수열의 합",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
+    "curriculum": "2022",
+    "difficultyBucket": 4,
+    "difficultyConfidence": "medium",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-117"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "수열",
+      "midUnit": "등차수열과 등비수열",
+      "l3": "등차수열",
+      "l4": "합"
+    },
+    "rpmL3": "등차수열",
+    "rpmL4": "합",
+    "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+    "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_117",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_RANGE"
+    ],
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_5a49fba4d90c0a48fc5f9298816afa2773b161d3cbfe9f32aa87dc2058c59d23",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 20,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-117"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 21,
@@ -645,6 +1346,43 @@ window.questionBank = [
     "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
     "subUnit": "삼각함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "curriculum": "2022",
+    "difficultyBucket": 5,
+    "difficultyConfidence": "medium",
+    "rpmSemanticStatus": "FINAL",
+    "rpmPrimaryRecordIds": [
+      "H2-M1-RPM-107"
+    ],
+    "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
+      "majorUnit": "삼각함수",
+      "midUnit": "삼각함수의 그래프",
+      "l3": "그래프 활용",
+      "l4": "교점"
+    },
+    "rpmL3": "그래프 활용",
+    "rpmL4": "교점",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "projectionStatus": "PROJECTION_REUSE",
+    "crossConceptKeys": [],
+    "conditionKeys": [
+      "COND_NATURAL_NUMBER",
+      "COND_EXACT_INTERSECTION_COUNT"
+    ],
+    "integrationPattern": "INTERDEPENDENT",
+    "questionUid": "qid_v1_de03e655189d246884e5923d874ee5ecd46bbfef94c85bcb71d4930d61ef9bba",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 21,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-107"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "FUNCTIONS_GRAPHS"
+    }
   }
 ];
