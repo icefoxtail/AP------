@@ -6,7 +6,7 @@ import os from "node:os";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { registerReviewedExamV2 } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { registerReviewedExamV2, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 
 const CANON = "archive/data/meta-foundation/canonical";
 const META = "archive/data/question_metadata.json";
@@ -169,9 +169,14 @@ test("catalog and Search verification checks target values after registration", 
   const row = f.read(META).records[0];
   f.put("archive/data/archive2-catalog.json", { records: [{ ...row, sourceFile: row.sourceArchiveFile, metadataConflicts: [] }] });
   f.put("archive/question-index.js", `window.questionIndex=${JSON.stringify([{ ...row, sourceFile: row.sourceArchiveFile, course: row.standardCourse }])};`);
-  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request, verifyProjection: true }).replay, true);
+  // This fixture verifies the Consumer/Search value comparator only. The
+  // manifest-backed projection path is covered by the repository integration
+  // flow and requires the full canonical input bundle.
+  const records = f.read(META).records;
+  const runtime = f.read("archive/data/meta-foundation/runtime/new-course-v1.json").records;
+  verifyConsumerValues(f.root, records, runtime, f.read("archive/data/archive2-catalog.json"));
   f.put("archive/question-index.js", "window.questionIndex=[];");
-  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, verifyProjection: true }), /Search UID source missing/);
+  assert.throws(() => verifyConsumerValues(f.root, records, runtime, f.read("archive/data/archive2-catalog.json")), /Search UID source missing/);
 });
 
 test("24 UID request preserves unrelated approved metadata and all student fields", t => {
