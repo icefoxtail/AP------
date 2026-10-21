@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "archive-final-qa-pinpoint-delta-v1",
+  "examUid": "25_순천고_2학기_기말_고2_확률과통계",
+  "scope": "q18 only; other 23 source questions untouched; PT/TPL intentionally excluded",
+  "sourceArchiveFile": "original/high/h2/2final/25_순천고_2학기_기말_고2_확률과통계.js",
+  "sourceBlobBefore": "8993f9ceec8486273ccd85489af1a1aa8f13fb15",
+  "sourceBlobAfter": "85cfab57227fe65b4048fd40fc4e352d54b53f36",
+  "status": "SOURCE_CORRECTED__CONSUMER_METADATA_NOT_MATERIALIZED",
+  "changes": [
+    {
+      "questionUid": "qid_v1_6a99bdd95f4c5f0a6d9bf7f25b8defb7fd5d46565c26609b0e62fdc928c072c0",
+      "sourceOrdinal": 18,
+      "reason": "Normal-distribution probability of total weight and exactly-one-box event; not parameter estimation",
+      "fields": {
+        "standardUnit": {
+          "before": "통계적 추정",
+          "after": "확률분포"
+        },
+        "standardUnitKey": {
+          "before": "H15-PS-06",
+          "after": "H15-PS-05"
+        },
+        "standardUnitOrder": {
+          "before": 6,
+          "after": 5
+        },
+        "subUnitKey": {
+          "before": "H15-PS-06-ESTIMATION_APPLICATION",
+          "after": "H15-PS-05-BINOMIAL_NORMAL"
+        },
+        "subUnit": {
+          "before": "추정의 활용",
+          "after": "이항분포와 정규분포"
+        }
+      },
+      "mathCheck": "S ~ N(3200,80^2), p=P(-1<=Z<=2)=0.82, 2p(1-p)=0.2952, answer ② unchanged"
+    }
+  ],
+  "sourceEvidence": {
+    "assignmentPath": "archive/data/meta-foundation/evidence/probability-statistics/v1/item_metadata_assignments_704.json",
+    "assignmentBlob": "ffac95d5b76ea47a46ca741888dbbc3652bd8111",
+    "assignmentStatus": "STAGING_CANDIDATE_NOT_FINAL_APPROVAL"
+  },
+  "materialization": {
+    "policy": "Authorized writer only; do not overwrite shared question_metadata.json or PT/TPL",
+    "required": "q18 non-PT/TPL metadata registration and affected Consumer/Search parity",
+    "status": "NOT_SUBMITTED"
+  }
+}
