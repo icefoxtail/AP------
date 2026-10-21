@@ -13,6 +13,9 @@ const root = path.resolve(
 const read = (file) =>
   fs.readFileSync(path.join(root, file), "utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
 const hash = (value) => crypto.createHash("sha256").update(value).digest("hex");
+const refreshingCanonicalProjection = process.argv.includes("--refresh-canonical-projection");
+if (refreshingCanonicalProjection && process.argv.includes("--check"))
+  throw new Error("--refresh-canonical-projection is a write path and cannot be combined with --check");
 const metadata = JSON.parse(read("archive/data/question_metadata.json"));
 const identity = JSON.parse(read("archive/data/question_identity_map.json"));
 const basicScopeLinks = JSON.parse(read("archive/data/basic-scope-parent-links.json"));
@@ -82,7 +85,6 @@ const masterFile =
 const masterText = read(masterFile);
 const canonicalMasterSha = hash(masterText);
 const taxonomy = core.taxonomyPaths(JSON.parse(masterText));
-const refreshingCanonicalProjection = process.argv.includes("--refresh-canonical-projection");
 const existingLinkParents = [
   ...(basicScopeLinks.records || []),
   ...(basicScopeLinks.sourceParents || []),
@@ -91,10 +93,33 @@ const legacyParentLinksRemainValid = existingLinkParents.every(link => taxonomy.
   parent.curriculumKey === link.curriculumKey &&
   core.normalizeCourseIdentity(parent.courseKey) === core.normalizeCourseIdentity(link.courseKey) &&
   parent.L1 === link.L1 && parent.L2 === link.L2));
-if ((basicScopeLinks.authority?.sha256 !== canonicalMasterSha &&
+const parentLinksPath = "archive/data/basic-scope-parent-links.json";
+const parentLinksAuthorityStale = basicScopeLinks.authority?.sha256 !== canonicalMasterSha;
+if ((parentLinksAuthorityStale &&
       !(refreshingCanonicalProjection && legacyParentLinksRemainValid)) ||
+    (refreshingCanonicalProjection && !legacyParentLinksRemainValid) ||
     projectionPolicy.canonicalMasterSha256 !== canonicalMasterSha)
   throw new Error("Archive2 canonical source-pack drift: master version does not match parent-link/projection policy");
+if (refreshingCanonicalProjection && parentLinksAuthorityStale) {
+  const parentSemanticsBefore = hash(JSON.stringify({
+    records: basicScopeLinks.records || [],
+    sourceParents: basicScopeLinks.sourceParents || [],
+  }));
+  basicScopeLinks.authority = {
+    ...basicScopeLinks.authority,
+    sha256: canonicalMasterSha,
+  };
+  const parentSemanticsAfter = hash(JSON.stringify({
+    records: basicScopeLinks.records || [],
+    sourceParents: basicScopeLinks.sourceParents || [],
+  }));
+  if (parentSemanticsAfter !== parentSemanticsBefore)
+    throw new Error("Canonical projection refresh changed parent-link semantics");
+  const reboundParentLinksText = JSON.stringify(basicScopeLinks, null, 2) + "\n";
+  fs.writeFileSync(path.join(root, parentLinksPath), reboundParentLinksText, "utf8");
+  if (read(parentLinksPath) !== reboundParentLinksText)
+    throw new Error("Canonical projection refresh did not persist the guarded parent-link binding");
+}
 const paths = new Map(taxonomy.map((record) => [core.pathKey(record), record]));
 const parentPaths = new Map(taxonomy.map((record) => [core.pathKey(record, 4), record]));
 const uniqueCanonicalParents = [...new Map(taxonomy.map((record) => [core.pathKey(record, 4), record])).values()];
