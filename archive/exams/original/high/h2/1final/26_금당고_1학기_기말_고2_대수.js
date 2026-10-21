@@ -319,9 +319,9 @@ window.questionBank = [
     "category": "수열의 합",
     "originalCategory": "수열의 합",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-A-07",
-    "standardUnit": "수열의 합",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "H22-A-06",
+    "standardUnit": "등차수열과 등비수열",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -339,10 +339,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "등비수열의 공비를 $r$라 하자.\n제3항에서 제5항까지는 공비를 두 번 곱하므로\n$a_5=a_3r^2$\n$6=2r^2$\n$r^2=3$이다.\n\n또한\n$a_3=a_1r^2$\n$2=3a_1$\n$a_1=\\dfrac23$이므로\n$a_1^2=\\dfrac49$이다.\n\n각 항을 제곱한 수열 $\\{a_n^2\\}$은 첫째항이 $\\dfrac49$, 공비가 $r^2=3$인 등비수열이다.\n원래 공비의 부호와 관계없이 제곱한 수열의 공비는 $3$이다.\n따라서 처음 $10$개 항의 합은\n$\\displaystyle\\sum_{n=1}^{10}a_n^2=\\dfrac49\\cdot\\dfrac{3^{10}-1}{3-1}$\n$=\\dfrac49\\cdot\\dfrac{3^{10}-1}{2}$\n$=\\dfrac29(3^{10}-1)$이다.\n\n따라서 정답은 ③이다.",
-    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnitKey": "H22-A-06-SEQUENCE_SUM",
     "subUnit": "수열의 합",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 12,
@@ -350,9 +350,9 @@ window.questionBank = [
     "category": "수열의 합",
     "originalCategory": "수열의 합",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-A-07",
-    "standardUnit": "수열의 합",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "H22-A-06",
+    "standardUnit": "등차수열과 등비수열",
+    "standardUnitOrder": 6,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -370,10 +370,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "공비를 $r$라 하면\n$a_5=r^3a_2$,\n$a_7=r^3a_4$이다.\n두 식을 더하면\n$a_5+a_7=r^3(a_2+a_4)$\n$80=10r^3$\n$r^3=8$이다.\n모든 항이 실수이고 $a_2+a_4\\ne0$이므로 공비도 실수이다.\n따라서\n$r=2$이다.\n\n$a_4=a_2r^2$를 첫째 조건에 대입하면\n$a_2+a_2r^2=10$\n$a_2(1+r^2)=10$\n$a_2(1+4)=10$\n$5a_2=10$\n$a_2=2$이다.\n$a_2=a_1r$이므로\n$2=2a_1$\n$a_1=1$이다.\n\n따라서\n$a_n=2^{n-1}$이고,\n$b_n=a_na_{n+1}$\n$=2^{n-1}\\cdot2^n$\n$=2^{2n-1}$이다.\n수열 $\\{b_n\\}$의 첫 다섯 항은 $2,8,32,128,512$이므로\n$b_1+b_2+b_3+b_4+b_5=2+8+32+128+512$\n$=10+32+128+512$\n$=42+128+512$\n$=170+512$\n$=682$이다.\n\n따라서 정답은 ②이다.",
-    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnitKey": "H22-A-06-SEQUENCE_SUM",
     "subUnit": "수열의 합",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 13,
@@ -401,10 +401,10 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "세 길이가 등차수열을 이루므로 가로, 세로, 높이를 각각\n$x-d,\\ x,\\ x+d$라 두자.\n세 길이는 모두 양수이다.\n\n각 길이의 모서리가 네 개씩 있으므로\n$4\\{(x-d)+x+(x+d)\\}=60$\n$4\\cdot3x=60$\n$12x=60$\n$x=5$이다.\n\n서로 마주 보는 면의 넓이가 같으므로 겉넓이 조건은\n$2\\{5(5-d)+5(5+d)+(5-d)(5+d)\\}=142$이다.\n각 곱을 전개하면\n$2\\{(25-5d)+(25+5d)+(25-d^2)\\}=142$\n$2(75-d^2)=142$\n$150-2d^2=142$\n$-2d^2=-8$\n$d^2=4$이다.\n따라서 $d=2$ 또는 $d=-2$이고, 어느 경우에도 세 길이는 $3,5,7$을 순서만 바꾼 것이므로 모두 양수이다.\n\n부피를 $V$라 하면\n$V=(5-d)\\cdot5\\cdot(5+d)$\n$=5(25-d^2)$\n$=5(25-4)$\n$=5\\cdot21$\n$=105$이다.\n\n따라서 정답은 ①이다.",
-    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
-    "subUnit": "수열의 기본",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+    "subUnit": "수열의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 14,
@@ -432,10 +432,10 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "합성함수에서는 먼저 안쪽 함수의 값이 움직이는 범위를 구한다.\n$-1\\le\\sin(\\pi x)\\le1$\n양수 $\\dfrac{\\pi}{3}$을 곱하면\n$-\\dfrac{\\pi}{3}\\le\\dfrac{\\pi}{3}\\sin(\\pi x)\\le\\dfrac{\\pi}{3}$이다.\n따라서 $t=g(x)$라 두면\n$-\\dfrac{\\pi}{3}\\le t\\le\\dfrac{\\pi}{3}$이다.\n\n코사인함수는 $y$축 대칭이고 $0\\le t\\le\\pi$에서 감소한다.\n따라서 이 구간에서 $\\cos t$의 최댓값은 $t=0$일 때 $1$이고,\n최솟값은 $t=\\pm\\dfrac{\\pi}{3}$일 때 $\\dfrac12$이다.\n즉\n$\\dfrac12\\le\\cos t\\le1$\n$\\dfrac32\\le3\\cos t\\le3$\n$\\dfrac72\\le3\\cos t+2\\le5$이다.\n\n$g(0)=0$이므로 합성함수의 최댓값 $5$는 실제로 얻어진다.\n또 $g\\left(\\dfrac12\\right)=\\dfrac{\\pi}{3}$이므로 최솟값 $\\dfrac72$도 실제로 얻어진다.\n따라서 두 값의 합은\n$5+\\dfrac72$\n$=\\dfrac{10}{2}+\\dfrac72$\n$=\\dfrac{17}{2}$이다.\n\n따라서 정답은 ③이다.",
-    "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
-    "subUnit": "삼각함수의 기본",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 15,
@@ -496,10 +496,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "첫 항 $1$에서 마지막 항 $3^n$까지 공비를 곱하는 횟수는 $k+1$번이다.\n정수인 공비를 $r$라 하면\n$r^{k+1}=3^n$이다.\n$n$은 자연수이므로 $3^n>1$이고, 따라서 $|r|>1$이다.\n우변의 소인수가 $3$뿐이므로 어떤 자연수 $t$에 대하여\n$|r|=3^t$이다.\n절댓값을 취한 식에 대입하면\n$(3^t)^{k+1}=3^n$\n$3^{t(k+1)}=3^n$\n$t(k+1)=n$이다.\n\n따라서 $k+1$은 $n$의 양의 약수이고, $k\\ge1$이므로 $k+1\\ge2$이다.\n반대로 $n=t(k+1)$이면 양의 정수 공비 $r=3^t$를 택하여 조건을 만족하는 정수 항들을 만들 수 있다.\n음의 공비가 가능한 경우에도 같은 $k+1$을 주므로 $k$의 개수가 더 늘지는 않는다.\n즉 가능한 $k$의 개수는 $n$의 양의 약수의 개수에서 $1$을 뺀 값이다.\n이 개수가 $11$이므로 $n$의 양의 약수는 $12$개여야 한다.\n\n$n=p_1^{e_1}\\cdots p_j^{e_j}$로 소인수분해하면 약수의 개수는\n$(e_1+1)\\cdots(e_j+1)$이다.\n각 인수는 $2$ 이상이므로 $12$의 곱셈 분해는 다음 네 가지뿐이다.\n$12$\n$6\\cdot2$\n$4\\cdot3$\n$3\\cdot2\\cdot2$\n\n따라서 소인수의 지수들은 각각\n$11$,\n$5,1$,\n$3,2$,\n$2,1,1$이다.\n같은 지수들로 가장 작은 수를 만들려면 작은 소수부터 사용하고, 큰 지수를 더 작은 소수에 붙인다.\n예를 들어 $p<q$, $u>v$이면 $\\dfrac{p^uq^v}{p^vq^u}=\\left(\\dfrac pq\\right)^{u-v}<1$이므로 이 배치가 더 작다.\n\n각 경우의 최솟값은\n$2^{11}=2048$,\n$2^5\\cdot3=96$,\n$2^3\\cdot3^2=72$,\n$2^2\\cdot3\\cdot5=60$이다.\n이 중 가장 작은 값은 $60$이다.\n실제로 $60=2^2\\cdot3\\cdot5$의 양의 약수는\n$(2+1)(1+1)(1+1)=12$개이므로 가능한 $k$는 $11$개이다.\n\n따라서 정답은 ④이다.",
-    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
-    "subUnit": "수열의 기본",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+    "subUnit": "수열의 활용",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 17,
@@ -603,9 +603,9 @@ window.questionBank = [
     "category": "수열의 합",
     "originalCategory": "수열의 합",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-A-07",
-    "standardUnit": "수열의 합",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "H22-A-06",
+    "standardUnit": "등차수열과 등비수열",
+    "standardUnitOrder": 6,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -617,10 +617,10 @@ window.questionBank = [
     "choices": [],
     "answer": "5",
     "solution": "치역을 구하기 위해 분자를 $x+1$의 배수와 나머지로 나눈다.\n$kx+3k+8=k(x+1)+(2k+8)$이므로\n$f(x)=\\dfrac{k(x+1)+(2k+8)}{x+1}$\n$=k+\\dfrac{2k+8}{x+1}$이다.\n\n$x>0$이므로 $x+1$은 $1$보다 큰 모든 실숫값을 가진다.\n따라서 $\\dfrac1{x+1}$은 $0$보다 크고 $1$보다 작은 모든 값을 가진다.\n$k$가 자연수이므로 $2k+8>0$이다.\n$0<\\dfrac1{x+1}<1$\n$0<\\dfrac{2k+8}{x+1}<2k+8$\n$k<f(x)<3k+8$이다.\n양 끝값은 얻어지지 않으므로 치역에 속하는 정수들은\n$k+1,k+2,\\ldots,3k+7$이다.\n\n항의 개수는\n$(3k+7)-(k+1)+1$\n$=3k+7-k-1+1$\n$=2k+7$이다.\n첫째항과 마지막 항의 평균은\n$\\dfrac{(k+1)+(3k+7)}2$\n$=\\dfrac{4k+8}{2}$\n$=2k+4$이다.\n\n따라서 모든 항의 합이 $238$이라는 조건은\n$(2k+7)(2k+4)=238$이다.\n곱을 전개하면\n$4k^2+8k+14k+28=238$\n$4k^2+22k+28=238$\n$4k^2+22k-210=0$\n양변을 $2$로 나누면\n$2k^2+11k-105=0$\n인수분해하면\n$(2k+21)(k-5)=0$이다.\n따라서\n$k=-\\dfrac{21}{2}$ 또는 $k=5$이다.\n$k$는 자연수이므로 음수인 해는 제외한다.\n\n실제로 $k=5$일 때 정수 항은 $6$부터 $22$까지이고,\n그 합은\n$\\dfrac{17(6+22)}2$\n$=17\\cdot14$\n$=238$이다.\n따라서 구하는 값은 $k=5$이다.",
-    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnitKey": "H22-A-06-SEQUENCE_SUM",
     "subUnit": "수열의 합",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate"
   },
   {
     "id": 21,
