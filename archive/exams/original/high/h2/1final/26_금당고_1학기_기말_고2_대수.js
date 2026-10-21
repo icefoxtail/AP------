@@ -27,10 +27,10 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "먼저 사인함수의 값의 범위로 치역을 구한다.\n$-1\\le\\sin(2x)\\le1$\n양수 $3$을 곱하면\n$-3\\le3\\sin(2x)\\le3$\n각 변에 $3$을 더하면\n$0\\le3\\sin(2x)+3\\le6$이다.\n따라서 최댓값은 $6$, 최솟값은 $0$이고,\n치역은 $\\{y\\mid0\\le y\\le6\\}$이다.\n두 끝값은 각각 $\\sin(2x)=1$, $\\sin(2x)=-1$일 때 얻어진다.\n\n$x$의 계수가 $2$이므로 주기는\n$T=\\dfrac{2\\pi}{2}$\n$=\\pi$이다.\n사인함수는 모든 실수에서 정의되므로 정의역은 실수 전체이다.\n\n따라서 옳지 않은 설명은 치역을 잘못 제시한 ④이다.",
-    "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
-    "subUnit": "trigonometric function",
-    "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category",
+    "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+    "subUnit": "삼각함수의 그래프",
+    "subUnitConfidence": "candidate_evidence",
+    "subUnitClassificationDepth": "complete_candidate",
     "curriculum": "2022",
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
@@ -39,6 +39,8 @@ window.questionBank = [
       "H2-M1-RPM-105"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "삼각함수",
       "midUnit": "삼각함수의 그래프",
       "l3": "그래프 변환",
@@ -46,12 +48,23 @@ window.questionBank = [
     },
     "rpmL3": "그래프 변환",
     "rpmL4": "주기·진폭",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+    "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_bfe8c0429320aafa90ee502db7ec435ebfb67fa2ebe10ae8bbcd762cd2e9f6c7",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 1,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-105"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 2,
@@ -91,6 +104,8 @@ window.questionBank = [
       "H2-M1-RPM-115"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "수열",
       "midUnit": "등차수열과 등비수열",
       "l3": "등차수열",
@@ -98,12 +113,23 @@ window.questionBank = [
     },
     "rpmL3": "등차수열",
     "rpmL4": "일반항",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+    "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_ed08e75459a4d71da9d0eb4fbd0c73c0d2b270f7bf603246c03df99bc1cef8da",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 2,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-115"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 3,
@@ -143,6 +169,8 @@ window.questionBank = [
       "H2-M1-RPM-109"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "삼각함수",
       "midUnit": "삼각함수의 활용",
       "l3": "사인법칙",
@@ -150,12 +178,23 @@ window.questionBank = [
     },
     "rpmL3": "사인법칙",
     "rpmL4": "외접원 반지름",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_05_SINE_LAW",
+    "templateKey": "TPL_H22A_05_SINE_LAW_109",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_d5c61dd825ff2ffc7ee09b09919f7f2fbba65424b1c28c2f80295b7279ebacf7",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 3,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-109"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 4,
@@ -197,6 +236,8 @@ window.questionBank = [
       "H2-M1-RPM-113"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "삼각함수",
       "midUnit": "삼각함수의 활용",
       "l3": "삼각형의 넓이",
@@ -204,12 +245,23 @@ window.questionBank = [
     },
     "rpmL3": "삼각형의 넓이",
     "rpmL4": "두 변과 끼인각",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+    "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_407c84ab527d56ec0a33740b7250612e1cb9aa55dc5689c1c3e8cb3b7f1b26e1",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 4,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-113"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 5,
@@ -249,6 +301,8 @@ window.questionBank = [
       "H2-M1-RPM-102"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "삼각함수",
       "midUnit": "삼각함수",
       "l3": "삼각방정식·부등식",
@@ -256,14 +310,25 @@ window.questionBank = [
     },
     "rpmL3": "삼각방정식·부등식",
     "rpmL4": "주기 구간의 해",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+    "templateKey": "TPL_H22A_04_TRIG_EQUATION_102",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_12007bf060d558f3eb1e232a6ff7d9def833a6c13204f094d103ba17c67d3d4a",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 5,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-102"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 6,
@@ -303,6 +368,8 @@ window.questionBank = [
       "H2-M1-RPM-118"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "수열",
       "midUnit": "등차수열과 등비수열",
       "l3": "등비수열",
@@ -310,12 +377,23 @@ window.questionBank = [
     },
     "rpmL3": "등비수열",
     "rpmL4": "일반항",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+    "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_8b585267c97009f9c741d8e887868fd01788482929003f759be05fc7da8204c2",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 6,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-118"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 7,
@@ -355,6 +433,8 @@ window.questionBank = [
       "H2-M1-RPM-124"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "수열",
       "midUnit": "수열의 합",
       "l3": "합의 기호 Σ",
@@ -362,12 +442,23 @@ window.questionBank = [
     },
     "rpmL3": "합의 기호 Σ",
     "rpmL4": "성질",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+    "templateKey": "TPL_H22A_07_SIGMA_NOTATION_124",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_d241b83f395b161bb24d01940722a85bee9d7a283e003cc73afd58c5d84dad69",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 7,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-124"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 8,
@@ -407,6 +498,8 @@ window.questionBank = [
       "H2-M1-RPM-100"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "삼각함수",
       "midUnit": "삼각함수",
       "l3": "삼각함수의 성질",
@@ -414,12 +507,23 @@ window.questionBank = [
     },
     "rpmL3": "삼각함수의 성질",
     "rpmL4": "삼각함수 관계",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_04_TRIG_PROPERTIES",
+    "templateKey": "TPL_H22A_04_TRIG_PROPERTIES_100",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "questionUid": "qid_v1_831cf7862e7f0b7e2a0653d6b78dd1d9cf73da1b0c19a49dffe0a058f21d7a61",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 8,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-100"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 9,
@@ -459,6 +563,8 @@ window.questionBank = [
       "H2-M1-RPM-114"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "삼각함수",
       "midUnit": "삼각함수의 활용",
       "l3": "삼각형의 넓이",
@@ -466,12 +572,23 @@ window.questionBank = [
     },
     "rpmL3": "삼각형의 넓이",
     "rpmL4": "복합도형",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+    "templateKey": "TPL_H22A_05_TRIANGLE_AREA_114",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_03ca32006ee2e5204de555e6b352a5f1f321e1c7f302cfc2b6ad5524b7942143",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 9,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-114"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 10,
@@ -511,6 +628,8 @@ window.questionBank = [
       "H2-M1-RPM-111"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "삼각함수",
       "midUnit": "삼각함수의 활용",
       "l3": "코사인법칙",
@@ -518,12 +637,23 @@ window.questionBank = [
     },
     "rpmL3": "코사인법칙",
     "rpmL4": "변·각 계산",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+    "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_70de7121443063a541ca56faa6acb5374112860b90588cb8ee308d95353f0aca",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 10,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-111"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 11,
@@ -563,6 +693,8 @@ window.questionBank = [
       "H2-M1-RPM-120"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "수열",
       "midUnit": "등차수열과 등비수열",
       "l3": "등비수열",
@@ -570,12 +702,23 @@ window.questionBank = [
     },
     "rpmL3": "등비수열",
     "rpmL4": "합",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+    "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_e3e3be233190e42704ce31684db6c18183a4ad392399317c7c4ad15f7a7a7c09",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 11,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-120"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 12,
@@ -615,6 +758,8 @@ window.questionBank = [
       "H2-M1-RPM-120"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "수열",
       "midUnit": "등차수열과 등비수열",
       "l3": "등비수열",
@@ -622,12 +767,23 @@ window.questionBank = [
     },
     "rpmL3": "등비수열",
     "rpmL4": "합",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+    "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_c321292f8c2f884df03fe573248e395f4b393ba12a561f81545c6b1112906ab7",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 12,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-120"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 13,
@@ -667,6 +823,8 @@ window.questionBank = [
       "H2-M1-RPM-121"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "수열",
       "midUnit": "등차수열과 등비수열",
       "l3": "수열의 활용",
@@ -674,14 +832,25 @@ window.questionBank = [
     },
     "rpmL3": "수열의 활용",
     "rpmL4": "조건으로 수열 결정",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+    "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_d1c90ab30371e9f5ffcced73f8b57c7acb2491b2735123e6fdfae0b3f135fb0a",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 13,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-121"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 14,
@@ -721,6 +890,8 @@ window.questionBank = [
       "H2-M1-RPM-108"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "삼각함수",
       "midUnit": "삼각함수의 그래프",
       "l3": "그래프 활용",
@@ -728,14 +899,25 @@ window.questionBank = [
     },
     "rpmL3": "그래프 활용",
     "rpmL4": "최대·최소",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_d60f0377a8a86ad467ac1f191ba2de778f455c39f4b05aac52c23efa7393fff4",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 14,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-108"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "FUNCTIONS_GRAPHS"
+    }
   },
   {
     "id": 15,
@@ -777,6 +959,8 @@ window.questionBank = [
       "H2-M1-RPM-113"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "삼각함수",
       "midUnit": "삼각함수의 활용",
       "l3": "삼각형의 넓이",
@@ -784,16 +968,27 @@ window.questionBank = [
     },
     "rpmL3": "삼각형의 넓이",
     "rpmL4": "두 변과 끼인각",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+    "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [
       "CC_AM_GM"
     ],
     "conditionKeys": [
       "COND_POSITIVE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_494080335645944e4012eee0dd73e08eb16f429a5348809ffc2b743fdabef403",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 15,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-113"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 16,
@@ -833,6 +1028,8 @@ window.questionBank = [
       "H2-M1-RPM-121"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "수열",
       "midUnit": "등차수열과 등비수열",
       "l3": "수열의 활용",
@@ -840,15 +1037,26 @@ window.questionBank = [
     },
     "rpmL3": "수열의 활용",
     "rpmL4": "조건으로 수열 결정",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+    "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_INTEGER",
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_c8235682b442290f11eb339263df57fb7a4d80bd6f335e8dd4dee926f71f07b7",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 16,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-121"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 17,
@@ -888,6 +1096,8 @@ window.questionBank = [
       "H2-M1-RPM-117"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "수열",
       "midUnit": "등차수열과 등비수열",
       "l3": "등차수열",
@@ -895,14 +1105,25 @@ window.questionBank = [
     },
     "rpmL3": "등차수열",
     "rpmL4": "합",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+    "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_117",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "questionUid": "qid_v1_e7bb6f59b90abcd03d301498c5fd40a8582f4ced96cfd8f4733ee9f81f6d3bbd",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 17,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-117"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 18,
@@ -942,6 +1163,8 @@ window.questionBank = [
       "H2-M1-RPM-108"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "삼각함수",
       "midUnit": "삼각함수의 그래프",
       "l3": "그래프 활용",
@@ -949,15 +1172,26 @@ window.questionBank = [
     },
     "rpmL3": "그래프 활용",
     "rpmL4": "최대·최소",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+    "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_RANGE",
       "COND_NATURAL_NUMBER"
     ],
-    "integrationPattern": "CASE_BRANCH"
+    "integrationPattern": "CASE_BRANCH",
+    "questionUid": "qid_v1_526adf0cdac0baadb064fc6d64879baf45ef852a9c381a4d35f0db530484b176",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 18,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-108"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "FUNCTIONS_GRAPHS"
+    }
   },
   {
     "id": 19,
@@ -1000,6 +1234,8 @@ window.questionBank = [
       "H2-M1-RPM-109"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "삼각함수",
       "midUnit": "삼각함수의 활용",
       "l3": "사인법칙",
@@ -1007,12 +1243,23 @@ window.questionBank = [
     },
     "rpmL3": "사인법칙",
     "rpmL4": "외접원 반지름",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_05_SINE_LAW",
+    "templateKey": "TPL_H22A_05_SINE_LAW_109",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_7e2340927b2fa8a74ba48984244fc6c31533b7f5422a8e9de0d1a2da2a8cae60",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 19,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-109"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 20,
@@ -1046,6 +1293,8 @@ window.questionBank = [
       "H2-M1-RPM-117"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "수열",
       "midUnit": "등차수열과 등비수열",
       "l3": "등차수열",
@@ -1053,15 +1302,26 @@ window.questionBank = [
     },
     "rpmL3": "등차수열",
     "rpmL4": "합",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+    "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_117",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_NATURAL_NUMBER",
       "COND_RANGE"
     ],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "questionUid": "qid_v1_5a49fba4d90c0a48fc5f9298816afa2773b161d3cbfe9f32aa87dc2058c59d23",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 20,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-117"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "ALGEBRA_2022"
+    }
   },
   {
     "id": 21,
@@ -1095,6 +1355,8 @@ window.questionBank = [
       "H2-M1-RPM-107"
     ],
     "rpmPrimaryPath": {
+      "curriculum": "2022",
+      "scope": "대수",
       "majorUnit": "삼각함수",
       "midUnit": "삼각함수의 그래프",
       "l3": "그래프 활용",
@@ -1102,14 +1364,25 @@ window.questionBank = [
     },
     "rpmL3": "그래프 활용",
     "rpmL4": "교점",
-    "problemTypeKey": null,
-    "templateKey": null,
-    "projectionStatus": "PROJECTION_UNMATERIALIZED",
+    "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+    "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+    "projectionStatus": "PROJECTION_REUSE",
     "crossConceptKeys": [],
     "conditionKeys": [
       "COND_NATURAL_NUMBER",
       "COND_EXACT_INTERSECTION_COUNT"
     ],
-    "integrationPattern": "INTERDEPENDENT"
+    "integrationPattern": "INTERDEPENDENT",
+    "questionUid": "qid_v1_de03e655189d246884e5923d874ee5ecd46bbfef94c85bcb71d4930d61ef9bba",
+    "sourceArchiveFile": "original/high/h2/1final/26_금당고_1학기_기말_고2_대수.js",
+    "sourceOrdinal": 21,
+    "metadataEvidence": {
+      "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+      "rpmPrimaryRecordIds": [
+        "H2-M1-RPM-107"
+      ],
+      "crosswalkStatus": "DIRECT_ACTIVE",
+      "bindingOwner": "FUNCTIONS_GRAPHS"
+    }
   }
 ];
