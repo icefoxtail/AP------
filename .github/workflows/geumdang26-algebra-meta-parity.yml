@@ -65,6 +65,8 @@ jobs:
           git diff --cached --quiet && exit 0
           git diff --cached --stat
           git commit -m "fix(meta): bind Geumdang 21 QID source fingerprints to verified consumer/search [skip ci]"
+          git fetch origin finalqa-geumdang26-20261021
+          git rebase origin/finalqa-geumdang26-20261021
           git push origin HEAD:finalqa-geumdang26-20261021
       - uses: browser-actions/setup-chrome@v1
         id: chrome
