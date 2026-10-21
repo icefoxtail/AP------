@@ -411,6 +411,8 @@ for (const exam of exams) {
         ? semantic.difficultyBucket
         : "UNKNOWN",
       legacyLevel: question.level || "",
+      ...(question.reviewStatus && /^meta-foundation:[^:]+:exam-(?:final_qa|review2)-v2:/.test(meta?.metadataRevision || "")
+        ? { sourceReviewStatus: question.reviewStatus } : {}),
       legacyStandardUnitKey: question.standardUnitKey || "",
       legacySubUnitKey: question.subUnitKey || "",
       identityStatus,
@@ -654,7 +656,11 @@ const overrideIndex = {
 };
 const overrideIndexText = JSON.stringify(overrideIndex) + "\n";
 const overrideIndexTarget = path.join(root, "archive/data/archive2-item-review-overrides.json");
-const runtimePacks = core.Canonical.RUNTIME_INPUT_PATHS.map((runtimePath) =>
+const registryIndex = JSON.parse(read("archive/data/meta-foundation/canonical/registry_index.json"));
+const runtimeInputPaths = core.Canonical.runtimeInputPathsFromManifest((registryIndex.activePacks || []).filter(p => p.status === "ACTIVE").map(p => ({
+  path: `data/meta-foundation/runtime/${p.id.toLowerCase().replaceAll("_", "-")}-v1.json`,
+}))).filter(runtimePath => fs.existsSync(path.join(root, "archive", runtimePath)));
+const runtimePacks = runtimeInputPaths.map((runtimePath) =>
   JSON.parse(read("archive/" + runtimePath)),
 );
 const allInputPaths = [...new Set([
@@ -664,6 +670,7 @@ const allInputPaths = [...new Set([
       const absolutePath = path.resolve(root, "archive", inputPath);
       return fs.existsSync(absolutePath) && fs.statSync(absolutePath).isFile();
     },
+    runtimeInputPaths,
   ),
   coreMetaFilterAuthorityPath,
 ])].sort();

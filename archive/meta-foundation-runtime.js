@@ -159,7 +159,8 @@
   ).then((bundle) => {
     inputBundle = bundle;
     const resources = bundle.resources;
-    const packs = RUNTIME_URLS.map((runtimeUrl) => {
+    const runtimeUrls = [...new Set([...RUNTIME_URLS, ...(bundle.runtimeInputPaths || []).filter(path => !window.Archive2Canonical.RUNTIME_INPUT_PATHS.includes(path))])];
+    const packs = runtimeUrls.map((runtimeUrl) => {
       const data = resources[runtimeUrl];
       if (!data || data.status !== "ACTIVE" || !Array.isArray(data.records))
         throw new Error("Meta Foundation runtime invalid: " + runtimeUrl);

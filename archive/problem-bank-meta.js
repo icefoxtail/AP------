@@ -281,8 +281,13 @@
       ? record.meta || record.metaProjection || consumer?.meta || consumer?.metaProjection || {}
       : displayProjection || {};
     const rpmMeta = m.rpmSemanticStatus || m.rpmProjectionRevision ? m : (record.metadataAssignmentEvidence?.rpmMetadata || {});
-    const nativeOriginalProjection = displayProjection?.nativeTaxonomyAuthority?.registrationPackId === 'H1_ORIGINAL_SOURCE' &&
-      String(displayProjection.nativeTaxonomyAuthority.registrationPackVersion) === '1.0.0';
+    const registeredProjection = record.reviewedExamRegistration?.schemaVersion === 'archive-reviewed-exam-registration-projection-v2' &&
+      record.reviewedExamRegistration.sourceJsSha256 === record.currentSourceJsSha256 &&
+      record.reviewedExamRegistration.metadataRevision === record.metadataRevision &&
+      record.assignmentEvidence?.reviewEvidence?.reference === record.reviewedExamRegistration.reference &&
+      record.assignmentEvidence?.reviewEvidence?.sha256 === record.reviewedExamRegistration.sha256;
+    const nativeOriginalProjection = registeredProjection || (displayProjection?.nativeTaxonomyAuthority?.registrationPackId === 'H1_ORIGINAL_SOURCE' &&
+      String(displayProjection.nativeTaxonomyAuthority.registrationPackVersion) === '1.0.0');
     const view = {...record};
     view.uid = generated ? record.uid : record.questionUid;
     view.questionUid = view.uid;
@@ -333,7 +338,7 @@
     }
     for (const field of ['nativeTaxonomyPath', 'nativeTaxonomyAuthority', 'nativeMetaStatus',
       'difficultyConfidence', 'difficultyReason', 'rpmMapping', 'reviewedOriginalMetaEvidence', 'level']) {
-      view[field] = m[field] ?? null;
+      view[field] = m[field] ?? (registeredProjection ? record[field] : null) ?? null;
     }
     if (staleNativeSourceProjection) {
       for (const field of ['standardCourse', 'standardUnitKey', 'standardUnit', 'subUnitKey', 'subUnit',

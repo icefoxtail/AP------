@@ -36,9 +36,9 @@ body{font-family:system-ui,'Malgun Gothic',sans-serif;background:#f4f7fb;color:#
 <section id="preview" hidden aria-label="생성 문항 미리보기"></section>
 </main>
 <script src="mixer-selector.js?v=20261009-meta1"></script>
-<script src="archive2-canonical.js?v=20261009-meta1"></script>
+<script src="archive2-canonical.js?v=20261021-reviewed-runtime-1"></script>
 <script src="archive2-core.js?v=20261009-meta1"></script>
-<script src="problem-bank-meta.js?v=20261014-h1-original-meta1"></script>
+<script src="problem-bank-meta.js?v=20261021-reviewed-registration-1"></script>
 <script src="archive2-source.js?v=20261009-meta1"></script>
 <script>
 'use strict';
@@ -156,11 +156,15 @@ for(const id of ['source','course','standardUnitKey','subUnitKey','nativeL1','na
 el('more').onclick=()=>{limit+=40;render();};
 (async()=>{
  try{
-  const [catalog,index]=await Promise.all(['data/archive2-catalog.json','data/generated-lite-consumer/v1/index.json'].map(async p=>{const r=await fetch(p,{cache:'no-cache'});if(!r.ok)throw Error('검색 데이터 로드 실패');return r.json();}));
+  const [bundle,index]=await Promise.all([
+    Archive2Canonical.loadInputBundle(url=>fetch(url,{cache:'no-cache'}),document.baseURI),
+    fetch('data/generated-lite-consumer/v1/index.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('검색 데이터 로드 실패');return r.json();}),
+  ]);
+  const catalog=Archive2Canonical.resolveCatalog({versionBundle:bundle});
   coreMetaFilterOptions=catalog.coreMetaFilterOptions||{};
   holds=index.userDisabledUids||[];
   const sourceShaByFile=new Map(catalog.sourceHashes||[]);
-  const sourceRows=Archive2Core.decodeCatalog(catalog).records.map(row=>({...row,currentSourceJsSha256:sourceShaByFile.get(row.sourceFile)||''}));
+  const sourceRows=catalog.records.map(row=>({...row,currentSourceJsSha256:sourceShaByFile.get(row.sourceFile)||''}));
   inventory=ProblemBankMeta.buildIndex(sourceRows,index.records,{excludedHoldUids:holds});
   options('course','standardCourse',inventory);
   refreshCoreMetaKeyOptions();

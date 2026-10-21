@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_run:
+    workflows: [Archive Reviewed Exam Meta Register]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: write
@@ -15,7 +19,30 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  registration-ready:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.inbox.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          sparse-checkout: .archive-meta-register/inbox
+          sparse-checkout-cone-mode: false
+      - id: inbox
+        shell: bash
+        run: |
+          set -euo pipefail
+          if find .archive-meta-register/inbox -maxdepth 1 -name '*.json' -type f -print 2>/dev/null | grep -q .; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Reviewed metadata requests are pending; the registration completion event will resume release."
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
   build:
+    needs: registration-ready
+    if: needs.registration-ready.outputs.ready == 'true'
     name: Build and verify the student release
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -26,6 +53,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
 
       - uses: actions/setup-node@v4
         with:

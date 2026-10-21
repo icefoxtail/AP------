@@ -4,6 +4,7 @@ import vm from "node:vm";
 import crypto from "node:crypto";
 import { isDeepStrictEqual } from "node:util";
 import { execFileSync } from "node:child_process";
+import canonical from "../../archive2-canonical.js";
 import { loadCanonical, buildCompiled, compiledOutputs, buildRegistryIndex } from "./compile-meta-foundation.mjs";
 import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 
@@ -11,6 +12,7 @@ const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
 const MASTER = "archive/data/master_tables/js_archive_tag_master.json";
 const META = "archive/data/question_metadata.json";
+const IDENTITY = "archive/data/question_identity_map.json";
 const RECEIPTS = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1";
 const json = value => JSON.stringify(value, null, 2) + "\n";
 const stable = value => JSON.stringify(value, (_, v) => v && !Array.isArray(v) && typeof v === "object"
@@ -21,9 +23,9 @@ const slug = value => value.toLowerCase().replaceAll("_", "-");
 const approved = row => row.reviewStatus === "reviewed_pass" || String(row.metadataStatus || "").startsWith("approved_");
 const fail = message => { throw new Error(message); };
 const requireText = (value, name) => typeof value === "string" && value.trim() ? value : fail(`${name} required`);
-const sourceFields = ["standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "level",
+const sourceFields = ["standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "level", "L3", "L4",
   "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket"];
-const valueFields = new Set([...sourceFields, "curriculum", "curriculumKey", "courseKey", "L1", "L2", "L3", "L4",
+const valueFields = new Set([...sourceFields, "sourceFingerprint", "contentFingerprint", "curriculum", "curriculumKey", "courseKey", "L1", "L2", "L3", "L4",
   "rpmL1", "rpmL2", "rpmL3", "rpmL4", "rpmPrimaryPath", "rpmSemanticStatus", "semanticSourceScope", "semanticScopeRelation",
   "primaryMethod", "decisiveStep", "integrationReason", "conceptClusterKey", "secondaryConceptKeys",
   "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility", "curriculumApplicability", "defaultSelectable"]);
@@ -199,12 +201,93 @@ function resolve(row, tables) {
   if (row.subUnitKey && (!sub || sub.keyType !== "subUnitKey" || !["active", "ACTIVE"].includes(sub.status))) fail(`subunit missing: ${row.subUnitKey}`);
   const curriculum = requireText(row.curriculum || row.curriculumKey, "curriculum");
   const course = requireText(row.standardCourse || row.courseKey, "standardCourse");
-  if (row.curriculumKey && row.curriculumKey !== curriculum || row.courseKey && row.courseKey !== course) fail("curriculum/course aliases disagree");
+  const compactCourse = value => String(value).normalize("NFC").replace(/\s/g, "");
+  if (row.curriculumKey && row.curriculumKey !== curriculum || row.courseKey && compactCourse(row.courseKey) !== compactCourse(course)) fail("curriculum/course aliases disagree");
   const binding = tables.bindings.get(stable([curriculum, course, row.standardUnitKey, row.subUnitKey ?? null, row.problemTypeKey]));
   if (!binding) fail(`ACTIVE curriculum binding missing: ${curriculum}/${course}/${row.problemTypeKey}`);
-  const pack = tables.packs.get(pt.ownerPack);
-  if (!pack.meta.curricula.includes(curriculum) || !pack.meta.standardCourses.includes(course)) fail(`ownerPack scope missing: ${pt.ownerPack}/${curriculum}/${course}`);
+  const pack = tables.packs.get(binding.ownerPack || pt.ownerPack);
+  if (!pack || !pack.meta.curricula.includes(curriculum) || !pack.meta.standardCourses.includes(course)) fail(`binding ownerPack scope missing: ${binding.ownerPack || pt.ownerPack}/${curriculum}/${course}`);
   return { pt, tpl, unit, sub, binding, pack, curriculum, course };
+}
+
+function labelsFor(patch, row, resolved, read, sourceBlob) {
+  const base = { L1: resolved.binding.L1 || resolved.unit.labelKo, L2: resolved.binding.L2 || resolved.sub?.labelKo || "", L3: resolved.pt.canonicalLabelKo, L4: resolved.tpl.canonicalLabelKo };
+  const withTargetParent = labels => {
+    if (!patch.targetParentRef) return labels;
+    const ref = patch.targetParentRef;
+    const masterPath = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
+    if (ref.path !== masterPath || !(patch.evidenceRefs || []).some(e => e.path === ref.path)) fail("target parent reference is not evidence-bound");
+    const compact = value => String(value).normalize("NFC").replace(/\s/g, "");
+    const matches = (read(masterPath).records || []).filter(r => r.curriculum === ref.curriculum && r.scope === ref.scope && r.majorUnit === ref.majorUnit && r.midUnit === ref.midUnit);
+    if (!matches.length || ref.curriculum !== resolved.curriculum || compact(ref.scope) !== compact(row.courseKey || resolved.course) ||
+        ref.midUnit !== (resolved.binding.L2 || resolved.unit.labelKo) || resolved.binding.L1 && ref.majorUnit !== resolved.binding.L1) fail("canonical target parent mismatch");
+    return { ...labels, L1: ref.majorUnit, L2: ref.midUnit };
+  };
+  if (patch.approvedMetadataRef) {
+    if (patch.semanticBinding) fail("ambiguous semantic approval reference");
+    const ref = patch.approvedMetadataRef;
+    if (!/^archive\/data\/meta-foundation\/exam-scoped\/[^/]+\.json$/.test(ref.path || "") ||
+        !(patch.evidenceRefs || []).some(e => e.path === ref.path)) fail("approved metadata reference is not evidence-bound");
+    const doc = read(ref.path);
+    if (doc.schemaVersion !== "archive-exam-scoped-metadata-v1" || doc.purpose !== "EXAM_SCOPED_CANONICAL_METADATA_EXPORT" ||
+        !/^ACTIVE_SEMANTIC_VERIFIED(?:__|$)/.test(doc.status || "") || doc.sourceArchiveFile !== row.sourceArchiveFile ||
+        doc.sourceBlobSha !== sourceBlob || doc.recordCount !== doc.records?.length) fail("approved metadata source/schema drift");
+    const matches = doc.records.filter(r => r.questionUid === row.questionUid && r.sourceOrdinal === row.sourceOrdinal);
+    if (matches.length !== 1 || ref.questionUid !== row.questionUid) fail("approved metadata UID/ordinal mismatch");
+    const approvedRow = matches[0];
+    if (approvedRow.reviewStatus !== "reviewed_pass" || approvedRow.bindingResolutionStatus !== "RESOLVED" ||
+        ["curriculumKey", "standardCourse", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey"].some(k => !eq(approvedRow[k], row[k]))) fail("approved metadata classification drift");
+    return withTargetParent(Object.fromEntries(["L1", "L2", "L3", "L4"].map(k => [k, requireText(approvedRow[k], `approved ${k}`)])));
+  }
+  if (!patch.semanticBinding) return withTargetParent(base);
+  const load = (file, id) => {
+    if (!/^archive\/data\/meta-foundation\/crosswalks\/rpm-primary-v1\.0\/[a-z0-9-]+\.json$/.test(file || "")) fail("invalid semantic crosswalk path");
+    const doc = read(file), matches = (doc.records || []).filter(r => r.id === id);
+    if (matches.length !== 1) fail(`semantic crosswalk record missing/ambiguous: ${id}`);
+    return { doc, record: matches[0] };
+  };
+  const spec = patch.semanticBinding;
+  const semantic = load(spec.crosswalkPath, spec.recordId);
+  const target = load(spec.targetCrosswalkPath || spec.crosswalkPath, spec.targetRecordId || spec.recordId);
+  const s = semantic.record, t = target.record;
+  if (s.problemTypeKey !== row.problemTypeKey || s.templateKey !== row.templateKey || s.bindingStatus !== "ACTIVE") fail(`RPM/PT/TPL mismatch: ${row.questionUid}`);
+  if (t.curriculum !== resolved.curriculum || t.scope !== resolved.course || t.standardUnitKey !== row.standardUnitKey || (t.subUnitKey ?? null) !== (row.subUnitKey ?? null)) fail(`RPM target scope mismatch: ${row.questionUid}`);
+  if (s.curriculum !== t.curriculum || s.scope !== t.scope) {
+    const rank = grade => ({ 중1: 1, 중2: 2, 중3: 3, 고1: 4, 고2: 5, 고3: 6, M1: 1, M2: 2, M3: 3, H1: 4, H2: 5, H3: 6 })[grade] || 0;
+    if (row.semanticScopeRelation !== "PREREQUISITE_LOWER_GRADE" || !rank(semantic.doc.grade) || rank(semantic.doc.grade) >= rank(target.doc.grade)) fail(`invalid prerequisite semantic scope: ${row.questionUid}`);
+  }
+  return withTargetParent({ L1: requireText(t.rpmPath?.majorUnit, "target RPM L1"), L2: requireText(t.rpmPath?.midUnit, "target RPM L2"),
+    L3: requireText(s.rpmPath?.l3, "semantic RPM L3"), L4: requireText(s.rpmPath?.l4, "semantic RPM L4") });
+}
+
+// The caller first binds the complete source file to expectedSourceBlobSha1.
+// Hashes supplied by a request are assertions, never the fingerprint authority.
+export function validateReviewedSourceFingerprints({ question: q, metadata, identity, patch }) {
+  const uid = metadata.questionUid;
+  const sourceFingerprint = digest(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null,
+    answer: q.answer ?? null, solution: q.solution ?? null, image: q.image ?? null }));
+  const contentFingerprint = digest(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, image: q.image ?? null }));
+  const requested = Object.hasOwn(patch.after, "sourceFingerprint");
+  if (requested) {
+    for (const [key, value] of Object.entries({ sourceFingerprint, contentFingerprint })) {
+      if (!Object.hasOwn(patch.after, key) || !Object.hasOwn(patch.before, key)) fail(`fingerprint repair before/after required: ${uid}.${key}`);
+      if (!eq(patch.before[key], metadata[key] ?? null)) fail(`fingerprint before mismatch: ${uid}.${key}`);
+      if (patch.after[key] !== value) fail(`computed fingerprint mismatch: ${uid}.${key}`);
+    }
+  }
+  if (Object.hasOwn(patch.after, "contentFingerprint") && patch.after.contentFingerprint !== contentFingerprint)
+    fail(`computed fingerprint mismatch: ${uid}.contentFingerprint`);
+  if ((patch.after.sourceFingerprint ?? metadata.sourceFingerprint) !== sourceFingerprint) fail(`source fingerprint drift: ${uid}`);
+  if (patch.identityBefore !== undefined) {
+    const before = patch.identityBefore;
+    if (!before || typeof before !== "object" || Array.isArray(before) || Object.keys(before).length !== 1 ||
+        !Object.hasOwn(before, "sourceFingerprint") || before.sourceFingerprint !== identity.sourceFingerprint)
+      fail(`identity fingerprint before mismatch: ${uid}`);
+  }
+  const identityChanged = identity.sourceFingerprint !== sourceFingerprint;
+  if (identityChanged && (!requested || patch.identityBefore === undefined)) fail(`identity fingerprint before required: ${uid}`);
+  return { sourceFingerprint, contentFingerprint, identityChanged,
+    identityAfter: identityChanged ? { ...identity, sourceFingerprint } : { ...identity } };
 }
 
 export function registerReviewedExamV2({ root, request: req, write = false, verifyProjection = false }) {
@@ -239,7 +322,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
   if (!Array.isArray(bank) || !Number.isInteger(req.expectedQuestionCount) || bank.length !== req.expectedQuestionCount || !bank.length) fail("source denominator mismatch");
   const read = file => JSON.parse(fs.readFileSync(safePath(root, file), "utf8"));
-  const metadata = read(META), identity = read("archive/data/question_identity_map.json");
+  const metadata = read(META), identity = read(IDENTITY);
   const metadataByUid = unique(metadata.records, "questionUid", "metadata UID");
   unique(metadata.records, r => `${r.sourceArchiveFile}#${r.sourceOrdinal}`, "metadata source ordinal");
   const ids = unique(identity.records, "questionUid", "identity UID");
@@ -253,10 +336,12 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (previous && previous.requestSha256 !== requestSha256) fail("requestId reused with different content");
   if (previous) {
     for (const record of previous.appliedRecords) if (!eq(rows.find(r => r.questionUid === record.questionUid), record)) fail(`registered metadata drift: ${record.questionUid}`);
+    for (const record of previous.appliedIdentityRecords || []) if (!eq(ids.get(record.questionUid), record)) fail(`registered identity drift: ${record.questionUid}`);
     const currentPlan = registryPlan(root, [], evidenceRefs), currentTables = lookup(currentPlan);
     for (const record of previous.appliedRecords) {
       const r = resolve(record, currentTables);
-      if (record.L1 !== (r.binding.L1 || r.unit.labelKo) || record.L2 !== (r.binding.L2 || r.sub?.labelKo || "") || record.L3 !== r.pt.canonicalLabelKo || record.L4 !== r.tpl.canonicalLabelKo) fail(`registered canonical label drift: ${record.questionUid}`);
+      const labels = labelsFor(patches.get(record.questionUid), record, r, read, blob);
+      for (const [key, value] of Object.entries(labels)) if (record[key] !== value) fail(`registered canonical label drift: ${record.questionUid}.${key}`);
     }
     const allRuntime = fs.readdirSync(safePath(root, "archive/data/meta-foundation/runtime")).filter(n => n.endsWith(".json") && n !== "runtime-bridge-receipt.json").flatMap(n => read(`archive/data/meta-foundation/runtime/${n}`).records || []);
     for (const record of previous.runtimeRecords) {
@@ -310,7 +395,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (owners.has(r.questionUid)) fail(`duplicate runtime UID: ${r.questionUid}`);
     owners.set(r.questionUid, pack);
   }
-  const touched = new Set(), applied = [], runtimeRecords = [];
+  const touched = new Set(), applied = [], runtimeRecords = [], appliedIdentityRecords = [], fingerprintRepairs = [];
+  let identityChanged = false;
   for (let i = 0; i < bank.length; i++) {
     const current = rows[i], patch = patches.get(current.questionUid), q = JSON.parse(JSON.stringify(bank[i]));
     const id = ids.get(current.questionUid);
@@ -326,18 +412,26 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     }
     const final = { ...current, ...structuredClone(patch.after) };
     for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f])) fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
-    const fingerprint = digest(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, answer: q.answer ?? null, solution: q.solution ?? null, image: q.image ?? null }));
-    if (current.sourceFingerprint !== fingerprint || id.sourceFingerprint !== fingerprint) fail(`source fingerprint drift: ${current.questionUid}`);
+    const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch });
+    const fingerprint = checked.sourceFingerprint;
+    if (checked.identityChanged || Object.hasOwn(patch.after, "sourceFingerprint")) fingerprintRepairs.push({
+      questionUid: current.questionUid, sourceOrdinal: i + 1,
+      metadataBefore: { sourceFingerprint: current.sourceFingerprint ?? null, contentFingerprint: current.contentFingerprint ?? null },
+      identityBefore: { sourceFingerprint: id.sourceFingerprint },
+      after: { sourceFingerprint: checked.sourceFingerprint, contentFingerprint: checked.contentFingerprint }
+    });
+    if (checked.identityChanged) { Object.assign(id, checked.identityAfter); identityChanged = true; }
+    appliedIdentityRecords.push(structuredClone(id));
     if (!["하", "중", "상"].includes(final.level) || !Number.isInteger(final.difficultyBucket) || final.difficultyBucket < 1 || final.difficultyBucket > 5) fail(`level/difficulty invalid: ${current.questionUid}`);
     requireText(final.integrationPattern, "integrationPattern (explicit NONE if not applicable)");
     const resolved = resolve(final, tables), { pt, tpl, unit, sub, pack, curriculum, course } = resolved;
-    for (const [field, label] of Object.entries({ L1: resolved.binding.L1 || unit.labelKo, L2: resolved.binding.L2 || sub?.labelKo || "", L3: pt.canonicalLabelKo, L4: tpl.canonicalLabelKo })) {
+    for (const [field, label] of Object.entries(labelsFor(patch, final, resolved, read, blob))) {
       if (Object.hasOwn(patch.after, field) && patch.after[field] !== label) fail(`canonical label mismatch: ${current.questionUid}.${field}`);
       if (approved(current) && current[field] !== label && !Object.hasOwn(patch.before, field)) fail(`before required for derived label: ${current.questionUid}.${field}`);
       final[field] = label;
     }
     const revision = `meta-foundation:${pack.meta.packId}@${pack.meta.packVersion}:exam-${req.approval.type.toLowerCase()}-v2:${req.requestId}`;
-    Object.assign(final, { curriculum, curriculumKey: curriculum, standardCourse: course, courseKey: course,
+    Object.assign(final, { curriculum, curriculumKey: curriculum, standardCourse: course, courseKey: final.courseKey || course,
       reviewStatus: "reviewed_pass", metadataStatus: "approved_semantic_review", metadataRevision: revision,
       tagStatus: "reviewed_pass", tagConfidence: req.approval.type === "REVIEW2" ? "independent_review2" : "approved_final_qa",
       foundationTaxonomyStatus: "CONFIRMED", projectionStatus: "REUSE", metaFoundationStatus: "ACTIVE",
@@ -377,6 +471,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   }
   for (const packId of touched) {
     const item = runtimes.get(packId);
+    if (item.data.records.some(row => targetUids.has(row.questionUid))) {
+      item.data.generatedFrom = { ...(item.data.generatedFrom || {}), [`reviewedExam_${req.requestId}`]: receiptPath };
+    }
     const version = tables.packs.get(packId)?.meta.packVersion;
     if (version) { item.data.packVersion = version; item.data.runtimeVersion = `${packId}@${version}/reviewed-exam-v2`; }
     item.data.records.sort((a, b) => a.questionUid.localeCompare(b.questionUid, "en"));
@@ -390,12 +487,18 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (Object.hasOwn(metadata.counts, "explicitTemplateHolds")) metadata.counts.explicitTemplateHolds = metadata.records.filter(r => r.fieldStatus?.template === "manual_review_pending").length;
   if (Object.hasOwn(metadata.counts, "explicitDifficultyHolds")) metadata.counts.explicitDifficultyHolds = metadata.records.filter(r => r.fieldStatus?.difficulty === "manual_review_pending").length;
   plan.output.set(META, json(metadata));
+  if (identityChanged) {
+    // Retain UID, source ordinal, lookups and unrelated identity records.
+    const stableIdentity = { ...identity }; delete stableIdentity.generatedAt; delete stableIdentity.identityDigest;
+    identity.identityDigest = digest(JSON.stringify(stableIdentity));
+    plan.output.set(IDENTITY, JSON.stringify(identity) + "\n");
+  }
   const outputDigests = [...plan.output].filter(([file, text]) => file !== META && (!fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text)).map(([file, text]) => ({ path: file, sha256: digest(text) }));
   const receipt = { schemaVersion: "archive-reviewed-exam-meta-registration-v2", requestId: req.requestId, requestSha256,
     examUid: req.examUid, sourceArchiveFile: source, sourceBlobSha1: blob, sourceRawSha256: digest(bytes), approval: req.approval,
     metadataRegistrationStatus: "REGISTERED", examFinalQaStatus: "NOT_EVALUATED_BY_REGISTRAR",
     consumerSearchStatus: "NOT_RUN", totalQuestions: applied.length, registryChanges: req.registryChanges || [],
-    appliedRecords: applied, runtimeRecords, outputDigests };
+    appliedRecords: applied, appliedIdentityRecords, fingerprintRepairs, runtimeRecords, outputDigests };
   plan.output.set(receiptPath, json(receipt));
   const changed = [...plan.output].filter(([file, text]) => !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text);
   // All semantic and reference checks precede the first write; restore originals
@@ -415,13 +518,36 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   }
   return { status: "PASS", write, requestId: req.requestId, approvalType: req.approval.type, totalQuestions: applied.length,
     registryChangeCount: req.registryChanges?.length || 0, runtimeMaterialized: runtimeRecords.length,
+    fingerprintRepairCount: fingerprintRepairs.length,
     consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file) };
 }
 
 function verifyConsumer(root, records, runtimeRecords, read) {
-  const catalog = read("archive/data/archive2-catalog.json");
+  const manifestPath = "archive/data/archive2-canonical-input-manifest.json";
+  if (!fs.existsSync(safePath(root, manifestPath))) fail("canonical manifest missing");
+  const manifest = read(manifestPath);
+  if (manifest.schemaVersion !== "archive2-canonical-input-manifest-v1" || manifest.resolverVersion !== canonical.RESOLVER_VERSION ||
+      manifest.projectionVersion !== "archive2-canonical-v1:" + digest(canonical.projectionManifestPayload(manifest.files, manifest.resolverVersion))) fail("canonical manifest version/digest mismatch");
+  const files = Object.fromEntries(manifest.files.map(row => [row.path, { sha256: row.sha256 }]));
+  if (canonical.MANIFEST_REQUIRED_PATHS.some(p => !files[p])) fail("canonical manifest incomplete");
+  const resources = {};
+  const load = relative => {
+    const repoRelative = path.relative(root, path.resolve(root, "archive", relative)).replaceAll("\\", "/");
+    const text = fs.readFileSync(safePath(root, repoRelative), "utf8").replaceAll("\r\n", "\n");
+    if (!files[relative] || digest(text) !== files[relative].sha256) fail(`canonical input digest mismatch: ${relative}`);
+    resources[relative] = JSON.parse(text);
+  };
+  const runtimePaths = canonical.runtimeInputPathsFromManifest(manifest.files);
+  for (const relative of new Set([...canonical.REQUIRED_INPUT_PATHS, ...runtimePaths])) load(relative);
+  for (const relative of canonical.reviewedRegistrationProofPaths(runtimePaths.map(p => resources[p]))) load(relative);
+  const resolved = canonical.resolveCatalog({ versionBundle: { manifest, projectionVersion: manifest.projectionVersion, files, resources } });
+  return verifyConsumerValues(root, records, runtimeRecords, resolved);
+}
+
+export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
   const decode = v => Array.isArray(v) && v.length === 1 && Number.isInteger(v[0]) && catalog.strings?.[v[0]] !== undefined ? catalog.strings[v[0]] : v;
-  const rows = catalog.encoding === "column-dictionary-v1" ? catalog.records.map(r => Object.fromEntries(catalog.columns.map((k, i) => [k, decode(r[i])]))) : catalog.records;
+  const rows = catalog.encoding === "column-dictionary-v1" && Array.isArray(catalog.records[0])
+    ? catalog.records.map(r => Object.fromEntries(catalog.columns.map((k, i) => [k, decode(r[i])]))) : catalog.records;
   const byUid = unique(rows, "questionUid", "catalog UID");
   for (const r of records) {
     const c = byUid.get(r.questionUid);

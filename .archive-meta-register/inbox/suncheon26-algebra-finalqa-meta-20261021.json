@@ -1,0 +1,2199 @@
+{
+  "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+  "requestId": "suncheon26-algebra-finalqa-meta-20261021",
+  "examUid": "26_순천고_1학기_기말_고2_대수",
+  "sourceArchiveFile": "original/high/h2/1final/26_순천고_1학기_기말_고2_대수.js",
+  "expectedSourceBlobSha1": "ffeda4b2fadd7e0bb3bda0a23c32babc76e1c6f5",
+  "expectedQuestionCount": 24,
+  "approval": {
+    "type": "FINAL_QA",
+    "metadataReviewed": true,
+    "approvedBy": "USER_DIRECTED_METADATA_REGISTRATION_20261021; q18 independent targeted semantic review",
+    "evidenceRefs": [
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+        "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+      },
+      {
+        "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+      }
+    ]
+  },
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/algebra-2022/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "subUnitKey": "H22-A-05-CORE",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "curriculum": "2022",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnitLabelKo": "사인법칙과 코사인법칙 핵심 개념",
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "ALGEBRA_2022",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "supportingQuestionUids": [
+          "qid_v1_dbb2899023ac1d60c590ac89476257f004d6a6eee53033ad66f0b3984981b3b2"
+        ],
+        "supportingItemCount": 1
+      },
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "questionUid": "qid_v1_9b1de25500ecd4efd2f7e5cbb47f98a125795ca21ce506254d0a6d0c497f3055",
+      "sourceOrdinal": 1,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "하",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "910d179eaf15c454d9e63b105f32f731a0a0728398365cbdb1ca188e3b987309",
+        "contentFingerprint": "bf8857e10a9b835e372c72615f8e07c1ac15d10116a893fc8f2c68f09a9b49bc"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "level": "하",
+        "L3": "삼각함수의 뜻",
+        "L4": "삼각함수 값",
+        "problemTypeKey": "PT_H22A_04_TRIG_DEFINITION",
+        "templateKey": "TPL_H22A_04_TRIG_DEFINITION_098",
+        "difficultyBucket": 1,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수",
+        "rpmL3": "삼각함수의 뜻",
+        "rpmL4": "삼각함수 값",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "10df8b7fd5797654dbae15a6412d2cb79e8138054ef55ffe9a3d0bf8a1b27303",
+        "contentFingerprint": "bf8857e10a9b835e372c72615f8e07c1ac15d10116a893fc8f2c68f09a9b49bc"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-098"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "910d179eaf15c454d9e63b105f32f731a0a0728398365cbdb1ca188e3b987309"
+      }
+    },
+    {
+      "questionUid": "qid_v1_3a6ebf4a173b97bbea60adb39995cf9ed2e68a87162ce049e325bf62d2299f74",
+      "sourceOrdinal": 2,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "하",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "87c59ba4ea94c80da585e566e26438cc9853cfcf5e6552ed19de91e39eac2894",
+        "contentFingerprint": "d04209fae3a203ee92e83ecb4de5cbb63385b5a17dfa4b062d34f3508bee224e"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": "하",
+        "L3": "등비수열",
+        "L4": "일반항",
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_118",
+        "difficultyBucket": 1,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "rpmL1": "수열",
+        "rpmL2": "등차수열과 등비수열",
+        "rpmL3": "등비수열",
+        "rpmL4": "일반항",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "05bc48e8cbb69e4210d14f81801af0535e6f958a1cb5bd1cae007391a206997d",
+        "contentFingerprint": "d04209fae3a203ee92e83ecb4de5cbb63385b5a17dfa4b062d34f3508bee224e"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-118"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "87c59ba4ea94c80da585e566e26438cc9853cfcf5e6552ed19de91e39eac2894"
+      }
+    },
+    {
+      "questionUid": "qid_v1_0fdcd869cd1bb511c0cf3555680d6c3fb1a0904c3569397b858ec175c798b2bb",
+      "sourceOrdinal": 3,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "하",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "c50fa7d5cf90ebc5dedf667945a0694e10e83a580932a350a5ba9f7d50bc9ce3",
+        "contentFingerprint": "b7ae2af9531cee4b1139c39896e5a9ec7e936bef7d7113cef66b865068f09659"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": "하",
+        "L3": "등차수열",
+        "L4": "일반항",
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_115",
+        "difficultyBucket": 1,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "rpmL1": "수열",
+        "rpmL2": "등차수열과 등비수열",
+        "rpmL3": "등차수열",
+        "rpmL4": "일반항",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "db4afc3429dd63db3ee695b174f1a3a45c76d5fc91feb4b9e747aa0349c24e02",
+        "contentFingerprint": "b7ae2af9531cee4b1139c39896e5a9ec7e936bef7d7113cef66b865068f09659"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-115"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "c50fa7d5cf90ebc5dedf667945a0694e10e83a580932a350a5ba9f7d50bc9ce3"
+      }
+    },
+    {
+      "questionUid": "qid_v1_142e6034711fe79456132509e6b7179b479c65947df48082e428e7560e43e03d",
+      "sourceOrdinal": 4,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "하",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-05-CORE",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "16c2b5cf0fe18555cedace7ee0f9a4147e8d57d25955e52d91658a12bf214478",
+        "contentFingerprint": "a60cd2ed5698da70b00d1b9fbbaedc52806704d3b6032692cdc53cf9a235be77"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "level": "하",
+        "L3": "사인법칙",
+        "L4": "외접원 반지름",
+        "problemTypeKey": "PT_H22A_05_SINE_LAW",
+        "templateKey": "TPL_H22A_05_SINE_LAW_109",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수의 활용",
+        "rpmL3": "사인법칙",
+        "rpmL4": "외접원 반지름",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "20184c5c5649581eaa2f90ab4a5c015a30ca3ca5ff1f8468cc8d3c421b1240d7",
+        "contentFingerprint": "a60cd2ed5698da70b00d1b9fbbaedc52806704d3b6032692cdc53cf9a235be77"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-109"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "16c2b5cf0fe18555cedace7ee0f9a4147e8d57d25955e52d91658a12bf214478"
+      }
+    },
+    {
+      "questionUid": "qid_v1_898f1843b5fcc44cd25b6516e7aa8e2b710da894e01a97073f1e5f2e20921ea3",
+      "sourceOrdinal": 5,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+        "subUnit": "trigonometric function",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "하",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "ae513653ccc5703cf7aa6c5b27a902cf9000acf4b5ed3e26e2eb90b86d796115",
+        "contentFingerprint": "eccb84b8875628b299e06c4abe8a335b2712e381fda4c6005788497ffc5f8a44"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "subUnit": "삼각함수의 그래프",
+        "level": "하",
+        "L3": "그래프 변환",
+        "L4": "주기·진폭",
+        "problemTypeKey": "PT_H22A_04_TRIG_GRAPH_TRANSFORM",
+        "templateKey": "TPL_H22A_04_TRIG_GRAPH_TRANSFORM_105",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 그래프",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수의 그래프",
+        "rpmL3": "그래프 변환",
+        "rpmL4": "주기·진폭",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "dca5db62eea14e36a5f1b190e7f320e6482a5ed7dc0e44e392e3810295629142",
+        "contentFingerprint": "eccb84b8875628b299e06c4abe8a335b2712e381fda4c6005788497ffc5f8a44"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-105"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "ae513653ccc5703cf7aa6c5b27a902cf9000acf4b5ed3e26e2eb90b86d796115"
+      }
+    },
+    {
+      "questionUid": "qid_v1_1a5787ee503903e77a1d235704a18cc26057b4bc53510eb9116ed0e59f457f85",
+      "sourceOrdinal": 6,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "하",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-05-CORE",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "651d500d107345d64a0d613f04f7859341a013ace6ef26b6b6d98bd46c17ec36",
+        "contentFingerprint": "875433fe75b2ee2015dffaf7623144d03c3d82d1bb7e8d4d75f821afb311aee7"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "level": "하",
+        "L3": "삼각형의 넓이",
+        "L4": "두 변과 끼인각",
+        "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수의 활용",
+        "rpmL3": "삼각형의 넓이",
+        "rpmL4": "두 변과 끼인각",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "63e7de15f887ccf28209afe69a3fb19743455d1f62b56ba98cab827594c60385",
+        "contentFingerprint": "875433fe75b2ee2015dffaf7623144d03c3d82d1bb7e8d4d75f821afb311aee7"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-113"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "651d500d107345d64a0d613f04f7859341a013ace6ef26b6b6d98bd46c17ec36"
+      }
+    },
+    {
+      "questionUid": "qid_v1_8f0c88a0cc5b3dd3b4a46d204928ecaced1f84f5f402409188000afb934e3b36",
+      "sourceOrdinal": 7,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+        "subUnit": "수열의 합",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "하",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-07-SEQUENCE_SUM",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "908485e33eca1fb815693029d12df38a1a3dea91c0e3c5b268f52c63df024485",
+        "contentFingerprint": "f8b68a2a497a57222871b32d959f83dd69b420f1a75cc580eca9f67b431ba903"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": "하",
+        "L3": "등차수열",
+        "L4": "합",
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_117",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "rpmL1": "수열",
+        "rpmL2": "등차수열과 등비수열",
+        "rpmL3": "등차수열",
+        "rpmL4": "합",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "742d803ab85d930f741cb0a0c519934dc2650cb597e8f4514a178f25c3b37197",
+        "contentFingerprint": "f8b68a2a497a57222871b32d959f83dd69b420f1a75cc580eca9f67b431ba903"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-117"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "908485e33eca1fb815693029d12df38a1a3dea91c0e3c5b268f52c63df024485"
+      }
+    },
+    {
+      "questionUid": "qid_v1_a1936ebb2b10a1a6e6c83ea7ff63c6a86600109a5c10939761685c799469dc8f",
+      "sourceOrdinal": 8,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-07-SEQUENCE_BASIC",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "3a1a5a97a501b90bc3bbafb2d9e71c19929d23f7a170a22af3ea8d3f703f6f41",
+        "contentFingerprint": "2156cbc419b63d6569f6527e90ed628aa65f2486447b2437bf4bbd235fe0dc3f"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+        "subUnit": "수열의 합",
+        "level": "중",
+        "L3": "여러 가지 수열의 합",
+        "L4": "부분분수·망원급수형",
+        "problemTypeKey": "PT_H22A_07_SEQUENCE_SUM",
+        "templateKey": "TPL_H22A_07_SEQUENCE_SUM_126",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "conceptClusterKey": "H22-A-07-SEQUENCE_SUM",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "rpmL1": "수열",
+        "rpmL2": "수열의 합",
+        "rpmL3": "여러 가지 수열의 합",
+        "rpmL4": "부분분수·망원급수형",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "fb3e9183affc00ad41fe3017119ad32d9595b6b514251578cfa0a10c2f21bbd4",
+        "contentFingerprint": "2156cbc419b63d6569f6527e90ed628aa65f2486447b2437bf4bbd235fe0dc3f"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-126"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "3a1a5a97a501b90bc3bbafb2d9e71c19929d23f7a170a22af3ea8d3f703f6f41"
+      }
+    },
+    {
+      "questionUid": "qid_v1_ca5a8ddad99159a81ddeb1e330101ed6b1fc9b75e9322b25c9be8d0085980a3d",
+      "sourceOrdinal": 9,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-05-CORE",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "6e938b0e81fe7a6bfa4313024abb5f48b9d69d107b81dac309387e2e85af1d32",
+        "contentFingerprint": "a9ced41ae9c42bb7d360efebdb97494ae38f9bdec6de5bded8ac55362abb90d9"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "level": "중",
+        "L3": "코사인법칙",
+        "L4": "삼각형 판정",
+        "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+        "templateKey": "TPL_H22A_05_COSINE_LAW_112",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수의 활용",
+        "rpmL3": "코사인법칙",
+        "rpmL4": "삼각형 판정",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "33e76040468321188beed0c89c5e79c20748ae11f138c4dcdbc0872c25b9ab51",
+        "contentFingerprint": "a9ced41ae9c42bb7d360efebdb97494ae38f9bdec6de5bded8ac55362abb90d9"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-112"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "6e938b0e81fe7a6bfa4313024abb5f48b9d69d107b81dac309387e2e85af1d32"
+      }
+    },
+    {
+      "questionUid": "qid_v1_1cda8d1f63efd49876cab2b8fa8e5ad5fca3b8cd9f5d02238922a6095db6192f",
+      "sourceOrdinal": 10,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+        "subUnit": "수열의 합",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-07-SEQUENCE_SUM",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "61af223dc3ece56afb2f56ea210bbce549f680d55491fccae78009ada6adf699",
+        "contentFingerprint": "2d66e20bd3e078e0c2e281dec96617b4f426e0db1d834259fed8cd3ad0309dca"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": "중",
+        "L3": "합의 기호 Σ",
+        "L4": "성질",
+        "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+        "templateKey": "TPL_H22A_07_SIGMA_NOTATION_124",
+        "difficultyBucket": 2,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "conceptClusterKey": "H22-A-07-SEQUENCE_BASIC",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "rpmL1": "수열",
+        "rpmL2": "수열의 합",
+        "rpmL3": "합의 기호 Σ",
+        "rpmL4": "성질",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "e5b56370238269ac77333d768d6159998e652ec75223c79610ceef5f5d3e2d4e",
+        "contentFingerprint": "2d66e20bd3e078e0c2e281dec96617b4f426e0db1d834259fed8cd3ad0309dca"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-124"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "61af223dc3ece56afb2f56ea210bbce549f680d55491fccae78009ada6adf699"
+      }
+    },
+    {
+      "questionUid": "qid_v1_6ab717c73b5ab35f631d07ada2f8fa803853a270c0f303157a4f2539572b689f",
+      "sourceOrdinal": 11,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-05-CORE",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "915cfeec5bc086fd5db7284e939fd50089bb45ece0d6a98c21df91e6f301e292",
+        "contentFingerprint": "7b8155ade2f77c5b0e961da7e072d21d87e7be21dbe15e0dd9f01540d2e69ecf"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "level": "중",
+        "L3": "삼각형의 넓이",
+        "L4": "두 변과 끼인각",
+        "problemTypeKey": "PT_H22A_05_TRIANGLE_AREA",
+        "templateKey": "TPL_H22A_05_TRIANGLE_AREA_113",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수의 활용",
+        "rpmL3": "삼각형의 넓이",
+        "rpmL4": "두 변과 끼인각",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "69327ff1b32b6474e46adf51d68205a8528be10a8a633c16012e0f144b9a01be",
+        "contentFingerprint": "7b8155ade2f77c5b0e961da7e072d21d87e7be21dbe15e0dd9f01540d2e69ecf"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-113"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "915cfeec5bc086fd5db7284e939fd50089bb45ece0d6a98c21df91e6f301e292"
+      }
+    },
+    {
+      "questionUid": "qid_v1_dee6f481f0d5cd55476c69a5ec344785e1839d5509364054eee45e43eb470eba",
+      "sourceOrdinal": 12,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+        "subUnit": "trigonometric function",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "74dc419da33fd3a7cb2c8e8411d222097575aa91b8980eaabef867bffdee4755",
+        "contentFingerprint": "4742791187a4c2a983b5959faecd37728c80f208f722c0d6027c6d6f85533468"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "subUnit": "삼각함수의 그래프",
+        "level": "중",
+        "L3": "기본 그래프",
+        "L4": "tan",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+        "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 그래프",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수의 그래프",
+        "rpmL3": "기본 그래프",
+        "rpmL4": "tan",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "21048a200defcaa5521d7e89c8b8d15b586e8c585be21e05aadf36f3fe172295",
+        "contentFingerprint": "4742791187a4c2a983b5959faecd37728c80f208f722c0d6027c6d6f85533468"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-104"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "74dc419da33fd3a7cb2c8e8411d222097575aa91b8980eaabef867bffdee4755"
+      }
+    },
+    {
+      "questionUid": "qid_v1_c4f482d57c71838a6eb75233af82f31e4acf0ebbf46d9184688967b9533e5883",
+      "sourceOrdinal": 13,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+        "subUnit": "수열의 합",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-07-SEQUENCE_SUM",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "178d34f7de2664d6277cbc932609fa6fde45a132b31e01cd1c40b52c81ad85a5",
+        "contentFingerprint": "0094451e317108338a35dd2fd5194ad893559e01a96e1a2620e2236178456280"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": "중",
+        "L3": "등비수열",
+        "L4": "합",
+        "problemTypeKey": "PT_H22A_06_GEOMETRIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_GEOMETRIC_SEQUENCE_120",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "rpmL1": "수열",
+        "rpmL2": "등차수열과 등비수열",
+        "rpmL3": "등비수열",
+        "rpmL4": "합",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "5808985fbd29a6644cb0640470e88fe7e16e622625a79da5880a426e8e973171",
+        "contentFingerprint": "0094451e317108338a35dd2fd5194ad893559e01a96e1a2620e2236178456280"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-120"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "178d34f7de2664d6277cbc932609fa6fde45a132b31e01cd1c40b52c81ad85a5"
+      }
+    },
+    {
+      "questionUid": "qid_v1_6aa33dbdbf59029a44f797a2be3ecf7a8faf15492fb02f3565f5eea22ad48a5a",
+      "sourceOrdinal": 14,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-07-SEQUENCE_BASIC",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "e62e0039bde764c1ec78bc33e3c7ce167d7c2634c2e27f945230db674bfdecb4",
+        "contentFingerprint": "2573cd8211bc0954289d6e87fcce26e3b59ce7ed73b3bdd5dcb826cdfd4f33b7"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": "중",
+        "L3": "합의 기호 Σ",
+        "L4": "성질",
+        "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+        "templateKey": "TPL_H22A_07_SIGMA_NOTATION_124",
+        "difficultyBucket": 3,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "conceptClusterKey": "H22-A-07-SEQUENCE_BASIC",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "rpmL1": "수열",
+        "rpmL2": "수열의 합",
+        "rpmL3": "합의 기호 Σ",
+        "rpmL4": "성질",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "7ff5283447af6a4a9a87741535ff1a222f60ac4b74196bb8ed14faa0527b0975",
+        "contentFingerprint": "2573cd8211bc0954289d6e87fcce26e3b59ce7ed73b3bdd5dcb826cdfd4f33b7"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-124"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "e62e0039bde764c1ec78bc33e3c7ce167d7c2634c2e27f945230db674bfdecb4"
+      }
+    },
+    {
+      "questionUid": "qid_v1_30dd698fe5b7d558285ea996ddf0a5408f5ded07457742b34bcec02ca6bd57e6",
+      "sourceOrdinal": 15,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "8e3589475e24b55f30f572e02692b2cdc1820136a6fee135096834bc36e61101",
+        "contentFingerprint": "67774e1f7f5800243eeba5ca5ba327fc89d77b9112f85785a773471e7bb1f26b"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "subUnit": "삼각함수의 그래프",
+        "level": "중",
+        "L3": "그래프 활용",
+        "L4": "교점",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "integrationPattern": "NONE",
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 그래프",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수의 그래프",
+        "rpmL3": "그래프 활용",
+        "rpmL4": "교점",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "e3cb0dc0e1877188267b13442033f8b433072b10216b84df941a138a89cf4378",
+        "contentFingerprint": "67774e1f7f5800243eeba5ca5ba327fc89d77b9112f85785a773471e7bb1f26b"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-107"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "8e3589475e24b55f30f572e02692b2cdc1820136a6fee135096834bc36e61101"
+      }
+    },
+    {
+      "questionUid": "qid_v1_530a1fa87c7ea6dbf77404147190b414c881610bebc7c55c4494ed35fb7ff832",
+      "sourceOrdinal": 16,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "중",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-07-SEQUENCE_BASIC",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "88c645cc3689d76a07b1ba7b213fc7e0bdda4f825b55dba30e5622d20348c94c",
+        "contentFingerprint": "a30d0535ae34e919f228be39b5fd25c9712b7426b1fd42aaac4329323d38ea29"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": "중",
+        "L3": "합의 기호 Σ",
+        "L4": "성질",
+        "problemTypeKey": "PT_H22A_07_SIGMA_NOTATION",
+        "templateKey": "TPL_H22A_07_SIGMA_NOTATION_124",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "conceptClusterKey": "H22-A-07-SEQUENCE_BASIC",
+        "L1": "수열",
+        "L2": "수열의 합",
+        "rpmL1": "수열",
+        "rpmL2": "수열의 합",
+        "rpmL3": "합의 기호 Σ",
+        "rpmL4": "성질",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "aa05e8c167a64104299b70ffd1964a1eeaf5a309e95c1da600e08d7bd54887c1",
+        "contentFingerprint": "a30d0535ae34e919f228be39b5fd25c9712b7426b1fd42aaac4329323d38ea29"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-124"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "88c645cc3689d76a07b1ba7b213fc7e0bdda4f825b55dba30e5622d20348c94c"
+      }
+    },
+    {
+      "questionUid": "qid_v1_027388d0674177b4c7c0bf34188e744f0ed75ec35075ec716c98aafcb1ed2426",
+      "sourceOrdinal": 17,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+        "subUnit": "trigonometric function",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_FUNCTION",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "767a27890928d724924d9721d6fad5e822f69847078af9ec2b00b9b11f8e0f00",
+        "contentFingerprint": "1872ab294749e9f92d5c2e0e249cc6b6a0b9f4c1097be3d0ea50e504864f4d00"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "subUnit": "삼각함수의 그래프",
+        "level": "상",
+        "L3": "그래프 활용",
+        "L4": "교점",
+        "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
+        "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_EXACT_INTERSECTION_COUNT"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_GRAPH",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 그래프",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수의 그래프",
+        "rpmL3": "그래프 활용",
+        "rpmL4": "교점",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "5357a7719abef1392840e2c631199429c1355a71d328a70dd9f5915dedcabef1",
+        "contentFingerprint": "8c9a50600b3c3bb3295f523475d3c5a3142b554509be6e04b2349d2ab9fb0007"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-107"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "767a27890928d724924d9721d6fad5e822f69847078af9ec2b00b9b11f8e0f00"
+      }
+    },
+    {
+      "questionUid": "qid_v1_dbb2899023ac1d60c590ac89476257f004d6a6eee53033ad66f0b3984981b3b2",
+      "sourceOrdinal": 18,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-05-CORE",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "semanticSourceScope": null,
+        "semanticScopeRelation": null,
+        "sourceFingerprint": "3e8fa3028c6f5c14e9e11cdbf39a510b6f4d9d2f505a023ac3d2c627fd2548a0",
+        "contentFingerprint": "fff7ad13338f6d5ae83e7d3cd59e7b352360be3391f90af413974d5bcd60ce79"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "level": "상",
+        "L3": "최대·최소",
+        "L4": "구간 최대·최소",
+        "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+        "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수의 활용",
+        "rpmL3": "최대·최소",
+        "rpmL4": "구간 최대·최소",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "semanticSourceScope": "2022|공통수학1|H22-C-05|H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+        "semanticScopeRelation": "PREREQUISITE_LOWER_GRADE",
+        "sourceFingerprint": "eab35ad10e24fc6ff34e3c58e1ad1a8dcca0e6120be3874ba12707c5b41a94d6",
+        "contentFingerprint": "fff7ad13338f6d5ae83e7d3cd59e7b352360be3391f90af413974d5bcd60ce79"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+        "recordId": "H1-RPM-170",
+        "targetCrosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "targetRecordId": "H2-M1-RPM-111"
+      },
+      "reason": "q18 independent targeted semantic correction: reuse H1-RPM-170 interval quadratic extrema; preserve current Algebra target unit and all student fields.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "3e8fa3028c6f5c14e9e11cdbf39a510b6f4d9d2f505a023ac3d2c627fd2548a0"
+      }
+    },
+    {
+      "questionUid": "qid_v1_8cd73953576a6094600089ccd3ffcfd007436947bfba7284beea8f77edd97cab",
+      "sourceOrdinal": 19,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "18f95ea9547d23c201e4a34ac9d188f8624252f3e1e43293fc4ff2d2e26d109f",
+        "contentFingerprint": "dba95c2088b9ed494d872331cbdd33fb3c2ebfa432608dd62de474f41e65bdf7"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_APPLICATION",
+        "subUnit": "수열의 활용",
+        "level": "상",
+        "L3": "수열의 활용",
+        "L4": "조건으로 수열 결정",
+        "problemTypeKey": "PT_H22A_06_SEQUENCE_APPLICATION",
+        "templateKey": "TPL_H22A_06_SEQUENCE_APPLICATION_121",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_APPLICATION",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "rpmL1": "수열",
+        "rpmL2": "등차수열과 등비수열",
+        "rpmL3": "수열의 활용",
+        "rpmL4": "조건으로 수열 결정",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "03bebb12793d4f91ae84f1d6f91657445a54f14f9d71319a8db85672b1983427",
+        "contentFingerprint": "dba95c2088b9ed494d872331cbdd33fb3c2ebfa432608dd62de474f41e65bdf7"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-121"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "18f95ea9547d23c201e4a34ac9d188f8624252f3e1e43293fc4ff2d2e26d109f"
+      }
+    },
+    {
+      "questionUid": "qid_v1_a5965aee160f686aef64129f911955c1d9cea82239e5871cfff306e42ee5f368",
+      "sourceOrdinal": 20,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-08",
+        "standardUnit": "수학적 귀납법",
+        "subUnitKey": "H22-A-08-CORE",
+        "subUnit": "수학적 귀납법 핵심 개념",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-08-CORE",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "d7f4b2a3abb4d568452a27ac2fb9e382f88cc0587c202df83cea117b5493216d",
+        "contentFingerprint": "89962169b298c162b3e43a6f6edd8af69ecb9b6c97c61df0b3566d0f688dcd8f"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-08",
+        "standardUnit": "수학적 귀납법",
+        "subUnitKey": "H22-A-08-CORE",
+        "subUnit": "수학적 귀납법 핵심 개념",
+        "level": "상",
+        "L3": "수학적 귀납법",
+        "L4": "등식 증명",
+        "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+        "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_131",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "conceptClusterKey": "H22-A-08-CORE",
+        "L1": "수열",
+        "L2": "수학적 귀납법",
+        "rpmL1": "수열",
+        "rpmL2": "수학적 귀납법",
+        "rpmL3": "수학적 귀납법",
+        "rpmL4": "등식 증명",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "774e00f6663f6c63d8c1ecf140027ee63571edfb2f0f93dae573696b31211371",
+        "contentFingerprint": "df9f6809658afbd0c8ae18fdcfa3fac17bc6c4f6398d68681ddbc9850f6cdff7"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-131"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "d7f4b2a3abb4d568452a27ac2fb9e382f88cc0587c202df83cea117b5493216d"
+      }
+    },
+    {
+      "questionUid": "qid_v1_df4460b6a27de305e7429cb52c5ea92248eceff815da843755bb350e58157636",
+      "sourceOrdinal": 21,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-07",
+        "standardUnit": "수열의 합",
+        "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+        "subUnit": "수열의 합",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-07-SEQUENCE_SUM",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "fa05468b297c8de9ca24229ffba30788be620dba9544ab19baa5c424638034ee",
+        "contentFingerprint": "2b08f2f7f64130d45fa809fe9338902707f5b64d32b77d60f4dc022377273880"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "subUnit": "수열의 기본",
+        "level": "상",
+        "L3": "등차수열",
+        "L4": "합",
+        "problemTypeKey": "PT_H22A_06_ARITHMETIC_SEQUENCE",
+        "templateKey": "TPL_H22A_06_ARITHMETIC_SEQUENCE_117",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "NONE",
+        "conceptClusterKey": "H22-A-06-SEQUENCE_BASIC",
+        "L1": "수열",
+        "L2": "등차수열과 등비수열",
+        "rpmL1": "수열",
+        "rpmL2": "등차수열과 등비수열",
+        "rpmL3": "등차수열",
+        "rpmL4": "합",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "8fc69cb74c9f9680fcae76a1539726c3c69ca4cfee15721127c1e9ecda5740aa",
+        "contentFingerprint": "2b08f2f7f64130d45fa809fe9338902707f5b64d32b77d60f4dc022377273880"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-117"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "fa05468b297c8de9ca24229ffba30788be620dba9544ab19baa5c424638034ee"
+      }
+    },
+    {
+      "questionUid": "qid_v1_8e776c9ebe42306428976f0fa9246bde5c7b1fa4c149a5389fb8483a017eb226",
+      "sourceOrdinal": 22,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "subUnit": "삼각함수의 기본",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_BASIC",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "d43d64496152e0d21a3c46720228504118e83b0aadaf51042c417cab04fd427b",
+        "contentFingerprint": "a58fb983b22f3776684d0b34d9c41033ec1b2b3ed3247834bf54b270a28ced94"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-04",
+        "standardUnit": "삼각함수",
+        "subUnitKey": "H22-A-04-TRIGONOMETRIC_EQUATION",
+        "subUnit": "삼각방정식과 부등식",
+        "level": "상",
+        "L3": "삼각방정식·부등식",
+        "L4": "주기 구간의 해",
+        "problemTypeKey": "PT_H22A_04_TRIG_EQUATION",
+        "templateKey": "TPL_H22A_04_TRIG_EQUATION_102",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
+        "integrationPattern": "CASE_BRANCH",
+        "conceptClusterKey": "H22-A-04-TRIGONOMETRIC_EQUATION",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수",
+        "rpmL3": "삼각방정식·부등식",
+        "rpmL4": "주기 구간의 해",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "ca792813d965cac04c33ad418f867ba98f1e388eb9f243a7cde55c28b0b65352",
+        "contentFingerprint": "a58fb983b22f3776684d0b34d9c41033ec1b2b3ed3247834bf54b270a28ced94"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-102"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "d43d64496152e0d21a3c46720228504118e83b0aadaf51042c417cab04fd427b"
+      }
+    },
+    {
+      "questionUid": "qid_v1_c138103b334586d2cab1fa6342d30cb4c8b91ffa0781107fcf0ef9a827fb1965",
+      "sourceOrdinal": 23,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-05-CORE",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "df555b7954bf6a5aa2eb39d5ee904d715db34046d46612e39b18f5ea0c44d36b",
+        "contentFingerprint": "356c9e507f24df7b003bc577cef61d305102ff909db990d2bd1083f3cbb41fc4"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-05",
+        "standardUnit": "사인법칙과 코사인법칙",
+        "subUnitKey": "H22-A-05-CORE",
+        "subUnit": "사인법칙과 코사인법칙 핵심 개념",
+        "level": "상",
+        "L3": "코사인법칙",
+        "L4": "변·각 계산",
+        "problemTypeKey": "PT_H22A_05_COSINE_LAW",
+        "templateKey": "TPL_H22A_05_COSINE_LAW_111",
+        "difficultyBucket": 5,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "INTERDEPENDENT",
+        "conceptClusterKey": "H22-A-05-CORE",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "rpmL1": "삼각함수",
+        "rpmL2": "삼각함수의 활용",
+        "rpmL3": "코사인법칙",
+        "rpmL4": "변·각 계산",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "ba4fb3a3c42c6affa9e11ad43c8fad00b4d882766c7a0c64c059dc10d6a2e364",
+        "contentFingerprint": "356c9e507f24df7b003bc577cef61d305102ff909db990d2bd1083f3cbb41fc4"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-111"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "df555b7954bf6a5aa2eb39d5ee904d715db34046d46612e39b18f5ea0c44d36b"
+      }
+    },
+    {
+      "questionUid": "qid_v1_447d88c6ec4b8e658374313beb03c4a896f9a3f36e469b09c588c9634fd01dde",
+      "sourceOrdinal": 24,
+      "before": {
+        "curriculum": null,
+        "curriculumKey": null,
+        "courseKey": null,
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-08",
+        "standardUnit": "수학적 귀납법",
+        "subUnitKey": "H22-A-08-CORE",
+        "subUnit": "수학적 귀납법 핵심 개념",
+        "level": null,
+        "L3": null,
+        "L4": null,
+        "problemTypeKey": "",
+        "templateKey": "",
+        "difficultyBucket": "상",
+        "crossConceptKeys": null,
+        "conditionKeys": null,
+        "integrationPattern": null,
+        "conceptClusterKey": "H22-A-08-CORE",
+        "L1": null,
+        "L2": null,
+        "rpmL1": null,
+        "rpmL2": null,
+        "rpmL3": null,
+        "rpmL4": null,
+        "rpmSemanticStatus": null,
+        "curriculumApplicability": null,
+        "defaultSelectable": null,
+        "sourceFingerprint": "51f21daf578e4b596bb54e76d08b9b5fa417c1edf93b590e11991e96dcc515c4",
+        "contentFingerprint": "6bd3d61de73c0a898ba16fd6501e5206b96423836b3166298021039bcb8c8c3c"
+      },
+      "after": {
+        "curriculum": "2022",
+        "curriculumKey": "2022",
+        "courseKey": "대수",
+        "standardCourse": "대수",
+        "standardUnitKey": "H22-A-08",
+        "standardUnit": "수학적 귀납법",
+        "subUnitKey": "H22-A-08-CORE",
+        "subUnit": "수학적 귀납법 핵심 개념",
+        "level": "상",
+        "L3": "수학적 귀납법",
+        "L4": "등식 증명",
+        "problemTypeKey": "PT_H22A_08_MATHEMATICAL_INDUCTION",
+        "templateKey": "TPL_H22A_08_MATHEMATICAL_INDUCTION_131",
+        "difficultyBucket": 4,
+        "crossConceptKeys": [],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "conceptClusterKey": "H22-A-08-CORE",
+        "L1": "수열",
+        "L2": "수학적 귀납법",
+        "rpmL1": "수열",
+        "rpmL2": "수학적 귀납법",
+        "rpmL3": "수학적 귀납법",
+        "rpmL4": "등식 증명",
+        "rpmSemanticStatus": "FINAL",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "sourceFingerprint": "b713140355d40c293e758a99f9a6bbe0c14ebfa13b074bbf417c03531f4725a0",
+        "contentFingerprint": "6bd3d61de73c0a898ba16fd6501e5206b96423836b3166298021039bcb8c8c3c"
+      },
+      "semanticBinding": {
+        "crosswalkPath": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+        "recordId": "H2-M1-RPM-131"
+      },
+      "reason": "Reuse existing reviewed correction branch metadata; exact current crosswalk and ACTIVE PT/TPL parent/binding checked; no new mathematical review claimed.",
+      "evidenceRefs": [
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-semantic-review-20261021.json",
+          "sha256": "41fff32f33b9213c0d12388893c41af0f8e1afc094e3d61b0015f0b612841805"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+          "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01"
+        },
+        {
+          "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json",
+          "sha256": "f653f72b6dcb890e0e8b8fa4e75c1f344ee05601a2199379cbf013ac37a1abbf"
+        }
+      ],
+      "identityBefore": {
+        "sourceFingerprint": "51f21daf578e4b596bb54e76d08b9b5fa417c1edf93b590e11991e96dcc515c4"
+      }
+    }
+  ]
+}

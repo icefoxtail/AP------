@@ -129,8 +129,28 @@
     ...RUNTIME_INPUT_PATHS,
   ]);
 
-  function manifestInputPathsFromRuntimePacks(runtimePacks = [], includeOptionalPath = () => false) {
-    const paths = new Set(MANIFEST_REQUIRED_PATHS);
+  function runtimeInputPathsFromManifest(files = []) {
+    const paths = new Set(RUNTIME_INPUT_PATHS);
+    for (const row of files) {
+      const path = text(row.path);
+      if (!path.startsWith("data/meta-foundation/runtime/")) continue;
+      if (!/^data\/meta-foundation\/runtime\/[a-z0-9-]+-v[0-9]+\.json$/.test(path))
+        throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "invalid runtime manifest path");
+      paths.add(path);
+    }
+    return [...paths];
+  }
+
+  function reviewedRegistrationProofPaths(runtimePacks = []) {
+    const paths = [...new Set(runtimePacks.flatMap(pack => Object.entries(pack?.generatedFrom || {})
+      .filter(([key]) => key.startsWith("reviewedExam_")).map(([, value]) => text(value).replace(/^archive\//, ""))))];
+    for (const path of paths) if (!/^data\/meta-foundation\/evidence\/reviewed-exam-meta\/v1\/[A-Za-z0-9_-]+\.json$/.test(path))
+      throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "invalid reviewed registration proof path");
+    return paths;
+  }
+
+  function manifestInputPathsFromRuntimePacks(runtimePacks = [], includeOptionalPath = () => false, runtimePaths = RUNTIME_INPUT_PATHS) {
+    const paths = new Set([...MANIFEST_REQUIRED_PATHS, ...runtimePaths]);
     for (const pack of runtimePacks) {
       for (const sourceRef of Object.values(pack?.generatedFrom || {})) {
         if (typeof sourceRef !== "string" || !sourceRef.startsWith("archive/") || !sourceRef.endsWith(".json")) continue;
@@ -400,7 +420,7 @@
     ).join("");
   }
 
-  async function computeProjectionVersion(files = [], resolverVersion = RESOLVER_VERSION) {
+  function projectionManifestPayload(files = [], resolverVersion = RESOLVER_VERSION) {
     if (!Array.isArray(files) || !files.length)
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is empty");
     const normalized = files
@@ -412,10 +432,14 @@
         throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is invalid");
       seen.add(row.path);
     }
-    return "archive2-canonical-v1:" + await sha256(JSON.stringify({
+    return JSON.stringify({
       resolverVersion: text(resolverVersion),
       files: normalized,
-    }));
+    });
+  }
+
+  async function computeProjectionVersion(files = [], resolverVersion = RESOLVER_VERSION) {
+    return "archive2-canonical-v1:" + await sha256(projectionManifestPayload(files, resolverVersion));
   }
 
   async function loadInputBundle(fetcher, baseUrl, expectedVersion = "") {
@@ -463,7 +487,8 @@
       text(entry.path),
       { sha256: text(entry.sha256).toLowerCase() },
     ]));
-    await Promise.all(REQUIRED_INPUT_PATHS.map(async (inputPath) => {
+    const runtimePaths = runtimeInputPathsFromManifest(manifest.files);
+    const loadVerifiedInput = async (inputPath) => {
       const entry = manifest.files.find((row) => text(row.path) === inputPath);
       if (!entry)
         throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is incomplete: " + inputPath);
@@ -477,14 +502,18 @@
         throw makeError("CANONICAL_INPUT_DIGEST_MISMATCH", "canonical input digest mismatch: " + inputPath);
       try { resources[inputPath] = JSON.parse(body); }
       catch { throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input JSON is invalid: " + inputPath); }
-    }));
+    };
+    await Promise.all([...new Set([...REQUIRED_INPUT_PATHS, ...runtimePaths])].map(loadVerifiedInput));
+    const registrationProofs = reviewedRegistrationProofPaths(runtimePaths.map(p => resources[p]));
+    await Promise.all(registrationProofs.map(loadVerifiedInput));
     const requiredManifestPaths = manifestInputPathsFromRuntimePacks(
-      RUNTIME_INPUT_PATHS.map((path) => resources[path]),
+      runtimePaths.map((path) => resources[path]),
       (path) => listed.has(path),
+      runtimePaths,
     );
     if (requiredManifestPaths.some((path) => !listed.has(path)))
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "canonical input manifest is incomplete");
-    return { manifest, projectionVersion, files, resources };
+    return { manifest, projectionVersion, files, resources, runtimeInputPaths: runtimePaths };
   }
 
   async function loadSourceVerificationShard(
@@ -1000,7 +1029,7 @@
     const links = resources["data/basic-scope-parent-links.json"];
     const foundationTaxonomy = resources["data/meta-foundation/compiled/taxonomy_registry.json"];
     const bindings = resources["data/meta-foundation/compiled/curriculum_bindings.json"];
-    const overlayPacks = RUNTIME_INPUT_PATHS.map((path) => resources[path]);
+    const overlayPacks = runtimeInputPathsFromManifest(Object.keys(resources).map(path => ({ path }))).map((path) => resources[path]);
     if (!catalog || !Array.isArray(catalog.records) || !Array.isArray(catalog.exams))
       throw makeError("CANONICAL_AUTHORITY_UNAVAILABLE", "Archive 2.0 catalog unavailable");
     if (!versionBundle?.projectionVersion || !versionBundle.files)
@@ -1133,6 +1162,42 @@
     const packVersions = new Map((foundationTaxonomy.sourcePacks || []).map((row) =>
       [text(row.packId), text(row.version)],
     ));
+    // FINAL_QA and REVIEW2 registrations retain their own approval provenance.
+    // A byte-bound v2 receipt supplies assignments only for its exact current
+    // source, approved metadata, and ACTIVE runtime record; no R2 override is fabricated.
+    const registrationPaths = reviewedRegistrationProofPaths(overlayPacks);
+    for (const path of registrationPaths) {
+      const receipt = resources[path], receiptSha = text(versionBundle.files[path]?.sha256);
+      if (receipt?.schemaVersion !== "archive-reviewed-exam-meta-registration-v2" || receipt.metadataRegistrationStatus !== "REGISTERED" ||
+          !["FINAL_QA", "REVIEW2"].includes(receipt.approval?.type) || receipt.approval.metadataReviewed !== true || !SHA256.test(receiptSha) ||
+          !text(receipt.approval.approvedBy) || receipt.approval.type === "REVIEW2" && receipt.approval.reviewPassCount !== 2 ||
+          !Array.isArray(receipt.appliedRecords) || receipt.totalQuestions !== receipt.appliedRecords.length ||
+          new Set(receipt.appliedRecords.map(r => r.questionUid)).size !== receipt.totalQuestions ||
+          !SHA256.test(text(receipt.sourceRawSha256)) || text(receipt.sourceRawSha256) !== sourceJsShaByFile.get(normalizeFile(receipt.sourceArchiveFile))) continue;
+      for (const accepted of receipt.appliedRecords) {
+        const uid = text(accepted.questionUid), source = sourceRecords.get(uid), meta = source?.metadataAssignmentEvidence;
+        const overlays = (overlaysByUid.get(uid) || []).filter(row => normalizeFile(row.sourceArchiveFile) === normalizeFile(receipt.sourceArchiveFile) && Number(row.sourceOrdinal) === Number(accepted.sourceOrdinal));
+        if (!source || overlays.length !== 1 || normalizeFile(source.sourceFile) !== normalizeFile(receipt.sourceArchiveFile) ||
+            Number(source.sourceOrdinal) !== Number(accepted.sourceOrdinal) || meta?.metadataRevision !== accepted.metadataRevision ||
+            meta?.sourceFingerprint !== accepted.sourceFingerprint || source.assignmentFingerprint !== accepted.contentFingerprint ||
+            accepted.reviewStatus !== "reviewed_pass" || !text(meta?.metadataStatus).startsWith("approved_") ||
+            !approvedFieldStatus(meta?.fieldStatus?.standardUnit) || !approvedFieldStatus(meta?.fieldStatus?.subUnit) ||
+            !(meta?.evidenceRefs || []).includes("archive/" + path)) continue;
+        const overlay = overlays[0], packId = overlay._runtimePackId, packVersion = overlay._runtimePackVersion;
+        if (packVersions.get(packId) !== packVersion || overlay.reviewStatus !== "reviewed_pass" ||
+            ["sourceFingerprint", "contentFingerprint", "curriculumKey", "courseKey", "L1", "L2", "L3", "L4", "problemTypeKey", "templateKey", "standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit",
+              "crossConceptKeys", "secondaryConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket", "curriculumApplicability", "defaultSelectable"].some(key => JSON.stringify(accepted[key]) !== JSON.stringify(overlay[key]))) continue;
+        const gradeEvidence = resolveSourceGrade({ registeredGrade: examsByFile.get(normalizeFile(source.sourceFile))?.grade,
+          sourceFile: source.sourceFile, identitySourceFile: identityByUid[uid]?.sourceArchiveFile });
+        if (gradeEvidence.status !== "VALID") continue;
+        const assignment = { ...accepted, store: "meta_foundation_runtime", sourceFile: normalizeFile(source.sourceFile), sourceOrdinal: Number(source.sourceOrdinal),
+          grade: gradeEvidence.grade, sourceFingerprint: source.assignmentFingerprint, assignmentFingerprint: source.assignmentFingerprint,
+          approvalStatus: "APPROVED", taxonomyVersion: masterSha, packId, packVersion,
+          reviewEvidence: { status: "PASS", reference: path, sha256: receiptSha, approvalType: receipt.approval.type, reviewedSourceFingerprint: accepted.sourceFingerprint } };
+        canonicalAuthority.assignmentsByUid[uid] = [assignment];
+        canonicalAuthority.advancedAssignmentsByUid[uid] = [assignment];
+      }
+    }
     for (const source of catalog.records) {
       const uid = text(source.questionUid);
       const overrides = overrideByUid.get(uid) || [];
@@ -1345,6 +1410,12 @@
           assignmentEvidence: candidate.assignmentEvidence || assignmentRows[0] || null,
           canonicalAssignmentReasons: [],
         });
+        if (["FINAL_QA", "REVIEW2"].includes(candidate.assignmentEvidence?.reviewEvidence?.approvalType) && source.sourceReviewStatus) {
+          // Keep the source's historical review state separately from this
+          // receipt's metadata approval. No other source conflict is waived.
+          record.sourceReviewStatus = source.sourceReviewStatus;
+          record.metadataConflicts = (record.metadataConflicts || []).filter(field => field !== "reviewStatus");
+        }
         const matchingOverlay = exactOverlays.find((row) =>
           text(row._runtimePackId) === text(candidate._runtimePackId) ||
           text(row._runtimePackId) === text(candidate.metaFoundationPackId),
@@ -1358,6 +1429,21 @@
             "taxonomyStatus", "difficultyBucket", "difficultyConfidence",
             "difficultyBoundaryFlag", "legacyLevelCompatibility", "reviewStatus",
           ]) if (matchingOverlay[field] !== undefined) record[field] = matchingOverlay[field];
+          if (["FINAL_QA", "REVIEW2"].includes(candidate.assignmentEvidence?.reviewEvidence?.approvalType)) {
+            record.taxonomyStatus = "CONFIRMED";
+            record.nativeCurriculum = record.curriculumKey;
+            for (const key of ["L1", "L2", "L3", "L4"]) record["native" + key] = record[key];
+            record.nativeTaxonomyPath = [record.nativeCurriculum, record.standardCourse, record.L1, record.L2, record.L3, record.L4].join(" > ");
+            record.nativeMetaStatus = "APPROVED";
+            record.level = matchingOverlay.level || matchingOverlay.legacyLevel;
+            record.reviewedExamRegistration = { schemaVersion: "archive-reviewed-exam-registration-projection-v2",
+              metadataRevision: matchingOverlay.metadataRevision, sourceJsSha256: record.currentSourceJsSha256,
+              reference: candidate.assignmentEvidence.reviewEvidence.reference, sha256: candidate.assignmentEvidence.reviewEvidence.sha256,
+              approvalType: candidate.assignmentEvidence.reviewEvidence.approvalType };
+            const rpmMetadata = Object.fromEntries(["rpmL1", "rpmL2", "rpmL3", "rpmL4", "rpmCurriculum", "rpmSemanticStatus", "rpmSemanticReason", "rpmEvidenceDebtFields"]
+              .filter(key => Object.prototype.hasOwnProperty.call(matchingOverlay, key)).map(key => [key, matchingOverlay[key]]));
+            if (Object.keys(rpmMetadata).length) record.metadataAssignmentEvidence = { ...record.metadataAssignmentEvidence, rpmMetadata };
+          }
           record.assignmentEvidence = candidate.assignmentEvidence || assignmentRows[0] || null;
         }
       } else {
@@ -1416,6 +1502,9 @@
     MANIFEST_REQUIRED_PATHS,
     REQUIRED_INPUT_PATHS,
     RUNTIME_INPUT_PATHS,
+    runtimeInputPathsFromManifest,
+    reviewedRegistrationProofPaths,
+    projectionManifestPayload,
     manifestInputPathsFromRuntimePacks,
     normalizeFile,
     pathGrade,
