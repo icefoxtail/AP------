@@ -1,17 +1,24 @@
-# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v1.4)
+# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v1.5)
+
+**최상위 CURRENT USER OVERRIDE — VERIFIED-SKIP / DELTA-ONLY (2026-10-21, Notion 라우터와 동기화):** 이미 검증된 QID/UID의 수학·해설·메타·자산·Consumer/검색은 **검증 당시 source blob 또는 문항 fingerprint, 적용 메타·asset·Consumer/projection 판본 및 직접 의존 범위가 현재와 일치하고 실제 검증 근거가 있으면** `REUSE_VERIFIED`로 통째로 SKIP한다. **main 전체 SHA가 바뀌었다는 이유만으로 재검하지 않는다.** 과거 PASS 문구만 있고 scope·판본·물리 증거가 결속되지 않았으면 재사용하지 않고 **해당 미검증 지점만** 조사한다.
+
+- **신규 검수 분모:** `OPEN`, `CHANGED`, `DIRECT_DEPENDENCY`, 판본 충돌/검증 증거 누락이 있는 QID·UID·필드만. 전체 표시 문항수 N은 식별하되 무변경/기검증 문항의 수학·해설·메타·SVG·검색·Consumer N/N 재실행은 금지한다. 새로운 검수 결과와 `REUSE_VERIFIED`를 구분하고 미실행 범위를 신규 PASS로 주장하지 않는다.
+- **등록/소비 검증 분모:** 변경·신규 등록 UID와 직접 영향받는 실제 Consumer/Search 경로만. 동일 판본의 과거 검증 결과는 재사용하며 등록 실패·미반영·projection 불일치는 대상 UID에 대해 끝까지 `OPEN`이다.
+- **무변경 마감:** 대상 시험지와 모든 필수 직접 의존성에 유효한 기존 증거가 충분하고 열린 결함이 없으면 신규 검수 0/수정 0으로 `VERIFIED_UNCHANGED` 가능. 증거가 없는데 `VERIFIED_UNCHANGED`라고 하지 않는다.
+- **우선순위/적용 범위:** 이 조항이 아래의 옛 `전수 N/N 재검`·`항상 전체 Consumer parity` 문구보다 우선한다. `NO_SOURCE_PDF_COMPARE`, PT/TPL 제외, 시험지별 소형 JSON·인가된 등록기, 미해결 0, Git main·Notion 원격 확인은 유지한다. CREATE/R1/R2/R3 최초 검수 계약은 변경하지 않는다.
 
 **CURRENT USER OVERRIDE — PINPOINT_ONLY / NO_SOURCE_PDF_COMPARE (2026-10-21):** 사후 FINAL QA의 기본 검수는 **원본 PDF 대조 없이 결함 의심 문항·실제 메타 이상만 핀포인트 확인·최소수리·변경 영향 재검**한다. 정상 문항의 전수 재풀이/해설 재검은 반복하지 않는다. 원본 대조는 사용자 별도 지시가 있을 때만 수행한다. 기존 검수 증거를 재사용하되 이번에 직접 확인한 범위만 새 PASS로 주장한다. PT/TPL은 아래 기존 명시 제외를 그대로 따른다. 이 조항이 아래의 종전 전수 검수·원본 조회 문구보다 우선한다.
 
 **최우선 사용자 OVERRIDE — PT/TPL 제외 (2026-10-21):** 사후 FINAL QA에서는 `problemTypeKey`·`templateKey`, PT/TPL ACTIVE pack/binding/registry/crosswalk 탐색·매핑·신규 등록·오류 보정 및 **PT/TPL Consumer/Search parity를 수행하지 않는다. PT/TPL 미검증·미등록은 완료 차단 사유가 아니다.** 기존 PT/TPL 데이터는 삭제·덮어쓰기 없이 보존한다. 결과는 `PT_TPL_NOT_IN_SCOPE (USER_EXCLUDED)`로 표시하고 PASS/NOT_APPLICABLE로 위장하지 않는다. 기존 CREATE/R1/R2/R3 및 예약 라인에는 적용하지 않는다. **수학/정답/해설·시각 및 L1~L4/RPM·CrossConcept·Condition·Integration·두 난이도·UID/기타 실제 메타 등록/검색 정합성 N/N은 유지한다.** 이 조항이 아래의 모든 PT/TPL 필수 표현과 과거 라우터·상세 문서보다 우선한다.
 
-**CURRENT 메타 쓰기 경계(2026-10-21 사용자 지시):** 공용 `archive/data/question_metadata.json`은 정확한 UID N행의 **조회·대조·검색용**이며, FINAL QA 수정 결과는 **시험지별 소형 메타 JSON**으로만 작성한다. 공용 대형 파일 직접 수정·업로드/PUT 금지. 인가된 Actions가 공용 메타·Consumer/index를 갱신하고 대상 UID N/N 원격 parity를 확인해야 완료다. 현재 자동 등록기는 공통수학2/REVIEW2 제약이 있으므로 대수 등 미지원 요청은 `TOOLING_GAP`으로 처리한다(대형 파일 직접 업로드 우회 금지). [단일 정책](docs/architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md); 상세 문서 추가 선열람 요구는 아니다.
+**CURRENT 메타 쓰기 경계(2026-10-21 사용자 지시):** 공용 `archive/data/question_metadata.json`은 정확한 UID N행의 **조회·대조·검색용**이며, FINAL QA 수정 결과는 **시험지별 소형 메타 JSON**으로만 작성한다. 공용 대형 파일 직접 수정·업로드/PUT 금지. 인가된 Actions가 공용 메타·Consumer/index를 갱신하고 대상 UID N/N 원격 parity를 확인해야 완료다. 인가된 등록기의 과목·요청 스키마별 지원은 현행 코드와 해당 Action의 실제 성공/실패로 확인한다. 미지원은 `TOOLING_GAP`, 실행 실패는 `REGISTRATION_FAILED`/미완료로 기록하고 대형 파일 직접 업로드로 우회하지 않는다. [단일 정책](docs/architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md); 상세 문서 추가 선열람 요구는 아니다.
 
 
 > 2026-10-21 사용자 직접 지시에 따른 사후 QA 필독 축소. **이미 main에 존재하는 지정 시험지 1건**에만 적용. 기술·품질 의무는 기존 FINAL QA v2.1 그대로이며, **문서 선열람만 축소**한다. 본 카드가 선행 절차이며 기존 긴 [FAST ROUTER v1.1](JS_Archive_FINAL_QA_FAST_ROUTER_HANDOFF_CURRENT_v1.md), [Notion FINAL QA v2.1](https://app.notion.com/p/4000e68bd69f818080a3e7a042c4aa98), Archive 시작/생명주기, AGENTS.md는 **정본 예외가 생겼을 때만 해당 절을 열람하는 상세 참고자료**다. 기존 규정/프로젝트를 삭제하거나 수정하지 않는다. 최신 사용자 지시 우선.
 
 ## 1. 딱 두 곳만 선열람
 
-1. Notion [GPT 작업 전 필독 라우터](https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd)의 맨 위 **사후 FINAL QA 단일 진입 v1.2 절**.
+1. Notion [GPT 작업 전 필독 라우터](https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd)의 맨 위 **VERIFIED-SKIP / DELTA-ONLY 최상위 절 및 사후 FINAL QA 단일 진입 절**.
 2. **이 카드**(전체 약 1쪽 실행 계약). 그 외 포괄 문서는 시험지 시작 전에 순서대로 열람하지 않는다.
 
 작업에 필요한 **실물 코드·정본 데이터의 정확한 조회는 생략하지 않는다**. 단순 단계 통과 문구나 예전 PASS를 현행 SHA 증거로 대체할 수 없다. 새 작업은 새 taskId/owner로 시작, 실제 동일 taskId와 predecessor 증거가 있을 때만 연속 인수한다. [AWCR bootstrap](https://drive.google.com/file/d/1DDf_QrWCI26EZFdnjQd_E4oQk4nBHdvM/view) 확인 후 안전한 최소 메타 checkpoint만 append-only로 남기고 저장/readback 실패 시 SYNC_PENDING으로 구분한다.
