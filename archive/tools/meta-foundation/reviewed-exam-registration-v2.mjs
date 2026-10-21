@@ -11,6 +11,7 @@ const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
 const MASTER = "archive/data/master_tables/js_archive_tag_master.json";
 const META = "archive/data/question_metadata.json";
+const IDENTITY = "archive/data/question_identity_map.json";
 const RECEIPTS = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1";
 const json = value => JSON.stringify(value, null, 2) + "\n";
 const stable = value => JSON.stringify(value, (_, v) => v && !Array.isArray(v) && typeof v === "object"
@@ -239,7 +240,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
   if (!Array.isArray(bank) || !Number.isInteger(req.expectedQuestionCount) || bank.length !== req.expectedQuestionCount || !bank.length) fail("source denominator mismatch");
   const read = file => JSON.parse(fs.readFileSync(safePath(root, file), "utf8"));
-  const metadata = read(META), identity = read("archive/data/question_identity_map.json");
+  const metadata = read(META), identity = read(IDENTITY);
   const metadataByUid = unique(metadata.records, "questionUid", "metadata UID");
   unique(metadata.records, r => `${r.sourceArchiveFile}#${r.sourceOrdinal}`, "metadata source ordinal");
   const ids = unique(identity.records, "questionUid", "identity UID");
@@ -311,6 +312,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     owners.set(r.questionUid, pack);
   }
   const touched = new Set(), applied = [], runtimeRecords = [];
+  let identityRebound = false;
   for (let i = 0; i < bank.length; i++) {
     const current = rows[i], patch = patches.get(current.questionUid), q = JSON.parse(JSON.stringify(bank[i]));
     const id = ids.get(current.questionUid);
@@ -327,7 +329,26 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     const final = { ...current, ...structuredClone(patch.after) };
     for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f])) fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
     const fingerprint = digest(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, answer: q.answer ?? null, solution: q.solution ?? null, image: q.image ?? null }));
-    if (current.sourceFingerprint !== fingerprint || id.sourceFingerprint !== fingerprint) fail(`source fingerprint drift: ${current.questionUid}`);
+    const assignmentFingerprint = digest(JSON.stringify({ content: q.content ?? null, choices: Array.isArray(q.choices) ? q.choices : null, image: q.image ?? null }));
+    if (current.sourceFingerprint !== fingerprint || id.sourceFingerprint !== fingerprint || current.contentFingerprint !== assignmentFingerprint) {
+      const proof = patch.sourceReapproval;
+      if (req.approval.type !== "FINAL_QA" || !proof || req.scopeLinkApproval !== true) fail(`source fingerprint drift: ${current.questionUid}`);
+      evidenceRefs(proof.evidenceRefs);
+      if (!/^[0-9a-f]{40}$/.test(req.expectedMetadataBlobSha1 || "") || !/^[0-9a-f]{40}$/.test(req.expectedIdentityBlobSha1 || "")) fail("source reapproval requires exact metadata/identity blob anchors");
+      const blobSha = file => execFileSync("git", ["hash-object", "--path", file, "--stdin"], { cwd: root, input: fs.readFileSync(safePath(root, file)), encoding: "utf8" }).trim();
+      if (blobSha(META) !== req.expectedMetadataBlobSha1 || blobSha(IDENTITY) !== req.expectedIdentityBlobSha1) fail("metadata/identity baseline drift");
+      if (!eq(current.sourceFingerprint ?? null, proof.beforeSourceFingerprint) ||
+          !eq(id.sourceFingerprint ?? null, proof.beforeIdentityFingerprint) ||
+          !eq(current.contentFingerprint ?? null, proof.beforeContentFingerprint) ||
+          proof.afterSourceFingerprint !== fingerprint || proof.afterContentFingerprint !== assignmentFingerprint)
+        fail(`source reapproval before/after mismatch: ${current.questionUid}`);
+      requireText(proof.reason, "source reapproval reason");
+      current.sourceFingerprint = fingerprint;
+      current.contentFingerprint = assignmentFingerprint;
+      id.sourceFingerprint = fingerprint;
+      if (Object.hasOwn(id, "contentFingerprint")) id.contentFingerprint = assignmentFingerprint;
+      identityRebound = true;
+    }
     if (!["하", "중", "상"].includes(final.level) || !Number.isInteger(final.difficultyBucket) || final.difficultyBucket < 1 || final.difficultyBucket > 5) fail(`level/difficulty invalid: ${current.questionUid}`);
     requireText(final.integrationPattern, "integrationPattern (explicit NONE if not applicable)");
     const resolved = resolve(final, tables), { pt, tpl, unit, sub, pack, curriculum, course } = resolved;
@@ -390,11 +411,12 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (Object.hasOwn(metadata.counts, "explicitTemplateHolds")) metadata.counts.explicitTemplateHolds = metadata.records.filter(r => r.fieldStatus?.template === "manual_review_pending").length;
   if (Object.hasOwn(metadata.counts, "explicitDifficultyHolds")) metadata.counts.explicitDifficultyHolds = metadata.records.filter(r => r.fieldStatus?.difficulty === "manual_review_pending").length;
   plan.output.set(META, json(metadata));
+  if (identityRebound) plan.output.set(IDENTITY, json(identity));
   const outputDigests = [...plan.output].filter(([file, text]) => file !== META && (!fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text)).map(([file, text]) => ({ path: file, sha256: digest(text) }));
   const receipt = { schemaVersion: "archive-reviewed-exam-meta-registration-v2", requestId: req.requestId, requestSha256,
     examUid: req.examUid, sourceArchiveFile: source, sourceBlobSha1: blob, sourceRawSha256: digest(bytes), approval: req.approval,
     metadataRegistrationStatus: "REGISTERED", examFinalQaStatus: "NOT_EVALUATED_BY_REGISTRAR",
-    consumerSearchStatus: "NOT_RUN", totalQuestions: applied.length, registryChanges: req.registryChanges || [],
+    consumerSearchStatus: "NOT_RUN", totalQuestions: applied.length, scopeLinkApproved: req.scopeLinkApproval === true && req.approval.type === "FINAL_QA", registryChanges: req.registryChanges || [],
     appliedRecords: applied, runtimeRecords, outputDigests };
   plan.output.set(receiptPath, json(receipt));
   const changed = [...plan.output].filter(([file, text]) => !fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text);
