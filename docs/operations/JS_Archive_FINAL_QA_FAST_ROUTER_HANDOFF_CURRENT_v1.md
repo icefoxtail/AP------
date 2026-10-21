@@ -1,6 +1,6 @@
-# JS Archive FINAL QA — FAST ROUTER & EXACT HANDOFF (CURRENT v1.0)
+# JS Archive FINAL QA — FAST ROUTER & EXACT HANDOFF (CURRENT v1.1)
 
-> 2026-10-21. 목적: 이미 `main`에 출고된 **지정 시험지 1건**의 사후 Final QA & Repair에서 쓸모없는 검색·중복 검증·공통 파일 충돌을 줄인다. **품질 의무를 줄이는 문서가 아니라 조회·실행 경로를 고정하는 보조 런북**이다.
+> 2026-10-21. v1.1 보완: 강남여고 확통 Final QA의 대용량 메타 조회/Consumer 연결/4파일 보정 사례를 반영. 목적: 이미 `main`에 출고된 **지정 시험지 1건**의 사후 Final QA & Repair에서 쓸모없는 검색·중복 검증·공통 파일 충돌을 줄인다. **품질 의무를 줄이는 문서가 아니라 조회·실행 경로를 고정하는 보조 런북**이다.
 >
 > 최상위 권위: 사용자의 현재 직접 지시 → Notion [GPT 작업 전 필독 라우터](https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd) / [Archive 2.0 시작](https://app.notion.com/p/3e10e68bd69f81898cc8fb85cb4b1398) / [전체 작업 생명주기](https://app.notion.com/p/3e10e68bd69f81fdb161ffc3f6227b6e) / [FINAL QA & REPAIR CURRENT v2.1](https://app.notion.com/p/4000e68bd69f818080a3e7a042c4aa98) → 최신 Git `main`의 `AGENTS.md`, `archive/AGENTS.md`, 실제 정본·소스. 충돌 시 상위 규칙 우선. CREATE/R1/R2/R3/예약라인에는 적용하지 않는다.
 
@@ -10,6 +10,28 @@
 - Git `main` HEAD SHA와 대상 시험지 **정확한 path + blob SHA**, 현재 적용 교육과정, 실제 표시 QID `N/N`을 확정한다. 구 보고/이전 PASS/다른 task checkpoint로 현재 값을 대체하지 않는다.
 - 같은 `main`·exam blob·정본 blob에 묶인 기존 유효 evidence는 재사용한다. SHA 또는 해당 필드가 달라졌으면 **변경분과 직접 의존만** 다시 확인한다.
 - 첫 조회에서 `ROUTE_RECEIPT`를 만든다: source path@blob, meta storage path@blob, registry@blob, relevant pack/binding/crosswalk@blob, consumer/index path@blob 또는 생성 입력 및 실행 근거, Notion row URL. 이 포인터를 다음 작업자에게 그대로 넘긴다.
+
+## 0-A. 실전 STOP-SEARCH: 정확한 세 갈래와 도구 실패 처리 (v1.1 추가)
+
+**핵심:** 존재 여부, 등록 여부, 실제 소비 여부를 절대 혼동하지 않는다. 이전 `ROUTE_RECEIPT`의 exact path/sha가 최신 해당 파일과 같으면 유효한 증거를 다시 찾지 않는다. 단, 다른 main 커밋이 나왔다는 사실만으로 모든 불변 blob 증거를 폐기하지도 않는다.
+
+| 분기 | 정확한 확인/대안 | 멈출 조건·해석 |
+|---|---|---|
+| A. 시험지 source/UID | 지정 `archive/exams/original/<stage>/<grade>/<term>/<examUid>.js` **실존 path부터** 확인; `questionUid`가 JS에 없으면 정본의 `sourceArchiveFile + sourceOrdinal` 결합으로 연결. 실제 `id`↔sourceOrdinal과 문항수 N 일치 검사 | N/N 고유 UID가 확보되면 학교명 전역 검색 금지 |
+| B. 메타 등록/정본 | `archive/data/question_metadata.json`의 기존 approved sidecar → `archive/data/meta-foundation/canonical/registry_index.json` ACTIVE pack → 해당 `runtime/<pack>.json`, `canonical/packs/<pack>/taxonomy.json`·`bindings.json`, `evidence/<pack>/.../item_metadata_assignments_*.json` 및 정본 RPM. 파일명 `*_704.json` 등은 **현재 pack `generatedFrom` 포인터로 확인**하고 고정 | QID별 L1~L4/PT/TPL/CC/Condition/Integration/level/bucket이 실제 정본 및 binding과 일치하면 KEEP; `JS에는 없음` ≠ `정본에 없음` |
+| C. Consumer 실제 적용 | 대상 제품 **진입 HTML/로더의 script 로딩 → `question-meta.js` 등 사이드카 fetch → 필요시 `meta-foundation-runtime.js`의 overlay 설치·ready promise → 실제 `mergeArchiveQuestionMetadata` 및 검색/선택 projection**을 각각 코드/실데이터로 확인 | `ACTIVE registry`, `runtime.records N/N`, `taxonomy binding`만으로는 `CONSUMER_PARITY_PASS` 불가. `REGISTERED`와 `EFFECTIVE_CONSUMER`를 분리 기록 |
+
+**대용량 Git read 실패의 단 하나의 우회 순서:** 이미 알고 있는 정확한 Git path에 `fetch_file` 요청 → **내용이 빈 문자열·truncate·size 오류라도 "0개 등록"으로 판단하지 않음** → 응답의 **blob SHA**를 `fetch_blob(repository, blob_sha)`로 읽음 → 그 뒤 `sourceArchiveFile + sourceOrdinal` 또는 UID로 *메모리 안에서만* N개 필터 → 필요하면 검증된 raw download/로컬 범위 조회. 같은 blob에 대한 전역 코드 검색·반복 fetch 시도 금지. blob SHA조차 얻지 못한 진짜 접근 실패만 exact 경로·에러와 함께 기록한다. **Git blob SHA는 Git 개체 해시이며 AWCR raw SHA-256과 혼동하지 않는다.**
+
+**Consumer 함정의 실제 예시:** 2026-10-21 조사 시 `archive/engine.html`은 `question-meta.js`와 그 `__ARCHIVE_METADATA_READY__`를 기다리는 호출을 갖지만, 해당 HTML의 정적 script 목록에는 `meta-foundation-runtime.js`가 직접 없다. 다른 로더를 통한 주입 여부는 별도 확인해야 한다. 그러므로 `Meta Foundation ACTIVE 24/24`는 **등록 증거**, `학생 엔진이 해당 overlay 메타를 실제 소비`한다는 증거는 아니다. 제품마다 진입점이 다르면 해당 제품만 별도로 조사하고 결과가 없는 경우 `CONSUMER_UNVERIFIED`로 기록한다. **학생 브라우저·Chrome/Pages 확인은 GPT 사후 Final QA의 필수 종료 게이트가 아니다**. 가능하면 현재 코드 경로와 실제 검색/index 산출물의 값/UID parity로 검증하고, 그것마저 없는 부분을 거짓 PASS로 적지 않는다. 공통 Consumer 엔진 수리까지 단일 시험지 작업을 무단 확장하지 않는다.
+
+## 0-B. QA 빠른 의사결정 및 검증 근거 재사용 (v1.1 추가)
+
+- **첫 비교는 가벼운 N/N 인벤토리:** 각 QID에 대해 `UID 정확 매칭 / source 해설·원본 근거 / 정밀 메타 실존 / ACTIVE parent / 실제 난이도 분리 / 필요한 자산 참조`만 확인한다. 기존 frozen 정답·승인 증거와 source/blob가 일치하는 정상 문항은 `KEEP`; **새 수학·해설·메타 판단을 해야 하는 QID 또는 바뀐 직접 의존분만** 정밀 재풀이/심사한다. 이를 전수 확인 생략으로 사용하지 않는다.
+- **메타 변경 집합은 두 층:** ① `semantic authority` = QID별 실제 source assignment·ACTIVE canonical key/binding, ② `generated/derived` = runtime/compiled/지원 UID 목록·index/검색 projection. **semantic 변경이 생겼을 때만 필요한 후자를 한 번 동기화**한다. 기존 문제 이미지·해설 SVG 정상인 경우 손대지 않는다.
+- **작은 수정이 여러 큰 파일에 퍼지는 이유를 기록:** 예를 들어 강남여고 24Q는 이미 ACTIVE 24/24였으며, 핵심 수정은 q10·q17의 PT/TPL·L3/L4, q14·q17·q19·q20·q24의 과거 `currentLevel` 불일치였다. source assignments→runtime overlay→taxonomy `supportingQuestionUids`→bindings `supportingQuestionUids`는 **동일 QID의 직접 파생 의존**일 때만 같이 갱신한다. 파생 파일을 임의 원본으로 취급하지 않는다.
+- **쓰기 비용/충돌 제어:** 파일 변경 분모를 고정하고 가능하면 동일 branch의 **단일 원자적 commit**(지원되는 Git tree/commit 활용)로 묶는다. 이 기능을 쓸 수 없는 환경에서 안전한 순차 수정이 필요하면 매 수정 후 blob readback, PR 전체 변경파일 whitelist와 **최신 main 차이** 확인. 진행 중 다른 writer가 동일 파일을 바꾸면 stale 기반 overwrite 금지.
+- **상태를 구별:** `ROUTED`(경로 확인), `REGISTERED`(정본 반영), `RUNTIME_MATERIALIZED`(파생 runtime 반영), `CONSUMER_PARITY_VERIFIED`(실제 제품 경로 적용 값 확인), `FINAL_QA_DONE`(별도 문항 품질과 Notion까지 마감)은 서로 다른 상태다. 앞 단계의 증거로 뒤 단계를 자동 PASS시키지 않는다.
 
 ## 1. 검색 라우팅 — 정확한 첫 경로, 없을 때만 다음 단계
 
@@ -85,6 +107,14 @@
 }
 ```
 
+### v1.1 HANDOFF 필수 수납 가드 (기존 JSON v1 하위 호환)
+
+- 아래 JSON의 `routeReceipt` 각 항목에 **`role`(SOURCE/META_CANONICAL/RUNTIME/CONSUMER_EFFECTIVE), `path`, `sha`, `status`(FOUND/READ/VERIFIED/MISSING/BLOCKED), `proofRef`**를 기록한다. `CONSUMER_EFFECTIVE`는 로더/검색 index·실제 join 근거가 없으면 `UNVERIFIED`로 둔다. 경로만 안다고 PASS가 아니다.
+- `input.mainSha`는 작업이 시작된 snapshot이고, 인수 시 현재 main HEAD를 **1회** 재확인한다. 변경된 HEAD가 **해당 시험지·메타 의존파일**을 바꾸지 않았다면 기존 동일 blob 증거를 KEEP하고 무관한 시험지 재검수 금지. 해당 path/blob가 달라졌을 때만 diff 범위 재판정.
+- `coverage`에는 QID별 실판정이 저장된 **권한 있는 증거 위치와 해당 source/blob SHA**를 명시하며, `reviewed=24`라는 숫자만으로 승인하지 않는다. `firstMissingStep`은 `qid + field + exact path/sha + 구체적 단일 검증/수정` 하나로 쓰고, 재개 후 처리한 뒤 다음 step으로 교체한다.
+- 이전 checkpoint는 **동일 taskId + revision + predecessor raw SHA-256 + owner + scopeRevision**가 정확하게 맞을 때만 수납한다. `HANDOFF.json`은 내부 작업 영수증이며 AWCR shared whitelist를 우회하여 원문·문항·해설·secret을 Drive 공유 packet에 실어 나르지 않는다. 사후 Final QA를 새로운 task로 착각해 과거 작업에 이름만으로 합류하지 않는다.
+- **타임아웃 회복:** 결속된 `ROUTE_RECEIPT`, 완료된 QID/필드, 마지막 성공 원격 artifact SHA, 실패 call과 첫 재개 행동부터 기록하고 멈춘다. 재접속한 담당자는 전체 라우터 재검색이 아니라 `firstMissingStep`에서 시작한다. checkpoint 저장 실패는 `SYNC_PENDING`; 완료 아님.
+
 **수납 검증**: 다음 작업자는 (1) exact `taskId + predecessor revision/SHA + owner` 확인, (2) Git main/대상 blob 최신성 대조, (3) 유효한 `routeReceipt` 재사용, (4) `firstMissingStep` 실행. SHA가 바뀐 경로만 차이 재확인. `OFFERED ≠ ACCEPTED ≠ DONE`. 다른 writer와 충돌 시 덮어쓰지 않는다. 전 문항 근거를 넘길 때 정답/해설을 R1 blind 작업자에게 전파하지 않는다.
 
 **시간제한·도구 실패**: 현재 회차가 끊기면 이미 확보한 유효 정보와 미해결 목록, 실패한 exact call/도구 응답, 재시도 가능 위치를 먼저 불변 checkpoint로 기록. 타임아웃은 결과 없음이지 실패/품질 PASS가 아니다. 근거 없는 새 검색이나 시작 단계 재실행 금지. 실제 저장/readback 미완이면 `SYNC_PENDING`으로 명시한다.
@@ -108,3 +138,11 @@
 ### 근거 사례
 
 [2026 금당고 고2 대수 PR #656](https://github.com/icefoxtail/AP------/pull/656): 21문항의 정밀 메타 누락을 보완하면서 66경로 전체 taxonomy/binding 등록, 공통 compiled 파일 대규모 변경, 30파일·21커밋, 개별 CI/Chrome 워크플로 추가가 합쳐졌다. **당시 66경로 확대는 사용자 별도 승인 아래 수행한 정당한 추가 범위**였지만, 다음 단일 시험지의 기본 Final QA로 이를 자동 반복해서는 안 된다.
+
+### v1.1 변경 요약 · 강남여고 확통의 실제 장애에서 추출
+
+- 대형 파일 `fetch_file` 빈 본문/도구 제한 → exact blob SHA 기반 `fetch_blob` fallback; 빈 본문을 메타 0건으로 오판 금지.
+- 기존 ACTIVE 등록 ↔ 실제 소비자 엔트리포인트 적용 증거 별도 확인; 본문 script/fetch와 resolved metadata 값을 함께 대조.
+- 수십만~백만 바이트 JSON 4개가 변하는 최소 수정은 QID semantic authority→직접 supporting map/runtime 파생만 갱신, 검사도 해당 UID 중심으로 고정.
+- `main SHA`만 전진한 경우 동일 blob 증거 재사용, `exam/meta blob`이 바뀐 경우만 해당 부분 재검. 운영병합 성공만으로 QA DONE이 되지는 않는다.
+- 본 문서는 **문서/운영 런북**이고 실제 자동 패킷 검증기·Consumer 배포/수정·예약 프롬프트 변경을 수행했다고 주장하지 않는다.
