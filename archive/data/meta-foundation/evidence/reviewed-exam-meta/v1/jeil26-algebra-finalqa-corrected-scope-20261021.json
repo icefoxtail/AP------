@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "archive-finalqa-pinpoint-review-evidence-v1",
+  "examUid": "26_제일고_1학기_기말_고2_대수",
+  "taskId": "FINALQA-JEIL26-ALG-20261021-01",
+  "owner": "CHATGPT_FINALQA_INTERACTIVE",
+  "sourceArchiveFile": "original/high/h2/1final/26_제일고_1학기_기말_고2_대수.js",
+  "sourceBeforeBlob": "bb9f516f0e4e3a9ce79c5edba20e4b1d21884931",
+  "sourceAfterBlob": "a3b760f684acc3943ea4bb00cedd5e6a2c4092c2",
+  "originalEvidenceSuperseded": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/jeil26-algebra-pinpoint-meta-delta-20261021.json",
+  "supersessionReason": "Original 7/7 subunit proposal was overbroad: RPM-124 supports Q04 and Q10 in SEQUENCE_BASIC; Q15 is a recurrence in SEQUENCE_BASIC. These were not modified.",
+  "decisions": [
+    {
+      "sourceOrdinal": 3,
+      "rpmId": "H2-M1-RPM-125",
+      "fields": {
+        "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+        "subUnit": "수열의 합",
+        "rpmId": "H2-M1-RPM-125"
+      },
+      "decision": "CORRECT"
+    },
+    {
+      "sourceOrdinal": 6,
+      "rpmId": "H2-M1-RPM-125",
+      "fields": {
+        "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+        "subUnit": "수열의 합",
+        "rpmId": "H2-M1-RPM-125"
+      },
+      "decision": "CORRECT"
+    },
+    {
+      "sourceOrdinal": 11,
+      "rpmId": "H2-M1-RPM-126",
+      "fields": {
+        "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+        "subUnit": "수열의 합",
+        "rpmId": "H2-M1-RPM-126"
+      },
+      "decision": "CORRECT"
+    },
+    {
+      "sourceOrdinal": 20,
+      "rpmId": "H2-M1-RPM-120",
+      "fields": {
+        "standardUnitKey": "H22-A-06",
+        "standardUnit": "등차수열과 등비수열",
+        "standardUnitOrder": 6,
+        "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
+        "rpmId": "H2-M1-RPM-120"
+      },
+      "decision": "CORRECT"
+    },
+    {
+      "sourceOrdinal": 4,
+      "decision": "KEEP",
+      "basis": "RPM-124 summation linearity; SEQUENCE_BASIC"
+    },
+    {
+      "sourceOrdinal": 10,
+      "decision": "KEEP",
+      "basis": "Sigma parity coefficient and linearity; SEQUENCE_BASIC"
+    },
+    {
+      "sourceOrdinal": 15,
+      "decision": "KEEP",
+      "basis": "Difference of consecutive partial sums / recurrence; SEQUENCE_BASIC"
+    },
+    {
+      "sourceOrdinal": 19,
+      "decision": "KEEP",
+      "basis": "Primary problem concerns two coordinate-plane straight lines. Algebra cosine law is a solution method; retain CommonMath2 line-equation topical classification."
+    }
+  ],
+  "difficulty": {
+    "denominator": 21,
+    "independentBucketScores": [
+      1,
+      1,
+      2,
+      2,
+      2,
+      2,
+      3,
+      3,
+      2,
+      2,
+      3,
+      3,
+      3,
+      3,
+      4,
+      4,
+      4,
+      5,
+      4,
+      4,
+      3
+    ],
+    "reason": "Bucket 1-5 reflects required reasoning stages and case handling independent of legacy 하/중/상 levels. Introductory direct substitution: 1; routine formulas/linearity: 2; multistep constraints: 3; indirect geometry/telescoping/relation proof: 4; reverse-branch exhaustive recurrence: 5."
+  },
+  "scope": {
+    "sourcePdfCompare": "NOT_RUN_USER_EXCLUDED",
+    "ptTpl": "PT_TPL_NOT_IN_SCOPE_USER_EXCLUDED",
+    "studentDataPreserved": true,
+    "assetsUnchanged": true
+  },
+  "status": "APPROVED_TARGETED_REPAIR__MATERIALIZATION_REQUIRED",
+  "consumerParity": "UNVERIFIED_PENDING_WRITER"
+}
