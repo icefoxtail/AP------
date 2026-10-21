@@ -52,7 +52,13 @@ async function main(){
    const url=new URL(base+'engine.html');url.searchParams.set('data','exams/'+exam);url.searchParams.set('mode',mode);
    url.searchParams.set('title','26_금당고_1학기_기말_고2_대수');url.searchParams.set('q','21');
    await send('Page.navigate',{url:url.href});
-   await wait("window.questionBank?.length===21&&document.querySelector('#print-area')?.querySelectorAll('.page').length>0&&document.documentElement.dataset.apRenderError===undefined",'engine '+mode+' 21 QIDs');
+   try {
+     await wait("window.questionBank?.length===21&&document.querySelector('#print-area')?.querySelectorAll('.page').length>0&&document.documentElement.dataset.apRenderError===undefined",'engine '+mode+' 21 QIDs');
+   } catch (error) {
+     const diagnostics=await run("(()=>({url:location.href,readyState:document.readyState,questionBankLen:window.questionBank?.length||0,printAreaPresent:!!document.querySelector('#print-area'),printPreview:document.querySelector('#print-area')?.innerText.slice(0,900),printNodes:document.querySelector('#print-area')?.childElementCount,renderReadyType:typeof window.__AP_RENDER_READY__,renderError:document.documentElement.dataset.apRenderError||'',scriptCount:document.querySelectorAll('script').length,documentTitle:document.title,bodyPreview:document.body.innerText.slice(0,400)}))()");
+     console.error('GEUMDANG26_DIAGNOSTICS '+JSON.stringify({mode,diagnostics}));
+     throw error;
+   }
    const state=await run("(()=>({count:window.questionBank.length,renderedPages:document.querySelectorAll('#print-area .page').length,mode:(typeof AppState==='object'?AppState.mode:null),totalText:document.querySelector('#print-area').innerText.length,renderError:document.documentElement.dataset.apRenderError||'',math:document.querySelectorAll('#print-area mjx-container').length,images:[...document.querySelectorAll('#print-area img')].map(x=>({src:x.getAttribute('src'),loaded:x.complete&&x.naturalWidth>0}))}))()");
    if(state.count!==21||state.renderedPages<1||state.totalText<35||state.renderError)throw Error('Broken engine '+mode+' '+JSON.stringify(state));
    if(state.images.some(x=>!x.loaded))throw Error('Engine image failed '+mode+' '+JSON.stringify(state.images.filter(x=>!x.loaded)));
