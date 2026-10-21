@@ -683,7 +683,7 @@ window.questionBank = [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
-    "level": "중",
+    "level": "상",
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
     "standardUnitKey": "H15-PS-06",
@@ -832,7 +832,7 @@ window.questionBank = [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
-    "level": "중",
+    "level": "상",
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
     "standardUnitKey": "H15-PS-05",
@@ -915,10 +915,10 @@ window.questionBank = [
       "0.84",
       "0.69"
     ],
-    "answer": "⑤",
-    "answerStatus": "answer_filled_from_answer_pdf_visual_table",
-    "solution": "한 병의 용량은 $N(240,12^2)$를 따른다.\n한 상자의 9병 평균 $\\overline X$는\n$\\overline X\\sim N\\left(240,\\left(\\dfrac{12}{\\sqrt9}\\right)^2\\right)$\n$=N(240,4^2)$이다.\n\n불량 판정 경계를 표준화하면\n$\\dfrac{234.4-240}{4}=-1.4$\n$\\dfrac{249.6-240}{4}=2.4$이다.\n따라서 한 상자의 불량 확률은\n$P(Z<-1.4)+P(Z>2.4)$이다.\n확률표의 값을 $0.41,\\ 0.49$로 근사하여 계산하면\n$p\\approx(0.5-0.41)+(0.5-0.49)$\n$=0.09+0.01=0.10$이다.\n\n불량 상자 수를 $Y$라 하면 $Y\\sim B(400,0.10)$으로 근사하여\n$E(Y)=400\\times0.10=40$\n$V(Y)=400\\times0.10\\times0.90=36$\n$\\sigma_Y=6$이다.\n다시 $Y$를 $N(40,6^2)$로 근사하면\n$P(Y\\le43)\\approx P\\left(Z\\le\\dfrac{43-40}{6}\\right)$\n$=P(Z\\le0.5)$\n$=0.5+0.19=0.69$\n따라서 정답은 ⑤이다.",
-    "solutionStatus": "round4_gibbs_solution_source_written",
+    "answer": "③",
+    "answerStatus": "FINAL_QA_MATH_AUDITED_REPAIR_SOURCE_ANSWER_PDF_CHECK_PENDING",
+    "solution": "한 병의 용량이 정규분포 $N(240,12^2)$를 따르므로, 한 상자의 9병 평균은\n$\\overline X\\sim N\\left(240,\\left(\\dfrac{12}{\\sqrt9}\\right)^2\\right)=N(240,4^2)$이다.\n\n불량품이 되는 확률을 $p$라 하면\n$p=P(\\overline X<234.4)+P(\\overline X>249.6)$\n$=P(Z<-1.4)+P(Z>2.4)$\n$\\approx0.0808+0.0082=0.0890$이다.\n\n400상자 중 불량 상자 수 $Y$는 $B(400,p)$를 따르므로\n$E(Y)=400p\\approx35.6$,\n$V(Y)=400p(1-p)\\approx32.4$,\n$\\sigma_Y\\approx5.7$이다.\n\n이를 정규분포로 근사하면\n$P(Y\\le43)\\approx P\\left(Z\\le\\dfrac{43-35.6}{5.7}\\right)$\n$\\approx P(Z\\le1.30)\\approx0.9032\\approx0.90$이다.\n따라서 정답은 ③이다.",
+    "solutionStatus": "FINAL_QA_20261021_MATH_AUDITED_REPAIR",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
       "기출"
@@ -927,7 +927,7 @@ window.questionBank = [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
-    "level": "중",
+    "level": "상",
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
     "standardUnitKey": "H15-PS-05",
@@ -978,7 +978,7 @@ window.questionBank = [
       "Generated from full-page image pipeline; content/choices require manual transcription or OCR verification.",
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
-    "level": "중",
+    "level": "상",
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
     "standardUnitKey": "H15-PS-06",
@@ -1164,7 +1164,7 @@ window.questionBank = [
       "OCR-based content fill; verify against source image before live archive promotion."
     ],
     "ocrSource": "",
-    "level": "중",
+    "level": "상",
     "category": "확률과 통계",
     "originalCategory": "확률과 통계",
     "standardUnitKey": "H15-PS-05",
