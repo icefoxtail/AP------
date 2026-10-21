@@ -459,8 +459,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "",
-    "imageKind": "none",
+    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q03_standard_normal_table.png",
+    "imageKind": "crop",
     "content": "<span style=\"display:none\">10. </span>어느 고등학교 전체 학생의 자율 학습 참여율은 50%라고 한다. 이 학교 학생 중에서 100명을 임의로 뽑을 때, 자율 학습을 하는 학생의 수를 확률변수 X라고 하면 P(a≤X≤55)=0.8185일 때, 상수 a의 값은? (4점)",
     "choices": [
       "40",
@@ -510,8 +510,8 @@ window.questionBank = [
     "standardCourse": "확률과 통계",
     "sourcePdf": "2025_강남여2_확통_2기말.pdf",
     "sourcePage": 2,
-    "image": "",
-    "imageKind": "none",
+    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q03_standard_normal_table.png",
+    "imageKind": "crop",
     "content": "<span style=\"display:none\">11. </span>정규분포 N(150, 6^2)을 따르는 모집단에서 크기가 36인 표본을 임의추출할 때, 표본평균 X̄에 대하여 P(X̄≥149)의 값은? (4점)",
     "choices": [
       "0.6915",
@@ -808,7 +808,7 @@ window.questionBank = [
     "sourcePage": 3,
     "image": "",
     "imageKind": "none",
-    "content": "<span style=\"display:none\">17. </span>확률변수 X가 이항분포 B(180, 1/6)을 따를 때, t에 대한 이차방정식 t^2-2Xt+55X-700=0이 실근을 가질 확률은? (4.5점)",
+    "content": "<span style=\"display:none\">17. </span>확률변수 X가 이항분포 B(180, 1/6)을 따를 때, t에 대한 이차방정식 t^2-2Xt+55X-700=0이 실근을 가질 확률은? (4.5점)\n(원본 제공 표준정규분포표)\n$\\begin{array}{c|cccc}z&1.00&1.50&2.00&2.50\\\\\\hline P(0\\le Z\\le z)&0.3413&0.4332&0.4772&0.4938\\end{array}$",
     "choices": [
       "0.1815",
       "0.3475",
@@ -907,7 +907,7 @@ window.questionBank = [
     "sourcePage": 4,
     "image": "",
     "imageKind": "none",
-    "content": "<span style=\"display:none\">19. </span>어느 음료 회사에서 생산되는 음료수 한 병의 용량은 평균이 240mL, 표준편차가 12mL인 정규분포를 따른다고 한다. 이 회사에서는 생산된 음료수 9병을 한 상자에 담아 판매하는데 음료수 한 상자에 들어 있는 음료수 9병의 용량에 대한 표본평균 X̄가 234.4mL보다 작거나 249.6mL보다 크면 불량품으로 판정한다고 한다. 이 음료수 공장에서 출하한 음료수 상자 400개 중에서 불량품인 상자가 43개 이하일 확률은? (4.5점)",
+    "content": "<span style=\"display:none\">19. </span>어느 음료 회사에서 생산되는 음료수 한 병의 용량은 평균이 240mL, 표준편차가 12mL인 정규분포를 따른다고 한다. 이 회사에서는 생산된 음료수 9병을 한 상자에 담아 판매하는데 음료수 한 상자에 들어 있는 음료수 9병의 용량에 대한 표본평균 X̄가 234.4mL보다 작거나 249.6mL보다 크면 불량품으로 판정한다고 한다. 이 음료수 공장에서 출하한 음료수 상자 400개 중에서 불량품인 상자가 43개 이하일 확률은? (4.5점)\n(원본 제공 표준정규분포표)\n$\\begin{array}{c|cccc}z&0.5&1.4&1.5&2.4\\\\\\hline P(0\\le Z\\le z)&0.19&0.41&0.43&0.49\\end{array}$",
     "choices": [
       "0.98",
       "0.93",
@@ -915,10 +915,10 @@ window.questionBank = [
       "0.84",
       "0.69"
     ],
-    "answer": "③",
-    "answerStatus": "FINAL_QA_MATH_AUDITED_REPAIR_SOURCE_ANSWER_PDF_CHECK_PENDING",
-    "solution": "한 병의 용량이 정규분포 $N(240,12^2)$를 따르므로, 한 상자의 9병 평균은\n$\\overline X\\sim N\\left(240,\\left(\\dfrac{12}{\\sqrt9}\\right)^2\\right)=N(240,4^2)$이다.\n\n불량품이 되는 확률을 $p$라 하면\n$p=P(\\overline X<234.4)+P(\\overline X>249.6)$\n$=P(Z<-1.4)+P(Z>2.4)$\n$\\approx0.0808+0.0082=0.0890$이다.\n\n400상자 중 불량 상자 수 $Y$는 $B(400,p)$를 따르므로\n$E(Y)=400p\\approx35.6$,\n$V(Y)=400p(1-p)\\approx32.4$,\n$\\sigma_Y\\approx5.7$이다.\n\n이를 정규분포로 근사하면\n$P(Y\\le43)\\approx P\\left(Z\\le\\dfrac{43-35.6}{5.7}\\right)$\n$\\approx P(Z\\le1.30)\\approx0.9032\\approx0.90$이다.\n따라서 정답은 ③이다.",
-    "solutionStatus": "FINAL_QA_20261021_MATH_AUDITED_REPAIR",
+    "answer": "⑤",
+    "answerStatus": "answer_filled_from_answer_pdf_visual_table",
+    "solution": "한 병의 용량은 $N(240,12^2)$를 따른다.\n한 상자의 9병 평균 $\\overline X$는\n$\\overline X\\sim N\\left(240,\\left(\\dfrac{12}{\\sqrt9}\\right)^2\\right)$\n$=N(240,4^2)$이다.\n\n불량 판정 경계를 표준화하면\n$\\dfrac{234.4-240}{4}=-1.4$\n$\\dfrac{249.6-240}{4}=2.4$이다.\n따라서 한 상자의 불량 확률은\n$P(Z<-1.4)+P(Z>2.4)$이다.\n확률표의 값을 $0.41,\\ 0.49$로 근사하여 계산하면\n$p\\approx(0.5-0.41)+(0.5-0.49)$\n$=0.09+0.01=0.10$이다.\n\n불량 상자 수를 $Y$라 하면 $Y\\sim B(400,0.10)$으로 근사하여\n$E(Y)=400\\times0.10=40$\n$V(Y)=400\\times0.10\\times0.90=36$\n$\\sigma_Y=6$이다.\n다시 $Y$를 $N(40,6^2)$로 근사하면\n$P(Y\\le43)\\approx P\\left(Z\\le\\dfrac{43-40}{6}\\right)$\n$=P(Z\\le0.5)$\n$=0.5+0.19=0.69$\n따라서 정답은 ⑤이다.",
+    "solutionStatus": "round4_gibbs_solution_source_written",
     "reviewStatus": "final_ready_pending_batch_validation",
     "tags": [
       "기출"
@@ -1106,6 +1106,7 @@ window.questionBank = [
     "solutionImageSize": "medium",
     "solutionStatus": "direct_written_round5",
     "reviewStatus": "final_ready_pending_batch_validation",
+    "image": "assets/images/25_강남여고_2학기_기말_고2_확률과통계/q03_standard_normal_table.png",
     "tags": [
       "기출",
       "서술형"
