@@ -1417,7 +1417,118 @@ function clinicPrintRenderAssessmentAttemptComparison(state, student) {
     const select = (role, label, key) => `<label style="display:block;margin-top:5px;">${label}<select data-clinic-comparison-role="${role}" aria-label="${clinicPrintEscapeAttr(`${student.studentName || studentId} ${label}`)}" style="display:block;width:100%;margin-top:2px;" ${disabled ? 'disabled' : ''} onchange="clinicPrintSetAssessmentComparisonAttempt(${args},'${role}',this.value,this)"><option value="" ${key ? '' : 'selected'}>${label} 선택…</option>${renderOptions(key)}</select></label>`;
     const baselineKey = selection.baselineKey || '';
     const comparisonKey = selection.comparisonKey || '';
-    return `<details data-clinic-attempt-comparison-container data-clinic-comparison-class-id="${clinicPrintEscapeAttr(classId)}" data-clinic-comparison-student-id="${clinicPrintEscapeAttr(studentId)}" data-clinic-comparison-refresh-id="${generation}" style="margin-top:7px;padding:6px;border:1px solid var(--border);border-radius:7px;"><summary style="cursor:pointer;font-weight:700;">응시 결과 비교</summary><div style="margin-top:5px;font-size:10px;color:var(--secondary);">${clinicPrintEscapeHtml(note)} 각 응시의 기록 점수는 있는 경우에만 표시합니다.</div>${select('baseline', '기준 응시', baselineKey)}${select('comparison', '비교 응시', comparisonKey)}<div data-clinic-attempt-comparison-output>${clinicPrintAssessmentComparisonResultHtml(state, studentId)}</div></details>`;
+    return `<details tabindex="-1" data-clinic-attempt-comparison-container data-clinic-comparison-class-id="${clinicPrintEscapeAttr(classId)}" data-clinic-comparison-student-id="${clinicPrintEscapeAttr(studentId)}" data-clinic-comparison-refresh-id="${generation}" style="margin-top:7px;padding:6px;border:1px solid var(--border);border-radius:7px;"><summary style="cursor:pointer;font-weight:700;">응시 결과 비교</summary><div style="margin-top:5px;font-size:10px;color:var(--secondary);">${clinicPrintEscapeHtml(note)} 각 응시의 기록 점수는 있는 경우에만 표시합니다.</div>${select('baseline', '기준 응시', baselineKey)}${select('comparison', '비교 응시', comparisonKey)}<div data-clinic-attempt-comparison-output>${clinicPrintAssessmentComparisonResultHtml(state, studentId)}</div></details>`;
+}
+
+function clinicPrintAssessmentSummaryComparisonHtml(state, student) {
+    const studentId = String(student?.studentId || '');
+    const selection = clinicPrintGetAssessmentComparisonSelection(state, studentId);
+    if (!selection?.baselineKey || !selection?.comparisonKey) {
+        return '<span style="color:var(--secondary);">교사가 기준·비교 응시를 선택하면 관측 요약을 표시합니다.</span>';
+    }
+    if (Number(state.attemptComparisonIndexRefreshRequestId || 0) !== Number(state.refreshRequestId || 0) ||
+        typeof window.ClinicAssessment?.compareAssessmentAttempts !== 'function') {
+        return '<span style="color:var(--secondary);">현재 조회의 비교 결과 확인 불가</span>';
+    }
+    const result = window.ClinicAssessment.compareAssessmentAttempts({
+        index: state.attemptComparisonIndex,
+        classId: state.classId,
+        studentId,
+        baselineKey: selection.baselineKey,
+        comparisonKey: selection.comparisonKey,
+    });
+    if (result?.status !== 'ready') return `<span style="color:var(--secondary);">${clinicPrintEscapeHtml(result?.reason || '선택한 두 응시를 확인할 수 없습니다.')}</span>`;
+    const attempt = value => `${clinicPrintEscapeHtml(value.examDate || '날짜 미상')} · ${clinicPrintEscapeHtml(value.examTitle || '추천 보충시험')} · 정답 ${clinicPrintHistoryCount(value.observed.correctCount)} / 오답 ${clinicPrintHistoryCount(value.observed.wrongCount)}${value.observed.scoreAvailable ? ` · 기록 점수 ${clinicPrintEscapeHtml(value.observed.score)}` : ''}`;
+    const changed = result.sameAssignment
+        ? ` · 같은 동결 배정 공통 UID의 기록 응답 차이 ${clinicPrintHistoryCount(result.transitions.filter(row => row.baselineStatus !== row.comparisonStatus).length)}건`
+        : result.overlappingUids.length
+            ? ' · 겹치는 UID는 서로 다른 배정이므로 문항 내용 버전 미확인'
+            : ' · 겹치는 UID가 없어 서로 다른 문항의 독립 관측';
+    return `<div>기준: ${attempt(result.baseline)}</div><div style="margin-top:3px;">비교: ${attempt(result.comparison)}${changed}</div>`;
+}
+
+function clinicPrintRenderStudentClinicSummary(state, students) {
+    const generation = Number(state.refreshRequestId || 0);
+    const classId = String(state.classId || '');
+    const index = state.attemptComparisonIndex;
+    const indexCurrent = Number(state.attemptComparisonIndexRefreshRequestId || 0) === generation &&
+        !!index && String(index.classId || '') === classId &&
+        index.candidatesByStudent && typeof index.candidatesByStudent === 'object' && !Array.isArray(index.candidatesByStudent) &&
+        index.unavailableByStudent && typeof index.unavailableByStudent === 'object' && !Array.isArray(index.unavailableByStudent);
+    const rows = students.map(student => {
+        const studentId = String(student.studentId || '');
+        const topTypes = [...(Array.isArray(student.types) ? student.types : [])]
+            .sort((a, b) => Number(b.observedWrongCount || 0) - Number(a.observedWrongCount || 0))
+            .slice(0, 3);
+        const typesHtml = topTypes.length ? topTypes.map(type => {
+            return `<div>${clinicPrintEscapeHtml(clinicPrintHistoryPathLabel(type))} · 관측 오답 ${clinicPrintHistoryCount(type.observedWrongCount)}건</div>`;
+        }).join('') : '<span style="color:var(--secondary);">분류된 오답 유형 없음</span>';
+        const otherTypeCount = Math.max(0, (Array.isArray(student.types) ? student.types.length : 0) - topTypes.length);
+        const typesNote = `${clinicPrintHistoryCount(student.observedWrongCount)}건 분류 오답 · ${clinicPrintHistoryCount(student.coverage?.unclassifiedWrongCount)}건 미분류${otherTypeCount ? ` · 그 밖의 묶음 ${otherTypeCount}개(전체는 아래 상세)` : ''}`;
+        const counts = student.coverage?.statusCounts || {};
+        const historyHtml = `<div>조회된 배정 기록 ${clinicPrintHistoryCount(student.history?.length)}건</div><div style="margin-top:3px;">완결 ${clinicPrintHistoryCount(counts.completeResult)} · 부분 ${clinicPrintHistoryCount(counts.partial)} · 미확인 ${clinicPrintHistoryCount(counts.unresolved)} · 대기 ${clinicPrintHistoryCount(counts.pending)} · 제외 ${clinicPrintHistoryCount(counts.excluded)} · 취소·미응시 ${clinicPrintHistoryCount(counts.cancelledPending)}</div>`;
+        let submissionHtml = '<span style="color:var(--secondary);">현재 조회의 응시 제출 집계 확인 불가</span>';
+        if (indexCurrent) {
+            const hasCandidateEntry = Object.prototype.hasOwnProperty.call(index.candidatesByStudent, studentId);
+            const hasUnavailableEntry = Object.prototype.hasOwnProperty.call(index.unavailableByStudent, studentId);
+            const candidatesValue = index.candidatesByStudent[studentId];
+            const unavailableValue = index.unavailableByStudent[studentId];
+            const candidatesValid = !hasCandidateEntry || Array.isArray(candidatesValue) && candidatesValue.every(candidate =>
+                candidate && typeof candidate.assignmentId === 'string' && !!candidate.assignmentId &&
+                typeof candidate.sessionId === 'string' && !!candidate.sessionId);
+            const unavailableKeys = ['partial', 'unresolved', 'pending', 'excluded', 'cancelled', 'unsubmitted', 'submissionNotReported', 'malformed'];
+            const unavailableValid = !hasUnavailableEntry || unavailableValue && typeof unavailableValue === 'object' && !Array.isArray(unavailableValue) &&
+                unavailableKeys.every(key => Object.prototype.hasOwnProperty.call(unavailableValue, key) &&
+                    typeof unavailableValue[key] === 'number' && Number.isInteger(unavailableValue[key]) && unavailableValue[key] >= 0);
+            if ((hasCandidateEntry || hasUnavailableEntry) && candidatesValid && unavailableValid) {
+                const candidates = Array.isArray(candidatesValue) ? candidatesValue : [];
+                const unavailable = hasUnavailableEntry ? unavailableValue : {};
+                submissionHtml = `비교 가능한 완결 제출 응시 ${candidates.length}건 · 미제출 ${clinicPrintHistoryCount(unavailable.unsubmitted)} · 제출 상태 미보고 ${clinicPrintHistoryCount(unavailable.submissionNotReported)}`;
+            }
+        }
+        const comparisonAttrs = `data-clinic-summary-comparison-cell data-clinic-summary-class-id="${clinicPrintEscapeAttr(classId)}" data-clinic-summary-student-id="${clinicPrintEscapeAttr(studentId)}" data-clinic-summary-refresh-id="${generation}"`;
+        const button = `<button type="button" data-clinic-summary-detail-button data-clinic-summary-class-id="${clinicPrintEscapeAttr(classId)}" data-clinic-summary-student-id="${clinicPrintEscapeAttr(studentId)}" data-clinic-summary-refresh-id="${generation}" class="clinic-print-mini-btn" aria-label="${clinicPrintEscapeAttr(`${student.studentName || studentId} 학생 상세와 응시 비교 보기`)}" onclick="clinicPrintOpenStudentClinicSummaryDetails('${clinicPrintEscapeJsString(classId)}','${clinicPrintEscapeJsString(studentId)}',${generation},this)">상세·응시비교</button>`;
+        return `<tr data-clinic-summary-row data-clinic-summary-class-id="${clinicPrintEscapeAttr(classId)}" data-clinic-summary-student-id="${clinicPrintEscapeAttr(studentId)}" data-clinic-summary-refresh-id="${generation}"><th scope="row">${clinicPrintEscapeHtml(student.studentName || studentId || '학생')}</th><td>${typesHtml}<div style="margin-top:3px;color:var(--secondary);">${typesNote}</div></td><td>${historyHtml}</td><td>${submissionHtml}</td><td ${comparisonAttrs}>${clinicPrintAssessmentSummaryComparisonHtml(state, student)}</td><td>${button}</td></tr>`;
+    }).join('');
+    const unavailableAssignments = indexCurrent ? clinicPrintHistoryCount(index.coverage?.unavailableAssignmentCount) : null;
+    const comparisonCoverage = unavailableAssignments > 0
+        ? `<div style="font-size:10px;color:var(--secondary);margin:3px 0 5px;">비교용 응시 자료를 정확히 조회하지 못한 배정 ${unavailableAssignments}건은 제출 현황에 포함하지 않았습니다. 일부 조회 제한은 위 배정 조회 범위를 확인하세요.</div>` : '';
+    return `<div style="margin-top:8px;"><div style="font-size:11px;font-weight:700;">학생별 클리닉 요약</div><div style="font-size:10px;color:var(--secondary);margin:3px 0 5px;">현재 조회 결과에 나타난 학생 ${students.length}명 · 확인된 배정 응시 기준입니다. 반 전체 명단이나 전체 제출률이 아닙니다. 오답 유형은 동결 Meta 기준입니다.</div>${comparisonCoverage}<div style="overflow-x:auto;"><table style="border-collapse:collapse;width:100%;font-size:10px;"><thead><tr><th scope="col" style="text-align:left;">학생</th><th scope="col">오답 유형·난이도</th><th scope="col">조회 배정 결과</th><th scope="col">제출 현황</th><th scope="col">교사 선택 비교 관측</th><th scope="col">상세</th></tr></thead><tbody>${rows || '<tr><td colspan="6" style="color:var(--secondary);">표시할 학생별 이력이 없습니다.</td></tr>'}</tbody></table></div></div>`;
+}
+
+function clinicPrintOpenStudentClinicSummaryDetails(classId, studentId, refreshRequestId, button) {
+    const unavailable = () => toast('현재 조회된 학생 상세와 응시 비교를 하나로 확인할 수 없습니다. 기존 배정·응시 결과를 새로고침해 주세요.', 'warn');
+    const wantedClassId = String(classId || '');
+    const wantedStudentId = String(studentId || '');
+    const generation = Number(refreshRequestId);
+    const body = document.getElementById('clinic-print-recommendation-assessment-body');
+    if (!wantedClassId || !wantedStudentId || String(clinicPrintActiveClassId || '') !== wantedClassId ||
+        !body || !button || !body.contains(button)) return unavailable(), false;
+    const state = clinicPrintRecommendationAssessmentStates.get(wantedClassId);
+    if (!state || String(state.classId || '') !== wantedClassId || Number(state.refreshRequestId || 0) !== generation ||
+        !['ready', 'partial'].includes(String(state.historySummaryStatus || '')) ||
+        !['ready', 'partial'].includes(String(state.historySummary?.status || '')) ||
+        !clinicPrintHistorySummaryShapeValid(state.historySummary)) return unavailable(), false;
+    const students = (state.historySummary.students || []).filter(row => String(row.studentId || '') === wantedStudentId);
+    const matches = selector => Array.from(body.querySelectorAll(selector)).filter(node =>
+        node.getAttribute('data-clinic-summary-class-id') === wantedClassId &&
+        node.getAttribute('data-clinic-summary-student-id') === wantedStudentId &&
+        node.getAttribute('data-clinic-summary-refresh-id') === String(generation));
+    const rows = matches('[data-clinic-summary-row]');
+    const detailNodes = matches('[data-clinic-history-student-details]');
+    const comparisonNodes = Array.from(body.querySelectorAll('[data-clinic-attempt-comparison-container]')).filter(node =>
+        node.getAttribute('data-clinic-comparison-class-id') === wantedClassId &&
+        node.getAttribute('data-clinic-comparison-student-id') === wantedStudentId &&
+        node.getAttribute('data-clinic-comparison-refresh-id') === String(generation));
+    const buttons = matches('[data-clinic-summary-detail-button]');
+    if (students.length !== 1 || rows.length !== 1 || detailNodes.length !== 1 || comparisonNodes.length !== 1 || buttons.length !== 1 ||
+        buttons[0] !== button || button.closest('[data-clinic-summary-row]') !== rows[0] ||
+        comparisonNodes[0].closest('[data-clinic-history-student-details]') !== detailNodes[0]) return unavailable(), false;
+    detailNodes[0].open = true;
+    comparisonNodes[0].open = true;
+    comparisonNodes[0].scrollIntoView({ block: 'center', behavior: 'smooth' });
+    comparisonNodes[0].focus({ preventScroll: true });
+    return true;
 }
 
 function clinicPrintSetAssessmentComparisonAttempt(classId, studentId, refreshRequestId, role, key, selectElement) {
@@ -1455,6 +1566,11 @@ function clinicPrintSetAssessmentComparisonAttempt(classId, studentId, refreshRe
         classId: wantedClassId, studentId: wantedStudentId, refreshRequestId: generation,
     });
     outputNodes[0].innerHTML = clinicPrintAssessmentComparisonResultHtml(state, wantedStudentId);
+    const summaryCells = Array.from((document.getElementById('clinic-print-recommendation-assessment-body') || document).querySelectorAll('[data-clinic-summary-comparison-cell]')).filter(node =>
+        node.getAttribute('data-clinic-summary-class-id') === wantedClassId &&
+        node.getAttribute('data-clinic-summary-student-id') === wantedStudentId &&
+        node.getAttribute('data-clinic-summary-refresh-id') === String(generation));
+    if (summaryCells.length === 1) summaryCells[0].innerHTML = clinicPrintAssessmentSummaryComparisonHtml(state, students[0]);
     return true;
 }
 
@@ -1510,9 +1626,9 @@ function clinicPrintRenderAssessmentHistorySummary(state = clinicPrintGetRecomme
         const toggleButton = history.length > 5
             ? `<button type="button" class="clinic-print-mini-btn" style="margin-top:4px;" aria-expanded="${expanded}" onclick="clinicPrintToggleAssessmentHistory('${clinicPrintEscapeJsString(historyClassId)}','${clinicPrintEscapeJsString(historyStudentId)}',${historyGeneration})">${expanded ? '최근 5건만 보기' : `조회된 이력 ${history.length}건 모두 보기`}</button>`
             : '';
-        return `<details style="border-top:1px solid var(--border);padding-top:6px;margin-top:6px;"><summary style="cursor:pointer;font-size:11px;font-weight:700;">${clinicPrintEscapeHtml(student.studentName || student.studentId || '학생')} · 관측 오답 ${clinicPrintHistoryCount(student.observedWrongCount)}회 · 고유 UID ${clinicPrintHistoryCount(student.distinctQuestionUidCount)}개 · 반복 관측 ${clinicPrintHistoryCount(student.repeatUidObservationCount)}회</summary><div style="font-size:11px;margin-top:5px;"><div style="color:var(--secondary);">완결 ${clinicPrintHistoryCount(studentStatuses.completeResult)} · 부분 ${clinicPrintHistoryCount(studentStatuses.partial)} · 미확인 ${clinicPrintHistoryCount(studentStatuses.unresolved)} · 대기 ${clinicPrintHistoryCount(studentStatuses.pending)} · 제외 ${clinicPrintHistoryCount(studentStatuses.excluded)} · 취소로 미응시 ${clinicPrintHistoryCount(studentStatuses.cancelledPending)} · 미분류 오답 ${clinicPrintHistoryCount(studentCoverage.unclassifiedWrongCount)}</div><div style="margin-top:5px;font-weight:700;">유형별 누적 관측</div>${typesHtml}<div data-clinic-history-student-container data-clinic-history-class-id="${clinicPrintEscapeAttr(historyClassId)}" data-clinic-history-student-id="${clinicPrintEscapeAttr(historyStudentId)}" data-clinic-history-refresh-id="${historyGeneration}" style="margin-top:7px;"><div data-clinic-history-title style="font-weight:700;">${clinicPrintEscapeHtml(historyTitle)}</div><div data-clinic-history-list>${historyHtml}</div>${toggleButton}${clinicPrintRenderAssessmentAttemptComparison(state, student)}</div></div></details>`;
+        return `<details tabindex="-1" data-clinic-history-student-details data-clinic-summary-class-id="${clinicPrintEscapeAttr(historyClassId)}" data-clinic-summary-student-id="${clinicPrintEscapeAttr(historyStudentId)}" data-clinic-summary-refresh-id="${historyGeneration}" style="border-top:1px solid var(--border);padding-top:6px;margin-top:6px;"><summary style="cursor:pointer;font-size:11px;font-weight:700;">${clinicPrintEscapeHtml(student.studentName || student.studentId || '학생')} · 관측 오답 ${clinicPrintHistoryCount(student.observedWrongCount)}회 · 고유 UID ${clinicPrintHistoryCount(student.distinctQuestionUidCount)}개 · 반복 관측 ${clinicPrintHistoryCount(student.repeatUidObservationCount)}회</summary><div style="font-size:11px;margin-top:5px;"><div style="color:var(--secondary);">완결 ${clinicPrintHistoryCount(studentStatuses.completeResult)} · 부분 ${clinicPrintHistoryCount(studentStatuses.partial)} · 미확인 ${clinicPrintHistoryCount(studentStatuses.unresolved)} · 대기 ${clinicPrintHistoryCount(studentStatuses.pending)} · 제외 ${clinicPrintHistoryCount(studentStatuses.excluded)} · 취소로 미응시 ${clinicPrintHistoryCount(studentStatuses.cancelledPending)} · 미분류 오답 ${clinicPrintHistoryCount(studentCoverage.unclassifiedWrongCount)}</div><div style="margin-top:5px;font-weight:700;">유형별 누적 관측</div>${typesHtml}<div data-clinic-history-student-container data-clinic-history-class-id="${clinicPrintEscapeAttr(historyClassId)}" data-clinic-history-student-id="${clinicPrintEscapeAttr(historyStudentId)}" data-clinic-history-refresh-id="${historyGeneration}" style="margin-top:7px;"><div data-clinic-history-title style="font-weight:700;">${clinicPrintEscapeHtml(historyTitle)}</div><div data-clinic-history-list>${historyHtml}</div>${toggleButton}${clinicPrintRenderAssessmentAttemptComparison(state, student)}</div></div></details>`;
     }).join('');
-    return `<section style="border:1px solid var(--border);border-radius:9px;padding:8px;margin-top:9px;">${title}${statusNote}${coverageStatus}<div style="font-size:10px;color:var(--secondary);margin-top:4px;">${clinicPrintEscapeHtml(clinicPrintHistoryCoverageLine(coverage))}</div>${clinicPrintHistoryCoverageDetails(coverage)}${studentRows || '<div style="font-size:11px;color:var(--secondary);margin-top:5px;">표시할 학생별 누적 이력이 없습니다.</div>'}</section>`;
+    return `<section style="border:1px solid var(--border);border-radius:9px;padding:8px;margin-top:9px;">${title}${statusNote}${coverageStatus}<div style="font-size:10px;color:var(--secondary);margin-top:4px;">${clinicPrintEscapeHtml(clinicPrintHistoryCoverageLine(coverage))}</div>${clinicPrintHistoryCoverageDetails(coverage)}${clinicPrintRenderStudentClinicSummary(state, students)}${studentRows || '<div style="font-size:11px;color:var(--secondary);margin-top:5px;">표시할 학생별 누적 이력이 없습니다.</div>'}</section>`;
 }
 
 function clinicPrintToggleAssessmentHistory(classId, studentId, refreshRequestId) {
