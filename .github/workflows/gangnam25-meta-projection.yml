@@ -1,0 +1,56 @@
+name: Gangnam25 Final QA Metadata Projection
+on:
+  push:
+    branches: [finalqa-gangnam25-projection-20261021]
+    paths:
+      - 'archive/tools/meta-foundation/finalqa-gangnam25-projection.mjs'
+      - '.github/workflows/gangnam25-meta-projection.yml'
+permissions:
+  contents: write
+concurrency:
+  group: gangnam25-finalqa-projection
+  cancel-in-progress: false
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: finalqa-gangnam25-projection-20261021
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Bind examined source and 24 ACTIVE canonical records
+        run: node archive/tools/meta-foundation/finalqa-gangnam25-projection.mjs
+      - name: Rebuild production archive catalog and search projections
+        run: python archive/build_db.py
+      - name: Verify 24-question metadata/search parity
+        run: |
+          node archive/tools/build-archive2-catalog.mjs --check
+          node archive/tools/verify-archive-registration.mjs
+          node - <<'NODE'
+          const fs=require('fs'),c=require('./archive/archive2-core.js');
+          const d=c.decodeCatalog(JSON.parse(fs.readFileSync('archive/data/archive2-catalog.json','utf8')));
+          const source='original/high/h2/2final/25_강남여고_2학기_기말_고2_확률과통계.js';
+          const rows=d.records.filter(x=>x.sourceFile===source);
+          if(rows.length!==24)throw Error('catalog QID count mismatch: '+rows.length);
+          const bad=rows.filter(x=>x.sourceStatus!=='VERIFIED'||x.metaProjectionStatus==='DISPLAY_PROJECTION_UNAVAILABLE'||!x.problemTypeKey||!x.templateKey||!Number.isInteger(x.difficultyBucket));
+          if(bad.length)throw Error('catalog parity bad qids: '+bad.map(x=>x.sourceOrdinal).join(','));
+          console.log('GANGNAM25_SEARCH_PROJECTION_PASS',rows.length);
+          NODE
+          git diff --check
+      - name: Commit derived scope and updated registration
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- archive/data/question_metadata.json archive/data/basic-scope-source-links.json archive/data/basic-scope-parent-links.json archive/data/archive2-catalog.json archive/data/archive2-canonical-input-manifest.json archive/data/archive2-source-verification-index.json archive/data/archive2-source-verification/v1 archive/data/archive2-crosswalk-inventory.json archive/db.js archive/data/question_identity_map.json archive/question-identity.js archive/question-index.js
+          git diff --cached --check
+          git diff --cached --stat
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "fix(meta): Gangnam25 production source/search parity [skip ci]"
+          git push origin HEAD:finalqa-gangnam25-projection-20261021
