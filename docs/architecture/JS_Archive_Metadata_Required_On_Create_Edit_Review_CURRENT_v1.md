@@ -1,5 +1,10 @@
 # JS Archive / Problem Bank — JS 신규·수정·검수 시 Metadata 필수 계약 (CURRENT v1.0)
 
+## CURRENT HARD — 공용 조회 / 소형 메타 JSON 작성 분리 (2026-10-21)
+
+**전 학년·전 과목 공통:** 공용 `archive/data/question_metadata.json`에서 대상 UID만 읽어 현재값을 확인한다. 작업 결과의 메타 변경은 시험지별 소형 JSON/stage-local 패킷만 작성한다. 중앙 공용 메타·DB·runtime·색인은 승인된 Actions 생성기의 output이지 작업자 직접 편집 대상이 아니다. 이미 승인된 값의 before/after, UID, source blob, ACTIVE PT/TPL/binding과 실제 Consumer/Search 일치를 요구한다. 미지원 자동등록기는 `TOOLING_GAP`으로 정확히 기록하고 대형 파일 업로드로 우회하지 않는다. [전체 계약](JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md). 기존 문항별 메타 품질 검수·저장 책임은 그대로다.
+
+
 > 2026-10-10 원장 지시. 적용: 학교 기출(original), 유사문항(similar), ALIVE/Generated, 교재·평가용 JS의 신규 제작·기존 수정·검수. 이 문서는 **메타데이터 확인·기록 의무**이며 무관한 문항 전수 재분류 명령이나 신규 품질 재승인 단계가 아니다. 현재 사용자 명시 범위·종료 조건이 우선한다.
 
 ## CURRENT HARD — UID별 난이도·Meta·교육과정·해설·시각 근거 (2026-10-14)

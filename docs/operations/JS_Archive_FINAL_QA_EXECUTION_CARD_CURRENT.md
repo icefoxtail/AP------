@@ -1,5 +1,8 @@
 # JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v1.2)
 
+**CURRENT 메타 쓰기 경계(2026-10-21 사용자 지시):** 공용 `archive/data/question_metadata.json`은 정확한 UID N행의 **조회·대조·검색용**이며, FINAL QA 수정 결과는 **시험지별 소형 메타 JSON**으로만 작성한다. 공용 대형 파일 직접 수정·업로드/PUT 금지. 인가된 Actions가 공용 메타·Consumer/index를 갱신하고 대상 UID N/N 원격 parity를 확인해야 완료다. 현재 자동 등록기는 공통수학2/REVIEW2 제약이 있으므로 대수 등 미지원 요청은 `TOOLING_GAP`으로 처리한다(대형 파일 직접 업로드 우회 금지). [단일 정책](docs/architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md); 상세 문서 추가 선열람 요구는 아니다.
+
+
 > 2026-10-21 사용자 직접 지시에 따른 사후 QA 필독 축소. **이미 main에 존재하는 지정 시험지 1건**에만 적용. 기술·품질 의무는 기존 FINAL QA v2.1 그대로이며, **문서 선열람만 축소**한다. 본 카드가 선행 절차이며 기존 긴 [FAST ROUTER v1.1](JS_Archive_FINAL_QA_FAST_ROUTER_HANDOFF_CURRENT_v1.md), [Notion FINAL QA v2.1](https://app.notion.com/p/4000e68bd69f818080a3e7a042c4aa98), Archive 시작/생명주기, AGENTS.md는 **정본 예외가 생겼을 때만 해당 절을 열람하는 상세 참고자료**다. 기존 규정/프로젝트를 삭제하거나 수정하지 않는다. 최신 사용자 지시 우선.
 
 ## 1. 딱 두 곳만 선열람

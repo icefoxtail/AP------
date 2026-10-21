@@ -1,3 +1,10 @@
+## CURRENT TOP — 메타 공용 조회 / 시험지별 소형 JSON 수정 원칙 (2026-10-21, 사용자 지시)
+
+- **읽기:** `archive/data/question_metadata.json`은 기존 UID 메타 조회/대조·검색에 사용하고 해당 시험지 N개만 필터한다. 실질적인 의미 정본은 최신 ACTIVE registry/RPM/bindings를 확인한다.
+- **쓰기:** GPT·Gemini·Codex·검수/제작 워커는 메타 수정사항을 **시험지별 소형 JSON/stage-local 메타 패킷**에만 기록하며, 55MB급 공용 집계 파일을 직접 편집·업로드·수동 commit하지 않는다. 인가된 단일 GitHub Actions 등록기만 공용 메타/런타임/검색 파생 파일을 갱신한다.
+- **완료:** 소형 JSON 제출만으로 완료가 아니다. 공용 sidecar+실제 Consumer/Search UID parity+main readback이 필수. 현재 등록기는 일부 공통수학2/REVIEW2 하드코딩이 있으므로 미지원 과목은 TOOLING_GAP으로 밝히고 대형 JSON 업로드로 우회하지 않는다. 기존 예약 워커 Git writer 금지·품질 검수 의무 불변.
+- **단일 상세 정책:** [시험지별 소형 JSON 메타 쓰기 계약](docs/architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md). 사후 FINAL QA의 2곳 선열람 규칙은 유지하며 이 링크는 예외·구현 상세 참고로만 사용.
+
 ## CURRENT TOP — 사용자 지정 시험지 출고: 상태값만으로 전건 보류 금지 (2026-10-19)
 
 - 사용자가 범위·examUid를 지정해 `main` 운영병합을 명시하면, **지정 감독·출고 실행자 Codex/Work/ROOT가 실제 R3/MASTER 패킷 검토·표적 결함 수리·PR/main 병합·요청된 Drive DONE 마감까지 직접 수행**한다. `SUPERVISORY_REVIEW_REQUIRED`, `PENDING_SUPERVISOR_DECISION`, `R3_REVIEWED`, `readyForUnattendedMerge=false`, `qualityPass=false`, `NOT_RUN`이라는 상태명 **단독**으로 승인자 부재를 이유 삼아 0건 PR·전건 중단 보고하는 것은 금지한다. `readyForUnattendedMerge=false`는 사용자 승인 없는 무인 자동 병합 금지이지 사용자 직접 지정한 감독 실행 금지가 아니다.
