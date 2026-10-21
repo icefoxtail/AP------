@@ -1,7 +1,7 @@
 {
   "schemaVersion": "archive-question-metadata-v1",
   "metadataRevision": "archive-metadata-v1-phase1b-20260825+H1_FOUNDATION@1.0.0",
-  "generatedAt": "2026-10-21T00:36:29.575Z",
+  "generatedAt": "2026-10-21T00:59:09.099Z",
   "approvalStatus": "APPROVED_SEMANTIC_RECHECKED_WITH_L4_GAPS",
   "promotionPolicy": {
     "candidateOnlyTagsPromoted": false,
@@ -13,7 +13,7 @@
     "l4GapRecordsDefaultSelectable": false
   },
   "sourceDigests": {
-    "identityMap": "0c060c75b4702ec7c998c6de2201008957b15173211ba1f4762eb9849a5fd217",
+    "identityMap": "c08c7cad744a56d33f42381a75e2eb5f2ec79e34a6372b8c6c6dc39b10411cf4",
     "completeClassification": "24dc74f6c4a8a4ef588941ddcec9c139bb601d65a642c259eab4a87fe5cb7b2b",
     "tagMaster": "68459ea08b79b0935271afdb079e72fc7e28aa3faff6a200e0e565dff850fd8a"
   },
@@ -486,12 +486,12 @@
   },
   "reviewedPassCount": 3189,
   "counts": {
-    "records": 21836,
+    "records": 21857,
     "uidUnique": true,
     "sourceJoinUnique": true,
     "semanticallyReviewed": 3549,
-    "explicitProblemTypeHolds": 17076,
-    "explicitTemplateHolds": 17110,
+    "explicitProblemTypeHolds": 17097,
+    "explicitTemplateHolds": 17131,
     "explicitDifficultyHolds": 2313,
     "m3FoundationV2AppliedRecords": 1644,
     "m3Direct2HFinalized": 700,
@@ -33990,6 +33990,45 @@
       "secondaryConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "INTERDEPENDENT",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 4
+    },
+    {
+      "questionUid": "qid_v1_0786844ba645fd508aca17e5df4030f387d253a215c3c79097250c4b3bb5b50c",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": 11,
+      "sourceFingerprint": "dc6bb1a6c08c9424f5769d0ecf75b5ac42bad76ba2eeb0727aeaf3de7a993eac",
+      "contentFingerprint": "c2de43b3c2afc08d12bcc0f0cbfd51b0d90b3523128ef587cb49ecdfd0fb9e1b",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_MINIMUM_CATEGORY_COUNTS"
+      ],
+      "integrationPattern": "NONE",
       "tagConfidence": "review_required",
       "tagStatus": "review_required",
       "reviewStatus": "review_required",
@@ -126655,6 +126694,47 @@
       "metaFoundationPackVersion": "1.0.2"
     },
     {
+      "questionUid": "qid_v1_1c00ed8f709b78ca487bd75c1fc20908e14090c2bc84c34293b0bef017e85ee2",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": 10,
+      "sourceFingerprint": "2dbd1936d7672625fd46618eb7c0102b6fb3fdf28f8966bf2680007286d6f829",
+      "contentFingerprint": "c73f5e3271c302956113d726f0c542d73319aacf5d49210d83f76cd201fda9d7",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_NUMBER_PARITY"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 5
+    },
+    {
       "questionUid": "qid_v1_1c022ccbc579e83749e3a6294c087a27b81be2ac87c9f61991f4c8dc41082c75",
       "sourceArchiveFile": "original/middle/m3/2mid/21_연향중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 20,
@@ -137594,6 +137674,45 @@
       "metaFoundationHoldReason": null,
       "l3Disposition": "ASSIGNED",
       "l4Disposition": "ASSIGNED"
+    },
+    {
+      "questionUid": "qid_v1_1e83b2735fd2e5ae71dd7daeed097e6db5791773e224b37b8de88f193c511a82",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": 8,
+      "sourceFingerprint": "1ce142c9603494acfadb796d8d251ebdcd6e2d0bfef2d8e6b37fe7089d5d236b",
+      "contentFingerprint": "dd521cc8b4e73dae91aa928e370e3c2e3bbd2426680c915c6cda184f991a09d4",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
     },
     {
       "questionUid": "qid_v1_1e86fe684aa9067c7eddbc36fb97d94976245e41e50eedb231e3e6421de897a7",
@@ -159740,6 +159859,43 @@
         "independentRecheck": "independent_recheck.json",
         "representationRole": "not visually dependent"
       }
+    },
+    {
+      "questionUid": "qid_v1_2385441608308946c5625d617251cf5a23938847f464000b7c604a99e3e49b60",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": 16,
+      "sourceFingerprint": "10e1bc2f65a2bface59d2c44b6ae410f06ea965bffd3bc390ab5ca69a724c8bf",
+      "contentFingerprint": "bb16d6baa176b088211911e769df1fd5d19236839f5ed1e19e1a231074611501",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 5
     },
     {
       "questionUid": "qid_v1_2391b01b15a8dc38f327e1556b996ec09c652d216d9c99024aa29f3b2e4240ba",
@@ -192930,6 +193086,43 @@
       "L4Key": "L4-2.1.1.3"
     },
     {
+      "questionUid": "qid_v1_2aa11f39f844b8cb91b0400fcafd8435efdcaa828601ba847d67010d0935cbdc",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": 6,
+      "sourceFingerprint": "2349e8ea4629b51ba101cf3b3af5375c1e970a6489f9190ff6298dbb8f243f23",
+      "contentFingerprint": "1e4ad89043a718b236790c4328ad1615988f8b6b4cd5863bde0e14de1348b044",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
+    },
+    {
       "questionUid": "qid_v1_2aa27cc7bbce76264373bf28bd1381ed7b18152c2a95c5f95e70662347877860",
       "sourceArchiveFile": "original/high/h2/2mid/25_금당고_2학기_중간_고2_미적분.js",
       "sourceOrdinal": 19,
@@ -225278,6 +225471,43 @@
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
       "difficultyBucket": 2
+    },
+    {
+      "questionUid": "qid_v1_31ba50d232f8ef05c3c08383ce1f1db49112bc13074ce29a49a110e13a095b6c",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": 17,
+      "sourceFingerprint": "30f29a62e8ef763ea9bba7e97b439279a002a4890ca2352a3a08ec31d6be45af",
+      "contentFingerprint": "892b34bc59b64c8b2f58b3a151b48164da8751c8e58c3d7290e00578f7fc850d",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수와 계수비교",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 4
     },
     {
       "questionUid": "qid_v1_31bae63b1dd1e68b6d4faae24324ccbb45a06fff76e639648d1f768cad788601",
@@ -283120,6 +283350,45 @@
       ]
     },
     {
+      "questionUid": "qid_v1_3df3a04954f62c85296f28e91cdbb86c4d524bd20b03d8d9c83c8bd61fb17f20",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": 1,
+      "sourceFingerprint": "d29d1f86fef038d5dac47de5477945ae88029677e590c61dfd09d66c23679832",
+      "contentFingerprint": "8077a803300025f48bda72414be69a5fd4324c43548dacf76a2df29edb8777a5",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_CONSECUTIVE_GROUPING"
+      ],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 2
+    },
+    {
       "questionUid": "qid_v1_3df568f2013b34bd67d8cab33c72be835be612a166eb4fbead1f62f7fd911797",
       "sourceArchiveFile": "original/middle/m3/1final/21_팔마중_1학기_기말_중3_수학.js",
       "sourceOrdinal": 23,
@@ -292488,6 +292757,43 @@
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ]
+    },
+    {
+      "questionUid": "qid_v1_4023146c3ed5ffe3fad3ce9e750532476b7732dabedcf9ce2c9eab0fa81a13c3",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": 5,
+      "sourceFingerprint": "32c473cce9377655af1dc30cd1115da9361dbbd2e9dea779ca4ccf4d03066187",
+      "contentFingerprint": "07ff81a6200026e66efc624a7a0f36f38069e66a38958fedf1aa5bae01908027",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 2
     },
     {
       "questionUid": "qid_v1_402349b0a4d0f33f07d5cd62b6e71e4a100ce80d008dc93acbc76f1b65d3714b",
@@ -308487,6 +308793,43 @@
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
       "difficultyBucket": 2
+    },
+    {
+      "questionUid": "qid_v1_43d682a2d97ccd04eefdaa1f18ef3f54a31dc50ff77b064d3ee015a4472b87fe",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": 4,
+      "sourceFingerprint": "6e6946f6ba5e4005f84efb0d1c15296e34d0b4b92ee95d05b1eab38f2e11c60c",
+      "contentFingerprint": "675e1d55fdbced84fe1d7cb7ee74ab5cf7ff744763bc95d0423ce525cb2f0847",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
     },
     {
       "questionUid": "qid_v1_43d717a8d670df2289e88bda7f6522203bfb5aaea5479957b9f3f3d73e7cc16c",
@@ -373773,6 +374116,43 @@
       "difficultyBucket": 2
     },
     {
+      "questionUid": "qid_v1_52cb3d93ebb96ea1ec7bf28441bed2d8b3ecb2f87e754ad43a53f012a721b532",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": 15,
+      "sourceFingerprint": "8c350c7cf839770144ba92a00c1183fdc10e4c43b7a54636a9619a39c0560c0d",
+      "contentFingerprint": "fce6d829d00ff7656f056309d6505a99ee1250da603239229ab01148b1b9b9f8",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수와 계수비교",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 4
+    },
+    {
       "questionUid": "qid_v1_52cbf4623c7f9efa82113814225329b04eb7cb559064318e4b43f54098e704c7",
       "sourceArchiveFile": "original/middle/m1/2mid/23_왕운중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 6,
@@ -386489,6 +386869,43 @@
       "approvalEvidence": [
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ]
+    },
+    {
+      "questionUid": "qid_v1_5585ce50bd42a25ced844919c9d47b25e2cdc2e1a5532b53848ae87cdcca9c39",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": 7,
+      "sourceFingerprint": "fca7ea64b1712e8bfe41964e262ca9e3d5c8e8ccda324c0ae7f4ca1774a48dda",
+      "contentFingerprint": "2b390dae392624e67ecae3110ead346e54a82b41ff34ee46ef110e9afd55aaae",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
     },
     {
       "questionUid": "qid_v1_5588c2822520056649549e0c6fa285438e6a9c423148a9e8bfafc7061f18fe0e",
@@ -410082,6 +410499,43 @@
       "l4Disposition": "ASSIGNED"
     },
     {
+      "questionUid": "qid_v1_5ad47e89f8cc015a852657135e02036c72f692db3075026d4dee24661521e7aa",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": 18,
+      "sourceFingerprint": "c81e5813773c69e510e6000e4878d609a2136655de1cb2065c5700a55e63a09d",
+      "contentFingerprint": "c95773b01dcca565f723b0a7e6491fecf648b9eb8b59f9a311ea002ba451b8cb",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수와 계수비교",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 4
+    },
+    {
       "questionUid": "qid_v1_5ad65111d03f342559056b026042125bd4ef88b6b2c1b9810e1a6391f5effb87",
       "sourceArchiveFile": "original/high/h1/2final/24_제일고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 22,
@@ -413084,6 +413538,47 @@
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
       "difficultyBucket": 5
+    },
+    {
+      "questionUid": "qid_v1_5b82c557806c9a86d89b6697f79ceb2ac639332cfc6e8877be83613f30807b28",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": 20,
+      "sourceFingerprint": "c42ad7682ae1dc86b7d30fb5378b49d579be8f1444cf87b9b1236398cbc82738",
+      "contentFingerprint": "cdaad10291c5e3c5898b635879cf4d6e057a126959372c3b14e6100f256a61aa",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_NUMBER_DIVISOR_MULTIPLE"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_DIVISIBILITY"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
     },
     {
       "questionUid": "qid_v1_5b8b814ad36db121a20558bf2d1982d38016c67407b2d3d1ecba49ffda1044f4",
@@ -418097,6 +418592,43 @@
       "approvalEvidence": [
         "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json"
       ]
+    },
+    {
+      "questionUid": "qid_v1_5c4de8d8ae3853d20231ad09616e43244c4704fef7eb3fe2bafcddb4f08a016a",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": 19,
+      "sourceFingerprint": "2cb7ce1ca1502fc06d6fe11a5b6d2b1dcd14f7c688f70b29bbf72e9a6db0eccb",
+      "contentFingerprint": "16d980ec0be4761107883d7d8b014bb2cd9719b868a4b166d08b7612e3515523",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
     },
     {
       "questionUid": "qid_v1_5c4e9cf6e09e83dfc8025ef2bbb0b69d4c3bdcedd72209ed27fbd26b00c723b0",
@@ -483746,6 +484278,45 @@
       "status": "FOUNDATION_DEFECT_CANDIDATE",
       "statusReason": "The source is an incircle tangent to all three triangle sides, not merely a generic center-radius completion. B is source-faithful; the specialized leaf remains foundation-candidate.",
       "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL"
+    },
+    {
+      "questionUid": "qid_v1_6b0e4ce980b5cd9da74afc44b2815f44880aee07f85c676fe0691dfd9d067467",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": 3,
+      "sourceFingerprint": "2c21e3c5051174fadd5cc323902bd7d3dc41f4ce28da36fdf937efc874e017e0",
+      "contentFingerprint": "811e35b0c7eab2b2e859428b6234fdcae029c9bcf0dd545c121085edb6e0c93a",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_FUNCTION_VALUE_CONSTRAINT"
+      ],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
     },
     {
       "questionUid": "qid_v1_6b0e5cd99bc07962baa6c66c19b8c3cc55048c9973217d7f205d158ed9cee014",
@@ -596708,6 +597279,43 @@
       "legacyLevelCompatibilityEvidence": "V1_3_FINAL_BUCKET_MAPPING"
     },
     {
+      "questionUid": "qid_v1_83e9e4054586d6d300e402c7793ad17ded100f3a1b9ef671bee3bd67523ace97",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": 9,
+      "sourceFingerprint": "53c678557f986790c6976e3e2130283c77804a95c319dc51fd841a92e20ee84d",
+      "contentFingerprint": "45aff887cc1ec4dc760d0737f8b4076298ef22c83b5be9359c0f24b1bb4a532c",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 2
+    },
+    {
       "questionUid": "qid_v1_83f1ce3a00383b4b57f6f007c689f34a7c6ab091b1c3ad5297765b48f295ec74",
       "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
       "sourceOrdinal": 17,
@@ -641642,6 +642250,43 @@
       ]
     },
     {
+      "questionUid": "qid_v1_8d542b81abd03dc944a8d9e8e06818410ea6151e765aa4da8cfa91f83db99910",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": 2,
+      "sourceFingerprint": "5c0b9ef214fc875868fc788f6bf7399b0f2607c126d3e8051c39f12b5d091bba",
+      "contentFingerprint": "189e7700ea8b7a33554dadb3b1670a8193b986281cc5577795071318df00d30f",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 2
+    },
+    {
       "questionUid": "qid_v1_8d57db4905646aa5401ea6068aefde312ea161afbbf29f6609e3a1a4103228c2",
       "sourceArchiveFile": "original/middle/m1/2mid/25_동산중_2학기_중간_중1_수학.js",
       "sourceOrdinal": 15,
@@ -645808,6 +646453,45 @@
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
       "difficultyBucket": 1
+    },
+    {
+      "questionUid": "qid_v1_8e5f0789520ea7b1a6d934bb33191b6a116965adf3bca7e4fcc708218f754c22",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": 12,
+      "sourceFingerprint": "4f3ef07a6301f6b8bc287163dbfcdafec0d41832c6f0cba06b76c63ec525fe07",
+      "contentFingerprint": "d9ff6e3f5a9c7b987ad39b071b9ff3c4e2b59836bb4915ad1283699515d75eca",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_MINIMUM_CATEGORY_COUNTS"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 4
     },
     {
       "questionUid": "qid_v1_8e6ba563e47cfdffd3a4ff5ee9434ea458661e7de3b0822c7bd9806f81f2cefb",
@@ -709173,6 +709857,45 @@
         "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
       ],
       "difficultyBucket": 4
+    },
+    {
+      "questionUid": "qid_v1_9b8c4f6fe13a98316cb667f6a34ae58b3509d6334e85899a13155a22b18a55b8",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": 13,
+      "sourceFingerprint": "ff2ca5f7cd7d61d8b3815f3b8230d137a6230bb90eea38554955fdcf7db8993c",
+      "contentFingerprint": "1386fa3058b90d95dfce10c0a711ade328ed4250423f8c57ae4b17b448e9877f",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_MINIMUM_CATEGORY_COUNTS"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 5
     },
     {
       "questionUid": "qid_v1_9b8e15acb913042d116e4368ed79d225b6688d35e3170c07523cc689731a2e73",
@@ -807499,6 +808222,47 @@
       "subUnitConfidence": "category_or_cue_inferred",
       "subUnitClassificationDepth": "complete_category",
       "reviewStatus": "manual_review"
+    },
+    {
+      "questionUid": "qid_v1_b0c180e90b930f7a6e73ebaeca5c85bdb060939567ddfc251281efac0fba8938",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": 14,
+      "sourceFingerprint": "5eb61373432485efcc5dbe383d28944072f76695b461b929900decf76b66d599",
+      "contentFingerprint": "abf585256ce08b1c03ae75a0f527e0c9b5d6264ebd093d13354e797df9ce5276",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_NUMBER_DIVISOR_MULTIPLE"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_DIVISIBILITY"
+      ],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 3
     },
     {
       "questionUid": "qid_v1_b0c51ed3b66bc7e496bd75a7fdd4e565a933031a42ef105f1e41d0a4845570f9",
@@ -1141783,6 +1142547,43 @@
       "difficultyBucket": 1
     },
     {
+      "questionUid": "qid_v1_f8e25b5737ad41eb3b49a69ca46a391364da32f0cd709153e07b67e96726a1bf",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": 21,
+      "sourceFingerprint": "4248a73843c3dbd030b3ad0ba7435f533577f675532b1c201d72d710baa1d727",
+      "contentFingerprint": "8c64213af7b9709dfea18f3c6d6842a233719593467ea6109cd1b56a95daeb13",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "registration_pending_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_source",
+        "subUnit": "approved_source",
+        "concept": "manual_review_pending",
+        "problemType": "manual_review_pending",
+        "template": "manual_review_pending",
+        "difficulty": "source_unreviewed"
+      },
+      "metadataRevision": "archive-registration-sync-v1",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs"
+      ],
+      "difficultyBucket": 5
+    },
+    {
       "questionUid": "qid_v1_f8e93aa14a3871b440d9480bab6e544ca9ee3b0ca0e4273ab99e160b6419ab17",
       "sourceArchiveFile": "original/middle/m1/2mid/25_팔마중_2학기_중간_중1_기출.js",
       "sourceOrdinal": 13,
@@ -1175678,9 +1176479,9 @@
   "productionWriteAllowed": true,
   "registrationSync": {
     "schemaVersion": "archive-registration-metadata-sync-v2",
-    "added": 23,
+    "added": 21,
     "addedFiles": [
-      "original/high/h2/1mid/21_매산여고_1학기_중간_고2_확률과통계.js"
+      "original/high/h2/1mid/21_순천고_1학기_중간_고2_확률과통계.js"
     ],
     "relocated": 0,
     "relocatedFiles": []
@@ -1175719,5 +1176520,5 @@
       "archive/data/r2e-intake/m3/26_왕운중_1학기_중간_중3_기출c.meta-review2.meta-v2.payload.json"
     ]
   },
-  "digest": "69ade3c27fc464875d852df67e0a95a7e7ca72029065ff6c4294a8bc89bd622d"
+  "digest": "6f05b6aea06d87464ffe38d995bef84964ad2d59737651139e604cc2e78c0b07"
 }
