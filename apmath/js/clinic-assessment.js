@@ -595,6 +595,283 @@
         });
     }
 
+    function buildAttemptComparisonIndex(input = {}) {
+        const classId = text(input.classId || input.class_id);
+        const assignments = Array.isArray(input.assignments) ? input.assignments : [];
+        const outcomes = Array.isArray(input.outcomes) ? input.outcomes : [];
+        const coverage = {
+            assignmentCount: assignments.length, exactCompleteAssignmentCount: 0,
+            unavailableAssignmentCount: 0, duplicateAssignmentCount: 0,
+            duplicateOutcomeCount: 0, identityConflictCount: 0,
+            incompleteQueryAssignmentCount: 0, cancelledAssignmentCount: 0,
+            malformedAssignmentCount: 0, malformedAttemptCount: 0,
+        };
+        const assignmentsById = new Map();
+        const outcomesById = new Map();
+        const sessionOwners = new Map();
+        const candidatesByStudent = Object.create(null);
+        const unavailableByStudent = Object.create(null);
+        const assignmentIds = new Set();
+
+        const addUnavailable = (studentId, key) => {
+            const id = text(studentId);
+            if (!id) return;
+            if (!unavailableByStudent[id]) unavailableByStudent[id] = {
+                partial: 0, unresolved: 0, pending: 0, excluded: 0, cancelled: 0,
+                unsubmitted: 0, submissionNotReported: 0, malformed: 0,
+            };
+            unavailableByStudent[id][key]++;
+        };
+        const outcomeIdOf = outcome => text(outcome?.assignmentId || outcome?.assignment_id ||
+            outcome?.result?.assignment?.assignmentId || outcome?.result?.assignment?.id);
+
+        for (const assignment of assignments) {
+            const id = text(assignment?.assignmentId || assignment?.id);
+            const rowClassId = text(assignment?.classId || assignment?.class_id);
+            if (!id) {
+                coverage.malformedAssignmentCount++;
+                continue;
+            }
+            assignmentIds.add(id);
+            if (!assignmentsById.has(id)) assignmentsById.set(id, []);
+            assignmentsById.get(id).push(assignment);
+            if (!classId || rowClassId !== classId) coverage.malformedAssignmentCount++;
+        }
+        for (const rows of assignmentsById.values()) {
+            if (rows.length > 1) coverage.duplicateAssignmentCount += rows.length - 1;
+        }
+        for (const outcome of outcomes) {
+            const id = outcomeIdOf(outcome);
+            if (!id) {
+                coverage.malformedAssignmentCount++;
+                continue;
+            }
+            if (!outcomesById.has(id)) outcomesById.set(id, []);
+            outcomesById.get(id).push(outcome);
+            const students = Array.isArray(outcome?.result?.students) ? outcome.result.students : [];
+            for (const student of students) {
+                const studentId = text(student?.studentId || student?.student_id);
+                for (const attempt of Array.isArray(student?.attempts) ? student.attempts : []) {
+                    const sessionId = text(attempt?.sessionId || attempt?.session_id);
+                    if (!sessionId) continue;
+                    if (!sessionOwners.has(sessionId)) sessionOwners.set(sessionId, []);
+                    sessionOwners.get(sessionId).push(`${id}\u0000${studentId}`);
+                }
+            }
+        }
+        for (const rows of outcomesById.values()) {
+            if (rows.length > 1) coverage.duplicateOutcomeCount += rows.length - 1;
+        }
+        const conflictedSessions = new Set([...sessionOwners]
+            .filter(([, owners]) => owners.length !== 1).map(([sessionId]) => sessionId));
+        coverage.identityConflictCount = conflictedSessions.size;
+
+        for (const [assignmentId, assignmentRows] of assignmentsById) {
+            const outcomesForAssignment = outcomesById.get(assignmentId) || [];
+            if (assignmentRows.length !== 1 || outcomesForAssignment.length !== 1) {
+                coverage.unavailableAssignmentCount++;
+                continue;
+            }
+            const assignment = assignmentRows[0];
+            const outcome = outcomesForAssignment[0];
+            if (outcome?.error) {
+                coverage.unavailableAssignmentCount++;
+                coverage.incompleteQueryAssignmentCount++;
+                const staleStudents = Array.isArray(outcome?.result?.students) ? outcome.result.students : [];
+                for (const student of staleStudents) addUnavailable(student?.studentId || student?.student_id, 'unresolved');
+                continue;
+            }
+            const result = plainObject(outcome?.result) ? outcome.result : null;
+            if (!result) {
+                coverage.unavailableAssignmentCount++;
+                coverage.incompleteQueryAssignmentCount++;
+                continue;
+            }
+            const resultAssignment = plainObject(result?.assignment) ? result.assignment : null;
+            const expectedUids = Array.isArray(assignment.questionUids) ? assignment.questionUids.map(text) : [];
+            const resultUids = Array.isArray(resultAssignment?.questionUids) ? resultAssignment.questionUids.map(text) : [];
+            const assignmentCancelled = assignment.cancelled === true || Boolean(text(assignment.cancelledAt || assignment.cancelled_at));
+            const resultCancelled = resultAssignment?.cancelled === true || Boolean(text(resultAssignment?.cancelledAt || resultAssignment?.cancelled_at));
+            const expectedMode = text(assignment.recommendationMode);
+            const queryComplete = Boolean(result && resultAssignment && result.coverage?.exactAssignment === true &&
+                result.coverage?.status === 'complete' && result.coverage?.queryCoverage?.complete === true &&
+                result.coverage?.frozenQuestionBridgeVerified === true);
+            const assignmentIdentityValid = Boolean(classId && result && resultAssignment &&
+                text(assignment.classId || assignment.class_id) === classId &&
+                text(outcome.assignmentId || outcome.assignment_id) === assignmentId &&
+                text(resultAssignment.assignmentId) === assignmentId && text(resultAssignment.classId) === classId &&
+                (!expectedMode || text(resultAssignment.recommendationMode) === expectedMode) &&
+                (!text(assignment.operationId) || text(resultAssignment.operationId) === text(assignment.operationId)) &&
+                (!assignment.operationSignature || text(resultAssignment.operationSignature) === text(assignment.operationSignature)) &&
+                Number.isInteger(Number(assignment.questionCount)) && Number(assignment.questionCount) === expectedUids.length &&
+                Number(resultAssignment.questionCount) === expectedUids.length &&
+                expectedUids.length > 0 && expectedUids.every(uid => QUESTION_UID.test(uid)) &&
+                new Set(expectedUids).size === expectedUids.length && stableStringify(expectedUids) === stableStringify(resultUids) &&
+                resultUids.length === expectedUids.length &&
+                Array.isArray(result.students));
+            if (!assignmentIdentityValid) {
+                coverage.unavailableAssignmentCount++;
+                coverage.malformedAssignmentCount++;
+                for (const student of Array.isArray(result?.students) ? result.students : []) {
+                    addUnavailable(student?.studentId || student?.student_id, 'malformed');
+                }
+                continue;
+            }
+            if (!queryComplete) {
+                coverage.unavailableAssignmentCount++;
+                coverage.incompleteQueryAssignmentCount++;
+                for (const student of result.students) addUnavailable(student?.studentId || student?.student_id, 'unresolved');
+                continue;
+            }
+            if (assignmentCancelled || resultCancelled) {
+                coverage.unavailableAssignmentCount++;
+                coverage.cancelledAssignmentCount++;
+                for (const student of result.students) addUnavailable(student?.studentId || student?.student_id, 'cancelled');
+                continue;
+            }
+            coverage.exactCompleteAssignmentCount++;
+            const studentsById = new Map();
+            let malformedStudents = false;
+            for (const student of result.students) {
+                const studentId = text(student?.studentId || student?.student_id);
+                if (!studentId || !Array.isArray(student?.attempts)) {
+                    malformedStudents = true;
+                    continue;
+                }
+                if (!studentsById.has(studentId)) studentsById.set(studentId, []);
+                studentsById.get(studentId).push(student);
+            }
+            if (malformedStudents || [...studentsById.values()].some(rows => rows.length !== 1)) {
+                coverage.malformedAssignmentCount++;
+                coverage.unavailableAssignmentCount++;
+                for (const studentId of studentsById.keys()) addUnavailable(studentId, 'malformed');
+                continue;
+            }
+            const mode = assignment.provenanceKind === 'legacy_transfer' ? 'legacy'
+                : ['same_uid', 'similar_uid'].includes(expectedMode) ? expectedMode : '';
+            if (!mode) {
+                coverage.unavailableAssignmentCount++;
+                coverage.malformedAssignmentCount++;
+                for (const studentId of studentsById.keys()) addUnavailable(studentId, 'malformed');
+                continue;
+            }
+            for (const [studentId, rows] of studentsById) {
+                const student = rows[0];
+                if (student.excluded === true || text(student.status).toLowerCase() === 'excluded') {
+                    addUnavailable(studentId, 'excluded');
+                    continue;
+                }
+                for (const attempt of student.attempts) {
+                    const submissionStatus = text(attempt?.submissionStatus).toLowerCase();
+                    if (submissionStatus !== 'submitted') {
+                        addUnavailable(studentId, submissionStatus === 'unsubmitted' ? 'unsubmitted' : 'submissionNotReported');
+                        continue;
+                    }
+                    const status = text(attempt?.status).toLowerCase();
+                    if (status !== 'result') {
+                        const unavailableKey = {
+                            partial: 'partial', unresolved: 'unresolved', pending: 'pending',
+                            excluded: 'excluded', cancelled: 'cancelled', cancelled_pending: 'cancelled',
+                        }[status];
+                        if (unavailableKey) addUnavailable(studentId, unavailableKey);
+                        else {
+                            coverage.malformedAttemptCount++;
+                            addUnavailable(studentId, 'malformed');
+                        }
+                        continue;
+                    }
+                    const sessionId = text(attempt?.sessionId || attempt?.session_id);
+                    const questionResults = Array.isArray(attempt.questionResults) ? attempt.questionResults : [];
+                    const scoreAvailable = attempt.scoreAvailable === true;
+                    const score = Number(attempt.score);
+                    const rowsValid = sessionId && !conflictedSessions.has(sessionId) && questionResults.length === expectedUids.length &&
+                        questionResults.every((row, index) => Number(row?.orderNo) === index + 1 &&
+                            text(row?.questionUid) === expectedUids[index] &&
+                            ['correct', 'wrong'].includes(text(row?.status).toLowerCase()) &&
+                            typeof row?.isCorrect === 'boolean' && row.isCorrect === (text(row.status).toLowerCase() === 'correct')) &&
+                        (!scoreAvailable || attempt.score !== null && attempt.score !== undefined && text(attempt.score) !== '' && Number.isFinite(score));
+                    if (!rowsValid) {
+                        coverage.malformedAttemptCount++;
+                        addUnavailable(studentId, conflictedSessions.has(sessionId) ? 'unresolved' : 'malformed');
+                        continue;
+                    }
+                    const candidate = {
+                        classId, studentId, assignmentId, sessionId,
+                        examDate: text(attempt.examDate), examTitle: text(assignment.examTitle || assignment.exam_title),
+                        recommendationMode: mode,
+                        scoreAvailable, score: scoreAvailable ? score : null,
+                        questionUids: [...expectedUids],
+                        questionResults: questionResults.map(row => ({
+                            orderNo: Number(row.orderNo), questionUid: text(row.questionUid),
+                            status: text(row.status).toLowerCase(), isCorrect: row.isCorrect,
+                        })),
+                    };
+                    if (!candidatesByStudent[studentId]) candidatesByStudent[studentId] = [];
+                    candidatesByStudent[studentId].push(candidate);
+                }
+                if (!student.attempts.length) addUnavailable(studentId, assignment.cancelled || resultAssignment.cancelled ? 'cancelled' : 'pending');
+            }
+        }
+        for (const [outcomeId, rows] of outcomesById) {
+            if (!assignmentIds.has(outcomeId)) coverage.malformedAssignmentCount += rows.length;
+        }
+        for (const list of Object.values(candidatesByStudent)) list.forEach(freezeDeep);
+        Object.values(candidatesByStudent).forEach(Object.freeze);
+        Object.values(unavailableByStudent).forEach(Object.freeze);
+        return freezeDeep({ classId, candidatesByStudent, unavailableByStudent, coverage });
+    }
+
+    function compareAssessmentAttempts(input = {}) {
+        const index = input.index;
+        const classId = text(input.classId || input.class_id);
+        const studentId = text(input.studentId || input.student_id);
+        const baselineKey = text(input.baselineKey);
+        const comparisonKey = text(input.comparisonKey);
+        const blocked = reason => ({ status: 'unavailable', reason });
+        if (!index || text(index.classId) !== classId || !classId || !studentId || !baselineKey || !comparisonKey || baselineKey === comparisonKey) {
+            return blocked('선택한 응시의 반·학생 또는 응시 식별을 확인할 수 없습니다.');
+        }
+        const candidates = Array.isArray(index.candidatesByStudent?.[studentId]) ? index.candidatesByStudent[studentId] : [];
+        const findCandidate = key => candidates.filter(candidate => JSON.stringify([candidate.assignmentId, candidate.sessionId]) === key);
+        const baselineRows = findCandidate(baselineKey);
+        const comparisonRows = findCandidate(comparisonKey);
+        if (baselineRows.length !== 1 || comparisonRows.length !== 1) return blocked('현재 조회 범위에서 선택한 완결 응시를 하나로 확인할 수 없습니다.');
+        const baseline = baselineRows[0];
+        const comparison = comparisonRows[0];
+        if (baseline === comparison || baseline.classId !== classId || comparison.classId !== classId ||
+            baseline.studentId !== studentId || comparison.studentId !== studentId ||
+            baseline.assignmentId === comparison.assignmentId && baseline.sessionId === comparison.sessionId) {
+            return blocked('같은 반·학생의 서로 다른 응시 두 건을 확인할 수 없습니다.');
+        }
+        const baselineByUid = new Map(baseline.questionResults.map(row => [row.questionUid, row]));
+        const comparisonByUid = new Map(comparison.questionResults.map(row => [row.questionUid, row]));
+        const overlap = baseline.questionUids.filter(uid => comparisonByUid.has(uid));
+        const baselineOnly = baseline.questionUids.filter(uid => !comparisonByUid.has(uid));
+        const comparisonOnly = comparison.questionUids.filter(uid => !baselineByUid.has(uid));
+        const sameAssignment = baseline.assignmentId === comparison.assignmentId;
+        const transitions = sameAssignment ? overlap.map(uid => ({
+            questionUid: uid,
+            baselineStatus: baselineByUid.get(uid).status,
+            comparisonStatus: comparisonByUid.get(uid).status,
+        })) : [];
+        const observed = attempt => ({
+            questionCount: attempt.questionResults.length,
+            correctCount: attempt.questionResults.filter(row => row.status === 'correct').length,
+            wrongCount: attempt.questionResults.filter(row => row.status === 'wrong').length,
+            scoreAvailable: attempt.scoreAvailable,
+            score: attempt.score,
+        });
+        return freezeDeep({
+            status: 'ready', sameAssignment,
+            baseline: { ...baseline, observed: observed(baseline) },
+            comparison: { ...comparison, observed: observed(comparison) },
+            overlappingUids: overlap,
+            baselineOnlyUids: baselineOnly,
+            comparisonOnlyUids: comparisonOnly,
+            transitions,
+        });
+    }
+
     function sortByDateNewest(rows) {
         return [...(Array.isArray(rows) ? rows : [])].sort((a, b) =>
             text(b.updated_at || b.updatedAt || b.exam_date || b.examDate || b.created_at)
@@ -1817,10 +2094,15 @@
                     const sessionRows = resultItemsBySession.get(text(session.id)) || [];
                     const result = questionResultsForSession(session, expectedUids, sessionRows, bridgeVerified);
                     const scorePresent = session.score !== null && session.score !== undefined && text(session.score) !== '' && Number.isFinite(Number(session.score));
+                    const rawSubmissionStatus = session.is_submitted ?? session.isSubmitted;
+                    const normalizedSubmissionStatus = text(rawSubmissionStatus).toLowerCase();
+                    const submissionStatus = ['true', '1'].includes(normalizedSubmissionStatus) ? 'submitted'
+                        : ['false', '0'].includes(normalizedSubmissionStatus) ? 'unsubmitted' : 'not_reported';
                     return {
                         sessionId: text(session.id),
                         examDate: text(session.exam_date),
                         updatedAt: text(session.updated_at),
+                        submissionStatus,
                         score: result.status === 'result' && scorePresent ? Number(session.score) : null,
                         scoreAvailable: result.status === 'result' && scorePresent,
                         questionResults: result.questionResults,
@@ -1919,6 +2201,8 @@
             loadResults,
             canonicalResultStatus,
             summarizeHistory,
+            buildAttemptComparisonIndex,
+            compareAssessmentAttempts,
         });
     }
 
@@ -1932,6 +2216,8 @@
         canonicalResultStatus,
         assignmentMarker,
         summarizeHistory,
+        buildAttemptComparisonIndex,
+        compareAssessmentAttempts,
         stableStringify,
     });
 }));

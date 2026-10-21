@@ -21,31 +21,6 @@
       .quick-bundle-entry { display: flex; flex-direction: column; gap: 8px; }
       .quick-bundle-entry > button { width: 100%; }
       .quick-bundle-entry > label { display: flex; align-items: center; gap: 6px; font-size: 14px; cursor: pointer; }
-      .universe-entry-bar { display: none; }
-      body[data-archive-view="home"] .universe-entry-bar {
-        display: flex;
-        justify-content: flex-end;
-        padding: 10px 30px 0;
-      }
-      .universe-entry-bar a {
-        display: inline-flex;
-        align-items: center;
-        min-height: 38px;
-        padding: 0 15px;
-        border: 1px solid #38577c;
-        border-radius: 999px;
-        background: linear-gradient(135deg, #102342, #1a3152);
-        color: #edf5ff;
-        font-size: 13px;
-        font-weight: 800;
-        text-decoration: none;
-        white-space: nowrap;
-      }
-      .universe-entry-bar a:hover { background: linear-gradient(135deg, #18355d, #264875); }
-      .universe-entry-bar a:focus-visible { outline: 3px solid #7cc7ff; outline-offset: 3px; }
-      @media (max-width: 960px) {
-        body[data-archive-view="home"] .universe-entry-bar { padding: 8px 16px 0; }
-      }
     </style>
     <script defer src="archive2-navigation.js?v=20260929-saved-library-2"></script>
     <script defer src="mixer-selector.js"></script>
@@ -66,7 +41,6 @@
     <a class="skip" href="#content">본문으로 이동</a>
     <header data-archive-navigation="workspace"></header>
     <nav class="status" aria-label="공통 문항 검색"><a href="problem-bank-search.html">기출·생성 공통 Meta 검색</a></nav>
-    <nav class="universe-entry-bar" aria-label="아카이브 우주 탐색"><a href="prototypes/ap-galaxy/">아카이브 유니버스 · 우주 탐색</a></nav>
     <div id="status" class="status" role="status" aria-live="polite">
       문항 목록을 준비하고 있습니다.
     </div>
