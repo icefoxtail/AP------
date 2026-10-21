@@ -20,13 +20,13 @@ metadataRevision:'meta-foundation:PROBABILITY_STATISTICS@1.0.0:finalqa-reviewed-
 metadataStatus:'approved_exam_finalqa',reviewStatus:'reviewed_pass',metaFoundationStatus:'ACTIVE',
 metaFoundationPackId:'PROBABILITY_STATISTICS',metaFoundationPackVersion:'1.0.0',
 foundationTaxonomyStatus:'CONFIRMED',defaultSelectable:true,curriculum:'2015',curriculumKey:'2015',
-courseKey:'확률과 통계',L1:r.L1,L2:r.L2,L3:r.L3,L4:r.L4,
+courseKey:'확률과 통계',L1:'통계',L2:r.standardUnitKey==='H15-PS-05'?'확률분포':'통계적 추정',L3:r.L3,L4:r.L4,
 problemTypeKey:r.problemTypeKey,templateKey:r.templateKey,difficultyBucket:r.difficultyBucket,
 crossConceptKeys:r.crossConceptKeys||[],conditionKeys:r.conditionKeys||[],
 integrationPattern:r.integrationPattern||'NONE',legacyLevelCompatibility:r.legacyLevelCompatibility||'NORMAL',
 fieldStatus:{...m.fieldStatus,standardUnit:'approved_finalqa',subUnit:'approved_finalqa',concept:'approved_finalqa',
 problemType:'approved_finalqa',template:'approved_finalqa',difficulty:'approved_finalqa'}});
-const link={grade:'고2',curriculumKey:'2015',courseKey:'확률과 통계',L1:r.L1,L2:r.L2,
+const link={grade:'고2',curriculumKey:'2015',courseKey:'확률과 통계',L1:'통계',L2:r.standardUnitKey==='H15-PS-05'?'확률분포':'통계적 추정',
 sourceFile:file,sourceOrdinal:n,sourceFingerprint:fp,sourceBodyFingerprint:body,
 reason:'Gangnam25 final QA canonical reviewed q'+n};
 let old=links.records.find(x=>x.sourceFile===file&&x.sourceOrdinal===n);
