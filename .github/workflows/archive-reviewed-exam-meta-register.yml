@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - ".archive-meta-register/inbox/*.json"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -22,6 +23,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -30,36 +32,52 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Find request
+      - name: Find requests
         id: req
         shell: bash
         run: |
           set -euo pipefail
           mapfile -t reqs < <(find .archive-meta-register/inbox -maxdepth 1 -type f -name '*.json' -print 2>/dev/null | sort)
-          if [[ ${#reqs[@]} -ne 1 ]]; then
-            echo "Expected exactly one reviewed-exam meta request; found ${#reqs[@]}" >&2
-            exit 1
-          fi
-          echo "path=${reqs[0]}" >> "$GITHUB_OUTPUT"
+          printf '%s\n' "${reqs[@]}" | sed '/^$/d' > "$RUNNER_TEMP/archive-meta-requests.txt"
+          echo "count=${#reqs[@]}" >> "$GITHUB_OUTPUT"
       - name: Register reviewed exam meta and runtime
-        run: node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request "${{ steps.req.outputs.path }}" --write
+        if: steps.req.outputs.count != '0'
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test tests/archive-reviewed-exam-registration-v2.test.mjs
+          while IFS= read -r request; do
+            node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request "$request" --write
+          done < "$RUNNER_TEMP/archive-meta-requests.txt"
       - name: Rebuild DB, UID, index, catalog, and registration projections
+        if: steps.req.outputs.count != '0'
         run: python archive/build_db.py
       - name: Validate registration and canonical baseline
+        if: steps.req.outputs.count != '0'
         run: |
           node archive/tools/verify-archive-registration.mjs
           node archive/tools/build-archive2-catalog.mjs --check
           node archive/tools/meta-foundation/compile-meta-foundation.mjs --canonical-only-check
+          while IFS= read -r request; do
+            if [[ "$(jq -r .schemaVersion "$request")" == "archive-reviewed-exam-meta-register-request-v2" ]]; then
+              node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request "$request" --verify-projection
+            fi
+          done < "$RUNNER_TEMP/archive-meta-requests.txt"
           git diff --check
       - name: Commit final reviewed-meta registration
+        if: steps.req.outputs.count != '0'
         shell: bash
-        env:
-          REQUEST: ${{ steps.req.outputs.path }}
         run: |
           set -euo pipefail
-          rm -f -- "$REQUEST"
+          while IFS= read -r request; do
+            rm -f -- "$request"
+            git add -- "$request"
+          done < "$RUNNER_TEMP/archive-meta-requests.txt"
           git add -- \
             archive/data/question_metadata.json \
+            archive/data/master_tables/js_archive_tag_master.json \
+            archive/data/meta-foundation/canonical/ \
+            archive/data/meta-foundation/compiled/ \
             archive/data/meta-foundation/runtime/*.json \
             archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/*.json \
             archive/db.js \
@@ -73,8 +91,7 @@ jobs:
             archive/data/archive2-source-verification-index.json \
             archive/data/archive2-source-verification/v1/*.json \
             archive/data/archive2-crosswalk-inventory.json \
-            archive/data/basic-scope-parent-links.json \
-            "$REQUEST"
+            archive/data/basic-scope-parent-links.json
           if git diff --cached --quiet; then
             echo "No registration changes to commit."
             exit 0
@@ -83,3 +100,11 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "chore(archive): register reviewed exam meta [skip ci]"
           git push origin HEAD:main
+          git fetch --no-tags origin main
+          if [[ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]]; then
+            echo "main advanced after registration; remote readback is not complete" >&2
+            exit 1
+          fi
+          # Verify fetched remote bytes, not only the local generation result.
+          git diff --exit-code HEAD origin/main -- archive/data archive/question-index.js archive/db.js
+          echo "registered_main_sha=$(git rev-parse origin/main)" >> "$GITHUB_STEP_SUMMARY"

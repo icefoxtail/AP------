@@ -50,7 +50,7 @@ function addAlias(rows, seen, row) {
   rows.push(row);
 }
 
-function loadCanonical() {
+export function loadCanonical(readJson = (p) => JSON.parse(readText(p))) {
   const indexPath = rel(canonicalRoot, "registry_index.json");
   const index = readJson(indexPath);
   const packs = index.activePacks.map((entry) => {
@@ -143,7 +143,7 @@ function buildAliases(canonical) {
   };
 }
 
-function buildCompiled(canonical) {
+export function buildCompiled(canonical) {
   const problemTypes = canonical.packs.flatMap((pack) => pack.taxonomy.problemTypes || []);
   const templates = canonical.packs.flatMap((pack) => pack.taxonomy.templates || []);
   const concepts = canonical.shards.flatMap((shard) => shard.data.concepts || []);
@@ -300,7 +300,7 @@ function assertGate(regression) {
   if (failures.length) throw new Error("Meta Foundation compile gate failed: " + failures.join(", "));
 }
 
-function compiledOutputs(canonical, compiled) {
+export function compiledOutputs(canonical, compiled) {
   const master = {
     schemaVersion: "meta-foundation-compiled-v1",
     status: "DERIVED_READ_ONLY",
@@ -330,7 +330,7 @@ function compiledOutputs(canonical, compiled) {
   ]);
 }
 
-function buildRegistryIndex(canonical, outputs) {
+export function buildRegistryIndex(canonical, outputs, readText = (p) => fs.readFileSync(abs(p), "utf8")) {
   const next = clone(canonical.index);
   for (const entry of next.activePacks) {
     const pack = canonical.packs.find((x) => x.meta.packId === entry.id);
