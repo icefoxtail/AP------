@@ -80,8 +80,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "제곱의 합 공식은 첫째항 $1^2$부터의 합이므로, 앞의 세 항을 빼서 범위를 맞춘다.\n$\\displaystyle\\sum_{k=4}^{11}k^2=\\sum_{k=1}^{11}k^2-(1^2+2^2+3^2)$\n\n먼저 제곱의 합 공식을 적용하면\n$\\displaystyle\\sum_{k=1}^{11}k^2=\\dfrac{11(11+1)(2\\cdot11+1)}6$\n$=\\dfrac{11\\cdot12\\cdot23}{6}$\n$=11\\cdot2\\cdot23$\n$=506$이다.\n빼야 할 세 항의 합은\n$1^2+2^2+3^2=1+4+9$\n$=14$이다.\n따라서\n$\\displaystyle\\sum_{k=4}^{11}k^2=506-14$\n$=492$이다.\n\n따라서 정답은 ②이다.",
-    "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
-    "subUnit": "수열의 기본",
+    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -164,8 +164,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "두 합의 범위가 같으므로 같은 $k$에 해당하는 항끼리 먼저 묶는다.\n$\\displaystyle\\sum_{k=1}^{9}(k+1)^3-3\\sum_{k=1}^{9}k(k+1)-8$\n$=\\displaystyle\\sum_{k=1}^{9}\\{(k+1)^3-3k(k+1)\\}-8$\n\n합 안의 식을 전개하면\n$(k+1)^3-3k(k+1)$\n$=k^3+3k^2+3k+1-3k^2-3k$\n$=k^3+1$이다.\n따라서 구하는 값은\n$\\displaystyle\\sum_{k=1}^{9}(k^3+1)-8$\n$=\\displaystyle\\sum_{k=1}^{9}k^3+\\sum_{k=1}^{9}1-8$이다.\n\n세제곱의 합 공식으로\n$\\displaystyle\\sum_{k=1}^{9}k^3=\\left\\{\\dfrac{9(9+1)}2\\right\\}^2$\n$=45^2$\n$=2025$이다.\n또한 $1$을 $9$번 더하므로\n$\\displaystyle\\sum_{k=1}^{9}1=9$이다.\n따라서 전체 값은\n$2025+9-8=2026$이다.\n\n따라서 정답은 ④이다.",
-    "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
-    "subUnit": "수열의 기본",
+    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -304,8 +304,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "부분합에서 일반항을 구할 때에는 첫째항을 따로 확인한다.\n$a_1=S_1=2\\cdot1^2+3\\cdot1=5$이다.\n\n$n\\ge2$에서는 앞의 $n-1$개 항의 합을 빼면 제$n$항만 남으므로\n$a_n=S_n-S_{n-1}$\n$=(2n^2+3n)-\\{2(n-1)^2+3(n-1)\\}$\n$=(2n^2+3n)-\\{2n^2-4n+2+3n-3\\}$\n$=(2n^2+3n)-(2n^2-n-1)$\n$=4n+1$이다.\n$n=1$을 넣어도 $4\\cdot1+1=5=a_1$이므로\n모든 자연수 $n$에 대하여 $a_n=4n+1$이다.\n\n따라서\n$a_k=4k+1$, $a_{k+1}=4k+5$이다.\n두 분모의 차가 $4$이므로\n$\\dfrac1{4k+1}-\\dfrac1{4k+5}$\n$=\\dfrac{(4k+5)-(4k+1)}{(4k+1)(4k+5)}$\n$=\\dfrac4{(4k+1)(4k+5)}$이다.\n양변을 $4$로 나누면\n$\\dfrac1{a_ka_{k+1}}=\\dfrac14\\left(\\dfrac1{4k+1}-\\dfrac1{4k+5}\\right)$이다.\n\n이제 합을 펼치면\n$\\displaystyle\\sum_{k=1}^{15}\\dfrac1{a_ka_{k+1}}$\n$=\\dfrac14\\left\\{\\left(\\dfrac15-\\dfrac19\\right)+\\left(\\dfrac19-\\dfrac1{13}\\right)+\\cdots+\\left(\\dfrac1{61}-\\dfrac1{65}\\right)\\right\\}$이다.\n중간의 분수들은 서로 소거되고 처음과 마지막만 남는다.\n$=\\dfrac14\\left(\\dfrac15-\\dfrac1{65}\\right)$\n$=\\dfrac14\\left(\\dfrac{13}{65}-\\dfrac1{65}\\right)$\n$=\\dfrac14\\cdot\\dfrac{12}{65}$\n$=\\dfrac3{65}$이다.\n\n따라서 정답은 ①이다.",
-    "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
-    "subUnit": "수열의 기본",
+    "subUnitKey": "H22-A-07-SEQUENCE_SUM",
+    "subUnit": "수열의 합",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -545,12 +545,12 @@ window.questionBank = [
   {
     "id": 20,
     "level": "상",
-    "category": "수열의 합",
+    "category": "등차수열과 등비수열",
     "originalCategory": "수열의 합",
     "standardCourse": "대수",
-    "standardUnitKey": "H22-A-07",
-    "standardUnit": "수열의 합",
-    "standardUnitOrder": 7,
+    "standardUnitKey": "H22-A-06",
+    "standardUnit": "등차수열과 등비수열",
+    "standardUnitOrder": 6,
     "questionType": "서술형",
     "layoutTag": "grid",
     "tags": [
@@ -561,7 +561,7 @@ window.questionBank = [
     "choices": [],
     "answer": "$186$",
     "solution": "첫째항은 첫째 부분합과 같으므로\n$a_1=S_1$\n$=3\\cdot2^2+k$\n$=12+k$이다.\n\n둘째항과 셋째항은 이웃한 부분합의 차로 구한다.\n$a_2=S_2-S_1$\n$=(3\\cdot2^3+k)-(12+k)$\n$=(24+k)-(12+k)$\n$=12$이다.\n$a_3=S_3-S_2$\n$=(3\\cdot2^4+k)-(24+k)$\n$=(48+k)-(24+k)$\n$=24$이다.\n\n등비수열의 공비를 $r$라 하자.\n$a_2=12\\ne0$이므로\n$r=\\dfrac{a_3}{a_2}$\n$=\\dfrac{24}{12}$\n$=2$이다.\n첫째항과 둘째항 사이에도 같은 공비가 적용되므로\n$a_2=2a_1$\n$12=2(12+k)$\n$12=24+2k$\n$2k=-12$\n$k=-6$이다.\n\n따라서 첫째항은\n$a_1=12+(-6)=6$이다.\n공비가 $2$이므로\n$l=a_6=a_1r^5$\n$=6\\cdot2^5$\n$=6\\cdot32$\n$=192$이다.\n따라서\n$k+l=-6+192$\n$=186$이다.",
-    "subUnitKey": "H22-A-07-SEQUENCE_BASIC",
+    "subUnitKey": "H22-A-06-SEQUENCE_BASIC",
     "subUnit": "수열의 기본",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
