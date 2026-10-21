@@ -62,6 +62,8 @@ jobs:
           node archive/tools/build-archive2-catalog.mjs --check
           node archive/tools/verify-archive-registration.mjs
           git add -- \
+            archive/data/meta-foundation/compiled \
+            archive/data/meta-foundation/canonical/registry_index.json \
             archive/data/archive2-canonical-input-manifest.json \
             archive/data/archive2-source-verification-index.json \
             archive/data/basic-scope-parent-links.json \
