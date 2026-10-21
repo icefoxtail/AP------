@@ -1,0 +1,92 @@
+name: Geumdang 2026 FinalQA Refresh Latest Main
+
+on:
+  push:
+    branches: [finalqa-geumdang26-20261021]
+    paths:
+      - '.github/workflows/geumdang26-algebra-refresh-main.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: geumdang26-finalqa-refresh-main
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: finalqa-geumdang26-20261021
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Merge latest main preserving separate probability assets, then rebuild only generated projections
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin main
+          set +e
+          git merge --no-commit --no-ff origin/main
+          result=$?
+          set -e
+          if [[ "$result" -ne 0 ]]; then
+            mapfile -t conflicts < <(git diff --name-only --diff-filter=U)
+            [[ "${#conflicts[@]}" -gt 0 ]] || exit 1
+            for file in "${conflicts[@]}"; do
+              case "$file" in
+                archive/data/archive2-canonical-input-manifest.json|archive/data/archive2-source-verification-index.json|archive/data/basic-scope-parent-links.json|archive/data/meta-foundation/runtime/runtime-bridge-receipt.json)
+                  git checkout --theirs -- "$file"
+                  git add -- "$file"
+                  ;;
+                *)
+                  echo "Non-generated conflict requires distinct owner: $file" >&2
+                  exit 1
+                  ;;
+              esac
+            done
+          fi
+          node archive/tools/meta-foundation/compile-meta-foundation.mjs --canonical-only-check
+          python archive/build_db.py
+          node archive/tools/build-archive2-catalog.mjs --check
+          node archive/tools/verify-archive-registration.mjs
+          git add -- \
+            archive/data/archive2-canonical-input-manifest.json \
+            archive/data/archive2-source-verification-index.json \
+            archive/data/basic-scope-parent-links.json \
+            archive/data/meta-foundation/runtime/runtime-bridge-receipt.json \
+            archive/data/archive2-catalog.json \
+            archive/data/archive2-crosswalk-inventory.json \
+            archive/data/archive2-source-verification/v1 \
+            archive/data/question_identity_map.json \
+            archive/data/question_metadata.json \
+            archive/data/basic-scope-source-links.json \
+            archive/data/meta-foundation/runtime \
+            archive/db.js \
+            archive/question-index.js \
+            archive/question-index-report.md \
+            archive/question-index-audit.md \
+            archive/question-identity.js
+          git diff --cached --check
+          git commit -m "merge(main): incorporate concurrent canonical changes and refresh Geumdang PT/TPL projections [skip ci]"
+          git fetch origin finalqa-geumdang26-20261021
+          git rebase origin/finalqa-geumdang26-20261021
+          git push origin HEAD:finalqa-geumdang26-20261021
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Confirm real Geumdang student output on integrated latest main
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tools/check-geumdang26-algebra-finalqa-browser.cjs
