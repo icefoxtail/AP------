@@ -1,0 +1,33 @@
+name: Geumdang 2026 Algebra Student Chrome FinalQA
+
+on:
+  push:
+    branches: [finalqa-geumdang26-20261021]
+    paths:
+      - 'tools/check-geumdang26-algebra-finalqa-browser.cjs'
+      - '.github/workflows/geumdang26-algebra-student-chrome.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  student-chrome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: finalqa-geumdang26-20261021
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Verify Geumdang exact 21-question finder, exam, explanations, answer sheets and Meta
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tools/check-geumdang26-algebra-finalqa-browser.cjs
