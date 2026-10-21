@@ -59,7 +59,7 @@ jobs:
           node archive/tools/build-archive2-catalog.mjs --check
           node archive/tools/meta-foundation/compile-meta-foundation.mjs --canonical-only-check
           while IFS= read -r request; do
-            if [[ "$(jq -r .schemaVersion "$request")" == "archive-reviewed-exam-meta-register-request-v2" ]]; then
+            if [[ "$(jq -r .schemaVersion "$request")" == "archive-reviewed-exam-meta-register-request-v2" || "$(jq -r .schemaVersion "$request")" == "archive-finalqa-pinpoint-register-request-v1" ]]; then
               node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request "$request" --verify-projection
             fi
           done < "$RUNNER_TEMP/archive-meta-requests.txt"
