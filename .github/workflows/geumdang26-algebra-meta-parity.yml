@@ -40,14 +40,6 @@ jobs:
           node archive/tools/build-archive2-catalog.mjs --check
           node archive/tools/verify-archive-registration.mjs
           git diff --check
-      - uses: browser-actions/setup-chrome@v1
-        id: chrome
-        with:
-          chrome-version: stable
-      - name: Verify actual Geumdang 21Q student exam solutions answers and catalog
-        env:
-          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
-        run: node tools/check-geumdang26-algebra-finalqa-browser.cjs
       - name: Commit exact metadata and dependent generated projections only
         run: |
           set -euo pipefail
@@ -74,3 +66,11 @@ jobs:
           git diff --cached --stat
           git commit -m "fix(meta): bind Geumdang 21 QID source fingerprints to verified consumer/search [skip ci]"
           git push origin HEAD:finalqa-geumdang26-20261021
+      - uses: browser-actions/setup-chrome@v1
+        id: chrome
+        with:
+          chrome-version: stable
+      - name: Verify actual Geumdang 21Q student exam solutions answers and catalog
+        env:
+          CHROME_BIN: ${{ steps.chrome.outputs.chrome-path }}
+        run: node tools/check-geumdang26-algebra-finalqa-browser.cjs
