@@ -1,5 +1,10 @@
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — CURRENT
 
+## CURRENT 공통 메타 산출물 경계 — 소형 JSON ONLY (2026-10-21)
+
+예약 CREATE/R1/R2/R3/MASTER는 기존 분모·Meta 의미 검수는 계속하되, **메타 수정 산출물은 대상 시험지 소형 JSON/stage-local 패킷만 기록**한다. 전체 `question_metadata.json`는 UID 기준 조회·대조·검색용이고 직접 편집/업로드 금지. 인가된 출고 writer만 소형 승인 요청을 Git 등록기로 전송한다. 자동등록 미지원 과목은 `TOOLING_GAP`을 남겨 승인된 수리 담당에 인계하며 대형 직접 업로드 또는 REVIEW2 허위 승인 금지. [상세 계약](../../../architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md). 이 문서 반영은 기존 예약 프롬프트를 자동 수정하지 않으며 기존 Library/Drive stage 경로 및 Git writer 권한은 그대로다.
+
+
 ## CURRENT v1.0.2 — HIGH_DYNAMIC 출고 허브 정본 Google Drive 전환 (2026-10-19)
 
 사용자 명시 변경: HIGH_DYNAMIC R3의 내부 Library stage 결과는 그대로 보존하고, **R3 후속 출고 허브 사본만** [Google Drive RELEASE_HUB](https://drive.google.com/drive/folders/1DQigbs29hiuvwxbS-6i7w6hK6iziNk57)의 PENDING에 저장·원격 재조회한다. 기존 `/Archive2-GPT/RELEASE_HUB/` ChatGPT Library는 과거 사본으로 동결한다. 실제 승인 출고 담당 Work/Codex가 Drive PENDING→Git main→Drive DONE 마킹과 증거 기록까지 완료해야 종료. 예약 R3 기존 :36/ON, 다른 4개 예약 시간·ON·프롬프트 및 Git writer 권한 불변. [R3_CURRENT.md](R3_CURRENT.md)의 v1.0.2 override가 이전 v1.0.1 Library 출고 절보다 우선한다. 이전 원본 증거/품질 검수·Meta/Golden·미해결 qid/ROUTED≠PASS는 그대로 적용한다.
