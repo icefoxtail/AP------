@@ -348,7 +348,7 @@ window.questionBank = [
     "contentStatus": "round8_reconstructed_from_page_image",
     "sourceDisplayNoLabel": "8",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -614,7 +614,7 @@ window.questionBank = [
     "contentStatus": "round9_reconstructed_from_page_image",
     "sourceDisplayNoLabel": "14",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -658,7 +658,7 @@ window.questionBank = [
     "contentStatus": "round9_reconstructed_from_page_image",
     "sourceDisplayNoLabel": "15",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -702,7 +702,7 @@ window.questionBank = [
     "contentStatus": "round9_reconstructed_from_page_image",
     "sourceDisplayNoLabel": "16",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -791,7 +791,7 @@ window.questionBank = [
     "contentStatus": "round9_reconstructed_from_page_image",
     "sourceDisplayNoLabel": "18",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -879,7 +879,7 @@ window.questionBank = [
     "contentStatus": "round9_reconstructed_from_page_image",
     "sourceDisplayNoLabel": "20",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
