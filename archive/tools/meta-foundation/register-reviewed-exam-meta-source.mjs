@@ -270,6 +270,10 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     const { registerFinalqaPinpointDelta } = await import("./register-finalqa-pinpoint-delta.mjs");
     if (args["verify-projection"] && write) throw new Error("--verify-projection is read-only");
     console.log(JSON.stringify(registerFinalqaPinpointDelta({ root, request: req, write, verifyProjection: Boolean(args["verify-projection"]) }), null, 2));
+  } else if (req.schemaVersion === "archive-finalqa-nonpt-register-request-v1") {
+    const { registerFinalqaNonpt } = await import("./register-finalqa-nonpt.mjs");
+    if (args["verify-projection"] && write) throw new Error("--verify-projection is read-only");
+    console.log(JSON.stringify(registerFinalqaNonpt({ root, request: req, write, verifyProjection: Boolean(args["verify-projection"]) }), null, 2));
   } else if (req.schemaVersion === "archive-reviewed-exam-meta-register-request-v2") {
     const { registerReviewedExamV2 } = await import("./reviewed-exam-registration-v2.mjs");
     if (args["verify-projection"] && write) throw new Error("--verify-projection is read-only");
