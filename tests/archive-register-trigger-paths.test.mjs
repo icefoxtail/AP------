@@ -35,6 +35,25 @@ test("workflows route every main write through the race-safe helper and share on
   assert.ok(pages.includes("tools/ci/archive-pages-registration-derive.sh all"), "Pages retries re-derive and re-verify");
 });
 
+test("changed-UID approval runs after the push, never inside the pass that consumes the inbox", () => {
+  const register = read(".github/workflows/archive-reviewed-exam-meta-register.yml");
+  const pass = read("tools/ci/reviewed-meta-register-pass.sh");
+  assert.ok(!pass.includes("verify-changed-uid-consumer-approval"), "a failing approval must not block consuming the request");
+  assert.ok(pass.includes('work="$RUNNER_TEMP/archive-meta-register-pass"') && pass.includes('cp -- "$request" "$work/requests/'), "request copies are still saved for the later check");
+  assert.ok(read("tools/ci/verify-registered-consumer-approval.sh").includes("archive-meta-register-pass/requests/*.json"), "the post-push gate reads the same copies");
+  const push = register.indexOf("id: push"), verify = register.indexOf("name: Verify changed-UID approval in the effective student consumer");
+  assert.ok(push > 0 && verify > push, "verification step follows the push step");
+  const verifyStep = register.slice(verify);
+  assert.match(verifyStep, /steps\.push\.outcome == 'success'/);
+  assert.match(verifyStep, /steps\.req\.outputs\.count != '0' \|\| steps\.req\.outputs\.scoped == 'true'/);
+  assert.ok(verifyStep.includes("bash tools/ci/verify-registered-consumer-approval.sh"));
+  assert.ok(!register.slice(push, verify).includes("status="), "the push step records only registered_main_sha");
+  const gate = read("tools/ci/verify-registered-consumer-approval.sh");
+  for (const needle of ["status=POST_MERGE_VERIFIED", "status=REGISTERED_CONSUMER_APPROVAL_FAIL", "verify-changed-uid-consumer-approval.mjs", "--summary-file", "exit 1",
+    "dispatch Archive Pages Release or wait for the next main push", "archive-meta-register-trigger-paths.txt"])
+    assert.ok(gate.includes(needle), needle);
+});
+
 test("glob entries follow GitHub paths semantics ('*' never crosses '/')", () => {
   const re = globToRegExp(".archive-meta-register/inbox/*.json");
   assert.ok(re.test(".archive-meta-register/inbox/a.json"));
