@@ -1847,7 +1847,7 @@ window.questionBank = [
   "difficultyConfidence": "medium",
   "difficultyBoundaryFlag": "NONE",
   "legacyLevelCompatibility": "NORMAL",
-  "questionType": "short_answer",
+  "questionType": "서술형",
   "layoutTag": "grid",
   "tags": [
     "확률과통계",
