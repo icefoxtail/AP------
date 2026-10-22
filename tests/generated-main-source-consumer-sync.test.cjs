@@ -125,11 +125,13 @@ test('Pages release derives the complete source projection atomically without a 
  assert.match(release,/needs: build/,'deployment requires the complete build job');
  assert.doesNotMatch(release,/gh pr (?:create|merge)/,'Pages release must not create a projection PR loop');
  const registrationCommit=release.indexOf('Commit generated Archive registration artifacts');
- const pushIndex=release.indexOf('git push origin HEAD:main');
+ // The single controlled push is the race-safe helper (never force, reset+regenerate on a lost race).
+ const pushIndex=release.indexOf('tools/ci/git-push-derived-with-retry.mjs');
  assert.ok(registrationCommit>=0&&pushIndex>registrationCommit&&pushIndex<sourceWrite,
   'only the inline registration step may push derived artifacts before compiling the projection');
- assert.equal((release.match(/git push origin HEAD:main/g)||[]).length,1,
+ assert.equal((release.match(/git-push-derived-with-retry\.mjs/g)||[]).length,1,
   'Pages release has one controlled registration push, not a projection loop');
+ assert.doesNotMatch(release,/git push|--force/,'no bare or forced push in the Pages release');
  assert.ok(release.includes('chore(archive): sync registration artifacts [skip ci]'),
   'registration push must avoid recursive CI release loops');
 });

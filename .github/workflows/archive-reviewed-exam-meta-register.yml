@@ -33,84 +33,46 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Find requests
+      - name: Find requests and trigger scope
         id: req
         shell: bash
         run: |
           set -euo pipefail
-          mapfile -t reqs < <(find .archive-meta-register/inbox -maxdepth 1 -type f -name '*.json' -print 2>/dev/null | sort)
-          printf '%s\n' "${reqs[@]}" | sed '/^$/d' > "$RUNNER_TEMP/archive-meta-requests.txt"
-          echo "count=${#reqs[@]}" >> "$GITHUB_OUTPUT"
-          if git diff --name-only HEAD^ HEAD -- "archive/data/meta-foundation/exam-scoped/25_금당고_2학기_중간_고2_확률과통계.parent-links.json" | grep -q .; then
-            echo "scoped=true" >> "$GITHUB_OUTPUT"
+          count="$(find .archive-meta-register/inbox -maxdepth 1 -type f -name '*.json' 2>/dev/null | wc -l | tr -d ' ' || true)"
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          # Scoped detection uses the triggering push itself (event payload), never HEAD^ of the
+          # moving `ref: main` checkout. A manual dispatch is a recovery re-run: treat as scoped
+          # (the push helper is a no-op when nothing changes). When the event cannot prove the
+          # answer, assume scoped: that only costs an idempotent rebuild.
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            scoped=true
           else
-            echo "scoped=false" >> "$GITHUB_OUTPUT"
+            scoped="$(node tools/ci/push-touches-paths.mjs --paths-file tools/ci/archive-meta-register-trigger-paths.txt --literal-only --uncertain true)"
           fi
-      - name: Register reviewed exam meta and runtime
-        if: steps.req.outputs.count != '0'
-        shell: bash
-        run: |
-          set -euo pipefail
-          node --test tests/archive-reviewed-exam-registration-v2.test.mjs
-          while IFS= read -r request; do
-            node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request "$request" --write
-          done < "$RUNNER_TEMP/archive-meta-requests.txt"
-      - name: Rebuild DB, UID, index, catalog, and registration projections
-        if: steps.req.outputs.count != '0' || steps.req.outputs.scoped == 'true'
-        run: python archive/build_db.py
-      - name: Validate registration and canonical baseline
-        if: steps.req.outputs.count != '0' || steps.req.outputs.scoped == 'true'
-        run: |
-          node archive/tools/verify-archive-registration.mjs
-          node archive/tools/build-archive2-catalog.mjs --check
-          node archive/tools/meta-foundation/compile-meta-foundation.mjs --canonical-only-check
-          while IFS= read -r request; do
-            if [[ "$(jq -r .schemaVersion "$request")" == "archive-reviewed-exam-meta-register-request-v2" || "$(jq -r .schemaVersion "$request")" == "archive-finalqa-pinpoint-register-request-v1" ]]; then
-              node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request "$request" --verify-projection
-            fi
-          done < "$RUNNER_TEMP/archive-meta-requests.txt"
-          git diff --check
-      - name: Commit final reviewed-meta registration
+          echo "scoped=$scoped" >> "$GITHUB_OUTPUT"
+      - name: Register, rebuild, validate, and verify changed-UID consumer approval
         if: steps.req.outputs.count != '0' || steps.req.outputs.scoped == 'true'
         shell: bash
+        env:
+          ARCHIVE_META_SCOPED: ${{ steps.req.outputs.scoped }}
+        run: bash tools/ci/reviewed-meta-register-pass.sh
+      - name: Commit and push final reviewed-meta registration
+        id: push
+        if: steps.req.outputs.count != '0' || steps.req.outputs.scoped == 'true'
+        shell: bash
+        env:
+          ARCHIVE_META_SCOPED: ${{ steps.req.outputs.scoped }}
         run: |
           set -euo pipefail
-          while IFS= read -r request; do
-            rm -f -- "$request"
-            git add -- "$request"
-          done < "$RUNNER_TEMP/archive-meta-requests.txt"
-          git add -- \
-            archive/data/question_metadata.json \
-            archive/data/master_tables/js_archive_tag_master.json \
-            archive/data/meta-foundation/canonical/ \
-            archive/data/meta-foundation/compiled/ \
-            archive/data/meta-foundation/runtime/*.json \
-            archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/*.json \
-            archive/db.js \
-            archive/data/question_identity_map.json \
-            archive/question-identity.js \
-            archive/question-index.js \
-            archive/question-index-report.md \
-            archive/question-index-audit.md \
-            archive/data/archive2-catalog.json \
-            archive/data/archive2-canonical-input-manifest.json \
-            archive/data/archive2-source-verification-index.json \
-            archive/data/archive2-source-verification/v1/*.json \
-            archive/data/archive2-crosswalk-inventory.json \
-            archive/data/basic-scope-parent-links.json
-          if git diff --cached --quiet; then
-            echo "No registration changes to commit."
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore(archive): register reviewed exam meta [skip ci]"
-          git push origin HEAD:main
-          git fetch --no-tags origin main
-          if [[ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]]; then
-            echo "main advanced after registration; remote readback is not complete" >&2
-            exit 1
-          fi
-          # Verify fetched remote bytes, not only the local generation result.
-          git diff --exit-code HEAD origin/main -- archive/data archive/question-index.js archive/db.js
+          # Never force-pushes. If another writer moved main first, the helper resets to the new tip,
+          # re-runs the full registration pass (register, build, validate, changed-UID check) there,
+          # and pushes that fresh result (max 3 attempts); an identical tree already on main is success.
+          node tools/ci/git-push-derived-with-retry.mjs \
+            --paths-file tools/ci/archive-meta-register-commit.paths \
+            --message "chore(archive): register reviewed exam meta [skip ci]" \
+            --regenerate "bash tools/ci/reviewed-meta-register-pass.sh" \
+            --remote origin --branch main --max-attempts 3 \
+            --label "Reviewed exam meta registration" --summary-file "$GITHUB_STEP_SUMMARY"
           echo "registered_main_sha=$(git rev-parse origin/main)" >> "$GITHUB_STEP_SUMMARY"
