@@ -1,15 +1,9 @@
 # ROLE R1 — GPT 예약라인 공용 실행 프롬프트 (CURRENT v1.0.0)
 
-## HIGH_DYNAMIC 예외 — 연속 R1 수납·복구·R2 즉시 인계 (2026-10-19 사용자 긴급 지시, v1.1)
+## 역할/캠페인 문서 라우팅 — 2026-10-22
 
-적용 범위는 `HIGH_DYNAMIC_INTAKE_20261017`의 **R1 예약만**이다. 이 캠페인은 이 문서 아래 `한 회차 한 시험지`와 README 기본 `최대 하나` 조항보다 이 HIGH_DYNAMIC 예외를 우선한다. 예약 `:12 Asia/Seoul` 및 ON을 보존하고 다른 캠페인에는 적용하지 않는다.
-
-1. 시작 때 CREATE의 전체 `READY_R1.json`·패킷·source-only/student JS·필수 자산 **실물 ID/SHA**와 R1 claim/완료·in-flight를 대조해 미수납 대기열을 구축한다. R1 폴더 존재만으로 완료로 처리하지 않는다. **직전 자기 실패 복구 → 오래된 READY_R1 → 신규 READY_R1** 순서. 하나를 실제 독립수학/해설·Meta·Golden·필요 검사/원격 패킷 검증까지 진행해 `READY_R2`로 인계한 직후 다시 탐색하여 같은 실행에서 다음 eligible을 연속 처리한다. 시험지별 독립 검수·기록은 절대로 합치거나 생략하지 않는다. 도구 시간 한계만 인정하고 임의 1건 cap 금지.
-2. `container_session_unavailable` 등 저장 장애에 대응해 **전 qid 독립풀이 이전 실제 Library 업로드·재조회 경로를 사전 점검**한다. 현재 세션의 파일/컨테이너 참조 또는 실제 export된 `source_file_ref`만 사용하며 사라진 이전 세션 `container_path` 재사용 금지. 오류 후 유효한 새 세션/참조로 안전 재시도. 이전 동결본의 실바이트가 회수된다면 **그대로** 원격 저장·SHA 검증하고 다음 단계로 진행한다. 실바이트가 없다면 없음을 기록하고 복구 PASS 위조 금지. 저장 답을 아직 보지 않았다는 것이 확실한 별도의 진정한 source-only 독립 재실행만 새 revision으로 허용. 과거 blind PASS 소급 위조 금지.
-3. `20_제일고_1학기_기말_고2_확률과통계`의 R1 22/22 로컬 독립풀이 후 원격 freeze 저장 실패는 최우선 복구 후보. `R1_BLIND_FREEZE` Library **원격 바이트/SHA 검증 이후에만** stored answer/solution 열람. q16 원본 확률모형 해석은 정확한 출처 대조 또는 SUSPICIOUS. 쓰기 장애가 재발하면 해당 시험지만 `INFRA_RETRY`/firstMissingStep로 분리하고 다른 eligible 탐색을 지속한다. 저장 수단이 전역 불능이면 실물 없는 완료·품질 PASS 주장 금지.
-4. R1 source-only 블라인드→freeze→답 비교→학생 작은칠판 해설 적극 개선→전 qid 정밀 Meta 실제 조회·수정→Golden/Negative와 가능한 도구검사→`DOC_READ_RECEIPT` 및 하류 패킷 실제 저장/readback이라는 **기존 품질 계약은 하나도 완화하지 않는다**. `ROUTED≠QUALITY_PASS`, 정확한 OWNER_INCOMPLETE/EVIDENCE_DEBT와 nonblocking R2 인계 유지. 다른 예약, Git main, 정답·해설 원본은 임의 변경 금지.
-5. 매 run의 `scanned/eligible/recovered/routed/infraFailed/pending` 실제 수량 및 examUid·파일 ID/SHA를 기록하고, 미완료가 있으면 유효한 다음 시작점을 남긴다. 예약 스케줄·ON은 변경하지 않는다.
-
+- [Notion 02-03 R1 독립검수 작업 라우트](https://app.notion.com/p/4010e68bd69f81dab93fe6a073d6b638)는 작업자 선택·문서 내비게이션이다. **아래 R1 역할 계약과 README_CURRENT의 필수 수학·교육과정·정밀 Meta·학생 해설·Golden/Negative·source-only freeze 검증을 대체하지 않는다.**
+- `HIGH_DYNAMIC_INTAKE_20261017`의 연속 R1 수납·저장복구·:12 기록 및 특정 시험지 사고 등 **캠페인 전용 지시는 [HIGH_DYNAMIC R1 전용 문서](https://app.notion.com/p/4010e68bd69f8187a27dc8d0c88b34d5)에서만 유지한다**. 해당 캠페인 담당자만 실제 manifest/예약 프롬프트·Library 실물과 함께 읽는다. 이 R1 역할 문서와 다른 캠페인에 예외 본문을 중복 추가하지 않는다. 새 Notion 링크는 실제 예약 ON/OFF·프롬프트를 자동 수정하지 않는다.
 
 
 Use with [README_CURRENT.md](README_CURRENT.md). 이 문서는 공통 품질·메타 규칙을 줄이지 않고 R1만 구체화한다. 실제 값 바인딩: `role=R1, campaignId={CAMPAIGN_ID}, generationRoot={GENERATION_ROOT}, libraryNamespace={LIBRARY_NAMESPACE}, stream={STREAM_IF_APPLICABLE}, previousStage=CREATE, nextStage=R2, canonicalVersion=1.0.0, schedule={USER_APPROVED_SCHEDULE}, isEnabled={USER_APPROVED_ON_OFF}`. 캠페인별 frozen roster와 동적 배정 차이를 보존한다.
@@ -17,14 +11,14 @@ Use with [README_CURRENT.md](README_CURRENT.md). 이 문서는 공통 품질·�
 ## 1. 물리 CREATE 패킷과 적용 정본 먼저 확인
 
 - 자기 캠페인 Library에서 최신 `CREATE_ROUTED/READY_R1` 실물 packet의 source-only JS, student JS, 필수 원본/학생 PNG·SVG, 전체 qid ledger, 기존 provenance와 실제 file ID/revision/SHA를 읽는다. `examUid+inputSourceSha+campaignId+stage` 기준 이미 R1 끝난 시험지·다른 writer·main 출시 동일본 제외. 입력 없으면 NO_INPUT·정확 수량, 도구 실패는 INFRA_RETRY·exact error와 안전한 재개 지점만 보고하며 **예약 OFF 금지**.
-- 시작 시 Notion 라우터→Archive 시작→생명주기→예약 CURRENT 및 Git 최신 main/AGENTS.md/archive/AGENTS.md, 공용 README_CURRENT+R1_CURRENT·캠페인 정본·해당 원본/교육과정·Golden/Negative/학생용 해설·Meta 정본의 **실제 본문**을 열람한다. 특히 `JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md`는 **R1 검수에도 직접 적용**됨을 확인한다. Git canonical RPM Primary current scope/허용 prerequisite, crosswalk, GLOBAL ACTIVE PT/TPL, exact binding을 읽고 qid의 실제 사고 기준으로 사용한다.
+- 시작 시 **공용 예약 README_CURRENT + 이 R1_CURRENT + 자기 캠페인 manifest/실물**을 확인한다. 과거 Notion 필독 라우터·Archive 시작/전체 생명주기·다른 캠페인의 장문을 **일괄 선열람하지 않는다**. 해당 원본·교육과정·Golden/Negative·학생 해설·Meta의 **이번 R1 QID·역할에 실제 필요한 정본 본문은 반드시 확인**한다. 특히 `JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md`는 **R1 검수에도 직접 적용**됨을 확인한다. Git canonical RPM Primary current scope/허용 prerequisite, crosswalk, GLOBAL ACTIVE PT/TPL, exact binding을 읽고 qid의 실제 사고 기준으로 사용한다.
 - `DOC_READ_RECEIPT.json`을 생성해 input artifact SHA, 읽은 Notion URL/가능한 수정시각, Git 파일 경로/mainSHA/blobSHA, readAtUtc, 이번 R1에 적용한 조항 및 실제 결과, 실패한 조회·firstMissingStep·원 owner를 간결히 기록. Library 해당 시험지 stage와 함께 물리 저장/readback ID/SHA 검증. 실제 안 읽고 READ/PASS 주장 금지, 실물 없는 과거 영수증 소급 작성 금지.
 
 ## 2. R1의 첫 본업: 저장 답/해설과의 formal compare보다 앞선 독립 풀이 및 영구 freeze
 
 1. 정답·해설·이전 reviewer의 결론/저장 student solution을 이번 formal compare를 위해 열기 **전에**, 별도 source-only 발문·보기·그래프/이미지를 대상으로 전 reviewable qid의 정답만이 아니라 실제 풀이 이유, 필수 중간식, 경우분리, 선지 탈락/경계 논거까지 독립 계산한다.
 2. qid별 독립 답/근거, source-only SHA·보았던 시각 assets SHA·독립 판단 시간과 모든 qid count를 `R1_BLIND_FREEZE`에 기록해 Library 실제 바이트로 저장, file ID/revision 또는 bytes SHA256 원격 재확인한다. 이 freeze를 먼저 완성/검증한 뒤에만 저장 answer/solution과 formal compare한다. 결과는 MATCH/MISMATCH/SUSPICIOUS/NOT_REVIEWABLE을 실제 근거로.
-3. 유효 기존 freeze나 이미 노출된 사실을 거짓으로 고치거나 독립 재검수했다며 fake hash를 만들지 않는다. Git 2026-10-03 현행 재검 규칙은 prior visibility만으로 무효를 선언하지 않지만 **새 formal compare는 실제 source 기반 독립 snapshot을 먼저 고정**해야 한다. original pdf 쪽 충돌 qid는 source 확인 시도/빠진 근거를 명시, 풀 수 있는 정상 qid는 계속한다.
+3. 유효 기존 freeze나 이미 노출된 사실을 거짓으로 고치거나 독립 재검수했다며 fake hash를 만들지 않는다. 기존의 prior visibility만으로 유효한 과거 동결 기록을 자동 무효화하지 않지만 **새 formal compare는 실제 source 기반 독립 snapshot을 먼저 고정**해야 한다. original pdf 쪽 충돌 qid는 source 확인 시도/빠진 근거를 명시, 풀 수 있는 정상 qid는 계속한다.
 
 ## 3. R1 두 번째 본업: 전 qid 작은칠판 해설 적극 직접 UPGRADE/KEEP
 
