@@ -1,4 +1,7 @@
-# JS Archive FINAL QA — FAST ROUTER & EXACT HANDOFF (CURRENT v1.1)
+# JS Archive FINAL QA — FAST ROUTER & EXACT HANDOFF (HISTORY / 진단 참고 v1.1)
+
+> **SUPERSEDED — 2026-10-22. 이 문서는 현행 FINAL QA 실행 정본이 아닙니다.** 최신 단일 실행 규칙은 [FINAL QA CARD v2.0](JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md), 작업 유형 선택은 [Notion 02-01 FINAL QA 라우트](https://app.notion.com/p/4010e68bd69f81569b84fb85e8645590)를 따릅니다. 이 파일은 **정확한 source·UID·SHA 경로를 못 찾을 때 해당 진단 절만** 참고하는 구버전 기록입니다. 아래의 2026-10-21 문서 필독 체인·수동 Consumer N/N 종료 게이트·§6 시작 프롬프트는 현행 업무 지시로 실행하지 않습니다. 현재 GPT FINAL QA의 병합 후 CI/Consumer/Search 검증은 Actions 담당이며 PT/TPL 새 판정은 제외합니다. 기존 자료·사건 기록은 삭제하지 않습니다.
+
 
 > 2026-10-21. v1.1 보완: 강남여고 확통 Final QA의 대용량 메타 조회/Consumer 연결/4파일 보정 사례를 반영. 목적: 이미 `main`에 출고된 **지정 시험지 1건**의 사후 Final QA & Repair에서 쓸모없는 검색·중복 검증·공통 파일 충돌을 줄인다. **품질 의무를 줄이는 문서가 아니라 조회·실행 경로를 고정하는 보조 런북**이다.
 >
@@ -127,7 +130,7 @@
 - `CI/Pages/Student Chrome`은 실행 여부를 사실대로 별도 표기. 사후 Final QA에서 새 Chrome 검증은 필수 아님.
 - 위 조건의 미충족은 `IN_PROGRESS` 또는 실제 차단 `BLOCKED`, 결코 `FINAL_QA_DONE` 아님. 인계는 동일 작업의 수행 연속성만 의미하며 완료·다음 시험지 진행 승인이 아니다.
 
-## 6. 신규 작업자 시작 프롬프트
+## 6. HISTORY — 과거 신규 작업자 프롬프트 (현행 사용 금지)
 
 > 지정 `examUid` 하나의 **사후 Final QA & Repair**를 수행한다. 먼저 현재 사용자 지시, Notion 라우터/시작/생명주기/FINAL QA CURRENT v2.1 및 이 FAST ROUTER를 읽는다. handoff의 exact taskId·main/exam blob·routeReceipt를 최신 원격과 대조하고, 기존 유효 증거는 재사용한다. 학생 표시 N/N 전 문항의 수학·해설·정밀 메타·시각을 확인하고 문제 QID만 직접 최소수정한다. 메타 canonical/UID/Consumer parity는 반드시 마감한다. 본 문서의 정확한 파일 경로부터 조회하고 성공한 검색 반복·R1~R3 재실행·공통 정본 무단 확대·새 검사기 제작·Chrome/Pages 추가 검증은 하지 않는다. 수정분과 직접 영향만 검증하고 Git main/blob 및 해당 Notion 행을 원격 마감한다. 끊기면 동일 task의 handoff `firstMissingStep`으로 재개한다. 미해결 0건이 아니면 DONE이라고 하지 않는다.
 
