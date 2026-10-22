@@ -462,7 +462,7 @@ test("a legacy manifest falls back to the existing full canonical loader", async
       .map(([, value]) => String(value).replace(/^archive\//, ""))))];
   assert.deepEqual(
     [...assets.requests].sort(),
-    [manifestRelative, manifestRelative, ...[...loaderInputs, ...registrationProofs].map((p) => "archive/" + p)].sort(),
+    [manifestRelative, manifestRelative, ...[...loaderInputs, ...registrationProofs].map((p) => path.posix.normalize("archive/" + p))].sort(),
   );
 });
 
