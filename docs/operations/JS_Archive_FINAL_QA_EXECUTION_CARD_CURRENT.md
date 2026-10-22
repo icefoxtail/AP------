@@ -1,74 +1,35 @@
-# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v1.9)
+# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v2.0)
 
-## TOP OVERRIDE — GPT MAIN-MERGE-ONLY / GITHUB AUTOMATION OWNS CONSUMER (2026-10-22)
+**적용:** 이미 Git `main`에 있는 시험지 1건의 GPT 사후 검수·결함 수리·필요한 시험지별 메타 입력·운영병합. **사용자 최신 명시 지시와 이 카드가 현재 실행 권위**다. 신규 CREATE/R1/R2/R3/ALIVE, 예약·공통 Actions 유지보수의 품질·작업 규칙을 변경하지 않는다.
 
-**사용자 최신 지시. 사후 FINAL QA·기존 시험지 메타 수정·출고에 적용. GPT의 최종 책임은 필요한 안전한 핀포인트 수정과 `main` 운영병합 및 단 한 번의 원격 main 대상 blob/SHA 확인까지다. 이후 DB/UID/index/catalog/runtime 등록과 검색·배포 실행은 GitHub Actions의 책임이다.** 기존 원본·수학·학생용 해설·SVG의 실제 확정 결함을 그대로 병합해서는 안 된다.
+**문서 진입:** 이 카드만 먼저 읽고 정확한 `examUid`/source/기존 증거로 이동한다. [Notion FINAL QA 작업 라우트](https://app.notion.com/p/4010e68bd69f81569b84fb85e8645590)는 필요할 때만 경로·예외 문서를 찾는 목차다. Notion 전체 생명주기·과거 v2.1·기존 FAST ROUTER·AGENTS를 전부 선열람하지 않는다.
 
-- **GPT 할 일:** ① 사용자 지정 시험지의 이미 검증된 범위 SKIP, 열린 결함/변경 대상만 바로 수정 ② 메타 입력이 새로 필요한 경우 **해당 시험지 소형 등록 요청 JSON을 같은 배포 입력**에 포함 (이미 해당 소스/UID 승인·등록 완료면 생략) ③ 대상 파일만 commit/PR/merge ④ 원격 main SHA + 대상 JS/등록 요청 blob readback 후 `MAIN_DONE` 또는 동일판 `NO_CHANGE_MAIN_DONE`으로 **즉시 3줄 마감**. 이미 완료한 병합을 CI 때문에 다시 시작하지 않는다.
-- **GPT 하지 않을 일:** 병합 후 CI/Actions 반복 조회, 런타임·검색 카탈로그/검색 화면 개별 UID 전수 parity 수동 실행, Chrome/Pages 최종 배포 확인, 통째 대형 JSON 로딩, 대기·폴링, 불필요한 Notion/AWCR 반복 마감 탐색. **검색 소비 24/24 수동검사 등은 GPT 일반 종료조건에서 제거.** 이번 PR에 직접 관련된 명백한 사전 HARD FAIL은 무시하거나 품질 PASS로 위장하지 않는다.
-- **GitHub 자동화 할 일 (현재 현행 구현):** `.archive-meta-register/inbox/*.json`의 main push → `Archive Reviewed Exam Meta Register`가 정본 메타/런타임·DB/UID/인덱스/카탈로그 등록·projection 검증 및 원격 커밋; main push와 등록 완료 `workflow_run` → `Archive Pages Release`가 pending inbox gate 후 `archive/build_db.py`, 등록/색인 검증, 실제 사이트 빌드·배포. **자동화 트리거와 완료는 다르며 병합 직후 배포가 즉시 성공했다고 주장하지 않는다.** 기존 main JS만 병합하면 신규 고급 메타가 자동 승인되는 것은 아니므로 필요 시 소형 요청을 포함해야 한다.
-- **실패 소유권:** Actions FAIL/자동 승인·투영 실패/Pages 실패는 **Git 자동화/별도 유지보수 이슈**로 취급. GPT의 이미 증명된 `MAIN_DONE`을 취소하거나 동일 시험지 검수 무한 재시작하지 않는다. Git 자동화가 자동 복구까지 보장하는지 확인되지 않았으면 `GIT_AUTOMATION_UNVERIFIED`로 명시하고 새 owner/incident로 분리한다. 파이프라인 자체 문제는 해당 워크플로 수정 시 필요한 회귀 테스트로 다룬다.
-- **완료 상태 구분:** `MAIN_DONE`=GPT 원격 병합 성공, `PIPELINE_PASS`=Actions 성공 증거, `DEPLOY_DONE`=Pages 성공 증거 (후자의 두 상태를 GPT가 수동 확인할 의무 없음). `FINAL_QA_DONE`을 Pages/검색 24건 수동 검증과 결박하지 않는다. 적합한 기존 QA 증거와 수행 범위는 정직하게 기록한다.
-- **3줄:** `완료: 시험지/변경사항/mainSHA` / `미완료: GPT 작업 잔여 또는 없음 (Git 자동화 미확인은 별도)` / `다음: 다른 지정 시험지 또는 실제 Git FAIL의 별도 이슈`. 기존 v1.7 이하의 소비 경로 수동검사·Git 병합 이후 마감 요구보다 본 절 우선. CREATE/R1/R2/R3 최초 블라인드·품질 규칙 및 Gemini 예약 구조는 변경하지 않는다.
+## 1. 입력과 기존 검증 재사용
 
-## CURRENT HARD — BOUNDED ROUTE / TIMEOUT-STOP / EFFECTIVE CONSUMER (2026-10-22)
+1. 사용자 지정 시험지/정확한 Git JS path/현재 `main` SHA·대상 blob부터 확인한다. 다음 시험지가 미지정이면 실제 과목별 대장과 Git 해당 폴더를 직접 대조하여 **최신년도 미완료 1건**을 고른다. 파일명 검색 결과만으로 존재·부재를 단정하지 않는다.
+2. 실제 표시 QID 수 N을 식별하고 이전 QA·승인 기록의 `source blob/fingerprint + 관련 UID·asset·meta 판본`이 같으면 `REUSE_VERIFIED`로 재사용한다. Git 전체 HEAD가 움직였다는 이유만으로 동일 대상 파일을 전수 재검하지 않는다.
+3. **이번 실검수 분모:** `OPEN / CHANGED / DIRECT_DEPENDENCY`, 증거의 정확한 결속이 없거나 충돌한 QID·필드. 확인하지 않은 문항을 신규 PASS로 기록하지 않는다.
 
-**이번 개정은 검수 품질을 축소하지 않고 조회·검색·반복만 제한한다. 위의 VERIFIED-SKIP / DELTA-ONLY가 계속 우선한다.**
+## 2. 필요한 수리만 실행
 
-1. **기존 시험지 이어받기:** 사용자 지정 `examUid`, Notion 체크리스트의 마지막 `firstMissingStep`, Git 정확한 JS path/blob, 이전 결함 대상만 고정한다. 이미 main 병합·검증된 source나 QID를 다시 재검하지 않는다. 같은 blob/증거는 재사용한다.
-2. **입력 탐색 예산:** 사후 FINAL QA 기본 선열람은 **이 카드 1곳**이다. 과거 Notion 필독 라우터·전체 생명주기·예약 캠페인 이력을 먼저 열지 않는다. 단계 시작 전 전역 파일명 검색·무관한 장문·과거 이력 반복 조회 금지. 정본 정확한 path가 없을 때만 **한 차례** 제한 검색하고 찾으면 즉시 중단한다.
-3. **대형 JSON 금지:** `question_metadata.json`(대형 공용 sidecar), `archive2-catalog.json`(대형 packed 원시 카탈로그), `question_identity_map.json` 전체 fetch/수동 갱신 금지. 해당 시험지 작은 등록 요청·승인 영수증·정확한 source-verification shard·runtime pack의 해당 UID만 조회한다. 클라이언트 호출에서 과대 응답/빈 본문을 만나면 동일 파일 무한 재조회하지 않는다. 실제 수리가 필요하면 소형 JSON→인가된 단일 writer로 처리한다.
-4. **중요: 검색 판정은 실제 소비 경로 기준:** packed raw `archive2-catalog.json`의 `L3/L4`가 빈 것은 검색 최종 값의 증거가 아니다. `archive/problem-bank-search.html` → `Archive2Canonical.resolveCatalog()` → `ProblemBankMeta.buildIndex()`의 **등록 receipt + byte-bound runtime overlay 적용 결과**를 확인한다. 승인되지 않은 값을 단순 복사해 채우지 않는다. `source verification shard`와 runtime의 값 일치만으로 검색 실행 PASS를 주장하지 않는다.
-5. **조회 횟수 상한은 탐색에만 적용:** 결함 위치를 찾기 전 원격 조회는 main+JS+소형 증거+직접 소비 코드 순서로 **최대 8개**를 기본 상한으로 한다. 추가 호출은 정확한 `path / UID / why-needed`가 있는 직접 의존성만 허용한다. 같은 SHA 같은 문서·파일의 재조회 금지(원격 최종 readback은 예외). 탐색/진단에서 첫 정확한 결함을 찾으면 더 찾지 말고 바로 수리한다.
-6. **타임아웃 직전의 종료는 중단이 아니라 정확한 인계:** 대형 응답 또는 도구 실패 시 새 문서·새 검색으로 회피하지 않는다. `OPEN / TOOLING_GAP / INFRA_RETRY`로 해당 필드·증거·마지막 성공 SHA와 **구체적인 단 하나의 firstMissingStep**을 Notion/HANDOFF에 남긴다. `FINAL_QA_DONE`이나 신규 PASS 금지. 다음 수행 회차는 그 한 단계에서 재개한다.
-7. **우선순위:** `source/UID exact → OPEN 필드 실물/승인 receipt → effective Consumer/Search → 변경 영향 재검 → main/Notion readback`. PT/TPL, 원본 PDF, Chrome/Pages, 타 시험지, 전수 재풀이, 새 공통 CI 수리는 기존 사용자 제외 범위를 유지한다.
+4. 위 분모의 발문·정답/선지·학생 해설·교육과정·수식·이미지/SVG·실제 필요한 L1~L4/RPM/CC/Condition/Integration·`level`·`difficultyBucket`만 대조하고 확정 결함은 해당 부분을 직접 수리한다. 정상 문항과 기존 자산을 보존하고 바뀐 곳·직접 영향만 재검한다. 실제 확정 수학·해설·시각·메타 HARD FAIL을 방치한 채 품질 PASS를 선언하지 않는다.
+5. **기본 제외:** 원본 PDF/HWP 전수 대조(사용자 별도 요청 예외), PT/TPL 조회·신규 수리/등록·PT/TPL parity, 정상 문항 전수 재풀이, 신규 R1/R2/R3 실행, 무관한 시험지/공용 시스템 수정.
+6. 메타 변경이 **실제로 필요한 경우에만** 대상 시험지 소형 `.archive-meta-register/inbox/*.json` 요청 또는 현행 승인된 해당 경로의 stage-local 입력을 작성한다. 공용 `question_metadata.json`/대형 catalog/compiled 파생 JSON 전체 직접 수정·업로드 금지. 등록기 미지원은 정확한 `TOOLING_GAP`으로 분리하고 허위 승인 금지. 이미 승인·등록된 동일 판본에 중복 요청을 만들지 않는다.
 
+## 3. Git main 운영병합 후 GPT 종료
 
-**최상위 CURRENT USER OVERRIDE — VERIFIED-SKIP / DELTA-ONLY (2026-10-21, Notion 라우터와 동기화):** 이미 검증된 QID/UID의 수학·해설·메타·자산·Consumer/검색은 **검증 당시 source blob 또는 문항 fingerprint, 적용 메타·asset·Consumer/projection 판본 및 직접 의존 범위가 현재와 일치하고 실제 검증 근거가 있으면** `REUSE_VERIFIED`로 통째로 SKIP한다. **main 전체 SHA가 바뀌었다는 이유만으로 재검하지 않는다.** 과거 PASS 문구만 있고 scope·판본·물리 증거가 결속되지 않았으면 재사용하지 않고 **해당 미검증 지점만** 조사한다.
+7. 대상 JS/자산/필요한 소형 메타 입력만 변경한 PR을 생성해 GitHub가 허용하는 범위에서 `main`에 병합한다. 범위 밖 stage·commit·도구/CI·전체 인덱스 수정, `git add .`, 브랜치 보호 해제/강제 push 금지. CI 대기/무관한 실패로 병합을 불필요하게 지연하지 않는다.
+8. **원격 `main` commit SHA와 대상 변경 파일 blob을 한 번 readback하면 GPT 종료:** `MAIN_DONE`. 변경 필요가 없고 이미 현행 `main` 실물이 확인되면 `NO_CHANGE_MAIN_DONE`. 미병합은 `BLOCKED/OPEN`으로 남기고 `firstMissingStep` 하나를 적는다. Notion 기록이 불가능하면 `RECORD_PENDING`으로 분리하며 실제 Git 병합 결과를 부정하지 않는다.
+9. **GPT 완료조건에서 제외:** 병합 후 CI/Actions 반복 polling, Consumer/Search 화면의 N/N 수동 parity, DB/index/catalog/런타임 재생성·검증, Chrome/Pages 최종 배포 검사 및 기다림. 메타 자동 승인·등록과 검색/배포는 GitHub Actions 별도 owner의 책임이며, **Actions가 실제로 성공했는지 확인하지 않았다면 성공이라고 주장하지 않는다.**
 
-- **신규 검수 분모:** `OPEN`, `CHANGED`, `DIRECT_DEPENDENCY`, 판본 충돌/검증 증거 누락이 있는 QID·UID·필드만. 전체 표시 문항수 N은 식별하되 무변경/기검증 문항의 수학·해설·메타·SVG·검색·Consumer N/N 재실행은 금지한다. 새로운 검수 결과와 `REUSE_VERIFIED`를 구분하고 미실행 범위를 신규 PASS로 주장하지 않는다.
-- **등록/소비 검증 분모:** 변경·신규 등록 UID와 직접 영향받는 실제 Consumer/Search 경로만. 동일 판본의 과거 검증 결과는 재사용하며 등록 실패·미반영·projection 불일치는 대상 UID에 대해 끝까지 `OPEN`이다.
-- **무변경 마감:** 대상 시험지와 모든 필수 직접 의존성에 유효한 기존 증거가 충분하고 열린 결함이 없으면 신규 검수 0/수정 0으로 `VERIFIED_UNCHANGED` 가능. 증거가 없는데 `VERIFIED_UNCHANGED`라고 하지 않는다.
-- **우선순위/적용 범위:** 이 조항이 아래의 옛 `전수 N/N 재검`·`항상 전체 Consumer parity` 문구보다 우선한다. `NO_SOURCE_PDF_COMPARE`, PT/TPL 제외, 시험지별 소형 JSON·인가된 등록기, 미해결 0, Git main·Notion 원격 확인은 유지한다. CREATE/R1/R2/R3 최초 검수 계약은 변경하지 않는다.
+## 4. 상태·예외·인계
 
-**CURRENT USER OVERRIDE — PINPOINT_ONLY / NO_SOURCE_PDF_COMPARE (2026-10-21):** 사후 FINAL QA의 기본 검수는 **원본 PDF 대조 없이 결함 의심 문항·실제 메타 이상만 핀포인트 확인·최소수리·변경 영향 재검**한다. 정상 문항의 전수 재풀이/해설 재검은 반복하지 않는다. 원본 대조는 사용자 별도 지시가 있을 때만 수행한다. 기존 검수 증거를 재사용하되 이번에 직접 확인한 범위만 새 PASS로 주장한다. PT/TPL은 아래 기존 명시 제외를 그대로 따른다. 이 조항이 아래의 종전 전수 검수·원본 조회 문구보다 우선한다.
+- `MAIN_DONE` = Git 대상 병합 및 원격 readback. `PIPELINE_PASS` = Git Actions의 실제 검증 성공. `DEPLOY_DONE` = 실제 Pages 배포 성공. 셋은 독립 사실이다. 신규 품질 검수 `PASS`는 실행 증거가 있는 이번 분모만 기록한다.
+- 별도 Git 기술 장애가 발생하면 실패 workflow와 정확한 원인을 따로 남긴다. 이미 증명된 `MAIN_DONE`을 되돌려 동일 시험지 수학 검수를 재시작하지 않는다. 자동복구·자동 알림은 검증 전 보장하지 않는다.
+- 중단 인계는 `examUid / exact Git path / source blob / OPEN QID·필드 / 실제 수리 / 마지막 성공 SHA / firstMissingStep`만 기록한다. 같은 SHA·동일 문서를 재조회하거나 장문 문서 로드를 재개하지 않는다. 상세 오류 때만 [이전 FAST ROUTER v1.1](JS_Archive_FINAL_QA_FAST_ROUTER_HANDOFF_CURRENT_v1.md)의 관련 절을 참고하되 **예전 Consumer 수동 완료조건을 재적용하지 않는다**.
+- **3줄 보고:** `완료: 시험지·실제 변경/mainSHA` / `미완료: GPT 잔여 또는 없음(자동화 후속 별도)` / `다음: 정확한 다음 시험지 또는 첫 미해결 단계`.
 
-**최우선 사용자 OVERRIDE — PT/TPL 제외 (2026-10-21):** 사후 FINAL QA에서는 `problemTypeKey`·`templateKey`, PT/TPL ACTIVE pack/binding/registry/crosswalk 탐색·매핑·신규 등록·오류 보정 및 **PT/TPL Consumer/Search parity를 수행하지 않는다. PT/TPL 미검증·미등록은 완료 차단 사유가 아니다.** 기존 PT/TPL 데이터는 삭제·덮어쓰기 없이 보존한다. 결과는 `PT_TPL_NOT_IN_SCOPE (USER_EXCLUDED)`로 표시하고 PASS/NOT_APPLICABLE로 위장하지 않는다. 기존 CREATE/R1/R2/R3 및 예약 라인에는 적용하지 않는다. **수학/정답/해설·시각 및 L1~L4/RPM·CrossConcept·Condition·Integration·두 난이도·UID/기타 실제 메타 등록/검색 정합성 N/N은 유지한다.** 이 조항이 아래의 모든 PT/TPL 필수 표현과 과거 라우터·상세 문서보다 우선한다.
+## 문서 소유권 · 구버전 처리
 
-**CURRENT 메타 쓰기 경계(2026-10-21 사용자 지시):** 공용 `archive/data/question_metadata.json`은 정확한 UID N행의 **조회·대조·검색용**이며, FINAL QA 수정 결과는 **시험지별 소형 메타 JSON**으로만 작성한다. 공용 대형 파일 직접 수정·업로드/PUT 금지. 인가된 Actions가 공용 메타·Consumer/index를 갱신하고 대상 UID N/N 원격 parity를 확인해야 완료다. 인가된 등록기의 과목·요청 스키마별 지원은 현행 코드와 해당 Action의 실제 성공/실패로 확인한다. 미지원은 `TOOLING_GAP`, 실행 실패는 `REGISTRATION_FAILED`/미완료로 기록하고 대형 파일 직접 업로드로 우회하지 않는다. [단일 정책](docs/architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md); 상세 문서 추가 선열람 요구는 아니다.
-
-
-> 2026-10-21 사용자 직접 지시에 따른 사후 QA 필독 축소. **이미 main에 존재하는 지정 시험지 1건**에만 적용. 열린 결함의 수학·해설·메타 직접 수리 의무는 유지하되 **병합 뒤 검색/Consumer 수동 재검 및 Pages/CI 추적은 Git 자동화 담당**이다. 본 카드가 선행 절차이며 기존 긴 [FAST ROUTER v1.1](JS_Archive_FINAL_QA_FAST_ROUTER_HANDOFF_CURRENT_v1.md), [Notion FINAL QA v2.1](https://app.notion.com/p/4000e68bd69f818080a3e7a042c4aa98), Archive 시작/생명주기, AGENTS.md는 **정본 예외가 생겼을 때만 해당 절을 열람하는 상세 참고자료**다. 기존 규정/프로젝트를 삭제하거나 수정하지 않는다. 최신 사용자 지시 우선.
-
-## 1. 단일 작업 정본부터 (공통 라우터 선열람 불필요)
-
-1. **이 카드**가 GPT 사후 FINAL QA의 단일 실행 진입이다. 사용자 지정 시험지와 Git exact source/기존 evidence로 즉시 이동한다.
-2. [Notion 공통 규칙](https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd)은 전 역할 공통 행동 원칙 확인 또는 실제 충돌·예외가 있을 때만 필요한 절을 참조한다. 캠페인 이력의 장문 필독 금지.
-
-작업에 필요한 **실물 코드·정본 데이터의 정확한 조회는 생략하지 않는다**. 단순 단계 통과 문구나 예전 PASS를 현행 SHA 증거로 대체할 수 없다. 새 작업은 새 taskId/owner로 시작, 실제 동일 taskId와 predecessor 증거가 있을 때만 연속 인수한다. [AWCR bootstrap](https://drive.google.com/file/d/1DDf_QrWCI26EZFdnjQd_E4oQk4nBHdvM/view) 확인 후 안전한 최소 메타 checkpoint만 append-only로 남기고 저장/readback 실패 시 SYNC_PENDING으로 구분한다.
-
-## 2. 검색 없는 exact 경로 — 이 순서로 바로 작업
-
-- **고정:** 사용자 지정 `examUid`, Git 원본 JS exact path, Notion 동일 시험지 행. Git `main` 최신 SHA, 그 JS blob SHA를 한번 가져오고, 필터/숨김/중복을 반영한 **실제 표시 QID N**을 고정한다. 문항명 전역 검색/과거 보고서 조사보다 source 먼저.
-- **UID/기존 메타:** JS에 `questionUid`가 없으면 `sourceArchiveFile + sourceOrdinal`과 출력 순번을 결합한다. `archive/data/question_metadata.json`의 일치 행을 먼저 조회한다. PT/TPL 키는 검수하지 않으며 다른 메타 필드의 실제 등록 여부만 확인한다.
-- **현재 의미 정본(PT/TPL 제외):** 해당 교육과정의 L1~L4/RPM·CrossConcept·Condition·Integration·두 난이도 정본 및 시험지별 UID 메타만 필요한 exact 경로로 대조한다. **PT/TPL 전용 ACTIVE ownerPack·taxonomy·binding·registry·runtime, PT/TPL crosswalk의 신규 검색·수정은 하지 않는다.** 공통 RPM LOCKED 정본 무단 수정 금지.
-- **실제 소비/검색(PT/TPL 제외):** 해당 시험지 source → UID → 기존 sidecar/기타 메타 → **대상 학생 제품의 실제 metadata loader/fetch/overlay 및 index/search projection의 실사용 값**을 확인한다. PT/TPL 관련 Consumer/Search 필드는 분모에서 제외한다. **남은 필수 메타**의 실사용값이 미확인이라면 `UNVERIFIED`이며 마감 불가. 다른 시험지/공통 엔진 수리 자동 확대 금지.
-- **원본·시각:** 핀포인트 대상의 기존 JS·그림/SVG/표·현재 asset 경로만 정적으로 점검한다. **원본 PDF/스캔/HWP는 기본 대조·조회하지 않는다.** 사용자가 해당 시험지에 별도 요청한 경우에만 원본 대조한다. 정상 자산 재제작 금지.
-
-**STOP-SEARCH:** 동일 source/정본 blob과 동일 유효 증거를 확보하면 즉시 다음 단계로 이동한다. 대형 JSON `fetch_file`의 빈 본문/size 오류는 0건이라는 뜻이 아니다. 정확한 반환 blob SHA로 `fetch_blob`→그 안에서 해당 UID N개 필터→가능한 verified raw/부분조회 순으로 한번만 우회한다. 출처를 특정한 후 광역 검색이나 동일 SHA 재조회 금지. 차단은 해당 파일·UID·실제 오류·`firstMissingStep` 기록.
-
-## 3. 기본 PINPOINT 최종 QA — 검증 범위는 정확히 기록
-
-- 실제 표시 총 문항수 **N은 식별**하되 **기존 정상 QID의 전수 재풀이·전수 해설 재검을 하지 않는다.** 기존 유효 검수·메타 증거를 재사용하고, 결함 의심 QID와 확인된 누락·충돌 메타 UID만 수학 핵심 계산·정답/보기·학생 해설·L1~L4/RPM/CrossConcept/Condition/Integration/level/difficultyBucket·필요 시각을 **핀포인트 실검수**한다. PT/TPL은 최종 QA 범위에서 제외한다. 신규 실검수 분모와 이전 증거 재사용 분모는 구분한다.
-- 유효한 동일 source/blob의 기존 검수 이력을 재사용한다. **이번에 확인한 핀포인트 QID/UID만** `KEEP`, `CORRECT/REGISTER`, `OPEN` 및 근거를 남기고, 확인하지 않은 정상 문항을 신규 PASS로 표현하지 않는다. PT/TPL은 `PT_TPL_NOT_IN_SCOPE`로 기록한다.
-- 확정 결함/실제 메타 누락은 **담당자가 그 문항만 직접 최소 수정**하고 해당 QID와 직접 의존성만 재검한다. 정상 문항·자산 보존. source→semantic authority→필수 runtime/Consumer 파생 파일만 최신 main 기준 최소 변경; 공통 generated 대량 재생성 금지.
-- **금지:** 다른 시험지 자동 진행, CREATE/R1/R2/R3 재실행, 신규 validator/Actions/Chrome/Pages 테스트, 공통 CI/엔진 수리, 무관한 taxonomy 전면 rebuild. 사후 QA에서 Chrome/Pages 방문은 완료 조건이 아니다. 필요한 대상 JS node 정적 검사·수식/에셋·UID 검색 parity 검사는 유지.
-
-## 4. 완료·중단 계약
-
-- **완료:** PINPOINT 대상 QID/UID 실검수·확정 결함 수정·변경 영향 재검 + 필요한 기타 메타의 해당 UID Consumer/search parity + 대상 범위 OPEN=0 + Git 최신 main/대상 blob 원격 readback(수정 0이면 검증된 `NO_CHANGE`) + 해당 시험지 Notion에 **PINPOINT_ONLY/NO_SOURCE_PDF_COMPARE 및 검증 범위** 명시·readback. 기존에 미검증인 나머지 문항을 본 작업에서 새로 검수 완료했다고 표시하지 않는다. 수정 시 대상 파일 whitelist만 PR/운영병합; CI/Pages는 별도.
-- **미완료:** 핀포인트 대상의 미확인 QID/필드·미반영 메타·실제 대상 Consumer 미확인은 PASS/DONE 금지. 접근/권한·기술 장애는 `BLOCKED/IN_PROGRESS`와 `firstMissingStep`으로 정확히 표시한다. 원본 미대조만으로 핀포인트 작업을 차단하지 않는다.
-- **HANDOFF:** 같은 `taskId`·owner·snapshot main SHA/JS blob, routeReceipt(`SOURCE, META_CANONICAL_OTHER, CONSUMER_EFFECTIVE_OTHER` 각각 exact path/blob/status/proof; PT/TPL 검사 없음), QID별 coverage 증거 ref, 고친 범위, 미해결, 마지막 원격 성공 ref와 `firstMissingStep = 하나의 구체적 파일+QID+다음 검증/수정`를 저장한다. AWCR 공유 packet에는 raw 문제/답/해설/프롬프트·secret 금지. 실제 Drive 업로드·raw SHA256·revision 재조회 성공 전 완료 저장 주장 금지.
-- **최종 보고:** 전체 표시 N, 이번 핀포인트 실검수 QID/UID 수, 기존 증거 재사용 범위, 수정 QID, 원본 대조 제외·PT/TPL 제외, 기타 메타 등록/미확인, 미해결 수, main SHA를 간결하게.
-
-**원칙:** *필독 2곳, 실물 정본 exact path, 한번 확인한 SHA 재사용, 발견 결함 바로 수정, 원격 증거로 완료*. 품질 타협이 아니라 문서·검색 낭비 제거.
+- GPT FINAL QA 실행 규칙은 **이 파일 1곳에서만** 개정한다. Notion [02-01 라우트](https://app.notion.com/p/4010e68bd69f81569b84fb85e8645590)는 사용 조건·링크만 유지한다.
+- [Notion FINAL QA v2.1](https://app.notion.com/p/4000e68bd69f818080a3e7a042c4aa98)은 2026-10-21의 역사적 참고·증거 문서다. 그 문서 및 이 파일의 2026-10-21 이전 commit에 남은 `N/N 전수 Consumer 수동검사`·PT/TPL 필수·다중 필독 지시는 **현행 완료조건이 아니다**.
