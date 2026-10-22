@@ -1,8 +1,14 @@
-# JS Archive / Problem Bank — JS 신규·수정·검수 시 Metadata 필수 계약 (CURRENT v1.0)
+# JS Archive / Problem Bank — JS 신규·수정·검수 시 Metadata 의미 판정 계약 (CURRENT v1.1)
+
+## 적용 범위 및 문서 라우팅 (2026-10-22)
+
+- [Notion 02-06 메타데이터 작업 라우트](https://app.notion.com/p/4010e68bd69f81588ea0cc325bbe51cb)는 의미 판정·소형 쓰기·등록 단계의 내비게이션만 소유합니다. 본 파일은 **의미 메타 판정과 필드/근거의 정본**이며 등록기 구현·자동화 수행의 정본이 아닙니다.
+- **GPT 사후 FINAL QA:** 사용자가 PT/TPL 신규 검수·수리를 명시 제외했으므로 해당 역할 정본에서는 **PT/TPL을 새 판정 분모에 포함하지 않습니다**. 기존 값은 훼손하지 않습니다. CREATE/R1/R2/R3/ALIVE 등 최초 품질·메타 의무를 이 예외로 변경하지 않습니다.
+- 이 정책을 근거로 모든 작업자가 모든 기존 UID를 새로 재검하거나 Consumer/Search N/N 수동 검증을 해야 하는 것은 아닙니다. **실제 사용자 지정 범위·기존 유효 증거·해당 역할 종료조건이 우선**합니다.
 
 ## CURRENT HARD — 공용 조회 / 소형 메타 JSON 작성 분리 (2026-10-21)
 
-**전 학년·전 과목 공통:** 공용 `archive/data/question_metadata.json`에서 대상 UID만 읽어 현재값을 확인한다. 작업 결과의 메타 변경은 시험지별 소형 JSON/stage-local 패킷만 작성한다. 중앙 공용 메타·DB·runtime·색인은 승인된 Actions 생성기의 output이지 작업자 직접 편집 대상이 아니다. 이미 승인된 값의 before/after, UID, source blob, ACTIVE PT/TPL/binding과 실제 Consumer/Search 일치를 요구한다. 미지원 자동등록기는 `TOOLING_GAP`으로 정확히 기록하고 대형 파일 업로드로 우회하지 않는다. [전체 계약](JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md). 기존 문항별 메타 품질 검수·저장 책임은 그대로다.
+**전 학년·전 과목 공통:** 공용 `archive/data/question_metadata.json`에서는 대상 UID만 조회하고 메타 변경 산출물은 시험지별 소형 JSON/stage-local 패킷으로 작성한다. 중앙 공용 메타·DB·runtime·색인은 승인된 등록/빌드 자동화의 파생 output이지 작업자 직접 편집 대상이 아니다. 값의 실제 수학적 의미·UID·source blob·현행 canonical key/parent와 before/after의 근거를 검수한다. 소비자 등록 이후의 parity 검증은 인가된 Actions/기술 담당자가 소유하고, GPT 사후 FINAL QA가 병합 후 N/N 수동 조회를 반복하지 않는다. 자동등록 미지원은 `TOOLING_GAP`으로 밝히고 대형 업로드로 우회하지 않는다. [쓰기에 대한 단일 계약](JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md). 기존 최초 단계의 문항별 메타 품질 검수 책임은 그대로다.
 
 
 > 2026-10-10 원장 지시. 적용: 학교 기출(original), 유사문항(similar), ALIVE/Generated, 교재·평가용 JS의 신규 제작·기존 수정·검수. 이 문서는 **메타데이터 확인·기록 의무**이며 무관한 문항 전수 재분류 명령이나 신규 품질 재승인 단계가 아니다. 현재 사용자 명시 범위·종료 조건이 우선한다.
@@ -49,13 +55,13 @@ JS 객체 단독에 모든 확장 필드를 억지 삽입하지 않는다. **현
 5. **난이도 두 축**: 학습용 `level=하/중/상`과 문제은행 `difficultyBucket=1~5`(현재 schema의 대응 필드)을 독립 판정. 어려움을 계산량만으로 추정하거나 숫자를 하/중/상에서 기계 변환하지 않는다.
 6. **검색·평가·승인**: 검색 가능한 실제 meta projection, 승인/REVIEW/HOLD/STALE, 선택 가능 여부와 제품별 eligibility, visual 필요성의 문제용/해설용 독립 판정. 학생용 정답 공개 권한과 품질/기술 검증 상태를 혼동하지 않는다.
 
-위 항목의 필수성은 **필드 존재 여부 + 값의 근거 + canonical parent + 저장 위치 + 검색 projection parity**로 평가한다. 적용 가능한 필드만 실제 확정하고, 근거 부족은 `UNKNOWN/EVIDENCE_DEBT`(필드·사유·필요 자료)로 보존한다. 없는 개념에 가짜 `NONE`, 모르는 사실에 추정 값, 미등록 키에 `CONFIRMED`를 넣지 않는다.
+위 항목의 **의미 메타 완성도**는 필드 존재 여부 + 실제 값의 근거 + canonical parent + 저장 위치를 기준으로 판정한다. **소비자 검색 projection parity는 별도 등록·기술 검증 단계**에서 확인하며 의미 판정 `KEEP` 자체나 GPT 사후 FINAL QA `MAIN_DONE`과 혼동하지 않는다. 적용 가능한 필드만 실제 확정하고, 근거 부족은 `UNKNOWN/EVIDENCE_DEBT`(필드·사유·필요 자료)로 보존한다. 없는 개념에 가짜 `NONE`, 모르는 사실에 추정 값, 미등록 키에 `CONFIRMED`를 넣지 않는다.
 
 기준: `docs/architecture/Problem_Bank_Unified_Meta_Assessment_Contract_CURRENT_v1.md`, `docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md` 및 현재 Meta Foundation/RPM/Generated registries.
 
 ## 4. 필수 검수·수정 판정
 
-- **KEEP**: 실제 문항 근거, 최신 master, parent/namespace, 난이도, UID·source/Consumer/index 정합 확인됨.
+- **KEEP**: 이번 문항의 실제 풀이 근거, 최신 master, parent/namespace, 난이도, UID·source 동일성 및 해당 의미 필드가 정합함. 실제 Consumer/index 검증 여부는 **별도 기술 상태**로 기록하고 수행하지 않았다면 `NOT_RUN`으로 둔다.
 - **CORRECT**: 확인된 오류만 승인 범위에서 수정, 변경 영향 문항 및 직접 dependency만 재검. 관련 근거·before/after 기록.
 - **HOLD/EVIDENCE_DEBT**: 실제 근거가 부족하거나 충돌. 잘못된 키/난이도/출처를 추정하지 않으며 원인·필드·필요한 증거·후속 소유자를 기록한다. 나머지 정상 UID 작업은 계속.
 - 메타-only 작업은 `content/choices/answer/solution/image/layoutTag/wide`에 손대지 않는다. 반대로 JS 본문 수정으로 개념·정답·난이도·출처 fingerprint가 달라지면 영향 메타와 검색 projection을 stale 처리하고 해당 UID만 갱신한다.
@@ -64,7 +70,7 @@ JS 객체 단독에 모든 확장 필드를 억지 삽입하지 않는다. **현
 ## 5. 작업 마감
 
 - 신규 제작/검수/수정의 **해당 범위**에서 필드 누락·invalid 값·마스터/parent 불일치·UID 충돌을 확인하고, `KEEP/CORRECT/HOLD/EVIDENCE_DEBT` 건수와 영향을 받은 UID를 짧게 기록한다.
-- 운영 반영까지 지시된 경우에는 실제 **source JS·metadata/registry → Consumer/DB·Catalog → 문항 index·통합 검색 projection** 동기화, 현재 source SHA/UID 값 일치, 검색·개별 선택·Compose/출력 관련 기술 확인, 최신 main 및 원격 readback까지 닫는다. 기술 미실시는 NOT_TESTED, 문서만 작성했다면 POLICY_ONLY.
+- **작업 종료조건은 담당 역할 정본을 따른다.** 신규 CREATE/R1/R2/R3는 실질적 의미 메타의 검사·수리·인계 분모를 유지한다. GPT 사후 FINAL QA는 [v2.0 실행 카드](../operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md)에 따라 열린 결함·변경분·직접 의존만 수리하고 소형 JSON 필요 시 포함한 뒤 Git main/대상 blob 원격 확인으로 종료한다. 등록 후 **source JS·metadata/registry → Consumer/DB/Catalog/index/Search** parity·실제 Pages/Compose 기술 검증은 Actions/별도 기술 담당의 종료조건이며, 그 증거가 없으면 `NOT_TESTED`·`PIPELINE_UNVERIFIED`로 구별한다. 문서만 작성했다면 `POLICY_ONLY`.
 - Compose와 Factory(5분4/소단원12/단원20/월말24)는 **같은 문항 Meta**를 사용한다. Product Recipe와 문항 Meta는 구분하고, 엄격한 Factory eligibility와 교사의 직접 검색·선택 권한을 혼동하지 않는다.
 - 보고 항목: `scope/UID count; field coverage; canonical parent/key status; RPM L1-L4; Cross/Condition/Integration/PT-TPL; level/difficulty1-5; provenance; source→Consumer→index parity; exact debt; actual validation/readback`. 항목별 미수행은 PASS라고 쓰지 않는다.
 - 이 정책 도입만으로 기존 모든 production JS/Meta를 일괄 마이그레이션하지 않는다. 기존 인증된 UID의 품질 판정을 소급 무효화하지 않는다.
