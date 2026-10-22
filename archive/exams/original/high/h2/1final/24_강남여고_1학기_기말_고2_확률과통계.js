@@ -88,7 +88,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 남학생 한 명을 뽑는 조건이 주어졌으므로 남학생 전체를 기준으로 확률을 구한다.\n조건 정리: 남학생은 $20$명이고, 그중 동생이 있는 남학생은 $5$명이다.\n풀이 방향: 조건부확률이므로 분모는 전체 학생 수 $35$명이 아니라 남학생 수 $20$명이다.\n정석 풀이: 임의로 뽑은 학생이 남학생일 때, 그 학생에게 동생이 있을 확률은 $\\dfrac{5}{20}=\\dfrac{1}{4}$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -125,12 +125,12 @@ window.questionBank = [
   {
     "id": 5,
     "level": "중",
-    "category": "확률의 뜻과 활용",
+    "category": "조건부확률",
     "originalCategory": "24_강남여고_1학기_기말_고2_확률과통계",
     "standardCourse": "확률과 통계",
-    "standardUnitKey": "H15-PS-03",
-    "standardUnit": "확률의 뜻과 활용",
-    "standardUnitOrder": 3,
+    "standardUnitKey": "H15-PS-04",
+    "standardUnit": "조건부확률",
+    "standardUnitOrder": 4,
     "questionType": "객관식",
     "layoutTag": "grid",
     "tags": [
@@ -147,8 +147,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 배반사건과 독립사건의 정의를 구분하여 각 명제의 참거짓을 판단한다.\n조건 정리: $P(A)>0$, $P(B)>0$이므로 조건부확률 $P(B\\mid A)$, $P(A\\mid B)$를 사용할 수 있다.\n풀이 방향: ㄱ부터 ㅁ까지 각각 배반사건, 덧셈정리, 곱셈정리, 독립사건의 정의와 비교한다.\n정석 풀이: ㄱ은 교집합이 공집합이면 서로 배반사건이므로 참이다. ㄴ은 배반사건의 합사건 확률이 두 확률의 합과 같으므로 참이다. ㄷ은 확률의 곱셈정리이므로 참이다. ㄹ은 $A\\cap B=\\varnothing$이면 $P(A\\cap B)=0$이지만 $P(A)P(B)>0$이므로 독립사건이 될 수 없어 거짓이다. ㅁ은 독립사건의 정의이므로 참이다. 따라서 항상 옳은 것은 ㄱ, ㄴ, ㄷ, ㅁ의 $4$개이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-PS-03-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -298,7 +298,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 서로 독립인 사건은 조건부확률이 원래 사건의 확률과 같다.\n조건 정리: $A$와 $B$는 서로 독립이고 $P(A\\mid B)=0.4$, $P(B\\mid A)=0.5$이다.\n풀이 방향: 독립성을 이용하여 $P(A)$와 $P(B)$를 구한 뒤 교집합 확률을 계산한다.\n정석 풀이: 서로 독립이므로 $P(A\\mid B)=P(A)=0.4$이고 $P(B\\mid A)=P(B)=0.5$이다. 따라서 $P(A\\cap B)=P(A)P(B)=0.4\\times0.5=0.2$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -328,7 +328,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 독립사건은 $P(X\\cap Y)=P(X)P(Y)$인지 확인하여 판단한다.\n조건 정리: $A=\\{2,4,6\\}$, $B=\\{1,3,5\\}$, $C=\\{3,6\\}$이다.\n풀이 방향: 각 보기의 두 사건에 대해 교집합과 확률의 곱을 비교한다.\n정석 풀이: $A$와 $B$는 교집합이 없으므로 독립이 아니다. $A$와 $C$는 $A\\cap C=\\{6\\}$이므로 $P(A\\cap C)=\\dfrac{1}{6}$이고, $P(A)P(C)=\\dfrac{3}{6}\\times\\dfrac{2}{6}=\\dfrac{1}{6}$이다. 따라서 $A$와 $C$는 독립사건이다. 또한 $A$와 $C$는 공통 원소 $6$이 있으므로 배반사건이 아니다. $B$와 $C$도 $P(B\\cap C)=\\dfrac{1}{6}=P(B)P(C)$이므로 독립이고, 공통 원소 $3$이 있으므로 배반사건도 아니다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -388,7 +388,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 독립이면 $P(A\\cap B)=P(A)P(B)$이고, 여사건의 독립성은 합사건의 여사건으로 증명한다.\n조건 정리: $A$와 $B$는 서로 독립이다.\n풀이 방향: $P(A^C\\cap B^C)$를 $P((A\\cup B)^C)$로 바꾸고 덧셈정리를 이용한다.\n정석 풀이: $A$와 $B$가 독립이므로 ㉮에는 $P(A)P(B)$가 들어간다. 또 $P((A\\cup B)^C)=1-P(A\\cup B)$이므로 ㉯에는 $P(A\\cup B)$가 들어간다. 덧셈정리에 의해 $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$이므로 $1-P(A\\cup B)=1-P(A)-P(B)+P(A\\cap B)$이고, 독립성을 이용하면 $1-P(A)-P(B)+P(A)P(B)=\\{1-P(A)\\}\\{1-P(B)\\}$이다. 따라서 ㉰에는 $P(B)$가 들어간다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -418,7 +418,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 조건부확률은 조건에 해당하는 경우를 분모로 하여 구한다.\n조건 정리: $A$는 짝수 카드 사건, $B$는 3의 배수 카드 사건이다.\n풀이 방향: 1부터 20까지에서 짝수, 3의 배수, 6의 배수의 개수를 각각 센다.\n정석 풀이: 짝수는 $10$개, 3의 배수는 $6$개, 두 조건을 모두 만족하는 6의 배수는 $6,12,18$의 $3$개이다. 따라서 $P(A\\mid B)=\\dfrac{3}{6}=\\dfrac{1}{2}$이고 $P(B\\mid A)=\\dfrac{3}{10}$이다. 두 조건부확률의 합은 $\\dfrac{1}{2}+\\dfrac{3}{10}=\\dfrac{4}{5}$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -574,7 +574,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 소형차를 샀다는 조건이 주어졌으므로 베이즈 정리의 형태로 조건부확률을 구한다.\n조건 정리: H사의 시장 점유율은 $40\\%$이고, H사 자동차 중 소형차 비율은 $20\\%$이다.\n풀이 방향: 전체 소형차 비율을 구한 뒤, 그중 H사의 소형차가 차지하는 비율을 구한다.\n정석 풀이: H사의 소형차 비율은 $0.4\\times0.2=0.08$이다. K사의 소형차 비율은 $0.3\\times0.3=0.09$, S사의 소형차 비율은 $0.3\\times0.1=0.03$이다. 따라서 전체 소형차 비율은 $0.08+0.09+0.03=0.20$이다. 소형차를 구입했을 때 H사의 자동차일 확률은 $\\dfrac{0.08}{0.20}=\\dfrac{2}{5}$이다. 그러므로 $a=2$, $b=5$이고 $ab=10$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -634,7 +634,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 흰색 운동복 학생 수와 녹색 운동복 중 축구하는 학생 수를 미지수로 두고 조건부확률 식을 세운다.\n조건 정리: 전체 학생은 $40$명이다. 흰색 운동복 학생은 모두 축구를 하고, 녹색 운동복 학생은 일부는 축구, 나머지는 농구를 한다.\n풀이 방향: 녹색 운동복을 입고 축구하는 학생 수를 $x$명으로 두고, 두 조건부확률을 이용하여 전체 인원식과 연결한다.\n정석 풀이: 녹색 운동복을 입고 축구하는 학생 수를 $x$명이라 하자. 흰색 운동복 학생 수를 $w$명이라 하면 축구하는 학생 수는 $w+x$명이고, $P(W\\mid F)=\\dfrac{w}{w+x}=\\dfrac{3}{4}$이다. 따라서 $4w=3w+3x$이므로 $w=3x$이다. 또 녹색 운동복 학생 중 농구하는 학생의 비율이 $P(B\\mid G)=\\dfrac{8}{11}$이므로 녹색 운동복 학생 중 축구하는 비율은 $\\dfrac{3}{11}$이다. 따라서 녹색 운동복 전체 학생 수는 $\\dfrac{11}{3}x$명이다. 전체 학생 수가 $40$명이므로 $3x+\\dfrac{11}{3}x=40$이다. 양변에 $3$을 곱하면 $9x+11x=120$이고, $20x=120$이므로 $x=6$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -659,7 +659,7 @@ window.questionBank = [
     "answer": "$\\dfrac{3}{5}$",
     "solution": "[키포인트] 조건부확률로 $P(B)$를 먼저 구한 뒤, 덧셈정리로 $P(A\\cup B)$를 구한다.\n조건 정리: $P(A)=0.3$, $P(A\\cap B)=0.2$, $P(A\\mid B)=0.4$이다.\n풀이 방향: $P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}$를 이용해 $P(B)$를 구한다.\n정석 풀이: $P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}$이므로 $0.4=\\dfrac{0.2}{P(B)}$이다. 따라서 $P(B)=\\dfrac{0.2}{0.4}=0.5$이다. 덧셈정리에 의해 $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)=0.3+0.5-0.2=0.6=\\dfrac{3}{5}$이다.\n따라서 구하는 값은 $\\dfrac{3}{5}$이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
