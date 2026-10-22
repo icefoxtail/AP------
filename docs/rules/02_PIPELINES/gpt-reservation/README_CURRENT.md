@@ -7,10 +7,11 @@
 - 실제 stage 검수/블라인드 동결·Meta 의미·Golden/Negative·DOC_READ_RECEIPT의 **진짜 해당 권위 열람/실행 증거**는 유지하되, 적용되지 않는 옛 공통 라우터와 무관한 프로젝트 장문은 읽지 않았다고 실패 처리하지 않는다.
 
 
-## CURRENT 공통 메타 산출물 경계 — 소형 JSON ONLY (2026-10-21)
+## 예약단계 메타 기록 경계 — 단일 정본 링크 (2026-10-22)
 
-예약 CREATE/R1/R2/R3/MASTER는 기존 분모·Meta 의미 검수는 계속하되, **메타 수정 산출물은 대상 시험지 소형 JSON/stage-local 패킷만 기록**한다. 전체 `question_metadata.json`는 UID 기준 조회·대조·검색용이고 직접 편집/업로드 금지. 인가된 출고 writer만 소형 승인 요청을 Git 등록기로 전송한다. 자동등록 미지원 과목은 `TOOLING_GAP`을 남겨 승인된 수리 담당에 인계하며 대형 직접 업로드 또는 REVIEW2 허위 승인 금지. [상세 계약](../../../architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md). 이 문서 반영은 기존 예약 프롬프트를 자동 수정하지 않으며 기존 Library/Drive stage 경로 및 Git writer 권한은 그대로다.
-
+- CREATE/R1/R2/R3/MASTER의 실제 의미 메타 확인과 해당 역할별 검수·인계 분모는 **각 역할 CURRENT**를 따른다. 단독으로 완료 여부를 정할 때 이 공용 README의 과거 문구를 확대 적용하지 않는다.
+- 메타 파일을 **읽거나 소형 JSON/stage-local 패킷으로 쓸 때**는 [공용 조회·소형 쓰기 계약](../../../architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md)을 적용한다. 공용 `question_metadata.json` 직접 대형 수정·업로드, REVIEW2 허위 승인 금지. 예약 worker는 Git writer가 아니며 실제 등록은 인가된 writer/Actions가 맡는다.
+- [Notion 02-06 메타데이터 라우트](https://app.notion.com/p/4010e68bd69f81588ea0cc325bbe51cb)에서만 등록기 장애·의미 판단·조건부 참고 문서를 탐색한다. 문서 변경은 기존 예약 프롬프트·Library/Drive stage·ON/OFF를 자동 변경하지 않는다.
 
 ## R3 캠페인 전용 출고 허브 — HIGH_DYNAMIC 문서 링크 (2026-10-22)
 
