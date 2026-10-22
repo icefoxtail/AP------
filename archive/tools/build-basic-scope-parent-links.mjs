@@ -54,8 +54,22 @@ const overridesPath = 'archive/data/basic-scope-source-links.json';
 const overridesText = read(overridesPath), overrides = JSON.parse(overridesText);
 if (overrides.status !== 'REVIEWED_SCOPE_LINKS' || !Array.isArray(overrides.records)) throw new Error('Invalid reviewed source links');
 refs.push({ source: overridesPath, sha256: sha(overridesText) });
+const scopedPath = "archive/data/meta-foundation/exam-scoped/25_금당고_2학기_중간_고2_확률과통계.parent-links.json";
+const scopedText = read(scopedPath), scoped = JSON.parse(scopedText);
+if (scoped.schemaVersion !== 'archive2-reviewed-basic-source-links-exam-scoped-v1' ||
+    scoped.status !== 'REVIEWED_SCOPE_LINKS' || scoped.recordCount !== 12 ||
+    !Array.isArray(scoped.records) || scoped.records.length !== scoped.recordCount ||
+    scoped.sourceArchiveFile !== "original/high/h2/2mid/25_금당고_2학기_중간_고2_확률과통계.js" ||
+    scoped.records.some(record => record.sourceFile !== scoped.sourceArchiveFile))
+  throw new Error('Invalid Geumdang exam-scoped reviewed parent links');
+const scopedSourceBytes = fs.readFileSync(path.join(root, 'archive/exams', scoped.sourceArchiveFile));
+const scopedSourceBlob = crypto.createHash('sha1').update('blob ' + scopedSourceBytes.length + '\0').update(scopedSourceBytes).digest('hex');
+if (scoped.expectedSourceBlobSha1 !== scopedSourceBlob)
+  throw new Error('Geumdang reviewed source link blob drift');
+refs.push({ source: scopedPath, sha256: sha(scopedText) });
+const reviewedSourceRecords = [...overrides.records, ...scoped.records];
 const sourceBanks = new Map();
-for (const record of overrides.records) {
+for (const record of reviewedSourceRecords) {
   if (!parents.some(p => p.curriculumKey === record.curriculumKey &&
     core.normalizeCourseIdentity(p.courseKey) === core.normalizeCourseIdentity(record.courseKey) && p.L1 === record.L1 && p.L2 === record.L2))
     throw new Error(`Unregistered source parent: ${record.sourceFile}#${record.sourceOrdinal}`);
@@ -65,7 +79,10 @@ for (const record of overrides.records) {
   const bodyFingerprint = sha(JSON.stringify({ content: question.content ?? null, choices: Array.isArray(question.choices) ? question.choices : null, image: question.image ?? null }));
   // Solver-only revisions do not invalidate a reviewed L1/L2 topic. A changed
   // statement, choice set or visual reference requires a new parent review.
-  if (bodyFingerprint !== record.sourceBodyFingerprint) continue;
+  if (bodyFingerprint !== record.sourceBodyFingerprint) {
+    if (scoped.records.includes(record)) throw new Error('Geumdang reviewed source fingerprint drift q' + record.sourceOrdinal);
+    continue;
+  }
   records.push({
     ...record,
     assignmentFingerprint: bodyFingerprint,
@@ -291,6 +308,10 @@ for (const [sourceKey, link] of reviewedLinksBySource) {
   sourceParentByUid.set(item.questionUid, joinedLink);
 }
 sourceParents.splice(0, sourceParents.length, ...sourceParentByUid.values());
+const approvedScopedOrdinals = new Set(sourceParents.filter(link => link.sourceFile === scoped.sourceArchiveFile).map(link => Number(link.sourceOrdinal)));
+const missingScopedOrdinals = scoped.records.map(link => Number(link.sourceOrdinal)).filter(ordinal => !approvedScopedOrdinals.has(ordinal));
+if (missingScopedOrdinals.length) throw new Error('Geumdang scoped parent linkage incomplete: ' + missingScopedOrdinals.join(','));
+
 const published = [], publishedKeys = new Set();
 for (const row of records) {
   const { problemTypeKey, templateKey, ...parent } = row;
