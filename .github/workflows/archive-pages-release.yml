@@ -28,13 +28,23 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-          sparse-checkout: .archive-meta-register/inbox
+          sparse-checkout: |
+            .archive-meta-register/inbox
+            tools/ci
           sparse-checkout-cone-mode: false
       - id: inbox
         shell: bash
         run: |
           set -euo pipefail
-          if find .archive-meta-register/inbox -maxdepth 1 -name '*.json' -type f -print 2>/dev/null | grep -q .; then
+          # The register workflow is the single derived-data writer for pushes that touch its trigger
+          # paths. Decide from the triggering push itself (event payload), not from the moving main
+          # checkout. If the event cannot prove it, do not defer: a deferral waits for a register run
+          # that may never have started.
+          touched="$(node tools/ci/push-touches-paths.mjs --paths-file tools/ci/archive-meta-register-trigger-paths.txt --uncertain false)"
+          if [[ "$touched" == "true" ]]; then
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "The push touched reviewed-meta registration inputs; the register workflow is the single writer and its completion event will resume release."
+          elif find .archive-meta-register/inbox -maxdepth 1 -name '*.json' -type f -print 2>/dev/null | grep -q .; then
             echo "ready=false" >> "$GITHUB_OUTPUT"
             echo "Reviewed metadata requests are pending; the registration completion event will resume release."
           else
@@ -84,23 +94,12 @@ jobs:
       - name: Materialize reviewed META_V2 and register Archive sources
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: |
-          node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --write 2>&1 | tee "$RELEASE_EVIDENCE_DIR/meta-v2-materializer-write.log"
-          python archive/build_db.py 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive-registration-build.log"
+        run: bash tools/ci/archive-pages-registration-derive.sh materialize
 
       - name: Verify Archive DB, UID, Meta, index, and catalog registration
         env:
           RELEASE_EVIDENCE_DIR: ${{ runner.temp }}/archive-pages-release-evidence
-        run: |
-          node tests/archive-meta-v2-materializer.test.mjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/meta-v2-materializer-tests.log"
-          node tests/archive2-meta-v2-semantic-authority.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/meta-v2-authority-tests.log"
-          node archive/tools/meta-foundation/materialize-meta-v2-payloads.mjs --check 2>&1 | tee "$RELEASE_EVIDENCE_DIR/meta-v2-materializer-check.log"
-          node tests/archive-question-identity-contract.test.mjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/question-identity-contract-tests.log"
-          node tests/archive-question-identity-runtime.test.mjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/question-identity-runtime-tests.log"
-          node tests/jeil-legacy-similar-22-registration.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/jeil-registration-tests.log"
-          node tests/palma-legacy-similar-23-registration.test.cjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/palma-registration-tests.log"
-          node archive/tools/verify-archive-registration.mjs 2>&1 | tee "$RELEASE_EVIDENCE_DIR/archive-registration-parity.log"
-          git diff --check
+        run: bash tools/ci/archive-pages-registration-derive.sh verify
 
       - name: Guard generated Archive registration scope
         shell: bash
@@ -128,15 +127,17 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git add -- archive/db.js archive/data/question_identity_map.json archive/data/question_metadata.json archive/question-identity.js archive/question-index.js archive/question-index-report.md archive/question-index-audit.md archive/data/archive2-catalog.json archive/data/archive2-source-verification-index.json archive/data/archive2-source-verification/v1/*.json archive/data/archive2-crosswalk-inventory.json archive/data/archive2-canonical-input-manifest.json archive/data/archive2-canonical-projection-policy.json archive/data/archive2-item-review-overrides.json archive/data/basic-scope-parent-links.json archive/data/meta-foundation/runtime/*.json
-          if git diff --cached --quiet; then
-            echo "Archive registration artifacts already current."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "chore(archive): sync registration artifacts [skip ci]"
-            git push origin HEAD:main
-          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Never force-pushes. If another writer moved main first, the helper resets to the new tip,
+          # re-derives and re-verifies there (same script as the steps above), and pushes the fresh
+          # result (max 3 attempts); an identical tree already on main is success.
+          node tools/ci/git-push-derived-with-retry.mjs \
+            --paths-file tools/ci/archive-pages-registration.paths \
+            --message "chore(archive): sync registration artifacts [skip ci]" \
+            --regenerate "bash tools/ci/archive-pages-registration-derive.sh all" \
+            --remote origin --branch main --max-attempts 3 \
+            --label "Pages registration sync" --summary-file "$GITHUB_STEP_SUMMARY"
           git fetch --no-tags origin main
           registered_sha="$(git rev-parse HEAD)"
           remote_sha="$(git rev-parse origin/main)"
