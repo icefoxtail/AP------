@@ -522,7 +522,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     consumerSearchStatus: "NOT_RUN", replay: false, plannedPaths: changed.map(([file]) => file) };
 }
 
-function verifyConsumer(root, records, runtimeRecords, read) {
+// Loads the digest-checked canonical input bundle exactly as the student Consumer
+// does and returns the resolved catalog (canonical.resolveCatalog output).
+export function loadResolvedConsumerCatalog(root, read = file => JSON.parse(fs.readFileSync(safePath(root, file), "utf8"))) {
   const manifestPath = "archive/data/archive2-canonical-input-manifest.json";
   if (!fs.existsSync(safePath(root, manifestPath))) fail("canonical manifest missing");
   const manifest = read(manifestPath);
@@ -540,8 +542,11 @@ function verifyConsumer(root, records, runtimeRecords, read) {
   const runtimePaths = canonical.runtimeInputPathsFromManifest(manifest.files);
   for (const relative of new Set([...canonical.REQUIRED_INPUT_PATHS, ...runtimePaths])) load(relative);
   for (const relative of canonical.reviewedRegistrationProofPaths(runtimePaths.map(p => resources[p]))) load(relative);
-  const resolved = canonical.resolveCatalog({ versionBundle: { manifest, projectionVersion: manifest.projectionVersion, files, resources } });
-  return verifyConsumerValues(root, records, runtimeRecords, resolved);
+  return canonical.resolveCatalog({ versionBundle: { manifest, projectionVersion: manifest.projectionVersion, files, resources } });
+}
+
+function verifyConsumer(root, records, runtimeRecords, read) {
+  return verifyConsumerValues(root, records, runtimeRecords, loadResolvedConsumerCatalog(root, read));
 }
 
 export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
