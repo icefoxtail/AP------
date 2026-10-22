@@ -37,7 +37,7 @@ node archive/tools/build-archive2-catalog.mjs --check
 node archive/tools/meta-foundation/compile-meta-foundation.mjs --canonical-only-check
 for request in "${reqs[@]}"; do
   schema="$(jq -r .schemaVersion "$request")"
-  if [[ "$schema" == "archive-reviewed-exam-meta-register-request-v2" || "$schema" == "archive-finalqa-pinpoint-register-request-v1" ]]; then
+  if [[ "$schema" == "archive-reviewed-exam-meta-register-request-v2" || "$schema" == "archive-finalqa-pinpoint-register-request-v1" || "$schema" == "archive-finalqa-nonpt-register-request-v1" ]]; then
     node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request "$request" --verify-projection
   fi
 done
