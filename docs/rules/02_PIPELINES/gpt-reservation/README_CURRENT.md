@@ -1,5 +1,12 @@
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — CURRENT
 
+## CURRENT — 역할·캠페인 맞춤 진입 / 공통 Notion 장문 필독 해제 (2026-10-22)
+
+- 새 예약 설정·수정·운영자는 **사용자의 최신 캠페인 지시 → 실제 캠페인 manifest/해당 역할 Git CURRENT → 이번 stage에 직접 적용되는 정본** 순서만 사용한다. 예전 Notion 'GPT 작업 전 필독 라우터' 전체와 Archive 시작/생명주기를 **일괄/매회 강제 열람하지 않는다.** 공통 Notion은 작업 범위 충돌이나 범용 운영 원칙 확인 시에만 참고한다.
+- 각 캠페인의 일정·상태·source/Library 경로·인계 예외·정정은 **[캠페인별 전용 문서](https://app.notion.com/p/4010e68bd69f81b7a445c7c48abe1c05) 및 실제 해당 예약 프롬프트**에서만 수정한다. 범용 라우터에 기록을 복사하지 않는다. 이 문서 편집이 기존 예약을 자동 갱신하지는 않는다.
+- 실제 stage 검수/블라인드 동결·Meta 의미·Golden/Negative·DOC_READ_RECEIPT의 **진짜 해당 권위 열람/실행 증거**는 유지하되, 적용되지 않는 옛 공통 라우터와 무관한 프로젝트 장문은 읽지 않았다고 실패 처리하지 않는다.
+
+
 ## CURRENT 공통 메타 산출물 경계 — 소형 JSON ONLY (2026-10-21)
 
 예약 CREATE/R1/R2/R3/MASTER는 기존 분모·Meta 의미 검수는 계속하되, **메타 수정 산출물은 대상 시험지 소형 JSON/stage-local 패킷만 기록**한다. 전체 `question_metadata.json`는 UID 기준 조회·대조·검색용이고 직접 편집/업로드 금지. 인가된 출고 writer만 소형 승인 요청을 Git 등록기로 전송한다. 자동등록 미지원 과목은 `TOOLING_GAP`을 남겨 승인된 수리 담당에 인계하며 대형 직접 업로드 또는 REVIEW2 허위 승인 금지. [상세 계약](../../../architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md). 이 문서 반영은 기존 예약 프롬프트를 자동 수정하지 않으며 기존 Library/Drive stage 경로 및 Git writer 권한은 그대로다.
@@ -32,7 +39,7 @@ HIGH_DYNAMIC R3 종료 후 실제 Library `/Archive2-GPT/RELEASE_HUB/PENDING/<ex
 
 ### 권위 및 필독 순서
 
-1. 사용자 최신 명시 범위·승인/정지·종료 조건 → 노션 [GPT 작업 전 필독 라우터](https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd) → [Archive 시작](https://app.notion.com/p/3e10e68bd69f81898cc8fb85cb4b1398) → [전체 생명주기](https://app.notion.com/p/3e10e68bd69f81fdb161ffc3f6227b6e) → [예약 2.0 CURRENT](https://app.notion.com/p/3f10e68bd69f814aab36c344f4e87c01).
+1. 사용자 최신 명시 범위·승인/정지·종료 조건 → **해당 캠페인 현재 manifest·실제 예약 설정** → **이 Git 공용 예약 정본 + 해당 역할 CURRENT 한 곳**. Notion 공통/Archive 생명주기는 **작업 예외·실제 충돌 발생 시에만 필요한 절을 열람**한다.
 2. Git 최신 main SHA와 `AGENTS.md` / `archive/AGENTS.md` → **이 디렉터리 README_CURRENT.md 전체** → 해당 역할의 `MASTER_CURRENT.md` / `CREATE_CURRENT.md` / `R1_CURRENT.md` / `R2_CURRENT.md` / `R3_CURRENT.md` 중 정확히 하나 전체. 캠페인 고유 manifest·인테이크/source authority/기존 상태도 직접 읽는다.
 3. 실제 이번 작업 적용 범위에 따라 `docs/rules/02_PIPELINES/JS_Archive_2.0_GPT_Scheduled_Execution_v1.md`, `docs/rules/02_PIPELINES/JS_Archive_2.0_GPT_Campaign_Generation_v1.md`, `docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md`, `docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md`, `docs/rules/03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`, `docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`, `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`, `docs/rules/02_PIPELINES/해설프로토콜.md`와 CURRENT RPM Primary/crosswalk/GLOBAL ACTIVE/PT·TPL/binding, Golden/Negative, Visual/교육과정 정본을 실제 읽는다. 적용되는 문서만 추가로 읽고 구버전 HISTORY의 충돌 규칙은 사용하지 않는다.
 4. 링크/목차 확인만으로 READ 주장 금지. 읽은 정본 path/URL, Git blob SHA·Notion 수정시각(가능한 경우), 적용한 조항·실제 결과를 해당 회차에 기록한다. 실제 독립풀이·학생 설명·정밀 Meta·검증을 정본 문구 확인으로 대체하지 않는다.
@@ -66,7 +73,7 @@ HIGH_DYNAMIC R3 종료 후 실제 Library `/Archive2-GPT/RELEASE_HUB/PENDING/<ex
 
 ### 2.2 DOC_READ_RECEIPT 실제 본문 열람 증빙
 
-- 새로운 exam·단계 착수 시, 산출물 수정 전에 위 라우터·Git main·해당 ROLE·필요한 수학/Meta/품질 정본을 **실제 본문까지** 읽는다. 노션 링크나 Git 파일 이름을 단순 나열해서 필독 완료로 처리하지 않는다.
+- 새로운 exam·단계 착수 시, 산출물 수정 전에 Git main·해당 ROLE·실제 이 stage에 적용되는 수학/Meta/품질 정본만 **실제 본문까지** 읽는다. 과거 Notion 공통 라우터·생명주기 전체 선열람은 강제하지 않는다. 노션 링크나 Git 파일 이름을 단순 나열해서 필독 완료로 처리하지 않는다.
 - 각 exam+stage actual attempt의 `DOC_READ_RECEIPT.json`에는 최소 `campaignId, examUid, role, inputArtifactSha, readAtUtc, notionRead:[{url,lastEditedAtIfAvailable,appliedClause}], gitRead:[{path,blobSha,mainSha,appliedClause}], applicableRequirements, resultSummary, exactReadErrors, originalOwner, nextOwner, receiptRemoteReadback`가 필요하다. 장문 발췌·모든 문서 역사 로그는 불필요.
 - 실제 패킷과 같은 Library namespace에 물리 저장한 다음 remote file ID/revision/SHA256을 재조회한다. **저장 실패/미열람/이전 작업의 없는 영수증 소급 생성 금지**. `DOC_READ_UNVERIFIED` 시 품질 PASS 불가하나 캠페인 비차단 인계 경계와는 별도다.
 
@@ -94,7 +101,7 @@ HIGH_DYNAMIC R3 종료 후 실제 Library `/Archive2-GPT/RELEASE_HUB/PENDING/<ex
 
 ## 4. 새 예약 개설/기존 프롬프트 갱신 절차
 
-1. Notion 공용 Skill/라우터에서 이 Git CURRENT 파일 URL을 열어 최신 main SHA를 확인, 이 README와 ROLE 1개, 캠페인 manifest/관련 정본을 본문까지 읽는다.
+1. Git 정확 경로의 이 CURRENT 파일과 역할 파일 1개, 실제 캠페인 manifest/적용되는 정본만 확인한다. 전역 Notion 라우터·역사 문서 순회는 기본 수행하지 않는다.
 2. 필수 변수 모두 바인딩하고 공통 블록+ROLE 블록을 합쳐 사용자가 지정한 예약만 구성한다. 특정 캠페인의 frozen roster를 동적 인테이크로 바꿔치기하거나 과거 NEW14 MASTER 최종판정 조항을 재사용하지 않는다.
 3. 무입력, Git/Notion 조회 실패, 이미 처리됨, 동시 writer, 원본 자료 누락, 진짜 qid 수리, R1 freeze-before-compare, Meta null 실제 lookup, Golden NOT_RUN의 대표 입력을 조항별로 점검한다. 문서 정적 리뷰는 실행 증거가 아니며 스모크 실제 수행 여부를 구별한다.
 4. 예약 생성/수정은 **사용자 승인한 대상·시간·활성 상태만** 변경한다. 생성 후 목록에서 제목/role/prompt version/바인딩/RRULE/ON-OFF를 재조회. “문서 저장 완료”와 “예약 실물 적용 성공”을 별도 기록한다.
