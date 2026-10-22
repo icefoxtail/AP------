@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "archive-final-qa-pinpoint-delta-v1",
+  "examUid": "25_순천고_2학기_중간_고2_확률과통계",
+  "scope": "q10,q17 only; other 22 source questions untouched; student-facing content/choices/answer/solution/assets unchanged; no original PDF comparison; PT/TPL excluded",
+  "sourceArchiveFile": "original/high/h2/2mid/25_순천고_2학기_중간_고2_확률과통계.js",
+  "sourceBlobBefore": "9ac15e1bcc19ada0a8463ef031aca22c5350888b",
+  "sourceBlobAfter": "9204897e4b03d457e758b8db197383f479d66b38",
+  "status": "SOURCE_CORRECTED__CONSUMER_METADATA_NOT_MATERIALIZED",
+  "changes": [
+    {
+      "questionUid": "qid_v1_64da2cba527515eaaea7768a4c9cfcfc48c5f550e1e72803eb2f3556653c3957",
+      "sourceOrdinal": 10,
+      "reason": "Existing conditional-probability category, standardUnit and subUnitKey are Korean/canonical, but subUnit label was English; localize without changing meaning",
+      "fields": {
+        "subUnit": {
+          "before": "conditional probability",
+          "after": "조건부확률"
+        }
+      },
+      "mathCheck": "Lunch Korean-to-dinner-Western conditional probability 0.16/0.34=8/17; answer ① unchanged"
+    },
+    {
+      "questionUid": "qid_v1_b04feee5df789e982dd463561c6668a898aa92bf8586a7d45cfee80df0a13a62",
+      "sourceOrdinal": 17,
+      "reason": "Existing conditional-probability category, standardUnit and subUnitKey are Korean/canonical, but subUnit label was English; localize without changing meaning",
+      "fields": {
+        "subUnit": {
+          "before": "conditional probability",
+          "after": "조건부확률"
+        }
+      },
+      "mathCheck": "Given 10 balls, favorable mass 15/256 among 63/256, probability 5/21; answer ① unchanged"
+    }
+  ],
+  "sourceEvidence": {
+    "sourceVerificationShard": "archive/data/archive2-source-verification/v1/821f3248b9d2a18584e9ee1708f4dec7847198db28790177ccb0756ab5181299.json",
+    "sourceVerificationShardBlob": "647290d8b97b8a6b7fdfc06434e2f94343944195",
+    "sourceEvidenceStatus": "EXISTING_IDENTITY_VERIFIED__META_SOURCE_LABEL_CORRECTED"
+  },
+  "materialization": {
+    "policy": "Authorized GitHub writer only; preserve existing PT/TPL and never edit shared question_metadata.json directly",
+    "required": "q10 and q17 corrected non-PT/TPL subUnit semantic field and affected Consumer/Search projection",
+    "status": "NOT_SUBMITTED",
+    "registrarCompatibility": "CURRENT_PINPOINT_REGISTRAR_RESTRICTED_TO_OTHER_EXAM"
+  }
+}
