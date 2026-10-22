@@ -68,7 +68,7 @@ window.questionBank=[
     "solution": "[키포인트] 버스로 통학한다는 조건에서 $A$학급 학생일 조건부확률을 구한다.\n조건 정리: 버스로 통학하는 사건을 $C$라 하면 표에서 $C$에 해당하는 학생은 모두 $30$명이고, 그중 $A$학급 학생은 $12$명이다.\n풀이 방향: 조건이 주어진 사건 $C$를 새로운 전체집합으로 보고 비율을 구한다.\n정석 풀이: 구하는 확률은 $P(A\\mid C)=\\dfrac{P(A\\cap C)}{P(C)}$이고, 표의 도수를 그대로 쓰면 $\\dfrac{12}{30}=\\dfrac25$이다.\n따라서 정답은 ③이다.",
     "image": "assets/images/24_매산여고_2학기_중간_고2_확률과통계/q2.png",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -99,7 +99,7 @@ window.questionBank=[
     "answer": "①",
     "solution": "[키포인트] $A$와 $B$가 독립이면 $A$와 $B^c$도 독립이므로 $P(A\\cap B^c)=P(A)P(B^c)$이다.\n조건 정리: $P(A)+P(B)=1$이므로 $P(B^c)=1-P(B)=P(A)$이다.\n풀이 방향: $P(A)=p$로 놓으면 주어진 확률이 $p^2$ 꼴이 된다.\n정석 풀이: $P(A)=p$라 하면 $P(B)=1-p$이고 $P(B^c)=p$이다. 독립이므로\n$P(A\\cap B^c)=P(A)P(B^c)=p\\times p=p^2=\\dfrac19$이고 $p\\gt 0$이므로 $p=\\dfrac13$이다. 따라서 $P(B)=1-\\dfrac13=\\dfrac23$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -256,7 +256,7 @@ window.questionBank=[
     "answer": "④",
     "solution": "[키포인트] $P(A^c\\cap B^c)=1-P(A\\cup B)$(드모르간)를 이용하면 분자를 쉽게 구할 수 있다.\n조건 정리: $P(A)=\\dfrac14$, $P(B)=\\dfrac23$, $P(B\\mid A)=\\dfrac13$이다.\n풀이 방향: 곱셈정리로 $P(A\\cap B)$를 구해 $P(A\\cup B)$를 얻은 뒤 조건부확률의 정의에 넣는다.\n정석 풀이: $P(A\\cap B)=P(A)P(B\\mid A)=\\dfrac14\\times\\dfrac13=\\dfrac1{12}$이므로\n$P(A\\cup B)=\\dfrac14+\\dfrac23-\\dfrac1{12}=\\dfrac{3+8-1}{12}=\\dfrac{10}{12}=\\dfrac56$이다.\n따라서 $P(A^c\\cap B^c)=1-\\dfrac56=\\dfrac16$이고 $P(A^c)=1-\\dfrac14=\\dfrac34$이므로\n$P(B^c\\mid A^c)=\\dfrac{1/6}{3/4}=\\dfrac16\\times\\dfrac43=\\dfrac29$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -349,7 +349,7 @@ window.questionBank=[
     "answer": "⑤",
     "solution": "[키포인트] 원인이 여러 개인 결과가 주어졌을 때의 확률이므로 조건부확률(베이즈 정리)로 계산한다.\n조건 정리: 주사위 눈이 $6$일 확률은 $\\dfrac16$이고 이때 주머니 $A$에서, 나머지 확률 $\\dfrac56$으로 주머니 $B$에서 공을 꺼낸다. $A$의 흰 공 비율은 $\\dfrac35$, $B$의 흰 공 비율은 $\\dfrac25$이다.\n풀이 방향: $P(A\\cap W)$와 $P(W)$를 각각 구해 나눈다.\n정석 풀이: $P(A\\cap W)=\\dfrac16\\times\\dfrac35=\\dfrac1{10}$이고 $P(B\\cap W)=\\dfrac56\\times\\dfrac25=\\dfrac13$이므로\n$P(W)=\\dfrac1{10}+\\dfrac13=\\dfrac{3+10}{30}=\\dfrac{13}{30}$이다. 따라서\n$P(A\\mid W)=\\dfrac{1/10}{13/30}=\\dfrac{3/30}{13/30}=\\dfrac3{13}$이다. 원문에서 이 확률을 $\\dfrac{n}{m}$이라 하였으므로 $n=3$, $m=13$이고 $m+n=16$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -380,7 +380,7 @@ window.questionBank=[
     "answer": "③",
     "solution": "[키포인트] 두 사건이 독립이면 교집합의 확률은 두 사건의 확률의 곱과 같다.\n조건 정리: $1$학년인 사건을 $A$, 스터디 카페 이용 경험이 있는 사건을 $B$라 하고, 이용 경험이 있는 $1$학년 학생 수를 $x$라 하자. 전체 학생 수는 $x+75+40+50=x+165$, $1$학년 학생 수는 $x+75$, 이용 경험이 있는 학생 수는 $x+40$이다.\n풀이 방향: 독립 조건 $P(A\\cap B)=P(A)P(B)$를 도수로 나타내어 $x$를 구한다.\n정석 풀이: $\\dfrac{x}{x+165}=\\dfrac{x+75}{x+165}\\times\\dfrac{x+40}{x+165}$이므로 $x(x+165)=(x+75)(x+40)$이다. 전개하면 $x^2+165x=x^2+115x+3000$이므로 $50x=3000$, 따라서 $x=60$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -411,7 +411,7 @@ window.questionBank=[
     "answer": "⑤",
     "solution": "[키포인트] 독립 조건과 합사건의 확률에서 $P(B)$와 $P(A\\cap B)$가 모두 정해지므로 $B$의 원소 개수가 결정된다.\n조건 정리: $5$의 약수인 눈은 $1$과 $5$이므로 $A=\\{1,5\\}$이고 $P(A)=\\dfrac26=\\dfrac13$이다.\n풀이 방향: 독립을 이용해 $P(A\\cup B)$를 $P(B)$로 나타내 $P(B)$를 구하고, $|A\\cap B|$를 정한 뒤 경우의 수를 센다.\n정석 풀이: 독립이므로 $P(A\\cap B)=P(A)P(B)$이고\n$P(A\\cup B)=P(A)+P(B)-P(A)P(B)=\\dfrac13+\\dfrac23P(B)=\\dfrac23$\n에서 $P(B)=\\dfrac12$이다. 즉 $B$의 원소는 $6\\times\\dfrac12=3$개이다. 또 $P(A\\cap B)=\\dfrac13\\times\\dfrac12=\\dfrac16$이므로 $A\\cap B$의 원소는 $1$개이다. 즉 $B$는 $A=\\{1,5\\}$에서 정확히 $1$개, 나머지 $\\{2,3,4,6\\}$에서 $2$개를 택해 만들어야 하므로 그 개수는\n$\\binom21\\binom42=2\\times6=12$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -597,7 +597,7 @@ window.questionBank=[
     "answer": "①",
     "solution": "[키포인트] 조건이 주어진 사건(곱이 $100$의 배수)을 새로운 전체집합으로 삼는 조건부확률이다.\n조건 정리: $2$부터 $52$까지의 짝수는 $26$개이고, 두 짝수의 곱이 $100=2^2\\times5^2$의 배수가 되려면 두 수의 소인수 $5$가 모두 합쳐 $2$개 이상이어야 한다($2$의 지수는 두 수가 짝수이므로 이미 충분하다).\n풀이 방향: 곱이 $100$의 배수인 쌍을 모두 찾은 뒤, 그중 합이 $60$ 미만인 쌍만 세어 여사건으로 처리한다.\n정석 풀이: 짝수 중 $5$의 배수는 $10,20,30,40,50$이고 그중 $50$만 $5^2$을 갖는다. 따라서 곱이 $100$의 배수인 쌍은 (i) $50$과 나머지 짝수 하나인 $25$쌍, (ii) $\\{10,20,30,40\\}$에서 두 개를 택한 $\\binom42=6$쌍으로 모두 $25+6=31$쌍이다.\n이 중 합이 $60$ 미만인 것은 $(2,50)$, $(4,50)$, $(6,50)$, $(8,50)$, $(10,20)$, $(10,30)$, $(10,40)$, $(20,30)$의 $8$쌍이므로, 합이 $60$ 이상인 쌍은 $31-8=23$쌍이다. 따라서 구하는 확률은 $\\dfrac{23}{31}$이고 $n=23$, $m=31$이므로 $m+n=54$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
