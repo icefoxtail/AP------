@@ -26,6 +26,7 @@ for request in "${reqs[@]}"; do cp -- "$request" "$work/requests/$(basename "$re
 if [[ ${#reqs[@]} -gt 0 ]]; then
   node --test tests/archive-reviewed-exam-registration-v2.test.mjs
   node --test tests/archive-finalqa-nonpt-register.test.mjs
+  node --test tests/archive-finalqa-nonpt-real-geumdang.test.mjs
   for request in "${reqs[@]}"; do
     node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request "$request" --write
   done
