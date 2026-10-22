@@ -72,6 +72,8 @@ export function registerFinalqaNonpt({root,request:req,write=false,verifyProject
     if(expectedCC.some(k=>!activeCC.has(k))||expectedConditions.some(k=>!activeCond.has(k)))
       fail("nonPT CC or Condition is not ACTIVE");
   }
+  let identityTouched = false;
+  const fingerprintRepairs = [];
   const uniqueUids=new Set();
   // Do not project enriched CC/Condition/integration candidates over unchanged JS source;
   // they remain in candidate evidence until separate source-bound canonical approval.
@@ -83,9 +85,27 @@ export function registerFinalqaNonpt({root,request:req,write=false,verifyProject
        item.questionUid!==id.questionUid||uniqueUids.has(item.questionUid))fail("identity mismatch #"+n);
     uniqueUids.add(item.questionUid);
     if(item.sourceFingerprint!==fingerprint(q))fail("candidate fingerprint differs from exact source #"+n);
+    const currentContentFp=contentFingerprint(q);
+    // One historically stale fingerprint is explicitly known on this unchanged JS blob.
+    // Repair it only under the whole-sidecar before SHA lease and the exact q19 old/new hashes.
+    const repair19 = !oldReceipt && n===19 &&
+      sourceBlob==="408a9862d9b5a08e341fb9aa008a2cbdae0cee06" &&
+      row.metadataStatus==="registration_pending_semantic_review" &&
+      row.sourceFingerprint==="b9a65d7b05d1a31ae5b12fe00e06c4cfdbb78ee165850e0af7002e0e1428bf35" &&
+      item.sourceFingerprint==="99b33ee2111d853b7fd62596bd79f840c3a4a0485d1f6e35d884e3f82c086d0f" &&
+      [row.sourceFingerprint,item.sourceFingerprint].includes(id.sourceFingerprint);
+    if(repair19){
+      row.sourceFingerprint=item.sourceFingerprint;
+      row.contentFingerprint=currentContentFp;
+      if(id.sourceFingerprint!==item.sourceFingerprint) {
+        id.sourceFingerprint=item.sourceFingerprint;
+        identityTouched=true;
+      }
+      fingerprintRepairs.push(n);
+    }
     if(row.sourceFingerprint!==item.sourceFingerprint)fail("shared metadata sourceFingerprint drift #"+n);
     if(id.sourceFingerprint!==item.sourceFingerprint)fail("identity sourceFingerprint drift #"+n);
-    if(row.contentFingerprint!==contentFingerprint(q))fail("shared metadata contentFingerprint drift #"+n);
+    if(row.contentFingerprint!==currentContentFp)fail("shared metadata contentFingerprint drift #"+n);
     if(item.after.standardCourse!=="미적분I"||q.standardCourse!=="미적분I"||
        item.after.curriculum!=="2022"||item.after.level!==q.level||
        item.after.difficultyBucket!==q.difficultyBucket||
@@ -125,17 +145,24 @@ export function registerFinalqaNonpt({root,request:req,write=false,verifyProject
   metadata.counts.records=metadata.records.length;
   metadata.counts.semanticallyReviewed=metadata.records.filter(r=>r.reviewStatus==="reviewed_pass"||
     ["approved_semantic_review","approved_exam_meta_source"].includes(r.metadataStatus)).length;
+  if(identityTouched){
+    // Only the Actions registrar writes this global derived identity projection.
+    // Preserve all unrelated rows and bind the sidecar to its updated exact bytes.
+    metadata.sourceDigests={...(metadata.sourceDigests||{}),identityMap:sha256(Buffer.from(out(identity),"utf8"))};
+  }
   delete metadata.digest;
   metadata.digest=sha256(JSON.stringify(metadata));
   const receipt={schemaVersion:"archive-finalqa-nonpt-registration-receipt-v1",requestId:req.requestId,
     sourceArchiveFile:SOURCE,sourceBlobSha1:sourceBlob,candidateBlobSha1:req.expectedCandidateBlobSha1,
-    metadataBeforeBlobSha1:req.expectedMetadataBlobSha1,registeredRows:21,
+    metadataBeforeBlobSha1:req.expectedMetadataBlobSha1,registeredRows:21,fingerprintRepairs,identityTouched,
     status:"REGISTERED_SEMANTICS_ONLY__CONSUMER_UNVERIFIED",ptTpl:"NOT_IN_SCOPE",q03ExactRpmPath:"NOT_APPLICABLE"};
   if(write&&!verifyProjection){
+    if(identityTouched)fs.writeFileSync(path.join(root,IDENTITY),out(identity),"utf8");
     fs.writeFileSync(path.join(root,META),out(metadata),"utf8");
     fs.mkdirSync(path.dirname(receiptFile),{recursive:true});
     fs.writeFileSync(receiptFile,out(receipt),"utf8");
   }
   return {status:"PASS",mode:write?"WRITE":"DRY_RUN",registeredRows:21,sourceBlobSha1:sourceBlob,
-    receiptPath:RECEIPT,plannedPaths:[META,RECEIPT],consumer:"UNVERIFIED"};
+    receiptPath:RECEIPT,plannedPaths:identityTouched?[IDENTITY,META,RECEIPT]:[META,RECEIPT],
+    fingerprintRepairs,consumer:"UNVERIFIED"};
 }
