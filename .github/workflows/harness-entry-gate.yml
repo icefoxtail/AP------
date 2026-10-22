@@ -28,6 +28,8 @@ jobs:
           node-version: '22'
       - name: Positive and negative route tests
         run: node --test tools/harness/task-entry.test.mjs
+      - name: GPT BOOK receipt evidence tests
+        run: node --test tools/harness/verify-gpt-reservation.test.mjs
       - name: Validate exact authority paths
         run: |
           node --input-type=module <<'NODE'
