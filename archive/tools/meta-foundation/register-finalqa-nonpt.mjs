@@ -73,7 +73,9 @@ export function registerFinalqaNonpt({root,request:req,write=false,verifyProject
       fail("nonPT CC or Condition is not ACTIVE");
   }
   const uniqueUids=new Set();
-  const fields=["L1","L2","L3","L4","level","difficultyBucket","crossConceptKeys","conditionKeys","integrationPattern"];
+  // Do not project enriched CC/Condition/integration candidates over unchanged JS source;
+  // they remain in candidate evidence until separate source-bound canonical approval.
+  const fields=["L1","L2","L3","L4","level","difficultyBucket"];
   for(let i=0;i<21;i++){
     const item=candidate.records[i],row=rows[i],id=ids[i],q=bank[i],n=i+1;
     if(item.sourceOrdinal!==n||row.sourceOrdinal!==n||id.sourceOrdinal!==n||
@@ -112,7 +114,8 @@ export function registerFinalqaNonpt({root,request:req,write=false,verifyProject
     row.fieldStatus={...(row.fieldStatus||{}),L3:"approved_finalqa_nonpt",L4:"approved_finalqa_nonpt",difficulty:"approved_finalqa_nonpt"};
     row.approvalEvidence=[...new Set([...(row.approvalEvidence||[]),CANDIDATE])];
     row.nonPtSemanticRegistration={state:"REGISTERED_SEMANTICS_ONLY",rpmPath:n===3?"EXAM_SCOPED_PREREQUISITE":"CROSSWALK_CANDIDATE",
-      ptTpl:"NOT_REVIEWED_NOT_APPROVED",sourceBlobSha1:sourceBlob,candidateBlobSha1:req.expectedCandidateBlobSha1};
+      ptTpl:"NOT_REVIEWED_NOT_APPROVED",auxiliaryCcCondIntegration:"CANDIDATE_ONLY_NOT_PROJECTED",
+      sourceBlobSha1:sourceBlob,candidateBlobSha1:req.expectedCandidateBlobSha1};
   }
   if(oldReceipt){
     return {status:"PASS",mode:"IDEMPOTENT",registeredRows:21,verifyProjection,sourceBlobSha1:sourceBlob,receiptPath:RECEIPT};
