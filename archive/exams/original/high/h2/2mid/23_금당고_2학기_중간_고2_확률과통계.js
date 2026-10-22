@@ -59,8 +59,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 서로 다른 $n$개를 원형으로 배열하는 원순열의 수는 $(n-1)!$이다.\n조건 정리: $6$명의 학생이 원탁에 둘러앉는다.\n풀이 방향: 한 사람의 자리를 고정하고 나머지를 일렬로 배열한다.\n정석 풀이: 원탁에서는 회전하여 같아지는 배열을 하나로 보므로 한 사람의 자리를 고정하면 나머지 $5$명을 일렬로 배열하는 것과 같다. 따라서 구하는 경우의 수는 $(6-1)!=5!=120$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
-    "subUnit": "경우의 수의 활용",
+    "subUnitKey": "H15-PS-01-PERMUTATION",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -82,7 +82,7 @@ window.questionBank = [
       "공"
     ],
     "wide": false,
-    "content": "상자 안에 파란색 공 4개와 빨간색 공 2개가 들어있다. 상자에서 임의로 2가지를 동시에 택할 때, 적어도 1가지 이상은 파란색 공일 확률은? [4.4점]",
+    "content": "상자 안에 파란색 공 4개와 빨간색 공 2개가 들어있다. 상자에서 임의로 공 2개를 동시에 택할 때, 적어도 1개는 파란색 공일 확률은? [4.4점]",
     "choices": [
       "$\\dfrac45$",
       "$\\dfrac{13}{15}$",
@@ -328,8 +328,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 세 모서리의 길이가 모두 다른 직육면체는 자기 자신으로 옮기는 회전이 $4$가지뿐이다.\n조건 정리: 가로, 세로, 높이가 $2,4,5$로 모두 다르고 $6$가지 색을 모두 사용한다.\n풀이 방향: 고정한 채로 칠하는 경우의 수를 구한 뒤 서로 같아지는 회전의 개수로 나눈다.\n정석 풀이: 직육면체를 고정해 놓고 $6$개의 면에 서로 다른 $6$가지 색을 칠하는 경우의 수는 $6!=720$이다. 세 모서리의 길이가 모두 다르므로 직육면체를 자기 자신으로 옮기는 회전은 항등회전과 세 축에 대한 $180^\\circ$ 회전의 $4$가지뿐이고, 이 $4$가지에 의해 같아지는 색칠이 하나로 묶인다. 따라서 구하는 경우의 수는 $\\dfrac{720}4=180$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-PS-01-COMBINATION",
-    "subUnit": "조합",
+    "subUnitKey": "H15-PS-01-PERMUTATION",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -510,7 +510,7 @@ window.questionBank = [
       "경우의 수"
     ],
     "wide": false,
-    "content": "집합 $U=\\{x\\mid x$는 $8$ 이하의 자연수$\\}$의 공집합이 아닌 서로 다른 세 부분집합 $A,B,C$가 다음 두 조건을 만족시킨다.<div class=\"note-box\">(가) $A\\cap B=\\{6,7\\}$, $(A\\cup B)\\cap C=\\varnothing$<br>(나) $(A\\cup B\\cup C)^c=\\{8\\}$</div>세 집합 $A,B,C$의 모든 순서쌍 $(A,B,C)$의 개수는? [5점]",
+    "content": "집합 $U=\\{x\\mid x$는 $8$ 이하의 자연수$\\}$의 공집합이 아닌 서로 다른 세 부분집합 $A,B,C$가 다음 두 조건을 만족시킨다.<div class=\"note-box\">(가) $A\\cap B=\\{6,7\\}$, $(A\\cup B)\\cap C=\\varnothing$<br>(나) $(A\\cup B\\cup C)^c=\\{8\\}$</div>세 집합 $A,B,C$로 이루어진 순서삼중쌍 $(A,B,C)$의 개수는? [5점]",
     "choices": [],
     "answer": "210",
     "solution": "[키포인트] 각 원소가 $A$, $B$, $C$ 중 어디에 속하는지를 따져 경우의 수를 센 뒤 조건에 어긋나는 것을 뺀다.\n조건 정리: $(A\\cup B\\cup C)^c=\\{8\\}$이므로 $8$은 어디에도 속하지 않고, $A\\cap B=\\{6,7\\}$이므로 $6,7$은 $A$와 $B$에 모두 속하며 $(A\\cup B)\\cap C=\\varnothing$이므로 $C$에는 속하지 않는다.\n풀이 방향: 원소 $1\\sim5$가 갈 수 있는 곳을 세고, $C$가 공집합이 되는 경우와 $A=B$가 되는 경우를 뺀다.\n정석 풀이: 원소 $1,2,3,4,5$는 각각 $A\\cup B\\cup C$에 속해야 한다. $A\\cap B=\\{6,7\\}$이므로 $A$와 $B$에 동시에 속할 수 없고, $C$에 속하면 $A\\cup B$에 속할 수 없다. 따라서 각 원소는 $A$에만, $B$에만, $C$에만 속하는 $3$가지 중 하나이므로 경우의 수는 $3^5=243$이다.\n이 중 $C=\\varnothing$이 되는 경우는 다섯 원소가 모두 $A$ 또는 $B$로 가는 $2^5=32$가지이다. 또 $A=B$가 되는 경우는 $A=B=\\{6,7\\}$일 때뿐이고 이는 다섯 원소가 모두 $C$로 가는 $1$가지이다. 한편 $A$, $B$는 $6$을 포함하지만 $C$는 포함하지 않으므로 $A\\ne C$, $B\\ne C$는 항상 성립한다.\n따라서 구하는 순서쌍의 개수는 $3^5-2^5-1=243-32-1=210$이다.\n따라서 구하는 값은 $210$이다.",
@@ -541,8 +541,8 @@ window.questionBank = [
     "choices": [],
     "answer": "50",
     "solution": "[키포인트] \"두 나라가 모두 포함\"은 여사건을 포함배제로 처리한다.\n조건 정리: 네 학생이 각각 세 나라 중 하나를 택하므로 전체 경우의 수는 $3^4$이다.\n풀이 방향: 영국이 빠지는 경우와 일본이 빠지는 경우를 빼고, 둘 다 빠지는 경우를 다시 더한다.\n정석 풀이: 전체 경우의 수는 $3^4=81$이다. 영국을 아무도 택하지 않는 경우는 남은 두 나라 중에서 택하므로 $2^4=16$가지이고, 일본을 아무도 택하지 않는 경우도 $2^4=16$가지이다. 영국과 일본을 모두 택하지 않는 경우는 모두 미국을 택하는 $1^4=1$가지이다. 따라서 구하는 경우의 수는 $81-16-16+1=50$이다.\n따라서 구하는 값은 $50$이다.",
-    "subUnitKey": "H15-PS-01-COMBINATION",
-    "subUnit": "조합",
+    "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+    "subUnit": "경우의 수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
