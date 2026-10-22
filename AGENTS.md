@@ -1,9 +1,15 @@
+## CURRENT TOP — 작업별 진입 / 과거 Notion 필독 해제 (2026-10-22)
+
+- **범용으로 'GPT 작업 전 필독 라우터' 900줄과 Archive 생명주기를 매 작업 선열람하는 의무를 폐지한다.** 사용자 지정 범위·역할·현행 exact Git/Notion CURRENT **한 곳과 실물**에서 바로 시작한다. [Notion 공통 행동 규칙](https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd)은 실제 공통 원칙·충돌이 있을 때만 확인하며, [캠페인별 상세 문서](https://app.notion.com/p/4010e68bd69f81b7a445c7c48abe1c05)는 **자기 캠페인 담당자만** 연다.
+- 캠페인 스케줄·NEW14/HIGH_DYNAMIC·ALIVE·M3 등 개별 품질·인계·예외·현황의 수정은 **각 캠페인/역할 문서에서만** 수행한다. 범용 필독 라우터에는 프로젝트별 작업 이력·PR·ON/OFF·시간표를 추가하지 않는다. 신규 CREATE/R1/R2/R3의 최초 수학·블라인드·검수 증거 품질은 유지한다.
+- GPT **사후 FINAL QA**는 [단일 실행 카드 v1.9](docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md)부터 읽고 열린 결함만 최소 수리 → 필요 시 시험지별 소형 등록 요청 → main 병합/대상 blob readback으로 종료. 후속 자동 DB/index/검색·Pages는 Git Actions 책임. Actions PASS를 근거 없이 선언하지 않고, 후속 CI poll은 GPT 종료조건에서 제외한다.
+
 ## CURRENT TOP — 메타 공용 조회 / 시험지별 소형 JSON 수정 원칙 (2026-10-21, 사용자 지시)
 
 - **읽기:** `archive/data/question_metadata.json`은 기존 UID 메타 조회/대조·검색에 사용하고 해당 시험지 N개만 필터한다. 실질적인 의미 정본은 최신 ACTIVE registry/RPM/bindings를 확인한다.
 - **쓰기:** GPT·Gemini·Codex·검수/제작 워커는 메타 수정사항을 **시험지별 소형 JSON/stage-local 메타 패킷**에만 기록하며, 55MB급 공용 집계 파일을 직접 편집·업로드·수동 commit하지 않는다. 인가된 단일 GitHub Actions 등록기만 공용 메타/런타임/검색 파생 파일을 갱신한다.
 - **완료:** 소형 JSON 제출만으로 완료가 아니다. 공용 sidecar+실제 Consumer/Search UID parity+main readback이 필수. 현재 등록기는 일부 공통수학2/REVIEW2 하드코딩이 있으므로 미지원 과목은 TOOLING_GAP으로 밝히고 대형 JSON 업로드로 우회하지 않는다. 기존 예약 워커 Git writer 금지·품질 검수 의무 불변.
-- **단일 상세 정책:** [시험지별 소형 JSON 메타 쓰기 계약](docs/architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md). 사후 FINAL QA의 2곳 선열람 규칙은 유지하며 이 링크는 예외·구현 상세 참고로만 사용.
+- **단일 상세 정책:** [시험지별 소형 JSON 메타 쓰기 계약](docs/architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md). 사후 FINAL QA는 단일 Git 실행카드 1곳 선열람을 기본으로 하며 이 링크는 예외·구현 상세 참고로만 사용.
 
 ## CURRENT TOP — 사용자 지정 시험지 출고: 상태값만으로 전건 보류 금지 (2026-10-19)
 
@@ -46,7 +52,7 @@ Scope ONLY `SOURCE_ONLY_INTAKE14_20261016`, its five GPT scheduled Library worke
 - ROOT consumes compact verified completion receipts and fetches raw proof only when needed. Workers still inspect the actual source/evidence and perform the assigned independent quality review. Validators, review scope, and quality gates remain unchanged; Drive access must not become a GitHub CI prerequisite.
 
 ## CURRENT HARD — 실제 정본 숙독·제작 설계·UID별 품질 근거 (2026-10-14)
-- **숙독 선행:** Notion 필독 라우터/Archive 생명주기/생성 5단계 및 최신 Git QID9·Meta·교육과정·해설·Visual/Golden 정본을 해당 작업 적용 범위에서 본문까지 읽고, 경로·SHA/버전·적용 조항·실행 계획을 사전 기록한다. 제목·목차만 훑고 읽었다고 선언하지 않는다.
+- **ALIVE/QID9 제작 시 역할별 선행:** 현재 ALIVE QID9·Meta·교육과정·해설·Visual/Golden 정본 중 **해당 제작 단계에 실제 적용되는 것만** 읽고 경로·SHA/적용 조항·실행 계획을 기록한다. 일반 FINAL QA나 다른 캠페인에 이 제작 전용 필독을 확대하지 않는다. 제목·목차만 훑고 읽었다고 선언하지 않는다.
 - **제작 전에 설계:** 원본 qid·교육과정 내 풀이·고정 RPM Primary L3·L4·A/B/C의 실제 추가 사고·보기/정답 구조·문제/해설 SVG 필요성을 먼저 정한다.
 - **UID별 증거 5축:** (1) 학습 level과 평가 difficultyBucket을 사고 단계·조건 분기·함정으로 독립 판정하고 각각 이유 기록(A/B/C 순서 자동 매핑 금지). (2) RPM L1~L4·PT/TPL·CrossConcept/Condition/Integration의 최종 풀이상 실제 필요성과 키의 정본 근거. (3) 해당 학년 교육과정 허용 공식/방법 및 학생 재현 가능한 해설·모든 보기와 조건 검증. (4) 문제 SVG (5) 해설 SVG 각각 필요성·실파일/SHA·좌표/primitive·라벨·경계점·가독성·실제 렌더 근거.
 - **종료 조건:** 근거 없는 PASS 금지, 미확정 EVIDENCE_DEBT, 미실행 NOT_RUN. 변경 UID와 직접 의존 부분만 재검한다. 기존 예약 Library 인계/수동 Git 운영 경로 및 독립 검수 규정을 유지한다.
