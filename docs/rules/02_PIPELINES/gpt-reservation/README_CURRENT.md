@@ -30,7 +30,7 @@
 ### 권위 및 필독 순서
 
 1. 사용자 최신 명시 범위·승인/정지·종료 조건 → **해당 캠페인 현재 manifest·실제 예약 설정** → **이 Git 공용 예약 정본 + 해당 역할 CURRENT 한 곳**. Notion 공통/Archive 생명주기는 **작업 예외·실제 충돌 발생 시에만 필요한 절을 열람**한다.
-2. Git 최신 main SHA와 `AGENTS.md` / `archive/AGENTS.md` → **이 디렉터리 README_CURRENT.md 전체** → 해당 역할의 `MASTER_CURRENT.md` / `CREATE_CURRENT.md` / `R1_CURRENT.md` / `R2_CURRENT.md` / `R3_CURRENT.md` 중 정확히 하나 전체. 캠페인 고유 manifest·인테이크/source authority/기존 상태도 직접 읽는다.
+2. **공용 README_CURRENT + 해당 역할 CURRENT 정확히 하나 + 자기 캠페인 manifest/인테이크·source authority·기존 stage 실물**을 확인한다. 실제 Git 수정/원본 비교를 수행할 때는 최신 main SHA와 대상 Git 파일/blob SHA를 읽는다. `AGENTS.md`/`archive/AGENTS.md`는 권한 충돌·도구/운영 규칙 판단이 실제 필요할 때 해당 절을 추가 열람하며, 모든 예약 회차에서 장문 전부를 선열람하지 않는다.
 3. 실제 이번 작업 적용 범위에 따라 `docs/rules/02_PIPELINES/JS_Archive_2.0_GPT_Scheduled_Execution_v1.md`, `docs/rules/02_PIPELINES/JS_Archive_2.0_GPT_Campaign_Generation_v1.md`, `docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md`, `docs/architecture/Archive_Correction_Owner_EndToEnd_Closeout_CURRENT_v1.md`, `docs/rules/03_REVIEW/JS아카이브_PHYSICAL_EVIDENCE_BEFORE_PASS_v1.md`, `docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md`, `docs/rules/01_CANONICAL/JS아카이브_학생용해설_운영규칙_v1.md`, `docs/rules/02_PIPELINES/해설프로토콜.md`와 CURRENT RPM Primary/crosswalk/GLOBAL ACTIVE/PT·TPL/binding, Golden/Negative, Visual/교육과정 정본을 실제 읽는다. 적용되는 문서만 추가로 읽고 구버전 HISTORY의 충돌 규칙은 사용하지 않는다.
 4. 링크/목차 확인만으로 READ 주장 금지. 읽은 정본 path/URL, Git blob SHA·Notion 수정시각(가능한 경우), 적용한 조항·실제 결과를 해당 회차에 기록한다. 실제 독립풀이·학생 설명·정밀 Meta·검증을 정본 문구 확인으로 대체하지 않는다.
 
