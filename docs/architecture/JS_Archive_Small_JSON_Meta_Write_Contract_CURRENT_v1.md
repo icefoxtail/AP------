@@ -28,6 +28,16 @@
 - `.github/workflows/archive-reviewed-apply.yml`은 별도의 봉인된 legacy R2 recovery route다. 임의 FINAL QA 패킷을 그 경로로 위장하지 않는다.
 - 현재 `archive/build_db.py` 아래 pending 동기화기는 신규 UID/경로 변경 등록이 중심이며, 이미 존재하는 UID의 승인 PT/TPL 보정은 JS 수정만으로 자동 덮어쓰지 않는다.
 - 따라서 **정책은 즉시 적용하되, 해당 과목·stage용 안전한 등록기가 아직 없으면 TOOLING_GAP**이다. 단순 문서 변경만으로 차단 규칙/자동 등록/예약 프롬프트/Consumer 반영이 실행됐다고 주장하지 않는다.
+- **등록 이후 자동화 (2026-10-22, PR #679 구현):**
+  - **단일 writer:** Pages는 트리거 push가 등록 입력 경로(`tools/ci/archive-meta-register-trigger-paths.txt`)를 건드렸으면 등록 workflow가 끝날 때까지 보류한다.
+  - **race-safe push:** 등록과 Pages 모두 `tools/ci/git-push-derived-with-retry.mjs`로 main에 push한다.
+    - force push는 쓰지 않는다. 원격에 동일 tree가 이미 있으면 `ALREADY_REFLECTED`로 끝낸다.
+    - 그렇지 않으면 최신 main에서 재생성·재검증한 뒤 최대 3회까지 다시 push한다.
+    - 실패하면 원인·SHA·다음 조치를 Actions Summary에 남긴다.
+  - **변경 UID 검증:** push 뒤 소형 JSON의 변경 UID만 실제 consumer(`resolveCatalog`→`ProblemBankMeta.buildIndex`/`query`)로 검사한다(`archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs`).
+    - 결과는 `POST_MERGE_VERIFIED` 또는 `REGISTERED_CONSUMER_APPROVAL_FAIL`(시험지·QID·UID·사유·main SHA 표)로 Actions Summary에 남는다.
+    - L1~L4·과정·단원 등 배정 필드를 바꾼 UID는 canonical 배정 승인까지 요구한다.
+    - 이 검사는 등록 이후 검증이다. FAIL이 나도 이미 main에 들어간 등록은 되돌리지 않고, 열거된 UID를 새 소형 JSON으로 수리한다.
 
 ## 구현 담당 후속 작업 (기존 파일 재사용, 별도 코드 변경으로 검증)
 
