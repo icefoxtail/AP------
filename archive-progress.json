@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-22T12:34:32.805Z",
+  "updatedAt": "2026-10-22T12:55:03.473Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
     "scope": "recent",
-    "oldestObservedAt": "2026-10-18T13:20:19Z",
+    "oldestObservedAt": "2026-10-18T13:25:43Z",
     "seenRegistrationRuns": 0,
     "seenReleaseRuns": 24,
     "runScanIsPartial": true
@@ -13419,6 +13419,21 @@
         "attempt": 1
       }
     },
+    "23_강남여고_2학기_중간_고2_확률과통계": {
+      "exam": "23_강남여고_2학기_중간_고2_확률과통계",
+      "check": null,
+      "main": {
+        "result": "완료",
+        "sha": "6635bae32878d3487cfb1815e46988f0413d79e3",
+        "run": "https://github.com/icefoxtail/AP------/pull/696",
+        "at": "2026-10-22T12:53:36Z"
+      },
+      "registration": null,
+      "deployment": null,
+      "deploymentJob": null,
+      "lastSuccessfulRelease": null,
+      "lastFailure": null
+    },
     "23_금당고_1학기_기말_고1_기출": {
       "exam": "23_금당고_1학기_기말_고1_기출",
       "check": null,
@@ -23121,12 +23136,27 @@
     }
   },
   "observations": {
+    "release:39717757297:1:92864f298ef4bebb8bd7e1c41d45bc8dba7703c2": {
+      "key": "release:39717757297:1:92864f298ef4bebb8bd7e1c41d45bc8dba7703c2",
+      "status": "unverified",
+      "attempts": 1,
+      "reason": "증거 실행/차수/SHA 불일치",
+      "run": {
+        "id": 39717757297,
+        "attempt": 1,
+        "sha": "92864f298ef4bebb8bd7e1c41d45bc8dba7703c2",
+        "at": "2026-10-22T03:57:52Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/39717757297",
+        "conclusion": "success",
+        "event": "push",
+        "branch": "main"
+      },
+      "nextRetryAt": "2026-10-22T13:00:02.317Z"
+    },
     "release:39776417210:1:a2b937011f0e1fd7f5c8b144c696eb4b58114ec9": {
       "key": "release:39776417210:1:a2b937011f0e1fd7f5c8b144c696eb4b58114ec9",
       "status": "partial",
-      "fileProofState": "permanent",
       "attempts": 1,
-      "verifiedAt": "2026-10-22T12:34:32.152Z",
       "run": {
         "id": 39776417210,
         "attempt": 1,
@@ -23147,6 +23177,8 @@
         "fileProofReason": "Pages ZIP 크기 초과",
         "exams": {}
       },
+      "fileProofState": "permanent",
+      "verifiedAt": "2026-10-22T12:34:32.152Z",
       "checkedExamIds": [
         "15_강남여고_2학기_중간_고2_기하와벡터_기출",
         "15_신흥중_2학기_기말_중3_수학",
@@ -80332,268 +80364,6 @@
         "비상_공통수학2_함수와그래프_익힘책_고1"
       ],
       "reason": "Pages ZIP 크기 초과"
-    },
-    "registration:38159356228:1:1eafd0a19c8290b2fca076cf9a097d08c2190d39": {
-      "key": "registration:38159356228:1:1eafd0a19c8290b2fca076cf9a097d08c2190d39",
-      "status": "verified",
-      "attempts": 1,
-      "run": {
-        "id": 38159356228,
-        "attempt": 1,
-        "sha": "1eafd0a19c8290b2fca076cf9a097d08c2190d39",
-        "at": "2026-10-11T17:24:55Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/38159356228",
-        "conclusion": "success",
-        "event": "push",
-        "branch": "main"
-      },
-      "proof": {
-        "schema": 2,
-        "run_id": 38159356228,
-        "run_attempt": 1,
-        "sourceSha": "08d30514594a3df199de416371be11c55cff4e27",
-        "registry": "09e83e2701fc70566a2289e4b70b99303ade03a88719d5609d374321d11e54a4",
-        "evidenceSource": "trusted-git-tree",
-        "exams": {
-          "19_복성고_1학기_중간_고1_기출": {
-            "source": "5af43450360f7cab25d0841894cd43e6e6afc78d",
-            "assets": "fc4033f63b2f27d190df8d19294cd5a7a3803b06686cdfcc5df73a698d6b1d94"
-          },
-          "19_연향중_1학기_중간_중2_기출": {
-            "source": "3c3fbc3ae64a25d4c1b027d36936202b87cb12e4",
-            "assets": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-          },
-          "20_매산여고_1학기_중간_고1_기출": {
-            "source": "fb3e9dbb84fa0b85aa5332ab30d29ebb2f9ee089",
-            "assets": "3d16fcd013ee585c0d652e166255ef30921254606b66e315fd2a930f0813f285"
-          },
-          "21_연향중_1학기_중간_중2_기출": {
-            "source": "7c2c001f2210839a5ee562473d72a60cd3ac5cda",
-            "assets": "83523d60ec08778ad8a71466033540dd136a52e93c32c0f9946029c0d1b87d2c"
-          },
-          "22_연향중_1학기_기말_중2_기출": {
-            "source": "40560d9f62a2bf414b2b9ab1c25a6b5dd263b764",
-            "assets": "215a0d564af9f966223349bae10acb853ba1253451786680032d9396df546c78"
-          },
-          "22_왕운중_1학기_기말_중2_기출": {
-            "source": "f380d8955ce467769abac101955a9ff0493c13da",
-            "assets": "e6731261c97fd88fe700cc616e0e967ad73c5d3bba29b9cb45fa2ec66b4a1f65"
-          },
-          "23_신흥중_1학기_기말_중2_기출": {
-            "source": "5d5349d0f3aa15e21257439cbd8d863647b9144f",
-            "assets": "1bca1cec82a951cedd5a450365f8f7ed56fde97fb0c40f65185f277b94473080"
-          },
-          "23_여천고_1학기_중간_고1_기출": {
-            "source": "66fca1ed5745b17ad334d5b9e0cda011a3d6a526",
-            "assets": "f54c0f548cfe06147c03095d31dbc39670e7b5cfce679bc4e19e8dd0be3af1d0"
-          },
-          "23_연향중_1학기_기말_중2_기출": {
-            "source": "3cc20165372031a519e93e705b3b653684da0803",
-            "assets": "2914e5808efadfaa9af37743018918b8f9114784a76d290b319acd36e854c707"
-          },
-          "23_팔마고_1학기_중간_고1_기출": {
-            "source": "4926ec7c3b134ff479428b4a701e0517ad9ad24b",
-            "assets": "6d232ba7d6eff019dcd11b24efffd08845a01220f69955b0b77fa6da395f904b"
-          },
-          "23_향림중_1학기_기말_중2_기출": {
-            "source": "2a65e7151795ddc8338443149a5077008ed422be",
-            "assets": "6e776662c217f90d59d16e2acd9d675ecf3f8ad3c9c262481fad0c96cbd97041"
-          },
-          "24_금당고_1학기_중간_고1_기출": {
-            "source": "6d86e88efd0f3fcee5f93b0bd6c38fc020087f66",
-            "assets": "3cef951ff671c65bf27b05a34f91169221b7bc3c903347a0e7f82a55fde723d4"
-          },
-          "24_금당중_1학기_기말_중2_기출": {
-            "source": "b862003aab287515b6cf007f9ec74bb7ebe09573",
-            "assets": "fc44f1f2e96e5ff45291bdccc9bc40376a19d5ae22d24d1467ff79a6decc435f"
-          },
-          "24_삼산중_1학기_기말_중2_기출": {
-            "source": "7594cb9f6a69f2754673d1b0f65c91bfd9e102e4",
-            "assets": "1c7e4c2c086e099bb5cbf9d66ed1eb4f5f7d3862f1b083b8f83af4c20d761b99"
-          },
-          "24_수피아여고_1학기_중간_고2_확률과통계": {
-            "source": "377e17be33b1a5585d4aba5333d9869d4a78dad3",
-            "assets": "3698d326a8df1943622b7eb31997c18bc7305acd400a73432630523db2a5b54c"
-          },
-          "24_순천고_1학기_중간_고1_기출": {
-            "source": "d5436ff4a486a223dd119432b8bd939447e22df8",
-            "assets": "7a36a2f1c3ce6d2525606c50b1113f39834bc241bbc82ccb13ef923cf51d36d8"
-          },
-          "24_순천여고_1학기_중간_고2_확률과통계": {
-            "source": "a21567853ee8a2e173dd37ef10f5bfea4dead5c1",
-            "assets": "ee8d4e282491831b3bc247018e23109dd7b1ea7eee2bb8740c00be8510e2d500"
-          },
-          "24_승평중_1학기_기말_중2_기출": {
-            "source": "6de15f494722e99364ec481f31ee884e39d919bf",
-            "assets": "c501948f1687cfea1bb94ffced73b6c6ea19ee4f22d8f0e4f3bdc0cb437933dd"
-          },
-          "24_연향중_1학기_기말_중2_기출": {
-            "source": "9a5978498c600b0ed18d32b0e0663657599fa0ab",
-            "assets": "576c7aa502927ba99eacda7cae244b47a9a1a0ecc9d6d873c8c14455ce0d7cf5"
-          },
-          "24_왕운중_1학기_기말_중2_기출": {
-            "source": "fb3a166c2653f75a49f60c3896716b88fec2313d",
-            "assets": "dbfe8d2f531918bbebc5ced07fc7d2ec1a4836971f1cb786945de513bc38e493"
-          },
-          "24_향림중_1학기_기말_중2_기출": {
-            "source": "d2ce568579fafd086eeb2aa98283a4f09e3b7fed",
-            "assets": "8cc31d60328490db5c250f87b81f551e80ab4e5f13c5ff0c8d2538364a98c76d"
-          },
-          "24_효천고_1학기_중간_고1_기출": {
-            "source": "553638f62fb801ca31954c10c7c9799ef7533439",
-            "assets": "b9d022ef164344bb7b50aec4f6528277db5f4cf8f870573ca2a8e43eed188f92"
-          },
-          "25_금당고_1학기_중간_고2_수학II": {
-            "source": "054819f68707d022015b85393d264bb08a601788",
-            "assets": "7e25d82ae941ca94bc030f90653301796be0ff6d239b50f6cc87f1b5ff6dce07"
-          },
-          "25_금당고_2학기_기말_고1_유사": {
-            "source": "dd61011746b3ae714bc56c0c5f017e03401a37d8",
-            "assets": "e33e044994eda1c948670a2a13a2facf95dd2f07918f5b394f71286fd52f9e12"
-          },
-          "25_매산중_1학기_중간_중2_기출": {
-            "source": "89ebf2566ca0704bf6337419a0007cae39b864ec",
-            "assets": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-          },
-          "25_순천고_2학기_기말_고1_유사": {
-            "source": "8119ce12e1d45998e82a8396a76e0d274e96f7eb",
-            "assets": "f598989a77b8453407943426d191d41950265fa8e0b533de09b33b0102403295"
-          },
-          "25_왕운중_1학기_중간_중2_기출": {
-            "source": "db4081f10f5a65dc9981f107a436619a3349deb4",
-            "assets": "a58e8333c7284fd82e2de8a1c180b0f46d86f44db31a9b50e80328cf5329a95c"
-          },
-          "25_왕운중_2학기_중간_중3_수학": {
-            "source": "9323c7b6ae7d7d050c81caebbbd39f55bc9d0946",
-            "assets": "b1f542e14ca31722d6861f031d1030701ced7cd10d0bf1954a4facc4ba22f648"
-          },
-          "25_풍덕중_2학기_중간_중3_수학": {
-            "source": "74256302dfb3444c917ab6ed0474048798e00edb",
-            "assets": "ee72c22939abca1a28ff4178ab4cb69c564191b1c4c7c03cf24f19ec8d3854ae"
-          },
-          "25_효천고_2학기_중간_고1_기출": {
-            "source": "eb8776d19989f8f4219f4b80db0daf72310109cd",
-            "assets": "a7c3bfd52b0ecb428b8730e66d37ecd0268d5e140ec52f0a190477d003515a7e"
-          },
-          "26_매산고_2학기_중간_고1_기출": {
-            "source": "8ed90f08e9099e5eb56991e90f8c020f4a37c0f2",
-            "assets": "bd41b16660cc58343075f99d80c56c9eb9138b8c02d1dfbe31774aa479fcd9a5"
-          },
-          "26_복성고_2학기_중간_고1_기출": {
-            "source": "50728c014935f352559acc403f063ddf7d43244d",
-            "assets": "ff7fd30e933da34e280ea653371ff2ca4ee448664c5c747f479e8e142489e15f"
-          },
-          "26_왕운중_2학기_중간_중1_기출": {
-            "source": "2ed876e0673bb2cfc234915df08e47048578a78a",
-            "assets": "f1ed936a4b3b55dc7187fc8c9b8b05ca5b1873f113ee4e21da276a67e497e277"
-          },
-          "비상_공통수학2_도형의방정식_대단원학습평가_고1": {
-            "source": "1b901ddad53f586f2c6ab10ead02084ca63d3945",
-            "assets": "311c2bfdfd53491f6ecf19a1723ef3902567861385361f5fda5b71a4aae4d582"
-          },
-          "비상_공통수학2_도형의방정식_익힘책_고1": {
-            "source": "8e67bc1f3bbb1dbaca474ccdf6741381592ce160",
-            "assets": "6f15c81ea8b7685ac91378e745cf87b8f0a12086978cb81749953b8131eec6f5"
-          },
-          "비상_공통수학2_도형의이동_중단원학습점검_고1": {
-            "source": "c89406bec771bb27084e73e37a39781113e29e0f",
-            "assets": "b41b40f1032e39c5b5aa605749a37972a58f5bffc5996e23a8663e72d235c328"
-          },
-          "비상_공통수학2_명제_중단원학습점검_고1": {
-            "source": "6e12fe6d91ff0ac8b4cd367d4fd11c78b1b9e6d7",
-            "assets": "ca1b6814dfa72d4710eafdb186a04e82168a899c63d25195e55128af4741be7e"
-          },
-          "비상_공통수학2_선분의내분과직선_중단원학습점검_고1": {
-            "source": "0835d1b64ade883abce4348546ac611db03e73d3",
-            "assets": "e6e52428ff8e207b6c23fc7fa4def9875a7c04a90b529ab8cc9f3332bba67dd1"
-          },
-          "비상_공통수학2_원의방정식_중단원학습점검_고1": {
-            "source": "d2c309124a85c70a82ed7e09bb8c27cf61dd1cd8",
-            "assets": "b94caa6157f6483c5c02a04b5688de86e8510bdb2b054d6d2a363dddc6c5603d"
-          },
-          "비상_공통수학2_유리함수와무리함수_중단원학습점검_고1": {
-            "source": "f9547a9aec8810770554aeca2293876a86823956",
-            "assets": "b799ff87d69245ebd8e1b241cd2f36b65b1c8134725d2ed69c01b8d7f3c29757"
-          },
-          "비상_공통수학2_집합_중단원학습점검_고1": {
-            "source": "a5e5c22ab52f0b428f66b6ec6371da3ed6db4263",
-            "assets": "7cef514261ee8e216e023119bff8fae8b429e9e1ce29b470cd0d2b5051c48ba2"
-          },
-          "비상_공통수학2_집합과명제_대단원학습평가_고1": {
-            "source": "1a8f928736d588ea90fe84e0d0d241fdfbabb319",
-            "assets": "eb2edad951f5d190db85f8065ab3551212f805783a5a03589391518a89bd0742"
-          },
-          "비상_공통수학2_집합과명제_익힘책_고1": {
-            "source": "ed0b230056270e49e39a1c9f73d0d77cb7a0f1a0",
-            "assets": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-          },
-          "비상_공통수학2_함수_중단원학습점검_고1": {
-            "source": "fda7885c747bead93fd83e8080ccf60710f4f1a9",
-            "assets": "b35d3e68375e26ceab5f21fc0aec59cac1a39649e42575f4ee443a358b87887f"
-          },
-          "비상_공통수학2_함수와그래프_대단원학습평가_고1": {
-            "source": "a55159941cea1d6336156a6f2f3c856f8ac7d034",
-            "assets": "5cae8031209943eb5cc6487cfaf7bd99ad43f966e194b0bdd2c11c9e5c41c984"
-          },
-          "비상_공통수학2_함수와그래프_익힘책_고1": {
-            "source": "9828514db82af318b42a8ce2ae35af1390fa7cba",
-            "assets": "ebefb24b470b7221d6baba1c9ac4df83253aedd78c9249c9946ac4dbed5a7dae"
-          }
-        }
-      },
-      "verifiedAt": "2026-10-11T17:27:20.874Z",
-      "checkedExamIds": [
-        "19_복성고_1학기_중간_고1_기출",
-        "19_연향중_1학기_중간_중2_기출",
-        "20_매산여고_1학기_중간_고1_기출",
-        "21_연향중_1학기_중간_중2_기출",
-        "22_매산고_1학기_중간_고1_기출",
-        "22_연향중_1학기_기말_중2_기출",
-        "22_왕운중_1학기_기말_중2_기출",
-        "22_제일고_1학기_중간_고1_기출",
-        "23_금당고_1학기_중간_고1_기출",
-        "23_신흥중_1학기_기말_중2_기출",
-        "23_여천고_1학기_중간_고1_기출",
-        "23_연향중_1학기_기말_중2_기출",
-        "23_제일고_1학기_중간_고1_기출",
-        "23_팔마고_1학기_중간_고1_기출",
-        "23_향림중_1학기_기말_중2_기출",
-        "24_금당고_1학기_중간_고1_기출",
-        "24_금당중_1학기_기말_중2_기출",
-        "24_삼산중_1학기_기말_중2_기출",
-        "24_수피아여고_1학기_중간_고2_확률과통계",
-        "24_순천고_1학기_중간_고1_기출",
-        "24_순천여고_1학기_중간_고2_확률과통계",
-        "24_승평중_1학기_기말_중2_기출",
-        "24_연향중_1학기_기말_중2_기출",
-        "24_왕운중_1학기_기말_중2_기출",
-        "24_향림중_1학기_기말_중2_기출",
-        "24_효천고_1학기_중간_고1_기출",
-        "25_금당고_1학기_중간_고2_수학II",
-        "25_금당고_2학기_기말_고1_유사",
-        "25_매산중_1학기_중간_중2_기출",
-        "25_순천고_2학기_기말_고1_유사",
-        "25_왕운중_1학기_중간_중2_기출",
-        "25_왕운중_2학기_중간_중3_수학",
-        "25_풍덕중_2학기_중간_중3_수학",
-        "25_효천고_2학기_중간_고1_기출",
-        "26_매산고_2학기_중간_고1_기출",
-        "26_복성고_2학기_중간_고1_기출",
-        "26_왕운중_2학기_중간_중1_기출",
-        "비상_공통수학2_도형의방정식_대단원학습평가_고1",
-        "비상_공통수학2_도형의방정식_익힘책_고1",
-        "비상_공통수학2_도형의이동_중단원학습점검_고1",
-        "비상_공통수학2_명제_중단원학습점검_고1",
-        "비상_공통수학2_선분의내분과직선_중단원학습점검_고1",
-        "비상_공통수학2_원의방정식_중단원학습점검_고1",
-        "비상_공통수학2_유리함수와무리함수_중단원학습점검_고1",
-        "비상_공통수학2_집합_중단원학습점검_고1",
-        "비상_공통수학2_집합과명제_대단원학습평가_고1",
-        "비상_공통수학2_집합과명제_익힘책_고1",
-        "비상_공통수학2_함수_중단원학습점검_고1",
-        "비상_공통수학2_함수와그래프_대단원학습평가_고1",
-        "비상_공통수학2_함수와그래프_익힘책_고1"
-      ]
     }
   }
 }
