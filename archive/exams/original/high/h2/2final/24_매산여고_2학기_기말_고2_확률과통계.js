@@ -146,7 +146,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "표본평균이 $2$이려면 두 추출값의 합이 $4$여야 한다.\n두 추출값을 $X_1, X_2$라 하면, 특별한 언급이 없으므로 임의추출은 복원추출로 보아 두 추출은 독립이다.\n각 $i=1,2$에 대하여 $P(X_i=1)=\\dfrac26$, $P(X_i=2)=\\dfrac36$, $P(X_i=3)=\\dfrac16$이다.\n합이 $4$인 순서쌍은 $(1,3)$, $(2,2)$, $(3,1)$이므로\n$P(\\overline X=2)$\n$=P(X_1=1, X_2=3)+P(X_1=2, X_2=2)+P(X_1=3, X_2=1)$\n$=\\dfrac26\\times\\dfrac16+\\dfrac36\\times\\dfrac36+\\dfrac16\\times\\dfrac26$\n$=\\dfrac{2+9+2}{36}=\\dfrac{13}{36}$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -174,7 +174,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "신뢰도 $95\\%$의 신뢰구간은 $\\overline X\\pm1.96\\dfrac{\\sigma}{\\sqrt n}$이다.\n양 끝값 사이의 길이는 오차의 한계의 $2$배이다.\n$\\sigma=5,\\quad n=625,\\quad\\sqrt n=25$이므로\n$L=2\\times1.96\\times\\dfrac5{\\sqrt{625}}$\n$=2\\times1.96\\times\\dfrac5{25}$\n$=3.92\\times0.2$\n$=0.784$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -356,7 +356,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "정규분포는 평균 $m$에 대해 좌우 대칭이다.\n(가)에서 $P(X\\ge11)=P(X\\le2m-11)$이므로\n$P(X\\le2m-11)\\le P(X\\le16)$\n$2m-11\\le16,\\quad m\\le13.5$이다.\n(나)에서 $P(X\\ge10)=P(X\\le2m-10)$이므로\n$P(X\\le15)\\le P(X\\le2m-10)$\n$15\\le2m-10,\\quad m\\ge12.5$이다.\n$m$은 자연수이므로 $m=13$이다.\n첫 번째 표본평균의 표준편차는 $\\dfrac4{\\sqrt{36}}=\\dfrac23$이다.\n$P(\\overline X_1\\le m-1)=P\\left(Z\\le\\dfrac{-1}{2/3}\\right)$\n$=P(Z\\le-1.5)=0.5-0.4332=0.0668$이다.\n두 번째 표본평균의 표준편차는 $\\dfrac4{\\sqrt4}=2$이다.\n$27-m=14$이므로\n$P(\\overline X_2\\ge14)=P\\left(Z\\ge\\dfrac{14-13}{2}\\right)$\n$=P(Z\\ge0.5)=0.5-0.1915=0.3085$이다.\n따라서 두 확률의 합은\n$0.0668+0.3085=0.3753$이므로 정답은 ①이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q12-solution.svg",
@@ -388,7 +388,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "확률의 합이 $1$이므로\n$\\dfrac k3\\cdot3+\\dfrac k3\\cdot6+\\dfrac k3\\cdot9=1$\n$k+2k+3k=1,\\quad k=\\dfrac16$이다.\n따라서 $X=3,6,9$의 확률은 차례로 $\\dfrac16,\\dfrac13,\\dfrac12$이다.\n$E(X)=3\\cdot\\dfrac16+6\\cdot\\dfrac13+9\\cdot\\dfrac12$\n$=\\dfrac12+2+\\dfrac92=7$이다.\n$E(X^2)=3^2\\cdot\\dfrac16+6^2\\cdot\\dfrac13+9^2\\cdot\\dfrac12$\n$=\\dfrac32+12+\\dfrac{81}{2}=54$이다.\n모분산은 $V(X)=54-7^2=5$이다.\n표본의 크기가 $5$이므로\n$V(\\overline X)=\\dfrac{V(X)}5=\\dfrac55=1$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -416,7 +416,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "신뢰구간은 $[162,164]$이고 중심은 표본평균 $163$이다.\n따라서 오차의 한계는 $164-163=1$이다.\n표준정규분포표에서 $P(0\\le Z\\le2)=0.475$이므로 신뢰도 $95\\%$에 해당하는 신뢰상수는 $2$이다.\n오차의 한계 식은\n$2\\times\\dfrac3{\\sqrt n}=1$이다.\n$\\dfrac6{\\sqrt n}=1$\n$\\sqrt n=6$\n$n=36$이다.\n또한 $n=36>30$이므로 주어진 조건을 만족한다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -568,7 +568,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "한 번 시행하여 기록한 수를 $Y$라 하자.\n짝수 눈일 확률과 홀수 눈일 확률은 각각 $\\dfrac12$이고, 공 두 개의 조합은 $\\binom42=6$가지이다.\n짝수 눈이면 두 수의 합을 기록한다. 여섯 쌍의 합은\n$4,\\ 6,\\ 8,\\ 8,\\ 10,\\ 12$이다.\n홀수 눈이면 작은 수를 기록한다. 여섯 쌍의 작은 수는\n$1,\\ 1,\\ 1,\\ 3,\\ 3,\\ 5$이다.\n따라서 구하는 확률에 필요한 값은\n$P(Y=1)=\\dfrac12\\times\\dfrac36=\\dfrac14$\n$P(Y=3)=\\dfrac12\\times\\dfrac26=\\dfrac16$\n$P(Y=5)=\\dfrac12\\times\\dfrac16=\\dfrac1{12}$이다.\n두 번의 기록을 $Y_1,Y_2$라 하면\n$\\overline X=3\\ \\Longleftrightarrow\\ Y_1+Y_2=6$이다.\n가능한 순서쌍은 $(1,5),(3,3),(5,1)$뿐이다.\n두 시행은 서로 독립이므로\n$P(\\overline X=3)=\\dfrac14\\cdot\\dfrac1{12}+\\dfrac16\\cdot\\dfrac16+\\dfrac1{12}\\cdot\\dfrac14$\n$=\\dfrac1{48}+\\dfrac1{36}+\\dfrac1{48}$\n$=\\dfrac3{72}+\\dfrac2{72}=\\dfrac5{72}$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -596,7 +596,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "모표준편차가 $\\sigma=\\dfrac1{5.88}$이므로 신뢰도 $95\\%$의 신뢰구간 길이는\n$f(n)=2\\times1.96\\times\\dfrac{\\sigma}{\\sqrt n}$\n$=\\dfrac{3.92}{5.88\\sqrt n}$\n$=\\dfrac2{3\\sqrt n}$이다.\n주어진 부등식에 대입하면\n$\\dfrac2{3\\sqrt n}\\ge\\dfrac2{3k}$\n$\\sqrt n\\le k,\\quad n\\le k^2$이다.\n$k$는 자연수이므로 가능한 자연수 $n$의 최댓값은 $M=k^2$이다.\n$Y\\sim B\\left(M,\\dfrac13\\right)$에서\n$E(Y)=\\dfrac M3,\\quad V(Y)=\\dfrac{2M}{9}$이다.\n$E(Y^2)=V(Y)+\\{E(Y)\\}^2$를 이용하면\n$11=\\dfrac{2M}{9}+\\dfrac{M^2}{9}$\n$M^2+2M-99=0$\n$(M+11)(M-9)=0$이다.\n$M$은 자연수이므로 $M=9$이다.\n$k^2=9,\\ k>0$에서 $k=3$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -678,7 +678,7 @@ window.questionBank = [
     "answer": "38",
     "solution": "모표준편차는 $6$, 표본의 크기는 $36$이므로\n$\\dfrac{\\sigma}{\\sqrt n}=\\dfrac6{\\sqrt{36}}=1$이다.\n신뢰도 $90\\%$일 때 양쪽 꼬리 확률의 합은 $0.1$이고\n$P(0\\le Z\\le z_{90})=\\dfrac{0.9}{2}=0.45$이다.\n표에서 $z_{90}=1.6$을 얻는다.\n따라서 첫 신뢰구간의 길이는\n$b-a=2\\times1.6\\times1=3.2$이다.\n신뢰도 $s\\%$에 해당하는 양의 신뢰상수를 $z_s$라 하면 두 번째 신뢰구간의 길이는\n$d-c=2z_s\\times1=2z_s$이다.\n주어진 조건에 대입하면\n$5(b-a)\\ge16(d-c)$\n$5\\times3.2\\ge16\\times2z_s$\n$16\\ge32z_s$\n$z_s\\le0.5$이다.\n신뢰도는 $z_s$가 클수록 커지므로 최댓값은 $z_s=0.5$일 때 얻는다.\n표에서 $P(0\\le Z\\le0.5)=0.19$이므로\n$\\dfrac{s}{100}=P(-0.5\\le Z\\le0.5)=2\\times0.19=0.38$이다.\n따라서 $s$의 최댓값은 $38$이다.",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/24_매산여고_2학기_기말_고2_확률과통계/q23-solution.svg",
