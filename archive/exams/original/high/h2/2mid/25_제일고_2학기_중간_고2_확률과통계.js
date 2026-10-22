@@ -368,8 +368,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 이항분포를 정규분포로 근사할 때 평균과 표준편차를 먼저 구한다.\n조건 정리: $X\\sim B(625,\\dfrac{1}{5})$이므로 평균은 $np$, 분산은 $np(1-p)$이다.\n풀이 방향: 이항분포를 평균 $125$, 표준편차 $10$인 정규분포로 근사하고, $105\\le X\\le140$을 표준화한다.\n정석 풀이: $E(X)=625\\cdot\\dfrac{1}{5}=125$이고, $V(X)=625\\cdot\\dfrac{1}{5}\\cdot\\dfrac{4}{5}=100$이므로 표준편차는 $10$이다. 따라서 $X=105$는 $Z=\\dfrac{105-125}{10}=-2$, $X=140$은 $Z=\\dfrac{140-125}{10}=1.5$에 대응한다. 그러므로 구하는 값은 $P(-2\\le Z\\le1.5)=P(0\\le Z\\le2)+P(0\\le Z\\le1.5)=0.4772+0.4332=0.9104$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-    "subUnit": "확률분포",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
