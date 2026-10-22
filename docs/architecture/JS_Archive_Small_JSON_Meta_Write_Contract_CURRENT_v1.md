@@ -32,8 +32,9 @@
 
 **구현 이력·당시 미지원 과목·PR #679 및 후속 작업안은 [Notion 02-06-A 등록기 구현 이력](https://app.notion.com/p/4010e68bd69f81cc9203ccf1f9165a24)에서만 보관합니다.** 현재 코드 동작은 [workflow](https://github.com/icefoxtail/AP------/blob/main/.github/workflows/archive-reviewed-exam-meta-register.yml)와 실제 등록기 및 Actions 실행 결과가 우선입니다.
 
-## 보고 한 줄 포맷
+## 보고 상태 — 실제 수행한 책임만
 
-`examUid | N/N | smallJsonRef+SHA | sourceBlob | targetUIDs | registrationActionRun | sharedProjectionReadback | ConsumerSearchParity | mainSHA | OPEN | nextAction`
-
-기존 전체 FINAL QA·Blind·학생 해설·Meta 검수 의무를 완화하거나 다른 시험지로 범위를 확대하지 않는다.
+- **메타 입력 작성자:** `examUid / sourceBlob / UID 대상 / smallJsonRef+SHA / before→after 근거 / OPEN·firstMissingStep`를 기록합니다. 인가된 등록기 미실행이면 `REGISTER_PENDING` 또는 `NOT_RUN`입니다.
+- **Git/main 병합 담당:** 실제 commit/대상 blob 원격 확인과 `MAIN_DONE` 여부를 기록합니다. 아직 실행되지 않은 Consumer/Search parity를 PASS라 적지 않습니다.
+- **Actions/기술 담당:** 실제 `registrationActionRun / changedUIDs / sharedProjectionReadback / ConsumerSearchParity / mainSHA / PASS·FAIL`을 기록합니다. 실패한 UID만 해당 후속 등록·수리 이슈로 분리합니다.
+- **역할별 QA:** CREATE/R1/R2/R3/ALIVE의 최초 해설·Blind·Golden·메타 품질 분모는 그대로이며, 사후 FINAL QA의 핀포인트 분모와 main 병합 종료 경계는 [해당 v2.0 정본](../operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md)이 우선합니다.
