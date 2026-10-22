@@ -82,9 +82,10 @@ export function registerFinalqaNonpt({root,request:req,write=false,verifyProject
        item.sourceArchiveFile!==SOURCE||item.questionUid!==row.questionUid||
        item.questionUid!==id.questionUid||uniqueUids.has(item.questionUid))fail("identity mismatch #"+n);
     uniqueUids.add(item.questionUid);
-    if(item.sourceFingerprint!==fingerprint(q)||
-       row.sourceFingerprint!==item.sourceFingerprint||id.sourceFingerprint!==item.sourceFingerprint||
-       row.contentFingerprint!==contentFingerprint(q))fail("fingerprint mismatch #"+n);
+    if(item.sourceFingerprint!==fingerprint(q))fail("candidate fingerprint differs from exact source #"+n);
+    if(row.sourceFingerprint!==item.sourceFingerprint)fail("shared metadata sourceFingerprint drift #"+n);
+    if(id.sourceFingerprint!==item.sourceFingerprint)fail("identity sourceFingerprint drift #"+n);
+    if(row.contentFingerprint!==contentFingerprint(q))fail("shared metadata contentFingerprint drift #"+n);
     if(item.after.standardCourse!=="미적분I"||q.standardCourse!=="미적분I"||
        item.after.curriculum!=="2022"||item.after.level!==q.level||
        item.after.difficultyBucket!==q.difficultyBucket||
