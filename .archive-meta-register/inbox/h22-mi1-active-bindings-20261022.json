@@ -1,0 +1,2232 @@
+{
+  "schemaVersion": "archive-reviewed-canonical-maintenance-request-v1",
+  "requestId": "h22-mi1-active-bindings-20261022",
+  "purpose": "Register native 2022 미적분I curriculum bindings for the current RPM-primary paths, preserving existing 2015 mappings and semantic PT/TPL definitions.",
+  "approval": {
+    "type": "CANONICAL_MAINTENANCE",
+    "approvedBy": "User-directed common metadata system implementation",
+    "evidenceRefs": [
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+        "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+        "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+        "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+        "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+      },
+      {
+        "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+        "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+        "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+        "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+        "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+        "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+      }
+    ]
+  },
+  "registryChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/pack.json",
+      "before": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "LIMIT_CONTINUITY",
+        "packVersion": "1.1.0",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "curricula": [
+          "2015"
+        ],
+        "standardCourses": [
+          "수학II"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-M2-01",
+          "H15-M2-02"
+        ],
+        "activeItemEvidenceCount": 189,
+        "problemTypeCount": 7,
+        "templateCount": 29,
+        "bindingCount": 11,
+        "aliasCount": 0,
+        "productionJsMutation": false,
+        "notes": [
+          "Merged from independently completed MathII limit (104) and continuity (85) Stage6 evidence.",
+          "Legacy/RPM limit hierarchy normalized to Meta Foundation L3=problemTypeKey, L4=templateKey contract.",
+          "PT_INFINITY_GEOMETRY_APPLICATION merged into PT_LIMIT_GEOMETRY_APPLICATION because one template cannot have two canonical parents.",
+          "No production exam JS or production metadata modified.",
+          "v1.0.1 revalidates educational L3/L4 labels and CrossConcept mappings for all 189 MathII limit/continuity assignments.",
+          "Limit difficulty fresh blind recheck is complete; all 189 canonical assignments remain reviewed. After cross-pack ownership resolution, 5 derivative-primary overlaps are excluded from active runtime and 184 LIMIT_CONTINUITY rows remain automatic-eligible.",
+          "6-B taxonomy compression: owned L3 21→7 and bindings 25→11.",
+          "6-C L4 compression: owned templates 36→29; decisive solution skeletons retained and context moved to CrossConcepts.",
+          "v1.1.0 compresses owned L3 21→7 and L4 36→29 with 189/189 assignment migration and CrossConcept preservation.",
+          "Cross-pack ownership resolution preserves 189 historical assignments while active runtime excludes 5 DERIVATIVE-primary overlaps."
+        ],
+        "crossConceptReferenceCount": 31,
+        "conditionRegistryCount": 6,
+        "outOfGroupRoutingCount": 0,
+        "externalProblemTypeReferenceCount": 4,
+        "promotionReviewDisposition": "LIMIT_CONTINUITY_V1_1_0_TAXONOMY_COMPRESSION"
+      },
+      "after": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "LIMIT_CONTINUITY",
+        "packVersion": "1.1.1",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "curricula": [
+          "2015",
+          "2022"
+        ],
+        "standardCourses": [
+          "수학II",
+          "미적분I"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-M2-01",
+          "H15-M2-02",
+          "H22-M1-01",
+          "H22-M1-02"
+        ],
+        "activeItemEvidenceCount": 189,
+        "problemTypeCount": 7,
+        "templateCount": 29,
+        "bindingCount": 16,
+        "aliasCount": 0,
+        "productionJsMutation": false,
+        "notes": [
+          "Merged from independently completed MathII limit (104) and continuity (85) Stage6 evidence.",
+          "Legacy/RPM limit hierarchy normalized to Meta Foundation L3=problemTypeKey, L4=templateKey contract.",
+          "PT_INFINITY_GEOMETRY_APPLICATION merged into PT_LIMIT_GEOMETRY_APPLICATION because one template cannot have two canonical parents.",
+          "No production exam JS or production metadata modified.",
+          "v1.0.1 revalidates educational L3/L4 labels and CrossConcept mappings for all 189 MathII limit/continuity assignments.",
+          "Limit difficulty fresh blind recheck is complete; all 189 canonical assignments remain reviewed. After cross-pack ownership resolution, 5 derivative-primary overlaps are excluded from active runtime and 184 LIMIT_CONTINUITY rows remain automatic-eligible.",
+          "6-B taxonomy compression: owned L3 21→7 and bindings 25→11.",
+          "6-C L4 compression: owned templates 36→29; decisive solution skeletons retained and context moved to CrossConcepts.",
+          "v1.1.0 compresses owned L3 21→7 and L4 36→29 with 189/189 assignment migration and CrossConcept preservation.",
+          "Cross-pack ownership resolution preserves 189 historical assignments while active runtime excludes 5 DERIVATIVE-primary overlaps.",
+          "2026-10-21: Added native 2022 미적분I standard-unit-direct curriculum bindings from current RPM crosswalk paths H2-M2-RPM-049–060 and 098; 12 path records resolve through 5 unique unit/PT tuples. Existing 2015 bindings and taxonomy definitions remain unchanged."
+        ],
+        "crossConceptReferenceCount": 31,
+        "conditionRegistryCount": 6,
+        "outOfGroupRoutingCount": 0,
+        "externalProblemTypeReferenceCount": 4,
+        "promotionReviewDisposition": "LIMIT_CONTINUITY_V1_1_0_TAXONOMY_COMPRESSION"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-01",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_LIMIT_PARAMETER_DETERMINATION",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-01",
+        "subUnitKey": null,
+        "subUnitLabelKo": "함수의 극한",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "L1": "함수의 극한과 연속",
+        "L2": "함수의 극한"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-01",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_LIMIT_VALUE_CALC",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-01",
+        "subUnitKey": null,
+        "subUnitLabelKo": "함수의 극한",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "L1": "함수의 극한과 연속",
+        "L2": "함수의 극한"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-02",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_CONTINUITY_CONDITION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_CONTINUITY_CONDITION",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-02",
+        "subUnitKey": null,
+        "subUnitLabelKo": "함수의 연속",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "L1": "함수의 극한과 연속",
+        "L2": "함수의 연속"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-02",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_CONTINUITY_JUDGMENT"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_CONTINUITY_JUDGMENT",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-02",
+        "subUnitKey": null,
+        "subUnitLabelKo": "함수의 연속",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "L1": "함수의 극한과 연속",
+        "L2": "함수의 연속"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-02",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_INTERMEDIATE_VALUE_APPLICATION",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-02",
+        "subUnitKey": null,
+        "subUnitLabelKo": "함수의 연속",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "LIMIT_CONTINUITY",
+        "L1": "함수의 극한과 연속",
+        "L2": "함수의 연속"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
+      "before": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "FUNCTIONS_GRAPHS",
+        "packVersion": "1.0.3",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "FUNCTIONS_GRAPHS",
+        "curricula": [
+          "2015",
+          "2022"
+        ],
+        "standardCourses": [
+          "수학(하)",
+          "공통수학2",
+          "중1 수학",
+          "대수"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-SB-03",
+          "H15-SB-04",
+          "H15-SB-05",
+          "H22-C2-07",
+          "H22-C2-08",
+          "H22-C2-09",
+          "M1-04",
+          "H22-A-02",
+          "H22-A-03",
+          "H22-A-04"
+        ],
+        "activeItemEvidenceCount": 523,
+        "problemTypeCount": 29,
+        "templateCount": 103,
+        "bindingCount": 123,
+        "aliasCount": 0,
+        "productionJsMutation": true,
+        "notes": [
+          "UID materialized from the frozen 532-item FUNCTIONS_GRAPHS identity.",
+          "520 owned items; 12 explicit OUT_OF_SCOPE routes.",
+          "No production exam JS modified.",
+          "v1.0.1 renames one reused L4 label to textbook-style wording; mappings remain unchanged.",
+          "v1.0.2 adds the reviewed M1-04 graph-property bindings and the B15 M1 coordinate-graph UID under the existing canonical owner.",
+          "2026-10-20: 제일고 2015 수학I 기존 ACTIVE 유형 exact binding 추가. q13·q16·q17·q23만 대상; 새 PT/TPL 없음."
+        ],
+        "crossConceptReferenceCount": 18,
+        "conditionRegistryCount": 6,
+        "outOfGroupRoutingCount": 12,
+        "promotionReviewDisposition": "USER_DIRECTED_NEW14_HYOCHEON_20261020"
+      },
+      "after": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "FUNCTIONS_GRAPHS",
+        "packVersion": "1.0.4",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "FUNCTIONS_GRAPHS",
+        "curricula": [
+          "2015",
+          "2022"
+        ],
+        "standardCourses": [
+          "수학(하)",
+          "공통수학2",
+          "중1 수학",
+          "대수",
+          "미적분I"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-SB-03",
+          "H15-SB-04",
+          "H15-SB-05",
+          "H22-C2-07",
+          "H22-C2-08",
+          "H22-C2-09",
+          "M1-04",
+          "H22-A-02",
+          "H22-A-03",
+          "H22-A-04",
+          "H22-M1-02"
+        ],
+        "activeItemEvidenceCount": 523,
+        "problemTypeCount": 29,
+        "templateCount": 103,
+        "bindingCount": 124,
+        "aliasCount": 0,
+        "productionJsMutation": true,
+        "notes": [
+          "UID materialized from the frozen 532-item FUNCTIONS_GRAPHS identity.",
+          "520 owned items; 12 explicit OUT_OF_SCOPE routes.",
+          "No production exam JS modified.",
+          "v1.0.1 renames one reused L4 label to textbook-style wording; mappings remain unchanged.",
+          "v1.0.2 adds the reviewed M1-04 graph-property bindings and the B15 M1 coordinate-graph UID under the existing canonical owner.",
+          "2026-10-20: 제일고 2015 수학I 기존 ACTIVE 유형 exact binding 추가. q13·q16·q17·q23만 대상; 새 PT/TPL 없음.",
+          "2026-10-21: Added H2-M2-RPM-059 as a native 2022 미적분I binding only for the continuity theorem on extrema over a closed interval (H22-M1-02 / TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT), with an exact positive applicability rule. Sibling templates and derivative-based extrema are not approved by this PT binding. Existing 2015 bindings and taxonomy definitions remain unchanged."
+        ],
+        "crossConceptReferenceCount": 18,
+        "conditionRegistryCount": 6,
+        "outOfGroupRoutingCount": 12,
+        "promotionReviewDisposition": "USER_DIRECTED_NEW14_HYOCHEON_20261020"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-02",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_FUNCTION_EXTREMUM",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-02",
+        "subUnitKey": null,
+        "subUnitLabelKo": "함수의 연속",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "FUNCTIONS_GRAPHS",
+        "L1": "함수의 극한과 연속",
+        "L2": "함수의 연속"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/bindings.json",
+      "collection": "applicabilityRules",
+      "match": {
+        "curriculum": "2022",
+        "standardUnitKey": "H22-M1-02",
+        "targetType": "template",
+        "targetKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardUnitKey": "H22-M1-02",
+        "targetType": "template",
+        "targetKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+        "curriculumApplicability": "DEFAULT_SCOPE",
+        "defaultSelectable": true,
+        "reason": "The current 2022 미적분I RPM path H2-M2-RPM-059 places the closed-interval continuity maximum/minimum theorem in H22-M1-02. This exact template records endpoint comparison under that theorem; it does not authorize sibling function-extremum templates or derivative-based extrema in the continuity unit.",
+        "status": "ACTIVE",
+        "ownerPack": "FUNCTIONS_GRAPHS"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/pack.json",
+      "before": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "DERIVATIVE",
+        "packVersion": "1.0.0",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "DERIVATIVE",
+        "curricula": [
+          "2015"
+        ],
+        "standardCourses": [
+          "수학II"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-M2-03",
+          "H15-M2-04",
+          "H15-M2-05",
+          "H15-M2-06"
+        ],
+        "activeItemEvidenceCount": 320,
+        "problemTypeCount": 13,
+        "templateCount": 27,
+        "bindingCount": 31,
+        "aliasCount": 0,
+        "productionJsMutation": false,
+        "notes": [
+          "Built from 28 current MathII source exams and 320 derivative-primary items.",
+          "Stage2 semantic compression froze DERIVATIVE L3=13 and owned L4=27; two LIMIT_CONTINUITY templates are referenced without redefinition.",
+          "Stage3 fresh blind difficulty reviewed all 320 items before legacy reveal; final distribution 1=56, 2=91, 3=87, 4=59, 5=27.",
+          "Stage5 rebased after INTEGRAL_CALCULUS promotion; four proposed CrossConcept keys became canonical reuse and eight remain new promotions.",
+          "Archive2 join is 320/320 (241 direct UID + 79 exact source-identity repairs); 11 direct-UID source fingerprint HOLD rows remain fail-closed.",
+          "No production exam JS is modified.",
+          "Post-promotion cross-pack primary ownership correction keeps 14 shared source items primary in DERIVATIVE; prior LIMIT_CONTINUITY/INTEGRAL_CALCULUS evidence remains historical and is excluded from active runtime.",
+          "2026-10-20 scoped RPM semantic projection H15-M2-04 exact binding for 22_매산고 2mid MathII q06/q20 (RPM-018/017); H15-M2-03 existing student JS compatibility projection preserved unchanged."
+        ],
+        "crossConceptReferenceCount": 165,
+        "conditionRegistryCount": 6,
+        "outOfGroupRoutingCount": 0,
+        "externalProblemTypeReferenceCount": 1,
+        "promotionReviewDisposition": "DERIVATIVE_STAGE6_PROMOTION_READY"
+      },
+      "after": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "DERIVATIVE",
+        "packVersion": "1.0.1",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "DERIVATIVE",
+        "curricula": [
+          "2015",
+          "2022"
+        ],
+        "standardCourses": [
+          "수학II",
+          "미적분I"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-M2-03",
+          "H15-M2-04",
+          "H15-M2-05",
+          "H15-M2-06",
+          "H22-M1-03",
+          "H22-M1-04",
+          "H22-M1-05"
+        ],
+        "activeItemEvidenceCount": 320,
+        "problemTypeCount": 13,
+        "templateCount": 27,
+        "bindingCount": 42,
+        "aliasCount": 0,
+        "productionJsMutation": false,
+        "notes": [
+          "Built from 28 current MathII source exams and 320 derivative-primary items.",
+          "Stage2 semantic compression froze DERIVATIVE L3=13 and owned L4=27; two LIMIT_CONTINUITY templates are referenced without redefinition.",
+          "Stage3 fresh blind difficulty reviewed all 320 items before legacy reveal; final distribution 1=56, 2=91, 3=87, 4=59, 5=27.",
+          "Stage5 rebased after INTEGRAL_CALCULUS promotion; four proposed CrossConcept keys became canonical reuse and eight remain new promotions.",
+          "Archive2 join is 320/320 (241 direct UID + 79 exact source-identity repairs); 11 direct-UID source fingerprint HOLD rows remain fail-closed.",
+          "No production exam JS is modified.",
+          "Post-promotion cross-pack primary ownership correction keeps 14 shared source items primary in DERIVATIVE; prior LIMIT_CONTINUITY/INTEGRAL_CALCULUS evidence remains historical and is excluded from active runtime.",
+          "2026-10-20 scoped RPM semantic projection H15-M2-04 exact binding for 22_매산고 2mid MathII q06/q20 (RPM-018/017); H15-M2-03 existing student JS compatibility projection preserved unchanged.",
+          "2026-10-21: Added native 2022 미적분I standard-unit-direct curriculum bindings from current RPM crosswalk paths H2-M2-RPM-061–079; 19 path records resolve through 11 unique unit/PT tuples. Existing 2015 bindings and taxonomy definitions remain unchanged."
+        ],
+        "crossConceptReferenceCount": 165,
+        "conditionRegistryCount": 6,
+        "outOfGroupRoutingCount": 0,
+        "externalProblemTypeReferenceCount": 1,
+        "promotionReviewDisposition": "DERIVATIVE_STAGE6_PROMOTION_READY"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-03",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_DERIVATIVE_DEFINITION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_DEFINITION",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-03",
+        "subUnitKey": null,
+        "subUnitLabelKo": "미분계수와 도함수",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "DERIVATIVE",
+        "L1": "미분",
+        "L2": "미분계수와 도함수"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-03",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_RATE_RELATION",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-03",
+        "subUnitKey": null,
+        "subUnitLabelKo": "미분계수와 도함수",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "DERIVATIVE",
+        "L1": "미분",
+        "L2": "미분계수와 도함수"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-04",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_RULE_EVALUATION",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-04",
+        "subUnitKey": null,
+        "subUnitLabelKo": "미분계수와 도함수",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "DERIVATIVE",
+        "L1": "미분",
+        "L2": "미분계수와 도함수"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-04",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_DIFFERENTIABILITY_CONDITION",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-04",
+        "subUnitKey": null,
+        "subUnitLabelKo": "미분계수와 도함수",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "DERIVATIVE",
+        "L1": "미분",
+        "L2": "미분계수와 도함수"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_EQUATION_INEQUALITY",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "subUnitLabelKo": "도함수의 활용",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "DERIVATIVE",
+        "L1": "미분",
+        "L2": "도함수의 활용"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_EXTREMA",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "subUnitLabelKo": "도함수의 활용",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "DERIVATIVE",
+        "L1": "미분",
+        "L2": "도함수의 활용"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_MAX_MIN",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "subUnitLabelKo": "도함수의 활용",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "DERIVATIVE",
+        "L1": "미분",
+        "L2": "도함수의 활용"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_MONOTONICITY",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "subUnitLabelKo": "도함수의 활용",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "DERIVATIVE",
+        "L1": "미분",
+        "L2": "도함수의 활용"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_DERIVATIVE_MOTION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_DERIVATIVE_MOTION",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "subUnitLabelKo": "도함수의 활용",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "DERIVATIVE",
+        "L1": "미분",
+        "L2": "도함수의 활용"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_MEAN_VALUE_THEOREM"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_MEAN_VALUE_THEOREM",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "subUnitLabelKo": "도함수의 활용",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "DERIVATIVE",
+        "L1": "미분",
+        "L2": "도함수의 활용"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/derivative/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_TANGENT_DERIVATIVE"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_TANGENT_DERIVATIVE",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-05",
+        "subUnitKey": null,
+        "subUnitLabelKo": "도함수의 활용",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "DERIVATIVE",
+        "L1": "미분",
+        "L2": "도함수의 활용"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/pack.json",
+      "before": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "INTEGRAL_CALCULUS",
+        "packVersion": "1.0.0",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "INTEGRAL_CALCULUS",
+        "curricula": [
+          "2015"
+        ],
+        "standardCourses": [
+          "수학II"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-M2-07",
+          "H15-M2-08",
+          "H15-M2-09"
+        ],
+        "activeItemEvidenceCount": 135,
+        "problemTypeCount": 5,
+        "templateCount": 15,
+        "bindingCount": 5,
+        "aliasCount": 0,
+        "productionJsMutation": false,
+        "crossConceptReferenceCount": 63,
+        "conditionRegistryCount": 6,
+        "supplementaryItemCount": 1,
+        "notes": [
+          "Reduced to 5 L3 / 15 L4 by separating CrossConcept, Condition, and integrationPattern axes.",
+          "Latest-main rebase reuses CC_DIFFERENTIABILITY, CC_INVERSE_FUNCTION, CC_TANGENCY and CC_ABSOLUTE_VALUE_FUNCTION; eight additional FUNCTION concepts are promoted.",
+          "23 팔마고 q7 is retained as SUPPLEMENTARY_OUTSIDE_CORE and excluded from the default automatic pool.",
+          "No production exam JS is modified."
+        ],
+        "promotionReviewDisposition": "INTEGRAL_CALCULUS_STAGE6_PROMOTION_READY"
+      },
+      "after": {
+        "schemaVersion": "meta-foundation-pack-v1",
+        "packId": "INTEGRAL_CALCULUS",
+        "packVersion": "1.0.1",
+        "canonicalStatus": "ACTIVE",
+        "schemaAuthority": "docs/rules/01_CANONICAL/JS아카이브_문항메타_파운데이션_운영규칙_v1.md",
+        "ownerPack": "INTEGRAL_CALCULUS",
+        "curricula": [
+          "2015",
+          "2022"
+        ],
+        "standardCourses": [
+          "수학II",
+          "미적분I"
+        ],
+        "ownedStandardUnitDomains": [
+          "H15-M2-07",
+          "H15-M2-08",
+          "H15-M2-09",
+          "H22-M1-06",
+          "H22-M1-07",
+          "H22-M1-08"
+        ],
+        "activeItemEvidenceCount": 135,
+        "problemTypeCount": 5,
+        "templateCount": 15,
+        "bindingCount": 10,
+        "aliasCount": 0,
+        "productionJsMutation": false,
+        "crossConceptReferenceCount": 63,
+        "conditionRegistryCount": 6,
+        "supplementaryItemCount": 1,
+        "notes": [
+          "Reduced to 5 L3 / 15 L4 by separating CrossConcept, Condition, and integrationPattern axes.",
+          "Latest-main rebase reuses CC_DIFFERENTIABILITY, CC_INVERSE_FUNCTION, CC_TANGENCY and CC_ABSOLUTE_VALUE_FUNCTION; eight additional FUNCTION concepts are promoted.",
+          "23 팔마고 q7 is retained as SUPPLEMENTARY_OUTSIDE_CORE and excluded from the default automatic pool.",
+          "No production exam JS is modified.",
+          "2026-10-21: Added native 2022 미적분I standard-unit-direct curriculum bindings from current RPM crosswalk paths H2-M2-RPM-080–097; 18 path records resolve through 5 unique unit/PT tuples. Existing 2015 bindings and taxonomy definitions remain unchanged."
+        ],
+        "promotionReviewDisposition": "INTEGRAL_CALCULUS_STAGE6_PROMOTION_READY"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-06",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_INDEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-06",
+        "subUnitKey": null,
+        "subUnitLabelKo": "부정적분",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "INTEGRAL_CALCULUS",
+        "L1": "적분",
+        "L2": "부정적분"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-07",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_FUNCTION_RELATION",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-07",
+        "subUnitKey": null,
+        "subUnitLabelKo": "정적분",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "INTEGRAL_CALCULUS",
+        "L1": "적분",
+        "L2": "정적분"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-07",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_DEFINITE_INTEGRAL_OPERATION",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-07",
+        "subUnitKey": null,
+        "subUnitLabelKo": "정적분",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "INTEGRAL_CALCULUS",
+        "L1": "적분",
+        "L2": "정적분"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-08",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_AREA_BY_DEFINITE_INTEGRAL",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-08",
+        "subUnitKey": null,
+        "subUnitLabelKo": "정적분의 활용",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "INTEGRAL_CALCULUS",
+        "L1": "적분",
+        "L2": "정적분의 활용"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-08",
+        "subUnitKey": null,
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL"
+      },
+      "before": null,
+      "after": {
+        "problemTypeKey": "PT_MOTION_BY_INTEGRAL",
+        "curriculum": "2022",
+        "standardCourse": "미적분I",
+        "standardUnitKey": "H22-M1-08",
+        "subUnitKey": null,
+        "subUnitLabelKo": "정적분의 활용",
+        "bindingMode": "STANDARD_UNIT_DIRECT",
+        "supportingItemCount": 0,
+        "supportingQuestionUids": [],
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "INTEGRAL_CALCULUS",
+        "L1": "적분",
+        "L2": "정적분의 활용"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/bindings.json",
+      "collection": "applicabilityRules",
+      "match": {
+        "curriculum": "2022",
+        "standardUnitKey": "H22-M1-07",
+        "targetType": "template",
+        "targetKey": "TPL_INVERSE_FUNCTION_INTEGRATION"
+      },
+      "before": null,
+      "after": {
+        "curriculum": "2022",
+        "standardUnitKey": "H22-M1-07",
+        "targetType": "template",
+        "targetKey": "TPL_INVERSE_FUNCTION_INTEGRATION",
+        "curriculumApplicability": "SUPPLEMENTARY_OUTSIDE_CORE",
+        "defaultSelectable": false,
+        "reason": "The 2022 미적분I RPM-primary path limits the core integration leaves to polynomial antiderivatives, definite-integral evaluation/properties, integral-defined functions, area, and motion. This template requires solving an inverse-function equation and explicitly integrating a radical expression (as in its reviewed source item 23_팔마고 q7), so the source-preserving template remains available as supplementary historical material but is excluded from the 2022 core pool.",
+        "status": "ACTIVE",
+        "ownerPack": "INTEGRAL_CALCULUS"
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    }
+  ],
+  "crosswalkRefreshPaths": [
+    {
+      "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math2-calculus1.json",
+      "expectedBeforeSha256": "7cc768079b3a5b17eefeab657e185af6ba9d763af2c549499b9657ea55377351",
+      "selector": {
+        "curriculum": "2022",
+        "scope": "미적분I",
+        "standardCourse": "미적분I"
+      },
+      "expectedRecordCount": 50,
+      "expectedSummary": {
+        "recordCount": 98,
+        "DIRECT_ACTIVE": 92,
+        "FAMILY_ACTIVE": 6,
+        "DIRECT_BINDING_GAP": 0,
+        "FAMILY_BINDING_GAP": 0,
+        "RPM_ONLY": 0,
+        "byScope": {
+          "수학II": {
+            "DIRECT_ACTIVE": 45,
+            "FAMILY_ACTIVE": 3,
+            "DIRECT_BINDING_GAP": 0,
+            "FAMILY_BINDING_GAP": 0,
+            "RPM_ONLY": 0
+          },
+          "미적분I": {
+            "DIRECT_ACTIVE": 47,
+            "FAMILY_ACTIVE": 3,
+            "DIRECT_BINDING_GAP": 0,
+            "FAMILY_BINDING_GAP": 0,
+            "RPM_ONLY": 0
+          }
+        }
+      },
+      "evidenceRefs": [
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/02_2022/HIGH/미적분I.md",
+          "sha256": "456653a3026c47abaf572c6a8e91765ac5d1b13744be30cbe20d37304acaadd3"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+          "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CURRICULUM_APPLICABILITY_POLICY.md",
+          "sha256": "eb5ed54726a485d7be9fd3646ffdd031365750aacf22ba7aed69d29e7e845652"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_표준단원키_마스터테이블.md",
+          "sha256": "d779eeca0fbe7681a13aeed6fa451b62d52020b3a8e04949005aaf405e165cd5"
+        },
+        {
+          "path": "docs/rules/01_CANONICAL/JS아카이브_세부단원_운영규칙_v1.md",
+          "sha256": "119555a95335390da37e1e8be3685467bc5b7039c3959293ec581531e5d31e55"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/limit-continuity/taxonomy.json",
+          "sha256": "e95750dd8ea0dca19a349f021139935bb6857e10f895af6749ee41bc9925eb1f"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/derivative/taxonomy.json",
+          "sha256": "3b2e69c622e88d32fe641f9d7df41d8489be4a705eb140a428fcd568487831d2"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/integral-calculus/taxonomy.json",
+          "sha256": "2d0e0ee8db88e9c2f3e4bd3d34c7de1b27719a1f525915c34c3b4beb3639e4f0"
+        },
+        {
+          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
+          "sha256": "09716cffda48434c6d6dad3f415c2ae034516a941b39549a92b77b75b7c043bf"
+        }
+      ]
+    }
+  ],
+  "items": []
+}

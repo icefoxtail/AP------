@@ -6,7 +6,7 @@ import path from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { verifyChangedUidConsumerApproval, renderSummary } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
-import { loadResolvedConsumerCatalog } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { isMaintenanceClassificationProjected, loadResolvedConsumerCatalog } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const checker = path.join(repo, "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs");
@@ -75,6 +75,28 @@ test("bindings: body fingerprint, source blob and unsupported schemas fail; pinp
   assert.deepEqual([pinOk.changed, pinOk.checked, pinOk.passed, pinOk.skippedUnchanged], [1, 1, 1, 1], "unchanged row skipped but counted; changed row approved");
   assert.equal(out.failures.find(f => f.reason === "VALUE_MISMATCH").uid, row2.questionUid);
   assert.equal(out.failures.find(f => f.reason === "UNSUPPORTED_REQUEST_SCHEMA").uid, "-");
+});
+
+test("canonical maintenance post-push input is handled separately from exam UIDs and source blobs", t => {
+  const request = JSON.parse(fs.readFileSync(path.join(repo, "tests/fixtures/meta-foundation-calculus1/canonical-maintenance-request.json"), "utf8"));
+  assert.deepEqual(request.items, []);
+  assert.equal(request.sourceArchiveFile, undefined);
+  const file = write(tmp(t), "maintenance.json", request);
+  const out = verifyChangedUidConsumerApproval({ root: repo, requestPaths: [file] });
+  assert.equal(out.exams.length, 1);
+  assert.equal(out.exams[0].kind, "canonical-maintenance-v1");
+  assert.equal(out.exams[0].changed, 0);
+  assert.equal(out.failures.length, 1);
+  assert.equal(out.failures[0].reason, "CANONICAL_MAINTENANCE_VERIFY_FAILED");
+  assert.doesNotMatch(out.failures[0].detail, /UNSUPPORTED_REQUEST_SCHEMA|sourceArchiveFile|items\[\]/);
+});
+
+test("maintenance verifier rejects a PT/TPL Search leak without approved Catalog assignment evidence", () => {
+  const catalog = { questionUid: "SYNTHETIC_TEST_uid", problemTypeKey: "PT_RAW_ONLY", templateKey: "TPL_RAW_ONLY",
+    canonicalAssignmentReasons: ["assignment_fields_unreviewed"], assignmentEvidence: null };
+  const search = { uid: catalog.questionUid, problemTypeKey: catalog.problemTypeKey, templateKey: catalog.templateKey };
+  assert.throws(() => isMaintenanceClassificationProjected(catalog, search),
+    /maintenance PT\/TPL Search exposure lacks current approved assignment evidence/);
 });
 
 // Historical whole-exam v2 request (FINAL_QA, L1..L4 + PT/TPL + fingerprints). It stays an extra PASS case only

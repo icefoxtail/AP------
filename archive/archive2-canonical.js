@@ -15,6 +15,8 @@
   ]);
   const SHA256 = /^[a-f0-9]{64}$/i;
   const text = (value) => String(value ?? "").normalize("NFC").trim();
+  const bindingSubUnitIdentity = (row) => row.subUnitKey === null ? "EXPLICIT_NULL" :
+    row.subUnitKey === undefined ? "MISSING" : `VALUE:${text(row.subUnitKey)}`;
   const normalizeFile = (value) =>
     text(value)
       .replace(/\\/g, "/")
@@ -385,7 +387,7 @@
       } else if (!new Set(["NO_SEPARATE_L4", "HOLD"]).has(text(assignment.l4Disposition))) {
         return { ok: false, reasons: ["advanced_template_unresolved"] };
       }
-      const bindingKey = [assignment.curriculumKey, assignment.standardUnitKey, assignment.subUnitKey, assignment.problemTypeKey].map(text).join("\u0000");
+      const bindingKey = [text(assignment.curriculumKey), text(assignment.standardUnitKey), bindingSubUnitIdentity(assignment), text(assignment.problemTypeKey)].join("\u0000");
       if (!authority.bindingKeys?.has(bindingKey))
         return { ok: false, reasons: ["advanced_curriculum_binding_invalid"] };
       return { ok: true, reasons: [] };
@@ -1134,7 +1136,7 @@
         .map((row) => text(row.problemTypeKey))),
       templatesByKey: Object.fromEntries((foundationTaxonomy.templates || []).map((row) => [text(row.templateKey), row])),
       bindingKeys: new Set((bindings.bindings || []).map((row) =>
-        [row.curriculum, row.standardUnitKey, row.subUnitKey, row.problemTypeKey].map(text).join("\u0000"),
+        [text(row.curriculum), text(row.standardUnitKey), bindingSubUnitIdentity(row), text(row.problemTypeKey)].join("\u0000"),
       )),
     };
     const overlaysByUid = new Map();
@@ -1404,7 +1406,7 @@
           standardCourse: candidate.standardCourse || "",
           standardUnitKey: candidate.standardUnitKey || "",
           standardUnit: candidate.standardUnit || "",
-          subUnitKey: candidate.subUnitKey || "",
+          subUnitKey: candidate.subUnitKey === null ? null : candidate.subUnitKey || "",
           subUnit: candidate.subUnit || "",
           assignmentFingerprint: candidate.assignmentFingerprint,
           assignmentEvidence: candidate.assignmentEvidence || assignmentRows[0] || null,

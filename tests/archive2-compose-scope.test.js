@@ -574,7 +574,7 @@ test('cross-grade sources without an approved canonical projection remain exclud
 test('all changed browser scripts use new cache versions', () => {
   const html = read('workspace.html');
   for (const [file, version] of [
-    ['archive2-canonical.js', '20261006-canonical-lookup-2'],
+    ['archive2-canonical.js', '20261023-explicit-null-preserve-1'],
     ['archive2-core.js', '20261012-finder-exam-projection-fallback-1'],
     ['meta-foundation-runtime.js', '20260930-canonical-lock-2'],
     ['archive2-history.js', '20261004-class-grade-fallback-1'],

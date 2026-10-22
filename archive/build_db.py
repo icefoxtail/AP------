@@ -1933,6 +1933,40 @@ def run_pipeline_command(label, command, cwd):
     print(f"✅ {label}")
 
 
+def run_runtime_source_readiness_closeout(archive_dir, repo_root):
+    readiness = archive_dir / "tools" / "meta-foundation" / "refresh-runtime-source-readiness.mjs"
+    catalog_builder = archive_dir / "tools" / "build-archive2-catalog.mjs"
+
+    # Readiness writes source-derived counts into runtime packs, which are raw
+    # canonical manifest inputs. Rebuild once for those bytes, then refresh the
+    # bridge receipt's catalog version and verify both authorities.
+    run_pipeline_command(
+        "Meta Foundation runtime source readiness 산출",
+        ["node", readiness, "--write"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Runtime readiness 반영 canonical catalog/manifest 재생성",
+        ["node", catalog_builder],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Meta Foundation runtime readiness 최종 catalog 결속",
+        ["node", readiness, "--write"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Meta Foundation runtime readiness 결속 검증",
+        ["node", readiness, "--check"],
+        repo_root,
+    )
+    run_pipeline_command(
+        "Archive 2.0 catalog stale 최종 검증",
+        ["node", catalog_builder, "--check"],
+        repo_root,
+    )
+
+
 def run_archive_registration_sync():
     archive_dir, _, _ = resolve_project_paths()
     repo_root = archive_dir.parent
@@ -2001,22 +2035,7 @@ def run_archive_registration_sync():
         ["node", archive_dir / "tools" / "verify-archive-registration.mjs"],
         repo_root,
     )
-    run_pipeline_command(
-        "Archive 2.0 catalog stale 검증",
-        ["node", archive_dir / "tools" / "build-archive2-catalog.mjs", "--check"],
-        repo_root,
-    )
-
-    run_pipeline_command(
-        "Meta Foundation runtime readiness 최종 catalog 결속",
-        ["node", archive_dir / "tools" / "meta-foundation" / "refresh-runtime-source-readiness.mjs", "--write"],
-        repo_root,
-    )
-    run_pipeline_command(
-        "Meta Foundation runtime readiness 결속 검증",
-        ["node", archive_dir / "tools" / "meta-foundation" / "refresh-runtime-source-readiness.mjs", "--check"],
-        repo_root,
-    )
+    run_runtime_source_readiness_closeout(archive_dir, repo_root)
 
     print("\n✅ ARCHIVE REGISTRATION SYNC PASS")
     print("   - 신규 시험지 DB/UID/Archive2 노출은 자동 동기화")
