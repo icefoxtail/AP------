@@ -25,9 +25,10 @@ scope: GPT Scheduled / MASTER, CREATE, R1, R2, R3 / 신규 캠페인·기존 예
 policyBoundary: 기존 사용자 최신 명시 지시 및 Git/Notion CURRENT 품질 정본 우선
 operationalBoundary: 문서 저장 ≠ 실제 예약 프롬프트 갱신 ≠ 검사 실행 ≠ main 출고
 
-## CURRENT 적용 예외 — 2026-10-19 HIGH_DYNAMIC R1 연속 소비·저장 사전점검
+## R1 캠페인 전용 예외 링크 (2026-10-22 정리)
 
-`HIGH_DYNAMIC_INTAKE_20261017` **R1만** 사용자 명시 적체 해소 지시에 따라 기본 1시험지/회차 CAP 대신 `미수납 READY_R1 스캔 → 중단 복구 → source-only blind freeze 원격 확인 → 해설/Meta/Golden 자체 책임 검수·수리 → READY_R2 원격 인계 → 다음 eligible 반복`을 적용한다. 자세한 우선순위·실패 복구는 [R1_CURRENT.md](R1_CURRENT.md)의 2026-10-19 HIGH_DYNAMIC 예외 조항. 2026-10-19 실제 :12 R1 예약 프롬프트 별도 업데이트 확인. 실제 시험지 R1 완료/적체 해소는 아직 물리 수납·SHA 결과로 별도 검증해야 한다. 캠페인 외 기본 1시험지/회차, 품질/블라인드·DOC_READ_RECEIPT/Golden·동시 writer·Git writer 금지는 불변.
+- `HIGH_DYNAMIC_INTAKE_20261017`만의 R1 연속 수납·freeze 저장 실패 복구·당시 예약 시간·진행 사건은 **[HIGH_DYNAMIC R1 전용 Notion 문서](https://app.notion.com/p/4010e68bd69f8187a27dc8d0c88b34d5)**가 소유한다. 해당 캠페인에서만 실제 예약 프롬프트/manifest·Library 증거를 대조해 적용한다. 다른 캠페인에 그 예외를 일반 규칙처럼 확대하지 않는다.
+- 모든 R1의 공통 품질 계약(원본/source-only 독립 풀이→물리 freeze→stored 답 비교·학생 해설/정밀 Meta·Golden 확인→R2 인계)은 [R1_CURRENT.md](R1_CURRENT.md)가 소유한다. 이 문서 정리는 현재 활성 예약의 물리 프롬프트·일정·ON/OFF 변경을 뜻하지 않는다.
 
 ## CURRENT 추가 — 2026-10-18 R3 통합 출고 허브
 
