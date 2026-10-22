@@ -1,16 +1,8 @@
-## CURRENT OVERRIDE — 사용자 직접 지정 Codex 출고·감독 인수 (2026-10-19)
+## 출고 단계의 정책 소유권 (2026-10-22)
 
-사용자가 구체적인 시험지들의 Git `main` 운영병합을 지시한 경우 **Codex는 지정 출고 실행자이자 해당 작업의 감독 판단·표적 복구 책임자**다. R3의 `SUPERVISORY_REVIEW_REQUIRED`, `PENDING_SUPERVISOR_DECISION`, `R3_REVIEWED`, `readyForUnattendedMerge=false`, `qualityPass=false` 또는 `NOT_RUN` **표시만으로** 전 시험지 병합을 거절하거나 PR 생성 없이 종료하지 않는다. 사용자 지시 없는 unattended merge는 계속 금지하되, 사용자 지정·감독 실행은 바로 진행한다.
-
-정해진 최신 R3/MASTER 실물 ZIP·manifest·handoff와 실제 open qid를 읽고, 기존 정상 완료 증거를 재사용한다. 출고에 직접 영향을 주는 오류만 **검증→핀포인트 최소 수정→영향 재확인**; 원본·정답·필수 JS/이미지·Meta의 실질적 결함을 거짓 PASS로 덮지 않는다. 해결 불가면 **해당 시험지만** 구체적인 파일/qid/시도/firstMissingStep과 함께 제외하고 나머지는 브랜치·PR·Git `main` 병합을 진행한다. 허가되지 않은 CI 수리/공통 엔진 변경/전체 R1~R3 재검수 금지.
-
-HIGH_DYNAMIC 출고 입력은 [Google Drive RELEASE_HUB/PENDING](https://drive.google.com/drive/folders/1LZUwmn1_PCJ-lWEqQQTRv1Bxs-XIKYI_)이다. 각 Git main SHA 및 JS·필수 에셋 blob SHA 원격 readback 후 같은 artifact SHA revision만 [Drive DONE](https://drive.google.com/drive/folders/1tldXU3vvviet0HhtxI8ibQcdU2i3D_LI)에 기록한다(사용자가 마감까지 맡긴 경우). Drive DONE은 Git 병합 closeout이며 CI·Pages·콘텐츠 품질 PASS를 자동 뜻하지 않는다. 자세한 최상위 [MAIN_FIRST 감독 인수 규칙](../../operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md)이 아래 일반 Fast Lane 생산/수동 품질게이트의 **출고 작업 해석에 우선**한다.
-
-## CURRENT OVERRIDE — 병합 우선 / CI 수리 후속 분리 (2026-10-18)
-
-사용자가 Git `main` 운영병합을 명시하면 인가된 출고 담당은 정해진 프로덕션 JS/필수 에셋만 병합하고 원격 SHA를 확인한다. 기존 CI 실패, 실행 중, 미실행은 **병합 중단 사유가 아니며 CI PASS를 기다리지 않는다**. CI 수정·공통 검사기/테스트/워크플로 수정은 사용자 별도 지시까지 하지 않는다. `GIT_MAIN_MERGED` / `CI_DEFERRED` / `DEPLOY_NOT_VERIFIED`를 별도 표기한다. 실제 GitHub 보호 규칙으로 병합이 거절되면 강제 push/보호 해제 없이 정확한 platform error를 보고한다. 본문의 원래 단계별 수학 품질 게이트 자체를 바꾸는 지시는 아니다.
-
-정본: [Archive MAIN_FIRST / CI_DEFERRED](../../operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md)
+- Codex 신규 원본 컨베이어의 **CREATE/R1/R2/R3 수학·메타·해설·시각 품질과 단계별 인계**는 이 Fast Lane 문서 본문을 따른다.
+- 사용자가 **Git main 운영병합이나 감독 출고**를 지정한 경우, 승인·상태값 해석·Git PR/main·CI/학생 배포 분리의 단일 실행 정본은 [MAIN_FIRST / CI_DEFERRED](../../operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md)이다. 관련 사례/캠페인 예외는 [Notion 02-07](https://app.notion.com/p/4010e68bd69f813f80bce486f1cc364b)에서만 선택한다.
+- `GIT_MAIN_MERGED`를 CI·Pages·내용 품질 PASS와 혼동하지 않는다. 보호 규칙 위조·강제 push 금지, 기존 유효 검수 증거 재사용, 실제 결함은 대상 시험지만 최소 수리한다. 별도 지시 없는 CI 수리·공통 도구 작업은 수행하지 않는다.
 
 # JS Archive Codex Fast Lane v1
 

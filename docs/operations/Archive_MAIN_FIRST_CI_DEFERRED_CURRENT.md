@@ -1,17 +1,15 @@
 # JS Archive — MAIN_FIRST / CI_DEFERRED 운영병합 계약 (CURRENT)
 
-## CURRENT OVERRIDE — 사용자 지정 출고의 감독 책임 수납 및 상태값 단독 HOLD 금지 (2026-10-19)
+## CURRENT — 사용자 지정 감독 출고 / 품질·Git·배포 상태 분리 (2026-10-22)
 
-**범위:** 사용자가 examUid/산출물과 Git `main` 운영병합을 명시하여 지정한 감독·출고 실행자(Codex/Work/ROOT). 특히 HIGH_DYNAMIC R3→[Google Drive RELEASE_HUB](https://drive.google.com/drive/folders/1DQigbs29hiuvwxbS-6i7w6hK6iziNk57)의 `PENDING` 후보에 적용한다. 사용자 명시 출고 지시는 *출고 작업 개시 및 지정 실행자의 감독 검토·표적 수리·Git 병합·출고 마감 권한*이다. **검증을 하지 않았는데 콘텐츠 품질 PASS를 받았다는 뜻은 아니다.** 예약 MASTER/CREATE/R1/R2/R3의 권한·기존 품질 책임·Git writer 금지는 변경하지 않는다.
+**적용:** 사용자가 특정 시험지·산출물과 Git `main` 운영병합을 명시해 지정한 감독·출고 담당 Work/Codex/ROOT에게 적용한다. 이는 출고를 **직접 검토·수리·병합할 작업 권한**이지, 내용 미검증을 품질 PASS로 바꾸는 권한이 아니다. 예약 MASTER/CREATE/R1/R2/R3의 Git writer 금지는 그대로다.
 
-1. **상태명은 처리할 일, 독립적인 거부권이 아니다.** `SUPERVISORY_REVIEW_REQUIRED`, `PENDING_SUPERVISOR_DECISION`, `R3_REVIEWED`, `READY_MASTER_DECISION`, `readyForUnattendedMerge=false`, `qualityPass=false`, `NOT_RUN`만을 근거로 사용자 직접 지정한 출고 배치 전체를 `출고 불가` 판정하거나 PR 생성 전에 종료하지 않는다. `readyForUnattendedMerge=false`는 승인 없는 백그라운드 자동 병합을 금지한다. 사용자 명시 지시에 의해 **지정된 감독 실행자가 현재 작업에서 직접 확인·진행하는 병합**은 이것과 구분한다. 플래그를 `true`로 조작하거나 `R3_PASS`를 소급 생성하지 않는다.
-2. **지정 실행자가 감독 결정까지 직접 수납한다.** 각 지정 examUid의 실제 최신 Drive `R3_PACKET.zip`, `R3_HANDOFF.json`, `RELEASE_MANIFEST.json`, 적용 가능한 검증된 MASTER 수정본을 읽고 packet SHA/원격 파일 신원·관련 openQids/실제 결함을 분리한다. 내용 상태가 미완이면 이미 보유한 유효 검수 증거를 재사용하고, **출고에 직접 영향을 주는 특정 미해결 문항·필수 에셋만** 실제 내용·원본·필요한 기술 근거를 확인한다. 직접 해결 가능한 결함은 대상 locus 최소 수정하고 변경 영향만 확인한다. 형식적 2차 감독 GPT 승인장을 기다리거나 책임을 사용자·예약 R3에게 되돌리지 않는다.
-3. **실제 차단은 개별 시험지 단위로만.** 필수 JS/이미지 실물 부재, ZIP 손상/해시 충돌, 원본과 충돌하는 미해결 정답·발문·해설, 필수 Meta/에셋의 실제 결손, 해당 시험지에 필요한 검증을 수행할 수 없는 실질적 장애, 권한·GitHub 플랫폼 거절 등 **구체적 재현 근거**가 있고 승인 범위 안에서 수리·재조회해도 해결하지 못한 시험지만 `CONTENT_OR_ARTIFACT_BLOCKED` / `ACCESS_BLOCKED` / `GIT_MERGE_BLOCKED_PLATFORM`로 분리한다. 확인하지 않은 항목은 `NOT_VERIFIED`로 남기며 PASS를 위조하지 않는다. 하나가 막혀도 독립적인 나머지 시험지의 작업 브랜치·PR·main 병합은 계속한다.
-4. **실행 순서와 완료 조건:** 지정 examUid 화이트리스트 → 최신 Google Drive 실물/기존 Git `main`의 동일 artifact revision 중복 확인 → 필요한 표적 결함만 수정 → production JS/필수 자산 배치 → PR 생성 및 GitHub가 허용하는 실제 병합 시도(CI 대기 금지) → **원격 main SHA+파일 blob SHA 확인** → 사용자가 Drive 출고 마감도 지시한 경우 같은 회차에 **같은 packet SHA revision**만 Google Drive `DONE` 마킹 및 PR/main SHA·시각·blob SHA 원격 재조회. 이미 main에 정확히 존재하면 중복 커밋 없이 동일 revision 확인 후 DONE closeout. 표시 실패 시 `GIT_MAIN_MERGED/MARK_PENDING`으로 기록하고 Git 병합을 반복하지 않는다. 다른 시험지·공통 코드·예약·CI 수리로 확대 금지.
-5. **상태의 진실값을 축별로 유지:** `R3_REVIEWED`는 인계, `qualityPass`는 실제 품질 증거, `GIT_MAIN_MERGED`는 Git 원격 파일 존재, `Drive DONE`은 지정된 **Git 병합 출고함 closeout**, `PUBLISHED_VERIFIED`는 요청되고 실제 확인한 학생 배포다. 사용자가 `main 병합만` 요청한 경우 Drive DONE receipt에 `closeoutScope=MAIN_MERGE_ONLY`, `ciStatus=CI_DEFERRED` 또는 실제 결과, `studentDeploymentStatus=NOT_VERIFIED`를 보존한다. Drive의 기존 `MAIN_DONE`/전면 출시 품질 인증을 근거 없이 주장하지 않는다.
-6. **반례/정상 동작:** (A) 19건 전부 `SUPERVISORY_REVIEW_REQUIRED` 또는 `PENDING_SUPERVISOR_DECISION`만 존재 ⇒ 0건 PR로 중단하지 말고 실제 packet 검토 및 병합 진행. (B) 1건의 근거 있는 qid·ZIP 결함 ⇒ 해당 건만 최소 수리/개별 제외, 나머지 진행. (C) CI FAIL/pending ⇒ 병합 시도, CI 후속 분리. (D) GitHub ruleset이 실제 거절 ⇒ 오류·PR 보존, 강제 우회 금지. (E) 기존 main 같은 revision ⇒ 중복 push 없이 DONE 마감. (F) 예전 DONE과 새로운 SHA ⇒ 새로운 revision만 PENDING; 기존 Git 완료를 새 판 승인으로 승계 금지.
+1. `SUPERVISORY_REVIEW_REQUIRED`, `R3_REVIEWED`, `readyForUnattendedMerge=false`, `NOT_RUN` 등의 **상태값 하나만으로 전체 지정 배치를 중단하지 않는다.** 무인 자동병합을 허용한다는 뜻도 아니다. 사용자 지정 감독자는 최신 패킷·SHA와 기존 유효 증거를 확인하고 미해결 QID/필수 자산만 최소 수리·영향 재검한다.
+2. 실제 내용·asset·ZIP·권한 결함이 해결되지 않은 **그 시험지 한 건**만 원인과 `firstMissingStep`로 분리하고, 정상인 나머지는 PR/main 병합을 진행한다. 품질 PASS·미실행 검증·자동 출시를 위조하지 않는다.
+3. 지정된 production JS·필수 자산 화이트리스트만 GitHub의 허용된 PR 경로로 병합을 시도한다. 완료 증거는 **원격 main SHA·대상 파일 blob readback**이다. CI pending/fail/not_run을 출고 선행조건으로 추가하지 않으며 실제 보호규칙 거절은 우회하지 않는다. 등록·검색·학생 배포 성공을 주장하지 않는다.
+4. **HIGH_DYNAMIC 전용 추가 작업**은 [HIGH_DYNAMIC R3 허브·구 Library 이력](https://app.notion.com/p/4010e68bd69f81d59c1bfcfe27089474)의 Google Drive `PENDING→main→DONE`이다. 사용자가 Drive DONE까지 지시한 경우에만 **같은 검증된 revision/SHA**를 마킹·원격 확인한다. 다른 캠페인 출고에는 이 단계가 자동 부여되지 않는다. 해당 감독 출고 원문은 [HISTORY](https://app.notion.com/p/4010e68bd69f81a6b4c6cb8a32b2f49a)에 보존했다.
 
-이 절은 아래 기존 MAIN_FIRST·CI_DEFERRED·품질 증거·GitHub 보호 규칙과 함께 적용하되, **출고 상태명만 이유로 '감독자 승인 없음 → 전체 중단'하는 옛 해석보다 우선**한다. 단지 사용자 지시가 존재한다는 이유로 확인된 실제 결함이나 미수행 검증을 PASS로 바꾸지 않는다.
+[Notion 02-07 운영병합 라우트](https://app.notion.com/p/4010e68bd69f813f80bce486f1cc364b)는 작업별 첫 정본을 선택하는 목차이며, 병합 실행 계약과 상태 판정의 단일 정본은 **이 파일**이다.
 
 - 제정: 2026-10-18 KST, 사용자 직접 지시
 - 적용: 사용자가 **Git main 반영/운영병합**을 명시한 Archive 시험지·이미지·정해진 산출물의 출판 담당 GPT Work, Codex, ROOT, 기술 병합 워커
