@@ -312,7 +312,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 조건부확률은 조건에 해당하는 전체 경우와 그중 원하는 경우를 구분한다.\n조건 정리: 점심에 한식을 선택한 비율은 $0.4$, 점심에 양식을 선택한 비율은 $0.6$이다. 점심 한식 학생이 저녁 양식을 선택할 확률은 $0.4$이다.\n풀이 방향: 저녁 양식을 선택한 학생 중 점심 한식을 선택한 학생의 비율을 구한다.\n정석 풀이: 점심 양식이면서 저녁 양식인 비율은 $0.6\\cdot0.3=0.18$이다. 점심 한식이면서 저녁 양식인 비율은 $0.4\\cdot0.4=0.16$이다. 따라서 저녁 양식 전체 비율은 $0.18+0.16=0.34$이다. 구하는 조건부확률은 $\\dfrac{0.16}{0.34}=\\dfrac{16}{34}=\\dfrac{8}{17}$이다. 그러므로 $p=17$, $q=8$이고 $p+q=25$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -539,7 +539,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 전체 공의 개수가 $10$개가 되는 경우를 먼저 제한하고, 그중 흰 공이 $7$개인 경우를 찾는다.\n조건 정리: 카드 $1$이 나올 확률은 $\\dfrac{1}{4}$이고 흰 공 $1$개를 넣는다. 카드 $2$ 또는 $3$이 나올 확률은 $\\dfrac{1}{2}$이고 흰 공 $1$개와 검은 공 $1$개를 넣는다. 카드 $4$가 나올 확률은 $\\dfrac{1}{4}$이고 흰 공 $2$개와 검은 공 $1$개를 넣는다.\n풀이 방향: $5$번 시행에서 세 범주가 나온 횟수를 두어 전체 공의 개수가 $10$개가 되는 경우를 찾고, 각 경우의 다항확률을 계산한다.\n정석 풀이: 카드 $1$이 나온 횟수를 $n_1$, 카드 $2$ 또는 $3$이 나온 횟수를 $n_2$, 카드 $4$가 나온 횟수를 $n_4$라 하자. 시행 횟수에서 $n_1+n_2+n_4=5$이고, 전체 공의 개수에서 $n_1+2n_2+3n_4=10$이다. 두 식을 빼면 $n_2+2n_4=5$이므로 가능한 경우는 $(n_1,n_2,n_4)=(0,5,0),(1,3,1),(2,1,2)$이다. 각 경우의 확률은 차례로 $\\left(\\dfrac{1}{2}\\right)^5=\\dfrac{1}{32}$, $\\dfrac{5!}{1!3!1!}\\left(\\dfrac{1}{4}\\right)\\left(\\dfrac{1}{2}\\right)^3\\left(\\dfrac{1}{4}\\right)=\\dfrac{5}{32}$, $\\dfrac{5!}{2!1!2!}\\left(\\dfrac{1}{4}\\right)^2\\left(\\dfrac{1}{2}\\right)\\left(\\dfrac{1}{4}\\right)^2=\\dfrac{15}{256}$이다. 따라서 상자 $B$의 공이 $10$개일 확률은 $\\dfrac{1}{32}+\\dfrac{5}{32}+\\dfrac{15}{256}=\\dfrac{63}{256}$이다. 한편 흰 공의 개수는 $n_1+n_2+2n_4=(n_1+n_2+n_4)+n_4=5+n_4$이므로 흰 공이 $7$개이려면 $n_4=2$이어야 한다. 이는 $(n_1,n_2,n_4)=(2,1,2)$인 경우이며 그 확률은 $\\dfrac{15}{256}$이다. 그러므로 구하는 조건부확률은 $\\dfrac{15/256}{63/256}=\\dfrac{5}{21}$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
