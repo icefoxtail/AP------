@@ -1,4 +1,16 @@
-# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v1.6)
+# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v1.7)
+
+## TOP OVERRIDE — MICRO-TASK CLOSEOUT / THREE-LINE REPORT (2026-10-22)
+
+**사용자 최신 운영 지시: 길게 연결한 한 건의 일이 아니라, 증거로 닫을 수 있는 목표 1개를 독립 작업 단위로 수행한다.** 목표 작업 크기는 짧은 실행(통상 5~10분 수준)이며, 시간 초과가 예상되면 완수한 단위를 즉시 마감하고 남은 단계는 새로운 작업 단위로 인계한다. 기존 성과를 되돌리거나 검증 사실을 허위로 쓰지 않는다.
+
+1. **한 단위, 하나의 완료 조건:** (A) Git PR 병합+대상 원격 SHA, (B) 대상 시험지/UID 카탈로그·검색 실측, (C) 실제 불일치만 핀포인트 수리+직접 영향 검사, (D) Notion/AWCR 체크리스트 마감처럼 분할. 미해결 B~D 때문에 이미 증명된 A를 다시 열지 않는다. 사용자가 여러 단위 모두 완료를 명시했으면 가능한 범위에서 연속 진행하되 **각 단위의 독립 완료 증거를 먼저 확정**하고 다음으로 간다.
+2. **병합과 품질 승인을 구분:** Git 머지 커밋/원격 main의 대상 blob이 확인되면 `MAIN_DONE`(Git 반영 완료)을 별도 확정한다. 실제 Consumer/Search·정적 QA·Notion 기록 미확인은 `SEARCH_PENDING`/`FINAL_QA_PENDING`/`RECORD_PENDING`으로 유지한다. 이는 이전 성공한 main 반영을 취소하지 않지만 `FINAL_QA_DONE` 또는 전체 출고 PASS를 뜻하지 않는다. 병합 전에 발견된 치명적 오류는 별도 OPEN으로 명확히 기록하며 부가 CI를 무조건 무시하라는 뜻이 아니다.
+3. **CI/Actions 조회 상한:** 현재 작업 직접 관련 실패가 있으면 실패 원인 조회는 **기본 1회**만. 동일 run/status 무한 polling, 무관한 CI 우회 수리, 이전 PR 로그 반복 읽기 금지. 결과가 안 나왔으면 `CI_UNVERIFIED` 또는 `CI_FAILED`와 정확한 run URL·다음 조치만 기록하고, 이미 완료한 단위의 결과를 별도로 보고한다. 알려진 직접 관련 HARD FAIL을 PASS로 바꾸지 않는다.
+4. **탐색/문서 예산:** 현재 source exact path·해당 영수증/Notion 체크리스트에서 시작. 기존 v1.6의 큰 JSON 금지, 검색 상한, VERIFIED-SKIP/DELTA-ONLY 그대로. 동일 SHA/로그/파일 재열람 금지(최종 원격 readback만 예외). 기록은 해당 시험지 현재 체크리스트 한 군데와 안전한 최소 AWCR 메타만 갱신한다. AWCR 저장 실패가 Git 병합 사실을 무효화하지는 않으나 `SYNC_PENDING`을 반드시 기록.
+5. **3줄 즉시 보고 (매 작업 단위):** `완료: <실제 작업+SHA/증거>` / `미완료: <남은 일 또는 없음>` / `다음: <firstMissingStep 1개>`. 기존 성과를 다시 전수 검토하는 새 미션 금지. 보고가 길어질 사유가 있으면 해당 3줄에 짧은 링크/상태만 붙인다.
+6. **적용 범위:** 사후 FINAL QA·메타 출고/검증과 기존 main 대상 핀포인트 작업. 신규 CREATE/R1/R2/R3의 독립 블라인드 검수·최초 품질 의무는 변경하지 않고, 그 예약 구성이나 Gemini 라인은 이번 문서로 자동 수정하지 않는다.
+
 
 ## CURRENT HARD — BOUNDED ROUTE / TIMEOUT-STOP / EFFECTIVE CONSUMER (2026-10-22)
 
