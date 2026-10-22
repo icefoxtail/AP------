@@ -4,12 +4,10 @@
 - 캠페인 스케줄·NEW14/HIGH_DYNAMIC·ALIVE·M3 등 개별 품질·인계·예외·현황의 수정은 **각 캠페인/역할 문서에서만** 수행한다. 범용 필독 라우터에는 프로젝트별 작업 이력·PR·ON/OFF·시간표를 추가하지 않는다. 신규 CREATE/R1/R2/R3의 최초 수학·블라인드·검수 증거 품질은 유지한다.
 - GPT **사후 FINAL QA**는 [단일 실행 카드 v2.0](docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md)부터 읽고 열린 결함만 최소 수리 → 필요 시 시험지별 소형 등록 요청 → main 병합/대상 blob readback으로 종료. 후속 자동 DB/index/검색·Pages는 Git Actions 책임. Actions PASS를 근거 없이 선언하지 않고, 후속 CI poll은 GPT 종료조건에서 제외한다.
 
-## CURRENT TOP — 메타 공용 조회 / 시험지별 소형 JSON 수정 원칙 (2026-10-21, 사용자 지시)
+## CURRENT TOP — 메타 계약은 정확한 업무 정본으로 이동 (2026-10-22)
 
-- **읽기:** `archive/data/question_metadata.json`은 기존 UID 메타 조회/대조·검색에 사용하고 해당 시험지 N개만 필터한다. 실질적인 의미 정본은 최신 ACTIVE registry/RPM/bindings를 확인한다.
-- **쓰기:** GPT·Gemini·Codex·검수/제작 워커는 메타 수정사항을 **시험지별 소형 JSON/stage-local 메타 패킷**에만 기록하며, 55MB급 공용 집계 파일을 직접 편집·업로드·수동 commit하지 않는다. 인가된 단일 GitHub Actions 등록기만 공용 메타/런타임/검색 파생 파일을 갱신한다.
-- **완료:** 소형 JSON 제출만으로 완료가 아니다. 공용 sidecar+실제 Consumer/Search UID parity+main readback이 필수. 현재 등록기는 일부 공통수학2/REVIEW2 하드코딩이 있으므로 미지원 과목은 TOOLING_GAP으로 밝히고 대형 JSON 업로드로 우회하지 않는다. 기존 예약 워커 Git writer 금지·품질 검수 의무 불변.
-- **단일 상세 정책:** [시험지별 소형 JSON 메타 쓰기 계약](docs/architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md). 사후 FINAL QA는 단일 Git 실행카드 1곳 선열람을 기본으로 하며 이 링크는 예외·구현 상세 참고로만 사용.
+- [Notion 02-06 메타데이터 라우트](https://app.notion.com/p/4010e68bd69f81588ea0cc325bbe51cb)에서 **의미 판정**과 **공용 조회/소형 JSON 쓰기** 및 **Git 자동 등록 기술 담당**을 구분한다. 실질적 규칙은 [의미 메타 정본](docs/architecture/JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md), [소형 JSON 쓰기 정본](docs/architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md)에 한 번만 둔다. 기존 역할별 검수·Golden·Blind 의무는 유지한다.
+- 공용 대형 메타는 조회용이며 작업자는 시험지 소형 JSON/stage-local 패킷만 수정한다. 병합 후 등록·Consumer/Search parity는 Git 자동화/기술 소유 범위다. GPT 사후 FINAL QA의 종료는 [v2.0 카드](docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md)대로 Git main/대상 blob 확인까지이며, PT/TPL 신규 검사 제외·후속 CI/Pages 수동 폴링 제외를 지킨다. 자동화 검증을 수행하지 않았으면 `PIPELINE_PASS`라고 주장하지 않는다.
 
 ## CURRENT TOP — 사용자 지정 시험지 출고: 상태값만으로 전건 보류 금지 (2026-10-19)
 
