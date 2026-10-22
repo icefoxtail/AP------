@@ -86,8 +86,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 양 끝에 올 두 카드가 모두 짝수이면 된다.\n조건 정리: $1$부터 $7$까지의 수 중 짝수는 $2,4,6$으로 $3$개이다.\n풀이 방향: 왼쪽 끝에 짝수가 올 확률과, 그다음 오른쪽 끝에도 짝수가 올 조건부확률을 곱한다.\n정석 풀이: 첫 번째 끝자리에 짝수가 올 확률은 $\\dfrac{3}{7}$이다. 짝수 하나가 이미 사용되었으므로 남은 $6$장 중 짝수는 $2$장이고, 반대쪽 끝에 짝수가 올 확률은 $\\dfrac{2}{6}$이다. 따라서 구하는 확률은 $\\dfrac{3}{7}\\times\\dfrac{2}{6}=\\dfrac{1}{7}$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "H15-PS-03-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+    "subUnit": "확률의 뜻과 활용",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -117,7 +117,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 조건부확률은 $P(B\\mid A)=\\dfrac{P(A\\cap B)}{P(A)}$로 구한다.\n조건 정리: $P(A)=\\dfrac{7}{12}$, $P(A\\cap B)=\\dfrac{1}{4}$이다.\n풀이 방향: $A$가 일어난 조건에서 $B$가 일어날 확률이므로 교집합 확률을 $P(A)$로 나눈다.\n정석 풀이: $P(B\\mid A)=\\dfrac{P(A\\cap B)}{P(A)}=\\dfrac{\\dfrac{1}{4}}{\\dfrac{7}{12}}=\\dfrac{1}{4}\\times\\dfrac{12}{7}=\\dfrac{3}{7}$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -199,7 +199,7 @@ window.questionBank = [
       "기출"
     ],
     "wide": false,
-    "content": "$1$부터 $6$까지의 숫자가 각각 적힌 정육면체 모양의 주사위 2개를 동시에 던지는 시행에서, 나온 두 수가 같을 확률을 $a$, 나온 두 수의 합이 $1$일 확률을 $b$, 나온 두 수의 차가 $0$ 이상일 확률을 $c$라고 하자. 다음 중 $a, b, c$의 대소를 바르게 비교한 것은? (4.0점)",
+    "content": "$1$부터 $6$까지의 숫자가 각각 적힌 서로 구별되는 정육면체 모양의 주사위 A, B를 동시에 던지는 시행에서, 나온 두 수가 같을 확률을 $a$, 나온 두 수의 합이 $1$일 확률을 $b$, 주사위 A의 눈에서 주사위 B의 눈을 뺀 값이 $0$ 이상일 확률을 $c$라고 하자. 다음 중 $a, b, c$의 대소를 바르게 비교한 것은? (4.0점)",
     "choices": [
       "$a\\lt b\\lt c$",
       "$a\\lt c\\lt b$",
@@ -241,7 +241,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 남학생이라는 조건이 주어졌으므로 남학생 전체를 기준으로 확률을 구한다.\n조건 정리: 남학생은 $28$명이고, 그중 애견 미용 체험을 한 남학생은 $8$명이다.\n풀이 방향: 조건부확률이므로 분모를 전체 학생 $50$명이 아니라 남학생 $28$명으로 잡는다.\n정석 풀이: 임의로 택한 학생이 남학생일 때, 그 학생이 애견 미용 체험을 한 확률은 $\\dfrac{8}{28}=\\dfrac{2}{7}$이다.\n따라서 정답은 ①이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -331,7 +331,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 확률의 덧셈정리와 곱셈정리를 정확히 구분하여 보기별로 판정한다.\n조건 정리: 각 보기의 명제가 항상 옳은지 확인해야 한다.\n풀이 방향: ㄱ, ㄴ, ㄷ을 각각 확률 공식과 배반사건의 정의로 판정한다.\n정석 풀이: ㄱ에서 $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$이므로 $P(A)+P(B)=1$이라고 해서 항상 $P(A\\cup B)=1$이 되는 것은 아니다. 따라서 ㄱ은 거짓이다. ㄴ에서 만약 $A$와 $B$가 서로 배반이면 $P(A\\cup B)=P(A)+P(B)=\\dfrac{1}{2}+\\dfrac{2}{3}=\\dfrac{7}{6}$이 되어 확률이 $1$을 넘으므로 불가능하다. 따라서 $A$와 $B$는 서로 배반이 아니며 ㄴ은 참이다. ㄷ은 확률의 곱셈정리 $P(A\\cap B)=P(A)P(B\\mid A)$이므로 참이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -481,7 +481,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 1학년 학생 수를 미지수로 두고 조건부확률 식을 세운다.\n조건 정리: 보건실 방문 학생은 총 $80$명이고, 1학년 남학생 비율은 $60\\%$, 2학년 남학생 비율은 $70\\%$이다. 남학생 중 1학년일 확률은 $72\\%$이다.\n풀이 방향: 1학년 학생 수를 $x$명으로 두면 2학년은 $80-x$명이다. 남학생 수를 각각 $x$로 표현한 뒤 조건부확률을 이용한다.\n정석 풀이: 1학년 학생 수를 $x$명이라 하면 1학년 남학생 수는 $0.6x$명이다. 2학년 학생 수는 $80-x$명이므로 2학년 남학생 수는 $0.7(80-x)$명이다. 남학생 중 1학년일 확률이 $72\\%=0.72$이므로 $\\dfrac{0.6x}{0.6x+0.7(80-x)}=0.72$이다. 분모를 정리하면 $0.6x+56-0.7x=56-0.1x$이므로 $0.6x=0.72(56-0.1x)$이다. 따라서 $0.6x=40.32-0.072x$, $0.672x=40.32$이므로 $x=60$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -511,7 +511,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 전체확률의 법칙으로 $P(B)$를 구한 뒤, 조건부확률로 $P(A\\mid B)$를 구한다.\n조건 정리: $P(A)=\\dfrac{3}{10}$이므로 $P(A^C)=\\dfrac{7}{10}$이다. 또 $P(B\\mid A)=\\dfrac{2}{3}$, $P(B\\mid A^C)=\\dfrac{4}{7}$이다.\n풀이 방향: 사건 $B$는 $A$가 일어난 경우와 $A^C$가 일어난 경우로 나누어 계산한다.\n정석 풀이: 전체확률의 법칙에 의해 $P(B)=P(A)P(B\\mid A)+P(A^C)P(B\\mid A^C)$이다. 따라서 $P(B)=\\dfrac{3}{10}\\times\\dfrac{2}{3}+\\dfrac{7}{10}\\times\\dfrac{4}{7}=\\dfrac{1}{5}+\\dfrac{2}{5}=\\dfrac{3}{5}$이다. 또한 $P(A\\cap B)=P(A)P(B\\mid A)=\\dfrac{3}{10}\\times\\dfrac{2}{3}=\\dfrac{1}{5}$이다. 그러므로 $P(A\\mid B)=\\dfrac{P(A\\cap B)}{P(B)}=\\dfrac{\\dfrac{1}{5}}{\\dfrac{3}{5}}=\\dfrac{1}{3}$이다. 따라서 $P(B)+P(A\\mid B)=\\dfrac{3}{5}+\\dfrac{1}{3}=\\dfrac{9}{15}+\\dfrac{5}{15}=\\dfrac{14}{15}$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -541,7 +541,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 비가 오는 경우와 오지 않는 경우로 나누어 전체확률을 구한다.\n조건 정리: 비가 올 확률은 $\\dfrac{3}{10}$, 비가 오지 않을 확률은 $\\dfrac{7}{10}$이다.\n풀이 방향: 이기는 사건을 비가 오는 경우와 비가 오지 않는 경우로 나누어 더한다.\n정석 풀이: 구하는 확률은 $P(비)P(승리\\mid 비)+P(비^C)P(승리\\mid 비^C)$이다. 따라서 $\\dfrac{3}{10}\\times\\dfrac{1}{3}+\\dfrac{7}{10}\\times\\dfrac{2}{7}=\\dfrac{1}{10}+\\dfrac{1}{5}=\\dfrac{3}{10}$이다.\n따라서 정답은 ⑤이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -616,7 +616,7 @@ window.questionBank = [
     "answer": "(1) $\\dfrac{1}{6}$, (2) $\\dfrac{5}{6}$, (3) $\\dfrac{8}{15}$, (4) $\\dfrac{3}{8}$",
     "solution": "[키포인트] 먼저 곱셈정리로 $P(A\\cap B)$를 구한 뒤, 이를 이용하여 합사건과 조건부확률을 차례로 구한다.\n조건 정리: $P(A)=\\dfrac{5}{9}$, $P(B)=\\dfrac{4}{9}$, $P(B\\mid A)=\\dfrac{3}{10}$이다.\n풀이 방향: (1)에서 구한 $P(A\\cap B)$가 이후 계산의 기준값이 된다.\n정석 풀이: (1) 곱셈정리에 의해 $P(A\\cap B)=P(A)P(B\\mid A)=\\dfrac{5}{9}\\times\\dfrac{3}{10}=\\dfrac{1}{6}$이다. (2) 덧셈정리에 의해 $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)=\\dfrac{5}{9}+\\dfrac{4}{9}-\\dfrac{1}{6}=1-\\dfrac{1}{6}=\\dfrac{5}{6}$이다. (3) 사건 $B$는 $A\\cup B$에 포함되므로 $P(B\\mid A\\cup B)=\\dfrac{P(B)}{P(A\\cup B)}=\\dfrac{\\dfrac{4}{9}}{\\dfrac{5}{6}}=\\dfrac{8}{15}$이다. (4) $B^C\\cap A^C=(A\\cup B)^C$이므로 $P(B^C\\cap A^C)=1-P(A\\cup B)=1-\\dfrac{5}{6}=\\dfrac{1}{6}$이다. 또 $P(A^C)=1-P(A)=\\dfrac{4}{9}$이다. 따라서 $P(B^C\\mid A^C)=\\dfrac{P(B^C\\cap A^C)}{P(A^C)}=\\dfrac{\\dfrac{1}{6}}{\\dfrac{4}{9}}=\\dfrac{3}{8}$이다.\n따라서 (1) $\\dfrac{1}{6}$, (2) $\\dfrac{5}{6}$, (3) $\\dfrac{8}{15}$, (4) $\\dfrac{3}{8}$이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -641,7 +641,7 @@ window.questionBank = [
     "answer": "(1) $\\dfrac{1}{9}$, (2) $\\dfrac{4}{9}$, (3) $\\dfrac{1}{4}$",
     "solution": "[키포인트] 첫 번째 공의 색에 따라 두 번째 시행의 주머니가 달라지므로 경우를 나누어 계산한다.\n조건 정리: 빨간 주머니에는 흰 공 $1$개와 검은 공 $2$개가 있고, 파란 주머니에는 흰 공 $2$개와 검은 공 $1$개가 있다.\n풀이 방향: 첫 번째에 흰 공이 나오는 경우와 검은 공이 나오는 경우를 나누어 두 번째 공의 색을 계산한다.\n정석 풀이: (1) 첫 번째에 빨간 주머니에서 흰 공이 나올 확률은 $\\dfrac{1}{3}$이다. 이때 파란 주머니에서 검은 공이 나올 확률은 $\\dfrac{1}{3}$이므로 확률은 $\\dfrac{1}{3}\\times\\dfrac{1}{3}=\\dfrac{1}{9}$이다. (2) 두 번째에 검은 공이 나오는 경우는 첫 번째가 흰 공인 경우와 첫 번째가 검은 공인 경우로 나눈다. 첫 번째가 흰 공이고 두 번째가 검은 공일 확률은 $\\dfrac{1}{9}$이다. 첫 번째가 검은 공이면 그 검은 공을 다시 넣지 않고 빨간 주머니에서 다시 꺼내므로, 남은 빨간 주머니에는 흰 공 $1$개와 검은 공 $1$개가 있다. 이 경우 두 번째에 검은 공이 나올 확률은 $\\dfrac{2}{3}\\times\\dfrac{1}{2}=\\dfrac{1}{3}$이다. 따라서 두 번째에 검은 공이 나올 확률은 $\\dfrac{1}{9}+\\dfrac{1}{3}=\\dfrac{4}{9}$이다. (3) 구하는 확률은 $\\dfrac{P(첫 번째 흰 공, 두 번째 검은 공)}{P(두 번째 검은 공)}=\\dfrac{\\dfrac{1}{9}}{\\dfrac{4}{9}}=\\dfrac{1}{4}$이다.\n따라서 (1) $\\dfrac{1}{9}$, (2) $\\dfrac{4}{9}$, (3) $\\dfrac{1}{4}$이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }
