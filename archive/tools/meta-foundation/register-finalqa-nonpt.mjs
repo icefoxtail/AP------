@@ -60,6 +60,18 @@ export function registerFinalqaNonpt({root,request:req,write=false,verifyProject
   }else if(sha1blob(metadataBytes)!==req.expectedMetadataBlobSha1){
     fail("stale-before metadata blob (regenerate small request from current main)");
   }
+  // NonPT semantic enrichment is intentionally richer than unchanged student JS fields.
+  // Every additional CC/Condition key must already be ACTIVE; no new keys or PT/TPL.
+  const expectedCC = [...new Set(candidate.records.flatMap(r=>r.after?.crossConceptKeys||[]))];
+  const expectedConditions = [...new Set(candidate.records.flatMap(r=>r.after?.conditionKeys||[]))];
+  if(expectedCC.length||expectedConditions.length){
+    const cc = read(root,"archive/data/meta-foundation/compiled/concept_registry.json").concepts||[];
+    const cond = read(root,"archive/data/meta-foundation/compiled/condition_registry.json").conditions||[];
+    const activeCC = new Set(cc.filter(r=>r.status==="ACTIVE").map(r=>r.conceptKey));
+    const activeCond = new Set(cond.filter(r=>r.status==="ACTIVE").map(r=>r.conditionKey));
+    if(expectedCC.some(k=>!activeCC.has(k))||expectedConditions.some(k=>!activeCond.has(k)))
+      fail("nonPT CC or Condition is not ACTIVE");
+  }
   const uniqueUids=new Set();
   const fields=["L1","L2","L3","L4","level","difficultyBucket","crossConceptKeys","conditionKeys","integrationPattern"];
   for(let i=0;i<21;i++){
@@ -76,9 +88,9 @@ export function registerFinalqaNonpt({root,request:req,write=false,verifyProject
        item.after.difficultyBucket!==q.difficultyBucket||
        !String(item.after.L1||"").trim()||!String(item.after.L2||"").trim()||
        !String(item.after.L3||"").trim()||!String(item.after.L4||"").trim()||
-       !same(item.after.crossConceptKeys,q.crossConceptKeys||[])||
-       !same(item.after.conditionKeys,q.conditionKeys||[])||
-       !same(item.after.integrationPattern,q.integrationPattern||"NONE"))
+       !Array.isArray(item.after.crossConceptKeys)||
+       !Array.isArray(item.after.conditionKeys)||
+       !["NONE","SEQUENTIAL","INTERDEPENDENT"].includes(item.after.integrationPattern))
        fail("nonPT candidate/source mismatch #"+n);
     if(item.rpmPrimaryRecordIds?.length===0 && n!==3)fail("RPM no-path unexpectedly beyond q03");
     if(n===3&&(item.after.L3!=="함수의 정의역"||item.after.L4!=="분모의 영점 제외와 구간 표현"||
