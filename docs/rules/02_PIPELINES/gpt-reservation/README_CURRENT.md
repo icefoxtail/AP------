@@ -12,27 +12,15 @@
 예약 CREATE/R1/R2/R3/MASTER는 기존 분모·Meta 의미 검수는 계속하되, **메타 수정 산출물은 대상 시험지 소형 JSON/stage-local 패킷만 기록**한다. 전체 `question_metadata.json`는 UID 기준 조회·대조·검색용이고 직접 편집/업로드 금지. 인가된 출고 writer만 소형 승인 요청을 Git 등록기로 전송한다. 자동등록 미지원 과목은 `TOOLING_GAP`을 남겨 승인된 수리 담당에 인계하며 대형 직접 업로드 또는 REVIEW2 허위 승인 금지. [상세 계약](../../../architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md). 이 문서 반영은 기존 예약 프롬프트를 자동 수정하지 않으며 기존 Library/Drive stage 경로 및 Git writer 권한은 그대로다.
 
 
-## CURRENT v1.0.2 — HIGH_DYNAMIC 출고 허브 정본 Google Drive 전환 (2026-10-19)
+## R3 캠페인 전용 출고 허브 — HIGH_DYNAMIC 문서 링크 (2026-10-22)
 
-사용자 명시 변경: HIGH_DYNAMIC R3의 내부 Library stage 결과는 그대로 보존하고, **R3 후속 출고 허브 사본만** [Google Drive RELEASE_HUB](https://drive.google.com/drive/folders/1DQigbs29hiuvwxbS-6i7w6hK6iziNk57)의 PENDING에 저장·원격 재조회한다. 기존 `/Archive2-GPT/RELEASE_HUB/` ChatGPT Library는 과거 사본으로 동결한다. 실제 승인 출고 담당 Work/Codex가 Drive PENDING→Git main→Drive DONE 마킹과 증거 기록까지 완료해야 종료. 예약 R3 기존 :36/ON, 다른 4개 예약 시간·ON·프롬프트 및 Git writer 권한 불변. [R3_CURRENT.md](R3_CURRENT.md)의 v1.0.2 override가 이전 v1.0.1 Library 출고 절보다 우선한다. 이전 원본 증거/품질 검수·Meta/Golden·미해결 qid/ROUTED≠PASS는 그대로 적용한다.
-
-
-status: CURRENT / CANONICAL COPY SOURCE / 모든 신규·재설정 Archive GPT 예약 공통
-version: 1.0.1
-released: 2026-10-18
-canonicalRoot: docs/rules/02_PIPELINES/gpt-reservation/
-scope: GPT Scheduled / MASTER, CREATE, R1, R2, R3 / 신규 캠페인·기존 예약의 명시적 업그레이드
-policyBoundary: 기존 사용자 최신 명시 지시 및 Git/Notion CURRENT 품질 정본 우선
-operationalBoundary: 문서 저장 ≠ 실제 예약 프롬프트 갱신 ≠ 검사 실행 ≠ main 출고
+- `HIGH_DYNAMIC_INTAKE_20261017` R3의 Google Drive RELEASE_HUB PENDING·DONE·MIGRATION_LOG, 구 ChatGPT Library 허브의 2026-10-18 v1.0.1 이력과 해당 일정·예외는 **[HIGH_DYNAMIC R3 캠페인 전용 Notion 문서](https://app.notion.com/p/4010e68bd69f81d59c1bfcfe27089474)**가 소유합니다. 해당 R3 담당자만 실제 캠페인 manifest/예약/Drive revision과 함께 확인합니다.
+- 예약 R3 일반 수학·해설·Meta·Golden/Visual/기술검증 및 감독 인계는 [R3_CURRENT.md](R3_CURRENT.md)의 §1~§5가 소유합니다. R3는 Git writer가 아니며 일반 예약의 출고 허브 복제 의무를 HIGH_DYNAMIC과 혼동하지 않습니다. 문서 변경이 기존 예약 설정을 자동 변경하지 않습니다.
 
 ## R1 캠페인 전용 예외 링크 (2026-10-22 정리)
 
 - `HIGH_DYNAMIC_INTAKE_20261017`만의 R1 연속 수납·freeze 저장 실패 복구·당시 예약 시간·진행 사건은 **[HIGH_DYNAMIC R1 전용 Notion 문서](https://app.notion.com/p/4010e68bd69f8187a27dc8d0c88b34d5)**가 소유한다. 해당 캠페인에서만 실제 예약 프롬프트/manifest·Library 증거를 대조해 적용한다. 다른 캠페인에 그 예외를 일반 규칙처럼 확대하지 않는다.
 - 모든 R1의 공통 품질 계약(원본/source-only 독립 풀이→물리 freeze→stored 답 비교·학생 해설/정밀 Meta·Golden 확인→R2 인계)은 [R1_CURRENT.md](R1_CURRENT.md)가 소유한다. 이 문서 정리는 현재 활성 예약의 물리 프롬프트·일정·ON/OFF 변경을 뜻하지 않는다.
-
-## CURRENT 추가 — 2026-10-18 R3 통합 출고 허브
-
-HIGH_DYNAMIC R3 종료 후 실제 Library `/Archive2-GPT/RELEASE_HUB/PENDING/<examUid>/` 패킷·인계 영수증·RELEASE_MANIFEST.json 자동 등록은 [R3_CURRENT.md §6](R3_CURRENT.md)의 책임이다. 메인 병합은 별도 감독 GPT/기술 출고 담당, R3의 Git writer 권한 없음. 인덱스는 snapshot이고 시험지별 현물 manifest가 기준이며 R3_REVIEWED≠R3_PASS·DONE이다. 다른 캠페인/예약 ON·RRULE는 자동 확대/변경하지 않는다.
 
 ## 0. 이 문서는 모든 GPT가 예약라인을 개설하거나 수정할 때 찾아야 할 첫 번째 공용 정본이다
 
@@ -115,7 +103,3 @@ HIGH_DYNAMIC R3 종료 후 실제 Library `/Archive2-GPT/RELEASE_HUB/PENDING/<ex
 - 최신 적용 정본과 충돌하는 레거시 문구는 상단 변경이 명확히 우선하도록 표시하되, 과거 캠페인의 자료/완료 증거/manifest/예약을 무단 삭제·변경하지 않는다.
 - Git 문서 병합 후 노션 Skill/라우터가 새 **Git main URL과 버전**을 가리키는지 검증한다. 이미 실행 중인 예약은 자동 갱신되는 게 아니다. 사용자가 허용한 예약만 개별 prompt 수정→actual automation readback→첫 실행 실증거 검사한다.
 - “완벽하다”거나 실제 실험 검증 없이 PASS라고 보고하지 않는다. 미래의 문서/예약 편집이나 주기적인 개선은 그때 도구·권한·명시 지시가 있을 때 실행한다.
-
-
-### R3 통합 출고 허브 (2026-10-18, v1.0.1)
-- 사용자 승인 HIGH_DYNAMIC 예약에 대해 R3 역할 종료의 **추가 Library 인계 단계**로 `/Archive2-GPT/RELEASE_HUB/PENDING/<examUid>/`에 물리 `R3_PACKET.zip` + `R3_HANDOFF.json` + `RELEASE_MANIFEST.json`을 등록하고 원격 readback한다. 자세한 선택/해시/동시 writer/MAIN_DONE 정책은 [R3_CURRENT.md §6](R3_CURRENT.md#6-통합-출고-library-자동-등록--2026-10-18-사용자-승인-v101). 다른 캠페인은 별도 명시 적용 없으면 기존대로 유지한다. 이 문서가 기존 활성 예약의 prompt를 자동으로 바꾸는 것은 아니다.
