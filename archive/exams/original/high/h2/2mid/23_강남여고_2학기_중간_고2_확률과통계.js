@@ -60,7 +60,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 두 사건이 독립이면 $P(A\\cap B)=P(A)P(B)$이다.\n조건 정리: $P(A)=\\dfrac25$, $P(A\\cap B)=\\dfrac1{10}$이고 $A$와 $B$는 독립이다.\n풀이 방향: 독립의 정의식을 $P(B)$에 대하여 푼다.\n정석 풀이: $P(A\\cap B)=P(A)P(B)$이므로 $\\dfrac1{10}=\\dfrac25P(B)$이다. 따라서 $P(B)=\\dfrac1{10}\\times\\dfrac52=\\dfrac14$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -93,7 +93,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 조건부확률은 조건이 되는 집단만을 새로운 전체로 삼아 계산한다.\n조건 정리: 참가 학생은 남자 $14$명, 여자 $12$명이므로 참가 학생은 모두 $26$명이다.\n풀이 방향: 참가 학생 전체를 분모로, 그중 남학생 수를 분자로 놓는다.\n정석 풀이: 참가한 학생이라는 조건이 주어졌으므로 전체는 $14+12=26$명이고 그중 남학생은 $14$명이다. 따라서 구하는 확률은 $\\dfrac{14}{26}=\\dfrac7{13}$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -125,7 +125,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 조건부확률은 (조건과 사건이 함께 일어나는 경우의 수)를 (조건이 일어나는 경우의 수)로 나눈 값이다.\n조건 정리: 파란색 $4$개, 흰색 $3$개에서 $2$개를 꺼내고, 두 지우개의 색이 같다는 조건이 주어졌다.\n풀이 방향: 색이 같은 경우의 수를 구하고 그중 둘 다 흰색인 경우의 수를 센다.\n정석 풀이: 두 지우개의 색이 같은 경우의 수는 $\\binom42+\\binom32=6+3=9$이고, 그중 둘 다 흰색인 경우의 수는 $\\binom32=3$이다. 따라서 구하는 확률은 $\\dfrac39=\\dfrac13$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -287,7 +287,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 비복원추출에서 특정 순서의 공이 어떤 색일 확률은 처음의 색 비율과 같다.\n조건 정리: 파란 공 $5$개, 빨간 공 $3$개로 모두 $8$개이고, 갑이 먼저 한 개를 꺼낸 뒤 을이 한 개를 꺼낸다.\n풀이 방향: 갑이 빨간 공을 꺼낸 경우와 파란 공을 꺼낸 경우로 나누어 더한다.\n정석 풀이: 갑이 빨간 공을 꺼낼 확률은 $\\dfrac38$이고 이때 을이 빨간 공을 꺼낼 확률은 $\\dfrac27$이다. 갑이 파란 공을 꺼낼 확률은 $\\dfrac58$이고 이때 을이 빨간 공을 꺼낼 확률은 $\\dfrac37$이다. 따라서 구하는 확률은 $\\dfrac38\\times\\dfrac27+\\dfrac58\\times\\dfrac37=\\dfrac6{56}+\\dfrac{15}{56}=\\dfrac{21}{56}=\\dfrac38$이다.\n따라서 정답은 ②이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -319,7 +319,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 확률의 곱셈정리 $P(A\\cap B)=P(A)P(B\\mid A)$를 이용한다.\n조건 정리: $P(A\\cap B)=\\dfrac17$, $P(B\\mid A)=\\dfrac47$이다.\n풀이 방향: 곱셈정리를 $P(A)$에 대하여 푼다.\n정석 풀이: $P(A\\cap B)=P(A)P(B\\mid A)$이므로 $\\dfrac17=P(A)\\times\\dfrac47$이다. 따라서 $P(A)=\\dfrac17\\times\\dfrac74=\\dfrac14$이다. $\\dfrac qp=\\dfrac14$이고 $p$, $q$가 서로소인 자연수이므로 $p=4$, $q=1$이고 $p+q=5$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -518,7 +518,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 전체 확률은 서로 배반인 경우로 나누어 각각의 확률을 더해 구한다.\n조건 정리: 남학생 $30$명 중 $20\\%$, 여학생 $20$명 중 $40\\%$가 분식을 먹었다.\n풀이 방향: 분식을 먹은 인원을 남녀로 나누어 구한 뒤 전체 인원으로 나눈다.\n정석 풀이: 분식을 먹은 남학생은 $30\\times0.2=6$명, 여학생은 $20\\times0.4=8$명이므로 모두 $14$명이다. 따라서 구하는 확률은 $\\dfrac{14}{50}=\\dfrac{7}{25}$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -551,7 +551,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 두 사건이 독립이면 $P(A\\cap B)=P(A)P(B)$이므로 인원수에 대한 방정식을 세울 수 있다.\n조건 정리: 전체는 $(x+2)+8+10+x=2x+20$명이고, 남학생은 $x+10$명, $2$학년은 $x+8$명, $2$학년 남학생은 $8$명이다.\n풀이 방향: 독립의 정의식에 각 확률을 대입하여 $x$에 대한 방정식을 푼다.\n정석 풀이: 남학생인 사건을 $M$, $2$학년인 사건을 $S$라 하면 $P(M\\cap S)=\\dfrac8{2x+20}$, $P(M)=\\dfrac{x+10}{2x+20}$, $P(S)=\\dfrac{x+8}{2x+20}$이다. 독립이므로 $\\dfrac8{2x+20}=\\dfrac{x+10}{2x+20}\\times\\dfrac{x+8}{2x+20}$이고, 양변에 $(2x+20)^2$을 곱하면 $8(2x+20)=(x+10)(x+8)$이다. 정리하면 $16x+160=x^2+18x+80$, 즉 $x^2+2x-80=0$이므로 $(x+10)(x-8)=0$이다. $x$는 자연수이므로 $x=8$이다.\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -619,7 +619,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 주사위 눈에 따라 꺼내는 개수가 달라지므로 경우를 나누어 확률을 더한다.\n조건 정리: 흰 공 $2$개, 검은 공 $5$개로 모두 $7$개이고, 눈이 $3$의 배수일 확률은 $\\dfrac26=\\dfrac13$이다.\n풀이 방향: 공을 $3$개 꺼내는 경우와 $2$개 꺼내는 경우로 나누어 흰 공이 $2$개일 확률을 각각 구한다.\n정석 풀이: 눈이 $3$의 배수이면 $3$개를 꺼내고, 이때 흰 공이 $2$개일 확률은 $\\dfrac{\\binom22\\binom51}{\\binom73}=\\dfrac5{35}=\\dfrac17$이다. 눈이 $3$의 배수가 아니면 $2$개를 꺼내고, 이때 흰 공이 $2$개일 확률은 $\\dfrac{\\binom22}{\\binom72}=\\dfrac1{21}$이다. 따라서 구하는 확률은 $\\dfrac13\\times\\dfrac17+\\dfrac23\\times\\dfrac1{21}=\\dfrac1{21}+\\dfrac2{63}=\\dfrac3{63}+\\dfrac2{63}=\\dfrac5{63}$이다. $p$, $q$가 서로소이므로 $p=63$, $q=5$이고 $p+q=68$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -739,7 +739,7 @@ window.questionBank = [
     "answer": "$\\dfrac13$",
     "solution": "[키포인트] 여사건과 드모르간 법칙으로 $P(A)$와 $P(A\\cup B)$를 먼저 구한다.\n조건 정리: $P(A^c)=\\dfrac5{14}$, $P(A\\mid B)=\\dfrac12$, $P(A^c\\cap B^c)=\\dfrac17$이다.\n풀이 방향: $P(A\\cap B)$를 미지수로 놓고 덧셈정리로 방정식을 세운다.\n정석 풀이: $P(A)=1-\\dfrac5{14}=\\dfrac9{14}$이다. 또 $A^c\\cap B^c=(A\\cup B)^c$이므로 $P(A\\cup B)=1-\\dfrac17=\\dfrac67$이다. $P(A\\cap B)=x$라 하면 $P(A\\mid B)=\\dfrac x{P(B)}=\\dfrac12$에서 $P(B)=2x$이다. 덧셈정리에 의해 $\\dfrac67=\\dfrac9{14}+2x-x$이므로 $\\dfrac{12}{14}=\\dfrac9{14}+x$에서 $x=\\dfrac3{14}$이다. 따라서 $P(B\\mid A)=\\dfrac{P(A\\cap B)}{P(A)}=\\dfrac{\\dfrac3{14}}{\\dfrac9{14}}=\\dfrac13$이다.\n따라서 구하는 값은 $\\dfrac13$이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -766,7 +766,7 @@ window.questionBank = [
     "answer": "$a=14,\\ b=10,\\ c=7,\\ d=5$",
     "solution": "[키포인트] 독립 조건에서 한 칸의 값을 먼저 정한 뒤 행과 열의 합으로 나머지를 채운다.\n조건 정리: 전체 $36$명 중 남자 $24$명, 여자 $12$명이고 강화도 $21$명, 설악산 $15$명이다.\n풀이 방향: 여자인 사건과 설악산을 선호하는 사건의 독립 조건으로 $d$를 구하고 나머지를 순서대로 구한다.\n정석 풀이: 여자인 사건을 $F$, 설악산을 선호하는 사건을 $S$라 하면 독립이므로 $P(F\\cap S)=P(F)P(S)$이다. 즉 $\\dfrac d{36}=\\dfrac{12}{36}\\times\\dfrac{15}{36}$이므로 $d=\\dfrac{12\\times15}{36}=5$이다. 여자의 합에서 $c+d=12$이므로 $c=7$이고, 설악산의 합에서 $b+d=15$이므로 $b=10$이며, 남자의 합에서 $a+b=24$이므로 $a=14$이다. 실제로 강화도의 합은 $a+c=14+7=21$로 조건과 일치한다.\n따라서 구하는 값은 $a=14$, $b=10$, $c=7$, $d=5$이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
