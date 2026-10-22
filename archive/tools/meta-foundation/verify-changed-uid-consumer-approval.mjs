@@ -44,6 +44,7 @@ import { loadResolvedConsumerCatalog } from "./reviewed-exam-registration-v2.mjs
 const require = createRequire(import.meta.url);
 const SCHEMA = {
   PINPOINT: "archive-finalqa-pinpoint-register-request-v1",
+  NONPT: "archive-finalqa-nonpt-register-request-v1",
   V2: "archive-reviewed-exam-meta-register-request-v2",
   LEGACY: "archive-reviewed-exam-meta-register-request-v1",
   SCOPED_LINKS: "archive2-reviewed-basic-source-links-exam-scoped-v1",
@@ -116,6 +117,27 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     });
     return { kind: schema === SCHEMA.V2 ? "reviewed-exam-v2" : "finalqa-pinpoint-v1", exam: doc.examUid || doc.sourceArchiveFile,
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
+  }
+  if (schema === SCHEMA.NONPT) {
+    if (doc.examUid !== "26_금당고_2학기_중간_고2_미적분I" ||
+        doc.candidatePath !== "archive/data/meta-foundation/exam-scoped/26_금당고_2학기_중간_고2_미적분I.json")
+      fail("INVALID_REQUEST", "nonPT scope is one bound 21-question exam");
+    const candidate = JSON.parse(fs.readFileSync(path.join(root, doc.candidatePath), "utf8"));
+    if (candidate.sourceBlobSha !== doc.expectedSourceBlobSha1 ||
+        candidate.records?.length !== 21 || doc.expectedQuestionCount !== 21)
+      fail("INVALID_REQUEST", "nonPT candidate/source scope drift");
+    return {
+      kind: "finalqa-nonpt-semantics", exam: doc.examUid, sourceFile: doc.sourceArchiveFile,
+      expectedBlob: doc.expectedSourceBlobSha1,
+      rows: candidate.records.map(r => ({
+        ordinal: r.sourceOrdinal, uid: r.questionUid,
+        gated: false, unchanged: false,
+        // Do not claim PT/TPL or canonical advanced assignment. The public consumer must
+        // actually expose these semantic values before this verification can pass.
+        expect: { L1:r.after.L1, L2:r.after.L2, L3:r.after.L3, L4:r.after.L4,
+          difficultyBucket:r.after.difficultyBucket, level:r.after.level }
+      }))
+    };
   }
   if (schema === SCHEMA.LEGACY) {
     const sourceFile = normalizeFile(doc.sourceArchiveFile);
