@@ -75,4 +75,4 @@ jobs:
             --regenerate "bash tools/ci/reviewed-meta-register-pass.sh" \
             --remote origin --branch main --max-attempts 3 \
             --label "Reviewed exam meta registration" --summary-file "$GITHUB_STEP_SUMMARY"
-          echo "registered_main_sha=$(git rev-parse origin/main)" >> "$GITHUB_STEP_SUMMARY"
+          echo "status=POST_MERGE_VERIFIED registered_main_sha=$(git rev-parse origin/main)" >> "$GITHUB_STEP_SUMMARY"

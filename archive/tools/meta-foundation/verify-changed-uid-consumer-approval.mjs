@@ -53,6 +53,13 @@ const GENERATED_INDEX = "archive/data/generated-lite-consumer/v1/index.json";
 const QUERY_FIELDS = ["standardCourse", "standardUnitKey", "subUnitKey", "L1", "L2", "L3", "L4", "nativeL1", "nativeL2", "nativeL3", "nativeL4",
   "problemTypeKey", "templateKey", "integrationPattern", "difficultyBucket"];
 const LABEL_FIELDS = new Set(["L1", "L2", "L3", "L4"]);
+// Fields resolveCatalog blanks when no approved canonical assignment exists for the UID
+// (archive2-canonical.js, the `else` branches that reset curriculumKey ... subUnit to "").
+// The approved-assignment marker only matters for requests that change one of these.
+const ASSIGNMENT_GOVERNED = new Set(["curriculumKey", "courseKey", "L1", "L2", "L3", "L4", "problemTypeKey", "templateKey",
+  "standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit"]);
+const changedKeys = (before, after) => Object.keys(after).filter(k => !same(before?.[k], after[k]));
+const touchesAssignment = keys => keys.some(k => ASSIGNMENT_GOVERNED.has(FIELD_ALIAS[k] || k));
 const FIELD_ALIAS = { curriculum: "curriculumKey" };
 const nfc = value => typeof value === "string" ? value.normalize("NFC") : value;
 const same = (a, b) => isDeepStrictEqual(nfc(a) ?? null, nfc(b) ?? null);
@@ -95,7 +102,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
         // So the body fingerprint is the hard binding; a full-fingerprint difference is
         // reported as informational `solverOnlyRevisions`, never as a failure.
         return { ordinal: r.sourceOrdinal, bodyFingerprint: r.sourceBodyFingerprint, fullFingerprint: r.sourceFingerprint,
-          expect: { curriculumKey: r.curriculumKey, courseKey: r.courseKey, L1: r.L1, L2: r.L2 } };
+          gated: true, expect: { curriculumKey: r.curriculumKey, courseKey: r.courseKey, L1: r.L1, L2: r.L2 } };
       }) };
   }
   if (schema === SCHEMA.PINPOINT || schema === SCHEMA.V2) {
@@ -104,7 +111,8 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       if (!item?.after || typeof item.after !== "object") fail("INVALID_REQUEST", `item #${item?.sourceOrdinal} has no after`);
       // A row whose after equals its before (and repairs no identity fingerprint) changes nothing: skipped, but counted.
       const unchanged = Object.keys(item.after).every(k => same(item.before?.[k], item.after[k])) && item.identityBefore === undefined;
-      return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: item.after, fingerprint: item.after.sourceFingerprint, unchanged };
+      return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: item.after, fingerprint: item.after.sourceFingerprint, unchanged,
+        gated: touchesAssignment(changedKeys(item.before, item.after)) };
     });
     return { kind: schema === SCHEMA.V2 ? "reviewed-exam-v2" : "finalqa-pinpoint-v1", exam: doc.examUid || doc.sourceArchiveFile,
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
@@ -116,7 +124,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
     if (Number.isInteger(doc.expectedQuestionCount) && doc.expectedQuestionCount !== bank.length) fail("INVALID_REQUEST", "legacy expectedQuestionCount differs from source");
     // registerLegacy's own UID set and source/metadata parity fields.
     return { kind: "reviewed-exam-v1-legacy", exam: doc.examUid || sourceFile, sourceFile, expectedBlob: doc.expectedSourceBlobSha1,
-      rows: bank.map((q, i) => ({ ordinal: i + 1, expect: { standardCourse: q.standardCourse, standardUnitKey: q.standardUnitKey, subUnitKey: q.subUnitKey,
+      rows: bank.map((q, i) => ({ ordinal: i + 1, gated: true, expect: { standardCourse: q.standardCourse, standardUnitKey: q.standardUnitKey, subUnitKey: q.subUnitKey,
         problemTypeKey: q.problemTypeKey, templateKey: q.templateKey, crossConceptKeys: q.crossConceptKeys || [], conditionKeys: q.conditionKeys || [],
         integrationPattern: q.integrationPattern || "NONE", difficultyBucket: q.difficultyBucket } })) };
   }
@@ -155,8 +163,14 @@ function checkRow(consumer, unit, row) {
     return { ...out, reason: "METADATA_CONFLICT", detail: resolved.metadataConflicts.join(",") };
   const evidence = resolved.assignmentEvidence;
   const reasons = resolved.canonicalAssignmentReasons;
-  if (!Array.isArray(reasons) || reasons.length || evidence?.approvalStatus !== "APPROVED" || evidence?.reviewEvidence?.status !== "PASS")
-    return { ...out, reason: "NOT_APPROVED_IN_CONSUMER", detail: `reasons=${JSON.stringify(reasons ?? null)} approvalStatus=${evidence?.approvalStatus ?? null} reviewEvidence=${evidence?.reviewEvidence?.status ?? null}` };
+  if (!Array.isArray(reasons) || reasons.length || evidence?.approvalStatus !== "APPROVED" || evidence?.reviewEvidence?.status !== "PASS") {
+    const detail = `reasons=${JSON.stringify(reasons ?? null)} approvalStatus=${evidence?.approvalStatus ?? null} reviewEvidence=${evidence?.reviewEvidence?.status ?? null}`;
+    // The marker gates only requests that change assignment-governed fields (or scoped parent links).
+    // Otherwise a missing canonical assignment is a pre-existing catalog gap outside this request:
+    // record it as informational and keep verifying everything the request does change.
+    if (row.gated) return { ...out, reason: "NOT_APPROVED_IN_CONSUMER", detail };
+    out.assignmentPending = Array.isArray(reasons) && reasons.length ? reasons.join(",") : detail;
+  }
   const page = consumer.pageByUid.get(uid);
   if (!page) return { ...out, reason: "NOT_IN_PROBLEM_BANK_INDEX" };
   if (page.directSelectable !== true) return { ...out, reason: "NOT_DIRECT_SELECTABLE" };
@@ -164,6 +178,9 @@ function checkRow(consumer, unit, row) {
   const queryFilters = {};
   for (const [field, expected] of Object.entries(row.expect)) {
     const name = FIELD_ALIAS[field] || field;
+    // While the canonical assignment is pending resolveCatalog blanks the governed fields; this request does
+    // not change them (otherwise the row would have failed above), so they are not part of its claim.
+    if (out.assignmentPending && ASSIGNMENT_GOVERNED.has(name)) continue;
     if (LABEL_FIELDS.has(name)) {
       // ProblemBankMeta.project() overwrites the page row's L1..L4 with rpmL1..L4 (null for
       // natively registered rows), so the page shows reviewed labels as nativeL1..nativeL4 there
@@ -189,7 +206,7 @@ function checkRow(consumer, unit, row) {
 export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scopedPaths = [] }) {
   let mainSha = "UNKNOWN";
   try { mainSha = execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim(); } catch { /* not a git checkout */ }
-  const result = { status: "PASS", mainSha, counts: { changed: 0, checked: 0, passed: 0, skippedUnchanged: 0 }, exams: [], failures: [], unobservedFields: [], solverOnlyRevisions: [] };
+  const result = { status: "PASS", mainSha, counts: { changed: 0, checked: 0, passed: 0, skippedUnchanged: 0 }, exams: [], failures: [], unobservedFields: [], solverOnlyRevisions: [], assignmentPending: [] };
   const inputs = [...requestPaths, ...scopedPaths];
   if (!inputs.length) { result.status = "FAIL"; result.failures.push({ exam: "-", qid: "-", uid: "-", reason: "NO_INPUT", detail: "no --request/--scoped given" }); return result; }
   const units = [];
@@ -234,6 +251,7 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
       const checked = checkRow(consumer, unit, row);
       if (checked.reason) result.failures.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid || row.uid || "-", reason: checked.reason, detail: checked.detail || "" });
       else { summary.passed++; result.counts.passed++; }
+      if (checked.assignmentPending && !checked.reason) result.assignmentPending.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid, reason: checked.assignmentPending });
       if (checked.solverOnlyRevision) result.solverOnlyRevisions.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid });
       if (checked.unobserved?.length) result.unobservedFields.push({ exam: unit.exam, qid: row.ordinal, uid: checked.uid, fields: checked.unobserved });
     }
@@ -253,6 +271,11 @@ export function renderSummary(result) {
     for (const f of result.failures) lines.push(`| ${f.exam} | ${f.qid} | ${f.uid} | ${f.reason}${f.detail ? `: ${String(f.detail).replace(/\|/g, "\\|")}` : ""} |`);
   }
   for (const e of result.exams) lines.push("", `- ${e.kind} \`${e.exam}\`: changed ${e.changed}, checked ${e.checked}, passed ${e.passed}, skippedUnchanged ${e.skippedUnchanged}`);
+  if (result.assignmentPending?.length) {
+    const byExam = new Map();
+    for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);
+    lines.push("", `Informational: ${result.assignmentPending.length} row(s) with canonical L1/L2 assignment not approved; outside this request's changed fields: ${[...byExam].map(([exam, qids]) => `${exam} ${qids.join(", ")}`).join("; ")}.`);
+  }
   if (result.solverOnlyRevisions?.length) lines.push("", `Solver-only revisions since review (body fingerprint still bound; informational): ${result.solverOnlyRevisions.map(r => `Q${r.qid}`).join(", ")}.`);
   if (result.unobservedFields.length) lines.push("", `Fields not exposed by the consumer (informational): ${result.unobservedFields.length} row(s).`);
   return lines.join("\n") + "\n";
@@ -272,7 +295,7 @@ function main() {
   let result;
   try { result = verifyChangedUidConsumerApproval({ root: opt.root, requestPaths: opt.request, scopedPaths: opt.scoped }); }
   catch (error) {
-    result = { status: "FAIL", mainSha: "UNKNOWN", counts: { changed: 0, checked: 0, passed: 0, skippedUnchanged: 0 }, exams: [], unobservedFields: [], solverOnlyRevisions: [],
+    result = { status: "FAIL", mainSha: "UNKNOWN", counts: { changed: 0, checked: 0, passed: 0, skippedUnchanged: 0 }, exams: [], unobservedFields: [], solverOnlyRevisions: [], assignmentPending: [],
       failures: [{ exam: "-", qid: "-", uid: "-", reason: "CHECKER_ERROR", detail: error.stack || error.message }] };
   }
   console.log(JSON.stringify(result, null, 2));

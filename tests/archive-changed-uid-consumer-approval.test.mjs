@@ -5,7 +5,8 @@ import os from "node:os";
 import path from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { verifyChangedUidConsumerApproval } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
+import { verifyChangedUidConsumerApproval, renderSummary } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
+import { loadResolvedConsumerCatalog } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const checker = path.join(repo, "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs");
@@ -86,4 +87,32 @@ test("historical Gangnam v2 request: reviewed L1..L4 are the effective consumer 
   const out = verifyChangedUidConsumerApproval({ root: repo, requestPaths: [file] });
   assert.deepEqual(out.failures, []);
   assert.deepEqual(out.counts, { changed: 24, checked: 24, passed: 24, skippedUnchanged: 0 });
+});
+
+// A row without an approved canonical assignment (a pre-existing catalog gap) only gates requests that change
+// assignment-governed fields; other changed fields must still be effective (checked on whatever such row exists).
+test("assignment marker gates only assignment-governed changes; other rows are reported as assignmentPending", t => {
+  const row = loadResolvedConsumerCatalog(repo).records.find(r => Array.isArray(r.canonicalAssignmentReasons) && r.canonicalAssignmentReasons.length &&
+    Number.isInteger(r.difficultyBucket) && r.questionUid && fs.existsSync(path.join(repo, "archive/exams", r.sourceFile)));
+  if (!row) return t.skip("every catalog row currently has an approved canonical assignment");
+  const dir = tmp(t);
+  const blob = execFileSync("git", ["hash-object", "--path", `archive/exams/${row.sourceFile}`, "--stdin"],
+    { cwd: repo, input: fs.readFileSync(path.join(repo, "archive/exams", row.sourceFile)), encoding: "utf8" }).trim();
+  const request = (name, before, after) => write(dir, name, { schemaVersion: "archive-finalqa-pinpoint-register-request-v1", sourceArchiveFile: row.sourceFile,
+    expectedSourceBlobSha1: blob, items: [{ sourceOrdinal: row.sourceOrdinal, questionUid: row.questionUid, before, after }] });
+  const wrong = row.difficultyBucket === 5 ? 4 : row.difficultyBucket + 1;
+  const out = verifyChangedUidConsumerApproval({ root: repo, requestPaths: [
+    request("effective.json", { difficultyBucket: 99 }, { difficultyBucket: row.difficultyBucket }),
+    request("ineffective.json", { difficultyBucket: 99 }, { difficultyBucket: wrong }),
+    request("governed.json", { subUnitKey: "OLD" }, { subUnitKey: "NEW" })] });
+  const byFile = name => out.exams.find(e => e.file.endsWith(name));
+  assert.deepEqual([byFile("effective.json").changed, byFile("effective.json").passed], [1, 1], "non-governed change passes without the marker");
+  assert.equal(out.assignmentPending.length, 1);
+  assert.deepEqual([out.assignmentPending[0].uid, out.assignmentPending[0].qid], [row.questionUid, row.sourceOrdinal]);
+  assert.ok(out.assignmentPending[0].reason.length > 0);
+  const failures = out.failures.map(f => [f.reason, f.uid, f.qid]).sort();
+  assert.deepEqual(failures, [["NOT_APPROVED_IN_CONSUMER", row.questionUid, row.sourceOrdinal], ["VALUE_MISMATCH", row.questionUid, row.sourceOrdinal]].sort(),
+    "an ineffective changed value still fails; a governed change still needs the marker");
+  const md = renderSummary({ ...out, failures: [], status: "PASS" });
+  assert.ok(md.includes("canonical L1/L2 assignment not approved; outside this request's changed fields") && md.includes(`Q${row.sourceOrdinal}`), md);
 });
