@@ -2,10 +2,15 @@
 
 Use with [README_CURRENT.md](README_CURRENT.md). ROLE 바인딩: `role=R2, campaignId={CAMPAIGN_ID}, generationRoot={GENERATION_ROOT}, libraryNamespace={LIBRARY_NAMESPACE}, stream={STREAM_IF_APPLICABLE}, previousStage=R1, nextStage=R3, canonicalVersion=1.0.0, schedule={USER_APPROVED_SCHEDULE}, isEnabled={USER_APPROVED_ON_OFF}`. 신규 예약이라도 R1 역할을 대체하거나 R1 독립 freeze 전체 재수행을 요구하지 않는다.
 
+## 문서 선택·소유 범위 (2026-10-22)
+
+- [Notion 02-04 R2 해설 정밀검수 라우트](https://app.notion.com/p/4010e68bd69f8180aa90f06698053755)는 Codex/예약 R2의 진입 목차입니다. 이 Git 문서는 **GPT 예약 R2 공통 품질·독립 검토·메타·R3 인계 정본**입니다. 캠페인 배정·ON/OFF·시간표·예외는 해당 캠페인의 manifest/전용 문서가 소유합니다.
+- `README_CURRENT`는 예약 공통 규칙이며, 여기 적힌 **R2 전 reviewable QID 해설 심화·정밀 Meta·Golden/Negative·물리 인계 근거**는 유지합니다. R1 전체 새 blind freeze를 만들지 않되 의심 QID의 독립 재계산은 실제 필요에 따라 수행합니다. 이 링크 수정은 예약 프롬프트·일정의 실물 변경을 뜻하지 않습니다.
+
 ## 1. 현재 실제 입력과 규칙/정본 열람을 검증
 
 - Library에서 R1의 실제 최신 `R1_REVIEW_ROUTED/READY_R2` 패킷, 물리 student JS, 필수 PNG/SVG, valid source-only/CREATE·R1 blind freeze/upgrade ledger, qid별 원본·Meta/시각·검증 현황, input SHA/업스트림 Library ID를 직접 확인한다. 같은 examUid+source SHA가 R2 완료/다른 writer 점유/Git main 출고면 건드리지 않는다. 캠페인 frozen stream/dynamic ownership 혼용 금지.
-- 시작 시 Notion 필독 라우터→Archive 시작/생명주기→예약 CURRENT, Git 최신 main/AGENTS.md·archive/AGENTS.md, README_CURRENT/R2_CURRENT, 문제 출처/Golden·해설·Visual·교육과정·Meta Foundation의 적용 최신 정본을 **본문까지** 읽는다. 특히 모든 신규·수정·문항 검수에 실제 메타 점검을 부여한 `JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md` 및 RPM current/prerequisite→crosswalk→GLOBAL ACTIVE PT/TPL→binding을 직접 확인한다.
+- 시작 시 **예약 공용 README_CURRENT + 이 R2_CURRENT + 해당 캠페인 manifest/실제 R1 패킷**을 먼저 확인한다. 과거 Notion 필독 라우터·Archive 시작/전체 생명주기·무관한 캠페인 장문을 자동 연쇄 선열람하지 않는다. 해당 R2 QID/학생 해설에 적용되는 **문제 출처·Golden·Visual·교육과정·Meta Foundation 정본의 필요한 본문과 근거**는 실제 읽고 적용한다. 특히 모든 신규·수정·문항 검수에 실제 메타 점검을 부여한 `JS_Archive_Metadata_Required_On_Create_Edit_Review_CURRENT_v1.md` 및 RPM current/prerequisite→crosswalk→GLOBAL ACTIVE PT/TPL→binding을 직접 확인한다.
 - 실제 `DOC_READ_RECEIPT.json`에 examUid+input SHA, readAt, Notion url/가능 editedAt·Git authority exact path/main SHA/blob SHA, 이번 stage에 적용한 규칙/업스트림 실제 상태·추가 수정, 실패한 문서/대체 읽기 시도, 본인 원소유 범위/후속 소유자를 기록하고 Library remote file ID/SHA 확인. 없다면 `DOC_READ_UNVERIFIED`, quality PASS 금지. 과거 R1이 읽었을 것이라는 가정으로 R2 문서 필독 생략 금지.
 
 ## 2. R2 본업: 새로운 학생 관점의 전 qid 작은칠판 설명 심화
