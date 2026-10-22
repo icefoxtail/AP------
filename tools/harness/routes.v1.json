@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "purpose": "entry-only; never quality/release authorization",
+  "routes": [
+    {
+      "task": "archive-final-qa",
+      "authority": "docs/operations/JS_Archive_FINAL_QA_EXECUTION_CARD_CURRENT.md",
+      "target": "local-file",
+      "requiredCapabilities": [
+        "gitRead"
+      ],
+      "optionalCapabilities": [
+        "gitWrite",
+        "notionRead",
+        "driveRead"
+      ]
+    },
+    {
+      "task": "archive-meta-write",
+      "authority": "docs/architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md",
+      "target": "optional-local-file",
+      "requiredCapabilities": [
+        "gitRead"
+      ],
+      "optionalCapabilities": [
+        "gitWrite",
+        "notionRead"
+      ]
+    },
+    {
+      "task": "archive-publication",
+      "authority": "docs/operations/Archive_MAIN_FIRST_CI_DEFERRED_CURRENT.md",
+      "target": "optional-local-file",
+      "requiredCapabilities": [
+        "gitRead",
+        "gitWrite"
+      ],
+      "optionalCapabilities": [
+        "driveRead",
+        "notionRead"
+      ]
+    },
+    {
+      "task": "gpt-reservation-create",
+      "authority": "docs/rules/02_PIPELINES/gpt-reservation/CREATE_CURRENT.md",
+      "target": "stage-owned",
+      "requiredCapabilities": [
+        "gitRead",
+        "libraryRead"
+      ],
+      "optionalCapabilities": [
+        "driveRead"
+      ]
+    },
+    {
+      "task": "gpt-reservation-r1",
+      "authority": "docs/rules/02_PIPELINES/gpt-reservation/R1_CURRENT.md",
+      "target": "stage-owned",
+      "requiredCapabilities": [
+        "gitRead",
+        "libraryRead"
+      ],
+      "optionalCapabilities": [
+        "driveRead"
+      ]
+    },
+    {
+      "task": "gpt-reservation-r2",
+      "authority": "docs/rules/02_PIPELINES/gpt-reservation/R2_CURRENT.md",
+      "target": "stage-owned",
+      "requiredCapabilities": [
+        "gitRead",
+        "libraryRead"
+      ],
+      "optionalCapabilities": [
+        "driveRead"
+      ]
+    },
+    {
+      "task": "gpt-reservation-r3",
+      "authority": "docs/rules/02_PIPELINES/gpt-reservation/R3_CURRENT.md",
+      "target": "stage-owned",
+      "requiredCapabilities": [
+        "gitRead",
+        "libraryRead"
+      ],
+      "optionalCapabilities": [
+        "driveRead"
+      ]
+    },
+    {
+      "task": "gpt-reservation-master",
+      "authority": "docs/rules/02_PIPELINES/gpt-reservation/MASTER_CURRENT.md",
+      "target": "stage-owned",
+      "requiredCapabilities": [
+        "gitRead",
+        "libraryRead"
+      ],
+      "optionalCapabilities": [
+        "driveRead"
+      ]
+    },
+    {
+      "task": "apms-static",
+      "authority": "docs/agent-skills/apmath-static-app-sop.md",
+      "target": "optional-local-file",
+      "requiredCapabilities": [
+        "gitRead"
+      ],
+      "optionalCapabilities": [
+        "gitWrite",
+        "browser"
+      ]
+    },
+    {
+      "task": "apms-worker",
+      "authority": "docs/agent-skills/apmath-worker-backend-sop.md",
+      "target": "optional-local-file",
+      "requiredCapabilities": [
+        "gitRead"
+      ],
+      "optionalCapabilities": [
+        "gitWrite",
+        "browser"
+      ]
+    },
+    {
+      "task": "shared-harness",
+      "authority": ".agent/SKILLS_INDEX.md",
+      "target": "optional-local-file",
+      "requiredCapabilities": [
+        "gitRead"
+      ],
+      "optionalCapabilities": [
+        "gitWrite",
+        "notionRead"
+      ]
+    }
+  ]
+}

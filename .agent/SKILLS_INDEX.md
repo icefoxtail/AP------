@@ -52,3 +52,7 @@ Use `apmath-archive-exams` only for genuine route ambiguity, true first-time ori
   - `docs/MASTER_NEXT_WORK.md`
 - For textbook tasks, follow `archive/textbook/.agent/BOOT.md` after the AP rulebook.
 - If a task is report-only, every SOP is report-only.
+
+## Optional shared-infrastructure entry gate (2026-10-22)
+
+For an explicit cross-project **harness infrastructure** task, `tools/harness/task-entry.mjs` can check exact current-route authority paths and local Git/capability state (`tools/harness/README.md`). This is not a new mandatory step for regular exam, FINAL QA, or scheduled lanes. A caller's tool-state claim is not provider attestation; quality/publish proofs remain separate. Test with `node --test tools/harness/task-entry.test.mjs`.
