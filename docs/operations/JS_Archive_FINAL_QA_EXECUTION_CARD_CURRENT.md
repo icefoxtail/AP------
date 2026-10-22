@@ -1,4 +1,17 @@
-# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v1.5)
+# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v1.6)
+
+## CURRENT HARD — BOUNDED ROUTE / TIMEOUT-STOP / EFFECTIVE CONSUMER (2026-10-22)
+
+**이번 개정은 검수 품질을 축소하지 않고 조회·검색·반복만 제한한다. 위의 VERIFIED-SKIP / DELTA-ONLY가 계속 우선한다.**
+
+1. **기존 시험지 이어받기:** 사용자 지정 `examUid`, Notion 체크리스트의 마지막 `firstMissingStep`, Git 정확한 JS path/blob, 이전 결함 대상만 고정한다. 이미 main 병합·검증된 source나 QID를 다시 재검하지 않는다. 같은 blob/증거는 재사용한다.
+2. **입력 탐색 예산:** 사후 FINAL QA 선열람은 Notion 라우터 상단 + 이 카드 2곳뿐. 단계 시작 전 전역 파일명 검색·무관한 장문·과거 이력 반복 조회 금지. 정본 정확한 path가 없을 때만 **한 차례** 제한 검색하고 찾으면 즉시 중단한다.
+3. **대형 JSON 금지:** `question_metadata.json`(대형 공용 sidecar), `archive2-catalog.json`(대형 packed 원시 카탈로그), `question_identity_map.json` 전체 fetch/수동 갱신 금지. 해당 시험지 작은 등록 요청·승인 영수증·정확한 source-verification shard·runtime pack의 해당 UID만 조회한다. 클라이언트 호출에서 과대 응답/빈 본문을 만나면 동일 파일 무한 재조회하지 않는다. 실제 수리가 필요하면 소형 JSON→인가된 단일 writer로 처리한다.
+4. **중요: 검색 판정은 실제 소비 경로 기준:** packed raw `archive2-catalog.json`의 `L3/L4`가 빈 것은 검색 최종 값의 증거가 아니다. `archive/problem-bank-search.html` → `Archive2Canonical.resolveCatalog()` → `ProblemBankMeta.buildIndex()`의 **등록 receipt + byte-bound runtime overlay 적용 결과**를 확인한다. 승인되지 않은 값을 단순 복사해 채우지 않는다. `source verification shard`와 runtime의 값 일치만으로 검색 실행 PASS를 주장하지 않는다.
+5. **조회 횟수 상한은 탐색에만 적용:** 결함 위치를 찾기 전 원격 조회는 main+JS+소형 증거+직접 소비 코드 순서로 **최대 8개**를 기본 상한으로 한다. 추가 호출은 정확한 `path / UID / why-needed`가 있는 직접 의존성만 허용한다. 같은 SHA 같은 문서·파일의 재조회 금지(원격 최종 readback은 예외). 탐색/진단에서 첫 정확한 결함을 찾으면 더 찾지 말고 바로 수리한다.
+6. **타임아웃 직전의 종료는 중단이 아니라 정확한 인계:** 대형 응답 또는 도구 실패 시 새 문서·새 검색으로 회피하지 않는다. `OPEN / TOOLING_GAP / INFRA_RETRY`로 해당 필드·증거·마지막 성공 SHA와 **구체적인 단 하나의 firstMissingStep**을 Notion/HANDOFF에 남긴다. `FINAL_QA_DONE`이나 신규 PASS 금지. 다음 수행 회차는 그 한 단계에서 재개한다.
+7. **우선순위:** `source/UID exact → OPEN 필드 실물/승인 receipt → effective Consumer/Search → 변경 영향 재검 → main/Notion readback`. PT/TPL, 원본 PDF, Chrome/Pages, 타 시험지, 전수 재풀이, 새 공통 CI 수리는 기존 사용자 제외 범위를 유지한다.
+
 
 **최상위 CURRENT USER OVERRIDE — VERIFIED-SKIP / DELTA-ONLY (2026-10-21, Notion 라우터와 동기화):** 이미 검증된 QID/UID의 수학·해설·메타·자산·Consumer/검색은 **검증 당시 source blob 또는 문항 fingerprint, 적용 메타·asset·Consumer/projection 판본 및 직접 의존 범위가 현재와 일치하고 실제 검증 근거가 있으면** `REUSE_VERIFIED`로 통째로 SKIP한다. **main 전체 SHA가 바뀌었다는 이유만으로 재검하지 않는다.** 과거 PASS 문구만 있고 scope·판본·물리 증거가 결속되지 않았으면 재사용하지 않고 **해당 미검증 지점만** 조사한다.
 
