@@ -450,7 +450,20 @@ test("a legacy manifest falls back to the existing full canonical loader", async
   assert.ok(assets.requests.includes("archive/data/archive2-catalog.json"));
   assert.ok(assets.requests.some((row) => row.startsWith("archive/data/meta-foundation/runtime/")));
   assert.equal(assets.requests.includes(indexRelative), false);
-  assert.equal(assets.requests.length, canonical.REQUIRED_INPUT_PATHS.length + 2);
+  // The full loader also verifies manifest-declared runtime packs and their reviewed registration proofs.
+  const loaderInputs = [...new Set([
+    ...canonical.REQUIRED_INPUT_PATHS,
+    ...legacyManifest.files.map((row) => row.path).filter((p) => p.startsWith("data/meta-foundation/runtime/")),
+  ])];
+  const registrationProofs = [...new Set(loaderInputs
+    .filter((p) => p.startsWith("data/meta-foundation/runtime/"))
+    .flatMap((p) => Object.entries(JSON.parse(fs.readFileSync(path.join(archiveDir, p), "utf8")).generatedFrom || {})
+      .filter(([key]) => key.startsWith("reviewedExam_"))
+      .map(([, value]) => String(value).replace(/^archive\//, ""))))];
+  assert.deepEqual(
+    [...assets.requests].sort(),
+    [manifestRelative, manifestRelative, ...[...loaderInputs, ...registrationProofs].map((p) => "archive/" + p)].sort(),
+  );
 });
 
 test("legacy unresolved row without Meta remains snapshotable and does not become a new gate", async () => {
