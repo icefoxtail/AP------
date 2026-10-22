@@ -62,7 +62,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 조건부확률은 조건을 만족하는 경우만 새로운 전체 경우로 보고 계산한다.\n조건 정리: 두 눈을 순서쌍 $(a,b)$로 나타내면 사건 $A$는 $a\\gt b$이고, 사건 $B$는 $a+b$가 짝수인 경우이다.\n풀이 방향: 사건 $A$의 경우의 수와 $A\\cap B$의 경우의 수를 각각 센다.\n정석 풀이: $a\\gt b$인 순서쌍은 서로 다른 두 눈을 골라 큰 수를 첫 번째에 놓는 경우이므로 $\\binom62=15$가지이다. 이 가운데 합이 짝수가 되려면 두 눈이 모두 홀수이거나 모두 짝수여야 한다. 모두 홀수인 경우는 $(3,1),(5,1),(5,3)$의 $3$가지이고, 모두 짝수인 경우는 $(4,2),(6,2),(6,4)$의 $3$가지이다. 따라서 $A\\cap B$는 $6$가지이므로 $P(B\\mid A)=\\dfrac6{15}=\\dfrac25$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -292,8 +292,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 이항분포에서 $E(X)=np$, $V(X)=np(1-p)$이다.\n조건 정리: $E(X)=20$이고 $\\sigma(X)=4$이므로 $V(X)=16$이다.\n풀이 방향: 평균과 분산의 식을 나누어 $p$를 먼저 구한다.\n정석 풀이: $np=20$, $np(1-p)=16$이다. 두 식을 나누면 $1-p=\\dfrac{16}{20}=\\dfrac45$이므로 $p=\\dfrac15$이다. 이어서 $n=20\\div\\dfrac15=100$이다. 따라서 $B(n,p)=B\\left(100,\\dfrac15\\right)$이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-    "subUnit": "확률분포",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -361,8 +361,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 정규분포 곡선의 중심은 평균이고, 표준편차가 작을수록 곡선은 더 좁고 높아진다.\n조건 정리: 실선의 평균과 표준편차는 각각 $0,1$이고, 점선의 평균과 표준편차는 각각 $3,\\dfrac12$이다.\n풀이 방향: 점선이 실선보다 어느 쪽에 위치하는지와 폭·높이를 함께 비교한다.\n정석 풀이: 점선의 평균 $3$은 실선의 평균 $0$보다 크므로 점선의 중심은 실선의 중심보다 오른쪽에 있어야 한다. 또한 점선의 표준편차 $\\dfrac12$은 실선의 표준편차 $1$보다 작으므로 점선은 실선보다 폭이 좁고 꼭대기가 높아야 한다. 이 두 조건을 모두 만족하는 그래프는 ②이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-    "subUnit": "확률분포",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -394,8 +394,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 복원추출을 반복할 때 빨간 공이 나온 횟수는 이항분포를 따르며 평균은 $np$이다.\n조건 정리: 시행 횟수는 $50$이고 빨간 공이 나올 확률을 $p$라 하면 평균은 $50p=10$이다.\n풀이 방향: 빨간 공의 비율을 구하여 전체 $100$개 중 빨간 공과 파란 공의 개수를 계산한다.\n정석 풀이: $50p=10$에서 $p=\\dfrac15$이다. 따라서 빨간 공은 $100\\times\\dfrac15=20$개이고, 파란 공은 $100-20=80$개이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-    "subUnit": "확률분포",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -500,8 +500,8 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "[키포인트] 이항분포의 평균과 분산으로 $n,p$를 구한 뒤 각 명제를 판정한다.\n조건 정리: $X\\sim B(n,p)$이고 $E(X)=30$, $V(X)=15$이다.\n풀이 방향: $np=30$, $np(1-p)=15$에서 $n,p$를 정하고 ㄱ, ㄴ, ㄷ을 확인한다.\n정석 풀이: 두 식을 나누면 $1-p=\\dfrac12$이므로 $p=\\dfrac12$이고, $n=60$이다. 따라서 $X\\sim B\\left(60,\\dfrac12\\right)$이다. ㄱ에서 $E(X^2)=V(X)+\\{E(X)\\}^2=15+30^2=915$이므로 거짓이다. ㄴ은 이항확률변수 $X$가 $0$부터 $60$까지의 값을 가지므로 확률의 총합이 $1$이어서 참이다. ㄷ은 $p=\\dfrac12$일 때 $P(X=k)=P(X=60-k)$이므로 $P(X=2)=P(X=58)$이어서 참이다. 따라서 옳은 것은 ㄴ, ㄷ이다.\n따라서 정답은 ④이다.",
-    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-    "subUnit": "확률분포",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
