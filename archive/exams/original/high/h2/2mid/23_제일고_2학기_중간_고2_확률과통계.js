@@ -90,7 +90,7 @@ window.questionBank = [
       "$\\dfrac15$"
     ],
     "answer": "④",
-    "solution": "[키포인트] 확률밀도함수는 정의역 전체에서 적분한 값이 $1$이다.\n조건 정리: $f(x)=2ax$이고 정의역은 $0\\le x\\le2$이다.\n풀이 방향: $\\displaystyle\\int_0^2 f(x)\\,dx=1$을 이용한다.\n정석 풀이: $\\displaystyle\\int_0^2 2ax\\,dx=\\left[ax^2\\right]_0^2=4a$이다. 확률밀도함수의 전체 넓이는 $1$이므로 $4a=1$이고, 따라서 $a=\\dfrac14$이다.\n따라서 정답은 ④이다.",
+    "solution": "[키포인트] 확률밀도함수의 그래프와 $x$축 사이의 전체 넓이는 $1$이다.\n조건 정리: $0\\le x\\le2$에서 $f(x)=2ax$이므로 그래프는 $(0,0)$과 $(2,4a)$를 잇는 선분이다.\n풀이 방향: 밑변의 길이가 $2$, 높이가 $4a$인 삼각형의 넓이를 $1$로 놓는다.\n정석 풀이: 확률밀도함수는 음이 아니므로 $a\\ge0$이고, 그래프와 $x$축 사이의 넓이는 $\\dfrac12\\times2\\times4a=4a$이다. 전체 넓이가 $1$이므로 $4a=1$, 따라서 $a=\\dfrac14$이다.\n따라서 정답은 ④이다.",
     "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
     "subUnit": "확률변수와 기댓값",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -733,8 +733,8 @@ window.questionBank = [
     "choices": [],
     "answer": "(1) $50$, (2) $14$, (3) $78$점",
     "solution": "[키포인트] $Z=\\dfrac{X-m}{\\sigma}$는 평균이 $0$, 표준편차가 $1$인 표준화된 확률변수이다.\n조건 정리: $H=50+14Z$이다.\n풀이 방향: 기댓값과 표준편차의 일차변환 성질을 이용하고, 마지막 소문항에는 주어진 점수를 직접 대입한다.\n정석 풀이: (1) $E(H)=50+14E(Z)=50$이다.\n(2) $\\sigma(H)=|14|\\sigma(Z)=14$이다.\n(3) 평균이 $50$, 표준편차가 $12$이고 시험 점수가 $74$이므로 $Z=\\dfrac{74-50}{12}=2$이다. 따라서 $H=50+14\\times2=78$이다.\n따라서 구하는 값은 $E(H)=50$, $\\sigma(H)=14$이고 표준 점수는 $78$점이다.",
-    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
-    "subUnit": "이항분포와 정규분포",
+    "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+    "subUnit": "확률변수와 기댓값",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
