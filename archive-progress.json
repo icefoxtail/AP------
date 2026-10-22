@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "updatedAt": "2026-10-22T07:26:48.857Z",
+  "updatedAt": "2026-10-22T09:40:15.792Z",
   "coverage": "GitHub PR/Actions only; Library/GPT completion not observed",
   "history": {
     "complete": false,
     "scope": "recent",
-    "oldestObservedAt": "2026-10-18T10:58:29Z",
+    "oldestObservedAt": "2026-10-18T11:50:31Z",
     "seenRegistrationRuns": 0,
     "seenReleaseRuns": 24,
     "runScanIsPartial": true
@@ -16108,6 +16108,21 @@
         "attempt": 1
       }
     },
+    "24_강남여고_1학기_기말_고2_확률과통계": {
+      "exam": "24_강남여고_1학기_기말_고2_확률과통계",
+      "check": null,
+      "main": {
+        "result": "완료",
+        "sha": "f0045fd7121ef863949e5283638f971e1424dd94",
+        "run": "https://github.com/icefoxtail/AP------/pull/693",
+        "at": "2026-10-22T09:38:55Z"
+      },
+      "registration": null,
+      "deployment": null,
+      "deploymentJob": null,
+      "lastSuccessfulRelease": null,
+      "lastFailure": null
+    },
     "24_강남여고_1학기_중간_고1_기출": {
       "exam": "24_강남여고_1학기_중간_고1_기출",
       "check": null,
@@ -23031,12 +23046,27 @@
     }
   },
   "observations": {
+    "release:39717757297:1:92864f298ef4bebb8bd7e1c41d45bc8dba7703c2": {
+      "key": "release:39717757297:1:92864f298ef4bebb8bd7e1c41d45bc8dba7703c2",
+      "status": "unverified",
+      "attempts": 1,
+      "reason": "증거 실행/차수/SHA 불일치",
+      "run": {
+        "id": 39717757297,
+        "attempt": 1,
+        "sha": "92864f298ef4bebb8bd7e1c41d45bc8dba7703c2",
+        "at": "2026-10-22T03:57:52Z",
+        "url": "https://github.com/icefoxtail/AP------/actions/runs/39717757297",
+        "conclusion": "success",
+        "event": "push",
+        "branch": "main"
+      },
+      "nextRetryAt": "2026-10-22T09:45:14.444Z"
+    },
     "release:39738425333:1:a08204a3572fdfe3301b6fe86b9c3487583f9b91": {
       "key": "release:39738425333:1:a08204a3572fdfe3301b6fe86b9c3487583f9b91",
       "status": "partial",
-      "fileProofState": "permanent",
       "attempts": 1,
-      "verifiedAt": "2026-10-22T07:26:47.610Z",
       "run": {
         "id": 39738425333,
         "attempt": 1,
@@ -23057,6 +23087,8 @@
         "fileProofReason": "Pages ZIP 크기 초과",
         "exams": {}
       },
+      "fileProofState": "permanent",
+      "verifiedAt": "2026-10-22T07:26:47.610Z",
       "checkedExamIds": [
         "15_강남여고_2학기_중간_고2_기하와벡터_기출",
         "15_신흥중_2학기_기말_중3_수학",
@@ -79316,84 +79348,6 @@
         "비상_공통수학2_함수_중단원학습점검_고1",
         "비상_공통수학2_함수와그래프_대단원학습평가_고1",
         "비상_공통수학2_함수와그래프_익힘책_고1"
-      ],
-      "reason": "Pages ZIP 크기 초과"
-    },
-    "release:38094647812:1:d8152c8d3e03faf43e8dcdb54467584989596109": {
-      "key": "release:38094647812:1:d8152c8d3e03faf43e8dcdb54467584989596109",
-      "status": "partial",
-      "attempts": 1,
-      "run": {
-        "id": 38094647812,
-        "attempt": 1,
-        "sha": "d8152c8d3e03faf43e8dcdb54467584989596109",
-        "at": "2026-10-10T23:26:30Z",
-        "url": "https://github.com/icefoxtail/AP------/actions/runs/38094647812",
-        "conclusion": "success",
-        "event": "push",
-        "branch": "main"
-      },
-      "proof": {
-        "schema": 2,
-        "run_id": 38094647812,
-        "run_attempt": 1,
-        "sourceSha": "d8152c8d3e03faf43e8dcdb54467584989596109",
-        "deploymentJobVerified": true,
-        "evidenceSource": "diagnostics-and-deploy-job",
-        "fileProofReason": "Pages ZIP 크기 초과",
-        "exams": {}
-      },
-      "fileProofState": "permanent",
-      "verifiedAt": "2026-10-11T13:24:47.045Z",
-      "checkedExamIds": [
-        "25_순천고_2학기_기말_고1_유사",
-        "24_순천여고_1학기_중간_고2_확률과통계",
-        "25_금당고_1학기_중간_고2_수학II",
-        "23_금당고_1학기_중간_고1_기출",
-        "25_금당고_2학기_기말_고1_유사",
-        "22_제일고_1학기_중간_고1_기출",
-        "22_매산고_1학기_중간_고1_기출",
-        "25_매산중_1학기_중간_중2_기출",
-        "23_신흥중_1학기_기말_중2_기출",
-        "21_연향중_1학기_중간_중2_기출",
-        "25_왕운중_1학기_중간_중2_기출",
-        "22_연향중_1학기_기말_중2_기출",
-        "22_왕운중_1학기_기말_중2_기출",
-        "23_연향중_1학기_기말_중2_기출",
-        "24_금당중_1학기_기말_중2_기출",
-        "24_삼산중_1학기_기말_중2_기출",
-        "24_승평중_1학기_기말_중2_기출",
-        "24_연향중_1학기_기말_중2_기출",
-        "24_왕운중_1학기_기말_중2_기출",
-        "24_향림중_1학기_기말_중2_기출",
-        "19_연향중_1학기_중간_중2_기출",
-        "26_왕운중_2학기_중간_중1_기출",
-        "26_복성고_2학기_중간_고1_기출",
-        "23_향림중_1학기_기말_중2_기출",
-        "24_순천고_1학기_중간_고1_기출",
-        "24_금당고_1학기_중간_고1_기출",
-        "25_효천고_2학기_중간_고1_기출",
-        "24_수피아여고_1학기_중간_고2_확률과통계",
-        "26_매산고_2학기_중간_고1_기출",
-        "비상_공통수학2_도형의방정식_대단원학습평가_고1",
-        "비상_공통수학2_도형의방정식_익힘책_고1",
-        "비상_공통수학2_도형의이동_중단원학습점검_고1",
-        "비상_공통수학2_명제_중단원학습점검_고1",
-        "비상_공통수학2_선분의내분과직선_중단원학습점검_고1",
-        "비상_공통수학2_원의방정식_중단원학습점검_고1",
-        "비상_공통수학2_유리함수와무리함수_중단원학습점검_고1",
-        "비상_공통수학2_집합_중단원학습점검_고1",
-        "비상_공통수학2_집합과명제_대단원학습평가_고1",
-        "비상_공통수학2_함수_중단원학습점검_고1",
-        "비상_공통수학2_함수와그래프_대단원학습평가_고1",
-        "비상_공통수학2_함수와그래프_익힘책_고1",
-        "비상_공통수학2_집합과명제_익힘책_고1",
-        "25_왕운중_2학기_중간_중3_수학",
-        "25_풍덕중_2학기_중간_중3_수학",
-        "23_제일고_1학기_중간_고1_기출",
-        "24_효천고_1학기_중간_고1_기출",
-        "23_팔마고_1학기_중간_고1_기출",
-        "23_여천고_1학기_중간_고1_기출"
       ],
       "reason": "Pages ZIP 크기 초과"
     }
