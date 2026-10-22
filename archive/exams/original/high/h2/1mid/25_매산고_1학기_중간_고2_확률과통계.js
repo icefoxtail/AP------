@@ -176,8 +176,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 마지막 자리가 소수이므로 마지막 자리에는 2 또는 3만 올 수 있다.\n조건 정리: 사용할 수 있는 숫자는 1, 2, 3, 4이고, 4는 정확히 한 번만 들어간다. 마지막 자리는 소수이므로 2 또는 3이다.\n풀이 방향: 마지막 자리를 먼저 정하고, 4가 들어갈 위치를 정한 뒤 남은 자리를 채운다.\n정석 풀이: 마지막 자리는 2 또는 3으로 2가지이다. 4는 마지막 자리에 올 수 없으므로 앞의 세 자리 중 한 자리에 들어가며, 그 위치는 3가지이다. 남은 앞의 두 자리는 1, 2, 3 중에서 중복을 허락하여 고르므로 각각 3가지씩 가능하다. 따라서 전체 개수는 $2\\cdot3\\cdot3^2=54$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-PS-01-COMBINATION",
-    "subUnit": "조합",
+    "subUnitKey": "H15-PS-01-PERMUTATION",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
