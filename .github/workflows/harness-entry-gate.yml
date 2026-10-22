@@ -1,0 +1,46 @@
+name: Harness Entry Gate
+
+on:
+  pull_request:
+    paths:
+      - 'tools/harness/**'
+      - '.agent/SKILLS_INDEX.md'
+      - '.github/workflows/harness-entry-gate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/harness/**'
+      - '.agent/SKILLS_INDEX.md'
+      - '.github/workflows/harness-entry-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  entry-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Positive and negative route tests
+        run: node --test tools/harness/task-entry.test.mjs
+      - name: Validate exact authority paths
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          const manifest=JSON.parse(fs.readFileSync('tools/harness/routes.v1.json','utf8'));
+          for(const route of manifest.routes){
+            if(path.isAbsolute(route.authority)||route.authority.split('/').includes('..'))
+              throw Error('Invalid authority: '+route.task);
+            if(!fs.statSync(route.authority,{throwIfNoEntry:false})?.isFile())
+              throw Error('Missing authority: '+route.task+' -> '+route.authority);
+          }
+          console.log('Authorities checked:',manifest.routes.length);
+          NODE
+      - name: Read-only local Git/authority probe
+        run: node tools/harness/task-entry.mjs --task shared-harness --json
