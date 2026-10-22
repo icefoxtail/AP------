@@ -1,16 +1,15 @@
-# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v1.7)
+# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v1.8)
 
-## TOP OVERRIDE — MICRO-TASK CLOSEOUT / THREE-LINE REPORT (2026-10-22)
+## TOP OVERRIDE — GPT MAIN-MERGE-ONLY / GITHUB AUTOMATION OWNS CONSUMER (2026-10-22)
 
-**사용자 최신 운영 지시: 길게 연결한 한 건의 일이 아니라, 증거로 닫을 수 있는 목표 1개를 독립 작업 단위로 수행한다.** 목표 작업 크기는 짧은 실행(통상 5~10분 수준)이며, 시간 초과가 예상되면 완수한 단위를 즉시 마감하고 남은 단계는 새로운 작업 단위로 인계한다. 기존 성과를 되돌리거나 검증 사실을 허위로 쓰지 않는다.
+**사용자 최신 지시. 사후 FINAL QA·기존 시험지 메타 수정·출고에 적용. GPT의 최종 책임은 필요한 안전한 핀포인트 수정과 `main` 운영병합 및 단 한 번의 원격 main 대상 blob/SHA 확인까지다. 이후 DB/UID/index/catalog/runtime 등록과 검색·배포 실행은 GitHub Actions의 책임이다.** 기존 원본·수학·학생용 해설·SVG의 실제 확정 결함을 그대로 병합해서는 안 된다.
 
-1. **한 단위, 하나의 완료 조건:** (A) Git PR 병합+대상 원격 SHA, (B) 대상 시험지/UID 카탈로그·검색 실측, (C) 실제 불일치만 핀포인트 수리+직접 영향 검사, (D) Notion/AWCR 체크리스트 마감처럼 분할. 미해결 B~D 때문에 이미 증명된 A를 다시 열지 않는다. 사용자가 여러 단위 모두 완료를 명시했으면 가능한 범위에서 연속 진행하되 **각 단위의 독립 완료 증거를 먼저 확정**하고 다음으로 간다.
-2. **병합과 품질 승인을 구분:** Git 머지 커밋/원격 main의 대상 blob이 확인되면 `MAIN_DONE`(Git 반영 완료)을 별도 확정한다. 실제 Consumer/Search·정적 QA·Notion 기록 미확인은 `SEARCH_PENDING`/`FINAL_QA_PENDING`/`RECORD_PENDING`으로 유지한다. 이는 이전 성공한 main 반영을 취소하지 않지만 `FINAL_QA_DONE` 또는 전체 출고 PASS를 뜻하지 않는다. 병합 전에 발견된 치명적 오류는 별도 OPEN으로 명확히 기록하며 부가 CI를 무조건 무시하라는 뜻이 아니다.
-3. **CI/Actions 조회 상한:** 현재 작업 직접 관련 실패가 있으면 실패 원인 조회는 **기본 1회**만. 동일 run/status 무한 polling, 무관한 CI 우회 수리, 이전 PR 로그 반복 읽기 금지. 결과가 안 나왔으면 `CI_UNVERIFIED` 또는 `CI_FAILED`와 정확한 run URL·다음 조치만 기록하고, 이미 완료한 단위의 결과를 별도로 보고한다. 알려진 직접 관련 HARD FAIL을 PASS로 바꾸지 않는다.
-4. **탐색/문서 예산:** 현재 source exact path·해당 영수증/Notion 체크리스트에서 시작. 기존 v1.6의 큰 JSON 금지, 검색 상한, VERIFIED-SKIP/DELTA-ONLY 그대로. 동일 SHA/로그/파일 재열람 금지(최종 원격 readback만 예외). 기록은 해당 시험지 현재 체크리스트 한 군데와 안전한 최소 AWCR 메타만 갱신한다. AWCR 저장 실패가 Git 병합 사실을 무효화하지는 않으나 `SYNC_PENDING`을 반드시 기록.
-5. **3줄 즉시 보고 (매 작업 단위):** `완료: <실제 작업+SHA/증거>` / `미완료: <남은 일 또는 없음>` / `다음: <firstMissingStep 1개>`. 기존 성과를 다시 전수 검토하는 새 미션 금지. 보고가 길어질 사유가 있으면 해당 3줄에 짧은 링크/상태만 붙인다.
-6. **적용 범위:** 사후 FINAL QA·메타 출고/검증과 기존 main 대상 핀포인트 작업. 신규 CREATE/R1/R2/R3의 독립 블라인드 검수·최초 품질 의무는 변경하지 않고, 그 예약 구성이나 Gemini 라인은 이번 문서로 자동 수정하지 않는다.
-
+- **GPT 할 일:** ① 사용자 지정 시험지의 이미 검증된 범위 SKIP, 열린 결함/변경 대상만 바로 수정 ② 메타 입력이 새로 필요한 경우 **해당 시험지 소형 등록 요청 JSON을 같은 배포 입력**에 포함 (이미 해당 소스/UID 승인·등록 완료면 생략) ③ 대상 파일만 commit/PR/merge ④ 원격 main SHA + 대상 JS/등록 요청 blob readback 후 `MAIN_DONE` 또는 동일판 `NO_CHANGE_MAIN_DONE`으로 **즉시 3줄 마감**. 이미 완료한 병합을 CI 때문에 다시 시작하지 않는다.
+- **GPT 하지 않을 일:** 병합 후 CI/Actions 반복 조회, 런타임·검색 카탈로그/검색 화면 개별 UID 전수 parity 수동 실행, Chrome/Pages 최종 배포 확인, 통째 대형 JSON 로딩, 대기·폴링, 불필요한 Notion/AWCR 반복 마감 탐색. **검색 소비 24/24 수동검사 등은 GPT 일반 종료조건에서 제거.** 이번 PR에 직접 관련된 명백한 사전 HARD FAIL은 무시하거나 품질 PASS로 위장하지 않는다.
+- **GitHub 자동화 할 일 (현재 현행 구현):** `.archive-meta-register/inbox/*.json`의 main push → `Archive Reviewed Exam Meta Register`가 정본 메타/런타임·DB/UID/인덱스/카탈로그 등록·projection 검증 및 원격 커밋; main push와 등록 완료 `workflow_run` → `Archive Pages Release`가 pending inbox gate 후 `archive/build_db.py`, 등록/색인 검증, 실제 사이트 빌드·배포. **자동화 트리거와 완료는 다르며 병합 직후 배포가 즉시 성공했다고 주장하지 않는다.** 기존 main JS만 병합하면 신규 고급 메타가 자동 승인되는 것은 아니므로 필요 시 소형 요청을 포함해야 한다.
+- **실패 소유권:** Actions FAIL/자동 승인·투영 실패/Pages 실패는 **Git 자동화/별도 유지보수 이슈**로 취급. GPT의 이미 증명된 `MAIN_DONE`을 취소하거나 동일 시험지 검수 무한 재시작하지 않는다. Git 자동화가 자동 복구까지 보장하는지 확인되지 않았으면 `GIT_AUTOMATION_UNVERIFIED`로 명시하고 새 owner/incident로 분리한다. 파이프라인 자체 문제는 해당 워크플로 수정 시 필요한 회귀 테스트로 다룬다.
+- **완료 상태 구분:** `MAIN_DONE`=GPT 원격 병합 성공, `PIPELINE_PASS`=Actions 성공 증거, `DEPLOY_DONE`=Pages 성공 증거 (후자의 두 상태를 GPT가 수동 확인할 의무 없음). `FINAL_QA_DONE`을 Pages/검색 24건 수동 검증과 결박하지 않는다. 적합한 기존 QA 증거와 수행 범위는 정직하게 기록한다.
+- **3줄:** `완료: 시험지/변경사항/mainSHA` / `미완료: GPT 작업 잔여 또는 없음 (Git 자동화 미확인은 별도)` / `다음: 다른 지정 시험지 또는 실제 Git FAIL의 별도 이슈`. 기존 v1.7 이하의 소비 경로 수동검사·Git 병합 이후 마감 요구보다 본 절 우선. CREATE/R1/R2/R3 최초 블라인드·품질 규칙 및 Gemini 예약 구조는 변경하지 않는다.
 
 ## CURRENT HARD — BOUNDED ROUTE / TIMEOUT-STOP / EFFECTIVE CONSUMER (2026-10-22)
 
