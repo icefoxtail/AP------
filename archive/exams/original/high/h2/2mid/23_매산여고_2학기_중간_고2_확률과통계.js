@@ -28,8 +28,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 매 시행이 독립이고 성공확률이 일정하므로 $X$는 이항분포를 따른다.\n조건 정리: 두 눈의 수의 차가 $3$인 경우는 $(1,4),(2,5),(3,6)$과 그 순서를 바꾼 것까지 $6$가지이고, 전체 경우는 $36$가지이다.\n풀이 방향: 한 번의 성공확률 $p$를 구해 $X\\sim\\mathrm B(180,p)$로 두고 평균과 표준편차를 계산한다.\n정석 풀이: $p=\\dfrac6{36}=\\dfrac16$이므로 $X\\sim\\mathrm B\\left(180,\\dfrac16\\right)$이다. $E(X)=180\\times\\dfrac16=30$이고 $V(X)=180\\times\\dfrac16\\times\\dfrac56=25$이므로 $\\sigma(X)=\\sqrt{25}=5$이다. 따라서 평균과 표준편차의 합은 $30+5=35$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-    "subUnit": "확률분포",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -60,8 +60,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 이차모멘트는 $E(X^2)=V(X)+\\{E(X)\\}^2$로 분해된다.\n조건 정리: $X\\sim\\mathrm B\\left(45,\\dfrac13\\right)$이므로 $n=45$, $p=\\dfrac13$, $q=\\dfrac23$이다.\n풀이 방향: 이항분포의 평균과 분산을 구해 위 식에 대입한다.\n정석 풀이: $E(X)=np=45\\times\\dfrac13=15$이고 $V(X)=npq=45\\times\\dfrac13\\times\\dfrac23=10$이다. 따라서 $E(X^2)=V(X)+\\{E(X)\\}^2=10+15^2=10+225=235$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-    "subUnit": "확률분포",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -92,8 +92,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] $4$발 중 명중한 횟수 $X$는 이항분포 $\\mathrm B\\left(4,\\dfrac13\\right)$을 따른다.\n조건 정리: $3$발 이상 명중하는 경우는 $X=3$ 또는 $X=4$이다.\n풀이 방향: 두 확률을 각각 구해 더한다.\n정석 풀이: $P(X=3)=\\binom43\\left(\\dfrac13\\right)^3\\left(\\dfrac23\\right)=4\\times\\dfrac1{27}\\times\\dfrac23=\\dfrac8{81}$이고 $P(X=4)=\\left(\\dfrac13\\right)^4=\\dfrac1{81}$이다. 따라서 구하는 확률은 $\\dfrac8{81}+\\dfrac1{81}=\\dfrac9{81}=\\dfrac19$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-    "subUnit": "확률분포",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -124,8 +124,8 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "[키포인트] 꺼낸 공을 다시 넣으므로 매 시행의 성공확률이 일정한 독립시행이다.\n조건 정리: 흰 공 $4$개, 검은 공 $3$개에서 $2$개를 꺼낼 때 두 공의 색이 같은 것을 성공으로 본다.\n풀이 방향: 성공확률 $p$를 구해 $V(X)$를 계산하고, $V(aX+b)=a^2V(X)$를 이용한다.\n정석 풀이: 색이 같은 경우의 수는 $\\binom42+\\binom32=6+3=9$이고 전체는 $\\binom72=21$이므로 $p=\\dfrac9{21}=\\dfrac37$이다. 따라서 $X\\sim\\mathrm B\\left(98,\\dfrac37\\right)$이고 $V(X)=98\\times\\dfrac37\\times\\dfrac47=24$이다. 그러므로 $V(5X+2)=5^2\\times24=600$이고 $\\sigma(5X+2)=\\sqrt{600}=10\\sqrt6$이다.\n따라서 정답은 ⑤이다.",
-    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-    "subUnit": "확률분포",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -193,8 +193,8 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "[키포인트] 정규분포 곡선은 대칭축의 위치가 평균을, 곡선이 뾰족한 정도가 표준편차를 나타낸다.\n조건 정리: $X\\sim\\mathrm N(m,7^2)$, $Y\\sim\\mathrm N(4,\\sigma^2)$이고 $m$, $\\sigma$는 자연수이다.\n풀이 방향: 그림에서 두 대칭축의 좌우 관계와 두 곡선의 폭을 읽어 $m$과 $\\sigma$의 범위를 정한 뒤 곱의 법칙을 쓴다.\n정석 풀이: 그림에서 $X$의 그래프의 대칭축이 $Y$의 그래프의 대칭축 $x=4$보다 왼쪽에 있으므로 $m\\lt4$이고, $m$이 자연수이므로 $m=1,2,3$의 $3$가지이다. 또 $Y$의 그래프가 더 뾰족하므로 표준편차가 더 작아 $\\sigma\\lt7$이고, $\\sigma$가 자연수이므로 $\\sigma=1,2,\\ldots,6$의 $6$가지이다. 따라서 순서쌍 $(m,\\sigma)$의 개수는 $3\\times6=18$이다.\n따라서 정답은 ②이다.",
-    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-    "subUnit": "확률분포",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -225,8 +225,8 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "[키포인트] 정규분포는 평균에 대하여 대칭이므로 $m$에서 같은 거리만큼 떨어진 좌우 구간의 확률이 서로 같다.\n조건 정리: $a=P(m-3\\sigma\\le X\\le m+3\\sigma)$, $b=P(m-2\\sigma\\le X\\le m+3\\sigma)$이다.\n풀이 방향: $a-b$가 왼쪽 구간의 확률임을 확인하고, 대칭인 오른쪽 구간의 확률을 $b$에서 빼면 된다.\n정석 풀이: 구간 $[m-3\\sigma,\\,m+3\\sigma]$에서 구간 $[m-2\\sigma,\\,m+3\\sigma]$를 제외하면 $a-b=P(m-3\\sigma\\le X\\lt m-2\\sigma)$이다. 대칭성에 의해 $P(m+2\\sigma\\lt X\\le m+3\\sigma)=a-b$이므로\n$P(m-2\\sigma\\le X\\le m+2\\sigma)=b-P(m+2\\sigma\\lt X\\le m+3\\sigma)=b-(a-b)=2b-a$이다.\n따라서 정답은 ①이다.",
-    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-    "subUnit": "확률분포",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -689,8 +689,8 @@ window.questionBank = [
     "choices": [],
     "answer": "$\\dfrac{5075}{2}$",
     "solution": "[키포인트] $\\sum k^2\\binom nk p^kq^{n-k}$ 꼴은 이항분포를 따르는 확률변수의 $E(X^2)$이다.\n조건 정리: $X\\sim\\mathrm B\\left(200,\\dfrac14\\right)$라 하면 $P(X=k)=\\binom{200}k\\left(\\dfrac14\\right)^k\\left(\\dfrac34\\right)^{200-k}$이므로 $\\sum_{k=0}^{200}a_k=\\sum_{k=0}^{200}k^2P(X=k)=E(X^2)$이다.\n풀이 방향: 이항분포의 평균과 분산을 구해 $E(X^2)=V(X)+\\{E(X)\\}^2$에 대입한다.\n정석 풀이: $E(X)=200\\times\\dfrac14=50$이고 $V(X)=200\\times\\dfrac14\\times\\dfrac34=\\dfrac{75}2$이다. 따라서\n$\\sum_{k=0}^{200}a_k=E(X^2)=V(X)+\\{E(X)\\}^2=\\dfrac{75}2+50^2=\\dfrac{75}2+2500=\\dfrac{5075}2$이다.\n따라서 구하는 값은 $\\dfrac{5075}2$이다.",
-    "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
-    "subUnit": "확률분포",
+    "subUnitKey": "H15-PS-05-BINOMIAL_NORMAL",
+    "subUnit": "이항분포와 정규분포",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   }
