@@ -1,4 +1,4 @@
-# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v1.8)
+# JS Archive FINAL QA — SINGLE ENTRY EXECUTION CARD (CURRENT v1.9)
 
 ## TOP OVERRIDE — GPT MAIN-MERGE-ONLY / GITHUB AUTOMATION OWNS CONSUMER (2026-10-22)
 
@@ -16,7 +16,7 @@
 **이번 개정은 검수 품질을 축소하지 않고 조회·검색·반복만 제한한다. 위의 VERIFIED-SKIP / DELTA-ONLY가 계속 우선한다.**
 
 1. **기존 시험지 이어받기:** 사용자 지정 `examUid`, Notion 체크리스트의 마지막 `firstMissingStep`, Git 정확한 JS path/blob, 이전 결함 대상만 고정한다. 이미 main 병합·검증된 source나 QID를 다시 재검하지 않는다. 같은 blob/증거는 재사용한다.
-2. **입력 탐색 예산:** 사후 FINAL QA 선열람은 Notion 라우터 상단 + 이 카드 2곳뿐. 단계 시작 전 전역 파일명 검색·무관한 장문·과거 이력 반복 조회 금지. 정본 정확한 path가 없을 때만 **한 차례** 제한 검색하고 찾으면 즉시 중단한다.
+2. **입력 탐색 예산:** 사후 FINAL QA 기본 선열람은 **이 카드 1곳**이다. 과거 Notion 필독 라우터·전체 생명주기·예약 캠페인 이력을 먼저 열지 않는다. 단계 시작 전 전역 파일명 검색·무관한 장문·과거 이력 반복 조회 금지. 정본 정확한 path가 없을 때만 **한 차례** 제한 검색하고 찾으면 즉시 중단한다.
 3. **대형 JSON 금지:** `question_metadata.json`(대형 공용 sidecar), `archive2-catalog.json`(대형 packed 원시 카탈로그), `question_identity_map.json` 전체 fetch/수동 갱신 금지. 해당 시험지 작은 등록 요청·승인 영수증·정확한 source-verification shard·runtime pack의 해당 UID만 조회한다. 클라이언트 호출에서 과대 응답/빈 본문을 만나면 동일 파일 무한 재조회하지 않는다. 실제 수리가 필요하면 소형 JSON→인가된 단일 writer로 처리한다.
 4. **중요: 검색 판정은 실제 소비 경로 기준:** packed raw `archive2-catalog.json`의 `L3/L4`가 빈 것은 검색 최종 값의 증거가 아니다. `archive/problem-bank-search.html` → `Archive2Canonical.resolveCatalog()` → `ProblemBankMeta.buildIndex()`의 **등록 receipt + byte-bound runtime overlay 적용 결과**를 확인한다. 승인되지 않은 값을 단순 복사해 채우지 않는다. `source verification shard`와 runtime의 값 일치만으로 검색 실행 PASS를 주장하지 않는다.
 5. **조회 횟수 상한은 탐색에만 적용:** 결함 위치를 찾기 전 원격 조회는 main+JS+소형 증거+직접 소비 코드 순서로 **최대 8개**를 기본 상한으로 한다. 추가 호출은 정확한 `path / UID / why-needed`가 있는 직접 의존성만 허용한다. 같은 SHA 같은 문서·파일의 재조회 금지(원격 최종 readback은 예외). 탐색/진단에서 첫 정확한 결함을 찾으면 더 찾지 말고 바로 수리한다.
@@ -38,12 +38,12 @@
 **CURRENT 메타 쓰기 경계(2026-10-21 사용자 지시):** 공용 `archive/data/question_metadata.json`은 정확한 UID N행의 **조회·대조·검색용**이며, FINAL QA 수정 결과는 **시험지별 소형 메타 JSON**으로만 작성한다. 공용 대형 파일 직접 수정·업로드/PUT 금지. 인가된 Actions가 공용 메타·Consumer/index를 갱신하고 대상 UID N/N 원격 parity를 확인해야 완료다. 인가된 등록기의 과목·요청 스키마별 지원은 현행 코드와 해당 Action의 실제 성공/실패로 확인한다. 미지원은 `TOOLING_GAP`, 실행 실패는 `REGISTRATION_FAILED`/미완료로 기록하고 대형 파일 직접 업로드로 우회하지 않는다. [단일 정책](docs/architecture/JS_Archive_Small_JSON_Meta_Write_Contract_CURRENT_v1.md); 상세 문서 추가 선열람 요구는 아니다.
 
 
-> 2026-10-21 사용자 직접 지시에 따른 사후 QA 필독 축소. **이미 main에 존재하는 지정 시험지 1건**에만 적용. 기술·품질 의무는 기존 FINAL QA v2.1 그대로이며, **문서 선열람만 축소**한다. 본 카드가 선행 절차이며 기존 긴 [FAST ROUTER v1.1](JS_Archive_FINAL_QA_FAST_ROUTER_HANDOFF_CURRENT_v1.md), [Notion FINAL QA v2.1](https://app.notion.com/p/4000e68bd69f818080a3e7a042c4aa98), Archive 시작/생명주기, AGENTS.md는 **정본 예외가 생겼을 때만 해당 절을 열람하는 상세 참고자료**다. 기존 규정/프로젝트를 삭제하거나 수정하지 않는다. 최신 사용자 지시 우선.
+> 2026-10-21 사용자 직접 지시에 따른 사후 QA 필독 축소. **이미 main에 존재하는 지정 시험지 1건**에만 적용. 열린 결함의 수학·해설·메타 직접 수리 의무는 유지하되 **병합 뒤 검색/Consumer 수동 재검 및 Pages/CI 추적은 Git 자동화 담당**이다. 본 카드가 선행 절차이며 기존 긴 [FAST ROUTER v1.1](JS_Archive_FINAL_QA_FAST_ROUTER_HANDOFF_CURRENT_v1.md), [Notion FINAL QA v2.1](https://app.notion.com/p/4000e68bd69f818080a3e7a042c4aa98), Archive 시작/생명주기, AGENTS.md는 **정본 예외가 생겼을 때만 해당 절을 열람하는 상세 참고자료**다. 기존 규정/프로젝트를 삭제하거나 수정하지 않는다. 최신 사용자 지시 우선.
 
-## 1. 딱 두 곳만 선열람
+## 1. 단일 작업 정본부터 (공통 라우터 선열람 불필요)
 
-1. Notion [GPT 작업 전 필독 라우터](https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd)의 맨 위 **VERIFIED-SKIP / DELTA-ONLY 최상위 절 및 사후 FINAL QA 단일 진입 절**.
-2. **이 카드**(전체 약 1쪽 실행 계약). 그 외 포괄 문서는 시험지 시작 전에 순서대로 열람하지 않는다.
+1. **이 카드**가 GPT 사후 FINAL QA의 단일 실행 진입이다. 사용자 지정 시험지와 Git exact source/기존 evidence로 즉시 이동한다.
+2. [Notion 공통 규칙](https://app.notion.com/p/3e10e68bd69f81f19397e7cd1c8d3cfd)은 전 역할 공통 행동 원칙 확인 또는 실제 충돌·예외가 있을 때만 필요한 절을 참조한다. 캠페인 이력의 장문 필독 금지.
 
 작업에 필요한 **실물 코드·정본 데이터의 정확한 조회는 생략하지 않는다**. 단순 단계 통과 문구나 예전 PASS를 현행 SHA 증거로 대체할 수 없다. 새 작업은 새 taskId/owner로 시작, 실제 동일 taskId와 predecessor 증거가 있을 때만 연속 인수한다. [AWCR bootstrap](https://drive.google.com/file/d/1DDf_QrWCI26EZFdnjQd_E4oQk4nBHdvM/view) 확인 후 안전한 최소 메타 checkpoint만 append-only로 남기고 저장/readback 실패 시 SYNC_PENDING으로 구분한다.
 
