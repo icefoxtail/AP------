@@ -21,8 +21,9 @@ if [[ "${ARCHIVE_META_SCOPED:-false}" == "true" ]]; then
 fi
 
 if [[ ${#check_args[@]} -eq 0 ]]; then
+  # Nothing was checked, so this is not a verification claim.
   echo "No changed-UID inputs on this base (already consumed by another writer); nothing to verify."
-  printf '\nstatus=POST_MERGE_VERIFIED registered_main_sha=%s changed_uids=0\n' "$sha" >> "$summary"
+  printf '\nstatus=NO_CHANGED_UIDS_TO_VERIFY registered_main_sha=%s changed_uids=0\n' "$sha" >> "$summary"
   exit 0
 fi
 
