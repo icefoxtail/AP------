@@ -82,15 +82,40 @@ export default function PracticeCanvas({id,variant,p,mode,progress=1}:{id:Practi
     const outer=110,inner=outer*(p.r??3)/((p.r??3)+(p.w??3)),t=p.theta??60,outerStart=polar(cx,cy,outer,0),innerStart=polar(cx,cy,inner,0),outerEnd=polar(cx,cy,outer,t),innerEnd=polar(cx,cy,inner,t);
     drawing=<><path d={`${sector(cx,cy,outer,0,t)} ${sector(cx,cy,inner,0,t)}`} fill={area?GREEN:'#eaf3ff'} fillRule="evenodd"/><path d={arc(cx,cy,outer,0,t)} fill="none" stroke={hot?BLUE:INK} strokeWidth={hot?7:3} data-practice-boundary/><path d={arc(cx,cy,inner,0,t)} fill="none" stroke={hot?ORANGE:INK} strokeWidth={hot?7:3} data-practice-boundary/><line x1={innerStart[0]} y1={innerStart[1]} x2={outerStart[0]} y2={outerStart[1]} stroke={hot?ORANGE:INK} strokeWidth={hot?6:2} data-practice-boundary={hot?'true':undefined}/><line x1={innerEnd[0]} y1={innerEnd[1]} x2={outerEnd[0]} y2={outerEnd[1]} stroke={hot?ORANGE:INK} strokeWidth={hot?6:2} data-practice-boundary={hot?'true':undefined}/></>;
   }else if(id==='rotate'){
-    const r=100,t=p.theta??90,triangle=variant==='rotate-triangle';
-    drawing=<>{triangle?<polygon points={points(3,cx,cy,94)} fill="#f8fafc" stroke="#94a3b8" strokeWidth="3"/>:<rect x="140" y="115" width="100" height="100" fill="#f8fafc" stroke="#94a3b8" strokeWidth="3"/>}<circle cx={cx} cy={cy} r={r} fill="none" stroke="#dbe4ec" strokeDasharray="5 5"/><path d={arc(cx,cy,r,0,t)} fill="none" stroke={ORANGE} strokeWidth={hot?8:5} data-practice-boundary/><line x1={cx} y1={cy} x2={polar(cx,cy,r,0)[0]} y2={polar(cx,cy,r,0)[1]} stroke={BLUE} strokeWidth="3"/><line x1={cx} y1={cy} x2={polar(cx,cy,r,t)[0]} y2={polar(cx,cy,r,t)[1]} stroke={BLUE} strokeWidth="3"/><circle cx={cx} cy={cy} r="5" fill="#172b4a"/>{label(cx,290,`회전각 ${t}° · 원호만 거리로 셉니다`)}</>;
+    const sidePx=76,t=p.theta??90,triangle=variant==='rotate-triangle',ox=156,oy=219;
+    const rad=triangle?sidePx:sidePx*Math.SQRT2,from=triangle?90:45;
+    const squarePoints=[[ox,oy],[ox+sidePx,oy],[ox+sidePx,oy-sidePx],[ox,oy-sidePx]].map(q=>q.join(',')).join(' ');
+    const triPoints=[[ox,oy],[ox+sidePx,oy],[ox+sidePx/2,oy-sidePx*Math.sqrt(3)/2]].map(q=>q.join(',')).join(' ');
+    drawing=<>
+      {triangle?<polygon points={triPoints} fill="#edf5ff" stroke="#64748b" strokeWidth="3"/>:<polygon points={squarePoints} fill="#edf5ff" stroke="#64748b" strokeWidth="3"/>}
+      <g transform={'rotate('+t+' '+ox+' '+oy+')'} opacity=".45">{triangle?<polygon points={triPoints} fill="none" stroke={BLUE} strokeWidth="2.5" strokeDasharray="5 4"/>:<polygon points={squarePoints} fill="none" stroke={BLUE} strokeWidth="2.5" strokeDasharray="5 4"/>}</g>
+      <path d={arc(ox,oy,rad,from,from+t)} fill="none" stroke={ORANGE} strokeWidth={hot?8:5} data-practice-boundary/>
+      <line x1={ox} y1={oy} x2={polar(ox,oy,rad,from)[0]} y2={polar(ox,oy,rad,from)[1]} stroke={BLUE} strokeWidth="2"/>
+      <line x1={ox} y1={oy} x2={polar(ox,oy,rad,from+t)[0]} y2={polar(ox,oy,rad,from+t)[1]} stroke={BLUE} strokeWidth="2" strokeDasharray="5 3"/>
+      <circle cx={ox} cy={oy} r="5" fill="#172b4a"/>
+      <circle cx={polar(ox,oy,rad,from+t)[0]} cy={polar(ox,oy,rad,from+t)[1]} r="5" fill={ORANGE}/>
+      {label(cx,302,triangle?'정삼각형 꼭짓점 중심 이동':'정사각형 대각선 길이가 회전 반지름')}
+    </>;
   }else if(id==='rope'){
     const r=32,tri=variant==='rope-triangle',cols=p.c??2,rows=p.rows??2;
     const triPts=[{x:cx,y:cy-2*r/Math.sqrt(3)},{x:cx+r,y:cy+r/Math.sqrt(3)},{x:cx-r,y:cy+r/Math.sqrt(3)}],cs=tri?triPts.map(q=>[q.x,q.y]):Array.from({length:cols*rows},(_,i)=>[cx+(i%cols-(cols-1)/2)*2*r,cy+(Math.floor(i/cols)-(rows-1)/2)*2*r]);
     drawing=<>{tri?<path d={roundedHull(triPts,r)} fill="none" stroke={hot?ORANGE:'#b8c7d8'} strokeWidth={hot?7:4} data-practice-boundary/>:<rect x={cx-(cols-1)*r-r} y={cy-(rows-1)*r-r} width={(cols-1)*2*r+2*r} height={(rows-1)*2*r+2*r} rx={r} fill="none" stroke={hot?ORANGE:'#b8c7d8'} strokeWidth={hot?7:4} data-practice-boundary/>}{cs.map(([x,y],i)=><circle key={i} cx={x} cy={y} r={r} fill={area?GREEN:'#eaf3ff'} stroke="#7d91a8" strokeWidth="2"/>)}{label(cx,285,tri?'원 3개 삼각형 배열':rows===1?'한 줄로 맞닿은 원':'원 중심 격자의 바깥 접선')}</>;
   }else if(id==='rolling'){
-    const n=p.n??4,rr=32,rad=90,pp=Array.from({length:n},(_,i)=>polar(cx,cy,rad,i*360/n+180));
-    drawing=<><polygon points={pp.map(a=>a.join(',')).join(' ')} fill="#f5f7fa" stroke="#64748b" strokeWidth="3"/><circle cx={cx} cy={cy-rad-rr} r={rr} fill="#eaf3ff" stroke="#64748b" strokeWidth="2"/><circle cx={cx} cy={cy-rad-rr} r={rr*2} fill="none" stroke={area?GREEN:'#dce7f1'} strokeWidth="3" strokeDasharray="6 5"/><path d={`M${cx-rad-rr} ${cy-rad} ${pp.map(a=>`L${a[0]} ${a[1]}`).join(' ')} Z`} fill="none" stroke={hot?BLUE:INK} strokeWidth={hot?7:3} data-practice-boundary/>{area&&<path d={`M${cx-145} ${cy-145} H${cx+145} V${cy+145} H${cx-145} Z`} fill="#bcebd766" data-practice-piece/>}</>;
+    const n=p.n??4,side=p.s??5,worldR=side/(2*Math.sin(Math.PI/n)),ball=p.r??2;
+    const scale=114/(worldR+2*ball),rPoly=worldR*scale,rBall=ball*scale;
+    const vertices=Array.from({length:n},(_,i)=>{const q=polar(cx,cy,rPoly,i*360/n);return {x:q[0],y:q[1]};});
+    const polygon='M '+vertices.map(q=>q.x+' '+q.y).join(' L ')+' Z';
+    const sweptOutline=roundedHull(vertices,2*rBall),centerTrack=roundedHull(vertices,rBall);
+    const first=vertices[0],second=vertices[1],vx=second.x-first.x,vy=second.y-first.y,l=Math.hypot(vx,vy);
+    const ballX=(first.x+second.x)/2+vy/l*rBall,ballY=(first.y+second.y)/2-vx/l*rBall;
+    drawing=<>
+      <path d={sweptOutline+' '+polygon} fill={area?GREEN:'#edf5ff'} fillRule="evenodd" stroke={area?'#178b67':'none'} strokeWidth="2"/>
+      <path d={polygon} fill="#fff" stroke="#64748b" strokeWidth="3"/>
+      <path d={centerTrack} fill="none" stroke={hot?BLUE:'#94a3b8'} strokeWidth={hot?7:2.5} strokeDasharray={hot?undefined:'6 5'} data-practice-boundary/>
+      <circle cx={ballX} cy={ballY} r={rBall} fill="#dbeafe" stroke="#64748b" strokeWidth="2"/>
+      <circle cx={ballX} cy={ballY} r="3" fill="#e56b36"/>
+      {label(cx,305,area?'원이 지나간 바깥 띠 영역':'원 중심의 실제 이동 궤적')}
+    </>;
   }else if(id==='overlap'){
     if(variant==='overlap-nested'||variant==='overlap-baby-circle'){
       const R=90+((p.R??6)-3)*3,r=variant==='overlap-baby-circle'?R/2:R*Math.min(p.r??3,(p.R??6)-1)/(p.R??6);
@@ -99,8 +124,16 @@ export default function PracticeCanvas({id,variant,p,mode,progress=1}:{id:Practi
       const A=[118,240],B=[270,240],C=[270,98],radA=76,radB=71,radC=Math.hypot(B[0]-A[0],B[1]-C[1])/2;
       drawing=<><path d={`M${A[0]} ${A[1]} A${radC} ${radC} 0 0 1 ${C[0]} ${C[1]} Z`} fill="#e9dcf7" fillOpacity=".68" stroke="#8b5eb6" strokeWidth="2.5"/><path d={`M${A[0]} ${A[1]} A${radA} ${radA} 0 0 0 ${B[0]} ${B[1]} Z`} fill="#dbeafe" fillOpacity=".78" stroke="#2563eb" strokeWidth="2.5"/><path d={`M${B[0]} ${B[1]} A${radB} ${radB} 0 0 0 ${C[0]} ${C[1]} Z`} fill="#ffe2c9" fillOpacity=".78" stroke="#df7945" strokeWidth="2.5"/><polygon points={`${A.join(',')} ${B.join(',')} ${C.join(',')}`} fill={area?GREEN:'#bcebd7'} stroke="#16845f" strokeWidth="3"/><path d={`M${B[0]-16} ${B[1]} V${B[1]-16} H${B[0]}`} fill="none" stroke="#334155" strokeWidth="2"/>{label(190,284,`초승달 합 = ½ab = ${clean((p.a??6)*(p.b??8)/2)} cm²`)}</>;
     }else{
-      const d=Math.min(p.d??8,12)*9,rad=86,x2=cx+d;
-      drawing=<><defs><clipPath id={clipId}><circle cx={x2} cy={cy} r={rad}/></clipPath></defs><circle cx={cx} cy={cy} r={rad} fill="#dbeafe" stroke={hot?BLUE:INK} strokeWidth={hot?6:3} data-practice-boundary/><circle cx={x2} cy={cy} r={rad} fill="#ffeddc" stroke={hot?ORANGE:INK} strokeWidth={hot?6:3} data-practice-boundary/><circle cx={cx} cy={cy} r={rad} fill={area?GREEN:'#bcebd7'} clipPath={`url(#${clipId})`}/><line x1={cx} y1={cy} x2={x2} y2={cy} stroke="#475569" strokeDasharray="4 4"/>{label(cx+d/2,cy+rad+24,`중심 거리 ${clean(d)} cm`)}</>;
+      const rad=60+(p.r??6)*4,d=Math.SQRT2*rad,x1=cx-d/2,x2=cx+d/2,ySpan=rad/Math.SQRT2;
+       const lens='M '+cx+' '+(cy-ySpan)+' A '+rad+' '+rad+' 0 0 1 '+cx+' '+(cy+ySpan)+' A '+rad+' '+rad+' 0 0 1 '+cx+' '+(cy-ySpan)+' Z';
+       drawing=<>
+         <circle cx={x1} cy={cy} r={rad} fill="#edf5ff" stroke="#64748b" strokeWidth="2"/>
+         <circle cx={x2} cy={cy} r={rad} fill="#fff1eb" fillOpacity=".55" stroke="#64748b" strokeWidth="2"/>
+         <path d={lens} fill={area?GREEN:'#bcebd7'} stroke="none"/>
+         <path d={arc(x1,cy,rad,45,135)} fill="none" stroke={hot?BLUE:INK} strokeWidth={hot?7:3} data-practice-boundary/>
+         <path d={arc(x2,cy,rad,225,315)} fill="none" stroke={hot?ORANGE:INK} strokeWidth={hot?7:3} data-practice-boundary/>
+         {label(cx,cy+rad+36,'두 90° 호 · 사분원 둘 − 정사각형')}
+       </>;
     }
   }else if(id==='polygon'){
     const n=p.n??6,rad=104,t=360/n;
