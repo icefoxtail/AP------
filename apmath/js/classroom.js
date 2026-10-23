@@ -945,20 +945,17 @@ function openHomeworkPhotoAssignmentModal(classId) {
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     const today = typeof getClassroomOperationDate === 'function' ? getClassroomOperationDate() : new Date().toLocaleDateString('sv-SE');
     showModal('숙제', `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
-                <div style="font-size:15px; font-weight:500; color:var(--text);">${apEscapeHtml(cls?.name || '반')}</div>
-                <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:4px;">숙제를 저장합니다.</div>
+        <div class="apms-unified-modal apms-unified-form">
+            <div class="apms-unified-context"><div class="apms-unified-context__name">${apEscapeHtml(cls?.name || '반')}</div><div class="apms-unified-context__meta">숙제를 저장합니다.</div></div>
+            <input id="hw-photo-title" class="cls-input apms-unified-control" placeholder="숙제 제목">
+            <textarea id="hw-photo-desc" class="cls-input apms-unified-control" rows="4" placeholder="숙제 설명" style="resize:vertical;"></textarea>
+            <div class="apms-unified-grid apms-unified-grid--date">
+                <input id="hw-photo-date" type="date" class="cls-input apms-unified-control" value="${apEscapeHtml(today)}">
+                <input id="hw-photo-time" type="time" class="cls-input apms-unified-control" value="23:00">
             </div>
-            <input id="hw-photo-title" class="cls-input" placeholder="숙제 제목">
-            <textarea id="hw-photo-desc" class="cls-input" rows="4" placeholder="숙제 설명" style="resize:vertical;"></textarea>
-            <div style="display:grid; grid-template-columns:1fr 120px; gap:8px;">
-                <input id="hw-photo-date" type="date" class="cls-input" value="${apEscapeHtml(today)}">
-                <input id="hw-photo-time" type="time" class="cls-input" value="23:00">
-            </div>
-            <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end;">
-                <button class="btn apms-button apms-button--quiet" style="width:auto; flex:0 0 auto; min-height:44px; padding:10px 14px; font-size:13px; font-weight:500; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
-                <button class="btn apms-button apms-button--primary btn-primary" style="width:auto; flex:0 0 auto; min-height:44px; padding:10px 18px; font-size:14px; font-weight:500;" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장</button>
+            <div class="apms-unified-actions">
+                <button class="btn apms-button apms-button--quiet" class="apms-unified-quiet" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
+                <button class="btn apms-button apms-button--primary btn-primary" class="apms-unified-primary" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장</button>
             </div>
         </div>
     `);
