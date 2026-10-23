@@ -49,7 +49,17 @@ const isPendingMetaPlaceholder = (question, field, approvedValue) => (
     Array.isArray(approvedValue) && approvedValue.length > 0 && hasPendingMetaReason(question, field)
 );
 const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, current, question, patch, final, ordinal, field }) => {
-  if (approvalType !== "META_PIPELINE_AUDIT" || !metaPipelineAudit || approved(current) ||
+  const pendingStatusKeys = {
+    standardUnitKey: ["standardUnit"], subUnitKey: ["subUnit"], problemTypeKey: ["problemType"],
+    templateKey: ["template"], crossConceptKeys: ["concept", "crossConcept"], conditionKeys: ["condition"]
+  }[field] || [];
+  // Older partial registrations can approve several fields while explicitly
+  // leaving concept/template fields pending. Allow the audit to bind only the
+  // exact fields still marked pending; fully approved fields remain immutable.
+  const fieldExplicitlyPending = current.reviewStatus === "manual_review" &&
+    current.metadataStatus === "approved_partial_with_explicit_holds" &&
+    pendingStatusKeys.some(key => current.fieldStatus?.[key] === "manual_review_pending");
+  if (approvalType !== "META_PIPELINE_AUDIT" || !metaPipelineAudit || approved(current) && !fieldExplicitlyPending ||
       !["standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys"].includes(field) ||
       !patch.sourceMetadataBefore || !Object.hasOwn(patch.sourceMetadataBefore, field) ||
       !eq(patch.sourceMetadataBefore[field] ?? null, question[field] ?? null)) return false;
@@ -274,9 +284,11 @@ function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, regist
     if (parents.size !== 1 || entry.parentProblemTypeKey !== [...parents][0]) fail(`META_PIPELINE_AUDIT TPL parent promotion mismatch: ${key}`);
     validateSupportingEvidence(entry, key, "TPL", linkedRows);
     const parent = afterTables.pt.get(entry.parentProblemTypeKey);
-    if (!parent || parent.status !== "ACTIVE" || entry.ownerPack && entry.ownerPack !== parent.ownerPack)
-      fail(`META_PIPELINE_AUDIT TPL parent pack mismatch: ${key}`);
-    validatePackBinding(key, { ...entry, ownerPack: parent.ownerPack }, linkedRows, "TPL");
+    if (!parent || parent.status !== "ACTIVE") fail(`META_PIPELINE_AUDIT TPL parent missing: ${key}`);
+    // A PT may be canonically owned by one pack but reused by an exact active
+    // binding in another course pack. A new TPL belongs to that binding owner;
+    // its parent PT remains the unchanged canonical key.
+    validatePackBinding(key, { ...entry, ownerPack: entry.ownerPack || parent.ownerPack }, linkedRows, "TPL");
   }
 
   const audited = new Map(audit.boundAtomicCrossConcepts.map(row => [row.conceptKey, row]));
@@ -804,20 +816,28 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     const fieldApproval = req.approval.type === "REVIEW2" ? "approved_review2" :
       req.approval.type === "META_PIPELINE_AUDIT" ? "approved_meta_pipeline_audit" : "approved_final_qa";
     const approvedFields = req.approval.type === "META_PIPELINE_AUDIT"
-      ? ["standardUnit", "subUnit", "problemType", "template", "crossConcept", "condition"]
+      ? ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept", "condition"]
       : ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept", "condition", "integrationPattern", "difficulty"];
+    const fieldStatus = { ...(current.fieldStatus || {}), ...Object.fromEntries(approvedFields.map(k => [k, fieldApproval])) };
+    const manualFieldHoldRemains = Object.values(fieldStatus).includes("manual_review_pending");
+    const priorPartialHoldResolved = current.reviewStatus === "manual_review" &&
+      current.metadataStatus === "approved_partial_with_explicit_holds" &&
+      Object.values(current.fieldStatus || {}).includes("manual_review_pending") && !manualFieldHoldRemains;
+    const preserveManualStatus = manualFieldHoldRemains || current.reviewStatus === "manual_review" && !priorPartialHoldResolved;
     const approvalEvidence = metaPipelineAudit
       ? [receiptPath, req.approval.metaPipelineAudit.auditPackageRef.path, req.approval.metaPipelineAudit.manifestRef.path, req.approval.metaPipelineAudit.sourceParityRef.path]
       : [receiptPath];
     Object.assign(final, { curriculum, curriculumKey: curriculum, standardCourse: course, courseKey: final.courseKey || course,
-      reviewStatus: "reviewed_pass", metadataStatus: "approved_semantic_review", metadataRevision: revision,
+      reviewStatus: preserveManualStatus ? current.reviewStatus : "reviewed_pass",
+      metadataStatus: preserveManualStatus ? current.metadataStatus : "approved_semantic_review", metadataRevision: revision,
       metadataApprovalType: req.approval.type,
-      tagStatus: "reviewed_pass", tagConfidence: confidence,
+      tagStatus: preserveManualStatus ? current.tagStatus : "reviewed_pass", tagConfidence: confidence,
       foundationTaxonomyStatus: "CONFIRMED", projectionStatus: "REUSE", metaFoundationStatus: "ACTIVE",
-      metaFoundationPackId: pack.meta.packId, metaFoundationPackVersion: pack.meta.packVersion, metaFoundationHoldReason: null,
+      metaFoundationPackId: pack.meta.packId, metaFoundationPackVersion: pack.meta.packVersion,
+      metaFoundationHoldReason: preserveManualStatus ? current.metaFoundationHoldReason ?? null : null,
       l3Disposition: "ASSIGNED", l4Disposition: "ASSIGNED", curriculumApplicability: final.curriculumApplicability || "DEFAULT_SCOPE",
       defaultSelectable: final.defaultSelectable !== false, approvalEvidence: [...new Set([...(current.approvalEvidence || []), ...approvalEvidence])],
-      fieldStatus: { ...(current.fieldStatus || {}), ...Object.fromEntries(approvedFields.map(k => [k, fieldApproval])) }
+      fieldStatus
     });
     if (difficultyEvidenceDebt) {
       final.fieldStatus.difficulty = "EVIDENCE_DEBT";

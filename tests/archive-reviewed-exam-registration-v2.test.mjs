@@ -333,6 +333,33 @@ test("META_PIPELINE_AUDIT appends an added binding domain to an existing owner p
   assert.deepEqual(f.read(`${base}/pack.json`).ownedStandardUnitDomains, ["UNIT_NEW"]);
 });
 
+test("META_PIPELINE_AUDIT assigns a new TPL to the exact binding pack when its parent PT is external", t => {
+  const f = fixture(t);
+  const newBase = `${CANON}/packs/new-course`;
+  const parentBase = `${CANON}/packs/parent-course`;
+  const index = f.read(`${CANON}/registry_index.json`);
+  index.activePacks.push({ id: "PARENT_COURSE", version: "1.0.0", status: "ACTIVE" });
+  f.put(`${CANON}/registry_index.json`, index);
+  f.put(`${parentBase}/pack.json`, { schemaVersion: "meta-foundation-pack-v1", packId: "PARENT_COURSE", packVersion: "1.0.0",
+    canonicalStatus: "ACTIVE", curricula: ["2022"], standardCourses: ["중1 수학"], ownedStandardUnitDomains: ["UNIT_NEW"] });
+  f.put(`${parentBase}/taxonomy.json`, { status: "ACTIVE", problemTypes: [{ problemTypeKey: "PT_NEW", canonicalLabelKo: "새 유형",
+    definition: "기존 외부 owner의 유형", ownerPack: "PARENT_COURSE", status: "ACTIVE" }], templates: [] });
+  f.put(`${parentBase}/bindings.json`, { status: "ACTIVE", bindings: [] });
+  f.put(`${parentBase}/aliases.json`, { aliases: [] });
+  f.put(`${newBase}/taxonomy.json`, { status: "ACTIVE", problemTypes: [], templates: [] });
+  const originalTaxonomy = f.request.registryChanges.find(change => change.path === `${newBase}/taxonomy.json`).after;
+  f.request.registryChanges.find(change => change.path === `${newBase}/bindings.json`).after.bindings[0].ownerPack = "NEW_COURSE";
+  const evidenceRefs = f.request.registryChanges.find(change => change.path === `${newBase}/pack.json`).evidenceRefs;
+  f.request.registryChanges = f.request.registryChanges.filter(change => change.path !== `${newBase}/taxonomy.json`);
+  f.request.registryChanges.push({ path: `${newBase}/taxonomy.json`, collection: "templates", match: { templateKey: "TPL_NEW" }, before: null,
+    after: { ...originalTaxonomy.templates[0], ownerPack: "NEW_COURSE" }, evidenceRefs });
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.totalQuestions, 1);
+  assert.equal(f.read(`${newBase}/taxonomy.json`).templates[0].ownerPack, "NEW_COURSE");
+  assert.equal(f.read(`${newBase}/bindings.json`).bindings[0].problemTypeKey, "PT_NEW");
+});
+
 test("META_PIPELINE_AUDIT rejects an unbound PT/TPL registry addition", t => {
   const f = fixture(t);
   attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });
@@ -402,6 +429,57 @@ test("META_PIPELINE_AUDIT rebinds exact unapproved source tags without changing 
   assert.equal(f.read(META).records[0].problemTypeKey, "PT_NEW");
   assert.deepEqual(f.read(META).records[0].crossConceptKeys, ["CC_NEW"]);
   assert.equal(fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`), "utf8"), bytes);
+});
+
+test("META_PIPELINE_AUDIT resolves only explicitly pending fields on a partial metadata row", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, crossConceptKeys: [] };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  f.request.items[0].before.crossConceptKeys = [];
+  f.request.items[0].before.L3 = null;
+  f.request.items[0].before.L4 = null;
+  f.request.items[0].after.crossConceptKeys = ["CC_NEW"];
+  f.request.items[0].sourceMetadataBefore = { crossConceptKeys: [] };
+  const meta = f.read(META);
+  Object.assign(meta.records[0], { crossConceptKeys: [], reviewStatus: "manual_review",
+    metadataStatus: "approved_partial_with_explicit_holds", fieldStatus: { concept: "manual_review_pending" } });
+  f.put(META, meta);
+  attachMetaPipelineAudit(f);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.crossConceptKeys[0], "CC_NEW");
+  assert.equal(row.fieldStatus.concept, "approved_meta_pipeline_audit");
+  assert.equal(row.reviewStatus, "reviewed_pass");
+  assert.equal(row.metadataStatus, "approved_semantic_review");
+});
+
+test("META_PIPELINE_AUDIT keeps unrelated manual field holds after binding the audited fields", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, crossConceptKeys: [] };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  f.request.items[0].before.crossConceptKeys = [];
+  f.request.items[0].before.L3 = null;
+  f.request.items[0].before.L4 = null;
+  f.request.items[0].after.crossConceptKeys = ["CC_NEW"];
+  f.request.items[0].sourceMetadataBefore = { crossConceptKeys: [] };
+  const meta = f.read(META);
+  Object.assign(meta.records[0], { crossConceptKeys: [], reviewStatus: "manual_review",
+    metadataStatus: "approved_partial_with_explicit_holds", fieldStatus: {
+      concept: "manual_review_pending", difficulty: "manual_review_pending"
+    } });
+  f.put(META, meta);
+  attachMetaPipelineAudit(f);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.crossConceptKeys[0], "CC_NEW");
+  assert.equal(row.fieldStatus.concept, "approved_meta_pipeline_audit");
+  assert.equal(row.fieldStatus.difficulty, "manual_review_pending");
+  assert.equal(row.reviewStatus, "manual_review");
+  assert.equal(row.metadataStatus, "approved_partial_with_explicit_holds");
 });
 
 test("META_PIPELINE_AUDIT cannot rebind source tags on an already approved metadata row", t => {
