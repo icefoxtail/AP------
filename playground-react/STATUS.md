@@ -57,9 +57,9 @@ Standalone React app at `playground-react/`, on `feat/playground-react-migration
 - `npm run test:math` PASS: 370 semicircle combinations, 66 practice variant/input combinations and exact representative source cases.
 - `npm run build` PASS. KaTeX is split into its own chunk; no chunk-size warning.
 - Browser: 1440×900 desktop interaction sweep passed for all five basic cards, five semicircle structures and all 33 practice variants. KaTeX, real SVG boundaries and area-piece scrubbers were present. 390px mobile checks passed without horizontal page overflow. Browser console errors/warnings: 0.
-- Current commits: `0b8ef702d` (foundation), `7d8ea2ec8` (basic labs). The expanded source-derived geometry suite is ready to commit.
+- Current commits: `0b8ef702d` (foundation), `7d8ea2ec8` (basic labs), `f9e2e0b40` (source-derived geometry suite and visual proof upgrades).
 
 ## Remaining
 
-- Commit the verified expanded suite, push the feature branch, create a PR and attach it to this task.
+- Push the verified feature branch, create a PR and attach it to this task. Do not merge it.
 - A one-time continuation alarm could not be scheduled: Codex reported it could not verify this chat for scheduled updates. The active goal and this status file remain available for continuation.
