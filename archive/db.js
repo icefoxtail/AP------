@@ -28326,6 +28326,126 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학1"
     },
     {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_P10_Q01_20261019_B001_S1_S2.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 10쪽 고1 유사문항 S1·S2",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 2,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-01",
+      "rangeEndUnit": "평면좌표",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-01",
+          "rangeEndUnit": "평면좌표",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_Best1회_20261019_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 Best 1회 10~13쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-03",
+      "rangeEndUnit": "원의 방정식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-03",
+          "rangeEndUnit": "원의 방정식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_Best2회_P14_Q01_20261020_유사1.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 Best 2회 14쪽 고1 유사문항 1",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 1,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-01",
+      "rangeEndUnit": "평면좌표",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-01",
+          "rangeEndUnit": "평면좌표",
+          "rangeEndUnitOrder": 1
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 유리함수 85~88쪽 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-08",
+      "rangeStartUnit": "유리함수",
+      "rangeStartUnitOrder": 8,
+      "rangeEndUnitKey": "H22-C2-08",
+      "rangeEndUnit": "유리함수",
+      "rangeEndUnitOrder": 8,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-08",
+          "rangeStartUnit": "유리함수",
+          "rangeStartUnitOrder": 8,
+          "rangeEndUnitKey": "H22-C2-08",
+          "rangeEndUnit": "유리함수",
+          "rangeEndUnitOrder": 8
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
       "file": "textbooks/비상교육_공통수학2/비상_공통수학2_도형의방정식_익힘책_고1.js",
       "school": "비상교육",
       "topic": "비상 공통수학2 도형의 방정식 익힘책 고1",
@@ -28711,126 +28831,6 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-C2-03",
           "rangeEndUnit": "원의 방정식",
           "rangeEndUnitOrder": 3
-        }
-      ],
-      "primaryStandardCourse": "공통수학2"
-    },
-    {
-      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_Best1회_20261019_유사50.js",
-      "school": "백발백중",
-      "topic": "백발백중 공통수학2 Best 1회 10~13쪽 고1 유사문항 50",
-      "grade": "고1",
-      "semester": "2",
-      "examType": "textbook",
-      "subject": "공통수학2",
-      "contentType": "교과서",
-      "qCount": 50,
-      "rangeStartUnitKey": "H22-C2-01",
-      "rangeStartUnit": "평면좌표",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H22-C2-03",
-      "rangeEndUnit": "원의 방정식",
-      "rangeEndUnitOrder": 3,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학2",
-          "courseCode": "H22-C2",
-          "rangeStartUnitKey": "H22-C2-01",
-          "rangeStartUnit": "평면좌표",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-C2-03",
-          "rangeEndUnit": "원의 방정식",
-          "rangeEndUnitOrder": 3
-        }
-      ],
-      "primaryStandardCourse": "공통수학2"
-    },
-    {
-      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_Best2회_P14_Q01_20261020_유사1.js",
-      "school": "백발백중",
-      "topic": "백발백중 공통수학2 Best 2회 14쪽 고1 유사문항 1",
-      "grade": "고1",
-      "semester": "2",
-      "examType": "textbook",
-      "subject": "공통수학2",
-      "contentType": "교과서",
-      "qCount": 1,
-      "rangeStartUnitKey": "H22-C2-01",
-      "rangeStartUnit": "평면좌표",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H22-C2-01",
-      "rangeEndUnit": "평면좌표",
-      "rangeEndUnitOrder": 1,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학2",
-          "courseCode": "H22-C2",
-          "rangeStartUnitKey": "H22-C2-01",
-          "rangeStartUnit": "평면좌표",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-C2-01",
-          "rangeEndUnit": "평면좌표",
-          "rangeEndUnitOrder": 1
-        }
-      ],
-      "primaryStandardCourse": "공통수학2"
-    },
-    {
-      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_P10_Q01_20261019_B001_S1_S2.js",
-      "school": "백발백중",
-      "topic": "백발백중 공통수학2 10쪽 고1 유사문항 S1·S2",
-      "grade": "고1",
-      "semester": "2",
-      "examType": "textbook",
-      "subject": "공통수학2",
-      "contentType": "교과서",
-      "qCount": 2,
-      "rangeStartUnitKey": "H22-C2-01",
-      "rangeStartUnit": "평면좌표",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H22-C2-01",
-      "rangeEndUnit": "평면좌표",
-      "rangeEndUnitOrder": 1,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학2",
-          "courseCode": "H22-C2",
-          "rangeStartUnitKey": "H22-C2-01",
-          "rangeStartUnit": "평면좌표",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-C2-01",
-          "rangeEndUnit": "평면좌표",
-          "rangeEndUnitOrder": 1
-        }
-      ],
-      "primaryStandardCourse": "공통수학2"
-    },
-    {
-      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_유리함수_P85-88_20261021_유사50.js",
-      "school": "백발백중",
-      "topic": "백발백중 공통수학2 유리함수 85~88쪽 유사문항 50",
-      "grade": "고1",
-      "semester": "2",
-      "examType": "textbook",
-      "subject": "공통수학2",
-      "contentType": "교과서",
-      "qCount": 50,
-      "rangeStartUnitKey": "H22-C2-08",
-      "rangeStartUnit": "유리함수",
-      "rangeStartUnitOrder": 8,
-      "rangeEndUnitKey": "H22-C2-08",
-      "rangeEndUnit": "유리함수",
-      "rangeEndUnitOrder": 8,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학2",
-          "courseCode": "H22-C2",
-          "rangeStartUnitKey": "H22-C2-08",
-          "rangeStartUnit": "유리함수",
-          "rangeStartUnitOrder": 8,
-          "rangeEndUnitKey": "H22-C2-08",
-          "rangeEndUnit": "유리함수",
-          "rangeEndUnitOrder": 8
         }
       ],
       "primaryStandardCourse": "공통수학2"

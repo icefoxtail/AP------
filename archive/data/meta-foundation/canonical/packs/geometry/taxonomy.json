@@ -1,8 +1,8 @@
 {
   "schemaVersion": "meta-foundation-taxonomy-v1",
   "status": "ACTIVE",
-  "problemTypeCount": 5,
-  "templateCount": 12,
+  "problemTypeCount": 6,
+  "templateCount": 13,
   "problemTypes": [
     {
       "problemTypeKey": "PT_GEO_HYPERBOLA",
@@ -81,6 +81,21 @@
         "qid_v1_3d0cd72452cb0b1f8c4e1f0f2226001352f625e9036334581df37c6d2d5837d5"
       ],
       "supportingItemCount": 1
+    },
+    {
+      "problemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "canonicalLabelKo": "평면벡터 문제",
+      "definition": "평면벡터의 뜻과 연산·성분 관계를 이용해 벡터를 표현·계산하거나 도형 조건을 해결하는 문제 유형.",
+      "ownerPack": "GEOMETRY",
+      "status": "ACTIVE",
+      "sourceUnit": "H22-GE-05",
+      "supportingQuestionUids": [
+        "qid_v1_5b9c200d1155bef8c6cd6885819b58f1a0e8b934705e4422b13d70efbb7b1d5e",
+        "qid_v1_7d76617f8e58e6088953ab7c65119e4ebe9a2744dd295b6c28c9f02deadede9d",
+        "qid_v1_8e1685e14cd7b72348c094afd511f09adb9e815e9e8be219fdc0d69b0ea7c0e6",
+        "qid_v1_d07ff4ff3245375d2eb05db970627445c76be2fa860fc3bd23e9ad1a43f6b00e"
+      ],
+      "supportingItemCount": 4
     }
   ],
   "templates": [
@@ -253,6 +268,22 @@
         "qid_v1_e152a8afe2e7a4c7646e71fa887a7881bb326ae59c77cc380784f0729cc958e3"
       ],
       "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_GEO_VECTOR_BASIC_OPERATION",
+      "canonicalLabelKo": "벡터의 기본 연산",
+      "definition": "벡터의 합·차·실수배와 성분 관계를 식으로 나타내고, 평행성·동일성·크기 조건을 계산해 결론을 구하는 풀이 구조.",
+      "parentProblemTypeKey": "PT_GEO_PLANE_VECTOR",
+      "ownerPack": "GEOMETRY",
+      "status": "ACTIVE",
+      "sourceUnit": "H22-GE-05",
+      "supportingQuestionUids": [
+        "qid_v1_5b9c200d1155bef8c6cd6885819b58f1a0e8b934705e4422b13d70efbb7b1d5e",
+        "qid_v1_7d76617f8e58e6088953ab7c65119e4ebe9a2744dd295b6c28c9f02deadede9d",
+        "qid_v1_8e1685e14cd7b72348c094afd511f09adb9e815e9e8be219fdc0d69b0ea7c0e6",
+        "qid_v1_d07ff4ff3245375d2eb05db970627445c76be2fa860fc3bd23e9ad1a43f6b00e"
+      ],
+      "supportingItemCount": 4
     }
   ]
 }
