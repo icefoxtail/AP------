@@ -1734,9 +1734,7 @@ function renderClassTopBarV4B(cls, summary, today) {
 // Keep the existing feature implementations and their save contracts unchanged.
 function openClassroomFeature(cid, feature) {
     const classId = String(cid || '');
-    const cls = state.db?.classes?.find(row => String(row.id) === classId);
-    if (!cls || String(state.ui?.currentClassId || '') !== classId ||
-        (typeof canCurrentUserAccessClass === 'function' && !canCurrentUserAccessClass(classId))) {
+    if (String(state.ui?.currentClassId || '') !== classId || !isClassroomClassAccessible(classId)) {
         toast('현재 반 정보를 확인한 뒤 다시 시도해주세요.', 'warn');
         return false;
     }
@@ -1871,15 +1869,27 @@ window.openStudentActionSheetV4 = function(sid, cid, hasPlanner) {
     showModal('학생 관리', html);
 };
 
+function isClassroomClassAccessible(classId) {
+    const id = String(classId || '');
+    const cls = (state.db?.classes || []).find(row => String(row.id) === id);
+    if (!id || !cls || Number(cls.is_active) === 0) return false;
+    if (typeof canCurrentUserAccessClass === 'function' && !canCurrentUserAccessClass(id)) return false;
+    if (typeof isClassVisibleForCurrentTeacher === 'function') return isClassVisibleForCurrentTeacher(cls);
+
+    if (state.auth?.role === 'admin' || state.ui?.viewScope === 'all') return true;
+    const currentTeacher = typeof getTeacherNameForUI === 'function'
+        ? getTeacherNameForUI()
+        : (state.ui?.userName || state.auth?.name || '');
+    const classTeacher = String(cls.teacher_name || '').replace(/\s*선생님\s*$/g, '').trim();
+    const teacher = String(currentTeacher || '').replace(/\s*선생님\s*$/g, '').trim();
+    return !classTeacher || classTeacher === teacher;
+}
+
 // Classroom step 1: same-screen navigation among accessible active classes.
 // Reuse the progress screen's teacher class roster, but never offer a class
 // denied by the actual class access guard.
 function getClassroomSwitchableClasses(currentClassId) {
-    return getClassProgressAssignedClasses(currentClassId).filter(cls =>
-        Number(cls?.is_active) !== 0 &&
-        (typeof canCurrentUserAccessClass !== 'function' || canCurrentUserAccessClass(cls.id)) &&
-        (typeof isClassVisibleForCurrentTeacher !== 'function' || isClassVisibleForCurrentTeacher(cls))
-    );
+    return getClassProgressAssignedClasses(currentClassId).filter(cls => isClassroomClassAccessible(cls.id));
 }
 
 function renderClassroomSwitchTabs(classId) {
@@ -1977,19 +1987,39 @@ function renderClassroomManagementToolbar(cid) {
 
 // [Classroom v4-B]: 안정형 현장 운영판
 function renderClass(cid, options = {}) {
+    const classId = String(cid || '');
+    const cls = (state.db?.classes || []).find(row => String(row.id) === classId);
+    if (!cls) {
+        const root = document.getElementById('app-root');
+        if (root) root.innerHTML = `<div class="card apms-card" style="max-width:850px; margin:0 auto; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">반 정보를 찾을 수 없습니다.</div>`;
+        return false;
+    }
+    if (!isClassroomClassAccessible(classId)) {
+        if (!state.ui) state.ui = {};
+        const root = document.getElementById('app-root');
+        const existingShell = root?.querySelector?.('.ap-classroom-shell');
+        const existingClassId = String(existingShell?.getAttribute?.('data-class-id') || '');
+        if (existingClassId && isClassroomClassAccessible(existingClassId)) {
+            state.ui.currentClassId = existingClassId;
+        } else if (existingShell) {
+            state.ui.currentClassId = '';
+            if (root) {
+                root.innerHTML = `<div class="card apms-card" role="status" style="max-width:850px; margin:0 auto; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">이 반에 접근할 수 없습니다.</div>`;
+            }
+        } else if (String(state.ui.currentClassId || '') === classId) {
+            state.ui.currentClassId = '';
+        }
+        toast('이 반에 접근할 수 없습니다.', 'warn');
+        return false;
+    }
+
     injectClassroomStyles();
     const defaultTab = state.ui.classDefaultTab || '';
     state.ui.classDefaultTab = null;
-    state.ui.currentClassId = String(cid);
+    state.ui.currentClassId = classId;
 
     if (typeof loadEnrollmentFoundation === 'function') {
         loadEnrollmentFoundation({ class_id: cid }, { silent: true }).catch(() => {});
-    }
-
-    const cls = state.db.classes.find(c => String(c.id) === String(cid));
-    if (!cls) {
-        document.getElementById('app-root').innerHTML = `<div class="card apms-card" style="max-width:850px; margin:0 auto; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">반 정보를 찾을 수 없습니다.</div>`;
-        return;
     }
 
     const today = getClassroomOperationDate();
