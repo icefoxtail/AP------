@@ -2554,3 +2554,24 @@ body.dark .omr-card {
   }
 }
 
+
+/* Keep the class strip fixed while its progress data is refreshed. */
+.ap-class-progress-class-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--surface);
+}
+.ap-class-progress-modal.is-class-switching .ap-class-progress-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+.ap-class-progress-switch-loading {
+  width: 100%;
+  padding: 54px 12px;
+  color: var(--secondary);
+  font-size: 13px;
+  text-align: center;
+}

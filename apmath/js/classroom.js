@@ -1863,7 +1863,7 @@ function renderClass(cid) {
     const plannerEnabled = isPlannerTargetClass(cls);
 
     document.getElementById('app-root').innerHTML = `
-        <div class="cls-fade-in cls-v4-wrap ap-classroom-shell">
+        <div class="cls-fade-in cls-v4-wrap ap-classroom-shell" data-class-id="${apEscapeHtml(String(cid))}">
             ${renderClassTopBarV4B(cls, summary, today)}
             ${renderClassToolBarV4B(cid, plannerEnabled, today)}
             <div class="cls-v4-section ap-classroom-section">
@@ -2271,7 +2271,7 @@ function renderClassProgressClassTabs(currentClassId) {
     return `<nav class="ap-class-progress-class-tabs" aria-label="담당 반 전환" role="group">${classes.map(cls => {
         const selected = String(cls.id) === String(currentClassId);
         const label = [cls.grade, cls.name].filter(Boolean).join(' · ') || String(cls.name || cls.id || '반');
-        return `<button type="button" class="ap-class-progress-class-tab${selected ? ' is-active' : ''}" aria-pressed="${selected ? 'true' : 'false'}"${modalState.isSaving ? ' disabled' : ''} onclick="requestClassProgressClassSwitch(${classProgressJsArg(cls.id)})">${apEscapeHtml(label)}</button>`;
+        return `<button type="button" class="ap-class-progress-class-tab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}"${modalState.isSaving ? ' disabled' : ''} onclick="requestClassProgressClassSwitch(${classProgressJsArg(cls.id)})">${apEscapeHtml(label)}</button>`;
     }).join('')}</nav>`;
 }
 
@@ -3440,6 +3440,13 @@ function addClassProgressCourseFromSelect() {
 }
 
 async function openClassRecordModal(cid, requestedDate) {
+    const previousModalState = state.ui?.classProgressModalState;
+    const openProgressModal = typeof document.querySelector === 'function'
+        ? document.querySelector('.ap-class-progress-modal') : null;
+    const switchingClass = !!(openProgressModal && previousModalState?.classId
+        && String(previousModalState.classId) !== String(cid));
+    const previousTabsLeft = switchingClass
+        ? (openProgressModal.querySelector('.ap-class-progress-class-tabs')?.scrollLeft || 0) : 0;
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId: cid });
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     const todayStr = normalizeClassroomDate(requestedDate) || getClassroomOperationDate();
@@ -3451,7 +3458,28 @@ async function openClassRecordModal(cid, requestedDate) {
     state.ui.classProgressModalState = { classId: String(cid), date: todayStr, loading: true };
     state.ui.classProgressModalMeta = { classId: String(cid), date: todayStr, loading: true };
 
-    showModal('진도관리', '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;">지속형 진도 상태를 불러오는 중…</div>');
+    if (switchingClass) {
+        // Keep the existing modal and class strip steady. Never show the old class data as the new class.
+        openProgressModal.classList.add('is-class-switching');
+        openProgressModal.setAttribute('aria-busy', 'true');
+        const title = openProgressModal.querySelector('.ap-class-progress-context__title');
+        if (title) title.textContent = String(cls.name || '');
+        const subtitle = openProgressModal.querySelector('.ap-class-progress-context__meta');
+        if (subtitle) subtitle.textContent = '현재 수업 진도 · ' + todayStr;
+        const tabs = openProgressModal.querySelector('.ap-class-progress-class-tabs');
+        if (tabs) tabs.querySelectorAll('.ap-class-progress-class-tab').forEach(button => {
+            const selected = button.getAttribute('data-class-id') === String(cid);
+            button.classList.toggle('is-active', selected);
+            button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+            button.disabled = true;
+        });
+        const layout = openProgressModal.querySelector('.ap-class-progress-layout');
+        if (layout) layout.innerHTML = '<div class="ap-class-progress-switch-loading" role="status">선택한 반의 진도를 불러오는 중…</div>';
+        const footer = openProgressModal.querySelector('.ap-class-progress-footer');
+        if (footer) footer.hidden = true;
+    } else {
+        showModal('진도관리', '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;">지속형 진도 상태를 불러오는 중…</div>');
+    }
     const [resolvedProgress, dailyState, phaseState] = await Promise.all([
         loadClassProgressForDate(cid, todayStr),
         loadClassDailyRecordForDate(cid, todayStr),
@@ -3617,6 +3645,14 @@ async function openClassRecordModal(cid, requestedDate) {
                 <button class="btn apms-button apms-button--primary btn-primary ap-class-progress-save" ${dailyState.loadFailed ? 'disabled' : ''}${dailyState.loadFailed ? ' aria-disabled="true"' : ''} onclick="saveClassRecord(${classProgressJsArg(cid)}, ${classProgressJsArg(todayStr)})">진도 저장하기</button>
             </div>
         </div>`);
+    if (switchingClass) {
+        const modalBody = document.getElementById('modal-body');
+        if (modalBody) {
+            modalBody.scrollTop = 0;
+            const newTabs = modalBody.querySelector('.ap-class-progress-class-tabs');
+            if (newTabs) newTabs.scrollLeft = previousTabsLeft;
+        }
+    }
 }
 
 function syncClassDailyRecordToState(classId, dateStr, record, progressRows) {

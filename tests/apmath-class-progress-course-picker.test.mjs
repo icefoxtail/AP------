@@ -389,7 +389,44 @@ test('opening another class reloads only that class textbook, daily progress, an
     assert.deepEqual(Array.from(context.state.ui.classProgressModalState.books, book => book.id), ['book-1']);
     assert.deepEqual(Array.from(context.state.ui.classProgressModalState.selectedPathDraft), ['path-class-1']);
 
+    const classTitle = { textContent: '' };
+    const classMeta = { textContent: '' };
+    const transitionLayout = { innerHTML: '' };
+    const transitionFooter = { hidden: false };
+    const buttons = ['class-1', 'class-2'].map(id => ({
+        id, disabled: false, pressed: '',
+        getAttribute(name) { return name === 'data-class-id' ? this.id : ''; },
+        setAttribute(name, value) { if (name === 'aria-pressed') this.pressed = value; },
+        classList: { toggle() {} }
+    }));
+    const oldTabs = { scrollLeft: 70, querySelectorAll: () => buttons };
+    const newTabs = { scrollLeft: 0 };
+    const modalBody = {
+        scrollTop: 180,
+        querySelector(selector) { return selector === '.ap-class-progress-class-tabs' ? newTabs : null; }
+    };
+    const nodes = {
+        '.ap-class-progress-context__title': classTitle,
+        '.ap-class-progress-context__meta': classMeta,
+        '.ap-class-progress-class-tabs': oldTabs,
+        '.ap-class-progress-layout': transitionLayout,
+        '.ap-class-progress-footer': transitionFooter
+    };
+    const openRoot = {
+        classList: { add() {} },
+        setAttribute() {},
+        querySelector(selector) { return nodes[selector] || null; }
+    };
+    context.document.querySelector = selector => selector === '.ap-class-progress-modal' ? openRoot : null;
+    context._elements.set('modal-body', modalBody);
+
     await context.openClassRecordModal('class-2', '2026-09-17');
+    assert.match(transitionLayout.innerHTML, /진도를 불러오는 중/);
+    assert.equal(transitionFooter.hidden, true);
+    assert.equal(classTitle.textContent, '중2 B반');
+    assert.equal(buttons[1].pressed, 'true');
+    assert.equal(modalBody.scrollTop, 0);
+    assert.equal(newTabs.scrollLeft, 70);
     const modalState = context.state.ui.classProgressModalState;
     assert.equal(modalState.classId, 'class-2');
     assert.deepEqual(Array.from(modalState.books, book => book.id), ['book-2']);
@@ -402,6 +439,13 @@ test('opening another class reloads only that class textbook, daily progress, an
     ]);
     assert.match(context._modalHtml, /2반 교재/);
     assert.doesNotMatch(context._modalHtml, /1반 교재|path-class-1/);
+});
+
+test('class return checks exact class ID and switch keeps a stable progress shell', () => {
+    const uiSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/ui.js'), 'utf8');
+    assert.ok(classroomSource.includes('data-class-id="${apEscapeHtml(String(cid))}"'));
+    assert.ok(uiSource.includes("existingClassroom.getAttribute('data-class-id')"));
+    assert.ok(progressCss.includes('.ap-class-progress-modal.is-class-switching .ap-class-progress-layout'));
 });
 
 test('class tabs remain usable on desktop and become horizontally scrollable touch targets on mobile', () => {

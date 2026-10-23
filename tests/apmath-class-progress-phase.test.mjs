@@ -253,7 +253,7 @@ test('phase load failure disables only the status selector and leaves ordinary p
         'class-progress-phase?class_id=c1&date=2026-09-18',
         'class-daily-records'
     ]);
-    assert.equal(context._closeCalls.length, 1);
+    assert.equal(context._closeCalls.length, 0);
 });
 
 test('a phase-only change is persisted after the daily record even when there are zero canonical items', async () => {
@@ -273,7 +273,7 @@ test('a phase-only change is persisted after the daily record even when there ar
         effective_date: '2026-09-18',
         phase: 'semester2_midterm'
     });
-    assert.equal(context._closeCalls.length, 1);
+    assert.equal(context._closeCalls.length, 0);
 });
 
 test('phase-only changes preserve canonical unit paths and save after existing canonical progress', async () => {
@@ -335,7 +335,7 @@ test('unchanged phase causes no phase write and failed phase write keeps the mod
     const unchanged = makeContext({ loadedPhase: 'regular', hasStructuredSnapshot: false });
     await unchanged.saveClassRecord('c1', '2026-09-18');
     assert.deepEqual(unchanged._apiCalls.map(call => call.route), ['class-daily-records']);
-    assert.equal(unchanged._closeCalls.length, 1);
+    assert.equal(unchanged._closeCalls.length, 0);
 
     const failed = makeContext({ loadedPhase: 'regular', hasStructuredSnapshot: false });
     failed._elements.set('record-progress-phase-select', { value: 'semester1_final' });
