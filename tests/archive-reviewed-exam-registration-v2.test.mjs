@@ -221,6 +221,38 @@ test("META_PIPELINE_AUDIT promotes missing PT/TPL/CC definitions from audited UI
   assert.equal(f.read(META).records[0].templateKey, "TPL_NEW");
 });
 
+test("META_PIPELINE_AUDIT appends an added binding domain to an existing owner pack", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });
+  const base = `${CANON}/packs/new-course`;
+  const activePackChange = f.request.registryChanges.find(c => c.path === `${CANON}/registry_index.json` && c.collection === "activePacks");
+  const packChange = f.request.registryChanges.find(c => c.path === `${base}/pack.json`);
+  const taxonomyChange = f.request.registryChanges.find(c => c.path === `${base}/taxonomy.json`);
+  const bindingChange = f.request.registryChanges.find(c => c.path === `${base}/bindings.json`);
+  const aliasesChange = f.request.registryChanges.find(c => c.path === `${base}/aliases.json`);
+  const pack = { ...packChange.after, ownedStandardUnitDomains: [] };
+  const index = f.read(`${CANON}/registry_index.json`);
+  index.activePacks.push({ id: pack.packId, version: pack.packVersion, status: "ACTIVE" });
+  f.put(`${CANON}/registry_index.json`, index);
+  f.put(`${base}/pack.json`, pack);
+  f.put(`${base}/taxonomy.json`, { status: "ACTIVE", problemTypes: [], templates: [] });
+  f.put(`${base}/bindings.json`, { status: "ACTIVE", bindings: [], applicabilityRules: [] });
+  f.put(`${base}/aliases.json`, { aliases: [] });
+  const evidenceRefs = packChange.evidenceRefs;
+  f.request.registryChanges = f.request.registryChanges.filter(c => ![activePackChange, packChange, taxonomyChange, bindingChange, aliasesChange].includes(c));
+  f.request.registryChanges.push(
+    { path: `${base}/taxonomy.json`, collection: "problemTypes", match: { problemTypeKey: "PT_NEW" }, before: null,
+      after: taxonomyChange.after.problemTypes[0], evidenceRefs },
+    { path: `${base}/taxonomy.json`, collection: "templates", match: { templateKey: "TPL_NEW" }, before: null,
+      after: taxonomyChange.after.templates[0], evidenceRefs },
+    { path: `${base}/bindings.json`, collection: "bindings", match: { curriculum: "2022", standardCourse: "중1 수학",
+      standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW", problemTypeKey: "PT_NEW" }, before: null,
+      after: bindingChange.after.bindings[0], evidenceRefs }
+  );
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.deepEqual(f.read(`${base}/pack.json`).ownedStandardUnitDomains, ["UNIT_NEW"]);
+});
+
 test("META_PIPELINE_AUDIT rejects an unbound PT/TPL registry addition", t => {
   const f = fixture(t);
   attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });
