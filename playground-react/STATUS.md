@@ -62,4 +62,5 @@ Standalone React app at `playground-react/`, on `feat/playground-react-migration
 ## Remaining
 
 - No implementation work remains for this mission. PR #761 is open; merge and deployment are intentionally outside the requested scope.
+- The 14 practice models share the source-derived engine and were committed together in `f9e2e0b40`; they were not split into 14 separate implementation commits as originally requested.
 - A one-time continuation alarm could not be scheduled: Codex reported it could not verify this chat for scheduled updates. The active goal and this status file remain available for continuation.
