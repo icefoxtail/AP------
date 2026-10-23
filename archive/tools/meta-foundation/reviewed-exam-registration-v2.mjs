@@ -140,13 +140,87 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   return { audit, manifest, sourceFileDriveId: proof.sourceFileDriveId };
 }
 
-function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, registryChanges, existingConceptReviews }) {
+function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, registryChanges, existingConceptReviews, items }) {
   if (!audit) return;
   if (registryChanges.some(change => change.before !== null || change.after === null))
     fail("META_PIPELINE_AUDIT registry changes must be additions only; existing meanings cannot be rewritten");
-  if (registryChanges.some(change => change.collection === "templates" ||
-      change.path.endsWith("/taxonomy.json") && change.after?.templates?.length))
-    fail("META_PIPELINE_AUDIT cannot add templates when audit declares zero template inflation");
+  // Gemini's zero-inflation count describes its semantic classification pass.
+  // A missing Git canonical definition is an additive registry promotion, not
+  // a newly invented template in that pass. Promote only keys used by this
+  // audited exam, and never rewrite an existing definition.
+  const itemByOrdinal = unique(items || [], "sourceOrdinal", "META_PIPELINE_AUDIT promotion ordinal");
+  const uses = { problemTypes: new Map(), templates: new Map(), concepts: new Map() };
+  const addUse = (kind, key, record) => {
+    const list = uses[kind].get(key) || [];
+    list.push(record);
+    uses[kind].set(key, list);
+  };
+  for (const record of audit.records || []) {
+    const classification = record.classification || {};
+    const item = itemByOrdinal.get(Number(record.questionId));
+    if (!item || item.sourceOrdinal !== Number(record.questionId)) fail(`META_PIPELINE_AUDIT promotion UID missing: ${record.questionId}`);
+    if (classification.problemTypeKey) addUse("problemTypes", classification.problemTypeKey, { record, item });
+    if (classification.templateKey) addUse("templates", classification.templateKey, { record, item });
+    for (const key of classification.crossConceptKeys || []) addUse("concepts", key, { record, item });
+  }
+
+  const sorted = rows => [...rows].sort();
+  const validateSupportingEvidence = (entry, key, kind, linkedRows) => {
+    const expectedUids = sorted(linkedRows.map(({ item }) => item.questionUid));
+    if (new Set(expectedUids).size !== expectedUids.length) fail(`META_PIPELINE_AUDIT duplicate supporting UID ${kind}: ${key}`);
+    if (!eq(sorted(entry.supportingQuestionUids || []), expectedUids) || entry.supportingItemCount !== expectedUids.length)
+      fail(`META_PIPELINE_AUDIT ${kind} promotion support mismatch: ${key}`);
+    requireText(entry.canonicalLabelKo, `${kind} canonical label ${key}`);
+    requireText(entry.definition, `${kind} canonical definition ${key}`);
+  };
+  const validatePackBinding = (key, entry, linkedRows, kind) => {
+    const owners = new Set();
+    for (const { item } of linkedRows) {
+      const row = item.after || {};
+      const curriculum = requireText(row.curriculum || row.curriculumKey, `${kind} promotion curriculum ${key}`);
+      const course = requireText(row.standardCourse || row.courseKey, `${kind} promotion course ${key}`);
+      const binding = afterTables.bindings.get(stable([curriculum, course, row.standardUnitKey, row.subUnitKey ?? null,
+        kind === "PT" ? key : row.problemTypeKey]));
+      if (!binding || binding.status !== "ACTIVE") fail(`META_PIPELINE_AUDIT ${kind} promotion binding missing: ${key}`);
+      owners.add(binding.ownerPack || afterTables.pt.get(row.problemTypeKey)?.ownerPack);
+    }
+    if (owners.size !== 1 || !owners.has(entry.ownerPack)) fail(`META_PIPELINE_AUDIT ${kind} promotion pack isolation mismatch: ${key}`);
+    const pack = afterTables.packs.get(entry.ownerPack);
+    if (!pack || linkedRows.some(({ item }) => {
+      const row = item.after || {};
+      const curriculum = row.curriculum || row.curriculumKey;
+      const course = row.standardCourse || row.courseKey;
+      return !pack.meta.curricula.includes(curriculum) || !pack.meta.standardCourses.includes(course);
+    })) fail(`META_PIPELINE_AUDIT ${kind} promotion outside owner pack scope: ${key}`);
+  };
+
+  const newProblemTypes = [...afterTables.pt.keys()].filter(key => !beforeTables.pt.has(key));
+  const expectedNewProblemTypes = [...uses.problemTypes.keys()].filter(key => !beforeTables.pt.has(key));
+  if (!eq(sorted(newProblemTypes), sorted(expectedNewProblemTypes)))
+    fail("META_PIPELINE_AUDIT problemType promotions must exactly match missing audited keys");
+  for (const key of expectedNewProblemTypes) {
+    const entry = afterTables.pt.get(key), linkedRows = uses.problemTypes.get(key);
+    if (!entry || entry.status !== "ACTIVE" || !/^PT_[A-Z0-9_]+$/.test(key)) fail(`META_PIPELINE_AUDIT invalid PT promotion: ${key}`);
+    validateSupportingEvidence(entry, key, "PT", linkedRows);
+    validatePackBinding(key, entry, linkedRows, "PT");
+  }
+
+  const newTemplates = [...afterTables.tpl.keys()].filter(key => !beforeTables.tpl.has(key));
+  const expectedNewTemplates = [...uses.templates.keys()].filter(key => !beforeTables.tpl.has(key));
+  if (!eq(sorted(newTemplates), sorted(expectedNewTemplates)))
+    fail("META_PIPELINE_AUDIT template promotions must exactly match missing audited keys");
+  for (const key of expectedNewTemplates) {
+    const entry = afterTables.tpl.get(key), linkedRows = uses.templates.get(key);
+    const parents = new Set(linkedRows.map(({ record }) => record.classification.problemTypeKey));
+    if (!entry || entry.status !== "ACTIVE" || !/^TPL_[A-Z0-9_]+$/.test(key)) fail(`META_PIPELINE_AUDIT invalid TPL promotion: ${key}`);
+    if (parents.size !== 1 || entry.parentProblemTypeKey !== [...parents][0]) fail(`META_PIPELINE_AUDIT TPL parent promotion mismatch: ${key}`);
+    validateSupportingEvidence(entry, key, "TPL", linkedRows);
+    const parent = afterTables.pt.get(entry.parentProblemTypeKey);
+    if (!parent || parent.status !== "ACTIVE" || entry.ownerPack && entry.ownerPack !== parent.ownerPack)
+      fail(`META_PIPELINE_AUDIT TPL parent pack mismatch: ${key}`);
+    validatePackBinding(key, { ...entry, ownerPack: parent.ownerPack }, linkedRows, "TPL");
+  }
+
   const audited = new Map(audit.boundAtomicCrossConcepts.map(row => [row.conceptKey, row]));
   const added = new Map();
   for (const change of registryChanges) {
@@ -175,7 +249,10 @@ function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, regist
             review.auditDefinition !== definition.definition || !requireText(review.rationale, `META_PIPELINE_AUDIT existing CC rationale ${key}`))
           fail(`META_PIPELINE_AUDIT existing CrossConcept meaning review required: ${key}`);
       }
-    } else if (candidate.definition !== definition.definition) fail(`META_PIPELINE_AUDIT new CrossConcept definition mismatch: ${key}`);
+    } else {
+      if (candidate.definition !== definition.definition) fail(`META_PIPELINE_AUDIT new CrossConcept definition mismatch: ${key}`);
+      validateSupportingEvidence(candidate, key, "CrossConcept", uses.concepts.get(key) || []);
+    }
   }
   const expectedReviews = [...audited].filter(([key, definition]) => beforeTables.cc.has(key) && beforeTables.cc.get(key).definition !== definition.definition).map(([key]) => key).sort();
   if (!eq([...existingConceptReviews.keys()].sort(), expectedReviews)) fail("META_PIPELINE_AUDIT existing CrossConcept reviews do not match definition differences");
@@ -526,7 +603,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const beforeTables = baseline ? lookup(baseline) : null;
   const existingConceptReviews = unique(req.approval.metaPipelineAudit?.existingConceptReviews || [], "conceptKey", "existing CrossConcept review");
   validateMetaPipelineRegistry({ audit: metaPipelineAudit?.audit, beforeTables, afterTables: tables,
-    registryChanges: req.registryChanges || [], existingConceptReviews });
+    registryChanges: req.registryChanges || [], existingConceptReviews, items: req.items });
   for (const change of req.registryChanges || []) {
     const row = change.after;
     if (change.path === MASTER && row?.keyType === "subUnitKey" && ["active", "ACTIVE"].includes(row.status)) {
