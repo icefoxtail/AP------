@@ -61,7 +61,7 @@ assert.equal(check('boundary','boundary-squarecut',{s:8}).perimeter,'24 + 4π cm
 assert.equal(check('boundary','boundary-squarecut',{s:8}).area,'64 − 8π cm²');
 assert.equal(check('boundary','boundary-track',{s:8}).perimeter,'8π + 16 cm');
 assert.equal(check('boundary','boundary-track',{s:8}).area,'16π + 64 cm²');
-assert.equal(check('boundary','boundary-ring',{R:8,r:4,theta:90}).terms[0].value,'4π');
+assert.equal(check('boundary','boundary-ring',{R:8,r:4,theta:90}).terms[0].value,'4π cm');
 assert.equal(check('square','square-lens',{s:8}).terms[0].value,'32π cm²');
 assert.equal(check('square','square-flower',{s:8}).area,'64 − 16π cm²');
 assert.equal(check('square','square-inscribed',{s:8}).area,'64π − 128 cm²');
