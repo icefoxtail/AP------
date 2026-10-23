@@ -51,6 +51,7 @@ node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --requ
 - `archive-meta-pipeline-source-parity-v1` 보고서는 Drive source SHA와 현재 production source SHA/blob SHA를 함께 결속한다. qid별 student fields (`id`, 지문, 보기, 정답, 해설, image/SVG 참조, 레이아웃) digest가 같고 source/solution 발췌가 Drive 원본에서 확인되었음을 기록한다. raw JS 메타 필드만 달라 raw SHA가 다를 때도 학생 노출 payload parity가 입증되어야 등록할 수 있다.
 - 기존 CrossConcept key는 canonical definition을 변경하지 않는다. audit definition wording이 canonical과 다르면 label이 정확히 같고 동일 개념의 관점 차이라는 qid/개념별 rationale을 `existingConceptReviews`에 기록해야 재사용할 수 있다. 새 key만 `registryChanges`로 추가할 수 있으며 템플릿 추가와 기존 key 의미 수정·삭제는 거부한다.
 - Source JS의 advanced metadata placeholder는 `projectionStatus: BINDING_PENDING`이고 PT/TPL의 null 사유가 명시된 경우에만 정식 메타 projection이 대체할 수 있다. 값이 이미 있거나 보류 사유가 없는 source metadata 충돌은 거부하며 student-facing source bytes는 수정하지 않는다.
+- 이 감사 유형은 1~5 `difficultyBucket`을 판정하지 않는다. 기존 bucket이 숫자형 1~5가 아니고 source JS에 별도 1~5 값도 없으면, 요청이 기존 잘못된 값을 정확한 `before`로 결속해 `after: null`로 지우고 `unreviewedFields`에 `EVIDENCE_DEBT`와 사유를 기록해야 한다. `level`에서 bucket을 계산하지 않는다.
 - 감사 records, 매니페스트 `recordsToBind`, 등록 요청 `items`는 source ordinal별 PT/TPL/CrossConcept/단원 값이 정확히 일치해야 한다. 결정적 풀이 발췌와 시각자료 확인 필드도 qid마다 필요하다.
 
 이 유형의 등록 receipt는 `examFinalQaStatus: NOT_EVALUATED_BY_REGISTRAR`를 유지한다. 문항 메타 provenance에는 `metadataApprovalType: META_PIPELINE_AUDIT`, `tagConfidence: meta_pipeline_audit`, `fieldStatus.*: approved_meta_pipeline_audit`를 기록해 다른 승인 경로와 구별한다.

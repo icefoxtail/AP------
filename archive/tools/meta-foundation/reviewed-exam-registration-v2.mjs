@@ -559,7 +559,19 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     });
     if (checked.identityChanged) { Object.assign(id, checked.identityAfter); identityChanged = true; }
     appliedIdentityRecords.push(structuredClone(id));
-    if (!["하", "중", "상"].includes(final.level) || !Number.isInteger(final.difficultyBucket) || final.difficultyBucket < 1 || final.difficultyBucket > 5) fail(`level/difficulty invalid: ${current.questionUid}`);
+    if (!["하", "중", "상"].includes(final.level)) fail(`level invalid: ${current.questionUid}`);
+    let difficultyEvidenceDebt = null;
+    if (!Number.isInteger(final.difficultyBucket) || final.difficultyBucket < 1 || final.difficultyBucket > 5) {
+      const debt = req.approval.type === "META_PIPELINE_AUDIT"
+        ? (req.approval.metaPipelineAudit.unreviewedFields || []).find(row => row.field === "difficultyBucket" && row.status === "EVIDENCE_DEBT")
+        : null;
+      const currentBucket = current.difficultyBucket;
+      const currentBucketValid = Number.isInteger(currentBucket) && currentBucket >= 1 && currentBucket <= 5;
+      if (!debt || !requireText(debt.reason, "difficultyBucket EVIDENCE_DEBT reason") || patch.after.difficultyBucket !== null ||
+          currentBucketValid || Object.hasOwn(q, "difficultyBucket")) fail(`difficultyBucket invalid without explicit META_PIPELINE_AUDIT EVIDENCE_DEBT: ${current.questionUid}`);
+      final.difficultyBucket = null;
+      difficultyEvidenceDebt = debt.reason;
+    }
     requireText(final.integrationPattern, "integrationPattern (explicit NONE if not applicable)");
     const resolved = resolve(final, tables), { pt, tpl, unit, sub, pack, curriculum, course } = resolved;
     for (const [field, label] of Object.entries(labelsFor(patch, final, resolved, read, blob))) {
@@ -588,6 +600,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       defaultSelectable: final.defaultSelectable !== false, approvalEvidence: [...new Set([...(current.approvalEvidence || []), ...approvalEvidence])],
       fieldStatus: { ...(current.fieldStatus || {}), ...Object.fromEntries(approvedFields.map(k => [k, fieldApproval])) }
     });
+    if (difficultyEvidenceDebt) {
+      final.fieldStatus.difficulty = "EVIDENCE_DEBT";
+      final.difficultyEvidenceDebt = { field: "difficultyBucket", status: "EVIDENCE_DEBT", reason: difficultyEvidenceDebt };
+    }
     const packId = pack.meta.packId;
     if (!runtimes.has(packId)) {
       const file = `${runtimeRoot}/${slug(packId)}-v1.json`;
