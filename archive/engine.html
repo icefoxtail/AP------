@@ -224,6 +224,9 @@
         .sol-image-wrap.image-full img { max-width: 100%; max-height: none; }
         .sol-image-wrap.layout-fullwidth img { width: 100%; max-width: 100%; height: auto; max-height: 640px; }
         .sol-image-caption { margin-top: 4px; color: #666; font-size: 7.5pt; line-height: 1.35; }
+        /* The solution reminder repeats q.content in a [data-semantic-content] div, not .q-content,
+           so inline question images must be fitted to the solution column here (no crop/distortion). */
+        .q-box.sol-box [data-semantic-content="1"] img { max-width: 100%; height: auto; }
         .q-num { font-weight: bold; font-size: 11pt; margin-bottom: 6px; }
 
         .q-content { line-height: 1.62; word-break: keep-all; overflow-wrap: anywhere; }

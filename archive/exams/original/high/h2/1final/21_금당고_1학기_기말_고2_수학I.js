@@ -1,4 +1,3 @@
-var window = typeof window === 'undefined' ? {} : window;
 var examData = window.examData = {
   "exam": {
     "title": "2021학년도 순천금당고등학교 2학년 1학기 기말고사 수학 I",
