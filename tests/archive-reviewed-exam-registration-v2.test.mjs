@@ -416,6 +416,18 @@ test("shared definitions cannot change another exam's approved meaning", t => {
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: req, write: true }), /out-of-scope approved UID: unrelated/);
 });
 
+test("META_PIPELINE_AUDIT canonical promotions do not treat unrelated pending rows as approved consumers", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });
+  const meta = f.read(META), pending = { ...meta.records[0], questionUid: "pending-outside", sourceArchiveFile: "other.js",
+    sourceOrdinal: 1, reviewStatus: "review_required", metadataStatus: "registration_pending_semantic_review" };
+  meta.records.push(pending);
+  f.put(META, meta);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.totalQuestions, 1);
+  assert.deepEqual(f.read(META).records.find(r => r.questionUid === "pending-outside"), pending);
+});
+
 test("existing CLI accepts v2 and repo-root without touching the working repository", t => {
   const f = fixture(t); f.put("request.json", f.request);
   const result = JSON.parse(execFileSync(process.execPath, [script, "--repo-root", f.root, "--request", "request.json", "--write"], { encoding: "utf8" }));

@@ -627,7 +627,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   // A shared definition may evolve only when it leaves all out-of-scope approved
   // consumers identical. Migrations involving another exam need its own request.
   if (req.registryChanges?.length) {
-    for (const row of metadata.records.filter(r => !targetUids.has(r.questionUid))) {
+    for (const row of metadata.records.filter(r => !targetUids.has(r.questionUid) && approved(r))) {
       const signature = t => {
         const refs = [t.pt.get(row.problemTypeKey), t.tpl.get(row.templateKey), t.master.get(row.standardUnitKey), t.master.get(row.subUnitKey),
           ...(row.crossConceptKeys || []).map(k => t.cc.get(k)), ...(row.conditionKeys || []).map(k => t.cond.get(k)),
