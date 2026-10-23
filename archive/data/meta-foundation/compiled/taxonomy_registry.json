@@ -60,11 +60,11 @@
     },
     {
       "packId": "GEOMETRY",
-      "version": "1.0.0"
+      "version": "1.0.1"
     }
   ],
-  "problemTypeCount": 297,
-  "templateCount": 801,
+  "problemTypeCount": 298,
+  "templateCount": 802,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -11091,6 +11091,18 @@
         "qid_v1_d821009628e53dfc340c4d85eb9af675d263397d2a151f3e53f87c1f2602f1da"
       ],
       "supportingItemCount": 6
+    },
+    {
+      "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "canonicalLabelKo": "공간도형 문제",
+      "definition": "공간도형에서 직선·평면의 위치 관계와 공간에서 이루는 각을 해석하여 주어진 기하 조건을 결정하는 문제 유형.",
+      "ownerPack": "GEOMETRY",
+      "status": "ACTIVE",
+      "sourceUnit": "H22-GE-03",
+      "supportingQuestionUids": [
+        "qid_v1_3d0cd72452cb0b1f8c4e1f0f2226001352f625e9036334581df37c6d2d5837d5"
+      ],
+      "supportingItemCount": 1
     }
   ],
   "templates": [
@@ -32454,6 +32466,19 @@
       "sourceUnit": "H22-GE-02",
       "supportingQuestionUids": [
         "qid_v1_44ebe094245bab40b6b7d5eeb4f832073a40fe305cc19756f14d1eff6f58f3d1"
+      ],
+      "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_GEO_SPACE_DIHEDRAL_ANGLE",
+      "canonicalLabelKo": "공간에서 두 직선 사이의 각 구하기",
+      "definition": "공간에서 두 직선이 이루는 각을 한 직선에 평행한 직선을 이용해 같은 평면 안의 각으로 바꾸어 계산한다.",
+      "parentProblemTypeKey": "PT_GEO_SPACE_FIGURE",
+      "ownerPack": "GEOMETRY",
+      "status": "ACTIVE",
+      "sourceUnit": "H22-GE-03",
+      "supportingQuestionUids": [
+        "qid_v1_3d0cd72452cb0b1f8c4e1f0f2226001352f625e9036334581df37c6d2d5837d5"
       ],
       "supportingItemCount": 1
     }
