@@ -214,13 +214,34 @@ test("META_PIPELINE_AUDIT preserves an unresolved legacy difficulty bucket as EV
   f.request.items[0].after.difficultyBucket = null;
   attachMetaPipelineAudit(f);
   f.request.approval.metaPipelineAudit.unreviewedFields = [
-    { field: "difficultyBucket", status: "EVIDENCE_DEBT", reason: "The source label is not a five-level bucket and the audit package did not assess difficulty; no conversion was inferred." }
+    { field: "difficultyBucket", status: "EVIDENCE_DEBT", questionUids: ["uid1"], reason: "The source label is not a five-level bucket and the audit package did not assess difficulty; no conversion was inferred." }
   ];
   registerReviewedExamV2({ root: f.root, request: f.request, write: true });
   const row = f.read(META).records[0];
   assert.equal(row.difficultyBucket, null);
   assert.equal(row.fieldStatus.difficulty, "EVIDENCE_DEBT");
   assert.equal(row.difficultyEvidenceDebt.status, "EVIDENCE_DEBT");
+});
+
+test("META_PIPELINE_AUDIT records unassessed IntegrationPattern instead of inventing NONE", t => {
+  const f = fixture(t);
+  delete f.q.integrationPattern;
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  delete f.request.items[0].after.integrationPattern;
+  delete f.request.items[0].before.integrationPattern;
+  f.request.items[0].after.integrationPattern = null;
+  f.request.items[0].before.integrationPattern = null;
+  attachMetaPipelineAudit(f);
+  f.request.approval.metaPipelineAudit.unreviewedFields = [
+    { field: "integrationPattern", status: "EVIDENCE_DEBT", questionUids: ["uid1"], reason: "The ALIVE meta audit schema does not assess IntegrationPattern." }
+  ];
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.integrationPattern, null);
+  assert.equal(row.fieldStatus.integrationPattern, "EVIDENCE_DEBT");
+  assert.equal(row.integrationPatternEvidenceDebt.status, "EVIDENCE_DEBT");
 });
 
 test("META_PIPELINE_AUDIT reuses a same-label existing CrossConcept without changing its canonical meaning", t => {

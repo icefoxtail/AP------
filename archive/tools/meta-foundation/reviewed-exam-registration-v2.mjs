@@ -560,19 +560,27 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (checked.identityChanged) { Object.assign(id, checked.identityAfter); identityChanged = true; }
     appliedIdentityRecords.push(structuredClone(id));
     if (!["하", "중", "상"].includes(final.level)) fail(`level invalid: ${current.questionUid}`);
+    const debtRows = req.approval.type === "META_PIPELINE_AUDIT" ? (req.approval.metaPipelineAudit.unreviewedFields || []) : [];
     let difficultyEvidenceDebt = null;
     if (!Number.isInteger(final.difficultyBucket) || final.difficultyBucket < 1 || final.difficultyBucket > 5) {
-      const debt = req.approval.type === "META_PIPELINE_AUDIT"
-        ? (req.approval.metaPipelineAudit.unreviewedFields || []).find(row => row.field === "difficultyBucket" && row.status === "EVIDENCE_DEBT")
-        : null;
+      const debt = debtRows.find(row => row.field === "difficultyBucket" && row.status === "EVIDENCE_DEBT");
       const currentBucket = current.difficultyBucket;
       const currentBucketValid = Number.isInteger(currentBucket) && currentBucket >= 1 && currentBucket <= 5;
       if (!debt || !requireText(debt.reason, "difficultyBucket EVIDENCE_DEBT reason") || patch.after.difficultyBucket !== null ||
+          !Array.isArray(debt.questionUids) || !debt.questionUids.includes(current.questionUid) ||
           currentBucketValid || Object.hasOwn(q, "difficultyBucket")) fail(`difficultyBucket invalid without explicit META_PIPELINE_AUDIT EVIDENCE_DEBT: ${current.questionUid}`);
       final.difficultyBucket = null;
       difficultyEvidenceDebt = debt.reason;
     }
-    requireText(final.integrationPattern, "integrationPattern (explicit NONE if not applicable)");
+    let integrationPatternEvidenceDebt = null;
+    if (final.integrationPattern === null || final.integrationPattern === undefined || final.integrationPattern === "") {
+      const debt = debtRows.find(row => row.field === "integrationPattern" && row.status === "EVIDENCE_DEBT");
+      if (req.approval.type !== "META_PIPELINE_AUDIT" || !debt || !requireText(debt.reason, "integrationPattern EVIDENCE_DEBT reason") ||
+          !Array.isArray(debt.questionUids) || !debt.questionUids.includes(current.questionUid) ||
+          patch.after.integrationPattern !== null || Object.hasOwn(q, "integrationPattern"))
+        requireText(final.integrationPattern, "integrationPattern (explicit NONE if not applicable)");
+      integrationPatternEvidenceDebt = debt.reason;
+    } else requireText(final.integrationPattern, "integrationPattern");
     const resolved = resolve(final, tables), { pt, tpl, unit, sub, pack, curriculum, course } = resolved;
     for (const [field, label] of Object.entries(labelsFor(patch, final, resolved, read, blob))) {
       if (Object.hasOwn(patch.after, field) && patch.after[field] !== label) fail(`canonical label mismatch: ${current.questionUid}.${field}`);
@@ -603,6 +611,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     if (difficultyEvidenceDebt) {
       final.fieldStatus.difficulty = "EVIDENCE_DEBT";
       final.difficultyEvidenceDebt = { field: "difficultyBucket", status: "EVIDENCE_DEBT", reason: difficultyEvidenceDebt };
+    }
+    if (integrationPatternEvidenceDebt) {
+      final.fieldStatus.integrationPattern = "EVIDENCE_DEBT";
+      final.integrationPatternEvidenceDebt = { field: "integrationPattern", status: "EVIDENCE_DEBT", reason: integrationPatternEvidenceDebt };
     }
     const packId = pack.meta.packId;
     if (!runtimes.has(packId)) {
