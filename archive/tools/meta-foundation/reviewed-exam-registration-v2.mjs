@@ -131,7 +131,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   return { audit, manifest, sourceFileDriveId: proof.sourceFileDriveId };
 }
 
-function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, registryChanges }) {
+function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, registryChanges, existingConceptReviews }) {
   if (!audit) return;
   if (registryChanges.some(change => change.before !== null || change.after === null))
     fail("META_PIPELINE_AUDIT registry changes must be additions only; existing meanings cannot be rewritten");
@@ -155,10 +155,21 @@ function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, regist
   for (const [key, definition] of audited) {
     const before = beforeTables.cc.get(key), after = afterTables.cc.get(key);
     const candidate = before || added.get(key);
-    if (!after || !candidate || candidate.canonicalLabelKo !== definition.labelKo || candidate.definition !== definition.definition)
-      fail(`META_PIPELINE_AUDIT CrossConcept canonical definition mismatch: ${key}`);
-    if (before && !eq(before, after)) fail(`META_PIPELINE_AUDIT cannot revise existing CrossConcept: ${key}`);
+    if (!after || !candidate || candidate.canonicalLabelKo !== definition.labelKo)
+      fail(`META_PIPELINE_AUDIT CrossConcept canonical label mismatch: ${key}`);
+    if (before) {
+      if (!eq(before, after)) fail(`META_PIPELINE_AUDIT cannot revise existing CrossConcept: ${key}`);
+      if (candidate.definition !== definition.definition) {
+        const review = existingConceptReviews.get(key);
+        if (!review || review.disposition !== "REUSE_CANONICAL" || review.canonicalLabelKo !== candidate.canonicalLabelKo ||
+            review.canonicalDefinition !== candidate.definition || review.auditLabelKo !== definition.labelKo ||
+            review.auditDefinition !== definition.definition || !requireText(review.rationale, `META_PIPELINE_AUDIT existing CC rationale ${key}`))
+          fail(`META_PIPELINE_AUDIT existing CrossConcept meaning review required: ${key}`);
+      }
+    } else if (candidate.definition !== definition.definition) fail(`META_PIPELINE_AUDIT new CrossConcept definition mismatch: ${key}`);
   }
+  const expectedReviews = [...audited].filter(([key, definition]) => beforeTables.cc.has(key) && beforeTables.cc.get(key).definition !== definition.definition).map(([key]) => key).sort();
+  if (!eq([...existingConceptReviews.keys()].sort(), expectedReviews)) fail("META_PIPELINE_AUDIT existing CrossConcept reviews do not match definition differences");
   const expectedAdditions = [...audited.keys()].filter(key => !beforeTables.cc.has(key)).sort();
   if (!eq([...added.keys()].sort(), expectedAdditions)) fail("META_PIPELINE_AUDIT CrossConcept additions do not exactly match the audited definitions");
 }
@@ -472,7 +483,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const tables = lookup(plan);
   const baseline = req.registryChanges?.length || metaPipelineAudit ? registryPlan(root, [], evidenceRefs) : null;
   const beforeTables = baseline ? lookup(baseline) : null;
-  validateMetaPipelineRegistry({ audit: metaPipelineAudit?.audit, beforeTables, afterTables: tables, registryChanges: req.registryChanges || [] });
+  const existingConceptReviews = unique(req.approval.metaPipelineAudit?.existingConceptReviews || [], "conceptKey", "existing CrossConcept review");
+  validateMetaPipelineRegistry({ audit: metaPipelineAudit?.audit, beforeTables, afterTables: tables,
+    registryChanges: req.registryChanges || [], existingConceptReviews });
   for (const change of req.registryChanges || []) {
     const row = change.after;
     if (change.path === MASTER && row?.keyType === "subUnitKey" && ["active", "ACTIVE"].includes(row.status)) {

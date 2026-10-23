@@ -59,11 +59,11 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   return { root, put, read, request, q, evidenceRefs, change };
 }
 
-function attachMetaPipelineAudit(f) {
+function attachMetaPipelineAudit(f, { existingConcept = false } = {}) {
   const conceptChange = f.request.registryChanges.find(change => change.path.startsWith(`${CANON}/concepts/`));
   const pendingRegistryChanges = [];
   for (const change of f.request.registryChanges) {
-    if (change === conceptChange || change.collection === "activeConceptShards") { pendingRegistryChanges.push(change); continue; }
+    if (!existingConcept && (change === conceptChange || change.collection === "activeConceptShards")) { pendingRegistryChanges.push(change); continue; }
     const full = path.join(f.root, change.path);
     if (!change.collection) { fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, j(change.after)); continue; }
     const doc = JSON.parse(fs.readFileSync(full, "utf8"));
@@ -72,6 +72,20 @@ function attachMetaPipelineAudit(f) {
     fs.writeFileSync(full, j(doc));
   }
   f.request.registryChanges = pendingRegistryChanges;
+  const nativeConceptPath = conceptChange.path;
+  const nativeConcept = conceptChange.after.concepts[0];
+  let auditConcept = { ...nativeConcept };
+  let existingConceptReviews = [];
+  if (existingConcept) {
+    const native = f.read(nativeConceptPath);
+    native.concepts[0].definition = "정본에서 이미 등록된 미분계수 의미";
+    f.put(nativeConceptPath, native);
+    auditConcept = { ...nativeConcept, definition: "감사에서 설명한 같은 미분계수의 접선 기울기 관점" };
+    existingConceptReviews = [{ conceptKey: nativeConcept.conceptKey, disposition: "REUSE_CANONICAL",
+      canonicalLabelKo: nativeConcept.canonicalLabelKo, canonicalDefinition: native.concepts[0].definition,
+      auditLabelKo: nativeConcept.canonicalLabelKo, auditDefinition: auditConcept.definition,
+      rationale: "같은 수학 개념의 동치인 적용 관점이며 기존 정본 정의를 수정하거나 병합하지 않는다." }];
+  }
   const sourceBytes = fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`));
   const examTitle = path.basename(f.request.sourceArchiveFile, ".js");
   const sourceFileDriveId = "fixture-drive-source-id";
@@ -82,8 +96,7 @@ function attachMetaPipelineAudit(f) {
   const audit = { schemaVersion: "ALIVE_META_AUDIT_ATOMIC_v3", examTitle, sourceFileDriveId, sourceSha256: hash(sourceBytes),
     auditedTimestamp: "2026-10-23T00:00:00Z", auditVerdict: "ALL_APPROVED_CANONICAL_STANDARDIZED",
     statistics: { totalQuestions: 1, approved: 1, holdRemaining: 0, canonicalTemplatesReused: 1, newTemplatesCreated: 0, atomicCrossConceptsBound: 1 },
-    boundAtomicCrossConcepts: [{ conceptKey: conceptChange.after.concepts[0].conceptKey,
-      labelKo: conceptChange.after.concepts[0].canonicalLabelKo, definition: conceptChange.after.concepts[0].definition }],
+    boundAtomicCrossConcepts: [{ conceptKey: auditConcept.conceptKey, labelKo: auditConcept.canonicalLabelKo, definition: auditConcept.definition }],
     handOffToCourier: { status: "READY_FOR_COURIER_REGISTRATION", author: "META_PIPELINE_UNIFIED_AUTHOR", registrationProtocol: "DIRECT_ATOMIC_METADATA_BINDING" },
     records: [record] };
   const manifest = { schemaVersion: "COURIER_INTAKE_MANIFEST_v2", examTitle, sourceFileDriveId, sourceSha256: hash(sourceBytes),
@@ -109,7 +122,7 @@ function attachMetaPipelineAudit(f) {
   const sourceParityRef = { path: sourceParityPath, sha256: hash(fs.readFileSync(path.join(f.root, sourceParityPath))) };
   const evidenceRefs = [...f.evidenceRefs, auditPackageRef, manifestRef, sourceParityRef];
   f.request.approval = { type: "META_PIPELINE_AUDIT", metadataReviewed: true, approvedBy: "META_PIPELINE_UNIFIED_AUTHOR", evidenceRefs,
-    metaPipelineAudit: { schemaVersion: "meta-pipeline-audit-approval-v1", sourceFileDriveId, auditPackageRef, manifestRef, sourceParityRef } };
+    metaPipelineAudit: { schemaVersion: "meta-pipeline-audit-approval-v1", sourceFileDriveId, auditPackageRef, manifestRef, sourceParityRef, existingConceptReviews } };
   f.request.items = f.request.items.map(item => ({ ...item, evidenceRefs }));
   return { audit, manifest, auditPackageRef, manifestRef };
 }
@@ -159,6 +172,24 @@ test("META_PIPELINE_AUDIT registers exact audited bindings without relabeling FI
   assert.equal(receipt.approval.type, "META_PIPELINE_AUDIT");
   assert.equal(receipt.examFinalQaStatus, "NOT_EVALUATED_BY_REGISTRAR");
   assert.equal(receipt.metaPipelineAudit.schemaVersion, "ALIVE_META_AUDIT_ATOMIC_v3");
+});
+
+test("META_PIPELINE_AUDIT reuses a same-label existing CrossConcept without changing its canonical meaning", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { existingConcept: true });
+  const beforeRegistry = f.read(`${CANON}/concepts/new-concepts.json`);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.registryChangeCount, 0);
+  assert.deepEqual(f.read(`${CANON}/concepts/new-concepts.json`), beforeRegistry);
+  assert.equal(f.read(META).records[0].crossConceptKeys[0], "CC_NEW");
+});
+
+test("META_PIPELINE_AUDIT refuses existing CrossConcept wording drift without a reuse rationale", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { existingConcept: true });
+  delete f.request.approval.metaPipelineAudit.existingConceptReviews;
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /meaning review required/);
+  assert.equal(fs.existsSync(path.join(f.root, "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json")), false);
 });
 
 test("META_PIPELINE_AUDIT rejects missing or mismatched audit proof before writes", t => {
