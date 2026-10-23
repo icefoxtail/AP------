@@ -1,5 +1,5 @@
 export type BasicId = 'basic-circumference' | 'basic-circle-area' | 'basic-arc' | 'basic-sector-perimeter' | 'basic-sector-area';
-export type LabId = BasicId | 'semis' | 'arc' | 'sector' | 'boundary' | 'square' | 'spinarea' | 'rotate' | 'rope' | 'rolling' | 'overlap' | 'polygon' | 'tether' | 'pizza' | 'equalarea';
+export type LabId = BasicId | 'geometry' | 'semis' | 'arc' | 'sector' | 'boundary' | 'square' | 'spinarea' | 'rotate' | 'rope' | 'rolling' | 'overlap' | 'polygon' | 'tether' | 'pizza' | 'equalarea';
 
 export type LabType = {
   id: LabId;
@@ -16,6 +16,7 @@ export const LAB_TYPES: LabType[] = [
   {id:'basic-arc',number:'B3',name:'부채꼴 호의 길이',hint:'중심각에 비례하는 원호',implemented:true,thumb:`<path d="M70 55 L110 55 A40 40 0 0 0 50 20 Z" fill="#dbeafe" stroke="#2563eb"/><path d="M110 55 A40 40 0 0 0 50 20" fill="none" stroke="#e56b36" stroke-width="5"/>`},
   {id:'basic-sector-perimeter',number:'B4',name:'부채꼴의 둘레',hint:'호의 길이 + 반지름 두 개',implemented:true,thumb:`<path d="M70 55 L110 55 A40 40 0 0 0 50 20 Z" fill="#bcebd7" stroke="#e56b36" stroke-width="4"/>`},
   {id:'basic-sector-area',number:'B5',name:'부채꼴의 넓이',hint:'원의 넓이 중 중심각만큼',implemented:true,thumb:`<path d="M70 55 L110 55 A40 40 0 0 0 50 20 Z" fill="#bcebd7" stroke="#16845f" stroke-width="2"/><path d="M70 55 L70 15" stroke="#fff" stroke-width="2"/>`},
+  {id:'geometry',number:'G1',name:'기본 도형·작도·합동·평행선',hint:'선을 끌고 작도 과정과 합동 조건 확인',implemented:true,thumb:`<path d="M22 76 L118 30 M22 30 L118 76" fill="none" stroke="#64748b" stroke-width="2.5"/><path d="M48 64 L70 52 L91 63 Z M84 74 L105 62 L126 73 Z" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5"/><path d="M20 91 H120 M38 105 H138" fill="none" stroke="#16845f" stroke-width="3"/><circle cx="70" cy="52" r="4" fill="#e56b36"/>`},
   {id:'semis',number:'01',name:'반원 결합 · 태극형',hint:'복잡한 곡선의 둘레와 넓이',implemented:true,thumb:`<path d="M14 77 A55 55 0 0 1 124 77 A22 22 0 0 0 80 77 A33 33 0 0 0 14 77 Z" fill="#bcebd7" stroke="#16845f" stroke-width="2.3"/><path d="M14 77 A55 55 0 0 1 124 77" fill="none" stroke="#2563eb" stroke-width="4"/><path d="M14 77 A33 33 0 0 1 80 77 M80 77 A22 22 0 0 1 124 77" fill="none" stroke="#ea6a35" stroke-width="3.2"/>`},
   {id:'arc',number:'02',name:'중심각과 호의 길이',hint:'각도에 따라 변하는 곡선',implemented:true,thumb:`<circle cx="70" cy="55" r="43" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/><path d="M70 55 L106 31 A43 43 0 0 0 33 33 Z" fill="#dbeafe"/><path d="M106 31 A43 43 0 0 0 33 33" fill="none" stroke="#ea6a35" stroke-width="5"/><circle cx="70" cy="55" r="3" fill="#334155"/>`},
   {id:'sector',number:'03',name:'부채꼴 계산',hint:'호 · 둘레 · 넓이',implemented:true,thumb:`<path d="M35 88 L116 88 A81 81 0 0 0 71 15 Z" fill="#bcebd7" stroke="#16845f" stroke-width="2.5"/><path d="M116 88 A81 81 0 0 0 71 15" fill="none" stroke="#ea6a35" stroke-width="5"/>`},
@@ -33,4 +34,5 @@ export const LAB_TYPES: LabType[] = [
 ];
 
 export const BASIC_TYPES = LAB_TYPES.filter(type=>type.id.startsWith('basic-'));
-export const PRACTICE_TYPES = LAB_TYPES.filter(type=>!type.id.startsWith('basic-'));
+export const GEOMETRY_TYPES = LAB_TYPES.filter(type=>type.id==='geometry');
+export const PRACTICE_TYPES = LAB_TYPES.filter(type=>!type.id.startsWith('basic-')&&type.id!=='geometry');

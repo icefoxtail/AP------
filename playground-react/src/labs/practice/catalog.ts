@@ -1,6 +1,6 @@
 import type { LabId } from '../../data/types';
 
-export type PracticeId=Exclude<LabId,`basic-${string}`|'semis'>;
+export type PracticeId=Exclude<LabId,`basic-${string}`|'semis'|'geometry'>;
 export type PracticeParams=Record<string,number>;
 export type PracticeVariant={id:string;name:string};
 export type PracticeDefinition={

@@ -1,0 +1,3245 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>점 · 직선 · 선분 · 각 & 3D 위치 관계 | AP Math Playground</title>
+  <link rel="icon" href="data:," />
+  <!-- Pretendard Webfont -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- KaTeX CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="../../assets/geometry-relations.css" />
+
+  <style>
+    * {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    body {
+      background-color: #06110d;
+      color: #f1f5f9;
+      overflow: hidden;
+    }
+    .chalkboard-bg {
+      background: radial-gradient(circle at 50% 45%, #153127 0%, #0b1d17 66%, #05100c 100%);
+      box-shadow: inset 0 0 110px rgba(0, 0, 0, 0.88);
+    }
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 3px;
+      line-height: 1.05;
+      font-family: 'Pretendard', monospace;
+      font-weight: 700;
+    }
+    .math-frac > .num {
+      border-bottom: 1.5px solid currentColor;
+      padding: 0 4px 2px 4px;
+      font-size: 0.9em;
+      text-align: center;
+      width: 100%;
+    }
+    .math-frac > .den {
+      padding: 2px 4px 0 4px;
+      font-size: 0.9em;
+      text-align: center;
+      width: 100%;
+    }
+    .katex {
+      font-size: 1.04em !important;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #06110d;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1d3f32;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2d604d;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #10241c;
+      height: 6px;
+      border-radius: 4px;
+      outline: none;
+      border: 1px solid #234739;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fbbf24;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.85);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .mode-tab.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #06110d;
+      font-weight: 800;
+      border-color: #fbbf24;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+    }
+    .sub-btn.active {
+      background: rgba(52, 211, 153, 0.28);
+      border-color: #34d399;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 0 10px rgba(52, 211, 153, 0.35);
+    }
+    .lens-chip.active {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.35), rgba(245, 158, 11, 0.5));
+      border-color: #fbbf24;
+      color: #fef08a;
+      font-weight: 800;
+      box-shadow: 0 0 12px rgba(251, 191, 36, 0.3);
+    }
+    .step-btn.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(5, 150, 105, 0.32));
+      border-color: #34d399;
+      color: #ecfdf5;
+    }
+    .pi-box {
+      display: inline-flex;
+      align-items: center;
+      padding: 1px 6px;
+      border-radius: 6px;
+      background: rgba(251, 191, 36, 0.2);
+      border: 1.5px solid #fbbf24;
+      color: #fef08a;
+      font-weight: 800;
+      margin: 0 2px;
+    }
+    .num-box {
+      display: inline-flex;
+      align-items: center;
+      padding: 1px 6px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.2);
+      border: 1.5px solid #38bdf8;
+      color: #7dd3fc;
+      font-weight: 800;
+      margin: 0 2px;
+    }
+    .chalk-text {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+    }
+    @keyframes subtlePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5); }
+      50% { box-shadow: 0 0 16px 3px rgba(251, 191, 36, 0.35); }
+    }
+    .pulse-glow {
+      animation: subtlePulse 2.2s infinite;
+    }
+  </style>
+  <style id="ap-mobile-bridge">
+  /* AP Playground responsive mobile bridge . Shared across labs. */
+  @media (max-width:1023px) {
+    html,body {height:auto!important;min-height:100%!important;width:100%!important;max-width:100%!important;overflow-x:hidden!important;overflow-y:auto!important;}
+    body {display:block!important; margin:0!important; -webkit-overflow-scrolling:touch;}
+    body > header {width:100%!important;position:relative!important;top:auto!important;}
+    body > header > nav {display:flex!important;flex-wrap:nowrap!important;width:100%!important;max-width:100vw!important;overflow-x:auto!important;overflow-y:hidden!important;white-space:nowrap!important;-webkit-overflow-scrolling:touch;}
+    body > header > nav button {flex-shrink:0!important; min-height:36px;}
+    body > div.flex-1.flex.flex-col {display:flex!important;flex-direction:column!important;width:100%!important;max-width:100%!important;height:auto!important;min-height:0!important;overflow:visible!important;}
+    body > div.flex-1.flex.flex-col > main {position:relative!important;width:100%!important;min-width:0!important;max-width:100%!important;height:clamp(460px,64svh,700px)!important;min-height:460px!important;flex:0 0 auto!important;overflow:hidden!important;display:block!important;}
+    main #boardCanvas {display:block!important;width:100%!important;height:100%!important;touch-action:none;}
+    .ap-mobile-top {position:relative!important;left:auto!important;top:auto!important;bottom:auto!important;right:auto!important;z-index:2!important;display:flex!important;flex-direction:column!important;box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-width:0!important;max-height:215px!important;overflow-y:auto!important;overflow-x:hidden!important;gap:6px!important;padding:8px!important;margin:0!important;pointer-events:auto!important;background:#0b2019!important;border-bottom:1px solid #24513e;}
+    .ap-mobile-top > div {max-width:100%!important;min-width:0!important;box-sizing:border-box!important;}
+    .ap-mobile-top #subSelectorBar,.ap-mobile-top #sceneVariationBar,.ap-mobile-top #presetPillsContainer {max-width:100%!important;max-height:105px!important;overflow-x:auto!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch;}
+    .ap-mobile-tools {position:relative!important;left:auto!important;top:auto!important;bottom:auto!important;right:auto!important;width:100%!important;max-width:100%!important;max-height:none!important;padding:9px!important;margin:0!important;box-sizing:border-box!important;display:flex!important;flex-wrap:wrap!important;gap:7px!important;align-items:center!important;justify-content:flex-start!important;z-index:3!important;background:#0a1b15!important;border-top:1px solid #2b5444;border-bottom:1px solid #2b5444;}
+    .ap-mobile-tools button {min-height:38px!important;touch-action:manipulation;}
+    body > div.flex-1.flex.flex-col > aside {width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;min-height:0!important;flex:0 0 auto!important;overflow:visible!important;display:block!important;}
+    body > div.flex-1.flex.flex-col > aside > div {height:auto!important;max-height:none!important;overflow:visible!important;}
+    body > div.flex-1.flex.flex-col > aside section {max-width:100%!important;}
+  }
+  @media (max-width:420px) {
+    body > div.flex-1.flex.flex-col > main {height:clamp(435px,65svh,600px)!important;min-height:435px!important;}
+    .ap-mobile-top {max-height:195px!important;}
+  }
+  .ap-back-home{align-self:center;display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:0 0 auto;min-height:33px;padding:6px 11px;background:#153a2e;border:1px solid #49806c;border-radius:10px;color:#d5f6cb;font:700 12px/1.3 system-ui,sans-serif;text-decoration:none;white-space:nowrap;z-index:22}
+  .ap-back-home:hover{background:#215341}
+  @media(max-width:1023px){.ap-back-home{margin:4px 8px 4px 0;}}
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col">
+
+  <!-- ===================================================================== -->
+  <!-- 상단 헤더 & 6대 마스터 탭 (2D 평면 기본도형 1~4 + 3D 공간 위치 관계 5~6) -->
+  <!-- ===================================================================== -->
+  <header class="bg-[#07140f]/95 border-b border-emerald-900/70 px-3.5 py-2 flex flex-wrap items-center justify-between gap-2 z-20 shrink-0">
+    <div class="flex items-center gap-2">
+      <a class="ap-back-home" href="../../index.html" aria-label="전체 실험실로 돌아가기">← 전체 단원</a>
+      <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-400/60 flex items-center justify-center text-amber-300 shadow-inner">
+        <i class="fa-solid fa-wand-sparkles text-base"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <h1 class="text-sm md:text-base font-extrabold tracking-tight text-emerald-50 chalk-text">점·직선·선분·각 &amp; 3D 위치 관계 실험실</h1>
+          <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">도형 탐구 04 · 2D + 3D 통합</span>
+          <button onclick="toggleTeacherMode()" id="btnTeacherMode" class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-950 hover:bg-emerald-900 text-emerald-300 border border-emerald-700/60 transition flex items-center gap-1" title="학생 스스로 발견 모드 vs 교사용 즉시 해설 공개 전환">
+            <i class="fa-solid fa-chalkboard-user text-amber-300" id="iconTeacherMode"></i>
+            <span id="txtTeacherMode">원리 즉시 표시 모드</span>
+          </button>
+        </div>
+        <p class="text-[10.5px] text-emerald-400/85 hidden 2xl:block">반직선 레이저 &amp; 겹침 분리 뷰 · 중점·삼등분점·조건식 칸수 블록 · 점 n개 중복 흡수 · 수선의 발(⊥)과 종이접기 · 3D 꼬인 위치 3단계 소거 필터 &amp; 공간 명제 반례기</p>
+      </div>
+    </div>
+
+    <!-- 6대 핵심 탐구 영역 탭 (1~4: 2D 평면, 5~6: 3D 입체 위치 관계!) -->
+    <nav class="flex items-center gap-1 overflow-x-auto py-1 max-w-full">
+      <button onclick="setMode(1)" id="tab-1" class="mode-tab active text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-arrows-left-right"></i>
+        <span>1. 직선·반직선·선분 &amp; 공통부분</span>
+      </button>
+      <button onclick="setMode(2)" id="tab-2" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-ruler-horizontal"></i>
+        <span>2. 최단거리·중점·삼등분 블록</span>
+      </button>
+      <button onclick="setMode(3)" id="tab-3" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-diagram-project"></i>
+        <span>3. 선의 개수 &amp; 맞꼭지각·시계</span>
+      </button>
+      <button onclick="setMode(4)" id="tab-4" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-compass"></i>
+        <span>4. 직교(⊥)·이등분선·종이접기</span>
+      </button>
+      <button onclick="setMode(5)" id="tab-5" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-amber-500/60 bg-amber-950/40 text-amber-200 hover:bg-amber-900/50 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-cube"></i>
+        <span>5. [3D 입체] 꼬인 위치 소거 필터</span>
+      </button>
+      <button onclick="setMode(6)" id="tab-6" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-amber-500/60 bg-amber-950/40 text-amber-200 hover:bg-amber-900/50 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-layer-group"></i>
+        <span>6. [3D 입체] 직선·평면 O/X 반례기</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 메인 워크스페이스 (좌측 인터랙티브 탐구 칠판 + 우측 455px 발견 학습 허브) -->
+  <!-- ===================================================================== -->
+  <div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+    <!-- 좌측: 인터랙티브 2D/3D 분필 칠판 캔버스 -->
+    <main class="flex-1 relative chalkboard-bg overflow-hidden flex items-center justify-center">
+      <canvas id="boardCanvas" class="w-full h-full block cursor-pointer"></canvas>
+
+      <!-- 좌측 상단: 현재 실험 브리핑 & 원클릭 직결 스위치 바 + 세부 주제 선택 바 + 시각적 블록 등식 -->
+      <div class="absolute top-3 left-3 pointer-events-none flex flex-col gap-2 max-w-xs sm:max-w-2xl z-10">
+        <!-- 1. 브리핑 & 원클릭 스위치 카드 -->
+        <div class="pointer-events-auto bg-[#07140f]/92 backdrop-blur-md border border-emerald-700/60 rounded-xl px-3.5 py-2 shadow-xl">
+          <div class="flex items-center justify-between gap-2 mb-0.5">
+            <div class="flex items-center gap-2 text-amber-300 text-xs font-extrabold">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+              <span id="canvasModeBadge">탐구 1 · 직선 · 반직선(AB vs BA) · 선분 레이저 &amp; 한 직선 위 4점</span>
+            </div>
+            <span id="discoveryStatusBadge" class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">💡 원리 활성화</span>
+          </div>
+          <p id="canvasActionHint" class="text-[11.5px] text-emerald-100/95 leading-relaxed mb-1.5">
+            칠판의 <strong>점 A, B, C를 마우스로 드래그</strong>하거나(탭 1~4), <strong>3D 입체도형을 마우스로 360° 회전</strong>해 보세요(탭 5~6)! 아래 원클릭 스위치로 숨은 관계를 즉시 켤 수 있습니다!
+          </p>
+
+          <!-- [2D 전용] 원클릭 직결 스위치 바 -->
+          <div id="bar2DSwitches" class="flex flex-wrap items-center gap-1 pt-1.5 border-t border-emerald-800/60">
+            <span class="text-[10.5px] text-amber-300 font-extrabold mr-1 flex items-center gap-1">
+              <i class="fa-solid fa-eye"></i> 원클릭 직결:
+            </span>
+            <button onclick="setLayerMode('single')" id="layer-single" class="lens-chip px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[11px] text-emerald-100 transition">
+              📏 단일 직선 뷰
+            </button>
+            <button onclick="setLayerMode('exploded')" id="layer-exploded" class="lens-chip active px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[11px] text-emerald-100 transition">
+              🔀 겹침 분리 뷰 (위·아래 펼치기!)
+            </button>
+            <button onclick="setLayerMode('intersect')" id="layer-intersect" class="lens-chip px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[11px] text-emerald-100 transition">
+              ✨ 공통부분(교집합)·불변량 스캐너
+            </button>
+          </div>
+
+          <!-- [3D 공간 위치 관계 전용!] 꼬인 위치 3단계 소거 필터 & 2D 착시 vs 3D 입체 시점 스위치 -->
+          <div id="bar3DSwitches" class="hidden flex-wrap items-center gap-1 pt-1.5 border-t border-amber-500/40">
+            <span class="text-[10.5px] text-amber-300 font-extrabold mr-1 flex items-center gap-1">
+              <i class="fa-solid fa-filter"></i> 3D 소거 필터:
+            </span>
+            <button onclick="setSkewFilter('all')" id="skew-all" class="lens-chip px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">
+              🔍 0. 전체 모서리
+            </button>
+            <button onclick="setSkewFilter('meet')" id="skew-meet" class="lens-chip px-2 py-0.5 rounded-lg border border-rose-500/60 bg-rose-950/70 text-[10.5px] text-rose-200 transition">
+              ❌ 1단계: 끝점 공유 모서리 지우기
+            </button>
+            <button onclick="setSkewFilter('parallel')" id="skew-parallel" class="lens-chip px-2 py-0.5 rounded-lg border border-sky-500/60 bg-sky-950/70 text-[10.5px] text-sky-200 transition">
+              ❌ 2단계: 평행·한 평면 지우기
+            </button>
+            <button onclick="setSkewFilter('skewOnly')" id="skew-skewOnly" class="lens-chip active px-2 py-0.5 rounded-lg border border-emerald-400 bg-emerald-900/80 text-[10.5px] text-emerald-100 font-extrabold transition">
+              🎉 3단계: 꼬인 위치만 남기기(①,②..)
+            </button>
+            <span class="text-emerald-700 mx-0.5">|</span>
+            <button onclick="snap3DCam('illusion')" class="px-2 py-0.5 rounded bg-rose-500/20 border border-rose-400 text-[10.5px] text-rose-200 font-bold" title="종이 문제집에서 두 선이 만나는 것처럼 겹쳐 보이는 착시 각도">
+              🕶️ 2D 착시 시점
+            </button>
+            <button onclick="snap3DCam('clear')" class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 text-[10.5px] font-extrabold" title="두 선 사이의 뻥 뚫린 공간 거리가 선명하게 보이는 3D 입체 각도">
+              🧊 3D 입체 간격 확인!
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. 세부 탐구 실험 선택 바 -->
+        <div id="subSelectorBar" class="pointer-events-auto bg-[#07140f]/95 backdrop-blur-md border border-emerald-700/60 rounded-xl p-1.5 shadow-xl flex flex-wrap items-center gap-1.5 w-fit">
+          <!-- JS 동적 렌더링 -->
+        </div>
+
+        <!-- 3. 시각적 도형 블록 등식(Visual Shape Equation) & 기호 배지 -->
+        <div class="pointer-events-auto bg-[#07140f]/95 backdrop-blur-md border border-amber-500/40 rounded-xl px-3 py-1.5 shadow-xl flex flex-col gap-1 w-fit max-w-full">
+          <div id="visualShapeEqBar" class="flex flex-wrap items-center gap-1.5 text-[11px]">
+            <!-- JS 동적 생성 -->
+          </div>
+          <div class="flex flex-wrap items-center gap-2.5 pt-1 border-t border-emerald-900/80 text-xs">
+            <div class="text-emerald-100 flex items-center gap-1.5">
+              <span class="text-amber-300 font-extrabold">기호 &amp; 조건:</span>
+              <span id="eqDisplay" class="text-amber-200 font-bold"></span>
+            </div>
+            <span class="text-emerald-700">|</span>
+            <div class="text-sky-300 flex items-center gap-1.5">
+              <span class="text-sky-400 font-extrabold">핵심 관계:</span>
+              <span id="subEqDisplay" class="font-bold"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 좌측 하단 플로팅 실험 컨트롤 툴바 -->
+      <div class="absolute bottom-3.5 left-3.5 flex flex-wrap items-center gap-1.5 bg-[#07140f]/92 backdrop-blur-md border border-emerald-800/70 p-1.5 rounded-xl shadow-xl z-10">
+        <button onclick="triggerMainExperiment()" id="btnExpAction" class="pulse-glow px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-xs font-extrabold flex items-center gap-1.5 transition shadow-md">
+          <i class="fa-solid fa-play" id="iconExpAction"></i>
+          <span id="txtExpAction">🎬 레이저 발사 &amp; 애니메이션 실행</span>
+        </button>
+        <button onclick="snapToProblem()" class="px-2.5 py-1.5 rounded-lg bg-emerald-900/70 hover:bg-emerald-800 text-emerald-100 border border-emerald-600/50 text-xs font-bold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-crosshairs text-amber-300"></i>
+          <span>조건에 맞추기</span>
+        </button>
+        <div class="h-4 w-[1px] bg-emerald-800/70 mx-0.5"></div>
+        <button onclick="zoomCanvas(1.14)" class="w-7 h-7 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="확대">
+          <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </button>
+        <button onclick="zoomCanvas(0.88)" class="w-7 h-7 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="축소">
+          <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </button>
+        <button onclick="resetView()" class="w-7 h-7 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="초기화">
+          <i class="fa-solid fa-rotate-left"></i>
+        </button>
+      </div>
+
+      <!-- 우측 하단 칠판 분필 소품 -->
+      <div class="absolute bottom-3 right-4 pointer-events-none hidden md:flex items-end gap-2 opacity-75">
+        <div class="w-10 h-2 bg-white rounded-sm shadow"></div>
+        <div class="w-10 h-2 bg-amber-300 rounded-sm shadow"></div>
+        <div class="w-10 h-2 bg-pink-400 rounded-sm shadow"></div>
+        <div class="w-16 h-5 bg-amber-900/90 border-t-4 border-slate-300 rounded-sm shadow-lg"></div>
+      </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- 우측: [원클릭 브리핑 → 가설 퀴즈 → 실시간 조작기 → 보조선 → 해설] 허브 (455px) -->
+    <!-- =================================================================== -->
+    <aside class="w-full lg:w-[455px] bg-[#071510] border-t lg:border-t-0 lg:border-l border-emerald-900/80 flex flex-col h-[54vh] lg:h-full shrink-0 z-10">
+      <div class="p-3.5 overflow-y-auto flex-1 space-y-3.5">
+
+        <!-- 1. 원클릭 스위치 연동 브리핑 카드 -->
+        <section class="bg-[#0d241c] border border-emerald-600/50 rounded-xl p-3 shadow-md">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-[11px] font-extrabold text-amber-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-lightbulb"></i>
+              <span>도형 기호 번역기 &amp; 입체 위치 관계 가이드</span>
+            </span>
+            <span id="symbolBadge" class="text-[10.5px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/60">기호 ↔ 뜻</span>
+          </div>
+          <div id="lensExplanationBox" class="text-xs text-emerald-50 leading-relaxed font-medium">
+            <!-- JS 동적 업데이트 -->
+          </div>
+        </section>
+
+        <!-- 2. [탐구 과제 & 나의 가설 세우기] -->
+        <section class="bg-gradient-to-br from-[#112a21] to-[#0a1a14] border border-amber-400/50 rounded-xl p-3.5 shadow-lg relative">
+          <div class="flex items-center justify-between mb-2">
+            <span id="examTag" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40 flex items-center gap-1.5">
+              <i class="fa-solid fa-flask"></i> 탐구 과제 &amp; 가설 검증
+            </span>
+            <span id="examTarget" class="text-[10.5px] font-mono text-emerald-300 font-bold">눈으로 보고 깨닫기</span>
+          </div>
+
+          <!-- 문제 발문 -->
+          <div id="examQuestion" class="text-xs md:text-[12.5px] text-emerald-50 leading-relaxed bg-[#06110d]/90 p-3 rounded-lg border border-emerald-800/70 mb-2.5 font-medium">
+            <!-- JS 동적 렌더링 -->
+          </div>
+
+          <!-- 학생의 직관적 추측(가설) 선택 박스 -->
+          <div class="mb-2.5">
+            <div class="text-[11px] font-extrabold text-amber-300 mb-1.5 flex items-center justify-between">
+              <span>🤔 Step 1. 실험 전 나의 추측(가설)을 골라보세요:</span>
+              <span id="hypothesisFeedback" class="text-[10.5px] text-sky-300"></span>
+            </div>
+            <div id="quizOptionsBox" class="grid grid-cols-3 gap-1.5">
+              <!-- JS 동적 렌더링 -->
+            </div>
+          </div>
+
+          <!-- 실험 후 열리는 정답 & 불변량 요약 배지 -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 pt-1.5 border-t border-emerald-800/50">
+            <div id="answerRevealBox" class="bg-[#06110d] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2 flex-1">
+              <!-- JS 동적 렌더링 -->
+            </div>
+
+            <button onclick="unlockDiscovery()" class="px-3 py-2 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-emerald-100 border border-emerald-500/50 font-extrabold text-xs flex items-center justify-center gap-1.5 transition shrink-0">
+              <i class="fa-solid fa-unlock-keyhole text-amber-300"></i>
+              <span>원리 확인</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 3. 실시간 조건 변화 실험 조작기 -->
+        <section class="bg-[#0c1f18] border border-emerald-800/70 rounded-xl p-3.5 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-sliders text-amber-400"></i>
+              <span>Step 2. 점 이동·각도·3D 회전 &amp; 불변량 실험</span>
+            </h2>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-600/50">실시간 드래그 연동</span>
+          </div>
+
+          <!-- 메인 실험 변형 슬라이더 (모든 모드에서 100% 작동!) -->
+          <div class="bg-[#06110d] p-2.5 rounded-lg border border-emerald-900/80">
+            <div class="flex justify-between text-[11px] mb-1">
+              <span id="labelAnimProg" class="text-amber-300 font-extrabold"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i>레이저 발사 / 동점 이동 / 종이 접기 / 3D 반례 회전 (0%~100%)</span>
+              <span id="valAnimProg" class="font-mono font-extrabold text-amber-200">100%</span>
+            </div>
+            <input type="range" id="sliderAnimProg" min="0" max="1" step="0.01" value="1" class="w-full" oninput="onAnimProgSlider()" />
+          </div>
+
+          <!-- 조건 슬라이더 2개 -->
+          <div class="grid grid-cols-2 gap-2">
+            <div class="bg-[#06110d] p-2 rounded-lg border border-emerald-900/70">
+              <div class="flex justify-between text-[10.5px] mb-1">
+                <span id="labelParam1" class="text-emerald-200">전체 길이 / 점 수 <strong class="text-sky-300">L / n</strong></span>
+                <span id="valParam1" class="font-mono font-bold text-sky-300">12 cm</span>
+              </div>
+              <input type="range" id="sliderParam1" min="6" max="18" step="2" value="12" class="w-full" oninput="onParamSlider()" />
+            </div>
+            <div class="bg-[#06110d] p-2 rounded-lg border border-emerald-900/70">
+              <div class="flex justify-between text-[10.5px] mb-1">
+                <span id="labelParam2" class="text-emerald-200">각도 / 시간 <strong class="text-pink-300">θ / 분</strong></span>
+                <span id="valParam2" class="font-mono font-bold text-pink-300">55°</span>
+              </div>
+              <input type="range" id="sliderParam2" min="20" max="140" step="5" value="55" class="w-full" oninput="onParamSlider()" />
+            </div>
+          </div>
+
+          <!-- 실시간 측정 계기판 (4대 핵심 수치) -->
+          <div class="grid grid-cols-2 gap-1.5 text-xs font-mono pt-1">
+            <div class="bg-[#06110d] px-2.5 py-2 rounded-lg border border-emerald-900/80">
+              <div id="statLabel1" class="text-[10px] text-sky-300">첫 번째 요소</div>
+              <div id="statVal1" class="text-[11.5px] font-bold text-sky-200 mt-0.5">-</div>
+            </div>
+            <div class="bg-[#06110d] px-2.5 py-2 rounded-lg border border-emerald-900/80">
+              <div id="statLabel2" class="text-[10px] text-amber-300">두 번째 요소</div>
+              <div id="statVal2" class="text-[11.5px] font-bold text-amber-200 mt-0.5">-</div>
+            </div>
+            <div class="bg-[#06110d] px-2.5 py-2 rounded-lg border border-emerald-900/80">
+              <div id="statLabel3" class="text-[10px] text-pink-300">관계 판정 / 소거</div>
+              <div id="statVal3" class="text-[11.5px] font-bold text-pink-200 mt-0.5">-</div>
+            </div>
+            <div class="bg-[#06110d] px-2.5 py-2 rounded-lg border border-emerald-900/80">
+              <div id="statLabel4" class="text-[10px] text-emerald-300">최종 결론 / 불변량</div>
+              <div id="statVal4" class="text-[11.5px] font-bold text-emerald-200 mt-0.5">-</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. 단계별 시각적 보조선 언락 (Step 1 ~ 3) -->
+        <section class="bg-[#0c1f18] border border-emerald-800/70 rounded-xl p-3.5">
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-layer-group text-amber-400"></i>
+              <span>Step 3. 시각적 증거 마크 &amp; 증명 레이어</span>
+            </h2>
+            <button onclick="unlockAllSteps()" class="text-[11px] text-amber-300 hover:underline font-semibold">모두 켜기</button>
+          </div>
+
+          <div class="space-y-1.5">
+            <button onclick="toggleStep(1)" id="stepBtn1" class="step-btn active w-full text-left px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-4 h-4 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[10px] font-bold flex items-center justify-center shrink-0">1</span>
+                <span id="stepLabel1" class="text-[11.5px] font-semibold">출발점(손전등)·교과서 알파벳 및 등변(|)·직각(∟) 마크 표시</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon1"></i>
+            </button>
+
+            <button onclick="toggleStep(2)" id="stepBtn2" class="step-btn active w-full text-left px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-4 h-4 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[10px] font-bold flex items-center justify-center shrink-0">2</span>
+                <span id="stepLabel2" class="text-[11.5px] font-semibold">공통부분·소거 필터(만나는 선 ❌, 평행선 ❌) 하이라이트</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon2"></i>
+            </button>
+
+            <button onclick="toggleStep(3)" id="stepBtn3" class="step-btn active w-full text-left px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-4 h-4 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[10px] font-bold flex items-center justify-center shrink-0">3</span>
+                <span id="stepLabel3" class="text-[11.5px] font-semibold">핵심 판별 공식 &amp; 칠판 판서 요약 배너 표시</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon3"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- 5. [흔한 착각(오개념) 분석] vs [구조적 불변량 & 5초 핵심 원리] 2대 아코디언 -->
+        <section class="space-y-2">
+          <div class="border border-rose-500/40 rounded-xl bg-[#151318] overflow-hidden">
+            <button onclick="toggleAccordion('textbook')" class="w-full px-3.5 py-2 flex items-center justify-between text-left bg-rose-950/40 hover:bg-rose-950/60 transition">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/40 text-[10px] font-extrabold">오개념 &amp; 정석</span>
+                <span class="text-xs font-extrabold text-rose-100">학생들이 자주 빠지는 함정 &amp; 차근차근 정석 풀이</span>
+              </div>
+              <i id="accIcon-textbook" class="fa-solid fa-chevron-down text-rose-300 text-xs"></i>
+            </button>
+            <div id="accBody-textbook" class="hidden p-3 text-xs space-y-2 border-t border-rose-500/20">
+              <div id="textbookSteps" class="text-[11.5px] text-slate-200 leading-relaxed space-y-1.5 bg-black/40 p-2.5 rounded-lg border border-rose-900/40"></div>
+              <div id="textbookWarning" class="p-2 rounded-lg bg-rose-500/15 border border-rose-500/40 text-rose-200 text-[11px] font-semibold leading-snug"></div>
+            </div>
+          </div>
+
+          <div class="border border-amber-400/60 rounded-xl bg-[#11241b] overflow-hidden shadow-lg">
+            <button onclick="toggleAccordion('shortcut')" class="w-full px-3.5 py-2 flex items-center justify-between text-left bg-amber-500/15 hover:bg-amber-500/25 transition">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-extrabold">5초 필살기</span>
+                <span class="text-xs font-extrabold text-amber-300">도포자도 단번에 깨닫는 구조적 불변량 &amp; 소거 비법</span>
+              </div>
+              <i id="accIcon-shortcut" class="fa-solid fa-chevron-up text-amber-300 text-xs"></i>
+            </button>
+            <div id="accBody-shortcut" class="p-3 text-xs space-y-2 border-t border-amber-400/30">
+              <div id="shortcutSteps" class="text-emerald-50 leading-relaxed space-y-1.5 bg-[#06110d]/90 p-2.5 rounded-lg border border-emerald-800/80 font-medium"></div>
+              <div id="shortcutHighlight" class="p-2 rounded-lg bg-amber-400/20 border border-amber-400/50 text-amber-200 text-[11.5px] font-extrabold leading-snug shadow-inner"></div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </aside>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 인터랙티브 2D 평면 + 3D 공간 위치 관계 통합 엔진 스크립트 -->
+  <!-- ===================================================================== -->
+  <script>
+    // -------------------------------------------------------------------------
+    // 0. 수식 렌더링(KaTeX) 헬퍼
+    // -------------------------------------------------------------------------
+    function tex(latexStr) {
+      if (window.katex) {
+        return katex.renderToString(latexStr, { throwOnError: false, displayMode: false });
+      }
+      return latexStr;
+    }
+
+    // -------------------------------------------------------------------------
+    // 1. 전역 상태 관리 (State - 2D & 3D 하이브리드)
+    // -------------------------------------------------------------------------
+    const state = {
+      mode: 1, // 1: 직선·반직선·선분 & 4점, 2: 최단거리·중점·삼등분 블록, 3: 선의 개수 & 맞꼭지각·시계, 4: 직교(⊥)·이등분선·종이접기, 5: [3D] 꼬인 위치 소거 필터, 6: [3D] 직선·평면 O/X 반례기
+      subType: {
+        1: 'rayCompare', // 'rayCompare'(AB vs BA 비교), 'sameRay'(한 직선 4점: BC=BD), 'intersect'(두 반직선 교집합 BD∩CA=BC), 'lineBasic'(직선·반직선·선분 레이저)
+        2: 'midPoint',   // 'shortest'(두 점 사이 최단거리=선분), 'midPoint'(중점 불변량 MN=½AB), 'trisect'(삼등분점과 중점 6칸 블록), 'ratioBlock'(조건식 AB=3BC 번역기)
+        3: 'collinear',  // 'collinear'(일직선 점 m개 중복 흡수), 'circlePts'(원형 배치 기본 공식), 'verticalAng'(맞꼭지각 n(n-1)쌍), 'clockAng'(시침·분침 각도 추적기)
+        4: 'paperFold',  // 'perpDist'(직교⊥와 수선의 발 H 최단거리), 'bisect90'(평각의 두 이등분선=90° 불변량!), 'paperFold'(직사각형 종이 테이프 접기=이등변삼각형!)
+        5: 'cuboidSkew', // 'cuboidSkew'(직육면체 꼬인 위치), 'prism3Skew'(삼각기둥 꼬인 위치), 'trapSkew'(사다리꼴기둥 꼬인 위치), 'hexSkew'(정육각기둥 꼬인 위치), 'pyr4Skew'(정사각뿔 꼬인 위치)
+        6: 'linePerpPlane'// 'linePerpPlane'(직선⊥평면 국기게양대), 'counter1'(한 직선에 수직인 두 직선?), 'counter2'(한 평면에 평행한 두 직선?), 'truePara'(한 평면에 수직인 두 직선=평행!)
+      },
+      layerMode: 'exploded', // 2D: 'single' | 'exploded' | 'intersect'
+      skewFilter: 'skewOnly',// 3D: 'all' | 'meet' | 'parallel' | 'skewOnly'
+      teacherMode: true,
+      discovered: true,
+
+      animProg: 1.0,
+      animTarget: null,
+
+      param1: 12, // 길이 L (12cm) 또는 점 개수 제어
+      param2: 55, // 각도 θ (55°) 또는 시간(분) 제어
+
+      // 2D 드래그 포인트
+      ptA: { x: -125, y: 15 },
+      ptB: { x: 115, y: -20 },
+      draggingPt: null,
+
+      // 3D 카메라 (탭 5, 6 전용)
+      yaw: (-34 * Math.PI) / 180,
+      pitch: (32 * Math.PI) / 180,
+      isDragging3D: false,
+      lastMouse: { x: 0, y: 0 },
+      camAnim: { active: false, prog: 0, sYaw: 0, sPitch: 0, tYaw: 0, tPitch: 0 },
+
+      scale: 1.0,
+      offsetX: 0,
+      offsetY: 0,
+      steps: { 1: true, 2: true, 3: true },
+      selectedQuizIdx: null
+    };
+
+    // -------------------------------------------------------------------------
+    // 2. 캔버스 초기화 및 2D/3D 공통 시각적 증거 마크 렌더러
+    // -------------------------------------------------------------------------
+    const canvas = document.getElementById('boardCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      render();
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    function drawChalkGrid(rect) {
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height / 2 + state.offsetY;
+      const step = 36 * state.scale;
+
+      ctx.save();
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.055)';
+      ctx.lineWidth = 1;
+      for (let x = cx % step; x < rect.width; x += step) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, rect.height); ctx.stroke();
+      }
+      for (let y = cy % step; y < rect.height; y += step) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(rect.width, y); ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    // 2D 화살표 끝머리
+    function drawArrowHead(x, y, angle, size = 14, color = '#fbbf24') {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(-size, -size * 0.52);
+      ctx.lineTo(-size * 0.75, 0);
+      ctx.lineTo(-size, size * 0.52);
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 10;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // 2D 손전등 출발점 배지
+    function drawFlashlightOrigin(x, y, color = '#fbbf24', label = '출발점') {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(x, y, 9.5, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 16;
+      ctx.fill();
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      if (label && state.steps[1]) {
+        ctx.font = 'extrabold 11.5px Pretendard, sans-serif';
+        ctx.fillStyle = color;
+        ctx.textAlign = 'center';
+        ctx.fillText(`🔦 ${label}`, x, y - 18);
+      }
+      ctx.restore();
+    }
+
+    // 2D 선분 위 등변 틱 마크(|, ||)
+    function drawTickMarks2D(A, B, count = 1, color = '#fbbf24', size = 7.5) {
+      if (!state.steps[1]) return;
+      const mx = (A.x + B.x) / 2;
+      const my = (A.y + B.y) / 2;
+      const dx = B.x - A.x;
+      const dy = B.y - A.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const ux = dx / len, uy = dy / len;
+      const nx = -uy, ny = ux;
+      const gap = 5;
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.4;
+      for (let i = 0; i < count; i++) {
+        const off = (i - (count - 1) / 2) * gap;
+        const cx = mx + ux * off;
+        const cy = my + uy * off;
+        ctx.beginPath();
+        ctx.moveTo(cx - nx * size, cy - ny * size);
+        ctx.lineTo(cx + nx * size, cy + ny * size);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    // 2D 평행선 화살표(>)
+    function drawParallelArrows2D(A, B, count = 1, color = '#38bdf8', size = 8) {
+      if (!state.steps[1]) return;
+      const mx = (A.x + B.x) / 2;
+      const my = (A.y + B.y) / 2;
+      const dx = B.x - A.x, dy = B.y - A.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const ux = dx / len, uy = dy / len;
+      const nx = -uy, ny = ux;
+      const gap = 7;
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.4;
+      for (let i = 0; i < count; i++) {
+        const off = (i - (count - 1) / 2) * gap;
+        const tx = mx + ux * off, ty = my + uy * off;
+        ctx.beginPath();
+        ctx.moveTo(tx - ux * size - nx * size * 0.7, ty - uy * size - ny * size * 0.7);
+        ctx.lineTo(tx, ty);
+        ctx.lineTo(tx - ux * size + nx * size * 0.7, ty - uy * size + ny * size * 0.7);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    // 2D 직각 네모(∟)
+    function drawRightAngle2D(P, A, B, size = 14, color = '#38bdf8') {
+      const v1x = A.x - P.x, v1y = A.y - P.y;
+      const v2x = B.x - P.x, v2y = B.y - P.y;
+      const l1 = Math.hypot(v1x, v1y) || 1;
+      const l2 = Math.hypot(v2x, v2y) || 1;
+      const u1x = (v1x / l1) * size, u1y = (v1y / l1) * size;
+      const u2x = (v2x / l2) * size, u2y = (v2y / l2) * size;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(P.x + u1x, P.y + u1y);
+      ctx.lineTo(P.x + u1x + u2x, P.y + u1y + u2y);
+      ctx.lineTo(P.x + u2x, P.y + u2y);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.4;
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.25)';
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // 3D 원근 투영 함수 (탭 5, 6 전용)
+    function project3D(mathX, mathY, mathZ, rect) {
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.50 + state.offsetY;
+      const baseScale = Math.min(rect.width, rect.height) * 0.135 * state.scale;
+
+      const vx = mathX;
+      const vy = mathZ; // Z축이 화면 위쪽(높이)
+      const vz = -mathY;
+
+      const cosY = Math.cos(state.yaw), sinY = Math.sin(state.yaw);
+      const x1 = vx * cosY - vz * sinY;
+      const z1 = vx * sinY + vz * cosY;
+
+      const cosP = Math.cos(state.pitch), sinP = Math.sin(state.pitch);
+      const y2 = vy * cosP - z1 * sinP;
+      const z2 = vy * sinP + z1 * cosP;
+
+      const fov = 14;
+      const persp = fov / (fov + z2 * 0.22);
+
+      return {
+        x: cx + x1 * baseScale * persp,
+        y: cy - y2 * baseScale * persp,
+        depth: z2
+      };
+    }
+
+    function draw3DRightAngle(P, A, B, ratio, color, rect) {
+      const p1 = { x: P.x + (A.x - P.x) * ratio, y: P.y + (A.y - P.y) * ratio, z: P.z + (A.z - P.z) * ratio };
+      const p3 = { x: P.x + (B.x - P.x) * ratio, y: P.y + (B.y - P.y) * ratio, z: P.z + (B.z - P.z) * ratio };
+      const p2 = { x: p1.x + (B.x - P.x) * ratio, y: p1.y + (B.y - P.y) * ratio, z: p1.z + (B.z - P.z) * ratio };
+      const sP = project3D(P.x, P.y, P.z, rect);
+      const s1 = project3D(p1.x, p1.y, p1.z, rect);
+      const s2 = project3D(p2.x, p2.y, p2.z, rect);
+      const s3 = project3D(p3.x, p3.y, p3.z, rect);
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(s1.x, s1.y); ctx.lineTo(s2.x, s2.y); ctx.lineTo(s3.x, s3.y);
+      ctx.strokeStyle = color; ctx.lineWidth = 2.4; ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(sP.x, sP.y); ctx.lineTo(s1.x, s1.y); ctx.lineTo(s2.x, s2.y); ctx.lineTo(s3.x, s3.y);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.28)';
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // 기준 모서리와 다른 모서리의 무한직선 위치관계(실제 3D 좌표 계산).
+    // 교점이 모서리 바깥에 있어도 같은 평면이면 꼬인 위치가 아니다.
+    function classifyEdges3D(vertices, ref, edge) {
+      if (edge.u === ref.u && edge.v === ref.v) return 'ref';
+      if (edge.u === ref.u || edge.u === ref.v || edge.v === ref.u || edge.v === ref.v) return 'meet';
+      const A = vertices[ref.u], B = vertices[ref.v], C = vertices[edge.u], D = vertices[edge.v];
+      const u = { x: B.x - A.x, y: B.y - A.y, z: B.z - A.z };
+      const v = { x: D.x - C.x, y: D.y - C.y, z: D.z - C.z };
+      const cross = { x: u.y*v.z-u.z*v.y, y: u.z*v.x-u.x*v.z, z: u.x*v.y-u.y*v.x };
+      const crossLength = Math.hypot(cross.x, cross.y, cross.z);
+      const scale = Math.hypot(u.x,u.y,u.z) * Math.hypot(v.x,v.y,v.z);
+      if (crossLength < scale*1e-8) return 'parallel';
+      const w = { x: C.x-A.x, y: C.y-A.y, z: C.z-A.z };
+      const triple = w.x*cross.x + w.y*cross.y + w.z*cross.z;
+      return Math.abs(triple) < Math.max(1,Math.hypot(w.x,w.y,w.z))*crossLength*1e-8 ? 'coplanar' : 'skew';
+    }
+
+    // 실제 그리는 곡선과 꺾은선 길이를 픽셀 좌표로 잰 다음 AB=L로 환산.
+    function getShortestPathMetrics(L) {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const halfWidth = Math.min(rect.width*0.36, 250)*state.scale;
+      const ctrlDepth = 125*state.scale;
+      const topHeight = 95*state.scale;
+      const chord = 2*halfWidth;
+      let curvePx=0;
+      let prevX=-halfWidth, prevY=0;
+      for (let i=1;i<=256;i++) {
+        const t=i/256, u=1-t;
+        const x=u*u*(-halfWidth)+t*t*halfWidth;
+        const y=2*u*t*ctrlDepth;
+        curvePx += Math.hypot(x-prevX,y-prevY);
+        prevX=x; prevY=y;
+      }
+      return { straight:L, curved:L*curvePx/chord,
+        broken:L*Math.hypot(halfWidth,topHeight)/halfWidth };
+    }
+
+    // 1-D 선분은 6~18cm 슬라이더의 값과 실제 도형 픽셀 길이를 동기화한다.
+    function getTab1DisplayPoints(rect) {
+      const cx=rect.width/2+state.offsetX, cy=rect.height*0.5+state.offsetY;
+      const a={x:cx+state.ptA.x*state.scale,y:cy+state.ptA.y*state.scale};
+      const b={x:cx+state.ptB.x*state.scale,y:cy+state.ptB.y*state.scale};
+      if (state.subType[1] !== 'segment') return {a,b};
+      const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1;
+      const unitPx=Math.min(20*state.scale,(rect.width-64)/18);
+      const half=state.param1*unitPx/2;
+      const mx=(a.x+b.x)/2,my=(a.y+b.y)/2;
+      return {a:{x:mx-dx/len*half,y:my-dy/len*half},
+        b:{x:mx+dx/len*half,y:my+dy/len*half},unitPx};
+    }
+
+    // -------------------------------------------------------------------------
+    // 3. 6대 탭 × 22종 세부 시나리오 동적 문제·퀴즈·해설 생성기
+    // -------------------------------------------------------------------------
+    function getScenarioSpec() {
+      const m = state.mode;
+      const sub = state.subType[m];
+      const L = state.param1;
+      const p2 = state.param2;
+
+      // =====================================================================
+      // 탭 1: 직선·반직선·선분 레이저 & 한 직선 위의 4점 (A-B-C-D)
+      // =====================================================================
+      if (m === 1) {
+        if (sub === 'sameRay' || sub === 'intersect') {
+          const isSame = sub === 'sameRay';
+          return {
+            badge: isSame
+              ? "탐구 1-E · [한 직선 위의 네 점 A-B-C-D] 같은 반직선 1초 판정 (출발점 일치 + 방향 일치!)"
+              : "탐구 1-F · [한 직선 위의 네 점 A-B-C-D] 두 반직선의 공통부분(교집합)과 합집합 스캐너",
+            hint: isSame
+              ? "상단 <strong>[🔀 겹침 분리 뷰]</strong>를 보세요! 점 B에서 오른쪽(C 방향)으로 쏜 레이저와 점 B에서 오른쪽(D 방향)으로 쏜 레이저는 <strong>출발점(B)도 같고 방향(오른쪽)도 같아서 100% 똑같은 반직선</strong>입니다!"
+              : "하단 <strong>[🎬 레이저 발사]</strong> 또는 슬라이더를 움직여보세요! 점 B에서 오른쪽으로 가는 반직선 BD와 점 C에서 왼쪽으로 가는 반직선 CA가 동시에 지나는 <strong>공통부분은 선분 BC</strong>입니다!",
+            lensText: `📌 <strong>[반직선 기호 독해법]</strong>: ${tex('\\overrightarrow{BC}')}에서 <strong>앞글자(B)는 손전등을 켠 출발점</strong>이고, <strong>뒷글자(C)는 빛이 나아가는 방향 표지판</strong>입니다!`,
+            symbolText: isSame ? `\\overrightarrow{BC} = \\overrightarrow{BD} \\; (\\text{단, } \\overrightarrow{AC} \\ne \\overrightarrow{BC})` : `\\overrightarrow{BD} \\cap \\overrightarrow{CA} = \\overline{BC}, \\; \\overrightarrow{BD} \\cup \\overrightarrow{CA} = \\overleftrightarrow{AD}`,
+            visualEqHTML: isSame
+              ? `<span class="pi-box">🔦 반직선 BC (B 출발 → 오른쪽)</span><span class="text-amber-300 font-extrabold">🟰</span><span class="num-box">🔦 반직선 BD (B 출발 → 오른쪽)</span><span class="text-rose-400 font-bold ml-1">❌ 주의: 반직선 AC는 출발점이 A라 다름!</span>`
+              : `<span class="pi-box">🔦 반직선 BD (B→오른쪽)</span><span class="text-emerald-400 font-extrabold">∩</span><span class="num-box">🔦 반직선 CA (C→왼쪽)</span><span class="text-amber-300 font-extrabold">🟰</span><span class="px-2 py-0.5 rounded bg-emerald-950 border border-amber-400 text-amber-200 font-bold">✨ 공통부분 = 선분 BC!</span>`,
+            question: `한 직선 위에 네 점 ${tex('A, B, C, D')}가 차례대로 있을 때, <strong>① ${tex('\\overrightarrow{BC}')}와 같은 반직선</strong>과, <strong>② 두 반직선 ${tex('\\overrightarrow{BD}')}와 ${tex('\\overrightarrow{CA}')}의 공통부분(교집합)</strong>을 바르게 짝지은 것은?`,
+            options: [
+              { label: "① 반직선 BD, 선분 BC", correct: true, msg: "정답입니다! 출발점(B)과 방향(오른쪽)이 같은 반직선 BD가 반직선 BC와 같고, 서로 마주 보고 달리는 반직선 BD와 CA가 겹치는 구간은 선분 BC입니다!" },
+              { label: "② 반직선 AC, 선분 BC", correct: false, msg: "반직선 AC는 출발점이 A이므로 출발점이 B인 반직선 BC와 같지 않습니다!" },
+              { label: "③ 반직선 BD, 직선 AD", correct: false, msg: "직선 AD는 두 반직선을 합친 것(합집합)이고, 둘이 동시에 겹치는 공통부분(교집합)은 선분 BC입니다!" }
+            ],
+            answerHTML: `같은 반직선: <span class="num-box">${tex('\\overrightarrow{BC} = \\overrightarrow{BD}')}</span> | 공통부분: <span class="pi-box">${tex('\\overline{BC}')}</span>`,
+            eq1: tex(`\\overrightarrow{BC} = \\overrightarrow{BD} \\; (\\text{출발점 } B + \\text{오른쪽 방향 동일})`),
+            eq2: tex(`\\overrightarrow{BD} \\cap \\overrightarrow{CA} = \\overline{BC}, \\quad \\overrightarrow{BD} \\cup \\overrightarrow{CA} = \\overleftrightarrow{AD}`),
+            stats: [
+              ['첫 번째 반직선', isSame ? '반직선 BC (B 출발 → 오른쪽 무한)' : '반직선 BD (B 출발 → 오른쪽 무한)'],
+              ['두 번째 반직선', isSame ? '반직선 BD (B 출발 → 오른쪽 무한)' : '반직선 CA (C 출발 → 왼쪽 무한)'],
+              ['일치 / 관계 판정', isSame ? '⭕ 100% 동일한 반직선!' : '서로 마주 보며 교차 진행'],
+              ['공통부분(교집합 ∩)', isSame ? '반직선 BC 전체' : '가운데 겹친 선분 BC!']
+            ],
+            steps: [
+              "한 직선 위의 네 점 A, B, C, D 및 손전등 출발점(🔦) 표시",
+              "겹침 분리 뷰: 두 반직선을 위층·아래층으로 띄워 진행 범위 비교",
+              "공통부분 스캐너: 위층과 아래층에 모두 존재하는 구간만 초록 네온 강조"
+            ],
+            textbook: {
+              steps: `① 두 반직선이 같으려면 <strong>출발점이 같고 뻗어 나가는 방향이 같아야</strong> 합니다.<br/>
+② ${tex('\\overrightarrow{BC}')}와 ${tex('\\overrightarrow{BD}')}는 모두 점 B에서 시작하여 오른쪽으로 한없이 뻗어 나가므로 서로 같습니다.<br/>
+③ 점 B에서 오른쪽으로 가는 ${tex('\\overrightarrow{BD}')}와 점 C에서 왼쪽으로 가는 ${tex('\\overrightarrow{CA}')}가 동시에 지나는 공통부분은 <strong>선분 ${tex('\\overline{BC}')}</strong>입니다.`,
+              warning: "⚠️ 반직선 AC와 반직선 BC는 방향은 같지만 출발점이 A와 B로 다르므로 절대 같은 반직선이 아닙니다!"
+            },
+            shortcut: {
+              steps: `① <strong>[같은 반직선 1초 소거법]</strong>: 기호의 <strong>맨 앞글자(출발점)가 다르면 볼 것도 없이 즉시 탈락(❌)</strong>!<br/>
+② 두 반직선이 서로 마주 보고 달리면 공통부분은 항상 <strong>두 출발점 사이에 끼인 선분(${tex('\\overline{BC}')})</strong>입니다!`,
+              highlight: "💡 반직선 = 손전등! 손전등을 들고 서 있는 위치(앞글자)와 빛을 쏘는 방향(오른쪽/왼쪽) 딱 두 가지만 비교하세요!"
+            }
+          };
+        } else {
+          // rayCompare, line, rayAB, rayBA, segment
+          return {
+            badge: "탐구 1 · [기본 정의와 기호 해부] 직선(↔) · 반직선(→) · 선분(―) 레이저 손전등 실험",
+            hint: "칠판의 <strong>점 A와 점 B를 마우스로 직접 드래그</strong>해 보세요! 하단 슬라이더를 움직이면 손전등에서 레이저 빛이 발사되며 <strong>왜 반직선 AB와 반직선 BA가 서로 다른지</strong> 눈으로 확인됩니다!",
+            lensText: `📌 <strong>[기호 모자 모양 번역]</strong>: ${tex('\\overleftrightarrow{AB}')}(양쪽 화살표 = 양방향 무한 직선), ${tex('\\overrightarrow{AB}')}(한쪽 화살표 = A 출발 B 방향 반직선), ${tex('\\overline{AB}')}(막대기 = 길이를 잴 수 있는 선분)!`,
+            symbolText: `\\overleftrightarrow{AB} = \\overleftrightarrow{BA}\\text{ (O)}, \\; \\overline{AB} = \\overline{BA}\\text{ (O)}, \\; \\overrightarrow{AB} \\ne \\overrightarrow{BA}\\text{ (X)}`,
+            visualEqHTML: `
+              <span class="pi-box">🔦 반직선 AB (A 출발 → B 방향)</span>
+              <span class="text-rose-400 font-extrabold">≠</span>
+              <span class="num-box">🔦 반직선 BA (B 출발 → A 방향)</span>
+              <span class="text-emerald-400 font-extrabold">⇒</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-950 border border-amber-400 text-amber-200 font-bold">겹치는 공통부분 = 선분 AB!</span>
+            `,
+            question: `서로 다른 두 점 ${tex('A, B')}를 기준으로 만든 도형에 대한 설명 중 <strong>옳은 것</strong>을 고르시오.`,
+            options: [
+              { label: "① 반직선 AB와 반직선 BA는 같다", correct: false, msg: "출발점도 다르고(A vs B) 뻗어 나가는 방향도 정반대여서 서로 다른 도형입니다!" },
+              { label: "② 직선 AB=직선 BA 이고, 선분 AB=선분 BA 이다!", correct: true, msg: "정답입니다! 직선과 선분은 순서를 바꿔도 같지만, 오직 반직선만 순서가 바뀌면 달라집니다!" },
+              { label: "③ 반직선의 길이는 직선의 절반이다", correct: false, msg: "직선과 반직선은 끝없이 뻗어 나가므로 둘 다 길이를 잴 수 없습니다(무한)!" }
+            ],
+            answerHTML: `직선·선분은 순서 무관(${tex('AB=BA')}), 오직 <span class="pi-box">반직선만 ${tex('\\overrightarrow{AB} \\ne \\overrightarrow{BA}')}</span>!`,
+            eq1: tex(`\\text{반직선 같을 조건: (출발점 일치) and (방향 일치)}`),
+            eq2: tex(`\\overrightarrow{AB} \\cap \\overrightarrow{BA} = \\overline{AB}, \\quad \\overrightarrow{AB} \\cup \\overrightarrow{BA} = \\overleftrightarrow{AB}`),
+            stats: [
+              ['직선 AB (양방향 무한)', '끝점 없음 · 길이 측정 불가 · AB=BA'],
+              ['🟡 반직선 AB (A 출발 → B 방향)', '시작점 A · 오른쪽 무한 · AB ≠ BA'],
+              ['🩷 반직선 BA (B 출발 → A 방향)', '시작점 B · 왼쪽 무한 · AB ≠ BA'],
+              ['🟢 선분 AB (양 끝점 A, B 고정)', '유일하게 길이를 잴 수 있음! (AB=BA)']
+            ],
+            steps: [
+              "기준점 A, B 및 손전등 출발점(🔦)과 레이저 진행 화살표 표시",
+              "반직선 AB(노란 레이저)와 반직선 BA(분홍 레이저) 위·아래 분리 비교",
+              "두 반직선 AB와 BA가 겹치는 공통부분 = 선분 AB 증명"
+            ],
+            textbook: {
+              steps: `① <strong>직선 ${tex('\\overleftrightarrow{AB}')}</strong>는 두 점 A, B를 지나 양쪽으로 한없이 곧게 뻗은 선이므로 ${tex('\\overleftrightarrow{AB} = \\overleftrightarrow{BA}')} 입니다.<br/>
+② <strong>반직선 ${tex('\\overrightarrow{AB}')}</strong>는 점 A에서 시작하여 점 B 쪽으로 한없이 뻗은 선이므로 시작점과 방향이 다른 ${tex('\\overrightarrow{BA}')}와 같지 않습니다.<br/>
+③ <strong>선분 ${tex('\\overline{AB}')}</strong>는 점 A에서 점 B까지의 부분으로 유일하게 길이를 잴 수 있습니다.`,
+              warning: "⚠️ 반직선 기호는 실제 선이 왼쪽으로 뻗든 오른쪽으로 뻗든 기호 위에는 항상 오른쪽 화살표(→)만 씁니다! (왼쪽 화살표 기호는 없음)"
+            },
+            shortcut: {
+              steps: `① <strong>[한 점을 지나는 직선 vs 두 점을 지나는 직선]</strong>:<br/>
+&nbsp;&nbsp;• 한 점 A를 지나는 직선은 <strong>무수히 많지만</strong>, 서로 다른 두 점 A, B를 지나는 직선은 <strong>오직 1개뿐</strong>입니다!<br/>
+② 길이를 잴 수 있는(유한한) 도형은 오직 <strong>선분</strong> 딱 하나뿐입니다!`,
+              highlight: "💡 직선(↔)과 선분(―)은 대칭이라 글자 순서를 바꿔도 같지만, 반직선(→)은 비대칭이라 글자 순서를 바꾸면 달라집니다!"
+            }
+          };
+        }
+      }
+
+      // =====================================================================
+      // 탭 2: 최단거리 & 중점·삼등분점·조건식 칸수 블록 (shortest, midPoint, trisect, ratioBlock)
+      // =====================================================================
+      if (m === 2) {
+        if (sub === 'shortest') {
+          const pathLengths = getShortestPathMetrics(L);
+          return {
+            badge: "탐구 2-A · [왕기초] 두 점 A, B 사이의 거리(최단거리 = 선분)와 중점 M의 뜻",
+            hint: "수학에서 <strong>'두 점 A, B 사이의 거리'</strong>라고 하면 굽은 길이나 꺾인 길이 아니라, 무조건 가장 짧은 <strong>선분 AB의 길이</strong>를 뜻합니다! 한가운데 점 M은 선분을 똑같이 반으로 나눕니다(| 마크)!",
+            lensText: `📌 <strong>[중점 기호 번역]</strong>: 점 M이 ${tex('\\overline{AB}')}의 중점 ${tex('\\iff \\overline{AM} = \\overline{MB} = \\dfrac{1}{2}\\overline{AB}')} (등변 틱 마크 | 로 표시!)`,
+            symbolText: `\\text{두 점 A, B 사이의 거리} = \\overline{AB} = ${L}\\text{ cm}, \\quad \\overline{AM} = \\overline{MB} = ${L / 2}\\text{ cm}`,
+            visualEqHTML: `
+              <span class="num-box">❌ 굽은 길 (${pathLengths.curved.toFixed(1)}cm)</span>
+              <span class="num-box">❌ 꺾인 길 (${pathLengths.broken.toFixed(1)}cm)</span>
+              <span class="pi-box">⭕ 두 점 사이의 거리 = 곧은 선분 AB (${L}cm)</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-950 border border-emerald-400 text-emerald-200 font-bold">중점 M: AM = MB = ${L / 2}cm (|)</span>
+            `,
+            question: `두 점 A, B를 잇는 여러 가지 선 중에서 <strong>두 점 A, B 사이의 거리</strong>를 나타내는 도형은 무엇이며, 그 길이가 ${tex(`${L}\\text{ cm}`)} 일 때 중점 M에서 점 A까지의 거리는?`,
+            options: [
+              { label: `① 직선 AB, ${L / 2} cm`, correct: false, msg: "직선은 끝없이 뻗어 나가므로 길이를 잴 수 없습니다! 두 점 사이의 거리는 '선분 AB'의 길이입니다!" },
+              { label: `② 선분 AB, ${L / 2} cm`, correct: true, msg: `정답입니다! 두 점 사이의 거리는 가장 짧은 '선분 AB'의 길이(${L}cm)이고, 중점 M까지의 거리는 절반인 ${L / 2}cm입니다!` },
+              { label: `③ 선분 AB, ${L} cm`, correct: false, msg: "중점 M은 선분 AB를 똑같이 2등분하는 점이므로 절반(½)이 됩니다!" }
+            ],
+            answerHTML: `두 점 사이의 거리 = <strong>선분 AB의 길이(${L}cm)</strong> | 중점 ${tex(`\\overline{AM} = \\overline{MB} =`)} <span class="pi-box">${L / 2} cm</span>`,
+            eq1: tex(`(\\text{두 점 A, B 사이의 거리}) = \\overline{AB} = ${L}\\text{ cm (최단거리)}`),
+            eq2: tex(`\\text{중점 } M: \\overline{AM} = \\overline{MB} = \\dfrac{1}{2}\\overline{AB} = ${L / 2}\\text{ cm}`),
+            stats: [
+              ['굽은 곡선 경로 길이', `${pathLengths.curved.toFixed(1)} cm (거리 아님 ❌)`],
+              ['점 P를 들르는 꺾인 경로', `${pathLengths.broken.toFixed(1)} cm (거리 아님 ❌)`],
+              ['⭕ 두 점 A, B 사이의 거리', `선분 AB = ${L} cm (최단거리!)`],
+              ['중점 M으로 나뉜 AM = MB', `각각 ${L / 2} cm (등변 마크 |)`]
+            ],
+            steps: [
+              "두 점 A, B를 잇는 굽은 선·꺾인 선과 가장 짧은 곧은 선분 AB 비교",
+              "선분 AB의 정가운데 중점 M 및 등변 틱 마크(|) 표시",
+              "AM = MB = ½AB 수식 브래킷 표시"
+            ],
+            textbook: {
+              steps: `① 두 점 A, B를 양 끝점으로 하는 무수히 많은 선 중에서 길이가 가장 짧은 선은 <strong>선분 AB</strong>이며, 이 선분 AB의 길이를 <strong>두 점 A, B 사이의 거리</strong>라고 합니다.<br/>
+② 선분 AB 위에 있으면서 양 끝점까지의 거리가 같은 점 M을 선분 AB의 <strong>중점</strong>이라 하며, ${tex(`\\overline{AM} = \\overline{MB} = \\dfrac{1}{2}\\overline{AB} = ${L / 2}\\text{ cm}`)} 입니다.`,
+              warning: "⚠️ 시험에서 '두 점 A, B를 잇는 선 중 가장 짧은 것은 직선 AB이다?' → 거짓(X)! 직선이 아니라 『선분 AB』라고 해야 맞습니다!"
+            },
+            shortcut: {
+              steps: `① 수학에서 <strong>'거리(Distance)'</strong>라는 두 글자는 무조건 <strong>'가장 짧은 최단거리'</strong>를 뜻합니다!<br/>
+② 점과 점 사이의 거리는 <strong>선분</strong>, 점과 직선 사이의 거리는 <strong>수선(90° 직각선)</strong>입니다!`,
+              highlight: `💡 중점 M이 나오면 그림 위에 똑같은 기호(| 과 |, 또는 ○ 와 ○)부터 표시하세요!`
+            }
+          };
+        } else if (sub === 'midPoint') {
+          const halfL = L / 2;
+          const cRatio = 0.2 + state.animProg * 0.6;
+          const lenAC = (L * cRatio).toFixed(1);
+          const lenCB = (L * (1 - cRatio)).toFixed(1);
+          const lenMC = (L * cRatio * 0.5).toFixed(2);
+          const lenCN = (L * (1 - cRatio) * 0.5).toFixed(2);
+          return {
+            badge: "탐구 2-B · [기출 1위 불변량] 동점 C가 아무리 움직여도 두 중점 사이 거리 MN = ½AB 일정!",
+            hint: "칠판의 <strong>노란 점 C를 마우스로 좌우로 드래그</strong>해 보세요! 왼쪽이 ○+○, 오른쪽이 △+△ 이므로 <strong>가운데 MN(= ○+△)은 언제나 전체(2○+2△)의 정확히 절반</strong>입니다!",
+            lensText: `📌 <strong>[중점 불변량 블록 번역]</strong>: ${tex('\\overline{AB} = 2\\text{○} + 2\\text{△} = 2(\\text{○}+\\text{△}) \\implies \\overline{MN} = \\text{○}+\\text{△} = \\dfrac{1}{2}\\overline{AB}')}!`,
+            symbolText: `\\overline{MN} = \\overline{MC} + \\overline{CN} = \\dfrac{1}{2}\\overline{AB} = ${halfL}\\text{ cm (불변!)}`,
+            visualEqHTML: `
+              <span class="num-box">🔵 왼쪽 절반 MC = ○ (${lenMC})</span>
+              <span class="text-emerald-400 font-extrabold">➕</span>
+              <span class="px-2 py-0.5 rounded bg-pink-500/20 border border-pink-400 text-pink-200 font-bold">🩷 오른쪽 절반 CN = △ (${lenCN})</span>
+              <span class="text-amber-300 font-extrabold">🟰</span>
+              <span class="pi-box">🟡 MN = ○+△ = ½AB = ${halfL}cm (항상 일정!)</span>
+            `,
+            question: `길이가 ${tex(`\\overline{AB} = ${L}\\text{ cm}`)} 인 선분 ${tex('AB')} 위의 임의의 점 ${tex('C')}에 대하여, ${tex('\\overline{AC}')}의 중점을 ${tex('M')}, ${tex('\\overline{CB}')}의 중점을 ${tex('N')}이라 하자. <strong>선분 ${tex('MN')}의 길이</strong>를 구하시오.`,
+            options: [
+              { label: "① 점 C의 위치에 따라 달라진다", correct: false, msg: "점 C를 드래그해 보세요! MC가 줄어들면 CN이 똑같이 늘어나서 합(MN)은 절대 변하지 않습니다!" },
+              { label: `② 항상 ${halfL} cm (전체 AB의 절반!)`, correct: true, msg: `정답입니다! MN = ○ + △ = ½(2○ + 2△) = ½AB = ${halfL}cm로 항상 일정합니다!` },
+              { label: `③ 항상 ${L / 3} cm`, correct: false, msg: "왼쪽 절반과 오른쪽 절반을 더하면 전체의 절반(1/2)이 됩니다!" }
+            ],
+            answerHTML: `점 C의 위치와 무관하게 ${tex('\\overline{MN} = \\dfrac{1}{2}\\overline{AB} =')} <span class="pi-box">${halfL} cm</span> (절대 불변량!)`,
+            eq1: tex(`\\overline{MN} = \\overline{MC} + \\overline{CN} = \\dfrac{1}{2}\\overline{AC} + \\dfrac{1}{2}\\overline{CB}`),
+            eq2: tex(`= \\dfrac{1}{2}(\\overline{AC} + \\overline{CB}) = \\dfrac{1}{2}\\overline{AB} = ${halfL}\\text{ cm}`),
+            stats: [
+              ['전체 선분 AB 길이', `${L} cm`],
+              ['현재 쪼개진 AC / CB 길이', `AC = ${lenAC} cm | CB = ${lenCB} cm`],
+              ['각 절반인 MC(○) + CN(△)', `${lenMC} cm + ${lenCN} cm`],
+              ['🟡 중점 사이 거리 MN', `항상 ${halfL}.00 cm (절대 안 변함!)`]
+            ],
+            steps: [
+              "선분 AB 위의 동점 C 및 왼쪽 구간 AC(파랑) · 오른쪽 구간 CB(분홍) 분리",
+              "AC의 중점 M(등변 마크 |, ○=○)과 CB의 중점 N(등변 마크 ||, △=△) 표시",
+              "MN = ○ + △ = 전체(○○ + △△)의 정확히 절반(½AB) 브래킷 증명"
+            ],
+            textbook: {
+              steps: `① 점 M은 ${tex('\\overline{AC}')}의 중점이므로 ${tex('\\overline{MC} = \\dfrac{1}{2}\\overline{AC}')} 이고, 점 N은 ${tex('\\overline{CB}')}의 중점이므로 ${tex('\\overline{CN} = \\dfrac{1}{2}\\overline{CB}')} 입니다.<br/>
+② 따라서 ${tex(`\\overline{MN} = \\overline{MC} + \\overline{CN} = \\dfrac{1}{2}(\\overline{AC} + \\overline{CB}) = \\dfrac{1}{2}\\overline{AB} = ${halfL}\\text{ cm}`)} 입니다.`,
+              warning: "⚠️ 반대로 시험에서 'MN = 6cm일 때 전체 AB의 길이를 구하시오'라고 거꾸로 물으면 2배인 12cm라고 즉시 답하면 됩니다!"
+            },
+            shortcut: {
+              steps: `① <strong>[동그라미(○) + 세모(△) 3초 법칙]</strong>:<br/>
+&nbsp;&nbsp;• 전체 ${tex(`\\overline{AB} = \\text{○○} + \\text{△△} = ${L}\\text{ cm}`)}<br/>
+&nbsp;&nbsp;• 구하는 ${tex(`\\overline{MN} = \\text{○} + \\text{△} =`)} 무조건 절반인 <strong class="text-amber-300">${tex(`${halfL}\\text{ cm}`)}</strong>!`,
+              highlight: "💡 탐구 4-B의 '평각의 두 이등분선이 이루는 각 = ½×180° = 90°'와 100% 똑같은 쌍둥이 원리입니다!"
+            }
+          };
+        } else if (sub === 'trisect') {
+          // 삼등분점 P, Q와 중점 M 결합 (6칸 레고 블록 기법!)
+          const unit = L / 6; // 1칸 길이
+          const lenPM = unit; // P(2칸) ~ M(3칸) = 1칸 = 1/6 AB
+          const lenAQ = (L * 2) / 3; // A ~ Q(4칸) = 4/6 AB = 2/3 AB
+          return {
+            badge: "탐구 2-C · [빈출 응용] 선분의 삼등분점(P, Q)과 중점(M)이 함께 나올 때 (6칸 레고 블록 비법!)",
+            hint: "<strong>2등분(중점)과 3등분(삼등분점)</strong>이 한 문제에 섞여 나오면 분수 통분하느라 머리 아파하지 마세요! 2와 3의 최소공배수인 <strong>'전체 = 6칸 레고 블록'</strong>으로 나누면 1초 만에 풀립니다!",
+            lensText: `📌 <strong>[6칸 레고 블록 번역]</strong>: 전체 ${tex('\\overline{AB}')}를 <strong>6칸</strong>으로 놓으면, 중점 M은 <strong>3번째 칸</strong>, 삼등분점 P, Q는 <strong>2번째·4번째 칸</strong>입니다!`,
+            symbolText: `\\text{전체 } 6\\text{칸}(${L}\\text{cm}) \\implies 1\\text{칸} = \\overline{PM} = \\overline{MQ} = \\dfrac{1}{6}\\overline{AB} = ${unit}\\text{ cm}`,
+            visualEqHTML: `
+              <span class="num-box">삼등분점 P = 2칸 지점 (${2 * unit}cm)</span>
+              <span class="pi-box">중점 M = 3칸 지점 (${3 * unit}cm)</span>
+              <span class="num-box">삼등분점 Q = 4칸 지점 (${4 * unit}cm)</span>
+              <span class="text-amber-300 font-extrabold">⇒</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-950 border border-amber-400 text-amber-200 font-bold">선분 PM = 3칸 - 2칸 = 딱 1칸(${unit}cm)!</span>
+            `,
+            question: `길이가 ${tex(`\\overline{AB} = ${L}\\text{ cm}`)} 인 선분 ${tex('AB')}의 삼등분점을 가까운 쪽부터 ${tex('P, Q')}라 하고, ${tex('\\overline{AB}')}의 중점을 ${tex('M')}이라 할 때, <strong>선분 ${tex('PM')}의 길이</strong>와 <strong>선분 ${tex('PQ')}의 길이</strong>를 구하시오.`,
+            options: [
+              { label: `① PM=${unit}cm, PQ=${2 * unit}cm`, correct: true, msg: `정답입니다! 전체 ${L}cm를 6칸(1칸=${unit}cm)으로 보면 P는 2칸, M은 3칸, Q는 4칸 위치이므로 PM은 1칸(${unit}cm), PQ는 2칸(${2 * unit}cm)입니다!` },
+              { label: `② PM=${2 * unit}cm, PQ=${3 * unit}cm`, correct: false, msg: `중점 M(1/2 = 3/6)과 삼등분점 P(1/3 = 2/6) 사이의 거리 PM은 전체의 1/6(${unit}cm)입니다!` },
+              { label: `③ PM=${unit / 2}cm, PQ=${unit}cm`, correct: false, msg: `칠판의 6칸 레고 블록 눈금을 세어보세요! P와 M 사이는 정확히 1칸입니다!` }
+            ],
+            answerHTML: `전체 6칸 중 <strong>PM = 1칸(<span class="pi-box">${unit} cm</span>)</strong>, <strong>PQ = 2칸(<span class="num-box">${2 * unit} cm</span>)</strong>`,
+            eq1: tex(`\\overline{PM} = \\overline{AM} - \\overline{AP} = \\dfrac{1}{2}\\overline{AB} - \\dfrac{1}{3}\\overline{AB} = \\dfrac{1}{6}\\overline{AB} = ${unit}\\text{ cm}`),
+            eq2: tex(`\\overline{PQ} = \\dfrac{1}{3}\\overline{AB} = \\dfrac{2}{6}\\overline{AB} = ${2 * unit}\\text{ cm}`),
+            stats: [
+              ['전체 선분 AB (= 6칸)', `${L} cm (1칸 = ${unit} cm)`],
+              ['삼등분점 P(2칸) · Q(4칸)', `AP = PQ = QB = 2칸 (${2 * unit} cm)`],
+              ['중점 M (3칸 위치)', `AM = MB = 3칸 (${3 * unit} cm)`],
+              ['🎯 구하는 PM 길이 (3칸 - 2칸)', `1칸 = 1/6 AB = ${unit} cm!`]
+            ],
+            steps: [
+              "선분 AB를 6등분한 레고 블록 눈금(1칸 ~ 6칸) 가이드 표시",
+              "삼등분점 P(2칸), Q(4칸)와 정가운데 중점 M(3칸) 위치 매칭",
+              "PM = 1칸(1/6 AB), PQ = 2칸(1/3 AB) 직관적 칸수 비교"
+            ],
+            textbook: {
+              steps: `① 점 M은 ${tex('\\overline{AB}')}의 중점이므로 ${tex('\\overline{AM} = \\dfrac{1}{2}\\overline{AB}')} 입니다.<br/>
+② 점 P, Q는 ${tex('\\overline{AB}')}의 삼등분점이므로 ${tex('\\overline{AP} = \\overline{PQ} = \\overline{QB} = \\dfrac{1}{3}\\overline{AB}')} 입니다.<br/>
+③ 따라서 ${tex(`\\overline{PM} = \\overline{AM} - \\overline{AP} = \\left(\\dfrac{1}{2} - \\dfrac{1}{3}\\right)\\overline{AB} = \\dfrac{1}{6}\\overline{AB} = ${unit}\\text{ cm}`)} 입니다.`,
+              warning: "⚠️ 분수 뺄셈(1/2 - 1/3)을 일일이 식으로 쓰면 헷갈리기 쉽습니다! 처음부터 그림 위에 6칸 눈금을 그어 풀면 절대 틀리지 않습니다!"
+            },
+            shortcut: {
+              steps: `① <strong>[중점(2등분) + 삼등분점(3등분) = 무조건 6칸 레고 블록!]</strong>:<br/>
+&nbsp;&nbsp;• 점 A=${tex('0')}칸, <strong>점 P=${tex('2')}칸</strong>, <strong>점 M=${tex('3')}칸</strong>, <strong>점 Q=${tex('4')}칸</strong>, 점 B=${tex('6')}칸!<br/>
+② 이제 어떤 선분을 물어보든 칸수만 빼면 끝납니다! (예: ${tex('\\overline{PM} = 3-2 = 1\\text{칸}')}, ${tex('\\overline{AQ} = 4\\text{칸}')})`,
+              highlight: `💡もし 'PM의 길이가 ${unit}cm일 때 전체 AB의 길이는?'이라고 물으면 1칸이 ${unit}cm이므로 6배인 ${L}cm가 정답입니다!`
+            }
+          };
+        } else {
+          // ratioBlock: 조건식 번역기 (AC = 2CB 이고 AC의 중점이 M일 때 -> 3칸 블록!)
+          const unit = L / 3; // 전체 3칸 (AC = 2칸, CB = 1칸, AM = MC = 1칸!)
+          return {
+            badge: "탐구 2-D · [도포자 구출 조건식 번역기] 'AC = 2CB 이고 점 M이 AC의 중점일 때' 칸수 블록 해법!",
+            hint: "학생들이 제일 포기하는 문장제 식입니다! <strong>'AC = 2CB'</strong>라는 말을 보자마자 <strong>'CB를 1칸으로 놓으면 AC는 2칸이구나!'</strong>라고 번역해 보세요! AC(2칸)의 중점이 M이니까 <strong>AM = MC = CB = 모두 똑같은 1칸</strong>이 됩니다!",
+            lensText: `📌 <strong>[비례 조건식 1초 번역]</strong>: ${tex('\\overline{AC} = 2\\overline{CB} \\iff \\overline{CB} = 1\\text{칸}, \\; \\overline{AC} = 2\\text{칸}')} (전체 ${tex('\\overline{AB} = 3\\text{칸}')}!)`,
+            symbolText: `\\overline{AM}(1\\text{칸}) = \\overline{MC}(1\\text{칸}) = \\overline{CB}(1\\text{칸}) = \\dfrac{1}{3}\\overline{AB} = ${unit}\\text{ cm}`,
+            visualEqHTML: `
+              <span class="num-box">구간 AM = 1칸 (${unit}cm)</span>
+              <span class="text-emerald-400 font-extrabold">🟰</span>
+              <span class="num-box">구간 MC = 1칸 (${unit}cm)</span>
+              <span class="text-emerald-400 font-extrabold">🟰</span>
+              <span class="pi-box">구간 CB = 1칸 (${unit}cm)</span>
+              <span class="text-amber-300 font-extrabold">⇒</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-950 border border-amber-400 text-amber-200 font-bold">결국 M, C는 AB의 삼등분점! (MB = 2칸 = ${2 * unit}cm)</span>
+            `,
+            question: `길이가 ${tex(`\\overline{AB} = ${L}\\text{ cm}`)} 인 선분 ${tex('AB')} 위의 점 ${tex('C')}에 대하여 ${tex('\\overline{AC} = 2\\overline{CB}')} 이고, ${tex('\\overline{AC}')}의 중점이 ${tex('M')}일 때, <strong>선분 ${tex('MB')}의 길이</strong>는 전체 ${tex('\\overline{AB}')}의 몇 분의 몇이며 몇 ${tex('\\text{cm}')}인가?`,
+            options: [
+              { label: `① 1/3배, ${unit} cm`, correct: false, msg: `1/3배(${unit}cm)는 1칸짜리 선분(AM, MC, CB)의 길이입니다! 선분 MB는 MC(1칸) + CB(1칸) = 2칸입니다!` },
+              { label: `② 2/3배, ${2 * unit} cm`, correct: true, msg: `완벽합니다! AM(1칸), MC(1칸), CB(1칸)으로 총 3칸이 똑같아지므로, 선분 MB는 2칸, 즉 전체의 2/3인 ${2 * unit}cm입니다!` },
+              { label: `③ 1/2배, ${L / 2} cm`, correct: false, msg: `점 M은 전체 AB의 중점이 아니라 AC(2칸)의 중점이므로 1칸 지점에 있습니다!` }
+            ],
+            answerHTML: `전체 3칸 중 ${tex('\\overline{MB} = \\overline{MC}(1\\text{칸}) + \\overline{CB}(1\\text{칸}) = 2\\text{칸} =')} <span class="num-box">2/3 AB</span> = <span class="pi-box">${2 * unit} cm</span>`,
+            eq1: tex(`\\overline{CB} = 1\\text{칸} \\implies \\overline{AC} = 2\\text{칸} \\implies \\overline{AM} = \\overline{MC} = 1\\text{칸}`),
+            eq2: tex(`\\overline{MB} = 2\\text{칸} = \\dfrac{2}{3}\\overline{AB} = ${2 * unit}\\text{ cm}`),
+            stats: [
+              ['조건식 AC = 2CB 칸수 번역', `작은 쪽 CB = 1칸 ⇒ AC = 2칸 (총 3칸)`],
+              ['AC(2칸)의 중점 M 적용', `AM = 1칸 | MC = 1칸 | CB = 1칸 (3등분!)`],
+              ['1칸의 실제 길이 (1/3 AB)', `${L} ÷ 3 = ${unit} cm`],
+              ['🎯 선분 MB의 길이 (MC + CB = 2칸)', `2/3 AB = ${2 * unit} cm`]
+            ],
+            steps: [
+              "가장 작은 단위인 CB를 '1칸 블록'으로 설정하고 AC를 '2칸 블록'으로 표시",
+              "AC(2칸)의 중점 M을 찍어 AM(1칸) = MC(1칸) = CB(1칸) 등변 마크(|) 일치 확인",
+              "MB = 2칸 = (2/3)AB 브래킷 수식 도출"
+            ],
+            textbook: {
+              steps: `① ${tex('\\overline{AC} = 2\\overline{CB}')} 이므로 점 C는 ${tex('\\overline{AB}')}를 ${tex('2 : 1')}로 나누는 점입니다. 따라서 ${tex(`\\overline{CB} = \\dfrac{1}{3}\\overline{AB} = ${unit}\\text{ cm}`)} 이고 ${tex(`\\overline{AC} = \\dfrac{2}{3}\\overline{AB} = ${2 * unit}\\text{ cm}`)} 입니다.<br/>
+② 점 M은 ${tex('\\overline{AC}')}의 중점이므로 ${tex(`\\overline{MC} = \\dfrac{1}{2}\\overline{AC} = ${unit}\\text{ cm}`)} 입니다.<br/>
+③ 따라서 ${tex(`\\overline{MB} = \\overline{MC} + \\overline{CB} = ${unit} + ${unit} = ${2 * unit}\\text{ cm}`)} (${tex('\\overline{AB}')}의 ${tex('\\dfrac{2}{3}')})입니다.`,
+              warning: "⚠️ 식에 분수(2/3, 1/3, 1/2)를 잔뜩 써서 대입하면 도포자 학생들은 중간에 길을 잃습니다! 무조건 가장 짧은 선분을 『1칸』으로 놓는 칸수 블록법을 쓰세요!"
+            },
+            shortcut: {
+              steps: `① <strong>[조건식 '${tex('\\overline{AC} = k\\overline{CB}')}' 3초 번역 공식]</strong>:<br/>
+&nbsp;&nbsp;숫자(${tex('k')})가 곱해진 쪽(${tex('CB')})이 더 짧은 선분입니다! 무조건 그 짧은 선분을 <strong class="text-amber-300">『1칸』</strong>이라고 그림 위에 적으세요!<br/>
+② 그러면 ${tex('CB=1\\text{칸}, \\; AC=2\\text{칸}')}이고, 2칸의 반토막(중점)은 1칸이니까 <strong>세 조각이 모두 1칸씩 똑같아집니다!</strong>`,
+              highlight: `💡 만약 'AB = 3BC'라고 나오면? 전체 AB가 3칸, BC가 1칸이니까 나머지 AC는 자동으로 2칸입니다!`
+            }
+          };
+        }
+      }
+
+      // =====================================================================
+      // 탭 3: 점 n개와 선의 개수(중복 흡수) & 맞꼭지각·시계 각도
+      // =====================================================================
+      if (m === 3) {
+        if (sub === 'collinear' || sub === 'circlePts') {
+          const nPts = Math.min(7, Math.max(4, Math.round(L / 3) + 1));
+          const mCol = Math.min(nPts - 1, Math.max(3, Math.round(p2 / 40) + 2));
+          const isCol = sub === 'collinear';
+          const totalPairs = (nPts * (nPts - 1)) / 2;
+          const colPairs = (mCol * (mCol - 1)) / 2;
+          const numSegments = totalPairs;
+          const numLines = isCol ? totalPairs - colPairs + 1 : totalPairs;
+          const numRays = isCol ? 2 * totalPairs - 2 * colPairs + 2 * (mCol - 1) : 2 * totalPairs;
+          return {
+            badge: isCol
+              ? `탐구 3-A · [심화 1위] 전체 점 ${nPts}개 중 한 직선 위에 ${mCol}개가 있을 때 (중복 직선 흡수 -${colPairs} + 1!)`
+              : `탐구 3-B · [기본 공식] 어느 세 점도 한 직선 위에 없는 ${nPts}개의 점으로 만드는 선의 개수`,
+            hint: isCol
+              ? "하단 슬라이더를 움직여 <strong>점들을 바닥 직선 위로 내려앉혀 보세요!</strong> 바닥의 점들이 만든 여러 직선이 <strong>단 1개의 노란 직선으로 합체되면서 (-중복 + 1)</strong>이 되는 이유가 눈으로 보입니다!"
+              : `점 ${nPts}개에서 2개를 뽑아 잇는 선분과 직선은 <strong>${nPts}×(${nPts}-1)÷2 = ${totalPairs}개</strong>이고, 반직선은 방향이 2가지씩이라 2배인 <strong>${numRays}개</strong>입니다!`,
+            lensText: `📌 <strong>[일직선 위 점 ${mCol}개의 운명]</strong>: 선분은 그대로(${colPairs}개), 직선은 단 <strong>1개</strong>로 합체, 반직선은 양 끝 바깥 2개만 빠져서 <strong>${2 * (mCol - 1)}개</strong> 생존!`,
+            symbolText: isCol
+              ? `\\text{직선} = ${totalPairs} - ${colPairs} + 1 = ${numLines}\\text{개}, \\; \\text{선분} = ${numSegments}\\text{개}`
+              : `\\text{직선}=\\text{선분}=\\dfrac{${nPts}\\times ${nPts - 1}}{2}=${totalPairs}\\text{개}, \\; \\text{반직선}=${numRays}\\text{개}`,
+            visualEqHTML: isCol
+              ? `<span class="num-box">전체 조합 (${totalPairs})</span><span class="text-rose-400 font-extrabold">➖</span><span class="num-box">일직선 중복 (${colPairs})</span><span class="text-emerald-400 font-extrabold">➕</span><span class="pi-box">바닥 대표 직선 1개 생존 (+1)</span><span class="text-amber-300 font-extrabold">🟰</span><span class="px-2 py-0.5 rounded bg-emerald-950 border border-amber-400 text-amber-200 font-bold">직선 ${numLines}개 (선분은 그대로 ${numSegments}개!)</span>`
+              : `<span class="pi-box">직선 = 선분 = (${nPts}×${nPts - 1})÷2 = ${totalPairs}개</span><span class="text-emerald-400 font-extrabold">|</span><span class="num-box">반직선 = ${nPts}×${nPts - 1} = ${numRays}개 (2배!)</span>`,
+            question: isCol
+              ? `오른쪽 그림과 같이 총 ${tex(`${nPts}`)}개의 점 중 바닥의 <strong>한 직선 위에 ${tex(`${mCol}`)}개의 점</strong>이 놓여 있다. 두 점을 이어 만들 수 있는 <strong>① 서로 다른 직선의 개수</strong>와 <strong>② 서로 다른 선분의 개수</strong>를 구하시오.`
+              : `어느 세 점도 한 직선 위에 있지 않은 <strong>${tex(`${nPts}`)}개의 점</strong> 중 두 점을 이어 만들 수 있는 <strong>① 직선의 개수</strong>와 <strong>② 반직선의 개수</strong>를 구하시오.`,
+            options: isCol
+              ? [
+                  { label: `① 직선 ${numLines}개, 선분 ${numSegments}개`, correct: true, msg: `정답입니다! 직선은 중복(${colPairs}개)을 빼고 대표 1개(+1)를 더해 ${numLines}개이고, 선분은 끝점이 다르면 다른 선분이므로 그대로 ${numSegments}개입니다!` },
+                  { label: `② 직선 ${numLines - 1}개, 선분 ${numSegments}개`, correct: false, msg: `중복된 ${colPairs}개를 다 빼버리면 바닥 직선 자체도 사라집니다! 반드시 +1을 해줘야 해요!` },
+                  { label: `③ 직선 ${numLines}개, 선분 ${numLines}개`, correct: false, msg: `선분은 한 직선 위에 있어도 양 끝점이 다르면 서로 다른 선분이므로 줄어들지 않습니다!` }
+                ]
+              : [
+                  { label: `① 직선 ${totalPairs}개, 반직선 ${numRays}개`, correct: true, msg: `정답입니다! 직선은 (${nPts}×${nPts - 1})÷2 = ${totalPairs}개이고, 반직선은 방향이 2가지씩이므로 ${numRays}개입니다!` },
+                  { label: `② 직선 ${numRays}개, 반직선 ${totalPairs}개`, correct: false, msg: `직선 AB와 직선 BA는 같으므로 2로 나누어야 합니다!` },
+                  { label: `③ 직선 ${totalPairs}개, 반직선 ${totalPairs}개`, correct: false, msg: `반직선 AB와 반직선 BA는 서로 다르므로 반직선 개수는 직선 개수의 2배입니다!` }
+                ],
+            answerHTML: `직선: <span class="pi-box">${numLines}개</span>, 선분: <span class="num-box">${numSegments}개</span>, 반직선: <span class="pi-box">${numRays}개</span>`,
+            eq1: isCol
+              ? tex(`\\text{직선} = ${totalPairs} - ${colPairs}(\\text{중복}) + 1(\\text{대표 생존!}) = ${numLines}\\text{개}`)
+              : tex(`\\text{직선} = \\text{선분} = \\dfrac{${nPts} \\times ${nPts - 1}}{2} = ${totalPairs}\\text{개}`),
+            eq2: isCol
+              ? tex(`\\text{선분} = ${numSegments}\\text{개(감소 없음!)}, \\quad \\text{반직선} = ${numRays}\\text{개}`)
+              : tex(`\\text{반직선} = ${nPts} \\times ${nPts - 1} = ${numRays}\\text{개}`),
+            stats: [
+              ['전체 점 n / 일직선 위 점 m', `전체 ${nPts}개 | 일직선 위 ${isCol ? mCol : 2}개`],
+              ['① 서로 다른 직선의 개수', `${numLines}개 ${isCol ? `(${totalPairs} - ${colPairs} + 1)` : ''}`],
+              ['② 서로 다른 선분의 개수', `${numSegments}개 (일직선이어도 그대로!)`],
+              ['③ 서로 다른 반직선의 개수', `${numRays}개 ${isCol ? `(일직선에서 ${2 * (mCol - 1)}개 생존)` : ''}`]
+            ],
+            steps: [
+              `전체 ${nPts}개의 점에서 두 점을 고르는 모든 연결선(${totalPairs}개) 표시`,
+              `바닥 일직선 위의 ${mCol}개 점들이 만드는 선들이 단 1개의 직선으로 병합되는 애니메이션`,
+              `직선(+1 생존) vs 선분(감소 없음) vs 반직선(2(m-1)개 생존) 공식 비교`
+            ],
+            textbook: {
+              steps: `① ${tex(`${nPts}`)}개의 점에서 2개를 뽑는 전체 경우의 수는 ${tex(`\\dfrac{${nPts} \\times ${nPts - 1}}{2} = ${totalPairs}`)}입니다.<br/>
+② 선분은 양 끝점이 다르면 모두 다른 선분이므로 ${tex(`${numSegments}`)}개입니다.<br/>
+③ 직선은 일직선 위의 ${tex(`${mCol}`)}개 점으로 만든 ${tex(`${colPairs}`)}개가 모두 같은 1개의 직선이므로 ${tex(`${totalPairs} - ${colPairs} + 1 = ${numLines}`)}개입니다.`,
+              warning: "⚠️ 일직선 위에 있는 점 m개에서 나오는 반직선 개수는 2(m - 1)개입니다! (점 3개면 4개, 점 4개면 6개)"
+            },
+            shortcut: {
+              steps: `① <strong>[일직선 위 점 ${tex('m')}개 요약표]</strong>:<br/>
+&nbsp;&nbsp;• 선분: 하나도 안 겹침 (그대로!)<br/>
+&nbsp;&nbsp;• 직선: 몽땅 합쳐져서 <strong>무조건 1개</strong>!<br/>
+&nbsp;&nbsp;• 반직선: 양 끝점에서 바깥으로 못 쏘는 2개만 빠져서 <strong>${tex('2(m-1)')}개</strong>!`,
+              highlight: "💡 중복된 직선을 뺀 뒤에는 반드시 대표 직선 『+1』을 살려주는 것을 잊지 마세요!"
+            }
+          };
+        } else if (sub === 'verticalAng') {
+          const nLines = Math.min(6, Math.max(2, Math.round(L / 3)));
+          const totalPairs = nLines * (nLines - 1);
+          return {
+            badge: `탐구 3-C · [맞꼭지각 원리 & 심화] 직선 ${nLines}개가 한 점에서 만날 때 맞꼭지각은 총 몇 쌍일까?`,
+            hint: "직선 2개가 만날 때마다 맞꼭지각은 위·아래, 좌·우로 <strong>2쌍</strong>씩 생깁니다! 따라서 직선 $n$개가 한 점에서 만날 때 맞꼭지각은 <strong>단일 조각뿐만 아니라 합쳐진 큰 각까지 합쳐 총 $n(n-1)$쌍</strong>입니다!",
+            lensText: `📌 <strong>[맞꼭지각 증명]</strong>: ${tex('\\angle a + \\angle b = 180^\\circ')} 이고 ${tex('\\angle c + \\angle b = 180^\\circ')} 이므로 ${tex('\\angle a = \\angle c')} (맞꼭지각의 크기는 항상 같다!)`,
+            symbolText: `n\\text{개 직선의 맞꼭지각 쌍} = 2 \\times \\dfrac{n(n-1)}{2} = n(n-1) = ${totalPairs}\\text{쌍}`,
+            visualEqHTML: `
+              <span class="num-box">직선 2개 뽑는 조합 = ${nLines}×${nLines - 1}÷2 = ${(nLines * (nLines - 1)) / 2}가지</span>
+              <span class="text-amber-300 font-extrabold">×</span>
+              <span class="pi-box">직선 1쌍당 맞꼭지각 2쌍씩</span>
+              <span class="text-emerald-400 font-extrabold">🟰</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-950 border border-amber-400 text-amber-200 font-bold">총 ${totalPairs}쌍!</span>
+            `,
+            question: `한 평면 위에서 <strong>서로 다른 ${tex(`${nLines}`)}개의 직선</strong>이 한 점 ${tex('O')}에서 만날 때 생기는 <strong>맞꼭지각은 모두 몇 쌍</strong>인가? (단, 평각은 제외)`,
+            options: [
+              { label: `① ${totalPairs}쌍 (${nLines}×${nLines - 1})`, correct: true, msg: `정답입니다! 직선 2개를 고를 때마다 맞꼭지각이 2쌍씩 생기므로 ${nLines}×(${nLines}-1) = ${totalPairs}쌍입니다!` },
+              { label: `② ${nLines}쌍 (작은 조각만)`, correct: false, msg: `이웃한 작은 각 2개, 3개를 합친 큰 각끼리도 맞꼭지각이 됩니다!` },
+              { label: `③ ${(nLines * (nLines - 1)) / 2}쌍`, correct: false, msg: `직선 2개가 교차할 때 맞꼭지각은 1쌍이 아니라 위아래·좌우로 '2쌍'씩 생깁니다!` }
+            ],
+            answerHTML: `총 맞꼭지각 쌍 = ${tex(`${nLines} \\times (${nLines}-1) =`)} <span class="pi-box">${totalPairs}쌍</span>`,
+            eq1: tex(`\\angle a = 180^\\circ - \\angle b = \\angle c \\; (\\text{맞꼭지각은 항상 같다})`),
+            eq2: tex(`n\\text{개 직선 맞꼭지각 쌍} = n(n-1) = ${nLines}\\times ${nLines - 1} = ${totalPairs}\\text{쌍}`),
+            stats: [
+              ['한 점에서 만나는 직선 수 n', `${nLines}개의 직선`],
+              ['직선 2개를 짝짓는 방법 수', `${(nLines * (nLines - 1)) / 2}가지`],
+              ['단일 조각 맞꼭지각 쌍', `${nLines}쌍`],
+              ['🎯 합쳐진 각 포함한 전체 쌍', `${nLines} × ${nLines - 1} = ${totalPairs}쌍!`]
+            ],
+            steps: [
+              "평각(180°) 성질로 마주 보는 맞꼭지각의 크기가 같음을 표시",
+              `한 점 O에서 만나는 ${nLines}개의 직선과 교차 각도 표시`,
+              "직선 n개 맞꼭지각 쌍 = n(n-1) 공식 판서"
+            ],
+            textbook: {
+              steps: `① 직선 2개가 한 점에서 만나면 맞꼭지각이 2쌍 생깁니다.<br/>
+② ${tex(`${nLines}`)}개의 직선 중 2개를 고르는 경우의 수는 ${tex(`\\dfrac{${nLines}\\times (${nLines}-1)}{2}`)} 이고, 각각 2쌍씩 생기므로 ${tex(`2 \\times \\dfrac{${nLines}\\times (${nLines}-1)}{2} = ${totalPairs}`)}쌍입니다.`,
+              warning: "⚠️ 직선 3개면 3쌍이 아니라 3×2=6쌍, 직선 4개면 4×3=12쌍입니다!"
+            },
+            shortcut: {
+              steps: `① <strong>[직선 ${tex('n')}개 맞꼭지각 쌍 = 점 ${tex('n')}개 반직선 개수 공식과 100% 동일!]</strong>:<br/>
+&nbsp;&nbsp;무조건 <strong class="text-amber-300">${tex('n \\times (n-1)')}</strong> (3개면 6쌍, 4개면 12쌍, 5개면 20쌍)!`,
+              highlight: "💡 맞꼭지각은 '두 직선이 교차할 때'만 생깁니다!"
+            }
+          };
+        } else {
+          // clockAng: 시계의 시침과 분침이 이루는 각도 추적기
+          const hour = 3; // 3시 기준
+          const min = Math.min(55, Math.max(10, Math.round(p2 / 2.5))); // 분 (10분 ~ 55분)
+          const hourAng = 30 * hour + 0.5 * min;
+          const minAng = 6 * min;
+          const diffAng = Math.abs(minAng - hourAng);
+          const smallAng = diffAng > 180 ? 360 - diffAng : diffAng;
+          return {
+            badge: `탐구 3-D · [실생활 각도 킬러] 시계의 시침(1분에 0.5°)과 분침(1분에 6°)이 이루는 각도`,
+            hint: "분침이 움직일 때 <strong>시침도 가만히 있지 않고 1분에 0.5°씩 야금야금 움직입니다!</strong> 우측 <strong>각도/시간 슬라이더</strong>로 분침을 돌려가며 두 바늘 사이의 각도를 확인하세요!",
+            lensText: `📌 <strong>[시계 바늘 속도 공식]</strong>: 12시간=360° 이므로 <strong>1시간 눈금 1칸 = 30°</strong>! 1분 동안 <strong>분침은 6°</strong>, <strong>시침은 0.5°</strong> 회전합니다!`,
+            symbolText: `3\\text{시 } ${min}\\text{분}: \\text{분침 } ${minAng}^\\circ, \\; \\text{시침 } 90^\\circ + ${0.5 * min}^\\circ = ${hourAng}^\\circ \\implies \\text{차이 } ${smallAng}^\\circ`,
+            visualEqHTML: `
+              <span class="num-box">분침 각도 = 6° × ${min}분 = ${minAng}°</span>
+              <span class="text-rose-400 font-extrabold">➖</span>
+              <span class="pi-box">시침 각도 = 30°×3 + 0.5°×${min}분 = ${hourAng}°</span>
+              <span class="text-amber-300 font-extrabold">🟰</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-950 border border-amber-400 text-amber-200 font-bold">사잇각 = ${smallAng}°</span>
+            `,
+            question: `시계가 <strong>3시 ${tex(`${min}`)}분</strong>을 가리킬 때, 시침과 분침이 이루는 작은 쪽 각의 크기를 구하시오.`,
+            options: [
+              { label: `① ${Math.abs(minAng - 90)}° (시침 고정 착각)`, correct: false, msg: `아쉬워요! 시침이 숫자 3(90°)에 멈춰 있지 않고 ${min}분 동안 0.5°×${min} = ${0.5 * min}°만큼 더 움직였습니다!` },
+              { label: `② ${smallAng}°`, correct: true, msg: `정답입니다! 12시 기준 시침은 90° + ${0.5 * min}° = ${hourAng}°이고 분침은 6°×${min} = ${minAng}°이므로 두 각의 차는 ${smallAng}°입니다!` },
+              { label: `③ ${smallAng + 15}°`, correct: false, msg: `시침(30°×시 + 0.5°×분)과 분침(6°×분)의 차이를 계산해 보세요!` }
+            ],
+            answerHTML: `시침(${hourAng}°)과 분침(${minAng}°)의 차이 = <span class="pi-box">${smallAng}°</span>`,
+            eq1: tex(`\\text{시침} = 30^\\circ \\times 3 + 0.5^\\circ \\times ${min} = ${hourAng}^\\circ`),
+            eq2: tex(`\\text{분침} = 6^\\circ \\times ${min} = ${minAng}^\\circ, \\; d=|${minAng}-${hourAng}|^\\circ \\implies \\text{작은 각}=\\min(d,360^\\circ-d)=${smallAng}^\\circ`),
+            stats: [
+              ['현재 시각 (3시 기준)', `3시 ${min}분`],
+              ['🟡 시침 위치 (12시 기준)', `90° + (0.5° × ${min}분) = ${hourAng}°`],
+              ['🔵 분침 위치 (12시 기준)', `6° × ${min}분 = ${minAng}°`],
+              ['🎯 두 바늘이 이루는 작은 각', `${smallAng}°`]
+            ],
+            steps: [
+              "시계판 12개 숫자 눈금(1칸 = 30°)과 기준선(12시 방향 0°) 표시",
+              "분침 회전각(6° × 분)과 시침의 추가 이동각(+0.5° × 분) 구분 표시",
+              "두 바늘 사이의 각도 호 및 수치 판서"
+            ],
+            textbook: {
+              steps: `① 시침은 1시간(60분)에 ${tex('30^\\circ')}씩 움직이므로 <strong>1분에 ${tex('0.5^\\circ')}</strong>씩 움직입니다.<br/>
+② 분침은 60분에 ${tex('360^\\circ')}를 돌므로 <strong>1분에 ${tex('6^\\circ')}</strong>씩 움직입니다.<br/>
+              ③ 12시 방향을 기준으로 3시 ${tex(`${min}`)}분일 때 시침은 ${tex(`${hourAng}^\\circ`)}, 분침은 ${tex(`${minAng}^\\circ`)}입니다. 차이의 절댓값은 ${tex(`${diffAng}^\\circ`)}이고 작은 쪽 각은 ${tex(`${smallAng}^\\circ`)}입니다.`,
+              warning: "⚠️ 시침이 숫자 3에 가만히 멈춰 있다고 생각해서 90°로 계산하면 무조건 오답입니다! 분침이 움직인 분(min)의 절반(0.5° × min)만큼 시침도 항상 앞으로 더 나아갑니다!"
+            },
+            shortcut: {
+              steps: `① <strong>[시침과 분침 각도 1초 공식]</strong>:<br/>
+&nbsp;&nbsp;<strong class="text-amber-300">${tex('|30^\\circ \\times (\\text{시}) - 5.5^\\circ \\times (\\text{분})|')}</strong>!<br/>
+&nbsp;&nbsp;(분침은 1분에 ${tex('6^\\circ')} 가고 시침은 ${tex('0.5^\\circ')} 도망가니까, 분침이 시침을 <strong>1분에 ${tex('5.5^\\circ')}씩 추격</strong>합니다!)`,
+              highlight: `💡 3시 ${min}분 대입: |30°×3 - 5.5°×${min}| = |90° - ${5.5 * min}°| = ${smallAng}°!`
+            }
+          };
+        }
+      }
+
+      // =====================================================================
+      // 탭 4: 평각·직교(⊥)·수선의 발(H) & 이등분선 90° 불변량 & 종이 테이프 접기
+      // =====================================================================
+      if (m === 4) {
+        if (sub === 'perpDist') {
+          const distH = Math.round(L * 0.5);
+          const oblLen = Math.hypot(distH, Math.round((state.animProg - 0.5) * L * 1.1)).toFixed(1);
+          return {
+            badge: "탐구 4-A · [직교(⊥)와 수선의 발 H] 점 P와 직선 l 사이의 거리 (왜 수선이 가장 짧을까?)",
+            hint: "하단 슬라이더를 움직여 직선 $l$ 위의 점 $Q$를 좌우로 스캔해 보세요! 점 $P$에서 직선 $l$에 <strong>수직(90° 직각 네모 ∟)으로 내린 수선의 발 $H$까지의 길이</strong>가 가장 짧으며, 이를 <strong>점 P와 직선 l 사이의 거리</strong>라고 합니다!",
+            lensText: `📌 <strong>[수직과 수선의 발 번역]</strong>: ${tex('\\overleftrightarrow{AB} \\perp \\overline{PH}')} (두 직선이 $90^\\circ$로 직교!) ${tex('\\implies')} 교점 $H$가 <strong>수선의 발</strong>, 선분 $\\overline{PH}$의 길이가 <strong>점과 직선 사이의 거리</strong>!`,
+            symbolText: `\\overleftrightarrow{AB} \\perp \\overline{PH} \\implies (\\text{점 } P\\text{와 직선 } l\\text{ 사이의 거리}) = \\overline{PH} = ${distH}\\text{ cm}`,
+            visualEqHTML: `
+              <span class="num-box">빗금 선분 PQ 길이 (${oblLen}cm)</span>
+              <span class="text-amber-300 font-extrabold">≥</span>
+              <span class="pi-box">🎯 수선 PH 길이 (90° 직각 ∟ = ${distH}cm, 최단거리!)</span>
+            `,
+            question: `직선 ${tex('l')} 위에 있지 않은 점 ${tex('P')}에서 직선 ${tex('l')}에 내린 수선의 발을 ${tex('H')}라 하자. ${tex(`\\overline{PH} = ${distH}\\text{ cm}`)} 일 때, <strong>점 ${tex('P')}와 직선 ${tex('l')} 사이의 거리</strong>와 기호 표기로 옳은 것은?`,
+            options: [
+              { label: `① ${distH} cm, l ⊥ PH`, correct: true, msg: `정답입니다! 점과 직선 사이의 거리는 수선의 발 H까지의 선분 PH의 길이(${distH}cm)이며, 수직 기호는 ⊥를 사용합니다!` },
+              { label: `② ${oblLen} cm, l ∥ PH`, correct: false, msg: `∥는 평행 기호입니다! 수직(직교) 기호는 ⊥이며, 가장 짧은 수선 PH의 길이가 거리입니다!` },
+              { label: `③ 직선 위의 점에 따라 거리가 달라진다`, correct: false, msg: `수학에서 '점과 직선 사이의 거리'는 무수히 많은 선분 중 가장 짧은 '수선의 길이' 하나로만 정의합니다!` }
+            ],
+            answerHTML: `점 P와 직선 l 사이의 거리 = <span class="pi-box">${tex(`\\overline{PH} = ${distH}\\text{ cm}`)}</span> (수직 기호: <span class="num-box">${tex('l \\perp \\overline{PH}')}</span>)`,
+            eq1: tex(`l \\perp \\overline{PH} \\; (\\text{교각이 } 90^\\circ \\text{일 때 '직교한다'고 함})`),
+            eq2: tex(`(\\text{점 } P\\text{와 직선 } l\\text{ 사이의 거리}) = \\min(\\overline{PQ}) = \\overline{PH} = ${distH}\\text{ cm}`),
+            stats: [
+              ['직교 기호 / 수선의 발', 'l ⊥ PH (90° 직각 ∟) / 수선의 발 H'],
+              ['현재 스캔 중인 선분 PQ 길이', `${oblLen} cm`],
+              ['🎯 수선 PH의 길이 (최단거리)', `${distH}.0 cm (언제나 가장 짧음!)`],
+              ['수직이등분선의 뜻', '선분의 중점 M을 지나고 수직(⊥)인 직선']
+            ],
+            steps: [
+              "직선 l 밖의 점 P에서 내린 수선의 발 H 및 90° 직각 네모(∟) 표시",
+              "직선 l 위를 움직이는 동점 Q와 빗변 PQ 길이 실시간 측정 비교",
+              "점과 직선 사이의 거리 = 선분 PH의 길이 공식 판서"
+            ],
+            textbook: {
+              steps: `① 두 직선의 교각이 직각(${tex('90^\\circ')})일 때 두 직선은 <strong>직교(수직)</strong>한다고 하며 기호로 <strong>${tex('\\perp')}</strong>와 같이 나타냅니다.<br/>
+② 점 P에서 직선 ${tex('l')}에 수선을 그어 생기는 교점 H를 <strong>수선의 발</strong>이라고 합니다.<br/>
+③ 점 P와 직선 ${tex('l')} 위의 점을 잇는 선분 중 가장 짧은 것은 선분 PH이며, 이 길이를 <strong>점 P와 직선 ${tex('l')} 사이의 거리</strong>라고 합니다.`,
+              warning: "⚠️ 직각삼각형이 나왔을 때 '점 A와 직선 BC 사이의 거리'를 물으면 빗변의 길이를 쓰지 말고 반드시 『90° 직각(∟)으로 꽂히는 높이 선분의 길이』를 찾아 적어야 합니다!"
+            },
+            shortcut: {
+              steps: `① <strong>[기호 모양으로 1초 암기]</strong>:<br/>
+&nbsp;&nbsp;• <strong>${tex('\\perp')} (수직/직교)</strong>: 바닥에 기둥이 ${tex('90^\\circ')}로 똑바로 서 있는 모양!<br/>
+&nbsp;&nbsp;• <strong>수선의 발(${tex('H')})</strong>: 서 있는 기둥(수선)의 맨 아래 '발바닥'이 땅에 닿은 점!`,
+              highlight: "💡 점과 직선 사이의 거리 = 무조건 90° 직각 네모(∟)가 그려진 선분의 길이!"
+            }
+          };
+        } else if (sub === 'bisect90') {
+          // 평각(180°)에서 두 각의 이등분선이 이루는 각 = 무조건 90° 불변량!
+          const ratioC = 0.25 + state.animProg * 0.5;
+          const angAOC = Math.round(180 * ratioC);
+          const angCOB = 180 - angAOC;
+          const half1 = (angAOC / 2).toFixed(1);
+          const half2 = (angCOB / 2).toFixed(1);
+          return {
+            badge: "탐구 4-B · [평각 이등분선 불변량] 두 각의 이등분선이 이루는 각은 왜 항상 90°(직각)일까?",
+            hint: "탐구 2-B의 중점 불변량(MN=½AB)과 100% 똑같은 쌍둥이 문제입니다! <strong>2● + 2× = 180°(평각)</strong>이므로 양변을 2로 나누면 <strong>∠MON = ● + × = 무조건 90°(직각 ∟)</strong>입니다!",
+            lensText: `📌 <strong>[각의 이등분선 블록 번역]</strong>: ${tex('2\\bullet + 2\\times = 180^\\circ \\implies \\angle MON = \\bullet + \\times = \\dfrac{1}{2}\\times 180^\\circ = 90^\\circ')} (항상 직각!)`,
+            symbolText: `\\angle MON = \\bullet(${half1}^\\circ) + \\times(${half2}^\\circ) = 90^\\circ \\; (\\text{직각 불변!})`,
+            visualEqHTML: `
+              <span class="num-box">🔵 왼쪽 절반 ∠MOC = ● (${half1}°)</span>
+              <span class="text-emerald-400 font-extrabold">➕</span>
+              <span class="px-2 py-0.5 rounded bg-pink-500/20 border border-pink-400 text-pink-200 font-bold">🩷 오른쪽 절반 ∠CON = × (${half2}°)</span>
+              <span class="text-amber-300 font-extrabold">🟰</span>
+              <span class="pi-box">🟡 ∠MON = ●+× = ½×180° = 90° (항상 직각 ∟!)</span>
+            `,
+            question: `직선 ${tex('AB')} 위의 점 ${tex('O')}에서 반직선 ${tex('OC')}를 그었을 때, ${tex('\\angle AOC')}의 이등분선을 ${tex('\\overrightarrow{OM}')}, ${tex('\\angle COB')}의 이등분선을 ${tex('\\overrightarrow{ON}')}이라 하자. 반직선 ${tex('OC')}의 각도가 바뀔 때 <strong>${tex('\\angle MON')}의 크기</strong>는?`,
+            options: [
+              { label: "① 항상 90° (직각!)", correct: true, msg: "정답입니다! 2● + 2× = 180°(평각)이므로 우리가 구하는 ∠MON = ● + × = 90°로 언제나 일정합니다!" },
+              { label: "② 항상 60°", correct: false, msg: "평각(180°)의 절반(1/2)이므로 180° ÷ 2 = 90°입니다!" },
+              { label: "③ 반직선 OC의 위치에 따라 변한다", correct: false, msg: "슬라이더로 반직선 OC를 좌우로 흔들어 보세요! ∠MON의 직각 네모(∟, 90°)는 절대 변하지 않습니다!" }
+            ],
+            answerHTML: `반직선 OC의 방향과 무관하게 ${tex('\\angle MON = \\bullet + \\times = \\dfrac{1}{2}\\times 180^\\circ =')} <span class="pi-box">90° (직각 ∟!)</span>`,
+            eq1: tex(`2\\bullet + 2\\times = 180^\\circ \\implies \\bullet + \\times = 90^\\circ`),
+            eq2: tex(`\\angle MON = \\angle MOC(\\bullet) + \\angle CON(\\times) = 90^\\circ`),
+            stats: [
+              ['전체 평각 ∠AOB', '180° (2● + 2× = 180°)'],
+              ['현재 나뉜 ∠AOC / ∠COB', `${angAOC}° / ${angCOB}°`],
+              ['각 절반인 ● + ×', `${half1}° + ${half2}°`],
+              ['🟡 이등분선 사잇각 ∠MON', '항상 90.0° (OM ⊥ ON 직교!)']
+            ],
+            steps: [
+              "평각(180°)을 나누는 반직선 OC와 두 각의 이등분선 OM, ON 표시",
+              "같은 크기의 각 기호(●, ● 와 ×, ×) 및 OM ⊥ ON 직각 네모(∟) 표시",
+              "2● + 2× = 180° ⇒ ● + × = 90° 불변량 수식 판서"
+            ],
+            textbook: {
+              steps: `① ${tex('\\angle AOM = \\angle MOC = \\bullet')} 라 하고, ${tex('\\angle CON = \\angle NOB = \\times')} 라 합시다.<br/>
+② 평각의 크기는 ${tex('180^\\circ')}이므로 ${tex('2\\bullet + 2\\times = 180^\\circ')} 입니다.<br/>
+③ 양변을 2로 나누면 ${tex('\\angle MON = \\bullet + \\times = 90^\\circ')} 입니다.`,
+              warning: "⚠️ 만약 전체 각이 평각(180°)이 아니라 120°로 주어졌다면? 똑같이 절반인 ½ × 120° = 60°가 정답입니다!"
+            },
+            shortcut: {
+              steps: `① <strong>[선분 중점 = 각의 이등분선 완벽 쌍둥이 법칙!]</strong>:<br/>
+&nbsp;&nbsp;• 선분 두 조각의 중점 사이 거리 ${tex('= \\dfrac{1}{2} \\times (\\text{전체 선분 길이})')}<br/>
+&nbsp;&nbsp;• 각 두 조각의 이등분선 사이 각도 ${tex('= \\dfrac{1}{2} \\times (\\text{전체 각도})')}`,
+              highlight: "💡 '두 각의 이등분선이 이루는 각'이 나오면 무조건 (전체 큰 각도) ÷ 2 로 1초 만에 암산하세요!"
+            }
+          };
+        } else {
+          // paperFold: 직사각형 종이 테이프 접기 (슬라이더 t로 실제로 접혔다 펴지는 애니메이션 완벽 작동!)
+          const foldDeg = Math.min(75, Math.max(40, p2));
+          const xDeg = 180 - 2 * foldDeg;
+          return {
+            badge: "탐구 4-C · [내신 100% 출제] 직사각형 종이 테이프 접기 (접은 각 = 엇각 ⇒ 이등변삼각형!)",
+            hint: "하단 <strong>[🎬 레이저 발사 & 애니메이션 실행]</strong> 또는 슬라이더를 움직여 <strong>종이 테이프를 실제로 접었다 펴 보세요!</strong> <strong>접은 각(●) = 엇각(●)</strong>이므로 겹쳐진 삼각형 ABC는 <strong>AB = AC(|| 마크!)인 이등변삼각형</strong>입니다!",
+            lensText: `📌 <strong>[종이접기 2대 절대 법칙]</strong>: ① <strong>접은 각</strong>끼리 크기가 같다(${tex('\\angle EBC = \\angle ABC = \\bullet')})! ② 평행선의 <strong>엇각</strong>끼리 크기가 같다(${tex('\\angle EBC = \\angle ACB = \\bullet')})!`,
+            symbolText: `\\angle ABC(\\text{접은각}) = \\angle ACB(\\text{엇각}) = ${foldDeg}^\\circ \\implies \\overline{AB} = \\overline{AC}\\text{ (이등변!)}`,
+            visualEqHTML: `
+              <span class="pi-box">① 접은 각 ∠ABC = ${foldDeg}° (●)</span>
+              <span class="text-emerald-400 font-extrabold">🟰</span>
+              <span class="num-box">② 엇각 ∠ACB = ${foldDeg}° (●)</span>
+              <span class="text-amber-300 font-extrabold">⇒</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-950 border border-amber-400 text-amber-200 font-bold">ΔABC는 AB=AC인 이등변삼각형! (꼭지각 ∠BAC = ${xDeg}°)</span>
+            `,
+            question: `폭이 일정한 직사각형 모양의 종이 테이프를 선분 ${tex('BC')}를 접는 선으로 하여 접었더니 ${tex(`\\angle ABC = ${foldDeg}^\\circ`)} 가 되었다. 이때 <strong>① ${tex('\\angle ACB')}의 크기</strong>, <strong>② ${tex('\\angle BAC')}의 크기</strong>, <strong>③ 길이가 같은 두 변</strong>을 바르게 짝지은 것은?`,
+            options: [
+              { label: `① ${foldDeg}°, ${xDeg}°, AB=AC`, correct: true, msg: `정답입니다! 접은 각(∠ABC=${foldDeg}°)과 엇각(∠ACB=${foldDeg}°)이 같으므로 ΔABC는 AB=AC인 이등변삼각형이고, 꼭지각 ∠BAC = 180° - 2×${foldDeg}° = ${xDeg}°입니다!` },
+              { label: `② ${foldDeg}°, ${xDeg}°, AB=BC`, correct: false, msg: `각도는 맞았지만, 두 밑각이 ∠B와 ∠C이므로 같아지는 두 변은 꼭지각 A의 양옆 변인 AB와 AC입니다!` },
+              { label: `③ ${90 - foldDeg}°, ${foldDeg}°, AC=BC`, correct: false, msg: `접기 전 각과 접은 후 각은 똑같고, 평행선의 엇각 성질에 의해 ∠ACB = ${foldDeg}°입니다!` }
+            ],
+            answerHTML: `${tex(`\\angle ACB = ${foldDeg}^\\circ, \\; \\angle BAC =`)} <span class="num-box">${xDeg}°</span> | 이등변: <span class="pi-box">${tex('\\overline{AB} = \\overline{AC}')} (||)</span>`,
+            eq1: tex(`\\angle EBC = \\angle ABC = ${foldDeg}^\\circ (\\text{접은 각}), \\quad \\angle ACB = \\angle EBC = ${foldDeg}^\\circ (\\text{엇각})`),
+            eq2: tex(`\\triangle ABC\\text{는 } \\overline{AB} = \\overline{AC}\\text{인 이등변삼각형! } (\\angle BAC = 180^\\circ - 2\\times ${foldDeg}^\\circ = ${xDeg}^\\circ)`),
+            stats: [
+              ['① 접은 각 ∠ABC (= 원래 각 ∠EBC)', `${foldDeg}° (포개어지므로 합동 ●)`],
+              ['② 평행선의 엇각 ∠ACB', `${foldDeg}° (위·아래 변이 평행 >)`],
+              ['③ 꼭지각 ∠BAC (= ∠x)', `180° - ${2 * foldDeg}° = ${xDeg}°`],
+              ['🎯 겹쳐진 삼각형 ΔABC의 정체', 'AB = AC (||) 인 이등변삼각형!']
+            ],
+            steps: [
+              "평행선 화살표(>) 및 접기 전 원래 테이프(점선)와 접은 후 테이프 비교",
+              "접은 각(●) = 원래 각(●) = 엇각(●) 기호 표시",
+              "두 밑각이 같으므로 AB = AC 등변 틱 마크(||) 및 이등변삼각형 하이라이트"
+            ],
+            textbook: {
+              steps: `① 종이를 접었으므로 접기 전의 각과 접은 후의 각의 크기는 같습니다: ${tex(`\\angle EBC = \\angle ABC = ${foldDeg}^\\circ`)}.<br/>
+② 직사각형 테이프의 위·아래 두 변은 서로 평행하므로 엇각의 크기가 같아 ${tex(`\\angle ACB = \\angle EBC = ${foldDeg}^\\circ`)} 입니다.<br/>
+③ 따라서 ${tex('\\triangle ABC')}는 ${tex(`\\angle B = \\angle C = ${foldDeg}^\\circ`)} 인 이등변삼각형이므로 <strong>${tex('\\overline{AB} = \\overline{AC}')}</strong> 이고, ${tex(`\\angle BAC = 180^\\circ - 2\\times ${foldDeg}^\\circ = ${xDeg}^\\circ`)} 입니다.`,
+              warning: "⚠️ 변의 길이를 물어볼 때 어느 변끼리 같은지 꼭 확인하세요! 접는 선 BC의 양 끝점(B, C)이 밑각이므로, 반대쪽 꼭짓점 A에서 뻗어 나간 『AB = AC』가 같습니다!"
+            },
+            shortcut: {
+              steps: `① <strong>[종이 테이프 접기 3초 공식]</strong>:<br/>
+&nbsp;&nbsp;• 접은 각이 ${tex(`${foldDeg}^\\circ`)}이면 옆에 있는 각도 무조건 <strong class="text-amber-300">${tex(`${foldDeg}^\\circ`)}</strong>!<br/>
+&nbsp;&nbsp;• 나머지 각은 무조건 <strong class="text-sky-300">${tex(`180^\\circ - 2\\times ${foldDeg}^\\circ = ${xDeg}^\\circ`)}</strong>!<br/>
+&nbsp;&nbsp;• 겹쳐진 삼각형은 무조건 <strong>이등변삼각형(${tex('\\overline{AB}=\\overline{AC}')})</strong>!`,
+              highlight: "💡 하단 슬라이더를 0% ↔ 100%로 움직여 종이가 실제로 접히면서 두 각이 포개어지는 모습을 확인해 보세요!"
+            }
+          };
+        }
+      }
+
+      // =====================================================================
+      // 탭 5: [🧊 3D 입체!] 꼬인 위치 3단계 소거 필터 (직육면체·삼각기둥·사다리꼴기둥·육각기둥·정사각뿔)
+      // =====================================================================
+      if (m === 5) {
+        const shapeSpecs = {
+          cuboidSkew: {
+            name: '직육면체 ABCD-EFGH',
+            refEdge: 'AB',
+            totalE: 12,
+            meetCount: 4,
+            meetNames: 'AD, BC, AE, BF',
+            paraCount: 3,
+            paraNames: 'CD, EF, GH',
+            skewCount: 4,
+            skewNames: 'CG, DH, EH, FG'
+          },
+          prism3Skew: {
+            name: '삼각기둥 ABC-DEF',
+            refEdge: 'AB',
+            totalE: 9,
+            meetCount: 4,
+            meetNames: 'AC, BC, AD, BE',
+            paraCount: 1,
+            paraNames: 'DE',
+            skewCount: 3,
+            skewNames: 'CF, DF, EF'
+          },
+          trapSkew: {
+            name: '사다리꼴기둥 ABCD-EFGH (AD∥BC)',
+            refEdge: 'AB (옆변)',
+            totalE: 12,
+            meetCount: 4,
+            meetNames: 'AD, BC, AE, BF',
+            paraCount: 1,
+            paraNames: 'EF (CD는 평행 아님!)',
+            skewCount: 5,
+            skewNames: 'CG, DH, EH, FG, GH',
+            coplanarCount: 1, coplanarNames: 'CD'
+          },
+          hexSkew: {
+            name: '정육각기둥',
+            refEdge: 'AB',
+            totalE: 18,
+            meetCount: 4,
+            meetNames: 'AF, BC, AG, BH',
+            paraCount: 3,
+            paraNames: 'DE, GH, JK',
+            skewCount: 8,
+            skewNames: 'CI, DJ, EK, FL, HI, IJ, KL, LG',
+            coplanarCount: 2, coplanarNames: 'CD, EF'
+          },
+          pyr4Skew: {
+            name: '정사각뿔 V-ABCD',
+            refEdge: 'AB',
+            totalE: 8,
+            meetCount: 4,
+            meetNames: 'AD, BC, VA, VB',
+            paraCount: 1,
+            paraNames: 'CD',
+            skewCount: 2,
+            skewNames: 'VC, VD'
+          }
+        };
+        const sp = shapeSpecs[sub] || shapeSpecs.cuboidSkew;
+        return {
+          badge: `탐구 5 · [3D 꼬인 위치 3단계 소거 필터] ${sp.name}에서 모서리 ${sp.refEdge}와 꼬인 위치 찾기!`,
+          hint: "마우스로 <strong>3D 도형을 360° 돌려보면서</strong> 상단의 <strong>[❌ 1단계: 끝점 공유 지우기] → [❌ 2단계: 평행·같은 평면 지우기] → [🎉 3단계: 꼬인 위치만 남기기]</strong> 버튼을 차례로 눌러보세요! <strong>[🕶️ 2D 착시 시점]</strong>과 <strong>[🧊 3D 입체 간격]</strong>도 비교해 보세요!",
+          lensText: `📌 <strong>[꼬인 위치의 정확한 정의]</strong>: 공간에서 두 직선이 <strong>만나지도 않고(교점 0개) 평행하지도 않을 때(한 평면 위에 있지 않을 때)</strong>, 두 직선은 <strong>꼬인 위치</strong>에 있다고 합니다!`,
+          symbolText: `\\text{전체}(${sp.totalE})-1-\\text{끝점 공유}(${sp.meetCount})-\\text{평행}(${sp.paraCount})-\\text{한 평면}(${sp.coplanarCount||0})=${sp.skewCount}\\text{개}`,
+          visualEqHTML: `
+            <span class="pi-box">기준 모서리 ${sp.refEdge} (1개)</span>
+            <span class="text-rose-400 font-extrabold">➖</span>
+            <span class="px-2 py-0.5 rounded bg-rose-950 border border-rose-500 text-rose-200 font-bold">① 만나는 변 ❌ (${sp.meetCount}개)</span>
+            <span class="text-sky-400 font-extrabold">➖</span>
+            <span class="num-box">② 평행한 변 ❌ (${sp.paraCount}개)</span>
+            ${sp.coplanarCount ? `<span class="num-box">③ 같은 평면에서 연장선 교차 ❌ (${sp.coplanarCount}개: ${sp.coplanarNames})</span>` : ''}
+            <span class="text-amber-300 font-extrabold">🟰</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-950 border border-emerald-400 text-emerald-200 font-extrabold">🎉 꼬인 위치 = ${sp.skewCount}개 (${sp.skewNames})</span>
+          `,
+          question: `오른쪽 3D <strong>${sp.name}</strong>에서 기준 <strong>모서리 ${tex(sp.refEdge.split(' ')[0])}와 꼬인 위치에 있는 모서리의 개수</strong>를 구하시오.`,
+          options: [
+            { label: `① ${sp.skewCount}개 (${sp.skewNames})`, correct: true, msg: `정답입니다! 전체 ${sp.totalE}개에서 자기 자신(1개), 끝점을 공유하는 모서리(${sp.meetCount}개: ${sp.meetNames}), 평행한 모서리(${sp.paraCount}개: ${sp.paraNames}), 같은 평면에서 연장하면 만나는 모서리(${sp.coplanarCount||0}개)를 지우면 정확히 ${sp.skewCount}개가 남습니다!` },
+            { label: `② ${sp.skewCount + sp.paraCount}개 (평행 안 지움!)`, correct: false, msg: `함정에 걸렸어요! 만나는 모서리만 지우고 '평행한 모서리(${sp.paraNames}: ${sp.paraCount}개)'를 안 지웠습니다! 평행한 두 직선은 한 평면 위에 있으므로 꼬인 위치가 아닙니다!` },
+            { label: `③ ${Math.max(1, sp.skewCount - 1)}개`, correct: false, msg: `칠판의 초록색 네온 번호(① ~ ${sp.skewCount})가 붙은 모서리들을 3D로 돌려가며 세어보세요!` }
+          ],
+          answerHTML: `끝점 공유(${sp.meetCount}) · 평행(${sp.paraCount}) · 같은 평면(${sp.coplanarCount||0}) 소거 ${tex('\\implies')} 꼬인 위치 = <span class="pi-box">${sp.skewCount}개</span> (<strong>${sp.skewNames}</strong>)`,
+          eq1: tex(`\\text{만나는 모서리}(${sp.meetCount}\\text{개}): \\text{양 끝점 A, B에 닿아 있는 모서리}`),
+          eq2: tex(`\\text{평행}(${sp.paraCount})+\\text{같은 평면에서 교차}(${sp.coplanarCount||0})\\implies \\text{꼬인 위치}=${sp.skewCount}\\text{개}`),
+          stats: [
+            ['현재 3D 다면체 / 전체 모서리', `${sp.name} / 총 ${sp.totalE}개`],
+            ['❌ 1단계: 만나는 모서리 소거', `${sp.meetCount}개 (${sp.meetNames})`],
+            ['❌ 2단계: 평행·한 평면 모서리 소거', `${sp.paraCount}개 평행 (${sp.paraNames}) + ${sp.coplanarCount||0}개 같은 평면 (${sp.coplanarNames||'없음'})`],
+            ['🎉 3단계: 최종 꼬인 위치 개수', `${sp.skewCount}개 (${sp.skewNames})`]
+          ],
+          steps: [
+            "기준 모서리 AB(황금색 네온)와 모든 꼭짓점 알파벳 3D 표시",
+            "1단계(끝점 공유 빨간색 ❌) & 2단계(평행·같은 평면 파란/보라 ❌) 구분 소거",
+            "3단계: 살아남은 꼬인 위치 모서리에 초록색 번호(①, ②...) 및 최단거리 점선 표시"
+          ],
+          textbook: {
+            steps: `① <strong>${sp.name}</strong>의 전체 모서리는 ${tex(`${sp.totalE}`)}개입니다.<br/>
+② 모서리 AB의 양 끝점 A, B에서 만나는 모서리는 <strong>${sp.meetNames}</strong>로 ${tex(`${sp.meetCount}`)}개입니다.<br/>
+③ 평행한 모서리: <strong>${sp.paraNames}</strong> (${sp.paraCount}개), 같은 평면에 있어 연장하면 만나는 모서리: <strong>${sp.coplanarNames||'없음'}</strong> (${sp.coplanarCount||0}개)입니다.<br/>
+④ 따라서 꼬인 위치에 있는 모서리는 ${tex(`${sp.totalE}-1-${sp.meetCount}-${sp.paraCount}-${sp.coplanarCount||0}=${sp.skewCount}`)}개(<strong>${sp.skewNames}</strong>)입니다.`,
+            warning: sub === 'trapSkew'
+              ? "⚠️ 사다리꼴기둥의 CD는 AB와 같은 윗면에 있으므로 꼬인 위치가 아닙니다. 두 변은 평행하지 않지만 연장한 직선이 만나며, 아래의 GH는 AB와 꼬인 위치입니다."
+              : "⚠️ 시험지 위에서 눈으로만 꼬인 위치를 찾으려다 보면 평행한 모서리까지 꼬인 위치로 세어서 틀립니다! 반드시 연필로 ① 만나는 선 지우기 → ② 평행한 선 지우기 순서로 소거하세요!"
+          },
+          shortcut: {
+            steps: `① <strong>[꼬인 위치 100% 정답 찾는 3단계 지우개 법칙]</strong>:<br/>
+&nbsp;&nbsp;• <strong>Step 1</strong>: 기준 모서리 양 끝점(A, B)에 <strong>손가락이 닿는 모서리 전부 X표!</strong><br/>
+&nbsp;&nbsp;• <strong>Step 2</strong>: 기준 모서리와 <strong>같은 방향으로 나란히 달리는 평행 모서리 전부 X표!</strong><br/>
+&nbsp;&nbsp;• <strong>Step 3</strong>: 안 지워지고 남은 모서리 개수만 세면 100% 정답!`,
+            highlight: "💡 상단의 [🕶️ 2D 착시 시점]과 [🧊 3D 입체 간격 확인!] 버튼을 번갈아 눌러보세요! 왜 종이 위에서 겹쳐 보이는 두 선이 실제로는 안 만나는지 한눈에 보입니다!"
+          }
+        };
+      }
+
+      // =====================================================================
+      // 탭 6: [🧊 3D 입체!] 직선·평면의 수직 & 단골 공간 명제 O/X 반례 실험실
+      // =====================================================================
+      if (m === 6) {
+        if (sub === 'linePerpPlane') {
+          return {
+            badge: "탐구 6-A · [3D 공간의 수직] 직선 l과 평면 P가 수직(l ⊥ P)이라는 것의 진짜 의미 (국기게양대 실험!)",
+            hint: "하단 슬라이더를 움직이거나 <strong>[🎬 실행]</strong>을 눌러 바닥 평면 $P$ 위의 바늘 직선 $m$을 360° 회전시켜 보세요! 기둥 직선 $l$이 평면 $P$와 수직($l \\perp P$)이면 <strong>교점 O를 지나는 평면 위의 【모든 직선】과 90° 직각(∟)</strong>을 이룹니다!",
+            lensText: `📌 <strong>[직선 ⊥ 평면 정의]</strong>: 직선 $l$이 평면 $P$와 한 점 $O$에서 만나고, 점 $O$를 지나는 평면 $P$ 위의 <strong>모든 직선과 수직</strong>일 때 ${tex('l \\perp P')} 라 합니다! (최소 서로 다른 2개의 직선과 수직이어야 확정!)`,
+            symbolText: `l \\perp P \\iff \\text{평면 } P\\text{ 위의 교점 } O\\text{를 지나는 모든 직선 } m\\text{에 대하여 } l \\perp m`,
+            visualEqHTML: `
+              <span class="pi-box">기둥 직선 l ⊥ 바닥 평면 P</span>
+              <span class="text-amber-300 font-extrabold">⇒</span>
+              <span class="num-box">점 O를 지나는 직선 m₁, m₂, m₃... 어느 방향으로 돌려도 무조건 90° 직각(∟)!</span>
+            `,
+            question: `공간에서 직선 ${tex('l')}과 평면 ${tex('P')}가 수직(${tex('l \\perp P')})일 때, 다음 설명 중 <strong>옳은 것</strong>은?`,
+            options: [
+              { label: "① 점 O를 지나는 직선 1개와만 수직이면 l⊥P이다", correct: false, msg: "비스듬히 기울어진 막대기도 바닥의 특정 직선 1개와는 90°를 이룰 수 있습니다! 최소한 서로 다른 2개의 직선과 수직이어야 평면과 수직이 됩니다!" },
+              { label: "② 점 O를 지나는 평면 P 위의 모든 직선과 수직이다!", correct: true, msg: "정답입니다! l ⊥ P 이면 교점 O를 지나는 평면 P 위의 모든 직선과 90°(수직)를 이룹니다!" },
+              { label: "③ 점 P에서 평면까지의 거리는 사선의 길이이다", correct: false, msg: "점과 평면 사이의 거리도 점과 직선 사이의 거리처럼 수선의 발 O까지의 수직 길이입니다!" }
+            ],
+            answerHTML: `${tex('l \\perp P \\implies')} 교점 O를 지나는 평면 P 위의 <strong>모든 직선과 수직(90° ∟)</strong>!`,
+            eq1: tex(`l \\perp P \\iff l \\perp m_1 \\text{ 이고 } l \\perp m_2 \\; (\\text{최소 } 2\\text{개 직선과 수직})`),
+            eq2: tex(`(\\text{점 } A\\text{와 평면 } P\\text{ 사이의 거리}) = \\text{수선의 발 } O\\text{까지의 선분 } \\overline{AO}\\text{의 길이}`),
+            stats: [
+              ['직선과 평면의 수직 기호', 'l ⊥ P (점 O는 수선의 발)'],
+              ['평면 위 회전 직선 m과의 각도', '360° 모든 방향에서 항상 90° (∟)!'],
+              ['l ⊥ P 판정 최소 조건', '교점을 지나는 서로 다른 직선 2개와 수직'],
+              ['정육면체 예시 (AE ⊥ 면 EFGH)', 'AE ⊥ EF, AE ⊥ EH, AE ⊥ EG(대각선!)']
+            ],
+            steps: [
+              "바닥 평면 P와 수직으로 서 있는 기둥 직선 l 및 수선의 발 O 표시",
+              "점 O를 지나며 360° 회전하는 평면 위 직선 m과 3D 직각 네모(∟) 표시",
+              "정육면체에서 모서리 AE가 바닥면의 대각선 EG와도 90° 수직임을 증명"
+            ],
+            textbook: {
+              steps: `① 직선 ${tex('l')}이 평면 ${tex('P')}와 한 점 O에서 만나고, 점 O를 지나는 평면 ${tex('P')} 위의 모든 직선과 수직일 때 직선 ${tex('l')}과 평면 ${tex('P')}는 <strong>수직(직교)</strong>이라 하고 <strong>${tex('l \\perp P')}</strong>로 나타냅니다.<br/>
+② 따라서 직육면체에서 ${tex('\\overline{AE} \\perp (\\text{면 } EFGH)')} 이면, ${tex('\\overline{AE}')}는 바닥면의 모서리(${tex('EF, EH')})뿐만 아니라 <strong>바닥면의 대각선 ${tex('EG')}와도 ${tex('90^\\circ')} 수직</strong>입니다!`,
+              warning: "⚠️ 시험 고난도 함정: 직육면체에서 '모서리 AE와 바닥 대각선 EG가 이루는 각은 몇 도인가?' → 그림이 비스듬해 보여서 45°나 60°로 찍으면 오답! AE가 바닥면 전체와 수직이므로 대각선 EG와도 무조건 90°입니다!"
+            },
+            shortcut: {
+              steps: `① <strong>[운동장 국기게양대 법칙]</strong>:<br/>
+&nbsp;&nbsp;운동장 바닥(평면 ${tex('P')})에 국기게양대(직선 ${tex('l')})가 똑바로(${tex('90^\\circ')}) 서 있다면, 게양대 밑동(점 ${tex('O')})에 분필로 어느 방향으로 선을 긋든 게양대와 이루는 각은 <strong>무조건 ${tex('90^\\circ')}</strong>입니다!`,
+              highlight: "💡 직선이 평면과 수직이면, 그 평면 안에 그려진 모서리든 대각선이든 교점을 지나는 모든 선과 90°입니다!"
+            }
+          };
+        } else {
+          // counter1, counter2, truePara: 공간 위치 관계 단골 O/X 명제 반례 실험실!
+          const propSpecs = {
+            counter1: {
+              title: "명제 ①: '한 직선 l에 수직인 서로 다른 두 직선 m, n은 서로 평행하다?'",
+              verdict: "❌ 거짓(X)! (평행할 수도 있지만, 수직으로 만나거나 꼬인 위치일 수도 있음!)",
+              q: `공간에서 <strong>한 직선 ${tex('l')}에 동시에 수직인 서로 다른 두 직선 ${tex('m, n')}</strong>의 위치 관계로 가능한 것을 모두 고른 것은?`,
+              opts: [
+                { label: "① 무조건 평행하다", correct: false, msg: "그건 '평면(2D)'에서만 참입니다! 3D 공간에서는 슬라이더를 움직여 보듯 m과 n이 수직으로 만나거나 꼬인 위치가 될 수 있습니다!" },
+                { label: "② 평행, 한 점 만남(수직), 꼬인 위치 모두 가능!", correct: true, msg: "정답입니다! 기둥 l에 꽂힌 두 날개 m, n을 돌리고 위아래로 옮기면 평행할 수도, 90°로 만날 수도, 꼬인 위치가 될 수도 있습니다!" },
+                { label: "③ 무조건 수직으로 만난다", correct: false, msg: "같은 방향을 가리키면 평행할 수도 있고, 높이가 다르면 안 만나는 꼬인 위치가 됩니다!" }
+              ],
+              eq1: tex(`\\text{평면(2D)에서는 } l\\perp m, \\; l\\perp n \\implies m \\parallel n \\; (\\text{참 O})`),
+              eq2: tex(`\\text{공간(3D)에서는 } m \\parallel n \\text{ 또는 } m \\perp n \\text{ 또는 꼬인 위치! (거짓 X)}`)
+            },
+            counter2: {
+              title: "명제 ②: '한 평면 P에 평행한 서로 다른 두 직선 l, m은 서로 평행하다?'",
+              verdict: "❌ 거짓(X)! (천장 위에서 두 직선은 평행할 수도, 만날 수도, 꼬인 위치일 수도 있음!)",
+              q: `공간에서 <strong>한 평면 ${tex('P')}에 동시에 평행한 서로 다른 두 직선 ${tex('l, m')}</strong>은 항상 서로 평행한가?`,
+              opts: [
+                { label: "① 항상 평행하다 (참 O)", correct: false, msg: "바닥(평면 P)과 나란하게 공중에 연필 두 자루를 들고 한 자루를 삐딱하게 돌려보세요! 바닥과는 여전히 평행하지만 두 연필은 십자로 만나거나 꼬인 위치가 됩니다!" },
+                { label: "② 거짓(X)! 만나거나 꼬인 위치일 수 있다", correct: true, msg: "정답입니다! 하단 슬라이더를 움직여 위쪽 직선 m을 회전시켜 보세요! 바닥 평면 P와는 계속 평행하지만 두 직선은 만나거나 꼬인 위치가 됩니다!" },
+                { label: "③ 항상 꼬인 위치이다", correct: false, msg: "나란히 놓으면 평행할 수도 있고, 같은 높이에서 돌리면 한 점에서 만날 수도 있습니다!" }
+              ],
+              eq1: tex(`P \\parallel l, \\; P \\parallel m \\not\\implies l \\parallel m \\; (\\text{거짓 X!})`),
+              eq2: tex(`\\text{반례: 정육면체 천장 모서리 } AB\\text{와 } BC\\text{는 바닥면과 평행하지만 점 } B\\text{에서 만남!}`)
+            },
+            truePara: {
+              title: "명제 ③: '한 평면 P에 수직인 서로 다른 두 직선 l, m은 서로 평행하다?'",
+              verdict: "⭕ 참(O)! (바닥에 똑바로 세운 두 기둥은 어느 곳에 세워도 무조건 서로 나란함!)",
+              q: `공간에서 <strong>한 평면 ${tex('P')}에 동시에 수직인 서로 다른 두 직선 ${tex('l, m')}</strong> (${tex('l \\perp P, \\; m \\perp P')})의 위치 관계는?`,
+              opts: [
+                { label: "① 항상 서로 평행하다 (참 O!)", correct: true, msg: "완벽합니다! 평평한 바닥(평면 P)에 90° 수직으로 똑바로 세운 두 기둥 l, m은 흔들리지 않고 언제나 서로 평행(l ∥ m)합니다!" },
+                { label: "② 한 점에서 만날 수 있다", correct: false, msg: "바닥에 둘 다 90°로 똑바로 서 있기 때문에 기울어져서 만날 수가 없습니다!" },
+                { label: "③ 꼬인 위치가 될 수 있다", correct: false, msg: "같은 평면에 수직인 두 직선은 방향이 완전히 같아서 항상 한 평면 위에 있는 평행선(l ∥ m)이 됩니다!" }
+              ],
+              eq1: tex(`l \\perp P \\text{ 이고 } m \\perp P \\implies l \\parallel m \\; (\\text{언제나 참 O!})`),
+              eq2: tex(`\\text{마찬가지로 } l \\parallel Q \\text{ 이고 } l \\perp P \\implies P \\perp Q \\; (\\text{참 O!})`)
+            }
+          };
+          const ps = propSpecs[sub] || propSpecs.counter1;
+          return {
+            badge: `탐구 6 · [3D 공간 명제 O/X 반례 실험실] ${ps.title}`,
+            hint: "하단 <strong>슬라이더(0%~100%)를 움직여 3D 공간 속 직선 m을 회전·이동</strong>시켜 보세요! 글자로만 읽으면 헷갈리던 공간 명제가 왜 참(⭕)인지, 왜 거짓(❌ 반례 발생!)인지 눈앞에서 즉시 증명됩니다!",
+            lensText: `📌 <strong>[공간 O/X 문제 만점 비법]</strong>: 시험장에서 공간 명제가 나오면 <strong>책상 바닥을 평면 P</strong>로, <strong>양손의 볼펜 2자루를 직선 l, m</strong>으로 잡고 돌려보면 100% 반례를 찾을 수 있습니다!`,
+            symbolText: ps.verdict,
+            visualEqHTML: `
+              <span class="pi-box">${ps.title}</span>
+              <span class="text-amber-300 font-extrabold">⇒</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-950 border border-amber-400 text-amber-200 font-bold">${ps.verdict}</span>
+            `,
+            question: ps.q,
+            options: ps.opts,
+            answerHTML: `판정 결과: <strong>${ps.verdict}</strong>`,
+            eq1: ps.eq1,
+            eq2: ps.eq2,
+            stats: [
+              ['실험 중인 공간 명제', ps.title.slice(0, 26) + '...'],
+              ['참 / 거짓 판정', ps.verdict.slice(0, 12)],
+              ['슬라이더 0% 상태', '나란한 평행 상태 (l ∥ m)'],
+              ['슬라이더 100% 반례 상태', sub === 'truePara' ? '위치를 옮겨도 항상 평행 (참 O!)' : '회전하면 수직 만남·꼬인 위치 (반례!)']
+            ],
+            steps: [
+              "기준 평면 P(바닥)와 기준 직선 l, 비교 직선 m, n을 3D 공간에 배치",
+              "직각 네모(∟) 및 평행 화살표(>) 조건 유지 표시",
+              "슬라이더로 직선을 회전·이동시켜 반례(교차 또는 꼬인 위치) 생성"
+            ],
+            textbook: {
+              steps: `① <strong>[참(O)인 대표 명제]</strong>: 한 평면 P에 수직인 두 직선은 항상 평행합니다(${tex('l \\perp P, m \\perp P \\implies l \\parallel m')}). 또한 평행한 두 평면 P, Q에 한 직선이 수직이면 다른 평면에도 수직입니다.<br/>
+② <strong>[거짓(X)인 대표 명제]</strong>: '한 직선에 수직인 두 직선'이나 '한 평면에 평행한 두 직선'은 3D 공간에서 360° 돌아갈 자유도가 남아 있어서 <strong>평행할 수도, 만날 수도, 꼬인 위치일 수도 있습니다!</strong>`,
+              warning: "⚠️ '평면(2D)'에서는 한 직선에 수직인 두 직선이 무조건 평행하지만, '공간(3D)'에서는 거짓(X)입니다! 문제 맨 앞에 『공간에서』라는 말이 있는지 꼭 확인하세요!"
+            },
+            shortcut: {
+              steps: `① <strong>[3초 암기: 기둥이 회전할 수 있는가?]</strong>:<br/>
+&nbsp;&nbsp;• 바닥 평면에 90°로 박힌 두 기둥(${tex('l \\perp P, m \\perp P')})은 <strong>절대 옆으로 못 돌기 때문에 무조건 평행(⭕)</strong>!<br/>
+&nbsp;&nbsp;• 가로 막대기에 90°로 꽂힌 바퀴살이나 공중에 뜬 평행선은 <strong>빙글빙글 돌 수 있기 때문에 거짓(❌)</strong>!`,
+              highlight: "💡 시험장 필수품: 교실 바닥·천장·벽면(정육면체 방)과 손에 든 연필 2자루!"
+            }
+          };
+        }
+      }
+      return {};
+    }
+
+    // -------------------------------------------------------------------------
+    // 4. 메인 렌더링 파이프라인 (탭 1~4: 2D 평면 / 탭 5~6: 3D 입체!)
+    // -------------------------------------------------------------------------
+    function render() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
+      drawChalkGrid(rect);
+
+      const m = state.mode;
+      if (m === 1) renderTab1RaysAndFourPts(rect);
+      else if (m === 2) renderTab2SegmentsAndBlocks(rect);
+      else if (m === 3) renderTab3CountAndClock(rect);
+      else if (m === 4) renderTab4PerpAndPaperFold(rect);
+      else if (m === 5) renderTab5Skew3DFilter(rect);
+      else if (m === 6) renderTab6SpaceProps3D(rect);
+
+      updateUIWithSpec();
+    }
+
+    // =========================================================================
+    // [탭 1 렌더링] 직선·반직선·선분 레이저(슬라이더 발사 연동!) & 한 직선 위 4점
+    // =========================================================================
+    function renderTab1RaysAndFourPts(rect) {
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.50 + state.offsetY;
+      const sub = state.subType[1];
+      const t = Math.max(0.15, state.animProg); // 레이저 발사 진행률!
+
+      if (sub === 'sameRay' || sub === 'intersect') {
+        const span = Math.min(rect.width * 0.34, 235) * state.scale;
+        const pts = {
+          A: { x: cx - span, y: cy },
+          B: { x: cx - span * 0.33, y: cy },
+          C: { x: cx + span * 0.33, y: cy },
+          D: { x: cx + span, y: cy }
+        };
+        const ext = 115 * state.scale;
+        const sep = state.layerMode === 'exploded' ? 40 : 0;
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(pts.A.x - ext, cy);
+        ctx.lineTo(pts.D.x + ext, cy);
+        ctx.strokeStyle = 'rgba(255,255,255,0.32)';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        const y1 = cy - sep;
+        const y2 = cy + sep;
+
+        if (sub === 'sameRay') {
+          const curEndX = pts.B.x + (pts.D.x + ext - pts.B.x) * t;
+          ctx.beginPath(); ctx.moveTo(pts.B.x, y1); ctx.lineTo(curEndX, y1);
+          ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 5.5; ctx.stroke();
+          drawFlashlightOrigin(pts.B.x, y1, '#fbbf24', '반직선 BC (B 출발)');
+          drawArrowHead(curEndX, y1, 0, 15, '#fbbf24');
+
+          ctx.beginPath(); ctx.moveTo(pts.B.x, y2); ctx.lineTo(curEndX, y2);
+          ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 5.5; ctx.stroke();
+          drawFlashlightOrigin(pts.B.x, y2, '#38bdf8', '반직선 BD (B 출발)');
+          drawArrowHead(curEndX, y2, 0, 15, '#38bdf8');
+
+          ctx.beginPath(); ctx.moveTo(pts.B.x, y1); ctx.lineTo(pts.B.x, y2);
+          ctx.setLineDash([4, 4]); ctx.strokeStyle = '#34d399'; ctx.lineWidth = 2.5; ctx.stroke(); ctx.setLineDash([]);
+        } else {
+          // intersect: BD ∩ CA = 선분 BC
+          const endBD = pts.B.x + (pts.D.x + ext - pts.B.x) * t;
+          const endCA = pts.C.x - (pts.C.x - (pts.A.x - ext)) * t;
+
+          if (state.layerMode !== 'intersect') {
+            ctx.beginPath(); ctx.moveTo(pts.B.x, y1); ctx.lineTo(endBD, y1);
+            ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 5; ctx.stroke();
+            drawFlashlightOrigin(pts.B.x, y1, '#fbbf24', '반직선 BD (B→오른쪽)');
+            drawArrowHead(endBD, y1, 0, 15, '#fbbf24');
+
+            ctx.beginPath(); ctx.moveTo(pts.C.x, y2); ctx.lineTo(endCA, y2);
+            ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 5; ctx.stroke();
+            drawFlashlightOrigin(pts.C.x, y2, '#f472b6', '반직선 CA (C→왼쪽)');
+            drawArrowHead(endCA, y2, Math.PI, 15, '#f472b6');
+          }
+
+          if (state.steps[2] || state.layerMode === 'intersect') {
+            ctx.fillStyle = 'rgba(52, 211, 153, 0.22)';
+            ctx.fillRect(pts.B.x, y1, pts.C.x - pts.B.x, y2 - y1);
+
+            ctx.beginPath(); ctx.moveTo(pts.B.x, cy); ctx.lineTo(pts.C.x, cy);
+            ctx.strokeStyle = '#34d399'; ctx.lineWidth = 8; ctx.stroke();
+            ctx.fillStyle = '#6ee7b7'; ctx.font = 'extrabold 13.5px Pretendard, sans-serif'; ctx.textAlign = 'center';
+            ctx.fillText('✨ 공통부분(교집합) = 선분 BC!', (pts.B.x + pts.C.x) / 2, cy - sep - 30);
+          }
+        }
+
+        Object.keys(pts).forEach((k) => {
+          const p = pts[k];
+          ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, Math.PI * 2);
+          ctx.fillStyle = '#ffffff'; ctx.fill(); ctx.lineWidth = 2.5; ctx.strokeStyle = '#06110d'; ctx.stroke();
+          ctx.font = 'extrabold 15px Pretendard, sans-serif'; ctx.fillStyle = '#fef08a'; ctx.textAlign = 'center';
+          ctx.fillText(k, p.x, p.y + 24);
+        });
+        ctx.restore();
+        return;
+      }
+
+      // 기본 두 점 A, B 레이저 실험
+      const displayPts = getTab1DisplayPoints(rect);
+      const pA = displayPts.a, pB = displayPts.b;
+      const dx = pB.x - pA.x, dy = pB.y - pA.y;
+      const dist = Math.hypot(dx, dy) || 1;
+      const ux = dx / dist, uy = dy / dist;
+      const angAB = Math.atan2(dy, dx), angBA = angAB + Math.PI;
+      const nx = -uy, ny = ux;
+
+      const extLen = 215 * state.scale * t;
+      const sep = state.layerMode === 'exploded' ? 28 : 0;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(pA.x - ux * 220 * state.scale, pA.y - uy * 220 * state.scale);
+      ctx.lineTo(pB.x + ux * 220 * state.scale, pB.y + uy * 220 * state.scale);
+      ctx.setLineDash([6, 6]); ctx.strokeStyle = 'rgba(148, 163, 184, 0.3)'; ctx.lineWidth = 2; ctx.stroke(); ctx.setLineDash([]);
+
+      if (sub === 'line') {
+        const s1 = { x: pA.x - ux * extLen, y: pA.y - uy * extLen };
+        const s2 = { x: pB.x + ux * extLen, y: pB.y + uy * extLen };
+        ctx.beginPath(); ctx.moveTo(s1.x, s1.y); ctx.lineTo(s2.x, s2.y);
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 5.5; ctx.stroke();
+        drawArrowHead(s1.x, s1.y, angBA, 15, '#38bdf8');
+        drawArrowHead(s2.x, s2.y, angAB, 15, '#38bdf8');
+      } else if (sub === 'rayAB') {
+        const s2 = { x: pA.x + ux * (dist + extLen), y: pA.y + uy * (dist + extLen) };
+        ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(s2.x, s2.y);
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 6; ctx.stroke();
+        drawFlashlightOrigin(pA.x, pA.y, '#fbbf24', '출발점 A');
+        drawArrowHead(s2.x, s2.y, angAB, 16, '#fbbf24');
+      } else if (sub === 'segment') {
+        ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y);
+        ctx.strokeStyle = '#34d399'; ctx.lineWidth = 7; ctx.stroke();
+        ctx.fillStyle = '#6ee7b7'; ctx.font = 'extrabold 14px Pretendard, monospace'; ctx.textAlign = 'center';
+        ctx.fillText(`선분 AB 길이 = ${state.param1} cm (유일하게 측정 가능!)`, (pA.x + pB.x) / 2, (pA.y + pB.y) / 2 - 22);
+      } else {
+        // rayCompare: 반직선 AB vs 반직선 BA 동시 비교
+        const aTop = { x: pA.x + nx * sep, y: pA.y + ny * sep };
+        const bTopEnd = { x: pA.x + ux * (dist + extLen) + nx * sep, y: pA.y + uy * (dist + extLen) + ny * sep };
+        const bBot = { x: pB.x - nx * sep, y: pB.y - ny * sep };
+        const aBotEnd = { x: pB.x - ux * (dist + extLen) - nx * sep, y: pB.y - uy * (dist + extLen) - ny * sep };
+
+        if (state.layerMode !== 'intersect') {
+          ctx.beginPath(); ctx.moveTo(aTop.x, aTop.y); ctx.lineTo(bTopEnd.x, bTopEnd.y);
+          ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 5; ctx.stroke();
+          drawFlashlightOrigin(aTop.x, aTop.y, '#fbbf24', '반직선 AB (A 출발)');
+          drawArrowHead(bTopEnd.x, bTopEnd.y, angAB, 14, '#fbbf24');
+
+          ctx.beginPath(); ctx.moveTo(bBot.x, bBot.y); ctx.lineTo(aBotEnd.x, aBotEnd.y);
+          ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 5; ctx.stroke();
+          drawFlashlightOrigin(bBot.x, bBot.y, '#f472b6', '반직선 BA (B 출발)');
+          drawArrowHead(aBotEnd.x, aBotEnd.y, angBA, 14, '#f472b6');
+        }
+
+        if (state.steps[2] || state.layerMode === 'intersect') {
+          ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y);
+          ctx.strokeStyle = '#34d399'; ctx.lineWidth = 7; ctx.stroke();
+          ctx.fillStyle = '#6ee7b7'; ctx.font = 'extrabold 13px Pretendard, sans-serif'; ctx.textAlign = 'center';
+          ctx.fillText('✨ 공통부분 = 선분 AB', (pA.x + pB.x) / 2, (pA.y + pB.y) / 2 + 4);
+        }
+      }
+
+      [
+        { p: pA, name: '점 A (드래그!)', color: '#38bdf8' },
+        { p: pB, name: '점 B (드래그!)', color: '#f43f5e' }
+      ].forEach((it) => {
+        ctx.beginPath(); ctx.arc(it.p.x, it.p.y, 7.5, 0, Math.PI * 2);
+        ctx.fillStyle = it.color; ctx.fill(); ctx.lineWidth = 2.5; ctx.strokeStyle = '#ffffff'; ctx.stroke();
+        ctx.font = 'extrabold 13px Pretendard, sans-serif'; ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center';
+        ctx.fillText(it.name, it.p.x, it.p.y + 26);
+      });
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // [탭 2 렌더링] 최단거리 & 중점 불변량 & 삼등분점 6칸 블록 & 조건식 칸수 번역기
+    // =========================================================================
+    function renderTab2SegmentsAndBlocks(rect) {
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.52 + state.offsetY;
+      const sub = state.subType[2];
+      const L = state.param1;
+      const span = Math.min(rect.width * 0.36, 250) * state.scale;
+      const xA = cx - span;
+      const xB = cx + span;
+
+      ctx.save();
+
+      if (sub === 'shortest') {
+        // 굽은 길, 꺾인 길 vs 최단거리 선분 AB & 중점 M(| 마크)
+        const xM = (xA + xB) / 2;
+        const pTop = { x: cx, y: cy - 95 * state.scale };
+        const pathLengths = getShortestPathMetrics(L);
+
+        // 1) 굽은 곡선 경로
+        ctx.beginPath();
+        ctx.moveTo(xA, cy);
+        ctx.quadraticCurveTo(cx, cy + 125 * state.scale, xB, cy);
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.45)';
+        ctx.lineWidth = 3;
+        ctx.setLineDash([6, 4]);
+        ctx.stroke();
+
+        // 2) 꺾인 경로
+        ctx.beginPath();
+        ctx.moveTo(xA, cy); ctx.lineTo(pTop.x, pTop.y); ctx.lineTo(xB, cy);
+        ctx.strokeStyle = 'rgba(244, 114, 182, 0.5)';
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // 3) 최단거리 곧은 선분 AB
+        ctx.beginPath();
+        ctx.moveTo(xA, cy); ctx.lineTo(xB, cy);
+        ctx.strokeStyle = '#34d399';
+        ctx.lineWidth = 7;
+        ctx.stroke();
+
+        // 등변 틱 마크(|)
+        drawTickMarks2D({ x: xA, y: cy }, { x: xM, y: cy }, 1, '#fbbf24', 9);
+        drawTickMarks2D({ x: xM, y: cy }, { x: xB, y: cy }, 1, '#fbbf24', 9);
+
+        [
+          { x: xA, y: cy, l: 'A', c: '#ffffff' },
+          { x: xM, y: cy, l: `중점 M (AM=MB=${L / 2}cm)`, c: '#fbbf24' },
+          { x: xB, y: cy, l: 'B', c: '#ffffff' }
+        ].forEach((p) => {
+          ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, Math.PI * 2);
+          ctx.fillStyle = p.c; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = '#06110d'; ctx.stroke();
+          ctx.font = 'extrabold 13px Pretendard, sans-serif'; ctx.fillStyle = p.c; ctx.textAlign = 'center';
+          ctx.fillText(p.l, p.x, p.y + 24);
+        });
+
+        ctx.fillStyle = '#f9a8d4'; ctx.fillText(`❌ 꺾인 길 (${pathLengths.broken.toFixed(1)}cm)`, cx, pTop.y - 10);
+        ctx.fillStyle = '#94a3b8'; ctx.fillText(`❌ 굽은 길 (${pathLengths.curved.toFixed(1)}cm)`, cx, cy + 78);
+        ctx.fillStyle = '#6ee7b7'; ctx.fillText(`⭕ 두 점 A, B 사이의 거리 = 선분 AB (${L}cm)`, cx, cy - 22);
+      } else if (sub === 'midPoint') {
+        const cRatio = 0.2 + state.animProg * 0.6;
+        const xC = xA + (xB - xA) * cRatio;
+        const xM = (xA + xC) / 2;
+        const xN = (xC + xB) / 2;
+
+        ctx.beginPath(); ctx.moveTo(xA, cy); ctx.lineTo(xC, cy); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 6.5; ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(xC, cy); ctx.lineTo(xB, cy); ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 6.5; ctx.stroke();
+
+        // 등변 틱 마크 (| 과 ||)
+        drawTickMarks2D({ x: xA, y: cy }, { x: xM, y: cy }, 1, '#7dd3fc', 8);
+        drawTickMarks2D({ x: xM, y: cy }, { x: xC, y: cy }, 1, '#7dd3fc', 8);
+        drawTickMarks2D({ x: xC, y: cy }, { x: xN, y: cy }, 2, '#f9a8d4', 8);
+        drawTickMarks2D({ x: xN, y: cy }, { x: xB, y: cy }, 2, '#f9a8d4', 8);
+
+        if (state.steps[2]) {
+          const yBr = cy - 48;
+          ctx.fillStyle = 'rgba(251, 191, 36, 0.22)';
+          ctx.fillRect(xM, yBr, xN - xM, 48);
+          ctx.beginPath(); ctx.moveTo(xM, cy); ctx.lineTo(xM, yBr); ctx.lineTo(xN, yBr); ctx.lineTo(xN, cy);
+          ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 4; ctx.stroke();
+          ctx.fillStyle = '#fef08a'; ctx.font = 'extrabold 14.5px Pretendard, monospace'; ctx.textAlign = 'center';
+          ctx.fillText(`불변 길이 MN = ○ + △ = ½AB = ${L / 2} cm (점 C가 움직여도 일정!)`, (xM + xN) / 2, yBr - 14);
+        }
+
+        [
+          { x: xA, l: 'A', c: '#ffffff', r: 6.5 },
+          { x: xM, l: '중점 M', c: '#38bdf8', r: 6 },
+          { x: xC, l: '동점 C (드래그!)', c: '#fbbf24', r: 8.5 },
+          { x: xN, l: '중점 N', c: '#f472b6', r: 6 },
+          { x: xB, l: 'B', c: '#ffffff', r: 6.5 }
+        ].forEach((p) => {
+          ctx.beginPath(); ctx.arc(p.x, cy, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.c; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = '#06110d'; ctx.stroke();
+          ctx.font = 'bold 12.5px Pretendard, sans-serif'; ctx.fillStyle = p.c; ctx.textAlign = 'center';
+          ctx.fillText(p.l, p.x, cy + 24);
+        });
+      } else if (sub === 'trisect') {
+        // 6칸 레고 블록 시각화 (삼등분점 P=2칸, 중점 M=3칸, 삼등분점 Q=4칸)
+        const totalW = xB - xA;
+        const boxW = totalW / 6;
+        const unit = L / 6;
+
+        for (let i = 0; i < 6; i++) {
+          const bx = xA + i * boxW;
+          ctx.fillStyle = i === 2 ? 'rgba(251, 191, 36, 0.42)' : i % 2 === 0 ? 'rgba(56, 189, 248, 0.22)' : 'rgba(52, 211, 153, 0.22)';
+          ctx.fillRect(bx + 2, cy - 26, boxW - 4, 26);
+          ctx.strokeStyle = i === 2 ? '#fbbf24' : 'rgba(255,255,255,0.35)';
+          ctx.lineWidth = i === 2 ? 3 : 1.5;
+          ctx.strokeRect(bx + 2, cy - 26, boxW - 4, 26);
+
+          ctx.fillStyle = '#e2e8f0'; ctx.font = 'bold 11.5px Pretendard, monospace'; ctx.textAlign = 'center';
+          ctx.fillText(`1칸(${unit})`, bx + boxW / 2, cy - 9);
+        }
+
+        ctx.beginPath(); ctx.moveTo(xA, cy); ctx.lineTo(xB, cy);
+        ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 4; ctx.stroke();
+
+        [
+          { k: 0, l: 'A (0칸)', c: '#ffffff' },
+          { k: 2, l: '삼등분 P (2칸)', c: '#38bdf8' },
+          { k: 3, l: '중점 M (3칸)', c: '#fbbf24' },
+          { k: 4, l: '삼등분 Q (4칸)', c: '#38bdf8' },
+          { k: 6, l: 'B (6칸)', c: '#ffffff' }
+        ].forEach((it) => {
+          const px = xA + it.k * boxW;
+          ctx.beginPath(); ctx.arc(px, cy, 7, 0, Math.PI * 2);
+          ctx.fillStyle = it.c; ctx.fill(); ctx.strokeStyle = '#06110d'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.font = 'extrabold 12.5px Pretendard, sans-serif'; ctx.fillStyle = it.c; ctx.textAlign = 'center';
+          ctx.fillText(it.l, px, cy + 24);
+        });
+
+        ctx.fillStyle = '#fef08a'; ctx.font = 'extrabold 14px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(`🧱 6칸 레고 블록 법칙: 선분 PM = (3칸 - 2칸) = 딱 1칸 = 1/6 AB = ${unit} cm!`, cx, cy - 48);
+      } else {
+        // ratioBlock: 조건식 AC = 2CB & AC의 중점 M -> 3칸 블록!
+        const totalW = xB - xA;
+        const boxW = totalW / 3;
+        const unit = L / 3;
+
+        for (let i = 0; i < 3; i++) {
+          const bx = xA + i * boxW;
+          ctx.fillStyle = i < 2 ? 'rgba(56, 189, 248, 0.30)' : 'rgba(244, 114, 182, 0.35)';
+          ctx.fillRect(bx + 3, cy - 28, boxW - 6, 28);
+          ctx.strokeStyle = i < 2 ? '#38bdf8' : '#f472b6';
+          ctx.lineWidth = 2.5;
+          ctx.strokeRect(bx + 3, cy - 28, boxW - 6, 28);
+
+          drawTickMarks2D({ x: bx, y: cy }, { x: bx + boxW, y: cy }, 1, '#fbbf24', 8);
+          ctx.fillStyle = '#fef08a'; ctx.font = 'extrabold 12px Pretendard, monospace'; ctx.textAlign = 'center';
+          ctx.fillText(`1칸 (${unit}cm)`, bx + boxW / 2, cy - 10);
+        }
+
+        [
+          { k: 0, l: 'A', c: '#ffffff' },
+          { k: 1, l: '중점 M (1칸)', c: '#38bdf8' },
+          { k: 2, l: '점 C (AC=2칸)', c: '#fbbf24' },
+          { k: 3, l: 'B (전체 3칸)', c: '#f472b6' }
+        ].forEach((it) => {
+          const px = xA + it.k * boxW;
+          ctx.beginPath(); ctx.arc(px, cy, 7, 0, Math.PI * 2);
+          ctx.fillStyle = it.c; ctx.fill(); ctx.strokeStyle = '#06110d'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.font = 'extrabold 12.5px Pretendard, sans-serif'; ctx.fillStyle = it.c; ctx.textAlign = 'center';
+          ctx.fillText(it.l, px, cy + 24);
+        });
+
+        ctx.fillStyle = '#6ee7b7'; ctx.font = 'extrabold 14px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText(`🎯 조건식 번역: CB = 1칸으로 놓으면 AC = 2칸, 중점 M에 의해 AM = MC = CB = 모두 1칸!`, cx, cy - 48);
+      }
+
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // [탭 3 렌더링] 선의 개수(일직선 중복 흡수) & 맞꼭지각 쌍 & 시계 각도 추적기
+    // =========================================================================
+    function renderTab3CountAndClock(rect) {
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.48 + state.offsetY;
+      const sub = state.subType[3];
+
+      ctx.save();
+
+      if (sub === 'collinear' || sub === 'circlePts') {
+        const nPts = Math.min(7, Math.max(4, Math.round(state.param1 / 3) + 1));
+        const mCol = Math.min(nPts - 1, Math.max(3, Math.round(state.param2 / 40) + 2));
+        const isCol = sub === 'collinear';
+        const t = isCol ? state.animProg : 0.0;
+
+        const R = Math.min(rect.width, rect.height) * 0.27 * state.scale;
+        const pts = [];
+
+        for (let i = 0; i < nPts; i++) {
+          const ang = -Math.PI + ((i + 0.5) * Math.PI * 2) / nPts;
+          const circlePt = { x: cx + R * Math.cos(ang), y: cy + R * Math.sin(ang) };
+
+          if (i < mCol) {
+            const lineX = cx - R * 0.9 + (i / (mCol - 1)) * (R * 1.8);
+            const lineY = cy + R * 0.62;
+            pts.push({
+              x: (1 - t) * circlePt.x + t * lineX,
+              y: (1 - t) * circlePt.y + t * lineY,
+              isCol: true,
+              name: String.fromCharCode(65 + i)
+            });
+          } else {
+            const topIdx = i - mCol;
+            const topCount = nPts - mCol;
+            const topAng = -Math.PI * 0.8 + ((topIdx + 0.5) / Math.max(1, topCount)) * (Math.PI * 0.6);
+            const topPt = { x: cx + R * Math.cos(topAng), y: cy + R * Math.sin(topAng) - 20 };
+            pts.push({
+              x: (1 - t) * circlePt.x + t * topPt.x,
+              y: (1 - t) * circlePt.y + t * topPt.y,
+              isCol: false,
+              name: String.fromCharCode(65 + i)
+            });
+          }
+        }
+
+        for (let i = 0; i < nPts; i++) {
+          for (let j = i + 1; j < nPts; j++) {
+            const bothCol = pts[i].isCol && pts[j].isCol;
+            const dx = pts[j].x - pts[i].x, dy = pts[j].y - pts[i].y;
+            const len = Math.hypot(dx, dy) || 1;
+            const ux = dx / len, uy = dy / len;
+
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x - ux * 45, pts[i].y - uy * 45);
+            ctx.lineTo(pts[j].x + ux * 45, pts[j].y + uy * 45);
+            if (bothCol && isCol) {
+              ctx.strokeStyle = t > 0.85 ? '#fbbf24' : 'rgba(244, 63, 94, 0.7)';
+              ctx.lineWidth = t > 0.85 ? 5.5 : 2.5;
+            } else {
+              ctx.strokeStyle = 'rgba(56, 189, 248, 0.55)';
+              ctx.lineWidth = 2.0;
+            }
+            ctx.stroke();
+          }
+        }
+
+        pts.forEach((p) => {
+          ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, Math.PI * 2);
+          ctx.fillStyle = p.isCol && isCol ? '#fbbf24' : '#38bdf8';
+          ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = '#ffffff'; ctx.stroke();
+          ctx.font = 'extrabold 13px Pretendard, sans-serif'; ctx.fillStyle = '#ffffff'; ctx.textAlign = 'center';
+          ctx.fillText(p.name, p.x, p.y - 14);
+        });
+      } else if (sub === 'verticalAng') {
+        const nLines = Math.min(6, Math.max(2, Math.round(state.param1 / 3)));
+        const R = Math.min(rect.width, rect.height) * 0.30 * state.scale;
+        const baseTilt = ((state.param2 - 50) * Math.PI) / 180;
+        const ang0 = baseTilt * 0.3;
+        const ang1 = ang0 + (state.param2 * Math.PI) / 180;
+
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, 55, ang0, ang1); ctx.closePath();
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.42)'; ctx.fill();
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, 55, ang0 + Math.PI, ang1 + Math.PI); ctx.closePath();
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.42)'; ctx.fill();
+
+        for (let i = 0; i < nLines; i++) {
+          const a = i === 0 ? ang0 : i === 1 ? ang1 : ang0 + (i * Math.PI) / nLines;
+          ctx.beginPath();
+          ctx.moveTo(cx - R * Math.cos(a), cy - R * Math.sin(a));
+          ctx.lineTo(cx + R * Math.cos(a), cy + R * Math.sin(a));
+          ctx.strokeStyle = i < 2 ? '#fbbf24' : '#38bdf8';
+          ctx.lineWidth = i < 2 ? 4.2 : 2.5;
+          ctx.stroke();
+        }
+        ctx.beginPath(); ctx.arc(cx, cy, 6.5, 0, Math.PI * 2); ctx.fillStyle = '#ffffff'; ctx.fill();
+      } else {
+        // clockAng: 시계 바늘 각도 추적기
+        const R = Math.min(rect.width, rect.height) * 0.29 * state.scale;
+        const min = Math.min(55, Math.max(10, Math.round(state.param2 / 2.5)));
+        const hourAngDeg = 90 + 0.5 * min;
+        const minAngDeg = 6 * min;
+
+        const hRad = ((hourAngDeg - 90) * Math.PI) / 180;
+        const mRad = ((minAngDeg - 90) * Math.PI) / 180;
+
+        // 시계 원판
+        ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(15, 35, 27, 0.85)'; ctx.fill();
+        ctx.strokeStyle = '#34d399'; ctx.lineWidth = 4; ctx.stroke();
+
+        for (let i = 1; i <= 12; i++) {
+          const a = ((i * 30 - 90) * Math.PI) / 180;
+          ctx.fillStyle = '#e2e8f0'; ctx.font = 'extrabold 13px Pretendard, sans-serif';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(`${i}`, cx + R * 0.84 * Math.cos(a), cy + R * 0.84 * Math.sin(a));
+        }
+
+        // 두 바늘 사잇각 부채꼴
+        const directed = ((mRad - hRad) % (2*Math.PI) + 2*Math.PI) % (2*Math.PI);
+        const smallArc = Math.min(directed, 2*Math.PI-directed);
+        const sA = directed <= Math.PI ? hRad : mRad;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, R * 0.42, sA, sA + smallArc); ctx.closePath();
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.38)'; ctx.fill();
+
+        // 시침(노랑) & 분침(하늘)
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R * 0.55 * Math.cos(hRad), cy + R * 0.55 * Math.sin(hRad));
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 6; ctx.stroke();
+
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + R * 0.76 * Math.cos(mRad), cy + R * 0.76 * Math.sin(mRad));
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
+
+        ctx.beginPath(); ctx.arc(cx, cy, 6, 0, Math.PI * 2); ctx.fillStyle = '#ffffff'; ctx.fill();
+        ctx.fillStyle = '#fef08a'; ctx.font = 'extrabold 14px Pretendard, sans-serif';
+        ctx.fillText(`🕒 3시 ${min}분 | 시침 ${hourAngDeg}° · 분침 ${minAngDeg}° · 작은 각 ${(smallArc*180/Math.PI).toFixed(1)}°`, cx, cy + R + 28);
+      }
+
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // [탭 4 렌더링] 직교(⊥)·수선의 발(H) & 이등분선 90° 불변량 & 종이 테이프 접기(실제 폴딩 애니메이션!)
+    // =========================================================================
+    function renderTab4PerpAndPaperFold(rect) {
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.50 + state.offsetY;
+      const sub = state.subType[4];
+      const t = state.animProg;
+
+      ctx.save();
+
+      if (sub === 'perpDist') {
+        // 직선 l 과 점 P, 수선의 발 H(90° 직각 ∟), 스캔 점 Q
+        const yLine = cy + 55;
+        const pP = { x: cx, y: cy - 85 * state.scale };
+        const pH = { x: cx, y: yLine };
+        const qX = cx + (t - 0.5) * 320 * state.scale;
+        const pQ = { x: qX, y: yLine };
+
+        ctx.beginPath(); ctx.moveTo(cx - 240, yLine); ctx.lineTo(cx + 240, yLine);
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4; ctx.stroke();
+
+        // 스캔 사선 PQ
+        ctx.beginPath(); ctx.moveTo(pP.x, pP.y); ctx.lineTo(pQ.x, pQ.y);
+        ctx.strokeStyle = 'rgba(244, 114, 182, 0.75)'; ctx.lineWidth = 3; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.setLineDash([]);
+
+        // 수선 PH (최단거리!)
+        ctx.beginPath(); ctx.moveTo(pP.x, pP.y); ctx.lineTo(pH.x, pH.y);
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 5.5; ctx.stroke();
+
+        drawRightAngle2D(pH, pP, { x: cx + 50, y: yLine }, 15, '#34d399');
+
+        [
+          { p: pP, l: '점 P', dy: -16, c: '#fbbf24' },
+          { p: pH, l: '수선의 발 H (∟)', dy: 24, c: '#34d399' },
+          { p: pQ, l: '스캔 점 Q', dy: 24, c: '#f472b6' }
+        ].forEach((it) => {
+          ctx.beginPath(); ctx.arc(it.p.x, it.p.y, 7, 0, Math.PI * 2);
+          ctx.fillStyle = it.c; ctx.fill(); ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2; ctx.stroke();
+          ctx.font = 'extrabold 13px Pretendard, sans-serif'; ctx.fillStyle = it.c; ctx.textAlign = 'center';
+          ctx.fillText(it.l, it.p.x, it.p.y + it.dy);
+        });
+      } else if (sub === 'bisect90') {
+        // 평각의 두 이등분선이 이루는 각 = 90° 직각 불변량!
+        const pO = { x: cx, y: cy + 50 };
+        const R = 155 * state.scale;
+        const ratioC = 0.25 + t * 0.5;
+        const angC = -Math.PI + ratioC * Math.PI; // -180° ~ 0° 사이
+        const angM = (-Math.PI + angC) / 2;
+        const angN = (angC + 0) / 2;
+
+        const pA = { x: pO.x - R, y: pO.y };
+        const pB = { x: pO.x + R, y: pO.y };
+        const pC = { x: pO.x + R * Math.cos(angC), y: pO.y + R * Math.sin(angC) };
+        const pM = { x: pO.x + R * Math.cos(angM), y: pO.y + R * Math.sin(angM) };
+        const pN = { x: pO.x + R * Math.cos(angN), y: pO.y + R * Math.sin(angN) };
+
+        // 90° 이등분선 사잇각 부채꼴 강조
+        ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.arc(pO.x, pO.y, R * 0.55, angM, angN); ctx.closePath();
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.35)'; ctx.fill();
+
+        // 직선 AB 및 반직선 OC, OM, ON
+        ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 3.5; ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pC.x, pC.y); ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 3; ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pM.x, pM.y); ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 4.5; ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(pO.x, pO.y); ctx.lineTo(pN.x, pN.y); ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 4.5; ctx.stroke();
+
+        // OM ⊥ ON 직각 네모(∟) 표시!
+        drawRightAngle2D(pO, pM, pN, 18, '#fbbf24');
+
+        ctx.font = 'extrabold 13px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillStyle = '#38bdf8'; ctx.fillText('M (이등분선 ●)', pM.x, pM.y - 12);
+        ctx.fillStyle = '#f472b6'; ctx.fillText('N (이등분선 ×)', pN.x, pN.y - 12);
+        ctx.fillStyle = '#e2e8f0'; ctx.fillText('C (좌우 회전!)', pC.x, pC.y - 12);
+        ctx.fillStyle = '#fef08a'; ctx.fillText('🎯 ∠MON = ● + × = 90° (항상 직각 ∟!)', pO.x, pO.y + 32);
+      } else {
+        // paperFold: 직사각형 종이 테이프 접기 (t=0일 때 평평한 테이프 → t=1일 때 완전히 접힌 테이프 애니메이션!)
+        const foldDeg = Math.min(75, Math.max(40, state.param2));
+        const rad = (foldDeg * Math.PI) / 180;
+        const xDeg = 180 - 2 * foldDeg;
+
+        const stripH = 92 * state.scale;
+        const yTop = cy - stripH / 2;
+        const yBot = cy + stripH / 2;
+
+        const bx = cx - 20, by = yBot;
+        const cxPt = bx + stripH / Math.tan(rad), cyPt = yTop;
+        const lenAC = stripH / Math.sin(2 * rad);
+        const ax = cxPt - lenAC, ay = yTop;
+
+        // 1) 왼쪽 고정 테이프
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.20)';
+        ctx.fillRect(cx - 235, yTop, 470, stripH);
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(cx - 235, yTop); ctx.lineTo(cxPt, yTop);
+        ctx.moveTo(cx - 235, yBot); ctx.lineTo(bx, yBot);
+        ctx.stroke();
+
+        // 평행선 화살표(>) 표시!
+        drawParallelArrows2D({ x: cx - 180, y: yTop }, { x: cx - 100, y: yTop }, 1, '#38bdf8', 8);
+        drawParallelArrows2D({ x: cx - 180, y: yBot }, { x: cx - 100, y: yBot }, 1, '#38bdf8', 8);
+
+        // 접기 전 오른쪽 원래 테이프 (점선)
+        ctx.setLineDash([6, 5]); ctx.strokeStyle = 'rgba(148, 163, 184, 0.5)';
+        ctx.beginPath();
+        ctx.moveTo(cxPt, yTop); ctx.lineTo(cx + 225, yTop);
+        ctx.moveTo(bx, yBot); ctx.lineTo(cx + 225, yBot);
+        ctx.stroke(); ctx.setLineDash([]);
+
+        // 2) 슬라이더 t에 따라 실제로 회전하며 접히는 오른쪽 테이프 조각!
+        // t=0일 때 방향각 0(오른쪽 수평), t=1일 때 방향각 (-π + 2*rad)
+        const targetAngle = -Math.PI + 2 * rad;
+        const curAngle = t * targetAngle;
+        const extL = 200 * state.scale;
+        const pD = { x: bx + extL * Math.cos(curAngle), y: by + extL * Math.sin(curAngle) };
+        const pE = { x: cxPt + extL * Math.cos(curAngle), y: cyPt + extL * Math.sin(curAngle) };
+
+        ctx.beginPath();
+        ctx.moveTo(bx, by); ctx.lineTo(cxPt, cyPt); ctx.lineTo(pE.x, pE.y); ctx.lineTo(pD.x, pD.y);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.28)'; ctx.fill();
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 3; ctx.stroke();
+
+        // 3) 겹쳐진 이등변삼각형 ΔABC & 등변 틱 마크(||)
+        if (t > 0.7 && state.steps[2]) {
+          ctx.beginPath();
+          ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.lineTo(cxPt, cyPt);
+          ctx.closePath();
+          ctx.fillStyle = 'rgba(52, 211, 153, 0.48)'; ctx.fill();
+          ctx.strokeStyle = '#34d399'; ctx.lineWidth = 3.5; ctx.stroke();
+
+          ctx.strokeStyle = '#f43f5e'; ctx.lineWidth = 5;
+          ctx.beginPath();
+          ctx.moveTo(ax, ay); ctx.lineTo(cxPt, cyPt);
+          ctx.moveTo(ax, ay); ctx.lineTo(bx, by);
+          ctx.stroke();
+
+          drawTickMarks2D({ x: ax, y: ay }, { x: cxPt, y: cyPt }, 2, '#fbbf24', 8);
+          drawTickMarks2D({ x: ax, y: ay }, { x: bx, y: by }, 2, '#fbbf24', 8);
+        }
+
+        ctx.font = 'extrabold 13px Pretendard, monospace'; ctx.textAlign = 'center';
+        ctx.fillStyle = '#fef08a'; ctx.fillText(`접은각 ● ${foldDeg}°`, bx - 12, by - 22);
+        ctx.fillStyle = '#94a3b8'; ctx.fillText(`원래각 ● ${foldDeg}°`, bx + 55, by - 14);
+        ctx.fillStyle = '#6ee7b7'; ctx.fillText(`엇각 ● ${foldDeg}°`, cxPt - 36, cyPt + 24);
+        if (t > 0.7) {
+          ctx.fillStyle = '#fda4af'; ctx.fillText(`꼭지각 ${xDeg}°`, ax - 35, ay + 24);
+        }
+
+        [
+          { x: ax, y: ay, l: 'A(꼭지각)', dy: -12 },
+          { x: bx, y: by, l: 'B', dy: 22 },
+          { x: cxPt, y: cyPt, l: 'C', dy: -12 }
+        ].forEach((p) => {
+          ctx.beginPath(); ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+          ctx.fillStyle = '#ffffff'; ctx.fill();
+          ctx.fillText(p.l, p.x, p.y + p.dy);
+        });
+      }
+
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // [탭 5 렌더링: 3D 입체!] 꼬인 위치 3단계 소거 필터 (5종 다면체 완벽 지원!)
+    // =========================================================================
+    function renderTab5Skew3DFilter(rect) {
+      const sub = state.subType[5];
+      const filter = state.skewFilter; // 'all' | 'meet' | 'parallel' | 'skewOnly'
+
+      let verts = {};
+      let edges = [];
+      let faces = [];
+      let refEdgeId = 'AB';
+
+      if (sub === 'cuboidSkew') {
+        const wx = 1.6, wy = 1.15, hz = 1.15;
+        verts = {
+          A: { x: -wx, y: -wy, z: hz }, B: { x: wx, y: -wy, z: hz }, C: { x: wx, y: wy, z: hz }, D: { x: -wx, y: wy, z: hz },
+          E: { x: -wx, y: -wy, z: -hz }, F: { x: wx, y: -wy, z: -hz }, G: { x: wx, y: wy, z: -hz }, H: { x: -wx, y: wy, z: -hz }
+        };
+        edges = [
+          { u: 'A', v: 'B', rel: 'ref' },
+          { u: 'A', v: 'D', rel: 'meet' }, { u: 'B', v: 'C', rel: 'meet' }, { u: 'A', v: 'E', rel: 'meet' }, { u: 'B', v: 'F', rel: 'meet' },
+          { u: 'D', v: 'C', rel: 'parallel' }, { u: 'E', v: 'F', rel: 'parallel' }, { u: 'H', v: 'G', rel: 'parallel' },
+          { u: 'C', v: 'G', rel: 'skew', idx: 1 }, { u: 'D', v: 'H', rel: 'skew', idx: 2 },
+          { u: 'E', v: 'H', rel: 'skew', idx: 3 }, { u: 'F', v: 'G', rel: 'skew', idx: 4 }
+        ];
+        faces = [
+          ['A', 'B', 'C', 'D'], ['E', 'F', 'G', 'H'], ['A', 'B', 'F', 'E'], ['D', 'C', 'G', 'H'], ['A', 'D', 'H', 'E'], ['B', 'C', 'G', 'F']
+        ];
+      } else if (sub === 'prism3Skew') {
+        const r = 1.65, hz = 1.25;
+        verts = {
+          A: { x: -r, y: -0.9, z: hz }, B: { x: r, y: -0.9, z: hz }, C: { x: 0, y: 1.4, z: hz },
+          D: { x: -r, y: -0.9, z: -hz }, E: { x: r, y: -0.9, z: -hz }, F: { x: 0, y: 1.4, z: -hz }
+        };
+        edges = [
+          { u: 'A', v: 'B', rel: 'ref' },
+          { u: 'A', v: 'C', rel: 'meet' }, { u: 'B', v: 'C', rel: 'meet' }, { u: 'A', v: 'D', rel: 'meet' }, { u: 'B', v: 'E', rel: 'meet' },
+          { u: 'D', v: 'E', rel: 'parallel' },
+          { u: 'C', v: 'F', rel: 'skew', idx: 1 }, { u: 'D', v: 'F', rel: 'skew', idx: 2 }, { u: 'E', v: 'F', rel: 'skew', idx: 3 }
+        ];
+        faces = [['A', 'B', 'C'], ['D', 'E', 'F'], ['A', 'B', 'E', 'D'], ['B', 'C', 'F', 'E'], ['C', 'A', 'D', 'F']];
+      } else if (sub === 'trapSkew') {
+        // 사다리꼴기둥 (AD ∥ BC 이지만 옆변 AB와 CD는 평행하지 않음!)
+        const hz = 1.15;
+        verts = {
+          A: { x: -1.7, y: -1.1, z: hz }, B: { x: -0.9, y: 1.1, z: hz }, C: { x: 0.9, y: 1.1, z: hz }, D: { x: 1.7, y: -1.1, z: hz },
+          E: { x: -1.7, y: -1.1, z: -hz }, F: { x: -0.9, y: 1.1, z: -hz }, G: { x: 0.9, y: 1.1, z: -hz }, H: { x: 1.7, y: -1.1, z: -hz }
+        };
+        edges = [
+          { u: 'A', v: 'B', rel: 'ref' },
+          { u: 'A', v: 'D', rel: 'meet' }, { u: 'B', v: 'C', rel: 'meet' }, { u: 'A', v: 'E', rel: 'meet' }, { u: 'B', v: 'F', rel: 'meet' },
+          { u: 'E', v: 'F', rel: 'parallel' },
+          { u: 'C', v: 'D', rel: 'meet' }, // 사다리꼴 옆변 CD는 AB와 연장선에서 한 평면 위에서 만남!
+          { u: 'C', v: 'G', rel: 'skew', idx: 1 }, { u: 'D', v: 'H', rel: 'skew', idx: 2 },
+          { u: 'E', v: 'H', rel: 'skew', idx: 3 }, { u: 'F', v: 'G', rel: 'skew', idx: 4 }, { u: 'G', v: 'H', rel: 'skew', idx: 5 }
+        ];
+        faces = [['A', 'B', 'C', 'D'], ['E', 'F', 'G', 'H'], ['A', 'B', 'F', 'E'], ['C', 'D', 'H', 'G']];
+      } else if (sub === 'hexSkew') {
+        const R = 1.65, hz = 1.15;
+        const topNames = ['A', 'B', 'C', 'D', 'E', 'F'];
+        const botNames = ['G', 'H', 'I', 'J', 'K', 'L'];
+        for (let i = 0; i < 6; i++) {
+          const a = -Math.PI / 2 - Math.PI / 6 + (i * Math.PI) / 3;
+          verts[topNames[i]] = { x: R * Math.cos(a), y: R * Math.sin(a), z: hz };
+          verts[botNames[i]] = { x: R * Math.cos(a), y: R * Math.sin(a), z: -hz };
+        }
+        edges = [
+          { u: 'A', v: 'B', rel: 'ref' },
+          { u: 'A', v: 'F', rel: 'meet' }, { u: 'B', v: 'C', rel: 'meet' }, { u: 'A', v: 'G', rel: 'meet' }, { u: 'B', v: 'H', rel: 'meet' },
+          { u: 'E', v: 'D', rel: 'parallel' }, { u: 'G', v: 'H', rel: 'parallel' }, { u: 'K', v: 'J', rel: 'parallel' },
+          { u: 'C', v: 'D', rel: 'meet' }, { u: 'E', v: 'F', rel: 'meet' }, // 같은 윗면 평면 위이므로 연장하면 만남!
+          { u: 'C', v: 'I', rel: 'skew', idx: 1 }, { u: 'D', v: 'J', rel: 'skew', idx: 2 }, { u: 'E', v: 'K', rel: 'skew', idx: 3 }, { u: 'F', v: 'L', rel: 'skew', idx: 4 },
+          { u: 'H', v: 'I', rel: 'skew', idx: 5 }, { u: 'I', v: 'J', rel: 'skew', idx: 6 }, { u: 'K', v: 'L', rel: 'skew', idx: 7 }, { u: 'L', v: 'G', rel: 'skew', idx: 8 }
+        ];
+        faces = [topNames, botNames];
+      } else {
+        // pyr4Skew: 정사각뿔 V-ABCD
+        const w = 1.55;
+        verts = {
+          V: { x: 0, y: 0, z: 1.45 },
+          A: { x: -w, y: -w, z: -0.95 }, B: { x: w, y: -w, z: -0.95 }, C: { x: w, y: w, z: -0.95 }, D: { x: -w, y: w, z: -0.95 }
+        };
+        edges = [
+          { u: 'A', v: 'B', rel: 'ref' },
+          { u: 'A', v: 'D', rel: 'meet' }, { u: 'B', v: 'C', rel: 'meet' }, { u: 'V', v: 'A', rel: 'meet' }, { u: 'V', v: 'B', rel: 'meet' },
+          { u: 'D', v: 'C', rel: 'parallel' },
+          { u: 'V', v: 'C', rel: 'skew', idx: 1 }, { u: 'V', v: 'D', rel: 'skew', idx: 2 }
+        ];
+        faces = [['A', 'B', 'C', 'D'], ['V', 'A', 'B'], ['V', 'B', 'C'], ['V', 'C', 'D'], ['V', 'D', 'A']];
+      }
+
+      // 화면 색·번호와 퀴즈 정답이 실제 공간 좌표를 따르도록 일관된 분류.
+      const reference={u:'A',v:'B'};
+      const relationCounts={ref:0,meet:0,parallel:0,coplanar:0,skew:0};
+      let skewIndex=0;
+      edges.forEach(e=>{
+        e.rel=classifyEdges3D(verts,reference,e);
+        relationCounts[e.rel]++;
+        if(e.rel==='skew') e.idx=++skewIndex;
+      });
+      window.__apSkewAudit={sub,counts:relationCounts,edges:edges.map(e=>({edge:e.u+e.v,rel:e.rel})),
+        vertices:verts};
+      ctx.save();
+
+      // 1) 반투명 다면체 면 렌더링
+      faces.forEach((fNames) => {
+        const sPts = fNames.map((n) => project3D(verts[n].x, verts[n].y, verts[n].z, rect));
+        ctx.beginPath();
+        ctx.moveTo(sPts[0].x, sPts[0].y);
+        for (let i = 1; i < sPts.length; i++) ctx.lineTo(sPts[i].x, sPts[i].y);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(52, 211, 153, 0.09)';
+        ctx.fill();
+      });
+
+      // 2) 직육면체일 때 기준 모서리 AB와 꼬인 위치 모서리 FG 사이의 3D 공간 최단거리 수선(BF) 점선 다리 표시!
+      if (sub === 'cuboidSkew' && state.steps[3]) {
+        const sB = project3D(verts.B.x, verts.B.y, verts.B.z, rect);
+        const sF = project3D(verts.F.x, verts.F.y, verts.F.z, rect);
+        draw3DRightAngle(verts.B, verts.A, verts.F, 0.22, '#fbbf24', rect);
+        draw3DRightAngle(verts.F, verts.B, verts.G, 0.22, '#34d399', rect);
+        ctx.font = 'extrabold 11.5px Pretendard, sans-serif';
+        ctx.fillStyle = '#fef08a';
+        ctx.fillText('↕ 공간 거리 떨어져 있음(안 만남!)', (sB.x + sF.x) / 2 + 65, (sB.y + sF.y) / 2);
+      }
+
+      // 3) 모서리 3단계 소거 필터 렌더링!
+      edges.forEach((e) => {
+        const p1 = project3D(verts[e.u].x, verts[e.u].y, verts[e.u].z, rect);
+        const p2 = project3D(verts[e.v].x, verts[e.v].y, verts[e.v].z, rect);
+        const mx = (p1.x + p2.x) / 2, my = (p1.y + p2.y) / 2;
+
+        let col = 'rgba(255,255,255,0.45)';
+        let lw = 2.2;
+        let showCross = false;
+        let crossCol = '#f43f5e';
+
+        if (e.rel === 'ref') {
+          col = '#fbbf24';
+          lw = 7.0;
+        } else if (e.rel === 'meet') {
+          if (filter === 'meet') {
+            col = '#f43f5e'; lw = 4.5; showCross = true; crossCol = '#f43f5e';
+          } else if (filter === 'parallel' || filter === 'skewOnly') {
+            col = 'rgba(244, 63, 94, 0.18)'; lw = 1.5;
+          }
+        } else if (e.rel === 'coplanar') {
+          if (filter === 'parallel') {
+            col='#c084fc'; lw=4.5; showCross=true; crossCol='#c084fc';
+          } else if (filter === 'skewOnly') {
+            col='rgba(192,132,252,0.22)'; lw=1.5;
+          }
+        } else if (e.rel === 'parallel') {
+          if (filter === 'parallel') {
+            col = '#38bdf8'; lw = 4.5; showCross = true; crossCol = '#38bdf8';
+          } else if (filter === 'skewOnly') {
+            col = 'rgba(56, 189, 248, 0.20)'; lw = 1.5;
+          }
+        } else if (e.rel === 'skew') {
+          if (filter === 'skewOnly' || filter === 'all') {
+            col = '#34d399';
+            lw = 6.0;
+          }
+        }
+
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.strokeStyle = col;
+        ctx.lineWidth = lw;
+        if (e.rel === 'ref' || (e.rel === 'skew' && filter === 'skewOnly')) {
+          ctx.shadowColor = col;
+          ctx.shadowBlur = 14;
+        }
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        if (showCross) {
+          ctx.fillStyle = crossCol;
+          ctx.font = 'extrabold 14px Pretendard, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('❌ 소거!', mx, my);
+        }
+
+        if (e.rel === 'ref') {
+          ctx.fillStyle = '#fef08a';
+          ctx.font = 'extrabold 13px Pretendard, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(`★ 기준 모서리 ${e.u}${e.v}`, mx, my - 12);
+        }
+
+        if (e.rel === 'skew' && (filter === 'skewOnly' || filter === 'all')) {
+          ctx.beginPath();
+          ctx.arc(mx, my, 10, 0, Math.PI * 2);
+          ctx.fillStyle = '#06110d';
+          ctx.fill();
+          ctx.strokeStyle = '#34d399';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          ctx.fillStyle = '#6ee7b7';
+          ctx.font = 'extrabold 11.5px Pretendard, monospace';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(`${e.idx}`, mx, my);
+        }
+      });
+
+      // 꼭짓점 알파벳 표시
+      Object.keys(verts).forEach((k) => {
+        const s = project3D(verts[k].x, verts[k].y, verts[k].z, rect);
+        ctx.beginPath(); ctx.arc(s.x, s.y, 4.5, 0, Math.PI * 2);
+        ctx.fillStyle = k === 'A' || k === 'B' ? '#fbbf24' : '#ffffff';
+        ctx.fill();
+        ctx.font = 'extrabold 12.5px Pretendard, sans-serif';
+        ctx.fillStyle = k === 'A' || k === 'B' ? '#fef08a' : '#cbd5e1';
+        ctx.textAlign = 'center';
+        ctx.fillText(k, s.x + (verts[k].x >= 0 ? 13 : -13), s.y + (verts[k].z >= 0 ? -10 : 16));
+      });
+
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // [탭 6 렌더링: 3D 입체!] 직선·평면의 수직(국기게양대) & 공간 명제 O/X 반례 실험실
+    // =========================================================================
+    function renderTab6SpaceProps3D(rect) {
+      const sub = state.subType[6];
+      const t = state.animProg;
+
+      ctx.save();
+
+      // 공통 바닥 평면 P 렌더링 [-2.2, 2.2] x [-1.8, 1.8] on z = -0.8
+      const zFloor = -0.85;
+      const w = 2.15, d = 1.75;
+      const floorCorners = [
+        project3D(-w, -d, zFloor, rect),
+        project3D(w, -d, zFloor, rect),
+        project3D(w, d, zFloor, rect),
+        project3D(-w, d, zFloor, rect)
+      ];
+      ctx.beginPath();
+      ctx.moveTo(floorCorners[0].x, floorCorners[0].y);
+      for (let i = 1; i < 4; i++) ctx.lineTo(floorCorners[i].x, floorCorners[i].y);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(52, 211, 153, 0.18)';
+      ctx.fill();
+      ctx.strokeStyle = '#34d399';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      ctx.fillStyle = '#6ee7b7';
+      ctx.font = 'extrabold 13px Pretendard, sans-serif';
+      ctx.fillText('평면 P (바닥)', floorCorners[0].x + 48, floorCorners[0].y - 10);
+
+      if (sub === 'linePerpPlane') {
+        // 국기게양대 직선 l (0, 0, zFloor) -> (0, 0, +1.5) & 바닥 위 360° 회전하는 직선 m
+        const pO = { x: 0, y: 0, z: zFloor };
+        const pTop = { x: 0, y: 0, z: 1.55 };
+
+        // 바닥 위 고정 기준 직선들 (점선)
+        for (let k = 0; k < 4; k++) {
+          const a = (k * Math.PI) / 4;
+          const s1 = project3D(-1.6 * Math.cos(a), -1.6 * Math.sin(a), zFloor, rect);
+          const s2 = project3D(1.6 * Math.cos(a), 1.6 * Math.sin(a), zFloor, rect);
+          ctx.beginPath(); ctx.moveTo(s1.x, s1.y); ctx.lineTo(s2.x, s2.y);
+          ctx.strokeStyle = 'rgba(148,163,184,0.35)'; ctx.setLineDash([4, 4]); ctx.stroke(); ctx.setLineDash([]);
+        }
+
+        // 슬라이더 t에 따라 360° 회전하는 바닥 직선 m
+        const rotA = t * Math.PI * 2;
+        const pM1 = { x: -1.75 * Math.cos(rotA), y: -1.75 * Math.sin(rotA), z: zFloor };
+        const pM2 = { x: 1.75 * Math.cos(rotA), y: 1.75 * Math.sin(rotA), z: zFloor };
+        const sM1 = project3D(pM1.x, pM1.y, pM1.z, rect);
+        const sM2 = project3D(pM2.x, pM2.y, pM2.z, rect);
+
+        ctx.beginPath(); ctx.moveTo(sM1.x, sM1.y); ctx.lineTo(sM2.x, sM2.y);
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 5; ctx.stroke();
+
+        // 수직 기둥 직선 l
+        const sO = project3D(pO.x, pO.y, pO.z, rect);
+        const sTop = project3D(pTop.x, pTop.y, pTop.z, rect);
+        ctx.beginPath(); ctx.moveTo(sO.x, sO.y); ctx.lineTo(sTop.x, sTop.y);
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 6; ctx.stroke();
+
+        // 3D 직각 네모(∟) 표시!
+        draw3DRightAngle(pO, pTop, pM2, 0.25, '#f43f5e', rect);
+
+        ctx.fillStyle = '#fef08a'; ctx.font = 'extrabold 13.5px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText('직선 l (기둥)', sTop.x, sTop.y - 14);
+        ctx.fillStyle = '#7dd3fc';
+        ctx.fillText('회전 직선 m (어느 방향이든 90° 직각 ∟!)', sM2.x, sM2.y + 18);
+      } else if (sub === 'counter1') {
+        // 반례 1: 한 직선 l(기둥)에 동시에 수직인 두 직선 m, n -> t=0일 때 평행, t=0.5일 때 수직 교차, t=1.0일 때 높이가 달라져 꼬인 위치!
+        const pO1 = { x: 0, y: 0, z: zFloor + 0.3 };
+        const lift = 0.55 * Math.abs(2*t-1); // 0%: 다른 높이에서 평행, 50%: 만나서 직각, 100%: 다른 높이에서 꼬임
+        const pO2 = { x: 0, y: 0, z: zFloor + 0.3 + lift };
+        const pTop = { x: 0, y: 0, z: 1.65 };
+
+        // 기둥 직선 l
+        const sBot = project3D(0, 0, zFloor, rect);
+        const sTop = project3D(0, 0, 1.65, rect);
+        ctx.beginPath(); ctx.moveTo(sBot.x, sBot.y); ctx.lineTo(sTop.x, sTop.y);
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 6; ctx.stroke();
+
+        // 직선 m (x축 방향 고정, l과 90° 수직)
+        const sM1 = project3D(-1.7, 0, pO1.z, rect);
+        const sM2 = project3D(1.7, 0, pO1.z, rect);
+        ctx.beginPath(); ctx.moveTo(sM1.x, sM1.y); ctx.lineTo(sM2.x, sM2.y);
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 5; ctx.stroke();
+        draw3DRightAngle(pO1, pTop, { x: 1.5, y: 0, z: pO1.z }, 0.22, '#38bdf8', rect);
+
+        // 직선 n (t에 따라 90° 회전하고 위로 올라가며 꼬인 위치 반례 생성!)
+        const rotAng = Math.min(1, t * 2) * (Math.PI / 2);
+        const pN1 = { x: -1.7 * Math.cos(rotAng), y: -1.7 * Math.sin(rotAng), z: pO2.z };
+        const pN2 = { x: 1.7 * Math.cos(rotAng), y: 1.7 * Math.sin(rotAng), z: pO2.z };
+        const sN1 = project3D(pN1.x, pN1.y, pN1.z, rect);
+        const sN2 = project3D(pN2.x, pN2.y, pN2.z, rect);
+
+        ctx.beginPath(); ctx.moveTo(sN1.x, sN1.y); ctx.lineTo(sN2.x, sN2.y);
+        ctx.strokeStyle = '#f43f5e'; ctx.lineWidth = 5.5; ctx.stroke();
+        draw3DRightAngle(pO2, pTop, pN2, 0.22, '#f43f5e', rect);
+
+        ctx.fillStyle = '#fda4af'; ctx.font = 'extrabold 13.5px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        const relation = t < 1e-5 ? '현재: 서로 다른 평행선 m ∥ n' :
+          Math.abs(t-0.5)<1e-5 ? '💥 반례 1: m ⊥ n (한 점에서 만남)' :
+          '현재: m과 n은 꼬인 위치 (높이·방향이 다름)';
+        ctx.fillText(relation, rect.width/2, rect.height-45);
+      } else if (sub === 'counter2') {
+        // 반례 2: 한 평면 P(바닥)에 동시에 평행한 두 직선 l, m -> 공중에서 회전하면 만나거나 꼬인 위치!
+        const z1 = 0.5, z2 = 0.5 + Math.max(0, (t - 0.5) * 1.4);
+        const sL1 = project3D(-1.7, -0.5, z1, rect);
+        const sL2 = project3D(1.7, -0.5, z1, rect);
+        ctx.beginPath(); ctx.moveTo(sL1.x, sL1.y); ctx.lineTo(sL2.x, sL2.y);
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 5.5; ctx.stroke();
+
+        const rotAng = Math.min(1, t * 2) * (Math.PI / 2.2);
+        const sM1 = project3D(-1.7 * Math.cos(rotAng), 0.4 - 1.7 * Math.sin(rotAng), z2, rect);
+        const sM2 = project3D(1.7 * Math.cos(rotAng), 0.4 + 1.7 * Math.sin(rotAng), z2, rect);
+        ctx.beginPath(); ctx.moveTo(sM1.x, sM1.y); ctx.lineTo(sM2.x, sM2.y);
+        ctx.strokeStyle = '#f43f5e'; ctx.lineWidth = 5.5; ctx.stroke();
+
+        ctx.fillStyle = '#fda4af'; ctx.font = 'extrabold 13.5px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText('💥 반례: 두 직선 l, m 모두 바닥 평면 P와 평행하지만, 공중에서 서로 만나거나 꼬인 위치가 됩니다!', rect.width / 2, rect.height - 45);
+      } else {
+        // truePara: 한 평면 P에 동시에 수직인 두 직선 l, m은 무조건 평행(참 O!)
+        const x1 = -0.95, y1 = -0.2;
+        const x2 = 0.95 * (0.4 + 0.6 * t), y2 = 0.4 * (t - 0.5);
+
+        [
+          { x: x1, y: y1, col: '#fbbf24', lbl: '직선 l (⊥ P)' },
+          { x: x2, y: y2, col: '#38bdf8', lbl: '직선 m (⊥ P)' }
+        ].forEach((it) => {
+          const pBot = { x: it.x, y: it.y, z: zFloor };
+          const pTop = { x: it.x, y: it.y, z: 1.45 };
+          const sBot = project3D(pBot.x, pBot.y, pBot.z, rect);
+          const sTop = project3D(pTop.x, pTop.y, pTop.z, rect);
+
+          ctx.beginPath(); ctx.moveTo(sBot.x, sBot.y); ctx.lineTo(sTop.x, sTop.y);
+          ctx.strokeStyle = it.col; ctx.lineWidth = 6; ctx.stroke();
+          draw3DRightAngle(pBot, pTop, { x: it.x + 0.8, y: it.y, z: zFloor }, 0.35, it.col, rect);
+
+          ctx.fillStyle = it.col; ctx.font = 'extrabold 13px Pretendard, sans-serif'; ctx.textAlign = 'center';
+          ctx.fillText(it.lbl, sTop.x, sTop.y - 12);
+        });
+
+        ctx.fillStyle = '#6ee7b7'; ctx.font = 'extrabold 13.5px Pretendard, sans-serif'; ctx.textAlign = 'center';
+        ctx.fillText('⭕ 참(O) 증명: 바닥 평면 P에 똑바로(90°) 세운 두 기둥 l, m은 어디에 세워도 항상 서로 평행(l ∥ m)합니다!', rect.width / 2, rect.height - 45);
+      }
+
+      ctx.restore();
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. UI 동기화, 탭/서브메뉴 전환, 3D 시점 스냅 & 마우스/터치 이벤트
+    // -------------------------------------------------------------------------
+    function renderSubSelectorBar() {
+      const bar = document.getElementById('subSelectorBar');
+      const m = state.mode;
+      const is3D = m === 5 || m === 6;
+
+      document.getElementById('bar2DSwitches').classList.toggle('hidden', is3D);
+      document.getElementById('bar2DSwitches').classList.toggle('flex', !is3D);
+      document.getElementById('bar3DSwitches').classList.toggle('hidden', !is3D);
+      document.getElementById('bar3DSwitches').classList.toggle('flex', is3D);
+
+      const subMenus = {
+        1: [
+          { id: 'rayCompare', label: '⚡ 1-A. 반직선 AB vs BA 동시 비교' },
+          { id: 'line', label: '↔️ 1-B. 직선 AB' },
+          { id: 'rayAB', label: '➡️ 1-C. 반직선 AB' },
+          { id: 'segment', label: '📏 1-D. 선분 AB' },
+          { id: 'sameRay', label: '🔦 1-E. 한 직선 위 4점: 같은 반직선(BC=BD)' },
+          { id: 'intersect', label: '✨ 1-F. 두 반직선의 공통부분(BD∩CA=BC)' }
+        ],
+        2: [
+          { id: 'shortest', label: '📏 2-A. [왕기초] 최단거리(선분)와 중점(|)' },
+          { id: 'midPoint', label: '⚖️ 2-B. [기출 1위] 두 중점 거리 불변량(MN=½AB)' },
+          { id: 'trisect', label: '🧱 2-C. [빈출] 삼등분점과 중점 (6칸 레고 블록!)' },
+          { id: 'ratioBlock', label: '🎯 2-D. [조건식 번역기] AC = 2CB 와 중점 (칸수 블록!)' }
+        ],
+        3: [
+          { id: 'collinear', label: '⚡ 3-A. [심화] 일직선 위 점 m개 중복 흡수(-중복+1!)' },
+          { id: 'circlePts', label: '⭕ 3-B. 원형 배치 점 n개 기본 공식' },
+          { id: 'verticalAng', label: '✂️ 3-C. 맞꼭지각 원리 & 직선 n개 맞꼭지각 쌍 n(n-1)' },
+          { id: 'clockAng', label: '🕒 3-D. [실생활 킬러] 시계의 시침(0.5°)·분침(6°) 각도' }
+        ],
+        4: [
+          { id: 'perpDist', label: '📐 4-A. [필수] 직교(⊥)·수선의 발(H)과 점-직선 거리' },
+          { id: 'bisect90', label: '⚡ 4-B. [쌍둥이 불변량] 평각의 두 각의 이등분선 = 90°!' },
+          { id: 'paperFold', label: '🧻 4-C. [내신 100%] 직사각형 종이 테이프 접기(이등변!)' }
+        ],
+        5: [
+          { id: 'cuboidSkew', label: '📦 5-A. 직육면체 꼬인 위치 (4개)' },
+          { id: 'prism3Skew', label: '📐 5-B. 삼각기둥 꼬인 위치 (3개)' },
+          { id: 'trapSkew', label: '▱ 5-C. 사다리꼴기둥 꼬인 위치 (5개)' },
+          { id: 'hexSkew', label: '⬡ 5-D. 정육각기둥 꼬인 위치 (8개)' },
+          { id: 'pyr4Skew', label: '⛺ 5-E. 정사각뿔 꼬인 위치 (2개)' }
+        ],
+        6: [
+          { id: 'linePerpPlane', label: '🚩 6-A. [정의] 직선 ⊥ 평면 (국기게양대 360° 직각!)' },
+          { id: 'counter1', label: '💥 6-B. [반례 1] 한 직선에 수직인 두 직선은 평행?(❌)' },
+          { id: 'counter2', label: '💥 6-C. [반례 2] 한 평면에 평행한 두 직선은 평행?(❌)' },
+          { id: 'truePara', label: '⭕ 6-D. [참 증명] 한 평면에 수직인 두 직선은 평행!(O)' }
+        ]
+      };
+
+      bar.innerHTML = subMenus[m]
+        .map(
+          (it) =>
+            `<button onclick="setSubType(${m}, '${it.id}')" class="sub-btn ${
+              state.subType[m] === it.id ? 'active' : ''
+            } px-2.5 py-1 rounded-lg border border-emerald-800 bg-emerald-950/80 text-[11px] text-emerald-100 transition">${it.label}</button>`
+        )
+        .join('');
+    }
+
+    function updateUIWithSpec() {
+      const spec = getScenarioSpec();
+      if (!spec.badge) return;
+
+      document.getElementById('canvasModeBadge').textContent = spec.badge;
+      document.getElementById('canvasActionHint').innerHTML = spec.hint;
+      document.getElementById('lensExplanationBox').innerHTML = spec.lensText;
+      document.getElementById('symbolBadge').innerHTML = tex(spec.symbolText);
+      document.getElementById('visualShapeEqBar').innerHTML = spec.visualEqHTML;
+      document.getElementById('examQuestion').innerHTML = spec.question;
+
+      const box = document.getElementById('quizOptionsBox');
+      box.innerHTML = spec.options
+        .map((opt, idx) => {
+          let cls = 'border-emerald-800/80 bg-[#06110d]/90 text-emerald-200 hover:bg-emerald-900/60';
+          if (state.selectedQuizIdx === idx) {
+            cls = opt.correct
+              ? 'border-amber-400 bg-amber-500/25 text-amber-200 font-extrabold shadow'
+              : 'border-rose-500 bg-rose-950/60 text-rose-300';
+          }
+          return `<button onclick="selectHypothesis(${idx})" class="px-2 py-1.5 rounded-lg border text-[11px] transition text-center leading-tight ${cls}">${opt.label}</button>`;
+        })
+        .join('');
+
+      const isRevealed = state.teacherMode || state.discovered;
+      const ansBox = document.getElementById('answerRevealBox');
+      const statusBadge = document.getElementById('discoveryStatusBadge');
+
+      if (isRevealed) {
+        ansBox.innerHTML = `<span class="text-[11px] text-emerald-400 font-bold shrink-0">핵심 결과:</span><span class="text-xs font-extrabold text-amber-300">${spec.answerHTML}</span>`;
+        document.getElementById('eqDisplay').innerHTML = spec.eq1;
+        document.getElementById('subEqDisplay').innerHTML = spec.eq2;
+        statusBadge.textContent = '💡 원리 활성화';
+        statusBadge.className = 'text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/50';
+      } else {
+        ansBox.innerHTML = `<span class="text-[11px] text-slate-400"><i class="fa-solid fa-lock text-amber-400 mr-1.5"></i>위 추측(가설)을 선택하거나 칠판을 조작하면 원리와 정답이 열립니다!</span>`;
+        document.getElementById('eqDisplay').innerHTML = `<span class="text-slate-400">실험 후 공개됩니다</span>`;
+        document.getElementById('subEqDisplay').innerHTML = `<span class="text-slate-400">직접 드래그하여 비교해 보세요!</span>`;
+        statusBadge.textContent = '🔬 가설 실험 중';
+        statusBadge.className = 'text-[10px] font-extrabold px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-400/40';
+      }
+
+      if (spec.stats && spec.stats.length === 4) {
+        for (let i = 0; i < 4; i++) {
+          document.getElementById(`statLabel${i + 1}`).textContent = spec.stats[i][0];
+          document.getElementById(`statVal${i + 1}`).textContent = spec.stats[i][1];
+        }
+      }
+
+      document.getElementById('stepLabel1').textContent = spec.steps[0];
+      document.getElementById('stepLabel2').textContent = spec.steps[1];
+      document.getElementById('stepLabel3').textContent = spec.steps[2];
+
+      document.getElementById('textbookSteps').innerHTML = spec.textbook.steps;
+      document.getElementById('textbookWarning').innerHTML = spec.textbook.warning;
+      document.getElementById('shortcutSteps').innerHTML = spec.shortcut.steps;
+      document.getElementById('shortcutHighlight').innerHTML = spec.shortcut.highlight;
+
+      document.getElementById('sliderAnimProg').value = state.animProg;
+      document.getElementById('valAnimProg').textContent = `${Math.round(state.animProg * 100)}%`;
+      document.getElementById('valParam1').textContent = `${state.param1} cm`;
+      document.getElementById('valParam2').textContent = `${state.param2}°`;
+    }
+
+    function selectHypothesis(idx) {
+      state.selectedQuizIdx = idx;
+      const spec = getScenarioSpec();
+      const chosen = spec.options[idx];
+      const fb = document.getElementById('hypothesisFeedback');
+      fb.textContent = chosen.msg;
+      fb.className = chosen.correct ? 'text-[10.5px] text-emerald-300 font-bold' : 'text-[10.5px] text-rose-300 font-bold';
+
+      if (chosen.correct) {
+        state.discovered = true;
+        state.animTarget = 1.0;
+      }
+      updateUIWithSpec();
+    }
+
+    function unlockDiscovery() {
+      state.discovered = true;
+      state.animTarget = state.animProg > 0.5 ? 0.2 : 1.0;
+      updateUIWithSpec();
+    }
+
+    function toggleTeacherMode() {
+      state.teacherMode = !state.teacherMode;
+      const txt = document.getElementById('txtTeacherMode');
+      const icon = document.getElementById('iconTeacherMode');
+      if (state.teacherMode) {
+        txt.textContent = '원리 즉시 표시 모드';
+        icon.className = 'fa-solid fa-chalkboard-user text-amber-300';
+      } else {
+        txt.textContent = '탐구자 모드 (스스로 발견)';
+        icon.className = 'fa-solid fa-user-graduate';
+        state.discovered = false;
+      }
+      updateUIWithSpec();
+    }
+
+    function setMode(m) {
+      state.mode = m;
+      state.selectedQuizIdx = null;
+      document.getElementById('hypothesisFeedback').textContent = '';
+
+      for (let i = 1; i <= 6; i++) {
+        const el = document.getElementById(`tab-${i}`);
+        if (el) el.classList.toggle('active', i === m);
+      }
+
+      const btnTxt = document.getElementById('txtExpAction');
+      if (m === 1) {
+        btnTxt.textContent = '🎬 레이저 발사 & 분리 뷰 전환';
+        state.animProg = 1.0;
+      } else if (m === 2) {
+        btnTxt.textContent = '🎬 동점 C 이동 (불변량 확인!)';
+        state.animProg = 0.35;
+      } else if (m === 3) {
+        btnTxt.textContent = '🎬 원형 ↔ 일직선 중복 흡수!';
+        state.animProg = 1.0;
+      } else if (m === 4) {
+        btnTxt.textContent = '🎬 종이 접기 ↔ 펼치기 시연!';
+        state.animProg = 1.0;
+      } else if (m === 5) {
+        btnTxt.textContent = '🎬 2D 착시 시점 ↔ 3D 입체 간격 확인!';
+        state.skewFilter = 'skewOnly';
+      } else if (m === 6) {
+        btnTxt.textContent = '🎬 3D 직선 회전 반례 시연!';
+        state.animProg = 0.8;
+      }
+
+      renderSubSelectorBar();
+      render();
+    }
+
+    function setSubType(mode, subId) {
+      state.subType[mode] = subId;
+      state.selectedQuizIdx = null;
+      document.getElementById('hypothesisFeedback').textContent = '';
+      renderSubSelectorBar();
+      render();
+    }
+
+    function setLayerMode(lm) {
+      state.layerMode = lm;
+      ['single', 'exploded', 'intersect'].forEach((id) => {
+        const el = document.getElementById(`layer-${id}`);
+        if (el) el.classList.toggle('active', id === lm);
+      });
+      state.discovered = true;
+      render();
+    }
+
+    function setSkewFilter(sf) {
+      state.skewFilter = sf;
+      ['all', 'meet', 'parallel', 'skewOnly'].forEach((id) => {
+        const el = document.getElementById(`skew-${id}`);
+        if (el) el.classList.toggle('active', id === sf);
+      });
+      state.discovered = true;
+      render();
+    }
+
+    function snap3DCam(modeStr) {
+      state.camAnim.active = true;
+      state.camAnim.prog = 0;
+      state.camAnim.sYaw = state.yaw;
+      state.camAnim.sPitch = state.pitch;
+      if (modeStr === 'illusion') {
+        // 종이 위에서 기준 모서리 AB와 꼬인 모서리 CG/FG가 십자로 만나는 것처럼 겹쳐 보이는 착시 각도
+        state.camAnim.tYaw = (8 * Math.PI) / 180;
+        state.camAnim.tPitch = (14 * Math.PI) / 180;
+      } else {
+        // 두 모서리 사이의 공간 거리가 확 트여 보이는 3D 입체 각도
+        state.camAnim.tYaw = (-48 * Math.PI) / 180;
+        state.camAnim.tPitch = (36 * Math.PI) / 180;
+      }
+    }
+
+    function triggerMainExperiment() {
+      state.discovered = true;
+      if (state.mode === 5) {
+        snap3DCam(Math.abs(state.yaw) < 0.3 ? 'clear' : 'illusion');
+      } else {
+        state.animTarget = state.animProg > 0.5 ? 0.05 : 1.0;
+      }
+    }
+
+    function snapToProblem() {
+      unlockAllSteps();
+      state.discovered = true;
+      state.animTarget = 1.0;
+      render();
+    }
+
+    function onAnimProgSlider() {
+      state.animTarget = null;
+      state.animProg = parseFloat(document.getElementById('sliderAnimProg').value);
+      state.discovered = true;
+      render();
+    }
+
+    function onParamSlider() {
+      state.param1 = parseInt(document.getElementById('sliderParam1').value, 10);
+      state.param2 = parseInt(document.getElementById('sliderParam2').value, 10);
+      state.discovered = true;
+      render();
+    }
+
+    function toggleStep(s) {
+      state.steps[s] = !state.steps[s];
+      document.getElementById(`stepBtn${s}`).classList.toggle('active', state.steps[s]);
+      document.getElementById(`stepIcon${s}`).className = state.steps[s]
+        ? 'fa-solid fa-check text-emerald-400 text-xs'
+        : 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      render();
+    }
+
+    function unlockAllSteps() {
+      [1, 2, 3].forEach((s) => {
+        state.steps[s] = true;
+        document.getElementById(`stepBtn${s}`).classList.add('active');
+        document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
+      });
+      render();
+    }
+
+    function toggleAccordion(type) {
+      const body = document.getElementById(`accBody-${type}`);
+      const icon = document.getElementById(`accIcon-${type}`);
+      const isHidden = body.classList.contains('hidden');
+      body.classList.toggle('hidden', !isHidden);
+      icon.className = isHidden
+        ? icon.className.replace('fa-chevron-down', 'fa-chevron-up')
+        : icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+    }
+
+    function zoomCanvas(factor) {
+      state.scale = Math.max(0.65, Math.min(1.65, state.scale * factor));
+      render();
+    }
+
+    function resetView() {
+      state.scale = 1.0;
+      state.offsetX = 0;
+      state.offsetY = 0;
+      state.ptA = { x: -125, y: 15 };
+      state.ptB = { x: 115, y: -20 };
+      state.yaw = (-34 * Math.PI) / 180;
+      state.pitch = (32 * Math.PI) / 180;
+      setLayerMode('exploded');
+      render();
+    }
+
+    function animateLoop() {
+      let needsRender = false;
+      if (state.animTarget !== null) {
+        const diff = state.animTarget - state.animProg;
+        if (Math.abs(diff) < 0.008) {
+          state.animProg = state.animTarget;
+          state.animTarget = null;
+        } else {
+          state.animProg += diff * 0.075;
+        }
+        needsRender = true;
+      }
+
+      if (state.camAnim.active) {
+        state.camAnim.prog += 0.075;
+        const u = state.camAnim.prog >= 1 ? 1 : 1 - Math.pow(1 - state.camAnim.prog, 3);
+        state.yaw = state.camAnim.sYaw + (state.camAnim.tYaw - state.camAnim.sYaw) * u;
+        state.pitch = state.camAnim.sPitch + (state.camAnim.tPitch - state.camAnim.sPitch) * u;
+        if (state.camAnim.prog >= 1) state.camAnim.active = false;
+        needsRender = true;
+      }
+
+      if (needsRender) render();
+      requestAnimationFrame(animateLoop);
+    }
+
+    // 2D 점 드래그 (탭 1~4) & 3D 카메라 360° 회전 드래그 (탭 5~6)
+    function getPointerPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+      }
+      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
+    canvas.addEventListener('mousedown', (e) => {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const pos = getPointerPos(e);
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.50 + state.offsetY;
+
+      if (state.mode === 5 || state.mode === 6) {
+        state.camAnim.active = false;
+        state.isDragging3D = true;
+        state.lastMouse = pos;
+        return;
+      }
+
+      if (state.mode === 1) {
+        const displayPts = getTab1DisplayPoints(rect);
+        const pA = displayPts.a, pB = displayPts.b;
+        if (Math.hypot(pos.x - pA.x, pos.y - pA.y) < 32) state.draggingPt = 'A';
+        else if (Math.hypot(pos.x - pB.x, pos.y - pB.y) < 32) state.draggingPt = 'B';
+      } else if (state.mode === 2 && state.subType[2] === 'midPoint') {
+        state.draggingPt = 'C';
+      } else if (state.mode === 4 && (state.subType[4] === 'perpDist' || state.subType[4] === 'bisect90')) {
+        state.draggingPt = 'C';
+      }
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const pos = getPointerPos(e);
+
+      if (state.isDragging3D && (state.mode === 5 || state.mode === 6)) {
+        const dx = pos.x - state.lastMouse.x;
+        const dy = pos.y - state.lastMouse.y;
+        state.yaw += dx * 0.0085;
+        state.pitch = Math.max((5 * Math.PI) / 180, Math.min((85 * Math.PI) / 180, state.pitch + dy * 0.0075));
+        state.lastMouse = pos;
+        render();
+        return;
+      }
+
+      if (!state.draggingPt) return;
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.50 + state.offsetY;
+
+      if (state.draggingPt === 'A') {
+        state.ptA.x = (pos.x - cx) / state.scale;
+        state.ptA.y = (pos.y - cy) / state.scale;
+        render();
+      } else if (state.draggingPt === 'B') {
+        state.ptB.x = (pos.x - cx) / state.scale;
+        state.ptB.y = (pos.y - cy) / state.scale;
+        render();
+      } else if (state.draggingPt === 'C') {
+        const span = Math.min(rect.width * 0.36, 250) * state.scale;
+        const ratio = (pos.x - (cx - span)) / (2 * span);
+        state.animProg = Math.max(0, Math.min(1, ratio));
+        state.discovered = true;
+        render();
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      state.draggingPt = null;
+      state.isDragging3D = false;
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setMode(1);
+      resizeCanvas();
+      requestAnimationFrame(animateLoop);
+    });
+  </script>
+
+  <script id="ap-mobile-adapter">
+  /* Shared mobile layout adapter. Keeps Canvas parent unchanged: geometry coordinates stay valid. */
+  (function(){
+    const board = document.querySelector('main');
+    if (!board) return;
+    const items = Array.from(board.children);
+    const top = items.find(el => el.tagName==='DIV' && el.classList.contains('absolute') && Array.from(el.classList).some(c=>c.startsWith('top-')));
+    const tools = items.find(el => el.tagName==='DIV' && el.classList.contains('absolute') && Array.from(el.classList).some(c=>c.startsWith('bottom-')) && Array.from(el.classList).some(c=>c.startsWith('left-')));
+    if (!top || !tools) return;
+    top.classList.add('ap-mobile-top'); tools.classList.add('ap-mobile-tools');
+    let wasMobile=null;
+    function arrange(){
+      const mobile=window.innerWidth<1024;
+      if (mobile===wasMobile) return;
+      wasMobile=mobile;
+      if(mobile){board.before(top);board.after(tools)}
+      else {board.appendChild(top);board.appendChild(tools)}
+      requestAnimationFrame(()=>{
+        if (typeof window.resizeCanvas === 'function') {
+          try {window.resizeCanvas()}catch(e){console.warn('Canvas resize:',e.message)}
+        }
+      });
+    }
+    arrange();
+    window.addEventListener('resize',arrange,{passive:true});
+  })();
+  </script>
+
+  <script id="ap-touch-adapter">
+  /* Single-finger canvas touch -> existing desktop mouse drag handlers. */
+  (function(){
+    const canvas=document.getElementById('boardCanvas'); if(!canvas) return;
+    let active=false;
+    function mouse(type,t){
+      const target=(type==='mousedown')?canvas:window;
+      target.dispatchEvent(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:t.clientX,clientY:t.clientY,button:0,buttons:type==='mouseup'?0:1}));
+    }
+    canvas.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;active=true;mouse('mousedown',e.touches[0]);e.preventDefault()},{passive:false});
+    canvas.addEventListener('touchmove',e=>{if(!active||e.touches.length!==1)return;mouse('mousemove',e.touches[0]);e.preventDefault()},{passive:false});
+    canvas.addEventListener('touchend',e=>{if(!active)return;active=false;mouse('mouseup',e.changedTouches[0]);e.preventDefault()},{passive:false});
+    canvas.addEventListener('touchcancel',e=>{if(!active)return;active=false;mouse('mouseup',e.changedTouches[0])},{passive:false});
+  })();
+  </script>
+  <script src="../../assets/geometry-relations.js" data-mode="plane"></script>
+  <script defer src="../../assets/student-guide.js"></script>
+</body>
+</html>

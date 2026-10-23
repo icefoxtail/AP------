@@ -11,6 +11,9 @@ Standalone React app at `playground-react/`, on `feat/playground-react-migration
 | Basic concepts | 5 interactive labs | Complete | Exact π formula assertions; radius/angle and SVG/KaTeX sync |
 | Practice principles | 14 labs | Complete | 13 STEP3 principles plus common-area cancellation discovered in original Advanced |
 | Substructures | 38 | Complete | 33 practice variants + 5 semicircle-combination variants |
+| Middle-school geometry | 7 interactive lesson families | Complete | Point/ray/segment, midpoint/ratio, angles/counts, constructions/folding, parallel lines, congruence, 3D spatial relations |
+| Geometry runtime | 2D/3D core + SVG + pointer/keyboard + GSAP + KaTeX | Complete | `src/geometry-*`, `src/geometry-lessons/`, `npm run test:geometry` PASS |
+| Legacy geometry preservation | 6 original tabs | Complete | Full original 2D/3D `points-lines.html` and its local relation assets remain linked as a compatibility lab |
 | Mathematical checks | 370 semicircle + 66 practice input/variant combinations, plus fixed source cases | Complete | `npm run test:math` PASS |
 | Browser QA | PC + mobile | Complete | Full 14-lab / 33-variant desktop sweep; 390px mobile checks; 0 console errors or warnings |
 | Per-type commit cadence | 14 practice models | Partial | The practice suite is committed as one shared-engine milestone (`f9e2e0b40`), not as one implementation commit per type |
@@ -35,6 +38,23 @@ Standalone React app at `playground-react/`, on `feat/playground-react-migration
 | Tether / wall access | 2 | Complete |
 | Pizza comparison | 2 | Complete |
 | Equal-area transformation | 2 | Complete |
+
+## 중1 기본 도형·작도·합동·평행선 확장
+
+- Base: `feat/playground-react-migration`; the existing React app's circle/sector labs remain connected. The requested middle-school geometry source was not present in this branch, so the original student lab and its relationship-engine assets were read from the connected Drive folder and ported into the existing React app.
+- React lesson families: 7 selectable boards covering point/line/ray/segment overlap, shortest distance/midpoint/trisection/ratio, vertical angles/line counts/clock angles, compass constructions/perpendicular bisectors/angle bisectors/perpendicular distance/paper-fold reflection, parallel-line counterexamples, SSS/SAS/ASA/RHS comparison, and spatial relations/counterexamples.
+- 3D scenes: cuboid, triangular prism, trapezoidal prism, hexagonal prism, and square pyramid; line-plane incidence and distinct/intersecting/perpendicular plane states; counterexamples for perpendicular-to-one-line and parallel-to-one-plane relations.
+- Source fallback: the original 6-mode `points-lines.html` is preserved at `public/labs/g7/points-lines.html` with `geometry-relations.js`, `geometry-relations.css`, and `student-guide.js` under `public/assets/`. Its original teacher/quiz/guided controls remain available from the React geometry header's “원본 전체 실험” link. A small inline favicon suppresses the original page's missing-favicon request; its Tailwind CDN warning remains.
+- Architecture: `geometry-core` contains pure 2D/3D math and classifications; `geometry-renderer` owns SVG primitives and verified angle/equality/parallel marks plus KaTeX; `geometry-interaction` handles pointer/keyboard movement, screen-coordinate conversion, snap targets, and undo; `geometry-animation` drives construction strokes with GSAP; `geometry-lessons` contains topic modules; `labs/geometry` integrates them into the card UI.
+- Markers are derived from computed geometry: right-angle marks require a zero dot product within numeric tolerance; equal-length and parallel marks render only when their measured vectors satisfy the relation. Triangle display distinguishes selected conditions from full coordinate-based congruence results.
+
+### Verification for this increment
+
+- `npm run check` PASS.
+- `npm run test:geometry` PASS: line/segment/ray intersections, vertical angles, degenerate cases, triangle classification, 3D skew/parallel/intersecting lines, and line-plane cases.
+- `npm run test:math` PASS for the existing circle/sector suite: 370 semicircle parameter sets and 66 practice combinations.
+- `npm run build` PASS.
+- Browser: direct point drag changed the angle and formula together; dragging a point onto an existing point snapped exactly to it and undo restored the prior length. Triangle scale change flipped the live result from congruent to noncongruent. 3D prism and counterexample boards rendered without console errors. 390px and 768px viewports had no horizontal document overflow; 110% board zoom remained within the 390px viewport. The legacy static fallback loaded its 6 modes; it has one upstream Tailwind CDN advisory and no runtime errors after the favicon link.
 
 ## Source coverage
 
@@ -61,6 +81,7 @@ Standalone React app at `playground-react/`, on `feat/playground-react-migration
 - `npm run test:math` PASS: 370 semicircle combinations, 66 practice variant/input combinations and exact representative source cases.
 - `npm run build` PASS. KaTeX is split into its own chunk; no chunk-size warning.
 - Browser: 1440×900 desktop interaction sweep passed for all five basic cards, five semicircle structures and all 33 practice variants. KaTeX, real SVG boundaries and area-piece scrubbers were present. 390px mobile checks passed without horizontal page overflow. Browser console errors/warnings: 0.
+- Geometry browser verification: 7 lesson families rendered at 1440×900 and 390×844 with document width equal to viewport and no KaTeX errors. Tablet width 768px likewise had no horizontal overflow. Direct pointer drag changed angle and live formula, snapping merged a point exactly with an existing point, and Undo restored its previous position. The triangle scale control changed the live result from congruent to noncongruent. 3D prisms and the spatial counterexample mode rendered without app console errors. Zoom to 110% remained inside the 390px viewport.
 - Implementation milestone commits: `0b8ef702d` (foundation), `7d8ea2ec8` (basic labs), `f9e2e0b40` (source-derived geometry suite and visual proof upgrades).
 
 ## Remaining
@@ -78,3 +99,10 @@ Standalone React app at `playground-react/`, on `feat/playground-react-migration
 - Added focused mathematical regression assertions and an isolated Playground QA workflow. This QA run must PASS before the new head can be approved; previous PASS claims apply to the earlier commit only.
 - **Still requiring visual acceptance:** the shared practice-area piece tray is a scale-free calculation-symbol illustration, not yet a general proof by exact rigid cut-and-paste. Its UI now labels this limitation. Full real-browser animation comparison against the AI Studio minimum quality floor has not been independently repeated in this repair review.
 - PR #761 remains unmerged; changes are confined to the Playground and its dedicated QA workflow.
+
+## Geometry source and compatibility notes
+
+- The current React branch initially contained only the circle/sector lab; the middle-school geometry source had been kept in the user's Drive. The source `points-lines.html` was inspected before porting its six main interaction modes: 2D line/ray/segment and intersections; shortest path/midpoint/trisection/ratio; collinear/circle point counts, vertical angles and clock angles; perpendicular distance/bisectors/paper fold; skew-line filters over five solids; and line-plane/two-plane/counterexample scenes.
+- The React port organizes those core scenes into seven topic cards. Geometry computations live in pure `geometry-core`; render marks are conditional on measured relations; pointer coordinates use the SVG inverse screen matrix; snap thresholds are measured in CSS pixels; GSAP draws construction paths; KaTeX presents the synchronized result.
+- To retain the full older teacher panel, step controls, hypothesis quiz and detailed subscenarios while the React migration continues, the original working HTML and its three helper assets remain under `public/labs/g7/` and `public/assets/`. The compatibility page still uses its original Tailwind CDN and logs one upstream production advisory; no runtime errors remain. The React lab is the default student path.
+- The broader Drive triangle atlas was not imported as an entire 62-scene library; this task adds the requested congruence conditions (SSS/SAS/ASA/RHS) with transformation and counterexample controls.
