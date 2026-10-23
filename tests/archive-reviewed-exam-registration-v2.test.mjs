@@ -59,7 +59,7 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   return { root, put, read, request, q, evidenceRefs, change };
 }
 
-function attachMetaPipelineAudit(f, { existingConcept = false, siblingParent = false, promoteCanonicalTypes = false } = {}) {
+function attachMetaPipelineAudit(f, { existingConcept = false, siblingParent = false, promoteCanonicalTypes = false, driveSourceHashDrift = false } = {}) {
   const conceptChange = f.request.registryChanges.find(change => change.path.startsWith(`${CANON}/concepts/`));
   const pendingRegistryChanges = [];
   for (const change of f.request.registryChanges) {
@@ -114,8 +114,10 @@ function attachMetaPipelineAudit(f, { existingConcept = false, siblingParent = f
   f.put(manifestPath, manifest);
   const studentFields = ["id", "questionType", "content", "choices", "answer", "solution", "image", "images", "figureSvg", "solutionImage", "solutionFigureSvg", "layoutTag", "wide"];
   const studentPayloadHash = hash(stable(Object.fromEntries(studentFields.map(field => [field, Object.hasOwn(f.q, field) ? f.q[field] : null]))));
-  const sourceParity = { schemaVersion: "archive-meta-pipeline-source-parity-v1", status: "EXACT_STUDENT_VISIBLE_PARITY", sourceFileDriveId,
-    driveSourceSha256: hash(sourceBytes), productionSourceSha256: hash(sourceBytes), productionSourceBlobSha1: f.request.expectedSourceBlobSha1,
+  const sourceParity = { schemaVersion: "archive-meta-pipeline-source-parity-v1",
+    status: driveSourceHashDrift ? "EXACT_STUDENT_VISIBLE_PARITY_WITH_AUDIT_HASH_DRIFT" : "EXACT_STUDENT_VISIBLE_PARITY", sourceFileDriveId,
+    ...(driveSourceHashDrift ? { auditSourceSha256: hash(sourceBytes), sourceHashDriftReason: "AUDIT_SOURCE_HASH_DIFFERS_FROM_CURRENT_DRIVE_FILE" } : {}),
+    driveSourceSha256: driveSourceHashDrift ? "f".repeat(64) : hash(sourceBytes), productionSourceSha256: hash(sourceBytes), productionSourceBlobSha1: f.request.expectedSourceBlobSha1,
     sourceArchiveFile: f.request.sourceArchiveFile, studentFields, questionCount: 1,
     records: [{ sourceOrdinal: 1, questionId: 1, questionUid: f.request.items[0].questionUid, driveSourceTextExcerptMatched: true,
       driveSolutionExcerptMatched: true, driveStudentPayloadSha256: studentPayloadHash, productionStudentPayloadSha256: studentPayloadHash, studentPayloadEqual: true }] };
@@ -189,6 +191,15 @@ test("META_PIPELINE_AUDIT registers exact audited bindings without relabeling FI
   assert.equal(receipt.approval.type, "META_PIPELINE_AUDIT");
   assert.equal(receipt.examFinalQaStatus, "NOT_EVALUATED_BY_REGISTRAR");
   assert.equal(receipt.metaPipelineAudit.schemaVersion, "ALIVE_META_AUDIT_ATOMIC_v3");
+});
+
+test("META_PIPELINE_AUDIT permits audit/current Drive hash drift only with exact per-UID student parity", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { driveSourceHashDrift: true });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json");
+  assert.equal(receipt.metaPipelineAudit.sourceHashDrift, true);
+  assert.equal(receipt.metaPipelineAudit.auditSourceSha256, f.read(receipt.approval.metaPipelineAudit.auditPackageRef.path).sourceSha256);
 });
 
 test("META_PIPELINE_AUDIT promotes missing PT/TPL/CC definitions from audited UID evidence", t => {
