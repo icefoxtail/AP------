@@ -10,6 +10,7 @@ import core from "../archive/archive2-core.js";
 
 const require = createRequire(import.meta.url);
 const canonical = require("../archive/archive2-canonical.js");
+const ProblemBankMeta = require("../archive/problem-bank-meta.js");
 const sourceFile = "original/middle/m3/1final/26_test_중3.js";
 const uid = "qid_v1_" + "1".repeat(64);
 const masterPath = canonical.CANONICAL_MASTER_PATH;
@@ -347,6 +348,7 @@ test("META_PIPELINE_AUDIT registration receipt binds its approved metadata into 
     metadataStatus: "approved_semantic_review",
     metadataRevision,
     reviewStatus: "reviewed_pass",
+    level: "중",
     fieldStatus: { standardUnit: "approved_meta_pipeline_audit", subUnit: "approved_meta_pipeline_audit" },
     evidenceRefs: [`archive/${proofPath}`],
     evidenceDigest: "d".repeat(64),
@@ -355,6 +357,18 @@ test("META_PIPELINE_AUDIT registration receipt binds its approved metadata into 
     L1: parent.L1,
     L2: parent.L2,
     standardCourse: parent.courseKey,
+    standardUnitKey: "M3-01",
+    subUnitKey: "M3-01-TEST",
+    standardUnit: "검증 단원",
+    subUnit: "검증 세부단원",
+    problemTypeKey: "PT_META_TEST",
+    templateKey: "TPL_META_TEST",
+    L3: "검증된 개념",
+    L4: "검증된 유형",
+    crossConceptKeys: [],
+    conditionKeys: [],
+    integrationPattern: null,
+    difficultyBucket: null,
   };
 
   Object.assign(source, {
@@ -362,6 +376,7 @@ test("META_PIPELINE_AUDIT registration receipt binds its approved metadata into 
     courseKey: "",
     L1: "",
     L2: "",
+    metadataRevision,
     metadataAssignmentEvidence: {
       questionUid: uid,
       sourceFile: sourceFile,
@@ -380,9 +395,15 @@ test("META_PIPELINE_AUDIT registration receipt binds its approved metadata into 
   runtime.packVersion = "1.0.0";
   runtime.generatedFrom = { [`reviewedExam_${requestId}`]: `archive/${proofPath}` };
   runtime.records = [{ ...assignment, metaFoundationPackId: runtime.packId, metaFoundationPackVersion: runtime.packVersion }];
-  resources["data/meta-foundation/compiled/taxonomy_registry.json"].sourcePacks = [
-    { packId: runtime.packId, version: runtime.packVersion },
-  ];
+  resources["data/meta-foundation/compiled/taxonomy_registry.json"] = {
+    status: "DERIVED_READ_ONLY",
+    sourcePacks: [{ packId: runtime.packId, version: runtime.packVersion }],
+    problemTypes: [{ problemTypeKey: "PT_META_TEST", status: "ACTIVE" }],
+    templates: [{ templateKey: "TPL_META_TEST", parentProblemTypeKey: "PT_META_TEST", status: "ACTIVE" }],
+  };
+  resources["data/meta-foundation/compiled/curriculum_bindings.json"] = {
+    bindings: [{ curriculum: parent.curriculumKey, standardUnitKey: "M3-01", subUnitKey: "M3-01-TEST", problemTypeKey: "PT_META_TEST" }],
+  };
   resources[proofPath] = {
     schemaVersion: "archive-reviewed-exam-meta-registration-v2",
     metadataRegistrationStatus: "REGISTERED",
@@ -400,9 +421,16 @@ test("META_PIPELINE_AUDIT registration receipt binds its approved metadata into 
   assert.equal(final.courseKey, parent.courseKey);
   assert.equal(final.L1, parent.L1);
   assert.equal(final.L2, parent.L2);
+  assert.equal(final.level, "중");
   assert.equal(final.assignmentEvidence.reviewEvidence.approvalType, "META_PIPELINE_AUDIT");
   assert.equal(final.sourceReviewStatus, undefined);
   assert.equal(core.basicEligibility(final, { canonicalAuthority: resolved.canonicalAuthority }).ok, true);
+  const page = ProblemBankMeta.buildIndex([{ ...final, currentSourceJsSha256: "c".repeat(64) }], [])[0];
+  assert.equal(page.L1, parent.L1);
+  assert.equal(page.L2, parent.L2);
+  assert.equal(page.L3, "검증된 개념");
+  assert.equal(page.L4, "검증된 유형");
+  assert.equal(page.level, "중");
 });
 
 test("built catalog has no production taxonomy fallback without a fingerprint-bound reviewed assignment", () => {
