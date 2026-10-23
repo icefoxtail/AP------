@@ -200,6 +200,29 @@ test("META_PIPELINE_AUDIT does not treat unreasoned null source metadata as pend
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /source\/approved metadata parity/);
 });
 
+test("META_PIPELINE_AUDIT preserves an unresolved legacy difficulty bucket as EVIDENCE_DEBT", t => {
+  const f = fixture(t);
+  delete f.q.difficultyBucket;
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  const meta = f.read(META);
+  meta.records[0].difficultyBucket = "중";
+  meta.records[0].fieldStatus = { difficulty: "approved_source" };
+  f.put(META, meta);
+  f.request.items[0].before.difficultyBucket = "중";
+  f.request.items[0].after.difficultyBucket = null;
+  attachMetaPipelineAudit(f);
+  f.request.approval.metaPipelineAudit.unreviewedFields = [
+    { field: "difficultyBucket", status: "EVIDENCE_DEBT", reason: "The source label is not a five-level bucket and the audit package did not assess difficulty; no conversion was inferred." }
+  ];
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.difficultyBucket, null);
+  assert.equal(row.fieldStatus.difficulty, "EVIDENCE_DEBT");
+  assert.equal(row.difficultyEvidenceDebt.status, "EVIDENCE_DEBT");
+});
+
 test("META_PIPELINE_AUDIT reuses a same-label existing CrossConcept without changing its canonical meaning", t => {
   const f = fixture(t);
   attachMetaPipelineAudit(f, { existingConcept: true });
