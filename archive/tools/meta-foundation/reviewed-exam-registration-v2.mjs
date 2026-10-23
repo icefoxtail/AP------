@@ -455,7 +455,7 @@ function resolve(row, tables) {
   return { pt, tpl, unit, sub, binding, pack, curriculum, course };
 }
 
-function labelsFor(root, patch, row, resolved, read, sourceBlob) {
+function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredReplay = false } = {}) {
   const base = { L1: resolved.binding.L1 || resolved.unit.labelKo, L2: resolved.binding.L2 || resolved.sub?.labelKo || "", L3: resolved.pt.canonicalLabelKo, L4: resolved.tpl.canonicalLabelKo };
   if (patch.basicScopeParentRef) {
     if (patch.targetParentRef) fail("basic and RPM target parent references cannot be combined");
@@ -470,7 +470,12 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob) {
     let parent = null;
     if (proof.sourcePath === META) {
       const metadataBytes = fs.readFileSync(safePath(root, META));
-      if (digest(metadataBytes) !== proof.sourceSha256) fail(`approved metadata parent snapshot SHA mismatch: ${row.questionUid}`);
+      // The parent proof is bound to the pre-registration metadata snapshot.
+      // A receipt-backed replay runs after this same request has updated META,
+      // so its file SHA necessarily differs. The immutable request/evidence
+      // hashes and the receipt are checked before this branch; retain the exact
+      // UID/ordinal/unit/label comparisons below during replay.
+      if (!registeredReplay && digest(metadataBytes) !== proof.sourceSha256) fail(`approved metadata parent snapshot SHA mismatch: ${row.questionUid}`);
       const metadataDoc = JSON.parse(metadataBytes.toString("utf8"));
       const currentRows = metadataDoc.records.filter(candidate => candidate.questionUid === patch.questionUid &&
         candidate.sourceArchiveFile === row.sourceArchiveFile && candidate.sourceOrdinal === row.sourceOrdinal);
@@ -641,7 +646,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     const currentPlan = registryPlan(root, [], evidenceRefs), currentTables = lookup(currentPlan);
     for (const record of previous.appliedRecords) {
       const r = resolve(record, currentTables);
-      const labels = labelsFor(root, patches.get(record.questionUid), record, r, read, blob);
+      const labels = labelsFor(root, patches.get(record.questionUid), record, r, read, blob, { registeredReplay: true });
       for (const [key, value] of Object.entries(labels)) if (record[key] !== value) fail(`registered canonical label drift: ${record.questionUid}.${key}`);
     }
     const allRuntime = fs.readdirSync(safePath(root, "archive/data/meta-foundation/runtime")).filter(n => n.endsWith(".json") && n !== "runtime-bridge-receipt.json").flatMap(n => read(`archive/data/meta-foundation/runtime/${n}`).records || []);

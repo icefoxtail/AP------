@@ -408,6 +408,9 @@ test("META_PIPELINE_AUDIT uses an exact approved metadata parent snapshot when t
   const row = f.read(META).records[0];
   assert.equal(row.L1, "기존 승인 L1");
   assert.equal(row.L2, "기존 승인 L2");
+  const replay = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(replay.status, "PASS");
+  assert.equal(replay.replay, true);
 });
 
 test("META_PIPELINE_AUDIT reuses a same-label existing CrossConcept without changing its canonical meaning", t => {
