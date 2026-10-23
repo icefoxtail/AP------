@@ -666,6 +666,29 @@
             pointer-events: auto;
         }
 
+        /* Keep the app-level back action available above an open modal. */
+        body.ap-modal-open header,
+        body.ap-modal-open .desktop-topbar {
+            z-index: 1001;
+            background: transparent;
+            border-bottom-color: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            pointer-events: none;
+        }
+
+        body.ap-modal-open .mobile-header-menu,
+        body.ap-modal-open .mobile-header-brand,
+        body.ap-modal-open .mobile-header-user,
+        body.ap-modal-open .desktop-topbar-title {
+            visibility: hidden;
+        }
+
+        body.ap-modal-open .app-back-btn {
+            visibility: visible;
+            pointer-events: auto;
+        }
+
         #modal-content {
             background: var(--surface);
             color: var(--text);

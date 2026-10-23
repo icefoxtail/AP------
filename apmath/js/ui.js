@@ -364,6 +364,8 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
 
     if (!titleEl || !bodyEl || !overlay) return;
 
+    document.body?.classList?.add('ap-modal-open');
+
     if (modalCloseTimer) {
         clearTimeout(modalCloseTimer);
         modalCloseTimer = null;
@@ -566,6 +568,7 @@ function closeModal(suppressReturn = false) {
     overlay.classList.remove('show');
     modalCloseTimer = setTimeout(() => {
         overlay.classList.add('hidden');
+        document.body?.classList?.remove('ap-modal-open');
         modalCloseTimer = null;
 
         const actionBtn = document.getElementById('modal-action-btn');

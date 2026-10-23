@@ -3929,8 +3929,12 @@ function returnToClassroomFromTimetable() {
     const classId = String(state.ui?.classroomTimetableReturnClassId || '');
     if (!classId || typeof renderClass !== 'function') return false;
     const cls = (state.db?.classes || []).find(row => String(row.id) === classId);
-    if (!cls || Number(cls.is_active) === 0 ||
-        (typeof canCurrentUserAccessClass === 'function' && !canCurrentUserAccessClass(classId))) {
+    const canReturn = typeof isClassroomClassAccessible === 'function'
+        ? isClassroomClassAccessible(classId)
+        : !!cls && Number(cls.is_active) !== 0 &&
+            (typeof canCurrentUserAccessClass !== 'function' || canCurrentUserAccessClass(classId)) &&
+            (typeof isClassVisibleForCurrentTeacher !== 'function' || isClassVisibleForCurrentTeacher(cls));
+    if (!canReturn) {
         if (state.ui) state.ui.classroomTimetableReturnClassId = '';
         toast('현재 반으로 복귀할 수 없습니다.', 'warn');
         return false;

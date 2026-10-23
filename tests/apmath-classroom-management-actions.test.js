@@ -7,13 +7,15 @@ const root = path.resolve(__dirname, '..');
 const classroom = fs.readFileSync(path.join(root,'apmath/js/classroom.js'),'utf8');
 const management = fs.readFileSync(path.join(root,'apmath/js/management.js'),'utf8');
 const timetable = fs.readFileSync(path.join(root,'apmath/js/timetable.js'),'utf8');
+const student = fs.readFileSync(path.join(root,'apmath/js/student.js'),'utf8');
+const studentEdit = fs.readFileSync(path.join(root,'apmath/js/student-edit.js'),'utf8');
 const css = fs.readFileSync(path.join(root,'apmath/css/classroom-foundation.css'),'utf8');
 
 function context() {
     const ctx = { console, window: {}, state: {
         auth: {role: 'admin'}, ui: {currentClassId: 'c1'},
         db: { classes: [{id:'c1',name:'중1 A',is_active:1},{id:'c2',name:'중2 B',is_active:1}] }
-    }, toast(){}, document:{} };
+    }, toast(){}, document:{}, apEscapeHtml(value) { return String(value ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); } };
     vm.createContext(ctx);
     vm.runInContext(classroom, ctx);
     ctx.getClassroomSwitchableClasses = () => ctx.state.db.classes;
@@ -71,15 +73,93 @@ test('timetable return action restores the class and leaves timetable wide mode'
     const start=timetable.indexOf('function returnToClassroomFromTimetable()');
     const end=timetable.indexOf('function renderTimetable()',start);
     assert.ok(start>0&&end>start);
+    const effects = {};
     const ctx={state:{ui:{classroomTimetableReturnClassId:'c1'},db:{classes:[{id:'c1',is_active:1}]}},
-        renderClass(id){this.visited=id;}, leaveTimetableWideMode(){this.left=true;},
-        canCurrentUserAccessClass(){return true;},toast(){}};
+        renderClass(id){effects.visited=id;}, leaveTimetableWideMode(){effects.left=true;},
+        isClassroomClassAccessible(){return true;}, canCurrentUserAccessClass(){return true;},toast(){}};
     vm.createContext(ctx);vm.runInContext(timetable.slice(start,end),ctx);
     assert.equal(ctx.returnToClassroomFromTimetable(),true);
-    assert.equal(ctx.visited,'c1');
-    assert.equal(ctx.left,true);
+    assert.equal(effects.visited,'c1');
+    assert.equal(effects.left,true);
     assert.equal(ctx.state.ui.classroomTimetableReturnClassId,'');
     assert.match(timetable,/onclick="returnToClassroomFromTimetable\(\)"/);
+});
+
+test('timetable return refuses a class that is no longer accessible', () => {
+    const start=timetable.indexOf('function returnToClassroomFromTimetable()');
+    const end=timetable.indexOf('function renderTimetable()',start);
+    const effects = {};
+    const ctx={state:{ui:{classroomTimetableReturnClassId:'c1'},db:{classes:[{id:'c1',is_active:1}]}},
+        renderClass(){effects.rendered=true;}, leaveTimetableWideMode(){effects.left=true;},
+        isClassroomClassAccessible(){return false;},toast(message){effects.message=message;}};
+    vm.createContext(ctx);vm.runInContext(timetable.slice(start,end),ctx);
+    assert.equal(ctx.returnToClassroomFromTimetable(),false);
+    assert.equal(ctx.state.ui.classroomTimetableReturnClassId,'');
+    assert.equal(effects.left,undefined);
+    assert.equal(effects.rendered,undefined);
+    assert.equal(effects.message,'현재 반으로 복귀할 수 없습니다.');
+});
+
+test('student class change refreshes the originating classroom roster before the student detail is reopened', async () => {
+    const calls = [];
+    const studentId = 's1';
+    const appState = {
+        ui: { currentClassId: 'c1', currentStudentDetailId: studentId, currentStudentDetailMode: 'edit', currentStudentDetailReturnTo: { type: 'classDetail', classId: 'c1' } },
+        db: {
+            students: [{ id: studentId, name: '홍길동', grade: '중1', status: '재원' }],
+            class_students: [{ student_id: studentId, class_id: 'c1' }]
+        }
+    };
+    const ctx = {
+        console,
+        state: appState,
+        document: {
+            getElementById(id) {
+                if (id === 'modal-overlay') return { classList: { contains: name => name === 'show' } };
+                const values = {
+                    'edit-student-pin': '', 'edit-class': 'c2', 'edit-grade': '중2',
+                    'edit-is-new': false, 'edit-is-leave': false, 'edit-already-attending': false,
+                    'edit-onboarding-started-at': '', 'edit-student-phone': '', 'edit-parent-phone': '',
+                    'edit-guardian-rel': '', 'edit-student-address': '', 'edit-vehicle-info': ''
+                };
+                if (!(id in values)) return null;
+                const value = values[id];
+                return typeof value === 'boolean' ? { checked: value } : { value };
+            },
+            querySelectorAll() { return []; }
+        },
+        api: { async patch() { return { success: true, student: { id: studentId }, student_enrollments: [], class_student: { student_id: studentId, class_id: 'c2' } }; } },
+        getStudentProfileEditStudent() { return appState.db.students[0]; },
+        getStudentProfileEditClassMapping() { return appState.db.class_students[0]; },
+        isStudentNewMember() { return false; },
+        normalizeStudentStatus(value) { return value; },
+        normalizeStudentDetailTab(value) { return value; },
+        normalizeOnboardingDate(value) { return value; },
+        getStudentOnboardingStartedAt() { return ''; },
+        getOnboardingStartDateInputId(prefix) { return `${prefix}-onboarding-started-at`; },
+        collectHighSubjectExclusions() { return []; },
+        isHighSubjectGrade() { return false; },
+        mergeStudentEnrollmentRowsAfterEdit() {},
+        mergeStudentCreateResponseIntoState(response) {
+            appState.db.class_students = [response.class_student];
+            return response.student;
+        },
+        async refreshDataOnly() { calls.push('refresh-data'); },
+        renderClass(classId) { calls.push(`render:${classId}:${appState.db.class_students[0].class_id}`); },
+        async openStudentDetail() { calls.push('reopen-student'); appState.ui.currentStudentDetailMode = 'view'; },
+        toast() {}
+    };
+    vm.createContext(ctx);
+    const listRefreshStart = student.indexOf('function refreshCurrentStudentListViewAfterMutation(');
+    const listRefreshEnd = student.indexOf('function apmsStudentDetailEsc(', listRefreshStart);
+    const editStart = studentEdit.indexOf('let editStudentSubmitting = false;');
+    const editEnd = studentEdit.indexOf('function openAddStudent(', editStart);
+    assert.ok(listRefreshStart >= 0 && listRefreshEnd > listRefreshStart);
+    assert.ok(editStart >= 0 && editEnd > editStart);
+    vm.runInContext(student.slice(listRefreshStart, listRefreshEnd) + studentEdit.slice(editStart, editEnd), ctx);
+
+    await ctx.handleEditStudent(studentId);
+    assert.deepEqual(calls, ['refresh-data', 'render:c1:c2', 'reopen-student']);
 });
 
 test('mobile management controls remain usable as two 44px touch columns', () => {

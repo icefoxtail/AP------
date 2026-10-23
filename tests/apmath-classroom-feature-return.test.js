@@ -4,6 +4,7 @@ const path = require('node:path');
 const test = require('node:test');
 const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
+const indexHtml = fs.readFileSync(path.join(root, 'apmath/index.html'), 'utf8');
 const classroom = fs.readFileSync(path.join(root, 'apmath/js/classroom.js'), 'utf8');
 const ui = fs.readFileSync(path.join(root, 'apmath/js/ui.js'), 'utf8');
 const planner = fs.readFileSync(path.join(root, 'apmath/js/classroom-planner.js'), 'utf8');
@@ -45,6 +46,24 @@ test('classroom feature return context follows the selected class and rejects an
     assert.equal(calls.length, 6);
 });
 
+test('feature and direct class entry reject an inactive or unassigned classroom', () => {
+    const ctx = setup();
+    const calls = [];
+    ctx.state.ui.currentClassId = 'b';
+    ctx.state.db.classes.find(row => row.id === 'b').is_active = 0;
+    ctx.openQrGenerator = id => calls.push(id);
+    assert.equal(ctx.openClassroomFeature('b', 'qr'), false);
+    assert.equal(ctx.renderClass('b'), false);
+    assert.deepEqual(calls, []);
+
+    const classB = ctx.state.db.classes.find(row => row.id === 'b');
+    classB.is_active = 1;
+    classB.teacher_name = '박';
+    ctx.state.ui.currentClassId = 'b';
+    assert.equal(ctx.openClassroomFeature('b', 'qr'), false);
+    assert.deepEqual(calls, []);
+});
+
 test('consultation keeps the original class as the student-detail return anchor', () => {
     const ctx=setup();
     let opened = '', original = null;
@@ -78,6 +97,13 @@ test('app back honors class return context but leaves unrelated modal behavior u
     ctx.state.ui.currentStudentDetailReturnTo={type:'classDetail',classId:'b'};
     ctx.go();
     assert.deepEqual(calls,[false,true,false]);
+});
+
+test('app back remains clickable above modal overlay and modal-open styling is cleared on close', () => {
+    assert.match(ui,/document\.body\?\.classList\?\.add\('ap-modal-open'\)/);
+    assert.match(ui,/document\.body\?\.classList\?\.remove\('ap-modal-open'\)/);
+    assert.match(indexHtml,/body\.ap-modal-open header,[\s\S]*?z-index:\s*1001/);
+    assert.match(indexHtml,/body\.ap-modal-open \.app-back-btn\s*\{[^}]*pointer-events:\s*auto/s);
 });
 
 test('planner and QR attach explicit class return routes without changing their save APIs', () => {
