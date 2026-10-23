@@ -10,7 +10,7 @@ const clean=(n:number)=>Number.isInteger(n)?String(n):n.toFixed(2).replace(/0+$/
 export function calculation(id:PracticeId,variant:string,p:PracticeParams):PracticeResult{
   const unit=id==='tether'?'m':'cm',r=p.r??6,theta=p.theta??90,s=p.s??8;
   if(id==='arc'||id==='sector'){
-    const base=p.base??30,actualTheta=id==='arc'&&variant==='arc-isosceles'?180-2*base:theta,h=actualTheta*r/180;
+    const base=p.base??30,actualTheta=id==='arc'&&variant==='arc-isosceles'?180-2*base:theta;
     if(id==='sector'&&variant==='sector-ratio-pie'){
       const one=pi(r*r,6);
       return {formula:`\\theta_1:\\theta_2:\\theta_3=1:2:3;\\quad(\\theta_1,\\theta_2,\\theta_3)=(60^\\circ,120^\\circ,180^\\circ);\\quad A_1=\\frac{\\pi r^2}{6}=${one}`,concept:'호와 넓이는 중심각에 비례합니다. 1:2:3 비율의 합은 6이므로 첫 부채꼴은 원 넓이의 1/6입니다.',area:`${one} cm²`,terms:[{label:'첫째 중심각',value:'60°'},{label:'둘째 중심각',value:'120°'},{label:'셋째 중심각',value:'180°'},{label:'첫째 부채꼴 넓이',value:`${one} cm²`}],unit};
