@@ -329,6 +329,82 @@ test("reviewed item override requires exact identity/fingerprint/evidence and pr
   assert.equal(core.advancedEligible(final, { canonicalAuthority: resolved.canonicalAuthority }), true);
 });
 
+test("META_PIPELINE_AUDIT registration receipt binds its approved metadata into the canonical consumer", () => {
+  const input = fixture({ validAssignment: false });
+  const { versionBundle } = input;
+  const resources = versionBundle.resources;
+  const source = resources["data/archive2-catalog.json"].records[0];
+  const requestId = "meta-pipeline-consumer-fixture";
+  const proofPath = `data/meta-foundation/evidence/reviewed-exam-meta/v1/${requestId}.json`;
+  const receiptSha = "b".repeat(64);
+  const metadataRevision = `meta-foundation:TEST@1.0.0:exam-meta_pipeline_audit-v2:${requestId}`;
+  const assignment = {
+    questionUid: uid,
+    sourceArchiveFile: sourceFile,
+    sourceOrdinal: 1,
+    sourceFingerprint,
+    contentFingerprint: assignmentFingerprint,
+    metadataStatus: "approved_semantic_review",
+    metadataRevision,
+    reviewStatus: "reviewed_pass",
+    fieldStatus: { standardUnit: "approved_meta_pipeline_audit", subUnit: "approved_meta_pipeline_audit" },
+    evidenceRefs: [`archive/${proofPath}`],
+    evidenceDigest: "d".repeat(64),
+    curriculumKey: parent.curriculumKey,
+    courseKey: parent.courseKey,
+    L1: parent.L1,
+    L2: parent.L2,
+    standardCourse: parent.courseKey,
+  };
+
+  Object.assign(source, {
+    curriculumKey: "",
+    courseKey: "",
+    L1: "",
+    L2: "",
+    metadataAssignmentEvidence: {
+      questionUid: uid,
+      sourceFile: sourceFile,
+      sourceOrdinal: 1,
+      sourceFingerprint,
+      assignmentFingerprint,
+      metadataStatus: assignment.metadataStatus,
+      metadataRevision,
+      fieldStatus: assignment.fieldStatus,
+      evidenceRefs: assignment.evidenceRefs,
+      evidenceDigest: assignment.evidenceDigest,
+    },
+  });
+  const runtime = resources["data/meta-foundation/runtime/h1-foundation-v1.json"];
+  runtime.packId = "META_PIPELINE_TEST";
+  runtime.packVersion = "1.0.0";
+  runtime.generatedFrom = { [`reviewedExam_${requestId}`]: `archive/${proofPath}` };
+  runtime.records = [{ ...assignment, metaFoundationPackId: runtime.packId, metaFoundationPackVersion: runtime.packVersion }];
+  resources["data/meta-foundation/compiled/taxonomy_registry.json"].sourcePacks = [
+    { packId: runtime.packId, version: runtime.packVersion },
+  ];
+  resources[proofPath] = {
+    schemaVersion: "archive-reviewed-exam-meta-registration-v2",
+    metadataRegistrationStatus: "REGISTERED",
+    sourceArchiveFile: sourceFile,
+    sourceRawSha256: "c".repeat(64),
+    totalQuestions: 1,
+    approval: { type: "META_PIPELINE_AUDIT", metadataReviewed: true, approvedBy: "META_PIPELINE_UNIFIED_AUTHOR" },
+    appliedRecords: [assignment],
+  };
+  versionBundle.files[proofPath] = { sha256: receiptSha };
+
+  const resolved = canonical.resolveCatalog(input);
+  const final = resolved.records.find((candidate) => candidate.questionUid === uid);
+  assert.equal(final.curriculumKey, parent.curriculumKey);
+  assert.equal(final.courseKey, parent.courseKey);
+  assert.equal(final.L1, parent.L1);
+  assert.equal(final.L2, parent.L2);
+  assert.equal(final.assignmentEvidence.reviewEvidence.approvalType, "META_PIPELINE_AUDIT");
+  assert.equal(final.sourceReviewStatus, undefined);
+  assert.equal(core.basicEligibility(final, { canonicalAuthority: resolved.canonicalAuthority }).ok, true);
+});
+
 test("built catalog has no production taxonomy fallback without a fingerprint-bound reviewed assignment", () => {
   const catalog = core.decodeCatalog(JSON.parse(fs.readFileSync(path.join(root, "archive/data/archive2-catalog.json"), "utf8")));
   const unsupported = catalog.records.filter((row) => !row.assignmentEvidence &&
