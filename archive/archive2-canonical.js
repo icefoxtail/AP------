@@ -1429,17 +1429,20 @@
             "taxonomyStatus", "difficultyBucket", "difficultyConfidence",
             "difficultyBoundaryFlag", "legacyLevelCompatibility", "reviewStatus",
           ]) if (matchingOverlay[field] !== undefined) record[field] = matchingOverlay[field];
+          const registrationApprovalType = candidate.assignmentEvidence?.reviewEvidence?.approvalType;
+          if (["FINAL_QA", "REVIEW2", "META_PIPELINE_AUDIT"].includes(registrationApprovalType)) {
+            record.level = matchingOverlay.level || matchingOverlay.legacyLevel;
+            record.reviewedExamRegistration = { schemaVersion: "archive-reviewed-exam-registration-projection-v2",
+              metadataRevision: matchingOverlay.metadataRevision, sourceJsSha256: record.currentSourceJsSha256,
+              reference: candidate.assignmentEvidence.reviewEvidence.reference, sha256: candidate.assignmentEvidence.reviewEvidence.sha256,
+              approvalType: registrationApprovalType };
+          }
           if (["FINAL_QA", "REVIEW2"].includes(candidate.assignmentEvidence?.reviewEvidence?.approvalType)) {
             record.taxonomyStatus = "CONFIRMED";
             record.nativeCurriculum = record.curriculumKey;
             for (const key of ["L1", "L2", "L3", "L4"]) record["native" + key] = record[key];
             record.nativeTaxonomyPath = [record.nativeCurriculum, record.standardCourse, record.L1, record.L2, record.L3, record.L4].join(" > ");
             record.nativeMetaStatus = "APPROVED";
-            record.level = matchingOverlay.level || matchingOverlay.legacyLevel;
-            record.reviewedExamRegistration = { schemaVersion: "archive-reviewed-exam-registration-projection-v2",
-              metadataRevision: matchingOverlay.metadataRevision, sourceJsSha256: record.currentSourceJsSha256,
-              reference: candidate.assignmentEvidence.reviewEvidence.reference, sha256: candidate.assignmentEvidence.reviewEvidence.sha256,
-              approvalType: candidate.assignmentEvidence.reviewEvidence.approvalType };
             const rpmMetadata = Object.fromEntries(["rpmL1", "rpmL2", "rpmL3", "rpmL4", "rpmCurriculum", "rpmSemanticStatus", "rpmSemanticReason", "rpmEvidenceDebtFields"]
               .filter(key => Object.prototype.hasOwnProperty.call(matchingOverlay, key)).map(key => [key, matchingOverlay[key]]));
             if (Object.keys(rpmMetadata).length) record.metadataAssignmentEvidence = { ...record.metadataAssignmentEvidence, rpmMetadata };
