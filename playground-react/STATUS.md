@@ -13,6 +13,7 @@ Standalone React app at `playground-react/`, on `feat/playground-react-migration
 | Substructures | 38 | Complete | 33 practice variants + 5 semicircle-combination variants |
 | Mathematical checks | 370 semicircle + 66 practice input/variant combinations, plus fixed source cases | Complete | `npm run test:math` PASS |
 | Browser QA | PC + mobile | Complete | Full 14-lab / 33-variant desktop sweep; 390px mobile checks; 0 console errors or warnings |
+| Per-type commit cadence | 14 practice models | Partial | The practice suite is committed as one shared-engine milestone (`f9e2e0b40`), not as one implementation commit per type |
 | Publication | branch push + PR | Complete | PR #761 open against `main`; intentionally not merged |
 
 ## Per-type progress
@@ -45,9 +46,12 @@ Standalone React app at `playground-react/`, on `feat/playground-react-migration
 
 ## Interaction quality
 
+- Browser comparison against the AI Studio prototype confirmed its baseline strengths: persistent type/shape selection, three observation modes, and parameter sliders that immediately recalculate the perimeter/area proof. The original basic HTML additionally had a draggable yellow angle point; React now preserves that direct manipulation with 5° snapping, pointer capture, slider/formula/SVG synchronization, and arrow-key access.
+- Live browser comparison at radius 6 cm and angle 60° produced the same arc result (`2π cm`) in the source HTML and React. Dragging the source point changed 90°→60° and updated its calculation; dragging the React handle changed 120°→30°, then keyboard stepping reached 60° and KaTeX recalculated to `2π cm`.
 - Semicircle/taiji boundary mode reveals the actual SVG boundary and maps each curved component to proportional length bars. The explanatory copy distinguishes length rearrangement from rigidly overlapping differently curved arcs.
 - Semicircle area mode moves duplicate, same-size SVG pieces while the original coloring remains visible. The taiji's equal-size convex semicircle rotates 180° into the cutout; a Playwright geometry check confirmed its SVG path length is unchanged. The progress slider controls the GSAP timeline directly.
 - Basic circle area mode cuts the circle into 12 equal-angle wedges and translates/rotates them without scaling into alternating rows. Basic circumference mode synchronizes the traced circular length and straight length bar.
+- Sector-angle labs retain the original yellow endpoint direct manipulation. Dragging snaps to the same 5° increments as the source interaction; keyboard arrow keys change the angle by 5° while keeping the boundary, ratio, and formula in sync.
 - Practice area modes keep the original SVG visible and move separate calculation copies. Line mode traces actual SVG boundaries and shows component length comparisons where meaningful.
 - KaTeX formulas and results use the same live slider parameters as each diagram.
 
@@ -57,10 +61,10 @@ Standalone React app at `playground-react/`, on `feat/playground-react-migration
 - `npm run test:math` PASS: 370 semicircle combinations, 66 practice variant/input combinations and exact representative source cases.
 - `npm run build` PASS. KaTeX is split into its own chunk; no chunk-size warning.
 - Browser: 1440×900 desktop interaction sweep passed for all five basic cards, five semicircle structures and all 33 practice variants. KaTeX, real SVG boundaries and area-piece scrubbers were present. 390px mobile checks passed without horizontal page overflow. Browser console errors/warnings: 0.
-- Current commits: `0b8ef702d` (foundation), `7d8ea2ec8` (basic labs), `f9e2e0b40` (source-derived geometry suite and visual proof upgrades), `7cab2f9b9` (final QA record).
+- Implementation milestone commits: `0b8ef702d` (foundation), `7d8ea2ec8` (basic labs), `f9e2e0b40` (source-derived geometry suite and visual proof upgrades).
 
 ## Remaining
 
-- No implementation work remains for this mission. PR #761 is open; merge and deployment are intentionally outside the requested scope.
-- The 14 practice models share the source-derived engine and were committed together in `f9e2e0b40`; they were not split into 14 separate implementation commits as originally requested.
+- Functional implementation and requested verification are complete. PR #761 is open; merge and deployment are intentionally outside the requested scope.
+- The requested one-type-per-implementation-commit cadence was not met for the 14 practice principles: they use one shared engine suite commit, with individual model modules and per-type verification retained.
 - A one-time continuation alarm could not be scheduled: Codex reported it could not verify this chat for scheduled updates. The active goal and this status file remain available for continuation.

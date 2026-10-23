@@ -30,10 +30,19 @@ function usesAngle(id:BasicId){return id!=='basic-circumference'&&id!=='basic-ci
 
 export default function BasicLab({id}:{id:BasicId}){
   const [r,setR]=useState(6),[theta,setTheta]=useState(120),[mode,setMode]=useState<Mode>('original'),[replay,setReplay]=useState(0),[progress,setProgress]=useState(0);
-  const stage=useRef<HTMLDivElement>(null);
+  const stage=useRef<HTMLDivElement>(null),svgRef=useRef<SVGSVGElement>(null),dragPointer=useRef<number|null>(null);
   const progressTween=useRef<gsap.core.Tween|null>(null);
   const result=basicFormula(id,r,theta),angle=usesAngle(id)?theta:360;
   const areaMode=usesArea(id);
+  const updateAngleFromPointer=(clientX:number,clientY:number)=>{
+    const svg=svgRef.current;
+    if(!svg)return;
+    const point=svg.createSVGPoint();point.x=clientX;point.y=clientY;
+    const local=point.matrixTransform(svg.getScreenCTM()?.inverse());
+    const raw=(Math.atan2(local.y-166,local.x-210)*180/Math.PI+90+360)%360;
+    const snapped=Math.max(15,Math.min(330,Math.round(raw/5)*5));
+    setTheta(snapped);
+  };
   useLayoutEffect(()=>{
     if(!stage.current||mode==='original')return;
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){setProgress(1);return}
@@ -56,7 +65,7 @@ export default function BasicLab({id}:{id:BasicId}){
   },[id,mode,replay,r,theta]);
   const selectedMode:Mode=areaMode?'area':'line';
   return <div className="lab-content">
-    <div className="lab-caption"><div><span className="eyebrow">기초 개념 · 직접 조작</span><h2>{names[id]}</h2></div><p>슬라이더를 움직여 그림과 계산 결과가 함께 바뀌는 것을 확인하세요.</p></div>
+    <div className="lab-caption"><div><span className="eyebrow">기초 개념 · 직접 조작</span><h2>{names[id]}</h2></div><p>{usesAngle(id)?'노란 점을 드래그하거나 슬라이더를 움직이면 그림과 계산 결과가 함께 바뀝니다.':'슬라이더를 움직여 그림과 계산 결과가 함께 바뀌는 것을 확인하세요.'}</p></div>
     <section className="stage-card basic-stage" ref={stage}>
       <div className="stage-head"><div className="mode-group" role="group" aria-label="관찰 모드">
         <button type="button" className={`mode-button ${mode==='original'?'selected':''}`} onClick={()=>{progressTween.current?.kill();setProgress(0);setMode('original')}} aria-pressed={mode==='original'}>원본 그림</button>
@@ -64,13 +73,13 @@ export default function BasicLab({id}:{id:BasicId}){
       </div><div className="stage-actions">{mode!=='original'&&<button type="button" className="replay-button" onClick={()=>{progressTween.current?.kill();setProgress(0);setReplay(n=>n+1)}}>↻ 과정 다시 보기</button>}<span className="stage-chip">기초 공식 실험</span></div></div>
       <div className="sliders-line">
         <label className="slider-control"><span>반지름 r</span><input aria-label="반지름 r" type="range" min="2" max="12" step="1" value={r} onChange={e=>setR(Number(e.target.value))}/><output>{r}cm</output></label>
-        {usesAngle(id)&&<label className="slider-control"><span>중심각 θ</span><input aria-label="중심각 θ" type="range" min="30" max="330" step="15" value={theta} onChange={e=>setTheta(Number(e.target.value))}/><output>{theta}°</output></label>}
+        {usesAngle(id)&&<label className="slider-control"><span>중심각 θ</span><input aria-label="중심각 θ" type="range" min="15" max="330" step="5" value={theta} onChange={e=>setTheta(Number(e.target.value))}/><output>{theta}°</output></label>}
       </div>
       {mode==='line'&&<div className="motion-scrubber"><label htmlFor="basic-line-progress">{id==='basic-circumference'?'원둘레를 길이 막대로 펼치기':'실제 경계를 따라 길이 확인'}</label><input id="basic-line-progress" type="range" min="0" max="100" step="1" value={Math.round(progress*100)} onChange={e=>{progressTween.current?.kill();setProgress(Number(e.target.value)/100)}}/><output>{Math.round(progress*100)}%</output><span>파란 원호·호와 길이 막대는 같은 진행 비율을 나타냅니다.</span></div>}
       {id==='basic-circle-area'&&mode==='area'&&<div className="motion-scrubber"><label htmlFor="basic-area-progress">부채꼴 조각 자르고 재배열</label><input id="basic-area-progress" type="range" min="0" max="100" step="1" value={Math.round(progress*100)} onChange={e=>{progressTween.current?.kill();setProgress(Number(e.target.value)/100)}}/><output>{Math.round(progress*100)}%</output><span>각 조각은 크기와 넓이를 유지한 채 이동합니다.</span></div>}
       <div className="stage-body basic-stage-body">
         <div className="canvas-area"><div className="canvas-label"><span className="canvas-label-dot"/>{mode==='original'?'도형과 매개변수':areaMode?'원의 넓이 · 부채꼴 넓이':'둘레에 포함되는 실제 경계'}</div>
-          <svg className="geometry-svg basic-svg" viewBox="0 0 420 340" role="img" aria-label={`${names[id]}, 반지름 ${r}센티미터${usesAngle(id)?`, 중심각 ${theta}도`:''}`}>
+          <svg ref={svgRef} className="geometry-svg basic-svg" viewBox="0 0 420 340" role="img" aria-label={`${names[id]}, 반지름 ${r}센티미터${usesAngle(id)?`, 중심각 ${theta}도`:''}`} onPointerMove={e=>{if(dragPointer.current===e.pointerId)updateAngleFromPointer(e.clientX,e.clientY)}} onPointerUp={e=>{if(dragPointer.current===e.pointerId)dragPointer.current=null}} onPointerCancel={e=>{if(dragPointer.current===e.pointerId)dragPointer.current=null}}>
             <circle cx="210" cy="166" r="112" fill="#f8fafc" stroke="#dbe4ec" strokeWidth="2"/>
             {areaMode&&id!=='basic-circle-area'&&<path d={sectorPath(210,166,112,angle)} fill="#bcebd7" stroke="#16845f" strokeWidth="2"/>}
             {id==='basic-circle-area'&&mode==='original'&&<circle cx="210" cy="166" r="112" fill="#bcebd7" stroke="#16845f" strokeWidth="2"/>}
@@ -80,6 +89,7 @@ export default function BasicLab({id}:{id:BasicId}){
               <line x1="210" y1="166" x2="322" y2="166" stroke="#64748b" strokeWidth="2"/>
               <line x1="210" y1="166" x2={210+112*Math.cos((theta-90)*Math.PI/180)} y2={166+112*Math.sin((theta-90)*Math.PI/180)} stroke="#64748b" strokeWidth="2"/>
               <text x="220" y="158" className="diagram-note">{theta}°</text>
+              <circle className="angle-handle" cx={210+112*Math.cos((theta-90)*Math.PI/180)} cy={166+112*Math.sin((theta-90)*Math.PI/180)} r="12" fill="#f7bf40" stroke="#7c5a1f" strokeWidth="2" role="slider" tabIndex={0} aria-label="중심각 끝점 드래그" aria-valuemin={15} aria-valuemax={330} aria-valuenow={theta} onPointerDown={e=>{dragPointer.current=e.pointerId;e.currentTarget.setPointerCapture(e.pointerId);updateAngleFromPointer(e.clientX,e.clientY)}} onKeyDown={e=>{if(e.key==='ArrowRight'||e.key==='ArrowUp'){e.preventDefault();setTheta(Math.min(330,theta+5))}else if(e.key==='ArrowLeft'||e.key==='ArrowDown'){e.preventDefault();setTheta(Math.max(15,theta-5))}}}/>
             </>}
             {id==='basic-circumference'?<><circle cx="210" cy="166" r="112" fill="none" stroke={mode==='line'?'#2563eb':'#64748b'} strokeWidth={mode==='line'?7:3} strokeDasharray={mode==='line'?`${2*Math.PI*112}`:undefined} strokeDashoffset={mode==='line'?`${2*Math.PI*112*(1-progress)}`:undefined} data-basic-boundary/>{mode==='line'&&<circle cx={210+112*Math.cos((-90+360*progress)*Math.PI/180)} cy={166+112*Math.sin((-90+360*progress)*Math.PI/180)} r="7" fill="#e56b36"/>}</>:
               usesAngle(id)&&<path d={sectorArc(210,166,112,mode==='line'?Math.max(.01,theta*progress):theta)} fill="none" stroke="#e56b36" strokeWidth={mode==='line'?7:4} strokeLinecap="round" data-basic-boundary/>}
