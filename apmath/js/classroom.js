@@ -534,9 +534,12 @@ function syncClassroomHomeworkStatusToState(studentId, date, status) {
 }
 
 function openClassroomConsultation(studentId, classId, date) {
-    if (typeof setManagementReturnView === 'function') {
-        setManagementReturnView({ type: 'classDetail', classId: String(classId) });
-    }
+    const classReturn = { type: 'classDetail', classId: String(classId) };
+    if (typeof setManagementReturnView === 'function') setManagementReturnView(classReturn);
+    // A consultation opens the student detail as an intermediate step.
+    // Pin its original class to avoid borrowing the last student's return context.
+    if (!state.ui) state.ui = {};
+    state.ui.currentStudentDetailReturnTo = classReturn;
 
     if (typeof openAddConsultationModal === 'function') {
         openAddConsultationModal(String(studentId));
@@ -1727,18 +1730,45 @@ function renderClassTopBarV4B(cls, summary, today) {
     `;
 }
 
+// Centralize feature navigation from the currently selected class.
+// Keep the existing feature implementations and their save contracts unchanged.
+function openClassroomFeature(cid, feature) {
+    const classId = String(cid || '');
+    const cls = state.db?.classes?.find(row => String(row.id) === classId);
+    if (!cls || String(state.ui?.currentClassId || '') !== classId ||
+        (typeof canCurrentUserAccessClass === 'function' && !canCurrentUserAccessClass(classId))) {
+        toast('현재 반 정보를 확인한 뒤 다시 시도해주세요.', 'warn');
+        return false;
+    }
+    const featureHandlers = {
+        progress: () => openClassRecordModal(classId),
+        homework: () => openHomeworkPhotoAssignmentModal(classId),
+        qr: () => openQrGenerator(classId),
+        exam: () => openExamGradeView(classId),
+        clinic: () => typeof openClinicCenter === 'function'
+            ? openClinicCenter(classId) : toast('클리닉 준비중', 'warn'),
+        planner: () => renderPlannerControl(classId)
+    };
+    if (!Object.prototype.hasOwnProperty.call(featureHandlers, feature)) return false;
+    const returnTo = { type: 'classDetail', classId };
+    if (typeof setManagementReturnView === 'function') setManagementReturnView(returnTo);
+    if (typeof setModalReturnView === 'function') setModalReturnView(returnTo);
+    featureHandlers[feature]();
+    return true;
+}
+
 function renderClassToolBarV4B(cid, plannerEnabled, today) {
     const realToday = getClassroomTodayDate();
     return `
         <div class="cls-v4-tools apms-toolbar ap-classroom-toolbar">
             <input type="date" class="cls-v4-date-input" value="${apEscapeHtml(today)}" onchange="changeClassOperationDate('${cid}', this.value)" title="운영 날짜 선택">
             <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
-            <button class="btn cls-v4-tool red apms-button apms-button--quiet" onclick="openClassRecordModal('${cid}')">진도</button>
-            <button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="openHomeworkPhotoAssignmentModal('${cid}')">숙제</button>
-            <button class="btn cls-v4-tool blue apms-button apms-button--quiet" onclick="openQrGenerator('${cid}')">QR/OMR</button>
-            <button class="btn cls-v4-tool orange apms-button apms-button--quiet" onclick="openExamGradeView('${cid}')">원내평가</button>
-            <button class="btn cls-v4-tool purple apms-button apms-button--quiet" onclick="if(typeof openClinicCenter==='function') openClinicCenter('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
-            ${plannerEnabled ? `<button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="renderPlannerControl('${cid}')">플래너</button>` : ''}
+            <button class="btn cls-v4-tool red apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'progress')">진도</button>
+            <button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'homework')">숙제</button>
+            <button class="btn cls-v4-tool blue apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'qr')">QR/OMR</button>
+            <button class="btn cls-v4-tool orange apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'exam')">원내평가</button>
+            <button class="btn cls-v4-tool purple apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'clinic')">클리닉</button>
+            ${plannerEnabled ? `<button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'planner')">플래너</button>` : ''}
         </div>
     `;
 }

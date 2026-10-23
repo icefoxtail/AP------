@@ -263,7 +263,11 @@ function appHistoryBack() {
     }
 
     if (isModalOpen()) {
-        closeModal(true);
+        const returnCtx = state.ui?.modalReturnView;
+        const hasClassReturn = returnCtx?.type === 'classDetail' ||
+            (returnCtx?.type === 'studentDetail' && state.ui?.currentStudentDetailReturnTo?.type === 'classDetail');
+        // The app back button must not discard a classroom-origin modal's return route.
+        closeModal(!hasClassReturn);
         window.setTimeout(updateAppBackButtons, 280);
         return true;
     }

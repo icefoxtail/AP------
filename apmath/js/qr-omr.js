@@ -259,6 +259,9 @@ function normalizeQrArchiveFileLegacy(raw = '') {
  * QR 코드 생성 모달 오픈
  */
 function openQrGenerator(cid) {
+    if (typeof setModalReturnView === 'function') {
+        setModalReturnView({ type: 'classDetail', classId: String(cid) });
+    }
     state.ui.currentClassId = cid; 
     const cls = state.db.classes.find(c => c.id === cid);
     const today = new Date().toLocaleDateString('sv-SE');
