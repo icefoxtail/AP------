@@ -89,9 +89,10 @@ function attachMetaPipelineAudit(f, { existingConcept = false } = {}) {
   const sourceBytes = fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`));
   const examTitle = path.basename(f.request.sourceArchiveFile, ".js");
   const sourceFileDriveId = "fixture-drive-source-id";
+  const target = f.request.items[0].after;
   const record = { questionId: 1, standardUnitKey: f.q.standardUnitKey, subUnitKey: f.q.subUnitKey, auditVerdict: "APPROVED",
-    classification: { problemTypeKey: f.q.problemTypeKey, templateKey: f.q.templateKey, crossConceptKeys: f.q.crossConceptKeys,
-      conditionKeys: f.q.conditionKeys, status: "APPROVED_CANONICAL" },
+    classification: { problemTypeKey: target.problemTypeKey, templateKey: target.templateKey, crossConceptKeys: target.crossConceptKeys,
+      conditionKeys: target.conditionKeys, status: "APPROVED_CANONICAL" },
     readingEvidence: { sourceTextExcerpt: "학생용 발문 발췌", solutionDecisiveExcerpt: "핵심 풀이 발췌", visualAssetChecked: false, visualType: "NONE" } };
   const audit = { schemaVersion: "ALIVE_META_AUDIT_ATOMIC_v3", examTitle, sourceFileDriveId, sourceSha256: hash(sourceBytes),
     auditedTimestamp: "2026-10-23T00:00:00Z", auditVerdict: "ALL_APPROVED_CANONICAL_STANDARDIZED",
@@ -102,7 +103,7 @@ function attachMetaPipelineAudit(f, { existingConcept = false } = {}) {
   const manifest = { schemaVersion: "COURIER_INTAKE_MANIFEST_v2", examTitle, sourceFileDriveId, sourceSha256: hash(sourceBytes),
     status: "READY_FOR_COURIER_REGISTRATION", courierAction: "COMMIT_CANONICAL_BINDING", bindingTarget: `archive/exams/${f.request.sourceArchiveFile}`,
     payloadSummary: { totalQuestions: 1, approved: 1, templateInflationCount: 0, atomicCrossConceptsCount: 1, holdCount: 0 },
-    recordsToBind: [{ questionId: 1, problemTypeKey: f.q.problemTypeKey, templateKey: f.q.templateKey, crossConceptKeys: f.q.crossConceptKeys }] };
+    recordsToBind: [{ questionId: 1, problemTypeKey: target.problemTypeKey, templateKey: target.templateKey, crossConceptKeys: target.crossConceptKeys }] };
   const evidenceRoot = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1";
   const auditPath = `${evidenceRoot}/${f.request.requestId}.audit.json`;
   const manifestPath = `${evidenceRoot}/${f.request.requestId}.manifest.json`;
@@ -172,6 +173,31 @@ test("META_PIPELINE_AUDIT registers exact audited bindings without relabeling FI
   assert.equal(receipt.approval.type, "META_PIPELINE_AUDIT");
   assert.equal(receipt.examFinalQaStatus, "NOT_EVALUATED_BY_REGISTRAR");
   assert.equal(receipt.metaPipelineAudit.schemaVersion, "ALIVE_META_AUDIT_ATOMIC_v3");
+});
+
+test("META_PIPELINE_AUDIT materializes explicitly pending source metadata placeholders", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, problemTypeKey: null, templateKey: null, crossConceptKeys: [], projectionStatus: "BINDING_PENDING",
+    problemTypeKeyNullReason: "No exact ACTIVE binding exists yet.", templateKeyNullReason: "No exact ACTIVE binding exists yet." };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  attachMetaPipelineAudit(f);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(f.read(META).records[0].problemTypeKey, "PT_NEW");
+  assert.equal(f.read(META).records[0].templateKey, "TPL_NEW");
+  assert.equal(f.read(META).records[0].crossConceptKeys[0], "CC_NEW");
+  assert.equal(fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`), "utf8"), bytes);
+});
+
+test("META_PIPELINE_AUDIT does not treat unreasoned null source metadata as pending placeholders", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, problemTypeKey: null, templateKey: null, crossConceptKeys: [], projectionStatus: "BINDING_PENDING" };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  attachMetaPipelineAudit(f);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /source\/approved metadata parity/);
 });
 
 test("META_PIPELINE_AUDIT reuses a same-label existing CrossConcept without changing its canonical meaning", t => {
