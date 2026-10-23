@@ -68,3 +68,13 @@ Standalone React app at `playground-react/`, on `feat/playground-react-migration
 - Functional implementation and requested verification are complete. PR #761 is open; merge and deployment are intentionally outside the requested scope.
 - The requested one-type-per-implementation-commit cadence was not met for the 14 practice principles: they use one shared engine suite commit, with individual model modules and per-type verification retained.
 - A one-time continuation alarm could not be scheduled: Codex reported it could not verify this chat for scheduled updates. The active goal and this status file remain available for continuation.
+
+## Pinpoint repair review — 2026-10-24
+
+- Direct code review identified wrong practical-sector perimeter (missing π), mismatched arc and straight-boundary SVGs, fixed lens radii, incorrect square/triangle rotation pivots, and a schematic rolling trace.
+- Repaired exact symbolic perimeter/area values for sector, annular sector, and rotational band. Constrained lens lessons to two quarter-circle arcs with an elementary area formula.
+- Rebuilt the square semicircle cutout, square-corner quarter-arcs, annular edge endpoints, rotation trajectories, outward rolling sweep, overlap circle dimensions and tether accessible-sector orientation.
+- Restricted tether controls to the non-overlapping range and aligned basic sector reference radius with its arc.
+- Added focused mathematical regression assertions and an isolated Playground QA workflow. This QA run must PASS before the new head can be approved; previous PASS claims apply to the earlier commit only.
+- **Still requiring visual acceptance:** the shared practice-area piece tray is a scale-free calculation-symbol illustration, not yet a general proof by exact rigid cut-and-paste. Its UI now labels this limitation. Full real-browser animation comparison against the AI Studio minimum quality floor has not been independently repeated in this repair review.
+- PR #761 remains unmerged; changes are confined to the Playground and its dedicated QA workflow.
