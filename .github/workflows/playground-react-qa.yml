@@ -1,0 +1,31 @@
+name: AP Math Playground QA
+
+on:
+  pull_request:
+    paths:
+      - 'playground-react/**'
+      - '.github/workflows/playground-react-qa.yml'
+  push:
+    branches:
+      - 'feat/playground-react-migration'
+    paths:
+      - 'playground-react/**'
+      - '.github/workflows/playground-react-qa.yml'
+
+jobs:
+  playground:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: playground-react
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: playground-react/package-lock.json
+      - run: npm ci
+      - run: npm run check
+      - run: npm run test:math
+      - run: npm run build
