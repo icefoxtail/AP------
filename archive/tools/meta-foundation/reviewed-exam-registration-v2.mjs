@@ -32,6 +32,12 @@ const valueFields = new Set([...sourceFields, "sourceFingerprint", "contentFinge
 const META_PIPELINE_STUDENT_FIELDS = ["id", "questionType", "content", "choices", "answer", "solution", "image", "images", "figureSvg", "solutionImage", "solutionFigureSvg", "layoutTag", "wide"];
 const studentPayloadSha256 = question => digest(stable(Object.fromEntries(META_PIPELINE_STUDENT_FIELDS.map(field =>
   [field, Object.hasOwn(question, field) ? question[field] : null]))));
+const isPendingMetaPlaceholder = (question, field, approvedValue) => question.projectionStatus === "BINDING_PENDING" && (
+  ["problemTypeKey", "templateKey"].includes(field) && (question[field] === null || question[field] === "") &&
+    typeof question[`${field}NullReason`] === "string" && question[`${field}NullReason`].trim() ||
+  ["crossConceptKeys", "conditionKeys"].includes(field) && Array.isArray(question[field]) && question[field].length === 0 &&
+    Array.isArray(approvedValue) && approvedValue.length > 0
+);
 
 function safePath(root, relative) {
   if (typeof relative !== "string" || !relative || relative.includes("\\") || relative.split("/").some(x => !x || x === "." || x === "..") || path.isAbsolute(relative)) fail(`unsafe path: ${relative}`);
@@ -540,7 +546,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (!Object.hasOwn(patch.before, field)) fail(`before required: ${current.questionUid}.${field}`);
     }
     const final = { ...current, ...structuredClone(patch.after) };
-    for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f])) fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
+    for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f]) &&
+        !(req.approval.type === "META_PIPELINE_AUDIT" && isPendingMetaPlaceholder(q, f, final[f])))
+      fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
     const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch });
     const fingerprint = checked.sourceFingerprint;
     if (checked.identityChanged || Object.hasOwn(patch.after, "sourceFingerprint")) fingerprintRepairs.push({
