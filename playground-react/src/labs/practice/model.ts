@@ -26,8 +26,7 @@ export function calculation(id:PracticeId,variant:string,p:PracticeParams):Pract
     const formula=id==='arc'&&variant==='arc-ratio'?`\\ell_1=\\frac{${theta}}{360}2\\pi r,\quad\\ell_2=\\frac{360-${theta}}{360}2\\pi r;\quad\\ell_1:\\ell_2=${theta}:${360-theta}`:id==='arc'?`\\ell=\\frac{${actualTheta}}{360}\\times2\\pi\\times${r}=${areaPi(r*actualTheta,180)}\\text{ ${unit}}`:
       variant==='sector-inverse'?`\\ell=${areaPi(theta*r,180)},\quad A=${areaPi(theta*r*r,360)};\quad r=\\frac{180\\ell}{${theta}\\pi}=${r}`:`\\ell=${areaPi(theta*r,180)},\quad P=\\ell+2r=${areaPi(theta*r,180)}+${2*r},\quad A=${areaPi(theta*r*r,360)}`;
     if(id==='arc')return {formula,concept:variant==='arc-ratio'?'같은 원의 두 호 길이 비는 각 호에 대응하는 중심각의 비와 같습니다.':'호와 현을 구분하고, 중심각이 원 전체에서 차지하는 비율을 사용합니다.',boundary:`${pi(r*actualTheta,180)} cm`,lineLabel:'호의 길이',terms:variant==='arc-ratio'?[{label:'첫째 호',value:`${pi(theta*r,180)} cm`},{label:'나머지 호',value:`${pi((360-theta)*r,180)} cm`},{label:'호의 길이 비',value:`${theta}:${360-theta}`}]:[{label:'호의 길이',value:`${pi(r*actualTheta,180)} cm`}],unit};
-    const ar=theta*r*r/360,per=2*r+h;
-    return {formula,concept:'부채꼴의 호·전체 둘레·넓이는 서로 다른 양입니다. 각 식에 맞는 경계와 단위를 확인합니다.',boundary:`${clean(h)}π cm`,perimeter:`${clean(per)} cm`,area:`${clean(ar)}π cm²`,terms:[{label:'호의 길이',value:`${pi(theta*r,180)} cm`},{label:'부채꼴 넓이',value:`${pi(theta*r*r,360)} cm²`}],unit};
+    return {formula,concept:'부채꼴의 호·전체 둘레·넓이는 서로 다른 양입니다. 각 식에 맞는 경계와 단위를 확인합니다.',boundary:`${pi(theta*r,180)} cm`,perimeter:`${pi(theta*r,180)} + ${2*r} cm`,area:`${pi(theta*r*r,360)} cm²`,terms:[{label:'호의 길이',value:`${pi(theta*r,180)} cm`},{label:'부채꼴 넓이',value:`${pi(theta*r*r,360)} cm²`}],unit};
   }
   if(id==='boundary'){
     if(variant==='boundary-track'){
@@ -35,8 +34,8 @@ export function calculation(id:PracticeId,variant:string,p:PracticeParams):Pract
       return {formula:`P=2\\pi r+2(2r)=${pi(diameter)}+${2*diameter};\quad A=\\pi r^2+(2r)^2=${pi(diameter*diameter,4)}+${diameter*diameter}`,concept:'양옆 반원 두 개를 합치면 지름이 같은 원 한 개입니다. 직선 두 구간은 둘레에 포함합니다.',perimeter:`${pi(diameter)} + ${2*diameter} cm`,area:`${pi(diameter*diameter,4)} + ${diameter*diameter} cm²`,terms:[{label:'양옆 반원 호 합',value:`${pi(diameter)} cm`},{label:'위·아래 직선',value:`${2*diameter} cm`},{label:'색칠 넓이',value:`${pi(diameter*diameter,4)} + ${diameter*diameter} cm²`}],unit};
     }
     if(variant==='boundary-ring'){
-      const R=Math.max(p.R??8,(p.r??4)+1),q=Math.min(p.r??4,R-1),per=theta/360*2*Math.PI*(R+q)+2*(R-q),area=theta/360*Math.PI*(R*R-q*q);
-      return {formula:`A=\\frac{${theta}}{360}\\pi(${R}^2-${q}^2),\quad P=\\frac{${theta}}{360}2\\pi(${R}+${q})+2(${R}-${q})`,concept:'고리 모양 부채꼴은 안쪽·바깥쪽 원호와 두 반지름 방향 선분이 경계입니다.',perimeter:`${clean(per)} cm`,area:`${clean(area)} cm²`,terms:[{label:'바깥 원호',value:`${clean(theta/360*2*R)}π`},{label:'안쪽 원호',value:`${clean(theta/360*2*q)}π`},{label:'직선 2개',value:`${2*(R-q)}`}],unit};
+      const R=Math.max(p.R??8,(p.r??4)+1),q=Math.min(p.r??4,R-1);
+      return {formula:`A=\\frac{${theta}}{360}\\pi(${R}^2-${q}^2),\\quad P=\\frac{${theta}}{360}2\\pi(${R}+${q})+2(${R}-${q})`,concept:'고리 모양 부채꼴은 안쪽·바깥쪽 원호와 두 반지름 방향 선분이 경계입니다.',perimeter:`${pi(theta*(R+q),180)} + ${2*(R-q)} cm`,area:`${pi(theta*(R*R-q*q),360)} cm²`,terms:[{label:'바깥 원호',value:`${pi(theta*R,180)} cm`},{label:'안쪽 원호',value:`${pi(theta*q,180)} cm`},{label:'직선 2개',value:`${2*(R-q)} cm`}],unit};
     }
     return {formula:`P=3s+\\pi\\frac{s}{2}=${3*s}+${pi(s,2)};\quad A=s^2-\\frac{\\pi s^2}{8}`,concept:'잘라 낸 반원의 지름선은 도형 안쪽에 있으므로 둘레에서 빼고, 파인 호는 포함합니다.',perimeter:`${3*s} + ${pi(s,2)} cm`,area:`${s*s} − ${pi(s*s,8)} cm²`,terms:[{label:'남은 직선 3개',value:`${3*s} cm`},{label:'파인 반원 호',value:`${pi(s,2)} cm`},{label:'빠진 반원 넓이',value:`−${pi(s*s,8)} cm²`}],unit};
   }
@@ -55,8 +54,8 @@ export function calculation(id:PracticeId,variant:string,p:PracticeParams):Pract
     return {formula:`A=2\\times\\frac{\\pi s^2}{4}-s^2;\quad P=2\\times\\frac{1}{4}(2\\pi s)`,concept:'두 사분원을 더하면 정사각형이 한 번 겹쳐 더해지므로 정사각형 넓이를 빼야 렌즈만 남습니다.',perimeter:`${pi(s)} cm`,area:`(${clean(Math.PI/2)} − 1) × ${s*s} cm²`,terms:[{label:'두 사분원 넓이',value:`${pi(s*s,2)} cm²`},{label:'겹친 정사각형',value:`−${s*s} cm²`},{label:'두 호의 합',value:`${pi(s)} cm`}],unit};
   }
   if(id==='spinarea'){
-    const inner=p.r??3,w=p.w??3,outer=inner+w,area=theta/360*Math.PI*(outer*outer-inner*inner);
-    return {formula:`A=\\frac{${theta}}{360}\\pi[(${outer})^2-(${inner})^2];\quad P=\\frac{${theta}}{360}2\\pi(${outer}+${inner})+2(${w})`,concept:'큰 부채꼴에서 작은 부채꼴을 빼면 같은 각도만큼 회전한 띠가 남습니다.',perimeter:`${clean(theta/360*2*(outer+inner))}π + ${2*w} cm`,area:`${clean(area)} cm²`,terms:[{label:'큰 부채꼴',value:`${pi(theta*outer*outer,360)} cm²`},{label:'작은 부채꼴',value:`−${pi(theta*inner*inner,360)} cm²`},{label:'남은 띠',value:`${clean(area)} cm²`}],unit};
+    const inner=p.r??3,w=p.w??3,outer=inner+w;
+    return {formula:`A=\\frac{${theta}}{360}\\pi[(${outer})^2-(${inner})^2];\\quad P=\\frac{${theta}}{360}2\\pi(${outer}+${inner})+2(${w})`,concept:'큰 부채꼴에서 작은 부채꼴을 빼면 같은 각도만큼 회전한 띠가 남습니다.',perimeter:`${pi(theta*(outer+inner),180)} + ${2*w} cm`,area:`${pi(theta*(outer*outer-inner*inner),360)} cm²`,terms:[{label:'큰 부채꼴',value:`${pi(theta*outer*outer,360)} cm²`},{label:'작은 부채꼴',value:`−${pi(theta*inner*inner,360)} cm²`},{label:'남은 띠',value:`${pi(theta*(outer*outer-inner*inner),360)} cm²`}],unit};
   }
   if(id==='rotate'){
     const side=p.r??4,rad=variant==='rotate-square'?Math.sqrt(2)*side:side,turn=theta,arcExact=pi(turn*side,180);
@@ -81,8 +80,8 @@ export function calculation(id:PracticeId,variant:string,p:PracticeParams):Pract
       const a=p.a??6,b=p.b??8,area=a*b/2;
       return {formula:`S_{\\text{두 초승달}}=(\\frac{a^2\\pi}{8}+\\frac{b^2\\pi}{8}+\\frac12ab)-\\frac{(a^2+b^2)\\pi}{8}=\\frac12ab`,concept:'작은 두 반원의 넓이 합은 빗변 위 큰 반원의 넓이와 같습니다. 원주율이 포함된 부분을 빼면 직각삼각형 넓이만 남습니다.',area:`${clean(area)} cm²`,terms:[{label:'작은 반원 2개',value:`${pi(a*a+b*b,8)} cm²`},{label:'직각삼각형을 더함',value:`+ ${clean(area)} cm²`},{label:'빗변 위 큰 반원',value:`−${pi(a*a+b*b,8)} cm²`}],unit};
     }
-    const rad=p.r??6,d=Math.min(p.d??8,2*rad-0.1),alpha=Math.acos(d/(2*rad)),area=2*rad*rad*alpha-d/2*Math.sqrt(4*rad*rad-d*d),per=4*rad*alpha;
-    return {formula:`A=2r^2\\cos^{-1}(d/2r)-\\frac d2\\sqrt{4r^2-d^2};\quad P=4r\\cos^{-1}(d/2r)`,concept:'두 원이 겹치는 렌즈는 공통 부분을 한 번만 셉니다. 둘레에는 렌즈의 두 원호만 들어갑니다.',perimeter:`${clean(per)} cm`,area:`${clean(area)} cm²`,terms:[{label:'렌즈 넓이',value:`${clean(area)} cm²`},{label:'두 원호 길이',value:`${clean(per)} cm`}],unit};
+    const rad=p.r??6;
+    return {formula:`A=2\\times\\frac14\\pi r^2-r^2=\\frac12\\pi r^2-r^2,\\quad P=2\\times\\frac14(2\\pi r)=\\pi r`,concept:'같은 크기의 두 원을 정사각형 대각 꼭짓점에 놓으면 교집합은 90° 원호 두 개로 둘러싸입니다. 사분원 둘에서 정사각형을 빼면 넓이가 나옵니다.',perimeter:`${pi(rad)} cm`,area:`${pi(rad*rad,2)} − ${rad*rad} cm²`,terms:[{label:'사분원 두 개',value:`${pi(rad*rad,2)} cm²`},{label:'겹친 정사각형',value:`−${rad*rad} cm²`},{label:'렌즈 둘레',value:`${pi(rad)} cm`}],unit};
   }
   if(id==='polygon'){
     const n=p.n??6,rad=p.r??6,angle=360/n;
