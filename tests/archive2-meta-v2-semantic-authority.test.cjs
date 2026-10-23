@@ -25,7 +25,7 @@ const problemTypeKey = "TEST_REGISTRATION_MF_PROBLEM";
 const templateKey = "TEST_REGISTRATION_MF_TEMPLATE";
 const standardUnitKey = basic.standardUnitKey || "";
 const subUnitKey = basic.subUnitKey || "";
-const bindingKey = [parent.curriculumKey, standardUnitKey, subUnitKey, problemTypeKey].join("\u0000");
+const bindingKey = [parent.curriculumKey, standardUnitKey, `VALUE:${subUnitKey}`, problemTypeKey].join("\u0000");
 const approvedMeta = {
   ...basic,
   problemTypeKey,
