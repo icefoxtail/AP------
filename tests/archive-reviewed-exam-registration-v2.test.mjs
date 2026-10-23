@@ -348,6 +348,31 @@ test("META_PIPELINE_AUDIT accepts a shared L1/L2 parent only from sibling consen
   assert.equal(row.L2, "새 세부단원");
 });
 
+test("META_PIPELINE_AUDIT uses an exact approved metadata parent snapshot when the shared parent map lacks a row", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f);
+  const metadata = f.read(META), current = metadata.records[0];
+  Object.assign(current, { L1: "기존 승인 L1", L2: "기존 승인 L2", curriculum: "2022", curriculumKey: "2022",
+    reviewStatus: "reviewed_pass", metadataStatus: "approved_semantic_review" });
+  f.put(META, metadata);
+  const parentPath = f.request.items[0].basicScopeParentRef.path;
+  const parentProof = { schemaVersion: "archive-meta-pipeline-parent-label-evidence-v1", sourcePath: META,
+    sourceSha256: hash(fs.readFileSync(path.join(f.root, META))), records: [{ questionUid: "uid1", sourceArchiveFile: f.request.sourceArchiveFile,
+      sourceOrdinal: 1, curriculumKey: "2022", courseKey: "중1 수학", standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW",
+      L1: current.L1, L2: current.L2 }], derivedRecords: [] };
+  f.put(parentPath, parentProof);
+  const ref = { path: parentPath, sha256: hash(fs.readFileSync(path.join(f.root, parentPath))) };
+  const replaceParentRef = refs => refs.map(row => row.path === parentPath ? ref : row);
+  f.request.approval.evidenceRefs = replaceParentRef(f.request.approval.evidenceRefs);
+  f.request.items = f.request.items.map(item => ({ ...item, basicScopeParentRef: ref,
+    before: { ...item.before, curriculum: "2022", curriculumKey: "2022", L1: current.L1, L2: current.L2, L3: null, L4: null },
+    after: { ...item.after, L1: current.L1, L2: current.L2 }, evidenceRefs: replaceParentRef(item.evidenceRefs) }));
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.L1, "기존 승인 L1");
+  assert.equal(row.L2, "기존 승인 L2");
+});
+
 test("META_PIPELINE_AUDIT reuses a same-label existing CrossConcept without changing its canonical meaning", t => {
   const f = fixture(t);
   attachMetaPipelineAudit(f, { existingConcept: true });

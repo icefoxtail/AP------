@@ -442,7 +442,7 @@ function resolve(row, tables) {
   return { pt, tpl, unit, sub, binding, pack, curriculum, course };
 }
 
-function labelsFor(patch, row, resolved, read, sourceBlob) {
+function labelsFor(root, patch, row, resolved, read, sourceBlob) {
   const base = { L1: resolved.binding.L1 || resolved.unit.labelKo, L2: resolved.binding.L2 || resolved.sub?.labelKo || "", L3: resolved.pt.canonicalLabelKo, L4: resolved.tpl.canonicalLabelKo };
   if (patch.basicScopeParentRef) {
     if (patch.targetParentRef) fail("basic and RPM target parent references cannot be combined");
@@ -451,26 +451,48 @@ function labelsFor(patch, row, resolved, read, sourceBlob) {
         !(patch.evidenceRefs || []).some(e => e.path === ref.path && e.sha256 === ref.sha256)) fail("basic scope parent reference is not evidence-bound");
     const proof = read(ref.path);
     if (proof.schemaVersion !== "archive-meta-pipeline-parent-label-evidence-v1" ||
-        proof.sourcePath !== "archive/data/basic-scope-parent-links.json" || !/^[a-f0-9]{64}$/.test(proof.sourceSha256 || ""))
+        !["archive/data/basic-scope-parent-links.json", META].includes(proof.sourcePath) || !/^[a-f0-9]{64}$/.test(proof.sourceSha256 || ""))
       fail("basic scope parent evidence schema/source mismatch");
     const compactCourse = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
-    const matches = (proof.records || []).filter(parent => parent.curriculumKey === resolved.curriculum &&
-      compactCourse(parent.courseKey) === compactCourse(resolved.course) && parent.standardUnitKey === row.standardUnitKey && (parent.subUnitKey ?? null) === (row.subUnitKey ?? null));
-    let parent = matches.length === 1 ? matches[0] : null;
-    if (!parent && matches.length === 0) {
-      const derived = (proof.derivedRecords || []).filter(candidate => candidate.curriculumKey === resolved.curriculum &&
-        compactCourse(candidate.courseKey) === compactCourse(resolved.course) && candidate.standardUnitKey === row.standardUnitKey &&
-        candidate.subUnitKey === (row.subUnitKey ?? null));
-      if (derived.length !== 1 || derived[0].method !== "SAME_STANDARD_UNIT_SIBLING_PARENT_CONSENSUS" ||
-          !Array.isArray(derived[0].supportingSubUnitKeys) || derived[0].supportingSubUnitKeys.length < 2) fail(`basic scope parent evidence missing/ambiguous: ${row.questionUid}`);
-      const supportKeys = new Set(derived[0].supportingSubUnitKeys);
-      const support = (proof.records || []).filter(candidate => candidate.curriculumKey === resolved.curriculum &&
-        compactCourse(candidate.courseKey) === compactCourse(resolved.course) && candidate.standardUnitKey === row.standardUnitKey &&
-        supportKeys.has(candidate.subUnitKey) && candidate.subUnitKey !== row.subUnitKey);
-      if (support.length !== supportKeys.size || new Set(support.map(candidate => candidate.L1)).size !== 1 ||
-          new Set(support.map(candidate => candidate.L2)).size !== 1 || support[0].L1 !== derived[0].L1 || support[0].L2 !== derived[0].L2)
-        fail(`basic scope sibling parent evidence is inconsistent: ${row.questionUid}`);
-      parent = derived[0];
+    let parent = null;
+    if (proof.sourcePath === META) {
+      const metadataBytes = fs.readFileSync(safePath(root, META));
+      if (digest(metadataBytes) !== proof.sourceSha256) fail(`approved metadata parent snapshot SHA mismatch: ${row.questionUid}`);
+      const metadataDoc = JSON.parse(metadataBytes.toString("utf8"));
+      const currentRows = metadataDoc.records.filter(candidate => candidate.questionUid === patch.questionUid &&
+        candidate.sourceArchiveFile === row.sourceArchiveFile && candidate.sourceOrdinal === row.sourceOrdinal);
+      const snapshotRows = (proof.records || []).filter(candidate => candidate.questionUid === patch.questionUid &&
+        candidate.sourceArchiveFile === row.sourceArchiveFile && candidate.sourceOrdinal === row.sourceOrdinal);
+      if (currentRows.length !== 1 || snapshotRows.length !== 1 || !approved(currentRows[0]))
+        fail(`approved metadata parent snapshot missing/ambiguous: ${row.questionUid}`);
+      const current = currentRows[0], snapshot = snapshotRows[0];
+      if (snapshot.curriculumKey !== resolved.curriculum || compactCourse(snapshot.courseKey) !== compactCourse(resolved.course) ||
+          snapshot.standardUnitKey !== row.standardUnitKey || (snapshot.subUnitKey ?? null) !== (row.subUnitKey ?? null) ||
+          (current.curriculum || current.curriculumKey) !== snapshot.curriculumKey ||
+          compactCourse(current.standardCourse || current.courseKey) !== compactCourse(snapshot.courseKey) ||
+          current.standardUnitKey !== snapshot.standardUnitKey || (current.subUnitKey ?? null) !== (snapshot.subUnitKey ?? null) ||
+          current.L1 !== snapshot.L1 || current.L2 !== snapshot.L2)
+        fail(`approved metadata parent snapshot identity mismatch: ${row.questionUid}`);
+      parent = snapshot;
+    } else {
+      const matches = (proof.records || []).filter(candidate => candidate.curriculumKey === resolved.curriculum &&
+        compactCourse(candidate.courseKey) === compactCourse(resolved.course) && candidate.standardUnitKey === row.standardUnitKey && (candidate.subUnitKey ?? null) === (row.subUnitKey ?? null));
+      parent = matches.length === 1 ? matches[0] : null;
+      if (!parent && matches.length === 0) {
+        const derived = (proof.derivedRecords || []).filter(candidate => candidate.curriculumKey === resolved.curriculum &&
+          compactCourse(candidate.courseKey) === compactCourse(resolved.course) && candidate.standardUnitKey === row.standardUnitKey &&
+          candidate.subUnitKey === (row.subUnitKey ?? null));
+        if (derived.length !== 1 || derived[0].method !== "SAME_STANDARD_UNIT_SIBLING_PARENT_CONSENSUS" ||
+            !Array.isArray(derived[0].supportingSubUnitKeys) || derived[0].supportingSubUnitKeys.length < 2) fail(`basic scope parent evidence missing/ambiguous: ${row.questionUid}`);
+        const supportKeys = new Set(derived[0].supportingSubUnitKeys);
+        const support = (proof.records || []).filter(candidate => candidate.curriculumKey === resolved.curriculum &&
+          compactCourse(candidate.courseKey) === compactCourse(resolved.course) && candidate.standardUnitKey === row.standardUnitKey &&
+          supportKeys.has(candidate.subUnitKey) && candidate.subUnitKey !== row.subUnitKey);
+        if (support.length !== supportKeys.size || new Set(support.map(candidate => candidate.L1)).size !== 1 ||
+            new Set(support.map(candidate => candidate.L2)).size !== 1 || support[0].L1 !== derived[0].L1 || support[0].L2 !== derived[0].L2)
+          fail(`basic scope sibling parent evidence is inconsistent: ${row.questionUid}`);
+        parent = derived[0];
+      }
     }
     if (!parent) fail(`basic scope parent evidence missing/ambiguous: ${row.questionUid}`);
     base.L1 = requireText(parent.L1, "basic-scope L1");
@@ -606,7 +628,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     const currentPlan = registryPlan(root, [], evidenceRefs), currentTables = lookup(currentPlan);
     for (const record of previous.appliedRecords) {
       const r = resolve(record, currentTables);
-      const labels = labelsFor(patches.get(record.questionUid), record, r, read, blob);
+      const labels = labelsFor(root, patches.get(record.questionUid), record, r, read, blob);
       for (const [key, value] of Object.entries(labels)) if (record[key] !== value) fail(`registered canonical label drift: ${record.questionUid}.${key}`);
     }
     const allRuntime = fs.readdirSync(safePath(root, "archive/data/meta-foundation/runtime")).filter(n => n.endsWith(".json") && n !== "runtime-bridge-receipt.json").flatMap(n => read(`archive/data/meta-foundation/runtime/${n}`).records || []);
@@ -717,7 +739,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       integrationPatternEvidenceDebt = debt.reason;
     } else requireText(final.integrationPattern, "integrationPattern");
     const resolved = resolve(final, tables), { pt, tpl, unit, sub, pack, curriculum, course } = resolved;
-    for (const [field, label] of Object.entries(labelsFor(patch, final, resolved, read, blob))) {
+    for (const [field, label] of Object.entries(labelsFor(root, patch, final, resolved, read, blob))) {
       if (Object.hasOwn(patch.after, field) && patch.after[field] !== label) fail(`canonical label mismatch: ${current.questionUid}.${field}`);
       if (approved(current) && current[field] !== label && !Object.hasOwn(patch.before, field)) fail(`before required for derived label: ${current.questionUid}.${field}`);
       final[field] = label;
