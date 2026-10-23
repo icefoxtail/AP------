@@ -59,7 +59,7 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   return { root, put, read, request, q, evidenceRefs, change };
 }
 
-function attachMetaPipelineAudit(f, { existingConcept = false, siblingParent = false, promoteCanonicalTypes = false, driveSourceHashDrift = false } = {}) {
+function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLabelDrift = false, siblingParent = false, promoteCanonicalTypes = false, driveSourceHashDrift = false } = {}) {
   const conceptChange = f.request.registryChanges.find(change => change.path.startsWith(`${CANON}/concepts/`));
   const pendingRegistryChanges = [];
   for (const change of f.request.registryChanges) {
@@ -80,11 +80,14 @@ function attachMetaPipelineAudit(f, { existingConcept = false, siblingParent = f
   if (existingConcept) {
     const native = f.read(nativeConceptPath);
     native.concepts[0].definition = "정본에서 이미 등록된 미분계수 의미";
+    if (existingConceptLabelDrift) native.concepts[0].canonicalLabelKo = "기존 정본 표시명";
     f.put(nativeConceptPath, native);
-    auditConcept = { ...nativeConcept, definition: "감사에서 설명한 같은 미분계수의 접선 기울기 관점" };
+    auditConcept = { ...nativeConcept,
+      ...(existingConceptLabelDrift ? { canonicalLabelKo: "감사에서 사용한 표시명" } : {}),
+      definition: "감사에서 설명한 같은 미분계수의 접선 기울기 관점" };
     existingConceptReviews = [{ conceptKey: nativeConcept.conceptKey, disposition: "REUSE_CANONICAL",
-      canonicalLabelKo: nativeConcept.canonicalLabelKo, canonicalDefinition: native.concepts[0].definition,
-      auditLabelKo: nativeConcept.canonicalLabelKo, auditDefinition: auditConcept.definition,
+      canonicalLabelKo: native.concepts[0].canonicalLabelKo, canonicalDefinition: native.concepts[0].definition,
+      auditLabelKo: auditConcept.canonicalLabelKo, auditDefinition: auditConcept.definition,
       rationale: "같은 수학 개념의 동치인 적용 관점이며 기존 정본 정의를 수정하거나 병합하지 않는다." }];
   }
   const sourceBytes = fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`));
@@ -323,11 +326,21 @@ test("META_PIPELINE_AUDIT reuses a same-label existing CrossConcept without chan
   assert.equal(f.read(META).records[0].crossConceptKeys[0], "CC_NEW");
 });
 
+test("META_PIPELINE_AUDIT permits reviewed label and definition wording drift without changing canonical CrossConcept", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { existingConcept: true, existingConceptLabelDrift: true });
+  const canonicalBefore = f.read(`${CANON}/concepts/new-concepts.json`);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.registryChangeCount, 0);
+  assert.deepEqual(f.read(`${CANON}/concepts/new-concepts.json`), canonicalBefore);
+  assert.equal(f.read(META).records[0].crossConceptKeys[0], "CC_NEW");
+});
+
 test("META_PIPELINE_AUDIT refuses existing CrossConcept wording drift without a reuse rationale", t => {
   const f = fixture(t);
   attachMetaPipelineAudit(f, { existingConcept: true });
   delete f.request.approval.metaPipelineAudit.existingConceptReviews;
-  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /meaning review required/);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /wording review required/);
   assert.equal(fs.existsSync(path.join(f.root, "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json")), false);
 });
 
