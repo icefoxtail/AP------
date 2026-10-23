@@ -1,0 +1,27 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .main { stroke: #202124; stroke-width: 2.0; fill: none; }
+      .aux { stroke: #59636e; stroke-width: 1.5; stroke-dasharray: 4 3; fill: none; }
+      .axis { stroke: #8c959f; stroke-width: 1.0; fill: none; }
+      text { font-family: "Malgun Gothic", Arial, sans-serif; font-size: 13px; fill: #202124; }
+      .point { fill: #202124; }
+    </style>
+  </defs>
+  <line id="seg-xaxis" x1="40" y1="240" x2="350" y2="240" class="axis" />
+  <line id="seg-yaxis" x1="80" y1="30" x2="80" y2="270" class="axis" />
+  <text id="label-x" x="355" y="245">x</text>
+  <text id="label-y" x="75" y="25">y</text>
+  <polygon id="poly-oab" points="80,240 260,240 170,60" class="main" fill="#f8fafc" fill-opacity="0.5" />
+  <line id="seg-om" x1="80" y1="240" x2="215" y2="150" class="aux" />
+  <circle id="pt-O" cx="80" cy="240" r="3" class="point" />
+  <circle id="pt-A" cx="260" cy="240" r="3" class="point" />
+  <circle id="pt-B" cx="170" cy="60" r="3" class="point" />
+  <circle id="pt-G" cx="170" cy="180" r="3" class="point" />
+  <circle id="pt-M" cx="215" cy="150" r="2" class="point" />
+  <text id="label-O" x="65" y="258">O</text>
+  <text id="label-A" x="265" y="258">A(6, 0)</text>
+  <text id="label-B" x="155" y="50">B(3, 6)</text>
+  <text id="label-G" x="178" y="185">G</text>
+  <text id="label-M" x="220" y="145">M</text>
+</svg>
