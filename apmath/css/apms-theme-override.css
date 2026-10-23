@@ -2242,6 +2242,66 @@ body.dark .omr-card {
   }
 }
 
+.ap-class-progress-class-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 10px;
+  padding: 4px 0 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ap-class-progress-class-tab {
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 8px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.ap-class-progress-class-tab:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+
+.ap-class-progress-class-tab.is-active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--on-primary, #fff);
+}
+
+.ap-class-progress-class-tab:focus-visible {
+  outline: 3px solid rgba(var(--primary-rgb), 0.3);
+  outline-offset: 2px;
+}
+
+.ap-class-progress-class-tab:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+@media (max-width: 760px) {
+  .ap-class-progress-class-tabs {
+    gap: 7px;
+    margin-right: -4px;
+    margin-left: -4px;
+    padding: 5px 4px 10px;
+  }
+
+  .ap-class-progress-class-tab {
+    min-height: 44px;
+    padding: 9px 14px;
+  }
+}
+
 @media (max-width: 480px) {
   .ap-class-progress-course > summary,
   .ap-class-progress-subunit > summary {

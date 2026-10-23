@@ -175,10 +175,22 @@ const saveContext = {
         legacyLine: '[단원선택] legacy unit',
         hasStructuredSnapshot: false,
         dailyLoadFailed: false
+      },
+      classProgressModalState: {
+        classId: 'c1',
+        date: '2026-09-20',
+        books: [],
+        progressByTextbook: {},
+        savedPaths: [],
+        selectedPathDraft: [],
+        activeGroupKeys: [],
+        loadedPhase: 'regular',
+        selectedPhase: 'regular'
       }
     }
   },
   document: {
+    querySelector() { return null; },
     querySelectorAll(selector) {
       if (selector === '.record-tb-check:checked') return [];
       if (selector === '.record-unit-check:checked') return selectedUnitCheckboxes;
@@ -195,13 +207,13 @@ const saveContext = {
       if (path === 'class-daily-records') {
         return {
           success: true,
-          record: { id: 'record-1', class_id: 'c1', date: '2026-09-20', special_note: payload.special_note },
+          record: { id: `record-${payload.class_id}`, class_id: payload.class_id, date: '2026-09-20', special_note: payload.special_note },
           progress: []
         };
       }
       return {
         success: true,
-        snapshot: { id: 'snapshot-new', class_id: 'c1', effective_date: '2026-09-20' },
+        snapshot: { id: `snapshot-${payload.class_id}`, class_id: payload.class_id, effective_date: '2026-09-20' },
         items: payload.items
       };
     }
@@ -223,13 +235,16 @@ const saveContext = {
     }))
   }),
   syncClassProgressPhaseDraftFromDom: () => {},
+  getClassProgressDraftFingerprint: note => JSON.stringify({ classId: 'c1', date: '2026-09-20', note }),
+  getClassProgressItemPath: item => item.canonical_path_key,
   normalizeClassProgressPhase: value => [
     'regular', 'semester1_midterm', 'semester1_final', 'semester2_midterm', 'semester2_final'
   ].includes(value) ? value : 'regular',
   getClassProgressSnapshotForDate: () => ({ snapshot: null }),
   getTeacherNameForUI: () => '교사',
   toast: () => {},
-  closeModal: () => {},
+  closeModalCalls: 0,
+  closeModal() { this.closeModalCalls += 1; },
   loadData: async () => {},
   renderClass: () => {},
   renderTimetable: () => {},
@@ -244,9 +259,13 @@ const saveContext = {
   JSON
 };
 vm.runInNewContext(saveClassRecordFunction, saveContext, { filename: 'apmath/js/classroom.js' });
+await vm.runInNewContext("saveClassRecord('another-class', '2026-09-20')", saveContext);
+assert.equal(saveCalls.length, 0, 'a save call for a class other than the active modal class is rejected');
 await vm.runInNewContext("saveClassRecord('c1', '2026-09-20')", saveContext);
 assert.deepEqual(saveCalls.map(call => call.path), ['class-daily-records']);
 assert.equal(saveCalls[0].payload.special_note, '[단원선택] legacy unit\n일반 특이사항');
+assert.equal(saveCalls[0].payload.class_id, 'c1');
+assert.equal(saveContext.closeModalCalls, 0, 'successful progress saves leave the current screen open');
 
 selectedUnitCheckboxes = [{
   value: 'path-canonical',
@@ -273,6 +292,33 @@ saveCalls.length = 0;
 await vm.runInNewContext("saveClassRecord('c1', '2026-09-20')", saveContext);
 assert.deepEqual(saveCalls.map(call => call.path), ['class-daily-records', 'class-progress']);
 assert.equal(saveCalls[1].payload.items.length, 0);
+assert.equal(saveCalls[1].payload.class_id, 'c1');
+assert.equal(saveContext.closeModalCalls, 0);
+
+saveContext.state.ui.classProgressModalState.classId = 'c2';
+saveContext.state.ui.classProgressModalMeta.classId = 'c2';
+saveContext.state.ui.classProgressModalMeta.hasStructuredSnapshot = false;
+saveCalls.length = 0;
+selectedUnitCheckboxes = [{
+  value: 'path-c2',
+  getAttribute(name) {
+    return {
+      'data-curriculum-key': '2022',
+      'data-level-key': 'middle',
+      'data-course-key': 'M2-1',
+      'data-canonical-path-key': 'path-c2',
+      'data-l1': '연립방정식',
+      'data-l2': '풀이'
+    }[name] || '';
+  }
+}];
+await vm.runInNewContext("saveClassRecord('c1', '2026-09-20')", saveContext);
+assert.equal(saveCalls.length, 0, 'the previously selected class cannot write after the modal switches classes');
+await vm.runInNewContext("saveClassRecord('c2', '2026-09-20')", saveContext);
+assert.deepEqual(saveCalls.map(call => call.path), ['class-daily-records', 'class-progress']);
+assert.deepEqual(saveCalls.map(call => call.payload.class_id), ['c2', 'c2']);
+assert.equal(saveCalls[1].payload.items[0].canonical_path_key, 'path-c2');
+assert.equal(saveContext.closeModalCalls, 0);
 
 assert.match(timetable, /if \(isTimetableMonthArchiveMode\(\)\) return null;/);
 assert.match(timetable, /class_progress_snapshots/);
