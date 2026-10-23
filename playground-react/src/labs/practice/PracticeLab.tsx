@@ -30,6 +30,7 @@ export default function PracticeLab({id}:{id:PracticeId}){
     if(id==='sector'&&variant==='sector-ratio-pie')return c.key==='r';
     if(id==='boundary')return variant==='boundary-ring'?c.key==='R'||c.key==='r'||c.key==='theta':c.key==='s';
     if(id==='overlap')return variant==='overlap-nested'?c.key==='R'||c.key==='r':variant==='overlap-baby-circle'?c.key==='R':variant==='overlap-leaf'?c.key==='a'||c.key==='b':c.key==='r';
+    if(id==='polygon')return c.key==='r';
     if(id==='rope'&&variant==='rope-triangle')return c.key==='r';
     if(id==='rope'&&variant==='rope-row')return c.key==='r'||c.key==='c';
     if(id==='pizza'&&variant==='pizza-equal')return c.key!=='b';
