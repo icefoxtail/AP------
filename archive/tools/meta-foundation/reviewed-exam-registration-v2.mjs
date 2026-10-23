@@ -32,12 +32,33 @@ const valueFields = new Set([...sourceFields, "sourceFingerprint", "contentFinge
 const META_PIPELINE_STUDENT_FIELDS = ["id", "questionType", "content", "choices", "answer", "solution", "image", "images", "figureSvg", "solutionImage", "solutionFigureSvg", "layoutTag", "wide"];
 const studentPayloadSha256 = question => digest(stable(Object.fromEntries(META_PIPELINE_STUDENT_FIELDS.map(field =>
   [field, Object.hasOwn(question, field) ? question[field] : null]))));
-const isPendingMetaPlaceholder = (question, field, approvedValue) => question.projectionStatus === "BINDING_PENDING" && (
+const META_PIPELINE_PENDING_META_STATUSES = new Set([
+  "RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED",
+  "RPM_SEMANTIC_FINAL_H15_UNIT_BINDING_PENDING",
+  "RPM_SEMANTIC_FINAL_DIRECT_BINDING_GAP"
+]);
+const hasPendingMetaReason = (question, field) =>
+  question.projectionStatus === "BINDING_PENDING"
+    ? typeof question[`${field}NullReason`] === "string" && question[`${field}NullReason`].trim().length > 0
+    : META_PIPELINE_PENDING_META_STATUSES.has(question.metaStatus) &&
+      typeof question.metaNullReason === "string" && question.metaNullReason.trim().length > 0;
+const isPendingMetaPlaceholder = (question, field, approvedValue) => (
   ["problemTypeKey", "templateKey"].includes(field) && (question[field] === null || question[field] === "") &&
-    typeof question[`${field}NullReason`] === "string" && question[`${field}NullReason`].trim() ||
+    hasPendingMetaReason(question, field) ||
   ["crossConceptKeys", "conditionKeys"].includes(field) && Array.isArray(question[field]) && question[field].length === 0 &&
-    Array.isArray(approvedValue) && approvedValue.length > 0
+    Array.isArray(approvedValue) && approvedValue.length > 0 && hasPendingMetaReason(question, field)
 );
+const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, current, question, patch, final, ordinal, field }) => {
+  if (approvalType !== "META_PIPELINE_AUDIT" || !metaPipelineAudit || approved(current) ||
+      !["standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys"].includes(field) ||
+      !patch.sourceMetadataBefore || !Object.hasOwn(patch.sourceMetadataBefore, field) ||
+      !eq(patch.sourceMetadataBefore[field] ?? null, question[field] ?? null)) return false;
+  const audited = metaPipelineAudit.audit.records.find(row => Number(row.questionId) === ordinal);
+  const auditedValue = ["standardUnitKey", "subUnitKey"].includes(field)
+    ? audited?.[field]
+    : audited?.classification?.[field];
+  return auditedValue !== undefined && eq(final[field] ?? null, auditedValue ?? null);
+};
 
 function safePath(root, relative) {
   if (typeof relative !== "string" || !relative || relative.includes("\\") || relative.split("/").some(x => !x || x === "." || x === "..") || path.isAbsolute(relative)) fail(`unsafe path: ${relative}`);
@@ -722,7 +743,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     }
     const final = { ...current, ...structuredClone(patch.after) };
     for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f]) &&
-        !(req.approval.type === "META_PIPELINE_AUDIT" && isPendingMetaPlaceholder(q, f, final[f])))
+        !(req.approval.type === "META_PIPELINE_AUDIT" && isPendingMetaPlaceholder(q, f, final[f])) &&
+        !canRebindPendingAuditMetadata({ approvalType: req.approval.type, metaPipelineAudit, current, question: q, patch, final, ordinal: i + 1, field: f }))
       fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
     const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch });
     const fingerprint = checked.sourceFingerprint;

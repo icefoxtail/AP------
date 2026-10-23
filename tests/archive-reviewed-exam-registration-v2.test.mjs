@@ -322,6 +322,60 @@ test("META_PIPELINE_AUDIT materializes explicitly pending source metadata placeh
   assert.equal(fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`), "utf8"), bytes);
 });
 
+test("META_PIPELINE_AUDIT accepts the preserved RPM final-binding gap marker with its reason", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, problemTypeKey: null, templateKey: null, crossConceptKeys: [],
+    metaStatus: "RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED", metaNullReason: "No exact active binding was materialized." };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  attachMetaPipelineAudit(f);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(f.read(META).records[0].problemTypeKey, "PT_NEW");
+  assert.equal(f.read(META).records[0].templateKey, "TPL_NEW");
+});
+
+test("META_PIPELINE_AUDIT rejects RPM final-binding gap markers without a reason", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, problemTypeKey: null, templateKey: null, crossConceptKeys: [],
+    metaStatus: "RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED" };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  attachMetaPipelineAudit(f);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /source\/approved metadata parity/);
+});
+
+test("META_PIPELINE_AUDIT rebinds exact unapproved source tags without changing source bytes", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, problemTypeKey: "PT_OLD", templateKey: "TPL_OLD", crossConceptKeys: ["CC_OLD"] };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  f.request.items[0].sourceMetadataBefore = { problemTypeKey: "PT_OLD", templateKey: "TPL_OLD", crossConceptKeys: ["CC_OLD"] };
+  attachMetaPipelineAudit(f);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(f.read(META).records[0].problemTypeKey, "PT_NEW");
+  assert.deepEqual(f.read(META).records[0].crossConceptKeys, ["CC_NEW"]);
+  assert.equal(fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`), "utf8"), bytes);
+});
+
+test("META_PIPELINE_AUDIT cannot rebind source tags on an already approved metadata row", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, problemTypeKey: "PT_OLD" };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  f.request.items[0].sourceMetadataBefore = { problemTypeKey: "PT_OLD" };
+  const meta = f.read(META);
+  meta.records[0].reviewStatus = "reviewed_pass";
+  meta.records[0].metadataStatus = "approved_final_qa";
+  f.put(META, meta);
+  f.request.items[0].before.problemTypeKey = null;
+  attachMetaPipelineAudit(f);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /source\/approved metadata parity/);
+});
+
 test("META_PIPELINE_AUDIT does not treat unreasoned null source metadata as pending placeholders", t => {
   const f = fixture(t);
   f.q = { ...f.q, problemTypeKey: null, templateKey: null, crossConceptKeys: [], projectionStatus: "BINDING_PENDING" };
