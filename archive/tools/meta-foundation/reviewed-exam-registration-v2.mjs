@@ -353,8 +353,9 @@ function labelsFor(patch, row, resolved, read, sourceBlob) {
     if (proof.schemaVersion !== "archive-meta-pipeline-parent-label-evidence-v1" ||
         proof.sourcePath !== "archive/data/basic-scope-parent-links.json" || !/^[a-f0-9]{64}$/.test(proof.sourceSha256 || ""))
       fail("basic scope parent evidence schema/source mismatch");
+    const compactCourse = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
     const matches = (proof.records || []).filter(parent => parent.curriculumKey === resolved.curriculum &&
-      parent.courseKey === resolved.course && parent.standardUnitKey === row.standardUnitKey && (parent.subUnitKey ?? null) === (row.subUnitKey ?? null));
+      compactCourse(parent.courseKey) === compactCourse(resolved.course) && parent.standardUnitKey === row.standardUnitKey && (parent.subUnitKey ?? null) === (row.subUnitKey ?? null));
     if (matches.length !== 1) fail(`basic scope parent evidence missing/ambiguous: ${row.questionUid}`);
     base.L1 = requireText(matches[0].L1, "basic-scope L1");
     base.L2 = requireText(matches[0].L2, "basic-scope L2");

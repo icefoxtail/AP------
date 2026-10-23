@@ -121,7 +121,7 @@ function attachMetaPipelineAudit(f, { existingConcept = false } = {}) {
   f.put(sourceParityPath, sourceParity);
   const parentLabels = { schemaVersion: "archive-meta-pipeline-parent-label-evidence-v1", sourcePath: "archive/data/basic-scope-parent-links.json",
     sourceSha256: hash("fixture basic scope parent links"), records: [{ curriculumKey: f.request.items[0].after.curriculum,
-      courseKey: f.request.items[0].after.courseKey, standardUnitKey: f.q.standardUnitKey, subUnitKey: f.q.subUnitKey,
+      courseKey: String(f.request.items[0].after.courseKey).replace(/\s/g, ""), standardUnitKey: f.q.standardUnitKey, subUnitKey: f.q.subUnitKey,
       L1: f.q.standardUnit, L2: f.q.subUnit }] };
   f.put(parentLabelsPath, parentLabels);
   const auditPackageRef = { path: auditPath, sha256: hash(fs.readFileSync(path.join(f.root, auditPath))) };
