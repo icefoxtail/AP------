@@ -29,6 +29,15 @@ const valueFields = new Set([...sourceFields, "sourceFingerprint", "contentFinge
   "rpmL1", "rpmL2", "rpmL3", "rpmL4", "rpmPrimaryPath", "rpmSemanticStatus", "semanticSourceScope", "semanticScopeRelation",
   "primaryMethod", "decisiveStep", "integrationReason", "conceptClusterKey", "secondaryConceptKeys",
   "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility", "curriculumApplicability", "defaultSelectable"]);
+const META_PIPELINE_STUDENT_FIELDS = ["id", "questionType", "content", "choices", "answer", "solution", "image", "images", "figureSvg", "solutionImage", "solutionFigureSvg", "layoutTag", "wide"];
+const studentPayloadSha256 = question => digest(stable(Object.fromEntries(META_PIPELINE_STUDENT_FIELDS.map(field =>
+  [field, Object.hasOwn(question, field) ? question[field] : null]))));
+const isPendingMetaPlaceholder = (question, field, approvedValue) => question.projectionStatus === "BINDING_PENDING" && (
+  ["problemTypeKey", "templateKey"].includes(field) && (question[field] === null || question[field] === "") &&
+    typeof question[`${field}NullReason`] === "string" && question[`${field}NullReason`].trim() ||
+  ["crossConceptKeys", "conditionKeys"].includes(field) && Array.isArray(question[field]) && question[field].length === 0 &&
+    Array.isArray(approvedValue) && approvedValue.length > 0
+);
 
 function safePath(root, relative) {
   if (typeof relative !== "string" || !relative || relative.includes("\\") || relative.split("/").some(x => !x || x === "." || x === "..") || path.isAbsolute(relative)) fail(`unsafe path: ${relative}`);
@@ -49,6 +58,129 @@ function unique(rows, key, name) {
     map.set(k, row);
   }
   return map;
+}
+
+function validateMetaPipelineAudit({ root, approval, source, sourceBytes, sourceBlobSha1, bank, expectedQuestionCount, items }) {
+  if (approval.type !== "META_PIPELINE_AUDIT") return null;
+  const proof = approval.metaPipelineAudit;
+  if (!proof || proof.schemaVersion !== "meta-pipeline-audit-approval-v1") fail("META_PIPELINE_AUDIT proof required");
+  requireText(proof.sourceFileDriveId, "META_PIPELINE_AUDIT sourceFileDriveId");
+  const readEvidence = (ref, name) => {
+    if (!ref || typeof ref !== "object" || Array.isArray(ref) || !/^[a-f0-9]{64}$/.test(ref.sha256 || "")) fail(`${name} reference required`);
+    const approvalRef = (approval.evidenceRefs || []).find(row => row.path === ref.path && row.sha256 === ref.sha256);
+    if (!approvalRef) fail(`${name} must be included in approval.evidenceRefs`);
+    const bytes = fs.readFileSync(safePath(root, ref.path));
+    if (digest(bytes) !== ref.sha256) fail(`${name} SHA-256 mismatch`);
+    return JSON.parse(bytes.toString("utf8"));
+  };
+  const audit = readEvidence(proof.auditPackageRef, "META_PIPELINE_AUDIT package");
+  const manifest = readEvidence(proof.manifestRef, "META_PIPELINE_AUDIT manifest");
+  const sourceParity = readEvidence(proof.sourceParityRef, "META_PIPELINE_AUDIT source parity");
+  const expectedTitle = path.basename(source, ".js");
+  if (audit.schemaVersion !== "ALIVE_META_AUDIT_ATOMIC_v3" || audit.examTitle !== expectedTitle ||
+      audit.sourceFileDriveId !== proof.sourceFileDriveId || !/^[a-f0-9]{64}$/.test(audit.sourceSha256 || "")) fail("META_PIPELINE_AUDIT source identity/schema mismatch");
+  if (audit.auditVerdict !== "ALL_APPROVED_CANONICAL_STANDARDIZED" ||
+      audit.handOffToCourier?.status !== "READY_FOR_COURIER_REGISTRATION" ||
+      audit.handOffToCourier?.author !== "META_PIPELINE_UNIFIED_AUTHOR" ||
+      audit.handOffToCourier?.registrationProtocol !== "DIRECT_ATOMIC_METADATA_BINDING") fail("META_PIPELINE_AUDIT is not an approved Courier handoff");
+  const stats = audit.statistics;
+  if (!stats || stats.totalQuestions !== expectedQuestionCount || stats.approved !== expectedQuestionCount ||
+      stats.holdRemaining !== 0 || stats.newTemplatesCreated !== 0 || stats.canonicalTemplatesReused !== expectedQuestionCount) fail("META_PIPELINE_AUDIT denominator/hold/template gate mismatch");
+  if (manifest.schemaVersion !== "COURIER_INTAKE_MANIFEST_v2" || manifest.examTitle !== expectedTitle ||
+      manifest.sourceFileDriveId !== proof.sourceFileDriveId || manifest.sourceSha256 !== audit.sourceSha256 ||
+      manifest.status !== "READY_FOR_COURIER_REGISTRATION" || manifest.courierAction !== "COMMIT_CANONICAL_BINDING" ||
+      path.basename(manifest.bindingTarget || "") !== `${expectedTitle}.js`) fail("META_PIPELINE_AUDIT manifest/source mismatch");
+  if (sourceParity.schemaVersion !== "archive-meta-pipeline-source-parity-v1" || sourceParity.status !== "EXACT_STUDENT_VISIBLE_PARITY" ||
+      sourceParity.sourceFileDriveId !== proof.sourceFileDriveId || sourceParity.driveSourceSha256 !== audit.sourceSha256 ||
+      sourceParity.productionSourceSha256 !== digest(sourceBytes) || sourceParity.productionSourceBlobSha1 !== sourceBlobSha1 ||
+      sourceParity.sourceArchiveFile !== source || !eq(sourceParity.studentFields, META_PIPELINE_STUDENT_FIELDS) ||
+      sourceParity.questionCount !== expectedQuestionCount || !Array.isArray(sourceParity.records) || sourceParity.records.length !== expectedQuestionCount)
+    fail("META_PIPELINE_AUDIT source parity identity/denominator mismatch");
+  const summary = manifest.payloadSummary;
+  if (!summary || summary.totalQuestions !== expectedQuestionCount || summary.approved !== expectedQuestionCount ||
+      summary.holdCount !== 0 || summary.templateInflationCount !== 0) fail("META_PIPELINE_AUDIT manifest denominator/hold/template gate mismatch");
+  if (!Array.isArray(audit.records) || audit.records.length !== expectedQuestionCount ||
+      !Array.isArray(manifest.recordsToBind) || manifest.recordsToBind.length !== expectedQuestionCount) fail("META_PIPELINE_AUDIT record denominator mismatch");
+  const records = unique(audit.records, "questionId", "audit questionId");
+  const manifestRecords = unique(manifest.recordsToBind, "questionId", "manifest questionId");
+  const parityRecords = unique(sourceParity.records, "sourceOrdinal", "source parity ordinal");
+  const patches = unique(items || [], "sourceOrdinal", "META_PIPELINE_AUDIT sourceOrdinal");
+  if (patches.size !== expectedQuestionCount || bank.length !== expectedQuestionCount) fail("META_PIPELINE_AUDIT request denominator mismatch");
+  for (let ordinal = 1; ordinal <= expectedQuestionCount; ordinal++) {
+    const record = records.get(ordinal), manifestRow = manifestRecords.get(ordinal), parityRow = parityRecords.get(ordinal), patch = patches.get(ordinal);
+    const classification = record?.classification, reading = record?.readingEvidence;
+    if (!record || record.auditVerdict !== "APPROVED" || classification?.status !== "APPROVED_CANONICAL" ||
+        !Array.isArray(classification.crossConceptKeys) || !classification.problemTypeKey || !classification.templateKey ||
+        !record.standardUnitKey || !record.subUnitKey || !reading || !reading.sourceTextExcerpt || !reading.solutionDecisiveExcerpt ||
+        typeof reading.visualAssetChecked !== "boolean" || !["IMAGE", "SVG", "NONE"].includes(reading.visualType)) fail(`META_PIPELINE_AUDIT record incomplete: ${ordinal}`);
+    if (!manifestRow || manifestRow.problemTypeKey !== classification.problemTypeKey || manifestRow.templateKey !== classification.templateKey ||
+        !eq(manifestRow.crossConceptKeys, classification.crossConceptKeys)) fail(`META_PIPELINE_AUDIT manifest binding mismatch: ${ordinal}`);
+    const actualPayloadHash = studentPayloadSha256(bank[ordinal - 1]);
+    if (!parityRow || parityRow.questionId !== ordinal || parityRow.questionUid !== patch?.questionUid ||
+        parityRow.driveSourceTextExcerptMatched !== true || parityRow.driveSolutionExcerptMatched !== true ||
+        parityRow.driveStudentPayloadSha256 !== actualPayloadHash || parityRow.productionStudentPayloadSha256 !== actualPayloadHash ||
+        parityRow.studentPayloadEqual !== true) fail(`META_PIPELINE_AUDIT student source parity mismatch: ${ordinal}`);
+    const after = patch?.after || {};
+    const parentRef = patch?.basicScopeParentRef;
+    const parentEvidenceLinked = (patch?.evidenceRefs || []).some(ref => ref.path === parentRef?.path && ref.sha256 === parentRef?.sha256);
+    if (!patch || patch.questionId !== undefined && patch.questionId !== ordinal ||
+        after.standardUnitKey !== record.standardUnitKey || after.subUnitKey !== record.subUnitKey ||
+        after.problemTypeKey !== classification.problemTypeKey || after.templateKey !== classification.templateKey ||
+        !eq(after.crossConceptKeys, classification.crossConceptKeys) || !eq(after.conditionKeys, classification.conditionKeys || []) ||
+        !parentRef || !/^[a-f0-9]{64}$/.test(parentRef.sha256 || "") || !parentEvidenceLinked)
+      fail(`META_PIPELINE_AUDIT registration binding mismatch: ${ordinal}`);
+  }
+  if (!Array.isArray(audit.boundAtomicCrossConcepts)) fail("META_PIPELINE_AUDIT CrossConcept definitions required");
+  const usedConcepts = [...new Set(audit.records.flatMap(row => row.classification.crossConceptKeys))].sort();
+  const definedConcepts = unique(audit.boundAtomicCrossConcepts, "conceptKey", "audit CrossConcept definition");
+  if (!eq([...definedConcepts.keys()].sort(), usedConcepts) || stats.atomicCrossConceptsBound !== usedConcepts.length)
+    fail("META_PIPELINE_AUDIT CrossConcept definition/binding mismatch");
+  for (const definition of definedConcepts.values()) if (!/^CC_[A-Z0-9_]+$/.test(definition.conceptKey) || !definition.labelKo || !definition.definition)
+    fail(`META_PIPELINE_AUDIT CrossConcept definition incomplete: ${definition.conceptKey}`);
+  return { audit, manifest, sourceFileDriveId: proof.sourceFileDriveId };
+}
+
+function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, registryChanges, existingConceptReviews }) {
+  if (!audit) return;
+  if (registryChanges.some(change => change.before !== null || change.after === null))
+    fail("META_PIPELINE_AUDIT registry changes must be additions only; existing meanings cannot be rewritten");
+  if (registryChanges.some(change => change.collection === "templates" ||
+      change.path.endsWith("/taxonomy.json") && change.after?.templates?.length))
+    fail("META_PIPELINE_AUDIT cannot add templates when audit declares zero template inflation");
+  const audited = new Map(audit.boundAtomicCrossConcepts.map(row => [row.conceptKey, row]));
+  const added = new Map();
+  for (const change of registryChanges) {
+    if (change.collection === "concepts") {
+      const key = change.after?.conceptKey;
+      if (!audited.has(key)) fail(`META_PIPELINE_AUDIT contains unbound CrossConcept registry addition: ${key}`);
+      added.set(key, change.after);
+    } else if (!change.collection && change.path.startsWith(`${CANON}/concepts/`)) {
+      for (const row of change.after?.concepts || []) {
+        if (!audited.has(row.conceptKey)) fail(`META_PIPELINE_AUDIT contains unbound CrossConcept registry addition: ${row.conceptKey}`);
+        added.set(row.conceptKey, row);
+      }
+    }
+  }
+  for (const [key, definition] of audited) {
+    const before = beforeTables.cc.get(key), after = afterTables.cc.get(key);
+    const candidate = before || added.get(key);
+    if (!after || !candidate || candidate.canonicalLabelKo !== definition.labelKo)
+      fail(`META_PIPELINE_AUDIT CrossConcept canonical label mismatch: ${key}`);
+    if (before) {
+      if (!eq(before, after)) fail(`META_PIPELINE_AUDIT cannot revise existing CrossConcept: ${key}`);
+      if (candidate.definition !== definition.definition) {
+        const review = existingConceptReviews.get(key);
+        if (!review || review.disposition !== "REUSE_CANONICAL" || review.canonicalLabelKo !== candidate.canonicalLabelKo ||
+            review.canonicalDefinition !== candidate.definition || review.auditLabelKo !== definition.labelKo ||
+            review.auditDefinition !== definition.definition || !requireText(review.rationale, `META_PIPELINE_AUDIT existing CC rationale ${key}`))
+          fail(`META_PIPELINE_AUDIT existing CrossConcept meaning review required: ${key}`);
+      }
+    } else if (candidate.definition !== definition.definition) fail(`META_PIPELINE_AUDIT new CrossConcept definition mismatch: ${key}`);
+  }
+  const expectedReviews = [...audited].filter(([key, definition]) => beforeTables.cc.has(key) && beforeTables.cc.get(key).definition !== definition.definition).map(([key]) => key).sort();
+  if (!eq([...existingConceptReviews.keys()].sort(), expectedReviews)) fail("META_PIPELINE_AUDIT existing CrossConcept reviews do not match definition differences");
+  const expectedAdditions = [...audited.keys()].filter(key => !beforeTables.cc.has(key)).sort();
+  if (!eq([...added.keys()].sort(), expectedAdditions)) fail("META_PIPELINE_AUDIT CrossConcept additions do not exactly match the audited definitions");
 }
 
 // Native canonical documents only. No second registry or parallel compiler.
@@ -212,6 +344,38 @@ function resolve(row, tables) {
 
 function labelsFor(patch, row, resolved, read, sourceBlob) {
   const base = { L1: resolved.binding.L1 || resolved.unit.labelKo, L2: resolved.binding.L2 || resolved.sub?.labelKo || "", L3: resolved.pt.canonicalLabelKo, L4: resolved.tpl.canonicalLabelKo };
+  if (patch.basicScopeParentRef) {
+    if (patch.targetParentRef) fail("basic and RPM target parent references cannot be combined");
+    const ref = patch.basicScopeParentRef;
+    if (!/^archive\/data\/meta-foundation\/evidence\/reviewed-exam-meta\/v1\/.+\.parent-labels\.json$/.test(ref.path || "") ||
+        !(patch.evidenceRefs || []).some(e => e.path === ref.path && e.sha256 === ref.sha256)) fail("basic scope parent reference is not evidence-bound");
+    const proof = read(ref.path);
+    if (proof.schemaVersion !== "archive-meta-pipeline-parent-label-evidence-v1" ||
+        proof.sourcePath !== "archive/data/basic-scope-parent-links.json" || !/^[a-f0-9]{64}$/.test(proof.sourceSha256 || ""))
+      fail("basic scope parent evidence schema/source mismatch");
+    const compactCourse = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
+    const matches = (proof.records || []).filter(parent => parent.curriculumKey === resolved.curriculum &&
+      compactCourse(parent.courseKey) === compactCourse(resolved.course) && parent.standardUnitKey === row.standardUnitKey && (parent.subUnitKey ?? null) === (row.subUnitKey ?? null));
+    let parent = matches.length === 1 ? matches[0] : null;
+    if (!parent && matches.length === 0) {
+      const derived = (proof.derivedRecords || []).filter(candidate => candidate.curriculumKey === resolved.curriculum &&
+        compactCourse(candidate.courseKey) === compactCourse(resolved.course) && candidate.standardUnitKey === row.standardUnitKey &&
+        candidate.subUnitKey === (row.subUnitKey ?? null));
+      if (derived.length !== 1 || derived[0].method !== "SAME_STANDARD_UNIT_SIBLING_PARENT_CONSENSUS" ||
+          !Array.isArray(derived[0].supportingSubUnitKeys) || derived[0].supportingSubUnitKeys.length < 2) fail(`basic scope parent evidence missing/ambiguous: ${row.questionUid}`);
+      const supportKeys = new Set(derived[0].supportingSubUnitKeys);
+      const support = (proof.records || []).filter(candidate => candidate.curriculumKey === resolved.curriculum &&
+        compactCourse(candidate.courseKey) === compactCourse(resolved.course) && candidate.standardUnitKey === row.standardUnitKey &&
+        supportKeys.has(candidate.subUnitKey) && candidate.subUnitKey !== row.subUnitKey);
+      if (support.length !== supportKeys.size || new Set(support.map(candidate => candidate.L1)).size !== 1 ||
+          new Set(support.map(candidate => candidate.L2)).size !== 1 || support[0].L1 !== derived[0].L1 || support[0].L2 !== derived[0].L2)
+        fail(`basic scope sibling parent evidence is inconsistent: ${row.questionUid}`);
+      parent = derived[0];
+    }
+    if (!parent) fail(`basic scope parent evidence missing/ambiguous: ${row.questionUid}`);
+    base.L1 = requireText(parent.L1, "basic-scope L1");
+    base.L2 = requireText(parent.L2, "basic-scope L2");
+  }
   const withTargetParent = labels => {
     if (!patch.targetParentRef) return labels;
     const ref = patch.targetParentRef;
@@ -294,7 +458,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   if (req.schemaVersion !== "archive-reviewed-exam-meta-register-request-v2") fail("request schema mismatch");
   if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(req.requestId || "")) fail("valid requestId required");
   requireText(req.examUid, "examUid");
-  if (!["REVIEW2", "FINAL_QA"].includes(req.approval?.type) || req.approval.metadataReviewed !== true) fail("metadata approval required");
+  if (!["REVIEW2", "FINAL_QA", "META_PIPELINE_AUDIT"].includes(req.approval?.type) || req.approval.metadataReviewed !== true) fail("metadata approval required");
   if (req.approval.type === "REVIEW2" && req.approval.reviewPassCount !== 2) fail("REVIEW2 count must be 2");
   requireText(req.approval.approvedBy, "approvedBy");
   const evidenceRefs = refs => {
@@ -321,6 +485,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   vm.runInContext(bytes.toString("utf8"), ctx, { timeout: 5000 });
   const bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
   if (!Array.isArray(bank) || !Number.isInteger(req.expectedQuestionCount) || bank.length !== req.expectedQuestionCount || !bank.length) fail("source denominator mismatch");
+  const metaPipelineAudit = validateMetaPipelineAudit({ root, approval: req.approval, source, sourceBytes: bytes, sourceBlobSha1: blob,
+    bank, expectedQuestionCount: req.expectedQuestionCount, items: req.items });
   const read = file => JSON.parse(fs.readFileSync(safePath(root, file), "utf8"));
   const metadata = read(META), identity = read(IDENTITY);
   const metadataByUid = unique(metadata.records, "questionUid", "metadata UID");
@@ -356,6 +522,11 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const targetUids = new Set(rows.map(r => r.questionUid));
   const plan = registryPlan(root, req.registryChanges || [], evidenceRefs);
   const tables = lookup(plan);
+  const baseline = req.registryChanges?.length || metaPipelineAudit ? registryPlan(root, [], evidenceRefs) : null;
+  const beforeTables = baseline ? lookup(baseline) : null;
+  const existingConceptReviews = unique(req.approval.metaPipelineAudit?.existingConceptReviews || [], "conceptKey", "existing CrossConcept review");
+  validateMetaPipelineRegistry({ audit: metaPipelineAudit?.audit, beforeTables, afterTables: tables,
+    registryChanges: req.registryChanges || [], existingConceptReviews });
   for (const change of req.registryChanges || []) {
     const row = change.after;
     if (change.path === MASTER && row?.keyType === "subUnitKey" && ["active", "ACTIVE"].includes(row.status)) {
@@ -365,7 +536,6 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   // A shared definition may evolve only when it leaves all out-of-scope approved
   // consumers identical. Migrations involving another exam need its own request.
   if (req.registryChanges?.length) {
-    const baseline = registryPlan(root, [], evidenceRefs), beforeTables = lookup(baseline);
     for (const row of metadata.records.filter(r => !targetUids.has(r.questionUid))) {
       const signature = t => {
         const refs = [t.pt.get(row.problemTypeKey), t.tpl.get(row.templateKey), t.master.get(row.standardUnitKey), t.master.get(row.subUnitKey),
@@ -411,7 +581,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (!Object.hasOwn(patch.before, field)) fail(`before required: ${current.questionUid}.${field}`);
     }
     const final = { ...current, ...structuredClone(patch.after) };
-    for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f])) fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
+    for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f]) &&
+        !(req.approval.type === "META_PIPELINE_AUDIT" && isPendingMetaPlaceholder(q, f, final[f])))
+      fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
     const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch });
     const fingerprint = checked.sourceFingerprint;
     if (checked.identityChanged || Object.hasOwn(patch.after, "sourceFingerprint")) fingerprintRepairs.push({
@@ -422,8 +594,28 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     });
     if (checked.identityChanged) { Object.assign(id, checked.identityAfter); identityChanged = true; }
     appliedIdentityRecords.push(structuredClone(id));
-    if (!["하", "중", "상"].includes(final.level) || !Number.isInteger(final.difficultyBucket) || final.difficultyBucket < 1 || final.difficultyBucket > 5) fail(`level/difficulty invalid: ${current.questionUid}`);
-    requireText(final.integrationPattern, "integrationPattern (explicit NONE if not applicable)");
+    if (!["하", "중", "상"].includes(final.level)) fail(`level invalid: ${current.questionUid}`);
+    const debtRows = req.approval.type === "META_PIPELINE_AUDIT" ? (req.approval.metaPipelineAudit.unreviewedFields || []) : [];
+    let difficultyEvidenceDebt = null;
+    if (!Number.isInteger(final.difficultyBucket) || final.difficultyBucket < 1 || final.difficultyBucket > 5) {
+      const debt = debtRows.find(row => row.field === "difficultyBucket" && row.status === "EVIDENCE_DEBT");
+      const currentBucket = current.difficultyBucket;
+      const currentBucketValid = Number.isInteger(currentBucket) && currentBucket >= 1 && currentBucket <= 5;
+      if (!debt || !requireText(debt.reason, "difficultyBucket EVIDENCE_DEBT reason") || patch.after.difficultyBucket !== null ||
+          !Array.isArray(debt.questionUids) || !debt.questionUids.includes(current.questionUid) ||
+          currentBucketValid || Object.hasOwn(q, "difficultyBucket")) fail(`difficultyBucket invalid without explicit META_PIPELINE_AUDIT EVIDENCE_DEBT: ${current.questionUid}`);
+      final.difficultyBucket = null;
+      difficultyEvidenceDebt = debt.reason;
+    }
+    let integrationPatternEvidenceDebt = null;
+    if (final.integrationPattern === null || final.integrationPattern === undefined || final.integrationPattern === "") {
+      const debt = debtRows.find(row => row.field === "integrationPattern" && row.status === "EVIDENCE_DEBT");
+      if (req.approval.type !== "META_PIPELINE_AUDIT" || !debt || !requireText(debt.reason, "integrationPattern EVIDENCE_DEBT reason") ||
+          !Array.isArray(debt.questionUids) || !debt.questionUids.includes(current.questionUid) ||
+          patch.after.integrationPattern !== null || Object.hasOwn(q, "integrationPattern"))
+        requireText(final.integrationPattern, "integrationPattern (explicit NONE if not applicable)");
+      integrationPatternEvidenceDebt = debt.reason;
+    } else requireText(final.integrationPattern, "integrationPattern");
     const resolved = resolve(final, tables), { pt, tpl, unit, sub, pack, curriculum, course } = resolved;
     for (const [field, label] of Object.entries(labelsFor(patch, final, resolved, read, blob))) {
       if (Object.hasOwn(patch.after, field) && patch.after[field] !== label) fail(`canonical label mismatch: ${current.questionUid}.${field}`);
@@ -431,15 +623,34 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       final[field] = label;
     }
     const revision = `meta-foundation:${pack.meta.packId}@${pack.meta.packVersion}:exam-${req.approval.type.toLowerCase()}-v2:${req.requestId}`;
+    const confidence = req.approval.type === "REVIEW2" ? "independent_review2" :
+      req.approval.type === "META_PIPELINE_AUDIT" ? "meta_pipeline_audit" : "approved_final_qa";
+    const fieldApproval = req.approval.type === "REVIEW2" ? "approved_review2" :
+      req.approval.type === "META_PIPELINE_AUDIT" ? "approved_meta_pipeline_audit" : "approved_final_qa";
+    const approvedFields = req.approval.type === "META_PIPELINE_AUDIT"
+      ? ["standardUnit", "subUnit", "problemType", "template", "crossConcept", "condition"]
+      : ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept", "condition", "integrationPattern", "difficulty"];
+    const approvalEvidence = metaPipelineAudit
+      ? [receiptPath, req.approval.metaPipelineAudit.auditPackageRef.path, req.approval.metaPipelineAudit.manifestRef.path, req.approval.metaPipelineAudit.sourceParityRef.path]
+      : [receiptPath];
     Object.assign(final, { curriculum, curriculumKey: curriculum, standardCourse: course, courseKey: final.courseKey || course,
       reviewStatus: "reviewed_pass", metadataStatus: "approved_semantic_review", metadataRevision: revision,
-      tagStatus: "reviewed_pass", tagConfidence: req.approval.type === "REVIEW2" ? "independent_review2" : "approved_final_qa",
+      metadataApprovalType: req.approval.type,
+      tagStatus: "reviewed_pass", tagConfidence: confidence,
       foundationTaxonomyStatus: "CONFIRMED", projectionStatus: "REUSE", metaFoundationStatus: "ACTIVE",
       metaFoundationPackId: pack.meta.packId, metaFoundationPackVersion: pack.meta.packVersion, metaFoundationHoldReason: null,
       l3Disposition: "ASSIGNED", l4Disposition: "ASSIGNED", curriculumApplicability: final.curriculumApplicability || "DEFAULT_SCOPE",
-      defaultSelectable: final.defaultSelectable !== false, approvalEvidence: [...new Set([...(current.approvalEvidence || []), receiptPath])],
-      fieldStatus: { ...(current.fieldStatus || {}), ...Object.fromEntries(["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept", "condition", "integrationPattern", "difficulty"].map(k => [k, req.approval.type === "REVIEW2" ? "approved_review2" : "approved_final_qa"])) }
+      defaultSelectable: final.defaultSelectable !== false, approvalEvidence: [...new Set([...(current.approvalEvidence || []), ...approvalEvidence])],
+      fieldStatus: { ...(current.fieldStatus || {}), ...Object.fromEntries(approvedFields.map(k => [k, fieldApproval])) }
     });
+    if (difficultyEvidenceDebt) {
+      final.fieldStatus.difficulty = "EVIDENCE_DEBT";
+      final.difficultyEvidenceDebt = { field: "difficultyBucket", status: "EVIDENCE_DEBT", reason: difficultyEvidenceDebt };
+    }
+    if (integrationPatternEvidenceDebt) {
+      final.fieldStatus.integrationPattern = "EVIDENCE_DEBT";
+      final.integrationPatternEvidenceDebt = { field: "integrationPattern", status: "EVIDENCE_DEBT", reason: integrationPatternEvidenceDebt };
+    }
     const packId = pack.meta.packId;
     if (!runtimes.has(packId)) {
       const file = `${runtimeRoot}/${slug(packId)}-v1.json`;
@@ -496,6 +707,9 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const outputDigests = [...plan.output].filter(([file, text]) => file !== META && (!fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text)).map(([file, text]) => ({ path: file, sha256: digest(text) }));
   const receipt = { schemaVersion: "archive-reviewed-exam-meta-registration-v2", requestId: req.requestId, requestSha256,
     examUid: req.examUid, sourceArchiveFile: source, sourceBlobSha1: blob, sourceRawSha256: digest(bytes), approval: req.approval,
+    ...(metaPipelineAudit ? { metaPipelineAudit: { schemaVersion: "ALIVE_META_AUDIT_ATOMIC_v3", sourceFileDriveId: metaPipelineAudit.sourceFileDriveId,
+      auditSha256: req.approval.metaPipelineAudit.auditPackageRef.sha256, manifestSha256: req.approval.metaPipelineAudit.manifestRef.sha256,
+      sourceParitySha256: req.approval.metaPipelineAudit.sourceParityRef.sha256 } } : {}),
     metadataRegistrationStatus: "REGISTERED", examFinalQaStatus: "NOT_EVALUATED_BY_REGISTRAR",
     consumerSearchStatus: "NOT_RUN", totalQuestions: applied.length, registryChanges: req.registryChanges || [],
     appliedRecords: applied, appliedIdentityRecords, fingerprintRepairs, runtimeRecords, outputDigests };

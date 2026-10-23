@@ -10,6 +10,7 @@ import core from "../archive/archive2-core.js";
 
 const require = createRequire(import.meta.url);
 const canonical = require("../archive/archive2-canonical.js");
+const ProblemBankMeta = require("../archive/problem-bank-meta.js");
 const sourceFile = "original/middle/m3/1final/26_test_중3.js";
 const uid = "qid_v1_" + "1".repeat(64);
 const masterPath = canonical.CANONICAL_MASTER_PATH;
@@ -327,6 +328,109 @@ test("reviewed item override requires exact identity/fingerprint/evidence and pr
   assert.equal(final.L4, "검증된 유형");
   assert.equal(core.basicEligibility(final, { canonicalAuthority: resolved.canonicalAuthority }).ok, true);
   assert.equal(core.advancedEligible(final, { canonicalAuthority: resolved.canonicalAuthority }), true);
+});
+
+test("META_PIPELINE_AUDIT registration receipt binds its approved metadata into the canonical consumer", () => {
+  const input = fixture({ validAssignment: false });
+  const { versionBundle } = input;
+  const resources = versionBundle.resources;
+  const source = resources["data/archive2-catalog.json"].records[0];
+  const requestId = "meta-pipeline-consumer-fixture";
+  const proofPath = `data/meta-foundation/evidence/reviewed-exam-meta/v1/${requestId}.json`;
+  const receiptSha = "b".repeat(64);
+  const metadataRevision = `meta-foundation:TEST@1.0.0:exam-meta_pipeline_audit-v2:${requestId}`;
+  const assignment = {
+    questionUid: uid,
+    sourceArchiveFile: sourceFile,
+    sourceOrdinal: 1,
+    sourceFingerprint,
+    contentFingerprint: assignmentFingerprint,
+    metadataStatus: "approved_semantic_review",
+    metadataRevision,
+    reviewStatus: "reviewed_pass",
+    level: "중",
+    fieldStatus: { standardUnit: "approved_meta_pipeline_audit", subUnit: "approved_meta_pipeline_audit" },
+    evidenceRefs: [`archive/${proofPath}`],
+    evidenceDigest: "d".repeat(64),
+    curriculumKey: parent.curriculumKey,
+    courseKey: parent.courseKey,
+    L1: parent.L1,
+    L2: parent.L2,
+    standardCourse: parent.courseKey,
+    standardUnitKey: "M3-01",
+    subUnitKey: "M3-01-TEST",
+    standardUnit: "검증 단원",
+    subUnit: "검증 세부단원",
+    problemTypeKey: "PT_META_TEST",
+    templateKey: "TPL_META_TEST",
+    L3: "검증된 개념",
+    L4: "검증된 유형",
+    crossConceptKeys: [],
+    conditionKeys: [],
+    integrationPattern: null,
+    difficultyBucket: null,
+  };
+
+  Object.assign(source, {
+    curriculumKey: "",
+    courseKey: "",
+    L1: "",
+    L2: "",
+    metadataRevision,
+    metadataAssignmentEvidence: {
+      questionUid: uid,
+      sourceFile: sourceFile,
+      sourceOrdinal: 1,
+      sourceFingerprint,
+      assignmentFingerprint,
+      metadataStatus: assignment.metadataStatus,
+      metadataRevision,
+      fieldStatus: assignment.fieldStatus,
+      evidenceRefs: assignment.evidenceRefs,
+      evidenceDigest: assignment.evidenceDigest,
+    },
+  });
+  const runtime = resources["data/meta-foundation/runtime/h1-foundation-v1.json"];
+  runtime.packId = "META_PIPELINE_TEST";
+  runtime.packVersion = "1.0.0";
+  runtime.generatedFrom = { [`reviewedExam_${requestId}`]: `archive/${proofPath}` };
+  runtime.records = [{ ...assignment, metaFoundationPackId: runtime.packId, metaFoundationPackVersion: runtime.packVersion }];
+  resources["data/meta-foundation/compiled/taxonomy_registry.json"] = {
+    status: "DERIVED_READ_ONLY",
+    sourcePacks: [{ packId: runtime.packId, version: runtime.packVersion }],
+    problemTypes: [{ problemTypeKey: "PT_META_TEST", status: "ACTIVE" }],
+    templates: [{ templateKey: "TPL_META_TEST", parentProblemTypeKey: "PT_META_TEST", status: "ACTIVE" }],
+  };
+  resources["data/meta-foundation/compiled/curriculum_bindings.json"] = {
+    bindings: [{ curriculum: parent.curriculumKey, standardUnitKey: "M3-01", subUnitKey: "M3-01-TEST", problemTypeKey: "PT_META_TEST" }],
+  };
+  resources[proofPath] = {
+    schemaVersion: "archive-reviewed-exam-meta-registration-v2",
+    metadataRegistrationStatus: "REGISTERED",
+    sourceArchiveFile: sourceFile,
+    sourceRawSha256: "c".repeat(64),
+    totalQuestions: 1,
+    approval: { type: "META_PIPELINE_AUDIT", metadataReviewed: true, approvedBy: "META_PIPELINE_UNIFIED_AUTHOR" },
+    appliedRecords: [assignment],
+  };
+  versionBundle.files[proofPath] = { sha256: receiptSha };
+
+  const resolved = canonical.resolveCatalog(input);
+  const final = resolved.records.find((candidate) => candidate.questionUid === uid);
+  assert.equal(final.curriculumKey, parent.curriculumKey);
+  assert.equal(final.courseKey, parent.courseKey);
+  assert.equal(final.L1, parent.L1);
+  assert.equal(final.L2, parent.L2);
+  assert.equal(final.level, "중");
+  assert.equal(final.assignmentEvidence.reviewEvidence.approvalType, "META_PIPELINE_AUDIT");
+  assert.equal(final.sourceReviewStatus, undefined);
+  assert.equal(core.basicEligibility(final, { canonicalAuthority: resolved.canonicalAuthority }).ok, true);
+  const page = ProblemBankMeta.buildIndex([{ ...final, currentSourceJsSha256: "c".repeat(64) }], [])[0];
+  assert.equal(page.L1, parent.L1);
+  assert.equal(page.L2, parent.L2);
+  assert.equal(page.L3, "검증된 개념");
+  assert.equal(page.L4, "검증된 유형");
+  assert.equal(page.level, "중");
 });
 
 test("built catalog has no production taxonomy fallback without a fingerprint-bound reviewed assignment", () => {

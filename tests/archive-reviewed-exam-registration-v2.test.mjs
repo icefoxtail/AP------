@@ -14,6 +14,8 @@ const script = fileURLToPath(new URL("../archive/tools/meta-foundation/register-
 const hash = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
 const blob = bytes => crypto.createHash("sha1").update(`blob ${Buffer.byteLength(bytes)}\0`).update(bytes).digest("hex");
 const j = v => JSON.stringify(v, null, 2) + "\n";
+const stable = value => JSON.stringify(value, (_, v) => v && !Array.isArray(v) && typeof v === "object"
+  ? Object.fromEntries(Object.keys(v).sort().map(k => [k, v[k]])) : v);
 
 function fixture(t, course = "중1 수학", curriculum = "2022") {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "archive-meta-v2-"));
@@ -57,6 +59,90 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   return { root, put, read, request, q, evidenceRefs, change };
 }
 
+function attachMetaPipelineAudit(f, { existingConcept = false, siblingParent = false } = {}) {
+  const conceptChange = f.request.registryChanges.find(change => change.path.startsWith(`${CANON}/concepts/`));
+  const pendingRegistryChanges = [];
+  for (const change of f.request.registryChanges) {
+    if (!existingConcept && (change === conceptChange || change.collection === "activeConceptShards")) { pendingRegistryChanges.push(change); continue; }
+    const full = path.join(f.root, change.path);
+    if (!change.collection) { fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, j(change.after)); continue; }
+    const doc = JSON.parse(fs.readFileSync(full, "utf8"));
+    const rows = change.collection === "$" ? doc : doc[change.collection];
+    rows.push(change.after);
+    fs.writeFileSync(full, j(doc));
+  }
+  f.request.registryChanges = pendingRegistryChanges;
+  const nativeConceptPath = conceptChange.path;
+  const nativeConcept = conceptChange.after.concepts[0];
+  let auditConcept = { ...nativeConcept };
+  let existingConceptReviews = [];
+  if (existingConcept) {
+    const native = f.read(nativeConceptPath);
+    native.concepts[0].definition = "정본에서 이미 등록된 미분계수 의미";
+    f.put(nativeConceptPath, native);
+    auditConcept = { ...nativeConcept, definition: "감사에서 설명한 같은 미분계수의 접선 기울기 관점" };
+    existingConceptReviews = [{ conceptKey: nativeConcept.conceptKey, disposition: "REUSE_CANONICAL",
+      canonicalLabelKo: nativeConcept.canonicalLabelKo, canonicalDefinition: native.concepts[0].definition,
+      auditLabelKo: nativeConcept.canonicalLabelKo, auditDefinition: auditConcept.definition,
+      rationale: "같은 수학 개념의 동치인 적용 관점이며 기존 정본 정의를 수정하거나 병합하지 않는다." }];
+  }
+  const sourceBytes = fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`));
+  const examTitle = path.basename(f.request.sourceArchiveFile, ".js");
+  const sourceFileDriveId = "fixture-drive-source-id";
+  const target = f.request.items[0].after;
+  const record = { questionId: 1, standardUnitKey: f.q.standardUnitKey, subUnitKey: f.q.subUnitKey, auditVerdict: "APPROVED",
+    classification: { problemTypeKey: target.problemTypeKey, templateKey: target.templateKey, crossConceptKeys: target.crossConceptKeys,
+      conditionKeys: target.conditionKeys, status: "APPROVED_CANONICAL" },
+    readingEvidence: { sourceTextExcerpt: "학생용 발문 발췌", solutionDecisiveExcerpt: "핵심 풀이 발췌", visualAssetChecked: false, visualType: "NONE" } };
+  const audit = { schemaVersion: "ALIVE_META_AUDIT_ATOMIC_v3", examTitle, sourceFileDriveId, sourceSha256: hash(sourceBytes),
+    auditedTimestamp: "2026-10-23T00:00:00Z", auditVerdict: "ALL_APPROVED_CANONICAL_STANDARDIZED",
+    statistics: { totalQuestions: 1, approved: 1, holdRemaining: 0, canonicalTemplatesReused: 1, newTemplatesCreated: 0, atomicCrossConceptsBound: 1 },
+    boundAtomicCrossConcepts: [{ conceptKey: auditConcept.conceptKey, labelKo: auditConcept.canonicalLabelKo, definition: auditConcept.definition }],
+    handOffToCourier: { status: "READY_FOR_COURIER_REGISTRATION", author: "META_PIPELINE_UNIFIED_AUTHOR", registrationProtocol: "DIRECT_ATOMIC_METADATA_BINDING" },
+    records: [record] };
+  const manifest = { schemaVersion: "COURIER_INTAKE_MANIFEST_v2", examTitle, sourceFileDriveId, sourceSha256: hash(sourceBytes),
+    status: "READY_FOR_COURIER_REGISTRATION", courierAction: "COMMIT_CANONICAL_BINDING", bindingTarget: `archive/exams/${f.request.sourceArchiveFile}`,
+    payloadSummary: { totalQuestions: 1, approved: 1, templateInflationCount: 0, atomicCrossConceptsCount: 1, holdCount: 0 },
+    recordsToBind: [{ questionId: 1, problemTypeKey: target.problemTypeKey, templateKey: target.templateKey, crossConceptKeys: target.crossConceptKeys }] };
+  const evidenceRoot = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1";
+  const auditPath = `${evidenceRoot}/${f.request.requestId}.audit.json`;
+  const manifestPath = `${evidenceRoot}/${f.request.requestId}.manifest.json`;
+  const sourceParityPath = `${evidenceRoot}/${f.request.requestId}.source-parity.json`;
+  const parentLabelsPath = `${evidenceRoot}/${f.request.requestId}.parent-labels.json`;
+  f.put(auditPath, audit);
+  f.put(manifestPath, manifest);
+  const studentFields = ["id", "questionType", "content", "choices", "answer", "solution", "image", "images", "figureSvg", "solutionImage", "solutionFigureSvg", "layoutTag", "wide"];
+  const studentPayloadHash = hash(stable(Object.fromEntries(studentFields.map(field => [field, Object.hasOwn(f.q, field) ? f.q[field] : null]))));
+  const sourceParity = { schemaVersion: "archive-meta-pipeline-source-parity-v1", status: "EXACT_STUDENT_VISIBLE_PARITY", sourceFileDriveId,
+    driveSourceSha256: hash(sourceBytes), productionSourceSha256: hash(sourceBytes), productionSourceBlobSha1: f.request.expectedSourceBlobSha1,
+    sourceArchiveFile: f.request.sourceArchiveFile, studentFields, questionCount: 1,
+    records: [{ sourceOrdinal: 1, questionId: 1, questionUid: f.request.items[0].questionUid, driveSourceTextExcerptMatched: true,
+      driveSolutionExcerptMatched: true, driveStudentPayloadSha256: studentPayloadHash, productionStudentPayloadSha256: studentPayloadHash, studentPayloadEqual: true }] };
+  f.put(sourceParityPath, sourceParity);
+  const parentContext = { curriculumKey: f.request.items[0].after.curriculum,
+    courseKey: String(f.request.items[0].after.courseKey).replace(/\s/g, ""), standardUnitKey: f.q.standardUnitKey };
+  const parentLabels = { schemaVersion: "archive-meta-pipeline-parent-label-evidence-v1", sourcePath: "archive/data/basic-scope-parent-links.json",
+    sourceSha256: hash("fixture basic scope parent links"),
+    records: siblingParent
+      ? [{ ...parentContext, subUnitKey: "SUB_SIBLING_A", L1: f.q.standardUnit, L2: f.q.subUnit },
+        { ...parentContext, subUnitKey: "SUB_SIBLING_B", L1: f.q.standardUnit, L2: f.q.subUnit }]
+      : [{ ...parentContext, subUnitKey: f.q.subUnitKey, L1: f.q.standardUnit, L2: f.q.subUnit }],
+    derivedRecords: siblingParent ? [{ ...parentContext, subUnitKey: f.q.subUnitKey, L1: f.q.standardUnit, L2: f.q.subUnit,
+      method: "SAME_STANDARD_UNIT_SIBLING_PARENT_CONSENSUS", supportingSubUnitKeys: ["SUB_SIBLING_A", "SUB_SIBLING_B"] }] : [] };
+  f.put(parentLabelsPath, parentLabels);
+  const auditPackageRef = { path: auditPath, sha256: hash(fs.readFileSync(path.join(f.root, auditPath))) };
+  const manifestRef = { path: manifestPath, sha256: hash(fs.readFileSync(path.join(f.root, manifestPath))) };
+  const sourceParityRef = { path: sourceParityPath, sha256: hash(fs.readFileSync(path.join(f.root, sourceParityPath))) };
+  const parentLabelsRef = { path: parentLabelsPath, sha256: hash(fs.readFileSync(path.join(f.root, parentLabelsPath))) };
+  const evidenceRefs = [...f.evidenceRefs, auditPackageRef, manifestRef, sourceParityRef, parentLabelsRef];
+  f.request.approval = { type: "META_PIPELINE_AUDIT", metadataReviewed: true, approvedBy: "META_PIPELINE_UNIFIED_AUTHOR", evidenceRefs,
+    metaPipelineAudit: { schemaVersion: "meta-pipeline-audit-approval-v1", sourceFileDriveId, auditPackageRef, manifestRef, sourceParityRef, existingConceptReviews } };
+  f.request.items = f.request.items.map(item => ({ ...item, before: { ...item.before, L1: null, L2: null },
+    after: { ...item.after, L1: f.q.standardUnit, L2: f.q.subUnit },
+    basicScopeParentRef: parentLabelsRef, evidenceRefs }));
+  return { audit, manifest, auditPackageRef, manifestRef };
+}
+
 for (const [course, curriculum] of [["중1 수학", "2015"], ["중2 수학", "2022"], ["중3 수학", "2022"], ["공통수학1", "2022"], ["대수", "2022"], ["미적분Ⅰ", "2022"], ["확률과통계", "2022"], ["수학Ⅱ", "2015"], ["기하", "2015"], ["아직 등록되지 않은 미래 선택과목", "2030"]]) {
   test(`native canonical extension and registration without subject code: ${curriculum}/${course}`, t => {
     const f = fixture(t, course, curriculum);
@@ -86,6 +172,133 @@ test("REVIEW2 approval remains distinct", t => {
   f.request.approval.reviewPassCount = 2;
   registerReviewedExamV2({ root: f.root, request: f.request, write: true });
   assert.equal(f.read(META).records[0].tagConfidence, "independent_review2");
+});
+
+test("META_PIPELINE_AUDIT registers exact audited bindings without relabeling FINAL_QA or REVIEW2", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.approvalType, "META_PIPELINE_AUDIT");
+  const row = f.read(META).records[0];
+  assert.equal(row.metadataApprovalType, "META_PIPELINE_AUDIT");
+  assert.equal(row.tagConfidence, "meta_pipeline_audit");
+  assert.equal(row.fieldStatus.problemType, "approved_meta_pipeline_audit");
+  assert.equal(Object.hasOwn(row.fieldStatus, "difficulty"), false);
+  const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json");
+  assert.equal(receipt.approval.type, "META_PIPELINE_AUDIT");
+  assert.equal(receipt.examFinalQaStatus, "NOT_EVALUATED_BY_REGISTRAR");
+  assert.equal(receipt.metaPipelineAudit.schemaVersion, "ALIVE_META_AUDIT_ATOMIC_v3");
+});
+
+test("META_PIPELINE_AUDIT materializes explicitly pending source metadata placeholders", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, problemTypeKey: null, templateKey: null, crossConceptKeys: [], projectionStatus: "BINDING_PENDING",
+    problemTypeKeyNullReason: "No exact ACTIVE binding exists yet.", templateKeyNullReason: "No exact ACTIVE binding exists yet." };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  attachMetaPipelineAudit(f);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(f.read(META).records[0].problemTypeKey, "PT_NEW");
+  assert.equal(f.read(META).records[0].templateKey, "TPL_NEW");
+  assert.equal(f.read(META).records[0].crossConceptKeys[0], "CC_NEW");
+  assert.equal(fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`), "utf8"), bytes);
+});
+
+test("META_PIPELINE_AUDIT does not treat unreasoned null source metadata as pending placeholders", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, problemTypeKey: null, templateKey: null, crossConceptKeys: [], projectionStatus: "BINDING_PENDING" };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  attachMetaPipelineAudit(f);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /source\/approved metadata parity/);
+});
+
+test("META_PIPELINE_AUDIT preserves an unresolved legacy difficulty bucket as EVIDENCE_DEBT", t => {
+  const f = fixture(t);
+  delete f.q.difficultyBucket;
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  const meta = f.read(META);
+  meta.records[0].difficultyBucket = "중";
+  meta.records[0].fieldStatus = { difficulty: "approved_source" };
+  f.put(META, meta);
+  f.request.items[0].before.difficultyBucket = "중";
+  f.request.items[0].after.difficultyBucket = null;
+  attachMetaPipelineAudit(f);
+  f.request.approval.metaPipelineAudit.unreviewedFields = [
+    { field: "difficultyBucket", status: "EVIDENCE_DEBT", questionUids: ["uid1"], reason: "The source label is not a five-level bucket and the audit package did not assess difficulty; no conversion was inferred." }
+  ];
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.difficultyBucket, null);
+  assert.equal(row.fieldStatus.difficulty, "EVIDENCE_DEBT");
+  assert.equal(row.difficultyEvidenceDebt.status, "EVIDENCE_DEBT");
+});
+
+test("META_PIPELINE_AUDIT records unassessed IntegrationPattern instead of inventing NONE", t => {
+  const f = fixture(t);
+  delete f.q.integrationPattern;
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  delete f.request.items[0].after.integrationPattern;
+  delete f.request.items[0].before.integrationPattern;
+  f.request.items[0].after.integrationPattern = null;
+  f.request.items[0].before.integrationPattern = null;
+  attachMetaPipelineAudit(f);
+  f.request.approval.metaPipelineAudit.unreviewedFields = [
+    { field: "integrationPattern", status: "EVIDENCE_DEBT", questionUids: ["uid1"], reason: "The ALIVE meta audit schema does not assess IntegrationPattern." }
+  ];
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.integrationPattern, null);
+  assert.equal(row.fieldStatus.integrationPattern, "EVIDENCE_DEBT");
+  assert.equal(row.integrationPatternEvidenceDebt.status, "EVIDENCE_DEBT");
+});
+
+test("META_PIPELINE_AUDIT accepts a shared L1/L2 parent only from sibling consensus under the same unit", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { siblingParent: true });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.L1, "새 단원");
+  assert.equal(row.L2, "새 세부단원");
+});
+
+test("META_PIPELINE_AUDIT reuses a same-label existing CrossConcept without changing its canonical meaning", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { existingConcept: true });
+  const beforeRegistry = f.read(`${CANON}/concepts/new-concepts.json`);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.registryChangeCount, 0);
+  assert.deepEqual(f.read(`${CANON}/concepts/new-concepts.json`), beforeRegistry);
+  assert.equal(f.read(META).records[0].crossConceptKeys[0], "CC_NEW");
+});
+
+test("META_PIPELINE_AUDIT refuses existing CrossConcept wording drift without a reuse rationale", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { existingConcept: true });
+  delete f.request.approval.metaPipelineAudit.existingConceptReviews;
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request, write: true }), /meaning review required/);
+  assert.equal(fs.existsSync(path.join(f.root, "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json")), false);
+});
+
+test("META_PIPELINE_AUDIT rejects missing or mismatched audit proof before writes", t => {
+  const missing = fixture(t);
+  missing.request.approval.type = "META_PIPELINE_AUDIT";
+  assert.throws(() => registerReviewedExamV2({ root: missing.root, request: missing.request, write: true }), /proof required/);
+  assert.equal(fs.existsSync(path.join(missing.root, "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json")), false);
+
+  const mismatched = fixture(t);
+  attachMetaPipelineAudit(mismatched);
+  mismatched.request.items[0].after.crossConceptKeys = [];
+  const before = fs.readFileSync(path.join(mismatched.root, META));
+  assert.throws(() => registerReviewedExamV2({ root: mismatched.root, request: mismatched.request, write: true }), /registration binding mismatch/);
+  assert.deepEqual(fs.readFileSync(path.join(mismatched.root, META)), before);
+  assert.equal(fs.existsSync(path.join(mismatched.root, "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json")), false);
 });
 
 for (const [name, mutate, error] of [
