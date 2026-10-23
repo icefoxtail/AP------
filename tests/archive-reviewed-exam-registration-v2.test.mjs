@@ -209,6 +209,49 @@ test("META_PIPELINE_AUDIT registers exact audited bindings without relabeling FI
   assert.equal(receipt.metaPipelineAudit.schemaVersion, "ALIVE_META_AUDIT_ATOMIC_v3");
 });
 
+for (const manifestSchema of ["ALIVE_COURIER_INTAKE_MANIFEST_v3", "COURIER_INTAKE_MANIFEST_v3"]) {
+  test(`META_PIPELINE_AUDIT accepts ${manifestSchema} with the rich audit gates intact`, t => {
+    const f = fixture(t);
+    attachMetaPipelineAudit(f);
+    const manifestRef = f.request.approval.metaPipelineAudit.manifestRef;
+    const manifest = f.read(manifestRef.path);
+    manifest.schemaVersion = manifestSchema;
+    manifest.totalQuestions = 1;
+    manifest.totalHoldCount = 0;
+    delete manifest.courierAction;
+    delete manifest.bindingTarget;
+    delete manifest.payloadSummary;
+    f.put(manifestRef.path, manifest);
+    const nextManifestRef = { path: manifestRef.path, sha256: hash(fs.readFileSync(path.join(f.root, manifestRef.path))) };
+    const replaceManifestRef = refs => [...refs.filter(ref => ref.path !== manifestRef.path), nextManifestRef];
+    f.request.approval.evidenceRefs = replaceManifestRef(f.request.approval.evidenceRefs);
+    f.request.approval.metaPipelineAudit.manifestRef = nextManifestRef;
+    f.request.items = f.request.items.map(item => ({ ...item, evidenceRefs: replaceManifestRef(item.evidenceRefs) }));
+
+    const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+    assert.equal(result.approvalType, "META_PIPELINE_AUDIT");
+    assert.equal(result.totalQuestions, 1);
+    assert.equal(f.read(META).records[0].metadataApprovalType, "META_PIPELINE_AUDIT");
+  });
+}
+
+test("META_PIPELINE_AUDIT rejects a CrossConcept key echoed as its definition", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f);
+  const auditRef = f.request.approval.metaPipelineAudit.auditPackageRef;
+  const audit = f.read(auditRef.path);
+  const definition = audit.boundAtomicCrossConcepts[0];
+  definition.labelKo = definition.conceptKey;
+  definition.definition = definition.conceptKey;
+  f.put(auditRef.path, audit);
+  const nextAuditRef = { path: auditRef.path, sha256: hash(fs.readFileSync(path.join(f.root, auditRef.path))) };
+  const replaceAuditRef = refs => [...refs.filter(ref => ref.path !== auditRef.path), nextAuditRef];
+  f.request.approval.evidenceRefs = replaceAuditRef(f.request.approval.evidenceRefs);
+  f.request.approval.metaPipelineAudit.auditPackageRef = nextAuditRef;
+  f.request.items = f.request.items.map(item => ({ ...item, evidenceRefs: replaceAuditRef(item.evidenceRefs) }));
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /CrossConcept definition placeholder/);
+});
+
 test("META_PIPELINE_AUDIT accepts a canonical target parent when the exact master snapshot is evidence-bound", t => {
   const f = fixture(t, "기하");
   attachMetaPipelineAudit(f, { promoteCanonicalTypes: true, targetCanonicalParent: true });
@@ -310,7 +353,8 @@ test("META_PIPELINE_AUDIT requires exact supporting UIDs for a new TPL", t => {
 test("META_PIPELINE_AUDIT materializes explicitly pending source metadata placeholders", t => {
   const f = fixture(t);
   f.q = { ...f.q, problemTypeKey: null, templateKey: null, crossConceptKeys: [], projectionStatus: "BINDING_PENDING",
-    problemTypeKeyNullReason: "No exact ACTIVE binding exists yet.", templateKeyNullReason: "No exact ACTIVE binding exists yet." };
+    problemTypeKeyNullReason: "No exact ACTIVE binding exists yet.", templateKeyNullReason: "No exact ACTIVE binding exists yet.",
+    crossConceptKeysNullReason: "No exact ACTIVE binding exists yet." };
   const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
   f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
   f.request.expectedSourceBlobSha1 = blob(bytes);
