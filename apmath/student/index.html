@@ -9,16 +9,16 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.10.23.1">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.10.23.1">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.10.23.1">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.10.23.1">
+  <link rel="manifest" href="./manifest.json?v=2026.10.23.2">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.10.23.2">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.10.23.2">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.10.23.2">
   <title>AP Math OS | 학생 포털</title>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
   <script src="./archive-review-output.js?v=20261003-student-review-s4-1"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.10.23.1">
+  <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.10.23.2">
   <style>
     :root {
       --primary:#111827;
@@ -477,7 +477,7 @@
       width:40px;
       height:40px;
       border-radius:15px;
-      background:#FFFFFF url('./icons/icon-192.png?v=2026.10.23.1') center/cover no-repeat;
+      background:#FFFFFF url('./icons/icon-192.png?v=2026.10.23.2') center/cover no-repeat;
       color:transparent;
       display:flex;
       align-items:center;
@@ -620,7 +620,7 @@
       .omr-filter-tab { font-size:12px; }
     }
   </style>
-  <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.10.23.1">
+  <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.10.23.2">
   <style>
     body.student-portal-theme {
       --primary:#111827;
@@ -730,7 +730,7 @@
 <body class="student-portal-theme">
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.10.23.1" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.10.23.2" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -752,7 +752,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.10.23.1';
+    const STUDENT_APP_VERSION = '2026.10.23.2';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -1850,6 +1850,16 @@
     }
     function renderOmrHomeSection() {
       const visible = getStudentPortalAssignments();
+      const hasCompleteReviewSet = !exactOmrAssignmentId && Array.isArray(omrData?.exams) &&
+        visible.length > 0 && visible.length < 150 &&
+        visible.every(row => isOmrReviewAvailable(row));
+      const description = isTeacherPreview
+        ? '학생에게 출제된 시험지와 기록된 상태를 확인합니다.'
+        : hasCompleteReviewSet
+          ? '출제된 모든 시험지의 문제·정답·해설을 확인할 수 있습니다. 조회된 시험 제출 상태와 기록 결과를 확인하세요. 클리닉 오답 체크는 시험 제출과 별도입니다.'
+          : visible.length
+            ? `현재 조회된 ${visible.length}개 시험지입니다. 원본 파일이 제공되는 시험지에서 문제·정답·해설을 확인할 수 있습니다. 시험 제출 상태와 클리닉 오답 체크는 별도입니다.`
+            : '현재 조회된 출제 시험지가 없습니다. 시험 제출 결과와 클리닉 오답 체크는 별도입니다.';
       const rows = visible.length ? visible.map(row => {
         const assignmentId = escapeHtml(String(row?.assignment_id || ''));
         const examDate = escapeHtml(String(row?.exam_date || ''));
@@ -1874,7 +1884,7 @@
             <div class="row-actions">
               ${renderOmrPdfAction(row)}
               ${isOmrReviewAvailable(row) ? renderOmrReviewActions(row) : '<button type="button" class="btn" disabled>시험지 파일 없음</button>'}
-              ${isTeacherPreview || submitted || submittedStatus === 'unknown' ? '' : `<button class="btn btn-primary" onclick="openHomeOmrInput('${assignmentId}')">OMR 입력</button>`}
+              ${isTeacherPreview || submitted ? '' : submittedStatus === 'unknown' ? '' : `<button class="btn btn-primary" onclick="openHomeOmrInput('${assignmentId}')">OMR 입력</button>`}
             </div>
           </div>
         `;
@@ -1886,7 +1896,7 @@
           <div class="portal-assignments-head">
             <div>
               <h2 class="card-title">${isTeacherPreview ? '시험지 확인' : '내 시험지'}</h2>
-              <p class="card-desc">${isTeacherPreview ? '학생에게 출제된 시험지와 기록된 상태를 확인합니다.' : '선생님이 출제한 시험지와 제출 여부, 기록된 결과를 확인합니다. 오답 클리닉 체크와는 별도입니다.'}</p>
+              <p class="card-desc">${description}</p>
             </div>
             <div class="portal-mark orange">${renderIcon('omr')}</div>
           </div>
@@ -2058,7 +2068,7 @@
       if (!hasPortalReadAccess()) throw new Error('로그인이 필요합니다.');
       if (!force && omrData?.exams && omrLoadedAssignmentId === exactOmrAssignmentId) return omrData;
       const request = beginStudentRequest('omr');
-      const params = new URLSearchParams({ student_id: request.studentId });
+      const params = new URLSearchParams({ student_id: String(session.student_id) });
       if (exactOmrAssignmentId) params.set('assignment_id', exactOmrAssignmentId);
       let nextOmrData;
       try {
@@ -2346,7 +2356,8 @@
       const showReview = isOmrReviewAvailable(exam);
       const showPdf = !!renderOmrPdfAction(exam);
       const isLegacyMixedReview = isLegacyMixedOmrReview(exam);
-      const showActionArea = showReview || showPdf || isTeacherPreview || (!submitted && !submissionUnknown);
+      const showActionArea = showReview || showPdf || isTeacherPreview || !submitted;
+      const hasActionContent = showReview || showPdf || isTeacherPreview || (!submitted && !submissionUnknown);
       const count = Number(exam.question_count || 0);
       const meta = [exam.class_name || '', exam.exam_date || '', count ? `${count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
       const statusParts = [];
@@ -2368,12 +2379,12 @@
             ${status ? `<span class="omr-status ${statusClass}">${escapeHtml(status)}</span>` : ''}
           </div>
           ${isLegacyMixedReview ? '<p class="omr-review-unavailable">이전 출제본이라 문제·정답·해설을 제공할 수 없습니다. 선생님께 다시 출제를 요청해 주세요.</p>' : ''}
-          ${showActionArea ? `
+          ${showActionArea && hasActionContent ? `
             <div class="omr-actions ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''}">
               ${showPdf ? renderOmrPdfAction(exam) : ''}
               ${showReview ? renderOmrReviewActions(exam) : ''}
               ${isTeacherPreview && !showReview ? '<button type="button" class="btn review-btn" disabled>시험지 파일 없음</button>' : ''}
-              ${isTeacherPreview || submitted || submissionUnknown ? '' : `<button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">OMR 작성</button>`}
+              ${isTeacherPreview || submitted ? '' : submissionUnknown ? '' : `<button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">OMR 작성</button>`}
             </div>
           ` : ''}
         </article>
