@@ -1107,7 +1107,10 @@ def extract_question_array_text(text):
             return ""
 
         exam_data = text[object_start:object_end + 1]
-        question_fields = list(re.finditer(r"(['\"])questions\1\s*:\s*\[", exam_data))
+        question_fields = list(re.finditer(
+            r"(?:(['\"])questions\1|(?<![\w$'\"])questions)\s*:\s*\[",
+            exam_data,
+        ))
         if len(question_fields) != 1:
             return ""
 
