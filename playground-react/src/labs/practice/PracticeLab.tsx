@@ -29,7 +29,7 @@ export default function PracticeLab({id}:{id:PracticeId}){
     if(id==='arc')return variant==='arc-isosceles'?c.key==='r'||c.key==='base':variant==='arc-secant3'?c.key==='r'||c.key==='secant':c.key!=='base'&&c.key!=='secant';
     if(id==='sector'&&variant==='sector-ratio-pie')return c.key==='r';
     if(id==='boundary')return variant==='boundary-ring'?c.key==='R'||c.key==='r'||c.key==='theta':c.key==='s';
-    if(id==='overlap')return variant==='overlap-nested'?c.key==='R'||c.key==='r':variant==='overlap-baby-circle'?c.key==='R':variant==='overlap-leaf'?c.key==='a'||c.key==='b':c.key==='r'||c.key==='d';
+    if(id==='overlap')return variant==='overlap-nested'?c.key==='R'||c.key==='r':variant==='overlap-baby-circle'?c.key==='R':variant==='overlap-leaf'?c.key==='a'||c.key==='b':c.key==='r';
     if(id==='rope'&&variant==='rope-triangle')return c.key==='r';
     if(id==='rope'&&variant==='rope-row')return c.key==='r'||c.key==='c';
     if(id==='pizza'&&variant==='pizza-equal')return c.key!=='b';
@@ -62,7 +62,7 @@ export default function PracticeLab({id}:{id:PracticeId}){
   },[id,variant,params,mode,replay]);
   const set=(key:string,n:number)=>setParams(before=>{
     const next={...before,[key]:n};
-      if(id==='tether'&&key==='R'){next.w=Math.min(next.w,n);next.h=Math.min(next.h,n)}
+      if(id==='tether'){next.w=Math.min(next.w,next.R);next.h=Math.min(next.h,next.R);if(next.w+next.h<next.R){if(key==='h')next.w=next.R-next.h;else next.h=next.R-next.w}}
     if(id==='overlap'&&key==='r')next.d=Math.min(next.d,2*n-1);
     if(id==='boundary'&&key==='R')next.r=Math.min(next.r,n-1);
     if(id==='square'&&key==='s')next.a=Math.min(next.a,n-1);
@@ -83,7 +83,7 @@ export default function PracticeLab({id}:{id:PracticeId}){
     <section className="stage-card practice-stage" ref={stage}>
       <div className="stage-head"><div className="mode-group" role="group" aria-label="관찰 모드">{modes.map(m=><button type="button" key={m} className={`mode-button mode-${m} ${m===mode?'selected':''}`} onClick={()=>{setMode(m);setProgress(0);setReplay(n=>n+1)}} aria-pressed={m===mode}>{m==='original'?'원본 도형':m==='line'?'둘레 · 호':'넓이 분해'}</button>)}</div>
         <div className="stage-actions">{mode!=='original'&&<button type="button" className="replay-button" onClick={replayMotion}>↻ 과정 다시 보기</button>}<span className="stage-chip">STEP3 기하·계산 재구성</span></div></div>
-      {mode==='area'&&<div className="motion-scrubber"><label htmlFor={`practice-progress-${id}`}>계산용 조각 분리 · 재배치</label><input id={`practice-progress-${id}`} type="range" min="0" max="100" step="1" value={Math.round(progress*100)} onChange={e=>setMotionProgress(Number(e.target.value)/100)}/><output>{Math.round(progress*100)}%</output><button type="button" className="replay-button" onClick={replayMotion}>▶ 재생</button><span>원본 색칠 영역과 계산용 복제 조각을 따로 봅니다.</span></div>}
+      {mode==='area'&&<div className="motion-scrubber"><label htmlFor={`practice-progress-${id}`}>계산 요소 보기 (일부는 비율을 나타내지 않는 개념도)</label><input id={`practice-progress-${id}`} type="range" min="0" max="100" step="1" value={Math.round(progress*100)} onChange={e=>setMotionProgress(Number(e.target.value)/100)}/><output>{Math.round(progress*100)}%</output><button type="button" className="replay-button" onClick={replayMotion}>▶ 재생</button><span>원본 색칠 영역은 보존하며, 계산 요소 그림은 실제 축척과 구별합니다.</span></div>}
       <div className="sliders-line practice-controls">{controls.map(c=><label className="slider-control" key={c.key}><span>{c.label}</span><input aria-label={c.label} type="range" min={c.min} max={id==='tether'&&(c.key==='w'||c.key==='h')?Math.min(c.max,params.R):c.key==='r'&&id==='boundary'?Math.min(c.max,params.R-1):c.key==='d'&&id==='overlap'?Math.min(c.max,2*params.r-1):id==='square'&&variant==='square-rect-quadrant'&&c.key==='a'?Math.min(c.max,params.s-1):c.max} step={c.step} value={params[c.key]??c.min} onChange={e=>set(c.key,Number(e.target.value))}/><output>{params[c.key]??c.min}{c.unit}</output></label>)}</div>
       <div className="stage-body practice-stage-body">
         <div className="canvas-area"><div className="canvas-label"><span className="canvas-label-dot"/>{mode==='original'?'도형의 원래 구조':mode==='line'?(result.lineLabel??'실제 둘레 경계만 강조'):'넓이 관계 · 원본 색칠 보존'}</div><PracticeCanvas id={id} variant={variant} p={params} mode={mode} progress={progress}/></div>
