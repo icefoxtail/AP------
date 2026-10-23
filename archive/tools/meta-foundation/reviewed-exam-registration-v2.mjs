@@ -107,10 +107,15 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   const stats = audit.statistics;
   if (!stats || stats.totalQuestions !== expectedQuestionCount || stats.approved !== expectedQuestionCount ||
       stats.holdRemaining !== 0 || stats.newTemplatesCreated !== 0 || stats.canonicalTemplatesReused !== expectedQuestionCount) fail("META_PIPELINE_AUDIT denominator/hold/template gate mismatch");
-  if (manifest.schemaVersion !== "COURIER_INTAKE_MANIFEST_v2" || manifest.examTitle !== expectedTitle ||
+  const manifestV2 = manifest.schemaVersion === "COURIER_INTAKE_MANIFEST_v2";
+  const manifestV3 = ["ALIVE_COURIER_INTAKE_MANIFEST_v3", "COURIER_INTAKE_MANIFEST_v3"].includes(manifest.schemaVersion);
+  if ((!manifestV2 && !manifestV3) || manifest.examTitle !== expectedTitle ||
       manifest.sourceFileDriveId !== proof.sourceFileDriveId || manifest.sourceSha256 !== audit.sourceSha256 ||
-      manifest.status !== "READY_FOR_COURIER_REGISTRATION" || manifest.courierAction !== "COMMIT_CANONICAL_BINDING" ||
-      path.basename(manifest.bindingTarget || "") !== `${expectedTitle}.js`) fail("META_PIPELINE_AUDIT manifest/source mismatch");
+      manifest.status !== "READY_FOR_COURIER_REGISTRATION") fail("META_PIPELINE_AUDIT manifest/source mismatch");
+  if (manifestV2 && (manifest.courierAction !== "COMMIT_CANONICAL_BINDING" ||
+      path.basename(manifest.bindingTarget || "") !== `${expectedTitle}.js`)) fail("META_PIPELINE_AUDIT v2 manifest routing mismatch");
+  if (manifestV3 && (manifest.totalQuestions !== expectedQuestionCount || manifest.totalHoldCount !== 0))
+    fail("META_PIPELINE_AUDIT v3 manifest denominator/hold gate mismatch");
   const auditSourceSha256 = sourceParity.auditSourceSha256 || sourceParity.driveSourceSha256;
   const sourceHashDrift = sourceParity.driveSourceSha256 !== audit.sourceSha256;
   const exactSourceHashParity = !sourceHashDrift && sourceParity.parityBasis === "EXACT_SOURCE_SHA256" &&
@@ -128,8 +133,13 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
       sourceParity.questionCount !== expectedQuestionCount || !Array.isArray(sourceParity.records) || sourceParity.records.length !== expectedQuestionCount)
     fail("META_PIPELINE_AUDIT source parity identity/denominator mismatch");
   const summary = manifest.payloadSummary;
-  if (!summary || summary.totalQuestions !== expectedQuestionCount || summary.approved !== expectedQuestionCount ||
-      summary.holdCount !== 0 || summary.templateInflationCount !== 0) fail("META_PIPELINE_AUDIT manifest denominator/hold/template gate mismatch");
+  if (manifestV2 && (!summary || summary.totalQuestions !== expectedQuestionCount || summary.approved !== expectedQuestionCount ||
+      summary.holdCount !== 0 || summary.templateInflationCount !== 0)) fail("META_PIPELINE_AUDIT manifest denominator/hold/template gate mismatch");
+  // v3 manifests omit the redundant payloadSummary. The rich audit above remains
+  // authoritative for zero template inflation; v3 must still prove N/N and zero holds.
+  if (manifestV3 && (manifest.totalQuestions !== expectedQuestionCount || manifest.totalHoldCount !== 0 ||
+      stats.newTemplatesCreated !== 0 || stats.canonicalTemplatesReused !== expectedQuestionCount))
+    fail("META_PIPELINE_AUDIT v3 manifest denominator/hold/template gate mismatch");
   if (!Array.isArray(audit.records) || audit.records.length !== expectedQuestionCount ||
       !Array.isArray(manifest.recordsToBind) || manifest.recordsToBind.length !== expectedQuestionCount) fail("META_PIPELINE_AUDIT record denominator mismatch");
   const records = unique(audit.records, "questionId", "audit questionId");
@@ -177,8 +187,12 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   const definedConcepts = unique(audit.boundAtomicCrossConcepts, "conceptKey", "audit CrossConcept definition");
   if (!eq([...definedConcepts.keys()].sort(), usedConcepts) || stats.atomicCrossConceptsBound !== usedConcepts.length)
     fail("META_PIPELINE_AUDIT CrossConcept definition/binding mismatch");
-  for (const definition of definedConcepts.values()) if (!/^CC_[A-Z0-9_]+$/.test(definition.conceptKey) || !definition.labelKo || !definition.definition)
-    fail(`META_PIPELINE_AUDIT CrossConcept definition incomplete: ${definition.conceptKey}`);
+  for (const definition of definedConcepts.values()) {
+    if (!/^CC_[A-Z0-9_]+$/.test(definition.conceptKey) || !definition.labelKo || !definition.definition)
+      fail(`META_PIPELINE_AUDIT CrossConcept definition incomplete: ${definition.conceptKey}`);
+    if (definition.labelKo.trim() === definition.conceptKey || definition.definition.trim() === definition.conceptKey)
+      fail(`META_PIPELINE_AUDIT CrossConcept definition placeholder: ${definition.conceptKey}`);
+  }
   return { audit, manifest, sourceParity, sourceFileDriveId: proof.sourceFileDriveId };
 }
 
