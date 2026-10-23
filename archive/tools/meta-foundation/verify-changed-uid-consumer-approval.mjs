@@ -39,7 +39,7 @@ import { createRequire } from "node:module";
 import { isDeepStrictEqual } from "node:util";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { loadResolvedConsumerCatalog } from "./reviewed-exam-registration-v2.mjs";
+import { loadResolvedConsumerCatalog, registerReviewedCanonicalMaintenanceV1 } from "./reviewed-exam-registration-v2.mjs";
 
 const require = createRequire(import.meta.url);
 const SCHEMA = {
@@ -47,6 +47,7 @@ const SCHEMA = {
   NONPT: "archive-finalqa-nonpt-register-request-v1",
   V2: "archive-reviewed-exam-meta-register-request-v2",
   LEGACY: "archive-reviewed-exam-meta-register-request-v1",
+  MAINTENANCE: "archive-reviewed-canonical-maintenance-request-v1",
   SCOPED_LINKS: "archive2-reviewed-basic-source-links-exam-scoped-v1",
 };
 const GENERATED_INDEX = "archive/data/generated-lite-consumer/v1/index.json";
@@ -105,6 +106,13 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
         return { ordinal: r.sourceOrdinal, bodyFingerprint: r.sourceBodyFingerprint, fullFingerprint: r.sourceFingerprint,
           gated: true, expect: { curriculumKey: r.curriculumKey, courseKey: r.courseKey, L1: r.L1, L2: r.L2 } };
       }) };
+  }
+  if (schema === SCHEMA.MAINTENANCE) {
+    if (!/^[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(doc.requestId || "") ||
+        doc.approval?.type !== "CANONICAL_MAINTENANCE" || !Array.isArray(doc.items) || doc.items.length !== 0 ||
+        !Array.isArray(doc.registryChanges) || !doc.registryChanges.length)
+      fail("INVALID_REQUEST", "canonical maintenance needs requestId, approval, registryChanges[], and items: []");
+    return { kind: "canonical-maintenance-v1", exam: doc.requestId, sourceFile: null, request: doc, rows: [] };
   }
   if (schema === SCHEMA.PINPOINT || schema === SCHEMA.V2) {
     if (!Array.isArray(doc.items) || !doc.sourceArchiveFile) fail("INVALID_REQUEST", "request needs sourceArchiveFile and items[]");
@@ -242,7 +250,7 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
     }
   }
   let consumer = null;
-  if (units.length) {
+  if (units.some(({ unit }) => unit.kind !== "canonical-maintenance-v1")) {
     try { consumer = loadConsumer(root); } catch (error) {
       result.failures.push({ exam: "-", qid: "-", uid: "-", reason: "CONSUMER_LOAD_FAILED", detail: error.message });
     }
@@ -250,6 +258,29 @@ export function verifyChangedUidConsumerApproval({ root, requestPaths = [], scop
   for (const { file, unit } of units) {
     const summary = { file, kind: unit.kind, exam: unit.exam, sourceFile: unit.sourceFile, changed: 0, checked: 0, passed: 0, skippedUnchanged: 0 };
     result.exams.push(summary);
+    if (unit.kind === "canonical-maintenance-v1") {
+      try {
+        const verification = registerReviewedCanonicalMaintenanceV1({ root, request: unit.request, verify: true });
+        if (verification.status !== "PASS" || verification.maintenanceStatus !== "MAINTENANCE_COMPLETE" ||
+            verification.consumerSearchStatus !== "STATIC_VALUES_VERIFIED")
+          throw new Error(`maintenance consumer verification incomplete: ${verification.maintenanceStatus || verification.status}/${verification.consumerSearchStatus || "UNKNOWN"}`);
+        summary.maintenanceStatus = verification.maintenanceStatus;
+        summary.consumerSearchStatus = verification.consumerSearchStatus;
+        summary.runtimeUidsVerified = verification.totalRuntimeUids;
+        summary.projectedClassificationUidCount = verification.projectedClassificationUidCount;
+        summary.withheldClassificationUidCount = verification.withheldClassificationUidCount;
+        summary.searchAdvancedFieldUidCount = verification.searchAdvancedFieldUidCount;
+        summary.searchAdvancedFieldUidCounts = verification.searchAdvancedFieldUidCounts;
+        summary.canonicalAssignmentEvidenceCount = verification.canonicalAssignmentEvidenceCount;
+        summary.sourceFingerprintMatchCount = verification.sourceFingerprintMatchCount;
+        summary.sourceFingerprintHoldCount = verification.sourceFingerprintHoldCount;
+        summary.changed = 0;
+        continue;
+      } catch (error) {
+        result.failures.push({ exam: unit.exam, qid: "-", uid: "-", reason: "CANONICAL_MAINTENANCE_VERIFY_FAILED", detail: error.message });
+        continue;
+      }
+    }
     const rows = unit.rows.filter(r => !r.unchanged);
     summary.skippedUnchanged = unit.rows.length - rows.length;
     summary.changed = rows.length;
@@ -292,7 +323,11 @@ export function renderSummary(result) {
       "| exam | QID | UID | reason |", "| --- | --- | --- | --- |");
     for (const f of result.failures) lines.push(`| ${f.exam} | ${f.qid} | ${f.uid} | ${f.reason}${f.detail ? `: ${String(f.detail).replace(/\|/g, "\\|")}` : ""} |`);
   }
-  for (const e of result.exams) lines.push("", `- ${e.kind} \`${e.exam}\`: changed ${e.changed}, checked ${e.checked}, passed ${e.passed}, skippedUnchanged ${e.skippedUnchanged}`);
+  for (const e of result.exams) {
+    if (e.kind === "canonical-maintenance-v1")
+      lines.push("", `- canonical maintenance \`${e.exam}\`: ${e.maintenanceStatus || "NOT_VERIFIED"}; Catalog/Search verified over ${e.runtimeUidsVerified ?? 0} runtime UIDs (${e.projectedClassificationUidCount ?? 0} PT/TPL projections, ${e.withheldClassificationUidCount ?? 0} with PT/TPL withheld; ${e.searchAdvancedFieldUidCount ?? 0} rows expose other advanced fields), canonical assignment evidence ${e.canonicalAssignmentEvidenceCount ?? 0}, source fingerprint status ${e.sourceFingerprintMatchCount ?? 0} current / ${e.sourceFingerprintHoldCount ?? 0} held; no exam UID/item approval was requested.`);
+    else lines.push("", `- ${e.kind} \`${e.exam}\`: changed ${e.changed}, checked ${e.checked}, passed ${e.passed}, skippedUnchanged ${e.skippedUnchanged}`);
+  }
   if (result.assignmentPending?.length) {
     const byExam = new Map();
     for (const r of result.assignmentPending) byExam.set(r.exam, [...(byExam.get(r.exam) || []), `Q${r.qid}`]);

@@ -28,6 +28,8 @@ const coreMetaFilterAuthorityPath = "data/master_tables/js_archive_tag_master.js
 const coreMetaFilterAuthorityBytes = fs.readFileSync(path.join(root, "archive", coreMetaFilterAuthorityPath));
 const coreMetaFilterAuthoritySha256 = hash(coreMetaFilterAuthorityBytes);
 const coreMetaTagMaster = JSON.parse(coreMetaFilterAuthorityBytes.toString("utf8"));
+const activeCanonicalChildUnitKeys = new Set(coreMetaTagMaster.filter(row => row.keyType === "subUnitKey" &&
+  ["active", "ACTIVE"].includes(row.status)).map(row => row.standardUnitKey));
 const activeTagOptions = (keyType, keyField, labelField, extraFields = []) => {
   const byKey = new Map();
   for (const row of coreMetaTagMaster) {
@@ -76,6 +78,9 @@ const foundationTemplates = new Map(foundationTaxonomy.templates.map((r) => [r.t
 const foundationCrossConcepts = new Set(foundationConcepts.concepts.map((r) => r.conceptKey));
 const foundationConditionKeys = new Set(foundationConditions.conditions.map((r) => r.conditionKey));
 const foundationBindingKeys = new Set(foundationBindings.bindings.map((r) => [r.curriculum, r.standardUnitKey, r.subUnitKey, r.problemTypeKey].join("\u0000")));
+const directNullSubUnitBindings = new Map(foundationBindings.bindings
+  .filter((row) => row.status === "ACTIVE" && row.bindingMode === "STANDARD_UNIT_DIRECT" && row.subUnitKey === null)
+  .map((row) => [[row.curriculum, row.standardCourse, row.standardUnitKey, row.problemTypeKey, row.ownerPack].join("\u0000"), row]));
 const foundationProjectionFields = new Set(["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "foundationTaxonomyStatus", "rpmPathStatus", "metaFoundationHoldReason", "metaFoundationPackVersion", "l3Disposition", "l4Disposition", "semanticDisposition"]);
 const metaV2SidecarRevision = value => String(value || "").startsWith(
   "meta-foundation:MIDDLE_RECERT_2026-09-30_META_V2:meta-review2-v1"
@@ -84,7 +89,8 @@ const masterFile =
   "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
 const masterText = read(masterFile);
 const canonicalMasterSha = hash(masterText);
-const taxonomy = core.taxonomyPaths(JSON.parse(masterText));
+const canonicalMaster = JSON.parse(masterText);
+const taxonomy = core.taxonomyPaths(canonicalMaster);
 const existingLinkParents = [
   ...(basicScopeLinks.records || []),
   ...(basicScopeLinks.sourceParents || []),
@@ -160,7 +166,34 @@ const gradeCourseAllowlist = new Set(
 const taxonomyVersion = canonicalMasterSha;
 const approvedFieldStatus = (value) => /^approved(?:_|$)/i.test(String(value || ""));
 const reviewedMetadataStatuses = new Set(["MOTHER_FINAL"]);
-function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGrade, assignmentFp }) {
+const registrationReceiptCache = new Map();
+function hasReviewedV2NullSubUnitProof({ id, meta, sourceFile, sourceOrdinal, assignmentFp, sourceRawSha256 }) {
+  if (meta.metadataStatus !== "approved_semantic_review" ||
+      !/^meta-foundation:.+:exam-(?:final_qa|review2)-v2:[A-Za-z0-9][A-Za-z0-9_-]{0,100}$/.test(String(meta.metadataRevision || "")) ||
+      meta.sourceFingerprint !== id.sourceFingerprint || meta.contentFingerprint !== assignmentFp ||
+      !Array.isArray(meta.approvalEvidence)) return false;
+  const requestId = String(meta.metadataRevision).split(":").at(-1);
+  const expectedPath = `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${requestId}.json`;
+  if (!meta.approvalEvidence.includes(expectedPath)) return false;
+  let receipt = registrationReceiptCache.get(expectedPath);
+  if (receipt === undefined) {
+    try { receipt = JSON.parse(read(expectedPath)); }
+    catch { receipt = null; }
+    registrationReceiptCache.set(expectedPath, receipt);
+  }
+  if (!receipt || receipt.schemaVersion !== "archive-reviewed-exam-meta-registration-v2" ||
+      receipt.requestId !== requestId || receipt.sourceArchiveFile !== sourceFile ||
+      !/^[a-f0-9]{64}$/.test(String(receipt.sourceRawSha256 || "")) || receipt.sourceRawSha256 !== sourceRawSha256 ||
+      !Array.isArray(receipt.appliedRecords) || !Array.isArray(receipt.runtimeRecords)) return false;
+  const exactRecord = row => row?.questionUid === id.questionUid && row.sourceOrdinal === sourceOrdinal &&
+    row.sourceArchiveFile === sourceFile && row.sourceFingerprint === meta.sourceFingerprint && row.contentFingerprint === assignmentFp &&
+    row.curriculum === meta.curriculum && row.standardCourse === meta.standardCourse &&
+    row.standardUnitKey === meta.standardUnitKey && row.subUnitKey === null &&
+    row.problemTypeKey === meta.problemTypeKey && row.metaFoundationPackId === meta.metaFoundationPackId &&
+    row.L1 === meta.L1 && row.L2 === meta.L2;
+  return receipt.appliedRecords.some(exactRecord) && receipt.runtimeRecords.some(exactRecord);
+}
+function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGrade, assignmentFp, sourceRawSha256 }) {
   const fail = (reason) => ({ assignment: null, reason });
   if (!id || !meta || id.questionUid !== meta.questionUid) return fail("assignment_identity_unverified");
   if (
@@ -179,6 +212,24 @@ function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGr
     gradeCourseAllowlist.has([sourceGrade, link.curriculumKey, link.courseKey].join("\u0000")) &&
     parentPaths.has(JSON.stringify([link.curriculumKey, link.courseKey, link.L1, link.L2])),
   );
+  const directBinding = meta.subUnitKey === null
+    ? directNullSubUnitBindings.get([meta.curriculum, meta.standardCourse, meta.standardUnitKey, meta.problemTypeKey, meta.metaFoundationPackId].join("\u0000"))
+    : null;
+  const directNullScopeValid = directBinding && meta.subUnitKey === null && !activeCanonicalChildUnitKeys.has(meta.standardUnitKey) &&
+    hasReviewedV2NullSubUnitProof({ id, meta, sourceFile, sourceOrdinal, assignmentFp, sourceRawSha256 });
+  if (directNullScopeValid) {
+    const parentPath = { curriculumKey: directBinding.curriculum, courseKey: directBinding.standardCourse,
+      L1: directBinding.L1, L2: directBinding.L2 };
+    const path = parentPaths.get(core.pathKey(parentPath, 4));
+    const exactParent = (canonicalMaster.records || []).some(row =>
+      row.curriculum === parentPath.curriculumKey && row.scope === parentPath.courseKey &&
+      row.majorUnit === parentPath.L1 && row.midUnit === parentPath.L2);
+    if (path && exactParent && gradeCourseAllowlist.has([sourceGrade, parentPath.curriculumKey, parentPath.courseKey].join("\u0000")) &&
+        meta.L1 === parentPath.L1 && meta.L2 === parentPath.L2) {
+      candidates.push({ grade: sourceGrade, ...parentPath, sourceFile, sourceOrdinal,
+        assignmentFingerprint: assignmentFp, reason: "reviewed-v2 exact ACTIVE STANDARD_UNIT_DIRECT null-subunit binding and canonical parent" });
+    }
+  }
   const hasReviewedSourceLink = candidates.some((parentLink) => {
     const sourceFile = core.normalizeFile(parentLink.sourceFile);
     const sourceOrdinal = Number(parentLink.sourceOrdinal);
@@ -200,8 +251,12 @@ function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGr
   const subUnitReviewed = approvedFieldStatus(meta.fieldStatus?.subUnit) ||
     (metadataStatus === "approved_r2e_final" &&
       meta.fieldStatus?.subUnit === "r2e_curriculum_binding" && hasReviewedSourceLink);
-  if (!meta.standardUnitKey || !meta.subUnitKey ||
-      !approvedFieldStatus(meta.fieldStatus?.standardUnit) || !subUnitReviewed)
+  const nullSubUnitDirectBinding = meta.subUnitKey === null &&
+    directNullSubUnitBindings.has([meta.curriculum, meta.standardCourse, meta.standardUnitKey, meta.problemTypeKey, meta.metaFoundationPackId].join("\u0000")) &&
+    !activeCanonicalChildUnitKeys.has(meta.standardUnitKey) &&
+    hasReviewedV2NullSubUnitProof({ id, meta, sourceFile, sourceOrdinal, assignmentFp, sourceRawSha256 });
+  if (!meta.standardUnitKey || (!meta.subUnitKey && !nullSubUnitDirectBinding) ||
+      !approvedFieldStatus(meta.fieldStatus?.standardUnit) || (!subUnitReviewed && !nullSubUnitDirectBinding))
     return fail("assignment_fields_unreviewed");
   if (!Array.isArray(meta.approvalEvidence) || !meta.approvalEvidence.some((ref) => typeof ref === "string" && ref.trim()) ||
       !String(metadata.approvalStatus || "").startsWith("APPROVED") ||
@@ -232,7 +287,7 @@ function verifiedBasicAssignment({ id, meta, sourceFile, sourceOrdinal, sourceGr
       standardCourse: meta.standardCourse || "",
       standardUnitKey: meta.standardUnitKey || "",
       standardUnit: meta.standardUnit || "",
-      subUnitKey: meta.subUnitKey || "",
+      subUnitKey: meta.subUnitKey ?? null,
       subUnit: meta.subUnit || "",
       sourceFingerprint: assignmentFp,
       assignmentFingerprint: assignmentFp,
@@ -279,7 +334,9 @@ const families = {
 };
 for (const exam of exams) {
   const file = core.normalizeFile(exam.file);
-  const source = read("archive/exams/" + file);
+  const sourceBytes = fs.readFileSync(path.join(root, "archive/exams", file));
+  const sourceRawSha256 = hash(sourceBytes);
+  const source = sourceBytes.toString("utf8").replace(/^\uFEFF/, "").replace(/\r\n/g, "\n");
   sourceHashes.push([file, hash(source)]);
   const scope = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(scope);
@@ -385,6 +442,7 @@ for (const exam of exams) {
           sourceOrdinal: ordinal,
           sourceGrade: sourceGradeEvidence.grade,
           assignmentFp: assignmentFingerprint,
+          sourceRawSha256,
         })
       : { assignment: null, reason: sourceGradeEvidence.status };
     const record = {
@@ -503,7 +561,7 @@ for (const exam of exams) {
       for (const field of ["curriculumKey", "courseKey", "L1", "L2"])
         record[field] = assignmentResult.assignment[field];
       for (const field of ["standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit"])
-        record[field] = assignmentResult.assignment[field] || "";
+        record[field] = field === "subUnitKey" ? assignmentResult.assignment[field] ?? null : assignmentResult.assignment[field] || "";
     } else {
       for (const field of core.PATH_FIELDS) record[field] = "";
       record.standardCourse = meta?.standardCourse || question.standardCourse || "";

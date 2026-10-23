@@ -278,5 +278,9 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     const { registerReviewedExamV2 } = await import("./reviewed-exam-registration-v2.mjs");
     if (args["verify-projection"] && write) throw new Error("--verify-projection is read-only");
     console.log(JSON.stringify(registerReviewedExamV2({ root, request: req, write, verifyProjection: Boolean(args["verify-projection"]) }), null, 2));
+  } else if (req.schemaVersion === "archive-reviewed-canonical-maintenance-request-v1") {
+    const { registerReviewedCanonicalMaintenanceV1 } = await import("./reviewed-exam-registration-v2.mjs");
+    if (args["verify-maintenance"] && write) throw new Error("--verify-maintenance is read-only");
+    console.log(JSON.stringify(registerReviewedCanonicalMaintenanceV1({ root, request: req, write, verify: Boolean(args["verify-maintenance"]) }), null, 2));
   } else registerLegacy(req);
 }

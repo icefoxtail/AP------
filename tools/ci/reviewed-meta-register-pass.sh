@@ -25,6 +25,7 @@ for request in "${reqs[@]}"; do cp -- "$request" "$work/requests/$(basename "$re
 
 if [[ ${#reqs[@]} -gt 0 ]]; then
   node --test tests/archive-reviewed-exam-registration-v2.test.mjs
+  node --test tests/meta-foundation-calculus1-bindings.test.mjs
   node --test tests/archive-finalqa-nonpt-register.test.mjs
   node --test tests/archive-finalqa-nonpt-real-geumdang.test.mjs
   for request in "${reqs[@]}"; do
@@ -39,9 +40,13 @@ node archive/tools/build-archive2-catalog.mjs --check
 node archive/tools/meta-foundation/compile-meta-foundation.mjs --canonical-only-check
 for request in "${reqs[@]}"; do
   schema="$(jq -r .schemaVersion "$request")"
-  if [[ "$schema" == "archive-reviewed-exam-meta-register-request-v2" || "$schema" == "archive-finalqa-pinpoint-register-request-v1" || "$schema" == "archive-finalqa-nonpt-register-request-v1" ]]; then
-    node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request "$request" --verify-projection
-  fi
+  case "$schema" in
+    archive-reviewed-exam-meta-register-request-v2|archive-finalqa-pinpoint-register-request-v1|archive-finalqa-nonpt-register-request-v1)
+      node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request "$request" --verify-projection ;;
+    archive-reviewed-canonical-maintenance-request-v1)
+      node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request "$request" --verify-maintenance ;;
+    *) echo "Unsupported request schema during verification: $schema" >&2; exit 1 ;;
+  esac
 done
 git diff --check
 
