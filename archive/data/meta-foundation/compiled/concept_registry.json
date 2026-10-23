@@ -19,8 +19,8 @@
     },
     {
       "shardId": "COORDINATE_GEOMETRY",
-      "version": "1.1.1",
-      "conceptCount": 24
+      "version": "1.1.2",
+      "conceptCount": 25
     },
     {
       "shardId": "PLANE_GEOMETRY",
@@ -63,7 +63,7 @@
       "conceptCount": 7
     }
   ],
-  "conceptCount": 104,
+  "conceptCount": 105,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -3092,6 +3092,41 @@
       "curriculumRefs": [
         "2022:기하:H22-GE-01",
         "2022:기하:H22-GE-02"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SPACE_FIGURE",
+      "canonicalLabelKo": "공간도형",
+      "definition": "3차원 공간에서 직선, 평면, 이면각의 위치 관계",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_3d0cd72452cb0b1f8c4e1f0f2226001352f625e9036334581df37c6d2d5837d5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-GE-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "META_PIPELINE_AUDIT",
+          "evidence": {
+            "evidenceType": "ALIVE_META_AUDIT_ATOMIC_v3",
+            "sourceFileDriveId": "1JgE1lYE1pxjmtjY_fNYNCRKt-Qx0_Xkv",
+            "sourceSha256": "beb7b2fb654932f7c906d83a4adcc2ccafb25e41407a0587677c4841913a2727",
+            "supportingQuestionUids": [
+              "qid_v1_3d0cd72452cb0b1f8c4e1f0f2226001352f625e9036334581df37c6d2d5837d5"
+            ]
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_GEO_SPACE_FIGURE"
+      ],
+      "curriculumRefs": [
+        "2022:기하:H22-GE-03"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
     },
