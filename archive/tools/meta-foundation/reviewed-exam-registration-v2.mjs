@@ -92,6 +92,8 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
       path.basename(manifest.bindingTarget || "") !== `${expectedTitle}.js`) fail("META_PIPELINE_AUDIT manifest/source mismatch");
   const auditSourceSha256 = sourceParity.auditSourceSha256 || sourceParity.driveSourceSha256;
   const sourceHashDrift = sourceParity.driveSourceSha256 !== audit.sourceSha256;
+  const exactSourceHashParity = !sourceHashDrift && sourceParity.parityBasis === "EXACT_SOURCE_SHA256" &&
+    sourceParity.driveSourceSha256 === audit.sourceSha256 && sourceParity.productionSourceSha256 === audit.sourceSha256;
   const sourceParityStatusValid = sourceHashDrift
     ? sourceParity.status === "EXACT_STUDENT_VISIBLE_PARITY_WITH_AUDIT_HASH_DRIFT" &&
       sourceParity.auditSourceSha256 === audit.sourceSha256 &&
@@ -125,17 +127,28 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
         !eq(manifestRow.crossConceptKeys, classification.crossConceptKeys)) fail(`META_PIPELINE_AUDIT manifest binding mismatch: ${ordinal}`);
     const actualPayloadHash = studentPayloadSha256(bank[ordinal - 1]);
     if (!parityRow || parityRow.questionId !== ordinal || parityRow.questionUid !== patch?.questionUid ||
-        parityRow.driveSourceTextExcerptMatched !== true || parityRow.driveSolutionExcerptMatched !== true ||
+        !(exactSourceHashParity || parityRow.driveSourceTextExcerptMatched === true && parityRow.driveSolutionExcerptMatched === true) ||
         parityRow.driveStudentPayloadSha256 !== actualPayloadHash || parityRow.productionStudentPayloadSha256 !== actualPayloadHash ||
         parityRow.studentPayloadEqual !== true) fail(`META_PIPELINE_AUDIT student source parity mismatch: ${ordinal}`);
     const after = patch?.after || {};
-    const parentRef = patch?.basicScopeParentRef;
-    const parentEvidenceLinked = (patch?.evidenceRefs || []).some(ref => ref.path === parentRef?.path && ref.sha256 === parentRef?.sha256);
+    const basicParentRef = patch?.basicScopeParentRef;
+    const targetParentRef = patch?.targetParentRef;
+    const parentRef = basicParentRef || targetParentRef;
+    const itemEvidence = patch?.evidenceRefs || [];
+    const approvalEvidence = approval.evidenceRefs || [];
+    const parentEvidenceLinked = basicParentRef
+      ? itemEvidence.some(ref => ref.path === basicParentRef.path && ref.sha256 === basicParentRef.sha256)
+      : targetParentRef && targetParentRef.path === "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json"
+        ? itemEvidence.some(ref => ref.path === targetParentRef.path && /^[a-f0-9]{64}$/.test(ref.sha256 || "") &&
+            approvalEvidence.some(approvedRef => approvedRef.path === ref.path && approvedRef.sha256 === ref.sha256) &&
+            fs.existsSync(safePath(root, ref.path)) && digest(fs.readFileSync(safePath(root, ref.path))) === ref.sha256)
+        : false;
     if (!patch || patch.questionId !== undefined && patch.questionId !== ordinal ||
         after.standardUnitKey !== record.standardUnitKey || after.subUnitKey !== record.subUnitKey ||
         after.problemTypeKey !== classification.problemTypeKey || after.templateKey !== classification.templateKey ||
         !eq(after.crossConceptKeys, classification.crossConceptKeys) || !eq(after.conditionKeys, classification.conditionKeys || []) ||
-        !parentRef || !/^[a-f0-9]{64}$/.test(parentRef.sha256 || "") || !parentEvidenceLinked)
+        Boolean(basicParentRef) === Boolean(targetParentRef) || !parentRef ||
+        basicParentRef && !/^[a-f0-9]{64}$/.test(basicParentRef.sha256 || "") || !parentEvidenceLinked)
       fail(`META_PIPELINE_AUDIT registration binding mismatch: ${ordinal}`);
   }
   if (!Array.isArray(audit.boundAtomicCrossConcepts)) fail("META_PIPELINE_AUDIT CrossConcept definitions required");
