@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "meta-pipeline-codex-condition-reconciliation-v1",
+  "reconciliationId": "meta-pipeline-18-maesan-condition-reconciliation-20261024",
+  "reviewedAt": "2026-10-23T23:42:25Z",
+  "reviewer": {
+    "name": "Codex",
+    "role": "user-directed independent condition metadata audit"
+  },
+  "scope": {
+    "examUid": "18_매산고_1학기_중간_고2_확률과통계",
+    "sourceArchiveFile": "original/high/h2/1mid/18_매산고_1학기_중간_고2_확률과통계.js",
+    "sourceSha256": "efe160b4cc07b8389279f23ada2d4d8d51af242da295571a56acf81c1a607b86",
+    "sourceGitBlobSha1": "6f6fb64e2c605d7bc3dde3b832a3be8202f1b030",
+    "questionCount": 18,
+    "fields": [
+      "conditionKeys"
+    ],
+    "studentVisibleFieldsChanged": false
+  },
+  "originalGeminiAudit": {
+    "driveId": "1yECz-5ePTnF2UkR2VQpX0eu5q9RxXCrg",
+    "sha256": "3eb9b331f6e70d5457e2b41e54d1d62fa1b97cb5066403adf743df5df9a7a79a",
+    "immutable": true
+  },
+  "manifest": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_18_매산고_1학기_중간_고2_확률과통계.json",
+    "sha256": "e8b0f863bbc443822468b8bf5330a37da78c81b29ba31b284833a508690ad2b1",
+    "unchanged": true
+  },
+  "evidenceRefs": [
+    {
+      "path": "archive/exams/original/high/h2/1mid/18_매산고_1학기_중간_고2_확률과통계.js",
+      "sha256": "efe160b4cc07b8389279f23ada2d4d8d51af242da295571a56acf81c1a607b86",
+      "gitBlobSha1": "6f6fb64e2c605d7bc3dde3b832a3be8202f1b030"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "5846fc7bcd2ba869233afd87e0dcfc9478151f33e8fc68e05e91a4361c114352"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-18-maesan-h2-probstats-20261023.source-parity.json",
+      "sha256": "a4ed9ac200e6cb8d5a1552e7e57cde65991e78b81ffbef1b769e2204d808558e"
+    }
+  ],
+  "decision": "RETAIN_EXISTING_SOURCE_AND_METADATA_CONDITION_KEYS",
+  "reason": "The approved Gemini audit omitted three condition arrays that are already present identically in production JS and the current partial-approved metadata. Independent source-level review confirms each tag matches its active canonical definition and materially constrains the represented solution. This reconciliation retains those exact existing values and deletes/adds no condition key.",
+  "records": [
+    {
+      "questionId": 12,
+      "questionUid": "qid_v1_db36e7fb2795840d13eaa87574faefb8ba66aa564e29aa999229bc92eb830578",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "rationale": "The source gives finite stock 5, 7, 6, 7 and asks for a selection of 7. The solution subtracts cases exceeding the pencil/red-pen stock limits, so the finite range changes the answer count.",
+      "evidence": {
+        "stem": "같은 모양의 연필 5자루, 같은 모양의 검은색 볼펜 7자루, 같은 모양의 빨간색 볼펜 6자루, 같은 모양의 파란색 볼펜 7자루가 있다. 이 중에서 7자루를 골라 필통에 담는 경우의 수를 구하면? (단, 필통에 담지 않은 필기구가 있을 수 있고 필통에 담는 순서는 고려하지 않는다.) (5.2점)",
+        "solution": "종류별 개수를 $e,b,r,p$라 두면 합은 7이다. 제한을 무시한 음이 아닌 정수해는 $\\;{}_ {10}\\mathrm{C}_3=120$가지이다. 연필이 6개 이상인 해 4가지와 빨간 볼펜이 7개인 해 1가지를 뺀다. 나머지 종류는 상한을 넘지 않는다. 따라서 $120-4-1=115$이고 정답은 ③이다."
+      },
+      "sourceOrdinal": 12,
+      "sourceArchiveFile": "original/high/h2/1mid/18_매산고_1학기_중간_고2_확률과통계.js",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_RANGE"
+      ],
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "reviewStatus": "manual_review",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 15,
+      "questionUid": "qid_v1_520f6e137908a2273445ed6ced763f5601c3144c9f50b83372c58c9b2ef204b7",
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "rationale": "The stem explicitly asks for integer ordered quadruples (a,b,c,d); the integer domain determines which absolute-value exponent tuples are counted.",
+      "evidence": {
+        "stem": "다음 조건을 만족시키는 정수 $a, b, c, d$의 순서쌍 $(a, b, c, d)$의 개수를 구하여라. (7.0점)<br><br>(가) $abcd = 0$<br>(나) $2^{|a|+|b|+|c|+|d|} = 128$",
+        "solution": "0이 아닌 좌표 수를 $r$이라 하자. 곱이 0이므로 적어도 하나의 좌표는 0이고 $r=1,2,3$이다. 위치를 고르는 방법은 $\\;{}_4\\mathrm{C}_r$가지, 양의 절댓값 $r$개의 합이 7인 방법은 $\\;{}_6\\mathrm{C}_{r-1}$가지, 부호는 $2^r$가지이다. 따라서 $\\sum_{r=1}^3{}_4\\mathrm{C}_r{}_6\\mathrm{C}_{r-1}2^r=8+144+480=632$이다. 답은 632이다."
+      },
+      "sourceOrdinal": 15,
+      "sourceArchiveFile": "original/high/h2/1mid/18_매산고_1학기_중간_고2_확률과통계.js",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_INTEGER"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_INTEGER"
+      ],
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "reviewStatus": "manual_review",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 17,
+      "questionUid": "qid_v1_02ce1505dc9411b6942245be586bb943e180d9bfd20e4228b1c1bf5d9cca3169",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "rationale": "The source restricts a,b to natural numbers below 4 and defines f:X→X for X={1,…,6}; both the natural-number restriction and finite codomain range affect the function count.",
+      "evidence": {
+        "stem": "집합 $X = \\{1, 2, 3, 4, 5, 6\\}$에 대하여 다음 조건을 만족시키는 함수 $f: X \\to X$의 개수를 구하여라. (10.0점)<br><br>(가) 4보다 작은 자연수 $a, b$에 대하여 $a \\le b$이면 $f(a) \\le f(b)$<br>(나) $f(2) < f(6) < f(5)$",
+        "solution": "조건 (가)는 $f(1)\\le f(2)\\le f(3)$이다. $t=f(2)$라 두면 $f(1)$은 $t$가지, $f(3)$은 $7-t$가지, $f(4)$는 6가지이다. $f(2)<f(6)<f(5)$는 $t+1$부터 6 중 두 값을 고르는 $\\;{}_{6-t}\\mathrm{C}_2$가지이다. 따라서 $6\\sum_{t=1}^4t(7-t){}_{6-t}\\mathrm{C}_2=6(60+60+36+12)=1008$이다. 답은 1008이다."
+      },
+      "sourceOrdinal": 17,
+      "sourceArchiveFile": "original/high/h2/1mid/18_매산고_1학기_중간_고2_확률과통계.js",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "reviewStatus": "manual_review",
+      "conditionFieldStatus": null
+    }
+  ]
+}
