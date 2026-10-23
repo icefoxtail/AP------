@@ -145,3 +145,48 @@ test('typed condition audit IDs must resolve to frozen source condition IDs',()=
     assert.throws(()=>verifyConstructionConditionBindings({mathPlan:constructionV1Graph,sourceConditions:sourceConditions.map((row,index)=>index?row:{...row,mappedTo})}),/INVALID_SOURCE_CONDITION_BINDING/);
   }
 });
+
+// M1-E: MIDPOINT of two coincident points. SymPy Segment(P, P) collapses to a Point2D, so the old `Segment(*a).midpoint` was a bound method:
+// `mid` was silently missing from the output, or a dependent operation failed. Point.midpoint(P, P) is P itself, the value Cindy `Mid` gives too.
+const m1eNode=(id,op,inputs,outputType,args={})=>({id,op,inputs,outputType,args,factRole:inputs.length?'DERIVED_INTERMEDIATE':'GIVEN'});
+const m1ePoint=(id,x,y)=>m1eNode(id,'SOURCE_POINT',[],'POINT',{coordinates:[x,y]});
+const m1eGraph=nodes=>({schemaVersion:'construction-spike-v1',nodes});
+const m1eCoincident=()=>[m1ePoint('O',int(0),int(0)),m1ePoint('P',int(0),int(0)),m1eNode('mid','MIDPOINT',['O','P'],'POINT')];
+
+test('M1-E D1 MIDPOINT of two coincident points is that point: emitted, exact [0,0], confirmed by Cindy',async()=>{
+  const graph=m1eGraph(m1eCoincident()),response=await pythonWorker({action:'construction',graph});
+  assert.equal(response.status,'OK',JSON.stringify(response.result));
+  assert.deepEqual(Object.keys(response.result.points).sort(),['O','P','mid']);
+  assert.deepEqual(response.result.points.mid.exact,[int(0),int(0)]);assert.deepEqual(response.result.points.mid.approximation,[0,0]);
+  const comparison=compareReconstruction(response.result,reconstruct(graph));assert.equal(comparison.status,'PASS',JSON.stringify(comparison.errors));
+});
+
+test('M1-E D2 a circle through the coincident midpoint is the DEGENERATE_CIRCLE_RADIUS engine error, not a worker crash',async()=>{
+  const graph=m1eGraph([...m1eCoincident(),m1eNode('c','CIRCLE_THROUGH_POINT',['mid','P'],'CIRCLE')]);
+  const response=await pythonWorker({action:'construction',graph});
+  assert.equal(response.status,'ERROR',JSON.stringify(response.result));assert.equal(response.result.code,'DEGENERATE_CIRCLE_RADIUS');
+});
+
+test('M1-E D3 a line through the coincident midpoint and another point is emitted and confirmed by Cindy',async()=>{
+  const graph=m1eGraph([...m1eCoincident(),m1ePoint('Q',int(3),int(1)),m1eNode('l','LINE_THROUGH',['mid','Q'],'LINE')]);
+  const response=await pythonWorker({action:'construction',graph});assert.equal(response.status,'OK',JSON.stringify(response.result));
+  assert.deepEqual(Object.keys(response.result.points).sort(),['O','P','Q','mid']);assert.deepEqual(response.result.points.mid.exact,[int(0),int(0)]);
+  // The emitted line a*x+b*y+c=0 must pass through (0,0) and (3,1) and be a real line; the coefficient sign is not part of the contract.
+  const [a,b,c]=response.result.lines.l.approximation;
+  assert.ok(Math.abs(c)<1e-12,'through the origin');assert.ok(Math.abs(3*a+b+c)<1e-12,'through (3,1)');assert.ok(Math.abs(a)+Math.abs(b)>0,'nonzero normal');
+  const comparison=compareReconstruction(response.result,reconstruct(graph));assert.equal(comparison.status,'PASS',JSON.stringify(comparison.errors));
+});
+
+test('M1-E D4 MIDPOINT of two irrational points keeps the exact output it had before the fix',async()=>{
+  const sqrt=value=>({kind:'expression',op:'sqrt',args:[int(value)]}),rat=(numerator,denominator)=>({kind:'rational',numerator:String(numerator),denominator:String(denominator)});
+  const halfSqrt=value=>({kind:'expression',op:'mul',args:[rat(1,2),sqrt(value)]});
+  const graph=m1eGraph([m1ePoint('A',sqrt(2),int(1)),m1ePoint('B',int(3),sqrt(3)),m1eNode('mid','MIDPOINT',['A','B'],'POINT')]);
+  const response=await pythonWorker({action:'construction',graph});assert.equal(response.status,'OK',JSON.stringify(response.result));
+  // Pinned from the engine before the change (M1-E builder d4-before): (3 + sqrt 2)/2 and (1 + sqrt 3)/2 in SymPy's own exact form.
+  assert.deepEqual(response.result.points.mid.exact,[{kind:'expression',op:'add',args:[rat(3,2),halfSqrt(2)]},{kind:'expression',op:'add',args:[rat(1,2),halfSqrt(3)]}]);
+  assert.deepEqual(response.result.points.mid.approximation,[2.2071067811865475,1.3660254037844386]);
+  assert.equal(response.result.points.mid.precisionDigits,17);
+  // Independent derivation of the same point by hand, so the pinned literal is not only a copy of the engine.
+  assert.ok(Math.abs(response.result.points.mid.approximation[0]-(Math.SQRT2+3)/2)<1e-15);assert.ok(Math.abs(response.result.points.mid.approximation[1]-(1+Math.sqrt(3))/2)<1e-15);
+  const comparison=compareReconstruction(response.result,reconstruct(graph));assert.equal(comparison.status,'PASS',JSON.stringify(comparison.errors));
+});

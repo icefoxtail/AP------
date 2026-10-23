@@ -21,7 +21,7 @@ class NotationSpike(unittest.TestCase):
         self.assertEqual(serialize(Expr('degree',args=(Expr('number','40'),))),r'40^{\circ}')
         self.assertEqual(serialize(Expr('unit','cm',(Expr('number','5'),))),r'5\,\mathrm{cm}')
     def test_expected_notation_from_source(self):
-        golden={'40/3':r'\frac{40}{3}','sqrt(2)':r'\sqrt{2}','x^2':'x^{2}','x_1':'x_{1}',"f'(x)":r'f^{\prime}(x)','π':r'\pi'}
+        golden={'40/3':r'{\displaystyle\frac{40}{3}}','sqrt(2)':r'\sqrt{2}','x^2':'x^{2}','x_1':'x_{1}',"f'(x)":r'f^{\prime}(x)','π':r'\pi'}
         for source,expected in golden.items():self.assertEqual(serialize(parse(source)),expected)
 
 if __name__=='__main__':unittest.main()

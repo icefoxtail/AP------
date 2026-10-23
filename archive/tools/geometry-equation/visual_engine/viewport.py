@@ -52,4 +52,4 @@ def for_spec(spec,critical=()):
     # Only expand when a critical fact would otherwise be on/outside an edge.
     if any(not(v['xMin']<p[0]<v['xMax'] and v['yMin']<p[1]<v['yMax']) for p in critical):
         dx=(xmax-xmin)*.08;dy=(ymax-ymin)*.08;xmin-=dx;xmax+=dx;ymin-=dy;ymax+=dy
-    return Viewport(xmin,xmax,ymin,ymax,width=v.get('width',620),height=v.get('height',500),panel=v.get('panel',160),topInset=v.get('topInset',0),equal=spec['visualType'] not in {'function_graph','calculus_graph'})
+    return Viewport(xmin,xmax,ymin,ymax,width=v.get('width',620),height=v.get('height',500),panel=v.get('panel',160),topInset=v.get('topInset',0),equal=spec['visualType'] not in {'function_graph','calculus_graph'} or v.get('equalUnits') is True)

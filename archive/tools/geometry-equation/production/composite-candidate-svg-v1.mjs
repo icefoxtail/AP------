@@ -1,0 +1,192 @@
+import {objectSha,bytesSha} from '../../pipeline-core/canonical.mjs';
+import {composeConstructionCandidate} from './construction-candidate-svg-v1.mjs';
+import {specFor} from './phase2.mjs';
+import {pythonWorker} from './worker.mjs';
+import {typesetter} from './typography.mjs';
+import {launchBrowser} from '../visual-browser-runtime.mjs';
+import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
+
+export const COMPOSITE_SVG_VERSION='composite-candidate-svg-v1';
+export const COMPOSITE_CAPABILITY='composite-panels-v1';
+// Layout of the stack, in SVG units: a top margin, then per panel one caption row and the panel itself; panels are 8 apart.
+export const COMPOSITE_TOP_MARGIN=32;
+export const COMPOSITE_CAPTION_ROW=44;
+export const COMPOSITE_PANEL_GAP=8;
+const SIDE_MARGIN=32,CAPTION_GAP=4,FORMULA_GAP=16,MAX_PANELS=3;
+// Shared rows above a three-panel stack (line equations every panel draws the same): 34 apart, then a gap before the first caption.
+export const COMPOSITE_SHARED_ROW=56;// a shared line equation may carry a full-size fraction (about 41 px high)
+const TWO_PANEL_PLOT_HEIGHT=300,THREE_PANEL_PLOT_HEIGHT=220;
+const SHARED_ROWS_GAP=10;
+// The stack must fit one Archive page: a figure taller than 640 CSS px (the solution image max-height) never settles in the paged view.
+export const COMPOSITE_MAX_DISPLAY_HEIGHT_PX=640;
+const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
+// A caption's math part is plain ASCII math (k=-2, a=1, x<0): what an observer can transcribe back exactly.
+const CAPTION_MATH=/^[A-Za-z0-9=+\-<>.,()]{1,24}$/;
+
+class Stop extends Error{constructor(status,detail=null){super(status);this.status=status;this.detail=detail;}}
+const isDomainCode=error=>error?.constructor===Error&&/^[A-Z][A-Z0-9_]*(?::|$)/.test(error.message);
+const digest=(value,reason)=>{try{return objectSha(value);}catch{throw new Stop('COMPOSITE_INPUT_NOT_CANONICAL',{reason});}};
+
+/** The panels of a composite plan, checked: 2-3 quadratic graph plans, each with a caption {math?, text?} (at least one part). */
+export function compositePanels(plan){
+  const bad=reason=>{throw new Stop('COMPOSITE_PLAN_INVALID',{reason});};
+  if(plan?.capability!==COMPOSITE_CAPABILITY||!Array.isArray(plan.panels)||plan.panels.length<2||plan.panels.length>MAX_PANELS)bad('PANELS');
+  // Three panels with their own formula headers cannot fit the 640 CSS px stack: each formula moves to its caption row and a line every
+  // panel draws identically (same id, slope and intercept) is written once above the stack (phase2 compositeHeader / COMPOSITE_PANEL_CANVAS).
+  const three=plan.panels.length===3,lineKey=line=>JSON.stringify([line.id,line.slope,line.intercept]);
+  const checked=plan.panels.map((panel,index)=>{
+    const caption=panel?.caption;
+    if(!panel?.plan||panel.plan.capability!=='polynomial-spike-v1'||!panel.plan.graphPlan||typeof panel.plan.graphPlan!=='object')bad('PANEL_PLAN_'+index);
+    if(!caption||typeof caption!=='object'||Array.isArray(caption)||Object.keys(caption).some(key=>!['math','text'].includes(key))||(!caption.math&&!caption.text)
+      ||(caption.math!==undefined&&(typeof caption.math!=='string'||!CAPTION_MATH.test(caption.math)))||(caption.text!==undefined&&(typeof caption.text!=='string'||!caption.text||caption.text.length>24)))bad('PANEL_CAPTION_'+index);
+    // compositeHeader is the composite's own field: an author never writes it, and a two-panel stack keeps the standard formula header.
+    if(!three&&Object.hasOwn(panel.plan.graphPlan,'compositeHeader'))bad('PANEL_COMPOSITE_HEADER_'+index);
+    if(three){
+      const coefficients=panel.plan.graphPlan.coefficients,lines=panel.plan.graphPlan.lines??[];
+      const degree=Array.isArray(coefficients)?coefficients.reduce((highest,value,k)=>value==='0'?highest:k,0):-1;
+      if(degree!==2||panel.plan.graphPlan.overviewCanvasHeight!==undefined||!Array.isArray(lines)||lines.some(line=>typeof line?.id!=='string'))bad('PANEL_NOT_THREE_PANEL_COMPATIBLE_'+index);
+    }
+    return {index,plan:panel.plan,caption};
+  });
+  const sharedLines=three?(checked[0].plan.graphPlan.lines??[]).filter(line=>checked.every(item=>(item.plan.graphPlan.lines??[]).some(other=>lineKey(other)===lineKey(line)))).map(line=>line.id):[];
+  // A panel's plot may be at most this high (graph_framing plotHeightLimit): one scale on both axes makes a tall shape narrower, not the stack
+  // taller. Band rows the panel keeps (unshared line equations, band coordinates counted one per row) come out of that height.
+  const bandRows=plan=>(Array.isArray(plan.graphPlan.lines)?plan.graphPlan.lines.filter(line=>!sharedLines.includes(line?.id)).length:0)
+    +(plan.coordinatePlacement==='PANEL'?(plan.graphPlan.requiredPoints??[]).length:Array.isArray(plan.coordinatePanel)?plan.coordinatePanel.length:0);
+  return checked.map(item=>{
+    const rows=bandRows(item.plan),plotHeightLimit=Math.max(120,(three?THREE_PANEL_PLOT_HEIGHT:TWO_PANEL_PLOT_HEIGHT)-(rows?26+56*rows:0));
+    return {...item,plan:{...item.plan,graphPlan:{...item.plan.graphPlan,plotHeightLimit,...(three?{compositeHeader:{formula:'CAPTION',sharedLines}}:{})}}};
+  });
+}
+/** The stacked size for panels of the given sizes (top margin, caption row per panel, gaps between panels): what the Archive policy must be measured for. */
+export const compositeStackSize=(sizes,sharedRows=0)=>({width:Math.max(...sizes.map(size=>size.width)),height:COMPOSITE_TOP_MARGIN+(sharedRows?sharedRows*COMPOSITE_SHARED_ROW+SHARED_ROWS_GAP:0)+sizes.reduce((sum,size)=>sum+COMPOSITE_CAPTION_ROW+size.height,0)+COMPOSITE_PANEL_GAP*(sizes.length-1)});
+/** The number of shared rows above the stack of checked panels (0 unless the panels carry a compositeHeader). */
+export const compositeSharedRowCount=checked=>checked[0]?.plan?.graphPlan?.compositeHeader?.sharedLines?.length??0;
+/**
+ * The texts a three-panel composite writes outside its panels, from the engine's own labels of each panel drawn the standard way (with its
+ * formula header): per panel the formula label, and the shared line equation labels (the same in every panel). Null without a compositeHeader.
+ */
+export async function compositeHeaderLabels(checked,models,assetId){
+  if(!checked[0]?.plan?.graphPlan?.compositeHeader)return null;
+  const perPanel=[];
+  for(const panel of checked){
+    const {compositeHeader,...graphPlan}=panel.plan.graphPlan;
+    let spec;
+    try{spec=specFor({...panel.plan,graphPlan},models[panel.index],assetId);}catch(error){if(!isDomainCode(error))throw error;throw new Stop('COMPOSITE_HEADER_SPEC_ERROR',{panel:panel.index,code:error.message});}
+    let response;
+    try{response=await pythonWorker({action:'prepare',spec});}catch(error){throw new Stop('COMPOSITE_HEADER_LABELS_UNAVAILABLE',{panel:panel.index,code:String(error?.message??error)});}
+    if(response?.status!=='OK'||!Array.isArray(response.result?.labels))throw new Stop('COMPOSITE_HEADER_LABELS_UNAVAILABLE',{panel:panel.index,code:response?.result?.code??null});
+    const byId=new Map(response.result.labels.map(label=>[label.id,label]));
+    const pick=id=>{const label=byId.get(id);if(!label||typeof label.text!=='string'||!label.text)throw new Stop('COMPOSITE_HEADER_LABEL_MISSING',{panel:panel.index,labelId:id});return {id,text:label.text,math:!!label.math,tex:label.tex??null};};
+    perPanel.push({formula:pick('formula'),lines:compositeHeader.sharedLines.map(lineId=>pick('line-'+lineId+'-equation'))});
+  }
+  if(perPanel.some(row=>JSON.stringify(row.lines)!==JSON.stringify(perPanel[0].lines)))throw new Stop('COMPOSITE_SHARED_LINE_TEXT_MISMATCH');
+  return {formulas:perPanel.map(row=>row.formula),shared:perPanel[0].lines};
+}
+// The same fragment request L1 makes for a label (construction-candidate-svg-v1): math as TeX, text as outline text.
+const headerFragment=(typeset,label,id,owner,typographyPolicy,identity)=>typeset({id,owner,factRole:'DERIVED_INTERMEDIATE',fontPx:typographyPolicy.baseFontPx,...(label.math?{kind:'MATH',tex:label.tex||label.text.replaceAll('−','-')}:{kind:'TEXT',text:label.text})},identity);
+/** The plain text an observer reads for a caption: math then text, as one phrase. */
+export const captionText=caption=>(caption.math??'')+(caption.text??'');
+
+function rootSize(svg){
+  const tag=svg.match(/<svg\b[^>]*>/)?.[0]??'',num=name=>Number(tag.match(new RegExp(`\\s${name}="([\\d.]+)"`))?.[1]);
+  const width=num('width'),height=num('height');
+  if(!(width>0&&height>0))throw new Stop('COMPOSITE_PANEL_SIZE_UNKNOWN');
+  return {width,height};
+}
+/** The panel SVGs inside a composite, decoded from their data URIs in order: the bytes L1 audited, never re-serialized. */
+export function compositePanelBytes(svg){
+  return [...svg.matchAll(/<image id="p(\d+)-panel"[^>]*\shref="data:image\/svg\+xml;base64,([A-Za-z0-9+/=]+)"/g)].map(match=>({panel:Number(match[1]),bytes:Buffer.from(match[2],'base64')}));
+}
+
+/**
+ * Compose each panel with L1 under one Archive typography policy (measured for the whole stacked size), typeset each caption, and stack
+ * captions and panels top to bottom. Each panel is embedded as the exact bytes L1 audited (a data: URI image), so ids never collide and
+ * captureArchiveCandidate can decode and re-hash them. Each panel keeps its own L1 static and rendered audits; this module adds the stack
+ * and a rendered layout check of the stack (captions, panel boxes).
+ */
+export async function composeCompositeCandidate({plan,panels,identity,typographyPolicy,repairContext=null,browser}={}){
+  const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,panelSpecSha256s:[],panelSvgSha256s:[],captionFragmentSha256s:[],sharedRowFragmentSha256s:[],svgSha256:null,renderedLayoutSha256:null};
+  const state={svg:null,panels:[],renderedLayout:{status:'NOT_RUN'}};
+  const outcome=(status,detail=null)=>({schemaVersion:COMPOSITE_SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage,panelSpecSha256s:[...lineage.panelSpecSha256s],panelSvgSha256s:[...lineage.panelSvgSha256s],captionFragmentSha256s:[...lineage.captionFragmentSha256s],sharedRowFragmentSha256s:[...lineage.sharedRowFragmentSha256s]},panels:state.panels,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false,qualification:'NOT_RUN'});
+  let ownBrowser=null;
+  const chrome=async()=>browser??(ownBrowser??=await launchBrowser());
+  try{
+    const checked=compositePanels(plan);
+    if(!Array.isArray(panels)||panels.length!==checked.length||panels.some(panel=>!panel||typeof panel!=='object'||!panel.plan||!panel.model))throw new Stop('COMPOSITE_PANEL_MODELS_MISSING');
+    if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('COMPOSITE_TYPOGRAPHY_POLICY_INVALID');
+    lineage.planSha256=digest(plan,'plan');lineage.modelSha256=digest({panels:panels.map(panel=>panel.model)},'model');lineage.typographyPolicySha256=digest(typographyPolicy,'typographyPolicy');
+    const parts=[];
+    for(const panel of checked){
+      const given=panels[panel.index];
+      if(digest(given.plan,'panelPlan')!==digest(panel.plan,'panelPlan'))throw new Stop('COMPOSITE_PANEL_PLAN_MISMATCH',{panel:panel.index});
+      const composed=await composeConstructionCandidate({plan:given.plan,model:given.model,identity,typographyPolicy,repairContext,browser:await chrome(),compositePanel:true});
+      state.panels.push({index:panel.index,status:composed.status,detail:composed.detail,lineage:composed.lineage,layoutRepairs:composed.layoutRepairs,staticAudit:composed.staticAudit,renderedLayout:composed.renderedLayout});
+      if(composed.status!=='COMPOSED')throw new Stop('COMPOSITE_PANEL_NOT_COMPOSED',{panel:panel.index,status:composed.status,detail:composed.detail});
+      lineage.panelSpecSha256s.push(composed.lineage.specSha256);lineage.panelSvgSha256s.push(composed.lineage.svgSha256);
+      parts.push({panel,svg:composed.svg,size:rootSize(composed.svg)});
+    }
+    // Captions: the math part as MathJax, the text part in the Korean outline font, side by side at the policy base font. In a three-panel
+    // stack the panel's formula follows in the same row, a little apart, and the shared line equations are rows above the first caption.
+    const typeset=typesetter(),captions=[],header=await compositeHeaderLabels(checked,panels.map(panel=>panel.model),identity.assetId);
+    for(const {panel} of parts){
+      const fragments=[];
+      for(const [kind,value] of [['MATH',panel.caption.math],['TEXT',panel.caption.text]]){
+        if(!value)continue;
+        try{fragments.push(typeset({id:`p${panel.index+1}-caption-${kind.toLowerCase()}`,owner:`panel-${panel.index+1}`,factRole:'GIVEN',fontPx:typographyPolicy.baseFontPx,panelId:`p${panel.index+1}`,...(kind==='MATH'?{kind,tex:value}:{kind,text:value})},identity));}
+        catch(error){if(!isDomainCode(error))throw error;throw new Stop('COMPOSITE_CAPTION_TYPESET_ERROR',{panel:panel.index,code:error.message});}
+      }
+      if(header){
+        try{fragments.push({...headerFragment(typeset,header.formulas[panel.index],`p${panel.index+1}-caption-formula`,`panel-${panel.index+1}`,typographyPolicy,identity),formula:true});}
+        catch(error){if(!isDomainCode(error))throw error;throw new Stop('COMPOSITE_CAPTION_TYPESET_ERROR',{panel:panel.index,code:error.message});}
+      }
+      lineage.captionFragmentSha256s.push(fragments.map(fragment=>fragment.fragmentSha256));
+      captions.push(fragments);
+    }
+    const sharedRows=[];
+    for(const label of header?.shared??[]){
+      try{sharedRows.push(headerFragment(typeset,label,'shared-'+label.id,'composite',typographyPolicy,identity));}
+      catch(error){if(!isDomainCode(error))throw error;throw new Stop('COMPOSITE_SHARED_ROW_TYPESET_ERROR',{labelId:label.id,code:error.message});}
+    }
+    lineage.sharedRowFragmentSha256s.push(...sharedRows.map(fragment=>fragment.fragmentSha256));
+    const {width,height:stackHeight}=compositeStackSize(parts.map(part=>part.size),sharedRows.length);
+    if(stackHeight*typographyPolicy.displayScale>COMPOSITE_MAX_DISPLAY_HEIGHT_PX)throw new Stop('COMPOSITE_TOO_TALL',{displayHeightPx:stackHeight*typographyPolicy.displayScale,limitPx:COMPOSITE_MAX_DISPLAY_HEIGHT_PX});
+    let y=COMPOSITE_TOP_MARGIN,body='';
+    if(sharedRows.length)body+=`<g id="shared-rows" data-role="shared-rows" data-font-px="${typographyPolicy.baseFontPx}">`;
+    sharedRows.forEach((fragment,i)=>{
+      if(fragment.intrinsic.width>width-2*SIDE_MARGIN||fragment.intrinsic.height>COMPOSITE_SHARED_ROW)throw new Stop('COMPOSITE_SHARED_ROW_TOO_LARGE',{row:i,width:fragment.intrinsic.width});
+      body+=`<g id="${fragment.labelId}" transform="translate(${(width-fragment.intrinsic.width)/2} ${y+(COMPOSITE_SHARED_ROW-fragment.intrinsic.height)/2})" data-label-kind="CAPTION" data-owner="composite" data-fragment-sha="${fragment.fragmentSha256}">${fragment.svg}</g>`;
+      y+=COMPOSITE_SHARED_ROW;
+    });
+    if(sharedRows.length)body+='</g>',y+=SHARED_ROWS_GAP;
+    parts.forEach((part,i)=>{
+      const fragments=captions[i],captionWidth=fragments.reduce((sum,fragment,k)=>sum+fragment.intrinsic.width+(k?fragment.formula?FORMULA_GAP:CAPTION_GAP:0),0);
+      if(captionWidth>width-2*SIDE_MARGIN||fragments.some(fragment=>fragment.intrinsic.height>COMPOSITE_CAPTION_ROW))throw new Stop('COMPOSITE_CAPTION_TOO_LARGE',{panel:i,width:captionWidth});
+      let x=(width-captionWidth)/2;
+      body+=`<g id="p${i+1}-caption" data-role="caption" data-panel="${i+1}" data-font-px="${typographyPolicy.baseFontPx}">`;
+      for(const fragment of fragments){
+        body+=`<g id="p${i+1}-${fragment.labelId}" transform="translate(${x} ${y+(COMPOSITE_CAPTION_ROW-fragment.intrinsic.height)/2})" data-label-kind="CAPTION" data-owner="panel-${i+1}" data-fragment-sha="${fragment.fragmentSha256}">${fragment.svg}</g>`;
+        x+=fragment.intrinsic.width+(fragments[fragments.indexOf(fragment)+1]?.formula?FORMULA_GAP:CAPTION_GAP);
+      }
+      body+='</g>';
+      y+=COMPOSITE_CAPTION_ROW;
+      body+=`<image id="p${i+1}-panel" data-panel="${i+1}" data-panel-svg-sha="${lineage.panelSvgSha256s[i]}" x="${(width-part.size.width)/2}" y="${y}" width="${part.size.width}" height="${part.size.height}" href="data:image/svg+xml;base64,${Buffer.from(part.svg,'utf8').toString('base64')}"/>`;
+      y+=part.size.height+(i<parts.length-1?COMPOSITE_PANEL_GAP:0);
+    });
+    if(y!==stackHeight)throw new Stop('COMPOSITE_STACK_SIZE_MISMATCH',{expected:stackHeight,actual:y});
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${y}" viewBox="0 0 ${width} ${y}" data-composite="${COMPOSITE_CAPABILITY}">${body}</svg>`;
+    lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
+    const display={width:width*typographyPolicy.displayScale,height:y*typographyPolicy.displayScale};
+    const page=await (await chrome()).newPage({viewport:{width:Math.max(1,Math.ceil(display.width)),height:Math.max(1,Math.ceil(display.height))}});
+    let layout;
+    try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
+    lineage.renderedLayoutSha256=digest({svgSha256:lineage.svgSha256,layout},'renderedLayout');
+    state.renderedLayout={status:layout.status,display,errors:layout.errors};
+    if(layout.status!=='PASS')throw new Stop('COMPOSITE_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
+    state.svg=svg;
+    return outcome('COMPOSED');
+  }catch(error){
+    if(!(error instanceof Stop))throw error;
+    return outcome(error.status,error.detail);
+  }finally{if(ownBrowser)await ownBrowser.close();}
+}

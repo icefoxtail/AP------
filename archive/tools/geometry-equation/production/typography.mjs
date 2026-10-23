@@ -4,6 +4,7 @@ import {dependency,dependencyRoot,dependencyLock} from './dependencies.mjs';
 import path from 'node:path';
 import {objectSha,bytesSha} from '../../pipeline-core/canonical.mjs';
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+export const MATH_GLYPH_STROKE_UNITS=30;
 export function typesetter({fontPath=process.env.GEOMETRY_KOREAN_FONT || path.join(dependencyRoot,'NotoSansKR.ttf'),fontSha256=dependencyLock.font.sha256}={}) {
   const raw=fs.readFileSync(fontPath),actual=bytesSha(raw);
   if(!fontSha256 || fontSha256!==actual)throw Error('FONT_HASH_LOCK_REQUIRED');
@@ -28,7 +29,11 @@ export function typesetter({fontPath=process.env.GEOMETRY_KOREAN_FONT || path.jo
       width=w*label.fontPx/1000;height=h*label.fontPx/1000;baseline=-y*label.fontPx/1000;
       // Freeze the glyph-to-font transform, rather than fitting glyphs into a
       // second SVG viewport. Changing a fragment box must never shrink its ink.
-      content='<g data-outline-units-per-em="1000" transform="translate('+(-x*label.fontPx/1000)+' '+baseline+') scale('+(label.fontPx/1000)+')">'+adaptor.innerHTML(svg)+'</g>';
+      // MathJax's =, −, + bars and fraction rules are 40 units thick (about 0.47 CSS px in the Archive solution column); at 1x they can fall
+      // between samples and vanish. A glyph outline stroke keeps every bar at least 40+MATH_GLYPH_STROKE_UNITS units.
+      const inner=adaptor.innerHTML(svg);
+      if(!inner.includes('stroke-width="0"'))throw Error('MATHJAX_GLYPH_STROKE_ANCHOR_MISSING');
+      content='<g data-outline-units-per-em="1000" transform="translate('+(-x*label.fontPx/1000)+' '+baseline+') scale('+(label.fontPx/1000)+')">'+inner.replace('stroke-width="0"','stroke-width="'+MATH_GLYPH_STROKE_UNITS+'"')+'</g>';
     } else if(label.kind==='TEXT'){
       if(typeof label.text!=='string'||label.text.length>256)throw Error('INVALID_TEXT_LABEL');
       for(const ch of label.text)if(!/\s/.test(ch) && font.charToGlyphIndex(ch)===0)throw Error('MISSING_KOREAN_GLYPH');

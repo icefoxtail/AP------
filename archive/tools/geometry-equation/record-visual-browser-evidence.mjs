@@ -86,6 +86,8 @@ export async function recordArchiveEvidence({run,attempt='attempt-01',signal,onP
       try {
         await page.goto(base+item.urlPath,{waitUntil:'domcontentloaded',timeout:60000});checkCancelled();
         const readiness=page.waitForFunction(({mode,count})=>{
+          // The Archive page reports its own render failure in dataset.apRenderError: fail at once with that code instead of waiting out the timeout.
+          const renderError=document.documentElement.dataset.apRenderError,titleNode=document.getElementById('ctrl-title');if(renderError||(titleNode&&titleNode.innerText==='시험지 데이터를 불러올 수 없습니다'))throw new Error('ARCHIVE_PAGE_RENDER_ERROR:'+String(renderError||'NO_CODE').slice(0,200));
           const root=document.getElementById('print-area');
           if(!root||!root.querySelector('.page'))return false;
           const readiness=document.documentElement.dataset.apPrintReadiness;

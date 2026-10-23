@@ -34,7 +34,7 @@ export function scalar(v,depth=0) {
 export function reconstruct(graph) {
   if(graph.schemaVersion!=='construction-spike-v1')throw Error('UNSUPPORTED_CINDY_GRAPH');
   if(graph.realization?.recipeId==='SOURCE_COORDINATE_AXES_v1'){
-    if(graph.realization.unit!=='source-coordinate'||graph.realization.reflectionEquivalent!==false||!graph.nodes.some(n=>n.op==='SOURCE_POINT'))throw Error('CINDY_SOURCE_COORDINATE_FRAME_INVALID');
+    if(graph.realization.unit!=='source-coordinate'||graph.realization.reflectionEquivalent!==false||!graph.nodes.some(n=>n.op==='SOURCE_POINT'||n.op==='SOURCE_LINE'))throw Error('CINDY_SOURCE_COORDINATE_FRAME_INVALID');
     const origins=graph.nodes.filter(n=>n.op==='NORMALIZATION_ORIGIN'),axes=graph.nodes.filter(n=>n.op==='NORMALIZATION_AXIS');
     if(origins.length!==1||axes.length!==1)throw Error('CINDY_SOURCE_COORDINATE_FRAME_REFERENCES_REQUIRED');
     if(scalar(axes[0].args.length)!==1)throw Error('CINDY_SOURCE_COORDINATE_UNIT_AXIS_INVALID');
@@ -55,6 +55,12 @@ export function reconstruct(graph) {
       else if(n.op==='NORMALIZATION_ORIGIN')addGeometry({...base,type:'Free',pos:[0,0]});
       else if(n.op==='NORMALIZATION_AXIS')addGeometry({...base,type:'Free',pos:[scalar(n.args.length),0]});
       else if(n.op==='MIDPOINT')addGeometry({...base,type:'Mid'});
+      else if(n.op==='SOURCE_LINE'){
+        // Two free helper points on a x+b y+c=0, joined: the same line the exact engine builds.
+        const [ca,cb,cc]=['a','b','c'].map(k=>scalar(n.args[k])),first='Z'+n.id+'P',second='Z'+n.id+'Q';
+        const pts=cb!==0?[[0,-cc/cb],[1,(-cc-ca)/cb]]:[[-cc/ca,0],[-cc/ca,1]];
+        addGeometry({name:first,type:'Free',pos:pts[0]});addGeometry({name:second,type:'Free',pos:pts[1]});addGeometry({...base,type:'Join',args:[first,second]});
+      }
       else if(n.op==='LINE_THROUGH')addGeometry({...base,type:'Join'});
       else if(n.op==='PARALLEL_THROUGH')addGeometry({...base,type:'Para',args:[n.inputs[1],n.inputs[0]]});
       else if(n.op==='ANGLE_BISECTOR'){
