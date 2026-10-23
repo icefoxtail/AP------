@@ -239,23 +239,24 @@ function openClassManageModal() {
 function openAddClassModal() {
     setModalReturnView({ type: 'classManage' });
     showModal('새 반 추가', `
-        <div style="display:flex; flex-direction:column; gap:10px;">
-            <input id="add-cls-name" class="btn" placeholder="반 이름 (예: 중3A)" style="text-align:left; background:var(--surface-2); border:none;">
-            <select id="add-cls-grade" class="btn" style="background:var(--surface-2); border:none;">
+        <div class="apms-unified-modal apms-unified-form">
+            <div class="apms-unified-context"><div class="apms-unified-context__name">반 기본 정보</div><div class="apms-unified-context__meta">학년 · 담당 · 수업 요일 · 시간</div></div>
+            <input id="add-cls-name" class="btn apms-unified-control" placeholder="반 이름 (예: 중3A)" >
+            <select id="add-cls-grade" class="btn apms-unified-control" >
                 <option value="중1">중1</option><option value="중2">중2</option><option value="중3">중3</option>
                 <option value="고1">고1</option><option value="고2">고2</option><option value="고3">고3</option>
             </select>
-            <input id="add-cls-subject" class="btn" value="수학" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">
-            <input id="add-cls-teacher" class="btn" value="${mgmtEscape(state.ui.userName || '')}" placeholder="담당 선생님" style="text-align:left; background:var(--surface-2); border:none;">
-            <label style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
+            <input id="add-cls-subject" class="btn apms-unified-control" value="수학" placeholder="과목" >
+            <input id="add-cls-teacher" class="btn apms-unified-control" value="${mgmtEscape(state.ui.userName || '')}" placeholder="담당 선생님" >
+            <label class="apms-unified-label">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px; display:flex; align-items:center; gap:4px; background:var(--surface-2); padding:6px 12px; border-radius:8px;"><input type="checkbox" value="${i}" class="add-cls-days"> ${d}</label>`).join('')}
+                ${['일','월','화','수','목','금','토'].map((d,i)=>`<label class="apms-unified-day"><input type="checkbox" value="${i}" class="add-cls-days"> ${d}</label>`).join('')}
             </div>
-            <label style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:8px;">시간</label>
-            <select id="add-cls-period" class="btn" style="background:var(--surface-2); border:none;" onchange="syncClassPeriodTime('add')">
+            <label class="apms-unified-label">시간</label>
+            <select id="add-cls-period" class="btn apms-unified-control"  onchange="syncClassPeriodTime('add')">
                 ${getTimeLabelOptions('')}
             </select>
-            <input id="add-cls-timelabel" class="btn" placeholder="직접 입력 (예: 화.목 9:30~11:30)" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="add-cls-timelabel" class="btn apms-unified-control" placeholder="직접 입력 (예: 화.목 9:30~11:30)" >
         </div>
     `, '추가', handleAddClass);
 }
@@ -305,22 +306,23 @@ function openEditClassModal(cid, options = {}) {
     const selectedPeriod = periodTimes.includes(currentTime) ? currentTime : '';
 
     showModal('반 수정', `
-        <div style="display:flex; flex-direction:column; gap:10px;">
-            <input id="edit-cls-name" class="btn" value="${mgmtEscape(c.name)}" placeholder="반 이름" style="text-align:left; background:var(--surface-2); border:none;">
-            <select id="edit-cls-grade" class="btn" style="background:var(--surface-2); border:none;">
+        <div class="apms-unified-modal apms-unified-form">
+            <div class="apms-unified-context"><div class="apms-unified-context__name">${mgmtEscape(c.name)}</div><div class="apms-unified-context__meta">${mgmtEscape(c.grade || '')} · 반 정보 수정</div></div>
+            <input id="edit-cls-name" class="btn apms-unified-control" value="${mgmtEscape(c.name)}" placeholder="반 이름" >
+            <select id="edit-cls-grade" class="btn apms-unified-control" >
                 ${['중1','중2','중3','고1','고2','고3'].map(g => `<option value="${g}" ${c.grade===g?'selected':''}>${g}</option>`).join('')}
             </select>
-            <input id="edit-cls-subject" class="btn" value="${mgmtEscape(c.subject || '')}" placeholder="과목" style="text-align:left; background:var(--surface-2); border:none;">
-            <input id="edit-cls-teacher" class="btn" value="${mgmtEscape(c.teacher_name || '')}" placeholder="담당 선생님" style="text-align:left; background:var(--surface-2); border:none;">
-            <label style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:8px;">수업 요일 (미선택 시 매일)</label>
+            <input id="edit-cls-subject" class="btn apms-unified-control" value="${mgmtEscape(c.subject || '')}" placeholder="과목" >
+            <input id="edit-cls-teacher" class="btn apms-unified-control" value="${mgmtEscape(c.teacher_name || '')}" placeholder="담당 선생님" >
+            <label class="apms-unified-label">수업 요일 (미선택 시 매일)</label>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                ${['일','월','화','수','목','금','토'].map((d,i)=>`<label style="cursor:pointer; font-size:13px; display:flex; align-items:center; gap:4px; background:var(--surface-2); padding:6px 12px; border-radius:8px;"><input type="checkbox" value="${i}" class="edit-cls-days" ${selectedDays.includes(String(i))?'checked':''}> ${d}</label>`).join('')}
+                ${['일','월','화','수','목','금','토'].map((d,i)=>`<label class="apms-unified-day"><input type="checkbox" value="${i}" class="edit-cls-days" ${selectedDays.includes(String(i))?'checked':''}> ${d}</label>`).join('')}
             </div>
-            <label style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:8px;">시간</label>
-            <select id="edit-cls-period" class="btn" style="background:var(--surface-2); border:none;" onchange="syncClassPeriodTime('edit')">
+            <label class="apms-unified-label">시간</label>
+            <select id="edit-cls-period" class="btn apms-unified-control"  onchange="syncClassPeriodTime('edit')">
                 ${getTimeLabelOptions(selectedPeriod)}
             </select>
-            <input id="edit-cls-timelabel" class="btn" value="${mgmtEscape(c.time_label || '')}" placeholder="직접 입력 (예: 화.목 9:30~11:30)" style="text-align:left; background:var(--surface-2); border:none;">
+            <input id="edit-cls-timelabel" class="btn apms-unified-control" value="${mgmtEscape(c.time_label || '')}" placeholder="직접 입력 (예: 화.목 9:30~11:30)" >
             <button class="btn apms-button apms-button--quiet" style="margin-top:6px; min-height:42px; color:var(--error); background:rgba(var(--error-rgb),0.08); border:1px solid rgba(var(--error-rgb),0.16); font-weight:500;" onclick="handleDeleteClass('${c.id}')">반 보관</button>
         </div>
     `, '저장', () => handleEditClass(cid, returnTo));

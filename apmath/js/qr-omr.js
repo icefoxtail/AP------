@@ -268,11 +268,8 @@ function openQrGenerator(cid) {
     const lastArchiveFile = localStorage.getItem('AP_LAST_ARCHIVE_FILE') || '';
 
     showModal('QR 생성기', `
-        <div style="display:flex; flex-direction:column; gap:16px;">
-            <div style="background:var(--bg); padding:14px 18px; border-radius:14px; font-size:13px; display:flex; justify-content:space-between; align-items:center;">
-                <span style="color:var(--secondary); font-weight:500;">대상 학급</span>
-                <span style="font-weight:500; color:var(--text); font-size:15px;">${cls.name}</span>
-            </div>
+        <div class="apms-unified-modal apms-unified-form apms-unified-qr">
+            <div class="apms-unified-context"><div class="apms-unified-context__meta">대상 학급</div><div class="apms-unified-context__name">${apEscapeHtml(cls?.name || '반')}</div></div>
 
             <div>
                 <label style="font-size:12px; font-weight:500; color:var(--secondary);">시험명 선택/입력</label>
@@ -282,23 +279,23 @@ function openQrGenerator(cid) {
                     <button class="btn apms-button apms-button--quiet" style="padding:8px 14px; font-size:13px; background:var(--bg); border:none; border-radius:10px;" onclick="document.getElementById('qr-exam').value='월말평가'">월말평가</button>
                     <button class="btn apms-button apms-button--quiet" style="padding:8px 14px; font-size:13px; background:var(--bg); border:none; border-radius:10px;" onclick="document.getElementById('qr-exam').value='모의고사'">모의고사</button>
                 </div>
-                <input id="qr-exam" class="btn" value="단원평가" placeholder="시험명 입력" style="width:100%; text-align:left; background:var(--surface); border:1px solid var(--border); padding:16px; border-radius:14px; font-size:15px;">
+                <input id="qr-exam" class="btn apms-unified-control" value="단원평가" placeholder="시험명 입력" style="width:100%; text-align:left; background:var(--surface); border:1px solid var(--border); padding:16px; border-radius:14px; font-size:15px;">
             </div>
 
             <div style="display:flex; gap:12px;">
                 <div style="flex:1;">
                     <label style="font-size:12px; font-weight:500; color:var(--secondary);">문항 수 (1~50)</label>
-                    <input id="qr-q" type="number" class="btn" value="20" min="1" max="50" style="width:100%; text-align:center; background:var(--surface); border:1px solid var(--border); padding:16px; margin-top:8px; border-radius:14px; font-size:15px; font-weight:500;">
+                    <input id="qr-q" type="number" class="btn apms-unified-control" value="20" min="1" max="50" style="width:100%; text-align:center; background:var(--surface); border:1px solid var(--border); padding:16px; margin-top:8px; border-radius:14px; font-size:15px; font-weight:500;">
                 </div>
                 <div style="flex:1;">
                     <label style="font-size:12px; font-weight:500; color:var(--secondary);">시험 날짜</label>
-                    <input id="qr-date" type="date" class="btn" value="${today}" style="width:100%; text-align:center; background:var(--surface); border:1px solid var(--border); padding:16px; margin-top:8px; border-radius:14px; font-size:14px; font-weight:500;">
+                    <input id="qr-date" type="date" class="btn apms-unified-control" value="${today}" style="width:100%; text-align:center; background:var(--surface); border:1px solid var(--border); padding:16px; margin-top:8px; border-radius:14px; font-size:14px; font-weight:500;">
                 </div>
             </div>
 
             <div>
                 <label style="font-size:12px; font-weight:500; color:var(--secondary);">JS아카이브 파일명 (선택)</label>
-                <input id="qr-archiveFile" class="btn" value="${lastArchiveFile}" placeholder="예: exams/기출.js" style="width:100%; text-align:left; background:var(--surface); border:1px solid var(--border); padding:16px; margin-top:8px; border-radius:14px; font-size:14px;">
+                <input id="qr-archiveFile" class="btn apms-unified-control" value="${lastArchiveFile}" placeholder="예: exams/기출.js" style="width:100%; text-align:left; background:var(--surface); border:1px solid var(--border); padding:16px; margin-top:8px; border-radius:14px; font-size:14px;">
                 <div style="font-size:11px; color:var(--secondary); line-height:1.5; margin-top:8px; font-weight:400;">
                     비워두면 일반 문항 QR로 생성됩니다. JS아카이브와 연결하려면 파일명을 정확히 입력하세요.
                 </div>
