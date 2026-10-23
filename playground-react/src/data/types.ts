@@ -1,4 +1,5 @@
-export type LabId = 'semis' | 'arc' | 'sector' | 'boundary' | 'square' | 'spinarea' | 'rotate' | 'rope' | 'rolling' | 'overlap' | 'polygon' | 'tether' | 'pizza';
+export type BasicId = 'basic-circumference' | 'basic-circle-area' | 'basic-arc' | 'basic-sector-perimeter' | 'basic-sector-area';
+export type LabId = BasicId | 'semis' | 'arc' | 'sector' | 'boundary' | 'square' | 'spinarea' | 'rotate' | 'rope' | 'rolling' | 'overlap' | 'polygon' | 'tether' | 'pizza';
 
 export type LabType = {
   id: LabId;
@@ -10,6 +11,11 @@ export type LabType = {
 };
 
 export const LAB_TYPES: LabType[] = [
+  {id:'basic-circumference',number:'B1',name:'원의 둘레',hint:'원을 굴리고 펼쳐 2πr 확인',implemented:true,thumb:`<circle cx="70" cy="55" r="40" fill="#f8fafc" stroke="#2563eb" stroke-width="4"/><path d="M30 103 H110" stroke="#e56b36" stroke-width="5"/>`},
+  {id:'basic-circle-area',number:'B2',name:'원의 넓이',hint:'부채꼴 조각을 재배열해 πr²',implemented:true,thumb:`<circle cx="70" cy="55" r="40" fill="#bcebd7" stroke="#16845f" stroke-width="2"/><path d="M70 55 L70 15 A40 40 0 0 1 98 26 Z" fill="#f7b267"/>`},
+  {id:'basic-arc',number:'B3',name:'부채꼴 호의 길이',hint:'중심각에 비례하는 원호',implemented:true,thumb:`<path d="M70 55 L110 55 A40 40 0 0 0 50 20 Z" fill="#dbeafe" stroke="#2563eb"/><path d="M110 55 A40 40 0 0 0 50 20" fill="none" stroke="#e56b36" stroke-width="5"/>`},
+  {id:'basic-sector-perimeter',number:'B4',name:'부채꼴의 둘레',hint:'호의 길이 + 반지름 두 개',implemented:true,thumb:`<path d="M70 55 L110 55 A40 40 0 0 0 50 20 Z" fill="#bcebd7" stroke="#e56b36" stroke-width="4"/>`},
+  {id:'basic-sector-area',number:'B5',name:'부채꼴의 넓이',hint:'원의 넓이 중 중심각만큼',implemented:true,thumb:`<path d="M70 55 L110 55 A40 40 0 0 0 50 20 Z" fill="#bcebd7" stroke="#16845f" stroke-width="2"/><path d="M70 55 L70 15" stroke="#fff" stroke-width="2"/>`},
   {id:'semis',number:'01',name:'반원 결합 · 태극형',hint:'복잡한 곡선의 둘레와 넓이',implemented:true,thumb:`<path d="M14 77 A55 55 0 0 1 124 77 A22 22 0 0 0 80 77 A33 33 0 0 0 14 77 Z" fill="#bcebd7" stroke="#16845f" stroke-width="2.3"/><path d="M14 77 A55 55 0 0 1 124 77" fill="none" stroke="#2563eb" stroke-width="4"/><path d="M14 77 A33 33 0 0 1 80 77 M80 77 A22 22 0 0 1 124 77" fill="none" stroke="#ea6a35" stroke-width="3.2"/>`},
   {id:'arc',number:'02',name:'중심각과 호의 길이',hint:'각도에 따라 변하는 곡선',implemented:false,thumb:`<circle cx="70" cy="55" r="43" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/><path d="M70 55 L106 31 A43 43 0 0 0 33 33 Z" fill="#dbeafe"/><path d="M106 31 A43 43 0 0 0 33 33" fill="none" stroke="#ea6a35" stroke-width="5"/><circle cx="70" cy="55" r="3" fill="#334155"/>`},
   {id:'sector',number:'03',name:'부채꼴 계산',hint:'호 · 둘레 · 넓이',implemented:false,thumb:`<path d="M35 88 L116 88 A81 81 0 0 0 71 15 Z" fill="#bcebd7" stroke="#16845f" stroke-width="2.5"/><path d="M116 88 A81 81 0 0 0 71 15" fill="none" stroke="#ea6a35" stroke-width="5"/>`},
@@ -24,3 +30,6 @@ export const LAB_TYPES: LabType[] = [
   {id:'tether',number:'12',name:'목줄 · 울타리',hint:'모퉁이의 이동 가능 영역',implemented:false,thumb:`<path d="M65 58 L65 15 A43 43 0 1 0 108 58 Z" fill="#bcebd7" stroke="#2563eb" stroke-width="2"/><rect x="65" y="35" width="42" height="23" fill="#cbd5e1" stroke="#334155"/><circle cx="65" cy="58" r="4" fill="#ea6a35"/>`},
   {id:'pizza',number:'13',name:'피자와 조각 비교',hint:'반지름 제곱과 조각 수',implemented:false,thumb:`<circle cx="48" cy="57" r="33" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><path d="M48 57 L48 24 A33 33 0 0 1 77 41 Z" fill="#f59e0b"/><circle cx="107" cy="57" r="23" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><path d="M107 57 L107 34 A23 23 0 0 1 123 40 Z" fill="#ea6a35"/>`}
 ];
+
+export const BASIC_TYPES = LAB_TYPES.filter(type=>type.id.startsWith('basic-'));
+export const PRACTICE_TYPES = LAB_TYPES.filter(type=>!type.id.startsWith('basic-'));

@@ -6,25 +6,28 @@ Standalone React + TypeScript + SVG + GSAP + KaTeX playground under `playground-
 ## Milestones
 | Area | Types | Variants | Status | Verification |
 |---|---:|---:|---|---|
-| React pilot foundation | 1 | 4 | Ready | `npm install`, `npm run check`, `npm run test:math` (370 cases), `npm run build` PASS |
-| Basic circle / sector concepts | 5 | 5 | Pending | pending |
-| STEP3 practice catalog | 13+ | 27 source structures identified | Pending | pending |
+| React pilot foundation | 1 | 4 | Complete | install, typecheck, 370-case pilot math suite, Vite build PASS |
+| Basic circle / sector concepts | 5 | 5 | Complete | exact π formulas; radius/angle sliders and SVG/KaTeX values stay synchronized; typecheck/build PASS |
+| STEP3 practice catalog | 13+ | 23 explicit cases + 4 pilot semicircle forms | In progress | source inventory completed; implementation pending |
 | PC/mobile integration QA | all | all | Pending | pending |
 
 ## Source inventory
 - `pilot/` React starter copied from the overnight handoff.
-- STEP3 has 13 practice principles and 23 explicit `makeCase` examples. The pilot already contains four semicircle forms. STEP3's one lopsided semicircle scene is an additional candidate, pending integrated implementation.
-- Drive manifest lists 11 main lab pages and a basic supplemental page. Source pages and common relation assets have been staged outside this repository for reference; no raw exam gallery is being imported.
+- STEP3 has 13 practice principles and 23 explicit `makeCase` examples. The pilot already contains four semicircle forms; STEP3's lopsided semicircle case is an additional fifth candidate.
+- The Drive manifest lists 11 main lab pages and a basic supplemental page. The relevant source pages and common relation assets were staged outside this repository for reference; no raw exam gallery is being imported.
 
 ## Verified behavior
 - Semicircle pilot exact-π arithmetic: four base forms and 370 parameter combinations pass the supplied mathematical assertions.
-- The proof animation currently stages line highlights, length bars and area cards; it does not yet move actual area pieces or unfold matched arc lengths.
+- Five basic labs now run inside the React card flow: circle circumference, circle area, sector arc, sector perimeter and sector area.
+- Basic radius/angle sliders feed the SVG and exact symbolic KaTeX formula. GSAP highlights real boundary SVG paths and sequences area views; physical area-piece rearrangement remains unfinished.
+- Practice cards remain connected to the prior placeholder until their modules are implemented.
 
 ## Unfinished
-- Port basic five concepts into interactive React modules.
-- Add independent interactive modules for the STEP3 cases and connect all cards.
-- Add actual arc-length correspondence/unfolding and area-piece movement.
-- KaTeX parameter synchronization and desktop/mobile browser verification.
+- Add independent interactive modules for all STEP3 cases and connect every practice card.
+- Add actual arc-length correspondence/unfolding and area-piece movement, starting with semicircle/태극.
+- Extend mathematical checks to every implemented type and source variant.
+- Verify responsive PC/mobile behavior in a real browser.
 
 ## Commits
-- Foundation commit pending.
+- `0b8ef702d` foundation: isolated React pilot, dependency lock, pilot math fix.
+- Current milestone: five basic labs implemented; commit pending.
