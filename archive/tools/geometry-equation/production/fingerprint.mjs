@@ -12,6 +12,7 @@ const producer={
   'piecewise-affine-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
   'exponential-affine-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
   'logarithmic-affine-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
+  'piecewise-polynomial-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
   'trigonometric-spike-v1':['production/graph_spike.py','production/graph_framing.py','visual_engine/function_sampling.py','visual_engine/math_expression.py','visual_engine/viewport.py','visual_engine/geometry_model.py'],
 };
 const observers={
@@ -23,6 +24,7 @@ const observers={
   'piecewise-affine-spike-v1':['production/graph_observer.py','production/graph-observer-worker.py','production/layout-repair-audit.mjs'],
   'exponential-affine-spike-v1':['production/graph_observer.py','production/graph-observer-worker.py','production/layout-repair-audit.mjs'],
   'logarithmic-affine-spike-v1':['production/graph_observer.py','production/graph-observer-worker.py','production/layout-repair-audit.mjs'],
+  'piecewise-polynomial-spike-v1':['production/graph_observer.py','production/graph-observer-worker.py','production/layout-repair-audit.mjs'],
   'trigonometric-spike-v1':['production/graph_observer.py','production/graph-observer-worker.py','production/layout-repair-audit.mjs'],
 };
 shared.push('production/polynomial-notation.mjs');

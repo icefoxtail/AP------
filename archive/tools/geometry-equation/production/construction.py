@@ -9,7 +9,7 @@ if S.__version__!='1.14.0' or mpmath.__version__!='1.3.0': raise ValueError('PYT
 SIGNATURES = {
     'SOURCE_POINT': ([], 'POINT'), 'NORMALIZATION_ORIGIN': ([], 'POINT'),
     'NORMALIZATION_AXIS': ([], 'POINT'), 'MIDPOINT': (['POINT','POINT'],'POINT'),
-    'LINE_THROUGH': (['POINT','POINT'],'LINE'),
+    'LINE_THROUGH': (['POINT','POINT'],'LINE'), 'SOURCE_LINE': ([],'LINE'),
     'PARALLEL_THROUGH': (['POINT','LINE'],'LINE'),
     'ANGLE_BISECTOR': (['POINT','POINT','POINT'],'LINE'),
     'PERPENDICULAR_FOOT': (['POINT','LINE'],'POINT'),
@@ -90,7 +90,7 @@ def validate(graph):
             b=node.get('branch',{})
             if set(b)!={'kind','refs','sign'} or b['kind']!='SIDE_OF_ORIENTED_LINE' or len(b['refs'])!=2 or b['sign'] not in (-1,1): raise ValueError('INVALID_BRANCH')
         elif 'branch' in node: raise ValueError('UNEXPECTED_BRANCH')
-        expected={'SOURCE_POINT':{'coordinates'},'NORMALIZATION_ORIGIN':set(),'NORMALIZATION_AXIS':{'length'},'CIRCLE_CENTER_RADIUS':{'radius'},'ANGLE_BISECTOR':{'mode'}}.get(node['op'],set())
+        expected={'SOURCE_POINT':{'coordinates'},'NORMALIZATION_ORIGIN':set(),'NORMALIZATION_AXIS':{'length'},'CIRCLE_CENTER_RADIUS':{'radius'},'ANGLE_BISECTOR':{'mode'},'SOURCE_LINE':{'a','b','c'}}.get(node['op'],set())
         if set(node['args'])!=expected: raise ValueError('UNSUPPORTED_NODE_ARGS')
         if node['op']=='ANGLE_BISECTOR' and node['args']['mode'] not in ('INTERNAL','EXTERNAL'):raise ValueError('INVALID_ANGLE_BISECTOR_MODE')
         nodes[node['id']]=node
@@ -127,7 +127,7 @@ def validate(graph):
         recipe=graph.get('realization',{})
         source_axes=recipe.get('recipeId')=='SOURCE_COORDINATE_AXES_v1' and recipe.get('unit')=='source-coordinate' and recipe.get('reflectionEquivalent') is False
         if source_axes:
-            if not any(n['op']=='SOURCE_POINT' for n in nodes.values()):raise ValueError('SOURCE_COORDINATE_POINTS_REQUIRED')
+            if not any(n['op'] in ('SOURCE_POINT','SOURCE_LINE') for n in nodes.values()):raise ValueError('SOURCE_COORDINATE_POINTS_REQUIRED')
             origins=[n for n in nodes.values() if n['op']=='NORMALIZATION_ORIGIN']
             axes=[n for n in nodes.values() if n['op']=='NORMALIZATION_AXIS']
             if len(origins)!=1 or len(axes)!=1:raise ValueError('SOURCE_COORDINATE_FRAME_REFERENCES_REQUIRED')
@@ -147,7 +147,13 @@ def execute(graph):
             length=scalar(args['length'])
             if length.is_positive is not True: raise ValueError('INVALID_SOURCE_LENGTH')
             value=S.Point(length,0)
-        elif op=='MIDPOINT': value=S.Segment(*a).midpoint
+        elif op=='MIDPOINT': value=a[0].midpoint(a[1])
+        elif op=='SOURCE_LINE':
+            # A line given only by its equation ax+by+c=0 (exact coefficients): two exact points on it, then the same Line as LINE_THROUGH.
+            ca,cb,cc=scalar(args['a']),scalar(args['b']),scalar(args['c'])
+            if ca==0 and cb==0: raise ValueError('DEGENERATE_LINE')
+            if cb!=0: value=S.Line(S.Point(0,-cc/cb),S.Point(1,(-cc-ca)/cb))
+            else: value=S.Line(S.Point(-cc/ca,0),S.Point(-cc/ca,1))
         elif op=='LINE_THROUGH':
             if a[0]==a[1]: raise ValueError('DEGENERATE_LINE')
             value=S.Line(*a)
@@ -228,6 +234,7 @@ def execute(graph):
                 if not all(math.isfinite(v) for v in numeric):raise ValueError('NONFINITE_POINT_SET')
                 rows.append({'exact':[exact(v) for v in point_value],'approximation':numeric})
             point_sets[key]=rows
+        else:raise ValueError('UNEMITTED_NODE_OUTPUT:'+key)
     condition_rows=[]
     for condition in graph.get('conditionAudits',[]):
         refs=[objects[reference] for reference in condition['refs']];kind=condition['kind'];observed=None;expected=None;valid=False

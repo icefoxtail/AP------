@@ -238,6 +238,10 @@ annotation; crowded figure reframing/leader/dimension author decisions; nonstand
 SVG backends; independent visual review of actual student pages. An engine test
 PASS never closes those production tasks or automatically sets FINAL SEAL.
 
+## Segments lying on a displayed axis (AX1)
+
+In the standard builder (`visual_engine/engine.py` `prepare`, not the publication overlay), a `SEGMENT` whose two ends both lie within 0.5 px of a displayed coordinate axis, measured in the SVG user-space (screen) coordinates after the viewport mapping, is drawn with the `axisOverlapShape` token (stroke width 3.2) on layer 35, above the axis (layer 30); its prepared primitive carries `axisOverlap: "x"` or `"y"`. Colour and dash are unchanged, so the black-and-white print meaning is kept and only width and layer separate the segment from the axis. Reason: the real R1-b inverse observation of A=(0,0), B=(6,0), C=(0,3) (receipt `03fcbad8…`) could not read AB and CA as segments because each was drawn over its axis with a similar thin stroke; at the real medium class (display scale 0.453125) the axis (1.2) and an ordinary segment (1.6) render at about 0.54 and 0.73 CSS px, while 3.2 renders at 1.45 CSS px, about 2.7 times the axis. Limits: only `SEGMENT` is covered, with both ends within 0.5 px, so a `LINE`, `AUXILIARY_LINE`, circle or curve lying on an axis, a segment that overlaps an axis only partly, and the point-marker size are unchanged; hidden axes (`axes` false, or `x`/`y` false) are never matched; `LEADER_LINE` is never matched; the composer does not emit an `axisOverlap` attribute, so the SVG itself shows the overlap only through stroke width and layer; only figures built from now on change and existing assets are not regenerated; this is a visibility rule, not an independent visual review or a PASS for any figure.
+
 ## Delivery status — 2026-10-05
 
 Geometry publication engine v2 is already integrated on main through

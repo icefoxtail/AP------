@@ -9,6 +9,7 @@ DIRECTIONS=('N','NE','E','SE','S','SW','W','NW')
 OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
 POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
 MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
+NEAR_RELOCATION_LEADER_MIN_GAP=20
 TICK_LABEL_ALIGNMENT_TOLERANCE=4.0
 TICK_LABEL_MAX_EDGE_GAP=16.0
 TICK_LABEL_GAPS=(8,12,16)
@@ -79,6 +80,22 @@ def owner_leader_endpoint(box,start,center):
     ty=math.inf if abs(dy)<=1e-12 else (box.height/2)/abs(dy)
     fraction=min(tx,ty)
     return [center[0]-dx*fraction,center[1]-dy*fraction]
+
+def leader_along(start,end,c,d,max_degrees=15.0):
+    """True when the leader start->end is within max_degrees of the direction of segment c-d (either way)."""
+    u=(end[0]-start[0],end[1]-start[1]);v=(d[0]-c[0],d[1]-c[1]);nu=math.hypot(*u);nv=math.hypot(*v)
+    if nu<=1e-9 or nv<=1e-9:return False
+    return abs(u[0]*v[1]-u[1]*v[0])/(nu*nv)<=math.sin(math.radians(max_degrees))
+
+def leader_hides_along(start,end,c,d,max_degrees=15.0):
+    """True when the leader start->end runs within max_degrees along a part of segment c-d that leaves the point. A segment that ends at the point
+    occupies one direction only, so a leader pointing away from it is not hidden."""
+    u=(end[0]-start[0],end[1]-start[1]);nu=math.hypot(*u)
+    if nu<=1e-9:return False
+    for q in (c,d):
+        v=(q[0]-start[0],q[1]-start[1]);nv=math.hypot(*v)
+        if nv>1e-6 and u[0]*v[0]+u[1]*v[1]>0 and abs(u[0]*v[1]-u[1]*v[0])/(nu*nv)<=math.sin(math.radians(max_degrees)):return True
+    return False
 
 def point_segment_distance(point,start,end):
     dx,dy=end[0]-start[0],end[1]-start[1]
@@ -267,6 +284,42 @@ def find_clear_leader_path(start,end,obstacles,owner_ids,safe_area,clearance=6.0
         else:index+=1
     return [list(point) for point in simplified]
 
+def box_segment_distance(box,a,b,samples=32):
+    """Smallest distance from the box (0 inside) to the segment a-b, sampled."""
+    best=math.inf
+    for i in range(samples+1):
+        x=a[0]+(b[0]-a[0])*i/samples;y=a[1]+(b[1]-a[1])*i/samples
+        best=min(best,math.hypot(max(box.x-x,0,x-box.right),max(box.y-y,0,y-box.bottom)))
+    return best
+
+LINE_LABEL_OWN_MAX=10.0
+LINE_LABEL_OTHER_MARGIN=24.0
+
+def line_label_unambiguous(box,own,others):
+    """A label box names its line without a leader only when its own drawn line is the nearest by a clear margin."""
+    pairs=lambda o:list(zip(o["geometry"],o["geometry"][1:]))
+    own_distance=min(box_segment_distance(box,c,d) for c,d in pairs(own))
+    if own_distance>LINE_LABEL_OWN_MAX:return False
+    return all(min(box_segment_distance(box,c,d) for c,d in pairs(o))>=own_distance+LINE_LABEL_OTHER_MARGIN for o in others)
+
+def owner_incident_ids(start,owner_marker,occupied):
+    """The point itself and every line, curve, circle or other label's leader through it: a leader may touch these only at the point."""
+    incident={owner_marker['id']}|{o.get('id') for o in occupied if o.get('kind') in {'line','axis','auxiliary','curve','leader'}
+        and isinstance(o.get('geometry'),(list,tuple)) and len(o['geometry'])>=2
+        and any(point_segment_distance(start,c,d)<=1e-3 for c,d in zip(o['geometry'],o['geometry'][1:]))}
+    incident|={o.get('id') for o in occupied if o.get('kind')=='circle' and abs(math.dist(start,o['geometry'][:2])-o['geometry'][2])<=1e-3}
+    return incident
+
+def visible_owner_leader(start,box,occupied,incident):
+    """End of a leader from the point to the label box, or None when it would touch other geometry or hide along a line through the point."""
+    end=owner_leader_endpoint(box,start,(box.x+box.width/2,box.y+box.height/2))
+    if not leader_clear(start,end,occupied,incident):return None
+    # A leader running along a line through the point (within 15 degrees) hides under that line: not a visible leader.
+    if any(o.get('id') in incident and o.get('kind') in {'line','axis','auxiliary','curve','leader'} and isinstance(o.get('geometry'),(list,tuple))
+           and any(point_segment_distance(start,c,d)<=1e-3 and leader_hides_along(start,end,c,d) for c,d in zip(o['geometry'],o['geometry'][1:]))
+           for o in occupied):return None
+    return end
+
 def point_box_has_unambiguous_owner(box,owner,competitors):
     """Require every measured box corner to stay inside its owner's Voronoi cell."""
     ox,oy=owner['geometry'][:2]
@@ -354,10 +407,19 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                 or tick_callout.get('value')!=label.get('tickValue') or tick_callout.get('sourceAt')!=list(label['at'])
                 or tick_callout.get('offsetUser')!=[28,-22]):
                 raise ValueError('TICK_LABEL_CALLOUT_BINDING_INVALID:'+label['id'])
-        def acceptable(box):
+        # lineOwned: an equation written beside its displayed line (kind 'line', id == target); no other label kind takes this path.
+        line_owner=next((o for o in obstacles if label.get('lineOwned') and o.get('kind')=='line' and o.get('id')==label.get('target')),None)
+        if label.get('lineOwned') and line_owner is None:raise ValueError('LINE_LABEL_OWNER_LINE_REQUIRED:'+label['id'])
+        other_lines=[o for o in obstacles if line_owner is not None and o.get('kind')=='line' and o is not line_owner]
+        def acceptable(box,owner_check=True):
             return (safe_area.contains(box) and not any(collision(box,o) for o in occupied)
-                and (owner_marker is None or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
+                and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines))
+                and (owner_marker is None or not owner_check or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
                 and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'])))
+        def tie_to_owner(end):
+            leader_id=label['id']+'-owner-leader'
+            leaders.append({'schemaVersion':'OWNER_LABEL_LEADER_v1','id':leader_id,'from':list(label['at']),'to':end,'ownerLabelId':label['id'],'ownerId':label['target']})
+            occupied.append({'id':leader_id,'kind':'leader','geometry':[list(label['at']),end]})
         preferred=label.get('preferred');directions=((preferred,) if preferred in DIRECTIONS else ())+tuple(v for v in label.get('directions', DIRECTIONS) if v!=preferred)
         if tick_owner is not None:
             allowed=('N','S') if label['tickAxis']=='x' else ('W','E')
@@ -424,9 +486,59 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
             for gap in default_gaps:
                 for direction in directions:
                     box=candidate(label['at'],w,h,direction,gap)
-                    if acceptable(box):
-                        chosen=box;method='AUTO_'+direction if gap==12 else 'COORDINATE_RELOCATION_'+direction
-                        break
+                    if line_owner is not None and gap>=NEAR_RELOCATION_LEADER_MIN_GAP:
+                        # Too far to read as beside its line: a visible leader from the anchor on the line ties it back; it may touch only that line.
+                        if not acceptable(box,owner_check=False):continue
+                        start=tuple(label['at']);end=visible_owner_leader(start,box,occupied,{line_owner['id']})
+                        if end is None:continue
+                        tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
+                    if not acceptable(box):continue
+                    if owner_marker is not None and gap>=NEAR_RELOCATION_LEADER_MIN_GAP:
+                        # A point label this far from its point is tied back to it by a visible leader; without one the next candidate is tried.
+                        start=tuple(label['at']);end=visible_owner_leader(start,box,occupied,owner_incident_ids(start,owner_marker,occupied))
+                        if end is None:continue
+                        tie_to_owner(end)
+                    chosen=box;method='AUTO_'+direction if gap==12 else 'COORDINATE_RELOCATION_'+direction
+                    break
+                if chosen:break
+            if chosen is None and owner_marker is not None:
+                # With another point close by, a box straight above/below/beside its point can reach into that point's cell. On those four
+                # sides the box may slide along the side, in eighths of its size, at the near gaps that need no leader.
+                for gap in (value for value in default_gaps if value<NEAR_RELOCATION_LEADER_MIN_GAP):
+                    for direction in (value for value in directions if value in ('N','S','E','W')):
+                        base=candidate(label['at'],w,h,direction,gap)
+                        for k in (1,-1,2,-2,3,-3,4,-4):
+                            box=Box(base.x+k*w/8,base.y,w,h) if direction in ('N','S') else Box(base.x,base.y+k*h/8,w,h)
+                            if acceptable(box):chosen=box;method='SLIDE_'+direction;break
+                        if chosen:break
+                    if chosen:break
+            if chosen is None and owner_marker is not None:
+                # Last near resort, before the 64 px+ repair: a box whose only fault is a corner nearer another point. A visible leader from
+                # its own point names the owner instead; the leader keeps clear of every other marker, line and label.
+                start=tuple(label['at']);incident=None
+                for gap in (value for value in default_gaps if value>=NEAR_RELOCATION_LEADER_MIN_GAP):
+                    for direction in directions:
+                        box=candidate(label['at'],w,h,direction,gap)
+                        if not acceptable(box,owner_check=False):continue
+                        incident=incident or owner_incident_ids(start,owner_marker,occupied)
+                        end=visible_owner_leader(start,box,occupied,incident)
+                        if end is None:continue
+                        tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
+                    if chosen:break
+        if chosen is None and line_owner is not None:
+            # The first anchor found no room: the same line may be written from other anchors on it (nearer boxes need no leader, farther ones a visible one).
+            for alternate in label.get('alternateAt',()):
+                for gap in default_gaps:
+                    for direction in directions:
+                        box=candidate(alternate,w,h,direction,gap)
+                        if gap<NEAR_RELOCATION_LEADER_MIN_GAP:
+                            if not acceptable(box):continue
+                            label={**label,'at':list(alternate)};chosen=box;method='AUTO_'+direction;break
+                        if not acceptable(box,owner_check=False):continue
+                        end=visible_owner_leader(tuple(alternate),box,occupied,{line_owner['id']})
+                        if end is None:continue
+                        label={**label,'at':list(alternate)};tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
+                    if chosen:break
                 if chosen:break
         repair=None
         if (chosen is None and require_measurements and owner_marker is not None and label['kind'] in OWNER_BOUND_POINT_LABELS
@@ -434,10 +546,16 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
             and len(label['measuredFragmentSha256'])==71 and label['measuredFragmentSha256'].startswith('sha256:')
             and isinstance(label.get('measuredFragmentOwner'),str) and label['measuredFragmentOwner']==label.get('target')
             and label.get('measuredFactRole') in {'GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'}):
+            # A label moved this far is tied back to its point by a leader. The leader may touch the geometry through the point only
+            # at the point itself and must clear every other line, label and mark; otherwise the next candidate is tried.
+            start=tuple(label['at']);incident=owner_incident_ids(start,owner_marker,occupied)
             for gap in MEASURED_OWNER_REPAIR_GAPS:
                 for direction in directions:
                     box=candidate(label['at'],w,h,direction,gap)
                     if acceptable(box):
+                        end=visible_owner_leader(start,box,occupied,incident)
+                        if end is None:continue
+                        tie_to_owner(end)
                         chosen=box;method='MEASURED_OWNER_SAFE_RELOCATION'
                         repair={'schemaVersion':'MEASURED_OWNER_SAFE_LABEL_RELOCATION_v1','failureClass':'OWNER_LABEL_NO_DEFAULT_CANDIDATE',
                             'labelId':label['id'],'labelKind':label['kind'],'ownerId':label['target'],'factRole':label['measuredFactRole'],

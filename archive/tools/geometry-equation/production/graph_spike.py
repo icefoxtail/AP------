@@ -29,8 +29,11 @@ def svg_number(value):
     return text if text and text!='-0' else '0'
 
 def produce(plan):
-    vp=Viewport(*plan['viewport'],width=420,height=280,panel=0,margin=32,equal=False)
+    # A graph framed at one scale is modelled at its own plot size, so the model's px measures match the final figure's.
+    plot=plan.get('plotCanvas') if plan.get('equalUnits') is True else None
+    vp=Viewport(*plan['viewport'],width=plot['width']+64 if plot else 420,height=plot['height']+64 if plot else 280,panel=0,margin=32,equal=plan.get('equalUnits') is True and plan.get('axisRatio',1)==1)
     if plan.get('family')=='piecewise-affine':return _produce_piecewise_affine(plan,vp)
+    if plan.get('family')=='piecewise-polynomial':return _produce_piecewise_polynomial(plan,vp)
     critical=[p['x'] for p in plan.get('requiredPoints',[])]+[feature['x'] for feature in plan.get('overviewFeatures',[]) if feature.get('kind')!='TAIL_DIRECTION']
     if plan['family']=='sqrt-affine':
         b,a=[float(Fraction(v)) for v in plan['radicand']]
@@ -76,6 +79,14 @@ def produce(plan):
             if endpoint.get('state')!='CLOSED':raise ValueError('UNSUPPORTED_OPEN_SQRT_SOURCE_ENDPOINT')
             at=vp.screen((float(Fraction(endpoint['x'])),float(endpoint['y'])))
             curves.append(f'<circle id="sqrt-domain-endpoint-{index}" data-role="domain-endpoint" data-endpoint-state="CLOSED" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
+    if plan['family']=='polynomial' and plan.get('overviewPolicy')=='POLYNOMIAL_INTERVAL_OVERVIEW_v1':
+        features=plan.get('intervalFeatures');policy=plan.get('intervalFeaturePolicy')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='POLYNOMIAL_INTERVAL_FEATURES_v1' or not isinstance(policy,dict):raise ValueError('POLYNOMIAL_INTERVAL_INVENTORY_REQUIRED')
+        radius=float(policy['markerRadiusIntrinsicPx'])
+        for endpoint in features.get('endpoints',[]):
+            if endpoint.get('state') not in {'CLOSED','OPEN'} or endpoint.get('side') not in {'START','END'}:raise ValueError('INVALID_POLYNOMIAL_INTERVAL_ENDPOINT')
+            at=vp.screen((float(Fraction(endpoint['x'])),float(Fraction(endpoint['y']))))
+            curves.append(f'<circle id="interval-endpoint-{endpoint["side"].lower()}" data-role="interval-endpoint" data-endpoint-state="{endpoint["state"]}" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="{"white" if endpoint["state"]=="OPEN" else "black"}" stroke="black" stroke-width="1"/>')
     if plan['family']=='absolute-value' and plan.get('overviewPolicy')=='ABSOLUTE_VALUE_AFFINE_OVERVIEW_v1':
         features=plan.get('absoluteFeatures');policy=plan.get('absoluteFeaturePolicy')
         if not isinstance(features,dict) or features.get('schemaVersion')!='ABSOLUTE_VALUE_FEATURES_v1' or not isinstance(policy,dict):raise ValueError('ABSOLUTE_VALUE_FEATURE_INVENTORY_REQUIRED')
@@ -110,7 +121,7 @@ def produce(plan):
                 curves.append(f'<line id="trig-{pole["id"]}" data-role="trig-pole" data-pole-side="{pole["side"]}" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
             ref=features['referencePoint'];at=vp.screen((float(Fraction(ref['xPiMultiple']))*math.pi,float(Fraction(ref['y']))))
             curves.append(f'<circle id="trig-reference-point" data-role="trig-reference" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
-    svg='<svg xmlns="http://www.w3.org/2000/svg" width="420" height="280" viewBox="0 0 420 280">'+''.join(curves)+'</svg>'
+    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(curves)+'</svg>'
     return {'svg':svg,'sampling':result,'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
 
 def _produce_piecewise_affine(plan,vp):
@@ -141,3 +152,38 @@ def _produce_piecewise_affine(plan,vp):
         pieces.append(f'<circle id="piecewise-{escape(marker["id"])}" data-role="{role}" data-state="{marker["state"]}" data-owner="{marker["owner"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="{policy["markerRadiusIntrinsicPx"]:.12g}" fill="{fill}" stroke="black" stroke-width="1"/>')
     svg='<svg xmlns="http://www.w3.org/2000/svg" width="420" height="280" viewBox="0 0 420 280">'+''.join(pieces)+'</svg>'
     return {'svg':svg,'sampling':{'branches':sampling,'branchCount':2,'status':'PASS'},'transform':{**{key:value for key,value in vp_model.items() if key!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
+
+def _polynomial_text(coefficients):
+    return '('+'+'.join('('+value+')*x^'+str(index) for index,value in enumerate(coefficients))+')'
+
+def _produce_piecewise_polynomial(plan,vp):
+    """The framed pieces (each on its draw interval), the key points, the horizontal lines and their intersection dots, with the ids the
+    final figure uses, so the graph observer reads the model and the final SVG the same way."""
+    from fractions import Fraction
+    features=plan.get('piecewisePolynomialFeatures')
+    if not isinstance(features,dict) or features.get('schemaVersion')!='PIECEWISE_POLYNOMIAL_FEATURES_v1':raise ValueError('PIECEWISE_POLY_FEATURE_INVENTORY_REQUIRED')
+    parts=[];sampling=[]
+    for index,piece in enumerate(features['pieces'],1):
+        result=sample(_polynomial_text(piece['coefficients']),piece['drawInterval'],vp,critical_x=[p['x'] for p in plan.get('requiredPoints',[])]+[point['xValue'] for row in features['intersections'] for point in row['points']])
+        if len(result['branches'])!=1:raise ValueError('PIECEWISE_POLY_PIECE_SAMPLING_FAILED')
+        sampling.append({'id':'curve-piece-'+str(index),**{key:value for key,value in result.items() if key!='branches'}})
+        points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
+        parts.append(f'<polyline id="curve-piece-{index}" data-role="curve" data-branch="PIECE_{index}" points="{points}" fill="none" stroke="black"/>')
+    xmin,xmax=plan['viewport'][0],plan['viewport'][1]
+    for row in features['intersections']:
+        level=float(Fraction(row['y']));a,b=vp.screen((xmin,level)),vp.screen((xmax,level))
+        parts.append(f'<line id="line-{row["lineId"]}" data-role="line" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"/>')
+        for k,point in enumerate(row['points'],1):
+            if point.get('keyPoint'):continue
+            cx,cy=vp.screen((point['xValue'],level))
+            parts.append(f'<circle id="intersection-{row["lineId"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
+    for index,point in enumerate(plan.get('requiredPoints',[]),1):
+        cx,cy=vp.screen((point['x'],point['y']))
+        parts.append(f'<circle id="required-point-{index}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
+    interval=plan.get('intervalFeatures')
+    if interval is not None:
+        for endpoint in interval['endpoints']:
+            cx,cy=vp.screen((float(Fraction(endpoint['x'])),float(Fraction(endpoint['y']))))
+            parts.append(f'<circle id="interval-endpoint-{endpoint["side"].lower()}" data-role="interval-endpoint" data-state="{endpoint["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="4" fill="{"#fff" if endpoint["state"]=="OPEN" else "#111"}" stroke="black" stroke-width="1"/>')
+    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(parts)+'</svg>'
+    return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(sampling),'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}

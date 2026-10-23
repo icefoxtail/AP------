@@ -174,6 +174,53 @@ def resolve(plan):
         except (ValueError,ZeroDivisionError): pass
     return f,den,p,evaluate,{'holes':holes,'poles':poles,'boundary':boundary,'corners':corners,'visibleIntervals':visible,'roots':root_inventory if root_inventory is not None else real_roots(p,*plan['domain'])}
 
+INTERVAL_STATE_FILLS={'CLOSED':{'#111','black','#000'},'OPEN':{'#fff','white','#ffffff'}}
+
+def polynomial_interval_audit(plan,poly,points,transform,svg_root):
+    """Independent: the interval and its end states from sourceDomain, the end values from the coefficients, then the drawn curve and dots."""
+    source=plan.get('sourceDomain');errors=[];unsupported=[]
+    try:
+        if not isinstance(source,dict) or source.get('kind')!='INTERVAL' or set(source)-{'kind','range','states'}:raise ValueError
+        raw=source['range'];states=source.get('states',['CLOSED','CLOSED'])
+        if not isinstance(raw,list) or len(raw)!=2 or any(isinstance(v,bool) or not isinstance(v,(int,float,str)) for v in raw):raise ValueError
+        if not isinstance(states,list) or len(states)!=2 or any(state not in INTERVAL_STATE_FILLS for state in states):raise ValueError
+        lo,hi=(S.Rational(str(v)) for v in raw)
+        if not lo<hi:raise ValueError
+    except (ValueError,TypeError,KeyError,S.SympifyError):return {'status':'UNSUPPORTED','errors':['POLYNOMIAL_SOURCE_INTERVAL_INVALID']}
+    if poly.degree()!=2:return {'status':'UNSUPPORTED','errors':['POLYNOMIAL_INTERVAL_QUADRATIC_ONLY']}
+    if plan.get('overviewPolicy')!='POLYNOMIAL_INTERVAL_OVERVIEW_v1':return {'status':'UNSUPPORTED','errors':['POLYNOMIAL_INTERVAL_OVERVIEW_POLICY_REQUIRED']}
+    policy={'schemaVersion':'POLYNOMIAL_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':4,'minimumMarkerDiameterCssPx':3}
+    endpoints=[{'side':'START','x':str(lo),'y':str(poly.eval(lo)),'state':states[0]},{'side':'END','x':str(hi),'y':str(poly.eval(hi)),'state':states[1]}]
+    if plan.get('intervalFeaturePolicy')!=policy:errors.append('POLYNOMIAL_INTERVAL_POLICY_MISMATCH')
+    if plan.get('intervalFeatures')!={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':endpoints}:errors.append('POLYNOMIAL_INTERVAL_INVENTORY_MISMATCH')
+    if plan.get('domain')!=[float(lo),float(hi)]:errors.append('POLYNOMIAL_INTERVAL_DRAW_DOMAIN_CHANGED')
+    if plan.get('equalUnits') is not True:errors.append('EQUAL_UNIT_DECLARATION_MISSING')
+    errors.extend(axis_ratio_errors(plan,transform))
+    xmin,xmax,ymin,ymax=plan['viewport'];sx=transform['sx']*transform['displayScale'];sy=transform['sy']*transform['displayScale']
+    if not xmin<0<xmax or not ymin<0<ymax:errors.append('POLYNOMIAL_INTERVAL_AXES_OUTSIDE_VIEW')
+    if not points:return {'status':'FAIL','errors':['POLYNOMIAL_INTERVAL_CURVE_MISSING']}
+    ordered=sorted(points,key=lambda point:point[0]);ends=[(float(lo),float(poly.eval(lo))),(float(hi),float(poly.eval(hi)))]
+    if any(x<ends[0][0]-.35/sx or x>ends[1][0]+.35/sx for x,_ in ordered):errors.append('POLYNOMIAL_CURVE_OUTSIDE_SOURCE_INTERVAL')
+    for got,(ex,ey),side in ((ordered[0],ends[0],'START'),(ordered[-1],ends[1],'END')):
+        if abs(got[0]-ex)*sx>.35 or abs(got[1]-ey)*sy>.35:errors.append('POLYNOMIAL_INTERVAL_'+side+'_NOT_AT_CURVE_END')
+    for point in plan.get('requiredPoints',[]):
+        px=S.Rational(str(point['x']))
+        if not lo<=px<=hi:errors.append('POLYNOMIAL_REQUIRED_POINT_OUTSIDE_SOURCE_INTERVAL:'+point['id'])
+        elif px==lo and states[0]=='OPEN' or px==hi and states[1]=='OPEN':errors.append('POLYNOMIAL_REQUIRED_POINT_AT_OPEN_ENDPOINT:'+point['id'])
+    markers=[]
+    for node in svg_root.iter():
+        if node.tag.split('}')[-1]=='circle' and node.get('data-role')=='interval-endpoint':
+            try:markers.append({'point':((float(node.get('cx'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('cy')))/transform['sy']),'radius':float(node.get('r')),'fill':node.get('fill'),'stroke':node.get('stroke'),'strokeWidth':float(node.get('stroke-width'))})
+            except (TypeError,ValueError):errors.append('POLYNOMIAL_INTERVAL_MARKER_INVALID')
+    if len(markers)!=2:errors.append('POLYNOMIAL_INTERVAL_MARKER_COUNT_MISMATCH')
+    for (ex,ey),state,side in zip(ends,states,('START','END')):
+        found=[m for m in markers if abs(m['point'][0]-ex)*sx<=.35 and abs(m['point'][1]-ey)*sy<=.35]
+        if len(found)!=1:errors.append('POLYNOMIAL_INTERVAL_'+side+'_MARKER_MISSING');continue
+        marker=found[0]
+        if marker['fill'] not in INTERVAL_STATE_FILLS[state] or marker['stroke'] in (None,'none','') or marker['strokeWidth']<=0 or marker['radius']<policy['markerRadiusIntrinsicPx']-.01:errors.append('POLYNOMIAL_INTERVAL_'+side+'_MARKER_STATE_MISMATCH')
+        if 2*marker['radius']*transform['displayScale']<policy['minimumMarkerDiameterCssPx']:unsupported.append('POLYNOMIAL_INTERVAL_MARKER_BELOW_DISPLAY_RESOLUTION')
+    return {'status':'UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS','errors':sorted(set(errors+unsupported)),'endpoints':endpoints,'observedEndpointMarkers':len(markers),'plotCssSize':[(xmax-xmin)*sx,(ymax-ymin)*sy],'policy':'POLYNOMIAL_INTERVAL_OVERVIEW_v1'}
+
 def poly_abs_upper(poly,a,b):
     # Triangle inequality on powers, with exact coefficients from the source.
     m=max(abs(a),abs(b))
@@ -190,8 +237,34 @@ def denominator_lower(poly,a,b):
     bound=low if low>0 else -high if high<0 else S.Integer(0)
     return max(0,float(bound)*(1-1e-12))
 
+def axis_ratio_errors(plan,transform):
+    """One scale on both axes, or y at the recorded axisRatio (between 1/2 and 1, a squeeze after a failure at one scale) times the x scale."""
+    ratio=plan.get('axisRatio',1)
+    if isinstance(ratio,bool) or not isinstance(ratio,(int,float)) or not .5-1e-12<=ratio<=1:return ['AXIS_RATIO_INVALID']
+    return ['EQUAL_UNIT_SCALE_MISMATCH'] if abs(transform['sy']-ratio*transform['sx'])>1e-6*transform['sx'] else []
+
+def equal_unit_overview_audit(plan,poly,points,transform):
+    """A quadratic drawn at one scale (QUADRATIC_EQUAL_UNIT_OVERVIEW_v1): the same px per unit on both axes, the vertex inside, the natural
+    arms (half-span 2/sqrt|a|) drawn on both sides and wide enough to read, the key points inside and on the curve."""
+    a=poly.nth(2);h=-poly.nth(1)/(2*a);k=poly.eval(h);h,k,a=map(float,(h,k,a));errors=[]
+    xmin,xmax,ymin,ymax=plan['viewport'];lo,hi=plan['domain'];sx=transform['sx']*transform['displayScale'];sy=transform['sy']*transform['displayScale']
+    if plan.get('equalUnits') is not True:errors.append('EQUAL_UNIT_DECLARATION_MISSING')
+    errors.extend(axis_ratio_errors(plan,transform))
+    if not xmin+.05*(xmax-xmin)<h<xmax-.05*(xmax-xmin) or not ymin+.05*(ymax-ymin)<k<ymax-.05*(ymax-ymin):errors.append('OVERVIEW_VERTEX_OUTSIDE_INTERIOR')
+    natural=2/math.sqrt(abs(a))
+    if min(h-lo,hi-h)<natural*(1-1e-9):errors.append('OVERVIEW_DOMAIN_TOO_NARROW')
+    if (hi-lo)*sx<28 or 2*natural*sx<14:errors.append('EQUAL_UNIT_PARABOLA_TOO_NARROW')
+    for point in plan.get('requiredPoints',[]):
+        px,py=point['x'],point['y']
+        if not xmin+.05*(xmax-xmin)<=px<=xmax-.05*(xmax-xmin) or not ymin+.05*(ymax-ymin)<=py<=ymax-.05*(ymax-ymin):errors.append('OVERVIEW_REQUIRED_FEATURE_CLIPPED:'+point['id'])
+        if not any(abs(q[0]-px)*sx<=.35 and abs(q[1]-py)*sy<=.35 for q in points):errors.append('OVERVIEW_REQUIRED_FEATURE_NOT_OBSERVED:'+point['id'])
+    for name,arm in [('LEFT',[p for p in points if p[0]<=h]),('RIGHT',[p for p in points if p[0]>=h])]:
+        if max((abs(p[0]-h) for p in arm),default=0)<natural*(1-1e-6):errors.append('OVERVIEW_'+name+'_ARM_TOO_NARROW')
+    return {'status':'FAIL' if errors else 'PASS','errors':errors,'vertex':[h,k],'opening':'UP' if a>0 else 'DOWN','plotCssSize':[(xmax-xmin)*sx,(ymax-ymin)*sy],'naturalWindowCssPx':2*natural*sx,'policy':'QUADRATIC_EQUAL_UNIT_OVERVIEW_v1'}
+
 def overview_audit(plan,poly,points,transform):
     """Independent shape adequacy from source coefficients and observed curves."""
+    if poly.degree()==2 and plan.get('overviewPolicy')=='QUADRATIC_EQUAL_UNIT_OVERVIEW_v1':return equal_unit_overview_audit(plan,poly,points,transform)
     if poly.degree() in (3,4):return cubic_quartic_overview_audit(plan,poly,points,transform)
     if poly.degree()!=2:return {'status':'UNSUPPORTED','errors':['UNSUPPORTED_OVERVIEW_DEGREE']}
     a=poly.nth(2);h=-poly.nth(1)/(2*a);k=poly.eval(h);h,k,a=map(float,(h,k,a))
@@ -702,7 +775,205 @@ def trigonometric_overview_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':expected_features,'featureDetail':feature_detail,'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PI_MULTIPLE_PHASE_PERIOD_POLES_AND_INDEPENDENT_TRIGONOMETRIC_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
+def _pp_rational(value):
+    if isinstance(value,bool) or not (isinstance(value,int) or isinstance(value,str) and len(value)<=64 and re.fullmatch(r'-?\d+(?:/\d+)?',value)):raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+    return Fraction(value)
+
+def _pp_exact(text):
+    """Own parser for an exact value string (integers, a/b, sqrt, + - * /, parentheses): a SymPy number."""
+    if not isinstance(text,str) or not re.fullmatch(r'[0-9+\-*/()sqrt]{1,64}',text):raise ValueError('PIECEWISE_POLY_EXACT_VALUE_INVALID')
+    tokens=re.findall(r'sqrt|\d+|[+\-*/()]',text);position=[0]
+    if ''.join(tokens)!=text:raise ValueError('PIECEWISE_POLY_EXACT_VALUE_INVALID')
+    def take():
+        token=tokens[position[0]] if position[0]<len(tokens) else None;position[0]+=1;return token
+    def peek():return tokens[position[0]] if position[0]<len(tokens) else None
+    def unit():
+        token=take()
+        if token in ('-','+'):value=unit();return -value if token=='-' else value
+        if token=='sqrt' and take()=='(':
+            value=sum_();
+            if take()==')' and not value.is_negative:return S.sqrt(value)
+        elif token=='(':
+            value=sum_()
+            if take()==')':return value
+        elif token is not None and token.isdigit():return S.Integer(int(token))
+        raise ValueError('PIECEWISE_POLY_EXACT_VALUE_INVALID')
+    def product():
+        value=unit()
+        while peek() in ('*','/'):
+            op=take();right=unit()
+            if op=='/' and right==0:raise ValueError('PIECEWISE_POLY_EXACT_VALUE_INVALID')
+            value=value*right if op=='*' else value/right
+        return value
+    def sum_():
+        value=product()
+        while peek() in ('+','-'):op=take();right=product();value=value+right if op=='+' else value-right
+        return value
+    value=sum_()
+    if position[0]!=len(tokens):raise ValueError('PIECEWISE_POLY_EXACT_VALUE_INVALID')
+    return value
+
+def _pp_formula(text):
+    """Own reading of the display formula as a SymPy expression in x (integers, x, abs, + - * / ^, parentheses, implicit products)."""
+    if not isinstance(text,str) or not re.fullmatch(r'[0-9x+\-*/^()abs ]{1,120}',text):raise ValueError('PIECEWISE_POLY_FORMULA_INVALID')
+    compact=text.replace(' ','');tokens=re.findall(r'abs|\d+|x|[+\-*/^()]',compact)
+    if ''.join(tokens)!=compact:raise ValueError('PIECEWISE_POLY_FORMULA_INVALID')
+    spaced=[]
+    for token in tokens:
+        # An implicit product (2x, 3(x+1), x abs(...), )( ) becomes an explicit one; a number after x or ) is not allowed.
+        if spaced and (token in ('x','abs','(') and (spaced[-1] in ('x',')') or spaced[-1].isdigit())):spaced.append('*')
+        elif spaced and token.isdigit() and spaced[-1] in ('x',')'):raise ValueError('PIECEWISE_POLY_FORMULA_INVALID')
+        spaced.append({'abs':'Abs','^':'**'}.get(token,token))
+    try:value=S.sympify(''.join(spaced),locals={'x':x,'Abs':S.Abs},rational=True)
+    except (S.SympifyError,SyntaxError,TypeError):raise ValueError('PIECEWISE_POLY_FORMULA_INVALID') from None
+    if value.free_symbols-{x}:raise ValueError('PIECEWISE_POLY_FORMULA_INVALID')
+    return value
+
+def piecewise_polynomial_audit(plan,svg,transform):
+    """Independent: the pieces, continuity, breakpoint claims, vertices, every crossing with each horizontal line and the display formula are
+    recomputed from the source fields; then the drawn pieces, key points, lines, crossing dots and interval end dots are read from the SVG."""
+    errors=[];unsupported=[]
+    try:
+        pieces=[]
+        for piece in plan.get('pieces') or []:
+            values=piece.get('coefficients') if isinstance(piece,dict) else None
+            if not isinstance(values,list) or not 1<=len(values)<=3:raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+            pieces.append(S.Poly(sum(S.Rational(_pp_rational(v).numerator,_pp_rational(v).denominator)*x**i for i,v in enumerate(values)),x))
+        breaks=[(_pp_rational(row['x']),_pp_rational(row['y'])) for row in plan.get('breakpoints') or []]
+        if not 1<=len(pieces)<=3 or len(breaks)!=len(pieces)-1 or any(not a[0]<b[0] for a,b in zip(breaks,breaks[1:])):raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+        source=plan.get('sourceDomain')
+        if source=={'kind':'ALL_REALS'}:lo=hi=None;states=['CLOSED','CLOSED']
+        elif isinstance(source,dict) and source.get('kind')=='INTERVAL' and not set(source)-{'kind','range','states'}:
+            lo,hi=(_pp_rational(v if isinstance(v,(str,int)) else str(v)) for v in source['range']);states=source.get('states',['CLOSED','CLOSED'])
+            if not lo<hi or states[0] not in INTERVAL_STATE_FILLS or states[1] not in INTERVAL_STATE_FILLS or any(not lo<b<hi for b,_ in breaks):raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+        else:raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+        rational=lambda value:S.Rational(value.numerator,value.denominator)
+        cuts=[lo,*[b for b,_ in breaks],hi];intervals=list(zip(cuts,cuts[1:]))
+        for index,(bx,by) in enumerate(breaks):
+            left,right=pieces[index].eval(rational(bx)),pieces[index+1].eval(rational(bx))
+            if left!=right:errors.append('PIECEWISE_POLY_DISCONTINUOUS:'+str(bx))
+            elif left!=rational(by):errors.append('PIECEWISE_POLY_BREAKPOINT_CLAIM_MISMATCH:'+str(bx))
+        inside=lambda value,a,b,strict:(a is None or (value>rational(a) if strict else value>=rational(a))) and (b is None or (value<rational(b) if strict else value<=rational(b)))
+        extrema=[]
+        for poly,(a,b) in zip(pieces,intervals):
+            if poly.degree()==2:
+                h=-poly.nth(1)/(2*poly.nth(2))
+                if inside(h,a,b,True):extrema.append({'x':str(h),'y':str(poly.eval(h)),'kind':'MAX' if poly.nth(2)<0 else 'MIN'})
+        corners=[{'x':str(bx),'y':str(by)} for bx,by in breaks]
+        features=plan.get('piecewisePolynomialFeatures')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='PIECEWISE_POLYNOMIAL_FEATURES_v1':raise ValueError('PIECEWISE_POLY_FEATURE_INVENTORY_REQUIRED')
+        if features.get('corners')!=corners:errors.append('PIECEWISE_POLY_CORNER_INVENTORY_MISMATCH')
+        if features.get('extrema')!=extrema:errors.append('PIECEWISE_POLY_EXTREMUM_INVENTORY_MISMATCH')
+        required=plan.get('requiredPoints',[])
+        def g_exact(value):
+            for poly,(a,b) in zip(pieces,intervals):
+                if inside(value,a,b,False):return poly.eval(value)
+            return None
+        for point in required:
+            gy=g_exact(S.Rational(str(point['x'])))
+            if gy is None or abs(float(gy)-point['y'])>1e-8*max(1,abs(point['y'])):errors.append('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+str(point.get('id')))
+        for row in corners+extrema:
+            if not any(abs(p['x']-float(S.Rational(row['x'])))<=1e-9*max(1,abs(p['x'])) and abs(p['y']-float(S.Rational(row['y'])))<=1e-9*max(1,abs(p['y'])) for p in required):errors.append('PIECEWISE_POLY_FEATURE_NOT_MARKED:'+row['x'])
+        formula=plan.get('formula')
+        if formula is not None:
+            expression=_pp_formula(formula)
+            for poly,(a,b) in zip(pieces,intervals):
+                if a is not None and b is not None:samples=[rational(a)+(rational(b)-rational(a))*S.Rational(k,7) for k in range(8)]
+                elif b is not None:samples=[rational(b)-S.Rational(k,3) for k in range(8)]+[rational(b)-50]
+                elif a is not None:samples=[rational(a)+S.Rational(k,3) for k in range(8)]+[rational(a)+50]
+                else:samples=[S.Rational(k-4,3) for k in range(9)]
+                if any(S.simplify(expression.subs(x,value)-poly.eval(value))!=0 for value in samples):errors.append('PIECEWISE_POLY_FORMULA_MISMATCH');break
+        # Crossings with each horizontal line, recomputed and compared with the claimed exact x values (and the frozen inventory).
+        lines=plan.get('referenceLines',[]);expected_rows=[]
+        claimed_rows={row.get('lineId'):row for row in features.get('intersections',[]) if isinstance(row,dict)}
+        if len(claimed_rows)!=len(lines):errors.append('PIECEWISE_POLY_INTERSECTION_INVENTORY_MISMATCH')
+        for line in lines:
+            level=rational(_pp_rational(line['y']));roots=[]
+            for poly,(a,b) in zip(pieces,intervals):
+                shifted=poly-S.Poly(level,x)
+                if shifted.is_zero:errors.append('PIECEWISE_POLY_LINE_CONTAINS_A_PIECE');continue
+                for root in S.roots(shifted,filter='R'):
+                    if not inside(root,a,b,False):continue
+                    if lo is not None and (root==rational(lo) and states[0]=='OPEN' or root==rational(hi) and states[1]=='OPEN'):continue
+                    if not any(S.simplify(root-other)==0 for other in roots):roots.append(root)
+            roots.sort(key=float)
+            claimed=sorted((_pp_exact(text.replace(' ','')) for text in line.get('intersectionX',[])),key=float)
+            if len(claimed)!=len(roots) or any(S.simplify(c-r)!=0 for c,r in zip(claimed,roots)):errors.append('PIECEWISE_POLY_INTERSECTION_CLAIM_MISMATCH:'+str(line.get('id')))
+            frozen=claimed_rows.get(line.get('id'))
+            # A crossing at a marked key point is drawn once, as that key point.
+            keys=[next((p['id'] for p in required if abs(p['x']-float(r))<=1e-9*max(1,abs(float(r))) and abs(p['y']-float(level))<=1e-9*max(1,abs(float(level)))),None) for r in roots]
+            if not frozen or frozen.get('y')!=str(level) or len(frozen.get('points',[]))!=len(roots) or any(abs(p.get('xValue',math.nan)-float(r))>1e-12*max(1,abs(float(r))) or p.get('keyPoint')!=key for p,r,key in zip(frozen.get('points',[]),roots,keys)):errors.append('PIECEWISE_POLY_INTERSECTION_INVENTORY_MISMATCH:'+str(line.get('id')))
+            expected_rows.append((line.get('id'),float(level),[float(r) for r in roots],keys))
+        # The drawn window: each piece on its own interval cut to the draw domain; outer arms of an all-real source go past every key point.
+        domain=plan.get('domain');draw_rows=features.get('pieces',[])
+        if not isinstance(domain,list) or len(domain)!=2 or not domain[0]<domain[1] or len(draw_rows)!=len(pieces):raise ValueError('PIECEWISE_POLY_DRAW_DOMAIN_INVALID')
+        expected_draw=[[domain[0] if a is None else float(a),domain[1] if b is None else float(b)] for a,b in intervals]
+        if [row.get('drawInterval') for row in draw_rows]!=expected_draw:errors.append('PIECEWISE_POLY_DRAW_INTERVAL_MISMATCH')
+        if lo is not None and domain!=[float(lo),float(hi)]:errors.append('PIECEWISE_POLY_DRAW_DOMAIN_CHANGED')
+        if plan.get('equalUnits') is not True:errors.append('EQUAL_UNIT_DECLARATION_MISSING')
+        errors.extend(axis_ratio_errors(plan,transform))
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not isinstance(v,(int,float)) or not math.isfinite(v) for v in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        sx,sy,display=transform['sx'],transform['sy'],transform['displayScale'];x_tol=.35/(sx*display);y_tol=.35/(sy*display)
+        key_x=[float(S.Rational(r['x'])) for r in corners+extrema]+[p['x'] for p in required]+[v for _,_,xs,_ in expected_rows for v in xs]
+        if lo is None and key_x and (min(key_x)-domain[0])*sx*display<8 or lo is None and key_x and (domain[1]-max(key_x))*sx*display<8:errors.append('PIECEWISE_POLY_ARM_TOO_SHORT')
+        root=ET.fromstring(svg);xmin,xmax,ymin,ymax=plan['viewport']
+        to_model=lambda px,py:((px-transform['originX'])/sx,(transform['originY']-py)/sy)
+        curves=[node for node in root.iter() if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve']
+        by_piece={}
+        for node in curves:by_piece.setdefault(node.get('data-branch'),[]).append(node)
+        if sorted(by_piece)!=sorted('PIECE_'+str(i) for i in range(1,len(pieces)+1)) or any(len(nodes)!=1 for nodes in by_piece.values()):errors.append('PIECEWISE_POLY_PIECE_PRIMITIVE_INVENTORY_MISMATCH')
+        coverage=[]
+        for index,(poly,(start,end)) in enumerate(zip(pieces,expected_draw),1):
+            nodes=by_piece.get('PIECE_'+str(index))
+            if not nodes:continue
+            values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',nodes[0].get('points',''))]
+            if len(values)<4 or len(values)%2:errors.append('PIECEWISE_POLY_CURVE_POINTS_INVALID');continue
+            points=[to_model(values[i],values[i+1]) for i in range(0,len(values),2)]
+            if any(b[0]<=a[0] for a,b in zip(points,points[1:])):errors.append('PIECEWISE_POLY_PIECE_NOT_INCREASING_X:'+str(index))
+            if abs(points[0][0]-start)>x_tol or abs(points[-1][0]-end)>x_tol:errors.append('PIECEWISE_POLY_PIECE_COVERAGE_FAIL:'+str(index))
+            if any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('PIECEWISE_POLY_PIECE_CROSSES_ITS_INTERVAL:'+str(index))
+            curvature=abs(float(poly.nth(2)))*2 if poly.degree()==2 else 0.0;worst=0.0
+            evaluate=lambda value:sum(float(poly.nth(k))*value**k for k in range(poly.degree()+1))
+            for (ax,ay),(bx,by) in zip(points,points[1:]):
+                bound=(max(abs(ay-evaluate(ax)),abs(by-evaluate(bx)))+curvature*(bx-ax)**2/8)*sy*display
+                worst=max(worst,bound)
+            for px,py in points:
+                if not (xmin-x_tol<=px<=xmax+x_tol and ymin-y_tol<=py<=ymax+y_tol):errors.append('PIECEWISE_POLY_CURVE_OUTSIDE_VIEW:'+str(index));break
+            if worst>.35:errors.append('PIECEWISE_POLY_CURVE_INTERIOR_BOUND_FAIL:'+str(index))
+            coverage.append({'piece':index,'interval':[start,end],'points':len(points),'maxErrorCssPx':worst})
+        circles={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle'}
+        def dot_at(node_id,wx,wy,role='point'):
+            node=circles.get(node_id)
+            if node is None or node.get('data-role')!=role:return False
+            mx,my=to_model(float(node.get('cx')),float(node.get('cy')))
+            return abs(mx-wx)<=x_tol and abs(my-wy)<=y_tol
+        for index,point in enumerate(required,1):
+            if not dot_at('required-point-'+str(index),point['x'],point['y']):errors.append('PIECEWISE_POLY_KEY_POINT_DOT_MISSING:'+str(point.get('id')))
+        for line_id,level,xs,keys in expected_rows:
+            node=next((n for n in root.iter() if n.tag.split('}')[-1]=='line' and n.get('id')=='line-'+str(line_id)),None)
+            if node is None:errors.append('PIECEWISE_POLY_REFERENCE_LINE_MISSING:'+str(line_id));continue
+            (ax,ay),(bx,by)=to_model(float(node.get('x1')),float(node.get('y1'))),to_model(float(node.get('x2')),float(node.get('y2')))
+            if abs(ay-level)>y_tol or abs(by-level)>y_tol or min(ax,bx)>domain[0]+x_tol or max(ax,bx)<domain[1]-x_tol:errors.append('PIECEWISE_POLY_REFERENCE_LINE_POSITION_MISMATCH:'+str(line_id))
+            dots=[node_id for node_id in circles if node_id.startswith('intersection-'+str(line_id)+'-')]
+            if len(dots)!=sum(key is None for key in keys):errors.append('PIECEWISE_POLY_INTERSECTION_DOT_COUNT_MISMATCH:'+str(line_id))
+            for k,(value,key) in enumerate(zip(xs,keys),1):
+                if key is None and not dot_at('intersection-'+str(line_id)+'-'+str(k),value,level):errors.append('PIECEWISE_POLY_INTERSECTION_DOT_MISSING:'+str(line_id)+'-'+str(k))
+        if lo is not None:
+            ends=[(float(lo),float(pieces[0].eval(rational(lo))),states[0],'start'),(float(hi),float(pieces[-1].eval(rational(hi))),states[1],'end')]
+            for wx,wy,state,side in ends:
+                node=circles.get('interval-endpoint-'+side)
+                if node is None or not dot_at('interval-endpoint-'+side,wx,wy,'interval-endpoint') or node.get('fill') not in INTERVAL_STATE_FILLS[state]:errors.append('PIECEWISE_POLY_INTERVAL_END_MARKER_MISMATCH:'+side)
+        # Marks closer than one CSS pixel cannot be told apart at this size.
+        marks=sorted(set([(float(S.Rational(r['x'])),float(S.Rational(r['y']))) for r in corners+extrema]+[(v,level) for _,level,xs,_ in expected_rows for v in xs]))
+        if any(math.hypot((a[0]-b[0])*sx*display,(a[1]-b[1])*sy*display)<1 for i,a in enumerate(marks) for b in marks[i+1:]):unsupported.append('PIECEWISE_POLY_FEATURES_BELOW_DISPLAY_RESOLUTION')
+        status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors+unsupported)),'corners':corners,'extrema':extrema,'intersections':[{'lineId':i,'y':l,'x':xs,'keyPoints':keys} for i,l,xs,keys in expected_rows],'coverage':coverage,'topology':{'pieces':len(pieces),'continuity':'CONTINUOUS' if not any(e.startswith('PIECEWISE_POLY_DISCONTINUOUS') for e in errors) else 'BROKEN'},'policy':'PIECEWISE_POLYNOMIAL_OVERVIEW_v1','mathMethod':'EXACT_RATIONAL_PIECES_AND_SYMPY_SURD_CROSSINGS'}
+    except (ValueError,KeyError,TypeError,ZeroDivisionError,ET.ParseError) as error:
+        return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'PIECEWISE_POLY_SOURCE_OR_SVG_SCHEMA_INVALID']}
+
 def audit(plan,svg,transform):
+    if plan.get('family')=='piecewise-polynomial':
+        return piecewise_polynomial_audit(plan,svg,transform)
     if plan.get('family')=='piecewise-affine' and plan.get('shapeIntent')=='OVERVIEW':
         return piecewise_affine_overview_audit(plan,svg,transform)
     if plan.get('family')=='exponential-affine' and plan.get('shapeIntent')=='OVERVIEW':
@@ -783,6 +1054,7 @@ def audit(plan,svg,transform):
     if plan.get('family')=='rational' and plan.get('shapeIntent')=='OVERVIEW':overview=rational_overview_audit(plan,poly,actual_points,transform,topology,root)
     elif plan.get('family')=='sqrt-affine' and plan.get('shapeIntent')=='OVERVIEW':overview=sqrt_affine_overview_audit(plan,poly,actual_points,transform,topology,root)
     elif plan.get('family')=='absolute-value' and plan.get('shapeIntent')=='OVERVIEW':overview=absolute_value_overview_audit(plan,poly,actual_points,transform,topology,root)
+    elif plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL':overview=polynomial_interval_audit(plan,poly,actual_points,transform,root)
     else:overview=overview_audit(plan,poly,actual_points,transform) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}
     if overview['status'] in ('FAIL','UNSUPPORTED'):errors.extend(overview['errors'])
     status='UNSUPPORTED' if overview['status']=='UNSUPPORTED' else 'FAIL' if errors else 'PASS'
