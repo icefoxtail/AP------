@@ -1162,14 +1162,14 @@
     const packVersions = new Map((foundationTaxonomy.sourcePacks || []).map((row) =>
       [text(row.packId), text(row.version)],
     ));
-    // FINAL_QA and REVIEW2 registrations retain their own approval provenance.
+    // FINAL_QA, REVIEW2, and META_PIPELINE_AUDIT registrations retain their own approval provenance.
     // A byte-bound v2 receipt supplies assignments only for its exact current
     // source, approved metadata, and ACTIVE runtime record; no R2 override is fabricated.
     const registrationPaths = reviewedRegistrationProofPaths(overlayPacks);
     for (const path of registrationPaths) {
       const receipt = resources[path], receiptSha = text(versionBundle.files[path]?.sha256);
       if (receipt?.schemaVersion !== "archive-reviewed-exam-meta-registration-v2" || receipt.metadataRegistrationStatus !== "REGISTERED" ||
-          !["FINAL_QA", "REVIEW2"].includes(receipt.approval?.type) || receipt.approval.metadataReviewed !== true || !SHA256.test(receiptSha) ||
+          !["FINAL_QA", "REVIEW2", "META_PIPELINE_AUDIT"].includes(receipt.approval?.type) || receipt.approval.metadataReviewed !== true || !SHA256.test(receiptSha) ||
           !text(receipt.approval.approvedBy) || receipt.approval.type === "REVIEW2" && receipt.approval.reviewPassCount !== 2 ||
           !Array.isArray(receipt.appliedRecords) || receipt.totalQuestions !== receipt.appliedRecords.length ||
           new Set(receipt.appliedRecords.map(r => r.questionUid)).size !== receipt.totalQuestions ||
