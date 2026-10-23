@@ -59,7 +59,7 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   return { root, put, read, request, q, evidenceRefs, change };
 }
 
-function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLabelDrift = false, siblingParent = false, promoteCanonicalTypes = false, driveSourceHashDrift = false } = {}) {
+function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLabelDrift = false, siblingParent = false, promoteCanonicalTypes = false, driveSourceHashDrift = false, targetCanonicalParent = false, exactSourceHashBasis = false } = {}) {
   const conceptChange = f.request.registryChanges.find(change => change.path.startsWith(`${CANON}/concepts/`));
   const pendingRegistryChanges = [];
   for (const change of f.request.registryChanges) {
@@ -113,17 +113,20 @@ function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLa
   const manifestPath = `${evidenceRoot}/${f.request.requestId}.manifest.json`;
   const sourceParityPath = `${evidenceRoot}/${f.request.requestId}.source-parity.json`;
   const parentLabelsPath = `${evidenceRoot}/${f.request.requestId}.parent-labels.json`;
+  const canonicalMasterPath = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
   f.put(auditPath, audit);
   f.put(manifestPath, manifest);
   const studentFields = ["id", "questionType", "content", "choices", "answer", "solution", "image", "images", "figureSvg", "solutionImage", "solutionFigureSvg", "layoutTag", "wide"];
   const studentPayloadHash = hash(stable(Object.fromEntries(studentFields.map(field => [field, Object.hasOwn(f.q, field) ? f.q[field] : null]))));
   const sourceParity = { schemaVersion: "archive-meta-pipeline-source-parity-v1",
     status: driveSourceHashDrift ? "EXACT_STUDENT_VISIBLE_PARITY_WITH_AUDIT_HASH_DRIFT" : "EXACT_STUDENT_VISIBLE_PARITY", sourceFileDriveId,
+    ...(exactSourceHashBasis ? { parityBasis: "EXACT_SOURCE_SHA256" } : {}),
     ...(driveSourceHashDrift ? { auditSourceSha256: hash(sourceBytes), sourceHashDriftReason: "AUDIT_SOURCE_HASH_DIFFERS_FROM_CURRENT_DRIVE_FILE" } : {}),
     driveSourceSha256: driveSourceHashDrift ? "f".repeat(64) : hash(sourceBytes), productionSourceSha256: hash(sourceBytes), productionSourceBlobSha1: f.request.expectedSourceBlobSha1,
     sourceArchiveFile: f.request.sourceArchiveFile, studentFields, questionCount: 1,
-    records: [{ sourceOrdinal: 1, questionId: 1, questionUid: f.request.items[0].questionUid, driveSourceTextExcerptMatched: true,
-      driveSolutionExcerptMatched: true, driveStudentPayloadSha256: studentPayloadHash, productionStudentPayloadSha256: studentPayloadHash, studentPayloadEqual: true }] };
+    records: [{ sourceOrdinal: 1, questionId: 1, questionUid: f.request.items[0].questionUid,
+      driveSourceTextExcerptMatched: !exactSourceHashBasis, driveSolutionExcerptMatched: !exactSourceHashBasis,
+      driveStudentPayloadSha256: studentPayloadHash, productionStudentPayloadSha256: studentPayloadHash, studentPayloadEqual: true }] };
   f.put(sourceParityPath, sourceParity);
   const parentContext = { curriculumKey: f.request.items[0].after.curriculum,
     courseKey: String(f.request.items[0].after.courseKey).replace(/\s/g, ""), standardUnitKey: f.q.standardUnitKey };
@@ -140,12 +143,22 @@ function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLa
   const manifestRef = { path: manifestPath, sha256: hash(fs.readFileSync(path.join(f.root, manifestPath))) };
   const sourceParityRef = { path: sourceParityPath, sha256: hash(fs.readFileSync(path.join(f.root, sourceParityPath))) };
   const parentLabelsRef = { path: parentLabelsPath, sha256: hash(fs.readFileSync(path.join(f.root, parentLabelsPath))) };
-  const evidenceRefs = [...f.evidenceRefs, auditPackageRef, manifestRef, sourceParityRef, parentLabelsRef];
+  let targetParentRef = null;
+  let targetParentEvidenceRef = null;
+  if (targetCanonicalParent) {
+    f.put(canonicalMasterPath, { records: [{ curriculum: f.request.items[0].after.curriculum, scope: f.request.items[0].after.courseKey,
+      majorUnit: f.q.standardUnit, midUnit: f.q.standardUnit }] });
+    targetParentRef = { path: canonicalMasterPath, curriculum: f.request.items[0].after.curriculum,
+      scope: f.request.items[0].after.courseKey, majorUnit: f.q.standardUnit, midUnit: f.q.standardUnit };
+    targetParentEvidenceRef = { path: canonicalMasterPath, sha256: hash(fs.readFileSync(path.join(f.root, canonicalMasterPath))) };
+  }
+  const evidenceRefs = [...f.evidenceRefs, auditPackageRef, manifestRef, sourceParityRef, parentLabelsRef,
+    ...(targetParentEvidenceRef ? [targetParentEvidenceRef] : [])];
   f.request.approval = { type: "META_PIPELINE_AUDIT", metadataReviewed: true, approvedBy: "META_PIPELINE_UNIFIED_AUTHOR", evidenceRefs,
     metaPipelineAudit: { schemaVersion: "meta-pipeline-audit-approval-v1", sourceFileDriveId, auditPackageRef, manifestRef, sourceParityRef, existingConceptReviews } };
   f.request.items = f.request.items.map(item => ({ ...item, before: { ...item.before, L1: null, L2: null },
-    after: { ...item.after, L1: f.q.standardUnit, L2: f.q.subUnit },
-    basicScopeParentRef: parentLabelsRef, evidenceRefs }));
+    after: { ...item.after, L1: targetParentRef?.majorUnit || f.q.standardUnit, L2: targetParentRef?.midUnit || f.q.subUnit },
+    ...(targetParentRef ? { targetParentRef } : { basicScopeParentRef: parentLabelsRef }), evidenceRefs }));
   return { audit, manifest, auditPackageRef, manifestRef };
 }
 
@@ -196,6 +209,22 @@ test("META_PIPELINE_AUDIT registers exact audited bindings without relabeling FI
   assert.equal(receipt.metaPipelineAudit.schemaVersion, "ALIVE_META_AUDIT_ATOMIC_v3");
 });
 
+test("META_PIPELINE_AUDIT accepts a canonical target parent when the exact master snapshot is evidence-bound", t => {
+  const f = fixture(t, "기하");
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true, targetCanonicalParent: true });
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.approvalType, "META_PIPELINE_AUDIT");
+  const row = f.read(META).records[0];
+  assert.equal(row.L1, "새 단원");
+  assert.equal(row.L2, "새 단원");
+
+  const unlinked = fixture(t, "기하");
+  attachMetaPipelineAudit(unlinked, { promoteCanonicalTypes: true, targetCanonicalParent: true });
+  const masterPath = unlinked.request.items[0].targetParentRef.path;
+  unlinked.request.approval.evidenceRefs = unlinked.request.approval.evidenceRefs.filter(ref => ref.path !== masterPath);
+  assert.throws(() => registerReviewedExamV2({ root: unlinked.root, request: unlinked.request, write: true }), /registration binding mismatch/);
+});
+
 test("META_PIPELINE_AUDIT permits audit/current Drive hash drift only with exact per-UID student parity", t => {
   const f = fixture(t);
   attachMetaPipelineAudit(f, { driveSourceHashDrift: true });
@@ -203,6 +232,14 @@ test("META_PIPELINE_AUDIT permits audit/current Drive hash drift only with exact
   const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json");
   assert.equal(receipt.metaPipelineAudit.sourceHashDrift, true);
   assert.equal(receipt.metaPipelineAudit.auditSourceSha256, f.read(receipt.approval.metaPipelineAudit.auditPackageRef.path).sourceSha256);
+});
+
+test("META_PIPELINE_AUDIT accepts exact full-source SHA parity when audit excerpts are summaries", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { exactSourceHashBasis: true });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.problemTypeKey, "PT_NEW");
 });
 
 test("META_PIPELINE_AUDIT promotes missing PT/TPL/CC definitions from audited UID evidence", t => {
