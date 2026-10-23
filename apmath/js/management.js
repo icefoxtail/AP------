@@ -291,8 +291,12 @@ async function handleAddClass() {
     }
 }
 
-function openEditClassModal(cid) {
-    setModalReturnView({ type: 'classManage' });
+function openEditClassModal(cid, options = {}) {
+    const returnTo = options.returnTo?.type === 'classDetail' &&
+        String(options.returnTo.classId || '') === String(cid)
+        ? { type: 'classDetail', classId: String(cid) }
+        : { type: 'classManage' };
+    setModalReturnView(returnTo);
     const c = (state.db.classes || []).find(x => String(x.id) === String(cid));
     if (!c) return toast('반 정보를 찾을 수 없습니다.', 'warn');
     const selectedDays = c.schedule_days ? String(c.schedule_days).split(',') : [];
@@ -319,10 +323,10 @@ function openEditClassModal(cid) {
             <input id="edit-cls-timelabel" class="btn" value="${mgmtEscape(c.time_label || '')}" placeholder="직접 입력 (예: 화.목 9:30~11:30)" style="text-align:left; background:var(--surface-2); border:none;">
             <button class="btn apms-button apms-button--quiet" style="margin-top:6px; min-height:42px; color:var(--error); background:rgba(var(--error-rgb),0.08); border:1px solid rgba(var(--error-rgb),0.16); font-weight:500;" onclick="handleDeleteClass('${c.id}')">반 보관</button>
         </div>
-    `, '저장', () => handleEditClass(cid));
+    `, '저장', () => handleEditClass(cid, returnTo));
 }
 
-async function handleEditClass(cid) {
+async function handleEditClass(cid, returnTo = { type: 'classManage' }) {
     const c = (state.db.classes || []).find(x => String(x.id) === String(cid));
     if (!c) return toast('반 정보를 찾을 수 없습니다.', 'warn');
     const name = document.getElementById('edit-cls-name')?.value.trim() || '';
@@ -341,7 +345,16 @@ async function handleEditClass(cid) {
         if (r?.success) {
             toast('반 정보가 수정되었습니다.', 'success');
             await loadData();
-            openClassManageModal();
+            if (returnTo?.type === 'classDetail' && String(returnTo.classId) === String(cid) &&
+                (typeof canCurrentUserAccessClass !== 'function' || canCurrentUserAccessClass(cid)) &&
+                (typeof isClassVisibleForCurrentTeacher !== 'function' ||
+                    isClassVisibleForCurrentTeacher((state.db.classes || []).find(row => String(row.id) === String(cid))))) {
+                closeModal(true);
+                if (typeof setManagementReturnView === 'function') setManagementReturnView(returnTo);
+                if (typeof renderClass === 'function') renderClass(cid);
+            } else {
+                openClassManageModal();
+            }
             return;
         }
         toast(r?.message || r?.error || '반 정보 수정에 실패했습니다.', 'error');

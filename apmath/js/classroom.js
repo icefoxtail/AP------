@@ -1904,6 +1904,77 @@ function switchClassroomClass(targetClassId) {
     return true;
 }
 
+// Class-scoped management actions reuse existing editors and timetable contracts.
+function openClassroomManagementAction(cid, action) {
+    const classId = String(cid || '');
+    const current = String(state.ui?.currentClassId || '');
+    if (!classId || classId !== current ||
+        !getClassroomSwitchableClasses(current).some(cls => String(cls.id) === classId)) {
+        toast('현재 반을 확인한 뒤 다시 시도해주세요.', 'warn');
+        return false;
+    }
+    const returnTo = { type: 'classDetail', classId };
+    const goBackToClass = () => {
+        if (typeof setManagementReturnView === 'function') setManagementReturnView(returnTo);
+        if (typeof setModalReturnView === 'function') setModalReturnView(returnTo);
+    };
+    switch (action) {
+        case 'edit':
+            if (typeof openEditClassModal !== 'function') return false;
+            goBackToClass();
+            openEditClassModal(classId, { returnTo });
+            return true;
+        case 'addStudent':
+            if (typeof openAddStudent !== 'function') return false;
+            goBackToClass();
+            openAddStudent(classId, { returnTo });
+            return true;
+        case 'moveStudent':
+            return openClassroomStudentMovePicker(classId);
+        case 'timetable':
+            if (typeof renderTimetable !== 'function' && typeof openLiveTimetable !== 'function') return false;
+            if (!state.ui) state.ui = {};
+            state.ui.classroomTimetableReturnClassId = classId;
+            if (typeof setManagementReturnView === 'function') setManagementReturnView(returnTo);
+            if (typeof openLiveTimetable === 'function') openLiveTimetable();
+            else renderTimetable();
+            return true;
+        default:
+            return false;
+    }
+}
+
+function openClassroomStudentMovePicker(cid) {
+    const classId = String(cid || '');
+    if (String(state.ui?.currentClassId || '') !== classId) return false;
+    const students = getClassroomActiveStudents(classId);
+    if (typeof openEditStudent !== 'function') {
+        toast('학생 수정 기능을 불러오지 못했습니다.', 'warn');
+        return false;
+    }
+    const returnTo = { type: 'classDetail', classId };
+    if (typeof setManagementReturnView === 'function') setManagementReturnView(returnTo);
+    if (typeof setModalReturnView === 'function') setModalReturnView(returnTo);
+    showModal('학생 이동', `<div class="ap-classroom-move-picker">
+        <p>학생을 선택한 다음 기본정보의 반을 변경하고 저장하세요. 기존 학생 수정 경로를 사용합니다.</p>
+        ${students.length ? students.map(student => `<button type="button" class="ap-classroom-move-student" onclick="openEditStudent(${classProgressJsArg(student.id)}, { returnTo: { type: 'classDetail', classId: ${classProgressJsArg(classId)} } })">${apEscapeHtml(student.name || '학생')}</button>`).join('') : '<p>이 반에 재원생이 없습니다.</p>'}
+    </div>`);
+    return true;
+}
+
+function renderClassroomManagementToolbar(cid) {
+    const classArg = classProgressJsArg(cid);
+    const actions = [
+        ['edit', '반 설정'],
+        ['addStudent', '학생 추가'],
+        ['moveStudent', '학생 이동'],
+        ['timetable', '시간표']
+    ];
+    return `<div class="ap-classroom-management-actions" role="group" aria-label="반 운영 관리">
+        ${actions.map(([action, label]) => `<button type="button" class="ap-classroom-management-action" onclick="openClassroomManagementAction(${classArg}, '${action}')">${label}</button>`).join('')}
+    </div>`;
+}
+
 // [Classroom v4-B]: 안정형 현장 운영판
 function renderClass(cid, options = {}) {
     injectClassroomStyles();
@@ -1930,6 +2001,7 @@ function renderClass(cid, options = {}) {
     const workspaceHtml = `
         ${renderClassTopBarV4B(cls, summary, today)}
         ${renderClassToolBarV4B(cid, plannerEnabled, today)}
+        ${renderClassroomManagementToolbar(cid)}
         <div class="cls-v4-section ap-classroom-section">
             <h3 class="apms-section-title">학생 명단</h3>
         </div>

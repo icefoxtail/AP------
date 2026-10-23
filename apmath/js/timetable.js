@@ -3923,6 +3923,24 @@ async function openLiveTimetable() {
 
 if (typeof window !== 'undefined') window.openLiveTimetable = openLiveTimetable;
 
+// Explicitly return to the originating classroom, without discarding the live
+// timetable's own drag/drop, version and conflict-check workflows.
+function returnToClassroomFromTimetable() {
+    const classId = String(state.ui?.classroomTimetableReturnClassId || '');
+    if (!classId || typeof renderClass !== 'function') return false;
+    const cls = (state.db?.classes || []).find(row => String(row.id) === classId);
+    if (!cls || Number(cls.is_active) === 0 ||
+        (typeof canCurrentUserAccessClass === 'function' && !canCurrentUserAccessClass(classId))) {
+        if (state.ui) state.ui.classroomTimetableReturnClassId = '';
+        toast('현재 반으로 복귀할 수 없습니다.', 'warn');
+        return false;
+    }
+    state.ui.classroomTimetableReturnClassId = '';
+    if (typeof leaveTimetableWideMode === 'function') leaveTimetableWideMode();
+    renderClass(classId);
+    return true;
+}
+
 function renderTimetable() {
     var root = document.getElementById('app-root');
     if (!root) return;
@@ -3956,6 +3974,9 @@ function renderTimetable() {
     root.innerHTML =
         '<div id="timetable-root" style="width:100%; padding:0; box-sizing:border-box;">' +
             '<div style="display:flex; align-items:center; gap:10px; padding:8px 0 12px;">' +
+                (state.ui?.classroomTimetableReturnClassId
+                    ? '<button type="button" class="tt-classroom-return" onclick="returnToClassroomFromTimetable()">← 반 관리로</button>'
+                    : '') +
                 '<div class="tt-page-title">' + apEscapeHtml(title) + '</div>' +
                 apTimetableMonthControlsHtml() +
             '</div>' +
