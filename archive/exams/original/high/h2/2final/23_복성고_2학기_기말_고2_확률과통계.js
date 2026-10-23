@@ -145,7 +145,7 @@ window.questionBank = [
     "sourcePage": 1,
     "sourceDisplayNoLabel": "4",
     "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
-    "subUnit": "conditional probability",
+    "subUnit": "조건부확률",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -218,8 +218,8 @@ window.questionBank = [
     "sourcePdf": "2023_복성고2_확통_2기말.pdf",
     "sourcePage": 1,
     "sourceDisplayNoLabel": "6",
-    "subUnitKey": "H15-PS-01-COMBINATION",
-    "subUnit": "조합",
+    "subUnitKey": "H15-PS-01-PERMUTATION",
+    "subUnit": "순열",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -256,7 +256,7 @@ window.questionBank = [
     "sourcePage": 1,
     "sourceDisplayNoLabel": "7",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -296,7 +296,7 @@ window.questionBank = [
     "sourcePage": 1,
     "sourceDisplayNoLabel": "8",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -336,7 +336,7 @@ window.questionBank = [
     "sourcePage": 2,
     "sourceDisplayNoLabel": "9",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -373,7 +373,7 @@ window.questionBank = [
     "sourcePage": 2,
     "sourceDisplayNoLabel": "10",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -410,7 +410,7 @@ window.questionBank = [
     "sourcePage": 2,
     "sourceDisplayNoLabel": "11",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -447,7 +447,7 @@ window.questionBank = [
     "sourcePage": 2,
     "sourceDisplayNoLabel": "12",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -561,7 +561,7 @@ window.questionBank = [
     "sourcePage": 2,
     "sourceDisplayNoLabel": "15",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
@@ -675,7 +675,7 @@ window.questionBank = [
     "sourcePage": 3,
     "sourceDisplayNoLabel": "18",
     "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
-    "subUnit": "statistical estimation",
+    "subUnit": "통계적 추정",
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category"
   },
