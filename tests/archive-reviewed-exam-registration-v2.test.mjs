@@ -45,11 +45,11 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   const base = `${CANON}/packs/new-course`;
   change(`${CANON}/registry_index.json`, "activePacks", { id: "NEW_COURSE" }, null, { id: "NEW_COURSE", version: "1.0.0", status: "ACTIVE" });
   change(`${base}/pack.json`, null, null, null, { schemaVersion: "meta-foundation-pack-v1", packId: "NEW_COURSE", packVersion: "1.0.0", canonicalStatus: "ACTIVE", curricula: [curriculum], standardCourses: [course] });
-  change(`${base}/taxonomy.json`, null, null, null, { status: "ACTIVE", problemTypes: [{ problemTypeKey: "PT_NEW", canonicalLabelKo: "새 유형", definition: "검수된 유형 의미", ownerPack: "NEW_COURSE", status: "ACTIVE" }], templates: [{ templateKey: "TPL_NEW", canonicalLabelKo: "새 풀이 구조", definition: "검수된 풀이 구조", parentProblemTypeKey: "PT_NEW", status: "ACTIVE" }] });
+  change(`${base}/taxonomy.json`, null, null, null, { status: "ACTIVE", problemTypes: [{ problemTypeKey: "PT_NEW", canonicalLabelKo: "새 유형", definition: "검수된 유형 의미", ownerPack: "NEW_COURSE", status: "ACTIVE", sourceUnit: "UNIT_NEW", supportingQuestionUids: ["uid1"], supportingItemCount: 1 }], templates: [{ templateKey: "TPL_NEW", canonicalLabelKo: "새 풀이 구조", definition: "검수된 풀이 구조", parentProblemTypeKey: "PT_NEW", status: "ACTIVE", sourceUnit: "UNIT_NEW", supportingQuestionUids: ["uid1"], supportingItemCount: 1 }] });
   change(`${base}/bindings.json`, null, null, null, { status: "ACTIVE", bindings: [{ curriculum, standardCourse: course, standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW", problemTypeKey: "PT_NEW", status: "ACTIVE" }] });
   change(`${base}/aliases.json`, null, null, null, { aliases: [] });
   change(`${CANON}/registry_index.json`, "activeConceptShards", { id: "NEW_CONCEPTS" }, null, { id: "NEW_CONCEPTS", version: "1.0.0", status: "ACTIVE" });
-  change(`${CANON}/concepts/new-concepts.json`, null, null, null, { shardId: "NEW_CONCEPTS", shardVersion: "1.0.0", concepts: [{ conceptKey: "CC_NEW", canonicalLabelKo: "새 추가 개념", definition: "추가 개념 근거", status: "ACTIVE" }] });
+  change(`${CANON}/concepts/new-concepts.json`, null, null, null, { shardId: "NEW_CONCEPTS", shardVersion: "1.0.0", concepts: [{ conceptKey: "CC_NEW", canonicalLabelKo: "새 추가 개념", definition: "추가 개념 근거", supportingQuestionUids: ["uid1"], supportingItemCount: 1, status: "ACTIVE" }] });
   change(`${CANON}/condition_registry.json`, "conditions", { conditionKey: "COND_NEW" }, null, { conditionKey: "COND_NEW", canonicalLabelKo: "새 조건", definition: "조건 근거", status: "ACTIVE" });
   for (const row of [{ key: "UNIT_NEW", keyType: "standardUnitKey", labelKo: "새 단원", status: "active" }, { key: "SUB_NEW", keyType: "subUnitKey", parentKey: "UNIT_NEW", standardUnitKey: "UNIT_NEW", labelKo: "새 세부단원", status: "active" }]) change("archive/data/master_tables/js_archive_tag_master.json", "$", { key: row.key }, null, row);
   const after = { ...Object.fromEntries(Object.entries(q).filter(([k]) => !["id", "content", "choices", "answer", "solution", "image"].includes(k))), curriculum, curriculumKey: curriculum, courseKey: course, rpmSemanticStatus: "FINAL", rpmL3: "reviewed-rpm-l3", rpmL4: "reviewed-rpm-l4" };
@@ -59,11 +59,12 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   return { root, put, read, request, q, evidenceRefs, change };
 }
 
-function attachMetaPipelineAudit(f, { existingConcept = false, siblingParent = false } = {}) {
+function attachMetaPipelineAudit(f, { existingConcept = false, siblingParent = false, promoteCanonicalTypes = false } = {}) {
   const conceptChange = f.request.registryChanges.find(change => change.path.startsWith(`${CANON}/concepts/`));
   const pendingRegistryChanges = [];
   for (const change of f.request.registryChanges) {
     if (!existingConcept && (change === conceptChange || change.collection === "activeConceptShards")) { pendingRegistryChanges.push(change); continue; }
+    if (promoteCanonicalTypes) { pendingRegistryChanges.push(change); continue; }
     const full = path.join(f.root, change.path);
     if (!change.collection) { fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, j(change.after)); continue; }
     const doc = JSON.parse(fs.readFileSync(full, "utf8"));
@@ -188,6 +189,39 @@ test("META_PIPELINE_AUDIT registers exact audited bindings without relabeling FI
   assert.equal(receipt.approval.type, "META_PIPELINE_AUDIT");
   assert.equal(receipt.examFinalQaStatus, "NOT_EVALUATED_BY_REGISTRAR");
   assert.equal(receipt.metaPipelineAudit.schemaVersion, "ALIVE_META_AUDIT_ATOMIC_v3");
+});
+
+test("META_PIPELINE_AUDIT promotes missing PT/TPL/CC definitions from audited UID evidence", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.approvalType, "META_PIPELINE_AUDIT");
+  assert.equal(result.registryChangeCount, f.request.registryChanges.length);
+  const taxonomy = f.read(`${CANON}/packs/new-course/taxonomy.json`);
+  assert.equal(taxonomy.problemTypes[0].problemTypeKey, "PT_NEW");
+  assert.equal(taxonomy.templates[0].templateKey, "TPL_NEW");
+  assert.deepEqual(taxonomy.problemTypes[0].supportingQuestionUids, ["uid1"]);
+  assert.deepEqual(taxonomy.templates[0].supportingQuestionUids, ["uid1"]);
+  assert.equal(f.read(`${CANON}/concepts/new-concepts.json`).concepts[0].conceptKey, "CC_NEW");
+  assert.equal(f.read(META).records[0].problemTypeKey, "PT_NEW");
+  assert.equal(f.read(META).records[0].templateKey, "TPL_NEW");
+});
+
+test("META_PIPELINE_AUDIT rejects an unbound PT/TPL registry addition", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });
+  const taxonomy = f.request.registryChanges.find(change => change.path.endsWith("taxonomy.json")).after;
+  taxonomy.problemTypes.push({ problemTypeKey: "PT_UNUSED", canonicalLabelKo: "미사용 유형", definition: "시험지에서 승인되지 않은 유형",
+    ownerPack: "NEW_COURSE", status: "ACTIVE", supportingQuestionUids: ["uid1"], supportingItemCount: 1 });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /promotions must exactly match missing audited keys/);
+});
+
+test("META_PIPELINE_AUDIT requires exact supporting UIDs for a new TPL", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });
+  const taxonomy = f.request.registryChanges.find(change => change.path.endsWith("taxonomy.json")).after;
+  taxonomy.templates[0].supportingQuestionUids = [];
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /TPL promotion support mismatch/);
 });
 
 test("META_PIPELINE_AUDIT materializes explicitly pending source metadata placeholders", t => {
