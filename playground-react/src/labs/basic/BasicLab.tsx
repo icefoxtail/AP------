@@ -86,16 +86,16 @@ export default function BasicLab({id}:{id:BasicId}){
             {id==='basic-circle-area'&&mode==='area'&&<circle cx="210" cy="166" r="112" fill="#bcebd7" fillOpacity=".12" stroke="#7cb69a" strokeDasharray="6 5" strokeWidth="2"/>}
             {id==='basic-circle-area'&&mode==='area'&&Array.from({length:12},(_,i)=>{const cx=210,cy=166,R=112,N=12,step=360/N,start=i*step-90,end=start+step,mid=start+step/2,top=i<N/2,idx=top?i:i-N/2,rectW=Math.PI*R,slotW=rectW/(N/2),tx=cx-rectW/2+idx*slotW+(top?slotW/2:0),ty=cy+(top?R/2:-R/2);let delta=(top?-90:90)-mid;while(delta>180)delta-=360;while(delta< -180)delta+=360;const x=cx+(tx-cx)*progress,y=cy+(ty-cy)*progress,rotation=delta*progress;return <g key={i} transform={`translate(${x-cx} ${y-cy}) rotate(${rotation} ${cx} ${cy})`} data-basic-piece><path d={slicePath(cx,cy,R,start,end)} fill={top?'#91d9be':'#f2c78b'} fillOpacity=".78" stroke="#fff" strokeWidth="2"/></g>})}
             {usesAngle(id)&&<>
-              <line x1="210" y1="166" x2="322" y2="166" stroke="#64748b" strokeWidth="2"/>
+              <line x1="210" y1="166" x2="210" y2="54" stroke="#64748b" strokeWidth="2"/>
               <line x1="210" y1="166" x2={210+112*Math.cos((theta-90)*Math.PI/180)} y2={166+112*Math.sin((theta-90)*Math.PI/180)} stroke="#64748b" strokeWidth="2"/>
               <text x="220" y="158" className="diagram-note">{theta}°</text>
               <circle className="angle-handle" cx={210+112*Math.cos((theta-90)*Math.PI/180)} cy={166+112*Math.sin((theta-90)*Math.PI/180)} r="12" fill="#f7bf40" stroke="#7c5a1f" strokeWidth="2" role="slider" tabIndex={0} aria-label="중심각 끝점 드래그" aria-valuemin={15} aria-valuemax={330} aria-valuenow={theta} onPointerDown={e=>{dragPointer.current=e.pointerId;e.currentTarget.setPointerCapture(e.pointerId);updateAngleFromPointer(e.clientX,e.clientY)}} onKeyDown={e=>{if(e.key==='ArrowRight'||e.key==='ArrowUp'){e.preventDefault();setTheta(Math.min(330,theta+5))}else if(e.key==='ArrowLeft'||e.key==='ArrowDown'){e.preventDefault();setTheta(Math.max(15,theta-5))}}}/>
             </>}
             {id==='basic-circumference'?<><circle cx="210" cy="166" r="112" fill="none" stroke={mode==='line'?'#2563eb':'#64748b'} strokeWidth={mode==='line'?7:3} strokeDasharray={mode==='line'?`${2*Math.PI*112}`:undefined} strokeDashoffset={mode==='line'?`${2*Math.PI*112*(1-progress)}`:undefined} data-basic-boundary/>{mode==='line'&&<circle cx={210+112*Math.cos((-90+360*progress)*Math.PI/180)} cy={166+112*Math.sin((-90+360*progress)*Math.PI/180)} r="7" fill="#e56b36"/>}</>:
               usesAngle(id)&&<path d={sectorArc(210,166,112,mode==='line'?Math.max(.01,theta*progress):theta)} fill="none" stroke="#e56b36" strokeWidth={mode==='line'?7:4} strokeLinecap="round" data-basic-boundary/>}
-            {id==='basic-sector-perimeter'&&<><line x1="210" y1="166" x2={210+112*progress} y2="166" stroke="#e56b36" strokeWidth="6"/><line x1="210" y1="166" x2={210+112*Math.cos((theta-90)*Math.PI/180)*progress} y2={166+112*Math.sin((theta-90)*Math.PI/180)*progress} stroke="#e56b36" strokeWidth="6"/></>}
-            <line x1="210" y1="166" x2="322" y2="166" stroke="#334155" strokeWidth="2" strokeDasharray="5 4"/>
-            <text x="264" y="187" className="diagram-value">r = {r} cm</text>
+            {id==='basic-sector-perimeter'&&<><line x1="210" y1="166" x2="210" y2={166-112*progress} stroke="#e56b36" strokeWidth="6"/><line x1="210" y1="166" x2={210+112*Math.cos((theta-90)*Math.PI/180)*progress} y2={166+112*Math.sin((theta-90)*Math.PI/180)*progress} stroke="#e56b36" strokeWidth="6"/></>}
+            <line x1="210" y1="166" x2="210" y2="54" stroke="#334155" strokeWidth="2" strokeDasharray="5 4"/>
+            <text x="216" y="108" className="diagram-value">r = {r} cm</text>
             <text x="210" y="320" textAnchor="middle" className="diagram-note">π는 원주율 · 그림의 크기와 수식이 같은 값에 연결됩니다</text>
           </svg>
         </div>
