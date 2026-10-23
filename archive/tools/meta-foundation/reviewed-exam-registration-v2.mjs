@@ -198,7 +198,9 @@ function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, regist
       const row = item.after || {};
       const curriculum = row.curriculum || row.curriculumKey;
       const course = row.standardCourse || row.courseKey;
-      return !pack.meta.curricula.includes(curriculum) || !pack.meta.standardCourses.includes(course);
+      const domains = pack.meta.ownedStandardUnitDomains || [];
+      return !pack.meta.curricula.includes(curriculum) || !pack.meta.standardCourses.includes(course) ||
+        domains.length > 0 && !domains.includes(row.standardUnitKey);
     })) fail(`META_PIPELINE_AUDIT ${kind} promotion outside owner pack scope: ${key}`);
   };
 
@@ -343,6 +345,13 @@ function registryPlan(root, changes, verifyEvidence) {
       taxonomy.templateCount = taxonomy.templates.length;
       bindings.bindingCount = bindings.bindings.length;
       Object.assign(meta, { problemTypeCount: taxonomy.problemTypes.length, templateCount: taxonomy.templates.length, bindingCount: bindings.bindings.length, aliasCount: aliases.aliases.length });
+      const addedBindingDomains = changes
+        .filter(change => change.path === `${base}/bindings.json` && change.collection === "bindings" && change.before === null && change.after?.status === "ACTIVE")
+        .map(change => change.after.standardUnitKey)
+        .filter(Boolean);
+      if (addedBindingDomains.length) {
+        meta.ownedStandardUnitDomains = [...new Set([...(meta.ownedStandardUnitDomains || []), ...addedBindingDomains])].sort();
+      }
       const old = original.get(`${base}/pack.json`);
       if (old && meta.packVersion === old.packVersion) meta.packVersion = bump(old.packVersion);
     }
