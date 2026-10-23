@@ -1,4 +1,4 @@
-import { useId, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { PracticeId, PracticeParams } from './catalog';
 
 type Mode='original'|'line'|'area';
@@ -34,7 +34,6 @@ function pieceShape(kind:PieceSpec['kind']){
 }
 
 export default function PracticeCanvas({id,variant,p,mode,progress=1}:{id:PracticeId;variant:string;p:PracticeParams;mode:Mode;progress?:number}){
-  const clipId=`lens-clip-${useId().replace(/:/g,'')}`;
   const cx=210,cy=160,hot=mode==='line',area=mode==='area';
   let drawing:ReactNode;
   if(id==='arc'||id==='sector'){
