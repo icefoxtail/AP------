@@ -48,6 +48,15 @@ assert.equal(snowman.inner.reduce((sum,d)=>sum+d,0),12,'세 작은 원 지름 �
 const check=(id,variant,p)=>practice.calculation(id,variant,p);
 assert.equal(check('arc','arc-parallel',{r:6,theta:120}).boundary,'4π cm');
 assert.equal(check('sector','sector-eighty',{r:6,theta:80}).area,'8π cm²');
+assert.equal(check('sector','sector-eighty',{r:6,theta:80}).perimeter,'8π/3 + 12 cm','실전 부채꼴 둘레는 π 호 길이와 반지름 2개');
+assert.equal(check('sector','sector-eighty',{r:6,theta:120}).perimeter,basic.basicFormula('basic-sector-perimeter',6,120).value,'기초/실전 동일 도형 둘레 일치');
+assert.equal(check('boundary','boundary-ring',{R:8,r:4,theta:90}).perimeter,'6π + 8 cm','고리형 직선·안팎 원호');
+assert.equal(check('boundary','boundary-ring',{R:8,r:4,theta:90}).area,'12π cm²','고리형 넓이 원주율 유지');
+assert.equal(check('spinarea','spinarea-narrow',{r:3,w:3,theta:60}).perimeter,'3π + 6 cm','회전 띠 경계');
+assert.equal(check('spinarea','spinarea-narrow',{r:3,w:3,theta:60}).area,'9π/2 cm²','회전 띠 정확한 분수');
+assert.equal(check('overlap','overlap-lens',{r:6}).perimeter,'6π cm','두 90° 원호 경계');
+assert.equal(check('overlap','overlap-lens',{r:6}).area,'18π − 36 cm²','사분원 둘에서 정사각형 빼기');
+assert.ok(!check('overlap','overlap-lens',{r:6}).formula.includes('cos^{-1}'),'중1 교육과정 밖 일반 렌즈 역삼각함수 금지');
 assert.equal(check('boundary','boundary-squarecut',{s:8}).perimeter,'24 + 4π cm');
 assert.equal(check('boundary','boundary-squarecut',{s:8}).area,'64 − 8π cm²');
 assert.equal(check('boundary','boundary-track',{s:8}).perimeter,'8π + 16 cm');
