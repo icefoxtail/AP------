@@ -246,24 +246,30 @@ function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, regist
   for (const [key, definition] of audited) {
     const before = beforeTables.cc.get(key), after = afterTables.cc.get(key);
     const candidate = before || added.get(key);
-    if (!after || !candidate || candidate.canonicalLabelKo !== definition.labelKo)
-      fail(`META_PIPELINE_AUDIT CrossConcept canonical label mismatch: ${key}`);
+    if (!after || !candidate) fail(`META_PIPELINE_AUDIT CrossConcept canonical definition missing: ${key}`);
     if (before) {
       if (!eq(before, after)) fail(`META_PIPELINE_AUDIT cannot revise existing CrossConcept: ${key}`);
-      if (candidate.definition !== definition.definition) {
+      const labelDiffers = candidate.canonicalLabelKo !== definition.labelKo;
+      const definitionDiffers = candidate.definition !== definition.definition;
+      if (labelDiffers || definitionDiffers) {
         const review = existingConceptReviews.get(key);
         if (!review || review.disposition !== "REUSE_CANONICAL" || review.canonicalLabelKo !== candidate.canonicalLabelKo ||
             review.canonicalDefinition !== candidate.definition || review.auditLabelKo !== definition.labelKo ||
             review.auditDefinition !== definition.definition || !requireText(review.rationale, `META_PIPELINE_AUDIT existing CC rationale ${key}`))
-          fail(`META_PIPELINE_AUDIT existing CrossConcept meaning review required: ${key}`);
+          fail(`META_PIPELINE_AUDIT existing CrossConcept wording review required: ${key}`);
       }
     } else {
+      if (candidate.canonicalLabelKo !== definition.labelKo)
+        fail(`META_PIPELINE_AUDIT new CrossConcept label mismatch: ${key}`);
       if (candidate.definition !== definition.definition) fail(`META_PIPELINE_AUDIT new CrossConcept definition mismatch: ${key}`);
       validateSupportingEvidence(candidate, key, "CrossConcept", uses.concepts.get(key) || []);
     }
   }
-  const expectedReviews = [...audited].filter(([key, definition]) => beforeTables.cc.has(key) && beforeTables.cc.get(key).definition !== definition.definition).map(([key]) => key).sort();
-  if (!eq([...existingConceptReviews.keys()].sort(), expectedReviews)) fail("META_PIPELINE_AUDIT existing CrossConcept reviews do not match definition differences");
+  const expectedReviews = [...audited].filter(([key, definition]) => {
+    const before = beforeTables.cc.get(key);
+    return before && (before.canonicalLabelKo !== definition.labelKo || before.definition !== definition.definition);
+  }).map(([key]) => key).sort();
+  if (!eq([...existingConceptReviews.keys()].sort(), expectedReviews)) fail("META_PIPELINE_AUDIT existing CrossConcept reviews do not match wording differences");
   const expectedAdditions = [...audited.keys()].filter(key => !beforeTables.cc.has(key)).sort();
   if (!eq([...added.keys()].sort(), expectedAdditions)) fail("META_PIPELINE_AUDIT CrossConcept additions do not exactly match the audited definitions");
 }
