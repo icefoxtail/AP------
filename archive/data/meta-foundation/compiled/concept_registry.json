@@ -56,9 +56,14 @@
       "shardId": "MIDDLE1",
       "version": "1.0.0",
       "conceptCount": 3
+    },
+    {
+      "shardId": "STATISTICS_CONCEPTS",
+      "version": "1.0.0",
+      "conceptCount": 7
     }
   ],
-  "conceptCount": 92,
+  "conceptCount": 99,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -4176,6 +4181,101 @@
         "2015:중1 수학:M1-01"
       ],
       "ownerConceptShard": "MIDDLE1"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_DISTRIBUTION",
+      "canonicalLabelKo": "이항분포",
+      "definition": "독립시행의 성공 횟수를 확률변수로 하는 분포 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f7a5214297e71800c52bfd25e179467347a074768b7186dcf44f27f93d2feb84",
+        "qid_v1_36fa0519251b2e71e8b7c9896035f43a94b4940fd271cb9a6895fcd956458b12",
+        "qid_v1_ea8f2ee72148ebc6c70800c9e3ea5fdd1402469af6bacac2dbf52b480820d640",
+        "qid_v1_b07b8a8305473bbd886137e6fd06012843e1d8389a3af98b2cf8f3824a80c530"
+      ],
+      "supportingItemCount": 4,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_CONDITIONAL_PROBABILITY",
+      "canonicalLabelKo": "조건부확률",
+      "definition": "사건 B가 일어났을 때 사건 A가 일어날 확률 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_e882e3659f48fe8c15de82824380b4cffb825583966ac2d522ef90a7e6035cb8"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_CONFIDENCE_INTERVAL",
+      "canonicalLabelKo": "신뢰구간",
+      "definition": "표본평균으로부터 모평균을 일정 신뢰도로 추정하는 구간 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_7540a322462ba13c1fc63fdcf5340fd8f68a4e6c5d5cea511466ff813baacccf",
+        "qid_v1_f628a0336d33a33f8cb2e9cefad4734794bd9ee832dff5104ba1cb21562775b1",
+        "qid_v1_7c60827a9aeb89cfa0aba4237478e567931d1ae81ffbfd6a0f094f67b7f866ec",
+        "qid_v1_7bcdfc73f20998b5f07f4d31accd17c028d2ffcfd12f152d469c3a0bb4ff96a5",
+        "qid_v1_8bf38e90143eb1179fa3f43ad3f2b1179ab911192cb73bf89ceb179b6303ab72",
+        "qid_v1_376f6ac11fe5dea00aa865c7d2d3b811b2228bcd35f3572b8c499f61ea55bbc9",
+        "qid_v1_a3aca28c6b105ac1c50cfdfbbb91450ae7b5d112c6f44bc7f548dbff6abac22c"
+      ],
+      "supportingItemCount": 7,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_CONTINUOUS_RANDOM_VARIABLE",
+      "canonicalLabelKo": "연속확률변수",
+      "definition": "어떤 구간의 모든 실수값을 취하는 확률변수 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_0ebdd6fe9d84dfdabe028b65497f690deedcc09247bf6ab3ca6dc357d755c9d1",
+        "qid_v1_9dcd80adce68a170ca96318e118e8283867783d6d2e167151d908aea3d5b4cc2"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_DISCRETE_RANDOM_VARIABLE",
+      "canonicalLabelKo": "이산확률변수",
+      "definition": "셀 수 있는 유한 개 또는 자연수 값을 취하는 확률변수 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_d43a05e8d1c39d074550ff25a6cf9bf796d47ef5f4407d05bd344795cfb1daaf",
+        "qid_v1_62e2e95ede4430ebeb285e269ddfae40916f8c1834dec296c47305365a16fab7"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_NORMAL_DISTRIBUTION",
+      "canonicalLabelKo": "정규분포",
+      "definition": "평균과 표준편차에 의해 결정되는 대칭형 연속확률분포 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_cb6b07fe83036aa7f16ef3d95fffbb2ec25048c53e4df671a1764a59678b64d1",
+        "qid_v1_53a7ed535e95213d28934823655d092c364edad376dcfc157b66ae378726908b",
+        "qid_v1_2f4280db7d121afd06d42cd4ff122068cb6301d1ab3193a780de851bfc85275a",
+        "qid_v1_82e464b32bee49a105b35a15998798363ca1a2f3a97f52f4b3fe70150975d2a7",
+        "qid_v1_ea8f2ee72148ebc6c70800c9e3ea5fdd1402469af6bacac2dbf52b480820d640",
+        "qid_v1_b07b8a8305473bbd886137e6fd06012843e1d8389a3af98b2cf8f3824a80c530"
+      ],
+      "supportingItemCount": 6,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_SAMPLE_MEAN",
+      "canonicalLabelKo": "표본평균",
+      "definition": "모집단에서 추출한 표본들의 평균 변수 및 그 분포 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_7a1c21588a95b983155eccaf0aa1487a4f44c875a0188c8c4e4bf885c9c4d87c",
+        "qid_v1_472415aa863ddfc10f689fc23baf7bf4bdcc8f6f9adcec46a9e37c5d24434799",
+        "qid_v1_09540ac4e65c0dae328f72fac94c3a58fa2a19cbb20fa5b9f648075ade4fff46"
+      ],
+      "supportingItemCount": 3,
+      "status": "ACTIVE"
     }
   ]
 }

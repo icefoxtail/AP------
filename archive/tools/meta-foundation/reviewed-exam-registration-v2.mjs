@@ -121,10 +121,13 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
         parityRow.driveStudentPayloadSha256 !== actualPayloadHash || parityRow.productionStudentPayloadSha256 !== actualPayloadHash ||
         parityRow.studentPayloadEqual !== true) fail(`META_PIPELINE_AUDIT student source parity mismatch: ${ordinal}`);
     const after = patch?.after || {};
+    const parentRef = patch?.basicScopeParentRef;
+    const parentEvidenceLinked = (patch?.evidenceRefs || []).some(ref => ref.path === parentRef?.path && ref.sha256 === parentRef?.sha256);
     if (!patch || patch.questionId !== undefined && patch.questionId !== ordinal ||
         after.standardUnitKey !== record.standardUnitKey || after.subUnitKey !== record.subUnitKey ||
         after.problemTypeKey !== classification.problemTypeKey || after.templateKey !== classification.templateKey ||
-        !eq(after.crossConceptKeys, classification.crossConceptKeys) || !eq(after.conditionKeys, classification.conditionKeys || []))
+        !eq(after.crossConceptKeys, classification.crossConceptKeys) || !eq(after.conditionKeys, classification.conditionKeys || []) ||
+        !parentRef || !/^[a-f0-9]{64}$/.test(parentRef.sha256 || "") || !parentEvidenceLinked)
       fail(`META_PIPELINE_AUDIT registration binding mismatch: ${ordinal}`);
   }
   if (!Array.isArray(audit.boundAtomicCrossConcepts)) fail("META_PIPELINE_AUDIT CrossConcept definitions required");
@@ -341,6 +344,38 @@ function resolve(row, tables) {
 
 function labelsFor(patch, row, resolved, read, sourceBlob) {
   const base = { L1: resolved.binding.L1 || resolved.unit.labelKo, L2: resolved.binding.L2 || resolved.sub?.labelKo || "", L3: resolved.pt.canonicalLabelKo, L4: resolved.tpl.canonicalLabelKo };
+  if (patch.basicScopeParentRef) {
+    if (patch.targetParentRef) fail("basic and RPM target parent references cannot be combined");
+    const ref = patch.basicScopeParentRef;
+    if (!/^archive\/data\/meta-foundation\/evidence\/reviewed-exam-meta\/v1\/.+\.parent-labels\.json$/.test(ref.path || "") ||
+        !(patch.evidenceRefs || []).some(e => e.path === ref.path && e.sha256 === ref.sha256)) fail("basic scope parent reference is not evidence-bound");
+    const proof = read(ref.path);
+    if (proof.schemaVersion !== "archive-meta-pipeline-parent-label-evidence-v1" ||
+        proof.sourcePath !== "archive/data/basic-scope-parent-links.json" || !/^[a-f0-9]{64}$/.test(proof.sourceSha256 || ""))
+      fail("basic scope parent evidence schema/source mismatch");
+    const compactCourse = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
+    const matches = (proof.records || []).filter(parent => parent.curriculumKey === resolved.curriculum &&
+      compactCourse(parent.courseKey) === compactCourse(resolved.course) && parent.standardUnitKey === row.standardUnitKey && (parent.subUnitKey ?? null) === (row.subUnitKey ?? null));
+    let parent = matches.length === 1 ? matches[0] : null;
+    if (!parent && matches.length === 0) {
+      const derived = (proof.derivedRecords || []).filter(candidate => candidate.curriculumKey === resolved.curriculum &&
+        compactCourse(candidate.courseKey) === compactCourse(resolved.course) && candidate.standardUnitKey === row.standardUnitKey &&
+        candidate.subUnitKey === (row.subUnitKey ?? null));
+      if (derived.length !== 1 || derived[0].method !== "SAME_STANDARD_UNIT_SIBLING_PARENT_CONSENSUS" ||
+          !Array.isArray(derived[0].supportingSubUnitKeys) || derived[0].supportingSubUnitKeys.length < 2) fail(`basic scope parent evidence missing/ambiguous: ${row.questionUid}`);
+      const supportKeys = new Set(derived[0].supportingSubUnitKeys);
+      const support = (proof.records || []).filter(candidate => candidate.curriculumKey === resolved.curriculum &&
+        compactCourse(candidate.courseKey) === compactCourse(resolved.course) && candidate.standardUnitKey === row.standardUnitKey &&
+        supportKeys.has(candidate.subUnitKey) && candidate.subUnitKey !== row.subUnitKey);
+      if (support.length !== supportKeys.size || new Set(support.map(candidate => candidate.L1)).size !== 1 ||
+          new Set(support.map(candidate => candidate.L2)).size !== 1 || support[0].L1 !== derived[0].L1 || support[0].L2 !== derived[0].L2)
+        fail(`basic scope sibling parent evidence is inconsistent: ${row.questionUid}`);
+      parent = derived[0];
+    }
+    if (!parent) fail(`basic scope parent evidence missing/ambiguous: ${row.questionUid}`);
+    base.L1 = requireText(parent.L1, "basic-scope L1");
+    base.L2 = requireText(parent.L2, "basic-scope L2");
+  }
   const withTargetParent = labels => {
     if (!patch.targetParentRef) return labels;
     const ref = patch.targetParentRef;

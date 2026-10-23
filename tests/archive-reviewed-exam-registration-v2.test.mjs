@@ -59,7 +59,7 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   return { root, put, read, request, q, evidenceRefs, change };
 }
 
-function attachMetaPipelineAudit(f, { existingConcept = false } = {}) {
+function attachMetaPipelineAudit(f, { existingConcept = false, siblingParent = false } = {}) {
   const conceptChange = f.request.registryChanges.find(change => change.path.startsWith(`${CANON}/concepts/`));
   const pendingRegistryChanges = [];
   for (const change of f.request.registryChanges) {
@@ -108,6 +108,7 @@ function attachMetaPipelineAudit(f, { existingConcept = false } = {}) {
   const auditPath = `${evidenceRoot}/${f.request.requestId}.audit.json`;
   const manifestPath = `${evidenceRoot}/${f.request.requestId}.manifest.json`;
   const sourceParityPath = `${evidenceRoot}/${f.request.requestId}.source-parity.json`;
+  const parentLabelsPath = `${evidenceRoot}/${f.request.requestId}.parent-labels.json`;
   f.put(auditPath, audit);
   f.put(manifestPath, manifest);
   const studentFields = ["id", "questionType", "content", "choices", "answer", "solution", "image", "images", "figureSvg", "solutionImage", "solutionFigureSvg", "layoutTag", "wide"];
@@ -118,13 +119,27 @@ function attachMetaPipelineAudit(f, { existingConcept = false } = {}) {
     records: [{ sourceOrdinal: 1, questionId: 1, questionUid: f.request.items[0].questionUid, driveSourceTextExcerptMatched: true,
       driveSolutionExcerptMatched: true, driveStudentPayloadSha256: studentPayloadHash, productionStudentPayloadSha256: studentPayloadHash, studentPayloadEqual: true }] };
   f.put(sourceParityPath, sourceParity);
+  const parentContext = { curriculumKey: f.request.items[0].after.curriculum,
+    courseKey: String(f.request.items[0].after.courseKey).replace(/\s/g, ""), standardUnitKey: f.q.standardUnitKey };
+  const parentLabels = { schemaVersion: "archive-meta-pipeline-parent-label-evidence-v1", sourcePath: "archive/data/basic-scope-parent-links.json",
+    sourceSha256: hash("fixture basic scope parent links"),
+    records: siblingParent
+      ? [{ ...parentContext, subUnitKey: "SUB_SIBLING_A", L1: f.q.standardUnit, L2: f.q.subUnit },
+        { ...parentContext, subUnitKey: "SUB_SIBLING_B", L1: f.q.standardUnit, L2: f.q.subUnit }]
+      : [{ ...parentContext, subUnitKey: f.q.subUnitKey, L1: f.q.standardUnit, L2: f.q.subUnit }],
+    derivedRecords: siblingParent ? [{ ...parentContext, subUnitKey: f.q.subUnitKey, L1: f.q.standardUnit, L2: f.q.subUnit,
+      method: "SAME_STANDARD_UNIT_SIBLING_PARENT_CONSENSUS", supportingSubUnitKeys: ["SUB_SIBLING_A", "SUB_SIBLING_B"] }] : [] };
+  f.put(parentLabelsPath, parentLabels);
   const auditPackageRef = { path: auditPath, sha256: hash(fs.readFileSync(path.join(f.root, auditPath))) };
   const manifestRef = { path: manifestPath, sha256: hash(fs.readFileSync(path.join(f.root, manifestPath))) };
   const sourceParityRef = { path: sourceParityPath, sha256: hash(fs.readFileSync(path.join(f.root, sourceParityPath))) };
-  const evidenceRefs = [...f.evidenceRefs, auditPackageRef, manifestRef, sourceParityRef];
+  const parentLabelsRef = { path: parentLabelsPath, sha256: hash(fs.readFileSync(path.join(f.root, parentLabelsPath))) };
+  const evidenceRefs = [...f.evidenceRefs, auditPackageRef, manifestRef, sourceParityRef, parentLabelsRef];
   f.request.approval = { type: "META_PIPELINE_AUDIT", metadataReviewed: true, approvedBy: "META_PIPELINE_UNIFIED_AUTHOR", evidenceRefs,
     metaPipelineAudit: { schemaVersion: "meta-pipeline-audit-approval-v1", sourceFileDriveId, auditPackageRef, manifestRef, sourceParityRef, existingConceptReviews } };
-  f.request.items = f.request.items.map(item => ({ ...item, evidenceRefs }));
+  f.request.items = f.request.items.map(item => ({ ...item, before: { ...item.before, L1: null, L2: null },
+    after: { ...item.after, L1: f.q.standardUnit, L2: f.q.subUnit },
+    basicScopeParentRef: parentLabelsRef, evidenceRefs }));
   return { audit, manifest, auditPackageRef, manifestRef };
 }
 
@@ -242,6 +257,15 @@ test("META_PIPELINE_AUDIT records unassessed IntegrationPattern instead of inven
   assert.equal(row.integrationPattern, null);
   assert.equal(row.fieldStatus.integrationPattern, "EVIDENCE_DEBT");
   assert.equal(row.integrationPatternEvidenceDebt.status, "EVIDENCE_DEBT");
+});
+
+test("META_PIPELINE_AUDIT accepts a shared L1/L2 parent only from sibling consensus under the same unit", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { siblingParent: true });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.L1, "새 단원");
+  assert.equal(row.L2, "새 세부단원");
 });
 
 test("META_PIPELINE_AUDIT reuses a same-label existing CrossConcept without changing its canonical meaning", t => {
