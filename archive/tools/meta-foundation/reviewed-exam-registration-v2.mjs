@@ -90,8 +90,16 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
       manifest.sourceFileDriveId !== proof.sourceFileDriveId || manifest.sourceSha256 !== audit.sourceSha256 ||
       manifest.status !== "READY_FOR_COURIER_REGISTRATION" || manifest.courierAction !== "COMMIT_CANONICAL_BINDING" ||
       path.basename(manifest.bindingTarget || "") !== `${expectedTitle}.js`) fail("META_PIPELINE_AUDIT manifest/source mismatch");
-  if (sourceParity.schemaVersion !== "archive-meta-pipeline-source-parity-v1" || sourceParity.status !== "EXACT_STUDENT_VISIBLE_PARITY" ||
-      sourceParity.sourceFileDriveId !== proof.sourceFileDriveId || sourceParity.driveSourceSha256 !== audit.sourceSha256 ||
+  const auditSourceSha256 = sourceParity.auditSourceSha256 || sourceParity.driveSourceSha256;
+  const sourceHashDrift = sourceParity.driveSourceSha256 !== audit.sourceSha256;
+  const sourceParityStatusValid = sourceHashDrift
+    ? sourceParity.status === "EXACT_STUDENT_VISIBLE_PARITY_WITH_AUDIT_HASH_DRIFT" &&
+      sourceParity.auditSourceSha256 === audit.sourceSha256 &&
+      sourceParity.sourceHashDriftReason === "AUDIT_SOURCE_HASH_DIFFERS_FROM_CURRENT_DRIVE_FILE"
+    : sourceParity.status === "EXACT_STUDENT_VISIBLE_PARITY";
+  if (sourceParity.schemaVersion !== "archive-meta-pipeline-source-parity-v1" || !sourceParityStatusValid ||
+      !/^[a-f0-9]{64}$/.test(sourceParity.driveSourceSha256 || "") || auditSourceSha256 !== audit.sourceSha256 ||
+      sourceParity.sourceFileDriveId !== proof.sourceFileDriveId ||
       sourceParity.productionSourceSha256 !== digest(sourceBytes) || sourceParity.productionSourceBlobSha1 !== sourceBlobSha1 ||
       sourceParity.sourceArchiveFile !== source || !eq(sourceParity.studentFields, META_PIPELINE_STUDENT_FIELDS) ||
       sourceParity.questionCount !== expectedQuestionCount || !Array.isArray(sourceParity.records) || sourceParity.records.length !== expectedQuestionCount)
@@ -137,7 +145,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     fail("META_PIPELINE_AUDIT CrossConcept definition/binding mismatch");
   for (const definition of definedConcepts.values()) if (!/^CC_[A-Z0-9_]+$/.test(definition.conceptKey) || !definition.labelKo || !definition.definition)
     fail(`META_PIPELINE_AUDIT CrossConcept definition incomplete: ${definition.conceptKey}`);
-  return { audit, manifest, sourceFileDriveId: proof.sourceFileDriveId };
+  return { audit, manifest, sourceParity, sourceFileDriveId: proof.sourceFileDriveId };
 }
 
 function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, registryChanges, existingConceptReviews, items }) {
@@ -786,7 +794,11 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     examUid: req.examUid, sourceArchiveFile: source, sourceBlobSha1: blob, sourceRawSha256: digest(bytes), approval: req.approval,
     ...(metaPipelineAudit ? { metaPipelineAudit: { schemaVersion: "ALIVE_META_AUDIT_ATOMIC_v3", sourceFileDriveId: metaPipelineAudit.sourceFileDriveId,
       auditSha256: req.approval.metaPipelineAudit.auditPackageRef.sha256, manifestSha256: req.approval.metaPipelineAudit.manifestRef.sha256,
-      sourceParitySha256: req.approval.metaPipelineAudit.sourceParityRef.sha256 } } : {}),
+      sourceParitySha256: req.approval.metaPipelineAudit.sourceParityRef.sha256,
+      auditSourceSha256: metaPipelineAudit.audit.sourceSha256,
+      driveSourceSha256: metaPipelineAudit.sourceParity.driveSourceSha256,
+      productionSourceSha256: metaPipelineAudit.sourceParity.productionSourceSha256,
+      sourceHashDrift: metaPipelineAudit.sourceParity.driveSourceSha256 !== metaPipelineAudit.audit.sourceSha256 } } : {}),
     metadataRegistrationStatus: "REGISTERED", examFinalQaStatus: "NOT_EVALUATED_BY_REGISTRAR",
     consumerSearchStatus: "NOT_RUN", totalQuestions: applied.length, registryChanges: req.registryChanges || [],
     appliedRecords: applied, appliedIdentityRecords, fingerprintRepairs, runtimeRecords, outputDigests };
