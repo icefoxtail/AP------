@@ -54,6 +54,10 @@ test('QR generator adopts same modal family without changing input IDs or genera
     for(const id of ['qr-exam','qr-q','qr-date','qr-archiveFile','qr-result-area','qr-img','qr-url'])
         assert.match(s,new RegExp('id="'+id+'"'));
 });
+test('homework markup does not duplicate HTML class attributes', () => {
+    const s = func(classroom, 'function openHomeworkPhotoAssignmentModal(', 'async function handleCreateHomeworkPhotoAssignment(');
+    assert.doesNotMatch(s, /<button[^>]*\\bclass="[^"]+"\\s+class=/);
+});
 test('progress modal remains untouched; responsive and dark mode depend on existing theme tokens', () => {
     assert.match(classroom,/ap-class-progress-modal/);
     assert.match(css,/@media \(max-width: 600px\)/);

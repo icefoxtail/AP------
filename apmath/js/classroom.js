@@ -954,8 +954,8 @@ function openHomeworkPhotoAssignmentModal(classId) {
                 <input id="hw-photo-time" type="time" class="cls-input apms-unified-control" value="23:00">
             </div>
             <div class="apms-unified-actions">
-                <button class="btn apms-button apms-button--quiet" class="apms-unified-quiet" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
-                <button class="btn apms-button apms-button--primary btn-primary" class="apms-unified-primary" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장</button>
+                <button class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
+                <button class="btn apms-button apms-button--primary btn-primary apms-unified-primary" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장</button>
             </div>
         </div>
     `);
