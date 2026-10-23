@@ -121,10 +121,13 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
         parityRow.driveStudentPayloadSha256 !== actualPayloadHash || parityRow.productionStudentPayloadSha256 !== actualPayloadHash ||
         parityRow.studentPayloadEqual !== true) fail(`META_PIPELINE_AUDIT student source parity mismatch: ${ordinal}`);
     const after = patch?.after || {};
+    const parentRef = patch?.basicScopeParentRef;
+    const parentEvidenceLinked = (patch?.evidenceRefs || []).some(ref => ref.path === parentRef?.path && ref.sha256 === parentRef?.sha256);
     if (!patch || patch.questionId !== undefined && patch.questionId !== ordinal ||
         after.standardUnitKey !== record.standardUnitKey || after.subUnitKey !== record.subUnitKey ||
         after.problemTypeKey !== classification.problemTypeKey || after.templateKey !== classification.templateKey ||
-        !eq(after.crossConceptKeys, classification.crossConceptKeys) || !eq(after.conditionKeys, classification.conditionKeys || []))
+        !eq(after.crossConceptKeys, classification.crossConceptKeys) || !eq(after.conditionKeys, classification.conditionKeys || []) ||
+        !parentRef || !/^[a-f0-9]{64}$/.test(parentRef.sha256 || "") || !parentEvidenceLinked)
       fail(`META_PIPELINE_AUDIT registration binding mismatch: ${ordinal}`);
   }
   if (!Array.isArray(audit.boundAtomicCrossConcepts)) fail("META_PIPELINE_AUDIT CrossConcept definitions required");
@@ -341,6 +344,21 @@ function resolve(row, tables) {
 
 function labelsFor(patch, row, resolved, read, sourceBlob) {
   const base = { L1: resolved.binding.L1 || resolved.unit.labelKo, L2: resolved.binding.L2 || resolved.sub?.labelKo || "", L3: resolved.pt.canonicalLabelKo, L4: resolved.tpl.canonicalLabelKo };
+  if (patch.basicScopeParentRef) {
+    if (patch.targetParentRef) fail("basic and RPM target parent references cannot be combined");
+    const ref = patch.basicScopeParentRef;
+    if (!/^archive\/data\/meta-foundation\/evidence\/reviewed-exam-meta\/v1\/.+\.parent-labels\.json$/.test(ref.path || "") ||
+        !(patch.evidenceRefs || []).some(e => e.path === ref.path && e.sha256 === ref.sha256)) fail("basic scope parent reference is not evidence-bound");
+    const proof = read(ref.path);
+    if (proof.schemaVersion !== "archive-meta-pipeline-parent-label-evidence-v1" ||
+        proof.sourcePath !== "archive/data/basic-scope-parent-links.json" || !/^[a-f0-9]{64}$/.test(proof.sourceSha256 || ""))
+      fail("basic scope parent evidence schema/source mismatch");
+    const matches = (proof.records || []).filter(parent => parent.curriculumKey === resolved.curriculum &&
+      parent.courseKey === resolved.course && parent.standardUnitKey === row.standardUnitKey && (parent.subUnitKey ?? null) === (row.subUnitKey ?? null));
+    if (matches.length !== 1) fail(`basic scope parent evidence missing/ambiguous: ${row.questionUid}`);
+    base.L1 = requireText(matches[0].L1, "basic-scope L1");
+    base.L2 = requireText(matches[0].L2, "basic-scope L2");
+  }
   const withTargetParent = labels => {
     if (!patch.targetParentRef) return labels;
     const ref = patch.targetParentRef;

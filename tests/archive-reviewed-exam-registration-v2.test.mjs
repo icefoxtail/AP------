@@ -108,6 +108,7 @@ function attachMetaPipelineAudit(f, { existingConcept = false } = {}) {
   const auditPath = `${evidenceRoot}/${f.request.requestId}.audit.json`;
   const manifestPath = `${evidenceRoot}/${f.request.requestId}.manifest.json`;
   const sourceParityPath = `${evidenceRoot}/${f.request.requestId}.source-parity.json`;
+  const parentLabelsPath = `${evidenceRoot}/${f.request.requestId}.parent-labels.json`;
   f.put(auditPath, audit);
   f.put(manifestPath, manifest);
   const studentFields = ["id", "questionType", "content", "choices", "answer", "solution", "image", "images", "figureSvg", "solutionImage", "solutionFigureSvg", "layoutTag", "wide"];
@@ -118,13 +119,21 @@ function attachMetaPipelineAudit(f, { existingConcept = false } = {}) {
     records: [{ sourceOrdinal: 1, questionId: 1, questionUid: f.request.items[0].questionUid, driveSourceTextExcerptMatched: true,
       driveSolutionExcerptMatched: true, driveStudentPayloadSha256: studentPayloadHash, productionStudentPayloadSha256: studentPayloadHash, studentPayloadEqual: true }] };
   f.put(sourceParityPath, sourceParity);
+  const parentLabels = { schemaVersion: "archive-meta-pipeline-parent-label-evidence-v1", sourcePath: "archive/data/basic-scope-parent-links.json",
+    sourceSha256: hash("fixture basic scope parent links"), records: [{ curriculumKey: f.request.items[0].after.curriculum,
+      courseKey: f.request.items[0].after.courseKey, standardUnitKey: f.q.standardUnitKey, subUnitKey: f.q.subUnitKey,
+      L1: f.q.standardUnit, L2: f.q.subUnit }] };
+  f.put(parentLabelsPath, parentLabels);
   const auditPackageRef = { path: auditPath, sha256: hash(fs.readFileSync(path.join(f.root, auditPath))) };
   const manifestRef = { path: manifestPath, sha256: hash(fs.readFileSync(path.join(f.root, manifestPath))) };
   const sourceParityRef = { path: sourceParityPath, sha256: hash(fs.readFileSync(path.join(f.root, sourceParityPath))) };
-  const evidenceRefs = [...f.evidenceRefs, auditPackageRef, manifestRef, sourceParityRef];
+  const parentLabelsRef = { path: parentLabelsPath, sha256: hash(fs.readFileSync(path.join(f.root, parentLabelsPath))) };
+  const evidenceRefs = [...f.evidenceRefs, auditPackageRef, manifestRef, sourceParityRef, parentLabelsRef];
   f.request.approval = { type: "META_PIPELINE_AUDIT", metadataReviewed: true, approvedBy: "META_PIPELINE_UNIFIED_AUTHOR", evidenceRefs,
     metaPipelineAudit: { schemaVersion: "meta-pipeline-audit-approval-v1", sourceFileDriveId, auditPackageRef, manifestRef, sourceParityRef, existingConceptReviews } };
-  f.request.items = f.request.items.map(item => ({ ...item, evidenceRefs }));
+  f.request.items = f.request.items.map(item => ({ ...item, before: { ...item.before, L1: null, L2: null },
+    after: { ...item.after, L1: f.q.standardUnit, L2: f.q.subUnit },
+    basicScopeParentRef: parentLabelsRef, evidenceRefs }));
   return { audit, manifest, auditPackageRef, manifestRef };
 }
 
