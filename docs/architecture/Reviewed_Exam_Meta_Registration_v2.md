@@ -31,13 +31,27 @@ node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --requ
 | `sourceArchiveFile` | `archive/exams/` 기준 실제 JS 상대 경로 |
 | `expectedSourceBlobSha1` | Git clean filter가 적용된 source의 blob SHA-1. Git 없는 격리 fixture에서는 raw blob SHA-1 |
 | `expectedQuestionCount` | 실제 전 문항 수 |
-| `approval` | `type: FINAL_QA 또는 REVIEW2`, `metadataReviewed: true`, `approvedBy`, `evidenceRefs` |
+| `approval` | `type: FINAL_QA`, `REVIEW2`, 또는 `META_PIPELINE_AUDIT`; 각 유형의 구별된 증거, `metadataReviewed: true`, `approvedBy`, `evidenceRefs` |
 | `registryChanges` | 선택 사항. 정본 변경 작업 배열 |
 | `items` | 전 UID의 `questionUid`, `sourceOrdinal`, `before`, `after`, `reason`, `evidenceRefs` |
 
 `REVIEW2`에만 `approval.reviewPassCount: 2`가 필요하다. FINAL_QA를 REVIEW2로 기록하지 않는다.
 각 `evidenceRefs`는 `{ "path": "저장소 상대 경로", "sha256": "실바이트 SHA-256" }` 배열이다.
 실제 파일이 없거나 hash가 다르면 쓰기 전에 실패한다. URL이나 검토했다는 문장만으로 대체하지 않는다.
+
+### `META_PIPELINE_AUDIT` 승인 유형
+
+`META_PIPELINE_AUDIT`는 Gemini의 심화 메타 감사 인계를 등록하는 별도 유형이다. 이 유형은 FINAL_QA 또는 REVIEW2로 변환하지 않으며, 시험지의 최종 수학·해설 QA 상태를 승인하지 않는다. 요청은 다음을 제공한다.
+
+- `approval.metaPipelineAudit.schemaVersion: "meta-pipeline-audit-approval-v1"`
+- `approval.metaPipelineAudit.sourceFileDriveId`
+- `approval.metaPipelineAudit.auditPackageRef`, `manifestRef`, `sourceParityRef`: 정확한 Drive 산출물 JSON 바이트와 source-parity report를 저장소 evidence 경로에 보존한 `{path, sha256}` 참조. 세 참조 모두 `approval.evidenceRefs`에도 포함한다.
+- 감사 패키지는 `ALIVE_META_AUDIT_ATOMIC_v3`, `ALL_APPROVED_CANONICAL_STANDARDIZED`, `READY_FOR_COURIER_REGISTRATION`, N/N 승인, zero hold, zero template inflation을 만족해야 한다. `sourceSha256`는 매니페스트의 Drive source SHA와 일치해야 한다.
+- 매니페스트는 `COURIER_INTAKE_MANIFEST_v2`, 같은 exam/source identity, N개 승인 바인딩, zero hold/template inflation을 만족해야 한다.
+- `archive-meta-pipeline-source-parity-v1` 보고서는 Drive source SHA와 현재 production source SHA/blob SHA를 함께 결속한다. qid별 student fields (`id`, 지문, 보기, 정답, 해설, image/SVG 참조, 레이아웃) digest가 같고 source/solution 발췌가 Drive 원본에서 확인되었음을 기록한다. raw JS 메타 필드만 달라 raw SHA가 다를 때도 학생 노출 payload parity가 입증되어야 등록할 수 있다.
+- 감사 records, 매니페스트 `recordsToBind`, 등록 요청 `items`는 source ordinal별 PT/TPL/CrossConcept/단원 값이 정확히 일치해야 한다. 결정적 풀이 발췌와 시각자료 확인 필드도 qid마다 필요하다.
+
+이 유형의 등록 receipt는 `examFinalQaStatus: NOT_EVALUATED_BY_REGISTRAR`를 유지한다. 문항 메타 provenance에는 `metadataApprovalType: META_PIPELINE_AUDIT`, `tagConfidence: meta_pipeline_audit`, `fieldStatus.*: approved_meta_pipeline_audit`를 기록해 다른 승인 경로와 구별한다.
 
 `before/after`는 승인 메타 필드 객체다. `after`의 모든 필드에 `before`를 명시하며,
 기존 필드가 없으면 `before` 값은 `null`이다. source JS에도 존재하는 값은 정확히 같아야 한다.
