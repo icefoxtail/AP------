@@ -5,18 +5,18 @@ const COLORS=['#e56b36','#dd962d','#178b67'];
 function CompareCircle({shape,p}:{shape:ShapeId;p:Params}){
   const m=geometryMath(shape,p);
   const cx=90,cy=90,r=57;
-  if(shape==='holes') {
+  if(shape==='holes'||shape==='holes3') {
+    const n=shape==='holes3'?3:2;
     return <div className="proof-circle-wrap">
       <svg viewBox="0 0 215 160" className="circle-compare" role="img" aria-label="큰 원의 둘레와 두 작은 원 둘레의 합이 서로 같은 길이임을 나타낸 비교 원 2개">
         <circle cx="57" cy="74" r="39" fill="none" stroke="#e2e8f0" strokeWidth="9"/>
         <circle cx="57" cy="74" r="39" fill="none" stroke="#2563eb" strokeWidth="9" data-ring="outer" transform="rotate(-90 57 74)"/>
         <circle cx="158" cy="74" r="39" fill="none" stroke="#e2e8f0" strokeWidth="9"/>
-        <path d={arc(158,74,39,0,Math.PI)} stroke="#e56b36" strokeWidth="9" fill="none" data-ring="inner"/>
-        <path d={arc(158,74,39,Math.PI,2*Math.PI)} stroke="#dd962d" strokeWidth="9" fill="none" data-ring="inner"/>
+        {Array.from({length:n},(_,i)=><path key={i} d={arc(158,74,39,i*2*Math.PI/n,(i+1)*2*Math.PI/n)} stroke={["#e56b36","#dd962d","#178b67"][i]} strokeWidth="9" fill="none" data-ring="inner"/>)}
         <text x="57" y="137" textAnchor="middle" fontSize="11" fontWeight="800" fill="#2563eb">바깥 원</text>
-        <text x="158" y="137" textAnchor="middle" fontSize="11" fontWeight="800" fill="#be7540">두 구멍 합</text>
+        <text x="158" y="137" textAnchor="middle" fontSize="11" fontWeight="800" fill="#be7540">작은 원 {n}개 합</text>
       </svg>
-      <div className="compare-copy"><strong>안쪽 경계도 모두 포함</strong><span>바깥 한 바퀴와 안쪽 두 원의 길이를 각각 비교합니다.</span></div>
+      <div className="compare-copy"><strong>안쪽 경계도 모두 포함</strong><span>바깥 한 바퀴와 안쪽 작은 원 {n}개의 길이를 비교합니다.</span></div>
     </div>;
   }
   const total=m.D;
@@ -41,9 +41,9 @@ function CompareCircle({shape,p}:{shape:ShapeId;p:Params}){
 function LengthBars({shape,p}:{shape:ShapeId;p:Params}) {
   const m=geometryMath(shape,p);
   return <div className="length-bars">
-    <div className="bar-info"><span>바깥 큰 {shape==='holes'?'원':'반원'} 경계</span><b>{pi(m.outerArc)} cm</b></div>
+    <div className="bar-info"><span>바깥 큰 {shape==='holes'||shape==='holes3'?'원':'반원'} 경계</span><b>{pi(m.outerArc)} cm</b></div>
     <div className="bar-track"><div className="bar-fill" data-meter="outer" style={{width:'100%',background:'#2563eb'}} /></div>
-    <div className="bar-info"><span>안쪽 {shape==='holes'?'구멍 2개':'작은 반원'} 경계의 합</span><b>{pi(m.innerArc)} cm</b></div>
+    <div className="bar-info"><span>안쪽 {shape==='holes'||shape==='holes3'?`작은 원 ${m.inner.length}개`:'작은 반원'} 경계의 합</span><b>{pi(m.innerArc)} cm</b></div>
     <div className="bar-track">
       {m.inner.map((n,i)=><div key={i} className="bar-fill" data-meter="inner" style={{width:`${n/m.D*100}%`,background:COLORS[i]}}/>)}
     </div>
@@ -68,7 +68,7 @@ function AreaPieces({shape,p}:{shape:ShapeId;p:Params}){
         const sign=t.sign==='+'?'+':'−';
         return <div key={i} className={`area-tile ${sign==='+'?'positive':'negative'}`} data-area-piece>
           <div className="area-tile-head"><b>{sign}</b><span>{t.name}</span></div>
-          <PieceGlyph kind={shape==='holes'?'circle':'semi'} ratio={diameter/m.D}/>
+          <PieceGlyph kind={shape==='holes'||shape==='holes3'?'circle':'semi'} ratio={diameter/m.D}/>
           <strong>{pi(t.amount)}</strong>
         </div>;
       })}

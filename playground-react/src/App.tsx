@@ -3,6 +3,8 @@ import TypeCards from './components/TypeCards';
 import { BASIC_TYPES, LAB_TYPES, PRACTICE_TYPES, type BasicId, type LabId } from './data/types';
 import SemicircleLab from './labs/semis/SemicircleLab';
 import BasicLab from './labs/basic/BasicLab';
+import PracticeLab from './labs/practice/PracticeLab';
+import type { PracticeId } from './labs/practice/catalog';
 
 export default function App(){
   const [layout,setLayout]=useState<'overview'|'lab'>('lab');
@@ -30,7 +32,7 @@ export default function App(){
         <div className="workspace">
           <aside className="type-sidebar"><div className="sidebar-heading"><div><span className="eyebrow">EXPLORE TYPES</span><strong>도형 유형 <span>{LAB_TYPES.length}</span></strong></div><button onClick={()=>setLayout('overview')} title="전체 유형 카드 보기">전체 보기 ↗</button></div><TypeCards types={LAB_TYPES} selected={selected} onPick={pick} compact/></aside>
           <main className="main-content">
-            {isBasic?<BasicLab key={selected} id={selected as BasicId}/>:selected==='semis'?<SemicircleLab/>:<div className="coming-card"><div className="coming-icon">◌</div><span className="eyebrow">COMING NEXT</span><h2>{selectedLab.number}. {selectedLab.name}</h2><p>기존 STEP3 도형과 계산 엔진을 이 유형 실험실로 옮기는 중입니다.</p><button type="button" className="primary-button" onClick={()=>pick('semis')}>반원 결합 실험실 →</button></div>}
+            {isBasic?<BasicLab key={selected} id={selected as BasicId}/>:selected==='semis'?<SemicircleLab/>:<PracticeLab key={selected} id={selected as PracticeId}/>}
           </main>
         </div>
       </>}
