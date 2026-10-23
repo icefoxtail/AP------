@@ -1,0 +1,525 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "26_금당고_2학기_중간_고2_기하",
+  "sourceFileDriveId": "1sSc5pePw_JjssvHlVeoVfSg5EJrLHCOa",
+  "sourceSha256": "a2160651bafe0f9d20db18df52aa841b8e3c532c7047a3aefffc99792b2253e4",
+  "auditedTimestamp": "2026-10-23T02:55:03.578233",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "statistics": {
+    "totalQuestions": 20,
+    "approved": 20,
+    "holdRemaining": 0,
+    "canonicalTemplatesReused": 20,
+    "newTemplatesCreated": 0,
+    "atomicCrossConceptsBound": 9
+  },
+  "boundAtomicCrossConcepts": [
+    {
+      "conceptKey": "CC_AREA",
+      "labelKo": "넓이",
+      "definition": "도형의 넓이 공식 및 등적변형을 이용하는 개념"
+    },
+    {
+      "conceptKey": "CC_CENTROID",
+      "labelKo": "무게중심",
+      "definition": "삼각형 세 꼭짓점 좌표의 평균을 다루는 개념"
+    },
+    {
+      "conceptKey": "CC_CONIC_TANGENT",
+      "labelKo": "이차곡선의 접선",
+      "definition": "포물선, 타원, 쌍곡선에 접하는 직선의 방정식을 다루는 개념"
+    },
+    {
+      "conceptKey": "CC_ELLIPSE",
+      "labelKo": "타원",
+      "definition": "두 초점으로부터의 거리의 합이 일정한 점들의 자취 개념"
+    },
+    {
+      "conceptKey": "CC_HYPERBOLA",
+      "labelKo": "쌍곡선",
+      "definition": "두 초점으로부터의 거리의 차가 일정한 점들의 자취 개념"
+    },
+    {
+      "conceptKey": "CC_ORTHOGONAL_PROJECTION",
+      "labelKo": "정사영",
+      "definition": "도형을 평면에 수직으로 투영하여 길이와 넓이를 구하는 기하 개념"
+    },
+    {
+      "conceptKey": "CC_PARABOLA",
+      "labelKo": "포물선",
+      "definition": "한 점(초점)과 직선(준선)에 이르는 거리가 같은 점들의 자취 개념"
+    },
+    {
+      "conceptKey": "CC_SKEW_LINES",
+      "labelKo": "꼬인 위치",
+      "definition": "공간에서 만나지도 않고 평행하지도 않은 두 직선의 관계 개념"
+    },
+    {
+      "conceptKey": "CC_SPACE_FIGURE",
+      "labelKo": "공간도형",
+      "definition": "3차원 공간에서 직선과 평면의 위치 관계를 다루는 기하 개념"
+    }
+  ],
+  "handOffToCourier": {
+    "status": "READY_FOR_COURIER_REGISTRATION",
+    "author": "META_PIPELINE_UNIFIED_AUTHOR",
+    "registrationProtocol": "DIRECT_ATOMIC_METADATA_BINDING"
+  },
+  "records": [
+    {
+      "questionId": 1,
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_ELLIPSE",
+        "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+        "crossConceptKeys": [
+          "CC_ELLIPSE"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "타원의 표준형에서 장반경을 읽어 장축의 길이(2a) 계산"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{9}=1$의 장축의 길이는? [3.6점]",
+        "solutionDecisiveExcerpt": "타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{9}=1$에서는 $16>9$이므로 $x$축 방향이 장축이다.\\n장반경은 $\\sqrt{16}=4$이므로 장축의 길이는 $2\\times4=8$이다.\\n따라서 정답은 ③이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 2,
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_HYPERBOLA",
+        "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+        "crossConceptKeys": [
+          "CC_HYPERBOLA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "쌍곡선 표준형에서 주축의 길이(2a) 계산"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "쌍곡선 $\\dfrac{x^2}{12}-\\dfrac{y^2}{4}=1$의 주축의 길이는? [3.6점]",
+        "solutionDecisiveExcerpt": "쌍곡선 $\\dfrac{x^2}{a^2}-\\dfrac{y^2}{b^2}=1$에서 주축의 길이는 두 꼭짓점 사이의 거리인 $2a$이다.\\n$a^2=12$이므로 $a=\\sqrt{12}=2\\sqrt3$이다.\\n따라서 주축의 길이는 $2a=4\\sqrt3$이고,",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 3,
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_PARABOLA",
+        "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+        "crossConceptKeys": [
+          "CC_PARABOLA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "포물선 초점 (a,0)과 준선 x=-a 사이의 거리(2a) 활용"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "포물선 $y^2=4ax$의 초점에서 준선까지의 거리가 $4$일 때, 양수 $a$의 값은? [3.6점]",
+        "solutionDecisiveExcerpt": "포물선 $y^2=4ax$의 초점은 $(a,0)$, 준선은 $x=-a$이다.\\n따라서 초점에서 준선까지의 거리는 $a-(-a)=2a$이다.\\n$2a=4$에서 $a=2$이다.\\n따라서 정답은 ②이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 4,
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_PARABOLA",
+        "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+        "crossConceptKeys": [
+          "CC_PARABOLA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "포물선 일반형을 완전제곱식 표준형으로 변환하여 초점 좌표 산출"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "포물선 $y^2-4y-4ax+4=0$의 초점의 좌표가 $(3,b)$일 때, $a+b$의 값은? [3.6점]",
+        "solutionDecisiveExcerpt": "$y^2-4y+4=4ax$로 정리하면 $(y-2)^2=4ax$이다.\\n표준형 $(y-k)^2=4p(x-h)$에서 초점은 $(h+p,k)$이므로 여기서는 $(a,2)$이다.\\n초점이 $(3,b)$이므로 $a=3$, $b=2$이다.\\n따라서 $a+b=5$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 5,
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_ELLIPSE",
+        "templateKey": "TPL_GEO_ELLIPSE_STANDARD_EQUATION",
+        "crossConceptKeys": [
+          "CC_ELLIPSE"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "타원 일반형을 표준형으로 변환하여 초점거리 c^2=a^2-b^2 계산"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "타원 $4x^2+9y^2-18y-27=0$의 한 초점의 좌표가 $(p,q)$일 때, $p^2+q^2$의 값은? [3.8점]",
+        "solutionDecisiveExcerpt": "$4x^2+9(y^2-2y)-27=0$에서 $y^2-2y=(y-1)^2-1$을 대입한다.\\n$4x^2+9(y-1)^2=36$, 즉 $\\dfrac{x^2}{9}+\\dfrac{(y-1)^2}{4}=1$이다.\\n장반경의 제곱은 $9$, 단반경의 제곱은 $4",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 6,
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_HYPERBOLA",
+        "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+        "crossConceptKeys": [
+          "CC_HYPERBOLA",
+          "CC_AREA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "쌍곡선의 점근선 y = ±(b/a)x와 직선으로 둘러싸인 삼각형 넓이 계산"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "쌍곡선 $\\dfrac{x^2}{4}-y^2=1$의 점근선과 직선 $y=2$로 둘러싸인 부분의 넓이는? [3.8점]",
+        "solutionDecisiveExcerpt": "쌍곡선의 점근선은 $y=\\pm\\dfrac{x}{2}$이다.\\n$y=2$와의 교점은 각각 $(-4,2)$, $(4,2)$이고 두 점근선의 교점은 원점 $(0,0)$이다.\\n따라서 세 직선이 이루는 삼각형의 밑변은 $8$, 높이는 $2$이다.\\n넓이는 $",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 7,
+      "standardUnitKey": "H22-GE-02",
+      "subUnitKey": "H22-GE-02-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+        "crossConceptKeys": [
+          "CC_CONIC_TANGENT",
+          "CC_ELLIPSE"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "타원 위의 점에서의 접선 공식 xx1/a^2 + yy1/b^2 = 1 적용 및 x절편 도출"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "타원 $\\dfrac{x^2}{8}+\\dfrac{y^2}{4}=1$ 위의 점 $(2,\\sqrt2)$에서의 접선의 $x$절편은? [4점]",
+        "solutionDecisiveExcerpt": "타원 $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$ 위의 점 $(x_1,y_1)$에서의 접선은 $\\dfrac{xx_1}{a^2}+\\dfrac{yy_1}{b^2}=1$이다.\\n$(2,\\sqrt2)$를 대입하면 $\\dfrac{2x}{",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 8,
+      "standardUnitKey": "H22-GE-02",
+      "subUnitKey": "H22-GE-02-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+        "crossConceptKeys": [
+          "CC_CONIC_TANGENT",
+          "CC_HYPERBOLA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "쌍곡선 위의 점에서의 접선 기울기와 수직 조건 m*m'=-1 연립"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "쌍곡선 $\\dfrac{x^2}{a^2}-y^2=1$ 위의 점 $(2a,\\sqrt3)$에서의 접선이 직선 $y=-\\sqrt3x+1$과 수직일 때, 상수 $a$의 값은? [4점]",
+        "solutionDecisiveExcerpt": "쌍곡선의 접선 공식은 $\\dfrac{xx_1}{a^2}-yy_1=1$이다.\\n점 $(2a,\\sqrt3)$을 대입하면 $\\dfrac{2x}{a}-\\sqrt3y=1$이므로 접선의 기울기는 $\\dfrac{2}{a\\sqrt3}$이다.\\n주어진 직선의 기울기가",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 9,
+      "standardUnitKey": "H22-GE-03",
+      "subUnitKey": "H22-GE-03-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+        "templateKey": "TPL_GEO_SPACE_LINES_ANGLE",
+        "crossConceptKeys": [
+          "CC_SPACE_FIGURE",
+          "CC_SKEW_LINES"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "정육면체에서 꼬인 위치에 있는 두 직선의 평행이동을 통한 이루는 각 도출"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림과 같은 정육면체에서 직선 $AG$와 직선 $CF$가 이루는 각의 크기는? [4.4점]",
+        "solutionDecisiveExcerpt": "직선 $AG$와 $CF$는 공간에서 만나지 않을 수 있으므로 두 직선의 방향을 이용해 각을 판정한다.\\n정육면체의 모서리 길이를 $1$로 두고 $A(0,0,1)$, $C(1,1,1)$, $F(1,0,0)$, $G(1,1,0)$으로 좌표를 잡는다.\\n그",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 10,
+      "standardUnitKey": "H22-GE-02",
+      "subUnitKey": "H22-GE-02-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+        "crossConceptKeys": [
+          "CC_CONIC_TANGENT",
+          "CC_PARABOLA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "포물선 밖의 점에서 그은 두 접선의 기울기 이차방정식 근과 계수의 관계 적용"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "점 $(2,1)$에서 포물선 $y^2=-2x$에 그은 두 접선의 기울기의 곱은? [4.4점]",
+        "solutionDecisiveExcerpt": "점 $(2,1)$을 지나는 기울기가 $m$인 직선은 $y-1=m(x-2)$이다.\\n포물선에서 $x=-\\dfrac{y^2}{2}$이므로 직선에 대입하면\\n$y-1=m(-\\dfrac{y^2}{2}-2)$, 즉 $my^2+2y+4m-2=0$이다.\\n이차방정",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 11,
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_PARABOLA",
+        "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+        "crossConceptKeys": [
+          "CC_PARABOLA",
+          "CC_CENTROID"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "포물선의 정의(초점까지 거리 = 준선까지 거리)와 삼각형 무게중심 y좌표 연계"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "오른쪽 그림과 같이 포물선 $x^2=8y$ 위의 서로 다른 세 점 $A$, $B$, $C$에 대하여 삼각형 $ABC$의 무게중심이 포물선의 초점 $F$와 일치할 때, $\\overline{AF}+\\overline{BF}+\\overline{CF}$의 값은",
+        "solutionDecisiveExcerpt": "$x^2=8y=4\\cdot2y$이므로 포물선의 초점은 $F(0,2)$, 준선은 $y=-2$이다.\\n포물선 위의 점 $X(x,y)$는 초점까지의 거리와 준선까지의 거리가 같으므로 $XF=y+2$이다.\\n세 점의 $y$좌표를 각각 $y_A,y_B,y_C$",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 12,
+      "standardUnitKey": "H22-GE-03",
+      "subUnitKey": "H22-GE-03-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+        "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+        "crossConceptKeys": [
+          "CC_SPACE_FIGURE",
+          "CC_ORTHOGONAL_PROJECTION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "정사각뿔에서 꼭짓점에서 밑면 변에 내린 수선의 발과 삼수선 정리 적용"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림과 같이 모든 모서리의 길이가 같은 정사각뿔 $A-BCDE$의 점 $A$에서 선분 $CD$에 내린 수선의 발을 $H$라 하자. 직선 $AH$와 선분 $BC$가 이루는 각의 크기를 $\\theta$라 할 때, $\\cos\\theta$의 값은? [4.8점",
+        "solutionDecisiveExcerpt": "옆면 $ACD$는 정삼각형이고 $AH\\perp CD$이므로 $H$는 $CD$의 중점이다. 따라서 $CH=\\dfrac a2$이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 13,
+      "standardUnitKey": "H22-GE-02",
+      "subUnitKey": "H22-GE-02-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+        "crossConceptKeys": [
+          "CC_CONIC_TANGENT",
+          "CC_ELLIPSE",
+          "CC_PARABOLA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "타원과 포물선의 공통 접선의 기울기 공식 적용"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같이 타원 $\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1$과 포물선 $y^2=4x$은 점 $P(3,-2\\sqrt3)$에서 만나고 점 $P$에서의 타원의 접선의 기울기와 포물선의 접선의 기울기의 곱이 $-\\dfrac29$",
+        "solutionDecisiveExcerpt": "포물선 $y^2=4x$에서 $4p=4$이므로 $p=1$이다. 점 $(x_1,y_1)$에서의 접선 $yy_1=2p(x+x_1)$을 $y$에 대하여 정리하면 기울기는 $\\dfrac{2p}{y_1}$이므로, 점 $P$에서 $m_p=\\dfrac2{-2\\sqr",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 14,
+      "standardUnitKey": "H22-GE-02",
+      "subUnitKey": "H22-GE-02-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+        "crossConceptKeys": [
+          "CC_CONIC_TANGENT",
+          "CC_PARABOLA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "포물선 위의 점에서의 접선에 수직인 법선 방정식 유도 및 넓이 계산"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같이 포물선 $y^2=8x$ 위의 점 $P(2,4)$에서의 접선에 수직이고 점 $A(2,0)$을 지나는 직선 $l$이 있다. 직선 $l$과 포물선이 만나는 두 점을 $Q$, $R$이라 할 때, $\\overline{QR}$의 값은? [5.2",
+        "solutionDecisiveExcerpt": "포물선 $y^2=8x$ 위의 점 $P(2,4)$에서의 접선은 $4y=4(x+2)$, 즉 $y=x+2$이므로 기울기가 $1$이다.\\n이에 수직인 직선 $l$의 기울기는 $-1$이다. 점 $A(2,0)$을 지나므로 $l$의 방정식은 $y=-x+2$이다.\\",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 15,
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_ELLIPSE",
+        "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+        "crossConceptKeys": [
+          "CC_ELLIPSE"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "타원의 정의(PF+PF'=2a)와 원의 반지름 관계를 이용한 선분 길이 계산"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "한 초점이 $F(c,0)$ $(c>0)$인 타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{7}=1$과 중심의 좌표가 $(9,5)$이고 반지름의 길이가 $r$인 원이 있다. 타원 위의 점 $P$와 원 위의 점 $Q$에 대하여 $\\overlin",
+        "solutionDecisiveExcerpt": "타원의 장반경은 $4$이고 초점 거리 $c=\\sqrt{16-7}=3$이므로 두 초점은 $F(3,0)$, $F\\prime(-3,0)$이다. 타원 위의 모든 점 $P$에 대하여 $PF+PF\\prime=8$이다.\\n원의 중심을 $C(9,5)$라 하면 $CF",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 16,
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_PARABOLA",
+        "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+        "crossConceptKeys": [
+          "CC_PARABOLA",
+          "CC_ELLIPSE"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "포물선과 타원의 공통 초점 조건과 정의를 연립하여 둘레 길이 도출"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "그림과 같이 초점이 $A(a,0)$이고 준선이 $x=k$인 포물선 $C_1$과 두 초점이 $F(c,0)$, $F\\prime(-c,0)$ $(c>0)$이고 주축의 길이가 $8\\sqrt5$인 쌍곡선 $C_2$가 있다. 포물선 $C_1$과 쌍곡선 $C_2$",
+        "solutionDecisiveExcerpt": "쌍곡선 $C_2$의 두 초점을 $F,F\\prime$이라 하면 오른쪽 가지 위의 점 $X$는 $F\\prime X-FX=8\\sqrt5$를 만족한다.\\n따라서 $F\\prime S=FS+8\\sqrt5$, $F\\prime Q=FQ+8\\sqrt5$이다.\\n두 식",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 17,
+      "standardUnitKey": "H22-GE-02",
+      "subUnitKey": "H22-GE-02-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+        "crossConceptKeys": [
+          "CC_CONIC_TANGENT",
+          "CC_ELLIPSE",
+          "CC_AREA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "타원 접선과 축이 이루는 삼각형 넓이 최솟값 조건 서술형"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "타원 $\\dfrac{x^2}{16}+\\dfrac{y^2}{4}=1$ 위에 있는 제1사분면 위의 점 $P$에서의 접선과 $x$축, $y$축으로 둘러싸인 삼각형의 넓이가 최소일 때, 점 $P$의 좌표를 구하시오. [5점]",
+        "solutionDecisiveExcerpt": "제1사분면의 점 $P(x_1,y_1)$에서 타원에 그은 접선은 $\\dfrac{xx_1}{16}+\\dfrac{yy_1}{4}=1$이다.\\n이 접선의 $x$절편은 $\\dfrac{16}{x_1}$, $y$절편은 $\\dfrac4{y_1}$이므로 삼각형의 넓이",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 18,
+      "standardUnitKey": "H22-GE-02",
+      "subUnitKey": "H22-GE-02-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+        "crossConceptKeys": [
+          "CC_CONIC_TANGENT",
+          "CC_PARABOLA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "포물선 위의 점 접선과 준선, 직선으로 둘러싸인 삼각형 넓이 서술형"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "포물선 $y^2=4px$ $(p>0)$ 위의 점 $A(p,2p)$에서의 접선과 이 포물선의 준선 직선 $x=-p$, 직선 $y=2p$로 둘러싸인 부분의 넓이가 $50$일 때, $\\overline{OA}$의 길이를 구하시오. (단, $O$는 원점이다.)",
+        "solutionDecisiveExcerpt": "포물선 $y^2=4px$ 위의 점 $A(p,2p)$에서의 접선은 $2p\\,y=2p(x+p)$이므로 $y=x+p$이다.\\n직선 $y=2p$와 접선의 교점은 $A(p,2p)$이고, 준선 $x=-p$와 접선의 교점은 $B(-p,0)$이다.\\n준선 $x=-p",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 19,
+      "standardUnitKey": "H22-GE-01",
+      "subUnitKey": "H22-GE-01-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_PARABOLA",
+        "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+        "crossConceptKeys": [
+          "CC_PARABOLA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "실생활 포물선 해안 도로 모델링 및 좌표 결정 서술형"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같이 해안 기지국 $A$를 초점으로 하고 항구 $O$를 꼭짓점으로 하는 포물선 모양의 해안선 도로가 있다. 어느 정유회사의 공장 $B$에서 해안선 도로 위의 저장 시설 $P$를 거쳐 기지국 $A$로 연결되는 파이프라인의 총 길이가 최소가 ",
+        "solutionDecisiveExcerpt": "항구 $O$가 꼭짓점이고 기지국 $A$가 초점이므로 $A=(20,0)$, 포물선은 $y^2=4\\cdot20x=80x$, 준선은 $x=-20$이다.\\n그림에서 공장 $B$는 $x$축 위쪽에 있다. $AB=10$, $\\cos\\theta=\\dfrac45$,",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 20,
+      "standardUnitKey": "H22-GE-02",
+      "subUnitKey": "H22-GE-02-CORE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+        "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+        "crossConceptKeys": [
+          "CC_CONIC_TANGENT",
+          "CC_ELLIPSE"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "타원 밖의 점에서 그은 두 접선이 수직일 조건(원형 준원) 유도 서술형"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "$k>1$인 실수 $k$에 대하여 점 $A(0,k)$에서 타원 $\\dfrac{x^2}{18}+\\dfrac{y^2}{2}=1$에 그은 두 접선의 접점을 각각 $P$, $Q$라 하고, 직선 $AP$와 직선 $AQ$가 $x$축과 만나는 점을 각각 $R$, ",
+        "solutionDecisiveExcerpt": "타원 위의 접점 $P=(x_1,y_1)$에서의 접선은 $\\dfrac{xx_1}{18}+\\dfrac{yy_1}{2}=1$이다. 이 접선이 $A(0,k)$를 지나므로 $\\dfrac{ky_1}{2}=1$, 따라서 $y_1=\\dfrac2k$이다.\\n타원의 대",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    }
+  ]
+}
