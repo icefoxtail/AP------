@@ -767,6 +767,8 @@ async function changeClassOperationDate(cid, dateStr) {
     }
 
     await loadClassroomOperationDateData(safeDate, true);
+    // A delayed date fetch must not bring back a class the teacher has left.
+    if (String(state.ui?.currentClassId || '') !== String(cid)) return;
     renderClass(cid);
 }
 
@@ -1839,8 +1841,41 @@ window.openStudentActionSheetV4 = function(sid, cid, hasPlanner) {
     showModal('학생 관리', html);
 };
 
+// Classroom step 1: same-screen navigation among accessible active classes.
+// Reuse the progress screen's teacher class roster, but never offer a class
+// denied by the actual class access guard.
+function getClassroomSwitchableClasses(currentClassId) {
+    return getClassProgressAssignedClasses(currentClassId).filter(cls =>
+        Number(cls?.is_active) !== 0 &&
+        (typeof canCurrentUserAccessClass !== 'function' || canCurrentUserAccessClass(cls.id)) &&
+        (typeof isClassVisibleForCurrentTeacher !== 'function' || isClassVisibleForCurrentTeacher(cls))
+    );
+}
+
+function renderClassroomSwitchTabs(classId) {
+    const classes = getClassroomSwitchableClasses(classId);
+    if (!classes.length) return '';
+    return `<nav class="ap-classroom-switcher" aria-label="반 관리 담당 반 전환">
+        <div class="ap-classroom-class-tabs" role="group">${classes.map(cls => {
+            const selected = String(cls.id) === String(classId);
+            const label = [cls.grade, cls.name].filter(Boolean).join(' · ') || String(cls.name || cls.id);
+            return `<button type="button" class="ap-classroom-class-tab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}" onclick="switchClassroomClass(${classProgressJsArg(cls.id)})">${apEscapeHtml(label)}</button>`;
+        }).join('')}</div>
+    </nav>`;
+}
+
+function switchClassroomClass(targetClassId) {
+    const targetId = String(targetClassId || '');
+    const currentId = String(state.ui?.currentClassId || '');
+    if (!targetId || targetId === currentId) return false;
+    if (!getClassroomSwitchableClasses(currentId).some(cls => String(cls.id) === targetId)) return false;
+    // The date is shared intentionally. Do not return through the dashboard.
+    renderClass(targetId, { preserveClassTabs: true });
+    return true;
+}
+
 // [Classroom v4-B]: 안정형 현장 운영판
-function renderClass(cid) {
+function renderClass(cid, options = {}) {
     injectClassroomStyles();
     const defaultTab = state.ui.classDefaultTab || '';
     state.ui.classDefaultTab = null;
@@ -1862,17 +1897,37 @@ function renderClass(cid) {
     const { todayAttMap, todayHwMap } = buildClassroomTodayMaps(students, today);
     const plannerEnabled = isPlannerTargetClass(cls);
 
-    document.getElementById('app-root').innerHTML = `
-        <div class="cls-fade-in cls-v4-wrap ap-classroom-shell" data-class-id="${apEscapeHtml(String(cid))}">
-            ${renderClassTopBarV4B(cls, summary, today)}
-            ${renderClassToolBarV4B(cid, plannerEnabled, today)}
-            <div class="cls-v4-section ap-classroom-section">
-                <h3 class="apms-section-title">학생 명단</h3>
-            </div>
-            ${renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, summary.isScheduled, plannerEnabled, today)}
-            ${renderClassroomMonthlyStatusBoard(cid, students, today)}
+    const workspaceHtml = `
+        ${renderClassTopBarV4B(cls, summary, today)}
+        ${renderClassToolBarV4B(cid, plannerEnabled, today)}
+        <div class="cls-v4-section ap-classroom-section">
+            <h3 class="apms-section-title">학생 명단</h3>
         </div>
+        ${renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, summary.isScheduled, plannerEnabled, today)}
+        ${renderClassroomMonthlyStatusBoard(cid, students, today)}
     `;
+    const root = document.getElementById('app-root');
+    const existingShell = options.preserveClassTabs && typeof root?.querySelector === 'function'
+        ? root.querySelector('.ap-classroom-shell') : null;
+    const tabs = existingShell?.querySelector('.ap-classroom-class-tabs');
+    const workspace = existingShell?.querySelector('.ap-classroom-workspace');
+    if (tabs && workspace) {
+        // Keep the class selector DOM and its horizontal scroll/focus in place.
+        existingShell.setAttribute('data-class-id', String(cid));
+        workspace.innerHTML = workspaceHtml;
+        tabs.querySelectorAll('.ap-classroom-class-tab').forEach(button => {
+            const selected = button.getAttribute('data-class-id') === String(cid);
+            button.classList.toggle('is-active', selected);
+            button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+        });
+    } else {
+        root.innerHTML = `
+            <div class="cls-fade-in cls-v4-wrap ap-classroom-shell" data-class-id="${apEscapeHtml(String(cid))}">
+                ${renderClassroomSwitchTabs(cid)}
+                <div class="ap-classroom-workspace">${workspaceHtml}</div>
+            </div>
+        `;
+    }
 
     ensureClassroomMonthlyStatusCache(cid, today, students);
 
