@@ -49,7 +49,7 @@
 - **22_매산여고_1학기_중간_고1_기출** (1건): q15 OPEN_UNSUPPORTED B_two_curves — 두 이차함수 f, g의 그래프를 한 그림에 함께 그려야 하므로 지원되지 않는다.
 - [x] **22_복성고_1학기_기말_고1_기출** (1건): q18 OPEN_UNSUPPORTED C_number_line — 수직선 위 해집합 4<x<a 와 정수 5, 6의 위치를 나타내야 하며 수직선 도식은 계약에 없다.
 - [x] **22_복성고_1학기_중간_고1_기출** (1건): q10 OPEN_UNSUPPORTED A_construction_ops — 변을 2:1로 내분하는 점을 만드는 연산이 없어 D,E,F를 정확히 작도할 수 없다
-- **22_순천고_1학기_기말_고2_수학I** (1건): q2 OPEN_UNSUPPORTED other — 변의 길이가 없고 각 두 개와 한 변만 주어진 삼각형이라 좌표 없이 그릴 수 없다.
+- [x] **22_순천고_1학기_기말_고2_수학I** (1건): q2 OPEN_UNSUPPORTED other — 변의 길이가 없고 각 두 개와 한 변만 주어진 삼각형이라 좌표 없이 그릴 수 없다.
 - **22_순천여고_1학기_중간_고1_기출** (1건): q8 OPEN_UNSUPPORTED F_irrational_coefficients — 접하는 포물선의 계수 k=-2±2sqrt2가 무리수라 정확한 유리 계수 그래프 계획으로 표현할 수 없음
 - **22_팔마고_1학기_기말_고1_기출** (1건): q3 OPEN_UNSUPPORTED A_construction_ops — 1:3 내분점 D,E,F와 삼각형 DEF의 무게중심을 작도하는 연산(일반 내분점·무게중심)이 계약에 없고 파
 - **23_강남여고_1학기_기말_고1_기출** (1건): q3 OPEN_UNSUPPORTED A_construction_ops — 2:1 내분점과 외분점은 계약의 작도 연산(중점, 수선의 발 등)으로 정확히 표현할 수 없다.
