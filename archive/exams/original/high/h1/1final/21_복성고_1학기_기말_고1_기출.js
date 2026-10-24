@@ -493,7 +493,11 @@ window.questionBank = [
       "$6\\sqrt5$"
     ],
     "answer": "⑤",
-    "solution": "$AP:PB=3:2$이므로 내분점은\n$P=\\left(\\dfrac{2\\cdot\\frac12+3\\cdot(-2)}5,\\dfrac{2\\cdot(-2)+3\\cdot3}5\\right)$\n$=(-1,1)$이다.\n외분점은\n$Q=\\left(\\dfrac{3\\cdot(-2)-2\\cdot\\frac12}{3-2},\\dfrac{3\\cdot3-2\\cdot(-2)}{3-2}\\right)$\n$=(-7,13)$이다.\n따라서\n$PQ=\\sqrt{(-7-(-1))^2+(13-1)^2}$\n$=\\sqrt{(-6)^2+12^2}$\n$=\\sqrt{180}=6\\sqrt5$이다.\n따라서 정답은 ⑤이다."
+    "solution": "$AP:PB=3:2$이므로 내분점은\n$P=\\left(\\dfrac{2\\cdot\\frac12+3\\cdot(-2)}5,\\dfrac{2\\cdot(-2)+3\\cdot3}5\\right)$\n$=(-1,1)$이다.\n외분점은\n$Q=\\left(\\dfrac{3\\cdot(-2)-2\\cdot\\frac12}{3-2},\\dfrac{3\\cdot3-2\\cdot(-2)}{3-2}\\right)$\n$=(-7,13)$이다.\n따라서\n$PQ=\\sqrt{(-7-(-1))^2+(13-1)^2}$\n$=\\sqrt{(-6)^2+12^2}$\n$=\\sqrt{180}=6\\sqrt5$이다.\n따라서 정답은 ⑤이다.",
+    "solutionImage": "assets/images/21_복성고_1학기_기말_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "선분 AB를 3:2로 내분하는 점 P(-1,1)과 외분하는 점 Q(-7,13) 사이의 거리는 6√5이다.",
+    "solutionImageCaption": "선분 AB를 3:2로 내분하는 점 P(-1,1)과 외분하는 점 Q(-7,13) 사이의 거리는 6√5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -749,7 +753,11 @@ window.questionBank = [
       "$10$"
     ],
     "answer": "③",
-    "solution": "넓이비를 구하기 위해 $B=(0,0)$, $C=(1,0)$으로 놓고 $A=(u,v)$라 하자.\n$BC$를 $2:3$으로 외분하는 점 $E$는 $B$의 바깥쪽에 있으므로\n$E=\\left(\\dfrac{2\\cdot1-3\\cdot0}{2-3},0\\right)=(-2,0)$이다.\n$AB$를 $1:2$로 외분하는 점 $F$는 $A$를 지나 더 나아간 점이다.\n외분점 공식에서\n$F=\\left(\\dfrac{1\\cdot0-2u}{1-2},\\dfrac{1\\cdot0-2v}{1-2}\\right)=(2u,2v)$이다.\n밑변 $EC$의 길이는\n$1-(-2)=3$이고, 점 $F$에서 $BC$까지의 높이는 $2|v|$이다.\n한편 삼각형 $ABC$의 밑변 $BC$는 길이 $1$, 높이는 $|v|$이다.\n따라서\n$[FEC]=\\dfrac12\\cdot3\\cdot2|v|=3|v|$,\n$[ABC]=\\dfrac12\\cdot1\\cdot|v|=\\dfrac{|v|}{2}$이다.\n그러므로\n$k=\\dfrac{[FEC]}{[ABC]}=\\dfrac{3|v|}{|v|/2}=6$이다.\n따라서 정답은 ③이다."
+    "solution": "넓이비를 구하기 위해 $B=(0,0)$, $C=(1,0)$으로 놓고 $A=(u,v)$라 하자.\n$BC$를 $2:3$으로 외분하는 점 $E$는 $B$의 바깥쪽에 있으므로\n$E=\\left(\\dfrac{2\\cdot1-3\\cdot0}{2-3},0\\right)=(-2,0)$이다.\n$AB$를 $1:2$로 외분하는 점 $F$는 $A$를 지나 더 나아간 점이다.\n외분점 공식에서\n$F=\\left(\\dfrac{1\\cdot0-2u}{1-2},\\dfrac{1\\cdot0-2v}{1-2}\\right)=(2u,2v)$이다.\n밑변 $EC$의 길이는\n$1-(-2)=3$이고, 점 $F$에서 $BC$까지의 높이는 $2|v|$이다.\n한편 삼각형 $ABC$의 밑변 $BC$는 길이 $1$, 높이는 $|v|$이다.\n따라서\n$[FEC]=\\dfrac12\\cdot3\\cdot2|v|=3|v|$,\n$[ABC]=\\dfrac12\\cdot1\\cdot|v|=\\dfrac{|v|}{2}$이다.\n그러므로\n$k=\\dfrac{[FEC]}{[ABC]}=\\dfrac{3|v|}{|v|/2}=6$이다.\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/21_복성고_1학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "B(0,0), C(1,0)로 놓으면 E(-2,0)이고 F는 BA를 2배 늘린 점이다. 밑변 EC=3, 높이 2|v|이므로 삼각형 FEC의 넓이는 삼각형 ABC의 6배이다.",
+    "solutionImageCaption": "B(0,0), C(1,0)로 놓으면 E(-2,0)이고 F는 BA를 2배 늘린 점이다. 밑변 EC=3, 높이 2|v|이므로 삼각형 FEC의 넓이는 삼각형 ABC의 6배이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
