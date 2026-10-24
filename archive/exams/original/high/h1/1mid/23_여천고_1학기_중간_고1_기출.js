@@ -836,7 +836,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q18-solution-b4.svg",
+    "solutionImageAlt": "조건을 만족하는 한 예로 f(x)=(x-2)², g(x)=-x²+10을 그리면 f는 x축에 접하고 두 그래프는 제2사분면의 A와 제1사분면의 B에서 만난다.",
+    "solutionImageCaption": "조건을 만족하는 한 예로 f(x)=(x-2)², g(x)=-x²+10을 그리면 f는 x축에 접하고 두 그래프는 제2사분면의 A와 제1사분면의 B에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

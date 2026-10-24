@@ -566,7 +566,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
     "subUnit": "이차방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_1학기_기말_고1_기출/q16-solution-b4.svg",
+    "solutionImageAlt": "a=1일 때 y=g(x)=-(x+6)(x-2)의 그래프이다. x축 위쪽인 -6<x<2의 정수는 -5부터 1까지 7개이다.",
+    "solutionImageCaption": "a=1일 때 y=g(x)=-(x+6)(x-2)의 그래프이다. x축 위쪽인 -6<x<2의 정수는 -5부터 1까지 7개이다.",
+    "solutionImageSize": "full"
   },
                     {
     "id": 17,

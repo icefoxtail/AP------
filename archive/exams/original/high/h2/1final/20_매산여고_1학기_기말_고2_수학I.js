@@ -311,7 +311,11 @@ window.questionBank = [  {
     "choices": [],
     "images": [],
     "answer": "1) $\\cos B=\\frac1{21}$, 2) $2\\sqrt{110}$",
-    "solution": "1) 코사인 법칙을 이용하면\n$b^2=a^2+c^2-2ac\\cos B$이다.\n주어진 $a=7$, $b=9$, $c=6$을 대입하면\n$9^2=7^2+6^2-2\\cdot7\\cdot6\\cos B$\n$81=85-84\\cos B$\n$84\\cos B=4$\n$\\cos B=\\frac1{21}$이다.\n\n2) 삼각형의 넓이는 두 변과 그 끼인각으로\n$\\frac12ac\\sin B$이다.\n$\\cos B=\\frac1{21}$이고 $B$는 삼각형의 내각이므로\n$\\sin B=\\sqrt{1-\\cos^2B}$\n$=\\sqrt{1-\\frac1{441}}$\n$=\\frac{2\\sqrt{110}}{21}$이다.\n따라서 넓이는\n$\\frac12\\cdot7\\cdot6\\cdot\\frac{2\\sqrt{110}}{21}$\n$=2\\sqrt{110}$이다."
+    "solution": "1) 코사인 법칙을 이용하면\n$b^2=a^2+c^2-2ac\\cos B$이다.\n주어진 $a=7$, $b=9$, $c=6$을 대입하면\n$9^2=7^2+6^2-2\\cdot7\\cdot6\\cos B$\n$81=85-84\\cos B$\n$84\\cos B=4$\n$\\cos B=\\frac1{21}$이다.\n\n2) 삼각형의 넓이는 두 변과 그 끼인각으로\n$\\frac12ac\\sin B$이다.\n$\\cos B=\\frac1{21}$이고 $B$는 삼각형의 내각이므로\n$\\sin B=\\sqrt{1-\\cos^2B}$\n$=\\sqrt{1-\\frac1{441}}$\n$=\\frac{2\\sqrt{110}}{21}$이다.\n따라서 넓이는\n$\\frac12\\cdot7\\cdot6\\cdot\\frac{2\\sqrt{110}}{21}$\n$=2\\sqrt{110}$이다.",
+    "solutionImage": "assets/images/20_매산여고_1학기_기말_고2_수학I/q21-solution.svg",
+    "solutionImageAlt": "삼각형 ABC에서 a=BC=7, b=CA=9, c=AB=6이고, 코사인법칙으로 cos B=1/21을 구한 뒤 sin B=2√110/21로 넓이 2√110을 얻는다.",
+    "solutionImageCaption": "삼각형 ABC에서 a=BC=7, b=CA=9, c=AB=6이고, 코사인법칙으로 cos B=1/21을 구한 뒤 sin B=2√110/21로 넓이 2√110을 얻는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

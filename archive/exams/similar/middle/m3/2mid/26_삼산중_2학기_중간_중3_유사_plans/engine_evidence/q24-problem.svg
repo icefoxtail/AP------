@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 280" width="540" height="280" role="img" aria-labelledby="q24.svg-title q24.svg-desc">
+  <title id="q24.svg-title">원의 중심 작도와 현의 수직이등분선 증명</title>
+  <desc id="q24.svg-desc">(1) 깨진 원형 거울의 중심 작도 원리와 (2) 원의 중심에서 현에 내린 수선의 현 이등분 증명</desc>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  
+  <!-- Divider -->
+  <line x1="260" y1="20" x2="260" y2="260" stroke="#e0e0e0" stroke-width="1.5"/>
+  
+  <!-- Left panel: Broken mirror (1) -->
+  <text x="30" y="40" font-family="sans-serif" font-size="15" font-weight="bold" fill="#222222">&lt;그림 1&gt; 거울 복원</text>
+  <!-- Broken arc -->
+  <path d="M 60,180 A 80 80 0 0 1 200,100" fill="none" stroke="#222222" stroke-width="3"/>
+  <path d="M 60,180 Q 110,210 140,190 T 200,100" fill="#f5f5f5" stroke="#999999" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- Two chords and perp bisectors -->
+  <line x1="75" y1="165" x2="125" y2="130" stroke="#666666" stroke-width="1.5"/>
+  <line x1="135" y1="125" x2="185" y2="105" stroke="#666666" stroke-width="1.5"/>
+  
+  <!-- Right panel: Proof diagram (2) -->
+  <text x="290" y="40" font-family="sans-serif" font-size="15" font-weight="bold" fill="#222222">&lt;그림 2&gt; 현의 이등분 증명</text>
+  <circle cx="400" cy="150" r="90" fill="none" stroke="#222222" stroke-width="2"/>
+  <circle cx="400" cy="150" r="3" fill="#222222"/>
+  <text x="406" y="146" font-family="sans-serif" font-size="16" font-weight="bold" fill="#222222">O</text>
+  
+  <!-- Chord AB: horizontal at y=205. Half chord = sqrt(90^2 - 55^2) = 71. x from 329 to 471 -->
+  <line x1="329" y1="205" x2="471" y2="205" stroke="#222222" stroke-width="2"/>
+  <circle cx="329" cy="205" r="3" fill="#222222"/>
+  <text x="314" y="210" font-family="sans-serif" font-size="16" font-weight="bold" fill="#222222">A</text>
+  
+  <circle cx="471" cy="205" r="3" fill="#222222"/>
+  <text x="478" y="210" font-family="sans-serif" font-size="16" font-weight="bold" fill="#222222">B</text>
+  
+  <!-- Perpendicular OM -->
+  <line x1="400" y1="150" x2="400" y2="205" stroke="#222222" stroke-width="1.8"/>
+  <circle cx="400" cy="205" r="2.5" fill="#222222"/>
+  <text x="406" y="224" font-family="sans-serif" font-size="15" font-weight="bold" fill="#222222">M</text>
+  <rect x="400" y="193" width="12" height="12" fill="none" stroke="#222222" stroke-width="1.2"/>
+  
+  <!-- Radii OA and OB -->
+  <line x1="400" y1="150" x2="329" y2="205" stroke="#0066cc" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="400" y1="150" x2="471" y2="205" stroke="#0066cc" stroke-width="1.5" stroke-dasharray="3,3"/>
+</svg>

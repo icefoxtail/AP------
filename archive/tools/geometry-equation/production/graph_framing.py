@@ -93,6 +93,7 @@ def _fit_cubic_quartic(plan,coefficients):
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 def fit_overview(plan):
+    if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
     if plan.get('family')=='rational':return _fit_rational_overview(plan)
     if plan.get('family')=='sqrt-affine':return _fit_sqrt_affine_overview(plan)
     if plan.get('family')=='absolute-value':return _fit_absolute_value_overview(plan)
@@ -107,7 +108,9 @@ def fit_overview(plan):
     try:c=[Fraction(v) for v in values]
     except (ValueError,ZeroDivisionError):raise ValueError('INVALID_FRAMING_COEFFICIENTS') from None
     while len(c)>1 and c[-1]==0:c.pop()
-    if len(c) in (4,5):return _fit_cubic_quartic(plan,c)
+    if len(c) in (4,5):
+        if 'applicationAxes' in plan:raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
+        return _fit_cubic_quartic(plan,c)
     if len(c)!=3:raise ValueError('UNSUPPORTED_OVERVIEW_DEGREE')
     constant,linear,a=c;h=-linear/(2*a);k=constant-linear*linear/(4*a)
     hf,kf,af=map(float,(h,k,a))
@@ -221,6 +224,34 @@ def quadratic_source_interval(source_domain):
     if not ends[0]<ends[1]:raise ValueError('INVALID_POLYNOMIAL_SOURCE_INTERVAL')
     return ends[0],ends[1],list(states)
 
+# Application-problem axes (opt-in graphPlan.applicationAxes:true): a word problem whose axes measure different quantities (a count 0..50 and a
+# profit 0..45000) gets its own scale on each axis, so ticks are the real values on each axis. Pure mathematical graphs keep one scale: the flag is
+# accepted only for a quadratic on a restricted source interval (a word problem always restricts its variable).
+APPLICATION_PLOT_HEIGHT=360
+
+def application_axes_frame(points):
+    """Separate scales on the two axes: the points fill the 448-wide plot with 40 px clear at each edge and the plot is APPLICATION_PLOT_HEIGHT
+    high. Returns the viewport, the integer plot height, the x scale (px per x unit) and the y/x scale ratio."""
+    xs=[p[0] for p in points];ys=[p[1] for p in points];xspan,yspan=max(xs)-min(xs),max(ys)-min(ys)
+    if xspan<=0 or yspan<=0:raise ValueError('APPLICATION_AXES_FRAME_DEGENERATE')
+    height=APPLICATION_PLOT_HEIGHT
+    sx=(QUADRATIC_PLOT_WIDTH-2*EQUAL_UNIT_EDGE_PX)/xspan;sy=(height-2*EQUAL_UNIT_EDGE_PX)/yspan
+    viewport=[min(xs)-EQUAL_UNIT_EDGE_PX/sx,max(xs)+EQUAL_UNIT_EDGE_PX/sx,min(ys)-EQUAL_UNIT_EDGE_PX/sy,max(ys)+EQUAL_UNIT_EDGE_PX/sy]
+    if not all(math.isfinite(v) and abs(v)<=1e9 for v in viewport) or not math.isfinite(sy/sx) or sy/sx<=0:raise ValueError('UNSUPPORTED_FRAMING_NUMERIC_SCOPE')
+    return viewport,height,sx,sy/sx
+
+def application_ticks_valid(values,lo,hi):
+    """The author's tick values for one application axis: 2 to 8 distinct nonzero values in an arithmetic progression whose step is 1, 2 or 5 times a
+    power of ten, every value a multiple of the step and inside the viewport."""
+    try:ticks=sorted(float(Fraction(str(v))) for v in values)
+    except (TypeError,ValueError,ZeroDivisionError):return False
+    if not 2<=len(ticks)<=8 or any(abs(v)<1e-12 or not lo<=v<=hi for v in ticks):return False
+    step=ticks[1]-ticks[0]
+    if step<=0 or any(abs((b-a)-step)>1e-9*max(1,abs(step)) for a,b in zip(ticks,ticks[1:])):return False
+    mantissa=step/10**math.floor(math.log10(step))
+    if not any(abs(mantissa-m)<1e-9 for m in (1,2,5)):return False
+    return all(abs(v/step-round(v/step))<1e-9 for v in ticks)
+
 def _fit_quadratic_interval(plan,c,source_domain,required,line_points):
     """The curve only on the source interval, with its endpoint dots; the frame holds the interval, its values, the key points and the axes."""
     lo,hi,states=quadratic_source_interval(source_domain)
@@ -233,11 +264,21 @@ def _fit_quadratic_interval(plan,c,source_domain,required,line_points):
     values=[f(lo),f(hi)]+([f(h)] if lo<h<hi else [])
     xs=[float(lo),float(hi)]+([float(h)] if lo<h<hi else [])
     points=[(0.0,0.0)]+list(zip(xs,[float(v) for v in values]))+[(p['x'],p['y']) for p in required+line_points]
-    limit=plot_height_limit(plan)
-    for ratio in axis_ratios(plan,points,limit):
-        viewport,height,scale=equal_unit_frame(points,limit,ratio)
-        if float(hi-lo)*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
-    else:raise ValueError('EQUAL_UNIT_CURVE_TOO_NARROW')
+    application=plan.get('applicationAxes')
+    if application not in (None,True):raise ValueError('INVALID_APPLICATION_AXES')
+    if application:
+        if plan.get('axisSqueeze') is not None or plan.get('plotCanvas') is not None:raise ValueError('INVALID_APPLICATION_AXES')
+        viewport,height,scale,ratio=application_axes_frame(points)
+        if float(hi-lo)*scale<EQUAL_UNIT_MIN_CURVE_PX:raise ValueError('APPLICATION_AXES_CURVE_TOO_NARROW')
+        ticks=plan.get('axisTickValues')
+        for axis,(lo_v,hi_v) in (('x',viewport[0:2]),('y',viewport[2:4])):
+            if not isinstance(ticks,dict) or set(ticks)!={'x','y'} or not isinstance(ticks[axis],list) or not application_ticks_valid(ticks[axis],lo_v,hi_v):raise ValueError('APPLICATION_AXES_TICKS_INVALID:'+axis)
+    else:
+        limit=plot_height_limit(plan)
+        for ratio in axis_ratios(plan,points,limit):
+            viewport,height,scale=equal_unit_frame(points,limit,ratio)
+            if float(hi-lo)*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
+        else:raise ValueError('EQUAL_UNIT_CURVE_TOO_NARROW')
     features={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':[{'side':'START','x':str(lo),'y':str(f(lo)),'state':states[0]},{'side':'END','x':str(hi),'y':str(f(hi)),'state':states[1]}]}
     policy={'schemaVersion':'POLYNOMIAL_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':4,'minimumMarkerDiameterCssPx':3}
     fitted={**plan,'domain':[float(lo),float(hi)],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'POLYNOMIAL_INTERVAL_OVERVIEW_v1','intervalFeatures':features,'intervalFeaturePolicy':policy,'equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}}
@@ -523,9 +564,115 @@ def _fit_logarithmic_affine_overview(plan):
     fitted={**plan,'domain':[lo,hi],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'LOGARITHMIC_AFFINE_OVERVIEW_v1','logarithmicFeatures':features,'logarithmicFeaturePolicy':policy}
     return {'graphPlan':fitted,'policy':'LOGARITHMIC_AFFINE_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan['domain'],'viewport':plan['viewport']}}
 
+# ---- sine / cosine on an explicit interval (several periods) with horizontal or slanted reference lines -----------------------------------
+# sourceDomain {kind:'INTERVAL_PI',rangePi:[lo,hi],states:[start,end]} (exact multiples of pi) replaces the one-period window; referenceLines
+# [{id,y}|{id,slope,intercept}] each carry the author's claim intersectionCount. The engine finds every crossing (closed form for a horizontal
+# line, sign-change bisection for a slanted one); the observer finds them again with SymPy and refuses a different count or position.
+TRIG_INTERVAL_MAX_PERIODS=12
+TRIG_INTERVAL_MAX_CROSSINGS=40
+
+def trig_line_specs(plan,code='TRIG_LINE'):
+    rows=plan.get('referenceLines')
+    if rows is None:return []
+    if not isinstance(rows,list) or len(rows)>3:raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+    out=[];seen=set()
+    for row in rows:
+        if not isinstance(row,dict) or not isinstance(row.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',row['id']) or row['id'] in seen:raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+        seen.add(row['id'])
+        count=row.get('intersectionCount')
+        if isinstance(count,bool) or not isinstance(count,int) or not 0<=count<=TRIG_INTERVAL_MAX_CROSSINGS:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_INVALID:'+row['id'])
+        if set(row)-{'id','y','slope','intercept','intersectionCount'}:raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+        if 'y' in row:
+            if 'slope' in row or 'intercept' in row:raise ValueError('TRIG_LINE_FORM_INVALID:'+row['id'])
+            out.append({'id':row['id'],'slope':Fraction(0),'intercept':_piecewise_fraction(row['y'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']),'claim':count,'horizontal':True})
+        else:
+            if 'slope' not in row or 'intercept' not in row:raise ValueError('TRIG_LINE_FORM_INVALID:'+row['id'])
+            slope=_piecewise_fraction(row['slope'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']);intercept=_piecewise_fraction(row['intercept'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
+            if slope==0:raise ValueError('TRIG_LINE_SLOPE_ZERO:'+row['id'])
+            out.append({'id':row['id'],'slope':slope,'intercept':intercept,'claim':count,'horizontal':False})
+    return out
+
+def trig_interval_source(plan):
+    source=plan.get('sourceDomain')
+    if not isinstance(source,dict) or set(source)-{'kind','rangePi','states'} or not isinstance(source.get('rangePi'),list) or len(source['rangePi'])!=2:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    lo,hi=(_piecewise_fraction(value,'INVALID_TRIG_INTERVAL') for value in source['rangePi'])
+    states=source.get('states',['CLOSED','CLOSED'])
+    if not lo<hi or not isinstance(states,list) or len(states)!=2 or any(state not in {'OPEN','CLOSED'} for state in states):raise ValueError('INVALID_TRIG_INTERVAL')
+    return lo,hi,list(states)
+
+def trig_line_crossings(function,a,k,c,phase,lo,hi,states,line):
+    """Every x (radians) in the interval where a*F(k*x+phase*pi)+c meets the line, with its y. Closed form for a horizontal line, sign changes for a slanted one."""
+    x0,x1=float(lo)*math.pi,float(hi)*math.pi;slope,intercept=float(line['slope']),float(line['intercept'])
+    def inside(x):
+        eps=1e-9*max(1.0,abs(x))
+        return (x>x0+eps if states[0]=='OPEN' else x>=x0-eps) and (x<x1-eps if states[1]=='OPEN' else x<=x1+eps)
+    found=[]
+    if line['horizontal']:
+        t=(line['intercept']-c)/a
+        if abs(t)<=1:
+            base=math.asin(float(t)) if function=='SIN' else math.acos(float(t))
+            thetas=[base,math.pi-base] if function=='SIN' else [base,-base]
+            kf=float(k);shift=float(phase)*math.pi
+            reach=sorted([kf*x0+shift,kf*x1+shift])
+            for theta in thetas:
+                first=math.floor((reach[0]-theta)/(2*math.pi))-1;last=math.ceil((reach[1]-theta)/(2*math.pi))+1
+                for j in range(first,last+1):found.append((theta+2*math.pi*j-shift)/kf)
+    else:
+        kf=float(k);shift=float(phase)*math.pi;af=float(a);cf=float(c);fn=math.sin if function=='SIN' else math.cos
+        gap=lambda x:af*fn(kf*x+shift)+cf-(slope*x+intercept)
+        steps=max(2000,int(400*(x1-x0)/math.pi));previous=x0;value=gap(previous)
+        for index in range(1,steps+1):
+            current=x0+(x1-x0)*index/steps;now=gap(current)
+            if value==0:found.append(previous)
+            elif value*now<0:
+                left,right,gl=previous,current,value
+                for _ in range(80):
+                    mid=(left+right)/2;gm=gap(mid)
+                    if gl*gm<=0:right=mid
+                    else:left,gl=mid,gm
+                found.append((left+right)/2)
+            previous,value=current,now
+        if value==0:found.append(previous)
+    unique=[]
+    for x in sorted(found):
+        if inside(x) and (not unique or x-unique[-1]>1e-7*max(1.0,abs(x))):unique.append(x)
+    return [(x,slope*x+intercept) for x in unique]
+
+def _fit_trigonometric_interval(plan,function):
+    if function not in {'SIN','COS'}:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    lo,hi,states=trig_interval_source(plan)
+    if 'domain' in plan or 'viewport' in plan:
+        _valid_exp_log_display(plan,'TRIGONOMETRIC')
+    a,k,c=_exp_log_coefficients(plan.get('coefficients'),3,'TRIGONOMETRIC');phase=_piecewise_fraction(plan.get('phasePi'),'INVALID_TRIGONOMETRIC_PHASE')
+    if a==0 or k==0:raise ValueError('TRIGONOMETRIC_NONZERO_SCALE_AND_RATE_REQUIRED')
+    rate=abs(k);periods=(hi-lo)*rate/2
+    if periods<Fraction(1,4) or periods>TRIG_INTERVAL_MAX_PERIODS:raise ValueError('TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED')
+    x0,x1=float(lo)*math.pi,float(hi)*math.pi
+    rows=[];ys=[float(c-abs(a)),float(c+abs(a)),0.0]
+    for line in trig_line_specs(plan):
+        crossings=trig_line_crossings(function,a,k,c,phase,lo,hi,states,line)
+        if len(crossings)!=line['claim']:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_MISMATCH:'+line['id']+':engine finds '+str(len(crossings))+' intersection(s)')
+        for x,_ in crossings:
+            if (states[0]=='CLOSED' and abs(x-x0)<1e-9) or (states[1]=='CLOSED' and abs(x-x1)<1e-9):raise ValueError('TRIG_LINE_THROUGH_INTERVAL_END:'+line['id'])
+        ys.append(float(line['intercept']) if line['horizontal'] else 0.0);ys.extend(y for _,y in crossings)
+        rows.append({'id':line['id'],'kind':'HORIZONTAL' if line['horizontal'] else 'SLANTED','slope':str(line['slope']),'intercept':str(line['intercept']),'intersections':[{'x':x,'y':y} for x,y in crossings]})
+    evaluator=math.sin if function=='SIN' else math.cos
+    end_y=[float(a)*evaluator(float(k)*x+float(phase)*math.pi)+float(c) for x in (x0,x1)]
+    xpad=max(.04*(x1-x0),.3);low=min(ys);high=max(ys);ypad=.18*max(1.0,high-low)
+    viewport=[x0-xpad,x1+xpad,low-ypad,high+ypad]
+    features={'schemaVersion':'TRIGONOMETRIC_INTERVAL_FEATURES_v1','function':function,'phasePi':str(phase),'periodPiMultiple':str(Fraction(2,1)/rate),'amplitude':str(a),'midline':str(c),'sourceInterval':{'loPi':str(lo),'hiPi':str(hi),'states':states},'lines':rows}
+    policy={'schemaVersion':'TRIGONOMETRIC_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':3.2,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':40,'minimumAmplitudeCssPx':20}
+    interval={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':[{'side':'START','x':repr(x0),'y':repr(end_y[0]),'state':states[0]},{'side':'END','x':repr(x1),'y':repr(end_y[1]),'state':states[1]}]}
+    interval_policy={'schemaVersion':'POLYNOMIAL_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':4,'minimumMarkerDiameterCssPx':3}
+    if not all(math.isfinite(value) and abs(value)<=1e6 for value in [x0,x1,*viewport]):raise ValueError('UNSUPPORTED_TRIGONOMETRIC_NUMERIC_SCOPE')
+    fitted={**plan,'domain':[x0,x1],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v1','trigIntervalFeatures':features,'trigIntervalPolicy':policy,'intervalFeatures':interval,'intervalFeaturePolicy':interval_policy}
+    return {'graphPlan':fitted,'policy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
+
 def _fit_trigonometric_overview(plan):
     function=plan.get('function')
     if function not in {'SIN','COS','TAN'}:raise ValueError('UNSUPPORTED_TRIGONOMETRIC_FUNCTION')
+    if isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL_PI':return _fit_trigonometric_interval(plan,function)
+    if plan.get('referenceLines') is not None:raise ValueError('TRIG_REFERENCE_LINES_REQUIRE_INTERVAL_PI')
     expected_domain={'kind':'ALL_REALS'} if function in {'SIN','COS'} else {'kind':'ALL_REALS_WITH_TAN_POLES'}
     if plan.get('sourceDomain')!=expected_domain:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
     _valid_exp_log_display(plan,'TRIGONOMETRIC')
@@ -573,7 +720,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 
@@ -800,13 +947,14 @@ def pp_quadratic_roots(c0,c1,c2):
         found.append(value)
     return sorted(found,key=lambda value:float(value))
 
-def piecewise_polynomial_crossings(pieces,intervals,level,source,slope=S.Integer(0)):
+def piecewise_polynomial_crossings(pieces,intervals,level,source,slope=S.Integer(0),curve=None):
     """Every x where g(x)=slope*x+level, exactly (quadratic surds allowed), each once, in increasing order (slope 0: the horizontal line y=level).
-    A piece equal to the line is refused."""
+    A piece equal to the line is refused. With curve=[c0,c1,c2] the reference is that quadratic instead (a referenceCurves entry)."""
     lo,hi,states=source;found=[]
+    reference=list(curve) if curve is not None else [level,slope,S.Integer(0)]
     for coefficients,(a,b) in zip(pieces,intervals):
-        roots=pp_quadratic_roots(coefficients[0]-level,coefficients[1]-slope,coefficients[2])
-        if roots is None:raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_CONTAINS_A_PIECE')
+        roots=pp_quadratic_roots(coefficients[0]-reference[0],coefficients[1]-reference[1],coefficients[2]-reference[2])
+        if roots is None:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_CONTAINS_A_PIECE' if curve is not None else 'PIECEWISE_POLY_REFERENCE_LINE_CONTAINS_A_PIECE')
         for root in roots:
             if a is not None and root<a or b is not None and root>b:continue
             if lo is not None and (root==lo and states[0]=='OPEN' or root==hi and states[1]=='OPEN'):continue
@@ -815,9 +963,30 @@ def piecewise_polynomial_crossings(pieces,intervals,level,source,slope=S.Integer
 
 def _pp_text(value):return pp_surd_text(value)
 
+def piecewise_reference_curves(plan,pieces,breaks):
+    """The referenceCurves of a piecewise plan: at most two other quadratics drawn with the function ({id,coefficients,intersectionX}). Exact
+    coefficients (one radical for the whole plan), a nonzero x^2 coefficient, an id that is a short ASCII name."""
+    raw=plan.get('referenceCurves',[])
+    if not isinstance(raw,list) or len(raw)>2:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+    rows=[];ids=set()
+    for entry in raw:
+        if not isinstance(entry,dict) or set(entry)-{'name'}!={'id','coefficients','intersectionX'} or ('name' in entry and not (isinstance(entry['name'],str) and re.fullmatch(r'[a-hj-wz]',entry['name']))) or not isinstance(entry['id'],str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',entry['id']) or entry['id'] in ids:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        values=entry['coefficients']
+        if not isinstance(values,list) or len(values)!=3 or not isinstance(entry['intersectionX'],list) or len(entry['intersectionX'])>6:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        coefficients=[pp_surd(value,'PIECEWISE_POLY_COEFFICIENT_INVALID') for value in values]
+        if coefficients[2]==0:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_NOT_QUADRATIC:'+entry['id'])
+        ids.add(entry['id']);rows.append({'id':entry['id'],'coefficients':coefficients,'intersectionX':entry['intersectionX']})
+    radicands={r for r in (pp_radicand(v) for v in [c for piece in pieces for c in piece]+[v for pair in breaks for v in pair]+[c for row in rows for c in row['coefficients']]) if r is not None}
+    if len(radicands)>1:raise ValueError('PIECEWISE_POLY_IRRATIONAL_RADICANDS_MIXED:'+','.join(str(r) for r in sorted(radicands)))
+    return rows
+
 def fit_piecewise_polynomial(plan):
+    if 'functionName' in plan and not (isinstance(plan['functionName'],str) and re.fullmatch(r'[a-hj-wz]',plan['functionName'])):raise ValueError('PIECEWISE_POLY_FUNCTION_NAME_INVALID')
     pieces,breaks,source,intervals=piecewise_polynomial_source(plan)
     lo,hi,states=source
+    refs=piecewise_reference_curves(plan,pieces,breaks)
+    def ref_value(row,x_value):return _pp_poly_value(row['coefficients'],x_value)
+    def ref_float(row,x_value):return sum(float(c)*x_value**i for i,c in enumerate(row['coefficients']))
     def g(x_value):
         x_value=S.sympify(x_value)
         for coefficients,interval in zip(pieces,intervals):
@@ -848,8 +1017,12 @@ def fit_piecewise_polynomial(plan):
             if abs(floats[k])>1e6:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
         ids.add(point['id']);at=exact['x'] if 'x' in exact else S.Rational(str(floats['x']))
         if lo is not None and (not lo<=at<=hi or at==lo and states[0]=='OPEN' or at==hi and states[1]=='OPEN'):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_OUTSIDE_SOURCE_DOMAIN:'+point['id'])
-        if abs(g_float(floats['x'])-floats['y'])>1e-8*max(1,abs(floats['y'])):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
-        if len(exact)==2 and abs(S.N(g(exact['x'])-exact['y'],60))>S.Float('1e-40',60):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
+        # A key point lies on the function or, with referenceCurves, on one of those curves.
+        near=lambda value:abs(value-floats['y'])<=1e-8*max(1,abs(floats['y']))
+        if not (near(g_float(floats['x'])) or any(near(ref_float(row,floats['x'])) for row in refs)):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
+        if len(exact)==2:
+            tiny=S.Float('1e-40',60)
+            if abs(S.N(g(exact['x'])-exact['y'],60))>tiny and all(abs(S.N(ref_value(row,exact['x'])-exact['y'],60))>tiny for row in refs):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
         if exact:
             exact_points[point['id']]=[pp_surd_text(exact[k]) if k in exact else (str(Fraction(str(floats[k]))) if floats[k]==int(floats[k]) else None) for k in ('x','y')]
             if None in exact_points[point['id']]:raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_MIXED_EXACT:'+point['id'])
@@ -860,6 +1033,11 @@ def fit_piecewise_polynomial(plan):
         if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_CORNER_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value))
     for x_value,y_value,_ in extrema:
         if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value))
+    # The vertex of every reference curve is a key point the author must mark.
+    for row in refs:
+        h=_pp_norm(-row['coefficients'][1]/(2*row['coefficients'][2]))
+        row['vertex']=(h,ref_value(row,h))
+        if not marked(h,row['vertex'][1]):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_VERTEX_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(h))
     # The display formula (optional) must be the same function as the pieces: exact values at nine points of every piece.
     formula=plan.get('formula')
     if formula is not None:
@@ -908,9 +1086,27 @@ def fit_piecewise_polynomial(plan):
             return row
         if slope==0:crossings.append({'lineId':line['id'],'y':_pp_text(level),'points':[crossing_point(text,root) for (text,_),root in zip(claimed,exact)]})
         else:crossings.append({'lineId':line['id'],'slope':_pp_text(slope),'intercept':_pp_text(level),'points':[crossing_point(text,root) for (text,_),root in zip(claimed,exact)]})
+    # Reference curves: every crossing with the function, claimed exactly (as for a line), drawn once as a dot or as the key point it coincides with.
+    curve_crossings=[]
+    for row in refs:
+        if row['id'] in line_ids:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        exact=piecewise_polynomial_crossings(pieces,intervals,None,source,None,curve=row['coefficients'])
+        claimed=sorted(((text,pp_exact_value(text)) for text in row['intersectionX']),key=lambda item:float(item[1]))
+        if len(claimed)!=len(exact) or any(not pp_same(value,root) for (_,value),root in zip(claimed,exact)):
+            raise ValueError('PIECEWISE_POLY_INTERSECTION_MISMATCH:'+row['id']+':engine finds '+str(len(exact))+' intersection(s)')
+        points=[]
+        for (text,_),root in zip(claimed,exact):
+            x_float=float(root);y_float=float(ref_value(row,root))
+            key_point=next((point for point in required if abs(point['x']-x_float)<=1e-9*max(1,abs(x_float)) and abs(point['y']-y_float)<=1e-9*max(1,abs(y_float))),None)
+            if key_point is not None:x_float,y_float=key_point['x'],key_point['y']
+            entry={'x':text.replace(' ',''),'xValue':x_float,'yValue':y_float}
+            if key_point is not None:entry['keyPoint']=key_point['id']
+            points.append(entry)
+        curve_crossings.append({'curveId':row['id'],'points':points})
     key=[(float(x_value),float(y_value)) for x_value,y_value in corners]+[(float(x_value),float(y_value)) for x_value,y_value,_ in extrema]+required_xy
     key+=[(point['xValue'],point['yValue'] if 'slope' in row else pp_exact_float(row['y'])) for row in crossings for point in row['points']]
     key+=[(0.0,pp_exact_float(row['intercept'] if 'slope' in row else row['y'])) for row in crossings if not row['points']]
+    key+=[(point['xValue'],point['yValue']) for row in curve_crossings for point in row['points']]+[(float(row['vertex'][0]),float(row['vertex'][1])) for row in refs if row.get('vertex')]
     limit=plot_height_limit(plan)
     if lo is not None:
         ends=[(float(lo),float(g(lo))),(float(hi),float(g(hi)))]
@@ -919,19 +1115,20 @@ def fit_piecewise_polynomial(plan):
         # leaves the key heights by a quarter of their range (at least 1), so a steep arm never flattens the figure.
         xs=[p[0] for p in key] or [0.0];ys=[p[1] for p in key] or [0.0]
         span=max(xs)-min(xs);extend=max(1.0,.2*span);ylo,yhi=min(ys),max(ys);band=max(1.0,.25*(yhi-ylo))
+        inband=lambda at:all(ylo-band<=height<=yhi+band for height in [g_float(at)]+[ref_float(row,at) for row in refs])
         def arm(start,direction):
             far=start+direction*extend
-            if ylo-band<=g_float(far)<=yhi+band:return far
+            if inband(far):return far
             near=start
             for _ in range(60):
                 mid=(near+far)/2
-                if ylo-band<=g_float(mid)<=yhi+band:near=mid
+                if inband(mid):near=mid
                 else:far=mid
             return near
         left_x,right_x=arm(min(xs),-1),arm(max(xs),1)
         ends=[(left_x,g_float(left_x)),(right_x,g_float(right_x))]
     for attempt in range(2):
-        points=[(0.0,0.0)]+key+ends
+        points=[(0.0,0.0)]+key+ends+[(end[0],ref_float(row,end[0])) for end in ends for row in refs]
         for ratio in axis_ratios(plan,points,limit):
             viewport,height,scale=equal_unit_frame(points,limit,ratio)
             if (ends[1][0]-ends[0][0])*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
@@ -955,6 +1152,7 @@ def fit_piecewise_polynomial(plan):
         start=draw[0] if a is None else float(a);end=draw[1] if b is None else float(b)
         piece_rows.append({'coefficients':[_pp_text(c) for c in coefficients],'interval':[None if a is None else _pp_text(a),None if b is None else _pp_text(b)],'drawInterval':[start,end]})
     features={'schemaVersion':'PIECEWISE_POLYNOMIAL_FEATURES_v1','pieces':piece_rows,'corners':[{'x':_pp_text(x_value),'y':_pp_text(y_value)} for x_value,y_value in corners],'extrema':[{'x':_pp_text(x_value),'y':_pp_text(y_value),'kind':kind} for x_value,y_value,kind in extrema],'intersections':crossings}
+    if refs:features['referenceCurves']=[{'id':row['id'],'coefficients':[_pp_text(c) for c in row['coefficients']],'drawInterval':draw} for row in refs];features['curveIntersections']=curve_crossings
     fitted={key_name:value for key_name,value in plan.items() if key_name not in ('domain','viewport')}
     if exact_points:
         merged=dict(plan.get('exactCoordinates') or {})

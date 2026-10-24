@@ -488,7 +488,11 @@ window.questionBank = [
     "category": "선분의 내분과 외분",
     "originalCategory": "좌표평면과 직선의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "선분 AB를 2:3으로 내분하는 점 P는 1, 1:3으로 외분하는 점 Q는 -8이다.",
+    "solutionImageCaption": "선분 AB를 2:3으로 내분하는 점 P는 1, 1:3으로 외분하는 점 Q는 -8이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

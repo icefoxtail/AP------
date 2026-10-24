@@ -188,14 +188,12 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
   let canonicalExamDir = null;
 
   if (actualStem) {
-    const candidateDirs = [
-      path.join(REPO_ROOT, 'archive/exams/similar/middle/m1/1mid'),
-      path.join(REPO_ROOT, 'archive/exams/similar/middle/m1/1final'),
-      path.join(REPO_ROOT, 'archive/exams/similar/middle/m2/1mid'),
-      path.join(REPO_ROOT, 'archive/exams/similar/middle/m2/1final'),
-      path.join(REPO_ROOT, 'archive/exams/similar/middle/m3/1mid'),
-      path.join(REPO_ROOT, 'archive/exams/similar/middle/m3/1final')
-    ];
+    const candidateDirs = [];
+    for (const g of ['m1', 'm2', 'm3']) {
+      for (const t of ['1mid', '1final', '2mid', '2final']) {
+        candidateDirs.push(path.join(REPO_ROOT, `archive/exams/similar/middle/${g}/${t}`));
+      }
+    }
     for (const d of candidateDirs) {
       if (fs.existsSync(path.join(d, `${actualStem}.js`))) {
         canonicalExamDir = d;
@@ -497,8 +495,17 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
         errors.push(`Small meta items length mismatch (items=${meta.items?.length}, questions=${totalQuestions})`);
       }
 
-      // Load middle1 taxonomy
-      const taxPath = path.join(REPO_ROOT, 'archive/data/meta-foundation/canonical/packs/middle1/taxonomy.json');
+      // Load canonical taxonomy pack matching grade/curriculum, with global registry fallback
+      let packName = 'middle1';
+      if (actualStem.includes('중3') || (canonicalExamDir && canonicalExamDir.includes('m3'))) {
+        packName = (actualStem.includes('2학기') || canonicalExamDir?.includes('2mid') || canonicalExamDir?.includes('2final')) ? 'middle-geometry' : 'middle3';
+      } else if (actualStem.includes('중2') || (canonicalExamDir && canonicalExamDir.includes('m2'))) {
+        packName = fs.existsSync(path.join(REPO_ROOT, 'archive/data/meta-foundation/canonical/packs/middle2/taxonomy.json')) ? 'middle2' : 'middle-geometry';
+      }
+      let taxPath = path.join(REPO_ROOT, `archive/data/meta-foundation/canonical/packs/${packName}/taxonomy.json`);
+      if (!fs.existsSync(taxPath)) {
+        taxPath = path.join(REPO_ROOT, 'archive/data/meta-foundation/compiled/taxonomy_registry.json');
+      }
       if (fs.existsSync(taxPath)) {
         const tax = JSON.parse(fs.readFileSync(taxPath, 'utf8'));
         const pts = new Set(tax.problemTypes.map(p => p.problemTypeKey));

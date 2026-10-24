@@ -746,7 +746,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "a=5/4이면 -1≤x≤1에서 x=1일 때, a=-5/4이면 x=-1일 때 최댓값 4를 가지므로 두 a의 곱은 -25/16이다.",
+    "solutionImageCaption": "a=5/4이면 -1≤x≤1에서 x=1일 때, a=-5/4이면 x=-1일 때 최댓값 4를 가지므로 두 a의 곱은 -25/16이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -922,6 +926,10 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "m=2/3이면 직선 y=mx+4m-1이 그래프와 서로 다른 세 점에서 만난다(1/2<m<6-2√7의 한 예).",
+    "solutionImageCaption": "m=2/3이면 직선 y=mx+4m-1이 그래프와 서로 다른 세 점에서 만난다(1/2<m<6-2√7의 한 예).",
+    "solutionImageSize": "full"
   }
 ];

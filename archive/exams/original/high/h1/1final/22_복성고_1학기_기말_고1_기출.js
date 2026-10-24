@@ -597,7 +597,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-INEQUALITY_BASIC",
     "subUnit": "부등식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q18-solution-b4.svg",
+    "solutionImageAlt": "a=6일 때 두 해의 공통 범위는 4<x<6이고 정수는 5 하나뿐이다. a가 6보다 커지면 6도 들어가고, 5 이하이면 5가 빠진다.",
+    "solutionImageCaption": "a=6일 때 두 해의 공통 범위는 4<x<6이고 정수는 5 하나뿐이다. a가 6보다 커지면 6도 들어가고, 5 이하이면 5가 빠진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

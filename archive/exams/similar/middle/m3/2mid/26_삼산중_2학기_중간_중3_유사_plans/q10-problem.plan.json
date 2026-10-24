@@ -1,0 +1,110 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "배구 선수가 지면으로부터 높이 $3\\text{",
+  "sourceConditions": [
+    {
+      "id": "q10-c1",
+      "condition": "A 높이 3m, 네트 D 높이 2m",
+      "mappedTo": "seg-net"
+    },
+    {
+      "id": "q10-c2",
+      "condition": "각도 30도 및 45도",
+      "mappedTo": "seg-paths"
+    }
+  ],
+  "newVisualInformation": [
+    "배구공이 A에서 네트 D를 거쳐 바닥 B에 떨어지는 경로"
+  ],
+  "caption": "A지점에서 네트 D를 거쳐 바닥 B로 이동하는 공의 경로",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-DB",
+      "refs": [
+        "D",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "D",
+    "B"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q10.svg",
+  "engineEvidence": {
+    "resultPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q10-problem-result.json",
+    "statePath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q10-problem-state.json",
+    "svgPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q10-problem.svg"
+  }
+}

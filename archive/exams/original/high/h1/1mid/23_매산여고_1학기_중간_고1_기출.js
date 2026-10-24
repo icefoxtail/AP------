@@ -450,7 +450,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "m=3-√7일 때 포물선 y=x²-2(m-1)x의 꼭짓점 V에서 직선 y=-4m+1=-11+4√7이 접한다. m=3+√7일 때도 꼭짓점에서 접한다.",
+    "solutionImageCaption": "m=3-√7일 때 포물선 y=x²-2(m-1)x의 꼭짓점 V에서 직선 y=-4m+1=-11+4√7이 접한다. m=3+√7일 때도 꼭짓점에서 접한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -929,6 +933,10 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "직선 y=mx+12가 m=11/3이면 x=-3, -2/3, 8/3에서, m=2√2이면 x=-√2와 바깥 두 점에서 만나 서로 다른 세 점이 된다.",
+    "solutionImageCaption": "직선 y=mx+12가 m=11/3이면 x=-3, -2/3, 8/3에서, m=2√2이면 x=-√2와 바깥 두 점에서 만나 서로 다른 세 점이 된다.",
+    "solutionImageSize": "full"
   }
 ];

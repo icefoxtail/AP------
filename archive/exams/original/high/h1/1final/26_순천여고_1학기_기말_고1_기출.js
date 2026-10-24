@@ -338,7 +338,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q12-solution-b5.svg",
+    "solutionImageAlt": "-4≤x≤3에서 최댓값은 점 D의 13, 최솟값은 점 B, C의 -5이다.",
+    "solutionImageCaption": "-4≤x≤3에서 최댓값은 점 D의 13, 최솟값은 점 B, C의 -5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

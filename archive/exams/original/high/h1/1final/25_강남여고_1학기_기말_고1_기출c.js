@@ -322,7 +322,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q9-solution.svg",
+    "solutionImageAlt": "꼭짓점의 x좌표가 -2이고 점 (1,0)을 지나므로 대칭축 x=-2에 대해 두 근은 x=-5, x=1이고 |α-β|=6이다(그림은 최고차항 계수가 1/4인 한 예).",
+    "solutionImageCaption": "꼭짓점의 x좌표가 -2이고 점 (1,0)을 지나므로 대칭축 x=-2에 대해 두 근은 x=-5, x=1이고 |α-β|=6이다(그림은 최고차항 계수가 1/4인 한 예).",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -683,7 +687,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q19-solution.svg",
+    "solutionImageAlt": "a=-12이면 x<3과 x>(a+2)/3=-10/3의 공통 범위에 정수 -3, -2, -1, 0, 1, 2가 들어가 합이 -3이다.",
+    "solutionImageCaption": "a=-12이면 x<3과 x>(a+2)/3=-10/3의 공통 범위에 정수 -3, -2, -1, 0, 1, 2가 들어가 합이 -3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

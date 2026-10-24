@@ -312,7 +312,11 @@ window.questionBank = [
     "templateKey": "TM_CIRCLE_AXIS_TANGENT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "CASE_SPLIT"
+    "integrationPattern": "CASE_SPLIT",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "점 (2,1)을 지나고 두 축에 접하는 원의 중심은 C(1,1), D(5,5)이므로 중심 사이의 거리는 4√2이다.",
+    "solutionImageCaption": "점 (2,1)을 지나고 두 축에 접하는 원의 중심은 C(1,1), D(5,5)이므로 중심 사이의 거리는 4√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,

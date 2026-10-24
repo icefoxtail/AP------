@@ -51,6 +51,8 @@ def produce(plan):
         features=plan.get('trigFeatures',{})
         if plan.get('function') in {'SIN','COS'}:critical.extend(float(Fraction(row['xPiMultiple']))*math.pi for row in features.get('phasePoints',[]))
         elif features.get('referencePoint'):critical.append(float(Fraction(features['referencePoint']['xPiMultiple']))*math.pi)
+    if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v1':
+        critical.extend(point['x'] for row in plan.get('trigIntervalFeatures',{}).get('lines',[]) for point in row['intersections'])
     result=sample(expression(plan),plan['domain'],vp,critical_x=critical)
     curves=[]
     for i,branch in enumerate(result['branches']):
@@ -121,6 +123,24 @@ def produce(plan):
                 curves.append(f'<line id="trig-{pole["id"]}" data-role="trig-pole" data-pole-side="{pole["side"]}" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
             ref=features['referencePoint'];at=vp.screen((float(Fraction(ref['xPiMultiple']))*math.pi,float(Fraction(ref['y']))))
             curves.append(f'<circle id="trig-reference-point" data-role="trig-reference" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
+    if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v1':
+        features=plan.get('trigIntervalFeatures');interval=plan.get('intervalFeatures');interval_policy=plan.get('intervalFeaturePolicy')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='TRIGONOMETRIC_INTERVAL_FEATURES_v1' or not isinstance(interval,dict) or not isinstance(interval_policy,dict):raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        xmin,xmax,ymin,ymax=plan['viewport']
+        for row in features['lines']:
+            slope,intercept=float(Fraction(row['slope'])),float(Fraction(row['intercept']))
+            if row['kind']=='HORIZONTAL':a,b=vp.screen((xmin,intercept)),vp.screen((xmax,intercept))
+            else:
+                ends=sorted([(ymin-intercept)/slope,(ymax-intercept)/slope]);left,right=max(xmin,ends[0]),min(xmax,ends[1])
+                if not left<right:raise ValueError('TRIG_LINE_OUTSIDE_VIEW:'+row['id'])
+                a,b=vp.screen((left,slope*left+intercept)),vp.screen((right,slope*right+intercept))
+            curves.append(f'<line id="line-{row["id"]}" data-role="line" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"/>')
+            for k,point in enumerate(row['intersections'],1):
+                cx,cy=vp.screen((point['x'],point['y']))
+                curves.append(f'<circle id="intersection-{row["id"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
+        for endpoint in interval['endpoints']:
+            cx,cy=vp.screen((float(Fraction(endpoint['x'])),float(Fraction(endpoint['y']))))
+            curves.append(f'<circle id="interval-endpoint-{endpoint["side"].lower()}" data-role="interval-endpoint" data-state="{endpoint["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="{float(interval_policy["markerRadiusIntrinsicPx"]):.12g}" fill="{"#fff" if endpoint["state"]=="OPEN" else "#111"}" stroke="black" stroke-width="1"/>')
     svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(curves)+'</svg>'
     return {'svg':svg,'sampling':result,'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
 
@@ -170,6 +190,19 @@ def _produce_piecewise_polynomial(plan,vp):
         sampling.append({'id':'curve-piece-'+str(index),**{key:value for key,value in result.items() if key!='branches'}})
         points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
         parts.append(f'<polyline id="curve-piece-{index}" data-role="curve" data-branch="PIECE_{index}" points="{points}" fill="none" stroke="black"/>')
+    # Reference curves (referenceCurves): each its own polyline tagged REF_<id>, over the same draw interval as the function.
+    critical_curve=[p['x'] for p in plan.get('requiredPoints',[])]+[point['xValue'] for row in features.get('curveIntersections',[]) for point in row['points']]
+    for curve in features.get('referenceCurves',[]):
+        result=sample(_polynomial_text(curve['coefficients']),curve['drawInterval'],vp,critical_x=critical_curve)
+        if len(result['branches'])!=1:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_SAMPLING_FAILED')
+        sampling.append({'id':'curve-ref-'+curve['id'],**{key:value for key,value in result.items() if key!='branches'}})
+        points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
+        parts.append(f'<polyline id="curve-ref-{curve["id"]}" data-role="curve" data-branch="REF_{curve["id"]}" points="{points}" fill="none" stroke="black"/>')
+    for row in features.get('curveIntersections',[]):
+        for k,point in enumerate(row['points'],1):
+            if point.get('keyPoint'):continue
+            cx,cy=vp.screen((point['xValue'],point['yValue']))
+            parts.append(f'<circle id="intersection-{row["curveId"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
     xmin,xmax=plan['viewport'][0],plan['viewport'][1]
     ymin,ymax=plan['viewport'][2],plan['viewport'][3]
     for row in features['intersections']:

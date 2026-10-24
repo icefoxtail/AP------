@@ -855,6 +855,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q26-solution.svg",
+    "solutionImageAlt": "m=-5/2일 때 직선 y=-5/2x-6이 꺾임점 A를 지나며 y=h(x)의 그래프와 세 점에서 만난다.",
+    "solutionImageCaption": "m=-5/2일 때 직선 y=-5/2x-6이 꺾임점 A를 지나며 y=h(x)의 그래프와 세 점에서 만난다.",
+    "solutionImageSize": "full"
   }
 ];
