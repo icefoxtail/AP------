@@ -245,7 +245,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당고_1학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "k=6이면 x축과 두 점에서 만나고 k=7이면 만나지 않는다",
+    "solutionImageCaption": "k=6이면 x축과 두 점에서 만나고 k=7이면 만나지 않는다",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -548,7 +552,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_금당고_1학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "두 근 A, B의 중점 M이 대칭축 x=6 위에 있다",
+    "solutionImageCaption": "두 근 A, B의 중점 M이 대칭축 x=6 위에 있다",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

@@ -139,7 +139,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "주어진 점과 기울기를 점-기울기 식에 바로 대입해 직선식을 정리한다.",
     "sourceOrdinal": 3,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/20_금당고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "점 (-2, 1)을 지나고 기울기가 -2인 직선",
+    "solutionImageCaption": "점 (-2, 1)을 지나고 기울기가 -2인 직선",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

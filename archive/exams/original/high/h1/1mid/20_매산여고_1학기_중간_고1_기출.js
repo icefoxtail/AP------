@@ -725,7 +725,11 @@ window.questionBank = [
       "$7$",
       "$9$",
       "$11$"
-    ]
+    ],
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "a=6이면 꼭짓점에서 최솟값 2, 왼쪽 끝점 x=-1에서 최댓값 11이다.",
+    "solutionImageCaption": "a=6이면 꼭짓점에서 최솟값 2, 왼쪽 끝점 x=-1에서 최댓값 11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

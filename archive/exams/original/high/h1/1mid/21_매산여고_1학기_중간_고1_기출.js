@@ -545,7 +545,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "a=-1, b=2, c=2일 때 포물선과 직선은 두 점 P, Q에서 만난다.",
+    "solutionImageCaption": "a=-1, b=2, c=2일 때 포물선과 직선은 두 점 P, Q에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

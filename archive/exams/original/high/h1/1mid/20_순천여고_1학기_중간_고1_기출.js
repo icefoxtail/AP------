@@ -329,7 +329,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "k=4일 때 직선 y=3x-4는 포물선에 점 T(1,-1)에서 접한다.",
+    "solutionImageCaption": "k=4일 때 직선 y=3x-4는 포물선에 점 T(1,-1)에서 접한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -461,7 +465,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "x=3에서 최솟값 -5를 갖는 꼭짓점",
+    "solutionImageCaption": "x=3에서 최솟값 -5를 갖는 꼭짓점",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -966,6 +974,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "stack",
-    "wide": true
+    "wide": true,
+    "solutionImage": "assets/images/20_순천여고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "구간 [-2, 0]의 두 끝점이 꼭짓점에서 같은 거리에 있을 때 최댓값이 가장 작다.",
+    "solutionImageCaption": "구간 [-2, 0]의 두 끝점이 꼭짓점에서 같은 거리에 있을 때 최댓값이 가장 작다.",
+    "solutionImageSize": "full"
   }
 ];

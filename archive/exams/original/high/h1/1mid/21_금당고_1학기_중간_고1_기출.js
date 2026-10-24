@@ -241,7 +241,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "꼭짓점 (2, 9)에서 최댓값 9를 가지므로 a+b=11이다.",
+    "solutionImageCaption": "꼭짓점 (2, 9)에서 최댓값 9를 가지므로 a+b=11이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
