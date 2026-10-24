@@ -2372,7 +2372,7 @@
           "key": "batchD-p52",
           "fam": "QUAD",
           "cluster": "B_two_curves",
-          "reason": "batch4 최종 UNSUPPORTED: 풀이가 a, b 문자로 전개하고 ㄷ의 a=5, b=100에서만 구체값이 나오는데, 이 값은 y 범위(-100~0)가 x 범위의 수 배라 같은 배율로 곡선이 식별되지 않고, 임의의 표본값(a=1)은 풀이의 값과 달라 검수에서 불일치로 판정되었다."
+          "reason": "batch5 최종 UNSUPPORTED: 풀이의 구체값 a=5, b=100에서 f=x^2-20x, g=-x^2+10x-75가 되어 y 범위(약 -100~25)가 x 범위(0~15)의 수 배라 같은 배율로는 곡선이 식별되지 않는다. 순수 수학 그래프의 세로 압축은 최대 1/2이고(applicationAxes는 문장제 전용) 임의 표본값은 풀이의 값과 달라 최종 UNSUPPORTED로 닫는다."
         },
         {
           "ord": 16,
@@ -2395,8 +2395,8 @@
           ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "774"
       ]
