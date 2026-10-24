@@ -199,7 +199,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "④",
-    "solution": "두 점 $(1,-2)$, $(-2,7)$을 지나는 직선의 기울기는\n$\\dfrac{7-(-2)}{-2-1}=\\dfrac9{-3}=-3$이다.\n점 $(1,-2)$를 지나고 기울기가 $-3$인 직선은\n$y-(-2)=-3(x-1)$이다.\n정리하면\n$y+2=-3x+3$\n$y=-3x+1$이다.\n점 $(-1,a)$가 이 직선 위에 있으므로\n$a=-3(-1)+1=4$이다.\n따라서 정답은 ④이다."
+    "solution": "두 점 $(1,-2)$, $(-2,7)$을 지나는 직선의 기울기는\n$\\dfrac{7-(-2)}{-2-1}=\\dfrac9{-3}=-3$이다.\n점 $(1,-2)$를 지나고 기울기가 $-3$인 직선은\n$y-(-2)=-3(x-1)$이다.\n정리하면\n$y+2=-3x+3$\n$y=-3x+1$이다.\n점 $(-1,a)$가 이 직선 위에 있으므로\n$a=-3(-1)+1=4$이다.\n따라서 정답은 ④이다.",
+    "solutionImage": "assets/images/21_복성고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "직선이 x=-1과 만나는 점 P의 y좌표가 a이다.",
+    "solutionImageCaption": "직선이 x=-1과 만나는 점 P의 y좌표가 a이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -239,7 +243,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "점 $(x_1,y_1)$와 직선 $Ax+By+C=0$ 사이의 거리는\n$\\dfrac{|Ax_1+By_1+C|}{\\sqrt{A^2+B^2}}$이다.\n여기서는 $(A,B,C)=(2,-1,1)$이고 점은 $(-1,4)$이므로\n$\\dfrac{|2(-1)-4+1|}{\\sqrt{2^2+(-1)^2}}$\n$=\\dfrac{5}{\\sqrt5}$\n$=\\sqrt5$이다.\n따라서 정답은 ②이다."
+    "solution": "점 $(x_1,y_1)$와 직선 $Ax+By+C=0$ 사이의 거리는\n$\\dfrac{|Ax_1+By_1+C|}{\\sqrt{A^2+B^2}}$이다.\n여기서는 $(A,B,C)=(2,-1,1)$이고 점은 $(-1,4)$이므로\n$\\dfrac{|2(-1)-4+1|}{\\sqrt{2^2+(-1)^2}}$\n$=\\dfrac{5}{\\sqrt5}$\n$=\\sqrt5$이다.\n따라서 정답은 ②이다.",
+    "solutionImage": "assets/images/21_복성고_1학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "점 P에서 직선에 내린 수선의 발 H, 거리 PH",
+    "solutionImageCaption": "점 P에서 직선에 내린 수선의 발 H, 거리 PH",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -441,7 +449,11 @@ window.questionBank = [
       "$14$"
     ],
     "answer": "①",
-    "solution": "점 $P$가 $x$축 위에서 움직이므로 $P=(t,0)$으로 놓는다.\n$P$가 선분 $AB$ 위에 있으므로 $-2\\le t\\le3$이다.\n두 거리의 제곱은\n$AP^2=(t-(-2))^2=(t+2)^2$,\n$CP^2=(t-0)^2+(0-3)^2=t^2+9$이다.\n따라서\n$AP^2+CP^2=(t+2)^2+t^2+9$\n$=2t^2+4t+13$\n$=2(t+1)^2+11$이다.\n$t=-1$은 $-2\\le t\\le3$을 만족하므로 최솟값은 $m=11$이고 그때 $P$의 $x$좌표는 $a=-1$이다.\n따라서\n$m+a=11+(-1)=10$이다.\n따라서 정답은 ①이다."
+    "solution": "점 $P$가 $x$축 위에서 움직이므로 $P=(t,0)$으로 놓는다.\n$P$가 선분 $AB$ 위에 있으므로 $-2\\le t\\le3$이다.\n두 거리의 제곱은\n$AP^2=(t-(-2))^2=(t+2)^2$,\n$CP^2=(t-0)^2+(0-3)^2=t^2+9$이다.\n따라서\n$AP^2+CP^2=(t+2)^2+t^2+9$\n$=2t^2+4t+13$\n$=2(t+1)^2+11$이다.\n$t=-1$은 $-2\\le t\\le3$을 만족하므로 최솟값은 $m=11$이고 그때 $P$의 $x$좌표는 $a=-1$이다.\n따라서\n$m+a=11+(-1)=10$이다.\n따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/21_복성고_1학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "P(-1, 0)일 때 AP²+CP²=1+10=11로 최소",
+    "solutionImageCaption": "P(-1, 0)일 때 AP²+CP²=1+10=11로 최소",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -521,7 +533,11 @@ window.questionBank = [
       "$8$"
     ],
     "answer": "①",
-    "solution": "직선이 $x$축의 양의 방향과 이루는 각이 $45^\\circ$이므로, 기울기 삼각형은 밑변과 높이가 같은 직각이등변삼각형이다. 따라서 기울기는 $1$이다.\n직선 $ax+by+2=0$을 $y$에 대하여 정리하면\n$y=-\\dfrac abx-\\dfrac2b$이다.\n따라서\n$-\\dfrac ab=1$, 즉 $a=-b$이다.\n직선이 점 $(1,2)$를 지나므로\n$a+2b+2=0$이다.\n$a=-b$를 대입하면 $b+2=0$이므로 $b=-2$, $a=2$이다.\n그러므로\n$a-b=2-(-2)=4$이다.\n따라서 정답은 ①이다."
+    "solution": "직선이 $x$축의 양의 방향과 이루는 각이 $45^\\circ$이므로, 기울기 삼각형은 밑변과 높이가 같은 직각이등변삼각형이다. 따라서 기울기는 $1$이다.\n직선 $ax+by+2=0$을 $y$에 대하여 정리하면\n$y=-\\dfrac abx-\\dfrac2b$이다.\n따라서\n$-\\dfrac ab=1$, 즉 $a=-b$이다.\n직선이 점 $(1,2)$를 지나므로\n$a+2b+2=0$이다.\n$a=-b$를 대입하면 $b+2=0$이므로 $b=-2$, $a=2$이다.\n그러므로\n$a-b=2-(-2)=4$이다.\n따라서 정답은 ①이다.",
+    "solutionImage": "assets/images/21_복성고_1학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "기울기가 1이고 점 (1, 2)를 지나는 직선이다.",
+    "solutionImageCaption": "기울기가 1이고 점 (1, 2)를 지나는 직선이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -561,7 +577,11 @@ window.questionBank = [
       "$5$"
     ],
     "answer": "②",
-    "solution": "직선 $x+2y-3=0$의 기울기는 $-\\dfrac12$이다.\n직선 $AB$는 이에 수직이므로 기울기는 $2$이다.\n따라서\n$\\dfrac{3-b}{2-a}=2$\n이고,\n$2a-b=1$이다.\n또 $AC:CB=2:1$이므로 내분점 $C$의 좌표는\n$C=\\left(\\dfrac{a+2\\cdot2}{3},\\dfrac{b+2\\cdot3}{3}\\right)$\n$=\\left(\\dfrac{a+4}{3},\\dfrac{b+6}{3}\\right)$이다.\n$C$가 직선 $x+2y-3=0$ 위에 있으므로\n$\\dfrac{a+4}{3}+2\\cdot\\dfrac{b+6}{3}-3=0$\n$a+2b=-7$이다.\n연립하면\n$2a-b=1$, $a+2b=-7$이다.\n첫째 식에서 $b=2a-1$이고 이를 둘째 식에 대입하면\n$5a-2=-7$, 따라서 $a=-1$, $b=-3$이다.\n그러므로\n$a-b=-1-(-3)=2$이다.\n따라서 정답은 ②이다."
+    "solution": "직선 $x+2y-3=0$의 기울기는 $-\\dfrac12$이다.\n직선 $AB$는 이에 수직이므로 기울기는 $2$이다.\n따라서\n$\\dfrac{3-b}{2-a}=2$\n이고,\n$2a-b=1$이다.\n또 $AC:CB=2:1$이므로 내분점 $C$의 좌표는\n$C=\\left(\\dfrac{a+2\\cdot2}{3},\\dfrac{b+2\\cdot3}{3}\\right)$\n$=\\left(\\dfrac{a+4}{3},\\dfrac{b+6}{3}\\right)$이다.\n$C$가 직선 $x+2y-3=0$ 위에 있으므로\n$\\dfrac{a+4}{3}+2\\cdot\\dfrac{b+6}{3}-3=0$\n$a+2b=-7$이다.\n연립하면\n$2a-b=1$, $a+2b=-7$이다.\n첫째 식에서 $b=2a-1$이고 이를 둘째 식에 대입하면\n$5a-2=-7$, 따라서 $a=-1$, $b=-3$이다.\n그러므로\n$a-b=-1-(-3)=2$이다.\n따라서 정답은 ②이다.",
+    "solutionImage": "assets/images/21_복성고_1학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "직선 x+2y-3=0은 선분 AB에 수직이고, AC:CB=2:1인 점 C(1,1)을 지난다.",
+    "solutionImageCaption": "직선 x+2y-3=0은 선분 AB에 수직이고, AC:CB=2:1인 점 C(1,1)을 지난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -601,7 +621,11 @@ window.questionBank = [
       "$-8$"
     ],
     "answer": "③",
-    "solution": "두 직선은 법선 계수가 같으므로 서로 평행하다.\n평행한 직선 $Ax+By+C_1=0$, $Ax+By+C_2=0$ 사이의 거리는\n$\\dfrac{|C_2-C_1|}{\\sqrt{A^2+B^2}}$이다.\n따라서\n$\\dfrac{|k-(-3)|}{\\sqrt{2^2+(-1)^2}}=\\sqrt5$이다.\n분모가 $\\sqrt5$이므로\n$\\dfrac{|k+3|}{\\sqrt5}=\\sqrt5$\n$|k+3|=5$이다.\n그러므로\n$k+3=5$ 또는 $k+3=-5$,\n즉 $k=2$ 또는 $k=-8$이다.\n두 값의 합은\n$2+(-8)=-6$이다.\n따라서 정답은 ③이다."
+    "solution": "두 직선은 법선 계수가 같으므로 서로 평행하다.\n평행한 직선 $Ax+By+C_1=0$, $Ax+By+C_2=0$ 사이의 거리는\n$\\dfrac{|C_2-C_1|}{\\sqrt{A^2+B^2}}$이다.\n따라서\n$\\dfrac{|k-(-3)|}{\\sqrt{2^2+(-1)^2}}=\\sqrt5$이다.\n분모가 $\\sqrt5$이므로\n$\\dfrac{|k+3|}{\\sqrt5}=\\sqrt5$\n$|k+3|=5$이다.\n그러므로\n$k+3=5$ 또는 $k+3=-5$,\n즉 $k=2$ 또는 $k=-8$이다.\n두 값의 합은\n$2+(-8)=-6$이다.\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/21_복성고_1학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "직선 2x-y-3=0에서 거리가 √5인 평행한 두 직선 2x-y+2=0(k=2), 2x-y-8=0(k=-8)",
+    "solutionImageCaption": "직선 2x-y-3=0에서 거리가 √5인 평행한 두 직선 2x-y+2=0(k=2), 2x-y-8=0(k=-8)",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
