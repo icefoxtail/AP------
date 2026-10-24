@@ -99,7 +99,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
     "subUnit": "삼각형의 좌표와 무게중심",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "세 꼭짓점 A(3,5), B(4,6), C(2,1)의 좌표의 평균으로 무게중심 G(3,4)를 얻는다.",
+    "solutionImageCaption": "세 꼭짓점 A(3,5), B(4,6), C(2,1)의 좌표의 평균으로 무게중심 G(3,4)를 얻는다.",
+    "solutionImageSize": "full"
   },
                     {
     "id": 4,
@@ -590,7 +594,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-ABSOLUTE_INEQUALITY",
     "subUnit": "절댓값 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q17-solution-fig.svg",
+    "solutionImageAlt": "p=-1/4이면 직선이 그래프와 x=-11/6, x=3에서 만나 정수해가 5개이고, p=-1/2이면 x=-2, x=3에서 만나 -2부터 3까지 정수해가 6개이다.",
+    "solutionImageCaption": "p=-1/4이면 직선이 그래프와 x=-11/6, x=3에서 만나 정수해가 5개이고, p=-1/2이면 x=-2, x=3에서 만나 -2부터 3까지 정수해가 6개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

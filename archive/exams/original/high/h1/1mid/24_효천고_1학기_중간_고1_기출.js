@@ -510,7 +510,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수 활용",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q11-solution-fig.svg",
+    "solutionImageAlt": "둘레 P(m)에 대해 가능한 넓이 S(m²)는 S≤(P/4)² 이하이다. P=60이면 S는 최대 225이므로 넓이 300m²는 만들 수 없다.",
+    "solutionImageCaption": "둘레 P(m)에 대해 가능한 넓이 S(m²)는 S≤(P/4)² 이하이다. P=60이면 S는 최대 225이므로 넓이 300m²는 만들 수 없다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -997,7 +1001,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "서술형4",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q22-solution-fig.svg",
+    "solutionImageAlt": "a=√2이면 0≤x≤2에서 최댓값 M=2+2√2는 꼭짓점 V에서, 최솟값 m=2√2는 x=0일 때이고 M-m=2이다. a=2-√2일 때는 최솟값이 x=2에서 생긴다.",
+    "solutionImageCaption": "a=√2이면 0≤x≤2에서 최댓값 M=2+2√2는 꼭짓점 V에서, 최솟값 m=2√2는 x=0일 때이고 M-m=2이다. a=2-√2일 때는 최솟값이 x=2에서 생긴다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,
