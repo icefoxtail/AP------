@@ -40,6 +40,10 @@ def prepare(spec):
     if piecewise_features is not None:
         if piecewise_features.get('schemaVersion')!='PIECEWISE_AFFINE_FEATURES_v1':raise ValueError('PIECEWISE_MARKER_INVENTORY_REQUIRED')
         for marker in piecewise_features.get('markers',[]):critical.append((float(Fraction(marker['x'])),float(Fraction(marker['y']))))
+    interval_features=spec['displayFacts'].get('intervalFeatures')
+    if interval_features is not None:
+        if interval_features.get('schemaVersion')!='POLYNOMIAL_INTERVAL_FEATURES_v1':raise ValueError('POLYNOMIAL_INTERVAL_INVENTORY_REQUIRED')
+        for endpoint in interval_features.get('endpoints',[]):critical.append((float(Fraction(endpoint['x'])),float(Fraction(endpoint['y']))))
     exponential_features=spec['displayFacts'].get('exponentialFeatures')
     if exponential_features is not None:
         if exponential_features.get('schemaVersion')!='EXPONENTIAL_AFFINE_FEATURES_v1':raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
@@ -97,7 +101,7 @@ def prepare(spec):
         for oid,axis,value,at,delta in unit_ticks:
             p=vp.screen(at);primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
         axis_labels=[]
-        if show_x:axis_labels.append(('axis-x',(xmax,0),'x'))
+        if show_x:axis_labels.append(('axis-x',(xmax,0),spec['displayFacts'].get('axisVariable','x')))
         if show_y:axis_labels.append(('axis-y',(0,ymax),'y'))
         for oid,at,text in axis_labels:
             labels.append({'id':oid,'kind':'GRAPH_ANNOTATION','at':vp.screen(at),'text':text,'font':13,'priority':4,'allowSuppress':True,'math':True})
@@ -178,6 +182,14 @@ def prepare(spec):
             at=vp.screen((float(Fraction(marker['x'])),float(Fraction(marker['y']))));fill='#fff' if marker['state']=='OPEN' else '#111'
             role='piecewise-source-endpoint' if marker.get('kind')=='SOURCE_ENDPOINT' else 'piecewise-breakpoint'
             primitive({'id':'piecewise-'+marker['id'],'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':role,'fill':fill,'state':marker['state'],'owner':marker['owner']},'circle')
+    if interval_features is not None:
+        policy=spec['displayFacts'].get('intervalFeaturePolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('POLYNOMIAL_INTERVAL_MARKER_POLICY_REQUIRED')
+        for endpoint in interval_features.get('endpoints',[]):
+            if endpoint.get('state') not in {'OPEN','CLOSED'} or endpoint.get('side') not in {'START','END'}:raise ValueError('INVALID_POLYNOMIAL_INTERVAL_ENDPOINT')
+            # A closed end is a filled dot, an open end a hollow one, drawn over the curve end.
+            at=vp.screen((float(Fraction(endpoint['x'])),float(Fraction(endpoint['y']))))
+            primitive({'id':'interval-endpoint-'+endpoint['side'].lower(),'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'interval-endpoint','fill':'#fff' if endpoint['state']=='OPEN' else '#111','state':endpoint['state']},'circle')
     exponential_features=spec['displayFacts'].get('exponentialFeatures')
     if exponential_features is not None:
         if exponential_features.get('schemaVersion')!='EXPONENTIAL_AFFINE_FEATURES_v1':raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
@@ -214,6 +226,8 @@ def prepare(spec):
             primitive({'id':'trig-reference-point','kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'trig-reference','fill':'#111'},'circle')
     by_id={v['id']:v for v in spec['objects']}
     tangent_lines={v['refs'][0] for v in spec['objects'] if v['kind']=='TANGENT'}
+    # Drawn lines ax+by+c=0, for SEGMENTs that lie on one (they would vanish under the heavier line stroke).
+    drawn_lines=[(v['id'],[float(c) for c in v['coefficients']]) for v in spec['objects'] if v['kind']=='LINE']
     graph_index=0
     named={v.get('target') for v in spec['objects'] if v['kind'] in {'POINT_NAME','COORDINATE_LABEL'}}
     for obj in spec['objects']:
@@ -227,7 +241,14 @@ def prepare(spec):
             hits=clip_line(value,vp.bounds)
             if len(hits)==2:primitive({'id':oid,'kind':'line','from':vp.screen(hits[0]),'to':vp.screen(hits[1]),'token':'auxiliary' if kind=='AUXILIARY_LINE' else 'tangent' if oid in tangent_lines else 'mainShape','layer':20 if kind=='AUXILIARY_LINE' else 40,'role':'auxiliary' if kind=='AUXILIARY_LINE' else 'line','dash':'4 3' if kind=='AUXILIARY_LINE' else ''},'auxiliary' if kind=='AUXILIARY_LINE' else 'line')
         elif kind in {'SEGMENT','LEADER_LINE'}:
-            primitive({'id':oid,'kind':'line','from':vp.screen(value[0]),'to':vp.screen(value[1]),'token':'leaderLine' if kind=='LEADER_LINE' else 'secondaryShape','layer':80 if kind=='LEADER_LINE' else 30,'role':'leader' if kind=='LEADER_LINE' else 'line'},'leader' if kind=='LEADER_LINE' else 'line')
+            a,b=vp.screen(value[0]),vp.screen(value[1]);origin=vp.screen((0,0));overlap=None
+            # A SEGMENT lying on a displayed axis (both ends within 0.5 screen px of it) is hidden under the thinner axis stroke: draw it heavier and above the axis.
+            if kind=='SEGMENT':
+                if show_x and abs(a[1]-origin[1])<=.5 and abs(b[1]-origin[1])<=.5:overlap='x'
+                elif show_y and abs(a[0]-origin[0])<=.5 and abs(b[0]-origin[0])<=.5:overlap='y'
+                # The same for a SEGMENT on a drawn line (both ends within 0.5 screen px of it): heavier and above the line.
+                elif any(math.hypot(l[0],l[1])>0 and all(abs(l[0]*p[0]+l[1]*p[1]+l[2])/math.hypot(l[0],l[1])*vp.sx<=.5 for p in value) for _,l in drawn_lines):overlap='line'
+            primitive({'id':oid,'kind':'line','from':a,'to':b,'token':'leaderLine' if kind=='LEADER_LINE' else 'axisOverlapShape' if overlap else 'secondaryShape','layer':80 if kind=='LEADER_LINE' else 45 if overlap=='line' else 35 if overlap else 30,'role':'leader' if kind=='LEADER_LINE' else 'line',**({'axisOverlap':overlap} if overlap else {})},'leader' if kind=='LEADER_LINE' else 'line')
         elif kind=='CIRCLE':
             primitive({'id':oid,'kind':'circle','at':vp.screen(value.center),'radius':value.radius*vp.sx,'token':'mainShape','layer':40,'role':'circle'},'circle')
         elif kind=='CIRCULAR_ARC':
@@ -238,8 +259,10 @@ def prepare(spec):
         elif kind=='FUNCTION_GRAPH':
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
             sampling.append({'id':oid,**{k:v for k,v in result.items() if k!='branches'}})
+            # The pieces of one piecewise function (branch PIECE_n) are all the main curve, not a first curve and secondary ones.
+            main=graph_index==0 or str(obj.get('branch','')).startswith('PIECE_')
             for index,branch in enumerate(result['branches']):
-                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if graph_index==0 else 'secondaryCurve','layer':40 if graph_index==0 else 35,'role':'curve',**({'branch':obj['branch']} if 'branch' in obj else {})},'curve')
+                primitive({'id':oid+'-branch-'+str(index),'kind':'polyline','points':[vp.screen(p) for p in branch],'token':'mainCurve' if main else 'secondaryCurve','layer':40 if main else 35,'role':'curve',**({'branch':obj['branch']} if 'branch' in obj else {})},'curve')
             graph_index+=1
         elif kind=='PERPENDICULAR_MARK':
             at=vp.screen(obj['at']);vectors=[]
@@ -261,6 +284,7 @@ def prepare(spec):
         elif kind in {'POINT_NAME','COORDINATE_LABEL','EQUATION_LABEL','GRAPH_ANNOTATION','CONDITION_BOX','LENGTH_LABEL'}:
             label={**obj,'font':tokens['pointName'] if kind=='POINT_NAME' else tokens['coordinateLabel'] if kind=='COORDINATE_LABEL' else tokens['conditionBox'] if kind=='CONDITION_BOX' else tokens['mathLabel'],'priority':obj.get('priority',1 if kind in {'POINT_NAME','CONDITION_BOX'} else 2)}
             label['at']=vp.screen(geometry[obj['target']]) if kind in {'POINT_NAME','COORDINATE_LABEL'} else vp.screen(obj['at'])
+            if 'alternateAt' in obj:label['alternateAt']=[list(vp.screen(value)) for value in obj['alternateAt']]
             if kind=='COORDINATE_LABEL':
                 exact=[exact_coordinate(v,n,bool(obj.get('sourceDecimalEvidence')),symbols) for v,n in zip(obj['exact'],geometry[obj['target']])]
                 label['text']='('+','.join(exact)+')';label['panelText']=obj['target']+': '+label['text']

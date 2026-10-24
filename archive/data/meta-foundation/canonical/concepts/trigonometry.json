@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "TRIGONOMETRY",
-  "shardVersion": "1.0.0",
+  "shardVersion": "1.0.1",
   "status": "ACTIVE",
-  "conceptCount": 1,
+  "conceptCount": 12,
   "concepts": [
     {
       "conceptKey": "CC_TRIGONOMETRIC_TANGENT",
@@ -40,6 +40,142 @@
       "curriculumRefs": [
         "2015:수학II:H15-M2-03"
       ],
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_QUADRANT_CONDITION",
+      "canonicalLabelKo": "사분면 조건",
+      "definition": "좌표평면의 특정 사분면을 지나지 않기 위한 절편 부등식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_49e0790a17d27a25a8d9e4c1a77e2d538cc420ab82fc9af92d5475f34b4dd3d5"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_RADIAN_DEGREE_CONVERSION",
+      "canonicalLabelKo": "호도법과 육십분법",
+      "definition": "라디안과 도 단위 사이의 상호 변환",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_e53be69f362105181926202e479c8a6ef63cf1f2017c4f13101057eb71909add"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_COTERMINAL_ANGLES",
+      "canonicalLabelKo": "동경과 일반각",
+      "definition": "동경의 위치 및 2n*pi 주기성",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b364d757864ebad6a19266254f87c3bcdc739e43acfad903c93dab593cb0a8b1",
+        "qid_v1_e53be69f362105181926202e479c8a6ef63cf1f2017c4f13101057eb71909add"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIGONOMETRIC_EQUATION",
+      "canonicalLabelKo": "삼각방정식",
+      "definition": "삼각함수를 포함한 방정식의 기본 해법",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5eb4c00eaaaeb02e02706d761fc11ba434751c7c7fe8698423ea0dfc2ac5aeb1",
+        "qid_v1_aaec276af31f7c21c8bf50931fbcc71f44d3d12116b97f4472464d4b1856af98"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TANGENT_DEFINITION",
+      "canonicalLabelKo": "탄젠트함수의 정의",
+      "definition": "sin/cos 비율을 통한 탄젠트 변환",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_aaec276af31f7c21c8bf50931fbcc71f44d3d12116b97f4472464d4b1856af98"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIGONOMETRIC_INEQUALITY",
+      "canonicalLabelKo": "삼각부등식",
+      "definition": "삼각함수 값의 범위를 만족하는 각의 구간 구하기",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5819a4f65879e3fdb09b6f69b2be2484c5152e31f3e2eb5873616ee101f6e1c1"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_COSINE_FUNCTION_RANGE",
+      "canonicalLabelKo": "코사인함수의 치역",
+      "definition": "코사인함수의 대소 관계 및 단조성",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5819a4f65879e3fdb09b6f69b2be2484c5152e31f3e2eb5873616ee101f6e1c1",
+        "qid_v1_ba92ec2f949fde56fa87778d5a915793ce3fbc134b658d78867d43b3ad76855e"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_SINE_FUNCTION_PERIOD",
+      "canonicalLabelKo": "사인함수의 주기",
+      "definition": "2pi/|b| 공식을 통한 삼각함수 주기 결정",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1303ee26567c91187744acb20fc3faea86c8503d6fc1cd8a27e26526d5409fad"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIGONOMETRIC_EXTREMUM",
+      "canonicalLabelKo": "삼각함수의 최댓값과 최솟값",
+      "definition": "진폭과 평행이동에 따른 함숫값의 극값",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1303ee26567c91187744acb20fc3faea86c8503d6fc1cd8a27e26526d5409fad",
+        "qid_v1_ba92ec2f949fde56fa87778d5a915793ce3fbc134b658d78867d43b3ad76855e"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_RAY",
+      "canonicalLabelKo": "동경의 대칭성",
+      "definition": "x축, y축, 원점, y=x에 대한 두 동경의 대칭 관계",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b364d757864ebad6a19266254f87c3bcdc739e43acfad903c93dab593cb0a8b1"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIGONOMETRIC_IDENTITY",
+      "canonicalLabelKo": "삼각함수 항등식",
+      "definition": "sin^2 x + cos^2 x = 1 기본 공식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_fe6b58407dd8095cd92ddbf17257452788670999fd60e714ee1bb317958327a8"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
       "ownerConceptShard": "TRIGONOMETRY"
     }
   ]

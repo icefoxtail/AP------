@@ -286,6 +286,7 @@
       record.reviewedExamRegistration.metadataRevision === record.metadataRevision &&
       record.assignmentEvidence?.reviewEvidence?.reference === record.reviewedExamRegistration.reference &&
       record.assignmentEvidence?.reviewEvidence?.sha256 === record.reviewedExamRegistration.sha256;
+    const metaPipelineRegistration = registeredProjection && record.reviewedExamRegistration?.approvalType === 'META_PIPELINE_AUDIT';
     const nativeOriginalProjection = registeredProjection || (displayProjection?.nativeTaxonomyAuthority?.registrationPackId === 'H1_ORIGINAL_SOURCE' &&
       String(displayProjection.nativeTaxonomyAuthority.registrationPackVersion) === '1.0.0');
     const view = {...record};
@@ -314,7 +315,9 @@
       } else if (typeof value !== 'string' || !value.trim()) value = null;
       if (!known(value)) value = null;
       view[field] = value;
-      if (alias !== field) view[alias] = value;
+      if (alias !== field) view[alias] = metaPipelineRegistration
+        ? (known(record[alias]) ? record[alias] : known(m[alias]) ? m[alias] : value)
+        : value;
       const status = evidence[field]?.status;
       const groupByField = {
         standardCourse: 'standardUnit', standardUnitKey: 'standardUnit', standardUnit: 'standardUnit',

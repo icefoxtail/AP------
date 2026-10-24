@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "FUNCTIONS",
-  "shardVersion": "1.5.0",
+  "shardVersion": "1.5.1",
   "status": "ACTIVE",
-  "conceptCount": 22,
+  "conceptCount": 32,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -923,6 +923,126 @@
         "CC_RATIONAL_FUNCTION",
         "CC_RADICAL_FUNCTION"
       ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_LOGARITHMIC_FUNCTION_GRAPH",
+      "canonicalLabelKo": "로그함수의 그래프",
+      "definition": "로그함수의 개형과 증가·감소 특성",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_fa6f0b21758b235e8152307f1a14de7417522ccbb7f1c05516491b0434853a12"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_ASYMPTOTE",
+      "canonicalLabelKo": "점근선",
+      "definition": "곡선이 한없이 가까워지는 직선의 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_fa6f0b21758b235e8152307f1a14de7417522ccbb7f1c05516491b0434853a12"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_EXPONENTIAL_FUNCTION_GRAPH",
+      "canonicalLabelKo": "지수함수의 그래프",
+      "definition": "지수함수의 개형, 평행이동 및 사분면 통과 조건",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_49e0790a17d27a25a8d9e4c1a77e2d538cc420ab82fc9af92d5475f34b4dd3d5"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_GRAPH_INTERSECTION",
+      "canonicalLabelKo": "그래프의 교점",
+      "definition": "함수 그래프의 위치 관계와 교점 사이의 영역",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_914be8c19c2737c8e4bc106b0f22737c15078d7428ae90f8b4b214ccb6d2add6"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_EXPONENTIAL_GROWTH",
+      "canonicalLabelKo": "지수적 증가 모델",
+      "definition": "일정한 비율로 증가하는 현실 문제의 수식화",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_93d247649b9fbb6b9662e3441088c5b1c7f50ccf90a33a94eb12b7ae868b40b3"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_EXPONENTIAL_DECAY",
+      "canonicalLabelKo": "지수적 감소",
+      "definition": "시간에 따라 거듭제곱 비율로 감소하는 함수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_83f1ce3a00383b4b57f6f007c689f34a7c6ab091b1c3ad5297765b48f295ec74"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_GRAPH_INTERSECTION_COUNT",
+      "canonicalLabelKo": "그래프 교점 개수",
+      "definition": "곡선과 직선의 교점 개수를 매개변수 범위로 추적",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_cee716a2718cc0ac8c86ab52d5179d05b51da5422a2533739b6875897289c8b0"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_PIECEWISE_FUNCTION",
+      "canonicalLabelKo": "구간별 함수(조각함수)",
+      "definition": "구간에 따라 다르게 정의된 함수의 합성 및 극값",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ac9092b80bbe3b5d6b1a8247050e595d350f23fb6d9c203f2c242e05cb99251e"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_EXTREMUM",
+      "canonicalLabelKo": "함수의 극값",
+      "definition": "주어진 구간 내에서 함수의 최댓값과 최솟값",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ac9092b80bbe3b5d6b1a8247050e595d350f23fb6d9c203f2c242e05cb99251e"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_EXPONENTIAL_FUNCTION_RANGE",
+      "canonicalLabelKo": "지수함수의 치역",
+      "definition": "점근선에 의한 지수함수의 유계성",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f441aaf0d72ebb5d8b13a47178b09ecc299a6d9ecfbe9046324ab986553f3fbd"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
       "ownerConceptShard": "FUNCTIONS"
     }
   ]

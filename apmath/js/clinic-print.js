@@ -1455,6 +1455,9 @@ function clinicPrintRenderStudentClinicSummary(state, students) {
         !!index && String(index.classId || '') === classId &&
         index.candidatesByStudent && typeof index.candidatesByStudent === 'object' && !Array.isArray(index.candidatesByStudent) &&
         index.unavailableByStudent && typeof index.unavailableByStudent === 'object' && !Array.isArray(index.unavailableByStudent);
+    let knownSubmissionCount = 0;
+    let explicitUnsubmittedCount = 0;
+    let observedWrongCount = 0;
     const rows = students.map(student => {
         const studentId = String(student.studentId || '');
         const topTypes = [...(Array.isArray(student.types) ? student.types : [])]
@@ -1468,6 +1471,7 @@ function clinicPrintRenderStudentClinicSummary(state, students) {
         const counts = student.coverage?.statusCounts || {};
         const historyHtml = `<div>조회된 배정 기록 ${clinicPrintHistoryCount(student.history?.length)}건</div><div style="margin-top:3px;">완결 ${clinicPrintHistoryCount(counts.completeResult)} · 부분 ${clinicPrintHistoryCount(counts.partial)} · 미확인 ${clinicPrintHistoryCount(counts.unresolved)} · 대기 ${clinicPrintHistoryCount(counts.pending)} · 제외 ${clinicPrintHistoryCount(counts.excluded)} · 취소·미응시 ${clinicPrintHistoryCount(counts.cancelledPending)}</div>`;
         let submissionHtml = '<span style="color:var(--secondary);">현재 조회의 응시 제출 집계 확인 불가</span>';
+        let submissionStatus = 'unknown';
         if (indexCurrent) {
             const hasCandidateEntry = Object.prototype.hasOwnProperty.call(index.candidatesByStudent, studentId);
             const hasUnavailableEntry = Object.prototype.hasOwnProperty.call(index.unavailableByStudent, studentId);
@@ -1483,17 +1487,59 @@ function clinicPrintRenderStudentClinicSummary(state, students) {
             if ((hasCandidateEntry || hasUnavailableEntry) && candidatesValid && unavailableValid) {
                 const candidates = Array.isArray(candidatesValue) ? candidatesValue : [];
                 const unavailable = hasUnavailableEntry ? unavailableValue : {};
+                submissionStatus = unavailable.unsubmitted > 0 ? 'unsubmitted' : 'known';
+                knownSubmissionCount++;
+                if (unavailable.unsubmitted > 0) explicitUnsubmittedCount++;
                 submissionHtml = `비교 가능한 완결 제출 응시 ${candidates.length}건 · 미제출 ${clinicPrintHistoryCount(unavailable.unsubmitted)} · 제출 상태 미보고 ${clinicPrintHistoryCount(unavailable.submissionNotReported)}`;
             }
         }
+        const unclassifiedWrongCount = student.coverage?.unclassifiedWrongCount;
+        const observedWrong = Number.isInteger(student.observedWrongCount) && student.observedWrongCount > 0 ||
+            Number.isInteger(unclassifiedWrongCount) && unclassifiedWrongCount > 0;
+        if (observedWrong) observedWrongCount++;
         const comparisonAttrs = `data-clinic-summary-comparison-cell data-clinic-summary-class-id="${clinicPrintEscapeAttr(classId)}" data-clinic-summary-student-id="${clinicPrintEscapeAttr(studentId)}" data-clinic-summary-refresh-id="${generation}"`;
         const button = `<button type="button" data-clinic-summary-detail-button data-clinic-summary-class-id="${clinicPrintEscapeAttr(classId)}" data-clinic-summary-student-id="${clinicPrintEscapeAttr(studentId)}" data-clinic-summary-refresh-id="${generation}" class="clinic-print-mini-btn" aria-label="${clinicPrintEscapeAttr(`${student.studentName || studentId} 학생 상세와 응시 비교 보기`)}" onclick="clinicPrintOpenStudentClinicSummaryDetails('${clinicPrintEscapeJsString(classId)}','${clinicPrintEscapeJsString(studentId)}',${generation},this)">상세·응시비교</button>`;
-        return `<tr data-clinic-summary-row data-clinic-summary-class-id="${clinicPrintEscapeAttr(classId)}" data-clinic-summary-student-id="${clinicPrintEscapeAttr(studentId)}" data-clinic-summary-refresh-id="${generation}"><th scope="row">${clinicPrintEscapeHtml(student.studentName || studentId || '학생')}</th><td>${typesHtml}<div style="margin-top:3px;color:var(--secondary);">${typesNote}</div></td><td>${historyHtml}</td><td>${submissionHtml}</td><td ${comparisonAttrs}>${clinicPrintAssessmentSummaryComparisonHtml(state, student)}</td><td>${button}</td></tr>`;
+        return `<tr data-clinic-summary-row data-clinic-summary-class-id="${clinicPrintEscapeAttr(classId)}" data-clinic-summary-student-id="${clinicPrintEscapeAttr(studentId)}" data-clinic-summary-refresh-id="${generation}" data-clinic-summary-submission="${submissionStatus}" data-clinic-summary-observed-wrong="${observedWrong ? 'yes' : 'no'}"><th scope="row">${clinicPrintEscapeHtml(student.studentName || studentId || '학생')}</th><td>${typesHtml}<div style="margin-top:3px;color:var(--secondary);">${typesNote}</div></td><td>${historyHtml}</td><td>${submissionHtml}</td><td ${comparisonAttrs}>${clinicPrintAssessmentSummaryComparisonHtml(state, student)}</td><td>${button}</td></tr>`;
     }).join('');
     const unavailableAssignments = indexCurrent ? clinicPrintHistoryCount(index.coverage?.unavailableAssignmentCount) : null;
     const comparisonCoverage = unavailableAssignments > 0
         ? `<div style="font-size:10px;color:var(--secondary);margin:3px 0 5px;">비교용 응시 자료를 정확히 조회하지 못한 배정 ${unavailableAssignments}건은 제출 현황에 포함하지 않았습니다. 일부 조회 제한은 위 배정 조회 범위를 확인하세요.</div>` : '';
-    return `<div style="margin-top:8px;"><div style="font-size:11px;font-weight:700;">학생별 클리닉 요약</div><div style="font-size:10px;color:var(--secondary);margin:3px 0 5px;">현재 조회 결과에 나타난 학생 ${students.length}명 · 확인된 배정 응시 기준입니다. 반 전체 명단이나 전체 제출률이 아닙니다. 오답 유형은 동결 Meta 기준입니다.</div>${comparisonCoverage}<div style="overflow-x:auto;"><table style="border-collapse:collapse;width:100%;font-size:10px;"><thead><tr><th scope="col" style="text-align:left;">학생</th><th scope="col">오답 유형·난이도</th><th scope="col">조회 배정 결과</th><th scope="col">제출 현황</th><th scope="col">교사 선택 비교 관측</th><th scope="col">상세</th></tr></thead><tbody>${rows || '<tr><td colspan="6" style="color:var(--secondary);">표시할 학생별 이력이 없습니다.</td></tr>'}</tbody></table></div></div>`;
+    const args = `'${clinicPrintEscapeJsString(classId)}',${generation},this`;
+    return `<div data-clinic-summary-filter-root data-clinic-summary-filter-class-id="${clinicPrintEscapeAttr(classId)}" data-clinic-summary-filter-refresh-id="${generation}" data-clinic-summary-known-count="${knownSubmissionCount}" data-clinic-summary-unsubmitted-count="${explicitUnsubmittedCount}" data-clinic-summary-wrong-count="${observedWrongCount}" style="margin-top:8px;"><div style="font-size:11px;font-weight:700;">학생별 클리닉 요약</div><div style="font-size:10px;color:var(--secondary);margin:3px 0 5px;">현재 조회 결과에 나타난 학생 ${students.length}명 · 확인된 배정 응시 기준입니다. 반 전체 명단이나 전체 제출률이 아닙니다. 오답 유형은 동결 Meta 기준이며, 관측 오답은 과거 기록의 관측 요약입니다.</div>${comparisonCoverage}<label style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;">학생 필터 <select aria-label="학생별 클리닉 요약 필터" onchange="clinicPrintApplyStudentClinicSummaryFilter('${clinicPrintEscapeJsString(classId)}',${generation},this)"><option value="all">전체 조회 학생</option><option value="unsubmitted">명시적 미제출 있음</option><option value="wrong">관측 오답 있음</option><option value="unknown">제출 상태 미확인</option></select></label><span data-clinic-summary-filter-count aria-live="polite" style="margin-left:8px;font-size:10px;color:var(--secondary);">조회 ${students.length}명 · 필터 결과 ${students.length}명 · 제출 정보 확인 ${knownSubmissionCount}명 · 명시적 미제출 ${explicitUnsubmittedCount}명 · 관측 오답 있음 ${observedWrongCount}명 · 제출 상태 미확인 ${students.length - knownSubmissionCount}명</span><div data-clinic-summary-filter-empty hidden role="status" style="font-size:11px;color:var(--secondary);margin-top:6px;">이 필터에 해당하는 학생이 없습니다.</div><div style="overflow-x:auto;"><table style="border-collapse:collapse;width:100%;font-size:10px;"><thead><tr><th scope="col" style="text-align:left;">학생</th><th scope="col">오답 유형·난이도</th><th scope="col">조회 배정 결과</th><th scope="col">제출 현황</th><th scope="col">교사 선택 비교 관측</th><th scope="col">상세</th></tr></thead><tbody>${rows || '<tr><td colspan="6" style="color:var(--secondary);">표시할 학생별 이력이 없습니다.</td></tr>'}</tbody></table></div></div>`;
+}
+
+function clinicPrintApplyStudentClinicSummaryFilter(classId, refreshRequestId, selectElement) {
+    const wantedClassId = String(classId || '');
+    const generation = Number(refreshRequestId);
+    const body = document.getElementById('clinic-print-recommendation-assessment-body');
+    const state = clinicPrintRecommendationAssessmentStates.get(wantedClassId);
+    const root = selectElement?.closest('[data-clinic-summary-filter-root]');
+    if (!wantedClassId || String(clinicPrintActiveClassId || '') !== wantedClassId || !body || !root || !body.contains(root) ||
+        root.getAttribute('data-clinic-summary-filter-class-id') !== wantedClassId ||
+        root.getAttribute('data-clinic-summary-filter-refresh-id') !== String(generation) ||
+        !state || String(state.classId || '') !== wantedClassId || Number(state.refreshRequestId || 0) !== generation) return false;
+    const rows = Array.from(root.querySelectorAll('[data-clinic-summary-row]')).filter(row =>
+        row.getAttribute('data-clinic-summary-class-id') === wantedClassId &&
+        row.getAttribute('data-clinic-summary-refresh-id') === String(generation));
+    if (!rows.length && state.historySummary?.students?.length) return false;
+    const mode = ['all', 'unsubmitted', 'wrong', 'unknown'].includes(String(selectElement.value)) ? String(selectElement.value) : 'all';
+    let shown = 0;
+    rows.forEach(row => {
+        const matches = mode === 'all' ||
+            mode === 'unsubmitted' && row.getAttribute('data-clinic-summary-submission') === 'unsubmitted' ||
+            mode === 'wrong' && row.getAttribute('data-clinic-summary-observed-wrong') === 'yes' ||
+            mode === 'unknown' && row.getAttribute('data-clinic-summary-submission') === 'unknown';
+        row.hidden = !matches;
+        if (matches) shown++;
+    });
+    const count = root.querySelector('[data-clinic-summary-filter-count]');
+    const empty = root.querySelector('[data-clinic-summary-filter-empty]');
+    const known = Number(root.getAttribute('data-clinic-summary-known-count') || 0);
+    const unsubmitted = Number(root.getAttribute('data-clinic-summary-unsubmitted-count') || 0);
+    const wrong = Number(root.getAttribute('data-clinic-summary-wrong-count') || 0);
+    if (count) count.textContent = `조회 ${rows.length}명 · 필터 결과 ${shown}명 · 제출 정보 확인 ${known}명 · 명시적 미제출 ${unsubmitted}명 · 관측 오답 있음 ${wrong}명 · 제출 상태 미확인 ${rows.length - known}명`;
+    if (empty) empty.hidden = shown !== 0;
+    return true;
 }
 
 function clinicPrintOpenStudentClinicSummaryDetails(classId, studentId, refreshRequestId, button) {

@@ -1,0 +1,570 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "18_매산고_1학기_중간_고2_확률과통계",
+  "sourceFileDriveId": "1fd84O_gfyLnENbAYOfDSAExKDUthT5Gu",
+  "sourceSha256": "efe160b4cc07b8389279f23ada2d4d8d51af242da295571a56acf81c1a607b86",
+  "auditedTimestamp": "2026-10-23T22:42:39.861721+00:00",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "statistics": {
+    "totalQuestions": 18,
+    "approved": 18,
+    "holdRemaining": 0,
+    "canonicalTemplatesReused": 18,
+    "newTemplatesCreated": 0,
+    "atomicCrossConceptsBound": 26
+  },
+  "boundAtomicCrossConcepts": [
+    {
+      "conceptKey": "CC_ADJACENT_PERMUTATION",
+      "labelKo": "이웃하는 순열",
+      "definition": "특정 대상들을 한 묶음으로 취급하는 순열"
+    },
+    {
+      "conceptKey": "CC_AT_LEAST_PROBABILITY",
+      "labelKo": "적어도 확률",
+      "definition": "적어도 하나 만족하는 사건의 여사건 확률"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_THEOREM",
+      "labelKo": "이항정리",
+      "definition": "이항식의 거듭제곱을 조합 계수로 전개하는 정리"
+    },
+    {
+      "conceptKey": "CC_CIRCULAR_PERMUTATION",
+      "labelKo": "원순열",
+      "definition": "회전하여 일치하는 것을 같은 것으로 보는 순열"
+    },
+    {
+      "conceptKey": "CC_COMBINATION",
+      "labelKo": "조합",
+      "definition": "순서를 고려하지 않고 대상을 선택하는 경우의 수"
+    },
+    {
+      "conceptKey": "CC_COMPLEMENTARY_EVENT",
+      "labelKo": "여사건",
+      "definition": "어떤 사건이 일어나지 않는 사건"
+    },
+    {
+      "conceptKey": "CC_COMPLEMENTARY_EVENT_PROBABILITY",
+      "labelKo": "여사건의 확률",
+      "definition": "1에서 반대 사건의 확률을 차감하는 계산"
+    },
+    {
+      "conceptKey": "CC_CONSECUTIVE_INTEGERS",
+      "labelKo": "연속하는 자연수",
+      "definition": "이웃하는 자연수를 포함하거나 배제하는 경우의 수"
+    },
+    {
+      "conceptKey": "CC_CONSTRAINT_SATISFACTION",
+      "labelKo": "제약조건 만족",
+      "definition": "상한 또는 하한 제한을 만족하는 경우의 수"
+    },
+    {
+      "conceptKey": "CC_FACTORIAL",
+      "labelKo": "계승(팩토리얼)",
+      "definition": "1부터 n까지의 자연수를 차례로 곱한 값"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_COUNTING",
+      "labelKo": "함수의 개수",
+      "definition": "정의역과 공역의 제약조건에 따른 사상 개수"
+    },
+    {
+      "conceptKey": "CC_GENERAL_TERM",
+      "labelKo": "일반항",
+      "definition": "전개식 또는 수열에서 임의의 항을 나타내는 식"
+    },
+    {
+      "conceptKey": "CC_INDEPENDENT_TRIALS",
+      "labelKo": "독립시행",
+      "definition": "매 시행마다 결과가 서로 독립적인 확률 실험"
+    },
+    {
+      "conceptKey": "CC_INTEGER_CLASSIFICATION",
+      "labelKo": "정수의 분류",
+      "definition": "자릿수 또는 기준값에 따른 정수 분류"
+    },
+    {
+      "conceptKey": "CC_MUTUALLY_EXCLUSIVE_EVENTS",
+      "labelKo": "배반사건",
+      "definition": "동시에 일어날 수 없는 두 사건"
+    },
+    {
+      "conceptKey": "CC_NON_NEGATIVE_INTEGER_SOLUTION",
+      "labelKo": "음이 아닌 정수해",
+      "definition": "부정방정식의 비음이 아닌 정수해 개수 모델"
+    },
+    {
+      "conceptKey": "CC_PARITY_CLASSIFICATION",
+      "labelKo": "홀짝성(패리티)",
+      "definition": "수의 짝수·홀수 분류를 통한 상태 분할"
+    },
+    {
+      "conceptKey": "CC_PERMUTATION",
+      "labelKo": "순열",
+      "definition": "서로 다른 n개 중 r개를 택해 일렬로 나열하는 경우의 수"
+    },
+    {
+      "conceptKey": "CC_PRIME_FACTORIZATION",
+      "labelKo": "소인수분해",
+      "definition": "자연수를 소수의 거듭제곱의 곱으로 나타냄"
+    },
+    {
+      "conceptKey": "CC_PRODUCT_RULE",
+      "labelKo": "곱의 법칙",
+      "definition": "두 사건이 잇달아 일어나는 경우의 수의 곱"
+    },
+    {
+      "conceptKey": "CC_REPEATED_COMBINATION",
+      "labelKo": "중복조합",
+      "definition": "중복을 허용하여 대상을 선택하는 경우의 수"
+    },
+    {
+      "conceptKey": "CC_REPEATED_PERMUTATION",
+      "labelKo": "중복순열",
+      "definition": "중복을 허용하여 일렬로 나열하는 경우의 수"
+    },
+    {
+      "conceptKey": "CC_SERIES_SUM",
+      "labelKo": "급수의 합",
+      "definition": "시그마 기호를 이용한 전개식 항들의 총합"
+    },
+    {
+      "conceptKey": "CC_SET_PARTITION",
+      "labelKo": "집합의 분할",
+      "definition": "원소들을 공집합이 아닌 몇 개의 부분집합으로 분할"
+    },
+    {
+      "conceptKey": "CC_SIGN_ASSIGNMENT",
+      "labelKo": "부호 배분",
+      "definition": "절댓값 방정식에서 각 미지수에 부호를 부여하는 경우"
+    },
+    {
+      "conceptKey": "CC_SUBSET_RELATION",
+      "labelKo": "부분집합의 관계",
+      "definition": "집합 간의 포함 및 서로소 관계"
+    }
+  ],
+  "handOffToCourier": {
+    "status": "READY_FOR_COURIER_REGISTRATION",
+    "author": "META_PIPELINE_UNIFIED_AUTHOR",
+    "registrationProtocol": "DIRECT_ATOMIC_METADATA_BINDING"
+  },
+  "records": [
+    {
+      "questionId": 1,
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_PERMUTATION",
+          "CC_FACTORIAL"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "순열 5P2=20과 계승 3!=6의 기본 곱셈 계산 120 산출 (1단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "${}_5\\mathrm{P}_2 \\times 3!$의 값을 구하면? (4.1점)",
+        "solutionDecisiveExcerpt": "순열을 적용하면 5P2=20, 3!=6이므로 20*6=120 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 2,
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "crossConceptKeys": [
+          "CC_REPEATED_PERMUTATION",
+          "CC_PRODUCT_RULE"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "5개의 독립된 구멍별 2가지 선택에 대한 중복순열 2^5=32 산출 (1단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "단소는 5개의 구멍을 막거나 열어서 소리를 내는 악기다. 5개의 각 구멍을 막거나 여는 방법의 수를 구하면? (4.2점)",
+        "solutionDecisiveExcerpt": "각 구멍은 막거나 여는 2가지 선택이 있으므로 2^5=32 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 3,
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_REPEATED_COMBINATION",
+          "CC_NON_NEGATIVE_INTEGER_SOLUTION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "음이 아닌 정수해 모델 x+y+z=5로부터 중복조합 3H5 = 7C2 = 21 산출 (2단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "서로 같은 축구공 5개를 크기가 다른 3개의 바구니에 담는 경우의 수를 구하면? (단, 빈 바구니가 있어도 된다.) (4.3점)",
+        "solutionDecisiveExcerpt": "x+y+z=5 (x,y,z>=0)에서 중복조합 7C2=21 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 4,
+      "standardUnitKey": "H15-PS-03",
+      "subUnitKey": "H15-PS-03-PROBABILITY_ADDITION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+        "crossConceptKeys": [
+          "CC_MUTUALLY_EXCLUSIVE_EVENTS",
+          "CC_COMPLEMENTARY_EVENT"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "드모르간 법칙과 배반사건 덧셈정리로 P(A U B)=3/4, P(B)=5/12, 12P(B)=5 산출 (2단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "서로 배반인 두 사건 $A, B$에 대하여 $P(A) = \\frac{1}{3}$, $P(A^c \\cap B^c) = \\frac{1}{4}$일 때, $12P(B)$의 값을 구하면? (단, $A^c$는 $A$의 여사건이다.) (4.2점)",
+        "solutionDecisiveExcerpt": "P(A U B)=1-1/4=3/4, P(B)=3/4-1/3=5/12, 12P(B)=5 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 5,
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+        "crossConceptKeys": [
+          "CC_PERMUTATION",
+          "CC_ADJACENT_PERMUTATION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "A, B 묶음 대상 5!와 묶음 내부 자리바꿈 2!를 곱하여 5!*2=240 산출 (2단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "6명의 학생 $\\mathrm{A, B, C, D, E, F}$를 일렬로 세울 때, $\\mathrm{A}$와 $\\mathrm{B}$가 이웃하는 방법의 수를 구하면? (4.4점)",
+        "solutionDecisiveExcerpt": "AB 묶음 대상 5!과 묶음 내부 2순서 곱하여 5!*2=240 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 6,
+      "standardUnitKey": "H15-PS-03",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "crossConceptKeys": [
+          "CC_CIRCULAR_PERMUTATION",
+          "CC_COMPLEMENTARY_EVENT_PROBABILITY"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "전체 원순열 (6-1)!=120과 이웃하는 경우 (5-1)!*2=48을 이용해 1-48/120=3/5 산출 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "정현이와 호정이를 포함한 학생회 임원 6명이 원탁에 둘러 앉을 때, 정현이와 호정이가 이웃하여 앉지 않을 확률을 구하면? (4.5점)",
+        "solutionDecisiveExcerpt": "전체 120에서 이웃하는 경우 48을 제외한 여사건 확률 1-48/120=3/5 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 7,
+      "standardUnitKey": "H15-PS-02",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "crossConceptKeys": [
+          "CC_BINOMIAL_THEOREM",
+          "CC_GENERAL_TERM"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "일반항 지수 16-4k에서 x^4(k=3, p=-56), x^8(k=2, q=28) 계수 비교 p/q=-2 산출 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다항식 $\\left(x^2 - \\frac{1}{x^2}\\right)^8$의 전개식에서 $x^4$의 계수를 $p$, $x^8$의 계수를 $q$라 할 때, $\\frac{p}{q}$의 값을 구하면? (4.6점)",
+        "solutionDecisiveExcerpt": "k=3에서 p=-56, k=2에서 q=28이므로 p/q=-56/28=-2 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 8,
+      "standardUnitKey": "H15-PS-03",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "crossConceptKeys": [
+          "CC_COMBINATION",
+          "CC_AT_LEAST_PROBABILITY"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "전체 8C3=56에서 둘 다 제외되는 6C3=20을 뺀 여사건 확률 1-20/56=9/14 산출 (2단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "매산 댄스 동아리에 현욱이를 포함한 남학생 5명과 성희를 포함한 여학생 3명이 있다. 이 동아리 학생 8명 중에서 3명을 뽑아 동아리 댄스 대회에 참가하려고 한다. 현욱이 또는 성희가 뽑힐 확률을 구하면? (4.6점)",
+        "solutionDecisiveExcerpt": "전체 8C3=56에서 둘 다 뽑히지 않는 6C3=20을 제외하여 1-20/56=9/14 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 9,
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "crossConceptKeys": [
+          "CC_SET_PARTITION",
+          "CC_COMBINATION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "6개의 서로 다른 소수를 2개씩 3개 조로 균등 분할 6!/((2!)^3 * 3!) = 15 산출 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "자연수 39270을 소인수 분해하면 $39270 = 2 \\times 3 \\times 5 \\times 7 \\times 11 \\times 17$이다. 자연수 39270을 순서를 고려하지 않고 서로 다른 세 합성수의 곱으로 나타내는 방법의 수를 구하면? (4.7점)",
+        "solutionDecisiveExcerpt": "6개 소수를 세 쌍으로 분할하는 수 6!/((2!)^3*3!)=15 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 10,
+      "standardUnitKey": "H15-PS-03",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "crossConceptKeys": [
+          "CC_PERMUTATION",
+          "CC_INTEGER_CLASSIFICATION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "전체 5P4=120 중 천의 자리가 1인 경우 4P3=24를 제외하여 96/120=4/5 산출 (2단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "5개의 숫자 1, 2, 3, 4, 5가 각각 적힌 카드 5장이 있다. 이 중에서 임의로 4장의 카드를 동시에 뽑아 네 자리 정수를 만들 때, 그 수가 2100이상일 확률을 구하면? (4.8점)",
+        "solutionDecisiveExcerpt": "전체 5P4=120에서 천의 자리가 1인 24개를 제외하여 96/120=4/5 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 11,
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+        "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+        "crossConceptKeys": [
+          "CC_SET_PARTITION",
+          "CC_PERMUTATION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "학생 5명을 2, 2, 1 무리로 분할(15가지) 후 8대 자전거에 배치하는 순열 8P3=336 곱하여 5040 산출 (4단계 복합)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "순천만으로 현장체험학습을 가기 위해 5명의 학생이 자전거 3대를 대여하려고 한다. 대여가능한 자전거는 8대이며, 자전거 1대에 최대 2명이 탈 수 있을 때, 5명이 자전거 3대를 나누어 타는 경우의 수를 구하면? (4.9점)",
+        "solutionDecisiveExcerpt": "인원 분할 5C1*(4C2/2!)=15와 자전거 배분 8P3=336 곱하여 15*336=5040 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 12,
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_REPEATED_COMBINATION",
+          "CC_CONSTRAINT_SATISFACTION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "e+b+r+p=7의 전체 중복조합 4H7=120에서 e>=6인 초과 케이스(5가지)를 여사건으로 차감하여 115 산출 (4단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "같은 모양의 연필 5자루, 같은 모양의 검은색 볼펜 7자루, 같은 모양의 빨간색 볼펜 6자루, 같은 모양의 파란색 볼펜 7자루가 있다. 이 중에서 7자루를 골라 필통에 담는 경우의 수를 구하면? (5.0점)",
+        "solutionDecisiveExcerpt": "전체 10C3=120에서 연필 6자루 이상인 5가지를 제외하여 115 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 13,
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_COMBINATION_SELECTION",
+        "crossConceptKeys": [
+          "CC_SUBSET_RELATION",
+          "CC_REPEATED_PERMUTATION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "각 원소별 벤다이어그램 구역 배치 수 3^n, 2^n 수열 관계로부터 순서쌍 개수 연립 산출 (4단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "집합 $X_n = \\{x \\mid x\\text{는 } n\\text{ 이하의 자연수}, n\\text{은 자연수}\\}$의 두 부분집합 $A, B$에 대하여 다음 조건을 만족하는 순서쌍 $(A, B)$의 개수를 $a_n$이라 하자.",
+        "solutionDecisiveExcerpt": "서로소 조건에서 an=3^n, 추가 조건으로 b_n=2^n 도출하여 연립 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 14,
+      "standardUnitKey": "H15-PS-02",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "crossConceptKeys": [
+          "CC_BINOMIAL_THEOREM",
+          "CC_SERIES_SUM"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "일반항 k-4j=0에서 k=4, 8, 12일 때의 조합수 4C1 + 8C2 + 12C3 = 4 + 28 + 220 = 252 산출 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\sum_{k=1}^{15} \\left(x+\\frac{1}{x^3}\\right)^k$에서 상수항을 구하여라. (6.0점)",
+        "solutionDecisiveExcerpt": "k=4j 만족하는 (4,1), (8,2), (12,3) 조합수 합 4+28+220=252 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 15,
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+        "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_PRIME_FACTORIZATION",
+          "CC_SIGN_ASSIGNMENT"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "지수 방정식 |a|+|b|+|c|+|d| 조건에서 0인 좌표 위치 선택 및 0이 아닌 정수의 부호 배분(+-2^k) 종합 계산 (4단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 조건을 만족시키는 정수 $a, b, c, d$의 순서쌍 $(a, b, c, d)$의 개수를 구하여라. (7.0점)<br><br>(가) $abcd = 0$<br>(나) $2^{|a|} \\times 3^{|b|} \\times 5^{|c|} \\times 7^{|d|} = 21000$",
+        "solutionDecisiveExcerpt": "21000=2^3*3*5^3*7에서 r=1,2,3일 때 위치 4Cr 및 부호 배분 2^r 곱하여 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 16,
+      "standardUnitKey": "H15-PS-03",
+      "subUnitKey": "H15-PS-03-PROBABILITY_APPLICATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "crossConceptKeys": [
+          "CC_COMBINATION",
+          "CC_CONSECUTIVE_INTEGERS"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "전체 nC3에서 3개 연속(n-2) 및 2개 연속 2(n-3)(n-2) 차감하여 f(n)=(n-3)(n-4)(n-2)/6 유도 (4단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "1부터 $n\\,(n \\ge 5)$까지의 자연수가 각각 하나씩 적혀 있는 $n$장의 카드가 있다. 이 카드 중에서 임의로 3장의 카드를 동시에 뽑을 때, 뽑은 카드에 적혀 있는 세 수가 어느 두 수도 연속하지 않을 사건을 $A$라 하자.",
+        "solutionDecisiveExcerpt": "전체 nC3에서 연속 케이스를 제외하여 f(n)=(n-3)(n-4)(n-2)/6 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 17,
+      "standardUnitKey": "H15-PS-01",
+      "subUnitKey": "H15-PS-01-COUNTING_APPLICATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_FUNCTION_COUNTING",
+        "templateKey": "TPL_FUNCTION_COUNT_VALUE_RESTRICTION_AND_ORDER",
+        "crossConceptKeys": [
+          "CC_REPEATED_COMBINATION",
+          "CC_FUNCTION_COUNTING",
+          "CC_PARITY_CLASSIFICATION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "f(2) 값에 따른 경우 분류, 중복조합 부등식 f(1)<=f(2)<=f(3), f(5)+f(6) 합의 홀짝성 결합 함수 개수 산출 (4단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "집합 $X = \\{1, 2, 3, 4, 5, 6\\}$에 대하여 다음 조건을 만족시키는 함수 $f: X \\to X$의 개수를 구하여라. (10.0점)<br><br>(가) 4보다 작은 자연수 $x_1, x_2$에 대하여 $x_1 < x_2$이면 $f(x_1) \\le f(x_2)$이다.",
+        "solutionDecisiveExcerpt": "f(2) 기준 분할 및 f(4)>f(2), f(5)+f(6) 짝수 조건 연립하여 함수 총 개수 산출",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 18,
+      "standardUnitKey": "H15-PS-04",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_BASIC",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_STATE_PARITY",
+        "crossConceptKeys": [
+          "CC_INDEPENDENT_TRIALS",
+          "CC_PARITY_CLASSIFICATION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "홀수 번 뽑힌 카드의 수가 짝수여야 하므로 스티커가 0개(모든 카드가 짝수 번)인 케이스 분할 확률 산출 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "1부터 5까지의 숫자가 하나씩 적힌 5장의 카드가 있다. 1부터 5까지의 숫자가 하나씩 적힌 5개의 공이 들어 있는 주머니가 있다. 6명의 학생이 주머니에서 차례로 임의로 한 개의 공을 꺼내어 확인하고 다시 넣는 시행을 반복한다.",
+        "solutionDecisiveExcerpt": "뽑힌 횟수의 홀짝성 분석을 통해 모든 카드가 짝수 번 뽑히는 확률 계산",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    }
+  ]
+}

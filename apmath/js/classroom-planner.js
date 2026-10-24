@@ -1802,6 +1802,9 @@ async function renderPlannerControl(classId) {
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     if (!cls) return toast('반 정보를 찾을 수 없습니다.', 'warn');
     if (!isPlannerTargetClass(cls)) return toast('플래너 확인 대상 반이 아닙니다.', 'warn');
+    if (typeof setModalReturnView === 'function') {
+        setModalReturnView({ type: 'classDetail', classId: String(classId) });
+    }
 
     const today = getClassPlannerToday();
     if (!state.ui.classPlannerSelectedDate) state.ui.classPlannerSelectedDate = today;
@@ -1814,7 +1817,7 @@ async function renderPlannerControl(classId) {
                     <div class="cls-planner-hero-title">${apEscapeHtml(cls.name)}</div>
                     <div class="cls-planner-hero-sub">반 전체 학생 플래너 확인</div>
                 </div>
-                <button class="cls-planner-btn" onclick="renderClass('${classId}'); closeModal(true);">반 화면</button>
+                <button class="cls-planner-btn" onclick="returnToPreviousManagementView('dashboard', { type: 'classDetail', classId: '${classId}' })">반 화면</button>
             </div>
             ${renderClassPlannerPeriodNav(classId)}
             ${renderClassPlannerModeTabs(classId)}

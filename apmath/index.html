@@ -666,6 +666,29 @@
             pointer-events: auto;
         }
 
+        /* Keep the app-level back action available above an open modal. */
+        body.ap-modal-open header,
+        body.ap-modal-open .desktop-topbar {
+            z-index: 1001;
+            background: transparent;
+            border-bottom-color: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            pointer-events: none;
+        }
+
+        body.ap-modal-open .mobile-header-menu,
+        body.ap-modal-open .mobile-header-brand,
+        body.ap-modal-open .mobile-header-user,
+        body.ap-modal-open .desktop-topbar-title {
+            visibility: hidden;
+        }
+
+        body.ap-modal-open .app-back-btn {
+            visibility: visible;
+            pointer-events: auto;
+        }
+
         #modal-content {
             background: var(--surface);
             color: var(--text);
@@ -948,6 +971,7 @@
     <link rel="stylesheet" href="./css/sidebar-foundation.css">
     <link id="dashboard-foundation-css" rel="stylesheet" href="./css/dashboard-foundation.css">
     <link rel="stylesheet" href="./css/classroom-foundation.css">
+    <link rel="stylesheet" href="./css/apms-unified-modal.css">
     <link rel="stylesheet" href="./css/timetable-months.css">
     <!-- APMS 웜 테마: .apms-warm-scope 하위에 적용. <body>에 부여 → APMATH 앱 전체
          (헤더·사이드바·운영 화면·모달·학생상세) 일관 적용. apmath/index.html 전용이라
@@ -1009,7 +1033,7 @@
     <script defer src="js/student-edit.js"></script>
     <script defer src="js/clinic-recommendations.js?v=20261021-clinic-repeat-option-1"></script>
     <script defer src="js/clinic-assessment.js?v=20261021-clinic-attempt-comparison-3"></script>
-    <script defer src="js/clinic-print.js?v=20261021-teacher-clinic-summary-1"></script>
+    <script defer src="js/clinic-print.js?v=20261023-teacher-summary-filters-1"></script>
     <script defer src="js/management.js"></script>
     <script defer src="js/student-export.js"></script>
     <script defer src="js/textbook.js"></script>

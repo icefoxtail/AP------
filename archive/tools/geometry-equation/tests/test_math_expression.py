@@ -5,7 +5,7 @@ from visual_engine.math_expression import parse,serialize,evaluate,exact_coordin
 
 class MathTests(unittest.TestCase):
     def test_gold_regression(self):
-        expected={ '(x+1)^2+(y-3)^2=2^2':'(x+1)^{2}+(y-3)^{2}=2^{2}', 'x^2-3x+4':'x^{2}-3x+4', '3(x-1)^2-3':'3(x-1)^{2}-3', 'x^3-4x':'x^{3}-4x', 'sqrt(5)':r'\sqrt{5}', '1/2':r'\frac{1}{2}', '-3/2':r'\frac{-3}{2}', "f'(x)":r'f^{\prime}(x)', 'x<=2':r'x\le 2'}
+        expected={ '(x+1)^2+(y-3)^2=2^2':'(x+1)^{2}+(y-3)^{2}=2^{2}', 'x^2-3x+4':'x^{2}-3x+4', '3(x-1)^2-3':'3(x-1)^{2}-3', 'x^3-4x':'x^{3}-4x', 'sqrt(5)':r'\sqrt{5}', '1/2':r'{\displaystyle\frac{1}{2}}', '-3/2':r'-{\displaystyle\frac{3}{2}}', "f'(x)":r'f^{\prime}(x)', 'x<=2':r'x\le 2'}
         for source,tex in expected.items():
             with self.subTest(source=source):
                 self.assertEqual(serialize(parse(source)),tex)
@@ -39,6 +39,13 @@ class MathTests(unittest.TestCase):
     def test_limits(self):
         for source in ('('*40+'x'+')'*40,'x+'*300+'x'):
             with self.assertRaises(ValueError):parse(source)
+    def test_textbook_notation(self):
+        cases={'-3/2':(r'-{\displaystyle\frac{3}{2}}','−3/2'),'-3/2*x':(r'-{\displaystyle\frac{3}{2}}x','−3/2·x'),'3*x':('3x','3x'),'-2*x':('-2x','−2x'),'2*sqrt(5)':(r'2\sqrt{5}','2√(5)'),'2*3':(r'2\cdot 3','2·3'),
+               '(1/2)*sqrt(34)':(r'{\displaystyle\frac{\sqrt{34}}{2}}','√(34)/2'),'(-1/2)*sqrt(34)':(r'-{\displaystyle\frac{\sqrt{34}}{2}}','−√(34)/2'),
+               '(-5/2)*sqrt(3)':(r'-{\displaystyle\frac{5\sqrt{3}}{2}}','(−5√(3))/2'),'(8/5)*sqrt(10)':(r'{\displaystyle\frac{8\sqrt{10}}{5}}','(8√(10))/5')}
+        for source,(tex,plain) in cases.items():
+            with self.subTest(source=source):
+                self.assertEqual(serialize(parse(source),'tex'),tex);self.assertEqual(serialize(parse(source),'plain'),plain)
     def test_relation(self):
         self.assertTrue(evaluate(parse('x<=2'),{'x':1}))
         self.assertFalse(evaluate(parse('x=2'),{'x':1}))

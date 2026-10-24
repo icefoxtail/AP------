@@ -263,7 +263,11 @@ function appHistoryBack() {
     }
 
     if (isModalOpen()) {
-        closeModal(true);
+        const returnCtx = state.ui?.modalReturnView;
+        const hasClassReturn = returnCtx?.type === 'classDetail' ||
+            (returnCtx?.type === 'studentDetail' && state.ui?.currentStudentDetailReturnTo?.type === 'classDetail');
+        // The app back button must not discard a classroom-origin modal's return route.
+        closeModal(!hasClassReturn);
         window.setTimeout(updateAppBackButtons, 280);
         return true;
     }
@@ -359,6 +363,8 @@ function applyModalContent(t, b, at = null, af = null, options = {}) {
     const cancelBtn = document.getElementById('modal-cancel-btn');
 
     if (!titleEl || !bodyEl || !overlay) return;
+
+    document.body?.classList?.add('ap-modal-open');
 
     if (modalCloseTimer) {
         clearTimeout(modalCloseTimer);
@@ -496,8 +502,12 @@ function returnToPreviousManagementView(fallback = 'dashboard', ctx = null) {
     if (view.type === 'textbookManage' && typeof openTextbookManageModal === 'function') return openTextbookManageModal({ returnTo: view.parentReturn || null });
     if (view.type === 'classDetail' && view.classId && typeof renderClass === 'function') {
         closeModal(true);
-        // [깜박임 핫픽스] 클래스룸 화면이 배경에 이미 살아 있으면 재렌더하지 않는다.
-        if (document.querySelector('.ap-classroom-shell')) return;
+        // Do not confuse the previous class screen with the class selected in progress.
+        const existingClassroom = document.querySelector('.ap-classroom-shell');
+        if (existingClassroom && String(existingClassroom.getAttribute('data-class-id') || '') === String(view.classId)) {
+            state.ui.currentClassId = String(view.classId);
+            return;
+        }
         return renderClass(view.classId);
     }
     if (view.type === 'studentDetail' && view.studentId && typeof renderStudentDetail === 'function') {
@@ -558,6 +568,7 @@ function closeModal(suppressReturn = false) {
     overlay.classList.remove('show');
     modalCloseTimer = setTimeout(() => {
         overlay.classList.add('hidden');
+        document.body?.classList?.remove('ap-modal-open');
         modalCloseTimer = null;
 
         const actionBtn = document.getElementById('modal-action-btn');

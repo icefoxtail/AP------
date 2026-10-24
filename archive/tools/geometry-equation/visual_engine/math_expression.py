@@ -121,7 +121,7 @@ def serialize(node,mode='tex'):
     if k=='call':
         name=a[0].value if a[0].kind=='symbol' else ''
         if name=='sqrt':return ('\\sqrt{'+s(a[1])+'}') if mode=='tex' else '√('+s(a[1])+')'
-        if name=='abs' and mode=='tex':return r'\left|'+s(a[1])+r'\right|'
+        if name=='abs':return r'\left|'+s(a[1])+r'\right|' if mode=='tex' else '|'+s(a[1])+'|'
         if mode=='tex' and name=='ln':fn=r'\ln'
         elif mode=='tex' and name in FUNCTIONS:fn='\\'+name
         else:fn=escape(name) if name in FUNCTIONS else s(a[0])
@@ -142,10 +142,30 @@ def serialize(node,mode='tex'):
             if mode=='svg':return operand(left)+'<tspan baseline-shift="super" font-size="70%">'+s(right)+'</tspan>'
             return operand(left)+'^('+s(right)+')'
         if op=='/':
-            if mode=='tex':return '\\frac{'+s(left)+'}{'+s(right)+'}'
+            # Stacked at full text size, not the 70% inline size that is too small to read in the solution column (user direction 2026-10-22).
+            if mode=='tex':
+                # Textbook form: the minus sign stands before the stacked fraction, not inside the numerator.
+                sign='';num=left
+                if left.kind=='unary' and left.value=='-' and left.args[0].kind in {'number','symbol','call'}:sign='-';num=left.args[0]
+                # A bracketed numerator, as in (-3+sqrt(53))/2, is written without its brackets above the fraction bar.
+                if num.kind=='group':num=num.args[0]
+                if right.kind=='group':right=right.args[0]
+                return sign+'{\\displaystyle\\frac{'+s(num)+'}{'+s(right)+'}}'
             return (s(left) if left.kind in {'number','symbol','group','call','prime','subscript','unary'} else '('+s(left)+')')+'/'+(s(right) if right.kind in {'number','symbol','group','call','prime','subscript'} else '('+s(right)+')')
         mapped={'implicit':'','*':'\\cdot ' if mode=='tex' else '·','-':'-' if mode=='tex' else '−', '<=':'\\le ' if mode=='tex' else '≤','>=':'\\ge ' if mode=='tex' else '≥','!=':'\\ne ' if mode=='tex' else '≠'}
-        return operand(left)+escape(mapped.get(op,op))+operand(right,True)
+        if op=='*' and mode!='svg' and left.kind=='group' and left.args[0].kind=='binary' and left.args[0].value=='/' and (left.args[0].args[0].kind=='number' or (left.args[0].args[0].kind=='unary' and left.args[0].args[0].value=='-' and left.args[0].args[0].args[0].kind=='number')) and right.kind in {'call','symbol'}:
+            # (8/5)√10 reads 8√10 over 5: the factor goes into the numerator of the stacked fraction instead of sitting beside parentheses.
+            numerator,denominator=left.args[0].args
+            sign='-' if numerator.kind=='unary' else '';magnitude=numerator.args[0] if numerator.kind=='unary' else numerator
+            # A numerator of 1 is not written: (1/2)√34 reads √34 over 2.
+            top=s(right) if magnitude.kind=='number' and magnitude.value=='1' else s(magnitude)+s(right)
+            if mode!='tex':return (('−' if sign else '')+top+'/'+s(denominator)) if magnitude.kind=='number' and magnitude.value=='1' else '('+s(numerator)+s(right)+')/'+s(denominator)
+            return sign+'{\\displaystyle\\frac{'+top+'}{'+s(denominator)+'}}'
+        rt=operand(right,True)
+        if op=='*' and rt and not rt[0].isdigit() and rt[0] not in '.-−':
+            # Implicit product (3x, 2√5, 3(x+1)): no multiplication dot after a number, a group, or (tex only) a stacked fraction.
+            if left.kind in {'number','group'} or (left.kind=='unary' and left.value=='-' and left.args[0].kind=='number') or (mode=='tex' and left.kind=='binary' and left.value=='/'):return operand(left)+rt
+        return operand(left)+escape(mapped.get(op,op))+rt
     raise ValueError('UNKNOWN_AST_NODE')
 
 def evaluate(node,values=None):

@@ -48,9 +48,9 @@ window.questionBank = [
       "l4": "초점·장축·단축",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": ["CC_ELLIPSE"],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyConfidence": "high",
@@ -106,9 +106,9 @@ window.questionBank = [
       "l4": "정의와 방정식",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+    "crossConceptKeys": ["CC_HYPERBOLA"],
     "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyConfidence": "high",
@@ -165,12 +165,10 @@ window.questionBank = [
       "l4": "초점·준선",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "crossConceptKeys": ["CC_PARABOLA"],
+    "conditionKeys": [],
     "integrationPattern": "NONE",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -225,11 +223,9 @@ window.questionBank = [
       "l4": "정의와 방정식",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_TRANSLATION"
-    ],
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+    "crossConceptKeys": ["CC_PARABOLA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
@@ -285,9 +281,9 @@ window.questionBank = [
       "l4": "초점·장축·단축",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [],
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_STANDARD_EQUATION",
+    "crossConceptKeys": ["CC_ELLIPSE"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
@@ -344,11 +340,9 @@ window.questionBank = [
       "l4": "점근선",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+    "crossConceptKeys": ["CC_HYPERBOLA","CC_AREA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
@@ -409,11 +403,9 @@ window.questionBank = [
       "l4": "접점형",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_LINE_EQUATION"
-    ],
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_CONIC_TANGENT","CC_ELLIPSE"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
@@ -470,12 +462,9 @@ window.questionBank = [
       "l4": "기울기·조건형",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_PERPENDICULAR",
-      "CC_SLOPE"
-    ],
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_CONIC_TANGENT","CC_HYPERBOLA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
@@ -534,11 +523,9 @@ window.questionBank = [
       "l4": "방향벡터의 수직 판정",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_PERPENDICULAR"
-    ],
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_LINES_ANGLE",
+    "crossConceptKeys": ["CC_SPACE_FIGURE","CC_SKEW_LINES"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
@@ -603,11 +590,9 @@ window.questionBank = [
       "l4": "기울기형",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_SLOPE"
-    ],
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": ["CC_CONIC_TANGENT","CC_PARABOLA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
@@ -666,11 +651,9 @@ window.questionBank = [
       "l4": "초점·준선",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_TRIANGLE_CENTROID"
-    ],
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "crossConceptKeys": ["CC_PARABOLA","CC_CENTROID"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
@@ -737,13 +720,9 @@ window.questionBank = [
       "l4": "평행선에 의한 각의 환원",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_SQUARE",
-      "CC_PYTHAGOREAN",
-      "CC_PARALLEL_LINES"
-    ],
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": ["CC_SPACE_FIGURE","CC_ORTHOGONAL_PROJECTION"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
@@ -812,14 +791,10 @@ window.questionBank = [
       "l4": "기울기·조건형",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_SLOPE"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_CONIC_TANGENT","CC_ELLIPSE","CC_PARABOLA"],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -885,12 +860,9 @@ window.questionBank = [
       "l4": "접점형",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_PERPENDICULAR",
-      "CC_DISTANCE_TWO_POINTS"
-    ],
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ORTHOGONAL",
+    "crossConceptKeys": ["CC_CONIC_TANGENT","CC_PARABOLA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
@@ -960,15 +932,10 @@ window.questionBank = [
       "l4": "초점·장축·단축",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_TRIANGLE_INEQUALITY",
-      "CC_DISTANCE_TWO_POINTS"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": ["CC_ELLIPSE"],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1027,15 +994,10 @@ window.questionBank = [
       "l4": "초점·준선",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_PYTHAGOREAN",
-      "CC_AREA"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "crossConceptKeys": ["CC_PARABOLA","CC_ELLIPSE"],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
@@ -1098,14 +1060,10 @@ window.questionBank = [
       "l4": "기울기·조건형",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_CONIC_TANGENT","CC_ELLIPSE","CC_AREA"],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -1161,14 +1119,10 @@ window.questionBank = [
       "l4": "접점형",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA"
-    ],
-    "conditionKeys": [
-      "COND_POSITIVE"
-    ],
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_CONIC_TANGENT","CC_PARABOLA"],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
@@ -1225,11 +1179,9 @@ window.questionBank = [
       "l4": "초점·준선",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_TRIANGLE_INEQUALITY"
-    ],
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+    "crossConceptKeys": ["CC_PARABOLA"],
     "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "medium",
@@ -1286,15 +1238,10 @@ window.questionBank = [
       "l4": "기울기·조건형",
       "mappingStatus": "RPM_ONLY"
     },
-    "problemTypeKey": null,
-    "templateKey": null,
-    "crossConceptKeys": [
-      "CC_TRIANGLE_AREA",
-      "CC_LINE_EQUATION"
-    ],
-    "conditionKeys": [
-      "COND_RANGE"
-    ],
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": ["CC_CONIC_TANGENT","CC_ELLIPSE"],
+    "conditionKeys": [],
     "integrationPattern": "SEQUENTIAL",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",

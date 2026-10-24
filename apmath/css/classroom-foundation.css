@@ -452,3 +452,104 @@
         white-space: normal;
     }
 }
+
+/* Classroom step 1: persistent same-screen class switcher. */
+.ap-classroom-switcher {
+    margin: 0 0 10px;
+    padding: 8px 10px;
+    border: 1px solid var(--apms-ui-border, var(--border));
+    border-radius: var(--apms-ui-radius-card, 12px);
+    background: var(--apms-ui-surface, var(--surface));
+}
+.ap-classroom-class-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+.ap-classroom-class-tab {
+    flex: 0 0 auto;
+    min-height: 42px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text);
+    background: var(--surface);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.ap-classroom-class-tab.is-active {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: var(--on-primary, #fff);
+}
+.ap-classroom-class-tab:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+@media (max-width: 760px) {
+    .ap-classroom-switcher { padding: 6px; }
+    .ap-classroom-class-tab { min-height: 44px; }
+}
+
+/* Classroom management connections: compact desktop, touch-friendly mobile. */
+.ap-classroom-management-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 12px;
+}
+.ap-classroom-management-action {
+    min-height: 40px;
+    padding: 7px 12px;
+    border: 1px solid var(--apms-ui-border, var(--border));
+    border-radius: 10px;
+    color: var(--apms-ui-text, var(--text));
+    background: var(--apms-ui-surface, var(--surface));
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.ap-classroom-management-action:hover,
+.ap-classroom-move-student:hover { background: var(--surface-2); }
+.ap-classroom-management-action:focus-visible,
+.ap-classroom-move-student:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.ap-classroom-move-picker { display: grid; gap: 8px; }
+.ap-classroom-move-picker p { font-size: 13px; line-height: 1.5; color: var(--secondary); margin: 0 0 6px; }
+.ap-classroom-move-student {
+    min-height: 44px;
+    padding: 9px 12px;
+    text-align: left;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    background: var(--surface);
+    font: inherit;
+    cursor: pointer;
+}
+.tt-classroom-return {
+    min-height: 44px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    background: var(--surface);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+@media (max-width: 760px) {
+    .ap-classroom-management-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .ap-classroom-management-action { min-height: 44px; }
+}

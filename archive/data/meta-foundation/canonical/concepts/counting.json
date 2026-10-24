@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COUNTING",
-  "shardVersion": "1.0.0",
+  "shardVersion": "1.0.2",
   "status": "ACTIVE",
-  "conceptCount": 1,
+  "conceptCount": 14,
   "concepts": [
     {
       "conceptKey": "CC_COMBINATORICS_COUNTING",
@@ -54,6 +54,171 @@
           }
         }
       ]
+    },
+    {
+      "conceptKey": "CC_PERMUTATION",
+      "canonicalLabelKo": "순열",
+      "definition": "서로 다른 n개 중 r개를 택해 일렬로 나열하는 경우의 수",
+      "supportingQuestionUids": [
+        "qid_v1_212e5cf63c5a622b92ea247e53e408beb83b22aa9ac06f593350f23840fd8600",
+        "qid_v1_6533f2becefe3b1705e0fdffee303f5651ca0731dc52b6b3bbac6f594e92d42c",
+        "qid_v1_a99a6e3f41f0ddb7b3d03a6b016e0906d7a9d67dd51f258f19f275401dd92ff1",
+        "qid_v1_dd6debd2244ba33445d667515d728d491ce411d6c02c33dfddd48341229d73f0"
+      ],
+      "supportingItemCount": 4,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_FACTORIAL",
+      "canonicalLabelKo": "계승(팩토리얼)",
+      "definition": "1부터 n까지의 자연수를 차례로 곱한 값",
+      "supportingQuestionUids": [
+        "qid_v1_212e5cf63c5a622b92ea247e53e408beb83b22aa9ac06f593350f23840fd8600"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_REPEATED_PERMUTATION",
+      "canonicalLabelKo": "중복순열",
+      "definition": "중복을 허용하여 일렬로 나열하는 경우의 수",
+      "supportingQuestionUids": [
+        "qid_v1_5fe767ace86ee9a30f073db0a4f873fb9fa1c9f3ebac9bc729de4c83dac5dfb8",
+        "qid_v1_bd90fadbab11fa02300c82ec0d4135fb17e7f076850c585db6b52231caa55ed2"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_PRODUCT_RULE",
+      "canonicalLabelKo": "곱의 법칙",
+      "definition": "두 사건이 잇달아 일어나는 경우의 수의 곱",
+      "supportingQuestionUids": [
+        "qid_v1_5fe767ace86ee9a30f073db0a4f873fb9fa1c9f3ebac9bc729de4c83dac5dfb8"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_REPEATED_COMBINATION",
+      "canonicalLabelKo": "중복조합",
+      "definition": "중복을 허용하여 대상을 선택하는 경우의 수",
+      "supportingQuestionUids": [
+        "qid_v1_02ce1505dc9411b6942245be586bb943e180d9bfd20e4228b1c1bf5d9cca3169",
+        "qid_v1_a2de3e997a03836f829f71aa73077b97f10f0d44564a7d25d8a2dd607e8524f5",
+        "qid_v1_db36e7fb2795840d13eaa87574faefb8ba66aa564e29aa999229bc92eb830578"
+      ],
+      "supportingItemCount": 3,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_NON_NEGATIVE_INTEGER_SOLUTION",
+      "canonicalLabelKo": "음이 아닌 정수해",
+      "definition": "부정방정식의 비음이 아닌 정수해 개수 모델",
+      "supportingQuestionUids": [
+        "qid_v1_a2de3e997a03836f829f71aa73077b97f10f0d44564a7d25d8a2dd607e8524f5"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_ADJACENT_PERMUTATION",
+      "canonicalLabelKo": "이웃하는 순열",
+      "definition": "특정 대상들을 한 묶음으로 취급하는 순열",
+      "supportingQuestionUids": [
+        "qid_v1_a99a6e3f41f0ddb7b3d03a6b016e0906d7a9d67dd51f258f19f275401dd92ff1"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_CIRCULAR_PERMUTATION",
+      "canonicalLabelKo": "원순열",
+      "definition": "회전하여 일치하는 것을 같은 것으로 보는 순열",
+      "supportingQuestionUids": [
+        "qid_v1_b32071d9583a0b13c2f5ac60748c104cdb4452a1973e58c5a27e8415efd4fd12"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_THEOREM",
+      "canonicalLabelKo": "이항정리",
+      "definition": "이항식의 거듭제곱을 조합 계수로 전개하는 정리",
+      "supportingQuestionUids": [
+        "qid_v1_32c6a42d9a9fd8388ee3d332658b6ead2398401608c22c26f2a00c5f98deef73",
+        "qid_v1_6ff1113ab802f0b91607c238c84367b37a14f937151249edf90a1afbf95a0f2e"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_COMBINATION",
+      "canonicalLabelKo": "조합",
+      "definition": "순서를 고려하지 않고 대상을 선택하는 경우의 수",
+      "supportingQuestionUids": [
+        "qid_v1_a9418d1ee09d339787c49026e39fba70932374d2ac98227307b9b613708f2ecf",
+        "qid_v1_dcee7ce0dada9af9c598a1eb13494581e455e8b844684f36304ce92160057db9",
+        "qid_v1_e0a3fb82353290d0fa8d6df24e3847662e50d2ad8d5ee429fbbcbc10e95e01c5"
+      ],
+      "supportingItemCount": 3,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_CONSTRAINT_SATISFACTION",
+      "canonicalLabelKo": "제약조건 만족",
+      "definition": "상한 또는 하한 제한을 만족하는 경우의 수",
+      "supportingQuestionUids": [
+        "qid_v1_db36e7fb2795840d13eaa87574faefb8ba66aa564e29aa999229bc92eb830578"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_COUNTING",
+      "canonicalLabelKo": "함수의 개수",
+      "definition": "정의역과 공역의 제약조건에 따른 사상 개수",
+      "supportingQuestionUids": [
+        "qid_v1_02ce1505dc9411b6942245be586bb943e180d9bfd20e4228b1c1bf5d9cca3169"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_INTEGER_COUNT",
+      "canonicalLabelKo": "정수 순서쌍 개수",
+      "definition": "부등식을 만족하는 정수해 카운팅",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f441aaf0d72ebb5d8b13a47178b09ecc299a6d9ecfbe9046324ab986553f3fbd"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "COUNTING"
     }
   ]
 }

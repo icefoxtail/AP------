@@ -9,16 +9,16 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="AP 학생">
   <meta name="apple-mobile-web-app-title" content="AP 학생">
-  <link rel="manifest" href="./manifest.json?v=2026.06.19.1">
-  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.06.19.1">
-  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.06.19.1">
-  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.06.19.1">
+  <link rel="manifest" href="./manifest.json?v=2026.10.23.2">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=2026.10.23.2">
+  <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png?v=2026.10.23.2">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png?v=2026.10.23.2">
   <title>AP Math OS | 학생 포털</title>
   <script src="../../archive/archive2-output-contract.js?v=20261003-student-review-1"></script>
   <script src="../../archive/archive2-output.js?v=20261003-student-output-s4-1"></script>
   <script src="./archive-review-output.js?v=20261003-student-review-s4-1"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.06.19.1">
+  <link rel="stylesheet" href="../css/apms-ui-foundation.css?v=2026.10.23.2">
   <style>
     :root {
       --primary:#111827;
@@ -322,6 +322,9 @@
       overflow:hidden;
       background:#FFFFFF;
     }
+    .clinic-view-tabs { grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:12px; }
+    .clinic-status-tabs { grid-template-columns:repeat(2,minmax(0,1fr)); margin-top:8px; }
+    .omr-list-view-filter-tabs { grid-template-columns:repeat(4,minmax(0,1fr)); }
     .omr-filter-tab {
       min-width:0;
       min-height:46px;
@@ -474,7 +477,7 @@
       width:40px;
       height:40px;
       border-radius:15px;
-      background:#FFFFFF url('./icons/icon-192.png?v=2026.06.19.1') center/cover no-repeat;
+      background:#FFFFFF url('./icons/icon-192.png?v=2026.10.23.2') center/cover no-repeat;
       color:transparent;
       display:flex;
       align-items:center;
@@ -617,7 +620,7 @@
       .omr-filter-tab { font-size:12px; }
     }
   </style>
-  <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.06.19.1">
+  <link rel="stylesheet" href="../css/apms-theme-override.css?v=2026.10.23.2">
   <style>
     body.student-portal-theme {
       --primary:#111827;
@@ -727,7 +730,7 @@
 <body class="student-portal-theme">
   <header class="top">
     <div class="brand">
-      <img class="brand-logo" src="./icons/icon-192.png?v=2026.06.19.1" alt="AP Math">
+      <img class="brand-logo" src="./icons/icon-192.png?v=2026.10.23.2" alt="AP Math">
       <div class="brand-copy">
         <div class="brand-main">AP Math OS</div>
         <div class="brand-sub">학생 포털</div>
@@ -749,7 +752,7 @@
     // 3. manifest.json version
     // 4. sw.js STUDENT_SW_VERSION / CACHE_NAME
     // 5. index.html 정적 리소스 ?v=
-    const STUDENT_APP_VERSION = '2026.10.03.3';
+    const STUDENT_APP_VERSION = '2026.10.23.2';
     const API_BASE = 'https://ap-math-os-v2612.js-pdf.workers.dev/api';
     const SESSION_KEY = 'APMATH_STUDENT_PORTAL_SESSION';
     const TEACHER_SESSION_KEY = 'APMATH_SESSION';
@@ -761,6 +764,11 @@
     const exactOmrAssignmentId = String(previewParams.get('assignment_id') || '').trim();
 
     let session = null;
+    let studentRequestGeneration = 0;
+    const studentRequestSequences = Object.create(null);
+    let studentViewGeneration = 0;
+    let currentStudentView = 'boot';
+    let isLoadingViewGeneration = null;
     let homeData = null;
     let homeIndex = null;
     let omrData = null;
@@ -770,6 +778,12 @@
     let omrListFilter = 'all';
     let materialWrongData = null;
     let wrongClinicData = null;
+    let wrongClinicLoadError = '';
+    let wrongClinicView = 'recent';
+    let wrongClinicStatusFilter = 'all';
+    let wrongClinicFilterStudentId = '';
+    let latestWrongClinicRefresh = null;
+    let pendingWrongClinicOpen = null;
     let materialWrongDraft = null;
     let wrongClinicDraft = null;
     let isLoading = false;
@@ -785,6 +799,51 @@
       el.classList.add('show');
       clearTimeout(window.__toastTimer);
       window.__toastTimer = setTimeout(() => el.classList.remove('show'), 1900);
+    }
+    function beginStudentRequest(resource) {
+      const sequence = (studentRequestSequences[resource] || 0) + 1;
+      studentRequestSequences[resource] = sequence;
+      return { ...captureStudentAuthContext(),
+        resource,
+        sequence
+      };
+    }
+    function captureStudentAuthContext() {
+      return {
+        generation: studentRequestGeneration,
+        studentId: String(session?.student_id || ''),
+        studentToken: String(session?.student_token || ''),
+        teacherToken: isTeacherPreview ? readTeacherPreviewToken() : ''
+      };
+    }
+    function isStudentAuthContextCurrent(request) {
+      if (!request || request.generation !== studentRequestGeneration) return false;
+      if (String(session?.student_id || '') !== request.studentId) return false;
+      if (String(session?.student_token || '') !== request.studentToken) return false;
+      return !isTeacherPreview || readTeacherPreviewToken() === request.teacherToken;
+    }
+    function isStudentRequestCurrent(request) {
+      return isStudentAuthContextCurrent(request) &&
+        studentRequestSequences[request.resource] === request.sequence;
+    }
+    function enterStudentView(view, preserveCurrent = false, forceNew = false) {
+      if (preserveCurrent && currentStudentView === view) return captureStudentView();
+      if (currentStudentView !== view || forceNew) {
+        currentStudentView = view;
+        studentViewGeneration += 1;
+        if (isLoadingViewGeneration !== null && isLoadingViewGeneration !== studentViewGeneration) {
+          isLoading = false;
+          isLoadingViewGeneration = null;
+        }
+      }
+      return captureStudentView();
+    }
+    function captureStudentView() {
+      return { view: currentStudentView, generation: studentViewGeneration };
+    }
+    function isStudentViewCurrent(viewContext, expectedView = viewContext?.view) {
+      return Boolean(viewContext) && viewContext.view === expectedView &&
+        currentStudentView === expectedView && viewContext.generation === studentViewGeneration;
     }
     function renderStudentAppVersion() {
       return `<div class="student-app-version">v${escapeHtml(STUDENT_APP_VERSION)}</div>`;
@@ -900,16 +959,27 @@
     }
     function saveSession(next) {
       const prevStudentId = session?.student_id;
+      const prevStudentToken = session?.student_token;
+      const contextChanged = String(prevStudentId || '') !== String(next?.student_id || '') ||
+        String(prevStudentToken || '') !== String(next?.student_token || '');
       session = next;
-      if (String(prevStudentId || '') !== String(next?.student_id || '')) {
+      if (contextChanged) {
+        studentRequestGeneration += 1;
         homeData = null;
         homeIndex = null;
         omrData = null;
         omrIndex = null;
         omrLoadedAssignmentId = null;
+        omrListFilter = 'all';
         materialWrongData = null;
         materialWrongDraft = null;
         wrongClinicData = null;
+        wrongClinicLoadError = '';
+        wrongClinicView = 'recent';
+        wrongClinicStatusFilter = 'all';
+        wrongClinicFilterStudentId = `${String(next?.student_id || '')}|${String(next?.student_token || '')}`;
+        latestWrongClinicRefresh = null;
+        pendingWrongClinicOpen = null;
         wrongClinicDraft = null;
       }
       localStorage.setItem(SESSION_KEY, JSON.stringify(next));
@@ -960,6 +1030,7 @@
       } catch (e) {}
     }
     function clearSession() {
+      studentRequestGeneration += 1;
       localStorage.removeItem(SESSION_KEY);
       localStorage.removeItem('PLANNER_SID');
       localStorage.removeItem('PLANNER_PIN');
@@ -971,7 +1042,17 @@
       omrData = null;
       omrIndex = null;
       omrLoadedAssignmentId = null;
+      omrListFilter = 'all';
       wrongClinicData = null;
+      wrongClinicLoadError = '';
+      wrongClinicView = 'recent';
+      wrongClinicStatusFilter = 'all';
+      wrongClinicFilterStudentId = '';
+      latestWrongClinicRefresh = null;
+      pendingWrongClinicOpen = null;
+      wrongClinicDraft = null;
+      isLoading = false;
+      isLoadingViewGeneration = null;
     }
     async function apiPost(path, body) {
       if (isTeacherPreview) throw new Error('학생 화면 확인에서는 저장할 수 없습니다.');
@@ -1028,6 +1109,7 @@
       }
     }
     function renderPreviewError(message) {
+      enterStudentView('preview-error');
       setTopStudent('');
       $('app').innerHTML = `
         <section class="card login-card">
@@ -1060,6 +1142,7 @@
       `;
     }
     function renderLogin(message = '') {
+      enterStudentView('login');
       setTopStudent('');
       $('app').innerHTML = `
         ${renderHero()}
@@ -1127,25 +1210,37 @@
         renderLogin();
         return;
       }
+      const continuation = beginStudentRequest('homeBootstrap');
+      const request = beginStudentRequest('home');
       try {
-        setStudentPortalHomeData(await apiGet(`student-portal/home?student_id=${encodeURIComponent(session.student_id)}`, session.student_token));
+        const nextHome = await apiGet(`student-portal/home?student_id=${encodeURIComponent(request.studentId)}`, request.studentToken);
+        if (!isStudentRequestCurrent(request)) return;
+        setStudentPortalHomeData(nextHome);
         if (isTeacherPreview && homeData?.read_only !== true) throw new Error('읽기 전용 권한을 확인할 수 없습니다.');
         // 홈과 전체 시험지 목록은 동일한 학생별 시험 API를 기준으로 렌더링한다.
         // 홈 응답은 연결 직후의 빠른 표시용 fallback으로만 남긴다.
         try {
           await loadOmrExams(true);
         } catch (e) {
+          if (!isStudentRequestCurrent(request)) return;
           console.warn('[student portal] canonical exam list load failed:', e);
         }
+        if (!isStudentRequestCurrent(request)) return;
         renderHome();
+        const homeView = captureStudentView();
         if (!isTeacherPreview) {
+          pendingWrongClinicOpen = getPendingWrongClinicKeyFromUrl()
+            ? { request: continuation, view: homeView }
+            : null;
           await refreshWrongClinicPackets();
-          tryOpenPendingWrongClinicFromUrl();
+          if (!isStudentRequestCurrent(continuation) || !isStudentViewCurrent(homeView, 'home')) return;
         }
+        if (!isStudentRequestCurrent(continuation) || !isStudentViewCurrent(homeView, 'home')) return;
         if (shouldOpenOmrFromUrl() && typeof renderOmrExams === 'function') {
           await renderOmrExams();
         }
       } catch (e) {
+        if (!isStudentRequestCurrent(request)) return;
         if (isTeacherPreview) {
           renderPreviewError(e.message || '학생 정보를 확인할 수 없습니다.');
           return;
@@ -1218,26 +1313,53 @@
         if (nextRoot) nextRoot.querySelector('.portal-assignments-list').innerHTML = '<div class="empty">수업자료 오답을 불러오지 못했습니다.</div>';
       }
     }
-    async function loadWrongClinicPackets(force = false) {
-      if (!session?.student_id || !session?.student_token) return { packets: [] };
+    async function loadWrongClinicPackets(force = false, request = beginStudentRequest('clinic')) {
+      if (!request.studentId || !request.studentToken) return { packets: [] };
       if (!force && wrongClinicData?.packets) return wrongClinicData;
-      wrongClinicData = await apiGet(`student-portal/wrong-clinics?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+      const nextClinicData = await apiGet(`student-portal/wrong-clinics?student_id=${encodeURIComponent(request.studentId)}`, request.studentToken);
+      if (!isStudentRequestCurrent(request)) return null;
+      wrongClinicData = nextClinicData;
+      wrongClinicLoadError = '';
       return wrongClinicData;
     }
     function getWrongClinicPackets() {
       return Array.isArray(wrongClinicData?.packets) ? wrongClinicData.packets : [];
     }
     async function refreshWrongClinicPackets() {
-      if (!session?.student_id || !session?.student_token) return;
-      const root = $('wrong-clinic-section');
-      try {
-        await loadWrongClinicPackets(true);
-        const nextRoot = $('wrong-clinic-section');
-        if (nextRoot) nextRoot.outerHTML = renderWrongClinicPackets();
-      } catch (e) {
-        const nextRoot = $('wrong-clinic-section');
-        if (nextRoot) nextRoot.querySelector('.portal-assignments-list').innerHTML = '<div class="empty">오답 클리닉을 불러오지 못했습니다.</div>';
+      if (!session?.student_id || !session?.student_token) return { status: 'stale' };
+      const request = beginStudentRequest('clinic');
+      const entry = { request, promise: null };
+      latestWrongClinicRefresh = entry;
+      entry.promise = (async () => {
+        try {
+          await loadWrongClinicPackets(true, request);
+          if (!isStudentRequestCurrent(request)) return { status: 'superseded' };
+          const nextRoot = $('wrong-clinic-section');
+          if (nextRoot) nextRoot.outerHTML = renderWrongClinicPackets();
+          resolvePendingWrongClinicOpen();
+          return { status: 'current', data: wrongClinicData };
+        } catch (e) {
+          if (!isStudentRequestCurrent(request)) return { status: 'superseded' };
+          wrongClinicData = null;
+          wrongClinicLoadError = e.message || '오답 클리닉을 불러오지 못했습니다.';
+          const nextRoot = $('wrong-clinic-section');
+          if (nextRoot) nextRoot.outerHTML = renderWrongClinicPackets();
+          return { status: 'error', error: wrongClinicLoadError };
+        }
+      })();
+      return await waitForLatestWrongClinicRefresh(entry);
+    }
+    async function waitForLatestWrongClinicRefresh(startingEntry) {
+      let entry = startingEntry;
+      while (entry?.promise) {
+        const result = await entry.promise;
+        if (result?.status !== 'superseded') return result;
+        if (!isStudentAuthContextCurrent(startingEntry.request)) return { status: 'stale' };
+        const latest = latestWrongClinicRefresh;
+        if (!latest || latest === entry || !isStudentAuthContextCurrent(latest.request)) return result;
+        entry = latest;
       }
+      return { status: 'superseded' };
     }
     function openWrongClinicPacket(packetKey, mode = 'review', sameTab = false) {
       const key = String(packetKey || '').trim();
@@ -1267,6 +1389,21 @@
       openWrongClinicPacket(key, Number(packet.is_submitted || 0) === 1 ? 'sol' : 'exam', true);
       return true;
     }
+    function resolvePendingWrongClinicOpen() {
+      const intent = pendingWrongClinicOpen;
+      if (!intent) return false;
+      if (!isStudentRequestCurrent(intent.request) || !isStudentViewCurrent(intent.view, 'home')) {
+        pendingWrongClinicOpen = null;
+        return false;
+      }
+      if (!getPendingWrongClinicKeyFromUrl()) {
+        pendingWrongClinicOpen = null;
+        return false;
+      }
+      const opened = tryOpenPendingWrongClinicFromUrl();
+      if (opened) pendingWrongClinicOpen = null;
+      return opened;
+    }
     function normalizeWrongClinicWrongIds(values) {
       return Array.from(new Set((Array.isArray(values) ? values : [])
         .map(v => parseInt(v, 10))
@@ -1277,27 +1414,38 @@
       const packet = findWrongClinicPacket(packetKey);
       if (!packet) return toast('오답 클리닉을 찾을 수 없습니다.');
       if (isLoading) return;
+      const request = beginStudentRequest('clinicMutation');
+      const view = captureStudentView();
       isLoading = true;
+      isLoadingViewGeneration = view.generation;
       try {
         const data = await apiPost(`student-portal/wrong-clinics/${encodeURIComponent(packetKey)}/submit`, {
-          student_id: session.student_id,
-          student_token: session.student_token
+          student_id: request.studentId,
+          student_token: request.studentToken
         });
+        if (!isStudentRequestCurrent(request)) return;
         Object.assign(packet, data.packet || {}, { is_submitted: 1 });
-        toast('제출되었습니다. 이제 정답과 해설을 확인하세요.');
+        if (isStudentViewCurrent(view)) toast('제출되었습니다. 이제 정답과 해설을 확인하세요.');
         await refreshWrongClinicPackets();
       } catch (e) {
-        toast(e.message || '제출에 실패했습니다.');
+        if (isStudentRequestCurrent(request) && isStudentViewCurrent(view)) toast(e.message || '제출에 실패했습니다.');
       } finally {
-        isLoading = false;
+        if (isStudentRequestCurrent(request) && isLoadingViewGeneration === view.generation) {
+          isLoading = false;
+          isLoadingViewGeneration = null;
+        }
       }
     }
-    async function ensureWrongClinicPacketSubmitted(packet) {
-      if (!packet || Number(packet.is_submitted || 0) === 1) return packet;
+    async function ensureWrongClinicPacketSubmitted(packet, request) {
+      const status = getWrongClinicRecordedStatus(packet);
+      if (status === 'submitted') return packet;
+      if (status === 'unknown') throw new Error('클리닉 제출 상태를 확인할 수 없습니다. 목록을 새로고침한 뒤 다시 시도하세요.');
+      if (!isStudentRequestCurrent(request)) return null;
       const data = await apiPost(`student-portal/wrong-clinics/${encodeURIComponent(packet.packet_key || '')}/submit`, {
-        student_id: session.student_id,
-        student_token: session.student_token
+        student_id: request.studentId,
+        student_token: request.studentToken
       });
+      if (!isStudentRequestCurrent(request)) return null;
       Object.assign(packet, data.packet || {}, { is_submitted: 1 });
       return packet;
     }
@@ -1310,6 +1458,7 @@
         packet_key: String(packet.packet_key || ''),
         wrong_ids: normalizeWrongClinicWrongIds(packet.review_wrong_ids)
       };
+      enterStudentView('clinic-review', false, true);
       drawWrongClinicReview(packet);
     }
     function drawWrongClinicReview(packet) {
@@ -1345,31 +1494,52 @@
     }
     async function saveWrongClinicReviewWrongs() {
       if (isLoading || !wrongClinicDraft) return;
-      const packet = findWrongClinicPacket(wrongClinicDraft.packet_key);
+      const request = beginStudentRequest('clinicMutation');
+      const view = captureStudentView();
+      if (!isStudentViewCurrent(view, 'clinic-review')) return;
+      const draft = wrongClinicDraft;
+      const packet = findWrongClinicPacket(draft.packet_key);
       if (!packet) return toast('오답 클리닉을 찾을 수 없습니다.');
+      const status = getWrongClinicRecordedStatus(packet);
+      if (status === 'unknown') return toast('클리닉 제출 상태를 확인할 수 없습니다. 목록을 새로고침한 뒤 다시 시도하세요.');
+      const wrongIds = normalizeWrongClinicWrongIds(draft.wrong_ids);
       const btn = $('wrong-clinic-review-save-btn');
       isLoading = true;
+      isLoadingViewGeneration = view.generation;
       if (btn) {
         btn.disabled = true;
         btn.textContent = '저장 중...';
       }
       try {
-        await ensureWrongClinicPacketSubmitted(packet);
-        const data = await apiPost(`student-portal/wrong-clinics/${encodeURIComponent(wrongClinicDraft.packet_key)}/review-wrongs`, {
-          student_id: session.student_id,
-          student_token: session.student_token,
-          wrong_ids: normalizeWrongClinicWrongIds(wrongClinicDraft.wrong_ids)
+        await ensureWrongClinicPacketSubmitted(packet, request);
+        if (!isStudentRequestCurrent(request) || wrongClinicDraft !== draft) return;
+        const data = await apiPost(`student-portal/wrong-clinics/${encodeURIComponent(draft.packet_key)}/review-wrongs`, {
+          student_id: request.studentId,
+          student_token: request.studentToken,
+          wrong_ids: wrongIds
         });
+        if (!isStudentRequestCurrent(request) || wrongClinicDraft !== draft) return;
         Object.assign(packet, data.packet || {});
-        toast('오답이 저장되었습니다.');
-        wrongClinicDraft = null;
+        const draftUnchanged = wrongClinicDraft === draft &&
+          JSON.stringify(normalizeWrongClinicWrongIds(draft.wrong_ids)) === JSON.stringify(wrongIds);
+        const returnHomeAfterSave = isStudentViewCurrent(view, 'clinic-review') && draftUnchanged;
+        if (returnHomeAfterSave) {
+          toast('오답이 저장되었습니다.');
+          wrongClinicDraft = null;
+        }
         await refreshWrongClinicPackets();
-        renderHome();
+        if (!isStudentRequestCurrent(request)) return;
+        if (returnHomeAfterSave && isStudentViewCurrent(view, 'clinic-review')) renderHome();
       } catch (e) {
-        toast(e.message || '오답 저장에 실패했습니다.');
+        if (isStudentRequestCurrent(request) && isStudentViewCurrent(view, 'clinic-review') && wrongClinicDraft === draft) {
+          toast(e.message || '오답 저장에 실패했습니다.');
+        }
       } finally {
-        isLoading = false;
-        if (btn) {
+        if (isStudentRequestCurrent(request) && isLoadingViewGeneration === view.generation) {
+          isLoading = false;
+          isLoadingViewGeneration = null;
+        }
+        if (isStudentRequestCurrent(request) && isStudentViewCurrent(view, 'clinic-review') && btn?.isConnected) {
           btn.disabled = false;
           btn.textContent = '오답 저장';
         }
@@ -1381,16 +1551,54 @@
       if (mode === 'type') return '유형 공통 오답';
       return '나의 오답';
     }
+    function getWrongClinicRecordedStatus(packet) {
+      const value = packet?.is_submitted;
+      if (value === 1 || value === '1' || value === true) return 'submitted';
+      if (value === 0 || value === '0' || value === false) return 'pending';
+      return 'unknown';
+    }
+    function setWrongClinicView(next) {
+      if (!['recent', 'all'].includes(next)) return;
+      wrongClinicView = next;
+      const root = $('wrong-clinic-section');
+      if (root) {
+        root.outerHTML = renderWrongClinicPackets();
+        document.getElementById(`wrong-clinic-view-${next}`)?.focus();
+      }
+    }
+    function setWrongClinicStatusFilter(next) {
+      if (!['all', 'pending', 'submitted', 'unknown'].includes(next)) return;
+      wrongClinicStatusFilter = next;
+      const root = $('wrong-clinic-section');
+      if (root) {
+        root.outerHTML = renderWrongClinicPackets();
+        document.getElementById(`wrong-clinic-status-${next}`)?.focus();
+      }
+    }
     function renderWrongClinicPackets() {
+      const studentContext = `${String(session?.student_id || '')}|${String(session?.student_token || '')}`;
+      if (wrongClinicFilterStudentId !== studentContext) {
+        wrongClinicFilterStudentId = studentContext;
+        wrongClinicView = 'recent';
+        wrongClinicStatusFilter = 'all';
+      }
       const list = getWrongClinicPackets();
-      const visible = list.slice(0, 6);
+      const statusFiltered = wrongClinicStatusFilter === 'all'
+        ? list
+        : list.filter(item => getWrongClinicRecordedStatus(item) === wrongClinicStatusFilter);
+      const visible = wrongClinicView === 'recent' ? statusFiltered.slice(0, 6) : statusFiltered;
       const rows = visible.length ? visible.map(item => {
         const meta = [item.source_class_name ? `출처 ${item.source_class_name}` : '', item.created_at ? String(item.created_at).slice(0, 10) : ''].filter(Boolean).join(' · ');
         const packetKey = escapeHtml(item.packet_key || '');
-        const isSubmitted = Number(item.is_submitted || 0) === 1;
+        const status = getWrongClinicRecordedStatus(item);
+        const isSubmitted = status === 'submitted';
         const reviewWrongIds = normalizeWrongClinicWrongIds(item.review_wrong_ids);
-        const statusText = isSubmitted ? (reviewWrongIds.length ? `오답 ${reviewWrongIds.length}개 저장` : '제출 완료') : '학습 가능';
-        const statusClass = isSubmitted ? 'status-done' : 'status-pending';
+        const statusText = status === 'unknown'
+          ? '상태 확인 필요'
+          : isSubmitted
+            ? (reviewWrongIds.length ? `오답 ${reviewWrongIds.length}개 저장` : '클리닉 제출 완료')
+            : '학습 가능';
+        const statusClass = status === 'unknown' ? '' : isSubmitted ? 'status-done' : 'status-pending';
         const scopeLabel = getWrongClinicScopeLabel(item.mode);
         return `
           <div class="portal-assignment-row">
@@ -1409,15 +1617,35 @@
             </div>
           </div>
         `;
-      }).join('') : '<div class="empty">배포된 오답 클리닉이 없습니다.</div>';
+      }).join('') : `<div class="empty">${wrongClinicLoadError ? '오답 클리닉을 불러오지 못했습니다.' : wrongClinicData === null ? '오답 클리닉을 불러오는 중입니다.' : list.length ? '선택한 조건에 맞는 오답 클리닉이 없습니다.' : '배포된 오답 클리닉이 없습니다.'}</div>`;
+      const statusTabs = [
+        { key: 'all', label: '모든 상태', count: list.length },
+        { key: 'pending', label: '학습 가능', count: list.filter(item => getWrongClinicRecordedStatus(item) === 'pending').length },
+        { key: 'submitted', label: '클리닉 제출 완료', count: list.filter(item => getWrongClinicRecordedStatus(item) === 'submitted').length },
+        { key: 'unknown', label: '상태 확인 필요', count: list.filter(item => getWrongClinicRecordedStatus(item) === 'unknown').length }
+      ];
+      const viewRows = [
+        { key: 'recent', label: '최근 6개' },
+        { key: 'all', label: '조회된 전체' }
+      ];
+      const shownCount = visible.length;
       return `
         <section id="wrong-clinic-section" class="card portal-assignments-card">
           <div class="portal-assignments-head">
             <div>
               <h2 class="card-title">오답 클리닉</h2>
-              <p class="card-desc">문제, 정답, 해설을 바로 확인하고 오답을 체크할 수 있습니다.</p>
+              <p class="card-desc">클리닉 문제·정답·해설을 확인하고 다시 틀린 번호를 체크하세요. 이 오답 체크는 시험 제출과 별도로 저장됩니다.</p>
             </div>
           </div>
+          ${wrongClinicLoadError ? `<div class="empty" role="alert">오답 클리닉을 불러오지 못했습니다. <button type="button" class="btn" onclick="refreshWrongClinicPackets()">다시 불러오기</button></div>` : ''}
+          <div class="omr-filter-tabs clinic-view-tabs" role="group" aria-label="오답 클리닉 표시 범위">
+            ${viewRows.map(item => `<button type="button" id="wrong-clinic-view-${item.key}" class="omr-filter-tab ${wrongClinicView === item.key ? 'active' : ''}" aria-pressed="${wrongClinicView === item.key}" onclick="setWrongClinicView('${item.key}')">${item.label}</button>`).join('')}
+          </div>
+          <div class="omr-filter-tabs clinic-status-tabs" role="group" aria-label="오답 클리닉 상태 필터">
+            ${statusTabs.map(item => `<button type="button" id="wrong-clinic-status-${item.key}" class="omr-filter-tab ${wrongClinicStatusFilter === item.key ? 'active' : ''}" aria-pressed="${wrongClinicStatusFilter === item.key}" onclick="setWrongClinicStatusFilter('${item.key}')">${item.label}<span class="omr-filter-count">${item.count}</span></button>`).join('')}
+          </div>
+          <div class="portal-quick-actions"><button type="button" class="btn" onclick="refreshWrongClinicPackets()">오답 클리닉 새로고침</button></div>
+          <p class="omr-filter-note" aria-live="polite">${wrongClinicLoadError ? '목록을 불러오지 못했습니다. 다시 불러오기를 선택하세요.' : wrongClinicData === null ? '클리닉 목록을 불러오는 중입니다.' : `조회된 클리닉 ${list.length}개 중 상태 필터 결과 ${statusFiltered.length}개, 현재 표시 ${shownCount}개입니다. 조회된 전체는 이 화면이 받은 최대 100개 결과를 뜻합니다.`}</p>
           <div class="portal-assignments-list">${rows}</div>
         </section>
       `;
@@ -1488,6 +1716,7 @@
     }
     function drawMaterialWrongOmr() {
       if (!materialWrongDraft) return;
+      enterStudentView('material-wrong');
       const { start, end } = getMaterialWrongBounds();
       const currentStart = Math.min(Math.max(Number(materialWrongDraft.range_start || start), start), end);
       const currentEnd = Math.min(end, currentStart + 99);
@@ -1607,15 +1836,30 @@
       return '<svg viewBox="0 0 24 24"><path d="M5 5h14v14H5z"/><path d="M9 9h6"/><path d="M9 13h6"/><path d="M9 17h3"/></svg>';
     }
     async function openHomeOmrInput(assignmentId) {
+      const request = beginStudentRequest('homeOmrInput');
+      const view = captureStudentView();
+      if (!isStudentViewCurrent(view, 'home')) return;
       try {
         await loadOmrExams(false);
+        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'home')) return;
         renderOmrInput(assignmentId);
       } catch (e) {
+        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'home')) return;
         toast(e.message || 'OMR 정보를 불러오지 못했습니다.');
       }
     }
     function renderOmrHomeSection() {
       const visible = getStudentPortalAssignments();
+      const hasCompleteReviewSet = !exactOmrAssignmentId && Array.isArray(omrData?.exams) &&
+        visible.length > 0 && visible.length < 150 &&
+        visible.every(row => isOmrReviewAvailable(row));
+      const description = isTeacherPreview
+        ? '학생에게 출제된 시험지와 기록된 상태를 확인합니다.'
+        : hasCompleteReviewSet
+          ? '출제된 모든 시험지의 문제·정답·해설을 확인할 수 있습니다. 조회된 시험 제출 상태와 기록 결과를 확인하세요. 클리닉 오답 체크는 시험 제출과 별도입니다.'
+          : visible.length
+            ? `현재 조회된 ${visible.length}개 시험지입니다. 원본 파일이 제공되는 시험지에서 문제·정답·해설을 확인할 수 있습니다. 시험 제출 상태와 클리닉 오답 체크는 별도입니다.`
+            : '현재 조회된 출제 시험지가 없습니다. 시험 제출 결과와 클리닉 오답 체크는 별도입니다.';
       const rows = visible.length ? visible.map(row => {
         const assignmentId = escapeHtml(String(row?.assignment_id || ''));
         const examDate = escapeHtml(String(row?.exam_date || ''));
@@ -1623,7 +1867,11 @@
         const questionCount = Number(row?.question_count || 0);
         const className = escapeHtml(String(row?.class_name || '').trim());
         const meta = [className, examDate, questionCount ? `${questionCount}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
-        const submitted = Number(row?.is_submitted || 0) === 1;
+        const submittedStatus = getStudentPortalRecordedSubmission(row);
+        const submitted = submittedStatus === 'submitted';
+        const scoreLabel = submitted && row?.score !== null && row?.score !== undefined && row?.score !== '' && Number.isFinite(Number(row.score))
+          ? ` · ${row.score}점`
+          : '';
         return `
           <div class="omr-card">
             <div class="omr-top">
@@ -1631,12 +1879,12 @@
                 <div class="omr-title">${examTitle}</div>
                 <div class="omr-meta">${escapeHtml(meta || 'OMR 입력 필요')}</div>
               </div>
-              <span class="omr-status ${submitted ? 'done' : 'pending'}">${submitted ? '제출 완료' : (isTeacherPreview ? '출제됨' : '입력 필요')}</span>
+              <span class="omr-status ${submittedStatus === 'unknown' ? '' : submitted ? 'done' : 'pending'}">${submittedStatus === 'unknown' ? '제출 상태 확인 필요' : submitted ? `시험 제출 완료${scoreLabel}` : (isTeacherPreview ? '출제됨' : '입력 필요')}</span>
             </div>
             <div class="row-actions">
               ${renderOmrPdfAction(row)}
               ${isOmrReviewAvailable(row) ? renderOmrReviewActions(row) : '<button type="button" class="btn" disabled>시험지 파일 없음</button>'}
-              ${isTeacherPreview || submitted ? '' : `<button class="btn btn-primary" onclick="openHomeOmrInput('${assignmentId}')">OMR 입력</button>`}
+              ${isTeacherPreview || submitted ? '' : submittedStatus === 'unknown' ? '' : `<button class="btn btn-primary" onclick="openHomeOmrInput('${assignmentId}')">OMR 입력</button>`}
             </div>
           </div>
         `;
@@ -1648,13 +1896,13 @@
           <div class="portal-assignments-head">
             <div>
               <h2 class="card-title">${isTeacherPreview ? '시험지 확인' : '내 시험지'}</h2>
-              <p class="card-desc">${isTeacherPreview ? '학생에게 출제된 모든 시험지를 확인합니다.' : '출제된 모든 시험지의 문제·정답·해설을 확인할 수 있습니다.'}</p>
+              <p class="card-desc">${description}</p>
             </div>
             <div class="portal-mark orange">${renderIcon('omr')}</div>
           </div>
           <div class="portal-omr-home-list">${rows}</div>
           <div class="portal-quick-actions">
-            <button class="btn btn-primary" onclick="renderOmrExams()">전체 시험지 보기 (${visible.length})</button>
+            <button class="btn btn-primary" onclick="renderOmrExams()">출제 시험지 목록 보기 (${visible.length})</button>
           </div>
         </section>
       `;
@@ -1691,7 +1939,8 @@
         </section>
       `;
     }
-    function renderHome() {
+    function renderHome(options = {}) {
+      enterStudentView('home', options.preserveView === true, options.preserveView !== true);
       const student = homeData?.student || session || {};
       const { missing, done } = splitAssignments();
       const schoolGrade = [student.school_name, student.grade].filter(Boolean).join(' · ');
@@ -1731,6 +1980,7 @@
       if (!isTeacherPreview && typeof refreshMaterialWrongAssignments === 'function') refreshMaterialWrongAssignments();
     }
     function renderAssignments() {
+      enterStudentView('assignments', false, true);
       const { missing, done } = splitAssignments();
       setTopStudent(homeData?.student?.name || session?.name || '');
       $('app').innerHTML = `
@@ -1817,9 +2067,18 @@
     async function loadOmrExams(force = false) {
       if (!hasPortalReadAccess()) throw new Error('로그인이 필요합니다.');
       if (!force && omrData?.exams && omrLoadedAssignmentId === exactOmrAssignmentId) return omrData;
+      const request = beginStudentRequest('omr');
       const params = new URLSearchParams({ student_id: String(session.student_id) });
       if (exactOmrAssignmentId) params.set('assignment_id', exactOmrAssignmentId);
-      omrData = await apiGet(`student-portal/exams?${params.toString()}`, session.student_token);
+      let nextOmrData;
+      try {
+        nextOmrData = await apiGet(`student-portal/exams?${params.toString()}`, request.studentToken);
+      } catch (e) {
+        if (!isStudentRequestCurrent(request)) return null;
+        throw e;
+      }
+      if (!isStudentRequestCurrent(request)) return null;
+      omrData = nextOmrData;
       omrLoadedAssignmentId = exactOmrAssignmentId;
       omrIndex = null;
       return omrData;
@@ -1850,27 +2109,36 @@
       return null;
     }
     function getStudentPortalExamBucket(exam, today = new Date()) {
-      if (Number(exam?.is_submitted || 0) === 1) return 'complete';
+      const submissionStatus = getStudentPortalRecordedSubmission(exam);
+      if (submissionStatus === 'submitted') return 'complete';
+      if (submissionStatus === 'unknown') return 'unknown';
       const ageDays = getStudentPortalExamAgeDays(exam, today);
       return ageDays !== null && ageDays > STUDENT_PORTAL_RECENT_EXAM_DAYS ? 'previous' : 'recent';
     }
+    function getStudentPortalRecordedSubmission(exam) {
+      const value = exam?.is_submitted;
+      if (value === 1 || value === '1' || value === true) return 'submitted';
+      if (value === 0 || value === '0' || value === false) return 'pending';
+      return 'unknown';
+    }
     function groupStudentPortalExams(exams, today = new Date()) {
-      const groups = { all: [], pending: [], complete: [] };
+      const groups = { all: [], pending: [], complete: [], unknown: [] };
       (Array.isArray(exams) ? exams : []).forEach(exam => {
         groups.all.push(exam);
-        groups[Number(exam?.is_submitted || 0) === 1 ? 'complete' : 'pending'].push(exam);
+        const status = getStudentPortalRecordedSubmission(exam);
+        groups[status === 'submitted' ? 'complete' : status === 'pending' ? 'pending' : 'unknown'].push(exam);
       });
       return groups;
     }
     function setOmrListFilter(next) {
-      if (!['all', 'pending', 'complete'].includes(next)) return;
+      if (!['all', 'pending', 'complete', 'unknown'].includes(next)) return;
       omrListFilter = next;
       const root = document.querySelector('.omr-browser');
       if (root) root.innerHTML = renderOmrExamBrowser(getVisibleOmrExams());
     }
     function handleOmrListTabKey(event, current) {
       if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-      const keys = ['all', 'pending', 'complete'];
+      const keys = ['all', 'pending', 'complete', 'unknown'];
       const index = keys.indexOf(current);
       if (index < 0) return;
       event.preventDefault();
@@ -1887,7 +2155,8 @@
       const tabs = [
         { key: 'all', label: '전체' },
         { key: 'pending', label: '진행 중' },
-        { key: 'complete', label: '제출 완료' }
+        { key: 'complete', label: '제출 완료' },
+        { key: 'unknown', label: '상태 확인 필요' }
       ];
       const active = tabs.some(tab => tab.key === omrListFilter) ? omrListFilter : 'all';
       const rows = groups[active];
@@ -1895,14 +2164,18 @@
         ? '출제된 시험지가 없습니다.'
         : active === 'pending'
           ? '진행 중인 시험지가 없습니다.'
-          : '제출한 시험지가 없습니다.';
+            : active === 'complete'
+              ? '제출한 시험지가 없습니다.'
+              : '제출 상태를 확인할 시험지가 없습니다.';
       const note = active === 'all'
         ? '출제된 시험지는 날짜와 제출 여부와 관계없이 모두 표시됩니다.'
         : active === 'pending'
           ? '아직 제출하지 않은 시험지입니다.'
-          : '제출한 시험지도 문제·정답·해설을 다시 볼 수 있습니다.';
+            : active === 'complete'
+              ? '제출한 시험지도 문제·정답·해설을 다시 볼 수 있습니다.'
+              : '제출 상태가 응답에 기록되지 않은 시험지입니다. 중복 입력을 피하려면 선생님에게 확인하세요.';
       return `
-        <div class="omr-filter-tabs" role="tablist" aria-label="시험지 분류">
+        <div class="omr-filter-tabs omr-list-view-filter-tabs" role="tablist" aria-label="시험지 분류">
           ${tabs.map(tab => `
             <button type="button" id="omr-tab-${tab.key}" class="omr-filter-tab ${active === tab.key ? 'active' : ''}" role="tab" aria-selected="${active === tab.key ? 'true' : 'false'}" ${active === tab.key ? `aria-controls="omr-panel-${tab.key}"` : ''} tabindex="${active === tab.key ? '0' : '-1'}" onclick="setOmrListFilter('${tab.key}')" onkeydown="handleOmrListTabKey(event, '${tab.key}')">
               ${tab.label}<span class="omr-filter-count">${groups[tab.key].length}</span>
@@ -2045,6 +2318,8 @@
       return '';
     }
     async function renderOmrExams() {
+      const view = enterStudentView('omr-list', false, true);
+      const request = beginStudentRequest('omrView');
       setTopStudent(homeData?.student?.name || session?.name || '');
       $('app').innerHTML = `
         <div class="student-shell">
@@ -2058,6 +2333,7 @@
       `;
       try {
         await loadOmrExams(true);
+        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'omr-list')) return;
         const exams = getVisibleOmrExams();
         const root = document.querySelector('.omr-browser');
         if (!root) return;
@@ -2067,27 +2343,32 @@
             ? '<div class="empty">정확한 Assignment를 이 학생 포털에서 찾을 수 없습니다.</div>'
             : `<div class="empty">${isTeacherPreview ? '이 학생에게 출제된 시험지가 없습니다.' : '아직 나온 시험지가 없습니다.'}</div>`;
       } catch (e) {
+        if (!isStudentRequestCurrent(request) || !isStudentViewCurrent(view, 'omr-list')) return;
         toast(e.message || '시험지를 불러오지 못했습니다.');
         const root = document.querySelector('.omr-browser');
         if (root) root.innerHTML = '<div class="empty">시험지를 불러오지 못했습니다.</div>';
       }
     }
     function renderOmrExamCard(exam) {
-      const submitted = Number(exam.is_submitted || 0) === 1;
+      const submittedStatus = getStudentPortalRecordedSubmission(exam);
+      const submitted = submittedStatus === 'submitted';
+      const submissionUnknown = submittedStatus === 'unknown';
       const showReview = isOmrReviewAvailable(exam);
       const showPdf = !!renderOmrPdfAction(exam);
       const isLegacyMixedReview = isLegacyMixedOmrReview(exam);
       const showActionArea = showReview || showPdf || isTeacherPreview || !submitted;
+      const hasActionContent = showReview || showPdf || isTeacherPreview || (!submitted && !submissionUnknown);
       const count = Number(exam.question_count || 0);
       const meta = [exam.class_name || '', exam.exam_date || '', count ? `${count}문항` : '문항 수 없음'].filter(Boolean).join(' · ');
       const statusParts = [];
-      if (submitted) statusParts.push(`완료${Number.isFinite(Number(exam.score)) ? ` · ${exam.score}점` : ''}`);
+      if (submitted) statusParts.push(`시험 제출 완료${exam.score !== null && exam.score !== undefined && exam.score !== '' && Number.isFinite(Number(exam.score)) ? ` · ${exam.score}점` : ''}`);
+      else if (submissionUnknown) statusParts.push('제출 상태 확인 필요');
       if (exam.is_cancelled) statusParts.push('취소됨');
       if (exam.is_replaced) statusParts.push('대체됨');
       if (exam.is_review_only) statusParts.push('열람 전용');
       const status = statusParts.join(' · ');
       const statusClass = exam.is_cancelled || exam.is_replaced || exam.is_review_only
-        ? 'lifecycle' : submitted ? 'done' : 'pending';
+        ? 'lifecycle' : submitted ? 'done' : submissionUnknown ? '' : 'pending';
       return `
         <article class="omr-card" id="student-assignment-${escapeHtml(String(exam.assignment_id || ''))}" data-assignment-id="${escapeHtml(String(exam.assignment_id || ''))}">
           <div class="omr-top">
@@ -2098,12 +2379,12 @@
             ${status ? `<span class="omr-status ${statusClass}">${escapeHtml(status)}</span>` : ''}
           </div>
           ${isLegacyMixedReview ? '<p class="omr-review-unavailable">이전 출제본이라 문제·정답·해설을 제공할 수 없습니다. 선생님께 다시 출제를 요청해 주세요.</p>' : ''}
-          ${showActionArea ? `
+          ${showActionArea && hasActionContent ? `
             <div class="omr-actions ${showReview ? '' : 'review-hidden'} ${(isTeacherPreview || submitted) && showReview && showPdf ? 'is-review-only' : ''}">
               ${showPdf ? renderOmrPdfAction(exam) : ''}
               ${showReview ? renderOmrReviewActions(exam) : ''}
               ${isTeacherPreview && !showReview ? '<button type="button" class="btn review-btn" disabled>시험지 파일 없음</button>' : ''}
-              ${isTeacherPreview || submitted ? '' : `<button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">OMR 작성</button>`}
+              ${isTeacherPreview || submitted ? '' : submissionUnknown ? '' : `<button class="btn btn-primary" onclick="renderOmrInput('${escapeHtml(exam.assignment_id)}')">OMR 작성</button>`}
             </div>
           ` : ''}
         </article>
@@ -2131,8 +2412,13 @@
         toast('시험지를 찾을 수 없습니다.');
         return;
       }
-      if (Number(exam.is_submitted || 0) === 1) {
+      const submissionStatus = getStudentPortalRecordedSubmission(exam);
+      if (submissionStatus === 'submitted') {
         toast('이미 제출한 OMR은 수정할 수 없습니다.');
+        return;
+      }
+      if (submissionStatus === 'unknown') {
+        toast('제출 상태를 확인할 수 없습니다. 중복 제출을 피하려면 선생님에게 확인하세요.');
         return;
       }
       const count = Number(exam.question_count || 0);
@@ -2144,6 +2430,7 @@
         assignment_id: exam.assignment_id,
         wrong_ids: normalizeOmrWrongIds(exam.wrong_ids)
       };
+      enterStudentView('omr-input', false, true);
       drawOmrInput(exam);
     }
     function drawOmrInput(exam) {
@@ -2170,7 +2457,7 @@
       `;
     }
     function toggleOmrWrong(no) {
-      if (!omrDraft) return;
+      if (isLoading || !omrDraft) return;
       const wrong = new Set(normalizeOmrWrongIds(omrDraft.wrong_ids));
       if (wrong.has(no)) wrong.delete(no);
       else wrong.add(no);
@@ -2180,36 +2467,54 @@
     }
     async function submitOmr() {
       if (isLoading || !omrDraft) return;
-      const exam = findOmrExam(omrDraft.assignment_id);
+      const request = beginStudentRequest('omrMutation');
+      const view = captureStudentView();
+      if (!isStudentViewCurrent(view, 'omr-input')) return;
+      const draft = omrDraft;
+      const wrongIds = normalizeOmrWrongIds(draft.wrong_ids);
+      const exam = findOmrExam(draft.assignment_id);
       if (!exam) return toast('시험지를 찾을 수 없습니다.');
-      if (Number(exam.is_submitted || 0) === 1) return toast('이미 제출한 OMR은 다시 제출할 수 없습니다.');
+      const submissionStatus = getStudentPortalRecordedSubmission(exam);
+      if (submissionStatus === 'submitted') return toast('이미 제출한 OMR은 다시 제출할 수 없습니다.');
+      if (submissionStatus === 'unknown') return toast('제출 상태를 확인할 수 없습니다. 선생님에게 확인하세요.');
       const btn = $('omr-submit-btn');
       isLoading = true;
+      isLoadingViewGeneration = view.generation;
       if (btn) {
         btn.disabled = true;
         btn.textContent = '제출 중...';
       }
       try {
         const data = await apiPost('student-portal/omr-submit', {
-          student_id: session.student_id,
-          student_token: session.student_token,
-          assignment_id: omrDraft.assignment_id,
-          wrong_ids: normalizeOmrWrongIds(omrDraft.wrong_ids)
+          student_id: request.studentId,
+          student_token: request.studentToken,
+          assignment_id: draft.assignment_id,
+          wrong_ids: wrongIds
         });
+        if (!isStudentRequestCurrent(request) || omrDraft !== draft) return;
         const sessionResult = data.session || {};
         exam.is_submitted = 1;
         exam.session_id = sessionResult.id || exam.session_id;
         exam.score = sessionResult.score;
         exam.submitted_at = new Date().toISOString();
-        exam.wrong_ids = normalizeOmrWrongIds(sessionResult.wrong_ids || omrDraft.wrong_ids);
+        exam.wrong_ids = normalizeOmrWrongIds(sessionResult.wrong_ids || wrongIds);
         omrIndex = null;
-        toast('OMR이 제출되었습니다.');
-        await renderOmrExams();
+        const draftUnchanged = omrDraft === draft &&
+          JSON.stringify(normalizeOmrWrongIds(draft.wrong_ids)) === JSON.stringify(wrongIds);
+        if (isStudentViewCurrent(view, 'omr-input') && draftUnchanged) {
+          toast('OMR이 제출되었습니다.');
+          await renderOmrExams();
+        }
       } catch (e) {
-        toast(e.message || 'OMR 제출에 실패했습니다.');
+        if (isStudentRequestCurrent(request) && isStudentViewCurrent(view, 'omr-input') && omrDraft === draft) {
+          toast(e.message || 'OMR 제출에 실패했습니다.');
+        }
       } finally {
-        isLoading = false;
-        if (btn) {
+        if (isStudentRequestCurrent(request) && isLoadingViewGeneration === view.generation) {
+          isLoading = false;
+          isLoadingViewGeneration = null;
+        }
+        if (isStudentRequestCurrent(request) && isStudentViewCurrent(view, 'omr-input') && btn?.isConnected) {
           btn.disabled = false;
           btn.textContent = 'OMR 제출';
         }
@@ -2220,26 +2525,27 @@
       toast('로그아웃 되었습니다.');
       renderLogin();
     }
-    let studentHomeRefreshBusy = false;
     async function refreshStudentHomeAssignments() {
       if (
-        isTeacherPreview || studentHomeRefreshBusy || !session?.student_id || !session?.student_token ||
+        isTeacherPreview || !session?.student_id || !session?.student_token ||
         !document.getElementById('student-portal-omr-home-section')
       ) return;
-      studentHomeRefreshBusy = true;
+      const view = captureStudentView();
+      if (!isStudentViewCurrent(view, 'home')) return;
+      const request = beginStudentRequest('home');
       try {
-        const next = await apiGet(`student-portal/home?student_id=${encodeURIComponent(session.student_id)}`, session.student_token);
+        const next = await apiGet(`student-portal/home?student_id=${encodeURIComponent(request.studentId)}`, request.studentToken);
+        if (!isStudentRequestCurrent(request)) return;
         const before = JSON.stringify(getStudentPortalAssignments());
         setStudentPortalHomeData(next);
         try { await loadOmrExams(true); } catch (e) {}
+        if (!isStudentRequestCurrent(request)) return;
         const after = JSON.stringify(getStudentPortalAssignments());
-        if (before !== after) {
-          renderHome();
+        if (before !== after && isStudentViewCurrent(view, 'home')) {
+          renderHome({ preserveView: true });
         }
       } catch (e) {
-        console.warn('[student portal] home assignment refresh failed:', e);
-      } finally {
-        studentHomeRefreshBusy = false;
+        if (isStudentRequestCurrent(request)) console.warn('[student portal] home assignment refresh failed:', e);
       }
     }
     async function boot() {

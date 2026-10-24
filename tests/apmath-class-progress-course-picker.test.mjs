@@ -8,6 +8,7 @@ import vm from 'node:vm';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const classroomSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/classroom.js'), 'utf8');
 const textbookSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/textbook.js'), 'utf8');
+const progressCss = fs.readFileSync(path.join(repoRoot, 'apmath/css/apms-theme-override.css'), 'utf8');
 
 function makeGroup(curriculumKey, level, courseKey, courseLabel = courseKey) {
     const key = [curriculumKey, level, courseKey].join('|');
@@ -297,6 +298,162 @@ test('last clicked unit becomes the single current unit and earlier units render
     const html = context.renderClassProgressCoursePanel(group, modalState.selectedPathDraft);
     assert.equal((html.match(/ checked/g) || []).length, 1);
     assert.match(html, /연립일차방정식의 활용/);
+});
+
+test('class tabs show only visible assigned classes and confirm before discarding a draft', () => {
+    const context = makeContext('중1');
+    context.state.ui.userName = '담당교사';
+    context.state.db.classes = [
+        { id: 'class-1', name: '중1 A반', grade: '중1', teacher_name: '담당교사', is_active: 1 },
+        { id: 'class-2', name: '중2 B반', grade: '중2', teacher_name: '담당교사', is_active: 1 },
+        { id: 'class-3', name: '고1 C반', grade: '고1', teacher_name: '다른교사', is_active: 1 },
+        { id: 'class-4', name: '중3 D반', grade: '중3', teacher_name: '담당교사', is_active: 0 }
+    ];
+    context.state.ui.classProgressModalState.classId = 'class-1';
+    context.state.ui.classProgressModalState.date = '2026-09-17';
+    context.state.ui.classProgressModalMeta = {
+        classId: 'class-1', date: '2026-09-17', draftBaseline: 'saved'
+    };
+
+    const tabs = context.renderClassProgressClassTabs('class-1');
+    assert.match(tabs, /중1 A반/);
+    assert.match(tabs, /중2 B반/);
+    assert.doesNotMatch(tabs, /고1 C반|중3 D반/);
+    assert.match(tabs, /aria-pressed="true"/);
+
+    context.syncClassProgressTextbookDraftsFromDom = () => {};
+    context.syncClassProgressUnitDraftsFromDom = () => {};
+    context.syncClassProgressPhaseDraftFromDom = () => {};
+    context.getClassProgressDraftFingerprint = () => 'unsaved';
+    const opened = [];
+    context.openClassRecordModal = (classId, date) => opened.push([classId, date]);
+
+    context.window.confirm = () => false;
+    context.requestClassProgressClassSwitch('class-2');
+    assert.deepEqual(opened, [], 'cancel keeps the current class and draft open');
+
+    context.window.confirm = () => true;
+    context.requestClassProgressClassSwitch('class-2');
+    assert.deepEqual(opened, [['class-2', '2026-09-17']]);
+    assert.doesNotMatch(opened.flat().join(' '), /class-3|class-4/);
+});
+
+test('opening another class reloads only that class textbook, daily progress, and canonical snapshot', async () => {
+    const context = makeContext('중1');
+    context.state.ui.userName = '담당교사';
+    context.state.db.classes = [
+        { id: 'class-1', name: '중1 A반', grade: '중1', teacher_name: '담당교사', is_active: 1 },
+        { id: 'class-2', name: '중2 B반', grade: '중2', teacher_name: '담당교사', is_active: 1 }
+    ];
+    context.state.db.class_textbooks = [
+        { id: 'book-1', class_id: 'class-1', title: '1반 교재', status: 'active' },
+        { id: 'book-2', class_id: 'class-2', title: '2반 교재', status: 'active' }
+    ];
+    context.state.db.class_daily_records = [];
+    context.state.db.class_daily_progress = [];
+    const calls = [];
+    context.loadClassProgressForDate = async classId => {
+        calls.push(['progress', classId]);
+        return {
+            snapshot: { id: `snapshot-${classId}`, class_id: classId, effective_date: '2026-09-17' },
+            items: [{ class_id: classId, group_key: `group-${classId}`, canonical_path_key: `path-${classId}` }],
+            legacy_record: null
+        };
+    };
+    context.loadClassDailyRecordForDate = async classId => {
+        calls.push(['daily', classId]);
+        return {
+            record: { id: `record-${classId}`, class_id: classId, date: '2026-09-17', special_note: '' },
+            progress: [{ record_id: `record-${classId}`, textbook_id: `book-${classId === 'class-1' ? '1' : '2'}`, progress_text: `p.${classId === 'class-1' ? '10' : '20'}` }],
+            loadFailed: false
+        };
+    };
+    context.loadClassProgressPhaseForDate = async classId => {
+        calls.push(['phase', classId]);
+        return { phase: 'regular', loadFailed: false };
+    };
+    context.getClassProgressCourseGroups = () => [];
+    context.getClassProgressItemPath = item => item.canonical_path_key;
+    context.getClassProgressItemGroupKey = item => item.group_key;
+    context.applyPendingClassProgressCourseApply = (_classId, _date, _groups, activeKeys) => activeKeys;
+    context._getClassGradeKey = cls => cls.grade;
+    context.parseLegacyClassProgressNote = () => ({ line: '', text: '', units: [] });
+    context.stripLegacyClassProgressNote = value => value;
+    context.renderClassProgressTextbookPanel = () => '';
+    context.renderClassProgressTextbookDetail = book => book?.title || '';
+    context.classProgressJsArg = value => JSON.stringify(String(value));
+    context.setModalReturnView = () => {};
+    context.showModal = (_title, html) => { context._modalHtml = html; };
+
+    await context.openClassRecordModal('class-1', '2026-09-17');
+    assert.deepEqual(Array.from(context.state.ui.classProgressModalState.books, book => book.id), ['book-1']);
+    assert.deepEqual(Array.from(context.state.ui.classProgressModalState.selectedPathDraft), ['path-class-1']);
+
+    const classTitle = { textContent: '' };
+    const classMeta = { textContent: '' };
+    const transitionLayout = { innerHTML: '' };
+    const transitionFooter = { hidden: false };
+    const buttons = ['class-1', 'class-2'].map(id => ({
+        id, disabled: false, pressed: '',
+        getAttribute(name) { return name === 'data-class-id' ? this.id : ''; },
+        setAttribute(name, value) { if (name === 'aria-pressed') this.pressed = value; },
+        classList: { toggle() {} }
+    }));
+    const oldTabs = { scrollLeft: 70, querySelectorAll: () => buttons };
+    const newTabs = { scrollLeft: 0 };
+    const modalBody = {
+        scrollTop: 180,
+        querySelector(selector) { return selector === '.ap-class-progress-class-tabs' ? newTabs : null; }
+    };
+    const nodes = {
+        '.ap-class-progress-context__title': classTitle,
+        '.ap-class-progress-context__meta': classMeta,
+        '.ap-class-progress-class-tabs': oldTabs,
+        '.ap-class-progress-layout': transitionLayout,
+        '.ap-class-progress-footer': transitionFooter
+    };
+    const openRoot = {
+        classList: { add() {} },
+        setAttribute() {},
+        querySelector(selector) { return nodes[selector] || null; }
+    };
+    context.document.querySelector = selector => selector === '.ap-class-progress-modal' ? openRoot : null;
+    context._elements.set('modal-body', modalBody);
+
+    await context.openClassRecordModal('class-2', '2026-09-17');
+    assert.match(transitionLayout.innerHTML, /진도를 불러오는 중/);
+    assert.equal(transitionFooter.hidden, true);
+    assert.equal(classTitle.textContent, '중2 B반');
+    assert.equal(buttons[1].pressed, 'true');
+    assert.equal(modalBody.scrollTop, 0);
+    assert.equal(newTabs.scrollLeft, 70);
+    const modalState = context.state.ui.classProgressModalState;
+    assert.equal(modalState.classId, 'class-2');
+    assert.deepEqual(Array.from(modalState.books, book => book.id), ['book-2']);
+    assert.deepEqual(Array.from(modalState.selectedPathDraft), ['path-class-2']);
+    assert.deepEqual(Object.keys(modalState.progressByTextbook), ['book-2']);
+    assert.equal(modalState.progressByTextbook['book-2'].progressText, 'p.20');
+    assert.deepEqual(calls, [
+        ['progress', 'class-1'], ['daily', 'class-1'], ['phase', 'class-1'],
+        ['progress', 'class-2'], ['daily', 'class-2'], ['phase', 'class-2']
+    ]);
+    assert.match(context._modalHtml, /2반 교재/);
+    assert.doesNotMatch(context._modalHtml, /1반 교재|path-class-1/);
+});
+
+test('class return checks exact class ID and switch keeps a stable progress shell', () => {
+    const uiSource = fs.readFileSync(path.join(repoRoot, 'apmath/js/ui.js'), 'utf8');
+    assert.ok(classroomSource.includes('data-class-id="${apEscapeHtml(String(cid))}"'));
+    assert.ok(uiSource.includes("existingClassroom.getAttribute('data-class-id')"));
+    assert.ok(progressCss.includes('.ap-class-progress-modal.is-class-switching .ap-class-progress-layout'));
+});
+
+test('class tabs remain usable on desktop and become horizontally scrollable touch targets on mobile', () => {
+    assert.match(progressCss, /\.ap-class-progress-class-tabs\s*\{[^}]*display:\s*flex/s);
+    assert.match(progressCss, /\.ap-class-progress-class-tabs\s*\{[^}]*overflow-x:\s*auto/s);
+    assert.match(progressCss, /@media\s*\(max-width:\s*760px\)[\s\S]*?\.ap-class-progress-class-tab\s*\{[^}]*min-height:\s*44px/s);
+    assert.match(classroomSource, /진도 저장하기/);
+    assert.match(classroomSource, /toast\('진도가 저장되었습니다\.', 'success'\)/);
 });
 
 test('snapshot serialization uses the full draft instead of visible checked DOM only', () => {

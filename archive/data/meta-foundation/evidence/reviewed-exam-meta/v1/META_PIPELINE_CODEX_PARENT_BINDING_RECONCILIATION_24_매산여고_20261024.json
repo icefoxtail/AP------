@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "archive-meta-pipeline-parent-binding-correction-v1",
+  "requestId": "meta-pipeline-24-maesanyeogo-h2-math1-parent-correction-20261024-v1",
+  "createdAt": "2026-10-24T01:11:02.462Z",
+  "examUid": "24_매산여고_1학기_중간_고2_수학I",
+  "correctionReason": "H15-M1-07 삼각방정식·부등식의 canonical parent를 잘못 연결했던 메타 등록을 정정한다. 2015 수학I CANONICAL_MASTER에서 이 개념은 L1 삼각함수 / L2 삼각함수에 속한다. 문항 학생용 payload, PT/TPL/CC 의미와 키, supporting UID는 바꾸지 않는다.",
+  "canonicalParent": {
+    "path": "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json",
+    "sha256": "7358c7e703e67ebe1db83284918d148bf0ae90625a0dbb85438792136a9fea5c",
+    "curriculum": "2015",
+    "scope": "수학I",
+    "majorUnit": "삼각함수",
+    "midUnit": "삼각함수",
+    "conceptLabel": "삼각방정식·부등식"
+  },
+  "unitKeyAuthority": {
+    "path": "archive/data/master_tables/js_archive_tag_master.json",
+    "sha256": "4e1a8377ba3fc81f89c63961619375bbbaec6e0e6fb714c8e11289c1525af6ec",
+    "standardUnitKey": "H15-M1-07",
+    "subUnitKeys": [
+      "H15-M1-07-TRIGONOMETRIC_EQUATION",
+      "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+      "H15-M1-07-TRIGONOMETRIC_EQUATION"
+    ]
+  },
+  "rpmCrosswalkEvidence": {
+    "path": "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high2-math1-algebra.json",
+    "sha256": "f2a2853b46033c27fbdeeffaecf71765fe0530220e0c42dce2674ecd3ab74d01",
+    "matchingRecords": [
+      {
+        "id": "H2-M1-RPM-035",
+        "curriculum": "2015",
+        "scope": "수학I",
+        "rpmPath": {
+          "majorUnit": "삼각함수",
+          "midUnit": "삼각함수",
+          "l3": "삼각방정식·부등식",
+          "l4": "그래프를 이용한 해"
+        },
+        "standardUnitKey": "H15-M1-07",
+        "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+        "mappingStatus": "RPM_ONLY",
+        "bindingStatus": "NO_ACTIVE_MAPPING"
+      },
+      {
+        "id": "H2-M1-RPM-036",
+        "curriculum": "2015",
+        "scope": "수학I",
+        "rpmPath": {
+          "majorUnit": "삼각함수",
+          "midUnit": "삼각함수",
+          "l3": "삼각방정식·부등식",
+          "l4": "주기 구간의 해"
+        },
+        "standardUnitKey": "H15-M1-07",
+        "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+        "mappingStatus": "RPM_ONLY",
+        "bindingStatus": "NO_ACTIVE_MAPPING"
+      }
+    ]
+  },
+  "affectedQuestions": [
+    {
+      "questionId": 8,
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_aaec276af31f7c21c8bf50931fbcc71f44d3d12116b97f4472464d4b1856af98",
+      "standardUnitKey": "H15-M1-07",
+      "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+      "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+      "previousParent": {
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용"
+      },
+      "correctedParent": {
+        "L1": "삼각함수",
+        "L2": "삼각함수"
+      },
+      "reason": "CANONICAL_MASTER의 삼각방정식·부등식 concept row와 H15-M1-07 RPM 경로에 맞춤."
+    },
+    {
+      "questionId": 9,
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_5819a4f65879e3fdb09b6f69b2be2484c5152e31f3e2eb5873616ee101f6e1c1",
+      "standardUnitKey": "H15-M1-07",
+      "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+      "problemTypeKey": "PT_TRIGONOMETRIC_INEQUALITY",
+      "previousParent": {
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용"
+      },
+      "correctedParent": {
+        "L1": "삼각함수",
+        "L2": "삼각함수"
+      },
+      "reason": "CANONICAL_MASTER의 삼각방정식·부등식 concept row와 H15-M1-07 RPM 경로에 맞춤."
+    },
+    {
+      "questionId": 16,
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_5eb4c00eaaaeb02e02706d761fc11ba434751c7c7fe8698423ea0dfc2ac5aeb1",
+      "standardUnitKey": "H15-M1-07",
+      "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+      "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+      "previousParent": {
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용"
+      },
+      "correctedParent": {
+        "L1": "삼각함수",
+        "L2": "삼각함수"
+      },
+      "reason": "CANONICAL_MASTER의 삼각방정식·부등식 concept row와 H15-M1-07 RPM 경로에 맞춤."
+    }
+  ],
+  "bindingChanges": [
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-07",
+        "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+        "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION"
+      },
+      "before": {
+        "curriculum": "2015",
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-07",
+        "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+        "subUnitLabel": "삼각방정식",
+        "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "TRIGONOMETRY",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "supportingQuestionUids": [
+          "qid_v1_5eb4c00eaaaeb02e02706d761fc11ba434751c7c7fe8698423ea0dfc2ac5aeb1",
+          "qid_v1_aaec276af31f7c21c8bf50931fbcc71f44d3d12116b97f4472464d4b1856af98"
+        ],
+        "supportingItemCount": 2
+      },
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-07",
+        "subUnitKey": "H15-M1-07-TRIGONOMETRIC_EQUATION",
+        "subUnitLabel": "삼각방정식",
+        "problemTypeKey": "PT_TRIGONOMETRIC_EQUATION",
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "TRIGONOMETRY",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "supportingQuestionUids": [
+          "qid_v1_5eb4c00eaaaeb02e02706d761fc11ba434751c7c7fe8698423ea0dfc2ac5aeb1",
+          "qid_v1_aaec276af31f7c21c8bf50931fbcc71f44d3d12116b97f4472464d4b1856af98"
+        ],
+        "supportingItemCount": 2
+      },
+      "questionUids": [
+        "qid_v1_5eb4c00eaaaeb02e02706d761fc11ba434751c7c7fe8698423ea0dfc2ac5aeb1",
+        "qid_v1_aaec276af31f7c21c8bf50931fbcc71f44d3d12116b97f4472464d4b1856af98"
+      ]
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/trigonometry/bindings.json",
+      "collection": "bindings",
+      "match": {
+        "curriculum": "2015",
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-07",
+        "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+        "problemTypeKey": "PT_TRIGONOMETRIC_INEQUALITY"
+      },
+      "before": {
+        "curriculum": "2015",
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-07",
+        "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+        "subUnitLabel": "삼각부등식",
+        "problemTypeKey": "PT_TRIGONOMETRIC_INEQUALITY",
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "TRIGONOMETRY",
+        "L1": "삼각함수",
+        "L2": "삼각함수의 활용",
+        "supportingQuestionUids": [
+          "qid_v1_5819a4f65879e3fdb09b6f69b2be2484c5152e31f3e2eb5873616ee101f6e1c1"
+        ],
+        "supportingItemCount": 1
+      },
+      "after": {
+        "curriculum": "2015",
+        "standardCourse": "수학I",
+        "standardUnitKey": "H15-M1-07",
+        "subUnitKey": "H15-M1-07-TRIGONOMETRIC_INEQUALITY",
+        "subUnitLabel": "삼각부등식",
+        "problemTypeKey": "PT_TRIGONOMETRIC_INEQUALITY",
+        "curriculumApplicability": "CORE",
+        "defaultSelectable": true,
+        "status": "ACTIVE",
+        "ownerPack": "TRIGONOMETRY",
+        "L1": "삼각함수",
+        "L2": "삼각함수",
+        "supportingQuestionUids": [
+          "qid_v1_5819a4f65879e3fdb09b6f69b2be2484c5152e31f3e2eb5873616ee101f6e1c1"
+        ],
+        "supportingItemCount": 1
+      },
+      "questionUids": [
+        "qid_v1_5819a4f65879e3fdb09b6f69b2be2484c5152e31f3e2eb5873616ee101f6e1c1"
+      ]
+    }
+  ],
+  "impact": "정본 binding의 L2 라벨 2행만 수정하고 pack patch version을 자동 증가시킨다. PT/TPL/CC 정의, concept shard, 학생 payload, 정답, 해설, SVG/이미지, 문항 순서는 변경하지 않는다."
+}

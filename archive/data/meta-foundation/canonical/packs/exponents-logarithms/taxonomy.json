@@ -3,8 +3,8 @@
   "status": "ACTIVE",
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
-  "problemTypeCount": 10,
-  "templateCount": 22,
+  "problemTypeCount": 16,
+  "templateCount": 32,
   "problemTypes": [
     {
       "problemTypeKey": "PT_EXPONENT_LAW_APPLICATION",
@@ -257,6 +257,88 @@
           "representativeDecisiveStep": "5+36+215=256"
         }
       ]
+    },
+    {
+      "problemTypeKey": "PT_EXPONENT_CALCULATION",
+      "canonicalLabelKo": "지수 계산",
+      "definition": "유리수 지수와 지수법칙을 이용하여 거듭제곱식의 값을 계산하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "EXPONENTS_LOGARITHMS",
+      "supportingQuestionUids": [
+        "qid_v1_69aa739950b6907a1fe416e3a403b9eaf5b4b1c48d9be46da7972c60f691abdf",
+        "qid_v1_b11a9f6c398580fa1d1aa22e6f29f05c42b35bda9a7e81ff59e6aeb1a78f238a"
+      ],
+      "supportingItemCount": 2
+    },
+    {
+      "problemTypeKey": "PT_LOG_DEFINITION_CONDITION",
+      "canonicalLabelKo": "로그의 정의와 조건",
+      "definition": "로그의 밑·진수 조건 및 로그 정의의 성립 조건을 확인하여 값이나 존재 여부를 판정하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "EXPONENTS_LOGARITHMS",
+      "supportingQuestionUids": [
+        "qid_v1_8f838ff81d0016d03899baf1278762b4fc66c02f765a9007501451472c810c98",
+        "qid_v1_bbf025f8f23424cf7525164df9370f35331b28541f43d3a4d92e6ad4ea0b1460"
+      ],
+      "supportingItemCount": 2
+    },
+    {
+      "problemTypeKey": "PT_EXPONENTIAL_EQUATION",
+      "canonicalLabelKo": "지수방정식",
+      "definition": "치환이나 밑의 정리를 이용하여 지수방정식의 해를 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "EXPONENTS_LOGARITHMS",
+      "supportingQuestionUids": [
+        "qid_v1_1cbeaface782f7114d0a1e0e3e118a422188aa1ad987e8b6341eb6704be83aac",
+        "qid_v1_f05a69b92f5d3f0a242958260d54373825eec7d9fc814806b6837c3b226e35ce"
+      ],
+      "supportingItemCount": 2
+    },
+    {
+      "problemTypeKey": "PT_LOG_APPLICATION",
+      "canonicalLabelKo": "로그의 활용",
+      "definition": "로그 성질을 이용해 지수 모델의 기간이나 로그·지수 관계식의 미지수를 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "EXPONENTS_LOGARITHMS",
+      "supportingQuestionUids": [
+        "qid_v1_24a3ffb20bb9b7ac068b8d1c111013393c11e030ca7daebf599b4a5ba3bb3787",
+        "qid_v1_93d247649b9fbb6b9662e3441088c5b1c7f50ccf90a33a94eb12b7ae868b40b3"
+      ],
+      "supportingItemCount": 2
+    },
+    {
+      "problemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+      "canonicalLabelKo": "로그함수 부등식",
+      "definition": "로그함수의 정의역과 단조성을 적용해 로그값의 대소 또는 부등식을 판정하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "EXPONENTS_LOGARITHMS",
+      "supportingQuestionUids": [
+        "qid_v1_88807f92467a86df2f773551ae4d0c61a1c090f24bcdd5cdc722a86573d7e61b"
+      ],
+      "supportingItemCount": 1
+    },
+    {
+      "problemTypeKey": "PT_EXPONENTIAL_DECAY",
+      "canonicalLabelKo": "지수적 감소",
+      "definition": "반감기 등 일정 비율로 감소하는 양을 지수모형으로 나타내어 특정 시점의 양이나 기간을 구하는 문제 유형.",
+      "aliases": [],
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "EXPONENTS_LOGARITHMS",
+      "supportingQuestionUids": [
+        "qid_v1_83f1ce3a00383b4b57f6f007c689f34a7c6ab091b1c3ad5297765b48f295ec74"
+      ],
+      "supportingItemCount": 1
     }
   ],
   "templates": [
@@ -699,6 +781,146 @@
         "representativePrimaryMethod": "로그 바닥함수의 정수구간을 분할하여 자연수 개수 집계",
         "representativeDecisiveStep": "5+36+215=256"
       }
+    },
+    {
+      "templateKey": "TPL_EXPONENT_RATIONAL_POWER_OPERATION",
+      "canonicalLabelKo": "유리수 지수 변환 계산",
+      "definition": "거듭제곱근을 유리수 지수로 바꾸고 지수법칙을 적용해 곱·거듭제곱의 값을 계산하는 풀이 구조.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_EXPONENT_CALCULATION",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "H15-M1-01",
+      "supportingQuestionUids": [
+        "qid_v1_b11a9f6c398580fa1d1aa22e6f29f05c42b35bda9a7e81ff59e6aeb1a78f238a"
+      ],
+      "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_LOG_BASE_ANTILOG_EXISTENCE_CONDITION",
+      "canonicalLabelKo": "로그 밑·진수 존재 조건",
+      "definition": "로그가 정의되기 위한 밑과 진수의 조건을 먼저 세우고 주어진 로그식의 성립 여부를 판정하는 풀이 구조.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_LOG_DEFINITION_CONDITION",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "H15-M1-02",
+      "supportingQuestionUids": [
+        "qid_v1_8f838ff81d0016d03899baf1278762b4fc66c02f765a9007501451472c810c98"
+      ],
+      "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_EXPONENTIAL_SUBSTITUTION_EVALUATION",
+      "canonicalLabelKo": "지수식 치환 대입 계산",
+      "definition": "반복되는 지수식을 하나의 변수로 치환한 뒤 다항식 관계에 대입하여 값을 계산하는 풀이 구조.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_EXPONENTIAL_EQUATION",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "H15-M1-01",
+      "supportingQuestionUids": [
+        "qid_v1_f05a69b92f5d3f0a242958260d54373825eec7d9fc814806b6837c3b226e35ce"
+      ],
+      "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_LOG_PROPERTY_JUDGMENT",
+      "canonicalLabelKo": "로그 성질과 정의역 조건 판정",
+      "definition": "로그의 곱·나눗셈 성질 및 진수·밑 조건을 사용해 식의 성립이나 값을 판정하는 풀이 구조.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_LOG_DEFINITION_CONDITION",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "H15-M1-02",
+      "supportingQuestionUids": [
+        "qid_v1_bbf025f8f23424cf7525164df9370f35331b28541f43d3a4d92e6ad4ea0b1460"
+      ],
+      "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_QUADRATIC_ROOTS_EXPONENT_EVALUATION",
+      "canonicalLabelKo": "이차방정식 근의 합·곱과 지수 계산",
+      "definition": "이차방정식의 근의 합·곱을 먼저 구한 뒤 두 근에 대한 거듭제곱 표현을 정리해 값을 계산하는 풀이 구조.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_EXPONENT_CALCULATION",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "H15-M1-01",
+      "supportingQuestionUids": [
+        "qid_v1_69aa739950b6907a1fe416e3a403b9eaf5b4b1c48d9be46da7972c60f691abdf"
+      ],
+      "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_LOG_EXPONENTIAL_GROWTH_MODEL",
+      "canonicalLabelKo": "지수성장 배수·기간 모델",
+      "definition": "일정 비율 증가를 거듭제곱 모델로 세우고 로그를 취해 목표 배수에 도달하는 최소 기간을 구하는 풀이 구조.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_LOG_APPLICATION",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "H15-M1-02",
+      "supportingQuestionUids": [
+        "qid_v1_93d247649b9fbb6b9662e3441088c5b1c7f50ccf90a33a94eb12b7ae868b40b3"
+      ],
+      "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_EXPONENTIAL_EQUATION_QUADRATIC_FORM_ROOTS",
+      "canonicalLabelKo": "지수 치환 후 이차방정식의 근 판정",
+      "definition": "거듭제곱식을 새 변수로 치환해 이차방정식으로 바꾸고 근의 조건을 이용해 해를 결정하는 풀이 구조.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_EXPONENTIAL_EQUATION",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "H15-M1-03",
+      "supportingQuestionUids": [
+        "qid_v1_1cbeaface782f7114d0a1e0e3e118a422188aa1ad987e8b6341eb6704be83aac"
+      ],
+      "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_LOG_VALUE_ORDER_COMPARISON",
+      "canonicalLabelKo": "로그값의 크기 비교",
+      "definition": "로그함수의 단조성 또는 로그값의 정수부분·소수부분 표현을 이용해 여러 로그값의 대소를 비교하는 풀이 구조.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_LOG_FUNCTION_INEQUALITY",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "H15-M1-04",
+      "supportingQuestionUids": [
+        "qid_v1_88807f92467a86df2f773551ae4d0c61a1c090f24bcdd5cdc722a86573d7e61b"
+      ],
+      "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_EXPONENTIAL_DECAY_HALF_LIFE",
+      "canonicalLabelKo": "반감기 지수감소 모델",
+      "definition": "반감기마다 양이 절반이 되는 지수감소 모델을 세워 경과 시간 또는 남은 양을 구하는 풀이 구조.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_EXPONENTIAL_DECAY",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "H15-M1-03",
+      "supportingQuestionUids": [
+        "qid_v1_83f1ce3a00383b4b57f6f007c689f34a7c6ab091b1c3ad5297765b48f295ec74"
+      ],
+      "supportingItemCount": 1
+    },
+    {
+      "templateKey": "TPL_LOG_EXPONENTIAL_EQUATION_SYSTEM_SOLVE",
+      "canonicalLabelKo": "로그·지수 관계 연립식 정리",
+      "definition": "등식으로 묶인 거듭제곱을 공통값으로 두고 로그 성질과 연립 조건을 결합해 미지수 표현을 구하는 풀이 구조.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_LOG_APPLICATION",
+      "ownerPack": "EXPONENTS_LOGARITHMS",
+      "status": "ACTIVE",
+      "sourceUnit": "H15-M1-02",
+      "supportingQuestionUids": [
+        "qid_v1_24a3ffb20bb9b7ac068b8d1c111013393c11e030ca7daebf599b4a5ba3bb3787"
+      ],
+      "supportingItemCount": 1
     }
   ],
   "ownerPack": "EXPONENTS_LOGARITHMS"

@@ -33,7 +33,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "crossConceptKeys": ["CC_PARABOLA"],
+    "conditionKeys": []
   },
   {
     "id": 2,
@@ -72,7 +76,11 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "image": "assets/images/26_제일고_1학기_중간_고2_기하/q2.png",
-    "imageSize": "large"
+    "imageSize": "large",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "crossConceptKeys": ["CC_PARABOLA"],
+    "conditionKeys": []
   },
   {
     "id": 3,
@@ -107,7 +115,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": ["CC_ELLIPSE"],
+    "conditionKeys": []
   },
   {
     "id": 4,
@@ -142,7 +154,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-02-CORE",
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_ELLIPSE","CC_CONIC_TANGENT"],
+    "conditionKeys": []
   },
   {
     "id": 5,
@@ -179,7 +195,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": ["CC_ELLIPSE"],
+    "conditionKeys": []
   },
   {
     "id": 6,
@@ -214,7 +234,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-03-CORE",
     "subUnit": "공간도형 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+    "crossConceptKeys": ["CC_PARABOLA"],
+    "conditionKeys": []
   },
   {
     "id": 7,
@@ -250,7 +274,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+    "crossConceptKeys": ["CC_HYPERBOLA"],
+    "conditionKeys": []
   },
   {
     "id": 8,
@@ -287,7 +315,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": ["CC_ELLIPSE"],
+    "conditionKeys": []
   },
   {
     "id": 9,
@@ -324,7 +356,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-02-CORE",
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_PARABOLA","CC_CONIC_TANGENT","CC_AREA"],
+    "conditionKeys": []
   },
   {
     "id": 10,
@@ -362,7 +398,11 @@ window.questionBank = [
     "subUnit": "공간도형 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/26_제일고_1학기_중간_고2_기하/q10.png"
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하/q10.png",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_DIHEDRAL_ANGLE",
+    "crossConceptKeys": ["CC_SPACE_FIGURE"],
+    "conditionKeys": []
   },
   {
     "id": 11,
@@ -398,7 +438,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+    "crossConceptKeys": ["CC_HYPERBOLA"],
+    "conditionKeys": []
   },
   {
     "id": 12,
@@ -436,7 +480,11 @@ window.questionBank = [
     "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하/q12-solution.svg",
     "solutionImageAlt": "초점 F와 F'가 지름의 양 끝점인 원, 쌍곡선, 교점 P를 좌표평면에 함께 나타낸 그림",
     "solutionImageCaption": "P에서 두 초점까지의 거리가 6과 8이므로 거리 차는 2이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+    "crossConceptKeys": ["CC_HYPERBOLA","CC_AREA","CC_CIRCLE_EQUATION"],
+    "conditionKeys": []
   },
   {
     "id": 13,
@@ -473,7 +521,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": ["CC_ELLIPSE"],
+    "conditionKeys": []
   },
   {
     "id": 14,
@@ -509,7 +561,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-02-CORE",
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_ELLIPSE","CC_CONIC_TANGENT"],
+    "conditionKeys": []
   },
   {
     "id": 15,
@@ -547,7 +603,11 @@ window.questionBank = [
     "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하/q15-solution.svg",
     "solutionImageAlt": "쌍곡선 x제곱 빼기 y제곱은 8, 접점 P, 접선, 원점 O, 수선의 발 H와 점 Q를 표시한 그림",
     "solutionImageCaption": "접선의 기울기 3과 OH의 기울기 -1/3이 수직임을 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_HYPERBOLA","CC_CONIC_TANGENT"],
+    "conditionKeys": []
   },
   {
     "id": 16,
@@ -583,7 +643,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "crossConceptKeys": ["CC_PARABOLA"],
+    "conditionKeys": []
   },
   {
     "id": 17,
@@ -621,7 +685,11 @@ window.questionBank = [
     "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하/q17-solution.svg",
     "solutionImageAlt": "타원과 외부점 (0,2)에서 그은 두 접선, 접점 P,Q와 초점 F를 표시한 그림",
     "solutionImageCaption": "접점의 y좌표가 1/2이고 x좌표가 ±√3임을 시각적으로 확인한다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": ["CC_ELLIPSE","CC_CONIC_TANGENT"],
+    "conditionKeys": []
   },
   {
     "id": 18,
@@ -657,7 +725,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": ["CC_ELLIPSE"],
+    "conditionKeys": []
   },
   {
     "id": 19,
@@ -695,7 +767,11 @@ window.questionBank = [
     "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하/q19-solution.svg",
     "solutionImageAlt": "타원의 두 초점 F,F', 수직선 위 점 A와 타원 위 점 P를 나타낸 좌표 그림",
     "solutionImageCaption": "AF=12, AF'=15에서 FF'=9이고 타원의 장반경은 5이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": ["CC_ELLIPSE"],
+    "conditionKeys": []
   },
   {
     "id": 20,
@@ -732,7 +808,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "crossConceptKeys": ["CC_PARABOLA"],
+    "conditionKeys": []
   },
   {
     "id": 21,
@@ -763,7 +843,11 @@ window.questionBank = [
     "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하/q21-solution.svg",
     "solutionImageAlt": "포물선 y제곱은 4px, 직선 x=a와 교점 P,Q, 두 접선의 교점 A를 나타낸 그림",
     "solutionImageCaption": "조건을 적용하면 A=(-a,0), p=3a이고 최종적으로 a=5, p=15이다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_FROM_OUTSIDE_POINT",
+    "crossConceptKeys": ["CC_PARABOLA","CC_CONIC_TANGENT","CC_AREA"],
+    "conditionKeys": []
   },
   {
     "id": 22,
@@ -796,7 +880,11 @@ window.questionBank = [
     "subUnit": "이차곡선의 접선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
-    "image": "assets/images/26_제일고_1학기_중간_고2_기하/q22.png"
+    "image": "assets/images/26_제일고_1학기_중간_고2_기하/q22.png",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_ELLIPSE","CC_CONIC_TANGENT"],
+    "conditionKeys": []
   },
   {
     "id": 23,
@@ -828,6 +916,10 @@ window.questionBank = [
     "solutionImage": "assets/images/26_제일고_1학기_중간_고2_기하/q23-solution.svg",
     "solutionImageAlt": "공초점 타원과 쌍곡선, 초점 F,F', 원점 O와 제1사분면 교점 P를 나타낸 좌표 그림",
     "solutionImageCaption": "거리 조건으로 P=(4,√15)을 얻고 삼각형 PF'O의 넓이를 읽는다.",
-    "solutionImageSize": "medium"
+    "solutionImageSize": "medium",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": ["CC_ELLIPSE","CC_AREA"],
+    "conditionKeys": []
   }
 ];

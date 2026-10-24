@@ -4,38 +4,38 @@
   "sourceShards": [
     {
       "shardId": "ALGEBRA",
-      "version": "1.4.0",
-      "conceptCount": 16
+      "version": "1.4.3",
+      "conceptCount": 52
     },
     {
       "shardId": "FUNCTIONS",
-      "version": "1.5.0",
-      "conceptCount": 22
+      "version": "1.5.1",
+      "conceptCount": 32
     },
     {
       "shardId": "LOGIC_SET",
-      "version": "1.0.0",
-      "conceptCount": 3
+      "version": "1.0.1",
+      "conceptCount": 5
     },
     {
       "shardId": "COORDINATE_GEOMETRY",
-      "version": "1.1.0",
-      "conceptCount": 19
+      "version": "1.1.4",
+      "conceptCount": 28
     },
     {
       "shardId": "PLANE_GEOMETRY",
-      "version": "1.3.0",
-      "conceptCount": 19
+      "version": "1.3.2",
+      "conceptCount": 23
     },
     {
       "shardId": "COUNTING",
-      "version": "1.0.0",
-      "conceptCount": 1
+      "version": "1.0.2",
+      "conceptCount": 14
     },
     {
       "shardId": "NUMBER_THEORY",
-      "version": "1.1.0",
-      "conceptCount": 4
+      "version": "1.1.2",
+      "conceptCount": 17
     },
     {
       "shardId": "CALCULUS",
@@ -44,21 +44,26 @@
     },
     {
       "shardId": "TRIGONOMETRY",
-      "version": "1.0.0",
-      "conceptCount": 1
+      "version": "1.0.1",
+      "conceptCount": 12
     },
     {
       "shardId": "SEQUENCES",
-      "version": "1.0.0",
-      "conceptCount": 1
+      "version": "1.0.1",
+      "conceptCount": 3
     },
     {
       "shardId": "MIDDLE1",
       "version": "1.0.0",
       "conceptCount": 3
+    },
+    {
+      "shardId": "STATISTICS_CONCEPTS",
+      "version": "1.0.1",
+      "conceptCount": 12
     }
   ],
-  "conceptCount": 92,
+  "conceptCount": 204,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -856,6 +861,803 @@
         "2015:수학II:H15-M2-01"
       ],
       "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SIGN_ASSIGNMENT",
+      "canonicalLabelKo": "부호 배분",
+      "definition": "절댓값 방정식에서 각 미지수에 부호를 부여하는 경우",
+      "supportingQuestionUids": [
+        "qid_v1_520f6e137908a2273445ed6ced763f5601c3144c9f50b83372c58c9b2ef204b7"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_EXPONENT",
+      "canonicalLabelKo": "유리수 지수",
+      "definition": "거듭제곱근을 유리수 지수로 표현하여 계산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b11a9f6c398580fa1d1aa22e6f29f05c42b35bda9a7e81ff59e6aeb1a78f238a"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_EXPONENT_RULES",
+      "canonicalLabelKo": "지수법칙",
+      "definition": "지수의 덧셈, 뺄셈, 곱셈 기본 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_24a3ffb20bb9b7ac068b8d1c111013393c11e030ca7daebf599b4a5ba3bb3787",
+        "qid_v1_69aa739950b6907a1fe416e3a403b9eaf5b4b1c48d9be46da7972c60f691abdf",
+        "qid_v1_b11a9f6c398580fa1d1aa22e6f29f05c42b35bda9a7e81ff59e6aeb1a78f238a"
+      ],
+      "supportingItemCount": 3,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOG_BASE_CONDITION",
+      "canonicalLabelKo": "로그의 밑 조건",
+      "definition": "로그의 밑은 양수이고 1이 아니어야 함",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8f838ff81d0016d03899baf1278762b4fc66c02f765a9007501451472c810c98"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOG_ARGUMENT_CONDITION",
+      "canonicalLabelKo": "로그의 진수 조건",
+      "definition": "로그의 진수는 반드시 양수이어야 함",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8f838ff81d0016d03899baf1278762b4fc66c02f765a9007501451472c810c98"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_EXPONENT_SUBSTITUTION",
+      "canonicalLabelKo": "지수식의 치환",
+      "definition": "2^x 등을 t로 치환하여 다항식으로 변환",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1cbeaface782f7114d0a1e0e3e118a422188aa1ad987e8b6341eb6704be83aac",
+        "qid_v1_f05a69b92f5d3f0a242958260d54373825eec7d9fc814806b6837c3b226e35ce"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_FRACTIONAL_EQUATION",
+      "canonicalLabelKo": "분수방정식",
+      "definition": "치환된 변수에 대한 유리식 방정식 풀이",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f05a69b92f5d3f0a242958260d54373825eec7d9fc814806b6837c3b226e35ce"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_EXPONENTIAL_INEQUALITY",
+      "canonicalLabelKo": "지수부등식",
+      "definition": "밑의 크기(1보다 큰지 작은지)에 따른 지수 부등호 방향 결정",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_914be8c19c2737c8e4bc106b0f22737c15078d7428ae90f8b4b214ccb6d2add6"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOG_RULES",
+      "canonicalLabelKo": "로그의 성질",
+      "definition": "로그의 덧셈, 뺄셈 및 진수의 거듭제곱 법칙",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_24a3ffb20bb9b7ac068b8d1c111013393c11e030ca7daebf599b4a5ba3bb3787",
+        "qid_v1_bbf025f8f23424cf7525164df9370f35331b28541f43d3a4d92e6ad4ea0b1460"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_BASE_CHANGE_FORMULA",
+      "canonicalLabelKo": "밑변환 공식",
+      "definition": "임의의 밑을 가진 로그로 변환하는 공식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_bbf025f8f23424cf7525164df9370f35331b28541f43d3a4d92e6ad4ea0b1460"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_VIETAS_FORMULAS",
+      "canonicalLabelKo": "근과 계수의 관계",
+      "definition": "이차방정식 두 근의 합과 곱",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_69aa739950b6907a1fe416e3a403b9eaf5b4b1c48d9be46da7972c60f691abdf"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOG_INEQUALITY",
+      "canonicalLabelKo": "로그부등식",
+      "definition": "상용로그를 이용한 지수부등식 계산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_93d247649b9fbb6b9662e3441088c5b1c7f50ccf90a33a94eb12b7ae868b40b3"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOG_ORDER_COMPARISON",
+      "canonicalLabelKo": "로그값의 대소 비교",
+      "definition": "로그함수의 증가성을 이용한 합성값 비교",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_88807f92467a86df2f773551ae4d0c61a1c090f24bcdd5cdc722a86573d7e61b"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_VARIABLE_SUBSTITUTION",
+      "canonicalLabelKo": "변수 치환",
+      "definition": "복잡한 식을 단순 변수로 치환하여 분석",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5eb4c00eaaaeb02e02706d761fc11ba434751c7c7fe8698423ea0dfc2ac5aeb1",
+        "qid_v1_88807f92467a86df2f773551ae4d0c61a1c090f24bcdd5cdc722a86573d7e61b"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_HALF_LIFE_MODEL",
+      "canonicalLabelKo": "반감기 모델",
+      "definition": "방사성 붕괴의 반감기 지수 감소 공식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_83f1ce3a00383b4b57f6f007c689f34a7c6ab091b1c3ad5297765b48f295ec74"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOG_DECIMAL_PART",
+      "canonicalLabelKo": "상용로그의 소수 부분",
+      "definition": "log x - floor(log x) 지표와 가수 함수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_cee716a2718cc0ac8c86ab52d5179d05b51da5422a2533739b6875897289c8b0"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_FACTORIZATION",
+      "canonicalLabelKo": "인수분해 공식",
+      "definition": "세제곱 및 고차식의 대칭 인수분해",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_fe6b58407dd8095cd92ddbf17257452788670999fd60e714ee1bb317958327a8"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_SIMPLIFY",
+      "canonicalLabelKo": "절댓값 간소화",
+      "definition": "sqrt(A^2)=|A| 성질을 이용한 식 정리",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6867c2ade9d2fa3cd5646257707af38edffc73d71489048be59bf41ca6844465"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_6867c2ade9d2fa3cd5646257707af38edffc73d71489048be59bf41ca6844465"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_COMMON_FACTOR",
+      "canonicalLabelKo": "공통인수",
+      "definition": "다항식의 각 항에 공통으로 들어 있는 인수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8e8fe246ce18b0949f97a4265d9f613b6d7fa0d143a4b23be06e3a55f51b6b77",
+        "qid_v1_056f76894ba53c9277fcf476c8b9b1d1a838c3a14dcabadf2caeaf293020c664"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_8e8fe246ce18b0949f97a4265d9f613b6d7fa0d143a4b23be06e3a55f51b6b77",
+            "qid_v1_056f76894ba53c9277fcf476c8b9b1d1a838c3a14dcabadf2caeaf293020c664"
+          ],
+          "questionCount": 2,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_DENOMINATOR_RATIONALIZATION",
+      "canonicalLabelKo": "분모의 유리화",
+      "definition": "분모에 있는 근호를 제거하는 변형",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ae49216e70df042a91d0ef90bed08a41b725d5cb6c17afb932da9bf88f1fbe8f",
+        "qid_v1_a775c4c1c571c37cb55c608c482c0258c70d78dd381e5d4ecac107667575dd43",
+        "qid_v1_36175ee3fdae18990e93a0bcab261edb82ef51f1a7a49b63f869ee4ecaf57c02"
+      ],
+      "supportingItemCount": 3,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_ae49216e70df042a91d0ef90bed08a41b725d5cb6c17afb932da9bf88f1fbe8f",
+            "qid_v1_a775c4c1c571c37cb55c608c482c0258c70d78dd381e5d4ecac107667575dd43",
+            "qid_v1_36175ee3fdae18990e93a0bcab261edb82ef51f1a7a49b63f869ee4ecaf57c02"
+          ],
+          "questionCount": 3,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_DIFFERENCE_OF_SQUARES",
+      "canonicalLabelKo": "합차 공식",
+      "definition": "A^2 - B^2 = (A-B)(A+B) 전개 및 인수분해",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_330d7e6dc9eb2288b67c726283c5de73336164a5f273a4474413bba10326e14f",
+        "qid_v1_4813d84e33d61f44afadfde9252a6d16a084af50a33d0c9abe0bff7f9446a88b",
+        "qid_v1_d53c7763ea2daa4f53aa8e31f31baef2631f3a3f4d4d88abd56bd55d6b8d8954",
+        "qid_v1_333cb53ede706008ea97bc4254d4fd4e0735aa40d96b4e7a012b393bdd5877db"
+      ],
+      "supportingItemCount": 4,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_330d7e6dc9eb2288b67c726283c5de73336164a5f273a4474413bba10326e14f",
+            "qid_v1_4813d84e33d61f44afadfde9252a6d16a084af50a33d0c9abe0bff7f9446a88b",
+            "qid_v1_d53c7763ea2daa4f53aa8e31f31baef2631f3a3f4d4d88abd56bd55d6b8d8954",
+            "qid_v1_333cb53ede706008ea97bc4254d4fd4e0735aa40d96b4e7a012b393bdd5877db"
+          ],
+          "questionCount": 4,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_EXPANSION_COEFFICIENT",
+      "canonicalLabelKo": "전개식의 계수",
+      "definition": "완전제곱식 전개 시 일차항 계수 결정",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_99aed299c924c394ee8c6a97ff16299a811ad0a8f52aa816373e5bd7abfaf355"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_99aed299c924c394ee8c6a97ff16299a811ad0a8f52aa816373e5bd7abfaf355"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_FACTOR_DEFINITION",
+      "canonicalLabelKo": "인수의 정의",
+      "definition": "다항식을 곱의 꼴로 나타낼 때 각각의 식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8e8fe246ce18b0949f97a4265d9f613b6d7fa0d143a4b23be06e3a55f51b6b77"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_8e8fe246ce18b0949f97a4265d9f613b6d7fa0d143a4b23be06e3a55f51b6b77"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_FACTOR_THEOREM",
+      "canonicalLabelKo": "인수정리",
+      "definition": "P(alpha)=0이면 x-alpha를 인수로 가짐",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_056f76894ba53c9277fcf476c8b9b1d1a838c3a14dcabadf2caeaf293020c664"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_056f76894ba53c9277fcf476c8b9b1d1a838c3a14dcabadf2caeaf293020c664"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_GROUPING_FACTORIZATION",
+      "canonicalLabelKo": "항 묶기 인수분해",
+      "definition": "공통인수가 나오도록 항을 짝지어 묶음",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_4813d84e33d61f44afadfde9252a6d16a084af50a33d0c9abe0bff7f9446a88b"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_4813d84e33d61f44afadfde9252a6d16a084af50a33d0c9abe0bff7f9446a88b"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_MULTIPLICATION_FORMULA",
+      "canonicalLabelKo": "곱셈 공식",
+      "definition": "다항식의 곱을 빠르게 전개하는 공식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6fe846a0b0e52ee96067b0d914bd05cebcad09a4d3b294d2e4a56791e8f58056"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_6fe846a0b0e52ee96067b0d914bd05cebcad09a4d3b294d2e4a56791e8f58056"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_ORDER_OF_OPERATIONS",
+      "canonicalLabelKo": "연산의 순서",
+      "definition": "거듭제곱, 괄호, 곱셈·나눗셈의 계산 우선순위",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_3ba2e1a0622a4db1ea574b6ddbfc3616c760b00008d08700b1431c898e0cff25"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_3ba2e1a0622a4db1ea574b6ddbfc3616c760b00008d08700b1431c898e0cff25"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_PERFECT_SQUARE",
+      "canonicalLabelKo": "완전제곱식",
+      "definition": "다항식의 제곱 꼴로 나타내어지는 식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_99aed299c924c394ee8c6a97ff16299a811ad0a8f52aa816373e5bd7abfaf355",
+        "qid_v1_e74580e538e5d4752101c8ed1b8ad490335b756bf6c962091ef7abee81d01e2f",
+        "qid_v1_333cb53ede706008ea97bc4254d4fd4e0735aa40d96b4e7a012b393bdd5877db"
+      ],
+      "supportingItemCount": 3,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_99aed299c924c394ee8c6a97ff16299a811ad0a8f52aa816373e5bd7abfaf355",
+            "qid_v1_e74580e538e5d4752101c8ed1b8ad490335b756bf6c962091ef7abee81d01e2f",
+            "qid_v1_333cb53ede706008ea97bc4254d4fd4e0735aa40d96b4e7a012b393bdd5877db"
+          ],
+          "questionCount": 3,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_EXPANSION",
+      "canonicalLabelKo": "다항식의 전개",
+      "definition": "괄호를 풀어 동류항끼리 정리하는 계산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_330d7e6dc9eb2288b67c726283c5de73336164a5f273a4474413bba10326e14f"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_330d7e6dc9eb2288b67c726283c5de73336164a5f273a4474413bba10326e14f"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_SUM",
+      "canonicalLabelKo": "다항식의 합",
+      "definition": "두 일차식의 동류항 덧셈",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_01060d47bb3eace5181944f8d79555a8848dc33e76402356d7c56206446b3203"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_01060d47bb3eace5181944f8d79555a8848dc33e76402356d7c56206446b3203"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_FACTORIZATION",
+      "canonicalLabelKo": "이차식의 인수분해",
+      "definition": "x^2+(a+b)x+ab = (x+a)(x+b) 꼴 인수분해",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_01060d47bb3eace5181944f8d79555a8848dc33e76402356d7c56206446b3203"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_01060d47bb3eace5181944f8d79555a8848dc33e76402356d7c56206446b3203"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_RADICAL_ADDITION",
+      "canonicalLabelKo": "근호의 덧셈과 뺄셈",
+      "definition": "근호 안의 수가 같은 동류항끼리의 계산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_a775c4c1c571c37cb55c608c482c0258c70d78dd381e5d4ecac107667575dd43"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_a775c4c1c571c37cb55c608c482c0258c70d78dd381e5d4ecac107667575dd43"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_RADICAL_ARITHMETIC",
+      "canonicalLabelKo": "근호의 사칙연산",
+      "definition": "제곱근을 포함한 수의 곱셈과 나눗셈",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2e188e6eb211cfa432321648c2846c1dbf4e5dceadb6387c8b0c53e75b45bdee",
+        "qid_v1_3ba2e1a0622a4db1ea574b6ddbfc3616c760b00008d08700b1431c898e0cff25"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_2e188e6eb211cfa432321648c2846c1dbf4e5dceadb6387c8b0c53e75b45bdee",
+            "qid_v1_3ba2e1a0622a4db1ea574b6ddbfc3616c760b00008d08700b1431c898e0cff25"
+          ],
+          "questionCount": 2,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_RADICAL_FACTORIZATION",
+      "canonicalLabelKo": "근호의 소인수분해",
+      "definition": "근호 안의 소수 인수를 분리하여 문자로 치환",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2df6256ba4638a09332c5a17ab1d0538c8fddff6f24e15f97b191b4e1b570116"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_2df6256ba4638a09332c5a17ab1d0538c8fddff6f24e15f97b191b4e1b570116"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_RADICAL_SIMPLIFY",
+      "canonicalLabelKo": "근호의 단순화",
+      "definition": "근호 안의 제곱인수를 밖으로 빼내기",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ae49216e70df042a91d0ef90bed08a41b725d5cb6c17afb932da9bf88f1fbe8f"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_ae49216e70df042a91d0ef90bed08a41b725d5cb6c17afb932da9bf88f1fbe8f"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_VARIABLE_SIGN",
+      "canonicalLabelKo": "문자의 부호 판별",
+      "definition": "주어진 조건식으로부터 미지수의 양·음 판별",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6867c2ade9d2fa3cd5646257707af38edffc73d71489048be59bf41ca6844465"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_6867c2ade9d2fa3cd5646257707af38edffc73d71489048be59bf41ca6844465"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
     },
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -1778,6 +2580,126 @@
       "ownerConceptShard": "FUNCTIONS"
     },
     {
+      "conceptKey": "CC_LOGARITHMIC_FUNCTION_GRAPH",
+      "canonicalLabelKo": "로그함수의 그래프",
+      "definition": "로그함수의 개형과 증가·감소 특성",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_fa6f0b21758b235e8152307f1a14de7417522ccbb7f1c05516491b0434853a12"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_ASYMPTOTE",
+      "canonicalLabelKo": "점근선",
+      "definition": "곡선이 한없이 가까워지는 직선의 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_fa6f0b21758b235e8152307f1a14de7417522ccbb7f1c05516491b0434853a12"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_EXPONENTIAL_FUNCTION_GRAPH",
+      "canonicalLabelKo": "지수함수의 그래프",
+      "definition": "지수함수의 개형, 평행이동 및 사분면 통과 조건",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_49e0790a17d27a25a8d9e4c1a77e2d538cc420ab82fc9af92d5475f34b4dd3d5"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_GRAPH_INTERSECTION",
+      "canonicalLabelKo": "그래프의 교점",
+      "definition": "함수 그래프의 위치 관계와 교점 사이의 영역",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_914be8c19c2737c8e4bc106b0f22737c15078d7428ae90f8b4b214ccb6d2add6"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_EXPONENTIAL_GROWTH",
+      "canonicalLabelKo": "지수적 증가 모델",
+      "definition": "일정한 비율로 증가하는 현실 문제의 수식화",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_93d247649b9fbb6b9662e3441088c5b1c7f50ccf90a33a94eb12b7ae868b40b3"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_EXPONENTIAL_DECAY",
+      "canonicalLabelKo": "지수적 감소",
+      "definition": "시간에 따라 거듭제곱 비율로 감소하는 함수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_83f1ce3a00383b4b57f6f007c689f34a7c6ab091b1c3ad5297765b48f295ec74"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_GRAPH_INTERSECTION_COUNT",
+      "canonicalLabelKo": "그래프 교점 개수",
+      "definition": "곡선과 직선의 교점 개수를 매개변수 범위로 추적",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_cee716a2718cc0ac8c86ab52d5179d05b51da5422a2533739b6875897289c8b0"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_PIECEWISE_FUNCTION",
+      "canonicalLabelKo": "구간별 함수(조각함수)",
+      "definition": "구간에 따라 다르게 정의된 함수의 합성 및 극값",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ac9092b80bbe3b5d6b1a8247050e595d350f23fb6d9c203f2c242e05cb99251e"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_EXTREMUM",
+      "canonicalLabelKo": "함수의 극값",
+      "definition": "주어진 구간 내에서 함수의 최댓값과 최솟값",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ac9092b80bbe3b5d6b1a8247050e595d350f23fb6d9c203f2c242e05cb99251e"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_EXPONENTIAL_FUNCTION_RANGE",
+      "canonicalLabelKo": "지수함수의 치역",
+      "definition": "점근선에 의한 지수함수의 유계성",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f441aaf0d72ebb5d8b13a47178b09ecc299a6d9ecfbe9046324ab986553f3fbd"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
       "conceptKey": "CC_COUNTEREXAMPLE",
       "canonicalLabelKo": "반례",
       "definition": "반례이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
@@ -1846,6 +2768,31 @@
       "curriculumRefs": [
         "2015:수학(상):H15-SA-11"
       ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SET_PARTITION",
+      "canonicalLabelKo": "집합의 분할",
+      "definition": "원소들을 공집합이 아닌 몇 개의 부분집합으로 분할",
+      "supportingQuestionUids": [
+        "qid_v1_dd6debd2244ba33445d667515d728d491ce411d6c02c33dfddd48341229d73f0",
+        "qid_v1_e0a3fb82353290d0fa8d6df24e3847662e50d2ad8d5ee429fbbcbc10e95e01c5"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SUBSET_RELATION",
+      "canonicalLabelKo": "부분집합의 관계",
+      "definition": "집합 간의 포함 및 서로소 관계",
+      "supportingQuestionUids": [
+        "qid_v1_bd90fadbab11fa02300c82ec0d4135fb17e7f076850c585db6b52231caa55ed2"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
       "ownerConceptShard": "LOGIC_SET"
     },
     {
@@ -2847,6 +3794,385 @@
       "ownerConceptShard": "COORDINATE_GEOMETRY"
     },
     {
+      "conceptKey": "CC_CENTROID",
+      "canonicalLabelKo": "무게중심",
+      "definition": "삼각형 세 꼭짓점 좌표의 평균",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_44ebe094245bab40b6b7d5eeb4f832073a40fe305cc19756f14d1eff6f58f3d1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-GE-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "META_PIPELINE_AUDIT",
+          "evidence": {
+            "evidenceType": "ALIVE_META_AUDIT_ATOMIC_v3",
+            "sourceFileDriveId": "1rOMsitC6BWm2aETIeC8t7PBJdn1WSQH7",
+            "sourceSha256": "773e6f8af53b33ee9fe04212700a064145d7f9097e5e18ac6e53ce3cb523b809",
+            "auditFile": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_22_금당고_2학기_중간_고2_기하_기출.json",
+            "manifestFile": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_22_금당고_2학기_중간_고2_기하_기출.json",
+            "supportingQuestionUids": [
+              "qid_v1_44ebe094245bab40b6b7d5eeb4f832073a40fe305cc19756f14d1eff6f58f3d1"
+            ]
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_GEO_CONIC_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2022:기하:H22-GE-02"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CONIC_TANGENT",
+      "canonicalLabelKo": "이차곡선의 접선",
+      "definition": "포물선, 타원, 쌍곡선에 접하는 직선의 방정식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_44ebe094245bab40b6b7d5eeb4f832073a40fe305cc19756f14d1eff6f58f3d1",
+        "qid_v1_73375e5cd18c303616852951e14b2ebc0452955d9552f1c5baca88e2b46574fa",
+        "qid_v1_7b7cd8d3ee7a747b60d32feb362aac1a9471c98dfb3d390f908b02bd83dfd2bb",
+        "qid_v1_8c4217edaa16dd5ddf229b1216ae00d156901231d9e31d5ff11377b2c9888e2b",
+        "qid_v1_b0a4f2d606d6225be2a601a566f81e2236aee7686870ff5f0dcaab74375b938f",
+        "qid_v1_d821009628e53dfc340c4d85eb9af675d263397d2a151f3e53f87c1f2602f1da"
+      ],
+      "supportingItemCount": 6,
+      "sourceUnits": [
+        "H22-GE-01",
+        "H22-GE-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "META_PIPELINE_AUDIT",
+          "evidence": {
+            "evidenceType": "ALIVE_META_AUDIT_ATOMIC_v3",
+            "sourceFileDriveId": "1rOMsitC6BWm2aETIeC8t7PBJdn1WSQH7",
+            "sourceSha256": "773e6f8af53b33ee9fe04212700a064145d7f9097e5e18ac6e53ce3cb523b809",
+            "auditFile": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_22_금당고_2학기_중간_고2_기하_기출.json",
+            "manifestFile": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_22_금당고_2학기_중간_고2_기하_기출.json",
+            "supportingQuestionUids": [
+              "qid_v1_44ebe094245bab40b6b7d5eeb4f832073a40fe305cc19756f14d1eff6f58f3d1",
+              "qid_v1_73375e5cd18c303616852951e14b2ebc0452955d9552f1c5baca88e2b46574fa",
+              "qid_v1_7b7cd8d3ee7a747b60d32feb362aac1a9471c98dfb3d390f908b02bd83dfd2bb",
+              "qid_v1_8c4217edaa16dd5ddf229b1216ae00d156901231d9e31d5ff11377b2c9888e2b",
+              "qid_v1_b0a4f2d606d6225be2a601a566f81e2236aee7686870ff5f0dcaab74375b938f",
+              "qid_v1_d821009628e53dfc340c4d85eb9af675d263397d2a151f3e53f87c1f2602f1da"
+            ]
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_GEO_CONIC_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2022:기하:H22-GE-01",
+        "2022:기하:H22-GE-02"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_ELLIPSE",
+      "canonicalLabelKo": "타원",
+      "definition": "두 초점으로부터 거리의 합이 일정한 점들의 자취",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_095e8fce230235a8a58c8ed52e4d444de4e811e5aba138802f7826cddfd34706",
+        "qid_v1_32aee180df0f5e06fa756d4643babaefe7bb25aedad6b49e9c8dbec4214c2736",
+        "qid_v1_4172a243007de0a0bf215cb4c532b5325f168dbe210dc4c53d2d4395fa9e54b1",
+        "qid_v1_4eaa8a78a03ea2d050553dec0f301220662bb8e2c4322e854c8e566757161a8d",
+        "qid_v1_99ec277024680d6c2f53403d38b1c7000c0fed673f3008dfe86d502805eb415a",
+        "qid_v1_b0a4f2d606d6225be2a601a566f81e2236aee7686870ff5f0dcaab74375b938f",
+        "qid_v1_d821009628e53dfc340c4d85eb9af675d263397d2a151f3e53f87c1f2602f1da"
+      ],
+      "supportingItemCount": 7,
+      "sourceUnits": [
+        "H22-GE-01",
+        "H22-GE-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "META_PIPELINE_AUDIT",
+          "evidence": {
+            "evidenceType": "ALIVE_META_AUDIT_ATOMIC_v3",
+            "sourceFileDriveId": "1rOMsitC6BWm2aETIeC8t7PBJdn1WSQH7",
+            "sourceSha256": "773e6f8af53b33ee9fe04212700a064145d7f9097e5e18ac6e53ce3cb523b809",
+            "auditFile": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_22_금당고_2학기_중간_고2_기하_기출.json",
+            "manifestFile": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_22_금당고_2학기_중간_고2_기하_기출.json",
+            "supportingQuestionUids": [
+              "qid_v1_095e8fce230235a8a58c8ed52e4d444de4e811e5aba138802f7826cddfd34706",
+              "qid_v1_32aee180df0f5e06fa756d4643babaefe7bb25aedad6b49e9c8dbec4214c2736",
+              "qid_v1_4172a243007de0a0bf215cb4c532b5325f168dbe210dc4c53d2d4395fa9e54b1",
+              "qid_v1_4eaa8a78a03ea2d050553dec0f301220662bb8e2c4322e854c8e566757161a8d",
+              "qid_v1_99ec277024680d6c2f53403d38b1c7000c0fed673f3008dfe86d502805eb415a",
+              "qid_v1_b0a4f2d606d6225be2a601a566f81e2236aee7686870ff5f0dcaab74375b938f",
+              "qid_v1_d821009628e53dfc340c4d85eb9af675d263397d2a151f3e53f87c1f2602f1da"
+            ]
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_GEO_CONIC_TANGENT",
+        "PT_GEO_ELLIPSE"
+      ],
+      "curriculumRefs": [
+        "2022:기하:H22-GE-01",
+        "2022:기하:H22-GE-02"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_HYPERBOLA",
+      "canonicalLabelKo": "쌍곡선",
+      "definition": "두 초점으로부터 거리의 차가 일정한 점들의 자취",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_0326d19c8694877ee2f3860df18a7a904b9b932c49075d6fd771ba266cd5f760",
+        "qid_v1_0ea7066832bf20162d3a8014e7cd6979d9791040d95fd1042593d7ca91c1d8d3",
+        "qid_v1_44ebe094245bab40b6b7d5eeb4f832073a40fe305cc19756f14d1eff6f58f3d1",
+        "qid_v1_6043d9c55b0dafaa2d072b8a5748ffe9e699194fbc412bac8ef259a969d47d4e",
+        "qid_v1_7b7cd8d3ee7a747b60d32feb362aac1a9471c98dfb3d390f908b02bd83dfd2bb",
+        "qid_v1_96a0ee9deabe7fab7adbd58e1a48dbe5cdb7983ada463e8f71eb9c086df35b8a",
+        "qid_v1_c72be839dbeb0ef84e5c04717c614031b0f5a550280def04c11acea7a675bb72"
+      ],
+      "supportingItemCount": 7,
+      "sourceUnits": [
+        "H22-GE-01",
+        "H22-GE-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "META_PIPELINE_AUDIT",
+          "evidence": {
+            "evidenceType": "ALIVE_META_AUDIT_ATOMIC_v3",
+            "sourceFileDriveId": "1rOMsitC6BWm2aETIeC8t7PBJdn1WSQH7",
+            "sourceSha256": "773e6f8af53b33ee9fe04212700a064145d7f9097e5e18ac6e53ce3cb523b809",
+            "auditFile": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_22_금당고_2학기_중간_고2_기하_기출.json",
+            "manifestFile": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_22_금당고_2학기_중간_고2_기하_기출.json",
+            "supportingQuestionUids": [
+              "qid_v1_0326d19c8694877ee2f3860df18a7a904b9b932c49075d6fd771ba266cd5f760",
+              "qid_v1_0ea7066832bf20162d3a8014e7cd6979d9791040d95fd1042593d7ca91c1d8d3",
+              "qid_v1_44ebe094245bab40b6b7d5eeb4f832073a40fe305cc19756f14d1eff6f58f3d1",
+              "qid_v1_6043d9c55b0dafaa2d072b8a5748ffe9e699194fbc412bac8ef259a969d47d4e",
+              "qid_v1_7b7cd8d3ee7a747b60d32feb362aac1a9471c98dfb3d390f908b02bd83dfd2bb",
+              "qid_v1_96a0ee9deabe7fab7adbd58e1a48dbe5cdb7983ada463e8f71eb9c086df35b8a",
+              "qid_v1_c72be839dbeb0ef84e5c04717c614031b0f5a550280def04c11acea7a675bb72"
+            ]
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_GEO_CONIC_TANGENT",
+        "PT_GEO_HYPERBOLA"
+      ],
+      "curriculumRefs": [
+        "2022:기하:H22-GE-01",
+        "2022:기하:H22-GE-02"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PARABOLA",
+      "canonicalLabelKo": "포물선",
+      "definition": "초점과 준선에 이르는 거리가 같은 점들의 자취",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_60f428f012e2e4d3b7fc2425a4ec557129648fa04331be04c919aa65e9a04d8e",
+        "qid_v1_73375e5cd18c303616852951e14b2ebc0452955d9552f1c5baca88e2b46574fa",
+        "qid_v1_734a910d77f96c6f430e6e9c10b43ded8d860ad48a7d75742e767de02a03fdfe",
+        "qid_v1_7bb4c00c135f77000dea3eb9e490b2fed112b37018295cb6b3b5630f23c800db",
+        "qid_v1_82a405ea63313908e2f4ba623468445d971efe10dc52d2d3e29f0f5286b54fdf",
+        "qid_v1_8c4217edaa16dd5ddf229b1216ae00d156901231d9e31d5ff11377b2c9888e2b",
+        "qid_v1_9dd583224174f81cfb4f2c27f6f3e47d433043ff777a22193539ff083b9bf0a0",
+        "qid_v1_e13f38aaeead182a447454ec6add3d907b68f1fd136145d298e0bcd1b1c6ffe7"
+      ],
+      "supportingItemCount": 8,
+      "sourceUnits": [
+        "H22-GE-01",
+        "H22-GE-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "META_PIPELINE_AUDIT",
+          "evidence": {
+            "evidenceType": "ALIVE_META_AUDIT_ATOMIC_v3",
+            "sourceFileDriveId": "1rOMsitC6BWm2aETIeC8t7PBJdn1WSQH7",
+            "sourceSha256": "773e6f8af53b33ee9fe04212700a064145d7f9097e5e18ac6e53ce3cb523b809",
+            "auditFile": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_22_금당고_2학기_중간_고2_기하_기출.json",
+            "manifestFile": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_22_금당고_2학기_중간_고2_기하_기출.json",
+            "supportingQuestionUids": [
+              "qid_v1_60f428f012e2e4d3b7fc2425a4ec557129648fa04331be04c919aa65e9a04d8e",
+              "qid_v1_73375e5cd18c303616852951e14b2ebc0452955d9552f1c5baca88e2b46574fa",
+              "qid_v1_734a910d77f96c6f430e6e9c10b43ded8d860ad48a7d75742e767de02a03fdfe",
+              "qid_v1_7bb4c00c135f77000dea3eb9e490b2fed112b37018295cb6b3b5630f23c800db",
+              "qid_v1_82a405ea63313908e2f4ba623468445d971efe10dc52d2d3e29f0f5286b54fdf",
+              "qid_v1_8c4217edaa16dd5ddf229b1216ae00d156901231d9e31d5ff11377b2c9888e2b",
+              "qid_v1_9dd583224174f81cfb4f2c27f6f3e47d433043ff777a22193539ff083b9bf0a0",
+              "qid_v1_e13f38aaeead182a447454ec6add3d907b68f1fd136145d298e0bcd1b1c6ffe7"
+            ]
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_GEO_CONIC_TANGENT",
+        "PT_GEO_PARABOLA"
+      ],
+      "curriculumRefs": [
+        "2022:기하:H22-GE-01",
+        "2022:기하:H22-GE-02"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SPACE_FIGURE",
+      "canonicalLabelKo": "공간도형",
+      "definition": "3차원 공간에서 직선, 평면, 이면각의 위치 관계",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_3d0cd72452cb0b1f8c4e1f0f2226001352f625e9036334581df37c6d2d5837d5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-GE-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "META_PIPELINE_AUDIT",
+          "evidence": {
+            "evidenceType": "ALIVE_META_AUDIT_ATOMIC_v3",
+            "sourceFileDriveId": "1JgE1lYE1pxjmtjY_fNYNCRKt-Qx0_Xkv",
+            "sourceSha256": "beb7b2fb654932f7c906d83a4adcc2ccafb25e41407a0587677c4841913a2727",
+            "supportingQuestionUids": [
+              "qid_v1_3d0cd72452cb0b1f8c4e1f0f2226001352f625e9036334581df37c6d2d5837d5"
+            ]
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_GEO_SPACE_FIGURE"
+      ],
+      "curriculumRefs": [
+        "2022:기하:H22-GE-03"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_ORTHOGONAL_PROJECTION",
+      "canonicalLabelKo": "정사영",
+      "definition": "도형을 평면에 수직으로 투영하여 길이와 넓이를 구하는 기하 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_660efd7ad4465b0f48e17a9df4baea312b7e890067d71204bd8bed59d4bce69a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-GE-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "META_PIPELINE_AUDIT",
+          "evidence": {
+            "evidenceType": "ALIVE_META_AUDIT_ATOMIC_v3",
+            "sourceFileDriveId": "1sSc5pePw_JjssvHlVeoVfSg5EJrLHCOa",
+            "sourceSha256": "a2160651bafe0f9d20db18df52aa841b8e3c532c7047a3aefffc99792b2253e4",
+            "supportingQuestionUids": [
+              "qid_v1_660efd7ad4465b0f48e17a9df4baea312b7e890067d71204bd8bed59d4bce69a"
+            ]
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_GEO_SPACE_FIGURE"
+      ],
+      "curriculumRefs": [
+        "2022:기하:H22-GE-03"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SKEW_LINES",
+      "canonicalLabelKo": "꼬인 위치",
+      "definition": "공간에서 만나지도 않고 평행하지도 않은 두 직선의 관계 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_4361ef0809ba9a0debfcfb3d939717371e6c7dbf19a0374199cee844a2b0d3e8"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-GE-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "META_PIPELINE_AUDIT",
+          "evidence": {
+            "evidenceType": "ALIVE_META_AUDIT_ATOMIC_v3",
+            "sourceFileDriveId": "1sSc5pePw_JjssvHlVeoVfSg5EJrLHCOa",
+            "sourceSha256": "a2160651bafe0f9d20db18df52aa841b8e3c532c7047a3aefffc99792b2253e4",
+            "supportingQuestionUids": [
+              "qid_v1_4361ef0809ba9a0debfcfb3d939717371e6c7dbf19a0374199cee844a2b0d3e8"
+            ]
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_GEO_SPACE_FIGURE"
+      ],
+      "curriculumRefs": [
+        "2022:기하:H22-GE-03"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_NUMBER_LINE_COORDINATE",
+      "canonicalLabelKo": "수직선 위의 좌표",
+      "definition": "기준점과 이동 거리를 결합한 실수의 대응점",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_9dccd4f52daab090123c32e827c3c89e6127bc6a767194dc1a5741a88a50d0da"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "COORDINATE_GEOMETRY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_9dccd4f52daab090123c32e827c3c89e6127bc6a767194dc1a5741a88a50d0da"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
       "conceptKey": "CC_ANGLE_BISECTOR",
       "canonicalLabelKo": "각의 이등분선",
       "definition": "각의 이등분선이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
@@ -3611,6 +4937,146 @@
       "ownerConceptShard": "PLANE_GEOMETRY"
     },
     {
+      "conceptKey": "CC_PLANE_VECTOR",
+      "canonicalLabelKo": "평면벡터",
+      "definition": "평면에서의 크기와 방향을 갖는 유향선분 연산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5b9c200d1155bef8c6cd6885819b58f1a0e8b934705e4422b13d70efbb7b1d5e",
+        "qid_v1_7d76617f8e58e6088953ab7c65119e4ebe9a2744dd295b6c28c9f02deadede9d",
+        "qid_v1_8e1685e14cd7b72348c094afd511f09adb9e815e9e8be219fdc0d69b0ea7c0e6",
+        "qid_v1_d07ff4ff3245375d2eb05db970627445c76be2fa860fc3bd23e9ad1a43f6b00e"
+      ],
+      "supportingItemCount": 4,
+      "sourceUnits": [
+        "GEOMETRY"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "GEOMETRY",
+          "evidence": {
+            "evidenceType": "ALIVE_META_AUDIT_ATOMIC_v3",
+            "sourceTitle": "23_매산고_2학기_중간_고2_기하",
+            "auditPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_매산고_2학기_중간_고2_기하.json",
+            "auditSha256": "1e4bc495825d2e3d9f749e451ff523de23eed4d3012d4efddefb9025cfb66ca9",
+            "manifestPath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_매산고_2학기_중간_고2_기하.json",
+            "manifestSha256": "e8eae06d4462872382f513a2f10e6ea2b634678fa33bd03a57fccd02272f29b2",
+            "supportingQuestionUids": [
+              "qid_v1_5b9c200d1155bef8c6cd6885819b58f1a0e8b934705e4422b13d70efbb7b1d5e",
+              "qid_v1_7d76617f8e58e6088953ab7c65119e4ebe9a2744dd295b6c28c9f02deadede9d",
+              "qid_v1_8e1685e14cd7b72348c094afd511f09adb9e815e9e8be219fdc0d69b0ea7c0e6",
+              "qid_v1_d07ff4ff3245375d2eb05db970627445c76be2fa860fc3bd23e9ad1a43f6b00e"
+            ]
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_GEO_PLANE_VECTOR"
+      ],
+      "curriculumRefs": [
+        "2022:기하:H22-GE-05",
+        "2022:기하:H22-GE-06",
+        "2022:기하:H22-GE-07"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PYTHAGOREAN_THEOREM",
+      "canonicalLabelKo": "피타고라스 정리",
+      "definition": "직각삼각형의 빗변 길이 계산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_9dccd4f52daab090123c32e827c3c89e6127bc6a767194dc1a5741a88a50d0da",
+        "qid_v1_57967045082d214a7b456680fdf2d3669a8fa4a7e5747c46dfa8104a69d83621"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "PLANE_GEOMETRY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_9dccd4f52daab090123c32e827c3c89e6127bc6a767194dc1a5741a88a50d0da",
+            "qid_v1_57967045082d214a7b456680fdf2d3669a8fa4a7e5747c46dfa8104a69d83621"
+          ],
+          "questionCount": 2,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_SIMILARITY_RATIO",
+      "canonicalLabelKo": "닮음비",
+      "definition": "닮은 도형에서 대응하는 변의 길이의 비",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8c2af68efb5afa370d90e2b0467821ab2327200d46b0a1e753917258a47678e8"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "PLANE_GEOMETRY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_8c2af68efb5afa370d90e2b0467821ab2327200d46b0a1e753917258a47678e8"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_SQUARE_AREA",
+      "canonicalLabelKo": "정사각형의 넓이",
+      "definition": "한 변의 길이의 제곱으로 넓이를 구하거나 역산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8c2af68efb5afa370d90e2b0467821ab2327200d46b0a1e753917258a47678e8",
+        "qid_v1_57967045082d214a7b456680fdf2d3669a8fa4a7e5747c46dfa8104a69d83621"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "PLANE_GEOMETRY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_8c2af68efb5afa370d90e2b0467821ab2327200d46b0a1e753917258a47678e8",
+            "qid_v1_57967045082d214a7b456680fdf2d3669a8fa4a7e5747c46dfa8104a69d83621"
+          ],
+          "questionCount": 2,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
       "conceptKey": "CC_COMBINATORICS_COUNTING",
       "canonicalLabelKo": "순열과 조합을 이용한 경우의 수",
       "definition": "집합의 원소 선택·배열·분할을 순열, 조합, 곱의 법칙 등으로 세는 개념.",
@@ -3659,6 +5125,171 @@
           }
         }
       ]
+    },
+    {
+      "conceptKey": "CC_PERMUTATION",
+      "canonicalLabelKo": "순열",
+      "definition": "서로 다른 n개 중 r개를 택해 일렬로 나열하는 경우의 수",
+      "supportingQuestionUids": [
+        "qid_v1_212e5cf63c5a622b92ea247e53e408beb83b22aa9ac06f593350f23840fd8600",
+        "qid_v1_6533f2becefe3b1705e0fdffee303f5651ca0731dc52b6b3bbac6f594e92d42c",
+        "qid_v1_a99a6e3f41f0ddb7b3d03a6b016e0906d7a9d67dd51f258f19f275401dd92ff1",
+        "qid_v1_dd6debd2244ba33445d667515d728d491ce411d6c02c33dfddd48341229d73f0"
+      ],
+      "supportingItemCount": 4,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_FACTORIAL",
+      "canonicalLabelKo": "계승(팩토리얼)",
+      "definition": "1부터 n까지의 자연수를 차례로 곱한 값",
+      "supportingQuestionUids": [
+        "qid_v1_212e5cf63c5a622b92ea247e53e408beb83b22aa9ac06f593350f23840fd8600"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_REPEATED_PERMUTATION",
+      "canonicalLabelKo": "중복순열",
+      "definition": "중복을 허용하여 일렬로 나열하는 경우의 수",
+      "supportingQuestionUids": [
+        "qid_v1_5fe767ace86ee9a30f073db0a4f873fb9fa1c9f3ebac9bc729de4c83dac5dfb8",
+        "qid_v1_bd90fadbab11fa02300c82ec0d4135fb17e7f076850c585db6b52231caa55ed2"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_PRODUCT_RULE",
+      "canonicalLabelKo": "곱의 법칙",
+      "definition": "두 사건이 잇달아 일어나는 경우의 수의 곱",
+      "supportingQuestionUids": [
+        "qid_v1_5fe767ace86ee9a30f073db0a4f873fb9fa1c9f3ebac9bc729de4c83dac5dfb8"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_REPEATED_COMBINATION",
+      "canonicalLabelKo": "중복조합",
+      "definition": "중복을 허용하여 대상을 선택하는 경우의 수",
+      "supportingQuestionUids": [
+        "qid_v1_02ce1505dc9411b6942245be586bb943e180d9bfd20e4228b1c1bf5d9cca3169",
+        "qid_v1_a2de3e997a03836f829f71aa73077b97f10f0d44564a7d25d8a2dd607e8524f5",
+        "qid_v1_db36e7fb2795840d13eaa87574faefb8ba66aa564e29aa999229bc92eb830578"
+      ],
+      "supportingItemCount": 3,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_NON_NEGATIVE_INTEGER_SOLUTION",
+      "canonicalLabelKo": "음이 아닌 정수해",
+      "definition": "부정방정식의 비음이 아닌 정수해 개수 모델",
+      "supportingQuestionUids": [
+        "qid_v1_a2de3e997a03836f829f71aa73077b97f10f0d44564a7d25d8a2dd607e8524f5"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_ADJACENT_PERMUTATION",
+      "canonicalLabelKo": "이웃하는 순열",
+      "definition": "특정 대상들을 한 묶음으로 취급하는 순열",
+      "supportingQuestionUids": [
+        "qid_v1_a99a6e3f41f0ddb7b3d03a6b016e0906d7a9d67dd51f258f19f275401dd92ff1"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_CIRCULAR_PERMUTATION",
+      "canonicalLabelKo": "원순열",
+      "definition": "회전하여 일치하는 것을 같은 것으로 보는 순열",
+      "supportingQuestionUids": [
+        "qid_v1_b32071d9583a0b13c2f5ac60748c104cdb4452a1973e58c5a27e8415efd4fd12"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_THEOREM",
+      "canonicalLabelKo": "이항정리",
+      "definition": "이항식의 거듭제곱을 조합 계수로 전개하는 정리",
+      "supportingQuestionUids": [
+        "qid_v1_32c6a42d9a9fd8388ee3d332658b6ead2398401608c22c26f2a00c5f98deef73",
+        "qid_v1_6ff1113ab802f0b91607c238c84367b37a14f937151249edf90a1afbf95a0f2e"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_COMBINATION",
+      "canonicalLabelKo": "조합",
+      "definition": "순서를 고려하지 않고 대상을 선택하는 경우의 수",
+      "supportingQuestionUids": [
+        "qid_v1_a9418d1ee09d339787c49026e39fba70932374d2ac98227307b9b613708f2ecf",
+        "qid_v1_dcee7ce0dada9af9c598a1eb13494581e455e8b844684f36304ce92160057db9",
+        "qid_v1_e0a3fb82353290d0fa8d6df24e3847662e50d2ad8d5ee429fbbcbc10e95e01c5"
+      ],
+      "supportingItemCount": 3,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_CONSTRAINT_SATISFACTION",
+      "canonicalLabelKo": "제약조건 만족",
+      "definition": "상한 또는 하한 제한을 만족하는 경우의 수",
+      "supportingQuestionUids": [
+        "qid_v1_db36e7fb2795840d13eaa87574faefb8ba66aa564e29aa999229bc92eb830578"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_COUNTING",
+      "canonicalLabelKo": "함수의 개수",
+      "definition": "정의역과 공역의 제약조건에 따른 사상 개수",
+      "supportingQuestionUids": [
+        "qid_v1_02ce1505dc9411b6942245be586bb943e180d9bfd20e4228b1c1bf5d9cca3169"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_INTEGER_COUNT",
+      "canonicalLabelKo": "정수 순서쌍 개수",
+      "definition": "부등식을 만족하는 정수해 카운팅",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f441aaf0d72ebb5d8b13a47178b09ecc299a6d9ecfbe9046324ab986553f3fbd"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "COUNTING"
     },
     {
       "conceptKey": "CC_NUMBER_DIVISOR_MULTIPLE",
@@ -3880,6 +5511,345 @@
       "ownerConceptShard": "NUMBER_THEORY"
     },
     {
+      "conceptKey": "CC_INTEGER_CLASSIFICATION",
+      "canonicalLabelKo": "정수의 분류",
+      "definition": "자릿수 또는 기준값에 따른 정수 분류",
+      "supportingQuestionUids": [
+        "qid_v1_6533f2becefe3b1705e0fdffee303f5651ca0731dc52b6b3bbac6f594e92d42c"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_CONSECUTIVE_INTEGERS",
+      "canonicalLabelKo": "연속하는 자연수",
+      "definition": "이웃하는 자연수를 포함하거나 배제하는 경우의 수",
+      "supportingQuestionUids": [
+        "qid_v1_dcee7ce0dada9af9c598a1eb13494581e455e8b844684f36304ce92160057db9"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_PARITY_CLASSIFICATION",
+      "canonicalLabelKo": "홀짝성(패리티)",
+      "definition": "수의 짝수·홀수 분류를 통한 상태 분할",
+      "supportingQuestionUids": [
+        "qid_v1_02ce1505dc9411b6942245be586bb943e180d9bfd20e4228b1c1bf5d9cca3169",
+        "qid_v1_bcc3cd914a0f5a1c0133c62e3bcf4e4c0a30c30aa4ec38c1690d2bba48eeffe3"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_CYCLIC_DECIMAL",
+      "canonicalLabelKo": "순환소수",
+      "definition": "분수로 나타낼 수 있는 순환하는 무한소수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2870702648ff2b7912638450557439f5532d8131853838bffc3a127b8c4b348f"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_2870702648ff2b7912638450557439f5532d8131853838bffc3a127b8c4b348f"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_DIVISOR_PROPERTY",
+      "canonicalLabelKo": "약수의 성질",
+      "definition": "인수분해를 통해 자연수의 약수 쌍을 구함",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_d53c7763ea2daa4f53aa8e31f31baef2631f3a3f4d4d88abd56bd55d6b8d8954"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_d53c7763ea2daa4f53aa8e31f31baef2631f3a3f4d4d88abd56bd55d6b8d8954"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_FRACTION_OPERATION",
+      "canonicalLabelKo": "분수의 연산",
+      "definition": "분수의 곱셈과 역수 나눗셈",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2e188e6eb211cfa432321648c2846c1dbf4e5dceadb6387c8b0c53e75b45bdee"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_2e188e6eb211cfa432321648c2846c1dbf4e5dceadb6387c8b0c53e75b45bdee"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_INTEGER_DECIMAL_PART",
+      "canonicalLabelKo": "정수부분과 소수부분",
+      "definition": "실수에서 정수부분을 제외한 소수부분 정의",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_36175ee3fdae18990e93a0bcab261edb82ef51f1a7a49b63f869ee4ecaf57c02"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_36175ee3fdae18990e93a0bcab261edb82ef51f1a7a49b63f869ee4ecaf57c02"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_IRRATIONAL_NUMBER_CLASSIFICATION",
+      "canonicalLabelKo": "무리수의 분류",
+      "definition": "유리수와 무리수를 구분하는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_c5899ddb2674ae29314472283be625736da307957baf05922dbee3fb8cc52cb7"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_c5899ddb2674ae29314472283be625736da307957baf05922dbee3fb8cc52cb7"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_PI_PROPERTY",
+      "canonicalLabelKo": "원주율 파이",
+      "definition": "순환하지 않는 대표적 무리수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_c5899ddb2674ae29314472283be625736da307957baf05922dbee3fb8cc52cb7"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_c5899ddb2674ae29314472283be625736da307957baf05922dbee3fb8cc52cb7"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_RADICAL_COMPARISON",
+      "canonicalLabelKo": "무리수의 대소 비교",
+      "definition": "근호 안의 수 크기 비교",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_d402ba8f1828c5e095836d470047d26ba13b527944b275acffce22c43e890686"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_d402ba8f1828c5e095836d470047d26ba13b527944b275acffce22c43e890686"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_REAL_NUMBER_ORDER",
+      "canonicalLabelKo": "실수의 대소 관계",
+      "definition": "실수의 크기 비교 및 부등식 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_054d600013aedacb31fdc853d410075b3c9fbf68de6b3c2af8b8da773c09ca6b",
+        "qid_v1_d402ba8f1828c5e095836d470047d26ba13b527944b275acffce22c43e890686"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_054d600013aedacb31fdc853d410075b3c9fbf68de6b3c2af8b8da773c09ca6b",
+            "qid_v1_d402ba8f1828c5e095836d470047d26ba13b527944b275acffce22c43e890686"
+          ],
+          "questionCount": 2,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_SQUARE_NUMBER",
+      "canonicalLabelKo": "제곱수",
+      "definition": "지수가 모두 짝수인 자연수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_92b1f9654dbd1c46138df1f9924c647b12ddf8c0e2d4cc78cdc4a558de20ebe8"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_92b1f9654dbd1c46138df1f9924c647b12ddf8c0e2d4cc78cdc4a558de20ebe8"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_SQUARE_ROOT_DEFINITION",
+      "canonicalLabelKo": "제곱근의 정의",
+      "definition": "어떤 수를 제곱하여 a가 되는 수의 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2870702648ff2b7912638450557439f5532d8131853838bffc3a127b8c4b348f"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_2870702648ff2b7912638450557439f5532d8131853838bffc3a127b8c4b348f"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
       "conceptKey": "CC_INDEFINITE_INTEGRAL",
       "canonicalLabelKo": "부정적분",
       "definition": "도함수 또는 피적분함수 관계를 역으로 사용하여 원함수를 복원하거나 함수값을 결정하는 적분 개념.",
@@ -4054,6 +6024,142 @@
       "ownerConceptShard": "TRIGONOMETRY"
     },
     {
+      "conceptKey": "CC_QUADRANT_CONDITION",
+      "canonicalLabelKo": "사분면 조건",
+      "definition": "좌표평면의 특정 사분면을 지나지 않기 위한 절편 부등식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_49e0790a17d27a25a8d9e4c1a77e2d538cc420ab82fc9af92d5475f34b4dd3d5"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_RADIAN_DEGREE_CONVERSION",
+      "canonicalLabelKo": "호도법과 육십분법",
+      "definition": "라디안과 도 단위 사이의 상호 변환",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_e53be69f362105181926202e479c8a6ef63cf1f2017c4f13101057eb71909add"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_COTERMINAL_ANGLES",
+      "canonicalLabelKo": "동경과 일반각",
+      "definition": "동경의 위치 및 2n*pi 주기성",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b364d757864ebad6a19266254f87c3bcdc739e43acfad903c93dab593cb0a8b1",
+        "qid_v1_e53be69f362105181926202e479c8a6ef63cf1f2017c4f13101057eb71909add"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIGONOMETRIC_EQUATION",
+      "canonicalLabelKo": "삼각방정식",
+      "definition": "삼각함수를 포함한 방정식의 기본 해법",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5eb4c00eaaaeb02e02706d761fc11ba434751c7c7fe8698423ea0dfc2ac5aeb1",
+        "qid_v1_aaec276af31f7c21c8bf50931fbcc71f44d3d12116b97f4472464d4b1856af98"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TANGENT_DEFINITION",
+      "canonicalLabelKo": "탄젠트함수의 정의",
+      "definition": "sin/cos 비율을 통한 탄젠트 변환",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_aaec276af31f7c21c8bf50931fbcc71f44d3d12116b97f4472464d4b1856af98"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIGONOMETRIC_INEQUALITY",
+      "canonicalLabelKo": "삼각부등식",
+      "definition": "삼각함수 값의 범위를 만족하는 각의 구간 구하기",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5819a4f65879e3fdb09b6f69b2be2484c5152e31f3e2eb5873616ee101f6e1c1"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_COSINE_FUNCTION_RANGE",
+      "canonicalLabelKo": "코사인함수의 치역",
+      "definition": "코사인함수의 대소 관계 및 단조성",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5819a4f65879e3fdb09b6f69b2be2484c5152e31f3e2eb5873616ee101f6e1c1",
+        "qid_v1_ba92ec2f949fde56fa87778d5a915793ce3fbc134b658d78867d43b3ad76855e"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_SINE_FUNCTION_PERIOD",
+      "canonicalLabelKo": "사인함수의 주기",
+      "definition": "2pi/|b| 공식을 통한 삼각함수 주기 결정",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1303ee26567c91187744acb20fc3faea86c8503d6fc1cd8a27e26526d5409fad"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIGONOMETRIC_EXTREMUM",
+      "canonicalLabelKo": "삼각함수의 최댓값과 최솟값",
+      "definition": "진폭과 평행이동에 따른 함숫값의 극값",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1303ee26567c91187744acb20fc3faea86c8503d6fc1cd8a27e26526d5409fad",
+        "qid_v1_ba92ec2f949fde56fa87778d5a915793ce3fbc134b658d78867d43b3ad76855e"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_RAY",
+      "canonicalLabelKo": "동경의 대칭성",
+      "definition": "x축, y축, 원점, y=x에 대한 두 동경의 대칭 관계",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b364d757864ebad6a19266254f87c3bcdc739e43acfad903c93dab593cb0a8b1"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIGONOMETRIC_IDENTITY",
+      "canonicalLabelKo": "삼각함수 항등식",
+      "definition": "sin^2 x + cos^2 x = 1 기본 공식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_fe6b58407dd8095cd92ddbf17257452788670999fd60e714ee1bb317958327a8"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
       "conceptKey": "CC_GEOMETRIC_SEQUENCE",
       "canonicalLabelKo": "등비수열",
       "definition": "연속한 항의 일정한 비 또는 세 항의 가운데항 제곱과 양끝항의 곱 관계를 사용하는 수열 개념.",
@@ -4088,6 +6194,30 @@
       "curriculumRefs": [
         "2015:수학II:H15-M2-05"
       ],
+      "ownerConceptShard": "SEQUENCES"
+    },
+    {
+      "conceptKey": "CC_GENERAL_TERM",
+      "canonicalLabelKo": "일반항",
+      "definition": "전개식 또는 수열에서 임의의 항을 나타내는 식",
+      "supportingQuestionUids": [
+        "qid_v1_32c6a42d9a9fd8388ee3d332658b6ead2398401608c22c26f2a00c5f98deef73"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "SEQUENCES"
+    },
+    {
+      "conceptKey": "CC_SERIES_SUM",
+      "canonicalLabelKo": "급수의 합",
+      "definition": "시그마 기호를 이용한 전개식 항들의 총합",
+      "supportingQuestionUids": [
+        "qid_v1_6ff1113ab802f0b91607c238c84367b37a14f937151249edf90a1afbf95a0f2e"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
       "ownerConceptShard": "SEQUENCES"
     },
     {
@@ -4176,6 +6306,156 @@
         "2015:중1 수학:M1-01"
       ],
       "ownerConceptShard": "MIDDLE1"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_DISTRIBUTION",
+      "canonicalLabelKo": "이항분포",
+      "definition": "독립시행의 성공 횟수를 확률변수로 하는 분포 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f7a5214297e71800c52bfd25e179467347a074768b7186dcf44f27f93d2feb84",
+        "qid_v1_36fa0519251b2e71e8b7c9896035f43a94b4940fd271cb9a6895fcd956458b12",
+        "qid_v1_ea8f2ee72148ebc6c70800c9e3ea5fdd1402469af6bacac2dbf52b480820d640",
+        "qid_v1_b07b8a8305473bbd886137e6fd06012843e1d8389a3af98b2cf8f3824a80c530"
+      ],
+      "supportingItemCount": 4,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_CONDITIONAL_PROBABILITY",
+      "canonicalLabelKo": "조건부확률",
+      "definition": "사건 B가 일어났을 때 사건 A가 일어날 확률 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_e882e3659f48fe8c15de82824380b4cffb825583966ac2d522ef90a7e6035cb8"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_CONFIDENCE_INTERVAL",
+      "canonicalLabelKo": "신뢰구간",
+      "definition": "표본평균으로부터 모평균을 일정 신뢰도로 추정하는 구간 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_7540a322462ba13c1fc63fdcf5340fd8f68a4e6c5d5cea511466ff813baacccf",
+        "qid_v1_f628a0336d33a33f8cb2e9cefad4734794bd9ee832dff5104ba1cb21562775b1",
+        "qid_v1_7c60827a9aeb89cfa0aba4237478e567931d1ae81ffbfd6a0f094f67b7f866ec",
+        "qid_v1_7bcdfc73f20998b5f07f4d31accd17c028d2ffcfd12f152d469c3a0bb4ff96a5",
+        "qid_v1_8bf38e90143eb1179fa3f43ad3f2b1179ab911192cb73bf89ceb179b6303ab72",
+        "qid_v1_376f6ac11fe5dea00aa865c7d2d3b811b2228bcd35f3572b8c499f61ea55bbc9",
+        "qid_v1_a3aca28c6b105ac1c50cfdfbbb91450ae7b5d112c6f44bc7f548dbff6abac22c"
+      ],
+      "supportingItemCount": 7,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_CONTINUOUS_RANDOM_VARIABLE",
+      "canonicalLabelKo": "연속확률변수",
+      "definition": "어떤 구간의 모든 실수값을 취하는 확률변수 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_0ebdd6fe9d84dfdabe028b65497f690deedcc09247bf6ab3ca6dc357d755c9d1",
+        "qid_v1_9dcd80adce68a170ca96318e118e8283867783d6d2e167151d908aea3d5b4cc2"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_DISCRETE_RANDOM_VARIABLE",
+      "canonicalLabelKo": "이산확률변수",
+      "definition": "셀 수 있는 유한 개 또는 자연수 값을 취하는 확률변수 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_d43a05e8d1c39d074550ff25a6cf9bf796d47ef5f4407d05bd344795cfb1daaf",
+        "qid_v1_62e2e95ede4430ebeb285e269ddfae40916f8c1834dec296c47305365a16fab7"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_NORMAL_DISTRIBUTION",
+      "canonicalLabelKo": "정규분포",
+      "definition": "평균과 표준편차에 의해 결정되는 대칭형 연속확률분포 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_cb6b07fe83036aa7f16ef3d95fffbb2ec25048c53e4df671a1764a59678b64d1",
+        "qid_v1_53a7ed535e95213d28934823655d092c364edad376dcfc157b66ae378726908b",
+        "qid_v1_2f4280db7d121afd06d42cd4ff122068cb6301d1ab3193a780de851bfc85275a",
+        "qid_v1_82e464b32bee49a105b35a15998798363ca1a2f3a97f52f4b3fe70150975d2a7",
+        "qid_v1_ea8f2ee72148ebc6c70800c9e3ea5fdd1402469af6bacac2dbf52b480820d640",
+        "qid_v1_b07b8a8305473bbd886137e6fd06012843e1d8389a3af98b2cf8f3824a80c530"
+      ],
+      "supportingItemCount": 6,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_SAMPLE_MEAN",
+      "canonicalLabelKo": "표본평균",
+      "definition": "모집단에서 추출한 표본들의 평균 변수 및 그 분포 개념",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_7a1c21588a95b983155eccaf0aa1487a4f44c875a0188c8c4e4bf885c9c4d87c",
+        "qid_v1_472415aa863ddfc10f689fc23baf7bf4bdcc8f6f9adcec46a9e37c5d24434799",
+        "qid_v1_09540ac4e65c0dae328f72fac94c3a58fa2a19cbb20fa5b9f648075ade4fff46"
+      ],
+      "supportingItemCount": 3,
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_MUTUALLY_EXCLUSIVE_EVENTS",
+      "canonicalLabelKo": "배반사건",
+      "definition": "동시에 일어날 수 없는 두 사건",
+      "supportingQuestionUids": [
+        "qid_v1_d7eea57d28713d563f529ca1005d07c2532607473a82db41f96ef8e196de7907"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": []
+    },
+    {
+      "conceptKey": "CC_COMPLEMENTARY_EVENT",
+      "canonicalLabelKo": "여사건",
+      "definition": "어떤 사건이 일어나지 않는 사건",
+      "supportingQuestionUids": [
+        "qid_v1_d7eea57d28713d563f529ca1005d07c2532607473a82db41f96ef8e196de7907"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": []
+    },
+    {
+      "conceptKey": "CC_COMPLEMENTARY_EVENT_PROBABILITY",
+      "canonicalLabelKo": "여사건의 확률",
+      "definition": "1에서 반대 사건의 확률을 차감하는 계산",
+      "supportingQuestionUids": [
+        "qid_v1_b32071d9583a0b13c2f5ac60748c104cdb4452a1973e58c5a27e8415efd4fd12"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": []
+    },
+    {
+      "conceptKey": "CC_AT_LEAST_PROBABILITY",
+      "canonicalLabelKo": "적어도 확률",
+      "definition": "적어도 하나 만족하는 사건의 여사건 확률",
+      "supportingQuestionUids": [
+        "qid_v1_a9418d1ee09d339787c49026e39fba70932374d2ac98227307b9b613708f2ecf"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": []
+    },
+    {
+      "conceptKey": "CC_INDEPENDENT_TRIALS",
+      "canonicalLabelKo": "독립시행",
+      "definition": "매 시행마다 결과가 서로 독립적인 확률 실험",
+      "supportingQuestionUids": [
+        "qid_v1_bcc3cd914a0f5a1c0133c62e3bcf4e4c0a30c30aa4ec38c1690d2bba48eeffe3"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": []
     }
   ]
 }

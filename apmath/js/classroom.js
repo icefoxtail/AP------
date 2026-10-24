@@ -534,9 +534,12 @@ function syncClassroomHomeworkStatusToState(studentId, date, status) {
 }
 
 function openClassroomConsultation(studentId, classId, date) {
-    if (typeof setManagementReturnView === 'function') {
-        setManagementReturnView({ type: 'classDetail', classId: String(classId) });
-    }
+    const classReturn = { type: 'classDetail', classId: String(classId) };
+    if (typeof setManagementReturnView === 'function') setManagementReturnView(classReturn);
+    // A consultation opens the student detail as an intermediate step.
+    // Pin its original class to avoid borrowing the last student's return context.
+    if (!state.ui) state.ui = {};
+    state.ui.currentStudentDetailReturnTo = classReturn;
 
     if (typeof openAddConsultationModal === 'function') {
         openAddConsultationModal(String(studentId));
@@ -767,6 +770,8 @@ async function changeClassOperationDate(cid, dateStr) {
     }
 
     await loadClassroomOperationDateData(safeDate, true);
+    // A delayed date fetch must not bring back a class the teacher has left.
+    if (String(state.ui?.currentClassId || '') !== String(cid)) return;
     renderClass(cid);
 }
 
@@ -940,20 +945,17 @@ function openHomeworkPhotoAssignmentModal(classId) {
     const cls = state.db.classes.find(c => String(c.id) === String(classId));
     const today = typeof getClassroomOperationDate === 'function' ? getClassroomOperationDate() : new Date().toLocaleDateString('sv-SE');
     showModal('숙제', `
-        <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="background:var(--surface-2); border-radius:14px; padding:12px;">
-                <div style="font-size:15px; font-weight:500; color:var(--text);">${apEscapeHtml(cls?.name || '반')}</div>
-                <div style="font-size:12px; font-weight:500; color:var(--secondary); margin-top:4px;">숙제를 저장합니다.</div>
+        <div class="apms-unified-modal apms-unified-form">
+            <div class="apms-unified-context"><div class="apms-unified-context__name">${apEscapeHtml(cls?.name || '반')}</div><div class="apms-unified-context__meta">숙제를 저장합니다.</div></div>
+            <input id="hw-photo-title" class="cls-input apms-unified-control" placeholder="숙제 제목">
+            <textarea id="hw-photo-desc" class="cls-input apms-unified-control" rows="4" placeholder="숙제 설명" style="resize:vertical;"></textarea>
+            <div class="apms-unified-grid apms-unified-grid--date">
+                <input id="hw-photo-date" type="date" class="cls-input apms-unified-control" value="${apEscapeHtml(today)}">
+                <input id="hw-photo-time" type="time" class="cls-input apms-unified-control" value="23:00">
             </div>
-            <input id="hw-photo-title" class="cls-input" placeholder="숙제 제목">
-            <textarea id="hw-photo-desc" class="cls-input" rows="4" placeholder="숙제 설명" style="resize:vertical;"></textarea>
-            <div style="display:grid; grid-template-columns:1fr 120px; gap:8px;">
-                <input id="hw-photo-date" type="date" class="cls-input" value="${apEscapeHtml(today)}">
-                <input id="hw-photo-time" type="time" class="cls-input" value="23:00">
-            </div>
-            <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end;">
-                <button class="btn apms-button apms-button--quiet" style="width:auto; flex:0 0 auto; min-height:44px; padding:10px 14px; font-size:13px; font-weight:500; background:var(--surface-2); border:1px solid var(--border);" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
-                <button class="btn apms-button apms-button--primary btn-primary" style="width:auto; flex:0 0 auto; min-height:44px; padding:10px 18px; font-size:14px; font-weight:500;" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장</button>
+            <div class="apms-unified-actions">
+                <button class="btn apms-button apms-button--quiet apms-unified-quiet" onclick="openHomeworkPhotoAssignmentList('${classId}')">기존 숙제 보기</button>
+                <button class="btn apms-button apms-button--primary btn-primary apms-unified-primary" onclick="handleCreateHomeworkPhotoAssignment('${classId}')">저장</button>
             </div>
         </div>
     `);
@@ -1725,18 +1727,43 @@ function renderClassTopBarV4B(cls, summary, today) {
     `;
 }
 
+// Centralize feature navigation from the currently selected class.
+// Keep the existing feature implementations and their save contracts unchanged.
+function openClassroomFeature(cid, feature) {
+    const classId = String(cid || '');
+    if (String(state.ui?.currentClassId || '') !== classId || !isClassroomClassAccessible(classId)) {
+        toast('현재 반 정보를 확인한 뒤 다시 시도해주세요.', 'warn');
+        return false;
+    }
+    const featureHandlers = {
+        progress: () => openClassRecordModal(classId),
+        homework: () => openHomeworkPhotoAssignmentModal(classId),
+        qr: () => openQrGenerator(classId),
+        exam: () => openExamGradeView(classId),
+        clinic: () => typeof openClinicCenter === 'function'
+            ? openClinicCenter(classId) : toast('클리닉 준비중', 'warn'),
+        planner: () => renderPlannerControl(classId)
+    };
+    if (!Object.prototype.hasOwnProperty.call(featureHandlers, feature)) return false;
+    const returnTo = { type: 'classDetail', classId };
+    if (typeof setManagementReturnView === 'function') setManagementReturnView(returnTo);
+    if (typeof setModalReturnView === 'function') setModalReturnView(returnTo);
+    featureHandlers[feature]();
+    return true;
+}
+
 function renderClassToolBarV4B(cid, plannerEnabled, today) {
     const realToday = getClassroomTodayDate();
     return `
         <div class="cls-v4-tools apms-toolbar ap-classroom-toolbar">
             <input type="date" class="cls-v4-date-input" value="${apEscapeHtml(today)}" onchange="changeClassOperationDate('${cid}', this.value)" title="운영 날짜 선택">
             <button class="btn cls-v4-date-reset" onclick="changeClassOperationDate('${cid}', '${realToday}')">오늘</button>
-            <button class="btn cls-v4-tool red apms-button apms-button--quiet" onclick="openClassRecordModal('${cid}')">진도</button>
-            <button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="openHomeworkPhotoAssignmentModal('${cid}')">숙제</button>
-            <button class="btn cls-v4-tool blue apms-button apms-button--quiet" onclick="openQrGenerator('${cid}')">QR/OMR</button>
-            <button class="btn cls-v4-tool orange apms-button apms-button--quiet" onclick="openExamGradeView('${cid}')">원내평가</button>
-            <button class="btn cls-v4-tool purple apms-button apms-button--quiet" onclick="if(typeof openClinicCenter==='function') openClinicCenter('${cid}'); else toast('클리닉 준비중', 'warn');">클리닉</button>
-            ${plannerEnabled ? `<button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="renderPlannerControl('${cid}')">플래너</button>` : ''}
+            <button class="btn cls-v4-tool red apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'progress')">진도</button>
+            <button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'homework')">숙제</button>
+            <button class="btn cls-v4-tool blue apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'qr')">QR/OMR</button>
+            <button class="btn cls-v4-tool orange apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'exam')">원내평가</button>
+            <button class="btn cls-v4-tool purple apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'clinic')">클리닉</button>
+            ${plannerEnabled ? `<button class="btn cls-v4-tool green apms-button apms-button--quiet" onclick="openClassroomFeature('${cid}', 'planner')">플래너</button>` : ''}
         </div>
     `;
 }
@@ -1839,21 +1866,157 @@ window.openStudentActionSheetV4 = function(sid, cid, hasPlanner) {
     showModal('학생 관리', html);
 };
 
+function isClassroomClassAccessible(classId) {
+    const id = String(classId || '');
+    const cls = (state.db?.classes || []).find(row => String(row.id) === id);
+    if (!id || !cls || Number(cls.is_active) === 0) return false;
+    if (typeof canCurrentUserAccessClass === 'function' && !canCurrentUserAccessClass(id)) return false;
+    if (typeof isClassVisibleForCurrentTeacher === 'function') return isClassVisibleForCurrentTeacher(cls);
+
+    if (state.auth?.role === 'admin' || state.ui?.viewScope === 'all') return true;
+    const currentTeacher = typeof getTeacherNameForUI === 'function'
+        ? getTeacherNameForUI()
+        : (state.ui?.userName || state.auth?.name || '');
+    const classTeacher = String(cls.teacher_name || '').replace(/\s*선생님\s*$/g, '').trim();
+    const teacher = String(currentTeacher || '').replace(/\s*선생님\s*$/g, '').trim();
+    return !classTeacher || classTeacher === teacher;
+}
+
+// Classroom step 1: same-screen navigation among accessible active classes.
+// Reuse the progress screen's teacher class roster, but never offer a class
+// denied by the actual class access guard.
+function getClassroomSwitchableClasses(currentClassId) {
+    return getClassProgressAssignedClasses(currentClassId).filter(cls => isClassroomClassAccessible(cls.id));
+}
+
+function renderClassroomSwitchTabs(classId) {
+    const classes = getClassroomSwitchableClasses(classId);
+    if (!classes.length) return '';
+    return `<nav class="ap-classroom-switcher" aria-label="반 관리 담당 반 전환">
+        <div class="ap-classroom-class-tabs" role="group">${classes.map(cls => {
+            const selected = String(cls.id) === String(classId);
+            const label = [cls.grade, cls.name].filter(Boolean).join(' · ') || String(cls.name || cls.id);
+            return `<button type="button" class="ap-classroom-class-tab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}" onclick="switchClassroomClass(${classProgressJsArg(cls.id)})">${apEscapeHtml(label)}</button>`;
+        }).join('')}</div>
+    </nav>`;
+}
+
+function switchClassroomClass(targetClassId) {
+    const targetId = String(targetClassId || '');
+    const currentId = String(state.ui?.currentClassId || '');
+    if (!targetId || targetId === currentId) return false;
+    if (!getClassroomSwitchableClasses(currentId).some(cls => String(cls.id) === targetId)) return false;
+    // The date is shared intentionally. Do not return through the dashboard.
+    renderClass(targetId, { preserveClassTabs: true });
+    return true;
+}
+
+// Class-scoped management actions reuse existing editors and timetable contracts.
+function openClassroomManagementAction(cid, action) {
+    const classId = String(cid || '');
+    const current = String(state.ui?.currentClassId || '');
+    if (!classId || classId !== current ||
+        !getClassroomSwitchableClasses(current).some(cls => String(cls.id) === classId)) {
+        toast('현재 반을 확인한 뒤 다시 시도해주세요.', 'warn');
+        return false;
+    }
+    const returnTo = { type: 'classDetail', classId };
+    const goBackToClass = () => {
+        if (typeof setManagementReturnView === 'function') setManagementReturnView(returnTo);
+        if (typeof setModalReturnView === 'function') setModalReturnView(returnTo);
+    };
+    switch (action) {
+        case 'edit':
+            if (typeof openEditClassModal !== 'function') return false;
+            goBackToClass();
+            openEditClassModal(classId, { returnTo });
+            return true;
+        case 'addStudent':
+            if (typeof openAddStudent !== 'function') return false;
+            goBackToClass();
+            openAddStudent(classId, { returnTo });
+            return true;
+        case 'moveStudent':
+            return openClassroomStudentMovePicker(classId);
+        case 'timetable':
+            if (typeof renderTimetable !== 'function' && typeof openLiveTimetable !== 'function') return false;
+            if (!state.ui) state.ui = {};
+            state.ui.classroomTimetableReturnClassId = classId;
+            if (typeof setManagementReturnView === 'function') setManagementReturnView(returnTo);
+            if (typeof openLiveTimetable === 'function') openLiveTimetable();
+            else renderTimetable();
+            return true;
+        default:
+            return false;
+    }
+}
+
+function openClassroomStudentMovePicker(cid) {
+    const classId = String(cid || '');
+    if (String(state.ui?.currentClassId || '') !== classId) return false;
+    const students = getClassroomActiveStudents(classId);
+    if (typeof openEditStudent !== 'function') {
+        toast('학생 수정 기능을 불러오지 못했습니다.', 'warn');
+        return false;
+    }
+    const returnTo = { type: 'classDetail', classId };
+    if (typeof setManagementReturnView === 'function') setManagementReturnView(returnTo);
+    if (typeof setModalReturnView === 'function') setModalReturnView(returnTo);
+    showModal('학생 이동', `<div class="ap-classroom-move-picker">
+        <p>학생을 선택한 다음 기본정보의 반을 변경하고 저장하세요. 기존 학생 수정 경로를 사용합니다.</p>
+        ${students.length ? students.map(student => `<button type="button" class="ap-classroom-move-student" onclick="openEditStudent(${classProgressJsArg(student.id)}, { returnTo: { type: 'classDetail', classId: ${classProgressJsArg(classId)} } })">${apEscapeHtml(student.name || '학생')}</button>`).join('') : '<p>이 반에 재원생이 없습니다.</p>'}
+    </div>`);
+    return true;
+}
+
+function renderClassroomManagementToolbar(cid) {
+    const classArg = classProgressJsArg(cid);
+    const actions = [
+        ['edit', '반 설정'],
+        ['addStudent', '학생 추가'],
+        ['moveStudent', '학생 이동'],
+        ['timetable', '시간표']
+    ];
+    return `<div class="ap-classroom-management-actions" role="group" aria-label="반 운영 관리">
+        ${actions.map(([action, label]) => `<button type="button" class="ap-classroom-management-action" onclick="openClassroomManagementAction(${classArg}, '${action}')">${label}</button>`).join('')}
+    </div>`;
+}
+
 // [Classroom v4-B]: 안정형 현장 운영판
-function renderClass(cid) {
+function renderClass(cid, options = {}) {
+    const classId = String(cid || '');
+    const cls = (state.db?.classes || []).find(row => String(row.id) === classId);
+    if (!cls) {
+        const root = document.getElementById('app-root');
+        if (root) root.innerHTML = `<div class="card apms-card" style="max-width:850px; margin:0 auto; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">반 정보를 찾을 수 없습니다.</div>`;
+        return false;
+    }
+    if (!isClassroomClassAccessible(classId)) {
+        if (!state.ui) state.ui = {};
+        const root = document.getElementById('app-root');
+        const existingShell = root?.querySelector?.('.ap-classroom-shell');
+        const existingClassId = String(existingShell?.getAttribute?.('data-class-id') || '');
+        if (existingClassId && isClassroomClassAccessible(existingClassId)) {
+            state.ui.currentClassId = existingClassId;
+        } else if (existingShell) {
+            state.ui.currentClassId = '';
+            if (root) {
+                root.innerHTML = `<div class="card apms-card" role="status" style="max-width:850px; margin:0 auto; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">이 반에 접근할 수 없습니다.</div>`;
+            }
+        } else if (String(state.ui.currentClassId || '') === classId) {
+            state.ui.currentClassId = '';
+        }
+        toast('이 반에 접근할 수 없습니다.', 'warn');
+        return false;
+    }
+
     injectClassroomStyles();
     const defaultTab = state.ui.classDefaultTab || '';
     state.ui.classDefaultTab = null;
-    state.ui.currentClassId = String(cid);
+    state.ui.currentClassId = classId;
 
     if (typeof loadEnrollmentFoundation === 'function') {
         loadEnrollmentFoundation({ class_id: cid }, { silent: true }).catch(() => {});
-    }
-
-    const cls = state.db.classes.find(c => String(c.id) === String(cid));
-    if (!cls) {
-        document.getElementById('app-root').innerHTML = `<div class="card apms-card" style="max-width:850px; margin:0 auto; text-align:center; color:var(--secondary); font-size:13px; font-weight:500;">반 정보를 찾을 수 없습니다.</div>`;
-        return;
     }
 
     const today = getClassroomOperationDate();
@@ -1862,17 +2025,38 @@ function renderClass(cid) {
     const { todayAttMap, todayHwMap } = buildClassroomTodayMaps(students, today);
     const plannerEnabled = isPlannerTargetClass(cls);
 
-    document.getElementById('app-root').innerHTML = `
-        <div class="cls-fade-in cls-v4-wrap ap-classroom-shell">
-            ${renderClassTopBarV4B(cls, summary, today)}
-            ${renderClassToolBarV4B(cid, plannerEnabled, today)}
-            <div class="cls-v4-section ap-classroom-section">
-                <h3 class="apms-section-title">학생 명단</h3>
-            </div>
-            ${renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, summary.isScheduled, plannerEnabled, today)}
-            ${renderClassroomMonthlyStatusBoard(cid, students, today)}
+    const workspaceHtml = `
+        ${renderClassTopBarV4B(cls, summary, today)}
+        ${renderClassToolBarV4B(cid, plannerEnabled, today)}
+        ${renderClassroomManagementToolbar(cid)}
+        <div class="cls-v4-section ap-classroom-section">
+            <h3 class="apms-section-title">학생 명단</h3>
         </div>
+        ${renderClassStudentBoardV4B(cid, students, todayAttMap, todayHwMap, summary.isScheduled, plannerEnabled, today)}
+        ${renderClassroomMonthlyStatusBoard(cid, students, today)}
     `;
+    const root = document.getElementById('app-root');
+    const existingShell = options.preserveClassTabs && typeof root?.querySelector === 'function'
+        ? root.querySelector('.ap-classroom-shell') : null;
+    const tabs = existingShell?.querySelector('.ap-classroom-class-tabs');
+    const workspace = existingShell?.querySelector('.ap-classroom-workspace');
+    if (tabs && workspace) {
+        // Keep the class selector DOM and its horizontal scroll/focus in place.
+        existingShell.setAttribute('data-class-id', String(cid));
+        workspace.innerHTML = workspaceHtml;
+        tabs.querySelectorAll('.ap-classroom-class-tab').forEach(button => {
+            const selected = button.getAttribute('data-class-id') === String(cid);
+            button.classList.toggle('is-active', selected);
+            button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+        });
+    } else {
+        root.innerHTML = `
+            <div class="cls-fade-in cls-v4-wrap ap-classroom-shell" data-class-id="${apEscapeHtml(String(cid))}">
+                ${renderClassroomSwitchTabs(cid)}
+                <div class="ap-classroom-workspace">${workspaceHtml}</div>
+            </div>
+        `;
+    }
 
     ensureClassroomMonthlyStatusCache(cid, today, students);
 
@@ -2189,6 +2373,109 @@ function getClassProgressModalState() {
     if (!state.ui) state.ui = {};
     if (!state.ui.classProgressModalState) state.ui.classProgressModalState = {};
     return state.ui.classProgressModalState;
+}
+
+function getClassProgressDraftFingerprint(noteOverride) {
+    const modalState = getClassProgressModalState();
+    const noteInput = document.getElementById('record-special-note');
+    const progressByTextbook = modalState.progressByTextbook || {};
+    const note = typeof noteOverride === 'string'
+        ? noteOverride.trim()
+        : String(noteInput?.value || '').trim();
+    const inlineClassId = String(document.getElementById('new-tb-class')?.value || '');
+    const inlineTitle = String(document.getElementById('new-tb-title')?.value || '').trim();
+    const inlineStartDate = String(document.getElementById('new-tb-start')?.value || '');
+    return JSON.stringify({
+        classId: String(modalState.classId || ''),
+        date: String(modalState.date || ''),
+        progressByTextbook: Object.keys(progressByTextbook).sort().map(id => {
+            const draft = progressByTextbook[id] || {};
+            return [String(id), !!draft.isChecked, String(draft.progressText || '').trim()];
+        }),
+        selectedPaths: Array.from(new Set(getClassProgressSelectedPathDraft())).sort(),
+        activeGroupKeys: Array.from(new Set(modalState.activeGroupKeys || [])).map(String).sort(),
+        selectedPhase: normalizeClassProgressPhase(modalState.selectedPhase ?? modalState.loadedPhase),
+        courseAddGroupKey: String(modalState.courseAddSelectedGroupKey || ''),
+        courseAddBookIds: Array.from(new Set(modalState.courseAddBookIds || [])).map(String).sort(),
+        courseAddTextbookTitle: String(modalState.courseAddNewTextbookTitle || '').trim(),
+        courseAddTextbookStartDate: String(modalState.courseAddNewTextbookStartDate || '') === String(modalState.date || '')
+            ? ''
+            : String(modalState.courseAddNewTextbookStartDate || ''),
+        inlineTextbookDraft: [
+            inlineClassId && inlineClassId !== String(modalState.classId || '') ? inlineClassId : '',
+            inlineTitle,
+            inlineStartDate && inlineStartDate !== String(modalState.date || '') ? inlineStartDate : ''
+        ],
+        specialNote: note
+    });
+}
+
+function hasUnsavedClassProgressChanges() {
+    const modalState = getClassProgressModalState();
+    const meta = state.ui?.classProgressModalMeta;
+    if (!meta || String(meta.classId || '') !== String(modalState.classId || '') ||
+        String(meta.date || '') !== String(modalState.date || '') || typeof meta.draftBaseline !== 'string') return false;
+
+    try {
+        syncClassProgressTextbookDraftsFromDom();
+        syncClassProgressUnitDraftsFromDom();
+        syncClassProgressPhaseDraftFromDom();
+        syncClassProgressCourseAddDraftFromDom();
+    } catch (error) {
+        console.warn('[hasUnsavedClassProgressChanges] could not sync the current draft:', error);
+    }
+    return getClassProgressDraftFingerprint() !== meta.draftBaseline;
+}
+
+function getClassProgressAssignedClasses(currentClassId) {
+    const classes = (state.db?.classes || []).filter(cls => Number(cls?.is_active) !== 0);
+    let visible = classes.filter(cls => {
+        if (typeof isClassVisibleForCurrentTeacher === 'function') return isClassVisibleForCurrentTeacher(cls);
+        const currentTeacher = typeof getTeacherNameForUI === 'function'
+            ? getTeacherNameForUI()
+            : (state.ui?.userName || state.auth?.name || '');
+        const classTeacher = String(cls?.teacher_name || '').replace(/\s*선생님\s*$/g, '').trim();
+        const teacher = String(currentTeacher || '').replace(/\s*선생님\s*$/g, '').trim();
+        return !classTeacher || classTeacher === teacher;
+    });
+
+    const current = classes.find(cls => String(cls.id) === String(currentClassId));
+    if (current && !visible.some(cls => String(cls.id) === String(current.id))) visible = [current, ...visible];
+    if (typeof sortClassesForDashboard === 'function') return sortClassesForDashboard(visible);
+    return visible.sort((a, b) =>
+        String(a.grade || '').localeCompare(String(b.grade || '')) ||
+        String(a.name || '').localeCompare(String(b.name || ''))
+    );
+}
+
+function renderClassProgressClassTabs(currentClassId) {
+    const modalState = getClassProgressModalState();
+    const classes = getClassProgressAssignedClasses(currentClassId);
+    if (!classes.length) return '';
+    return `<nav class="ap-class-progress-class-tabs" aria-label="담당 반 전환" role="group">${classes.map(cls => {
+        const selected = String(cls.id) === String(currentClassId);
+        const label = [cls.grade, cls.name].filter(Boolean).join(' · ') || String(cls.name || cls.id || '반');
+        return `<button type="button" class="ap-class-progress-class-tab${selected ? ' is-active' : ''}" data-class-id="${apEscapeHtml(String(cls.id))}" aria-pressed="${selected ? 'true' : 'false'}"${modalState.isSaving ? ' disabled' : ''} onclick="requestClassProgressClassSwitch(${classProgressJsArg(cls.id)})">${apEscapeHtml(label)}</button>`;
+    }).join('')}</nav>`;
+}
+
+function requestClassProgressClassSwitch(targetClassId) {
+    const modalState = getClassProgressModalState();
+    const currentClassId = String(modalState.classId || '');
+    const targetId = String(targetClassId || '');
+    if (!targetId || targetId === currentClassId || modalState.isSaving) return;
+    if (!getClassProgressAssignedClasses(currentClassId).some(cls => String(cls.id) === targetId)) return;
+
+    const hasChanges = hasUnsavedClassProgressChanges();
+    if (hasChanges) {
+        const message = '저장하지 않은 변경사항이 있습니다. 저장하지 않고 반을 전환할까요?';
+        const confirmSwitch = typeof window !== 'undefined' && typeof window.confirm === 'function'
+            ? window.confirm(message)
+            : (typeof confirm === 'function' ? confirm(message) : false);
+        if (!confirmSwitch) return;
+    }
+
+    openClassRecordModal(targetId, modalState.date || getClassroomOperationDate());
 }
 
 function getClassProgressSelectedPathDraft() {
@@ -3337,6 +3624,13 @@ function addClassProgressCourseFromSelect() {
 }
 
 async function openClassRecordModal(cid, requestedDate) {
+    const previousModalState = state.ui?.classProgressModalState;
+    const openProgressModal = typeof document.querySelector === 'function'
+        ? document.querySelector('.ap-class-progress-modal') : null;
+    const switchingClass = !!(openProgressModal && previousModalState?.classId
+        && String(previousModalState.classId) !== String(cid));
+    const previousTabsLeft = switchingClass
+        ? (openProgressModal.querySelector('.ap-class-progress-class-tabs')?.scrollLeft || 0) : 0;
     if (typeof setModalReturnView === 'function') setModalReturnView({ type: 'classDetail', classId: cid });
     const cls = state.db.classes.find(c => String(c.id) === String(cid));
     const todayStr = normalizeClassroomDate(requestedDate) || getClassroomOperationDate();
@@ -3345,8 +3639,31 @@ async function openClassRecordModal(cid, requestedDate) {
     if (!state.ui) state.ui = {};
     const requestId = Number(state.ui.classProgressModalRequestId || 0) + 1;
     state.ui.classProgressModalRequestId = requestId;
+    state.ui.classProgressModalState = { classId: String(cid), date: todayStr, loading: true };
+    state.ui.classProgressModalMeta = { classId: String(cid), date: todayStr, loading: true };
 
-    showModal('진도관리', '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;">지속형 진도 상태를 불러오는 중…</div>');
+    if (switchingClass) {
+        // Keep the existing modal and class strip steady. Never show the old class data as the new class.
+        openProgressModal.classList.add('is-class-switching');
+        openProgressModal.setAttribute('aria-busy', 'true');
+        const title = openProgressModal.querySelector('.ap-class-progress-context__title');
+        if (title) title.textContent = String(cls.name || '');
+        const subtitle = openProgressModal.querySelector('.ap-class-progress-context__meta');
+        if (subtitle) subtitle.textContent = '현재 수업 진도 · ' + todayStr;
+        const tabs = openProgressModal.querySelector('.ap-class-progress-class-tabs');
+        if (tabs) tabs.querySelectorAll('.ap-class-progress-class-tab').forEach(button => {
+            const selected = button.getAttribute('data-class-id') === String(cid);
+            button.classList.toggle('is-active', selected);
+            button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+            button.disabled = true;
+        });
+        const layout = openProgressModal.querySelector('.ap-class-progress-layout');
+        if (layout) layout.innerHTML = '<div class="ap-class-progress-switch-loading" role="status">선택한 반의 진도를 불러오는 중…</div>';
+        const footer = openProgressModal.querySelector('.ap-class-progress-footer');
+        if (footer) footer.hidden = true;
+    } else {
+        showModal('진도관리', '<div style="padding:28px;text-align:center;color:var(--secondary);font-size:13px;">지속형 진도 상태를 불러오는 중…</div>');
+    }
     const [resolvedProgress, dailyState, phaseState] = await Promise.all([
         loadClassProgressForDate(cid, todayStr),
         loadClassDailyRecordForDate(cid, todayStr),
@@ -3466,6 +3783,7 @@ async function openClassRecordModal(cid, requestedDate) {
         manageMode: false,
         completedBooksOpen: false
     };
+    state.ui.classProgressModalMeta.draftBaseline = getClassProgressDraftFingerprint(prevNote);
 
     const booksHtml = renderClassProgressTextbookPanel();
     const legacyHtml = '';
@@ -3484,6 +3802,7 @@ async function openClassRecordModal(cid, requestedDate) {
                 </div>
                 <span class="apms-muted">${apEscapeHtml(gradeKey || '')}</span>
             </div>
+            ${renderClassProgressClassTabs(cid)}
             ${legacyHtml}
             ${dailyLoadWarning}
             ${phaseLoadWarning}
@@ -3507,9 +3826,17 @@ async function openClassRecordModal(cid, requestedDate) {
                     <h3>특이사항</h3>
                     <textarea id="record-special-note" class="cls-input" placeholder="수업 특이사항 메모">${apEscapeHtml(prevNote)}</textarea>
                 </section>
-                <button class="btn apms-button apms-button--primary btn-primary ap-class-progress-save" ${dailyState.loadFailed ? 'disabled' : ''}${dailyState.loadFailed ? ' aria-disabled="true"' : ''} onclick="saveClassRecord(${classProgressJsArg(cid)}, ${classProgressJsArg(todayStr)})">기록 저장하기</button>
+                <button class="btn apms-button apms-button--primary btn-primary ap-class-progress-save" ${dailyState.loadFailed ? 'disabled' : ''}${dailyState.loadFailed ? ' aria-disabled="true"' : ''} onclick="saveClassRecord(${classProgressJsArg(cid)}, ${classProgressJsArg(todayStr)})">진도 저장하기</button>
             </div>
         </div>`);
+    if (switchingClass) {
+        const modalBody = document.getElementById('modal-body');
+        if (modalBody) {
+            modalBody.scrollTop = 0;
+            const newTabs = modalBody.querySelector('.ap-class-progress-class-tabs');
+            if (newTabs) newTabs.scrollLeft = previousTabsLeft;
+        }
+    }
 }
 
 function syncClassDailyRecordToState(classId, dateStr, record, progressRows) {
@@ -3568,6 +3895,12 @@ async function saveClassRecord(cid, dateStr) {
         toast('기존 일지 확인 전에는 저장할 수 없습니다.', 'warn');
         return;
     }
+    const activeModalState = state.ui?.classProgressModalState;
+    if (!activeModalState || String(activeModalState.classId || '') !== String(cid) || String(activeModalState.date || '') !== String(dateStr)) {
+        toast('현재 선택된 반의 진도만 저장할 수 있습니다. 진도 창을 다시 확인해주세요.', 'warn');
+        return;
+    }
+    if (activeModalState.isSaving) return;
     syncClassProgressTextbookDraftsFromDom();
     syncClassProgressUnitDraftsFromDom();
     syncClassProgressPhaseDraftFromDom();
@@ -3602,12 +3935,17 @@ async function saveClassRecord(cid, dateStr) {
     const specialNote = [preservedLegacyLine, noteText].filter(Boolean).join('\n');
     const payload = { class_id: cid, date: dateStr, teacher_name: (typeof getTeacherNameForUI === 'function' ? getTeacherNameForUI() : (state.ui.userName || '담당')), special_note: specialNote, progress: progresses };
 
+    modalState.isSaving = true;
+    const saveButton = document.querySelector('.ap-class-progress-save');
+    if (saveButton) {
+        saveButton.disabled = true;
+        saveButton.textContent = '저장 중…';
+    }
     try {
         const r = await api.post('class-daily-records', payload);
         if (r?.success) {
             if (!syncClassDailyRecordToState(cid, dateStr, r.record, r.progress)) {
                 await loadData();
-                renderClass(cid);
             }
 
             const hasStructuredSnapshot = meta && String(meta.classId) === String(cid) && String(meta.date) === String(dateStr)
@@ -3653,8 +3991,15 @@ async function saveClassRecord(cid, dateStr) {
                 syncClassProgressPhaseToState(cid, dateStr, phaseResponse);
             }
 
-            toast('저장 완료', 'success');
-            closeModal(true);
+            modalState.savedPaths = selectedItems.map(getClassProgressItemPath).filter(Boolean);
+            modalState.loadedPhase = selectedPhase;
+            modalState.selectedPhase = selectedPhase;
+            meta.hasStructuredSnapshot = shouldSaveCanonicalProgress;
+            meta.loadedPhase = selectedPhase;
+            meta.selectedPhase = selectedPhase;
+            meta.previousNote = noteText;
+            meta.draftBaseline = getClassProgressDraftFingerprint(noteText);
+            toast('진도가 저장되었습니다.', 'success');
             if (document.getElementById('timetable-root') && typeof renderTimetable === 'function') renderTimetable();
             return;
         }
@@ -3662,5 +4007,15 @@ async function saveClassRecord(cid, dateStr) {
     } catch (e) {
         console.error('[saveClassRecord] failed:', e);
         toast('저장 중 오류가 발생했습니다.', 'error');
+    } finally {
+        const currentModalState = state.ui?.classProgressModalState;
+        if (currentModalState && String(currentModalState.classId || '') === String(cid) && String(currentModalState.date || '') === String(dateStr)) {
+            currentModalState.isSaving = false;
+            const currentSaveButton = document.querySelector('.ap-class-progress-save');
+            if (currentSaveButton) {
+                currentSaveButton.disabled = false;
+                currentSaveButton.textContent = '진도 저장하기';
+            }
+        }
     }
 }

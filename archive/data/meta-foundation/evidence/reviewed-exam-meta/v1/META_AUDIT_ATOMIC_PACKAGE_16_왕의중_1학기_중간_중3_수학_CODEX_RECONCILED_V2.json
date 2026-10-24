@@ -1,0 +1,806 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "16_왕의중_1학기_중간_중3_수학",
+  "sourceFileDriveId": "1KI9AHvbm3UP3jyn2VO6z3qNxoGJiY9su",
+  "sourceSha256": "9d22d23539e30c0e006e705fcb4a3a2ad1d347eac3ffb7b65b1f64d726d711fd",
+  "auditedTimestamp": "2026-10-23T23:00:38.919003+00:00",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "statistics": {
+    "totalQuestions": 25,
+    "approved": 25,
+    "holdRemaining": 0,
+    "canonicalTemplatesReused": 25,
+    "newTemplatesCreated": 0,
+    "atomicCrossConceptsBound": 37
+  },
+  "boundAtomicCrossConcepts": [
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_SIMPLIFY",
+      "labelKo": "절댓값 간소화",
+      "definition": "sqrt(A^2)=|A| 성질을 이용한 식 정리"
+    },
+    {
+      "conceptKey": "CC_COMMON_FACTOR",
+      "labelKo": "공통인수",
+      "definition": "다항식의 각 항에 공통으로 들어 있는 인수"
+    },
+    {
+      "conceptKey": "CC_CYCLIC_DECIMAL",
+      "labelKo": "순환소수",
+      "definition": "분수로 나타낼 수 있는 순환하는 무한소수"
+    },
+    {
+      "conceptKey": "CC_DENOMINATOR_RATIONALIZATION",
+      "labelKo": "분모의 유리화",
+      "definition": "분모에 있는 근호를 제거하는 변형"
+    },
+    {
+      "conceptKey": "CC_DIFFERENCE_OF_SQUARES",
+      "labelKo": "합차 공식",
+      "definition": "A^2 - B^2 = (A-B)(A+B) 전개 및 인수분해"
+    },
+    {
+      "conceptKey": "CC_DIVISOR_PROPERTY",
+      "labelKo": "약수의 성질",
+      "definition": "인수분해를 통해 자연수의 약수 쌍을 구함"
+    },
+    {
+      "conceptKey": "CC_EXPANSION_COEFFICIENT",
+      "labelKo": "전개식의 계수",
+      "definition": "완전제곱식 전개 시 일차항 계수 결정"
+    },
+    {
+      "conceptKey": "CC_FACTOR_DEFINITION",
+      "labelKo": "인수의 정의",
+      "definition": "다항식을 곱의 꼴로 나타낼 때 각각의 식"
+    },
+    {
+      "conceptKey": "CC_FACTOR_THEOREM",
+      "labelKo": "인수정리",
+      "definition": "P(alpha)=0이면 x-alpha를 인수로 가짐"
+    },
+    {
+      "conceptKey": "CC_FRACTION_OPERATION",
+      "labelKo": "분수의 연산",
+      "definition": "분수의 곱셈과 역수 나눗셈"
+    },
+    {
+      "conceptKey": "CC_GROUPING_FACTORIZATION",
+      "labelKo": "항 묶기 인수분해",
+      "definition": "공통인수가 나오도록 항을 짝지어 묶음"
+    },
+    {
+      "conceptKey": "CC_INTEGER_DECIMAL_PART",
+      "labelKo": "정수부분과 소수부분",
+      "definition": "실수에서 정수부분을 제외한 소수부분 정의"
+    },
+    {
+      "conceptKey": "CC_IRRATIONAL_NUMBER_CLASSIFICATION",
+      "labelKo": "무리수의 분류",
+      "definition": "유리수와 무리수를 구분하는 성질"
+    },
+    {
+      "conceptKey": "CC_MULTIPLICATION_FORMULA",
+      "labelKo": "곱셈 공식",
+      "definition": "다항식의 곱을 빠르게 전개하는 공식"
+    },
+    {
+      "conceptKey": "CC_NUMBER_LINE_COORDINATE",
+      "labelKo": "수직선 위의 좌표",
+      "definition": "기준점과 이동 거리를 결합한 실수의 대응점"
+    },
+    {
+      "conceptKey": "CC_ORDER_OF_OPERATIONS",
+      "labelKo": "연산의 순서",
+      "definition": "거듭제곱, 괄호, 곱셈·나눗셈의 계산 우선순위"
+    },
+    {
+      "conceptKey": "CC_PERFECT_SQUARE",
+      "labelKo": "완전제곱식",
+      "definition": "다항식의 제곱 꼴로 나타내어지는 식"
+    },
+    {
+      "conceptKey": "CC_PI_PROPERTY",
+      "labelKo": "원주율 파이",
+      "definition": "순환하지 않는 대표적 무리수"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_EXPANSION",
+      "labelKo": "다항식의 전개",
+      "definition": "괄호를 풀어 동류항끼리 정리하는 계산"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_FACTORIZATION",
+      "labelKo": "다항식의 인수분해",
+      "definition": "하나의 다항식을 인수의 곱으로 분해"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_SUM",
+      "labelKo": "다항식의 합",
+      "definition": "두 일차식의 동류항 덧셈"
+    },
+    {
+      "conceptKey": "CC_PRIME_FACTORIZATION",
+      "labelKo": "소인수분해",
+      "definition": "자연수를 소수의 곱으로 분해"
+    },
+    {
+      "conceptKey": "CC_PYTHAGOREAN_THEOREM",
+      "labelKo": "피타고라스 정리",
+      "definition": "직각삼각형의 빗변 길이 계산"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_FACTORIZATION",
+      "labelKo": "이차식의 인수분해",
+      "definition": "x^2+(a+b)x+ab = (x+a)(x+b) 꼴 인수분해"
+    },
+    {
+      "conceptKey": "CC_RADICAL_ADDITION",
+      "labelKo": "근호의 덧셈과 뺄셈",
+      "definition": "근호 안의 수가 같은 동류항끼리의 계산"
+    },
+    {
+      "conceptKey": "CC_RADICAL_ARITHMETIC",
+      "labelKo": "근호의 사칙연산",
+      "definition": "제곱근을 포함한 수의 곱셈과 나눗셈"
+    },
+    {
+      "conceptKey": "CC_RADICAL_COMPARISON",
+      "labelKo": "무리수의 대소 비교",
+      "definition": "근호 안의 수 크기 비교"
+    },
+    {
+      "conceptKey": "CC_RADICAL_FACTORIZATION",
+      "labelKo": "근호의 소인수분해",
+      "definition": "근호 안의 소수 인수를 분리하여 문자로 치환"
+    },
+    {
+      "conceptKey": "CC_RADICAL_SIMPLIFY",
+      "labelKo": "근호의 단순화",
+      "definition": "근호 안의 제곱인수를 밖으로 빼내기"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_EXPONENT",
+      "labelKo": "유리수 지수",
+      "definition": "거듭제곱근의 크기 순서 보존 성질"
+    },
+    {
+      "conceptKey": "CC_REAL_NUMBER_ORDER",
+      "labelKo": "실수의 대소 관계",
+      "definition": "실수의 크기 비교 및 부등식 성질"
+    },
+    {
+      "conceptKey": "CC_SIMILARITY_RATIO",
+      "labelKo": "닮음비",
+      "definition": "닮은 도형에서 대응하는 변의 길이의 비"
+    },
+    {
+      "conceptKey": "CC_SQUARE_AREA",
+      "labelKo": "정사각형의 넓이",
+      "definition": "한 변의 길이의 제곱으로 넓이를 구하거나 역산"
+    },
+    {
+      "conceptKey": "CC_SQUARE_NUMBER",
+      "labelKo": "제곱수",
+      "definition": "지수가 모두 짝수인 자연수"
+    },
+    {
+      "conceptKey": "CC_SQUARE_ROOT_DEFINITION",
+      "labelKo": "제곱근의 정의",
+      "definition": "어떤 수를 제곱하여 a가 되는 수의 성질"
+    },
+    {
+      "conceptKey": "CC_VARIABLE_SIGN",
+      "labelKo": "문자의 부호 판별",
+      "definition": "주어진 조건식으로부터 미지수의 양·음 판별"
+    },
+    {
+      "conceptKey": "CC_VARIABLE_SUBSTITUTION",
+      "labelKo": "변수 치환",
+      "definition": "공통부분이나 복잡한 식을 문자로 대체"
+    }
+  ],
+  "handOffToCourier": {
+    "status": "READY_FOR_COURIER_REGISTRATION",
+    "author": "META_PIPELINE_UNIFIED_AUTHOR",
+    "registrationProtocol": "DIRECT_ATOMIC_METADATA_BINDING"
+  },
+  "records": [
+    {
+      "questionId": 1,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
+        "crossConceptKeys": [
+          "CC_SQUARE_ROOT_DEFINITION",
+          "CC_CYCLIC_DECIMAL"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "제곱근의 정의와 음수의 제곱근, 순환소수 49/9의 음의 제곱근 판별 (1단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "1. 다음 설명 중 옳은 것을 모두 고르면? (정답 2개) [4.0점]",
+        "solutionDecisiveExcerpt": "- ⑤ $(-\\sqrt{11})^2 = 11$이므로 $-\\sqrt{11}$은 11의 음의 제곱근, 즉 11의 제곱근 중 하나이다. 따라서 참이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 2,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
+        "templateKey": "TPL_M3_SQUARE_AREA_SIDE_RATIO",
+        "crossConceptKeys": [
+          "CC_SIMILARITY_RATIO",
+          "CC_SQUARE_AREA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "큰 정사각형 넓이 36에서 한 변 6 구하고 닮음비 1:2 적용하여 한 변 3 산출 (2단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "2. 닮음비가 $1:2$인 두 닮은 정사각형에서 큰 정사각형의 넓이가 $36\\text{cm}^2$일 때, 작은 정사각형의 한 변의 길이는? [4.0점]",
+        "solutionDecisiveExcerpt": "$x : 6 = 1 : 2 \\implies 2x = 6 \\implies x = 3\\text{ cm}$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 3,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-RADICAL_OPERATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_POWER_DIVISION",
+        "crossConceptKeys": [
+          "CC_RADICAL_ARITHMETIC",
+          "CC_FRACTION_OPERATION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "sqrt((1/7)^2)=1/7과 (-sqrt(6/7))^2=6/7의 나눗셈 1/7 / 6/7 = 1/6 직접 계산 (1단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "3. $\\sqrt{\\left(\\dfrac{1}{7}\\right)^2} \\div \\left(-\\sqrt{\\dfrac{6}{7}}\\right)^2$을 계산하면? (3점) [3.0점]",
+        "solutionDecisiveExcerpt": "$\\dfrac{1}{7} \\div \\dfrac{6}{7} = \\dfrac{1}{7} \\times \\dfrac{7}{6} = \\dfrac{1}{6}$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 4,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_RADICAL_VARIABLE_SIMPLIFY",
+        "crossConceptKeys": [
+          "CC_ABSOLUTE_VALUE_SIMPLIFY",
+          "CC_VARIABLE_SIGN"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "조건식으로 a와 b의 부호를 판정하고 sqrt(x^2)=|x|를 적용해 근호식을 정리한다."
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "4. $\\sqrt{a^2}=-a$, $-\\sqrt{(-b)^2}=b$일 때, $\\sqrt{(-4a)^2}+\\sqrt{9b^2}$을 간단히 하면? (5점) [5.0점]",
+        "solutionDecisiveExcerpt": "$\\sqrt{(-4a)^2} + \\sqrt{9b^2} = (-4a) + (-3b) = -4a - 3b$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 5,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_POWER_ROOT_INEQUALITY_ORDER",
+        "crossConceptKeys": [
+          "CC_REAL_NUMBER_ORDER",
+          "CC_RATIONAL_EXPONENT"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "a>1일 때 a^2 > a > sqrt(a) > 1 > 1/sqrt(a) > 1/a 대소 관계 비교 (2단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "5. $a>1$일 때, 크기가 가장 작은 것은? [4.0점]",
+        "solutionDecisiveExcerpt": "따라서 가장 작은 수는 $\\dfrac{1}{a}$이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 6,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
+        "crossConceptKeys": [
+          "CC_REAL_NUMBER_ORDER",
+          "CC_RADICAL_COMPARISON"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "근호 안의 수 비교 및 양변 제곱을 통한 무리수 부등식 참거짓 판정 (1단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "6. 다음 중 옳은 것을 찾으면? (3점) [3.0점]",
+        "solutionDecisiveExcerpt": "- ⑤ $\\sqrt{5}-1 > 3$: 양변에 1을 더하면 $\\sqrt{5} > 4$가 되는데, $\\sqrt{5} < \\sqrt{16} = 4$이므로 거짓이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 7,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+        "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+        "crossConceptKeys": [
+          "CC_IRRATIONAL_NUMBER_CLASSIFICATION",
+          "CC_PI_PROPERTY"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "다섯 수 각각에 유리수와 무리수의 정의를 적용하여 무리수 여부를 판별한다."
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "7. 다음 중 무리수의 개수는? [4.0점]\n\n$$\\left(-\\sqrt{5}\\right)^2, \\quad -\\pi-1, \\quad -\\dfrac{\\sqrt{5}}{3}, \\quad 1.\\dot{4}, \\quad \\sqrt{0.049}$$",
+        "solutionDecisiveExcerpt": "5. $\\sqrt{0.049} = \\sqrt{\\dfrac{49}{1000}} = \\dfrac{\\sqrt{49}}{\\sqrt{1000}} = \\dfrac{7}{10\\sqrt{10}} = \\dfrac{7\\sqrt{10}}{100}$: 근호 안의 10이 제곱수가 아니므로 근호가 벗겨지지 않는다. (무리수, 3번째)",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 8,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_LINE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+        "templateKey": "TPL_M3_NUMBER_LINE_IRRATIONAL_MAPPING",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN_THEOREM",
+          "CC_NUMBER_LINE_COORDINATE"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "직각삼각형 빗변 sqrt(2)와 기준점 1에서 왼쪽 이동 좌표 1-sqrt(2) 매핑 (1단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "8. 다음 그림에서 $1-\\sqrt{2}$에 대응하는 점을 구하면? (3점) [3.0점]\n(단, 모눈 한 칸은 한 변의 길이가 1인 정사각형이다.)",
+        "solutionDecisiveExcerpt": "따라서 $1-\\sqrt{2}$에 대응하는 점은 점 $\\mathrm{B}$이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 9,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER_LINE",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
+        "templateKey": "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
+        "crossConceptKeys": [
+          "CC_PYTHAGOREAN_THEOREM",
+          "CC_SQUARE_AREA"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "격자 위 정사각형 한 변 sqrt(5) 계산 및 회전 기준점 A(-1)로부터 좌표 p=-1-sqrt(5), q=-1+sqrt(5) 판별 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "9. 오른쪽 그림에서 모눈 한 칸은 한 변의 길이가 1인 정사각형이다. $\\overline{AB}=\\overline{AF}, \\overline{AD}=\\overline{AE}$일 때, 다음 중 옳지 않은 것은? [4.0점]",
+        "solutionDecisiveExcerpt": "- ⑤ 점 $\\mathrm{F}$에 대응하는 수: 기준점 $1$에서 오른쪽으로 $\\sqrt{5}$만큼 이동한 점이므로 $1+\\sqrt{5}$이다. (참)",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 10,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-RADICAL_OPERATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "crossConceptKeys": [
+          "CC_RADICAL_ARITHMETIC",
+          "CC_ORDER_OF_OPERATIONS"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "1/2 * 4 / (1/2) = 4 직접 사칙연산 계산 (1단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "10. $\\sqrt{\\dfrac{4}{16}} \\times \\sqrt{(-4)^2} \\div \\left(-\\sqrt{\\dfrac{1}{2}}\\right)^2$을 계산하면? [4.0점]",
+        "solutionDecisiveExcerpt": "$\\text{주어진 식} = \\dfrac{1}{2} \\times 4 \\div \\dfrac{1}{2} = 2 \\div \\dfrac{1}{2} = 2 \\times 2 = 4$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 11,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-RADICAL_OPERATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
+        "crossConceptKeys": [
+          "CC_DENOMINATOR_RATIONALIZATION",
+          "CC_RADICAL_SIMPLIFY"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "분모의 유리화와 근호 단순화를 통해 k*sqrt(2) 꼴로 통일하여 다른 값 판별 (2단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "11. 다음 중 그 값이 나머지 넷과 다른 하나는? [4.0점]",
+        "solutionDecisiveExcerpt": "- ⑤ $\\dfrac{4\\sqrt{10}}{\\sqrt{5}} = 4\\sqrt{\\dfrac{10}{5}} = 4\\sqrt{2}$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 12,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-RADICAL_OPERATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
+        "crossConceptKeys": [
+          "CC_RADICAL_ADDITION",
+          "CC_DENOMINATOR_RATIONALIZATION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "동류항 덧셈·뺄셈 및 합차 유리화 전개 과정 오류 2개 검증 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "12. 다음 중 옳지 않은 것은? (정답 2개) [4.0점]",
+        "solutionDecisiveExcerpt": "그런데 선지 ⑤는 $19+5\\sqrt{4}$로 표기되어 있으므로 거짓이다. (거짓, 정답 2)",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 13,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-RADICAL_OPERATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
+        "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
+        "crossConceptKeys": [
+          "CC_RADICAL_FACTORIZATION",
+          "CC_VARIABLE_SUBSTITUTION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "sqrt(0.6) = sqrt(3*5)/5 = (1/5)ab 변환 계수 1/5 도출 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "13. $a=\\sqrt{3}, b=\\sqrt{5}$일 때, $\\sqrt{0.6}=\\square ab$이다. $\\square$안에 들어갈 알맞은 수를 구하면? [4.0점]",
+        "solutionDecisiveExcerpt": "따라서 $\\square = \\dfrac{1}{5}$이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 14,
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_COMMON_FACTOR_IDENTIFICATION",
+        "crossConceptKeys": [
+          "CC_COMMON_FACTOR",
+          "CC_FACTOR_DEFINITION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "공통인수로 3x^2+6xy를 인수분해하여 인수의 구조를 식별한다."
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "14. 다음 중 $3x^2+6xy$의 인수가 아닌 것은? (3점) [3.0점]",
+        "solutionDecisiveExcerpt": "- ⑤ $3x^2+6xy$: 자기 자신은 항상 인수이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 15,
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
+        "crossConceptKeys": [
+          "CC_PERFECT_SQUARE",
+          "CC_EXPANSION_COEFFICIENT"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "(2x +- 7y)^2 전개식 중간항 +-28xy로부터 계수 +-28 산출 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "15. $4x^2+\\square xy+49y^2$이 완전제곱식이 될 때, $\\square$안에 알맞은 것은? [4.0점]",
+        "solutionDecisiveExcerpt": "따라서 $\\square = \\pm 28$이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 16,
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_DIFFERENCE_OF_SQUARES_CHAIN",
+        "crossConceptKeys": [
+          "CC_DIFFERENCE_OF_SQUARES",
+          "CC_POLYNOMIAL_EXPANSION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "(x-1)(x+1)(x^2+1)(x^4+1) = x^8-1 연쇄 합차 전개로 A=8 산출 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "16. $x^A-1$을 인수분해하면 $(x-1)(x+1)(x^2+1)(x^4+1)$일 때 상수 $A$의 값은? [4.0점]",
+        "solutionDecisiveExcerpt": "$x^A - 1 = x^8 - 1 \\implies A = 8$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 17,
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
+        "crossConceptKeys": [
+          "CC_QUADRATIC_FACTORIZATION",
+          "CC_POLYNOMIAL_SUM"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "x^2-7x+12 = (x-3)(x-4) 인수분해 후 두 일차식의 합 2x-7 산출 (1단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "17. $x$의 계수가 1인 두 일차식의 곱이 $x^2-7x+12$일 때, 두 일차식의 합은? (3점) [3.0점]",
+        "solutionDecisiveExcerpt": "$(x-3) + (x-4) = x + x - 3 - 4 = 2x - 7$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 18,
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_FACTORIZATION_FORMULA_APPLICATION",
+        "crossConceptKeys": [
+          "CC_MULTIPLICATION_FORMULA",
+          "CC_POLYNOMIAL_FACTORIZATION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "5개 인수분해 등식 빈칸의 수 비교 및 불일치 식 식별 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "18. 다음 $\\square$안의 수가 나머지 넷과 다른 하나는? [4.0점]",
+        "solutionDecisiveExcerpt": "$(x-2)(5x+1) = 5x^2 + x - 10x - 2 = 5x^2 - 9x - 2 \\implies \\square = 5$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 19,
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
+        "crossConceptKeys": [
+          "CC_FACTOR_THEOREM",
+          "CC_COMMON_FACTOR"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "인수정리로 x=-3을 대입해 공통인수 조건을 두 다항식의 계수에 적용한다."
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "19. $x+3$이 두 다항식 $x^2y-Ay, 2x^2+5x+B$의 공통인수일 때, $A+B$의 값을 구하면? [4.0점]",
+        "solutionDecisiveExcerpt": "$A + B = 9 + (-3) = 6$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 20,
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_SUBSTITUTION_FACTORIZATION",
+        "crossConceptKeys": [
+          "CC_VARIABLE_SUBSTITUTION",
+          "CC_PERFECT_SQUARE"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "X=x+3 치환하여 (X-2)^2 = (x+1)^2 인수분해 후 a=1, b=1, a-b=0 산출 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "20. $(x+3)^2-4(x+3)+4=(ax+b)^2$의 형태로 인수분해될 때, $a-b$의 값을 구하면? [4.0점]",
+        "solutionDecisiveExcerpt": "따라서 $a - b = 1 - 1 = 0$이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 21,
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_GROUPING_FACTORIZATION",
+        "crossConceptKeys": [
+          "CC_GROUPING_FACTORIZATION",
+          "CC_DIFFERENCE_OF_SQUARES"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "(x^2-y^2)-(x-y) = (x-y)(x+y)-(x-y) = (x-y)(x+y-1) 인수분해 (3단계)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "21. $x^2-y^2-x+y$를 인수분해 하면? [4.0점]",
+        "solutionDecisiveExcerpt": "$= (x - y)\\{(x + y) - 1\\} = (x - y)(x + y - 1)$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 22,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-SQUARE_ROOT",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+        "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
+        "crossConceptKeys": [
+          "CC_PRIME_FACTORIZATION",
+          "CC_SQUARE_NUMBER"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "sqrt(20n)=sqrt(2^2*5*n)이 자연수가 되도록 n=5*k^2 형태 중 1<n<50 만족하는 n=5, 20, 45 합 70 산출 (3단계 서술형)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "서술형 1. $n$이 자연수이고, $1 < n < 50$일 때, $\\sqrt{20n}$이 자연수가 되도록 하는 모든 $n$의 값의 합을 구하여라. (5점) [5.0점]",
+        "solutionDecisiveExcerpt": "$5 + 20 + 45 = 70$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 23,
+      "standardUnitKey": "M3-01",
+      "subUnitKey": "M3-01-REAL_NUMBER",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
+        "templateKey": "TPL_M3_INTEGER_DECIMAL_PART_EVALUATION",
+        "crossConceptKeys": [
+          "CC_INTEGER_DECIMAL_PART",
+          "CC_DENOMINATOR_RATIONALIZATION"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "2*sqrt(10) 정수부분 6 소수부분 a=2*sqrt(10)-6, 역수 sqrt(10)+3 정수부분 6 소수부분 b=sqrt(10)-3에서 a-2b=0 산출 (3단계 서술형)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "서술형 2. $2\\sqrt{10}$의 소수부분을 $a$, $\\sqrt{10}-3$의 역수의 소수부분을 $b$라 할 때, $a-2b$의 값을 구하여라. (5점) [5.0점]",
+        "solutionDecisiveExcerpt": "$a - 2b = (2\\sqrt{10} - 6) - 2(\\sqrt{10} - 3) = 2\\sqrt{10} - 6 - 2\\sqrt{10} + 6 = 0$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 24,
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_DIFFERENCE_OF_SQUARES",
+          "CC_DIVISOR_PROPERTY"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "8^4-81 = (64-9)(64+9) = 55*73 = 5*11*73에서 1<d<50 약수 5, 11을 찾아 합 16 산출 (3단계 서술형)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "서술형 3. $8^4-81$은 1보다 크고 50보다 작은 두 자연수로 나누어 떨어진다. 이 두 자연수의 합을 구하여라. (5점) [5.0점]",
+        "solutionDecisiveExcerpt": "$5 + 11 = 16$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 25,
+      "standardUnitKey": "M3-02",
+      "subUnitKey": "M3-02-FACTORIZATION",
+      "auditVerdict": "APPROVED",
+      "classification": {
+        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
+        "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_PERFECT_SQUARE",
+          "CC_DIFFERENCE_OF_SQUARES"
+        ],
+        "conditionKeys": [],
+        "status": "APPROVED_CANONICAL",
+        "justification": "A=(2.7+2.3)^2=25, B=sqrt((68-32)(68+32))=sqrt(36*100)=60 합 A+B=85 산출 (3단계 서술형)"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "서술형 4. 인수분해 공식을 이용하여 $A+B$의 값을 구하여라. (5점) [5.0점]\n\n$$A = 2.7^2 + 2 \\times 2.7 \\times 2.3 + 2.3^2$$\n$$B = \\sqrt{68^2 - 32^2}$$",
+        "solutionDecisiveExcerpt": "$A + B = 25 + 60 = 85$",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    }
+  ],
+  "codexSourceEvidenceReconciliation": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_SOURCE_EVIDENCE_RECONCILIATION_16_왕의중_20261024.json",
+    "sha256": "8b7af9d4e8fc50997a1509f332aeeb7f5e658bfdf53f68b0c5b44a975e63e1db",
+    "sourceAuditRef": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학.json",
+      "sha256": "70e903845338f38c8c2cc34a2307d970aaca5708815fe1ffc2cd63b4294db30b"
+    },
+    "candidateClassificationRef": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_16_왕의중_1학기_중간_중3_수학.json",
+      "sha256": "b3cdc8bf02fb10ae99f44aa258fcd06867bcdfbec9112989cb0df736a41c7c21"
+    },
+    "sourceParityRef": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+      "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+    },
+    "sourceFieldsChanged": false
+  },
+  "codexParentResolutionRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_PARENT_RECONCILIATION_16_왕의중_20261024.json",
+    "sha256": "fb72963edcc6eafeb85ca9a001a25779949ba395726ac42657e0a595a96ba54d"
+  }
+}

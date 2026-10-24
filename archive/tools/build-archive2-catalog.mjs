@@ -77,9 +77,11 @@ const foundationCrossConcepts = new Set(foundationConcepts.concepts.map((r) => r
 const foundationConditionKeys = new Set(foundationConditions.conditions.map((r) => r.conditionKey));
 const foundationBindingKeys = new Set(foundationBindings.bindings.map((r) => [r.curriculum, r.standardUnitKey, r.subUnitKey, r.problemTypeKey].join("\u0000")));
 const foundationProjectionFields = new Set(["problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "foundationTaxonomyStatus", "rpmPathStatus", "metaFoundationHoldReason", "metaFoundationPackVersion", "l3Disposition", "l4Disposition", "semanticDisposition"]);
-const metaV2SidecarRevision = value => String(value || "").startsWith(
-  "meta-foundation:MIDDLE_RECERT_2026-09-30_META_V2:meta-review2-v1"
-);
+const metaV2SidecarRevision = value => {
+  const revision = String(value || "");
+  return revision.startsWith("meta-foundation:MIDDLE_RECERT_2026-09-30_META_V2:meta-review2-v1") ||
+    /:exam-meta_pipeline_audit-v2:/.test(revision);
+};
 const masterFile =
   "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
 const masterText = read(masterFile);

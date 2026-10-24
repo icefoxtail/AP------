@@ -16,6 +16,26 @@ def callout_leader_end(box,start,center):
     fraction=min(tx,ty)
     return [center[0]-dx*fraction,center[1]-dy*fraction]
 
+OWNER_LEADER_PLACEMENTS={'MEASURED_OWNER_SAFE_RELOCATION',*(prefix+d for prefix in ('COORDINATE_RELOCATION_','OWNER_LEADER_') for d in ('N','NE','E','SE','S','SW','W','NW'))}
+
+def owner_label_leader_svg(leader,layout,element_id):
+    """A point label relocated away from its point, tied back to it: from the point to the label box edge on the way to its center."""
+    owner=next((value for value in layout['labels'] if value.get('id')==leader.get('ownerLabelId')),None)
+    if (set(leader)!={'schemaVersion','id','from','to','ownerLabelId','ownerId'} or not owner
+        or owner.get('placement') not in OWNER_LEADER_PLACEMENTS or owner.get('target')!=leader.get('ownerId')
+        or list(owner.get('at',[]))!=leader.get('from') or not isinstance(owner.get('box'),dict)
+        or not isinstance(leader.get('to'),list) or len(leader['to'])!=2):
+        raise ValueError('OWNER_LABEL_LEADER_BINDING_INVALID')
+    try:x1,y1,x2,y2=(*(float(value) for value in leader['from']),*(float(value) for value in leader['to']))
+    except (TypeError,ValueError):raise ValueError('OWNER_LABEL_LEADER_COORDINATE_INVALID') from None
+    box=owner['box'];center=[box['x']+box['width']/2,box['y']+box['height']/2]
+    if not all(math.isfinite(value) for value in (x1,y1,x2,y2)) or math.hypot(center[0]-x1,center[1]-y1)<=1e-9:raise ValueError('OWNER_LABEL_LEADER_COORDINATE_INVALID')
+    expected_end=callout_leader_end(box,leader['from'],center)
+    if math.hypot(expected_end[0]-x2,expected_end[1]-y2)>1e-6 or math.hypot(x2-x1,y2-y1)<=1e-6:raise ValueError('OWNER_LABEL_LEADER_ENDPOINT_INVALID')
+    return (f'<line id="{element_id(leader["id"])}" data-role="leader" data-owner-label="{esc(leader["ownerLabelId"])}" '
+            f'data-owner="{esc(leader["ownerId"])}" x1="{num(x1)}" y1="{num(y1)}" x2="{num(x2)}" y2="{num(y2)}" '
+            f'stroke="#666" stroke-width="0.8" fill="none"/>')
+
 def safe_math_markup(value):
     root=ET.fromstring('<text>'+value+'</text>')
     for child in root.iter():
@@ -81,6 +101,8 @@ def compose(prepared,layout,viewport,fragments=None):
         else:raise ValueError('UNKNOWN_COMPOSER_PRIMITIVE')
         layers.append((p['layer'],index,svg))
     for index,leader in enumerate(layout.get('leaders',[])):
+        if leader.get('schemaVersion')=='OWNER_LABEL_LEADER_v1':
+            layers.append((85,index,owner_label_leader_svg(leader,layout,element_id)));continue
         owner=next((value for value in layout['labels'] if value.get('id')==leader.get('ownerLabelId')),None)
         tick=next((value for value in prepared['primitives'] if value.get('id')==leader.get('tickId')),None)
         binding=owner.get('tickLabelCallout') if owner else None

@@ -667,6 +667,11 @@ async function handleEditStudent(sid) {
             let reopenedAfterClassChange = false;
             try {
                 if (classChanged && typeof refreshDataOnly === 'function') await refreshDataOnly();
+                if (classChanged && returnCtx?.type === 'classDetail' &&
+                    String(state.ui?.currentClassId || '') === String(returnCtx.classId || '') &&
+                    typeof refreshCurrentStudentListViewAfterMutation === 'function') {
+                    refreshCurrentStudentListViewAfterMutation(returnCtx);
+                }
                 if (returnCtx?.type === 'timetable' && typeof renderTimetable === 'function') renderTimetable();
                 if (classChanged && isSameStudentEditModalOpen(sid)) {
                     await openStudentDetail(sid, {

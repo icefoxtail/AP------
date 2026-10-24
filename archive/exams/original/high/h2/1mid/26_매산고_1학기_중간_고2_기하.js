@@ -31,7 +31,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-01-CORE",
     "subUnit": "이차곡선 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+    "crossConceptKeys": ["CC_PARABOLA"],
+    "conditionKeys": []
   },
   {
     "id": 2,
@@ -63,7 +67,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-03-CORE",
     "subUnit": "공간도형 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_LINES_ANGLE",
+    "crossConceptKeys": ["CC_SPACE_FIGURE","CC_SKEW_LINES"],
+    "conditionKeys": []
   },
   {
     "id": 3,
@@ -99,7 +107,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q3-solution.svg",
     "solutionImageAlt": "완전제곱으로 얻은 타원의 중심, 두 축, 꼭짓점과 초점을 나타낸 좌표평면",
-    "solutionImageCaption": "식이 나타내는 타원의 중심과 초점 위치를 함께 확인한다."
+    "solutionImageCaption": "식이 나타내는 타원의 중심과 초점 위치를 함께 확인한다.",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_STANDARD_EQUATION",
+    "crossConceptKeys": ["CC_ELLIPSE","CC_CIRCLE_EQUATION"],
+    "conditionKeys": []
   },
   {
     "id": 4,
@@ -137,7 +149,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q4-solution.svg",
     "solutionImageAlt": "직육면체에서 AB와 수직인 두 평면 BCGF, ADHE를 나타낸 공간도형",
-    "solutionImageCaption": "AB가 각 평면 안의 서로 만나는 두 직선에 모두 수직임을 확인한다."
+    "solutionImageCaption": "AB가 각 평면 안의 서로 만나는 두 직선에 모두 수직임을 확인한다.",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_STANDARD_EQUATION",
+    "crossConceptKeys": ["CC_PARABOLA"],
+    "conditionKeys": []
   },
   {
     "id": 5,
@@ -174,7 +190,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q5-solution.svg",
     "solutionImageAlt": "쌍곡선과 기울기 2인 두 접선 y=2x±2, 각 접점을 나타낸 좌표평면",
-    "solutionImageCaption": "기울기 2인 접선의 y절편이 ±2임을 그림에서 확인한다."
+    "solutionImageCaption": "기울기 2인 접선의 y절편이 ±2임을 그림에서 확인한다.",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_HYPERBOLA","CC_CONIC_TANGENT"],
+    "conditionKeys": []
   },
   {
     "id": 6,
@@ -210,7 +230,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q6-solution.svg",
     "solutionImageAlt": "타원 x²+2y²=12와 점 (2,2)에서의 접선 x+2y=6",
-    "solutionImageCaption": "접점과 접선의 위치를 확인하고 y절편 3을 읽는다."
+    "solutionImageCaption": "접점과 접선의 위치를 확인하고 y절편 3을 읽는다.",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_ELLIPSE","CC_CONIC_TANGENT"],
+    "conditionKeys": []
   },
   {
     "id": 7,
@@ -247,7 +271,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q7-solution.svg",
     "solutionImageAlt": "두 k값에 대한 타원과 오른쪽 초점, 직선까지 거리 10인 수선",
-    "solutionImageCaption": "초점 (6,k)에서 직선까지의 거리가 10이 되는 두 경우를 비교한다."
+    "solutionImageCaption": "초점 (6,k)에서 직선까지의 거리가 10이 되는 두 경우를 비교한다.",
+    "problemTypeKey": "PT_GEO_ELLIPSE",
+    "templateKey": "TPL_GEO_ELLIPSE_AXIS_FOCUS",
+    "crossConceptKeys": ["CC_ELLIPSE"],
+    "conditionKeys": []
   },
   {
     "id": 8,
@@ -284,7 +312,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q8-solution.svg",
     "solutionImageAlt": "정사각뿔에서 AB의 밑면 정사영 BO를 나타낸 직각삼각형 AOB",
-    "solutionImageCaption": "AB의 밑면 위 정사영은 BO이고 AO와 BO의 길이가 같다."
+    "solutionImageCaption": "AB의 밑면 위 정사영은 BO이고 AO와 BO의 길이가 같다.",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": ["CC_SPACE_FIGURE","CC_ORTHOGONAL_PROJECTION"],
+    "conditionKeys": []
   },
   {
     "id": 9,
@@ -321,7 +353,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q9-solution.svg",
     "solutionImageAlt": "쌍곡선 x²−y²=4와 점근선, 보기 ①의 직선 y=x+√5",
-    "solutionImageCaption": "보기 ①의 직선이 점근선 y=x와 평행하여 접선이 될 수 없음을 확인한다."
+    "solutionImageCaption": "보기 ①의 직선이 점근선 y=x와 평행하여 접선이 될 수 없음을 확인한다.",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_HYPERBOLA","CC_CONIC_TANGENT"],
+    "conditionKeys": []
   },
   {
     "id": 10,
@@ -355,7 +391,11 @@ window.questionBank = [
     "subUnitKey": "H22-GE-03-CORE",
     "subUnit": "공간도형 핵심 개념",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": ["CC_SPACE_FIGURE"],
+    "conditionKeys": []
   },
   {
     "id": 11,
@@ -393,7 +433,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q11-solution.svg",
     "solutionImageAlt": "포물선 y²=12x, 타원의 중심 (−1,2), 그 중심을 지나는 포물선의 접선",
-    "solutionImageCaption": "타원의 넓이를 이등분하는 접선이 중심을 지나고 접점 P=(3,6)에서 접함을 확인한다."
+    "solutionImageCaption": "타원의 넓이를 이등분하는 접선이 중심을 지나고 접점 P=(3,6)에서 접함을 확인한다.",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_PARABOLA","CC_CONIC_TANGENT","CC_AREA"],
+    "conditionKeys": []
   },
   {
     "id": 12,
@@ -431,7 +475,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q12-solution.svg",
     "solutionImageAlt": "정사면체의 공간 맥락과 두 면의 각을 계산하는 삼각형 ABE를 분리한 두 패널",
-    "solutionImageCaption": "공간도형을 삼각형 ABE로 환원하여 cos∠BEA=1/3을 확인한다."
+    "solutionImageCaption": "공간도형을 삼각형 ABE로 환원하여 cos∠BEA=1/3을 확인한다.",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": ["CC_SPACE_FIGURE","CC_ORTHOGONAL_PROJECTION","CC_AREA","CC_CENTROID"],
+    "conditionKeys": []
   },
   {
     "id": 13,
@@ -470,7 +518,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q13-solution.svg",
     "solutionImageAlt": "쌍곡선의 두 점근선과 접선이 만드는 삼각형",
-    "solutionImageCaption": "접선은 두 점근선과 (6,6), (2,-2)에서 만나고 삼각형의 넓이는 12이다."
+    "solutionImageCaption": "접선은 두 점근선과 (6,6), (2,-2)에서 만나고 삼각형의 넓이는 12이다.",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_HYPERBOLA","CC_CONIC_TANGENT","CC_AREA"],
+    "conditionKeys": []
   },
   {
     "id": 14,
@@ -506,7 +558,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q14-solution.svg",
     "solutionImageAlt": "PA와 AH가 수직인 직각삼각형 PAH",
-    "solutionImageCaption": "평면 밖 점에서 직선까지의 거리는 직각삼각형 PAH의 빗변 PH이다."
+    "solutionImageCaption": "평면 밖 점에서 직선까지의 거리는 직각삼각형 PAH의 빗변 PH이다.",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": ["CC_SPACE_FIGURE"],
+    "conditionKeys": []
   },
   {
     "id": 15,
@@ -545,7 +601,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q15-solution.svg",
     "solutionImageAlt": "p가 3/4일 때 포물선과 초점 F, 준선의 발 B, 교점 C의 위치",
-    "solutionImageCaption": "AB=BF에서 A의 x좌표는 3p이고, C는 BF를 2:1로 나눈다."
+    "solutionImageCaption": "AB=BF에서 A의 x좌표는 3p이고, C는 BF를 2:1로 나눈다.",
+    "problemTypeKey": "PT_GEO_PARABOLA",
+    "templateKey": "TPL_GEO_PARABOLA_FOCUS_DIRECTRIX",
+    "crossConceptKeys": ["CC_PARABOLA"],
+    "conditionKeys": []
   },
   {
     "id": 16,
@@ -575,7 +635,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q16-solution.svg",
     "solutionImageAlt": "쌍곡선과 외부 점 (−2,1)에서 그은 두 접선 x=−2, 3x+4y+2=0",
-    "solutionImageCaption": "기울기형 접선뿐 아니라 꼭짓점의 수직 접선 x=−2도 함께 확인한다."
+    "solutionImageCaption": "기울기형 접선뿐 아니라 꼭짓점의 수직 접선 x=−2도 함께 확인한다.",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_HYPERBOLA","CC_CONIC_TANGENT"],
+    "conditionKeys": []
   },
   {
     "id": 17,
@@ -606,7 +670,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q17-solution.svg",
     "solutionImageAlt": "포물선과 기울기 m인 접선 y=mx+p/m의 일반 관계를 보여 주는 개념도",
-    "solutionImageCaption": "대표 배치와 일반식을 함께 보며 판별식 D=0이 접선 조건임을 연결한다."
+    "solutionImageCaption": "대표 배치와 일반식을 함께 보며 판별식 D=0이 접선 조건임을 연결한다.",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_PARABOLA","CC_CONIC_TANGENT"],
+    "conditionKeys": []
   },
   {
     "id": 18,
@@ -637,7 +705,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q18-solution.svg",
     "solutionImageAlt": "삼각형 DLM과 DL에 내린 높이 MN",
-    "solutionImageCaption": "DL=5, DM=2√5, LM=√33에서 높이 MN을 구한다."
+    "solutionImageCaption": "DL=5, DM=2√5, LM=√33에서 높이 MN을 구한다.",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": ["CC_SPACE_FIGURE","CC_AREA"],
+    "conditionKeys": []
   },
   {
     "id": 19,
@@ -668,7 +740,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q19-solution.svg",
     "solutionImageAlt": "삼수선 정리의 수정된 조건에서 PO가 l과 OH에 모두 수직인 관계",
-    "solutionImageCaption": "평면 α에 수직임을 보이려면 α 위의 서로 만나는 두 직선 l과 OH에 모두 수직이어야 한다."
+    "solutionImageCaption": "평면 α에 수직임을 보이려면 α 위의 서로 만나는 두 직선 l과 OH에 모두 수직이어야 한다.",
+    "problemTypeKey": "PT_GEO_SPACE_FIGURE",
+    "templateKey": "TPL_GEO_SPACE_PERPENDICULAR_PROJECTION",
+    "crossConceptKeys": ["CC_SPACE_FIGURE"],
+    "conditionKeys": []
   },
   {
     "id": 20,
@@ -699,7 +775,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q20-solution.svg",
     "solutionImageAlt": "타원과 접선 x+y=3, 수직선 y=x+1 및 x축 교점 Q와 R",
-    "solutionImageCaption": "Q=(3,0), R=(-1,0)이므로 OQ×OR=3이다."
+    "solutionImageCaption": "Q=(3,0), R=(-1,0)이므로 OQ×OR=3이다.",
+    "problemTypeKey": "PT_GEO_CONIC_TANGENT",
+    "templateKey": "TPL_GEO_TANGENT_ON_CONIC",
+    "crossConceptKeys": ["CC_ELLIPSE","CC_CONIC_TANGENT"],
+    "conditionKeys": []
   },
   {
     "id": 21,
@@ -730,6 +810,10 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/26_매산고_1학기_중간_고2_기하/q21-solution.svg",
     "solutionImageAlt": "c=5와 c=9 두 경우의 쌍곡선에서 초점 F, F′, 점 P, Q와 거리차 관계 및 이등변 조건을 함께 나타낸 그림",
-    "solutionImageCaption": "Q가 PF′ 위에 놓이는 쌍곡선의 거리차 관계로 PF=10, PF′=18을 확인한 뒤, 이등변 조건에서 c=5, 9를 얻는다."
+    "solutionImageCaption": "Q가 PF′ 위에 놓이는 쌍곡선의 거리차 관계로 PF=10, PF′=18을 확인한 뒤, 이등변 조건에서 c=5, 9를 얻는다.",
+    "problemTypeKey": "PT_GEO_HYPERBOLA",
+    "templateKey": "TPL_GEO_HYPERBOLA_ASYMPTOTE_AXIS",
+    "crossConceptKeys": ["CC_HYPERBOLA"],
+    "conditionKeys": []
   }
 ];

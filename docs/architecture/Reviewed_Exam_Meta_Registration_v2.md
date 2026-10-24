@@ -31,13 +31,33 @@ node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --requ
 | `sourceArchiveFile` | `archive/exams/` 기준 실제 JS 상대 경로 |
 | `expectedSourceBlobSha1` | Git clean filter가 적용된 source의 blob SHA-1. Git 없는 격리 fixture에서는 raw blob SHA-1 |
 | `expectedQuestionCount` | 실제 전 문항 수 |
-| `approval` | `type: FINAL_QA 또는 REVIEW2`, `metadataReviewed: true`, `approvedBy`, `evidenceRefs` |
+| `approval` | `type: FINAL_QA`, `REVIEW2`, 또는 `META_PIPELINE_AUDIT`; 각 유형의 구별된 증거, `metadataReviewed: true`, `approvedBy`, `evidenceRefs` |
 | `registryChanges` | 선택 사항. 정본 변경 작업 배열 |
 | `items` | 전 UID의 `questionUid`, `sourceOrdinal`, `before`, `after`, `reason`, `evidenceRefs` |
 
 `REVIEW2`에만 `approval.reviewPassCount: 2`가 필요하다. FINAL_QA를 REVIEW2로 기록하지 않는다.
 각 `evidenceRefs`는 `{ "path": "저장소 상대 경로", "sha256": "실바이트 SHA-256" }` 배열이다.
 실제 파일이 없거나 hash가 다르면 쓰기 전에 실패한다. URL이나 검토했다는 문장만으로 대체하지 않는다.
+
+### `META_PIPELINE_AUDIT` 승인 유형
+
+`META_PIPELINE_AUDIT`는 Gemini의 심화 메타 감사 인계를 등록하는 별도 유형이다. 이 유형은 FINAL_QA 또는 REVIEW2로 변환하지 않으며, 시험지의 최종 수학·해설 QA 상태를 승인하지 않는다. 요청은 다음을 제공한다.
+
+- `approval.metaPipelineAudit.schemaVersion: "meta-pipeline-audit-approval-v1"`
+- `approval.metaPipelineAudit.sourceFileDriveId`
+- `approval.metaPipelineAudit.auditPackageRef`, `manifestRef`, `sourceParityRef`: 정확한 Drive 산출물 JSON 바이트와 source-parity report를 저장소 evidence 경로에 보존한 `{path, sha256}` 참조. 세 참조 모두 `approval.evidenceRefs`에도 포함한다.
+- 감사 패키지는 `ALIVE_META_AUDIT_ATOMIC_v3`, `ALL_APPROVED_CANONICAL_STANDARDIZED`, `READY_FOR_COURIER_REGISTRATION`, N/N 승인, zero hold, zero template inflation을 만족해야 한다. `sourceSha256`는 매니페스트의 Drive source SHA와 일치해야 한다.
+- 매니페스트는 `COURIER_INTAKE_MANIFEST_v2` 또는 `ALIVE_COURIER_INTAKE_MANIFEST_v3` / `COURIER_INTAKE_MANIFEST_v3`여야 하며, 같은 exam/source identity와 N개 승인 바인딩을 만족해야 한다. v2는 `payloadSummary`의 N/N·zero hold·zero template inflation, `courierAction`, `bindingTarget`를 검증한다. v3는 `totalQuestions=N`, `totalHoldCount=0`, `status=READY_FOR_COURIER_REGISTRATION`를 검증하고, zero template inflation은 반드시 rich audit의 `statistics.newTemplatesCreated=0`과 `canonicalTemplatesReused=N`으로 확인한다. v3 manifest만으로 flat audit 증거 누락을 대체할 수 없다. 실제 source path는 등록 요청 및 parity report의 정확한 production 파일 경로에 결속한다.
+- `archive-meta-pipeline-source-parity-v1` 보고서는 Drive source SHA와 현재 production source SHA/blob SHA를 함께 결속한다. qid별 student fields (`id`, 지문, 보기, 정답, 해설, image/SVG 참조, 레이아웃) digest가 같고 source/solution 발췌가 Drive 원본에서 확인되었음을 기록한다. raw JS 메타 필드만 달라 raw SHA가 다를 때도 학생 노출 payload parity가 입증되어야 등록할 수 있다.
+- 기존 CrossConcept key는 canonical definition을 변경하지 않는다. audit definition wording이 canonical과 다르면 label이 정확히 같고 동일 개념의 관점 차이라는 qid/개념별 rationale을 `existingConceptReviews`에 기록해야 재사용할 수 있다. 신규로 감사된 PT/TPL/CrossConcept key는 근거·supporting UID/count와 정확한 owner binding을 갖춘 `registryChanges`의 add-only 승격을 지원한다. TPL parent PT가 외부 owner pack에 있어도, 해당 문항의 exact ACTIVE binding owner pack이 TPL owner이고 pack scope가 맞으면 그 문맥 팩에 새 TPL을 추가할 수 있다. 기존 PT 의미·정의는 바꾸지 않는다. 기존 key 의미 수정·삭제는 거부한다. CrossConcept의 label이나 definition이 자기 key 문자열을 그대로 되풀이하는 placeholder면 승격하지 않는다.
+- Source JS의 advanced metadata placeholder는 `projectionStatus: BINDING_PENDING`과 필드별 null 사유, 또는 보존된 RPM 상태 `RPM_SEMANTIC_FINAL_PROJECTION_UNMATERIALIZED`, `RPM_SEMANTIC_FINAL_H15_UNIT_BINDING_PENDING`, `RPM_SEMANTIC_FINAL_DIRECT_BINDING_GAP` 중 하나와 비어 있지 않은 `metaNullReason`이 함께 있을 때 정식 메타 projection이 대체할 수 있다. `META_PIPELINE_AUDIT`는 더해 source에 이미 적힌 표준 단원·PT/TPL/CC/Condition 값이 감사/매니페스트와 다를 때, 해당 메타 행이 아직 승인 전이고 요청에 exact `sourceMetadataBefore`가 있어 현재 source 값을 바이트 기준으로 결속한 경우에 한해 sidecar 바인딩을 재지정할 수 있다. 다만 `reviewStatus: manual_review`와 `metadataStatus: approved_partial_with_explicit_holds`인 행은 예외로, 해당 필드의 `fieldStatus`가 `manual_review_pending`이고 exact `sourceMetadataBefore`가 있을 때 그 미결 필드만 감사 바인딩으로 해결할 수 있다. 이미 승인된 다른 필드는 바꿀 수 없고, 바인딩 뒤에도 남은 `manual_review_pending`은 hold 상태로 보존한다. 양쪽 경로 모두 student-facing source bytes를 수정하지 않는다.
+- 이 감사 유형은 1~5 `difficultyBucket`이나 `IntegrationPattern`을 판정하지 않는다. 기존 bucket이 숫자형 1~5가 아니고 source JS에 별도 1~5 값도 없으면, 요청이 기존 잘못된 값을 정확한 `before`로 결속해 `after: null`로 지우고 `unreviewedFields`에 qid, `EVIDENCE_DEBT`, 사유를 기록해야 한다. source에도 IntegrationPattern이 없으면 `NONE`을 추정하지 말고 같은 방식으로 debt를 남긴다. `level`에서 bucket을 계산하지 않는다.
+- Consumer가 요구하는 L1/L2는 evidence-bound `.parent-labels.json`으로 현재 `basic-scope-parent-links.json`의 정확한 curriculum/course/unit/subunit 부모에서 가져온다. standardUnit label을 부모 L1로 대체하지 않는다.
+- 이전 `META_PIPELINE_AUDIT` 등록에서 PT 의미가 아니라 exact ACTIVE binding의 부모 L2만 잘못 연결된 경우, `parentBindingCorrectionRef`가 가리키는 SHA-bound 증거와 현재 binding의 정확한 before/after, 그 binding의 전체 supporting UID, 정본 부모 근거를 함께 제시하면 L2만 정정할 수 있다. 정정은 부모 경로를 바로잡는 범위로 제한하고 PT/TPL/CrossConcept 정의·키·supporting UID 및 학생용 payload는 바꾸지 않으며, 영향을 받는 모든 UID를 같은 N/N 요청에 포함한다. 정본 compiler가 owner pack patch version을 갱신한다.
+- Archive2 학생 검색 Consumer가 L1/L2와 PT/TPL/CC를 직접 노출하지만 `level/L3/L4`는 해당 행에 노출하지 않는 경우, 이 필드들은 source UID·ordinal·metadataRevision에 일치하는 단 하나의 ACTIVE Meta Foundation runtime row에서 확인한다. consumer 행의 미노출 `null`을 runtime의 승인값으로 덮어 PASS 처리하지 않으며, runtime 누락·중복·값 불일치는 실패다.
+- 감사 records, 매니페스트 `recordsToBind`, 등록 요청 `items`는 source ordinal별 PT/TPL/CrossConcept/단원 값이 정확히 일치해야 한다. 결정적 풀이 발췌와 시각자료 확인 필드도 qid마다 필요하다.
+
+이 유형의 등록 receipt는 `examFinalQaStatus: NOT_EVALUATED_BY_REGISTRAR`를 유지한다. 문항 메타 provenance에는 `metadataApprovalType: META_PIPELINE_AUDIT`, `tagConfidence: meta_pipeline_audit`, `fieldStatus.*: approved_meta_pipeline_audit`를 기록해 다른 승인 경로와 구별한다.
 
 `before/after`는 승인 메타 필드 객체다. `after`의 모든 필드에 `before`를 명시하며,
 기존 필드가 없으면 `before` 값은 `null`이다. source JS에도 존재하는 값은 정확히 같아야 한다.

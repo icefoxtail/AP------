@@ -23,6 +23,8 @@ import {RepairBudget} from './repair-budget.mjs';
 import {bindMeasuredOwnerSafeLabelRepair} from './layout-repair.mjs';
 import {auditMeasuredOwnerSafeLabelRepair} from './layout-repair-audit.mjs';
 import {SOURCE_REVIEW_INSTRUCTION,sourcePolicyFingerprint,verifiedSolutionPolicyFingerprint,sourceReviewClosed,verificationClosed} from './source-policy.mjs';
+import {verifyConstructionConditionBindings} from './fact-display-map-v1.mjs';
+export {verifyConstructionConditionBindings} from './fact-display-map-v1.mjs';
 
 import {resolveQuestion,runQuestion} from './resolve-request.mjs';
 import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBinding,validateReviewLineage} from './blinded-review.mjs';
@@ -30,7 +32,19 @@ import {blindThenCompare,reuseReviewAuthority,verificationBinding,conditionBindi
 const GRAPH_OVERVIEW_CANVAS=Object.freeze({width:610,height:420,panel:140});
 const QUADRATIC_OVERVIEW_CANVAS=Object.freeze({width:384,height:320,panel:140});
 const QUADRATIC_HEADER_CANVAS=Object.freeze({width:512,height:400,panel:0,topInset:80});
+// A panel of a three-panel composite: its formula and shared line rows sit outside the panel (composite-candidate-svg-v1), so no formula header.
+const COMPOSITE_PANEL_CANVAS=Object.freeze({width:512,height:286,panel:0,topInset:0});
+// A quadratic framed at one scale (graph_framing equal_unit_frame) carries its plot size: the canvas is that plot plus the 32 px margins and,
+// unless the composite writes the formula outside the panel, the 80 px formula header.
+const equalUnitCanvas=p=>{
+  const plot=p.plotCanvas,topInset=p.compositeHeader!==undefined?0:80;
+  if(p.equalUnits!==true||!plot||typeof plot!=='object'||Object.keys(plot).sort().join(',')!=='height,width'||plot.width!==448||!Number.isSafeInteger(plot.height)||plot.height<120||plot.height>640||p.overviewCanvasHeight!==undefined)throw Error('EQUAL_UNIT_PLOT_CANVAS_INVALID');
+  return {width:512,height:plot.height+64+topInset,panel:0,topInset};
+};
 const RATIONAL_OVERVIEW_CANVAS=Object.freeze({width:520,height:420,panel:140});
+// Band rows: 34 px apart, or 56 when a label in the row has a fraction (written at full text size, about 48 px high, plus the 6 px layout clearance).
+const bandRowPitch=texts=>texts.some(text=>String(text).includes('/'))?56:34;
+const bandRowCenters=(pitches,firstCenter)=>{let top=firstCenter-17;return pitches.map(pitch=>{const center=top+pitch/2;top+=pitch;return center;});};
 const graphViewport=(values,canvas=GRAPH_OVERVIEW_CANVAS)=>({
   xMin:values[0],xMax:values[1],yMin:values[2],yMax:values[3],
   width:canvas.width,height:canvas.height,panel:canvas.panel
@@ -60,16 +74,23 @@ function axisTickDisplayFacts(graphPlan){
 }
 export function displayGeometryInventory(plan,model){
   const select=(field,available,type,defaults=null)=>{
-    const ids=plan[field]??defaults??Object.keys(available||{});
+    // The unit-axis helper (NORMALIZATION_AXIS) only fixes the scale in a source-coordinate frame; it is not drawn unless a plan lists it.
+    const frameHelpers=new Set(plan.mathPlan.nodes.filter(n=>n.op==='NORMALIZATION_AXIS').map(n=>n.id));
+    const ids=plan[field]??defaults??Object.keys(available||{}).filter(id=>!(type==='POINT'&&frameHelpers.has(id)));
     if(!Array.isArray(ids)||new Set(ids).size!==ids.length||ids.some(id=>!Object.hasOwn(available||{},id)))throw Error('INVALID_DISPLAY_GEOMETRY_INVENTORY:'+field);
-    const mandatory=plan.mathPlan.nodes.filter(n=>n.outputType===type&&(n.op==='SOURCE_POINT'||['GIVEN','CONCLUSION'].includes(n.factRole))).map(n=>n.id);
+    const mandatory=plan.mathPlan.nodes.filter(n=>n.outputType===type&&!n.op.startsWith('NORMALIZATION_')&&(n.op==='SOURCE_POINT'||['GIVEN','CONCLUSION'].includes(n.factRole))).map(n=>n.id);
     if(mandatory.some(id=>!ids.includes(id)))throw Error('REQUIRED_SOURCE_GEOMETRY_NOT_DISPLAYED:'+field);
     return Object.fromEntries(ids.map(id=>[id,available[id]]));
   };
   const points=select('displayPoints',model.points,'POINT'),lines=select('displayLines',model.lines,'LINE');
+  // With the axes drawn (SOURCE_COORDINATES) a line ax+by+c=0 that is x=0 or y=0 is the axis itself: every consumer leaves it out
+  // of the drawing and of the expected geometry, and the spec records it as axisCoincidentLines.
+  const onAxis=([a,b,c])=>{const eps=1e-9*Math.max(1,Math.hypot(a,b));return Math.abs(c)<=eps&&(Math.abs(a)<=eps||Math.abs(b)<=eps);};
+  const axisCoincidentLines=model.coordinateMode==='SOURCE_COORDINATES'?Object.keys(lines).filter(id=>Array.isArray(lines[id]?.approximation)&&lines[id].approximation.length===3&&onAxis(lines[id].approximation)):[];
+  for(const id of axisCoincidentLines)delete lines[id];
   for(const id of [...(plan.coordinateLabels||[]),...(plan.displaySegments||[]).flatMap(s=>s.refs),...(plan.rightAngles||[]).flatMap(a=>a.refs)])if(!Object.hasOwn(points,id))throw Error('DISPLAY_ANNOTATION_POINT_NOT_VISIBLE:'+id);
   const axisHelperCircles=plan.mathPlan.realization?.recipeId==='SOURCE_COORDINATE_AXES_v1'?plan.mathPlan.nodes.filter(n=>n.outputType==='CIRCLE'&&['GIVEN','CONCLUSION'].includes(n.factRole)).map(n=>n.id):null;
-  return {points,lines,circles:showConstructionCircles(plan)?select('displayCircles',model.circles,'CIRCLE',axisHelperCircles):{}};
+  return {points,lines,circles:showConstructionCircles(plan)?select('displayCircles',model.circles,'CIRCLE',axisHelperCircles):{},axisCoincidentLines};
 }
 export function compileConstructionWirePlan(input){
   if(!input.mathPlan?.conditionAudits)return input;
@@ -88,7 +109,7 @@ export function compileConstructionWirePlan(input){
 
 const root=fileURLToPath(new URL('../../../../',import.meta.url));
 const schema={type:'object',properties:{status:{type:'string',enum:['PASS','FAIL','UNSUPPORTED']},payload:{type:'string'}},required:['status','payload'],additionalProperties:false};
-const compilerContract=`Return payload as a JSON object. For geometry: {capability:'construction-spike-v1',mathPlan:{schemaVersion:'construction-spike-v1',nodes:[...]},displaySegments:[{id,refs:[pointId,pointId]}],coordinateLabels:[pointId],caption:string}. Each node has id (ASCII alphanumeric starts letter), op, inputs, args, outputType, factRole GIVEN/DERIVED_INTERMEDIATE/CONCLUSION. Supported ops SOURCE_POINT (args coordinates=[typedScalar,typedScalar]), NORMALIZATION_ORIGIN(args {}), NORMALIZATION_AXIS(args length=typedScalar), MIDPOINT, LINE_THROUGH, PERPENDICULAR_FOOT, CIRCLE_CENTER_RADIUS(args radius=typedScalar), INTERSECTION (POINT_SET), SELECT_POINT (branch {kind:'SIDE_OF_ORIENTED_LINE',refs:[A,B],sign:1|-1}). All other point outputs POINT, lines LINE, circles CIRCLE. Derived points must never have raw coordinates. typedScalar={kind:'integer',value:'decimal integer'} or {kind:'rational',numerator:'...',denominator:'...'} or {kind:'expression',op:'sqrt'|'add'|'sub'|'mul'|'div'|'neg'|'pow',args:[typedScalars]}. For coordinate-free SSS use realization:{recipeId:'SSS_POSITIVE_SIDE_v1',unit:'source-length',reflectionEquivalent:true} inside mathPlan, A origin, B positive x at source AB distance, C selected positive side of two circles. The circles in this realization are construction aids and must not be rendered; render only explicitly listed display segments and source marks. Use source length values, and compute any necessary missing distance exactly from verified solution (e.g sqrt(34)). Explicitly state source bindings for each introduced normalization/label in conditions. For a polynomial source graph only: {capability:'polynomial-spike-v1',graphPlan:{family:'polynomial',coefficients:['constant','x coefficient','x squared coefficient',...],domain:[lo,hi],viewport:[xmin,xmax,ymin,ymax]},caption:string}. Coefficients are exact integer or rational strings; max degree4. Domain/viewports must show the source's decisive structure. Declare sourceDomain:{kind:'ALL_REALS'} only when the source polynomial has no restriction; otherwise declare {kind:'INTERVAL',range:[lo,hi]}. Preserve all source-required points/tangency anchors/intercepts as requiredPoints:[{id:string,x:number,y:number}]; these are independently reviewed source/solution features, never convenient invented points. The main overview must show the vertex and enough of both arms to make the opening and symmetry legible. A local detail cannot replace the overview. Do not guess symbolic coefficients. Reject unsupported source. caption is short student-facing Korean, with no internal/debug terms. Either plan must have sourceConditions:[{id:string,condition:string,mappedTo:string|string[]}]; mappedTo names one or more targets in the plan or PRESERVED_ARCHIVE_BANK. Include newVisualInformation:[string] and no unsupported source condition. No SVG, raw derived coordinates, or measurements.`;
+const compilerContract=`Return payload as a JSON object. For geometry: {capability:'construction-spike-v1',mathPlan:{schemaVersion:'construction-spike-v1',nodes:[...]},displaySegments:[{id,refs:[pointId,pointId]}],coordinateLabels:[pointId],caption:string}. Each node has id (ASCII alphanumeric starts letter), op, inputs, args, outputType, factRole GIVEN/DERIVED_INTERMEDIATE/CONCLUSION. Supported ops SOURCE_POINT (args coordinates=[typedScalar,typedScalar]), NORMALIZATION_ORIGIN(args {}; the coordinate origin, optional in displayPoints: if it is shown, give the node the id O when the stored solution calls it O, because a displayed point is labelled with its node id; otherwise leave it out), NORMALIZATION_AXIS(args length=typedScalar; outputType POINT, the point (length,0) on the x-axis, not a scalar); SOURCE_POINT and NORMALIZATION_* nodes have inputs []. SOURCE_LINE (a line the problem gives only by its equation a x + b y + c = 0: args a,b,c = typedScalar, inputs [], outputType LINE, factRole GIVEN; the origin O, a displayed foot or an intersection point can mark where it is read, and a plan that shows several such lines lists them in displayLines; lineLabels:[{nodeId,form}] writes the equation of such a line beside it, form SLOPE_INTERCEPT (y=mx+n, only for a non-vertical line) or GENERAL (ax+by+c=0), built exactly from its coefficients, so give the form the problem uses), MIDPOINT, LINE_THROUGH, PERPENDICULAR_FOOT, CIRCLE_CENTER_RADIUS(args radius=typedScalar), INTERSECTION (POINT_SET; inputs are [line, circle] in that order, [circle, circle] or [line, line]), SELECT_POINT (a node-level branch field, not inside args: branch:{kind:'SIDE_OF_ORIENTED_LINE',refs:[A,B],sign:1|-1}, sign a number). All other point outputs POINT, lines LINE, circles CIRCLE. Derived points must never have raw coordinates. typedScalar={kind:'integer',value:'decimal integer'} or {kind:'rational',numerator:'...',denominator:'...'} or {kind:'expression',op:'sqrt'|'add'|'sub'|'mul'|'div'|'neg'|'pow',args:[typedScalars]}. For coordinate-free SSS use realization:{recipeId:'SSS_POSITIVE_SIDE_v1',unit:'source-length',reflectionEquivalent:true} inside mathPlan, A origin, B positive x at source AB distance, C selected positive side of two circles. The circles in this realization are construction aids and must not be rendered; render only explicitly listed display segments and source marks. Use source length values, and compute any necessary missing distance exactly from verified solution (e.g sqrt(34)). Explicitly state source bindings for each introduced normalization/label in conditions. For a polynomial source graph only: {capability:'polynomial-spike-v1',graphPlan:{family:'polynomial',coefficients:['constant','x coefficient','x squared coefficient',...],domain:[lo,hi],viewport:[xmin,xmax,ymin,ymax]},caption:string}. Coefficients are exact integer or rational strings; max degree4. Domain/viewports must show the source's decisive structure. Put sourceDomain, requiredPoints and axisTickValues inside graphPlan, never at the top level. Always set graphPlan.axisTickValues to {x:[],y:[]}: every requiredPoint is drawn with its own coordinate label, so never choose tick values for a polynomial graph. When the stored solution substitutes a new variable (for example t=x^2-2x) and draws the graph in that variable, set graphPlan.axisVariable to its single lowercase letter (not y); the horizontal axis and the formula label are then written with it, and coefficients are the powers of that variable. Leave it out for an ordinary graph in x. A quadratic graph may also carry straight lines: graphPlan.lines:[{id,slope,intercept,through:[point IDs],tangentAt:point ID (optional)}] with exact value strings for y=slope*x+intercept (integers, fractions, sqrt(...), + - * / and parentheses, for example "4-2*sqrt(3)"). Points on the curve stay in requiredPoints; points that lie only on a line go to graphPlan.linePoints:[{id,x,y}]. through lists every key point the line passes through, and tangentAt names the requiredPoint where the line touches the curve; both are checked exactly. requiredPoints and linePoints keep numeric x,y; when a point's coordinates are not integers, give their exact values as graphPlan.exactCoordinates:{pointId:["-3/2","9/2"]} (same exact value strings) so the point gets a coordinate label; a point without integer or exact coordinates is drawn as a bare dot. A vertical line, a second curve or a shaded region is not supported. When the solution compares two or three cases or parameter values, each with one quadratic (and its lines), use {capability:'composite-panels-v1',panels:[{caption:{math:'k=-2',text:'일 때'},plan:{capability:'polynomial-spike-v1',graphPlan:{...}}},...],caption,sourceConditions,newVisualInformation}: 2 panels (3 only if the whole stack still fits one page; a stack taller than about 640 CSS px is refused) stacked top to bottom, each panel plan following the quadratic graph contract above, each caption a short math part (plain ASCII such as k=-2 or a=1, no TeX commands) and/or a short Korean text part naming its case. Declare sourceDomain:{kind:'ALL_REALS'} only when the source polynomial has no restriction; otherwise declare {kind:'INTERVAL',range:[lo,hi],states:[start,end]} (a quadratic only; lo and hi are exact numbers or fraction strings; each state is 'CLOSED' for ≤ or 'OPEN' for <, both 'CLOSED' when omitted). The curve is then drawn only on that interval, with a filled dot at a closed end and a hollow dot at an open end; every requiredPoint must lie in the interval and none on an open end.Preserve all source-required points/tangency anchors/intercepts as requiredPoints:[{id:string,x:number,y:number}]; these are independently reviewed source/solution features, never convenient invented points. The main overview must show the vertex and enough of both arms to make the opening and symmetry legible. A local detail cannot replace the overview. Do not guess symbolic coefficients. Reject unsupported source. caption is short student-facing Korean, with no internal/debug terms. Either plan must have sourceConditions:[{id:string,condition:string,mappedTo:string|string[]}]; mappedTo names one or more targets in the plan or PRESERVED_ARCHIVE_BANK. Include newVisualInformation:[string] and no unsupported source condition. No SVG, raw derived coordinates, or measurements.`;
 const CUBIC_QUARTIC_CONTRACT=` IF AND ONLY IF the source visual is a polynomial graph of exact degree 3 or 4, apply this separate bounded contract; otherwise ignore this clause and follow the existing geometry/quadratic rules. Such cubic/quartic graph coefficients must have exact degree 3 or 4 and sourceDomain must be exactly {kind:'ALL_REALS'}; restricted intervals are unsupported in this slice. Do not apply quadratic vertex framing to these graphs. The overview framer derives and binds all real roots, derivative roots (extrema or stationary inflections), inflection points, multiplicities, and left/right tail directions from the exact coefficient strings. The independent observer must recompute this inventory from the source polynomial and check every feature and tail against the final rendered polyline. Repeated source roots and root/feature separations below one actual CSS pixel at the audited profile are unsupported. Do not invent source-required points; preserve those separately in requiredPoints.`;
 const RATIONAL_CONTRACT=` IF AND ONLY IF the source visual is a rational graph of capability 'rational-spike-v1', apply this separate bounded contract. graphPlan.family must be 'rational', numerator and denominator must each be exactly two integer/rational coefficient strings in ascending powers, the x coefficient of each must be nonzero, and sourceDomain must be exactly {kind:'ALL_REALS'} (meaning no additional interval restriction; natural denominator exclusions remain). The denominator therefore has exactly one simple real root. The numerator either does not vanish there (one vertical pole) or vanishes there (one removable hole); the overview must mark that pole or open hole and the exact horizontal asymptote y=numeratorLeading/denominatorLeading. Preserve the original denominator exclusion even when it cancels. The observer independently recomputes the singularity kind/location, horizontal asymptote, numerator zero, and visible branch coverage from exact coefficients, then checks pole-side separation, asymptote markers, and hole marker on the final SVG. Numerator/denominator degree above one, multiple denominator roots, nonreal denominator roots, oblique asymptotes, additional source intervals, and sub-resolution features are unsupported. No polynomial quadratic/cubic framing clause applies to this rational family.`;
 const SQRT_AFFINE_CONTRACT=` IF AND ONLY IF the source graph is the square root of a positive-slope affine radicand, use the distinct capability 'sqrt-affine-spike-v1' and graphPlan.family 'sqrt-affine'. radicand must be exactly [constant,positive x coefficient] as integer/rational strings. sourceDomain must be exactly {kind:'NATURAL_SQRT_AFFINE'} for the full natural x>=root domain, or {kind:'CLOSED_INTERVAL',range:[exact lower,exact upper]} for a closed finite source interval at or above the exact radicand root. For the natural mode the sampled domain starts exactly at that root; for CLOSED_INTERVAL the sampled domain must equal the source interval byte-for-byte in numeric value and must never be expanded. Open intervals, intervals below the root, nonpositive slopes, nonlinear or mixed radicands, and unreviewed compositions are unsupported. Derive and mark every closed source endpoint. Independently verify the final curve begins/ends at the bound endpoint(s), contains no points before the radicand root, and increases rightward. The viewport may have a display-only left margin before the root, but that margin is not part of the sampled domain.`;
@@ -97,14 +118,6 @@ const PIECEWISE_AFFINE_CONTRACT=` IF AND ONLY IF the source graph is exactly one
 const EXPONENTIAL_AFFINE_CONTRACT=` IF AND ONLY IF the source graph is exactly y=A*exp(k*x)+C with natural exponential, use the separate capability 'exponential-affine-spike-v1' and graphPlan.family 'exponential-affine'. coefficients must be exact rational strings [A,k,C], A and k nonzero, and sourceDomain exactly {kind:'ALL_REALS'}. The frozen overview binds the exact reference point at exponent zero, strict monotonicity sign(A*k), horizontal asymptote y=C and the side/approach direction, and growth-side direction. Keep x=0 visible, sample only a display overview that retains the original all-real source-domain meaning, and show the asymptote plus reference marker. Mixed exponents, non-natural bases, compositions, restricted source domains, and unsupported scale ranges are unsupported. The independent observer recomputes the function, monotonicity, reference and asymptote from exact coefficients, then checks the final curve and marker at the measured profile.`;
 const LOGARITHMIC_AFFINE_CONTRACT=` IF AND ONLY IF the source graph is exactly y=A*ln(k*x+b)+C with natural logarithm, use the separate capability 'logarithmic-affine-spike-v1' and graphPlan.family 'logarithmic-affine'. coefficients must be exact rational strings [A,k,b,C], A and k nonzero, and sourceDomain exactly {kind:'NATURAL_LOG_AFFINE'} meaning k*x+b>0. The exact open boundary is x=-b/k; the reference point uses argument 1 at x=(1-b)/k and y=C. The overview samples only inside the natural domain and shows the boundary with a dashed vertical cue, the reference marker, strict monotonicity sign(A*k), and the correct one-sided unbounded trend. Restricted intervals, non-natural log bases, mixed compositions, and extra domain cases are unsupported. The independent observer recomputes boundary/reference/monotonicity from exact coefficients and checks the final curve stays on the valid side and approaches the boundary correctly at measured size.`;
 const TRIGONOMETRIC_CONTRACT=` IF AND ONLY IF the source graph is one uncomposed sine, cosine, or tangent function y=A*F(k*x+phasePi*pi)+C, use the distinct capability 'trigonometric-spike-v1' and graphPlan.family 'trigonometric'. F is exactly SIN, COS, or TAN; coefficients are exact rational strings [A,k,C], A and k are nonzero, and phasePi is a canonical rational multiple of pi. SIN/COS require sourceDomain {kind:'ALL_REALS'} and the overview displays one full exact period, marking and independently checking both extrema and all midline crossings (including roots where y=0). TAN requires sourceDomain {kind:'ALL_REALS_WITH_TAN_POLES'} and displays exactly one complete branch between adjacent poles with both dashed pole cues, no cross-pole chord, and monotonic direction sign(A*k). Mixed identities, powers/compositions, restricted source intervals, and unsupported non-natural phase representations are unsupported. The independent observer recomputes period, phase, amplitude/midline, feature locations or poles and branch coverage from exact coefficients and verifies the final rendered SVG at measured profiles.`;
-export function verifyConstructionConditionBindings(plan){
-  if(!plan.mathPlan)return;
-  if(!Array.isArray(plan.sourceConditions))throw Error('SOURCE_CONDITIONS_REQUIRED_FOR_TYPED_AUDIT');
-  const sourceIds=new Set();
-  const validMappedTo=value=>(typeof value==='string'&&value.trim().length>0)||(Array.isArray(value)&&value.length>0&&value.every(item=>typeof item==='string'&&item.trim().length>0)&&new Set(value).size===value.length);
-  for(const source of plan.sourceConditions){if(!source||Object.keys(source).sort().join(',')!=='condition,id,mappedTo'||typeof source.id!=='string'||!source.id||typeof source.condition!=='string'||!source.condition||!validMappedTo(source.mappedTo)||sourceIds.has(source.id))throw Error('INVALID_SOURCE_CONDITION_BINDING');sourceIds.add(source.id);}
-  for(const audit of plan.mathPlan.conditionAudits||[]){if(!sourceIds.has(audit.sourceConditionId))throw Error('CONDITION_AUDIT_SOURCE_BINDING_REQUIRED:'+audit.id);}
-}
 async function provider(purpose,packet,images,traceDir,allowFailure=false){
   const response=await invokeVisualContinuation({root,traceDir,purpose,input:[{type:'text',text:canonicalJson(packet)},...images.map(nativeImageInput)],outputSchema:schema});
   const payload=parseVisualProviderPayload(response,purpose);
@@ -287,11 +300,16 @@ export function specFor(plan,model,id){
     else if(singularity.kind==='REMOVABLE_HOLE')objects.push({id:'removable-hole-label',kind:'GRAPH_ANNOTATION',text:'뚫린 점',at:[xSingularity+(v[1]-v[0])*.08,exactNumber(singularity.y)+(v[3]-v[2])*.08],priority:0});
     return {id,visualType:'function_graph',viewport:graphViewport(v,RATIONAL_OVERVIEW_CANVAS),axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),rationalGraphFeatures:features,rationalGraphPolicy:p.rationalFeaturePolicy},objects};
   }
+  if(plan.capability==='piecewise-polynomial-spike-v1')return piecewisePolynomialSpec(plan,id);
   if(plan.capability==='polynomial-spike-v1'){
     const p=plan.graphPlan,v=p.viewport;const terms=p.coefficients.map((c,i)=>({c,i})).reverse().filter(({c})=>c!=='0');
     const expr=terms.map(({c,i},index)=>{const negative=c.startsWith('-'),magnitude=negative?c.slice(1):c;const coefficient=magnitude.includes('/')?'('+magnitude+')':magnitude;return (negative?'-':index?'+':'')+(i?(magnitude==='1'?'':coefficient+'*')+'x'+(i>1?'^'+i:''):coefficient);}).join('');
-    const degree=p.coefficients.reduce((highest,coefficient,index)=>coefficient==='0'?highest:index,0),canvas=degree>=3?GRAPH_OVERVIEW_CANVAS:{...QUADRATIC_HEADER_CANVAS,...(p.overviewCanvasHeight!==undefined?{height:p.overviewCanvasHeight}:{})};
-    if(degree<=2&&(!Number.isSafeInteger(canvas.height)||canvas.height<400||canvas.height>600))throw Error('POLYNOMIAL_OVERVIEW_CANVAS_HEIGHT_INVALID');
+    const degree=p.coefficients.reduce((highest,coefficient,index)=>coefficient==='0'?highest:index,0),canvas=degree>=3?GRAPH_OVERVIEW_CANVAS:p.plotCanvas!==undefined?equalUnitCanvas(p):p.compositeHeader!==undefined?COMPOSITE_PANEL_CANVAS:{...QUADRATIC_HEADER_CANVAS,...(p.overviewCanvasHeight!==undefined?{height:p.overviewCanvasHeight}:{})};
+    // compositeHeader {formula:'CAPTION',sharedLines:[line IDs]} is set by composite-candidate-svg-v1 for a three-panel stack, never by an author: the
+    // composite typesets the formula in the panel's caption row and the shared line equations once above the stack, so the panel leaves them out.
+    const header=p.compositeHeader;
+    if(header!==undefined&&(degree>2||p.overviewCanvasHeight!==undefined||!header||typeof header!=='object'||Object.keys(header).sort().join(',')!=='formula,sharedLines'||header.formula!=='CAPTION'||!Array.isArray(header.sharedLines)||header.sharedLines.some(id=>!(p.lines||[]).some(line=>line?.id===id))))throw Error('COMPOSITE_HEADER_INVALID');
+    if(degree<=2&&header===undefined&&p.plotCanvas===undefined&&(!Number.isSafeInteger(canvas.height)||canvas.height<400||canvas.height>600))throw Error('POLYNOMIAL_OVERVIEW_CANVAS_HEIGHT_INVALID');
     const framedCriticalX=(p.overviewFeatures||[]).filter(feature=>feature.kind==='POLYNOMIAL_FEATURE').map(feature=>feature.x);
     const criticalX=[...new Set([...(p.requiredPoints||[]).map(point=>point.x),...framedCriticalX])];
     const displayedExpression=quadraticVertexNotation(p.coefficients)?.expression??expr;
@@ -301,19 +319,101 @@ export function specFor(plan,model,id){
       const callout=p.tickLabelCallouts[0];
       if(!callout||Object.keys(callout).sort().join(',')!=='axis,offsetUser,value'||callout.axis!=='x'||callout.value!=='-6'||!Array.isArray(callout.offsetUser)||callout.offsetUser.length!==2||callout.offsetUser[0]!==28||callout.offsetUser[1]!==-22)throw Error('TICK_LABEL_CALLOUT_Q13_BINDING_INVALID');
     }
-    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression:expr,domain:p.domain,criticalX},{id:'formula',kind:'EQUATION_LABEL',text:'y='+displayedExpression,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]}];
+    const axisVariable=p.axisVariable??'x';
+    if(typeof axisVariable!=='string'||!/^[a-xz]$/.test(axisVariable))throw Error('INVALID_AXIS_VARIABLE');
+    const shownExpression=axisVariable==='x'?displayedExpression:displayedExpression.replace(/x/g,axisVariable);
+    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression:expr,domain:p.domain,criticalX},...(header?[]:[{id:'formula',kind:'EQUATION_LABEL',text:'y='+shownExpression,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]}])];
+    // coordinatePlacement:'PANEL' / coordinatePanel:[required point IDs] (HEADER_BAND quadratics only): each listed integer key point is named by
+    // its id at the dot and its coordinates go to rows under the formula as "P(x,y)", so crowded key points keep readable coordinates.
+    if(plan.coordinatePlacement!==undefined&&plan.coordinatePlacement!=='PANEL')throw Error('UNSUPPORTED_COORDINATE_PLACEMENT');
+    const required=p.requiredPoints||[],linePointList=p.linePoints??[],integerKey=point=>Number.isSafeInteger(point?.x)&&Number.isSafeInteger(point?.y);
+    // graphPlan.exactCoordinates {pointId:[x text, y text]}: exact values (fractions, square roots) for key points or line points whose coordinates
+    // are not integers; each must equal the point's x,y to 1e-9, and the engine re-checks the label against the drawn point.
+    const exactCoordinates=p.exactCoordinates??{};
+    if(!exactCoordinates||typeof exactCoordinates!=='object'||Array.isArray(exactCoordinates))throw Error('EXACT_COORDINATES_INVALID');
+    for(const [pointId,pair] of Object.entries(exactCoordinates)){
+      const point=[...required,...linePointList].find(other=>other?.id===pointId);
+      if(!point||!Array.isArray(pair)||pair.length!==2||[point.x,point.y].some((value,k)=>Math.abs(exactValue(pair[k])-value)>1e-9*Math.max(1,Math.abs(value))))throw Error('EXACT_COORDINATES_MISMATCH:'+pointId);
+    }
+    const coordinateText=point=>exactCoordinates[point?.id]??(integerKey(point)?[String(point.x),String(point.y)]:null);
+    const nameLike=id=>/^[A-Z][0-9']?$/.test(id),graphPanel=new Set(plan.coordinatePlacement==='PANEL'?required.filter(point=>coordinateText(point)&&nameLike(point.id)).map(point=>point.id):plan.coordinatePanel||[]);
+    if(graphPanel.size&&degree>2)throw Error('COORDINATE_PANEL_NEEDS_HEADER_BAND');
+    for(const pointId of graphPanel)if(!nameLike(pointId)||!coordinateText(required.find(point=>point.id===pointId)))throw Error('COORDINATE_PANEL_POINT_INVALID:'+pointId);
+    // labelDirections {pointId: N|NE|E|SE|S|SW|W|NW}: first layout direction for a key point's coordinate label (not for band points).
+    const graphDirections=plan.labelDirections??{};
+    if(!graphDirections||typeof graphDirections!=='object'||Array.isArray(graphDirections)||Object.entries(graphDirections).some(([pointId,direction])=>!required.some(point=>point.id===pointId)||graphPanel.has(pointId)||!['N','NE','E','SE','S','SW','W','NW'].includes(direction)))throw Error('INVALID_LABEL_DIRECTIONS');
+    const panelLabels=[];
     for(const [index,point] of (p.requiredPoints||[]).entries()){
       if(!point||typeof point.id!=='string'||!point.id||!Number.isFinite(point.x)||!Number.isFinite(point.y))throw Error('POLYNOMIAL_REQUIRED_POINT_INVALID');
-      const markerId='required-point-'+(index+1);objects.push({id:markerId,kind:'POINT',at:[point.x,point.y]});
-      if(Number.isSafeInteger(point.x)&&Number.isSafeInteger(point.y)){
-        objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:[String(point.x),String(point.y)]});
+      if(graphPanel.has(point.id)){
+        const markerId='required-point-'+(index+1),labelId=markerId+'-coordinate-panel';panelLabels.push(labelId);
+        objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],name:point.id});
+        objects.push({id:labelId,kind:'EQUATION_LABEL',target:markerId,text:point.id+'('+coordinateText(point).map(unwrapParentheses).join(',')+')',at:[point.x,point.y],priority:0});
+        continue;
       }
+      // A marker id is internal: without an exact coordinate label the point is a bare dot (name null), never "required-point-N" text.
+      const markerId='required-point-'+(index+1),coordinates=coordinateText(point);
+      objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates?{}:{name:null})});
+      if(coordinates)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates,...(graphDirections[point.id]?{preferred:graphDirections[point.id]}:{})});
     }
-    return {id,visualType:'function_graph',viewport:{...graphViewport(v,canvas),...(degree<=2?{topInset:80}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),...(degree<=2?{formulaPlacement:'HEADER_BAND',equationLabelCenters:{formula:[canvas.width/2,72]}}:{})},objects};
+    // graphPlan.lines (HEADER_BAND quadratics): exact lines y=slope*x+intercept with the points they pass through (checked here to 1e-9 of the
+    // declared rationals; tangentAt also checks the curve's slope at that key point). graphPlan.linePoints are points on a line, off the curve.
+    // Each line equation goes to the band under the formula; the lines themselves are audited in the final SVG by the primitive observer.
+    const lines=p.lines??[],linePoints=p.linePoints??[];
+    if(!Array.isArray(lines)||lines.length>4||!Array.isArray(linePoints)||linePoints.length>4)throw Error('GRAPH_LINES_INVALID');
+    if((lines.length||linePoints.length)&&degree>2)throw Error('GRAPH_LINES_NEED_HEADER_BAND');
+    const rationalNumber=text=>{if(typeof text!=='string'||!/^-?\d+(?:\/\d+)?$/.test(text))throw Error('GRAPH_LINE_COEFFICIENT_INVALID');const [n,d='1']=text.split('/');if(Number(d)===0)throw Error('GRAPH_LINE_COEFFICIENT_INVALID');return Number(n)/Number(d);};
+    const curveCoefficients=p.coefficients.map(rationalNumber),curveSlope=x=>curveCoefficients.reduce((sum,c,i)=>i?sum+i*c*x**(i-1):sum,0);
+    const pointsById=new Map([...required,...linePoints].map(point=>[point?.id,point]));
+    for(const [index,point] of linePoints.entries()){
+      if(!point||Object.keys(point).sort().join(',')!=='id,x,y'||typeof point.id!=='string'||!Number.isFinite(point.x)||!Number.isFinite(point.y)||required.some(other=>other.id===point.id))throw Error('GRAPH_LINE_POINT_INVALID');
+      if(!(v[0]<point.x&&point.x<v[1]&&v[2]<point.y&&point.y<v[3]))throw Error('GRAPH_LINE_POINT_OUTSIDE_VIEW:'+point.id);
+      const markerId='line-point-'+(index+1),coordinates=coordinateText(point);
+      objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates?{}:{name:null})});
+      if(coordinates)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates});
+    }
+    const lineLabels=[];
+    for(const line of lines){
+      if(!line||Object.keys(line).some(key=>!['id','slope','intercept','through','tangentAt'].includes(key))||typeof line.id!=='string'||!/^[A-Za-z][A-Za-z0-9]{0,7}$/.test(line.id))throw Error('GRAPH_LINE_INVALID');
+      const m=exactValue(line.slope),q=exactValue(line.intercept),through=line.through??[];
+      if(!Array.isArray(through))throw Error('GRAPH_LINE_INVALID');
+      for(const pointId of through){
+        const point=pointsById.get(pointId);if(!point)throw Error('GRAPH_LINE_POINT_UNKNOWN:'+pointId);
+        if(Math.abs(m*point.x+q-point.y)>1e-9*Math.max(1,Math.abs(point.y)))throw Error('GRAPH_LINE_INCIDENCE_FAIL:'+line.id+':'+pointId);
+      }
+      if(line.tangentAt!==undefined){
+        const point=required.find(other=>other.id===line.tangentAt);
+        if(!point||!through.includes(line.tangentAt)||Math.abs(curveSlope(point.x)-m)>1e-9*Math.max(1,Math.abs(m)))throw Error('GRAPH_LINE_TANGENCY_FAIL:'+line.id);
+      }
+      const lineId='line-'+line.id,labelId=lineId+'-equation',shared=header?.sharedLines.includes(line.id);if(!shared)lineLabels.push(labelId);
+      objects.push({id:lineId,kind:'LINE',coefficients:[m,-1,q]});
+      // A slope with a square root or several terms is bracketed before x; an intercept is appended as written (its own sign leads).
+      const plainRational=/^-?\d+(?:\/\d+)?$/.test(line.slope);
+      const slopeText=line.slope==='0'?'':line.slope==='1'?'x':line.slope==='-1'?'-x':plainRational?line.slope+'*x':'('+line.slope+')*x';
+      const interceptText=line.intercept==='0'?(slopeText?'':'0'):line.intercept.startsWith('-')?line.intercept:(slopeText?'+':'')+line.intercept;
+      if(!shared)objects.push({id:labelId,kind:'EQUATION_LABEL',text:'y='+slopeText+interceptText,at:[(v[0]+v[1])/2,v[3]],priority:0});
+    }
+    // The band rows (line equations first, then key point coordinates) extend the header band: two columns, 34 px rows; the canvas grows by as much.
+    // Each line equation takes a whole row (it can be long); the key point coordinates follow in two columns, or one per row when any is long.
+    const longCoordinate=objects.some(object=>panelLabels.includes(object.id)&&object.text.length>10),columns=longCoordinate?1:2;
+    const coordinateRows=Math.ceil(panelLabels.length/columns),textOf=labelId=>objects.find(object=>object.id===labelId)?.text??'';
+    const rows=[...lineLabels.map(labelId=>[labelId]),...Array.from({length:coordinateRows},(_,r)=>panelLabels.slice(r*columns,r*columns+columns))];
+    const pitches=rows.map(row=>bandRowPitch(row.map(textOf)));
+    const bandExtra=rows.length?26+pitches.reduce((sum,pitch)=>sum+pitch,0):0;// 14 px under the last row keeps the axis letter clear of it
+    // The Archive solution image is at most 640 CSS px high at the 0.5823 display scale: 1099 intrinsic px for a figure at one scale.
+    if(canvas.height+bandExtra>(p.plotCanvas!==undefined?1099:800))throw Error('COORDINATE_PANEL_TOO_TALL');
+    // Without the formula header (a composite panel) the band rows move up by its 80 px.
+    const firstRow=header?55:135;
+    const rowCenters=bandRowCenters(pitches,firstRow);
+    const bandCenters=Object.fromEntries(rows.flatMap((row,r)=>row.map((labelId,k)=>[labelId,[r<lineLabels.length||panelLabels.length===1||columns===1?canvas.width/2:canvas.width*(k?.72:.28),rowCenters[r]]])));
+    return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),...(degree<=2?{topInset:canvas.topInset+bandExtra}:{}),...(p.equalUnits===true&&(p.axisRatio??1)===1?{equalUnits:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),...(axisVariable!=='x'?{axisVariable}:{}),...(degree<=2?{formulaPlacement:'HEADER_BAND',equationLabelCenters:{...(header?{}:{formula:[canvas.width/2,72]}),...bandCenters}}:{}),...(p.intervalFeatures?{intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy}:{})},objects};
   }
   const displayed=displayGeometryInventory(plan,model),points=displayed.points;const xs=Object.values(points).map(p=>p.approximation[0]),ys=Object.values(points).map(p=>p.approximation[1]);
   const span=Math.max(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys),1),pad=span*.35;
-  const objects=Object.entries(points).map(([name,p])=>({id:name,kind:'POINT',at:p.approximation}));const notationByLabel={},factRolesByLabel={};
+  // hiddenPointNames:[point IDs] draws derived helper points as bare dots: never a source point, a GIVEN/CONCLUSION point or a coordinate-labelled one.
+  const hiddenNames=new Set(plan.hiddenPointNames??[]);
+  if(!Array.isArray(plan.hiddenPointNames??[])||[...hiddenNames].some(id=>{const node=plan.mathPlan.nodes.find(n=>n.id===id);return !Object.hasOwn(points,id)||!node||node.op==='SOURCE_POINT'||node.factRole!=='DERIVED_INTERMEDIATE'||(plan.coordinateLabels||[]).includes(id);}))throw Error('INVALID_HIDDEN_POINT_NAMES');
+  const objects=Object.entries(points).map(([name,p])=>({id:name,kind:'POINT',at:p.approximation,...(hiddenNames.has(name)?{name:null}:{})}));const notationByLabel={},factRolesByLabel={},axisCoincidentLines=displayed.axisCoincidentLines;
   for(const node of plan.mathPlan.nodes){
     if(node.outputType==='LINE'&&Object.hasOwn(displayed.lines,node.id)){
       const fact=model.lines?.[node.id];if(!fact||!Array.isArray(fact.approximation)||fact.approximation.length!==3)throw Error('CONSTRUCTION_LINE_FACT_REQUIRED:'+node.id);
@@ -324,6 +424,16 @@ export function specFor(plan,model,id){
     }
   }
   for(const s of plan.displaySegments||[]){if(!points[s.refs[0]]||!points[s.refs[1]])throw Error('DISPLAY_SEGMENT_UNKNOWN_REF');objects.push({id:s.id,kind:'SEGMENT',from:points[s.refs[0]].approximation,to:points[s.refs[1]].approximation});}
+  // coordinatePlacement:'PANEL' (도형추출.md 6-7-1): point names stay at their points and each exact coordinate moves to a band above the plot
+  // as one "A(x,y)" label, so a crowded coordinate figure keeps every coordinate at the Archive font floor. Same exact source as below.
+  if(plan.coordinatePlacement!==undefined&&plan.coordinatePlacement!=='PANEL')throw Error('UNSUPPORTED_COORDINATE_PLACEMENT');
+  // coordinatePanel:[point IDs] moves only those coordinates to the band ('PANEL' moves all); labelDirections {pointId: N|NE|E|SE|S|SW|W|NW}
+  // is the first direction the layout tries for that point's coordinate label at the point (the rest are still tried).
+  const labelled=plan.coordinateLabels||[],labelDirections=plan.labelDirections??{};
+  if(plan.coordinatePanel!==undefined&&(!Array.isArray(plan.coordinatePanel)||plan.coordinatePanel.some(id=>!labelled.includes(id))))throw Error('COORDINATE_PANEL_NOT_A_COORDINATE_LABEL');
+  const inPanel=new Set(plan.coordinatePlacement==='PANEL'?labelled:plan.coordinatePanel||[]);
+  if(!labelDirections||typeof labelDirections!=='object'||Array.isArray(labelDirections)||Object.entries(labelDirections).some(([id,direction])=>!labelled.includes(id)||inPanel.has(id)||!['N','NE','E','SE','S','SW','W','NW'].includes(direction)))throw Error('INVALID_LABEL_DIRECTIONS');
+  const panelLabels=[];
   for(const id of plan.coordinateLabels||[]){
     const node=plan.mathPlan.nodes.find(n=>n.id===id),point=points[id];
     if(!node||node.outputType!=='POINT'||!point?.exact?.length)throw Error('VERIFIED_POINT_COORDINATE_REQUIRED:'+id);
@@ -331,8 +441,32 @@ export function specFor(plan,model,id){
     // exact model, never from planner-authored approximate coordinates.
     const coordinates=node.op==='SOURCE_POINT'?node.args.coordinates:point.exact;
     objects.push({id:id+'-name',kind:'POINT_NAME',target:id,text:id,priority:0});
-    objects.push({id:id+'-coordinate',kind:'COORDINATE_LABEL',target:id,exact:coordinates.map(scalarExpression)});
+    if(inPanel.has(id)){
+      const labelId=id+'-coordinate-panel';panelLabels.push(labelId);
+      objects.push({id:labelId,kind:'EQUATION_LABEL',target:id,text:id+'('+coordinates.map(value=>unwrapParentheses(scalarExpression(value))).join(',')+')',at:point.approximation,priority:0});
+      factRolesByLabel[labelId]=node.factRole;
+      continue;
+    }
+    objects.push({id:id+'-coordinate',kind:'COORDINATE_LABEL',target:id,exact:coordinates.map(scalarExpression),...(labelDirections[id]?{preferred:labelDirections[id]}:{})});
     factRolesByLabel[id+'-coordinate']=node.factRole;
+  }
+  // lineLabels:[{nodeId,form:'SLOPE_INTERCEPT'|'GENERAL'}] writes the equation of a displayed SOURCE_LINE beside it, built from its exact coefficients.
+  const lineLabelIds=new Set();
+  for(const label of plan.lineLabels||[]){
+    const node=plan.mathPlan.nodes.find(n=>n.id===label.nodeId);
+    if(!node||node.op!=='SOURCE_LINE'||!Object.hasOwn(displayed.lines,node.id)||lineLabelIds.has(node.id)||!['SLOPE_INTERCEPT','GENERAL'].includes(label.form)||Object.keys(label).length!==2)throw Error('INVALID_LINE_LABEL');
+    lineLabelIds.add(node.id);
+    const [ca,cb,cc]=['a','b','c'].map(k=>exactRational(node.args[k]));
+    const lo=[Math.min(...xs)-pad,Math.min(...ys)-pad],hi=[Math.max(...xs)+pad,Math.max(...ys)+pad],coef=[ca,cb,cc].map(v=>Number(v[0])/Number(v[1]));
+    // Anchor at the end of the drawn line: clip a x+b y+c=0 to the view, then take the end that is higher (steep line) or further right (flat line), just inside the frame.
+    const ends=[];const [A,B,C]=coef;
+    for(const x of [lo[0],hi[0]])if(B!==0){const y=-(A*x+C)/B;if(y>=lo[1]-1e-9&&y<=hi[1]+1e-9)ends.push([x,y]);}
+    for(const y of [lo[1],hi[1]])if(A!==0){const x=-(B*y+C)/A;if(x>=lo[0]-1e-9&&x<=hi[0]+1e-9&&!ends.some(e=>Math.hypot(e[0]-x,e[1]-y)<1e-9))ends.push([x,y]);}
+    if(ends.length<2)throw Error('LINE_LABEL_LINE_NOT_IN_VIEW');
+    // Anchors on the line, preferred end first (higher for a steep line, further right for a flat one): near the end, a little in, further in; then the other end.
+    const steep=Math.abs(A)>Math.abs(B),first=ends.reduce((p,q)=>(steep?q[1]>p[1]:q[0]>p[0])?q:p),second=ends.find(e=>e!==first),mid=[(first[0]+second[0])/2,(first[1]+second[1])/2];
+    const anchors=[[first,.08],[first,.22],[first,.4],[second,.08],[second,.22],[second,.4]].map(([e,t])=>[e[0]+(mid[0]-e[0])*t*2,e[1]+(mid[1]-e[1])*t*2]),at=anchors[0];
+    const id=node.id+'-equation';objects.push({id,kind:'EQUATION_LABEL',target:node.id,lineOwned:true,text:lineEquationText(ca,cb,cc,label.form),at,alternateAt:anchors.slice(1),priority:1});factRolesByLabel[id]=node.factRole;
   }
   for(const label of plan.scalarLabels||[]){
     const scalar=model.scalars[label.nodeId];if(!scalar)throw Error('SCALAR_LABEL_UNKNOWN_NODE');
@@ -341,7 +475,7 @@ export function specFor(plan,model,id){
     const scalarNode=plan.mathPlan.nodes.find(n=>n.id===label.nodeId),role=scalarNode.factRole;
     const sourceLength=(!!label.unit||(!label.prefix&&scalarNode.op==='SEGMENT_LENGTH'))&&role!=='CONCLUSION';
     const prefix=normalizeScalarLabelPrefix(label.prefix);
-    const id=label.nodeId+'-value';objects.push({id,kind:sourceLength?'LENGTH_LABEL':'EQUATION_LABEL',target:label.ownerSegment,...(sourceLength?{refs:[label.ownerSegment],value:scalar.approximation}:{}),text:(sourceLength||!prefix?'':prefix+'=')+scalarExpression(scalar.exact),at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
+    const id=label.nodeId+'-value';objects.push({id,kind:sourceLength?'LENGTH_LABEL':'EQUATION_LABEL',target:label.ownerSegment,...(sourceLength?{refs:[label.ownerSegment],value:scalar.approximation}:{}),text:(sourceLength||!prefix?'':prefix+'=')+unwrapParentheses(scalarExpression(scalar.exact)),at:[(a[0]+b[0])/2,(a[1]+b[1])/2],priority:1});
     notationByLabel[id]={...(!sourceLength&&/^[A-Z]{2}$/.test(label.prefix)?{entity:label.prefix}:{}),...(label.unit?{unit:label.unit}:{})};factRolesByLabel[id]=role;
   }
   for(const label of plan.segmentLabels||[]){
@@ -354,7 +488,86 @@ export function specFor(plan,model,id){
   const coordinateCanvas=plan.coordinateCanvas??{width:384,height:320};
   if(plan.coordinateCanvas!==undefined&&model.coordinateMode!=='SOURCE_COORDINATES')throw Error('COORDINATE_CANVAS_SOURCE_FRAME_REQUIRED');
   if(!Number.isSafeInteger(coordinateCanvas.width)||coordinateCanvas.width<384||coordinateCanvas.width>720||!Number.isSafeInteger(coordinateCanvas.height)||coordinateCanvas.height<320||coordinateCanvas.height>600)throw Error('COORDINATE_CANVAS_BOUNDS_INVALID');
-  return {id,visualType:'line_circle_geometry',viewport:{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad,width:coordinateCanvas.width,height:coordinateCanvas.height,panel:0},axes:model.coordinateMode==='SOURCE_COORDINATES',title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{notationByLabel,factRolesByLabel,squareAngleIds:(plan.rightAngles||[]).map(a=>a.id)},objects};
+  // The coordinate band adds height above the plot (two columns; 34 px rows, 56 with a fraction) instead of shrinking the plot.
+  const textOf=labelId=>objects.find(object=>object.id===labelId)?.text??'',panelRows=Array.from({length:Math.ceil(panelLabels.length/2)},(_,r)=>panelLabels.slice(2*r,2*r+2));
+  const panelPitches=panelRows.map(row=>bandRowPitch(row.map(textOf))),panelCenters=bandRowCenters(panelPitches,55);
+  const topInset=panelLabels.length?26+panelPitches.reduce((sum,pitch)=>sum+pitch,0):0,height=coordinateCanvas.height+topInset;
+  if(height>600)throw Error('COORDINATE_PANEL_TOO_TALL');
+  const equationLabelCenters=Object.fromEntries(panelLabels.map((labelId,i)=>[labelId,[panelLabels.length===1?coordinateCanvas.width/2:coordinateCanvas.width*(i%2?.72:.28),panelCenters[Math.floor(i/2)]]]));
+  return {id,visualType:'line_circle_geometry',viewport:{xMin:Math.min(...xs)-pad,xMax:Math.max(...xs)+pad,yMin:Math.min(...ys)-pad,yMax:Math.max(...ys)+pad,width:coordinateCanvas.width,height,panel:0,...(topInset?{topInset}:{})},axes:model.coordinateMode==='SOURCE_COORDINATES',title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{notationByLabel,factRolesByLabel,squareAngleIds:(plan.rightAngles||[]).map(a=>a.id),...axisTickDisplayFacts(plan),...(panelLabels.length?{equationLabelCenters}:{}),...(axisCoincidentLines.length?{axisCoincidentLines}:{})},objects};
+}
+
+// piecewise-polynomial-spike-v1: one continuous function of up to three pieces (degree <= 2) framed at one scale by graph_framing
+// (fit_piecewise_polynomial), which has already checked every claim (continuity, corners and vertices among requiredPoints, the exact
+// intersections with each horizontal line, the display formula). The figure follows the HEADER_BAND quadratic layout: the formula (when the
+// plan gives one) on top, then a band row per line (y=c) and the key point coordinates that go to the band, then the plot.
+function piecewisePolynomialSpec(plan,id){
+  const p=plan.graphPlan,v=p.viewport,features=p.piecewisePolynomialFeatures,plot=p.plotCanvas;
+  if(p.family!=='piecewise-polynomial'||!features||features.schemaVersion!=='PIECEWISE_POLYNOMIAL_FEATURES_v1'||!Array.isArray(features.pieces)||!Array.isArray(features.intersections))throw Error('PIECEWISE_POLY_FEATURE_INVENTORY_REQUIRED');
+  if(p.equalUnits!==true||!plot||typeof plot!=='object'||Object.keys(plot).sort().join(',')!=='height,width'||plot.width!==448||!Number.isSafeInteger(plot.height)||plot.height<120||plot.height>640)throw Error('EQUAL_UNIT_PLOT_CANVAS_INVALID');
+  if(p.formula!==undefined&&(typeof p.formula!=='string'||!p.formula))throw Error('PIECEWISE_POLY_FORMULA_INVALID');
+  const headerPx=p.formula===undefined?0:80,canvas={width:512,height:plot.height+64+headerPx,panel:0,topInset:headerPx};
+  const polyText=values=>{
+    const terms=values.map((c,i)=>({c,i})).reverse().filter(({c})=>c!=='0');
+    return terms.length?terms.map(({c,i},index)=>{const negative=c.startsWith('-'),magnitude=negative?c.slice(1):c,coefficient=magnitude.includes('/')?'('+magnitude+')':magnitude;return (negative?'-':index?'+':'')+(i?(magnitude==='1'?'':coefficient+'*')+'x'+(i>1?'^'+i:''):coefficient);}).join(''):'0';
+  };
+  const required=p.requiredPoints||[],crossX=features.intersections.flatMap(row=>row.points.map(point=>point.xValue));
+  // Each piece is its own FUNCTION_GRAPH on its draw interval, tagged PIECE_n so the observer can check it against its own polynomial.
+  const objects=features.pieces.map((piece,i)=>({id:'f-piece-'+(i+1),kind:'FUNCTION_GRAPH',expression:polyText(piece.coefficients),domain:piece.drawInterval,criticalX:[...new Set([...required.map(point=>point.x),...crossX])].filter(x=>piece.drawInterval[0]<=x&&x<=piece.drawInterval[1]),branch:'PIECE_'+(i+1)}));
+  if(headerPx)objects.push({id:'formula',kind:'EQUATION_LABEL',text:'y='+p.formula,at:[v[0]+(v[1]-v[0])*.3,v[3]-(v[3]-v[2])*.12]});
+  if(plan.coordinatePlacement!==undefined&&plan.coordinatePlacement!=='PANEL')throw Error('UNSUPPORTED_COORDINATE_PLACEMENT');
+  const exactCoordinates=p.exactCoordinates??{};
+  if(!exactCoordinates||typeof exactCoordinates!=='object'||Array.isArray(exactCoordinates))throw Error('EXACT_COORDINATES_INVALID');
+  for(const [pointId,pair] of Object.entries(exactCoordinates)){
+    const point=required.find(other=>other?.id===pointId);
+    if(!point||!Array.isArray(pair)||pair.length!==2||[point.x,point.y].some((value,k)=>Math.abs(exactValue(pair[k])-value)>1e-9*Math.max(1,Math.abs(value))))throw Error('EXACT_COORDINATES_MISMATCH:'+pointId);
+  }
+  const integerKey=point=>Number.isSafeInteger(point?.x)&&Number.isSafeInteger(point?.y);
+  const coordinateText=point=>exactCoordinates[point?.id]??(integerKey(point)?[String(point.x),String(point.y)]:null);
+  const nameLike=pointId=>/^[A-Z][0-9']?$/.test(pointId),graphPanel=new Set(plan.coordinatePlacement==='PANEL'?required.filter(point=>coordinateText(point)&&nameLike(point.id)).map(point=>point.id):plan.coordinatePanel||[]);
+  for(const pointId of graphPanel)if(!nameLike(pointId)||!coordinateText(required.find(point=>point.id===pointId)))throw Error('COORDINATE_PANEL_POINT_INVALID:'+pointId);
+  const graphDirections=plan.labelDirections??{};
+  if(!graphDirections||typeof graphDirections!=='object'||Array.isArray(graphDirections)||Object.entries(graphDirections).some(([pointId,direction])=>!required.some(point=>point.id===pointId)||graphPanel.has(pointId)||!['N','NE','E','SE','S','SW','W','NW'].includes(direction)))throw Error('INVALID_LABEL_DIRECTIONS');
+  const panelLabels=[];
+  for(const [index,point] of required.entries()){
+    if(!point||typeof point.id!=='string'||!point.id||!Number.isFinite(point.x)||!Number.isFinite(point.y))throw Error('POLYNOMIAL_REQUIRED_POINT_INVALID');
+    const markerId='required-point-'+(index+1),coordinates=coordinateText(point);
+    if(graphPanel.has(point.id)){
+      const labelId=markerId+'-coordinate-panel';panelLabels.push(labelId);
+      objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],name:point.id});
+      objects.push({id:labelId,kind:'EQUATION_LABEL',target:markerId,text:point.id+'('+coordinates.map(unwrapParentheses).join(',')+')',at:[point.x,point.y],priority:0});
+      continue;
+    }
+    objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates?{}:{name:null})});
+    if(coordinates)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates,...(graphDirections[point.id]?{preferred:graphDirections[point.id]}:{})});
+  }
+  // Horizontal lines y=c (a=0, b=-1, c) with a dot at every intersection the framing verified; the equation goes to the band.
+  const lines=p.referenceLines??[],lineLabels=[];
+  if(!Array.isArray(lines)||lines.length!==features.intersections.length)throw Error('PIECEWISE_POLY_FEATURE_INVENTORY_REQUIRED');
+  for(const [index,line] of lines.entries()){
+    const row=features.intersections[index];
+    if(!row||row.lineId!==line?.id||!Array.isArray(row.points))throw Error('PIECEWISE_POLY_FEATURE_INVENTORY_REQUIRED');
+    const levelText=String(line.y),level=exactValue(levelText),lineId='line-'+line.id,labelId=lineId+'-equation';
+    objects.push({id:lineId,kind:'LINE',coefficients:[0,-1,level]});
+    lineLabels.push(labelId);objects.push({id:labelId,kind:'EQUATION_LABEL',text:'y='+levelText,at:[(v[0]+v[1])/2,v[3]],priority:0});
+    for(const [k,point] of row.points.entries()){
+      // A crossing that is also a marked key point is drawn once, as that key point (framing names it in keyPoint).
+      if(point.keyPoint!==undefined){if(!required.some(other=>other.id===point.keyPoint))throw Error('PIECEWISE_POLY_FEATURE_INVENTORY_REQUIRED');continue;}
+      const markerId='intersection-'+line.id+'-'+(k+1);
+      objects.push({id:markerId,kind:'POINT',at:[point.xValue,level],...(line.labelIntersections===true?{}:{name:null})});
+      if(line.labelIntersections===true)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:[point.x,levelText]});
+    }
+  }
+  // Band rows as for a HEADER_BAND quadratic: each line equation on its own row, then the band coordinates in two columns (one when long).
+  const longCoordinate=objects.some(object=>panelLabels.includes(object.id)&&object.text.length>10),columns=longCoordinate?1:2;
+  const coordinateRows=Math.ceil(panelLabels.length/columns),textOf=labelId=>objects.find(object=>object.id===labelId)?.text??'';
+  const rows=[...lineLabels.map(labelId=>[labelId]),...Array.from({length:coordinateRows},(_,r)=>panelLabels.slice(r*columns,r*columns+columns))];
+  const pitches=rows.map(row=>bandRowPitch(row.map(textOf)));
+  const bandExtra=rows.length?26+pitches.reduce((sum,pitch)=>sum+pitch,0):0;
+  if(canvas.height+bandExtra>1099)throw Error('COORDINATE_PANEL_TOO_TALL');
+  const rowCenters=bandRowCenters(pitches,headerPx?135:55);
+  const bandCenters=Object.fromEntries(rows.flatMap((row,r)=>row.map((labelId,k)=>[labelId,[r<lineLabels.length||panelLabels.length===1||columns===1?canvas.width/2:canvas.width*(k?.72:.28),rowCenters[r]]])));
+  return {id,visualType:'function_graph',viewport:{...graphViewport(v,{...canvas,height:canvas.height+bandExtra}),topInset:canvas.topInset+bandExtra,...((p.axisRatio??1)===1?{equalUnits:true}:{})},axes:true,title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts({axisTickValues:p.axisTickValues??{x:[],y:[]}}),formulaPlacement:'HEADER_BAND',equationLabelCenters:{...(headerPx?{formula:[canvas.width/2,72]}:{}),...bandCenters},...(p.intervalFeatures?{intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy}:{})},objects};
 }
 
 export async function runPhase2(options){
@@ -542,10 +755,10 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     const verification=await verify();const verified=verification.record,verifiedReceipt=verification.receipt;
     solutionRef=receipt('SOLUTION_INPUT',{'solution.txt':question.solution},provenance).outputs[0];
     console.log(JSON.stringify({stage:'PLANNER',uid}));
-    let extendedContract=compilerContract+' Also supported: SEGMENT_LENGTH(inputs two POINT, args{}, outputType SCALAR), SCALAR_SQUARE(inputs one SCALAR,args{},outputType SCALAR), and SCALAR_RATIO(inputs two SCALAR,args{},outputType SCALAR). Supported bounded construction operations: PARALLEL_THROUGH(inputs POINT,LINE), ANGLE_BISECTOR(inputs ordered points [A,V,B], args {mode:INTERNAL|EXTERNAL}), CIRCLE_THROUGH_3(inputs three non-collinear POINT), CIRCLE_THROUGH_POINT(inputs center,boundary POINT), TANGENT_AT_POINT(inputs CIRCLE,POINT on the circle), and LINE_INTERSECTION(inputs two nonparallel LINE) for a unique point. Use INTERSECTION plus SELECT_POINT for multiple circle-line/circle-circle roots and declare the oriented source branch. mathPlan.conditionAudits may contain only typed checks with exact refs and a required sourceConditionId that matches one top-level sourceConditions.id: INCIDENCE_POINT_ON_LINE(POINT,LINE), DISTANCE_EQUALS(POINT,POINT,expected:typedScalar), EQUAL_DISTANCE(POINT,POINT,POINT,POINT), MIDPOINT_RATIO(start,middle,end,expected:typedScalar), PERPENDICULAR(LINE,LINE), PARALLEL(LINE,LINE), CIRCLE_MEMBERSHIP(CIRCLE,POINT), TANGENCY_AT_POINT(CIRCLE,POINT,LINE), ORIENTED_SIDE(start,end,point,sign:+1|-1). Every check must bind to a stated source condition; do not invent coordinates or substitute general constraint solving. Geometry must calculate decisive lengths and relations using nodes when relevant; scalarLabels:[{nodeId,ownerSegment,prefix,unit?:string}] displays exact results near the owner segment. Also supported rightAngles:[{id,refs:[rayPoint,vertex,rayPoint],factRole:GIVEN|DERIVED_INTERMEDIATE}] and segmentLabels:[{id,ownerSegment,variable:single-letter,unit?:cm|m,factRole:GIVEN}]. Do not create duplicate labels with the same owner and content. Avoid unnecessary construction nodes when a display segment suffices. All scalar node dependencies may follow SELECT_POINT. Display segments use IDs distinct from mathPlan point/scalar IDs. Original question content, score, choices, answer and solution remain unchanged in the actual Archive bank; map these conditions to PRESERVED_ARCHIVE_BANK.';
+    let extendedContract=compilerContract+' Also supported: SEGMENT_LENGTH(inputs two POINT, args{}, outputType SCALAR), SCALAR_SQUARE(inputs one SCALAR,args{},outputType SCALAR), and SCALAR_RATIO(inputs two SCALAR,args{},outputType SCALAR). Supported bounded construction operations: PARALLEL_THROUGH(inputs POINT,LINE), ANGLE_BISECTOR(inputs ordered points [A,V,B], args {mode:INTERNAL|EXTERNAL}), CIRCLE_THROUGH_3(inputs three non-collinear POINT), CIRCLE_THROUGH_POINT(inputs center,boundary POINT), TANGENT_AT_POINT(inputs CIRCLE,POINT on the circle), and LINE_INTERSECTION(inputs two nonparallel LINE) for a unique point. Use INTERSECTION plus SELECT_POINT for multiple circle-line/circle-circle roots and declare the oriented source branch. mathPlan.conditionAudits may contain only typed checks with exact refs and a required sourceConditionId that matches one top-level sourceConditions.id: INCIDENCE_POINT_ON_LINE(POINT,LINE), DISTANCE_EQUALS(POINT,POINT,expected:typedScalar), EQUAL_DISTANCE(POINT,POINT,POINT,POINT), MIDPOINT_RATIO(start,middle,end,expected:typedScalar), PERPENDICULAR(LINE,LINE), PARALLEL(LINE,LINE), CIRCLE_MEMBERSHIP(CIRCLE,POINT), TANGENCY_AT_POINT(CIRCLE,POINT,LINE), ORIENTED_SIDE(start,end,point,sign:+1|-1). Meanings: DISTANCE_EQUALS expected is the exact length |PQ|; EQUAL_DISTANCE means |PQ|=|RS|; MIDPOINT_RATIO requires middle on segment start-end and expected is the ratio of the two parts |start-middle| divided by |middle-end|, never a part divided by the whole (a midpoint has expected 1; the centroid on a median from vertex C to midpoint M has refs C,G,M and expected 2); CIRCLE_MEMBERSHIP means the point is on the circle; TANGENCY_AT_POINT means the point is on the circle and on the line and the line is perpendicular to the radius there. Each check is exactly {id,kind,refs,sourceConditionId} plus expected or sign where listed, with a unique id. Every check must bind to a stated source condition; do not invent coordinates or substitute general constraint solving. Geometry must calculate decisive lengths and relations using nodes when relevant; scalarLabels:[{nodeId,ownerSegment,prefix,unit?:string}] displays exact results near the owner segment. Also supported rightAngles:[{id,refs:[rayPoint,vertex,rayPoint],factRole:GIVEN|DERIVED_INTERMEDIATE}] and segmentLabels:[{id,ownerSegment,variable:single-letter,unit?:cm|m,factRole:GIVEN}]. Do not create duplicate labels with the same owner and content. Avoid unnecessary construction nodes when a display segment suffices. All scalar node dependencies may follow SELECT_POINT. Display segments use IDs distinct from mathPlan point/scalar IDs. Original question content, score, choices, answer and solution remain unchanged in the actual Archive bank; map these conditions to PRESERVED_ARCHIVE_BANK.';
     extendedContract+=CUBIC_QUARTIC_CONTRACT;
     extendedContract+=' In an explicitly supplied coordinate plane, NORMALIZATION_ORIGIN and unit NORMALIZATION_AXIS may be coordinate-axis references: declare mathPlan.realization:{recipeId:"SOURCE_COORDINATE_AXES_v1",unit:"source-coordinate",reflectionEquivalent:false}; axis length must be exactly 1. Retain every SOURCE_POINT in its original coordinate frame. This is not SSS normalization or a license to invent derived coordinates.';
-    extendedContract+=' The mathematical DAG may contain internal axis/projection helpers. Explicit optional displayPoints:[point IDs] and displayLines:[line IDs] select the final educational drawing; retain all original SOURCE_POINT nodes, GIVEN/CONCLUSION geometry and every annotation/segment endpoint. For the x-axis equidistance construction, show the source A,B and derived P, segments PA and PB and their equal lengths; axis/projection helper points and auxiliary lines may stay in the exact DAG without cluttering the drawing. Use short mathematical point IDs, and use prefix:"" for a pure length value without an equation prefix.';
+    extendedContract+=' The mathematical DAG may contain internal axis/projection helpers. Explicit optional displayPoints:[point IDs], displayLines:[line IDs] and displayCircles:[circle IDs] select the final educational drawing (a displayed point is written with its node id, so use the names the stored solution uses as node ids, for example A, B, M, P, and never ids such as O0, Pp or C1 that the solution does not use; helper points the solution does not name should be DERIVED_INTERMEDIATE and listed in hiddenPointNames); they are top-level plan fields, never inside mathPlan, and when one is omitted every node of that type is drawn (circles made by CIRCLE_CENTER_RADIUS are drawn as geometry). Each list must retain all original SOURCE_POINT nodes, GIVEN/CONCLUSION geometry of its type and every annotation/segment endpoint. Optional top-level coordinatePlacement:"PANEL" keeps only the point names at the points and lists each coordinateLabels point as A(x,y) in a band above the figure; use it when several labelled points would crowd the figure, or set coordinatePanel:[point IDs] to move only those points; labelDirections:{pointId:"SE"} names the first direction (N, NE, E, SE, S, SW, W or NW) tried for a coordinate label that stays at its point. A displayed line that is the x-axis or the y-axis is not drawn again (the axis shows it); do not list it in displayLines. Optional top-level hiddenPointNames:[point IDs] draws derived helper points (DERIVED_INTERMEDIATE, not SOURCE_POINT, not in coordinateLabels) as dots without a name; use it for helpers the solution never names. For a quadratic graph, coordinatePanel:[requiredPoint IDs] or coordinatePlacement:"PANEL" names those integer key points by their id (one capital letter, optionally a digit or prime) and lists P(x,y) under the formula. For the x-axis equidistance construction, show the source A,B and derived P, segments PA and PB and their equal lengths; axis/projection helper points and auxiliary lines may stay in the exact DAG without cluttering the drawing. Use short mathematical point IDs, and use prefix:"" for a pure length value without an equation prefix; any other prefix is one or two Latin letters, optionally followed by ^2 or ^3 (for example AB, r, S^2). A construction plan may set axisTickValues:{x:[numbers],y:[numbers]} to choose the axis ticks (a polynomial graphPlan always uses {x:[],y:[]}); use {x:[],y:[]} when every displayed key point already carries a coordinate label, and never put a tick at a value whose coordinate label is drawn next to that axis.';
     extendedContract+=' For source-coordinate geometry only, coordinateCanvas:{width,height} may enlarge the composition with width 384–720 and height 320–600; this changes framing only and must preserve all source coordinates, exact derived coordinates, labels and their owners. For a quadratic overview only, overviewCanvasHeight may increase the plot height between 400 and 600 SVG units; keep all required roots, vertex, source ticks and both curve arms visible.';
     extendedContract+=RATIONAL_CONTRACT;
     extendedContract+=SQRT_AFFINE_CONTRACT;
@@ -554,6 +767,8 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
     extendedContract+=EXPONENTIAL_AFFINE_CONTRACT;
     extendedContract+=LOGARITHMIC_AFFINE_CONTRACT;
     extendedContract+=TRIGONOMETRIC_CONTRACT;
+    extendedContract+=' A function graph made of up to three polynomial pieces of degree at most 2 that join without a jump (for example the absolute value of a quadratic written as its pieces, or |x^2+x-6|+2x when the solution rewrites the equation as k=g(x)), drawn together with up to three horizontal lines y=c and their intersection points, is ONE curve and is supported: use {capability:"piecewise-polynomial-spike-v1",graphPlan:{family:"piecewise-polynomial",pieces:[{coefficients:[...]},...],breakpoints:[{x,y},...],sourceDomain,formula,referenceLines:[...],requiredPoints:[...],exactCoordinates:{...},axisTickValues:{x:[],y:[]}},caption,sourceConditions,newVisualInformation}; every field named here sits inside graphPlan except capability, caption, sourceConditions and newVisualInformation (and the optional top-level coordinatePlacement, coordinatePanel and labelDirections, which work as for a quadratic). pieces lists 1 to 3 pieces from left to right, each {coefficients:[constant, x coefficient, x squared coefficient]} with exact integer or fraction strings such as "-6", "3", "1/2" (degree at most 2; no sqrt, no decimals). breakpoints has exactly one entry fewer than pieces: breakpoints[i].x (exact strings, strictly increasing) is where piece i ends and piece i+1 begins, and breakpoints[i].y is the common value there; both neighbouring pieces must give exactly that y (a jump is refused with PIECEWISE_POLY_DISCONTINUOUS, a wrong y with PIECEWISE_POLY_BREAKPOINT_VALUE_MISMATCH). The first piece runs from the left end of the source domain to the first breakpoint, the last piece from the last breakpoint to the right end. sourceDomain is {kind:"ALL_REALS"} (the outer pieces continue without end; the engine draws them a little beyond the outermost marked point) or {kind:"INTERVAL",range:[lo,hi],states:[start,end]} as for a quadratic on an interval (each breakpoint strictly inside). requiredPoints:[{id,x,y}] with numeric x and y must contain every breakpoint (corner) and the vertex of every quadratic piece whose vertex lies strictly inside that piece; the engine recomputes both and refuses a plan that misses one (PIECEWISE_POLY_CORNER_NOT_IN_REQUIRED_POINTS, PIECEWISE_POLY_EXTREMUM_NOT_IN_REQUIRED_POINTS) or a point off the curve; give non-integer coordinates in exactCoordinates {pointId:["1/2","25/4"]} so every such point gets its exact coordinate label, and use one capital letter as id (A, B, C) so a crowded label can move to the band. formula (optional) writes the header line y=... : the source function in x with digits, x, abs(...), + - * / ^ and parentheses only, implicit products such as 2x allowed (for example "abs(x^2+x-6)+2x"); it must be the same function as the pieces (PIECEWISE_POLY_FORMULA_MISMATCH otherwise); leave it out when the source gives the function only by its pieces. referenceLines:[{id,y,intersectionX,labelIntersections}] (at most 3): id is a short ASCII name starting with a letter (for example k), y the exact height as an integer or fraction string, and intersectionX the exact x of EVERY intersection of that line with the whole curve, each once (a touching point counts once), written with integers, fractions, sqrt(...), + - * / and parentheses (for example "(-3-sqrt(53))/2"); the engine solves every piece exactly and refuses a list that differs (PIECEWISE_POLY_INTERSECTION_MISMATCH says how many it finds). Each intersection is drawn as a dot; labelIntersections:true also writes its exact coordinates beside the dot (default false: dots only, which keeps a crowded figure readable). Each line is written as y=c in the band under the formula. When the solution counts intersections with a moving line y=k, draw one representative value strictly inside the answer range (for example y=5 for 4<k<25/4) and name that value in the caption. Do not give domain or viewport: the engine frames the figure at one scale on both axes. A vertical line, two separate functions, a jump, or a piece of degree 3 or more is not supported.';
+    extendedContract+=' When the stored solution solves a quadratic inequality (for example D/4=(a+3)(a-5)<0 for a parameter a, or x^2+4x+3<0 together with x>=-2), use {capability:"quadratic-inequality-chain-v1",inequality:{coefficients,comparator,variable,domain,adjoinedPoints,integerPoints},graphCaption,numberLineCaption,caption,sourceConditions,newVisualInformation}: the engine draws a fixed chain of two panels, the quadratic graph y=f(variable) with its real roots and vertex as key points, then the solution set as a number line headed by the interval (for example -3<=a<5 written with the inequality signs), with a filled dot at a closed end, a hollow dot at an open end and a thick band over the set. Give only the inequality f(variable) comparator 0: coefficients are exactly three exact integer or fraction strings [constant, linear, squared] of f with a nonzero squared coefficient (expand the factored form: (a+3)(a-5) is ["-15","-2","1"]); comparator is one of "<", "<=", ">", ">="; variable is the solution variable, one lowercase letter other than y (default x). Never give endpoints, dots or coordinates: the engine solves the inequality exactly (roots with square roots allowed) and an independent observer re-solves it and checks the drawing. domain (optional) {kind:"INTERVAL",range:[lo,hi],states:[start,end]} is a condition the solution imposes on the variable (for example a+3>0 or x>=-2): lo and hi are exact strings or null for no bound, each state OPEN or CLOSED; the set is intersected with it. adjoinedPoints (optional) lists exact values a separate case of the solution adds (for example ["-3"] when the solution checks a=-3 on its own and it satisfies the condition); each must close an open end of the set. integerPoints (optional) draws the integers of the set as dots above the line: true for a bounded set, or {range:["lo","hi"]} (integer strings) to count only integers in that range; use it when the solution counts or lists integers, natural numbers or their sum. graphCaption and numberLineCaption (optional) are panel captions {math,text} as for composite panels (math plain ASCII such as k>0; text short Korean without subscripts). The final set must be one interval, one point or all reals: a set of two pieces (INEQUALITY_SOLUTION_NOT_ONE_INTERVAL), an empty set (INEQUALITY_SOLUTION_EMPTY), an adjoined value that does not touch the set (INEQUALITY_ADJOINED_POINT_NOT_ADJACENT), integer points of an unbounded set without a range (INEQUALITY_INTEGER_POINTS_NEED_RANGE), more than 25 integer points, a linear inequality and a system of two quadratic inequalities are not supported; for a system, draw the one quadratic inequality and give the other condition as domain.';
     let planner=recoveredPlanner??await provider('PLAN_VISUAL',{instruction:extendedContract,source:sourceOnly,verifiedSolution:question.solution,verification:verified.payload},images,folder);
     plan=planner.payload;
     stages.push(freeze('PLANNER',planner,provenance));
@@ -564,7 +779,7 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
       repairBudget.complete(repair,objectSha(plan));
       if(!plan.sourceConditions?.length||!plan.newVisualInformation?.length)throw Error('PLANNER_SOURCE_COVERAGE_OR_BENEFIT_MISSING');
     }
-    if(!['construction-spike-v1','polynomial-spike-v1','rational-spike-v1','sqrt-affine-spike-v1','absolute-value-spike-v1','piecewise-affine-spike-v1','exponential-affine-spike-v1','logarithmic-affine-spike-v1','trigonometric-spike-v1'].includes(plan.capability))throw Error('UNSUPPORTED_CAPABILITY');
+    if(!['construction-spike-v1','polynomial-spike-v1','rational-spike-v1','sqrt-affine-spike-v1','absolute-value-spike-v1','piecewise-affine-spike-v1','exponential-affine-spike-v1','logarithmic-affine-spike-v1','trigonometric-spike-v1','piecewise-polynomial-spike-v1'].includes(plan.capability))throw Error('UNSUPPORTED_CAPABILITY');
     console.log(JSON.stringify({stage:'INDEPENDENT_SOURCE_CONDITIONS',uid}));
     let sourceReview;
     for(let revision=0;revision<=3;revision++){
@@ -783,6 +998,44 @@ async function runPhase2InWorkspace({questionUid,sourceRegistryRef=null,sourcePa
   result.repairLedger=repairBudget.ledger;
   Object.assign(result,{schemaVersion:'VISUAL_RESULT_v1',phase:2,engineStatus:'EXPERIMENTAL',workRoot:workspace.workRoot,runId:workspace.runId,examUid:workspace.examUid});
   const final=freeze('RESULT',result,provenance);console.log(JSON.stringify({uid,status:result.status,error:result.error,resultRef:final.outputs[0]}));return {result,receipt:final};
+}
+// The numeric value of a plan's exact value text: integers, a/b, sqrt(...), + - * / and parentheses only (for example "-3/2", "4-2*sqrt(3)").
+// A small recursive-descent parser, never eval; anything else is EXACT_VALUE_INVALID.
+export function exactValue(text){
+  const bad=()=>{throw Error('EXACT_VALUE_INVALID');};
+  if(typeof text!=='string'||!text||text.length>64||!/^[0-9+\-*/()sqrt ]+$/.test(text))bad();
+  const tokens=text.replace(/\s+/g,'').match(/sqrt|\d+|[+\-*/()]/g)||[];if(tokens.join('')!==text.replace(/\s+/g,''))bad();
+  let i=0;const peek=()=>tokens[i],take=()=>tokens[i++];
+  const factor=()=>{const t=take();if(t==='-')return -factor();if(t==='+')return factor();if(t==='sqrt'){if(take()!=='(')bad();const v=expr();if(take()!==')'||v<0)bad();return Math.sqrt(v);}if(t==='('){const v=expr();if(take()!==')')bad();return v;}if(/^\d+$/.test(t??''))return Number(t);return bad();};
+  const term=()=>{let v=factor();while(peek()==='*'||peek()==='/'){const op=take(),w=factor();if(op==='/'&&w===0)bad();v=op==='*'?v*w:v/w;}return v;};
+  const expr=()=>{let v=term();while(peek()==='+'||peek()==='-'){const op=take(),w=term();v=op==='+'?v+w:v-w;}return v;};
+  const value=expr();if(i!==tokens.length||!Number.isFinite(value))bad();return value;
+}
+// One wrapping pair of parentheses around the whole expression is dropped ((4/3) -> 4/3); parentheses that are part of it stay (-(sqrt(2))).
+// Exact rational [numerator,denominator] (BigInt) of an integer/rational typed scalar; anything else cannot be written as a line equation here.
+function exactRational(v){
+  if(v?.kind==='integer')return [BigInt(v.value),1n];
+  if(v?.kind==='rational')return [BigInt(v.numerator),BigInt(v.denominator)];
+  throw Error('LINE_LABEL_COEFFICIENT_NOT_RATIONAL');
+}
+const gcdBig=(x,y)=>{x=x<0n?-x:x;y=y<0n?-y:y;while(y){[x,y]=[y,x%y];}return x;};
+const ratText=([n,d])=>{const g=gcdBig(n,d)||1n;n/=g;d/=g;if(d<0n){n=-n;d=-d;}return d===1n?String(n):n+'/'+d;};
+function lineEquationText(ca,cb,cc,form){
+  const term=([n,d],sym)=>{const g=gcdBig(n,d)||1n;let p=n/g,q=d/g;if(q<0n){p=-p;q=-q;}if(p===0n)return '';const neg=p<0n,abs=neg?-p:p,body=q===1n?(abs===1n?sym:abs+'*'+sym):abs+'/'+q+'*'+sym;return (neg?'-':'+')+body;};
+  const join=parts=>{const s=parts.join('');return s.startsWith('+')?s.slice(1):s;};
+  if(form==='GENERAL'){
+    const constant=(()=>{const g=gcdBig(cc[0],cc[1])||1n;let p=cc[0]/g,q=cc[1]/g;if(q<0n){p=-p;q=-q;}return p===0n?'':(p<0n?'-':'+')+ratText([p<0n?-p:p,q]);})();
+    return join([term(ca,'x'),term(cb,'y'),constant])+'=0';
+  }
+  if(cb[0]===0n)throw Error('LINE_LABEL_SLOPE_FORM_NEEDS_NONVERTICAL_LINE');
+  const slope=[-ca[0]*cb[1],ca[1]*cb[0]],icept=[-cc[0]*cb[1],cc[1]*cb[0]];
+  const constant=(()=>{const g=gcdBig(icept[0],icept[1])||1n;let p=icept[0]/g,q=icept[1]/g;if(q<0n){p=-p;q=-q;}return p===0n?'':(p<0n?'-':'+')+ratText([p<0n?-p:p,q]);})();
+  return 'y='+(join([term(slope,'x'),constant])||'0');
+}
+function unwrapParentheses(text){
+  if(!text.startsWith('(')||!text.endsWith(')'))return text;
+  let depth=0;for(let i=0;i<text.length;i++){if(text[i]==='(')depth++;else if(text[i]===')'&&--depth===0&&i<text.length-1)return text;}
+  return text.slice(1,-1);
 }
 function scalarExpression(v){
   if(v.kind==='integer')return v.value;if(v.kind==='rational')return '('+v.numerator+'/'+v.denominator+')';

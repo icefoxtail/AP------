@@ -28,6 +28,11 @@ const authorityInputsSha256 = sha(JSON.stringify({
 const masterPath = 'docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json';
 const masterText = read(masterPath);
 const parents = core.taxonomyPaths(JSON.parse(masterText));
+const canonicalParentPathKeys = new Set(parents.map(parent => core.pathKey(parent, 4)));
+const projectionPolicy = JSON.parse(read('archive/data/archive2-canonical-projection-policy.json'));
+const gradeCourseAllowlist = new Set((projectionPolicy.gradeCourseAllowlist || []).map(row =>
+  [row.grade, row.curriculumKey, row.courseKey].join('\u0000'),
+));
 const dir = 'archive/data/meta-foundation/crosswalks/rpm-primary-v1.0';
 const records = [], refs = [], seen = new Set();
 const course = scope => ({ 수학_상: '수학(상)', 수학_하: '수학(하)' })[scope] || scope;
@@ -192,6 +197,54 @@ const sourceGradeByFile = catalog.canonicalAuthority?.examGradeByFile || {};
 const identityByUid = catalog.canonicalAuthority?.identityByUid || {};
 const gradeCourses = catalog.canonicalAuthority?.gradeCourses || [];
 const sourceParentByUid = new Map(sourceParents.map(link => [link.questionUid, link]));
+// A courier-registered META_PIPELINE_AUDIT may supply an exact L1/L2 from an
+// evidence-bound canonical target-parent reference even when the shared
+// parent table has no per-UID source link. Preserve the production source and
+// materialize only a UID-bound parent row whose metadata, source identity,
+// source/body fingerprints, grade/course allowlist, active canonical path,
+// and audit evidence all agree.
+for (const item of catalog.records) {
+  const metaEvidence = item.metadataAssignmentEvidence || {};
+  const fields = metaEvidence.fieldStatus || {};
+  const refs = metaEvidence.evidenceRefs || [];
+  const candidate = item.unverifiedTaxonomy || {};
+  const curriculumKey = candidate.curriculumKey || "";
+  const courseKey = candidate.courseKey || "";
+  const L1 = candidate.L1 || "";
+  const L2 = candidate.L2 || "";
+  const registeredAudit = String(metaEvidence.metadataRevision || "").includes(":exam-meta_pipeline_audit-v2:") &&
+    String(metaEvidence.metadataStatus || "").startsWith("approved_") &&
+    /^approved(?:_|$)/i.test(String(fields.standardUnit || "")) &&
+    /^approved(?:_|$)/i.test(String(fields.subUnit || "")) &&
+    refs.some(ref => String(ref || "").includes("META_AUDIT_ATOMIC_PACKAGE_")) &&
+    refs.some(ref => String(ref || "").endsWith(".source-parity.json"));
+  if (!registeredAudit || item.foundationTaxonomyStatus !== "CONFIRMED" || item.identityStatus !== "VERIFIED" ||
+      item.sourceStatus !== "VERIFIED" || item.sourceGradeStatus !== "VALID" || !item.questionUid ||
+      !item.sourceFile || !Number.isInteger(Number(item.sourceOrdinal)) || !item.assignmentFingerprint ||
+      item.assignmentFingerprint !== metaEvidence.assignmentFingerprint || !curriculumKey || !courseKey || !L1 || !L2 ||
+      !gradeCourseAllowlist.has([item.sourceGrade, curriculumKey, courseKey].join("\u0000")) ||
+      !canonicalParentPathKeys.has(core.pathKey({ curriculumKey, courseKey, L1, L2 }, 4))) continue;
+  const link = {
+    grade: item.sourceGrade,
+    curriculumKey,
+    courseKey,
+    questionUid: item.questionUid,
+    sourceFile: core.normalizeFile(item.sourceFile),
+    sourceOrdinal: Number(item.sourceOrdinal),
+    sourceFingerprint: metaEvidence.sourceFingerprint || item.sourceFingerprint,
+    assignmentFingerprint: item.assignmentFingerprint,
+    metadataParent: [courseKey, L1, L2],
+    L1,
+    L2,
+    reason: "META_PIPELINE_AUDIT exact approved metadata + source parity + canonical parent"
+  };
+  const prior = sourceParentByUid.get(item.questionUid);
+  if (prior && (prior.grade !== link.grade || prior.curriculumKey !== link.curriculumKey ||
+      core.normalizeCourseIdentity(prior.courseKey) !== core.normalizeCourseIdentity(link.courseKey) ||
+      prior.L1 !== link.L1 || prior.L2 !== link.L2))
+    throw new Error(`Conflicting META_PIPELINE_AUDIT source parent: ${item.questionUid}`);
+  sourceParentByUid.set(item.questionUid, { ...prior, ...link });
+}
 for (const link of existingParentLinks.sourceParents || []) {
   const item = currentByUid.get(link.questionUid);
   const identity = identityByUid[link.questionUid];
@@ -202,6 +255,18 @@ for (const link of existingParentLinks.sourceParents || []) {
     sourceFile,
     identitySourceFile: identity.sourceArchiveFile,
   });
+  const currentMeta = item.metadataAssignmentEvidence || {};
+  const currentMetaFields = currentMeta.fieldStatus || {};
+  const currentMetaRefs = currentMeta.evidenceRefs || [];
+  const currentMetaParent = item.unverifiedTaxonomy || {};
+  const currentAuditParentIsAuthoritative = String(currentMeta.metadataRevision || '').includes(':exam-meta_pipeline_audit-v2:') &&
+    String(currentMeta.metadataStatus || '').startsWith('approved_') &&
+    /^approved(?:_|$)/i.test(String(currentMetaFields.standardUnit || '')) &&
+    /^approved(?:_|$)/i.test(String(currentMetaFields.subUnit || '')) &&
+    currentMetaRefs.some(ref => String(ref || '').includes('META_AUDIT_ATOMIC_PACKAGE_')) &&
+    currentMetaRefs.some(ref => String(ref || '').endsWith('.source-parity.json')) &&
+    canonicalParentPathKeys.has(core.pathKey({ curriculumKey: currentMetaParent.curriculumKey,
+      courseKey: currentMetaParent.courseKey, L1: currentMetaParent.L1, L2: currentMetaParent.L2 }, 4));
   const canonicalParent = parents.some(parent => parent.curriculumKey === link.curriculumKey &&
     core.normalizeCourseIdentity(parent.courseKey) === core.normalizeCourseIdentity(link.courseKey) &&
     parent.L1 === link.L1 && parent.L2 === link.L2);
@@ -217,6 +282,7 @@ for (const link of existingParentLinks.sourceParents || []) {
     link.curriculumKey === item.curriculumKey &&
     core.normalizeCourseIdentity(link.courseKey) === core.normalizeCourseIdentity(item.courseKey) &&
     link.L1 === item.L1 && link.L2 === item.L2 &&
+    (!currentAuditParentIsAuthoritative || link.L1 === currentMetaParent.L1 && link.L2 === currentMetaParent.L2) &&
     Number(identity.sourceOrdinal) === Number(item.sourceOrdinal) &&
     core.normalizeFile(identity.sourceArchiveFile) === sourceFile &&
     canonicalParent && currentGradeCourse &&

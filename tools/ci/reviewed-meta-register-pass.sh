@@ -24,9 +24,23 @@ fi
 for request in "${reqs[@]}"; do cp -- "$request" "$work/requests/$(basename "$request")"; done
 
 if [[ ${#reqs[@]} -gt 0 ]]; then
-  node --test tests/archive-reviewed-exam-registration-v2.test.mjs
-  node --test tests/archive-finalqa-nonpt-register.test.mjs
-  node --test tests/archive-finalqa-nonpt-real-geumdang.test.mjs
+  only_meta_pipeline=true
+  for request in "${reqs[@]}"; do
+    schema="$(jq -r '.schemaVersion // ""' "$request")"
+    approval="$(jq -r '.approval.type // ""' "$request")"
+    if [[ "$schema" != "archive-reviewed-exam-meta-register-request-v2" || "$approval" != "META_PIPELINE_AUDIT" ]]; then
+      only_meta_pipeline=false
+    fi
+  done
+  if [[ "$only_meta_pipeline" == "true" ]]; then
+    # This request family is covered by the v2 registrar suite. Legacy FINAL_QA
+    # fixtures exercise separate writers and must not gate a Gemini audit handoff.
+    node --test tests/archive-reviewed-exam-registration-v2.test.mjs
+  else
+    node --test tests/archive-reviewed-exam-registration-v2.test.mjs
+    node --test tests/archive-finalqa-nonpt-register.test.mjs
+    node --test tests/archive-finalqa-nonpt-real-geumdang.test.mjs
+  fi
   for request in "${reqs[@]}"; do
     node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --request "$request" --write
   done

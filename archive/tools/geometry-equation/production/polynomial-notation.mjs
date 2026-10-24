@@ -15,8 +15,9 @@ export function quadraticVertexNotation(coefficients){
  const[c,b,a]=coefficients.map(parse);if(!a[0])return null;
  const h=div([-b[0],b[1]],mul([2n,1n],a));
  const k=sub(c,div(mul(b,b),mul([4n,1n],a)));
- const shift=h[0]===0n?'x':h[0]<0n?'(x+'+term([-h[0],h[1]])+')':'(x-'+term(h)+')';
+ // A fraction after + or - needs no parentheses (division binds tighter); they would print as extra brackets.
+ const shift=h[0]===0n?'x':h[0]<0n?'(x+'+str([-h[0],h[1]])+')':'(x-'+str(h)+')';
  const coefficient=a[0]===a[1]?'':a[0]===-a[1]?'-':term(a)+'*';
- const offset=k[0]===0n?'':k[0]<0n?'-'+term([-k[0],k[1]]):'+'+term(k);
+ const offset=k[0]===0n?'':k[0]<0n?'-'+str([-k[0],k[1]]):'+'+str(k);
  return {expression:coefficient+shift+'^2'+offset,vertex:{x:str(h),y:str(k)},coefficients:coefficients.map(v=>str(parse(v))),basis:'EXACT_COMPLETING_THE_SQUARE'};
 }

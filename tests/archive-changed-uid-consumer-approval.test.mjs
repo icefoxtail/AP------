@@ -6,7 +6,7 @@ import path from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { verifyChangedUidConsumerApproval, renderSummary } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
-import { loadResolvedConsumerCatalog } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { loadResolvedConsumerCatalog, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const checker = path.join(repo, "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs");
@@ -89,6 +89,40 @@ test("historical Gangnam v2 request: reviewed L1..L4 are the effective consumer 
   assert.deepEqual(out.counts, { changed: 24, checked: 24, passed: 24, skippedUnchanged: 0 });
 });
 
+test("META_PIPELINE L3/L4 and level are verified against the active Meta Foundation runtime", t => {
+  const uid = "qid_v1_b11a9f6c398580fa1d1aa22e6f29f05c42b35bda9a7e81ff59e6aeb1a78f238a";
+  const metadata = JSON.parse(fs.readFileSync(path.join(repo, "archive/data/question_metadata.json"), "utf8"));
+  const record = metadata.records.find(row => row.questionUid === uid);
+  const runtime = JSON.parse(fs.readFileSync(path.join(repo, "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json"), "utf8"))
+    .records.find(row => row.questionUid === uid);
+  assert.ok(record && runtime, "registered source record and its runtime row exist");
+  assert.equal(runtime.metadataApprovalType, "META_PIPELINE_AUDIT");
+  const sourcePath = path.join(repo, "archive/exams", record.sourceArchiveFile);
+  const expectedSourceBlobSha1 = execFileSync("git", ["hash-object", "--path", `archive/exams/${record.sourceArchiveFile}`, "--stdin"],
+    { cwd: repo, input: fs.readFileSync(sourcePath), encoding: "utf8" }).trim();
+  const request = (l3 = runtime.L3) => ({
+    schemaVersion: "archive-reviewed-exam-meta-register-request-v2",
+    examUid: "24_매산여고_1학기_중간_고2_수학I",
+    sourceArchiveFile: record.sourceArchiveFile,
+    expectedSourceBlobSha1,
+    approval: { type: "META_PIPELINE_AUDIT" },
+    items: [{ sourceOrdinal: record.sourceOrdinal, questionUid: uid,
+      before: { level: null, L3: null, L4: null },
+      after: { level: runtime.level, L3: l3, L4: runtime.L4 } }],
+  });
+
+  const valid = write(tmp(t), "meta-pipeline-runtime.json", request());
+  const passed = verifyChangedUidConsumerApproval({ root: repo, requestPaths: [valid] });
+  assert.equal(passed.status, "PASS", JSON.stringify(passed.failures));
+  assert.deepEqual(passed.counts, { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 });
+
+  const altered = write(tmp(t), "meta-pipeline-runtime-altered.json", request(`${runtime.L3} (altered)`));
+  const failed = verifyChangedUidConsumerApproval({ root: repo, requestPaths: [altered] });
+  assert.equal(failed.status, "FAIL");
+  assert.equal(failed.failures[0].reason, "VALUE_MISMATCH");
+  assert.match(failed.failures[0].detail, /Meta Foundation runtime/);
+});
+
 // A row without an approved canonical assignment (a pre-existing catalog gap) only gates requests that change
 // assignment-governed fields; other changed fields must still be effective (checked on whatever such row exists).
 test("assignment marker gates only assignment-governed changes; other rows are reported as assignmentPending", t => {
@@ -115,4 +149,19 @@ test("assignment marker gates only assignment-governed changes; other rows are r
     "an ineffective changed value still fails; a governed change still needs the marker");
   const md = renderSummary({ ...out, failures: [], status: "PASS" });
   assert.ok(md.includes("canonical L1/L2 assignment not approved; outside this request's changed fields") && md.includes(`Q${row.sourceOrdinal}`), md);
+});
+
+test("META_PIPELINE IntegrationPattern omission is checked against active runtime EVIDENCE_DEBT", t => {
+  const root = tmp(t);
+  fs.mkdirSync(path.join(root, "archive"), { recursive: true });
+  fs.mkdirSync(path.join(root, "archive/exams/original"), { recursive: true });
+  fs.writeFileSync(path.join(root, "archive/exams/original/fixture.js"), "window.questions = " + JSON.stringify([{ id: 1, standardUnitKey: "M3-01", subUnitKey: "M3-01-DEFINITION", level: "하" }]) + ";");
+  fs.writeFileSync(path.join(root, "archive/question-index.js"), "window.questionIndex = " + JSON.stringify([{ sourceFile: "original/fixture.js", sourceOrdinal: 1, standardUnitKey: "M3-01", subUnitKey: "M3-01-DEFINITION", level: "하", course: "중3-1" }]) + ";");
+  const uid = "fixture-uid";
+  const record = { questionUid: uid, sourceArchiveFile: "original/fixture.js", sourceOrdinal: 1, metadataApprovalType: "META_PIPELINE_AUDIT", curriculumKey: "2015", courseKey: "M3-1", standardCourse: "중3-1", L1: "실수와 그 연산", L2: "제곱근과 실수", standardUnitKey: "M3-01", subUnitKey: "M3-01-SQUARE_ROOT", problemTypeKey: "PT_FIXTURE", templateKey: "TPL_FIXTURE", crossConceptKeys: [], conditionKeys: [], integrationPattern: null, difficultyBucket: 1, level: "하", L3: "유형", L4: "풀이 구조" };
+  const consumer = { ...record, sourceFile: record.sourceArchiveFile };
+  delete consumer.integrationPattern;
+  const runtime = { questionUid: uid, integrationPattern: null, L3: "유형", L4: "풀이 구조" };
+  assert.doesNotThrow(() => verifyConsumerValues(root, [record], [runtime], { records: [consumer] }));
+  assert.throws(() => verifyConsumerValues(root, [record], [{ ...runtime, integrationPattern: "CASE_BRANCH" }], { records: [consumer] }), /Consumer runtime metadata mismatch: fixture-uid.integrationPattern/);
 });
