@@ -852,6 +852,10 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q20-solution.svg",
+    "solutionImageAlt": "가로축을 t로 본 g(t)의 그래프다. 최솟값은 t=1에서 1이고, y=1/2과는 만나지 않으며 y=1과는 한 점, y=3/2와는 두 점에서 만난다(t≤0, t>2에서는 g(t)≥4).",
+    "solutionImageCaption": "가로축을 t로 본 g(t)의 그래프다. 최솟값은 t=1에서 1이고, y=1/2과는 만나지 않으며 y=1과는 한 점, y=3/2와는 두 점에서 만난다(t≤0, t>2에서는 g(t)≥4).",
+    "solutionImageSize": "full"
   }
 ];
