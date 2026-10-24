@@ -216,7 +216,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "수직이등분선은 선분 AB의 중점 M을 지나고 AB와 수직이다.",
+    "solutionImageCaption": "수직이등분선은 선분 AB의 중점 M을 지나고 AB와 수직이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -306,7 +310,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/25_팔마고_2학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "두 원의 넓이를 모두 이등분하는 직선은 두 중심 A, B를 지난다.",
+    "solutionImageCaption": "두 원의 넓이를 모두 이등분하는 직선은 두 중심 A, B를 지난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,

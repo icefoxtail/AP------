@@ -171,7 +171,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q4-solution.svg",
+    "solutionImageAlt": "k=8일 때 꼭짓점 V(1, 1)이 x축 위에 있어 그래프가 x축과 만나지 않는다.",
+    "solutionImageCaption": "k=8일 때 꼭짓점 V(1, 1)이 x축 위에 있어 그래프가 x축과 만나지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -214,7 +218,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q5-solution.svg",
+    "solutionImageAlt": "k=-33/8이면 직선 y=-2x+k는 포물선에 한 점 T에서 접한다.",
+    "solutionImageCaption": "k=-33/8이면 직선 y=-2x+k는 포물선에 한 점 T에서 접한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -651,7 +659,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_팔마고_1학기_중간_고1_기출_c/q15-solution.svg",
+    "solutionImageAlt": "f(x)=3x^2+6x-2의 그래프와 직선 y=7, 구간 끝점의 함숫값",
+    "solutionImageCaption": "f(x)=3x^2+6x-2의 그래프와 직선 y=7, 구간 끝점의 함숫값",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

@@ -514,7 +514,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q14-solution.svg",
+    "solutionImageAlt": "a=3일 때 두 교점의 x좌표 α, β는 합이 12, 곱이 8이다",
+    "solutionImageCaption": "a=3일 때 두 교점의 x좌표 α, β는 합이 12, 곱이 8이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

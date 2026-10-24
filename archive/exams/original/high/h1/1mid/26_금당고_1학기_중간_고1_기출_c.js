@@ -252,7 +252,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q6-solution.svg",
+    "solutionImageAlt": "구간에서 함수값은 감소하므로 왼쪽 끝점에서 최댓값 11을 갖는다.",
+    "solutionImageCaption": "구간에서 함수값은 감소하므로 왼쪽 끝점에서 최댓값 11을 갖는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -685,7 +689,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q16-solution.svg",
+    "solutionImageAlt": "k가 최대일 때 직선과 이차함수의 두 교점",
+    "solutionImageCaption": "k가 최대일 때 직선과 이차함수의 두 교점",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

@@ -83,7 +83,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_2학기_중간_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "AB=AC=√34이고 점 A에서 직각이므로 직각이등변삼각형이다.",
+    "solutionImageCaption": "AB=AC=√34이고 점 A에서 직각이므로 직각이등변삼각형이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

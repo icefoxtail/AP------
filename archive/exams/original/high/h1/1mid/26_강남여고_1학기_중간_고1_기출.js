@@ -204,7 +204,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B12",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "k=-2는 x축과 만나지 않고 k=-1은 만난다",
+    "solutionImageCaption": "k=-2는 x축과 만나지 않고 k=-1은 만난다",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -615,7 +619,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "m=1일 때 f(-1)<0, f(1)>0",
+    "solutionImageCaption": "m=1일 때 f(-1)<0, f(1)>0",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -656,7 +664,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "구간에서 감소하므로 최솟값 10, 최댓값 18",
+    "solutionImageCaption": "구간에서 감소하므로 최솟값 10, 최댓값 18",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -697,7 +709,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "h(x)=-2(x-2)(x-6)의 그래프는 x=4에서 최댓값 8을 가진다.",
+    "solutionImageCaption": "h(x)=-2(x-2)(x-6)의 그래프는 x=4에서 최댓값 8을 가진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

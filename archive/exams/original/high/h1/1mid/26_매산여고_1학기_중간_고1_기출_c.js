@@ -222,7 +222,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q6-solution.svg",
+    "solutionImageAlt": "k=±6이면 꼭짓점 (3,0)이 x축 위에 놓여 한 점에서 만난다",
+    "solutionImageCaption": "k=±6이면 꼭짓점 (3,0)이 x축 위에 놓여 한 점에서 만난다",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -259,7 +263,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q7-solution.svg",
+    "solutionImageAlt": "구간 1 ≤ x ≤ 3에서 최솟값은 -1, 최댓값은 3이다.",
+    "solutionImageCaption": "구간 1 ≤ x ≤ 3에서 최솟값은 -1, 최댓값은 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -483,7 +491,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q13-solution.svg",
+    "solutionImageAlt": "k=11이면 두 점에서 만나고, k=12이면 접한다.",
+    "solutionImageCaption": "k=11이면 두 점에서 만나고, k=12이면 접한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

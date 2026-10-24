@@ -36,7 +36,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q1-solution.svg",
+    "solutionImageAlt": "판별식이 0이 되는 두 경우 모두 x축에 접한다.",
+    "solutionImageCaption": "판별식이 0이 되는 두 경우 모두 x축에 접한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -704,7 +708,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q20-solution.svg",
+    "solutionImageAlt": "-2≤x≤0에서 양 끝점의 함숫값 3이 최댓값",
+    "solutionImageCaption": "-2≤x≤0에서 양 끝점의 함숫값 3이 최댓값",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -752,7 +760,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_1학기_기말_고1_기출c/q22-solution.svg",
+    "solutionImageAlt": "3x²+x-2≤0의 해는 그래프가 x축 아래에 있는 -1≤x≤2/3이다.",
+    "solutionImageCaption": "3x²+x-2≤0의 해는 그래프가 x축 아래에 있는 -1≤x≤2/3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

@@ -42,7 +42,11 @@ window.questionBank = [
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
-    "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    "decisiveStep": "Independent application of the source conditions to obtain the required value.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "포물선과 직선 (나), (다)의 위치 관계",
+    "solutionImageCaption": "포물선과 직선 (나), (다)의 위치 관계",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -981,7 +985,11 @@ window.questionBank = [
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
-    "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    "decisiveStep": "Independent application of the source conditions to obtain the required value.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "꼭짓점 V가 구간의 안쪽에 있고 양 끝점의 함숫값이 같다.",
+    "solutionImageCaption": "꼭짓점 V가 구간의 안쪽에 있고 양 끝점의 함숫값이 같다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

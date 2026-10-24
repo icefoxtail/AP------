@@ -550,7 +550,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "두 점 사이의 거리는 5√2이다.",
+    "solutionImageCaption": "두 점 사이의 거리는 5√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

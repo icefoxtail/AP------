@@ -322,7 +322,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "BC²=CA²=20이므로 BC=CA인 이등변삼각형이다.",
+    "solutionImageCaption": "BC²=CA²=20이므로 BC=CA인 이등변삼각형이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

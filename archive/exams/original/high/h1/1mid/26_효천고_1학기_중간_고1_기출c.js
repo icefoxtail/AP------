@@ -311,7 +311,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q9-solution.svg",
+    "solutionImageAlt": "k=-5일 때 직선이 포물선에 접한다",
+    "solutionImageCaption": "k=-5일 때 직선이 포물선에 접한다",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -601,7 +605,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_효천고_1학기_중간_고1_기출c/q17-solution.svg",
+    "solutionImageAlt": "구간이 꼭짓점을 포함하지 않는 두 경우의 최솟값 -1, 최댓값 7",
+    "solutionImageCaption": "구간이 꼭짓점을 포함하지 않는 두 경우의 최솟값 -1, 최댓값 7",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

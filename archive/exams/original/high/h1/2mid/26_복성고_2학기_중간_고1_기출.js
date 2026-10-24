@@ -293,7 +293,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
     "curriculum": "2022",
     "tagConfidence": "high",
-    "tagStatus": "reviewed_create"
+    "tagStatus": "reviewed_create",
+    "solutionImage": "assets/images/26_복성고_2학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "두 점 C, D 사이의 거리 b",
+    "solutionImageCaption": "두 점 C, D 사이의 거리 b",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
