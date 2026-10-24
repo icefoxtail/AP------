@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.0",
+  "shardVersion": "1.4.2",
   "status": "ACTIVE",
-  "conceptCount": 16,
+  "conceptCount": 33,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -800,6 +800,215 @@
       "curriculumRefs": [
         "2015:수학II:H15-M2-01"
       ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SIGN_ASSIGNMENT",
+      "canonicalLabelKo": "부호 배분",
+      "definition": "절댓값 방정식에서 각 미지수에 부호를 부여하는 경우",
+      "supportingQuestionUids": [
+        "qid_v1_520f6e137908a2273445ed6ced763f5601c3144c9f50b83372c58c9b2ef204b7"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_EXPONENT",
+      "canonicalLabelKo": "유리수 지수",
+      "definition": "거듭제곱근을 유리수 지수로 표현하여 계산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b11a9f6c398580fa1d1aa22e6f29f05c42b35bda9a7e81ff59e6aeb1a78f238a"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_EXPONENT_RULES",
+      "canonicalLabelKo": "지수법칙",
+      "definition": "지수의 덧셈, 뺄셈, 곱셈 기본 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_24a3ffb20bb9b7ac068b8d1c111013393c11e030ca7daebf599b4a5ba3bb3787",
+        "qid_v1_69aa739950b6907a1fe416e3a403b9eaf5b4b1c48d9be46da7972c60f691abdf",
+        "qid_v1_b11a9f6c398580fa1d1aa22e6f29f05c42b35bda9a7e81ff59e6aeb1a78f238a"
+      ],
+      "supportingItemCount": 3,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOG_BASE_CONDITION",
+      "canonicalLabelKo": "로그의 밑 조건",
+      "definition": "로그의 밑은 양수이고 1이 아니어야 함",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8f838ff81d0016d03899baf1278762b4fc66c02f765a9007501451472c810c98"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOG_ARGUMENT_CONDITION",
+      "canonicalLabelKo": "로그의 진수 조건",
+      "definition": "로그의 진수는 반드시 양수이어야 함",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8f838ff81d0016d03899baf1278762b4fc66c02f765a9007501451472c810c98"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_EXPONENT_SUBSTITUTION",
+      "canonicalLabelKo": "지수식의 치환",
+      "definition": "2^x 등을 t로 치환하여 다항식으로 변환",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1cbeaface782f7114d0a1e0e3e118a422188aa1ad987e8b6341eb6704be83aac",
+        "qid_v1_f05a69b92f5d3f0a242958260d54373825eec7d9fc814806b6837c3b226e35ce"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_FRACTIONAL_EQUATION",
+      "canonicalLabelKo": "분수방정식",
+      "definition": "치환된 변수에 대한 유리식 방정식 풀이",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f05a69b92f5d3f0a242958260d54373825eec7d9fc814806b6837c3b226e35ce"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_EXPONENTIAL_INEQUALITY",
+      "canonicalLabelKo": "지수부등식",
+      "definition": "밑의 크기(1보다 큰지 작은지)에 따른 지수 부등호 방향 결정",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_914be8c19c2737c8e4bc106b0f22737c15078d7428ae90f8b4b214ccb6d2add6"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOG_RULES",
+      "canonicalLabelKo": "로그의 성질",
+      "definition": "로그의 덧셈, 뺄셈 및 진수의 거듭제곱 법칙",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_24a3ffb20bb9b7ac068b8d1c111013393c11e030ca7daebf599b4a5ba3bb3787",
+        "qid_v1_bbf025f8f23424cf7525164df9370f35331b28541f43d3a4d92e6ad4ea0b1460"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_BASE_CHANGE_FORMULA",
+      "canonicalLabelKo": "밑변환 공식",
+      "definition": "임의의 밑을 가진 로그로 변환하는 공식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_bbf025f8f23424cf7525164df9370f35331b28541f43d3a4d92e6ad4ea0b1460"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_VIETAS_FORMULAS",
+      "canonicalLabelKo": "근과 계수의 관계",
+      "definition": "이차방정식 두 근의 합과 곱",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_69aa739950b6907a1fe416e3a403b9eaf5b4b1c48d9be46da7972c60f691abdf"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOG_INEQUALITY",
+      "canonicalLabelKo": "로그부등식",
+      "definition": "상용로그를 이용한 지수부등식 계산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_93d247649b9fbb6b9662e3441088c5b1c7f50ccf90a33a94eb12b7ae868b40b3"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOG_ORDER_COMPARISON",
+      "canonicalLabelKo": "로그값의 대소 비교",
+      "definition": "로그함수의 증가성을 이용한 합성값 비교",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_88807f92467a86df2f773551ae4d0c61a1c090f24bcdd5cdc722a86573d7e61b"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_VARIABLE_SUBSTITUTION",
+      "canonicalLabelKo": "변수 치환",
+      "definition": "복잡한 식을 단순 변수로 치환하여 분석",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5eb4c00eaaaeb02e02706d761fc11ba434751c7c7fe8698423ea0dfc2ac5aeb1",
+        "qid_v1_88807f92467a86df2f773551ae4d0c61a1c090f24bcdd5cdc722a86573d7e61b"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_HALF_LIFE_MODEL",
+      "canonicalLabelKo": "반감기 모델",
+      "definition": "방사성 붕괴의 반감기 지수 감소 공식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_83f1ce3a00383b4b57f6f007c689f34a7c6ab091b1c3ad5297765b48f295ec74"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LOG_DECIMAL_PART",
+      "canonicalLabelKo": "상용로그의 소수 부분",
+      "definition": "log x - floor(log x) 지표와 가수 함수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_cee716a2718cc0ac8c86ab52d5179d05b51da5422a2533739b6875897289c8b0"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_FACTORIZATION",
+      "canonicalLabelKo": "인수분해 공식",
+      "definition": "세제곱 및 고차식의 대칭 인수분해",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_fe6b58407dd8095cd92ddbf17257452788670999fd60e714ee1bb317958327a8"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
       "ownerConceptShard": "ALGEBRA"
     }
   ]

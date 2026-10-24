@@ -28416,36 +28416,6 @@ window.mainDB = {
       "primaryStandardCourse": "공통수학2"
     },
     {
-      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_Best2회_P14_Q01_20261020_유사1.js",
-      "school": "백발백중",
-      "topic": "백발백중 공통수학2 Best 2회 14쪽 고1 유사문항 1",
-      "grade": "고1",
-      "semester": "2",
-      "examType": "textbook",
-      "subject": "공통수학2",
-      "contentType": "교과서",
-      "qCount": 1,
-      "rangeStartUnitKey": "H22-C2-01",
-      "rangeStartUnit": "평면좌표",
-      "rangeStartUnitOrder": 1,
-      "rangeEndUnitKey": "H22-C2-01",
-      "rangeEndUnit": "평면좌표",
-      "rangeEndUnitOrder": 1,
-      "courseRanges": [
-        {
-          "standardCourse": "공통수학2",
-          "courseCode": "H22-C2",
-          "rangeStartUnitKey": "H22-C2-01",
-          "rangeStartUnit": "평면좌표",
-          "rangeStartUnitOrder": 1,
-          "rangeEndUnitKey": "H22-C2-01",
-          "rangeEndUnit": "평면좌표",
-          "rangeEndUnitOrder": 1
-        }
-      ],
-      "primaryStandardCourse": "공통수학2"
-    },
-    {
       "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_Best2회_P14-17_20261022_유사50.js",
       "school": "백발백중",
       "topic": "백발백중 공통수학2 Best 2회 14~17쪽 고1 유사문항 50",
@@ -28471,6 +28441,36 @@ window.mainDB = {
           "rangeEndUnitKey": "H22-C2-02",
           "rangeEndUnit": "직선의 방정식",
           "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_Best2회_P14_Q01_20261020_유사1.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 Best 2회 14쪽 고1 유사문항 1",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 1,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-01",
+      "rangeEndUnit": "평면좌표",
+      "rangeEndUnitOrder": 1,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-01",
+          "rangeEndUnit": "평면좌표",
+          "rangeEndUnitOrder": 1
         }
       ],
       "primaryStandardCourse": "공통수학2"

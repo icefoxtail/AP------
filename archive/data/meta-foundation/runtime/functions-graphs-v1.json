@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-runtime-overlay-v1",
   "status": "ACTIVE",
-  "runtimeVersion": "FUNCTIONS_GRAPHS@1.0.3/reviewed-exam-v2",
+  "runtimeVersion": "FUNCTIONS_GRAPHS@1.0.4/reviewed-exam-v2",
   "packId": "FUNCTIONS_GRAPHS",
-  "packVersion": "1.0.3",
+  "packVersion": "1.0.4",
   "generatedFrom": {
     "assignments": "archive/data/meta-foundation/evidence/functions-graphs/v1/item_metadata_assignments_520.json",
     "taxonomy": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
@@ -11,15 +11,16 @@
     "independentReview": "FUNCTIONS_GRAPHS canonical 520-item assignments; 2020 Maesan source registered in Archive2 DB and restored through runtime catalog supplemental join; M1 graph-owner migration receipt 2026-09-27",
     "reviewOverrides": "archive/data/meta-foundation/evidence/review-overrides/v1",
     "reviewOverrideDigest": "e14dcc132d12ebd053759eb74b96a823e15f8b15e9bce26a0a3eb112634e3d2a",
-    "reviewedExam_suncheon26-algebra-finalqa-meta-20261021": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-finalqa-meta-20261021.json"
+    "reviewedExam_suncheon26-algebra-finalqa-meta-20261021": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-finalqa-meta-20261021.json",
+    "reviewedExam_meta-pipeline-24-maesanyeogo-h2-math1-20261024-codex-audit-v2": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-20261024-codex-audit-v2.json"
   },
   "counts": {
     "canonicalAssignments": 523,
-    "records": 526,
-    "taxonomyRows": 179,
-    "defaultSelectable": 526,
+    "records": 528,
+    "taxonomyRows": 181,
+    "defaultSelectable": 528,
     "supplementary": 0,
-    "automaticEligibleExpected": 6,
+    "automaticEligibleExpected": 8,
     "sourceHold": 0,
     "catalogUnregisteredExcluded": 0
   },
@@ -47,6 +48,12 @@
       "courseKey": "수학(하)",
       "L1": "함수",
       "L2": "함수"
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학I",
+      "L1": "삼각함수",
+      "L2": "삼각함수의 그래프"
     },
     {
       "curriculumKey": "2022",
@@ -1665,6 +1672,32 @@
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
       "supportingItemCount": 8
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학I",
+      "L1": "삼각함수",
+      "L2": "삼각함수의 그래프",
+      "L3": "함수 그래프의 성질",
+      "L4": "함수 그래프의 성질 판정",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "수학I",
+      "L1": "삼각함수",
+      "L2": "삼각함수의 그래프",
+      "L3": "함수 그래프의 변환",
+      "L4": "함수 그래프의 평행이동",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
     },
     {
       "curriculumKey": "2022",
@@ -4033,6 +4066,131 @@
       "metaFoundationPackVersion": "1.0.2",
       "integrationPattern": "NONE",
       "difficultyBucket": 1
+    },
+    {
+      "questionUid": "qid_v1_1303ee26567c91187744acb20fc3faea86c8503d6fc1cd8a27e26526d5409fad",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "sourceFingerprint": "ba914ab1fb63f6c31744248e1dd9337dc47f35ce787fba843de0a43c01300a4c",
+      "contentFingerprint": "36327d63f069791ca75d0b87c1b385d8a13c16cc17953627266220e5f8dc2f1c",
+      "standardCourse": "수학I",
+      "standardUnitKey": "H15-M1-06",
+      "standardUnit": "삼각함수의 그래프",
+      "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+      "subUnit": "삼각함수의 그래프",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+      "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+      "crossConceptKeys": [
+        "CC_SINE_FUNCTION_PERIOD",
+        "CC_TRIGONOMETRIC_EXTREMUM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "manual_review_pending",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-24-maesanyeogo-h2-math1-20261024-codex-audit-v2",
+      "approvalEvidence": [
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-20261024-codex-audit-v2.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-20261024.source-parity.json"
+      ],
+      "standardUnitOrder": 6,
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "registrationUpdateState": {
+        "schemaVersion": "JS_ARCHIVE_EXISTING_TARGET_META_DELTA_POLICY_V1",
+        "disposition": "META_PIPELINE_AUDIT_REGISTERED",
+        "changedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "standardUnitOrder",
+          "subUnitKey",
+          "subUnit",
+          "subUnitConfidence",
+          "subUnitClassificationDepth",
+          "difficultyBucket",
+          "difficultyConfidence",
+          "difficultyBoundaryFlag",
+          "legacyLevelCompatibility",
+          "problemTypeKey",
+          "templateKey",
+          "integrationPattern"
+        ],
+        "currentPhysicalMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-06",
+          "standardUnit": "삼각함수의 그래프",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "subUnit": "삼각함수의 그래프",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "difficultyBucket": 1,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "conceptClusterKey": "",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_TRANSFORM",
+          "templateKey": "TPL_FUNCTION_GRAPH_TRANSLATION",
+          "crossConceptKeys": [],
+          "conditionKeys": [],
+          "integrationPattern": "SEQUENTIAL",
+          "secondaryConceptKeys": []
+        },
+        "currentPhysicalMetaSha256": "1ff595d93395240ae8c29f7bf5f33fb69273f60fd5db33a7cd3a4be5a9287585",
+        "r1MetaPass": true,
+        "r1EvidenceRef": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-fresh-q21-20261011/r1-final-evidence.revision3.json",
+        "metaPipelineAuditCompletion": {
+          "requestId": "meta-pipeline-24-maesanyeogo-h2-math1-20261024-codex-audit-v2",
+          "auditPackagePath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "auditPackageSha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6",
+          "sourceParitySha256": "9e66d73e3257e915315cf88a31d43ecfa7f7d76c86049e3c80ad92c47eee0c14"
+        }
+      },
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "수학I",
+      "level": "하",
+      "L1": "삼각함수",
+      "L2": "삼각함수의 그래프",
+      "L3": "함수 그래프의 변환",
+      "L4": "함수 그래프의 평행이동",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js#15",
+      "approvedSourceFingerprint": "ba914ab1fb63f6c31744248e1dd9337dc47f35ce787fba843de0a43c01300a4c",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_13e3dc9553821a4978a8b895a6e5a5d05a9260a5624fd9754ed10148225a5a29",
@@ -15226,6 +15384,151 @@
       "difficultyBucket": 4
     },
     {
+      "questionUid": "qid_v1_ba92ec2f949fde56fa87778d5a915793ce3fbc134b658d78867d43b3ad76855e",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceFingerprint": "60c7324bfbbcad784fe605fcd03c4f831e4ce502f74dd4a551e5ba84b6e40e56",
+      "contentFingerprint": "41996e041f4272a2cc903beb656af76943478b3e9475dbdcabddb95769bd406a",
+      "standardCourse": "수학I",
+      "standardUnitKey": "H15-M1-06",
+      "standardUnit": "삼각함수의 그래프",
+      "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+      "subUnit": "삼각함수의 그래프",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+      "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+      "crossConceptKeys": [
+        "CC_COSINE_FUNCTION_RANGE",
+        "CC_TRIGONOMETRIC_EXTREMUM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_partial_with_explicit_holds",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "manual_review_pending",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.4:exam-meta_pipeline_audit-v2:meta-pipeline-24-maesanyeogo-h2-math1-20261024-codex-audit-v2",
+      "approvalEvidence": [
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-20261024-codex-audit-v2.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-20261024.source-parity.json"
+      ],
+      "standardUnitOrder": 6,
+      "subUnitConfidence": "candidate_evidence",
+      "subUnitClassificationDepth": "complete_candidate",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "NORMAL",
+      "projectionStatus": "REUSE",
+      "metaDebtFields": [
+        "question_metadata_projection",
+        "source_consumer_index_parity"
+      ],
+      "metaDebtReason": "question_metadata_projection: The bound q21 question_metadata row remains registration_pending_semantic_review; its standardUnit, subUnit, concept, problemType, template, and difficulty projection fields are blank or manual_review_pending. | source_consumer_index_parity: The bound META.runtimeBindings records currentQuestionUidBound=false for PT_FUNCTION_GRAPH_PROPERTIES, TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT, and COND_RANGE; Consumer/current UID binding parity is unverified.",
+      "metaDebtReasons": [
+        {
+          "field": "question_metadata_projection",
+          "reason": "The bound q21 question_metadata row remains registration_pending_semantic_review; its standardUnit, subUnit, concept, problemType, template, and difficulty projection fields are blank or manual_review_pending."
+        },
+        {
+          "field": "source_consumer_index_parity",
+          "reason": "The bound META.runtimeBindings records currentQuestionUidBound=false for PT_FUNCTION_GRAPH_PROPERTIES, TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT, and COND_RANGE; Consumer/current UID binding parity is unverified."
+        }
+      ],
+      "registrationUpdateState": {
+        "schemaVersion": "JS_ARCHIVE_EXISTING_TARGET_META_DELTA_POLICY_V1",
+        "disposition": "META_PIPELINE_AUDIT_REGISTERED",
+        "changedFields": [
+          "standardCourse",
+          "standardUnitKey",
+          "standardUnit",
+          "standardUnitOrder",
+          "subUnitKey",
+          "subUnit",
+          "subUnitConfidence",
+          "subUnitClassificationDepth",
+          "difficultyBucket",
+          "difficultyConfidence",
+          "difficultyBoundaryFlag",
+          "legacyLevelCompatibility",
+          "problemTypeKey",
+          "templateKey",
+          "conditionKeys",
+          "integrationPattern"
+        ],
+        "currentPhysicalMeta": {
+          "standardCourse": "수학I",
+          "standardUnitKey": "H15-M1-06",
+          "standardUnit": "삼각함수의 그래프",
+          "standardUnitOrder": 6,
+          "subUnitKey": "H15-M1-06-TRIGONOMETRIC_GRAPH",
+          "subUnit": "삼각함수의 그래프",
+          "subUnitConfidence": "candidate_evidence",
+          "subUnitClassificationDepth": "complete_candidate",
+          "difficultyBucket": 3,
+          "difficultyConfidence": "high",
+          "difficultyBoundaryFlag": "NONE",
+          "legacyLevelCompatibility": "NORMAL",
+          "conceptClusterKey": "",
+          "problemTypeKey": "PT_FUNCTION_GRAPH_PROPERTIES",
+          "templateKey": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
+          "crossConceptKeys": [],
+          "conditionKeys": [
+            "COND_RANGE"
+          ],
+          "integrationPattern": "SEQUENTIAL",
+          "secondaryConceptKeys": []
+        },
+        "currentPhysicalMetaSha256": "8f9ced8e11dc324b4f4e76641bd3f5f9a07f8eebb2d621844aa03c16f3978408",
+        "r1MetaPass": true,
+        "r1EvidenceRef": "archive/analysis/24_매산여고_1학기_중간_고2_수학I/r1-fresh-q21-20261011/r1-final-evidence.revision3.json",
+        "metaPipelineAuditCompletion": {
+          "requestId": "meta-pipeline-24-maesanyeogo-h2-math1-20261024-codex-audit-v2",
+          "auditPackagePath": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "auditPackageSha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6",
+          "sourceParitySha256": "9e66d73e3257e915315cf88a31d43ecfa7f7d76c86049e3c80ad92c47eee0c14"
+        }
+      },
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "수학I",
+      "level": "중",
+      "L1": "삼각함수",
+      "L2": "삼각함수의 그래프",
+      "L3": "함수 그래프의 성질",
+      "L4": "함수 그래프의 성질 판정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "FUNCTIONS_GRAPHS",
+      "metaFoundationPackVersion": "1.0.4",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js#21",
+      "approvedSourceFingerprint": "60c7324bfbbcad784fe605fcd03c4f831e4ce502f74dd4a551e5ba84b6e40e56",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_bae9870ec008fd67605540bca3a1690d9eafe7e92c81c4de207ce9020ef2157e",
       "sourceArchiveFile": "original/high/h1/2mid/21_금당고_2학기_중간_고1_기출.js",
       "sourceOrdinal": 17,
@@ -20276,7 +20579,7 @@
   },
   "usage": {
     "schemaVersion": "archive-reviewed-runtime-usage-v1",
-    "records": 526,
+    "records": 528,
     "problemTypes": [
       {
         "key": "PT_COMPOSITE_FUNCTION_ANALYSIS",
@@ -20582,7 +20885,7 @@
       },
       {
         "key": "PT_FUNCTION_GRAPH_PROPERTIES",
-        "count": 25,
+        "count": 26,
         "questionUids": [
           "qid_v1_13e3dc9553821a4978a8b895a6e5a5d05a9260a5624fd9754ed10148225a5a29",
           "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473",
@@ -20602,6 +20905,7 @@
           "qid_v1_94165ed29216a2b3069d834430c702adaf1671019ba255cfacc9a7f32610a25d",
           "qid_v1_9f6182bf0330a936b69c8dea502f031f32adf5959f52b6523f0f3e7d02b3cfb0",
           "qid_v1_b71e5dd308c16ae4d40ceb1cd4b974220eca9177e0ca07e555eecddc5627f1d0",
+          "qid_v1_ba92ec2f949fde56fa87778d5a915793ce3fbc134b658d78867d43b3ad76855e",
           "qid_v1_bfbdb60f39353fd14ee0aed22ca77b86ea1e83b7e2abd730dae8ac15b1c45936",
           "qid_v1_c5febce4d879758546ccf23f4edcdc792aaaf0111de6c2bcdceeb76dd7e97a14",
           "qid_v1_cd8a53f1aca588b454d415aaa9e973fa8c1de39b9176fd3b070b61a762df9ee0",
@@ -20636,8 +20940,9 @@
       },
       {
         "key": "PT_FUNCTION_GRAPH_TRANSFORM",
-        "count": 9,
+        "count": 10,
         "questionUids": [
+          "qid_v1_1303ee26567c91187744acb20fc3faea86c8503d6fc1cd8a27e26526d5409fad",
           "qid_v1_22200f68b07a34a399111475c34cf8efd5893b63cac385ba2de3784407974efa",
           "qid_v1_4ab7dada59cb681873619428366a8fb29c41fc78ecdb00c76da88ca9cfbe14ff",
           "qid_v1_4ef90fba11c249cf136cbf5f23f869e6d0f196f4eae980d0abb609b9d749108b",
@@ -21378,7 +21683,7 @@
       },
       {
         "key": "TPL_FUNCTION_GRAPH_PROPERTY_JUDGMENT",
-        "count": 22,
+        "count": 23,
         "questionUids": [
           "qid_v1_13e3dc9553821a4978a8b895a6e5a5d05a9260a5624fd9754ed10148225a5a29",
           "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473",
@@ -21395,6 +21700,7 @@
           "qid_v1_94165ed29216a2b3069d834430c702adaf1671019ba255cfacc9a7f32610a25d",
           "qid_v1_9f6182bf0330a936b69c8dea502f031f32adf5959f52b6523f0f3e7d02b3cfb0",
           "qid_v1_b71e5dd308c16ae4d40ceb1cd4b974220eca9177e0ca07e555eecddc5627f1d0",
+          "qid_v1_ba92ec2f949fde56fa87778d5a915793ce3fbc134b658d78867d43b3ad76855e",
           "qid_v1_bfbdb60f39353fd14ee0aed22ca77b86ea1e83b7e2abd730dae8ac15b1c45936",
           "qid_v1_c5febce4d879758546ccf23f4edcdc792aaaf0111de6c2bcdceeb76dd7e97a14",
           "qid_v1_cd8a53f1aca588b454d415aaa9e973fa8c1de39b9176fd3b070b61a762df9ee0",
@@ -21414,8 +21720,9 @@
       },
       {
         "key": "TPL_FUNCTION_GRAPH_TRANSLATION",
-        "count": 7,
+        "count": 8,
         "questionUids": [
+          "qid_v1_1303ee26567c91187744acb20fc3faea86c8503d6fc1cd8a27e26526d5409fad",
           "qid_v1_4ef90fba11c249cf136cbf5f23f869e6d0f196f4eae980d0abb609b9d749108b",
           "qid_v1_60892d4fd250db48f02dfda8e92b5f008dba31e00f6cb43c35ebdd77879a4703",
           "qid_v1_a64925cc01f117ede14ab99b5d4cb21cfcc89a08bab195385c309d0c5151d480",
@@ -22141,6 +22448,13 @@
         ]
       },
       {
+        "key": "CC_COSINE_FUNCTION_RANGE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ba92ec2f949fde56fa87778d5a915793ce3fbc134b658d78867d43b3ad76855e"
+        ]
+      },
+      {
         "key": "CC_CUBIC_EQUATION",
         "count": 1,
         "questionUids": [
@@ -22316,6 +22630,13 @@
         ]
       },
       {
+        "key": "CC_SINE_FUNCTION_PERIOD",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_1303ee26567c91187744acb20fc3faea86c8503d6fc1cd8a27e26526d5409fad"
+        ]
+      },
+      {
         "key": "CC_SLOPE",
         "count": 1,
         "questionUids": [
@@ -22336,6 +22657,14 @@
           "qid_v1_a9e5a7593831541893febbdeae23eccc8a7f52cb1ad4905b01de23fec29890df",
           "qid_v1_aeeeab1f99cd912835e5a58f1ae69cca316c99c71bd5861af1e54d1d5ba4729c",
           "qid_v1_f7857e81170141842af083ee12d07a264552573b13b46e36382e7f252e394ddd"
+        ]
+      },
+      {
+        "key": "CC_TRIGONOMETRIC_EXTREMUM",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_1303ee26567c91187744acb20fc3faea86c8503d6fc1cd8a27e26526d5409fad",
+          "qid_v1_ba92ec2f949fde56fa87778d5a915793ce3fbc134b658d78867d43b3ad76855e"
         ]
       }
     ],
@@ -22415,7 +22744,7 @@
       },
       {
         "key": "COND_RANGE",
-        "count": 9,
+        "count": 10,
         "questionUids": [
           "qid_v1_41d7acc38c39310454fd3d7e39bde65faefd9e7bd19f098aac43d6d6cd6bcec4",
           "qid_v1_42717daea1d0dd7307597a6fa6b1f6c82b9575cd1592d11a043a07339f00e448",
@@ -22423,6 +22752,7 @@
           "qid_v1_8d3b97e78f030ac6c51bdb37efdb4c2ff296ed3222ba82406fc1591509216421",
           "qid_v1_aa8a42357c200047d160a84c1bdd34fcc7c064c1ef1f57bf635fcaaf70f7dc2b",
           "qid_v1_ae7edd0a077bc55bfd3c82dc51ae2344363fc6bd478e6db0205aa7c89b0e9a08",
+          "qid_v1_ba92ec2f949fde56fa87778d5a915793ce3fbc134b658d78867d43b3ad76855e",
           "qid_v1_c833a22742c99df9c309f1f712a5ab18fca3124505f42c182a98437f303f36f0",
           "qid_v1_d8dc2313934a7528c606d769d2a47624a2516613ad30debd18384cd129ec8ec3",
           "qid_v1_de3fb11c423d1677a97f7448cc03967e1610a0effed3f7d6b47cebe3664d4066"

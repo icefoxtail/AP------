@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "LOGIC_SET",
-  "shardVersion": "1.0.0",
+  "shardVersion": "1.0.1",
   "status": "ACTIVE",
-  "conceptCount": 3,
+  "conceptCount": 5,
   "concepts": [
     {
       "conceptKey": "CC_COUNTEREXAMPLE",
@@ -74,6 +74,31 @@
       "curriculumRefs": [
         "2015:수학(상):H15-SA-11"
       ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SET_PARTITION",
+      "canonicalLabelKo": "집합의 분할",
+      "definition": "원소들을 공집합이 아닌 몇 개의 부분집합으로 분할",
+      "supportingQuestionUids": [
+        "qid_v1_dd6debd2244ba33445d667515d728d491ce411d6c02c33dfddd48341229d73f0",
+        "qid_v1_e0a3fb82353290d0fa8d6df24e3847662e50d2ad8d5ee429fbbcbc10e95e01c5"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SUBSET_RELATION",
+      "canonicalLabelKo": "부분집합의 관계",
+      "definition": "집합 간의 포함 및 서로소 관계",
+      "supportingQuestionUids": [
+        "qid_v1_bd90fadbab11fa02300c82ec0d4135fb17e7f076850c585db6b52231caa55ed2"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
       "ownerConceptShard": "LOGIC_SET"
     }
   ]

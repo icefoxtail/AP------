@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "SEQUENCES",
-  "shardVersion": "1.0.0",
+  "shardVersion": "1.0.1",
   "status": "ACTIVE",
-  "conceptCount": 1,
+  "conceptCount": 3,
   "concepts": [
     {
       "conceptKey": "CC_GEOMETRIC_SEQUENCE",
@@ -40,6 +40,30 @@
       "curriculumRefs": [
         "2015:수학II:H15-M2-05"
       ],
+      "ownerConceptShard": "SEQUENCES"
+    },
+    {
+      "conceptKey": "CC_GENERAL_TERM",
+      "canonicalLabelKo": "일반항",
+      "definition": "전개식 또는 수열에서 임의의 항을 나타내는 식",
+      "supportingQuestionUids": [
+        "qid_v1_32c6a42d9a9fd8388ee3d332658b6ead2398401608c22c26f2a00c5f98deef73"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
+      "ownerConceptShard": "SEQUENCES"
+    },
+    {
+      "conceptKey": "CC_SERIES_SUM",
+      "canonicalLabelKo": "급수의 합",
+      "definition": "시그마 기호를 이용한 전개식 항들의 총합",
+      "supportingQuestionUids": [
+        "qid_v1_6ff1113ab802f0b91607c238c84367b37a14f937151249edf90a1afbf95a0f2e"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "aliases": [],
       "ownerConceptShard": "SEQUENCES"
     }
   ]
