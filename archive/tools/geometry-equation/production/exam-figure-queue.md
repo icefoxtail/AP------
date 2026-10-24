@@ -4,7 +4,7 @@
 
 ## 현황
 
-- 시험지 141개: CLOSED 78 / OPEN 63 (골든 샘플 2 포함)
+- 시험지 141개: CLOSED 139 / OPEN 2 (남은 2개는 골든 샘플, batch5 마감)
 - 문항 422개(시험지+번호 기준 중복 제거): EXEMPT 97, OPEN_LAYOUT 28, OPEN_OTHER 6, OPEN_UNSUPPORTED 67, PUBLISHED 224
 - 원 캠페인 461건 중 39쌍이 재실행으로 중복되어 최종 상태 하나로 합쳤다.
 
