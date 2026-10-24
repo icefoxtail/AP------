@@ -181,7 +181,11 @@ window.questionBank = [
       "7"
     ],
     "answer": "④",
-    "solution": "$y=\\log_2x$를 $y$축에 대하여 대칭이동하면 $y=\\log_2(-x)$이다.\n이 그래프를 오른쪽으로 $1$만큼 평행이동하면 $y=f(x)=\\log_2(1-x)$가 된다.\n$O(0,0)$와 $A(-6,0)$에서 거리가 같은 점 $B$는 선분 $OA$의 수직이등분선 $x=-3$ 위에 있다.\n따라서 $B$의 $x$좌표는 $-3$이고, $y$좌표는 $f(-3)=\\log_2(1+3)=\\log_24=2$이다.\n$\\overline{OA}=6$이고 높이는 $2$이므로 삼각형 $OAB$의 넓이는 $\\frac12\\times6\\times2=6$이다. 정답은 ④이다."
+    "solution": "$y=\\log_2x$를 $y$축에 대하여 대칭이동하면 $y=\\log_2(-x)$이다.\n이 그래프를 오른쪽으로 $1$만큼 평행이동하면 $y=f(x)=\\log_2(1-x)$가 된다.\n$O(0,0)$와 $A(-6,0)$에서 거리가 같은 점 $B$는 선분 $OA$의 수직이등분선 $x=-3$ 위에 있다.\n따라서 $B$의 $x$좌표는 $-3$이고, $y$좌표는 $f(-3)=\\log_2(1+3)=\\log_24=2$이다.\n$\\overline{OA}=6$이고 높이는 $2$이므로 삼각형 $OAB$의 넓이는 $\\frac12\\times6\\times2=6$이다. 정답은 ④이다.",
+    "solutionImage": "assets/images/21_금당고_1학기_중간_고2_수학I/q13-solution.svg",
+    "solutionImageAlt": "OB=AB이므로 B는 선분 OA의 수직이등분선 x=-3 위에 있다. 곡선 y=log₂(1-x)에서 B(-3,2)이므로 밑변 OA=6, 높이 2로 넓이는 6이다.",
+    "solutionImageCaption": "OB=AB이므로 B는 선분 OA의 수직이등분선 x=-3 위에 있다. 곡선 y=log₂(1-x)에서 B(-3,2)이므로 밑변 OA=6, 높이 2로 넓이는 6이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
