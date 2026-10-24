@@ -3,8 +3,8 @@
   "examUid": "26_삼산중_1학기_중간_중3_유사",
   "candidateJsPath": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js",
   "candidateMetaPath": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.meta-q01-q24.json",
-  "candidateGitBlobSha1": "95091ba407f9170b3a329c5e59101315f772d5b1",
-  "reviewTimestamp": "2026-10-24T15:24:00+09:00",
+  "candidateGitBlobSha1": "5d89ad3b9b8c46f59f88b1931c325900eb51d381",
+  "reviewTimestamp": "2026-10-24T16:34:00+09:00",
   "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
   "overallVerdict": "PASS",
   "signOffStatus": "SIGNED_OFF_PASS",
@@ -75,6 +75,15 @@
       "qid": 1,
       "status": "VERIFIED_REPAIRED",
       "description": "Q01 해설의 선지 ② 설명에서 0의 제곱근은 0 하나뿐이다 (거짓)으로 잘못 서술된 부분을 0의 제곱근은 0 하나뿐이고 음수의 제곱근은 실수 범위에 없으므로 모든 실수가 2개의 제곱근을 갖는 것은 아니다 (거짓)으로 정제 완료."
+    },
+    {
+      "id": "DEF-05",
+      "category": "R3_STRUCTURAL",
+      "code": "DEFECT_IMAGE_ASSET_PATH_PREFIX_NORMALIZED",
+      "severity": "MEDIUM",
+      "qid": null,
+      "status": "VERIFIED_REPAIRED",
+      "description": "Q05, Q10, Q13, Q24의 이미지 참조 경로를 archive/assets/images/...에서 assets/images/...로 교정하여 archive/engine.html 렌더러에서의 상대 경로 404 깨짐 위험을 원천 해소."
     }
   ],
   "questionsReview": [
@@ -332,6 +341,12 @@
       "gitBlobSha1": "95091ba407f9170b3a329c5e59101315f772d5b1",
       "timestamp": "2026-10-24T16:18:34+09:00",
       "note": "Re-verified after canonical PT/TPL binding (null 0건) and Q01 choice (2) counterexample explanation refinement (DEF-04)"
+    },
+    {
+      "revision": "image-asset-relative-path-normalized",
+      "gitBlobSha1": "5d89ad3b9b8c46f59f88b1931c325900eb51d381",
+      "timestamp": "2026-10-24T16:34:00+09:00",
+      "note": "Re-verified after normalizing Q05, Q10, Q13, Q24 image paths from archive/assets/... to assets/... for engine.html relative resolution parity"
     }
   ]
 }

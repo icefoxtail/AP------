@@ -208,6 +208,13 @@ class M3HarnessGate:
                 add_finding("LAYER_3_VISUAL_PARITY", "MANDATORY_IMAGE_MISSING", f"Question Q{qid} requires visual figure, but image field is missing", qid=qid)
 
             if img_rel:
+                if img_rel.startswith("archive/"):
+                    add_finding(
+                        "LAYER_3_VISUAL_PARITY",
+                        "IMAGE_PATH_ARCHIVE_PREFIX_FORBIDDEN",
+                        f"Image path '{img_rel}' must not start with 'archive/' for engine.html relative resolution compatibility; use 'assets/images/...' instead",
+                        qid=qid,
+                    )
                 normalized_rel = img_rel.replace("\\", "/").lstrip("/")
                 candidates = [
                     self.root / normalized_rel,

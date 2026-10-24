@@ -50,7 +50,7 @@ class TestM3HarnessGate(unittest.TestCase):
                 "score": 5.0 if is_descriptive else 4.0,
             }
             if is_visual:
-                q["image"] = f"archive/assets/images/26_삼산중_1학기_중간_중3_기출/q{i:02d}.png"
+                q["image"] = f"assets/images/26_삼산중_1학기_중간_중3_기출/q{i:02d}.png"
             cls.valid_fixture.append(q)
 
         # Valid JS bytes
@@ -224,6 +224,19 @@ class TestM3HarnessGate(unittest.TestCase):
         self.assertEqual(res["status"], "BLOCKED")
         codes = [f["code"] for f in res["findings"]]
         self.assertIn("TEMPLATE_PARENT_MISMATCH", codes)
+
+    def test_archive_prefix_in_image_path_rejected(self):
+        """Image path with 'archive/' prefix must fail closed to ensure engine.html relative compatibility."""
+        bad = copy.deepcopy(self.valid_fixture)
+        bad[4]["image"] = "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q05.png"
+        js_text = "window.questionBank = " + json.dumps(bad) + ";\n"
+        js_bytes = js_text.encode("utf-8")
+        meta = copy.deepcopy(self.valid_small_meta)
+        meta["expectedSourceBlobSha1"] = compute_git_blob_sha1(js_bytes)
+        res = self.gate.validate_exam(bad, js_bytes, meta)
+        self.assertEqual(res["status"], "BLOCKED")
+        codes = [f["code"] for f in res["findings"]]
+        self.assertIn("IMAGE_PATH_ARCHIVE_PREFIX_FORBIDDEN", codes)
 
 
 if __name__ == "__main__":

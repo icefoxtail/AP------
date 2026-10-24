@@ -171,7 +171,7 @@ window.questionBank = [
       "⑤ $4\\sqrt{2} + 2\\sqrt{5}$"
     ],
     "score": 4.1,
-    "image": "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q05.png"
+    "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q05.png"
   },
   {
     "id": 6,
@@ -345,7 +345,7 @@ window.questionBank = [
       "⑤ $6\\sqrt{5}$"
     ],
     "score": 4.2,
-    "image": "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q10.png"
+    "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q10.png"
   },
   {
     "id": 11,
@@ -450,7 +450,7 @@ window.questionBank = [
       "⑤ $16 + 4\\sqrt{10}$"
     ],
     "score": 4.5,
-    "image": "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q13.png"
+    "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q13.png"
   },
   {
     "id": 14,
@@ -809,6 +809,6 @@ window.questionBank = [
     "answer": "(1) 2\\sqrt{3}, (2) \\frac{9\\sqrt{2}}{4}",
     "choices": [],
     "score": 5.0,
-    "image": "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q24.png"
+    "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q24.png"
   }
 ];

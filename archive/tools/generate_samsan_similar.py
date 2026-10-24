@@ -200,7 +200,7 @@ def _t_q05(orig, strat):
             "④ $2\\sqrt{2} + 3\\sqrt{5}$",
             "⑤ $4\\sqrt{2} + 2\\sqrt{5}$"
         ],
-        "image": "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q05.png",
+        "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q05.png",
         "score": 4.1,
     }
 
@@ -326,7 +326,7 @@ def _t_q10(orig, strat):
             "④ $3\\sqrt{10}$",
             "⑤ $6\\sqrt{5}$"
         ],
-        "image": "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q10.png",
+        "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q10.png",
         "score": 4.2,
     }
 
@@ -411,7 +411,7 @@ def _t_q13(orig, strat):
             "④ $14 + 2\\sqrt{10}$",
             "⑤ $16 + 4\\sqrt{10}$"
         ],
-        "image": "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q13.png",
+        "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q13.png",
         "score": 4.5,
     }
 
@@ -678,7 +678,7 @@ def _t_q24(orig, strat):
         ),
         "answer": "(1) 2\\sqrt{3}, (2) \\frac{9\\sqrt{2}}{4}",
         "choices": [],
-        "image": "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q24.png",
+        "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q24.png",
         "score": 5.0,
     }
 
@@ -814,7 +814,7 @@ def generate_small_meta(questions: list[dict], js_bytes: bytes, source_file_rel:
             "evidenceRefs": [
                 {
                     "path": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.review-receipt.json",
-                    "sha256": "d52effcb1b07ef72a06d3181c73cef3d429cc84c027691577c60513fe5c3b016",
+                    "sha256": "d135370d5ba18e5ee19f7f32bc9c90b8a465b0081b180ba139bbc9481f14c88b",
                 }
             ],
         },
