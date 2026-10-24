@@ -456,7 +456,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "(가)를 만족하는 k의 범위 -√10<k<√10와 (나)를 만족하는 k<-7 또는 k>3의 겹치는 부분은 3<k<√10뿐이므로 정수 k는 없다.",
+    "solutionImageCaption": "(가)를 만족하는 k의 범위 -√10<k<√10와 (나)를 만족하는 k<-7 또는 k>3의 겹치는 부분은 3<k<√10뿐이므로 정수 k는 없다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -536,7 +540,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "두 접선이 수직이 되는 위치(예: P가 x축 위에 있을 때)에서 OT₁=3√2이고 삼각형 OPT₁이 직각이등변삼각형이므로 OP=6이다. 따라서 P는 반지름 6인 원 위를 움직인다.",
+    "solutionImageCaption": "두 접선이 수직이 되는 위치(예: P가 x축 위에 있을 때)에서 OT₁=3√2이고 삼각형 OPT₁이 직각이등변삼각형이므로 OP=6이다. 따라서 P는 반지름 6인 원 위를 움직인다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -838,7 +846,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "P(1,6), Q(4/3,0)이고 두 직선 OP, AQ가 만나는 점이 T(2/3,4)이다. 삼각형 OTB의 밑변 OB=4, 높이는 T의 y좌표 4이다.",
+    "solutionImageCaption": "P(1,6), Q(4/3,0)이고 두 직선 OP, AQ가 만나는 점이 T(2/3,4)이다. 삼각형 OTB의 밑변 OB=4, 높이는 T의 y좌표 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
