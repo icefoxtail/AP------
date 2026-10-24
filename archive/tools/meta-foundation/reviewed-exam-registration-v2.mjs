@@ -112,10 +112,19 @@ function unique(rows, key, name) {
   return map;
 }
 
-function validateMetaPipelineAudit({ root, approval, source, sourceBytes, sourceBlobSha1, bank, expectedQuestionCount, items }) {
+function manifestKeyList(row, arrayField, legacyField = arrayField) {
+  const value = row?.[arrayField] ?? row?.[legacyField];
+  if (Array.isArray(value)) return value;
+  if (typeof value === "string") return value.trim() ? value.trim().split(/[\s,]+/).filter(Boolean) : [];
+  return null;
+}
+
+function validateMetaPipelineAudit({ root, approval, source, sourceBytes, sourceBlobSha1, bank, expectedQuestionCount, items, registryChanges }) {
   if (approval.type !== "META_PIPELINE_AUDIT") return null;
   const proof = approval.metaPipelineAudit;
-  if (!proof || proof.schemaVersion !== "meta-pipeline-audit-approval-v1") fail("META_PIPELINE_AUDIT proof required");
+  const proofV1 = proof?.schemaVersion === "meta-pipeline-audit-approval-v1";
+  const proofV2 = proof?.schemaVersion === "meta-pipeline-audit-approval-v2";
+  if (!proof || !proofV1 && !proofV2) fail("META_PIPELINE_AUDIT proof required");
   requireText(proof.sourceFileDriveId, "META_PIPELINE_AUDIT sourceFileDriveId");
   const readEvidence = (ref, name) => {
     if (!ref || typeof ref !== "object" || Array.isArray(ref) || !/^[a-f0-9]{64}$/.test(ref.sha256 || "")) fail(`${name} reference required`);
@@ -125,19 +134,124 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     if (digest(bytes) !== ref.sha256) fail(`${name} SHA-256 mismatch`);
     return JSON.parse(bytes.toString("utf8"));
   };
-  const audit = readEvidence(proof.auditPackageRef, "META_PIPELINE_AUDIT package");
+  const rawAudit = readEvidence(proof.auditPackageRef, "META_PIPELINE_AUDIT package");
   const manifest = readEvidence(proof.manifestRef, "META_PIPELINE_AUDIT manifest");
   const sourceParity = readEvidence(proof.sourceParityRef, "META_PIPELINE_AUDIT source parity");
+  const classificationPackage = proofV2
+    ? readEvidence(proof.classificationRef, "META_PIPELINE_AUDIT v2 classification package")
+    : null;
   const parentBindingCorrection = proof.parentBindingCorrectionRef
     ? readEvidence(proof.parentBindingCorrectionRef, "META_PIPELINE_AUDIT canonical parent-binding correction")
     : null;
   const expectedTitle = path.basename(source, ".js");
-  if (audit.schemaVersion !== "ALIVE_META_AUDIT_ATOMIC_v3" || audit.examTitle !== expectedTitle ||
-      audit.sourceFileDriveId !== proof.sourceFileDriveId || !/^[a-f0-9]{64}$/.test(audit.sourceSha256 || "")) fail("META_PIPELINE_AUDIT source identity/schema mismatch");
-  if (audit.auditVerdict !== "ALL_APPROVED_CANONICAL_STANDARDIZED" ||
-      audit.handOffToCourier?.status !== "READY_FOR_COURIER_REGISTRATION" ||
-      audit.handOffToCourier?.author !== "META_PIPELINE_UNIFIED_AUTHOR" ||
-      audit.handOffToCourier?.registrationProtocol !== "DIRECT_ATOMIC_METADATA_BINDING") fail("META_PIPELINE_AUDIT is not an approved Courier handoff");
+  const v3DefinitionRows = Array.isArray(rawAudit.boundAtomicCrossConcepts) &&
+    rawAudit.boundAtomicCrossConcepts.every(row => row && typeof row === "object" && typeof row.conceptKey === "string");
+  const v3KeyRows = Array.isArray(rawAudit.boundAtomicCrossConcepts) &&
+    rawAudit.boundAtomicCrossConcepts.every(row => typeof row === "string");
+  const auditV3Rich = rawAudit.schemaVersion === "ALIVE_META_AUDIT_ATOMIC_v3" && v3DefinitionRows &&
+    Boolean(rawAudit.records?.[0]?.classification) && Boolean(rawAudit.handOffToCourier?.registrationProtocol);
+  const auditV3KeyOnly = rawAudit.schemaVersion === "ALIVE_META_AUDIT_ATOMIC_v3" && v3KeyRows &&
+    !rawAudit.records?.[0]?.classification;
+  const auditV2 = rawAudit.schemaVersion === "META_AUDIT_ATOMIC_PACKAGE_v2";
+  const pairedLegacyInput = auditV2 || auditV3KeyOnly;
+  const auditV3 = auditV3Rich || auditV3KeyOnly;
+  if (auditV3Rich !== proofV1 || pairedLegacyInput !== proofV2 || !auditV3 && !auditV2 || rawAudit.examTitle !== expectedTitle ||
+      rawAudit.sourceFileDriveId !== proof.sourceFileDriveId || !/^[a-f0-9]{64}$/.test(rawAudit.sourceSha256 || ""))
+    fail("META_PIPELINE_AUDIT source identity/schema mismatch");
+  if (rawAudit.auditVerdict !== "ALL_APPROVED_CANONICAL_STANDARDIZED") fail("META_PIPELINE_AUDIT audit verdict mismatch");
+  if (auditV3Rich && (rawAudit.handOffToCourier?.status !== "READY_FOR_COURIER_REGISTRATION" ||
+      rawAudit.handOffToCourier?.author !== "META_PIPELINE_UNIFIED_AUTHOR" ||
+      rawAudit.handOffToCourier?.registrationProtocol !== "DIRECT_ATOMIC_METADATA_BINDING"))
+    fail("META_PIPELINE_AUDIT is not an approved Courier handoff");
+  let audit = rawAudit;
+  if (pairedLegacyInput) {
+    const classificationSchema = auditV3KeyOnly ? "CANDIDATE_CLASSIFICATION_PACKAGE_v2" : "CANDIDATE_CLASSIFICATION_v2";
+    if (classificationPackage?.schemaVersion !== classificationSchema ||
+        classificationPackage.examTitle !== expectedTitle ||
+        ![expectedTitle, `${expectedTitle}.js`, path.basename(source)].includes(classificationPackage.sourceFileName) ||
+        classificationPackage.sourceFileDriveId !== proof.sourceFileDriveId ||
+        classificationPackage.sourceSha256 !== rawAudit.sourceSha256 ||
+        classificationPackage.totalQuestions !== expectedQuestionCount ||
+        !Array.isArray(classificationPackage.records) || classificationPackage.records.length !== expectedQuestionCount)
+      fail("META_PIPELINE_AUDIT v2 classification identity/schema mismatch");
+    const rawKeys = rawAudit.boundAtomicCrossConcepts;
+    if (!Array.isArray(rawKeys)) fail("META_PIPELINE_AUDIT v2 CrossConcept keys required");
+    const conceptKeys = rawKeys.map(row => typeof row === "string" ? row : row?.conceptKey);
+    if (conceptKeys.some(key => !/^CC_[A-Z0-9_]+$/.test(key || "")) || new Set(conceptKeys).size !== conceptKeys.length)
+      fail("META_PIPELINE_AUDIT v2 CrossConcept key list invalid");
+    // The request-level evidence gate has already SHA-verified every registry
+    // change before this adapter is called. Compile the current and proposed
+    // states so legacy key-only audits can use an unchanged active definition
+    // or an exact add-only definition carried by this request.
+    const v2BeforeTables = lookup(registryPlan(root, [], () => {}));
+    const v2Tables = (registryChanges || []).length
+      ? lookup(registryPlan(root, registryChanges, () => {}))
+      : v2BeforeTables;
+    const boundAtomicCrossConcepts = conceptKeys.map(key => {
+      const existed = v2BeforeTables.cc.has(key);
+      const definition = (existed ? v2BeforeTables : v2Tables).cc.get(key);
+      if (!definition || definition.status !== "ACTIVE")
+        fail(`META_PIPELINE_AUDIT v2 lacks an active CrossConcept definition for ${key}`);
+      if (!definition.canonicalLabelKo || !definition.definition)
+        fail(`META_PIPELINE_AUDIT v2 CrossConcept definition incomplete: ${key}`);
+      return { conceptKey: key, labelKo: definition.canonicalLabelKo, definition: definition.definition };
+    });
+    const classRecords = unique(classificationPackage.records, "questionId", "META_PIPELINE_AUDIT v2 classification questionId");
+    const normalizedRecords = rawAudit.records?.map(row => {
+      const ordinal = Number(row.questionId);
+      const candidate = classRecords.get(ordinal);
+      const crossConceptKeys = row.crossConceptKeys;
+      const conditionKeys = row.conditionKeys ?? [];
+      if (!Number.isInteger(ordinal) || !candidate || row.auditStatus !== "APPROVED" ||
+          !Array.isArray(crossConceptKeys) || !Array.isArray(conditionKeys) ||
+          !row.problemTypeKey || !row.templateKey || !row.standardUnitKey || !row.subUnitKey ||
+          !row.targetPack || !row.difficultyReason || !row.auditRemarks ||
+          !candidate.contentSnippet || typeof candidate.hasImage !== "boolean")
+        fail(`META_PIPELINE_AUDIT v2 record incomplete: ${row.questionId}`);
+      for (const field of ["standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "problemTypeKey", "templateKey", "targetPack", "difficultyBucket", "level", "difficultyReason"])
+        if (!eq(row[field] ?? null, candidate[field] ?? null)) fail(`META_PIPELINE_AUDIT v2 classification mismatch: ${ordinal}.${field}`);
+      if (!eq(crossConceptKeys, candidate.crossConceptKeys) || !eq(conditionKeys, candidate.conditionKeys || []))
+        fail(`META_PIPELINE_AUDIT v2 classification tags mismatch: ${ordinal}`);
+      const question = bank[ordinal - 1];
+      const sourceText = question?.content ?? question?.question ?? question?.stem ?? question?.text ?? "";
+      const compact = value => String(value ?? "").normalize("NFC").replace(/\s+/g, " ").trim();
+      if (typeof sourceText !== "string" || !compact(sourceText).includes(compact(candidate.contentSnippet)))
+        fail(`META_PIPELINE_AUDIT v2 source excerpt mismatch: ${ordinal}`);
+      const readingEvidence = auditV3KeyOnly ? row.readingEvidence : null;
+      if (auditV3KeyOnly && (!readingEvidence?.sourceTextExcerpt || !readingEvidence?.solutionDecisiveExcerpt ||
+          typeof readingEvidence.visualAssetChecked !== "boolean" ||
+          !["IMAGE", "SVG", "SVG_IMAGE", "NONE"].includes(readingEvidence.visualType)))
+        fail(`META_PIPELINE_AUDIT v3 key-only reading evidence incomplete: ${ordinal}`);
+      return {
+        questionId: ordinal,
+        standardCourse: row.standardCourse,
+        standardUnitKey: row.standardUnitKey,
+        standardUnit: row.standardUnit,
+        subUnitKey: row.subUnitKey,
+        subUnit: row.subUnit,
+        auditVerdict: "APPROVED",
+        classification: {
+          status: "APPROVED_CANONICAL",
+          problemTypeKey: row.problemTypeKey,
+          templateKey: row.templateKey,
+          crossConceptKeys,
+          conditionKeys,
+          targetPack: row.targetPack,
+          assignedPack: row.assignedPack,
+        },
+        legacyV2Evidence: {
+          sourceTextExcerpt: readingEvidence?.sourceTextExcerpt || candidate.contentSnippet,
+          solutionDecisiveExcerpt: readingEvidence?.solutionDecisiveExcerpt || null,
+          difficultyReason: row.difficultyReason,
+          auditRemarks: row.auditRemarks,
+          hasImage: candidate.hasImage,
+          visualAssetChecked: readingEvidence?.visualAssetChecked ?? false,
+          visualType: readingEvidence?.visualType || (candidate.hasImage ? "IMAGE" : "NONE"),
+        },
+      };
+    }) || [];
+    audit = { ...rawAudit, inputAuditSchemaVersion: rawAudit.schemaVersion, records: normalizedRecords, boundAtomicCrossConcepts };
+  }
   const stats = audit.statistics;
   if (!stats || stats.totalQuestions !== expectedQuestionCount || stats.approved !== expectedQuestionCount ||
       stats.holdRemaining !== 0 || stats.newTemplatesCreated !== 0 || stats.canonicalTemplatesReused !== expectedQuestionCount) fail("META_PIPELINE_AUDIT denominator/hold/template gate mismatch");
@@ -152,6 +266,8 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     fail("META_PIPELINE_AUDIT v3 manifest denominator/hold gate mismatch");
   const auditSourceSha256 = sourceParity.auditSourceSha256 || sourceParity.driveSourceSha256;
   const sourceHashDrift = sourceParity.driveSourceSha256 !== audit.sourceSha256;
+    if (auditV2 && sourceHashDrift)
+    fail("META_PIPELINE_AUDIT v2 cannot reconcile audit/Drive source hash drift without final audit excerpts");
   const exactSourceHashParity = !sourceHashDrift && sourceParity.parityBasis === "EXACT_SOURCE_SHA256" &&
     sourceParity.driveSourceSha256 === audit.sourceSha256 && sourceParity.productionSourceSha256 === audit.sourceSha256;
   const sourceParityStatusValid = sourceHashDrift
@@ -186,10 +302,25 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     const classification = record?.classification, reading = record?.readingEvidence;
     if (!record || record.auditVerdict !== "APPROVED" || classification?.status !== "APPROVED_CANONICAL" ||
         !Array.isArray(classification.crossConceptKeys) || !classification.problemTypeKey || !classification.templateKey ||
-        !record.standardUnitKey || !record.subUnitKey || !reading || !reading.sourceTextExcerpt || !reading.solutionDecisiveExcerpt ||
-        typeof reading.visualAssetChecked !== "boolean" || !["IMAGE", "SVG", "SVG_IMAGE", "NONE"].includes(reading.visualType)) fail(`META_PIPELINE_AUDIT record incomplete: ${ordinal}`);
+        !record.standardUnitKey || !record.subUnitKey) fail(`META_PIPELINE_AUDIT record incomplete: ${ordinal}`);
+    if (auditV3Rich && (!reading || !reading.sourceTextExcerpt || !reading.solutionDecisiveExcerpt ||
+        typeof reading.visualAssetChecked !== "boolean" || !["IMAGE", "SVG", "SVG_IMAGE", "NONE"].includes(reading.visualType)))
+      fail(`META_PIPELINE_AUDIT record incomplete: ${ordinal}`);
+    if (pairedLegacyInput && (!record.legacyV2Evidence?.sourceTextExcerpt || !record.legacyV2Evidence?.difficultyReason ||
+        !record.legacyV2Evidence?.auditRemarks || typeof record.legacyV2Evidence.hasImage !== "boolean"))
+      fail(`META_PIPELINE_AUDIT paired legacy evidence incomplete: ${ordinal}`);
+    const manifestCrossConceptKeys = manifestKeyList(manifestRow, "crossConceptKeys", "crossConcepts");
+    const manifestConditionKeys = manifestKeyList(manifestRow, "conditionKeys");
+    const manifestConditionsMatch = manifestConditionKeys === null
+      ? manifestV2 || manifestRow?.conditionKeys === undefined
+      : eq(manifestConditionKeys, classification.conditionKeys || []);
+    const manifestUnitsMatch = !pairedLegacyInput || manifestRow?.standardUnitKey === record.standardUnitKey &&
+      manifestRow?.subUnitKey === record.subUnitKey &&
+      (manifestRow.targetPack || manifestRow.pack) === classification.targetPack;
     if (!manifestRow || manifestRow.problemTypeKey !== classification.problemTypeKey || manifestRow.templateKey !== classification.templateKey ||
-        !eq(manifestRow.crossConceptKeys, classification.crossConceptKeys)) fail(`META_PIPELINE_AUDIT manifest binding mismatch: ${ordinal}`);
+        !manifestCrossConceptKeys || !eq(manifestCrossConceptKeys, classification.crossConceptKeys) ||
+        !manifestConditionsMatch || !manifestUnitsMatch)
+      fail(`META_PIPELINE_AUDIT manifest binding mismatch: ${ordinal}`);
     const actualPayloadHash = studentPayloadSha256(bank[ordinal - 1]);
     if (!parityRow || parityRow.questionId !== ordinal || parityRow.questionUid !== patch?.questionUid ||
         !(exactSourceHashParity || parityRow.driveSourceTextExcerptMatched === true && parityRow.driveSolutionExcerptMatched === true) ||
@@ -228,7 +359,9 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
       fail(`META_PIPELINE_AUDIT CrossConcept definition placeholder: ${definition.conceptKey}`);
   }
   return { audit, manifest, sourceParity, parentBindingCorrection, parentBindingCorrectionRef: proof.parentBindingCorrectionRef || null,
-    sourceFileDriveId: proof.sourceFileDriveId };
+    sourceFileDriveId: proof.sourceFileDriveId, inputAuditSchemaVersion: rawAudit.schemaVersion,
+    inputAuditVariant: auditV3Rich ? "rich_v3" : auditV3KeyOnly ? "key_only_v3" : "atomic_package_v2",
+    classificationRef: proof.classificationRef || null };
 }
 
 function validateMetaPipelineRegistry({ audit, parentBindingCorrection, parentBindingCorrectionRef, beforeTables, afterTables, registryChanges, existingConceptReviews, items, root }) {
@@ -808,7 +941,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
   if (!Array.isArray(bank) || !Number.isInteger(req.expectedQuestionCount) || bank.length !== req.expectedQuestionCount || !bank.length) fail("source denominator mismatch");
   const metaPipelineAudit = validateMetaPipelineAudit({ root, approval: req.approval, source, sourceBytes: bytes, sourceBlobSha1: blob,
-    bank, expectedQuestionCount: req.expectedQuestionCount, items: req.items });
+    bank, expectedQuestionCount: req.expectedQuestionCount, items: req.items, registryChanges: req.registryChanges || [] });
   const read = file => JSON.parse(fs.readFileSync(safePath(root, file), "utf8"));
   const metadata = read(META), identity = read(IDENTITY);
   const metadataByUid = unique(metadata.records, "questionUid", "metadata UID");
@@ -1071,7 +1204,10 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const outputDigests = [...plan.output].filter(([file, text]) => file !== META && (!fs.existsSync(safePath(root, file)) || fs.readFileSync(safePath(root, file), "utf8").replaceAll("\r\n", "\n") !== text)).map(([file, text]) => ({ path: file, sha256: digest(text) }));
   const receipt = { schemaVersion: "archive-reviewed-exam-meta-registration-v2", requestId: req.requestId, requestSha256,
     examUid: req.examUid, sourceArchiveFile: source, sourceBlobSha1: blob, sourceRawSha256: digest(bytes), approval: req.approval,
-    ...(metaPipelineAudit ? { metaPipelineAudit: { schemaVersion: "ALIVE_META_AUDIT_ATOMIC_v3", sourceFileDriveId: metaPipelineAudit.sourceFileDriveId,
+    ...(metaPipelineAudit ? { metaPipelineAudit: { schemaVersion: metaPipelineAudit.inputAuditSchemaVersion || metaPipelineAudit.audit.schemaVersion,
+      inputAuditVariant: metaPipelineAudit.inputAuditVariant,
+      ...(metaPipelineAudit.classificationRef ? { classificationSha256: metaPipelineAudit.classificationRef.sha256 } : {}),
+      sourceFileDriveId: metaPipelineAudit.sourceFileDriveId,
       auditSha256: req.approval.metaPipelineAudit.auditPackageRef.sha256, manifestSha256: req.approval.metaPipelineAudit.manifestRef.sha256,
       sourceParitySha256: req.approval.metaPipelineAudit.sourceParityRef.sha256,
       auditSourceSha256: metaPipelineAudit.audit.sourceSha256,
