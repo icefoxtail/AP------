@@ -717,7 +717,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_매산여고_1학기_중간_고1_기출_c/q19-solution.svg",
+    "solutionImageAlt": "직선 y=t가 꼭짓점 A, B를 지나는 t=0, 5와 두 포물선의 교점 C, D를 지나는 t=1, 4일 때 서로 다른 세 점에서 만난다.",
+    "solutionImageCaption": "직선 y=t가 꼭짓점 A, B를 지나는 t=0, 5와 두 포물선의 교점 C, D를 지나는 t=1, 4일 때 서로 다른 세 점에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

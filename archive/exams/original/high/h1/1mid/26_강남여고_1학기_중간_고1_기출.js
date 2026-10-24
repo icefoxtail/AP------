@@ -836,7 +836,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "B23",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_강남여고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "x는 판매가격을 6000원에서 100원씩 바꾼 횟수, y는 하루 이익(원)이며, x=5일 때 이익이 67500원으로 최대이다.",
+    "solutionImageCaption": "x는 판매가격을 6000원에서 100원씩 바꾼 횟수, y는 하루 이익(원)이며, x=5일 때 이익이 67500원으로 최대이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

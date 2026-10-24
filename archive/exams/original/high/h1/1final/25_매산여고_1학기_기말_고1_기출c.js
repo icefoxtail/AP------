@@ -579,7 +579,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_매산여고_1학기_기말_고1_기출c/q16-solution.svg",
+    "solutionImageAlt": "a=7일 때 두 부등식의 해는 x<-1 또는 x>2와 3<x<5이고, 공통 범위 3<x<5의 정수는 4 하나뿐이다.",
+    "solutionImageCaption": "a=7일 때 두 부등식의 해는 x<-1 또는 x>2와 3<x<5이고, 공통 범위 3<x<5의 정수는 4 하나뿐이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

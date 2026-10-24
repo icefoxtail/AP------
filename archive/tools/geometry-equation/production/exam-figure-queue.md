@@ -4,7 +4,7 @@
 
 ## 현황
 
-- 시험지 141개: CLOSED 78 / OPEN 63 (골든 샘플 2 포함)
+- 시험지 141개: CLOSED 139 / OPEN 2 (남은 2개는 골든 샘플, batch5 마감)
 - 문항 422개(시험지+번호 기준 중복 제거): EXEMPT 97, OPEN_LAYOUT 28, OPEN_OTHER 6, OPEN_UNSUPPORTED 67, PUBLISHED 224
 - 원 캠페인 461건 중 39쌍이 재실행으로 중복되어 최종 상태 하나로 합쳤다.
 
@@ -44,9 +44,9 @@
 - [x] **21_순천고_1학기_기말_고1_기출** (1건): q7 OPEN_UNSUPPORTED other — x축과 y축에 접하는 두 원의 중심 (1,1),(5,5)는 이차방정식으로 구한 유도점이라 원본 좌표 없이 만
 - [x] **21_순천고_1학기_중간_고1_기출** (1건): q15 OPEN_UNSUPPORTED B_two_curves — a의 값마다 달라지는 여러 포물선이 한 직선에 접하는 관계를 한 그림에 그려야 하는데 한 그림에 두 곡선 이
 - [x] **21_제일고_1학기_중간_고2_수학I** (1건): q9 OPEN_UNSUPPORTED D_exp_log_trig — 지수함수 곡선과 그 평행이동·대칭이동 그래프(a에 따른 곡선 족)는 지원되지 않는다
-- **22_금당고_1학기_기말_고2_수학I** (1건): q19 OPEN_UNSUPPORTED D_exp_log_trig — 사인 그래프와 수평선의 교점 개수를 보이는 삼각함수 그래프가 필요하다.
+- [x] **22_금당고_1학기_기말_고2_수학I** (1건): q19 OPEN_UNSUPPORTED D_exp_log_trig — 사인 그래프와 수평선의 교점 개수를 보이는 삼각함수 그래프가 필요하다.
 - [x] **22_매산고_1학기_중간_고1_기출** (1건): q20 OPEN_UNSUPPORTED B_two_curves — 두 이차함수 f, g의 그래프를 한 그림에 함께 그리고 수평선 y=k까지 보여야 함
-- **22_매산여고_1학기_중간_고1_기출** (1건): q15 OPEN_UNSUPPORTED B_two_curves — 두 이차함수 f, g의 그래프를 한 그림에 함께 그려야 하므로 지원되지 않는다.
+- [x] **22_매산여고_1학기_중간_고1_기출** (1건): q15 OPEN_UNSUPPORTED B_two_curves — 두 이차함수 f, g의 그래프를 한 그림에 함께 그려야 하므로 지원되지 않는다.
 - [x] **22_복성고_1학기_기말_고1_기출** (1건): q18 OPEN_UNSUPPORTED C_number_line — 수직선 위 해집합 4<x<a 와 정수 5, 6의 위치를 나타내야 하며 수직선 도식은 계약에 없다.
 - [x] **22_복성고_1학기_중간_고1_기출** (1건): q10 OPEN_UNSUPPORTED A_construction_ops — 변을 2:1로 내분하는 점을 만드는 연산이 없어 D,E,F를 정확히 작도할 수 없다
 - [x] **22_순천고_1학기_기말_고2_수학I** (1건): q2 OPEN_UNSUPPORTED other — 변의 길이가 없고 각 두 개와 한 변만 주어진 삼각형이라 좌표 없이 그릴 수 없다.
@@ -58,19 +58,19 @@
 - [x] **23_매산고_1학기_기말_고2_수학I** (1건): q15 OPEN_UNSUPPORTED D_exp_log_trig — 이차함수, 지수함수 y=3^x, 로그함수 y=log_3 x 세 곡선과 점 A,B,C가 한 그림에 필요하다.
 - [x] **23_매산고_1학기_중간_고1_기출** (1건): q20 OPEN_LAYOUT compose:LAYOUT_INVENTORY_INCOMPLETE — ABANDONED(저작 4회 실패)
 - [x] **23_여천고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED B_two_curves — 계수가 문자인 두 이차함수 곡선을 한 그림에 함께 그려야 하며 구체적인 좌표가 없어 지원되지 않음
-- **23_제일고_1학기_중간_고1_기출** (1건): q12 OPEN_UNSUPPORTED A_construction_ops — 수직선 위 내분점·외분점을 구성하는 연산이 계약에 없어 파생 점 P(1), Q(-8)을 정확히 구성할 수 없
-- **24_매산고_1학기_중간_고1_기출** (1건): q17 OPEN_UNSUPPORTED other — 두 경우(a=1/8, a=-1)의 삼차함수 그래프가 필요하나 합성 패널은 이차함수만 지원한다
-- **24_순천여고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 절댓값 함수 그래프(꺾인 곡선)와 직선의 교점 개수 비교가 필요하며 이는 지원되지 않는다.
-- **25_강남여고_1학기_중간_고1_기출** (1건): q14 OPEN_LAYOUT compose:COMPOSITE_PANEL_NOT_COMPOSED — ABANDONED(저작 4회 실패)
-- **25_매산고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED F_irrational_coefficients — 포물선과 직선의 무리수 교점, x축에 내린 수선의 발 C, D와 삼각형을 한 그림에 그려야 하는데 지원되지 
-- **25_매산고_1학기_중간_고2_대수** (1건): q7 OPEN_UNSUPPORTED D_exp_log_trig — 로그함수와 지수함수 그래프(역함수 대칭)가 필요하나 다항 그래프만 지원된다.
-- **25_매산여고_1학기_기말_고1_기출c** (1건): q16 OPEN_UNSUPPORTED C_number_line — 끝점이 a에 따라 움직이는 두 부등식 해집합의 수직선 구간 그림이 필요함
-- **25_제일고_1학기_기말_고1_기출c** (1건): q6 OPEN_UNSUPPORTED G_symbolic_coefficient — 문자 a를 포함한 이차함수의 그래프(f(-1)<0, f(2)>0 위치 관계)는 계수를 정할 수 없어 그릴 수
-- **26_강남여고_1학기_중간_고1_기출** (1건): q20 OPEN_LAYOUT frame:EQUAL_UNIT_PARABOLA_TOO_NARROW — LIMIT
-- **26_금당고_2학기_중간_고1_기출** (1건): q7 OPEN_UNSUPPORTED A_construction_ops — 주어진 직선에 수직이고 한 점을 지나는 직선을 작도하는 연산이 계약에 없다
-- **26_매산여고_1학기_중간_고1_기출_c** (1건): q19 OPEN_UNSUPPORTED B_two_curves — 서로 다른 두 포물선과 수평선 y=t를 한 그림에 그려야 하는데 두 곡선을 한 그림에 그리는 형식이 없다
-- **26_순천여고_1학기_기말_고1_기출** (1건): q12 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 절댓값 y=2x^2-4/x/-3의 구간 그래프(두 이차식 조각이 이어진 함수)가 필요함
-- **26_효천고_1학기_중간_고1_기출c** (1건): q26 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 구간별 함수(두 이차곡선을 이어 붙인 그래프)와 직선을 한 그림에 그려야 하는데 계약이 지원하지 않는다
+- [x] **23_제일고_1학기_중간_고1_기출** (1건): q12 OPEN_UNSUPPORTED A_construction_ops — 수직선 위 내분점·외분점을 구성하는 연산이 계약에 없어 파생 점 P(1), Q(-8)을 정확히 구성할 수 없
+- [x] **24_매산고_1학기_중간_고1_기출** (1건): q17 OPEN_UNSUPPORTED other — 두 경우(a=1/8, a=-1)의 삼차함수 그래프가 필요하나 합성 패널은 이차함수만 지원한다
+- [x] **24_순천여고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 절댓값 함수 그래프(꺾인 곡선)와 직선의 교점 개수 비교가 필요하며 이는 지원되지 않는다.
+- [x] **25_강남여고_1학기_중간_고1_기출** (1건): q14 OPEN_LAYOUT compose:COMPOSITE_PANEL_NOT_COMPOSED — ABANDONED(저작 4회 실패)
+- [x] **25_매산고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED F_irrational_coefficients — 포물선과 직선의 무리수 교점, x축에 내린 수선의 발 C, D와 삼각형을 한 그림에 그려야 하는데 지원되지 
+- [x] **25_매산고_1학기_중간_고2_대수** (1건): q7 OPEN_UNSUPPORTED D_exp_log_trig — 로그함수와 지수함수 그래프(역함수 대칭)가 필요하나 다항 그래프만 지원된다.
+- [x] **25_매산여고_1학기_기말_고1_기출c** (1건): q16 OPEN_UNSUPPORTED C_number_line — 끝점이 a에 따라 움직이는 두 부등식 해집합의 수직선 구간 그림이 필요함
+- [x] **25_제일고_1학기_기말_고1_기출c** (1건): q6 OPEN_UNSUPPORTED G_symbolic_coefficient — 문자 a를 포함한 이차함수의 그래프(f(-1)<0, f(2)>0 위치 관계)는 계수를 정할 수 없어 그릴 수
+- [x] **26_강남여고_1학기_중간_고1_기출** (1건): q20 OPEN_LAYOUT frame:EQUAL_UNIT_PARABOLA_TOO_NARROW — LIMIT
+- [x] **26_금당고_2학기_중간_고1_기출** (1건): q7 OPEN_UNSUPPORTED A_construction_ops — 주어진 직선에 수직이고 한 점을 지나는 직선을 작도하는 연산이 계약에 없다
+- [x] **26_매산여고_1학기_중간_고1_기출_c** (1건): q19 OPEN_UNSUPPORTED B_two_curves — 서로 다른 두 포물선과 수평선 y=t를 한 그림에 그려야 하는데 두 곡선을 한 그림에 그리는 형식이 없다
+- [x] **26_순천여고_1학기_기말_고1_기출** (1건): q12 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 절댓값 y=2x^2-4/x/-3의 구간 그래프(두 이차식 조각이 이어진 함수)가 필요함
+- [x] **26_효천고_1학기_중간_고1_기출c** (1건): q26 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 구간별 함수(두 이차곡선을 이어 붙인 그래프)와 직선을 한 그림에 그려야 하는데 계약이 지원하지 않는다
 
 ## 골든 샘플 (마지막 순서)
 

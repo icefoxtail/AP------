@@ -750,7 +750,11 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "k=10일 때 직선 y=3x+10이 y=|x^2-4x-12|의 그래프와 서로 다른 네 점에서 만난다.",
+    "solutionImageCaption": "k=10일 때 직선 y=3x+10이 y=|x^2-4x-12|의 그래프와 서로 다른 네 점에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

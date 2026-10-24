@@ -2171,16 +2171,17 @@
         },
         {
           "ord": 19,
-          "state": "OPEN_UNSUPPORTED",
+          "state": "PUBLISHED",
           "camp": "camp5c",
           "key": "batchQ-p247",
           "fam": "ALG_GRAPH",
-          "cluster": "D_exp_log_trig",
-          "reason": "batch4 최종 UNSUPPORTED: sin x 그래프를 0<x<nπ(여러 주기)로 그리고 수평선 y=3/n과의 교점을 보여야 하는데, 삼각함수 그래프는 한 주기만 그릴 수 있고 직선·구간 제한을 함께 그릴 수 없다."
+          "figures": [
+            "assets/images/22_금당고_1학기_기말_고2_수학I/q19-solution.svg"
+          ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null
+      "status": "CLOSED",
+      "closedBy": "batch5"
     },
     {
       "exam": "22_금당고_1학기_중간_고1_기출",
@@ -2371,7 +2372,7 @@
           "key": "batchD-p52",
           "fam": "QUAD",
           "cluster": "B_two_curves",
-          "reason": "batch4 최종 UNSUPPORTED: 풀이가 a, b 문자로 전개하고 ㄷ의 a=5, b=100에서만 구체값이 나오는데, 이 값은 y 범위(-100~0)가 x 범위의 수 배라 같은 배율로 곡선이 식별되지 않고, 임의의 표본값(a=1)은 풀이의 값과 달라 검수에서 불일치로 판정되었다."
+          "reason": "batch5 최종 UNSUPPORTED: 풀이의 구체값 a=5, b=100에서 f=x^2-20x, g=-x^2+10x-75가 되어 y 범위(약 -100~25)가 x 범위(0~15)의 수 배라 같은 배율로는 곡선이 식별되지 않는다. 순수 수학 그래프의 세로 압축은 최대 1/2이고(applicationAxes는 문장제 전용) 임의 표본값은 풀이의 값과 달라 최종 UNSUPPORTED로 닫는다."
         },
         {
           "ord": 16,
@@ -2394,8 +2395,8 @@
           ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "774"
       ]
@@ -3375,12 +3376,13 @@
         },
         {
           "ord": 12,
-          "state": "OPEN_UNSUPPORTED",
+          "state": "PUBLISHED",
           "camp": "camp5b",
           "key": "batchJ-p136",
           "fam": "COORD_GEOM",
-          "cluster": "A_construction_ops",
-          "reason": "수직선 위 내분점·외분점을 구성하는 연산이 계약에 없어 파생 점 P(1), Q(-8)을 정확히 구성할 수 없음"
+          "figures": [
+            "assets/images/23_제일고_1학기_중간_고1_기출/q12-solution.svg"
+          ]
         },
         {
           "ord": 13,
@@ -3431,8 +3433,8 @@
           ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "775"
       ]
@@ -3730,11 +3732,11 @@
           "key": "batchS-p285",
           "fam": "ALG_GRAPH",
           "cluster": "other",
-          "reason": "두 경우(a=1/8, a=-1)의 삼차함수 그래프가 필요하나 합성 패널은 이차함수만 지원한다"
+          "reason": "batch5 최종 UNSUPPORTED: a=-1, a=1/8의 두 삼차함수는 각각 중근(x=1, x=-1/2)을 가져 삼차 그래프의 중근이 엔진에서 UNSUPPORTED_CUBIC_QUARTIC_REPEATED_ROOT로 거절되고, 두 경우를 한 그림에 놓는 합성 패널은 이차함수만 받는다."
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "775"
       ]
@@ -3894,16 +3896,17 @@
         },
         {
           "ord": 18,
-          "state": "OPEN_UNSUPPORTED",
+          "state": "PUBLISHED",
           "camp": "camp5c",
           "key": "batchR-p256",
           "fam": "ALG_GRAPH",
-          "cluster": "E_abs_piecewise_slanted_line",
-          "reason": "절댓값 함수 그래프(꺾인 곡선)와 직선의 교점 개수 비교가 필요하며 이는 지원되지 않는다."
+          "figures": [
+            "assets/images/24_순천여고_1학기_중간_고1_기출/q18-solution.svg"
+          ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "775"
       ]
@@ -4171,12 +4174,13 @@
         },
         {
           "ord": 14,
-          "state": "OPEN_LAYOUT",
+          "state": "PUBLISHED",
           "camp": "camp3",
           "key": "batchD-p48",
           "fam": "QUAD",
-          "errorCode": "compose:COMPOSITE_PANEL_NOT_COMPOSED",
-          "reason": "ABANDONED(저작 4회 실패)"
+          "figures": [
+            "assets/images/25_강남여고_1학기_중간_고1_기출/q14-solution-b5.svg"
+          ]
         },
         {
           "ord": 24,
@@ -4187,8 +4191,8 @@
           "reason": "판별식 부등식으로 자연수 개수를 세는 대수 계산이라 그림이 필요하지 않다."
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "775"
       ]
@@ -4291,16 +4295,17 @@
         },
         {
           "ord": 18,
-          "state": "OPEN_UNSUPPORTED",
+          "state": "PUBLISHED",
           "camp": "camp3",
           "key": "batchA-p11",
           "fam": "QUAD",
-          "cluster": "F_irrational_coefficients",
-          "reason": "포물선과 직선의 무리수 교점, x축에 내린 수선의 발 C, D와 삼각형을 한 그림에 그려야 하는데 지원되지 않는다."
+          "figures": [
+            "assets/images/25_매산고_1학기_중간_고1_기출/q18-solution-b5.svg"
+          ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "776"
       ]
@@ -4316,7 +4321,7 @@
           "key": "batchP-p238",
           "fam": "ALG_GRAPH",
           "cluster": "D_exp_log_trig",
-          "reason": "로그함수와 지수함수 그래프(역함수 대칭)가 필요하나 다항 그래프만 지원된다."
+          "reason": "batch5 최종 UNSUPPORTED: 밑이 3인 로그함수 2log_3 x와 지수함수 (sqrt3)^x는 계수에 1/ln3, ln3 같은 무리수가 들어 엔진이 유리수 계수의 자연로그/지수만 그릴 수 있어 그릴 수 없다."
         },
         {
           "ord": 13,
@@ -4329,8 +4334,8 @@
           ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "776"
       ]
@@ -4359,16 +4364,17 @@
       "items": [
         {
           "ord": 16,
-          "state": "OPEN_UNSUPPORTED",
+          "state": "PUBLISHED",
           "camp": "camp5c",
           "key": "batchS-p275",
           "fam": "ALG_GRAPH",
-          "cluster": "C_number_line",
-          "reason": "끝점이 a에 따라 움직이는 두 부등식 해집합의 수직선 구간 그림이 필요함"
+          "figures": [
+            "assets/images/25_매산여고_1학기_기말_고1_기출c/q16-solution.svg"
+          ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null
+      "status": "CLOSED",
+      "closedBy": "batch5"
     },
     {
       "exam": "25_매산여고_2학기_중간_고1_기출",
@@ -4497,11 +4503,11 @@
           "key": "batchC-p33",
           "fam": "QUAD",
           "cluster": "G_symbolic_coefficient",
-          "reason": "문자 a를 포함한 이차함수의 그래프(f(-1)<0, f(2)>0 위치 관계)는 계수를 정할 수 없어 그릴 수 없음"
+          "reason": "batch5 최종 UNSUPPORTED: 문자 a를 포함한 이차함수의 근의 위치 조건(0<a<2 전체에 대한 풀이)이라 그릴 수 있는 것은 표본값(a=1/2)의 그래프뿐인데, 독립 검토가 이 그림을 풀이의 일반 조건(f(-1)<0, f(2)>0)과 다른 식의 그림으로 판정해 불일치(FAIL)가 되었다. 표본값 그림을 풀이 그림으로 쓰지 않고 최종 UNSUPPORTED로 닫는다."
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "776"
       ]
@@ -4767,16 +4773,17 @@
         },
         {
           "ord": 20,
-          "state": "OPEN_LAYOUT",
+          "state": "PUBLISHED",
           "camp": "camp5a",
           "key": "batchE-p63",
           "fam": "QUAD",
-          "errorCode": "frame:EQUAL_UNIT_PARABOLA_TOO_NARROW",
-          "reason": "LIMIT"
+          "figures": [
+            "assets/images/26_강남여고_1학기_중간_고1_기출/q20-solution.svg"
+          ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "776"
       ]
@@ -4879,16 +4886,17 @@
         },
         {
           "ord": 7,
-          "state": "OPEN_UNSUPPORTED",
+          "state": "PUBLISHED",
           "camp": "camp3",
           "key": "batchE-p62",
           "fam": "COORD_GEOM",
-          "cluster": "A_construction_ops",
-          "reason": "주어진 직선에 수직이고 한 점을 지나는 직선을 작도하는 연산이 계약에 없다"
+          "figures": [
+            "assets/images/26_금당고_2학기_중간_고1_기출/q7-solution.svg"
+          ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "776"
       ]
@@ -5016,16 +5024,17 @@
         },
         {
           "ord": 19,
-          "state": "OPEN_UNSUPPORTED",
+          "state": "PUBLISHED",
           "camp": "camp5a",
           "key": "batchG-p92",
           "fam": "QUAD",
-          "cluster": "B_two_curves",
-          "reason": "서로 다른 두 포물선과 수평선 y=t를 한 그림에 그려야 하는데 두 곡선을 한 그림에 그리는 형식이 없다"
+          "figures": [
+            "assets/images/26_매산여고_1학기_중간_고1_기출_c/q19-solution.svg"
+          ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "776"
       ]
@@ -5228,12 +5237,13 @@
         },
         {
           "ord": 12,
-          "state": "OPEN_UNSUPPORTED",
+          "state": "PUBLISHED",
           "camp": "camp5a",
           "key": "batchC-p40",
           "fam": "QUAD",
-          "cluster": "E_abs_piecewise_slanted_line",
-          "reason": "절댓값 y=2x^2-4|x|-3의 구간 그래프(두 이차식 조각이 이어진 함수)가 필요함"
+          "figures": [
+            "assets/images/26_순천여고_1학기_기말_고1_기출/q12-solution-b5.svg"
+          ]
         },
         {
           "ord": 17,
@@ -5244,8 +5254,8 @@
           "reason": "판별식 부등식과 주사위 경우의 수 세기로 푸는 풀이이며 그래프 관계가 없다."
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "776"
       ]
@@ -5395,16 +5405,17 @@
         },
         {
           "ord": 26,
-          "state": "OPEN_UNSUPPORTED",
+          "state": "PUBLISHED",
           "camp": "camp3",
           "key": "batchC-p38",
           "fam": "QUAD",
-          "cluster": "E_abs_piecewise_slanted_line",
-          "reason": "구간별 함수(두 이차곡선을 이어 붙인 그래프)와 직선을 한 그림에 그려야 하는데 계약이 지원하지 않는다"
+          "figures": [
+            "assets/images/26_효천고_1학기_중간_고1_기출c/q26-solution.svg"
+          ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "776"
       ]

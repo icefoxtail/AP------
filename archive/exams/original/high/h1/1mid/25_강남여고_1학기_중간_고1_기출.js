@@ -500,7 +500,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_강남여고_1학기_중간_고1_기출/q14-solution-b5.svg",
+    "solutionImageAlt": "k=19/4일 때 직선 y=x+1/4이 포물선에 점 T에서 접한다. k가 이보다 커지면 만나지 않으므로 정수 k의 최댓값은 4이다.",
+    "solutionImageCaption": "k=19/4일 때 직선 y=x+1/4이 포물선에 점 T에서 접한다. k가 이보다 커지면 만나지 않으므로 정수 k의 최댓값은 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
