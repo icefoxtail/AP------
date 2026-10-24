@@ -6,7 +6,7 @@ from number_line_observer import audit
 
 input_hash,payload=read_request(sys.stdin.buffer.read(4000001))
 try:
-    result=audit(payload['numberLine'],payload['svg'])
+    result=audit(payload['numberLine'],payload['svg'],payload.get('pointNames'))
     status='OK'
 except (ValueError,KeyError,TypeError) as error:
     result,status={'code':str(error)},'ERROR'

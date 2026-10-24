@@ -39,7 +39,7 @@ export function compositePanels(plan){
   const checked=plan.panels.map((panel,index)=>{
     const caption=panel?.caption,numberLine=isNumberLinePanel(panel?.plan);
     // A number line (quadratic-inequality-chain-v1) is the last panel of a two-panel stack, under its quadratic graph.
-    if(numberLine&&(three||index!==plan.panels.length-1||!panel.plan.numberLine||typeof panel.plan.numberLine!=='object'||Object.keys(panel.plan).some(key=>!['capability','numberLine'].includes(key))))bad('NUMBER_LINE_PANEL_PLACEMENT_'+index);
+    if(numberLine&&(three||index!==plan.panels.length-1||!panel.plan.numberLine||typeof panel.plan.numberLine!=='object'||Object.keys(panel.plan).some(key=>!['capability','numberLine','pointNames'].includes(key))))bad('NUMBER_LINE_PANEL_PLACEMENT_'+index);
     if(!numberLine&&(!panel?.plan||panel.plan.capability!=='polynomial-spike-v1'||!panel.plan.graphPlan||typeof panel.plan.graphPlan!=='object'))bad('PANEL_PLAN_'+index);
     if(!caption||typeof caption!=='object'||Array.isArray(caption)||Object.keys(caption).some(key=>!['math','text'].includes(key))||(!caption.math&&!caption.text)
       ||(caption.math!==undefined&&(typeof caption.math!=='string'||!CAPTION_MATH.test(caption.math)))||(caption.text!==undefined&&(typeof caption.text!=='string'||!caption.text||caption.text.length>24)))bad('PANEL_CAPTION_'+index);
@@ -57,7 +57,7 @@ export function compositePanels(plan){
   // A panel's plot may be at most this high (graph_framing plotHeightLimit): one scale on both axes makes a tall shape narrower, not the stack
   // taller. Band rows the panel keeps (unshared line equations, band coordinates counted one per row) come out of that height.
   const bandRows=plan=>(Array.isArray(plan.graphPlan.lines)?plan.graphPlan.lines.filter(line=>!sharedLines.includes(line?.id)).length:0)
-    +(plan.coordinatePlacement==='PANEL'?(plan.graphPlan.requiredPoints??[]).length:Array.isArray(plan.coordinatePanel)?plan.coordinatePanel.length:0);
+    +(plan.coordinatePlacement==='PANEL'?(plan.graphPlan.requiredPoints??[]).length:(Array.isArray(plan.coordinatePanel)?plan.coordinatePanel.length:0)+(plan.pointNames&&typeof plan.pointNames==='object'?Object.keys(plan.pointNames).filter(id=>!(plan.coordinatePanel??[]).includes(id)).length:0));
   return checked.map(item=>{
     if(isNumberLinePanel(item.plan))return item;
     const rows=bandRows(item.plan),plotHeightLimit=Math.max(120,(three?THREE_PANEL_PLOT_HEIGHT:TWO_PANEL_PLOT_HEIGHT)-(rows?26+56*rows:0));

@@ -9,6 +9,7 @@ import math
 import re
 import xml.etree.ElementTree as ET
 import sympy as S
+from point_names import tex_map
 
 v = S.Symbol('v', real=True)
 NS = '{http://www.w3.org/2000/svg}'
@@ -121,8 +122,9 @@ def _num(element, name):
     return number
 
 
-def audit(numberLine, svg):
-    if 'rows' in numberLine: return audit_figure(numberLine, svg)
+def audit(numberLine, svg, pointNames=None):
+    if 'rows' in numberLine: return audit_figure(numberLine, svg, pointNames)
+    if pointNames: raise ValueError('POINT_DISPLAY_NAME_UNSUPPORTED')
     errors = []
     kind, solution, integers = expected_solution(numberLine)
     root = ET.fromstring(svg)
@@ -316,9 +318,11 @@ def expected_figure(numberLine):
     return parameter_spec, parameter, rows
 
 
-def audit_figure(numberLine, svg):
+def audit_figure(numberLine, svg, pointNames=None):
     errors = []
     parameter_spec, parameter, rows = expected_figure(numberLine)
+    # The name each point must show (its display name's TeX; the id itself without one), read from the plan alone.
+    name_tex = tex_map(pointNames, [point['id'] for row in numberLine['rows'] if row['kind'] == 'POINTS' for point in row['points']])
     variable = numberLine.get('variable', 'x')
     symbol = None if parameter_spec is None else S.Symbol(parameter_spec['name'])
     free = None if parameter_spec is None else {parameter_spec['name']: symbol}
@@ -364,7 +368,7 @@ def audit_figure(numberLine, svg):
                 vals = [l for l in owners.get(element.get('id'), []) if l.get('data-label-role') == 'point-value']
                 if len(names) != 1 or len(vals) != 1: errors.append('NL_POINT_LABEL_COUNT:' + point_id)
                 for l in names:
-                    if l.get('data-tex') != point_id: errors.append('NL_POINT_NAME_LABEL:' + point_id)
+                    if l.get('data-tex') != name_tex[point_id]: errors.append('NL_POINT_NAME_LABEL:' + point_id)
                 for l in vals:
                     try:
                         if read(l) != value: errors.append('NL_POINT_VALUE_LABEL:' + point_id)

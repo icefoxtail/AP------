@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {canonicalPointNameText} from './point-names.mjs';
 import {fileURLToPath} from 'node:url';
 import {objectSha,bytesSha,canonicalJson,safePath} from '../../pipeline-core/canonical.mjs';
 import {pythonWorker} from './worker.mjs';
@@ -103,7 +104,7 @@ const isDomainCode=error=>error?.constructor===Error&&/^[A-Z][A-Z0-9_]*(?::|$)/.
  * the minus/hyphen look-alikes U+2010, U+2011, U+2212, U+FE63, U+FF0D mapped to ASCII '-', and a radical over one token written either way:
  * √(2) or √(a) becomes √2 or √a, only when no Unicode letter, digit or '(' follows (√(2)x and √(2)π stay as written). Nothing else (no case folding, no NFKC, no en or em dash).
  */
-export const normalizeObservedText=value=>value.normalize('NFC').replace(/\s+/gu,'').replace(/[‐‑−﹣－]/gu,'-').replace(/√\(([0-9]+|[A-Za-z])\)(?![\p{L}\p{N}(])/gu,'√$1');
+export const normalizeObservedText=value=>canonicalPointNameText(value.normalize('NFC')).replace(/\s+/gu,'').replace(/[‐‑−﹣－]/gu,'-').replace(/√\(([0-9]+|[A-Za-z])\)(?![\p{L}\p{N}(])/gu,'√$1');
 const norm=normalizeObservedText;
 
 // --- capture ---------------------------------------------------------------------------------------------------------------------------------
