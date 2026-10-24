@@ -32,7 +32,7 @@ const digest=(value,reason)=>{try{return objectSha(value);}catch{throw new Stop(
 /** The panels of a composite plan, checked: 2-3 quadratic graph plans, each with a caption {math?, text?} (at least one part). */
 export function compositePanels(plan){
   const bad=reason=>{throw new Stop('COMPOSITE_PLAN_INVALID',{reason});};
-  if(plan?.capability!==COMPOSITE_CAPABILITY||!Array.isArray(plan.panels)||plan.panels.length<2||plan.panels.length>MAX_PANELS)bad('PANELS');
+  if(plan?.capability!==COMPOSITE_CAPABILITY||!Array.isArray(plan.panels)||plan.panels.length<(plan.chain==='number-line-figure-v1'?1:2)||plan.panels.length>MAX_PANELS)bad('PANELS');
   // Three panels with their own formula headers cannot fit the 640 CSS px stack: each formula moves to its caption row and a line every
   // panel draws identically (same id, slope and intercept) is written once above the stack (phase2 compositeHeader / COMPOSITE_PANEL_CANVAS).
   const three=plan.panels.length===3,lineKey=line=>JSON.stringify([line.id,line.slope,line.intercept]);
