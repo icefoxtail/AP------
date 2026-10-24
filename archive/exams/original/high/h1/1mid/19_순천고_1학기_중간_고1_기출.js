@@ -132,7 +132,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "하",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_1학기_중간_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "a=2, b=5일 때 x=2에서 최댓값 9",
+    "solutionImageCaption": "a=2, b=5일 때 x=2에서 최댓값 9",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

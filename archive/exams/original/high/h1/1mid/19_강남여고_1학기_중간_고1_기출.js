@@ -300,7 +300,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/19_강남여고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "k=2일 때 직선 y=x+2가 포물선에 접한다. k>2이면 서로 다른 두 점에서 만난다.",
+    "solutionImageCaption": "k=2일 때 직선 y=x+2가 포물선에 접한다. k>2이면 서로 다른 두 점에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,

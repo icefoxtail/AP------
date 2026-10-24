@@ -354,7 +354,11 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "점 (-2,1)을 지나고 기울기가 -3인 직선은 y절편이 -5인 y=-3x-5이다.",
+    "solutionImageCaption": "점 (-2,1)을 지나고 기울기가 -3인 직선은 y절편이 -5인 y=-3x-5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -426,7 +430,11 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "점 (-3, 1)을 지나고 주어진 직선과 기울기가 같은 직선이다.",
+    "solutionImageCaption": "점 (-3, 1)을 지나고 주어진 직선과 기울기가 같은 직선이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

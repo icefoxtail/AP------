@@ -128,7 +128,11 @@ window.questionBank = [
     "templateKey": "TPL_CENTROID_DIRECT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "NONE"
+    "integrationPattern": "NONE",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "두 중선의 교점이 삼각형 ABC의 무게중심 G이다",
+    "solutionImageCaption": "두 중선의 교점이 삼각형 ABC의 무게중심 G이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -171,7 +175,11 @@ window.questionBank = [
     "templateKey": "TPL_RELATION_PERPENDICULAR_PARAMETER",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "선분 AB의 중점 M을 지나고 AB에 수직인 직선이 수직이등분선입니다.",
+    "solutionImageCaption": "선분 AB의 중점 M을 지나고 AB에 수직인 직선이 수직이등분선입니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -214,7 +222,11 @@ window.questionBank = [
     "templateKey": "TPL_POINT_LINE_DISTANCE_DIRECT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "점 P(1,3)에서 거리 1인 직선은 ㄴ과 ㄷ(y축)이고, ㄱ은 거리가 1이 아니며 ㄹ(x축)은 거리 3이다.",
+    "solutionImageCaption": "점 P(1,3)에서 거리 1인 직선은 ㄴ과 ㄷ(y축)이고, ㄱ은 거리가 1이 아니며 ㄹ(x축)은 거리 3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -429,7 +441,11 @@ window.questionBank = [
     "templateKey": "TPL_EQUIDISTANT_LINE",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "점 P는 직선 y=-x+2와 선분 AB의 수직이등분선의 교점이다",
+    "solutionImageCaption": "점 P는 직선 y=-x+2와 선분 AB의 수직이등분선의 교점이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -472,7 +488,11 @@ window.questionBank = [
     "templateKey": "TPL_AREA_POINT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "점 P는 직선 AB 위에서 A의 바깥쪽에 있고, 삼각형 OAP와 OBP는 높이가 같아 넓이의 비가 AP : BP = 1 : 4이다.",
+    "solutionImageCaption": "점 P는 직선 AB 위에서 A의 바깥쪽에 있고, 삼각형 OAP와 OBP는 높이가 같아 넓이의 비가 AP : BP = 1 : 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -515,7 +535,11 @@ window.questionBank = [
     "templateKey": "TPL_AREA_SECTION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "넓이가 같으려면 D는 BC의 중점 (1, 3)이고 직선 l은 AD",
+    "solutionImageCaption": "넓이가 같으려면 D는 BC의 중점 (1, 3)이고 직선 l은 AD",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -787,7 +811,11 @@ window.questionBank = [
     "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "a=1일 때 직선과 두 교점, 꼭짓점",
+    "solutionImageCaption": "a=1일 때 직선과 두 교점, 꼭짓점",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -867,7 +895,11 @@ window.questionBank = [
     "templateKey": "TM_TANGENCY_CONDITION",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "점 (4,3)에서의 접선 4x+3y=25와 중심 (3,1)까지의 거리 2가 두 번째 원의 반지름이다.",
+    "solutionImageCaption": "점 (4,3)에서의 접선 4x+3y=25와 중심 (3,1)까지의 거리 2가 두 번째 원의 반지름이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,
@@ -941,6 +973,10 @@ window.questionBank = [
     "templateKey": "TPL_AREA_DIRECT",
     "crossConceptKeys": [],
     "conditionKeys": [],
-    "integrationPattern": "SEQUENTIAL"
+    "integrationPattern": "SEQUENTIAL",
+    "solutionImage": "assets/images/21_순천고_1학기_기말_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "세 직선의 교점 A, B, C와 밑변 AB에 대한 높이 CH",
+    "solutionImageCaption": "세 직선의 교점 A, B, C와 밑변 AB에 대한 높이 CH",
+    "solutionImageSize": "full"
   }
 ];

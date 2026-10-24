@@ -389,7 +389,11 @@ window.questionBank = [
     "sourceQid": 8,
     "sourceOrdinal": 8,
     "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
-    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":8,"sourceQid":8,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"},
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "a=-1일 때 세 점 A, B, C가 한 직선 위에 있다.",
+    "solutionImageCaption": "a=-1일 때 세 점 A, B, C가 한 직선 위에 있다.",
+    "solutionImageSize": "full"
   
   },
   {

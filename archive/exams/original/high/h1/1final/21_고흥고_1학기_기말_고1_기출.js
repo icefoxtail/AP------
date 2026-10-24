@@ -83,7 +83,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$P$가 $x$축 위에 있으므로 $P=(a,0)$이다.\n$PA=PB$를 거리의 제곱으로 나타내면\n$(a-1)^2+(-2)^2=(a-5)^2+2^2$\n\n$-2a+5=-10a+29$\n$8a=24$\n$a=3$\n\n따라서 $P=(3,0)$이므로 $b=0$이다.\n$a+b=3+0=3$이다.\n\n따라서 정답은 ②이다.",
-    "decisiveStep": "x축 위의 미지점에서 두 고정점까지의 거리 제곱을 같게 두어 좌표를 결정한다."
+    "decisiveStep": "x축 위의 미지점에서 두 고정점까지의 거리 제곱을 같게 두어 좌표를 결정한다.",
+    "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "x축 위의 점 P(3,0)에서 A, B까지의 거리가 같습니다.",
+    "solutionImageCaption": "x축 위의 점 P(3,0)에서 A, B까지의 거리가 같습니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -206,7 +210,11 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "원점에서 접점 $P(1,\\sqrt3)$로 향하는 반지름의 기울기는\n$\\dfrac{\\sqrt3}{1}=\\sqrt3$이다.\n접선은 반지름과 수직이므로 접선의 기울기는\n$a=-\\dfrac1{\\sqrt3}$이다.\n\n접선은 $P(1,\\sqrt3)$을 지나므로\n$\\sqrt3=-\\dfrac1{\\sqrt3}+b$\n$b=\\dfrac4{\\sqrt3}$이다.\n\n따라서\n$a^2+b^2=\\dfrac13+\\dfrac{16}3=\\dfrac{17}3$이다.\n\n따라서 정답은 ⑤이다.",
-    "decisiveStep": "접점으로 향하는 반지름과 접선의 수직 관계로 기울기를 정하고 접점 대입으로 절편을 구한다."
+    "decisiveStep": "접점으로 향하는 반지름과 접선의 수직 관계로 기울기를 정하고 접점 대입으로 절편을 구한다.",
+    "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "접선은 반지름 OP에 수직이다.",
+    "solutionImageCaption": "접선은 반지름 OP에 수직이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -331,7 +339,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "평행사변형의 두 대각선은 서로를 이등분한다.\n따라서 대각선 $AC$와 $BD$의 중점이 같다.\n$\\left(\\dfrac{0+7}{2},\\dfrac{6+5}{2}\\right)=\\left(\\dfrac{6+a}{2},\\dfrac{-2+b}{2}\\right)$\n\n좌표를 각각 비교하면\n$6+a=7$, $-2+b=11$\n$a=1$, $b=13$\n\n따라서 $a+b=1+13=14$이다.\n\n따라서 정답은 ④이다.",
-    "decisiveStep": "두 대각선의 중점이 같다는 좌표 등식을 세워 점 $D$의 좌표를 결정한다."
+    "decisiveStep": "두 대각선의 중점이 같다는 좌표 등식을 세워 점 $D$의 좌표를 결정한다.",
+    "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "대각선 AC와 BD의 중점이 일치하는 평행사변형 ABCD",
+    "solutionImageCaption": "대각선 AC와 BD의 중점이 일치하는 평행사변형 ABCD",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -374,7 +386,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$y=0$일 때 $3x-3k=0$이므로 $x$절편은 $k$이다.\n$x=0$일 때 $-ky-3k=0$이므로 $y$절편은 $-3$이다.\n\n좌표축과 직선이 만드는 삼각형의 넓이는\n$\\dfrac12\\cdot|k|\\cdot3=18$\n$|k|=12$\n\n$k$가 양수이므로 $k=12$이다.\n\n따라서 정답은 ②이다.",
-    "decisiveStep": "두 절편을 구해 좌표축과 이루는 삼각형의 넓이식에 대입한다."
+    "decisiveStep": "두 절편을 구해 좌표축과 이루는 삼각형의 넓이식에 대입한다.",
+    "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "k=12일 때 직선과 두 좌표축으로 둘러싸인 삼각형 (밑변 12, 높이 3)",
+    "solutionImageCaption": "k=12일 때 직선과 두 좌표축으로 둘러싸인 삼각형 (밑변 12, 높이 3)",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -417,7 +433,11 @@ window.questionBank = [
     ],
     "answer": "③",
     "solution": "원의 중심은 $(0,0)$이고 반지름은 $2$이다.\n직선과 중심 사이의 거리는\n$\\dfrac{|k|}{\\sqrt{3^2+4^2}}=\\dfrac{|k|}{5}$이다.\n\n서로 다른 두 점에서 만나려면 중심과 직선 사이의 거리가 반지름보다 작아야 한다.\n$\\dfrac{|k|}{5}<2$\n$|k|<10$\n\n정수 $k$는 $-9,-8,\\ldots,0,\\ldots,8,9$이므로\n그 개수는 $19$이다.\n\n따라서 정답은 ③이다.",
-    "decisiveStep": "중심에서 직선까지의 거리가 반지름보다 작다는 두 교점 조건을 정수 범위로 바꾼다."
+    "decisiveStep": "중심에서 직선까지의 거리가 반지름보다 작다는 두 교점 조건을 정수 범위로 바꾼다.",
+    "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "k=10, k=-10일 때 직선이 원에 접하고, 그 사이에서 두 점에서 만난다.",
+    "solutionImageCaption": "k=10, k=-10일 때 직선이 원에 접하고, 그 사이에서 두 점에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -544,7 +564,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "두 포물선의 꼭짓점을 비교해 평행이동을 구한다.\n$y=x^2-2x=(x-1)^2-1$\n첫 꼭짓점은 $(1,-1)$이다.\n\n$y=x^2+8x+10=(x+4)^2-6$\n둘째 꼭짓점은 $(-4,-6)$이다.\n따라서 평행이동은 왼쪽으로 $5$, 아래로 $5$이다.\n\n이동된 직선의 식은 원래 식에 $x+5$, $y+5$를 대입한다.\n$(x+5)-3(y+5)+2=0$\n$x-3y-8=0$\n\n두 직선은 평행하고, 두 상수항의 차의 절댓값은 $10$이다.\n$d=\\dfrac{10}{\\sqrt{1^2+(-3)^2}}=\\dfrac{10}{\\sqrt{10}}=\\sqrt{10}$이다.\n\n따라서 정답은 ①이다.",
-    "decisiveStep": "포물선 꼭짓점의 이동으로 평행이동량을 정한 뒤 직선식과 평행선 거리 공식을 적용한다."
+    "decisiveStep": "포물선 꼭짓점의 이동으로 평행이동량을 정한 뒤 직선식과 평행선 거리 공식을 적용한다.",
+    "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "평행한 두 직선에 수직인 선분의 길이가 두 직선 사이의 거리이다.",
+    "solutionImageCaption": "평행한 두 직선에 수직인 선분의 길이가 두 직선 사이의 거리이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -628,7 +652,11 @@ window.questionBank = [
     ],
     "answer": "①",
     "solution": "직선식을 $a$에 대한 항으로 묶는다.\n$a(x-y+1)+(x+3y-15)=0$\n모든 실수 $a$에 대해 성립하므로\n$x-y+1=0$,\n$x+3y-15=0$이다.\n\n두 식을 풀면\n$x=3$, $y=4$이므로 $P=(3,4)$이다.\n\n점 $P$와 직선 $2x-y+k=0$ 사이의 거리는\n$\\dfrac{|2\\cdot3-4+k|}{\\sqrt{2^2+(-1)^2}}=2\\sqrt5$\n$\\dfrac{|k+2|}{\\sqrt5}=2\\sqrt5$\n$|k+2|=10$\n\n따라서 $k=8$ 또는 $k=-12$이고,\n두 값의 합은 $-4$이다.\n\n따라서 정답은 ①이다.",
-    "decisiveStep": "매개변수 계수와 상수항을 각각 $0$으로 두어 고정점을 찾고 점-직선 거리식을 푼다."
+    "decisiveStep": "매개변수 계수와 상수항을 각각 $0$으로 두어 고정점을 찾고 점-직선 거리식을 푼다.",
+    "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "점 P(3,4)에서 거리가 2√5인 두 직선은 k=8, k=-12일 때이다",
+    "solutionImageCaption": "점 P(3,4)에서 거리가 2√5인 두 직선은 k=8, k=-12일 때이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -790,7 +818,11 @@ window.questionBank = [
     "choices": [],
     "answer": "$6+3\\sqrt2$",
     "solution": "$A$, $B$가 지름의 양 끝점이므로 원의 중심은 선분 $AB$의 중점이다.\n$(a,b)=\\left(\\dfrac{5+(-1)}2,\\dfrac{1+7}2\\right)=(2,4)$\n\n지름의 길이는\n$AB=\\sqrt{(-1-5)^2+(7-1)^2}$\n$=\\sqrt{36+36}=6\\sqrt2$\n따라서 반지름은\n$r=3\\sqrt2$이다.\n\n그러므로\n$a+b+r=2+4+3\\sqrt2=6+3\\sqrt2$이다.",
-    "decisiveStep": "지름의 중점으로 중심을 구하고 두 끝점 사이 거리의 절반을 반지름으로 둔다."
+    "decisiveStep": "지름의 중점으로 중심을 구하고 두 끝점 사이 거리의 절반을 반지름으로 둔다.",
+    "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "지름 AB의 중점 M이 원의 중심이고 반지름은 MA",
+    "solutionImageCaption": "지름 AB의 중점 M이 원의 중심이고 반지름은 MA",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

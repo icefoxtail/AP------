@@ -206,7 +206,11 @@ window.questionBank = [
       "$a<-3$",
       "$a\\ge-3$",
       "$a>-3$"
-    ]
+    ],
+    "solutionImage": "assets/images/19_매산고_1학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "a=-3이면 직선이 포물선에 접하고, a가 더 크면 두 점에서 만난다.",
+    "solutionImageCaption": "a=-3이면 직선이 포물선에 접하고, a가 더 크면 두 점에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
