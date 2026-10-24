@@ -583,6 +583,57 @@ def _pp_rational(value,code):
     try:return Fraction(value)
     except (ValueError,ZeroDivisionError):raise ValueError(code) from None
 
+def _pp_norm(value):
+    """Canonical form of a one-radical exact value (a+b*sqrt(r), r squarefree): radicals in a denominator are rationalised, products expanded."""
+    return S.radsimp(S.expand(S.sympify(value)))
+
+def pp_surd_split(value,code):
+    """(p, q, r) with value = p + q*sqrt(r) for an exact real value (p, q rational, r a squarefree integer > 1; q = 0 and r = None for a
+    rational). Anything else (nested radicals, a second radical, a root of higher order) is refused with `code`."""
+    normal=_pp_norm(value)
+    if normal.is_Rational:return normal,S.Integer(0),None
+    powers=list(normal.atoms(S.Pow))
+    if not powers or any(power.exp!=S.Rational(1,2) or not power.base.is_Integer or power.base<2 for power in powers) or len({power.base for power in powers})!=1:raise ValueError(code)
+    radicand=powers[0].base;p=normal.subs(S.sqrt(radicand),0);q=S.simplify((normal-p)/S.sqrt(radicand))
+    if not p.is_Rational or not q.is_Rational or q==0:raise ValueError(code)
+    return p,q,radicand
+
+def pp_surd(value,code):
+    """An exact coefficient: a decimal integer, an 'a/b' string, or p+q*sqrt(r) written in the exact-value grammar. Returns a SymPy number."""
+    if isinstance(value,bool):raise ValueError(code)
+    if isinstance(value,int) or isinstance(value,str) and len(value)<=64 and re.fullmatch(r'-?\d+(?:/\d+)?',value):
+        try:return S.Rational(value)
+        except (ValueError,ZeroDivisionError):raise ValueError(code) from None
+    if not isinstance(value,str):raise ValueError(code)
+    try:number=pp_exact_value(value)
+    except ValueError:raise ValueError(code) from None
+    pp_surd_split(number,'PIECEWISE_POLY_IRRATIONAL_FORM_UNSUPPORTED:'+value[:32])
+    return _pp_norm(number)
+
+def pp_radicand(value):
+    """The one radicand of an exact value (None for a rational)."""
+    return pp_surd_split(value,'PIECEWISE_POLY_IRRATIONAL_FORM_UNSUPPORTED')[2]
+
+def pp_surd_text(value):
+    """A canonical exact-value string of a rational or p+q*sqrt(r): '-3+2*sqrt(3)', '1/2+3*sqrt(2)/2', '-sqrt(5)'."""
+    p,q,r=pp_surd_split(value,'PIECEWISE_POLY_IRRATIONAL_FORM_UNSUPPORTED')
+    def rat(number):return str(Fraction(int(number.p),int(number.q)))
+    if r is None:return rat(p)
+    magnitude=abs(q);root='sqrt('+str(r)+')'
+    body=('' if magnitude.p==1 else str(int(magnitude.p))+'*')+root+('' if magnitude.q==1 else '/'+str(int(magnitude.q)))
+    head='' if p==0 else rat(p)
+    return head+('-' if q<0 else '+' if p!=0 else '')+body
+
+def pp_exact_float(text):
+    """The float of an exact-value string (a rational or a sqrt expression)."""
+    if isinstance(text,str) and re.fullmatch(r'-?\d+(?:/\d+)?',text):return float(Fraction(text))
+    return float(pp_exact_value(text))
+
+def pp_same(a,b):
+    """Two exact algebraic numbers are equal: exactly after simplification, or equal to 50 digits (nested radicals that do not simplify)."""
+    difference=S.sympify(a)-S.sympify(b)
+    return difference==0 or S.simplify(difference)==0 or abs(S.N(difference,60))<S.Float('1e-40',60)
+
 def pp_exact_value(text):
     """An exact value string (integers, a/b, sqrt(...), + - * / and parentheses, as in '(-3-sqrt(53))/2') as a SymPy number. Never eval."""
     def bad():raise ValueError('PIECEWISE_POLY_EXACT_VALUE_INVALID:'+str(text)[:32])
@@ -677,7 +728,7 @@ def pp_formula_value(text,x_value):
     return value
 
 def _pp_poly_value(coefficients,x_value):
-    return sum((c*x_value**i for i,c in enumerate(coefficients)),Fraction(0))
+    return _pp_norm(sum((c*S.sympify(x_value)**i for i,c in enumerate(coefficients)),S.Integer(0)))
 
 def piecewise_polynomial_source(plan):
     """Exact pieces, breakpoints, source interval and the piece intervals (None for an unbounded end); the grammar checks of the family."""
@@ -689,25 +740,29 @@ def piecewise_polynomial_source(plan):
     pieces=[]
     for piece in raw_pieces:
         if not isinstance(piece,dict) or set(piece)!={'coefficients'} or not isinstance(piece['coefficients'],list) or not 1<=len(piece['coefficients'])<=3:raise ValueError('PIECEWISE_POLY_PIECE_INVALID')
-        pieces.append([_pp_rational(value,'PIECEWISE_POLY_COEFFICIENT_INVALID') for value in piece['coefficients']]+[Fraction(0)]*(3-len(piece['coefficients'])))
+        pieces.append([pp_surd(value,'PIECEWISE_POLY_COEFFICIENT_INVALID') for value in piece['coefficients']]+[S.Integer(0)]*(3-len(piece['coefficients'])))
     breaks=[]
     for row in raw_breaks:
         if not isinstance(row,dict) or set(row)!={'x','y'}:raise ValueError('PIECEWISE_POLY_BREAKPOINT_INVALID')
-        breaks.append((_pp_rational(row['x'],'PIECEWISE_POLY_BREAKPOINT_INVALID'),_pp_rational(row['y'],'PIECEWISE_POLY_BREAKPOINT_INVALID')))
+        breaks.append((pp_surd(row['x'],'PIECEWISE_POLY_BREAKPOINT_INVALID'),pp_surd(row['y'],'PIECEWISE_POLY_BREAKPOINT_INVALID')))
     if any(not left[0]<right[0] for left,right in zip(breaks,breaks[1:])):raise ValueError('PIECEWISE_POLY_BREAKPOINTS_NOT_INCREASING')
     source=plan.get('sourceDomain')
     if source=={'kind':'ALL_REALS'}:lo=hi=None;states=['CLOSED','CLOSED']
     elif isinstance(source,dict) and source.get('kind')=='INTERVAL':
         try:lo,hi,states=quadratic_source_interval(source)
         except ValueError:raise ValueError('PIECEWISE_POLY_SOURCE_DOMAIN_INVALID') from None
+        lo,hi=S.Rational(lo.numerator,lo.denominator),S.Rational(hi.numerator,hi.denominator)
         if any(not lo<x_value<hi for x_value,_ in breaks):raise ValueError('PIECEWISE_POLY_BREAKPOINT_OUTSIDE_SOURCE_INTERVAL')
     else:raise ValueError('PIECEWISE_POLY_SOURCE_DOMAIN_INVALID')
     cuts=[lo,*[x_value for x_value,_ in breaks],hi]
     intervals=list(zip(cuts,cuts[1:]))
     for index,(x_value,y_value) in enumerate(breaks):
         left,right=_pp_poly_value(pieces[index],x_value),_pp_poly_value(pieces[index+1],x_value)
-        if left!=right:raise ValueError('PIECEWISE_POLY_DISCONTINUOUS:'+str(x_value))
-        if left!=y_value:raise ValueError('PIECEWISE_POLY_BREAKPOINT_VALUE_MISMATCH:'+str(x_value))
+        if left!=right:raise ValueError('PIECEWISE_POLY_DISCONTINUOUS:'+_pp_text(x_value))
+        if left!=y_value:raise ValueError('PIECEWISE_POLY_BREAKPOINT_VALUE_MISMATCH:'+_pp_text(x_value))
+    # One radical for the whole plan: every irrational number lives in the same field Q(sqrt(r)), so equality is exact.
+    radicands={r for r in (pp_radicand(v) for v in [c for piece in pieces for c in piece]+[v for pair in breaks for v in pair]) if r is not None}
+    if len(radicands)>1:raise ValueError('PIECEWISE_POLY_IRRATIONAL_RADICANDS_MIXED:'+','.join(str(r) for r in sorted(radicands)))
     return pieces,breaks,(lo,hi,states),intervals
 
 def _pp_inside(x_value,interval,strict):
@@ -721,49 +776,85 @@ def piecewise_polynomial_extrema(pieces,intervals):
     for coefficients,interval in zip(pieces,intervals):
         c0,c1,c2=coefficients
         if c2==0:continue
-        h=-c1/(2*c2)
+        h=_pp_norm(-c1/(2*c2))
         if _pp_inside(h,interval,True):rows.append((h,_pp_poly_value(coefficients,h),'MAX' if c2<0 else 'MIN'))
     return rows
 
-def piecewise_polynomial_crossings(pieces,intervals,level,source,slope=Fraction(0)):
-    """Every x where g(x)=slope*x+level, exactly (SymPy; quadratic surds allowed), each once, in increasing order (slope 0: the horizontal line y=level).
+def pp_quadratic_roots(c0,c1,c2):
+    """The distinct real roots of c0+c1*x+c2*x^2 (exact, increasing); None when the polynomial is identically zero. The coefficients are
+    p+q*sqrt(r) numbers, so the discriminant is one too and its sign and zero are decided exactly; a root may be a nested radical."""
+    c0,c1,c2=_pp_norm(c0),_pp_norm(c1),_pp_norm(c2)
+    if c2==0:
+        if c1==0:return None if c0==0 else []
+        return [_pp_norm(-c0/c1)]
+    disc=_pp_norm(c1*c1-4*c2*c0)
+    if disc==0:return [_pp_norm(-c1/(2*c2))]
+    if S.N(disc,60)<0:return []
+    root=S.sqrtdenest(S.sqrt(disc));found=[]
+    for sign in (-1,1):
+        value=(-c1+sign*root)/(2*c2)
+        try:
+            normal=_pp_norm(value)
+            if abs(S.N(normal-value,60))<S.Float('1e-40',60):value=normal
+        except (TypeError,ValueError,S.PolynomialError):pass
+        found.append(value)
+    return sorted(found,key=lambda value:float(value))
+
+def piecewise_polynomial_crossings(pieces,intervals,level,source,slope=S.Integer(0)):
+    """Every x where g(x)=slope*x+level, exactly (quadratic surds allowed), each once, in increasing order (slope 0: the horizontal line y=level).
     A piece equal to the line is refused."""
     lo,hi,states=source;found=[]
     for coefficients,(a,b) in zip(pieces,intervals):
-        poly=S.Poly(sum(S.Rational(c.numerator,c.denominator)*_x**i for i,c in enumerate(coefficients))-S.Rational(slope.numerator,slope.denominator)*_x-S.Rational(level.numerator,level.denominator),_x)
-        if poly.is_zero:raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_CONTAINS_A_PIECE')
-        for root in S.roots(poly,filter='R'):
-            if a is not None and root<S.Rational(a.numerator,a.denominator) or b is not None and root>S.Rational(b.numerator,b.denominator):continue
-            if lo is not None and (root==S.Rational(lo.numerator,lo.denominator) and states[0]=='OPEN' or root==S.Rational(hi.numerator,hi.denominator) and states[1]=='OPEN'):continue
-            if not any(S.simplify(root-other)==0 for other in found):found.append(root)
+        roots=pp_quadratic_roots(coefficients[0]-level,coefficients[1]-slope,coefficients[2])
+        if roots is None:raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_CONTAINS_A_PIECE')
+        for root in roots:
+            if a is not None and root<a or b is not None and root>b:continue
+            if lo is not None and (root==lo and states[0]=='OPEN' or root==hi and states[1]=='OPEN'):continue
+            if not any(pp_same(root,other) for other in found):found.append(root)
     return sorted(found,key=lambda value:float(value))
 
-def _pp_text(value):return str(Fraction(value))
+def _pp_text(value):return pp_surd_text(value)
 
 def fit_piecewise_polynomial(plan):
     pieces,breaks,source,intervals=piecewise_polynomial_source(plan)
     lo,hi,states=source
     def g(x_value):
-        x_value=Fraction(x_value)
+        x_value=S.sympify(x_value)
         for coefficients,interval in zip(pieces,intervals):
             if _pp_inside(x_value,interval,False):return _pp_poly_value(coefficients,x_value)
         raise ValueError('PIECEWISE_POLY_POINT_OUTSIDE_SOURCE_DOMAIN')
     def g_float(x_value):
         for coefficients,(a,b) in zip(pieces,intervals):
-            if (a is None or a<=x_value+1e-12) and (b is None or x_value-1e-12<=b):return sum(float(c)*x_value**i for i,c in enumerate(coefficients))
+            if (a is None or float(a)<=x_value+1e-12) and (b is None or x_value-1e-12<=float(b)):return sum(float(c)*x_value**i for i,c in enumerate(coefficients))
         raise ValueError('PIECEWISE_POLY_POINT_OUTSIDE_SOURCE_DOMAIN')
     corners=[(x_value,y_value) for x_value,y_value in breaks]
     extrema=piecewise_polynomial_extrema(pieces,intervals)
     # Key points the author marks: every corner and every vertex inside a piece must be among them (the claim), and each lies on the curve.
     required=plan.get('requiredPoints',[])
     if not isinstance(required,list) or len(required)>16:raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
-    ids=set();required_xy=[]
+    ids=set();required_xy=[];exact_points={};normalized=[]
     for point in required:
-        if not isinstance(point,dict) or set(point)!={'id','x','y'} or not isinstance(point['id'],str) or not point['id'] or point['id'] in ids or any(isinstance(point[k],bool) or not isinstance(point[k],(int,float)) or not math.isfinite(point[k]) or abs(point[k])>1e6 for k in ('x','y')):raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
-        ids.add(point['id'])
-        if lo is not None and (not lo<=Fraction(str(point['x']))<=hi or Fraction(str(point['x']))==lo and states[0]=='OPEN' or Fraction(str(point['x']))==hi and states[1]=='OPEN'):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_OUTSIDE_SOURCE_DOMAIN:'+point['id'])
-        if abs(g_float(float(point['x']))-point['y'])>1e-8*max(1,abs(point['y'])):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
-        required_xy.append((float(point['x']),float(point['y'])))
+        if not isinstance(point,dict) or set(point)!={'id','x','y'} or not isinstance(point['id'],str) or not point['id'] or point['id'] in ids:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+        # A coordinate is a number or an exact string (for an irrational key point such as the vertex '-3/2+sqrt(3)/2'); the exact strings become
+        # the point's exactCoordinates and the figure keeps the float.
+        floats={};exact={}
+        for k in ('x','y'):
+            value=point[k]
+            if isinstance(value,str):
+                try:exact[k]=pp_exact_value(value);floats[k]=float(exact[k])
+                except ValueError:raise ValueError('INVALID_REQUIRED_GRAPH_POINT') from None
+            elif isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value):raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+            else:floats[k]=value
+            if abs(floats[k])>1e6:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+        ids.add(point['id']);at=exact['x'] if 'x' in exact else S.Rational(str(floats['x']))
+        if lo is not None and (not lo<=at<=hi or at==lo and states[0]=='OPEN' or at==hi and states[1]=='OPEN'):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_OUTSIDE_SOURCE_DOMAIN:'+point['id'])
+        if abs(g_float(floats['x'])-floats['y'])>1e-8*max(1,abs(floats['y'])):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
+        if len(exact)==2 and abs(S.N(g(exact['x'])-exact['y'],60))>S.Float('1e-40',60):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
+        if exact:
+            exact_points[point['id']]=[pp_surd_text(exact[k]) if k in exact else (str(Fraction(str(floats[k]))) if floats[k]==int(floats[k]) else None) for k in ('x','y')]
+            if None in exact_points[point['id']]:raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_MIXED_EXACT:'+point['id'])
+        normalized.append({'id':point['id'],'x':floats['x'],'y':floats['y']});required_xy.append((floats['x'],floats['y']))
+    required=normalized
     marked=lambda x_value,y_value:any(abs(px-float(x_value))<=1e-9*max(1,abs(px)) and abs(py-float(y_value))<=1e-9*max(1,abs(py)) for px,py in required_xy)
     for x_value,y_value in corners:
         if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_CORNER_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value))
@@ -772,13 +863,14 @@ def fit_piecewise_polynomial(plan):
     # The display formula (optional) must be the same function as the pieces: exact values at nine points of every piece.
     formula=plan.get('formula')
     if formula is not None:
+        if any(pp_radicand(c) is not None for piece in pieces for c in piece):raise ValueError('PIECEWISE_POLY_FORMULA_IRRATIONAL_UNSUPPORTED')
         for coefficients,(a,b) in zip(pieces,intervals):
             if a is not None and b is not None:samples=[a+(b-a)*k/8 for k in range(9)]
-            elif b is not None:samples=[b-Fraction(k,2) for k in range(9)]+[b-10,b-100]
-            elif a is not None:samples=[a+Fraction(k,2) for k in range(9)]+[a+10,a+100]
-            else:samples=[Fraction(k-4,2) for k in range(9)]+[Fraction(-100),Fraction(100)]
+            elif b is not None:samples=[b-S.Rational(k,2) for k in range(9)]+[b-10,b-100]
+            elif a is not None:samples=[a+S.Rational(k,2) for k in range(9)]+[a+10,a+100]
+            else:samples=[S.Rational(k-4,2) for k in range(9)]+[S.Integer(-100),S.Integer(100)]
             for x_value in samples:
-                if pp_formula_value(formula,x_value)!=_pp_poly_value(coefficients,x_value):raise ValueError('PIECEWISE_POLY_FORMULA_MISMATCH:'+_pp_text(x_value))
+                if S.Rational(pp_formula_value(formula,x_value).numerator,pp_formula_value(formula,x_value).denominator)!=_pp_poly_value(coefficients,x_value):raise ValueError('PIECEWISE_POLY_FORMULA_MISMATCH:'+_pp_text(x_value))
     # Reference lines: horizontal y=c ({id,y,intersectionX}) or slanted y=m*x+c ({id,slope,intercept,intersectionX}, m and c exact rationals, m != 0).
     # The claimed intersection x values must be exactly the engine's own crossings, in increasing order.
     lines=plan.get('referenceLines',[])
@@ -787,28 +879,38 @@ def fit_piecewise_polynomial(plan):
     for line in lines:
         if not isinstance(line,dict) or not isinstance(line.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',line['id']) or line['id'] in line_ids or not isinstance(line.get('intersectionX'),list) or len(line['intersectionX'])>6 or line.get('labelIntersections',False) not in (True,False):raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_INVALID')
         keys=set(line)-{'id','intersectionX','labelIntersections'}
-        if keys=={'y'}:slope=Fraction(0)
+        if keys=={'y'}:slope=S.Integer(0)
         elif keys=={'slope','intercept'}:slope=None
         else:raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_INVALID')
         line_ids.add(line['id'])
         if slope is None:
-            slope=_pp_rational(line['slope'],'PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID');level=_pp_rational(line['intercept'],'PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID')
+            slope=pp_surd(line['slope'],'PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID');level=pp_surd(line['intercept'],'PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID')
             if slope==0:raise ValueError('PIECEWISE_POLY_SLANTED_LINE_SLOPE_ZERO')
             if line.get('labelIntersections',False):raise ValueError('PIECEWISE_POLY_SLANTED_LINE_LABELS_UNSUPPORTED')
-        else:level=_pp_rational(line['y'],'PIECEWISE_POLY_REFERENCE_LINE_INVALID')
+        else:level=pp_surd(line['y'],'PIECEWISE_POLY_REFERENCE_LINE_INVALID')
+        line_radicands={r for r in (pp_radicand(slope),pp_radicand(level)) if r is not None}|{r for r in (pp_radicand(c) for piece in pieces for c in piece) if r is not None}|{r for r in (pp_radicand(v) for pair in breaks for v in pair) if r is not None}
+        if len(line_radicands)>1:raise ValueError('PIECEWISE_POLY_IRRATIONAL_RADICANDS_MIXED:'+','.join(str(r) for r in sorted(line_radicands)))
         exact=piecewise_polynomial_crossings(pieces,intervals,level,source,slope)
         claimed=sorted(((text,pp_exact_value(text)) for text in line['intersectionX']),key=lambda row:float(row[1]))
-        if len(claimed)!=len(exact) or any(S.simplify(value-root)!=0 for (_,value),root in zip(claimed,exact)):
+        if len(claimed)!=len(exact) or any(not pp_same(value,root) for (_,value),root in zip(claimed,exact)):
             raise ValueError('PIECEWISE_POLY_INTERSECTION_MISMATCH:'+line['id']+':engine finds '+str(len(exact))+' intersection(s)')
         # A crossing that is also a marked key point (a touching vertex, a corner on the line) is drawn once, as that key point.
         def key_at(x_value,y_value):
-            return next((point['id'] for point in required if abs(point['x']-x_value)<=1e-9*max(1,abs(x_value)) and abs(point['y']-y_value)<=1e-9*max(1,abs(y_value))),None)
+            return next((point for point in required if abs(point['x']-x_value)<=1e-9*max(1,abs(x_value)) and abs(point['y']-y_value)<=1e-9*max(1,abs(y_value))),None)
         height=lambda root:float(slope)*float(root)+float(level)
-        if slope==0:crossings.append({'lineId':line['id'],'y':_pp_text(level),'points':[{'x':text.replace(' ',''),'xValue':float(root),**({'keyPoint':key_at(float(root),float(level))} if key_at(float(root),float(level)) else {})} for (text,_),root in zip(claimed,exact)]})
-        else:crossings.append({'lineId':line['id'],'slope':_pp_text(slope),'intercept':_pp_text(level),'points':[{'x':text.replace(' ',''),'xValue':float(root),'yValue':height(root),**({'keyPoint':key_at(float(root),height(root))} if key_at(float(root),height(root)) else {})} for (text,_),root in zip(claimed,exact)]})
+        def crossing_point(text,root):
+            # A crossing that is also a marked key point takes that point's float coordinates (one value for the dot, the label and the sampler).
+            x_float=float(root);y_float=height(root) if slope!=0 else float(level);key_point=key_at(x_float,y_float)
+            if key_point is not None:x_float,y_float=key_point['x'],key_point['y']
+            row={'x':text.replace(' ',''),'xValue':x_float}
+            if slope!=0:row['yValue']=y_float
+            if key_point is not None:row['keyPoint']=key_point['id']
+            return row
+        if slope==0:crossings.append({'lineId':line['id'],'y':_pp_text(level),'points':[crossing_point(text,root) for (text,_),root in zip(claimed,exact)]})
+        else:crossings.append({'lineId':line['id'],'slope':_pp_text(slope),'intercept':_pp_text(level),'points':[crossing_point(text,root) for (text,_),root in zip(claimed,exact)]})
     key=[(float(x_value),float(y_value)) for x_value,y_value in corners]+[(float(x_value),float(y_value)) for x_value,y_value,_ in extrema]+required_xy
-    key+=[(point['xValue'],point['yValue'] if 'slope' in row else float(Fraction(row['y']))) for row in crossings for point in row['points']]
-    key+=[(0.0,float(Fraction(row['intercept'] if 'slope' in row else row['y']))) for row in crossings if not row['points']]
+    key+=[(point['xValue'],point['yValue'] if 'slope' in row else pp_exact_float(row['y'])) for row in crossings for point in row['points']]
+    key+=[(0.0,pp_exact_float(row['intercept'] if 'slope' in row else row['y'])) for row in crossings if not row['points']]
     limit=plot_height_limit(plan)
     if lo is not None:
         ends=[(float(lo),float(g(lo))),(float(hi),float(g(hi)))]
@@ -841,7 +943,9 @@ def fit_piecewise_polynomial(plan):
         left_x=min(ends[0][0],key_lo-PIECEWISE_POLY_MIN_ARM_PX/scale);right_x=max(ends[1][0],key_hi+PIECEWISE_POLY_MIN_ARM_PX/scale)
         ends=[(left_x,g_float(left_x)),(right_x,g_float(right_x))]
     # Distinct marked features closer than 4 px could not be told apart.
-    marks=sorted(set(key))
+    marks=[]
+    for mark in sorted(set(key)):
+        if not any(abs(mark[0]-m[0])<=1e-9*max(1,abs(m[0])) and abs(mark[1]-m[1])<=1e-9*max(1,abs(m[1])) for m in marks):marks.append(mark)
     for index,(ax,ay) in enumerate(marks):
         for bx,by in marks[index+1:]:
             if math.hypot((ax-bx)*scale,(ay-by)*scale*ratio)<PIECEWISE_POLY_MIN_FEATURE_GAP_PX:raise ValueError('PIECEWISE_POLY_FEATURES_BELOW_RESOLUTION')
@@ -852,6 +956,11 @@ def fit_piecewise_polynomial(plan):
         piece_rows.append({'coefficients':[_pp_text(c) for c in coefficients],'interval':[None if a is None else _pp_text(a),None if b is None else _pp_text(b)],'drawInterval':[start,end]})
     features={'schemaVersion':'PIECEWISE_POLYNOMIAL_FEATURES_v1','pieces':piece_rows,'corners':[{'x':_pp_text(x_value),'y':_pp_text(y_value)} for x_value,y_value in corners],'extrema':[{'x':_pp_text(x_value),'y':_pp_text(y_value),'kind':kind} for x_value,y_value,kind in extrema],'intersections':crossings}
     fitted={key_name:value for key_name,value in plan.items() if key_name not in ('domain','viewport')}
+    if exact_points:
+        merged=dict(plan.get('exactCoordinates') or {})
+        if any(point_id in merged and merged[point_id]!=pair for point_id,pair in exact_points.items()):raise ValueError('PIECEWISE_POLY_EXACT_COORDINATES_CONFLICT')
+        merged.update(exact_points);fitted['exactCoordinates']=merged
+    fitted['requiredPoints']=required
     fitted.update({'domain':draw,'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'PIECEWISE_POLYNOMIAL_OVERVIEW_v1','piecewisePolynomialFeatures':features,'equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}})
     if lo is not None:
         fitted['intervalFeatures']={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':[{'side':'START','x':_pp_text(lo),'y':_pp_text(g(lo)),'state':states[0]},{'side':'END','x':_pp_text(hi),'y':_pp_text(g(hi)),'state':states[1]}]}

@@ -9,6 +9,12 @@ from pathlib import Path
 from . import ENGINE_VERSION
 from .semantic_model import validate
 from .geometry_model import Circle,CircularArc,Line,clip_line,finite
+from .math_expression import parse as _parse_expression,evaluate as _evaluate_expression
+
+def _exact_float(text):
+    """The float of an exact value string: a rational 'a/b' or an expression with sqrt (the surd endpoint of a quadratic's source interval)."""
+    try:return float(Fraction(text))
+    except (ValueError,ZeroDivisionError):return float(_evaluate_expression(_parse_expression(text),{}))
 from .viewport import for_spec
 from .function_sampling import sample
 from .math_expression import Expr,parse,serialize,evaluate,exact_coordinate
@@ -43,7 +49,7 @@ def prepare(spec):
     interval_features=spec['displayFacts'].get('intervalFeatures')
     if interval_features is not None:
         if interval_features.get('schemaVersion')!='POLYNOMIAL_INTERVAL_FEATURES_v1':raise ValueError('POLYNOMIAL_INTERVAL_INVENTORY_REQUIRED')
-        for endpoint in interval_features.get('endpoints',[]):critical.append((float(Fraction(endpoint['x'])),float(Fraction(endpoint['y']))))
+        for endpoint in interval_features.get('endpoints',[]):critical.append((_exact_float(endpoint['x']),_exact_float(endpoint['y'])))
     exponential_features=spec['displayFacts'].get('exponentialFeatures')
     if exponential_features is not None:
         if exponential_features.get('schemaVersion')!='EXPONENTIAL_AFFINE_FEATURES_v1':raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
@@ -188,7 +194,7 @@ def prepare(spec):
         for endpoint in interval_features.get('endpoints',[]):
             if endpoint.get('state') not in {'OPEN','CLOSED'} or endpoint.get('side') not in {'START','END'}:raise ValueError('INVALID_POLYNOMIAL_INTERVAL_ENDPOINT')
             # A closed end is a filled dot, an open end a hollow one, drawn over the curve end.
-            at=vp.screen((float(Fraction(endpoint['x'])),float(Fraction(endpoint['y']))))
+            at=vp.screen((_exact_float(endpoint['x']),_exact_float(endpoint['y'])))
             primitive({'id':'interval-endpoint-'+endpoint['side'].lower(),'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'interval-endpoint','fill':'#fff' if endpoint['state']=='OPEN' else '#111','state':endpoint['state']},'circle')
     exponential_features=spec['displayFacts'].get('exponentialFeatures')
     if exponential_features is not None:

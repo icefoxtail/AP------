@@ -160,6 +160,7 @@ def _produce_piecewise_polynomial(plan,vp):
     """The framed pieces (each on its draw interval), the key points, the horizontal lines and their intersection dots, with the ids the
     final figure uses, so the graph observer reads the model and the final SVG the same way."""
     from fractions import Fraction
+    from graph_framing import pp_exact_float
     features=plan.get('piecewisePolynomialFeatures')
     if not isinstance(features,dict) or features.get('schemaVersion')!='PIECEWISE_POLYNOMIAL_FEATURES_v1':raise ValueError('PIECEWISE_POLY_FEATURE_INVENTORY_REQUIRED')
     parts=[];sampling=[]
@@ -174,11 +175,11 @@ def _produce_piecewise_polynomial(plan,vp):
     for row in features['intersections']:
         if 'slope' in row:
             # A slanted line y=m*x+c is drawn where it is inside the viewport (clipped on x and on y).
-            m,c=float(Fraction(row['slope'])),float(Fraction(row['intercept']));ends=sorted([(ymin-c)/m,(ymax-c)/m]);left,right=max(xmin,ends[0]),min(xmax,ends[1])
+            m,c=pp_exact_float(row['slope']),pp_exact_float(row['intercept']);ends=sorted([(ymin-c)/m,(ymax-c)/m]);left,right=max(xmin,ends[0]),min(xmax,ends[1])
             if not left<right:raise ValueError('PIECEWISE_POLY_SLANTED_LINE_OUTSIDE_VIEW')
             a,b=vp.screen((left,m*left+c)),vp.screen((right,m*right+c))
         else:
-            level=float(Fraction(row['y']));a,b=vp.screen((xmin,level)),vp.screen((xmax,level))
+            level=pp_exact_float(row['y']);a,b=vp.screen((xmin,level)),vp.screen((xmax,level))
         parts.append(f'<line id="line-{row["lineId"]}" data-role="line" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"/>')
         for k,point in enumerate(row['points'],1):
             if point.get('keyPoint'):continue
@@ -190,7 +191,7 @@ def _produce_piecewise_polynomial(plan,vp):
     interval=plan.get('intervalFeatures')
     if interval is not None:
         for endpoint in interval['endpoints']:
-            cx,cy=vp.screen((float(Fraction(endpoint['x'])),float(Fraction(endpoint['y']))))
+            cx,cy=vp.screen((pp_exact_float(endpoint['x']),pp_exact_float(endpoint['y'])))
             parts.append(f'<circle id="interval-endpoint-{endpoint["side"].lower()}" data-role="interval-endpoint" data-state="{endpoint["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="4" fill="{"#fff" if endpoint["state"]=="OPEN" else "#111"}" stroke="black" stroke-width="1"/>')
     svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(parts)+'</svg>'
     return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(sampling),'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}

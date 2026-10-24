@@ -95,7 +95,7 @@ class SlantedLine(unittest.TestCase):
         p=copy.deepcopy(SLANT);p['referenceLines'][0]['intersectionX']=['-2','5/2'];cases.append((p,'PIECEWISE_POLY_INTERSECTION_MISMATCH:m:engine finds 3'))
         p=copy.deepcopy(SLANT);p['referenceLines'][0]['slope']='-2';cases.append((p,'PIECEWISE_POLY_INTERSECTION_MISMATCH:m'))
         p=copy.deepcopy(SLANT);p['referenceLines'][0]['slope']='0';cases.append((p,'PIECEWISE_POLY_SLANTED_LINE_SLOPE_ZERO'))
-        p=copy.deepcopy(SLANT);p['referenceLines'][0]['slope']='sqrt(2)';cases.append((p,'PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID'))
+        p=copy.deepcopy(SLANT);p['referenceLines'][0]['slope']='x+1';cases.append((p,'PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID'))
         p=copy.deepcopy(SLANT);p['referenceLines'][0]['intercept']='-1.5';cases.append((p,'PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID'))
         p=copy.deepcopy(SLANT);p['referenceLines'][0]['labelIntersections']=True;cases.append((p,'PIECEWISE_POLY_SLANTED_LINE_LABELS_UNSUPPORTED'))
         p=copy.deepcopy(SLANT);p['referenceLines'][0]['y']='3';cases.append((p,'PIECEWISE_POLY_REFERENCE_LINE_INVALID'))
