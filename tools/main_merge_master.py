@@ -158,17 +158,36 @@ def validate_candidate(files: dict) -> tuple[bool, list[str]]:
     return len(errors) == 0, errors
 
 def generate_inbox_request(files: dict) -> dict:
-    """Constructs official .archive-meta-register/inbox/[examUid].json."""
+    """Constructs official .archive-meta-register/inbox/[examUid].json conforming to v2 schema."""
     stem = files["stem"]
     js_path = str(files["js"].relative_to(REPO_ROOT)).replace("\\", "/")
-    # normalize source relative to archive/exams
     source_archive_file = js_path.replace("archive/exams/", "")
     blob_sha1 = git_blob_sha1(files["js"])
+
+    # Load JS bank
+    cmd = ["node", "-e", f"""
+    const fs = require('fs');
+    const vm = require('vm');
+    const code = fs.readFileSync({json.dumps(str(files["js"]))}, 'utf8');
+    const ctx = {{ window: {{}}, console }};
+    vm.createContext(ctx);
+    vm.runInContext(code, ctx);
+    console.log(JSON.stringify(ctx.window.questionBank));
+    """]
+    res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", check=True)
+    bank = json.loads(res.stdout)
+
+    # Load current metadata records
+    with open(REPO_ROOT / "archive/data/question_metadata.json", encoding="utf-8") as f:
+        meta_doc = json.load(f)
+    cur_records = [r for r in meta_doc["records"] if r.get("sourceArchiveFile") == source_archive_file]
+    cur_records.sort(key=lambda r: r["sourceOrdinal"])
+    cur_by_ord = {r["sourceOrdinal"]: r for r in cur_records}
 
     # Load small meta
     meta_json = json.loads(files["meta"].read_text(encoding="utf-8"))
     meta_items = meta_json.get("items", [])
-    question_count = len(meta_items)
+    question_count = len(bank)
 
     # Load receipt
     receipt_sha = sha256_file(files["receipt"])
@@ -178,9 +197,52 @@ def generate_inbox_request(files: dict) -> dict:
         {"path": receipt_rel, "sha256": receipt_sha}
     ]
 
+    value_fields = {
+        "standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "level", "L3", "L4",
+        "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket",
+        "sourceFingerprint", "contentFingerprint", "curriculum", "curriculumKey", "courseKey", "L1", "L2",
+        "rpmL1", "rpmL2", "rpmL3", "rpmL4", "rpmPrimaryPath", "rpmSemanticStatus", "semanticSourceScope", "semanticScopeRelation",
+        "primaryMethod", "decisiveStep", "integrationReason", "conceptClusterKey", "secondaryConceptKeys",
+        "difficultyConfidence", "difficultyBoundaryFlag", "legacyLevelCompatibility", "curriculumApplicability", "defaultSelectable"
+    }
+
+    req_items = []
+    for i, q in enumerate(bank):
+        ord_num = i + 1
+        cur = cur_by_ord[ord_num]
+        s_item = meta_items[i] if i < len(meta_items) else {}
+        s_after = s_item.get("after") or {}
+
+        after = {}
+        for k, v in s_after.items():
+            if k in value_fields:
+                after[k] = v
+
+        source_fields = [
+            "standardCourse", "standardUnitKey", "standardUnit", "subUnitKey", "subUnit", "level",
+            "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket"
+        ]
+        for f in source_fields:
+            if f in q:
+                after[f] = q[f]
+
+        before = {}
+        for k in after.keys():
+            before[k] = cur.get(k, None)
+
+        req_items.append({
+            "questionUid": cur["questionUid"],
+            "sourceOrdinal": ord_num,
+            "before": before,
+            "after": after,
+            "reason": s_item.get("reason", "문항 분석 및 Gemini 독립 검수 완료"),
+            "evidenceRefs": evidence_refs
+        })
+
+    req_id = f"req-similar-{hashlib.sha1(stem.encode('utf-8')).hexdigest()[:16]}"
     request = {
         "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
-        "requestId": f"similar-{stem}",
+        "requestId": req_id,
         "examUid": stem,
         "sourceArchiveFile": source_archive_file,
         "expectedSourceBlobSha1": blob_sha1,
@@ -192,24 +254,8 @@ def generate_inbox_request(files: dict) -> dict:
             "evidenceRefs": evidence_refs
         },
         "registryChanges": [],
-        "items": []
+        "items": req_items
     }
-
-    for item in meta_items:
-        q_uid = item.get("questionUid")
-        ord_num = item.get("sourceOrdinal")
-        after = item.get("after", {})
-        before = item.get("before", {})
-        reason = item.get("reason", "문항 분석 및 Gemini 독립 검수 완료")
-
-        request["items"].append({
-            "questionUid": f"{stem}_q{ord_num:02d}" if isinstance(q_uid, int) else str(q_uid),
-            "sourceOrdinal": ord_num,
-            "before": before,
-            "after": after,
-            "reason": reason,
-            "evidenceRefs": evidence_refs
-        })
 
     return request
 

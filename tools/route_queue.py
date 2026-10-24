@@ -87,6 +87,9 @@ def scan_sequential_queue():
                 "year": extract_year(sf.stem)
             })
 
+        def get_base(st: str) -> str:
+            return re.sub(r'_(기출|수학|수학[12I]+|유사.*)$', '', st)
+
         pending = []
         completed = []
         
@@ -94,16 +97,18 @@ def scan_sequential_queue():
             stem = of.stem
             school = extract_school(stem)
             year = extract_year(stem)
+            base = get_base(stem)
             
             matched_sim = None
             for s in sim_records:
+                s_base = get_base(s["stem"])
+                if base and s_base and base == s_base:
+                    matched_sim = s
+                    break
                 if stem in s["stem"] or s["stem"].startswith(stem):
                     matched_sim = s
                     break
                 if school and s["school"] and school == s["school"] and year == s["year"]:
-                    matched_sim = s
-                    break
-                if school and s["school"] and school == s["school"] and abs(year - s["year"]) <= 1:
                     matched_sim = s
                     break
             
