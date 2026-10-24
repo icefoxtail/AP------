@@ -9,7 +9,7 @@
 본 정본은 중등 유사문항 자동 생산의 품질 무결성과 독립성을 보장하기 위해 **생성 라인**과 **검수·수리·출고 라인**을 물리적으로 완전히 분리된 2개의 예약 라인으로 운영하는 규칙을 정의한다.
 
 - **원칙 1 (물리적 분리)**: 생성 모델과 검수 모델은 서로 다른 창/세션/예약으로 실행된다.
-- **원칙 2 (공식 SVG 엔진 및 플랜 계약 의무화)**: 시각 자료(도형, 그래프, 수직선 등)는 AI가 임의로 픽셀 좌표를 상상해서 그리는 것을 엄격히 금지하며, 반드시 `AUTHOR_GUIDE.md`에 명시된 `plan.json` 규격에 따라 작성하고 공식 엔진(`archive/tools/geometry-equation/production/render-plan.mjs`)으로 렌더링하거나 엔진 규격(`<title>`, `<desc>`, `role="img"`, 폰트 11px 이상, raw TeX 금지)을 철저히 준수해야 한다.
+- **원칙 2 (공식 SVG 엔진 및 플랜 계약 의무화)**: 시각 자료(도형, 그래프, 수직선 등)는 AI가 임의로 픽셀 좌표를 상상해서 그리는 것을 엄격히 금지하며, 반드시 `AUTHOR_GUIDE.md`의 실행 가능한 plan을 작성하고 공식 엔진(`archive/tools/geometry-equation/production/render-plan.mjs`)으로 실제 렌더한 결과·상태·SVG 바이트를 검증해야 한다. 스타일만 흉내 낸 임의 SVG는 출고 근거가 아니다.
 - **원칙 3 (생성자 자가 영수증 금지)**: 생성 라인은 `review-receipt.json`을 작성하거나 `main` 병합을 시도할 수 없다. 생성 라인의 산출물은 오직 `READY_FOR_INDEPENDENT_REVIEW` 상태로 대기한다.
 - **원칙 4 (검수자의 직접 수리 및 출고)**: 검수 라인은 지문과 시각 에셋만으로 전 문항 독립 블라인드 풀이(R1)를 수행하고, 결함 발견 시 직접 문항을 수리(Own & Repair)한 후 진짜 영수증을 발행하여 `main`에 최종 운영병합(Route 13)한다.
 
@@ -20,7 +20,7 @@
 | 구분 | 예약 라인 명칭 | Cron 스케줄 | 실행 주기 | 주요 역할 |
 | :--- | :--- | :--- | :--- | :--- |
 | **라인 1** | **`MIDDLE_SIMILAR_GENERATOR`** | `0 0,5,10,15,20 * * *` | 하루 5회(00·05·10·15·20시, 마지막 간격 4시간) | 순차 큐에서 다음 시험지 인수 $\to$ 유사문항 생성 $\to$ `AUTHOR_GUIDE.md` 기반 plan 작성 & SVG 렌더 $\to$ `READY_FOR_INDEPENDENT_REVIEW` 패킷 보존 |
-| **라인 2** | **`MIDDLE_SIMILAR_REVIEWER_MERGER`** | `0 1,6,11,16,21 * * *` | 라인 1 실행 1시간 뒤 | `READY_FOR_INDEPENDENT_REVIEW` 인수 $\to$ R1 블라인드 풀이 $\to$ 결함 수리 $\to$ `AUTHOR_GUIDE.md` 규격 검수 $\to$ 하네스 게이트 통과 $\to$ 영수증 발급 $\to$ 13번 루트 main 병합 |
+| **라인 2** | **`MIDDLE_SIMILAR_REVIEWER_MERGER`** | `0 1,6,11,16,21 * * *` | 라인 1 실행 1시간 뒤 | `READY_FOR_INDEPENDENT_REVIEW` 인수 $\to$ R1 블라인드 풀이 $\to$ 결함 수리 $\to$ `AUTHOR_GUIDE.md` 규격 검수 $\to$ 영수증 발급 $\to$ 하네스 최종 게이트 통과 $\to$ 13번 루트 main 병합 |
 
 ---
 
