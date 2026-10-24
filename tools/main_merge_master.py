@@ -105,57 +105,24 @@ def find_exam_files(exam_stem: str):
     }
 
 def validate_candidate(files: dict) -> tuple[bool, list[str]]:
-    """Strictly validates that candidate satisfies GATE_PASS requirements."""
+    """Strictly validates that candidate satisfies GATE_PASS requirements via automated code harness."""
     errors = []
     stem = files["stem"]
 
-    if not files["js"] or not files["js"].exists():
-        errors.append(f"Missing candidate JS file: {stem}.js")
+    # Run the automated harness gate runner
+    harness_script = REPO_ROOT / "tools/harness/verify_similar_exam.mjs"
+    cmd = ["node", str(harness_script), stem]
+    res = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", cwd=str(REPO_ROOT))
+    if res.returncode != 0:
+        for line in res.stderr.splitlines():
+            if line.strip():
+                errors.append(line.strip())
+        if not errors:
+            errors.append(f"verify_similar_exam.mjs failed with exit code {res.returncode}")
         return False, errors
 
-    blob_sha1 = git_blob_sha1(files["js"])
-
-    # Asset check
-    if not files["assets"] or not files["assets"].exists():
-        errors.append(f"Missing asset directory: archive/assets/images/{stem}")
-    else:
-        assets = list(files["assets"].glob("*.*"))
-        if not assets:
-            errors.append(f"Asset directory is empty: {files['assets']}")
-
-    # Plans check
-    if not files["plans"] or not files["plans"].exists():
-        errors.append(f"Missing author plans directory: {files['plans']}")
-    else:
-        plan_files = list(files["plans"].glob("*.json"))
-        if not plan_files:
-            errors.append(f"Incomplete author plans in {files['plans']} (no plan JSON files found)")
-
-    # Review receipt check
-    if not files["receipt"] or not files["receipt"].exists():
-        errors.append(f"Missing review receipt: {files['receipt']}")
-    else:
-        try:
-            r_data = json.loads(files["receipt"].read_text(encoding="utf-8"))
-            receipt_blob = r_data.get("candidateGitBlobSha1")
-            if receipt_blob and receipt_blob != blob_sha1:
-                errors.append(f"Review receipt candidateGitBlobSha1 mismatch (expected {blob_sha1}, got {receipt_blob})")
-        except Exception as e:
-            errors.append(f"Failed to parse review receipt: {e}")
-
-    # Small meta check
-    if not files["meta"] or not files["meta"].exists():
-        errors.append(f"Missing small meta JSON: {files['meta']}")
-    else:
-        try:
-            m_data = json.loads(files["meta"].read_text(encoding="utf-8"))
-            meta_blob = m_data.get("expectedSourceBlobSha1")
-            if meta_blob and meta_blob != blob_sha1:
-                errors.append(f"Small meta expectedSourceBlobSha1 mismatch (expected {blob_sha1}, got {meta_blob})")
-        except Exception as e:
-            errors.append(f"Failed to parse small meta JSON: {e}")
-
-    return len(errors) == 0, errors
+    print(res.stdout.strip())
+    return True, []
 
 def generate_inbox_request(files: dict) -> dict:
     """Constructs official .archive-meta-register/inbox/[examUid].json conforming to v2 schema."""
