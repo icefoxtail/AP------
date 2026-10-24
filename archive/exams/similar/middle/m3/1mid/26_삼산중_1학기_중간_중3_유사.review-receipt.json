@@ -1,0 +1,352 @@
+{
+  "schemaVersion": "archive-independent-exam-review-receipt-v1",
+  "examUid": "26_삼산중_1학기_중간_중3_유사",
+  "candidateJsPath": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js",
+  "candidateMetaPath": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.meta-q01-q24.json",
+  "candidateGitBlobSha1": "7b312ffe573a4095fcdf84505ef5c7310eaa1635",
+  "reviewTimestamp": "2026-10-24T16:34:00+09:00",
+  "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
+  "overallVerdict": "PASS",
+  "signOffStatus": "SIGNED_OFF_PASS",
+  "executiveSummary": {
+    "r1BlindSolve": {
+      "status": "PASS",
+      "totalSolved": 24,
+      "answerMatches": 24,
+      "answerMismatches": 0,
+      "ambiguousStems": 0
+    },
+    "r2PedagogicalPolish": {
+      "status": "PASS",
+      "findingsCount": 0,
+      "curriculumCompliance": "PASS (Strictly 2015 Korean Middle School Grade 3 Semester 1 Math)",
+      "distractorPlausibility": "PASS (All MC distractors reflect realistic student arithmetic/sign errors)",
+      "draftingArtifactsFound": []
+    },
+    "r3StructuralAndAsset": {
+      "status": "PASS",
+      "sequentialNumbering": "PASS (1..24 sequential)",
+      "choicesCount": "PASS (20 MC have exactly 5 choices, 4 descriptive have 0 choices)",
+      "diagramAssetsParity": "PASS (q05.png, q10.png, q13.png, q24.png physically exist and match geometry)",
+      "smallMetaParity": "PASS (24 items with 1:1 question metadata correspondence)",
+      "scoreSum": {
+        "status": "PASS",
+        "expected": 100,
+        "actual": 100,
+        "difference": 0,
+        "mcScoreSum": 80,
+        "descScoreSum": 20
+      }
+    }
+  },
+  "defects": [
+    {
+      "id": "DEF-01",
+      "category": "R3_STRUCTURAL",
+      "code": "DEFECT_SCORE_SUM_MISMATCH",
+      "severity": "CRITICAL",
+      "qid": null,
+      "status": "VERIFIED_REPAIRED",
+      "description": "서술형 4문항 배점이 각 5.0점으로 조정되어 총 배점 100.0점(객관식 80.0 + 서술형 20.0) 달성 확인."
+    },
+    {
+      "id": "DEF-02",
+      "category": "R2_PEDAGOGICAL",
+      "code": "DEFECT_PEDAGOGICAL_DRAFTING_ARTIFACT",
+      "severity": "MEDIUM",
+      "qid": 2,
+      "status": "VERIFIED_REPAIRED",
+      "description": "Q02 해설의 내부 초안 독백이 삭제되고, 5개 선지 계산식과 명확한 대소 비교(-5 < 6 < 7 < 8 < 12)로 완벽히 정제됨 확인."
+    },
+    {
+      "id": "DEF-03",
+      "category": "R2_PEDAGOGICAL",
+      "code": "DEFECT_PEDAGOGICAL_SOLUTION_CONFUSION",
+      "severity": "MEDIUM",
+      "qid": 24,
+      "status": "VERIFIED_REPAIRED",
+      "description": "Q24(2) 해설이 직각사다리꼴 EGCD의 평행변(EG, CD)과 높이(DE)를 이용한 9*sqrt(2)/4 유도 과정으로 정갈하게 개작됨 확인."
+    },
+    {
+      "id": "DEF-04",
+      "category": "R2_PEDAGOGICAL",
+      "code": "DEFECT_PEDAGOGICAL_CHOICE_COUNTEREXAMPLE_TYPO",
+      "severity": "LOW",
+      "qid": 1,
+      "status": "VERIFIED_REPAIRED",
+      "description": "Q01 해설의 선지 ② 설명에서 0의 제곱근은 0 하나뿐이다 (거짓)으로 잘못 서술된 부분을 0의 제곱근은 0 하나뿐이고 음수의 제곱근은 실수 범위에 없으므로 모든 실수가 2개의 제곱근을 갖는 것은 아니다 (거짓)으로 정제 완료."
+    },
+    {
+      "id": "DEF-05",
+      "category": "R3_STRUCTURAL",
+      "code": "DEFECT_IMAGE_ASSET_PATH_PREFIX_NORMALIZED",
+      "severity": "MEDIUM",
+      "qid": null,
+      "status": "VERIFIED_REPAIRED",
+      "description": "Q05, Q10, Q13, Q24의 이미지 참조 경로를 archive/assets/images/...에서 assets/images/...로 교정하여 archive/engine.html 렌더러에서의 상대 경로 404 깨짐 위험을 원천 해소."
+    }
+  ],
+  "questionsReview": [
+    {
+      "qid": 1,
+      "type": "객관식",
+      "score": 3.6,
+      "derivedAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "제곱근의 정의 및 성질 분석: ① 49의 제곱근은 ±7, ② 0은 1개, 음수는 0개, ③ -9의 제곱근은 실수 범위에 없음, ④ sqrt((-5)^2)=5의 제곱근은 ±sqrt(5), ⑤ sqrt(81)=9의 양의 제곱근은 3.",
+      "r2Pedagogical": "중3 1학기 제곱근의 뜻과 성질에 완전히 부합하며, 오답 선지(음의 제곱근 누락, 0/음수 제곱근 오인, 근호 값 자체와 제곱근 혼동)가 교육학적으로 매우 적절함."
+    },
+    {
+      "qid": 2,
+      "type": "객관식",
+      "score": 3.7,
+      "derivedAnswer": "⑤",
+      "candidateAnswer": "⑤",
+      "match": true,
+      "method": "각 선지 계산: ① (-sqrt(7))^2=7, ② sqrt((-8)^2)=8, ③ -sqrt(5^2)=-5, ④ sqrt(3^2)*sqrt(2^2)=6, ⑤ sqrt((-9)^2)+(-sqrt(3))^2=9+3=12. 대소 비교: -5 < 6 < 7 < 8 < 12로 최댓값은 12 (⑤).",
+      "r2Pedagogical": "[수리 완료] 해설에서 내부 초안 독백이 완전히 제거되었으며, 5개 선지의 정확한 수치 계산 및 대소 비교 결론이 단정하고 표준적으로 완결됨."
+    },
+    {
+      "qid": 3,
+      "type": "객관식",
+      "score": 3.8,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "보기 판정: ㄱ. sqrt(15)<sqrt(16)=4 (참), ㄴ. 1<sqrt(2)<2이므로 3-sqrt(2)<2 (거짓), ㄷ. sqrt(7)<sqrt(9)=3이므로 sqrt(7)+1<4 (참), ㄹ. sqrt(3)>1이므로 5-sqrt(3)>3 (거짓). 옳은 것은 ㄱ, ㄷ.",
+      "r2Pedagogical": "무리수의 정수 부분 및 부등식 성질을 이용한 표준적 대소 비교 문항으로 해설 및 보기가 완결됨."
+    },
+    {
+      "qid": 4,
+      "type": "객관식",
+      "score": 4,
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "두 실수의 차를 이용한 비교: a-b = 2-sqrt(5) < 0 => a<b. c-b = 4-(sqrt(3)+sqrt(5)). (sqrt(3)+sqrt(5))^2 = 8+2*sqrt(15) < 8+2*4 = 16 = 4^2 이므로 sqrt(3)+sqrt(5)<4 => c>b. 따라서 a<b<c.",
+      "r2Pedagogical": "차를 이용한 실수 대소 비교 및 근호의 합의 제곱을 통한 부등식 판정이 정규 교육과정 내에서 엄밀하게 증명됨."
+    },
+    {
+      "qid": 5,
+      "type": "객관식",
+      "score": 4.1,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "수직선과 피타고라스 정리: 직각삼각형 BCD에서 BD=sqrt(2^2+2^2)=2*sqrt(2) => p=2*sqrt(2). 직각삼각형 BFE에서 BF=4, FE=2 => BE=sqrt(4^2+2^2)=sqrt(20)=2*sqrt(5) => q=2*sqrt(5). p+q=2*sqrt(2)+2*sqrt(5).",
+      "r2Pedagogical": "도판(q05.png)의 좌표 B(0), C(2), F(4)와 정사각형 배치가 명확하며, 피타고라스 정리를 통한 점 P, Q 좌표 유도가 완벽함."
+    },
+    {
+      "qid": 6,
+      "type": "객관식",
+      "score": 3.9,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "-2<x<3 조건에서 부호 판정: x+2>0 => sqrt((x+2)^2)=x+2. x-3<0 => sqrt((x-3)^2)=-(x-3)=-x+3. (x+2)+(-x+3)=5.",
+      "r2Pedagogical": "근호 안 완전제곱식의 부호 판별 핵심 유형으로 단계별 논리 비약 없이 명확함."
+    },
+    {
+      "qid": 7,
+      "type": "객관식",
+      "score": 4.1,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "180=2^2*3^2*5. 180/n이 제곱수가 되려면 n=5*k^2 꼴(180의 약수). k=1 => n=5 (한 자리), k=2 => n=20 (두 자리 최소, 180/20=9=3^2 성립). 따라서 가장 작은 두 자리 자연수는 20.",
+      "r2Pedagogical": "소인수분해와 근호가 자연수가 되는 조건 및 '두 자리 자연수' 조건 필터링이 명쾌함."
+    },
+    {
+      "qid": 8,
+      "type": "객관식",
+      "score": 3.7,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "연산 검증: ① sqrt(2)*sqrt(8)=4, ② sqrt(18)/sqrt(2)=3 (참), ③ sqrt(12)-sqrt(3)=sqrt(3), ④ sqrt(24)=2*sqrt(6), ⑤ 6/sqrt(3)=2*sqrt(3). 옳은 것은 ②.",
+      "r2Pedagogical": "근호의 곱셈, 나눗셈, 덧셈/뺄셈, 분모의 유리화 기본 규칙 점검에 최적화됨."
+    },
+    {
+      "qid": 9,
+      "type": "객관식",
+      "score": 3.9,
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "240=16*15=2^4*3*5. sqrt(240)=sqrt(16)*sqrt(3)*sqrt(5)=4*a*b=4ab.",
+      "r2Pedagogical": "제곱인수 분리와 문자를 이용한 무리수 표현의 기본 원리가 잘 서술됨."
+    },
+    {
+      "qid": 10,
+      "type": "객관식",
+      "score": 4.2,
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "도판(q10.png) 적용: 삼각형 넓이 S1 = 1/2 * sqrt(45) * sqrt(24) = 1/2 * 3*sqrt(5) * 2*sqrt(6) = 3*sqrt(30). 마름모 넓이 S2 = 1/2 * sqrt(3) * x. S1 = 2*S2 => 3*sqrt(30) = sqrt(3)*x => x = 3*sqrt(10).",
+      "r2Pedagogical": "삼각형과 마름모 넓이 공식, 무리수 곱셈 및 나눗셈이 유기적으로 결합되어 상 수준 문항으로 우수함."
+    },
+    {
+      "qid": 11,
+      "type": "객관식",
+      "score": 4,
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "8/sqrt(2) = 4*sqrt(2), -sqrt(27) = -3*sqrt(3), sqrt(48) = 4*sqrt(3), -6/sqrt(18) = -6/(3*sqrt(2)) = -sqrt(2). 정리: (4-1)*sqrt(2) + (-3+4)*sqrt(3) = 3*sqrt(2) + sqrt(3). a=3, b=1 => a-b = 2.",
+      "r2Pedagogical": "분모의 유리화 및 동류항 정리가 깔끔하며 중간 계산 누락 없음."
+    },
+    {
+      "qid": 12,
+      "type": "객관식",
+      "score": 4.2,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "sqrt(5)*(2*sqrt(5)-sqrt(10)) = 10 - 5*sqrt(2). (sqrt(40)-15)/sqrt(5) = sqrt(8) - 3*sqrt(5) = 2*sqrt(2) - 3*sqrt(5). 차: (10-5*sqrt(2)) - (2*sqrt(2)-3*sqrt(5)) = 10 - 7*sqrt(2) + 3*sqrt(5).",
+      "r2Pedagogical": "괄호 앞 음수 부호 분배법칙과 복합 연산 과정이 명확하게 기술됨."
+    },
+    {
+      "qid": 13,
+      "type": "객관식",
+      "score": 4.5,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "도판(q13.png) 분석: 직각삼각형 2개(변 6, 2, 2*sqrt(10)), 이등변삼각형 2개(변 6, sqrt(10), sqrt(10)). 4개 조각 둘레 총합 = 2*(8+2*sqrt(10)) + 2*(6+2*sqrt(10)) = 28+8*sqrt(10). 도형 ③의 둘레 = 16+4*sqrt(10) (접촉 공유변 6 1쌍, sqrt(10) 2쌍 차감). 둘레의 차 = (28+8*sqrt(10)) - (16+4*sqrt(10)) = 12+4*sqrt(10).",
+      "r2Pedagogical": "기출의 번호 찾기 문항을 둘레 차 계산으로 정교하게 유사 변형함. 피타고라스 정리와 무리수 덧셈이 조화롭게 적용됨."
+    },
+    {
+      "qid": 14,
+      "type": "객관식",
+      "score": 3.8,
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "(2x-3y)(4x+5y) 전개: xy 항은 2x*5y + (-3y)*4x = 10xy - 12xy = -2xy. 계수는 -2.",
+      "r2Pedagogical": "다항식 곱셈에서 특정 항 계수 추출 유형으로 중3 곱셈 공식 단원의 표준적 기초 문항."
+    },
+    {
+      "qid": 15,
+      "type": "객관식",
+      "score": 4.1,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "1/(2+sqrt(3)) = (2-sqrt(3))/(4-3) = 2-sqrt(3). 1/(sqrt(3)-sqrt(2)) = (sqrt(3)+sqrt(2))/(3-2) = sqrt(3)+sqrt(2). 합: (2-sqrt(3)) + (sqrt(3)+sqrt(2)) = 2+sqrt(2).",
+      "r2Pedagogical": "합차 공식을 이용한 분모의 유리화 연속 계산 과정이 군더더기 없이 정확함."
+    },
+    {
+      "qid": 16,
+      "type": "객관식",
+      "score": 4.1,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "대화 분석: 지우 99^2=(100-1)^2 -> (a-b)^2 (참, ㄱ). 찬혁 102^2=(100+2)^2 -> (a+b)^2 인데 보기 ㄴ은 합차공식 적용이라 기술하여 거짓. 민서 49*51=(50-1)(50+1) -> (a-b)(a+b) (참, ㄷ). 수현 103*105=(100+3)(100+5) -> (x+a)(x+b) (참, ㄹ). 옳은 것은 ㄱ, ㄷ, ㄹ.",
+      "r2Pedagogical": "곱셈 공식의 수 계산 실생활 활용 대화형 평가 문항으로, 학생들의 개념 혼동 포인트를 정확히 짚어냄."
+    },
+    {
+      "qid": 17,
+      "type": "객관식",
+      "score": 3.9,
+      "derivedAnswer": "①",
+      "candidateAnswer": "①",
+      "match": true,
+      "method": "액자 넓이 S = (가로)*(세로) = (3x+2)(2x+5) = 6x^2 + 19x + 10.",
+      "r2Pedagogical": "직사각형 넓이의 이차식 표현으로 동류항 전개 과정이 정확함."
+    },
+    {
+      "qid": 18,
+      "type": "객관식",
+      "score": 4,
+      "derivedAnswer": "③",
+      "candidateAnswer": "③",
+      "match": true,
+      "method": "2x^2+7x-15 = (2x-3)(x+5). (2x-a)(x+b)와 비교하면 a=3, b=5 (모두 양수). a+b = 3+5 = 8.",
+      "r2Pedagogical": "대각선 곱 인수분해의 전형적 문항으로 미정계수 비교가 명확함."
+    },
+    {
+      "qid": 19,
+      "type": "객관식",
+      "score": 4.3,
+      "derivedAnswer": "④",
+      "candidateAnswer": "④",
+      "match": true,
+      "method": "x^2+kx-24 = (x+a)(x+b) => ab=-24, k=a+b. 곱이 -24인 두 정수 합: ±23, ±10, ±5, ±2. 선지 중 8은 불가능하므로 ④.",
+      "r2Pedagogical": "정수 조건 부정방정식 성격의 인수분해 응용 문항으로 경우의 수 탐색이 체계적임."
+    },
+    {
+      "qid": 20,
+      "type": "객관식",
+      "score": 4.1,
+      "derivedAnswer": "②",
+      "candidateAnswer": "②",
+      "match": true,
+      "method": "1) x^2-x-12 = (x-4)(x+3). 2) 2x^2+5x-3 = (2x-1)(x+3). 공통인수는 x+3.",
+      "r2Pedagogical": "두 다항식의 인수분해 및 공통인수 판정 과정이 정확함."
+    },
+    {
+      "qid": 21,
+      "type": "서술형",
+      "score": 5,
+      "derivedAnswer": "8",
+      "candidateAnswer": "8",
+      "match": true,
+      "method": "3 < sqrt(2n-1) <= 5. 양변 제곱: 9 < 2n-1 <= 25. 1 더함: 10 < 2n <= 26. 2 나눔: 5 < n <= 13. 자연수 n은 6,7,8,9,10,11,12,13으로 개수는 13-6+1=8.",
+      "r2Pedagogical": "서술형 채점 기준(1단계 제곱, 2단계 범위 산출, 3단계 개수 도출)에 맞춘 4단계 풀이가 매우 훌륭함. 배점 5.0점 적정."
+    },
+    {
+      "qid": 22,
+      "type": "서술형",
+      "score": 5,
+      "derivedAnswer": "-4",
+      "candidateAnswer": "-4",
+      "match": true,
+      "method": "(3x+a)(bx-5) = 3bx^2 + (ab-15)x - 5a = 6x^2 + cx - 15. 계수비교: 3b=6 => b=2, -5a=-15 => a=3, c=ab-15=6-15=-9. a+b+c = 3+2+(-9) = -4.",
+      "r2Pedagogical": "[수리 완료] 배점이 5.0점으로 재조정되어 전체 100점 균형에 기여함. 전개, 계수비교, 합 도출 서술이 우수함."
+    },
+    {
+      "qid": 23,
+      "type": "서술형",
+      "score": 5,
+      "derivedAnswer": "10575",
+      "candidateAnswer": "10575",
+      "match": true,
+      "method": "1단계: 53^2-47^2 = (53+47)(53-47) = 100*6 = 600. 2단계: 105*95 = (100+5)(100-5) = 100^2-5^2 = 10000-25 = 9975. 3단계: 600+9975 = 10575.",
+      "r2Pedagogical": "[수리 완료] 배점이 5.0점으로 재조정됨. 합차 공식을 두 번 분할 적용하는 계산 과정과 서술 흐름이 명확함."
+    },
+    {
+      "qid": 24,
+      "type": "서술형",
+      "score": 5,
+      "derivedAnswer": "(1) 2\\sqrt{3}, (2) \\frac{9\\sqrt{2}}{4}",
+      "candidateAnswer": "(1) 2\\sqrt{3}, (2) \\frac{9\\sqrt{2}}{4}",
+      "match": true,
+      "method": "(1) ABCD 가로 x, 세로 sqrt(6). DEFC 가로 x/2, 세로 sqrt(6). 닮음비: x : sqrt(6) = sqrt(6) : (x/2) => x^2/2 = 6 => x^2=12 => x=2*sqrt(3). (2) DEFC에서 DE=sqrt(3), CD=sqrt(6), EF=sqrt(6). G는 EF의 중점이므로 EG=sqrt(6)/2. EG//CD이고 높이 DE=sqrt(3)인 직각사다리꼴 EGCD 넓이 = 1/2 * (sqrt(6)/2 + sqrt(6)) * sqrt(3) = 1/2 * (3*sqrt(6)/2) * sqrt(3) = 9*sqrt(2)/4.",
+      "r2Pedagogical": "[수리 완료] 배점이 5.0점으로 재조정됨. 해설 (2)가 윗변 EG = sqrt(6)/2, 아랫변 CD = sqrt(6), 높이 DE = sqrt(3)인 직각사다리꼴 공식 적용으로 깔끔하게 개작되어 혼란 요소 완전 제거."
+    }
+  ],
+  "baselineMathReviewBlobSha1": "a51ac6c8a353374394e02f8ccad6e86b36790fd6",
+  "historicalReviewBlobs": [
+    {
+      "revision": "r1-r3-initial-sign-off",
+      "gitBlobSha1": "a51ac6c8a353374394e02f8ccad6e86b36790fd6",
+      "timestamp": "2026-10-24T15:24:00+09:00",
+      "note": "Initial R1/R2/R3 independent review sign-off"
+    },
+    {
+      "revision": "canonical-taxonomy-extension-and-q01-typo-repair",
+      "gitBlobSha1": "95091ba407f9170b3a329c5e59101315f772d5b1",
+      "timestamp": "2026-10-24T16:18:34+09:00",
+      "note": "Re-verified after canonical PT/TPL binding (null 0건) and Q01 choice (2) counterexample explanation refinement (DEF-04)"
+    },
+    {
+      "revision": "image-asset-relative-path-normalized",
+      "gitBlobSha1": "5d89ad3b9b8c46f59f88b1931c325900eb51d381",
+      "timestamp": "2026-10-24T16:34:00+09:00",
+      "note": "Re-verified after normalizing Q05, Q10, Q13, Q24 image paths from archive/assets/... to assets/... for engine.html relative resolution parity"
+    }
+  ]
+}
