@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "meta-pipeline-codex-crossconcept-reconciliation-v1",
+  "reconciliationId": "meta-pipeline-24-maesanyeogo-source-crossconcept-reconciliation-20261024",
+  "reviewedAt": "2026-10-24T00:35:00Z",
+  "reviewer": {
+    "name": "Codex",
+    "role": "user-directed independent source metadata audit"
+  },
+  "scope": {
+    "examUid": "24_매산여고_1학기_중간_고2_수학I",
+    "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+    "sourceSha256": "423e6dcffb163b7372d2e75a9ae63796661ab94852f7c84a199100af179a0f46",
+    "sourceGitBlobSha1": "8a1ff234d287e74217c6b79625ff2c9d152518fb",
+    "questionCount": 24,
+    "fields": [
+      "crossConceptKeys"
+    ],
+    "studentVisibleFieldsChanged": false
+  },
+  "sourceRefs": {
+    "geminiAudit": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I.json",
+      "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
+    },
+    "geminiManifest": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+      "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+    },
+    "sourceParity": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-20261024.source-parity.json",
+      "sha256": "9e66d73e3257e915315cf88a31d43ecfa7f7d76c86049e3c80ad92c47eee0c14"
+    },
+    "productionSource": {
+      "path": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "sha256": "423e6dcffb163b7372d2e75a9ae63796661ab94852f7c84a199100af179a0f46",
+      "gitBlobSha1": "8a1ff234d287e74217c6b79625ff2c9d152518fb"
+    },
+    "metadataBefore": {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "5846fc7bcd2ba869233afd87e0dcfc9478151f33e8fc68e05e91a4361c114352"
+    },
+    "canonicalConceptShards": [
+      {
+        "path": "archive/data/meta-foundation/canonical/concepts/functions.json",
+        "sha256": "dbff89f634a06ecdf74df9da1dffaab7f65f192ba03063ac662a8f8c321cffe1"
+      },
+      {
+        "path": "archive/data/meta-foundation/canonical/concepts/algebra.json",
+        "sha256": "f03efa1c26f38e1da0381fd630dad01e2b7ab731a7f32b8d2bc0b0baa2cf4766"
+      }
+    ]
+  },
+  "decision": "PRESERVE_EXISTING_SOURCE_CROSSCONCEPT_KEYS_AND_UNION_WITH_AUDITED_ATOMIC_TAGS",
+  "reason": "Three existing source CrossConcept tags were omitted by the audit while remaining in production JS and the current metadata. Each is active and source-supported. Retain these existing keys together with the audit’s distinct atomic tags; do not merge, rename, or revise canonical meanings.",
+  "records": [
+    {
+      "questionId": 6,
+      "questionUid": "qid_v1_914be8c19c2737c8e4bc106b0f22737c15078d7428ae90f8b4b214ccb6d2add6",
+      "sourceOrdinal": 6,
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "retainedProductionCrossConceptKey": "CC_QUADRATIC_FUNCTION",
+      "productionSourceKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "existingMetadataKeys": [
+        "CC_QUADRATIC_FUNCTION"
+      ],
+      "auditKeys": [
+        "CC_EXPONENTIAL_INEQUALITY",
+        "CC_GRAPH_INTERSECTION"
+      ],
+      "canonicalDefinition": {
+        "conceptKey": "CC_QUADRATIC_FUNCTION",
+        "canonicalLabelKo": "이차함수",
+        "definition": "포물선의 식 또는 이차식의 그래프·최대최소 성질을 사용하는 개념.",
+        "status": "ACTIVE"
+      },
+      "rationale": "The production source already tags the graph of the explicitly named quadratic function y=f(x). Retain this active concept alongside the audit’s exponential-inequality and graph-intersection concepts; the concepts describe separate steps and no canonical definition is changed."
+    },
+    {
+      "questionId": 11,
+      "questionUid": "qid_v1_69aa739950b6907a1fe416e3a403b9eaf5b4b1c48d9be46da7972c60f691abdf",
+      "sourceOrdinal": 11,
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "retainedProductionCrossConceptKey": "CC_ROOTS_COEFFICIENTS",
+      "productionSourceKeys": [
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "existingMetadataKeys": [
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "auditKeys": [
+        "CC_VIETAS_FORMULAS",
+        "CC_EXPONENT_RULES"
+      ],
+      "canonicalDefinition": {
+        "conceptKey": "CC_ROOTS_COEFFICIENTS",
+        "canonicalLabelKo": "이차방정식의 근과 계수의 관계",
+        "definition": "이차방정식의 두 근의 합·곱 관계를 primary 밖에서 사용한다.",
+        "status": "ACTIVE"
+      },
+      "rationale": "The source solution uses the sum and product of the quadratic roots to simplify the reciprocal exponent sum. Retain the existing root-coefficient concept alongside the audit’s Vieta-formula and exponent-rule tags without merging or rewriting either key."
+    },
+    {
+      "questionId": 13,
+      "questionUid": "qid_v1_1cbeaface782f7114d0a1e0e3e118a422188aa1ad987e8b6341eb6704be83aac",
+      "sourceOrdinal": 13,
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "retainedProductionCrossConceptKey": "CC_QUADRATIC_EQUATION",
+      "productionSourceKeys": [
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "existingMetadataKeys": [
+        "CC_QUADRATIC_EQUATION"
+      ],
+      "auditKeys": [
+        "CC_EXPONENT_SUBSTITUTION",
+        "CC_DISCRIMINANT"
+      ],
+      "canonicalDefinition": {
+        "conceptKey": "CC_QUADRATIC_EQUATION",
+        "canonicalLabelKo": "이차방정식",
+        "definition": "매개변수 조건에서 이차방정식의 근을 구하거나 근의 존재를 판정하는 개념.",
+        "status": "ACTIVE"
+      },
+      "rationale": "The source equation is transformed to a quadratic in t=2^x and its discriminant/positive-root case determines the unique real x. Retain the existing quadratic-equation concept alongside the audit’s substitution and discriminant tags; canonical meanings remain separate."
+    }
+  ],
+  "evidenceRefs": [
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I.json",
+      "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+      "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-20261024.source-parity.json",
+      "sha256": "9e66d73e3257e915315cf88a31d43ecfa7f7d76c86049e3c80ad92c47eee0c14"
+    },
+    {
+      "path": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "sha256": "423e6dcffb163b7372d2e75a9ae63796661ab94852f7c84a199100af179a0f46",
+      "gitBlobSha1": "8a1ff234d287e74217c6b79625ff2c9d152518fb"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "5846fc7bcd2ba869233afd87e0dcfc9478151f33e8fc68e05e91a4361c114352"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/functions.json",
+      "sha256": "dbff89f634a06ecdf74df9da1dffaab7f65f192ba03063ac662a8f8c321cffe1"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/concepts/algebra.json",
+      "sha256": "f03efa1c26f38e1da0381fd630dad01e2b7ab731a7f32b8d2bc0b0baa2cf4766"
+    }
+  ]
+}

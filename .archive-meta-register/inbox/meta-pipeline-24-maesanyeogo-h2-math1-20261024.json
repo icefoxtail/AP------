@@ -1,6 +1,6 @@
 {
   "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
-  "requestId": "meta-pipeline-24-maesanyeogo-h2-math1-20261024",
+  "requestId": "meta-pipeline-24-maesanyeogo-h2-math1-20261024-codex-audit-v2",
   "examUid": "24_매산여고_1학기_중간_고2_수학I",
   "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
   "expectedSourceBlobSha1": "8a1ff234d287e74217c6b79625ff2c9d152518fb",
@@ -8,15 +8,11 @@
   "approval": {
     "type": "META_PIPELINE_AUDIT",
     "metadataReviewed": true,
-    "approvedBy": "META_PIPELINE_UNIFIED_AUTHOR",
+    "approvedBy": "CODEX_INDEPENDENT_META_AUDIT",
     "evidenceRefs": [
       {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I.json",
         "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
-      },
-      {
-        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-        "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
       },
       {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
@@ -35,20 +31,36 @@
         "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
       },
       {
-        "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-        "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+        "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+        "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+        "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+        "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+      },
+      {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+        "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
       }
     ],
     "metaPipelineAudit": {
       "schemaVersion": "meta-pipeline-audit-approval-v1",
       "sourceFileDriveId": "1BMvpGjmtuuP_a1m2X3p7-Q_JV-ZqNo2u",
       "auditPackageRef": {
-        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I.json",
-        "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+        "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
       },
       "manifestRef": {
-        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-        "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+        "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
       },
       "sourceParityRef": {
         "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-20261024.source-parity.json",
@@ -64,7 +76,23 @@
           "auditDefinition": "이차방정식 실근의 존재 및 중근 판별 조건",
           "rationale": "감사와 정본은 이차방정식의 실근 존재 및 중근 여부를 판정하는 동일한 판별식 개념이다. 기존 정본의 표기와 정의를 유지하고 변경·통합하지 않는다."
         }
-      ]
+      ],
+      "sourceAuditRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I.json",
+        "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
+      },
+      "conditionReconciliationRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+        "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+      },
+      "sourceManifestRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+        "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+      },
+      "crossConceptReconciliationRef": {
+        "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+        "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+      }
     }
   },
   "registryChanges": [
@@ -191,10 +219,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -243,10 +267,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -295,10 +315,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -347,10 +363,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -399,10 +411,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -451,10 +459,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -502,10 +506,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -554,10 +554,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -605,10 +601,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -656,10 +648,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -707,10 +695,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -759,10 +743,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -811,10 +791,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -863,10 +839,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -915,10 +887,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -967,10 +935,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1019,10 +983,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1071,10 +1031,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1123,10 +1079,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1175,10 +1127,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1227,10 +1175,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1279,10 +1223,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1331,10 +1271,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1383,10 +1319,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1435,10 +1367,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1487,10 +1415,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1539,10 +1463,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1589,10 +1509,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1641,10 +1557,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1691,10 +1603,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1741,10 +1649,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1792,10 +1696,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1842,10 +1742,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1892,10 +1788,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1942,10 +1834,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -1992,10 +1880,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2042,10 +1926,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2092,10 +1972,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2142,10 +2018,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2192,10 +2064,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2243,10 +2111,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2294,10 +2158,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2344,10 +2204,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2394,10 +2250,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2445,10 +2297,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2496,10 +2344,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2546,10 +2390,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2596,10 +2436,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2646,10 +2482,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2696,10 +2528,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2746,10 +2574,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2797,10 +2621,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2847,10 +2667,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2898,10 +2714,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2948,10 +2760,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -2998,10 +2806,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3048,10 +2852,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3098,10 +2898,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3148,10 +2944,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3198,10 +2990,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3248,10 +3036,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3298,10 +3082,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3348,10 +3128,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3398,10 +3174,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3448,10 +3220,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3509,10 +3277,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3570,10 +3334,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3630,10 +3390,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3690,10 +3446,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3750,10 +3502,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3811,10 +3559,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3872,10 +3616,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3933,10 +3673,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -3993,10 +3729,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -4054,10 +3786,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -4114,10 +3842,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -4174,10 +3898,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -4234,10 +3954,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -4294,10 +4010,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -4354,10 +4066,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -4414,10 +4122,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     },
@@ -4474,10 +4178,6 @@
         {
           "path": "archive/data/meta-foundation/canonical/condition_registry.json",
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
-        },
-        {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
         }
       ]
     }
@@ -4547,10 +4247,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -4567,8 +4263,20 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -4649,10 +4357,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -4669,8 +4373,20 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -4751,10 +4467,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -4771,8 +4483,20 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -4825,7 +4549,9 @@
           "CC_LOGARITHMIC_FUNCTION_GRAPH",
           "CC_ASYMPTOTE"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 1,
         "level": "중",
@@ -4851,10 +4577,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -4871,8 +4593,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -4925,7 +4663,9 @@
           "CC_EXPONENTIAL_FUNCTION_GRAPH",
           "CC_QUADRANT_CONDITION"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 2,
         "level": "중",
@@ -4951,10 +4691,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -4971,8 +4707,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -5025,9 +4777,12 @@
         "templateKey": "TPL_FUNCTION_INTERSECTION_TWO_FUNCTIONS",
         "crossConceptKeys": [
           "CC_EXPONENTIAL_INEQUALITY",
-          "CC_GRAPH_INTERSECTION"
+          "CC_GRAPH_INTERSECTION",
+          "CC_QUADRATIC_FUNCTION"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
         "integrationPattern": "INTERDEPENDENT",
         "difficultyBucket": 3,
         "level": "중",
@@ -5055,10 +4810,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -5075,8 +4826,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -5151,10 +4918,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -5171,8 +4934,20 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -5225,7 +5000,9 @@
           "CC_TRIGONOMETRIC_EQUATION",
           "CC_TANGENT_DEFINITION"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 2,
         "level": "중",
@@ -5251,10 +5028,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -5271,8 +5044,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -5325,7 +5114,9 @@
           "CC_TRIGONOMETRIC_INEQUALITY",
           "CC_COSINE_FUNCTION_RANGE"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
         "integrationPattern": "INTERDEPENDENT",
         "difficultyBucket": 2,
         "level": "중",
@@ -5351,10 +5142,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -5371,8 +5158,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -5453,10 +5256,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -5473,8 +5272,20 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -5527,9 +5338,12 @@
         "templateKey": "TPL_QUADRATIC_ROOTS_EXPONENT_EVALUATION",
         "crossConceptKeys": [
           "CC_VIETAS_FORMULAS",
-          "CC_EXPONENT_RULES"
+          "CC_EXPONENT_RULES",
+          "CC_ROOTS_COEFFICIENTS"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_NONZERO"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 3,
         "level": "중",
@@ -5557,10 +5371,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -5577,8 +5387,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -5632,7 +5458,10 @@
           "CC_EXPONENTIAL_GROWTH",
           "CC_LOG_INEQUALITY"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_POSITIVE"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 2,
         "level": "중",
@@ -5659,10 +5488,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -5679,8 +5504,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -5733,9 +5574,12 @@
         "templateKey": "TPL_EXPONENTIAL_EQUATION_QUADRATIC_FORM_ROOTS",
         "crossConceptKeys": [
           "CC_EXPONENT_SUBSTITUTION",
-          "CC_DISCRIMINANT"
+          "CC_DISCRIMINANT",
+          "CC_QUADRATIC_EQUATION"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_POSITIVE"
+        ],
         "integrationPattern": "CASE_BRANCH",
         "difficultyBucket": 3,
         "level": "중",
@@ -5763,10 +5607,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -5783,8 +5623,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -5838,7 +5694,10 @@
           "CC_LOG_ORDER_COMPARISON",
           "CC_VARIABLE_SUBSTITUTION"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_RANGE",
+          "COND_POSITIVE"
+        ],
         "integrationPattern": "INTERDEPENDENT",
         "difficultyBucket": 4,
         "level": "상",
@@ -5865,10 +5724,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -5885,8 +5740,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -5961,10 +5832,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -5981,8 +5848,20 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -6035,7 +5914,9 @@
           "CC_TRIGONOMETRIC_EQUATION",
           "CC_VARIABLE_SUBSTITUTION"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 3,
         "level": "중",
@@ -6061,10 +5942,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -6081,8 +5958,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -6136,7 +6029,10 @@
           "CC_HALF_LIFE_MODEL",
           "CC_EXPONENTIAL_DECAY"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_POSITIVE"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 1,
         "level": "하",
@@ -6163,10 +6059,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -6183,8 +6075,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -6238,7 +6146,10 @@
           "CC_LOG_DECIMAL_PART",
           "CC_GRAPH_INTERSECTION_COUNT"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
         "integrationPattern": "CASE_BRANCH",
         "difficultyBucket": 4,
         "level": "상",
@@ -6265,10 +6176,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -6285,8 +6192,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -6340,7 +6263,10 @@
           "CC_PIECEWISE_FUNCTION",
           "CC_FUNCTION_EXTREMUM"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER",
+          "COND_RANGE"
+        ],
         "integrationPattern": "CASE_BRANCH",
         "difficultyBucket": 4,
         "level": "상",
@@ -6367,10 +6293,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -6387,8 +6309,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -6442,7 +6380,10 @@
           "CC_COTERMINAL_ANGLES",
           "CC_SYMMETRIC_RAY"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_RANGE",
+          "COND_NATURAL_NUMBER"
+        ],
         "integrationPattern": "INTERDEPENDENT",
         "difficultyBucket": 3,
         "level": "상",
@@ -6469,10 +6410,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -6489,8 +6426,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -6543,7 +6496,9 @@
           "CC_COSINE_FUNCTION_RANGE",
           "CC_TRIGONOMETRIC_EXTREMUM"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 3,
         "level": "중",
@@ -6569,10 +6524,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -6589,8 +6540,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -6643,7 +6610,9 @@
           "CC_TRIGONOMETRIC_IDENTITY",
           "CC_FACTORIZATION"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_RANGE"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 3,
         "level": "중",
@@ -6669,10 +6638,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -6689,8 +6654,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -6771,10 +6752,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -6791,8 +6768,20 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
@@ -6846,7 +6835,10 @@
           "CC_EXPONENTIAL_FUNCTION_RANGE",
           "CC_INTEGER_COUNT"
         ],
-        "conditionKeys": [],
+        "conditionKeys": [
+          "COND_INTEGER",
+          "COND_RANGE"
+        ],
         "integrationPattern": "SEQUENTIAL",
         "difficultyBucket": 4,
         "level": "상",
@@ -6873,10 +6865,6 @@
           "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137"
         },
         {
-          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
-          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
-        },
-        {
           "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/CANDIDATE_CLASSIFICATION_24_매산여고_1학기_중간_고2_수학I.json",
           "sha256": "536c315bef81d4db78cad0a5e518ea977bfd67e100246d23788a1729021fabe3"
         },
@@ -6893,8 +6881,24 @@
           "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
         },
         {
-          "path": "archive/data/meta-foundation/canonical/packs/functions-graphs/pack.json",
-          "sha256": "7d83fd992f5a622d817ffb87179645f64e549e7a350f1ab9e05f9fe44cf90cab"
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CONDITION_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "72a9e629e3fa66811ccd4a4b252e0849116958f1b2880ba00d22c0acf0e1c840"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+          "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_PIPELINE_CODEX_CROSSCONCEPT_RECONCILIATION_24_매산여고_20261024.json",
+          "sha256": "e8b803be07397985fcef749de19c2908efef3acff39f4af3ae6fc6436ab55010"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED_V2.json",
+          "sha256": "46c0bdd869b2ca9ac30b98de228b836c201424989b79802d0bc98faa588efba6"
+        },
+        {
+          "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I_CODEX_RECONCILED.json",
+          "sha256": "a138016f1057516e059d5b1bd1d3c0f08368745db4c923e9e056294d3e10cef3"
         }
       ],
       "targetParentRef": {
