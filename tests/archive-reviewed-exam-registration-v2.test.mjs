@@ -333,6 +333,49 @@ test("META_PIPELINE_AUDIT appends an added binding domain to an existing owner p
   assert.deepEqual(f.read(`${base}/pack.json`).ownedStandardUnitDomains, ["UNIT_NEW"]);
 });
 
+test("META_PIPELINE_AUDIT permits an additive course scope extension only for an exact active binding", t => {
+  const f = fixture(t, "수학I", "2015");
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });
+  const newBase = `${CANON}/packs/new-course`;
+  const existingBase = `${CANON}/packs/functions-graphs`;
+  const indexPath = `${CANON}/registry_index.json`;
+  const index = f.read(indexPath);
+  index.activePacks = [{ id: "FUNCTIONS_GRAPHS", version: "1.0.0", status: "ACTIVE" }];
+  f.put(indexPath, index);
+  const currentPack = { schemaVersion: "meta-foundation-pack-v1", packId: "FUNCTIONS_GRAPHS", packVersion: "1.0.0",
+    canonicalStatus: "ACTIVE", curricula: ["2015"], standardCourses: ["중1 수학"], ownedStandardUnitDomains: [] };
+  f.put(`${existingBase}/pack.json`, currentPack);
+  f.put(`${existingBase}/taxonomy.json`, { status: "ACTIVE", problemTypes: [], templates: [] });
+  f.put(`${existingBase}/bindings.json`, { status: "ACTIVE", bindings: [], applicabilityRules: [] });
+  f.put(`${existingBase}/aliases.json`, { aliases: [] });
+
+  const originalTaxonomy = f.request.registryChanges.find(change => change.path === `${newBase}/taxonomy.json`).after;
+  const originalBindings = f.request.registryChanges.find(change => change.path === `${newBase}/bindings.json`).after;
+  const evidenceRefs = f.request.registryChanges.find(change => change.path === `${newBase}/pack.json`).evidenceRefs;
+  const problemType = { ...originalTaxonomy.problemTypes[0], ownerPack: "FUNCTIONS_GRAPHS" };
+  const template = { ...originalTaxonomy.templates[0], ownerPack: "FUNCTIONS_GRAPHS" };
+  const binding = { ...originalBindings.bindings[0], ownerPack: "FUNCTIONS_GRAPHS" };
+  f.request.registryChanges = f.request.registryChanges.filter(change =>
+    !change.path.startsWith(`${newBase}/`) && !(change.path === indexPath && change.collection === "activePacks"));
+  f.request.registryChanges.push(
+    { path: `${existingBase}/pack.json`, before: currentPack,
+      after: { ...currentPack, standardCourses: [...currentPack.standardCourses, "수학I"] }, evidenceRefs },
+    { path: `${existingBase}/taxonomy.json`, collection: "problemTypes", match: { problemTypeKey: "PT_NEW" },
+      before: null, after: problemType, evidenceRefs },
+    { path: `${existingBase}/taxonomy.json`, collection: "templates", match: { templateKey: "TPL_NEW" },
+      before: null, after: template, evidenceRefs },
+    { path: `${existingBase}/bindings.json`, collection: "bindings", match: { curriculum: "2015", standardCourse: "수학I",
+      standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW", problemTypeKey: "PT_NEW" }, before: null, after: binding, evidenceRefs }
+  );
+
+  const result = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(result.status, "PASS");
+  assert.deepEqual(result.plannedPaths.includes(`${existingBase}/pack.json`), true);
+  const invalid = structuredClone(f.request);
+  invalid.registryChanges.find(change => change.path === `${existingBase}/pack.json`).after.standardCourses = ["수학I"];
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: invalid }), /registry changes must be additions only/);
+});
+
 test("META_PIPELINE_AUDIT assigns a new TPL to the exact binding pack when its parent PT is external", t => {
   const f = fixture(t);
   const newBase = `${CANON}/packs/new-course`;
