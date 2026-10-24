@@ -22,7 +22,7 @@
 - [x] **21_강남여고_1학기_기말_고1_기출** (2건): q10 OPEN_UNSUPPORTED C_number_line — 수직선 위 구간의 교집합 표시가 필요하나 계약에 수직선 도식이 없다. · q21 OPEN_UNSUPPORTED other — 매개변수 m에 따라 변하는 직선군과 고정점 (3,6)을 한 그림에 나타내야 한다.
 - [x] **21_고흥고_1학기_기말_고1_기출** (2건): q4 OPEN_LAYOUT compose:LAYOUT_INVENTORY_INCOMPLETE — ABANDONED(저작 4회 실패) · q7 OPEN_UNSUPPORTED A_construction_ops — 2:1 내분점과 외분점은 계약의 점 생성 연산(중점 등)으로 정확히 표현할 수 없다.
 - [x] **21_복성고_1학기_기말_고1_기출** (2건): q12 OPEN_UNSUPPORTED A_construction_ops — 선분의 내분점·외분점(3:2)을 작도하는 연산이 없어 P, Q를 정확히 유도할 수 없음 · q18 OPEN_UNSUPPORTED A_construction_ops — A가 문자 좌표(u,v)인 일반 삼각형의 내분점·외분점 구성이라 지원하는 연산으로 표현할 수 없다.
-- **21_제일고_1학기_중간_고1_기출** (2건): q21 OPEN_LAYOUT compose:COMPOSITE_PANEL_NOT_COMPOSED — ABANDONED(저작 4회 실패) · q22 OPEN_UNSUPPORTED G_axis_scale — x축 값(0~10)과 y축 값(최대 38400)의 크기 차가 너무 커서 같은 눈금 단위의 그래프로 그릴 수 
+- [x] **21_제일고_1학기_중간_고1_기출** (2건): q21 OPEN_LAYOUT compose:COMPOSITE_PANEL_NOT_COMPOSED — ABANDONED(저작 4회 실패) · q22 OPEN_UNSUPPORTED G_axis_scale — x축 값(0~10)과 y축 값(최대 38400)의 크기 차가 너무 커서 같은 눈금 단위의 그래프로 그릴 수 
 - [x] **22_금당고_1학기_기말_고1_기출** (2건): q3 OPEN_LAYOUT compose:LAYOUT_INVENTORY_INCOMPLETE — ABANDONED(저작 4회 실패) · q17 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 절댓값으로 이루어진 구간별 이차함수 그래프와 직선 p(x-3)+3의 비교가 필요함
 - [x] **23_매산여고_1학기_중간_고1_기출** (2건): q11 OPEN_UNSUPPORTED F_irrational_coefficients — 접하는 두 경우 m=3±sqrt(7)의 이차함수 계수가 무리수라 정수·유리수 계수만 허용하는 그래프로 그릴  · q23 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 구간별로 정의된 두 이차함수 f,g를 이어 붙인 h(x)와 직선 y=mx+12를 한 그림에 그려야 하는데 두
 - [x] **23_팔마고_1학기_기말_고1_기출** (2건): q1 OPEN_UNSUPPORTED A_construction_ops — 선분 AB를 2:1로 나누는 내분점은 파생점이라 좌표를 줄 수 없고, 비율 분할을 만드는 연산이 계약에 없다 · q10 OPEN_UNSUPPORTED C_number_line — 수직선 위에서 두 부등식의 해 구간과 가우스 기호 조건의 공통 범위를 겹쳐 보이는 그림이 필요하지만 계약의 

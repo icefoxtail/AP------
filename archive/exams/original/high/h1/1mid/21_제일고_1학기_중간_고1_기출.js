@@ -884,7 +884,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "choices": []
+    "choices": [],
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "k=-6이면 포물선 y=x²-3x+6은 직선 y=2x-1보다 항상 위에 있고, x=5/2에서 두 그래프의 세로 간격이 3/4로 가장 작다.",
+    "solutionImageCaption": "k=-6이면 포물선 y=x²-3x+6은 직선 y=2x-1보다 항상 위에 있고, x=5/2에서 두 그래프의 세로 간격이 3/4로 가장 작다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -922,6 +926,10 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "choices": []
+    "choices": [],
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "줄이는 횟수 n=2일 때 하루 이익금이 38400원으로 최대이고, 이때 하루에 팔리는 개수는 36+6×2=48개이다.",
+    "solutionImageCaption": "줄이는 횟수 n=2일 때 하루 이익금이 38400원으로 최대이고, 이때 하루에 팔리는 개수는 36+6×2=48개이다.",
+    "solutionImageSize": "full"
   }
 ];
