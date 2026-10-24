@@ -459,8 +459,8 @@ export function specFor(plan,model,id){
     const node=plan.mathPlan.nodes.find(n=>n.id===label.nodeId);
     if(!node||node.op!=='SOURCE_LINE'||!Object.hasOwn(displayed.lines,node.id)||lineLabelIds.has(node.id)||!['SLOPE_INTERCEPT','GENERAL'].includes(label.form)||Object.keys(label).length!==2)throw Error('INVALID_LINE_LABEL');
     lineLabelIds.add(node.id);
-    const [ca,cb,cc]=['a','b','c'].map(k=>exactRational(node.args[k]));
-    const lo=[Math.min(...xs)-pad,Math.min(...ys)-pad],hi=[Math.max(...xs)+pad,Math.max(...ys)+pad],coef=[ca,cb,cc].map(v=>Number(v[0])/Number(v[1]));
+    const [ca,cb,cc]=['a','b','c'].map(k=>exactSurd(node.args[k]));
+    const lo=[Math.min(...xs)-pad,Math.min(...ys)-pad],hi=[Math.max(...xs)+pad,Math.max(...ys)+pad],coef=[ca,cb,cc].map(v=>Number(v.p[0])/Number(v.p[1])+(v.q[0]===0n?0:Number(v.q[0])/Number(v.q[1])*Math.sqrt(Number(v.r))));
     // Anchor at the end of the drawn line: clip a x+b y+c=0 to the view, then take the end that is higher (steep line) or further right (flat line), just inside the frame.
     const ends=[];const [A,B,C]=coef;
     for(const x of [lo[0],hi[0]])if(B!==0){const y=-(A*x+C)/B;if(y>=lo[1]-1e-9&&y<=hi[1]+1e-9)ends.push([x,y]);}
@@ -1031,7 +1031,50 @@ function exactRational(v){
 }
 const gcdBig=(x,y)=>{x=x<0n?-x:x;y=y<0n?-y:y;while(y){[x,y]=[y,x%y];}return x;};
 const ratText=([n,d])=>{const g=gcdBig(n,d)||1n;n/=g;d/=g;if(d<0n){n=-n;d=-d;}return d===1n?String(n):n+'/'+d;};
-function lineEquationText(ca,cb,cc,form){
+// Exact p+q*sqrt(r) of a line coefficient (p, q rational [n,d] BigInt pairs, r a squarefree BigInt above 1, or q=0 and r=0n). Integers, rationals,
+// sqrt(), neg, add, sub, mul and div by a rational are closed on it; two different radicals in one coefficient are LINE_LABEL_COEFFICIENT_NOT_RATIONAL.
+export function exactSurd(v){
+  const bad=()=>{throw Error('LINE_LABEL_COEFFICIENT_NOT_RATIONAL');};
+  const Q0=[0n,1n],norm=([n,d])=>{if(d===0n)bad();if(d<0n){n=-n;d=-d;}const g=gcdBig(n,d)||1n;return [n/g,d/g];};
+  const qadd=(a,b)=>norm([a[0]*b[1]+b[0]*a[1],a[1]*b[1]]),qmul=(a,b)=>norm([a[0]*b[0],a[1]*b[1]]),qneg=a=>[-a[0],a[1]],qinv=a=>a[0]===0n?bad():norm([a[1],a[0]]);
+  const make=(p,q,r)=>q[0]===0n?{p:norm(p),q:Q0,r:0n}:{p:norm(p),q:norm(q),r};
+  const isRat=a=>a.q[0]===0n;
+  const sqrtOf=a=>{
+    if(!isRat(a)||a.p[0]<0n)bad();
+    let inner=a.p[0]*a.p[1],outer=1n;
+    for(let f=2n;f*f<=inner;f++)while(inner%(f*f)===0n){inner/=f*f;outer*=f;}
+    return inner===1n?make([outer,a.p[1]],Q0,0n):make(Q0,[outer,a.p[1]],inner);
+  };
+  const radical=(a,b)=>isRat(a)?b.r:isRat(b)?a.r:a.r===b.r?a.r:bad();
+  const ev=t=>{
+    if(t?.kind==='integer'||t?.kind==='rational')return make(exactRational(t),Q0,0n);
+    if(t?.kind!=='expression'||!Array.isArray(t.args))bad();
+    const a=t.args.map(ev);
+    switch(t.op){
+      case 'sqrt':return a.length===1?sqrtOf(a[0]):bad();
+      case 'neg':return a.length===1?make(qneg(a[0].p),qneg(a[0].q),a[0].r):bad();
+      case 'add':case 'sub':{if(a.length!==2)bad();const r=radical(a[0],a[1]),sg=t.op==='add'?1:-1;const q=qadd(a[0].q,sg===1?a[1].q:qneg(a[1].q));return make(qadd(a[0].p,sg===1?a[1].p:qneg(a[1].p)),q,q[0]===0n?0n:r);}
+      case 'mul':{if(a.length!==2)bad();const [x,y]=a;if(isRat(x)||isRat(y)||x.r===y.r){const r=radical(x,y);const p=qadd(qmul(x.p,y.p),isRat(x)||isRat(y)?Q0:qmul(qmul(x.q,y.q),[r,1n]));const q=qadd(qmul(x.p,y.q),qmul(y.p,x.q));return make(p,q,q[0]===0n?0n:r);}return bad();}
+      case 'div':{if(a.length!==2||!isRat(a[1]))bad();const inv=qinv(a[1].p);return make(qmul(a[0].p,inv),qmul(a[0].q,inv),a[0].r);}
+      default:return bad();
+    }
+  };
+  return ev(v);
+}
+const surdIsRational=s=>s.q[0]===0n;
+const surdQ=(a,b)=>{const inv=b.p;if(!surdIsRational(b)||inv[0]===0n)throw Error('LINE_LABEL_COEFFICIENT_NOT_RATIONAL');const i=[inv[1],inv[0]],m=(x,y)=>{let n=x[0]*y[0],d=x[1]*y[1];const g=gcdBig(n,d)||1n;n/=g;d/=g;if(d<0n){n=-n;d=-d;}return [n,d];};return {p:m(a.p,i),q:m(a.q,i),r:a.r};};
+const surdNeg=a=>({p:[-a.p[0],a.p[1]],q:[-a.q[0],a.q[1]],r:a.r});
+// exact value text of p+q*sqrt(r) in the grammar of the plan strings: "6", "sqrt(3)", "-3+2*sqrt(3)", "3/2-sqrt(3)", "2*sqrt(3)/3"
+function surdText(s){
+  let out='';
+  if(s.p[0]!==0n)out+=ratText(s.p);
+  if(s.q[0]!==0n){const [n,d]=s.q,a=n<0n?-n:n;out+=(n<0n?'-':out?'+':'')+(a===1n?'':a+'*')+'sqrt('+s.r+')'+(d===1n?'':'/'+d);}
+  return out||'0';
+}
+export function lineEquationText(ca,cb,cc,form){
+  const sa=ca.p?ca:{p:ca,q:[0n,1n],r:0n},sb=cb.p?cb:{p:cb,q:[0n,1n],r:0n},sc=cc.p?cc:{p:cc,q:[0n,1n],r:0n};
+  if([sa,sb,sc].some(x=>!surdIsRational(x)))return surdLineEquationText(sa,sb,sc,form);
+  ca=sa.p;cb=sb.p;cc=sc.p;
   const term=([n,d],sym)=>{const g=gcdBig(n,d)||1n;let p=n/g,q=d/g;if(q<0n){p=-p;q=-q;}if(p===0n)return '';const neg=p<0n,abs=neg?-p:p,body=q===1n?(abs===1n?sym:abs+'*'+sym):abs+'/'+q+'*'+sym;return (neg?'-':'+')+body;};
   const join=parts=>{const s=parts.join('');return s.startsWith('+')?s.slice(1):s;};
   if(form==='GENERAL'){
@@ -1042,6 +1085,23 @@ function lineEquationText(ca,cb,cc,form){
   const slope=[-ca[0]*cb[1],ca[1]*cb[0]],icept=[-cc[0]*cb[1],cc[1]*cb[0]];
   const constant=(()=>{const g=gcdBig(icept[0],icept[1])||1n;let p=icept[0]/g,q=icept[1]/g;if(q<0n){p=-p;q=-q;}return p===0n?'':(p<0n?'-':'+')+ratText([p<0n?-p:p,q]);})();
   return 'y='+(join([term(slope,'x'),constant])||'0');
+}
+// A line equation whose coefficients are p+q*sqrt(r): an irrational part is written in parentheses ((sqrt(3))*x, +(2-sqrt(3))) like the label of a slanted
+// reference line of a piecewise graph. SLOPE_INTERCEPT needs a rational y coefficient (slope and intercept are then exact surds).
+function surdLineEquationText(sa,sb,sc,form){
+  const par=s=>surdIsRational(s)?ratText(s.p):'('+surdText(s)+')';
+  const termOf=(s,sym)=>{
+    if(surdIsRational(s)){const [n,d]=s.p;if(n===0n)return '';const neg=n<0n,a=neg?-n:n;return (neg?'-':'+')+(d===1n?(a===1n?sym:a+'*'+sym):a+'/'+d+'*'+sym);}
+    return '+'+par(s)+'*'+sym;
+  };
+  const join=parts=>{const t=parts.join('');return t.startsWith('+')?t.slice(1):t;};
+  const constOf=s=>{if(surdIsRational(s)){const [n,d]=s.p;if(n===0n)return '';return (n<0n?'-':'+')+ratText([n<0n?-n:n,d]);}return '+('+surdText(s)+')';};
+  if(form==='GENERAL')return join([termOf(sa,'x'),termOf(sb,'y'),constOf(sc)])+'=0';
+  if(!surdIsRational(sb))throw Error('LINE_LABEL_COEFFICIENT_NOT_RATIONAL');
+  if(sb.p[0]===0n)throw Error('LINE_LABEL_SLOPE_FORM_NEEDS_NONVERTICAL_LINE');
+  const slope=surdQ(surdNeg(sa),sb),icept=surdQ(surdNeg(sc),sb);
+  const pureSurd=!surdIsRational(slope)&&slope.p[0]===0n&&slope.q[1]===1n,slopeText=surdIsRational(slope)?termOf(slope,'x'):pureSurd?surdText(slope).replace(/^(?!-)/,'+')+'x':'+'+par(slope)+'*x';
+  return 'y='+(join([slopeText,constOf(icept)])||'0');
 }
 function unwrapParentheses(text){
   if(!text.startsWith('(')||!text.endsWith(')'))return text;
