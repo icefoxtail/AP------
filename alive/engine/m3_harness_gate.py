@@ -100,11 +100,13 @@ class M3HarnessGate:
         raw_js_bytes: bytes,
         small_meta: dict[str, Any],
         expected_question_count: int = 24,
+        visual_qids: set[int] | None = None,
     ) -> dict[str, Any]:
         """
         Fail-closed activation gate:
         raw_js_bytes and small_meta are MANDATORY.
         """
+        required_visual_qids = visual_qids if visual_qids is not None else VISUAL_QIDS
         findings: list[dict[str, Any]] = []
 
         def add_finding(layer: str, code: str, message: str, qid: int | None = None) -> None:
@@ -203,8 +205,8 @@ class M3HarnessGate:
             qid = q.get("id")
             img_rel = q.get("image")
 
-            # Q5, Q10, Q13, Q24 MUST have images
-            if qid in VISUAL_QIDS and not img_rel:
+            # Mandatory visual questions MUST have images
+            if qid in required_visual_qids and not img_rel:
                 add_finding("LAYER_3_VISUAL_PARITY", "MANDATORY_IMAGE_MISSING", f"Question Q{qid} requires visual figure, but image field is missing", qid=qid)
 
             if img_rel:
