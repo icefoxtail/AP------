@@ -64,6 +64,7 @@ export const PHASE5_CODE_PATHS=Object.freeze([
  'archive/tools/geometry-equation/tests/test_svg_composer.py',
  'archive/tools/geometry-equation/tests/test_tikz_adapter.py',
  'archive/tools/geometry-equation/tests/test_trigonometric_overview.py',
+ 'archive/tools/geometry-equation/tests/test_trigonometric_interval.py',
 ]);
 
 const normalizePath=value=>String(value||'').replaceAll('\\','/');

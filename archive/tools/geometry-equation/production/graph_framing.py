@@ -564,9 +564,115 @@ def _fit_logarithmic_affine_overview(plan):
     fitted={**plan,'domain':[lo,hi],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'LOGARITHMIC_AFFINE_OVERVIEW_v1','logarithmicFeatures':features,'logarithmicFeaturePolicy':policy}
     return {'graphPlan':fitted,'policy':'LOGARITHMIC_AFFINE_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan['domain'],'viewport':plan['viewport']}}
 
+# ---- sine / cosine on an explicit interval (several periods) with horizontal or slanted reference lines -----------------------------------
+# sourceDomain {kind:'INTERVAL_PI',rangePi:[lo,hi],states:[start,end]} (exact multiples of pi) replaces the one-period window; referenceLines
+# [{id,y}|{id,slope,intercept}] each carry the author's claim intersectionCount. The engine finds every crossing (closed form for a horizontal
+# line, sign-change bisection for a slanted one); the observer finds them again with SymPy and refuses a different count or position.
+TRIG_INTERVAL_MAX_PERIODS=12
+TRIG_INTERVAL_MAX_CROSSINGS=40
+
+def trig_line_specs(plan,code='TRIG_LINE'):
+    rows=plan.get('referenceLines')
+    if rows is None:return []
+    if not isinstance(rows,list) or len(rows)>3:raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+    out=[];seen=set()
+    for row in rows:
+        if not isinstance(row,dict) or not isinstance(row.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',row['id']) or row['id'] in seen:raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+        seen.add(row['id'])
+        count=row.get('intersectionCount')
+        if isinstance(count,bool) or not isinstance(count,int) or not 0<=count<=TRIG_INTERVAL_MAX_CROSSINGS:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_INVALID:'+row['id'])
+        if set(row)-{'id','y','slope','intercept','intersectionCount'}:raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+        if 'y' in row:
+            if 'slope' in row or 'intercept' in row:raise ValueError('TRIG_LINE_FORM_INVALID:'+row['id'])
+            out.append({'id':row['id'],'slope':Fraction(0),'intercept':_piecewise_fraction(row['y'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']),'claim':count,'horizontal':True})
+        else:
+            if 'slope' not in row or 'intercept' not in row:raise ValueError('TRIG_LINE_FORM_INVALID:'+row['id'])
+            slope=_piecewise_fraction(row['slope'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']);intercept=_piecewise_fraction(row['intercept'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
+            if slope==0:raise ValueError('TRIG_LINE_SLOPE_ZERO:'+row['id'])
+            out.append({'id':row['id'],'slope':slope,'intercept':intercept,'claim':count,'horizontal':False})
+    return out
+
+def trig_interval_source(plan):
+    source=plan.get('sourceDomain')
+    if not isinstance(source,dict) or set(source)-{'kind','rangePi','states'} or not isinstance(source.get('rangePi'),list) or len(source['rangePi'])!=2:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    lo,hi=(_piecewise_fraction(value,'INVALID_TRIG_INTERVAL') for value in source['rangePi'])
+    states=source.get('states',['CLOSED','CLOSED'])
+    if not lo<hi or not isinstance(states,list) or len(states)!=2 or any(state not in {'OPEN','CLOSED'} for state in states):raise ValueError('INVALID_TRIG_INTERVAL')
+    return lo,hi,list(states)
+
+def trig_line_crossings(function,a,k,c,phase,lo,hi,states,line):
+    """Every x (radians) in the interval where a*F(k*x+phase*pi)+c meets the line, with its y. Closed form for a horizontal line, sign changes for a slanted one."""
+    x0,x1=float(lo)*math.pi,float(hi)*math.pi;slope,intercept=float(line['slope']),float(line['intercept'])
+    def inside(x):
+        eps=1e-9*max(1.0,abs(x))
+        return (x>x0+eps if states[0]=='OPEN' else x>=x0-eps) and (x<x1-eps if states[1]=='OPEN' else x<=x1+eps)
+    found=[]
+    if line['horizontal']:
+        t=(line['intercept']-c)/a
+        if abs(t)<=1:
+            base=math.asin(float(t)) if function=='SIN' else math.acos(float(t))
+            thetas=[base,math.pi-base] if function=='SIN' else [base,-base]
+            kf=float(k);shift=float(phase)*math.pi
+            reach=sorted([kf*x0+shift,kf*x1+shift])
+            for theta in thetas:
+                first=math.floor((reach[0]-theta)/(2*math.pi))-1;last=math.ceil((reach[1]-theta)/(2*math.pi))+1
+                for j in range(first,last+1):found.append((theta+2*math.pi*j-shift)/kf)
+    else:
+        kf=float(k);shift=float(phase)*math.pi;af=float(a);cf=float(c);fn=math.sin if function=='SIN' else math.cos
+        gap=lambda x:af*fn(kf*x+shift)+cf-(slope*x+intercept)
+        steps=max(2000,int(400*(x1-x0)/math.pi));previous=x0;value=gap(previous)
+        for index in range(1,steps+1):
+            current=x0+(x1-x0)*index/steps;now=gap(current)
+            if value==0:found.append(previous)
+            elif value*now<0:
+                left,right,gl=previous,current,value
+                for _ in range(80):
+                    mid=(left+right)/2;gm=gap(mid)
+                    if gl*gm<=0:right=mid
+                    else:left,gl=mid,gm
+                found.append((left+right)/2)
+            previous,value=current,now
+        if value==0:found.append(previous)
+    unique=[]
+    for x in sorted(found):
+        if inside(x) and (not unique or x-unique[-1]>1e-7*max(1.0,abs(x))):unique.append(x)
+    return [(x,slope*x+intercept) for x in unique]
+
+def _fit_trigonometric_interval(plan,function):
+    if function not in {'SIN','COS'}:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    lo,hi,states=trig_interval_source(plan)
+    if 'domain' in plan or 'viewport' in plan:
+        _valid_exp_log_display(plan,'TRIGONOMETRIC')
+    a,k,c=_exp_log_coefficients(plan.get('coefficients'),3,'TRIGONOMETRIC');phase=_piecewise_fraction(plan.get('phasePi'),'INVALID_TRIGONOMETRIC_PHASE')
+    if a==0 or k==0:raise ValueError('TRIGONOMETRIC_NONZERO_SCALE_AND_RATE_REQUIRED')
+    rate=abs(k);periods=(hi-lo)*rate/2
+    if periods<Fraction(1,4) or periods>TRIG_INTERVAL_MAX_PERIODS:raise ValueError('TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED')
+    x0,x1=float(lo)*math.pi,float(hi)*math.pi
+    rows=[];ys=[float(c-abs(a)),float(c+abs(a)),0.0]
+    for line in trig_line_specs(plan):
+        crossings=trig_line_crossings(function,a,k,c,phase,lo,hi,states,line)
+        if len(crossings)!=line['claim']:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_MISMATCH:'+line['id']+':engine finds '+str(len(crossings))+' intersection(s)')
+        for x,_ in crossings:
+            if (states[0]=='CLOSED' and abs(x-x0)<1e-9) or (states[1]=='CLOSED' and abs(x-x1)<1e-9):raise ValueError('TRIG_LINE_THROUGH_INTERVAL_END:'+line['id'])
+        ys.append(float(line['intercept']) if line['horizontal'] else 0.0);ys.extend(y for _,y in crossings)
+        rows.append({'id':line['id'],'kind':'HORIZONTAL' if line['horizontal'] else 'SLANTED','slope':str(line['slope']),'intercept':str(line['intercept']),'intersections':[{'x':x,'y':y} for x,y in crossings]})
+    evaluator=math.sin if function=='SIN' else math.cos
+    end_y=[float(a)*evaluator(float(k)*x+float(phase)*math.pi)+float(c) for x in (x0,x1)]
+    xpad=max(.04*(x1-x0),.3);low=min(ys);high=max(ys);ypad=.18*max(1.0,high-low)
+    viewport=[x0-xpad,x1+xpad,low-ypad,high+ypad]
+    features={'schemaVersion':'TRIGONOMETRIC_INTERVAL_FEATURES_v1','function':function,'phasePi':str(phase),'periodPiMultiple':str(Fraction(2,1)/rate),'amplitude':str(a),'midline':str(c),'sourceInterval':{'loPi':str(lo),'hiPi':str(hi),'states':states},'lines':rows}
+    policy={'schemaVersion':'TRIGONOMETRIC_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':3.2,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':40,'minimumAmplitudeCssPx':20}
+    interval={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':[{'side':'START','x':repr(x0),'y':repr(end_y[0]),'state':states[0]},{'side':'END','x':repr(x1),'y':repr(end_y[1]),'state':states[1]}]}
+    interval_policy={'schemaVersion':'POLYNOMIAL_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':4,'minimumMarkerDiameterCssPx':3}
+    if not all(math.isfinite(value) and abs(value)<=1e6 for value in [x0,x1,*viewport]):raise ValueError('UNSUPPORTED_TRIGONOMETRIC_NUMERIC_SCOPE')
+    fitted={**plan,'domain':[x0,x1],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v1','trigIntervalFeatures':features,'trigIntervalPolicy':policy,'intervalFeatures':interval,'intervalFeaturePolicy':interval_policy}
+    return {'graphPlan':fitted,'policy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
+
 def _fit_trigonometric_overview(plan):
     function=plan.get('function')
     if function not in {'SIN','COS','TAN'}:raise ValueError('UNSUPPORTED_TRIGONOMETRIC_FUNCTION')
+    if isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL_PI':return _fit_trigonometric_interval(plan,function)
+    if plan.get('referenceLines') is not None:raise ValueError('TRIG_REFERENCE_LINES_REQUIRE_INTERVAL_PI')
     expected_domain={'kind':'ALL_REALS'} if function in {'SIN','COS'} else {'kind':'ALL_REALS_WITH_TAN_POLES'}
     if plan.get('sourceDomain')!=expected_domain:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
     _valid_exp_log_display(plan,'TRIGONOMETRIC')
