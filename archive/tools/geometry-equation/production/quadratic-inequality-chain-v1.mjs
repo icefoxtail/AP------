@@ -21,7 +21,7 @@ const MAX_INTEGER_POINTS=25;
 // --- exact numbers: rationals [n,d] (BigInt, d>0, reduced) and p+q*sqrt(s) with s a squarefree integer (s=1: rational) -------------------------
 const bad=code=>{throw Error(code);};
 // Exact-number helpers shared with number-line-v1.mjs (the standalone number-line figure).
-export {rat,add,sub,mul,div,sgn,ZERO,parseRat,gcd,checkVariable,esc,overlaps,isDomainCode,Stop};
+export {rat,add,sub,mul,div,sgn,ZERO,parseRat,gcd,checkVariable,esc,overlaps,isDomainCode,Stop,real,sqrtRat,cmp,approx,floorOf};
 const gcd=(a,b)=>{a=a<0n?-a:a;b=b<0n?-b:b;while(b)[a,b]=[b,a%b];return a;};
 const rat=(n,d=1n)=>{if(d===0n)bad('INEQUALITY_NUMERIC_SCOPE');if(d<0n){n=-n;d=-d;}const g=gcd(n,d)||1n;return [n/g,d/g];};
 const add=(a,b)=>rat(a[0]*b[1]+b[0]*a[1],a[1]*b[1]),sub=(a,b)=>add(a,[-b[0],b[1]]),mul=(a,b)=>rat(a[0]*b[0],a[1]*b[1]),div=(a,b)=>rat(a[0]*b[1],a[1]*b[0]);

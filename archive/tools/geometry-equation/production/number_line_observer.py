@@ -23,6 +23,19 @@ def _rational(text, code):
     return value
 
 
+SURD = re.compile(r'^[0-9+\-*/() ]*sqrt[0-9+\-*/()sqrt ]{0,60}$')
+
+
+def _value(text, code):
+    """An end value: an exact rational, or an exact surd text such as sqrt(10), -sqrt(10), (1+sqrt(2))/2 (SymPy parses it)."""
+    if isinstance(text, str) and RATIONAL.fullmatch(text): return S.Rational(text)
+    if not isinstance(text, str) or not SURD.fullmatch(text) or len(text) > 64: raise ValueError(code)
+    try: value = S.sympify(text, rational=True)
+    except Exception: raise ValueError(code)
+    if not value.is_real: raise ValueError(code)
+    return value
+
+
 def expected_solution(numberLine):
     """The one interval the inequality's set is (an S.Interval, S.Reals or a one-point FiniteSet), with its integer points (or None)."""
     values = numberLine.get('coefficients')
@@ -262,7 +275,7 @@ TRANSLATE = re.compile(r'translate\(([-\d.e]+) ([-\d.e]+)\)')
 
 def _end_value(raw, parameter):
     if raw is None: return None
-    if 'value' in raw: return _rational(raw['value'], 'NL_OBSERVER_PLAN_INVALID')
+    if 'value' in raw: return _value(raw['value'], 'NL_OBSERVER_PLAN_INVALID')
     if parameter is None: raise ValueError('NL_OBSERVER_PLAN_INVALID')
     return _rational(raw['param']['mul'], 'NL_OBSERVER_PLAN_INVALID') * parameter + _rational(raw['param'].get('add', '0'), 'NL_OBSERVER_PLAN_INVALID')
 
@@ -429,7 +442,9 @@ def audit_figure(numberLine, svg, pointNames=None):
             fill = (element.get('fill') or '').lower()
             if fill != ('#111' if closed else '#fff') or element.get('data-state') != ('CLOSED' if closed else 'OPEN'): errors.append('NL_ENDPOINT_STATE:' + element.get('id'))
             text = element.get('data-value', '')
-            if not RATIONAL.fullmatch(text) or S.Rational(text) != value: errors.append('NL_ENDPOINT_VALUE:' + element.get('id'))
+            try: ok_value = S.simplify(_value(text, 'NL_ENDPOINT_VALUE') - value) == 0
+            except ValueError: ok_value = False
+            if not ok_value: errors.append('NL_ENDPOINT_VALUE:' + element.get('id'))
             mine = [l for l in owners.get(element.get('id'), []) if l.get('data-label-role') == 'endpoint']
             if len(mine) != 1: errors.append('NL_LABEL_COUNT:' + element.get('id')); continue
             try:
