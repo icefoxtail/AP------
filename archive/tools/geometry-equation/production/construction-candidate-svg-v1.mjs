@@ -188,8 +188,8 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     const displayed=graph?null:displayGeometryInventory(plan,model),peerOf=(ids,values)=>ids?Object.fromEntries(Object.keys(ids).map(id=>[id,values[id]])):null;
     // Always the real worker and observer: a caller-supplied worker could otherwise answer PASS for any SVG.
     // Graph lines are audited against the plan's own exact slope and intercept (a=slope, b=-1, c=intercept for ax+by+c=0).
-    // A piecewise polynomial's horizontal referenceLines are y=c: a=0, b=-1, c.
-    const graphLines=graph?Object.fromEntries([...(plan.graphPlan.lines||[]).map(line=>['line-'+line.id,[exactValue(line.slope),-1,exactValue(line.intercept)]]),...(plan.capability==='piecewise-polynomial-spike-v1'?(plan.graphPlan.referenceLines||[]).map(line=>['line-'+line.id,[0,-1,exactValue(String(line.y))]]):[])]):null;
+    // A piecewise polynomial's referenceLines are y=c (a=0, b=-1, c) or, with slope and intercept, y=m*x+c (a=m, b=-1, c).
+    const graphLines=graph?Object.fromEntries([...(plan.graphPlan.lines||[]).map(line=>['line-'+line.id,[exactValue(line.slope),-1,exactValue(line.intercept)]]),...(plan.capability==='piecewise-polynomial-spike-v1'?(plan.graphPlan.referenceLines||[]).map(line=>['line-'+line.id,[line.slope===undefined?0:exactValue(String(line.slope)),-1,exactValue(String(line.slope===undefined?line.y:line.intercept))]]):[])]):null;
     const audit=await call(pythonWorker,'staticAudit',{svg,points:peerOf(displayed?.points,peer?.points),lines:graph?graphLines:peerOf(displayed?.lines,peer?.lines),circles:peerOf(displayed?.circles,peer?.circles),segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH'},{script:OBSERVER_SCRIPT});
     // runPhase2 715: graphs also need the graph observer on the final SVG at the intrinsic scale.
     const graphAudit=graph?await call(pythonWorker,'graphAudit',{graphPlan:plan.graphPlan,svg,transform:{...observerFrame(witness.coordinateModel),displayScale:1}},{script:GRAPH_OBSERVER_SCRIPT,timeoutMs:120000}):null;

@@ -725,11 +725,12 @@ def piecewise_polynomial_extrema(pieces,intervals):
         if _pp_inside(h,interval,True):rows.append((h,_pp_poly_value(coefficients,h),'MAX' if c2<0 else 'MIN'))
     return rows
 
-def piecewise_polynomial_crossings(pieces,intervals,level,source):
-    """Every x where g(x)=level, exactly (SymPy; quadratic surds allowed), each once, in increasing order. A piece equal to the level is refused."""
+def piecewise_polynomial_crossings(pieces,intervals,level,source,slope=Fraction(0)):
+    """Every x where g(x)=slope*x+level, exactly (SymPy; quadratic surds allowed), each once, in increasing order (slope 0: the horizontal line y=level).
+    A piece equal to the line is refused."""
     lo,hi,states=source;found=[]
     for coefficients,(a,b) in zip(pieces,intervals):
-        poly=S.Poly(sum(S.Rational(c.numerator,c.denominator)*_x**i for i,c in enumerate(coefficients))-S.Rational(level.numerator,level.denominator),_x)
+        poly=S.Poly(sum(S.Rational(c.numerator,c.denominator)*_x**i for i,c in enumerate(coefficients))-S.Rational(slope.numerator,slope.denominator)*_x-S.Rational(level.numerator,level.denominator),_x)
         if poly.is_zero:raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_CONTAINS_A_PIECE')
         for root in S.roots(poly,filter='R'):
             if a is not None and root<S.Rational(a.numerator,a.denominator) or b is not None and root>S.Rational(b.numerator,b.denominator):continue
@@ -778,24 +779,36 @@ def fit_piecewise_polynomial(plan):
             else:samples=[Fraction(k-4,2) for k in range(9)]+[Fraction(-100),Fraction(100)]
             for x_value in samples:
                 if pp_formula_value(formula,x_value)!=_pp_poly_value(coefficients,x_value):raise ValueError('PIECEWISE_POLY_FORMULA_MISMATCH:'+_pp_text(x_value))
-    # Horizontal lines: the claimed intersection x values must be exactly the engine's own crossings, in increasing order.
+    # Reference lines: horizontal y=c ({id,y,intersectionX}) or slanted y=m*x+c ({id,slope,intercept,intersectionX}, m and c exact rationals, m != 0).
+    # The claimed intersection x values must be exactly the engine's own crossings, in increasing order.
     lines=plan.get('referenceLines',[])
     if not isinstance(lines,list) or len(lines)>3:raise ValueError('PIECEWISE_POLY_REFERENCE_LINES_INVALID')
     crossings=[];line_ids=set()
     for line in lines:
-        if not isinstance(line,dict) or not {'id','y','intersectionX'}<=set(line)<={'id','y','intersectionX','labelIntersections'} or not isinstance(line['id'],str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',line['id']) or line['id'] in line_ids or not isinstance(line['intersectionX'],list) or len(line['intersectionX'])>6 or line.get('labelIntersections',False) not in (True,False):raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_INVALID')
-        line_ids.add(line['id']);level=_pp_rational(line['y'],'PIECEWISE_POLY_REFERENCE_LINE_INVALID')
-        exact=piecewise_polynomial_crossings(pieces,intervals,level,source)
+        if not isinstance(line,dict) or not isinstance(line.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',line['id']) or line['id'] in line_ids or not isinstance(line.get('intersectionX'),list) or len(line['intersectionX'])>6 or line.get('labelIntersections',False) not in (True,False):raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_INVALID')
+        keys=set(line)-{'id','intersectionX','labelIntersections'}
+        if keys=={'y'}:slope=Fraction(0)
+        elif keys=={'slope','intercept'}:slope=None
+        else:raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_INVALID')
+        line_ids.add(line['id'])
+        if slope is None:
+            slope=_pp_rational(line['slope'],'PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID');level=_pp_rational(line['intercept'],'PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID')
+            if slope==0:raise ValueError('PIECEWISE_POLY_SLANTED_LINE_SLOPE_ZERO')
+            if line.get('labelIntersections',False):raise ValueError('PIECEWISE_POLY_SLANTED_LINE_LABELS_UNSUPPORTED')
+        else:level=_pp_rational(line['y'],'PIECEWISE_POLY_REFERENCE_LINE_INVALID')
+        exact=piecewise_polynomial_crossings(pieces,intervals,level,source,slope)
         claimed=sorted(((text,pp_exact_value(text)) for text in line['intersectionX']),key=lambda row:float(row[1]))
         if len(claimed)!=len(exact) or any(S.simplify(value-root)!=0 for (_,value),root in zip(claimed,exact)):
             raise ValueError('PIECEWISE_POLY_INTERSECTION_MISMATCH:'+line['id']+':engine finds '+str(len(exact))+' intersection(s)')
         # A crossing that is also a marked key point (a touching vertex, a corner on the line) is drawn once, as that key point.
         def key_at(x_value,y_value):
             return next((point['id'] for point in required if abs(point['x']-x_value)<=1e-9*max(1,abs(x_value)) and abs(point['y']-y_value)<=1e-9*max(1,abs(y_value))),None)
-        crossings.append({'lineId':line['id'],'y':_pp_text(level),'points':[{'x':text.replace(' ',''),'xValue':float(root),**({'keyPoint':key_at(float(root),float(level))} if key_at(float(root),float(level)) else {})} for (text,_),root in zip(claimed,exact)]})
+        height=lambda root:float(slope)*float(root)+float(level)
+        if slope==0:crossings.append({'lineId':line['id'],'y':_pp_text(level),'points':[{'x':text.replace(' ',''),'xValue':float(root),**({'keyPoint':key_at(float(root),float(level))} if key_at(float(root),float(level)) else {})} for (text,_),root in zip(claimed,exact)]})
+        else:crossings.append({'lineId':line['id'],'slope':_pp_text(slope),'intercept':_pp_text(level),'points':[{'x':text.replace(' ',''),'xValue':float(root),'yValue':height(root),**({'keyPoint':key_at(float(root),height(root))} if key_at(float(root),height(root)) else {})} for (text,_),root in zip(claimed,exact)]})
     key=[(float(x_value),float(y_value)) for x_value,y_value in corners]+[(float(x_value),float(y_value)) for x_value,y_value,_ in extrema]+required_xy
-    key+=[(point['xValue'],float(Fraction(row['y']))) for row in crossings for point in row['points']]
-    key+=[(0.0,float(Fraction(row['y']))) for row in crossings if not row['points']]
+    key+=[(point['xValue'],point['yValue'] if 'slope' in row else float(Fraction(row['y']))) for row in crossings for point in row['points']]
+    key+=[(0.0,float(Fraction(row['intercept'] if 'slope' in row else row['y']))) for row in crossings if not row['points']]
     limit=plot_height_limit(plan)
     if lo is not None:
         ends=[(float(lo),float(g(lo))),(float(hi),float(g(hi)))]
