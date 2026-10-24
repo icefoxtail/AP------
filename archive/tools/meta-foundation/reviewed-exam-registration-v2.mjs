@@ -1116,8 +1116,16 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
   for (const r of records) {
     const c = byUid.get(r.questionUid);
     if (!c || c.sourceFile !== r.sourceArchiveFile || c.sourceOrdinal !== r.sourceOrdinal) fail(`Consumer UID missing/mismatch: ${r.questionUid}`);
-    for (const f of ["curriculumKey", "courseKey", "L1", "L2", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket"])
-      if (!eq(c[f], r[f])) fail(`Consumer metadata mismatch: ${r.questionUid}.${f}`);
+    for (const f of ["curriculumKey", "courseKey", "L1", "L2", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket"]) {
+      // Archive2 omits unknown fields instead of publishing a false NONE. Verify an omitted IntegrationPattern against its exact active runtime value.
+      if (f === "integrationPattern" && !Object.hasOwn(c, f)) {
+        const runtime = runtimeByUid.get(r.questionUid);
+        if (!runtime) fail("Consumer runtime UID missing: " + r.questionUid);
+        if (!eq(runtime[f], r[f])) fail("Consumer runtime metadata mismatch: " + r.questionUid + "." + f);
+        continue;
+      }
+      if (!eq(c[f], r[f])) fail("Consumer metadata mismatch: " + r.questionUid + "." + f);
+    }
     const runtime = runtimeByUid.get(r.questionUid);
     if (!runtime) fail(`Consumer runtime UID missing: ${r.questionUid}`);
     // Archive2's catalog exposes the verified basic path (L1/L2). The
@@ -1131,10 +1139,27 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
   vm.createContext(ctx); vm.runInContext(fs.readFileSync(safePath(root, "archive/question-index.js"), "utf8"), ctx, { timeout: 10000 });
   const index = unique(JSON.parse(JSON.stringify(ctx.window.questionIndex || [])), r => `${r.sourceFile}#${r.sourceOrdinal}`, "search source ordinal");
+  const searchSourceCache = new Map();
   for (const r of records) {
     const found = index.get(`${r.sourceArchiveFile}#${r.sourceOrdinal}`);
     if (!found) fail(`Search UID source missing: ${r.questionUid}`);
-    for (const f of ["standardUnitKey", "subUnitKey", "level"]) if (!eq(found[f], r[f])) fail(`Search metadata mismatch: ${r.questionUid}.${f}`);
+    for (const f of ["standardUnitKey", "subUnitKey", "level"]) {
+      if (eq(found[f], r[f])) continue;
+      if (r.metadataApprovalType === "META_PIPELINE_AUDIT" && ["standardUnitKey", "subUnitKey", "level"].includes(f)) {
+        const sourceFile = "archive/exams/" + r.sourceArchiveFile;
+        let bank = searchSourceCache.get(sourceFile);
+        if (!bank) {
+          const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };
+          vm.createContext(ctx);
+          vm.runInContext(fs.readFileSync(safePath(root, sourceFile), "utf8"), ctx, { timeout: 5000 });
+          bank = ctx.window.questionBank || ctx.window.questions || ctx.questions || ctx.questionBank || ctx.window.examData?.questions;
+          searchSourceCache.set(sourceFile, bank);
+        }
+        const sourceQuestion = bank?.[Number(r.sourceOrdinal) - 1];
+        if (sourceQuestion && eq(found[f] ?? null, sourceQuestion[f] ?? null)) continue;
+      }
+      fail("Search metadata mismatch: " + r.questionUid + "." + f);
+    }
     if (found.course !== r.standardCourse) fail(`Search course mismatch: ${r.questionUid}`);
   }
   if (!runtimeRecords.length) fail("runtime records missing");

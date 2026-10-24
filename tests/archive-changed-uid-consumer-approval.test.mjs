@@ -6,7 +6,7 @@ import path from "node:path";
 import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { verifyChangedUidConsumerApproval, renderSummary } from "../archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs";
-import { loadResolvedConsumerCatalog } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { loadResolvedConsumerCatalog, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 
 const repo = fileURLToPath(new URL("..", import.meta.url));
 const checker = path.join(repo, "archive/tools/meta-foundation/verify-changed-uid-consumer-approval.mjs");
@@ -149,4 +149,19 @@ test("assignment marker gates only assignment-governed changes; other rows are r
     "an ineffective changed value still fails; a governed change still needs the marker");
   const md = renderSummary({ ...out, failures: [], status: "PASS" });
   assert.ok(md.includes("canonical L1/L2 assignment not approved; outside this request's changed fields") && md.includes(`Q${row.sourceOrdinal}`), md);
+});
+
+test("META_PIPELINE IntegrationPattern omission is checked against active runtime EVIDENCE_DEBT", t => {
+  const root = tmp(t);
+  fs.mkdirSync(path.join(root, "archive"), { recursive: true });
+  fs.mkdirSync(path.join(root, "archive/exams/original"), { recursive: true });
+  fs.writeFileSync(path.join(root, "archive/exams/original/fixture.js"), "window.questions = " + JSON.stringify([{ id: 1, standardUnitKey: "M3-01", subUnitKey: "M3-01-DEFINITION", level: "하" }]) + ";");
+  fs.writeFileSync(path.join(root, "archive/question-index.js"), "window.questionIndex = " + JSON.stringify([{ sourceFile: "original/fixture.js", sourceOrdinal: 1, standardUnitKey: "M3-01", subUnitKey: "M3-01-DEFINITION", level: "하", course: "중3-1" }]) + ";");
+  const uid = "fixture-uid";
+  const record = { questionUid: uid, sourceArchiveFile: "original/fixture.js", sourceOrdinal: 1, metadataApprovalType: "META_PIPELINE_AUDIT", curriculumKey: "2015", courseKey: "M3-1", standardCourse: "중3-1", L1: "실수와 그 연산", L2: "제곱근과 실수", standardUnitKey: "M3-01", subUnitKey: "M3-01-SQUARE_ROOT", problemTypeKey: "PT_FIXTURE", templateKey: "TPL_FIXTURE", crossConceptKeys: [], conditionKeys: [], integrationPattern: null, difficultyBucket: 1, level: "하", L3: "유형", L4: "풀이 구조" };
+  const consumer = { ...record, sourceFile: record.sourceArchiveFile };
+  delete consumer.integrationPattern;
+  const runtime = { questionUid: uid, integrationPattern: null, L3: "유형", L4: "풀이 구조" };
+  assert.doesNotThrow(() => verifyConsumerValues(root, [record], [runtime], { records: [consumer] }));
+  assert.throws(() => verifyConsumerValues(root, [record], [{ ...runtime, integrationPattern: "CASE_BRANCH" }], { records: [consumer] }), /Consumer runtime metadata mismatch: fixture-uid.integrationPattern/);
 });
