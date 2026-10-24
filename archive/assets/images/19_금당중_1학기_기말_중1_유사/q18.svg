@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 340" width="380" height="340" role="img" aria-labelledby="q18-title q18-desc">
+  <title id="q18-title">정비례 관계 그래프</title>
+  <desc id="q18-desc">원점과 점 (3, 2)를 지나는 정비례 그래프</desc>
+  <rect width="380" height="340" fill="#ffffff"/>
+  
+  <!-- Coordinate Grid & Axes -->
+  <!-- Center at (190, 170). Scale: 24 px per unit -->
+  <g stroke="#333333" stroke-width="1.5">
+    <!-- X axis -->
+    <line x1="30" y1="170" x2="350" y2="170"/>
+    <polyline points="342,165 350,170 342,175" fill="none"/>
+    
+    <!-- Y axis -->
+    <line x1="190" y1="310" x2="190" y2="30"/>
+    <polyline points="185,38 190,30 195,38" fill="none"/>
+  </g>
+  
+  <!-- Axis Labels -->
+  <g font-family="sans-serif" font-size="15" fill="#111111" font-weight="bold">
+    <text x="355" y="175">x</text>
+    <text x="190" y="22" text-anchor="middle">y</text>
+    <text x="178" y="186">O</text>
+  </g>
+  
+  <!-- Dashed lines for point (3, 2) -> (190 + 3*24 = 262, 170 - 2*24 = 122) -->
+  <line x1="262" y1="170" x2="262" y2="122" stroke="#666666" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <line x1="190" y1="122" x2="262" y2="122" stroke="#666666" stroke-width="1.5" stroke-dasharray="4,4"/>
+  
+  <!-- Tick marks & numbers -->
+  <g font-family="sans-serif" font-size="14" fill="#333333" text-anchor="middle">
+    <text x="262" y="188">3</text>
+    <text x="178" y="127" text-anchor="end">2</text>
+  </g>
+  <circle cx="262" cy="170" r="2.5" fill="#333333"/>
+  <circle cx="190" cy="122" r="2.5" fill="#333333"/>
+  
+  <!-- Graph line: y = 2/3 x. slope = 2/3. Passes through (190, 170), (262, 122), etc. -->
+  <!-- At x = -6 (x=46): y = 170 - (-4)*24 = 266 -->
+  <!-- At x = 6 (x=334): y = 170 - 4*24 = 74 -->
+  <line x1="46" y1="266" x2="334" y2="74" stroke="#0066cc" stroke-width="2.5"/>
+  
+  <!-- Marked Point -->
+  <circle cx="262" cy="122" r="4.5" fill="#d32f2f"/>
+</svg>

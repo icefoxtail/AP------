@@ -253,7 +253,10 @@ def generate_inbox_request(files: dict) -> dict:
             "approvedBy": "13th-route-main-merge-master",
             "evidenceRefs": evidence_refs
         },
-        "registryChanges": [],
+        "registryChanges": [
+            {**change, "evidenceRefs": evidence_refs}
+            for change in meta_json.get("registryChanges", [])
+        ],
         "items": req_items
     }
 

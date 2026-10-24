@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 340" width="420" height="340" role="img" aria-labelledby="q21-title q21-desc">
+  <title id="q21-title">정사각형에서 줄여 만든 직사각형</title>
+  <desc id="q21-desc">한 변이 10cm인 정사각형에서 가로와 세로를 각각 2x, x+2 줄인 직사각형</desc>
+  <rect width="420" height="340" fill="#ffffff"/>
+  
+  <!-- Outer Square (side 200, origin at 90, 60) -->
+  <rect x="90" y="60" width="200" height="200" fill="#f5f5f5" stroke="#333333" stroke-width="2"/>
+  
+  <!-- Shaded Inner Rectangle (bottom-right: width = 200 - 50 = 150, height = 200 - 60 = 140) -->
+  <!-- Starts at x = 90 + 50 = 140, y = 60 + 60 = 120 -->
+  <rect x="140" y="120" width="150" height="140" fill="#bbdefb" stroke="#1976d2" stroke-width="2.5"/>
+  
+  <!-- Dimension lines -->
+  <g stroke="#444444" stroke-width="1.5" fill="none">
+    <!-- Top outer square dimension: 10 cm -->
+    <line x1="90" y1="45" x2="290" y2="45"/>
+    <path d="M 90,40 L 90,50 M 290,40 L 290,50"/>
+    
+    <!-- Left outer square dimension: 10 cm -->
+    <line x1="75" y1="60" x2="75" y2="260"/>
+    <path d="M 70,60 L 80,60 M 70,260 L 80,260"/>
+    
+    <!-- Top reduced width: 2x -->
+    <line x1="90" y1="75" x2="140" y2="75" stroke="#d32f2f"/>
+    <path d="M 90,70 L 90,80 M 140,70 L 140,80" stroke="#d32f2f"/>
+    
+    <!-- Left reduced height: x + 2 -->
+    <line x1="105" y1="60" x2="105" y2="120" stroke="#d32f2f"/>
+    <path d="M 100,60 L 110,60 M 100,120 L 110,120" stroke="#d32f2f"/>
+  </g>
+  
+  <!-- Labels -->
+  <g font-family="sans-serif" font-size="14" fill="#222222" font-weight="bold" text-anchor="middle">
+    <!-- Outer dimensions -->
+    <text x="190" y="38">10 cm</text>
+    <text x="60" y="165">10 cm</text>
+    
+    <!-- Cut labels -->
+    <text x="115" y="93" fill="#d32f2f">2x cm</text>
+    <text x="115" y="145" fill="#d32f2f" text-anchor="end">(x+2) cm</text>
+    
+    <!-- Shaded label -->
+    <text x="215" y="195" fill="#0d47a1" font-size="15">색칠한 부분</text>
+  </g>
+</svg>
