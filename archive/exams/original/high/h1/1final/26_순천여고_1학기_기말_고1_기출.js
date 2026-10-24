@@ -279,7 +279,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천여고_1학기_기말_고1_기출/q10-solution-graph.svg",
+    "solutionImageAlt": "치환 변수 t에 대한 이차함수 y=(t-1)^2-9의 그래프와 끝점·꼭짓점",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

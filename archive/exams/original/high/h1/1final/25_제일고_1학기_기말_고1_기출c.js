@@ -108,7 +108,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-FUNCTION_BASIC",
     "subUnit": "함수의 뜻과 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_제일고_1학기_기말_고1_기출c/q3-solution.svg",
+    "solutionImageAlt": "a=2와 a=1일 때 y=2x^2-4x+a의 그래프 비교",
+    "solutionImageCaption": "a=2와 a=1일 때 y=2x^2-4x+a의 그래프 비교",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

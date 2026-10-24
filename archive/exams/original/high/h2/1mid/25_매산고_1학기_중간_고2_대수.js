@@ -484,7 +484,11 @@ window.questionBank = [
     "subUnitKey": "H15-M1-01-EXPONENT",
     "subUnit": "지수의 뜻과 성질",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고2_대수/q13-solution.svg",
+    "solutionImageAlt": "t>0 에서 t^2+at+3 이 x축과 만나는지 비교한다.",
+    "solutionImageCaption": "t>0 에서 t^2+at+3 이 x축과 만나는지 비교한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

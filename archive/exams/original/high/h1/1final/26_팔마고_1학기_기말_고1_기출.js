@@ -91,7 +91,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "x축과 두 점 A, B에서 만나는 포물선 y=x²-2x-3",
+    "solutionImageCaption": "x축과 두 점 A, B에서 만나는 포물선 y=x²-2x-3",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -122,7 +126,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_팔마고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "구간 2≤x≤5에서 꼭짓점 (3, 1)이 최고점이다.",
+    "solutionImageCaption": "구간 2≤x≤5에서 꼭짓점 (3, 1)이 최고점이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,

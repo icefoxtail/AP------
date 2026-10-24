@@ -340,6 +340,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "세 중선이 만나는 무게중심 G(2,1)의 좌표는 세 꼭짓점 좌표의 평균이다.",
+    "solutionImageCaption": "세 중선이 만나는 무게중심 G(2,1)의 좌표는 세 꼭짓점 좌표의 평균이다.",
+    "solutionImageSize": "full",
   },
   {
     "id": 7,

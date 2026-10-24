@@ -703,7 +703,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_팔마고_1학기_기말_고1_기출c/q20-solution.svg",
+    "solutionImageAlt": "k=-2, 1일 때 그래프가 x축에 접해 f(x)≥0의 해가 한 개이다.",
+    "solutionImageCaption": "k=-2, 1일 때 그래프가 x축에 접해 f(x)≥0의 해가 한 개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

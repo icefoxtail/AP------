@@ -31,7 +31,11 @@ window.questionBank = [
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_효천고_2학기_중간_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "두 점 A, B 사이의 거리",
+    "solutionImageCaption": "두 점 A, B 사이의 거리",
+    "solutionImageSize": "full"
   },
                     {
     "id": 2,

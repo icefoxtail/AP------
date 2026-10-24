@@ -288,7 +288,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_순천여고_1학기_기말_고1_기출c/q8-solution.svg",
+    "solutionImageAlt": "m=-1.8일 때 g(x)=x^2+2mx+3의 그래프: 축이 1과 4 사이에 있고 g(1)>0, g(4)>0, 꼭짓점이 x축 아래에 있다.",
+    "solutionImageCaption": "m=-1.8일 때 g(x)=x^2+2mx+3의 그래프: 축이 1과 4 사이에 있고 g(1)>0, g(4)>0, 꼭짓점이 x축 아래에 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

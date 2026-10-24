@@ -293,7 +293,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "포물선과 직선의 두 교점 A, B의 x좌표의 합이 a+b이다.",
+    "solutionImageCaption": "포물선과 직선의 두 교점 A, B의 x좌표의 합이 a+b이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -552,7 +556,10 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_팔마고_1학기_중간_고1_기출/q15-solution-graph.svg",
+    "solutionImageAlt": "문항 15 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

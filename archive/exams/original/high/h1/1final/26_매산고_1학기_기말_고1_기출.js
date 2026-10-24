@@ -277,7 +277,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_기말_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "y=2x^2-2x+3의 최댓값은 축에서 먼 끝점 x=4에서 27이다.",
+    "solutionImageCaption": "y=2x^2-2x+3의 최댓값은 축에서 먼 끝점 x=4에서 27이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
