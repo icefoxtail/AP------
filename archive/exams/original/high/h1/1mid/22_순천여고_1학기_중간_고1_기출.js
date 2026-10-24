@@ -323,7 +323,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "k=-2+2√2일 때 포물선 y=x²+kx+3이 직선 y=-2x+1에 점 T에서 접한다. k=-2-2√2일 때도 접점이 x=√2인 접선이 된다.",
+    "solutionImageCaption": "k=-2+2√2일 때 포물선 y=x²+kx+3이 직선 y=-2x+1에 점 T에서 접한다. k=-2-2√2일 때도 접점이 x=√2인 접선이 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
