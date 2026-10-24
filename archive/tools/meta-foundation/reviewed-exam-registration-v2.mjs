@@ -11,6 +11,7 @@ import { refreshRuntime } from "./reviewed-runtime-summary.mjs";
 const CANON = "archive/data/meta-foundation/canonical";
 const INDEX = `${CANON}/registry_index.json`;
 const MASTER = "archive/data/master_tables/js_archive_tag_master.json";
+const RPM_MASTER = "docs/rules/01_CANONICAL/taxonomy/rpm-primary-v1.0/00_POLICY/CANONICAL_MASTER.json";
 const META = "archive/data/question_metadata.json";
 const IDENTITY = "archive/data/question_identity_map.json";
 const RECEIPTS = "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1";
@@ -107,6 +108,9 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   const audit = readEvidence(proof.auditPackageRef, "META_PIPELINE_AUDIT package");
   const manifest = readEvidence(proof.manifestRef, "META_PIPELINE_AUDIT manifest");
   const sourceParity = readEvidence(proof.sourceParityRef, "META_PIPELINE_AUDIT source parity");
+  const parentBindingCorrection = proof.parentBindingCorrectionRef
+    ? readEvidence(proof.parentBindingCorrectionRef, "META_PIPELINE_AUDIT canonical parent-binding correction")
+    : null;
   const expectedTitle = path.basename(source, ".js");
   if (audit.schemaVersion !== "ALIVE_META_AUDIT_ATOMIC_v3" || audit.examTitle !== expectedTitle ||
       audit.sourceFileDriveId !== proof.sourceFileDriveId || !/^[a-f0-9]{64}$/.test(audit.sourceSha256 || "")) fail("META_PIPELINE_AUDIT source identity/schema mismatch");
@@ -203,10 +207,11 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     if (definition.labelKo.trim() === definition.conceptKey || definition.definition.trim() === definition.conceptKey)
       fail(`META_PIPELINE_AUDIT CrossConcept definition placeholder: ${definition.conceptKey}`);
   }
-  return { audit, manifest, sourceParity, sourceFileDriveId: proof.sourceFileDriveId };
+  return { audit, manifest, sourceParity, parentBindingCorrection, parentBindingCorrectionRef: proof.parentBindingCorrectionRef || null,
+    sourceFileDriveId: proof.sourceFileDriveId };
 }
 
-function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, registryChanges, existingConceptReviews, items }) {
+function validateMetaPipelineRegistry({ audit, parentBindingCorrection, parentBindingCorrectionRef, beforeTables, afterTables, registryChanges, existingConceptReviews, items, root }) {
   if (!audit) return;
   const packCourseExtensions = registryChanges.map(change => {
     if (change.collection || !/^archive\/data\/meta-foundation\/canonical\/packs\/[a-z0-9-]+\/pack\.json$/.test(change.path || "") ||
@@ -221,7 +226,75 @@ function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, regist
     return { change, packId: change.after.packId, addedCourses };
   }).filter(Boolean);
   const allowedPackScopeChanges = new Set(packCourseExtensions.map(extension => extension.change));
-  if (registryChanges.some(change => change.after === null || change.before !== null && !allowedPackScopeChanges.has(change)))
+  const parentBindingChanges = new Set();
+  if (parentBindingCorrection || parentBindingCorrectionRef) {
+    if (!parentBindingCorrection || parentBindingCorrection.schemaVersion !== "archive-meta-pipeline-parent-binding-correction-v1" ||
+        parentBindingCorrection.requestId !== parentBindingCorrectionRef?.requestId ||
+        !Array.isArray(parentBindingCorrection.affectedQuestions) || !Array.isArray(parentBindingCorrection.bindingChanges) ||
+        !parentBindingCorrection.affectedQuestions.length || !parentBindingCorrection.bindingChanges.length)
+      fail("META_PIPELINE_AUDIT parent-binding correction evidence/schema mismatch");
+    const parent = parentBindingCorrection.canonicalParent || {};
+    if (parent.path !== RPM_MASTER || !/^[a-f0-9]{64}$/.test(parent.sha256 || "") ||
+        !["curriculum", "scope", "majorUnit", "midUnit", "conceptLabel"].every(key => requireText(parent[key], `parent-binding canonical parent ${key}`)))
+      fail("META_PIPELINE_AUDIT parent-binding canonical authority incomplete");
+    const masterBytes = fs.readFileSync(safePath(root, RPM_MASTER));
+    if (digest(masterBytes) !== parent.sha256) fail("META_PIPELINE_AUDIT parent-binding canonical master SHA mismatch");
+    const canonicalMaster = JSON.parse(masterBytes.toString("utf8"));
+    const parentRows = (canonicalMaster.records || []).filter(row => row.curriculum === parent.curriculum && row.scope === parent.scope &&
+      row.majorUnit === parent.majorUnit && row.midUnit === parent.midUnit);
+    if (parentRows.length !== 1 || !(parentRows[0].concepts || []).some(concept => concept.concept === parent.conceptLabel))
+      fail("META_PIPELINE_AUDIT parent-binding canonical parent/concept mismatch");
+    const unitMaster = JSON.parse(fs.readFileSync(safePath(root, MASTER), "utf8"));
+    const affectedByUid = new Map(parentBindingCorrection.affectedQuestions.map(row => [row.questionUid, row]));
+    if (affectedByUid.size !== parentBindingCorrection.affectedQuestions.length) fail("META_PIPELINE_AUDIT duplicate corrected parent UID");
+    const declaredUids = [];
+    for (const correction of parentBindingCorrection.bindingChanges) {
+      if (correction.path !== `${CANON}/packs/${slug(correction.before?.ownerPack || "")}/bindings.json` ||
+          correction.collection !== "bindings" || !correction.match || !correction.before || !correction.after ||
+          !Array.isArray(correction.questionUids) || !correction.questionUids.length) fail("META_PIPELINE_AUDIT parent-binding change identity incomplete");
+      const matches = registryChanges.filter(change => change.path === correction.path && change.collection === correction.collection && eq(change.match, correction.match));
+      if (matches.length !== 1 || !eq(matches[0].before, correction.before) || !eq(matches[0].after, correction.after))
+        fail("META_PIPELINE_AUDIT parent-binding correction/request mismatch");
+      const change = matches[0];
+      parentBindingChanges.add(change);
+      if (!change.evidenceRefs?.some(ref => ref.path === parentBindingCorrectionRef.path && ref.sha256 === parentBindingCorrectionRef.sha256) ||
+          !change.evidenceRefs?.some(ref => ref.path === parent.path && ref.sha256 === parent.sha256))
+        fail("META_PIPELINE_AUDIT parent-binding change evidence is not SHA-bound");
+      const changedFields = [...new Set([...Object.keys(correction.before), ...Object.keys(correction.after)])]
+        .filter(key => !eq(correction.before[key], correction.after[key]));
+      if (!changedFields.length || changedFields.some(key => key !== "L2") || correction.before.L1 !== parent.majorUnit ||
+          correction.after.L1 !== parent.majorUnit || correction.after.L2 !== parent.midUnit ||
+          correction.before.status !== "ACTIVE" || correction.after.status !== "ACTIVE" ||
+          correction.before.ownerPack !== correction.after.ownerPack ||
+          correction.before.supportingItemCount !== correction.after.supportingItemCount ||
+          !eq(correction.before.supportingQuestionUids, correction.after.supportingQuestionUids) ||
+          !eq([...correction.questionUids].sort(), [...(correction.before.supportingQuestionUids || [])].sort()))
+        fail("META_PIPELINE_AUDIT parent-binding correction changes more than its exact parent L2");
+      const keyType = (unitMaster || []).find(row => row.keyType === "subUnitKey" && row.key === correction.before.subUnitKey);
+      if (!keyType || keyType.standardUnitKey !== correction.before.standardUnitKey || correction.before.standardUnitKey !== "H15-M1-07")
+        fail("META_PIPELINE_AUDIT parent-binding standard-unit scope mismatch");
+      for (const uid of correction.questionUids) {
+        const affected = affectedByUid.get(uid), item = [...(items || [])].find(row => row.questionUid === uid);
+        const record = (audit.records || []).find(row => Number(row.questionId) === Number(affected?.sourceOrdinal));
+        const classification = record?.classification || {}, target = item?.targetParentRef;
+        if (!affected || !item || !record || Number(item.sourceOrdinal) !== Number(affected.sourceOrdinal) ||
+            affected.standardUnitKey !== correction.before.standardUnitKey ||
+            affected.subUnitKey !== correction.before.subUnitKey || affected.problemTypeKey !== correction.before.problemTypeKey ||
+            item.after?.standardUnitKey !== correction.before.standardUnitKey || item.after?.subUnitKey !== correction.before.subUnitKey ||
+            item.after?.problemTypeKey !== correction.before.problemTypeKey || classification.problemTypeKey !== correction.before.problemTypeKey ||
+            !eq(classification.crossConceptKeys, item.after.crossConceptKeys) || item.after.L1 !== parent.majorUnit || item.after.L2 !== parent.midUnit ||
+            target?.path !== RPM_MASTER || target.curriculum !== parent.curriculum || target.scope !== parent.scope ||
+            target.majorUnit !== parent.majorUnit || target.midUnit !== parent.midUnit ||
+            !(item.evidenceRefs || []).some(ref => ref.path === parentBindingCorrectionRef.path && ref.sha256 === parentBindingCorrectionRef.sha256))
+          fail(`META_PIPELINE_AUDIT corrected parent UID/evidence mismatch: ${uid}`);
+        declaredUids.push(uid);
+      }
+    }
+    if (!eq([...affectedByUid.keys()].sort(), [...declaredUids].sort()) || registryChanges.some(change =>
+      change.before !== null && !allowedPackScopeChanges.has(change) && !parentBindingChanges.has(change)))
+      fail("META_PIPELINE_AUDIT parent-binding correction scope mismatch");
+  }
+  if (registryChanges.some(change => change.after === null || change.before !== null && !allowedPackScopeChanges.has(change) && !parentBindingChanges.has(change)))
     fail("META_PIPELINE_AUDIT registry changes must be additions only; existing meanings cannot be rewritten");
   // Gemini's zero-inflation count describes its semantic classification pass.
   // A missing Git canonical definition is an additive registry promotion, not
@@ -750,7 +823,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
   const baseline = req.registryChanges?.length || metaPipelineAudit ? registryPlan(root, [], evidenceRefs) : null;
   const beforeTables = baseline ? lookup(baseline) : null;
   const existingConceptReviews = unique(req.approval.metaPipelineAudit?.existingConceptReviews || [], "conceptKey", "existing CrossConcept review");
-  validateMetaPipelineRegistry({ audit: metaPipelineAudit?.audit, beforeTables, afterTables: tables,
+  validateMetaPipelineRegistry({ root, audit: metaPipelineAudit?.audit, parentBindingCorrection: metaPipelineAudit?.parentBindingCorrection,
+    parentBindingCorrectionRef: metaPipelineAudit?.parentBindingCorrectionRef, beforeTables, afterTables: tables,
     registryChanges: req.registryChanges || [], existingConceptReviews, items: req.items });
   for (const change of req.registryChanges || []) {
     const row = change.after;
@@ -806,10 +880,13 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       if (!Object.hasOwn(patch.before, field)) fail(`before required: ${current.questionUid}.${field}`);
     }
     const final = { ...current, ...structuredClone(patch.after) };
-    for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f]) &&
-        !(req.approval.type === "META_PIPELINE_AUDIT" && isPendingMetaPlaceholder(q, f, final[f])) &&
-        !canRebindPendingAuditMetadata({ approvalType: req.approval.type, metaPipelineAudit, current, question: q, patch, final, ordinal: i + 1, field: f }))
-      fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
+    for (const f of sourceFields) if (Object.hasOwn(q, f) && !eq(q[f], final[f])) {
+      const preservesApprovedAuditValue = req.approval.type === "META_PIPELINE_AUDIT" && approved(current) &&
+        eq(current[f] ?? null, final[f] ?? null);
+      if (!preservesApprovedAuditValue && !(req.approval.type === "META_PIPELINE_AUDIT" && isPendingMetaPlaceholder(q, f, final[f])) &&
+          !canRebindPendingAuditMetadata({ approvalType: req.approval.type, metaPipelineAudit, current, question: q, patch, final, ordinal: i + 1, field: f }))
+        fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
+    }
     const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch });
     const fingerprint = checked.sourceFingerprint;
     if (checked.identityChanged || Object.hasOwn(patch.after, "sourceFingerprint")) fingerprintRepairs.push({
