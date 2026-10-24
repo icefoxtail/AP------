@@ -54,8 +54,12 @@ test('Construction V1 composite tangent graph passes measured profiles and local
   const math=(await pythonWorker({action:'construction',graph:constructionV1Graph})).result,peer=reconstruct(constructionV1Graph),peerAudit=compareReconstruction(math,peer);
   assert.equal(peerAudit.status,'PASS',JSON.stringify(peerAudit.errors));assert.equal(math.conditionAudits.length,11);assert.ok(math.conditionAudits.every(row=>row.status==='PASS'));
   verifyConstructionConditionBindings({mathPlan:constructionV1Graph,sourceConditions});
-  const visualPlan={capability:'construction-spike-v1',mathPlan:constructionV1Graph,sourceConditions,newVisualInformation:['외부 점에서 원에 그은 접선의 접점, 반지름 수직 관계, 접선 길이'],caption:'원 밖의 점에서 그은 접선',displaySegments:[{id:'segment-OP',refs:['O','P']},{id:'segment-OT',refs:['O','contact']},{id:'segment-PT',refs:['P','contact']}],coordinateLabels:['A','P']};
+  const visualPlan={capability:'construction-spike-v1',mathPlan:constructionV1Graph,sourceConditions,newVisualInformation:['외부 점에서 원에 그은 접선의 접점, 반지름 수직 관계, 접선 길이'],caption:'원 밖의 점에서 그은 접선',displaySegments:[{id:'segment-OP',refs:['O','P']},{id:'segment-OT',refs:['O','contact']},{id:'segment-PT',refs:['P','contact']}],coordinateLabels:['P']};
   const spec=specFor(visualPlan,math,'construction-v1-tangent-fixture');
+  // The near-relocation rule (7696eb933) ties any point label placed 20 px or more from its point back with a visible leader, and a label with no
+  // clear leader path is refused (POLISH_REQUIRED). At the original 384x320 plot the contact point T sits among the circle, tangent and radius lines
+  // and its name has no clear path, and A is just as crowded, so A is named by its letter only. A 1.5x plot gives T room for its leader.
+  spec.viewport={...spec.viewport,width:Math.round(spec.viewport.width*1.5),height:Math.round(spec.viewport.height*1.5)};
   const visiblePointIds=new Set(['O','A','P','contact']);
   spec.objects=spec.objects.filter(object=>object.kind==='POINT'?visiblePointIds.has(object.id):object.kind==='LINE'?['axisX','axisY','externalTangent','tangentAtA','radiusLine'].includes(object.id):object.kind==='CIRCLE'?['circleO','diameterCircle'].includes(object.id):object.kind==='SEGMENT'||object.kind==='COORDINATE_LABEL');
   spec.axes=false;
