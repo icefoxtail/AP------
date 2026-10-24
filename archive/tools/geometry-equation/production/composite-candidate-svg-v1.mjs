@@ -5,6 +5,8 @@ import {pythonWorker} from './worker.mjs';
 import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
+import {NUMBER_LINE_CAPABILITY,composeNumberLinePanel} from './quadratic-inequality-chain-v1.mjs';
+export const isNumberLinePanel=plan=>plan?.capability===NUMBER_LINE_CAPABILITY;
 
 export const COMPOSITE_SVG_VERSION='composite-candidate-svg-v1';
 export const COMPOSITE_CAPABILITY='composite-panels-v1';
@@ -35,10 +37,13 @@ export function compositePanels(plan){
   // panel draws identically (same id, slope and intercept) is written once above the stack (phase2 compositeHeader / COMPOSITE_PANEL_CANVAS).
   const three=plan.panels.length===3,lineKey=line=>JSON.stringify([line.id,line.slope,line.intercept]);
   const checked=plan.panels.map((panel,index)=>{
-    const caption=panel?.caption;
-    if(!panel?.plan||panel.plan.capability!=='polynomial-spike-v1'||!panel.plan.graphPlan||typeof panel.plan.graphPlan!=='object')bad('PANEL_PLAN_'+index);
+    const caption=panel?.caption,numberLine=isNumberLinePanel(panel?.plan);
+    // A number line (quadratic-inequality-chain-v1) is the last panel of a two-panel stack, under its quadratic graph.
+    if(numberLine&&(three||index!==plan.panels.length-1||!panel.plan.numberLine||typeof panel.plan.numberLine!=='object'||Object.keys(panel.plan).some(key=>!['capability','numberLine'].includes(key))))bad('NUMBER_LINE_PANEL_PLACEMENT_'+index);
+    if(!numberLine&&(!panel?.plan||panel.plan.capability!=='polynomial-spike-v1'||!panel.plan.graphPlan||typeof panel.plan.graphPlan!=='object'))bad('PANEL_PLAN_'+index);
     if(!caption||typeof caption!=='object'||Array.isArray(caption)||Object.keys(caption).some(key=>!['math','text'].includes(key))||(!caption.math&&!caption.text)
       ||(caption.math!==undefined&&(typeof caption.math!=='string'||!CAPTION_MATH.test(caption.math)))||(caption.text!==undefined&&(typeof caption.text!=='string'||!caption.text||caption.text.length>24)))bad('PANEL_CAPTION_'+index);
+    if(numberLine)return {index,plan:panel.plan,caption};
     // compositeHeader is the composite's own field: an author never writes it, and a two-panel stack keeps the standard formula header.
     if(!three&&Object.hasOwn(panel.plan.graphPlan,'compositeHeader'))bad('PANEL_COMPOSITE_HEADER_'+index);
     if(three){
@@ -54,6 +59,7 @@ export function compositePanels(plan){
   const bandRows=plan=>(Array.isArray(plan.graphPlan.lines)?plan.graphPlan.lines.filter(line=>!sharedLines.includes(line?.id)).length:0)
     +(plan.coordinatePlacement==='PANEL'?(plan.graphPlan.requiredPoints??[]).length:Array.isArray(plan.coordinatePanel)?plan.coordinatePanel.length:0);
   return checked.map(item=>{
+    if(isNumberLinePanel(item.plan))return item;
     const rows=bandRows(item.plan),plotHeightLimit=Math.max(120,(three?THREE_PANEL_PLOT_HEIGHT:TWO_PANEL_PLOT_HEIGHT)-(rows?26+56*rows:0));
     return {...item,plan:{...item.plan,graphPlan:{...item.plan.graphPlan,plotHeightLimit,...(three?{compositeHeader:{formula:'CAPTION',sharedLines}}:{})}}};
   });
@@ -120,7 +126,8 @@ export async function composeCompositeCandidate({plan,panels,identity,typography
     for(const panel of checked){
       const given=panels[panel.index];
       if(digest(given.plan,'panelPlan')!==digest(panel.plan,'panelPlan'))throw new Stop('COMPOSITE_PANEL_PLAN_MISMATCH',{panel:panel.index});
-      const composed=await composeConstructionCandidate({plan:given.plan,model:given.model,identity,typographyPolicy,repairContext,browser:await chrome(),compositePanel:true});
+      const composed=isNumberLinePanel(panel.plan)?await composeNumberLinePanel({plan:given.plan,model:given.model,identity,typographyPolicy,browser:await chrome()})
+        :await composeConstructionCandidate({plan:given.plan,model:given.model,identity,typographyPolicy,repairContext,browser:await chrome(),compositePanel:true});
       state.panels.push({index:panel.index,status:composed.status,detail:composed.detail,lineage:composed.lineage,layoutRepairs:composed.layoutRepairs,staticAudit:composed.staticAudit,renderedLayout:composed.renderedLayout});
       if(composed.status!=='COMPOSED')throw new Stop('COMPOSITE_PANEL_NOT_COMPOSED',{panel:panel.index,status:composed.status,detail:composed.detail});
       lineage.panelSpecSha256s.push(composed.lineage.specSha256);lineage.panelSvgSha256s.push(composed.lineage.svgSha256);
