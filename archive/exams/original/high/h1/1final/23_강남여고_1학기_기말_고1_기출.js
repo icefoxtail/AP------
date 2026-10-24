@@ -82,7 +82,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_강남여고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "선분 AB를 2:1로 내분하는 점 P(-1, 4)와 외분하는 점 Q(7, 8) 사이의 거리는 4√5이다.",
+    "solutionImageCaption": "선분 AB를 2:1로 내분하는 점 P(-1, 4)와 외분하는 점 Q(7, 8) 사이의 거리는 4√5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
