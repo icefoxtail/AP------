@@ -1,0 +1,110 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음은 높이가 $4\\text{ m}$인 직사각",
+  "sourceConditions": [
+    {
+      "id": "q9-c1",
+      "condition": "높이 4m 직사각형 공간",
+      "mappedTo": "poly-room"
+    },
+    {
+      "id": "q9-c2",
+      "condition": "B지점 높이 3m",
+      "mappedTo": "point-B"
+    }
+  ],
+  "newVisualInformation": [
+    "바닥 A에서 벽 B 거울 반사 후 천장 C에 도달하는 경로"
+  ],
+  "caption": "높이 4m 공간에서 30도 각도로 반사되는 빛의 경로",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q9.svg",
+  "engineEvidence": {
+    "resultPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q09-problem-result.json",
+    "statePath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q09-problem-state.json",
+    "svgPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q09-problem.svg"
+  }
+}

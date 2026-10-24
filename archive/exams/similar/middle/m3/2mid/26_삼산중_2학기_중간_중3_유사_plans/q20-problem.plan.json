@@ -1,0 +1,137 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 그림에서 원 $O$는 $\\angle A ",
+  "sourceConditions": [
+    {
+      "id": "q20-c1",
+      "condition": "각 A=90도, 내접원 O",
+      "mappedTo": "point-O"
+    },
+    {
+      "id": "q20-c2",
+      "condition": "BD=3, CE=10",
+      "mappedTo": "seg-BD"
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형의 내접원과 꼭짓점 연결 선분 OA, OB, OC"
+  ],
+  "caption": "BD=3, CE=10인 직각삼각형 ABC의 내접원과 선분들",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q20.svg",
+  "engineEvidence": {
+    "resultPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q20-problem-result.json",
+    "statePath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q20-problem-state.json",
+    "svgPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q20-problem.svg"
+  }
+}

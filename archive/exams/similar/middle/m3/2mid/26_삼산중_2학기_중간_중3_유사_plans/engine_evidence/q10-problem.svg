@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 280" width="460" height="280" role="img" aria-labelledby="q10.svg-title q10.svg-desc">
+  <title id="q10.svg-title">공의 이동 경로와 높이</title>
+  <desc id="q10.svg-desc">A지점 높이 3m, 네트 D지점 높이 2m, 바닥 B지점, 수평선과 30도 및 45도를 이루는 공의 이동 경로</desc>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  
+  <!-- Ground line -->
+  <line x1="40" y1="220" x2="420" y2="220" stroke="#222222" stroke-width="2"/>
+  
+  <!-- A at (70, 70), height 3m -> 150px. Net D at (243, 120), height 2m -> 100px. B on ground at (343, 220) -->
+  <line x1="70" y1="70" x2="70" y2="220" stroke="#666666" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <line x1="243" y1="120" x2="243" y2="220" stroke="#222222" stroke-width="2.5"/>
+  <circle cx="243" cy="120" r="3" fill="#222222"/>
+  
+  <!-- Ball path AD and DB -->
+  <line x1="70" y1="70" x2="243" y2="120" stroke="#e60000" stroke-width="2"/>
+  <line x1="243" y1="120" x2="343" y2="220" stroke="#e60000" stroke-width="2"/>
+  
+  <!-- Horizontal reference line through D -->
+  <line x1="70" y1="120" x2="243" y2="120" stroke="#999999" stroke-width="1" stroke-dasharray="3,3"/>
+  
+  <circle cx="70" cy="70" r="3.5" fill="#222222"/>
+  <text x="64" y="58" font-family="sans-serif" font-size="16" font-weight="bold" fill="#222222">A</text>
+  
+  <text x="248" y="115" font-family="sans-serif" font-size="16" font-weight="bold" fill="#222222">D</text>
+  
+  <circle cx="343" cy="220" r="3.5" fill="#222222"/>
+  <text x="340" y="240" font-family="sans-serif" font-size="16" font-weight="bold" fill="#222222">B</text>
+  
+  <text x="25" y="150" font-family="sans-serif" font-size="14" fill="#666666">3 m</text>
+  <text x="250" y="175" font-family="sans-serif" font-size="14" fill="#222222">2 m</text>
+  
+  <path d="M 105,70 A 35 35 0 0 1 100,79" fill="none" stroke="#222222" stroke-width="1.2"/>
+  <text x="110" y="90" font-family="sans-serif" font-size="13" fill="#222222">30°</text>
+  
+  <path d="M 270,120 A 27 27 0 0 1 262,139" fill="none" stroke="#222222" stroke-width="1.2"/>
+  <text x="270" y="145" font-family="sans-serif" font-size="13" fill="#222222">45°</text>
+</svg>

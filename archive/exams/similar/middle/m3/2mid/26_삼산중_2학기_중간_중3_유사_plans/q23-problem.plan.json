@@ -1,0 +1,164 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "<서술형3> 다음 그림의 $\\triangle ",
+  "sourceConditions": [
+    {
+      "id": "q23-c1",
+      "condition": "AC:AE=3:2, AB:AD=1:4",
+      "mappedTo": "seg-AD"
+    },
+    {
+      "id": "q23-c2",
+      "condition": "넓이 ABC=18루트3",
+      "mappedTo": "poly-ABC"
+    }
+  ],
+  "newVisualInformation": [
+    "한 각 A를 공유하는 두 삼각형 ABC와 ADE의 배치"
+  ],
+  "caption": "한 각 A를 공유하고 변의 비가 주어진 두 삼각형 ABC, ADE",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AD",
+      "refs": [
+        "A",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-DE",
+      "refs": [
+        "D",
+        "E"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q23.svg",
+  "engineEvidence": {
+    "resultPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q23-problem-result.json",
+    "statePath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q23-problem-state.json",
+    "svgPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q23-problem.svg"
+  }
+}

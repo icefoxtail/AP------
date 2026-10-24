@@ -1,0 +1,178 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "다음 평행사변형 $ABCD$에서 두 대각선의 ",
+  "sourceConditions": [
+    {
+      "id": "q12-c1",
+      "condition": "BC=10, CD=6, 각 A:B=1:3",
+      "mappedTo": "poly-ABCD"
+    },
+    {
+      "id": "q12-c2",
+      "condition": "대각선 교점 O",
+      "mappedTo": "point-O"
+    }
+  ],
+  "newVisualInformation": [
+    "평행사변형 ABCD의 대각선 분할 삼각형 OAB, OCD 음영"
+  ],
+  "caption": "BC=10, CD=6이고 대각선 교점이 O인 평행사변형 ABCD",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "14"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-CD",
+      "refs": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-DA",
+      "refs": [
+        "D",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-BD",
+      "refs": [
+        "B",
+        "D"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "O"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q12.svg",
+  "engineEvidence": {
+    "resultPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q12-problem-result.json",
+    "statePath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q12-problem-state.json",
+    "svgPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q12-problem.svg"
+  }
+}

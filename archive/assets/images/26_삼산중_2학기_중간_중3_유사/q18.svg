@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 320" width="380" height="320" role="img" aria-labelledby="q18.svg-title q18.svg-desc">
+  <title id="q18.svg-title">황금삼각형 ABC</title>
+  <desc id="q18.svg-desc">AB=AC이고 각 A가 36도, BC=1인 이등변삼각형 ABC에서 각 B의 이등분선 BD</desc>
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  
+  <!-- A=(190, 40), B=(90, 270), C=(290, 270) -->
+  <polygon points="190,40 90,270 290,270" fill="none" stroke="#222222" stroke-width="2"/>
+  
+  <!-- D on AC: AC is from (190, 40) to (290, 270). D divides AC so that CD : DA = (x-1) : 1 = 1/x = 0.618 -->
+  <!-- D = (190 + 100*0.618, 40 + 230*0.618) = (252, 182) -->
+  <line x1="90" y1="270" x2="252" y2="182" stroke="#222222" stroke-width="1.8"/>
+  
+  <circle cx="190" cy="40" r="3.5" fill="#222222"/>
+  <text x="185" y="30" font-family="sans-serif" font-size="16" font-weight="bold" fill="#222222">A</text>
+  
+  <circle cx="90" cy="270" r="3.5" fill="#222222"/>
+  <text x="74" y="278" font-family="sans-serif" font-size="16" font-weight="bold" fill="#222222">B</text>
+  
+  <circle cx="290" cy="270" r="3.5" fill="#222222"/>
+  <text x="298" y="278" font-family="sans-serif" font-size="16" font-weight="bold" fill="#222222">C</text>
+  
+  <circle cx="252" cy="182" r="3" fill="#222222"/>
+  <text x="262" y="184" font-family="sans-serif" font-size="16" font-weight="bold" fill="#222222">D</text>
+  
+  <text x="183" y="65" font-family="sans-serif" font-size="13" fill="#222222">36°</text>
+  <text x="185" y="288" font-family="sans-serif" font-size="15" fill="#222222">1</text>
+</svg>

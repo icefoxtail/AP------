@@ -1,0 +1,144 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "<서술형4> 다음 물음에 답하시오. [6점, ",
+  "sourceConditions": [
+    {
+      "id": "q24-c1",
+      "condition": "원 O의 현 AB와 수직인 선분 OM",
+      "mappedTo": "seg-OM"
+    },
+    {
+      "id": "q24-c2",
+      "condition": "반지름 OA=OB",
+      "mappedTo": "seg-OA"
+    }
+  ],
+  "newVisualInformation": [
+    "현 AB의 수직이등분선과 두 직각삼각형 OMA, OMB의 합동 구조"
+  ],
+  "caption": "원의 중심 O에서 현 AB에 내린 수선 OM과 두 직각삼각형",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "seg-OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "A",
+    "B",
+    "M"
+  ],
+  "assetPath": "assets/images/26_삼산중_2학기_중간_중3_유사/q24.svg",
+  "engineEvidence": {
+    "resultPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q24-problem-result.json",
+    "statePath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q24-problem-state.json",
+    "svgPath": "archive\\exams\\similar\\middle\\m3\\2mid\\26_삼산중_2학기_중간_중3_유사_plans\\engine_evidence\\q24-problem.svg"
+  }
+}

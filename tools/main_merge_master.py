@@ -176,7 +176,8 @@ def generate_inbox_request(files: dict) -> dict:
     req_items = []
     for i, q in enumerate(bank):
         ord_num = i + 1
-        cur = cur_by_ord[ord_num]
+        cur = cur_by_ord.get(ord_num, {})
+        q_uid = cur.get("questionUid") or f"qid_v1_{hashlib.sha256(f'{source_archive_file}#{ord_num}'.encode('utf-8')).hexdigest()}"
         s_item = meta_items[i] if i < len(meta_items) else {}
         s_after = s_item.get("after") or {}
 
@@ -198,7 +199,7 @@ def generate_inbox_request(files: dict) -> dict:
             before[k] = cur.get(k, None)
 
         req_items.append({
-            "questionUid": cur["questionUid"],
+            "questionUid": q_uid,
             "sourceOrdinal": ord_num,
             "before": before,
             "after": after,
