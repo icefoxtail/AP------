@@ -2,8 +2,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
 
-const REPO_ROOT = path.resolve('c:/Users/USER/Desktop/AP------');
+// Resolve from this module, independent of cwd, OS and user's home directory.
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
 function gitBlobSha1(contentBytes) {
   const header = Buffer.from(`blob ${contentBytes.length}\0`);
@@ -44,17 +46,19 @@ function verifyMathematicalSvg(svgPath, svgContent, q, ord, errors) {
   if (!/<desc\b[^>]*>[\s\S]+?<\/desc>/i.test(svgContent)) {
     errors.push(`Q${ord}: SVG is missing required educational <desc> tag (${q.image})`);
   }
-  if (!/role=["']img["']/i.test(svgContent)) {
+  if (!/\brole=["']img["']/i.test(rootTag)) {
     errors.push(`Q${ord}: SVG root is missing required role="img" accessibility attribute (${q.image})`);
   }
 
   // Raw unrendered TeX in <text> elements is prohibited in SVG
-  if (/<text\b[^>]*>[^<]*\\[a-zA-Z]+[^<]*<\/text>/i.test(svgContent)) {
+  if ([...svgContent.matchAll(/<text\b[^>]*>([\s\S]*?)<\/text>/gi)]
+    .some((match) => /\\(?:frac|sqrt|text|sum|times|cdot|left|right|overline|angle|pi|alpha|beta|gamma)\b/.test(match[1]))) {
     errors.push(`Q${ord}: SVG contains raw unrendered LaTeX commands in <text> elements (${q.image})`);
   }
 
   // Font size floor: font-size < 11px violates visual contract floor
-  if (/\bfont-size=["'](?:[1-9]|10)(?:\.\d+)?(?:px)?["']/i.test(svgContent)) {
+  if ([...svgContent.matchAll(/\bfont-size\s*(?:=\s*["']|:\s*)(\d+(?:\.\d+)?)(px)?/gi)]
+    .some((match) => Number(match[1]) < 11)) {
     errors.push(`Q${ord}: SVG violates 11px font size floor (font-size < 11px) in ${q.image}`);
   }
 
@@ -171,7 +175,8 @@ function verifyMathematicalSvg(svgPath, svgContent, q, ord, errors) {
   }
 }
 
-export function verifySimilarExam({ stem, jsPath, throwOnError = false }) {
+export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAuthoring = false, phase = 'release' }) {
+  if (!['draft', 'release'].includes(phase)) throw new Error('phase must be draft or release');
   const errors = [];
   const warnings = [];
 
@@ -350,7 +355,10 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false }) {
     }
   }
 
-  // 6. Author Plans Check (Compliant with archive/tools/geometry-equation/production/AUTHOR_GUIDE.md)
+  // 6. Author Plans Check. Legacy fixtures may run the static baseline only.
+  // New release must use strictAuthoring=true (CLI default); fixture PASS is not an authoring seal.
+  if (!strictAuthoring) warnings.push('LEGACY_STATIC_ONLY: engine authoring provenance has not been verified');
+  // Compliant with archive/tools/geometry-equation/production/AUTHOR_GUIDE.md
   const SUPPORTED_CAPABILITIES = new Set([
     'construction-spike-v1',
     'polynomial-spike-v1',
@@ -412,6 +420,51 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false }) {
           if (role === 'problem' && !hasImage) {
             errors.push(`Q${ord}: Problem plan is active (${planData.capability}) but question has no image reference`);
           }
+          if (strictAuthoring) {
+            const source = role === 'problem' ? q?.content : q?.solution;
+            const quote = planData.sourceQuote;
+            if (typeof quote !== 'string' || quote.length < 12 || quote.length > 40 ||
+                typeof source !== 'string' || !source.includes(quote)) {
+              errors.push(`Q${ord}: ${baseName} sourceQuote must be an exact 12-40 character quote from its ${role} source`);
+            }
+            const caption = planData.caption;
+            if (typeof caption !== 'string' || caption.trim().length < 10 ||
+                !/[가-힣]/.test(caption) || /(?:assets\/images\/|Q\d+\s*시각화\s*다이어그램)/i.test(caption)) {
+              errors.push(`Q${ord}: ${baseName} requires a substantive student-facing Korean caption`);
+            }
+            if (!['mathPlan', 'graphPlan', 'numberLine', 'panels', 'inequalityChain', 'quadraticInequality'].some(k => planData[k] && typeof planData[k] === 'object')) {
+              errors.push(`Q${ord}: ${baseName} has no actual engine input (a capability label alone is not a renderable plan)`);
+            }
+            const asset = role === 'problem' ? q?.image : q?.solutionImage;
+            if (typeof asset !== 'string' || !asset ||
+                planData.assetPath !== asset) {
+              errors.push(`Q${ord}: ${baseName} assetPath must match the attached ${role} image`);
+            }
+            const evidence = planData.engineEvidence;
+            if (!evidence || !['resultPath', 'statePath', 'svgPath'].every(k => typeof evidence[k] === 'string' && evidence[k])) {
+              errors.push(`Q${ord}: ${baseName} missing engineEvidence (resultPath/statePath/svgPath)`);
+            } else {
+              try {
+                const safeFile = (rel) => {
+                  const abs = path.resolve(REPO_ROOT, rel);
+                  if (!abs.startsWith(REPO_ROOT + path.sep)) throw new Error('evidence path escapes repository');
+                  return abs;
+                };
+                const result = JSON.parse(fs.readFileSync(safeFile(evidence.resultPath), 'utf8'));
+                const state = JSON.parse(fs.readFileSync(safeFile(evidence.statePath), 'utf8'));
+                const generated = fs.readFileSync(safeFile(evidence.svgPath));
+                const actual = typeof asset === 'string'
+                  ? (fs.existsSync(safeFile(asset)) ? fs.readFileSync(safeFile(asset)) : fs.readFileSync(safeFile(path.join('archive', asset))))
+                  : Buffer.alloc(0);
+                if (result.status !== 'ARCHIVE_BOUND' || state?.plan?.capability !== planData.capability ||
+                    state?.meta?.ordinal !== ord || !generated.equals(actual)) {
+                  errors.push(`Q${ord}: ${baseName} engine output/status/candidate asset mismatch`);
+                }
+              } catch (e) {
+                errors.push(`Q${ord}: ${baseName} engineEvidence unreadable or invalid (${e.message})`);
+              }
+            }
+          }
         }
       }
     }
@@ -466,7 +519,9 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false }) {
 
   // 8. Review Receipt & Cryptographic Binding
   const receiptPath = path.join(examDir, `${actualStem}.review-receipt.json`);
-  if (!fs.existsSync(receiptPath)) {
+  if (phase === 'draft') {
+    warnings.push('DRAFT_PHASE: review receipt is intentionally not checked; no production authorization');
+  } else if (!fs.existsSync(receiptPath)) {
     errors.push(`Review receipt not found: ${receiptPath}`);
   } else {
     try {
@@ -531,11 +586,16 @@ if (process.argv[1] && process.argv[1].endsWith('verify_similar_exam.mjs')) {
 
   const res = verifySimilarExam({
     stem: target.endsWith('.js') ? null : target,
-    jsPath: target.endsWith('.js') ? target : null
+    jsPath: target.endsWith('.js') ? target : null,
+    strictAuthoring: !process.argv.includes('--legacy-baseline'),
+    phase: process.argv.includes('--phase=draft') ? 'draft' : 'release'
   });
 
   if (res.ok) {
     console.log(`[GATE_PASS] ${res.stem}: ${res.totalQuestions} questions, ${res.totalScore} pts, blob ${res.jsBlobSha1}`);
+    if (process.argv.includes('--phase=draft') || process.argv.includes('--legacy-baseline')) {
+      console.log('[NON_RELEASE_PASS] Draft/legacy checks do not authorize publishing.');
+    }
     console.log(`MCQ Distribution:`, JSON.stringify(res.mcDistribution));
     process.exit(0);
   } else {
