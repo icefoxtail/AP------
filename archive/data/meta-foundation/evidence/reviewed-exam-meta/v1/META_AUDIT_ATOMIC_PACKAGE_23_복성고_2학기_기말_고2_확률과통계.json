@@ -1,0 +1,1034 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "examTitle": "23_복성고_2학기_기말_고2_확률과통계",
+  "sourceFileDriveId": "1D_sH9_sYlS8p-JLXstCXYLdVZY_RAeBB",
+  "sourceSha256": "0928ccef91d08d6290f1096f6a520a554d776c104a5b0c2bb1ebf4b98cd39ffe",
+  "auditedTimestamp": "2026-10-24T03:46:34Z",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "totalAuditedCount": 20,
+  "zeroStubCertified": true,
+  "allVisualAssetsVerified": true,
+  "statistics": {
+    "totalQuestions": 20,
+    "approved": 20,
+    "holdRemaining": 0,
+    "canonicalTemplatesReused": 20,
+    "newTemplatesCreated": 0,
+    "atomicCrossConceptsBound": 41
+  },
+  "boundAtomicCrossConcepts": [
+    {
+      "conceptKey": "CC_BINOMIAL_GENERAL_TERM",
+      "labelKo": "이항정리의 일반항",
+      "definition": "(a+b)^n의 전개식에서 일반항 nCr * a^(n-r) * b^r을 이용하여 특정 항의 계수를 구하는 공식"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_NORMAL_APPROXIMATION",
+      "labelKo": "이항분포의 정규분포 근사",
+      "definition": "시행 횟수 n이 충분히 클 때 이항분포 B(n, p)를 평균 np, 분산 np(1-p)인 정규분포 N(np, npq)로 근사하는 방법"
+    },
+    {
+      "conceptKey": "CC_COMBINATION_PROBABILITY",
+      "labelKo": "조합을 이용한 수학적 확률",
+      "definition": "전체 동시 추출 경우의 수 nCr에 대한 사건 해당 조합 경우의 수의 비로 확률을 구하는 계산"
+    },
+    {
+      "conceptKey": "CC_COMBINATION_SELECTION",
+      "labelKo": "조합의 수",
+      "definition": "서로 다른 n개에서 순서를 생각하지 않고 r개를 택하는 조합의 수 nCr"
+    },
+    {
+      "conceptKey": "CC_COMPLEMENTARY_EVENT_PROBABILITY",
+      "labelKo": "여사건의 확률",
+      "definition": "사건 E가 일어나지 않을 여사건 E^c에 대하여 P(E^c) = 1 - P(E)가 성립하는 성질"
+    },
+    {
+      "conceptKey": "CC_CONDITIONAL_PROBABILITY_FORMULA",
+      "labelKo": "조건부확률의 정의",
+      "definition": "사건 A가 일어났을 때 사건 B가 일어날 조건부확률 P(B|A) = P(A∩B) / P(A)"
+    },
+    {
+      "conceptKey": "CC_CONFIDENCE_INTERVAL_FORMULA",
+      "labelKo": "모평균의 신뢰구간 추정 공식",
+      "definition": "표본평균 x̄, 모표준편차 σ, 표본 크기 n으로부터 신뢰구간 x̄ ± k*(σ/sqrt(n))을 구하는 공식"
+    },
+    {
+      "conceptKey": "CC_CONFIDENCE_INTERVAL_LENGTH",
+      "labelKo": "모평균 신뢰구간의 길이",
+      "definition": "신뢰구간 [a, b]의 길이 b-a = 2 * k * (σ / sqrt(n))와 표본의 크기 n 사이의 관계"
+    },
+    {
+      "conceptKey": "CC_DEMORGAN_LAWS",
+      "labelKo": "드모르간의 법칙",
+      "definition": "합사건과 교사건의 여사건 관계 (A∪B)^c = A^c ∩ B^c"
+    },
+    {
+      "conceptKey": "CC_DISCRETE_EXPECTATION",
+      "labelKo": "이산확률변수의 기댓값(평균)",
+      "definition": "이산확률변수 X가 취하는 각 값과 그 확률의 곱의 총합 E(X) = Σ x_i * p_i"
+    },
+    {
+      "conceptKey": "CC_EXPECTED_FREQUENCY_COUNT",
+      "labelKo": "상대도수 확률과 기대 인원 산출",
+      "definition": "전체 인원 N에 특정 사건이 일어날 확률 p를 곱하여 해당 구간에 속하는 기대 인원수 Np를 구하는 계산"
+    },
+    {
+      "conceptKey": "CC_EXPONENT_LAWS",
+      "labelKo": "지수법칙과 상수항 지수 조건",
+      "definition": "문자의 거듭제곱 곱셈·나눗셈에서 지수가 0이 될 때 상수항이 되는 성질"
+    },
+    {
+      "conceptKey": "CC_INDEPENDENT_EVENTS_MULTIPLICATION",
+      "labelKo": "독립사건의 확률의 곱셈정리",
+      "definition": "서로 독립인 두 사건이 동시에 일어날 확률이 각 확률의 곱과 같다는 성질"
+    },
+    {
+      "conceptKey": "CC_INDEPENDENT_TRIALS_PROBABILITY",
+      "labelKo": "독립시행의 확률",
+      "definition": "동일한 조건에서 반복되는 독립시행 n회에서 사건이 r회 일어날 확률 nCr * p^r * (1-p)^(n-r)"
+    },
+    {
+      "conceptKey": "CC_LINEAR_EXPECTATION_PROPERTY",
+      "labelKo": "일차변환된 확률변수의 기댓값",
+      "definition": "확률변수 X와 상수 a, b에 대하여 E(aX+b) = aE(X)+b가 성립하는 기댓값의 선형성"
+    },
+    {
+      "conceptKey": "CC_MUTUALLY_EXCLUSIVE_CASE_SUM",
+      "labelKo": "배반사건의 경우의 수 합",
+      "definition": "'k개 이상' 조건을 배반인 세부 개수 케이스들로 나누어 각 경우의 수를 더하는 합의 법칙"
+    },
+    {
+      "conceptKey": "CC_NORMAL_CURVE_SYMMETRY",
+      "labelKo": "표준정규분포 곡선의 대칭성",
+      "definition": "표준정규분포 곡선이 z=0에 대하여 대칭이므로 P(Z<=a)+P(Z<=b)=1이면 a+b=0이 성립하는 성질"
+    },
+    {
+      "conceptKey": "CC_ORDER_FIXED_PERMUTATION",
+      "labelKo": "순서가 정해진 원소의 나열",
+      "definition": "특정 원소들의 상대적 순서가 정해진 순열을 같은 것이 있는 순열(n!/k!)로 계산하는 원리"
+    },
+    {
+      "conceptKey": "CC_PROBABILITY_DENSITY_CONDITIONS",
+      "labelKo": "확률밀도함수의 성질",
+      "definition": "정의된 구간 [a, b]에서 항상 f(x) >= 0이고 곡선과 x축 사이의 전체 넓이(정적분)가 1이어야 하는 성질"
+    },
+    {
+      "conceptKey": "CC_RADICAL_INEQUALITY",
+      "labelKo": "제곱근을 포함한 부등식",
+      "definition": "양수 조건에서 sqrt(n) >= c를 양변 제곱하여 표본 크기 n의 최솟값을 구하는 부등식 풀이"
+    },
+    {
+      "conceptKey": "CC_SAMPLE_MEAN_MOMENTS",
+      "labelKo": "표본평균의 평균과 표준편차",
+      "definition": "모평균 m, 모표준편차 σ인 모집단에서 크기 n인 표본을 임의추출할 때 E(X̄)=m, σ(X̄)=σ/sqrt(n)이 되는 성질"
+    },
+    {
+      "conceptKey": "CC_SET_DIFFERENCE_IDENTITY",
+      "labelKo": "차집합과 교집합의 확률 관계",
+      "definition": "사건의 연산에서 P(B^c - (A∩B^c)) = P(A^c∩B^c) = P(B^c) - P(A∩B^c)가 성립하는 성질"
+    },
+    {
+      "conceptKey": "CC_STANDARD_NORMAL_TABLE_READING",
+      "labelKo": "표준정규분포표 확률 읽기",
+      "definition": "표준정규분포표에 주어진 P(0 <= Z <= z) 값을 이용해 구간 확률을 구하거나 역으로 z값을 찾는 해석"
+    },
+    {
+      "conceptKey": "CC_Z_SCORE_STANDARDIZATION",
+      "labelKo": "정규분포의 표준화",
+      "definition": "정규분포 N(m, σ^2)을 따르는 확률변수 X를 Z = (X-m)/σ로 변환하여 표준정규분포 N(0, 1)로 나타내는 방법"
+    }
+  ],
+  "handOffToCourier": {
+    "status": "READY_FOR_COURIER_REGISTRATION",
+    "author": "META_PIPELINE_UNIFIED_AUTHOR",
+    "registrationProtocol": "DIRECT_ATOMIC_METADATA_BINDING"
+  },
+  "records": [
+    {
+      "questionId": 1,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "crossConceptKeys": [
+        "CC_COMPLEMENTARY_EVENT_PROBABILITY",
+        "CC_SET_DIFFERENCE_IDENTITY",
+        "CC_DEMORGAN_LAWS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "차집합 성질로 P(A^c∩B^c)=P(B^c)-P(A∩B^c)=7/18-2/18=5/18을 구한 뒤 여사건 공식 P(A∪B)=1-5/18=13/18 산출 (2단계)",
+      "classification": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+        "crossConceptKeys": [
+          "CC_COMPLEMENTARY_EVENT_PROBABILITY",
+          "CC_SET_DIFFERENCE_IDENTITY",
+          "CC_DEMORGAN_LAWS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "드모르간의 법칙과 여사건의 확률 관계를 이용하여 합사건의 확률을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "차집합 성질로 P(A^c∩B^c)=P(B^c)-P(A∩B^c)=7/18-2/18=5/18을 구한 뒤 여사건 공식 P(A∪B)=1-5/18=13/18 산출 (2단계)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 사건 $A$, $B$에 대하여 $P(A\\cap B^c)=\\dfrac{1}{9}$, $P(B^c)=\\dfrac{7}{18}$일 때, $P(A\\cup B)$의 값을 구하시오.",
+        "solutionDecisiveExcerpt": "P(A^c∩B^c)=7/18-1/9=5/18이므로 P(A∪B)=1-P(A^c∩B^c)=13/18이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "crossConceptKeys": [
+        "CC_COMBINATION_PROBABILITY",
+        "CC_MUTUALLY_EXCLUSIVE_CASE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "전체 경우의 수 9C4=126과 흰 공이 2개·3개·4개인 경우의 수 합 4C2*5C2+4C3*5C1+4C4*5C0=81의 비 81/126=9/14 계산 (2단계)",
+      "classification": {
+        "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+        "crossConceptKeys": [
+          "CC_COMBINATION_PROBABILITY",
+          "CC_MUTUALLY_EXCLUSIVE_CASE_SUM"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "status": "APPROVED_CANONICAL",
+        "justification": "조합을 이용하여 동시에 꺼낸 공의 개수 조건에 따른 수학적 확률을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "전체 경우의 수 9C4=126과 흰 공이 2개·3개·4개인 경우의 수 합 4C2*5C2+4C3*5C1+4C4*5C0=81의 비 81/126=9/14 계산 (2단계)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "흰 공 4개, 검은 공 5개가 들어있는 주머니가 있다. 이 주머니에서 임의로 4개의 공을 동시에 꺼낼 때, 꺼낸 4개의 공 중에서 흰 공이 2개 이상일 확률을 구하시오.",
+        "solutionDecisiveExcerpt": "전체 경우의 수는 9C4=126이고 흰 공이 2개 이상인 경우의 수는 60+20+1=81이므로 확률은 81/126=9/14이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_GENERAL_TERM",
+        "CC_EXPONENT_LAWS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyReason": "이항정리 일반항 6Ck * 2^(2k-6) * x^(6-2k)에서 상수항 조건 6-2k=0으로 k=3을 구해 6C3=20 직접 산출 (1~2단계)",
+      "classification": {
+        "problemTypeKey": "PT_BINOMIAL_THEOREM",
+        "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+        "crossConceptKeys": [
+          "CC_BINOMIAL_GENERAL_TERM",
+          "CC_EXPONENT_LAWS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "이항정리의 일반항 공식을 이용하여 전개식에서 상수항을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "이항정리 일반항 6Ck * 2^(2k-6) * x^(6-2k)에서 상수항 조건 6-2k=0으로 k=3을 구해 6C3=20 직접 산출 (1~2단계)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "$(\\dfrac{x}{2}+\\dfrac{2}{x})^6$의 전개식에서 상수항을 구하시오.",
+        "solutionDecisiveExcerpt": "일반항 6Ck * 2^(2k-6) * x^(6-2k)에서 6-2k=0이므로 k=3이고 상수항은 6C3=20이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "subUnit": "조건부확률",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "crossConceptKeys": [
+        "CC_CONDITIONAL_PROBABILITY_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyReason": "남학생 확률 P(M)=0.48과 수시 응시 희망 남학생 확률 P(S∩M)=0.30을 조건부확률 공식 P(S|M)=0.30/0.48=5/8에 1단계 직접 대입",
+      "classification": {
+        "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+        "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+        "crossConceptKeys": [
+          "CC_CONDITIONAL_PROBABILITY_FORMULA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "사건의 비율로부터 조건부확률 정의식을 직접 적용하여 확률을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "남학생 확률 P(M)=0.48과 수시 응시 희망 남학생 확률 P(S∩M)=0.30을 조건부확률 공식 P(S|M)=0.30/0.48=5/8에 1단계 직접 대입",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "3학년 전체 학생에 대한 남학생의 비율이 $48\\%$... 응시를 희망한 남학생은 3학년 전체 학생의 $30\\%$... 남학생이었다. 이 학생이 수시모집 응시를 희망했을 확률을 구하시오.",
+        "solutionDecisiveExcerpt": "P(M)=0.48, P(S∩M)=0.30이므로 구하는 확률은 P(S|M)=0.30/0.48=5/8이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "crossConceptKeys": [
+        "CC_INDEPENDENT_TRIALS_PROBABILITY",
+        "CC_INDEPENDENT_EVENTS_MULTIPLICATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "B팀 5명 모두 성공(0.8^5)과 A팀 5명 중 1명 실패·4명 성공(5C1 * 0.2 * 0.8^4)의 독립시행 확률 곱 5*0.2*0.8^9=0.8^9 산출 (2단계)",
+      "classification": {
+        "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+        "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+        "crossConceptKeys": [
+          "CC_INDEPENDENT_TRIALS_PROBABILITY",
+          "CC_INDEPENDENT_EVENTS_MULTIPLICATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "독립시행의 확률 공식을 두 팀의 결과에 결합하여 경기 승리 확률을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "B팀 5명 모두 성공(0.8^5)과 A팀 5명 중 1명 실패·4명 성공(5C1 * 0.2 * 0.8^4)의 독립시행 확률 곱 5*0.2*0.8^9=0.8^9 산출 (2단계)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "팀당 5명의 선수가 A팀부터 시작하여 1명씩 교대로 승부차기를 할 때, B팀이 $5:4$로 이길 확률을 구하시오. (단, 각 선수의 승부차기는 독립시행이고 성공할 확률은 $0.8$이다.)",
+        "solutionDecisiveExcerpt": "B팀 5명은 모두 성공하고 A팀은 5명 중 1명만 실패해야 하므로 확률은 5C1*(0.2)*(0.8)^4*(0.8)^5 = 0.8^9이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_COMBINATION_SELECTION",
+        "CC_ORDER_FIXED_PERMUTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "A, B 외 나머지 4개 업무 중 2개 선택(4C2=6) 후 A가 B보다 먼저 오도록 4개 업무를 배열하는 경우의 수(4!/2=12)를 곱해 72 산출 (2단계)",
+      "classification": {
+        "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+        "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+        "crossConceptKeys": [
+          "CC_COMBINATION_SELECTION",
+          "CC_ORDER_FIXED_PERMUTATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "원소 선택(조합)과 특정 원소의 순서가 정해진 나열(같은 것이 있는 순열)을 결합하여 경우의 수를 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "A, B 외 나머지 4개 업무 중 2개 선택(4C2=6) 후 A가 B보다 먼저 오도록 4개 업무를 배열하는 경우의 수(4!/2=12)를 곱해 72 산출 (2단계)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "어느 회사원이 처리해야 할 업무는 A, B를 포함하여 모두 6가지이다. 이 중에서 A, B를 포함한 4가지 업무를 오늘 처리하려고 하는데, A를 B보다 먼저 처리해야 한다.",
+        "solutionDecisiveExcerpt": "나머지 4가지 중 2가지를 고르는 방법은 4C2=6이고 A가 B보다 먼저 오도록 순서를 정하는 경우의 수는 4!/2=12이므로 6×12=72이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyReason": "모집단 N(50, 20^2)과 표본 크기 n=100에서 표본평균의 평균 E(X̄)=50과 표준편차 σ(X̄)=20/sqrt(100)=2를 공식에 1단계 직접 대입해 합 52 산출",
+      "classification": {
+        "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+        "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_SAMPLE_MEAN_MOMENTS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "표본평균의 평균과 표준편차 공식을 직접 적용하여 값을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "모집단 N(50, 20^2)과 표본 크기 n=100에서 표본평균의 평균 E(X̄)=50과 표준편차 σ(X̄)=20/sqrt(100)=2를 공식에 1단계 직접 대입해 합 52 산출",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "정규분포 $N(50,20^2)$을 따르는 모집단에서 크기가 $100$인 표본을 임의추출할 때, 표본평균 $\\overline{X}$에 대하여 $E(\\overline{X})+\\sigma(\\overline{X})$의 값을 구하시오.",
+        "solutionDecisiveExcerpt": "E(X̄)=50이고 σ(X̄)=20/sqrt(100)=2이므로 E(X̄)+σ(X̄)=50+2=52이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "표본평균 분포 N(72, (18/sqrt(81))^2)=N(72, 2^2)을 구해 P(71<=X̄<=75)=P(-0.5<=Z<=1.5)로 표준화한 뒤 표준정규분포표(q8.png)에서 0.1915+0.4332=0.6247(약 0.62) 산출 (2단계, IMAGE)",
+      "classification": {
+        "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+        "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_SAMPLE_MEAN_MOMENTS",
+          "CC_Z_SCORE_STANDARDIZATION",
+          "CC_STANDARD_NORMAL_TABLE_READING"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "표본평균의 정규분포를 표준화하고 표준정규분포표를 이용하여 구간 확률을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "표본평균 분포 N(72, (18/sqrt(81))^2)=N(72, 2^2)을 구해 P(71<=X̄<=75)=P(-0.5<=Z<=1.5)로 표준화한 뒤 표준정규분포표(q8.png)에서 0.1915+0.4332=0.6247(약 0.62) 산출 (2단계, IMAGE)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "평균이 $72$점, 표준편차가 $18$점인 정규분포를 따른다고 한다. 이 고등학교 3학년 학생 중에서 $81$명을 임의추출할 때, 수학 점수의 평균이 $71$점 이상 $75$점 이하일 확률을 아래쪽 표준정규분포표를 이용하여 구하시오.",
+        "solutionDecisiveExcerpt": "표본평균 표준편차는 18/9=2이므로 P(71<=X̄<=75)=P(-0.5<=Z<=1.5)=0.1915+0.4332=0.6247(약 0.62)이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "표본평균 표준편차 σ/5로 표준화한 P(0<=Z<=4/(σ/5))=0.4772에서 표준정규분포표(q8.png)의 z=2.0과 비교하여 20/σ=2, σ=10 도출 (2단계, IMAGE)",
+      "classification": {
+        "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+        "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_SAMPLE_MEAN_MOMENTS",
+          "CC_Z_SCORE_STANDARDIZATION",
+          "CC_STANDARD_NORMAL_TABLE_READING"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "표본평균의 확률 조건과 표준정규분포표를 역추적하여 모표준편차 σ를 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "표본평균 표준편차 σ/5로 표준화한 P(0<=Z<=4/(σ/5))=0.4772에서 표준정규분포표(q8.png)의 z=2.0과 비교하여 20/σ=2, σ=10 도출 (2단계, IMAGE)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "평균이 $40$분, 표준편차가 $\\sigma$분인 정규분포... $25$명을 임의추출하여 조사한 통학 시간의 표본평균을 $\\overline{X}$라 하면 $P(40\\le \\overline{X}\\le 44)=0.4772$일 때, $\\sigma$의 값을 아래쪽 표준정규분포표를 이용하여 구하시오.",
+        "solutionDecisiveExcerpt": "P(0<=Z<=4/(σ/5))=0.4772이고 표에서 P(0<=Z<=2.0)=0.4772이므로 4/(σ/5)=2에서 σ=10이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_LENGTH",
+        "CC_RADICAL_INEQUALITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "신뢰도 95% 신뢰구간 길이 공식 b-a = 2*1.96*(9/sqrt(n)) = 35.28/sqrt(n) <= 2.94에서 sqrt(n)>=12를 풀어 n>=144 도출 (2단계)",
+      "classification": {
+        "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+        "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+        "crossConceptKeys": [
+          "CC_CONFIDENCE_INTERVAL_LENGTH",
+          "CC_RADICAL_INEQUALITY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "모평균 신뢰구간의 길이 부등식 조건을 만족하는 표본 크기 n의 최솟값을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "신뢰도 95% 신뢰구간 길이 공식 b-a = 2*1.96*(9/sqrt(n)) = 35.28/sqrt(n) <= 2.94에서 sqrt(n)>=12를 풀어 n>=144 도출 (2단계)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "표준편차가 $9\\,\\mathrm{g}$인 정규분포... 신뢰도 $95\\%$로 추정한 신뢰구간은 $a\\le m\\le b$이다. 이때 $b-a\\le 2.94$가 되도록 하는 표본의 크기 $n$의 최소값을 구하시오.",
+        "solutionDecisiveExcerpt": "b-a = 2*1.96*(9/sqrt(n)) = 35.28/sqrt(n) <= 2.94에서 sqrt(n)>=12이므로 n>=144이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyReason": "표본평균 10, 모표준편차 8, 표본 크기 16을 신뢰도 99%(z=2.58) 신뢰구간 공식 10 ± 2.58*(8/4) = 10 ± 5.16에 1단계 대입하여 4.84<=m<=15.16 산출",
+      "classification": {
+        "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+        "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+        "crossConceptKeys": [
+          "CC_CONFIDENCE_INTERVAL_FORMULA"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "모평균의 신뢰구간 추정 공식을 직접 적용하여 신뢰구간을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "표본평균 10, 모표준편차 8, 표본 크기 16을 신뢰도 99%(z=2.58) 신뢰구간 공식 10 ± 2.58*(8/4) = 10 ± 5.16에 1단계 대입하여 4.84<=m<=15.16 산출",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "모표준편차가 $8$인 정규분포를 따르는 모집단에서 크기가 $16$인 표본을 임의추출하여 조사하였더니 표본평균이 $10$이었다. 모평균 $m$에 대한 신뢰도 $99\\%$의 신뢰구간을 구하시오.",
+        "solutionDecisiveExcerpt": "오차한계는 2.58*(8/4)=5.16이므로 신뢰구간은 10±5.16, 즉 4.84<=m<=15.16이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_Z_SCORE_STANDARDIZATION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "X~N(20,3^2)과 X̄~N(20,(3/sqrt(n))^2)을 각각 표준화하여 P(0<=Z<=sqrt(n))=P(0<=Z<=4)를 비교해 sqrt(n)=4에서 n=16 도출 (2단계)",
+      "classification": {
+        "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+        "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_SAMPLE_MEAN_MOMENTS",
+          "CC_Z_SCORE_STANDARDIZATION"
+        ],
+        "conditionKeys": [
+          "COND_NATURAL_NUMBER"
+        ],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "모집단 확률변수와 표본평균의 표준화 구간을 비교하여 표본의 크기 n을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "X~N(20,3^2)과 X̄~N(20,(3/sqrt(n))^2)을 각각 표준화하여 P(0<=Z<=sqrt(n))=P(0<=Z<=4)를 비교해 sqrt(n)=4에서 n=16 도출 (2단계)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "모집단의 확률변수 $X$는 평균 $20$, 표준편차 $3$인 정규분포를 따른다. 모집단에서 크기가 $n$인 표본을 추출하여 표본평균을 $\\overline{X}$라 할 때, $P(20\\le \\overline{X}\\le 23)=P(20\\le X\\le 32)$를 만족하는 자연수 $n$의 값을 구하시오.",
+        "solutionDecisiveExcerpt": "P(20<=X<=32)=P(0<=Z<=4)이고 P(20<=X̄<=23)=P(0<=Z<=sqrt(n))이므로 sqrt(n)=4에서 n=16이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_EXPECTED_FREQUENCY_COUNT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "X~N(44,20^2)에서 P(X>=60)=P(Z>=0.8)=0.5-0.2881=0.2119를 구하고 응시자 1000명을 곱해 약 212명 산출 (2단계)",
+      "classification": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+        "crossConceptKeys": [
+          "CC_Z_SCORE_STANDARDIZATION",
+          "CC_EXPECTED_FREQUENCY_COUNT"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "정규분포의 표준화로 합격 확률을 구하고 전체 인원을 곱해 기대 합격자 수를 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "X~N(44,20^2)에서 P(X>=60)=P(Z>=0.8)=0.5-0.2881=0.2119를 구하고 응시자 1000명을 곱해 약 212명 산출 (2단계)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "어느 자격증의 필기시험에 $1000$명이 응시하였다. 시험 응시자의 점수분포는 평균 $44$점, 표준편차 $20$점인 정규분포... $60$점 이상인 응시자는 필기시험 합격이라고 할 때, 필기시험 합격자를 구하시오.",
+        "solutionDecisiveExcerpt": "P(X>=60)=P(Z>=0.8)=0.5-0.2881=0.2119이므로 합격자 수는 1000×0.2119 ≈ 212명이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "crossConceptKeys": [
+        "CC_DISCRETE_EXPECTATION",
+        "CC_LINEAR_EXPECTATION_PROPERTY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "6개 면의 눈의 평균 E(X)=(1+1+2+2+2+4)/6=2를 구한 뒤 일차변환 공식 E(5X+3)=5E(X)+3=13 적용 (2단계)",
+      "classification": {
+        "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+        "templateKey": "TPL_EXPECTATION_TRANSFORM",
+        "crossConceptKeys": [
+          "CC_DISCRETE_EXPECTATION",
+          "CC_LINEAR_EXPECTATION_PROPERTY"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "이산확률변수 X의 기댓값을 구하고 일차변환된 확률변수 aX+b의 기댓값 성질을 적용하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "6개 면의 눈의 평균 E(X)=(1+1+2+2+2+4)/6=2를 구한 뒤 일차변환 공식 E(5X+3)=5E(X)+3=13 적용 (2단계)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "각 면에 $1$, $1$, $2$, $2$, $2$, $4$의 숫자가 하나씩 적혀 있는 정육면체 모양의 상자가 있다... 확률변수 $5X+3$의 평균을 구하시오.",
+        "solutionDecisiveExcerpt": "E(X)=(1+1+2+2+2+4)/6=2이므로 E(5X+3)=5E(X)+3=5×2+3=13이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_NORMAL_CURVE_SYMMETRY",
+        "CC_Z_SCORE_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyReason": "X̄~N(50,2^2)에서 P(X̄<=53)=P(Z<=1.5)를 구하고 P(X̄<=53)+P(Ȳ<=69)=1 대칭성으로 (69-75)/(σ/5)=-1.5에서 σ=20을 결정한 뒤 표준정규분포표(q15.png)로 P(Ȳ>=71)=P(Z>=-1)=0.8413 산출 (3단계, IMAGE)",
+      "classification": {
+        "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+        "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+        "crossConceptKeys": [
+          "CC_SAMPLE_MEAN_MOMENTS",
+          "CC_NORMAL_CURVE_SYMMETRY",
+          "CC_Z_SCORE_STANDARDIZATION"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "두 표본평균의 정규분포 표준화와 표준정규분포의 대칭성(확률 합 1)을 연립하여 미지수 σ와 목표 확률을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 3,
+        "difficultyReason": "X̄~N(50,2^2)에서 P(X̄<=53)=P(Z<=1.5)를 구하고 P(X̄<=53)+P(Ȳ<=69)=1 대칭성으로 (69-75)/(σ/5)=-1.5에서 σ=20을 결정한 뒤 표준정규분포표(q15.png)로 P(Ȳ>=71)=P(Z>=-1)=0.8413 산출 (3단계, IMAGE)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "정규분포 $N(50,8^2)$을 따르는 모집단에서 크기가 $16$인 표본... $\\overline{X}$, 정규분포 $N(75,\\sigma^2)$을 따르는 모집단에서 크기가 $25$인 표본... $\\overline{Y}$... $P(\\overline{X}\\le 53)+P(\\overline{Y}\\le 69)=1$일 때, $P(\\overline{Y}\\ge 71)$의 값을...",
+        "solutionDecisiveExcerpt": "P(X̄<=53)=P(Z<=1.5)이므로 P(Ȳ<=69)=P(Z<=-1.5)에서 (69-75)/(σ/5)=-1.5, σ=20이고 P(Ȳ>=71)=P(Z>=-1)=0.5+0.3413=0.8413이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DENSITY_CONDITIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "구간 [-1,3]에서 확률밀도함수 조건(함숫값 0 이상 및 정적분 넓이 1)을 ㄱ, ㄴ, ㄷ에 각각 적용해 음수가 되는 ㄴ을 제외하고 ㄱ, ㄷ 판별 (2단계)",
+      "classification": {
+        "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+        "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+        "crossConceptKeys": [
+          "CC_PROBABILITY_DENSITY_CONDITIONS"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "CASE_BRANCH",
+        "status": "APPROVED_CANONICAL",
+        "justification": "연속확률변수의 확률밀도함수가 되기 위한 비음수 조건과 전구간 넓이 1 조건을 판정하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "구간 [-1,3]에서 확률밀도함수 조건(함숫값 0 이상 및 정적분 넓이 1)을 ㄱ, ㄴ, ㄷ에 각각 적용해 음수가 되는 ㄴ을 제외하고 ㄱ, ㄷ 판별 (2단계)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "확률변수 $X$가 갖는 값의 범위가 $-1\\le X\\le 3$일 때, $X$의 확률밀도함수가 될 수 있는 것만을 아래에서 있는 대로 고르시오.",
+        "solutionDecisiveExcerpt": "확률밀도함수는 구간에서 0 이상이고 적분값이 1이어야 하므로 ㄱ(넓이 1)과 ㄷ(넓이 1)은 가능하고 ㄴ(x<0에서 음수)은 불가능하다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "crossConceptKeys": [
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyReason": "X~N(70,10^2)을 표준화하여 P(60<=X<=85)=P(-1<=Z<=1.5)를 구하고 표준정규분포표(q8.png)에서 0.3413+0.4332=0.7745 직접 산출 (1~2단계, IMAGE)",
+      "classification": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_STANDARDIZATION",
+        "crossConceptKeys": [
+          "CC_Z_SCORE_STANDARDIZATION",
+          "CC_STANDARD_NORMAL_TABLE_READING"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "정규분포를 표준정규분포로 표준화하여 구간 확률을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 1,
+        "difficultyReason": "X~N(70,10^2)을 표준화하여 P(60<=X<=85)=P(-1<=Z<=1.5)를 구하고 표준정규분포표(q8.png)에서 0.3413+0.4332=0.7745 직접 산출 (1~2단계, IMAGE)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "어느 고등학교 전체 학생의 몸무게는 평균이 $70\\,\\mathrm{kg}$, 표준편차가 $10\\,\\mathrm{kg}$인 정규분포... 선택한 학생의 몸무게가 $60\\,\\mathrm{kg}$ 이상 $85\\,\\mathrm{kg}$ 이하일 확률을 아래쪽 표준정규분포표를 이용하여 구하시오.",
+        "solutionDecisiveExcerpt": "P(60<=X<=85)=P(-1<=Z<=1.5)=P(0<=Z<=1)+P(0<=Z<=1.5)=0.3413+0.4332=0.7745이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_LENGTH"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "신뢰구간 [x,y]의 길이 y-x = 2k*(σ/sqrt(n))에 σ=1/2, n=25를 대입하여 y-x = k/5에서 k=5(y-x) 도출 (2단계)",
+      "classification": {
+        "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+        "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+        "crossConceptKeys": [
+          "CC_CONFIDENCE_INTERVAL_LENGTH"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "모평균 신뢰구간의 양 끝점 차(신뢰구간의 길이)와 신뢰상수 k의 관계식을 정리하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "신뢰구간 [x,y]의 길이 y-x = 2k*(σ/sqrt(n))에 σ=1/2, n=25를 대입하여 y-x = k/5에서 k=5(y-x) 도출 (2단계)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "모평균이 $m$, 모표준편차가 $\\dfrac{1}{2}$인 정규분포... $25$개를 임의추출하여 신뢰도 $\\alpha\\%$로 추정한 모평균 $m$에 대한 신뢰구간이 $[x,\\, y]$일 때, $P(|Z|\\le k)=\\alpha$를 만족시키는 $k$를 $x$, $y$로 나타내시오.",
+        "solutionDecisiveExcerpt": "신뢰구간의 길이는 y-x = 2k*(1/2)/5 = k/5이므로 k=5(y-x)이다.",
+        "visualAssetChecked": false,
+        "visualType": "NONE"
+      }
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+      "crossConceptKeys": [
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_BINOMIAL_NORMAL_APPROXIMATION",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyReason": "1단계로 X~N(700,10^2)을 표준화해 1개 물건이 [695,705]에 속할 확률 p=P(-0.5<=Z<=0.5)=0.40을 구하고, 2단계로 600개 중 해당 개수 Y~B(600,0.4)를 N(240,12^2)으로 근사해 표준정규분포표(q19.png)에서 P(252<=Y<=258)=P(1<=Z<=1.5)=0.43-0.35=0.08 도출 (4단계, IMAGE)",
+      "classification": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+        "crossConceptKeys": [
+          "CC_Z_SCORE_STANDARDIZATION",
+          "CC_BINOMIAL_NORMAL_APPROXIMATION",
+          "CC_STANDARD_NORMAL_TABLE_READING"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "개별 정규분포 확률을 사건 발생 확률 p로 삼는 이항분포 B(n,p)를 구성한 뒤 정규분포로 근사하여 확률을 구하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 4,
+        "difficultyReason": "1단계로 X~N(700,10^2)을 표준화해 1개 물건이 [695,705]에 속할 확률 p=P(-0.5<=Z<=0.5)=0.40을 구하고, 2단계로 600개 중 해당 개수 Y~B(600,0.4)를 N(240,12^2)으로 근사해 표준정규분포표(q19.png)에서 P(252<=Y<=258)=P(1<=Z<=1.5)=0.43-0.35=0.08 도출 (4단계, IMAGE)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형1] 어느 공장에서 생산된 물건 1개의 무게는 평균이 $700\\,\\mathrm{g}$, 표준편차가 $10\\,\\mathrm{g}$인 정규분포... 이 공장에서 물건 $600$개를 생산하였을 때, $695\\,\\mathrm{g}$ 이상 $705\\,\\mathrm{g}$ 이하인 물건이 $252$개 이상 $258$개 이하일 확률을...",
+        "solutionDecisiveExcerpt": "p=P(695<=X<=705)=P(-0.5<=Z<=0.5)=0.40이므로 Y~B(600,0.4)를 N(240,12^2)으로 근사하면 P(252<=Y<=258)=P(1<=Z<=1.5)=0.43-0.35=0.08이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "auditVerdict": "APPROVED",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "crossConceptKeys": [
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_NORMAL_CURVE_SYMMETRY",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "X~N(m,1^2)에서 P(X<3)=P(Z<3-m)=0.05와 표준정규분포표(q20.png)의 P(0<=Z<=1.6)=0.45에서 3-m=-1.6을 세워 m=4.6 도출 (2단계, IMAGE)",
+      "classification": {
+        "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+        "templateKey": "TPL_NORMAL_STANDARDIZATION",
+        "crossConceptKeys": [
+          "CC_Z_SCORE_STANDARDIZATION",
+          "CC_NORMAL_CURVE_SYMMETRY",
+          "CC_STANDARD_NORMAL_TABLE_READING"
+        ],
+        "conditionKeys": [],
+        "integrationPattern": "SEQUENTIAL",
+        "status": "APPROVED_CANONICAL",
+        "justification": "정규분포의 꼬리 확률 조건과 표준정규분포표를 이용하여 모평균 m을 역산하는 PROBABILITY_STATISTICS 정본 유형"
+      },
+      "difficulty": {
+        "difficultyBucket": 2,
+        "difficultyReason": "X~N(m,1^2)에서 P(X<3)=P(Z<3-m)=0.05와 표준정규분포표(q20.png)의 P(0<=Z<=1.6)=0.45에서 3-m=-1.6을 세워 m=4.6 도출 (2단계, IMAGE)",
+        "difficultyConfidence": "high",
+        "difficultyBoundaryFlag": "NONE"
+      },
+      "readingEvidence": {
+        "sourceTextExcerpt": "[서술형2] 어느 정밀기계 무게의 평균이 $m$, 표준편차가 $1$인 정규분포를 따른다고 한다. 이 기계의 무게가 $3$ 미만일 확률이 $0.05$일 때, $m$의 값을 표준정규분포곡선을 그리고 아래 표준정규분포표를 이용하여 구하시오.",
+        "solutionDecisiveExcerpt": "P(Z<3-m)=0.05이고 표에서 P(0<=Z<=1.6)=0.45이므로 P(Z<=-1.6)=0.05에서 3-m=-1.6, m=4.6이다.",
+        "visualAssetChecked": true,
+        "visualType": "IMAGE"
+      }
+    }
+  ]
+}
