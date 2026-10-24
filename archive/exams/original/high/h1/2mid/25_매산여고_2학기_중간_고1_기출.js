@@ -86,11 +86,7 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_매산여고_2학기_중간_고1_기출/q2-solution.svg",
-    "solutionImageAlt": "기울기 -3인 평행한 두 직선과 점 (1, -2)를 지나는 직선",
-    "solutionImageCaption": "기울기 -3인 평행한 두 직선과 점 (1, -2)를 지나는 직선",
-    "solutionImageSize": "full"
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 3,
@@ -132,11 +128,7 @@ window.questionBank = [
     "difficultyBucket": 1,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_매산여고_2학기_중간_고1_기출/q3-solution.svg",
-    "solutionImageAlt": "중심 (3,-2), 반지름 2인 원",
-    "solutionImageCaption": "중심 (3,-2), 반지름 2인 원",
-    "solutionImageSize": "full"
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 4,
@@ -182,11 +174,7 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/25_매산여고_2학기_중간_고1_기출/q4-solution.svg",
-    "solutionImageAlt": "구하는 직선은 12x-5y+6=0에 수직이고, 점 P와의 거리가 1이다.",
-    "solutionImageCaption": "구하는 직선은 12x-5y+6=0에 수직이고, 점 P와의 거리가 1이다.",
-    "solutionImageSize": "full"
+    "legacyLevelCompatibility": "NORMAL"
   },
   {
     "id": 5,
