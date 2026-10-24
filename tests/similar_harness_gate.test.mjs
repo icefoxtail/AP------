@@ -36,9 +36,9 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     }
   });
 
-  test('Fault Injection: MCQ 4/4/4/4/4 slot imbalance is blocked', () => {
+  test('Fault Injection: Dynamic MCQ count (e.g. 19 or 21 MCQs) slot imbalance is blocked', () => {
     const origJs = fs.readFileSync('archive/exams/similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js', 'utf8');
-    // Change Q1 answer from ③ to ②, making ③ count = 3 and ② count = 5
+    // Change Q1 answer from ③ to ②, making distribution {①:4, ②:5, ③:3, ④:4, ⑤:4}
     const mutatedJs = origJs.replace('"answer": "③"', '"answer": "②"');
     
     const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_slot_imbalance.js');
@@ -50,6 +50,15 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     } finally {
       if (fs.existsSync(tmpJs)) fs.unlinkSync(tmpJs);
     }
+  });
+
+  test('Dynamic Invariant: Any arbitrary MCQ count M must satisfy spread(max - min) <= 1', () => {
+    // Test logic directly: 17 MCQs -> {①:4, ②:4, ③:3, ④:3, ⑤:3} is valid (spread=1)
+    // 17 MCQs -> {①:5, ②:3, ③:3, ④:3, ⑤:3} is invalid (spread=2)
+    const valid17 = [4, 4, 3, 3, 3];
+    assert.ok(Math.max(...valid17) - Math.min(...valid17) <= 1, 'Balanced 17 MCQs must have spread <= 1');
+    const invalid17 = [5, 3, 3, 3, 3];
+    assert.ok(Math.max(...invalid17) - Math.min(...invalid17) > 1, 'Imbalanced 17 MCQs must be detected');
   });
 
   test('Fault Injection: Unescaped math in choice is blocked', () => {

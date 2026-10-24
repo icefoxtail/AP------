@@ -176,12 +176,25 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false }) {
     errors.push(`Total score invariant violated: sum is ${totalScore.toFixed(1)}, expected 100.0`);
   }
 
-  // 5. 4/4/4/4/4 MCQ Distribution
-  if (mcAnswers.length === 20) {
-    for (const slot of ['①', '②', '③', '④', '⑤']) {
-      if (mcSlots[slot] !== 4) {
-        errors.push(`MCQ slot balance violated: ${slot} has ${mcSlots[slot]} answers (expected exactly 4)`);
-      }
+  // 5. Dynamic MCQ Slot Balance (for ANY number of MCQs M)
+  const M = mcAnswers.length;
+  if (M > 0) {
+    const q = Math.floor(M / 5);
+    const r = M % 5;
+    const minAllowed = q;
+    const maxAllowed = r === 0 ? q : q + 1;
+
+    const counts = Object.values(mcSlots);
+    const minCount = Math.min(...counts);
+    const maxCount = Math.max(...counts);
+
+    // Balanced distribution invariant: for any total M MCQs, every slot must have either q or q+1 answers.
+    // The difference between the most frequent and least frequent choice must be at most 1 (max - min <= 1).
+    if (maxCount - minCount > 1) {
+      errors.push(
+        `MCQ slot balance violated for ${M} MCQs: distribution is ${JSON.stringify(mcSlots)} ` +
+        `(expected each slot between ${minAllowed} and ${maxAllowed}, spread ${maxCount - minCount} > 1)`
+      );
     }
   }
 
