@@ -23,9 +23,9 @@ window.questionBank = [
       "4"
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
-    "subUnitKey": "M1-01-GCD_LCM",
-    "subUnit": "최대공약수와 최소공배수",
+    "solution": "소수는 2, 29, 37, 53, 101로 5개이다. 합성수는 15와 91로 2개이고, 1은 둘 다 아니다.<br>따라서 $a-b=5-2=3$이다. 정답은 ④.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -51,7 +51,7 @@ window.questionBank = [
       "2"
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
+    "solution": "주어진 곱은 $2^4\\times3^3\\times7$이므로 $a=4$, $b=3$이다.<br>$a-b=4-3=1$이므로 정답은 ④.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -79,7 +79,7 @@ window.questionBank = [
       "54"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "$18=2\\times3^2$, $24=2^3\\times3$, $32=2^5$, $48=2^4\\times3$, $54=2\\times3^3$이다.<br>32만 소인수가 2 하나이므로 정답은 ③.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -107,9 +107,9 @@ window.questionBank = [
       "25"
     ],
     "answer": "④",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ④이다.",
-    "subUnitKey": "M1-01-GCD_LCM",
-    "subUnit": "최대공약수와 최소공배수",
+    "solution": "$2^4\\times5$의 약수 개수는 $(4+1)(1+1)=10$이다.<br>보기 4, 10, 18, 21, 25를 $a$에 대입했을 때 $27a$의 약수 개수는 차례로 12, 16, 12, 10, 12이다.<br>$a=21$일 때 $27a=3^4\\times7$이므로 정답은 ④.",
+    "subUnitKey": "M1-01-PRIME_FACTORIZATION",
+    "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule"
   },
@@ -135,7 +135,7 @@ window.questionBank = [
       "$2^2\\times3\\times5^2\\times7$"
     ],
     "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "solution": "최대공약수는 공통 소인수에 대해 작은 지수를 선택한다.<br>따라서 $2^1\\times3^2\\times5^1=2\\times3^2\\times5$이고 정답은 ①.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
@@ -163,7 +163,7 @@ window.questionBank = [
       "ㄷ, ㄹ, ㅁ"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "두 수의 최소공배수는 $2^2\\times3^2\\times5$이다.<br>보기 ㄴ과 ㅁ만 이 수로 나누어떨어진다.<br>따라서 정답은 ②.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
@@ -191,7 +191,7 @@ window.questionBank = [
       "6"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "4, 9, 12의 최소공배수는 36이므로 $4x$, $9x$, $12x$의 최소공배수는 $36x$이다.<br>$36x=108$에서 $x=3$이다. 정답은 ②.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
@@ -219,7 +219,7 @@ window.questionBank = [
       "6개"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "$n$은 24와 56의 공약수이다. 두 수의 최대공약수는 8이므로 공약수는 1, 2, 4, 8이다.<br>1보다 큰 수는 2, 4, 8의 3개이다. 정답은 ②.",
     "subUnitKey": "M1-01-GCD_LCM",
     "subUnit": "최대공약수와 최소공배수",
     "subUnitConfidence": "rule_inferred",
@@ -247,7 +247,7 @@ window.questionBank = [
       "준비물 구입으로 $1500$원을 지출하였다. $\\Rightarrow\\ +1500$원"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
+    "solution": "지출은 돈이 감소하는 상황이므로 음수로 나타낸다.<br>⑤의 1500원 지출은 $-1500$원으로 써야 한다. 정답은 ⑤.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -275,7 +275,7 @@ window.questionBank = [
       "절댓값이 같은 서로 다른 두 수의 합은 $0$이다."
     ],
     "answer": "②, ⑤",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②, ⑤이다.",
+    "solution": "① $|0|=0$이므로 거짓이다. ② $|5-3|=|3-5|=2$로 참이다.<br>③ 절댓값이 0인 수는 하나이며, ④ 절댓값의 최솟값은 0이므로 둘 다 거짓이다.<br>⑤ 절댓값이 같은 서로 다른 두 수는 부호가 반대이므로 합이 0이다.<br>따라서 정답은 ②, ⑤.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -303,7 +303,7 @@ window.questionBank = [
       "$x$는 $-1$ 이상이고 $2$보다 크지 않다. $\\Rightarrow\\ -1\\le x<2$"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
+    "solution": "'2보다 크지 않다'는 $x\\le2$라는 뜻이다.<br>⑤는 이를 $x<2$라고 표현하였으므로 잘못되었다. 바른 표현은 $-1\\le x\\le2$이다. 정답은 ⑤.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -331,7 +331,7 @@ window.questionBank = [
       "㉠ 덧셈의 결합법칙, ㉡ 덧셈의 결합법칙"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "㉠은 덧셈에서 수의 순서를 바꾼 교환법칙이다.<br>㉡은 더하는 수를 묶는 방법을 바꾼 결합법칙이다.<br>따라서 정답은 ②.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -359,7 +359,7 @@ window.questionBank = [
       "$-\\dfrac{7}{2}-\\left(-\\dfrac{1}{3}\\right)+\\dfrac{1}{6}$"
     ],
     "answer": "⑤",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ⑤이다.",
+    "solution": "① $-3+6=3$, ② $2-(-1)=3$, ③ $-1-3+7=3$이다.<br>④ $\\dfrac13-\\dfrac14+\\dfrac{35}{12}=\\dfrac{4-3+35}{12}=3$이다.<br>⑤ $-\\dfrac72+\\dfrac13+\\dfrac16=-3$이므로 정답은 ⑤.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -387,7 +387,7 @@ window.questionBank = [
       "$\\left(+\\dfrac{3}{4}\\right)\\times\\left(-\\dfrac{2}{9}\\right)=+\\dfrac{1}{6}$"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "① $(-3)\\times0=0$, ② $2\\times(-3)=-6$이다.<br>③ $\\left(-\\dfrac83\\right)\\times\\dfrac14=-\\dfrac23$으로 옳다.<br>④ 결과는 $\\dfrac49$, ⑤ 결과는 $-\\dfrac16$이므로 정답은 ③.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -415,7 +415,7 @@ window.questionBank = [
       "$-20$"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "$(-3)^3=-27$, $(-1)^{99}=-1$, $(-2^2)=-4$이다.<br>따라서 $-27-(-1)-4=-30$이므로 정답은 ②.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -443,7 +443,7 @@ window.questionBank = [
       "9"
     ],
     "answer": "②",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ②이다.",
+    "solution": "$7.5=\\dfrac{15}{2}$의 역수는 $A=\\dfrac{2}{15}$이고, $-\\dfrac56$의 역수는 $B=-\\dfrac65$이다.<br>$A:B=\\dfrac{2}{15}\\div\\left(-\\dfrac65\\right)=-\\dfrac19$이므로 정답은 ②.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -471,7 +471,7 @@ window.questionBank = [
       "$a\\times b$"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "$b<0$이므로 $a-b=a+(-b)>a>0$이다.<br>다른 식 $b$, $b-a$, $ab$는 모두 음수이므로 가장 큰 것은 $a-b$이다. 정답은 ③.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -499,7 +499,7 @@ window.questionBank = [
       "$(x^2-4000)$원"
     ],
     "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "solution": "사과 2개는 $2x$원, 귤 2개는 1000원이다.<br>거스름돈은 $5000-(2x+1000)=4000-2x$원이므로 정답은 ①.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -527,7 +527,7 @@ window.questionBank = [
       "10"
     ],
     "answer": "①",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ①이다.",
+    "solution": "$3x^2-5x+7$에서 $a=-5$, $b=2$, $c=7$이다.<br>$a+b-c=-5+2-7=-10$이므로 정답은 ①.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -555,7 +555,7 @@ window.questionBank = [
       "17"
     ],
     "answer": "③",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 ③이다.",
+    "solution": "$2A-3B=2(3x+1)-3(2-x)=9x-4$이다.<br>$x$의 계수와 상수항의 합은 $9+(-4)=5$이므로 정답은 ③.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
@@ -579,7 +579,7 @@ window.questionBank = [
     "content": "126에 자연수를 곱하여 어떤 자연수의 제곱이 되도록 할 때, 곱할 수 있는 가장 작은 자연수를 구하고, 그 과정을 서술하시오.",
     "choices": [],
     "answer": "14",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 14이다.",
+    "solution": "$126=2\\times3^2\\times7$이다. 자연수의 제곱은 모든 소인수의 지수가 짝수이다.<br>2와 7을 곱하면 $126\\times14=2^2\\times3^2\\times7^2=42^2$가 된다.<br>가장 작은 자연수는 14이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -603,7 +603,7 @@ window.questionBank = [
     "content": "세 수 $50$, $72$, $132$의 최대공약수와 최소공배수를 각각 소인수의 곱으로 나타내고, 그 과정을 서술하시오.",
     "choices": [],
     "answer": "최대공약수: $2$, 최소공배수: $2^3\\times3^2\\times5^2\\times11$",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 최대공약수: $2$, 최소공배수: $2^3\\times3^2\\times5^2\\times11$이다.",
+    "solution": "$50=2\\times5^2$, $72=2^3\\times3^2$, $132=2^2\\times3\\times11$이다.<br>공통 소인수의 지수 최솟값을 취하면 최대공약수는 $2$이다.<br>소인수의 지수 최댓값을 취하면 최소공배수는 $2^3\\times3^2\\times5^2\\times11$이다.",
     "subUnitKey": "M1-01-PRIME_FACTORIZATION",
     "subUnit": "소인수분해",
     "subUnitConfidence": "rule_inferred",
@@ -627,7 +627,7 @@ window.questionBank = [
     "content": "다음 수 중에서 양의 유리수의 개수를 $a$개, 음의 정수의 개수를 $b$개, 정수가 아닌 유리수의 개수를 $c$개라 할 때, $a+b-c$의 값을 구하고, 그 과정을 서술하시오.<br><div style='display:inline-block; margin:10px 0 6px 0; padding:8px 14px; border:1px solid #333; border-radius:4px; line-height:1.8;'>$-3,\\;0,\\;\\dfrac{5}{2},\\;8,\\;-2,\\;1.4,\\;-0.6,\\;+\\dfrac{12}{3}$</div>",
     "choices": [],
     "answer": "3",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 3이다.",
+    "solution": "양의 유리수는 $\\dfrac52$, 8, 1.4, $\\dfrac{12}{3}$으로 4개이다.<br>음의 정수는 $-3$, $-2$로 2개이다.<br>정수가 아닌 유리수는 $\\dfrac52$, 1.4, $-0.6$으로 3개이다.<br>$a+b-c=4+2-3=3$이다.",
     "subUnitKey": "M1-02-INTEGER_RATIONAL_NUMBER",
     "subUnit": "정수와 유리수의 뜻",
     "subUnitConfidence": "rule_inferred",
@@ -651,7 +651,7 @@ window.questionBank = [
     "content": "어떤 수에 $\\dfrac{1}{3}$을 더해야 할 것을 잘못하여 뺐더니 그 결과가 $-\\dfrac{7}{2}$이 되었다. 이때 바르게 계산한 답을 구하고, 그 과정을 서술하시오.",
     "choices": [],
     "answer": "$-\\dfrac{17}{6}$",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 $-\\dfrac{17}{6}$이다.",
+    "solution": "어떤 수를 $x$라고 하면 $x-\\dfrac13=-\\dfrac72$이다.<br>$x=-\\dfrac72+\\dfrac13=-\\dfrac{19}{6}$이다.<br>따라서 바르게 더한 값은 $x+\\dfrac13=-\\dfrac{17}{6}$이다.",
     "subUnitKey": "M1-02-RATIONAL_NUMBER_OPERATIONS",
     "subUnit": "정수와 유리수의 계산",
     "subUnitConfidence": "rule_inferred",
@@ -677,7 +677,7 @@ window.questionBank = [
     "image": "assets/images/AP수학학원_1학기_중간_중1_모의고사_1회/q25.png",
     "choices": [],
     "answer": "(1) $\\dfrac{1}{2}(a+b)h\\ \\mathrm{cm}^2$  (2) $72\\ \\mathrm{cm}^2$",
-    "solution": "[JS 기준 풀이] 절댓값의 경계점을 기준으로 구간을 나누어 부등식을 풀고, 문제에서 요구한 정수·구간 조건을 적용한다. 계산 결과는 (1) $\\dfrac{1}{2}(a+b)h\\ \\mathrm{cm}^2$  (2) $72\\ \\mathrm{cm}^2$이다.",
+    "solution": "(1) 사다리꼴 넓이는 $\\dfrac12\\times(\\text{윗변}+\\text{아랫변})\\times\\text{높이}$이므로 $\\dfrac12(a+b)h\\ \\mathrm{cm}^2$이다.<br>(2) $\\dfrac12(7+11)\\times8=72\\ \\mathrm{cm}^2$이다.",
     "subUnitKey": "M1-03-ALGEBRAIC_EXPRESSION",
     "subUnit": "문자의 사용과 식의 값",
     "subUnitConfidence": "rule_inferred",
