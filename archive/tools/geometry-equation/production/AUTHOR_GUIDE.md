@@ -63,6 +63,12 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - plan.json에는 `sourceQuote`(위 4), `sourceConditions`, `newVisualInformation`(그림이 새로 보여 주는 정보)을 넣는다.
 - 그림이 필요 없으면 plan 파일 없이 문항만 낸다. 이유는 notes에 한 줄로 쓴다.
 
+## 8. plan을 직접 그려 보기
+
+- 저장소 루트에서 `node archive/tools/geometry-equation/production/render-plan.mjs --item item.json --plan plan.json --out out/` 한 번으로 그린다. `item.json`은 `{"sourcePath":"archive/exams/....js","ordinal":3}`.
+- 결과는 `out/figure-result.json`의 `status`: `ARCHIVE_BOUND`(그림 `figure-solution.svg` 완성), `EXEMPT`/`UNSUPPORTED`(작성자 판단 그대로), `FAILED`(`stage`와 엔진 오류 `detail`을 보고 6에 따라 고친다).
+- 독립 관측기 검사는 이 안에서 함께 돈다. 시험지 해설 페이지 열림 검증은 하지 않는다.
+
 ## plan 계약 전문
 
 아래는 엔진이 받는 plan 형식의 정본이다(phase2.mjs의 계약 문구 그대로). 위 지침의 규칙은 이 계약을 쉽게 풀어 쓴 것이다.
