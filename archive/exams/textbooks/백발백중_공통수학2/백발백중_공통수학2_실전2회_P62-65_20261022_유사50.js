@@ -42,9 +42,7 @@ window.questionBank = [
     "L4": "삼각형 무게중심의 원 자취와 둘레",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q06-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "PDF 인쇄 P62 Q06: 두 고정점과 원 위의 점으로 만든 삼각형 무게중심 자취의 둘레. 발문·축소 1/3·둘레 구조 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q06-T1-R3-solution.svg",
@@ -93,9 +91,7 @@ window.questionBank = [
     "L4": "삼각형 무게중심의 원 자취와 둘레",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q06-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "PDF 인쇄 P62 Q06: 두 고정점과 원 위의 점으로 만든 삼각형 무게중심 자취의 둘레. 발문·축소 1/3·둘레 구조 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q06-S1-R3-solution.svg",
@@ -144,9 +140,7 @@ window.questionBank = [
     "L4": "삼각형 무게중심의 원 자취와 둘레",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q06-S2-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "PDF 인쇄 P62 Q06: 두 고정점과 원 위의 점으로 만든 삼각형 무게중심 자취의 둘레. 발문·축소 1/3·둘레 구조 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q06-S2-R3-solution.svg",
@@ -195,9 +189,7 @@ window.questionBank = [
     "L4": "한 원이 다른 원의 둘레를 이등분하는 조건과 중심거리",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q07-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_EXACT_INTERSECTION_COUNT"],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "원본 PDF 인쇄 P62 Q07: 두 원의 교점이 한 원의 지름 양 끝점인 조건, 직각삼각형 중심거리 계산 구조 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q07-T1-R3-solution.svg",
@@ -246,9 +238,7 @@ window.questionBank = [
     "L4": "한 원이 다른 원의 둘레를 이등분하는 조건과 중심거리",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q07-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_EXACT_INTERSECTION_COUNT"],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "원본 PDF 인쇄 P62 Q07: 두 원의 교점이 한 원의 지름 양 끝점인 조건, 직각삼각형 중심거리 계산 구조 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q07-S1-R3-solution.svg",
@@ -297,9 +287,7 @@ window.questionBank = [
     "L4": "한 원이 다른 원의 둘레를 이등분하는 조건과 중심거리",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q07-S2-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_EXACT_INTERSECTION_COUNT"],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "원본 PDF 인쇄 P62 Q07: 두 원의 교점이 한 원의 지름 양 끝점인 조건, 직각삼각형 중심거리 계산 구조 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q07-S2-R3-solution.svg",
@@ -348,9 +336,7 @@ window.questionBank = [
     "L4": "접선 길이의 제곱과 점·직선 거리의 최솟값",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q08-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "원본 PDF 인쇄 P62 Q08: 원 위의 접선과 외부 직선 교점의 거리 제곱 최솟값. 직각삼각형과 점-직선 거리 구조 보존.",
     "image": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q08-T1-R3-problem.svg",
@@ -402,9 +388,7 @@ window.questionBank = [
     "L4": "접선 길이의 제곱과 점·직선 거리의 최솟값",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q08-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "원본 PDF 인쇄 P62 Q08: 원 위의 접선과 외부 직선 교점의 거리 제곱 최솟값. 직각삼각형과 점-직선 거리 구조 보존.",
     "image": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q08-S1-R3-problem.svg",
@@ -456,9 +440,7 @@ window.questionBank = [
     "L4": "접선 길이의 제곱과 점·직선 거리의 최솟값",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q08-S2-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "원본 PDF 인쇄 P62 Q08: 원 위의 접선과 외부 직선 교점의 거리 제곱 최솟값. 직각삼각형과 점-직선 거리 구조 보존.",
     "image": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q08-S2-R3-problem.svg",
@@ -510,9 +492,7 @@ window.questionBank = [
     "L4": "두 교점을 지나는 원의 최소 넓이와 현의 길이",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q09-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P62 Q09: 원과 직선의 두 교점을 지나는 원 중 넓이 최소. 공통현의 반길이와 점-직선 거리 제곱으로 최소 넓이 산출; 원본 구조 유지.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q09-T1-R3-solution.svg",
@@ -561,9 +541,7 @@ window.questionBank = [
     "L4": "두 교점을 지나는 원의 최소 넓이와 현의 길이",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q09-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P62 Q09: 원과 직선의 두 교점을 지나는 원 중 넓이 최소. 공통현의 반길이와 점-직선 거리 제곱으로 최소 넓이 산출; 원본 구조 유지.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q09-S1-R3-solution.svg",
@@ -612,9 +590,7 @@ window.questionBank = [
     "L4": "두 교점을 지나는 원의 최소 넓이와 현의 길이",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q09-S2-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P62 Q09: 원과 직선의 두 교점을 지나는 원 중 넓이 최소. 공통현의 반길이와 점-직선 거리 제곱으로 최소 넓이 산출; 원본 구조 유지.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q09-S2-R3-solution.svg",
@@ -663,9 +639,7 @@ window.questionBank = [
     "L4": "접선 사잇각과 원 중심까지 거리로 매개변수 결정",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q10-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_NEGATIVE"],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P62 Q10: x축의 음의 점에서 중심이 y축에 있는 원으로 그은 두 접선의 사잇각 60°, 직각삼각형과 음수 조건으로 a 결정. 핵심 구조 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q10-T1-R3-solution.svg",
@@ -714,9 +688,7 @@ window.questionBank = [
     "L4": "접선 사잇각과 원 중심까지 거리로 매개변수 결정",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q10-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_NEGATIVE"],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P62 Q10: x축의 음의 점에서 중심이 y축에 있는 원으로 그은 두 접선의 사잇각 60°, 직각삼각형과 음수 조건으로 a 결정. 핵심 구조 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q10-S1-R3-solution.svg",
@@ -765,9 +737,7 @@ window.questionBank = [
     "L4": "접선 사잇각과 원 중심까지 거리로 매개변수 결정",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P62-Q10-S2-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_NEGATIVE"],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P62 Q10: x축의 음의 점에서 중심이 y축에 있는 원으로 그은 두 접선의 사잇각 60°, 직각삼각형과 음수 조건으로 a 결정. 핵심 구조 보존.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P62-Q10-S2-R3-solution.svg",
@@ -816,9 +786,7 @@ window.questionBank = [
     "L4": "점과 직선 사이 거리 부등식과 정수 매개변수 개수",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q11-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_INTEGER"],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P63 Q11: 원의 중심과 반지름이 매개변수 a에 의존하고, 직선과의 교점 존재 조건에서 정수 a 개수를 세는 원본 구조 유지. 접점 포함.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q11-T1-R3-solution.svg",
@@ -867,9 +835,7 @@ window.questionBank = [
     "L4": "점과 직선 사이 거리 부등식과 정수 매개변수 개수",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q11-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_INTEGER"],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P63 Q11: 원의 중심과 반지름이 매개변수 a에 의존하고, 직선과의 교점 존재 조건에서 정수 a 개수를 세는 원본 구조 유지. 접점 포함.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q11-S1-R3-solution.svg",
@@ -918,9 +884,7 @@ window.questionBank = [
     "L4": "점과 직선 사이 거리 부등식과 정수 매개변수 개수",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q11-S2-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_INTEGER"],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P63 Q11: 원의 중심과 반지름이 매개변수 a에 의존하고, 직선과의 교점 존재 조건에서 정수 a 개수를 세는 원본 구조 유지. 접점 포함.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q11-S2-R3-solution.svg",
@@ -969,9 +933,7 @@ window.questionBank = [
     "L4": "현의 길이로 중심거리 구하기와 절댓값 매개변수 두 해의 합",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q12-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P63 Q12: 원의 중심·반지름과 직선 y=2x+k, 현의 길이 4, 두 실수 k의 합을 구하는 구조 유지. 중심 좌표만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q12-T1-R3-solution.svg",
@@ -1020,9 +982,7 @@ window.questionBank = [
     "L4": "현의 길이로 중심거리 구하기와 절댓값 매개변수 두 해의 합",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q12-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P63 Q12: 원의 중심·반지름과 직선 y=2x+k, 현의 길이 4, 두 실수 k의 합을 구하는 구조 유지. 중심 좌표만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q12-S1-R3-solution.svg",
@@ -1071,9 +1031,7 @@ window.questionBank = [
     "L4": "현의 길이로 중심거리 구하기와 절댓값 매개변수 두 해의 합",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q12-S2-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P63 Q12: 원의 중심·반지름과 직선 y=2x+k, 현의 길이 4, 두 실수 k의 합을 구하는 구조 유지. 중심 좌표만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q12-S2-R3-solution.svg",
@@ -1122,9 +1080,7 @@ window.questionBank = [
     "L4": "접선 길이와 중심거리의 피타고라스 관계 및 부호 조건",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q13-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_NEGATIVE"],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P63 Q13: T(0,t), 접점 P, 접선 길이 8형, t<0을 이용해 음의 해 선택. 수치 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q13-T1-R3-solution.svg",
@@ -1173,9 +1129,7 @@ window.questionBank = [
     "L4": "접선 길이와 중심거리의 피타고라스 관계 및 부호 조건",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q13-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_NEGATIVE"],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P63 Q13: T(0,t), 접점 P, 접선 길이 8형, t<0을 이용해 음의 해 선택. 수치 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q13-S1-R3-solution.svg",
@@ -1224,9 +1178,7 @@ window.questionBank = [
     "L4": "접선 길이와 중심거리의 피타고라스 관계 및 부호 조건",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q13-S2-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_NEGATIVE"],
     "integrationPattern": "CONCEPT_CALCULATION",
     "metaRationale": "인쇄 P63 Q13: T(0,t), 접점 P, 접선 길이 8형, t<0을 이용해 음의 해 선택. 수치 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q13-S2-R3-solution.svg",
@@ -1275,9 +1227,7 @@ window.questionBank = [
     "L4": "접선의 y축 교점과 선분 길이 관계로 기울기 결정",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q14-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P63 Q14: 외부점에서 그은 두 접선의 y축 교점 A/B, y=mx와 선분 AP의 교점 Q, 길이 관계에서 m 산출. 원본 그림 조건을 글로 명시한 수치 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q14-T1-R3-solution.svg",
@@ -1326,9 +1276,7 @@ window.questionBank = [
     "L4": "접선의 y축 교점과 선분 길이 관계로 기울기 결정",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q14-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P63 Q14: 외부점에서 그은 두 접선의 y축 교점 A/B, y=mx와 선분 AP의 교점 Q, 길이 관계에서 m 산출. 원본 그림 조건을 글로 명시한 수치 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q14-S1-R3-solution.svg",
@@ -1377,9 +1325,7 @@ window.questionBank = [
     "L4": "접선의 y축 교점과 선분 길이 관계로 기울기 결정",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q14-S2-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P63 Q14: 외부점에서 그은 두 접선의 y축 교점 A/B, y=mx와 선분 AP의 교점 Q, 길이 관계에서 m 산출. 원본 그림 조건을 글로 명시한 수치 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q14-S2-R3-solution.svg",
@@ -1428,9 +1374,7 @@ window.questionBank = [
     "L4": "원의 반지름과 원 위 점에서 직선까지의 최대 거리의 합",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q15-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P63 Q15: 세 점으로 원을 확정하고 원 위의 점과 직선 사이 최대 거리 M을 계산해 r+M 산출. 좌표·직선 수치만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q15-T1-R3-solution.svg",
@@ -1479,9 +1423,7 @@ window.questionBank = [
     "L4": "원의 반지름과 원 위 점에서 직선까지의 최대 거리의 합",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q15-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P63 Q15: 세 점으로 원을 확정하고 원 위의 점과 직선 사이 최대 거리 M을 계산해 r+M 산출. 좌표·직선 수치만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q15-S1-R3-solution.svg",
@@ -1530,9 +1472,7 @@ window.questionBank = [
     "L4": "원의 반지름과 원 위 점에서 직선까지의 최대 거리의 합",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P63-Q15-S2-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P63 Q15: 세 점으로 원을 확정하고 원 위의 점과 직선 사이 최대 거리 M을 계산해 r+M 산출. 좌표·직선 수치만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P63-Q15-S2-R3-solution.svg",
@@ -1581,9 +1521,7 @@ window.questionBank = [
     "L4": "기울기가 다른 두 쌍의 접선이 만드는 사각형의 넓이",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P64-Q16-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P64 Q16: 원에 접하는 두 쌍의 평행선이 만드는 사각형 넓이. 기울기 2와 -2를 유지하고 반지름만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P64-Q16-T1-R3-solution.svg",
@@ -1632,9 +1570,7 @@ window.questionBank = [
     "L4": "기울기가 다른 두 쌍의 접선이 만드는 사각형의 넓이",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P64-Q16-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P64 Q16: 원에 접하는 두 쌍의 평행선이 만드는 사각형 넓이. 기울기 2와 -2를 유지하고 반지름만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P64-Q16-S1-R3-solution.svg",
@@ -1683,9 +1619,7 @@ window.questionBank = [
     "L4": "접선 함수값 곱의 불변식",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P64-Q17-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_NONZERO"],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P64 Q17: 원 위의 점에서 접선을 함수로 나타내고 f(-r)f(r)를 계산하는 구조. 수직 접선 배제 조건을 명시.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P64-Q17-T1-R3-solution.svg",
@@ -1734,9 +1668,7 @@ window.questionBank = [
     "L4": "접선 함수값 곱의 불변식",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P64-Q17-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_NONZERO"],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P64 Q17: 원 위의 점에서 접선을 함수로 나타내고 f(-r)f(r)를 계산하는 구조. 수직 접선 배제 조건을 명시.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P64-Q17-S1-R3-solution.svg",
@@ -1785,9 +1717,7 @@ window.questionBank = [
     "L4": "각의 이등분선에서 중심까지 거리로 현 길이 구하기",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P64-Q18-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P64 Q18: 접선의 접점 B와 ∠AOB 이등분선이 원에서 만드는 현의 길이. 숫자만 변형; 원점-중심 직선의 지름으로 단순화하지 않음.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P64-Q18-T1-R3-solution.svg",
@@ -1836,9 +1766,7 @@ window.questionBank = [
     "L4": "각의 이등분선에서 중심까지 거리로 현 길이 구하기",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P64-Q18-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P64 Q18: 접선의 접점 B와 ∠AOB 이등분선이 원에서 만드는 현의 길이. 숫자만 변형; 원점-중심 직선의 지름으로 단순화하지 않음.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P64-Q18-S1-R3-solution.svg",
@@ -1887,9 +1815,7 @@ window.questionBank = [
     "L4": "접점 연결선과 점 사이 거리로 음수 매개변수 구하기",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P64-Q19-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_NEGATIVE"],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P64 Q19: 외부점의 두 접점 연결선과 (0,k) 사이 거리, k<0 조건. 점 좌표·원 반지름·거리만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P64-Q19-T1-R3-solution.svg",
@@ -1938,9 +1864,7 @@ window.questionBank = [
     "L4": "접점 연결선과 점 사이 거리로 음수 매개변수 구하기",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P64-Q19-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_NEGATIVE"],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 P64 Q19: 외부점의 두 접점 연결선과 (0,k) 사이 거리, k<0 조건. 점 좌표·원 반지름·거리만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P64-Q19-S1-R3-solution.svg",
@@ -1989,9 +1913,7 @@ window.questionBank = [
     "L4": "원 위의 점의 좌표비 $y/x$의 최댓값·최솟값과 접선 기울기",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P64-Q20-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "원본 P64 Q20은 원 위의 점에서 y/x의 최대·최소를 접선 기울기로 구하는 구조. 반지름·중심과 합/곱 목표만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P64-Q20-T1-R3-solution.svg",
@@ -2040,9 +1962,7 @@ window.questionBank = [
     "L4": "원 위의 점의 좌표비 $y/x$의 최댓값·최솟값과 접선 기울기",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P64-Q20-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "원본 P64 Q20은 원 위의 점에서 y/x의 최대·최소를 접선 기울기로 구하는 구조. 반지름·중심과 합/곱 목표만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P64-Q20-S1-R3-solution.svg",
@@ -2091,9 +2011,7 @@ window.questionBank = [
     "L4": "두 좌표축에 접하는 원의 중심 사이의 거리",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P65-Q21-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 원본 P65 Q21의 좌표축 동시접원 두 중심거리 구조를 유지하되 통과점 (2,1)→(3,1)로 변형. 반지름 이차방정식의 양의 두 근과 중심거리 계산.",
     "image": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P65-Q21-T1-R3-problem.svg",
@@ -2145,9 +2063,7 @@ window.questionBank = [
     "L4": "두 좌표축에 접하는 두 원의 반지름 합",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P65-Q21-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "인쇄 원본 P65 Q21은 점 (2,1)을 지나는 두 좌표축 접원. T1/S1은 중심거리/반지름합으로 결과 목표만 변형하며 이차방정식 풀이구조를 유지.",
     "image": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P65-Q21-S1-R3-problem.svg",
@@ -2199,9 +2115,7 @@ window.questionBank = [
     "L4": "두 원의 공통접선 거리조건과 부호 분기",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P65-Q22-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "원본 인쇄 P65 Q22: 두 원에 동시에 접하는 직선 y=mx+n, m,n>0에서 mn 계산. 반지름·중심거리만 바꾸어 두 접선거리 조건과 부호 분기 구조 보존. 원본 PDF 텍스트 확인, 이미지 NOT_RUN.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P65-Q22-T1-R3-solution.svg",
@@ -2250,9 +2164,7 @@ window.questionBank = [
     "L4": "두 원의 공통접선 거리조건과 부호 분기",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P65-Q22-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "원본 인쇄 P65 Q22: 두 원에 동시에 접하는 직선 y=mx+n, m,n>0에서 mn 계산. 반지름·중심거리만 바꾸어 두 접선거리 조건과 부호 분기 구조 보존. 원본 PDF 텍스트 확인, 이미지 NOT_RUN.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P65-Q22-S1-R3-solution.svg",
@@ -2301,9 +2213,7 @@ window.questionBank = [
     "L4": "서로 수직인 두 지름의 직선 방정식과 계수 곱",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P65-Q23-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "원본 인쇄 P65 Q23의 원의 넓이를 4등분하는 두 직선 조건과 abc 계산을 보존. 중심·반지름 수치만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P65-Q23-T1-R3-solution.svg",
@@ -2352,9 +2262,7 @@ window.questionBank = [
     "L4": "서로 수직인 두 지름의 직선 방정식과 계수 곱",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P65-Q23-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "원본 인쇄 P65 Q23의 원의 넓이를 4등분하는 두 직선 조건과 abc 계산을 보존. 중심·반지름 수치만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P65-Q23-S1-R3-solution.svg",
@@ -2403,9 +2311,7 @@ window.questionBank = [
     "L4": "서로 수직인 두 지름의 직선 방정식과 계수 곱",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P65-Q23-S2-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": [],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "원본 인쇄 P65 Q23의 원의 넓이를 4등분하는 두 직선 조건과 abc 계산을 보존. 중심·반지름 수치만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P65-Q23-S2-R3-solution.svg",
@@ -2454,9 +2360,7 @@ window.questionBank = [
     "L4": "원 밖의 점에서 원 위 점까지 거리의 최댓값·최솟값 곱",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P65-Q24-T1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "원본 인쇄 P65 Q24의 두 점을 지나는 반지름 고정 원과 원점에서 원 위 점까지의 최장·최단 거리 곱을 보존. 두 통과점의 좌표만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P65-Q24-T1-R3-solution.svg",
@@ -2505,9 +2409,7 @@ window.questionBank = [
     "L4": "원 밖의 점에서 원 위 점까지 거리의 최댓값·최솟값 곱",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P65-Q24-S1-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "원본 인쇄 P65 Q24의 두 점을 지나는 반지름 고정 원과 원점에서 원 위 점까지의 최장·최단 거리 곱을 보존. 두 통과점의 좌표만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P65-Q24-S1-R3-solution.svg",
@@ -2556,9 +2458,7 @@ window.questionBank = [
     "L4": "원 밖의 점에서 원 위 점까지 거리의 최댓값·최솟값 곱",
     "problemTypeKey": "H22-C2-03-CIRCLE_EQUATION-TYPE",
     "templateKey": "TMPL-BV-BAKBAL-H-COM2-P65-Q24-S2-R3",
-    "conditionKeys": [
-      "H22-C2-03-CIRCLE_EQUATION"
-    ],
+    "conditionKeys": ["COND_POSITIVE"],
     "integrationPattern": "GEOMETRY_ALGEBRA",
     "metaRationale": "원본 인쇄 P65 Q24의 두 점을 지나는 반지름 고정 원과 원점에서 원 위 점까지의 최장·최단 거리 곱을 보존. 두 통과점의 좌표만 변형.",
     "solutionImage": "assets/images/백발백중_공통수학2_실전2회_P62-65_20261022_유사50/BV-BAKBAL-H-COM2-P65-Q24-S2-R3-solution.svg",
