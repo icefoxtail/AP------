@@ -1,0 +1,158 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "600\\,\\mathrm{m} 상공에 떠 있는 열기구에서 두 지점 A, B를 내려다본 각",
+  "sourceConditions": [
+    {
+      "id": "q24-c1",
+      "condition": "열기구 P의 높이 PH=600",
+      "mappedTo": "seg-PH"
+    }
+  ],
+  "newVisualInformation": [
+    "열기구 P와 지면의 두 지점 A, B의 앙각/내려다본 각 배치"
+  ],
+  "caption": "지면에서 높이 600m에 있는 열기구 P와 두 지점 A, B",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-q24-PH",
+        "sourceConditionId": "q24-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "H",
+          "P"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-PH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "P",
+    "H",
+    "A",
+    "B"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-H",
+      "refs": [
+        "P",
+        "H",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import {fileURLToPath} from 'node:url';
 import {objectSha,bytesSha} from '../../pipeline-core/canonical.mjs';
 import {pythonWorker} from './worker.mjs';
+import {pointNameModel} from './point-names.mjs';
 import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
@@ -189,10 +190,12 @@ export const figurePanelSize=model=>({width:WIDTH,height:figureLayout(model).hei
  * The figure before typesetting: one shared unit-to-px map, per row the axis, bands, dots, ticks and every label with its TeX and anchor.
  * Deterministic: the same plan and model give the same spec.
  */
+/** plan.pointNames checked against the POINTS rows of the solved figure (an unknown target or an invalid display name is an explicit error). */
+export const figurePointNames=(plan,model)=>pointNameModel(plan,model.rows.flatMap(row=>row.kind==='POINTS'?row.points.map(point=>point.id):[]));
 export function numberLineFigureSpec(plan,model){
   if(plan?.capability!==NUMBER_LINE_CAPABILITY||!plan.numberLine)bad('NUMBER_LINE_PLAN_INVALID');
   if(objectSha(solveNumberLineFigure(plan.numberLine))!==objectSha(model))bad('NUMBER_LINE_MODEL_MISMATCH');
-  const finite=[];
+  const names=figurePointNames(plan,model),finite=[];
   for(const row of model.rows){
     if(row.kind==='POINTS')finite.push(...row.points.map(point=>point.approx));
     else{for(const piece of row.pieces)for(const end of [piece.lower,piece.upper])if(end)finite.push(end.approx);finite.push(...(row.integers??[]).map(Number));}
@@ -217,7 +220,7 @@ export function numberLineFigureSpec(plan,model){
       bands.push({id:`r${n}-band-1`,piece:1,x1:sorted[0].x,x2:sorted[sorted.length-1].x,y:axisY,from:sorted[0].value,to:sorted[sorted.length-1].value});
       for(const point of placed){
         dots.push({id:`r${n}-pt-${point.id}`,role:'point',value:point.value,state:'CLOSED',x:point.x,y:axisY,r:END_RADIUS,pointId:point.id});
-        labels.push({id:`r${n}-pt-${point.id}-name`,role:'point-name',owner:`r${n}-pt-${point.id}`,kind:'MATH',tex:point.id,plain:point.id,value:point.id,anchor:{x:point.x,y:r6(axisY-END_RADIUS-4),align:'above'},rowHeight:30,row:n});
+        labels.push({id:`r${n}-pt-${point.id}-name`,role:'point-name',owner:`r${n}-pt-${point.id}`,kind:'MATH',tex:names.tex(point.id),plain:names.text(point.id),value:point.id,anchor:{x:point.x,y:r6(axisY-END_RADIUS-4),align:'above'},rowHeight:30,row:n});
         labels.push({id:`r${n}-pt-${point.id}-value`,role:'point-value',owner:`r${n}-pt-${point.id}`,kind:'MATH',tex:DISPLAY+point.tex,plain:point.text,value:point.value,anchor:{x:point.x,y:r6(axisY+END_RADIUS+LABEL_GAP),align:'below'},rowHeight:belowRow,row:n});
       }
       // The ratio of an internal division: m over A..P and n over P..B (the numbers the author gave).
@@ -309,7 +312,7 @@ export async function composeNumberLineFigurePanel({plan,model,identity,typograp
     lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
     if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-number-line-'+Date.now()+'.svg',svg);
     let response;
-    try{response=await pythonWorker({numberLine:plan.numberLine,svg},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'numberLineAudit',code:String(error?.message??error)});}
+    try{response=await pythonWorker({numberLine:plan.numberLine,svg,...(plan.pointNames!==undefined?{pointNames:plan.pointNames}:{})},{script:OBSERVER_SCRIPT});}catch(error){throw new Stop('WORKER_ERROR',{stage:'numberLineAudit',code:String(error?.message??error)});}
     if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'numberLineAudit',code:response?.result?.code??null});
     const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
     const errors=[...(audit.errors??[])];
@@ -344,8 +347,8 @@ function caption(value,fallback){
  */
 export function expandNumberLineFigure(plan){
   if(plan?.capability!==FIGURE_CAPABILITY||!isPlain(plan.numberLine))bad('NUMBER_LINE_FIGURE_PLAN_INVALID');
-  onlyKeys(plan,['capability','numberLine','numberLineCaption','caption','sourceConditions','newVisualInformation'],'NUMBER_LINE_FIGURE_PLAN_INVALID');
-  solveNumberLineFigure(plan.numberLine);
-  return {capability:'composite-panels-v1',chain:FIGURE_CAPABILITY,panels:[{caption:caption(plan.numberLineCaption,{text:'수직선 위의 범위'}),plan:{capability:NUMBER_LINE_CAPABILITY,numberLine:plan.numberLine}}],
+  onlyKeys(plan,['capability','numberLine','pointNames','numberLineCaption','caption','sourceConditions','newVisualInformation'],'NUMBER_LINE_FIGURE_PLAN_INVALID');
+  figurePointNames(plan,solveNumberLineFigure(plan.numberLine));
+  return {capability:'composite-panels-v1',chain:FIGURE_CAPABILITY,panels:[{caption:caption(plan.numberLineCaption,{text:'수직선 위의 범위'}),plan:{capability:NUMBER_LINE_CAPABILITY,numberLine:plan.numberLine,...(plan.pointNames!==undefined?{pointNames:plan.pointNames}:{})}}],
     caption:plan.caption,sourceConditions:plan.sourceConditions,newVisualInformation:plan.newVisualInformation};
 }

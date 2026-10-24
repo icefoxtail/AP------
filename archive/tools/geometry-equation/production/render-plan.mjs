@@ -16,6 +16,7 @@ import {fileRef} from '../../pipeline-core/canonical.mjs';
 import * as comp from './composite-candidate-svg-v1.mjs';
 import * as chain from './quadratic-inequality-chain-v1.mjs';
 import * as nlf from './number-line-v1.mjs';
+import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../../../').replace(/\\/g,'/')+'/';
@@ -104,6 +105,15 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       }
       const model={panels:panelModels};
       if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
+      // Each graph panel's final SVG must show the display names its plan gives (a number-line panel is read back by its own observer).
+      stage='point-names';
+      const panelSvgs=comp.compositePanelBytes(composed.svg);
+      for(const [i,framed] of framedPanels.entries()){
+        const expectations=planNameExpectations(framed.plan);if(!expectations.length)continue;
+        const bytes=panelSvgs.find(item=>item.panel===i+1)?.bytes;
+        const shown=bytes?observeDisplayedPointNames(bytes.toString('utf8'),expectations):{status:'FAIL',errors:['POINT_DISPLAY_NAME_PANEL_MISSING:'+(i+1)]};
+        if(shown.status!=='PASS')throw {stage,detail:{code:'POINT_DISPLAY_NAME_MISMATCH',panel:i,errors:shown.errors}};
+      }
       stage='capture';
       const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
       if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
@@ -178,6 +188,10 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     }
     row.layoutRepairs=composed.layoutRepairs?.length??0;
     if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
+    // The names the final SVG shows must be the plan's display names (read back from the glyphs, independent of the producer).
+    stage='point-names';
+    const shown=observeDisplayedPointNames(composed.svg,planNameExpectations(plan));
+    if(shown.status!=='PASS')throw {stage,detail:{code:'POINT_DISPLAY_NAME_MISMATCH',errors:shown.errors}};
     stage='capture';
     const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:size,composed,measuredPolicy:measured,alt:plan.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
     if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
