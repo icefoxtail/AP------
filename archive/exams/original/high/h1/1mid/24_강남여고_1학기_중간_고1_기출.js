@@ -1182,7 +1182,11 @@ window.questionBank = [
     "problemVisualDisposition": "EXEMPT",
     "solutionVisualDisposition": "EXEMPT",
     "newVisualInformation": [],
-    "decisiveStep": "−2x²+(x+2)²=−(x−2)²+8"
+    "decisiveStep": "−2x²+(x+2)²=−(x−2)²+8",
+    "solutionImage": "assets/images/24_강남여고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "y=x+2를 대입하면 y=-x^2+4x+4이고, 꼭짓점 V(2, 8)에서 최댓값 8을 갖는다.",
+    "solutionImageCaption": "y=x+2를 대입하면 y=-x^2+4x+4이고, 꼭짓점 V(2, 8)에서 최댓값 8을 갖는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

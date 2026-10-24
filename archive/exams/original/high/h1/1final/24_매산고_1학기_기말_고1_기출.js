@@ -96,7 +96,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "두 점 A, B 사이의 거리는 √13이다.",
+    "solutionImageCaption": "두 점 A, B 사이의 거리는 √13이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -272,7 +276,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_매산고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "AB의 중점의 x좌표 아래 P에서 AP²+BP²이 최소",
+    "solutionImageCaption": "AB의 중점의 x좌표 아래 P에서 AP²+BP²이 최소",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

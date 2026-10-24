@@ -547,7 +547,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "점 (2,3)에서 포물선에 그은 두 접선",
+    "solutionImageCaption": "점 (2,3)에서 포물선에 그은 두 접선",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -759,7 +763,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "구간 -4≤x≤4에서 y=-x²+2x+16의 꼭짓점과 양 끝점",
+    "solutionImageCaption": "구간 -4≤x≤4에서 y=-x²+2x+16의 꼭짓점과 양 끝점",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -958,6 +966,10 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_순천고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "순이익 P(x)의 그래프: x=200일 때 최대",
+    "solutionImageCaption": "순이익 P(x)의 그래프: x=200일 때 최대",
+    "solutionImageSize": "full"
   }
 ];

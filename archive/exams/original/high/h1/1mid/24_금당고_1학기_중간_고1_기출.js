@@ -162,7 +162,11 @@ window.questionBank = [
     "category": "이차함수의 최대최소",
     "originalCategory": "이차함수의 최대최소",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "y=(x-1)^2+4의 그래프: 꼭짓점에서 최솟값 4",
+    "solutionImageCaption": "y=(x-1)^2+4의 그래프: 꼭짓점에서 최솟값 4",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -654,7 +658,11 @@ window.questionBank = [
     "category": "이차함수의 최대최소",
     "originalCategory": "이차함수의 최대최소",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_금당고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "축 x=3에 대칭인 포물선에서 구간 [2,4]의 최솟값은 f(2)=f(4)=4이다.",
+    "solutionImageCaption": "축 x=3에 대칭인 포물선에서 구간 [2,4]의 최솟값은 f(2)=f(4)=4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

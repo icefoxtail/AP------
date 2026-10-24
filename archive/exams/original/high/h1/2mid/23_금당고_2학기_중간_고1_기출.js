@@ -593,7 +593,10 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
     "subUnit": "이차방정식과 이차함수의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q17-solution-graph.svg",
+    "solutionImageAlt": "문항 17 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

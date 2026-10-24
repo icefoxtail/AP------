@@ -223,7 +223,11 @@ window.questionBank = [
       "$\\frac{5}{2}$"
     ],
     "answer": "④",
-    "solution": "부채꼴의 반지름을 $r>0$, 중심각을 $\\theta$라디안이라 하면 호의 길이는 $r\\theta$입니다.\n둘레가 $10$이므로 $2r+r\\theta=10$, 따라서 $\\theta=\\tfrac{10}{r}-2$입니다.\n넓이 $S=\\tfrac12r^2\\theta=\\tfrac12r^2(\\tfrac{10}{r}-2)=5r-r^2$입니다.\n완전제곱식을 만들면 $S=-(r-\\tfrac52)^2+\\tfrac{25}{4}$이므로 $r=\\tfrac52$일 때 최대입니다.\n이때 $\\theta=\\tfrac{10}{5/2}-2=4-2=2$라디안입니다.\n정답은 ④입니다."
+    "solution": "부채꼴의 반지름을 $r>0$, 중심각을 $\\theta$라디안이라 하면 호의 길이는 $r\\theta$입니다.\n둘레가 $10$이므로 $2r+r\\theta=10$, 따라서 $\\theta=\\tfrac{10}{r}-2$입니다.\n넓이 $S=\\tfrac12r^2\\theta=\\tfrac12r^2(\\tfrac{10}{r}-2)=5r-r^2$입니다.\n완전제곱식을 만들면 $S=-(r-\\tfrac52)^2+\\tfrac{25}{4}$이므로 $r=\\tfrac52$일 때 최대입니다.\n이때 $\\theta=\\tfrac{10}{5/2}-2=4-2=2$라디안입니다.\n정답은 ④입니다.",
+    "solutionImage": "assets/images/21_순천고_1학기_중간_고2_수학I/q16-solution.svg",
+    "solutionImageAlt": "반지름 r에 대한 넓이 S=5r-r^2의 그래프: r=5/2에서 최댓값 25/4",
+    "solutionImageCaption": "반지름 r에 대한 넓이 S=5r-r^2의 그래프: r=5/2에서 최댓값 25/4",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

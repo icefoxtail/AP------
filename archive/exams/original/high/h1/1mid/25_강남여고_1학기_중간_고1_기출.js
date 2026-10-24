@@ -280,7 +280,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_강남여고_1학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "꼭짓점 (2, -9)에서 최솟값 -9를 갖는 그래프",
+    "solutionImageCaption": "꼭짓점 (2, -9)에서 최솟값 -9를 갖는 그래프",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

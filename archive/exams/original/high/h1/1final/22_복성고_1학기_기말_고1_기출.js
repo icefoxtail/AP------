@@ -259,7 +259,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
     "subUnit": "이차방정식과 이차함수의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "y=x-3은 두 점에서 만나고 y=x-13/4은 접한다",
+    "solutionImageCaption": "y=x-3은 두 점에서 만나고 y=x-13/4은 접한다",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

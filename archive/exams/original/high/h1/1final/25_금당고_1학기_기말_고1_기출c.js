@@ -539,7 +539,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-HIGHER_INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_1학기_기말_고1_기출c/q15-solution.svg",
+    "solutionImageAlt": "5a>0이므로 부호는 x(x-1)과 같고, 그래프가 x축 아래에 있는 구간은 0<x<1이다.",
+    "solutionImageCaption": "5a>0이므로 부호는 x(x-1)과 같고, 그래프가 x축 아래에 있는 구간은 0<x<1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

@@ -175,7 +175,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q5-solution.svg",
+    "solutionImageAlt": "꼭짓점 (1, 9)에서 최솟값 9",
+    "solutionImageCaption": "꼭짓점 (1, 9)에서 최솟값 9",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -456,7 +460,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_강남여고_1학기_기말_고1_기출c/q13-solution.svg",
+    "solutionImageAlt": "k=-4일 때 구간 -2≤x≤3에서 최댓값 8, 최솟값 -8",
+    "solutionImageCaption": "k=-4일 때 구간 -2≤x≤3에서 최댓값 8, 최솟값 -8",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

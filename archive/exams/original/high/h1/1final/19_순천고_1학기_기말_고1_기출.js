@@ -228,7 +228,11 @@ window.questionBank = [
     "rpmL4": "접점이 주어진 접선",
     "rpmEvidenceDebt": null,
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "접점 (2,-1)에서의 접선은 직선 y=1과 점 (3,1)에서 만난다.",
+    "solutionImageCaption": "접점 (2,-1)에서의 접선은 직선 y=1과 점 (3,1)에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -590,7 +594,11 @@ window.questionBank = [
     "rpmL4": "점·직선의 이동",
     "rpmEvidenceDebt": null,
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_1학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "평행이동한 직선과 y=2x-8이 x축 위의 점 (4,0)에서 수직으로 만난다",
+    "solutionImageCaption": "평행이동한 직선과 y=2x-8이 x축 위의 점 (4,0)에서 수직으로 만난다",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,

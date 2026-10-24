@@ -120,7 +120,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "직선 y=x+7이 이차함수 그래프에 점 T(2, 9)에서 접한다.",
+    "solutionImageCaption": "직선 y=x+7이 이차함수 그래프에 점 T(2, 9)에서 접한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -325,7 +329,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_순천여고_1학기_중간_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "꼭짓점 A와 x축과의 교점 B, C로 삼각형 ABC를 이룬다.",
+    "solutionImageCaption": "꼭짓점 A와 x축과의 교점 B, C로 삼각형 ABC를 이룬다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

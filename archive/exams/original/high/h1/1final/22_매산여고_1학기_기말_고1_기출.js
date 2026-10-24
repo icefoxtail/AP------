@@ -41,7 +41,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_매산여고_1학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "k=-1, k=5에서 그래프가 x축에 접하고 그 사이에서는 x축 위에 있다",
+    "solutionImageCaption": "k=-1, k=5에서 그래프가 x축에 접하고 그 사이에서는 x축 위에 있다",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,

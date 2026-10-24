@@ -503,7 +503,11 @@ window.questionBank = [
         "sourceFingerprint": "52c90f1b634f0a315fdd5bebc694231dc083cbd2ba3234558e38b374a258e0cb",
         "contentFingerprint": "b116bae313ef682d4c30d65d753223649d4ab6b9c31ae7b289eb0de5b0e33eb8"
       }
-    }
+    },
+    "solutionImage": "assets/images/19_팔마고_2학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "세 점 O, A, B를 지나는 외접원",
+    "solutionImageCaption": "세 점 O, A, B를 지나는 외접원",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,

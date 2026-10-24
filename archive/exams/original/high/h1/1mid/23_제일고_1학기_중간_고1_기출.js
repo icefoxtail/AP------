@@ -531,7 +531,11 @@ window.questionBank = [
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "두 직선의 교점 C를 지나고 2x-y+4=0과 평행한 직선을 그립니다.",
+    "solutionImageCaption": "두 직선의 교점 C를 지나고 2x-y+4=0과 평행한 직선을 그립니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -616,7 +620,11 @@ window.questionBank = [
     "category": "평행한 두 직선 사이의 거리",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "3x-2y-4=0에서 거리가 √13인 평행한 두 직선 (k=-18, k=34)",
+    "solutionImageCaption": "3x-2y-4=0에서 거리가 √13인 평행한 두 직선 (k=-18, k=34)",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -659,7 +667,11 @@ window.questionBank = [
     "category": "선분의 내분과 외분",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "각 AOB의 이등분선이 선분 AB와 만나는 점 P이다.",
+    "solutionImageCaption": "각 AOB의 이등분선이 선분 AB와 만나는 점 P이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -743,7 +755,11 @@ window.questionBank = [
     "category": "두 직선이 이루는 각의 이등분선",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_제일고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "두 직선과 그 각을 이등분하는 두 직선 (모두 교점 P를 지난다)",
+    "solutionImageCaption": "두 직선과 그 각을 이등분하는 두 직선 (모두 교점 P를 지난다)",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

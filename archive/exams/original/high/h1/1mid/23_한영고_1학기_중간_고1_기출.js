@@ -688,7 +688,10 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
     "subUnit": "이차방정식과 이차함수의 관계",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/23_한영고_1학기_중간_고1_기출/q20-solution-graph.svg",
+    "solutionImageAlt": "문항 20 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

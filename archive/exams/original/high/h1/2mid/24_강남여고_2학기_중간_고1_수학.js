@@ -1113,7 +1113,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "sourceMode": "ORIGINAL",
     "answerStatus": "created_unreviewed",
-    "solutionStatus": "created_unreviewed"
+    "solutionStatus": "created_unreviewed",
+    "solutionImage": "assets/images/24_강남여고_2학기_중간_고1_수학/q21-solution.svg",
+    "solutionImageAlt": "원 (x-1)^2+(y+2)^2=9의 중심 A(1,-2)가 평행이동으로 중심 B(-2,1)로 옮겨지고 반지름 3은 그대로이다.",
+    "solutionImageCaption": "원 (x-1)^2+(y+2)^2=9의 중심 A(1,-2)가 평행이동으로 중심 B(-2,1)로 옮겨지고 반지름 3은 그대로이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

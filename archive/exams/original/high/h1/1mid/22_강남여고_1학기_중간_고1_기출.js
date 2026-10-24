@@ -801,7 +801,11 @@ window.questionBank = [
       "sourcePdfSha256": "753c0f9ec97f960c34b0a6ab13704a7119e665373d2f2de4b935bee287ed0ceb",
       "sourcePage": 2
     },
-    "metaEvidenceDebt": []
+    "metaEvidenceDebt": [],
+    "solutionImage": "assets/images/22_강남여고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "a=4, b=6일 때 포물선과 직선은 x좌표가 -3, 1인 두 점에서 만난다.",
+    "solutionImageCaption": "a=4, b=6일 때 포물선과 직선은 x좌표가 -3, 1인 두 점에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

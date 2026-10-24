@@ -167,7 +167,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "무게중심의 좌표식을 x,y 성분별로 적용한다.",
     "sourceOrdinal": 4,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/21_금당고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "무게중심이 G(2, 1)인 삼각형 ABC (a=-1, b=2)",
+    "solutionImageCaption": "무게중심이 G(2, 1)인 삼각형 ABC (a=-1, b=2)",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -209,7 +213,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "주어진 기울기와 한 점을 직선의 식에 바로 대입한다.",
     "sourceOrdinal": 5,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/21_금당고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "기울기 m=2, y절편 n=1인 직선이 점 A(1,3)을 지난다.",
+    "solutionImageCaption": "기울기 m=2, y절편 n=1인 직선이 점 A(1,3)을 지난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -293,7 +301,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "y축 대칭의 좌표변환을 적용하고 직선 조건에 대입한다.",
     "sourceOrdinal": 7,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/21_금당고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "점 P와 y축 대칭점이 직선 위에 있다",
+    "solutionImageCaption": "점 P와 y축 대칭점이 직선 위에 있다",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -419,7 +431,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "대칭이동한 직선의 식에서 매개변수 계수를 각각 0으로 둔다.",
     "sourceOrdinal": 10,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/21_금당고_1학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "모든 k에 대하여 지나는 점 P(3,-1)과 y축에 대하여 대칭인 점 Q(-3,-1)이다.",
+    "solutionImageCaption": "모든 k에 대하여 지나는 점 P(3,-1)과 y축에 대하여 대칭인 점 Q(-3,-1)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -503,7 +519,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "접선식·가까운 점·넓이를 차례로 계산한다.",
     "sourceOrdinal": 12,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/21_금당고_1학기_기말_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "접선과 x축의 교점 A, 원 위의 점 B를 잡으면 밑변 AB와 높이가 보입니다.",
+    "solutionImageCaption": "접선과 x축의 교점 A, 원 위의 점 B를 잡으면 밑변 AB와 높이가 보입니다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -545,7 +565,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "원의 중심 조건과 y축에 잘린 현 길이를 반지름 r 식으로 바꾼다.",
     "sourceOrdinal": 13,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/21_금당고_1학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "중심 C는 직선 x+y-6=0 위에 있고 x축에 접하므로 중심의 y좌표가 반지름 k이다. y축에 잘린 현의 길이가 4이다.",
+    "solutionImageCaption": "중심 C는 직선 x+y-6=0 위에 있고 x축에 접하므로 중심의 y좌표가 반지름 k이다. y축에 잘린 현의 길이가 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -571,7 +595,7 @@ window.questionBank = [
       "15"
     ],
     "answer": "③",
-    "solution": "$y=x$에 대하여 대칭이므로 $A\\prime=(4,2)$이다. $t=\\dfrac ba$라 두면 $0<t<3$이다.\n좌표로 넓이를 계산하면\n$[A\\prime BC]=\\dfrac12|2(t-2)-4(-4)|=\\dfrac12(12+2t)$이다.\n또\n$[ACB]=\\dfrac12|4(t-4)-2(-2)|=\\dfrac12(12-4t)$이다. $0<t<3$이므로 두 넓이는 모두 양수이다.\n조건에 따라 $12+2t=2(12-4t)$이므로 $10t=12$, $t=\\dfrac65$이다.\n$a,b$는 서로소인 자연수이고 $\\dfrac ba=\\dfrac65$이므로 $a=5$, $b=6$이다.\n따라서 $a+b=11$이다.\n\n따라서 정답은 ③이다.",
+    "solution": "$y=x$에 대하여 대칭이므로 $A\\prime=(4,2)$이고, 이 점을 $P$라 한다. $t=\\dfrac ba$라 두면 $0<t<3$이다.\n좌표로 넓이를 계산하면\n$[A\\prime BC]=\\dfrac12|2(t-2)-4(-4)|=\\dfrac12(12+2t)$이다.\n또\n$[ACB]=\\dfrac12|4(t-4)-2(-2)|=\\dfrac12(12-4t)$이다. $0<t<3$이므로 두 넓이는 모두 양수이다.\n조건에 따라 $12+2t=2(12-4t)$이므로 $10t=12$, $t=\\dfrac65$이다.\n$a,b$는 서로소인 자연수이고 $\\dfrac ba=\\dfrac65$이므로 $a=5$, $b=6$이다.\n따라서 $a+b=11$이다.\n\n따라서 정답은 ③이다.",
     "subUnitKey": "H15-SA-09-GEOMETRY_APPLICATION",
     "subUnit": "도형의 방정식 활용",
     "subUnitConfidence": "category_or_cue_inferred",
@@ -587,7 +611,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "대칭점과 공통 밑변을 이용해 두 삼각형의 넓이비를 식으로 세운다.",
     "sourceOrdinal": 14,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/21_금당고_1학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "점 A의 대칭점 A′=P(4,2)와 C(0, 6/5)로 만든 두 삼각형",
+    "solutionImageCaption": "점 A의 대칭점 A′=P(4,2)와 C(0, 6/5)로 만든 두 삼각형",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -715,7 +743,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "두 직선의 절편과 교점 좌표를 두고 면적 조건을 연립한다.",
     "sourceOrdinal": 17,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/21_금당고_1학기_기말_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "a=3, P(2,2)일 때 두 직선과 사각형 PDOA, 삼각형 PCB",
+    "solutionImageCaption": "a=3, P(2,2)일 때 두 직선과 사각형 PDOA, 삼각형 PCB",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -880,7 +912,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "difficultyReason": "교점을 이차방정식으로 구하고 기울기 -1인 직선 위의 거리로 환산한다.",
     "sourceOrdinal": 21,
-    "sourceMode": "SOURCE_ONLY"
+    "sourceMode": "SOURCE_ONLY",
+    "solutionImage": "assets/images/21_금당고_1학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "두 점 P, Q는 직선 y=-x+3에 대칭이므로 중점 M이 직선 위에 있고 PQ=3√2이다.",
+    "solutionImageCaption": "두 점 P, Q는 직선 y=-x+3에 대칭이므로 중점 M이 직선 위에 있고 PQ=3√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

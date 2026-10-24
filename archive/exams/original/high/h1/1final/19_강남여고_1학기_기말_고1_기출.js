@@ -305,7 +305,11 @@ window.questionBank = [
     "sourceQid": 5,
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "점 (-2,-3)을 지나고 꼭짓점 V(-3,-5)에서 최솟값 -5",
+    "solutionImageCaption": "점 (-2,-3)을 지나고 꼭짓점 V(-3,-5)에서 최솟값 -5",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -433,7 +437,11 @@ window.questionBank = [
     "sourceQid": 7,
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "직선 2x-y-4=0과의 거리가 √5인 점 (2, 5), (2, -5)이다.",
+    "solutionImageCaption": "직선 2x-y-4=0과의 거리가 √5인 점 (2, 5), (2, -5)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,

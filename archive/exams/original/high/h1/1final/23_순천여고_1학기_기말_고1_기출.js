@@ -246,7 +246,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "점 P는 선분 AB의 수직이등분선과 직선 y=x+1의 교점이고 PA=PB이다.",
+    "solutionImageCaption": "점 P는 선분 AB의 수직이등분선과 직선 y=x+1의 교점이고 PA=PB이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

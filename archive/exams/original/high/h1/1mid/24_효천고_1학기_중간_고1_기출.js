@@ -461,7 +461,10 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수 그래프",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q10-solution-graph.svg",
+    "solutionImageAlt": "문항 10 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -601,7 +604,10 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수 최대최소",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q13-solution-graph.svg",
+    "solutionImageAlt": "치환 변수 t에 대한 이차함수 y=(t-2)^2-3의 그래프와 두 끝점",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -868,7 +874,10 @@ window.questionBank = [
     "category": "이차방정식",
     "originalCategory": "서술형1",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_효천고_1학기_중간_고1_기출/q19-solution-graph.svg",
+    "solutionImageAlt": "문항 19 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,
