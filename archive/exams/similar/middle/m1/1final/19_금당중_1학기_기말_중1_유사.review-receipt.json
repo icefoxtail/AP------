@@ -4,7 +4,7 @@
   "candidateJsPath": "archive/exams/similar/middle/m1/1final/19_금당중_1학기_기말_중1_유사.js",
   "candidateMetaPath": "archive/exams/similar/middle/m1/1final/19_금당중_1학기_기말_중1_유사.meta-q01-q24.json",
   "candidateGitBlobSha1": "4d6ada0bf9431d779c6a59189c8cd8701973c234",
-  "reviewTimestamp": "2026-10-24T20:10:00+09:00",
+  "reviewTimestamp": "2026-10-24T20:35:00+09:00",
   "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
   "overallVerdict": "PASS",
   "signOffStatus": "SIGNED_OFF_PASS",
@@ -19,24 +19,19 @@
     "r2PedagogicalPolish": {
       "status": "PASS",
       "findingsCount": 0,
-      "curriculumCompliance": "PASS (Strictly 2015 Korean Middle School Grade 1 Semester 1 Final Math: 문자와 식, 일차방정식, 좌표평면과 그래프)",
-      "distractorPlausibility": "PASS (All 20 MC distractors reflect realistic student arithmetic/sign errors)",
-      "draftingArtifactsFound": []
+      "curriculumCompliance": "PASS (2015 Middle 1 Semester 1 Math: 문자와 식, 일차방정식, 좌표평면과 그래프)",
+      "distractorPlausibility": "PASS (All distractors reflect standard student algebraic misconceptions)"
     },
     "r3StructuralAndAsset": {
-      "status": "PASS",
-      "sequentialNumbering": "PASS (1..24 sequential)",
-      "choicesCount": "PASS (20 MC have exactly 5 choices, 4 descriptive have 0 choices)",
-      "mcAnswerDistribution": "PASS (Exact uniform distribution: {'①': 4, '②': 4, '③': 4, '④': 4, '⑤': 4})",
-      "diagramAssetsParity": "PASS (3 SVGs physically exist, render with pure-white background, and match geometry/text)",
-      "smallMetaParity": "PASS (24 items with 1:1 question metadata correspondence)",
+      "sequentialNumbering": "PASS (1..24)",
+      "choicesCount": "PASS (20 MC, 4 Descriptive)",
+      "mcAnswerDistribution": "PASS (Exact 4/4/4/4/4 uniform distribution)",
+      "diagramAssetsParity": "PASS (3 SVGs rendered and geometry/text verified)",
       "scoreSum": {
         "status": "PASS",
-        "expected": 100,
-        "actual": 100,
-        "difference": 0,
-        "mcScoreSum": 80,
-        "descScoreSum": 20
+        "expected": 100.0,
+        "actual": 100.0,
+        "difference": 0.0
       }
     }
   },
@@ -44,119 +39,110 @@
     {
       "qid": 1,
       "type": "객관식",
-      "score": 3,
+      "score": 3.0,
       "derivedAnswer": "③",
       "candidateAnswer": "③",
       "blindMatch": true,
+      "blindDerivation": "3(3) - 2(-4) = 9 + 8 = 17. 선지 ③ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q01: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "음수 곱셈 부호 판서 정확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 2,
       "type": "객관식",
-      "score": 3,
+      "score": 3.0,
       "derivedAnswer": "②",
       "candidateAnswer": "②",
       "blindMatch": true,
+      "blindDerivation": "차수 2, 항 3개, x의 계수 3, 상수항과의 곱 3*(-4) = -12 < 0. 선지 ② 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q02: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "다항식 용어 및 조건 판별 명확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 3,
       "type": "객관식",
-      "score": 5,
+      "score": 5.0,
       "derivedAnswer": "③",
       "candidateAnswer": "③",
       "blindMatch": true,
+      "blindDerivation": "q03.svg 확인: B = (-x+1) + (x-2) = -1. A = 5 + B = 4. A+B = 4 + (-1) = 3. 선지 ③ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q03: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "PASS",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "피라미드 덧셈 및 다항식 덧셈 정확.",
+      "assetCheck": "PASS (q03.svg)"
     },
     {
       "qid": 4,
       "type": "객관식",
-      "score": 4,
+      "score": 4.0,
       "derivedAnswer": "④",
       "candidateAnswer": "④",
       "blindMatch": true,
+      "blindDerivation": "3(2x - 1/3) - 1/4(8x - 12) = 6x - 1 - 2x + 3 = 4x + 2. 선지 ④ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q04: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "분배법칙 및 동류항 결합 완벽.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 5,
       "type": "객관식",
-      "score": 4,
+      "score": 4.0,
       "derivedAnswer": "③",
       "candidateAnswer": "③",
       "blindMatch": true,
+      "blindDerivation": "4x - 8 = 12 -> 4x = 20 (+8이므로 가), 4x = 20 -> x = 5 (/4이므로 라). 따라서 (가), (라). 선지 ③ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q05: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "등식의 성질 적용 단계 정확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 6,
       "type": "객관식",
-      "score": 3,
+      "score": 3.0,
       "derivedAnswer": "②",
       "candidateAnswer": "②",
       "blindMatch": true,
+      "blindDerivation": "(가) 2x-6=0(일차방정식), (나) 0=0(항등식), (다) 2x+4=0(일차방정식), (라) 이차방정식. (가), (다). 선지 ② 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q06: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "항등식과 일차방정식 구분 확실.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 7,
       "type": "객관식",
-      "score": 4,
+      "score": 4.0,
       "derivedAnswer": "⑤",
       "candidateAnswer": "⑤",
       "blindMatch": true,
+      "blindDerivation": "5(-2) + 10 = -10 + 10 = 0 참. 선지 ⑤ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q07: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "방정식 해의 정의 대입 검증 명확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 8,
       "type": "객관식",
-      "score": 4,
+      "score": 4.0,
       "derivedAnswer": "①",
       "candidateAnswer": "①",
       "blindMatch": true,
+      "blindDerivation": "x=4 대입: 4 + 3a = 16 - 6 = 10 -> 3a = 6 -> a = 2. 선지 ① 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q08: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "해 대입 후 상수 방정식 풀이 정합.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 9,
       "type": "객관식",
-      "score": 3,
+      "score": 3.0,
       "derivedAnswer": "①",
       "candidateAnswer": "①",
       "blindMatch": true,
+      "blindDerivation": "ax - 3 = 5x + b 항등식 -> a = 5, b = -3 -> a + b = 2. 선지 ① 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q09: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "항등식의 계수비교법 정확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 10,
@@ -165,50 +151,46 @@
       "derivedAnswer": "③",
       "candidateAnswer": "③",
       "blindMatch": true,
+      "blindDerivation": "3x - 2x - 2 = 4 -> x = 6. 선지 ③ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q10: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "괄호 풀기 및 이항 계산 정연.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 11,
       "type": "객관식",
-      "score": 5,
+      "score": 5.0,
       "derivedAnswer": "②",
       "candidateAnswer": "②",
       "blindMatch": true,
+      "blindDerivation": "x = (3a - 16)/2 < 0 & 정수 -> 3a < 16, a는 짝수 -> a = 2, 4 (2개). 선지 ② 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q11: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "정수해 조건 및 짝수 제약 분석 완벽.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 12,
       "type": "객관식",
-      "score": 5,
+      "score": 5.0,
       "derivedAnswer": "④",
       "candidateAnswer": "④",
       "blindMatch": true,
+      "blindDerivation": "아들 x, 아버지 3x. 3x + 12 = 2(x + 12) -> x = 12세. 선지 ④ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q12: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "나이 문장제 모델링 정확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 13,
       "type": "객관식",
-      "score": 5,
+      "score": 5.0,
       "derivedAnswer": "⑤",
       "candidateAnswer": "⑤",
       "blindMatch": true,
+      "blindDerivation": "0.4x = 0.6x - 1.6 -> x = 8. 2(8) - a = 3(8) - 5 -> 16 - a = 19 -> a = -3. 선지 ⑤ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q13: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "연립형 공통해 대입 논리 정합.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 14,
@@ -217,142 +199,130 @@
       "derivedAnswer": "④",
       "candidateAnswer": "④",
       "blindMatch": true,
+      "blindDerivation": "A(4,4), C(4,-2) 수직선분 밑변 6, 높이 B(-2,0)에서 x=4까지 거리 6. 넓이 = 1/2 * 6 * 6 = 18. 선지 ④ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q14: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "좌표평면 삼각형 밑변-높이 분해 명쾌.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 15,
       "type": "객관식",
-      "score": 4,
+      "score": 4.0,
       "derivedAnswer": "①",
       "candidateAnswer": "①",
       "blindMatch": true,
+      "blindDerivation": "x축 위 점 y=0 -> a+4=0 -> a=-4. y축 위 점 x=0 -> 3b-6=0 -> b=2. a-b = -4 - 2 = -6. 선지 ① 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q15: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "축 위의 점 좌표 조건 정확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 16,
       "type": "객관식",
-      "score": 4,
+      "score": 4.0,
       "derivedAnswer": "①",
       "candidateAnswer": "①",
       "blindMatch": true,
+      "blindDerivation": "(a,b) 제2사분면 -> a<0, b>0. (b, -a)는 b>0, -a>0 -> 제1사분면. 선지 ① 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q16: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "사분면 부호 변환 정확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 17,
       "type": "객관식",
-      "score": 3,
+      "score": 3.0,
       "derivedAnswer": "②",
       "candidateAnswer": "②",
       "blindMatch": true,
+      "blindDerivation": "y = ax, 12 = a(-3) -> a = -4 -> y = -4x. 선지 ② 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q17: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "정비례 비례상수 도출 정확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 18,
       "type": "객관식",
-      "score": 4,
+      "score": 4.0,
       "derivedAnswer": "⑤",
       "candidateAnswer": "⑤",
       "blindMatch": true,
+      "blindDerivation": "q18.svg 확인: (3,2) 지나는 직선 y = (2/3)x. 선지 ⑤ (4,3)은 2/3 * 4 = 8/3 != 3으로 위 점 아님. 선지 ⑤ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q18: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "PASS",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "그래프 판독 및 선지 검증 정합.",
+      "assetCheck": "PASS (q18.svg)"
     },
     {
       "qid": 19,
       "type": "객관식",
-      "score": 4,
+      "score": 4.0,
       "derivedAnswer": "④",
       "candidateAnswer": "④",
       "blindMatch": true,
+      "blindDerivation": "y = 3x는 a>0으로 제1, 3사분면만 지남. 선지 ④ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q19: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "정비례/반비례 사분면 분포 판별 완벽.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 20,
       "type": "객관식",
-      "score": 4,
+      "score": 4.0,
       "derivedAnswer": "⑤",
       "candidateAnswer": "⑤",
       "blindMatch": true,
+      "blindDerivation": "xy = 12. 12의 양/음의 정수 약수 개수 = 6 + 6 = 12개. 선지 ⑤ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q20: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 기말 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "정수 격자점과 약수 관계 논리적.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 21,
       "type": "서술형",
-      "score": 5,
-      "derivedAnswer": "(1) 가로: (10-2x) cm, 세로: (8-x) cm (2) (36-6x) cm",
+      "score": 5.0,
+      "derivedAnswer": "(1) 가로: 10-2x cm, 세로: 8-x cm (2) 36-6x cm",
       "candidateAnswer": "(1) 가로: (10-2x) cm, 세로: (8-x) cm (2) (36-6x) cm",
       "blindMatch": true,
+      "blindDerivation": "q21.svg 확인: 한변 10cm. 가로 = 10 - 2x. 세로 = 10 - (x+2) = 8 - x. 둘레 = 2(10-2x + 8-x) = 36 - 6x. 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q21: 서술형 단계별 채점 기준 및 풀이 과정 완전 전개. 계산 검산 일치.",
-      "assetCheck": "PASS",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "도형 길이/둘레 식 세우기 완전 일치.",
+      "assetCheck": "PASS (q21.svg)"
     },
     {
       "qid": 22,
       "type": "서술형",
-      "score": 5,
+      "score": 5.0,
       "derivedAnswer": "x = 13/5",
       "candidateAnswer": "x = 13/5",
       "blindMatch": true,
+      "blindDerivation": "*6: 2(x+4) + 3(x-1) = 18 -> 2x+8+3x-3 = 18 -> 5x+5 = 18 -> 5x = 13 -> x = 13/5. 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q22: 서술형 단계별 채점 기준 및 풀이 과정 완전 전개. 계산 검산 일치.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "분수 계수 일차방정식 분모소거 및 이항 완벽.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 23,
       "type": "서술형",
-      "score": 5,
+      "score": 5.0,
       "derivedAnswer": "480 m",
       "candidateAnswer": "480 m",
       "blindMatch": true,
+      "blindDerivation": "형 x분, 동생 x+4분. 120x = 60(x+4) -> 60x = 240 -> x = 4분. 거리 = 120 * 4 = 480m. 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q23: 서술형 단계별 채점 기준 및 풀이 과정 완전 전개. 계산 검산 일치.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "속력 문장제 미지수 설정 및 거리 환산 명확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 24,
       "type": "서술형",
-      "score": 5,
+      "score": 5.0,
       "derivedAnswer": "y = 540/x",
       "candidateAnswer": "y = 540/x",
       "blindMatch": true,
+      "blindDerivation": "1분간 맞물린 톱니수 동일: 30 * 18 = 540 = x * y -> y = 540/x. 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q24: 서술형 단계별 채점 기준 및 풀이 과정 완전 전개. 계산 검산 일치.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "반비례 모델링 및 등식 도출 완결.",
+      "assetCheck": "EXEMPT"
     }
-  ],
-  "verifiedAt": "2026-10-24T11:23:05.290Z"
+  ]
 }

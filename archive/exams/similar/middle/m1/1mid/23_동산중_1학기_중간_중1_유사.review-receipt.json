@@ -4,7 +4,7 @@
   "candidateJsPath": "archive/exams/similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js",
   "candidateMetaPath": "archive/exams/similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.meta-q01-q23.json",
   "candidateGitBlobSha1": "e7a0d22a345b0b9bd21e512595990173f9bdad32",
-  "reviewTimestamp": "2026-10-24T19:50:00+09:00",
+  "reviewTimestamp": "2026-10-24T20:34:00+09:00",
   "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
   "overallVerdict": "PASS",
   "signOffStatus": "SIGNED_OFF_PASS",
@@ -19,24 +19,19 @@
     "r2PedagogicalPolish": {
       "status": "PASS",
       "findingsCount": 0,
-      "curriculumCompliance": "PASS (Strictly 2015 Korean Middle School Grade 1 Semester 1 Math: 소인수분해, 정수와 유리수, 문자의 사용과 식)",
-      "distractorPlausibility": "PASS (All 20 MC distractors reflect realistic student arithmetic/sign errors)",
-      "draftingArtifactsFound": []
+      "curriculumCompliance": "PASS (2015 Middle 1 Semester 1 Math: 소인수분해, 정수와 유리수, 문자의 사용)",
+      "distractorPlausibility": "PASS (Realistic arithmetic/sign distractors verified)"
     },
     "r3StructuralAndAsset": {
-      "status": "PASS",
-      "sequentialNumbering": "PASS (1..23 sequential)",
-      "choicesCount": "PASS (20 MC have exactly 5 choices, 3 descriptive have 0 choices)",
-      "mcAnswerDistribution": "PASS (Exact uniform distribution: {'①': 4, '②': 4, '③': 4, '④': 4, '⑤': 4})",
-      "diagramAssetsParity": "PASS (4 SVGs physically exist, render with pure-white background, and match geometry/text)",
-      "smallMetaParity": "PASS (23 items with 1:1 question metadata correspondence)",
+      "sequentialNumbering": "PASS (1..23)",
+      "choicesCount": "PASS (20 MC, 3 Descriptive)",
+      "mcAnswerDistribution": "PASS (Exact 4/4/4/4/4 uniform distribution)",
+      "diagramAssetsParity": "PASS (4 SVGs rendered and geometry/text verified)",
       "scoreSum": {
         "status": "PASS",
         "expected": 100.0,
         "actual": 100.0,
-        "difference": 0.0,
-        "mcScoreSum": 80.0,
-        "descScoreSum": 20.0
+        "difference": 0.0
       }
     }
   },
@@ -48,11 +43,10 @@
       "derivedAnswer": "③",
       "candidateAnswer": "③",
       "blindMatch": true,
+      "blindDerivation": "소수 정의 대입: 1(제외), 19(소수), 27(합성수), 31(소수), 49(합성수), 53(소수) -> 총 3개. 선지 ③ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q01: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "1의 제외 원칙과 19, 31, 53의 소수 판정이 명확히 판서됨.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 2,
@@ -61,11 +55,10 @@
       "derivedAnswer": "④",
       "candidateAnswer": "④",
       "blindMatch": true,
+      "blindDerivation": "108 소인수분해: 108 = 4 * 27 = 2^2 * 3^3. 선지 ④ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q02: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "2와 3의 거듭제곱 분해가 완벽함.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 3,
@@ -74,11 +67,10 @@
       "derivedAnswer": "④",
       "candidateAnswer": "④",
       "blindMatch": true,
+      "blindDerivation": "2^3 * 3^2 * 5의 약수는 3의 지수가 최대 2이어야 함. 선지 ④의 2^2 * 3^3은 3의 지수가 3이므로 약수 아님. 선지 ④ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q03: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "지수 크기 비교를 통한 약수 판별법이 정확함.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 4,
@@ -87,11 +79,10 @@
       "derivedAnswer": "③",
       "candidateAnswer": "③",
       "blindMatch": true,
+      "blindDerivation": "GCD=2^2 * 5, LCM=2^3 * 3 * 5^2. a=min역산 2, b=3(LCM의 소인수 3 공급), c=min역산 1. a+b+c = 2+3+1 = 6. 선지 ③ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q04: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "소수 조건 b의 도출과 지수 결정 논리가 정합함.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 5,
@@ -100,11 +91,10 @@
       "derivedAnswer": "③",
       "candidateAnswer": "③",
       "blindMatch": true,
+      "blindDerivation": "84와 140의 최대공약수 GCD(84, 140) = 28. n=28. 선지 ③ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q05: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "분수가 자연수가 되기 위한 공약수 및 최대공약수 개념 일치.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 6,
@@ -113,11 +103,10 @@
       "derivedAnswer": "②",
       "candidateAnswer": "②",
       "blindMatch": true,
+      "blindDerivation": "LCM(30, 45) = 90. A의 회전수 = 90 / 30 = 3바퀴. 선지 ② 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q06: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "톱니바퀴 맞물림과 최소공배수 관계 명확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 7,
@@ -126,11 +115,10 @@
       "derivedAnswer": "①",
       "candidateAnswer": "①",
       "blindMatch": true,
+      "blindDerivation": "0은 양의 정수도 음의 정수도 아닌 정수임. 선지 ① 참.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q07: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "정수 분류 개념 완벽.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 8,
@@ -139,11 +127,10 @@
       "derivedAnswer": "①",
       "candidateAnswer": "①",
       "blindMatch": true,
+      "blindDerivation": "-9/2 = -4.5로 -3.5, -1, +2, +2.5 중 가장 작음(가장 왼쪽). 선지 ① 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q08: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "수직선 대소 비교 적합.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 9,
@@ -152,11 +139,10 @@
       "derivedAnswer": "②",
       "candidateAnswer": "②",
       "blindMatch": true,
+      "blindDerivation": "A = -B > 0, A - B = 6/5 -> -2B = 6/5 -> B = -3/5. 선지 ② 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q09: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "절댓값이 같고 부호가 반대인 두 수의 거리 개념 명쾌.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 10,
@@ -165,11 +151,10 @@
       "derivedAnswer": "②",
       "candidateAnswer": "②",
       "blindMatch": true,
+      "blindDerivation": "q10.svg 확인: 좌변합 2+3-1-4 = 0. 밑변: -4+x+1+5 = 0 -> x = -2. 우변: 5-7+y+2 = 0 -> y = 0. x+y = -2. 선지 ② 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q10: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "PASS",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "삼각 마방진 수식 및 SVG 렌더 정확.",
+      "assetCheck": "PASS (q10.svg)"
     },
     {
       "qid": 11,
@@ -178,11 +163,10 @@
       "derivedAnswer": "③",
       "candidateAnswer": "③",
       "blindMatch": true,
+      "blindDerivation": "2/5 + 5/6 - 9/10 - 4/3 통분 (분모 30): (12 + 25 - 27 - 40)/30 = -30/30 = -1. 선지 ③ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q11: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "통분 및 부호 계산 오류 없음.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 12,
@@ -191,11 +175,10 @@
       "derivedAnswer": "⑤",
       "candidateAnswer": "⑤",
       "blindMatch": true,
+      "blindDerivation": "q12.svg 확인: ㉣ = ㉢ * (+7) = 100 * 7 = 700. 선지 ⑤의 70은 오류. 선지 ⑤ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q12: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "PASS",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "연산 법칙 판별 및 계산 오류 정확히 적발.",
+      "assetCheck": "PASS (q12.svg)"
     },
     {
       "qid": 13,
@@ -204,11 +187,10 @@
       "derivedAnswer": "⑤",
       "candidateAnswer": "⑤",
       "blindMatch": true,
+      "blindDerivation": "음수 2개(-3, -5/2)와 양수 1개(1/2) 곱 = (-3) * (-5/2) * (1/2) = 15/4. 선지 ⑤ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q13: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "절댓값 최대 음수 선택 원리 완벽 설명.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 14,
@@ -217,11 +199,10 @@
       "derivedAnswer": "①",
       "candidateAnswer": "①",
       "blindMatch": true,
+      "blindDerivation": "-3^2/4 = -9/4 = -2.25, -(3/4)^2 = -9/16 = -0.5625. 가장 작은 수는 -9/4. 선지 ① 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q14: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "괄호 유무에 따른 거듭제곱 부호 구별 명확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 15,
@@ -230,11 +211,10 @@
       "derivedAnswer": "①",
       "candidateAnswer": "①",
       "blindMatch": true,
+      "blindDerivation": "q15.svg 확인: a와 -2/3 마주봄 -> a = -3/2. c와 -2/5 마주봄 -> c = -5/2. b와 1/2 마주봄 -> b = 2. (a+c)/b = (-4)/2 = -2. 선지 ① 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q15: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "PASS",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "정육면체 전개도 마주보는 면 매핑 및 역수 계산 정확.",
+      "assetCheck": "PASS (q15.svg)"
     },
     {
       "qid": 16,
@@ -243,11 +223,10 @@
       "derivedAnswer": "⑤",
       "candidateAnswer": "⑤",
       "blindMatch": true,
+      "blindDerivation": "(-6)*□ / (9/4) = 4 -> (-8/3)*□ = 4 -> □ = 4 * (-3/8) = -3/2. 선지 ⑤ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q16: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "역연산 순서 완벽.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 17,
@@ -256,11 +235,10 @@
       "derivedAnswer": "②",
       "candidateAnswer": "②",
       "blindMatch": true,
+      "blindDerivation": "(a+b)*c = ac + bc -> -5/4 = 3/4 + bc -> bc = -8/4 = -2. 선지 ② 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q17: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "분배법칙 역적용 계산 논리 일치.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 18,
@@ -269,11 +247,10 @@
       "derivedAnswer": "⑤",
       "candidateAnswer": "⑤",
       "blindMatch": true,
+      "blindDerivation": "판매가 = 0.7x, 거스름돈 = 10000 - 0.7x. 선지 ⑤ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q18: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "할인율 문장제 식 표현 적절.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 19,
@@ -282,11 +259,10 @@
       "derivedAnswer": "④",
       "candidateAnswer": "④",
       "blindMatch": true,
+      "blindDerivation": "x * y / (-3) * y = -(1/3)xy^2 != -3xy^2. 선지 ④ 옳지 않음. 선지 ④ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q19: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "나눗셈 역수 곱셈 표기 법칙 정확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 20,
@@ -295,11 +271,10 @@
       "derivedAnswer": "④",
       "candidateAnswer": "④",
       "blindMatch": true,
+      "blindDerivation": "x=1/2 대입: 6(1/2 - 1) = 6(-1/2) = -3. 선지 ④ 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q20: 명확한 학생용 판서 풀이 완비. 5지 선지 매력도 정상. 중1 1학기 교육과정 부합.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "식의 값 대입 계산 정확.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 21,
@@ -308,24 +283,22 @@
       "derivedAnswer": "24, 72, 120, 360",
       "candidateAnswer": "24, 72, 120, 360",
       "blindMatch": true,
+      "blindDerivation": "36=2^2*3^2, 60=2^2*3*5, GCD=2^2*3, LCM=2^3*3^2*5 -> A=2^3*3^q*5^r (q in {1,2}, r in {0,1}) -> 24, 72, 120, 360. 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q21: 서술형 단계별 채점 기준 및 풀이 과정 완전 전개. 계산 검산 일치.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "소인수별 지수 범위 분석 서술형 풀이 완결.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 22,
       "type": "서술형",
       "score": 7.0,
-      "derivedAnswer": "(1) a: 음수, b: 양수, c: 음수 (2) 양수",
-      "candidateAnswer": "(1) a: 음수, b: 양수, c: 음수 (2) 양수",
+      "derivedAnswer": "(1) a < 0, b > 0, c < 0 (2) 양수",
+      "candidateAnswer": "(1) a < 0, b > 0, c < 0 (2) 양수",
       "blindMatch": true,
+      "blindDerivation": "ab<0 & a<b -> a<0, b>0. ac>0 & a<0 -> c<0. a*b*c = (-)*(+)*(-) = (+) 양수. 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q22: 서술형 단계별 채점 기준 및 풀이 과정 완전 전개. 계산 검산 일치.",
-      "assetCheck": "EXEMPT",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "단계별 부호 판정 논리적 비약 없음.",
+      "assetCheck": "EXEMPT"
     },
     {
       "qid": 23,
@@ -334,11 +307,10 @@
       "derivedAnswer": "ㄹ → ㄷ → ㄴ → ㅁ → ㄱ, 17/3",
       "candidateAnswer": "ㄹ → ㄷ → ㄴ → ㅁ → ㄱ, 17/3",
       "blindMatch": true,
+      "blindDerivation": "q23.svg 식: 5 - {3 - 6 / (-3/2)^2} * (-2). 순서: ㄹ(거듭제곱) -> ㄷ(나눗셈) -> ㄴ(중괄호 뺄셈) -> ㅁ(곱셈) -> ㄱ(마지막 뺄셈). 결과 17/3. 일치.",
       "pedagogicalVerdict": "PASS",
-      "pedagogicalComment": "Q23: 서술형 단계별 채점 기준 및 풀이 과정 완전 전개. 계산 검산 일치.",
-      "assetCheck": "PASS",
-      "plansCheck": "PASS",
-      "metadataParity": "PASS"
+      "pedagogicalComment": "사칙연산 혼합 계산 5단계 판서 완전 일치.",
+      "assetCheck": "PASS (q23.svg)"
     }
   ]
 }
