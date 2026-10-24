@@ -457,7 +457,11 @@ window.questionBank = [
     "sourceEvidence": {
       "pdfPage": 2,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "첫째 부등식의 해 x<-1 또는 x>2와 둘째 부등식의 해 a≤x≤4의 공통 범위가 2<x≤4가 되려면 a는 -1 이상 2 이하이고, a=2일 때 최댓값이다.",
+    "solutionImageCaption": "첫째 부등식의 해 x<-1 또는 x>2와 둘째 부등식의 해 a≤x≤4의 공통 범위가 2<x≤4가 되려면 a는 -1 이상 2 이하이고, a=2일 때 최댓값이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -979,7 +983,11 @@ window.questionBank = [
     "sourceEvidence": {
       "pdfPage": 5,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "m=0이면 직선 x-3=0, m=1이면 3x-y-3=0이다. 두 직선 모두 점 P(3,6)을 지나고, x절편은 각각 3, 1로 m이 커지면 작아진다(m=0에서 최대 3).",
+    "solutionImageCaption": "m=0이면 직선 x-3=0, m=1이면 3x-y-3=0이다. 두 직선 모두 점 P(3,6)을 지나고, x절편은 각각 3, 1로 m이 커지면 작아진다(m=0에서 최대 3).",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
