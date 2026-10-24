@@ -10,6 +10,7 @@ import {recordArchiveEvidence,measureArchiveDisplayEnvelope,normalizeArchiveImag
 import {assetIdentity,planHash} from './contracts.mjs';
 import {commitStage,generatedPath,currentWorkRoot,bindRunWorkspace,withWorkRoot,isEngineOutputPath,calculationStage} from './store.mjs';
 import {pythonWorker} from './worker.mjs';
+import {pointNameModel} from './point-names.mjs';
 import {reconstruct,compareReconstruction} from './cindy-observer.mjs';
 import {dependency,dependencyRoot} from './dependencies.mjs';
 import {typesetter} from './typography.mjs';
@@ -336,7 +337,7 @@ export function specFor(plan,model,id){
       if(!point||!Array.isArray(pair)||pair.length!==2||[point.x,point.y].some((value,k)=>Math.abs(exactValue(pair[k])-value)>1e-9*Math.max(1,Math.abs(value))))throw Error('EXACT_COORDINATES_MISMATCH:'+pointId);
     }
     const coordinateText=point=>exactCoordinates[point?.id]??(integerKey(point)?[String(point.x),String(point.y)]:null);
-    const nameLike=id=>/^[A-Z][0-9']?$/.test(id),graphPanel=new Set(plan.coordinatePlacement==='PANEL'?required.filter(point=>coordinateText(point)&&nameLike(point.id)).map(point=>point.id):plan.coordinatePanel||[]);
+    const pointNames=pointNameModel(plan,required.map(point=>point?.id)),nameLike=id=>pointNames.has(id)||/^[A-Z][0-9']?$/.test(id),graphPanel=new Set([...(plan.coordinatePlacement==='PANEL'?required.filter(point=>coordinateText(point)&&nameLike(point.id)).map(point=>point.id):plan.coordinatePanel||[]),...required.filter(point=>pointNames.has(point?.id)&&coordinateText(point)).map(point=>point.id)]);
     if(graphPanel.size&&degree>2)throw Error('COORDINATE_PANEL_NEEDS_HEADER_BAND');
     for(const pointId of graphPanel)if(!nameLike(pointId)||!coordinateText(required.find(point=>point.id===pointId)))throw Error('COORDINATE_PANEL_POINT_INVALID:'+pointId);
     // labelDirections {pointId: N|NE|E|SE|S|SW|W|NW}: first layout direction for a key point's coordinate label (not for band points).
@@ -347,13 +348,13 @@ export function specFor(plan,model,id){
       if(!point||typeof point.id!=='string'||!point.id||!Number.isFinite(point.x)||!Number.isFinite(point.y))throw Error('POLYNOMIAL_REQUIRED_POINT_INVALID');
       if(graphPanel.has(point.id)){
         const markerId='required-point-'+(index+1),labelId=markerId+'-coordinate-panel';panelLabels.push(labelId);
-        objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],name:point.id});
-        objects.push({id:labelId,kind:'EQUATION_LABEL',target:markerId,text:point.id+'('+coordinateText(point).map(unwrapParentheses).join(',')+')',at:[point.x,point.y],priority:0});
+        objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],name:pointNames.tex(point.id)});
+        objects.push({id:labelId,kind:'EQUATION_LABEL',target:markerId,text:pointNames.expr(point.id)+'('+coordinateText(point).map(unwrapParentheses).join(',')+')',at:[point.x,point.y],priority:0});
         continue;
       }
       // A marker id is internal: without an exact coordinate label the point is a bare dot (name null), never "required-point-N" text.
       const markerId='required-point-'+(index+1),coordinates=coordinateText(point);
-      objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates?{}:{name:null})});
+      objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates?{}:pointNames.has(point.id)?{name:pointNames.tex(point.id)}:{name:null})});
       if(coordinates)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates,...(graphDirections[point.id]?{preferred:graphDirections[point.id]}:{})});
     }
     // graphPlan.lines (HEADER_BAND quadratics): exact lines y=slope*x+intercept with the points they pass through (checked here to 1e-9 of the
@@ -369,7 +370,7 @@ export function specFor(plan,model,id){
       if(!point||Object.keys(point).sort().join(',')!=='id,x,y'||typeof point.id!=='string'||!Number.isFinite(point.x)||!Number.isFinite(point.y)||required.some(other=>other.id===point.id))throw Error('GRAPH_LINE_POINT_INVALID');
       if(!(v[0]<point.x&&point.x<v[1]&&v[2]<point.y&&point.y<v[3]))throw Error('GRAPH_LINE_POINT_OUTSIDE_VIEW:'+point.id);
       const markerId='line-point-'+(index+1),coordinates=coordinateText(point);
-      objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates?{}:{name:null})});
+      objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates?{}:pointNames.has(point.id)?{name:pointNames.tex(point.id)}:{name:null})});
       if(coordinates)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates});
     }
     const lineLabels=[];
@@ -413,7 +414,9 @@ export function specFor(plan,model,id){
   // hiddenPointNames:[point IDs] draws derived helper points as bare dots: never a source point, a GIVEN/CONCLUSION point or a coordinate-labelled one.
   const hiddenNames=new Set(plan.hiddenPointNames??[]);
   if(!Array.isArray(plan.hiddenPointNames??[])||[...hiddenNames].some(id=>{const node=plan.mathPlan.nodes.find(n=>n.id===id);return !Object.hasOwn(points,id)||!node||node.op==='SOURCE_POINT'||node.factRole!=='DERIVED_INTERMEDIATE'||(plan.coordinateLabels||[]).includes(id);}))throw Error('INVALID_HIDDEN_POINT_NAMES');
-  const objects=Object.entries(points).map(([name,p])=>({id:name,kind:'POINT',at:p.approximation,...(hiddenNames.has(name)?{name:null}:{})}));const notationByLabel={},factRolesByLabel={},axisCoincidentLines=displayed.axisCoincidentLines;
+  const pointNames=pointNameModel(plan,Object.keys(points));
+  for(const entry of pointNames.entries())if(hiddenNames.has(entry.id))throw Error('POINT_NAME_TARGET_HIDDEN:'+entry.id);
+  const objects=Object.entries(points).map(([name,p])=>({id:name,kind:'POINT',at:p.approximation,...(hiddenNames.has(name)?{name:null}:pointNames.has(name)?{name:pointNames.tex(name)}:{})}));const notationByLabel={},factRolesByLabel={},axisCoincidentLines=displayed.axisCoincidentLines;
   for(const node of plan.mathPlan.nodes){
     if(node.outputType==='LINE'&&Object.hasOwn(displayed.lines,node.id)){
       const fact=model.lines?.[node.id];if(!fact||!Array.isArray(fact.approximation)||fact.approximation.length!==3)throw Error('CONSTRUCTION_LINE_FACT_REQUIRED:'+node.id);
@@ -440,10 +443,10 @@ export function specFor(plan,model,id){
     // Derived coordinates come exclusively from the independently rebuilt
     // exact model, never from planner-authored approximate coordinates.
     const coordinates=node.op==='SOURCE_POINT'?node.args.coordinates:point.exact;
-    objects.push({id:id+'-name',kind:'POINT_NAME',target:id,text:id,priority:0});
+    objects.push({id:id+'-name',kind:'POINT_NAME',target:id,text:pointNames.tex(id),priority:0});
     if(inPanel.has(id)){
       const labelId=id+'-coordinate-panel';panelLabels.push(labelId);
-      objects.push({id:labelId,kind:'EQUATION_LABEL',target:id,text:id+'('+coordinates.map(value=>unwrapParentheses(scalarExpression(value))).join(',')+')',at:point.approximation,priority:0});
+      objects.push({id:labelId,kind:'EQUATION_LABEL',target:id,text:pointNames.expr(id)+'('+coordinates.map(value=>unwrapParentheses(scalarExpression(value))).join(',')+')',at:point.approximation,priority:0});
       factRolesByLabel[labelId]=node.factRole;
       continue;
     }
@@ -525,7 +528,7 @@ function piecewisePolynomialSpec(plan,id){
   }
   const integerKey=point=>Number.isSafeInteger(point?.x)&&Number.isSafeInteger(point?.y);
   const coordinateText=point=>exactCoordinates[point?.id]??(integerKey(point)?[String(point.x),String(point.y)]:null);
-  const nameLike=pointId=>/^[A-Z][0-9']?$/.test(pointId),graphPanel=new Set(plan.coordinatePlacement==='PANEL'?required.filter(point=>coordinateText(point)&&nameLike(point.id)).map(point=>point.id):plan.coordinatePanel||[]);
+  const pointNames=pointNameModel(plan,required.map(point=>point?.id)),nameLike=pointId=>pointNames.has(pointId)||/^[A-Z][0-9']?$/.test(pointId),graphPanel=new Set([...(plan.coordinatePlacement==='PANEL'?required.filter(point=>coordinateText(point)&&nameLike(point.id)).map(point=>point.id):plan.coordinatePanel||[]),...required.filter(point=>pointNames.has(point?.id)&&coordinateText(point)).map(point=>point.id)]);
   for(const pointId of graphPanel)if(!nameLike(pointId)||!coordinateText(required.find(point=>point.id===pointId)))throw Error('COORDINATE_PANEL_POINT_INVALID:'+pointId);
   const graphDirections=plan.labelDirections??{};
   if(!graphDirections||typeof graphDirections!=='object'||Array.isArray(graphDirections)||Object.entries(graphDirections).some(([pointId,direction])=>!required.some(point=>point.id===pointId)||graphPanel.has(pointId)||!['N','NE','E','SE','S','SW','W','NW'].includes(direction)))throw Error('INVALID_LABEL_DIRECTIONS');
@@ -535,11 +538,11 @@ function piecewisePolynomialSpec(plan,id){
     const markerId='required-point-'+(index+1),coordinates=coordinateText(point);
     if(graphPanel.has(point.id)){
       const labelId=markerId+'-coordinate-panel';panelLabels.push(labelId);
-      objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],name:point.id});
-      objects.push({id:labelId,kind:'EQUATION_LABEL',target:markerId,text:point.id+'('+coordinates.map(unwrapParentheses).join(',')+')',at:[point.x,point.y],priority:0});
+      objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],name:pointNames.tex(point.id)});
+      objects.push({id:labelId,kind:'EQUATION_LABEL',target:markerId,text:pointNames.expr(point.id)+'('+coordinates.map(unwrapParentheses).join(',')+')',at:[point.x,point.y],priority:0});
       continue;
     }
-    objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates?{}:{name:null})});
+    objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],...(coordinates?{}:pointNames.has(point.id)?{name:pointNames.tex(point.id)}:{name:null})});
     if(coordinates)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates,...(graphDirections[point.id]?{preferred:graphDirections[point.id]}:{})});
   }
   // Horizontal lines y=c (a=0, b=-1, c) with a dot at every intersection the framing verified; the equation goes to the band.
