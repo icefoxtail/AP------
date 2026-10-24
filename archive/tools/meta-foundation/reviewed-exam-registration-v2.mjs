@@ -208,7 +208,20 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
 
 function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, registryChanges, existingConceptReviews, items }) {
   if (!audit) return;
-  if (registryChanges.some(change => change.before !== null || change.after === null))
+  const packCourseExtensions = registryChanges.map(change => {
+    if (change.collection || !/^archive\/data\/meta-foundation\/canonical\/packs\/[a-z0-9-]+\/pack\.json$/.test(change.path || "") ||
+        !change.before || !change.after || !Array.isArray(change.before.standardCourses) || !Array.isArray(change.after.standardCourses)) return null;
+    const beforeCourses = new Set(change.before.standardCourses), afterCourses = new Set(change.after.standardCourses);
+    const addedCourses = [...afterCourses].filter(course => !beforeCourses.has(course));
+    const beforeRest = { ...change.before }, afterRest = { ...change.after };
+    delete beforeRest.standardCourses; delete afterRest.standardCourses;
+    if (!addedCourses.length || beforeCourses.size !== change.before.standardCourses.length ||
+        afterCourses.size !== change.after.standardCourses.length || [...beforeCourses].some(course => !afterCourses.has(course)) ||
+        !eq(beforeRest, afterRest)) return null;
+    return { change, packId: change.after.packId, addedCourses };
+  }).filter(Boolean);
+  const allowedPackScopeChanges = new Set(packCourseExtensions.map(extension => extension.change));
+  if (registryChanges.some(change => change.after === null || change.before !== null && !allowedPackScopeChanges.has(change)))
     fail("META_PIPELINE_AUDIT registry changes must be additions only; existing meanings cannot be rewritten");
   // Gemini's zero-inflation count describes its semantic classification pass.
   // A missing Git canonical definition is an additive registry promotion, not
@@ -228,6 +241,26 @@ function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, regist
     if (classification.problemTypeKey) addUse("problemTypes", classification.problemTypeKey, { record, item });
     if (classification.templateKey) addUse("templates", classification.templateKey, { record, item });
     for (const key of classification.crossConceptKeys || []) addUse("concepts", key, { record, item });
+  }
+
+  for (const extension of packCourseExtensions) {
+    const linkedItems = itemByOrdinal.size ? [...itemByOrdinal.values()].filter(item => {
+      const row = item.after || {};
+      const course = row.standardCourse || row.courseKey;
+      if (!extension.addedCourses.includes(course)) return false;
+      const binding = afterTables.bindings.get(stable([row.curriculum || row.curriculumKey, course, row.standardUnitKey,
+        row.subUnitKey ?? null, row.problemTypeKey]));
+      return binding?.status === "ACTIVE" && binding.ownerPack === extension.packId;
+    }) : [];
+    if (!linkedItems.length) fail(`META_PIPELINE_AUDIT pack course extension is not used by audited UIDs: ${extension.packId}`);
+    for (const item of linkedItems) {
+      const row = item.after || {};
+      const course = row.standardCourse || row.courseKey;
+      const binding = afterTables.bindings.get(stable([row.curriculum || row.curriculumKey, course, row.standardUnitKey,
+        row.subUnitKey ?? null, row.problemTypeKey]));
+      if (!binding || binding.status !== "ACTIVE" || binding.ownerPack !== extension.packId)
+        fail(`META_PIPELINE_AUDIT pack course extension lacks exact active binding: ${extension.packId}/${course}/${row.problemTypeKey}`);
+    }
   }
 
   const sorted = rows => [...rows].sort();
