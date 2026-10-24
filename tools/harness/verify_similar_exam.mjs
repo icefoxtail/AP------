@@ -37,6 +37,27 @@ function verifyMathematicalSvg(svgPath, svgContent, q, ord, errors) {
     }
   }
 
+  // Accessibility tags and role per AUTHOR_GUIDE.md and visual contract
+  if (!/<title\b[^>]*>[\s\S]+?<\/title>/i.test(svgContent)) {
+    errors.push(`Q${ord}: SVG is missing required educational <title> tag (${q.image})`);
+  }
+  if (!/<desc\b[^>]*>[\s\S]+?<\/desc>/i.test(svgContent)) {
+    errors.push(`Q${ord}: SVG is missing required educational <desc> tag (${q.image})`);
+  }
+  if (!/role=["']img["']/i.test(svgContent)) {
+    errors.push(`Q${ord}: SVG root is missing required role="img" accessibility attribute (${q.image})`);
+  }
+
+  // Raw unrendered TeX in <text> elements is prohibited in SVG
+  if (/<text\b[^>]*>[^<]*\\[a-zA-Z]+[^<]*<\/text>/i.test(svgContent)) {
+    errors.push(`Q${ord}: SVG contains raw unrendered LaTeX commands in <text> elements (${q.image})`);
+  }
+
+  // Font size floor: font-size < 11px violates visual contract floor
+  if (/\bfont-size=["'](?:[1-9]|10)(?:\.\d+)?(?:px)?["']/i.test(svgContent)) {
+    errors.push(`Q${ord}: SVG violates 11px font size floor (font-size < 11px) in ${q.image}`);
+  }
+
   // 2. Corrupt coordinates & degenerate geometry
   if (/(?:x|y|cx|cy|r|rx|ry|x1|y1|x2|y2|width|height|points|d)=["'][^"']*(?:NaN|undefined|null)/i.test(svgContent)) {
     errors.push(`Q${ord}: SVG contains corrupt coordinate attributes (NaN, undefined, or null) in ${q.image}`);
@@ -329,17 +350,70 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false }) {
     }
   }
 
-  // 6. Plans check
+  // 6. Author Plans Check (Compliant with archive/tools/geometry-equation/production/AUTHOR_GUIDE.md)
+  const SUPPORTED_CAPABILITIES = new Set([
+    'construction-spike-v1',
+    'polynomial-spike-v1',
+    'piecewise-polynomial-spike-v1',
+    'quadratic-inequality-chain-v1',
+    'number-line-figure-v1',
+    'composite-panels-v1',
+    'rational-spike-v1',
+    'sqrt-affine-spike-v1',
+    'absolute-value-spike-v1',
+    'piecewise-affine-spike-v1',
+    'exponential-affine-spike-v1',
+    'logarithmic-affine-spike-v1',
+    'trigonometric-spike-v1'
+  ]);
+
   const plansDir = path.join(examDir, `${actualStem}_plans`);
   if (!fs.existsSync(plansDir)) {
     errors.push(`Author plans directory not found: ${plansDir}`);
   } else {
     for (let ord = 1; ord <= totalQuestions; ord++) {
       const pad = String(ord).padStart(2, '0');
-      const pPlan = path.join(plansDir, `q${pad}-problem.plan.json`);
-      const sPlan = path.join(plansDir, `q${pad}-solution.plan.json`);
-      if (!fs.existsSync(pPlan)) errors.push(`Missing problem plan: q${pad}-problem.plan.json`);
-      if (!fs.existsSync(sPlan)) errors.push(`Missing solution plan: q${pad}-solution.plan.json`);
+      const pPlanPath = path.join(plansDir, `q${pad}-problem.plan.json`);
+      const sPlanPath = path.join(plansDir, `q${pad}-solution.plan.json`);
+
+      const q = bank[ord - 1];
+      const hasImage = Boolean(q?.image);
+
+      for (const [planPath, role] of [[pPlanPath, 'problem'], [sPlanPath, 'solution']]) {
+        const baseName = path.basename(planPath);
+        if (!fs.existsSync(planPath)) {
+          errors.push(`Q${ord}: Missing ${role} plan file (${baseName})`);
+          continue;
+        }
+        let planData;
+        try {
+          planData = JSON.parse(fs.readFileSync(planPath, 'utf8'));
+        } catch (e) {
+          errors.push(`Q${ord}: Malformed JSON in ${baseName}: ${e.message}`);
+          continue;
+        }
+
+        if (planData.status === 'EXEMPT') {
+          if (!planData.reason || typeof planData.reason !== 'string' || planData.reason.trim().length < 5) {
+            errors.push(`Q${ord}: ${baseName} marked EXEMPT must have a substantive 'reason' string per AUTHOR_GUIDE.md §2`);
+          }
+          if (role === 'problem' && hasImage) {
+            errors.push(`Q${ord}: Problem has an active image (${q.image}) but problem plan is marked EXEMPT`);
+          }
+        } else if (planData.status === 'UNSUPPORTED') {
+          if (!planData.reason || typeof planData.reason !== 'string' || planData.reason.trim().length < 5) {
+            errors.push(`Q${ord}: ${baseName} marked UNSUPPORTED must have a substantive 'reason' string per AUTHOR_GUIDE.md §2`);
+          }
+        } else {
+          // Active plan
+          if (!planData.capability || !SUPPORTED_CAPABILITIES.has(planData.capability)) {
+            errors.push(`Q${ord}: ${baseName} missing or invalid 'capability' (${planData.capability}) per AUTHOR_GUIDE.md §3`);
+          }
+          if (role === 'problem' && !hasImage) {
+            errors.push(`Q${ord}: Problem plan is active (${planData.capability}) but question has no image reference`);
+          }
+        }
+      }
     }
   }
 

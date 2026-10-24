@@ -231,4 +231,74 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
       fs.writeFileSync(origSvgPath, origSvg, 'utf8');
     }
   });
+
+  test('Fault Injection: Plan marked EXEMPT missing reason is blocked', () => {
+    const origPlanPath = path.join(REPO_ROOT, 'archive/exams/similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사_plans/q01-problem.plan.json');
+    const origPlan = fs.readFileSync(origPlanPath, 'utf8');
+    const invalidPlan = JSON.stringify({ status: 'EXEMPT' }); // missing reason
+    fs.writeFileSync(origPlanPath, invalidPlan, 'utf8');
+    try {
+      const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사' });
+      assert.equal(res.ok, false);
+      assert.ok(res.errors.some(e => e.includes("must have a substantive 'reason' string per AUTHOR_GUIDE.md")), 'Must catch EXEMPT plan without reason');
+    } finally {
+      fs.writeFileSync(origPlanPath, origPlan, 'utf8');
+    }
+  });
+
+  test('Fault Injection: Active visual plan missing valid capability is blocked', () => {
+    const origPlanPath = path.join(REPO_ROOT, 'archive/exams/similar/middle/m1/1final/19_금당중_1학기_기말_중1_유사_plans/q21-problem.plan.json');
+    const origPlan = fs.readFileSync(origPlanPath, 'utf8');
+    const invalidPlan = JSON.stringify({ capability: 'INVALID_UNKNOWN_CAPABILITY', caption: 'test' });
+    fs.writeFileSync(origPlanPath, invalidPlan, 'utf8');
+    try {
+      const res = verifySimilarExam({ stem: '19_금당중_1학기_기말_중1_유사' });
+      assert.equal(res.ok, false);
+      assert.ok(res.errors.some(e => e.includes("missing or invalid 'capability'")), 'Must catch invalid capability in plan');
+    } finally {
+      fs.writeFileSync(origPlanPath, origPlan, 'utf8');
+    }
+  });
+
+  test('Fault Injection: SVG missing required <title> tag is blocked', () => {
+    const origSvgPath = path.join(REPO_ROOT, 'archive/assets/images/19_금당중_1학기_기말_중1_유사/q21.svg');
+    const origSvg = fs.readFileSync(origSvgPath, 'utf8');
+    const noTitleSvg = origSvg.replace(/<title\b[^>]*>[\s\S]+?<\/title>/gi, '');
+    fs.writeFileSync(origSvgPath, noTitleSvg, 'utf8');
+    try {
+      const res = verifySimilarExam({ stem: '19_금당중_1학기_기말_중1_유사' });
+      assert.equal(res.ok, false);
+      assert.ok(res.errors.some(e => e.includes('SVG is missing required educational <title> tag')), 'Must catch missing <title>');
+    } finally {
+      fs.writeFileSync(origSvgPath, origSvg, 'utf8');
+    }
+  });
+
+  test('Fault Injection: SVG with raw unrendered LaTeX commands in <text> is blocked', () => {
+    const origSvgPath = path.join(REPO_ROOT, 'archive/assets/images/19_금당중_1학기_기말_중1_유사/q21.svg');
+    const origSvg = fs.readFileSync(origSvgPath, 'utf8');
+    const rawTexSvg = origSvg.replace('10 cm</text>', '\\frac{10}{2}\\text{ cm}</text>');
+    fs.writeFileSync(origSvgPath, rawTexSvg, 'utf8');
+    try {
+      const res = verifySimilarExam({ stem: '19_금당중_1학기_기말_중1_유사' });
+      assert.equal(res.ok, false);
+      assert.ok(res.errors.some(e => e.includes('SVG contains raw unrendered LaTeX commands in <text> elements')), 'Must catch raw TeX in SVG');
+    } finally {
+      fs.writeFileSync(origSvgPath, origSvg, 'utf8');
+    }
+  });
+
+  test('Fault Injection: SVG violating 11px font size floor is blocked', () => {
+    const origSvgPath = path.join(REPO_ROOT, 'archive/assets/images/19_금당중_1학기_기말_중1_유사/q21.svg');
+    const origSvg = fs.readFileSync(origSvgPath, 'utf8');
+    const smallFontSvg = origSvg.replace('font-size="14"', 'font-size="9px"');
+    fs.writeFileSync(origSvgPath, smallFontSvg, 'utf8');
+    try {
+      const res = verifySimilarExam({ stem: '19_금당중_1학기_기말_중1_유사' });
+      assert.equal(res.ok, false);
+      assert.ok(res.errors.some(e => e.includes('SVG violates 11px font size floor')), 'Must catch sub-11px font');
+    } finally {
+      fs.writeFileSync(origSvgPath, origSvg, 'utf8');
+    }
+  });
 });
