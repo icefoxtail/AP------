@@ -457,8 +457,9 @@ window.questionBank = [
     "content": "이차함수 $y=x^2-2x+6$의 그래프가 직선 $y=-x+k$보다 항상 위쪽에 있도록 하는 자연수 $k$의 최댓값을 구하시오. [4.2점]",
     "answer": "④",
     "solution": "포물선이 직선보다 항상 위에 있으려면 두 식의 차가 모든 실수 $x$에서 양수여야 한다.\n$(x^2-2x+6)-(-x+k)=x^2-x+6-k$이다.\n완전제곱식으로 정리하면\n$x^2-x+6-k=\\left(x-\\dfrac12\\right)^2+\\dfrac{23}{4}-k$이다.\n제곱항의 최소값은 $0$이므로 차의 최소값은 $\\dfrac{23}{4}-k$이다.\n항상 위쪽에 있으려면 $\\dfrac{23}{4}-k>0$, 즉 $k<\\dfrac{23}{4}$이다.\n이 조건을 만족하는 자연수 중 최대는 $5$이다. 정답은 ④이다.",
-    "solutionImageAlt": "포물선 위 직사각형의 둘레 최적 배치 및 x=5,7 아래변 P 위치",
-    "solutionImageCaption": "둘레 최대에서 t=1, BC의 x좌표 구간 [5,7]을 확인한다.",
+    "solutionImage": "assets/images/20_매산여고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "k=5이면 직선 y=-x+5가 포물선 y=x²-2x+6보다 항상 아래에 있고, k=23/4이면 점 T(1/2, 21/4)에서 접하므로 k<23/4이다.",
+    "solutionImageCaption": "k=5이면 직선 y=-x+5가 포물선 y=x²-2x+6보다 항상 아래에 있고, k=23/4이면 점 T(1/2, 21/4)에서 접하므로 k<23/4이다.",
     "solutionImageSize": "full",
     "choices": [
       "$2$",

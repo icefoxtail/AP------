@@ -55,7 +55,11 @@ window.questionBank = [
     "rpmL4": "외분점",
     "rpmEvidenceDebt": null,
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_순천고_1학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "선분 AB를 2:3으로 외분하는 점은 A 바깥쪽에 놓인 P(-24)이다.",
+    "solutionImageCaption": "선분 AB를 2:3으로 외분하는 점은 A 바깥쪽에 놓인 P(-24)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,

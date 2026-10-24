@@ -282,7 +282,11 @@ window.questionBank = [
     "subUnitConfidence": "current_canonical",
     "subUnitClassificationDepth": "complete_rule",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_효천고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "선분 AB를 2:3으로 내분하는 점은 P(0, 22/5)이다.",
+    "solutionImageCaption": "선분 AB를 2:3으로 내분하는 점은 P(0, 22/5)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,

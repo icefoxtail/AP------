@@ -46,7 +46,11 @@ window.questionBank = [
     "sourceQid": 1,
     "sourceOrdinal": 1,
     "sourceArchiveFile": "original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js",
-    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"}
+    "provenance": {"sourceId":"2020|금당고|h1|2mid","sourceArchiveFile":"original/high/h1/2mid/20_금당고_2학기_중간_고1_기출.js","sourceOrdinal":1,"sourceQid":1,"sourceType":"ORIGINAL_EXAM","sourceIntakeEvidence":"archive\\analysis\\20_금당고_2학기_중간_고1_기출\\h1-fast-lane-c-20261013\\source-intake\\20_금당고_2학기_중간_고1_기출.evidence.json","sourcePdfSha256":"6D4FB4EB282307AF4589162A04400377AA74AD5BF57B17EC527B01B8EAB77E65","sourceInputJsSha256":"6480B6992F727B2F0016E5A90E7B228D76627692AF85E7BAA5C4E9CD65DD8B02"},
+    "solutionImage": "assets/images/20_금당고_2학기_중간_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "직선 x-2y+4=0 위의 점 A(0,2), B(-4,0)을 x축 방향으로 -1, y축 방향으로 3만큼 옮기면 A′(-1,5), B′(-5,3)이고, 이동한 직선은 x-2y+11=0이다.",
+    "solutionImageCaption": "직선 x-2y+4=0 위의 점 A(0,2), B(-4,0)을 x축 방향으로 -1, y축 방향으로 3만큼 옮기면 A′(-1,5), B′(-5,3)이고, 이동한 직선은 x-2y+11=0이다.",
+    "solutionImageSize": "full"
   
   },
   {

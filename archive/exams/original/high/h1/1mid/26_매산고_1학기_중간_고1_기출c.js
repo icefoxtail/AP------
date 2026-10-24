@@ -403,7 +403,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q11-solution.svg",
+    "solutionImageAlt": "k=-3+2√3일 때 포물선 y=x²+kx+5가 직선 y=-3x+2에 점 T에서 접한다. k=-3-2√3일 때도 접하며 두 k의 곱은 -3이다.",
+    "solutionImageCaption": "k=-3+2√3일 때 포물선 y=x²+kx+5가 직선 y=-3x+2에 점 T에서 접한다. k=-3-2√3일 때도 접하며 두 k의 곱은 -3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -640,7 +644,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_매산고_1학기_중간_고1_기출c/q18-solution.svg",
+    "solutionImageAlt": "두 포물선은 C(-1,4), D(3/2, 21/4)에서 만난다. 직선 y=4(=C의 높이)는 교점이 3개이고, t=5처럼 3<t<25/4이면서 t≠4, t≠21/4이면 네 점에서 만난다.",
+    "solutionImageCaption": "두 포물선은 C(-1,4), D(3/2, 21/4)에서 만난다. 직선 y=4(=C의 높이)는 교점이 3개이고, t=5처럼 3<t<25/4이면서 t≠4, t≠21/4이면 네 점에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
