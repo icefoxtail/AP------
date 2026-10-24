@@ -4321,7 +4321,7 @@
           "key": "batchP-p238",
           "fam": "ALG_GRAPH",
           "cluster": "D_exp_log_trig",
-          "reason": "로그함수와 지수함수 그래프(역함수 대칭)가 필요하나 다항 그래프만 지원된다."
+          "reason": "batch5 최종 UNSUPPORTED: 밑이 3인 로그함수 2log_3 x와 지수함수 (sqrt3)^x는 계수에 1/ln3, ln3 같은 무리수가 들어 엔진이 유리수 계수의 자연로그/지수만 그릴 수 있어 그릴 수 없다."
         },
         {
           "ord": 13,
@@ -4334,8 +4334,8 @@
           ]
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "776"
       ]
