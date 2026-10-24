@@ -39,7 +39,7 @@
 - [x] **20_매산여고_1학기_기말_고2_수학I** (1건): q21 OPEN_OTHER AUTHORING — 상태 AUTHORING
 - [x] **20_매산여고_1학기_중간_고1_기출** (1건): q11 OPEN_OTHER BOUND_NOT_PUBLISHED — solutionImageAlt/Caption/Size만 있고 solutionImage 참조·에셋 없음(반등록
 - [x] **20_효천고_1학기_기말_고1_기출** (1건): q4 OPEN_UNSUPPORTED A_construction_ops — 2:3 내분점은 계약의 점 생성 연산(중점 등)으로 정확히 표현할 수 없다.
-- **21_강남여고_1학기_기말_고2_수학I** (1건): q26 OPEN_UNSUPPORTED D_exp_log_trig — 서로 다른 두 사인·코사인 곡선의 교점을 한 그림에 그려야 한다.
+- [x] **21_강남여고_1학기_기말_고2_수학I** (1건): q26 OPEN_UNSUPPORTED D_exp_log_trig — 서로 다른 두 사인·코사인 곡선의 교점을 한 그림에 그려야 한다.
 - **21_금당고_1학기_중간_고2_수학I** (1건): q13 OPEN_UNSUPPORTED D_exp_log_trig — 로그함수 곡선과 수직이등분선 x=-3(수직선)이 필요하나 지원되지 않음
 - **21_순천고_1학기_기말_고1_기출** (1건): q7 OPEN_UNSUPPORTED other — x축과 y축에 접하는 두 원의 중심 (1,1),(5,5)는 이차방정식으로 구한 유도점이라 원본 좌표 없이 만
 - **21_순천고_1학기_중간_고1_기출** (1건): q15 OPEN_UNSUPPORTED B_two_curves — a의 값마다 달라지는 여러 포물선이 한 직선에 접하는 관계를 한 그림에 그려야 하는데 한 그림에 두 곡선 이
