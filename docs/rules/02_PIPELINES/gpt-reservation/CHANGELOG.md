@@ -1,5 +1,23 @@
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — 변경 이력
 
+## v2.0.0 — 2026-10-24: 중등 유사문항 2-라인 분리 및 AUTHOR_GUIDE.md SVG 엔진 완전 결속
+- 발견한 틈:
+  1. 단일 5시간 예약 내에서 생성과 검수를 동시에 수행하여 R1 독립 블라인드 검수의 시간적/물리적 독립성 훼손.
+  2. 프롬프트에 특정 시험지명이 고정되어 동적 컨베이어(`tools/route_queue.py`)를 반영하지 못함.
+  3. 공식 SVG 엔진 규격(`archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`)이 프롬프트 및 하네스 게이트에 명시되지 않아 임의 손코딩 위험 발생.
+- 사용자 결정:
+  1. 생성 라인(Line 1: 5시간마다)과 검수·수리·출고 라인(Line 2: 생성 1시간 뒤)의 물리적 분리.
+  2. 시험지명 하드코딩 전면 제거: `python tools/route_queue.py --next-in-line --json`으로 완전 동적화.
+  3. `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`를 최우선 필독 정본으로 바인딩. $2 \times N$ 플랜(EXEMPT 사유, 지원 capability, sourceQuote, caption) 및 SVG 엔진 규격(<title>, <desc>, role="img", 폰트 11px 이상, raw LaTeX 미잔존)을 하네스 게이트(`verify_similar_exam.mjs`)에 코드 레벨로 결속.
+- 수정 파일:
+  - `docs/rules/02_PIPELINES/gpt-reservation/MIDDLE_SIMILAR_LINE1_GENERATOR_CURRENT.md` (신규)
+  - `docs/rules/02_PIPELINES/gpt-reservation/MIDDLE_SIMILAR_LINE2_REVIEWER_CURRENT.md` (신규)
+  - `docs/rules/02_PIPELINES/gpt-reservation/MIDDLE_SIMILAR_5H_RESERVATION_CURRENT.md` (2-라인 포인터로 갱신)
+  - `tools/RESERVATION_2LINE_PIPELINE.md`
+  - `tools/harness/verify_similar_exam.mjs`
+  - `tests/similar_harness_gate.test.mjs` (21개 테스트 통과)
+
+
 ## v1.0.2 — 2026-10-19: HIGH_DYNAMIC Google Drive 출고 허브 전환
 - 문제: ChatGPT Library 허브가 Codex/Work의 연결된 Google Drive에서 검색되지 않아 PENDING 32건 중 Git 이미 병합된 13건이 중복 대기로 보임.
 - 사용자 결정: Google Drive `Archive2-GPT/RELEASE_HUB`(folder ID `1DQigbs29hiuvwxbS-6i7w6hK6iziNk57`)를 HIGH_DYNAMIC R3→출고의 단일 정본으로 사용. 기존 stage Library 및 5예약 일정/ON 변경 금지.
