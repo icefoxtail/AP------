@@ -76,14 +76,19 @@
       "id": "GEOMETRY",
       "version": "1.0.3",
       "status": "ACTIVE"
+    },
+    {
+      "id": "MIDDLE3",
+      "version": "1.0.0",
+      "status": "ACTIVE"
     }
   ],
   "activeConceptShards": [
     {
       "id": "ALGEBRA",
-      "version": "1.4.2",
+      "version": "1.4.3",
       "status": "ACTIVE",
-      "conceptCount": 33
+      "conceptCount": 52
     },
     {
       "id": "FUNCTIONS",
@@ -99,15 +104,15 @@
     },
     {
       "id": "COORDINATE_GEOMETRY",
-      "version": "1.1.3",
+      "version": "1.1.4",
       "status": "ACTIVE",
-      "conceptCount": 27
+      "conceptCount": 28
     },
     {
       "id": "PLANE_GEOMETRY",
-      "version": "1.3.1",
+      "version": "1.3.2",
       "status": "ACTIVE",
-      "conceptCount": 20
+      "conceptCount": 23
     },
     {
       "id": "COUNTING",
@@ -117,9 +122,9 @@
     },
     {
       "id": "NUMBER_THEORY",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "status": "ACTIVE",
-      "conceptCount": 7
+      "conceptCount": 17
     },
     {
       "id": "CALCULUS",
@@ -160,8 +165,8 @@
   "canonicalSources": [
     {
       "path": "archive/data/meta-foundation/canonical/concepts/algebra.json",
-      "sizeBytes": 41091,
-      "sha256": "ba9f8d9946e8ad26ac1732d04429d456808cafecdf01b7eb35f1a1f77fc29341"
+      "sizeBytes": 68865,
+      "sha256": "349c339832bf5fc9903811a5be9217233fc1187e1dc62c88976a18139814d295"
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/calculus.json",
@@ -170,8 +175,8 @@
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/coordinate-geometry.json",
-      "sizeBytes": 56454,
-      "sha256": "417b57a5edd8364f5d3e4825eb4c27be00e28c9e4244e28dcfb8c206dcffb475"
+      "sizeBytes": 57864,
+      "sha256": "a429fc49132036cf85dc9c612f9cf731a823c4795767653be6e4eefcdc5b06a1"
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/counting.json",
@@ -195,13 +200,13 @@
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/number-theory.json",
-      "sizeBytes": 11711,
-      "sha256": "1ff59c38e5f2c2be619305777c81cd9237feef58b6f0ef4d30e170bfcd664cb7"
+      "sizeBytes": 25700,
+      "sha256": "ef1e58463688696d7ab3d57d28a625865b0bd40b233b30a3abe3a202e997ffd8"
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/plane-geometry.json",
-      "sizeBytes": 32644,
-      "sha256": "eb2106b5f5d8238baa3f8e093e898fc7266fb82e053d1d02125348b21a1d6f94"
+      "sizeBytes": 37141,
+      "sha256": "8bbaf0296562ccd907d5a38571d7238c92433b647642c8f4d41d8a67691e973c"
     },
     {
       "path": "archive/data/meta-foundation/canonical/concepts/sequences.json",
@@ -527,18 +532,38 @@
       "path": "archive/data/meta-foundation/canonical/packs/geometry/aliases.json",
       "sizeBytes": 110,
       "sha256": "db186215fe6ef0ced6c6dcd3825727af1c91f77ad34a642d23a2febc09b81926"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/pack.json",
+      "sizeBytes": 1030,
+      "sha256": "0b5af461137882100de8d461bd834ab76e225cb058933ddf212df6f811ad2c2f"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/taxonomy.json",
+      "sizeBytes": 63009,
+      "sha256": "910e8cff30f360d6edce5e049776173193d152be6ef52e908e5d3f3de20bb033"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/bindings.json",
+      "sizeBytes": 5955,
+      "sha256": "90f4a096d6976d3075d45431c509395e4c65a81f8fe9ebcff1201460e7feb01d"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/packs/middle3/aliases.json",
+      "sizeBytes": 160,
+      "sha256": "658690343529c52ca583035c1d2811dd3bf816f383ca42a4bc41e17f24bb52ee"
     }
   ],
   "compiledArtifacts": [
     {
       "path": "archive/data/meta-foundation/compiled/aliases.json",
-      "sizeBytes": 145101,
-      "sha256": "b71eb9b919c35596888244125357b1c3745b755ffde22b70b5a73b321c91c4ef"
+      "sizeBytes": 145116,
+      "sha256": "d73e39bcee21ae9105fc9a35112be3d1ebee011fd5c917d7191d9a809b900f10"
     },
     {
       "path": "archive/data/meta-foundation/compiled/concept_registry.json",
-      "sizeBytes": 222437,
-      "sha256": "1d76a34c0e8972ca06b8c876821e64ce7ac9394936d61d818d6e9f9dd0c47d80"
+      "sizeBytes": 270107,
+      "sha256": "6ce797afec3985f7363c41c82b6237bd8620c263b0380cfb3312d8fd701415dc"
     },
     {
       "path": "archive/data/meta-foundation/compiled/condition_registry.json",
@@ -547,18 +572,18 @@
     },
     {
       "path": "archive/data/meta-foundation/compiled/curriculum_bindings.json",
-      "sizeBytes": 819026,
-      "sha256": "8d8a1efd4980876e9fd63b4184a5b2e753bfc555d4e9301ece5c25808e4f1195"
+      "sizeBytes": 824826,
+      "sha256": "7744fc8a82cb63b891816ce409e91b650164b6330f9ffc8c560ac329ea917ad7"
     },
     {
       "path": "archive/data/meta-foundation/compiled/meta_foundation_compiled.json",
-      "sizeBytes": 1242,
-      "sha256": "3f27149e26553dd44cbc2c489450545c8b889b5b8d3dc276bf6dc5db620cf7a6"
+      "sizeBytes": 1265,
+      "sha256": "7877b7ca1beea1c6a1a96f698bae1c9987db2f23df18d3ea7aec63eb8f5ec965"
     },
     {
       "path": "archive/data/meta-foundation/compiled/taxonomy_registry.json",
-      "sizeBytes": 1808145,
-      "sha256": "b5bb0b652c8dd7a461cf3154461c016db6da3ed260d02c9322eac05ef08bc955"
+      "sizeBytes": 1870916,
+      "sha256": "ccf2b5664c635f89a144c51b2555874c154156eeaf39e772db73d7173d6eab84"
     }
   ],
   "compiledIsReadOnly": true

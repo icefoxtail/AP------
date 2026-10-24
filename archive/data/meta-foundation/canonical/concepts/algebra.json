@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.2",
+  "shardVersion": "1.4.3",
   "status": "ACTIVE",
-  "conceptCount": 33,
+  "conceptCount": 52,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -1010,6 +1010,594 @@
       "supportingItemCount": 1,
       "status": "ACTIVE",
       "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_ABSOLUTE_VALUE_SIMPLIFY",
+      "canonicalLabelKo": "절댓값 간소화",
+      "definition": "sqrt(A^2)=|A| 성질을 이용한 식 정리",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6867c2ade9d2fa3cd5646257707af38edffc73d71489048be59bf41ca6844465"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_6867c2ade9d2fa3cd5646257707af38edffc73d71489048be59bf41ca6844465"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_COMMON_FACTOR",
+      "canonicalLabelKo": "공통인수",
+      "definition": "다항식의 각 항에 공통으로 들어 있는 인수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8e8fe246ce18b0949f97a4265d9f613b6d7fa0d143a4b23be06e3a55f51b6b77",
+        "qid_v1_056f76894ba53c9277fcf476c8b9b1d1a838c3a14dcabadf2caeaf293020c664"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_8e8fe246ce18b0949f97a4265d9f613b6d7fa0d143a4b23be06e3a55f51b6b77",
+            "qid_v1_056f76894ba53c9277fcf476c8b9b1d1a838c3a14dcabadf2caeaf293020c664"
+          ],
+          "questionCount": 2,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_DENOMINATOR_RATIONALIZATION",
+      "canonicalLabelKo": "분모의 유리화",
+      "definition": "분모에 있는 근호를 제거하는 변형",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ae49216e70df042a91d0ef90bed08a41b725d5cb6c17afb932da9bf88f1fbe8f",
+        "qid_v1_a775c4c1c571c37cb55c608c482c0258c70d78dd381e5d4ecac107667575dd43",
+        "qid_v1_36175ee3fdae18990e93a0bcab261edb82ef51f1a7a49b63f869ee4ecaf57c02"
+      ],
+      "supportingItemCount": 3,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_ae49216e70df042a91d0ef90bed08a41b725d5cb6c17afb932da9bf88f1fbe8f",
+            "qid_v1_a775c4c1c571c37cb55c608c482c0258c70d78dd381e5d4ecac107667575dd43",
+            "qid_v1_36175ee3fdae18990e93a0bcab261edb82ef51f1a7a49b63f869ee4ecaf57c02"
+          ],
+          "questionCount": 3,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_DIFFERENCE_OF_SQUARES",
+      "canonicalLabelKo": "합차 공식",
+      "definition": "A^2 - B^2 = (A-B)(A+B) 전개 및 인수분해",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_330d7e6dc9eb2288b67c726283c5de73336164a5f273a4474413bba10326e14f",
+        "qid_v1_4813d84e33d61f44afadfde9252a6d16a084af50a33d0c9abe0bff7f9446a88b",
+        "qid_v1_d53c7763ea2daa4f53aa8e31f31baef2631f3a3f4d4d88abd56bd55d6b8d8954",
+        "qid_v1_333cb53ede706008ea97bc4254d4fd4e0735aa40d96b4e7a012b393bdd5877db"
+      ],
+      "supportingItemCount": 4,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_330d7e6dc9eb2288b67c726283c5de73336164a5f273a4474413bba10326e14f",
+            "qid_v1_4813d84e33d61f44afadfde9252a6d16a084af50a33d0c9abe0bff7f9446a88b",
+            "qid_v1_d53c7763ea2daa4f53aa8e31f31baef2631f3a3f4d4d88abd56bd55d6b8d8954",
+            "qid_v1_333cb53ede706008ea97bc4254d4fd4e0735aa40d96b4e7a012b393bdd5877db"
+          ],
+          "questionCount": 4,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_EXPANSION_COEFFICIENT",
+      "canonicalLabelKo": "전개식의 계수",
+      "definition": "완전제곱식 전개 시 일차항 계수 결정",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_99aed299c924c394ee8c6a97ff16299a811ad0a8f52aa816373e5bd7abfaf355"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_99aed299c924c394ee8c6a97ff16299a811ad0a8f52aa816373e5bd7abfaf355"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_FACTOR_DEFINITION",
+      "canonicalLabelKo": "인수의 정의",
+      "definition": "다항식을 곱의 꼴로 나타낼 때 각각의 식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8e8fe246ce18b0949f97a4265d9f613b6d7fa0d143a4b23be06e3a55f51b6b77"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_8e8fe246ce18b0949f97a4265d9f613b6d7fa0d143a4b23be06e3a55f51b6b77"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_FACTOR_THEOREM",
+      "canonicalLabelKo": "인수정리",
+      "definition": "P(alpha)=0이면 x-alpha를 인수로 가짐",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_056f76894ba53c9277fcf476c8b9b1d1a838c3a14dcabadf2caeaf293020c664"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_056f76894ba53c9277fcf476c8b9b1d1a838c3a14dcabadf2caeaf293020c664"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_GROUPING_FACTORIZATION",
+      "canonicalLabelKo": "항 묶기 인수분해",
+      "definition": "공통인수가 나오도록 항을 짝지어 묶음",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_4813d84e33d61f44afadfde9252a6d16a084af50a33d0c9abe0bff7f9446a88b"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_4813d84e33d61f44afadfde9252a6d16a084af50a33d0c9abe0bff7f9446a88b"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_MULTIPLICATION_FORMULA",
+      "canonicalLabelKo": "곱셈 공식",
+      "definition": "다항식의 곱을 빠르게 전개하는 공식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6fe846a0b0e52ee96067b0d914bd05cebcad09a4d3b294d2e4a56791e8f58056"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_6fe846a0b0e52ee96067b0d914bd05cebcad09a4d3b294d2e4a56791e8f58056"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_ORDER_OF_OPERATIONS",
+      "canonicalLabelKo": "연산의 순서",
+      "definition": "거듭제곱, 괄호, 곱셈·나눗셈의 계산 우선순위",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_3ba2e1a0622a4db1ea574b6ddbfc3616c760b00008d08700b1431c898e0cff25"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_3ba2e1a0622a4db1ea574b6ddbfc3616c760b00008d08700b1431c898e0cff25"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_PERFECT_SQUARE",
+      "canonicalLabelKo": "완전제곱식",
+      "definition": "다항식의 제곱 꼴로 나타내어지는 식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_99aed299c924c394ee8c6a97ff16299a811ad0a8f52aa816373e5bd7abfaf355",
+        "qid_v1_e74580e538e5d4752101c8ed1b8ad490335b756bf6c962091ef7abee81d01e2f",
+        "qid_v1_333cb53ede706008ea97bc4254d4fd4e0735aa40d96b4e7a012b393bdd5877db"
+      ],
+      "supportingItemCount": 3,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_99aed299c924c394ee8c6a97ff16299a811ad0a8f52aa816373e5bd7abfaf355",
+            "qid_v1_e74580e538e5d4752101c8ed1b8ad490335b756bf6c962091ef7abee81d01e2f",
+            "qid_v1_333cb53ede706008ea97bc4254d4fd4e0735aa40d96b4e7a012b393bdd5877db"
+          ],
+          "questionCount": 3,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_EXPANSION",
+      "canonicalLabelKo": "다항식의 전개",
+      "definition": "괄호를 풀어 동류항끼리 정리하는 계산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_330d7e6dc9eb2288b67c726283c5de73336164a5f273a4474413bba10326e14f"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_330d7e6dc9eb2288b67c726283c5de73336164a5f273a4474413bba10326e14f"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_SUM",
+      "canonicalLabelKo": "다항식의 합",
+      "definition": "두 일차식의 동류항 덧셈",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_01060d47bb3eace5181944f8d79555a8848dc33e76402356d7c56206446b3203"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_01060d47bb3eace5181944f8d79555a8848dc33e76402356d7c56206446b3203"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_FACTORIZATION",
+      "canonicalLabelKo": "이차식의 인수분해",
+      "definition": "x^2+(a+b)x+ab = (x+a)(x+b) 꼴 인수분해",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_01060d47bb3eace5181944f8d79555a8848dc33e76402356d7c56206446b3203"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_01060d47bb3eace5181944f8d79555a8848dc33e76402356d7c56206446b3203"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_RADICAL_ADDITION",
+      "canonicalLabelKo": "근호의 덧셈과 뺄셈",
+      "definition": "근호 안의 수가 같은 동류항끼리의 계산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_a775c4c1c571c37cb55c608c482c0258c70d78dd381e5d4ecac107667575dd43"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_a775c4c1c571c37cb55c608c482c0258c70d78dd381e5d4ecac107667575dd43"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_RADICAL_ARITHMETIC",
+      "canonicalLabelKo": "근호의 사칙연산",
+      "definition": "제곱근을 포함한 수의 곱셈과 나눗셈",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2e188e6eb211cfa432321648c2846c1dbf4e5dceadb6387c8b0c53e75b45bdee",
+        "qid_v1_3ba2e1a0622a4db1ea574b6ddbfc3616c760b00008d08700b1431c898e0cff25"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_2e188e6eb211cfa432321648c2846c1dbf4e5dceadb6387c8b0c53e75b45bdee",
+            "qid_v1_3ba2e1a0622a4db1ea574b6ddbfc3616c760b00008d08700b1431c898e0cff25"
+          ],
+          "questionCount": 2,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_RADICAL_FACTORIZATION",
+      "canonicalLabelKo": "근호의 소인수분해",
+      "definition": "근호 안의 소수 인수를 분리하여 문자로 치환",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2df6256ba4638a09332c5a17ab1d0538c8fddff6f24e15f97b191b4e1b570116"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_2df6256ba4638a09332c5a17ab1d0538c8fddff6f24e15f97b191b4e1b570116"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_RADICAL_SIMPLIFY",
+      "canonicalLabelKo": "근호의 단순화",
+      "definition": "근호 안의 제곱인수를 밖으로 빼내기",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ae49216e70df042a91d0ef90bed08a41b725d5cb6c17afb932da9bf88f1fbe8f"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_ae49216e70df042a91d0ef90bed08a41b725d5cb6c17afb932da9bf88f1fbe8f"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_VARIABLE_SIGN",
+      "canonicalLabelKo": "문자의 부호 판별",
+      "definition": "주어진 조건식으로부터 미지수의 양·음 판별",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6867c2ade9d2fa3cd5646257707af38edffc73d71489048be59bf41ca6844465"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "ALGEBRA",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_6867c2ade9d2fa3cd5646257707af38edffc73d71489048be59bf41ca6844465"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
     }
   ]
 }

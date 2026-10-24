@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "NUMBER_THEORY",
-  "shardVersion": "1.1.1",
+  "shardVersion": "1.1.2",
   "status": "ACTIVE",
-  "conceptCount": 7,
+  "conceptCount": 17,
   "concepts": [
     {
       "conceptKey": "CC_NUMBER_DIVISOR_MULTIPLE",
@@ -260,6 +260,308 @@
       "status": "ACTIVE",
       "aliases": [],
       "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_CYCLIC_DECIMAL",
+      "canonicalLabelKo": "순환소수",
+      "definition": "분수로 나타낼 수 있는 순환하는 무한소수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2870702648ff2b7912638450557439f5532d8131853838bffc3a127b8c4b348f"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_2870702648ff2b7912638450557439f5532d8131853838bffc3a127b8c4b348f"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_DIVISOR_PROPERTY",
+      "canonicalLabelKo": "약수의 성질",
+      "definition": "인수분해를 통해 자연수의 약수 쌍을 구함",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_d53c7763ea2daa4f53aa8e31f31baef2631f3a3f4d4d88abd56bd55d6b8d8954"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_d53c7763ea2daa4f53aa8e31f31baef2631f3a3f4d4d88abd56bd55d6b8d8954"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_FRACTION_OPERATION",
+      "canonicalLabelKo": "분수의 연산",
+      "definition": "분수의 곱셈과 역수 나눗셈",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2e188e6eb211cfa432321648c2846c1dbf4e5dceadb6387c8b0c53e75b45bdee"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_2e188e6eb211cfa432321648c2846c1dbf4e5dceadb6387c8b0c53e75b45bdee"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_INTEGER_DECIMAL_PART",
+      "canonicalLabelKo": "정수부분과 소수부분",
+      "definition": "실수에서 정수부분을 제외한 소수부분 정의",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_36175ee3fdae18990e93a0bcab261edb82ef51f1a7a49b63f869ee4ecaf57c02"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_36175ee3fdae18990e93a0bcab261edb82ef51f1a7a49b63f869ee4ecaf57c02"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_IRRATIONAL_NUMBER_CLASSIFICATION",
+      "canonicalLabelKo": "무리수의 분류",
+      "definition": "유리수와 무리수를 구분하는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_c5899ddb2674ae29314472283be625736da307957baf05922dbee3fb8cc52cb7"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_c5899ddb2674ae29314472283be625736da307957baf05922dbee3fb8cc52cb7"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_PI_PROPERTY",
+      "canonicalLabelKo": "원주율 파이",
+      "definition": "순환하지 않는 대표적 무리수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_c5899ddb2674ae29314472283be625736da307957baf05922dbee3fb8cc52cb7"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_c5899ddb2674ae29314472283be625736da307957baf05922dbee3fb8cc52cb7"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_RADICAL_COMPARISON",
+      "canonicalLabelKo": "무리수의 대소 비교",
+      "definition": "근호 안의 수 크기 비교",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_d402ba8f1828c5e095836d470047d26ba13b527944b275acffce22c43e890686"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_d402ba8f1828c5e095836d470047d26ba13b527944b275acffce22c43e890686"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_REAL_NUMBER_ORDER",
+      "canonicalLabelKo": "실수의 대소 관계",
+      "definition": "실수의 크기 비교 및 부등식 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_054d600013aedacb31fdc853d410075b3c9fbf68de6b3c2af8b8da773c09ca6b",
+        "qid_v1_d402ba8f1828c5e095836d470047d26ba13b527944b275acffce22c43e890686"
+      ],
+      "supportingItemCount": 2,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_054d600013aedacb31fdc853d410075b3c9fbf68de6b3c2af8b8da773c09ca6b",
+            "qid_v1_d402ba8f1828c5e095836d470047d26ba13b527944b275acffce22c43e890686"
+          ],
+          "questionCount": 2,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_SQUARE_NUMBER",
+      "canonicalLabelKo": "제곱수",
+      "definition": "지수가 모두 짝수인 자연수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_92b1f9654dbd1c46138df1f9924c647b12ddf8c0e2d4cc78cdc4a558de20ebe8"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_92b1f9654dbd1c46138df1f9924c647b12ddf8c0e2d4cc78cdc4a558de20ebe8"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
+    },
+    {
+      "conceptKey": "CC_SQUARE_ROOT_DEFINITION",
+      "canonicalLabelKo": "제곱근의 정의",
+      "definition": "어떤 수를 제곱하여 a가 되는 수의 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2870702648ff2b7912638450557439f5532d8131853838bffc3a127b8c4b348f"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_2870702648ff2b7912638450557439f5532d8131853838bffc3a127b8c4b348f"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
     }
   ]
 }

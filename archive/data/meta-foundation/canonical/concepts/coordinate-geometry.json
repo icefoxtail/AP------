@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COORDINATE_GEOMETRY",
-  "shardVersion": "1.1.3",
+  "shardVersion": "1.1.4",
   "status": "ACTIVE",
-  "conceptCount": 27,
+  "conceptCount": 28,
   "concepts": [
     {
       "conceptKey": "CC_CIRCLE_CENTER_RADIUS",
@@ -1351,6 +1351,36 @@
         "2022:기하:H22-GE-03"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_NUMBER_LINE_COORDINATE",
+      "canonicalLabelKo": "수직선 위의 좌표",
+      "definition": "기준점과 이동 거리를 결합한 실수의 대응점",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_9dccd4f52daab090123c32e827c3c89e6127bc6a767194dc1a5741a88a50d0da"
+      ],
+      "supportingItemCount": 1,
+      "status": "ACTIVE",
+      "ownerConceptShard": "COORDINATE_GEOMETRY",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT_CODEX_RECONCILED",
+          "sourceArchiveFile": "original/middle/m3/1mid/16_왕의중_1학기_중간_중3_수학.js",
+          "questionUids": [
+            "qid_v1_9dccd4f52daab090123c32e827c3c89e6127bc6a767194dc1a5741a88a50d0da"
+          ],
+          "questionCount": 1,
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
+            "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          },
+          "sourceParityRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-16-wangui-m3-math-20261024.source-parity.json",
+            "sha256": "40544980701eddb96f5167039c862e6119812c14f8fb8173abab812658f39a0f"
+          }
+        }
+      ]
     }
   ]
 }
