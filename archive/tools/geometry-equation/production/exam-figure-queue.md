@@ -68,7 +68,7 @@
 - [x] **25_제일고_1학기_기말_고1_기출c** (1건): q6 OPEN_UNSUPPORTED G_symbolic_coefficient — 문자 a를 포함한 이차함수의 그래프(f(-1)<0, f(2)>0 위치 관계)는 계수를 정할 수 없어 그릴 수
 - [x] **26_강남여고_1학기_중간_고1_기출** (1건): q20 OPEN_LAYOUT frame:EQUAL_UNIT_PARABOLA_TOO_NARROW — LIMIT
 - [x] **26_금당고_2학기_중간_고1_기출** (1건): q7 OPEN_UNSUPPORTED A_construction_ops — 주어진 직선에 수직이고 한 점을 지나는 직선을 작도하는 연산이 계약에 없다
-- **26_매산여고_1학기_중간_고1_기출_c** (1건): q19 OPEN_UNSUPPORTED B_two_curves — 서로 다른 두 포물선과 수평선 y=t를 한 그림에 그려야 하는데 두 곡선을 한 그림에 그리는 형식이 없다
+- [x] **26_매산여고_1학기_중간_고1_기출_c** (1건): q19 OPEN_UNSUPPORTED B_two_curves — 서로 다른 두 포물선과 수평선 y=t를 한 그림에 그려야 하는데 두 곡선을 한 그림에 그리는 형식이 없다
 - **26_순천여고_1학기_기말_고1_기출** (1건): q12 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 절댓값 y=2x^2-4/x/-3의 구간 그래프(두 이차식 조각이 이어진 함수)가 필요함
 - **26_효천고_1학기_중간_고1_기출c** (1건): q26 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 구간별 함수(두 이차곡선을 이어 붙인 그래프)와 직선을 한 그림에 그려야 하는데 계약이 지원하지 않는다
 
