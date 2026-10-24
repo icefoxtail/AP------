@@ -228,7 +228,11 @@ window.questionBank = [
     "integrationPattern": "CASE_BRANCH",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/20_매산고_2학기_중간_고2_수학II/q7-solution.svg",
+    "solutionImageAlt": "곡선 y=x²+x+1에 직선 y=-5x-8(ㄱ)은 점 T(-3,7)에서 접하고, y=x+2(ㄴ)는 곡선과 두 점에서 만난다. y=3x+5(ㄷ)도 두 점에서 만나므로 접선이 될 수 있는 것은 ㄱ뿐이다.",
+    "solutionImageCaption": "곡선 y=x²+x+1에 직선 y=-5x-8(ㄱ)은 점 T(-3,7)에서 접하고, y=x+2(ㄴ)는 곡선과 두 점에서 만난다. y=3x+5(ㄷ)도 두 점에서 만나므로 접선이 될 수 있는 것은 ㄱ뿐이다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 8,

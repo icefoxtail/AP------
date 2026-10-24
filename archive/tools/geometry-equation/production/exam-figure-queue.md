@@ -35,7 +35,7 @@
 - **26_복성고_1학기_중간_고1_기출** (2건): q7 OPEN_UNSUPPORTED B_two_curves — 서로 다른 두 포물선과 직선을 한 그림에 함께 그려야 하는데 계약이 지원하지 않는다 · q22 OPEN_LAYOUT frame:EQUAL_UNIT_PARABOLA_TOO_NARROW — LIMIT
 - [x] **19_순천고_1학기_기말_고1_기출** (1건): q1 OPEN_UNSUPPORTED A_construction_ops — 수직선 위에서 외분점이 선분 AB 바깥에 놓이는 관계를 보이는 1차원 수직선 그림이 필요하나 계약으로 표현할
 - [x] **20_금당고_2학기_중간_고1_기출** (1건): q1 OPEN_UNSUPPORTED A_construction_ops — 도형의 평행이동으로 얻은 직선과 이동 벡터를 표현하는 연산이 계약에 없음
-- **20_매산고_2학기_중간_고2_수학II** (1건): q7 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT
+- [x] **20_매산고_2학기_중간_고2_수학II** (1건): q7 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT
 - **20_매산여고_1학기_기말_고2_수학I** (1건): q21 OPEN_OTHER AUTHORING — 상태 AUTHORING
 - **20_매산여고_1학기_중간_고1_기출** (1건): q11 OPEN_OTHER BOUND_NOT_PUBLISHED — solutionImageAlt/Caption/Size만 있고 solutionImage 참조·에셋 없음(반등록
 - **20_효천고_1학기_기말_고1_기출** (1건): q4 OPEN_UNSUPPORTED A_construction_ops — 2:3 내분점은 계약의 점 생성 연산(중점 등)으로 정확히 표현할 수 없다.
