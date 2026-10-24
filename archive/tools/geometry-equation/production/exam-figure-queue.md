@@ -37,7 +37,7 @@
 - [x] **20_금당고_2학기_중간_고1_기출** (1건): q1 OPEN_UNSUPPORTED A_construction_ops — 도형의 평행이동으로 얻은 직선과 이동 벡터를 표현하는 연산이 계약에 없음
 - [x] **20_매산고_2학기_중간_고2_수학II** (1건): q7 OPEN_LAYOUT measure:ARCHIVE_PREFLIGHT_FAIL — LIMIT
 - [x] **20_매산여고_1학기_기말_고2_수학I** (1건): q21 OPEN_OTHER AUTHORING — 상태 AUTHORING
-- **20_매산여고_1학기_중간_고1_기출** (1건): q11 OPEN_OTHER BOUND_NOT_PUBLISHED — solutionImageAlt/Caption/Size만 있고 solutionImage 참조·에셋 없음(반등록
+- [x] **20_매산여고_1학기_중간_고1_기출** (1건): q11 OPEN_OTHER BOUND_NOT_PUBLISHED — solutionImageAlt/Caption/Size만 있고 solutionImage 참조·에셋 없음(반등록
 - **20_효천고_1학기_기말_고1_기출** (1건): q4 OPEN_UNSUPPORTED A_construction_ops — 2:3 내분점은 계약의 점 생성 연산(중점 등)으로 정확히 표현할 수 없다.
 - **21_강남여고_1학기_기말_고2_수학I** (1건): q26 OPEN_UNSUPPORTED D_exp_log_trig — 서로 다른 두 사인·코사인 곡선의 교점을 한 그림에 그려야 한다.
 - **21_금당고_1학기_중간_고2_수학I** (1건): q13 OPEN_UNSUPPORTED D_exp_log_trig — 로그함수 곡선과 수직이등분선 x=-3(수직선)이 필요하나 지원되지 않음
