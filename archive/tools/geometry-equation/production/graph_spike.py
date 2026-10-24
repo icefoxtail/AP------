@@ -170,12 +170,19 @@ def _produce_piecewise_polynomial(plan,vp):
         points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
         parts.append(f'<polyline id="curve-piece-{index}" data-role="curve" data-branch="PIECE_{index}" points="{points}" fill="none" stroke="black"/>')
     xmin,xmax=plan['viewport'][0],plan['viewport'][1]
+    ymin,ymax=plan['viewport'][2],plan['viewport'][3]
     for row in features['intersections']:
-        level=float(Fraction(row['y']));a,b=vp.screen((xmin,level)),vp.screen((xmax,level))
+        if 'slope' in row:
+            # A slanted line y=m*x+c is drawn where it is inside the viewport (clipped on x and on y).
+            m,c=float(Fraction(row['slope'])),float(Fraction(row['intercept']));ends=sorted([(ymin-c)/m,(ymax-c)/m]);left,right=max(xmin,ends[0]),min(xmax,ends[1])
+            if not left<right:raise ValueError('PIECEWISE_POLY_SLANTED_LINE_OUTSIDE_VIEW')
+            a,b=vp.screen((left,m*left+c)),vp.screen((right,m*right+c))
+        else:
+            level=float(Fraction(row['y']));a,b=vp.screen((xmin,level)),vp.screen((xmax,level))
         parts.append(f'<line id="line-{row["lineId"]}" data-role="line" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"/>')
         for k,point in enumerate(row['points'],1):
             if point.get('keyPoint'):continue
-            cx,cy=vp.screen((point['xValue'],level))
+            cx,cy=vp.screen((point['xValue'],point['yValue'] if 'slope' in row else level))
             parts.append(f'<circle id="intersection-{row["lineId"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
     for index,point in enumerate(plan.get('requiredPoints',[]),1):
         cx,cy=vp.screen((point['x'],point['y']))
