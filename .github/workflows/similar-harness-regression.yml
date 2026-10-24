@@ -1,0 +1,33 @@
+name: Similar Exam Harness Regression
+
+on:
+  pull_request:
+    paths:
+      - 'tools/harness/verify_similar_exam.mjs'
+      - 'tests/similar_harness_gate.test.mjs'
+      - '.github/workflows/similar-harness-regression.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/harness/verify_similar_exam.mjs'
+      - 'tests/similar_harness_gate.test.mjs'
+      - '.github/workflows/similar-harness-regression.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  similar-harness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check syntax
+        run: |
+          node --check tools/harness/verify_similar_exam.mjs
+          node --check tests/similar_harness_gate.test.mjs
+      - name: Run similar exam regression only
+        run: node --test tests/similar_harness_gate.test.mjs

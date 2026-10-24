@@ -1,10 +1,14 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { describe, test } from 'node:test';
+import os from 'node:os';
+import { after, describe, test } from 'node:test';
+import { fileURLToPath } from 'node:url';
 import { verifySimilarExam } from '../tools/harness/verify_similar_exam.mjs';
 
-const REPO_ROOT = path.resolve('c:/Users/USER/Desktop/AP------');
+const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const TEST_SCRATCH = fs.mkdtempSync(path.join(os.tmpdir(), 'similar-harness-'));
+after(() => fs.rmSync(TEST_SCRATCH, { recursive: true, force: true }));
 
 describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
   test('Baseline: 23_동산중_1학기_중간_중1_유사 passes all automated gates', () => {
@@ -25,7 +29,7 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     const origJs = fs.readFileSync('archive/exams/similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js', 'utf8');
     const mutatedJs = origJs.replace('"points": 4.0', '"points": 3.0'); // 100.0 -> 99.0
     
-    const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_score_99.js');
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_score_99.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
@@ -41,7 +45,7 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     // Change Q1 answer from ③ to ②, making distribution {①:4, ②:5, ③:3, ④:4, ⑤:4}
     const mutatedJs = origJs.replace('"answer": "③"', '"answer": "②"');
     
-    const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_slot_imbalance.js');
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_slot_imbalance.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
@@ -66,7 +70,7 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     // Change "$1$개" to "1개"
     const mutatedJs = origJs.replace('"$1$개"', '"1개"');
     
-    const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_raw_choice.js');
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_raw_choice.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
@@ -81,7 +85,7 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     const origJs = fs.readFileSync('archive/exams/similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js', 'utf8');
     const mutatedJs = origJs.replace('다음 중 소수는 모두 몇 개인가?', '다음 중 소수는 모두 몇 개인가? [TODO: 검토]');
     
-    const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_todo_token.js');
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_todo_token.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
@@ -96,7 +100,7 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     const origJs = fs.readFileSync('archive/exams/similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js', 'utf8');
     const mutatedJs = origJs.replace('assets/images/23_동산중_1학기_중간_중1_유사/q10.svg', 'assets/images/23_동산중_1학기_중간_중1_유사/missing_q10.svg');
     
-    const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_missing_svg.js');
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_missing_svg.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
@@ -112,7 +116,7 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     // Subtle modification changing comments/whitespace
     const mutatedJs = origJs + '\n// modified after review receipt was signed';
     
-    const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_blob_tampered.js');
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_blob_tampered.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
@@ -229,6 +233,71 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
       assert.ok(res.errors.some(e => e.includes("Point/symbol 'B' referenced in question stem is missing from SVG text labels")), 'Must catch missing vertex/point in SVG');
     } finally {
       fs.writeFileSync(origSvgPath, origSvg, 'utf8');
+    }
+  });
+
+  test('Strict release authoring rejects legacy capability-only plans without engine provenance', () => {
+    const res = verifySimilarExam({
+      stem: '19_금당중_1학기_기말_중1_유사',
+      strictAuthoring: true,
+      phase: 'draft'
+    });
+    assert.equal(res.ok, false);
+    assert.ok(res.errors.some(e => e.includes('no actual engine input')), 'Capability-only plan must fail');
+    assert.ok(res.errors.some(e => e.includes('missing engineEvidence')), 'Generated bytes must be bound to engine outputs');
+    assert.ok(!res.errors.some(e => e.includes('Review receipt not found')), 'Draft phase must not demand a signed receipt');
+  });
+
+  test('Fault Injection: strict production cannot silently approve UNSUPPORTED visual', () => {
+    const planPath = path.join(REPO_ROOT, 'archive/exams/similar/middle/m1/1final/19_금당중_1학기_기말_중1_유사_plans/q21-problem.plan.json');
+    const before = fs.readFileSync(planPath, 'utf8');
+    fs.writeFileSync(planPath, JSON.stringify({status:'UNSUPPORTED',reason:'도형의 관계는 현 렌더러가 지원하지 않음'}), 'utf8');
+    try {
+      const res = verifySimilarExam({stem:'19_금당중_1학기_기말_중1_유사',strictAuthoring:true,phase:'draft'});
+      assert.ok(res.errors.some(e => e.includes('UNSUPPORTED cannot be used')));
+    } finally {
+      fs.writeFileSync(planPath, before, 'utf8');
+    }
+  });
+
+  test('Fault Injection: strict source caption and engine asset binding reject legacy placeholder', () => {
+    const res = verifySimilarExam({stem:'19_금당중_1학기_기말_중1_유사',strictAuthoring:true,phase:'draft'});
+    assert.ok(res.errors.some(e => e.includes('substantive student-facing Korean caption')));
+  });
+
+  test('Draft phase can pass legacy static gates without pretending to sign off', () => {
+    const res = verifySimilarExam({
+      stem: '23_동산중_1학기_중간_중1_유사',
+      phase: 'draft'
+    });
+    assert.equal(res.ok, true, res.errors.join('; '));
+    assert.ok(res.warnings.some(e => e.includes('DRAFT_PHASE')));
+    assert.ok(res.warnings.some(e => e.includes('LEGACY_STATIC_ONLY')));
+  });
+
+  test('Fault Injection: strict sourceQuote must exist exactly in its question or solution', () => {
+    const planPath = path.join(REPO_ROOT, 'archive/exams/similar/middle/m1/1final/19_금당중_1학기_기말_중1_유사_plans/q21-problem.plan.json');
+    const before = fs.readFileSync(planPath, 'utf8');
+    const plan = JSON.parse(before);
+    plan.sourceQuote = '1234567890123';
+    fs.writeFileSync(planPath, JSON.stringify(plan), 'utf8');
+    try {
+      const res = verifySimilarExam({stem:'19_금당중_1학기_기말_중1_유사',strictAuthoring:true,phase:'draft'});
+      assert.ok(res.errors.some(e => e.includes('sourceQuote must be an exact')));
+    } finally {
+      fs.writeFileSync(planPath, before, 'utf8');
+    }
+  });
+
+  test('Fault Injection: nested SVG tspan with raw TeX is blocked', () => {
+    const svgPath = path.join(REPO_ROOT, 'archive/assets/images/19_금당중_1학기_기말_중1_유사/q21.svg');
+    const before = fs.readFileSync(svgPath, 'utf8');
+    fs.writeFileSync(svgPath, before.replace('</svg>', '<text><tspan>\\\\frac{1}{2}</tspan></text></svg>'), 'utf8');
+    try {
+      const res = verifySimilarExam({stem:'19_금당중_1학기_기말_중1_유사'});
+      assert.ok(res.errors.some(e => e.includes('raw unrendered LaTeX')), 'Nested TeX should fail');
+    } finally {
+      fs.writeFileSync(svgPath, before, 'utf8');
     }
   });
 

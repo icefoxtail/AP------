@@ -6,7 +6,7 @@
 
 ## 1. [라인 1] 생성 라인 (MIDDLE_SIMILAR_GENERATOR)
 
-- **스케줄**: `0 2,7,14,19 * * *` (02시, 07시, 14시, 19시)
+- **스케줄**: `0 2,7,14,19 * * *` (02시·07시·14시·19시 (하루 4회))
 - **데몬 모드**: `IsDaemon: true`
 - **필독 정본**:
   1. `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md` (발문·해설 그림 SVG 엔진 작성 지침 및 plan 계약 전문)
@@ -32,7 +32,7 @@
 4. 저작 플랜(plan.json) 및 SVG 생성 (AUTHOR_GUIDE.md 준수):
 - 모든 문항에 대해 [stem]_plans/ 디렉터리 아래 발문 플랜(qXX-problem.plan.json)과 해설 플랜(qXX-solution.plan.json)을 작성합니다 (2 * N개).
 - 그림 불필요 시: {"status": "EXEMPT", "reason": "한 문장 사유"} 명시 (AUTHOR_GUIDE.md §2).
-- 그림 필요 시: 지원 capability(construction-spike-v1, polynomial-spike-v1, piecewise-polynomial-spike-v1, quadratic-inequality-chain-v1, number-line-figure-v1, composite-panels-v1)를 선택하고 sourceQuote, caption을 작성한 후, 공식 렌더러(archive/tools/geometry-equation/production/render-plan.mjs) 또는 엔진 규격을 철저히 준수한 순백색(#FFFFFF) SVG를 archive/assets/images/[stem]/에 생성합니다.
+- 그림 필요 시: AUTHOR_GUIDE에 실제 지원되는 capability를 선택하고 sourceQuote, caption을 작성한 후, 공식 렌더러(archive/tools/geometry-equation/production/render-plan.mjs)로 생성·증거 결속한 SVG를 archive/assets/images/[stem]/에 생성합니다.
 - SVG 필수 규격: 교육용 <title>, <desc> 태그 필수, role="img" 필수, 폰트 11px 미만 금지, raw LaTeX(\frac, \sqrt 등) 텍스트 잔존 금지, 지문 기호/꼭짓점/음영과 100% 일치.
 
 5. 메타 작성 및 인계:
@@ -44,7 +44,7 @@
 
 ## 2. [라인 2] 검수·수리·출고 라인 (MIDDLE_SIMILAR_REVIEWER_MERGER)
 
-- **스케줄**: `0 3,8,15,20 * * *` (03시, 08시, 15시, 20시 — 생산 1시간 뒤)
+- **스케줄**: `0 3,8,15,20 * * *` (라인 1 실행 1시간 뒤)
 - **데몬 모드**: `IsDaemon: true`
 - **필독 정본**:
   1. `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md` (SVG 엔진 지침 및 plan 계약 전문)
@@ -72,12 +72,16 @@
 - 전 문항의 2 * N 플랜 파일이 유효한 JSON이며 EXEMPT 사유 또는 올바른 capability/sourceQuote/caption을 가졌는지 검증합니다.
 - SVG가 순백색 배경, <title>/<desc>, role="img", 폰트 11px 이상, raw LaTeX 미잔존, 지문 조건(점 라벨, 음영)과 100% 일치하는지 전수 검증합니다.
 
-5. 하네스 게이트 실행 (Zero-Tolerance Code Gate):
-- 반드시 'node tools/harness/verify_similar_exam.mjs [stem]'을 직접 실행합니다.
-- 16+개 항목(점수 100.0, 동적 슬롯 균형, 5지선지 수식, 플랜 유효성, SVG 엔진 규격, 블롭 해시 등)이 exit code 0으로 통과하지 못하면 병합을 시도할 수 없습니다.
-
-6. 진짜 영수증 발급 및 13번 루트 운영병합:
-- 전 문항의 실제 유도 과정(blindDerivation)이 담긴 review-receipt.json을 작성하고 expectedSourceBlobSha1을 결속합니다.
-- 'python tools/main_merge_master.py --exam [stem] --apply'를 실행하여 whitelist 파일을 staging하고 커밋합니다.
-- 'git push origin main --no-verify'로 원격 main에 병합 후, 원격 HEAD SHA 및 대상 blob SHA readback을 검증하여 MAIN_DONE을 선언합니다.
+5. 검수 영수증 발급 및 정식 검증/병합:
+- 독립 풀이 동결 및 수리·재검 후 최종 JS blob에 review-receipt.json 발급.
+- 그 다음 'node tools/harness/verify_similar_exam.mjs [stem]' strict 저작/엔진 증거/영수증 게이트 통과.
+- 공식 13번 병합기 실행, 안전장치 우회 없이 원격 main HEAD/blob readback. 실패 시 MAIN_DONE 금지.
 ```
+
+---
+
+## 3. 현행 엔진·검수 순서 보강
+
+**실제 신규 시험지 승인 순서:** R1 독립 답안 동결 → 결함 수리 및 수학·해설·SVG 재검 → `review-receipt.json` 발급(최종 JS blob 결속) → `node tools/harness/verify_similar_exam.mjs [stem]` 정식 릴리스 게이트(exit 0) → 13번 경로 병합. 영수증이 없는 작성 중에는 `--phase=draft`만 사용하며 이 통과를 출고 PASS로 표현하지 않는다. `--legacy-baseline`은 구형 fixture 정적 회귀 확인 전용이며 출고 승인 근거가 아니다.
+
+**시각자료 엔진/증거 경계:** 활성 plan은 `capability` 이름뿐 아니라 실제 입력(`mathPlan`, `graphPlan`, `numberLine` 등), 대상 문항의 정확한 12~40자 `sourceQuote`, 학습용 한국어 `caption`, 연결된 `assetPath`를 포함한다. `render-plan.mjs`의 생성 결과에서 `ARCHIVE_BOUND` `*-result.json`·`*-state.json`·`*-solution.svg`를 남기고, plan의 `engineEvidence: {"resultPath":"상대경로", "statePath":"상대경로", "svgPath":"상대경로"}`와 최종 붙인 자산 바이트를 결속한다. 임의 SVG를 규격만 비슷하게 그리는 우회는 금지한다. 공식 렌더러가 해당 발문/해설 시각화를 지원하지 않으면 `UNSUPPORTED`로 남기고 해당 필요 시각자료를 제작 완료로 선언하지 않는다. **엔진 산출물 바이트 일치도 독립 수학 검수·발문 그림의 정답 누설 검수·실렌더를 대체하지 않는다.**
