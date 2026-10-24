@@ -332,10 +332,9 @@ def main():
     inbox_path.write_text(json.dumps(inbox_request, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"\n[INBOX CREATED] Wrote {inbox_path.relative_to(REPO_ROOT)}")
 
-    # Stage files
+    # Stage files in a single atomic invocation
     print("\n[STAGING] Staging whitelist files for main merge...")
-    for item in whitelist:
-        subprocess.run(["git", "add", item], cwd=REPO_ROOT, check=True)
+    subprocess.run(["git", "add"] + whitelist, cwd=REPO_ROOT, check=True)
 
     print("[STAGING COMPLETE] Whitelist staged. Ready for commit/merge.")
     print("Run `git commit -m \"feat(similar): release {stem} and submit reviewed meta request\" --no-verify`")
