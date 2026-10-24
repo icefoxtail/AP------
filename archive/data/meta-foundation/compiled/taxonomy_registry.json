@@ -67,8 +67,8 @@
       "version": "1.0.0"
     }
   ],
-  "problemTypeCount": 316,
-  "templateCount": 847,
+  "problemTypeCount": 317,
+  "templateCount": 851,
   "problemTypes": [
     {
       "problemTypeKey": "PT_AREA_BISECTING_LINE",
@@ -11667,6 +11667,37 @@
           "auditPackageRef": {
             "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
             "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          }
+        }
+      ]
+    },
+    {
+      "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "canonicalLabelKo": "다항식의 곱셈과 곱셈공식",
+      "definition": "다항식의 곱셈과 곱셈공식을 이용하여 식을 전개하고 계수 또는 수치 조건을 해결한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3",
+      "supportingItemCount": 4,
+      "supportingQuestionUids": [
+        "qid_v1_c12a1d6c66a667e9defaa4f02aca4f8dabbe7be386c7788b24ae52e3737d1336",
+        "qid_v1_34fcca82f59dd521b695051cbc8e51ee5f6628a728ffcc07a838a036bd99ce31",
+        "qid_v1_140c29a2c6b68902b08a8de61a292f10f50dd28f7d0253e1dac7d323b1e69f42",
+        "qid_v1_8b78c046049aeba9f56756c8c228326e73fd3f0c14fc4cbcf605ccb415807724"
+      ],
+      "sourceUnits": [
+        "M3-02"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "SIMILAR_MIDDLE3_SAMSAN_AUDIT_20261024",
+          "questionUid": "qid_v1_c12a1d6c66a667e9defaa4f02aca4f8dabbe7be386c7788b24ae52e3737d1336",
+          "sourceOrdinal": 14,
+          "classificationRationale": "(2x+3)(3x-1) 전개 후 계수 합 a+b+c=6+7-3=10 계산",
+          "decisiveEvidence": "(2x+3)(3x-1) = 6x^2 + 7x - 3",
+          "auditPackageRef": {
+            "path": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.review-receipt.json",
+            "sha256": "da735578000b5455e2f28ef5dc4f32d1fbc4aa827ad4c28c1fb8856f1503d2e5"
           }
         }
       ]
@@ -34064,6 +34095,110 @@
           "auditPackageRef": {
             "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
             "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
+      "canonicalLabelKo": "다항식 전개식에서 특정 항의 계수 구하기",
+      "definition": "곱셈공식을 이용하여 전개한 식에서 특정 문자의 계수를 구한다.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_c12a1d6c66a667e9defaa4f02aca4f8dabbe7be386c7788b24ae52e3737d1336"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "SIMILAR_MIDDLE3_SAMSAN_AUDIT_20261024",
+          "questionUid": "qid_v1_c12a1d6c66a667e9defaa4f02aca4f8dabbe7be386c7788b24ae52e3737d1336",
+          "sourceOrdinal": 14,
+          "classificationRationale": "(2x+3)(3x-1) 전개식 계수 합 계산",
+          "decisiveEvidence": "(2x+3)(3x-1) = 6x^2 + 7x - 3",
+          "auditPackageRef": {
+            "path": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.review-receipt.json",
+            "sha256": "da735578000b5455e2f28ef5dc4f32d1fbc4aa827ad4c28c1fb8856f1503d2e5"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
+      "canonicalLabelKo": "곱셈공식 계산의 수치적 참·거짓 판별",
+      "definition": "곱셈공식을 적용한 여러 전개식의 옳고 그름을 판별한다.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_34fcca82f59dd521b695051cbc8e51ee5f6628a728ffcc07a838a036bd99ce31"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "SIMILAR_MIDDLE3_SAMSAN_AUDIT_20261024",
+          "questionUid": "qid_v1_34fcca82f59dd521b695051cbc8e51ee5f6628a728ffcc07a838a036bd99ce31",
+          "sourceOrdinal": 16,
+          "classificationRationale": "곱셈공식을 이용한 등식의 참 거짓 판별",
+          "decisiveEvidence": "(-a-b)^2 = (a+b)^2 = a^2 + 2ab + b^2",
+          "auditPackageRef": {
+            "path": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.review-receipt.json",
+            "sha256": "da735578000b5455e2f28ef5dc4f32d1fbc4aa827ad4c28c1fb8856f1503d2e5"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
+      "canonicalLabelKo": "도형의 넓이를 이용한 곱셈공식의 기하적 모델링",
+      "definition": "직사각형 또는 정사각형의 넓이 분할을 곱셈공식으로 표현한다.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_140c29a2c6b68902b08a8de61a292f10f50dd28f7d0253e1dac7d323b1e69f42"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "SIMILAR_MIDDLE3_SAMSAN_AUDIT_20261024",
+          "questionUid": "qid_v1_140c29a2c6b68902b08a8de61a292f10f50dd28f7d0253e1dac7d323b1e69f42",
+          "sourceOrdinal": 17,
+          "classificationRationale": "직사각형 넓이 분할로 (a+b)(c+d) 모델링",
+          "decisiveEvidence": "넓이 합으로 전개식 도출",
+          "auditPackageRef": {
+            "path": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.review-receipt.json",
+            "sha256": "da735578000b5455e2f28ef5dc4f32d1fbc4aa827ad4c28c1fb8856f1503d2e5"
+          }
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION",
+      "canonicalLabelKo": "전개식 계수 조건에서 미정계수 결정",
+      "definition": "일차식의 곱 전개식에서 주어진 상수항 또는 일차항 계수로부터 미정계수를 구한다.",
+      "aliases": [],
+      "parentProblemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+      "status": "ACTIVE",
+      "ownerPack": "MIDDLE3",
+      "supportingItemCount": 1,
+      "supportingQuestionUids": [
+        "qid_v1_8b78c046049aeba9f56756c8c228326e73fd3f0c14fc4cbcf605ccb415807724"
+      ],
+      "evidenceProvenance": [
+        {
+          "source": "SIMILAR_MIDDLE3_SAMSAN_AUDIT_20261024",
+          "questionUid": "qid_v1_8b78c046049aeba9f56756c8c228326e73fd3f0c14fc4cbcf605ccb415807724",
+          "sourceOrdinal": 22,
+          "classificationRationale": "(x+a)(x+b) 전개식 계수 조건에서 a, b 결정",
+          "decisiveEvidence": "x 계수와 상수항 비교",
+          "auditPackageRef": {
+            "path": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.review-receipt.json",
+            "sha256": "da735578000b5455e2f28ef5dc4f32d1fbc4aa827ad4c28c1fb8856f1503d2e5"
           }
         }
       ]
