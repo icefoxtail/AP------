@@ -415,7 +415,11 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "세 변의 내분점 $D$, $E$, $F$의 좌표를 차례대로 구한다.\n$AD:DB=2:1$이므로\n$D=\\left(\\dfrac{-1+2\\cdot3}{3},\\dfrac{2+2\\cdot1}{3}\\right)=\\left(\\dfrac53,\\dfrac43\\right)$이다.\n$BE:EC=2:1$이므로\n$E=\\left(\\dfrac{3+2\\cdot4}{3},\\dfrac{1+2\\cdot3}{3}\\right)=\\left(\\dfrac{11}3,\\dfrac73\\right)$이다.\n$CF:FA=2:1$이므로\n$F=\\left(\\dfrac{4+2\\cdot(-1)}3,\\dfrac{3+2\\cdot2}3\\right)=\\left(\\dfrac23,\\dfrac73\\right)$이다.\n삼각형 $DEF$의 무게중심 $(a,b)$는 세 꼭짓점의 각 좌표를 더해 $3$으로 나눈 점이다.\n따라서\n$a=\\dfrac{5+11+2}{3\\cdot3}=\\dfrac{18}{9}=2$이고,\n$b=\\dfrac{4+7+7}{3\\cdot3}=\\dfrac{18}{9}=2$이다.\n그러므로 $a+b=2+2=4$이고 정답은 ⑤이다.",
     "problemTypeNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
-    "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY"
+    "templateNullReason": "ACTIVE_H1_META_LOOKUP_NO_EXACT_PT_OR_TEMPLATE:PURE_2015_COORDINATE_GEOMETRY",
+    "solutionImage": "assets/images/22_복성고_1학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "삼각형 ABC의 세 변을 2:1로 내분하는 점 D, E, F와 삼각형 DEF의 무게중심 G(2, 2)",
+    "solutionImageCaption": "삼각형 ABC의 세 변을 2:1로 내분하는 점 D, E, F와 삼각형 DEF의 무게중심 G(2, 2)",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
