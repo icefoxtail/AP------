@@ -23,7 +23,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 ## 3. 어떤 plan을 쓰는가
 
 - 좌표평면의 점, 직선, 원, 도형: `construction-spike-v1` (mathPlan 노드: SOURCE_POINT, SOURCE_LINE, MIDPOINT, PERPENDICULAR_FOOT, INTERSECTION 등). 주어진 점은 SOURCE_POINT, 풀이로 얻는 점은 파생 노드로 쓴다. 파생점에 좌표를 직접 쓰지 않는다.
-- 이차함수(필요하면 직선 포함): `polynomial-spike-v1`.
+- 이차함수(필요하면 직선 포함): `polynomial-spike-v1`. **계수·직선의 기울기·절편이 무리수**(`k=-3±2√3`, `m=3-√7`처럼 접하는 조건으로 나온 값)이면 이 capability가 아니라 `piecewise-polynomial-spike-v1`의 조각 한 개로 쓴다(아래 3-4).
 - 여러 경우(k=-2일 때, k=3일 때)를 비교하는 풀이: `composite-panels-v1` (경우마다 패널 하나, 2~3개).
 - 이어진 조각 그래프(이차식의 절댓값 등)와 수평선 또는 기울어진 직선: `piecewise-polynomial-spike-v1`(아래 3-3).
 - 이차부등식 풀이(판별식, 그래프, 구간, 수직선): `quadratic-inequality-chain-v1` 하나로 쓴다. 계수와 부등호만 주면 끝점, 열린·닫힌 점, 정수점은 엔진이 계산한다. 해가 구간 하나인 경우만 된다(두 조각이거나 공집합이면 거절된다). 계수가 고정된 이차부등식 하나일 때만 쓴다. 매개변수(a, n 등) 때문에 경우가 나뉘거나("n=1, n=2~4, n≥5"), 부등식이 여러 개이거나, 풀이가 결과 요약뿐이면 체인이 아니다. 그때 풀이가 해집합을 수직선 위에서 비교하는 것이면 아래 `number-line-figure-v1`을 쓴다. 그래프가 필요하면 풀이가 실제로 쓰는 그래프 하나(예: 해가 한 점인 접점 그래프)만 `polynomial-spike-v1`로 그리거나, 그림이 없어도 되면 EXEMPT, 못 그리면 UNSUPPORTED를 쓴다.
@@ -93,17 +93,48 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - **수평선**: `{"id","y","intersectionX"}`. **기울어진 직선**: `{"id","slope","intercept","intersectionX"}`로 `y=slope·x+intercept`. `slope`는 0이 아닌 정수·분수 문자열, `intercept`는 정수·분수 문자열이다. 둘을 섞어 쓰지 않는다. 최대 3개.
 - `intersectionX`에는 직선과 **곡선 전체**의 교점의 x를 하나도 빠짐없이 쓴다. 정수·분수·`sqrt(...)`가 들어간 정확한 값(`(3+sqrt(34)/2)/2`)이고, 엔진과 독립 관측기가 각각 SymPy로 다시 풀어 개수와 값이 다르면 `PIECEWISE_POLY_INTERSECTION_MISMATCH:<id>:engine finds N intersection(s)`로 거절한다. 중근(접점)은 한 번 센다.
 - 직선에 문자가 들어 있으면(`y=mx+12`, `y=x+k`, `y=p(x-3)+3`) **표본값 하나**로 그린다. 풀이가 쓰는 답의 범위 안쪽 값이나 풀이가 따로 다루는 경계 값(직선이 꺾임점을 지나는 경우 등)을 고르고, 그 값을 caption에 쓴다("m=11/3일 때 직선 y=11/3x+12가 ..."). 값 없이 문자만 있는 직선은 그릴 수 없다. 여러 값을 비교하는 풀이는 대표 하나만 그리거나 UNSUPPORTED.
-- 교점이 `requiredPoints`의 점과 같으면(꺾임점 위, 꼭짓점 위, 또는 점을 일부러 `requiredPoints`에 넣은 경우) 그 점 하나로만 그려진다. **기울어진 직선의 교점에 좌표를 쓰고 싶으면 `labelIntersections`가 아니라 그 교점을 `requiredPoints`(id, x, y와 `exactCoordinates`)에 넣는다.** 좌표가 정수·분수인 교점에만 쓴다. 무리수 좌표의 교점은 점만 찍힌다.
+- 교점이 `requiredPoints`의 점과 같으면(꺾임점 위, 꼭짓점 위, 또는 점을 일부러 `requiredPoints`에 넣은 경우) 그 점 하나로만 그려진다. **기울어진 직선의 교점에 좌표를 쓰고 싶으면 `labelIntersections`가 아니라 그 교점을 `requiredPoints`(id, x, y와 `exactCoordinates`)에 넣는다.** 좌표가 정수·분수인 교점에는 `exactCoordinates`로, 무리수 좌표의 교점에는 3-4처럼 `requiredPoints`의 정확한 문자열 좌표로 쓴다. `requiredPoints`에 넣지 않은 무리수 교점은 점만 찍힌다.
 - 직선 식은 띠에 `y=ax+b`로 세로분수와 함께 써지고, 교점마다 직선 위에 점이 찍힌다. 직선은 그림 영역 안에서 잘려서 그려지며 모든 교점을 지난다.
 - 그림은 가로·세로 같은 배율이 기본이다. 직선이 가파르거나 값이 크면 엔진이 세로를 최대 1/2까지 줄이는 대체(`AXIS_SQUEEZE`)로 다시 시도한다. 그래도 안 되면 `PIECEWISE_POLY_CURVE_TOO_NARROW`.
 
 한계와 오류 코드(가짜 지원 없이 거절):
 - `PIECEWISE_POLY_SLANTED_LINE_SLOPE_ZERO`: 기울기 0은 수평선이다. `{"id","y",...}`로 쓴다.
-- `PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID`: 기울기·절편은 정수·분수 문자열만 된다(소수, `sqrt`, 문자 불가). 무리수 기울기·절편(접하는 조건 `k=-3±2√3` 등)은 UNSUPPORTED.
+- `PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID`: 기울기·절편은 정수·분수 또는 `p+q*sqrt(r)` 문자열만 된다(소수, 문자, 식 불가). 무리수 계수의 쓰는 법과 한계는 3-4.
 - `PIECEWISE_POLY_SLANTED_LINE_LABELS_UNSUPPORTED`: 기울어진 직선에는 `labelIntersections`를 쓸 수 없다(위 `requiredPoints` 방법).
 - `PIECEWISE_POLY_REFERENCE_LINE_INVALID`: `y`와 `slope/intercept` 중 하나만, 필드 이름이 맞는지 확인한다.
 - `PIECEWISE_POLY_REFERENCE_LINE_CONTAINS_A_PIECE`: 직선이 조각 하나와 완전히 겹친다(교점이 무한개). 그릴 수 없다.
 - 수직선, 조각 4개 이상(`PIECEWISE_POLY_PIECE_COUNT_INVALID`), 삼차 이상 조각, 끊어지는 함수, 둘째 곡선(두 함수 f, g를 따로 그리는 그림)은 지원하지 않는다. UNSUPPORTED.
+
+### 3-4. 무리수 계수: `p+q√r` (접하는 조건의 매개변수, 무리수 기울기·절편·교점)
+
+접하는 조건의 매개변수 `k=-3±2√3`, `m=3-√7`, `a=2-√2`처럼 풀이가 구한 **계수가 무리수**인 포물선·직선을 그릴 때 쓴다. 곡선은 `piecewise-polynomial-spike-v1`의 **조각 한 개**(`pieces`에 한 줄, `breakpoints` 없음)로 쓴다. `polynomial-spike-v1`(이차함수)의 계수는 정수·분수만 되고, 같은 그림에 직선을 얹어 접점·교점을 보이는 것도 이쪽이 한다.
+
+- **쓰는 곳:** `pieces[].coefficients`, `breakpoints`, `referenceLines`의 `y`·`slope`·`intercept`, `requiredPoints`의 `x`·`y`. 형식은 정확한 문자열 `p+q*sqrt(r)`이다(p, q는 정수·분수, r은 양의 정수): `"-3+2*sqrt(3)"`, `"3/2-sqrt(3)"`, `"(1+sqrt(2))/2"`, `"sqrt(7)/2"`. 엔진은 SymPy로 정확히 계산하고(`p+q√r`의 사칙연산은 닫혀 있다) 소수는 배치에만 쓴다.
+- **한 plan에는 근호 하나만:** 계수·좌표에 나오는 무리수는 모두 같은 `sqrt(r)`이어야 한다. 한 곡선에 `sqrt(2)`와 `sqrt(3)`이 같이 있으면 거절된다.
+- **무리수 점 좌표는 정확한 문자열로:** `{"id":"V","x":"3/2-sqrt(3)","y":"-1/4+3*sqrt(3)"}`처럼 쓰면 엔진이 곡선 위의 점인지 정확히 확인하고, 그림에는 정확한 좌표(분수와 √이 제대로 나온 `V(3/2-√3, -1/4+3√3)`)가 띠에 쓰이며, 소수는 점 위치에만 쓰인다. 소수로 풀어 쓴 좌표(`-0.2320508`)도 받지만(오차 1e-8) 정확한 문자열을 권한다. 포물선의 꼭짓점, 접점, 꺾임점은 이전처럼 `requiredPoints`에 모두 넣는다.
+- **접점·교점:** `referenceLines`의 `intersectionX`에는 곡선과 직선의 교점 x를 하나도 빠짐없이 쓴다. 접하면 중근 하나(`["-sqrt(3)"]`). 교점의 x가 중첩 근호(`(10-2*sqrt(7)-sqrt(216-72*sqrt(7)))/4-2`)여도 되며 엔진과 독립 관측기가 각각 다시 계산해 맞춘다. 접점이 `requiredPoints`의 점과 같으면 그 점 하나로만 그려진다(예: 꼭짓점에서 접하는 수평선).
+- **라벨:** 직선 식은 띠에 `y=(6-2√7)x+(23-8√7)`처럼 쓰이고, 수평선은 `y=-11+4√7`이다. 점 좌표는 `coordinatePlacement:"PANEL"`로 띠에 쓰는 것을 권한다.
+- **두 값(`k=-3±2√3`)을 비교하는 풀이:** `composite-panels-v1`은 `polynomial-spike-v1` 패널만 받으므로 무리수 계수를 못 넣는다. 대표 값 하나를 그림 한 개로 그리고 caption에 값을 쓴다(둘 다 필요하면 plan 두 개).
+- **구간이 있는 이차함수(`0≤x≤2`에서 최대·최소):** `sourceDomain:{"kind":"INTERVAL","range":[0,2]}`와 함께 쓴다. 끝점의 함수값이 무리수여도 점이 찍힌다. 최대·최소를 보이려면 `referenceLines`에 수평선 `y=M`, `y=m`을 넣는다.
+
+가장 작은 예(`y=x²+kx+5`가 `y=-3x+2`에 접하는 `k=-3+2√3`):
+
+```json
+{"capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial",
+ "pieces":[{"coefficients":["5","-3+2*sqrt(3)","1"]}],"sourceDomain":{"kind":"ALL_REALS"},
+ "referenceLines":[{"id":"l","slope":"-3","intercept":"2","intersectionX":["-sqrt(3)"]}],
+ "requiredPoints":[{"id":"V","x":"3/2-sqrt(3)","y":"-1/4+3*sqrt(3)"},{"id":"T","x":"-sqrt(3)","y":"2+3*sqrt(3)"}],
+ "axisTickValues":{"x":[],"y":[]}},"coordinatePlacement":"PANEL",
+ "caption":"k=-3+2√3일 때 포물선이 직선 y=-3x+2에 점 T에서 접한다."}
+```
+
+한계와 오류 코드(가짜 지원 없이 거절):
+- `PIECEWISE_POLY_IRRATIONAL_FORM_UNSUPPORTED`: `p+q√r` 모양이 아니다. 중첩 근호(`sqrt(2+sqrt(3))`), 한 계수 안의 두 근호(`sqrt(2)+sqrt(3)`), 세제곱근 등. 값을 한 근호로 정리할 수 있는지 먼저 본다. 안 되면 UNSUPPORTED.
+- `PIECEWISE_POLY_IRRATIONAL_RADICANDS_MIXED:2,3`: plan 전체에 서로 다른 근호가 있다. 한 근호로 맞추거나 그 경우는 UNSUPPORTED.
+- `PIECEWISE_POLY_COEFFICIENT_INVALID` / `PIECEWISE_POLY_SLANTED_LINE_COEFFICIENT_INVALID` / `PIECEWISE_POLY_BREAKPOINT_INVALID`: 소수(`1.73`)나 문자·식이다. 정확한 문자열로 바꾼다.
+- `PIECEWISE_POLY_FORMULA_IRRATIONAL_UNSUPPORTED`: 무리수 조각에는 머리줄 `formula`를 쓸 수 없다. `formula`를 빼고 caption에 값을 쓴다.
+- `PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:<id>`: 점의 좌표가 곡선 위에 정확히 있지 않다(계산 실수). 정확한 값을 다시 구한다.
+- 문자 계수(`a`가 값 없이 주어짐), `a`에 따라 모양이 달라지는 전체 답, 곡선 둘(`f`와 `g`)은 이 계열로도 못 그린다. UNSUPPORTED.
 
 ## 4. 이름과 표기 규칙 (자주 걸리는 것)
 

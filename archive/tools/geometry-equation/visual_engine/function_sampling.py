@@ -1,4 +1,5 @@
 """Bounded adaptive sampling with domain signatures and polynomial pole isolation."""
+import bisect
 import math
 from .math_expression import parse,evaluate
 from .geometry_model import finite,point
@@ -135,7 +136,13 @@ def sample(expression,domain,viewport,critical_x=(),breaks=(),max_depth=12):
         eps=max(1e-10,(r-l)*1e-9)
         start=l+(eps if l in hard_cuts else 0);end=r-(eps if r in hard_cuts else 0)
         count=max(300 if guards else 200,math.ceil(viewport.plotWidth/(1 if guards else 1.5)))
-        positions=sorted(set([start+(end-start)*i/count for i in range(count+1)]+[x for x in critical if start<=x<=end]))
+        positions=[]
+        # A critical x that differs from a grid x by rounding (an irrational vertex against its 12-digit root) is one position, not two.
+        for position in sorted(set([start+(end-start)*i/count for i in range(count+1)]+[x for x in critical if start<=x<=end])):
+            if positions and position-positions[-1]<=1e-9*(end-start):
+                if position==end:positions[-1]=position
+                continue
+            positions.append(position)
         raw=[]
         for a,b in zip(positions,positions[1:]):raw.extend(refine(a,b,0)[:-1])
         raw.append(at(end));emit(raw)
@@ -146,9 +153,13 @@ def sample(expression,domain,viewport,critical_x=(),breaks=(),max_depth=12):
     density=max(300 if guards else 200,math.ceil(viewport.plotWidth/(1 if guards else 1.5)))
     for branch in branches:
         extra={p[0]:p for p in branch}
-        start,end=branch[0][0],branch[-1][0]
+        start,end=branch[0][0],branch[-1][0];known=sorted(extra);near=1e-9*(end-start)
         for i in range(1,density):
-            x=start+(end-start)*i/density;p=at(x)
+            x=start+(end-start)*i/density
+            # A grid x that is the same position as an already sampled one up to rounding (an irrational critical x) is not added again.
+            at_index=bisect.bisect_left(known,x)
+            if any(0<=j<len(known) and abs(known[j]-x)<=near for j in (at_index-1,at_index)):continue
+            p=at(x)
             if p is not None and viewport.yMin<=p[1]<=viewport.yMax:extra[x]=p[:2]
         dense.append([extra[x] for x in sorted(extra)])
     branches=dense
