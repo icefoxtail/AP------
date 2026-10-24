@@ -120,9 +120,12 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     // spec -> Archive policy -> L1, once; a construction plan whose labels found no room is retried once with coordinatePlacement PANEL.
     const attempt=async(candidatePlan,suffix)=>{
       stage='spec';
-      const spec=specFor(candidatePlan,model,identity.assetId),size=model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'?'full':'medium';
+      const spec=specFor(candidatePlan,model,identity.assetId);let size=model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'?'full':'medium';
       stage='measure';
-      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:size,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}`});
+      const measure=(sizeClass,runSuffix='')=>cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
+      let measured=await measure(size);
+      // A wide family graph (520-610 px) cannot reach the requested profile font scale at medium; the same figure is retried once at full.
+      if(measured.status!=='MEASURED'&&size==='medium'&&JSON.stringify(measured.detail??'').includes('REQUESTED_PROFILE_FONT_SCALE')){size='full';measured=await measure(size,'-full');}
       if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
       stage='compose';
       const composed=await composeConstructionCandidate({plan:candidatePlan,model,identity,typographyPolicy:measured.policy,repairContext:{measuredPolicy:measured,sourceRef:fileRef(repo,meta.sourcePath)}});

@@ -15,7 +15,7 @@ const CAPABILITY='construction-spike-v1';
 const POLICY_VERSION='REQUESTED_PROFILE_TYPOGRAPHY_v1';
 const OBSERVER_SCRIPT=fileURLToPath(new URL('primitive-observer-worker.py',import.meta.url));
 // Quadratic polynomial graphs and piecewise polynomial graphs (HEADER_BAND formula) follow the runPhase2 graph route: graph observer instead of the Cindy peer.
-const GRAPH_CAPABILITIES=new Set(['polynomial-spike-v1','piecewise-polynomial-spike-v1']);
+const GRAPH_CAPABILITIES=new Set(['polynomial-spike-v1','piecewise-polynomial-spike-v1','rational-spike-v1','sqrt-affine-spike-v1','absolute-value-spike-v1','piecewise-affine-spike-v1','exponential-affine-spike-v1','logarithmic-affine-spike-v1','trigonometric-spike-v1']);
 const GRAPH_OBSERVER_SCRIPT=fileURLToPath(new URL('graph-observer-worker.py',import.meta.url));
 const observerFrame=({aspectPolicy,...frame}={})=>frame;
 // Same publication viewport display-profile-audit.mjs hands to captureAtDisplaySize.
@@ -107,15 +107,15 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     if(graph){
       // runPhase2 604-605: the independent graph observer audits the model's own polyline against the (framed) graph plan.
       if(typeof model?.svg!=='string')throw new Stop('MODEL_PLAN_MISMATCH',{reason:'GRAPH_MODEL_SVG_MISSING'});
-      const binding=await call(pythonWorker,'modelBinding',{graphPlan:plan.graphPlan,svg:model.svg,transform:observerFrame(model.transform)},{script:GRAPH_OBSERVER_SCRIPT});
+      const binding=await call(pythonWorker,'modelBinding',{graphPlan:plan.graphPlan,svg:model.svg,transform:observerFrame(model.transform)},{script:GRAPH_OBSERVER_SCRIPT,timeoutMs:120000});
       if(binding.status!=='PASS')throw new Stop('MODEL_PLAN_MISMATCH',{errors:binding.errors??null});
     }else peer=bindModelToPlan(plan,model);
 
     let spec;
     try{spec=specFor(plan,model,identity.assetId);}catch(error){if(!isDomainCode(error))throw error;throw new Stop('SPEC_ERROR',{code:error.message});}
     lineage.specSha256=digest(spec,'spec','OUTPUT_NOT_CANONICAL');
-    // The measured formula-panel composition of runPhase2 633-670 is not re-enacted: only the HEADER_BAND (degree <= 2) layout is supported.
-    if(graph&&spec.displayFacts?.formulaPlacement!=='HEADER_BAND')throw new Stop('UNSUPPORTED_CAPABILITY',{reason:'GRAPH_FORMULA_PANEL_COMPOSITION_NOT_SUPPORTED'});
+    // runPhase2 633-670 widens the formula panel to the measured formula; here the panel keeps the spec width and the composed layout audit
+    // (inventory + rendered layout) rejects a formula that does not fit, so graph families without a HEADER_BAND (cubic/quartic) compose too.
     const prepared=await call(worker,'prepare',{action:'prepare',spec});
 
     // Re-enactment of runPhase2 (phase2.mjs, base commit d0bd40de6) 622-628: owner-bound fragments at the policy base font.
@@ -192,7 +192,7 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     const graphLines=graph?Object.fromEntries([...(plan.graphPlan.lines||[]).map(line=>['line-'+line.id,[exactValue(line.slope),-1,exactValue(line.intercept)]]),...(plan.capability==='piecewise-polynomial-spike-v1'?(plan.graphPlan.referenceLines||[]).map(line=>['line-'+line.id,[0,-1,exactValue(String(line.y))]]):[])]):null;
     const audit=await call(pythonWorker,'staticAudit',{svg,points:peerOf(displayed?.points,peer?.points),lines:graph?graphLines:peerOf(displayed?.lines,peer?.lines),circles:peerOf(displayed?.circles,peer?.circles),segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH'},{script:OBSERVER_SCRIPT});
     // runPhase2 715: graphs also need the graph observer on the final SVG at the intrinsic scale.
-    const graphAudit=graph?await call(pythonWorker,'graphAudit',{graphPlan:plan.graphPlan,svg,transform:{...observerFrame(witness.coordinateModel),displayScale:1}},{script:GRAPH_OBSERVER_SCRIPT}):null;
+    const graphAudit=graph?await call(pythonWorker,'graphAudit',{graphPlan:plan.graphPlan,svg,transform:{...observerFrame(witness.coordinateModel),displayScale:1}},{script:GRAPH_OBSERVER_SCRIPT,timeoutMs:120000}):null;
     lineage.staticAuditSha256=digest(graph?{primitive:audit,graph:graphAudit}:audit,'staticAudit','OUTPUT_NOT_CANONICAL');
     const auditErrors=Array.isArray(audit.errors)?[...audit.errors]:[];
     // The observer reports the bytes it parsed; they must be the bytes the render below receives.

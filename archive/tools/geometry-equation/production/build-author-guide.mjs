@@ -1,5 +1,5 @@
 // Builds AUTHOR_GUIDE.md: the hand-written instructions (author-guide-body.md) followed by the plan contract text extracted from phase2.mjs
-// (compilerContract plus every literal extendedContract fragment, in source order), so the guide cannot drift from the code.
+// (compilerContract plus every extendedContract fragment, literal or named constant, in source order), so the guide cannot drift from the code.
 // usage: node production/build-author-guide.mjs [--check]     (--check exits 1 when AUTHOR_GUIDE.md is out of date)
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,7 +14,9 @@ export const phase2Path=path.join(here,'phase2.mjs');
 export const contractText=(source=fs.readFileSync(phase2Path,'utf8'))=>{
   const base=source.match(/const compilerContract=`([\s\S]*?)`;/)?.[1];
   const first=source.match(/let extendedContract=compilerContract\+'([^']*)';/)?.[1];
-  const rest=[...source.matchAll(/extendedContract\+='([^']*)';/g)].map(match=>match[1]);
+  // A fragment is either a string literal or the name of a module-level template-literal constant (the per-family contracts).
+  const named=name=>{const text=source.match(new RegExp('const '+name+'=`([^`]*)`;'))?.[1];if(text===undefined)throw Error('CONTRACT_CONSTANT_NOT_FOUND:'+name);return text;};
+  const rest=[...source.matchAll(/extendedContract\+=(?:'([^']*)'|([A-Z][A-Z0-9_]*));/g)].map(match=>match[1]??named(match[2]));
   if(!base||first===undefined||!rest.length)throw Error('CONTRACT_FRAGMENTS_NOT_FOUND');
   return base+first+rest.join('');
 };
@@ -29,7 +31,7 @@ export const buildGuide=()=>{
     '## plan 계약 전문',
     '',
     '아래는 엔진이 받는 plan 형식의 정본이다(phase2.mjs의 계약 문구 그대로). 위 지침의 규칙은 이 계약을 쉽게 풀어 쓴 것이다.',
-    '유리함수, 절댓값 함수, 지수·로그·삼각함수 계열은 각자의 별도 계약이 phase2.mjs에 있으며 이 문서의 범위가 아니다.',
+    '유리·무리(제곱근)·절댓값·구간별 일차·지수·로그·삼각함수 계열의 계약도 아래 전문에 순서대로 들어 있다.',
     '',
     '~~~~text',
     contractText(),

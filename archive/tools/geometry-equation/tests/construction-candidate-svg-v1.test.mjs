@@ -283,8 +283,8 @@ test('E6r REAL input, Chrome 1/64px layout snap dependent (environment dependent
 });
 
 test('E3 a graph plan outside the supported quadratic route, and a construction plan without a usable mathPlan, are UNSUPPORTED_CAPABILITY',async()=>{
-  // polynomial-spike-v1 quadratics are supported since Q1-G (graph route); other graph capabilities are not.
-  const graphPlan={capability:'rational-spike-v1',caption:'x',graphPlan:{family:'polynomial',coefficients:['0','0','1'],domain:[-3,3],viewport:[-4,4,-2,10]}};
+  // The polynomial and function-family graph capabilities are supported (graph route); an unknown graph capability is not.
+  const graphPlan={capability:'conic-spike-v1',caption:'x',graphPlan:{family:'polynomial',coefficients:['0','0','1'],domain:[-3,3],viewport:[-4,4,-2,10]}};
   for(const [name,plan] of [['unsupported graph capability',graphPlan],['construction capability without mathPlan',{capability:'construction-spike-v1',caption:'x'}],['construction capability plus graphPlan',{...basePlan,graphPlan:graphPlan.graphPlan}],['wrong mathPlan schema',{...basePlan,mathPlan:{...baseGraph,schemaVersion:'other'}}],['no plan',undefined]]){
     const s=spy(),result=await compose({plan,worker:s.worker});
     assertNotRun(result);assert.equal(result.status,'UNSUPPORTED_CAPABILITY',name);assert.equal(s.calls.length,0,name);assert.equal(result.lineage.planSha256,null,name);
