@@ -454,7 +454,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "k=2일 때 y=-x^2-2x+2의 구간 -2≤x≤1에서의 그래프",
+    "solutionImageCaption": "k=2일 때 y=-x^2-2x+2의 구간 -2≤x≤1에서의 그래프",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -922,7 +926,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/22_순천여고_1학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "a=-5일 때 포물선 y=x^2-10과 직선 y=-10x-25의 두 교점",
+    "solutionImageCaption": "a=-5일 때 포물선 y=x^2-10과 직선 y=-10x-25의 두 교점",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

@@ -96,7 +96,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "선분 AB를 1:3으로 내분하는 점 P가 y축 위에 있다 (a=6)",
+    "solutionImageCaption": "선분 AB를 1:3으로 내분하는 점 P가 y축 위에 있다 (a=6)",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

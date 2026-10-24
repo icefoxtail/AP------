@@ -183,7 +183,11 @@ window.questionBank = [
     "answer": "②",
     "solution": "기울기가 $-1$인 직선은 $y=-x+c$로 놓을 수 있다.\n원 $x^2+y^2=9$의 중심은 $(0,0)$이고 반지름은 $3$이다.\n\n직선 $x+y-c=0$과 중심 사이의 거리가 반지름과 같아야 하므로\n$\\dfrac{|c|}{\\sqrt{1^2+1^2}}=3$\n$|c|=3\\sqrt2$\n$c=\\pm3\\sqrt2$\n\n따라서 접선은 $y=-x\\pm3\\sqrt2$이고 정답은 ②이다.",
     "decisiveStep": "접선과 원의 중심 사이의 거리를 반지름 3과 같게 둔다.",
-    "primaryMethod": "기울기가 주어진 직선과 원 중심 사이 거리를 반지름으로 둔다"
+    "primaryMethod": "기울기가 주어진 직선과 원 중심 사이 거리를 반지름으로 둔다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "원에 접하는 기울기 -1인 두 접선 y=-x±3√2",
+    "solutionImageCaption": "원에 접하는 기울기 -1인 두 접선 y=-x±3√2",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -275,7 +279,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "무게중심의 좌표는 세 꼭짓점의 각 좌표를 평균한 값이다.\n\n$G=\\left(\\dfrac{5+2+(-1)}3,\\dfrac{2+4+(-3)}3\\right)$\n$=\\left(\\dfrac63,\\dfrac33\\right)=(2,1)$\n\n따라서 $a+b=2+1=3$이고, 정답은 ③이다.",
     "decisiveStep": "세 꼭짓점의 x좌표와 y좌표를 각각 평균하여 무게중심을 구한다.",
-    "primaryMethod": "세 꼭짓점의 좌표 평균을 구한다"
+    "primaryMethod": "세 꼭짓점의 좌표 평균을 구한다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "두 중선의 교점이 무게중심 G(2, 1)이다.",
+    "solutionImageCaption": "두 중선의 교점이 무게중심 G(2, 1)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -505,7 +513,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "지름의 양 끝점 $A(1,4)$, $B(3,2)$의 중점은 원의 중심이다.\n\n$O=\\left(\\dfrac{1+3}{2},\\dfrac{4+2}{2}\\right)=(2,3)$\n\n반지름의 제곱은\n$r^2=(1-2)^2+(4-3)^2=2$\n\n$(x-2)^2+(y-3)^2=2$\n$x^2+y^2-4x-6y+11=0$\n\n$a+b+c=-4-6+11=1$이므로 정답은 ①이다.",
     "decisiveStep": "지름의 중점을 원의 중심으로 두고 일반형 계수와 상수항을 읽는다.",
-    "primaryMethod": "지름 양 끝점의 중점과 반지름으로 원을 결정한다"
+    "primaryMethod": "지름 양 끝점의 중점과 반지름으로 원을 결정한다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "지름 AB의 중점 M이 원의 중심이고 반지름은 r=√2이다.",
+    "solutionImageCaption": "지름 AB의 중점 M이 원의 중심이고 반지름은 r=√2이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -645,7 +657,11 @@ window.questionBank = [
     "answer": "③",
     "solution": "직선 $x-2y+3=0$을 $y$에 대하여 정리하면\n$y=\\dfrac12x+\\dfrac32$이므로 기울기는 $\\dfrac12$이다.\n이에 수직인 직선의 기울기는 $-2$이다.\n\n점 $(1,-4)$를 지나므로\n$y+4=-2(x-1)$\n$y+4=-2x+2$\n$2x+y+2=0$이다.\n\n따라서 $a=2$, $c=2$이고 $ac=2\\cdot2=4$이다. 정답은 ③이다.",
     "decisiveStep": "주어진 직선의 기울기를 1/2로 읽어 수직인 기울기 -2를 얻고 점을 대입한다.",
-    "primaryMethod": "수직 기울기와 한 점을 이용해 직선을 구한다"
+    "primaryMethod": "수직 기울기와 한 점을 이용해 직선을 구한다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "직선 x-2y+3=0에 수직이고 점 P를 지나는 직선 2x+y+2=0",
+    "solutionImageCaption": "직선 x-2y+3=0에 수직이고 점 P를 지나는 직선 2x+y+2=0",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -841,7 +857,11 @@ window.questionBank = [
     "answer": "①",
     "solution": "직선 $l:x+2y-3=0$을 정리하면 $y=-\\dfrac12x+\\dfrac32$이므로 기울기는 $-\\dfrac12$이다.\n$AB\\perp l$이므로 $AB$의 기울기는 $2$이다.\n\n점 $A(2,3)$에서 $B$까지 $x$좌표가 $t$만큼 변한다고 두면, 기울기가 $2$이므로 $y$좌표는 $2t$만큼 변한다.\n따라서 $B=(2+t,3+2t)$이다.\n\n$AC:CB=1:2$이므로 $C$는 $A$에서 $B$까지의 길이 중 $\\dfrac13$만큼 간 점이다.\n$C=\\left(2+\\dfrac t3,3+\\dfrac{2t}{3}\\right)$이다.\n또 $C$가 $l$ 위에 있으므로\n$2+\\dfrac t3+2\\left(3+\\dfrac{2t}{3}\\right)-3=0$\n$5+\\dfrac{5t}{3}=0$\n$t=-3$이다.\n\n따라서 $B=(-1,-3)$이고 $ab=(-1)(-3)=3$이다. 정답은 ①이다.",
     "decisiveStep": "수직인 선분의 방향을 직선의 법선벡터 (1,2)로 두고 내분점 C를 직선식에 대입한다.",
-    "primaryMethod": "법선 방향 AB의 내분점 C가 주어진 직선 위에 있음을 이용한다"
+    "primaryMethod": "법선 방향 AB의 내분점 C가 주어진 직선 위에 있음을 이용한다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "선분 AB가 직선 l과 수직으로 만나는 점 C가 AB를 1:2로 나눈다",
+    "solutionImageCaption": "선분 AB가 직선 l과 수직으로 만나는 점 C가 AB를 1:2로 나눈다",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
@@ -1102,6 +1122,10 @@ window.questionBank = [
     "answer": "$\\dfrac{\\sqrt2}{2}$",
     "solution": "직선의 계수를 정리한다.\n\n$(1+k)x+(5-k)y-3=0$\n\n원점과 직선 사이의 거리는\n$f(k)=\\dfrac{3}{\\sqrt{(1+k)^2+(5-k)^2}}$이다.\n분모의 제곱을 완전제곱으로 정리하면\n$(k+1)^2+(5-k)^2$\n$=2k^2-8k+26$\n$=2(k-2)^2+18$\n\n분모는 $k=2$일 때 가장 작으므로 $f(k)$는 이때 가장 크다.\n\n$f(2)=\\dfrac3{\\sqrt{18}}=\\dfrac{\\sqrt2}{2}$\n\n따라서 최댓값은 $\\dfrac{\\sqrt2}{2}$이다.",
     "decisiveStep": "거리의 분모 제곱을 2(k-2)²+18로 완전제곱하여 최솟값을 찾는다.",
-    "primaryMethod": "거리 분모의 이차식을 완전제곱해 최솟값을 정한다"
+    "primaryMethod": "거리 분모의 이차식을 완전제곱해 최솟값을 정한다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q24-solution.svg",
+    "solutionImageAlt": "모든 직선은 점 P를 지나고, k=2일 때 직선 x+y-1=0이 OP에 수직이어서 거리가 최대이다.",
+    "solutionImageCaption": "모든 직선은 점 P를 지나고, k=2일 때 직선 x+y-1=0이 OP에 수직이어서 거리가 최대이다.",
+    "solutionImageSize": "full"
   }
 ];

@@ -718,7 +718,11 @@ window.questionBank = [
       "$3$",
       "$6$",
       "$8$"
-    ]
+    ],
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "k=3일 때 구간에서 x가 커질수록 감소하여 x=1에서 최댓값 -4, x=3에서 최솟값 -40이다.",
+    "solutionImageCaption": "k=3일 때 구간에서 x가 커질수록 감소하여 x=1에서 최댓값 -4, x=3에서 최솟값 -40이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,
@@ -763,7 +767,11 @@ window.questionBank = [
       "$2$",
       "$-2$",
       "$-5$"
-    ]
+    ],
+    "solutionImage": "assets/images/21_제일고_1학기_중간_고1_기출/q18-solution.svg",
+    "solutionImageAlt": "m=7일 때 -3≤x≤3에서 최솟값 f(-3)=5",
+    "solutionImageCaption": "m=7일 때 -3≤x≤3에서 최솟값 f(-3)=5",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

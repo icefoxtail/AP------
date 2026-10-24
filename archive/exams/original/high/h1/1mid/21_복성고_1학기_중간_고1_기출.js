@@ -243,7 +243,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "k=3/4일 때 그래프는 x축에 접한다",
+    "solutionImageCaption": "k=3/4일 때 그래프는 x축에 접한다",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -531,7 +535,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "포물선 y=x²+x+1과 직선 y=2x+3이 x=-1, x=2인 두 점 A, B에서 만난다.",
+    "solutionImageCaption": "포물선 y=x²+x+1과 직선 y=2x+3이 x=-1, x=2인 두 점 A, B에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -573,7 +581,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "구간 0≤x≤3에서 꼭짓점의 y값이 최소, 왼쪽 끝점의 y값이 최대이다.",
+    "solutionImageCaption": "구간 0≤x≤3에서 꼭짓점의 y값이 최소, 왼쪽 끝점의 y값이 최대이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -788,7 +800,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
     "wide": false,
-    "sourceRepairProvenance": "AUDITED_REPAIR:choice_4_10_to_8_after_independent_solution"
+    "sourceRepairProvenance": "AUDITED_REPAIR:choice_4_10_to_8_after_independent_solution",
+    "solutionImage": "assets/images/21_복성고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "직선 y=ax+7과 두 점에서 만나는 포물선, 꼭짓점 V에서 최솟값 3",
+    "solutionImageCaption": "직선 y=ax+7과 두 점에서 만나는 포물선, 꼭짓점 V에서 최솟값 3",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

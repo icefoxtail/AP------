@@ -959,6 +959,10 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "stack",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_매산여고_1학기_중간_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "점 (0, 8)을 지나는 두 접선과 접점",
+    "solutionImageCaption": "점 (0, 8)을 지나는 두 접선과 접점",
+    "solutionImageSize": "full"
   }
 ];

@@ -592,7 +592,11 @@ window.questionBank = [
     "sourceEvidence": {
       "pdfPage": 3,
       "sourcePdfSha256": "274789c5645d72608cffeba1a54aa259b70cde677046d1e442f0096907cde83a"
-    }
+    },
+    "solutionImage": "assets/images/21_강남여고_1학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "점 (2,-5)에서 거리가 √2인 두 평행한 직선과 y절편의 차",
+    "solutionImageCaption": "점 (2,-5)에서 거리가 √2인 두 평행한 직선과 y절편의 차",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

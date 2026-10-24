@@ -180,7 +180,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "두 점 A, B의 x좌표가 모두 3이므로 직선 x=3은 y축에 평행한 수직선이다.",
+    "solutionImageCaption": "두 점 A, B의 x좌표가 모두 3이므로 직선 x=3은 y축에 평행한 수직선이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -805,7 +809,11 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/21_제일고_1학기_기말_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "k=18일 때 세 직선이 한 점 P에서 만난다.",
+    "solutionImageCaption": "k=18일 때 세 직선이 한 점 P에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,

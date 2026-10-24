@@ -199,7 +199,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "정사각형에 좌표를 놓고 구한 두 교점 P, Q",
+    "solutionImageCaption": "정사각형에 좌표를 놓고 구한 두 교점 P, Q",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -279,7 +283,11 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "직선 AB가 x축과 만나는 점 P, y축과 만나는 점 Q가 사분면 조건의 경계이다.",
+    "solutionImageCaption": "직선 AB가 x축과 만나는 점 P, y축과 만나는 점 Q가 사분면 조건의 경계이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -319,7 +327,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "대각선 BD는 AC의 중점 M(4,3)을 지나고 AC에 수직이므로 직선 y=3x-9이다.",
+    "solutionImageCaption": "대각선 BD는 AC의 중점 M(4,3)을 지나고 AC에 수직이므로 직선 y=3x-9이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -359,7 +371,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "평행한 두 직선 사이의 거리는 원점 O에서 직선에 내린 수선 OH의 길이 5이다.",
+    "solutionImageCaption": "평행한 두 직선 사이의 거리는 원점 O에서 직선에 내린 수선 OH의 길이 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -784,7 +800,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/21_매산여고_1학기_기말_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "점 P'과 Q'의 자취인 두 원: 중심 사이 거리가 반지름의 합보다 작아 두 원이 만난다.",
+    "solutionImageCaption": "점 P'과 Q'의 자취인 두 원: 중심 사이 거리가 반지름의 합보다 작아 두 원이 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

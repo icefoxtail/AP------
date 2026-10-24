@@ -808,7 +808,11 @@ window.questionBank = [
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B34",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "a=2일 때 x축에 접하는 포물선이 직선 y=5x와 두 점에서 만난다",
+    "solutionImageCaption": "a=2일 때 x축에 접하는 포물선이 직선 y=5x와 두 점에서 만난다",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -1094,7 +1098,11 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "level": "중"
+    "level": "중",
+    "solutionImage": "assets/images/22_팔마고_1학기_중간_고1_기출/q19-solution.svg",
+    "solutionImageAlt": "f(x)=3x^2-3x+3을 -1≤x≤1에서 보면 최댓값은 9, 최솟값은 9/4이다.",
+    "solutionImageCaption": "f(x)=3x^2-3x+3을 -1≤x≤1에서 보면 최댓값은 9, 최솟값은 9/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 20,

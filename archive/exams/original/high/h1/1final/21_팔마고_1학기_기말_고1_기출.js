@@ -621,7 +621,11 @@ window.questionBank = [
       "sourcePdfPath": "C:/Users/USER/Desktop/기출정리 파일/(2)1기말/수학(상)/2021_팔마고1_1기말.pdf",
       "intakeEvidencePath": "archive/analysis/h1-fast-lane-b-20261013/2021-palma-1final/21_팔마고_1학기_기말_고1_기출.evidence.json",
       "intakeEvidenceSha256": "99d24dc7d599d567f87a8e9b07a0c9f5b315337d8be204d446e8831ea46a7235"
-    }
+    },
+    "solutionImage": "assets/images/21_팔마고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "두 직선의 교점 (1, 3)과 점 (2, -1)을 지나는 직선이 y축과 만나는 점이 (0, 7)이다.",
+    "solutionImageCaption": "두 직선의 교점 (1, 3)과 점 (2, -1)을 지나는 직선이 y축과 만나는 점이 (0, 7)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,

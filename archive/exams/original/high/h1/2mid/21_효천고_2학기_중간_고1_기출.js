@@ -111,7 +111,11 @@ window.questionBank=[
     "subUnitKey": "H15-SA-12-TRANSLATION",
     "subUnit": "평행이동",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/21_효천고_2학기_중간_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "x축 방향으로 4만큼 옮긴 직선이 점 (4,1)을 지난다.",
+    "solutionImageCaption": "x축 방향으로 4만큼 옮긴 직선이 점 (4,1)을 지난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
