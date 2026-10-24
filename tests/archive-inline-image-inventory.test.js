@@ -16,14 +16,14 @@ test('archive/exams questionBank inline image inventory validates referenced pro
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 1276);
-  assert.equal(generated.productionTotal, 1272);
+  assert.equal(generated.total, 1449);
+  assert.equal(generated.productionTotal, 1445);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 1223, '.svg': 53 });
-  assert.equal(generated.qImageAndInlineTotal, 225);
+  assert.deepEqual(generated.extensionCounts, { '.png': 1391, '.svg': 58 });
+  assert.equal(generated.qImageAndInlineTotal, 246);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,
-    missingProductionAssetCount: 241,
+    missingProductionAssetCount: 238,
     errorCount: 0
   });
   assert.ok(generated.records.every(row => row.relativePathValid && row.src.startsWith('assets/images/')));
@@ -60,7 +60,7 @@ test('archive/exams questionBank inline image inventory validates referenced pro
   assert.equal(q8?.assetExists, true);
 
   const qImageRecords = generated.records.filter(record => record.qImagePresent);
-  assert.equal(qImageRecords.length, 225);
+  assert.equal(qImageRecords.length, 246);
   assert.ok(qImageRecords.every(record => record.relativePathValid));
 
   assert.deepEqual(reportData, generatedData);

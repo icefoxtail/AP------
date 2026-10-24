@@ -119,7 +119,7 @@ const combined = [
   ...readJson("archive/data/meta-foundation/runtime/integral-calculus-v1.json").records,
   ...runtime.records,
 ];
-assert.strictEqual(combined.length, 1978);
+assert.strictEqual(combined.length, 1981);
 assert.strictEqual(new Set(combined.map((row) => row.questionUid)).size, combined.length);
 assert.strictEqual(new Set(combined.map((row) => sourceKey(row.sourceArchiveFile, row.sourceOrdinal))).size, combined.length);
 assert.strictEqual(receipt.checked.combinedRuntimeRecords, runtimeRecordCount);
