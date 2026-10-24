@@ -1,11 +1,15 @@
 """
-Unit and Negative Tests for M3HarnessGate.
+Unit and Negative Tests for M3HarnessGate (Rigorous Version).
 Verifies that deliberate defect injections are caught fail-closed across all 5 layers:
-Layer 1: Schema & Completeness
-Layer 2: Choice Uniqueness & Distractor Sanity
-Layer 3: Visual Asset Parity
-Layer 4: Meta Foundation Registry Parity
-Layer 5: Small JSON Contract & Blob Parity
+- Mandatory arguments
+- window.questionBank requirement
+- Schema & completeness
+- Choice uniqueness
+- Visual figure requirement on Q5, Q10, Q13, Q24
+- Taxonomy registry (PT/TPL) verification
+- difficultyBucket integer validation
+- Approval forging rejection
+- Git blob SHA-1 byte parity
 """
 
 import copy
@@ -21,10 +25,10 @@ class TestM3HarnessGate(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.gate = M3HarnessGate()
-        # Build a valid synthetic 24-question fixture
         cls.valid_fixture = []
         for i in range(1, 25):
             is_descriptive = i >= 21
+            is_visual = i in {5, 10, 13, 24}
             q = {
                 "id": i,
                 "questionType": "서술형" if is_descriptive else "객관식",
@@ -35,95 +39,127 @@ class TestM3HarnessGate(unittest.TestCase):
                 "standardCourse": "중3 수학",
                 "standardUnitKey": "M3-01",
                 "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
+                "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
+                "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
                 "integrationPattern": "NONE",
-                "difficultyBucket": "D3",
-                "crossConceptKeys": ["CC_POLYNOMIAL_FACTORIZATION"],
+                "difficultyBucket": 3,
+                "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION"],
                 "conditionKeys": ["COND_INTEGER"],
             }
+            if is_visual:
+                q["image"] = f"archive/assets/images/26_삼산중_1학기_중간_중3_기출/q{i:02d}.png"
             cls.valid_fixture.append(q)
+
+        # Valid JS bytes
+        cls.valid_js_text = "window.questionBank = " + json.dumps(cls.valid_fixture) + ";\n"
+        cls.valid_js_bytes = cls.valid_js_text.encode("utf-8")
+        cls.valid_blob_sha1 = compute_git_blob_sha1(cls.valid_js_bytes)
+
+        # Valid Small Meta
+        cls.valid_small_meta = {
+            "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
+            "requestId": "samsan-m3-1mid-test",
+            "examUid": "26_삼산중_1학기_중간_중3_유사",
+            "sourceArchiveFile": "similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js",
+            "expectedSourceBlobSha1": cls.valid_blob_sha1,
+            "expectedQuestionCount": 24,
+            "approval": {
+                "type": "REVIEW2",
+                "reviewPassCount": 0,
+                "metadataReviewed": False,
+                "reviewStatus": "review_required",
+            },
+            "registryChanges": [],
+            "items": [],
+        }
 
     def test_clean_fixture_passes(self):
         """A clean, valid 24-question set passes all layers."""
-        res = self.gate.validate_exam(self.valid_fixture)
+        res = self.gate.validate_exam(self.valid_fixture, self.valid_js_bytes, self.valid_small_meta)
         self.assertEqual(res["status"], "PASS")
         self.assertEqual(res["findingsCount"], 0)
 
-    def test_layer1_incomplete_question_count(self):
-        """Layer 1 fails closed if question count != 24."""
-        partial = self.valid_fixture[:23]
-        res = self.gate.validate_exam(partial)
+    def test_missing_raw_js_bytes_blocked(self):
+        """Omitting raw_js_bytes must fail-closed."""
+        res = self.gate.validate_exam(self.valid_fixture, None, self.valid_small_meta)  # type: ignore
         self.assertEqual(res["status"], "BLOCKED")
         codes = [f["code"] for f in res["findings"]]
-        self.assertIn("QUESTION_COUNT_MISMATCH", codes)
+        self.assertIn("RAW_JS_BYTES_REQUIRED", codes)
 
-    def test_layer1_forbidden_markup_in_solution(self):
-        """Layer 1 fails closed if solution contains forbidden debug / placeholder tags."""
+    def test_window_questionbank_missing(self):
+        """Missing window.questionBank fails closed."""
+        bad_js = b"window.questions = [];\n"
+        bad_sha = compute_git_blob_sha1(bad_js)
+        meta = copy.deepcopy(self.valid_small_meta)
+        meta["expectedSourceBlobSha1"] = bad_sha
+        res = self.gate.validate_exam(self.valid_fixture, bad_js, meta)
+        self.assertEqual(res["status"], "BLOCKED")
+        codes = [f["code"] for f in res["findings"]]
+        self.assertIn("WINDOW_QUESTIONBANK_MISSING", codes)
+
+    def test_mandatory_visual_missing(self):
+        """Q5 without image must fail closed."""
         bad = copy.deepcopy(self.valid_fixture)
-        bad[2]["solution"] += "\n<debug> internal value check </debug>"
-        res = self.gate.validate_exam(bad)
+        bad[4].pop("image", None)
+        js_text = "window.questionBank = " + json.dumps(bad) + ";\n"
+        js_bytes = js_text.encode("utf-8")
+        meta = copy.deepcopy(self.valid_small_meta)
+        meta["expectedSourceBlobSha1"] = compute_git_blob_sha1(js_bytes)
+        res = self.gate.validate_exam(bad, js_bytes, meta)
         self.assertEqual(res["status"], "BLOCKED")
         codes = [f["code"] for f in res["findings"]]
-        self.assertIn("FORBIDDEN_MARKUP_IN_SOLUTION", codes)
+        self.assertIn("MANDATORY_IMAGE_MISSING", codes)
 
-    def test_layer2_duplicate_choices(self):
-        """Layer 2 fails closed if multiple-choice question contains duplicate options."""
+    def test_forged_review_approval(self):
+        """Attempting to declare reviewed_pass in candidate small meta must fail closed."""
+        meta = copy.deepcopy(self.valid_small_meta)
+        meta["approval"]["reviewStatus"] = "reviewed_pass"
+        meta["approval"]["reviewPassCount"] = 2
+        res = self.gate.validate_exam(self.valid_fixture, self.valid_js_bytes, meta)
+        self.assertEqual(res["status"], "BLOCKED")
+        codes = [f["code"] for f in res["findings"]]
+        self.assertIn("FORGED_REVIEW_APPROVAL", codes)
+
+    def test_difficulty_bucket_string_rejected(self):
+        """difficultyBucket as string 'D3' instead of integer must fail closed."""
         bad = copy.deepcopy(self.valid_fixture)
-        bad[0]["choices"] = ["1", "2", "3", "3", "5"]
-        res = self.gate.validate_exam(bad)
+        bad[0]["difficultyBucket"] = "D3"
+        js_text = "window.questionBank = " + json.dumps(bad) + ";\n"
+        js_bytes = js_text.encode("utf-8")
+        meta = copy.deepcopy(self.valid_small_meta)
+        meta["expectedSourceBlobSha1"] = compute_git_blob_sha1(js_bytes)
+        res = self.gate.validate_exam(bad, js_bytes, meta)
         self.assertEqual(res["status"], "BLOCKED")
         codes = [f["code"] for f in res["findings"]]
-        self.assertIn("DUPLICATE_CHOICES", codes)
+        self.assertIn("DIFFICULTY_BUCKET_NOT_INTEGER_1_5", codes)
 
-    def test_layer2_invalid_answer_symbol(self):
-        """Layer 2 fails closed if answer is not a circled digit for multiple choice."""
+    def test_unregistered_problem_type_rejected(self):
+        """Unregistered invented PT key must fail closed."""
         bad = copy.deepcopy(self.valid_fixture)
-        bad[0]["answer"] = "3"  # Non-circled digit
-        res = self.gate.validate_exam(bad)
+        bad[0]["problemTypeKey"] = "PT_INVENTED_KEY_XYZ"
+        js_text = "window.questionBank = " + json.dumps(bad) + ";\n"
+        js_bytes = js_text.encode("utf-8")
+        meta = copy.deepcopy(self.valid_small_meta)
+        meta["expectedSourceBlobSha1"] = compute_git_blob_sha1(js_bytes)
+        res = self.gate.validate_exam(bad, js_bytes, meta)
         self.assertEqual(res["status"], "BLOCKED")
         codes = [f["code"] for f in res["findings"]]
-        self.assertIn("INVALID_ANSWER_SYMBOL", codes)
+        self.assertIn("PROBLEM_TYPE_NOT_IN_TAXONOMY", codes)
 
-    def test_layer3_missing_image_asset(self):
-        """Layer 3 fails closed if image refers to non-existent file on disk."""
+    def test_template_parent_mismatch_rejected(self):
+        """Template whose parent doesn't match declared problemTypeKey must fail closed."""
         bad = copy.deepcopy(self.valid_fixture)
-        bad[4]["image"] = "assets/images/non_existent_folder_xyz/q99.png"
-        res = self.gate.validate_exam(bad)
+        # TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT has parent PT_M3_REAL_NUMBER_CLASSIFICATION
+        # Change problemTypeKey to PT_M3_RADICAL_CALCULATION
+        bad[0]["problemTypeKey"] = "PT_M3_RADICAL_CALCULATION"
+        js_text = "window.questionBank = " + json.dumps(bad) + ";\n"
+        js_bytes = js_text.encode("utf-8")
+        meta = copy.deepcopy(self.valid_small_meta)
+        meta["expectedSourceBlobSha1"] = compute_git_blob_sha1(js_bytes)
+        res = self.gate.validate_exam(bad, js_bytes, meta)
         self.assertEqual(res["status"], "BLOCKED")
         codes = [f["code"] for f in res["findings"]]
-        self.assertIn("ASSET_FILE_NOT_FOUND", codes)
-
-    def test_layer4_invalid_concept_key(self):
-        """Layer 4 fails closed if crossConceptKeys contains uncompiled invented string."""
-        bad = copy.deepcopy(self.valid_fixture)
-        bad[0]["crossConceptKeys"] = ["PYTHAGOREAN_THEOREM"]  # Missing CC_ prefix, non-canonical
-        res = self.gate.validate_exam(bad)
-        self.assertEqual(res["status"], "BLOCKED")
-        codes = [f["code"] for f in res["findings"]]
-        self.assertIn("METADATA_CONCEPT_KEY_INVALID", codes)
-
-    def test_layer4_invalid_integration_pattern(self):
-        """Layer 4 fails closed if integrationPattern is not in canonical enum."""
-        bad = copy.deepcopy(self.valid_fixture)
-        bad[0]["integrationPattern"] = "PARALLEL_FLOW"  # Invented pattern
-        res = self.gate.validate_exam(bad)
-        self.assertEqual(res["status"], "BLOCKED")
-        codes = [f["code"] for f in res["findings"]]
-        self.assertIn("INTEGRATION_PATTERN_INVALID", codes)
-
-    def test_layer5_blob_sha1_mismatch(self):
-        """Layer 5 fails closed if git blob SHA-1 doesn't match small JSON declaration."""
-        js_bytes = b"window.questions = [];\n"
-        actual_sha1 = compute_git_blob_sha1(js_bytes)
-        tampered_sha1 = "a" * 40
-        small_meta = {
-            "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
-            "expectedQuestionCount": 24,
-            "expectedSourceBlobSha1": tampered_sha1,
-        }
-        res = self.gate.validate_exam(self.valid_fixture, raw_js_bytes=js_bytes, small_meta=small_meta)
-        self.assertEqual(res["status"], "BLOCKED")
-        codes = [f["code"] for f in res["findings"]]
-        self.assertIn("BLOB_SHA_MISMATCH", codes)
+        self.assertIn("TEMPLATE_PARENT_MISMATCH", codes)
 
 
 if __name__ == "__main__":

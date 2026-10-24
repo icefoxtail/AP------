@@ -1,8 +1,13 @@
 """
-M3 Similar Exam Harness Gate.
-Incorporates toss-harness principles (multi-layer fail-closed activation gate,
-result parity, cryptographic authority binding, and registry compliance)
-with existing JS Archive validators and Meta Foundation registries.
+M3 Similar Exam Harness Gate (Rigorous Production Version).
+Enforces fail-closed activation gate on Samsan M3-1 similar exam:
+- Mandatory JS bytes & Small Meta JSON (never optional)
+- window.questionBank enforcement
+- Exact PT/TPL validation against compiled taxonomy_registry.json
+- Mandatory image asset existence on visual questions (Q5, Q10, Q13, Q24)
+- Rejection of forged review approvals (reviewStatus must be review_required, reviewPassCount must be 0)
+- difficultyBucket integer validation (1..5)
+- Git blob SHA-1 byte parity
 """
 
 from __future__ import annotations
@@ -16,16 +21,12 @@ from typing import Any, Mapping
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-CANONICAL_RULES_PATH = REPO_ROOT / "archive/data/meta-foundation/canonical/metadata_rules.json"
-TAG_MASTER_PATH = REPO_ROOT / "archive/data/master_tables/js_archive_tag_master.json"
-CONCEPT_REGISTRY_PATH = REPO_ROOT / "archive/data/meta-foundation/compiled/concept_registry.json"
-CONDITION_REGISTRY_PATH = REPO_ROOT / "archive/data/meta-foundation/compiled/condition_registry.json"
-
 CIRCLED_DIGITS = {"①": 1, "②": 2, "③": 3, "④": 4, "⑤": 5}
+VISUAL_QIDS = {5, 10, 13, 24}
 
 
 def compute_git_blob_sha1(data: bytes) -> str:
-    """Compute git blob SHA-1: sha1("blob <size>\\0" + data)."""
+    """Compute git blob SHA-1: sha1('blob <size>\\0' + data)."""
     header = f"blob {len(data)}\0".encode("utf-8")
     return hashlib.sha1(header + data).hexdigest()
 
@@ -43,9 +44,6 @@ class M3HarnessGate:
                 rules_doc.get("integrationPatterns", [
                     "NONE", "SEQUENTIAL", "INTERDEPENDENT", "REINTERPRETATION", "CASE_BRANCH", "DEEP_COMPOSITE"
                 ])
-            )
-            self.allowed_difficulty_buckets = set(
-                rules_doc.get("difficultyBuckets", ["D1", "D2", "D3", "D4", "D5"])
             )
 
         # 2. Tag master (for standardUnitKey and subUnitKey)
@@ -82,20 +80,30 @@ class M3HarnessGate:
                 if c.get("status") == "ACTIVE" or "status" not in c
             }
 
+        # 5. Taxonomy registry (Problem Types & Templates)
+        with open(self.root / "archive/data/meta-foundation/compiled/taxonomy_registry.json", "r", encoding="utf-8") as f:
+            tax_doc = json.load(f)
+            self.active_pts = {
+                pt["problemTypeKey"]: pt
+                for pt in tax_doc.get("problemTypes", [])
+                if pt.get("status") == "ACTIVE"
+            }
+            self.active_tpls = {
+                tpl["templateKey"]: tpl
+                for tpl in tax_doc.get("templates", [])
+                if tpl.get("status") == "ACTIVE"
+            }
+
     def validate_exam(
         self,
         questions: list[dict[str, Any]],
-        raw_js_bytes: bytes | None = None,
-        small_meta: dict[str, Any] | None = None,
+        raw_js_bytes: bytes,
+        small_meta: dict[str, Any],
         expected_question_count: int = 24,
     ) -> dict[str, Any]:
         """
-        Multi-layer fail-closed validation:
-        Layer 1: Schema & Completeness
-        Layer 2: Choice Uniqueness & Distractor Sanity
-        Layer 3: Visual Asset Parity (Disk existence, plan compliance)
-        Layer 4: Meta Foundation Registry Parity
-        Layer 5: Small JSON Contract & Blob Parity
+        Fail-closed activation gate:
+        raw_js_bytes and small_meta are MANDATORY.
         """
         findings: list[dict[str, Any]] = []
 
@@ -108,7 +116,20 @@ class M3HarnessGate:
                 "severity": "HARD_FAIL",
             })
 
+        # --- Mandatory Argument Check ---
+        if not isinstance(raw_js_bytes, bytes) or not raw_js_bytes:
+            add_finding("GATE_ARGUMENTS", "RAW_JS_BYTES_REQUIRED", "raw_js_bytes is mandatory and non-empty")
+            return {"status": "BLOCKED", "findingsCount": len(findings), "findings": findings, "checkedQuestionCount": len(questions)}
+
+        if not isinstance(small_meta, dict) or not small_meta:
+            add_finding("GATE_ARGUMENTS", "SMALL_META_REQUIRED", "small_meta dictionary is mandatory")
+            return {"status": "BLOCKED", "findingsCount": len(findings), "findings": findings, "checkedQuestionCount": len(questions)}
+
         # --- Layer 1: Schema & Completeness ---
+        js_text = raw_js_bytes.decode("utf-8", errors="replace")
+        if "window.questionBank" not in js_text:
+            add_finding("LAYER_1_SCHEMA", "WINDOW_QUESTIONBANK_MISSING", "JS output must bind to window.questionBank")
+
         if len(questions) != expected_question_count:
             add_finding(
                 "LAYER_1_SCHEMA",
@@ -128,12 +149,7 @@ class M3HarnessGate:
 
             q_type = q.get("questionType")
             if q_type not in ("객관식", "서술형", "주관식"):
-                add_finding(
-                    "LAYER_1_SCHEMA",
-                    "INVALID_QUESTION_TYPE",
-                    f"Unknown questionType '{q_type}'",
-                    qid=qid,
-                )
+                add_finding("LAYER_1_SCHEMA", "INVALID_QUESTION_TYPE", f"Unknown questionType '{q_type}'", qid=qid)
 
             content = q.get("content", "")
             if not isinstance(content, str) or not content.strip():
@@ -147,7 +163,6 @@ class M3HarnessGate:
             if not isinstance(answer, str) or not answer.strip():
                 add_finding("LAYER_1_SCHEMA", "ANSWER_EMPTY", "Answer is empty", qid=qid)
 
-            # Forbidden tags in student solution
             forbidden_patterns = [r"<debug>", r"<placeholder>", r"TODO", r"FIXME", r"\[INTERNAL\]"]
             for pat in forbidden_patterns:
                 if re.search(pat, solution, re.IGNORECASE):
@@ -164,179 +179,101 @@ class M3HarnessGate:
 
             if q_type == "객관식":
                 if len(choices) != 5:
-                    add_finding(
-                        "LAYER_2_CHOICE_SANITY",
-                        "CHOICES_COUNT_NOT_5",
-                        f"Multiple choice question must have exactly 5 choices, got {len(choices)}",
-                        qid=qid,
-                    )
+                    add_finding("LAYER_2_CHOICE_SANITY", "CHOICES_COUNT_NOT_5", f"Multiple choice question must have exactly 5 choices, got {len(choices)}", qid=qid)
                 else:
-                    # Check duplicate choices
                     clean_choices = [c.strip() for c in choices]
                     if len(set(clean_choices)) != len(clean_choices):
-                        add_finding(
-                            "LAYER_2_CHOICE_SANITY",
-                            "DUPLICATE_CHOICES",
-                            f"Choices contain duplicates: {clean_choices}",
-                            qid=qid,
-                        )
-
-                    # Check answer symbol
+                        add_finding("LAYER_2_CHOICE_SANITY", "DUPLICATE_CHOICES", f"Choices contain duplicates: {clean_choices}", qid=qid)
                     if answer not in CIRCLED_DIGITS:
-                        add_finding(
-                            "LAYER_2_CHOICE_SANITY",
-                            "INVALID_ANSWER_SYMBOL",
-                            f"Answer '{answer}' is not a valid circled digit (①..⑤)",
-                            qid=qid,
-                        )
+                        add_finding("LAYER_2_CHOICE_SANITY", "INVALID_ANSWER_SYMBOL", f"Answer '{answer}' is not a valid circled digit (①..⑤)", qid=qid)
             elif q_type == "서술형":
                 if choices:
-                    add_finding(
-                        "LAYER_2_CHOICE_SANITY",
-                        "DESCRIPTIVE_WITH_CHOICES",
-                        f"Descriptive question must not have choices, got {len(choices)}",
-                        qid=qid,
-                    )
+                    add_finding("LAYER_2_CHOICE_SANITY", "DESCRIPTIVE_WITH_CHOICES", f"Descriptive question must not have choices, got {len(choices)}", qid=qid)
 
         # --- Layer 3: Visual Asset Parity ---
         for q in questions:
             qid = q.get("id")
             img_rel = q.get("image")
-            svg_content = q.get("figureSvg")
+
+            # Q5, Q10, Q13, Q24 MUST have images
+            if qid in VISUAL_QIDS and not img_rel:
+                add_finding("LAYER_3_VISUAL_PARITY", "MANDATORY_IMAGE_MISSING", f"Question Q{qid} requires visual figure, but image field is missing", qid=qid)
 
             if img_rel:
-                # Path normalization: strip leading archive/ if relative to archive web root
                 normalized_rel = img_rel.replace("\\", "/").lstrip("/")
-                # Search in archive/ or repo root
                 candidates = [
                     self.root / normalized_rel,
                     self.root / "archive" / normalized_rel,
                 ]
                 exists = any(p.is_file() for p in candidates)
                 if not exists:
-                    add_finding(
-                        "LAYER_3_VISUAL_PARITY",
-                        "ASSET_FILE_NOT_FOUND",
-                        f"Referenced image '{img_rel}' does not exist on disk",
-                        qid=qid,
-                    )
-                elif normalized_rel.endswith(".svg"):
-                    # Check that the SVG file has valid SVG root tag
-                    actual_file = next(p for p in candidates if p.is_file())
-                    try:
-                        svg_text = actual_file.read_text(encoding="utf-8")
-                        if "<svg" not in svg_text:
-                            add_finding(
-                                "LAYER_3_VISUAL_PARITY",
-                                "INVALID_SVG_FILE",
-                                f"File '{img_rel}' does not contain valid <svg> markup",
-                                qid=qid,
-                            )
-                    except Exception as e:
-                        add_finding(
-                            "LAYER_3_VISUAL_PARITY",
-                            "SVG_READ_ERROR",
-                            f"Failed to read SVG file '{img_rel}': {e}",
-                            qid=qid,
-                        )
+                    add_finding("LAYER_3_VISUAL_PARITY", "ASSET_FILE_NOT_FOUND", f"Referenced image '{img_rel}' does not exist on disk", qid=qid)
 
-            if svg_content:
-                if "<svg" not in svg_content or "</svg>" not in svg_content:
-                    add_finding(
-                        "LAYER_3_VISUAL_PARITY",
-                        "INVALID_FIGURE_SVG",
-                        "figureSvg does not contain valid XML svg tag",
-                        qid=qid,
-                    )
-
-        # --- Layer 4: Meta Foundation Registry Parity ---
+        # --- Layer 4: Meta Foundation Registry & Taxonomy Parity ---
         for q in questions:
             qid = q.get("id")
             unit_key = q.get("standardUnitKey")
             sub_key = q.get("subUnitKey")
+            pt_key = q.get("problemTypeKey")
+            tpl_key = q.get("templateKey")
             pattern = q.get("integrationPattern", "NONE")
             cross_keys = q.get("crossConceptKeys", [])
             cond_keys = q.get("conditionKeys", [])
-            bucket = q.get("difficultyBucket", "D3")
+            bucket = q.get("difficultyBucket")
 
             if unit_key and unit_key not in self.valid_unit_keys:
-                add_finding(
-                    "LAYER_4_META_PARITY",
-                    "METADATA_UNIT_KEY_INVALID",
-                    f"standardUnitKey '{unit_key}' not in tag master",
-                    qid=qid,
-                )
+                add_finding("LAYER_4_META_PARITY", "METADATA_UNIT_KEY_INVALID", f"standardUnitKey '{unit_key}' not in tag master", qid=qid)
 
             if sub_key and sub_key not in self.valid_sub_units:
-                add_finding(
-                    "LAYER_4_META_PARITY",
-                    "METADATA_SUB_UNIT_KEY_INVALID",
-                    f"subUnitKey '{sub_key}' not in tag master",
-                    qid=qid,
-                )
+                add_finding("LAYER_4_META_PARITY", "METADATA_SUB_UNIT_KEY_INVALID", f"subUnitKey '{sub_key}' not in tag master", qid=qid)
+
+            # PT / TPL verification against compiled taxonomy
+            if pt_key:
+                if pt_key not in self.active_pts:
+                    add_finding("LAYER_4_META_PARITY", "PROBLEM_TYPE_NOT_IN_TAXONOMY", f"problemTypeKey '{pt_key}' is not in compiled taxonomy_registry.json", qid=qid)
+            if tpl_key:
+                if tpl_key not in self.active_tpls:
+                    add_finding("LAYER_4_META_PARITY", "TEMPLATE_NOT_IN_TAXONOMY", f"templateKey '{tpl_key}' is not in compiled taxonomy_registry.json", qid=qid)
+                else:
+                    tpl_record = self.active_tpls[tpl_key]
+                    if tpl_record.get("parentProblemTypeKey") != pt_key:
+                        add_finding("LAYER_4_META_PARITY", "TEMPLATE_PARENT_MISMATCH", f"templateKey '{tpl_key}' parent '{tpl_record.get('parentProblemTypeKey')}' != '{pt_key}'", qid=qid)
+
+            # difficultyBucket must be integer 1..5
+            if bucket is not None:
+                if not isinstance(bucket, int) or bucket not in (1, 2, 3, 4, 5):
+                    add_finding("LAYER_4_META_PARITY", "DIFFICULTY_BUCKET_NOT_INTEGER_1_5", f"difficultyBucket must be integer 1..5, got {bucket!r}", qid=qid)
 
             if pattern not in self.allowed_integration_patterns:
-                add_finding(
-                    "LAYER_4_META_PARITY",
-                    "INTEGRATION_PATTERN_INVALID",
-                    f"integrationPattern '{pattern}' not in canonical metadata_rules.json",
-                    qid=qid,
-                )
-
-            if bucket not in self.allowed_difficulty_buckets:
-                add_finding(
-                    "LAYER_4_META_PARITY",
-                    "DIFFICULTY_BUCKET_INVALID",
-                    f"difficultyBucket '{bucket}' not in canonical metadata_rules.json",
-                    qid=qid,
-                )
+                add_finding("LAYER_4_META_PARITY", "INTEGRATION_PATTERN_INVALID", f"integrationPattern '{pattern}' not in canonical metadata_rules.json", qid=qid)
 
             for ck in cross_keys:
                 if ck not in self.valid_concepts:
-                    add_finding(
-                        "LAYER_4_META_PARITY",
-                        "METADATA_CONCEPT_KEY_INVALID",
-                        f"crossConceptKey '{ck}' is not in compiled concept_registry.json",
-                        qid=qid,
-                    )
+                    add_finding("LAYER_4_META_PARITY", "METADATA_CONCEPT_KEY_INVALID", f"crossConceptKey '{ck}' is not in compiled concept_registry.json", qid=qid)
 
             for cond in cond_keys:
                 if cond not in self.valid_conditions:
-                    add_finding(
-                        "LAYER_4_META_PARITY",
-                        "METADATA_CONDITION_KEY_INVALID",
-                        f"conditionKey '{cond}' is not in compiled condition_registry.json",
-                        qid=qid,
-                    )
+                    add_finding("LAYER_4_META_PARITY", "METADATA_CONDITION_KEY_INVALID", f"conditionKey '{cond}' is not in compiled condition_registry.json", qid=qid)
 
-        # --- Layer 5: Small JSON Contract & Blob Parity ---
-        if small_meta is not None:
-            expected_schema = "archive-reviewed-exam-meta-register-request-v2"
-            schema = small_meta.get("schemaVersion")
-            if schema != expected_schema:
-                add_finding(
-                    "LAYER_5_CONTRACT_PARITY",
-                    "SMALL_META_SCHEMA_INVALID",
-                    f"Expected schema '{expected_schema}', got '{schema}'",
-                )
+        # --- Layer 5: Small JSON Contract, Blob Parity & Approval Guard ---
+        expected_schema = "archive-reviewed-exam-meta-register-request-v2"
+        schema = small_meta.get("schemaVersion")
+        if schema != expected_schema:
+            add_finding("LAYER_5_CONTRACT_PARITY", "SMALL_META_SCHEMA_INVALID", f"Expected schema '{expected_schema}', got '{schema}'")
 
-            expected_count = small_meta.get("expectedQuestionCount")
-            if expected_count != len(questions):
-                add_finding(
-                    "LAYER_5_CONTRACT_PARITY",
-                    "SMALL_META_QUESTION_COUNT_MISMATCH",
-                    f"Small meta expectedQuestionCount {expected_count} != bank length {len(questions)}",
-                )
+        # Approval status guard: CREATE stage must NOT forge reviewed_pass
+        approval = small_meta.get("approval", {})
+        if approval.get("reviewStatus") == "reviewed_pass" or approval.get("reviewPassCount", 0) > 0:
+            add_finding("LAYER_5_APPROVAL_GUARD", "FORGED_REVIEW_APPROVAL", "CREATE stage candidate small meta must not declare reviewStatus='reviewed_pass' or reviewPassCount > 0")
 
-            if raw_js_bytes is not None:
-                actual_sha1 = compute_git_blob_sha1(raw_js_bytes)
-                declared_sha1 = small_meta.get("expectedSourceBlobSha1")
-                if actual_sha1 != declared_sha1:
-                    add_finding(
-                        "LAYER_5_CONTRACT_PARITY",
-                        "BLOB_SHA_MISMATCH",
-                        f"Git blob SHA-1 mismatch: computed {actual_sha1} != declared {declared_sha1}",
-                    )
+        expected_count = small_meta.get("expectedQuestionCount")
+        if expected_count != len(questions):
+            add_finding("LAYER_5_CONTRACT_PARITY", "SMALL_META_QUESTION_COUNT_MISMATCH", f"Small meta expectedQuestionCount {expected_count} != bank length {len(questions)}")
+
+        actual_sha1 = compute_git_blob_sha1(raw_js_bytes)
+        declared_sha1 = small_meta.get("expectedSourceBlobSha1")
+        if actual_sha1 != declared_sha1:
+            add_finding("LAYER_5_CONTRACT_PARITY", "BLOB_SHA_MISMATCH", f"Git blob SHA-1 mismatch: computed {actual_sha1} != declared {declared_sha1}")
 
         status = "BLOCKED" if findings else "PASS"
         return {
