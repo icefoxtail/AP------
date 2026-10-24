@@ -298,9 +298,28 @@ function build({ write = false, indexDocument = null } = {}) {
       // rerunnable after index/shard files have gained these metadata-only fields.
       consumerShardBefore: previousRowsByUid.get(uid)?.sourceEvidence?.consumerShardBefore || shaRecord(shardRel, shardEntry.bytes)
     };
+    const expectedQuestionBody = JSON.stringify({ uid: question.uid, content: question.content, choices: question.choices, answer: question.answer, solution: question.solution, image: question.image });
+    const previous = previousRowsByUid.get(uid);
+    const existingProjections = [row.metaProjection, record.metaProjection, question.metaProjection];
+    if (previous && existingProjections.some(Boolean)) {
+      const frozenProjection = existingProjections[0];
+      if (!frozenProjection || existingProjections.some(projection => !projection || canonical(projection) !== canonical(frozenProjection)))
+        throw new Error(`EXISTING_PROJECTION_DRIFT:${uid}`);
+      for (const field of ['source', 'meta', 'crosswalk']) {
+        if (canonical(previous.sourceEvidence?.[field]) !== canonical(refs[field]))
+          throw new Error(`EXISTING_PROJECTION_EVIDENCE_DRIFT:${uid}:${field}`);
+      }
+      if (sha(Buffer.from(expectedQuestionBody)) !== previous.studentPayloadSha256)
+        throw new Error(`EXISTING_PROJECTION_STUDENT_PAYLOAD_DRIFT:${uid}`);
+      // Keep the original authority digest in a frozen, non-recertifying
+      // projection when the canonical RPM master advances. Source, sidecar,
+      // crosswalk, projection parity, and student bytes still must match.
+      ledgerRows.push(previous);
+      projected++;
+      continue;
+    }
     const built = createProjection({ uid, row, record, consumerQuestion: question, sourceQuestion: sourceMatches[0], metaRow, crosswalkById, refs, namespaceEvidence });
     const projection = built.projection;
-    const expectedQuestionBody = JSON.stringify({ uid: question.uid, content: question.content, choices: question.choices, answer: question.answer, solution: question.solution, image: question.image });
     const oldRecordProjection = record.metaProjection;
     const oldQuestionProjection = question.metaProjection;
     const oldIndexProjection = row.metaProjection;
@@ -339,7 +358,7 @@ function build({ write = false, indexDocument = null } = {}) {
   for (const item of ledgerRows) {
     const indexRow = index.records.find(row => row.uid === item.uid);
     if (!indexRow) continue; // withdrawn historical UID retains its last sealed consumer hash evidence
-    item.sourceEvidence.consumerShardAfter = consumerHashes.get(indexRow.shard).ref;
+    item.sourceEvidence.consumerShardAfter = consumerHashes.get(indexRow.shard)?.ref || item.sourceEvidence.consumerShardAfter;
   }
   const ledger = {
     schemaVersion: 'GENERATED_LEGACY_META_EVIDENCE_V1',
