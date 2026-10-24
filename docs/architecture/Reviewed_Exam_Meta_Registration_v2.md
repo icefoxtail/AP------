@@ -43,11 +43,12 @@ node archive/tools/meta-foundation/register-reviewed-exam-meta-source.mjs --requ
 
 `META_PIPELINE_AUDIT`는 Gemini의 심화 메타 감사 인계를 등록하는 별도 유형이다. 이 유형은 FINAL_QA 또는 REVIEW2로 변환하지 않으며, 시험지의 최종 수학·해설 QA 상태를 승인하지 않는다. 요청은 다음을 제공한다.
 
-- `approval.metaPipelineAudit.schemaVersion` is `"meta-pipeline-audit-approval-v1"` for the rich `ALIVE_META_AUDIT_ATOMIC_v3` input, or `"meta-pipeline-audit-approval-v2"` for the paired legacy `META_AUDIT_ATOMIC_PACKAGE_v2` plus `CANDIDATE_CLASSIFICATION_v2` input.
+- `approval.metaPipelineAudit.schemaVersion` is `"meta-pipeline-audit-approval-v1"` for the rich `ALIVE_META_AUDIT_ATOMIC_v3` input, or `"meta-pipeline-audit-approval-v2"` for paired key-only audit/classification inputs.
 - `approval.metaPipelineAudit.sourceFileDriveId`
 - `approval.metaPipelineAudit.auditPackageRef`, `manifestRef`, `sourceParityRef`: 정확한 Drive 산출물 JSON 바이트와 source-parity report를 저장소 evidence 경로에 보존한 `{path, sha256}` 참조. 세 참조 모두 `approval.evidenceRefs`에도 포함한다.
 - 감사 패키지는 `ALIVE_META_AUDIT_ATOMIC_v3`, `ALL_APPROVED_CANONICAL_STANDARDIZED`, `READY_FOR_COURIER_REGISTRATION`, N/N 승인, zero hold, zero template inflation을 만족해야 한다. `sourceSha256`는 매니페스트의 Drive source SHA와 일치해야 한다.
 - 구형 `META_AUDIT_ATOMIC_PACKAGE_v2`는 `CANDIDATE_CLASSIFICATION_v2`를 추가 SHA-bound `classificationRef`로 함께 보존한다. 두 JSON의 시험지명·Drive source ID/SHA·문항 수·ordinal별 단원/PT/TPL/CC/Condition/difficulty 값이 일치해야 하며, final audit의 모든 ordinal은 `auditStatus: APPROVED`, 0 hold, 0 template inflation이어야 한다. 이 형식은 감사 패키지와 현재 Drive 원본 SHA가 다르면 최종 감사 excerpts가 없으므로 차단한다. Drive 원본과 production JS의 raw SHA가 다르면 기존 per-UID student-payload parity 증명을 요구한다.
+- `ALIVE_META_AUDIT_ATOMIC_v3`의 key-only flat 변형은 `boundAtomicCrossConcepts`가 키 문자열 배열이고 record에 nested `classification`이 없을 때 `CANDIDATE_CLASSIFICATION_PACKAGE_v2`와 함께 `meta-pipeline-audit-approval-v2`로 등록한다. 이 변형의 per-qid `readingEvidence`는 보존하고, 모든 ordinal의 classification·manifest·source binding을 확인한다. richer v3 audit는 handoff metadata와 definition objects를 포함하는 기존 approval v1 경로를 사용한다.
 - `META_AUDIT_ATOMIC_PACKAGE_v2`에는 PT/TPL 정의나 CrossConcept label/definition이 들어 있지 않다. 이 형식의 키가 ACTIVE 정본에 없으면 등록 요청에 정확한 before-null additive 정의와 UID별 source evidence를 제공해야 한다. 정본에 없는 키를 이름만 보고 자동 생성하지 않는다. rich v3 입력의 audited definitions는 기존 v3 승격 검증을 그대로 사용한다.
 - 감사 통계의 `atomicCrossConceptsBound`는 고유 정의 수 또는 문항별 태깅 총수로 기록될 수 있다. 등록기는 둘 다 실제 `records`에서 다시 계산하고, `boundAtomicCrossConcepts`가 사용된 고유 키 전체와 정확히 일치하는지 별도로 확인한다.
 - reading evidence의 `visualType`은 `IMAGE`, `SVG`, `SVG_IMAGE`, `NONE`을 받는다. `SVG_IMAGE`는 같은 문항에 학생용 이미지와 SVG가 함께 있다는 감사 표시이며, source asset bytes는 등록기가 변경하지 않는다.

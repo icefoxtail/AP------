@@ -233,6 +233,30 @@ function attachMetaPipelineAuditV2(f) {
   return { audit, manifest, classification, auditPackageRef, manifestRef, classificationRef };
 }
 
+function attachMetaPipelineAuditKeyOnlyV3(f) {
+  const attached = attachMetaPipelineAuditV2(f);
+  const proof = f.request.approval.metaPipelineAudit;
+  const audit = f.read(proof.auditPackageRef.path);
+  audit.schemaVersion = "ALIVE_META_AUDIT_ATOMIC_v3";
+  audit.records = audit.records.map(row => ({ ...row,
+    readingEvidence: { sourceTextExcerpt: f.q.content, solutionDecisiveExcerpt: "fixture exact solution excerpt",
+      visualAssetChecked: false, visualType: "NONE" } }));
+  const classification = f.read(proof.classificationRef.path);
+  classification.schemaVersion = "CANDIDATE_CLASSIFICATION_PACKAGE_v2";
+  f.put(proof.auditPackageRef.path, audit);
+  f.put(proof.classificationRef.path, classification);
+  const auditPackageRef = { path: proof.auditPackageRef.path, sha256: hash(fs.readFileSync(path.join(f.root, proof.auditPackageRef.path))) };
+  const classificationRef = { path: proof.classificationRef.path, sha256: hash(fs.readFileSync(path.join(f.root, proof.classificationRef.path))) };
+  const replace = refs => {
+    const next = refs.filter(ref => ref.path !== auditPackageRef.path && ref.path !== classificationRef.path);
+    return [...next, auditPackageRef, classificationRef];
+  };
+  f.request.approval.evidenceRefs = replace(f.request.approval.evidenceRefs);
+  f.request.approval.metaPipelineAudit = { ...proof, auditPackageRef, classificationRef };
+  f.request.items = f.request.items.map(item => ({ ...item, evidenceRefs: replace(item.evidenceRefs) }));
+  return { ...attached, audit, classification, auditPackageRef, classificationRef };
+}
+
 for (const [course, curriculum] of [["중1 수학", "2015"], ["중2 수학", "2022"], ["중3 수학", "2022"], ["공통수학1", "2022"], ["대수", "2022"], ["미적분Ⅰ", "2022"], ["확률과통계", "2022"], ["수학Ⅱ", "2015"], ["기하", "2015"], ["아직 등록되지 않은 미래 선택과목", "2030"]]) {
   test(`native canonical extension and registration without subject code: ${curriculum}/${course}`, t => {
     const f = fixture(t, course, curriculum);
@@ -337,6 +361,18 @@ test("META_PIPELINE_AUDIT v2 fails closed when a bound CrossConcept has no defin
     change.collection !== "activeConceptShards" && !change.path.startsWith(`${CANON}/concepts/`));
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }),
     /META_PIPELINE_AUDIT v2 lacks an active CrossConcept definition for CC_NEW/);
+});
+
+test("META_PIPELINE_AUDIT accepts the key-only v3 flat audit with its paired classification package", t => {
+  const f = fixture(t);
+  attachMetaPipelineAuditKeyOnlyV3(f);
+  const dry = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(dry.totalQuestions, 1);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.approvalType, "META_PIPELINE_AUDIT");
+  const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json");
+  assert.equal(receipt.metaPipelineAudit.schemaVersion, "ALIVE_META_AUDIT_ATOMIC_v3");
+  assert.equal(receipt.metaPipelineAudit.inputAuditVariant, "key_only_v3");
 });
 
 for (const manifestSchema of ["ALIVE_COURIER_INTAKE_MANIFEST_v3", "COURIER_INTAKE_MANIFEST_v3"]) {
