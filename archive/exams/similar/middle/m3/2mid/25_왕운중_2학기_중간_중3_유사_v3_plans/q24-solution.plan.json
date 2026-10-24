@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q24-solution",
+  "targetFigure": "solution",
+  "canvas": {
+    "width": 420,
+    "height": 300,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "AB = AH + BH = 858 + 666 = 1524m",
+  "sourceConditions": [
+    "AH = 858",
+    "BH = 666",
+    "AB = 1524"
+  ],
+  "newVisualInformation": "두 직각삼각형 PAH, PBH의 밑변 합산",
+  "steps": [
+    {
+      "id": "P",
+      "type": "point",
+      "coords": [
+        0,
+        6
+      ],
+      "label": "P",
+      "labelPosition": "top"
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "H",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        -8.58,
+        0
+      ],
+      "label": "A",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        6.66,
+        0
+      ],
+      "label": "B",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "PH",
+      "type": "segment",
+      "from": "P",
+      "to": "H",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "AH",
+      "type": "segment",
+      "from": "A",
+      "to": "H",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "BH",
+      "type": "segment",
+      "from": "B",
+      "to": "H",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "PA",
+      "type": "segment",
+      "from": "P",
+      "to": "A",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "PB",
+      "type": "segment",
+      "from": "P",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "mH",
+      "type": "angleMark",
+      "vertex": "H",
+      "ray1": "P",
+      "ray2": "B",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

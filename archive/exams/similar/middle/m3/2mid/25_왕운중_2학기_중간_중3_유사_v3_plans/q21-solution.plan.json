@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q21-solution",
+  "targetFigure": "solution",
+  "canvas": {
+    "width": 420,
+    "height": 300,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "AH = AB sin B = 8 * 3/5 = 24/5",
+  "sourceConditions": [
+    "AH = 4.8",
+    "BC = 10",
+    "Area = 24"
+  ],
+  "newVisualInformation": "점 A에서 내린 수선 AH와 높이 계산",
+  "steps": [
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "B",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        10,
+        0
+      ],
+      "label": "C",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        6.4,
+        4.8
+      ],
+      "label": "A",
+      "labelPosition": "top"
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "coords": [
+        6.4,
+        0
+      ],
+      "label": "H",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "BC",
+      "type": "segment",
+      "from": "B",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "AC",
+      "type": "segment",
+      "from": "A",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "AH",
+      "type": "segment",
+      "from": "A",
+      "to": "H",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "mH",
+      "type": "angleMark",
+      "vertex": "H",
+      "ray1": "A",
+      "ray2": "C",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

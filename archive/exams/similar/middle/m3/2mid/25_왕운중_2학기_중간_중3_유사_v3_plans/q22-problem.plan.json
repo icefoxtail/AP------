@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q22-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 400,
+    "height": 300,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "직각삼각형 ABC에서 sin A=5/13일 때",
+  "sourceConditions": [
+    "B = 90 deg",
+    "BC = 5",
+    "AC = 13"
+  ],
+  "newVisualInformation": "직각삼각형 ABC와 주어진 사인값 조건",
+  "steps": [
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "B",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        12,
+        0
+      ],
+      "label": "A",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        0,
+        5
+      ],
+      "label": "C",
+      "labelPosition": "top-left"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "BC",
+      "type": "segment",
+      "from": "B",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "AC",
+      "type": "segment",
+      "from": "A",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "mB",
+      "type": "angleMark",
+      "vertex": "B",
+      "ray1": "C",
+      "ray2": "A",
+      "size": 12,
+      "rightAngle": true
+    }
+  ]
+}

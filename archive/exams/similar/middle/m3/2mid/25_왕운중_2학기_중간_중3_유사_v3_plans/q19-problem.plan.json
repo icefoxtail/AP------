@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q19-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 420,
+    "height": 300,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "AB=6, BC=8이고 각 BMH=x라 할 때",
+  "sourceConditions": [
+    "B = (0, 0)",
+    "C = (8, 0)",
+    "A = (0, 6)",
+    "M = (4, 3)",
+    "H = (4, 0)"
+  ],
+  "newVisualInformation": "직각삼각형 ABC의 빗변 중점 M과 수선 MH",
+  "steps": [
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "B",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        8,
+        0
+      ],
+      "label": "C",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        0,
+        6
+      ],
+      "label": "A",
+      "labelPosition": "top-left"
+    },
+    {
+      "id": "M",
+      "type": "point",
+      "coords": [
+        4,
+        3
+      ],
+      "label": "M",
+      "labelPosition": "top-right"
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "coords": [
+        4,
+        0
+      ],
+      "label": "H",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "BC",
+      "type": "segment",
+      "from": "B",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "AC",
+      "type": "segment",
+      "from": "A",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "BM",
+      "type": "segment",
+      "from": "B",
+      "to": "M",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "MH",
+      "type": "segment",
+      "from": "M",
+      "to": "H",
+      "style": "dashed",
+      "strokeWidth": 1.2
+    },
+    {
+      "id": "mB",
+      "type": "angleMark",
+      "vertex": "B",
+      "ray1": "A",
+      "ray2": "C",
+      "size": 10,
+      "rightAngle": true
+    },
+    {
+      "id": "mH",
+      "type": "angleMark",
+      "vertex": "H",
+      "ray1": "M",
+      "ray2": "B",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

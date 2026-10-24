@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q15-solution",
+  "targetFigure": "solution",
+  "canvas": {
+    "width": 400,
+    "height": 300,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "r^2 = (r-4)^2 + 8^2 => r = 10",
+  "sourceConditions": [
+    "Center O = (0, -6)",
+    "Radius r = 10",
+    "OM = 6",
+    "AM = 8"
+  ],
+  "newVisualInformation": "복원된 원의 중심 O와 직각삼각형 OMA",
+  "steps": [
+    {
+      "id": "O",
+      "type": "point",
+      "coords": [
+        0,
+        -6
+      ],
+      "label": "O",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        -8,
+        0
+      ],
+      "label": "A",
+      "labelPosition": "left"
+    },
+    {
+      "id": "M",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "M",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        0,
+        4
+      ],
+      "label": "C",
+      "labelPosition": "top"
+    },
+    {
+      "id": "OC",
+      "type": "segment",
+      "from": "O",
+      "to": "C",
+      "style": "dashed",
+      "strokeWidth": 1.2
+    },
+    {
+      "id": "OA",
+      "type": "segment",
+      "from": "O",
+      "to": "A",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "AM",
+      "type": "segment",
+      "from": "A",
+      "to": "M",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "OM",
+      "type": "segment",
+      "from": "O",
+      "to": "M",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "mM",
+      "type": "angleMark",
+      "vertex": "M",
+      "ray1": "C",
+      "ray2": "A",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

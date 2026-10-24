@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q20-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 420,
+    "height": 320,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "AF=8, 각 EAF=30도인 직각삼각형 AEF",
+  "sourceConditions": [
+    "Rectangle ABCD",
+    "AF = 8",
+    "EAF = 30 deg",
+    "BAE = 45 deg"
+  ],
+  "newVisualInformation": "직사각형 내부에서 45도 회전된 직각삼각형 AEF",
+  "steps": [
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "A",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        0,
+        7.7
+      ],
+      "label": "B",
+      "labelPosition": "top-left"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        7.7,
+        7.7
+      ],
+      "label": "C",
+      "labelPosition": "top-right"
+    },
+    {
+      "id": "D",
+      "type": "point",
+      "coords": [
+        7.7,
+        0
+      ],
+      "label": "D",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "E",
+      "type": "point",
+      "coords": [
+        4.9,
+        4.9
+      ],
+      "label": "E",
+      "labelPosition": "top"
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "coords": [
+        7.7,
+        2.1
+      ],
+      "label": "F",
+      "labelPosition": "right"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "BC",
+      "type": "segment",
+      "from": "B",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "CD",
+      "type": "segment",
+      "from": "C",
+      "to": "D",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "DA",
+      "type": "segment",
+      "from": "D",
+      "to": "A",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "AE",
+      "type": "segment",
+      "from": "A",
+      "to": "E",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "EF",
+      "type": "segment",
+      "from": "E",
+      "to": "F",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "AF",
+      "type": "segment",
+      "from": "A",
+      "to": "F",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "mE",
+      "type": "angleMark",
+      "vertex": "E",
+      "ray1": "A",
+      "ray2": "F",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

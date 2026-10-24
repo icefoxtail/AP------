@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q13-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 400,
+    "height": 320,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "OH=6, AB=16일 때, x의 값을 구하면",
+  "sourceConditions": [
+    "Center O = (0, 0)",
+    "Radius = 10",
+    "OH = 6",
+    "AB = 16"
+  ],
+  "newVisualInformation": "원 O의 현 AB와 중심에서의 수선 OH",
+  "steps": [
+    {
+      "id": "O",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "O",
+      "labelPosition": "top"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        -8,
+        -6
+      ],
+      "label": "A",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        8,
+        -6
+      ],
+      "label": "B",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "coords": [
+        0,
+        -6
+      ],
+      "label": "H",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "c1",
+      "type": "circle",
+      "center": "O",
+      "radius": 10,
+      "style": "solid"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "OH",
+      "type": "segment",
+      "from": "O",
+      "to": "H",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "OA",
+      "type": "segment",
+      "from": "O",
+      "to": "A",
+      "style": "dashed",
+      "strokeWidth": 1.2
+    },
+    {
+      "id": "mH",
+      "type": "angleMark",
+      "vertex": "H",
+      "ray1": "O",
+      "ray2": "B",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

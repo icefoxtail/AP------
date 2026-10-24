@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q11-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 420,
+    "height": 300,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "삼각형 ABC의 넓이가 15sqrt(3)이고, BC=6",
+  "sourceConditions": [
+    "BC = 6",
+    "ACB = 120 deg",
+    "AH = 8.66"
+  ],
+  "newVisualInformation": "둔각 120도를 이루는 삼각형과 수선의 발 H",
+  "steps": [
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "B",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        6,
+        0
+      ],
+      "label": "C",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "coords": [
+        11,
+        0
+      ],
+      "label": "H",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        11,
+        8.66
+      ],
+      "label": "A",
+      "labelPosition": "top-right"
+    },
+    {
+      "id": "BC",
+      "type": "segment",
+      "from": "B",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "AC",
+      "type": "segment",
+      "from": "A",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "CH",
+      "type": "segment",
+      "from": "C",
+      "to": "H",
+      "style": "dashed",
+      "strokeWidth": 1.2
+    },
+    {
+      "id": "AH",
+      "type": "segment",
+      "from": "A",
+      "to": "H",
+      "style": "dashed",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "mH",
+      "type": "angleMark",
+      "vertex": "H",
+      "ray1": "A",
+      "ray2": "C",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

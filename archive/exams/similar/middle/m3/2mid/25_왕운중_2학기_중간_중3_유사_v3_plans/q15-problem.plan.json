@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q15-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 400,
+    "height": 300,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "AB=16cm, CM=4cm일 때, 이 원의 넓이를 구하면",
+  "sourceConditions": [
+    "AB = 16",
+    "M = (0, 0)",
+    "C = (0, 4)",
+    "CM perp AB"
+  ],
+  "newVisualInformation": "원호의 일부와 현 AB 및 수직 높이 CM",
+  "steps": [
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        -8,
+        0
+      ],
+      "label": "A",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        8,
+        0
+      ],
+      "label": "B",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "M",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "M",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        0,
+        4
+      ],
+      "label": "C",
+      "labelPosition": "top"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "CM",
+      "type": "segment",
+      "from": "C",
+      "to": "M",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "mM",
+      "type": "angleMark",
+      "vertex": "M",
+      "ray1": "C",
+      "ray2": "B",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

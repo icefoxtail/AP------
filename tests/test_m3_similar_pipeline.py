@@ -188,6 +188,66 @@ class TestM3SimilarPipeline(unittest.TestCase):
         defects = check_3_missing_elements({"id": 17, "content": "PA=3, PQ=7, QC=x"}, prob_svg)
         self.assertEqual(len(defects), 0, f"Analytic Q17 missing labels: {defects}")
 
+    # ================= V3 EXPERIMENT TESTS =================
+
+    def test_v3_exam_structure_and_parity(self):
+        """Verify V3 exam file structure, question count 24, and 4/4/4/4/4 slot balance."""
+        v3_path = "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_v3.js"
+        self.assertTrue(os.path.exists(v3_path), f"V3 exam file missing: {v3_path}")
+        with open(v3_path, "r", encoding="utf-8") as f:
+            text = f.read()
+        import re
+        m = re.search(r'window\.questionBank\s*=\s*(\[[\s\S]*?\]);', text)
+        self.assertIsNotNone(m, "Failed to parse questionBank from V3 JS")
+        questions = json.loads(m.group(1))
+        self.assertEqual(len(questions), 24, "V3 question count must be exactly 24")
+
+        # Slot counts
+        slot_counts = {"①": 0, "②": 0, "③": 0, "④": 0, "⑤": 0}
+        for q in questions[:20]:
+            self.assertEqual(len(q.get("choices", [])), 5, f"Q{q['id']} must have 5 choices")
+            ans = q.get("answer")
+            self.assertIn(ans, slot_counts, f"Invalid answer symbol {ans}")
+            slot_counts[ans] += 1
+
+        self.assertEqual(slot_counts, {"①": 4, "②": 4, "③": 4, "④": 4, "⑤": 4})
+
+    def test_v3_small_meta_json_contract(self):
+        """Verify V3 small metadata JSON against archive-reviewed-exam-meta-register-request-v2 and blob SHA."""
+        meta_path = "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_v3.meta-q01-q24.json"
+        self.assertTrue(os.path.exists(meta_path), f"V3 meta JSON missing: {meta_path}")
+        with open(meta_path, "r", encoding="utf-8") as f:
+            meta = json.load(f)
+
+        self.assertEqual(meta.get("schemaVersion"), "archive-reviewed-exam-meta-register-request-v2")
+        self.assertEqual(meta.get("expectedQuestionCount"), 24)
+        self.assertEqual(len(meta.get("items", [])), 24)
+
+        # Cryptographic blob SHA parity check
+        js_path = meta.get("sourceArchiveFile")
+        with open(js_path, "rb") as f:
+            js_bytes = f.read()
+        import hashlib
+        actual_blob_sha1 = hashlib.sha1(f"blob {len(js_bytes)}\0".encode("utf-8") + js_bytes).hexdigest()
+        self.assertEqual(meta.get("expectedSourceBlobSha1"), actual_blob_sha1)
+
+    def test_v3_plans_completeness_and_status(self):
+        """Verify that all 48 V3 plans exist with valid schema status (30 spike, 10 exempt, 8 unsupported)."""
+        plans_dir = "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_v3_plans"
+        self.assertTrue(os.path.isdir(plans_dir), f"V3 plans directory missing: {plans_dir}")
+        plan_files = [f for f in os.listdir(plans_dir) if f.endswith(".plan.json")]
+        self.assertEqual(len(plan_files), 48, "Must have exactly 48 plan files for 24 questions")
+
+        counts = {"construction-spike-v1": 0, "EXEMPT": 0, "UNSUPPORTED": 0}
+        for f in plan_files:
+            with open(os.path.join(plans_dir, f), "r", encoding="utf-8") as pf:
+                data = json.load(pf)
+            status = data.get("status") or data.get("schemaVersion")
+            self.assertIn(status, counts, f"Unknown plan status {status} in {f}")
+            counts[status] += 1
+
+        self.assertEqual(counts, {"construction-spike-v1": 30, "EXEMPT": 10, "UNSUPPORTED": 8})
+
 
 if __name__ == '__main__':
     unittest.main()

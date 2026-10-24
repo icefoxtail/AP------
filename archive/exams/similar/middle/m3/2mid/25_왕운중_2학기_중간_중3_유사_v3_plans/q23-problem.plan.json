@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q23-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 400,
+    "height": 320,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "두 동심원의 반지름의 길이가 각각 6cm, 10cm",
+  "sourceConditions": [
+    "Center O = (0, 0)",
+    "R1 = 6",
+    "R2 = 10",
+    "Chord AB tangent at M"
+  ],
+  "newVisualInformation": "두 동심원과 작은 원에 접하는 큰 원의 현 AB",
+  "steps": [
+    {
+      "id": "O",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "O",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        -8,
+        6
+      ],
+      "label": "A",
+      "labelPosition": "top-left"
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        8,
+        6
+      ],
+      "label": "B",
+      "labelPosition": "top-right"
+    },
+    {
+      "id": "M",
+      "type": "point",
+      "coords": [
+        0,
+        6
+      ],
+      "label": "M",
+      "labelPosition": "top"
+    },
+    {
+      "id": "cInner",
+      "type": "circle",
+      "center": "O",
+      "radius": 6,
+      "style": "solid"
+    },
+    {
+      "id": "cOuter",
+      "type": "circle",
+      "center": "O",
+      "radius": 10,
+      "style": "solid"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "OM",
+      "type": "segment",
+      "from": "O",
+      "to": "M",
+      "style": "dashed",
+      "strokeWidth": 1.2
+    },
+    {
+      "id": "mM",
+      "type": "angleMark",
+      "vertex": "M",
+      "ray1": "O",
+      "ray2": "B",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q16-solution",
+  "targetFigure": "solution",
+  "canvas": {
+    "width": 400,
+    "height": 320,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "cos 30도 = AD/AO => AO = 6",
+  "sourceConditions": [
+    "AD = 5.2",
+    "OD = 3",
+    "AO = 6",
+    "OAD = 30 deg"
+  ],
+  "newVisualInformation": "직각삼각형 ADO와 반지름 AO = 6 계산",
+  "steps": [
+    {
+      "id": "O",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "O",
+      "labelPosition": "center"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        0,
+        6
+      ],
+      "label": "A",
+      "labelPosition": "top"
+    },
+    {
+      "id": "D",
+      "type": "point",
+      "coords": [
+        -2.6,
+        1.5
+      ],
+      "label": "D",
+      "labelPosition": "left"
+    },
+    {
+      "id": "c1",
+      "type": "circle",
+      "center": "O",
+      "radius": 6,
+      "style": "solid"
+    },
+    {
+      "id": "AO",
+      "type": "segment",
+      "from": "A",
+      "to": "O",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "AD",
+      "type": "segment",
+      "from": "A",
+      "to": "D",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "OD",
+      "type": "segment",
+      "from": "O",
+      "to": "D",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "mD",
+      "type": "angleMark",
+      "vertex": "D",
+      "ray1": "A",
+      "ray2": "O",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

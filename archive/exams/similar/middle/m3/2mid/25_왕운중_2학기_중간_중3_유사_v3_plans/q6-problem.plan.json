@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q06-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 420,
+    "height": 300,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "AB=6, BC=4, B=135도인 삼각형 ABC의 넓이",
+  "sourceConditions": [
+    "AB = 6",
+    "BC = 4",
+    "B = 135 deg"
+  ],
+  "newVisualInformation": "둔각 135도를 갖는 삼각형 ABC",
+  "steps": [
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "B",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        4,
+        0
+      ],
+      "label": "C",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        -4.24,
+        4.24
+      ],
+      "label": "A",
+      "labelPosition": "top-left"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "BC",
+      "type": "segment",
+      "from": "B",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "AC",
+      "type": "segment",
+      "from": "A",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    }
+  ]
+}

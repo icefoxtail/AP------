@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q21-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 420,
+    "height": 300,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "AB=8, BC=10인 삼각형 ABC에서 sin B=3/5",
+  "sourceConditions": [
+    "AB = 8",
+    "BC = 10",
+    "sin B = 0.6"
+  ],
+  "newVisualInformation": "주어진 두 변과 끼인각의 사인값을 갖는 삼각형 ABC",
+  "steps": [
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "B",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        10,
+        0
+      ],
+      "label": "C",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        6.4,
+        4.8
+      ],
+      "label": "A",
+      "labelPosition": "top"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "BC",
+      "type": "segment",
+      "from": "B",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "AC",
+      "type": "segment",
+      "from": "A",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q08-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 420,
+    "height": 300,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "AB=6sqrt(2), BC=14, B=45도인 삼각형 ABC에서",
+  "sourceConditions": [
+    "AB = 8.49",
+    "BC = 14",
+    "B = 45 deg",
+    "H = (6, 0)"
+  ],
+  "newVisualInformation": "변 BC에 수선의 발 H를 내린 삼각형 ABC",
+  "steps": [
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "B",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        14,
+        0
+      ],
+      "label": "C",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        6,
+        6
+      ],
+      "label": "A",
+      "labelPosition": "top-left"
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "coords": [
+        6,
+        0
+      ],
+      "label": "H",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "BC",
+      "type": "segment",
+      "from": "B",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "AC",
+      "type": "segment",
+      "from": "A",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "AH",
+      "type": "segment",
+      "from": "A",
+      "to": "H",
+      "style": "dashed",
+      "strokeWidth": 1.2
+    },
+    {
+      "id": "mH",
+      "type": "angleMark",
+      "vertex": "H",
+      "ray1": "A",
+      "ray2": "C",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

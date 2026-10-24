@@ -1,0 +1,148 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q16-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 400,
+    "height": 320,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "OD=OE=OF이고 AB=6sqrt(3)일 때 원 둘레",
+  "sourceConditions": [
+    "Center O = (0, 0)",
+    "Equilateral triangle ABC",
+    "OD = OE = OF = 3"
+  ],
+  "newVisualInformation": "세 변에 내린 수선의 길이가 같은 원과 삼각형",
+  "steps": [
+    {
+      "id": "O",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "O",
+      "labelPosition": "center"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        0,
+        6
+      ],
+      "label": "A",
+      "labelPosition": "top"
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        -5.2,
+        -3
+      ],
+      "label": "B",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        5.2,
+        -3
+      ],
+      "label": "C",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "D",
+      "type": "point",
+      "coords": [
+        -2.6,
+        1.5
+      ],
+      "label": "D",
+      "labelPosition": "left"
+    },
+    {
+      "id": "E",
+      "type": "point",
+      "coords": [
+        0,
+        -3
+      ],
+      "label": "E",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "coords": [
+        2.6,
+        1.5
+      ],
+      "label": "F",
+      "labelPosition": "right"
+    },
+    {
+      "id": "c1",
+      "type": "circle",
+      "center": "O",
+      "radius": 6,
+      "style": "solid"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "BC",
+      "type": "segment",
+      "from": "B",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "CA",
+      "type": "segment",
+      "from": "C",
+      "to": "A",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "OD",
+      "type": "segment",
+      "from": "O",
+      "to": "D",
+      "style": "dashed",
+      "strokeWidth": 1.2
+    },
+    {
+      "id": "OE",
+      "type": "segment",
+      "from": "O",
+      "to": "E",
+      "style": "dashed",
+      "strokeWidth": 1.2
+    },
+    {
+      "id": "OF",
+      "type": "segment",
+      "from": "O",
+      "to": "F",
+      "style": "dashed",
+      "strokeWidth": 1.2
+    }
+  ]
+}

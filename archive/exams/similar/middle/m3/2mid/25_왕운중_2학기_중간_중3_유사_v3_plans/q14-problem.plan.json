@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q14-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 400,
+    "height": 320,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "원의 중심에서 현에 내린 수선의 발을 M이라 하자",
+  "sourceConditions": [
+    "Center O = (0, 0)",
+    "Radius = 10",
+    "Chord AB",
+    "OM perp AB"
+  ],
+  "newVisualInformation": "현의 수직이등분선 증명 기본 도형",
+  "steps": [
+    {
+      "id": "O",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "O",
+      "labelPosition": "top"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        -8,
+        -6
+      ],
+      "label": "A",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        8,
+        -6
+      ],
+      "label": "B",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "M",
+      "type": "point",
+      "coords": [
+        0,
+        -6
+      ],
+      "label": "M",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "c1",
+      "type": "circle",
+      "center": "O",
+      "radius": 10,
+      "style": "solid"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "OM",
+      "type": "segment",
+      "from": "O",
+      "to": "M",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "mM",
+      "type": "angleMark",
+      "vertex": "M",
+      "ray1": "O",
+      "ray2": "B",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

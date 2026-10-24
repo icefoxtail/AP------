@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q13-solution",
+  "targetFigure": "solution",
+  "canvas": {
+    "width": 400,
+    "height": 320,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "OA = sqrt(6^2 + 8^2) = 10",
+  "sourceConditions": [
+    "AH = 8",
+    "OH = 6",
+    "OA = 10"
+  ],
+  "newVisualInformation": "직각삼각형 OAH와 피타고라스 정리",
+  "steps": [
+    {
+      "id": "O",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "O",
+      "labelPosition": "top"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        -8,
+        -6
+      ],
+      "label": "A",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        8,
+        -6
+      ],
+      "label": "B",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "coords": [
+        0,
+        -6
+      ],
+      "label": "H",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "c1",
+      "type": "circle",
+      "center": "O",
+      "radius": 10,
+      "style": "solid"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.2
+    },
+    {
+      "id": "OH",
+      "type": "segment",
+      "from": "O",
+      "to": "H",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "AH",
+      "type": "segment",
+      "from": "A",
+      "to": "H",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "OA",
+      "type": "segment",
+      "from": "O",
+      "to": "A",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "mH",
+      "type": "angleMark",
+      "vertex": "H",
+      "ray1": "O",
+      "ray2": "B",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

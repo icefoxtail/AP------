@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q14-solution",
+  "targetFigure": "solution",
+  "canvas": {
+    "width": 400,
+    "height": 320,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "직각삼각형의 합동 조건에 의해 RHS 합동",
+  "sourceConditions": [
+    "OA = OB = 10",
+    "OM common",
+    "OMA = OMB = 90 deg"
+  ],
+  "newVisualInformation": "보조선 OA, OB로 구성된 RHS 합동 직각삼각형 쌍",
+  "steps": [
+    {
+      "id": "O",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "O",
+      "labelPosition": "top"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        -8,
+        -6
+      ],
+      "label": "A",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        8,
+        -6
+      ],
+      "label": "B",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "M",
+      "type": "point",
+      "coords": [
+        0,
+        -6
+      ],
+      "label": "M",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "c1",
+      "type": "circle",
+      "center": "O",
+      "radius": 10,
+      "style": "solid"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "OM",
+      "type": "segment",
+      "from": "O",
+      "to": "M",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "OA",
+      "type": "segment",
+      "from": "O",
+      "to": "A",
+      "style": "dashed",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "OB",
+      "type": "segment",
+      "from": "O",
+      "to": "B",
+      "style": "dashed",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "mM",
+      "type": "angleMark",
+      "vertex": "M",
+      "ray1": "O",
+      "ray2": "B",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

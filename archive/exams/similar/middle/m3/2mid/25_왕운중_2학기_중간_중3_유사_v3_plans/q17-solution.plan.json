@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q17-solution",
+  "targetFigure": "solution",
+  "canvas": {
+    "width": 400,
+    "height": 320,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "PB = PA = 3, BQ = 4, QC = QB = 4",
+  "sourceConditions": [
+    "PA = 3",
+    "PB = 3",
+    "BQ = 4",
+    "QC = 4"
+  ],
+  "newVisualInformation": "접선의 성질 PA=PB, QB=QC 관계 시각화",
+  "steps": [
+    {
+      "id": "O",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "O",
+      "labelPosition": "center"
+    },
+    {
+      "id": "P",
+      "type": "point",
+      "coords": [
+        -8,
+        -6
+      ],
+      "label": "P",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "Q",
+      "type": "point",
+      "coords": [
+        -1,
+        -6
+      ],
+      "label": "Q",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        -6,
+        0
+      ],
+      "label": "A",
+      "labelPosition": "left"
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        -5,
+        -6
+      ],
+      "label": "B",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        2,
+        -5.6
+      ],
+      "label": "C",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "c1",
+      "type": "circle",
+      "center": "O",
+      "radius": 6,
+      "style": "solid"
+    },
+    {
+      "id": "PA",
+      "type": "segment",
+      "from": "P",
+      "to": "A",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "PB",
+      "type": "segment",
+      "from": "P",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "BQ",
+      "type": "segment",
+      "from": "B",
+      "to": "Q",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "QC",
+      "type": "segment",
+      "from": "Q",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 2.0
+    }
+  ]
+}

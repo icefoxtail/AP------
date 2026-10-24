@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q01-solution",
+  "targetFigure": "solution",
+  "canvas": {
+    "width": 400,
+    "height": 300,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "cos A = AB/AC = 5/13",
+  "sourceConditions": [
+    "AB = 5",
+    "BC = 12",
+    "AC = 13",
+    "cos A = 5/13"
+  ],
+  "newVisualInformation": "각 A의 이웃변 AB와 빗변 AC의 비율 시각화",
+  "steps": [
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "B",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "C",
+      "type": "point",
+      "coords": [
+        12,
+        0
+      ],
+      "label": "C",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        0,
+        5
+      ],
+      "label": "A",
+      "labelPosition": "top-left"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "BC",
+      "type": "segment",
+      "from": "B",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 1.2
+    },
+    {
+      "id": "AC",
+      "type": "segment",
+      "from": "A",
+      "to": "C",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "mB",
+      "type": "angleMark",
+      "vertex": "B",
+      "ray1": "A",
+      "ray2": "C",
+      "size": 12,
+      "rightAngle": true
+    }
+  ]
+}

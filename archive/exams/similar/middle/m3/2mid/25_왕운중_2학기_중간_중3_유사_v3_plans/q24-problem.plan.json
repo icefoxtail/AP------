@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q24-problem",
+  "targetFigure": "problem",
+  "canvas": {
+    "width": 420,
+    "height": 300,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "600m 높이에 떠 있는 열기구 P에서 두 지점 A, B",
+  "sourceConditions": [
+    "P = (0, 600)",
+    "H = (0, 0)",
+    "Depression 35 deg, 42 deg"
+  ],
+  "newVisualInformation": "열기구 P와 지면의 두 지점 A, B의 부각",
+  "steps": [
+    {
+      "id": "P",
+      "type": "point",
+      "coords": [
+        0,
+        6
+      ],
+      "label": "P",
+      "labelPosition": "top"
+    },
+    {
+      "id": "H",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "H",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        -8.58,
+        0
+      ],
+      "label": "A",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        6.66,
+        0
+      ],
+      "label": "B",
+      "labelPosition": "bottom-right"
+    },
+    {
+      "id": "PH",
+      "type": "segment",
+      "from": "P",
+      "to": "H",
+      "style": "dashed",
+      "strokeWidth": 1.2
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "PA",
+      "type": "segment",
+      "from": "P",
+      "to": "A",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "PB",
+      "type": "segment",
+      "from": "P",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.5
+    },
+    {
+      "id": "mH",
+      "type": "angleMark",
+      "vertex": "H",
+      "ray1": "P",
+      "ray2": "B",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q20-solution",
+  "targetFigure": "solution",
+  "canvas": {
+    "width": 420,
+    "height": 320,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "cos 75도 = (sqrt(6) - sqrt(2))/4",
+  "sourceConditions": [
+    "AE = 4sqrt(3)",
+    "EF = 4",
+    "AF = 8",
+    "Height split"
+  ],
+  "newVisualInformation": "선분 AE와 EF의 수직 투영 성분 분해",
+  "steps": [
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "A",
+      "labelPosition": "bottom-left"
+    },
+    {
+      "id": "E",
+      "type": "point",
+      "coords": [
+        4.9,
+        4.9
+      ],
+      "label": "E",
+      "labelPosition": "top"
+    },
+    {
+      "id": "F",
+      "type": "point",
+      "coords": [
+        7.7,
+        2.1
+      ],
+      "label": "F",
+      "labelPosition": "right"
+    },
+    {
+      "id": "AE",
+      "type": "segment",
+      "from": "A",
+      "to": "E",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "EF",
+      "type": "segment",
+      "from": "E",
+      "to": "F",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "AF",
+      "type": "segment",
+      "from": "A",
+      "to": "F",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "mE",
+      "type": "angleMark",
+      "vertex": "E",
+      "ray1": "A",
+      "ray2": "F",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}

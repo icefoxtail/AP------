@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "construction-spike-v1",
+  "planId": "wangun-m3-v3-q23-solution",
+  "targetFigure": "solution",
+  "canvas": {
+    "width": 400,
+    "height": 320,
+    "padding": 35
+  },
+  "coordinateSystem": {
+    "origin": "bottom-left",
+    "scale": "auto"
+  },
+  "sourceQuote": "BM = sqrt(10^2 - 6^2) = 8, AB = 16",
+  "sourceConditions": [
+    "OM = 6",
+    "OB = 10",
+    "BM = 8",
+    "Area = 48"
+  ],
+  "newVisualInformation": "삼각형 OAB와 직각삼각형 OMB의 피타고라스 관계",
+  "steps": [
+    {
+      "id": "O",
+      "type": "point",
+      "coords": [
+        0,
+        0
+      ],
+      "label": "O",
+      "labelPosition": "bottom"
+    },
+    {
+      "id": "A",
+      "type": "point",
+      "coords": [
+        -8,
+        6
+      ],
+      "label": "A",
+      "labelPosition": "top-left"
+    },
+    {
+      "id": "B",
+      "type": "point",
+      "coords": [
+        8,
+        6
+      ],
+      "label": "B",
+      "labelPosition": "top-right"
+    },
+    {
+      "id": "M",
+      "type": "point",
+      "coords": [
+        0,
+        6
+      ],
+      "label": "M",
+      "labelPosition": "top"
+    },
+    {
+      "id": "cInner",
+      "type": "circle",
+      "center": "O",
+      "radius": 6,
+      "style": "dashed"
+    },
+    {
+      "id": "cOuter",
+      "type": "circle",
+      "center": "O",
+      "radius": 10,
+      "style": "dashed"
+    },
+    {
+      "id": "AB",
+      "type": "segment",
+      "from": "A",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 2.0
+    },
+    {
+      "id": "OM",
+      "type": "segment",
+      "from": "O",
+      "to": "M",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "OA",
+      "type": "segment",
+      "from": "O",
+      "to": "A",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "OB",
+      "type": "segment",
+      "from": "O",
+      "to": "B",
+      "style": "solid",
+      "strokeWidth": 1.8
+    },
+    {
+      "id": "mM",
+      "type": "angleMark",
+      "vertex": "M",
+      "ray1": "O",
+      "ray2": "B",
+      "size": 10,
+      "rightAngle": true
+    }
+  ]
+}
