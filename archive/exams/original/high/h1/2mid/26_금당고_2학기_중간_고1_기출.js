@@ -401,6 +401,10 @@ window.questionBank = [
     "curriculum": "2022",
     "tagConfidence": "high",
     "tagStatus": "reviewed_pass",
+    "solutionImage": "assets/images/26_금당고_2학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "직선 4x+3y-2=0에 수직이고 점 P(-4, 1)을 지나는 직선은 x=4일 때 y=7이므로 a=7이다.",
+    "solutionImageCaption": "직선 4x+3y-2=0에 수직이고 점 P(-4, 1)을 지나는 직선은 x=4일 때 y=7이므로 a=7이다.",
+    "solutionImageSize": "full",
   },
   {
     "id": 8,
