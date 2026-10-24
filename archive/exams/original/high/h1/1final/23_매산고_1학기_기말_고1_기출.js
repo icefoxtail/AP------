@@ -32,7 +32,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/23_매산고_1학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "두 점 A, B를 잇는 선분의 길이는 5√2이다.",
+    "solutionImageCaption": "두 점 A, B를 잇는 선분의 길이는 5√2이다.",
+    "solutionImageSize": "full"
   },
                     {
     "id": 2,
@@ -136,7 +140,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
     "subUnit": "삼각형의 좌표와 무게중심",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "삼각형 ABC의 두 중선과 무게중심 G(2,4)",
+    "solutionImageCaption": "삼각형 ABC의 두 중선과 무게중심 G(2,4)",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -169,7 +177,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_1학기_기말_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "합 AP²+BP²이 최소가 되는 점 P(-4, 0)은 선분 AB의 중점이다.",
+    "solutionImageCaption": "합 AP²+BP²이 최소가 되는 점 P(-4, 0)은 선분 AB의 중점이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -494,7 +506,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_매산고_1학기_기말_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "선분 AB를 3:1로 내분하는 점 P(2, 2)와 구한 두 점 A(14, -1), B(-2, 3)",
+    "solutionImageCaption": "선분 AB를 3:1로 내분하는 점 P(2, 2)와 구한 두 점 A(14, -1), B(-2, 3)",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,

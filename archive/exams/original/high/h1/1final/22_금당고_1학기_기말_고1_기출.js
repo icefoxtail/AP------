@@ -270,7 +270,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_금당고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "x축 위의 점 P(7,0)에서 두 점 A, B까지의 거리가 같다",
+    "solutionImageCaption": "x축 위의 점 P(7,0)에서 두 점 A, B까지의 거리가 같다",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

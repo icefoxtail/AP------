@@ -239,7 +239,11 @@ window.questionBank = [
       "$4$"
     ],
     "answer": "②",
-    "solution": "완전제곱식으로 바꾸어 꼭짓점을 확인한다.\n$y=x^2-4x+5$\n$=(x^2-4x+4)+1$\n$=(x-2)^2+1$이다.\n$(x-2)^2\\ge0$이므로\n$y\\ge1$이다.\n$x=2$일 때 $y=1$이므로 최솟값은 $1$이다.\n따라서 정답은 ②이다."
+    "solution": "완전제곱식으로 바꾸어 꼭짓점을 확인한다.\n$y=x^2-4x+5$\n$=(x^2-4x+4)+1$\n$=(x-2)^2+1$이다.\n$(x-2)^2\\ge0$이므로\n$y\\ge1$이다.\n$x=2$일 때 $y=1$이므로 최솟값은 $1$이다.\n따라서 정답은 ②이다.",
+    "solutionImage": "assets/images/23_금당고_1학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "꼭짓점 V(2,1)에서 최솟값 1을 갖는다.",
+    "solutionImageCaption": "꼭짓점 V(2,1)에서 최솟값 1을 갖는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,

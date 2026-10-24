@@ -65,7 +65,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "x축 위에서 A, B와 같은 거리에 있는 점 P",
+    "solutionImageCaption": "x축 위에서 A, B와 같은 거리에 있는 점 P",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,

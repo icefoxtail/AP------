@@ -32,7 +32,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-TRIANGLE_CENTROID_AREA",
     "subUnit": "삼각형의 좌표와 무게중심",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "삼각형 ABC의 두 중선이 만나는 점이 무게중심 G(2,1)이다.",
+    "solutionImageCaption": "삼각형 ABC의 두 중선이 만나는 점이 무게중심 G(2,1)이다.",
+    "solutionImageSize": "full"
   },
                     {
     "id": 2,
@@ -104,7 +108,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-GEOMETRY_EQUATION",
     "subUnit": "도형의 방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_효천고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "원점 O와 A(2,5), B(4,3)를 꼭짓점으로 하는 삼각형 OAB의 넓이는 7이다.",
+    "solutionImageCaption": "원점 O와 A(2,5), B(4,3)를 꼭짓점으로 하는 삼각형 OAB의 넓이는 7이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,

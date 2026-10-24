@@ -447,7 +447,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "x축과 만나는 점 P, Q와 꼭짓점 V(6,-4)",
+    "solutionImageCaption": "x축과 만나는 점 P, Q와 꼭짓점 V(6,-4)",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -489,7 +493,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "t=x^2-2x로 놓으면 -1≤t≤3에서 y=-t^2-t+4이고, 꼭짓점 V에서 최댓값, 끝점 B에서 최솟값을 갖는다.",
+    "solutionImageCaption": "t=x^2-2x로 놓으면 -1≤t≤3에서 y=-t^2-t+4이고, 꼭짓점 V에서 최댓값, 끝점 B에서 최솟값을 갖는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -650,7 +658,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "a=0일 때 점 P(0,2)에서 포물선에 그은 두 접선",
+    "solutionImageCaption": "a=0일 때 점 P(0,2)에서 포물선에 그은 두 접선",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,
@@ -833,7 +845,11 @@ window.questionBank = [
     "originalCategory": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "choices": []
+    "choices": [],
+    "solutionImage": "assets/images/22_매산여고_1학기_중간_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "0≤x≤4에서 f(x)는 x=3에서 최대 5, x=0에서 최소 -4이다.",
+    "solutionImageCaption": "0≤x≤4에서 f(x)는 x=3에서 최대 5, x=0에서 최소 -4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,

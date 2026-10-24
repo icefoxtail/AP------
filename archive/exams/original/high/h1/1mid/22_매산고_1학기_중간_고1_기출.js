@@ -291,7 +291,11 @@ window.questionBank = [
       "8"
     ],
     "answer": "⑤",
-    "solution": "교점의 $x$좌표는 $x^2-4x+3=2x-m+1$, 즉 $x^2-6x+(m+2)=0$의 실근이다. 만나지 않으려면 판별식 $36-4(m+2)<0$이어야 하므로 $m>7$. 최소 자연수는 $8$이므로 정답은 ⑤이다."
+    "solution": "교점의 $x$좌표는 $x^2-4x+3=2x-m+1$, 즉 $x^2-6x+(m+2)=0$의 실근이다. 만나지 않으려면 판별식 $36-4(m+2)<0$이어야 하므로 $m>7$. 최소 자연수는 $8$이므로 정답은 ⑤이다.",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "m=7이면 직선이 점 B에서 접하고, m=8이면 만나지 않는다.",
+    "solutionImageCaption": "m=7이면 직선이 점 B에서 접하고, m=8이면 만나지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
@@ -457,7 +461,11 @@ window.questionBank = [
       "4"
     ],
     "answer": "③",
-    "solution": "$f(a)-f(b)=(a-b)(a+b+4)=2b-2a=-2(a-b)$.\n$ a\\ne b$이므로 $a+b=-6$이다.\n두 식을 더하면 $a^2+b^2+4(a+b)-8=2(a+b)$이므로 $a^2+b^2=20$이다.\n따라서 $ab=\\frac{(a+b)^2-(a^2+b^2)}2=8$이다.\n$a,b$는 $t^2+6t+8=(t+2)(t+4)=0$의 두 근 $-4,-2$이므로 조건을 만족하는 서로 다른 실수가 실제로 존재한다.\n구하는 함수는 $y=x^2+2(a+b)x+4ab=x^2-12x+32=(x-6)^2-4$이므로 최솟값은 $-4$, 정답은 ③이다."
+    "solution": "$f(a)-f(b)=(a-b)(a+b+4)=2b-2a=-2(a-b)$.\n$ a\\ne b$이므로 $a+b=-6$이다.\n두 식을 더하면 $a^2+b^2+4(a+b)-8=2(a+b)$이므로 $a^2+b^2=20$이다.\n따라서 $ab=\\frac{(a+b)^2-(a^2+b^2)}2=8$이다.\n$a,b$는 $t^2+6t+8=(t+2)(t+4)=0$의 두 근 $-4,-2$이므로 조건을 만족하는 서로 다른 실수가 실제로 존재한다.\n구하는 함수는 $y=x^2+2(a+b)x+4ab=x^2-12x+32=(x-6)^2-4$이므로 최솟값은 $-4$, 정답은 ③이다.",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "y=x^2-12x+32의 꼭짓점에서 최솟값 -4",
+    "solutionImageCaption": "y=x^2-12x+32의 꼭짓점에서 최솟값 -4",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -501,7 +509,11 @@ window.questionBank = [
       "$-\\frac{23}{4}$"
     ],
     "answer": "①",
-    "solution": "$t=x^2-2x=(x-1)^2-1$로 놓으면 $-1\\le x\\le1$에서 $-1\\le t\\le3$이다. 함수값은 $-t^2-t+4=-(t+\\frac12)^2+\\frac{17}{4}$이므로 최댓값 $M=\\frac{17}{4}$이다. 아래로 열린 이차함수이므로 구간 끝에서 최솟값을 비교하면 $t=-1$에서 $4$, $t=3$에서 $-8$이어서 $m=-8$. 따라서 $M+m=\\frac{17}{4}-8=-\\frac{15}{4}$이고 정답은 ①이다."
+    "solution": "$t=x^2-2x=(x-1)^2-1$로 놓으면 $-1\\le x\\le1$에서 $-1\\le t\\le3$이다. 함수값은 $-t^2-t+4=-(t+\\frac12)^2+\\frac{17}{4}$이므로 최댓값 $M=\\frac{17}{4}$이다. 아래로 열린 이차함수이므로 구간 끝에서 최솟값을 비교하면 $t=-1$에서 $4$, $t=3$에서 $-8$이어서 $m=-8$. 따라서 $M+m=\\frac{17}{4}-8=-\\frac{15}{4}$이고 정답은 ①이다.",
+    "solutionImage": "assets/images/22_매산고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "t=x²-2x로 놓으면 -1≤t≤3에서 최댓값은 꼭짓점, 최솟값은 t=3일 때이다.",
+    "solutionImageCaption": "t=x²-2x로 놓으면 -1≤t≤3에서 최댓값은 꼭짓점, 최솟값은 t=3일 때이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,

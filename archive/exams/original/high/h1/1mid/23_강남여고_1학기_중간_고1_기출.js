@@ -440,7 +440,11 @@ window.questionBank = [
     "rpmL1": "방정식과 부등식",
     "rpmL2": "이차방정식",
     "rpmL3": "이차방정식의 근",
-    "rpmL4": "판별식"
+    "rpmL4": "판별식",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "a=-3, a=1 일 때 그래프가 x축에 접한다.",
+    "solutionImageCaption": "a=-3, a=1 일 때 그래프가 x축에 접한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
@@ -527,7 +531,11 @@ window.questionBank = [
     "rpmL1": "방정식과 부등식",
     "rpmL2": "이차방정식과 이차함수",
     "rpmL3": "최대·최소",
-    "rpmL4": "조건식 활용"
+    "rpmL4": "조건식 활용",
+    "solutionImage": "assets/images/23_강남여고_1학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "a=3일 때 직선과 교점 P(1, 1)을 지나고, 꼭짓점 V의 y좌표 3/4가 최솟값이다.",
+    "solutionImageCaption": "a=3일 때 직선과 교점 P(1, 1)을 지나고, 꼭짓점 V의 y좌표 3/4가 최솟값이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
