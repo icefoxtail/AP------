@@ -4,6 +4,7 @@ import {pythonWorker} from './worker.mjs';
 import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
+import * as figure from './number-line-v1.mjs';
 
 // A quadratic inequality solution drawn as a fixed chain (one author plan, quadratic-inequality-chain-v1): the quadratic graph in the solution's own
 // variable, then a number line of the solution set (number-line-v1 panel: the interval as a header row, the set on the axis, optional integer points).
@@ -19,6 +20,8 @@ const MAX_INTEGER_POINTS=25;
 
 // --- exact numbers: rationals [n,d] (BigInt, d>0, reduced) and p+q*sqrt(s) with s a squarefree integer (s=1: rational) -------------------------
 const bad=code=>{throw Error(code);};
+// Exact-number helpers shared with number-line-v1.mjs (the standalone number-line figure).
+export {rat,add,sub,mul,div,sgn,ZERO,parseRat,gcd,checkVariable,esc,overlaps,isDomainCode,Stop};
 const gcd=(a,b)=>{a=a<0n?-a:a;b=b<0n?-b:b;while(b)[a,b]=[b,a%b];return a;};
 const rat=(n,d=1n)=>{if(d===0n)bad('INEQUALITY_NUMERIC_SCOPE');if(d<0n){n=-n;d=-d;}const g=gcd(n,d)||1n;return [n/g,d/g];};
 const add=(a,b)=>rat(a[0]*b[1]+b[0]*a[1],a[1]*b[1]),sub=(a,b)=>add(a,[-b[0],b[1]]),mul=(a,b)=>rat(a[0]*b[0],a[1]*b[1]),div=(a,b)=>rat(a[0]*b[1],a[1]*b[0]);
@@ -198,7 +201,9 @@ const DISPLAY='\\displaystyle ';// every label TeX starts with it: a fraction is
 const END_RADIUS=5,DOT_RADIUS=3.2,TICK_HALF=6,LABEL_GAP=5,ZERO_TICK_CLEARANCE=56;
 const r6=value=>{const v=Math.round(value*1e6)/1e6;return v===0?0:v;};
 /** The panel height, known before any label is typeset (the stack is measured for its size first). */
-export const numberLinePanelSize=model=>({width:NUMBER_LINE_WIDTH,height:axisRowY(model)+END_RADIUS+LABEL_GAP+BELOW_ROW+SAFE});
+export const numberLinePanelSize=model=>model?.schemaVersion===figure.FIGURE_MODEL_VERSION?figure.figurePanelSize(model):{width:NUMBER_LINE_WIDTH,height:axisRowY(model)+END_RADIUS+LABEL_GAP+BELOW_ROW+SAFE};
+/** The exact model of a number-line panel's plan: a standalone figure (rows) or a quadratic inequality's solution set. */
+export const solveNumberLine=numberLine=>Array.isArray(numberLine?.rows)?figure.solveNumberLineFigure(numberLine):solveQuadraticInequality(numberLine);
 // Integer sizes (the Archive measures an integer intrinsic size): with integer points the dot row sits 22 above the axis, its labels above it.
 const axisRowY=model=>SAFE+HEADER_ROW+(model.integers?.length?8+INTEGER_LABEL_ROW+4+Math.ceil(DOT_RADIUS)+22:24);
 function headerOf(model){
@@ -215,6 +220,7 @@ function headerOf(model){
  */
 export function numberLineSpec(plan,model){
   if(plan?.capability!==NUMBER_LINE_CAPABILITY||!plan.numberLine)bad('NUMBER_LINE_PLAN_INVALID');
+  if(Array.isArray(plan.numberLine.rows))return figure.numberLineFigureSpec(plan,model);
   if(objectSha(solveQuadraticInequality(plan.numberLine))!==objectSha(model))bad('NUMBER_LINE_MODEL_MISMATCH');
   const ends=[model.lower,model.upper].filter(Boolean).map(e=>e.approx),ints=(model.integers??[]).map(Number);
   let lo,hi;
@@ -262,6 +268,7 @@ const overlaps=(a,b)=>a.x<b.x+b.width&&b.x<a.x+a.width&&a.y<b.y+b.height&&b.y<a.
  * bytes and the rendered layout check in Chrome. Returns the same record shape as an L1 panel (no layout repairs: a panel that does not fit fails).
  */
 export async function composeNumberLinePanel({plan,model,identity,typographyPolicy,browser}={}){
+  if(Array.isArray(plan?.numberLine?.rows))return figure.composeNumberLineFigurePanel({plan,model,identity,typographyPolicy,browser});
   const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
   const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
   const outcome=(status,detail=null)=>({schemaVersion:NUMBER_LINE_SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false,qualification:'NOT_RUN'});
