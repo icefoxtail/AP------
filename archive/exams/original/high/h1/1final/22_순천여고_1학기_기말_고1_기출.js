@@ -475,7 +475,10 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
     "subUnit": "이차부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_순천여고_1학기_기말_고1_기출/q14-solution-graph.svg",
+    "solutionImageAlt": "판별식이 0이 되는 a=-4일 때 이차함수 y=-12(x-1/2)^2의 그래프와 접점 (1/2, 0)",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,

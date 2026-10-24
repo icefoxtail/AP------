@@ -160,7 +160,11 @@ window.questionBank = [
       "$6$"
     ],
     "answer": "③",
-    "solution": "완전제곱식으로 고친다.\n$y=x^2-2x+5=(x-1)^2+4$이다.\n$(x-1)^2\\ge0$이므로 최솟값은 $4$이다.\n따라서 정답은 ③이다."
+    "solution": "완전제곱식으로 고친다.\n$y=x^2-2x+5=(x-1)^2+4$이다.\n$(x-1)^2\\ge0$이므로 최솟값은 $4$이다.\n따라서 정답은 ③이다.",
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "꼭짓점 (1,4)에서 최솟값 4를 갖는다.",
+    "solutionImageCaption": "꼭짓점 (1,4)에서 최솟값 4를 갖는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -402,7 +406,11 @@ window.questionBank = [
       "$\\dfrac{1}{2}$"
     ],
     "answer": "④",
-    "solution": "먼저 $x$축에 접하는 조건을 쓴다.\n$x^2+4ax+b=0$이 중근을 가지므로\n$(4a)^2-4b=0$, 따라서 $b=4a^2$이다.\n이제 직선 $y=2x$와 만나려면\n$x^2+(4a-2)x+4a^2=0$이 실근을 가져야 한다.\n판별식은\n$(4a-2)^2-16a^2=4-16a$이다.\n따라서 $4-16a\\ge0$이므로 $a\\le\\dfrac14$이다.\n그러므로 $a$의 최댓값은 $\\dfrac14$이고 정답은 ④이다."
+    "solution": "먼저 $x$축에 접하는 조건을 쓴다.\n$x^2+4ax+b=0$이 중근을 가지므로\n$(4a)^2-4b=0$, 따라서 $b=4a^2$이다.\n이제 직선 $y=2x$와 만나려면\n$x^2+(4a-2)x+4a^2=0$이 실근을 가져야 한다.\n판별식은\n$(4a-2)^2-16a^2=4-16a$이다.\n따라서 $4-16a\\ge0$이므로 $a\\le\\dfrac14$이다.\n그러므로 $a$의 최댓값은 $\\dfrac14$이고 정답은 ④이다.",
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "a가 최대일 때 y=x^2+x+1/4는 x축에 접하고 직선 y=2x에도 접한다",
+    "solutionImageCaption": "a가 최대일 때 y=x^2+x+1/4는 x축에 접하고 직선 y=2x에도 접한다",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -443,6 +451,10 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "식에서 $a$가 붙은 부분을 묶으면\n$y=x^2-5+a(x+1)$이다.\n따라서 $x=-1$일 때 $a$와 관계없이 $y=-4$이므로\n$P=(-1,-4)$이다.\n$P$가 꼭짓점이므로 축의 방정식은 $x=-1$이다.\n축 $x=-\\dfrac a2=-1$에서 $a=2$이다.\n따라서 함수는\n$y=x^2+2x-3=(x-1)(x+3)$이고\n두 $x$절편은 $1,-3$이다.\n그러므로\n$|\\alpha|+|\\beta|=1+3=4$이다.\n정답은 ②이다.",
+    "solutionImage": "assets/images/22_금당고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "꼭짓점 P(-1,-4)이고 x절편은 -3과 1",
+    "solutionImageCaption": "꼭짓점 P(-1,-4)이고 x절편은 -3과 1",
+    "solutionImageSize": "full",
   },
   {
     "id": 12,

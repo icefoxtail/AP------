@@ -385,7 +385,10 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
     "subUnit": "이차부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_매산고_1학기_기말_고1_기출/q11-solution-chain.svg",
+    "solutionImageAlt": "판별식 (a+3)(a-5)<0의 이차함수 그래프와 해집합 -3≤a<5를 나타낸 수직선",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

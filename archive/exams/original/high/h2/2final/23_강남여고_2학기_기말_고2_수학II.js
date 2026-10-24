@@ -436,7 +436,11 @@ window.questionBank = [
     "subUnitClassificationDepth": "complete_documented",
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/23_강남여고_2학기_기말_고2_수학II/q8-solution.svg",
+    "solutionImageAlt": "y=x^2+2x-5 위의 점 P(2, 3)에서 기울기 6인 접선",
+    "solutionImageCaption": "y=x^2+2x-5 위의 점 P(2, 3)에서 기울기 6인 접선",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,

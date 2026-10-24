@@ -579,7 +579,11 @@ window.questionBank = [
     "category": "이차함수",
     "originalCategory": "이차함수",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_매산여고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "k=1/2일 때 직선이 포물선에 접하고, k가 이보다 크면 만나지 않는다.",
+    "solutionImageCaption": "k=1/2일 때 직선이 포물선에 접하고, k가 이보다 크면 만나지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
