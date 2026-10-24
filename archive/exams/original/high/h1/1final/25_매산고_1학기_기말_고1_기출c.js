@@ -525,7 +525,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
     "subUnit": "이차방정식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_1학기_기말_고1_기출c/q15-solution.svg",
+    "solutionImageAlt": "k=7/8이면 직선 y=x+k가 y=x²-2|x|+1의 그래프와 서로 다른 네 점에서 만난다. k=3/4와 k=1일 때는 세 점이고, 네 점인 범위는 3/4<k<1이다.",
+    "solutionImageCaption": "k=7/8이면 직선 y=x+k가 y=x²-2|x|+1의 그래프와 서로 다른 네 점에서 만난다. k=3/4와 k=1일 때는 세 점이고, 네 점인 범위는 3/4<k<1이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -608,7 +612,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/25_매산고_1학기_기말_고1_기출c/q18-solution.svg",
+    "solutionImageAlt": "두 포물선은 x=-1/3, x=3에서 만나고, 그 사이에서 g의 그래프가 f의 그래프보다 위에 있어 f(x)≤g(x)의 해는 -1/3≤x≤3이다.",
+    "solutionImageCaption": "두 포물선은 x=-1/3, x=3에서 만나고, 그 사이에서 g의 그래프가 f의 그래프보다 위에 있어 f(x)≤g(x)의 해는 -1/3≤x≤3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,
