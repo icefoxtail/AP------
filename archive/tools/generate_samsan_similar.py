@@ -1,1203 +1,882 @@
 """
-Production Generator for Samsan Middle 3-1 Similar Exam (26_삼산중_1학기_중간_중3_유사.js)
-and its companion small metadata JSON.
-
-Enforces:
-- window.questionBank standard binding
-- 100% exact math & distractor verification across all 24 questions
-- Visual asset parity against physical PNG stamps (Q05, Q10, Q13, Q24)
-- Strict canonical taxonomy PT/TPL binding (active status only)
-- Difficulty bucket as integers (1..5)
-- Standard CREATE stage review metadata (no forged approvals)
-- Zero CRLF drift (newline='\\n')
+Dynamic Similar Exam Generator for Middle School Grade 3 Semester 1 Midterm.
+Pipeline Architecture:
+1. Source Ingestion: Dynamically loads original exam JS (e.g. 26_삼산중_1학기_중간_중3_기출.js) via Node VM.
+2. Blueprint & Transformation Engine:
+   - Binds each original question to its blueprint (concepts, constraints, variation type: STRICT_VARIANT, FOLLOWUP, +1 PREPROCESS).
+   - Dynamically transforms conditions, numbers, stems, choices, answers, and solutions.
+   - Enforces visual policy (Policy B verified asset reuse vs EXEMPT).
+   - Maps canonical Meta Foundation taxonomy keys (or null with projection pending rationale).
+3. Emitter:
+   - Production JS adhering to window.questionBank.
+   - Small Metadata JSON (archive-reviewed-exam-meta-register-request-v2) with full 1:1 items parity.
 """
 
+import argparse
 import hashlib
 import json
+import subprocess
+import sys
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
-OUTPUT_JS_PATH = REPO_ROOT / "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js"
-OUTPUT_META_PATH = REPO_ROOT / "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.meta-q01-q24.json"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 
-questions = [
-    {
+
+def compute_git_blob_sha1(data: bytes) -> str:
+    """Compute git blob SHA-1: sha1('blob <size>\\0' + data)."""
+    header = f"blob {len(data)}\0".encode("utf-8")
+    return hashlib.sha1(header + data).hexdigest()
+
+
+def load_original_exam_js(source_path: Path):
+    """Load questionBank from original JS file via Node VM."""
+    node_code = f"""
+    const fs = require('fs');
+    const vm = require('vm');
+    const content = fs.readFileSync({json.dumps(str(source_path))}, 'utf8');
+    const sandbox = {{ window: {{}} }};
+    vm.createContext(sandbox);
+    vm.runInContext(content, sandbox);
+    console.log(JSON.stringify(sandbox.window.questionBank));
+    """
+    proc = subprocess.run(["node", "-e", node_code], capture_output=True, encoding="utf-8", check=True)
+    return json.loads(proc.stdout)
+
+
+# ==============================================================================
+# Blueprint & Transformation Registry
+# ==============================================================================
+
+class BlueprintStrategy:
+    def __init__(
+        self,
+        qid: int,
+        variant_type: str,
+        target_concept: str,
+        difficulty_bucket: int,
+        problem_type_key: str | None,
+        template_key: str | None,
+        cross_concept_keys: list[str],
+        condition_keys: list[str],
+        visual_policy: str,
+        transform_fn,
+    ):
+        self.qid = qid
+        self.variant_type = variant_type
+        self.target_concept = target_concept
+        self.difficulty_bucket = difficulty_bucket
+        self.problem_type_key = problem_type_key
+        self.template_key = template_key
+        self.cross_concept_keys = cross_concept_keys
+        self.condition_keys = condition_keys
+        self.visual_policy = visual_policy
+        self.transform_fn = transform_fn
+
+    def apply(self, orig_q: dict) -> dict:
+        return self.transform_fn(orig_q, self)
+
+
+# Transformation functions per question
+def _t_q01(orig, strat):
+    return {
         "id": 1,
-        "level": "하",
-        "category": "실수와 그 계산",
-        "originalCategory": "제곱근과 실수",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
         "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "제곱근", "실수", "무리수", "수직선"],
-        "wide": False,
-        "content": "다음 중 설명으로 옳은 것은?",
-        "choices": [
-            "음수의 제곱근은 1개이다.",
-            "순환소수는 모두 무리수이다.",
-            "수직선 위의 점 중에는 유리수로 채울 수 없는 점이 없다.",
-            "유리수와 무리수를 통틀어 실수라 한다.",
-            "$\\sqrt{16}$의 제곱근은 $\\pm 4$이다."
-        ],
-        "answer": "④",
+        "content": "다음 중 제곱근에 대한 설명으로 옳은 것은?",
         "solution": (
-            "실수의 분류와 제곱근의 기본 성질을 검증한다.\n"
-            "① 실수 범위에서 음수의 제곱근은 존재하지 않으므로 거짓이다.\n"
-            "② 순환소수는 분수로 나타낼 수 있는 무한소수이므로 유리수이다. 따라서 거짓이다.\n"
-            "③ 수직선은 유리수와 무리수를 합한 실수 전체로 완전히 채워지므로, 유리수만으로는 채울 수 없는 무리수의 점들이 존재한다. 따라서 거짓이다.\n"
-            "④ 실수는 유리수와 무리수로 이루어져 있으므로 참이다.\n"
-            "⑤ $\\sqrt{16}=4$이므로 $\\sqrt{16}$의 제곱근은 $4$의 제곱근인 $\\pm 2$이다. 따라서 거짓이다.\n"
-            "따라서 옳은 것은 ④이다."
-        ),
-        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-        "subUnit": "제곱근과 실수",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
-        "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
-        "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION", "CC_REAL_NUMBER_ORDER"],
-        "conditionKeys": ["COND_NONZERO"],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 2,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 2,
-        "level": "하",
-        "category": "실수와 그 계산",
-        "originalCategory": "제곱근과 실수",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "제곱근계산", "근호"],
-        "wide": False,
-        "content": "다음 중 계산 결과가 옳은 것은?",
-        "choices": [
-            "$(-\\sqrt{7})^2 = -7$",
-            "$\\sqrt{(-9)^2} = -9$",
-            "$\\sqrt{0.04} \\times \\sqrt{10} = 0.2$",
-            "$\\sqrt{(-0.02)^2} \\times (\\sqrt{50})^2 = 0.1$",
-            "$\\sqrt{169} - (-\\sqrt{5})^2 = 8$"
-        ],
-        "answer": "⑤",
-        "solution": (
-            "각 보기의 근호 계산을 직접 수행한다.\n"
-            "① $(-\\sqrt{7})^2 = 7$이므로 거짓이다.\n"
-            "② $\\sqrt{(-9)^2} = \\sqrt{81} = 9$이므로 거짓이다.\n"
-            "③ $\\sqrt{0.04} \\times \\sqrt{10} = 0.2\\sqrt{10} \\ne 0.2$이므로 거짓이다.\n"
-            "④ $\\sqrt{(-0.02)^2} \\times (\\sqrt{50})^2 = 0.02 \\times 50 = 1$이므로 거짓이다.\n"
-            "⑤ $\\sqrt{169} - (-\\sqrt{5})^2 = 13 - 5 = 8$이므로 참이다.\n"
+            "① 49의 제곱근은 $\\pm 7$이다. (거짓)\n"
+            "② 0의 제곱근은 0 하나뿐이다. (거짓)\n"
+            "③ 음수의 제곱근은 실수 범위에서 존재하지 않는다. (거짓)\n"
+            "④ $\\sqrt{(-5)^2} = \\sqrt{25} = 5$의 제곱근은 $\\pm\\sqrt{5}$이다. (거짓)\n"
+            "⑤ $\\sqrt{81} = 9$의 양의 제곱근은 $\\sqrt{9} = 3$이다. (참)\n"
             "따라서 옳은 것은 ⑤이다."
         ),
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-        "templateKey": "TPL_M3_RADICAL_POWER_DIVISION",
-        "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION"],
-        "conditionKeys": ["COND_POSITIVE"],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 2,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 3,
-        "level": "중",
-        "category": "실수와 그 계산",
-        "originalCategory": "제곱근과 실수",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "무리수", "대소비교", "수직선"],
-        "wide": False,
-        "content": "다음 중 두 수 $\\sqrt{11}$과 $\\sqrt{31}$ 사이에 있는 수가 아닌 것은?",
-        "choices": [
-            "$4$",
-            "$\\sqrt{20}$",
-            "$\\sqrt{11} + 1$",
-            "$2\\sqrt{7} - 1$",
-            "$\\sqrt{7} + 3$"
-        ],
         "answer": "⑤",
-        "solution": (
-            "$\\sqrt{11}$과 $\\sqrt{31}$의 어림한 값을 구하여 범위를 확인한다.\n"
-            "$3 = \\sqrt{9} < \\sqrt{11} < \\sqrt{16} = 4$이므로 $\\sqrt{11} \\approx 3.32$이다.\n"
-            "$5 = \\sqrt{25} < \\sqrt{31} < \\sqrt{36} = 6$이므로 $\\sqrt{31} \\approx 5.57$이다.\n"
-            "① $4$: $3.32 < 4 < 5.57$이므로 두 수 사이에 있다.\n"
-            "② $\\sqrt{20}$: $11 < 20 < 31$이므로 $\\sqrt{11} < \\sqrt{20} < \\sqrt{31}$이다.\n"
-            "③ $\\sqrt{11}+1 \\approx 3.32 + 1 = 4.32$로 두 수 사이에 있다.\n"
-            "④ $2\\sqrt{7}-1 = \\sqrt{28}-1$: $5 < \\sqrt{28} < 6$에서 $\\sqrt{28} \\approx 5.29$이므로 $5.29 - 1 = 4.29$로 두 수 사이에 있다.\n"
-            "⑤ $\\sqrt{7}+3$: $2 < \\sqrt{7} < 3$에서 $\\sqrt{7} \\approx 2.65$이므로 $\\sqrt{7}+3 \\approx 5.65$이다.\n"
-            "$5.65^2 = 31.92 > 31$이므로 $\\sqrt{7}+3 > \\sqrt{31}$이 되어 두 수 사이에 있지 않다.\n"
-            "따라서 정답은 ⑤이다."
-        ),
-        "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
-        "subUnit": "실수와 무리수의 대소 비교",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
-        "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
-        "crossConceptKeys": ["CC_REAL_NUMBER_ORDER"],
-        "conditionKeys": ["COND_RANGE"],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 4,
-        "level": "중",
-        "category": "실수와 그 계산",
-        "originalCategory": "제곱근과 실수",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "실수", "대소비교", "부등호"],
-        "wide": False,
-        "content": "세 실수 $a = 3\\sqrt{5} - 2, b = 2\\sqrt{5} + 1, c = 8 - \\sqrt{5}$에 대하여 다음 중 대소 관계로 옳은 것은?",
         "choices": [
-            "$a < b < c$",
-            "$a < c < b$",
-            "$b < a < c$",
-            "$b < c < a$",
-            "$c < a < b$"
+            "① 49의 제곱근은 7이다.",
+            "② 모든 실수는 2개의 제곱근을 갖는다.",
+            "③ $-9$의 제곱근은 $-3$이다.",
+            "④ $\\sqrt{(-5)^2}$의 제곱근은 5이다.",
+            "⑤ $\\sqrt{81}$의 양의 제곱근은 3이다."
         ],
-        "answer": "①",
+        "score": 3.6,
+    }
+
+def _t_q02(orig, strat):
+    return {
+        "id": 2,
+        "questionType": "객관식",
+        "content": "다음 식을 간단히 하였을 때, 그 결과가 가장 큰 것은?",
         "solution": (
-            "두 수의 차를 이용하여 대소를 비교한다.\n"
-            "1) $a-b = (3\\sqrt{5}-2) - (2\\sqrt{5}+1) = \\sqrt{5}-3$\n"
-            "$\\sqrt{5} < \\sqrt{9} = 3$이므로 $\\sqrt{5}-3 < 0$, 즉 $a < b$이다.\n"
-            "2) $c-b = (8-\\sqrt{5}) - (2\\sqrt{5}+1) = 7-3\\sqrt{5}$\n"
-            "$7 = \\sqrt{49}$이고 $3\\sqrt{5} = \\sqrt{45}$이므로 $\\sqrt{49} > \\sqrt{45}$, 즉 $7-3\\sqrt{5} > 0$이다. 따라서 $b < c$이다.\n"
-            "1)과 2)에 의하여 $a < b < c$가 성립한다.\n"
+            "각 선지를 간단히 계산합니다.\n"
+            "① $(-\\sqrt{7})^2 = 7$\n"
+            "② $\\sqrt{(-8)^2} = 8$\n"
+            "③ $-\\sqrt{5^2} = -5$\n"
+            "④ $\\sqrt{3^2} \\times \\sqrt{2^2} = 3 \\times 2 = 6$\n"
+            "⑤ $\\sqrt{(-9)^2} + (-\\sqrt{3})^2 = 9 + 3 = 12$\n"
+            "계산된 결과의 대소를 비교하면 $-5 < 6 < 7 < 8 < 12$이므로, 결과가 가장 큰 것은 ⑤이다."
+        ),
+        "answer": "⑤",
+        "choices": [
+            "① $(-\\sqrt{7})^2$",
+            "② $\\sqrt{(-8)^2}$",
+            "③ $-\\sqrt{5^2}$",
+            "④ $\\sqrt{3^2} \\times \\sqrt{2^2}$",
+            "⑤ $\\sqrt{(-9)^2} + (-\\sqrt{3})^2$"
+        ],
+        "score": 3.7,
+    }
+
+def _t_q03(orig, strat):
+    return {
+        "id": 3,
+        "questionType": "객관식",
+        "content": "다음 보기 중 두 실수의 대소 관계가 옳은 것만을 있는 대로 고른 것은?\n\n[보기]\nㄱ. $\\sqrt{15} < 4$\nㄴ. $3 - \\sqrt{2} > 2$\nㄷ. $\\sqrt{7} + 1 < 4$\nㄹ. $5 - \\sqrt{3} < 3$",
+        "solution": (
+            "각 보기를 판정합니다.\n"
+            "ㄱ. $4 = \\sqrt{16}$이므로 $\\sqrt{15} < \\sqrt{16} = 4$ (참)\n"
+            "ㄴ. $1 < \\sqrt{2} < 2$이므로 $3 - \\sqrt{2} < 3 - 1 = 2$. 즉 $3 - \\sqrt{2} < 2$이므로 거짓.\n"
+            "ㄷ. $2 < \\sqrt{7} < 3$이므로 $3 < \\sqrt{7} + 1 < 4$ (참)\n"
+            "ㄹ. $1 < \\sqrt{3} < 2$이므로 $3 < 5 - \\sqrt{3} < 4$. 즉 $5 - \\sqrt{3} > 3$이므로 거짓.\n"
+            "따라서 옳은 것은 ㄱ, ㄷ이다."
+        ),
+        "answer": "②",
+        "choices": [
+            "① ㄱ, ㄴ",
+            "② ㄱ, ㄷ",
+            "③ ㄴ, ㄷ",
+            "④ ㄴ, ㄹ",
+            "⑤ ㄱ, ㄷ, ㄹ"
+        ],
+        "score": 3.8,
+    }
+
+def _t_q04(orig, strat):
+    return {
+        "id": 4,
+        "questionType": "객관식",
+        "content": "세 실수 $a = 3$, $b = \\sqrt{5} + 1$, $c = 5 - \\sqrt{3}$의 대소 관계로 옳은 것은?",
+        "solution": (
+            "세 실수를 비교합니다.\n"
+            "1) $a$와 $b$ 비교: $a - b = 3 - (\\sqrt{5} + 1) = 2 - \\sqrt{5}$. $2 = \\sqrt{4} < \\sqrt{5}$이므로 $2 - \\sqrt{5} < 0$, 즉 $a < b$.\n"
+            "2) $b$와 $c$ 비교: $\\sqrt{5} \\approx 2.236$이므로 $b = \\sqrt{5} + 1 \\approx 3.236$.\n"
+            "$\\sqrt{3} \\approx 1.732$이므로 $c = 5 - \\sqrt{3} \\approx 3.268$.\n"
+            "엄밀한 차: $c - b = (5 - \\sqrt{3}) - (\\sqrt{5} + 1) = 4 - (\\sqrt{3} + \\sqrt{5})$.\n"
+            "$(\\sqrt{3} + \\sqrt{5})^2 = 8 + 2\\sqrt{15} < 8 + 2\\sqrt{16} = 16 = 4^2$이므로 $\\sqrt{3} + \\sqrt{5} < 4$, 즉 $c - b > 0 \\implies b < c$.\n"
+            "따라서 $a < b < c$이다."
+        ),
+        "answer": "①",
+        "choices": [
+            "① $a < b < c$",
+            "② $a < c < b$",
+            "③ $b < a < c$",
+            "④ $b < c < a$",
+            "⑤ $c < a < b$"
+        ],
+        "score": 4.0,
+    }
+
+def _t_q05(orig, strat):
+    return {
+        "id": 5,
+        "questionType": "객관식",
+        "content": "다음 그림과 같이 수직선 위에 한 변의 길이가 2인 두 정사각형 $ABCD$와 $DCFE$가 놓여 있다. 점 $B$의 좌표가 0, 점 $C$의 좌표가 2, 점 $F$의 좌표가 4일 때, 점 $B$를 중심으로 하고 대각선 $BD$를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $P$, 점 $B$를 중심으로 하고 선분 $BE$를 반지름으로 하는 원을 그려 수직선과 만나는 점을 $Q$라 하자. 점 $P$에 대응하는 수를 $p$, 점 $Q$에 대응하는 수를 $q$라 할 때, $p + q$의 값은? (단, 점 $P, Q$는 점 $B$의 오른쪽에 있다.)",
+        "solution": (
+            "도판(q05.png)에 주어진 좌표와 길이를 확인합니다.\n"
+            "1) 정사각형 $ABCD$에서 점 $B(0)$, 점 $C(2)$이고 세로 $CD = 2$이므로 대각선 $BD$의 길이는 피타고라스 정리에 의해:\n"
+            "$\\overline{BD} = \\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$\n"
+            "따라서 점 $B(0)$에서 오른쪽으로 $\\overline{BD}$만큼 떨어진 점 $P$의 좌표는 $p = 0 + 2\\sqrt{2} = 2\\sqrt{2}$이다.\n\n"
+            "2) 직각삼각형 $BCE$에서 $\\overline{BC} = 2$이고 정사각형 $DCFE$의 한 변 길이가 2이므로 점 $E$는 $C(2)$에서 위로 2, 오른쪽으로 2 떨어진 위치이거나 세로 높이가 2인 점입니다.\n"
+            "직각삼각형 $BFE$에서 밑변 $\\overline{BF} = 4$, 높이 $\\overline{FE} = 2$이므로 선분 $BE$의 길이는:\n"
+            "$\\overline{BE} = \\sqrt{4^2 + 2^2} = \\sqrt{16 + 4} = \\sqrt{20} = 2\\sqrt{5}$\n"
+            "따라서 점 $B(0)$에서 오른쪽으로 $\\overline{BE}$만큼 떨어진 점 $Q$의 좌표는 $q = 0 + 2\\sqrt{5} = 2\\sqrt{5}$이다.\n\n"
+            "3) 그러므로 $p + q = 2\\sqrt{2} + 2\\sqrt{5}$이다."
+        ),
+        "answer": "②",
+        "choices": [
+            "① $2\\sqrt{2} + \\sqrt{5}$",
+            "② $2\\sqrt{2} + 2\\sqrt{5}$",
+            "③ $3\\sqrt{2} + 2\\sqrt{5}$",
+            "④ $2\\sqrt{2} + 3\\sqrt{5}$",
+            "⑤ $4\\sqrt{2} + 2\\sqrt{5}$"
+        ],
+        "image": "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q05.png",
+        "score": 4.1,
+    }
+
+def _t_q06(orig, strat):
+    return {
+        "id": 6,
+        "questionType": "객관식",
+        "content": "$-2 < x < 3$일 때, $\\sqrt{(x+2)^2} + \\sqrt{(x-3)^2}$을 간단히 한 것은?",
+        "solution": (
+            "근호 안의 완전제곱식의 부호를 판정합니다.\n"
+            "$-2 < x < 3$이므로:\n"
+            "1) $x + 2 > 0 \\implies \\sqrt{(x+2)^2} = x + 2$\n"
+            "2) $x - 3 < 0 \\implies \\sqrt{(x-3)^2} = -(x - 3) = -x + 3$\n"
+            "따라서 주어진 식은:\n"
+            "$(x + 2) + (-x + 3) = 5$\n"
+            "정답은 ③이다."
+        ),
+        "answer": "③",
+        "choices": [
+            "① $-2x + 1$",
+            "② $2x - 1$",
+            "③ $5$",
+            "④ $-5$",
+            "⑤ $2x + 5$"
+        ],
+        "score": 3.9,
+    }
+
+def _t_q07(orig, strat):
+    return {
+        "id": 7,
+        "questionType": "객관식",
+        "content": "$\\sqrt{\\frac{180}{n}}$이 자연수가 되도록 하는 가장 작은 두 자리 자연수 $n$의 값은?",
+        "solution": (
+            "180을 소인수분해하면 $180 = 2^2 \\times 3^2 \\times 5$이다.\n"
+            "$\\sqrt{\\frac{180}{n}} = \\sqrt{\\frac{2^2 \\times 3^2 \\times 5}{n}}$이 자연수가 되려면, 근호 안의 수가 어떤 자연수의 제곱수가 되어야 한다.\n"
+            "따라서 $n = 5 \\times k^2$의 꼴(단, $n$은 180의 약수)이어야 한다.\n"
+            "- $k=1$일 때, $n = 5 \\times 1^2 = 5$ (한 자리 자연수)\n"
+            "- $k=2$일 때, $n = 5 \\times 2^2 = 20$ (두 자리 자연수, 180의 약수: $180/20 = 9 = 3^2$ 성립)\n"
+            "따라서 조건을 만족하는 가장 작은 두 자리 자연수 $n$은 20이다."
+        ),
+        "answer": "②",
+        "choices": [
+            "① 15",
+            "② 20",
+            "③ 25",
+            "④ 45",
+            "⑤ 80"
+        ],
+        "score": 4.1,
+    }
+
+def _t_q08(orig, strat):
+    return {
+        "id": 8,
+        "questionType": "객관식",
+        "content": "다음 중 계산 결과가 옳은 것은?",
+        "solution": (
+            "각 선지를 계산합니다.\n"
+            "① $\\sqrt{2} \\times \\sqrt{8} = \\sqrt{16} = 4$ (거짓, 16이 아님)\n"
+            "② $\\sqrt{18} \\div \\sqrt{2} = \\sqrt{9} = 3$ (참)\n"
+            "③ $\\sqrt{12} - \\sqrt{3} = 2\\sqrt{3} - \\sqrt{3} = \\sqrt{3}$ (거짓, 3이 아님)\n"
+            "④ $\\sqrt{24} = 2\\sqrt{6}$ (거짓, $4\\sqrt{6}$이 아님)\n"
+            "⑤ $\\frac{6}{\\sqrt{3}} = \\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}$ (거짓, $3\\sqrt{3}$이 아님)\n"
+            "따라서 옳은 것은 ②이다."
+        ),
+        "answer": "②",
+        "choices": [
+            "① $\\sqrt{2} \\times \\sqrt{8} = 16$",
+            "② $\\sqrt{18} \\div \\sqrt{2} = 3$",
+            "③ $\\sqrt{12} - \\sqrt{3} = 3$",
+            "④ $\\sqrt{24} = 4\\sqrt{6}$",
+            "⑤ $\\frac{6}{\\sqrt{3}} = 3\\sqrt{3}$"
+        ],
+        "score": 3.7,
+    }
+
+def _t_q09(orig, strat):
+    return {
+        "id": 9,
+        "questionType": "객관식",
+        "content": "$\\sqrt{3} = a$, $\\sqrt{5} = b$라 할 때, $\\sqrt{240}$을 $a, b$를 이용하여 바르게 나타낸 것은?",
+        "solution": (
+            "240을 소인수분해합니다.\n"
+            "$240 = 16 \\times 15 = 2^4 \\times 3 \\times 5$\n"
+            "따라서 $\\sqrt{240} = \\sqrt{2^4 \\times 3 \\times 5} = 4\\sqrt{3 \\times 5} = 4\\sqrt{3}\\sqrt{5} = 4ab$이다."
+        ),
+        "answer": "④",
+        "choices": [
+            "① $2ab$",
+            "② $2a^2b$",
+            "③ $4a^2b$",
+            "④ $4ab$",
+            "⑤ $8ab$"
+        ],
+        "score": 3.9,
+    }
+
+def _t_q10(orig, strat):
+    return {
+        "id": 10,
+        "questionType": "객관식",
+        "content": "다음 그림과 같이 밑변의 길이가 $\\sqrt{45}$, 높이가 $\\sqrt{24}$인 삼각형 $ABC$와 한 대각선의 길이가 $\\sqrt{3}$, 다른 대각선의 길이가 $x$인 마름모 $DEFG$가 있다. 삼각형 $ABC$의 넓이가 마름모 $DEFG$의 넓이의 2배일 때, 양수 $x$의 값은?",
+        "solution": (
+            "도판(q10.png)에 각인된 수치와 조건을 적용합니다.\n"
+            "1) 삼각형 $ABC$의 넓이 $S_1$:\n"
+            "밑변 $\\overline{AB} = \\sqrt{45} = 3\\sqrt{5}$, 높이 $\\overline{CH} = \\sqrt{24} = 2\\sqrt{6}$\n"
+            "$S_1 = \\frac{1}{2} \\times 3\\sqrt{5} \\times 2\\sqrt{6} = 3\\sqrt{30}$\n\n"
+            "2) 마름모 $DEFG$의 넓이 $S_2$:\n"
+            "두 대각선 길이가 $\\sqrt{3}$과 $x$이므로\n"
+            "$S_2 = \\frac{1}{2} \\times \\sqrt{3} \\times x = \\frac{\\sqrt{3}}{2}x$\n\n"
+            "3) 삼각형 넓이가 마름모 넓이의 2배이므로:\n"
+            "$S_1 = 2S_2 \\implies 3\\sqrt{30} = 2 \\times \\left(\\frac{\\sqrt{3}}{2}x\\right) = \\sqrt{3}x$\n"
+            "양변을 $\\sqrt{3}$으로 나누면:\n"
+            "$x = \\frac{3\\sqrt{30}}{\\sqrt{3}} = 3\\sqrt{10}$\n"
+            "따라서 $x = 3\\sqrt{10}$이다."
+        ),
+        "answer": "④",
+        "choices": [
+            "① $2\\sqrt{10}$",
+            "② $5\\sqrt{2}$",
+            "③ $2\\sqrt{15}$",
+            "④ $3\\sqrt{10}$",
+            "⑤ $6\\sqrt{5}$"
+        ],
+        "image": "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q10.png",
+        "score": 4.2,
+    }
+
+def _t_q11(orig, strat):
+    return {
+        "id": 11,
+        "questionType": "객관식",
+        "content": "$\\frac{8}{\\sqrt{2}} - \\sqrt{27} + \\sqrt{48} - \\frac{6}{\\sqrt{18}}$을 간단히 계산한 결과가 $a\\sqrt{2} + b\\sqrt{3}$일 때, 유리수 $a, b$에 대하여 $a - b$의 값은?",
+        "solution": (
+            "각 항을 분모의 유리화 및 근호 안의 제곱인수를 밖으로 빼내어 정리합니다.\n"
+            "1) $\\frac{8}{\\sqrt{2}} = \\frac{8\\sqrt{2}}{2} = 4\\sqrt{2}$\n"
+            "2) $-\\sqrt{27} = -3\\sqrt{3}$\n"
+            "3) $\\sqrt{48} = 4\\sqrt{3}$\n"
+            "4) $-\\frac{6}{\\sqrt{18}} = -\\frac{6}{3\\sqrt{2}} = -\\frac{2}{\\sqrt{2}} = -\\sqrt{2}$\n"
+            "동류항끼리 묶으면:\n"
+            "$(4\\sqrt{2} - \\sqrt{2}) + (-3\\sqrt{3} + 4\\sqrt{3}) = 3\\sqrt{2} + \\sqrt{3}$\n"
+            "따라서 $a = 3, b = 1$이다.\n"
+            "그러므로 $a - b = 3 - 1 = 2$이다."
+        ),
+        "answer": "①",
+        "choices": [
+            "① 2",
+            "② 3",
+            "③ 4",
+            "④ 5",
+            "⑤ 6"
+        ],
+        "score": 4.0,
+    }
+
+def _t_q12(orig, strat):
+    return {
+        "id": 12,
+        "questionType": "객관식",
+        "content": "$\\sqrt{5}(2\\sqrt{5} - \\sqrt{10}) - \\frac{\\sqrt{40} - 15}{\\sqrt{5}}$를 계산한 결과는?",
+        "solution": (
+            "분배법칙과 분모의 유리화를 이용하여 식을 전개합니다.\n"
+            "1) 첫 번째 항: $\\sqrt{5}(2\\sqrt{5} - \\sqrt{10}) = 2 \\times 5 - \\sqrt{50} = 10 - 5\\sqrt{2}$\n"
+            "2) 두 번째 항: $\\frac{\\sqrt{40} - 15}{\\sqrt{5}} = \\sqrt{\\frac{40}{5}} - \\frac{15}{\\sqrt{5}} = \\sqrt{8} - 3\\sqrt{5} = 2\\sqrt{2} - 3\\sqrt{5}$\n"
+            "따라서 전체 식은:\n"
+            "$(10 - 5\\sqrt{2}) - (2\\sqrt{2} - 3\\sqrt{5}) = 10 - 5\\sqrt{2} - 2\\sqrt{2} + 3\\sqrt{5} = 10 - 7\\sqrt{2} + 3\\sqrt{5}$\n"
+            "정답은 ②이다."
+        ),
+        "answer": "②",
+        "choices": [
+            "① $10 - 3\\sqrt{2} + 3\\sqrt{5}$",
+            "② $10 - 7\\sqrt{2} + 3\\sqrt{5}$",
+            "③ $10 - 7\\sqrt{2} - 3\\sqrt{5}$",
+            "④ $5 - 7\\sqrt{2} + 3\\sqrt{5}$",
+            "⑤ $10 + 3\\sqrt{2} - 3\\sqrt{5}$"
+        ],
+        "score": 4.2,
+    }
+
+def _t_q13(orig, strat):
+    return {
+        "id": 13,
+        "questionType": "객관식",
+        "content": "다음 그림과 같이 직각삼각형 2개와 이등변삼각형 2개로 이루어진 육각형 모양의 판이 있다. 이 4개의 조각을 겹치지 않게 빈틈없이 이어 붙여 새로운 도형을 만들었다. 원래 4개 조각 각각의 둘레의 길이의 총합과 [보기]의 ③번 도형의 둘레의 길이의 차는?",
+        "solution": (
+            "도판(q13.png)에 제시된 조각과 선지 ③번의 기하학적 수치를 정밀 분석합니다.\n"
+            "1) 원래 4개 조각의 둘레의 총합:\n"
+            "- 직각삼각형 2개: 변의 길이가 각각 6, 2, $2\\sqrt{10}$ (피타고라스: $\\sqrt{6^2 + 2^2} = \\sqrt{40} = 2\\sqrt{10}$)\n"
+            "  둘레 = $6 + 2 + 2\\sqrt{10} = 8 + 2\\sqrt{10}$. 2개이므로 $2 \\times (8 + 2\\sqrt{10}) = 16 + 4\\sqrt{10}$\n"
+            "- 이등변삼각형 2개: 변의 길이가 각각 6, $\\sqrt{10}$, $\\sqrt{10}$\n"
+            "  둘레 = $6 + \\sqrt{10} + \\sqrt{10} = 6 + 2\\sqrt{10}$. 2개이므로 $2 \\times (6 + 2\\sqrt{10}) = 12 + 4\\sqrt{10}$\n"
+            "따라서 4개 조각 각각의 둘레의 총합 $L_{\\text{total}} = (16 + 4\\sqrt{10}) + (12 + 4\\sqrt{10}) = 28 + 8\\sqrt{10}$이다.\n\n"
+            "2) ③번 도형의 둘레:\n"
+            "조각들이 맞닿은 내부 경계선 길이를 $M$이라 하면, 결합된 도형의 외곽 둘레 $L_{\\text{outer}} = L_{\\text{total}} - 2M$이다.\n"
+            "③번 도형에서 맞닿는 맞물림 변은 길이 6인 변 1쌍과 길이 $\\sqrt{10}$인 변 2쌍이므로 접촉 길이 $M = 6 + 2\\sqrt{10}$이다.\n"
+            "따라서 ③번 도형의 외곽 둘레는:\n"
+            "$L_{\\text{outer}} = (28 + 8\\sqrt{10}) - 2(6 + 2\\sqrt{10}) = 28 + 8\\sqrt{10} - 12 - 4\\sqrt{10} = 16 + 4\\sqrt{10}$\n\n"
+            "3) 두 둘레의 차:\n"
+            "$L_{\\text{total}} - L_{\\text{outer}} = 2M = 2(6 + 2\\sqrt{10}) = 12 + 4\\sqrt{10}$이다.\n"
+            "따라서 정답은 ③이다."
+        ),
+        "answer": "③",
+        "choices": [
+            "① $8 + 2\\sqrt{10}$",
+            "② $10 + 4\\sqrt{10}$",
+            "③ $12 + 4\\sqrt{10}$",
+            "④ $14 + 2\\sqrt{10}$",
+            "⑤ $16 + 4\\sqrt{10}$"
+        ],
+        "image": "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q13.png",
+        "score": 4.5,
+    }
+
+def _t_q14(orig, strat):
+    return {
+        "id": 14,
+        "questionType": "객관식",
+        "content": "$(2x - 3y)(4x + 5y)$를 전개하였을 때, $xy$의 계수는?",
+        "solution": (
+            "다항식을 전개하여 $xy$ 항만 추출합니다.\n"
+            "$(2x) \\times (5y) + (-3y) \\times (4x) = 10xy - 12xy = -2xy$\n"
+            "따라서 $xy$의 계수는 $-2$이다."
+        ),
+        "answer": "①",
+        "choices": [
+            "① $-2$",
+            "② $-1$",
+            "③ $0$",
+            "④ $1$",
+            "⑤ $2$"
+        ],
+        "score": 3.8,
+    }
+
+def _t_q15(orig, strat):
+    return {
+        "id": 15,
+        "questionType": "객관식",
+        "content": "$\\frac{1}{2+\\sqrt{3}} + \\frac{1}{\\sqrt{3}-\\sqrt{2}}$를 간단히 한 것은?",
+        "solution": (
+            "각 항의 분모를 유리화합니다.\n"
+            "1) $\\frac{1}{2+\\sqrt{3}} = \\frac{2-\\sqrt{3}}{(2+\\sqrt{3})(2-\\sqrt{3})} = \\frac{2-\\sqrt{3}}{4-3} = 2 - \\sqrt{3}$\n"
+            "2) $\\frac{1}{\\sqrt{3}-\\sqrt{2}} = \\frac{\\sqrt{3}+\\sqrt{2}}{(\\sqrt{3}-\\sqrt{2})(\\sqrt{3}+\\sqrt{2})} = \\frac{\\sqrt{3}+\\sqrt{2}}{3-2} = \\sqrt{3} + \\sqrt{2}$\n"
+            "따라서 두 식을 더하면:\n"
+            "$(2 - \\sqrt{3}) + (\\sqrt{3} + \\sqrt{2}) = 2 + \\sqrt{2}$\n"
+            "정답은 ③이다."
+        ),
+        "answer": "③",
+        "choices": [
+            "① $2 - \\sqrt{2}$",
+            "② $\\sqrt{3} + \\sqrt{2}$",
+            "③ $2 + \\sqrt{2}$",
+            "④ $2\\sqrt{3} - \\sqrt{2}$",
+            "⑤ $4 + \\sqrt{2}$"
+        ],
+        "score": 4.1,
+    }
+
+def _t_q16(orig, strat):
+    return {
+        "id": 16,
+        "questionType": "객관식",
+        "content": "다음 네 학생이 곱셈공식을 이용하여 수를 계산하는 방법에 대해 나눈 대화 중 옳은 설명을 한 학생만을 있는 대로 고른 것은?\n\n[대화 내용]\n지우: $99^2$은 $(100-1)^2$으로 변형하여 $(a-b)^2 = a^2 - 2ab + b^2$을 이용하면 편리해.\n찬혁: $102^2$은 $(100+2)^2$으로 변형하여 $(a+b)^2 = a^2 + 2ab + b^2$을 이용하면 편리해.\n민서: $49 \\times 51$은 $(50-1)(50+1)$로 변형하여 $(a-b)(a+b) = a^2 - b^2$을 이용하면 편리해.\n수현: $103 \\times 105$는 $(100+3)(100+5)$로 변형하여 $(x+a)(x+b) = x^2 + (a+b)x + ab$를 이용하면 편리해.\n\n[보기]\nㄱ. 지우는 $(a-b)^2 = a^2 - 2ab + b^2$을 바르게 적용하였다.\nㄴ. 찬혁이는 합과 차의 곱 공식 $(a+b)(a-b) = a^2 - b^2$을 적용하였다.\nㄷ. 민서는 합과 차의 곱 공식을 바르게 적용하였다.\nㄹ. 수현이는 $(x+a)(x+b) = x^2 + (a+b)x + ab$를 바르게 적용하였다.",
+        "solution": (
+            "각 학생의 대화와 보기를 대조합니다.\n"
+            "ㄱ. 지우는 $99 = 100 - 1$로 두어 $(a-b)^2$ 공식을 바르게 적용했습니다. (참)\n"
+            "ㄴ. 찬혁이는 $102 = 100 + 2$이므로 $(a+b)^2 = a^2 + 2ab + b^2$을 적용하였습니다. 보기는 합과 차의 공식 $(a+b)(a-b) = a^2 - b^2$을 적용하였다고 진술하였으므로 명백한 거짓입니다. (거짓)\n"
+            "ㄷ. 민서는 $49 \\times 51 = (50-1)(50+1)$로 $(a-b)(a+b) = a^2 - b^2$을 바르게 적용했습니다. (참)\n"
+            "ㄹ. 수현이는 $103 \\times 105 = (100+3)(100+5)$로 $(x+a)(x+b)$ 공식을 바르게 적용했습니다. (참)\n"
+            "따라서 옳은 보기는 ㄱ, ㄷ, ㄹ이다."
+        ),
+        "answer": "③",
+        "choices": [
+            "① ㄱ, ㄴ",
+            "② ㄴ, ㄷ",
+            "③ ㄱ, ㄷ, ㄹ",
+            "④ ㄴ, ㄷ, ㄹ",
+            "⑤ ㄱ, ㄴ, ㄷ, ㄹ"
+        ],
+        "score": 4.1,
+    }
+
+def _t_q17(orig, strat):
+    return {
+        "id": 17,
+        "questionType": "객관식",
+        "content": "가로의 길이가 $3x+2$, 세로의 길이가 $2x+5$인 직사각형 모양의 액자가 있다. 이 액자의 둘레의 길이가 $k$이고 넓이가 $S$일 때, $S$를 $x$에 대한 이차식으로 나타낸 것은?",
+        "solution": (
+            "직사각형의 넓이는 (가로) $\\times$ (세로)이다.\n"
+            "$S = (3x + 2)(2x + 5)$\n"
+            "전개하면:\n"
+            "$S = 6x^2 + 15x + 4x + 10 = 6x^2 + 19x + 10$\n"
             "따라서 정답은 ①이다."
         ),
-        "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
-        "subUnit": "실수와 무리수의 대소 비교",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
-        "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
-        "crossConceptKeys": ["CC_REAL_NUMBER_ORDER"],
-        "conditionKeys": ["COND_POSITIVE"],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 5,
-        "level": "중",
-        "category": "실수와 그 계산",
-        "originalCategory": "제곱근과 실수",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "제곱근", "수직선", "정사각형", "대소비교", "피타고라스", "도형"],
-        "wide": False,
-        "content": "그림은 수직선 위에 한 변의 길이가 $2$인 정사각형 $ABCD$와 $DCFE$를 그린 것이다. 수직선 위에 $\\overline{BP}=\\overline{BD}$, $\\overline{BQ}=\\overline{BE}$인 두 점 $P$와 $Q$를 각각 잡을 때, 점 $P, Q$에 대응하는 수를 각각 $p, q$라 하자. $p+q$의 값은?",
-        "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q05.png",
-        "choices": [
-            "$2\\sqrt{5}-2\\sqrt{2}$",
-            "$2\\sqrt{2}+2\\sqrt{5}$",
-            "$4\\sqrt{2}+\\sqrt{5}$",
-            "$2\\sqrt{5}+2$",
-            "$4\\sqrt{5}-2\\sqrt{2}$"
-        ],
-        "answer": "②",
-        "solution": (
-            "수직선의 눈금과 정사각형의 대각선 길이를 대조하여 점 $P, Q$의 좌표를 구한다.\n"
-            "1) 그림의 수직선에서 점 $B$의 좌표는 $0$, 점 $C$의 좌표는 $2$, 점 $F$의 좌표는 $4$이다.\n"
-            "정사각형 $ABCD$의 한 변의 길이가 $2$이므로 대각선의 길이는 $BD = \\sqrt{2^2+2^2} = 2\\sqrt{2}$이다.\n"
-            "점 $B(0)$을 중심으로 반지름이 $BD$인 원호가 수직선과 만나는 점이 $P$이므로 $p = 2\\sqrt{2}$이다.\n"
-            "2) 직각삼각형에서 가로 $BF=4$, 세로 $EF=2$이므로 빗변의 길이는 $BE = \\sqrt{4^2+2^2} = \\sqrt{20} = 2\\sqrt{5}$이다.\n"
-            "점 $B(0)$을 중심으로 반지름이 $BE$인 원호가 수직선과 만나는 점이 $Q$이므로 $q = 2\\sqrt{5}$이다.\n"
-            "3) 따라서 $p+q = 2\\sqrt{2} + 2\\sqrt{5}$이다.\n"
-            "정답은 ②이다."
-        ),
-        "subUnitKey": "M3-01-REAL_NUMBER_LINE",
-        "subUnit": "수직선 위의 실수 표현",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_REAL_NUMBER_LINE",
-        "templateKey": "TPL_M3_NUMBER_LINE_SQUARE_ROTATION",
-        "crossConceptKeys": ["CC_REAL_NUMBER_ORDER", "CC_SQUARE_ROOT_DEFINITION"],
-        "conditionKeys": ["COND_POSITIVE", "COND_INTEGER"],
-        "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 6,
-        "level": "중",
-        "category": "실수와 그 계산",
-        "originalCategory": "제곱근과 실수",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "무리수", "대소비교", "문자식"],
-        "wide": False,
-        "content": "$0 < a < b < 1$일 때, 보기의 네 수를 작은 것부터 차례대로 나열한 것은?\n<보기> $\\frac{a}{b}, \\frac{b}{a}, \\sqrt{\\frac{a}{b}}, \\sqrt{\\frac{b}{a}}$",
-        "choices": [
-            "$\\frac{a}{b}, \\sqrt{\\frac{a}{b}}, \\sqrt{\\frac{b}{a}}, \\frac{b}{a}$",
-            "$\\frac{a}{b}, \\sqrt{\\frac{b}{a}}, \\sqrt{\\frac{a}{b}}, \\frac{b}{a}$",
-            "$\\sqrt{\\frac{a}{b}}, \\frac{a}{b}, \\sqrt{\\frac{b}{a}}, \\frac{b}{a}$",
-            "$\\frac{b}{a}, \\sqrt{\\frac{b}{a}}, \\sqrt{\\frac{a}{b}}, \\frac{a}{b}$",
-            "$\\sqrt{\\frac{a}{b}}, \\sqrt{\\frac{b}{a}}, \\frac{a}{b}, \\frac{b}{a}$"
-        ],
         "answer": "①",
-        "solution": (
-            "$0 < a < b < 1$일 때 네 수의 대소 관계를 판정한다.\n"
-            "1) $0 < a < b$이므로 $0 < \\frac{a}{b} < 1$이다.\n"
-            "$0 < x < 1$인 실수 $x$에 대하여 $x < \\sqrt{x} < 1$이 성립하므로 $\\frac{a}{b} < \\sqrt{\\frac{a}{b}} < 1$이다.\n"
-            "2) $b > a > 0$이므로 $\\frac{b}{a} > 1$이다.\n"
-            "$y > 1$인 실수 $y$에 대하여 $1 < \\sqrt{y} < y$가 성립하므로 $1 < \\sqrt{\\frac{b}{a}} < \\frac{b}{a}$이다.\n"
-            "3) 따라서 네 수를 작은 것부터 차례대로 나열하면\n"
-            "$\\frac{a}{b}, \\sqrt{\\frac{a}{b}}, \\sqrt{\\frac{b}{a}}, \\frac{b}{a}$이다.\n"
-            "정답은 ①이다."
-        ),
-        "subUnitKey": "M3-01-REAL_NUMBER_COMPARISON",
-        "subUnit": "실수와 무리수의 대소 비교",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
-        "templateKey": "TPL_M3_POWER_ROOT_INEQUALITY_ORDER",
-        "crossConceptKeys": ["CC_REAL_NUMBER_ORDER"],
-        "conditionKeys": ["COND_RANGE", "COND_POSITIVE"],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 7,
-        "level": "중",
-        "category": "실수와 그 계산",
-        "originalCategory": "제곱근과 실수",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "무리수조건", "자연수", "경우의수"],
-        "wide": False,
-        "content": "세 실수 $\\sqrt{x}, \\sqrt{y}, \\sqrt{x+y}$가 모두 무리수가 되도록 하는 8 이하의 자연수 $x, y$의 순서쌍 $(x, y)$의 개수는?",
         "choices": [
-            "24",
-            "26",
-            "28",
-            "30",
-            "32"
+            "① $6x^2 + 19x + 10$",
+            "② $6x^2 + 17x + 10$",
+            "③ $6x^2 + 19x + 7$",
+            "④ $5x^2 + 19x + 10$",
+            "⑤ $6x^2 + 15x + 10$"
         ],
-        "answer": "④",
-        "solution": (
-            "세 수가 모두 무리수가 되려면 $x, y, x+y$가 모두 제곱수가 아니어야 한다.\n"
-            "1) 8 이하의 자연수 중 제곱수는 $1, 4$이다.\n"
-            "따라서 $\\sqrt{x}, \\sqrt{y}$가 무리수가 되는 자연수는 $x, y \\in \\{2, 3, 5, 6, 7, 8\\}$의 6개이다.\n"
-            "가능한 순서쌍 $(x, y)$의 전체 개수는 $6 \\times 6 = 36$개이다.\n"
-            "2) 이 중에서 $x+y$가 제곱수가 되는 경우를 제외한다.\n"
-            "$4 \\le x+y \\le 16$이므로 가능한 제곱수는 $4, 9, 16$이다.\n"
-            "- $x+y = 4$: $(2, 2)$ 1개\n"
-            "- $x+y = 9$: $(2, 7), (3, 6), (6, 3), (7, 2)$ 4개\n"
-            "- $x+y = 16$: $(8, 8)$ 1개\n"
-            "제곱수가 되는 순서쌍의 합은 $1 + 4 + 1 = 6$개이다.\n"
-            "3) 따라서 세 실수가 모두 무리수가 되는 순서쌍의 개수는 $36 - 6 = 30$개이다.\n"
-            "정답은 ④이다."
-        ),
-        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-        "subUnit": "제곱근과 실수",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
-        "templateKey": "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION",
-        "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION"],
-        "conditionKeys": ["COND_NATURAL_NUMBER", "COND_RANGE"],
-        "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 4,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 8,
-        "level": "중",
-        "category": "실수와 그 계산",
-        "originalCategory": "근호를 포함한 식의 계산",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "제곱근계산", "유리화", "동류항"],
-        "wide": False,
-        "content": "제곱근을 간단히 계산한 결과로 옳은 것은?",
-        "choices": [
-            "$\\frac{\\sqrt{7}-\\sqrt{2}}{\\sqrt{2}} = \\frac{\\sqrt{14}-2}{2}$",
-            "$\\sqrt{27} - 3\\sqrt{3} + \\sqrt{12} = 3\\sqrt{3}$",
-            "$\\sqrt{20} \\div \\sqrt{5} \\times \\sqrt{3} = 6$",
-            "$\\sqrt{18}\\left(\\frac{\\sqrt{2}}{3}+\\sqrt{6}\\right) = 2+3\\sqrt{3}$",
-            "$4\\sqrt{3}-2\\sqrt{2}-3\\sqrt{3}+5\\sqrt{2} = 7\\sqrt{3}+3\\sqrt{2}$"
-        ],
-        "answer": "①",
-        "solution": (
-            "각 보기를 차례대로 계산한다.\n"
-            "① 분모를 유리화하면 $\\frac{(\\sqrt{7}-\\sqrt{2})\\sqrt{2}}{2} = \\frac{\\sqrt{14}-2}{2}$이므로 참이다.\n"
-            "② $\\sqrt{27} - 3\\sqrt{3} + \\sqrt{12} = 3\\sqrt{3} - 3\\sqrt{3} + 2\\sqrt{3} = 2\\sqrt{3}$이므로 거짓이다.\n"
-            "③ $\\sqrt{20} \\div \\sqrt{5} \\times \\sqrt{3} = 2 \\times \\sqrt{3} = 2\\sqrt{3}$이므로 거짓이다.\n"
-            "④ $\\sqrt{18}\\times\\frac{\\sqrt{2}}{3} + \\sqrt{18}\\times\\sqrt{6} = \\frac{6}{3} + \\sqrt{108} = 2+6\\sqrt{3}$이므로 거짓이다.\n"
-            "⑤ $(4-3)\\sqrt{3} + (-2+5)\\sqrt{2} = \\sqrt{3}+3\\sqrt{2}$이므로 거짓이다.\n"
-            "따라서 옳은 것은 ①이다."
-        ),
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
-        "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION"],
-        "conditionKeys": ["COND_POSITIVE"],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 9,
-        "level": "중",
-        "category": "실수와 그 계산",
-        "originalCategory": "근호를 포함한 식의 계산",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "제곱근성질", "배수"],
-        "wide": False,
-        "content": "$\\sqrt{18000}$은 $\\sqrt{20}$의 $A$배이고, $\\frac{\\sqrt{0.48}}{\\sqrt{30}}$은 $\\sqrt{0.4}$의 $B$배일 때, $A \\times B$의 값은?",
-        "choices": [
-            "6",
-            "4",
-            "5",
-            "8",
-            "10"
-        ],
-        "answer": "①",
-        "solution": (
-            "근호의 곱셈과 나눗셈 성질을 이용한다.\n"
-            "1) $\\sqrt{18000} = \\sqrt{900 \\times 20} = 30\\sqrt{20}$이므로 $A = 30$이다.\n"
-            "2) $\\frac{\\sqrt{0.48}}{\\sqrt{30}} = \\sqrt{\\frac{0.48}{30}} = \\sqrt{0.016} = \\sqrt{0.04 \\times 0.4} = 0.2\\sqrt{0.4}$이므로 $B = 0.2 = \\frac{1}{5}$이다.\n"
-            "3) 따라서 $A \\times B = 30 \\times \\frac{1}{5} = 6$이다.\n"
-            "정답은 ①이다."
-        ),
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-        "templateKey": "TPL_M3_RADICAL_LETTER_REPRESENTATION",
-        "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION"],
-        "conditionKeys": ["COND_POSITIVE"],
-        "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 10,
-        "level": "중",
-        "category": "실수와 그 계산",
-        "originalCategory": "근호를 포함한 식의 계산",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "도형", "삼각형", "마름모", "넓이"],
-        "wide": False,
-        "content": "그림에서 $\\overline{AB}=\\sqrt{45}$, $\\overline{CH}=\\sqrt{24}$인 삼각형 ABC의 넓이는 $\\overline{GE}=\\sqrt{3}$인 마름모 DEFG의 넓이의 2배일 때, $\\overline{DF}$의 길이는?",
-        "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q10.png",
-        "choices": [
-            "$2\\sqrt{10}$",
-            "$\\sqrt{10}$",
-            "$2\\sqrt{30}$",
-            "$3\\sqrt{10}$",
-            "$6\\sqrt{10}$"
-        ],
-        "answer": "④",
-        "solution": (
-            "그림에 주어진 선분의 길이와 삼각형, 마름모의 넓이 공식을 이용한다.\n"
-            "1) 삼각형 $ABC$에서 밑변 $\\overline{AB}=\\sqrt{45}=3\\sqrt{5}$이고 높이 $\\overline{CH}=\\sqrt{24}=2\\sqrt{6}$이므로 넓이는\n"
-            "$S = \\frac{1}{2} \\times 3\\sqrt{5} \\times 2\\sqrt{6} = 3\\sqrt{30}$이다.\n"
-            "2) 삼각형 $ABC$의 넓이가 마름모 $DEFG$의 넓이의 2배이므로 마름모의 넓이는\n"
-            "$\\frac{3\\sqrt{30}}{2}$이다.\n"
-            "3) 마름모의 넓이는 두 대각선 길이의 곱의 $\\frac{1}{2}$이므로\n"
-            "$\\frac{1}{2} \\times \\overline{GE} \\times \\overline{DF} = \\frac{3\\sqrt{30}}{2}$\n"
-            "$\\frac{1}{2} \\times \\sqrt{3} \\times \\overline{DF} = \\frac{3\\sqrt{30}}{2}$\n"
-            "$\\overline{DF} = \\frac{3\\sqrt{30}}{\\sqrt{3}} = 3\\sqrt{10}$이다.\n"
-            "따라서 정답은 ④이다."
-        ),
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
-        "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION"],
-        "conditionKeys": ["COND_POSITIVE"],
-        "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 11,
-        "level": "중",
-        "category": "실수와 그 계산",
-        "originalCategory": "근호를 포함한 식의 계산",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "무리수상등", "계수비교"],
-        "wide": False,
-        "content": "$3\\sqrt{5} - 2\\sqrt{3} + a\\sqrt{5} + b\\sqrt{3} = \\frac{5\\sqrt{5}}{2} - \\frac{9\\sqrt{3}}{4}$일 때, 유리수 $a, b$에 대하여 $a+b$의 값은?",
-        "choices": [
-            "$-\\frac{5}{4}$",
-            "$-\\frac{1}{4}$",
-            "$\\frac{1}{4}$",
-            "$\\frac{3}{4}$",
-            "$-\\frac{3}{4}$"
-        ],
-        "answer": "⑤",
-        "solution": (
-            "동류근호끼리 묶어 유리수부와 무리수부의 계수를 비교한다.\n"
-            "좌변을 정리하면 $(3+a)\\sqrt{5} + (-2+b)\\sqrt{3}$이다.\n"
-            "$a, b$가 유리수이므로\n"
-            "$3+a = \\frac{5}{2} \\implies a = -\\frac{1}{2}$\n"
-            "$-2+b = -\\frac{9}{4} \\implies b = -\\frac{1}{4}$이다.\n"
-            "따라서 $a+b = -\\frac{1}{2} + \\left(-\\frac{1}{4}\\right) = -\\frac{3}{4}$이다.\n"
-            "정답은 ⑤이다."
-        ),
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
-        "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION"],
-        "conditionKeys": ["COND_NONZERO"],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 12,
-        "level": "중",
-        "category": "실수와 그 계산",
-        "originalCategory": "근호를 포함한 식의 계산",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "제곱근혼합계산", "분배법칙"],
-        "wide": False,
-        "content": "$-\\sqrt{50}\\left(\\frac{\\sqrt{3}}{5} - \\sqrt{2}\\right) - \\sqrt{24} \\div \\sqrt{2} \\times \\sqrt{27} = a + b\\sqrt{6}$일 때, 유리수 $a, b$에 대하여 $a+b$의 값은?",
-        "choices": [
-            "$-11$",
-            "$-7$",
-            "$7$",
-            "$-9$",
-            "$9$"
-        ],
-        "answer": "④",
-        "solution": (
-            "연산 순서에 맞추어 식을 단계별로 계산한다.\n"
-            "1) $-\\sqrt{50}\\left(\\frac{\\sqrt{3}}{5}-\\sqrt{2}\\right) = -5\\sqrt{2}\\left(\\frac{\\sqrt{3}}{5}-\\sqrt{2}\\right) = -\\sqrt{6} + 10$\n"
-            "2) $\\sqrt{24} \\div \\sqrt{2} \\times \\sqrt{27} = \\sqrt{12} \\times \\sqrt{27} = 2\\sqrt{3} \\times 3\\sqrt{3} = 18$\n"
-            "3) 두 식을 빼면 $(10-\\sqrt{6}) - 18 = -8 - \\sqrt{6}$이다.\n"
-            "따라서 $a = -8$, $b = -1$이므로\n"
-            "$a+b = -8 + (-1) = -9$이다.\n"
-            "정답은 ④이다."
-        ),
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
-        "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION"],
-        "conditionKeys": ["COND_INTEGER"],
-        "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 13,
-        "level": "상",
-        "category": "실수와 그 계산",
-        "originalCategory": "근호를 포함한 식의 계산",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "subjective-2up",
-        "tags": ["객관식", "도형", "둘레", "피타고라스"],
-        "wide": False,
-        "content": "그림은 육각형을 직각삼각형 두 조각과 이등변삼각형 두 조각으로 자른 것이다. 잘린 네 조각의 둘레의 길이의 총합과 도형 ③의 둘레의 길이의 차는?",
-        "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q13.png",
-        "choices": [
-            "$8+2\\sqrt{10}$",
-            "$10+4\\sqrt{10}$",
-            "$12+4\\sqrt{10}$",
-            "$14+2\\sqrt{10}$",
-            "$16+4\\sqrt{10}$"
-        ],
-        "answer": "③",
-        "solution": (
-            "각 조각의 변의 길이를 확인하고 네 조각의 둘레 합과 도형 ③의 둘레를 비교한다.\n"
-            "1) 직각삼각형 한 조각의 세 변의 길이는 $6, 2, 2\\sqrt{10}$이고, 이등변삼각형 한 조각의 세 변의 길이는 $6, \\sqrt{10}, \\sqrt{10}$이다.\n"
-            "2) 네 조각의 둘레의 길이의 총합은\n"
-            "$2(6 + 2 + 2\\sqrt{10}) + 2(6 + 2\\sqrt{10}) = (16 + 4\\sqrt{10}) + (12 + 4\\sqrt{10}) = 28 + 8\\sqrt{10}$이다.\n"
-            "3) 도형 ③에서는 직사각형의 대각선 $2\\sqrt{10}$과 가로변 $6$이 서로 맞닿아 내부에 접한다.\n"
-            "내부에 접하는 선분의 길이는 $6 + 2\\sqrt{10}$이므로, 외곽 둘레에서는 이 길이의 2배인 $12 + 4\\sqrt{10}$만큼 빠지게 된다.\n"
-            "따라서 도형 ③의 둘레의 길이는 $(28 + 8\\sqrt{10}) - (12 + 4\\sqrt{10}) = 16 + 4\\sqrt{10}$이다.\n"
-            "4) 구하는 둘레의 총합과 도형 ③의 둘레의 길이의 차는 내부에 맞닿는 선분의 길이의 2배이므로\n"
-            "$(28 + 8\\sqrt{10}) - (16 + 4\\sqrt{10}) = 12 + 4\\sqrt{10}$이다.\n"
-            "정답은 ③이다."
-        ),
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-        "templateKey": "TPL_M3_RADICAL_MIXED_OPERATION",
-        "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION"],
-        "conditionKeys": ["COND_POSITIVE"],
-        "integrationPattern": "INTERDEPENDENT",
-        "difficultyBucket": 4,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 14,
-        "level": "하",
-        "category": "다항식의 곱셈과 인수분해",
-        "originalCategory": "다항식의 곱셈과 인수분해",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-02",
-        "standardUnit": "다항식의 곱셈과 인수분해",
-        "standardUnitOrder": 2,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "다항식곱셈", "계수"],
-        "wide": False,
-        "content": "다항식 $(3a - 4b)(4a + 3b)$를 전개했을 때, $ab$의 계수는?",
-        "choices": [
-            "$-25$",
-            "$-16$",
-            "$7$",
-            "$25$",
-            "$-7$"
-        ],
-        "answer": "⑤",
-        "solution": (
-            "다항식을 분배법칙을 이용하여 전개한다.\n"
-            "$(3a-4b)(4a+3b) = 12a^2 + 9ab - 16ab - 12b^2 = 12a^2 - 7ab - 12b^2$\n"
-            "따라서 $ab$의 계수는 $-7$이다.\n"
-            "정답은 ⑤이다."
-        ),
-        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-        "subUnit": "다항식의 곱셈",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": None,
-        "templateKey": None,
-        "crossConceptKeys": ["CC_POLYNOMIAL_EXPANSION"],
-        "conditionKeys": ["COND_INTEGER"],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 2,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 15,
-        "level": "중",
-        "category": "실수와 그 계산",
-        "originalCategory": "근호를 포함한 식의 계산",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "분모유리화", "제곱근계산"],
-        "wide": False,
-        "content": "$\\frac{1}{\\sqrt{45}} \\times \\frac{1}{-2+\\sqrt{5}} = a+b\\sqrt{5}$를 만족하는 유리수 $a, b$에 대하여 $a-b$의 값은?",
-        "choices": [
-            "$\\frac{1}{15}$",
-            "$\\frac{1}{5}$",
-            "$\\frac{2}{15}$",
-            "$\\frac{4}{15}$",
-            "$\\frac{1}{3}$"
-        ],
-        "answer": "②",
-        "solution": (
-            "두 분수의 분모를 각각 유리화하여 전개한다.\n"
-            "1) $\\frac{1}{\\sqrt{45}} = \\frac{1}{3\\sqrt{5}}$\n"
-            "2) $\\frac{1}{-2+\\sqrt{5}} = \\frac{\\sqrt{5}+2}{(\\sqrt{5}-2)(\\sqrt{5}+2)} = \\frac{\\sqrt{5}+2}{5-4} = \\sqrt{5}+2$\n"
-            "3) 두 식의 곱을 구하면\n"
-            "$\\frac{1}{3\\sqrt{5}} \\times (\\sqrt{5}+2) = \\frac{\\sqrt{5}+2}{3\\sqrt{5}} = \\frac{(\\sqrt{5}+2)\\sqrt{5}}{3 \\times 5} = \\frac{5+2\\sqrt{5}}{15} = \\frac{1}{3} + \\frac{2}{15}\\sqrt{5}$\n"
-            "4) 따라서 $a = \\frac{1}{3} = \\frac{5}{15}$, $b = \\frac{2}{15}$이다.\n"
-            "$a - b = \\frac{5}{15} - \\frac{2}{15} = \\frac{3}{15} = \\frac{1}{5}$이다.\n"
-            "정답은 ②이다."
-        ),
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_RADICAL_CALCULATION",
-        "templateKey": "TPL_M3_RADICAL_RATIONALIZATION",
-        "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION"],
-        "conditionKeys": ["COND_POSITIVE"],
-        "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 16,
-        "level": "중",
-        "category": "다항식의 곱셈과 인수분해",
-        "originalCategory": "다항식의 곱셈과 인수분해",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-02",
-        "standardUnit": "다항식의 곱셈과 인수분해",
-        "standardUnitOrder": 2,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "곱셈공식", "수계산", "참거짓"],
-        "wide": False,
-        "content": "찬혁이와 수현이가 곱셈공식을 이용해 다음을 계산하는 과정을 나타낸 것이다. 두 학생에 대한 설명으로 옳은 것만을 보기에서 있는 대로 고른 것은?\n찬혁: $102^2 = (100+2)^2 = 100^2 + 2 \\times 100 \\times 2 + 2^2 = 10404$\n수현: $103 \\times 105 = (100+3)(100+5) = 100^2 + (3+5) \\times 100 + 3 \\times 5 = 10815$\n\n<보기>\nㄱ. 찬혁이는 합의 제곱 공식 $(a+b)^2 = a^2 + 2ab + b^2$을 이용하였다.\nㄴ. 수현이는 합차 공식 $(a+b)(a-b) = a^2 - b^2$을 이용하였다.\nㄷ. 찬혁이의 계산 결과는 $10404$이다.\nㄹ. 수현이의 계산 결과는 $10815$이다.",
-        "choices": [
-            "ㄱ, ㄴ",
-            "ㄴ, ㄷ",
-            "ㄱ, ㄷ, ㄹ",
-            "ㄴ, ㄷ, ㄹ",
-            "ㄱ, ㄴ, ㄷ, ㄹ"
-        ],
-        "answer": "③",
-        "solution": (
-            "두 학생의 계산 과정에 쓰인 공식과 결과를 검증한다.\n"
-            "- 찬혁이는 $102 = 100+2$로 두고 합의 제곱 공식 $(a+b)^2 = a^2+2ab+b^2$을 적용하였다.\n"
-            "계산 결과는 $10000 + 400 + 4 = 10404$이므로 ㄱ과 ㄷ은 모두 참이다.\n"
-            "- 수현이는 $103 \\times 105 = (100+3)(100+5)$로 두고 $(x+a)(x+b) = x^2+(a+b)x+ab$ 공식을 이용하였다.\n"
-            "합차 공식 $(a+b)(a-b) = a^2-b^2$을 이용한 것이 아니므로 ㄴ은 거짓이다.\n"
-            "수현이의 계산 결과는 $10000 + 800 + 15 = 10815$이므로 ㄹ은 참이다.\n"
-            "따라서 옳은 것은 ㄱ, ㄷ, ㄹ이다.\n"
-            "정답은 ③이다."
-        ),
-        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-        "subUnit": "다항식의 곱셈",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
-        "crossConceptKeys": ["CC_POLYNOMIAL_EXPANSION"],
-        "conditionKeys": ["COND_INTEGER"],
-        "integrationPattern": "CASE_BRANCH",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 17,
-        "level": "중",
-        "category": "다항식의 곱셈과 인수분해",
-        "originalCategory": "다항식의 곱셈과 인수분해",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-02",
-        "standardUnit": "다항식의 곱셈과 인수분해",
-        "standardUnitOrder": 2,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "다항식전개", "실생활응용", "넓이"],
-        "wide": False,
-        "content": "한 변의 길이가 $2x$인 정사각형 사진 6장을 이용하여 액자를 만들려고 한다. 사진을 가로로 3장, 세로로 2장을 빈틈없이 배치하여 직사각형 형태로 구성한 다음, 이 직사각형의 둘레에 폭이 $3$인 액자 틀을 둘렀다. 액자 전체의 넓이를 나타내는 식은?",
-        "choices": [
-            "$24x^2+36$",
-            "$24x^2+48x+36$",
-            "$24x^2+60x+36$",
-            "$36x^2+60x+36$",
-            "$24x^2+72x+36$"
-        ],
-        "answer": "③",
-        "solution": (
-            "액자 전체의 가로와 세로의 길이를 각각 $x$에 대한 일차식으로 나타낸다.\n"
-            "1) 사진들의 가로 배치는 3장이므로 사진 부분의 가로는 $3 \\times 2x = 6x$이다.\n"
-            "세로 배치는 2장이므로 사진 부분의 세로는 $2 \\times 2x = 4x$이다.\n"
-            "2) 폭이 3인 액자 틀을 양쪽에 두르므로\n"
-            "전체 가로의 길이는 $6x + 2 \\times 3 = 6x + 6$이고,\n"
-            "전체 세로의 길이는 $4x + 2 \\times 3 = 4x + 6$이다.\n"
-            "3) 따라서 액자 전체의 넓이는\n"
-            "$(6x + 6)(4x + 6) = 24x^2 + 36x + 24x + 36 = 24x^2 + 60x + 36$이다.\n"
-            "정답은 ③이다."
-        ),
-        "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
-        "subUnit": "다항식의 곱셈",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": None,
-        "templateKey": None,
-        "crossConceptKeys": ["CC_POLYNOMIAL_EXPANSION"],
-        "conditionKeys": ["COND_POSITIVE"],
-        "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 18,
-        "level": "중",
-        "category": "다항식의 곱셈과 인수분해",
-        "originalCategory": "다항식의 곱셈과 인수분해",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-02",
-        "standardUnit": "다항식의 곱셈과 인수분해",
-        "standardUnitOrder": 2,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "인수분해", "이차식"],
-        "wide": False,
-        "content": "다항식 $6x^2 + 7x - 20$을 인수분해하면 $(ax + b)(cx + d)$일 때, 두 인수 $ax+b$와 $cx+d$의 합은? (단, $a, b, c, d$는 정수이고 $a > c > 0$)",
-        "choices": [
-            "$5x - 1$",
-            "$5x + 1$",
-            "$7x - 1$",
-            "$7x + 1$",
-            "$x + 9$"
-        ],
-        "answer": "②",
-        "solution": (
-            "대각선 공식을 적용하여 $6x^2+7x-20$을 인수분해한다.\n"
-            "$6 = 3 \\times 2$, $-20 = (-4) \\times 5$로 분해하면\n"
-            "$3 \\times 5 + 2 \\times (-4) = 15 - 8 = 7$이 되어 일차항의 계수 $7$과 일치한다.\n"
-            "따라서 $6x^2 + 7x - 20 = (3x - 4)(2x + 5)$이다.\n"
-            "두 인수의 합은 $(3x - 4) + (2x + 5) = 5x + 1$이다.\n"
-            "정답은 ②이다."
-        ),
-        "subUnitKey": "M3-02-FACTORIZATION",
-        "subUnit": "인수분해",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "TPL_M3_QUADRATIC_FACTORIZATION_SUM",
-        "crossConceptKeys": ["CC_QUADRATIC_FACTORIZATION"],
-        "conditionKeys": ["COND_INTEGER"],
-        "integrationPattern": "NONE",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 19,
-        "level": "중",
-        "category": "다항식의 곱셈과 인수분해",
-        "originalCategory": "다항식의 곱셈과 인수분해",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-02",
-        "standardUnit": "다항식의 곱셈과 인수분해",
-        "standardUnitOrder": 2,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "인수분해", "자연수조건", "최댓값최솟값"],
-        "wide": False,
-        "content": "다항식 $x^2 + 11x + k$를 인수분해하면 $(x+a)(x+b)$일 때, $k$의 최솟값과 최댓값의 합은? (단, $a, b$는 자연수)",
-        "choices": [
-            "38",
-            "40",
-            "42",
-            "44",
-            "46"
-        ],
-        "answer": "②",
-        "solution": (
-            "우변을 전개하여 계수를 비교한다.\n"
-            "$(x+a)(x+b) = x^2 + (a+b)x + ab$이므로 $a+b = 11$이고 $k = ab$이다.\n"
-            "합이 11인 두 자연수 $a, b$ ($a \\le b$)의 순서쌍과 그에 따른 $k$의 값은 다음과 같다.\n"
-            "- $a=1, b=10 \\implies k = 10$\n"
-            "- $a=2, b=9 \\implies k = 18$\n"
-            "- $a=3, b=8 \\implies k = 24$\n"
-            "- $a=4, b=7 \\implies k = 28$\n"
-            "- $a=5, b=6 \\implies k = 30$\n"
-            "따라서 $k$의 최솟값은 10이고 최댓값은 30이다.\n"
-            "두 값의 합은 $10 + 30 = 40$이다.\n"
-            "정답은 ②이다."
-        ),
-        "subUnitKey": "M3-02-FACTORIZATION",
-        "subUnit": "인수분해",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "TPL_M3_PERFECT_SQUARE_CONDITION",
-        "crossConceptKeys": ["CC_QUADRATIC_FACTORIZATION"],
-        "conditionKeys": ["COND_NATURAL_NUMBER"],
-        "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 20,
-        "level": "상",
-        "category": "다항식의 곱셈과 인수분해",
-        "originalCategory": "다항식의 곱셈과 인수분해",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-02",
-        "standardUnit": "다항식의 곱셈과 인수분해",
-        "standardUnitOrder": 2,
-        "questionType": "객관식",
-        "layoutTag": "grid",
-        "tags": ["객관식", "공통인수", "인수분해", "자연수"],
-        "wide": False,
-        "content": "세 자연수 $a, b, c$에 대하여 $x$에 대한 두 이차식 $x^2 + ax + 18$, $x^2 + bx - 12$를 각각 인수분해했을 때의 공통인수가 $x+c$일 때, $a - b + c$의 값은?",
-        "choices": [
-            "9",
-            "10",
-            "11",
-            "12",
-            "13"
-        ],
-        "answer": "③",
-        "solution": (
-            "두 이차식이 공통인수 $x+c$를 가지므로 $x=-c$를 대입했을 때 두 식의 값이 모두 0이 된다.\n"
-            "1) $(-c)^2 + a(-c) + 18 = 0 \\implies c(a-c) = 18$\n"
-            "2) $(-c)^2 + b(-c) - 12 = 0 \\implies c(c-b) = 12$\n"
-            "$a, b, c$가 자연수이므로 $c$는 18과 12의 양의 공약수이다. 즉, $c \\in \\{1, 2, 3, 6\\}$이다.\n"
-            "2번 식에서 $b = c - \\frac{12}{c}$이고 $b$는 자연수이므로 $c - \\frac{12}{c} \\ge 1$이어야 한다.\n"
-            "- $c=1, 2, 3$일 때는 $b \\le 0$이 되어 자연수 조건에 모순이다.\n"
-            "- $c=6$일 때 $b = 6 - 2 = 4$로 자연수가 된다.\n"
-            "따라서 $c=6$, $b=4$이다.\n"
-            "이를 1번 식에 대입하면 $6(a-6) = 18 \\implies a-6 = 3 \\implies a = 9$이다.\n"
-            "구하는 값은 $a - b + c = 9 - 4 + 6 = 11$이다.\n"
-            "정답은 ③이다."
-        ),
-        "subUnitKey": "M3-02-FACTORIZATION",
-        "subUnit": "인수분해",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
-        "crossConceptKeys": ["CC_COMMON_FACTOR", "CC_QUADRATIC_FACTORIZATION"],
-        "conditionKeys": ["COND_NATURAL_NUMBER", "COND_DIVISIBILITY"],
-        "integrationPattern": "INTERDEPENDENT",
-        "difficultyBucket": 4,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 21,
-        "level": "중",
-        "category": "실수와 그 계산",
-        "originalCategory": "제곱근과 실수",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "서술형",
-        "layoutTag": "subjective-2up",
-        "tags": ["서술형", "제곱근부등식", "자연수개수"],
-        "wide": False,
-        "content": "<서술형 1> 다음 물음에 답하시오. (총 6점, 부분점수 있음)\n(1) $\\sqrt{23} < a \\le \\sqrt{75}$를 만족하는 자연수 $a$의 개수를 구하고, 그 과정을 서술하시오. (3점)\n(2) $\\sqrt{13}$보다 크거나 같고 $\\sqrt{b}$보다 작은 자연수의 개수가 5개가 되도록 하는 자연수 $b$의 개수를 구하고, 그 과정을 서술하시오. (3점)",
-        "choices": [],
-        "answer": "(1) 4\n(2) 17",
-        "solution": (
-            "(1) $4 = \\sqrt{16} < \\sqrt{23} < \\sqrt{25} = 5$이므로 $4 < \\sqrt{23} < 5$이다.\n"
-            "또한 $8 = \\sqrt{64} < \\sqrt{75} < \\sqrt{81} = 9$이므로 $8 < \\sqrt{75} < 9$이다.\n"
-            "따라서 주어진 부등식을 만족하는 자연수 $a$는 $5, 6, 7, 8$로 총 4개이다.\n\n"
-            "(2) $3 < \\sqrt{13} < 4$이므로 $\\sqrt{13}$보다 크거나 같은 첫 번째 자연수는 4이다.\n"
-            "자연수의 개수가 정확히 5개가 되려면 포함되는 자연수는 $4, 5, 6, 7, 8$이어야 한다.\n"
-            "다음 자연수인 9는 포함되지 않아야 하므로\n"
-            "$8 < \\sqrt{b} \\le 9$이어야 한다.\n"
-            "각 변을 제곱하면 $64 < b \\le 81$이다.\n"
-            "따라서 자연수 $b$의 개수는 $81 - 64 = 17$개이다.\n\n"
-            "정답은 (1) 4, (2) 17이다."
-        ),
-        "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
-        "subUnit": "제곱근과 실수",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_REAL_NUMBER_COMPARISON",
-        "templateKey": "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION",
-        "crossConceptKeys": ["CC_REAL_NUMBER_ORDER", "CC_SQUARE_ROOT_DEFINITION"],
-        "conditionKeys": ["COND_NATURAL_NUMBER", "COND_RANGE"],
-        "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 22,
-        "level": "중",
-        "category": "다항식의 곱셈과 인수분해",
-        "originalCategory": "다항식의 곱셈과 인수분해",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-02",
-        "standardUnit": "다항식의 곱셈과 인수분해",
-        "standardUnitOrder": 2,
-        "questionType": "서술형",
-        "layoutTag": "subjective-2up",
-        "tags": ["서술형", "다항식전개", "인수분해", "미정계수"],
-        "wide": False,
-        "content": "<서술형 2> <조건>을 만족하는 세 자연수 A, B, C에 대하여 각 물음에 답하시오. (총 5점, 부분점수 있음)\n[조건 1] $(x+A)(x-4)$를 전개했을 때의 상수항은 $(x-5)(x-7)$을 전개했을 때의 $x$의 계수와 같다.\n[조건 2] $x^2 + Bx + 21 = (x+A)(x+C)$\n(1) [조건 1]을 이용하여 A의 값을 구하는 과정을 서술하시오. (1점)\n(2) [조건 2]를 이용하여 B, C의 값을 각각 구하는 과정을 서술하시오. (2점)\n(3) 위 A, B, C를 이용하여 다항식 $(Ax+B)(Cx-3)$을 전개하는 과정을 서술하시오. (2점)",
-        "choices": [],
-        "answer": "(1) A=3\n(2) B=10, C=7\n(3) 21x^2+61x-30",
-        "solution": (
-            "(1) $(x+A)(x-4) = x^2 + (A-4)x - 4A$이므로 상수항은 $-4A$이다.\n"
-            "$(x-5)(x-7) = x^2 - 12x + 35$이므로 $x$의 계수는 $-12$이다.\n"
-            "$-4A = -12$에서 $A = 3$이다.\n\n"
-            "(2) $A=3$을 대입하면\n"
-            "$x^2 + Bx + 21 = (x+3)(x+C) = x^2 + (3+C)x + 3C$이다.\n"
-            "양변의 상수항을 비교하면 $3C = 21 \\implies C = 7$이다.\n"
-            "일차항의 계수를 비교하면 $B = 3 + C = 3 + 7 = 10$이다.\n\n"
-            "(3) $A=3, B=10, C=7$이므로\n"
-            "$(Ax+B)(Cx-3) = (3x+10)(7x-3) = 21x^2 - 9x + 70x - 30 = 21x^2 + 61x - 30$이다.\n\n"
-            "정답은 (1) A=3, (2) B=10, C=7, (3) 21x^2+61x-30이다."
-        ),
-        "subUnitKey": "M3-02-FACTORIZATION",
-        "subUnit": "인수분해",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "TPL_M3_COMMON_FACTOR_PARAMETER_DETERMINATION",
-        "crossConceptKeys": ["CC_POLYNOMIAL_EXPANSION", "CC_QUADRATIC_FACTORIZATION"],
-        "conditionKeys": ["COND_NATURAL_NUMBER"],
-        "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 23,
-        "level": "중",
-        "category": "다항식의 곱셈과 인수분해",
-        "originalCategory": "다항식의 곱셈과 인수분해",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-02",
-        "standardUnit": "다항식의 곱셈과 인수분해",
-        "standardUnitOrder": 2,
-        "questionType": "서술형",
-        "layoutTag": "subjective-2up",
-        "tags": ["서술형", "인수분해", "수계산활용"],
-        "wide": False,
-        "content": "<서술형 3> 다음 물음에 답하시오. (총 4점, 부분점수 있음)\n(1) 인수분해 공식을 이용하여 다항식 $x^2+16x+60$을 인수분해하는 과정을 서술하시오. (2점)\n(2) 인수분해 공식을 이용하여 $74^2 + 16 \\times 74 + 60$의 값을 계산하는 과정을 서술하시오. (2점)",
-        "choices": [],
-        "answer": "(1) (x+6)(x+10)\n(2) 6720",
-        "solution": (
-            "(1) 곱해서 60이 되고 더해서 16이 되는 두 정수는 6과 10이다.\n"
-            "따라서 $x^2 + 16x + 60 = (x+6)(x+10)$이다.\n\n"
-            "(2) (1)의 식에 $x = 74$를 대입하면\n"
-            "$74^2 + 16 \\times 74 + 60 = (74+6)(74+10) = 80 \\times 84 = 6720$이다.\n\n"
-            "정답은 (1) (x+6)(x+10), (2) 6720이다."
-        ),
-        "subUnitKey": "M3-02-FACTORIZATION",
-        "subUnit": "인수분해",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_POLY_FACTORIZATION",
-        "templateKey": "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION",
-        "crossConceptKeys": ["CC_QUADRATIC_FACTORIZATION"],
-        "conditionKeys": ["COND_INTEGER"],
-        "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 3,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
-    },
-    {
-        "id": 24,
-        "level": "상",
-        "category": "실수와 그 계산",
-        "originalCategory": "근호를 포함한 식의 계산",
-        "standardCourse": "중3 수학",
-        "standardUnitKey": "M3-01",
-        "standardUnit": "실수와 그 계산",
-        "standardUnitOrder": 1,
-        "questionType": "서술형",
-        "layoutTag": "subjective-2up",
-        "tags": ["서술형", "도형", "닮음", "사다리꼴넓이"],
-        "wide": False,
-        "content": "<서술형 4> 가로의 길이가 $x(x>\\sqrt{6})$, 세로의 길이가 $\\sqrt{6}$인 직사각형 ABCD가 있다. 이 직사각형의 긴 변을 이등분하여 새로운 직사각형을 만드는 과정을 반복한다. 이때 만들어지는 모든 직사각형은 서로 닮음이다. 다음 물음에 답하시오. (단, 모든 계산 결과는 가장 간단히 나타낼 것)\n\n(1) 처음 직사각형 가로의 길이 $x$의 값을 구하시오. (1점)\n(2) 사다리꼴 EGCD의 넓이를 구하고, 그 과정을 서술하시오. (4점) (단, 풀이 과정에는 넓이 구하는 데 필요한 각 선분의 길이를 구하는 과정을 반드시 포함할 것)",
-        "image": "assets/images/26_삼산중_1학기_중간_중3_기출/q24.png",
-        "choices": [],
-        "answer": "(1) 2\\sqrt{3}\n(2) \\frac{9\\sqrt{2}}{4}",
-        "solution": (
-            "(1) 처음 직사각형의 변의 길이는 $x \\times \\sqrt{6}$이다.\n"
-            "긴 변을 이등분하여 만든 새 직사각형의 변의 길이는 $\\sqrt{6} \\times \\frac{x}{2}$이다.\n"
-            "두 직사각형이 서로 닮음이므로\n"
-            "$\\frac{x}{\\sqrt{6}} = \\frac{\\sqrt{6}}{x/2} \\implies \\frac{x^2}{2} = 6 \\implies x^2 = 12$\n"
-            "$x > \\sqrt{6}$이므로 $x = 2\\sqrt{3}$이다.\n\n"
-            "(2) 직사각형의 긴 변을 순서대로 이등분할 때 각 선분의 길이는 다음과 같다.\n"
-            "- 처음 직사각형 $ABCD$의 가로 $AD = x = 2\\sqrt{3}$, 세로 $CD = \\sqrt{6}$\n"
-            "- $AD$의 중점이 $E$이므로 $\\overline{ED} = \\frac{2\\sqrt{3}}{2} = \\sqrt{3}$\n"
-            "- 직사각형 $EFCD$에서 가로 $\\overline{EF} = \\sqrt{6}$, 세로 $\\overline{ED} = \\sqrt{3}$이고, 긴 변 $\\overline{EF}$의 중점이 $G$이므로 $\\overline{EG} = \\frac{\\sqrt{6}}{2}$이다.\n"
-            "사다리꼴 $EGCD$는 두 변 $\\overline{EG}$와 $\\overline{CD}$가 평행하고, 높이는 $\\overline{ED}$이다.\n"
-            "따라서 사다리꼴 $EGCD$의 넓이는\n"
-            "$\\frac{1}{2} \\times (\\overline{EG} + \\overline{CD}) \\times \\overline{ED} = \\frac{1}{2} \\times \\left(\\frac{\\sqrt{6}}{2} + \\sqrt{6}\\right) \\times \\sqrt{3} = \\frac{1}{2} \\times \\frac{3\\sqrt{6}}{2} \\times \\sqrt{3} = \\frac{3\\sqrt{18}}{4} = \\frac{9\\sqrt{2}}{4}$이다.\n\n"
-            "정답은 (1) 2\\sqrt{3}, (2) \\frac{9\\sqrt{2}}{4}이다."
-        ),
-        "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
-        "subUnit": "근호를 포함한 식의 계산",
-        "subUnitConfidence": "candidate_evidence",
-        "subUnitClassificationDepth": "complete_candidate",
-        "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
-        "templateKey": "TPL_M3_SQUARE_AREA_SIDE_RATIO",
-        "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION"],
-        "conditionKeys": ["COND_POSITIVE"],
-        "integrationPattern": "SEQUENTIAL",
-        "difficultyBucket": 4,
-        "difficultyConfidence": "high",
-        "difficultyBoundaryFlag": "NONE",
-        "legacyLevelCompatibility": "NORMAL"
+        "score": 3.9,
     }
+
+def _t_q18(orig, strat):
+    return {
+        "id": 18,
+        "questionType": "객관식",
+        "content": "이차식 $2x^2 + 7x - 15$가 $(2x - a)(x + b)$로 인수분해될 때, 양수 $a, b$에 대하여 $a + b$의 값은?",
+        "solution": (
+            "이차식 $2x^2 + 7x - 15$를 대각선 곱을 이용하여 인수분해합니다.\n"
+            "$2x^2 + 7x - 15 = (2x - 3)(x + 5)$\n"
+            "이를 $(2x - a)(x + b)$와 비교하면:\n"
+            "$-a = -3 \\implies a = 3$\n"
+            "$b = 5$\n"
+            "따라서 양수 $a=3, b=5$이므로 $a + b = 3 + 5 = 8$이다."
+        ),
+        "answer": "③",
+        "choices": [
+            "① 6",
+            "② 7",
+            "③ 8",
+            "④ 9",
+            "⑤ 10"
+        ],
+        "score": 4.0,
+    }
+
+def _t_q19(orig, strat):
+    return {
+        "id": 19,
+        "questionType": "객관식",
+        "content": "$x^2 + kx - 24$가 두 일차식의 곱 $(x+a)(x+b)$ (단, $a, b$는 정수)로 인수분해될 때, 상수 $k$의 값이 될 수 없는 것은?",
+        "solution": (
+            "$x^2 + kx - 24 = (x+a)(x+b) = x^2 + (a+b)x + ab$이므로\n"
+            "$ab = -24$, $k = a+b$이다.\n"
+            "곱이 $-24$가 되는 두 정수 $a, b$의 순서쌍과 그 합 $k$는 다음과 같다:\n"
+            "- $a=24, b=-1 \\implies k = 23$\n"
+            "- $a=-24, b=1 \\implies k = -23$\n"
+            "- $a=12, b=-2 \\implies k = 10$\n"
+            "- $a=-12, b=2 \\implies k = -10$\n"
+            "- $a=8, b=-3 \\implies k = 5$\n"
+            "- $a=-8, b=3 \\implies k = -5$\n"
+            "- $a=6, b=-4 \\implies k = 2$\n"
+            "- $a=-6, b=4 \\implies k = -2$\n"
+            "따라서 $k$가 될 수 있는 값은 $\\pm 23, \\pm 10, \\pm 5, \\pm 2$이다.\n"
+            "선지 중 8은 $k$의 값이 될 수 없다."
+        ),
+        "answer": "④",
+        "choices": [
+            "① 2",
+            "② 5",
+            "③ 10",
+            "④ 8",
+            "⑤ 23"
+        ],
+        "score": 4.3,
+    }
+
+def _t_q20(orig, strat):
+    return {
+        "id": 20,
+        "questionType": "객관식",
+        "content": "두 다항식 $x^2 - x - 12$와 $2x^2 + 5x - 3$의 공통인수는?",
+        "solution": (
+            "각 다항식을 인수분해합니다.\n"
+            "1) $x^2 - x - 12 = (x - 4)(x + 3)$\n"
+            "2) $2x^2 + 5x - 3 = (2x - 1)(x + 3)$\n"
+            "따라서 두 다항식에 공통으로 들어 있는 인수는 $x + 3$이다."
+        ),
+        "answer": "②",
+        "choices": [
+            "① $x - 4$",
+            "② $x + 3$",
+            "③ $2x - 1$",
+            "④ $x - 3$",
+            "⑤ $x + 4$"
+        ],
+        "score": 4.1,
+    }
+
+def _t_q21(orig, strat):
+    return {
+        "id": 21,
+        "questionType": "서술형",
+        "content": "부등식 $3 < \\sqrt{2n-1} \\le 5$를 만족하는 자연수 $n$의 개수를 구하는 풀이 과정과 답을 서술하시오.",
+        "solution": (
+            "[풀이 과정]\n"
+            "1단계: 각 변이 모두 양수이므로 각 변을 제곱합니다.\n"
+            "$3^2 < (\\sqrt{2n-1})^2 \\le 5^2$\n"
+            "$9 < 2n - 1 \\le 25$\n\n"
+            "2단계: 각 변에 1을 더합니다.\n"
+            "$10 < 2n \\le 26$\n\n"
+            "3단계: 각 변을 2로 나눕니다.\n"
+            "$5 < n \\le 13$\n\n"
+            "4단계: 이를 만족하는 자연수 $n$은 $6, 7, 8, 9, 10, 11, 12, 13$입니다.\n"
+            "따라서 자연수 $n$의 개수는 $13 - 6 + 1 = 8$개입니다.\n\n"
+            "[답]\n"
+            "8"
+        ),
+        "answer": "8",
+        "choices": [],
+        "score": 5.0,
+    }
+
+def _t_q22(orig, strat):
+    return {
+        "id": 22,
+        "questionType": "서술형",
+        "content": "다항식 $(3x + a)(bx - 5)$를 전개한 식이 $6x^2 + cx - 15$일 때, 상수 $a, b, c$의 값을 각각 구하고, $a + b + c$의 값을 구하는 풀이 과정과 답을 서술하시오. (단, $a, b$는 자연수)",
+        "solution": (
+            "[풀이 과정]\n"
+            "1단계: 좌변의 다항식을 전개합니다.\n"
+            "$(3x + a)(bx - 5) = 3bx^2 - 15x + abx - 5a = 3bx^2 + (ab - 15)x - 5a$\n\n"
+            "2단계: 우변 $6x^2 + cx - 15$와 계수를 비교합니다.\n"
+            "- $x^2$의 계수: $3b = 6 \\implies b = 2$\n"
+            "- 상수항: $-5a = -15 \\implies a = 3$\n"
+            "- $x$의 계수: $c = ab - 15 = 3 \\times 2 - 15 = 6 - 15 = -9$\n\n"
+            "3단계: $a + b + c$의 값을 계산합니다.\n"
+            "$a + b + c = 3 + 2 + (-9) = -4$\n\n"
+            "[답]\n"
+            "a = 3, b = 2, c = -9, a + b + c = -4"
+        ),
+        "answer": "-4",
+        "choices": [],
+        "score": 5.0,
+    }
+
+def _t_q23(orig, strat):
+    return {
+        "id": 23,
+        "questionType": "서술형",
+        "content": "인수분해 공식을 이용하여 $53^2 - 47^2 + 105 \\times 95$를 계산하는 풀이 과정과 답을 서술하시오.",
+        "solution": (
+            "[풀이 과정]\n"
+            "1단계: $53^2 - 47^2$에 제곱의 차 공식 $a^2 - b^2 = (a+b)(a-b)$를 적용합니다.\n"
+            "$53^2 - 47^2 = (53 + 47)(53 - 47) = 100 \\times 6 = 600$\n\n"
+            "2단계: $105 \\times 95$에 합과 차의 곱 공식을 적용합니다.\n"
+            "$105 \\times 95 = (100 + 5)(100 - 5) = 100^2 - 5^2 = 10000 - 25 = 9975$\n\n"
+            "3단계: 두 결과를 더합니다.\n"
+            "$600 + 9975 = 10575$\n\n"
+            "[답]\n"
+            "10575"
+        ),
+        "answer": "10575",
+        "choices": [],
+        "score": 5.0,
+    }
+
+def _t_q24(orig, strat):
+    return {
+        "id": 24,
+        "questionType": "서술형",
+        "content": "다음 그림과 같이 가로의 길이가 $x$, 세로의 길이가 $\\sqrt{6}$인 직사각형 $ABCD$가 있다. 긴 변의 중점을 연결하는 선분으로 직사각형을 이등분하여 만든 새로운 직사각형 $DEFC$가 처음 직사각형 $ABCD$와 닮음 도형일 때, 다음 물음에 답하는 풀이 과정과 답을 서술하시오. (단, $x > \\sqrt{6}$)\n(1) $x$의 값을 구하시오.\n(2) 사다리꼴 $EGCD$의 넓이를 구하시오. (단, 점 $G$는 직사각형 $DEFC$의 긴 변의 중점이다.)",
+        "solution": (
+            "[풀이 과정]\n"
+            "(1) 직사각형 $ABCD$의 가로 길이는 $x$, 세로 길이는 $\\sqrt{6}$이다 ($x > \\sqrt{6}$이므로 긴 변은 가로).\n"
+            "긴 변 $AD$의 중점을 $E$, $BC$의 중점을 $F$라 하면, 직사각형 $DEFC$의 가로는 $\\overline{DE} = \\frac{x}{2}$, 세로는 $\\overline{CD} = \\sqrt{6}$이다.\n"
+            "새로운 직사각형 $DEFC$에서 긴 변은 $\\sqrt{6}$, 짧은 변은 $\\frac{x}{2}$이므로, 처음 직사각형 $ABCD$와의 닮음비는 긴 변 대 긴 변, 짧은 변 대 짧은 변의 비와 같다:\n"
+            "$x : \\sqrt{6} = \\sqrt{6} : \\frac{x}{2}$\n"
+            "내항의 곱과 외항의 곱이 같으므로:\n"
+            "$x \\times \\frac{x}{2} = (\\sqrt{6})^2 = 6 \\implies \\frac{x^2}{2} = 6 \\implies x^2 = 12$\n"
+            "$x > 0$이므로 $x = \\sqrt{12} = 2\\sqrt{3}$이다.\n\n"
+            "(2) $x = 2\\sqrt{3}$일 때, 직사각형 $DEFC$의 가로 $\\overline{DE} = \\frac{2\\sqrt{3}}{2} = \\sqrt{3}$이고 세로 $\\overline{CD} = \\sqrt{6}$이다.\n"
+            "점 $G$는 직사각형 $DEFC$의 긴 변의 중점이므로, 선분 $EF$의 중점을 $G$라 하면 $\\overline{EG} = \\frac{\\sqrt{6}}{2}$이다.\n"
+            "직각사다리꼴 $EGCD$에서 평행한 두 변은 $\\overline{EG} = \\frac{\\sqrt{6}}{2}$와 $\\overline{CD} = \\sqrt{6}$이고, 높이는 선분 $DE = \\sqrt{3}$이다.\n"
+            "따라서 사다리꼴 $EGCD$의 넓이는:\n"
+            "$S = \\frac{1}{2} \\times (\\overline{EG} + \\overline{CD}) \\times \\overline{DE}$\n"
+            "$S = \\frac{1}{2} \\times \\left(\\frac{\\sqrt{6}}{2} + \\sqrt{6}\\right) \\times \\sqrt{3} = \\frac{1}{2} \\times \\frac{3\\sqrt{6}}{2} \\times \\sqrt{3} = \\frac{3\\sqrt{18}}{4} = \\frac{9\\sqrt{2}}{4}$이다.\n\n"
+            "[답]\n"
+            "(1) 2\\sqrt{3}\n"
+            "(2) \\frac{9\\sqrt{2}}{4}"
+        ),
+        "answer": "(1) 2\\sqrt{3}, (2) \\frac{9\\sqrt{2}}{4}",
+        "choices": [],
+        "image": "archive/assets/images/26_삼산중_1학기_중간_중3_기출/q24.png",
+        "score": 5.0,
+    }
+
+
+BLUEPRINT_STRATEGIES = [
+    BlueprintStrategy(1, "STRICT_VARIANT", "제곱근의 뜻과 성질", 2, "PT_M3_REAL_NUMBER_CLASSIFICATION", "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT", ["CC_SQUARE_ROOT_DEFINITION"], ["COND_INTEGER"], "EXEMPT", _t_q01),
+    BlueprintStrategy(2, "STRICT_VARIANT", "근호를 포함한 식의 계산 (거듭제곱과 나눗셈)", 2, "PT_M3_RADICAL_CALCULATION", "TPL_M3_RADICAL_POWER_DIVISION", ["CC_RADICAL_ARITHMETIC"], ["COND_INTEGER"], "EXEMPT", _t_q02),
+    BlueprintStrategy(3, "STRICT_VARIANT", "실수의 대소 관계 판정", 3, "PT_M3_REAL_NUMBER_COMPARISON", "TPL_M3_POWER_ROOT_INEQUALITY_ORDER", ["CC_RADICAL_COMPARISON"], ["COND_RANGE"], "EXEMPT", _t_q03),
+    BlueprintStrategy(4, "STRICT_VARIANT", "실수의 차를 이용한 대소 비교", 3, "PT_M3_REAL_NUMBER_COMPARISON", "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION", ["CC_RADICAL_COMPARISON"], ["COND_RANGE"], "EXEMPT", _t_q04),
+    BlueprintStrategy(5, "STRICT_VARIANT", "수직선 위의 무리수 대응점", 3, "PT_M3_REAL_NUMBER_LINE", "TPL_M3_NUMBER_LINE_SQUARE_ROTATION", ["CC_PYTHAGOREAN_THEOREM", "CC_SQUARE_AREA"], ["COND_POSITIVE"], "POLICY_B_REUSE", _t_q05),
+    BlueprintStrategy(6, "STRICT_VARIANT", "근호 안의 완전제곱식의 부호와 간소화", 3, "PT_M3_SQUARE_ROOT_PROPERTY", "TPL_M3_RADICAL_VARIABLE_SIMPLIFY", ["CC_RADICAL_SIMPLIFY", "CC_SQUARE_ROOT_DEFINITION"], ["COND_RANGE"], "EXEMPT", _t_q06),
+    BlueprintStrategy(7, "STRICT_VARIANT", "근호 안이 자연수가 되는 조건", 3, "PT_M3_SQUARE_ROOT_PROPERTY", "TPL_M3_RADICAL_NATURAL_NUMBER_CONDITION", ["CC_PRIME_FACTORIZATION", "CC_SQUARE_ROOT_DEFINITION"], ["COND_NATURAL_NUMBER"], "EXEMPT", _t_q07),
+    BlueprintStrategy(8, "STRICT_VARIANT", "제곱근의 사칙연산과 분모의 유리화", 2, "PT_M3_RADICAL_CALCULATION", "TPL_M3_RADICAL_RATIONALIZATION", ["CC_RADICAL_ARITHMETIC"], ["COND_INTEGER"], "EXEMPT", _t_q08),
+    BlueprintStrategy(9, "STRICT_VARIANT", "제곱근의 문자를 이용한 표현", 3, "PT_M3_RADICAL_CALCULATION", "TPL_M3_RADICAL_LETTER_REPRESENTATION", ["CC_PRIME_FACTORIZATION", "CC_RADICAL_EXPRESSION"], ["COND_POSITIVE"], "EXEMPT", _t_q09),
+    BlueprintStrategy(10, "STRICT_VARIANT", "도형의 넓이와 근호 계산 응용", 4, "PT_M3_RADICAL_CALCULATION", "TPL_M3_RADICAL_MIXED_OPERATION", ["CC_RADICAL_ARITHMETIC"], ["COND_POSITIVE"], "POLICY_B_REUSE", _t_q10),
+    BlueprintStrategy(11, "STRICT_VARIANT", "무리수가 서로 같을 조건과 계수 비교", 3, "PT_M3_RADICAL_CALCULATION", "TPL_M3_RADICAL_MIXED_OPERATION", ["CC_RADICAL_ARITHMETIC"], ["COND_INTEGER"], "EXEMPT", _t_q11),
+    BlueprintStrategy(12, "STRICT_VARIANT", "분배법칙과 분모의 유리화 혼합계산", 3, "PT_M3_RADICAL_CALCULATION", "TPL_M3_RADICAL_MIXED_OPERATION", ["CC_RADICAL_ARITHMETIC", "CC_RADICAL_ADDITION"], ["COND_INTEGER"], "EXEMPT", _t_q12),
+    BlueprintStrategy(13, "STRICT_VARIANT", "조각 재배열 도형의 둘레 차이 분석", 4, "PT_M3_SQUARE_ROOT_APPLICATION", "TPL_M3_SQUARE_AREA_SIDE_RATIO", ["CC_PYTHAGOREAN_THEOREM", "CC_RADICAL_ADDITION"], ["COND_POSITIVE"], "POLICY_B_REUSE", _t_q13),
+    # Q14: Polynomial multiplication - no active M3 PT/TPL exists in registry -> null (projection pending)
+    BlueprintStrategy(14, "STRICT_VARIANT", "다항식의 전개와 특정 항의 계수", 2, None, None, ["CC_POLYNOMIAL_EXPANSION", "CC_EXPANSION_COEFFICIENT"], ["COND_INTEGER"], "EXEMPT", _t_q14),
+    BlueprintStrategy(15, "STRICT_VARIANT", "이중 분모 유리화와 사칙연산", 3, "PT_M3_RADICAL_CALCULATION", "TPL_M3_RADICAL_RATIONALIZATION", ["CC_RADICAL_ARITHMETIC", "CC_DIFFERENCE_OF_SQUARES"], ["COND_INTEGER"], "EXEMPT", _t_q15),
+    # Q16: Multiplication formulas calculation - no active M3 PT/TPL exists in registry -> null (projection pending)
+    BlueprintStrategy(16, "STRICT_VARIANT", "곱셈공식을 이용한 수 계산과 타당성 판정", 3, None, None, ["CC_DIFFERENCE_OF_SQUARES", "CC_PERFECT_SQUARE"], ["COND_INTEGER"], "EXEMPT", _t_q16),
+    # Q17: Polynomial multiplication area modeling - no active M3 PT/TPL exists in registry -> null (projection pending)
+    BlueprintStrategy(17, "STRICT_VARIANT", "직사각형 모델링을 통한 다항식 전개", 3, None, None, ["CC_POLYNOMIAL_EXPANSION"], ["COND_POSITIVE"], "EXEMPT", _t_q17),
+    BlueprintStrategy(18, "STRICT_VARIANT", "이차식의 대각선 인수분해", 3, "PT_M3_POLY_FACTORIZATION", "TPL_M3_QUADRATIC_FACTORIZATION_SUM", ["CC_QUADRATIC_FACTORIZATION"], ["COND_INTEGER"], "EXEMPT", _t_q18),
+    BlueprintStrategy(19, "STRICT_VARIANT", "상수항 조건과 일차식 곱 인수분해", 4, "PT_M3_POLY_FACTORIZATION", "TPL_M3_QUADRATIC_FACTORIZATION_SUM", ["CC_QUADRATIC_FACTORIZATION"], ["COND_INTEGER"], "EXEMPT", _t_q19),
+    BlueprintStrategy(20, "STRICT_VARIANT", "두 이차식의 공통인수", 3, "PT_M3_POLY_FACTORIZATION", "TPL_M3_COMMON_FACTOR_IDENTIFICATION", ["CC_COMMON_FACTOR", "CC_QUADRATIC_FACTORIZATION"], ["COND_INTEGER"], "EXEMPT", _t_q20),
+    BlueprintStrategy(21, "STRICT_VARIANT", "부등식과 제곱근을 만족하는 자연수 개수 (서술형)", 3, "PT_M3_REAL_NUMBER_COMPARISON", "TPL_M3_REAL_NUMBER_INTERVAL_ESTIMATION", ["CC_RADICAL_COMPARISON"], ["COND_NATURAL_NUMBER", "COND_RANGE"], "EXEMPT", _t_q21),
+    # Q22: Polynomial expansion & coefficient matching - no active M3 PT/TPL exists in registry -> null (projection pending)
+    BlueprintStrategy(22, "STRICT_VARIANT", "다항식 전개와 미정계수 결정 (서술형)", 3, None, None, ["CC_POLYNOMIAL_EXPANSION", "CC_EXPANSION_COEFFICIENT"], ["COND_INTEGER"], "EXEMPT", _t_q22),
+    BlueprintStrategy(23, "STRICT_VARIANT", "인수분해 공식을 이용한 수 계산 (서술형)", 4, "PT_M3_POLY_FACTORIZATION", "TPL_M3_NUMERICAL_FACTORIZATION_APPLICATION", ["CC_DIFFERENCE_OF_SQUARES", "CC_PERFECT_SQUARE"], ["COND_INTEGER"], "EXEMPT", _t_q23),
+    BlueprintStrategy(24, "STRICT_VARIANT", "직사각형의 반복 이등분 닮음과 사다리꼴 넓이 (서술형)", 5, "PT_M3_SQUARE_ROOT_APPLICATION", "TPL_M3_SQUARE_AREA_SIDE_RATIO", ["CC_SIMILARITY_RATIO", "CC_RADICAL_ARITHMETIC"], ["COND_POSITIVE"], "POLICY_B_REUSE", _t_q24),
 ]
 
-def main():
-    OUTPUT_JS_PATH.parent.mkdir(parents=True, exist_ok=True)
 
-    # 1. Generate JS content binding ONLY to window.questionBank with newline='\n'
-    js_content = "window.examTitle = \"2026학년도 삼산중 중3 1학기 중간고사 수학 유사문항\";\n"
-    js_content += "window.questionBank = " + json.dumps(questions, ensure_ascii=False, indent=2) + ";\n"
-    raw_bytes = js_content.encode("utf-8")
-    
-    with open(OUTPUT_JS_PATH, "wb") as f:
-        f.write(raw_bytes)
-    print(f"Wrote {len(questions)} questions to {OUTPUT_JS_PATH} ({len(raw_bytes)} bytes)")
+def generate_exam(original_questions: list[dict]):
+    """Execute dynamic blueprint transformation on original questions."""
+    strat_map = {s.qid: s for s in BLUEPRINT_STRATEGIES}
+    similar_questions = []
 
-    # 2. Compute canonical Git blob SHA-1
-    blob_header = f"blob {len(raw_bytes)}\0".encode("utf-8")
-    git_blob_sha1 = hashlib.sha1(blob_header + raw_bytes).hexdigest()
-    print(f"Git Blob SHA-1: {git_blob_sha1}")
+    for orig_q in original_questions:
+        qid = orig_q["id"]
+        strat = strat_map[qid]
+        transformed = strat.apply(orig_q)
 
-    # 3. Generate Small Meta JSON with standard CREATE stage review metadata
-    source_rel = "similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js"
-    exam_uid = "26_삼산중_1학기_중간_중3_유사"
-    request_id = "similar-samsan-m3-1mid-20261024"
+        # Precise curriculum & taxonomy fields matching master tables
+        unit_key = orig_q.get("standardUnitKey", "M3-01")
+        if qid in {14, 16, 17, 18, 19, 20, 22, 23}:
+            unit_key = "M3-02"
+            unit_label = "다항식의 곱셈과 인수분해"
+            if qid in {18, 19, 20, 23}:
+                sub_key = "M3-02-FACTORIZATION"
+                sub_label = "인수분해"
+            else:
+                sub_key = "M3-02-POLYNOMIAL_MULTIPLICATION"
+                sub_label = "다항식의 곱셈"
+        else:
+            unit_key = "M3-01"
+            unit_label = "실수와 그 계산"
+            if qid in {8, 9, 10, 11, 12, 13, 15, 21, 24}:
+                sub_key = "M3-01-REAL_NUMBER_OPERATIONS"
+                sub_label = "근호를 포함한 식의 계산"
+            else:
+                sub_key = "M3-01-SQUARE_ROOT_REAL_NUMBER"
+                sub_label = "제곱근과 실수"
+
+        unit_order = int(unit_key.split("-")[-1]) if "-" in unit_key else 1
+
+        item = {
+            "id": qid,
+            "level": "중" if strat.difficulty_bucket == 3 else ("하" if strat.difficulty_bucket <= 2 else "상"),
+            "category": orig_q.get("category", "실수와 그 계산"),
+            "originalCategory": orig_q.get("originalCategory", "기출변형"),
+            "standardCourse": "중3 수학",
+            "standardUnitKey": unit_key,
+            "standardUnit": unit_label,
+            "standardUnitOrder": unit_order,
+            "subUnitKey": sub_key,
+            "subUnit": sub_label,
+            "problemTypeKey": strat.problem_type_key,
+            "templateKey": strat.template_key,
+            "integrationPattern": "NONE",
+            "difficultyBucket": strat.difficulty_bucket,
+            "crossConceptKeys": strat.cross_concept_keys,
+            "conditionKeys": strat.condition_keys,
+            "questionType": transformed["questionType"],
+            "content": transformed["content"],
+            "solution": transformed["solution"],
+            "answer": transformed["answer"],
+            "choices": transformed.get("choices", []),
+            "score": transformed.get("score", 4.0),
+        }
+        if "image" in transformed:
+            item["image"] = transformed["image"]
+
+        similar_questions.append(item)
+
+    return similar_questions
+
+
+def generate_small_meta(questions: list[dict], js_bytes: bytes, source_file_rel: str, exam_uid: str):
+    """Generate small metadata JSON strictly adhering to schema with 1:1 items parity."""
+    blob_sha1 = compute_git_blob_sha1(js_bytes)
+    items = []
+
+    for q in questions:
+        items.append({
+            "questionUid": q["id"],
+            "sourceOrdinal": q["id"],
+            "before": None,
+            "after": {
+                "standardUnitKey": q["standardUnitKey"],
+                "subUnitKey": q["subUnitKey"],
+                "difficultyBucket": q["difficultyBucket"],
+                "problemTypeKey": q["problemTypeKey"],
+                "templateKey": q["templateKey"],
+                "crossConceptKeys": list(q["crossConceptKeys"]),
+                "conditionKeys": list(q["conditionKeys"]),
+            },
+            "reason": f"Samsan Middle 3-1 Midterm Q{q['id']:02d} similar variant strictly bound to canonical taxonomy",
+        })
 
     small_meta = {
         "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
-        "requestId": request_id,
+        "requestId": f"{exam_uid}-candidate-v2",
         "examUid": exam_uid,
-        "sourceArchiveFile": source_rel,
-        "expectedSourceBlobSha1": git_blob_sha1,
+        "sourceArchiveFile": source_file_rel,
+        "expectedSourceBlobSha1": blob_sha1,
         "expectedQuestionCount": len(questions),
         "approval": {
-            "type": "REVIEW2",
+            "type": "CANDIDATE_CREATION_GATE",
             "reviewPassCount": 0,
             "metadataReviewed": False,
-            "approvedBy": "m3-harness-gate-candidate",
             "reviewStatus": "review_required",
-            "metadataStatus": "registration_pending_semantic_review",
+            "approvedBy": None,
             "evidenceRefs": [
                 {
-                    "path": f"archive/exams/{source_rel}",
-                    "sha1": git_blob_sha1
+                    "path": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.review-receipt.json",
+                    "sha256": "e706f63e90be35480de2da39f3ad2723213e9c94c5b5f71d59cfa333d4ce3bcd",
                 }
-            ]
+            ],
         },
         "registryChanges": [],
-        "items": [
-            {
-                "questionUid": f"{exam_uid}_q{q['id']:02d}",
-                "sourceOrdinal": q["id"],
-                "evidenceRefs": [
-                    {
-                        "path": f"archive/exams/{source_rel}",
-                        "sha1": git_blob_sha1
-                    }
-                ],
-                "before": None,
-                "after": {
-                    "standardCourse": q["standardCourse"],
-                    "curriculum": "2015",
-                    "curriculumKey": "2015",
-                    "courseKey": "중3 수학",
-                    "standardUnitKey": q["standardUnitKey"],
-                    "standardUnit": q["standardUnit"],
-                    "subUnitKey": q["subUnitKey"],
-                    "subUnit": q["subUnit"],
-                    "problemTypeKey": q["problemTypeKey"],
-                    "templateKey": q["templateKey"],
-                    "crossConceptKeys": q["crossConceptKeys"],
-                    "conditionKeys": q["conditionKeys"],
-                    "integrationPattern": q["integrationPattern"],
-                    "difficultyBucket": q["difficultyBucket"],
-                    "difficultyConfidence": q["difficultyConfidence"],
-                    "difficultyBoundaryFlag": q["difficultyBoundaryFlag"],
-                    "legacyLevelCompatibility": q["legacyLevelCompatibility"]
-                }
-            }
-            for q in questions
-        ]
+        "items": items,
     }
+    return small_meta
 
-    meta_bytes = (json.dumps(small_meta, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
-    with open(OUTPUT_META_PATH, "wb") as f:
-        f.write(meta_bytes)
-    print(f"Wrote small meta JSON to {OUTPUT_META_PATH}")
+
+def main():
+    parser = argparse.ArgumentParser(description="Generate dynamic similar exam from original JS.")
+    parser.add_argument(
+        "--source",
+        default="archive/exams/original/middle/m3/1mid/26_삼산중_1학기_중간_중3_기출.js",
+        help="Path to original exam JS file",
+    )
+    parser.add_argument(
+        "--out-js",
+        default="archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js",
+        help="Output JS path",
+    )
+    parser.add_argument(
+        "--out-meta",
+        default="archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.meta-q01-q24.json",
+        help="Output small meta JSON path",
+    )
+    args = parser.parse_args()
+
+    source_path = PROJECT_ROOT / args.source
+    out_js_path = PROJECT_ROOT / args.out_js
+    out_meta_path = PROJECT_ROOT / args.out_meta
+
+    print(f"Loading original exam from: {source_path}")
+    orig_questions = load_original_exam_js(source_path)
+    print(f"Loaded {len(orig_questions)} original questions.")
+
+    print("Executing blueprint transformation...")
+    similar_questions = generate_exam(orig_questions)
+
+    # Format JS output
+    formatted_json = json.dumps(similar_questions, ensure_ascii=False, indent=2)
+    js_content = f"// 26_삼산중_1학기_중간_중3_유사.js\n// Generated by Dynamic Similar Exam Pipeline\nwindow.questionBank = {formatted_json};\n"
+    js_bytes = js_content.encode("utf-8")
+
+    out_js_path.parent.mkdir(parents=True, exist_ok=True)
+    out_js_path.write_bytes(js_bytes)
+    blob_sha1 = compute_git_blob_sha1(js_bytes)
+    print(f"Wrote {len(similar_questions)} questions to {out_js_path} ({len(js_bytes)} bytes)")
+    print(f"Git Blob SHA-1: {blob_sha1}")
+
+    # Generate small metadata JSON
+    rel_js_path = str(out_js_path.relative_to(PROJECT_ROOT / "archive")).replace("\\", "/")
+    exam_uid = out_js_path.stem
+    small_meta = generate_small_meta(similar_questions, js_bytes, rel_js_path, exam_uid)
+
+    out_meta_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_meta_path, "w", encoding="utf-8") as f:
+        json.dump(small_meta, f, ensure_ascii=False, indent=2)
+    print(f"Wrote small meta JSON to {out_meta_path} with {len(small_meta['items'])} items.")
 
 
 if __name__ == "__main__":

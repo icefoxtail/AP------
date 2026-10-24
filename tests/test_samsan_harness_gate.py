@@ -9,6 +9,8 @@ Verifies that deliberate defect injections are caught fail-closed across all 5 l
 - Taxonomy registry (PT/TPL) verification
 - difficultyBucket integer validation
 - Approval forging rejection
+- Premature REVIEW2 type rejection
+- Items 1:1 parity and empty items rejection
 - Git blob SHA-1 byte parity
 """
 
@@ -45,6 +47,7 @@ class TestM3HarnessGate(unittest.TestCase):
                 "difficultyBucket": 3,
                 "crossConceptKeys": ["CC_SQUARE_ROOT_DEFINITION"],
                 "conditionKeys": ["COND_INTEGER"],
+                "score": 5.0 if is_descriptive else 4.0,
             }
             if is_visual:
                 q["image"] = f"archive/assets/images/26_삼산중_1학기_중간_중3_기출/q{i:02d}.png"
@@ -55,6 +58,25 @@ class TestM3HarnessGate(unittest.TestCase):
         cls.valid_js_bytes = cls.valid_js_text.encode("utf-8")
         cls.valid_blob_sha1 = compute_git_blob_sha1(cls.valid_js_bytes)
 
+        # Valid Small Meta Items
+        cls.valid_items = []
+        for q in cls.valid_fixture:
+            cls.valid_items.append({
+                "questionUid": q["id"],
+                "sourceOrdinal": q["id"],
+                "before": None,
+                "after": {
+                    "standardUnitKey": q["standardUnitKey"],
+                    "subUnitKey": q["subUnitKey"],
+                    "difficultyBucket": q["difficultyBucket"],
+                    "problemTypeKey": q["problemTypeKey"],
+                    "templateKey": q["templateKey"],
+                    "crossConceptKeys": list(q["crossConceptKeys"]),
+                    "conditionKeys": list(q["conditionKeys"]),
+                },
+                "reason": "Valid test item",
+            })
+
         # Valid Small Meta
         cls.valid_small_meta = {
             "schemaVersion": "archive-reviewed-exam-meta-register-request-v2",
@@ -64,20 +86,61 @@ class TestM3HarnessGate(unittest.TestCase):
             "expectedSourceBlobSha1": cls.valid_blob_sha1,
             "expectedQuestionCount": 24,
             "approval": {
-                "type": "REVIEW2",
+                "type": "CANDIDATE_CREATION_GATE",
                 "reviewPassCount": 0,
                 "metadataReviewed": False,
                 "reviewStatus": "review_required",
             },
             "registryChanges": [],
-            "items": [],
+            "items": cls.valid_items,
         }
 
     def test_clean_fixture_passes(self):
-        """A clean, valid 24-question set passes all layers."""
+        """A clean, valid 24-question set with full items passes all layers."""
         res = self.gate.validate_exam(self.valid_fixture, self.valid_js_bytes, self.valid_small_meta)
         self.assertEqual(res["status"], "PASS")
         self.assertEqual(res["findingsCount"], 0)
+
+    def test_score_sum_mismatch_rejected(self):
+        """Score sum not equal to 100.0 must fail closed."""
+        bad = copy.deepcopy(self.valid_fixture)
+        bad[-1]["score"] = 7.0  # total becomes 102.0
+        js_text = "window.questionBank = " + json.dumps(bad) + ";\n"
+        js_bytes = js_text.encode("utf-8")
+        meta = copy.deepcopy(self.valid_small_meta)
+        meta["expectedSourceBlobSha1"] = compute_git_blob_sha1(js_bytes)
+        res = self.gate.validate_exam(bad, js_bytes, meta)
+        self.assertEqual(res["status"], "BLOCKED")
+        codes = [f["code"] for f in res["findings"]]
+        self.assertIn("SCORE_SUM_MISMATCH", codes)
+
+    def test_empty_items_rejected(self):
+        """Empty items list must fail closed."""
+        meta = copy.deepcopy(self.valid_small_meta)
+        meta["items"] = []
+        res = self.gate.validate_exam(self.valid_fixture, self.valid_js_bytes, meta)
+        self.assertEqual(res["status"], "BLOCKED")
+        codes = [f["code"] for f in res["findings"]]
+        self.assertIn("SMALL_META_ITEMS_COUNT_MISMATCH", codes)
+
+    def test_item_field_mismatch_rejected(self):
+        """Mismatch between question metadata and small meta item must fail closed."""
+        meta = copy.deepcopy(self.valid_small_meta)
+        meta["items"][0]["after"]["difficultyBucket"] = 5  # fixture has 3
+        res = self.gate.validate_exam(self.valid_fixture, self.valid_js_bytes, meta)
+        self.assertEqual(res["status"], "BLOCKED")
+        codes = [f["code"] for f in res["findings"]]
+        self.assertIn("ITEM_DIFFICULTY_BUCKET_MISMATCH", codes)
+
+    def test_premature_review2_declaration_rejected(self):
+        """approval.type: REVIEW2 with passCount=0 must fail closed."""
+        meta = copy.deepcopy(self.valid_small_meta)
+        meta["approval"]["type"] = "REVIEW2"
+        meta["approval"]["reviewPassCount"] = 0
+        res = self.gate.validate_exam(self.valid_fixture, self.valid_js_bytes, meta)
+        self.assertEqual(res["status"], "BLOCKED")
+        codes = [f["code"] for f in res["findings"]]
+        self.assertIn("PREMATURE_REVIEW2_DECLARATION", codes)
 
     def test_missing_raw_js_bytes_blocked(self):
         """Omitting raw_js_bytes must fail-closed."""
@@ -127,6 +190,7 @@ class TestM3HarnessGate(unittest.TestCase):
         js_text = "window.questionBank = " + json.dumps(bad) + ";\n"
         js_bytes = js_text.encode("utf-8")
         meta = copy.deepcopy(self.valid_small_meta)
+        meta["items"][0]["after"]["difficultyBucket"] = "D3"
         meta["expectedSourceBlobSha1"] = compute_git_blob_sha1(js_bytes)
         res = self.gate.validate_exam(bad, js_bytes, meta)
         self.assertEqual(res["status"], "BLOCKED")
@@ -140,6 +204,7 @@ class TestM3HarnessGate(unittest.TestCase):
         js_text = "window.questionBank = " + json.dumps(bad) + ";\n"
         js_bytes = js_text.encode("utf-8")
         meta = copy.deepcopy(self.valid_small_meta)
+        meta["items"][0]["after"]["problemTypeKey"] = "PT_INVENTED_KEY_XYZ"
         meta["expectedSourceBlobSha1"] = compute_git_blob_sha1(js_bytes)
         res = self.gate.validate_exam(bad, js_bytes, meta)
         self.assertEqual(res["status"], "BLOCKED")
@@ -149,12 +214,11 @@ class TestM3HarnessGate(unittest.TestCase):
     def test_template_parent_mismatch_rejected(self):
         """Template whose parent doesn't match declared problemTypeKey must fail closed."""
         bad = copy.deepcopy(self.valid_fixture)
-        # TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT has parent PT_M3_REAL_NUMBER_CLASSIFICATION
-        # Change problemTypeKey to PT_M3_RADICAL_CALCULATION
         bad[0]["problemTypeKey"] = "PT_M3_RADICAL_CALCULATION"
         js_text = "window.questionBank = " + json.dumps(bad) + ";\n"
         js_bytes = js_text.encode("utf-8")
         meta = copy.deepcopy(self.valid_small_meta)
+        meta["items"][0]["after"]["problemTypeKey"] = "PT_M3_RADICAL_CALCULATION"
         meta["expectedSourceBlobSha1"] = compute_git_blob_sha1(js_bytes)
         res = self.gate.validate_exam(bad, js_bytes, meta)
         self.assertEqual(res["status"], "BLOCKED")

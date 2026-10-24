@@ -137,6 +137,14 @@ class M3HarnessGate:
                 f"Expected exactly {expected_question_count} questions, got {len(questions)}",
             )
 
+        total_score = round(sum(q.get("score", 0.0) for q in questions), 2)
+        if total_score != 100.0:
+            add_finding(
+                "LAYER_1_SCHEMA",
+                "SCORE_SUM_MISMATCH",
+                f"Total score must sum to 100.0, got {total_score}",
+            )
+
         for idx, q in enumerate(questions, start=1):
             qid = q.get("id")
             if qid != idx:
@@ -255,16 +263,23 @@ class M3HarnessGate:
                 if cond not in self.valid_conditions:
                     add_finding("LAYER_4_META_PARITY", "METADATA_CONDITION_KEY_INVALID", f"conditionKey '{cond}' is not in compiled condition_registry.json", qid=qid)
 
-        # --- Layer 5: Small JSON Contract, Blob Parity & Approval Guard ---
+        # --- Layer 5: Small JSON Contract, Blob Parity, Items Parity & Approval Guard ---
         expected_schema = "archive-reviewed-exam-meta-register-request-v2"
         schema = small_meta.get("schemaVersion")
         if schema != expected_schema:
             add_finding("LAYER_5_CONTRACT_PARITY", "SMALL_META_SCHEMA_INVALID", f"Expected schema '{expected_schema}', got '{schema}'")
 
-        # Approval status guard: CREATE stage must NOT forge reviewed_pass
+        # Approval status guard: CREATE stage must NOT forge reviewed_pass or premature REVIEW2
         approval = small_meta.get("approval", {})
-        if approval.get("reviewStatus") == "reviewed_pass" or approval.get("reviewPassCount", 0) > 0:
+        app_type = approval.get("type")
+        review_status = approval.get("reviewStatus")
+        review_pass_count = approval.get("reviewPassCount", 0)
+
+        if review_status == "reviewed_pass" or review_pass_count > 0:
             add_finding("LAYER_5_APPROVAL_GUARD", "FORGED_REVIEW_APPROVAL", "CREATE stage candidate small meta must not declare reviewStatus='reviewed_pass' or reviewPassCount > 0")
+
+        if app_type == "REVIEW2" and (review_pass_count < 2 or review_status != "reviewed_pass"):
+            add_finding("LAYER_5_APPROVAL_GUARD", "PREMATURE_REVIEW2_DECLARATION", f"approval.type cannot be REVIEW2 when reviewPassCount is {review_pass_count} and reviewStatus is '{review_status}'")
 
         expected_count = small_meta.get("expectedQuestionCount")
         if expected_count != len(questions):
@@ -274,6 +289,44 @@ class M3HarnessGate:
         declared_sha1 = small_meta.get("expectedSourceBlobSha1")
         if actual_sha1 != declared_sha1:
             add_finding("LAYER_5_CONTRACT_PARITY", "BLOB_SHA_MISMATCH", f"Git blob SHA-1 mismatch: computed {actual_sha1} != declared {declared_sha1}")
+
+        # Items 1:1 Parity Guard: items must not be empty and must match each question's metadata
+        items = small_meta.get("items")
+        if not isinstance(items, list) or len(items) != len(questions):
+            add_finding(
+                "LAYER_5_CONTRACT_PARITY",
+                "SMALL_META_ITEMS_COUNT_MISMATCH",
+                f"Small meta items count {len(items) if isinstance(items, list) else 0} != question count {len(questions)}"
+            )
+        else:
+            for idx, q in enumerate(questions, start=1):
+                item = items[idx - 1]
+                q_id = q.get("id")
+                item_uid = item.get("questionUid")
+                item_ordinal = item.get("sourceOrdinal")
+                if item_uid != q_id or item_ordinal != q_id:
+                    add_finding(
+                        "LAYER_5_CONTRACT_PARITY",
+                        "ITEM_UID_ORDINAL_MISMATCH",
+                        f"Item at index {idx - 1} has questionUid={item_uid}, sourceOrdinal={item_ordinal}, expected {q_id}",
+                        qid=q_id
+                    )
+
+                after = item.get("after", {})
+                if after.get("standardUnitKey") != q.get("standardUnitKey"):
+                    add_finding("LAYER_5_CONTRACT_PARITY", "ITEM_UNIT_KEY_MISMATCH", f"Item {q_id} standardUnitKey '{after.get('standardUnitKey')}' != q '{q.get('standardUnitKey')}'", qid=q_id)
+                if after.get("subUnitKey") != q.get("subUnitKey"):
+                    add_finding("LAYER_5_CONTRACT_PARITY", "ITEM_SUBUNIT_KEY_MISMATCH", f"Item {q_id} subUnitKey '{after.get('subUnitKey')}' != q '{q.get('subUnitKey')}'", qid=q_id)
+                if after.get("difficultyBucket") != q.get("difficultyBucket"):
+                    add_finding("LAYER_5_CONTRACT_PARITY", "ITEM_DIFFICULTY_BUCKET_MISMATCH", f"Item {q_id} difficultyBucket '{after.get('difficultyBucket')}' != q '{q.get('difficultyBucket')}'", qid=q_id)
+                if after.get("problemTypeKey") != q.get("problemTypeKey"):
+                    add_finding("LAYER_5_CONTRACT_PARITY", "ITEM_PROBLEM_TYPE_KEY_MISMATCH", f"Item {q_id} problemTypeKey '{after.get('problemTypeKey')}' != q '{q.get('problemTypeKey')}'", qid=q_id)
+                if after.get("templateKey") != q.get("templateKey"):
+                    add_finding("LAYER_5_CONTRACT_PARITY", "ITEM_TEMPLATE_KEY_MISMATCH", f"Item {q_id} templateKey '{after.get('templateKey')}' != q '{q.get('templateKey')}'", qid=q_id)
+                if sorted(after.get("crossConceptKeys") or []) != sorted(q.get("crossConceptKeys") or []):
+                    add_finding("LAYER_5_CONTRACT_PARITY", "ITEM_CROSS_CONCEPTS_MISMATCH", f"Item {q_id} crossConcepts mismatch", qid=q_id)
+                if sorted(after.get("conditionKeys") or []) != sorted(q.get("conditionKeys") or []):
+                    add_finding("LAYER_5_CONTRACT_PARITY", "ITEM_CONDITIONS_MISMATCH", f"Item {q_id} conditions mismatch", qid=q_id)
 
         status = "BLOCKED" if findings else "PASS"
         return {
