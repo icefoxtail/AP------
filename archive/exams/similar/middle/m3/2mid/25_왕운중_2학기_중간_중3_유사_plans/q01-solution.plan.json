@@ -1,0 +1,149 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "\\sin A = \\dfrac{BC}{AC} = \\dfrac{5}{13}",
+  "sourceConditions": [
+    {
+      "id": "q1s-c1",
+      "condition": "각 A의 대변 BC=5",
+      "mappedTo": "seg-BC"
+    },
+    {
+      "id": "q1s-c2",
+      "condition": "빗변 AC=13",
+      "mappedTo": "seg-AC"
+    }
+  ],
+  "newVisualInformation": [
+    "대변 BC와 빗변 AC의 대응 관계 강조"
+  ],
+  "caption": "각 A의 대변 BC=5와 빗변 AC=13을 이용한 sin A 계산",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-s-AB",
+        "sourceConditionId": "q1s-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "A"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "audit-s-BC",
+        "sourceConditionId": "q1s-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "5"
+        }
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-B",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

@@ -34,7 +34,9 @@ window.questionBank = [
     "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q1.svg",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q01-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q01-solution.plan.json"
   },
   {
     "id": 2,
@@ -71,7 +73,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q02-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q02-solution.plan.json"
   },
   {
     "id": 3,
@@ -104,7 +108,9 @@ window.questionBank = [
     "solution": "$\\sin 30^\\circ = \\dfrac{1}{2}, \\tan 60^\\circ = \\sqrt{3}, \\cos 45^\\circ = \\dfrac{\\sqrt{2}}{2}$이므로\n\n$2\\sin30^\\circ + \\sqrt{3}\\tan60^\\circ - \\sqrt{2}\\cos45^\\circ$\n$= 2 \\times \\dfrac{1}{2} + \\sqrt{3} \\times \\sqrt{3} - \\sqrt{2} \\times \\dfrac{\\sqrt{2}}{2}$\n$= 1 + 3 - 1 = 3$\n\n정답은 ④이다.",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q03-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q03-solution.plan.json"
   },
   {
     "id": 4,
@@ -139,7 +145,9 @@ window.questionBank = [
     "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q4.svg",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q04-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q04-solution.plan.json"
   },
   {
     "id": 5,
@@ -172,7 +180,9 @@ window.questionBank = [
     "solution": "$\\tan 45^\\circ = 1$이고 $\\angle A$가 예각이므로 $0 < \\cos A < 1$이다.\n\n$\\cos A + 1 > 0 \\implies \\sqrt{(\\cos A + 1)^2} = \\cos A + 1$\n$\\cos A - 1 < 0 \\implies \\sqrt{(\\cos A - 1)^2} = -(\\cos A - 1) = 1 - \\cos A$\n\n두 식을 빼면\n$(\\cos A + 1) - (1 - \\cos A) = 2\\cos A$\n\n정답은 ⑤이다.",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q05-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q05-solution.plan.json"
   },
   {
     "id": 6,
@@ -211,7 +221,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q06-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q06-solution.plan.json"
   },
   {
     "id": 7,
@@ -246,7 +258,9 @@ window.questionBank = [
     "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q7.svg",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q07-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q07-solution.plan.json"
   },
   {
     "id": 8,
@@ -285,7 +299,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q08-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q08-solution.plan.json"
   },
   {
     "id": 9,
@@ -322,7 +338,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q09-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q09-solution.plan.json"
   },
   {
     "id": 10,
@@ -359,7 +377,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q10-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q10-solution.plan.json"
   },
   {
     "id": 11,
@@ -398,7 +418,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q11-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q11-solution.plan.json"
   },
   {
     "id": 12,
@@ -437,7 +459,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q12-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q12-solution.plan.json"
   },
   {
     "id": 13,
@@ -476,7 +500,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q13-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q13-solution.plan.json"
   },
   {
     "id": 14,
@@ -511,7 +537,9 @@ window.questionBank = [
     "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q14.svg",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q14-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q14-solution.plan.json"
   },
   {
     "id": 15,
@@ -550,7 +578,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q15-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q15-solution.plan.json"
   },
   {
     "id": 16,
@@ -589,7 +619,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q16-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q16-solution.plan.json"
   },
   {
     "id": 17,
@@ -628,7 +660,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q17-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q17-solution.plan.json"
   },
   {
     "id": 18,
@@ -667,7 +701,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q18-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q18-solution.plan.json"
   },
   {
     "id": 19,
@@ -706,7 +742,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q19-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q19-solution.plan.json"
   },
   {
     "id": 20,
@@ -745,7 +783,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q20-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q20-solution.plan.json"
   },
   {
     "id": 21,
@@ -778,7 +818,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q21-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q21-solution.plan.json"
   },
   {
     "id": 22,
@@ -811,7 +853,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q22-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q22-solution.plan.json"
   },
   {
     "id": 23,
@@ -844,7 +888,9 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q23-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q23-solution.plan.json"
   },
   {
     "id": 24,
@@ -877,6 +923,8 @@ window.questionBank = [
     "solutionImageSize": "full",
     "reviewStatus": "SELF_CHECKED",
     "solutionStatus": "SELF_CHECKED",
-    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW",
+    "problemPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q24-problem.plan.json",
+    "solutionPlanRef": "archive/exams/similar/middle/m3/2mid/25_왕운중_2학기_중간_중3_유사_plans/q24-solution.plan.json"
   }
 ];

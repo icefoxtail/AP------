@@ -1,0 +1,120 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "\\triangle ABC의 넓이가 18\\sqrt{3}이고, BC=9, \\angle ACB=120^\\circ",
+  "sourceConditions": [
+    {
+      "id": "q11-c1",
+      "condition": "밑변 BC=9",
+      "mappedTo": "seg-BC"
+    }
+  ],
+  "newVisualInformation": [
+    "120도 둔각삼각형 ABC의 넓이와 밑변 조건"
+  ],
+  "caption": "BC=9이고 각 C가 120도인 둔각삼각형 ABC",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-q11-BC",
+        "sourceConditionId": "q11-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "C",
+          "B"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "9"
+        }
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-BC",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ]
+}

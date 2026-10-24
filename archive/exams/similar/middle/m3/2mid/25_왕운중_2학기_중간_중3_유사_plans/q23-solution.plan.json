@@ -1,0 +1,163 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "BM = \\sqrt{OB^2 - OM^2} = \\sqrt{5^2 - 4^2} = 3\\,\\mathrm{cm}",
+  "sourceConditions": [
+    {
+      "id": "q23s-c1",
+      "condition": "직각삼각형 OMB에서 피타고라스 정리",
+      "mappedTo": "seg-OB"
+    }
+  ],
+  "newVisualInformation": [
+    "반지름 OM=4, OB=5로 직각삼각형 OMB를 구성하여 BM=3 도출"
+  ],
+  "caption": "반지름 OM=4와 OB=5를 연결해 직각삼각형에서 BM=3을 구하는 풀이",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circleSmall",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "M"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circleLarge",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    },
+    {
+      "id": "seg-OB",
+      "refs": [
+        "O",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "M",
+    "A",
+    "B"
+  ],
+  "displayCircles": [
+    "circleSmall",
+    "circleLarge"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-M",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

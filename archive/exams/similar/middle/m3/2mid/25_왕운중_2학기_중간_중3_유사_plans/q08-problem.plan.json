@@ -1,0 +1,171 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "AB=6\\sqrt{2}, BC=14, \\angle ABH=45^\\circ인 \\triangle ABC",
+  "sourceConditions": [
+    {
+      "id": "q8-c1",
+      "condition": "수선의 발 H",
+      "mappedTo": "pt-H"
+    }
+  ],
+  "newVisualInformation": [
+    "높이 AH를 기준으로 나뉜 두 직각삼각형 구조"
+  ],
+  "caption": "높이 AH와 밑각 45도, 30도를 가진 삼각형 ABC",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-q8-AH",
+        "sourceConditionId": "q8-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "H",
+          "A"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      },
+      {
+        "id": "audit-q8-BH",
+        "sourceConditionId": "q8-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "H"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-H",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

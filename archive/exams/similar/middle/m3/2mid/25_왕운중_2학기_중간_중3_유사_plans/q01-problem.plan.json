@@ -1,0 +1,154 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "직각삼각형 ABC에서 \\sin A의 값을 구하면?",
+  "sourceConditions": [
+    {
+      "id": "q1-c1",
+      "condition": "각 B는 90도",
+      "mappedTo": "ra-B"
+    },
+    {
+      "id": "q1-c2",
+      "condition": "변 AB의 길이는 12",
+      "mappedTo": "seg-AB"
+    },
+    {
+      "id": "q1-c3",
+      "condition": "변 BC의 길이는 5",
+      "mappedTo": "seg-BC"
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형 ABC의 두 변과 빗변의 배치"
+  ],
+  "caption": "각 B가 직각이고 AB=12, BC=5인 직각삼각형 ABC",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "12"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "5"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-AB-12",
+        "sourceConditionId": "q1-c2",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "A"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "12"
+        }
+      },
+      {
+        "id": "audit-BC-5",
+        "sourceConditionId": "q1-c3",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "C"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "5"
+        }
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-B",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}
