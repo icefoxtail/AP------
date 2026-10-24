@@ -13,6 +13,10 @@ SIGNATURES = {
     'PARALLEL_THROUGH': (['POINT','LINE'],'LINE'),
     'ANGLE_BISECTOR': (['POINT','POINT','POINT'],'LINE'),
     'PERPENDICULAR_FOOT': (['POINT','LINE'],'POINT'),
+    'DIVISION_POINT': (['POINT','POINT'],'POINT'), 'CENTROID': (['POINT','POINT','POINT'],'POINT'),
+    'POINT_REFLECTION': (['POINT','POINT'],'POINT'), 'LINE_REFLECTION': (['POINT','LINE'],'POINT'),
+    'PERPENDICULAR_THROUGH': (['POINT','LINE'],'LINE'),
+    'TRANSLATE_POINT': (['POINT'],'POINT'), 'TRANSLATE_LINE': (['LINE'],'LINE'),
     'CIRCLE_CENTER_RADIUS': (['POINT'],'CIRCLE'),
     'CIRCLE_THROUGH_3': (['POINT','POINT','POINT'],'CIRCLE'),
     'CIRCLE_THROUGH_POINT': (['POINT','POINT'],'CIRCLE'),
@@ -90,8 +94,9 @@ def validate(graph):
             b=node.get('branch',{})
             if set(b)!={'kind','refs','sign'} or b['kind']!='SIDE_OF_ORIENTED_LINE' or len(b['refs'])!=2 or b['sign'] not in (-1,1): raise ValueError('INVALID_BRANCH')
         elif 'branch' in node: raise ValueError('UNEXPECTED_BRANCH')
-        expected={'SOURCE_POINT':{'coordinates'},'NORMALIZATION_ORIGIN':set(),'NORMALIZATION_AXIS':{'length'},'CIRCLE_CENTER_RADIUS':{'radius'},'ANGLE_BISECTOR':{'mode'},'SOURCE_LINE':{'a','b','c'}}.get(node['op'],set())
+        expected={'SOURCE_POINT':{'coordinates'},'NORMALIZATION_ORIGIN':set(),'NORMALIZATION_AXIS':{'length'},'CIRCLE_CENTER_RADIUS':{'radius'},'ANGLE_BISECTOR':{'mode'},'SOURCE_LINE':{'a','b','c'},'DIVISION_POINT':{'m','n','mode'},'TRANSLATE_POINT':{'dx','dy'},'TRANSLATE_LINE':{'dx','dy'}}.get(node['op'],set())
         if set(node['args'])!=expected: raise ValueError('UNSUPPORTED_NODE_ARGS')
+        if node['op']=='DIVISION_POINT' and node['args']['mode'] not in ('INTERNAL','EXTERNAL'):raise ValueError('INVALID_DIVISION_MODE')
         if node['op']=='ANGLE_BISECTOR' and node['args']['mode'] not in ('INTERNAL','EXTERNAL'):raise ValueError('INVALID_ANGLE_BISECTOR_MODE')
         nodes[node['id']]=node
     deps={key:dependencies(n) for key,n in nodes.items()}
@@ -169,6 +174,36 @@ def execute(graph):
             if direction[0]==0 and direction[1]==0:raise ValueError('DEGENERATE_ANGLE_BISECTOR')
             value=S.Line(vertex,S.Point(vertex.x+direction[0],vertex.y+direction[1]))
         elif op=='PERPENDICULAR_FOOT': value=a[1].projection(a[0])
+        elif op=='DIVISION_POINT':
+            # Point dividing A->B in the ratio AP:PB = m:n. INTERNAL P=(nA+mB)/(m+n); EXTERNAL P=(mB-nA)/(m-n), outside segment AB.
+            first,second=a;m,k=scalar(args['m']),scalar(args['n'])
+            if first==second:raise ValueError('DEGENERATE_DIVISION_SEGMENT')
+            if m.is_positive is not True or k.is_positive is not True:raise ValueError('INVALID_DIVISION_RATIO')
+            if args['mode']=='INTERNAL':value=S.Point((k*first.x+m*second.x)/(m+k),(k*first.y+m*second.y)/(m+k))
+            else:
+                if m==k:raise ValueError('EXTERNAL_DIVISION_EQUAL_RATIO')
+                value=S.Point((m*second.x-k*first.x)/(m-k),(m*second.y-k*first.y)/(m-k))
+        elif op=='CENTROID':
+            if S.Point.is_collinear(*a):raise ValueError('DEGENERATE_TRIANGLE')
+            value=S.Point(sum(p.x for p in a)/3,sum(p.y for p in a)/3)
+        elif op=='POINT_REFLECTION':
+            point,center=a
+            if point==center:raise ValueError('REFLECTION_POINT_AT_CENTER')
+            value=S.Point(2*center.x-point.x,2*center.y-point.y)
+        elif op=='LINE_REFLECTION':
+            point,line=a
+            if line.contains(point):raise ValueError('REFLECTION_POINT_ON_LINE')
+            foot=line.projection(point);value=S.Point(2*foot.x-point.x,2*foot.y-point.y)
+        elif op=='PERPENDICULAR_THROUGH':
+            point,line=a;direction=line.direction
+            value=S.Line(point,S.Point(point.x-direction.y,point.y+direction.x))
+        elif op in ('TRANSLATE_POINT','TRANSLATE_LINE'):
+            dx,dy=scalar(args['dx']),scalar(args['dy'])
+            if dx==0 and dy==0:raise ValueError('ZERO_TRANSLATION')
+            if op=='TRANSLATE_POINT':value=S.Point(a[0].x+dx,a[0].y+dy)
+            else:
+                through=a[0].p1;direction=a[0].direction
+                value=S.Line(S.Point(through.x+dx,through.y+dy),S.Point(through.x+dx+direction.x,through.y+dy+direction.y))
         elif op=='SEGMENT_LENGTH': value=a[0].distance(a[1])
         elif op=='SCALAR_SQUARE': value=a[0]**2
         elif op=='SCALAR_RATIO':

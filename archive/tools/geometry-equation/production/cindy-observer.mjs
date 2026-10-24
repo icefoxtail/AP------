@@ -72,6 +72,28 @@ export function reconstruct(graph) {
         const helper='Z'+n.id+'Perp';addGeometry({name:helper,type:'Perp',args:[n.inputs[1],n.inputs[0]]});
         addGeometry({...base,type:'Meet',args:[n.inputs[1],helper]});
       }
+      else if(n.op==='DIVISION_POINT'){
+        // Cindy has no ratio primitive: a free point pinned below from the Cindy-evaluated inputs with the textbook section formula.
+        addGeometry({name:n.id,type:'Free',pos:[0,0]});branchEvents.push({kind:'DIVISION_POINT',node:n});
+      }
+      else if(n.op==='CENTROID'){
+        // Intersection of two medians, built only from Mid/Join/Meet.
+        const [a,b,c]=n.inputs,m1='Z'+n.id+'MA',m2='Z'+n.id+'MB',l1='Z'+n.id+'LA',l2='Z'+n.id+'LB';
+        addGeometry({name:m1,type:'Mid',args:[b,c]});addGeometry({name:m2,type:'Mid',args:[a,c]});
+        addGeometry({name:l1,type:'Join',args:[a,m1]});addGeometry({name:l2,type:'Join',args:[b,m2]});addGeometry({...base,type:'Meet',args:[l1,l2]});
+      }
+      else if(n.op==='POINT_REFLECTION'||n.op==='LINE_REFLECTION'){
+        const transform='Z'+n.id+'Tr';
+        addGeometry({name:transform,type:n.op==='POINT_REFLECTION'?'TrReflectionP':'TrReflectionL',args:[n.inputs[1]]});
+        addGeometry({name:n.id,type:'TransformP',args:[transform,n.inputs[0]]});
+      }
+      else if(n.op==='PERPENDICULAR_THROUGH')addGeometry({...base,type:'Perp',args:[n.inputs[1],n.inputs[0]]});
+      else if(n.op==='TRANSLATE_POINT'||n.op==='TRANSLATE_LINE'){
+        const origin='Z'+n.id+'O',target='Z'+n.id+'Q',transform='Z'+n.id+'Tr';
+        addGeometry({name:origin,type:'Free',pos:[0,0]});addGeometry({name:target,type:'Free',pos:[scalar(n.args.dx),scalar(n.args.dy)]});
+        addGeometry({name:transform,type:'TrTranslation',args:[origin,target]});
+        addGeometry({name:n.id,type:n.op==='TRANSLATE_POINT'?'TransformP':'TransformL',args:[transform,n.inputs[0]]});
+      }
       else if(n.op==='CIRCLE_CENTER_RADIUS')addGeometry({...base,type:'CircleMr',radius:scalar(n.args.radius)});
       else if(n.op==='CIRCLE_THROUGH_3')addGeometry({...base,type:'CircleBy3'});
       else if(n.op==='CIRCLE_THROUGH_POINT')addGeometry({...base,type:'CircleMP'});
@@ -132,6 +154,11 @@ export function reconstruct(graph) {
         const matches=roots.map((v,index)=>({v,index:index+1,cross:((q[0]-p[0])*(v[1]-p[1])-(q[1]-p[1])*(v[0]-p[0]))*n.branch.sign})).filter(row=>row.cross>1e-10);
         if(matches.length!==1)throw Error('AMBIGUOUS_CINDY_BRANCH');
         const selected=geometry.find(value=>value.name===n.id);selected.index=matches[0].index;selected.param=matches[0].index-1;
+      }else if(event.kind==='DIVISION_POINT'){
+        const n=event.node,[a,b]=n.inputs.map(point),m=scalar(n.args.m),k=scalar(n.args.n),internal=n.args.mode==='INTERNAL';
+        if(!(m>0)||!(k>0)||!['INTERNAL','EXTERNAL'].includes(n.args.mode)||Math.hypot(b[0]-a[0],b[1]-a[1])<=1e-10||(!internal&&Math.abs(m-k)<=1e-12))throw Error('INVALID_CINDY_DIVISION');
+        const denominator=internal?m+k:m-k,sign=internal?1:-1;
+        geometry.find(value=>value.name===n.id).pos=[0,1].map(i=>(sign*k*a[i]+m*b[i])/denominator);
       }else if(event.kind==='ANGLE_BISECTOR'){
         const row=event,p=point(row.vertex),a=point(row.first),b=point(row.last),u=[a[0]-p[0],a[1]-p[1]],v=[b[0]-p[0],b[1]-p[1]],nu=Math.hypot(...u),nv=Math.hypot(...v);
         if(nu<=1e-10||nv<=1e-10)throw Error('DEGENERATE_CINDY_ANGLE_RAY');
