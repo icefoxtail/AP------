@@ -247,7 +247,8 @@ function validateMetaPipelineRegistry({ audit, beforeTables, afterTables, regist
     const linkedItems = itemByOrdinal.size ? [...itemByOrdinal.values()].filter(item => {
       const row = item.after || {};
       const course = row.standardCourse || row.courseKey;
-      if (!extension.addedCourses.includes(course)) return false;
+      const courseKey = row.courseKey || course;
+      if (!extension.addedCourses.includes(course) && !extension.addedCourses.includes(courseKey)) return false;
       const binding = afterTables.bindings.get(stable([row.curriculum || row.curriculumKey, course, row.standardUnitKey,
         row.subUnitKey ?? null, row.problemTypeKey]));
       return binding?.status === "ACTIVE" && binding.ownerPack === extension.packId;
@@ -527,11 +528,15 @@ function resolve(row, tables) {
   const curriculum = requireText(row.curriculum || row.curriculumKey, "curriculum");
   const course = requireText(row.standardCourse || row.courseKey, "standardCourse");
   const compactCourse = value => String(value).normalize("NFC").replace(/\s/g, "");
-  if (row.curriculumKey && row.curriculumKey !== curriculum || row.courseKey && compactCourse(row.courseKey) !== compactCourse(course)) fail("curriculum/course aliases disagree");
+  if (row.curriculumKey && row.curriculumKey !== curriculum) fail("curriculum/course aliases disagree");
   const binding = tables.bindings.get(stable([curriculum, course, row.standardUnitKey, row.subUnitKey ?? null, row.problemTypeKey]));
   if (!binding) fail(`ACTIVE curriculum binding missing: ${curriculum}/${course}/${row.problemTypeKey}`);
   const pack = tables.packs.get(binding.ownerPack || pt.ownerPack);
-  if (!pack || !pack.meta.curricula.includes(curriculum) || !pack.meta.standardCourses.includes(course)) fail(`binding ownerPack scope missing: ${binding.ownerPack || pt.ownerPack}/${curriculum}/${course}`);
+  const courseKey = row.courseKey || course;
+  const courseAliasAllowed = compactCourse(courseKey) === compactCourse(course) || pack?.meta.standardCourses.includes(courseKey);
+  if (compactCourse(courseKey) !== compactCourse(course) && !courseAliasAllowed) fail("curriculum/course aliases disagree");
+  if (!pack || !pack.meta.curricula.includes(curriculum) || !pack.meta.standardCourses.includes(course) || !pack.meta.standardCourses.includes(courseKey))
+    fail(`binding ownerPack scope missing: ${binding.ownerPack || pt.ownerPack}/${curriculum}/${course}`);
   return { pt, tpl, unit, sub, binding, pack, curriculum, course };
 }
 
@@ -857,21 +862,50 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       current.metadataStatus === "approved_partial_with_explicit_holds" &&
       Object.values(current.fieldStatus || {}).includes("manual_review_pending") && !manualFieldHoldRemains;
     const preserveManualStatus = manualFieldHoldRemains || current.reviewStatus === "manual_review" && !priorPartialHoldResolved;
+    const preserveApprovedPartialStatus = manualFieldHoldRemains ||
+      req.approval.type !== "META_PIPELINE_AUDIT" && current.reviewStatus === "manual_review" && !priorPartialHoldResolved;
+    const metadataStatus = preserveApprovedPartialStatus
+      ? (req.approval.type === "META_PIPELINE_AUDIT" && manualFieldHoldRemains &&
+          !String(current.metadataStatus || "").startsWith("approved_")
+        ? "approved_partial_with_explicit_holds" : current.metadataStatus)
+      : "approved_semantic_review";
     const approvalEvidence = metaPipelineAudit
       ? [receiptPath, req.approval.metaPipelineAudit.auditPackageRef.path, req.approval.metaPipelineAudit.manifestRef.path, req.approval.metaPipelineAudit.sourceParityRef.path]
       : [receiptPath];
     Object.assign(final, { curriculum, curriculumKey: curriculum, standardCourse: course, courseKey: final.courseKey || course,
-      reviewStatus: preserveManualStatus ? current.reviewStatus : "reviewed_pass",
-      metadataStatus: preserveManualStatus ? current.metadataStatus : "approved_semantic_review", metadataRevision: revision,
+      reviewStatus: req.approval.type === "META_PIPELINE_AUDIT"
+        ? (Object.hasOwn(q, "reviewStatus") ? q.reviewStatus : current.reviewStatus)
+        : (preserveManualStatus ? current.reviewStatus : "reviewed_pass"),
+      metadataStatus, metadataRevision: revision,
       metadataApprovalType: req.approval.type,
-      tagStatus: preserveManualStatus ? current.tagStatus : "reviewed_pass", tagConfidence: confidence,
+      tagStatus: req.approval.type === "META_PIPELINE_AUDIT"
+        ? (Object.hasOwn(q, "tagStatus") ? q.tagStatus : current.tagStatus)
+        : (preserveManualStatus ? current.tagStatus : "reviewed_pass"),
+      tagConfidence: req.approval.type === "META_PIPELINE_AUDIT"
+        ? (Object.hasOwn(q, "tagConfidence") ? q.tagConfidence : (current.tagConfidence ?? confidence))
+        : confidence,
       foundationTaxonomyStatus: "CONFIRMED", projectionStatus: "REUSE", metaFoundationStatus: "ACTIVE",
       metaFoundationPackId: pack.meta.packId, metaFoundationPackVersion: pack.meta.packVersion,
-      metaFoundationHoldReason: preserveManualStatus ? current.metaFoundationHoldReason ?? null : null,
+      metaFoundationHoldReason: preserveApprovedPartialStatus ? current.metaFoundationHoldReason ?? null : null,
       l3Disposition: "ASSIGNED", l4Disposition: "ASSIGNED", curriculumApplicability: final.curriculumApplicability || "DEFAULT_SCOPE",
       defaultSelectable: final.defaultSelectable !== false, approvalEvidence: [...new Set([...(current.approvalEvidence || []), ...approvalEvidence])],
       fieldStatus
     });
+    const updateState = final.registrationUpdateState;
+    if (req.approval.type === "META_PIPELINE_AUDIT" &&
+        updateState?.schemaVersion === "JS_ARCHIVE_EXISTING_TARGET_META_DELTA_POLICY_V1" &&
+        ["PHYSICAL_META_UPDATED_REVIEW_RESET_PENDING", "R1_RPM_DEBT_EVIDENCE_BOUND_REVIEW_PENDING"].includes(updateState.disposition)) {
+      final.registrationUpdateState = {
+        ...updateState,
+        disposition: "META_PIPELINE_AUDIT_REGISTERED",
+        metaPipelineAuditCompletion: {
+          requestId: req.requestId,
+          auditPackagePath: req.approval.metaPipelineAudit.auditPackageRef.path,
+          auditPackageSha256: req.approval.metaPipelineAudit.auditPackageRef.sha256,
+          sourceParitySha256: req.approval.metaPipelineAudit.sourceParityRef.sha256
+        }
+      };
+    }
     if (difficultyEvidenceDebt) {
       final.fieldStatus.difficulty = "EVIDENCE_DEBT";
       final.difficultyEvidenceDebt = { field: "difficultyBucket", status: "EVIDENCE_DEBT", reason: difficultyEvidenceDebt };
@@ -1001,10 +1035,20 @@ export function verifyConsumerValues(root, records, runtimeRecords, catalog) {
   const rows = catalog.encoding === "column-dictionary-v1" && Array.isArray(catalog.records[0])
     ? catalog.records.map(r => Object.fromEntries(catalog.columns.map((k, i) => [k, decode(r[i])]))) : catalog.records;
   const byUid = unique(rows, "questionUid", "catalog UID");
+  const runtimeByUid = unique(runtimeRecords, "questionUid", "runtime UID");
   for (const r of records) {
     const c = byUid.get(r.questionUid);
     if (!c || c.sourceFile !== r.sourceArchiveFile || c.sourceOrdinal !== r.sourceOrdinal) fail(`Consumer UID missing/mismatch: ${r.questionUid}`);
-    for (const f of ["curriculumKey", "courseKey", "L1", "L2", "L3", "L4", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket"]) if (!eq(c[f], r[f])) fail(`Consumer metadata mismatch: ${r.questionUid}.${f}`);
+    for (const f of ["curriculumKey", "courseKey", "L1", "L2", "standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "integrationPattern", "difficultyBucket"])
+      if (!eq(c[f], r[f])) fail(`Consumer metadata mismatch: ${r.questionUid}.${f}`);
+    const runtime = runtimeByUid.get(r.questionUid);
+    if (!runtime) fail(`Consumer runtime UID missing: ${r.questionUid}`);
+    // Archive2's catalog exposes the verified basic path (L1/L2). The
+    // Meta Foundation runtime owns the deeper canonical path (L3/L4).
+    for (const f of ["L3", "L4"]) {
+      if (Object.hasOwn(c, f) && c[f] !== undefined && !eq(c[f], r[f])) fail(`Consumer metadata mismatch: ${r.questionUid}.${f}`);
+      if (!eq(runtime[f], r[f])) fail(`Consumer runtime metadata mismatch: ${r.questionUid}.${f}`);
+    }
     if (c.metadataConflicts?.length) fail(`Consumer metadata conflict: ${r.questionUid}`);
   }
   const ctx = { window: {}, console: { log() {}, warn() {}, error() {} } };

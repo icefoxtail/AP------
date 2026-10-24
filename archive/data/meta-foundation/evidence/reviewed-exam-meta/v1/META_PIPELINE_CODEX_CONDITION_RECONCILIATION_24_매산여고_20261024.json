@@ -1,0 +1,650 @@
+{
+  "schemaVersion": "meta-pipeline-codex-condition-reconciliation-v1",
+  "reconciliationId": "meta-pipeline-24-maesanyeogo-condition-reconciliation-20261024",
+  "reviewedAt": "2026-10-24T00:20:00Z",
+  "reviewer": {
+    "name": "Codex",
+    "role": "user-directed independent condition metadata audit"
+  },
+  "scope": {
+    "examUid": "24_매산여고_1학기_중간_고2_수학I",
+    "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+    "sourceSha256": "423e6dcffb163b7372d2e75a9ae63796661ab94852f7c84a199100af179a0f46",
+    "sourceGitBlobSha1": "8a1ff234d287e74217c6b79625ff2c9d152518fb",
+    "questionCount": 24,
+    "fields": [
+      "conditionKeys"
+    ],
+    "studentVisibleFieldsChanged": false
+  },
+  "originalGeminiAudit": {
+    "driveId": "1FcFU08lNFS7bj13HC7-_5ZY8QIKWku-m",
+    "sha256": "1621253869a06a1c91f17d8549777c84784904b84c540660308e08e1ed1ce137",
+    "immutable": true
+  },
+  "manifest": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_24_매산여고_1학기_중간_고2_수학I.json",
+    "sha256": "7f7569003aa2a8baf62f52db96805e99ebdf2bfbd709c85516e76413ccb61b47",
+    "unchanged": true
+  },
+  "evidenceRefs": [
+    {
+      "path": "archive/exams/original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "sha256": "423e6dcffb163b7372d2e75a9ae63796661ab94852f7c84a199100af179a0f46",
+      "gitBlobSha1": "8a1ff234d287e74217c6b79625ff2c9d152518fb"
+    },
+    {
+      "path": "archive/data/question_metadata.json",
+      "sha256": "5846fc7bcd2ba869233afd87e0dcfc9478151f33e8fc68e05e91a4361c114352"
+    },
+    {
+      "path": "archive/data/meta-foundation/canonical/condition_registry.json",
+      "sha256": "ddc43fe908e21ccc00c98a86b661697fd50083e5e37295974a2f2a95fccfb89a"
+    },
+    {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-20261024.source-parity.json",
+      "sha256": "9e66d73e3257e915315cf88a31d43ecfa7f7d76c86049e3c80ad92c47eee0c14"
+    }
+  ],
+  "decision": "RETAIN_EXISTING_SOURCE_AND_METADATA_CONDITION_KEYS",
+  "reason": "The Gemini audit omitted conditionKeys already present identically in the production JS and current metadata. I independently checked each affected stem/solution against the active condition definition. The keys are source-backed and materially constrain the domain, values, or integer/natural-number selection; retain them without altering student payload or canonical condition meanings.",
+  "records": [
+    {
+      "questionId": 4,
+      "sourceOrdinal": 4,
+      "questionUid": "qid_v1_fa6f0b21758b235e8152307f1a14de7417522ccbb7f1c05516491b0434853a12",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_POSITIVE",
+          "canonicalLabelKo": "양수 조건",
+          "definition": "값이 0보다 커야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_POSITIVE": "로그 진수 x+2가 양수여야 그래프의 정의역과 점근선을 판정할 수 있다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 5,
+      "sourceOrdinal": 5,
+      "questionUid": "qid_v1_49e0790a17d27a25a8d9e4c1a77e2d538cc420ab82fc9af92d5475f34b4dd3d5",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_RANGE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_RANGE",
+          "canonicalLabelKo": "범위 조건",
+          "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_RANGE": "제3사분면을 피하는 조건은 x<0인 범위에서 함수값의 하한을 비교해 k의 최소값을 정한다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 6,
+      "sourceOrdinal": 6,
+      "questionUid": "qid_v1_914be8c19c2737c8e4bc106b0f22737c15078d7428ae90f8b4b214ccb6d2add6",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "reconciledConditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_NATURAL_NUMBER",
+          "canonicalLabelKo": "자연수 조건",
+          "definition": "값이 자연수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_NATURAL_NUMBER": "문항이 부등식을 만족하는 모든 자연수 x를 합산하도록 명시한다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 8,
+      "sourceOrdinal": 8,
+      "questionUid": "qid_v1_aaec276af31f7c21c8bf50931fbcc71f44d3d12116b97f4472464d4b1856af98",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_RANGE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_RANGE",
+          "canonicalLabelKo": "범위 조건",
+          "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_RANGE": "근의 합은 0≤x<2π 안에 포함되는 삼각방정식의 근만으로 계산한다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 9,
+      "sourceOrdinal": 9,
+      "questionUid": "qid_v1_5819a4f65879e3fdb09b6f69b2be2484c5152e31f3e2eb5873616ee101f6e1c1",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_RANGE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_RANGE",
+          "canonicalLabelKo": "범위 조건",
+          "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_RANGE": "해 구간 0≤x<π가 코사인 단조구간과 경계 포함 여부를 결정한다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 11,
+      "sourceOrdinal": 11,
+      "questionUid": "qid_v1_69aa739950b6907a1fe416e3a403b9eaf5b4b1c48d9be46da7972c60f691abdf",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_NONZERO"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_NONZERO"
+      ],
+      "reconciledConditionKeys": [
+        "COND_NONZERO"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_NONZERO",
+          "canonicalLabelKo": "0이 아닌 조건",
+          "definition": "0 배제 조건이 정의·비퇴화·해 선택 또는 개수 판정에 필요한 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_NONZERO": "지수의 분모 α²−5가 0이 아니어야 하며, 근의 곱이 −5인 조건이 이 정의 가능성을 보장한다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 12,
+      "sourceOrdinal": 12,
+      "questionUid": "qid_v1_93d247649b9fbb6b9662e3441088c5b1c7f50ccf90a33a94eb12b7ae868b40b3",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_POSITIVE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_POSITIVE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_POSITIVE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_NATURAL_NUMBER",
+          "canonicalLabelKo": "자연수 조건",
+          "definition": "값이 자연수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "COND_POSITIVE",
+          "canonicalLabelKo": "양수 조건",
+          "definition": "값이 0보다 커야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_NATURAL_NUMBER": "경과 연수 n은 정수 연수이므로 10.03…보다 큰 최소 자연수를 선택한다.",
+        "COND_POSITIVE": "현재 농도 m0가 양수여야 양변을 나누어 두 배 도달 시점을 정할 수 있다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 13,
+      "sourceOrdinal": 13,
+      "questionUid": "qid_v1_1cbeaface782f7114d0a1e0e3e118a422188aa1ad987e8b6341eb6704be83aac",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_POSITIVE",
+          "canonicalLabelKo": "양수 조건",
+          "definition": "값이 0보다 커야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_POSITIVE": "t=2^x 치환에서 t>0은 이차방정식의 근 중 실제 지수해에 해당하는 근을 선택한다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 14,
+      "sourceOrdinal": 14,
+      "questionUid": "qid_v1_88807f92467a86df2f773551ae4d0c61a1c090f24bcdd5cdc722a86573d7e61b",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_RANGE",
+        "COND_POSITIVE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_RANGE",
+        "COND_POSITIVE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_RANGE",
+        "COND_POSITIVE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_RANGE",
+          "canonicalLabelKo": "범위 조건",
+          "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "COND_POSITIVE",
+          "canonicalLabelKo": "양수 조건",
+          "definition": "값이 0보다 커야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_RANGE": "2<a<x<a² 범위가 로그값과 x의 대소를 비교하는 핵심 구간을 정한다.",
+        "COND_POSITIVE": "밑 a>2는 로그의 밑을 유효하게 하고 로그함수의 증가성을 결정한다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 16,
+      "sourceOrdinal": 16,
+      "questionUid": "qid_v1_5eb4c00eaaaeb02e02706d761fc11ba434751c7c7fe8698423ea0dfc2ac5aeb1",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_RANGE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_RANGE",
+          "canonicalLabelKo": "범위 조건",
+          "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_RANGE": "0≤x<π 안에서 치환한 삼각방정식의 근만 복원해 합산한다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 17,
+      "sourceOrdinal": 17,
+      "questionUid": "qid_v1_83f1ce3a00383b4b57f6f007c689f34a7c6ab091b1c3ad5297765b48f295ec74",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_POSITIVE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_POSITIVE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_POSITIVE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_NATURAL_NUMBER",
+          "canonicalLabelKo": "자연수 조건",
+          "definition": "값이 자연수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "COND_POSITIVE",
+          "canonicalLabelKo": "양수 조건",
+          "definition": "값이 0보다 커야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_NATURAL_NUMBER": "년수 t는 자연수 단위로 세며 반감기 횟수의 정수 여부가 결과에 영향을 준다.",
+        "COND_POSITIVE": "방사능의 현재 양 m이 양수여야 m/16 목표량으로 나누어 시간을 정할 수 있다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 18,
+      "sourceOrdinal": 18,
+      "questionUid": "qid_v1_cee716a2718cc0ac8c86ab52d5179d05b51da5422a2533739b6875897289c8b0",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_NATURAL_NUMBER",
+          "canonicalLabelKo": "자연수 조건",
+          "definition": "값이 자연수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "COND_RANGE",
+          "canonicalLabelKo": "범위 조건",
+          "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_NATURAL_NUMBER": "교점 개수를 만족시키는 n의 개수는 자연수 n만 세도록 명시한다.",
+        "COND_RANGE": "정의역 1≤x<1000과 직선 높이 범위가 서로 다른 두 교점의 가능성을 제한한다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 19,
+      "sourceOrdinal": 19,
+      "questionUid": "qid_v1_ac9092b80bbe3b5d6b1a8247050e595d350f23fb6d9c203f2c242e05cb99251e",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_NATURAL_NUMBER",
+          "canonicalLabelKo": "자연수 조건",
+          "definition": "값이 자연수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "COND_RANGE",
+          "canonicalLabelKo": "범위 조건",
+          "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_NATURAL_NUMBER": "최댓값을 만드는 t는 t>1인 자연수로만 세어 a를 정한다.",
+        "COND_RANGE": "구간 [t,t+2]와 [s,s+1]의 위치 및 t>1,s>1이 극값 조건을 결정한다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 20,
+      "sourceOrdinal": 20,
+      "questionUid": "qid_v1_b364d757864ebad6a19266254f87c3bcdc739e43acfad903c93dab593cb0a8b1",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_RANGE",
+        "COND_NATURAL_NUMBER"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_RANGE",
+        "COND_NATURAL_NUMBER"
+      ],
+      "reconciledConditionKeys": [
+        "COND_RANGE",
+        "COND_NATURAL_NUMBER"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_RANGE",
+          "canonicalLabelKo": "범위 조건",
+          "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "COND_NATURAL_NUMBER",
+          "canonicalLabelKo": "자연수 조건",
+          "definition": "값이 자연수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_RANGE": "0<θ<π가 대칭 조건을 만족하는 동경의 대표각을 선택한다.",
+        "COND_NATURAL_NUMBER": "기약분수 θ=(b/a)π에서 a,b가 서로소 자연수여야 a+b가 결정된다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 21,
+      "sourceOrdinal": 21,
+      "questionUid": "qid_v1_ba92ec2f949fde56fa87778d5a915793ce3fbc134b658d78867d43b3ad76855e",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_RANGE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_RANGE",
+          "canonicalLabelKo": "범위 조건",
+          "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_RANGE": "최댓값·최솟값은 닫힌 구간 4≤x≤8 안의 위상 범위에 의해 정해진다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 22,
+      "sourceOrdinal": 22,
+      "questionUid": "qid_v1_fe6b58407dd8095cd92ddbf17257452788670999fd60e714ee1bb317958327a8",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_RANGE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_RANGE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_RANGE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_RANGE",
+          "canonicalLabelKo": "범위 조건",
+          "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_RANGE": "3π/2<θ<2π가 제4사분면을 지정해 sinθ−cosθ의 부호를 결정한다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    },
+    {
+      "questionId": 24,
+      "sourceOrdinal": 24,
+      "questionUid": "qid_v1_f441aaf0d72ebb5d8b13a47178b09ecc299a6d9ecfbe9046324ab986553f3fbd",
+      "sourceArchiveFile": "original/high/h2/1mid/24_매산여고_1학기_중간_고2_수학I.js",
+      "field": "conditionKeys",
+      "originalAuditConditionKeys": [],
+      "productionSourceConditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "existingMetadataConditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "reconciledConditionKeys": [
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "conditionDefinitions": [
+        {
+          "key": "COND_INTEGER",
+          "canonicalLabelKo": "정수 조건",
+          "definition": "값이 정수여야 하는 제한이 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        },
+        {
+          "key": "COND_RANGE",
+          "canonicalLabelKo": "범위 조건",
+          "definition": "허용 구간·범위 또는 유한 범위가 실제 해 선택 또는 결정적 판정에 영향을 주는 경우.",
+          "status": "ACTIVE"
+        }
+      ],
+      "rationaleByCondition": {
+        "COND_INTEGER": "a,n이 정수여야 교점 높이와 좌표 격자점 개수를 정수 조건으로 셀 수 있다.",
+        "COND_RANGE": "직선이 두 지수함수와 모두 만나는 높이 구간과 x∈[b,c] 영역 경계가 정수점 개수를 제한한다."
+      },
+      "metadataStatus": "registration_pending_semantic_review",
+      "reviewStatus": "review_required",
+      "conditionFieldStatus": null
+    }
+  ]
+}

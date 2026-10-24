@@ -334,7 +334,8 @@ test("META_PIPELINE_AUDIT appends an added binding domain to an existing owner p
 });
 
 test("META_PIPELINE_AUDIT permits an additive course scope extension only for an exact active binding", t => {
-  const f = fixture(t, "수학I", "2015");
+  const sourceCourse = "확률과 통계", canonicalCourse = "확률과통계";
+  const f = fixture(t, sourceCourse, "2015");
   attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });
   const newBase = `${CANON}/packs/new-course`;
   const existingBase = `${CANON}/packs/functions-graphs`;
@@ -343,7 +344,7 @@ test("META_PIPELINE_AUDIT permits an additive course scope extension only for an
   index.activePacks = [{ id: "FUNCTIONS_GRAPHS", version: "1.0.0", status: "ACTIVE" }];
   f.put(indexPath, index);
   const currentPack = { schemaVersion: "meta-foundation-pack-v1", packId: "FUNCTIONS_GRAPHS", packVersion: "1.0.0",
-    canonicalStatus: "ACTIVE", curricula: ["2015"], standardCourses: ["중1 수학"], ownedStandardUnitDomains: [] };
+    canonicalStatus: "ACTIVE", curricula: ["2015"], standardCourses: [sourceCourse], ownedStandardUnitDomains: [] };
   f.put(`${existingBase}/pack.json`, currentPack);
   f.put(`${existingBase}/taxonomy.json`, { status: "ACTIVE", problemTypes: [], templates: [] });
   f.put(`${existingBase}/bindings.json`, { status: "ACTIVE", bindings: [], applicabilityRules: [] });
@@ -359,21 +360,36 @@ test("META_PIPELINE_AUDIT permits an additive course scope extension only for an
     !change.path.startsWith(`${newBase}/`) && !(change.path === indexPath && change.collection === "activePacks"));
   f.request.registryChanges.push(
     { path: `${existingBase}/pack.json`, before: currentPack,
-      after: { ...currentPack, standardCourses: [...currentPack.standardCourses, "수학I"] }, evidenceRefs },
+      after: { ...currentPack, standardCourses: [...currentPack.standardCourses, canonicalCourse] }, evidenceRefs },
     { path: `${existingBase}/taxonomy.json`, collection: "problemTypes", match: { problemTypeKey: "PT_NEW" },
       before: null, after: problemType, evidenceRefs },
     { path: `${existingBase}/taxonomy.json`, collection: "templates", match: { templateKey: "TPL_NEW" },
       before: null, after: template, evidenceRefs },
-    { path: `${existingBase}/bindings.json`, collection: "bindings", match: { curriculum: "2015", standardCourse: "수학I",
+    { path: `${existingBase}/bindings.json`, collection: "bindings", match: { curriculum: "2015", standardCourse: sourceCourse,
       standardUnitKey: "UNIT_NEW", subUnitKey: "SUB_NEW", problemTypeKey: "PT_NEW" }, before: null, after: binding, evidenceRefs }
   );
+  f.request.items[0].after.courseKey = canonicalCourse;
 
   const result = registerReviewedExamV2({ root: f.root, request: f.request });
   assert.equal(result.status, "PASS");
   assert.deepEqual(result.plannedPaths.includes(`${existingBase}/pack.json`), true);
   const invalid = structuredClone(f.request);
-  invalid.registryChanges.find(change => change.path === `${existingBase}/pack.json`).after.standardCourses = ["수학I"];
+  invalid.registryChanges.find(change => change.path === `${existingBase}/pack.json`).after.standardCourses = [sourceCourse];
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: invalid }), /registry changes must be additions only/);
+});
+
+test("META_PIPELINE_AUDIT preserves a source course label while binding an explicitly packed canonical course key", t => {
+  const f = fixture(t, "중3-1", "2015");
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true });
+  const packChange = f.request.registryChanges.find(change => change.path.endsWith("/new-course/pack.json"));
+  packChange.after.standardCourses.push("M3-1");
+  f.request.items[0].after.courseKey = "M3-1";
+
+  const result = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(result.status, "PASS");
+  const invalid = structuredClone(f.request);
+  invalid.registryChanges.find(change => change.path.endsWith("/new-course/pack.json")).after.standardCourses = ["중3-1"];
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: invalid }), /curriculum\/course aliases disagree/);
 });
 
 test("META_PIPELINE_AUDIT assigns a new TPL to the exact binding pack when its parent PT is external", t => {
@@ -494,8 +510,63 @@ test("META_PIPELINE_AUDIT resolves only explicitly pending fields on a partial m
   const row = f.read(META).records[0];
   assert.equal(row.crossConceptKeys[0], "CC_NEW");
   assert.equal(row.fieldStatus.concept, "approved_meta_pipeline_audit");
-  assert.equal(row.reviewStatus, "reviewed_pass");
+  assert.equal(row.reviewStatus, "manual_review");
   assert.equal(row.metadataStatus, "approved_semantic_review");
+});
+
+test("META_PIPELINE_AUDIT closes a registration-reset marker and preserves the prior R1 evidence", t => {
+  const f = fixture(t);
+  const meta = f.read(META);
+  meta.records[0].registrationUpdateState = { schemaVersion: "JS_ARCHIVE_EXISTING_TARGET_META_DELTA_POLICY_V1",
+    disposition: "PHYSICAL_META_UPDATED_REVIEW_RESET_PENDING", r1MetaPass: true,
+    r1EvidenceRef: "archive/analysis/fixture/r1-evidence.json", changedFields: ["problemTypeKey", "templateKey"] };
+  f.put(META, meta);
+  attachMetaPipelineAudit(f);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const state = f.read(META).records[0].registrationUpdateState;
+  assert.equal(state.disposition, "META_PIPELINE_AUDIT_REGISTERED");
+  assert.equal(state.r1MetaPass, true);
+  assert.equal(state.r1EvidenceRef, "archive/analysis/fixture/r1-evidence.json");
+  assert.equal(state.metaPipelineAuditCompletion.requestId, f.request.requestId);
+});
+
+test("META_PIPELINE_AUDIT preserves source QA status fields instead of promoting exam Final QA", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, tagConfidence: "high", tagStatus: "manual_review", reviewStatus: "manual_review" };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  const meta = f.read(META);
+  Object.assign(meta.records[0], { tagConfidence: "high", tagStatus: "manual_review", reviewStatus: "manual_review" });
+  f.put(META, meta);
+  attachMetaPipelineAudit(f);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.tagConfidence, "high");
+  assert.equal(row.tagStatus, "manual_review");
+  assert.equal(row.reviewStatus, "manual_review");
+  assert.equal(row.metadataStatus, "approved_semantic_review");
+  assert.equal(row.metadataApprovalType, "META_PIPELINE_AUDIT");
+});
+
+test("META_PIPELINE_AUDIT completes semantic fields while preserving an unrelated pending difficulty hold", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, reviewStatus: "review_required", tagStatus: "review_required" };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  const meta = f.read(META);
+  Object.assign(meta.records[0], { reviewStatus: "review_required", tagStatus: "review_required",
+    metadataStatus: "registration_pending_semantic_review", fieldStatus: { difficulty: "manual_review_pending" } });
+  f.put(META, meta);
+  attachMetaPipelineAudit(f);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.metadataStatus, "approved_partial_with_explicit_holds");
+  assert.equal(row.reviewStatus, "review_required");
+  assert.equal(row.tagStatus, "review_required");
+  assert.equal(row.fieldStatus.difficulty, "manual_review_pending");
+  assert.equal(row.fieldStatus.problemType, "approved_meta_pipeline_audit");
 });
 
 test("META_PIPELINE_AUDIT keeps unrelated manual field holds after binding the audited fields", t => {
@@ -766,7 +837,11 @@ test("catalog and Search verification checks target values after registration", 
   const f = fixture(t);
   registerReviewedExamV2({ root: f.root, request: f.request, write: true });
   const row = f.read(META).records[0];
-  f.put("archive/data/archive2-catalog.json", { records: [{ ...row, sourceFile: row.sourceArchiveFile, metadataConflicts: [] }] });
+  const catalogRow = { ...row, sourceFile: row.sourceArchiveFile, metadataConflicts: [] };
+  // Archive2 catalog exposes L1/L2; the canonical Meta Foundation runtime is
+  // the consumer projection for the deeper L3/L4 path.
+  delete catalogRow.L3; delete catalogRow.L4;
+  f.put("archive/data/archive2-catalog.json", { records: [catalogRow] });
   f.put("archive/question-index.js", `window.questionIndex=${JSON.stringify([{ ...row, sourceFile: row.sourceArchiveFile, course: row.standardCourse }])};`);
   // This fixture verifies the Consumer/Search value comparator only. The
   // manifest-backed projection path is covered by the repository integration
