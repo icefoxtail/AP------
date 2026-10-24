@@ -169,7 +169,11 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "첫째 직선을 기울기 형태로 바꾸면\n$y=2x+2$\n따라서 기울기는 $2$이다.\n\n둘째 직선은\n$y=-\\dfrac3a x+\\dfrac4a$\n이므로 기울기는 $-\\dfrac3a$이다.\n\n두 직선이 수직이므로 기울기의 곱은 $-1$이다.\n$2\\left(-\\dfrac3a\\right)=-1$\n$-6=-a$\n$a=6$\n\n따라서 정답은 ④이다.",
-    "decisiveStep": "두 직선의 기울기를 각각 읽고 수직 조건 $m_1m_2=-1$을 적용한다."
+    "decisiveStep": "두 직선의 기울기를 각각 읽고 수직 조건 $m_1m_2=-1$을 적용한다.",
+    "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "a=6이면 두 직선 2x-y+2=0, 3x+6y-4=0은 기울기의 곱이 -1이어서 서로 수직이다.",
+    "solutionImageCaption": "a=6이면 두 직선 2x-y+2=0, 3x+6y-4=0은 기울기의 곱이 -1이어서 서로 수직이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -298,7 +302,11 @@ window.questionBank = [
     ],
     "answer": "②",
     "solution": "$AP:PB=2:1$인 내분점 $P$의 $y$좌표는\n$\\dfrac{a+2\\cdot2}{3}=\\dfrac{a+4}{3}$이다.\n$P$가 $x$축 위에 있으므로\n$\\dfrac{a+4}{3}=0$\n$a=-4$\n\n같은 비로 외분하는 점 $Q$의 $x$좌표는\n$\\dfrac{2b-(-5)}{2-1}=2b+5$이다.\n$Q$가 $y$축 위에 있으므로\n$2b+5=0$\n$b=-\\dfrac52$\n\n따라서\n$ab=(-4)\\left(-\\dfrac52\\right)=10$이다.\n\n따라서 정답은 ②이다.",
-    "decisiveStep": "내분점·외분점의 좌표식에서 각각 축 위 조건을 적용해 $a,b$를 구한다."
+    "decisiveStep": "내분점·외분점의 좌표식에서 각각 축 위 조건을 적용해 $a,b$를 구한다.",
+    "solutionImage": "assets/images/21_고흥고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "a=-4, b=-5/2이면 선분 AB를 2:1로 내분하는 점 P는 x축 위, 외분하는 점 Q는 y축 위에 있다.",
+    "solutionImageCaption": "a=-4, b=-5/2이면 선분 AB를 2:1로 내분하는 점 P는 x축 위, 외분하는 점 Q는 y축 위에 있다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
