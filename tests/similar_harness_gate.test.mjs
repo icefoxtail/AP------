@@ -1,11 +1,14 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import { describe, test } from 'node:test';
+import os from 'node:os';
+import { after, describe, test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { verifySimilarExam } from '../tools/harness/verify_similar_exam.mjs';
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const TEST_SCRATCH = fs.mkdtempSync(path.join(os.tmpdir(), 'similar-harness-'));
+after(() => fs.rmSync(TEST_SCRATCH, { recursive: true, force: true }));
 
 describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
   test('Baseline: 23_동산중_1학기_중간_중1_유사 passes all automated gates', () => {
@@ -26,7 +29,7 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     const origJs = fs.readFileSync('archive/exams/similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js', 'utf8');
     const mutatedJs = origJs.replace('"points": 4.0', '"points": 3.0'); // 100.0 -> 99.0
     
-    const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_score_99.js');
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_score_99.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
@@ -42,7 +45,7 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     // Change Q1 answer from ③ to ②, making distribution {①:4, ②:5, ③:3, ④:4, ⑤:4}
     const mutatedJs = origJs.replace('"answer": "③"', '"answer": "②"');
     
-    const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_slot_imbalance.js');
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_slot_imbalance.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
@@ -67,7 +70,7 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     // Change "$1$개" to "1개"
     const mutatedJs = origJs.replace('"$1$개"', '"1개"');
     
-    const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_raw_choice.js');
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_raw_choice.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
@@ -82,7 +85,7 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     const origJs = fs.readFileSync('archive/exams/similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js', 'utf8');
     const mutatedJs = origJs.replace('다음 중 소수는 모두 몇 개인가?', '다음 중 소수는 모두 몇 개인가? [TODO: 검토]');
     
-    const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_todo_token.js');
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_todo_token.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
@@ -97,7 +100,7 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     const origJs = fs.readFileSync('archive/exams/similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js', 'utf8');
     const mutatedJs = origJs.replace('assets/images/23_동산중_1학기_중간_중1_유사/q10.svg', 'assets/images/23_동산중_1학기_중간_중1_유사/missing_q10.svg');
     
-    const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_missing_svg.js');
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_missing_svg.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
@@ -113,7 +116,7 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     // Subtle modification changing comments/whitespace
     const mutatedJs = origJs + '\n// modified after review receipt was signed';
     
-    const tmpJs = path.join(REPO_ROOT, 'scratch/mutated_blob_tampered.js');
+    const tmpJs = path.join(TEST_SCRATCH, 'mutated_blob_tampered.js');
     fs.writeFileSync(tmpJs, mutatedJs, 'utf8');
     try {
       const res = verifySimilarExam({ stem: '23_동산중_1학기_중간_중1_유사', jsPath: tmpJs });
