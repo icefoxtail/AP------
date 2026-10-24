@@ -245,6 +245,23 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
     assert.ok(!res.errors.some(e => e.includes('Review receipt not found')), 'Draft phase must not demand a signed receipt');
   });
 
+  test('Fault Injection: strict production cannot silently approve UNSUPPORTED visual', () => {
+    const planPath = path.join(REPO_ROOT, 'archive/exams/similar/middle/m1/1final/19_금당중_1학기_기말_중1_유사_plans/q21-problem.plan.json');
+    const before = fs.readFileSync(planPath, 'utf8');
+    fs.writeFileSync(planPath, JSON.stringify({status:'UNSUPPORTED',reason:'도형의 관계는 현 렌더러가 지원하지 않음'}), 'utf8');
+    try {
+      const res = verifySimilarExam({stem:'19_금당중_1학기_기말_중1_유사',strictAuthoring:true,phase:'draft'});
+      assert.ok(res.errors.some(e => e.includes('UNSUPPORTED cannot be used')));
+    } finally {
+      fs.writeFileSync(planPath, before, 'utf8');
+    }
+  });
+
+  test('Fault Injection: strict source caption and engine asset binding reject legacy placeholder', () => {
+    const res = verifySimilarExam({stem:'19_금당중_1학기_기말_중1_유사',strictAuthoring:true,phase:'draft'});
+    assert.ok(res.errors.some(e => e.includes('substantive student-facing Korean caption')));
+  });
+
   test('Draft phase can pass legacy static gates without pretending to sign off', () => {
     const res = verifySimilarExam({
       stem: '23_동산중_1학기_중간_중1_유사',
