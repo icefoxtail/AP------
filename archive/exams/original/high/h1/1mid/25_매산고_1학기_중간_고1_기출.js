@@ -650,7 +650,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
     "subUnit": "이차함수의 활용",
     "subUnitConfidence": "candidate_evidence",
-    "subUnitClassificationDepth": "complete_candidate"
+    "subUnitClassificationDepth": "complete_candidate",
+    "solutionImage": "assets/images/25_매산고_1학기_중간_고1_기출/q18-solution-b5.svg",
+    "solutionImageAlt": "m=12일 때 포물선 y=-2x^2+12와 직선 y=4x는 두 점 A, B에서 만난다.",
+    "solutionImageCaption": "m=12일 때 포물선 y=-2x^2+12와 직선 y=4x는 두 점 A, B에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 19,

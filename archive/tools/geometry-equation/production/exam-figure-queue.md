@@ -62,7 +62,7 @@
 - [x] **24_매산고_1학기_중간_고1_기출** (1건): q17 OPEN_UNSUPPORTED other — 두 경우(a=1/8, a=-1)의 삼차함수 그래프가 필요하나 합성 패널은 이차함수만 지원한다
 - [x] **24_순천여고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 절댓값 함수 그래프(꺾인 곡선)와 직선의 교점 개수 비교가 필요하며 이는 지원되지 않는다.
 - [x] **25_강남여고_1학기_중간_고1_기출** (1건): q14 OPEN_LAYOUT compose:COMPOSITE_PANEL_NOT_COMPOSED — ABANDONED(저작 4회 실패)
-- **25_매산고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED F_irrational_coefficients — 포물선과 직선의 무리수 교점, x축에 내린 수선의 발 C, D와 삼각형을 한 그림에 그려야 하는데 지원되지 
+- [x] **25_매산고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED F_irrational_coefficients — 포물선과 직선의 무리수 교점, x축에 내린 수선의 발 C, D와 삼각형을 한 그림에 그려야 하는데 지원되지 
 - **25_매산고_1학기_중간_고2_대수** (1건): q7 OPEN_UNSUPPORTED D_exp_log_trig — 로그함수와 지수함수 그래프(역함수 대칭)가 필요하나 다항 그래프만 지원된다.
 - **25_매산여고_1학기_기말_고1_기출c** (1건): q16 OPEN_UNSUPPORTED C_number_line — 끝점이 a에 따라 움직이는 두 부등식 해집합의 수직선 구간 그림이 필요함
 - **25_제일고_1학기_기말_고1_기출c** (1건): q6 OPEN_UNSUPPORTED G_symbolic_coefficient — 문자 a를 포함한 이차함수의 그래프(f(-1)<0, f(2)>0 위치 관계)는 계수를 정할 수 없어 그릴 수
