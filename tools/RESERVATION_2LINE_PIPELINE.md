@@ -1,6 +1,6 @@
 # 중등 유사문항 2-라인 분리 자동화 운영 정본 (v1.1)
 
-> **최우선 준수 정본**: 본 파이프라인의 모든 생성 및 검수 작업자는 **[`archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`](file:///c:/Users/USER/Desktop/AP------/archive/tools/geometry-equation/production/AUTHOR_GUIDE.md)**(발문·해설 그림 SVG 엔진 작성 지침 및 plan 계약 전문)와 **[`docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md`](file:///c:/Users/USER/Desktop/AP------/docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md)**을 필독하고 100% 준수해야 한다.
+> **최우선 준수 정본**: 본 파이프라인의 모든 생성 및 검수 작업자는 **[`archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`](https://github.com/icefoxtail/AP------/blob/main/archive/tools/geometry-equation/production/AUTHOR_GUIDE.md)**(발문·해설 그림 SVG 엔진 작성 지침 및 plan 계약 전문)와 **[`docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md`](https://github.com/icefoxtail/AP------/blob/main/docs/rules/04_VISUAL/JS_Archive_GPT_Visual_Production_Contract_v1.md)**을 필독하고 100% 준수해야 한다.
 
 ---
 
@@ -9,7 +9,7 @@
 본 정본은 중등 유사문항 자동 생산의 품질 무결성과 독립성을 보장하기 위해 **생성 라인**과 **검수·수리·출고 라인**을 물리적으로 완전히 분리된 2개의 예약 라인으로 운영하는 규칙을 정의한다.
 
 - **원칙 1 (물리적 분리)**: 생성 모델과 검수 모델은 서로 다른 창/세션/예약으로 실행된다.
-- **원칙 2 (공식 SVG 엔진 및 플랜 계약 의무화)**: 시각 자료(도형, 그래프, 수직선 등)는 AI가 임의로 픽셀 좌표를 상상해서 그리는 것을 엄격히 금지하며, 반드시 `AUTHOR_GUIDE.md`에 명시된 `plan.json` 규격에 따라 작성하고 공식 엔진(`archive/tools/geometry-equation/production/render-plan.mjs`)으로 렌더링하거나 엔진 규격(`<title>`, `<desc>`, `role="img"`, 폰트 11px 이상, raw TeX 금지)을 철저히 준수해야 한다.
+- **원칙 2 (공식 SVG 엔진 및 플랜 계약 의무화)**: 시각 자료(도형, 그래프, 수직선 등)는 AI가 임의로 픽셀 좌표를 상상해서 그리는 것을 엄격히 금지하며, 반드시 `AUTHOR_GUIDE.md`의 실행 가능한 plan을 작성하고 공식 엔진(`archive/tools/geometry-equation/production/render-plan.mjs`)으로 실제 렌더한 결과·상태·SVG 바이트를 검증해야 한다. 스타일만 흉내 낸 임의 SVG는 출고 근거가 아니다.
 - **원칙 3 (생성자 자가 영수증 금지)**: 생성 라인은 `review-receipt.json`을 작성하거나 `main` 병합을 시도할 수 없다. 생성 라인의 산출물은 오직 `READY_FOR_INDEPENDENT_REVIEW` 상태로 대기한다.
 - **원칙 4 (검수자의 직접 수리 및 출고)**: 검수 라인은 지문과 시각 에셋만으로 전 문항 독립 블라인드 풀이(R1)를 수행하고, 결함 발견 시 직접 문항을 수리(Own & Repair)한 후 진짜 영수증을 발행하여 `main`에 최종 운영병합(Route 13)한다.
 
@@ -19,8 +19,8 @@
 
 | 구분 | 예약 라인 명칭 | Cron 스케줄 | 실행 주기 | 주요 역할 |
 | :--- | :--- | :--- | :--- | :--- |
-| **라인 1** | **`MIDDLE_SIMILAR_GENERATOR`** | `0 2,7,14,19 * * *` | 02시, 07시, 14시, 19시 | 순차 큐에서 다음 시험지 인수 $\to$ 유사문항 생성 $\to$ `AUTHOR_GUIDE.md` 기반 plan 작성 & SVG 렌더 $\to$ `READY_FOR_INDEPENDENT_REVIEW` 패킷 보존 |
-| **라인 2** | **`MIDDLE_SIMILAR_REVIEWER_MERGER`** | `0 3,8,15,20 * * *` | 03시, 08시, 15시, 20시 | `READY_FOR_INDEPENDENT_REVIEW` 인수 $\to$ R1 블라인드 풀이 $\to$ 결함 수리 $\to$ `AUTHOR_GUIDE.md` 규격 검수 $\to$ 하네스 게이트 통과 $\to$ 영수증 발급 $\to$ 13번 루트 main 병합 |
+| **라인 1** | **`MIDDLE_SIMILAR_GENERATOR`** | `0 2,7,14,19 * * *` | 02시·07시·14시·19시 (하루 4회) | 순차 큐에서 다음 시험지 인수 $\to$ 유사문항 생성 $\to$ `AUTHOR_GUIDE.md` 기반 plan 작성 & SVG 렌더 $\to$ `READY_FOR_INDEPENDENT_REVIEW` 패킷 보존 |
+| **라인 2** | **`MIDDLE_SIMILAR_REVIEWER_MERGER`** | `0 3,8,15,20 * * *` | 라인 1 실행 1시간 뒤 | `READY_FOR_INDEPENDENT_REVIEW` 인수 $\to$ R1 블라인드 풀이 $\to$ 결함 수리 $\to$ `AUTHOR_GUIDE.md` 규격 검수 $\to$ 영수증 발급 $\to$ 하네스 최종 게이트 통과 $\to$ 13번 루트 main 병합 |
 
 ---
 
@@ -38,9 +38,9 @@
    - **그림 불필요 시 (`EXEMPT`)**: `{"status": "EXEMPT", "reason": "한 문장 사유"}` 명시 (§2).
    - **엔진 미지원 시 (`UNSUPPORTED`)**: `{"status": "UNSUPPORTED", "reason": "필요한 것"}` 명시 (§2).
    - **그림 필요 시**:
-     - 엔진 지원 capability (`construction-spike-v1`, `polynomial-spike-v1`, `piecewise-polynomial-spike-v1`, `quadratic-inequality-chain-v1`, `number-line-figure-v1`, `composite-panels-v1`) 선택.
+     - AUTHOR_GUIDE의 실제 지원 capability 선택.
      - `sourceQuote` (지문/해설의 12~40자 정확한 인용), `caption` (학생용 한국어 한 문장 설명) 작성.
-     - 공식 렌더러 `node archive/tools/geometry-equation/production/render-plan.mjs`를 실행하여 `archive/assets/images/[stem]/`에 SVG를 생성하거나, 엔진 규격을 철저히 준수한 순백색(`#FFFFFF`) SVG를 생성한다.
+     - 공식 렌더러 `node archive/tools/geometry-equation/production/render-plan.mjs --item <item.json> --plan <plan.json> --out <outDir>`를 실제 실행하고 성공 결과·최종 SVG 바이트를 결속한다. 임의 수작업 SVG는 출고 금지.
      - SVG 내에 raw LaTeX(`\frac`, `\sqrt` 등) 잔존 금지, 폰트 크기 11px 이상 유지, `<title>` 및 `<desc>` 교육용 설명 태그, `role="img"` 필수 적용.
 4. **소형 메타 작성**:
    - `[stem].meta-*.json`을 `approval.reviewStatus = "review_required"`로 작성.
@@ -63,11 +63,13 @@
 5. **R2 교사 판서 & R3 정본 메타 검증**:
    - 2015 교육과정 정석 풀이인지 확인하고 비약이 없도록 판서 해설을 보강한다.
    - 신규 2015 바인딩 정본 확장(`registryChanges`) 결속.
-6. **결정론적 하네스 게이트 실행 (Zero-Tolerance Code Gate)**:
-   - 검수자가 직접 `node tools/harness/verify_similar_exam.mjs [stem]`을 실행한다.
-   - exit code 0을 받지 못하면 병합을 시도할 수 없다.
-7. **영수증 발급 및 13번 루트 운영병합**:
-   - 실제 전 문항 독립 풀이 과정이 담긴 `review-receipt.json`을 발급하고 `expectedSourceBlobSha1`을 결속한다.
-   - `python tools/main_merge_master.py --exam [stem] --apply`로 공식 inbox 요청 생성 및 staging.
-   - `git commit` 및 `git push origin main --no-verify`로 원격 `main`에 운영병합.
-   - 원격 HEAD 및 blob SHA-1 readback을 검증하고 `MAIN_DONE`을 선언한다.
+6. **영수증 발급 및 최종 게이트**:
+   - R1 동결, Own & Repair, R2/R3 검수 종료 후 최종 JS blob에 `review-receipt.json` 발급.
+   - `node tools/harness/verify_similar_exam.mjs [stem]`으로 정식 릴리스(strict 저작+영수증) 검증. 실패 시 병합 중단.
+7. **13번 루트 운영병합**:
+   - 현행 `tools/main_merge_master.py` 계약으로 staged allowlist를 구성한다. `--no-verify` 우회 없이 안전한 commit/push 후 원격 HEAD/blob readback.
+
+**실제 신규 시험지 승인 순서:** R1 독립 답안 동결 → 결함 수리 및 수학·해설·SVG 재검 → `review-receipt.json` 발급(최종 JS blob 결속) → `node tools/harness/verify_similar_exam.mjs [stem]` 정식 릴리스 게이트(exit 0) → 13번 경로 병합. 영수증이 없는 작성 중에는 `--phase=draft`만 사용하며 이 통과를 출고 PASS로 표현하지 않는다. `--legacy-baseline`은 구형 fixture 정적 회귀 확인 전용이며 출고 승인 근거가 아니다.
+
+**시각자료 엔진/증거 경계:** 활성 plan은 `capability` 이름뿐 아니라 실제 입력(`mathPlan`, `graphPlan`, `numberLine` 등), 대상 문항의 정확한 12~40자 `sourceQuote`, 학습용 한국어 `caption`, 연결된 `assetPath`를 포함한다. `render-plan.mjs`의 생성 결과에서 `ARCHIVE_BOUND` `*-result.json`·`*-state.json`·`*-solution.svg`를 남기고, plan의 `engineEvidence: {"resultPath":"상대경로", "statePath":"상대경로", "svgPath":"상대경로"}`와 최종 붙인 자산 바이트를 결속한다. 임의 SVG를 규격만 비슷하게 그리는 우회는 금지한다. 공식 렌더러가 해당 발문/해설 시각화를 지원하지 않으면 `UNSUPPORTED`로 남기고 해당 필요 시각자료를 제작 완료로 선언하지 않는다. **엔진 산출물 바이트 일치도 독립 수학 검수·발문 그림의 정답 누설 검수·실렌더를 대체하지 않는다.**
+
