@@ -1,5 +1,16 @@
 # JS Archive GPT 예약라인 공용 프롬프트 정본 — 변경 이력
 
+## v2.0.1 — 2026-10-24: 2-라인 SVG 하네스 조건부 보완 (출고 게이트 fail-closed)
+- Windows 사용자 폴더 절대경로를 제거하여 검증기·회귀 테스트의 repo-relative root를 사용한다.
+- **영수증 순서 수리**: draft 진단(`--phase=draft`) → 독립 R1 freeze 및 직접 수리 → 최종 JS blob에 대한 review-receipt → 기본 strict release gate → 13번 병합. draft/legacy PASS는 출시 PASS가 아니다.
+- 기본 CLI는 strict AUTHOR_GUIDE 저작 게이트를 사용하고, 옛 두 시험지의 회귀 테스트는 programmatic legacy/static으로만 구분한다. `--legacy-baseline`은 과거 데이터 구조 점검 전용이다.
+- 활성 플랜의 12~40자 정확한 sourceQuote, 한국어 학습 caption, 실제 mathPlan/graphPlan 등 엔진 입력, assetPath, `ARCHIVE_BOUND` result/state/생성 SVG와 현재 연결 자산의 바이트 일치를 요구한다. 공식 엔진 미지원(`UNSUPPORTED`)은 승인된 대체물이 없으면 엄격 출고 PASS를 금지한다.
+- SVG root role/viewBox, raw TeX의 nested text/tspan, font-size도 보강했다. 정규식/바이트 정적 검사는 수학적 정답·그림의 교육적 의미·blind 독립성·학생 화면 실렌더를 대신하지 않는다.
+- 운영 문서 4종에 있던 개인 PC `file:///` 링크와 수작업 SVG 우회 문구를 정정하고 생성/검수 예약 프롬프트의 실행 순서를 동기화했다. Cron 00/05/10/15/20의 실제 주기는 24시간당 5회이고 밤 간격은 4시간이다.
+- 기존 동산중/금당중 플랜에는 capability-only 등 구형 흔적이 있어 strict-gate의 신규 릴리스 승인 대상으로 자동 승격하지 않는다. 원문 데이터를 무관하게 재작성하지 않는다.
+- Git 문서/코드 수정은 실제 Antigravity 예약 등록 내용의 readback이나 첫 신규 시험지 엔진 실작동 검증을 의미하지 않는다.
+
+
 ## v2.0.0 — 2026-10-24: 중등 유사문항 2-라인 분리 및 AUTHOR_GUIDE.md SVG 엔진 완전 결속
 - 발견한 틈:
   1. 단일 5시간 예약 내에서 생성과 검수를 동시에 수행하여 R1 독립 블라인드 검수의 시간적/물리적 독립성 훼손.
