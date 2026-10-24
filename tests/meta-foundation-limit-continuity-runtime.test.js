@@ -127,7 +127,7 @@ const combined = [
   ...readJson("archive/data/meta-foundation/runtime/integral-calculus-v1.json").records,
   ...readJson("archive/data/meta-foundation/runtime/derivative-v1.json").records
 ];
-assert.strictEqual(combined.length, 1981);
+assert.strictEqual(combined.length, 1983);
 assert.strictEqual(new Set(combined.map((r) => r.questionUid)).size, combined.length);
 assert.strictEqual(new Set(combined.map((r) => sourceKey(r.sourceArchiveFile, r.sourceOrdinal))).size, combined.length);
 
