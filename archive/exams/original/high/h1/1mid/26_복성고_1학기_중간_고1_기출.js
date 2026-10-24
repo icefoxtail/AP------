@@ -305,7 +305,11 @@ window.questionBank = [
     "subUnitConfidence": "active_binding_and_semantic_match",
     "subUnitClassificationDepth": "complete_active_binding",
     "difficultyRationale": "Bucket is based on the actual source demand and independently derived solution steps, including the number of linked discriminant, case, symmetric-expression or interval decisions; source points alone were not used.",
-    "decisiveStep": "Independent application of the source conditions to obtain the required value."
+    "decisiveStep": "Independent application of the source conditions to obtain the required value.",
+    "solutionImage": "assets/images/26_복성고_1학기_중간_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "직선 y=2x+k는 k=19/4이면 y=x²+5x+7에, k=0이면 y=-x²+4x-1에 접하므로 두 포물선과 모두 만나지 않는 k의 범위는 0<k<19/4이다.",
+    "solutionImageCaption": "직선 y=2x+k는 k=19/4이면 y=x²+5x+7에, k=0이면 y=-x²+4x-1에 접하므로 두 포물선과 모두 만나지 않는 k의 범위는 0<k<19/4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 8,
