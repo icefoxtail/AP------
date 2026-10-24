@@ -6,7 +6,7 @@
 
 ## 1. [라인 1] 생성 라인 (MIDDLE_SIMILAR_GENERATOR)
 
-- **스케줄**: `0 0,5,10,15,20 * * *` (매 5시간 정각)
+- **스케줄**: `0 2,7,14,19 * * *` (02시, 07시, 14시, 19시)
 - **데몬 모드**: `IsDaemon: true`
 - **필독 정본**:
   1. `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md` (발문·해설 그림 SVG 엔진 작성 지침 및 plan 계약 전문)
@@ -44,7 +44,7 @@
 
 ## 2. [라인 2] 검수·수리·출고 라인 (MIDDLE_SIMILAR_REVIEWER_MERGER)
 
-- **스케줄**: `0 1,6,11,16,21 * * *` (라인 1 실행 1시간 뒤)
+- **스케줄**: `0 3,8,15,20 * * *` (03시, 08시, 15시, 20시 — 생산 1시간 뒤)
 - **데몬 모드**: `IsDaemon: true`
 - **필독 정본**:
   1. `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md` (SVG 엔진 지침 및 plan 계약 전문)

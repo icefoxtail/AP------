@@ -19,8 +19,8 @@
 
 | 구분 | 예약 라인 명칭 | Cron 스케줄 | 실행 주기 | 주요 역할 |
 | :--- | :--- | :--- | :--- | :--- |
-| **라인 1** | **`MIDDLE_SIMILAR_GENERATOR`** | `0 0,5,10,15,20 * * *` | 매 5시간 정각 | 순차 큐에서 다음 시험지 인수 $\to$ 유사문항 생성 $\to$ `AUTHOR_GUIDE.md` 기반 plan 작성 & SVG 렌더 $\to$ `READY_FOR_INDEPENDENT_REVIEW` 패킷 보존 |
-| **라인 2** | **`MIDDLE_SIMILAR_REVIEWER_MERGER`** | `0 1,6,11,16,21 * * *` | 라인 1 실행 1시간 뒤 | `READY_FOR_INDEPENDENT_REVIEW` 인수 $\to$ R1 블라인드 풀이 $\to$ 결함 수리 $\to$ `AUTHOR_GUIDE.md` 규격 검수 $\to$ 하네스 게이트 통과 $\to$ 영수증 발급 $\to$ 13번 루트 main 병합 |
+| **라인 1** | **`MIDDLE_SIMILAR_GENERATOR`** | `0 2,7,14,19 * * *` | 02시, 07시, 14시, 19시 | 순차 큐에서 다음 시험지 인수 $\to$ 유사문항 생성 $\to$ `AUTHOR_GUIDE.md` 기반 plan 작성 & SVG 렌더 $\to$ `READY_FOR_INDEPENDENT_REVIEW` 패킷 보존 |
+| **라인 2** | **`MIDDLE_SIMILAR_REVIEWER_MERGER`** | `0 3,8,15,20 * * *` | 03시, 08시, 15시, 20시 | `READY_FOR_INDEPENDENT_REVIEW` 인수 $\to$ R1 블라인드 풀이 $\to$ 결함 수리 $\to$ `AUTHOR_GUIDE.md` 규격 검수 $\to$ 하네스 게이트 통과 $\to$ 영수증 발급 $\to$ 13번 루트 main 병합 |
 
 ---
 

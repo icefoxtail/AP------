@@ -2,7 +2,7 @@
 
 - **파일 위치**: `docs/rules/02_PIPELINES/gpt-reservation/MIDDLE_SIMILAR_LINE2_REVIEWER_CURRENT.md`
 - **역할 (Role)**: `MIDDLE_SIMILAR_REVIEWER_MERGER` (검수·수리 및 13번 운영병합 전담 라인)
-- **주기 (Schedule)**: **생성 라인 실행 1시간 뒤 (`0 1,6,11,16,21 * * *`)**
+- **주기 (Schedule)**: **03:00, 08:00, 15:00, 20:00 (`0 3,8,15,20 * * *`) — 생산 1시간 뒤**
 - **실행 환경**: **독립 창 / 전용 세션 (Separate Window / Dedicated Context)**
 - **권한 경계**: 독립 블라인드 검수(R1), 직접 수리(Own & Repair), 플랜·SVG 규격 감사, 하네스 게이트 통과, 영수증 발급, 13번 루트(`main_merge_master.py`) 공식 `main` 운영병합 권한 보유.
 

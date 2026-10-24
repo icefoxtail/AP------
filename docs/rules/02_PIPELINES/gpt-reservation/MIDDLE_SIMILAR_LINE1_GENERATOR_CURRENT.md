@@ -2,7 +2,7 @@
 
 - **파일 위치**: `docs/rules/02_PIPELINES/gpt-reservation/MIDDLE_SIMILAR_LINE1_GENERATOR_CURRENT.md`
 - **역할 (Role)**: `MIDDLE_SIMILAR_GENERATOR` (생성 전담 라인)
-- **주기 (Schedule)**: **매 5시간 정각 (`0 0,5,10,15,20 * * *`)**
+- **주기 (Schedule)**: **02:00, 07:00, 14:00, 19:00 (`0 2,7,14,19 * * *`)**
 - **실행 환경**: **독립 창 / 전용 세션 (Separate Window / Dedicated Context)**
 - **권한 경계**: 후보 문항 생성 및 `READY_FOR_INDEPENDENT_REVIEW` 인계 전담. `review-receipt.json` 작성 금지, `main` 브랜치 병합 금지.
 
