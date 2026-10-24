@@ -243,7 +243,11 @@ window.questionBank = [
     "sourceQid": 4,
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "원점에 대하여 대칭이동하면 중심이 P(-1,3)과 대칭인 Q(1,-3)로 옮겨지고 반지름 √5는 그대로이다. 원래 원의 중심이 Q이다.",
+    "solutionImageCaption": "원점에 대하여 대칭이동하면 중심이 P(-1,3)과 대칭인 Q(1,-3)로 옮겨지고 반지름 √5는 그대로이다. 원래 원의 중심이 Q이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -693,7 +697,11 @@ window.questionBank = [
     "sourceQid": 11,
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "삼각형 ABC의 세 변을 2:1로 외분하는 점 D, E, F를 꼭짓점으로 하는 삼각형 DEF의 무게중심이 G(1,1)이다.",
+    "solutionImageCaption": "삼각형 ABC의 세 변을 2:1로 외분하는 점 D, E, F를 꼭짓점으로 하는 삼각형 DEF의 무게중심이 G(1,1)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -1477,7 +1485,11 @@ window.questionBank = [
     "sourceQid": 23,
     "sourceIdentity": "2019|강남여고|h1|1final",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/19_강남여고_1학기_기말_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "선분 AB를 2:3으로 내분하는 점 D(3,-1)과 외분하는 점 E(-9,23)을 이은 선분 DE의 중점이 M(-3,11)이다.",
+    "solutionImageCaption": "선분 AB를 2:3으로 내분하는 점 D(3,-1)과 외분하는 점 E(-9,23)을 이은 선분 DE의 중점이 M(-3,11)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,
