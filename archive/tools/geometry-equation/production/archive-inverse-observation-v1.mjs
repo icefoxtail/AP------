@@ -5,7 +5,8 @@ import {objectSha,bytesSha,canonicalJson,safePath} from '../../pipeline-core/can
 import {pythonWorker} from './worker.mjs';
 import {assetIdentity} from './contracts.mjs';
 import {specFor} from './phase2.mjs';
-import {compositePanels,captionText,COMPOSITE_SVG_VERSION,compositeHeaderLabels} from './composite-candidate-svg-v1.mjs';
+import {compositePanels,captionText,COMPOSITE_SVG_VERSION,compositeHeaderLabels,isNumberLinePanel} from './composite-candidate-svg-v1.mjs';
+import {numberLineSpec,numberLineLabelTexts} from './quadratic-inequality-chain-v1.mjs';
 
 export const PACKET_VERSION='archive-inverse-observation-packet-v1';
 export const RECORD_VERSION='archive-inverse-observation-record-v1';
@@ -341,7 +342,7 @@ function checkExpectationLineage({capture,composed,plan,model,identity}){
     if(!isPlain(model)||!Array.isArray(model.panels)||model.panels.length!==panels.length||!Array.isArray(composed.lineage.panelSpecSha256s))bad('COMPOSITE_MODEL_INVALID');
     // The per-panel records must be the panels this plan describes: plan, spec and SVG of each, as composed.
     if(!Array.isArray(composed.panels)||composed.panels.length!==panels.length||!Array.isArray(composed.lineage.panelSvgSha256s)||composed.panels.some((record,i)=>record?.lineage?.planSha256!==objectSha(panels[i].plan)||record.lineage.specSha256!==composed.lineage.panelSpecSha256s[i]||record.lineage.svgSha256!==composed.lineage.panelSvgSha256s[i]))bad('COMPOSITE_PANEL_LINEAGE');
-    const specs=panels.map((panel,i)=>{let panelSpec;try{panelSpec=specFor(panel.plan,model.panels[i],identity.assetId);}catch(error){if(!isDomainCode(error))throw error;bad('SPEC_NOT_DERIVABLE',{code:error.message,panel:i});}if(objectSha(panelSpec)!==composed.lineage.panelSpecSha256s[i])bad('SPEC_SHA',{panel:i});return panelSpec;});
+    const specs=panels.map((panel,i)=>{let panelSpec;try{panelSpec=isNumberLinePanel(panel.plan)?numberLineSpec(panel.plan,model.panels[i]):specFor(panel.plan,model.panels[i],identity.assetId);}catch(error){if(!isDomainCode(error))throw error;bad('SPEC_NOT_DERIVABLE',{code:error.message,panel:i});}if(objectSha(panelSpec)!==composed.lineage.panelSpecSha256s[i])bad('SPEC_SHA',{panel:i});return panelSpec;});
     spec={composite:true,panels:panels.map((panel,i)=>({plan:panel.plan,caption:panel.caption,spec:specs[i]})),checked:panels,models:model.panels,assetId:identity.assetId};
   }else{
     if(plan?.graphPlan&&Object.hasOwn(plan.graphPlan,'compositeHeader'))bad('COMPOSITE_HEADER_OUTSIDE_COMPOSITE');
@@ -367,7 +368,8 @@ async function deriveCompositeExpectation(spec){
   let header;
   try{header=await compositeHeaderLabels(spec.checked,spec.models,spec.assetId);}catch(error){throw new Stop('EXPECTATION_UNAVAILABLE',{reason:'COMPOSITE_HEADER_LABELS',code:error.status??error.message});}
   for(const [i,panel] of spec.panels.entries()){
-    const expected=await deriveExpectation({plan:panel.plan,spec:panel.spec});
+    // A number-line panel shows only labels (its dots and band are the number-line observer's): the header, end, tick, integer and axis texts.
+    const expected=isNumberLinePanel(panel.plan)?{labels:numberLineLabelTexts(panel.spec).map(norm),segments:[],lines:[],circles:[],rightAngles:[]}:await deriveExpectation({plan:panel.plan,spec:panel.spec});
     for(const category of CATEGORIES)merged[category].push(...expected[category]);
     merged.labels.push(norm(captionText(panel.caption)));
     if(header)merged.labels.push(norm(header.formulas[i].text));
