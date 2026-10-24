@@ -38,6 +38,13 @@ const META_PIPELINE_PENDING_META_STATUSES = new Set([
   "RPM_SEMANTIC_FINAL_H15_UNIT_BINDING_PENDING",
   "RPM_SEMANTIC_FINAL_DIRECT_BINDING_GAP"
 ]);
+
+export function metaPipelineCrossConceptCountMatches(statistics, audit) {
+  const records = Array.isArray(audit?.records) ? audit.records : [];
+  const uniqueCount = new Set(records.flatMap(row => row?.classification?.crossConceptKeys || [])).size;
+  const bindingCount = records.reduce((sum, row) => sum + (row?.classification?.crossConceptKeys || []).length, 0);
+  return statistics?.atomicCrossConceptsBound === uniqueCount || statistics?.atomicCrossConceptsBound === bindingCount;
+}
 const hasPendingMetaReason = (question, field) =>
   question.projectionStatus === "BINDING_PENDING"
     ? typeof question[`${field}NullReason`] === "string" && question[`${field}NullReason`].trim().length > 0
@@ -49,7 +56,11 @@ const isPendingMetaPlaceholder = (question, field, approvedValue) => (
   ["crossConceptKeys", "conditionKeys"].includes(field) && Array.isArray(question[field]) && question[field].length === 0 &&
     Array.isArray(approvedValue) && approvedValue.length > 0 && hasPendingMetaReason(question, field)
 );
-const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, current, question, patch, final, ordinal, field }) => {
+export function isMetaPipelineApprovedTypeRebindAllowed({ field, current, priorTypeStatus }) {
+  return ["problemTypeKey", "templateKey"].includes(field) && approved(current) &&
+    priorTypeStatus === "ACTIVE" && !["FINAL_QA", "REVIEW2"].includes(current.metadataApprovalType);
+}
+const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, beforeTables, current, question, patch, final, ordinal, field }) => {
   const pendingStatusKeys = {
     standardUnitKey: ["standardUnit"], subUnitKey: ["subUnit"], problemTypeKey: ["problemType"],
     templateKey: ["template"], crossConceptKeys: ["concept", "crossConcept"], conditionKeys: ["condition"]
@@ -60,7 +71,16 @@ const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, curren
   const fieldExplicitlyPending = current.reviewStatus === "manual_review" &&
     current.metadataStatus === "approved_partial_with_explicit_holds" &&
     pendingStatusKeys.some(key => current.fieldStatus?.[key] === "manual_review_pending");
-  if (approvalType !== "META_PIPELINE_AUDIT" || !metaPipelineAudit || approved(current) && !fieldExplicitlyPending ||
+  const existingConcepts = current.crossConceptKeys;
+  const nextConcepts = final.crossConceptKeys;
+  const additiveApprovedConcepts = field === "crossConceptKeys" && approved(current) &&
+    Array.isArray(existingConcepts) && Array.isArray(nextConcepts) && nextConcepts.length > existingConcepts.length &&
+    existingConcepts.every((key, index) => nextConcepts[index] === key);
+  const priorType = field === "problemTypeKey" ? beforeTables?.pt.get(current.problemTypeKey)
+    : field === "templateKey" ? beforeTables?.tpl.get(current.templateKey) : null;
+  const exactAuditedTypeRebind = isMetaPipelineApprovedTypeRebindAllowed({ field, current, priorTypeStatus: priorType?.status });
+  if (approvalType !== "META_PIPELINE_AUDIT" || !metaPipelineAudit ||
+      approved(current) && !fieldExplicitlyPending && !additiveApprovedConcepts && !exactAuditedTypeRebind ||
       !["standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys"].includes(field) ||
       !patch.sourceMetadataBefore || !Object.hasOwn(patch.sourceMetadataBefore, field) ||
       !eq(patch.sourceMetadataBefore[field] ?? null, question[field] ?? null)) return false;
@@ -167,7 +187,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
     if (!record || record.auditVerdict !== "APPROVED" || classification?.status !== "APPROVED_CANONICAL" ||
         !Array.isArray(classification.crossConceptKeys) || !classification.problemTypeKey || !classification.templateKey ||
         !record.standardUnitKey || !record.subUnitKey || !reading || !reading.sourceTextExcerpt || !reading.solutionDecisiveExcerpt ||
-        typeof reading.visualAssetChecked !== "boolean" || !["IMAGE", "SVG", "NONE"].includes(reading.visualType)) fail(`META_PIPELINE_AUDIT record incomplete: ${ordinal}`);
+        typeof reading.visualAssetChecked !== "boolean" || !["IMAGE", "SVG", "SVG_IMAGE", "NONE"].includes(reading.visualType)) fail(`META_PIPELINE_AUDIT record incomplete: ${ordinal}`);
     if (!manifestRow || manifestRow.problemTypeKey !== classification.problemTypeKey || manifestRow.templateKey !== classification.templateKey ||
         !eq(manifestRow.crossConceptKeys, classification.crossConceptKeys)) fail(`META_PIPELINE_AUDIT manifest binding mismatch: ${ordinal}`);
     const actualPayloadHash = studentPayloadSha256(bank[ordinal - 1]);
@@ -199,7 +219,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   if (!Array.isArray(audit.boundAtomicCrossConcepts)) fail("META_PIPELINE_AUDIT CrossConcept definitions required");
   const usedConcepts = [...new Set(audit.records.flatMap(row => row.classification.crossConceptKeys))].sort();
   const definedConcepts = unique(audit.boundAtomicCrossConcepts, "conceptKey", "audit CrossConcept definition");
-  if (!eq([...definedConcepts.keys()].sort(), usedConcepts) || stats.atomicCrossConceptsBound !== usedConcepts.length)
+  if (!eq([...definedConcepts.keys()].sort(), usedConcepts) || !metaPipelineCrossConceptCountMatches(stats, audit))
     fail("META_PIPELINE_AUDIT CrossConcept definition/binding mismatch");
   for (const definition of definedConcepts.values()) {
     if (!/^CC_[A-Z0-9_]+$/.test(definition.conceptKey) || !definition.labelKo || !definition.definition)
@@ -625,6 +645,9 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredRep
         !["archive/data/basic-scope-parent-links.json", META].includes(proof.sourcePath) || !/^[a-f0-9]{64}$/.test(proof.sourceSha256 || ""))
       fail("basic scope parent evidence schema/source mismatch");
     const compactCourse = value => String(value ?? "").normalize("NFC").replace(/\s/g, "");
+    const parentCourseMatches = value => compactCourse(value) === compactCourse(resolved.course) ||
+      Boolean(row.courseKey && resolved.pack?.meta?.standardCourses?.includes(row.courseKey) &&
+        compactCourse(value) === compactCourse(row.courseKey));
     let parent = null;
     if (proof.sourcePath === META) {
       const metadataBytes = fs.readFileSync(safePath(root, META));
@@ -652,17 +675,17 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredRep
       parent = snapshot;
     } else {
       const matches = (proof.records || []).filter(candidate => candidate.curriculumKey === resolved.curriculum &&
-        compactCourse(candidate.courseKey) === compactCourse(resolved.course) && candidate.standardUnitKey === row.standardUnitKey && (candidate.subUnitKey ?? null) === (row.subUnitKey ?? null));
+        parentCourseMatches(candidate.courseKey) && candidate.standardUnitKey === row.standardUnitKey && (candidate.subUnitKey ?? null) === (row.subUnitKey ?? null));
       parent = matches.length === 1 ? matches[0] : null;
       if (!parent && matches.length === 0) {
         const derived = (proof.derivedRecords || []).filter(candidate => candidate.curriculumKey === resolved.curriculum &&
-          compactCourse(candidate.courseKey) === compactCourse(resolved.course) && candidate.standardUnitKey === row.standardUnitKey &&
+          parentCourseMatches(candidate.courseKey) && candidate.standardUnitKey === row.standardUnitKey &&
           candidate.subUnitKey === (row.subUnitKey ?? null));
         if (derived.length !== 1 || derived[0].method !== "SAME_STANDARD_UNIT_SIBLING_PARENT_CONSENSUS" ||
             !Array.isArray(derived[0].supportingSubUnitKeys) || derived[0].supportingSubUnitKeys.length < 2) fail(`basic scope parent evidence missing/ambiguous: ${row.questionUid}`);
         const supportKeys = new Set(derived[0].supportingSubUnitKeys);
         const support = (proof.records || []).filter(candidate => candidate.curriculumKey === resolved.curriculum &&
-          compactCourse(candidate.courseKey) === compactCourse(resolved.course) && candidate.standardUnitKey === row.standardUnitKey &&
+          parentCourseMatches(candidate.courseKey) && candidate.standardUnitKey === row.standardUnitKey &&
           supportKeys.has(candidate.subUnitKey) && candidate.subUnitKey !== row.subUnitKey);
         if (support.length !== supportKeys.size || new Set(support.map(candidate => candidate.L1)).size !== 1 ||
             new Set(support.map(candidate => candidate.L2)).size !== 1 || support[0].L1 !== derived[0].L1 || support[0].L2 !== derived[0].L2)
@@ -681,8 +704,9 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredRep
     if (ref.path !== masterPath || !(patch.evidenceRefs || []).some(e => e.path === ref.path)) fail("target parent reference is not evidence-bound");
     const compact = value => String(value).normalize("NFC").replace(/\s/g, "");
     const matches = (read(masterPath).records || []).filter(r => r.curriculum === ref.curriculum && r.scope === ref.scope && r.majorUnit === ref.majorUnit && r.midUnit === ref.midUnit);
+    const canonicalMidLabels = [resolved.binding.L2, resolved.sub?.labelKo, resolved.unit.labelKo].filter(Boolean);
     if (!matches.length || ref.curriculum !== resolved.curriculum || compact(ref.scope) !== compact(row.courseKey || resolved.course) ||
-        ref.midUnit !== (resolved.binding.L2 || resolved.unit.labelKo) || resolved.binding.L1 && ref.majorUnit !== resolved.binding.L1) fail("canonical target parent mismatch");
+        !canonicalMidLabels.includes(ref.midUnit) || resolved.binding.L1 && ref.majorUnit !== resolved.binding.L1) fail("canonical target parent mismatch");
     return { ...labels, L1: ref.majorUnit, L2: ref.midUnit };
   };
   if (patch.approvedMetadataRef) {
@@ -884,7 +908,7 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       const preservesApprovedAuditValue = req.approval.type === "META_PIPELINE_AUDIT" && approved(current) &&
         eq(current[f] ?? null, final[f] ?? null);
       if (!preservesApprovedAuditValue && !(req.approval.type === "META_PIPELINE_AUDIT" && isPendingMetaPlaceholder(q, f, final[f])) &&
-          !canRebindPendingAuditMetadata({ approvalType: req.approval.type, metaPipelineAudit, current, question: q, patch, final, ordinal: i + 1, field: f }))
+          !canRebindPendingAuditMetadata({ approvalType: req.approval.type, metaPipelineAudit, beforeTables, current, question: q, patch, final, ordinal: i + 1, field: f }))
         fail(`source/approved metadata parity: ${current.questionUid}.${f}`);
     }
     const checked = validateReviewedSourceFingerprints({ question: q, metadata: current, identity: id, patch });

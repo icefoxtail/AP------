@@ -1,0 +1,406 @@
+{
+  "schemaVersion": "ALIVE_COURIER_INTAKE_MANIFEST_v3",
+  "manifestTimestamp": "2026-10-24T03:46:34Z",
+  "examTitle": "23_복성고_2학기_기말_고2_확률과통계",
+  "sourceFileDriveId": "1D_sH9_sYlS8p-JLXstCXYLdVZY_RAeBB",
+  "sourceSha256": "0928ccef91d08d6290f1096f6a520a554d776c104a5b0c2bb1ebf4b98cd39ffe",
+  "courierAction": "BIND_ATOMIC_EXAM_METADATA",
+  "status": "READY_FOR_COURIER_REGISTRATION",
+  "totalQuestions": 20,
+  "totalHoldCount": 0,
+  "bindingTarget": {
+    "archivePath": "archive/exams/original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
+    "targetPack": "PROBABILITY_STATISTICS"
+  },
+  "payloadSummary": {
+    "totalQuestions": 20,
+    "approvedQuestions": 20,
+    "holdQuestions": 0,
+    "newTemplatesCreated": 0
+  },
+  "recordsToBind": [
+    {
+      "questionId": 1,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "crossConceptKeys": [
+        "CC_COMPLEMENTARY_EVENT_PROBABILITY",
+        "CC_SET_DIFFERENCE_IDENTITY",
+        "CC_DEMORGAN_LAWS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "차집합 성질로 P(A^c∩B^c)=P(B^c)-P(A∩B^c)=7/18-2/18=5/18을 구한 뒤 여사건 공식 P(A∪B)=1-5/18=13/18 산출 (2단계)"
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "crossConceptKeys": [
+        "CC_COMBINATION_PROBABILITY",
+        "CC_MUTUALLY_EXCLUSIVE_CASE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "전체 경우의 수 9C4=126과 흰 공이 2개·3개·4개인 경우의 수 합 4C2*5C2+4C3*5C1+4C4*5C0=81의 비 81/126=9/14 계산 (2단계)"
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_GENERAL_TERM",
+        "CC_EXPONENT_LAWS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyReason": "이항정리 일반항 6Ck * 2^(2k-6) * x^(6-2k)에서 상수항 조건 6-2k=0으로 k=3을 구해 6C3=20 직접 산출 (1~2단계)"
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "crossConceptKeys": [
+        "CC_CONDITIONAL_PROBABILITY_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyReason": "남학생 확률 P(M)=0.48과 수시 응시 희망 남학생 확률 P(S∩M)=0.30을 조건부확률 공식 P(S|M)=0.30/0.48=5/8에 1단계 직접 대입"
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "crossConceptKeys": [
+        "CC_INDEPENDENT_TRIALS_PROBABILITY",
+        "CC_INDEPENDENT_EVENTS_MULTIPLICATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "B팀 5명 모두 성공(0.8^5)과 A팀 5명 중 1명 실패·4명 성공(5C1 * 0.2 * 0.8^4)의 독립시행 확률 곱 5*0.2*0.8^9=0.8^9 산출 (2단계)"
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_COMBINATION_SELECTION",
+        "CC_ORDER_FIXED_PERMUTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "A, B 외 나머지 4개 업무 중 2개 선택(4C2=6) 후 A가 B보다 먼저 오도록 4개 업무를 배열하는 경우의 수(4!/2=12)를 곱해 72 산출 (2단계)"
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyReason": "모집단 N(50, 20^2)과 표본 크기 n=100에서 표본평균의 평균 E(X̄)=50과 표준편차 σ(X̄)=20/sqrt(100)=2를 공식에 1단계 직접 대입해 합 52 산출"
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "표본평균 분포 N(72, (18/sqrt(81))^2)=N(72, 2^2)을 구해 P(71<=X̄<=75)=P(-0.5<=Z<=1.5)로 표준화한 뒤 표준정규분포표(q8.png)에서 0.1915+0.4332=0.6247(약 0.62) 산출 (2단계, IMAGE)"
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "표본평균 표준편차 σ/5로 표준화한 P(0<=Z<=4/(σ/5))=0.4772에서 표준정규분포표(q8.png)의 z=2.0과 비교하여 20/σ=2, σ=10 도출 (2단계, IMAGE)"
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_LENGTH",
+        "CC_RADICAL_INEQUALITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "신뢰도 95% 신뢰구간 길이 공식 b-a = 2*1.96*(9/sqrt(n)) = 35.28/sqrt(n) <= 2.94에서 sqrt(n)>=12를 풀어 n>=144 도출 (2단계)"
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyReason": "표본평균 10, 모표준편차 8, 표본 크기 16을 신뢰도 99%(z=2.58) 신뢰구간 공식 10 ± 2.58*(8/4) = 10 ± 5.16에 1단계 대입하여 4.84<=m<=15.16 산출"
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_Z_SCORE_STANDARDIZATION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "X~N(20,3^2)과 X̄~N(20,(3/sqrt(n))^2)을 각각 표준화하여 P(0<=Z<=sqrt(n))=P(0<=Z<=4)를 비교해 sqrt(n)=4에서 n=16 도출 (2단계)"
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_EXPECTED_FREQUENCY_COUNT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "X~N(44,20^2)에서 P(X>=60)=P(Z>=0.8)=0.5-0.2881=0.2119를 구하고 응시자 1000명을 곱해 약 212명 산출 (2단계)"
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "crossConceptKeys": [
+        "CC_DISCRETE_EXPECTATION",
+        "CC_LINEAR_EXPECTATION_PROPERTY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "6개 면의 눈의 평균 E(X)=(1+1+2+2+2+4)/6=2를 구한 뒤 일차변환 공식 E(5X+3)=5E(X)+3=13 적용 (2단계)"
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_NORMAL_CURVE_SYMMETRY",
+        "CC_Z_SCORE_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "high",
+      "difficultyReason": "X̄~N(50,2^2)에서 P(X̄<=53)=P(Z<=1.5)를 구하고 P(X̄<=53)+P(Ȳ<=69)=1 대칭성으로 (69-75)/(σ/5)=-1.5에서 σ=20을 결정한 뒤 표준정규분포표(q15.png)로 P(Ȳ>=71)=P(Z>=-1)=0.8413 산출 (3단계, IMAGE)"
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DENSITY_CONDITIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "구간 [-1,3]에서 확률밀도함수 조건(함숫값 0 이상 및 정적분 넓이 1)을 ㄱ, ㄴ, ㄷ에 각각 적용해 음수가 되는 ㄴ을 제외하고 ㄱ, ㄷ 판별 (2단계)"
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "crossConceptKeys": [
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "high",
+      "difficultyReason": "X~N(70,10^2)을 표준화하여 P(60<=X<=85)=P(-1<=Z<=1.5)를 구하고 표준정규분포표(q8.png)에서 0.3413+0.4332=0.7745 직접 산출 (1~2단계, IMAGE)"
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-06",
+      "standardUnit": "통계적 추정",
+      "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_LENGTH"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "신뢰구간 [x,y]의 길이 y-x = 2k*(σ/sqrt(n))에 σ=1/2, n=25를 대입하여 y-x = k/5에서 k=5(y-x) 도출 (2단계)"
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+      "crossConceptKeys": [
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_BINOMIAL_NORMAL_APPROXIMATION",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "high",
+      "difficultyReason": "1단계로 X~N(700,10^2)을 표준화해 1개 물건이 [695,705]에 속할 확률 p=P(-0.5<=Z<=0.5)=0.40을 구하고, 2단계로 600개 중 해당 개수 Y~B(600,0.4)를 N(240,12^2)으로 근사해 표준정규분포표(q19.png)에서 P(252<=Y<=258)=P(1<=Z<=1.5)=0.43-0.35=0.08 도출 (4단계, IMAGE)"
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "crossConceptKeys": [
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_NORMAL_CURVE_SYMMETRY",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "high",
+      "difficultyReason": "X~N(m,1^2)에서 P(X<3)=P(Z<3-m)=0.05와 표준정규분포표(q20.png)의 P(0<=Z<=1.6)=0.45에서 3-m=-1.6을 세워 m=4.6 도출 (2단계, IMAGE)"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ import os from "node:os";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { registerReviewedExamV2, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { isMetaPipelineApprovedTypeRebindAllowed, metaPipelineCrossConceptCountMatches, registerReviewedExamV2, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
 
 const CANON = "archive/data/meta-foundation/canonical";
 const META = "archive/data/question_metadata.json";
@@ -16,6 +16,26 @@ const blob = bytes => crypto.createHash("sha1").update(`blob ${Buffer.byteLength
 const j = v => JSON.stringify(v, null, 2) + "\n";
 const stable = value => JSON.stringify(value, (_, v) => v && !Array.isArray(v) && typeof v === "object"
   ? Object.fromEntries(Object.keys(v).sort().map(k => [k, v[k]])) : v);
+
+test("META_PIPELINE_AUDIT accepts either unique CC definitions or total per-question bindings", () => {
+  const audit = { records: [
+    { classification: { crossConceptKeys: ["CC_SHARED", "CC_A"] } },
+    { classification: { crossConceptKeys: ["CC_SHARED"] } },
+  ] };
+  assert.equal(metaPipelineCrossConceptCountMatches({ atomicCrossConceptsBound: 3 }, audit), true);
+  assert.equal(metaPipelineCrossConceptCountMatches({ atomicCrossConceptsBound: 2 }, audit), true);
+  assert.equal(metaPipelineCrossConceptCountMatches({ atomicCrossConceptsBound: 4 }, audit), false);
+});
+
+test("approved PT/TPL rebinding is limited to active prior keys and META_PIPELINE_AUDIT", () => {
+  const current = { metadataStatus: "approved_full", metadataApprovalType: "META_PIPELINE_AUDIT" };
+  assert.equal(isMetaPipelineApprovedTypeRebindAllowed({ field: "problemTypeKey", current, priorTypeStatus: "ACTIVE" }), true);
+  assert.equal(isMetaPipelineApprovedTypeRebindAllowed({ field: "templateKey", current, priorTypeStatus: "RETIRED" }), false);
+  assert.equal(isMetaPipelineApprovedTypeRebindAllowed({
+    field: "problemTypeKey", current: { ...current, metadataApprovalType: "FINAL_QA" }, priorTypeStatus: "ACTIVE",
+  }), false);
+  assert.equal(isMetaPipelineApprovedTypeRebindAllowed({ field: "crossConceptKeys", current, priorTypeStatus: "ACTIVE" }), false);
+});
 
 function fixture(t, course = "중1 수학", curriculum = "2022") {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "archive-meta-v2-"));
@@ -59,7 +79,7 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   return { root, put, read, request, q, evidenceRefs, change };
 }
 
-function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLabelDrift = false, siblingParent = false, promoteCanonicalTypes = false, driveSourceHashDrift = false, targetCanonicalParent = false, exactSourceHashBasis = false } = {}) {
+function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLabelDrift = false, siblingParent = false, promoteCanonicalTypes = false, driveSourceHashDrift = false, targetCanonicalParent = false, targetParentUsesSubUnit = false, exactSourceHashBasis = false, dualVisual = false } = {}) {
   const conceptChange = f.request.registryChanges.find(change => change.path.startsWith(`${CANON}/concepts/`));
   const pendingRegistryChanges = [];
   for (const change of f.request.registryChanges) {
@@ -97,7 +117,7 @@ function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLa
   const record = { questionId: 1, standardUnitKey: f.q.standardUnitKey, subUnitKey: f.q.subUnitKey, auditVerdict: "APPROVED",
     classification: { problemTypeKey: target.problemTypeKey, templateKey: target.templateKey, crossConceptKeys: target.crossConceptKeys,
       conditionKeys: target.conditionKeys, status: "APPROVED_CANONICAL" },
-    readingEvidence: { sourceTextExcerpt: "학생용 발문 발췌", solutionDecisiveExcerpt: "핵심 풀이 발췌", visualAssetChecked: false, visualType: "NONE" } };
+    readingEvidence: { sourceTextExcerpt: "학생용 발문 발췌", solutionDecisiveExcerpt: "핵심 풀이 발췌", visualAssetChecked: dualVisual, visualType: dualVisual ? "SVG_IMAGE" : "NONE" } };
   const audit = { schemaVersion: "ALIVE_META_AUDIT_ATOMIC_v3", examTitle, sourceFileDriveId, sourceSha256: hash(sourceBytes),
     auditedTimestamp: "2026-10-23T00:00:00Z", auditVerdict: "ALL_APPROVED_CANONICAL_STANDARDIZED",
     statistics: { totalQuestions: 1, approved: 1, holdRemaining: 0, canonicalTemplatesReused: 1, newTemplatesCreated: 0, atomicCrossConceptsBound: 1 },
@@ -146,10 +166,11 @@ function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLa
   let targetParentRef = null;
   let targetParentEvidenceRef = null;
   if (targetCanonicalParent) {
+    const midUnit = targetParentUsesSubUnit ? f.q.subUnit : f.q.standardUnit;
     f.put(canonicalMasterPath, { records: [{ curriculum: f.request.items[0].after.curriculum, scope: f.request.items[0].after.courseKey,
-      majorUnit: f.q.standardUnit, midUnit: f.q.standardUnit }] });
+      majorUnit: f.q.standardUnit, midUnit }] });
     targetParentRef = { path: canonicalMasterPath, curriculum: f.request.items[0].after.curriculum,
-      scope: f.request.items[0].after.courseKey, majorUnit: f.q.standardUnit, midUnit: f.q.standardUnit };
+      scope: f.request.items[0].after.courseKey, majorUnit: f.q.standardUnit, midUnit };
     targetParentEvidenceRef = { path: canonicalMasterPath, sha256: hash(fs.readFileSync(path.join(f.root, canonicalMasterPath))) };
   }
   const evidenceRefs = [...f.evidenceRefs, auditPackageRef, manifestRef, sourceParityRef, parentLabelsRef,
@@ -183,6 +204,43 @@ for (const [course, curriculum] of [["중1 수학", "2015"], ["중2 수학", "20
     assert.equal(f.read(`${CANON}/packs/new-course/taxonomy.json`).problemTypes[0].problemTypeKey, "PT_NEW");
   });
 }
+
+test("META_PIPELINE_AUDIT can append audited CC keys to an approved empty field", t => {
+  const f = fixture(t);
+  f.q.crossConceptKeys = [];
+  const sourcePath = `archive/exams/${f.request.sourceArchiveFile}`;
+  const updatedSource = `window.questions = ${JSON.stringify([f.q])};\n`;
+  f.put(sourcePath, updatedSource);
+  f.request.expectedSourceBlobSha1 = blob(updatedSource);
+  const metadata = f.read(META);
+  Object.assign(metadata.records[0], {
+    crossConceptKeys: [], reviewStatus: "reviewed_pass", metadataStatus: "approved_full",
+    fieldStatus: { crossConcept: "approved_semantic" },
+  });
+  f.put(META, metadata);
+  f.request.items[0].before.crossConceptKeys = [];
+  f.request.items[0].before.L3 = null;
+  f.request.items[0].before.L4 = null;
+  f.request.items[0].sourceMetadataBefore = { crossConceptKeys: [] };
+  attachMetaPipelineAudit(f);
+
+  const dryRun = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(dryRun.totalQuestions, 1);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.runtimeMaterialized, 1);
+  assert.deepEqual(f.read(META).records[0].crossConceptKeys, ["CC_NEW"]);
+});
+
+test("META_PIPELINE_AUDIT resolves exact basic-scope parents through an active courseKey alias", t => {
+  const f = fixture(t, "중1 수학", "2015");
+  const pack = f.request.registryChanges.find(change => change.path.endsWith("/pack.json"));
+  pack.after.standardCourses.push("M1-2");
+  f.request.items[0].after.courseKey = "M1-2";
+  f.request.items[0].before.courseKey = null;
+  attachMetaPipelineAudit(f);
+  const dryRun = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(dryRun.totalQuestions, 1);
+});
 
 test("REVIEW2 approval remains distinct", t => {
   const f = fixture(t);
@@ -268,6 +326,13 @@ test("META_PIPELINE_AUDIT accepts a canonical target parent when the exact maste
   assert.throws(() => registerReviewedExamV2({ root: unlinked.root, request: unlinked.request, write: true }), /registration binding mismatch/);
 });
 
+test("META_PIPELINE_AUDIT accepts an exact canonical parent at the audited subunit label", t => {
+  const f = fixture(t, "기하");
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true, targetCanonicalParent: true, targetParentUsesSubUnit: true });
+  const result = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(result.totalQuestions, 1);
+});
+
 test("META_PIPELINE_AUDIT permits audit/current Drive hash drift only with exact per-UID student parity", t => {
   const f = fixture(t);
   attachMetaPipelineAudit(f, { driveSourceHashDrift: true });
@@ -283,6 +348,13 @@ test("META_PIPELINE_AUDIT accepts exact full-source SHA parity when audit excerp
   registerReviewedExamV2({ root: f.root, request: f.request, write: true });
   const row = f.read(META).records[0];
   assert.equal(row.problemTypeKey, "PT_NEW");
+});
+
+test("META_PIPELINE_AUDIT accepts the combined SVG_IMAGE visual evidence value", t => {
+  const f = fixture(t);
+  attachMetaPipelineAudit(f, { exactSourceHashBasis: true, dualVisual: true });
+  const result = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(result.totalQuestions, 1);
 });
 
 test("META_PIPELINE_AUDIT promotes missing PT/TPL/CC definitions from audited UID evidence", t => {
