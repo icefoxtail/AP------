@@ -102,7 +102,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/22_팔마고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "삼각형 ABC의 세 변을 1:3으로 내분하는 점 D, E, F를 잡으면 삼각형 DEF의 무게중심은 G(5, -1)이다.",
+    "solutionImageCaption": "삼각형 ABC의 세 변을 1:3으로 내분하는 점 D, E, F를 잡으면 삼각형 DEF의 무게중심은 G(5, -1)이다.",
+    "solutionImageSize": "full"
   },
                     {
     "id": 4,
