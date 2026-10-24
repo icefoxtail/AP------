@@ -2,6 +2,7 @@
 from __future__ import annotations
 from copy import deepcopy
 import math
+import re
 from .geometry_model import (Line,Circle,CircularArc,point,finite,line_intersection,
     parallel_check,perpendicular_check,point_on_line,tangent_check)
 
@@ -76,7 +77,7 @@ def validate(spec):
             if not isinstance(obj.get('expression'),str): raise ValueError('EXPRESSION_REQUIRED')
             lo,hi=point(obj['domain'])
             if lo>=hi: raise ValueError('INVALID_DOMAIN')
-            if 'branch' in obj and obj['branch'] not in {'LEFT','RIGHT','PIECE_1','PIECE_2','PIECE_3'}:raise ValueError('INVALID_GRAPH_BRANCH_TAG')
+            if 'branch' in obj and obj['branch'] not in {'LEFT','RIGHT','PIECE_1','PIECE_2','PIECE_3'} and not re.fullmatch(r'REF_[A-Za-z][A-Za-z0-9]{0,7}',str(obj['branch'])):raise ValueError('INVALID_GRAPH_BRANCH_TAG')
         elif kind in {'EQUATION_LABEL','GRAPH_ANNOTATION','CONDITION_BOX'}:
             point(obj['at'])
             if kind=='CONDITION_BOX':
