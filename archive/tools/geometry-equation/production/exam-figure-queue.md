@@ -53,7 +53,7 @@
 - [x] **22_순천여고_1학기_중간_고1_기출** (1건): q8 OPEN_UNSUPPORTED F_irrational_coefficients — 접하는 포물선의 계수 k=-2±2sqrt2가 무리수라 정확한 유리 계수 그래프 계획으로 표현할 수 없음
 - [x] **22_팔마고_1학기_기말_고1_기출** (1건): q3 OPEN_UNSUPPORTED A_construction_ops — 1:3 내분점 D,E,F와 삼각형 DEF의 무게중심을 작도하는 연산(일반 내분점·무게중심)이 계약에 없고 파
 - [x] **23_강남여고_1학기_기말_고1_기출** (1건): q3 OPEN_UNSUPPORTED A_construction_ops — 2:1 내분점과 외분점은 계약의 작도 연산(중점, 수선의 발 등)으로 정확히 표현할 수 없다.
-- **23_금당고_1학기_기말_고1_기출** (1건): q16 OPEN_UNSUPPORTED B_two_curves — 두 이차함수 f, g를 한 그림에 겹쳐 그려야 하고 계수 a가 문자로 남음
+- [x] **23_금당고_1학기_기말_고1_기출** (1건): q16 OPEN_UNSUPPORTED B_two_curves — 두 이차함수 f, g를 한 그림에 겹쳐 그려야 하고 계수 a가 문자로 남음
 - **23_금당고_1학기_중간_고1_기출** (1건): q17 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — y=/f(x)/ 절댓값 그래프와 직선의 교점 개수 비교가 필요하며 절댓값 함수는 표현할 수 없다.
 - **23_매산고_1학기_기말_고2_수학I** (1건): q15 OPEN_UNSUPPORTED D_exp_log_trig — 이차함수, 지수함수 y=3^x, 로그함수 y=log_3 x 세 곡선과 점 A,B,C가 한 그림에 필요하다.
 - **23_매산고_1학기_중간_고1_기출** (1건): q20 OPEN_LAYOUT compose:LAYOUT_INVENTORY_INCOMPLETE — ABANDONED(저작 4회 실패)
