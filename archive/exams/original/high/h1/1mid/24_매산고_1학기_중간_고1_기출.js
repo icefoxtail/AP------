@@ -468,7 +468,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "a=-1은 x축과 만나지 않고, a=-7은 y축에 대칭인 두 점에서 만난다",
+    "solutionImageCaption": "a=-1은 x축과 만나지 않고, a=-7은 y축에 대칭인 두 점에서 만난다",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,

@@ -298,7 +298,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-EQUATION_FUNCTION_RELATION",
     "subUnit": "이차방정식과 이차함수의 관계",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_제일고_1학기_기말_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "점 (0,1)에서 그은 두 접선은 기울기가 1, -1이다",
+    "solutionImageCaption": "점 (0,1)에서 그은 두 접선은 기울기가 1, -1이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,

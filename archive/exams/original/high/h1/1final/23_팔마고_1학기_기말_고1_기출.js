@@ -248,7 +248,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-QUADRATIC_INEQUALITY",
     "subUnit": "이차부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고1_기출/q7-solution.svg",
+    "solutionImageAlt": "가로축은 a이다. a^2-3a-10<=0 인 구간은 -2<=a<=5이다.",
+    "solutionImageCaption": "가로축은 a이다. a^2-3a-10<=0 인 구간은 -2<=a<=5이다.",
+    "solutionImageSize": "full"
   },
                     {
     "id": 8,

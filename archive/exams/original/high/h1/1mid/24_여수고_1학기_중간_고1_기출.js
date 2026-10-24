@@ -403,7 +403,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_여수고_1학기_중간_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "꼭짓점 x=1의 오른쪽에서 함수가 증가하므로 x=k=5일 때 최댓값 18이다.",
+    "solutionImageCaption": "꼭짓점 x=1의 오른쪽에서 함수가 증가하므로 x=k=5일 때 최댓값 18이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -447,7 +451,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_여수고_1학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "k가 변해도 포물선은 항상 x축에 접한다. (a=1/2, b=1/4)",
+    "solutionImageCaption": "k가 변해도 포물선은 항상 x축에 접한다. (a=1/2, b=1/4)",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
