@@ -12,8 +12,8 @@ window.questionBank = [
     "standardUnitOrder": 1,
     "subUnitKey": "M3-01-SQUARE_ROOT_REAL_NUMBER",
     "subUnit": "제곱근과 실수",
-    "problemTypeKey": "PT_M3_REAL_NUMBER_CLASSIFICATION",
-    "templateKey": "TPL_M3_REAL_NUMBER_CLASSIFICATION_AUDIT",
+    "problemTypeKey": "PT_M3_SQUARE_ROOT_PROPERTY",
+    "templateKey": "TPL_M3_SQUARE_ROOT_PROPERTY_AUDIT",
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "crossConceptKeys": [
@@ -428,7 +428,7 @@ window.questionBank = [
     "subUnitKey": "M3-01-REAL_NUMBER_OPERATIONS",
     "subUnit": "근호를 포함한 식의 계산",
     "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
-    "templateKey": "TPL_M3_SQUARE_AREA_SIDE_RATIO",
+    "templateKey": "TPL_M3_GEOMETRIC_PERIMETER_RADICAL_APPLICATION",
     "integrationPattern": "NONE",
     "difficultyBucket": 4,
     "crossConceptKeys": [
@@ -463,8 +463,8 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+    "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT",
     "integrationPattern": "NONE",
     "difficultyBucket": 2,
     "crossConceptKeys": [
@@ -533,8 +533,8 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+    "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_NUMERICAL_AUDIT",
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "crossConceptKeys": [
@@ -568,8 +568,8 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+    "templateKey": "TPL_M3_MULTIPLICATION_FORMULA_GEOMETRIC_MODELING",
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "crossConceptKeys": [
@@ -734,8 +734,8 @@ window.questionBank = [
     "standardUnitOrder": 2,
     "subUnitKey": "M3-02-POLYNOMIAL_MULTIPLICATION",
     "subUnit": "다항식의 곱셈",
-    "problemTypeKey": null,
-    "templateKey": null,
+    "problemTypeKey": "PT_M3_POLY_MULTIPLICATION",
+    "templateKey": "TPL_M3_POLY_EXPANSION_COEFFICIENT_DETERMINATION",
     "integrationPattern": "NONE",
     "difficultyBucket": 3,
     "crossConceptKeys": [
