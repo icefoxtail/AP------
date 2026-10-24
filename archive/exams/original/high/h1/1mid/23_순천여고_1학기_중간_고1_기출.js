@@ -359,7 +359,11 @@ window.questionBank = [
     "category": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "originalCategory": "이차함수"
+    "originalCategory": "이차함수",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q9-solution.svg",
+    "solutionImageAlt": "k=2 또는 k=-2일 때 두 교점 사이의 거리는 4이다.",
+    "solutionImageCaption": "k=2 또는 k=-2일 때 두 교점 사이의 거리는 4이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 10,
@@ -484,7 +488,11 @@ window.questionBank = [
     "category": "이차부등식",
     "layoutTag": "grid",
     "wide": false,
-    "originalCategory": "이차부등식"
+    "originalCategory": "이차부등식",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "a=2일 때 -1≤x≤2에서 최솟값은 0이다",
+    "solutionImageCaption": "a=2일 때 -1≤x≤2에서 최솟값은 0이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -817,7 +825,11 @@ window.questionBank = [
     "category": "이차함수",
     "layoutTag": "grid",
     "wide": false,
-    "originalCategory": "이차함수"
+    "originalCategory": "이차함수",
+    "solutionImage": "assets/images/23_순천여고_1학기_중간_고1_기출/q20-solution.svg",
+    "solutionImageAlt": "구간 -1≤x≤3에서 최댓값은 양 끝점 중 하나",
+    "solutionImageCaption": "구간 -1≤x≤3에서 최댓값은 양 끝점 중 하나",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

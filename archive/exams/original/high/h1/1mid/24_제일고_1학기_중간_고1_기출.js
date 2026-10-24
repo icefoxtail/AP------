@@ -496,7 +496,10 @@ window.questionBank = [
     "category": "평면좌표",
     "originalCategory": "평면좌표",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q11-solution-graph.svg",
+    "solutionImageAlt": "문항 11 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -592,7 +595,11 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "problemTypeNullReason": "EXACT_TAXONOMY_UNBOUND_FOR_H22-C2-01:PT_COORD_DISTANCE_OPTIMIZATION",
-    "templateNullReason": "EXACT_TAXONOMY_UNBOUND_FOR_H22-C2-01:TPL_DISTANCE_SUM_MIN"
+    "templateNullReason": "EXACT_TAXONOMY_UNBOUND_FOR_H22-C2-01:TPL_DISTANCE_SUM_MIN",
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "점 P가 선분 AB 위에 있을 때 PA+PB가 최소이고 그 값은 AB이다",
+    "solutionImageCaption": "점 P가 선분 AB 위에 있을 때 PA+PB가 최소이고 그 값은 AB이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -641,7 +648,10 @@ window.questionBank = [
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q14-solution-graph.svg",
+    "solutionImageAlt": "문항 14 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
@@ -737,7 +747,10 @@ window.questionBank = [
     "category": "직선의 방정식",
     "originalCategory": "직선의 방정식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q16-solution-graph.svg",
+    "solutionImageAlt": "문항 16 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

@@ -245,7 +245,11 @@ window.questionBank = [
     "category": "이차방정식의 판별식",
     "originalCategory": "이차방정식의 판별식",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q6-solution.svg",
+    "solutionImageAlt": "a=3이면 x축과 두 점에서 만나고, a=4이면 만나지 않는다.",
+    "solutionImageCaption": "a=3이면 x축과 두 점에서 만나고, a=4이면 만나지 않는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 7,
@@ -619,7 +623,11 @@ window.questionBank = [
     "category": "이차함수의 최대최소",
     "originalCategory": "이차함수의 최대최소",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "꼭짓점 (3, 10)과 y=-8의 두 교점 (0, -8), (6, -8)",
+    "solutionImageCaption": "꼭짓점 (3, 10)과 y=-8의 두 교점 (0, -8), (6, -8)",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -660,7 +668,11 @@ window.questionBank = [
     "category": "이차함수의 그래프",
     "originalCategory": "이차함수의 그래프",
     "layoutTag": "grid",
-    "wide": true
+    "wide": true,
+    "solutionImage": "assets/images/24_순천고_1학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "점 P(0, 1)을 지나는 두 접선 y=10x+1, y=-2x+1이 각각 A(3, 31), B(-3, 7)에서 접한다.",
+    "solutionImageCaption": "점 P(0, 1)을 지나는 두 접선 y=10x+1, y=-2x+1이 각각 A(3, 31), B(-3, 7)에서 접한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

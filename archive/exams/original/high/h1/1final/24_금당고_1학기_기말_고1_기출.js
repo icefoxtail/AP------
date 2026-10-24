@@ -26,7 +26,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-EQUATION_BASIC",
     "subUnit": "방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_금당고_1학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "y=x^2-4x+3의 그래프에서 x축 아래에 있는 구간이 1<x<3이다.",
+    "solutionImageCaption": "y=x^2-4x+3의 그래프에서 x축 아래에 있는 구간이 1<x<3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -82,7 +86,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_금당고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "선분 AB의 중점 M(4,1)",
+    "solutionImageCaption": "선분 AB의 중점 M(4,1)",
+    "solutionImageSize": "full"
   },
                     {
     "id": 4,

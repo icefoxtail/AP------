@@ -408,7 +408,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "k=-4이면 x축에 닿고, k=2이면 직선에 접하므로 k는 -4 이상 2 미만이다.",
+    "solutionImageCaption": "k=-4이면 x축에 닿고, k=2이면 직선에 접하므로 k는 -4 이상 2 미만이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -448,7 +452,11 @@ window.questionBank = [
     "difficultyBucket": 2,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q11-solution.svg",
+    "solutionImageAlt": "-2≤x≤3에서 최솟값 4는 꼭짓점, 최댓값은 x=-2일 때 20이다.",
+    "solutionImageCaption": "-2≤x≤3에서 최솟값 4는 꼭짓점, 최댓값은 x=-2일 때 20이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -613,7 +621,11 @@ window.questionBank = [
     "difficultyBucket": 4,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q15-solution.svg",
+    "solutionImageAlt": "t=f(x)가 -2≤t≤-1일 때 y=-t^2+6t-3: t가 커질수록 y가 커짐",
+    "solutionImageCaption": "t=f(x)가 -2≤t≤-1일 때 y=-t^2+6t-3: t가 커질수록 y가 커짐",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
@@ -871,7 +883,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산여고_1학기_중간_고1_기출/q22-solution.svg",
+    "solutionImageAlt": "꼭짓점 P(3, -16)인 포물선과 x절편 -1, 7",
+    "solutionImageCaption": "꼭짓점 P(3, -16)인 포물선과 x절편 -1, 7",
+    "solutionImageSize": "full"
   },
   {
     "id": 23,

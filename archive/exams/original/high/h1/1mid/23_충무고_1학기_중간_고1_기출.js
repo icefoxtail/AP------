@@ -43,7 +43,11 @@ window.questionBank = [
       "2"
     ],
     "answer": "②",
-    "solution": "각 이차함수를 완전제곱식으로 고친다.\n$y=-x^2-4x+5=-(x+2)^2+9$이므로 최댓값은 $M=9$이다.\n또\n$y=x^2-8x+6=(x-4)^2-10$이므로 최솟값은 $m=-10$이다.\n따라서\n$M+m=9+(-10)=-1$이다.\n정답은 ②이다."
+    "solution": "각 이차함수를 완전제곱식으로 고친다.\n$y=-x^2-4x+5=-(x+2)^2+9$이므로 최댓값은 $M=9$이다.\n또\n$y=x^2-8x+6=(x-4)^2-10$이므로 최솟값은 $m=-10$이다.\n따라서\n$M+m=9+(-10)=-1$이다.\n정답은 ②이다.",
+    "solutionImage": "assets/images/23_충무고_1학기_중간_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "꼭짓점에서 M=9, m=-10이므로 M+m=-1이다",
+    "solutionImageCaption": "꼭짓점에서 M=9, m=-10이므로 M+m=-1이다",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,
@@ -89,7 +93,11 @@ window.questionBank = [
       "-5"
     ],
     "answer": "⑤",
-    "solution": "그래프가 $x$축과 만나는 두 점의 $x$좌표는 방정식 $x^2+ax+b=0$의 두 근이다.\n두 근이 $-1,3$이고 최고차항의 계수가 $1$이므로\n$x^2+ax+b=(x+1)(x-3)$이다.\n전개하면\n$(x+1)(x-3)=x^2-2x-3$이므로\n$a=-2$, $b=-3$이다.\n따라서\n$a+b=-2-3=-5$이다.\n정답은 ⑤이다."
+    "solution": "그래프가 $x$축과 만나는 두 점의 $x$좌표는 방정식 $x^2+ax+b=0$의 두 근이다.\n두 근이 $-1,3$이고 최고차항의 계수가 $1$이므로\n$x^2+ax+b=(x+1)(x-3)$이다.\n전개하면\n$(x+1)(x-3)=x^2-2x-3$이므로\n$a=-2$, $b=-3$이다.\n따라서\n$a+b=-2-3=-5$이다.\n정답은 ⑤이다.",
+    "solutionImage": "assets/images/23_충무고_1학기_중간_고1_기출/q2-solution.svg",
+    "solutionImageAlt": "x축과 만나는 점 -1, 3을 지나는 포물선 y=x^2-2x-3이다.",
+    "solutionImageCaption": "x축과 만나는 점 -1, 3을 지나는 포물선 y=x^2-2x-3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 3,
@@ -588,7 +596,10 @@ window.questionBank = [
       "7"
     ],
     "answer": "⑤",
-    "solution": "근과 계수의 관계를 이용한다.\n$2x^2-6x+1=0$의 두 근이 $\\alpha,\\beta$이므로\n$\\alpha+\\beta=3$, $\\alpha\\beta=\\dfrac12$이다.\n따라서 새로운 두 근의 합은\n$\\dfrac1\\alpha+\\dfrac1\\beta=\\dfrac{\\alpha+\\beta}{\\alpha\\beta}=6$이고,\n곱은\n$\\dfrac1{\\alpha\\beta}=2$이다.\n이 두 수를 근으로 하고 최고차항 계수가 $-1$인 식은\n$f(x)=-(x^2-6x+2)$이다.\n완전제곱식으로 고치면\n$f(x)=-(x-3)^2+7$이므로 최댓값은 $7$이다.\n따라서 정답은 ⑤이다."
+    "solution": "근과 계수의 관계를 이용한다.\n$2x^2-6x+1=0$의 두 근이 $\\alpha,\\beta$이므로\n$\\alpha+\\beta=3$, $\\alpha\\beta=\\dfrac12$이다.\n따라서 새로운 두 근의 합은\n$\\dfrac1\\alpha+\\dfrac1\\beta=\\dfrac{\\alpha+\\beta}{\\alpha\\beta}=6$이고,\n곱은\n$\\dfrac1{\\alpha\\beta}=2$이다.\n이 두 수를 근으로 하고 최고차항 계수가 $-1$인 식은\n$f(x)=-(x^2-6x+2)$이다.\n완전제곱식으로 고치면\n$f(x)=-(x-3)^2+7$이므로 최댓값은 $7$이다.\n따라서 정답은 ⑤이다.",
+    "solutionImage": "assets/images/23_충무고_1학기_중간_고1_기출/q13-solution-graph.svg",
+    "solutionImageAlt": "문항 13 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -729,7 +740,10 @@ window.questionBank = [
       "34"
     ],
     "answer": "③",
-    "solution": "아래로 열린 포물선이므로 꼭짓점 $x=a$와 구간 $0\\le x\\le1$의 위치를 나누어 본다.\n\n① $a<0$일 때\n구간에서 최댓값은 $x=0$에서 생긴다.\n$-a^2+b=4$이므로 $b=a^2+4$이다.\n따라서\n$a+b=a^2+a+4=\\left(a+\\dfrac12\\right)^2+\\dfrac{15}{4}$이고\n$a=-\\dfrac12$에서 최솟값 $\\dfrac{15}{4}$를 갖는다.\n\n② $0\\le a\\le1$일 때\n꼭짓점이 구간 안에 있으므로 최댓값은 $b=4$이다.\n$a+b=a+4\\ge4$이다.\n\n③ $a>1$일 때\n구간에서 최댓값은 $x=1$에서 생긴다.\n$-(1-a)^2+b=4$이므로\n$a+b=a+(a-1)^2+4=a^2-a+5>5$이다.\n\n따라서 전체 최솟값은\n$k=\\dfrac{15}{4}$이고\n$8k=8\\cdot\\dfrac{15}{4}=30$이다.\n정답은 ③이다."
+    "solution": "아래로 열린 포물선이므로 꼭짓점 $x=a$와 구간 $0\\le x\\le1$의 위치를 나누어 본다.\n\n① $a<0$일 때\n구간에서 최댓값은 $x=0$에서 생긴다.\n$-a^2+b=4$이므로 $b=a^2+4$이다.\n따라서\n$a+b=a^2+a+4=\\left(a+\\dfrac12\\right)^2+\\dfrac{15}{4}$이고\n$a=-\\dfrac12$에서 최솟값 $\\dfrac{15}{4}$를 갖는다.\n\n② $0\\le a\\le1$일 때\n꼭짓점이 구간 안에 있으므로 최댓값은 $b=4$이다.\n$a+b=a+4\\ge4$이다.\n\n③ $a>1$일 때\n구간에서 최댓값은 $x=1$에서 생긴다.\n$-(1-a)^2+b=4$이므로\n$a+b=a+(a-1)^2+4=a^2-a+5>5$이다.\n\n따라서 전체 최솟값은\n$k=\\dfrac{15}{4}$이고\n$8k=8\\cdot\\dfrac{15}{4}=30$이다.\n정답은 ③이다.",
+    "solutionImage": "assets/images/23_충무고_1학기_중간_고1_기출/q16-solution-graph.svg",
+    "solutionImageAlt": "문항 16 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

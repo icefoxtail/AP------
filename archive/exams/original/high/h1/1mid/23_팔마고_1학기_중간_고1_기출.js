@@ -698,7 +698,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/23_팔마고_1학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "꼭짓점에 대칭인 구간 [1,3]의 양 끝점의 함숫값",
+    "solutionImageCaption": "꼭짓점에 대칭인 구간 [1,3]의 양 끝점의 함숫값",
+    "solutionImageSize": "full"
   },
   {
     "id": 18,

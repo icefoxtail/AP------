@@ -547,7 +547,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_순천여고_2학기_중간_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "P가 선분 AB의 중점일 때 AP=BP이므로 4·AP·BP는 최댓값 45를 갖는다.",
+    "solutionImageCaption": "P가 선분 AB의 중점일 때 AP=BP이므로 4·AP·BP는 최댓값 45를 갖는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

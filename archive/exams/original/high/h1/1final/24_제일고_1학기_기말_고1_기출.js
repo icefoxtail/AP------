@@ -32,7 +32,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-05-QUADRATIC_SOLVING",
     "subUnit": "이차방정식의 풀이",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/24_제일고_1학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "k=4일 때 y=x^2+4x+4는 꼭짓점 V(-2, 0)에서 x축에 접한다",
+    "solutionImageCaption": "k=4일 때 y=x^2+4x+4는 꼭짓점 V(-2, 0)에서 x축에 접한다",
+    "solutionImageSize": "full"
   },
   {
     "id": 2,

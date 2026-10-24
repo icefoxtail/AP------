@@ -173,7 +173,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "rule_inferred",
-    "subUnitClassificationDepth": "complete_rule"
+    "subUnitClassificationDepth": "complete_rule",
+    "solutionImage": "assets/images/25_금당고_1학기_중간_고1_기출/q5-solution.svg",
+    "solutionImageAlt": "그래프가 x축 위쪽에 있어 x축과 만나지 않으므로 교점은 0개이다.",
+    "solutionImageCaption": "그래프가 x축 위쪽에 있어 x축과 만나지 않으므로 교점은 0개이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 6,
