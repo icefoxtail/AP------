@@ -83,11 +83,12 @@ def _t_q01(orig, strat):
         "questionType": "객관식",
         "content": "다음 중 제곱근에 대한 설명으로 옳은 것은?",
         "solution": (
-            "① 49의 제곱근은 $\\pm 7$이다. (거짓)\n"
-            "② 0의 제곱근은 0 하나뿐이다. (거짓)\n"
-            "③ 음수의 제곱근은 실수 범위에서 존재하지 않는다. (거짓)\n"
-            "④ $\\sqrt{(-5)^2} = \\sqrt{25} = 5$의 제곱근은 $\\pm\\sqrt{5}$이다. (거짓)\n"
-            "⑤ $\\sqrt{81} = 9$의 양의 제곱근은 $\\sqrt{9} = 3$이다. (참)\n"
+            "각 선지의 옳고 그름을 판별합니다.\n"
+            "① 49의 제곱근은 $\\pm 7$이므로 7이다는 설명은 거짓이다. (거짓)\n"
+            "② 0의 제곱근은 0 하나뿐이고, 음수의 제곱근은 실수 범위에서 없으므로 모든 실수가 2개의 제곱근을 갖는 것은 아니다. (거짓)\n"
+            "③ $(-3)^2 = 9 \\ne -9$이므로 $-9$의 제곱근은 실수 범위에서 존재하지 않는다. (거짓)\n"
+            "④ $\\sqrt{(-5)^2} = \\sqrt{25} = 5$이므로 5의 제곱근은 $\\pm\\sqrt{5}$이다. (거짓)\n"
+            "⑤ $\\sqrt{81} = 9$이고, 9의 양의 제곱근은 $\\sqrt{9} = 3$이다. (참)\n"
             "따라서 옳은 것은 ⑤이다."
         ),
         "answer": "⑤",
@@ -813,7 +814,7 @@ def generate_small_meta(questions: list[dict], js_bytes: bytes, source_file_rel:
             "evidenceRefs": [
                 {
                     "path": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.review-receipt.json",
-                    "sha256": "e706f63e90be35480de2da39f3ad2723213e9c94c5b5f71d59cfa333d4ce3bcd",
+                    "sha256": "d52effcb1b07ef72a06d3181c73cef3d429cc84c027691577c60513fe5c3b016",
                 }
             ],
         },

@@ -59,13 +59,14 @@
     {
       "problemTypeKey": "PT_M3_SQUARE_ROOT_APPLICATION",
       "canonicalLabelKo": "제곱근의 기하 활용",
-      "definition": "정사각형의 넓이에서 한 변의 길이를 제곱근으로 구하고 닮음비 등 도형 조건에 연결한다.",
+      "definition": "정사각형의 넓이, 피타고라스 정리 및 도형의 분할·결합과 선분 길이 관계에서 제곱근의 성질과 무리수의 사칙연산을 기하학적 상황에 적용하여 넓이, 변의 길이, 둘레를 구한다.",
       "aliases": [],
       "status": "ACTIVE",
       "ownerPack": "MIDDLE3",
-      "supportingItemCount": 1,
+      "supportingItemCount": 2,
       "supportingQuestionUids": [
-        "qid_v1_8c2af68efb5afa370d90e2b0467821ab2327200d46b0a1e753917258a47678e8"
+        "qid_v1_8c2af68efb5afa370d90e2b0467821ab2327200d46b0a1e753917258a47678e8",
+        "qid_v1_12c757c94b3256117e60bc8610f5aeba2440c5a47bddec2ad0db6ddcc5121b5a"
       ],
       "sourceUnits": [
         "M3-01"
@@ -81,6 +82,13 @@
             "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_16_왕의중_1학기_중간_중3_수학_CODEX_RECONCILED_V2.json",
             "sha256": "2ea014446491e143323008557fedf38524e15b4a09d1800300035bfc3c7abe8a"
           }
+        },
+        {
+          "source": "SAMSAN_M3_1MID_SIMILAR_PILOT_20261024",
+          "questionUid": "qid_v1_12c757c94b3256117e60bc8610f5aeba2440c5a47bddec2ad0db6ddcc5121b5a",
+          "sourceOrdinal": 13,
+          "classificationRationale": "직각삼각형(둘레 16+4sqrt(10)) 2개와 이등변삼각형(둘레 12+4sqrt(10)) 2개로 이루어진 4개 조각 둘레 총합(28+8sqrt(10))과 맞물림 내부 변(6+2sqrt(10))을 제외한 ③번 도형 둘레(16+4sqrt(10))의 차이를 무리수의 사칙연산으로 계산",
+          "decisiveEvidence": "$L_{\\text{total}} - L_{\\text{outer}} = (28+8\\sqrt{10}) - (16+4\\sqrt{10}) = 12+4\\sqrt{10}$ 도출 (정답 ③)"
         }
       ]
     },
@@ -425,10 +433,10 @@
       "ownerPack": "MIDDLE3",
       "supportingItemCount": 4,
       "supportingQuestionUids": [
-        "qid_samsan_m3_1mid_sim_q14",
-        "qid_samsan_m3_1mid_sim_q16",
-        "qid_samsan_m3_1mid_sim_q17",
-        "qid_samsan_m3_1mid_sim_q22"
+        "qid_v1_08b382e211031a3d31ba761d1242875c6e12bce527f7ff34440fcd0e7cb23034",
+        "qid_v1_9b7b1e2d465b8d9015ef244332ab2c15196cf651623d0677ea3a8251d8bb06be",
+        "qid_v1_6854f66a852abba5617cb23d245bd2ff6fbc4ea5c11314682b302b46682d3283",
+        "qid_v1_43231c87502d91f2717d8845b2ea0c2c6993e0124ed01158ae06ee78dba365ef"
       ],
       "sourceUnits": [
         "M3-02"
@@ -436,31 +444,31 @@
       "evidenceProvenance": [
         {
           "source": "SAMSAN_M3_1MID_SIMILAR_PILOT_20261024",
-          "questionUid": "qid_samsan_m3_1mid_sim_q14",
+          "questionUid": "qid_v1_08b382e211031a3d31ba761d1242875c6e12bce527f7ff34440fcd0e7cb23034",
           "sourceOrdinal": 14,
-          "classificationRationale": "(2x-3y)(4x+5y) 전개 후 xy의 계수 -2 산출",
+          "classificationRationale": "$(2x-3y)(4x+5y)$ 전개 후 $xy$의 계수 $-2$ 산출",
           "decisiveEvidence": "$8x^2 - 2xy - 15y^2 \\implies xy\\text{의 계수는 } -2$"
         },
         {
           "source": "SAMSAN_M3_1MID_SIMILAR_PILOT_20261024",
-          "questionUid": "qid_samsan_m3_1mid_sim_q16",
+          "questionUid": "qid_v1_9b7b1e2d465b8d9015ef244332ab2c15196cf651623d0677ea3a8251d8bb06be",
           "sourceOrdinal": 16,
-          "classificationRationale": "곱셈공식을 이용한 수 계산 과정의 타당성 평가 및 옳지 않은 진술 판정",
-          "decisiveEvidence": "선지 ③ ㄴ, ㄷ 판별 성립"
+          "classificationRationale": "곱셈공식을 이용한 수 계산 과정의 타당성 평가 및 찬혁(ㄴ 거짓: $(a+b)^2$ 적용을 합과 차의 곱 공식 적용으로 잘못 진술) 판별을 통한 옳은 보기(ㄱ, ㄷ, ㄹ) 판정",
+          "decisiveEvidence": "지우(ㄱ 참), 찬혁(ㄴ 거짓: $102^2=(100+2)^2$ 적용), 민서(ㄷ 참), 수현(ㄹ 참) 판별로 옳은 보기 ㄱ, ㄷ, ㄹ 도출 (정답 ③)"
         },
         {
           "source": "SAMSAN_M3_1MID_SIMILAR_PILOT_20261024",
-          "questionUid": "qid_samsan_m3_1mid_sim_q17",
+          "questionUid": "qid_v1_6854f66a852abba5617cb23d245bd2ff6fbc4ea5c11314682b302b46682d3283",
           "sourceOrdinal": 17,
-          "classificationRationale": "가로 3x+2, 세로 2x+5인 직사각형 모양 넓이 (3x+2)(2x+5) = 6x^2+19x+10 모델링",
+          "classificationRationale": "가로 $3x+2$, 세로 $2x+5$인 직사각형 모양 넓이 $(3x+2)(2x+5) = 6x^2+19x+10$ 모델링",
           "decisiveEvidence": "$(3x+2)(2x+5) = 6x^2 + 19x + 10$"
         },
         {
           "source": "SAMSAN_M3_1MID_SIMILAR_PILOT_20261024",
-          "questionUid": "qid_samsan_m3_1mid_sim_q22",
+          "questionUid": "qid_v1_43231c87502d91f2717d8845b2ea0c2c6993e0124ed01158ae06ee78dba365ef",
           "sourceOrdinal": 22,
-          "classificationRationale": "(3x+a)(bx-5) = 3bx^2+(-15+ab)x-5a와 6x^2+cx-20 계수 비교로 a, b, c 산출",
-          "decisiveEvidence": "$b = 2, a = 4, c = -7 \\implies a + b + c = -1$"
+          "classificationRationale": "$(3x+a)(bx-5)=3bx^2+(ab-15)x-5a$와 $6x^2+cx-15$ 계수 비교로 $a=3, b=2, c=-9$ 산출 (서술형)",
+          "decisiveEvidence": "$3b = 6 \\implies b=2, -5a = -15 \\implies a=3, c = 2\\times 3 - 15 = -9 \\implies a+b+c = -4$ 도출"
         }
       ]
     }
@@ -1191,7 +1199,7 @@
       "ownerPack": "MIDDLE3",
       "supportingItemCount": 1,
       "supportingQuestionUids": [
-        "qid_samsan_m3_1mid_sim_q13"
+        "qid_v1_12c757c94b3256117e60bc8610f5aeba2440c5a47bddec2ad0db6ddcc5121b5a"
       ],
       "sourceUnits": [
         "M3-01"
@@ -1199,10 +1207,10 @@
       "evidenceProvenance": [
         {
           "source": "SAMSAN_M3_1MID_SIMILAR_PILOT_20261024",
-          "questionUid": "qid_samsan_m3_1mid_sim_q13",
+          "questionUid": "qid_v1_12c757c94b3256117e60bc8610f5aeba2440c5a47bddec2ad0db6ddcc5121b5a",
           "sourceOrdinal": 13,
-          "classificationRationale": "직각삼각형과 이등변삼각형으로 이루어진 도형의 분할 둘레 총합과 도형 ③의 둘레 차이를 무리수의 사칙연산으로 계산",
-          "decisiveEvidence": "두 둘레의 차 $(12+4\\sqrt{5}) - (6+2\\sqrt{5}) = 6+2\\sqrt{5}$ 도출"
+          "classificationRationale": "직각삼각형(둘레 16+4sqrt(10)) 2개와 이등변삼각형(둘레 12+4sqrt(10)) 2개로 이루어진 4개 조각 둘레 총합(28+8sqrt(10))과 맞물림 내부 변(6+2sqrt(10))을 제외한 ③번 도형 둘레(16+4sqrt(10))의 차이를 무리수의 사칙연산으로 계산",
+          "decisiveEvidence": "$L_{\\text{total}} - L_{\\text{outer}} = (28+8\\sqrt{10}) - (16+4\\sqrt{10}) = 12+4\\sqrt{10}$ 도출 (정답 ③)"
         }
       ]
     },
@@ -1217,7 +1225,7 @@
       "ownerPack": "MIDDLE3",
       "supportingItemCount": 1,
       "supportingQuestionUids": [
-        "qid_samsan_m3_1mid_sim_q14"
+        "qid_v1_08b382e211031a3d31ba761d1242875c6e12bce527f7ff34440fcd0e7cb23034"
       ],
       "sourceUnits": [
         "M3-02"
@@ -1225,9 +1233,9 @@
       "evidenceProvenance": [
         {
           "source": "SAMSAN_M3_1MID_SIMILAR_PILOT_20261024",
-          "questionUid": "qid_samsan_m3_1mid_sim_q14",
+          "questionUid": "qid_v1_08b382e211031a3d31ba761d1242875c6e12bce527f7ff34440fcd0e7cb23034",
           "sourceOrdinal": 14,
-          "classificationRationale": "(2x-3y)(4x+5y) 전개 후 xy의 계수 도출",
+          "classificationRationale": "$(2x-3y)(4x+5y)$ 전개 후 $xy$의 계수 $-2$ 산출",
           "decisiveEvidence": "$8x^2 - 2xy - 15y^2 \\implies xy\\text{의 계수는 } -2$"
         }
       ]
@@ -1243,7 +1251,7 @@
       "ownerPack": "MIDDLE3",
       "supportingItemCount": 1,
       "supportingQuestionUids": [
-        "qid_samsan_m3_1mid_sim_q16"
+        "qid_v1_9b7b1e2d465b8d9015ef244332ab2c15196cf651623d0677ea3a8251d8bb06be"
       ],
       "sourceUnits": [
         "M3-02"
@@ -1251,10 +1259,10 @@
       "evidenceProvenance": [
         {
           "source": "SAMSAN_M3_1MID_SIMILAR_PILOT_20261024",
-          "questionUid": "qid_samsan_m3_1mid_sim_q16",
+          "questionUid": "qid_v1_9b7b1e2d465b8d9015ef244332ab2c15196cf651623d0677ea3a8251d8bb06be",
           "sourceOrdinal": 16,
-          "classificationRationale": "곱셈공식을 이용한 수 계산 과정의 타당성 평가 및 옳지 않은 진술 판정",
-          "decisiveEvidence": "선지 ③ ㄴ, ㄷ 판별 성립"
+          "classificationRationale": "곱셈공식을 이용한 수 계산 과정의 타당성 평가 및 찬혁(ㄴ 거짓: $(a+b)^2$ 적용을 합과 차의 곱 공식 적용으로 잘못 진술) 판별을 통한 옳은 보기(ㄱ, ㄷ, ㄹ) 판정",
+          "decisiveEvidence": "지우(ㄱ 참), 찬혁(ㄴ 거짓: $102^2=(100+2)^2$ 적용), 민서(ㄷ 참), 수현(ㄹ 참) 판별로 옳은 보기 ㄱ, ㄷ, ㄹ 도출 (정답 ③)"
         }
       ]
     },
@@ -1269,7 +1277,7 @@
       "ownerPack": "MIDDLE3",
       "supportingItemCount": 1,
       "supportingQuestionUids": [
-        "qid_samsan_m3_1mid_sim_q17"
+        "qid_v1_6854f66a852abba5617cb23d245bd2ff6fbc4ea5c11314682b302b46682d3283"
       ],
       "sourceUnits": [
         "M3-02"
@@ -1277,9 +1285,9 @@
       "evidenceProvenance": [
         {
           "source": "SAMSAN_M3_1MID_SIMILAR_PILOT_20261024",
-          "questionUid": "qid_samsan_m3_1mid_sim_q17",
+          "questionUid": "qid_v1_6854f66a852abba5617cb23d245bd2ff6fbc4ea5c11314682b302b46682d3283",
           "sourceOrdinal": 17,
-          "classificationRationale": "가로 3x+2, 세로 2x+5인 직사각형 모양 넓이 모델링",
+          "classificationRationale": "가로 $3x+2$, 세로 $2x+5$인 직사각형 모양 넓이 $(3x+2)(2x+5) = 6x^2+19x+10$ 모델링",
           "decisiveEvidence": "$(3x+2)(2x+5) = 6x^2 + 19x + 10$"
         }
       ]
@@ -1295,7 +1303,7 @@
       "ownerPack": "MIDDLE3",
       "supportingItemCount": 1,
       "supportingQuestionUids": [
-        "qid_samsan_m3_1mid_sim_q22"
+        "qid_v1_43231c87502d91f2717d8845b2ea0c2c6993e0124ed01158ae06ee78dba365ef"
       ],
       "sourceUnits": [
         "M3-02"
@@ -1303,10 +1311,10 @@
       "evidenceProvenance": [
         {
           "source": "SAMSAN_M3_1MID_SIMILAR_PILOT_20261024",
-          "questionUid": "qid_samsan_m3_1mid_sim_q22",
+          "questionUid": "qid_v1_43231c87502d91f2717d8845b2ea0c2c6993e0124ed01158ae06ee78dba365ef",
           "sourceOrdinal": 22,
-          "classificationRationale": "(3x+a)(bx-5) = 3bx^2+(-15+ab)x-5a와 6x^2+cx-20 계수 비교로 a, b, c 산출",
-          "decisiveEvidence": "$b = 2, a = 4, c = -7 \\implies a + b + c = -1$"
+          "classificationRationale": "$(3x+a)(bx-5)=3bx^2+(ab-15)x-5a$와 $6x^2+cx-15$ 계수 비교로 $a=3, b=2, c=-9$ 산출 (서술형)",
+          "decisiveEvidence": "$3b = 6 \\implies b=2, -5a = -15 \\implies a=3, c = 2\\times 3 - 15 = -9 \\implies a+b+c = -4$ 도출"
         }
       ]
     }

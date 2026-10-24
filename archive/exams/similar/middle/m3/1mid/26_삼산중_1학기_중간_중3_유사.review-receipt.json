@@ -3,7 +3,7 @@
   "examUid": "26_삼산중_1학기_중간_중3_유사",
   "candidateJsPath": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.js",
   "candidateMetaPath": "archive/exams/similar/middle/m3/1mid/26_삼산중_1학기_중간_중3_유사.meta-q01-q24.json",
-  "candidateGitBlobSha1": "a51ac6c8a353374394e02f8ccad6e86b36790fd6",
+  "candidateGitBlobSha1": "95091ba407f9170b3a329c5e59101315f772d5b1",
   "reviewTimestamp": "2026-10-24T15:24:00+09:00",
   "reviewerRole": "INDEPENDENT_EXAM_AUDITOR_AND_TEACHER",
   "overallVerdict": "PASS",
@@ -31,11 +31,11 @@
       "smallMetaParity": "PASS (24 items with 1:1 question metadata correspondence)",
       "scoreSum": {
         "status": "PASS",
-        "expected": 100.0,
-        "actual": 100.0,
-        "difference": 0.0,
-        "mcScoreSum": 80.0,
-        "descScoreSum": 20.0
+        "expected": 100,
+        "actual": 100,
+        "difference": 0,
+        "mcScoreSum": 80,
+        "descScoreSum": 20
       }
     }
   },
@@ -66,6 +66,15 @@
       "qid": 24,
       "status": "VERIFIED_REPAIRED",
       "description": "Q24(2) 해설이 직각사다리꼴 EGCD의 평행변(EG, CD)과 높이(DE)를 이용한 9*sqrt(2)/4 유도 과정으로 정갈하게 개작됨 확인."
+    },
+    {
+      "id": "DEF-04",
+      "category": "R2_PEDAGOGICAL",
+      "code": "DEFECT_PEDAGOGICAL_CHOICE_COUNTEREXAMPLE_TYPO",
+      "severity": "LOW",
+      "qid": 1,
+      "status": "VERIFIED_REPAIRED",
+      "description": "Q01 해설의 선지 ② 설명에서 0의 제곱근은 0 하나뿐이다 (거짓)으로 잘못 서술된 부분을 0의 제곱근은 0 하나뿐이고 음수의 제곱근은 실수 범위에 없으므로 모든 실수가 2개의 제곱근을 갖는 것은 아니다 (거짓)으로 정제 완료."
     }
   ],
   "questionsReview": [
@@ -102,7 +111,7 @@
     {
       "qid": 4,
       "type": "객관식",
-      "score": 4.0,
+      "score": 4,
       "derivedAnswer": "①",
       "candidateAnswer": "①",
       "match": true,
@@ -172,7 +181,7 @@
     {
       "qid": 11,
       "type": "객관식",
-      "score": 4.0,
+      "score": 4,
       "derivedAnswer": "①",
       "candidateAnswer": "①",
       "match": true,
@@ -242,7 +251,7 @@
     {
       "qid": 18,
       "type": "객관식",
-      "score": 4.0,
+      "score": 4,
       "derivedAnswer": "③",
       "candidateAnswer": "③",
       "match": true,
@@ -272,7 +281,7 @@
     {
       "qid": 21,
       "type": "서술형",
-      "score": 5.0,
+      "score": 5,
       "derivedAnswer": "8",
       "candidateAnswer": "8",
       "match": true,
@@ -282,7 +291,7 @@
     {
       "qid": 22,
       "type": "서술형",
-      "score": 5.0,
+      "score": 5,
       "derivedAnswer": "-4",
       "candidateAnswer": "-4",
       "match": true,
@@ -292,7 +301,7 @@
     {
       "qid": 23,
       "type": "서술형",
-      "score": 5.0,
+      "score": 5,
       "derivedAnswer": "10575",
       "candidateAnswer": "10575",
       "match": true,
@@ -302,12 +311,27 @@
     {
       "qid": 24,
       "type": "서술형",
-      "score": 5.0,
+      "score": 5,
       "derivedAnswer": "(1) 2\\sqrt{3}, (2) \\frac{9\\sqrt{2}}{4}",
       "candidateAnswer": "(1) 2\\sqrt{3}, (2) \\frac{9\\sqrt{2}}{4}",
       "match": true,
       "method": "(1) ABCD 가로 x, 세로 sqrt(6). DEFC 가로 x/2, 세로 sqrt(6). 닮음비: x : sqrt(6) = sqrt(6) : (x/2) => x^2/2 = 6 => x^2=12 => x=2*sqrt(3). (2) DEFC에서 DE=sqrt(3), CD=sqrt(6), EF=sqrt(6). G는 EF의 중점이므로 EG=sqrt(6)/2. EG//CD이고 높이 DE=sqrt(3)인 직각사다리꼴 EGCD 넓이 = 1/2 * (sqrt(6)/2 + sqrt(6)) * sqrt(3) = 1/2 * (3*sqrt(6)/2) * sqrt(3) = 9*sqrt(2)/4.",
       "r2Pedagogical": "[수리 완료] 배점이 5.0점으로 재조정됨. 해설 (2)가 윗변 EG = sqrt(6)/2, 아랫변 CD = sqrt(6), 높이 DE = sqrt(3)인 직각사다리꼴 공식 적용으로 깔끔하게 개작되어 혼란 요소 완전 제거."
+    }
+  ],
+  "baselineMathReviewBlobSha1": "a51ac6c8a353374394e02f8ccad6e86b36790fd6",
+  "historicalReviewBlobs": [
+    {
+      "revision": "r1-r3-initial-sign-off",
+      "gitBlobSha1": "a51ac6c8a353374394e02f8ccad6e86b36790fd6",
+      "timestamp": "2026-10-24T15:24:00+09:00",
+      "note": "Initial R1/R2/R3 independent review sign-off"
+    },
+    {
+      "revision": "canonical-taxonomy-extension-and-q01-typo-repair",
+      "gitBlobSha1": "95091ba407f9170b3a329c5e59101315f772d5b1",
+      "timestamp": "2026-10-24T16:18:34+09:00",
+      "note": "Re-verified after canonical PT/TPL binding (null 0건) and Q01 choice (2) counterexample explanation refinement (DEF-04)"
     }
   ]
 }
