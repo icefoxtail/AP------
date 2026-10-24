@@ -467,7 +467,11 @@ window.questionBank = [
     "answer": "④",
     "solution": "첫 번째 이차함수와 직선의 교점 조건을 방정식으로 바꾼다.\n\n$x+k=x^2-2x+4$\n$x^2-3x+4-k=0$\n\n만나려면 판별식이 $0$ 이상이므로\n$9-4(4-k)=4k-7\\ge0$\n$k\\ge\\dfrac74$\n\n두 번째 이차함수와 만나지 않으려면\n$x+k=x^2-5x+15$\n$x^2-6x+15-k=0$\n$36-4(15-k)=4k-24<0$\n$k<6$\n\n정수 $k$는 $2,3,4,5$이다.\n합은 $14$이므로 정답은 ④이다.",
     "decisiveStep": "각 교점 방정식의 판별식으로 k의 두 범위를 구한 뒤 정수 조건을 적용한다.",
-    "primaryMethod": "두 이차방정식의 판별식으로 교점 범위를 구한다"
+    "primaryMethod": "두 이차방정식의 판별식으로 교점 범위를 구한다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q10-solution.svg",
+    "solutionImageAlt": "첫째 포물선과 만나는 k≥7/4와 둘째 포물선과 만나지 않는 k<6의 공통 범위가 7/4≤k<6이고, 정수 k는 2, 3, 4, 5이다.",
+    "solutionImageCaption": "첫째 포물선과 만나는 k≥7/4와 둘째 포물선과 만나지 않는 k<6의 공통 범위가 7/4≤k<6이고, 정수 k는 2, 3, 4, 5이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
@@ -997,7 +1001,11 @@ window.questionBank = [
     "answer": "$y=\\sqrt3x+6$ 또는 $y=\\sqrt3x-6$",
     "solution": "직선의 기울기는 $\\tan60^\\circ=\\sqrt3$이다.\n따라서 직선을 $y=\\sqrt3x+c$로 둔다.\n\n원의 중심은 원점이고 반지름은 $3$이다. 직선 $\\sqrt3x-y+c=0$과 원점 사이의 거리가 $3$이므로\n$\\dfrac{|c|}{\\sqrt{(\\sqrt3)^2+(-1)^2}}=3$\n$\\dfrac{|c|}{2}=3$\n$|c|=6$\n$c=6$ 또는 $c=-6$\n\n따라서 구하는 직선은\n$y=\\sqrt3x+6$, $y=\\sqrt3x-6$이다.",
     "decisiveStep": "기울기 tan60°=√3인 직선을 놓고 원점과의 거리를 반지름 3으로 둔다.",
-    "primaryMethod": "주어진 각에서 직선 기울기를 구해 중심거리로 접선 절편을 결정한다"
+    "primaryMethod": "주어진 각에서 직선 기울기를 구해 중심거리로 접선 절편을 결정한다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q21-solution.svg",
+    "solutionImageAlt": "기울기가 √3인 직선 중 원점에서의 거리가 반지름 3인 직선은 y=√3x+6과 y=√3x-6이고, 접점은 A, B이다.",
+    "solutionImageCaption": "기울기가 √3인 직선 중 원점에서의 거리가 반지름 3인 직선은 y=√3x+6과 y=√3x-6이고, 접점은 A, B이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 22,
@@ -1081,7 +1089,11 @@ window.questionBank = [
     "answer": "$4$",
     "solution": "선분 $AB$를 $4:1$로 외분하는 점의 좌표는\n$\\left(\\dfrac{4\\cdot11-(a+2)}{4-1},\\dfrac{4(b-4)-0}{4-1}\\right)=(13,-4)$이다.\n첫째 좌표에서\n$\\dfrac{42-a}{3}=13$\n$42-a=39$\n$a=3$이다.\n둘째 좌표에서\n$\\dfrac{4b-16}{3}=-4$\n$4b-16=-12$\n$b=1$이다.\n\n따라서 $A=(5,0)$, $B=(11,-3)$, $C=(-3,4)$이다.\n$BC$를 $4:3$으로 내분하는 점은\n$(x,y)=\\left(\\dfrac{3\\cdot11+4\\cdot(-3)}7,\\dfrac{3\\cdot(-3)+4\\cdot4}7\\right)$\n$=\\left(\\dfrac{21}{7},\\dfrac77\\right)=(3,1)$이다.\n그러므로 $x+y=3+1=4$이다.",
     "decisiveStep": "외분점 공식으로 a,b를 결정한 뒤 내부 4:3 내분점 공식에 대입한다.",
-    "primaryMethod": "외분점으로 매개변수를 구한 뒤 내부 내분점에 대입한다"
+    "primaryMethod": "외분점으로 매개변수를 구한 뒤 내부 내분점에 대입한다",
+    "solutionImage": "assets/images/22_강남여고_1학기_기말_고1_기출/q23-solution.svg",
+    "solutionImageAlt": "a=3, b=1이므로 A(5,0), B(11,-3), C(-3,4)이다. 선분 AB를 4:1로 외분한 점이 D(13,-4)이고, 선분 BC를 4:3으로 내분한 점이 E(3,1)이다.",
+    "solutionImageCaption": "a=3, b=1이므로 A(5,0), B(11,-3), C(-3,4)이다. 선분 AB를 4:1로 외분한 점이 D(13,-4)이고, 선분 BC를 4:3으로 내분한 점이 E(3,1)이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 24,

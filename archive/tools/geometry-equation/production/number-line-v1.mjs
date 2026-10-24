@@ -5,7 +5,7 @@ import {pointNameModel} from './point-names.mjs';
 import {typesetter} from './typography.mjs';
 import {launchBrowser} from '../visual-browser-runtime.mjs';
 import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
-import {rat,add,sub,mul,div,sgn,ZERO,parseRat,gcd,valueText,valueTex,checkVariable,NUMBER_LINE_CAPABILITY,NUMBER_LINE_SVG_VERSION,Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
+import {rat,add,sub,mul,div,sgn,ZERO,parseRat,gcd,valueText,valueTex,checkVariable,NUMBER_LINE_CAPABILITY,NUMBER_LINE_SVG_VERSION,Stop,isDomainCode,esc,overlaps,real,sqrtRat,cmp,approx,floorOf} from './quadratic-inequality-chain-v1.mjs';
 
 // A standalone number-line figure (number-line-figure-v1): rows of solution sets on one shared axis scale, optionally the common part of the rows
 // drawn as a last row, integer points over a row, and a row of marked points with an internal division point. Endpoints are exact rationals or an
@@ -19,12 +19,35 @@ const bad=code=>{throw Error(code);};
 const MAX_ROWS=4,MAX_POINTS=4,MAX_INTEGERS=25;
 const isPlain=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
 const onlyKeys=(value,keys,code)=>{if(!isPlain(value)||Object.keys(value).some(key=>!keys.includes(key)))bad(code);};
-const num=r=>Number(r[0])/Number(r[1]);
-const ratText=r=>r[1]===1n?String(r[0]):r[0]+'/'+r[1];
+// An end value is a rational [n,d] or, for an end such as sqrt(10) or 1+sqrt(2), a real {p,q,s} = p+q*sqrt(s) (one radical s per plan; the chain module's exact numbers).
+const isReal=x=>!Array.isArray(x);
+const toReal=x=>isReal(x)?x:asReal(x);
+const num=r=>isReal(r)?approx(r):Number(r[0])/Number(r[1]);
+const ratText=r=>isReal(r)?valueText(r):r[1]===1n?String(r[0]):r[0]+'/'+r[1];
 const asReal=r=>({p:r,q:ZERO,s:1n});
-const cmpR=(a,b)=>sgn(sub(a,b));
-const floorR=r=>{let q=r[0]/r[1];if(r[0]%r[1]!==0n&&r[0]<0n)q-=1n;return q;};
-
+const cmpR=(a,b)=>(!isReal(a)&&!isReal(b))?sgn(sub(a,b)):cmp(toReal(a),toReal(b));
+const floorR=r=>{if(isReal(r))return floorOf(r);let q=r[0]/r[1];if(r[0]%r[1]!==0n&&r[0]<0n)q-=1n;return q;};
+/** An end value text: an exact rational ("-2", "1/3") or p+q*sqrt(r) in the grammar of integers, a/b, sqrt(...), + - * / and parentheses (for example "sqrt(10)", "-sqrt(10)", "(1+sqrt(2))/2"). */
+function parseValue(text,code){
+  if(typeof text==='string'&&/^-?\d{1,15}(?:\/\d{1,15})?$/.test(text))return parseRat(text,code);
+  if(typeof text!=='string'||!/^[0-9+\-*/()sqrt ]{1,64}$/.test(text)||!text.includes('sqrt'))bad(code);
+  const tokens=text.replace(/\s+/g,'').match(/sqrt|\d{1,15}|[+\-*/()]/g)||[];if(tokens.join('')!==text.replace(/\s+/g,''))bad(code);
+  let i=0;const peek=()=>tokens[i],take=()=>tokens[i++];
+  const surdOf=(a,b)=>a.s!==1n&&b.s!==1n&&a.s!==b.s?bad('NUMBER_LINE_RADICALS_MIXED'):(a.s!==1n?a.s:b.s);
+  const radd=(a,b,sg)=>real(sg>0?add(a.p,b.p):sub(a.p,b.p),sg>0?add(a.q,b.q):sub(a.q,b.q),surdOf(a,b));
+  const rmul=(a,b)=>{const s=surdOf(a,b);if(a.s===1n||b.s===1n)return real(mul(a.p,b.p),add(mul(a.p,b.q),mul(b.p,a.q)),s);return real(add(mul(a.p,b.p),mul(mul(a.q,b.q),[s,1n])),add(mul(a.p,b.q),mul(b.p,a.q)),s);};
+  const rdiv=(a,b)=>{if(b.s!==1n||sgn(b.p)===0)bad(code);return real(div(a.p,b.p),div(a.q,b.p),a.s);};
+  const fac=()=>{const t=take();
+    if(t==='-'){const v=fac();return real(sub(ZERO,v.p),sub(ZERO,v.q),v.s);}
+    if(t==='sqrt'){if(take()!=='(')bad(code);const v=expr();if(take()!==')'||v.s!==1n||sgn(v.p)<0)bad(code);if(sgn(v.p)===0)return asReal(ZERO);const r=sqrtRat(v.p);return real(ZERO,r.q,r.s);}
+    if(t==='('){const v=expr();if(take()!==')')bad(code);return v;}
+    if(/^\d+$/.test(t??''))return asReal(rat(BigInt(t)));
+    return bad(code);};
+  const term=()=>{let v=fac();while(peek()==='*'||peek()==='/'){const op=take(),w=fac();v=op==='*'?rmul(v,w):rdiv(v,w);}return v;};
+  const expr=()=>{let v=term();while(peek()==='+'||peek()==='-'){const op=take(),w=term();v=radd(v,w,op==='+'?1:-1);}return v;};
+  const value=expr();if(i!==tokens.length)bad(code);
+  return value.s===1n?value.p:value;
+}
 // --- ends and pieces -----------------------------------------------------------------------------------------------------------------------
 /** TeX and plain text of mul*p+add (p the parameter letter), fractions stacked: (a+2)/3 -> \frac{a+2}{3}. */
 function affineTexts(name,m,c){
@@ -38,8 +61,8 @@ function parseEnd(raw,parameter,usedParameter){
   if(raw.state!=='OPEN'&&raw.state!=='CLOSED')bad('NUMBER_LINE_PIECE_INVALID');
   if((raw.value===undefined)===(raw.param===undefined))bad('NUMBER_LINE_PIECE_INVALID');
   if(raw.value!==undefined){
-    const v=parseRat(raw.value,'NUMBER_LINE_VALUE_INVALID');
-    return {v,value:ratText(v),tex:valueTex(asReal(v)),text:valueText(asReal(v)),state:raw.state,approx:num(v),expr:null};
+    const v=parseValue(raw.value,'NUMBER_LINE_VALUE_INVALID');
+    return {v,value:ratText(v),tex:valueTex(toReal(v)),text:valueText(toReal(v)),state:raw.state,approx:num(v),expr:null};
   }
   if(!parameter)bad('NUMBER_LINE_PARAMETER_MISSING');
   onlyKeys(raw.param,['mul','add'],'NUMBER_LINE_PIECE_INVALID');

@@ -21,7 +21,11 @@ var examData = window.examData = {
         "4"
       ],
       "answer": "③",
-      "solution": "주어진 방정식을 정리하면\n$\\sin x=-\\dfrac12$이다.\n$0\\le x<2\\pi$에서 사인값이 $-\\dfrac12$인 각은 제3사분면과 제4사분면에 있다.\n기준각은 $\\dfrac\\pi6$이므로\n$x=\\pi+\\dfrac\\pi6=\\dfrac{7\\pi}{6}$,\n$x=2\\pi-\\dfrac\\pi6=\\dfrac{11\\pi}{6}$이다.\n구간에서 실근은 두 개이다.\n따라서 정답은 ③이다."
+      "solution": "주어진 방정식을 정리하면\n$\\sin x=-\\dfrac12$이다.\n$0\\le x<2\\pi$에서 사인값이 $-\\dfrac12$인 각은 제3사분면과 제4사분면에 있다.\n기준각은 $\\dfrac\\pi6$이므로\n$x=\\pi+\\dfrac\\pi6=\\dfrac{7\\pi}{6}$,\n$x=2\\pi-\\dfrac\\pi6=\\dfrac{11\\pi}{6}$이다.\n구간에서 실근은 두 개이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "assets/images/21_금당고_1학기_기말_고2_수학I/q1-solution.svg",
+      "solutionImageAlt": "단위원에서 sin x=-1/2인 점은 직선 y=-1/2 위의 제3사분면의 점 P(x=7π/6)와 제4사분면의 점 Q(x=11π/6)이다.",
+      "solutionImageCaption": "단위원에서 sin x=-1/2인 점은 직선 y=-1/2 위의 제3사분면의 점 P(x=7π/6)와 제4사분면의 점 Q(x=11π/6)이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 2,
@@ -201,7 +205,11 @@ var examData = window.examData = {
         "8\\sqrt{3}"
       ],
       "answer": "③",
-      "solution": "$\\angle ABC=\\theta$라 하자.\n사각형이 원에 내접하므로 마주 보는 각의 합은 $\\pi$이다.\n따라서 $\\angle ADC=\\pi-\\theta$이다.\n대각선 $AC$에 코사인법칙을 각각 적용한다.\n삼각형 $ABC$에서\n$AC^2=1^2+2^2-2\\cdot1\\cdot2\\cos\\theta$\n$=5-4\\cos\\theta$이다.\n삼각형 $ADC$에서\n$AC^2=4^2+3^2-2\\cdot4\\cdot3\\cos(\\pi-\\theta)$\n$=25+24\\cos\\theta$이다.\n두 식은 같은 $AC^2$이므로\n$5-4\\cos\\theta=25+24\\cos\\theta$,\n$-20=28\\cos\\theta$,\n$\\cos\\theta=-\\dfrac57$이다.\n따라서\n$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}$\n$=\\sqrt{1-\\dfrac{25}{49}}=\\dfrac{2\\sqrt6}{7}$이다.\n사각형의 넓이는 두 삼각형의 넓이의 합이다.\n$\\dfrac12\\cdot1\\cdot2\\sin\\theta+\\dfrac12\\cdot4\\cdot3\\sin(\\pi-\\theta)$\n$=\\sin\\theta+6\\sin\\theta=7\\sin\\theta$\n$=7\\cdot\\dfrac{2\\sqrt6}{7}=2\\sqrt6$이다.\n따라서 정답은 ③이다."
+      "solution": "$\\angle ABC=\\theta$라 하자.\n사각형이 원에 내접하므로 마주 보는 각의 합은 $\\pi$이다.\n따라서 $\\angle ADC=\\pi-\\theta$이다.\n대각선 $AC$에 코사인법칙을 각각 적용한다.\n삼각형 $ABC$에서\n$AC^2=1^2+2^2-2\\cdot1\\cdot2\\cos\\theta$\n$=5-4\\cos\\theta$이다.\n삼각형 $ADC$에서\n$AC^2=4^2+3^2-2\\cdot4\\cdot3\\cos(\\pi-\\theta)$\n$=25+24\\cos\\theta$이다.\n두 식은 같은 $AC^2$이므로\n$5-4\\cos\\theta=25+24\\cos\\theta$,\n$-20=28\\cos\\theta$,\n$\\cos\\theta=-\\dfrac57$이다.\n따라서\n$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}$\n$=\\sqrt{1-\\dfrac{25}{49}}=\\dfrac{2\\sqrt6}{7}$이다.\n사각형의 넓이는 두 삼각형의 넓이의 합이다.\n$\\dfrac12\\cdot1\\cdot2\\sin\\theta+\\dfrac12\\cdot4\\cdot3\\sin(\\pi-\\theta)$\n$=\\sin\\theta+6\\sin\\theta=7\\sin\\theta$\n$=7\\cdot\\dfrac{2\\sqrt6}{7}=2\\sqrt6$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "assets/images/21_금당고_1학기_기말_고2_수학I/q13-solution.svg",
+      "solutionImageAlt": "원에 내접하는 사각형 ABCD에서 대각선 AC가 두 삼각형 ABC, ADC로 나누며, AC²=55/7로 공통이다.",
+      "solutionImageCaption": "원에 내접하는 사각형 ABCD에서 대각선 AC가 두 삼각형 ABC, ADC로 나누며, AC²=55/7로 공통이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 14,
@@ -216,7 +224,11 @@ var examData = window.examData = {
         "16"
       ],
       "answer": "③",
-      "solution": "$\\overline{AB}=x$, $\\overline{BC}=y$라 하자.\n넓이가 9이고 끼인각 $B=30^\\circ$이므로\n$\\dfrac12xy\\sin30^\\circ=9$,\n$\\dfrac{xy}{4}=9$,\n$xy=36$이다.\n코사인법칙으로\n$\\overline{AC}^{2}=x^2+y^2-2xy\\cos30^\\circ$\n$=x^2+y^2-36\\sqrt3$이다.\n한편\n$x^2+y^2-2xy=(x-y)^2\\ge0$이므로\n$x^2+y^2\\ge2xy=72$이다.\n따라서 $\\overline{AC}^{2}\\ge72-36\\sqrt3$이고, 등호는 $x=y$일 때 성립한다.\n$xy=36$과 $x=y$로부터 $x=y=6$이다.\n이때 $\\overline{AC}$가 최소가 되며\n$\\overline{AB}+\\overline{BC}=x+y=6+6=12$이다.\n따라서 정답은 ③이다."
+      "solution": "$\\overline{AB}=x$, $\\overline{BC}=y$라 하자.\n넓이가 9이고 끼인각 $B=30^\\circ$이므로\n$\\dfrac12xy\\sin30^\\circ=9$,\n$\\dfrac{xy}{4}=9$,\n$xy=36$이다.\n코사인법칙으로\n$\\overline{AC}^{2}=x^2+y^2-2xy\\cos30^\\circ$\n$=x^2+y^2-36\\sqrt3$이다.\n한편\n$x^2+y^2-2xy=(x-y)^2\\ge0$이므로\n$x^2+y^2\\ge2xy=72$이다.\n따라서 $\\overline{AC}^{2}\\ge72-36\\sqrt3$이고, 등호는 $x=y$일 때 성립한다.\n$xy=36$과 $x=y$로부터 $x=y=6$이다.\n이때 $\\overline{AC}$가 최소가 되며\n$\\overline{AB}+\\overline{BC}=x+y=6+6=12$이다.\n따라서 정답은 ③이다.",
+      "solutionImage": "assets/images/21_금당고_1학기_기말_고2_수학I/q14-solution.svg",
+      "solutionImageAlt": "AC가 최소일 때 AB=BC=6인 이등변삼각형이고, 높이 AH=3이므로 넓이가 9, AB+BC=12이다.",
+      "solutionImageCaption": "AC가 최소일 때 AB=BC=6인 이등변삼각형이고, 높이 AH=3이므로 넓이가 9, AB+BC=12이다.",
+      "solutionImageSize": "medium"
     },
     {
       "id": 15,
@@ -294,7 +306,11 @@ var examData = window.examData = {
         "10"
       ],
       "answer": "⑤",
-      "solution": "$t=\\sin x$라 놓으면 $0\\le x\\le\\pi$에서 $0\\le t\\le1$이다.\n주어진 방정식은\n$1-2t^2+t-k=0$,\n$k=1+t-2t^2$\n$=\\dfrac98-2\\left(t-\\dfrac14\\right)^2$이다.\n$t=0$일 때 식의 값은 1이고, $t=\\dfrac14$일 때 최댓값은 $\\dfrac98$이며, $t=1$일 때 값은 0이다.\n따라서 $1\\le k<\\dfrac98$이면 방정식 $k=1+t-2t^2$의 서로 다른 해 $t$가 두 개이고, 두 값 모두 $0<t<1$이거나 $k=1$일 때 $t=0,\\dfrac12$이다.\n$0<t<1$인 각 값에 대해 $\\sin x=t$는 $0<x<\\pi$에서 두 해를 갖는다.\n특히 $k=1$일 때 $t=0$은 구간의 양 끝 $x=0,\\pi$에서 두 해를 만들고, $t=\\dfrac12$도 두 해를 만든다.\n그러므로 $1\\le k<\\dfrac98$일 때 실근은 네 개이다.\n$0<k<1$이면 $t$가 하나만 가능하여 $x$는 두 개이고, $k=0$이면 $t=1$에서 한 개, $k<0$이면 해가 없다.\n또 $k=\\dfrac98$이면 $t=\\dfrac14$ 하나에서 두 해만 생기며 $k>\\dfrac98$이면 해가 없다.\n따라서 $a=1$, $b=\\dfrac98$이고\n$a+8b=1+8\\cdot\\dfrac98=10$이다.\n따라서 정답은 ⑤이다."
+      "solution": "$t=\\sin x$라 놓으면 $0\\le x\\le\\pi$에서 $0\\le t\\le1$이다.\n주어진 방정식은\n$1-2t^2+t-k=0$,\n$k=1+t-2t^2$\n$=\\dfrac98-2\\left(t-\\dfrac14\\right)^2$이다.\n$t=0$일 때 식의 값은 1이고, $t=\\dfrac14$일 때 최댓값은 $\\dfrac98$이며, $t=1$일 때 값은 0이다.\n따라서 $1\\le k<\\dfrac98$이면 방정식 $k=1+t-2t^2$의 서로 다른 해 $t$가 두 개이고, 두 값 모두 $0<t<1$이거나 $k=1$일 때 $t=0,\\dfrac12$이다.\n$0<t<1$인 각 값에 대해 $\\sin x=t$는 $0<x<\\pi$에서 두 해를 갖는다.\n특히 $k=1$일 때 $t=0$은 구간의 양 끝 $x=0,\\pi$에서 두 해를 만들고, $t=\\dfrac12$도 두 해를 만든다.\n그러므로 $1\\le k<\\dfrac98$일 때 실근은 네 개이다.\n$0<k<1$이면 $t$가 하나만 가능하여 $x$는 두 개이고, $k=0$이면 $t=1$에서 한 개, $k<0$이면 해가 없다.\n또 $k=\\dfrac98$이면 $t=\\dfrac14$ 하나에서 두 해만 생기며 $k>\\dfrac98$이면 해가 없다.\n따라서 $a=1$, $b=\\dfrac98$이고\n$a+8b=1+8\\cdot\\dfrac98=10$이다.\n따라서 정답은 ⑤이다.",
+      "solutionImage": "assets/images/21_금당고_1학기_기말_고2_수학I/q19-solution.svg",
+      "solutionImageAlt": "t=sin x(0≤t≤1)일 때 k=1+t-2t²의 그래프이다. 직선 y=k가 곡선과 두 점에서 만나는 범위가 1≤k<9/8이다.",
+      "solutionImageCaption": "t=sin x(0≤t≤1)일 때 k=1+t-2t²의 그래프이다. 직선 y=k가 곡선과 두 점에서 만나는 범위가 1≤k<9/8이다.",
+      "solutionImageSize": "full"
     },
     {
       "id": 20,

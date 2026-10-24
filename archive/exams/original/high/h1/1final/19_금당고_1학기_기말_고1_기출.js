@@ -202,7 +202,11 @@ window.questionBank =
     "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
     "rpmSecondaryPaths": [],
     "evidenceDebt": [],
-    "difficultyRationale": "지름의 중점과 거리로 원의 표준형을 만든다."
+    "difficultyRationale": "지름의 중점과 거리로 원의 표준형을 만든다.",
+    "solutionImage": "assets/images/19_금당고_1학기_기말_고1_기출/q3-solution.svg",
+    "solutionImageAlt": "선분 AB의 중점 M(1,0)이 원의 중심이고, AB가 지름이다.",
+    "solutionImageCaption": "선분 AB의 중점 M(1,0)이 원의 중심이고, AB가 지름이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 4,
@@ -268,7 +272,11 @@ window.questionBank =
     "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
     "rpmSecondaryPaths": [],
     "evidenceDebt": [],
-    "difficultyRationale": "점과 직선 사이의 거리 공식을 직접 쓴다."
+    "difficultyRationale": "점과 직선 사이의 거리 공식을 직접 쓴다.",
+    "solutionImage": "assets/images/19_금당고_1학기_기말_고1_기출/q4-solution.svg",
+    "solutionImageAlt": "점 P에서 직선 2x+y-2=0에 내린 수선의 발 H까지의 거리가 구하는 거리이다.",
+    "solutionImageCaption": "점 P에서 직선 2x+y-2=0에 내린 수선의 발 H까지의 거리가 구하는 거리이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 5,
@@ -544,7 +552,11 @@ window.questionBank =
     "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
     "rpmSecondaryPaths": [],
     "evidenceDebt": [],
-    "difficultyRationale": "세 점의 일직선 조건을 이차방정식으로 정리한다."
+    "difficultyRationale": "세 점의 일직선 조건을 이차방정식으로 정리한다.",
+    "solutionImage": "assets/images/19_금당고_1학기_기말_고1_기출/q8-solution.svg",
+    "solutionImageAlt": "a=2이면 점 (1,a)=A(1,2)를, a=-11이면 점 (1,a)=D(1,-11)을 지나는 직선이며, 두 직선 모두 점 C(-2,-7)을 지난다.",
+    "solutionImageCaption": "a=2이면 점 (1,a)=A(1,2)를, a=-11이면 점 (1,a)=D(1,-11)을 지나는 직선이며, 두 직선 모두 점 C(-2,-7)을 지난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 9,
@@ -1092,7 +1104,11 @@ window.questionBank =
     "rpmPrimaryMappingStatus": "DIRECT_ACTIVE",
     "rpmSecondaryPaths": [],
     "evidenceDebt": [],
-    "difficultyRationale": "구간에서 완전제곱식의 최솟값을 비교한다."
+    "difficultyRationale": "구간에서 완전제곱식의 최솟값을 비교한다.",
+    "solutionImage": "assets/images/19_금당고_1학기_기말_고1_기출/q16-solution.svg",
+    "solutionImageAlt": "1≤x≤5에서 y=(x-3)²-3의 최솟값은 꼭짓점 V에서 -3이고, a=2이면 a²-7=-3이 이 최솟값과 같아진다.",
+    "solutionImageCaption": "1≤x≤5에서 y=(x-3)²-3의 최솟값은 꼭짓점 V에서 -3이고, a=2이면 a²-7=-3이 이 최솟값과 같아진다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 17,

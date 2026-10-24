@@ -510,7 +510,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "하",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q12-solution.svg",
+    "solutionImageAlt": "k=-1일 때 직선 y=x-1이 포물선 y=x²+3x에 점 T(-1,-2)에서 접한다.",
+    "solutionImageCaption": "k=-1일 때 직선 y=x-1이 포물선 y=x²+3x에 점 T(-1,-2)에서 접한다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 13,
@@ -551,7 +555,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "하",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q13-solution.svg",
+    "solutionImageAlt": "y=x²+4x-2=(x+2)²-6의 그래프는 꼭짓점 V(-2,-6)에서 최솟값 -6을 갖는다.",
+    "solutionImageCaption": "y=x²+4x-2=(x+2)²-6의 그래프는 꼭짓점 V(-2,-6)에서 최솟값 -6을 갖는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 14,
@@ -596,7 +604,11 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "layoutTag": "grid",
-    "wide": false
+    "wide": false,
+    "solutionImage": "assets/images/20_순천고_1학기_중간_고1_기출/q14-solution.svg",
+    "solutionImageAlt": "-2≤x≤2에서 y=-2(x-1)²+10은 꼭짓점 V에서 최댓값 10, 왼쪽 끝점 A에서 최솟값 -8을 갖는다.",
+    "solutionImageCaption": "-2≤x≤2에서 y=-2(x-1)²+10은 꼭짓점 V에서 최댓값 10, 왼쪽 끝점 A에서 최솟값 -8을 갖는다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 15,
