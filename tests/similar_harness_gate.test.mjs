@@ -159,4 +159,76 @@ describe('Similar Exam Harness Gate & Fault Injection (Negative Tests)', () => {
       fs.writeFileSync(origReceiptPath, JSON.stringify(origReceipt, null, 2), 'utf8');
     }
   });
+
+  test('Fault Injection: Blank/mock SVG (only canvas background rect) is blocked', () => {
+    const origSvgPath = path.join(REPO_ROOT, 'archive/assets/images/19_금당중_1학기_기말_중1_유사/q21.svg');
+    const origSvg = fs.readFileSync(origSvgPath, 'utf8');
+    const mockSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="100%" height="100%" fill="#ffffff"/></svg>';
+    fs.writeFileSync(origSvgPath, mockSvg, 'utf8');
+    try {
+      const res = verifySimilarExam({ stem: '19_금당중_1학기_기말_중1_유사' });
+      assert.equal(res.ok, false);
+      assert.ok(res.errors.some(e => e.includes('lacks substantive mathematical diagram content')), 'Must catch mock canvas rect SVG');
+    } finally {
+      fs.writeFileSync(origSvgPath, origSvg, 'utf8');
+    }
+  });
+
+  test('Fault Injection: Shaded region stem with un-shaded SVG is blocked', () => {
+    const origSvgPath = path.join(REPO_ROOT, 'archive/assets/images/19_금당중_1학기_기말_중1_유사/q21.svg');
+    const origSvg = fs.readFileSync(origSvgPath, 'utf8');
+    // Replace non-white fill with white fill
+    const unshadedSvg = origSvg.replace(/fill=["']#bbdefb["']/g, 'fill="#ffffff"').replace(/fill=["']#f5f5f5["']/g, 'fill="#ffffff"');
+    fs.writeFileSync(origSvgPath, unshadedSvg, 'utf8');
+    try {
+      const res = verifySimilarExam({ stem: '19_금당중_1학기_기말_중1_유사' });
+      assert.equal(res.ok, false);
+      assert.ok(res.errors.some(e => e.includes("Question stem asks about shaded region ('색칠한 부분')")), 'Must catch unshaded SVG');
+    } finally {
+      fs.writeFileSync(origSvgPath, origSvg, 'utf8');
+    }
+  });
+
+  test('Fault Injection: Corrupt coordinate attribute (x="NaN") in SVG is blocked', () => {
+    const origSvgPath = path.join(REPO_ROOT, 'archive/assets/images/19_금당중_1학기_기말_중1_유사/q21.svg');
+    const origSvg = fs.readFileSync(origSvgPath, 'utf8');
+    const corruptSvg = origSvg.replace('x="90"', 'x="NaN"');
+    fs.writeFileSync(origSvgPath, corruptSvg, 'utf8');
+    try {
+      const res = verifySimilarExam({ stem: '19_금당중_1학기_기말_중1_유사' });
+      assert.equal(res.ok, false);
+      assert.ok(res.errors.some(e => e.includes('SVG contains corrupt coordinate attributes (NaN, undefined, or null)')), 'Must catch NaN coordinate');
+    } finally {
+      fs.writeFileSync(origSvgPath, origSvg, 'utf8');
+    }
+  });
+
+  test('Fault Injection: Degenerate geometry (circle r="0") in SVG is blocked', () => {
+    const origSvgPath = path.join(REPO_ROOT, 'archive/assets/images/19_금당중_1학기_기말_중1_유사/q21.svg');
+    const origSvg = fs.readFileSync(origSvgPath, 'utf8');
+    const degenerateSvg = origSvg.replace('</svg>', '<circle cx="50" cy="50" r="0"/></svg>');
+    fs.writeFileSync(origSvgPath, degenerateSvg, 'utf8');
+    try {
+      const res = verifySimilarExam({ stem: '19_금당중_1학기_기말_중1_유사' });
+      assert.equal(res.ok, false);
+      assert.ok(res.errors.some(e => e.includes('degenerate circle with radius 0')), 'Must catch degenerate circle');
+    } finally {
+      fs.writeFileSync(origSvgPath, origSvg, 'utf8');
+    }
+  });
+
+  test('Fault Injection: Referenced point missing in SVG is blocked', () => {
+    const origSvgPath = path.join(REPO_ROOT, 'archive/assets/images/19_금당중_1학기_기말_중1_유사/q03.svg');
+    const origSvg = fs.readFileSync(origSvgPath, 'utf8');
+    // Remove label B from Q03 SVG (stem asks for A + B)
+    const missingPointSvg = origSvg.replace('<text x="295" y="117" font-style="italic">B</text>', '');
+    fs.writeFileSync(origSvgPath, missingPointSvg, 'utf8');
+    try {
+      const res = verifySimilarExam({ stem: '19_금당중_1학기_기말_중1_유사' });
+      assert.equal(res.ok, false);
+      assert.ok(res.errors.some(e => e.includes("Point/symbol 'B' referenced in question stem is missing from SVG text labels")), 'Must catch missing vertex/point in SVG');
+    } finally {
+      fs.writeFileSync(origSvgPath, origSvg, 'utf8');
+    }
+  });
 });

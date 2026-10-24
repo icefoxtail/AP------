@@ -14,6 +14,142 @@ function sha256(contentBytes) {
   return crypto.createHash('sha256').update(contentBytes).digest('hex');
 }
 
+/**
+ * Rigorous semantic & mathematical SVG verification.
+ * Verifies that the SVG is NOT a mock/placeholder, has substantive geometric/diagram primitives,
+ * does not contain NaN/undefined/corrupt coordinate attributes, and maintains strict mathematical
+ * semantic alignment with the question text (vertex labels, shaded regions, coordinate axes, blanks).
+ */
+function verifyMathematicalSvg(svgPath, svgContent, q, ord, errors) {
+  // 1. Root & ViewBox
+  const svgMatch = svgContent.match(/<svg[^>]*>/i);
+  if (!svgMatch || !svgContent.includes('</svg>')) {
+    errors.push(`Q${ord}: SVG file is missing valid <svg> root or </svg> closing tag (${q.image})`);
+    return;
+  }
+  const rootTag = svgMatch[0];
+  const viewBoxMatch = rootTag.match(/viewBox=["']\s*([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\s*["']/i);
+  if (viewBoxMatch) {
+    const vbW = parseFloat(viewBoxMatch[3]);
+    const vbH = parseFloat(viewBoxMatch[4]);
+    if (isNaN(vbW) || isNaN(vbH) || vbW <= 0 || vbH <= 0) {
+      errors.push(`Q${ord}: SVG viewBox dimensions must be strictly positive numbers (got width=${vbW}, height=${vbH}) in ${q.image}`);
+    }
+  }
+
+  // 2. Corrupt coordinates & degenerate geometry
+  if (/(?:x|y|cx|cy|r|rx|ry|x1|y1|x2|y2|width|height|points|d)=["'][^"']*(?:NaN|undefined|null)/i.test(svgContent)) {
+    errors.push(`Q${ord}: SVG contains corrupt coordinate attributes (NaN, undefined, or null) in ${q.image}`);
+  }
+  if (/<circle\b[^>]*\br=["']0(?:px)?["']/i.test(svgContent)) {
+    errors.push(`Q${ord}: SVG contains degenerate circle with radius 0 in ${q.image}`);
+  }
+  if (/<path\b[^>]*\bd=["']\s*["']/i.test(svgContent)) {
+    errors.push(`Q${ord}: SVG contains empty path d attribute in ${q.image}`);
+  }
+  const mockTokens = svgContent.match(/\b(TODO|FIXME|PLACEHOLDER|MOCK|임시|스켈레톤|AI-generated)\b/i);
+  if (mockTokens) {
+    errors.push(`Q${ord}: SVG contains prohibited mock/placeholder token '${mockTokens[0]}' in ${q.image}`);
+  }
+
+  // 3. Substantive visual elements count (anti-blank / anti-stub)
+  const lineCount = (svgContent.match(/<line\b/gi) || []).length;
+  const circleCount = (svgContent.match(/<circle\b/gi) || []).length;
+  const ellipseCount = (svgContent.match(/<ellipse\b/gi) || []).length;
+  const polygonCount = (svgContent.match(/<polygon\b/gi) || []).length;
+  const polylineCount = (svgContent.match(/<polyline\b/gi) || []).length;
+  const pathCount = (svgContent.match(/<path\b/gi) || []).length;
+
+  const allRects = svgContent.match(/<rect\b[^>]*>/gi) || [];
+  let nonBgRectCount = 0;
+  for (const r of allRects) {
+    const hasStroke = /\bstroke=["'](?!none)[^"']+["']/i.test(r);
+    const hasRx = /\brx=["'][^"']+["']/i.test(r);
+    const hasNonZeroOrigin = /\b(?:x|y)=["'](?!0(?:px)?["'])[^"']+["']/i.test(r);
+    const isCanvasBg = !hasStroke && !hasRx && !hasNonZeroOrigin && /fill=["'](?:#fff(?:fff)?|white)["']/i.test(r);
+    if (!isCanvasBg) nonBgRectCount++;
+  }
+  const geomPrimitiveCount = lineCount + circleCount + ellipseCount + polygonCount + polylineCount + pathCount + nonBgRectCount;
+
+  const textMatches = [];
+  const textRegex = /<text\b[^>]*>([\s\S]*?)<\/text>/gi;
+  let tm;
+  while ((tm = textRegex.exec(svgContent)) !== null) {
+    const cleanText = tm[1].replace(/<[^>]+>/g, '').trim();
+    if (cleanText) textMatches.push(cleanText);
+  }
+  const fullSvgText = textMatches.join(' ');
+
+  if (geomPrimitiveCount < 2 && !(geomPrimitiveCount >= 1 && textMatches.length >= 3)) {
+    errors.push(`Q${ord}: SVG lacks substantive mathematical diagram content (geometric primitives=${geomPrimitiveCount}, text=${textMatches.length}) in ${q.image}`);
+  }
+
+  // 4. Semantic / Mathematical Alignment with Question Stem (q.content)
+  const stem = q.content || '';
+
+  // 4a. Shaded Area Invariant: If question mentions shaded regions, SVG must contain a non-white shaded shape!
+  if (/색칠한|어두운\s*부분|음영|빗금/i.test(stem)) {
+    const shapesWithFill = svgContent.match(/<(?:rect|circle|ellipse|path|polygon)\b[^>]*\bfill=["']([^"']+)["'][^>]*>/gi) || [];
+    let hasShadedShape = false;
+    for (const shape of shapesWithFill) {
+      const fillVal = (shape.match(/\bfill=["']([^"']+)["']/i) || [])[1]?.trim()?.toLowerCase();
+      if (fillVal && fillVal !== 'none' && fillVal !== 'transparent' && fillVal !== '#ffffff' && fillVal !== '#fff' && fillVal !== 'white') {
+        hasShadedShape = true;
+        break;
+      }
+    }
+    if (!hasShadedShape && /style=["'][^"']*fill:\s*(?!none|transparent|#fff|white)[^;"']+/i.test(svgContent)) {
+      hasShadedShape = true;
+    }
+    if (!hasShadedShape) {
+      errors.push(`Q${ord}: Question stem asks about shaded region ('색칠한 부분'), but SVG contains no shaded shape with non-white fill in ${q.image}`);
+    }
+  }
+
+  // 4b. Coordinate Graph
+  if (/(?:좌표평면|x축|y축|사분면|그래프\s*위의\s*점)/i.test(stem)) {
+    const hasX = /(?:^|[^a-zA-Z0-9])x(?:[^a-zA-Z0-9]|$)/i.test(fullSvgText);
+    const hasY = /(?:^|[^a-zA-Z0-9])y(?:[^a-zA-Z0-9]|$)/i.test(fullSvgText);
+    const hasOrigin = /(?:^|[^a-zA-Z0-9])O(?:[^a-zA-Z0-9]|$)/.test(fullSvgText);
+    const axisLines = (svgContent.match(/<line\b|<path\b/gi) || []).length;
+    if (axisLines < 2 || (!hasX && !hasY && !hasOrigin)) {
+      errors.push(`Q${ord}: Coordinate graph question requires axis lines and x/y/O labels in SVG (${q.image})`);
+    }
+  }
+
+  // 4c. Blank Symbols Alignment: ㉠, ㉡, ㉢, ㉣, ㉤, ㉥
+  for (const bs of ['㉠', '㉡', '㉢', '㉣', '㉤', '㉥']) {
+    if (stem.includes(bs) && !svgContent.includes(bs)) {
+      errors.push(`Q${ord}: Blank symbol '${bs}' mentioned in question stem is missing from SVG in ${q.image}`);
+    }
+  }
+
+  // 4d. Point / Vertex / Diagram Symbol Alignment
+  const referencedPoints = new Set();
+  const pointMatches = stem.matchAll(/점\s*([A-Z])|원점\s*([O0])|선분\s*([A-Z]{2})|삼각형\s*([A-Z]{3})/g);
+  for (const pm of pointMatches) {
+    if (pm[1]) referencedPoints.add(pm[1]);
+    if (pm[2]) referencedPoints.add(pm[2]);
+    if (pm[3]) for (const c of pm[3]) referencedPoints.add(c);
+    if (pm[4]) for (const c of pm[4]) referencedPoints.add(c);
+  }
+  // Single capital letters inside LaTeX math (e.g. $A+B$, $P$)
+  const mathMatches = stem.matchAll(/\$([^$]+)\$/g);
+  for (const mm of mathMatches) {
+    const cleanMath = mm[1].replace(/\\[a-zA-Z]+/g, '');
+    const capitalLetters = cleanMath.match(/\b[A-Z]\b/g) || [];
+    for (const cl of capitalLetters) {
+      referencedPoints.add(cl);
+    }
+  }
+  for (const pt of referencedPoints) {
+    const ptRegex = new RegExp(`(^|[^a-zA-Z0-9])${pt}([^a-zA-Z0-9]|$)`);
+    if (!ptRegex.test(fullSvgText)) {
+      errors.push(`Q${ord}: Point/symbol '${pt}' referenced in question stem is missing from SVG text labels in ${q.image}`);
+    }
+  }
+}
+
 export function verifySimilarExam({ stem, jsPath, throwOnError = false }) {
   const errors = [];
   const warnings = [];
@@ -161,12 +297,7 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false }) {
         errors.push(`Q${ord}: referenced image not found on disk (${q.image})`);
       } else {
         const svgContent = fs.readFileSync(imgPath, 'utf8');
-        if (!svgContent.includes('<svg') || !svgContent.includes('</svg>')) {
-          errors.push(`Q${ord}: image file is not valid SVG (${q.image})`);
-        }
-        if (!/#ffffff/i.test(svgContent) && !/fill=["']white["']/i.test(svgContent)) {
-          errors.push(`Q${ord}: SVG does not have pure-white (#FFFFFF) background (${q.image})`);
-        }
+        verifyMathematicalSvg(imgPath, svgContent, q, ord, errors);
       }
     }
   }
