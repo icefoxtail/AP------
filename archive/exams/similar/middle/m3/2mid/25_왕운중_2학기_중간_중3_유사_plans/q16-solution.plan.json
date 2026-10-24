@@ -1,0 +1,207 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "OD = OE = OF이므로 세 현의 길이가 같다. AB = BC = CA = 18",
+  "sourceConditions": [
+    {
+      "id": "q16s-c1",
+      "condition": "세 변의 길이가 18인 정삼각형",
+      "mappedTo": "seg-AB"
+    }
+  ],
+  "newVisualInformation": [
+    "정삼각형 둘레 3 * 18 = 54 도출"
+  ],
+  "caption": "중심거리가 같으므로 세 현의 길이가 같아 정삼각형이 됨을 보이는 풀이",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "10"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-9"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "D",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "E",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "F",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-OD",
+      "refs": [
+        "O",
+        "D"
+      ]
+    },
+    {
+      "id": "seg-OE",
+      "refs": [
+        "O",
+        "E"
+      ]
+    },
+    {
+      "id": "seg-OF",
+      "refs": [
+        "O",
+        "F"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "O",
+    "D",
+    "E",
+    "F"
+  ]
+}

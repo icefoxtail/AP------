@@ -1,0 +1,151 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "x = \\sqrt{8^2 + 6^2} = \\sqrt{64 + 36} = 10",
+  "sourceConditions": [
+    {
+      "id": "q13s-c1",
+      "condition": "직각삼각형 OAH에서 피타고라스 정리",
+      "mappedTo": "seg-OA"
+    }
+  ],
+  "newVisualInformation": [
+    "직각삼각형 OAH를 이용한 빗변 x=10 계산"
+  ],
+  "caption": "직각삼각형 OAH에서 AH=8, OH=6을 이용해 반지름 x=10을 구하는 풀이",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "-6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circleO",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-OH",
+      "refs": [
+        "O",
+        "H"
+      ]
+    },
+    {
+      "id": "seg-OA",
+      "refs": [
+        "O",
+        "A"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "H",
+    "A",
+    "B"
+  ],
+  "displayCircles": [
+    "circleO"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-H",
+      "refs": [
+        "O",
+        "H",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

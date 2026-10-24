@@ -1,0 +1,117 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "BC = \\sqrt{(13k)^2 - (5k)^2} = \\sqrt{144k^2} = 12k",
+  "sourceConditions": [
+    {
+      "id": "q22s-c1",
+      "condition": "높이 BC=12k 계산",
+      "mappedTo": "seg-BC"
+    }
+  ],
+  "newVisualInformation": [
+    "피타고라스 정리에 의해 BC=12k 도출"
+  ],
+  "caption": "빗변 13k와 밑변 5k로부터 높이 BC=12k를 구하는 풀이",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "12"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-B",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

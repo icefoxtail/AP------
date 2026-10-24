@@ -1,0 +1,158 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "원의 중심에서 현에 내린 수선은 그 현을 수직이등분함을 증명하는 과정이다.",
+  "sourceConditions": [
+    {
+      "id": "q14-c1",
+      "condition": "현 AB에 내린 수선 OM",
+      "mappedTo": "seg-OM"
+    }
+  ],
+  "newVisualInformation": [
+    "원 O의 현 AB와 중심 수선 OM의 기본 작도"
+  ],
+  "caption": "원 O의 중심에서 현 AB에 내린 수선 OM",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-7"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "7"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circleO",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "A"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-q14-OM",
+        "sourceConditionId": "q14-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "M"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "5"
+        }
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-OM",
+      "refs": [
+        "O",
+        "M"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "M",
+    "A",
+    "B"
+  ],
+  "displayCircles": [
+    "circleO"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-M",
+      "refs": [
+        "O",
+        "M",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

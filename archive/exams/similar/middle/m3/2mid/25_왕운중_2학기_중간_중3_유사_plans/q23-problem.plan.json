@@ -1,0 +1,152 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "중심 O가 같은 두 원의 반지름의 길이가 각각 4\\,\\mathrm{cm}, 5\\,\\mathrm{cm}",
+  "sourceConditions": [
+    {
+      "id": "q23-c1",
+      "condition": "작은 원의 접점 M과 큰 원의 현 AB",
+      "mappedTo": "seg-AB"
+    }
+  ],
+  "newVisualInformation": [
+    "동심원과 작은 원에 접하는 큰 원의 현 AB"
+  ],
+  "caption": "반지름 4cm, 5cm인 두 동심원과 작은 원에 접하는 현 AB",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "4"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circleSmall",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "M"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circleLarge",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-q23-OM",
+        "sourceConditionId": "q23-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "O",
+          "M"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        }
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "M",
+    "A",
+    "B"
+  ],
+  "displayCircles": [
+    "circleSmall",
+    "circleLarge"
+  ]
+}

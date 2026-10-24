@@ -1,0 +1,125 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "AB=6, BC=4, \\angle ABC=120^\\circ인 삼각형에 대하여",
+  "sourceConditions": [
+    {
+      "id": "q6-c1",
+      "condition": "AB의 길이는 6",
+      "mappedTo": "seg-AB"
+    },
+    {
+      "id": "q6-c2",
+      "condition": "BC의 길이는 4",
+      "mappedTo": "seg-BC"
+    }
+  ],
+  "newVisualInformation": [
+    "120도 둔각삼각형 ABC의 변과 각의 배치"
+  ],
+  "caption": "AB=6, BC=4이고 사잇각이 120도인 둔각삼각형 ABC",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "3"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-q6-AB",
+        "sourceConditionId": "q6-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "A"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "6"
+        }
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C"
+  ]
+}

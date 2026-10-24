@@ -1,0 +1,207 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "PA=3, PQ=7, QC=x이고 세 점 A, B, C가 원 O의 접점일 때",
+  "sourceConditions": [
+    {
+      "id": "q17-c1",
+      "condition": "공선점 P, B, Q와 접점 B",
+      "mappedTo": "seg-PQ"
+    }
+  ],
+  "newVisualInformation": [
+    "접선 PQ와 접점 B, 그리고 접선 PA, QC의 배치"
+  ],
+  "caption": "원 O의 접선 PA, PQ, QC와 접점 A, B, C",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "O",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-3"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "Q",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "4"
+            },
+            {
+              "kind": "integer",
+              "value": "-5"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-2"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "3"
+            },
+            {
+              "kind": "integer",
+              "value": "-2"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "circleO",
+        "op": "CIRCLE_THROUGH_POINT",
+        "inputs": [
+          "O",
+          "B"
+        ],
+        "args": {},
+        "outputType": "CIRCLE",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-q17-PB",
+        "sourceConditionId": "q17-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "P",
+          "B"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "3"
+        }
+      },
+      {
+        "id": "audit-q17-BQ",
+        "sourceConditionId": "q17-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "B",
+          "Q"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "4"
+        }
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-PQ",
+      "refs": [
+        "P",
+        "Q"
+      ]
+    },
+    {
+      "id": "seg-PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-QC",
+      "refs": [
+        "Q",
+        "C"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "O",
+    "P",
+    "B",
+    "Q",
+    "A",
+    "C"
+  ],
+  "displayCircles": [
+    "circleO"
+  ]
+}

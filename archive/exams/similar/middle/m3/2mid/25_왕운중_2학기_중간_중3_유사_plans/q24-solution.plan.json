@@ -1,0 +1,144 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "AB = AH + BH = 600 + 600\\sqrt{3}\\,\\mathrm{m}",
+  "sourceConditions": [
+    {
+      "id": "q24s-c1",
+      "condition": "두 직각삼각형 PAH, PBH에서 거리 합",
+      "mappedTo": "seg-AB"
+    }
+  ],
+  "newVisualInformation": [
+    "AH와 BH를 각각 구해 더하는 풀이 관계"
+  ],
+  "caption": "두 직각삼각형에서 각각 AH와 BH의 길이를 구하여 두 지점 사이의 거리를 계산하는 풀이",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "P",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "10"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-PA",
+      "refs": [
+        "P",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-PB",
+      "refs": [
+        "P",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-PH",
+      "refs": [
+        "P",
+        "H"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "P",
+    "H",
+    "A",
+    "B"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-H",
+      "refs": [
+        "P",
+        "H",
+        "B"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

@@ -1,0 +1,151 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "AH = \\dfrac{36\\sqrt{3}}{9} = 4\\sqrt{3}",
+  "sourceConditions": [
+    {
+      "id": "q11s-c1",
+      "condition": "수선의 발 H와 높이 AH=4√3",
+      "mappedTo": "seg-AH"
+    }
+  ],
+  "newVisualInformation": [
+    "BC 연장선 위의 수선의 발 H와 높이 AH 도출"
+  ],
+  "caption": "BC의 연장선에 내린 수선 AH를 이용한 AC 길이 계산",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "9"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-4"
+            },
+            {
+              "kind": "integer",
+              "value": "7"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-BC",
+      "refs": [
+        "C",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-CH",
+      "refs": [
+        "C",
+        "H"
+      ]
+    },
+    {
+      "id": "seg-AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    },
+    {
+      "id": "seg-CA",
+      "refs": [
+        "C",
+        "A"
+      ]
+    },
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-H",
+      "refs": [
+        "A",
+        "H",
+        "B"
+      ],
+      "factRole": "DERIVED_INTERMEDIATE"
+    }
+  ]
+}

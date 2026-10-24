@@ -1,0 +1,158 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "AH = BH = 6이므로 CH = BC - BH = 14 - 6 = 8",
+  "sourceConditions": [
+    {
+      "id": "q8s-c1",
+      "condition": "BH=6 및 CH=8 분할",
+      "mappedTo": "seg-BC"
+    }
+  ],
+  "newVisualInformation": [
+    "밑변 BC를 6과 8로 분할하여 AC 구하기"
+  ],
+  "caption": "높이 AH=6과 CH=8을 이용해 피타고라스 정리로 AC=10을 구하는 풀이",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "H",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "-6"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      }
+    ],
+    "conditionAudits": [
+      {
+        "id": "audit-q8s-CH",
+        "sourceConditionId": "q8s-c1",
+        "kind": "DISTANCE_EQUALS",
+        "refs": [
+          "H",
+          "C"
+        ],
+        "expected": {
+          "kind": "integer",
+          "value": "8"
+        }
+      }
+    ]
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-AH",
+      "refs": [
+        "A",
+        "H"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "H"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-H",
+      "refs": [
+        "A",
+        "H",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}

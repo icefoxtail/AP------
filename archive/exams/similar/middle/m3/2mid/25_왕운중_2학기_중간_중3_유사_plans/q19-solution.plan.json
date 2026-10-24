@@ -1,0 +1,136 @@
+{
+  "capability": "construction-spike-v1",
+  "sourceQuote": "M은 빗변의 중점이므로 외심이다. BM = AM = CM = 5",
+  "sourceConditions": [
+    {
+      "id": "q19s-c1",
+      "condition": "외심의 성질 BM=AM=CM=5",
+      "mappedTo": "seg-BM"
+    }
+  ],
+  "newVisualInformation": [
+    "외심 성질에 의해 BM=5 유도"
+  ],
+  "caption": "직각삼각형의 빗변의 중점 M은 외심이므로 BM=5임을 보이는 풀이",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {
+        "id": "B",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "A",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "0"
+            },
+            {
+              "kind": "integer",
+              "value": "6"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "C",
+        "op": "SOURCE_POINT",
+        "inputs": [],
+        "args": {
+          "coordinates": [
+            {
+              "kind": "integer",
+              "value": "8"
+            },
+            {
+              "kind": "integer",
+              "value": "0"
+            }
+          ]
+        },
+        "outputType": "POINT",
+        "factRole": "GIVEN"
+      },
+      {
+        "id": "M",
+        "op": "MIDPOINT",
+        "inputs": [
+          "A",
+          "C"
+        ],
+        "args": {},
+        "outputType": "POINT",
+        "factRole": "DERIVED_INTERMEDIATE"
+      }
+    ],
+    "conditionAudits": []
+  },
+  "displaySegments": [
+    {
+      "id": "seg-AB",
+      "refs": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "seg-BC",
+      "refs": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-AC",
+      "refs": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "seg-BM",
+      "refs": [
+        "B",
+        "M"
+      ]
+    }
+  ],
+  "displayPoints": [
+    "A",
+    "B",
+    "C",
+    "M"
+  ],
+  "rightAngles": [
+    {
+      "id": "ra-B",
+      "refs": [
+        "A",
+        "B",
+        "C"
+      ],
+      "factRole": "GIVEN"
+    }
+  ]
+}
