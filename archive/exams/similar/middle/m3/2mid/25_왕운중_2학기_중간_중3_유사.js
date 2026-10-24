@@ -32,8 +32,9 @@ window.questionBank = [
     "answer": "①",
     "solution": "$\\angle B = 90^\\circ$이므로 빗변은 $AC = 13$이다.\n$\\angle A$의 대변은 $BC = 5$이므로\n\n$\\sin A = \\dfrac{BC}{AC} = \\dfrac{5}{13}$\n\n정답은 ①이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q1.svg",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 2,
@@ -68,8 +69,9 @@ window.questionBank = [
     "solutionImageAlt": "3k-4k-5k 직각삼각형 ABC",
     "solutionImageCaption": "tan A의 비를 이용해 빗변 5k를 구하고 cos A를 계산한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 3,
@@ -100,8 +102,9 @@ window.questionBank = [
     ],
     "answer": "④",
     "solution": "$\\sin 30^\\circ = \\dfrac{1}{2}, \\tan 60^\\circ = \\sqrt{3}, \\cos 45^\\circ = \\dfrac{\\sqrt{2}}{2}$이므로\n\n$2\\sin30^\\circ + \\sqrt{3}\\tan60^\\circ - \\sqrt{2}\\cos45^\\circ$\n$= 2 \\times \\dfrac{1}{2} + \\sqrt{3} \\times \\sqrt{3} - \\sqrt{2} \\times \\dfrac{\\sqrt{2}}{2}$\n$= 1 + 3 - 1 = 3$\n\n정답은 ④이다.",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 4,
@@ -134,8 +137,9 @@ window.questionBank = [
     "answer": "②",
     "solution": "표에서\n$\\sin 78^\\circ = 0.9781 \\implies x = 78^\\circ$\n$\\cos 76^\\circ = 0.2419 \\implies y = 76^\\circ$\n\n따라서 $(x, y) = (78^\\circ, 76^\\circ)$이다.\n정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q4.svg",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 5,
@@ -166,8 +170,9 @@ window.questionBank = [
     ],
     "answer": "⑤",
     "solution": "$\\tan 45^\\circ = 1$이고 $\\angle A$가 예각이므로 $0 < \\cos A < 1$이다.\n\n$\\cos A + 1 > 0 \\implies \\sqrt{(\\cos A + 1)^2} = \\cos A + 1$\n$\\cos A - 1 < 0 \\implies \\sqrt{(\\cos A - 1)^2} = -(\\cos A - 1) = 1 - \\cos A$\n\n두 식을 빼면\n$(\\cos A + 1) - (1 - \\cos A) = 2\\cos A$\n\n정답은 ⑤이다.",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 6,
@@ -204,8 +209,9 @@ window.questionBank = [
     "solutionImageAlt": "둔각삼각형 ABC 높이 CH",
     "solutionImageCaption": "각 B=120도의 외각 60도를 이용해 높이 h=2√3을 구한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 7,
@@ -238,8 +244,9 @@ window.questionBank = [
     "answer": "②",
     "solution": "사분원에서 $50^\\circ$의 동경에 대해\n$x = \\cos 50^\\circ = 0.64, y = \\sin 50^\\circ = 0.77$\n$\\tan 50^\\circ \\approx 1.19$\n\n여각 관계에 의해\n$\\cos 40^\\circ = \\sin 50^\\circ = 0.77$\n$\\sin 40^\\circ = \\cos 50^\\circ = 0.64$\n\n따라서 $\\cos 40^\\circ = 0.64$로 표기한 ②는 옳지 않다.\n정답은 ②이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q7.svg",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 8,
@@ -276,8 +283,9 @@ window.questionBank = [
     "solutionImageAlt": "삼각형 ABC 수선과 길이 계산",
     "solutionImageCaption": "AH=6, HC=8에서 피타고라스 정리로 AC=10을 구한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 9,
@@ -288,8 +296,8 @@ window.questionBank = [
     "standardUnitKey": "M3-05",
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
@@ -312,8 +320,9 @@ window.questionBank = [
     "solutionImageAlt": "직각삼각형 ABC 비율 k, 2k, √5k",
     "solutionImageCaption": "빗변 BC를 구하고 각 C에 대한 코사인 비를 결정한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 10,
@@ -324,8 +333,8 @@ window.questionBank = [
     "standardUnitKey": "M3-05",
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
@@ -348,8 +357,9 @@ window.questionBank = [
     "solutionImageAlt": "45-45-90 직각이등변삼각형",
     "solutionImageCaption": "각의 크기를 구한 뒤 특수각의 삼각비 비율을 계산한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 11,
@@ -360,8 +370,8 @@ window.questionBank = [
     "standardUnitKey": "M3-05",
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
@@ -386,8 +396,9 @@ window.questionBank = [
     "solutionImageAlt": "삼각형 ABC의 높이 AH 계산",
     "solutionImageCaption": "밑변 BC=9와 넓이 18√3으로부터 높이 AH=4√3을 유도한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 12,
@@ -398,7 +409,7 @@ window.questionBank = [
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M3-06-CIRCLE_CHORD",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
@@ -424,8 +435,9 @@ window.questionBank = [
     "solutionImageAlt": "원에 내접하는 정육각형",
     "solutionImageCaption": "원 넓이에서 정육각형 넓이를 빼 색칠한 부분의 넓이를 구한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 13,
@@ -436,7 +448,7 @@ window.questionBank = [
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M3-06-CIRCLE_CHORD",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
@@ -462,8 +474,9 @@ window.questionBank = [
     "solutionImageAlt": "원의 현과 수직이등분선",
     "solutionImageCaption": "AH=8과 OH=6을 직각삼각형 피타고라스 정리로 x=10을 구한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 14,
@@ -474,7 +487,7 @@ window.questionBank = [
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M3-06-CIRCLE_CHORD",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
@@ -485,7 +498,7 @@ window.questionBank = [
       "도형"
     ],
     "wide": false,
-    "content": "다음은 원의 중심에서 현에 내린 수선이 그 현을 이등분함을 보이는 과정을 설명한 것이다. 다음에 들어갈 내용 중 옳지 않은 것을 고르면?",
+    "content": "다음은 원의 중심에서 현에 내린 수선은 그 현을 수직이등분함을 증명하는 과정이다. (가)~(마)에 들어갈 것으로 옳지 않은 것은?\n\n[증명]\n오른쪽 그림과 같이 원 $O$의 중심에서 현 $AB$에 내린 수선의 발을 $M$이라 하면\n$\\triangle OAM$과 $\\triangle OBM$에서\n$\\angle OMA = \\angle OMB = (가)^\\circ$\n$OA = (나)$ (반지름)\n$OM$은 (다)\n따라서 $\\triangle OAM \\equiv \\triangle OBM$ ((라) 합동)\n그러므로 $AM = (마)$",
     "choices": [
       "(가) $90^\\circ$",
       "(나) $OB$",
@@ -496,8 +509,9 @@ window.questionBank = [
     "answer": "④",
     "solution": "$\\triangle OAM$과 $\\triangle OBM$에서\n$\\angle OMA = \\angle OMB = 90^\\circ$ (가)\n$OA = OB$ (반지름) (나)\n$OM$은 공통 (다)\n\n빗변의 길이와 다른 한 변의 길이가 각각 같으므로\n$\\triangle OAM \\equiv \\triangle OBM$ (RHS 합동)\n\n따라서 (라)에 ASA 합동이라 한 것은 옳지 않다.\n정답은 ④이다.",
     "image": "assets/images/25_왕운중_2학기_중간_중3_유사/q14.svg",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 15,
@@ -508,7 +522,7 @@ window.questionBank = [
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M3-06-CIRCLE_CHORD",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
@@ -534,8 +548,9 @@ window.questionBank = [
     "solutionImageAlt": "원호와 복원된 반지름",
     "solutionImageCaption": "AM=4, OM=r-2에서 피타고라스 정리를 적용해 반지름 r=5를 구한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 16,
@@ -546,7 +561,7 @@ window.questionBank = [
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M3-06-CIRCLE_CHORD",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
@@ -572,8 +587,9 @@ window.questionBank = [
     "solutionImageAlt": "정삼각형에 내접하는 현과 외접원",
     "solutionImageCaption": "정삼각형 중심에서 반지름 AO=6√3을 구하여 둘레를 계산한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 17,
@@ -584,8 +600,8 @@ window.questionBank = [
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M3-06-CIRCLE_TANGENT",
-    "subUnit": "원의 접선",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
@@ -610,8 +626,9 @@ window.questionBank = [
     "solutionImageAlt": "원 밖의 점에서 그은 접선의 성질",
     "solutionImageCaption": "PA=PB=3, BQ=4이므로 QC=4이다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 18,
@@ -622,8 +639,8 @@ window.questionBank = [
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M3-06-CIRCLE_TANGENT",
-    "subUnit": "원의 접선",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
+    "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
@@ -648,8 +665,9 @@ window.questionBank = [
     "solutionImageAlt": "연속 내접원 접선 계산",
     "solutionImageCaption": "공통접선의 연속 대입으로 AD=26, AF=22를 얻는다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 19,
@@ -660,8 +678,8 @@ window.questionBank = [
     "standardUnitKey": "M3-05",
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
@@ -686,8 +704,9 @@ window.questionBank = [
     "solutionImageAlt": "직각삼각형 빗변 중점과 삼각비",
     "solutionImageCaption": "외심의 성질 BM=5와 중점연결 BH=4로 sin x=4/5를 구한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 20,
@@ -698,8 +717,8 @@ window.questionBank = [
     "standardUnitKey": "M3-05",
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-05-TRIG_RATIO",
+    "subUnit": "삼각비",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "questionType": "객관식",
@@ -724,8 +743,9 @@ window.questionBank = [
     "solutionImageAlt": "직각삼각형 투영과 sin 75도",
     "solutionImageCaption": "가로 성분의 합으로부터 sin 75°=(√6+√2)/4를 도출한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 21,
@@ -756,8 +776,9 @@ window.questionBank = [
     "solutionImageAlt": "삼각형 ABC 높이 AH와 넓이",
     "solutionImageCaption": "AH=6을 구하고 밑변 14를 곱해 넓이 42를 얻는다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 22,
@@ -768,8 +789,8 @@ window.questionBank = [
     "standardUnitKey": "M3-05",
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
-    "subUnitKey": "M3-05-TRIG_RATIO",
-    "subUnit": "삼각비",
+    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+    "subUnit": "삼각비의 활용",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "questionType": "서술형",
@@ -788,8 +809,9 @@ window.questionBank = [
     "solutionImageAlt": "5-12-13 직각삼각형 ABC",
     "solutionImageCaption": "피타고라스 정리로 대변 12k를 구하고 sin A, tan A를 계산한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 23,
@@ -800,7 +822,7 @@ window.questionBank = [
     "standardUnitKey": "M3-06",
     "standardUnit": "원의 성질",
     "standardUnitOrder": 6,
-    "subUnitKey": "M3-06-CIRCLE_CHORD",
+    "subUnitKey": "M3-06-CIRCLE_LINE",
     "subUnit": "원과 직선",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
@@ -820,8 +842,9 @@ window.questionBank = [
     "solutionImageAlt": "동심원 현의 접선과 삼각형 OAB",
     "solutionImageCaption": "BM=3, AB=6을 구하고 삼각형 OAB 넓이 12를 도출한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   },
   {
     "id": 24,
@@ -832,8 +855,8 @@ window.questionBank = [
     "standardUnitKey": "M3-05",
     "standardUnit": "삼각비",
     "standardUnitOrder": 5,
-    "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
-    "subUnit": "삼각비의 활용",
+    "subUnitKey": "M3-06-CIRCLE_INSCRIBED_ANGLE",
+    "subUnit": "원주각",
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "questionType": "서술형",
@@ -852,7 +875,8 @@ window.questionBank = [
     "solutionImageAlt": "드론 고도와 지상 거리 삼각비",
     "solutionImageCaption": "AH=600m, BH=858m로부터 AB=1458m를 구한다.",
     "solutionImageSize": "full",
-    "reviewStatus": "reviewed_pass",
-    "solutionStatus": "reviewed_pass"
+    "reviewStatus": "SELF_CHECKED",
+    "solutionStatus": "SELF_CHECKED",
+    "pipelineState": "READY_FOR_INDEPENDENT_REVIEW"
   }
 ];
