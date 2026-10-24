@@ -115,7 +115,7 @@ function deriveUnit(root, doc, file, catalogRowsOf) {
       return { ordinal: item.sourceOrdinal, uid: item.questionUid, expect: item.after, fingerprint: item.after.sourceFingerprint, unchanged,
         gated: touchesAssignment(changedKeys(item.before, item.after)) };
     });
-    return { kind: schema === SCHEMA.V2 ? "reviewed-exam-v2" : "finalqa-pinpoint-v1", exam: doc.examUid || doc.sourceArchiveFile,
+    return { kind: schema === SCHEMA.V2 ? "reviewed-exam-v2" : "finalqa-pinpoint-v1", approvalType: doc.approval?.type || null, exam: doc.examUid || doc.sourceArchiveFile,
       sourceFile: doc.sourceArchiveFile, expectedBlob: doc.expectedSourceBlobSha1, rows };
   }
   if (schema === SCHEMA.NONPT) {
@@ -162,11 +162,42 @@ function loadConsumer(root) {
   // Exactly what archive/problem-bank-search.html does.
   const sourceRows = records.map(row => ({ ...row, currentSourceJsSha256: shaByFile.get(row.sourceFile) || "" }));
   const inventory = ProblemBankMeta.buildIndex(sourceRows, generated.records, { excludedHoldUids: generated.userDisabledUids || [] });
+  // Archive2's resolver intentionally keeps basic L1/L2 and item tags in its
+  // catalog rows. The deeper L3/L4 and legacy level for reviewed META_PIPELINE
+  // registrations are owned by the digest-bound Meta Foundation runtime.
+  // Read only runtime files named by the same canonical input manifest that
+  // loadResolvedConsumerCatalog has already digest-checked.
+  const inputManifest = JSON.parse(fs.readFileSync(path.join(root, "archive/data/archive2-canonical-input-manifest.json"), "utf8"));
+  const runtimePaths = (inputManifest.files || []).map(row => row.path)
+    .filter(file => typeof file === "string" && file.startsWith("data/meta-foundation/runtime/") && file.endsWith(".json") &&
+      !file.endsWith("/runtime-bridge-receipt.json"));
+  const runtimeByUid = new Map();
+  for (const relative of runtimePaths) {
+    const runtime = JSON.parse(fs.readFileSync(path.join(root, "archive", relative), "utf8"));
+    for (const row of runtime.records || []) {
+      if (!row?.questionUid) continue;
+      const list = runtimeByUid.get(row.questionUid) || [];
+      list.push(row);
+      runtimeByUid.set(row.questionUid, list);
+    }
+  }
+  const runtimePacks = new Map((catalog.metaFoundationRuntime?.packs || []).map(pack => [pack.packId, pack]));
   return {
     ProblemBankMeta, inventory,
     resolvedBySource: new Map(records.map(r => [`${normalizeFile(r.sourceFile)}#${Number(r.sourceOrdinal)}`, r])),
     pageByUid: new Map(inventory.map(r => [r.uid, r])),
+    runtimeByUid, runtimePacks,
   };
+}
+
+function findMetaPipelineRuntime(consumer, unit, row, resolved) {
+  const candidates = (consumer.runtimeByUid.get(resolved.questionUid) || []).filter(runtime => {
+    const pack = consumer.runtimePacks.get(runtime.metaFoundationPackId);
+    return runtime.sourceArchiveFile === unit.sourceFile && Number(runtime.sourceOrdinal) === Number(row.ordinal) &&
+      runtime.metadataRevision === resolved.metadataRevision && runtime.metadataApprovalType === "META_PIPELINE_AUDIT" &&
+      runtime.metaFoundationStatus === "ACTIVE" && pack && pack.packVersion === runtime.metaFoundationPackVersion;
+  });
+  return candidates.length === 1 ? candidates[0] : null;
 }
 
 function checkRow(consumer, unit, row) {
@@ -196,6 +227,12 @@ function checkRow(consumer, unit, row) {
   const page = consumer.pageByUid.get(uid);
   if (!page) return { ...out, reason: "NOT_IN_PROBLEM_BANK_INDEX" };
   if (page.directSelectable !== true) return { ...out, reason: "NOT_DIRECT_SELECTABLE" };
+  const metaPipelineRuntime = unit.approvalType === "META_PIPELINE_AUDIT" &&
+    ["level", "L3", "L4"].some(field => Object.hasOwn(row.expect, field))
+    ? findMetaPipelineRuntime(consumer, unit, row, resolved) : null;
+  if (unit.approvalType === "META_PIPELINE_AUDIT" &&
+      ["level", "L3", "L4"].some(field => Object.hasOwn(row.expect, field)) && !metaPipelineRuntime)
+    return { ...out, reason: "META_PIPELINE_RUNTIME_MISSING", detail: `no unique active runtime row for ${uid}` };
   const mismatches = [];
   const queryFilters = {};
   for (const [field, expected] of Object.entries(row.expect)) {
@@ -203,6 +240,10 @@ function checkRow(consumer, unit, row) {
     // While the canonical assignment is pending resolveCatalog blanks the governed fields; this request does
     // not change them (otherwise the row would have failed above), so they are not part of its claim.
     if (out.assignmentPending && ASSIGNMENT_GOVERNED.has(name)) continue;
+    if (metaPipelineRuntime && ["level", "L3", "L4"].includes(name)) {
+      if (!same(metaPipelineRuntime[name], expected)) mismatches.push(`${field}: request ${JSON.stringify(expected)} != Meta Foundation runtime ${JSON.stringify(metaPipelineRuntime[name] ?? null)}`);
+      continue;
+    }
     if (LABEL_FIELDS.has(name)) {
       // ProblemBankMeta.project() overwrites the page row's L1..L4 with rpmL1..L4 (null for
       // natively registered rows), so the page shows reviewed labels as nativeL1..nativeL4 there

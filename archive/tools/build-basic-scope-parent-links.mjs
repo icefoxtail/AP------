@@ -255,6 +255,18 @@ for (const link of existingParentLinks.sourceParents || []) {
     sourceFile,
     identitySourceFile: identity.sourceArchiveFile,
   });
+  const currentMeta = item.metadataAssignmentEvidence || {};
+  const currentMetaFields = currentMeta.fieldStatus || {};
+  const currentMetaRefs = currentMeta.evidenceRefs || [];
+  const currentMetaParent = item.unverifiedTaxonomy || {};
+  const currentAuditParentIsAuthoritative = String(currentMeta.metadataRevision || '').includes(':exam-meta_pipeline_audit-v2:') &&
+    String(currentMeta.metadataStatus || '').startsWith('approved_') &&
+    /^approved(?:_|$)/i.test(String(currentMetaFields.standardUnit || '')) &&
+    /^approved(?:_|$)/i.test(String(currentMetaFields.subUnit || '')) &&
+    currentMetaRefs.some(ref => String(ref || '').includes('META_AUDIT_ATOMIC_PACKAGE_')) &&
+    currentMetaRefs.some(ref => String(ref || '').endsWith('.source-parity.json')) &&
+    canonicalParentPathKeys.has(core.pathKey({ curriculumKey: currentMetaParent.curriculumKey,
+      courseKey: currentMetaParent.courseKey, L1: currentMetaParent.L1, L2: currentMetaParent.L2 }, 4));
   const canonicalParent = parents.some(parent => parent.curriculumKey === link.curriculumKey &&
     core.normalizeCourseIdentity(parent.courseKey) === core.normalizeCourseIdentity(link.courseKey) &&
     parent.L1 === link.L1 && parent.L2 === link.L2);
@@ -270,6 +282,7 @@ for (const link of existingParentLinks.sourceParents || []) {
     link.curriculumKey === item.curriculumKey &&
     core.normalizeCourseIdentity(link.courseKey) === core.normalizeCourseIdentity(item.courseKey) &&
     link.L1 === item.L1 && link.L2 === item.L2 &&
+    (!currentAuditParentIsAuthoritative || link.L1 === currentMetaParent.L1 && link.L2 === currentMetaParent.L2) &&
     Number(identity.sourceOrdinal) === Number(item.sourceOrdinal) &&
     core.normalizeFile(identity.sourceArchiveFile) === sourceFile &&
     canonicalParent && currentGradeCourse &&

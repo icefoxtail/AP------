@@ -89,6 +89,40 @@ test("historical Gangnam v2 request: reviewed L1..L4 are the effective consumer 
   assert.deepEqual(out.counts, { changed: 24, checked: 24, passed: 24, skippedUnchanged: 0 });
 });
 
+test("META_PIPELINE L3/L4 and level are verified against the active Meta Foundation runtime", t => {
+  const uid = "qid_v1_b11a9f6c398580fa1d1aa22e6f29f05c42b35bda9a7e81ff59e6aeb1a78f238a";
+  const metadata = JSON.parse(fs.readFileSync(path.join(repo, "archive/data/question_metadata.json"), "utf8"));
+  const record = metadata.records.find(row => row.questionUid === uid);
+  const runtime = JSON.parse(fs.readFileSync(path.join(repo, "archive/data/meta-foundation/runtime/exponents-logarithms-v1.json"), "utf8"))
+    .records.find(row => row.questionUid === uid);
+  assert.ok(record && runtime, "registered source record and its runtime row exist");
+  assert.equal(runtime.metadataApprovalType, "META_PIPELINE_AUDIT");
+  const sourcePath = path.join(repo, "archive/exams", record.sourceArchiveFile);
+  const expectedSourceBlobSha1 = execFileSync("git", ["hash-object", "--path", `archive/exams/${record.sourceArchiveFile}`, "--stdin"],
+    { cwd: repo, input: fs.readFileSync(sourcePath), encoding: "utf8" }).trim();
+  const request = (l3 = runtime.L3) => ({
+    schemaVersion: "archive-reviewed-exam-meta-register-request-v2",
+    examUid: "24_매산여고_1학기_중간_고2_수학I",
+    sourceArchiveFile: record.sourceArchiveFile,
+    expectedSourceBlobSha1,
+    approval: { type: "META_PIPELINE_AUDIT" },
+    items: [{ sourceOrdinal: record.sourceOrdinal, questionUid: uid,
+      before: { level: null, L3: null, L4: null },
+      after: { level: runtime.level, L3: l3, L4: runtime.L4 } }],
+  });
+
+  const valid = write(tmp(t), "meta-pipeline-runtime.json", request());
+  const passed = verifyChangedUidConsumerApproval({ root: repo, requestPaths: [valid] });
+  assert.equal(passed.status, "PASS", JSON.stringify(passed.failures));
+  assert.deepEqual(passed.counts, { changed: 1, checked: 1, passed: 1, skippedUnchanged: 0 });
+
+  const altered = write(tmp(t), "meta-pipeline-runtime-altered.json", request(`${runtime.L3} (altered)`));
+  const failed = verifyChangedUidConsumerApproval({ root: repo, requestPaths: [altered] });
+  assert.equal(failed.status, "FAIL");
+  assert.equal(failed.failures[0].reason, "VALUE_MISMATCH");
+  assert.match(failed.failures[0].detail, /Meta Foundation runtime/);
+});
+
 // A row without an approved canonical assignment (a pre-existing catalog gap) only gates requests that change
 // assignment-governed fields; other changed fields must still be effective (checked on whatever such row exists).
 test("assignment marker gates only assignment-governed changes; other rows are reported as assignmentPending", t => {
