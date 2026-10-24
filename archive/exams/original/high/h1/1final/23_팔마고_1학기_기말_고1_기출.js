@@ -31,7 +31,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-09-COORDINATE_METRIC",
     "subUnit": "좌표와 거리",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고1_기출/q1-solution.svg",
+    "solutionImageAlt": "선분 AB를 2:1로 내분하는 점은 P(1,5)이다.",
+    "solutionImageCaption": "선분 AB를 2:1로 내분하는 점은 P(1,5)이다.",
+    "solutionImageSize": "full"
   },
                     {
     "id": 2,
@@ -355,7 +359,11 @@ window.questionBank = [
     "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
     "subUnit": "연립부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/23_팔마고_1학기_기말_고1_기출/q10-solution-fig.svg",
+    "solutionImageAlt": "첫째 부등식의 해 -4<x<3과 둘째 부등식의 해 -3≤x<4의 공통 범위는 -3≤x<3이다.",
+    "solutionImageCaption": "첫째 부등식의 해 -4<x<3과 둘째 부등식의 해 -3≤x<4의 공통 범위는 -3≤x<3이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 11,
