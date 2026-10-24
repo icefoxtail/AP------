@@ -3732,11 +3732,11 @@
           "key": "batchS-p285",
           "fam": "ALG_GRAPH",
           "cluster": "other",
-          "reason": "두 경우(a=1/8, a=-1)의 삼차함수 그래프가 필요하나 합성 패널은 이차함수만 지원한다"
+          "reason": "batch5 최종 UNSUPPORTED: a=-1, a=1/8의 두 삼차함수는 각각 중근(x=1, x=-1/2)을 가져 삼차 그래프의 중근이 엔진에서 UNSUPPORTED_CUBIC_QUARTIC_REPEATED_ROOT로 거절되고, 두 경우를 한 그림에 놓는 합성 패널은 이차함수만 받는다."
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch5",
       "publishedBy": [
         "775"
       ]

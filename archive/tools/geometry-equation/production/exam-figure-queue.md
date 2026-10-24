@@ -59,7 +59,7 @@
 - [x] **23_매산고_1학기_중간_고1_기출** (1건): q20 OPEN_LAYOUT compose:LAYOUT_INVENTORY_INCOMPLETE — ABANDONED(저작 4회 실패)
 - [x] **23_여천고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED B_two_curves — 계수가 문자인 두 이차함수 곡선을 한 그림에 함께 그려야 하며 구체적인 좌표가 없어 지원되지 않음
 - [x] **23_제일고_1학기_중간_고1_기출** (1건): q12 OPEN_UNSUPPORTED A_construction_ops — 수직선 위 내분점·외분점을 구성하는 연산이 계약에 없어 파생 점 P(1), Q(-8)을 정확히 구성할 수 없
-- **24_매산고_1학기_중간_고1_기출** (1건): q17 OPEN_UNSUPPORTED other — 두 경우(a=1/8, a=-1)의 삼차함수 그래프가 필요하나 합성 패널은 이차함수만 지원한다
+- [x] **24_매산고_1학기_중간_고1_기출** (1건): q17 OPEN_UNSUPPORTED other — 두 경우(a=1/8, a=-1)의 삼차함수 그래프가 필요하나 합성 패널은 이차함수만 지원한다
 - **24_순천여고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED E_abs_piecewise_slanted_line — 절댓값 함수 그래프(꺾인 곡선)와 직선의 교점 개수 비교가 필요하며 이는 지원되지 않는다.
 - **25_강남여고_1학기_중간_고1_기출** (1건): q14 OPEN_LAYOUT compose:COMPOSITE_PANEL_NOT_COMPOSED — ABANDONED(저작 4회 실패)
 - **25_매산고_1학기_중간_고1_기출** (1건): q18 OPEN_UNSUPPORTED F_irrational_coefficients — 포물선과 직선의 무리수 교점, x축에 내린 수선의 발 C, D와 삼각형을 한 그림에 그려야 하는데 지원되지 
