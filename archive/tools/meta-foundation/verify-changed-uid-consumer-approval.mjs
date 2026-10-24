@@ -244,6 +244,10 @@ function checkRow(consumer, unit, row) {
       if (!same(metaPipelineRuntime[name], expected)) mismatches.push(`${field}: request ${JSON.stringify(expected)} != Meta Foundation runtime ${JSON.stringify(metaPipelineRuntime[name] ?? null)}`);
       continue;
     }
+    if (metaPipelineRuntime && name === "integrationPattern" && !own(resolved, name)) {
+      if (!same(metaPipelineRuntime[name], expected)) mismatches.push(field + ": request " + JSON.stringify(expected) + " != Meta Foundation runtime " + JSON.stringify(metaPipelineRuntime[name] ?? null));
+      continue;
+    }
     if (LABEL_FIELDS.has(name)) {
       // ProblemBankMeta.project() overwrites the page row's L1..L4 with rpmL1..L4 (null for
       // natively registered rows), so the page shows reviewed labels as nativeL1..nativeL4 there
