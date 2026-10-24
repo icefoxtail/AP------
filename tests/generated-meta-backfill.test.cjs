@@ -25,6 +25,12 @@ test('legacy backfill is exact-roster, rerunnable, partial, and non-recertifying
     assert.match(row.sourceEvidence.source.sha256, /^[a-f0-9]{64}$/);
     assert.match(row.studentPayloadSha256, /^[a-f0-9]{64}$/);
   }
+  const previousLedger = JSON.parse(fs.readFileSync(ledgerPath, 'utf8'));
+  const previousByUid = new Map(previousLedger.records.map(row => [row.uid, row]));
+  for (const row of preview.ledger.records) {
+    assert.deepEqual(row.sourceEvidence.rpmMaster, previousByUid.get(row.uid).sourceEvidence.rpmMaster,
+      `frozen RPM authority evidence remains unchanged: ${row.uid}`);
+  }
 });
 
 test('legacy roster ignores future UIDs and preserves withdrawn history as inactive evidence', () => {
