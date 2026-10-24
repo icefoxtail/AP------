@@ -31,6 +31,9 @@ function verifyMathematicalSvg(svgPath, svgContent, q, ord, errors) {
   }
   const rootTag = svgMatch[0];
   const viewBoxMatch = rootTag.match(/viewBox=["']\s*([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\s+([-\d.]+)\s*["']/i);
+  if (!viewBoxMatch) {
+    errors.push(`Q${ord}: SVG root is missing a valid viewBox (${q.image})`);
+  }
   if (viewBoxMatch) {
     const vbW = parseFloat(viewBoxMatch[3]);
     const vbH = parseFloat(viewBoxMatch[4]);
@@ -408,9 +411,15 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
           if (role === 'problem' && hasImage) {
             errors.push(`Q${ord}: Problem has an active image (${q.image}) but problem plan is marked EXEMPT`);
           }
+          if (strictAuthoring && role === 'solution' && q?.solutionImage) {
+            errors.push(`Q${ord}: Solution EXEMPT conflicts with attached solutionImage`);
+          }
         } else if (planData.status === 'UNSUPPORTED') {
           if (!planData.reason || typeof planData.reason !== 'string' || planData.reason.trim().length < 5) {
             errors.push(`Q${ord}: ${baseName} marked UNSUPPORTED must have a substantive 'reason' string per AUTHOR_GUIDE.md §2`);
+          }
+          if (strictAuthoring) {
+            errors.push(`Q${ord}: ${baseName} UNSUPPORTED cannot be used as a production-visual PASS without an independently approved fallback`);
           }
         } else {
           // Active plan
@@ -421,6 +430,9 @@ export function verifySimilarExam({ stem, jsPath, throwOnError = false, strictAu
             errors.push(`Q${ord}: Problem plan is active (${planData.capability}) but question has no image reference`);
           }
           if (strictAuthoring) {
+            if (role === 'problem' && /(?:다음\s*그림|그림과\s*같이|색칠한|음영)/.test(q?.content || '') && !q?.image) {
+              errors.push(`Q${ord}: Question explicitly needs a figure but no problem image is attached`);
+            }
             const source = role === 'problem' ? q?.content : q?.solution;
             const quote = planData.sourceQuote;
             if (typeof quote !== 'string' || quote.length < 12 || quote.length > 40 ||
