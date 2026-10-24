@@ -5113,12 +5113,13 @@
         },
         {
           "ord": 11,
-          "state": "OPEN_LAYOUT",
+          "state": "PUBLISHED",
           "camp": "camp5a",
           "key": "batchF-p80",
           "fam": "QUAD",
-          "errorCode": "frame:EQUAL_UNIT_PARABOLA_TOO_NARROW",
-          "reason": "LIMIT"
+          "figures": [
+            "assets/images/26_순천고_1학기_기말_고1_기출/q11-solution-fig.svg"
+          ]
         },
         {
           "ord": 13,
@@ -5130,14 +5131,12 @@
         },
         {
           "ord": 15,
-          "state": "OPEN_UNSUPPORTED",
+          "state": "PUBLISHED",
           "camp": "camp9",
           "key": "chainpk-camp5c-batchP-p239",
           "fam": "ALG_GRAPH",
-          "cluster": "C_number_line",
-          "reason": "해가 매개변수 n에 따라 3과 n 사이 구간으로 바뀌는 경우 나눔(n=1, n=2~4, n≥5)이라, 수직선 위 구간 두 개를 비교하는 그림이 필요한데 엔진은 고정 계수의 이차부등식 하나만 그린다.",
-          "alsoCamps": [
-            "camp5c/batchP-p239:BOUND"
+          "figures": [
+            "assets/images/26_순천고_1학기_기말_고1_기출/q15-solution-fig.svg"
           ]
         },
         {
@@ -5152,21 +5151,15 @@
         },
         {
           "ord": 20,
-          "state": "OPEN_UNSUPPORTED",
+          "state": "UNSUPPORTED",
           "camp": "camp8",
           "key": "wrongpk-batchA-p05",
           "fam": "QUAD",
-          "cluster": "G_axis_scale",
-          "reason": "x 범위 0~50 대비 이익 0~45000으로 두 축의 단위 길이가 같아야 하는 엔진에서 곡선이 지나치게 좁아져(EQUAL_UNIT_CURVE_TOO_NARROW) 축 척도 분리가 필요함",
-          "alsoCamps": [
-            "camp5a/batchA-p05:BOUND"
-          ],
-          "reviewVerdict": "FAIL",
-          "reviewHoldReason": "그림은 y=-(1/20)(x-20)^2+45, 점 (0,25),(20,45),(50,0)의 포물선이다.; 문제는 연필 판매가격에 따른 이익 최대화이고 풀이는 P(x)=-50(x-20)^2+45000인데, 그림의 식과 값이 풀이와 전혀 맞지 않는 다른 "
+          "reason": "최종: 이익 0~45000과 인상 횟수 0~50의 두 축 크기가 900배 차이 나 같은 배율(세로 최대 1/2 압축)로는 곡선이 선처럼 되고, 축 눈금 배율 분리는 규칙상 허용되지 않는다."
         }
       ],
-      "status": "OPEN",
-      "closedBy": null,
+      "status": "CLOSED",
+      "closedBy": "batch1",
       "publishedBy": [
         "776"
       ]

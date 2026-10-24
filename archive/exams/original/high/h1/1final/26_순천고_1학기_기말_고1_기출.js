@@ -341,7 +341,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q11-solution-fig.svg",
+    "solutionImageAlt": "a=4일 때 y=4x²-8x-12의 -3≤x≤4에서 최댓값은 왼쪽 끝점 A(-3,48)이고, 직선 y=4x-12와는 x=0, 3에서 만난다.",
+    "solutionImageCaption": "a=4일 때 y=4x²-8x-12의 -3≤x≤4에서 최댓값은 왼쪽 끝점 A(-3,48)이고, 직선 y=4x-12와는 x=0, 3에서 만난다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 12,
@@ -465,7 +469,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-06-INEQUALITY",
     "subUnit": "여러 가지 부등식",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q15-solution-fig.svg",
+    "solutionImageAlt": "n≥5일 때 해는 3<x<n이고 자연수해는 4, 5, …, n-1이다. n=7이면 자연수해가 4, 5, 6의 3개로 조건의 최대 개수이다.",
+    "solutionImageCaption": "n≥5일 때 해는 3<x<n이고 자연수해는 4, 5, …, n-1이다. n=7이면 자연수해가 4, 5, 6의 3개로 조건의 최대 개수이다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 16,
