@@ -1845,12 +1845,11 @@
       "items": [
         {
           "ord": 9,
-          "state": "OPEN_UNSUPPORTED",
+          "state": "UNSUPPORTED",
           "camp": "camp5a",
           "key": "batchG-p103",
           "fam": "COORD_GEOM",
-          "cluster": "D_exp_log_trig",
-          "reason": "지수함수 곡선과 그 평행이동·대칭이동 그래프(a에 따른 곡선 족)는 지원되지 않는다"
+          "reason": "최종: 밑 a가 문자인 지수함수 y=a^x+1의 이동·대칭 그래프이며, 엔진의 지수 그래프는 밑이 e이고 계수가 유리수인 경우만 되어 a^(3-x)+1을 그릴 수 없다."
         },
         {
           "ord": 14,
@@ -1861,8 +1860,8 @@
           "reason": "부채꼴의 반지름에 대한 연립 식을 푸는 대수 계산이라 그림으로 보일 공간적 관계가 없다."
         }
       ],
-      "status": "OPEN",
-      "closedBy": null
+      "status": "CLOSED",
+      "closedBy": "batch3"
     },
     {
       "exam": "21_제일고_2학기_기말_고1_기출",
