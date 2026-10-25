@@ -90,6 +90,7 @@ def compose(prepared,layout,viewport,fragments=None):
         if p.get('fill'):attrs=attrs.replace('fill="none"','fill="'+esc(p['fill'])+'"')
         if p.get('noStroke'):attrs=attrs.replace('stroke="'+tokens['primary']+'"','stroke="none"')
         if p.get('dash'):attrs+=' stroke-dasharray="'+esc(p['dash'])+'"'
+        if p.get('fillRule'):attrs+=' fill-rule="'+esc(p['fillRule'])+'"'
         if kind=='circle':
             if p.get('role')=='point':attrs=attrs.replace('fill="none"','fill="#111"')
             svg=f'<circle {attrs} cx="{num(p["at"][0])}" cy="{num(p["at"][1])}" r="{num(p["radius"])}"/>'
