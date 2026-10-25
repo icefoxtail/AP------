@@ -257,13 +257,15 @@ function attachMetaPipelineAuditKeyOnlyV3(f) {
   return { ...attached, audit, classification, auditPackageRef, classificationRef };
 }
 
-function attachMetaPipelineAuditSourceDriveFlatV3(f) {
+function attachMetaPipelineAuditSourceDriveFlatV3(f, { difficultyBucketOverride } = {}) {
   const attached = attachMetaPipelineAuditV2(f);
   const proof = f.request.approval.metaPipelineAudit;
   const sourceBytes = fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`));
   const examTitle = path.basename(f.request.sourceArchiveFile, ".js");
   const oldAuditRow = attached.audit.records[0];
   const oldClassRow = attached.classification.records[0];
+  const difficultyBucket = difficultyBucketOverride ?? oldAuditRow.difficultyBucket;
+  const difficultyConfidence = oldAuditRow.difficultyConfidence || "source_preserved";
   const readingEvidence = { sourceTextExcerpt: f.q.content, solutionDecisiveExcerpt: f.q.solution };
   const audit = {
     schemaVersion: "ALIVE_META_AUDIT_ATOMIC_v3", examTitle, sourceDriveId: proof.sourceFileDriveId,
@@ -275,7 +277,7 @@ function attachMetaPipelineAuditSourceDriveFlatV3(f) {
       standardUnit: oldAuditRow.standardUnit, subUnitKey: oldAuditRow.subUnitKey, subUnit: oldAuditRow.subUnit,
       problemTypeKey: oldAuditRow.problemTypeKey, templateKey: oldAuditRow.templateKey,
       crossConceptKeys: oldAuditRow.crossConceptKeys,
-      difficulty: { bucket: oldAuditRow.difficultyBucket, confidence: oldAuditRow.difficultyConfidence,
+      difficulty: { bucket: difficultyBucket, confidence: difficultyConfidence,
         reason: oldAuditRow.difficultyReason },
       auditVerdict: "APPROVED_CANONICAL",
     }],
@@ -290,7 +292,7 @@ function attachMetaPipelineAuditSourceDriveFlatV3(f) {
       problemTypeKey: oldClassRow.problemTypeKey, templateKey: oldClassRow.templateKey,
       crossConceptKeys: oldClassRow.crossConceptKeys, conditionKeys: oldClassRow.conditionKeys,
       integrationPattern: oldClassRow.integrationPattern,
-      difficultyBucket: oldClassRow.difficultyBucket, difficultyConfidence: oldAuditRow.difficultyConfidence,
+      difficultyBucket, difficultyConfidence,
       difficultyReason: oldClassRow.difficultyReason, readingEvidence,
     }],
   };
@@ -306,7 +308,10 @@ function attachMetaPipelineAuditSourceDriveFlatV3(f) {
   f.request.approval.evidenceRefs = replace(f.request.approval.evidenceRefs);
   f.request.approval.metaPipelineAudit = { ...proof, schemaVersion: "meta-pipeline-audit-approval-v3",
     auditPackageRef, classificationRef };
-  f.request.items = f.request.items.map(item => ({ ...item, evidenceRefs: replace(item.evidenceRefs) }));
+  f.request.items = f.request.items.map(item => ({ ...item,
+    before: { ...item.before, difficultyConfidence: item.before.difficultyConfidence ?? null },
+    after: { ...item.after, difficultyBucket, difficultyConfidence },
+    evidenceRefs: replace(item.evidenceRefs) }));
   return { ...attached, audit, classification, auditPackageRef, classificationRef };
 }
 
@@ -458,6 +463,27 @@ test("META_PIPELINE_AUDIT sourceDriveId flat v3 rejects a classification tag mis
     evidenceRefs: item.evidenceRefs.map(ref => ref.path === classificationRef.path ? classificationRef : ref) }));
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }),
     /META_PIPELINE_AUDIT sourceDrive v3 classification tags mismatch/);
+});
+
+test("sourceDrive flat v3 binds its audited 1-5 bucket over a legacy text bucket", t => {
+  const f = fixture(t);
+  delete f.q.difficultyBucket;
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  f.request.items = f.request.items.map(item => ({ ...item,
+    sourceMetadataBefore: { difficultyBucket: null } }));
+  const metadata = f.read(META);
+  metadata.records[0].difficultyBucket = "중";
+  metadata.records[0].fieldStatus = { difficulty: "approved_source" };
+  f.put(META, metadata);
+  f.request.items[0].before.difficultyBucket = "중";
+  attachMetaPipelineAuditSourceDriveFlatV3(f, { difficultyBucketOverride: 2 });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const row = f.read(META).records[0];
+  assert.equal(row.difficultyBucket, 2);
+  assert.equal(row.difficultyConfidence, "source_preserved");
+  assert.equal(row.fieldStatus.difficulty, "approved_meta_pipeline_audit");
 });
 
 for (const manifestSchema of ["ALIVE_COURIER_INTAKE_MANIFEST_v3", "COURIER_INTAKE_MANIFEST_v3"]) {
@@ -720,6 +746,26 @@ test("META_PIPELINE_AUDIT materializes explicitly pending source metadata placeh
   assert.equal(f.read(META).records[0].templateKey, "TPL_NEW");
   assert.equal(f.read(META).records[0].crossConceptKeys[0], "CC_NEW");
   assert.equal(fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`), "utf8"), bytes);
+});
+
+test("META_PIPELINE_AUDIT resolves field-specific explicit holds on an overall reviewed_pass row", t => {
+  const f = fixture(t);
+  f.q = { ...f.q, problemTypeKey: null, templateKey: null, crossConceptKeys: [] };
+  const bytes = `window.questions=${JSON.stringify([f.q])};\n`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, bytes);
+  f.request.expectedSourceBlobSha1 = blob(bytes);
+  f.request.items = f.request.items.map(item => ({ ...item, before: { ...item.before, L3: null, L4: null },
+    sourceMetadataBefore: { problemTypeKey: null, templateKey: null, crossConceptKeys: [] } }));
+  const metadata = f.read(META);
+  Object.assign(metadata.records[0], {
+    reviewStatus: "reviewed_pass", metadataStatus: "approved_partial_with_explicit_holds",
+    fieldStatus: { problemType: "manual_review_pending", template: "manual_review_pending", crossConcept: "manual_review_pending" },
+  });
+  f.put(META, metadata);
+  attachMetaPipelineAudit(f);
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(f.read(META).records[0].problemTypeKey, "PT_NEW");
+  assert.equal(f.read(META).records[0].templateKey, "TPL_NEW");
 });
 
 test("META_PIPELINE_AUDIT accepts the preserved RPM final-binding gap marker with its reason", t => {
