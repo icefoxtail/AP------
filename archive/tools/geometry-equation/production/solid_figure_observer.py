@@ -118,20 +118,30 @@ def build_solid(spec):
         return {'id': spec.get('id'), 'kind': kind, 'cat': 'POLY', 'verts': verts, 'faces': faces, 'height': h}
     if kind in ('CYLINDER', 'CONE', 'CONE_FRUSTUM', 'SPHERE', 'HEMISPHERE'):
         r = float(spec['radius'])
-        if kind == 'SPHERE': h, r1 = 2 * r, r
-        elif kind == 'HEMISPHERE': h, r1 = r, r
+        cone = kind in ('CONE', 'CONE_FRUSTUM')
+        orientation = spec.get('orientation', 'APEX_UP')
+        if orientation not in ('APEX_UP', 'APEX_DOWN'):
+            raise ValueError('SOLID_ORIENTATION_UNSUPPORTED')
+        if orientation == 'APEX_DOWN' and not cone:
+            raise ValueError('SOLID_ORIENTATION_UNSUPPORTED')
+        down = orientation == 'APEX_DOWN'
+        if kind == 'SPHERE': h, r0, r1 = 2 * r, r, r
+        elif kind == 'HEMISPHERE': h, r0, r1 = r, r, r
         else:
             h = float(spec['height'])
-            r1 = {'CYLINDER': r, 'CONE': 0.0, 'CONE_FRUSTUM': float(spec.get('topRadius', 0))}[kind]
+            narrow = {'CYLINDER': r, 'CONE': 0.0, 'CONE_FRUSTUM': float(spec.get('topRadius', 0))}[kind]
+            r0, r1 = (narrow, r) if down else (r, narrow)
         names = spec.get('names') or {}
         pts = []
         if kind == 'SPHERE': pts.append((names.get('center'), 'center', (0.0, 0.0, r)))
         elif kind == 'HEMISPHERE': pts.append((names.get('center'), 'center', (0.0, 0.0, 0.0)))
         else:
-            pts.append((names.get('center'), 'center', (0.0, 0.0, 0.0)))
-            if kind == 'CONE': pts.append((names.get('apex'), 'apex', (0.0, 0.0, h)))
+            pts.append((names.get('center'), 'center', (0.0, 0.0, h if down and kind == 'CONE' else 0.0)))
+            if kind == 'CONE': pts.append((names.get('apex'), 'apex', (0.0, 0.0, 0.0 if down else h)))
             else: pts.append((names.get('top'), 'top', (0.0, 0.0, h)))
-        return {'id': spec.get('id'), 'kind': kind, 'cat': 'SPHERE' if kind in ('SPHERE', 'HEMISPHERE') else 'REV', 'r': r, 'r1': r1, 'height': h, 'points': pts}
+        return {'id': spec.get('id'), 'kind': kind, 'cat': 'SPHERE' if kind in ('SPHERE', 'HEMISPHERE') else 'REV',
+                'r': r, 'r0': r0, 'r1': r1, 'orientation': orientation, 'height': h, 'points': pts,
+                'inside': spec.get('inside')}
     raise ValueError('SOLID_KIND_UNSUPPORTED')
 
 
@@ -201,7 +211,7 @@ def edge_skip(solid, a, b):
 def hits_round(solid, P):
     """True when the ray from P toward the viewer enters the solid of revolution / sphere (a point on its surface that the body hides)."""
     V = VIEW
-    r0, r1, h = solid['r'], solid['r1'], solid['height']
+    r0, r1, h = solid['r0'], solid['r1'], solid['height']
     if solid['cat'] == 'SPHERE':
         c = (0.0, 0.0, r0 if solid['kind'] == 'SPHERE' else 0.0)
         d = vsub(P, c)
@@ -436,9 +446,25 @@ def audit_solids(plan, ctx):
         if len(P) >= 4:
             nrm = vunit(vcross(vsub(P[1], P[0]), vsub(P[2], P[0])))
             if any(abs(vdot(nrm, vsub(p, P[0]))) > 1e-6 for p in P): errors.append('SOLID_HIGHLIGHT_NOT_PLANAR')
+    # a nested solid must sit exactly on its host's axis
+    by_id = {s['id']: s for s in solids}
+    for solid in solids:
+        if not solid.get('inside'):
+            continue
+        host = by_id.get(solid['inside'])
+        if host is None or solid['id'] not in frames or host['id'] not in frames:
+            errors.append('SOLID_NEST_HOST_MISSING:' + solid['id'])
+            continue
+        if abs(frames[solid['id']][0] - frames[host['id']][0]) > POS_TOL:
+            errors.append('SOLID_NEST_AXIS_MISMATCH:' + solid['id'])
+        max_inner = solid['r0'] if solid['cat'] == 'SPHERE' else max(solid['r0'], solid['r1'])
+        max_host = max(host['r0'], host['r1'])
+        if max_inner > max_host + 1e-6 or solid['height'] > host['height'] + 1e-6:
+            errors.append('SOLID_NEST_DOES_NOT_FIT:' + solid['id'])
     section = plan.get('section')
     sec_els = [el for el in root.iter(NS + 'polygon') if el.get('data-role') == 'section']
     level_els = [el for el in root.iter(NS + 'ellipse') if el.get('data-role') == 'level-fill']
+    liquid_els = [el for el in root.iter(NS + 'polygon') if el.get('data-role') == 'liquid-region']
     axial = section is not None and section.get('kind') == 'AXIAL'
     leveled = section is not None and section.get('kind') == 'LEVEL'
     if axial != bool(sec_els) or leveled != bool(level_els): errors.append('SOLID_SECTION_SET_MISMATCH')
@@ -448,8 +474,9 @@ def audit_solids(plan, ctx):
         z = solid['height']
         if axial and sec_els:
             pts = _points(sec_els[0].get('points'))
-            if solid['kind'] == 'CONE': exp = [(-solid['r'], 0.0), (solid['r'], 0.0), (0.0, z)]
-            else: exp = [(-solid['r'], 0.0), (solid['r'], 0.0), (solid['r1'], z), (-solid['r1'], z)]
+            if solid['r0'] == 0.0: exp = [(0.0, 0.0), (solid['r1'], z), (-solid['r1'], z)]
+            elif solid['r1'] == 0.0: exp = [(-solid['r0'], 0.0), (solid['r0'], 0.0), (0.0, z)]
+            else: exp = [(-solid['r0'], 0.0), (solid['r0'], 0.0), (solid['r1'], z), (-solid['r1'], z)]
             # the axial plane runs along the screen's horizontal: s maps to screen x = s, height z to screen y = z cos(pitch)
             want = [(Tx + scale * s_, Ty - scale * zz * math.cos(PITCH)) for s_, zz in exp]
             if len(pts) != len(want) or any(math.hypot(a[0] - b[0], a[1] - b[1]) > POS_TOL for a, b in zip(pts, want)): errors.append('SOLID_SECTION_POLYGON_MISMATCH')
@@ -458,11 +485,22 @@ def audit_solids(plan, ctx):
             if not m: errors.append('SOLID_SECTION_INVALID')
             else:
                 f = int(m.group(1)) / int(m.group(2))
-                zl, rl = f * z, solid['r'] + (solid['r1'] - solid['r']) * f
+                zl, rl = f * z, solid['r0'] + (solid['r1'] - solid['r0']) * f
                 q = project((0.0, 0.0, zl))
                 el = level_els[0]
                 cx, cy, rx, ry = _num(el, 'cx'), _num(el, 'cy'), _num(el, 'rx'), _num(el, 'ry')
                 if abs(cx - (Tx + scale * q[0])) > POS_TOL or abs(cy - (Ty - scale * q[1])) > POS_TOL or abs(rx - scale * rl) > POS_TOL or abs(ry - scale * rl * math.sin(PITCH)) > POS_TOL: errors.append('SOLID_LEVEL_ELLIPSE_MISMATCH')
+                want_liquid = solid['orientation'] == 'APEX_DOWN'
+                if want_liquid != bool(liquid_els): errors.append('SOLID_LIQUID_REGION_SET_MISMATCH')
+                if want_liquid and liquid_els:
+                    if liquid_els[0].get('data-solid') != solid['id']: errors.append('SOLID_LIQUID_REGION_SOLID_MISMATCH')
+                    want_pts = [(Tx + scale * q[0], Ty - scale * q[1]) for q in _liquid_boundary(solid, zl, rl)]
+                    pts = _points(liquid_els[0].get('points'))
+                    if len(pts) != len(want_pts) or any(math.hypot(a[0] - b[0], a[1] - b[1]) > POS_TOL for a, b in zip(pts, want_pts)):
+                        errors.append('SOLID_LIQUID_REGION_MISMATCH')
+    elif liquid_els:
+        errors.append('SOLID_LIQUID_REGION_WITHOUT_SECTION')
+    audit_marks(plan, solid_named=named, frames=frames, scale=scale, root=root, errors=errors, px_by_id=ctx.get('px'))
     for el in root.iter(NS + 'line'):
         if el.get('data-role') == 'dim-line':
             ctx['segments'].append(((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))))
@@ -520,8 +558,8 @@ def check_poly_edges(solid, root, px, scale, errors):
 
 
 def _round_frame(solid, root, errors):
-    """Scale and translation of a round solid from its own curves: the widest circle's horizontal extreme points give the scale (x extent = 2 r),
-    the lowest ellipse's endpoints give the centre; every other curve is then checked against that frame."""
+    """Scale and translation of a round solid from its own curves: the widest circle's horizontal extreme points give the scale (x extent = 2r),
+    its centre gives the translation; every other curve is then checked against that frame."""
     sid = solid['id']
     arcs = [(e, _parse_arc(e.get('d'))) for e in root.iter(NS + 'path') if e.get('data-solid') == sid]
     if solid['cat'] == 'SPHERE':
@@ -530,21 +568,30 @@ def _round_frame(solid, root, errors):
             errors.append('SOLID_NO_CURVES:' + sid)
             return None, None
         xs = [v for a in outline for v in (a[0], a[6])]
-        S = (max(xs) - min(xs)) / (2 * solid['r'])
+        S = (max(xs) - min(xs)) / (2 * solid['r0'])
         cx, cy = (max(xs) + min(xs)) / 2, outline[0][1]
-        q = project((0.0, 0.0, solid['r'] if solid['kind'] == 'SPHERE' else 0.0))
+        q = project((0.0, 0.0, solid['r0'] if solid['kind'] == 'SPHERE' else 0.0))
         return S, (cx - S * q[0], cy + S * q[1])
-    front = [a for e, a in arcs if e.get('data-circle') == 'bottom' and e.get('data-half') == 'FRONT']
-    if not front:
+    places = {'bottom': (0.0, solid['r0']), 'top': (solid['height'], solid['r1']), 'equator': (solid['r0'], solid['r0'])}
+    fronts = []
+    for e, a in arcs:
+        name = e.get('data-circle')
+        if e.get('data-half') != 'FRONT' or name not in places:
+            continue
+        z, rad = places[name]
+        if rad > 0:
+            fronts.append((a, z, rad))
+    if not fronts:
         errors.append('SOLID_BASE_ARC_MISSING:' + sid)
         return None, None
-    x0, y0, rx, ry, large, sweep, x1, y1 = front[0]
-    S = rx / solid['r']
-    # the front arc starts and ends on the ellipse's upper half (the tangent points): centre x is their mean, centre y lies below them
+    a, zc, rad = max(fronts, key=lambda item: item[0][2])
+    x0, y0, rx, ry, large, sweep, x1, y1 = a
+    S = rx / rad
+    # the front arc's endpoints are the ellipse's horizontal extremes (or symmetric about the vertical axis): their mean is the centre x
     cx = (x0 + x1) / 2
-    dy = ry * math.sqrt(max(0.0, 1 - ((x0 - cx) / rx) ** 2))
+    dy = ry * math.sqrt(max(0.0, 1 - min(1.0, ((x0 - cx) / rx) ** 2))) if rx else 0.0
     cy = y0 + dy
-    q = project((0.0, 0.0, 0.0))
+    q = project((0.0, 0.0, zc))
     return S, (cx - S * q[0], cy + S * q[1])
 
 
@@ -553,7 +600,7 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
     arcs = [(e, _parse_arc(e.get('d'))) for e in root.iter(NS + 'path') if e.get('data-solid') == sid]
     lines = [e for e in root.iter(NS + 'line') if e.get('data-solid') == sid and e.get('data-role') == 'silhouette']
     sinp = math.sin(PITCH)
-    r0, r1, h = solid['r'], solid['r1'], solid['height']
+    r0, r1, h = solid['r0'], solid['r1'], solid['height']
 
     level = None
     if section is not None:
@@ -581,12 +628,15 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
             _stroke_ok(e, False, errors, e.get('id'))
             continue
         cname = e.get('data-circle')
+        if cname not in ('bottom', 'top', 'level', 'equator'):
+            errors.append('SOLID_ELLIPSE_ROLE_UNKNOWN:' + str(cname))
+            continue
         (cx, cy), rad = circle(cname)
         if abs(rx - scale * rad) > POS_TOL or abs(ry - scale * rad * sinp) > POS_TOL: errors.append('SOLID_ELLIPSE_AXES_MISMATCH:%s:%s' % (sid, cname))
         for (x, y) in ((x0, y0), (x1, y1)):
             f = ((x - cx) / (scale * rad)) ** 2 + ((y - cy) / (scale * rad * sinp)) ** 2
             if abs(f - 1) > 0.02: errors.append('SOLID_ELLIPSE_ENDPOINT_OFF:%s:%s' % (sid, cname))
-        # mid point of the arc (param u, y up) and the depth test on the surface point there
+        # param u of the arc (y up in the observer's frame), the span from the endpoints and the sweep flag
         u0 = math.atan2(-(y0 - cy) / (scale * rad * sinp), (x0 - cx) / (scale * rad))
         u1 = math.atan2(-(y1 - cy) / (scale * rad * sinp), (x1 - cx) / (scale * rad))
         span = (u1 - u0) % (2 * math.pi)
@@ -601,7 +651,7 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
             pts_by_circle.setdefault(cname, []).append(((x0, y0), (x1, y1)))
             continue
         votes = 0
-        z = h if cname == 'top' else (r0 if cname == 'equator' else 0.0)
+        z = h if cname == 'top' else (level[0] if cname == 'level' else (r0 if cname == 'equator' else 0.0))
         for k in range(7):
             u = u0 + span * (k + 0.5) / 7
             # screen param u -> world circle point: sx = r cos u, sy = r sin(pitch) sin u + z cos(pitch); the circle point with that screen image
@@ -614,16 +664,18 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
     if solid['cat'] == 'SPHERE':
         if solid['kind'] == 'HEMISPHERE' and not any(e.get('data-circle') == 'bottom' for e, _ in arcs): errors.append('SOLID_BASE_ARC_MISSING:' + sid)
         return
-    # silhouette lines: tangent to the circles they end on, through the apex of the cone
-    want_top = solid['kind'] != 'CONE'
+    # silhouette lines: tangent to the circles they end on, through the (virtual) apex of the cone
+    family = {name for name in ('bottom', 'top') if circle(name)[1] > 0}
     if len(lines) != 2: errors.append('SOLID_SILHOUETTE_COUNT:' + sid)
-    names = {'bottom'} | ({'top'} if want_top else set()) | ({'level'} if level else set())
+    names = family | ({'level'} if level else set())
     if set(pts_by_circle) != names: errors.append('SOLID_ELLIPSE_SET_MISMATCH:' + sid)
+    apex_z = 0.0 if (solid['kind'] == 'CONE' and solid['orientation'] == 'APEX_DOWN') else h
+    apex = px((0.0, 0.0, apex_z))
     for e in lines:
         a, b = (_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2'))
-        for cname, end in (('bottom', None), ('top', None)):
-            if cname == 'top' and not want_top: continue
+        for cname in ('bottom', 'top'):
             (cx, cy), rad = circle(cname)
+            if rad <= 0: continue
             rx, ry = scale * rad, scale * rad * sinp
             for q in (a, b):
                 f = ((q[0] - cx) / rx) ** 2 + ((q[1] - cy) / ry) ** 2
@@ -633,9 +685,8 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
                     dx, dy = b[0] - a[0], b[1] - a[1]
                     if abs(dx * gx + dy * gy) / (math.hypot(dx, dy) * math.hypot(gx, gy)) > 0.03: errors.append('SOLID_SILHOUETTE_NOT_TANGENT:%s:%s' % (sid, cname))
         if solid['kind'] == 'CONE':
-            apex = px((0.0, 0.0, h))
             if min(math.hypot(a[0] - apex[0], a[1] - apex[1]), math.hypot(b[0] - apex[0], b[1] - apex[1])) > POS_TOL: errors.append('SOLID_SILHOUETTE_MISSES_APEX:' + sid)
-        else:
+        elif solid['kind'] == 'CONE_FRUSTUM':
             # both ends sit on the two ellipses
             ends_on = []
             for q in (a, b):
@@ -644,11 +695,258 @@ def check_round(solid, root, px, scale, errors, segments, section=None):
                     f = ((q[0] - cx) / (scale * rad)) ** 2 + ((q[1] - cy) / (scale * rad * sinp)) ** 2
                     if abs(f - 1) < 0.03: ends_on.append(cname)
             if sorted(ends_on) != ['bottom', 'top']: errors.append('SOLID_SILHOUETTE_ENDS_NOT_ON_ELLIPSES:' + sid)
-            if solid['kind'] == 'CYLINDER' and abs(a[0] - b[0]) > POS_TOL: errors.append('SOLID_CYLINDER_SIDE_NOT_VERTICAL')
+        if solid['kind'] == 'CYLINDER' and abs(a[0] - b[0]) > POS_TOL: errors.append('SOLID_CYLINDER_SIDE_NOT_VERTICAL')
+
+
+LIQUID_SAMPLES = 28
+
+
+def _apex_z(solid):
+    r0, r1, h = solid['r0'], solid['r1'], solid['height']
+    return 0.0 if r1 == r0 else -r0 * h / (r1 - r0)
+
+
+def _tangent_params(e, apex):
+    d = apex[1] - e[1]
+    if abs(d) <= e[3] + 1e-9:
+        raise ValueError('SOLID_LEVEL_APEX_HIDDEN')
+    s = e[3] / d
+    cu = math.sqrt(max(0.0, 1 - s * s))
+    u_r, u_l = math.atan2(s, cu), math.atan2(s, -cu)
+
+    def at(u): return (e[0] + e[2] * math.cos(u), e[1] + e[3] * math.sin(u))
+    return {'right': at(u_r), 'left': at(u_l), 'at': at, 'uR': u_r, 'uL': u_l}
+
+
+def _liquid_boundary(solid, z, rl):
+    """The projected outline of the liquid below the level (screen units, offset-free)."""
+    h, r0 = solid['height'], solid['r0']
+    a = project((0.0, 0.0, _apex_z(solid)))
+    apex = (a[0], a[1])
+
+    def ell(rad, zz):
+        c = project((0.0, 0.0, zz))
+        return (c[0], c[1], rad, rad * math.sin(PITCH))
+    lv = _tangent_params(ell(rl, z), apex)
+    far = [lv['at'](lv['uR'] + (lv['uL'] + 2 * math.pi - lv['uR']) * k / LIQUID_SAMPLES) for k in range(LIQUID_SAMPLES + 1)]
+    if r0 == 0.0:
+        return [apex] + far
+    bv = _tangent_params(ell(r0, 0.0), apex)
+    near = [bv['at'](bv['uL'] + 2 * math.pi + (bv['uR'] - bv['uL']) * k / LIQUID_SAMPLES) for k in range(LIQUID_SAMPLES + 1)]
+    return near + far
+
+
+def _dist_point_seg(p, a, b):
+    return _seg_dist(p, a, b)
+
+
+def _parallel(u, v):
+    return abs(u[0] * v[1] - u[1] * v[0]) <= 1e-6 * max(1.0, math.hypot(*u) * math.hypot(*v))
+
+
+def audit_marks(plan, solid_named, frames, scale, root, errors, px_by_id):
+    marks = plan.get('marks') or {}
+    named = solid_named or {}
+    right = {(m.get('id') or 'ra%d' % (k + 1)): m for k, m in enumerate(marks.get('rightAngles') or [])}
+    equal = {}
+    for k, g in enumerate(marks.get('equalLengths') or []):
+        segs = []
+        for pair in g.get('segments') or []:
+            segs.append(list(pair) if isinstance(pair, (list, tuple)) else [pair[0], pair[1]])
+        equal[g.get('id') or 'eq%d' % (k + 1)] = {**g, 'segments': segs}
+    angles = {(m.get('id') or 'an%d' % (k + 1)): m for k, m in enumerate(marks.get('angles') or [])}
+    drawn_right, drawn_equal, drawn_angles = set(), {}, {}
+    for el in root.iter(NS + 'polyline'):
+        role = el.get('data-role')
+        if role == 'right-angle-mark':
+            mid = el.get('data-mark')
+            drawn_right.add(mid)
+            pts = _points(el.get('points'))
+            if len(pts) != 3 or mid not in right:
+                errors.append('SOLID_RIGHT_ANGLE_MARK_UNKNOWN:' + str(mid))
+                continue
+            m = right[mid]
+            if el.get('data-at') != m['at'] or el.get('data-refs') != ''.join(m['refs']):
+                errors.append('SOLID_RIGHT_ANGLE_MARK_OWNER:' + mid)
+                continue
+            V, A, B = named[m['at']][2], named[m['refs'][0]][2], named[m['refs'][1]][2]
+            e1, e2 = vunit(vsub(A, V)), vunit(vsub(B, V))
+            if abs(vdot(e1, e2)) > 1e-6:
+                errors.append('SOLID_RIGHT_ANGLE_NOT_PERPENDICULAR:' + mid)
+                continue
+            pv = named[m['at']][1]
+            p0, p1, p2 = pts
+            # the corner is the sum of the two legs
+            if math.hypot(p1[0] - (p0[0] + p2[0] - pv[0]), p1[1] - (p0[1] + p2[1] - pv[1])) > POS_TOL:
+                errors.append('SOLID_RIGHT_ANGLE_CORNER:' + mid)
+            # each leg lies along (and on the correct side of) the projected ray
+            for leg, vec in ((p0, e1), (p2, e2)):
+                d = (leg[0] - pv[0], leg[1] - pv[1])
+                q = project(V)
+                q1 = project(vadd(V, vec))
+                ray = ((q1[0] - q[0]) * scale, -(q1[1] - q[1]) * scale)
+                if d[0] * ray[0] + d[1] * ray[1] <= 0 or not _parallel(d, ray):
+                    errors.append('SOLID_RIGHT_ANGLE_RAY_MISMATCH:' + mid)
+            q1 = project(vadd(V, e1))
+            q2 = project(vadd(V, e2))
+            s1 = max(1e-9, scale * math.hypot(q1[0] - project(V)[0], q1[1] - project(V)[1]))
+            s2 = max(1e-9, scale * math.hypot(q2[0] - project(V)[0], q2[1] - project(V)[1]))
+            l0, l1 = math.hypot(p0[0] - pv[0], p0[1] - pv[1]), math.hypot(p2[0] - pv[0], p2[1] - pv[1])
+            if abs(l0 / s1 - l1 / s2) > 0.05 * max(1.0, l0 / s1) or l0 < 3.0:
+                errors.append('SOLID_RIGHT_ANGLE_SIZE:' + mid)
+        elif role == 'angle-mark':
+            mid = el.get('data-mark')
+            idx = int(el.get('data-mark-index') or 0)
+            drawn_angles.setdefault(mid, []).append((idx, int(el.get('data-mark-count') or 0), _points(el.get('points'))))
+    for mid in right:
+        if mid not in drawn_right:
+            errors.append('SOLID_RIGHT_ANGLE_MARK_MISSING:' + mid)
+    for mid, rings in drawn_angles.items():
+        if mid not in angles:
+            errors.append('SOLID_ANGLE_MARK_UNKNOWN:' + str(mid))
+            continue
+        m = angles[mid]
+        if len(rings) != m.get('arcs', 1) or any(c != m.get('arcs', 1) for _, c, _ in rings):
+            errors.append('SOLID_ANGLE_MARK_COUNT:' + mid)
+            continue
+        A, V, B = named[m['refs'][0]][2], named[m['refs'][1]][2], named[m['refs'][2]][2]
+        e1, e2 = vunit(vsub(A, V)), vunit(vsub(B, V))
+        theta = math.acos(max(-1.0, min(1.0, vdot(e1, e2))))
+        if abs(math.degrees(theta) - m.get('value', math.degrees(theta))) > 0.5:
+            errors.append('SOLID_ANGLE_MARK_VALUE:' + mid)
+        w = vunit(vsub(e2, vmul(e1, vdot(e1, e2))))
+        pv = named[m['refs'][1]][1]
+        for idx, _, pts in rings:
+            if len(pts) < 3:
+                errors.append('SOLID_ANGLE_MARK_GEOMETRY:' + mid)
+                continue
+            # the three ends: first/last on the rays, all points the same 3D radius from the vertex
+            for q, vec in ((pts[0], e1), (pts[-1], e2)):
+                d = (q[0] - pv[0], q[1] - pv[1])
+                rq = project(vadd(V, vec))
+                ray = ((rq[0] - project(V)[0]) * scale, -(rq[1] - project(V)[1]) * scale)
+                if d[0] * ray[0] + d[1] * ray[1] <= 0 or not _parallel(d, ray):
+                    errors.append('SOLID_ANGLE_MARK_ENDPOINT:' + mid)
+            k_world = None
+            for stage in range(24):
+                t = theta * stage / 24
+                q = project(vadd(V, vmul(vadd(vmul(e1, math.cos(t)), vmul(w, math.sin(t))), 1.0)))
+                if stage == 0:
+                    k_world = math.hypot(pts[0][0] - pv[0], pts[0][1] - pv[1]) / max(1e-9, scale * math.hypot(q[0] - project(V)[0], q[1] - project(V)[1]))
+            for stage in range(24):
+                t = theta * stage / 24
+                q = project(vadd(V, vmul(vadd(vmul(e1, math.cos(t)), vmul(w, math.sin(t))), k_world)))
+                qv = project(V)
+                want = (pv[0] + scale * (q[0] - qv[0]), pv[1] - scale * (q[1] - qv[1]))
+                if math.hypot(want[0] - pts[stage][0], want[1] - pts[stage][1]) > POS_TOL:
+                    errors.append('SOLID_ANGLE_MARK_GEOMETRY:' + mid)
+                    break
+    for mid in angles:
+        if mid not in drawn_angles:
+            errors.append('SOLID_ANGLE_MARK_MISSING:' + mid)
+    # equal-length ticks: two short strokes perpendicular to the projected segment at its middle
+    groups = {}
+    for el in root.iter(NS + 'line'):
+        if el.get('data-role') != 'equal-mark':
+            continue
+        mid = el.get('data-mark')
+        edge = el.get('data-edge') or ''
+        idx = int(el.get('data-mark-index') or 0)
+        cnt = int(el.get('data-mark-count') or 0)
+        groups.setdefault((mid, edge), []).append((idx, cnt, el))
+        if mid not in equal:
+            errors.append('SOLID_EQUAL_MARK_UNKNOWN:' + str(mid))
+            continue
+        g = equal[mid]
+        a, b = edge[0], edge[1]
+        if a not in named or b not in named or [a, b] not in g['segments'] and [b, a] not in g['segments']:
+            errors.append('SOLID_EQUAL_MARK_SEGMENT:' + mid)
+            continue
+        La = vlen(vsub(named[a][2], named[b][2]))
+        ref = vlen(vsub(named[g['segments'][0][0]][2], named[g['segments'][0][1]][2]))
+        if abs(La - ref) > 1e-6 * max(1.0, ref):
+            errors.append('SOLID_EQUAL_MARK_LENGTH:' + mid + ':' + edge)
+        p, q = (_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2'))
+        pa, pb = named[a][1], named[b][1]
+        dx, dy = pb[0] - pa[0], pb[1] - pa[1]
+        L = math.hypot(dx, dy)
+        if L <= 0:
+            errors.append('SOLID_EQUAL_MARK_SEGMENT:' + mid)
+            continue
+        tx, ty = p[0] - q[0], p[1] - q[1]
+        if abs(tx * dx + ty * dy) > 1e-3 * max(1.0, math.hypot(tx, ty) * L):
+            errors.append('SOLID_EQUAL_MARK_NOT_PERPENDICULAR:' + mid)
+        if abs(math.hypot(tx, ty) - 11.0) > POS_TOL:
+            errors.append('SOLID_EQUAL_MARK_SIZE:' + mid)
+        mid_seg = ((pa[0] + pb[0]) / 2, (pa[1] + pb[1]) / 2)
+        c = ((p[0] + q[0]) / 2, (p[1] + q[1]) / 2)
+        if math.hypot(c[0] - mid_seg[0], c[1] - mid_seg[1]) > POS_TOL:
+            errors.append('SOLID_EQUAL_MARK_NOT_AT_MIDDLE:' + mid)
+    for (mid, edge), items in groups.items():
+        if mid not in equal:
+            continue
+        count = equal[mid].get('count', 1)
+        idxs = sorted(i for i, _, _ in items)
+        if idxs != list(range(1, count + 1)) or any(c != count for _, c, _ in items):
+            errors.append('SOLID_EQUAL_MARK_COUNT:' + mid)
+    for mid, g in equal.items():
+        for a, b in g['segments']:
+            if (mid, a + b) not in groups and (mid, b + a) not in groups:
+                errors.append('SOLID_EQUAL_MARK_MISSING:%s:%s%s' % (mid, a, b))
 
 
 def check_dim_lines(plan, ctx):
-    pass
+    """The level, level-radius and round height dimension lines run along the model's axis and the level circle."""
+    root, frames, scale = ctx.get('root'), ctx.get('px') or {}, ctx.get('scale')
+    if root is None or scale is None:
+        return
+    solids = {s['id']: s for s in (ctx.get('solids') or [])}
+    section = plan.get('section') or {}
+    dims = plan.get('dims') or []
+    for el in root.iter(NS + 'line'):
+        if el.get('data-role') != 'dim-line':
+            continue
+        kind = el.get('data-kind')
+        dim = el.get('data-dim') or ''
+        m = re.fullmatch(r'dim-(\d+)', dim)
+        if kind not in ('LEVEL', 'RADIUS', 'HEIGHT') or not m:
+            continue
+        k = int(m.group(1)) - 1
+        if k < 0 or k >= len(dims):
+            continue
+        d = dims[k]
+        sid = d.get('solid')
+        if sid is None:
+            if kind == 'LEVEL': sid = section.get('solid')
+            if sid is None:
+                sid = next((x['id'] for x in solids.values() if x['cat'] == 'REV'), None)
+        solid = solids.get(sid)
+        if solid is None or solid['cat'] == 'POLY' or sid not in frames:
+            continue
+        Tx, Ty = frames[sid]
+        cos_p = math.cos(PITCH)
+        y_of = lambda z: Ty - scale * z * cos_p
+        if kind == 'HEIGHT':
+            want = ((Tx, y_of(0.0)), (Tx, y_of(solid['height'])))
+        elif kind == 'LEVEL':
+            mm = re.fullmatch(r'(\d+)/(\d+)', section.get('at') or '')
+            if not mm:
+                continue
+            zl = int(mm.group(1)) / int(mm.group(2)) * solid['height']
+            want = ((Tx, y_of(0.0)), (Tx, y_of(zl)))
+        else:
+            if d.get('radius') != 'level':
+                continue
+            mm = re.fullmatch(r'(\d+)/(\d+)', section.get('at') or '')
+            if not mm:
+                continue
+            f = int(mm.group(1)) / int(mm.group(2))
+            zl = f * solid['height']
+            rl = solid['r0'] + (solid['r1'] - solid['r0']) * f
+            want = ((Tx, y_of(zl)), (Tx + scale * rl, y_of(zl)))
+        got = ((_num(el, 'x1'), _num(el, 'y1')), (_num(el, 'x2'), _num(el, 'y2')))
+        if any(math.hypot(got[i][0] - want[i][0], got[i][1] - want[i][1]) > POS_TOL for i in (0, 1)):
+            ctx['errors'].append('SOLID_DIM_LINE_MISMATCH:' + dim + ':' + str(kind))
 
 
 # --- labels --------------------------------------------------------------------------------------------------------------------------------
@@ -658,6 +956,10 @@ def audit_labels(plan, ctx):
     # every stroke on the figure is an obstacle for labels (a label's own leader line touches it by design)
     for e in root.iter(NS + 'line'):
         segs.append((((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')))[0], ((_num(e, 'x1'), _num(e, 'y1')), (_num(e, 'x2'), _num(e, 'y2')))[1], e.get('data-label') if e.get('data-role') == 'leader' else None))
+    for e in root.iter(NS + 'polyline'):
+        pts = _points(e.get('points'))
+        for i in range(len(pts) - 1):
+            segs.append((pts[i], pts[i + 1], None))
     for e in root.iter(NS + 'path'):
         if e.get('d') and e.get('data-role') in ('ellipse-arc', 'sphere-outline'):
             x0, y0, rx, ry, large, sweep, x1, y1 = _parse_arc(e.get('d'))
@@ -743,6 +1045,7 @@ def expected_dim_values(plan, ctx):
     if plan.get('net') is not None:
         return ctx.get('net_dims') or {}
     solids = ctx.get('solids') or []
+    dim_solid = {}
     for k, d in enumerate(plan.get('dims') or []):
         ident = 'dim-%d' % (k + 1)
         symbolic = d.get('label') is not None and label_number(d['label']) is None
@@ -762,16 +1065,22 @@ def expected_dim_values(plan, ctx):
                         if d.get('radius') is not None and s['cat'] in ('REV', 'SPHERE'): solid = s; break
                         if d.get('slant') is not None and s['kind'] in ('CONE', 'CONE_FRUSTUM'): solid = s; break
                         if d.get('height') is not None and (s['cat'] == 'REV' or s['kind'] in ('PYRAMID', 'FRUSTUM')): solid = s; break
+                dim_solid[ident] = solid['id']
                 if d.get('radius') is not None:
                     which = d['radius']
-                    val = solid['r1'] if which == 'top' else solid['r']
-                    if which == 'top' and solid['kind'] == 'CYLINDER': val = solid['r']
+                    if which == 'center': val = solid['r0']
+                    elif which == 'level':
+                        m = re.fullmatch(r'(\d+)/(\d+)', (plan.get('section') or {}).get('at') or '')
+                        f = int(m.group(1)) / int(m.group(2))
+                        val = solid['r0'] + (solid['r1'] - solid['r0']) * f
+                    elif which == 'bottom': val = solid['r0']
+                    else: val = solid['r1']
                     out[ident] = (val, None, symbolic)
                 elif d.get('level') is not None:
                     m = re.fullmatch(r'(\d+)/(\d+)', (plan.get('section') or {}).get('at') or '')
                     out[ident] = (int(m.group(1)) / int(m.group(2)) * solid['height'], None, symbolic)
                 elif d.get('height') is not None: out[ident] = (solid['height'], None, symbolic)
-                else: out[ident] = (math.hypot(solid['r'] - solid['r1'], solid['height']), None, symbolic)
+                else: out[ident] = (math.hypot(solid['r1'] - solid['r0'], solid['height']), None, symbolic)
         except (KeyError, TypeError):
             ctx['errors'].append('SOLID_DIM_PLAN_UNRESOLVED:' + ident)
     # the segments of radius / height / slant dimensions come from the drawn dim-lines (data-dim) or the silhouette; resolved in px by the dim line
@@ -783,7 +1092,8 @@ def expected_dim_values(plan, ctx):
         ident = 'dim-%d' % (k + 1)
         if d.get('slant') is not None and ident in out:
             v, _, s = out[ident]
-            sil = [e for e in ctx['root'].iter(NS + 'line') if e.get('data-role') == 'silhouette' and e.get('data-side') == 'RIGHT']
+            sid = dim_solid.get(ident)
+            sil = [e for e in ctx['root'].iter(NS + 'line') if e.get('data-role') == 'silhouette' and e.get('data-side') == 'RIGHT' and (sid is None or e.get('data-solid') == sid)]
             if sil: out[ident] = (v, ((_num(sil[0], 'x1'), _num(sil[0], 'y1')), (_num(sil[0], 'x2'), _num(sil[0], 'y2'))), s)
     # which vertex names must be labelled: every named vertex of every solid
     names = []

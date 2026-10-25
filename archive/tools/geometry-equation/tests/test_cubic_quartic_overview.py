@@ -59,13 +59,77 @@ class CubicQuarticOverview(unittest.TestCase):
         self.assertEqual(zero_rows[0]['roles'],['ROOT','STATIONARY_INFLECTION','INFLECTION'])
         self.assertEqual(zero_rows[0]['multiplicity'],{'root':3,'derivative':2,'secondDerivative':1})
 
+    def test_repeated_roots_keep_their_exact_multiplicity_and_roles(self):
+        cases=[
+            (['2','-3','0','1'],[(0.0,-2.0,1),(0.0,1.0,2)]),
+            (['-1/4','-3/4','0','1'],[(0.0,-0.5,2),(0.0,1.0,1)]),
+            (['0','0','0','1'],[(0.0,0.0,3)]),
+        ]
+        for coefficients,expected in cases:
+            with self.subTest(coefficients=coefficients):
+                graph=framed(coefficients)
+                self.assertEqual(graph['overviewFeaturePolicy']['repeatedSourceRootPolicy'],'EXACT_MULTIPLICITY')
+                self.assertEqual(graph['overviewFeaturePolicy']['tangencyPolicy'],'TOUCHES_AXIS_EVEN_CROSSES_ODD')
+                roots=[(row['y'],row['x'],row['multiplicity']['root']) for row in graph['overviewFeatures'] if row.get('kind')=='POLYNOMIAL_FEATURE' and 'ROOT' in row['roles']]
+                self.assertEqual(roots,expected)
+                model=produce(graph)
+                result=audit(graph,model['svg'],scale_transform(model['transform'],1.0))
+                self.assertEqual(result['status'],'PASS',result['errors'])
+                self.assertEqual([(row['multiplicity']) for row in result['overview']['rootMultiplicities']],[row[2] for row in expected])
+        triple=[row for row in framed(['0','0','0','1'])['overviewFeatures'] if row.get('kind')=='POLYNOMIAL_FEATURE']
+        self.assertEqual(triple[0]['roles'],['ROOT','STATIONARY_INFLECTION','INFLECTION'])
+        self.assertEqual(triple[0]['multiplicity'],{'root':3,'derivative':2,'secondDerivative':1})
+
+    def test_irrational_repeated_roots_are_drawn_at_their_exact_touch_points(self):
+        graph=framed(['4','0','-4','0','1']) # (x^2-2)^2
+        roots=[row for row in graph['overviewFeatures'] if row.get('kind')=='POLYNOMIAL_FEATURE' and 'ROOT' in row['roles']]
+        self.assertEqual([row['multiplicity']['root'] for row in roots],[2,2])
+        self.assertAlmostEqual(roots[0]['x'],-2**.5,places=9)
+        self.assertAlmostEqual(roots[1]['x'],2**.5,places=9)
+        for row in roots:self.assertLess(abs(row['y']),1e-8)
+        model=produce(graph)
+        self.assertEqual(audit(graph,model['svg'],scale_transform(model['transform'],1.0))['status'],'PASS')
+        # The final composed figure is audited at the 610x420 overview canvas (plot 406x356), the same plot the model now uses.
+        v=graph['viewport'];sx=406/(v[1]-v[0]);sy=356/(v[3]-v[2])
+        transform={'originX':32+(0-v[0])*sx,'originY':32+(v[3]-0)*sy,'sx':sx,'sy':sy,'displayScale':1.0}
+        self.assertEqual(audit(graph,model['svg'],transform)['status'],'PASS')
+
+    def test_tangent_root_crossing_in_the_final_polyline_fails(self):
+        graph=framed(['2','-3','0','1']);model=produce(graph);transform=scale_transform(model['transform'],1.0)
+        root=ET.fromstring(model['svg']);curve=next(node for node in root.iter() if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve')
+        pairs=[tuple(float(v) for v in point.split(',')) for point in curve.get('points','').split()]
+        root_screen_x=transform['originX']+1.0*transform['sx']
+        tampered=[(x,y+8.0 if root_screen_x<x<=root_screen_x+30 else y) for x,y in pairs]
+        curve.set('points',' '.join(f'{x:.12g},{y:.12g}' for x,y in tampered))
+        result=audit(graph,ET.tostring(root,encoding='unicode'),transform)
+        self.assertIn('OVERVIEW_EVEN_ROOT_CROSSES_AXIS',result['errors'])
+
+    def test_triple_root_must_cross_with_a_flat_band(self):
+        graph=framed(['0','0','0','1']);model=produce(graph);transform=scale_transform(model['transform'],1.0)
+        root=ET.fromstring(model['svg']);curve=next(node for node in root.iter() if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve')
+        pairs=[tuple(float(v) for v in point.split(',')) for point in curve.get('points','').split()]
+        root_screen_x=transform['originX']
+        tampered=[(x,transform['originY']-(x-root_screen_x) if abs(x-root_screen_x)<=60 else y) for x,y in pairs]
+        curve.set('points',' '.join(f'{x:.12g},{y:.12g}' for x,y in tampered))
+        result=audit(graph,ET.tostring(root,encoding='unicode'),transform)
+        self.assertIn('OVERVIEW_ODD_ROOT_NOT_FLAT',result['errors'])
+
+    def test_declared_repeated_root_multiplicity_and_tangency_policy_are_bound(self):
+        graph=framed(['2','-3','0','1']);model=produce(graph);transform=scale_transform(model['transform'],1.0)
+        features=[{**row,'multiplicity':{**row['multiplicity'],'root':1}} if row.get('id')=='feature-4' else row for row in graph['overviewFeatures']]
+        self.assertIn('OVERVIEW_FEATURE_INVENTORY_MISMATCH',audit({**graph,'overviewFeatures':features},model['svg'],transform)['errors'])
+        policy={**graph['overviewFeaturePolicy'],'tangencyPolicy':'UNSUPPORTED'}
+        self.assertIn('OVERVIEW_FEATURE_POLICY_BINDING_MISMATCH',audit({**graph,'overviewFeaturePolicy':policy},model['svg'],transform)['errors'])
+
     def test_repeated_roots_and_restricted_domains_fail_closed(self):
-        with self.assertRaisesRegex(ValueError,'UNSUPPORTED_CUBIC_QUARTIC_REPEATED_ROOT'):
-            framed(['2','-3','0','1']) # (x - 1)^2(x + 2)
         with self.assertRaisesRegex(ValueError,'CUBIC_QUARTIC_REQUIRES_ALL_REALS_SOURCE_DOMAIN'):
             fit_overview(plan(['0','-3','0','1'],source_domain={'kind':'INTERVAL','range':['-2','2']}))
         with self.assertRaisesRegex(ValueError,'CUBIC_QUARTIC_REQUIRES_ALL_REALS_SOURCE_DOMAIN'):
             fit_overview(plan(['0','-3','0','1']))
+        with self.assertRaisesRegex(ValueError,'UNSUPPORTED_CUBIC_QUARTIC_DEGREE'):
+            from fractions import Fraction
+            from graph_framing import _fit_cubic_quartic
+            _fit_cubic_quartic({'sourceDomain':{'kind':'ALL_REALS'},'domain':[-2,2],'viewport':[-2,2,-2,2]},[Fraction(1),Fraction(0),Fraction(0),Fraction(0),Fraction(0),Fraction(1)])
 
     def test_clustered_roots_are_unsupported_at_actual_display_scale(self):
         graph=framed(['0','1/100000000','-100000001/100000000','1'])
