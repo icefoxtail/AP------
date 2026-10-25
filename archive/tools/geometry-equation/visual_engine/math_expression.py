@@ -8,7 +8,7 @@ import re
 
 FUNCTIONS={'sqrt':math.sqrt,'sin':math.sin,'cos':math.cos,'tan':math.tan,
            'log':math.log,'ln':math.log,'exp':math.exp,'abs':abs}
-CALL_SYMBOLS=set('fghpq')
+CALL_SYMBOLS=set('fghpq')|{'logb'}
 TOKEN=re.compile(r'\s*(\d+(?:\.\d+)?|[A-Za-zαβθπ]+|<=|>=|!=|[+*/^_\-=<>()\x27,])')
 
 @dataclass(frozen=True)
@@ -120,6 +120,12 @@ def serialize(node,mode='tex'):
         return s(a[0])+('′' if k=='prime' else '_'+tail)
     if k=='call':
         name=a[0].value if a[0].kind=='symbol' else ''
+        if name=='logb':
+            if len(a)!=3:raise ValueError('FUNCTION_ARITY')
+            base=s(a[1]);arg=s(a[2])
+            if mode=='tex':return r'\log_{'+base+r'}\left('+arg+r'\right)'
+            if mode=='svg':return 'log<tspan baseline-shift="sub" font-size="70%">'+base+'</tspan>('+arg+')'
+            return 'log_'+base+'('+arg+')'
         if name=='sqrt':return ('\\sqrt{'+s(a[1])+'}') if mode=='tex' else '√('+s(a[1])+')'
         if name=='abs':return r'\left|'+s(a[1])+r'\right|' if mode=='tex' else '|'+s(a[1])+'|'
         if mode=='tex' and name=='ln':fn=r'\ln'
