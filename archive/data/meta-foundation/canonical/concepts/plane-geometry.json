@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "PLANE_GEOMETRY",
-  "shardVersion": "1.3.2",
+  "shardVersion": "1.3.3",
   "status": "ACTIVE",
-  "conceptCount": 23,
+  "conceptCount": 24,
   "concepts": [
     {
       "conceptKey": "CC_ANGLE_BISECTOR",
@@ -908,6 +908,21 @@
           }
         }
       ]
+    },
+    {
+      "conceptKey": "CC_GEOMETRIC_PERIMETER_CONSTRAINT",
+      "canonicalLabelKo": "둘레 조건에 따른 변의 관계",
+      "definition": "도형의 둘레 고정 조건을 변 길이 사이의 선형 관계로 세워 넓이 모델에 반영하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_943ba771369d8ef5116226df3e5a573bcb6e4644cfb274c149da721d6e52c717"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
     }
   ]
 }

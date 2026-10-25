@@ -102,6 +102,7 @@ def _fit_cubic_quartic(plan,coefficients):
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 def fit_overview(plan):
+    if 'regions' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
     if plan.get('family')=='rational':return _fit_rational_overview(plan)
     if plan.get('family')=='sqrt-affine':return _fit_sqrt_affine_general_overview(plan) if _sqrt_affine_general_plan(plan) else _fit_sqrt_affine_overview(plan)
@@ -1025,7 +1026,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote','regions'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
@@ -1033,6 +1034,10 @@ PIECEWISE_POLY_MAX_PIECES=4
 # A reference curve may list as many crossings as four piece pairs can produce in a readable figure.
 PIECEWISE_POLY_MAX_CURVE_INTERSECTIONS=8
 PIECEWISE_POLY_MAX_REQUIRED_POINTS=24
+# Shaded regions between two drawn boundaries (the function, a reference curve, a reference line or the x-axis).
+PIECEWISE_POLY_REGION_FIELDS={'id','upper','lower','from','to','fill','label'}
+PIECEWISE_POLY_MAX_REGIONS=4
+PIECEWISE_POLY_REGION_FILLS=('LIGHT','MEDIUM')
 
 def _pp_rational(value,code):
     """An exact rational: a decimal integer, an 'a/b' string, or a JSON integer."""
@@ -1375,6 +1380,80 @@ def piecewise_reference_crossings(pieces,intervals,source,ref):
                 if not any(pp_same(root,seen) for seen in found):found.append(root)
     return sorted(found,key=lambda value:float(value))
 
+
+def _pp_region_rows(name,from_x,to_x,pieces,intervals,refs,line_specs,region_id):
+    """The exact boundary rows of one region side, clipped to [from,to]. A boundary must cover the whole interval: a gap is refused."""
+    if name=='axis':
+        return [([S.Integer(0),S.Integer(0),S.Integer(0)],(from_x,to_x))]
+    if name=='f':
+        rows=[]
+        for coefficients,(a,b) in zip(pieces,intervals):
+            start=from_x if a is None else max(from_x,a);end=to_x if b is None else min(to_x,b)
+            if start<end:rows.append((coefficients,(start,end)))
+    else:
+        rows=[]
+        match=[row for row in refs if row['id']==name]
+        if match:
+            for coefficients,(a,b) in zip(match[0]['pieces'],match[0]['intervals']):
+                start=from_x if a is None else max(from_x,a);end=to_x if b is None else min(to_x,b)
+                if start<end:rows.append((coefficients,(start,end)))
+        elif name in line_specs:
+            slope,intercept=line_specs[name]
+            rows.append(([intercept,slope,S.Integer(0)],(from_x,to_x)))
+        else:raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+region_id+':'+name)
+    rows.sort(key=lambda row:float(row[1][0]))
+    if not rows or not pp_same(rows[0][1][0],from_x):raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+name)
+    for (_,first),(_,(next_start,_)) in zip(rows,rows[1:]):
+        if not pp_same(first[1],next_start):raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+name)
+    if not pp_same(rows[-1][1][1],to_x):raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+name)
+    return rows
+
+def _pp_region_crossings(upper_rows,lower_rows,region_id):
+    """Refuse a region whose upper boundary does not stay strictly above its lower one inside (from,to). Endpoint touching is allowed."""
+    for upper,upper_interval in upper_rows:
+        for lower,lower_interval in lower_rows:
+            start=max(upper_interval[0],lower_interval[0]);end=min(upper_interval[1],lower_interval[1])
+            if not start<end:continue
+            difference=[upper[i]-lower[i] for i in range(3)]
+            roots=pp_quadratic_roots(*difference)
+            if roots is None:raise ValueError('GRAPH_REGION_EMPTY:'+region_id)
+            if any(start<root<end for root in roots):raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
+            if float(_pp_poly_value(difference,(start+end)/2))<=0:raise ValueError('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id)
+
+def piecewise_polynomial_regions(plan,pieces,intervals,refs,line_specs):
+    """Validate graphPlan.regions and freeze their exact boundary rows. A region is a closed band between two drawn boundaries over [from,to]:
+    upper/lower name 'f' (the function), 'axis' (y=0), a referenceCurve id or a referenceLine id. The engine samples the rows, so the
+    boundary is the drawn curve itself; the independent observer recomputes the same rows and checks the final fill polygon."""
+    raw=plan.get('regions')
+    if raw is None:return []
+    if not isinstance(raw,list) or len(raw)>PIECEWISE_POLY_MAX_REGIONS:raise ValueError('GRAPH_REGION_COUNT_INVALID')
+    ids=set();rows=[]
+    for entry in raw:
+        if not isinstance(entry,dict):raise ValueError('GRAPH_REGION_FIELD_INVALID')
+        unknown=sorted(set(entry)-PIECEWISE_POLY_REGION_FIELDS)
+        if unknown:raise ValueError('GRAPH_REGION_FIELD_UNKNOWN:'+str(unknown[0]))
+        if not {'id','upper','lower','from','to'}<=set(entry):raise ValueError('GRAPH_REGION_FIELD_INVALID')
+        region_id=entry['id']
+        if not isinstance(region_id,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_-]{0,31}',region_id):raise ValueError('GRAPH_REGION_ID_INVALID')
+        if region_id in ids:raise ValueError('GRAPH_REGION_ID_DUPLICATE:'+region_id)
+        ids.add(region_id)
+        if not isinstance(entry['upper'],str) or not isinstance(entry['lower'],str):raise ValueError('GRAPH_REGION_FIELD_INVALID:'+region_id)
+        try:from_x=pp_exact_value(entry['from']);to_x=pp_exact_value(entry['to'])
+        except ValueError:raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+region_id) from None
+        if not float(from_x)<float(to_x) or abs(float(from_x))>1e6 or abs(float(to_x))>1e6:raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+region_id)
+        fill=entry.get('fill','LIGHT')
+        if fill not in PIECEWISE_POLY_REGION_FILLS:raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+region_id)
+        label=entry.get('label')
+        if label is not None and (not isinstance(label,str) or not label.strip() or len(label)>40):raise ValueError('GRAPH_REGION_LABEL_INVALID:'+region_id)
+        upper=_pp_region_rows(entry['upper'],from_x,to_x,pieces,intervals,refs,line_specs,region_id)
+        lower=_pp_region_rows(entry['lower'],from_x,to_x,pieces,intervals,refs,line_specs,region_id)
+        _pp_region_crossings(upper,lower,region_id)
+        rows.append({'id':region_id,'upper':entry['upper'],'lower':entry['lower'],'from':_pp_text(from_x),'to':_pp_text(to_x),'fromValue':float(from_x),'toValue':float(to_x),
+                     'fill':fill,**({'label':label} if label is not None else {}),
+                     'upperRows':[{'coefficients':[_pp_text(value) for value in coefficients],'interval':[_pp_text(interval[0]),_pp_text(interval[1])]} for coefficients,interval in upper],
+                     'lowerRows':[{'coefficients':[_pp_text(value) for value in coefficients],'interval':[_pp_text(interval[0]),_pp_text(interval[1])]} for coefficients,interval in lower]})
+    return rows
+
 def fit_piecewise_polynomial(plan):
     if 'functionName' in plan and not (isinstance(plan['functionName'],str) and re.fullmatch(r'[a-hj-wz]',plan['functionName'])):raise ValueError('PIECEWISE_POLY_FUNCTION_NAME_INVALID')
     if 'sampleNote' in plan and (not isinstance(plan['sampleNote'],str) or not re.fullmatch(r'[0-9A-Za-z=+\-*/(). ]{1,32}',plan['sampleNote']) or not plan['sampleNote'].strip()):raise ValueError('PIECEWISE_POLY_SAMPLE_NOTE_INVALID')
@@ -1472,7 +1551,7 @@ def fit_piecewise_polynomial(plan):
     # The claimed intersection x values must be exactly the engine's own crossings, in increasing order.
     lines=plan.get('referenceLines',[])
     if not isinstance(lines,list) or len(lines)>3:raise ValueError('PIECEWISE_POLY_REFERENCE_LINES_INVALID')
-    crossings=[];line_ids=set()
+    crossings=[];line_ids=set();line_specs={}
     for line in lines:
         if not isinstance(line,dict) or not isinstance(line.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',line['id']) or line['id'] in line_ids or not isinstance(line.get('intersectionX'),list) or len(line['intersectionX'])>6 or line.get('labelIntersections',False) not in (True,False):raise ValueError('PIECEWISE_POLY_REFERENCE_LINE_INVALID')
         keys=set(line)-{'id','intersectionX','labelIntersections'}
@@ -1485,6 +1564,7 @@ def fit_piecewise_polynomial(plan):
             if slope==0:raise ValueError('PIECEWISE_POLY_SLANTED_LINE_SLOPE_ZERO')
             if line.get('labelIntersections',False):raise ValueError('PIECEWISE_POLY_SLANTED_LINE_LABELS_UNSUPPORTED')
         else:level=pp_surd(line['y'],'PIECEWISE_POLY_REFERENCE_LINE_INVALID')
+        line_specs[line['id']]=(slope,level)
         line_radicands={r for r in (pp_radicand(slope),pp_radicand(level)) if r is not None}|{r for r in (pp_radicand(c) for piece in pieces for c in piece) if r is not None}|{r for r in (pp_radicand(v) for pair in breaks for v in pair) if r is not None}
         if len(line_radicands)>1:raise ValueError('PIECEWISE_POLY_IRRATIONAL_RADICANDS_MIXED:'+','.join(str(r) for r in sorted(line_radicands)))
         exact=piecewise_polynomial_crossings(pieces,intervals,level,source,slope)
@@ -1522,6 +1602,8 @@ def fit_piecewise_polynomial(plan):
             if key_point is not None:entry['keyPoint']=key_point['id']
             points.append(entry)
         curve_crossings.append({'curveId':row['id'],'points':points})
+    # Shaded graph regions (graphPlan.regions): exact boundary rows against the function, the x-axis, a reference curve or a line.
+    regions=piecewise_polynomial_regions(plan,pieces,intervals,refs,line_specs)
     key=[(float(x_value),float(y_value)) for x_value,y_value in corners]+[(float(x_value),float(y_value)) for x_value,y_value,_ in extrema]+required_xy
     key+=[(point['xValue'],point['yValue'] if 'slope' in row else pp_exact_float(row['y'])) for row in crossings for point in row['points']]
     key+=[(0.0,pp_exact_float(row['intercept'] if 'slope' in row else row['y'])) for row in crossings if not row['points']]
@@ -1556,6 +1638,8 @@ def fit_piecewise_polynomial(plan):
             return near
         left_x,right_x=arm(min(xs),-1),arm(max(xs),1)
         ends=[(left_x,g_float(left_x)),(right_x,g_float(right_x))]
+    for region in regions:
+        if region['fromValue']<ends[0][0]-1e-9 or region['toValue']>ends[1][0]+1e-9:raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+region['id'])
     for attempt in range(2):
         ref_end_points=[(end[0],value) for end in ends for value in (ref_float(row,end[0]) for row in refs) if value is not None]
         points=[(0.0,0.0)]+key+ends+ref_end_points
@@ -1582,6 +1666,8 @@ def fit_piecewise_polynomial(plan):
         start=draw[0] if a is None else float(a);end=draw[1] if b is None else float(b)
         piece_rows.append({'coefficients':[_pp_text(c) for c in coefficients],'interval':[None if a is None else _pp_text(a),None if b is None else _pp_text(b)],'drawInterval':[start,end]})
     features={'schemaVersion':'PIECEWISE_POLYNOMIAL_FEATURES_v1','pieces':piece_rows,'corners':[{'x':_pp_text(x_value),'y':_pp_text(y_value)} for x_value,y_value in corners],'extrema':[{'x':_pp_text(x_value),'y':_pp_text(y_value),'kind':kind} for x_value,y_value,kind in extrema],'intersections':crossings}
+    if regions:
+        features['regions']=[{'id':row['id'],'upper':row['upper'],'lower':row['lower'],'from':row['from'],'to':row['to'],'domain':[row['fromValue'],row['toValue']],'fill':row['fill'],**({'label':row['label']} if 'label' in row else {}),'upperRows':row['upperRows'],'lowerRows':row['lowerRows']} for row in regions]
     if refs:
         ref_rows=[]
         for row in refs:

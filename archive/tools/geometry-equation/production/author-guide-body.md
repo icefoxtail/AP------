@@ -17,7 +17,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 발문 그림: 학생이 문제를 읽을 때 봐야 하는 주어진 조건만 그린다. 구하는 값, 풀이로 얻는 점, 정답을 암시하는 표시는 넣지 않는다. 엔진은 이를 강제하지 않으므로 작성자가 지킨다.
 - 해설 그림: 풀이의 결정적 관계를 보여 준다. 접점, 교점, 꼭짓점, 대칭점, 수선의 발, 구간에서의 최대·최소, 부등식의 해집합 등.
 - 풀이가 순수 계산(전개, 인수분해, 방정식 풀이)이고 공간이나 그래프 관계가 없으면 그림을 만들지 않고 `{"status":"EXEMPT","reason":"한 문장"}`을 쓴다.
-- 엔진이 못 그리는 것(세로선, 색칠 영역, 삼차 이상 그래프와 직선 조합, 정다면체나 입체 안의 입체)은 `{"status":"UNSUPPORTED","reason":"필요한 것"}`을 쓴다. 비슷하게 억지로 그리지 않는다.
+- 엔진이 못 그리는 것(세로선, 삼차 이상 그래프와 직선 조합, 정다면체나 입체 안의 입체)은 `{"status":"UNSUPPORTED","reason":"필요한 것"}`을 쓴다. 비슷하게 억지로 그리지 않는다. 그래프의 색칠 영역은 아래 3-6-영역의 `graphPlan.regions`로, 중학교 평면도형의 색칠은 3-9의 `planeMarks.regions`로 그린다.
 - 발문 그림과 해설 그림은 별개의 plan이다. 각각 따로 쓴다.
 
 ## 3. 어떤 plan을 쓰는가
@@ -33,6 +33,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 수직선만 필요한 풀이(두 부등식 해의 교집합, 끝점이 a에 따라 움직이는 해집합, 정수해, 수직선 위 내분점): `number-line-figure-v1`. `numberLine.rows`에 해집합을 한 줄씩(`SET`) 쓰면 같은 눈금 위에 겹쳐 그려지고, `RESULT` 줄은 위 줄들의 공통 범위를 엔진이 계산해 마지막 줄로 그린다(그 끝점은 직접 쓰지 않는다). 한 줄은 구간 한두 조각(`x<-1 또는 x>2`는 두 조각)이고, 끝점은 `{"value":"-1","state":"OPEN"}`(OPEN은 <, >, CLOSED는 ≤, ≥), 끝이 무한이면 `null`, 끝이 근호이면 정확한 문자열 `{"value":"-sqrt(10)","state":"OPEN"}`(`p+q*sqrt(r)` 꼴, 한 plan에 근호 하나; 소수는 안 된다, 관련 오류 `NUMBER_LINE_VALUE_INVALID`/`NUMBER_LINE_RADICALS_MIXED`; 근호 끝값이 다른 끝과 너무 가까우면(`3`과 `sqrt(10)`) `NUMBER_LINE_LABELS_TOO_CLOSE`이니 공통 범위 줄(RESULT)을 빼고 줄만 비교한다), 끝이 a에 따라 움직이면 `{"param":{"mul":"1/3","add":"2/3"},"state":"OPEN"}`(=mul*a+add, 라벨은 분수가 세로로 쌓인 (a+2)/3으로 엔진이 쓴다)이다. `param` 끝이 있으면 `"parameter":{"name":"a","value":"-1"}`로 **그림을 그릴 a의 값**을 정한다(그림에 "a=-1 일 때의 그림"이 표시된다). 풀이가 다루는 경우(경계값 등)를 골라 쓰고 caption에 밝힌다. a에 따라 해의 모양이 달라지는 풀이는 그 한 경우만 그려지니 전체 답의 그림인 척 쓰지 않는다. 정수점은 해당 줄에 `"integerPoints":true`(유계) 또는 `{"range":["-5","5"]}`(최대 25개)를 쓴다. 내분점은 `{"kind":"POINTS","points":[{"id":"A","value":"-2"},{"id":"B","value":"4"},{"id":"P","divides":{"from":"A","to":"B","ratio":["1","2"]}}]}`로 쓰면 P가 AP:PB=1:2인 자리에 놓이고 AP, PB 위에 1, 2가 표시된다(외분점은 안 된다). 이차함수 그래프가 풀이에 필요하면 이것이 아니라 `quadratic-inequality-chain-v1`을 쓴다. 판 전체 모양은 `{"capability":"number-line-figure-v1","numberLine":{"parameter":{...},"rows":[...]},"numberLineCaption":{"text":"두 해의 공통 범위"},"caption":...,"sourceConditions":...,"newVisualInformation":...}`다.
 - 입체도형(각기둥·각뿔·각뿔대·원기둥·원뿔·원뿔대·구·반구)을 숨은 모서리 점선·꼭짓점 이름·길이와 함께, 또는 각기둥·각뿔·원기둥·원뿔의 전개도, 회전축을 지나는 단면, 원뿔 모양 그릇의 수면: `solid-figure-v1`(아래 3-입체). 치수를 실제 길이로 쓰면 엔진이 3차원 모델에서 투영·숨은선·전개를 계산한다.
 - 통계·확률 그림(도수분포 히스토그램·도수분포다각형·상대도수 그래프, 줄기와 잎 그림, 상자그림, 산점도, 두 주사위의 6×6 표, 확률 수형도): `stat-chart-figure-v1`. 자료의 값만 정확히 주면 눈금, 막대 높이, 다각형 꼭짓점, 사분위수, 표의 칸 색칠, 경로 확률은 엔진이 계산한다. 자세한 쓰는 법은 아래 3-11절.
+- 집합 벤다이어그램(1~3개 집합의 원소 배치, 합집합·교집합·차집합·여집합 영역 색칠, B⊂A 포함관계)과 유한집합 대응도(X→Y, 합성 X→Y→Z, 함수와 역방향 화살표 한 그림): `set-diagram-figure-v1`. 원소가 어느 집합에 속하는지와 색칠할 집합식만 정확히 주면 원자 영역, 색칠 기하, 원소 위치는 엔진이 계산한다. 자세한 쓰는 법은 아래 3-12절.
 
 ### 3-1. 작도 연산: 내분·외분점, 무게중심, 대칭점, 수선, 평행이동
 
@@ -205,6 +206,27 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
  "exactCoordinates":{"B":["1/2","-1/4"]},"axisTickValues":{"x":[2],"y":[2]}},
  "coordinatePlacement":"PANEL","caption":"a=2일 때 y=f(x)와 y=g(x)의 그래프가 x=0, 1, 2의 세 점에서 만난다."}
 ```
+
+### 3-6-영역. 그래프 영역 색칠: `graphPlan.regions` (곡선 아래·곡선 사이 넓이)
+
+적분 넓이·속도와 거리·`|f|` 넓이처럼 **어느 영역을 더했는지**가 풀이의 핵심이면 그래프 plan에 `graphPlan.regions`를 더한다(최대 4개). 영역은 두 경계 사이를 `from`부터 `to`까지 칠한 띠 하나다.
+
+- `{"id":"S1","upper":"f","lower":"axis","from":"-2","to":"1","fill":"LIGHT","label":"S_1"}`: `upper`·`lower`는 `"f"`(그 함수), `"axis"`(x축, y=0), `referenceCurves`의 id, `referenceLines`의 id 중 하나다. `from`·`to`는 정확한 정수·분수·`sqrt(...)` 문자열이고 `from<to`다. 경계가 정의된 구간이면 양 끝이 교점이 아니어도 세로 변으로 닫힌다(예: `x=1`부터 `1+h`까지는 `h`의 표본값을 넣는다).
+- 두 경계가 구간 안에서 만나거나(교차) 한 점에서 폭이 0이 되면 한 영역으로 접지 말고 **만나는 x에서 나눠 여러 영역**으로 쓴다. 끝점에서만 만나는 것은 괜찮다. 축 아래 넓이는 `upper:"axis"`, `lower:"f"`로 따로 칠하고 라벨을 다르게 단다.
+- `fill`은 `LIGHT`(기본) 또는 `MEDIUM`(평면도형 영역과 같은 연한 회색). `label`은 영역 안에 놓이는 짧은 수식(40자 이내, 예: `S_1`, `S_2`)이다.
+- 경계는 그 곡선을 그리는 바로 그 식으로 표본화하므로 색칠 테두리가 곡선 획과 어긋나지 않는다. 엔진은 모든 획 아래에 even-odd path 하나로 칠하고, 독립 관측기는 plan에서 두 경계를 다시 계산해 9개 표본 x에서 채움 경계·안/밖·x 범위·색·획 아래 순서·라벨 내부·영역 겹침을 확인한다.
+
+```json
+{"capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial",
+ "pieces":[{"coefficients":["0","0","1"]}],"breakpoints":[],
+ "sourceDomain":{"kind":"INTERVAL","range":["-2","2"],"states":["CLOSED","CLOSED"]},"formula":"x^2",
+ "regions":[{"id":"S1","upper":"f","lower":"axis","from":"1/5","to":"1","fill":"LIGHT","label":"S_1"}],
+ "requiredPoints":[{"id":"O","x":0,"y":0}],"axisTickValues":{"x":[],"y":[]}},
+ "caption":"곡선 y=x^2과 x축, x=1/5, x=1로 둘러싸인 영역 S_1을 색칠했다."}
+```
+
+- 교점 x를 직접 쓰지 않아도 된다. 교점이 `2±sqrt(2)` 같은 무리수면 `intersectionX`에 쓴 것과 같은 문자열을 `from`·`to`에 그대로 쓴다. 두 경계가 그 x에서 실제로 만나는지, 경계가 구간 전체에 정의되는지는 엔진이 정확히 확인한다.
+- 오류 코드: `GRAPH_REGION_COUNT_INVALID`(4개 초과), `GRAPH_REGION_FIELD_UNKNOWN`/`GRAPH_REGION_FIELD_INVALID`(모르는 필드·형식), `GRAPH_REGION_ID_INVALID`/`GRAPH_REGION_ID_DUPLICATE`, `GRAPH_REGION_BOUNDARY_UNKNOWN`(없는 곡선·직선 id), `GRAPH_REGION_BOUNDARY_UNDEFINED`(그 경계가 구간 전체에 정의되지 않음), `GRAPH_REGION_DOMAIN_INVALID`(`from`≥`to`, 그린 범위 밖), `GRAPH_REGION_BOUNDARIES_CROSS`(안에서 교차·폭 0 → 영역을 나눈다), `GRAPH_REGION_EMPTY`, `GRAPH_REGION_FILL_UNSUPPORTED`, `GRAPH_REGION_LABEL_INVALID`. `regions`는 `piecewise-polynomial-spike-v1`에서만 쓴다(다른 family에 넣으면 `GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL`). 관측기 코드는 `GRAPH_REGION_BOUNDARY_MISMATCH`, `GRAPH_REGION_OUTSIDE_INTERVAL`, `GRAPH_REGION_INTERIOR_MISSING`, `GRAPH_REGION_FILL_MISMATCH`, `GRAPH_REGION_NOT_BENEATH_STROKES`, `GRAPH_REGION_LABEL_OUTSIDE`, `GRAPH_REGION_OVERLAP` 등이다.
 
 ### 3-7. 사인·코사인을 구간(여러 주기)에서 직선과 함께: `INTERVAL_PI`, `referenceLines`
 
@@ -386,6 +408,30 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 **수형도.** `root:{"children":[{"label":"흰","p":"3/7","children":[{"label":"흰","p":"2/5"},{"label":"검","p":"3/5"}]},{"label":"검","p":"4/7","children":[...]}]}`. 한 마디의 가지는 2~5개, 깊이 3 이하, 끝 가지 12개 이하, 이름은 6자 이내다. 확률 `p`는 정확한 분수로 **모든 가지에 쓰거나 하나도 쓰지 않는다**(경우만 나열하는 수형도). 형제 가지의 확률 합은 정확히 1이어야 한다. `showPathProbability:true`는 각 끝에 `3/7×2/5=6/35`처럼 경로 확률의 곱을 쓴다. 확률은 세로 분수로만 쓰인다.
 
 **오류와 한계.** 거절 코드: `STAT_CLASS_WIDTH_UNEQUAL`(계급 크기가 다름), `STAT_FREQUENCY_COUNT_MISMATCH`(도수 개수가 계급 수와 다름), `STAT_FREQUENCY_TOTAL_MISMATCH`(말한 총합이 합과 다름), `STAT_RELATIVE_SUM_NOT_ONE`, `STAT_STEM_MARK_INVALID`, `STAT_BOX_NEEDS_FOUR_VALUES`, `STAT_BOX_SUMMARY_NOT_ORDERED`, `STAT_POINT_OUTSIDE_RANGE`, `STAT_RANGE_NOT_ON_STEP`, `STAT_DICE_EXPR_INVALID`(a, b 말고 다른 문자), `STAT_DICE_PREDICATE_INVALID`, `STAT_TREE_BRANCH_PROBABILITY_SUM`, `STAT_TREE_PROBABILITY_MIXED`. 그릴 자리가 없으면 `STAT_LABEL_OUT_OF_BOUNDS`/`STAT_LABELS_TOO_CLOSE`/`STAT_CHART_RENDERED_LAYOUT_FAIL`이니 제목을 줄이거나 계급을 줄이거나 `showValues`를 끈다. 원그래프, 범주형 막대그래프, 누적도수 그래프, 계급 크기가 다른 히스토그램, 값이 사라진 막대(?)는 지원하지 않으니 EXEMPT나 UNSUPPORTED를 쓴다. 이 그림은 문제에 이미 있는 그림을 다시 그리는 것이므로, 풀이에서 쓰는 값만 강조하고 정답을 그림에 쓰지 않는다.
+
+### 3-12. 집합: 벤다이어그램 영역 색칠과 유한집합 대응도 (`set-diagram-figure-v1`)
+
+풀이가 **집합의 영역 관계**를 보여 주거나 **유한집합 사이의 대응(화살표)**을 따라가야 할 때 쓴다. 좌표평면이 아니라 교과서 모양의 집합 그림이며, plan에는 문제가 정한 집합·원소·대응만 쓰고 원자 영역의 기하와 색칠 영역, 원소가 놓일 자리는 엔진이 계산한다. 독립 관측기가 같은 plan에서 영역과 집합식을 다시 계산해 최종 SVG의 색칠 경로를 표본점으로, 원소 라벨 상자를 그린 원으로, 화살표를 시작·끝 라벨 상자로 다시 확인한다.
+
+```json
+{"capability":"set-diagram-figure-v1",
+ "diagram":{"kind":"VENN","sets":[{"id":"A"},{"id":"B"}],
+            "elements":[{"text":"9","in":["A"]},{"text":"9","in":["A","B"]},{"text":"10","in":["B"]},{"text":"12","in":[]}],
+            "shade":"(A∩B)∪(A∪B)^c"},
+ "caption":"...","sourceConditions":[{"id":"c1","condition":"...","mappedTo":"diagram"}],"newVisualInformation":["..."]}
+```
+
+| kind | 쓰는 곳 | 필요한 자료 |
+|---|---|---|
+| `VENN` | 전체집합 U와 1~3개 집합의 벤다이어그램, 영역 색칠, 포함관계 | `sets`, `elements`(선택), `shade`(선택), `subset`(선택) |
+| `MAPPING` | 두 집합 X, Y(또는 X→Y→Z)의 원소를 화살표로 잇는 대응도 | `columns`, `arrows`, `highlight`(선택) |
+
+**벤다이어그램.** `sets`는 1~3개이며 각 항목은 `{"id":"A","name":"A"}`다(id는 U가 아닌 대문자 한 글자, name은 생략하면 id). `elements`는 그림에 실제로 쓸 유한 원소이고, `in`에는 그 원소가 속한 집합 id를 **모두** 적는다(어디에도 속하지 않으면 `[]`). 엔진은 `in`으로 원자 영역을 정하고 그 영역 안에 원소 글자를 놓는다. 원소 글자가 구간·부등식처럼 보이면(`1≤x≤3`, `2<x<5` 등) 거절하니 유한 원소만 쓴다. `shade`는 U와 집합 id로 쓴 집합식이며 합집합 `∪`, 교집합 `∩`, 차집합 `-`, 괄호, 오른쪽 위 여집합 `^c`(또는 `ᶜ`)를 지원한다(예: `"(A∩B)∪(A∪B)^c"`, `"A-B"`, `"(A∪B)^c"`). 색칠할 영역이 없으면 `SET_SHADE_EMPTY`다. 두 집합의 포함관계 B⊂A는 `"subset":["B","A"]`(안쪽, 바깥쪽)로 쓰며, B는 A 안에 완전히 들어가게 그려지고 B만 있는 영역은 비어 있다(그 영역에 원소를 두면 `SET_ELEMENT_REGION_EMPTY`).
+
+**대응도.** `columns`는 2~3개이고 각 항목은 `{"id":"X","name":"X","elements":["1","2","3"]}`다. 열 id는 대문자+선택적 숫자(`X`, `Y`, `X2`)이고 이름은 생략하면 id다. 같은 집합에서 자기 자신으로 가는 함수는 열 두 개의 `name`을 같게 쓰고 id만 다르게 한다. 원소는 열마다 1~8개, 중복 없는 짧은 값이어야 한다. `arrows`는 `{"from":{"column":0,"element":0},"to":{"column":1,"element":1},"style":"SOLID"|"DASHED"}`이며 `column`·`element`는 0부터 세는 위치다. 화살표는 **이웃한 두 열 사이**를 어느 방향으로든 잇는다(X→Y와 Y→X를 한 그림에 같이 쓰면 함수와 그 역방향 대응을 대조할 수 있고, X→Y→Z 합성도 된다). 같은 쌍을 두 번 쓰면 `MAPPING_ARROW_DUPLICATE`, 멀리 떨어진 열을 이으면 `MAPPING_ARROW_DIRECTION_UNSUPPORTED`다. 한 원소에서 화살표가 둘 이상 나가도 되지만(함수가 아닌 대응) 그 사실을 caption에서 밝힌다. `highlight`는 `{"arrows":[0,2]}`로 화살표를 굵게, `{"elements":[{"column":1,"element":0}]}`로 원소 뒤에 옅은 바탕을 넣는다(합성 경로나 역함수 추적을 강조할 때).
+
+**오류와 한계.** 집합 4개 이상, 열 4개 이상, 열당 원소 9개 이상, 벤다이어그램 원소 13개 이상은 지원하지 않는다(`SET_COUNT_UNSUPPORTED`, `MAPPING_COLUMN_COUNT_UNSUPPORTED`, `MAPPING_TOO_MANY_ELEMENTS`, `SET_TOO_MANY_ELEMENTS`). 집합을 `{x|x≤10}` 같은 무한집합·구간 기호로 직접 쓰지 말고, 문제가 말한 유한 원소만 `elements`에 넣는다. 원소 글자가 영역에 들어갈 자리가 없으면 `SET_ELEMENT_NO_ROOM`/`SET_LABEL_NO_ROOM`, 집합 이름이 들어갈 자리가 없으면 `SET_LABEL_NO_ROOM`이니 원소 수나 집합 수를 줄인다. 대응도의 화살표가 다른 원소 글자를 가로지르면 `MAPPING_ARROW_BLOCKS_LABEL`, 원소 글자가 타원 밖으로 나가면 `MAPPING_ELEMENT_OUT_OF_OVAL`이다. 정답을 그림에 쓰지 말고 풀이에서 쓰는 값·영역·대응만 표시한다.
+
 
 ## 4. 이름과 표기 규칙 (자주 걸리는 것)
 
