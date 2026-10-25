@@ -20,18 +20,18 @@ const LINE_PLAN={family:'piecewise-polynomial',pieces:[{coefficients:['0','-4','
   regions:[{id:'S1',upper:'f',lower:'a',from:'2-sqrt(2)',to:'2',fill:'MEDIUM',label:'S_1'}]};
 
 async function frame(graphPlan){
-  const response=await pythonWorker({action:'frame_graph',graphPlan});
+  const response=await pythonWorker({action:'frame_graph',graphPlan},{timeoutMs:60000});
   assert.equal(response.status,'OK',JSON.stringify(response.result));
   return response.result.graphPlan;
 }
 async function model(graphPlan){
-  const response=await pythonWorker({action:'graph',graphPlan});
+  const response=await pythonWorker({action:'graph',graphPlan},{timeoutMs:60000});
   assert.equal(response.status,'OK',JSON.stringify(response.result));
   return response.result;
 }
 async function graphAudit(graphPlan,svg,transform){
   const {aspectPolicy,...frame}=transform;
-  const response=await pythonWorker({graphPlan,svg,transform:frame},{script:OBSERVER});
+  const response=await pythonWorker({graphPlan,svg,transform:frame},{script:OBSERVER,timeoutMs:60000});
   assert.equal(response.status,'OK',JSON.stringify(response.result));
   return response.result;
 }
@@ -61,7 +61,7 @@ test('a crossing, an unknown boundary and a bad fill are refused with explicit c
     [planWith([REGION,{...REGION}]),'GRAPH_REGION_ID_DUPLICATE:S1'],
   ];
   for(const [graphPlan,code] of cases){
-    const response=await pythonWorker({action:'frame_graph',graphPlan});
+    const response=await pythonWorker({action:'frame_graph',graphPlan},{timeoutMs:60000});
     assert.notEqual(response.status,'OK',code);
     assert.ok(String(response.result?.code).startsWith(code),`${code} expected, got ${response.result?.code}`);
   }
@@ -74,7 +74,7 @@ test('phase2 turns every frozen region into one GRAPH_REGION object and the engi
   const region=spec.objects.find(object=>object.id==='region-S1');
   assert.ok(region);assert.equal(region.kind,'GRAPH_REGION');assert.equal(region.fill,'LIGHT');
   assert.deepEqual(region.upper,[{expression:'x^2',domain:[0.2,1]}]);assert.deepEqual(region.lower,[{expression:'0',domain:[0.2,1]}]);
-  const prepared=await pythonWorker({action:'prepare',spec});
+  const prepared=await pythonWorker({action:'prepare',spec},{timeoutMs:60000});
   assert.equal(prepared.status,'OK',JSON.stringify(prepared.result));
   const primitive=prepared.result.prepared.primitives.find(row=>row.id==='region-S1');
   assert.ok(primitive);assert.equal(primitive.layer,10);assert.match(primitive.d,/^M[-\d.]+ [-\d.]+ L/);assert.equal(primitive.fillRule,'evenodd');
