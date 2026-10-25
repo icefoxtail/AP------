@@ -43,6 +43,18 @@ def mark_label(label_id,target,text,label_kind,at,extra):
     label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
     return label
 
+def _sample_graph_boundary(rows,vp):
+    """Screen points of one region boundary: each exact row is sampled on its own interval (the same sampler the curve is drawn with), and the
+    rows are joined left to right. A boundary that leaves its declared rows is refused, never silently bridged."""
+    points=[]
+    for row in rows:
+        result=sample(row['expression'],row['domain'],vp,critical_x=[])
+        if len(result['branches'])!=1 or not result['branches'][0]:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+        pts=[vp.screen(value) for value in result['branches'][0]]
+        if points and pts and abs(points[-1][0]-pts[0][0])<=1e-9:pts=pts[1:]
+        points.extend(pts)
+    return points
+
 REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
 # A light neutral grey, clearly apart from the cooler region fills above, so an angle sector stays distinguishable from a shaded area.
 SECTOR_FILL='#d9d9d9'
@@ -429,6 +441,24 @@ def prepare(spec):
                        'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':polygons,'labelGap':14}
                 label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
                 label['candidateCenters']=_region_label_centres(polygons,obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygons[0][0])
+                labels.append(label)
+        elif kind=='GRAPH_REGION':
+            # A shaded band between two drawn graph boundaries (graph_plan regions): sample the exact rows named by the plan, then one even-odd
+            # path painted beneath every stroke. The independent graph observer recomputes the rows from the plan and reads this path back.
+            if obj['fill'] not in REGION_FILLS:raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+oid)
+            upper=_sample_graph_boundary(obj['upper'],vp);lower=_sample_graph_boundary(obj['lower'],vp)
+            if len(upper)<2 or len(lower)<2:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+            polygon=upper+list(reversed(lower))
+            if any(b[0]<a[0] for a,b in zip(upper,upper[1:])) or any(b[0]<a[0] for a,b in zip(lower,lower[1:])):raise ValueError('GRAPH_REGION_BOUNDARY_NOT_INCREASING')
+            d='M'+_num(polygon[0][0])+' '+_num(polygon[0][1])+' '+' '.join('L'+_num(x)+' '+_num(y) for x,y in polygon[1:])+' Z'
+            primitive({'id':oid,'kind':'path','d':d,'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS[obj['fill']],'noStroke':True,'fillRule':'evenodd',
+                       'mark':'graph-region','markId':oid,'fillPolygons':[polygon]})
+            if obj.get('labelText') is not None:
+                tree=parse(obj['labelText']);markup=serialize(tree,'svg')
+                label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':serialize(tree,'plain'),'markup':markup,'tex':serialize(tree,'tex'),'math':True,'sourceMath':obj['labelText'],
+                       'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':[polygon],'labelGap':14}
+                label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
+                label['candidateCenters']=_region_label_centres([polygon],obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygon[0])
                 labels.append(label)
         elif kind=='FUNCTION_GRAPH':
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
