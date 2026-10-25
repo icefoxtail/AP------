@@ -282510,8 +282510,8 @@
       "subUnitKey": "M1-04-COORDINATE_PLANE",
       "subUnit": "좌표평면",
       "conceptClusterKey": "M1-04-COORDINATE_PLANE",
-      "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
-      "templateKey": "TPL_AREA_DIRECT",
+      "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+      "templateKey": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT",
       "difficultyBucket": 2,
       "tagConfidence": "independent_semantic_consensus",
       "tagStatus": "meta_foundation_final",
@@ -282552,7 +282552,20 @@
       "curriculumKey": "2015",
       "courseKey": "M1-1",
       "L1": "좌표평면과 그래프",
-      "L2": "좌표와 그래프"
+      "L2": "좌표와 그래프",
+      "canonicalIdentityCorrection": {
+        "receiptPath": "docs/operations/META_CANONICAL_KEY_COLLISION_REPAIR_20261025.json",
+        "from": {
+          "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+          "templateKey": "TPL_AREA_DIRECT"
+        },
+        "to": {
+          "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+          "templateKey": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT"
+        },
+        "kind": "GRADE_SCOPED_IDENTITY_DISAMBIGUATION",
+        "studentPayloadChanged": false
+      }
     },
     {
       "questionUid": "qid_v1_39dbdd45e0f1e12414fcd5e4f8c155c2db1411928f225ae44c29b9ba3b5fdb5d",
@@ -552586,7 +552599,7 @@
       "subUnitKey": "M1-04-COORDINATE_PLANE",
       "subUnit": "좌표평면",
       "conceptClusterKey": "M1-04-COORDINATE_PLANE",
-      "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+      "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
       "templateKey": "TPL_COORD_TRIANGLE_AREA_CORE",
       "difficultyBucket": 2,
       "tagConfidence": "independent_semantic_consensus",
@@ -552624,7 +552637,20 @@
       "rpmPathHoldReason": "Current RPM M1 coordinate paths have no coordinate-geometry area calculation leaf; Foundation key remains valid and Archive2 selection is held.",
       "reviewStatus": "reviewed_hold",
       "metaFoundationHoldReason": "GENERIC_GRAPH_AREA_SOLUTION",
-      "curriculum": "2022"
+      "curriculum": "2022",
+      "canonicalIdentityCorrection": {
+        "receiptPath": "docs/operations/META_CANONICAL_KEY_COLLISION_REPAIR_20261025.json",
+        "from": {
+          "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+          "templateKey": "TPL_COORD_TRIANGLE_AREA_CORE"
+        },
+        "to": {
+          "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+          "templateKey": "TPL_COORD_TRIANGLE_AREA_CORE"
+        },
+        "kind": "GRADE_SCOPED_IDENTITY_DISAMBIGUATION",
+        "studentPayloadChanged": false
+      }
     },
     {
       "questionUid": "qid_v1_71bf5e51f0dad3ad357aee5602c5897aa454253178c6de19403b4b62035ea550",
