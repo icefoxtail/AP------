@@ -68,7 +68,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q02-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 2의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageAlt": "원래 직선 x−3y+3=0과 평행한 직선 x−3y+6=0 위에 A(6,4), K(−9,−1)을 표시한 좌표평면이다. 두 직선의 기울기가 1/3로 같고 k=−9임을 보여 준다.",
     "solutionImageCaption": "평행 관계 · 주어진 직선 x−3y+3=0 · 두 직선은 평행",
     "solutionImageSize": "full"
   },
@@ -137,7 +137,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q04-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 4의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "직선 3x+2y+8=0과 원점 (0,0), 원점을 평행이동한 점 (2,−3), 이동벡터 (2,−3)를 표시한 그림이다. 이동 후에도 직선의 방정식이 3x+2y+8=0으로 같음을 보여 준다.",
     "solutionImageSize": "full"
   },
   {
@@ -208,7 +208,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q06-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 6의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageAlt": "직선 y=x 위의 점 P(1,1)에서 직선 5x+12y−4=0에 내린 수선의 발 H(8/13,1/13)를 표시한 좌표평면이다. 선분 PH의 길이가 1임을 보여 준다.",
     "solutionImageCaption": "P=(1,1) · H=(8/13,1/13), 거리=1",
     "solutionImageSize": "full"
   },
@@ -274,7 +274,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "직선의 이동을 문제에 적힌 순서대로 하나씩 적용한다.\n처음 직선은\n$(a-2)x-2y-10=0$이다.\n먼저 $x$축에 대하여 대칭이동한다.\n$x$축 대칭에서는 $(x,y)$가 $(x,-y)$로 바뀌므로 식의 $y$ 대신 $-y$를 넣는다.\n$(a-2)x-2(-y)-10=0$\n따라서\n$(a-2)x+2y-10=0$이다.\n이 직선을 $y$축의 방향으로 $3$만큼, 즉 위로 $3$만큼 평행이동한다.\n위로 $3$만큼 이동한 식은 $y$ 대신 $y-3$을 넣어 구한다.\n$(a-2)x+2(y-3)-10=0$\n$(a-2)x+2y-16=0$이다.\n마지막으로 직선 $y=x$에 대하여 대칭이동한다.\n$y=x$ 대칭에서는 $x$와 $y$의 역할이 서로 바뀌므로\n$(a-2)y+2x-16=0$이다.\n즉 최종 직선은\n$2x+(a-2)y-16=0$이다.\n이 직선이 원\n$(x-2)^2+(y+2)^2=8$\n의 넓이를 이등분한다.\n원을 넓이가 같은 두 부분으로 나누는 직선은 원의 중심을 지나므로,\n원의 중심 $(2,-2)$가 이 직선 위에 있다.\n$x=2$, $y=-2$를 대입하면\n$2\\cdot2+(a-2)(-2)-16=0$\n$4-2a+4-16=0$\n$-2a-8=0$\n$a=-4$이다.\n\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q08-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 8의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "중심 (2,−2), 반지름 √8인 원과 최종 직선 2x−6y−16=0, 대칭축 y=x를 함께 그린 좌표평면이다. 최종 직선이 원의 중심을 지나 넓이를 이등분하고 a=−4임을 보여 준다.",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
@@ -311,7 +311,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "직선 $y=2x+k$의 기울기는 $2$이다.\n이 직선이 선분 $AB$에 수직이므로 선분 $AB$가 놓인 직선의 기울기는\n$-\\dfrac12$이다.\n두 점\n$A(-2,3)$, $B(6,a)$를 지나는 직선의 기울기는\n$\\dfrac{a-3}{6-(-2)}$\n$=\\dfrac{a-3}{8}$이다.\n따라서\n$\\dfrac{a-3}{8}=-\\dfrac12$이다.\n양변에 $8$을 곱하면\n$a-3=-4$\n$a=-1$이다.\n이제 $B=(6,-1)$이다.\n선분 $AB$를 $1:3$으로 내분하는 점을 $P$라 하자.\n$AP:PB=1:3$이므로 내분점 공식에서 $A$에는 반대쪽 비 $3$, $B$에는 반대쪽 비 $1$을 곱한다.\n따라서\n$P=\\left(\\dfrac{3(-2)+1\\cdot6}{1+3},\\dfrac{3\\cdot3+1\\cdot(-1)}{1+3}\\right)$\n$=\\left(\\dfrac{-6+6}{4},\\dfrac{9-1}{4}\\right)$\n$=(0,2)$이다.\n점 $P(0,2)$가 직선\n$y=2x+k$\n위에 있으므로\n$2=2\\cdot0+k$\n$k=2$이다.\n따라서\n$a+k=-1+2=1$이다.\n\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 9의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "직선 AB:y=−x/2+2 위의 A(−2,3), B(6,−1)과 1:3 내분점 P(0,2)를 표시한 좌표평면이다. P를 지나는 수직선 l:y=2x+2와의 직각 표시로 a=−1, k=2임을 보여 준다.",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-01-COORDINATE_METRIC",
     "subUnit": "평면좌표와 거리",
@@ -413,7 +413,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "먼저 점 $B$, $C$의 좌표를 구한다.\n점 $A(-5,-3)$을 $x$축에 대하여 대칭이동하면 $y$좌표의 부호가 바뀌므로\n$B=(-5,3)$이다.\n점 $B$를 $y$축의 방향으로 $-2$만큼, 즉 아래로 $2$만큼 평행이동하면\n$C=(-5,1)$이다.\n이제 점 $P$는 직선 $y=x$ 위를 움직인다.\n꺾인 거리 $BP+CP$의 최솟값을 구하기 위해 점 $B$를 직선 $y=x$에 대하여 대칭이동한다.\n$y=x$ 대칭에서는 두 좌표가 서로 바뀌므로\n$B'=(3,-5)$이다.\n점 $P$가 대칭축 $y=x$ 위에 있으므로\n$BP=B'P$이다.\n따라서\n$BP+CP=B'P+PC$이다.\n두 점 $B'$, $C$ 사이를 점 $P$를 거쳐 가는 길이의 합은 두 점을 바로 잇는 거리보다 작을 수 없으므로\n$B'P+PC\\ge B'C$이다.\n또 선분 $B'C$는 직선 $y=x$와 실제로 만나므로 등호가 성립하는 점 $P$가 존재한다.\n따라서 최솟값은 $B'C$이다.\n$B'(3,-5)$, $C(-5,1)$이므로\n$B'C=\\sqrt{(-5-3)^2+(1-(-5))^2}$\n$=\\sqrt{(-8)^2+6^2}$\n$=\\sqrt{64+36}$\n$=\\sqrt{100}$\n$=10$이다.\n\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/25_매산고_2학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 12의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "점 B(−5,3)를 직선 y=x에 대칭이동한 B′(3,−5), 점 C(−5,1)와 선분 B′C를 표시한 그림이다. BP+CP의 최솟값이 B′C=10임을 보여 준다.",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",

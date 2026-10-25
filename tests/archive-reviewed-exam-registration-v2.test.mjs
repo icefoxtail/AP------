@@ -79,7 +79,7 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   return { root, put, read, request, q, evidenceRefs, change };
 }
 
-function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLabelDrift = false, siblingParent = false, promoteCanonicalTypes = false, driveSourceHashDrift = false, targetCanonicalParent = false, targetParentUsesSubUnit = false, exactSourceHashBasis = false, dualVisual = false } = {}) {
+function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLabelDrift = false, siblingParent = false, promoteCanonicalTypes = false, driveSourceHashDrift = false, targetCanonicalParent = false, targetParentUsesSubUnit = false, targetCanonicalScope, exactSourceHashBasis = false, dualVisual = false } = {}) {
   const conceptChange = f.request.registryChanges.find(change => change.path.startsWith(`${CANON}/concepts/`));
   const pendingRegistryChanges = [];
   for (const change of f.request.registryChanges) {
@@ -167,10 +167,10 @@ function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLa
   let targetParentEvidenceRef = null;
   if (targetCanonicalParent) {
     const midUnit = targetParentUsesSubUnit ? f.q.subUnit : f.q.standardUnit;
-    f.put(canonicalMasterPath, { records: [{ curriculum: f.request.items[0].after.curriculum, scope: f.request.items[0].after.courseKey,
+    f.put(canonicalMasterPath, { records: [{ curriculum: f.request.items[0].after.curriculum, scope: targetCanonicalScope || f.request.items[0].after.courseKey,
       majorUnit: f.q.standardUnit, midUnit }] });
     targetParentRef = { path: canonicalMasterPath, curriculum: f.request.items[0].after.curriculum,
-      scope: f.request.items[0].after.courseKey, majorUnit: f.q.standardUnit, midUnit };
+      scope: targetCanonicalScope || f.request.items[0].after.courseKey, majorUnit: f.q.standardUnit, midUnit };
     targetParentEvidenceRef = { path: canonicalMasterPath, sha256: hash(fs.readFileSync(path.join(f.root, canonicalMasterPath))) };
   }
   const evidenceRefs = [...f.evidenceRefs, auditPackageRef, manifestRef, sourceParityRef, parentLabelsRef,
@@ -257,7 +257,7 @@ function attachMetaPipelineAuditKeyOnlyV3(f) {
   return { ...attached, audit, classification, auditPackageRef, classificationRef };
 }
 
-function attachMetaPipelineAuditSourceDriveFlatV3(f, { difficultyBucketOverride } = {}) {
+function attachMetaPipelineAuditSourceDriveFlatV3(f, { difficultyBucketOverride, omitClassificationReadingEvidence = false, classBucketOverride, solutionExcerptOverride, visualAssetChecked } = {}) {
   const attached = attachMetaPipelineAuditV2(f);
   const proof = f.request.approval.metaPipelineAudit;
   const sourceBytes = fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`));
@@ -266,7 +266,8 @@ function attachMetaPipelineAuditSourceDriveFlatV3(f, { difficultyBucketOverride 
   const oldClassRow = attached.classification.records[0];
   const difficultyBucket = difficultyBucketOverride ?? oldAuditRow.difficultyBucket;
   const difficultyConfidence = oldAuditRow.difficultyConfidence || "source_preserved";
-  const readingEvidence = { sourceTextExcerpt: f.q.content, solutionDecisiveExcerpt: f.q.solution };
+  const readingEvidence = { sourceTextExcerpt: f.q.content, solutionDecisiveExcerpt: solutionExcerptOverride ?? f.q.solution,
+    ...(typeof visualAssetChecked === "boolean" ? { visualAssetChecked, visualType: "NONE" } : {}) };
   const audit = {
     schemaVersion: "ALIVE_META_AUDIT_ATOMIC_v3", examTitle, sourceDriveId: proof.sourceFileDriveId,
     sourceSha256: hash(sourceBytes), totalQuestions: 1, totalApproved: 1, totalHold: 0,
@@ -292,8 +293,9 @@ function attachMetaPipelineAuditSourceDriveFlatV3(f, { difficultyBucketOverride 
       problemTypeKey: oldClassRow.problemTypeKey, templateKey: oldClassRow.templateKey,
       crossConceptKeys: oldClassRow.crossConceptKeys, conditionKeys: oldClassRow.conditionKeys,
       integrationPattern: oldClassRow.integrationPattern,
-      difficultyBucket, difficultyConfidence,
-      difficultyReason: oldClassRow.difficultyReason, readingEvidence,
+      difficultyBucket: classBucketOverride ?? difficultyBucket, difficultyConfidence,
+      difficultyReason: oldClassRow.difficultyReason,
+      ...(!omitClassificationReadingEvidence ? { readingEvidence } : {}),
     }],
   };
   f.put(proof.auditPackageRef.path, audit);
@@ -465,6 +467,27 @@ test("META_PIPELINE_AUDIT sourceDriveId flat v3 rejects a classification tag mis
     /META_PIPELINE_AUDIT sourceDrive v3 classification tags mismatch/);
 });
 
+test("sourceDrive flat v3 uses final audit excerpts when classification omits duplicate reading evidence", t => {
+  const f = fixture(t);
+  attachMetaPipelineAuditSourceDriveFlatV3(f, { omitClassificationReadingEvidence: true, visualAssetChecked: false });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json");
+  assert.equal(receipt.metaPipelineAudit.sourceSchemaNormalization.classificationEvidenceAbsent, 1);
+  assert.deepEqual(receipt.metaPipelineAudit.sourceSchemaNormalization.visualEvidenceCounts, { checked: 0, notChecked: 1, notProvided: 0 });
+});
+
+test("sourceDrive flat v3 still checks final solution excerpts when classification has no reading evidence", t => {
+  const f = fixture(t);
+  attachMetaPipelineAuditSourceDriveFlatV3(f, { omitClassificationReadingEvidence: true, solutionExcerptOverride: "not present in the source solution" });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /sourceDrive v3 solution excerpt mismatch/);
+});
+
+test("sourceDrive flat v3 rejects paired difficulty bucket drift", t => {
+  const f = fixture(t);
+  attachMetaPipelineAuditSourceDriveFlatV3(f, { classBucketOverride: 5 });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /sourceDrive v3 evidence mismatch/);
+});
+
 test("sourceDrive flat v3 binds its audited 1-5 bucket over a legacy text bucket", t => {
   const f = fixture(t);
   delete f.q.difficultyBucket;
@@ -555,6 +578,18 @@ test("META_PIPELINE_AUDIT accepts an exact canonical parent at the audited subun
   attachMetaPipelineAudit(f, { promoteCanonicalTypes: true, targetCanonicalParent: true, targetParentUsesSubUnit: true });
   const result = registerReviewedExamV2({ root: f.root, request: f.request });
   assert.equal(result.totalQuestions, 1);
+});
+
+test("canonical parent accepts the existing master scope alias 수학_상 for 수학(상)", t => {
+  const f = fixture(t, "수학(상)", "2015");
+  attachMetaPipelineAudit(f, { targetCanonicalParent: true, targetCanonicalScope: "수학_상" });
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
+});
+
+test("canonical parent scope aliases do not cross the upper and lower math courses", t => {
+  const f = fixture(t, "수학(하)", "2015");
+  attachMetaPipelineAudit(f, { targetCanonicalParent: true, targetCanonicalScope: "수학_상" });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /canonical target parent mismatch/);
 });
 
 test("META_PIPELINE_AUDIT permits audit/current Drive hash drift only with exact per-UID student parity", t => {

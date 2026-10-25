@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-runtime-overlay-v1",
   "status": "ACTIVE",
-  "runtimeVersion": "MIDDLE1@1.0.1/runtime-bridge-v2",
+  "runtimeVersion": "MIDDLE1@1.0.2/runtime-bridge-v2",
   "packId": "MIDDLE1",
-  "packVersion": "1.0.1",
+  "packVersion": "1.0.2",
   "generatedFrom": {
     "canonicalPack": "archive/data/meta-foundation/canonical/packs/middle1",
     "compiledTaxonomySha256": "469c5f232c70181f44955b87c3c13e1b6609fe69db3d496b2e9a37febeaad64b",
@@ -12,7 +12,8 @@
     "mapping": "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_CANONICAL_MAPPING.json",
     "sourceNormalization": "archive/_generated/intelligence/phase1/middle1-foundation/global/B01_B16_SOURCE_NORMALIZATION_RECEIPT.json",
     "reviewOverrides": "archive/data/meta-foundation/evidence/review-overrides/v1",
-    "reviewOverrideDigest": "e14dcc132d12ebd053759eb74b96a823e15f8b15e9bce26a0a3eb112634e3d2a"
+    "reviewOverrideDigest": "e14dcc132d12ebd053759eb74b96a823e15f8b15e9bce26a0a3eb112634e3d2a",
+    "canonicalIdentityRepair20261025": "docs/operations/META_CANONICAL_KEY_COLLISION_REPAIR_20261025.json"
   },
   "counts": {
     "records": 594,
@@ -4737,8 +4738,8 @@
       "curriculum": "2015",
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-COORDINATE_PLANE",
-      "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
-      "templateKey": "TPL_AREA_DIRECT",
+      "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+      "templateKey": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT",
       "crossConceptKeys": [],
       "conditionKeys": [],
       "integrationPattern": "NONE",
@@ -4755,7 +4756,20 @@
       "defaultSelectable": true,
       "runtimeSelectable": true,
       "metadataRevision": "meta-foundation:MIDDLE1@1.0.1:B01-B16",
-      "metaFoundationPackVersion": "1.0.1"
+      "metaFoundationPackVersion": "1.0.2",
+      "canonicalIdentityCorrection": {
+        "receiptPath": "docs/operations/META_CANONICAL_KEY_COLLISION_REPAIR_20261025.json",
+        "from": {
+          "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+          "templateKey": "TPL_AREA_DIRECT"
+        },
+        "to": {
+          "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+          "templateKey": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT"
+        },
+        "kind": "GRADE_SCOPED_IDENTITY_DISAMBIGUATION",
+        "studentPayloadChanged": false
+      }
     },
     {
       "questionUid": "qid_v1_3b07657b95c8c11dfe4a7fa364e3fdb186f7556b8482225e79fb45509ad46b45",
@@ -8330,7 +8344,7 @@
       "curriculum": "2022",
       "standardUnitKey": "M1-04",
       "subUnitKey": "M1-04-COORDINATE_PLANE",
-      "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+      "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
       "templateKey": "TPL_COORD_TRIANGLE_AREA_CORE",
       "crossConceptKeys": [],
       "conditionKeys": [],
@@ -8348,7 +8362,20 @@
       "defaultSelectable": false,
       "runtimeSelectable": false,
       "metadataRevision": "meta-foundation:MIDDLE1@1.0.1:B01-B16",
-      "metaFoundationPackVersion": "1.0.1"
+      "metaFoundationPackVersion": "1.0.2",
+      "canonicalIdentityCorrection": {
+        "receiptPath": "docs/operations/META_CANONICAL_KEY_COLLISION_REPAIR_20261025.json",
+        "from": {
+          "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+          "templateKey": "TPL_COORD_TRIANGLE_AREA_CORE"
+        },
+        "to": {
+          "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+          "templateKey": "TPL_COORD_TRIANGLE_AREA_CORE"
+        },
+        "kind": "GRADE_SCOPED_IDENTITY_DISAMBIGUATION",
+        "studentPayloadChanged": false
+      }
     },
     {
       "questionUid": "qid_v1_7230b9c55a8e2617748e92e90e8bf2af6148434c13b81fd84c95389bfada9e4a",
@@ -21321,14 +21348,6 @@
         ]
       },
       {
-        "key": "PT_COORD_TRIANGLE_AREA",
-        "count": 2,
-        "questionUids": [
-          "qid_v1_39daa9b5678f54009795ee5a5cae10998aff7beee77417e3bdf2eae3a34e1998",
-          "qid_v1_71befc5c53542a307028afdb767f331a43590195f1537cc323e6dd76013291c6"
-        ]
-      },
-      {
         "key": "PT_COORDINATE_POINT_READING",
         "count": 5,
         "questionUids": [
@@ -21567,6 +21586,14 @@
           "qid_v1_29c09a9c15229d9ac8ae34ce96bd91f37aefbbd8a37fb6a5907af59f691ad11f",
           "qid_v1_3f786ea3f678d34b1c57c95643f071599c532fb6e51eca405d0cffd64777b46e",
           "qid_v1_530b6b53eff5428ff17f5f160cf18275bd5f245b9dcb80cdd46b610f0e48ad2b"
+        ]
+      },
+      {
+        "key": "PT_M1_COORD_TRIANGLE_AREA",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_39daa9b5678f54009795ee5a5cae10998aff7beee77417e3bdf2eae3a34e1998",
+          "qid_v1_71befc5c53542a307028afdb767f331a43590195f1537cc323e6dd76013291c6"
         ]
       },
       {
@@ -22443,13 +22470,6 @@
         ]
       },
       {
-        "key": "TPL_AREA_DIRECT",
-        "count": 1,
-        "questionUids": [
-          "qid_v1_39daa9b5678f54009795ee5a5cae10998aff7beee77417e3bdf2eae3a34e1998"
-        ]
-      },
-      {
         "key": "TPL_BOUNDED_PRIME_COUNT_CORE",
         "count": 2,
         "questionUids": [
@@ -22869,6 +22889,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_20ba66f038b43a1810b3d13daca8cff6e8d4069a93aba69c5a362d03c3c28ebb"
+        ]
+      },
+      {
+        "key": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_39daa9b5678f54009795ee5a5cae10998aff7beee77417e3bdf2eae3a34e1998"
         ]
       },
       {

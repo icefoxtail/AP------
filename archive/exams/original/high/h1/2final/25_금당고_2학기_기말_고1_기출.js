@@ -760,7 +760,7 @@ window.questionBank = [
     "answer": "$-2\\le k\\lt-\\dfrac74$",
     "solution": "교점의 $x$좌표는 무리함수의 정의역 $x\\ge2$를 만족해야 한다.\n$t=\\sqrt{x-2}$라 놓으면\n$t\\ge0$, $x=t^2+2$이다.\n교점에서는\n$\\sqrt{x-2}=x+k$이므로\n$t=t^2+2+k$\n$t^2-t+(k+2)=0$이다.\n서로 다른 두 교점을 얻으려면 이 방정식에 서로 다른 두 음이 아닌 실근이 있어야 한다.\n\n먼저 판별식이 양수여야 한다.\n$D=(-1)^2-4(k+2)$\n$=-4k-7>0$\n$k<-\\dfrac74$이다.\n\n근의 공식으로 두 근을 구하면\n$t=\\dfrac{1\\pm\\sqrt{-4k-7}}2$이다.\n작은 근이 $0$ 이상이어야 하므로\n$1-\\sqrt{-4k-7}\\ge0$\n$\\sqrt{-4k-7}\\le1$\n$-4k-7\\le1$\n$k\\ge-2$이다.\n\n$k=-2$이면 두 근이 $0,1$로 서로 달라 교점이 두 개이다.\n반면 $k=-\\dfrac74$이면 판별식이 $0$이어서 한 점에서만 만나므로 제외한다.\n$k<-2$에서는 작은 근이 음수이므로 교점이 하나뿐이다.\n\n따라서 구하는 범위는\n$-2\\le k<-\\dfrac74$이다.",
     "solutionImage": "assets/images/25_금당고_2학기_기말_고1_기출/q22-solution.svg",
-    "solutionImageAlt": "무리함수와 직선의 두 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "무리함수 y=√(x−2)의 그래프와 기울기 1인 직선 y=x−1.9가 두 점 P₁, P₂에서 만나는 모습을 그린 좌표평면이다. 두 교점이 생기는 범위가 −2≤k<−7/4이고 k=−7/4일 때는 접함을 보여 준다.",
     "solutionImageCaption": "두 비음수 근이 생기는 구간에서 −2≤k<−7/4 조건을 그래프와 함께 확인한다.",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",

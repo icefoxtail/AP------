@@ -708,6 +708,230 @@ def logarithmic_affine_overview_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':expected_features,'monotonicity':monotonicity,'curvePoints':len(points),'boundaryApproachGapCssPx':gap,'referenceMarker':marker,'mathMethod':'EXACT_AFFINE_LOG_DOMAIN_AND_INDEPENDENT_NATURAL_LOG_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'LOGARITHMIC_SOURCE_SCHEMA_INVALID']}
 
+def _exp_log_observer_base(value,code):
+    """Independent exact base parser (never imports the producer). None/'e' is the natural base e."""
+    if value in (None,'e'):return {'text':'e','kind':'NATURAL','exact':S.E,'greaterThanOne':True,'float':math.e}
+    if not isinstance(value,str) or len(value)>32:raise ValueError(code+'_BASE_GRAMMAR_REQUIRED')
+    text=value.strip()
+    if re.fullmatch(r'-?\d+',text):
+        parsed=Fraction(int(text));kind='INTEGER'
+    elif re.fullmatch(r'-?\d+/[1-9]\d*',text):
+        parsed=Fraction(text);kind='RATIONAL'
+    elif re.fullmatch(r'sqrt\([1-9]\d*\)',text):
+        n=int(text[5:-1]);root=math.isqrt(n)
+        if root*root==n or any(n%(prime*prime)==0 for prime in range(2,root+1)):raise ValueError(code+'_BASE_RADICAL_NOT_SQUARE_FREE')
+        parsed=None;kind='RADICAL'
+    else:raise ValueError(code+'_BASE_GRAMMAR_REQUIRED')
+    if kind=='RATIONAL' and parsed.denominator==1:kind='INTEGER'
+    if kind!='RADICAL' and (parsed<=0 or parsed==1):raise ValueError(code+'_BASE_OUT_OF_RANGE')
+    exact=S.Integer(int(text)) if kind=='INTEGER' else S.Rational(parsed.numerator,parsed.denominator) if kind=='RATIONAL' else S.sqrt(int(text[5:-1]))
+    greater=kind=='RADICAL' or parsed>1
+    return {'text':str(int(parsed)) if kind=='INTEGER' else str(parsed) if kind=='RATIONAL' else 'sqrt('+text[5:-1]+')','kind':kind,'exact':exact,'greaterThanOne':greater,'float':float(exact.evalf(30))}
+
+def _exp_log_base_fields(base):
+    return {'base':base['text'],'baseKind':base['kind'],'baseGreaterThanOne':base['greaterThanOne']}
+
+def _exp_log_exact_value(row,x_value):
+    """Recompute one exp/log curve at an x coordinate from its exact coefficients/base (floats only for the final comparison)."""
+    if row['family']=='exponential-affine':
+        a,k,c=row['_coefficients']
+        return float(a)*(row['_base']['float']**(float(k)*(float(x_value)-float(row['_shift']))))+float(c)
+    a,k,b,c=row['_coefficients']
+    argument=float(k)*float(x_value)+float(b)
+    if argument<=0:raise ValueError('LOGARITHMIC_CURVE_OUTSIDE_NATURAL_DOMAIN')
+    return float(a)*math.log(argument)/math.log(row['_base']['float'])+float(c)
+
+def _observed_curve_branches(root,transform):
+    rows={}
+    for node in root.iter():
+        if node.tag.split('}')[-1]!='polyline' or node.get('data-role')!='curve':continue
+        branch=node.get('data-branch')
+        if not branch:return {},['GRAPH_CURVE_BRANCH_TAG_MISSING']
+        values=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+        if len(values)<4 or len(values)%2 or not all(math.isfinite(value) for value in values):return {},['GRAPH_CURVE_POINTS_INVALID']
+        rows.setdefault(branch,[]).append([((values[i]-transform['originX'])/transform['sx'],(transform['originY']-values[i+1])/transform['sy']) for i in range(0,len(values),2)])
+    return rows,[]
+
+def _audit_id_line(root,element_id,axis,coordinate,transform,dashed=True):
+    nodes=[node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('id')==element_id]
+    if len(nodes)!=1:return ['GRAPH_ID_LINE_MISSING_OR_DUPLICATED:'+element_id]
+    node=nodes[0]
+    try:
+        a=((float(node.get('x1'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('y1')))/transform['sy'])
+        b=((float(node.get('x2'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('y2')))/transform['sy'])
+    except (TypeError,ValueError):return ['GRAPH_ID_LINE_INVALID:'+element_id]
+    tol=.35/(transform['sx']*transform['displayScale'] if axis=='vertical' else transform['sy']*transform['displayScale'])
+    if dashed and node.get('stroke-dasharray') not in {'5 4','5,4','4 3','4,3'}:return ['GRAPH_ID_LINE_MUST_BE_DASHED:'+element_id]
+    if axis=='horizontal' and (abs(a[1]-coordinate)>tol or abs(b[1]-coordinate)>tol or a[0]>=b[0]):return ['GRAPH_HORIZONTAL_ASYMPTOTE_POSITION_MISMATCH:'+element_id]
+    if axis=='vertical' and (abs(a[0]-coordinate)>tol or abs(b[0]-coordinate)>tol or a[1]>=b[1]):return ['GRAPH_VERTICAL_DOMAIN_CUE_POSITION_MISMATCH:'+element_id]
+    return []
+
+def _audit_id_marker(root,element_id,point,policy,transform):
+    nodes=[node for node in root.iter() if node.tag.split('}')[-1]=='circle' and node.get('id')==element_id]
+    if len(nodes)!=1:return ['GRAPH_REFERENCE_MARKER_MISSING_OR_DUPLICATED:'+element_id],None
+    node=nodes[0]
+    try:
+        observed=((float(node.get('cx'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('cy')))/transform['sy'])
+        radius=float(node.get('r'));stroke_width=float(node.get('stroke-width'))
+    except (TypeError,ValueError):return ['GRAPH_REFERENCE_MARKER_INVALID:'+element_id],None
+    errors=[]
+    if node.get('fill') not in {'black','#111','#000'} or node.get('stroke') in (None,'none','') or stroke_width<=0 or radius<policy['referenceMarkerRadiusIntrinsicPx']-.01:errors.append('GRAPH_REFERENCE_MARKER_STYLE_MISMATCH:'+element_id)
+    if abs(observed[0]-point[0])*transform['sx']*transform['displayScale']>.35 or abs(observed[1]-point[1])*transform['sy']*transform['displayScale']>.35:errors.append('GRAPH_REFERENCE_MARKER_POSITION_MISMATCH:'+element_id)
+    if 2*radius*transform['displayScale']<policy['minimumReferenceMarkerDiameterCssPx']:errors.append('GRAPH_REFERENCE_MARKER_BELOW_PROFILE_FLOOR:'+element_id)
+    return errors,observed
+
+def exponential_base_overview_audit(plan,svg,transform):
+    errors=[];unsupported=[]
+    try:
+        a,k,c=(_piecewise_rational(value,'INVALID_EXPONENTIAL_COEFFICIENT') for value in plan.get('coefficients'))
+        base=_exp_log_observer_base(plan.get('base'),'EXPONENTIAL')
+        shift=_piecewise_rational(plan.get('shiftX','0'),'INVALID_EXPONENTIAL_SHIFT')
+        if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:raise ValueError('EXPONENTIAL_SOURCE_DOMAIN_REQUIRES_ALL_REALS')
+        if a==0 or k==0:raise ValueError('EXPONENTIAL_NONZERO_SCALE_AND_RATE_REQUIRED')
+        growth=(k>0)==base['greaterThanOne'];lo,hi=plan['domain'];xmin,xmax,ymin,ymax=plan['viewport'];features=plan.get('exponentialFeatures');policy=plan.get('exponentialFeaturePolicy')
+        expected_features={'schemaVersion':'EXPONENTIAL_BASE_FEATURES_v1',**_exp_log_base_fields(base),'shiftX':str(shift),'referencePoint':{'x':str(shift),'y':str(a+c)},'horizontalAsymptote':{'y':str(c),'side':'LEFT' if growth else 'RIGHT','approachedFrom':'ABOVE' if a>0 else 'BELOW'},'monotonicity':'INCREASING' if (a>0)==growth else 'DECREASING','growthSide':'RIGHT' if growth else 'LEFT','growthDirection':'UP' if a>0 else 'DOWN'}
+        expected_policy={'schemaVersion':'EXPONENTIAL_BASE_FEATURE_POLICY_v1','sourceDomain':'ALL_REALS','referenceArgument':'EXPONENT_ZERO','asymptotePolicy':'EXACT_VERTICAL_SHIFT','basePolicy':'POSITIVE_BASE_NOT_ONE','referenceMarkerRadiusIntrinsicPx':4,'minimumReferenceMarkerDiameterCssPx':3,'minimumAsymptoteSeparationCssPx':2,'minimumBranchSpanCssPx':32}
+        if features!=expected_features:errors.append('EXPONENTIAL_FEATURE_INVENTORY_MISMATCH')
+        if policy!=expected_policy:errors.append('EXPONENTIAL_FEATURE_POLICY_MISMATCH')
+        if plan.get('overviewPolicy')!='EXPONENTIAL_BASE_OVERVIEW_v1':errors.append('EXPONENTIAL_OVERVIEW_POLICY_REQUIRED')
+        if not xmin<float(shift)<xmax:errors.append('EXPONENTIAL_REFERENCE_OUTSIDE_VIEWPORT')
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        root=ET.fromstring(svg);points,point_errors=_observed_svg_points(root,transform);errors.extend(point_errors)
+        if points:
+            points=sorted(points,key=lambda point:point[0]);scale=transform['sy']*transform['displayScale'];xscale=transform['sx']*transform['displayScale'];x_tol=.35/max(1e-12,xscale)
+            if abs(points[0][0]-lo)>x_tol or abs(points[-1][0]-hi)>x_tol:errors.append('EXPONENTIAL_DRAW_DOMAIN_COVERAGE_FAIL')
+            direction=1 if (a>0)==growth else -1
+            if any((right[1]-left[1])*direction< -1e-8 for left,right in zip(points,points[1:])):errors.append('EXPONENTIAL_MONOTONICITY_FAIL')
+            for px,py in points:
+                try:expected=float(a)*(base['float']**(float(k)*(px-float(shift))))+float(c)
+                except OverflowError:errors.append('EXPONENTIAL_WRONG_CURVE');break
+                if not math.isfinite(expected) or abs(py-expected)*scale>.35:errors.append('EXPONENTIAL_WRONG_CURVE');break
+            if (hi-lo)*xscale<policy['minimumBranchSpanCssPx']:unsupported.append('EXPONENTIAL_BRANCH_BELOW_PROFILE_FLOOR')
+        asym=float(c);errors.extend(_audit_feature_line(root,'exponential-asymptote','horizontal',asym,transform))
+        ref=(float(shift),float(a+c));marker_errors,marker=_audit_reference_marker(root,'exponential-reference',ref,policy,transform);errors.extend(marker_errors)
+        separation=abs(float(a))*transform['sy']*transform['displayScale']
+        if separation<policy['minimumAsymptoteSeparationCssPx']:unsupported.append('EXPONENTIAL_REFERENCE_ASYMPTOTE_BELOW_PROFILE_FLOOR')
+        status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors+unsupported)),'features':expected_features,'monotonicity':expected_features['monotonicity'],'curvePoints':len(points),'referenceMarker':marker,'referenceAsymptoteSeparationCssPx':separation,'mathMethod':'EXACT_POSITIVE_BASE_AND_INDEPENDENT_BASE_EXPONENTIAL_EVALUATION'}
+    except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'EXPONENTIAL_SOURCE_SCHEMA_INVALID']}
+
+def logarithmic_base_overview_audit(plan,svg,transform):
+    errors=[];unsupported=[]
+    try:
+        a,k,b,c=(_piecewise_rational(value,'INVALID_LOGARITHMIC_COEFFICIENT') for value in plan.get('coefficients'))
+        base=_exp_log_observer_base(plan.get('base'),'LOGARITHMIC')
+        if plan.get('sourceDomain')!={'kind':'NATURAL_LOG_AFFINE'}:raise ValueError('LOGARITHMIC_SOURCE_DOMAIN_REQUIRES_NATURAL_AFFINE')
+        if a==0 or k==0:raise ValueError('LOGARITHMIC_NONZERO_SCALE_AND_RATE_REQUIRED')
+        root_x=-b/k;reference=(1-b)/k;lo,hi=plan['domain'];xmin,xmax,ymin,ymax=plan['viewport'];features=plan.get('logarithmicFeatures');policy=plan.get('logarithmicFeaturePolicy')
+        increasing=(a*k>0)==base['greaterThanOne']
+        expected_features={'schemaVersion':'LOGARITHMIC_BASE_FEATURES_v1',**_exp_log_base_fields(base),'naturalDomainBoundaryX':str(root_x),'boundarySide':'RIGHT' if k>0 else 'LEFT','boundaryLimitDirection':'DOWN' if a>0 else 'UP','referencePoint':{'x':str(reference),'y':str(c),'argument':'1'},'monotonicity':'INCREASING' if increasing else 'DECREASING','sampleBoundaryArgument':'1/8','sampleDomain':plan['domain']}
+        expected_policy={'schemaVersion':'LOGARITHMIC_BASE_FEATURE_POLICY_v1','sourceDomain':'kx+b>0','domainBoundaryPolicy':'NATURAL_OPEN_BOUNDARY','referenceArgument':'1','sampleBoundaryArgument':'1/8','boundaryCue':'DASHED_VERTICAL_LINE','basePolicy':'POSITIVE_BASE_NOT_ONE','referenceMarkerRadiusIntrinsicPx':4,'minimumReferenceMarkerDiameterCssPx':3,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':32}
+        if features!=expected_features:errors.append('LOGARITHMIC_FEATURE_INVENTORY_MISMATCH')
+        if policy!=expected_policy:errors.append('LOGARITHMIC_FEATURE_POLICY_MISMATCH')
+        if plan.get('overviewPolicy')!='LOGARITHMIC_BASE_OVERVIEW_v1':errors.append('LOGARITHMIC_OVERVIEW_POLICY_REQUIRED')
+        if not (lo<hi and (float(root_x)<lo if k>0 else hi<float(root_x))):errors.append('LOGARITHMIC_DRAW_DOMAIN_WRONG_SIDE_OF_BOUNDARY')
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        root_svg=ET.fromstring(svg);points,point_errors=_observed_svg_points(root_svg,transform);errors.extend(point_errors)
+        if points:
+            points=sorted(points,key=lambda point:point[0]);xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale'];x_tol=.35/max(1e-12,xscale)
+            if abs(points[0][0]-lo)>x_tol or abs(points[-1][0]-hi)>x_tol:errors.append('LOGARITHMIC_DRAW_DOMAIN_COVERAGE_FAIL')
+            direction=1 if increasing else -1
+            if any((right[1]-left[1])*direction< -1e-8 for left,right in zip(points,points[1:])):errors.append('LOGARITHMIC_MONOTONICITY_FAIL')
+            for px,py in points:
+                argument=float(k)*px+float(b)
+                if argument<=0:errors.append('LOGARITHMIC_CURVE_OUTSIDE_NATURAL_DOMAIN');break
+                expected=float(a)*math.log(argument)/math.log(base['float'])+float(c)
+                if not math.isfinite(expected) or abs(py-expected)*yscale>.35:errors.append('LOGARITHMIC_WRONG_CURVE');break
+            near_boundary=points[0][0] if k>0 else points[-1][0];gap=abs(near_boundary-float(root_x))*xscale
+            if gap<policy['minimumBoundaryApproachGapCssPx']:unsupported.append('LOGARITHMIC_BOUNDARY_GAP_BELOW_PROFILE_FLOOR')
+            if (hi-lo)*xscale<policy['minimumBranchSpanCssPx']:unsupported.append('LOGARITHMIC_BRANCH_BELOW_PROFILE_FLOOR')
+        else:gap=0.0
+        errors.extend(_audit_feature_line(root_svg,'logarithmic-domain-boundary','vertical',float(root_x),transform))
+        reference_point=(float(reference),float(c));marker_errors,marker=_audit_reference_marker(root_svg,'logarithmic-reference',reference_point,policy,transform);errors.extend(marker_errors)
+        status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors+unsupported)),'features':expected_features,'monotonicity':expected_features['monotonicity'],'curvePoints':len(points),'boundaryApproachGapCssPx':gap,'referenceMarker':marker,'mathMethod':'EXACT_POSITIVE_BASE_AND_INDEPENDENT_BASE_LOGARITHM_EVALUATION'}
+    except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'LOGARITHMIC_SOURCE_SCHEMA_INVALID']}
+
+def exp_log_pair_overview_audit(plan,svg,transform):
+    errors=[];unsupported=[]
+    try:
+        features=plan.get('expLogPairFeatures');policy=plan.get('expLogPairPolicy')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='EXP_LOG_PAIR_FEATURES_v1' or not isinstance(policy,dict):raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
+        if plan.get('overviewPolicy')!='EXP_LOG_PAIR_OVERVIEW_v1':raise ValueError('EXP_LOG_PAIR_OVERVIEW_POLICY_REQUIRED')
+        rows=features.get('curves')
+        if not isinstance(rows,list) or len(rows)!=2:raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        root=ET.fromstring(svg);expected_rows=[]
+        for row in rows:
+            if not isinstance(row,dict) or row.get('family') not in {'exponential-affine','logarithmic-affine'}:raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
+            coefficients=tuple(_piecewise_rational(value,'INVALID_EXP_LOG_PAIR_COEFFICIENT') for value in row.get('coefficients',[]))
+            if len(coefficients)!=(3 if row['family']=='exponential-affine' else 4):raise ValueError('INVALID_EXP_LOG_PAIR_COEFFICIENT')
+            base=_exp_log_observer_base(row.get('base'),'EXP_LOG_PAIR')
+            a,k=coefficients[0],coefficients[1]
+            if a==0 or k==0:raise ValueError('EXP_LOG_PAIR_NONZERO_SCALE_AND_RATE_REQUIRED')
+            if row['family']=='exponential-affine':
+                shift=_piecewise_rational(row.get('shiftX','0'),'INVALID_EXP_LOG_PAIR_SHIFT')
+                growth=(k>0)==base['greaterThanOne'];c=coefficients[2]
+                expected={'id':row.get('id'),'family':row['family'],**_exp_log_base_fields(base),'coefficients':[str(value) for value in coefficients],'shiftX':str(shift),'domain':row.get('domain'),'referencePoint':{'x':str(shift),'y':str(a+c)},'horizontalAsymptote':{'y':str(c),'side':'LEFT' if growth else 'RIGHT','approachedFrom':'ABOVE' if a>0 else 'BELOW'},'monotonicity':'INCREASING' if (a>0)==growth else 'DECREASING','growthSide':'RIGHT' if growth else 'LEFT','growthDirection':'UP' if a>0 else 'DOWN'}
+                reference=(float(shift),float(a+c));asymptote=float(c)
+            else:
+                b=coefficients[2];c=coefficients[3];root_x=-b/k;reference_x=(1-b)/k;increasing=(a*k>0)==base['greaterThanOne']
+                expected={'id':row.get('id'),'family':row['family'],**_exp_log_base_fields(base),'coefficients':[str(value) for value in coefficients],'domain':row.get('domain'),'naturalDomainBoundaryX':str(root_x),'boundarySide':'RIGHT' if k>0 else 'LEFT','boundaryLimitDirection':'DOWN' if a>0 else 'UP','referencePoint':{'x':str(reference_x),'y':str(c),'argument':'1'},'monotonicity':'INCREASING' if increasing else 'DECREASING'}
+                reference=(float(reference_x),float(c));asymptote=float(root_x)
+            if expected!=row:errors.append('EXP_LOG_PAIR_FEATURE_INVENTORY_MISMATCH:'+str(row.get('id')))
+            domain=row.get('domain')
+            if not isinstance(domain,list) or len(domain)!=2 or any(isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value) for value in domain) or not domain[0]<domain[1]:raise ValueError('EXP_LOG_PAIR_DOMAIN_INVALID')
+            if row['family']=='logarithmic-affine' and not (float(root_x)<domain[0] if k>0 else domain[1]<float(root_x)):errors.append('LOGARITHMIC_DRAW_DOMAIN_WRONG_SIDE_OF_BOUNDARY:'+str(row.get('id')))
+            expected_rows.append({**expected,'_coefficients':coefficients,'_base':base,'_shift':shift if row['family']=='exponential-affine' else Fraction(0),'_reference':reference,'_asymptote':asymptote})
+        branches,branch_errors=_observed_curve_branches(root,transform);errors.extend(branch_errors)
+        if set(branches)!={'REF_'+row['id'] for row in expected_rows}:errors.append('EXP_LOG_PAIR_CURVE_BRANCH_INVENTORY_MISMATCH')
+        xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale']
+        for row in expected_rows:
+            curves=branches.get('REF_'+row['id'],[])
+            if len(curves)!=1:errors.append('EXP_LOG_PAIR_CURVE_BRANCH_MISSING_OR_DUPLICATED:'+str(row['id']));continue
+            points=sorted(curves[0],key=lambda point:point[0]);lo,hi=row['domain'];x_tol=.35/max(1e-12,xscale);y_tol=.35/max(1e-12,yscale)
+            if points[0][0]<lo-x_tol or points[-1][0]>hi+x_tol:errors.append('EXP_LOG_PAIR_DRAW_DOMAIN_COVERAGE_FAIL:'+str(row['id']))
+            # The display window clips tall/steep parts of a curve: an end that is not at the domain endpoint must sit on the top/bottom edge.
+            ymin,ymax=plan['viewport'][2],plan['viewport'][3]
+            for index,endpoint in ((0,lo),(-1,hi)):
+                try:expected=_exp_log_exact_value(row,endpoint)
+                except (ValueError,OverflowError):expected=None
+                if expected is not None and ymin-1e-9<=expected<=ymax+1e-9:
+                    if abs(points[index][0]-endpoint)>x_tol:errors.append('EXP_LOG_PAIR_DRAW_DOMAIN_COVERAGE_FAIL:'+str(row['id']))
+                elif not (abs(points[index][1]-ymin)<=y_tol or abs(points[index][1]-ymax)<=y_tol):errors.append('EXP_LOG_PAIR_DRAW_DOMAIN_CLIP_FAIL:'+str(row['id']))
+            direction=1 if row['monotonicity']=='INCREASING' else -1
+            if any((right[1]-left[1])*direction< -1e-8 for left,right in zip(points,points[1:])):errors.append('EXP_LOG_PAIR_MONOTONICITY_FAIL:'+str(row['id']))
+            for px,py in points:
+                try:expected=_exp_log_exact_value(row,px)
+                except (ValueError,OverflowError):errors.append('EXP_LOG_PAIR_WRONG_CURVE:'+str(row['id']));break
+                if not math.isfinite(expected) or abs(py-expected)*yscale>.35:errors.append('EXP_LOG_PAIR_WRONG_CURVE:'+str(row['id']));break
+            if (points[-1][0]-points[0][0])*xscale<policy['minimumBranchSpanCssPx']:unsupported.append('EXP_LOG_PAIR_BRANCH_BELOW_PROFILE_FLOOR:'+str(row['id']))
+            marker_errors,marker=_audit_id_marker(root,'reference-'+str(row['id']),row['_reference'],policy,transform);errors.extend(marker_errors)
+            if row['family']=='exponential-affine':
+                errors.extend(_audit_id_line(root,'asymptote-'+str(row['id']),'horizontal',row['_asymptote'],transform))
+                separation=abs(float(row['_coefficients'][0]))*yscale
+                if separation<policy['minimumAsymptoteSeparationCssPx']:unsupported.append('EXP_LOG_PAIR_REFERENCE_ASYMPTOTE_BELOW_PROFILE_FLOOR:'+str(row['id']))
+            else:
+                errors.extend(_audit_id_line(root,'boundary-'+str(row['id']),'vertical',row['_asymptote'],transform))
+                near=points[0][0] if row['_coefficients'][1]>0 else points[-1][0]
+                if abs(near-row['_asymptote'])*xscale<policy['minimumBoundaryApproachGapCssPx']:unsupported.append('EXP_LOG_PAIR_BOUNDARY_GAP_BELOW_PROFILE_FLOOR:'+str(row['id']))
+        identity_nodes=[node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('id')=='identity-line']
+        if features.get('identityLine') is True:
+            if len(identity_nodes)!=1:errors.append('EXP_LOG_PAIR_IDENTITY_LINE_MISSING_OR_DUPLICATED')
+            else:
+                node=identity_nodes[0]
+                try:
+                    a=((float(node.get('x1'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('y1')))/transform['sy'])
+                    b=((float(node.get('x2'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('y2')))/transform['sy'])
+                except (TypeError,ValueError):errors.append('EXP_LOG_PAIR_IDENTITY_LINE_INVALID')
+                else:
+                    if abs(a[1]-a[0])*yscale>.35 or abs(b[1]-b[0])*yscale>.35:errors.append('EXP_LOG_PAIR_IDENTITY_LINE_POSITION_MISMATCH')
+                    if node.get('stroke-dasharray') not in {'4 3','4,3'}:errors.append('EXP_LOG_PAIR_IDENTITY_LINE_MUST_BE_DASHED')
+        elif identity_nodes:errors.append('EXP_LOG_PAIR_UNEXPECTED_IDENTITY_LINE')
+        status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors+unsupported)),'curves':[{key:value for key,value in row.items() if not key.startswith('_')} for row in expected_rows],'curveBranches':{key:len(value) for key,value in branches.items()},'identityLine':features.get('identityLine') is True,'mathMethod':'EXACT_BASES_AND_INDEPENDENT_MODEL_RECOMPUTATION'}
+    except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'EXP_LOG_PAIR_SOURCE_SCHEMA_INVALID']}
+
 def trigonometric_overview_audit(plan,svg,transform):
     errors=[];unsupported=[]
     try:
@@ -886,6 +1110,92 @@ def _pp_formula(text):
     if value.free_symbols-{x}:raise ValueError('PIECEWISE_POLY_FORMULA_INVALID')
     return value
 
+def _pp_eval_poly(poly,value):
+    degree=poly.degree()
+    if not isinstance(degree,int) or degree<0:return 0.0
+    return sum(float(poly.nth(k))*value**k for k in range(degree+1))
+
+def _pp_in_closed(value,interval):
+    tolerance=S.Float('1e-40',60);a,b=interval
+    return (a is None or value>=S.N(a,60)-tolerance) and (b is None or value<=S.N(b,60)+tolerance)
+
+def _pp_in_source(value,source):
+    tolerance=S.Float('1e-40',60);lo,hi,states=source
+    if lo is not None and (value<S.N(lo,60)-tolerance or states[0]=='OPEN' and abs(value-S.N(lo,60))<tolerance):return False
+    if hi is not None and (value>S.N(hi,60)+tolerance or states[1]=='OPEN' and abs(value-S.N(hi,60))<tolerance):return False
+    return True
+
+def _pp_in_domain(value,interval,source):return _pp_in_closed(value,interval) and _pp_in_source(value,source)
+
+def _pp_reference_source(entry):
+    raw=entry.get('sourceDomain',{'kind':'ALL_REALS'})
+    if raw=={'kind':'ALL_REALS'}:return None,None,['CLOSED','CLOSED']
+    if isinstance(raw,dict) and raw.get('kind')=='INTERVAL' and not set(raw)-{'kind','range','states'}:
+        lo,hi=(_pp_rational(v if isinstance(v,(str,int)) else str(v)) for v in raw['range']);states=list(raw.get('states',['CLOSED','CLOSED']))
+        if not lo<hi or len(states)!=2 or any(state not in INTERVAL_STATE_FILLS for state in states):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_SOURCE_DOMAIN_INVALID')
+        return S.Rational(lo.numerator,lo.denominator),S.Rational(hi.numerator,hi.denominator),states
+    raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_SOURCE_DOMAIN_INVALID')
+
+def _pp_reference_row(entry,errors):
+    """Independently rebuild one referenceCurves entry: a quadratic (coefficients) or its own piecewise function with its own domain."""
+    if not isinstance(entry,dict) or not isinstance(entry.get('id'),str):raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+    ref_id=entry['id'];claimed=entry.get('intersectionX')
+    if not isinstance(claimed,list) or len(claimed)>8:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+    if ('coefficients' in entry)==('pieces' in entry):raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+    row={'id':ref_id,'entry':entry,'claimed':claimed,'kind':'piecewise'}
+    if 'coefficients' in entry:
+        values=entry['coefficients']
+        if not isinstance(values,list) or len(values)!=3:raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+        refpoly=S.Poly(sum(_pp_coeff(v)*x**i for i,v in enumerate(values)),x)
+        if refpoly.degree()!=2:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_NOT_QUADRATIC:'+ref_id)
+        row.update(kind='quadratic',pieces=[refpoly],intervals=[(None,None)],source=(None,None,['CLOSED','CLOSED']),corners=[],extrema=[])
+        return row
+    raw_pieces=entry['pieces'];raw_breaks=entry.get('breakpoints',[])
+    if not isinstance(raw_pieces,list) or not 1<=len(raw_pieces)<=4 or not isinstance(raw_breaks,list) or len(raw_breaks)!=len(raw_pieces)-1:raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+    ref_pieces=[]
+    for piece in raw_pieces:
+        values=piece.get('coefficients') if isinstance(piece,dict) else None
+        if not isinstance(values,list) or not 1<=len(values)<=3:raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+        ref_pieces.append(S.Poly(sum(_pp_coeff(v)*x**i for i,v in enumerate(values)),x))
+    ref_breaks=[(_pp_coeff(breakpoint['x']),_pp_coeff(breakpoint['y'])) for breakpoint in raw_breaks]
+    if any(not a[0]<b[0] for a,b in zip(ref_breaks,ref_breaks[1:])):raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+    ref_lo,ref_hi,ref_states=_pp_reference_source(entry)
+    cuts=[ref_lo,*[at for at,_ in ref_breaks],ref_hi];ref_intervals=list(zip(cuts,cuts[1:]))
+    for index,(at,claimed_y) in enumerate(ref_breaks):
+        left,right=ref_pieces[index].eval(S.sympify(at)),ref_pieces[index+1].eval(S.sympify(at))
+        if not _pp_same(left,right):errors.append('PIECEWISE_POLY_REFERENCE_CURVE_DISCONTINUOUS:'+ref_id+':'+str(at))
+        elif not _pp_same(left,S.sympify(claimed_y)):errors.append('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_CLAIM_MISMATCH:'+ref_id+':'+str(at))
+    corners=[(at,ref_pieces[index].eval(S.sympify(at))) for index,(at,_) in enumerate(ref_breaks)]
+    extrema=[]
+    for poly,(a,b) in zip(ref_pieces,ref_intervals):
+        if poly.degree()==2:
+            h=S.radsimp(S.expand(-poly.nth(1)/(2*poly.nth(2))))
+            if (a is None or h>a) and (b is None or h<b):extrema.append((h,S.radsimp(S.expand(poly.eval(h))),'MAX' if poly.nth(2)<0 else 'MIN'))
+    row.update(pieces=ref_pieces,intervals=ref_intervals,source=(ref_lo,ref_hi,ref_states),corners=corners,extrema=extrema)
+    return row
+
+def _pp_ref_value(row,value):
+    for poly,(a,b) in zip(row['pieces'],row['intervals']):
+        if _pp_in_domain(value,(a,b),row['source']):return poly.eval(value)
+    return None
+
+def _pp_ref_boundary_value(row,value):
+    for poly,(a,b) in zip(row['pieces'],row['intervals']):
+        if _pp_in_closed(value,(a,b)):return poly.eval(value)
+    return None
+
+def _pp_ref_crossings(pieces,intervals,source,row):
+    found=[]
+    for poly,(a,b) in zip(pieces,intervals):
+        for other,(c,d) in zip(row['pieces'],row['intervals']):
+            roots=_pp_real_roots(poly-other)
+            if roots is None:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_CONTAINS_A_PIECE')
+            for root in roots:
+                at=S.N(root,60)
+                if not _pp_in_domain(at,(a,b),source) or not _pp_in_domain(at,(c,d),row['source']):continue
+                if not any(abs(at-seen)<S.Float('1e-40',60) for seen in found):found.append(at)
+    return sorted(found)
+
 def piecewise_polynomial_audit(plan,svg,transform):
     """Independent: the pieces, continuity, breakpoint claims, vertices, every crossing with each horizontal line and the display formula are
     recomputed from the source fields; then the drawn pieces, key points, lines, crossing dots and interval end dots are read from the SVG."""
@@ -897,17 +1207,15 @@ def piecewise_polynomial_audit(plan,svg,transform):
             if not isinstance(values,list) or not 1<=len(values)<=3:raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
             pieces.append(S.Poly(sum(_pp_coeff(v)*x**i for i,v in enumerate(values)),x))
         breaks=[(_pp_coeff(row['x']),_pp_coeff(row['y'])) for row in plan.get('breakpoints') or []]
-        if not 1<=len(pieces)<=3 or len(breaks)!=len(pieces)-1 or any(not a[0]<b[0] for a,b in zip(breaks,breaks[1:])):raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
-        # referenceCurves: other quadratics drawn with the function, read again from the plan's own exact coefficients.
+        if not 1<=len(pieces)<=4 or len(breaks)!=len(pieces)-1 or any(not a[0]<b[0] for a,b in zip(breaks,breaks[1:])):raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
+        # referenceCurves: a quadratic or its own piecewise function, rebuilt again from the plan's own exact fields and its own domain.
         ref_rows=plan.get('referenceCurves') or []
         if not isinstance(ref_rows,list) or len(ref_rows)>2:raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
-        refs=[]
-        for entry in ref_rows:
-            values=entry.get('coefficients') if isinstance(entry,dict) else None
-            if not isinstance(values,list) or len(values)!=3 or not isinstance(entry.get('id'),str):raise ValueError('PIECEWISE_POLY_SOURCE_INVALID')
-            refpoly=S.Poly(sum(_pp_coeff(v)*x**i for i,v in enumerate(values)),x)
-            if refpoly.degree()!=2:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_NOT_QUADRATIC:'+entry['id'])
-            refs.append((entry['id'],refpoly,entry))
+        refs=[_pp_reference_row(entry,errors) for entry in ref_rows]
+        for ref in refs:
+            if ref['kind']=='quadratic':
+                poly=ref['pieces'][0];h=S.radsimp(S.expand(-poly.nth(1)/(2*poly.nth(2))));ref['vertex']=(h,S.radsimp(S.expand(poly.eval(h))))
+            else:ref['vertex']=None
         source=plan.get('sourceDomain')
         if source=={'kind':'ALL_REALS'}:lo=hi=None;states=['CLOSED','CLOSED']
         elif isinstance(source,dict) and source.get('kind')=='INTERVAL' and not set(source)-{'kind','range','states'}:
@@ -949,10 +1257,13 @@ def piecewise_polynomial_audit(plan,svg,transform):
         for point in required:
             gy=g_exact(S.Rational(str(point['x'])))
             near=lambda value:abs(float(value)-point['y'])<=1e-8*max(1,abs(point['y']))
-            if not ((gy is not None and near(gy)) or any(near(refpoly.eval(S.Rational(str(point['x'])))) for _,refpoly,_ in refs)):errors.append('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+str(point.get('id')))
+            if not ((gy is not None and near(gy)) or any((value:=_pp_ref_value(ref,S.Rational(str(point['x'])))) is not None and near(value) for ref in refs)):errors.append('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+str(point.get('id')))
         ref_vertices=[]
-        for ref_id,refpoly,_ in refs:
-            h=S.radsimp(S.expand(-refpoly.nth(1)/(2*refpoly.nth(2))));ref_vertices.append((h,S.radsimp(S.expand(refpoly.eval(h))),ref_id))
+        for ref in refs:
+            if ref['kind']=='quadratic':ref_vertices.append((*ref['vertex'],ref['id']))
+            else:
+                ref_vertices.extend((at,value,ref['id']) for at,value in ref['corners'])
+                ref_vertices.extend((at,value,ref['id']) for at,value,_ in ref['extrema'])
         for fx,fy,_ in corners_exact+extrema_exact+[(a,b,None) for a,b,_ in ref_vertices]:
             if not any(abs(p['x']-float(fx))<=1e-9*max(1,abs(p['x'])) and abs(p['y']-float(fy))<=1e-9*max(1,abs(p['y'])) for p in required):errors.append('PIECEWISE_POLY_FEATURE_NOT_MARKED:'+str(fx))
         formula=plan.get('formula')
@@ -997,31 +1308,50 @@ def piecewise_polynomial_audit(plan,svg,transform):
             if slanted and (not frozen or not frozen_same('slope',m) or not frozen_same('intercept',level) or any(abs(p.get('yValue',math.nan)-h)>1e-9*max(1,abs(h)) for p,h in zip(frozen.get('points',[]),heights))):errors.append('PIECEWISE_POLY_INTERSECTION_INVENTORY_MISMATCH:'+str(line.get('id')))
             if not frozen or (not slanted and not frozen_same('y',level)) or len(frozen.get('points',[]))!=len(roots) or any(abs(p.get('xValue',math.nan)-float(r))>1e-9*max(1,abs(float(r))) or p.get('keyPoint')!=key for p,r,key in zip(frozen.get('points',[]),roots,keys)):errors.append('PIECEWISE_POLY_INTERSECTION_INVENTORY_MISMATCH:'+str(line.get('id')))
             expected_rows.append((line.get('id'),float(level),[float(r) for r in roots],keys,float(m),heights))
-        # Crossings with each reference curve, recomputed from the exact coefficients and compared with the claim and the frozen inventory.
+        # Crossings with each reference curve, recomputed piece pair by piece pair from the plan's own fields (a root outside either piece's
+        # domain, or at an open end, is not a crossing), then compared with the claim and with the frozen inventory.
         curve_rows=[];claimed_curves={row.get('curveId'):row for row in features.get('curveIntersections',[]) if isinstance(row,dict)}
-        if len(claimed_curves)!=len(refs) or sorted(claimed_curves)!=sorted(ref_id for ref_id,_,_ in refs):errors.append('PIECEWISE_POLY_INTERSECTION_INVENTORY_MISMATCH')
+        if len(claimed_curves)!=len(refs) or sorted(claimed_curves)!=sorted(ref['id'] for ref in refs):errors.append('PIECEWISE_POLY_INTERSECTION_INVENTORY_MISMATCH')
         frozen_refs={row.get('id'):row for row in features.get('referenceCurves',[]) if isinstance(row,dict)}
-        for ref_id,refpoly,entry in refs:
-            roots=[];tolerance=S.Float('1e-40',60)
-            for poly,(a,b) in zip(pieces,intervals):
-                found=_pp_real_roots(poly-refpoly)
-                if found is None:errors.append('PIECEWISE_POLY_REFERENCE_CURVE_CONTAINS_A_PIECE');continue
-                for root in found:
-                    if a is not None and root<S.N(rational(a),60)-tolerance or b is not None and root>S.N(rational(b),60)+tolerance:continue
-                    if lo is not None and (abs(root-S.N(rational(lo),60))<tolerance and states[0]=='OPEN' or abs(root-S.N(rational(hi),60))<tolerance and states[1]=='OPEN'):continue
-                    if not any(abs(root-other)<tolerance for other in roots):roots.append(root)
-            roots.sort(key=float)
-            claimed=sorted((_pp_exact(text.replace(' ','')) for text in entry.get('intersectionX',[])),key=float)
+        for ref in refs:
+            ref_id=ref['id'];tolerance=S.Float('1e-40',60)
+            try:roots=_pp_ref_crossings(pieces,intervals,(lo,hi,states),ref)
+            except ValueError as error:
+                if 'CONTAINS_A_PIECE' in str(error):errors.append('PIECEWISE_POLY_REFERENCE_CURVE_CONTAINS_A_PIECE');roots=[]
+                else:raise
+            claimed=sorted((_pp_exact(text.replace(' ','')) for text in ref['claimed']),key=float)
             if len(claimed)!=len(roots) or any(abs(S.N(c,60)-r)>tolerance for c,r in zip(claimed,roots)):errors.append('PIECEWISE_POLY_INTERSECTION_CLAIM_MISMATCH:'+ref_id)
-            heights=[float(refpoly.eval(r)) for r in roots]
+            heights=[float(_pp_ref_value(ref,r)) for r in roots]
             keys=[next((p['id'] for p in required if abs(p['x']-float(r))<=1e-9*max(1,abs(float(r))) and abs(p['y']-h)<=1e-9*max(1,abs(h))),None) for r,h in zip(roots,heights)]
             frozen=claimed_curves.get(ref_id) or {}
             if len(frozen.get('points',[]))!=len(roots) or any(abs(q.get('xValue',math.nan)-float(r))>1e-9*max(1,abs(float(r))) or abs(q.get('yValue',math.nan)-h)>1e-9*max(1,abs(h)) or q.get('keyPoint')!=key for q,r,h,key in zip(frozen.get('points',[]),roots,heights,keys)):errors.append('PIECEWISE_POLY_INTERSECTION_INVENTORY_MISMATCH:'+ref_id)
             frozen_draw=frozen_refs.get(ref_id)
-            try:coefficients_same=frozen_draw is not None and len(frozen_draw.get('coefficients',[]))==3 and all(_pp_same(_pp_exact(str(v).replace(' ','')),refpoly.nth(i)) for i,v in enumerate(frozen_draw.get('coefficients',[])))
-            except ValueError:coefficients_same=False
-            if not coefficients_same:errors.append('PIECEWISE_POLY_REFERENCE_CURVE_INVENTORY_MISMATCH:'+ref_id)
-            curve_rows.append((ref_id,refpoly,[float(r) for r in roots],keys,heights))
+            if ref['kind']=='quadratic':
+                try:inventory_same=frozen_draw is not None and len(frozen_draw.get('coefficients',[]))==3 and all(_pp_same(_pp_exact(str(v).replace(' ','')),ref['pieces'][0].nth(i)) for i,v in enumerate(frozen_draw.get('coefficients',[])))
+                except ValueError:inventory_same=False
+            else:
+                # The frozen draught of a piecewise reference is its own pieces, draw intervals, corners, extrema and source ends.
+                # A reference piece entirely outside the drawn window is not frozen; the drawn branches are checked below.
+                inventory_same=isinstance(frozen_draw,dict) and isinstance(frozen_draw.get('pieces'),list) and 1<=len(frozen_draw['pieces'])<=len(ref['pieces'])
+                if inventory_same:
+                    for frozen_piece,poly,(a,b) in zip(frozen_draw['pieces'],ref['pieces'],ref['intervals']):
+                        try:
+                            coefficients_same=all(_pp_same(_pp_exact(str(v).replace(' ','')),poly.nth(i)) for i,v in enumerate(frozen_piece.get('coefficients',[])))
+                        except (ValueError,AttributeError):coefficients_same=False
+                        if not coefficients_same or not isinstance(frozen_piece.get('drawInterval'),list):inventory_same=False;break
+                    if inventory_same:
+                        frozen_corners=frozen_draw.get('corners') or []
+                        inventory_same=len(frozen_corners)==len(ref['corners']) and all(_pp_same(_pp_exact(c['x'].replace(' ','')),at) and _pp_same(_pp_exact(c['y'].replace(' ','')),value) for c,(at,value) in zip(frozen_corners,ref['corners']))
+                    if inventory_same:
+                        frozen_extrema=frozen_draw.get('extrema') or []
+                        inventory_same=len(frozen_extrema)==len(ref['extrema']) and all(_pp_same(_pp_exact(e['x'].replace(' ','')),at) and _pp_same(_pp_exact(e['y'].replace(' ','')),value) and e.get('kind')==kind for e,(at,value,kind) in zip(frozen_extrema,ref['extrema']))
+                    if inventory_same:
+                        expected_source=ref['source']
+                        frozen_source=frozen_draw.get('sourceInterval')
+                        if expected_source[0] is None:inventory_same=frozen_source is None
+                        else:inventory_same=isinstance(frozen_source,dict) and _pp_same(_pp_exact(frozen_source['lo'].replace(' ','')),expected_source[0]) and _pp_same(_pp_exact(frozen_source['hi'].replace(' ','')),expected_source[1]) and frozen_source.get('startState')==expected_source[2][0] and frozen_source.get('endState')==expected_source[2][1]
+            if not inventory_same:errors.append('PIECEWISE_POLY_REFERENCE_CURVE_INVENTORY_MISMATCH:'+ref_id)
+            curve_rows.append((ref_id,ref,[float(r) for r in roots],keys,heights))
         # The drawn window: each piece on its own interval cut to the draw domain; outer arms of an all-real source go past every key point.
         domain=plan.get('domain');draw_rows=features.get('pieces',[])
         if not isinstance(domain,list) or len(domain)!=2 or not domain[0]<domain[1] or len(draw_rows)!=len(pieces):raise ValueError('PIECEWISE_POLY_DRAW_DOMAIN_INVALID')
@@ -1032,7 +1362,7 @@ def piecewise_polynomial_audit(plan,svg,transform):
         errors.extend(axis_ratio_errors(plan,transform))
         if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not isinstance(v,(int,float)) or not math.isfinite(v) for v in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
         sx,sy,display=transform['sx'],transform['sy'],transform['displayScale'];x_tol=.35/(sx*display);y_tol=.35/(sy*display)
-        key_x=[float(fx) for fx,_,_ in corners_exact+extrema_exact]+[p['x'] for p in required]+[v for _,_,xs,_,_,_ in expected_rows for v in xs]+[v for _,_,xs,_,_ in curve_rows for v in xs]
+        key_x=[float(fx) for fx,_,_ in corners_exact+extrema_exact]+[p['x'] for p in required]+[v for _,_,xs,_,_,_ in expected_rows for v in xs]+[v for _,_,xs,_,_ in curve_rows for v in xs]+[float(fx) for fx,_,_ in ref_vertices]+[float(at) for ref in refs if ref['source'][0] is not None and ref['kind']=='piecewise' for at in (ref['source'][0],ref['source'][1])]
         if lo is None and key_x and (min(key_x)-domain[0])*sx*display<8 or lo is None and key_x and (domain[1]-max(key_x))*sx*display<8:errors.append('PIECEWISE_POLY_ARM_TOO_SHORT')
         root=ET.fromstring(svg);xmin,xmax,ymin,ymax=plan['viewport']
         to_model=lambda px,py:((px-transform['originX'])/sx,(transform['originY']-py)/sy)
@@ -1051,7 +1381,7 @@ def piecewise_polynomial_audit(plan,svg,transform):
             if abs(points[0][0]-start)>x_tol or abs(points[-1][0]-end)>x_tol:errors.append('PIECEWISE_POLY_PIECE_COVERAGE_FAIL:'+str(index))
             if any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('PIECEWISE_POLY_PIECE_CROSSES_ITS_INTERVAL:'+str(index))
             curvature=abs(float(poly.nth(2)))*2 if poly.degree()==2 else 0.0;worst=0.0
-            evaluate=lambda value:sum(float(poly.nth(k))*value**k for k in range(poly.degree()+1))
+            evaluate=lambda value:_pp_eval_poly(poly,value)
             for (ax,ay),(bx,by) in zip(points,points[1:]):
                 bound=(max(abs(ay-evaluate(ax)),abs(by-evaluate(bx)))+curvature*(bx-ax)**2/8)*sy*display
                 worst=max(worst,bound)
@@ -1059,17 +1389,34 @@ def piecewise_polynomial_audit(plan,svg,transform):
                 if not (xmin-x_tol<=px<=xmax+x_tol and ymin-y_tol<=py<=ymax+y_tol):errors.append('PIECEWISE_POLY_CURVE_OUTSIDE_VIEW:'+str(index));break
             if worst>.35:errors.append('PIECEWISE_POLY_CURVE_INTERIOR_BOUND_FAIL:'+str(index))
             coverage.append({'piece':index,'interval':[start,end],'points':len(points),'maxErrorCssPx':worst})
-        if sorted(by_ref)!=sorted('REF_'+ref_id for ref_id,_,_ in refs) or any(len(nodes)!=1 for nodes in by_ref.values()):errors.append('PIECEWISE_POLY_REFERENCE_CURVE_PRIMITIVE_MISSING')
-        for ref_id,refpoly,_,_,_ in curve_rows:
-            nodes=by_ref.get('REF_'+ref_id)
+        # Every reference piece is drawn only on its own interval clipped to the drawn window, under the id scheme the producer uses.
+        expected_ref_draws=[]
+        for ref in refs:
+            rows=[]
+            for poly,(a,b) in zip(ref['pieces'],ref['intervals']):
+                start=domain[0] if a is None else max(domain[0],float(a));end=domain[1] if b is None else min(domain[1],float(b))
+                if end-start<=1e-9:continue
+                rows.append((poly,start,end))
+            expected_ref_draws.append((ref,rows))
+        expected_branches=[]
+        for ref,rows in expected_ref_draws:
+            if not rows:continue
+            for index,(_,start,end) in enumerate(rows,1):
+                branch='REF_'+ref['id'] if len(rows)==1 else 'REF_'+ref['id']+'_'+str(index)
+                expected_branches.append((branch,rows[index-1]))
+        if sorted(by_ref)!=sorted(branch for branch,_ in expected_branches) or any(len(nodes)!=1 for nodes in by_ref.values()):errors.append('PIECEWISE_POLY_REFERENCE_CURVE_PRIMITIVE_MISSING')
+        for branch,(refpoly,start,end) in expected_branches:
+            nodes=by_ref.get(branch)
             if not nodes:continue
+            ref_id=branch[4:]
             values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',nodes[0].get('points',''))]
             if len(values)<4 or len(values)%2:errors.append('PIECEWISE_POLY_CURVE_POINTS_INVALID');continue
             points=[to_model(values[i],values[i+1]) for i in range(0,len(values),2)]
             if any(b[0]<=a[0] for a,b in zip(points,points[1:])):errors.append('PIECEWISE_POLY_PIECE_NOT_INCREASING_X:'+ref_id)
-            if abs(points[0][0]-domain[0])>x_tol or abs(points[-1][0]-domain[1])>x_tol:errors.append('PIECEWISE_POLY_REFERENCE_CURVE_COVERAGE_FAIL:'+ref_id)
-            curvature=abs(float(refpoly.nth(2)))*2;worst=0.0
-            evaluate=lambda value,refpoly=refpoly:sum(float(refpoly.nth(k))*value**k for k in range(refpoly.degree()+1))
+            if abs(points[0][0]-start)>x_tol or abs(points[-1][0]-end)>x_tol:errors.append('PIECEWISE_POLY_REFERENCE_CURVE_COVERAGE_FAIL:'+ref_id)
+            if any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('PIECEWISE_POLY_REFERENCE_PIECE_CROSSES_ITS_INTERVAL:'+ref_id)
+            curvature=abs(float(refpoly.nth(2)))*2 if refpoly.degree()==2 else 0.0;worst=0.0
+            evaluate=lambda value,refpoly=refpoly:_pp_eval_poly(refpoly,value)
             for (ax,ay),(bx,by) in zip(points,points[1:]):
                 worst=max(worst,(max(abs(ay-evaluate(ax)),abs(by-evaluate(bx)))+curvature*(bx-ax)**2/8)*sy*display)
             for px,py in points:
@@ -1106,6 +1453,14 @@ def piecewise_polynomial_audit(plan,svg,transform):
             for wx,wy,state,side in ends:
                 node=circles.get('interval-endpoint-'+side)
                 if node is None or not dot_at('interval-endpoint-'+side,wx,wy,'interval-endpoint') or node.get('fill') not in INTERVAL_STATE_FILLS[state]:errors.append('PIECEWISE_POLY_INTERVAL_END_MARKER_MISMATCH:'+side)
+        # A piecewise reference curve's own domain ends are hollow (OPEN) or filled (CLOSED) dots.
+        for ref,rows in expected_ref_draws:
+            source=ref['source']
+            if source[0] is None:continue
+            for side,state,at in (('start',source[2][0],source[0]),('end',source[2][1],source[1])):
+                value=_pp_ref_boundary_value(ref,at)
+                node=circles.get('ref-endpoint-'+ref['id']+'-'+side)
+                if node is None or node.get('data-role')!='reference-endpoint' or not dot_at('ref-endpoint-'+ref['id']+'-'+side,float(at),float(value),'reference-endpoint') or node.get('fill') not in INTERVAL_STATE_FILLS[state]:errors.append('PIECEWISE_POLY_REFERENCE_ENDPOINT_MARKER_MISMATCH:'+ref['id']+'-'+side)
         # Marks closer than one CSS pixel cannot be told apart at this size.
         marks=[]
         for mark in sorted(set([(float(fx),float(fy)) for fx,fy,_ in corners_exact+extrema_exact]+[(v,h) for _,_,xs,_,_,heights in expected_rows for v,h in zip(xs,heights)]+[(v,h) for _,_,xs,_,heights in curve_rows for v,h in zip(xs,heights)]+[(float(a),float(b)) for a,b,_ in ref_vertices])):
@@ -1239,9 +1594,13 @@ def audit(plan,svg,transform):
     if plan.get('family')=='piecewise-affine' and plan.get('shapeIntent')=='OVERVIEW':
         return piecewise_affine_overview_audit(plan,svg,transform)
     if plan.get('family')=='exponential-affine' and plan.get('shapeIntent')=='OVERVIEW':
+        if plan.get('overviewPolicy')=='EXPONENTIAL_BASE_OVERVIEW_v1':return exponential_base_overview_audit(plan,svg,transform)
         return exponential_affine_overview_audit(plan,svg,transform)
     if plan.get('family')=='logarithmic-affine' and plan.get('shapeIntent')=='OVERVIEW':
+        if plan.get('overviewPolicy')=='LOGARITHMIC_BASE_OVERVIEW_v1':return logarithmic_base_overview_audit(plan,svg,transform)
         return logarithmic_affine_overview_audit(plan,svg,transform)
+    if plan.get('family')=='exp-log-pair' and plan.get('shapeIntent')=='OVERVIEW':
+        return exp_log_pair_overview_audit(plan,svg,transform)
     if plan.get('family')=='trigonometric' and plan.get('shapeIntent')=='OVERVIEW':
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v1':return trigonometric_interval_audit(plan,svg,transform)
         return trigonometric_overview_audit(plan,svg,transform)

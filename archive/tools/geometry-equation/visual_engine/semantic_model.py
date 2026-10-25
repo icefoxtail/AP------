@@ -9,11 +9,11 @@ from .geometry_model import (Line,Circle,CircularArc,point,finite,line_intersect
 KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRCULAR_ARC',
     'FUNCTION_GRAPH','INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR',
     'PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUATION_LABEL','EQUAL_MARK','PARALLEL_MARK',
-    'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE'}
+    'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUAL_MARK','PARALLEL_MARK'}
-FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned'}
-REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'}}
+FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill'}
+REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'}}
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
@@ -77,7 +77,7 @@ def validate(spec):
             if not isinstance(obj.get('expression'),str): raise ValueError('EXPRESSION_REQUIRED')
             lo,hi=point(obj['domain'])
             if lo>=hi: raise ValueError('INVALID_DOMAIN')
-            if 'branch' in obj and obj['branch'] not in {'LEFT','RIGHT','PIECE_1','PIECE_2','PIECE_3'} and not re.fullmatch(r'REF_[A-Za-z][A-Za-z0-9]{0,7}',str(obj['branch'])):raise ValueError('INVALID_GRAPH_BRANCH_TAG')
+            if 'branch' in obj and obj['branch'] not in {'LEFT','RIGHT','PIECE_1','PIECE_2','PIECE_3','PIECE_4'} and not re.fullmatch(r'REF_[A-Za-z][A-Za-z0-9]{0,7}(?:_[1-4])?',str(obj['branch'])):raise ValueError('INVALID_GRAPH_BRANCH_TAG')
         elif kind in {'EQUATION_LABEL','GRAPH_ANNOTATION','CONDITION_BOX'}:
             point(obj['at'])
             if kind=='CONDITION_BOX':
@@ -92,6 +92,30 @@ def validate(spec):
         arc=CircularArc(geometry[refs[0]],geometry[refs[1]],geometry[refs[2]],obj['sweep'])
         geometry[obj['id']]=arc
         relations.append({'id':obj['id'],'kind':'CIRCULAR_ARC','status':'PASS','observed':arc.degrees})
+    for obj in spec['objects']:
+        if obj['kind'] != 'FILL_REGION': continue
+        # A region is closed chains of straight edges and circular arcs between displayed points (even-odd fill: shapes minus holes).
+        loops=obj['loops']
+        if obj['fill'] not in {'LIGHT','MEDIUM'}: raise ValueError('REGION_FILL_UNSUPPORTED:'+obj['id'])
+        if not isinstance(loops,list) or not loops: raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
+        for loop in loops:
+            if not isinstance(loop,dict) or set(loop)!={'start','steps'} or not isinstance(loop['steps'],list) or len(loop['steps'])<1:
+                raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
+            names=[loop['start']]+[step.get('to') for step in loop['steps']]
+            if any(objects.get(name,{}).get('kind')!='POINT' for name in names): raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
+            if names[-1]!=names[0]: raise ValueError('REGION_NOT_CLOSED:'+obj['id'])
+            for before,step in zip(names,loop['steps']):
+                if set(step)-{'to','arc'}: raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
+                arc=step.get('arc')
+                full=isinstance(arc,dict) and arc.get('full') is True
+                if before==step['to'] and not full: raise ValueError('REGION_DEGENERATE_EDGE:'+obj['id'])
+                if arc is None: continue
+                if set(arc)-{'center','sweep','full'} or not {'center','sweep'}<=set(arc) or arc['sweep'] not in {'CCW','CW'} or objects.get(arc['center'],{}).get('kind')!='POINT' or (full and before!=step['to']):
+                    raise ValueError('REGION_BOUNDARY_UNKNOWN:'+obj['id'])
+                c=geometry[arc['center']];r=math.dist(geometry[before],c)
+                if r<=0 or abs(math.dist(geometry[step['to']],c)-r)>1e-6*max(1,r): raise ValueError('REGION_ARC_ENDPOINT_NOT_ON_CIRCLE:'+obj['id'])
+        geometry[obj['id']]={'loops':loops}
+        relations.append({'id':obj['id'],'kind':'FILL_REGION','status':'PASS','observed':len(loops)})
     for obj in spec['objects']:
         kind=obj['kind']; refs=obj.get('refs',[])
         if any(ref not in objects for ref in refs): raise ValueError('UNKNOWN_REF')

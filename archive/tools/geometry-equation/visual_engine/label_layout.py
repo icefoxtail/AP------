@@ -9,6 +9,7 @@ DIRECTIONS=('N','NE','E','SE','S','SW','W','NW')
 OWNER_BOUND_POINT_LABELS={'POINT_NAME','COORDINATE_LABEL'}
 POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
 MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
+POINT_NAME_RING_RADII=(12,16,20,26,32,40,48,56,64,72,80,96,112)
 NEAR_RELOCATION_LEADER_MIN_GAP=20
 TICK_LABEL_ALIGNMENT_TOLERANCE=4.0
 TICK_LABEL_MAX_EDGE_GAP=16.0
@@ -414,7 +415,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         # leaderOwned: ids of the marks (angle arcs, highlighted arcs) a label names; beyond the near gaps a visible leader from its anchor ties it to them.
         leader_owned_ids=set(label.get('leaderOwned',()))
         def acceptable(box,owner_check=True):
-            return (safe_area.contains(box) and not any(collision(box,o) for o in occupied)
+            return (safe_area.contains(box) and not any(collision(box,o,label['labelGap']) if o['kind']=='label' and 'labelGap' in label else collision(box,o) for o in occupied)
                 and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines))
                 and (owner_marker is None or not owner_check or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
                 and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'])))
@@ -603,6 +604,25 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                 box=Box(panel.x,panel.y+row,pw,ph)
                 if panel.contains(box) and acceptable(box):
                     chosen=box;method='SIDE_PANEL';label={**label,'text':text,'markup':html.escape(label.get('panelPrefix',''))+label['markup'] if label.get('markup') else None};break
+        if (chosen is None and label['kind']=='POINT_NAME' and not label.get('directions') and not label.get('gaps')
+                and label.get('preferred') is None):
+            # A point where several strokes meet (the centre of a circle with its radii) leaves no free cardinal direction for its name: the name
+            # goes into the nearest free sector around the point, closest to it first. When that sector is outside the point's Voronoi cell (a long
+            # name, a narrow sector) a visible leader from the point ties the name back to it.
+            at=tuple(label['at']);ring=None;ring_method=None;incident=None
+            for radius in POINT_NAME_RING_RADII:
+                for step in range(48):
+                    angle=math.radians(step*7.5)
+                    box=Box(at[0]+radius*math.cos(angle)-w/2,at[1]+radius*math.sin(angle)-h/2,w,h)
+                    if acceptable(box):ring=box;ring_method='POINT_NAME_RING';break
+                    if owner_marker is None or not acceptable(box,owner_check=False):continue
+                    incident=incident or owner_incident_ids(at,owner_marker,occupied)
+                    end=visible_owner_leader(at,box,occupied,incident)
+                    if end is None:continue
+                    tie_to_owner(end);ring=box
+                    ring_method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((step*7.5+22.5)%360)//45)];break
+                if ring is not None:break
+            if ring is not None:chosen=ring;method=ring_method
         if chosen is None:
             unresolved.append(label['id'])
             trace.append({'id':label['id'],'fallback':'POLISH_REQUIRED','suggestions':['LEADER_LINE','VIEWPORT_EXPANSION','PANEL_SPLIT']});continue

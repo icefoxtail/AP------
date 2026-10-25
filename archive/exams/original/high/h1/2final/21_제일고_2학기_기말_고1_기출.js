@@ -132,7 +132,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q04-solution.svg",
 
-    "solutionImageAlt": "유리함수의 점근선과 중심을 나타낸 해설 그래프",
+    "solutionImageAlt": "유리함수 y=2−5/(x+3)의 두 곡선 가지와 점근선 x=−3, y=2, 중심 (−3,2), x절편 (−1/2,0)을 표시한 그림. 그래프가 제4사분면을 지나지 않음을 보여준다.",
 
     "solutionImageCaption": "y=2−5/(x+3)에서 점근선 x=−3, y=2와 중심을 확인한다.",
 
@@ -622,7 +622,7 @@ window.questionBank = [
     "answer": "$a=5,\\ b=2$",
     "solution": "[키포인트] 평행이동한 원의 중심과 반지름을 먼저 구한 뒤 좌표축과의 접선 조건을 거리로 나타낸다.\n조건 정리: 원래 원의 중심은 $(a,b)$이고 반지름은 $a$이다. 평행이동 후 중심은 $(a-10,b+3)$이고 반지름은 그대로 $a$이다.\n풀이 방향: $x$축과 $y$축에 동시에 접하므로 중심에서 각 축까지의 거리가 모두 반지름 $a$와 같다.\n정석 풀이: $y$축까지의 거리는 $|a-10|$이므로 $|a-10|=a$이다. $a\\gt0$이므로 $10-a=a$가 되어 $a=5$이다. 또 $x$축까지의 거리는 $|b+3|$이고 $b\\gt0$이므로 $b+3\\gt0$이다. 따라서 $b+3=a=5$이므로 $b=2$이다.\n따라서 구하는 값은 $a=5$, $b=2$이다.",
     "solutionImage": "assets/images/21_제일고_2학기_기말_고1_기출/q19-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 19의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "중심 (5,2), 반지름 5인 원과 이를 (−10,3)만큼 평행이동한 중심 (−5,5), 반지름 5인 원을 함께 그린 그림. 이동한 원이 x축 접점 (−5,0)과 y축 접점 (0,5)에서 두 축에 동시에 접함을 보여준다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-TRANSLATION",
     "subUnit": "평행이동",

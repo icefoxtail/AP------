@@ -506,7 +506,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q16-solution-graph.svg",
-    "solutionImageAlt": "문항 16 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageAlt": "포물선 y=(x−2)²−1의 꼭짓점 (2,−1)과 x=0, x=4에서 같은 값 3이 되는 점 (0,3), (4,3)을 표시해, a가 2와 4를 지날 때 최댓값·최솟값이 달라지는 기준을 보여 준다.",
     "solutionImageSize": "full"
   },
   {
@@ -609,7 +609,11 @@ window.questionBank = [
     "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_GRAPH",
     "subUnit": "이차함수의 그래프",
     "subUnitConfidence": "category_or_cue_inferred",
-    "subUnitClassificationDepth": "complete_category"
+    "subUnitClassificationDepth": "complete_category",
+    "solutionImage": "assets/images/26_순천고_1학기_기말_고1_기출/q20-solution-fig.svg",
+    "solutionImageAlt": "하루 이익 P(x)=-50(x-20)²+45000은 0≤x≤50에서 x=20일 때 45000원으로 최대이고, x=0에서 25000원, x=50에서 0원이 된다.",
+    "solutionImageCaption": "하루 이익 P(x)=-50(x-20)²+45000은 0≤x≤50에서 x=20일 때 45000원으로 최대이고, x=0에서 25000원, x=50에서 0원이 된다.",
+    "solutionImageSize": "full"
   },
   {
     "id": 21,

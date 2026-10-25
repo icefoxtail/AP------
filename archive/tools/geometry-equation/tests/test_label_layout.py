@@ -1,4 +1,4 @@
-import sys,unittest
+import math,sys,unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from visual_engine.label_layout import *
@@ -164,6 +164,22 @@ class LayoutTests(unittest.TestCase):
         crowded=[points[0],{'id':'B','kind':'point','geometry':(107,100,2)}]
         blocked=layout([item],crowded+[wall],Box(0,0,300,200),measurements={'A-name':(20,10)},require_measurements=True)
         self.assertEqual((blocked['unresolved'],blocked['leaders']),(['A-name'],[]))
+    def test_point_name_at_a_stroke_hub_goes_into_a_free_sector(self):
+        # The centre of a circle drawn with eight radii has no free cardinal direction: the name moves into a sector between two rays.
+        point={'id':'O','kind':'point','geometry':(100,100,2)}
+        rays=[]
+        for k,(dx,dy) in enumerate(((1,0),(1,1),(0,1),(-1,1),(-1,0),(-1,-1),(0,-1),(1,-1))):
+            length=math.hypot(dx,dy)
+            rays.append({'id':'r%d'%k,'kind':'line','geometry':[(100,100),(100+60*dx/length,100+60*dy/length)]})
+        item=label('O-name',(100,100),'O','POINT_NAME',target='O')
+        result=layout([item],[point]+rays,Box(0,0,300,200),measurements={'O-name':(15,14)},require_measurements=True)
+        self.assertEqual(result['status'],'PASS',result['unresolved'])
+        placed=result['labels'][0];box=Box(**placed['box'])
+        self.assertEqual(placed['placement'],'POINT_NAME_RING')
+        self.assertEqual(result['leaders'],[])
+        self.assertFalse(any(collision(box,ray) for ray in rays))
+        self.assertLess(math.hypot(box.x+box.width/2-100,box.y+box.height/2-100),70)
+
     def test_tick_label_is_axis_normal_and_owned_by_exact_tick(self):
         tick={'id':'tick-x--2','kind':'line','role':'tick','axis':'x','value':-2,'geometry':[(34.84,156),(34.84,164)]}
         axis={'id':'x-axis','kind':'axis','role':'axis','axis':'x','geometry':[(0,160),(250,160)]}

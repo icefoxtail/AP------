@@ -57,7 +57,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q02-solution.svg",
 
-    "solutionImageAlt": "유리함수의 두 점근선을 나타낸 해설 그래프",
+    "solutionImageAlt": "유리함수 y=(3x+2)/(x−2)=3+8/(x−2)의 그래프가 수직점근선 x=2와 수평점근선 y=3을 가지며, x절편 (−2/3,0)과 y절편 (0,−1)을 지나 a=2, b=3, ab=6임을 보여준다.",
 
     "solutionImageCaption": "y=3+8/(x−2)에서 점근선 x=2, y=3과 절편을 확인한다.",
 
@@ -233,7 +233,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 교점의 $y$좌표를 미지수로 두면 근의 개수와 $y\\ge0$ 조건을 함께 처리할 수 있다.\n조건 정리: 교점에서는 $x=y-k$이고 무리함수의 함수값이므로 $y\\ge0$이다.\n풀이 방향: $y^2=2x+4$에 $x=y-k$를 대입하여 이차방정식의 두 근이 서로 다르고 모두 0 이상이 되는 조건을 구한다.\n정석 풀이: $y^2=2(y-k)+4$이므로 $y^2-2y+2k-4=0$이고, 두 근은 $y=1\\pm\\sqrt{5-2k}$이다. 서로 다른 두 실근을 가지려면 $k\\lt\\dfrac52$이다. 작은 근도 $0$ 이상이어야 하므로 $1-\\sqrt{5-2k}\\ge0$, 따라서 $k\\ge2$이다. 그러므로 $2\\le k\\lt\\dfrac52$이고 $a=2$, $b=\\dfrac52$이다. $a+2b=2+5=7$이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/21_순천고_2학기_기말_고1_기출/q08-solution.svg",
-    "solutionImageAlt": "무리함수와 직선의 두 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "무리함수 y=√(2x+4)의 그래프와 기울기 1인 직선 y=x+k가 k=2.2일 때 두 점 P₁, P₂에서 만나며, 서로 다른 두 교점이 생기는 범위가 2≤k<5/2임을 보여준다.",
     "solutionImageCaption": "2≤k<5/2에서 두 교점이 생기는 영역을 표시한다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",

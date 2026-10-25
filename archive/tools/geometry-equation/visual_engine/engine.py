@@ -21,7 +21,7 @@ from .viewport import for_spec
 from .function_sampling import sample
 from .math_expression import Expr,parse,serialize,evaluate,exact_coordinate
 from .label_layout import Box,layout,approximate_size,DIRECTIONS
-from .svg_composer import compose
+from .svg_composer import compose,num as _num
 from .style_tokens import load
 from .config import resolve_output
 
@@ -42,6 +42,50 @@ def mark_label(label_id,target,text,label_kind,at,extra):
     label={'id':label_id,'kind':'EQUATION_LABEL','target':target,'text':plain,'markup':markup,'tex':tex,'math':True,'sourceMath':text,'font':tokens['mathLabel'],'priority':0,'at':list(at),'allowSuppress':False,**extra}
     label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
     return label
+
+REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
+# A light neutral grey, clearly apart from the cooler region fills above, so an angle sector stays distinguishable from a shaded area.
+SECTOR_FILL='#d9d9d9'
+
+def _region_label_centres(polygons,obstacles,step=3.0,limit=900):
+    """Interior points of an even-odd region (screen px), widest clearance first (from its boundary and from every stroke inside it): where a label has the most room."""
+    edges=[(a,b) for poly in polygons for a,b in zip(poly,poly[1:]+poly[:1])]
+    strokes=[]
+    for o in obstacles:
+        g=o.get('geometry')
+        if o.get('kind') in {'point','circle'}:strokes.append(('disc' if o['kind']=='point' else 'ring',g))
+        elif g and len(g)>=2 and all(isinstance(p,(list,tuple)) for p in g):strokes.extend(('seg',(a,b)) for a,b in zip(g,g[1:]))
+    xs=[p[0] for poly in polygons for p in poly];ys=[p[1] for poly in polygons for p in poly]
+    def inside(x,y):
+        hit=False
+        for (ax,ay),(bx,by) in edges:
+            if (ay>y)!=(by>y) and x<(bx-ax)*(y-ay)/(by-ay)+ax:hit=not hit
+        return hit
+    def seg_distance(x,y,a,b):
+        (ax,ay),(bx,by)=a,b;dx,dy=bx-ax,by-ay;n=dx*dx+dy*dy
+        t=0.0 if n==0 else max(0.0,min(1.0,((x-ax)*dx+(y-ay)*dy)/n))
+        return math.hypot(x-ax-t*dx,y-ay-t*dy)
+    def clearance(x,y):
+        best=min(seg_distance(x,y,a,b) for a,b in edges)
+        for kind,g in strokes:
+            if kind=='seg':best=min(best,seg_distance(x,y,*g))
+            elif kind=='ring':best=min(best,abs(math.hypot(x-g[0],y-g[1])-g[2]))
+            else:best=min(best,math.hypot(x-g[0],y-g[1])-g[2])
+        return best
+    found=[]
+    x=min(xs)
+    while x<=max(xs):
+        y=min(ys)
+        while y<=max(ys):
+            if inside(x,y):found.append((clearance(x,y),x,y))
+            y+=step
+        x+=step
+    found.sort(key=lambda row:-row[0]);chosen=[]
+    for c,x,y in found:
+        if c<3.0:break
+        if all(math.hypot(x-px,y-py)>=4.0 for px,py in chosen):chosen.append((x,y))
+        if len(chosen)>=limit:break
+    return [list(p) for p in chosen]
 
 def prepare(spec):
     semantic=validate(spec);spec=semantic['spec'];geometry=semantic['geometry'];tokens=load();critical=[]
@@ -65,13 +109,19 @@ def prepare(spec):
     if interval_features is not None:
         if interval_features.get('schemaVersion')!='POLYNOMIAL_INTERVAL_FEATURES_v1':raise ValueError('POLYNOMIAL_INTERVAL_INVENTORY_REQUIRED')
         for endpoint in interval_features.get('endpoints',[]):critical.append((_exact_float(endpoint['x']),_exact_float(endpoint['y'])))
+    reference_interval_features=spec['displayFacts'].get('referenceIntervalFeatures')
+    if reference_interval_features is not None:
+        if not isinstance(reference_interval_features,list):raise ValueError('REFERENCE_INTERVAL_INVENTORY_REQUIRED')
+        for row in reference_interval_features:
+            critical.append((_exact_float(row['lo']),_exact_float(row['startY'])))
+            critical.append((_exact_float(row['hi']),_exact_float(row['endY'])))
     exponential_features=spec['displayFacts'].get('exponentialFeatures')
     if exponential_features is not None:
-        if exponential_features.get('schemaVersion')!='EXPONENTIAL_AFFINE_FEATURES_v1':raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
+        if exponential_features.get('schemaVersion') not in {'EXPONENTIAL_AFFINE_FEATURES_v1','EXPONENTIAL_BASE_FEATURES_v1'}:raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
         reference=exponential_features['referencePoint'];critical.append((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
     logarithmic_features=spec['displayFacts'].get('logarithmicFeatures')
     if logarithmic_features is not None:
-        if logarithmic_features.get('schemaVersion')!='LOGARITHMIC_AFFINE_FEATURES_v1':raise ValueError('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED')
+        if logarithmic_features.get('schemaVersion') not in {'LOGARITHMIC_AFFINE_FEATURES_v1','LOGARITHMIC_BASE_FEATURES_v1'}:raise ValueError('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED')
         reference=logarithmic_features['referencePoint'];critical.append((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
     trig_features=spec['displayFacts'].get('trigFeatures')
     if trig_features is not None:
@@ -80,6 +130,10 @@ def prepare(spec):
             critical.extend((float(Fraction(row['xPiMultiple']))*math.pi,float(Fraction(row['y']))) for row in trig_features.get('phasePoints',[]))
         elif trig_features.get('referencePoint'):
             reference=trig_features['referencePoint'];critical.append((float(Fraction(reference['xPiMultiple']))*math.pi,float(Fraction(reference['y']))))
+    pair_features=spec['displayFacts'].get('expLogPairFeatures')
+    if pair_features is not None:
+        if pair_features.get('schemaVersion')!='EXP_LOG_PAIR_FEATURES_v1':raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
+        for row in pair_features.get('curves',[]):critical.append((float(Fraction(row['referencePoint']['x'])),float(Fraction(row['referencePoint']['y']))))
     if isinstance(axis_option,bool) and axis_option:critical.extend([(0,0),(1,0),(0,1)])
     vp=for_spec(spec,critical)
     if not vp.equal and any(isinstance(v,(Circle,CircularArc)) for v in geometry.values()):raise ValueError('CIRCLE_REQUIRES_EQUAL_UNITS')
@@ -135,8 +189,20 @@ def prepare(spec):
                 values=[(index*step,index) for index in range(math.ceil(lo/step),math.floor(hi/step)+1)]
             else:
                 values=[(float(Fraction(str(raw_value))),None) for raw_value in axis_tick_values.get(axis,[])]
+            reference_positions=[]
+            for feature in (exponential_features,logarithmic_features):
+                if isinstance(feature,dict) and isinstance(feature.get('referencePoint'),dict):
+                    try:reference_positions.append(float(Fraction(feature['referencePoint']['x'])))
+                    except (TypeError,ValueError,ZeroDivisionError):pass
+            if isinstance(pair_features,dict):
+                for row in pair_features.get('curves',[]):
+                    try:reference_positions.append(float(Fraction(row['referencePoint']['x'])))
+                    except (TypeError,KeyError,ValueError,ZeroDivisionError):pass
             for value,index in values:
                 if abs(value)<1e-12:continue
+                # A tick number exactly at a drawn graph reference point would repeat that point's x on the axis and collide with its label/marker:
+                # the reference point already carries the value, so the redundant tick is omitted.
+                if axis=='x' and any(abs(value-item)<=1e-12 for item in reference_positions):continue
                 at=(value,0) if axis=='x' else (0,value);p=vp.screen(at);delta=(0,4) if axis=='x' else (-4,0)
                 display_token=str(int(value)) if float(value).is_integer() else f'{value:.10g}'
                 id_token=str(index) if index is not None else display_token
@@ -211,9 +277,17 @@ def prepare(spec):
             # A closed end is a filled dot, an open end a hollow one, drawn over the curve end.
             at=vp.screen((_exact_float(endpoint['x']),_exact_float(endpoint['y'])))
             primitive({'id':'interval-endpoint-'+endpoint['side'].lower(),'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'interval-endpoint','fill':'#fff' if endpoint['state']=='OPEN' else '#111','state':endpoint['state']},'circle')
+    if reference_interval_features is not None:
+        policy=spec['displayFacts'].get('referenceIntervalFeaturePolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('REFERENCE_INTERVAL_MARKER_POLICY_REQUIRED')
+        for row in reference_interval_features:
+            for side,state,x_text,y_text in (('start',row['startState'],row['lo'],row['startY']),('end',row['endState'],row['hi'],row['endY'])):
+                if state not in ('OPEN','CLOSED'):raise ValueError('INVALID_REFERENCE_INTERVAL_ENDPOINT')
+                at=vp.screen((_exact_float(x_text),_exact_float(y_text)))
+                primitive({'id':'ref-endpoint-'+row['id']+'-'+side,'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'reference-endpoint','fill':'#fff' if state=='OPEN' else '#111','state':state},'circle')
     exponential_features=spec['displayFacts'].get('exponentialFeatures')
     if exponential_features is not None:
-        if exponential_features.get('schemaVersion')!='EXPONENTIAL_AFFINE_FEATURES_v1':raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
+        if exponential_features.get('schemaVersion') not in {'EXPONENTIAL_AFFINE_FEATURES_v1','EXPONENTIAL_BASE_FEATURES_v1'}:raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
         policy=spec['displayFacts'].get('exponentialFeaturePolicy',{});radius=policy.get('referenceMarkerRadiusIntrinsicPx')
         if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('EXPONENTIAL_REFERENCE_MARKER_POLICY_REQUIRED')
         y=float(Fraction(exponential_features['horizontalAsymptote']['y']));xmin,xmax,ymin,ymax=vp.bounds
@@ -222,13 +296,31 @@ def prepare(spec):
         primitive({'id':'exponential-reference-point','kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'exponential-reference','fill':'#111','state':'CLOSED'},'circle')
     logarithmic_features=spec['displayFacts'].get('logarithmicFeatures')
     if logarithmic_features is not None:
-        if logarithmic_features.get('schemaVersion')!='LOGARITHMIC_AFFINE_FEATURES_v1':raise ValueError('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED')
+        if logarithmic_features.get('schemaVersion') not in {'LOGARITHMIC_AFFINE_FEATURES_v1','LOGARITHMIC_BASE_FEATURES_v1'}:raise ValueError('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED')
         policy=spec['displayFacts'].get('logarithmicFeaturePolicy',{});radius=policy.get('referenceMarkerRadiusIntrinsicPx')
         if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('LOGARITHMIC_REFERENCE_MARKER_POLICY_REQUIRED')
         x=float(Fraction(logarithmic_features['naturalDomainBoundaryX']));xmin,xmax,ymin,ymax=vp.bounds
         primitive({'id':'logarithmic-domain-boundary','kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'logarithmic-domain-boundary','dash':'5 4'},'line')
         reference=logarithmic_features['referencePoint'];at=vp.screen((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
         primitive({'id':'logarithmic-reference-point','kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'logarithmic-reference','fill':'#111','state':'CLOSED'},'circle')
+    pair_features=spec['displayFacts'].get('expLogPairFeatures')
+    if pair_features is not None:
+        if pair_features.get('schemaVersion')!='EXP_LOG_PAIR_FEATURES_v1':raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
+        policy=spec['displayFacts'].get('expLogPairPolicy',{});radius=policy.get('referenceMarkerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('EXP_LOG_PAIR_MARKER_POLICY_REQUIRED')
+        xmin,xmax,ymin,ymax=vp.bounds
+        for row in pair_features.get('curves',[]):
+            curve_id=str(row['id'])
+            if row.get('family')=='exponential-affine':
+                y=float(Fraction(row['horizontalAsymptote']['y']))
+                primitive({'id':'asymptote-'+curve_id,'kind':'line','from':vp.screen((xmin,y)),'to':vp.screen((xmax,y)),'token':'auxiliary','layer':25,'role':'exponential-asymptote','dash':'5 4','branch':curve_id},'line')
+                reference=row['referencePoint'];at=vp.screen((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
+                primitive({'id':'reference-'+curve_id,'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'exponential-reference','fill':'#111','state':'CLOSED','branch':curve_id},'circle')
+            else:
+                x=float(Fraction(row['naturalDomainBoundaryX']))
+                primitive({'id':'boundary-'+curve_id,'kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'logarithmic-domain-boundary','dash':'5 4','branch':curve_id},'line')
+                reference=row['referencePoint'];at=vp.screen((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
+                primitive({'id':'reference-'+curve_id,'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'logarithmic-reference','fill':'#111','state':'CLOSED','branch':curve_id},'circle')
     trig_features=spec['displayFacts'].get('trigFeatures')
     if trig_features is not None:
         if trig_features.get('schemaVersion')!='TRIGONOMETRIC_FEATURES_v1':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
@@ -299,6 +391,45 @@ def prepare(spec):
                     return -(dx*ox+dy*oy)/(norm*math.hypot(dx,dy))
                 directions=sorted(DIRECTIONS,key=alignment)
                 labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),outward,{'directions':tuple(directions[:5]),'gaps':(14,24,32,48),'leaderOwned':[oid]}))
+        elif kind=='FILL_REGION':
+            # A filled region: one even-odd <path> (shapes minus holes) with exact SVG arcs, drawn beneath every stroke. The label is placed inside it.
+            if not vp.equal:raise ValueError('REGION_REQUIRES_EQUAL_UNITS')
+            d_parts=[];polygons=[];owners=[]
+            for loop in obj['loops']:
+                current=loop['start'];first=vp.screen(geometry[current]);d_parts.append('M'+_num(first[0])+' '+_num(first[1]));dense=[first];owners.append(current)
+                for step in loop['steps']:
+                    p0=geometry[current];p1=geometry[step['to']];end=vp.screen(p1);arc=step.get('arc')
+                    if arc is None:
+                        d_parts.append('L'+_num(end[0])+' '+_num(end[1]));dense.append(end)
+                    elif arc.get('full'):
+                        # a whole circle: two half arcs through the antipode of its start point
+                        centre=geometry[arc['center']];radius=math.dist(p0,centre);owners.append(arc['center'])
+                        anti=(2*centre[0]-p0[0],2*centre[1]-p0[1]);anti_screen=vp.screen(anti);screen_radius=radius*vp.sx;flag='0' if arc['sweep']=='CCW' else '1'
+                        a0=math.atan2(p0[1]-centre[1],p0[0]-centre[0]);direction=1 if arc['sweep']=='CCW' else -1
+                        d_parts.append('A'+_num(screen_radius)+' '+_num(screen_radius)+' 0 0 '+flag+' '+_num(anti_screen[0])+' '+_num(anti_screen[1]))
+                        d_parts.append('A'+_num(screen_radius)+' '+_num(screen_radius)+' 0 0 '+flag+' '+_num(end[0])+' '+_num(end[1]))
+                        dense.extend(vp.screen((centre[0]+radius*math.cos(a0+direction*2*math.pi*i/180),centre[1]+radius*math.sin(a0+direction*2*math.pi*i/180))) for i in range(1,180))
+                        dense.append(end)
+                    else:
+                        centre=geometry[arc['center']];radius=math.dist(p0,centre);owners.append(arc['center'])
+                        a0=math.atan2(p0[1]-centre[1],p0[0]-centre[0]);ccw=(math.atan2(p1[1]-centre[1],p1[0]-centre[0])-a0)%(2*math.pi)
+                        angle=ccw if arc['sweep']=='CCW' else 2*math.pi-ccw;direction=1 if arc['sweep']=='CCW' else -1
+                        screen_radius=radius*vp.sx
+                        d_parts.append('A'+_num(screen_radius)+' '+_num(screen_radius)+' 0 '+('1' if angle>math.pi+1e-9 else '0')+' '+('0' if arc['sweep']=='CCW' else '1')+' '+_num(end[0])+' '+_num(end[1]))
+                        count=max(8,math.ceil(math.degrees(angle)/2))
+                        dense.extend(vp.screen((centre[0]+radius*math.cos(a0+direction*angle*i/count),centre[1]+radius*math.sin(a0+direction*angle*i/count))) for i in range(1,count))
+                        dense.append(end)
+                    current=step['to'];owners.append(current)
+                dense.pop();d_parts.append('Z');polygons.append(dense)
+            primitive({'id':oid,'kind':'path','d':' '.join(d_parts),'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS[obj['fill']],'noStroke':True,'fillRule':'evenodd',
+                       'mark':'region','markId':oid,'ownerPoints':sorted(set(owners)),'fillPolygons':polygons})
+            if obj.get('labelText') is not None:
+                tree=parse(obj['labelText']);markup=serialize(tree,'svg')
+                label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':serialize(tree,'plain'),'markup':markup,'tex':serialize(tree,'tex'),'math':True,'sourceMath':obj['labelText'],
+                       'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':polygons,'labelGap':14}
+                label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
+                label['candidateCenters']=_region_label_centres(polygons,obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygons[0][0])
+                labels.append(label)
         elif kind=='FUNCTION_GRAPH':
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
             sampling.append({'id':oid,**{k:v for k,v in result.items() if k!='branches'}})
@@ -325,12 +456,19 @@ def prepare(spec):
                 size=tokens['rightAngleSize'];u=[(a[i]-v[i])/math.dist(a,v)*size for i in range(2)];w=[(b[i]-v[i])/math.dist(b,v)*size for i in range(2)]
                 pts=[(v[0]+u[0],v[1]+u[1]),(v[0]+u[0]+w[0],v[1]+u[1]+w[1]),(v[0]+w[0],v[1]+w[1])]
             elif obj.get('arcs') is not None:
-                # Textbook angle arcs: 1-3 concentric arcs (equal angles share the count) around the vertex, from one ray to the other.
+                # Textbook angle marks: 1-3 concentric arcs (equal angles share the count) around the vertex, from one ray to the other,
+                # with a small light sector filling the wedge up to the outermost arc (style SECTOR, the default); style ARC keeps strokes only.
                 count=obj['arcs'];rays=min(math.dist(a,v),math.dist(b,v))
                 if isinstance(count,bool) or not isinstance(count,int) or not 1<=count<=3:raise ValueError('ANGLE_ARC_COUNT_INVALID')
+                style=obj.get('style','SECTOR')
+                if style not in {'SECTOR','ARC'}:raise ValueError('ANGLE_MARK_STYLE_INVALID')
                 ring=obj.get('ring',1);first=min(28.0,max(16.0,.25*rays))+9.0*(ring-1)
                 if rays<first+4.5*(count-1)+8:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
                 steps=max(16,math.ceil(abs(math.degrees(delta))/4));outer_radius=first+4.5*(count-1)
+                if style=='SECTOR':
+                    # The fill's boundary is the outermost arc, so the darkest edge of the wedge is a real stroke drawn over it.
+                    wedge=[v]+[(v[0]+outer_radius*math.cos(start+delta*i/steps),v[1]+outer_radius*math.sin(start+delta*i/steps)) for i in range(steps+1)]
+                    primitive({'id':oid+'-sector','kind':'polygon','points':wedge,'token':'secondaryShape','layer':12,'role':'angleSector','mark':'angle','markId':oid,'markIndex':0,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER','fill':SECTOR_FILL,'noStroke':True,'ownerPoints':obj['refs']})
                 for k in range(count):
                     radius=first+4.5*k
                     primitive({'id':oid+'-arc-'+str(k+1),'kind':'polyline','points':[(v[0]+radius*math.cos(start+delta*i/steps),v[1]+radius*math.sin(start+delta*i/steps)) for i in range(steps+1)],'token':'secondaryShape','layer':60,'role':'indicator','ownerPoints':obj['refs'],'mark':'angle','markId':oid,'markIndex':k+1,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER'},'curve')

@@ -91,6 +91,71 @@ class ObserverTests(unittest.TestCase):
         by_id={row['id']:row for row in report['observations']}
         self.assertAlmostEqual(by_id['aD']['drawnDegrees'],70,places=6);self.assertAlmostEqual(by_id['aOut']['drawnDegrees'],290,places=6)
         self.assertEqual(by_id['aC']['arcs'],2)
+    def test_default_style_is_a_light_sector_under_the_strokes(self):
+        report=self.audit();by_id={row['id']:row for row in report['observations']}
+        for oid,degrees in (('aD',70),('aC',110),('aOut',290)):
+            self.assertIn(oid+'-sector',by_id)
+            self.assertEqual(by_id[oid+'-sector']['type'],'ANGLE_SECTOR');self.assertTrue(by_id[oid+'-sector']['atVertex'])
+            self.assertAlmostEqual(by_id[oid+'-sector']['drawnDegrees'],degrees,places=6)
+        for oid,arcs in (('aD',1),('aC',2),('aOut',3)):
+            wedge=re.search(r'<polygon\s(?:[^>]*\s)?id="'+oid+r'-sector"[^>]*/>',self.svg)
+            self.assertIsNotNone(wedge);tag=wedge.group(0)
+            self.assertIn('data-role="angleSector"',tag);self.assertIn('fill="#d9d9d9"',tag);self.assertIn('stroke="none"',tag)
+            self.assertLess(self.svg.index('id="'+oid+'-sector"'),self.svg.index('id="'+oid+'-arc-1"'))
+            # the fill boundary is exactly the outermost arc stroke
+            outer=re.search(r'<polyline\s(?:[^>]*\s)?id="'+oid+r'-arc-'+str(arcs)+r'"[^>]*/>',self.svg)
+            wedge_pairs=[tuple(map(float,part.split(','))) for part in re.search(r'\spoints="([^"]*)"',tag).group(1).split()]
+            outer_pairs=[tuple(map(float,part.split(','))) for part in re.search(r'\spoints="([^"]*)"',outer.group(0)).group(1).split()]
+            self.assertEqual(wedge_pairs[1:],outer_pairs)
+            vertex=wedge_pairs[0];radius=math.dist(vertex,outer_pairs[0])
+            self.assertTrue(all(abs(math.dist(vertex,p)-radius)<1e-6 for p in wedge_pairs[1:]))
+    def test_style_arc_is_stroke_only_and_the_declared_style_must_match(self):
+        _,objects=parallelogram()
+        for row in objects:
+            if row['kind']=='ANGLE_MARK':row['style']='ARC'
+        arc=build(spec_of(self.points,objects));transform=arc['witness']['coordinateModel']
+        self.assertNotIn('-sector"',arc['svg'])
+        base={'points':{k:list(v) for k,v in self.points.items()},'segments':SEGMENTS}
+        missing=OBSERVER.audit({**base,'svg':arc['svg'],'marks':MARKS,'transform':transform})
+        self.assertIn('ANGLE_SECTOR_MISSING',[error.split(':')[0] for error in missing['errors']])
+        unexpected=OBSERVER.audit({**base,'svg':self.svg,'marks':dict(MARKS,angles=[{**row,'style':'ARC'} for row in MARKS['angles']]),'transform':self.transform})
+        self.assertIn('ANGLE_SECTOR_UNEXPECTED',[error.split(':')[0] for error in unexpected['errors']])
+    def rewrite_sector(self,identifier,change):
+        """Rewrite the sector polygon's points: change([(x,y),...]) -> [(x,y),...] (screen px)."""
+        match=re.search(r'<polygon\s(?:[^>]*\s)?id="'+re.escape(identifier)+r'"[^>]*/>',self.svg)
+        self.assertIsNotNone(match,identifier);tag=match.group(0)
+        attribute=re.search(r'\spoints="([^"]*)"',tag)
+        pairs=[tuple(map(float,part.split(','))) for part in attribute.group(1).split()]
+        return self.svg.replace(tag,tag.replace(attribute.group(0),' points="'+' '.join('%.9f,%.9f'%p for p in change(pairs))+'"'),1)
+    def test_tamper_a_rotated_sector_leaves_its_rays(self):
+        def rotate(pairs):
+            (vx,vy),t=pairs[0],math.radians(8)
+            return [pairs[0]]+[(vx+(x-vx)*math.cos(t)-(y-vy)*math.sin(t),vy+(x-vx)*math.sin(t)+(y-vy)*math.cos(t)) for x,y in pairs[1:]]
+        self.assertIn('ANGLE_SECTOR_RAY_MISMATCH',self.codes(svg=self.rewrite_sector('aD-sector',rotate)))
+    def test_tamper_a_sector_on_the_wrong_side_fills_between_the_wrong_rays(self):
+        flipped=self.rewrite_sector('aC-sector',lambda pairs:[pairs[0]]+pairs[1:][::-1])
+        codes=self.codes(svg=flipped);self.assertTrue({'ANGLE_SECTOR_SIDE_MISMATCH','ANGLE_SECTOR_RAY_MISMATCH'}&set(codes),codes)
+    def test_tamper_a_sector_of_the_wrong_radius_is_refused(self):
+        def scale(pairs):
+            (vx,vy)=pairs[0];return [pairs[0]]+[(vx+(x-vx)*1.25,vy+(y-vy)*1.25) for x,y in pairs[1:]]
+        self.assertIn('ANGLE_SECTOR_RADIUS_MISMATCH',self.codes(svg=self.rewrite_sector('aOut-sector',scale)))
+    def test_tamper_a_sector_drawn_over_a_stroke_is_refused(self):
+        match=re.search(r'<polygon\s(?:[^>]*\s)?id="aD-sector"[^>]*/>',self.svg);tag=match.group(0)
+        raised=self.svg.replace(tag,'',1).replace('</svg>',tag+'</svg>')
+        self.assertIn('ANGLE_SECTOR_NOT_BENEATH_STROKES',self.codes(svg=raised))
+    def test_right_angle_square_is_unchanged_and_has_no_sector(self):
+        pts={'A':(0.0,0.0),'B':(6.0,0.0),'C':(6.0,4.0)}
+        objects=[seg('sAB',pts,'A','B'),seg('sBC',pts,'B','C'),{'id':'r1','kind':'ANGLE_MARK','refs':['A','B','C'],'value':90.0}]
+        spec=spec_of(pts,objects);spec['displayFacts']={'squareAngleIds':['r1']}
+        result=build(spec)
+        self.assertIsNotNone(re.search(r'<polyline\s(?:[^>]*\s)?id="r1"',result['svg']))
+        self.assertNotIn('r1-sector',result['svg'])
+    def test_engine_refuses_an_unknown_angle_style(self):
+        _,objects=parallelogram()
+        for row in objects:
+            if row['id']=='aD':row['style']='FILL'
+        with self.assertRaises(ValueError) as caught:build(spec_of(self.points,objects))
+        self.assertTrue(str(caught.exception).startswith('ANGLE_MARK_STYLE_INVALID'),str(caught.exception))
     def test_outer_angle_is_the_reflex_side(self):
         wrong=json.loads(json.dumps(MARKS));wrong['angles'][2]['side']='INNER'
         self.assertIn('ANGLE_MARK_FACT_MISMATCH',self.codes(marks=wrong))

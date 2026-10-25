@@ -755,7 +755,7 @@ window.questionBank=[
 
     "solutionImage": "assets/images/22_팔마고_2학기_중간_고1_기출/q22-solution.svg",
 
-    "solutionImageAlt": "이차함수와 역함수의 두 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "이차함수 y=(x−1)²+1과 그 역함수의 그래프가 y=x 위의 두 점 P, Q에서 만나는 모습을 그린 그림. 두 교점이 생기는 k의 범위가 2≤k<9/4임을 보여준다.",
 
     "solutionImageCaption": "k=2 대표 그래프에서 (1,1), (2,2) 교점을 확인한다.",
 

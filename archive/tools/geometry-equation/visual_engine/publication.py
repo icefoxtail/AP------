@@ -318,6 +318,16 @@ def box_owned(label, box):
         polygon = label['ownerPolygon']
         # Corners alone miss concave notches: the boundary must not enter the box.
         return all(inside(p, polygon) for p in corners) and not any(segment_hits_box(a, b, box) for a, b in zip(polygon, polygon[1:]+polygon[:1]))
+    if 'ownerRegion' in label:
+        # An even-odd region (screen polygons): every corner inside it and no boundary edge entering the box.
+        polygons = label['ownerRegion']
+        def covered(p):
+            hit = False
+            for polygon in polygons:
+                hit = hit != inside(p, polygon)
+            return hit
+        edges = [(a, b) for polygon in polygons for a, b in zip(polygon, polygon[1:]+polygon[:1])]
+        return all(covered(p) for p in corners) and not any(segment_hits_box(a, b, box) for a, b in edges)
     if 'ownerWedge' in label:
         v, start, delta, limit = label['ownerWedge']
         for p in corners:
