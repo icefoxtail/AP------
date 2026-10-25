@@ -257,7 +257,7 @@ function attachMetaPipelineAuditKeyOnlyV3(f) {
   return { ...attached, audit, classification, auditPackageRef, classificationRef };
 }
 
-function attachMetaPipelineAuditSourceDriveFlatV3(f, { difficultyBucketOverride } = {}) {
+function attachMetaPipelineAuditSourceDriveFlatV3(f, { difficultyBucketOverride, omitClassificationReadingEvidence = false, classBucketOverride, solutionExcerptOverride, visualAssetChecked } = {}) {
   const attached = attachMetaPipelineAuditV2(f);
   const proof = f.request.approval.metaPipelineAudit;
   const sourceBytes = fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`));
@@ -266,7 +266,8 @@ function attachMetaPipelineAuditSourceDriveFlatV3(f, { difficultyBucketOverride 
   const oldClassRow = attached.classification.records[0];
   const difficultyBucket = difficultyBucketOverride ?? oldAuditRow.difficultyBucket;
   const difficultyConfidence = oldAuditRow.difficultyConfidence || "source_preserved";
-  const readingEvidence = { sourceTextExcerpt: f.q.content, solutionDecisiveExcerpt: f.q.solution };
+  const readingEvidence = { sourceTextExcerpt: f.q.content, solutionDecisiveExcerpt: solutionExcerptOverride ?? f.q.solution,
+    ...(typeof visualAssetChecked === "boolean" ? { visualAssetChecked, visualType: "NONE" } : {}) };
   const audit = {
     schemaVersion: "ALIVE_META_AUDIT_ATOMIC_v3", examTitle, sourceDriveId: proof.sourceFileDriveId,
     sourceSha256: hash(sourceBytes), totalQuestions: 1, totalApproved: 1, totalHold: 0,
@@ -292,8 +293,9 @@ function attachMetaPipelineAuditSourceDriveFlatV3(f, { difficultyBucketOverride 
       problemTypeKey: oldClassRow.problemTypeKey, templateKey: oldClassRow.templateKey,
       crossConceptKeys: oldClassRow.crossConceptKeys, conditionKeys: oldClassRow.conditionKeys,
       integrationPattern: oldClassRow.integrationPattern,
-      difficultyBucket, difficultyConfidence,
-      difficultyReason: oldClassRow.difficultyReason, readingEvidence,
+      difficultyBucket: classBucketOverride ?? difficultyBucket, difficultyConfidence,
+      difficultyReason: oldClassRow.difficultyReason,
+      ...(!omitClassificationReadingEvidence ? { readingEvidence } : {}),
     }],
   };
   f.put(proof.auditPackageRef.path, audit);
@@ -463,6 +465,27 @@ test("META_PIPELINE_AUDIT sourceDriveId flat v3 rejects a classification tag mis
     evidenceRefs: item.evidenceRefs.map(ref => ref.path === classificationRef.path ? classificationRef : ref) }));
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }),
     /META_PIPELINE_AUDIT sourceDrive v3 classification tags mismatch/);
+});
+
+test("sourceDrive flat v3 uses final audit excerpts when classification omits duplicate reading evidence", t => {
+  const f = fixture(t);
+  attachMetaPipelineAuditSourceDriveFlatV3(f, { omitClassificationReadingEvidence: true, visualAssetChecked: false });
+  registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json");
+  assert.equal(receipt.metaPipelineAudit.sourceSchemaNormalization.classificationEvidenceAbsent, 1);
+  assert.deepEqual(receipt.metaPipelineAudit.sourceSchemaNormalization.visualEvidenceCounts, { checked: 0, notChecked: 1, notProvided: 0 });
+});
+
+test("sourceDrive flat v3 still checks final solution excerpts when classification has no reading evidence", t => {
+  const f = fixture(t);
+  attachMetaPipelineAuditSourceDriveFlatV3(f, { omitClassificationReadingEvidence: true, solutionExcerptOverride: "not present in the source solution" });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /sourceDrive v3 solution excerpt mismatch/);
+});
+
+test("sourceDrive flat v3 rejects paired difficulty bucket drift", t => {
+  const f = fixture(t);
+  attachMetaPipelineAuditSourceDriveFlatV3(f, { classBucketOverride: 5 });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /sourceDrive v3 evidence mismatch/);
 });
 
 test("sourceDrive flat v3 binds its audited 1-5 bucket over a legacy text bucket", t => {
