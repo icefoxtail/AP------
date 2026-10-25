@@ -2,9 +2,13 @@
 // A plan's `planeMarks` is the author's statement of facts the figure shows; this module checks each statement against the model's points
 // (the SymPy snapshot) and turns it into visual-engine objects. The independent check of the FINAL SVG is plane-marks-observer-worker.py,
 // which recomputes every fact from the Cindy peer's points and from the drawn primitives.
+// The marks also work on a coordinate construction plan (SOURCE_COORDINATES with axes): the same facts, drawn on the same source frame.
 import {regionSpec,regionPointRefs} from './plane-regions.mjs';
 export const PLANE_RECIPE='PLANE_FIGURE_v1';
 export const isPlaneFigure=plan=>plan?.mathPlan?.realization?.recipeId===PLANE_RECIPE;
+export const COORDINATE_RECIPE='SOURCE_COORDINATE_AXES_v1';
+export const isCoordinateFigure=(plan,model)=>plan?.mathPlan?.realization?.recipeId===COORDINATE_RECIPE&&model?.coordinateMode==='SOURCE_COORDINATES';
+export const planeMarksAllowed=(plan,model)=>isPlaneFigure(plan)||isCoordinateFigure(plan,model);
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
 const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','regions','facts'],
@@ -31,7 +35,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
   const marks=plan.planeMarks;
   if(marks===undefined)return {objects:[],factRolesByLabel:{}};
   if(!marks||typeof marks!=='object'||Array.isArray(marks))bad('PLANE_MARKS_INVALID');
-  if(!isPlaneFigure(plan))bad('PLANE_MARKS_REQUIRE_PLANE_FIGURE');
+  if(!planeMarksAllowed(plan,model))bad('PLANE_MARKS_REQUIRE_PLANE_FIGURE');
   keysOk(marks,KEYS.planeMarks,'planeMarks');
   const at=id=>{const p=points[id];if(!p)bad('MARK_TARGET_UNKNOWN:'+id);return p.approximation;};
   const used=new Set([...(plan.displaySegments||[]).map(s=>s.id),...(plan.rightAngles||[]).map(s=>s.id),...plan.mathPlan.nodes.map(n=>n.id)]);
