@@ -99,7 +99,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/22_매산고_2학기_기말_고1_기출/q03-solution.svg",
 
-    "solutionImageAlt": "무리함수의 끝점·정의역·치역을 나타낸 해설 그래프",
+    "solutionImageAlt": "무리함수 y=−√(2x−6)+3의 그래프가 시작점 V(3,3)에서 오른쪽 아래로 내려가며 점 P(5,1)을 지나고, 정의역 x≥3과 치역 y≤3을 함께 표시한 그래프.",
 
     "solutionImageCaption": "끝점 (3,3), 정의역 x≥3, 치역 y≤3을 확인한다.",
 
