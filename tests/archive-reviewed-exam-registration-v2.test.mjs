@@ -257,6 +257,59 @@ function attachMetaPipelineAuditKeyOnlyV3(f) {
   return { ...attached, audit, classification, auditPackageRef, classificationRef };
 }
 
+function attachMetaPipelineAuditSourceDriveFlatV3(f) {
+  const attached = attachMetaPipelineAuditV2(f);
+  const proof = f.request.approval.metaPipelineAudit;
+  const sourceBytes = fs.readFileSync(path.join(f.root, `archive/exams/${f.request.sourceArchiveFile}`));
+  const examTitle = path.basename(f.request.sourceArchiveFile, ".js");
+  const oldAuditRow = attached.audit.records[0];
+  const oldClassRow = attached.classification.records[0];
+  const readingEvidence = { sourceTextExcerpt: f.q.content, solutionDecisiveExcerpt: f.q.solution };
+  const audit = {
+    schemaVersion: "ALIVE_META_AUDIT_ATOMIC_v3", examTitle, sourceDriveId: proof.sourceFileDriveId,
+    sourceSha256: hash(sourceBytes), totalQuestions: 1, totalApproved: 1, totalHold: 0,
+    auditStatus: "ALL_APPROVED_CANONICAL_STANDARDIZED",
+    records: [{
+      questionId: 1, questionNo: 1, readingEvidence, pack: oldAuditRow.targetPack,
+      standardCourse: oldAuditRow.standardCourse, standardUnitKey: oldAuditRow.standardUnitKey,
+      standardUnit: oldAuditRow.standardUnit, subUnitKey: oldAuditRow.subUnitKey, subUnit: oldAuditRow.subUnit,
+      problemTypeKey: oldAuditRow.problemTypeKey, templateKey: oldAuditRow.templateKey,
+      crossConceptKeys: oldAuditRow.crossConceptKeys,
+      difficulty: { bucket: oldAuditRow.difficultyBucket, confidence: oldAuditRow.difficultyConfidence,
+        reason: oldAuditRow.difficultyReason },
+      auditVerdict: "APPROVED_CANONICAL",
+    }],
+  };
+  const classification = {
+    schemaVersion: "ALIVE_CANDIDATE_CLASSIFICATION_v3", examTitle, sourceDriveId: proof.sourceFileDriveId,
+    sourceSha256: hash(sourceBytes), totalQuestions: 1,
+    records: [{
+      questionId: 1, questionNo: 1, pack: oldClassRow.targetPack,
+      standardCourse: oldClassRow.standardCourse, standardUnitKey: oldClassRow.standardUnitKey,
+      standardUnit: oldClassRow.standardUnit, subUnitKey: oldClassRow.subUnitKey, subUnit: oldClassRow.subUnit,
+      problemTypeKey: oldClassRow.problemTypeKey, templateKey: oldClassRow.templateKey,
+      crossConceptKeys: oldClassRow.crossConceptKeys, conditionKeys: oldClassRow.conditionKeys,
+      integrationPattern: oldClassRow.integrationPattern,
+      difficultyBucket: oldClassRow.difficultyBucket, difficultyConfidence: oldAuditRow.difficultyConfidence,
+      difficultyReason: oldClassRow.difficultyReason, readingEvidence,
+    }],
+  };
+  f.put(proof.auditPackageRef.path, audit);
+  const classificationPath = `archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/${f.request.requestId}.classification.json`;
+  f.put(classificationPath, classification);
+  const auditPackageRef = { path: proof.auditPackageRef.path, sha256: hash(fs.readFileSync(path.join(f.root, proof.auditPackageRef.path))) };
+  const classificationRef = { path: classificationPath, sha256: hash(fs.readFileSync(path.join(f.root, classificationPath))) };
+  const replace = refs => {
+    const next = refs.filter(ref => ref.path !== auditPackageRef.path && ref.path !== classificationRef.path);
+    return [...next, auditPackageRef, classificationRef];
+  };
+  f.request.approval.evidenceRefs = replace(f.request.approval.evidenceRefs);
+  f.request.approval.metaPipelineAudit = { ...proof, schemaVersion: "meta-pipeline-audit-approval-v3",
+    auditPackageRef, classificationRef };
+  f.request.items = f.request.items.map(item => ({ ...item, evidenceRefs: replace(item.evidenceRefs) }));
+  return { ...attached, audit, classification, auditPackageRef, classificationRef };
+}
+
 for (const [course, curriculum] of [["중1 수학", "2015"], ["중2 수학", "2022"], ["중3 수학", "2022"], ["공통수학1", "2022"], ["대수", "2022"], ["미적분Ⅰ", "2022"], ["확률과통계", "2022"], ["수학Ⅱ", "2015"], ["기하", "2015"], ["아직 등록되지 않은 미래 선택과목", "2030"]]) {
   test(`native canonical extension and registration without subject code: ${curriculum}/${course}`, t => {
     const f = fixture(t, course, curriculum);
@@ -373,6 +426,38 @@ test("META_PIPELINE_AUDIT accepts the key-only v3 flat audit with its paired cla
   const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json");
   assert.equal(receipt.metaPipelineAudit.schemaVersion, "ALIVE_META_AUDIT_ATOMIC_v3");
   assert.equal(receipt.metaPipelineAudit.inputAuditVariant, "key_only_v3");
+});
+
+test("META_PIPELINE_AUDIT accepts sourceDriveId flat v3 with its paired ALIVE classification", t => {
+  const f = fixture(t);
+  attachMetaPipelineAuditSourceDriveFlatV3(f);
+  const dry = registerReviewedExamV2({ root: f.root, request: f.request });
+  assert.equal(dry.totalQuestions, 1);
+  const result = registerReviewedExamV2({ root: f.root, request: f.request, write: true });
+  assert.equal(result.approvalType, "META_PIPELINE_AUDIT");
+  const receipt = f.read("archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/test-new-course.json");
+  assert.equal(receipt.metaPipelineAudit.schemaVersion, "ALIVE_META_AUDIT_ATOMIC_v3");
+  assert.equal(receipt.metaPipelineAudit.inputAuditVariant, "source_drive_flat_v3");
+  assert.equal(receipt.metaPipelineAudit.sourceSchemaNormalization.statistics.normalizationBasis.includes("APPROVED_CANONICAL"), true);
+  assert.equal(receipt.metaPipelineAudit.sourceSchemaNormalization.visualEvidence, "NOT_PROVIDED_IN_SOURCE_SCHEMA");
+});
+
+test("META_PIPELINE_AUDIT sourceDriveId flat v3 rejects a classification tag mismatch", t => {
+  const f = fixture(t);
+  attachMetaPipelineAuditSourceDriveFlatV3(f);
+  const proof = f.request.approval.metaPipelineAudit;
+  const classification = f.read(proof.classificationRef.path);
+  classification.records[0].crossConceptKeys = [];
+  f.put(proof.classificationRef.path, classification);
+  const classificationRef = { ...proof.classificationRef,
+    sha256: hash(fs.readFileSync(path.join(f.root, proof.classificationRef.path))) };
+  f.request.approval.metaPipelineAudit.classificationRef = classificationRef;
+  f.request.approval.evidenceRefs = f.request.approval.evidenceRefs.map(ref =>
+    ref.path === classificationRef.path ? classificationRef : ref);
+  f.request.items = f.request.items.map(item => ({ ...item,
+    evidenceRefs: item.evidenceRefs.map(ref => ref.path === classificationRef.path ? classificationRef : ref) }));
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }),
+    /META_PIPELINE_AUDIT sourceDrive v3 classification tags mismatch/);
 });
 
 for (const manifestSchema of ["ALIVE_COURIER_INTAKE_MANIFEST_v3", "COURIER_INTAKE_MANIFEST_v3"]) {
