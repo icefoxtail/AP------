@@ -115,6 +115,34 @@ function axisTickDisplayFacts(graphPlan){
   }
   return facts;
 }
+function exactFraction(value){
+  const match=String(value).match(/^(-?)(\d+)(?:\/(\d+))?$/);
+  if(!match)throw Error('INVALID_TRIG_PI_TICK_VALUE');
+  const magnitude=Number(match[2])/(match[3]?Number(match[3]):1);
+  return match[1]==='-'?-magnitude:magnitude;
+}
+function piTickText(value){
+  let text=String(value),sign='';
+  if(text.startsWith('-')){sign='−';text=text.slice(1);}
+  const parts=text.split('/'),numerator=Number(parts[0]),denominator=parts[1]?Number(parts[1]):1;
+  if(!Number.isSafeInteger(numerator)||!Number.isSafeInteger(denominator)||denominator<1)throw Error('INVALID_TRIG_PI_TICK_VALUE');
+  const head=numerator===1?'π':numerator+'π';
+  return sign+(denominator===1?head:head+'/'+denominator);
+}
+function trigTickFacts(p,axisUnit){
+  if(p.axisTickPi!==true)return axisTickDisplayFacts(p);
+  if(axisUnit!=='PI')throw Error('TRIG_TICK_PI_REQUIRES_PI_AXIS');
+  const values=p.axisTickValues??{x:[],y:[]},rows=values.x.map(raw=>{const multiple=exactFraction(raw);return {multiple:String(raw),value:multiple*Math.PI,text:piTickText(raw)};});
+  const facts=axisTickDisplayFacts({...p,axisTickValues:{x:rows.map(row=>String(row.value)),y:values.y}});
+  return {...facts,tickPiLabels:rows.map(row=>({value:String(row.value),text:row.text,multiple:row.multiple}))};
+}
+function trigCoefficients(p){return p.ratePi!==undefined?[p.coefficients[0],p.coefficients[1]]:[p.coefficients[0],p.coefficients[2]];}
+function trigExpression(p){
+  const fn=p.function.toLowerCase(),[a,c]=trigCoefficients(p),rate=p.ratePi!==undefined?`(${p.ratePi})*pi`:`(${p.coefficients[1]})`,phase=p.phasePi!==undefined?`(${p.phasePi})*pi`:`(${p.phase})`;
+  return `(${a})*${fn}((${rate})*x+(${phase}))+(${c})`;
+}
+function trigAxisX(value,axisUnit){const number=exactFraction(value);return axisUnit==='PI'?number*Math.PI:number;}
+
 export function displayGeometryInventory(plan,model){
   const select=(field,available,type,defaults=null)=>{
     // The unit-axis helper (NORMALIZATION_AXIS) only fixes the scale in a source-coordinate frame; it is not drawn unless a plan lists it.
@@ -323,6 +351,27 @@ export function specFor(plan,model,id){
     if(basePlan)objects.push({id:'formula',kind:'EQUATION_LABEL',text:expLogFormulaText({family:'logarithmic-affine',base:p.base,coefficients:p.coefficients}),at:[v[0]+(v[1]-v[0])*.55,v[2]+(v[3]-v[2])*.10],math:true,priority:0});
     return {id,visualType:'function_graph',viewport:graphViewport(v),axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),logarithmicFeatures:features,logarithmicFeaturePolicy:policy},objects};
   }
+  if(plan.capability==='trigonometric-spike-v1'&&plan.graphPlan?.trigIntervalFeatures?.schemaVersion==='TRIGONOMETRIC_INTERVAL_FEATURES_v2'){
+    // General parameters (a rate or phase carrying pi, a plain or pi-unit x interval): the curve, reference lines and their curved crossings,
+    // marked exact extrema/roots and dashed tan poles come from the frozen features; the engine draws the feature marks.
+    const p=plan.graphPlan,v=p.viewport,features=p.trigIntervalFeatures,policy=p.trigIntervalPolicy;
+    if(!policy||policy.schemaVersion!=='TRIGONOMETRIC_INTERVAL_POLICY_v2'||!p.intervalFeatures||!Array.isArray(features.lines))throw Error('TRIG_FEATURE_INVENTORY_REQUIRED');
+    const factor=features.axisUnit==='PI'?Math.PI:1,expression=trigExpression(p);
+    const criticalX=[...features.lines.flatMap(row=>row.intersections.map(point=>point.x)),...features.keyPoints.map(row=>exactFraction(row.x)*factor),...features.poles.map(row=>exactFraction(row.x)*factor)];
+    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX}];
+    const lineText=row=>{const slope=exactValue(row.slope),h=row.kind==='HORIZONTAL';return 'y='+(h?row.intercept:(row.slope==='1'?'x':row.slope==='-1'?'-x':row.slope+'*x')+(row.intercept==='0'?'':row.intercept.startsWith('-')?row.intercept:'+'+row.intercept));};
+    for(const row of features.lines){
+      const slope=exactValue(row.slope),level=exactValue(row.intercept);
+      objects.push({id:'line-'+row.id,kind:'LINE',coefficients:[slope,-1,level]});
+      objects.push({id:'line-'+row.id+'-equation',kind:'EQUATION_LABEL',text:lineText(row),at:[v[1]-(v[1]-v[0])*.07,row.kind==='HORIZONTAL'?level+(v[3]-v[2])*.07:slope*(v[1]-(v[1]-v[0])*.07)+level+(v[3]-v[2])*.07],priority:0});
+      for(const [i,point] of row.intersections.entries())objects.push({id:'intersection-'+row.id+'-'+(i+1),kind:'POINT',at:[point.x,point.y],name:null});
+    }
+    const ends=p.intervalFeatures.endpoints;
+    const endText=text=>features.axisUnit==='PI'?piTickText(text):String(text).replace('-','−');
+    if(features.sourceInterval.lo!=='0')objects.push({id:'interval-start-label',kind:'GRAPH_ANNOTATION',text:endText(features.sourceInterval.lo),at:[Number(ends[0].x),-(v[3]-v[2])*.07],math:features.axisUnit==='PI',priority:0});
+    if(features.sourceInterval.hi!=='0')objects.push({id:'interval-end-label',kind:'GRAPH_ANNOTATION',text:endText(features.sourceInterval.hi),at:[Number(ends[1].x),-(v[3]-v[2])*.07],math:features.axisUnit==='PI',priority:0});
+    return {id,visualType:'function_graph',viewport:graphViewport(v),axes:{x:v[2]<0&&v[3]>0,y:v[0]<=0&&v[1]>=0},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...trigTickFacts(p,features.axisUnit),intervalFeatures:p.intervalFeatures,intervalFeaturePolicy:p.intervalFeaturePolicy,trigIntervalFeatures:features,trigIntervalPolicy:policy},objects};
+  }
   if(plan.capability==='trigonometric-spike-v1'&&plan.graphPlan?.trigIntervalFeatures!==undefined){
     // sine/cosine on an explicit interval of several periods (sourceDomain INTERVAL_PI) with horizontal or slanted reference lines: the curve, each
     // line with its equation, a dot at every crossing the framing found, the end markers (generic interval endpoints) and the end label k*pi.
@@ -344,11 +393,14 @@ export function specFor(plan,model,id){
   }
   if(plan.capability==='trigonometric-spike-v1'){
     const p=plan.graphPlan,v=p.viewport,features=p.trigFeatures,policy=p.trigFeaturePolicy;
-    if(!features||features.schemaVersion!=='TRIGONOMETRIC_FEATURES_v1'||!policy||policy.schemaVersion!=='TRIGONOMETRIC_FEATURE_POLICY_v1')throw Error('TRIG_FEATURE_INVENTORY_REQUIRED');
-    const [a,k,c]=p.coefficients,fn=p.function.toLowerCase(),phase=p.phasePi,number=value=>{const parts=String(value).split('/');return Number(parts[0])/(parts.length===2?Number(parts[1]):1);},expression=`(${a})*${fn}((${k})*x+(${phase})*pi)+(${c})`,criticalX=p.function==='TAN'?[number(features.cycleCenterPi)*Math.PI]:features.phasePoints.map(point=>number(point.xPiMultiple)*Math.PI),period=features.periodPiMultiple,periodLabel=`T=${period==='1'?'':period.includes('/')?'('+period+')':period}π`,showX=v[2]<0&&v[3]>0,showY=v[0]<=0&&v[1]>=0;
+    if(!features||!['TRIGONOMETRIC_FEATURES_v1','TRIGONOMETRIC_FEATURES_v2'].includes(features.schemaVersion)||!policy||!['TRIGONOMETRIC_FEATURE_POLICY_v1','TRIGONOMETRIC_FEATURE_POLICY_v2'].includes(policy.schemaVersion))throw Error('TRIG_FEATURE_INVENTORY_REQUIRED');
+    const general=features.schemaVersion==='TRIGONOMETRIC_FEATURES_v2',number=value=>{const parts=String(value).split('/');return Number(parts[0])/(parts.length===2?Number(parts[1]):1);};
+    const expression=general?trigExpression(p):(()=>{const [a,k,c]=p.coefficients;return `(${a})*${p.function.toLowerCase()}((${k})*x+(${p.phasePi})*pi)+(${c})`;})();
+    const criticalX=p.function==='TAN'?[number(general?features.referencePoint.x:features.cycleCenterPi)*Math.PI]:features.phasePoints.map(point=>number(general?point.x:point.xPiMultiple)*(general?1:Math.PI));
+    const period=general?features.period:features.periodPiMultiple,periodLabel=general?`T=${period==='1'?'':period.includes('/')?'('+period+')':period}`:`T=${period==='1'?'':period.includes('/')?'('+period+')':period}π`,showX=v[2]<0&&v[3]>0,showY=v[0]<=0&&v[1]>=0;
     const periodLabelAt=p.function==='TAN'?[v[1],(v[2]+v[3])/2]:[(v[0]+v[1])/2,v[3]-(v[3]-v[2])*.08];
     const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX},{id:'period-label',kind:'EQUATION_LABEL',text:periodLabel,at:periodLabelAt,math:true,priority:0}];
-    return {id,visualType:'function_graph',viewport:graphViewport(v),axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...axisTickDisplayFacts(p),trigFeatures:features,trigFeaturePolicy:policy},objects};
+    return {id,visualType:'function_graph',viewport:graphViewport(v),axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{...trigTickFacts(p,general?'ONE':'PI'),trigFeatures:features,trigFeaturePolicy:policy},objects};
   }
   if(plan.capability==='sqrt-affine-spike-v1'){
     const p=plan.graphPlan,v=p.viewport,features=p.sqrtFeatures;
