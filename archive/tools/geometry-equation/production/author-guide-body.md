@@ -17,7 +17,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 발문 그림: 학생이 문제를 읽을 때 봐야 하는 주어진 조건만 그린다. 구하는 값, 풀이로 얻는 점, 정답을 암시하는 표시는 넣지 않는다. 엔진은 이를 강제하지 않으므로 작성자가 지킨다.
 - 해설 그림: 풀이의 결정적 관계를 보여 준다. 접점, 교점, 꼭짓점, 대칭점, 수선의 발, 구간에서의 최대·최소, 부등식의 해집합 등.
 - 풀이가 순수 계산(전개, 인수분해, 방정식 풀이)이고 공간이나 그래프 관계가 없으면 그림을 만들지 않고 `{"status":"EXEMPT","reason":"한 문장"}`을 쓴다.
-- 엔진이 못 그리는 것(세로선, 색칠 영역, 삼차 이상 그래프와 직선 조합, 입체)은 `{"status":"UNSUPPORTED","reason":"필요한 것"}`을 쓴다. 비슷하게 억지로 그리지 않는다.
+- 엔진이 못 그리는 것(세로선, 색칠 영역, 삼차 이상 그래프와 직선 조합, 정다면체나 입체 안의 입체)은 `{"status":"UNSUPPORTED","reason":"필요한 것"}`을 쓴다. 비슷하게 억지로 그리지 않는다.
 - 발문 그림과 해설 그림은 별개의 plan이다. 각각 따로 쓴다.
 
 ## 3. 어떤 plan을 쓰는가
@@ -31,6 +31,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 이어진 조각 그래프(이차식의 절댓값 등)와 수평선 또는 기울어진 직선: `piecewise-polynomial-spike-v1`(아래 3-3).
 - 이차부등식 풀이(판별식, 그래프, 구간, 수직선): `quadratic-inequality-chain-v1` 하나로 쓴다. 계수와 부등호만 주면 끝점, 열린·닫힌 점, 정수점은 엔진이 계산한다. 해가 구간 하나인 경우만 된다(두 조각이거나 공집합이면 거절된다). 계수가 고정된 이차부등식 하나일 때만 쓴다. 매개변수(a, n 등) 때문에 경우가 나뉘거나("n=1, n=2~4, n≥5"), 부등식이 여러 개이거나, 풀이가 결과 요약뿐이면 체인이 아니다. 그때 풀이가 해집합을 수직선 위에서 비교하는 것이면 아래 `number-line-figure-v1`을 쓴다. 그래프가 필요하면 풀이가 실제로 쓰는 그래프 하나(예: 해가 한 점인 접점 그래프)만 `polynomial-spike-v1`로 그리거나, 그림이 없어도 되면 EXEMPT, 못 그리면 UNSUPPORTED를 쓴다.
 - 수직선만 필요한 풀이(두 부등식 해의 교집합, 끝점이 a에 따라 움직이는 해집합, 정수해, 수직선 위 내분점): `number-line-figure-v1`. `numberLine.rows`에 해집합을 한 줄씩(`SET`) 쓰면 같은 눈금 위에 겹쳐 그려지고, `RESULT` 줄은 위 줄들의 공통 범위를 엔진이 계산해 마지막 줄로 그린다(그 끝점은 직접 쓰지 않는다). 한 줄은 구간 한두 조각(`x<-1 또는 x>2`는 두 조각)이고, 끝점은 `{"value":"-1","state":"OPEN"}`(OPEN은 <, >, CLOSED는 ≤, ≥), 끝이 무한이면 `null`, 끝이 근호이면 정확한 문자열 `{"value":"-sqrt(10)","state":"OPEN"}`(`p+q*sqrt(r)` 꼴, 한 plan에 근호 하나; 소수는 안 된다, 관련 오류 `NUMBER_LINE_VALUE_INVALID`/`NUMBER_LINE_RADICALS_MIXED`; 근호 끝값이 다른 끝과 너무 가까우면(`3`과 `sqrt(10)`) `NUMBER_LINE_LABELS_TOO_CLOSE`이니 공통 범위 줄(RESULT)을 빼고 줄만 비교한다), 끝이 a에 따라 움직이면 `{"param":{"mul":"1/3","add":"2/3"},"state":"OPEN"}`(=mul*a+add, 라벨은 분수가 세로로 쌓인 (a+2)/3으로 엔진이 쓴다)이다. `param` 끝이 있으면 `"parameter":{"name":"a","value":"-1"}`로 **그림을 그릴 a의 값**을 정한다(그림에 "a=-1 일 때의 그림"이 표시된다). 풀이가 다루는 경우(경계값 등)를 골라 쓰고 caption에 밝힌다. a에 따라 해의 모양이 달라지는 풀이는 그 한 경우만 그려지니 전체 답의 그림인 척 쓰지 않는다. 정수점은 해당 줄에 `"integerPoints":true`(유계) 또는 `{"range":["-5","5"]}`(최대 25개)를 쓴다. 내분점은 `{"kind":"POINTS","points":[{"id":"A","value":"-2"},{"id":"B","value":"4"},{"id":"P","divides":{"from":"A","to":"B","ratio":["1","2"]}}]}`로 쓰면 P가 AP:PB=1:2인 자리에 놓이고 AP, PB 위에 1, 2가 표시된다(외분점은 안 된다). 이차함수 그래프가 풀이에 필요하면 이것이 아니라 `quadratic-inequality-chain-v1`을 쓴다. 판 전체 모양은 `{"capability":"number-line-figure-v1","numberLine":{"parameter":{...},"rows":[...]},"numberLineCaption":{"text":"두 해의 공통 범위"},"caption":...,"sourceConditions":...,"newVisualInformation":...}`다.
+- 입체도형(각기둥·각뿔·각뿔대·원기둥·원뿔·원뿔대·구·반구)을 숨은 모서리 점선·꼭짓점 이름·길이와 함께, 또는 각기둥·각뿔·원기둥·원뿔의 전개도, 회전축을 지나는 단면, 원뿔 모양 그릇의 수면: `solid-figure-v1`(아래 3-입체). 치수를 실제 길이로 쓰면 엔진이 3차원 모델에서 투영·숨은선·전개를 계산한다.
 - 통계·확률 그림(도수분포 히스토그램·도수분포다각형·상대도수 그래프, 줄기와 잎 그림, 상자그림, 산점도, 두 주사위의 6×6 표, 확률 수형도): `stat-chart-figure-v1`. 자료의 값만 정확히 주면 눈금, 막대 높이, 다각형 꼭짓점, 사분위수, 표의 칸 색칠, 경로 확률은 엔진이 계산한다. 자세한 쓰는 법은 아래 3-11절.
 
 ### 3-1. 작도 연산: 내분·외분점, 무게중심, 대칭점, 수선, 평행이동
@@ -231,6 +232,69 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 
 **한계.** 입체, 영역 색칠, 통계 그래프는 아직 없다(UNSUPPORTED). 한 점 둘레에 각이 4개 이상 몰리거나 20°대의 좁은 각 라벨은 자리가 없어 `POLISH_REQUIRED`가 될 수 있다: 한 쌍의 두 번째 각을 `noLabel`로 하거나 표식을 줄인다. 길이 라벨의 숫자와 그려진 길이의 비례는 관측하지 않는다(눈금과 평행·각만 관측).
 
+### 3-입체. 중학교 입체도형·전개도: 숨은 모서리 점선, 이름·길이 라벨, 전개도 (`solid-figure-v1`)
+
+각기둥·각뿔·각뿔대·원기둥·원뿔·원뿔대·구·반구를 입체 그림으로, 또는 각기둥·각뿔·원기둥·원뿔의 전개도를 그려야 하는 문항에 쓴다.
+`construction-spike-v1`이 아니라 독립된 capability `solid-figure-v1` 하나로 쓴다. 입체는 치수를 실제 길이로 주면 엔진이 3차원 모델을 만들어 **고정된 하나의 투영**(정사영, 방위 28°, 고도 20°)으로 그린다: 원은 가로축이 수평인 타원, 보이지 않는 모서리는 깊이 검사로 자동 점선이다. 작성자는 좌표나 점선 여부를 쓰지 않는다.
+
+```json
+{"capability":"solid-figure-v1","unit":"cm",
+ "solids":[{"kind":"PYRAMID","base":{"kind":"RECT","width":5,"depth":5},"height":9,"names":"ABCDE"}],
+ "dims":[{"edge":"AB"},{"height":true}],
+ "solidCaption":{"text":"사각뿔"},
+ "caption":"밑면 한 변 5, 높이 9인 사각뿔","sourceConditions":[...],"newVisualInformation":["밑넓이 25와 높이 9"]}
+```
+
+**입체 `solids`(1~3개, 가로로 나란히 같은 배율로 놓인다).**
+
+| kind | 필수 매개변수 | 비고 |
+|---|---|---|
+| `PRISM` | `base`, `height` | `base`는 `{kind:"RECT",width,depth}`, `{kind:"REGULAR",n:3~8,side}`(첫 변이 앞쪽 수평), `{kind:"POLYGON",points:[[u,v]..],plane?}`(점 8개 이하의 단순 다각형, 오목해도 됨). `plane:"XZ"`이면 다각형이 앞면(x, 높이)이고 `height`만큼 뒤로 밀린다: 직육면체 일부를 비스듬히 잘라 낸 입체(사다리꼴 기둥)를 이렇게 쓴다 |
+| `PYRAMID` | `base`, `height` | 밑면은 볼록해야 한다. 꼭짓점은 밑면 중심 위, `apex:[x,y]`로 옮길 수 있다 |
+| `FRUSTUM` | `base`, `height`, `topScale`(0~1) | 각뿔대. 위 밑면은 아래를 `topScale`배 한 닮은꼴 |
+| `CYLINDER` / `CONE` | `radius`, `height` | |
+| `CONE_FRUSTUM` | `radius`, `topRadius`, `height` | `topRadius`는 `radius`보다 작아야 한다 |
+| `SPHERE` / `HEMISPHERE` | `radius` | 반구는 평평한 면이 아래 |
+
+- **이름 `names`**: 대문자 한 글자씩 밑면 순서대로 이은 문자열 `"FGHEBCDA"`(밑면 먼저, 다음 위 밑면; 각뿔은 밑면 뒤에 꼭짓점 한 글자; `.`은 이름 없음), 또는 `{base,top,apex}`. 생략하면 A, B, C... 순서다. 한 그림에서 이름은 한 번만 쓴다. 이름은 밑면이 위에서 볼 때 반시계 방향이 되는 순서로 붙는다(직육면체는 앞-왼쪽에서 시작해 앞-오른쪽, 뒤-오른쪽, 뒤-왼쪽). 원기둥·원뿔 계열은 `names:{center,top,apex}`.
+- **길이 `dims`**(모두 모서리 옆에 놓인다): `{"edge":"AB"}` 또는 `{"from":"E","to":"G"}`(그려진 모서리나 `segments`의 선분), `{"radius":"bottom"|"top"|"center"}`, `{"height":true}`(각뿔, 각뿔대, 원기둥, 원뿔: 축을 따라 점선), `{"slant":true}`(원뿔·원뿔대의 모선), `{"level":true}`(아래 `LEVEL`의 높이). 값은 엔진이 모델에서 계산해 정확히 쓴다(`5`, `7.5`, `5\sqrt{2}`, `8\pi`, `\frac{10}{3}`)와 `unit`. `label`을 쓰면 숫자일 때는 계산한 값과 같아야 하고(다르면 `SOLID_DIM_VALUE_MISMATCH`), `r`, `h`, `2r`, `2\pi r`처럼 문자·식이면 기호 라벨이 된다. 정확한 짧은 꼴이 없는 길이는 `SOLID_DIM_NOT_EXPRESSIBLE`이니 `label`로 문자를 쓴다.
+- **`highlights`**: `[{"polygon":["E","G","C"]}]` 그려진 선분들로 이루어진 평면 다각형을 연하게 칠한다(직육면체 위의 직각삼각형 EGC처럼). 다각형의 변은 모서리이거나 `segments`에 있어야 한다.
+- **`segments`**: `[{"from":"E","to":"G","style":"SOLID"|"DASHED"|"AUTO","role":"REF"|"ACCENT"}]` 면의 대각선, 공간대각선, 또는 강조할 모서리(`REF` 굵게, `ACCENT` 빨강). `AUTO`는 입체가 가리는 선분이면 점선으로 그린다. 입체 안을 지나는 선분은 `SOLID`나 `DASHED`로 정한다.
+- **`section`**: `{"kind":"AXIAL"}` 원기둥·원뿔·원뿔대의 회전축을 지나는 평면(직사각형, 이등변삼각형, 사다리꼴)을 칠하고, `{"kind":"LEVEL","at":"1/3"}`은 밑면과 평행한 평면(높이의 1/3)을 타원으로 보인다(원뿔 모양 그릇의 수면).
+
+**전개도 `net`**(입체 그림과 같은 plan에 `solids`와 함께 쓰지 않는다).
+
+```json
+{"capability":"solid-figure-v1","net":{"solid":{"kind":"PRISM","base":{"kind":"RECT","width":2,"depth":3},"height":4,"names":"........"},
+ "root":"side0","joins":[["side0","side1"],["side1","side2"],["side2","side3"],["side1","top"],["side3","bottom"]],
+ "corners":{"side0":["B","C","N","A"],"side1":["C","D","K","N"],"top":["M","N","K","L"]}}, ...}
+```
+
+- 각기둥·각뿔·각뿔대의 면 이름은 `bottom`, `top`(각뿔은 없다), `side0`, `side1`, ...(`side i`는 밑면의 i번째 모서리 위에 선 옆면)이다. `root`는 처음 놓는 면, `joins`는 `[이미 놓인 면, 새로 펼칠 면]`의 목록으로 모든 면을 잇는 나무(면 수 - 1개)여야 하고 서로 이웃한 면만 이을 수 있다. 엔진이 공유한 모서리를 따라 접힘 반대 방향으로 펼치고, 겹치면 `SOLID_NET_FACES_OVERLAP`으로 거절한다. 접는 모서리(`joins`)는 점선, 바깥 둘레는 실선이다.
+- `corners`는 면마다 꼭짓점 이름을 따로 줄 때(문제의 전개도가 모든 점에 서로 다른 글자를 붙인 경우) 쓴다. 한 면의 이름은 그 면의 순환 순서대로 쓴다: 옆면 `[밑 i, 밑 i+1, 위 i+1, 위 i]`, 위 밑면 `[위 0, 위 1, ...]`, 아래 밑면과 각뿔의 밑면은 그 역순(밑면이 반시계일 때), 각뿔의 옆면 `[밑 i, 밑 i+1, 꼭짓점]`. 이름 개수가 맞지 않으면 `SOLID_NAMES_INVALID`이다. 전개도에서 한 점에 겹치는 같은 이름은 한 번만 쓴다. 생략하면 입체의 꼭짓점 이름을 쓴다.
+- `dims:[{face,edge,label?}]`는 면의 `edge`번째 변(0부터, 그 면의 순환 순서) 옆에 길이를 쓴다.
+- 원기둥: `{"kind":"CYLINDER","radius":3,"height":5,"dims":[{"part":"rect-width","label":"2\\pi r"},{"part":"rect-height","label":"h"},{"part":"radius-top"}]}`: 직사각형(가로 = 밑면의 둘레)과 위·아래의 합동인 원이 직사각형에 접한다.
+- 원뿔: `{"kind":"CONE","radius":8,"slant":20,"dims":[{"part":"slant"},{"part":"arc"},{"part":"radius"},{"part":"angle"}]}`(`slant` 대신 `height`도 된다): 부채꼴(반지름 = 모선, 중심각 = 360 x r / l)과 호의 가운데에 접한 밑면의 원. `arc`는 호의 길이 2πr, `angle`은 중심각이다.
+
+**독립 관측기**(`solid_figure_observer.py`)는 plan만으로 3차원 모델을 다시 만들고 최종 SVG를 확인한다: 모든 모서리 조각이 자기 깊이 검사(모든 면에 대해 보는 쪽으로 쏜 광선)와 같은 실선·점선이고 조각들이 모서리를 빈틈없이 덮는지, 모든 꼭짓점이 하나의 배율과 위치에 맞는지, 타원의 중심·축과 앞·뒤 반원의 보임, 옆 윤곽선이 타원에 접하는지(원뿔은 꼭짓점을 지나는지), 전개도의 면이 입체의 면과 합동이고(변의 길이 모두) 접는 변에서 이어져 서로 반대쪽에 놓이며 겹치지 않는지, 원기둥·원뿔 전개도의 둘레·호 길이·중심각, 길이 라벨의 값(TeX를 읽어 계산한 값과 비교)과 이름 라벨의 글자·자리, 라벨이 선이나 다른 라벨 위에 놓이지 않았는지.
+
+**오류와 조치.**
+
+| 코드 | 조치 |
+|---|---|
+| `SOLID_KIND_UNSUPPORTED`, `SOLID_NET_UNSUPPORTED` | 지원하는 kind만 쓴다. 정다면체(정팔면체·정십이면체 등), 토러스, 한 입체 안의 입체, 기울어진 평면으로 자른 단면은 UNSUPPORTED |
+| `SOLID_PARAM_INVALID`, `SOLID_BASE_INVALID`, `SOLID_BASE_NOT_SIMPLE`, `SOLID_BASE_NOT_CONVEX` | 매개변수는 양의 실수, 밑면은 스스로 교차하지 않는 점 8개 이하(각뿔·각뿔대는 볼록) |
+| `SOLID_COUNT_INVALID` | 한 그림에 입체는 3개까지다. 5개를 나란히 보이는 문항(다면체 고르기)은 UNSUPPORTED이거나 나누어 그린다 |
+| `SOLID_NAMES_INVALID`, `SOLID_NAME_DUPLICATE`, `SOLID_NAME_UNKNOWN` | 이름은 대문자 한 글자, 한 그림에서 한 번, 개수는 꼭짓점 수와 같다 |
+| `SOLID_DIM_SEGMENT_NOT_DRAWN`, `SOLID_DIMS_INVALID` | 길이를 쓸 선분은 그려진 모서리나 `segments`여야 한다. `height`는 각뿔·각뿔대·원기둥·원뿔에만, `slant`는 원뿔·원뿔대에만 |
+| `SOLID_DIM_VALUE_MISMATCH` | 숫자 `label`이 그려진 길이와 다르다: 값을 고치거나 문자로 쓴다 |
+| `SOLID_HIGHLIGHT_NOT_PLANAR`, `SOLID_HIGHLIGHT_EDGE_NOT_DRAWN` | 한 평면의 점들만, 변은 모두 그려진 선분으로 |
+| `SOLID_SECTION_UNSUPPORTED`, `SOLID_SECTION_INVALID` | 단면은 원기둥·원뿔·원뿔대의 `AXIAL`·`LEVEL`(`at`은 `"1/3"` 꼴 진분수)만 |
+| `SOLID_NET_NOT_A_TREE`, `SOLID_NET_FACES_NOT_ADJACENT`, `SOLID_NET_FACES_OVERLAP`, `SOLID_NET_FACE_UNKNOWN` | `joins`는 면 수 - 1개, 이웃한 면만, 겹치지 않게 다시 펼친다 |
+| `SOLID_FIGURE_NEEDS_A_LABEL` | 이름도 길이도 없는 그림은 공개 검사가 글자를 못 읽는다: 이름이나 길이를 하나 이상 쓴다 |
+| `SOLID_LABELS_NO_ROOM`, `SOLID_RENDERED_LAYOUT_FAIL` | 라벨이 놓일 자리가 없다: 라벨을 줄이거나(`names`의 일부를 `.`으로) 한 그림에 입체 수를 줄인다 |
+
+**한계.** 한 투영(정사영)만 있다(앞면 실제 크기의 사투영이나 다른 시점은 없다). 원뿔은 꼭짓점이 위인 것만 그린다(물을 채운 원뿔 그릇처럼 꼭짓점이 아래인 원뿔은 UNSUPPORTED). 입체 안의 입체(구가 들어 있는 원기둥)는 나란히 그린다. 각 모서리에 길이 라벨의 지시선이 없어 라벨이 들어갈 자리가 좁은 그림(작은 입체 여러 개)은 거절될 수 있다. 직각 표시, 각도 표식, 평행·같은 길이 표식은 이 capability에 없다(평면 표식은 3-8). 부피·겉넓이 계산 식은 그림이 아니라 풀이 글에 쓴다.
 ### 3-11. 중학교 통계·확률: 도수 그래프, 줄기와 잎, 상자그림, 산점도, 주사위 표, 수형도 (`stat-chart-figure-v1`)
 
 문제 그림이 **자료를 보여 주는 그림**이고 풀이가 그 그림의 값을 읽거나 세는 문항에 쓴다. 좌표축 함수 그래프가 아니라 교과서 모양의 통계 그림이며, plan에는 **문제에 나온 자료만** 정확히 쓴다. 계급의 가운데 값, 다각형의 양 끝(도수 0인 계급), 상대도수, 사분위수, 잎의 정렬, 표에서 색칠할 칸, 경로 확률은 엔진이 계산하고 독립 관측기가 같은 plan에서 다시 계산해 최종 SVG와 대조한다. 판 전체 모양은 `{"capability":"stat-chart-figure-v1","chart":{"kind":...},"caption":...,"sourceConditions":...,"newVisualInformation":...}`다.
