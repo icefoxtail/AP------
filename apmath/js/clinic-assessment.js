@@ -16,6 +16,14 @@
     const MAX_PAPER_QUESTIONS = 50;
     const MAX_PAPERS_PER_BATCH = 8;
     const MAX_QUESTIONS_PER_STUDENT = MAX_PAPER_QUESTIONS * MAX_PAPERS_PER_BATCH;
+    // Versioned, additive source provenance written into the existing immutable
+    // marker (meta.clinicRecommendationAssessment). It never replaces the plan
+    // signature or the recovery receipt; markers without it stay readable.
+    const SOURCE_PROVENANCE_SCHEMA = 'clinic-source-provenance-v1';
+    const MAX_SOURCE_PROVENANCE_RECIPIENTS = 60;
+    const MAX_SOURCE_PROVENANCE_SIGNATURE_BYTES = 200000;
+    const SOURCE_PROVENANCE_ID = /^[A-Za-z0-9_:.\-]{1,80}$/;
+    const SOURCE_RELATION_KINDS = ['same_uid', 'similar_uid', 'ordinary_transfer'];
 
     function plainObject(value) {
         return Boolean(value && typeof value === 'object' && !Array.isArray(value));
@@ -103,6 +111,162 @@
             sessionLimit: Number.isInteger(sessionLimit) && sessionLimit > 0 ? sessionLimit : null,
             ...(source.includeSeenQuestionUids === true ? { includeSeenQuestionUids: true } : {}),
         };
+    }
+
+    function sourceIdentityFields(entry) {
+        // Frozen identity tuple shared with the worker read model. Both sides
+        // hash exactly this JSON array so a stored hash can be re-checked
+        // against the immutable assignment row.
+        return [
+            entry.sourceAssignmentId,
+            entry.classId,
+            entry.sourceExamTitle,
+            entry.sourceExamDate,
+            entry.sourceQuestionCount,
+            entry.sourceArchiveFile,
+            entry.sourceSavedPaperId,
+        ];
+    }
+
+    function sourceProvenanceError(message) {
+        return error('INVALID_SOURCE_PROVENANCE', message);
+    }
+
+    function provenanceTargetScope(value) {
+        if (value == null) return null;
+        if (!plainObject(value)) throw sourceProvenanceError('기준 시험의 유형 범위를 확인할 수 없습니다.');
+        const pathKey = text(value.pathKey);
+        let parsed = null;
+        try { parsed = JSON.parse(pathKey); } catch { parsed = null; }
+        const validPath = Array.isArray(parsed) && parsed.length >= 4 && parsed.length <= 6 &&
+            parsed.every(part => typeof part === 'string' && part);
+        const pathDepth = validPath ? (value.pathDepth == null ? parsed.length : Number(value.pathDepth)) : 0;
+        if (!validPath || !Number.isInteger(pathDepth) || pathDepth !== parsed.length) {
+            throw sourceProvenanceError('기준 시험의 유형 경로를 확인할 수 없습니다.');
+        }
+        const rawBucket = value.difficultyBucket;
+        const difficultyBucket = rawBucket == null || rawBucket === '' ? null : Number(rawBucket);
+        if (difficultyBucket !== null &&
+            (!Number.isInteger(difficultyBucket) || difficultyBucket < 1 || difficultyBucket > 5)) {
+            throw sourceProvenanceError('기준 시험의 난이도 구간을 확인할 수 없습니다.');
+        }
+        const targetUidCount = Number(value.targetUidCount);
+        if (!Number.isInteger(targetUidCount) || targetUidCount < 0 || targetUidCount > MAX_QUESTIONS_PER_STUDENT) {
+            throw sourceProvenanceError('기준 시험의 유형 문항 수를 확인할 수 없습니다.');
+        }
+        return { pathKey, pathDepth, difficultyBucket, targetUidCount };
+    }
+
+    async function prepareSourceProvenance(value, selections, recommendationMode, cryptoProvider) {
+        // Optional input: absent provenance keeps the previous marker shape.
+        if (value == null) return null;
+        if (!plainObject(value) || text(value.schema) !== SOURCE_PROVENANCE_SCHEMA) {
+            throw sourceProvenanceError('기준 시험 출처 정보를 확인할 수 없습니다.');
+        }
+        const relationKind = text(value.relationKind).toLowerCase();
+        if (!SOURCE_RELATION_KINDS.includes(relationKind) ||
+            relationKind !== (recommendationMode || 'ordinary_transfer')) {
+            throw sourceProvenanceError('추천 방식과 기준 시험 출처 유형이 일치하지 않습니다.');
+        }
+        const rawRecipients = Array.isArray(value.recipients) ? value.recipients : [];
+        if (!rawRecipients.length || rawRecipients.length > MAX_SOURCE_PROVENANCE_RECIPIENTS) {
+            throw sourceProvenanceError('기준 시험 출처의 수신 학생 수를 확인할 수 없습니다.');
+        }
+        const planned = new Map();
+        for (const selection of Array.isArray(selections) ? selections : []) {
+            const cls = classOf(selection);
+            const studentId = text(selection?.studentId || selection?.student_id);
+            const items = Array.isArray(selection?.items) ? selection.items : [];
+            if (cls.classId && studentId && items.length) planned.set(`${cls.classId}|${studentId}`, cls.classId);
+        }
+        const seen = new Set();
+        const recipients = [];
+        for (const raw of rawRecipients) {
+            if (!plainObject(raw)) throw sourceProvenanceError('기준 시험 출처 항목을 확인할 수 없습니다.');
+            const studentId = text(raw.studentId);
+            const classId = text(raw.classId);
+            const key = `${classId}|${studentId}`;
+            if (!studentId || !classId || !planned.has(key)) {
+                throw sourceProvenanceError('기준 시험 출처와 이 시험의 수신 학생이 일치하지 않습니다.');
+            }
+            if (seen.has(key)) throw sourceProvenanceError('같은 학생의 기준 시험 출처가 두 번 들어 있습니다.');
+            seen.add(key);
+            const source = plainObject(raw.source) ? raw.source : {};
+            const sourceAssignmentId = text(source.assignmentId);
+            if (!SOURCE_PROVENANCE_ID.test(sourceAssignmentId)) {
+                throw sourceProvenanceError('기준 시험 배정 ID를 확인할 수 없습니다.');
+            }
+            const sourceSessionId = text(source.sessionId);
+            if (sourceSessionId && !SOURCE_PROVENANCE_ID.test(sourceSessionId)) {
+                throw sourceProvenanceError('기준 시험 응시 ID를 확인할 수 없습니다.');
+            }
+            const sourceSavedPaperId = text(source.savedPaperId);
+            if (sourceSavedPaperId && !SOURCE_PROVENANCE_ID.test(sourceSavedPaperId)) {
+                throw sourceProvenanceError('기준 시험 저장 시험지 ID를 확인할 수 없습니다.');
+            }
+            const sourceExamTitle = text(source.examTitle);
+            if (!sourceExamTitle || sourceExamTitle.length > 150) {
+                throw sourceProvenanceError('기준 시험 제목을 확인할 수 없습니다.');
+            }
+            const sourceExamDate = dateString(source.examDate);
+            if (!sourceExamDate) throw sourceProvenanceError('기준 시험 날짜를 확인할 수 없습니다.');
+            const sourceArchiveFile = text(source.archiveFile);
+            if (sourceArchiveFile.length > 300) {
+                throw sourceProvenanceError('기준 시험 원본 경로를 확인할 수 없습니다.');
+            }
+            const sourceQuestionCount = Number(source.questionCount);
+            if (!Number.isInteger(sourceQuestionCount) || sourceQuestionCount < 1 || sourceQuestionCount > 80) {
+                throw sourceProvenanceError('기준 시험 문항 수를 확인할 수 없습니다.');
+            }
+            const resultSignature = text(raw.resultSignature);
+            if (!resultSignature || byteLength(resultSignature) > MAX_SOURCE_PROVENANCE_SIGNATURE_BYTES) {
+                throw sourceProvenanceError('기준 응시 확인 서명을 확인할 수 없습니다.');
+            }
+            const entry = {
+                studentId,
+                classId,
+                sourceAssignmentId,
+                sourceSessionId,
+                sourceSavedPaperId,
+                sourceExamTitle,
+                sourceExamDate,
+                sourceQuestionCount,
+                sourceArchiveFile,
+                targetScope: provenanceTargetScope(raw.targetScope),
+            };
+            entry.sourceIdentityHash = await sha256Hex(JSON.stringify(sourceIdentityFields(entry)), cryptoProvider);
+            // The raw signature stays teacher-side; only its digest is frozen.
+            entry.resultSignatureHash = await sha256Hex(resultSignature, cryptoProvider);
+            recipients.push(entry);
+        }
+        if (recommendationMode && [...planned.keys()].some(key => !seen.has(key))) {
+            throw sourceProvenanceError('모든 수신 학생의 기준 시험 출처를 확인해야 합니다.');
+        }
+        recipients.sort((a, b) => `${a.classId}|${a.studentId}`.localeCompare(`${b.classId}|${b.studentId}`));
+        return { schema: SOURCE_PROVENANCE_SCHEMA, relationKind, recipients };
+    }
+
+    function cohortSourceProvenance(provenance, classId, studentIds) {
+        if (!provenance) return null;
+        const ids = new Set((studentIds || []).map(text));
+        const recipients = provenance.recipients
+            .filter(entry => entry.classId === classId && ids.has(entry.studentId))
+            .map(entry => ({
+                studentId: entry.studentId,
+                classId: entry.classId,
+                sourceAssignmentId: entry.sourceAssignmentId,
+                ...(entry.sourceSessionId ? { sourceSessionId: entry.sourceSessionId } : {}),
+                ...(entry.sourceSavedPaperId ? { sourceSavedPaperId: entry.sourceSavedPaperId } : {}),
+                sourceExamTitle: entry.sourceExamTitle,
+                sourceExamDate: entry.sourceExamDate,
+                sourceQuestionCount: entry.sourceQuestionCount,
+                sourceArchiveFile: entry.sourceArchiveFile,
+                sourceIdentityHash: entry.sourceIdentityHash,
+                resultSignatureHash: entry.resultSignatureHash,
+                ...(entry.targetScope ? { targetScope: clone(entry.targetScope) } : {}),
+            }));
+        if (!recipients.length) return null;
+        return { schema: SOURCE_PROVENANCE_SCHEMA, relationKind: provenance.relationKind, recipients };
     }
 
     function validRecoveryOperation(operation) {
@@ -230,6 +394,19 @@
         }
     }
 
+    function sourceProvenanceOf(marker) {
+        const value = plainObject(marker?.sourceProvenance) ? marker.sourceProvenance : null;
+        if (!value || text(value.schema) !== SOURCE_PROVENANCE_SCHEMA) return null;
+        const recipients = Array.isArray(value.recipients) ? value.recipients.filter(entry => plainObject(entry)) : [];
+        if (!recipients.length) return null;
+        return { schema: SOURCE_PROVENANCE_SCHEMA, relationKind: text(value.relationKind), recipients };
+    }
+
+    function readAssignmentSourceProvenance(assignment) {
+        const parsed = assignmentMarker(assignment);
+        return parsed ? parsed.sourceProvenance : null;
+    }
+
     function assignmentMarker(assignment) {
         const payload = parseAssignmentPayload(assignment);
         const meta = plainObject(payload.meta) ? payload.meta : {};
@@ -254,6 +431,7 @@
             recommendationMode,
             provenanceKind: markerKind === 'TRANSFER' ? 'legacy_transfer' : 'follow_up',
             questionUids: markerUids,
+            sourceProvenance: sourceProvenanceOf(marker),
         };
     }
 
@@ -1225,7 +1403,7 @@
             return state;
         }
 
-        function planSelections(input) {
+        function planSelections(input, sourceProvenance = null) {
             const title = text(input.title);
             const examDate = dateString(input.examDate);
             const indexVersion = text(input.indexVersion);
@@ -1282,7 +1460,15 @@
             }
             if (!grouped.size) throw error('NO_SELECTED_RECOMMENDATIONS', '시험으로 배정할 추천 문항을 선택하세요.');
 
-            const operationId = makeUuid(createId);
+            // A teacher-confirmed repeat round already owns an operation id; the
+            // existing confirmed recommendation flow must freeze that exact id in
+            // every saved paper marker so the Worker can reconcile the round.
+            // Without a repeat context the id is generated exactly as before.
+            const requestedOperationId = text(input.operationId);
+            if (requestedOperationId && !UUID_V4.test(requestedOperationId)) {
+                throw error('INVALID_OPERATION_ID', '반복 회차 작업 번호를 확인할 수 없습니다.');
+            }
+            const operationId = requestedOperationId || makeUuid(createId);
             const coverage = safeCoverage(input.coverage);
             const cohorts = [];
             let cohortIndex = 0;
@@ -1360,6 +1546,8 @@
                     coverage: clone(coverage),
                     questionUids: [],
                 };
+                const cohortProvenance = cohortSourceProvenance(sourceProvenance, group.classId, studentIds);
+                if (cohortProvenance) summary.sourceProvenance = clone(cohortProvenance);
                 for (const batch of contentBatches) {
                     const saveBody = {
                         schema_version: SAVED_PAPER_SCHEMA,
@@ -1419,6 +1607,7 @@
                     studentIds,
                     questionUids: [...group.questionUids],
                     contentBatches,
+                    ...(cohortProvenance ? { sourceProvenance: clone(cohortProvenance) } : {}),
                 });
                 cohortIndex++;
             }
@@ -1715,7 +1904,14 @@
                     classIds: [...new Set((blocked.cohorts || []).map(cohort => text(cohort.classId)).filter(Boolean))],
                 });
             }
-            const rawPlan = planSelections(input);
+            const recommendationMode = text(input.recommendationMode).toLowerCase();
+            const sourceProvenance = await prepareSourceProvenance(
+                input.sourceProvenance,
+                input.selections,
+                recommendationMode,
+                options.crypto || globalThis.crypto,
+            );
+            const rawPlan = planSelections(input, sourceProvenance);
             for (const cohort of rawPlan.cohorts) {
                 cohort.recipientSignature = await sha256Hex(stableStringify([...cohort.studentIds].sort()), options.crypto || globalThis.crypto);
             }
@@ -1733,6 +1929,7 @@
                     grade: cohort.grade,
                     recipientSignature: cohort.recipientSignature,
                     questionUids: cohort.questionUids,
+                    ...(cohort.sourceProvenance ? { sourceProvenance: cohort.sourceProvenance } : {}),
                     contentBatches: cohort.contentBatches.map(batch => ({
                         saveBatchId: batch.saveBatchId,
                         contentGrade: batch.contentGrade,
@@ -2209,12 +2406,14 @@
     return Object.freeze({
         CONTRACT_VERSION,
         SAVED_PAPER_SCHEMA,
+        SOURCE_PROVENANCE_SCHEMA,
         MAX_PAPER_QUESTIONS,
         MAX_PAPERS_PER_BATCH,
         MAX_QUESTIONS_PER_STUDENT,
         create,
         canonicalResultStatus,
         assignmentMarker,
+        readAssignmentSourceProvenance,
         summarizeHistory,
         buildAttemptComparisonIndex,
         compareAssessmentAttempts,
