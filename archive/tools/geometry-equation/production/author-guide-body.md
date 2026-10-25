@@ -32,6 +32,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 이차부등식 풀이(판별식, 그래프, 구간, 수직선): `quadratic-inequality-chain-v1` 하나로 쓴다. 계수와 부등호만 주면 끝점, 열린·닫힌 점, 정수점은 엔진이 계산한다. 해가 구간 하나인 경우만 된다(두 조각이거나 공집합이면 거절된다). 계수가 고정된 이차부등식 하나일 때만 쓴다. 매개변수(a, n 등) 때문에 경우가 나뉘거나("n=1, n=2~4, n≥5"), 부등식이 여러 개이거나, 풀이가 결과 요약뿐이면 체인이 아니다. 그때 풀이가 해집합을 수직선 위에서 비교하는 것이면 아래 `number-line-figure-v1`을 쓴다. 그래프가 필요하면 풀이가 실제로 쓰는 그래프 하나(예: 해가 한 점인 접점 그래프)만 `polynomial-spike-v1`로 그리거나, 그림이 없어도 되면 EXEMPT, 못 그리면 UNSUPPORTED를 쓴다.
 - 수직선만 필요한 풀이(두 부등식 해의 교집합, 끝점이 a에 따라 움직이는 해집합, 정수해, 수직선 위 내분점): `number-line-figure-v1`. `numberLine.rows`에 해집합을 한 줄씩(`SET`) 쓰면 같은 눈금 위에 겹쳐 그려지고, `RESULT` 줄은 위 줄들의 공통 범위를 엔진이 계산해 마지막 줄로 그린다(그 끝점은 직접 쓰지 않는다). 한 줄은 구간 한두 조각(`x<-1 또는 x>2`는 두 조각)이고, 끝점은 `{"value":"-1","state":"OPEN"}`(OPEN은 <, >, CLOSED는 ≤, ≥), 끝이 무한이면 `null`, 끝이 근호이면 정확한 문자열 `{"value":"-sqrt(10)","state":"OPEN"}`(`p+q*sqrt(r)` 꼴, 한 plan에 근호 하나; 소수는 안 된다, 관련 오류 `NUMBER_LINE_VALUE_INVALID`/`NUMBER_LINE_RADICALS_MIXED`; 근호 끝값이 다른 끝과 너무 가까우면(`3`과 `sqrt(10)`) `NUMBER_LINE_LABELS_TOO_CLOSE`이니 공통 범위 줄(RESULT)을 빼고 줄만 비교한다), 끝이 a에 따라 움직이면 `{"param":{"mul":"1/3","add":"2/3"},"state":"OPEN"}`(=mul*a+add, 라벨은 분수가 세로로 쌓인 (a+2)/3으로 엔진이 쓴다)이다. `param` 끝이 있으면 `"parameter":{"name":"a","value":"-1"}`로 **그림을 그릴 a의 값**을 정한다(그림에 "a=-1 일 때의 그림"이 표시된다). 풀이가 다루는 경우(경계값 등)를 골라 쓰고 caption에 밝힌다. a에 따라 해의 모양이 달라지는 풀이는 그 한 경우만 그려지니 전체 답의 그림인 척 쓰지 않는다. 정수점은 해당 줄에 `"integerPoints":true`(유계) 또는 `{"range":["-5","5"]}`(최대 25개)를 쓴다. 내분점은 `{"kind":"POINTS","points":[{"id":"A","value":"-2"},{"id":"B","value":"4"},{"id":"P","divides":{"from":"A","to":"B","ratio":["1","2"]}}]}`로 쓰면 P가 AP:PB=1:2인 자리에 놓이고 AP, PB 위에 1, 2가 표시된다(외분점은 안 된다). 이차함수 그래프가 풀이에 필요하면 이것이 아니라 `quadratic-inequality-chain-v1`을 쓴다. 판 전체 모양은 `{"capability":"number-line-figure-v1","numberLine":{"parameter":{...},"rows":[...]},"numberLineCaption":{"text":"두 해의 공통 범위"},"caption":...,"sourceConditions":...,"newVisualInformation":...}`다.
 - 입체도형(각기둥·각뿔·각뿔대·원기둥·원뿔·원뿔대·구·반구)을 숨은 모서리 점선·꼭짓점 이름·길이와 함께, 또는 각기둥·각뿔·원기둥·원뿔의 전개도, 회전축을 지나는 단면, 원뿔 모양 그릇의 수면: `solid-figure-v1`(아래 3-입체). 치수를 실제 길이로 쓰면 엔진이 3차원 모델에서 투영·숨은선·전개를 계산한다.
+- 통계·확률 그림(도수분포 히스토그램·도수분포다각형·상대도수 그래프, 줄기와 잎 그림, 상자그림, 산점도, 두 주사위의 6×6 표, 확률 수형도): `stat-chart-figure-v1`. 자료의 값만 정확히 주면 눈금, 막대 높이, 다각형 꼭짓점, 사분위수, 표의 칸 색칠, 경로 확률은 엔진이 계산한다. 자세한 쓰는 법은 아래 3-11절.
 
 ### 3-1. 작도 연산: 내분·외분점, 무게중심, 대칭점, 수선, 평행이동
 
@@ -294,6 +295,33 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 | `SOLID_LABELS_NO_ROOM`, `SOLID_RENDERED_LAYOUT_FAIL` | 라벨이 놓일 자리가 없다: 라벨을 줄이거나(`names`의 일부를 `.`으로) 한 그림에 입체 수를 줄인다 |
 
 **한계.** 한 투영(정사영)만 있다(앞면 실제 크기의 사투영이나 다른 시점은 없다). 입체 안의 입체(구가 들어 있는 원기둥)는 나란히 그린다. 각 모서리에 길이 라벨의 지시선이 없어 라벨이 들어갈 자리가 좁은 그림(작은 입체 여러 개)은 거절될 수 있다. 직각 표시, 각도 표식, 평행·같은 길이 표식은 이 capability에 없다(평면 표식은 3-8). 부피·겉넓이 계산 식은 그림이 아니라 풀이 글에 쓴다.
+### 3-11. 중학교 통계·확률: 도수 그래프, 줄기와 잎, 상자그림, 산점도, 주사위 표, 수형도 (`stat-chart-figure-v1`)
+
+문제 그림이 **자료를 보여 주는 그림**이고 풀이가 그 그림의 값을 읽거나 세는 문항에 쓴다. 좌표축 함수 그래프가 아니라 교과서 모양의 통계 그림이며, plan에는 **문제에 나온 자료만** 정확히 쓴다. 계급의 가운데 값, 다각형의 양 끝(도수 0인 계급), 상대도수, 사분위수, 잎의 정렬, 표에서 색칠할 칸, 경로 확률은 엔진이 계산하고 독립 관측기가 같은 plan에서 다시 계산해 최종 SVG와 대조한다. 판 전체 모양은 `{"capability":"stat-chart-figure-v1","chart":{"kind":...},"caption":...,"sourceConditions":...,"newVisualInformation":...}`다.
+
+| kind | 쓰는 곳 | 필요한 자료 |
+|---|---|---|
+| `HISTOGRAM` | 도수분포 히스토그램(`polygon:true`이면 도수분포다각형을 겹쳐 그림) | `boundaries`, `series:[{frequencies}]` |
+| `FREQUENCY_POLYGON` | 다각형만(상대도수 그래프, 두 집단 비교) | `boundaries`, `series` 1~2개(`name` 필수) |
+| `STEM_LEAF` | 줄기와 잎 그림(두 집단이면 등 맞댄 그림) | `values` 또는 `groups` |
+| `BOX_PLOT` | 상자그림 1~3개 | `values` 또는 `summary` |
+| `SCATTER` | 산점도 | `points`, `xRange`, `yRange` |
+| `DICE_TABLE` | 서로 다른 두 주사위의 6×6 표 | `highlight`(사건의 조건) |
+| `TREE` | 확률 수형도, 경우를 나열하는 수형도 | `root.children` |
+
+**히스토그램·다각형.** `boundaries`는 계급의 경계값 n+1개(문자열, 크기가 모두 같고 0 이상, 계급 12개 이하)이고 `frequencies`는 계급마다 정수 하나다. 상대도수 그래프는 도수를 주고 `"yKind":"RELATIVE"`로 쓰면 엔진이 총합으로 나누고, 상대도수가 문제에 직접 주어졌으면 `relativeFrequencies:["0.1","0.15",...]`(합이 정확히 1)로 쓴다. 도수의 합을 문제가 말하면 `total`로 적어 두면 엔진이 합과 대조한다. 가로축은 계급의 경계값에 눈금이 찍히고(0에서 시작하지 않으면 물결 표시와 O가 붙는다), 세로축 눈금은 엔진이 고른다. `xTitle`/`yTitle`은 짧은 한글(`"기록(회)"`, `"도수(명)"`, `"상대도수"`, 14자 이내)이다. `grid:true`는 점선 격자, `showValues:true`는 값을 막대·꼭짓점 위에 쓴다(풀이가 값을 읽는 그림에서만 쓴다; 값이 선에 닿으면 `STAT_CHART_RENDERED_LAYOUT_FAIL`이니 끈다). `highlightClasses:[4]`는 계급(0부터)을 진하게 칠한다. 두 집단은 `FREQUENCY_POLYGON`에 `series:[{name:"A",...},{name:"B",...}]`를 쓰고 B는 점선으로 그려지며 범례가 붙는다(히스토그램은 한 집단만).
+
+**줄기와 잎.** 원자료 값을 그대로 `values`에 쓴다(0~999, 줄기는 십의 자리, 잎은 일의 자리). 엔진이 오름차순으로 정렬하고 빈 줄기도 남기며 잎의 수를 센다. `unitText:"건"`, `title`을 쓰면 "1 | 0은 10건" 같은 설명이 붙는다. `marks`로 잎을 동그라미로 강조한다: `{"median":true}`는 중앙값(짝수 개이면 가운데 두 값), `{"ranks":[4]}`는 작은 쪽에서 4번째 값, 두 집단이면 `group`(0 또는 1)을 함께 쓴다.
+
+**상자그림.** `values`(4개 이상)를 주면 교육과정 정의대로 중앙값, Q1(아래 절반의 중앙값), Q3(위 절반의 중앙값, 자료가 홀수 개이면 가운데 값은 양쪽에서 뺀다)을 엔진이 계산한다. 문제가 다섯 수치를 직접 주면 `summary:{min,q1,median,q3,max}`로 쓴다(작은 순서가 아니면 거절). `showValues:true`는 다섯 수를 상자 위에 쓴다(가까우면 `STAT_LABELS_TOO_CLOSE`).
+
+**산점도.** `points`에는 그림에 찍힌 점을 **모두** 쓴다(이름 `name`은 문제가 이름 붙인 점만, 한 글자 대문자). `xRange`/`yRange`는 눈금 범위이며 양 끝이 `xStep`/`yStep`의 배수여야 하고 모든 점이 그 안에 있어야 한다. 범위가 0에서 시작하지 않으면 축에 물결 표시가 붙는다. `diagonal:true`는 y=x 직선을 점선으로 그려 "두 성적이 같은 학생"을 세게 한다. `labelEvery:2`는 눈금 숫자를 한 칸 걸러 쓴다. 이름 라벨이 격자선과 겹치는 곳은 격자선이 끊겨 그려진다.
+
+**주사위 표.** `highlight`는 사건을 조건으로 쓴다. 가로(첫째 주사위)는 `a`, 세로(둘째 주사위)는 `b`다. `{"expr":"a+b","in":[2,7]}`, `{"expr":"a","cmp":"<=","value":2}`, `{"all":[...]}`, `{"any":[...]}`, `{"not":{...}}`로 쓰며 `expr`에는 정수, `a`, `b`, `+ - *`, 괄호만 쓴다(예: `b-2*a`). 엔진이 36칸 모두에 조건을 계산해 해당하는 칸만 칠하고 개수를 관측기가 다시 센다. 칸 안의 글자는 `cell`(`PAIR` (a,b), `SUM`, `PRODUCT`, `NONE`), `faces`(2~8, 기본 6), `colVar`/`rowVar`(기본 a, b)로 바꾼다.
+
+**수형도.** `root:{"children":[{"label":"흰","p":"3/7","children":[{"label":"흰","p":"2/5"},{"label":"검","p":"3/5"}]},{"label":"검","p":"4/7","children":[...]}]}`. 한 마디의 가지는 2~5개, 깊이 3 이하, 끝 가지 12개 이하, 이름은 6자 이내다. 확률 `p`는 정확한 분수로 **모든 가지에 쓰거나 하나도 쓰지 않는다**(경우만 나열하는 수형도). 형제 가지의 확률 합은 정확히 1이어야 한다. `showPathProbability:true`는 각 끝에 `3/7×2/5=6/35`처럼 경로 확률의 곱을 쓴다. 확률은 세로 분수로만 쓰인다.
+
+**오류와 한계.** 거절 코드: `STAT_CLASS_WIDTH_UNEQUAL`(계급 크기가 다름), `STAT_FREQUENCY_COUNT_MISMATCH`(도수 개수가 계급 수와 다름), `STAT_FREQUENCY_TOTAL_MISMATCH`(말한 총합이 합과 다름), `STAT_RELATIVE_SUM_NOT_ONE`, `STAT_STEM_MARK_INVALID`, `STAT_BOX_NEEDS_FOUR_VALUES`, `STAT_BOX_SUMMARY_NOT_ORDERED`, `STAT_POINT_OUTSIDE_RANGE`, `STAT_RANGE_NOT_ON_STEP`, `STAT_DICE_EXPR_INVALID`(a, b 말고 다른 문자), `STAT_DICE_PREDICATE_INVALID`, `STAT_TREE_BRANCH_PROBABILITY_SUM`, `STAT_TREE_PROBABILITY_MIXED`. 그릴 자리가 없으면 `STAT_LABEL_OUT_OF_BOUNDS`/`STAT_LABELS_TOO_CLOSE`/`STAT_CHART_RENDERED_LAYOUT_FAIL`이니 제목을 줄이거나 계급을 줄이거나 `showValues`를 끈다. 원그래프, 범주형 막대그래프, 누적도수 그래프, 계급 크기가 다른 히스토그램, 값이 사라진 막대(?)는 지원하지 않으니 EXEMPT나 UNSUPPORTED를 쓴다. 이 그림은 문제에 이미 있는 그림을 다시 그리는 것이므로, 풀이에서 쓰는 값만 강조하고 정답을 그림에 쓰지 않는다.
 
 ## 4. 이름과 표기 규칙 (자주 걸리는 것)
 

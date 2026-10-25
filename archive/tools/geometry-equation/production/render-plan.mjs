@@ -18,6 +18,7 @@ import * as comp from './composite-candidate-svg-v1.mjs';
 import * as chain from './quadratic-inequality-chain-v1.mjs';
 import * as nlf from './number-line-v1.mjs';
 import * as sol from './solid-figure-v1.mjs';
+import * as scf from './stat-chart-v1.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
@@ -60,6 +61,23 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       write(`${name}-state.json`,JSON.stringify({meta,identity,plan,model,composed,capture,packetDir:packet?.packetDir,packetSha256:packet?.packetSha256},null,1));
       write(`${name}-solution.svg`,composed.svg);
     };
+    if(authored.capability===scf.FIGURE_CAPABILITY){
+      // A standalone statistics / probability figure: solved exactly, composed once, read back by its own observer, then the same Archive capture.
+      stage='stat-chart';
+      const model=scf.checkStatChartPlan(authored),size=scf.statChartSize(model);
+      stage='measure';
+      const measured=await cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',intrinsicSvg:size,runId:`pilot-measure-${tag}`});
+      if(measured.status!=='MEASURED')throw {stage,detail:{status:measured.status,detail:measured.detail}};
+      stage='compose';
+      const composed=await scf.composeStatChartFigure({plan:authored,model,identity,typographyPolicy:measured.policy});
+      if(composed.status!=='COMPOSED')throw {stage,detail:{status:composed.status,detail:composed.detail}};
+      stage='capture';
+      const capture=await cap.captureArchiveCandidate({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:'full',composed,measuredPolicy:measured,alt:authored.caption||'',fixtureClassification:'PILOT_AUTHOR_PLAN_CANDIDATE',runId:`pilot-capture-${tag}`});
+      if(capture.status!=='ARCHIVE_BOUND')throw {stage,detail:{status:capture.status,detail:capture.detail}};
+      await bind({plan:authored,model,composed,capture});
+      row.status='ARCHIVE_BOUND';row.sizeClass='full';
+      return finish();
+    }
     if(authored.capability==='composite-panels-v1'||authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY||authored.capability===sol.SOLID_CAPABILITY){
       // Panels: frame -> model -> spec each; one Archive policy for the stacked size; L1 per panel inside the composite; then the same capture.
       stage='composite-panels';
