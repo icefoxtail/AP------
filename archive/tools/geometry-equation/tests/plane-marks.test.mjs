@@ -73,9 +73,51 @@ test('axis-free plane figure with marks composes; the plane-marks observer reads
   assert.ok(!/data-role="(axis|tick)"|model-x-axis/.test(composed.svg),'no axes, ticks or unit marks');
   const rows=Object.fromEntries(composed.staticAudit.planeMarks.observations.filter(row=>row.id).map(row=>[row.id,row]));
   assert.ok(Math.abs(rows.aB.drawnDegrees-40)<1e-6&&rows.aB.arcs===2);assert.ok(Math.abs(rows.aC.drawnDegrees-40)<1e-6);
-  assert.equal(rows.tBC.type,'EXPRESSION_LABEL');
+  assert.equal(rows.aB.style,'SECTOR');assert.equal(rows.tBC.type,'EXPRESSION_LABEL');
   for(const id of ['aB-label','aC-label','tBC'])assert.ok(composed.svg.includes('id="'+id+'"'),id);
   assert.equal((composed.svg.match(/data-mark="equal"/g)||[]).length,2);assert.equal((composed.svg.match(/data-mark="parallel"/g)||[]).length,2);
+});
+
+test('every angle sector is a light fill whose boundary is the outermost arc, beneath all strokes and labels',()=>{
+  const pointsOf=id=>{const m=/\spoints="([^"]*)"/.exec(tagOf(composed.svg,id));return m[1].split(' ').map(pair=>pair.split(',').map(Number));};
+  for(const [id,radiusId] of [['aB','aB-arc-2'],['aC','aC-arc-2']]){
+    const sector=tagOf(composed.svg,id+'-sector'),outer=pointsOf(radiusId),wedge=pointsOf(id+'-sector');
+    assert.match(sector,/data-role="angleSector"/);assert.match(sector,/fill="#d9d9d9"/);assert.match(sector,/stroke="none"/);
+    assert.equal(wedge.length,outer.length+1,'the wedge samples the arc stroke it fills');
+    const v=wedge[0];const radius=Math.hypot(outer[0][0]-v[0],outer[0][1]-v[1]);                       // the outermost stroke's radius
+    assert.ok(wedge.slice(1).every(p=>Math.abs(Math.hypot(p[0]-v[0],p[1]-v[1])-radius)<1e-6),'the fill boundary is exactly the outer arc');
+    const mine=composed.svg.indexOf('id="'+id+'-sector"');
+    for(const stroke of ['sAB','sBC','sCD','sAD',id+'-arc-1',id+'-arc-2',id+'-label'])assert.ok(mine<composed.svg.indexOf('id="'+stroke+'"'),'the fill precedes '+stroke);
+  }
+  const wedges=[pointsOf('aB-sector'),pointsOf('aC-sector')];                                                // equalGroup 1: identical marks
+  assert.deepEqual(wedges[0].length,wedges[1].length);
+  const r=pts=>{const v=pts[0];return Math.hypot(pts[1][0]-v[0],pts[1][1]-v[1]);};assert.ok(Math.abs(r(wedges[0])-r(wedges[1]))<1e-6);
+  assert.equal((composed.svg.match(/data-role="angleSector"/g)||[]).length,2,'one sector per angle mark');
+});
+
+test('style ARC keeps stroke-only arcs; the observer refuses a sector it did not expect and a missing one',async()=>{
+  const arcMarks=clone(marks);arcMarks.angles.forEach(row=>{row.style='ARC';});
+  const arcComposed=await composeConstructionCandidate({plan:planOf(arcMarks),model,identity,typographyPolicy:policy,browser});
+  assert.equal(arcComposed.status,'COMPOSED',JSON.stringify(arcComposed.detail));
+  assert.equal(arcComposed.staticAudit.planeMarks.status,'PASS',JSON.stringify(arcComposed.staticAudit.planeMarks.errors));
+  assert.ok(!arcComposed.svg.includes('-sector"'),'ARC draws no fill');
+  assert.equal((arcComposed.svg.match(/data-mark="angle"/g)||[]).length,4);                                // two angles x two arcs
+  assert.ok(codes(await observe(composed.svg,{planeMarks:arcMarks})).includes('ANGLE_SECTOR_UNEXPECTED'));
+  assert.ok(codes(await observe(arcComposed.svg,{planeMarks:marks})).includes('ANGLE_SECTOR_MISSING'));
+});
+
+test('tamper: a rotated sector, the wrong side, a wrong radius and a raised fill make the observer fail',async()=>{
+  const pointsOf=(svg,id)=>{const m=/\spoints="([^"]*)"/.exec(tagOf(svg,id));return m[1].split(' ').map(pair=>pair.split(',').map(Number));};
+  const rewrite=(svg,id,change)=>retag(svg,id,tag=>{const attribute=/\spoints="([^"]*)"/.exec(tag);const pairs=pointsOf(svg,id);return tag.replace(attribute[0],' points="'+change(pairs).map(pair=>pair.map(v=>v.toFixed(6)).join(',')).join(' ')+'"');});
+  const rotate=(deg,onlyArc=true)=>pairs=>{const [vx,vy]=pairs[0],t=deg*Math.PI/180;return onlyArc?[pairs[0],...pairs.slice(1).map(([x,y])=>{const dx=x-vx,dy=y-vy;return[vx+dx*Math.cos(t)-dy*Math.sin(t),vy+dx*Math.sin(t)+dy*Math.cos(t)];})]:pairs;};
+  const scale=factor=>pairs=>{const [vx,vy]=pairs[0];return[pairs[0],...pairs.slice(1).map(([x,y])=>[vx+(x-vx)*factor,vy+(y-vy)*factor])];};
+  assert.ok(codes(await observe(rewrite(composed.svg,'aB-sector',rotate(8)))).includes('ANGLE_SECTOR_RAY_MISMATCH'));
+  assert.ok(codes(await observe(rewrite(composed.svg,'aB-sector',scale(1.3)))).includes('ANGLE_SECTOR_RADIUS_MISMATCH'));
+  const reversed=rewrite(composed.svg,'aB-sector',pairs=>[pairs[0],...pairs.slice(1).reverse()]);
+  const flipped=codes(await observe(reversed));assert.ok(flipped.includes('ANGLE_SECTOR_SIDE_MISMATCH'),flipped.join());
+  const sector=tagOf(composed.svg,'aB-sector');
+  const raised=composed.svg.replace(sector,'').replace('</svg>',sector+'</svg>');
+  assert.ok(codes(await observe(raised)).includes('ANGLE_SECTOR_NOT_BENEATH_STROKES'));
 });
 
 test('the genuine SVG passes the standalone observer, and a wrong stated value or an undeclared mark fails it',async()=>{
@@ -106,6 +148,8 @@ test('error codes: false facts and unsupported shapes are refused with explicit 
   expectCode(specError(with_(m=>{m.angles[0].refs=['C','B','Z'];})),'DISPLAY_ANNOTATION_POINT_NOT_VISIBLE');
   expectCode(specError(with_(m=>{m.angles[0].refs=['C','B','C'];})),'ANGLE_MARK_DEGENERATE');
   expectCode(specError(with_(m=>{m.angles[1].arcs=1;})),'ANGLE_EQUAL_GROUP_ARC_COUNT');
+  expectCode(specError(with_(m=>{m.angles[0].style='FILL';})),'ANGLE_MARK_STYLE_INVALID');
+  expectCode(specError(with_(m=>{m.angles[0].style='ARC';})),'ANGLE_EQUAL_GROUP_STYLE_MISMATCH');
   expectCode(specError(with_(m=>{m.angles[1].equalGroup=2;m.angles[1].arcs=2;m.angles[0].equalGroup=3;m.angles[0].arcs=2;})),'ANGLE_EQUAL_GROUP_AMBIGUOUS');
   expectCode(specError(with_(m=>{m.equalLengths[0].segments=['sAB','sBC'];})),'EQUAL_MARK_LENGTH_MISMATCH');
   expectCode(specError(with_(m=>{m.parallels[0].segments=['sAB','sBC'];})),'PARALLEL_MARK_NOT_PARALLEL');

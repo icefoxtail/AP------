@@ -8,7 +8,7 @@ export const isPlaneFigure=plan=>plan?.mathPlan?.realization?.recipeId===PLANE_R
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
 const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','regions','facts'],
-  angles:['id','refs','side','arcs','ring','value','label','labelKind','equalGroup','factRole','noLabel'],
+  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','equalGroup','factRole','noLabel'],
   equalLengths:['id','count','segments'],parallels:['id','count','segments'],
   expressionLabels:['id','ownerSegment','text','factRole'],
   arcs:['id','circle','center','from','to','side','label','labelKind','highlight','factRole'],
@@ -67,6 +67,9 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(!Number.isInteger(arcs)||arcs<1||arcs>3)bad('ANGLE_ARC_COUNT_INVALID:'+row.id);
     const ring=row.ring??1;
     if(!Number.isInteger(ring)||ring<1||ring>3)bad('ANGLE_RING_INVALID:'+row.id);
+    // Textbook look: a small filled sector by default (SECTOR); ARC keeps the stroke-only arcs.
+    const style=row.style??'SECTOR';
+    if(!['SECTOR','ARC'].includes(style))bad('ANGLE_MARK_STYLE_INVALID:'+row.id);
     const kind=row.labelKind??'DEGREE';
     if(!['DEGREE','NAME'].includes(kind))bad('MARK_FIELD_INVALID:angles.labelKind:'+row.id);
     // A degree label names the declared value; a mark with neither a label nor `noLabel` states nothing a student can read.
@@ -74,12 +77,13 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(text===null&&row.noLabel!==true)bad('ANGLE_MARK_LABEL_REQUIRED:'+row.id);
     if(row.equalGroup!==undefined){
       if(!Number.isInteger(row.equalGroup)||row.equalGroup<1)bad('MARK_FIELD_INVALID:angles.equalGroup:'+row.id);
-      const g=groups.get(row.equalGroup)??{measured,arcs,ids:[]};
+      const g=groups.get(row.equalGroup)??{measured,arcs,style,ids:[]};
       if(Math.abs(g.measured-measured)>ANGLE_TOLERANCE_DEGREES)bad('ANGLE_EQUAL_GROUP_MISMATCH:'+row.id);
       if(g.arcs!==arcs)bad('ANGLE_EQUAL_GROUP_ARC_COUNT:'+row.id);
+      if(g.style!==style)bad('ANGLE_EQUAL_GROUP_STYLE_MISMATCH:'+row.id);
       g.ids.push(row.id);groups.set(row.equalGroup,g);
     }
-    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,...(ring>1?{ring}:{}),...(side==='OUTER'?{outer:true}:{})};
+    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(side==='OUTER'?{outer:true}:{})};
     if(text!==null){object.labelText=text;object.labelKind=kind;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }
