@@ -376,7 +376,7 @@ def prepare(spec):
             if obj.get('labelText') is not None:
                 tree=parse(obj['labelText']);markup=serialize(tree,'svg')
                 label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':serialize(tree,'plain'),'markup':markup,'tex':serialize(tree,'tex'),'math':True,'sourceMath':obj['labelText'],
-                       'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':polygons,'labelGap':34}
+                       'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':polygons,'labelGap':14}
                 label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
                 label['candidateCenters']=_region_label_centres(polygons,obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygons[0][0])
                 labels.append(label)
