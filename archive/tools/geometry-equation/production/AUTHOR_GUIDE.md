@@ -232,7 +232,36 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 
 **독립 관측기**(`plane-marks-observer-worker.py`)는 Cindy가 계산한 점과 최종 SVG의 그려진 요소만으로 다음을 다시 확인한다: 호가 꼭짓점을 중심으로 두 변 사이를 정확히 잇고 그려진 각이 점들이 만드는 각과 말한 값(0.5° 이내)과 같은지, 같은 모둠의 호 개수와 크기, 눈금이 선분 위에서 선분에 수직이고 모둠의 선분 길이가 같은지, 평행 화살표가 선분 방향이고 모둠이 평행한지, 호의 점이 모두 원 위에 있고 끝점과 방향이 맞는지, 점선과 화살촉, 접선과 반지름의 수직, 라벨이 선·표식과 겹치지 않고 자기 각 안쪽(또는 지시선이 호에서 시작) 자기 선분 곁에 있는지, 선언하지 않은 표식이 없는지.
 
-**한계.** 입체, 영역 색칠, 통계 그래프는 아직 없다(UNSUPPORTED). 한 점 둘레에 각이 4개 이상 몰리거나 20°대의 좁은 각 라벨은 자리가 없어 `POLISH_REQUIRED`가 될 수 있다: 한 쌍의 두 번째 각을 `noLabel`로 하거나 표식을 줄인다. 길이 라벨의 숫자와 그려진 길이의 비례는 관측하지 않는다(눈금과 평행·각만 관측).
+**한계.** 한 점 둘레에 각이 4개 이상 몰리거나 20°대의 좁은 각 라벨은 자리가 없어 `POLISH_REQUIRED`가 될 수 있다: 한 쌍의 두 번째 각을 `noLabel`로 하거나 표식을 줄인다. 길이 라벨의 숫자와 그려진 길이의 비례는 관측하지 않는다(눈금과 평행·각만 관측).
+
+### 3-9. 영역 색칠: 다각형·부채꼴·활꼴·차집합 (`planeMarks.regions`)
+
+문제 그림에서 **이미 그린 선·호로 둘러싸인 영역을 회색으로 칠하고** 그 넓이를 영역 안에 적어야 할 때 쓴다(넓이 분할, 부채꼴, 띠, 활꼴, 합동 삼각형 강조). `PLANE_FIGURE_v1` plan의 `planeMarks.regions`에 쓴다. 칠하는 영역은 **도형에서 구멍을 뺀 것**으로 쓴다. 도형끼리는 겹칠 수 없고(겹쳐야 하면 구멍으로 뺀다) 구멍은 반드시 어떤 도형 안에 있어야 한다. 색은 `LIGHT`(기본) 또는 `MEDIUM`이고, 칠은 모든 획·라벨 **아래**에 깔린다.
+
+```json
+"regions":[
+ {"id":"rg1","fill":"LIGHT","label":"3pi","factRole":"CONCLUSION",
+  "shapes":[{"sector":{"center":"O","from":"A","to":"B"}}],"holes":[{"polygon":["O","A","B"]}]},
+ {"id":"rg2","fill":"MEDIUM","shapes":[
+  {"polygon":["D","B","P"]},
+  {"loop":{"start":"C","steps":[{"to":"D","arc":{"center":"O","side":"MINOR"}},{"to":"B"},{"to":"A","arc":{"center":"O","side":"MINOR"}},{"to":"C"}]}}]},
+ {"id":"rg3","shapes":[{"loop":{"start":"P4","steps":[{"to":"P4","arc":{"center":"O","side":"FULL"}}]}}]}
+]
+```
+
+| 도형 | 뜻 |
+|---|---|
+| `{"polygon":[점 id ...]}` | 점 id를 순서대로 이은 다각형(3개 이상, 겹치는 점 없음) |
+| `{"sector":{"center","from","to","side"?}}` | 중심과 원 위 두 점으로 정해지는 부채꼴. `side`는 `MINOR`(기본)·`MAJOR`·`CCW`·`CW` |
+| `{"segment":{"center","from","to","side"?}}` | 같은 두 점을 잇는 **활꼴**(현과 호 사이). `shapes`에 부채꼴을, `holes`에 삼각형을 넣은 것과 같은 결과다 |
+| `{"loop":{"start","steps":[{"to","arc"?}]}}` | 직선과 정확한 원호를 섞은 자유 경계. `arc:{"center","side"}`는 그 호의 중심 점이고 `side`는 `MINOR`·`MAJOR`·`CCW`·`CW`·`FULL`(FULL은 `to`가 `start`와 같고 원 전체) |
+
+- **경계는 이미 그려져 있어야 한다.** 각 변은 `displaySegments`·`displayLines`·`displayCircles`·`planeMarks.arcs`(강조 여부 무관) 중 하나가 실제로 그린 것이어야 하고, 아니면 `REGION_BOUNDARY_UNKNOWN`이다. 그래서 색칠은 "그림이 실제로 보여 주는 영역"만 칠한다.
+- 호의 두 끝점은 중심에서 같은 거리여야 한다(`REGION_ARC_ENDPOINT_NOT_ON_CIRCLE`). 지름의 양 끝(반원)처럼 두 방향이 똑같이 가능하면 `side`를 반드시 적는다(`REGION_ARC_SIDE_AMBIGUOUS`).
+- `label`은 영역 안에 놓는 식 라벨(`3pi`, `16pi-32`, `37.5pi`)이다. 라벨은 경계·획에서 가장 넓은 안쪽 지점에 놓이고 다른 라벨과 14px 이상 떨어진다(40자 이하). `factRole`은 `GIVEN`·`DERIVED_INTERMEDIATE`·`CONCLUSION`.
+- 오류 코드: `REGION_BOUNDARY_UNKNOWN`(모르는 점 또는 그리지 않은 변), `REGION_NOT_CLOSED`, `REGION_SELF_INTERSECTING`, `REGION_LOOPS_CROSS`, `REGION_SHAPES_OVERLAP`, `REGION_HOLE_OUTSIDE`, `REGION_ARC_SIDE_AMBIGUOUS`, `REGION_ARC_ENDPOINT_NOT_ON_CIRCLE`, `REGION_DEGENERATE`, `REGION_DEGENERATE_EDGE`, `REGION_FILL_UNSUPPORTED`, `REGION_FIELD_UNKNOWN`, `REGION_FIELD_INVALID`, `REGION_ID_INVALID`, `REGION_ID_DUPLICATE`, `REGION_REQUIRES_EQUAL_UNITS`.
+- 관측기(`plane_regions_observer.py`, `plane-marks-observer-worker.py`가 호출)는 Cindy 점에서 경계를 **다시 계산해** 최종 SVG의 even-odd `<path>`와 꼭짓점·호 끝점·호 중심·반지름·sweep을 맞춰 보고, 획이 없는지, 모든 변이 실제 획으로 그려졌는지, 칠이 모든 획·라벨 아래인지, 라벨이 영역 안에 있고 다른 라벨과 붙지 않았는지 확인한다(`REGION_VERTEX_MISMATCH`, `REGION_ARC_SIDE_MISMATCH`, `REGION_ARC_RADIUS_MISMATCH`, `REGION_BOUNDARY_NOT_DRAWN`, `REGION_NOT_BENEATH_STROKES`, `REGION_LABEL_OUTSIDE`, `REGION_LABEL_CROWDS_LABEL`, `UNDECLARED_MARK` 등).
+- **한계.** 관측기는 경계의 모양만 보고 **넓이 값 자체는 검산하지 않는다**: `label`의 수치는 원문·해설과 맞는지 사람이 확인한다(색칠이 넓이 계산을 대신하지 않는다). 한 영역은 even-odd path 하나이므로 도형이 겹치면 칠이 상쇄된다(겹침 금지). 같은 점에서 여러 획이 만나는 중심에 점 이름을 두면 자리가 없어 지시선이 붙을 수 있다. 영역 라벨이 들어갈 안쪽 여백이 없으면 `LAYOUT_INVENTORY_INCOMPLETE`로 실패하니 라벨을 줄이거나 값을 밖으로 뺀다.
 
 ### 3-입체. 중학교 입체도형·전개도: 숨은 모서리 점선, 이름·길이 라벨, 전개도 (`solid-figure-v1`)
 
