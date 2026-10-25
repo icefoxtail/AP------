@@ -79,7 +79,7 @@ function fixture(t, course = "중1 수학", curriculum = "2022") {
   return { root, put, read, request, q, evidenceRefs, change };
 }
 
-function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLabelDrift = false, siblingParent = false, promoteCanonicalTypes = false, driveSourceHashDrift = false, targetCanonicalParent = false, targetParentUsesSubUnit = false, exactSourceHashBasis = false, dualVisual = false } = {}) {
+function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLabelDrift = false, siblingParent = false, promoteCanonicalTypes = false, driveSourceHashDrift = false, targetCanonicalParent = false, targetParentUsesSubUnit = false, targetCanonicalScope, exactSourceHashBasis = false, dualVisual = false } = {}) {
   const conceptChange = f.request.registryChanges.find(change => change.path.startsWith(`${CANON}/concepts/`));
   const pendingRegistryChanges = [];
   for (const change of f.request.registryChanges) {
@@ -167,10 +167,10 @@ function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLa
   let targetParentEvidenceRef = null;
   if (targetCanonicalParent) {
     const midUnit = targetParentUsesSubUnit ? f.q.subUnit : f.q.standardUnit;
-    f.put(canonicalMasterPath, { records: [{ curriculum: f.request.items[0].after.curriculum, scope: f.request.items[0].after.courseKey,
+    f.put(canonicalMasterPath, { records: [{ curriculum: f.request.items[0].after.curriculum, scope: targetCanonicalScope || f.request.items[0].after.courseKey,
       majorUnit: f.q.standardUnit, midUnit }] });
     targetParentRef = { path: canonicalMasterPath, curriculum: f.request.items[0].after.curriculum,
-      scope: f.request.items[0].after.courseKey, majorUnit: f.q.standardUnit, midUnit };
+      scope: targetCanonicalScope || f.request.items[0].after.courseKey, majorUnit: f.q.standardUnit, midUnit };
     targetParentEvidenceRef = { path: canonicalMasterPath, sha256: hash(fs.readFileSync(path.join(f.root, canonicalMasterPath))) };
   }
   const evidenceRefs = [...f.evidenceRefs, auditPackageRef, manifestRef, sourceParityRef, parentLabelsRef,
@@ -578,6 +578,18 @@ test("META_PIPELINE_AUDIT accepts an exact canonical parent at the audited subun
   attachMetaPipelineAudit(f, { promoteCanonicalTypes: true, targetCanonicalParent: true, targetParentUsesSubUnit: true });
   const result = registerReviewedExamV2({ root: f.root, request: f.request });
   assert.equal(result.totalQuestions, 1);
+});
+
+test("canonical parent accepts the existing master scope alias 수학_상 for 수학(상)", t => {
+  const f = fixture(t, "수학(상)", "2015");
+  attachMetaPipelineAudit(f, { targetCanonicalParent: true, targetCanonicalScope: "수학_상" });
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
+});
+
+test("canonical parent scope aliases do not cross the upper and lower math courses", t => {
+  const f = fixture(t, "수학(하)", "2015");
+  attachMetaPipelineAudit(f, { targetCanonicalParent: true, targetCanonicalScope: "수학_상" });
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /canonical target parent mismatch/);
 });
 
 test("META_PIPELINE_AUDIT permits audit/current Drive hash drift only with exact per-UID student parity", t => {
