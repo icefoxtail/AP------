@@ -74,7 +74,7 @@ test('the engine refuses what it cannot draw with explicit codes',()=>{
   assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:1,height:2}]})),code('SOLID_FIGURE_NEEDS_A_LABEL'));
   assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],unit:'furlong'})),code('SOLID_UNIT_INVALID'));
 });
-const cubeNet=(joins,over={})=>figure({net:{solid:{kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:2,names:'........'},root:'side0',joins,...over}});
+const cubeNet=(joins,over={})=>figure({net:{solid:{kind:'PRISM',base:{kind:'RECT',width:2,depth:2},height:2,names:'........'},root:'side0',joins,dims:[{face:'side0',edge:0}],...over}});
 test('a net is the solid unfolded along a tree of faces; bad trees and overlapping layouts are refused',()=>{
   const ok=cubeNet([['side0','side1'],['side1','side2'],['side2','side3'],['side1','top'],['side3','bottom']]);
   const m=solveSolidFigure(ok);
@@ -83,9 +83,11 @@ test('a net is the solid unfolded along a tree of faces; bad trees and overlappi
   for(const face of m.faces){const [a,b]=[face.poly[0],face.poly[1]];assert.ok(Math.abs(Math.hypot(a[0]-b[0],a[1]-b[1])-2)<1e-5);}
   assert.throws(()=>solveSolidFigure(cubeNet([['side0','side1'],['side1','side2'],['side2','side3'],['side1','top']])),code('SOLID_NET_NOT_A_TREE'));
   assert.throws(()=>solveSolidFigure(cubeNet([['side0','side1'],['side1','side2'],['side2','side3'],['side0','top'],['top','bottom']])),code('SOLID_NET_FACES_NOT_ADJACENT'));
-  // top and bottom both hanging off side1 / side3 on the same side overlap nothing; side faces joined around the top overlap
-  assert.throws(()=>solveSolidFigure(cubeNet([['side0','side1'],['side1','side2'],['side2','side3'],['side0','top'],['side3','bottom']],{})),code('SOLID_NET_FACES_OVERLAP'));
-  assert.throws(()=>solveSolidFigure(cubeNet([['nope','side1']])),code('SOLID_NET_FACE_UNKNOWN'));
+  // a convex solid unfolds without overlap along every tree; a non-convex prism can fold a face back onto another
+  const lPrism={kind:'PRISM',base:{kind:'POLYGON',points:[[0,0],[6,0],[6,1],[1,1],[1,6],[0,6]]},height:1,names:'ABCDEFGHIJKL'};
+  assert.throws(()=>solveSolidFigure(figure({net:{solid:lPrism,root:'side0',dims:[{face:'side0',edge:0}],
+    joins:[['side0','side1'],['side1','side2'],['side2','side3'],['side2','bottom'],['side3','side4'],['side0','top'],['side4','side5']]}})),code('SOLID_NET_FACES_OVERLAP'));
+  assert.throws(()=>solveSolidFigure(cubeNet([['nope','side1'],['side1','side2'],['side2','side3'],['side1','top'],['side3','bottom']])),code('SOLID_NET_FACE_UNKNOWN'));
   assert.throws(()=>solveSolidFigure(figure({net:{kind:'PRISM'}})),code('SOLID_NET_UNSUPPORTED'));
   assert.throws(()=>solveSolidFigure(figure({net:{kind:'CONE',radius:5,slant:4}})),code('SOLID_CONE_SLANT_TOO_SHORT'));
 });
@@ -104,6 +106,22 @@ test('a composed cuboid passes its independent observer; hidden edges are dashed
   assert.equal((composed.svg.match(/data-vis="hidden"/g)||[]).length>=3,true);
   assert.match(composed.svg,/data-solid-figure="solid-figure-v1"/);
 });
+test('a pyramid height keeps its dashed axis inside and moves the dimension line (and length) outside the silhouette',async()=>{
+  const plan=figure({unit:'cm',solids:[{kind:'PYRAMID',base:{kind:'RECT',width:5,depth:5},height:9,names:'ABCDE'}],dims:[{edge:'AB'},{height:true}]});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  const axis=svg.match(/<line id="dim-2-axis"[^>]*\/>/)[0];
+  assert.match(axis,/data-role="height-axis"/);assert.match(axis,/data-vis="hidden"/);
+  const line=svg.match(/<line id="dim-2-line"[^>]*\/>/)[0];
+  assert.match(line,/data-role="dim-line"/);assert.match(line,/data-vis="solid"/);
+  const x=Number(/x1="([\d.]+)"/.exec(line)[1]);
+  const edgeXs=[...svg.matchAll(/<line [^>]*data-edge="[A-Z]{2}"[^>]*x1="([\d.]+)"[^>]*x2="([\d.]+)"/g)].flatMap(m=>[Number(m[1]),Number(m[2])]);
+  assert.ok(x<Math.min(...edgeXs)-6,`dimension line ${x} is left of the silhouette ${Math.min(...edgeXs)}`);
+  assert.equal((await audit(plan,svg)).status,'PASS');
+});
+
 test('tamper: a hidden edge drawn solid, a visible edge drawn dashed, a moved vertex and a wrong label each fail the observer',async()=>{
   const plan=figure({solids:[cuboid()],dims:[{edge:'FG'}]});
   const composed=await panel(plan);
@@ -111,10 +129,10 @@ test('tamper: a hidden edge drawn solid, a visible edge drawn dashed, a moved ve
   const svg=composed.svg;
   assert.equal((await audit(plan,svg)).status,'PASS');
   // 1. the dashed back-bottom edge E-F drawn solid
-  const hidden=svg.match(/<line [^>]*data-edge="EF"[^>]*\/>/)[0];
+  const hidden=svg.match(/<line [^>]*data-edge="FE"[^>]*\/>/)[0];
   const solidEdge=hidden.replace(/ stroke-dasharray="[^"]*"/,'').replace('data-vis="hidden"','data-vis="solid"');
   const r1=await audit(plan,svg.replace(hidden,solidEdge));
-  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_EDGE_VISIBILITY_MISMATCH:EF')),JSON.stringify(r1.errors));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_EDGE_VISIBILITY_MISMATCH:FE')),JSON.stringify(r1.errors));
   // 2. only the dash attribute changed (the data attribute still says solid)
   const front=svg.match(/<line [^>]*data-edge="FG"[^>]*\/>/)[0];
   const r2=await audit(plan,svg.replace(front,front.replace('stroke="#111"','stroke="#111" stroke-dasharray="5 4"')));

@@ -637,6 +637,7 @@ function ellipseOf(S,solid,rad,z){
   const c=project([0,0,z]);// the solid's axis is shifted along the screen horizontal by its offset
   return {cx:c[0]+(solid.offset??0),cy:c[1],a:rad,b:rad*sP};
 }
+const heightDimX=(solid,X)=>r6(Math.max(SAFE+2,Math.min(...solid.vertices.map(v=>X(project(v.p)[0])))-26));
 function spec3d(plan,model,ctx){
   const {S,X,Y,pt,prims,labels,line}=ctx;
   const named=new Map();
@@ -691,7 +692,16 @@ function spec3d(plan,model,ctx){
       line(d.id+'-line','dim-line',pt(c),pt(rim),{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
     }else if(d.type==='HEIGHT'){
       const solid=model.solids.find(s=>s.id===d.solid);
-      if(solid.category==='POLY'){line(d.id+'-line','dim-line',pt(project(d.foot)),pt(project(d.top)),{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'hidden'});}
+      if(solid.category==='POLY'){
+        // A pyramid/frustum is narrow at mid-height: keep the dashed height axis inside, draw the dimension line outside the silhouette
+        // (with extension lines to the apex and the base-centre level) so the length never has to sit between two edges.
+        const top=pt(project(d.top)),foot=pt(project(d.foot));
+        line(d.id+'-axis','height-axis',foot,top,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'hidden'});
+        const x=heightDimX(solid,X);
+        line(d.id+'-line','dim-line',[x,foot[1]],[x,top[1]],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+        line(d.id+'-ext-top','dim-ext',[x,top[1]],top,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+        line(d.id+'-ext-bottom','dim-ext',[x,foot[1]],foot,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+      }
       else{
         const bottom=solid.kind==='HEMISPHERE'?[0,0,0]:[0,0,0],top=[0,0,solid.height];
         const sh=mulv(EX,solid.offset??0);
@@ -740,7 +750,7 @@ function spec3d(plan,model,ctx){
       labels.push({...label,segment:[pt(c),pt([c[0]+d.r,c[1]])],segmentOf:'radius'});
     }else if(d.type==='HEIGHT'){
       const solid=model.solids.find(s=>s.id===d.solid);
-      if(solid.category==='POLY')labels.push({...label,segment:[pt(project(d.foot)),pt(project(d.top))],segmentOf:'height'});
+      if(solid.category==='POLY'){const top=pt(project(d.top)),foot=pt(project(d.foot)),x=heightDimX(solid,X);labels.push({...label,segment:[[x,foot[1]],[x,top[1]]],segmentOf:'height'});}
       else{const sh=mulv(EX,solid.offset??0);labels.push({...label,segment:[pt(project(add([0,0,0],sh))),pt(project(add([0,0,solid.height],sh)))],segmentOf:'height'});}
     }else if(d.type==='LEVEL'){
       const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
@@ -926,7 +936,12 @@ function obstacleSegments(spec){
     else if(p.t==='arc')poly(arcPoints(p),false);
     else if(p.t==='circle'){const pts=[];for(let k=0;k<ELL_SAMPLES;k++){const u=2*Math.PI*k/ELL_SAMPLES;pts.push([p.cx+p.r*Math.cos(u),p.cy-p.r*Math.sin(u)]);}poly(pts,true);}
     else if(p.t==='poly'&&p.role==='net-face')poly(p.points,true);
-    else if(p.t==='sector'){const pts=[p.apex];for(let k=0;k<=ELL_SAMPLES;k++){const a=Math.atan2(p.p1[1]-p.apex[1],p.p1[0]-p.apex[0]);const b=Math.atan2(p.p2[1]-p.apex[1],p.p2[0]-p.apex[0]);let d=b-a;while(d<0)d+=2*Math.PI;pts.push([p.apex[0]+p.radius*Math.cos(a+d*k/ELL_SAMPLES),p.apex[1]+p.radius*Math.sin(a+d*k/ELL_SAMPLES)]);}poly(pts,true);}
+    else if(p.t==='sector'){
+      // The drawn arc runs from p1 to p2 with sweep-flag 0 (the short way round in screen coordinates): keep the signed angle difference.
+      const pts=[p.apex],a=Math.atan2(p.p1[1]-p.apex[1],p.p1[0]-p.apex[0]),b=Math.atan2(p.p2[1]-p.apex[1],p.p2[0]-p.apex[0]),d=b-a;
+      for(let k=0;k<=ELL_SAMPLES*2;k++)pts.push([p.apex[0]+p.radius*Math.cos(a+d*k/(ELL_SAMPLES*2)),p.apex[1]+p.radius*Math.sin(a+d*k/(ELL_SAMPLES*2))]);
+      poly(pts,true);
+    }
   }
   return segs;
 }
@@ -1007,7 +1022,7 @@ function renderPrims(spec,model){
   for(const p of spec.prims){
     if(p.t==='line'){
       const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
-      const w=p.role==='dim-line'?1.1:p.role==='segment'?2.4:p.role==='silhouette'?1.7:1.6;
+      const w=p.role==='dim-line'||p.role==='dim-ext'?1.1:p.role==='segment'?2.4:p.role==='silhouette'?1.7:1.6;
       const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.face?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:''].filter(Boolean).join(' ');
       body+=`<g data-layer="40"><line ${attrs} stroke="${p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
       void accent;
@@ -1043,7 +1058,7 @@ export async function composeSolidFigurePanel({plan,model,identity,typographyPol
     lineage.fragmentSha256s=Object.fromEntries(placed.map(item=>[item.label.id,item.fragment.fragmentSha256]));
     const {width,height}=spec.size;
     let body=`<rect width="${width}" height="${height}" fill="#fff"/>`+renderPrims(spec,model);
-    for(const {label,leader} of placed)if(leader)body+=`<g data-layer="40"><line id="leader-${label.id}" data-role="leader" data-label="${label.id}" stroke="#555" stroke-width="0.9" fill="none" x1="${leader[0][0]}" y1="${leader[0][1]}" x2="${leader[1][0]}" y2="${leader[1][1]}"/></g>`;
+    for(const {label,leader} of placed)if(leader)body+=`<g data-layer="40"><line id="leader-${label.id}" data-role="leader" data-owner-label="${label.id}" data-label="${label.id}" stroke="#555" stroke-width="0.9" fill="none" x1="${leader[0][0]}" y1="${leader[0][1]}" x2="${leader[1][0]}" y2="${leader[1][1]}"/></g>`;
     for(const {label,fragment,box,leader} of placed){
       body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''} data-tex="${esc(label.tex)}" data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
     }
