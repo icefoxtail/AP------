@@ -1187,7 +1187,7 @@ function placeLabels(spec,fragments,errors){
     }else{
       const [a,b]=label.segment,dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1,nx=-dy/l,ny=dx/l;
       const sides=label.preferredSide?[label.preferredSide,-label.preferredSide]:[1,-1];
-      for(const dist of [3,6,10,15,21])for(const frac of [0.5,0.4,0.6,0.3,0.7,0.2,0.8])for(const side of sides){
+      for(const side of sides)for(const dist of [3,6,10,15,21])for(const frac of [0.5,0.4,0.6,0.3,0.7,0.2,0.8]){
         const mx=a[0]+dx*frac,my=a[1]+dy*frac;
         // the box edge (not its centre) stands `dist` px from the segment
         const ext=Math.abs(nx)*w/2+Math.abs(ny)*h/2;
