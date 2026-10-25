@@ -1788,7 +1788,7 @@ def _trig_v2_refine(fn,left,right):
         else:left,fl=mid,fm
     return (left+right)/2
 
-def _observed_curve_branches(root,transform):
+def _observed_curve_branch_list(root,transform):
     sx,sy=transform['sx'],transform['sy']
     branches=[]
     for node in root.iter():
@@ -1834,7 +1834,7 @@ def trigonometric_interval_v2_audit(plan,svg,transform):
         domain=plan.get('domain')
         if not isinstance(domain,list) or len(domain)!=2 or any(abs(actual-expected)>1e-9*max(1.0,abs(expected)) for actual,expected in zip(domain,[want['x0'],want['x1']])):errors.append('TRIG_DRAW_WINDOW_MISMATCH')
         if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
-        root=ET.fromstring(svg);branches,point_errors=_observed_curve_branches(root,transform);errors.extend(point_errors)
+        root=ET.fromstring(svg);branches,point_errors=_observed_curve_branch_list(root,transform);errors.extend(point_errors)
         points=[point for branch in branches for point in branch]
         if not points:return {'status':'FAIL','errors':sorted(set(errors+['TRIG_FINAL_CURVE_MISSING']))}
         xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale'];x_tol=.35/max(1e-12,xscale)
@@ -1952,7 +1952,7 @@ def trigonometric_period_v2_audit(plan,svg,transform):
         domain=plan.get('domain')
         if not isinstance(domain,list) or len(domain)!=2 or any(abs(actual-expected)>1e-9*max(1.0,abs(expected)) for actual,expected in zip(domain,want['domain'])):errors.append('TRIG_DRAW_WINDOW_MISMATCH')
         if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
-        root=ET.fromstring(svg);branches,point_errors=_observed_curve_branches(root,transform);errors.extend(point_errors)
+        root=ET.fromstring(svg);branches,point_errors=_observed_curve_branch_list(root,transform);errors.extend(point_errors)
         points=[point for branch in branches for point in branch]
         if not points:return {'status':'FAIL','errors':sorted(set(errors+['TRIG_FINAL_CURVE_MISSING']))}
         points=sorted(points,key=lambda point:point[0]);xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale'];x_tol=.35/max(1e-12,xscale)
