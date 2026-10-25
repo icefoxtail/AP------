@@ -4,6 +4,7 @@ Scope: rational-coefficient degree <=4 polynomial, rational with denominator
 degree <=2, sqrt of a positive-slope affine polynomial. Uses conservative
 second-derivative bounds; sqrt boundary uses its exact secant envelope.
 """
+import bisect
 import math
 import re
 import xml.etree.ElementTree as ET
@@ -21,6 +22,51 @@ def real_roots(poly,lo,hi):
     if poly.is_zero: return []
     # Exact rational root isolation, retaining multiplicity and clustered roots.
     return [(float((a+b)/2),multiplicity) for (a,b),multiplicity in poly.intervals(eps=S.Rational(1,10**14)) if float(b)>=lo and float(a)<=hi]
+
+# A repeated root is the touch/crossing point of the curve with the x-axis. These checks read only the FINAL polyline: the point where it
+# meets the axis, the sign on each side, and (for multiplicity 3 or 4) how wide the flat band around the axis is. The multiplicities
+# themselves are recomputed from the source polynomial by real_roots, never taken from the producer.
+ROOT_AXIS_PROBE_CSS_PX=10.0
+ROOT_AXIS_TOUCH_TOLERANCE_CSS_PX=.35
+ROOT_FLAT_BAND_CSS_PX=3.0
+ROOT_FLAT_MIN_WIDTH_CSS_PX=12.0
+
+def root_axis_behaviour_errors(roots,points,transform):
+    errors=[]
+    if not roots or not points:return errors
+    sx=transform['sx']*transform['displayScale'];sy=transform['sy']*transform['displayScale']
+    if not math.isfinite(sx) or not math.isfinite(sy) or sx<=0 or sy<=0:return errors
+    ordered=sorted(points,key=lambda point:point[0])
+    xs=[point[0] for point in ordered]
+    def value_at(x):
+        index=bisect.bisect_left(xs,x)
+        if index<len(ordered) and abs(xs[index]-x)<=1e-12:return ordered[index][1]
+        if index==0:return ordered[0][1] if (ordered[0][0]-x)*sx<=ROOT_AXIS_PROBE_CSS_PX else None
+        if index>=len(ordered):return ordered[-1][1] if (x-ordered[-1][0])*sx<=ROOT_AXIS_PROBE_CSS_PX else None
+        (x0,y0),(x1,y1)=ordered[index-1],ordered[index]
+        if x1==x0:return y1
+        return y0+(y1-y0)*(x-x0)/(x1-x0)
+    def sign(value):
+        return 1 if value>0 else -1 if value<0 else 0
+    for root,multiplicity in roots:
+        if not xs[0]-1e-12<=root<=xs[-1]+1e-12:continue
+        on_axis=value_at(root)
+        if on_axis is None or abs(on_axis)*sy>ROOT_AXIS_TOUCH_TOLERANCE_CSS_PX:errors.append('OVERVIEW_ROOT_NOT_ON_OBSERVED_AXIS')
+        probe=ROOT_AXIS_PROBE_CSS_PX/sx
+        left,right=value_at(root-probe),value_at(root+probe)
+        if left is None or right is None:errors.append('OVERVIEW_ROOT_NEIGHBOURHOOD_MISSING');continue
+        left_sign,right_sign=sign(left),sign(right)
+        if multiplicity%2==0:
+            if left_sign*right_sign<0 or left_sign==0 or right_sign==0:errors.append('OVERVIEW_EVEN_ROOT_CROSSES_AXIS')
+        else:
+            if left_sign*right_sign>=0:errors.append('OVERVIEW_ODD_ROOT_DOES_NOT_CROSS_AXIS')
+            if multiplicity>=3:
+                # Crossing with flattening: the curve stays inside a thin band around the axis over a readable width (a straight crossing
+                # would leave it almost at once).
+                band=[point for point in ordered if abs(point[1])*sy<=ROOT_FLAT_BAND_CSS_PX and abs(point[0]-root)*sx<=60]
+                width=(max(point[0] for point in band)-min(point[0] for point in band))*sx if len(band)>=2 else 0.0
+                if width<ROOT_FLAT_MIN_WIDTH_CSS_PX:errors.append('OVERVIEW_ODD_ROOT_NOT_FLAT')
+    return errors
 
 def polynomial_feature_inventory(poly,lo,hi):
     groups=[]
@@ -53,9 +99,8 @@ def cubic_quartic_overview_audit(plan,poly,points,transform):
     if plan.get('overviewPolicy')!='POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1':return {'status':'UNSUPPORTED','errors':['CUBIC_QUARTIC_OVERVIEW_POLICY_REQUIRED']}
     xmin,xmax,ymin,ymax=plan['viewport'];lo,hi=plan['domain'];errors=[]
     roots=real_roots(poly,lo,hi)
-    if any(multiplicity!=1 for _,multiplicity in roots):return {'status':'UNSUPPORTED','errors':['OVERVIEW_REPEATED_ROOT_UNSUPPORTED']}
     expected=polynomial_feature_inventory(poly,lo,hi);declared=plan.get('overviewFeatures')
-    feature_policy={'schemaVersion':'POLYNOMIAL_CUBIC_QUARTIC_FEATURE_POLICY_v1','repeatedSourceRootPolicy':'UNSUPPORTED','minimumDistinctFeatureSeparationCssPx':1,'stationaryInflectionPolicy':'MERGE_ROLES_AT_SAME_POINT'}
+    feature_policy={'schemaVersion':'POLYNOMIAL_CUBIC_QUARTIC_FEATURE_POLICY_v1','repeatedSourceRootPolicy':'EXACT_MULTIPLICITY','tangencyPolicy':'TOUCHES_AXIS_EVEN_CROSSES_ODD','minimumDistinctFeatureSeparationCssPx':1,'stationaryInflectionPolicy':'MERGE_ROLES_AT_SAME_POINT'}
     if plan.get('overviewFeaturePolicy')!=feature_policy:errors.append('OVERVIEW_FEATURE_POLICY_BINDING_MISMATCH')
     if not isinstance(declared,list) or len(declared)!=len(expected):errors.append('OVERVIEW_FEATURE_INVENTORY_MISMATCH')
     else:
@@ -118,7 +163,8 @@ def cubic_quartic_overview_audit(plan,poly,points,transform):
     distinct_roots=sorted(root for root,_ in roots)
     if any((right-left)*transform['sx']*transform['displayScale']<1 for left,right in zip(distinct_roots,distinct_roots[1:])):
         return {'status':'UNSUPPORTED','errors':['OVERVIEW_ROOTS_BELOW_DISPLAY_RESOLUTION'],'features':feature_rows,'endDirections':end_directions}
-    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'degree':poly.degree(),'plotCssSize':[width,height],'features':feature_rows,'endDirections':end_directions,'arms':arms if critical else [],'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','mathMethod':'EXACT_RATIONAL_SOURCE_ROOT_ISOLATION'}
+    errors.extend(root_axis_behaviour_errors(roots,points,transform))
+    return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'degree':poly.degree(),'plotCssSize':[width,height],'features':feature_rows,'endDirections':end_directions,'arms':arms if critical else [],'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','mathMethod':'EXACT_RATIONAL_SOURCE_ROOT_ISOLATION','rootMultiplicities':[{'x':root,'multiplicity':multiplicity} for root,multiplicity in roots]}
 
 def resolve(plan):
     family=plan['family'];holes=[];poles=[];boundary=[];corners=[];root_inventory=None
@@ -1299,7 +1345,11 @@ def audit(plan,svg,transform):
     # Coverage comes from source/viewport intersection, never producer branchCount.
     x_tol=.35/(transform['sx']*transform['displayScale'])
     for r in required_roots:
-        if not any(abs(r-o)<=x_tol for o in observed_roots):errors.append('REQUIRED_ROOT_FEATURE_MISSING')
+        if any(abs(r-o)<=x_tol for o in observed_roots):continue
+        # A repeated (tangent) root never changes sign, so it is observed as the curve touching the axis at that x, not as a crossing.
+        near=min(actual_points,key=lambda point:abs(point[0]-r)) if actual_points else None
+        if near is not None and abs(near[0]-r)<=x_tol and abs(near[1])*scale<=tolerance:continue
+        errors.append('REQUIRED_ROOT_FEATURE_MISSING')
     merged=[]
     for a,b in sorted(intervals):
         if merged and a<=merged[-1][1]+1e-9:merged[-1][1]=max(b,merged[-1][1])

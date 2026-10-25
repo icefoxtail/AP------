@@ -5,10 +5,14 @@ from fractions import Fraction
 import sympy as S
 
 _x=S.Symbol('x',real=True)
+# A repeated real root of a cubic/quartic is a root of gcd(p,p'), a degree<=2 factor of rational coefficients: it is either rational or
+# p+q*sqrt(r). The isolating interval pins its location; a width beyond this bound means the location is not representable.
+REPEATED_ROOT_MAX_ISOLATION_WIDTH=S.Rational(1,10**9)
 
 def _real_root_rows(poly):
     if poly.is_zero:return []
     return [((a+b)/2,int(multiplicity)) for (a,b),multiplicity in poly.intervals(eps=S.Rational(1,10**13))]
+
 
 def _fit_cubic_quartic(plan,coefficients):
     if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:
@@ -22,8 +26,13 @@ def _fit_cubic_quartic(plan,coefficients):
     polynomial=S.Poly(sum(S.Rational(c.numerator,c.denominator)*_x**i for i,c in enumerate(coefficients)),_x)
     degree=polynomial.degree()
     if degree not in (3,4):raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_DEGREE')
-    roots=_real_root_rows(polynomial)
-    if any(multiplicity!=1 for _,multiplicity in roots):raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_REPEATED_ROOT')
+    root_intervals=[] if polynomial.is_zero else list(polynomial.intervals(eps=S.Rational(1,10**13)))
+    roots=[((a+b)/2,int(multiplicity)) for (a,b),multiplicity in root_intervals]
+    # Repeated real roots are exact: even multiplicity touches the x-axis (a local extremum on the axis), odd multiplicity crosses with a
+    # flattening. A repeated root of degree<=4 is a root of a rational quadratic factor, so its isolating interval is tight; a wider interval
+    # would mean the touch point is not representable and the graph is refused instead of drawn at a guessed location.
+    for (left,right),multiplicity in root_intervals:
+        if multiplicity>=2 and right-left>REPEATED_ROOT_MAX_ISOLATION_WIDTH:raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_REPEATED_ROOT_IMPRECISE')
     critical=_real_root_rows(polynomial.diff())
     inflections=[row for row in _real_root_rows(polynomial.diff().diff()) if row[1]%2==1]
     groups=[]
@@ -88,7 +97,7 @@ def _fit_cubic_quartic(plan,coefficients):
     end_slope_directions={'left':'DOWN' if end_directions['left']=='UP' else 'UP','right':end_directions['right']}
     tail_features=[{'id':'tail-left','kind':'TAIL_DIRECTION','side':'LEFT','endpointX':lo,'direction':end_directions['left'],'slopeDirection':end_slope_directions['left']},{'id':'tail-right','kind':'TAIL_DIRECTION','side':'RIGHT','endpointX':hi,'direction':end_directions['right'],'slopeDirection':end_slope_directions['right']}]
     features=[*math_features,*tail_features]
-    feature_policy={'schemaVersion':'POLYNOMIAL_CUBIC_QUARTIC_FEATURE_POLICY_v1','repeatedSourceRootPolicy':'UNSUPPORTED','minimumDistinctFeatureSeparationCssPx':1,'stationaryInflectionPolicy':'MERGE_ROLES_AT_SAME_POINT'}
+    feature_policy={'schemaVersion':'POLYNOMIAL_CUBIC_QUARTIC_FEATURE_POLICY_v1','repeatedSourceRootPolicy':'EXACT_MULTIPLICITY','tangencyPolicy':'TOUCHES_AXIS_EVEN_CROSSES_ODD','minimumDistinctFeatureSeparationCssPx':1,'stationaryInflectionPolicy':'MERGE_ROLES_AT_SAME_POINT'}
     fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','overviewFeatures':features,'overviewFeaturePolicy':feature_policy,'overviewEndDirections':end_directions}
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 

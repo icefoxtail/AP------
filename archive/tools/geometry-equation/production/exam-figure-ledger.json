@@ -1,6 +1,6 @@
 {
   "schemaVersion": "exam-figure-ledger-v1",
-  "updated": "2026-10-24",
+  "updated": "2026-10-25",
   "rule": "시험지는 시험지 단위 점검 후 모든 문항이 PUBLISHED이거나 최종 사유가 있는 EXEMPT일 때만 CLOSED로 닫는다(OPEN_UNSUPPORTED/OPEN_LAYOUT/OPEN_OTHER가 하나라도 있으면 OPEN). CLOSED 시험지는 다시 작업하지 않는다.",
   "exams": [
     {
@@ -3727,16 +3727,17 @@
         },
         {
           "ord": 17,
-          "state": "UNSUPPORTED",
+          "state": "PUBLISHED",
           "camp": "camp5c",
           "key": "batchS-p285",
           "fam": "ALG_GRAPH",
-          "cluster": "other",
-          "reason": "batch5 최종 UNSUPPORTED: a=-1, a=1/8의 두 삼차함수는 각각 중근(x=1, x=-1/2)을 가져 삼차 그래프의 중근이 엔진에서 UNSUPPORTED_CUBIC_QUARTIC_REPEATED_ROOT로 거절되고, 두 경우를 한 그림에 놓는 합성 패널은 이차함수만 받는다."
+          "figures": [
+            "assets/images/24_매산고_1학기_중간_고1_기출/q17-solution.svg"
+          ]
         }
       ],
       "status": "CLOSED",
-      "closedBy": "batch5",
+      "closedBy": "followup-repeated-roots",
       "publishedBy": [
         "775"
       ]

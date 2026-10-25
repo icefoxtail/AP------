@@ -22,8 +22,8 @@ const SHARED_ROWS_GAP=10;
 // The stack must fit one Archive page: a figure taller than 640 CSS px (the solution image max-height) never settles in the paged view.
 export const COMPOSITE_MAX_DISPLAY_HEIGHT_PX=640;
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
-// A caption's math part is plain ASCII math (k=-2, a=1, x<0): what an observer can transcribe back exactly.
-const CAPTION_MATH=/^[A-Za-z0-9=+\-<>.,()]{1,24}$/;
+// A caption's math part is plain ASCII math (k=-2, a=1, a=1/8, x<0): what an observer can transcribe back exactly.
+const CAPTION_MATH=/^[A-Za-z0-9=+\-<>.,()\/]{1,24}$/;
 
 class Stop extends Error{constructor(status,detail=null){super(status);this.status=status;this.detail=detail;}}
 const isDomainCode=error=>error?.constructor===Error&&/^[A-Z][A-Z0-9_]*(?::|$)/.test(error.message);
@@ -54,6 +54,10 @@ export function compositePanels(plan){
     return {index,plan:panel.plan,caption};
   });
   const sharedLines=three?(checked[0].plan.graphPlan.lines??[]).filter(line=>checked.every(item=>(item.plan.graphPlan.lines??[]).some(other=>lineKey(other)===lineKey(line)))).map(line=>line.id):[];
+  // Two cubic/quartic cases: their long formula has no room inside the panel beside the y-axis, so each panel keeps its own plot and gains
+  // an 80 px header band above it where the formula is written (overviewHeaderBand -> phase2 CUBIC_COMPOSITE_PANEL_CANVAS).
+  const degreeOf=item=>{const coefficients=item.plan.graphPlan.coefficients;return Array.isArray(coefficients)?coefficients.reduce((highest,value,k)=>value==='0'?highest:k,0):-1;};
+  const twoCubic=!three&&checked.every(item=>!isNumberLinePanel(item.plan)&&degreeOf(item)>=3);
   // A panel's plot may be at most this high (graph_framing plotHeightLimit): one scale on both axes makes a tall shape narrower, not the stack
   // taller. Band rows the panel keeps (unshared line equations, band coordinates counted one per row) come out of that height.
   const bandRows=plan=>(Array.isArray(plan.graphPlan.lines)?plan.graphPlan.lines.filter(line=>!sharedLines.includes(line?.id)).length:0)
@@ -61,7 +65,7 @@ export function compositePanels(plan){
   return checked.map(item=>{
     if(isNumberLinePanel(item.plan))return item;
     const rows=bandRows(item.plan),plotHeightLimit=Math.max(120,(three?THREE_PANEL_PLOT_HEIGHT:TWO_PANEL_PLOT_HEIGHT)-(rows?26+56*rows:0));
-    return {...item,plan:{...item.plan,graphPlan:{...item.plan.graphPlan,plotHeightLimit,...(three?{compositeHeader:{formula:'CAPTION',sharedLines}}:{})}}};
+    return {...item,plan:{...item.plan,graphPlan:{...item.plan.graphPlan,plotHeightLimit,...(three?{compositeHeader:{formula:'CAPTION',sharedLines}}:twoCubic?{overviewHeaderBand:true}:{})}}};
   });
 }
 /** The stacked size for panels of the given sizes (top margin, caption row per panel, gaps between panels): what the Archive policy must be measured for. */

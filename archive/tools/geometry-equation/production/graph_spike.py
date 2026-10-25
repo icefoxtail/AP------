@@ -29,9 +29,13 @@ def svg_number(value):
     return text if text and text!='-0' else '0'
 
 def produce(plan):
-    # A graph framed at one scale is modelled at its own plot size, so the model's px measures match the final figure's.
+    # A graph framed at one scale is modelled at its own plot size, so the model's px measures match the final figure's. Cubic/quartic
+    # overviews are composed on the 610x420 overview canvas (phase2 GRAPH_OVERVIEW_CANVAS, panel 140): the model uses the same plot so its
+    # tail/feature px measures are the ones the final figure has.
     plot=plan.get('plotCanvas') if plan.get('equalUnits') is True else None
-    vp=Viewport(*plan['viewport'],width=plot['width']+64 if plot else 420,height=plot['height']+64 if plot else 280,panel=0,margin=32,equal=plan.get('equalUnits') is True and plan.get('axisRatio',1)==1)
+    degree=max((index for index,value in enumerate(plan.get('coefficients',[])) if value!='0'),default=0) if plan.get('family')=='polynomial' else 0
+    overview=plan.get('family')=='polynomial' and degree>=3
+    vp=Viewport(*plan['viewport'],width=plot['width']+64 if plot else 610 if overview else 420,height=plot['height']+64 if plot else 420 if overview else 280,panel=140 if overview else 0,margin=32,equal=plan.get('equalUnits') is True and plan.get('axisRatio',1)==1)
     if plan.get('family')=='piecewise-affine':return _produce_piecewise_affine(plan,vp)
     if plan.get('family')=='piecewise-polynomial':return _produce_piecewise_polynomial(plan,vp)
     critical=[p['x'] for p in plan.get('requiredPoints',[])]+[feature['x'] for feature in plan.get('overviewFeatures',[]) if feature.get('kind')!='TAIL_DIRECTION']
