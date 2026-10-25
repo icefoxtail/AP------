@@ -309,15 +309,16 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 | `PRISM` | `base`, `height` | `base`는 `{kind:"RECT",width,depth}`, `{kind:"REGULAR",n:3~8,side}`(첫 변이 앞쪽 수평), `{kind:"POLYGON",points:[[u,v]..],plane?}`(점 8개 이하의 단순 다각형, 오목해도 됨). `plane:"XZ"`이면 다각형이 앞면(x, 높이)이고 `height`만큼 뒤로 밀린다: 직육면체 일부를 비스듬히 잘라 낸 입체(사다리꼴 기둥)를 이렇게 쓴다 |
 | `PYRAMID` | `base`, `height` | 밑면은 볼록해야 한다. 꼭짓점은 밑면 중심 위, `apex:[x,y]`로 옮길 수 있다 |
 | `FRUSTUM` | `base`, `height`, `topScale`(0~1) | 각뿔대. 위 밑면은 아래를 `topScale`배 한 닮은꼴 |
-| `CYLINDER` / `CONE` | `radius`, `height` | |
-| `CONE_FRUSTUM` | `radius`, `topRadius`, `height` | `topRadius`는 `radius`보다 작아야 한다 |
-| `SPHERE` / `HEMISPHERE` | `radius` | 반구는 평평한 면이 아래 |
+| `CYLINDER` / `CONE` | `radius`, `height` | 원뿔은 `orientation:"APEX_DOWN"`이면 꼭짓점이 밑면에 닿는 그릇이 된다(꼭대기의 큰 원이 입구). `inside:"s1"`이면 원기둥 `s1` 안에 같은 축으로 놓인다 |
+| `CONE_FRUSTUM` | `radius`, `topRadius`, `height` | `topRadius`는 `radius`보다 작아야 한다. `orientation:"APEX_DOWN"`이면 좁은 밑면이 아래, 넓은 윗면이 입구인 그릇이다. `inside:"s1"`은 원기둥 안에 놓을 때만 |
+| `SPHERE` / `HEMISPHERE` | `radius` | 반구는 평평한 면이 아래. `inside:"s1"`이면 원기둥 안에 놓인다(꼭 맞는 구는 지름 = 원기둥 높이) |
 
 - **이름 `names`**: 대문자 한 글자씩 밑면 순서대로 이은 문자열 `"FGHEBCDA"`(밑면 먼저, 다음 위 밑면; 각뿔은 밑면 뒤에 꼭짓점 한 글자; `.`은 이름 없음), 또는 `{base,top,apex}`. 생략하면 A, B, C... 순서다. 한 그림에서 이름은 한 번만 쓴다. 이름은 밑면이 위에서 볼 때 반시계 방향이 되는 순서로 붙는다(직육면체는 앞-왼쪽에서 시작해 앞-오른쪽, 뒤-오른쪽, 뒤-왼쪽). 원기둥·원뿔 계열은 `names:{center,top,apex}`.
-- **길이 `dims`**(모두 모서리 옆에 놓인다): `{"edge":"AB"}` 또는 `{"from":"E","to":"G"}`(그려진 모서리나 `segments`의 선분), `{"radius":"bottom"|"top"|"center"}`, `{"height":true}`(각뿔, 각뿔대, 원기둥, 원뿔: 축을 따라 점선), `{"slant":true}`(원뿔·원뿔대의 모선), `{"level":true}`(아래 `LEVEL`의 높이). 값은 엔진이 모델에서 계산해 정확히 쓴다(`5`, `7.5`, `5\sqrt{2}`, `8\pi`, `\frac{10}{3}`)와 `unit`. `label`을 쓰면 숫자일 때는 계산한 값과 같아야 하고(다르면 `SOLID_DIM_VALUE_MISMATCH`), `r`, `h`, `2r`, `2\pi r`처럼 문자·식이면 기호 라벨이 된다. 정확한 짧은 꼴이 없는 길이는 `SOLID_DIM_NOT_EXPRESSIBLE`이니 `label`로 문자를 쓴다.
+- **길이 `dims`**(모두 모서리 옆에 놓인다): `{"edge":"AB"}` 또는 `{"from":"E","to":"G"}`(그려진 모서리나 `segments`의 선분), `{"radius":"bottom"|"top"|"center"|"level"}`, `{"height":true}`(각뿔, 각뿔대, 원기둥, 원뿔: 축을 따라 점선), `{"slant":true}`(원뿔·원뿔대의 모선), `{"level":true}`(아래 `LEVEL`의 높이). `radius:"level"`은 `LEVEL` 수면의 반지름이고, `bottom`·`top`은 각각 z=0·z=높이의 원(꼭짓점 쪽 반지름이 0이면 쓸 수 없다). 값은 엔진이 모델에서 계산해 정확히 쓴다(`5`, `7.5`, `5\sqrt{2}`, `8\pi`, `\frac{10}{3}`)와 `unit`. `label`을 쓰면 숫자일 때는 계산한 값과 같아야 하고(다르면 `SOLID_DIM_VALUE_MISMATCH`), `r`, `h`, `2r`, `\frac{1}{3}h`처럼 문자·식이면 기호 라벨이 된다. 정확한 짧은 꼴이 없는 길이는 `SOLID_DIM_NOT_EXPRESSIBLE`이니 `label`로 문자를 쓴다.
 - **`highlights`**: `[{"polygon":["E","G","C"]}]` 그려진 선분들로 이루어진 평면 다각형을 연하게 칠한다(직육면체 위의 직각삼각형 EGC처럼). 다각형의 변은 모서리이거나 `segments`에 있어야 한다.
 - **`segments`**: `[{"from":"E","to":"G","style":"SOLID"|"DASHED"|"AUTO","role":"REF"|"ACCENT"}]` 면의 대각선, 공간대각선, 또는 강조할 모서리(`REF` 굵게, `ACCENT` 빨강). `AUTO`는 입체가 가리는 선분이면 점선으로 그린다. 입체 안을 지나는 선분은 `SOLID`나 `DASHED`로 정한다.
-- **`section`**: `{"kind":"AXIAL"}` 원기둥·원뿔·원뿔대의 회전축을 지나는 평면(직사각형, 이등변삼각형, 사다리꼴)을 칠하고, `{"kind":"LEVEL","at":"1/3"}`은 밑면과 평행한 평면(높이의 1/3)을 타원으로 보인다(원뿔 모양 그릇의 수면).
+- **`section`**: `{"kind":"AXIAL"}` 원기둥·원뿔·원뿔대의 회전축을 지나는 평면(직사각형, 이등변삼각형, 사다리꼴)을 칠하고, `{"kind":"LEVEL","at":"1/3"}`은 밑면과 평행한 평면(높이의 1/3)을 타원으로 보인다(원뿔 모양 그릇의 수면). `orientation:"APEX_DOWN"` 그릇에서는 수면 아래의 **작은 닮은 그릇 전체**를 연하게 칠하고 그 옆선을 그려, 물이 찬 부분이 보이게 한다.
+- **`marks`**: 이름 붙인 점 위의 표식이며, plan이 말한 사실을 엔진이 3차원에서 확인한다. `rightAngles:[{at:"G",refs:["E","C"]}]`는 두 변이 실제로 수직일 때(아니면 `SOLID_MARK_NOT_RIGHT_ANGLE`) 작은 직각 표시를, `equalLengths:[{count:1,segments:["AB","CD"]}]`는 길이가 같은 모서리·선분에 같은 눈금(모둠마다 `count` 1~3, 서로 달라야 함)을, `angles:[{refs:["B","A","D"],value?,"arcs":1,"equalGroup?"}]`는 꼭짓점 A의 각에 1~3겹 호를 그린다(같은 `equalGroup`은 크기와 호 수가 같고, 다른 모둠은 호 수가 달라야 함). 표식의 변은 그려진 모서리나 `segments`여야 한다. 각도 라벨은 쓰지 않는다(수치가 필요하면 `dims`나 풀이 글).
 
 **전개도 `net`**(입체 그림과 같은 plan에 `solids`와 함께 쓰지 않는다).
 
@@ -333,25 +334,28 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 원기둥: `{"kind":"CYLINDER","radius":3,"height":5,"dims":[{"part":"rect-width","label":"2\\pi r"},{"part":"rect-height","label":"h"},{"part":"radius-top"}]}`: 직사각형(가로 = 밑면의 둘레)과 위·아래의 합동인 원이 직사각형에 접한다.
 - 원뿔: `{"kind":"CONE","radius":8,"slant":20,"dims":[{"part":"slant"},{"part":"arc"},{"part":"radius"},{"part":"angle"}]}`(`slant` 대신 `height`도 된다): 부채꼴(반지름 = 모선, 중심각 = 360 x r / l)과 호의 가운데에 접한 밑면의 원. `arc`는 호의 길이 2πr, `angle`은 중심각이다.
 
-**독립 관측기**(`solid_figure_observer.py`)는 plan만으로 3차원 모델을 다시 만들고 최종 SVG를 확인한다: 모든 모서리 조각이 자기 깊이 검사(모든 면에 대해 보는 쪽으로 쏜 광선)와 같은 실선·점선이고 조각들이 모서리를 빈틈없이 덮는지, 모든 꼭짓점이 하나의 배율과 위치에 맞는지, 타원의 중심·축과 앞·뒤 반원의 보임, 옆 윤곽선이 타원에 접하는지(원뿔은 꼭짓점을 지나는지), 전개도의 면이 입체의 면과 합동이고(변의 길이 모두) 접는 변에서 이어져 서로 반대쪽에 놓이며 겹치지 않는지, 원기둥·원뿔 전개도의 둘레·호 길이·중심각, 길이 라벨의 값(TeX를 읽어 계산한 값과 비교)과 이름 라벨의 글자·자리, 라벨이 선이나 다른 라벨 위에 놓이지 않았는지.
+**독립 관측기**(`solid_figure_observer.py`)는 plan만으로 3차원 모델을 다시 만들고 최종 SVG를 확인한다: 모든 모서리 조각이 자기 깊이 검사(모든 면에 대해 보는 쪽으로 쏜 광선)와 같은 실선·점선이고 조각들이 모서리를 빈틈없이 덮는지, 모든 꼭짓점이 하나의 배율과 위치에 맞는지, 타원의 중심·축과 앞·뒤 반원의 보임, 옆 윤곽선이 타원에 접하는지(원뿔은 꼭짓점을 지나는지), **뒤집힌 그릇의 수면 타원·물이 찬 작은 그릇의 윤곽과 옆선**이 다시 계산한 값과 같은지, **내접한 입체가 주인의 축과 같은 축에 있고 주인 안에 들어가는지**, **직각·같은 길이·각도 표식**이 3차원 사실과 최종 SVG의 변 위에 놓였는지, 전개도의 면이 입체의 면과 합동이고(변의 길이 모두) 접는 변에서 이어져 서로 반대쪽에 놓이며 겹치지 않는지, 원기둥·원뿔 전개도의 둘레·호 길이·중심각, 길이 라벨의 값(TeX를 읽어 계산한 값과 비교)과 이름 라벨의 글자·자리, 라벨이 선이나 다른 라벨 위에 놓이지 않았는지.
 
 **오류와 조치.**
 
 | 코드 | 조치 |
 |---|---|
-| `SOLID_KIND_UNSUPPORTED`, `SOLID_NET_UNSUPPORTED` | 지원하는 kind만 쓴다. 정다면체(정팔면체·정십이면체 등), 토러스, 한 입체 안의 입체, 기울어진 평면으로 자른 단면은 UNSUPPORTED |
+| `SOLID_KIND_UNSUPPORTED`, `SOLID_NET_UNSUPPORTED`, `SOLID_ORIENTATION_UNSUPPORTED` | 지원하는 kind만 쓴다. 정다면체(정팔면체·정십이면체 등), 토러스, 기울어진 평면으로 자른 단면은 UNSUPPORTED. `orientation:"APEX_DOWN"`은 원뿔·원뿔대에만 쓴다 |
+| `SOLID_NEST_INVALID`, `SOLID_NEST_UNKNOWN`, `SOLID_NEST_UNSUPPORTED`, `SOLID_NEST_DOES_NOT_FIT`, `SOLID_NEST_CHAIN` | `inside`는 바로 앞의 원기둥 id이고, 안에 넣는 입체는 구·원뿔·원뿔대만, 주인의 반지름·높이 안에 들어가야 한다(구는 지름이 높이 이하). 원기둥 안의 원기둥·연쇄는 UNSUPPORTED |
+| `SOLID_MARKS_INVALID`, `SOLID_MARK_ID_INVALID`, `SOLID_MARK_UNKNOWN`, `SOLID_MARK_RAY_NOT_DRAWN`, `SOLID_MARK_SEGMENT_NOT_DRAWN`, `SOLID_MARK_NOT_RIGHT_ANGLE`, `SOLID_MARK_LENGTH_MISMATCH`, `SOLID_MARK_GROUP_AMBIGUOUS`, `SOLID_MARK_GROUP_ARC_COUNT`, `SOLID_MARK_GROUP_MISMATCH`, `SOLID_MARK_ANGLE_MISMATCH`, `SOLID_MARK_ANGLE_DEGENERATE` | 표식은 이름 붙인 점과 **그려진** 모서리·선분에만 쓴다. 직각은 실제 90°, 같은 길이 모둠은 실제 길이가 같아야 하고, 눈금 수가 같은 두 모둠은 만들 수 없다. 각 표식은 3차원 각(5°~175°)과 `value`가 0.5° 안에서 같아야 한다 |
 | `SOLID_PARAM_INVALID`, `SOLID_BASE_INVALID`, `SOLID_BASE_NOT_SIMPLE`, `SOLID_BASE_NOT_CONVEX` | 매개변수는 양의 실수, 밑면은 스스로 교차하지 않는 점 8개 이하(각뿔·각뿔대는 볼록) |
 | `SOLID_COUNT_INVALID` | 한 그림에 입체는 3개까지다. 5개를 나란히 보이는 문항(다면체 고르기)은 UNSUPPORTED이거나 나누어 그린다 |
 | `SOLID_NAMES_INVALID`, `SOLID_NAME_DUPLICATE`, `SOLID_NAME_UNKNOWN` | 이름은 대문자 한 글자, 한 그림에서 한 번, 개수는 꼭짓점 수와 같다 |
-| `SOLID_DIM_SEGMENT_NOT_DRAWN`, `SOLID_DIMS_INVALID` | 길이를 쓸 선분은 그려진 모서리나 `segments`여야 한다. `height`는 각뿔·각뿔대·원기둥·원뿔에만, `slant`는 원뿔·원뿔대에만 |
+| `SOLID_DIM_SEGMENT_NOT_DRAWN`, `SOLID_DIMS_INVALID` | 길이를 쓸 선분은 그려진 모서리나 `segments`여야 한다. `height`는 각뿔·각뿔대·원기둥·원뿔에만, `slant`는 원뿔·원뿔대에만, `radius:"level"`은 그 입체에 `LEVEL` 단면이 있을 때만 |
 | `SOLID_DIM_VALUE_MISMATCH` | 숫자 `label`이 그려진 길이와 다르다: 값을 고치거나 문자로 쓴다 |
 | `SOLID_HIGHLIGHT_NOT_PLANAR`, `SOLID_HIGHLIGHT_EDGE_NOT_DRAWN` | 한 평면의 점들만, 변은 모두 그려진 선분으로 |
-| `SOLID_SECTION_UNSUPPORTED`, `SOLID_SECTION_INVALID` | 단면은 원기둥·원뿔·원뿔대의 `AXIAL`·`LEVEL`(`at`은 `"1/3"` 꼴 진분수)만 |
+| `SOLID_SECTION_UNSUPPORTED`, `SOLID_SECTION_INVALID`, `SOLID_LEVEL_APEX_HIDDEN` | 단면은 원기둥·원뿔·원뿔대의 `AXIAL`·`LEVEL`(`at`은 `"1/3"` 꼴 진분수)만. 뒤집힌 그릇에서 꼭짓점이 수면 타원 안으로 보일 만큼 낮은 수면은 그릴 수 없다 |
+| `SOLID_LIQUID_REGION_SET_MISMATCH`, `SOLID_LIQUID_REGION_MISMATCH`, `SOLID_LIQUID_REGION_SOLID_MISMATCH`, `SOLID_VIS_ATTRIBUTE_INCONSISTENT`, `SOLID_DIM_LINE_MISMATCH` | 최종 SVG가 plan의 물·단면·길이선과 다르다: 엔진 결함이므로 보고한다 |
 | `SOLID_NET_NOT_A_TREE`, `SOLID_NET_FACES_NOT_ADJACENT`, `SOLID_NET_FACES_OVERLAP`, `SOLID_NET_FACE_UNKNOWN` | `joins`는 면 수 - 1개, 이웃한 면만, 겹치지 않게 다시 펼친다 |
 | `SOLID_FIGURE_NEEDS_A_LABEL` | 이름도 길이도 없는 그림은 공개 검사가 글자를 못 읽는다: 이름이나 길이를 하나 이상 쓴다 |
 | `SOLID_LABELS_NO_ROOM`, `SOLID_RENDERED_LAYOUT_FAIL` | 라벨이 놓일 자리가 없다: 라벨을 줄이거나(`names`의 일부를 `.`으로) 한 그림에 입체 수를 줄인다 |
 
-**한계.** 한 투영(정사영)만 있다(앞면 실제 크기의 사투영이나 다른 시점은 없다). 원뿔은 꼭짓점이 위인 것만 그린다(물을 채운 원뿔 그릇처럼 꼭짓점이 아래인 원뿔은 UNSUPPORTED). 입체 안의 입체(구가 들어 있는 원기둥)는 나란히 그린다. 각 모서리에 길이 라벨의 지시선이 없어 라벨이 들어갈 자리가 좁은 그림(작은 입체 여러 개)은 거절될 수 있다. 직각 표시, 각도 표식, 평행·같은 길이 표식은 이 capability에 없다(평면 표식은 3-8). 부피·겉넓이 계산 식은 그림이 아니라 풀이 글에 쓴다.
+**한계.** 한 투영(정사영)만 있다(앞면 실제 크기의 사투영이나 다른 시점은 없다). 내접은 원기둥 안의 구·원뿔·원뿔대만 된다(구 안의 정육면체, 각뿔 안의 입체는 UNSUPPORTED). 각도 표식에는 라벨을 쓰지 않고, 평행 표식은 없다(평행은 `segments`의 `REF`나 풀이 글로 나타낸다). 표식은 이름 붙인 꼭짓점 사이의 그려진 변에만 붙으므로, 원기둥·원뿔의 축과 이름 없는 반지름 사이의 직각은 표식으로 그리지 않는다(치수선으로 나타낸다). 각 모서리에 길이 라벨의 지시선이 없어 라벨이 들어갈 자리가 좁은 그림(작은 입체 여러 개)은 거절될 수 있다. 부피·겉넓이 계산 식은 그림이 아니라 풀이 글에 쓴다.
 ### 3-11. 중학교 통계·확률: 도수 그래프, 줄기와 잎, 상자그림, 산점도, 주사위 표, 수형도 (`stat-chart-figure-v1`)
 
 문제 그림이 **자료를 보여 주는 그림**이고 풀이가 그 그림의 값을 읽거나 세는 문항에 쓴다. 좌표축 함수 그래프가 아니라 교과서 모양의 통계 그림이며, plan에는 **문제에 나온 자료만** 정확히 쓴다. 계급의 가운데 값, 다각형의 양 끝(도수 0인 계급), 상대도수, 사분위수, 잎의 정렬, 표에서 색칠할 칸, 경로 확률은 엔진이 계산하고 독립 관측기가 같은 plan에서 다시 계산해 최종 SVG와 대조한다. 판 전체 모양은 `{"capability":"stat-chart-figure-v1","chart":{"kind":...},"caption":...,"sourceConditions":...,"newVisualInformation":...}`다.

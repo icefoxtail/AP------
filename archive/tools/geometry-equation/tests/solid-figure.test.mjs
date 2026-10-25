@@ -203,3 +203,81 @@ test('spec is deterministic and bound to its model',()=>{
   const other=solveSolidFigure(figure({solids:[cuboid({height:3})]}));
   assert.throws(()=>solidFigureSpec(plan,other),code('SOLID_MODEL_MISMATCH'));
 });
+
+test('an apex-down cone holds a liquid level: the smaller vessel is filled and its two heights and radii are labelled',async()=>{
+  const plan=figure({solids:[{kind:'CONE',radius:3,height:9,orientation:'APEX_DOWN'}],section:{kind:'LEVEL',at:'1/3'},
+    dims:[{radius:'top',label:'r'},{radius:'level',label:'\\frac{1}{3}r'},{height:true,label:'h'},{level:true,label:'\\frac{1}{3}h'}]});
+  const m=solveSolidFigure(plan);
+  assert.equal(m.solids[0].r0,0);assert.equal(m.solids[0].r1,3);
+  assert.deepEqual(m.section,{solid:'s1',kind:'LEVEL',at:'1/3',z:3,r:1});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/data-role="liquid-region"/);assert.match(svg,/data-role="liquid-edge"/);
+  assert.match(svg,/data-dim="dim-2" data-kind="RADIUS"/);assert.match(svg,/data-dim="dim-3" data-kind="HEIGHT"/);
+  assert.equal((await audit(plan,svg)).status,'PASS');
+  // tamper: one boundary point of the filled liquid moves
+  const liquid=svg.match(/<polygon id="s1-liquid"[^>]*\/>/)[0];
+  const moved=liquid.replace(/points="([^"]+)"/,(all,pts)=>{const p=pts.split(' ');const [x,y]=p[3].split(',');p[3]=`${Number(x)+7},${Number(y)+5}`;return `points="${p.join(' ')}"`;});
+  const r1=await audit(plan,svg.replace(liquid,moved));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_LIQUID_REGION_MISMATCH')),JSON.stringify(r1.errors));
+  // tamper: the level ellipse flattened
+  const ellipse=svg.match(/<ellipse id="level-s1"[^>]*\/>/)[0];
+  const flat=ellipse.replace(/ ry="([\d.]+)"/,(a,v)=>` ry="${Number(v)*1.8}"`);
+  const r2=await audit(plan,svg.replace(ellipse,flat));
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_LEVEL_ELLIPSE_MISMATCH')));
+});
+test('a sphere sits inscribed in a cylinder on the same axis; moving the inner curves off the axis fails',async()=>{
+  const plan=figure({solids:[{id:'s1',kind:'CYLINDER',radius:3,height:6},{id:'s2',kind:'SPHERE',radius:3,inside:'s1'}],
+    dims:[{solid:'s2',radius:'center',label:'r'},{solid:'s1',radius:'bottom',label:'r'},{solid:'s1',height:true,label:'2r'}]});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  const shift=(text,dx)=>text.replace(/<path ([^>]*data-solid="s2"[^>]*)>/g,(all,attrs)=>{
+    const d=/ d="([^"]*)"/.exec(attrs)[1];
+    const m=/^M (\S+) (\S+) A (\S+) (\S+) 0 (\d) (\d) (\S+) (\S+)$/.exec(d);
+    if(!m)return all;
+    return all.replace(d,`M ${Number(m[1])+dx} ${m[2]} A ${m[3]} ${m[4]} 0 ${m[5]} ${m[6]} ${Number(m[7])+dx} ${m[8]}`);
+  });
+  const moved=shift(svg,6);
+  const r=await audit(plan,moved);
+  assert.equal(r.status,'FAIL');assert.ok(r.errors.some(e=>e.startsWith('SOLID_NEST_AXIS_MISMATCH')),JSON.stringify(r.errors));
+});
+test('marks on solids: a right angle, equal-length ticks and angle arcs are drawn and independently checked',async()=>{
+  const plan=figure({solids:[cuboid()],segments:[{from:'E',to:'G'},{from:'E',to:'C'}],
+    marks:{rightAngles:[{at:'G',refs:['E','C']}],equalLengths:[{count:1,segments:['AB','CD']}],angles:[{refs:['B','A','D'],arcs:2,value:90}]}});
+  const composed=await panel(plan);
+  assert.equal(composed.status,'COMPOSED',JSON.stringify(composed.detail));
+  assert.equal(composed.staticAudit.status,'PASS',JSON.stringify(composed.staticAudit.errors));
+  const svg=composed.svg;
+  assert.match(svg,/data-role="right-angle-mark"/);assert.match(svg,/data-role="equal-mark"/);assert.match(svg,/data-role="angle-mark"/);
+  const ra=svg.match(/<polyline id="ra1"[^>]*\/>/)[0];
+  const bent=ra.replace(/points="([^"]+)"/,(all,pts)=>{const p=pts.split(' ');const [x,y]=p[1].split(',');p[1]=`${Number(x)+4},${Number(y)+4}`;return `points="${p.join(' ')}"`;});
+  const r1=await audit(plan,svg.replace(ra,bent));
+  assert.equal(r1.status,'FAIL');assert.ok(r1.errors.some(e=>e.startsWith('SOLID_RIGHT_ANGLE')),JSON.stringify(r1.errors));
+  const tick=svg.match(/<line id="eq1-AB-1"[^>]*\/>/)[0];
+  const off=tick.replace(/ y1="([\d.]+)"/,(all,v)=>` y1="${Number(v)+5}"`);
+  const r2=await audit(plan,svg.replace(tick,off));
+  assert.equal(r2.status,'FAIL');assert.ok(r2.errors.some(e=>e.startsWith('SOLID_EQUAL_MARK')),JSON.stringify(r2.errors));
+  const arc=svg.match(/<polyline id="an1-arc-2"[^>]*\/>/)[0];
+  const bad=arc.replace(/points="([^"]+)"/,(all,pts)=>{const p=pts.split(' ');p.splice(6,1);return `points="${p.join(' ')}"`;});
+  const r3=await audit(plan,svg.replace(arc,bad));
+  assert.equal(r3.status,'FAIL');assert.ok(r3.errors.some(e=>e.startsWith('SOLID_ANGLE_MARK')),JSON.stringify(r3.errors));
+  // the plan's facts are checked before drawing
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],marks:{rightAngles:[{at:'G',refs:['E','F']}]}})),code('SOLID_MARK_NOT_RIGHT_ANGLE'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],marks:{equalLengths:[{count:1,segments:['AB','CG']}]}})),code('SOLID_MARK_LENGTH_MISMATCH'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],marks:{equalLengths:[{count:1,segments:['AB','CD']},{count:1,segments:['EF','GH']}]}})),code('SOLID_MARK_GROUP_AMBIGUOUS'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],marks:{rightAngles:[{at:'G',refs:['E','C']}]}})),code('SOLID_MARK_RAY_NOT_DRAWN'));
+});
+test('the new capabilities refuse what they cannot draw with explicit codes',()=>{
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CYLINDER',radius:1,height:2,orientation:'APEX_DOWN'}],dims:[{height:true}]})),code('SOLID_ORIENTATION_UNSUPPORTED'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CONE_FRUSTUM',radius:3,topRadius:2,height:2,orientation:'SIDEWAYS'}],dims:[{height:true}]})),code('SOLID_ORIENTATION_UNSUPPORTED'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'SPHERE',radius:2},{kind:'SPHERE',radius:1,inside:'s1'}],dims:[{radius:'center'}]})),code('SOLID_NEST_UNSUPPORTED'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{id:'s1',kind:'CYLINDER',radius:2,height:3},{id:'s2',kind:'SPHERE',radius:3,inside:'s1'}],dims:[{solid:'s2',radius:'center',label:'r'}]})),code('SOLID_NEST_DOES_NOT_FIT'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{id:'s1',kind:'CYLINDER',radius:4,height:4},{id:'s2',kind:'SPHERE',radius:1,inside:'s9'}],dims:[{solid:'s2',radius:'center',label:'r'}]})),code('SOLID_NEST_UNKNOWN'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CONE',radius:10,height:1,orientation:'APEX_DOWN'}],section:{kind:'LEVEL',at:'1/2'},dims:[{level:true}]})),code('SOLID_LEVEL_APEX_HIDDEN'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[{kind:'CONE',radius:3,height:9,orientation:'APEX_DOWN'}],dims:[{radius:'bottom'}]})),code('SOLID_DIMS_INVALID'));
+  assert.throws(()=>solveSolidFigure(figure({solids:[cuboid()],marks:{angles:[{refs:['B','A','D'],value:80}]}})),code('SOLID_MARK_ANGLE_MISMATCH'));
+});
