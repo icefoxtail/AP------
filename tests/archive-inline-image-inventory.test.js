@@ -8,18 +8,18 @@ const { spawnSync } = require('node:child_process');
 const root = path.join(__dirname, '..');
 
 test('archive/exams questionBank inline image inventory validates referenced production asset paths', async () => {
-  // Legacy examData-only sources are outside the current questionBank inventory scope;
-  // their image paths require separate repair before this validation boundary can expand.
+  // Production image references use the student-facing assets/images contract;
+  // the inventory validates those paths and their physical asset files.
   const { buildInlineImageInventoryReport } = await import('../archive/tools/build-inline-image-inventory.mjs');
   const generated = buildInlineImageInventoryReport();
   const report = JSON.parse(fs.readFileSync(path.join(root, 'docs', 'reports', 'archive-inline-image-inventory-20260915.json'), 'utf8'));
   const { generatedAt: _reportDate, ...reportData } = report;
   const { generatedAt: _generatedDate, ...generatedData } = generated;
 
-  assert.equal(generated.total, 1449);
-  assert.equal(generated.productionTotal, 1445);
+  assert.equal(generated.total, 1483);
+  assert.equal(generated.productionTotal, 1479);
   assert.equal(generated.testFixtureTotal, 4);
-  assert.deepEqual(generated.extensionCounts, { '.png': 1391, '.svg': 58 });
+  assert.deepEqual(generated.extensionCounts, { '.png': 1425, '.svg': 58 });
   assert.equal(generated.qImageAndInlineTotal, 246);
   assert.deepEqual(generated.validation, {
     relativePathInvalidCount: 0,

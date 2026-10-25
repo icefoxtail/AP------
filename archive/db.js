@@ -30144,6 +30144,701 @@ window.mainDB = {
         }
       ],
       "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "similar/middle/m3/2mid/26_삼산중_2학기_중간_중3_유사.js",
+      "school": "삼산중",
+      "topic": "",
+      "grade": "중3",
+      "year": 2026,
+      "semester": "2",
+      "examType": "mid",
+      "subject": "중3 수학",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M3-05",
+      "rangeStartUnit": "삼각비",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "M3-06",
+      "rangeEndUnit": "원의 성질",
+      "rangeEndUnitOrder": 6,
+      "courseRanges": [
+        {
+          "standardCourse": "중3 수학",
+          "courseCode": "M3",
+          "rangeStartUnitKey": "M3-05",
+          "rangeStartUnit": "삼각비",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "M3-06",
+          "rangeEndUnit": "원의 성질",
+          "rangeEndUnitOrder": 6
+        }
+      ],
+      "primaryStandardCourse": "중3 수학"
+    },
+    {
+      "file": "similar/middle/m1/1mid/23_동산중_1학기_중간_중1_유사.js",
+      "school": "동산중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2023,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "M1-01",
+      "rangeStartUnit": "소인수분해",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M1-07",
+      "rangeEndUnit": "입체도형의 성질",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-01",
+          "rangeStartUnit": "소인수분해",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "similar/middle/m1/1final/19_금당중_1학기_기말_중1_유사.js",
+      "school": "금당중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2019,
+      "semester": "1",
+      "examType": "final",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M1-03",
+      "rangeStartUnit": "문자와 식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "M1-04",
+      "rangeEndUnit": "좌표평면과 그래프",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-03",
+          "rangeStartUnit": "문자와 식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "M1-04",
+          "rangeEndUnit": "좌표평면과 그래프",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "similar/middle/m1/1mid/19_연향중_1학기_중간_중1_유사.js",
+      "school": "연향중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2019,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 23,
+      "rangeStartUnitKey": "M1-01",
+      "rangeStartUnit": "소인수분해",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M1-07",
+      "rangeEndUnit": "입체도형의 성질",
+      "rangeEndUnitOrder": 7,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-01",
+          "rangeStartUnit": "소인수분해",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M1-07",
+          "rangeEndUnit": "입체도형의 성질",
+          "rangeEndUnitOrder": 7
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "similar/middle/m1/1mid/19_왕운중_1학기_중간_중1_유사.js",
+      "school": "왕운중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2019,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M1-01",
+      "rangeStartUnit": "소인수분해",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M1-02",
+      "rangeEndUnit": "정수와 유리수",
+      "rangeEndUnitOrder": 2,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-01",
+          "rangeStartUnit": "소인수분해",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M1-02",
+          "rangeEndUnit": "정수와 유리수",
+          "rangeEndUnitOrder": 2
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_P75-78_20261022_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 도형의 이동 75~78쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-04",
+      "rangeStartUnit": "도형의 이동",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-C2-04",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-04",
+          "rangeStartUnit": "도형의 이동",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C2-04",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_P78-81_20261022_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 도형의 이동 78~81쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-04",
+      "rangeStartUnit": "도형의 이동",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-C2-04",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-04",
+          "rangeStartUnit": "도형의 이동",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C2-04",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_P82-85_20261022_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 도형의 이동 82~85쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-04",
+      "rangeStartUnit": "도형의 이동",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-C2-04",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-04",
+          "rangeStartUnit": "도형의 이동",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C2-04",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_P86-89_20261022_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 도형의 이동 86~89쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-04",
+      "rangeStartUnit": "도형의 이동",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-C2-04",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-04",
+          "rangeStartUnit": "도형의 이동",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C2-04",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_P90-93_20261022_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 도형의 이동 90~93쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-04",
+      "rangeStartUnit": "도형의 이동",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-C2-04",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-04",
+          "rangeStartUnit": "도형의 이동",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C2-04",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_P94-97_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 도형의 이동 94~97쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-04",
+      "rangeStartUnit": "도형의 이동",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-C2-04",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-04",
+          "rangeStartUnit": "도형의 이동",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C2-04",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_도형의이동_P98-101_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 도형의 이동 98~101쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-04",
+      "rangeStartUnit": "도형의 이동",
+      "rangeStartUnitOrder": 4,
+      "rangeEndUnitKey": "H22-C2-04",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-04",
+          "rangeStartUnit": "도형의 이동",
+          "rangeStartUnitOrder": 4,
+          "rangeEndUnitKey": "H22-C2-04",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_실전2회_P62-65_20261022_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 실전 2회 62~65쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-03",
+      "rangeStartUnit": "원의 방정식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-C2-03",
+      "rangeEndUnit": "원의 방정식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-03",
+          "rangeStartUnit": "원의 방정식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-C2-03",
+          "rangeEndUnit": "원의 방정식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P110-113_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 집합과 명제 110~113쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-05",
+      "rangeStartUnit": "집합",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-C2-05",
+      "rangeEndUnit": "집합",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-05",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P114-117_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 집합과 명제 114~117쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-05",
+      "rangeStartUnit": "집합",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-C2-05",
+      "rangeEndUnit": "집합",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-05",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P118-121_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 집합과 명제 118~121쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-05",
+      "rangeStartUnit": "집합",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-C2-05",
+      "rangeEndUnit": "집합",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-05",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P122-125_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 집합과 명제 122~125쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-05",
+      "rangeStartUnit": "집합",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-C2-05",
+      "rangeEndUnit": "집합",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-05",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P126-129_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 집합과 명제 126~129쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-05",
+      "rangeStartUnit": "집합",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-C2-05",
+      "rangeEndUnit": "집합",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-05",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P130-133_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 집합과 명제 130~133쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-05",
+      "rangeStartUnit": "집합",
+      "rangeStartUnitOrder": 5,
+      "rangeEndUnitKey": "H22-C2-05",
+      "rangeEndUnit": "집합",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-05",
+          "rangeStartUnit": "집합",
+          "rangeStartUnitOrder": 5,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P138-141_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 집합과 명제 138~141쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-05",
+      "rangeEndUnit": "집합",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P142-145_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 집합과 명제 142~145쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-02",
+      "rangeStartUnit": "직선의 방정식",
+      "rangeStartUnitOrder": 2,
+      "rangeEndUnitKey": "H22-C2-04",
+      "rangeEndUnit": "도형의 이동",
+      "rangeEndUnitOrder": 4,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-02",
+          "rangeStartUnit": "직선의 방정식",
+          "rangeStartUnitOrder": 2,
+          "rangeEndUnitKey": "H22-C2-04",
+          "rangeEndUnit": "도형의 이동",
+          "rangeEndUnitOrder": 4
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_집합과명제_P146-149_20261023_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 집합과 명제 148~151쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-01",
+      "rangeStartUnit": "평면좌표",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "H22-C2-05",
+      "rangeEndUnit": "집합",
+      "rangeEndUnitOrder": 5,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-01",
+          "rangeStartUnit": "평면좌표",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "H22-C2-05",
+          "rangeEndUnit": "집합",
+          "rangeEndUnitOrder": 5
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
+    },
+    {
+      "file": "textbooks/백발백중_공통수학2/백발백중_공통수학2_학평기출_P66-70_20261022_유사50.js",
+      "school": "백발백중",
+      "topic": "백발백중 공통수학2 학평기출 66~70쪽 고1 유사문항 50",
+      "grade": "고1",
+      "semester": "2",
+      "examType": "textbook",
+      "subject": "공통수학2",
+      "contentType": "교과서",
+      "qCount": 50,
+      "rangeStartUnitKey": "H22-C2-03",
+      "rangeStartUnit": "원의 방정식",
+      "rangeStartUnitOrder": 3,
+      "rangeEndUnitKey": "H22-C2-03",
+      "rangeEndUnit": "원의 방정식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "공통수학2",
+          "courseCode": "H22-C2",
+          "rangeStartUnitKey": "H22-C2-03",
+          "rangeStartUnit": "원의 방정식",
+          "rangeStartUnitOrder": 3,
+          "rangeEndUnitKey": "H22-C2-03",
+          "rangeEndUnit": "원의 방정식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "공통수학2"
     }
   ]
 };

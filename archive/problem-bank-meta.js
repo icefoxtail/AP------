@@ -383,12 +383,25 @@
   }
   const projectOriginal = record => project(record, false, null, []);
   const projectGenerated = (row, consumer = null, holds = []) => project(row, true, consumer, holds);
+  // A projection failure must name the source row, not only the UID: an empty UID
+  // otherwise hides which exam question broke identity inclusion.
+  const sourceRowLocator = row => {
+    const file = sourcePath(row?.sourceFile ?? row?.sourceArchiveFile ?? row?.sourceExamPath);
+    const ordinal = Number(row?.sourceOrdinal);
+    if (!file) return 'source:unavailable';
+    return Number.isInteger(ordinal) && ordinal > 0 ? `${file}#${ordinal}` : file;
+  };
   function buildIndex(originalRows = [], generatedRows = [], options = {}) {
-    const seen = new Set();
+    const sources = [...originalRows, ...generatedRows];
+    const seenAt = new Map();
     const rows = [...originalRows.map(projectOriginal), ...generatedRows.map(r =>
-      projectGenerated(r, null, options.excludedHoldUids || []))].map(r => {
-      if (!r.uid || seen.has(r.uid)) throw new Error('PROBLEM_BANK_DUPLICATE_OR_MISSING_UID:' + r.uid);
-      seen.add(r.uid);
+      projectGenerated(r, null, options.excludedHoldUids || []))].map((r, index) => {
+      const locator = sourceRowLocator(sources[index]);
+      if (!r.uid)
+        throw new Error(`PROBLEM_BANK_DUPLICATE_OR_MISSING_UID:EMPTY_UID@${locator}`);
+      if (seenAt.has(r.uid))
+        throw new Error(`PROBLEM_BANK_DUPLICATE_OR_MISSING_UID:${r.uid}@${locator} (already indexed at ${seenAt.get(r.uid)})`);
+      seenAt.set(r.uid, locator);
       return r;
     });
     const byField = new Map();

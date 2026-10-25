@@ -304,7 +304,7 @@ window.questionBank = [
       "중단원 연습"
     ],
     "wide": false,
-    "content": "[문제해결] 오른쪽 그림과 같이 원 모양의 울타리에 직사각형 모양의 화단이 내접하고 있다. 울타리의 둘레의 길이가 $10\\pi\\text{ m}$이고 화단의 둘레의 길이가 $28\\text{ m}$일 때, 화단의 가로와 세로의 길이를 각각 구하시오. (단, 화단의 가로의 길이는 세로의 길이보다 길고, 울타리의 두께는 생각하지 않는다.)\n<img src=\"q11.png\" />",
+    "content": "[문제해결] 오른쪽 그림과 같이 원 모양의 울타리에 직사각형 모양의 화단이 내접하고 있다. 울타리의 둘레의 길이가 $10\\pi\\text{ m}$이고 화단의 둘레의 길이가 $28\\text{ m}$일 때, 화단의 가로와 세로의 길이를 각각 구하시오. (단, 화단의 가로의 길이는 세로의 길이보다 길고, 울타리의 두께는 생각하지 않는다.)\n<img src=\"assets/images/동아_공통수학1_여러가지방정식과부등식_중단원연습_고1/q11.png\" />",
     "choices": [],
     "answer": "",
     "solution": ""
@@ -332,7 +332,7 @@ window.questionBank = [
       "중단원 연습"
     ],
     "wide": false,
-    "content": "[추론] 다음 그림과 같이 삼각형 $\\mathrm{ABC}$에서 변 $\\mathrm{BC}$ 위의 점 $\\mathrm{D}$에 대하여 $\\overline{\\mathrm{AD}}=6$, $\\overline{\\mathrm{BD}}=8$이고, $\\angle\\mathrm{BAD}=\\angle\\mathrm{BCA}$이다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{CD}}-1$일 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오.\n<img src=\"q12.png\" />\n\n[단계1] 삼각형 $\\mathrm{ABC}$와 삼각형 $\\mathrm{DBA}$는 닮음임을 보이시오.\n[단계2] $\\overline{\\mathrm{CD}}=x$, $\\overline{\\mathrm{AB}}=y$라고 할 때, $x$와 $y$ 사이의 관계를 2개의 식으로 나타내시오.\n[단계3] 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오.",
+    "content": "[추론] 다음 그림과 같이 삼각형 $\\mathrm{ABC}$에서 변 $\\mathrm{BC}$ 위의 점 $\\mathrm{D}$에 대하여 $\\overline{\\mathrm{AD}}=6$, $\\overline{\\mathrm{BD}}=8$이고, $\\angle\\mathrm{BAD}=\\angle\\mathrm{BCA}$이다. $\\overline{\\mathrm{AC}}=\\overline{\\mathrm{CD}}-1$일 때, 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오.\n<img src=\"assets/images/동아_공통수학1_여러가지방정식과부등식_중단원연습_고1/q12.png\" />\n\n[단계1] 삼각형 $\\mathrm{ABC}$와 삼각형 $\\mathrm{DBA}$는 닮음임을 보이시오.\n[단계2] $\\overline{\\mathrm{CD}}=x$, $\\overline{\\mathrm{AB}}=y$라고 할 때, $x$와 $y$ 사이의 관계를 2개의 식으로 나타내시오.\n[단계3] 삼각형 $\\mathrm{ABC}$의 둘레의 길이를 구하시오.",
     "choices": [],
     "answer": "",
     "solution": ""
@@ -472,7 +472,7 @@ window.questionBank = [
       "중단원 연습"
     ],
     "wide": false,
-    "content": "[연결] 미세 먼지 농도에 따른 미세 먼지 예보 등급은 다음과 같이 분류한다.\n<img src=\"q17.png\" />\n\n어느 지역의 3일간의 미세 먼지 농도와 예보 등급이 다음과 같을 때, $x$의 값의 범위와 5월 2일의 미세 먼지 예보 등급을 각각 구하시오.",
+    "content": "[연결] 미세 먼지 농도에 따른 미세 먼지 예보 등급은 다음과 같이 분류한다.\n<img src=\"assets/images/동아_공통수학1_여러가지방정식과부등식_중단원연습_고1/q17.png\" />\n\n어느 지역의 3일간의 미세 먼지 농도와 예보 등급이 다음과 같을 때, $x$의 값의 범위와 5월 2일의 미세 먼지 예보 등급을 각각 구하시오.",
     "choices": [],
     "answer": "",
     "solution": ""
@@ -724,7 +724,7 @@ window.questionBank = [
       "중단원 연습"
     ],
     "wide": false,
-    "content": "두 이차함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같을 때, 연립부등식 $\\begin{cases} f(x)<0 \\\\ g(x)\\ge 0 \\end{cases}$의 해를 구하시오.\n<img src=\"q26.png\" />",
+    "content": "두 이차함수 $y=f(x)$, $y=g(x)$의 그래프가 다음 그림과 같을 때, 연립부등식 $\\begin{cases} f(x)<0 \\\\ g(x)\\ge 0 \\end{cases}$의 해를 구하시오.\n<img src=\"assets/images/동아_공통수학1_여러가지방정식과부등식_중단원연습_고1/q26.png\" />",
     "choices": [],
     "answer": "",
     "solution": ""
