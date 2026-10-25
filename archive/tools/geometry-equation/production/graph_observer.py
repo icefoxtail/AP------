@@ -166,8 +166,47 @@ def cubic_quartic_overview_audit(plan,poly,points,transform):
     errors.extend(root_axis_behaviour_errors(roots,points,transform))
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'degree':poly.degree(),'plotCssSize':[width,height],'features':feature_rows,'endDirections':end_directions,'arms':arms if critical else [],'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','mathMethod':'EXACT_RATIONAL_SOURCE_ROOT_ISOLATION','rootMultiplicities':[{'x':root,'multiplicity':multiplicity} for root,multiplicity in roots]}
 
+
+SQRT_AFFINE_GENERAL_POLICY='SQRT_AFFINE_GENERAL_OVERVIEW_v1'
+
+def _sqrt_general_coefficient(value,code):
+    """Exact rational or p+q*sqrt(r) coefficient, read by the observer's own parser (never the producer's)."""
+    try:return _pp_coeff(value)
+    except ValueError as error:
+        if 'IRRATIONAL_FORM' in str(error):raise ValueError('SQRT_AFFINE_IRRATIONAL_FORM_UNSUPPORTED')
+        raise ValueError(code) from None
+
+def _sqrt_general_fields(plan):
+    radicand=plan.get('radicand')
+    if not isinstance(radicand,list) or len(radicand)!=2:raise ValueError('UNSUPPORTED_SQRT_AFFINE_GRAMMAR')
+    constant=_sqrt_general_coefficient(radicand[0],'INVALID_SQRT_AFFINE_COEFFICIENT')
+    slope=_sqrt_general_coefficient(radicand[1],'INVALID_SQRT_AFFINE_COEFFICIENT')
+    if slope==0:raise ValueError('UNSUPPORTED_SQRT_AFFINE_SLOPE')
+    amplitude=_sqrt_general_coefficient(plan.get('amplitude','1'),'INVALID_SQRT_AMPLITUDE')
+    if amplitude<=0:raise ValueError('SQRT_AMPLITUDE_MUST_BE_POSITIVE')
+    sign=plan.get('sign',1)
+    if isinstance(sign,bool) or sign not in (1,-1):raise ValueError('INVALID_SQRT_SIGN')
+    offset=_sqrt_general_coefficient(plan.get('offset','0'),'INVALID_SQRT_OFFSET')
+    scale=S.Integer(int(sign))*amplitude
+    boundary=-constant/slope
+    return constant,slope,amplitude,int(sign),offset,scale,boundary
+
+def _sqrt_exact_text(value):
+    """Canonical text of a rational or p+q*sqrt(r), written exactly like the plan's exact-value strings."""
+    value=S.radsimp(S.expand(value))
+    if value.is_Rational:return str(value)
+    powers=[power for power in value.atoms(S.Pow) if power.exp==S.Rational(1,2) and power.base.is_Integer and power.base>1]
+    if len(powers)!=1 or len({power.base for power in powers})!=1:return str(value)
+    base=powers[0].base
+    constant=S.expand(value.subs(S.sqrt(base),0));coefficient=S.simplify((value-constant)/S.sqrt(base))
+    if not constant.is_Rational or not coefficient.is_Rational:return str(value)
+    def rat(number):return str(Fraction(int(number.p),int(number.q)))
+    magnitude=abs(coefficient);body=('' if magnitude.p==1 else str(int(magnitude.p))+'*')+'sqrt('+str(int(base))+')'+('' if magnitude.q==1 else '/'+str(int(magnitude.q)))
+    head='' if constant==0 else rat(constant)
+    return head+('-' if coefficient<0 else '+' if constant!=0 else '')+body
+
 def resolve(plan):
-    family=plan['family'];holes=[];poles=[];boundary=[];corners=[];root_inventory=None
+    family=plan['family'];holes=[];poles=[];boundary=[];corners=[];root_inventory=None;general_sqrt=None
     if family=='polynomial':
         p=polynomial(plan['coefficients'],4);f=p.as_expr();den=S.Poly(1,x)
     elif family=='rational':
@@ -179,6 +218,16 @@ def resolve(plan):
             g=S.gcd(p,den)
             matches=[m for r,m in real_roots(g,*plan['domain']) if abs(root-r)<1e-12]
             (holes if matches and matches[0]>=multiplicity else poles).append(root)
+    elif family=='sqrt-affine' and plan.get('overviewPolicy')==SQRT_AFFINE_GENERAL_POLICY:
+        constant,slope,amplitude,sign,offset,scale,root_x=_sqrt_general_fields(plan)
+        general_sqrt=(constant,slope,offset,scale,root_x)
+        p=S.Poly(S.expand(constant+slope*x),x)
+        f=offset+scale*S.sqrt(p.as_expr());den=S.Poly(1,x);boundary=[float(root_x)]
+        threshold=-offset/scale
+        if threshold>=0:
+            target=threshold*threshold;root_value=(target-constant)/slope
+            root_inventory=[(float(root_value),1)] if S.N(constant+slope*root_value)>=0 else []
+        else:root_inventory=[]
     elif family=='sqrt-affine':
         p=polynomial(plan['radicand'],1)
         if p.degree()!=1 or p.nth(1)<=0: raise ValueError('UNSUPPORTED_SQRT_RADICAND')
@@ -197,11 +246,21 @@ def resolve(plan):
     else: raise ValueError('UNSUPPORTED_GRAPH_FAMILY')
     lo,hi=plan['domain'];xmin,xmax,ymin,ymax=plan['viewport']
     if not all(math.isfinite(v) for v in [lo,hi,xmin,xmax,ymin,ymax]) or not lo<hi or not xmin<xmax or not ymin<ymax: raise ValueError('INVALID_GRAPH_DOMAIN')
-    lo=max(lo,xmin,boundary[0] if boundary else lo);hi=min(hi,xmax)
+    if general_sqrt is not None:
+        if general_sqrt[1]>0:lo=max(lo,xmin,float(general_sqrt[4]))
+        else:hi=min(hi,xmax,float(general_sqrt[4]))
+    else:lo=max(lo,xmin,boundary[0] if boundary else lo)
+    hi=min(hi,xmax)
     cuts=[lo,hi,*holes,*poles,*boundary,*corners]
     for level in [ymin,ymax]:
         if family=='sqrt-affine':
-            if level>=0:cuts.extend(r for r,_ in real_roots(S.Poly(p.as_expr()-S.Rational(str(level))**2,x),lo,hi))
+            if general_sqrt is not None:
+                constant,slope,offset,scale,root_x=general_sqrt
+                target=(S.Rational(str(level))-offset)/scale
+                if target>=0:
+                    crossing=(target*target-constant)/slope
+                    if lo<=float(crossing)<=hi:cuts.append(float(crossing))
+            elif level>=0:cuts.extend(r for r,_ in real_roots(S.Poly(p.as_expr()-S.Rational(str(level))**2,x),lo,hi))
         elif family=='absolute-value':
             distance=(S.Rational(str(level))-offset)/scale
             if distance>=0:
@@ -562,6 +621,98 @@ def sqrt_affine_overview_audit(plan,poly,points,transform,topology,svg_root):
             if marker['fill'] not in {'#111','black','#000'} or marker['stroke'] in (None,'none','') or marker['strokeWidth']<=0 or marker['radius']<policy['endpointMarkerRadiusIntrinsicPx']-.01:errors.append('SQRT_ENDPOINT_MARKER_MUST_BE_CLOSED_AND_OUTLINED')
             if 2*marker['radius']*transform['displayScale']<policy['minimumEndpointMarkerDiameterCssPx']:unsupported.append('SQRT_ENDPOINT_MARKER_BELOW_DISPLAY_RESOLUTION')
     return {'status':'UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS','errors':sorted(set(errors+unsupported)),'features':wanted,'plotCssSize':[(xmax-xmin)*sx,(ymax-ymin)*sy],'endpointToTailSpanCss':endpoint_to_tail_span_css,'minimumEndpointToTailSpanCss':policy['minimumEndpointToTailSpanCssPx'],'topology':{'boundary':topology.get('boundary'),'visibleIntervals':topology.get('visibleIntervals')},'observedEndpointMarkers':len(markers),'rightTailDirection':'UP','mathMethod':'EXACT_AFFINE_RADICAND_DOMAIN_AND_ENDPOINT'}
+
+def sqrt_affine_general_overview_audit(plan,points,transform,topology,svg_root):
+    """y = q + s*k*sqrt(a*(x-p)): the endpoint, branch side, monotone direction, range side, endpoints/markers and key points are all
+    recomputed from the plan's exact coefficients and checked against the final polyline."""
+    errors=[];unsupported=[]
+    try:constant,slope,amplitude,sign,offset,scale,root_x=_sqrt_general_fields(plan)
+    except (ValueError,TypeError):return {'status':'UNSUPPORTED','errors':['SQRT_AFFINE_GENERAL_GRAMMAR_REQUIRED']}
+    right=slope>0
+    source_domain=plan.get('sourceDomain')
+    if source_domain=={'kind':'NATURAL_SQRT_AFFINE'}:
+        mode='NATURAL_SQRT_AFFINE';source_range=None
+        endpoints=[{'x':_sqrt_exact_text(root_x),'y':float(offset),'state':'CLOSED','source':'NATURAL_RADICAND_BOUNDARY'}]
+    elif isinstance(source_domain,dict) and set(source_domain)=={'kind','range'} and source_domain.get('kind')=='CLOSED_INTERVAL':
+        raw=source_domain.get('range')
+        if not isinstance(raw,list) or len(raw)!=2:return {'status':'UNSUPPORTED','errors':['INVALID_SQRT_SOURCE_INTERVAL']}
+        try:exact_range=[S.Rational(value) for value in raw]
+        except (TypeError,ValueError):return {'status':'UNSUPPORTED','errors':['INVALID_SQRT_SOURCE_INTERVAL']}
+        if not exact_range[0]<exact_range[1]:return {'status':'UNSUPPORTED','errors':['INVALID_SQRT_SOURCE_INTERVAL']}
+        if right and exact_range[0]<root_x:return {'status':'UNSUPPORTED','errors':['SQRT_SOURCE_INTERVAL_BELOW_NATURAL_BOUNDARY']}
+        if not right and exact_range[1]>root_x:return {'status':'UNSUPPORTED','errors':['SQRT_SOURCE_INTERVAL_BEYOND_NATURAL_BOUNDARY']}
+        mode='CLOSED_INTERVAL';source_range=[float(value) for value in exact_range]
+        endpoints=[]
+        for value,source_name in ((exact_range[0],'SOURCE_INTERVAL_START'),(exact_range[1],'SOURCE_INTERVAL_END')):
+            y_value=offset+scale*S.sqrt(constant+slope*value)
+            endpoints.append({'x':str(value),'y':float(y_value),'state':'CLOSED','source':source_name})
+    else:return {'status':'UNSUPPORTED','errors':['SQRT_SOURCE_DOMAIN_UNSUPPORTED']}
+    branch_direction='RIGHT' if right else 'LEFT';tail_direction='UP' if scale>0 else 'DOWN';range_direction='ABOVE' if scale>0 else 'BELOW'
+    policy={'schemaVersion':'SQRT_AFFINE_GENERAL_FEATURE_POLICY_v1','sourceDomainMode':mode,'boundaryPolicy':'NATURAL_NONNEGATIVE_RADICAND','endpointState':'CLOSED','branchDirection':branch_direction,'tailDirection':tail_direction,'rangeDirection':range_direction,'endpointMarkerRadiusIntrinsicPx':4,'minimumEndpointMarkerDiameterCssPx':3,'minimumEndpointToTailSpanCssPx':48}
+    wanted={'schemaVersion':'SQRT_AFFINE_GENERAL_FEATURES_v1','endpoint':{'x':_sqrt_exact_text(root_x),'y':_sqrt_exact_text(offset)},'radicandBoundaryX':_sqrt_exact_text(root_x),'branchDirection':branch_direction,'tailDirection':tail_direction,'rangeDirection':range_direction,'sourceEndpoints':endpoints}
+    if plan.get('overviewPolicy')!=SQRT_AFFINE_GENERAL_POLICY:return {'status':'UNSUPPORTED','errors':['SQRT_AFFINE_GENERAL_OVERVIEW_POLICY_REQUIRED']}
+    if plan.get('sqrtFeaturePolicy')!=policy:errors.append('SQRT_GENERAL_FEATURE_POLICY_MISMATCH')
+    actual=plan.get('sqrtFeatures')
+    if not isinstance(actual,dict) or set(actual)!=set(wanted) or any(actual.get(key)!=wanted[key] for key in ('schemaVersion','endpoint','radicandBoundaryX','branchDirection','tailDirection','rangeDirection')) or not isinstance(actual.get('sourceEndpoints'),list) or len(actual['sourceEndpoints'])!=len(endpoints):errors.append('SQRT_GENERAL_ENDPOINT_INVENTORY_MISMATCH')
+    else:
+        for got,expected in zip(actual['sourceEndpoints'],endpoints):
+            if not isinstance(got,dict) or set(got)!=set(expected) or any(got.get(key)!=expected[key] for key in ('x','state','source')) or not isinstance(got.get('y'),(int,float)) or not math.isfinite(got['y']) or abs(got['y']-expected['y'])>1e-8:errors.append('SQRT_GENERAL_ENDPOINT_INVENTORY_MISMATCH');break
+    lo,hi=plan['domain'];xmin,xmax,ymin,ymax=plan['viewport'];sx=transform['sx']*transform['displayScale'];sy=transform['sy']*transform['displayScale'];x_tol=.35/max(1e-12,sx);y_tol=.35/max(1e-12,sy)
+    start=source_range[0] if mode=='CLOSED_INTERVAL' else (float(root_x) if right else lo)
+    end=source_range[1] if mode=='CLOSED_INTERVAL' else (hi if right else float(root_x))
+    if mode=='CLOSED_INTERVAL':
+        if lo!=source_range[0] or hi!=source_range[1]:errors.append('SQRT_SOURCE_INTERVAL_EXPANDED_OR_SHRUNK')
+    elif right:
+        if abs(lo-float(root_x))>1e-10:errors.append('SQRT_GENERAL_DOMAIN_START_MISMATCH')
+    else:
+        if abs(hi-float(root_x))>1e-10:errors.append('SQRT_GENERAL_DOMAIN_START_MISMATCH')
+    if not (xmin-1e-6<=start<=xmax+1e-6 and xmin-1e-6<=end<=xmax+1e-6):errors.append('SQRT_ENDPOINT_OR_AXES_OUTSIDE_OVERVIEW')
+    if any(not ymin-1e-6<=endpoint['y']<=ymax+1e-6 for endpoint in endpoints):errors.append('SQRT_ENDPOINT_OR_AXES_OUTSIDE_OVERVIEW')
+    endpoint_to_tail_span_css=(end-start)*sx
+    if endpoint_to_tail_span_css<policy['minimumEndpointToTailSpanCssPx']:unsupported.append('SQRT_ENDPOINT_TO_TAIL_SPAN_BELOW_PROFILE_FLOOR')
+    if lo<start-1e-10 or hi>end+1e-10:errors.append('SQRT_SAMPLED_OUTSIDE_SOURCE_DOMAIN')
+    if not points:return {'status':'FAIL','errors':['SQRT_FINAL_CURVE_MISSING']}
+    ordered=sorted(points,key=lambda point:point[0])
+    if right and ordered[0][0]<float(root_x)-x_tol:errors.append('SQRT_CURVE_BEFORE_SOURCE_DOMAIN')
+    if not right and ordered[-1][0]>float(root_x)+x_tol:errors.append('SQRT_CURVE_BEFORE_SOURCE_DOMAIN')
+    if mode=='CLOSED_INTERVAL':
+        if abs(ordered[0][0]-start)*sx>.5 or abs(ordered[0][1]-endpoints[0]['y'])*sy>.35:errors.append('SQRT_SOURCE_START_ENDPOINT_NOT_OBSERVED')
+        if abs(ordered[-1][0]-end)*sx>.5 or abs(ordered[-1][1]-endpoints[-1]['y'])*sy>.35:errors.append('SQRT_SOURCE_END_ENDPOINT_NOT_OBSERVED')
+    elif right:
+        if abs(ordered[0][0]-start)*sx>.5 or abs(ordered[0][1]-endpoints[0]['y'])*sy>.35:errors.append('SQRT_SOURCE_START_ENDPOINT_NOT_OBSERVED')
+        if abs(ordered[-1][0]-end)*sx>.5:errors.append('SQRT_SOURCE_END_ENDPOINT_NOT_OBSERVED')
+    else:
+        if abs(ordered[0][0]-start)*sx>.5:errors.append('SQRT_SOURCE_START_ENDPOINT_NOT_OBSERVED')
+        if abs(ordered[-1][0]-end)*sx>.5 or abs(ordered[-1][1]-endpoints[0]['y'])*sy>.35:errors.append('SQRT_SOURCE_END_ENDPOINT_NOT_OBSERVED')
+    increasing=scale*slope>0
+    trend_errors=[(right_point[1]-left_point[1])*(1 if increasing else -1) for left_point,right_point in zip(ordered,ordered[1:])]
+    if any(value<-y_tol for value in trend_errors):errors.append('SQRT_ONE_SIDED_TREND_NOT_INCREASING' if increasing else 'SQRT_ONE_SIDED_TREND_NOT_DECREASING')
+    if increasing and ordered[-1][1]<=ordered[0][1]:errors.append('SQRT_RIGHT_TAIL_NOT_INCREASING')
+    if not increasing and ordered[-1][1]>=ordered[0][1]:errors.append('SQRT_RIGHT_TAIL_NOT_DECREASING')
+    offset_float=float(offset)
+    if any((point[1]-offset_float)*(1 if scale>0 else -1)<-y_tol for point in ordered):errors.append('SQRT_RANGE_SIDE_MISMATCH')
+    for point in plan.get('requiredPoints',[]):
+        px,py=float(point['x']),float(point['y']);radicand=constant+slope*S.Rational(str(px));root_term=(S.Rational(str(py))-offset)/scale
+        if radicand<0 or root_term<0 or abs(S.N(root_term*root_term-radicand,40))>S.Float('1e-20',40):errors.append('SQRT_REQUIRED_POINT_NOT_ON_CURVE:'+point['id']);continue
+        if text_outside(px,start,end,right,mode):errors.append('SQRT_REQUIRED_POINT_OUTSIDE_SOURCE_INTERVAL:'+point['id'])
+        if not any(abs(x-px)<=x_tol and abs(y-py)<=y_tol for x,y in points):errors.append('SQRT_REQUIRED_POINT_NOT_OBSERVED:'+point['id'])
+    markers=[]
+    for node in svg_root.iter():
+        if node.tag.split('}')[-1]=='circle' and node.get('data-role')=='domain-endpoint':
+            try:markers.append({'point':((float(node.get('cx'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('cy')))/transform['sy']),'radius':float(node.get('r')),'fill':node.get('fill'),'stroke':node.get('stroke'),'strokeWidth':float(node.get('stroke-width'))})
+            except (TypeError,ValueError):errors.append('SQRT_ENDPOINT_MARKER_INVALID')
+    if len(markers)!=len(endpoints):errors.append('SQRT_ENDPOINT_MARKER_COUNT_MISMATCH')
+    else:
+        for marker,endpoint in zip(markers,endpoints):
+            endpoint_x=float(S.Rational(endpoint['x'])) if re.fullmatch(r'-?\d+(?:/\d+)?',endpoint['x']) else float(S.N(S.sympify(endpoint['x'])))
+            if abs(marker['point'][0]-endpoint_x)*sx>.35 or abs(marker['point'][1]-endpoint['y'])*sy>.35:errors.append('SQRT_ENDPOINT_MARKER_POSITION_MISMATCH')
+            if marker['fill'] not in {'#111','black','#000'} or marker['stroke'] in (None,'none','') or marker['strokeWidth']<=0 or marker['radius']<policy['endpointMarkerRadiusIntrinsicPx']-.01:errors.append('SQRT_ENDPOINT_MARKER_MUST_BE_CLOSED_AND_OUTLINED')
+            if 2*marker['radius']*transform['displayScale']<policy['minimumEndpointMarkerDiameterCssPx']:unsupported.append('SQRT_ENDPOINT_MARKER_BELOW_DISPLAY_RESOLUTION')
+    return {'status':'UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS','errors':sorted(set(errors+unsupported)),'features':wanted,'plotCssSize':[(xmax-xmin)*sx,(ymax-ymin)*sy],'endpointToTailSpanCss':endpoint_to_tail_span_css,'minimumEndpointToTailSpanCss':policy['minimumEndpointToTailSpanCssPx'],'topology':{'boundary':topology.get('boundary'),'visibleIntervals':topology.get('visibleIntervals')},'observedEndpointMarkers':len(markers),'branchDirection':branch_direction,'tailDirection':tail_direction,'rangeDirection':range_direction,'mathMethod':'EXACT_GENERAL_SQRT_ENDPOINT_BRANCH_AND_RANGE_SIDE'}
+
+def text_outside(value,start,end,right,mode):
+    if mode=='CLOSED_INTERVAL':return not start-1e-9<=value<=end+1e-9
+    return value<start-1e-9 if right else value>end+1e-9
 
 def _piecewise_rational(value,code):
     if not isinstance(value,str) or len(value)>64 or not re.fullmatch(r'(?:0|-?[1-9]\d*)(?:/[1-9]\d*)?',value):raise ValueError(code)
@@ -1681,8 +1832,12 @@ def audit(plan,svg,transform):
             try:
                 fa,fb=float(evaluate(a)),float(evaluate(b));vertex=max(abs(ya-fa),abs(yb-fb))*scale
                 if plan['family']=='sqrt-affine':
-                    m=(fb-fa)/(b-a);t=(float(poly.nth(1))/(2*m))**2 if m else 0
-                    at=(t-float(poly.nth(0)))/float(poly.nth(1));at=max(a,min(b,at))
+                    if plan.get('overviewPolicy')==SQRT_AFFINE_GENERAL_POLICY:
+                        g_constant,g_slope,g_amplitude,g_sign,g_offset,g_scale,g_root=_sqrt_general_fields(plan)
+                        c_float,b_float,scale_float=float(g_constant),float(g_slope),float(g_scale)
+                    else:c_float,b_float,scale_float=float(poly.nth(0)),float(poly.nth(1)),1.0
+                    m=(fb-fa)/(b-a);t=(scale_float*b_float/(2*m))**2 if m and b_float else 0
+                    at=(t-c_float)/b_float if b_float else a;at=max(a,min(b,at))
                     bound=abs(float(evaluate(at))-(fa+m*(at-a)))*scale
                 elif plan['family']=='absolute-value':
                     bound=0.0
@@ -1724,7 +1879,7 @@ def audit(plan,svg,transform):
         lim=float(S.limit(f,x,S.Rational(str(hole))))
         if plan['viewport'][2]<=lim<=plan['viewport'][3] and not any(abs(mx-hole)<1e-7 and abs(my-lim)*scale<=tolerance for mx,my in markers):errors.append('REMOVABLE_HOLE_MARKER_MISSING')
     if plan.get('family')=='rational' and plan.get('shapeIntent')=='OVERVIEW':overview=rational_overview_audit(plan,poly,actual_points,transform,topology,root)
-    elif plan.get('family')=='sqrt-affine' and plan.get('shapeIntent')=='OVERVIEW':overview=sqrt_affine_overview_audit(plan,poly,actual_points,transform,topology,root)
+    elif plan.get('family')=='sqrt-affine' and plan.get('shapeIntent')=='OVERVIEW':overview=sqrt_affine_general_overview_audit(plan,actual_points,transform,topology,root) if plan.get('overviewPolicy')==SQRT_AFFINE_GENERAL_POLICY else sqrt_affine_overview_audit(plan,poly,actual_points,transform,topology,root)
     elif plan.get('family')=='absolute-value' and plan.get('shapeIntent')=='OVERVIEW':overview=absolute_value_overview_audit(plan,poly,actual_points,transform,topology,root)
     elif plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL':overview=polynomial_interval_audit(plan,poly,actual_points,transform,root)
     else:overview=overview_audit(plan,poly,actual_points,transform) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}

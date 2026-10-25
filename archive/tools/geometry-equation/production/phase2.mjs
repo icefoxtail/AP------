@@ -352,15 +352,54 @@ export function specFor(plan,model,id){
   }
   if(plan.capability==='sqrt-affine-spike-v1'){
     const p=plan.graphPlan,v=p.viewport,features=p.sqrtFeatures;
-    if(!features||features.schemaVersion!=='SQRT_AFFINE_FEATURES_v1')throw Error('SQRT_ENDPOINT_INVENTORY_REQUIRED');
+    const general=features?.schemaVersion==='SQRT_AFFINE_GENERAL_FEATURES_v1';
+    if(!features||(!general&&features.schemaVersion!=='SQRT_AFFINE_FEATURES_v1'))throw Error('SQRT_ENDPOINT_INVENTORY_REQUIRED');
     const exactNumber=value=>{const parts=String(value).split('/');return Number(parts[0])/(parts.length===2?Number(parts[1]):1);};
+    const number=value=>general?exactValue(value):exactNumber(value);
     const polynomialText=values=>{const terms=values.map((c,i)=>({c,i})).reverse().filter(({c})=>c!=='0');return terms.map(({c,i},index)=>{const negative=c.startsWith('-'),magnitude=negative?c.slice(1):c,coefficient=magnitude.includes('/')?'('+magnitude+')':magnitude,term=i?(magnitude==='1'?'':coefficient+'*')+'x'+(i>1?'^'+i:''):coefficient;return (negative?'-':index?'+':'')+term;}).join('');};
-    const expression='sqrt('+polynomialText(p.radicand)+')',showX=v[2]<0&&v[3]>0,showY=v[0]<=0&&v[1]>=0;
-    const boundary=exactNumber(features.radicandBoundaryX),start=exactNumber(features.sourceEndpoints[0].x),slope=exactNumber(p.radicand[1]),plotSy=256/(v[3]-v[2]);
-    const criticalX=features.sourceEndpoints.map(endpoint=>exactNumber(endpoint.x));
-    if(Math.abs(start-boundary)<1e-10){const boundaryStep=(1.2/(plotSy*Math.sqrt(slope)))**2;if(boundary+boundaryStep<p.domain[1])criticalX.push(boundary+boundaryStep);}
-    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX},{id:'formula',kind:'EQUATION_LABEL',text:'y='+expression,at:[v[0]+(v[1]-v[0])*.22,v[3]-(v[3]-v[2])*.12],priority:0}];
-    if(features.sourceEndpoints.length>1){const end=features.sourceEndpoints[1];objects.push({id:'sqrt-source-end-label',kind:'GRAPH_ANNOTATION',text:'x='+end.x,at:[exactNumber(end.x)-(v[1]-v[0])*.08,exactNumber(end.y)+(v[3]-v[2])*.08],math:true,priority:0});}
+    const radicandText=polynomialText(p.radicand);
+    let expression='sqrt('+radicandText+')',formulaText=expression,criticalX=features.sourceEndpoints.map(endpoint=>number(endpoint.x));
+    const showX=v[2]<0&&v[3]>0,showY=v[0]<=0&&v[1]>=0;
+    if(general){
+      const amplitude=p.amplitude??'1',sign=p.sign??1,offset=p.offset??'0',wrap=text=>/[+*/]/.test(text)&&!text.startsWith('(')?'('+text+')':text;
+      const factor=sign===-1?(amplitude==='1'?'-':'-'+wrap(amplitude)+'*'):amplitude==='1'?'':wrap(amplitude)+'*';
+      const offsetText=offset==='0'?'':(String(offset).startsWith('-')?offset:'+'+offset);
+      formulaText=factor+'sqrt('+radicandText+')'+offsetText;
+      expression='('+offset+')+('+sign+')*('+amplitude+')*sqrt('+radicandText+')';
+      const boundary=number(features.radicandBoundaryX),slope=number(p.radicand[1]),scale=number(p.amplitude??'1')*(p.sign??1),plotSy=256/(v[3]-v[2]);
+      const step=(1.2/(plotSy*Math.abs(scale)*Math.sqrt(Math.abs(slope))))**2;
+      const boundaryProbe=boundary+(slope>0?step:-step);if(boundaryProbe>p.domain[0]&&boundaryProbe<p.domain[1])criticalX.push(boundaryProbe);
+      criticalX.push(...(p.requiredPoints||[]).map(point=>point.x));
+    }else{
+      const boundary=exactNumber(features.radicandBoundaryX),start=exactNumber(features.sourceEndpoints[0].x),slope=exactNumber(p.radicand[1]),plotSy=256/(v[3]-v[2]);
+      const boundaryStep=(1.2/(plotSy*Math.sqrt(slope)))**2;
+      if(Math.abs(start-boundary)<1e-10&&boundary+boundaryStep<p.domain[1])criticalX.push(boundary+boundaryStep);
+    }
+    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX},{id:'formula',kind:'EQUATION_LABEL',text:'y='+formulaText,at:[v[0]+(v[1]-v[0])*.22,v[3]-(v[3]-v[2])*.12],priority:0}];
+    if(features.sourceEndpoints.length>1){const end=features.sourceEndpoints[features.sourceEndpoints.length-1];objects.push({id:'sqrt-source-end-label',kind:'GRAPH_ANNOTATION',text:'x='+end.x,at:[number(end.x)-(v[1]-v[0])*.08,end.y+(v[3]-v[2])*.08],math:true,priority:0});}
+    if(general&&p.domainRangeLabels===true){
+      const tex=text=>String(text).replace(/sqrt\(([^()]*)\)/g,'\\sqrt{$1}').replace(/(\d+)\/(\d+)/g,'\\frac{$1}{$2}');
+      const endpoint=features.endpoint,spanX=v[1]-v[0],spanY=v[3]-v[2];
+      const domainText=features.sourceDomainMode==='CLOSED_INTERVAL'?tex(features.sourceEndpoints[0].x)+'\\le x\\le '+tex(features.sourceEndpoints[1].x):(features.branchDirection==='RIGHT'?tex(endpoint.x)+'\\le x':'x\\le '+tex(endpoint.x));
+      const rangeText=features.rangeDirection==='ABOVE'?'y\\ge '+tex(endpoint.y):'y\\le '+tex(endpoint.y);
+      objects.push({id:'sqrt-domain-label',kind:'GRAPH_ANNOTATION',text:domainText,at:[v[0]+spanX*.06,v[3]-spanY*.21],math:true,priority:0});
+      objects.push({id:'sqrt-range-label',kind:'GRAPH_ANNOTATION',text:rangeText,at:[v[0]+spanX*.06,v[3]-spanY*.30],math:true,priority:0});
+    }
+    if(general){
+      const required=p.requiredPoints||[],exactCoordinates=p.exactCoordinates??{};
+      if(!exactCoordinates||typeof exactCoordinates!=='object'||Array.isArray(exactCoordinates))throw Error('EXACT_COORDINATES_INVALID');
+      for(const [pointId,pair] of Object.entries(exactCoordinates)){
+        const point=required.find(other=>other?.id===pointId);
+        if(!point||!Array.isArray(pair)||pair.length!==2||[point.x,point.y].some((value,k)=>Math.abs(exactValue(pair[k])-value)>1e-9*Math.max(1,Math.abs(value))))throw Error('EXACT_COORDINATES_MISMATCH:'+pointId);
+      }
+      const coordinateText=point=>exactCoordinates[point?.id]??(Number.isSafeInteger(point?.x)&&Number.isSafeInteger(point?.y)?[String(point.x),String(point.y)]:null);
+      for(const [index,point] of required.entries()){
+        if(!point||typeof point.id!=='string'||!point.id||!Number.isFinite(point.x)||!Number.isFinite(point.y))throw Error('SQRT_REQUIRED_POINT_INVALID');
+        const markerId='required-point-'+(index+1),coordinates=coordinateText(point);
+        objects.push({id:markerId,kind:'POINT',at:[point.x,point.y],name:null});
+        if(coordinates)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates});
+      }
+    }
     return {id,visualType:'function_graph',viewport:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:140},axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{sqrtFeatures:features,sqrtFeaturePolicy:p.sqrtFeaturePolicy},objects};
   }
   if(plan.capability==='rational-spike-v1'){
