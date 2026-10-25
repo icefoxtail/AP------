@@ -11,6 +11,8 @@ POINT_OWNER_DISTANCE_TOLERANCE_PX2=1e-6
 MEASURED_OWNER_REPAIR_GAPS=(64,80,96,128)
 POINT_NAME_RING_RADII=(12,16,20,26,32,40,48,56,64,72,80,96,112)
 NEAR_RELOCATION_LEADER_MIN_GAP=20
+# A wedge narrower than twice the 15-degree leader/line tolerance keeps its bisector leaders hidden under a ray (visible_owner_leader rejects them).
+NARROW_WEDGE_MAX_DEGREES=30.0
 TICK_LABEL_ALIGNMENT_TOLERANCE=4.0
 TICK_LABEL_MAX_EDGE_GAP=16.0
 TICK_LABEL_GAPS=(8,12,16)
@@ -458,6 +460,11 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                         box=Box(center[0]-w/2,center[1]-h/2,w,h)
                         if not (acceptable(box) and box_owned({'ownerWedge':[vertex,ws['start'],ws['delta'],ws.get('rFar',ws['rMax'])+max(w,h)]},box)):continue
                         if radius<=ws['rMax']:chosen=box;method='ANGLE_WEDGE_INSIDE';default_gaps=();break
+                        if abs(ws['delta'])<=math.radians(NARROW_WEDGE_MAX_DEGREES):
+                            # A narrow wedge cannot hold the box near the arc, and a leader from the arc would run within the line-hiding
+                            # tolerance of both rays (so visible_owner_leader refuses it). The label goes farther out inside the same angle,
+                            # where it is still unambiguously inside it.
+                            chosen=box;method='ANGLE_WEDGE_INSIDE_FAR';default_gaps=();break
                         # Farther than a reader associates with the arc: a visible leader from the arc to the label.
                         # The leader leaves the outer arc in the direction of the label (a segment lying on the bisector would block one that leaves at the bisector).
                         phi=math.atan2(center[1]-vertex[1],center[0]-vertex[0]);start=(vertex[0]+ws['arcRadius']*math.cos(phi),vertex[1]+ws['arcRadius']*math.sin(phi))
