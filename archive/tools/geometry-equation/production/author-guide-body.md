@@ -33,6 +33,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 수직선만 필요한 풀이(두 부등식 해의 교집합, 끝점이 a에 따라 움직이는 해집합, 정수해, 수직선 위 내분점): `number-line-figure-v1`. `numberLine.rows`에 해집합을 한 줄씩(`SET`) 쓰면 같은 눈금 위에 겹쳐 그려지고, `RESULT` 줄은 위 줄들의 공통 범위를 엔진이 계산해 마지막 줄로 그린다(그 끝점은 직접 쓰지 않는다). 한 줄은 구간 한두 조각(`x<-1 또는 x>2`는 두 조각)이고, 끝점은 `{"value":"-1","state":"OPEN"}`(OPEN은 <, >, CLOSED는 ≤, ≥), 끝이 무한이면 `null`, 끝이 근호이면 정확한 문자열 `{"value":"-sqrt(10)","state":"OPEN"}`(`p+q*sqrt(r)` 꼴, 한 plan에 근호 하나; 소수는 안 된다, 관련 오류 `NUMBER_LINE_VALUE_INVALID`/`NUMBER_LINE_RADICALS_MIXED`; 근호 끝값이 다른 끝과 너무 가까우면(`3`과 `sqrt(10)`) `NUMBER_LINE_LABELS_TOO_CLOSE`이니 공통 범위 줄(RESULT)을 빼고 줄만 비교한다), 끝이 a에 따라 움직이면 `{"param":{"mul":"1/3","add":"2/3"},"state":"OPEN"}`(=mul*a+add, 라벨은 분수가 세로로 쌓인 (a+2)/3으로 엔진이 쓴다)이다. `param` 끝이 있으면 `"parameter":{"name":"a","value":"-1"}`로 **그림을 그릴 a의 값**을 정한다(그림에 "a=-1 일 때의 그림"이 표시된다). 풀이가 다루는 경우(경계값 등)를 골라 쓰고 caption에 밝힌다. a에 따라 해의 모양이 달라지는 풀이는 그 한 경우만 그려지니 전체 답의 그림인 척 쓰지 않는다. 정수점은 해당 줄에 `"integerPoints":true`(유계) 또는 `{"range":["-5","5"]}`(최대 25개)를 쓴다. 내분점은 `{"kind":"POINTS","points":[{"id":"A","value":"-2"},{"id":"B","value":"4"},{"id":"P","divides":{"from":"A","to":"B","ratio":["1","2"]}}]}`로 쓰면 P가 AP:PB=1:2인 자리에 놓이고 AP, PB 위에 1, 2가 표시된다(외분점은 안 된다). 이차함수 그래프가 풀이에 필요하면 이것이 아니라 `quadratic-inequality-chain-v1`을 쓴다. 판 전체 모양은 `{"capability":"number-line-figure-v1","numberLine":{"parameter":{...},"rows":[...]},"numberLineCaption":{"text":"두 해의 공통 범위"},"caption":...,"sourceConditions":...,"newVisualInformation":...}`다.
 - 입체도형(각기둥·각뿔·각뿔대·원기둥·원뿔·원뿔대·구·반구)을 숨은 모서리 점선·꼭짓점 이름·길이와 함께, 또는 각기둥·각뿔·원기둥·원뿔의 전개도, 회전축을 지나는 단면, 원뿔 모양 그릇의 수면: `solid-figure-v1`(아래 3-입체). 치수를 실제 길이로 쓰면 엔진이 3차원 모델에서 투영·숨은선·전개를 계산한다.
 - 통계·확률 그림(도수분포 히스토그램·도수분포다각형·상대도수 그래프, 줄기와 잎 그림, 상자그림, 산점도, 두 주사위의 6×6 표, 확률 수형도): `stat-chart-figure-v1`. 자료의 값만 정확히 주면 눈금, 막대 높이, 다각형 꼭짓점, 사분위수, 표의 칸 색칠, 경로 확률은 엔진이 계산한다. 자세한 쓰는 법은 아래 3-11절.
+- 집합 벤다이어그램(1~3개 집합의 원소 배치, 합집합·교집합·차집합·여집합 영역 색칠, B⊂A 포함관계)과 유한집합 대응도(X→Y, 합성 X→Y→Z, 함수와 역방향 화살표 한 그림): `set-diagram-figure-v1`. 원소가 어느 집합에 속하는지와 색칠할 집합식만 정확히 주면 원자 영역, 색칠 기하, 원소 위치는 엔진이 계산한다. 자세한 쓰는 법은 아래 3-12절.
 
 ### 3-1. 작도 연산: 내분·외분점, 무게중심, 대칭점, 수선, 평행이동
 
@@ -71,7 +72,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 | 로그 A·log_a(kx+b)+C (정수·분수·근호 밑) | `logarithmic-affine-spike-v1` / `logarithmic-affine` | `coefficients` [A,k,b,C], `base`, `sourceDomain:{"kind":"NATURAL_LOG_AFFINE"}` |
 | 지수+로그 두 곡선 (역함수, y=x) | `exp-log-pair-spike-v1` / `exp-log-pair` | `curves`(정확히 2개: `id`, `family`, `base`, `coefficients`, `sourceDomain`, 선택 `shiftX`), `identityLine:true\|false` |
 | 사인·코사인·탄젠트 | `trigonometric-spike-v1` / `trigonometric` | `function:"SIN"\|"COS"\|"TAN"`, `coefficients` [A,k,C], `phasePi`(π의 유리수 배), 정의역 ALL_REALS (TAN은 `ALL_REALS_WITH_TAN_POLES`) |
-| 삼각함수 일반형 (π 계수·평행이동·여러 주기) | `trigonometric-spike-v1` / `trigonometric` | `ratePi`(k=mπ, `coefficients` [A,C]) 또는 `coefficients` [A,k,C], `phasePi`/`phase`, `sourceDomain:{"kind":"INTERVAL","range":[lo,hi]}` 또는 `INTERVAL_PI`, 선택 `keyPoints`, `axisTickPi` (아래 3-12절) |
+| 삼각함수 일반형 (π 계수·평행이동·여러 주기) | `trigonometric-spike-v1` / `trigonometric` | `ratePi`(k=mπ, `coefficients` [A,C]) 또는 `coefficients` [A,k,C], `phasePi`/`phase`, `sourceDomain:{"kind":"INTERVAL","range":[lo,hi]}` 또는 `INTERVAL_PI`, 선택 `keyPoints`, `axisTickPi` (아래 3-13절) |
 
 가장 작은 예: `{"capability":"exponential-affine-spike-v1","graphPlan":{"family":"exponential-affine","coefficients":["1","1","0"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-2,2],"viewport":[-3,3,-2,12]},"caption":"지수함수의 증가와 점근선"}`
 밑이 있는 예: `{"capability":"exponential-affine-spike-v1","graphPlan":{"family":"exponential-affine","base":"2","shiftX":"1","coefficients":["1","1","3"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-2,2],"viewport":[-3,3,-2,12]},"caption":"y=2^(x-1)+3의 그래프"}` (기준점 (1,4), 점근선 y=3)
@@ -82,7 +83,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 삼차·사차의 **중근**: 계수를 주면 근의 중복도를 SymPy로 정확히 계산해, 짝수 중복(2·4중근)은 x축에 접하고 홀수 중복(3중근)은 x축을 뚫으며 평평하게 지난다. 독립 관측기가 최종 SVG에서 근 위의 점, 접하는 쪽(짝수) 또는 부호가 바뀌는지(홀수), 3중근의 평평한 구간을 다시 확인한다. 근이 1 CSS px보다 가까우면 `OVERVIEW_ROOTS_BELOW_DISPLAY_RESOLUTION`/`OVERVIEW_FEATURES_BELOW_DISPLAY_RESOLUTION`(UNSUPPORTED)이다. 근의 위치를 고정할 수 없을 만큼 넓은 중근은 `UNSUPPORTED_CUBIC_QUARTIC_REPEATED_ROOT_IMPRECISE`다(3·4차 중근은 유리수 또는 p+q√r이라 실제로는 거의 없다). 식은 x^3-3/4*x-1/4처럼 분수를 세로로 쌓아 쓰고, 분수 둘레에 괄호를 남기지 않는다.
 - 지수·로그는 **밑을 생략하면 자연밑 e**이고, `base`로 양의 정수("2", "3"), 양의 분수("1/2", "3/2"), `sqrt(n)`(n은 1보다 큰 제곱인수가 없는 정수, 예: "sqrt(2)", "sqrt(3)")을 쓸 수 있다. 엔진과 관측기는 `base`와 유리수 계수에서 곡선·기준점·점근선·정의역 경계를 각각 SymPy로 다시 계산한다. `base`가 문자 a이거나 0 이하·1이면 `*_BASE_GRAMMAR_REQUIRED`/`*_BASE_OUT_OF_RANGE`, 중첩근호·제곱수 근호(`sqrt(2+sqrt(3))`, `sqrt(4)`, `sqrt(8)`)는 `*_BASE_RADICAL_NOT_SQUARE_FREE`로 거절한다. 소수 밑도 안 된다. 지수 `shiftX`는 정확한 정수·분수 문자열만 된다.
 - 두 곡선은 `exp-log-pair-spike-v1`에서만 되고 **정확히 두 개**다. 각 곡선의 `sourceDomain`은 계열 규칙을 그대로 따르고, 두 곡선의 표시 구간이 겹치지 않거나 폭이 16을 넘으면 `EXP_LOG_PAIR_NO_SHARED_WINDOW`/`EXP_LOG_PAIR_WINDOW_TOO_WIDE`다. `identityLine:true`는 점선 `y=x`를 함께 그린다. 교점의 정확한 좌표 표시, 곡선 위의 임의 점·삼각형·색칠 영역은 이 계열에서 지원하지 않는다.
-- 삼각함수는 기본 문법에서 정의역 전체의 **한 주기**(SIN·COS) 또는 **인접한 두 극 사이 한 가지**(TAN)만 그리고, k는 유리수다(`sin πx`처럼 k에 π가 들면 안 된다. `phasePi`만 π의 배수를 받는다). 구간을 제한한 그래프와 직선·수평선과의 교점 개수(사인·코사인만)는 아래 3-7절, π 계수·평행이동·여러 주기·탄젠트 점근선은 3-12절, 합성·거듭제곱, 두 함수의 비교는 안 된다.
+- 삼각함수는 기본 문법에서 정의역 전체의 **한 주기**(SIN·COS) 또는 **인접한 두 극 사이 한 가지**(TAN)만 그리고, k는 유리수다(`sin πx`처럼 k에 π가 들면 안 된다. `phasePi`만 π의 배수를 받는다). 구간을 제한한 그래프와 직선·수평선과의 교점 개수(사인·코사인만)는 아래 3-7절, π 계수·평행이동·여러 주기·탄젠트 점근선은 3-13절, 합성·거듭제곱, 두 함수의 비교는 안 된다.
 - 곡선은 한 개다(위 표의 계열 기준. 이어진 조각 그래프와 직선은 3-3). 직선(`y=-1/2`, `y=x+k`; 단 사인·코사인과 직선은 3-7절), 수직선, 둘째 곡선(이차함수 둘은 3-6), 색칠 영역, 보조선은 같이 그릴 수 없다. 교점의 개수를 보이는 풀이면 이 그림이 풀이의 전부를 보여 주지 못하니 UNSUPPORTED로 쓴다. 곡선의 모양만 풀이가 쓸 때(점근선, 정의역 경계, 주기·극값, 꺾이는 점)에 쓴다.
 - 유리함수는 분자·분모 모두 일차, 절댓값은 `|일차식|` 하나, 조각은 두 조각이고 꺾임점이 구간 안쪽이다. `|x²-2x|` 같은 이차식의 절댓값은 `piecewise-polynomial-spike-v1`을 쓴다.
 - 눈금: 기본 눈금은 x=1, y=1 두 곳이다. 곡선이 그 눈금 숫자 자리를 실제로 지나가면(코사인의 최댓값 y=1, 로그의 기준점 x=1) 숫자가 곡선에 겹쳐 `LAYOUT_INVENTORY_INCOMPLETE`(`unresolved: tick-y-1-label` 등)로 거절된다. 엔진이 숫자를 곡선 위에 얹지 않는 것이 맞으니, 이때는 plan에 `axisTickValues:{"x":[],"y":[]}`(또는 겹치지 않는 값만)를 쓴다. 최댓값·기준점 같은 특징점의 값은 엔진이 따로 표시한다.
@@ -406,7 +407,30 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 
 **오류와 한계.** 거절 코드: `STAT_CLASS_WIDTH_UNEQUAL`(계급 크기가 다름), `STAT_FREQUENCY_COUNT_MISMATCH`(도수 개수가 계급 수와 다름), `STAT_FREQUENCY_TOTAL_MISMATCH`(말한 총합이 합과 다름), `STAT_RELATIVE_SUM_NOT_ONE`, `STAT_STEM_MARK_INVALID`, `STAT_BOX_NEEDS_FOUR_VALUES`, `STAT_BOX_SUMMARY_NOT_ORDERED`, `STAT_POINT_OUTSIDE_RANGE`, `STAT_RANGE_NOT_ON_STEP`, `STAT_DICE_EXPR_INVALID`(a, b 말고 다른 문자), `STAT_DICE_PREDICATE_INVALID`, `STAT_TREE_BRANCH_PROBABILITY_SUM`, `STAT_TREE_PROBABILITY_MIXED`. 그릴 자리가 없으면 `STAT_LABEL_OUT_OF_BOUNDS`/`STAT_LABELS_TOO_CLOSE`/`STAT_CHART_RENDERED_LAYOUT_FAIL`이니 제목을 줄이거나 계급을 줄이거나 `showValues`를 끈다. 원그래프, 범주형 막대그래프, 누적도수 그래프, 계급 크기가 다른 히스토그램, 값이 사라진 막대(?)는 지원하지 않으니 EXEMPT나 UNSUPPORTED를 쓴다. 이 그림은 문제에 이미 있는 그림을 다시 그리는 것이므로, 풀이에서 쓰는 값만 강조하고 정답을 그림에 쓰지 않는다.
 
-### 3-12. 삼각함수 일반형: 진폭·주기·평행이동, π 계수, 탄젠트 가지: `ratePi`, `phase`, `keyPoints`, `axisTickPi`
+### 3-12. 집합: 벤다이어그램 영역 색칠과 유한집합 대응도 (`set-diagram-figure-v1`)
+
+풀이가 **집합의 영역 관계**를 보여 주거나 **유한집합 사이의 대응(화살표)**을 따라가야 할 때 쓴다. 좌표평면이 아니라 교과서 모양의 집합 그림이며, plan에는 문제가 정한 집합·원소·대응만 쓰고 원자 영역의 기하와 색칠 영역, 원소가 놓일 자리는 엔진이 계산한다. 독립 관측기가 같은 plan에서 영역과 집합식을 다시 계산해 최종 SVG의 색칠 경로를 표본점으로, 원소 라벨 상자를 그린 원으로, 화살표를 시작·끝 라벨 상자로 다시 확인한다.
+
+```json
+{"capability":"set-diagram-figure-v1",
+ "diagram":{"kind":"VENN","sets":[{"id":"A"},{"id":"B"}],
+            "elements":[{"text":"9","in":["A"]},{"text":"9","in":["A","B"]},{"text":"10","in":["B"]},{"text":"12","in":[]}],
+            "shade":"(A∩B)∪(A∪B)^c"},
+ "caption":"...","sourceConditions":[{"id":"c1","condition":"...","mappedTo":"diagram"}],"newVisualInformation":["..."]}
+```
+
+| kind | 쓰는 곳 | 필요한 자료 |
+|---|---|---|
+| `VENN` | 전체집합 U와 1~3개 집합의 벤다이어그램, 영역 색칠, 포함관계 | `sets`, `elements`(선택), `shade`(선택), `subset`(선택) |
+| `MAPPING` | 두 집합 X, Y(또는 X→Y→Z)의 원소를 화살표로 잇는 대응도 | `columns`, `arrows`, `highlight`(선택) |
+
+**벤다이어그램.** `sets`는 1~3개이며 각 항목은 `{"id":"A","name":"A"}`다(id는 U가 아닌 대문자 한 글자, name은 생략하면 id). `elements`는 그림에 실제로 쓸 유한 원소이고, `in`에는 그 원소가 속한 집합 id를 **모두** 적는다(어디에도 속하지 않으면 `[]`). 엔진은 `in`으로 원자 영역을 정하고 그 영역 안에 원소 글자를 놓는다. 원소 글자가 구간·부등식처럼 보이면(`1≤x≤3`, `2<x<5` 등) 거절하니 유한 원소만 쓴다. `shade`는 U와 집합 id로 쓴 집합식이며 합집합 `∪`, 교집합 `∩`, 차집합 `-`, 괄호, 오른쪽 위 여집합 `^c`(또는 `ᶜ`)를 지원한다(예: `"(A∩B)∪(A∪B)^c"`, `"A-B"`, `"(A∪B)^c"`). 색칠할 영역이 없으면 `SET_SHADE_EMPTY`다. 두 집합의 포함관계 B⊂A는 `"subset":["B","A"]`(안쪽, 바깥쪽)로 쓰며, B는 A 안에 완전히 들어가게 그려지고 B만 있는 영역은 비어 있다(그 영역에 원소를 두면 `SET_ELEMENT_REGION_EMPTY`).
+
+**대응도.** `columns`는 2~3개이고 각 항목은 `{"id":"X","name":"X","elements":["1","2","3"]}`다. 열 id는 대문자+선택적 숫자(`X`, `Y`, `X2`)이고 이름은 생략하면 id다. 같은 집합에서 자기 자신으로 가는 함수는 열 두 개의 `name`을 같게 쓰고 id만 다르게 한다. 원소는 열마다 1~8개, 중복 없는 짧은 값이어야 한다. `arrows`는 `{"from":{"column":0,"element":0},"to":{"column":1,"element":1},"style":"SOLID"|"DASHED"}`이며 `column`·`element`는 0부터 세는 위치다. 화살표는 **이웃한 두 열 사이**를 어느 방향으로든 잇는다(X→Y와 Y→X를 한 그림에 같이 쓰면 함수와 그 역방향 대응을 대조할 수 있고, X→Y→Z 합성도 된다). 같은 쌍을 두 번 쓰면 `MAPPING_ARROW_DUPLICATE`, 멀리 떨어진 열을 이으면 `MAPPING_ARROW_DIRECTION_UNSUPPORTED`다. 한 원소에서 화살표가 둘 이상 나가도 되지만(함수가 아닌 대응) 그 사실을 caption에서 밝힌다. `highlight`는 `{"arrows":[0,2]}`로 화살표를 굵게, `{"elements":[{"column":1,"element":0}]}`로 원소 뒤에 옅은 바탕을 넣는다(합성 경로나 역함수 추적을 강조할 때).
+
+**오류와 한계.** 집합 4개 이상, 열 4개 이상, 열당 원소 9개 이상, 벤다이어그램 원소 13개 이상은 지원하지 않는다(`SET_COUNT_UNSUPPORTED`, `MAPPING_COLUMN_COUNT_UNSUPPORTED`, `MAPPING_TOO_MANY_ELEMENTS`, `SET_TOO_MANY_ELEMENTS`). 집합을 `{x|x≤10}` 같은 무한집합·구간 기호로 직접 쓰지 말고, 문제가 말한 유한 원소만 `elements`에 넣는다. 원소 글자가 영역에 들어갈 자리가 없으면 `SET_ELEMENT_NO_ROOM`/`SET_LABEL_NO_ROOM`, 집합 이름이 들어갈 자리가 없으면 `SET_LABEL_NO_ROOM`이니 원소 수나 집합 수를 줄인다. 대응도의 화살표가 다른 원소 글자를 가로지르면 `MAPPING_ARROW_BLOCKS_LABEL`, 원소 글자가 타원 밖으로 나가면 `MAPPING_ELEMENT_OUT_OF_OVAL`이다. 정답을 그림에 쓰지 말고 풀이에서 쓰는 값·영역·대응만 표시한다.
+
+### 3-13. 삼각함수 일반형: 진폭·주기·평행이동, π 계수, 탄젠트 가지: `ratePi`, `phase`, `keyPoints`, `axisTickPi`
 
 `y=a·sin(bx+c)+d`처럼 **b가 π의 유리수 배수이거나 c가 π의 배수·라디안인** 사인·코사인·탄젠트 그래프, 그리고 여러 주기를 한 그림에 보이는 풀이에 쓴다. 기본 한 주기·π 구간 문법(3-2, 3-7)은 그대로 두고 아래 필드만 더한다.
 
