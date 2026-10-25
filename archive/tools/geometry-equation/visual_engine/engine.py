@@ -44,6 +44,8 @@ def mark_label(label_id,target,text,label_kind,at,extra):
     return label
 
 REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
+# A light neutral grey, clearly apart from the cooler region fills above, so an angle sector stays distinguishable from a shaded area.
+SECTOR_FILL='#d9d9d9'
 
 def _region_label_centres(polygons,obstacles,step=3.0,limit=900):
     """Interior points of an even-odd region (screen px), widest clearance first (from its boundary and from every stroke inside it): where a label has the most room."""
@@ -420,12 +422,19 @@ def prepare(spec):
                 size=tokens['rightAngleSize'];u=[(a[i]-v[i])/math.dist(a,v)*size for i in range(2)];w=[(b[i]-v[i])/math.dist(b,v)*size for i in range(2)]
                 pts=[(v[0]+u[0],v[1]+u[1]),(v[0]+u[0]+w[0],v[1]+u[1]+w[1]),(v[0]+w[0],v[1]+w[1])]
             elif obj.get('arcs') is not None:
-                # Textbook angle arcs: 1-3 concentric arcs (equal angles share the count) around the vertex, from one ray to the other.
+                # Textbook angle marks: 1-3 concentric arcs (equal angles share the count) around the vertex, from one ray to the other,
+                # with a small light sector filling the wedge up to the outermost arc (style SECTOR, the default); style ARC keeps strokes only.
                 count=obj['arcs'];rays=min(math.dist(a,v),math.dist(b,v))
                 if isinstance(count,bool) or not isinstance(count,int) or not 1<=count<=3:raise ValueError('ANGLE_ARC_COUNT_INVALID')
+                style=obj.get('style','SECTOR')
+                if style not in {'SECTOR','ARC'}:raise ValueError('ANGLE_MARK_STYLE_INVALID')
                 ring=obj.get('ring',1);first=min(28.0,max(16.0,.25*rays))+9.0*(ring-1)
                 if rays<first+4.5*(count-1)+8:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
                 steps=max(16,math.ceil(abs(math.degrees(delta))/4));outer_radius=first+4.5*(count-1)
+                if style=='SECTOR':
+                    # The fill's boundary is the outermost arc, so the darkest edge of the wedge is a real stroke drawn over it.
+                    wedge=[v]+[(v[0]+outer_radius*math.cos(start+delta*i/steps),v[1]+outer_radius*math.sin(start+delta*i/steps)) for i in range(steps+1)]
+                    primitive({'id':oid+'-sector','kind':'polygon','points':wedge,'token':'secondaryShape','layer':12,'role':'angleSector','mark':'angle','markId':oid,'markIndex':0,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER','fill':SECTOR_FILL,'noStroke':True,'ownerPoints':obj['refs']})
                 for k in range(count):
                     radius=first+4.5*k
                     primitive({'id':oid+'-arc-'+str(k+1),'kind':'polyline','points':[(v[0]+radius*math.cos(start+delta*i/steps),v[1]+radius*math.sin(start+delta*i/steps)) for i in range(steps+1)],'token':'secondaryShape','layer':60,'role':'indicator','ownerPoints':obj['refs'],'mark':'angle','markId':oid,'markIndex':k+1,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER'},'curve')

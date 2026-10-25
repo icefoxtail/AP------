@@ -15,6 +15,8 @@ PERP_TOLERANCE=1.0           # degrees: a tick against its segment's normal, a t
 LENGTH_RELATIVE=1e-6
 TICK_LENGTH_PX=11.0
 LABEL_CLEARANCE=1.0          # px between a label box and any drawn line or mark
+SECTOR_FILL='#d9d9d9'        # style SECTOR: the light wedge; must never be one of the region fills
+SECTOR_TOLERANCE=0.02        # px: a sector vertex/radius against the vertex and the outermost arc stroke
 
 def tag(node):return node.tag.split('}')[-1]
 def sub(p,q):return (p[0]-q[0],p[1]-q[1])
@@ -113,10 +115,25 @@ def audit(p):
         if min(point_segment_distance(b,e0,e1) for e0,e1 in edges)>1.5:errors.append('MARK_LEADER_NOT_ON_LABEL:'+label_id)
         return True
 
-    # ---- angle arcs
+    # ---- angle marks: 1-3 stroke arcs and, for style SECTOR (the default), the filled wedge beneath them
     drawn_angles={}
+    document=list(root.iter());order={id(n):i for i,n in enumerate(document)}
+    def stroke_before(node):
+        """True when some drawn stroke, point or label comes before the node in the document (a fill would cover it)."""
+        mine=order[id(node)]
+        for n in document:
+            if order[id(n)]>=mine:continue
+            t=tag(n)
+            if t in {'line','polyline','polygon','circle','path'} and n.get('stroke') not in (None,'none'):return True
+            if t=='g' and n.get('data-fragment-sha'):return True
+        return False
     for row in marks.get('angles',[]):
-        oid=row['id'];arcs=sorted(by_mark.get(('angle',oid),[]),key=lambda n:int(n.get('data-mark-index','0')))
+        oid=row['id'];nodes=by_mark.get(('angle',oid),[])
+        arcs=sorted((n for n in nodes if tag(n)=='polyline'),key=lambda n:int(n.get('data-mark-index','0')))
+        sectors=[n for n in nodes if tag(n)=='polygon']
+        style=row.get('style','SECTOR')
+        if style=='SECTOR' and len(sectors)!=1:errors.append('ANGLE_SECTOR_MISSING:'+oid)
+        elif style!='SECTOR' and sectors:errors.append('ANGLE_SECTOR_UNEXPECTED:'+oid)
         a,v,c=[peer_point(r) for r in row['refs']];inner=angle_between(a,v,c)
         if inner is None:errors.append('ANGLE_MARK_DEGENERATE:'+oid);continue
         outer=row.get('side','INNER')=='OUTER';expected=360-inner if outer else inner
@@ -138,7 +155,25 @@ def audit(p):
         if abs(drawn-expected)>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:points=%.3f'%(drawn,expected))
         if row.get('value') is not None and abs(drawn-float(row['value']))>ANGLE_TOLERANCE:errors.append('ANGLE_MARK_FACT_MISMATCH:'+oid+':drawn=%.3f:declared=%s'%(drawn,row['value']))
         if len(radii)>1 and any(r1-r0<=1e-9 for r0,r1 in zip(radii,radii[1:])):errors.append('ANGLE_ARCS_NOT_CONCENTRIC_INCREASING:'+oid)
-        drawn_angles[oid]=drawn;observations.append({'id':oid,'type':'ANGLE','drawnDegrees':drawn,'pointsDegrees':expected,'arcs':len(arcs)})
+        if sectors:
+            node=sectors[0]
+            if node.get('stroke') not in (None,'none'):errors.append('ANGLE_SECTOR_STROKE_PRESENT:'+oid)
+            if str(node.get('fill','')).lower()!=SECTOR_FILL:errors.append('ANGLE_SECTOR_FILL_MISMATCH:'+oid)
+            wedge=poly_model(node)
+            if len(wedge)<3:errors.append('ANGLE_SECTOR_MISSING:'+oid)
+            else:
+                if norm(sub(wedge[0],v))*sx>SECTOR_TOLERANCE:errors.append('ANGLE_SECTOR_NOT_AT_VERTEX:'+oid)
+                distances=[norm(sub(q,v)) for q in wedge[1:]];mean=sum(distances)/len(distances)
+                if max(distances)-min(distances)>SECTOR_TOLERANCE/sx:errors.append('ANGLE_SECTOR_NOT_AT_VERTEX:'+oid)
+                if abs(mean-max(radii))*sx>SECTOR_TOLERANCE:errors.append('ANGLE_SECTOR_RADIUS_MISMATCH:'+oid)
+                first=wrap180(direction_degrees(sub(wedge[1],v))-direction_degrees(sub(a,v)));last=wrap180(direction_degrees(sub(wedge[-1],v))-direction_degrees(sub(c,v)))
+                if abs(first)>RAY_TOLERANCE or abs(last)>RAY_TOLERANCE:errors.append('ANGLE_SECTOR_RAY_MISMATCH:'+oid)
+                total=sum(wrap180(direction_degrees(sub(q1,v))-direction_degrees(sub(q0,v))) for q0,q1 in zip(wedge[1:],wedge[2:]))
+                if abs(abs(total)-expected)>ANGLE_TOLERANCE:errors.append('ANGLE_SECTOR_SWEEP_MISMATCH:'+oid+':drawn=%.3f:points=%.3f'%(abs(total),expected))
+                if signed!=0 and total*signed<=0:errors.append('ANGLE_SECTOR_SIDE_MISMATCH:'+oid)
+                if stroke_before(node):errors.append('ANGLE_SECTOR_NOT_BENEATH_STROKES:'+oid)
+                observations.append({'id':oid+'-sector','type':'ANGLE_SECTOR','drawnDegrees':abs(total),'radius':mean,'atVertex':bool(norm(sub(wedge[0],v))*sx<=SECTOR_TOLERANCE)})
+        drawn_angles[oid]=drawn;observations.append({'id':oid,'type':'ANGLE','drawnDegrees':drawn,'pointsDegrees':expected,'arcs':len(arcs),'style':style})
         if row.get('noLabel') is not True and (row.get('label') is not None or row.get('value') is not None):
             box=label_clear(oid+'-label')
             if box is not None:
