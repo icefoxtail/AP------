@@ -68,9 +68,25 @@ const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, before
   // Older partial registrations can approve several fields while explicitly
   // leaving concept/template fields pending. Allow the audit to bind only the
   // exact fields still marked pending; fully approved fields remain immutable.
-  const fieldExplicitlyPending = current.reviewStatus === "manual_review" &&
-    current.metadataStatus === "approved_partial_with_explicit_holds" &&
-    pendingStatusKeys.some(key => current.fieldStatus?.[key] === "manual_review_pending");
+  // Some source rows retain an overall reviewed_pass while marking individual
+  // PT/TPL/CC fields as manual_review_pending. The exact field marker plus the
+  // explicit partial-hold status is the pending authority; the row-level
+  // review label must not hide it. The MIDDLE_RECERT snapshot also uses the
+  // narrower projection_unmaterialized marker for an empty PT/TPL slot.
+  const fieldExplicitlyPending = current.metadataStatus === "approved_partial_with_explicit_holds" &&
+    pendingStatusKeys.some(key => current.fieldStatus?.[key] === "manual_review_pending") ||
+    ["problemTypeKey", "templateKey"].includes(field) && (current[field] === null || current[field] === "") &&
+      current.reviewStatus === "reviewed_pass" && current.metadataStatus === "approved_semantic_review" &&
+      ["projection_unmaterialized", "meta_semantic_hold"].includes(current.fieldStatus?.[pendingStatusKeys[0]]);
+  const audited = metaPipelineAudit?.audit?.records?.find(row => Number(row.questionId) === ordinal);
+  const auditedDifficulty = audited?.difficultyEvidence;
+  const currentDifficultyIsCanonical = Number.isInteger(current.difficultyBucket) && current.difficultyBucket >= 1 && current.difficultyBucket <= 5;
+  const sourceDifficultyIsCanonical = Number.isInteger(question.difficultyBucket) && question.difficultyBucket >= 1 && question.difficultyBucket <= 5;
+  const exactFlatV3DifficultyRebind = field === "difficultyBucket" && metaPipelineAudit?.inputAuditVariant === "source_drive_flat_v3" &&
+    !currentDifficultyIsCanonical && !sourceDifficultyIsCanonical && Number.isInteger(auditedDifficulty?.bucket) &&
+    auditedDifficulty.bucket >= 1 && auditedDifficulty.bucket <= 5 && final.difficultyBucket === auditedDifficulty.bucket &&
+    final.difficultyConfidence === auditedDifficulty.confidence && Object.hasOwn(patch.sourceMetadataBefore || {}, "difficultyBucket") &&
+    eq(patch.sourceMetadataBefore.difficultyBucket ?? null, question.difficultyBucket ?? null);
   const existingConcepts = current.crossConceptKeys;
   const nextConcepts = final.crossConceptKeys;
   const additiveApprovedConcepts = field === "crossConceptKeys" && approved(current) &&
@@ -80,13 +96,13 @@ const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, before
     : field === "templateKey" ? beforeTables?.tpl.get(current.templateKey) : null;
   const exactAuditedTypeRebind = isMetaPipelineApprovedTypeRebindAllowed({ field, current, priorTypeStatus: priorType?.status });
   if (approvalType !== "META_PIPELINE_AUDIT" || !metaPipelineAudit ||
-      approved(current) && !fieldExplicitlyPending && !additiveApprovedConcepts && !exactAuditedTypeRebind ||
-      !["standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys"].includes(field) ||
+      approved(current) && !fieldExplicitlyPending && !additiveApprovedConcepts && !exactAuditedTypeRebind && !exactFlatV3DifficultyRebind ||
+      !["standardUnitKey", "subUnitKey", "problemTypeKey", "templateKey", "crossConceptKeys", "conditionKeys", "difficultyBucket"].includes(field) ||
       !patch.sourceMetadataBefore || !Object.hasOwn(patch.sourceMetadataBefore, field) ||
       !eq(patch.sourceMetadataBefore[field] ?? null, question[field] ?? null)) return false;
-  const audited = metaPipelineAudit.audit.records.find(row => Number(row.questionId) === ordinal);
   const auditedValue = ["standardUnitKey", "subUnitKey"].includes(field)
     ? audited?.[field]
+    : field === "difficultyBucket" && exactFlatV3DifficultyRebind ? auditedDifficulty.bucket
     : audited?.classification?.[field];
   return auditedValue !== undefined && eq(final[field] ?? null, auditedValue ?? null);
 };
@@ -388,6 +404,9 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
         !manifestCrossConceptKeys || !eq(manifestCrossConceptKeys, classification.crossConceptKeys) ||
         !manifestConditionsMatch || !manifestUnitsMatch)
       fail(`META_PIPELINE_AUDIT manifest binding mismatch: ${ordinal}`);
+    if (record.difficultyEvidence && (patch.after?.difficultyBucket !== record.difficultyEvidence.bucket ||
+        patch.after?.difficultyConfidence !== record.difficultyEvidence.confidence))
+      fail(`META_PIPELINE_AUDIT sourceDrive v3 difficulty binding mismatch: ${ordinal}`);
     const actualPayloadHash = studentPayloadSha256(bank[ordinal - 1]);
     if (!parityRow || parityRow.questionId !== ordinal || parityRow.questionUid !== patch?.questionUid ||
         !(exactSourceHashParity || parityRow.driveSourceTextExcerptMatched === true && parityRow.driveSolutionExcerptMatched === true) ||
@@ -1156,7 +1175,8 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
     const fieldApproval = req.approval.type === "REVIEW2" ? "approved_review2" :
       req.approval.type === "META_PIPELINE_AUDIT" ? "approved_meta_pipeline_audit" : "approved_final_qa";
     const approvedFields = req.approval.type === "META_PIPELINE_AUDIT"
-      ? ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept", "condition"]
+      ? ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept", "condition",
+        ...(metaPipelineAudit?.inputAuditVariant === "source_drive_flat_v3" && final.difficultyBucket !== current.difficultyBucket ? ["difficulty"] : [])]
       : ["standardUnit", "subUnit", "concept", "problemType", "template", "crossConcept", "condition", "integrationPattern", "difficulty"];
     const fieldStatus = { ...(current.fieldStatus || {}), ...Object.fromEntries(approvedFields.map(k => [k, fieldApproval])) };
     const manualFieldHoldRemains = Object.values(fieldStatus).includes("manual_review_pending");
