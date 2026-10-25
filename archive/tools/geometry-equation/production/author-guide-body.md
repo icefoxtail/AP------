@@ -235,7 +235,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 기준 방향이 필요하면 숨은 보조점을 쓴다: `TRANSLATE_POINT`로 중심을 (1,0)만큼 옮긴 점(`factRole:DERIVED_INTERMEDIATE`, `displayPoints`에서 뺀다, 평행선·수직선과 같은 방식). 각이 주어진 문항은 반직선을 `POLAR_POINT(길이 1)`로 만들고 `LINE_THROUGH` 두 개의 `LINE_INTERSECTION`으로 꼭짓점을 얻으면 길이가 무리수여도 정확히 그려진다.
 - 보조 선·점은 `displayLines`, `displayPoints`에서 빼서 숨긴다. 화면에 나오는 선분은 `displaySegments`가 정한다.
 
-**`displaySegments` 추가 필드.** `dashed:true`(보조선 점선), `arrow:"START"|"END"|"BOTH"`(반직선·연장선의 화살촉, 끝점에 정확히 놓인다). 평면도형 모드에서만 된다(`DISPLAY_SEGMENT_STYLE_INVALID`, `DISPLAY_SEGMENT_STYLE_REQUIRES_PLANE_FIGURE`).
+**`displaySegments` 추가 필드.** `dashed:true`(보조선 점선), `arrow:"START"|"END"|"BOTH"`(반직선·연장선의 화살촉, 끝점에 정확히 놓인다). 축 없는 평면도형과 축이 있는 좌표 작도 plan(3-10절)에서 된다(`DISPLAY_SEGMENT_STYLE_INVALID`, `DISPLAY_SEGMENT_STYLE_REQUIRES_PLANE_FIGURE`).
 
 **`planeMarks`** (plan 최상위, 모든 항목은 plan이 말하는 사실이고 엔진과 관측기가 점들에서 다시 확인한다):
 
@@ -288,6 +288,30 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 오류 코드: `REGION_BOUNDARY_UNKNOWN`(모르는 점 또는 그리지 않은 변), `REGION_NOT_CLOSED`, `REGION_SELF_INTERSECTING`, `REGION_LOOPS_CROSS`, `REGION_SHAPES_OVERLAP`, `REGION_HOLE_OUTSIDE`, `REGION_ARC_SIDE_AMBIGUOUS`, `REGION_ARC_ENDPOINT_NOT_ON_CIRCLE`, `REGION_DEGENERATE`, `REGION_DEGENERATE_EDGE`, `REGION_FILL_UNSUPPORTED`, `REGION_FIELD_UNKNOWN`, `REGION_FIELD_INVALID`, `REGION_ID_INVALID`, `REGION_ID_DUPLICATE`, `REGION_REQUIRES_EQUAL_UNITS`.
 - 관측기(`plane_regions_observer.py`, `plane-marks-observer-worker.py`가 호출)는 Cindy 점에서 경계를 **다시 계산해** 최종 SVG의 even-odd `<path>`와 꼭짓점·호 끝점·호 중심·반지름·sweep을 맞춰 보고, 획이 없는지, 모든 변이 실제 획으로 그려졌는지, 칠이 모든 획·라벨 아래인지, 라벨이 영역 안에 있고 다른 라벨과 붙지 않았는지 확인한다(`REGION_VERTEX_MISMATCH`, `REGION_ARC_SIDE_MISMATCH`, `REGION_ARC_RADIUS_MISMATCH`, `REGION_BOUNDARY_NOT_DRAWN`, `REGION_NOT_BENEATH_STROKES`, `REGION_LABEL_OUTSIDE`, `REGION_LABEL_CROWDS_LABEL`, `UNDECLARED_MARK` 등).
 - **한계.** 관측기는 경계의 모양만 보고 **넓이 값 자체는 검산하지 않는다**: `label`의 수치는 원문·해설과 맞는지 사람이 확인한다(색칠이 넓이 계산을 대신하지 않는다). 한 영역은 even-odd path 하나이므로 도형이 겹치면 칠이 상쇄된다(겹침 금지). 같은 점에서 여러 획이 만나는 중심에 점 이름을 두면 자리가 없어 지시선이 붙을 수 있다. 영역 라벨이 들어갈 안쪽 여백이 없으면 `LAYOUT_INVENTORY_INCOMPLETE`로 실패하니 라벨을 줄이거나 값을 밖으로 뺀다.
+
+### 3-10. 좌표 그림의 각 표시: 축이 있는 작도에 같은 표식 (`SOURCE_COORDINATE_AXES_v1`, `planeMarks`)
+
+일반각·삼각함수의 정의, 두 동경이 이루는 각, 좌표평면 위 삼각형의 각처럼 **좌표축을 그대로 두고 각·직각·같은 길이·평행·호를 표시해야 하는** 문항에 쓴다. 그림은 이미 쓰고 있는 좌표 작도 plan(`construction-spike-v1` + `mathPlan.realization:{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false}`, `SOURCE_COORDINATES`, 축·눈금이 그려진다) 그대로이고, 3-8절의 `planeMarks`와 `displaySegments`의 `dashed`/`arrow`를 **같은 키·같은 관측기**로 쓸 수 있다. 별도의 축 없는 평면도형(`PLANE_FIGURE_v1`)으로 바꾸지 않는다: 점 좌표와 축은 원문 그대로 두고 표식만 더한다.
+
+```json
+{"capability":"construction-spike-v1",
+ "mathPlan":{"realization":{"recipeId":"SOURCE_COORDINATE_AXES_v1","unit":"source-coordinate","reflectionEquivalent":false},"nodes":[
+  {"id":"O","op":"NORMALIZATION_ORIGIN","outputType":"POINT"},
+  {"id":"X","op":"NORMALIZATION_AXIS","outputType":"POINT","args":{"length":"1"}},
+  {"id":"P","op":"SOURCE_POINT","outputType":"POINT","args":{"coordinates":["-6","0"]}},
+  {"id":"Q","op":"POLAR_POINT","inputs":["O","P"],"outputType":"POINT","args":{"length":"6","angleDeg":"-30","turn":"CCW"}}]},
+ "planeMarks":{"angles":[
+   {"id":"aXOP","refs":["X","O","P"],"value":150,"label":"θ","labelKind":"MATH","factRole":"GIVEN"},
+   {"id":"aXOQ","refs":["X","O","Q"],"value":30,"label":"5θ","labelKind":"MATH","factRole":"GIVEN"}]}}
+```
+
+- **각.** `refs`는 [한 변 위의 점, 꼭짓점, 다른 변 위의 점]이고 셋 다 화면에 나오는 점이다. 축을 한 변으로 쓰는 각은 축 위의 점(`X`, `Y` 등 실제로 그려진 점)을 첫/끝 항에 넣는다. `value`는 그려진 점들이 실제로 만드는 각(0.5° 허용)이고, 동경의 방향은 `POLAR_POINT`의 `angleDeg`/`turn`으로 만들며 표식 숫자로 맞추지 않는다. `side:"OUTER"`, `arcs` 1~3, `equalGroup`, `ring` 1~3은 3-8절과 같다.
+- **라벨 종류.** `labelKind`를 생략하거나 `"DEGREE"`면 `label` 뒤에 °가 붙고(`"60"`→60°), `"NAME"`은 `"AOB"`→∠AOB다. `"MATH"`는 식을 그대로 쓴다: `"θ"`, `"-θ"`, `"5θ"`, `"x"`가 각 이름으로 그려지고 °는 붙지 않는다(일반각 θ, 5θ처럼 크기가 아니라 이름을 보여 줄 때 쓴다).
+- **직각**은 3-8절의 `angles` 대신 기존 `rightAngles:[{"id":"raF","refs":["O","F","P"]}]`를 쓴다(축이 있는 작도에서 이미 동작한다). 같은 길이·평행·호·식 라벨·`facts`·`regions`는 3-8·3-9절 그대로이고, 좌표 그림에서는 색칠·표식도 축과 같은 좌표계 위에 놓인다.
+- **관측기.** `plane-marks-observer-worker.py`가 Cindy 점과 최종 SVG의 그려진 선만으로 각을 **다시 계산해** 말한 값과 0.5° 안에서 같은지, 부채꼴 칠이 꼭짓점에서 두 변 사이를 채우고 모든 획·라벨 아래인지, 라벨이 자기 각 안쪽에 있는지(지시선이면 호에서 시작하는지), 같은 모둠의 호 개수·길이 표식·평행 화살표가 맞는지, 선언하지 않은 표식이 없는지 확인한다. 좁은 각(예: 30°)은 라벨이 두 변을 피해 이등분선을 따라 바깥으로 밀려 놓이고, 그래도 자리가 없으면 `POLISH_REQUIRED`다.
+- **함수 그래프는 안 된다.** `planeMarks`·점선·화살촉은 작도 plan의 사실 표시이므로 그래프 plan(`polynomial-spike-v1`, `piecewise-*`, `INTERVAL_PI` 등)에 넣으면 `PLANE_MARKS_UNSUPPORTED_ON_GRAPH`로 거절한다. 직선과 x축이 이루는 각, 교점의 각, 수선의 발의 직각이 필요하면 그 점·선을 실제로 만드는 **좌표 작도 plan**으로 그린다.
+- **오류.** 3-8절의 표식 오류 코드가 그대로 나오고, 좌표 그림에서만 추가로 `PLANE_MARKS_UNSUPPORTED_ON_GRAPH`(그래프 plan에 표식을 넣음)가 있다. 표식 id는 노드·선분 id와 달라야 하고 정해진 키만 쓴다.
+- **한계.** 3-8절과 같다: 한 꼭짓점에 각이 4개 이상이거나 5° 미만, 라벨이 들어갈 자리가 없는 좁은 각은 표식을 줄이거나 `noLabel`을 쓴다.
 
 ### 3-입체. 중학교 입체도형·전개도: 숨은 모서리 점선, 이름·길이 라벨, 전개도 (`solid-figure-v1`)
 
@@ -410,6 +434,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - `SOURCE_QUOTE_MISSING` / `SOURCE_QUOTE_NOT_IN_ITEM` (작성 파이프라인의 실행기가 내는 코드): plan 최상위에 `sourceQuote`를 넣는다. 12~40자, 이 문항의 발문 또는 풀이에서 글자 그대로 복사한다.
 - `POLAR_POINT` 오류 `INVALID_POLAR_LENGTH`/`INVALID_POLAR_ANGLE`/`INVALID_POLAR_TURN`/`DEGENERATE_POLAR_REFERENCE`, 평면도형 오류 `PLANE_FIGURE_HAS_FRAME_HELPERS`/`PLANE_FIGURE_SOURCE_POINT_REQUIRED`/`REALIZATION_RECIPE_REQUIRED`: 3-8절의 모양으로 고친다.
 - 표식 오류(3-8절): `ANGLE_MARK_FACT_MISMATCH`(말한 각이 점들이 만드는 각과 다르다: 작도를 고친다), `ANGLE_MARK_DEGENERATE`/`ANGLE_ARC_TOO_SMALL`(세 점이 일직선이거나 5° 미만), `ANGLE_MARK_STYLE_INVALID`(`style`은 `SECTOR`·`ARC`), `ANGLE_MARK_LABEL_REQUIRED`, `ANGLE_EQUAL_GROUP_MISMATCH`/`_ARC_COUNT`/`_STYLE_MISMATCH`/`_AMBIGUOUS`, `EQUAL_MARK_LENGTH_MISMATCH`, `PARALLEL_MARK_NOT_PARALLEL`, `EQUAL_MARK_GROUP_AMBIGUOUS`/`PARALLEL_MARK_GROUP_AMBIGUOUS`, `MARK_COUNT_INVALID`, `MARK_SEGMENT_TOO_SHORT`, `MARK_TARGET_UNKNOWN:<id>`, `MARK_ID_DUPLICATE`, `MARK_FIELD_UNKNOWN`, `ARC_ENDPOINT_NOT_ON_CIRCLE`, `ARC_SIDE_AMBIGUOUS`, `ARC_CENTER_MISMATCH`, `FACT_TARGET_NOT_DRAWN`. 최종 SVG를 읽은 관측기 판정 `PLANE_MARKS_AUDIT_FAIL`(오류 목록의 `MARK_LABEL_OVERLAPS`, `ANGLE_LABEL_NOT_IN_ANGLE`, `ANGLE_SECTOR_*`, `UNDECLARED_MARK` 등)은 표식이나 라벨을 줄이고 그림을 키운다. 자리가 없으면 `LAYOUT_INVENTORY_INCOMPLETE`(점 이름·라벨 자리 부족)이니 같은 처방이다.
+- 좌표 그림의 표식(3-10절): 3-8절 오류가 그대로 나오고, 그래프 plan에 `planeMarks`나 점선·화살촉 `displaySegments`를 넣으면 `PLANE_MARKS_UNSUPPORTED_ON_GRAPH`다. 축을 그대로 두는 좌표 작도 plan으로 다시 쓴다(축 없는 `PLANE_FIGURE_v1`으로 바꾸지 않는다).
 - `INEQUALITY_SOLUTION_NOT_ONE_INTERVAL`: 해가 두 조각이다. 풀이의 조건을 `domain`으로 옮기거나 그림을 포기한다.
 - `NUMBER_LINE_LABELS_TOO_CLOSE` / `NUMBER_LINE_INTEGER_POINTS_TOO_DENSE`: 정수점 범위를 좁힌다. 수직선 그림이면 끝점이 너무 가까운 것이니 a의 표본값을 바꿔 끝점 사이를 벌린다.
 - `NUMBER_LINE_RESULT_EMPTY` / `NUMBER_LINE_RESULT_IS_A_POINT` / `NUMBER_LINE_TOO_MANY_PIECES`: 공통 범위가 공집합, 한 점, 세 조각 이상이다. 표본값 a를 풀이가 다루는 경우로 바꾸거나 그림을 포기한다.
