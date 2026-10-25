@@ -1,0 +1,723 @@
+{
+  "schemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "auditTimestamp": "2026-10-25T04:55:38.229228+00:00",
+  "examTitle": "21_순천고_1학기_중간_고1_기출",
+  "sourceDriveId": "1DNtntPCXJgG89kftg45XtAVHcOIZPkMt",
+  "sourceSha256": "1c1f454b6f67fbe87a329f1cfc3310264b67afb9f7574abad2896d6eb411d910",
+  "totalQuestions": 22,
+  "totalApproved": 22,
+  "totalHold": 0,
+  "auditStatus": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x=2+i$, $y=2-i$일 때, $\\dfrac{y}{x}+\\dfrac{x}{y}$의 값은? [3.9점]",
+        "solutionDecisiveExcerpt": "복소수의 나눗셈은 분모의 켤레복소수를 곱하여 계산한다.\n$x=2+i$, $y=2-i$이므로 $xy=(2+i)(2-i)=4-i^2=5$이다.\n각 분수를 통분하면\n$\\dfrac yx+\\dfrac xy=\\dfrac{y^2+x^2}{xy}$이다.\n분자는\n$x^2=(2+i)^2"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-04",
+      "standardUnit": "복소수",
+      "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+      "subUnit": "복소수의 연산",
+      "problemTypeKey": "PT_H1_COMPLEX_OPERATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_NORM",
+      "crossConceptKeys": [
+        "CC_CONJUGATE_COMPLEX_NUMBER",
+        "CC_COMPLEX_DIVISION_RATIONALIZATION",
+        "CC_SYMMETRIC_POLYNOMIAL_EVALUATION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "켤레복소수의 곱 xy=5와 통분된 분자 x^2+y^2=6을 각각 계산하여 6/5를 도출하는 2단계 복소수 연산 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x^3-5x^2+8x-4$를 바르게 인수분해한 것은? [3.3점]",
+        "solutionDecisiveExcerpt": "인수분해가 가능한지 확인하려고 $x=1$을 대입한다.\n$1-5+8-4=0$이므로 인수정리에 의해 $(x-1)$이 인수이다.\n$x^3-5x^2+8x-4$\n$=(x-1)(x^2-4x+4)$이다.\n괄호 안의 이차식은 완전제곱식이므로\n$x^2-4x+4=(x-2)^2$이다.\n따"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-03",
+      "standardUnit": "인수분해",
+      "subUnitKey": "H15-SA-03-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "crossConceptKeys": [
+        "CC_FACTOR_THEOREM_INSPECTION",
+        "CC_PERFECT_SQUARE_FACTORIZATION"
+      ],
+      "difficulty": {
+        "bucket": 1,
+        "confidence": "reconstructed_evidence",
+        "reason": "인수정리로 일차인수 x-1을 찾고 조립제법 후 완전제곱식 (x-2)^2을 묶어 (x-1)(x-2)^2을 즉시 산출하는 1단계 기본 인수분해 문항으로 기존 난이도 Bucket 1을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다항식 $A$, $B$가 $A=3x^3-5x+1$, $B=2x^3+x^2-5x-2$일 때, $-4A-3(B-2A)$의 값은? [3.4점]",
+        "solutionDecisiveExcerpt": "먼저 괄호 앞의 계수를 분배하여 $A$, $B$의 계수를 정리한다.\n$-4A-3(B-2A)$\n$=-4A-3B+6A$\n$=2A-3B$이다.\n$A=3x^3-5x+1$과 $B=2x^3+x^2-5x-2$를 대입한다.\n$2A-3B$\n$=2(3x^3-5x+1)-3(2x^3+x^2"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-01",
+      "standardUnit": "다항식의 연산",
+      "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+      "subUnit": "다항식의 기본 연산",
+      "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_LINEAR_COMBINATION",
+        "CC_DISTRIBUTIVE_LAW_EXPANSION",
+        "CC_COMBINING_LIKE_TERMS"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "다항식 계수 관계식을 2A-3B로 먼저 단순화한 후 각 삼차다항식을 대입하여 동류항을 정리하는 2단계 다항식 연산 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x$에 대한 이차식 $x^2-2(2k-1)x+4k^2-2k+3$이 완전제곱식이 될 때, 실수 $k$의 값은? [3.5점]",
+        "solutionDecisiveExcerpt": "최고차항의 계수가 $1$인 이차식이 완전제곱식이려면\n$(x-a)^2=x^2-2ax+a^2$ 꼴이어야 한다.\n주어진 식의 $x$의 계수를 비교하면\n$a=2k-1$이다.\n상수항도 $a^2$과 같아야 하므로\n$4k^2-2k+3=(2k-1)^2$이다.\n우변을 전개하면\n$4k^"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-03",
+      "standardUnit": "인수분해",
+      "subUnitKey": "H15-SA-03-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_STANDARD",
+      "crossConceptKeys": [
+        "CC_PERFECT_SQUARE_TRINOMIAL",
+        "CC_COEFFICIENT_MATCHING_FACTORIZATION",
+        "CC_DISCRIMINANT_ZERO_CONDITION"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "일차항 계수의 절반의 제곱과 상수항이 일치해야 한다는 완전제곱식 조건으로부터 4k^2-2k+3=(2k-1)^2을 풀어 k=-1을 산출하는 2단계 조건 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "NONE"
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차방정식 $2x^2+3x-k=0$이 허근을 갖도록 하는 가장 큰 정수 $k$의 값은? [3.6점]",
+        "solutionDecisiveExcerpt": "실수계수 이차방정식이 허근을 갖는 조건은 판별식 $D<0$이다.\n$2x^2+3x-k=0$에서\n$D=3^2-4\\cdot2\\cdot(-k)$\n$=9+8k$이다.\n$D<0$이므로\n$9+8k<0$,\n$8k<-9$,\n$k<-\\dfrac98$이다.\n이 범위에 속하는 가장 큰 정수"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-05",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "H15-SA-05-DISCRIMINANT",
+      "subUnit": "이차방정식의 판별식",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_DISCRIMINANT_NEGATIVE",
+        "CC_IMAGINARY_ROOT_CONDITION",
+        "CC_MAXIMUM_INTEGER_SEARCH"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "판별식 D=9+8k<0을 풀어 k<-9/8의 범위를 구하고 이를 만족하는 최대 정수 -2를 결정하는 2단계 판별식 판정 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "readingEvidence": {
+        "sourceTextExcerpt": "연립부등식 $2x-5<3x-7\\le x+3$을 만족시키는 모든 양의 정수 $x$의 값의 합은? [3.8점]",
+        "solutionDecisiveExcerpt": "연립부등식의 두 조건을 각각 풀고 공통 범위를 구한다.\n첫째 부등식은\n$2x-5<3x-7$,\n$2<x$이다.\n둘째 부등식은\n$3x-7\\le x+3$,\n$2x\\le10$,\n$x\\le5$이다.\n따라서 공통해는 $2<x\\le5$이다.\n이 중 양의 정수는 $3$, $4$, $"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-08",
+      "standardUnit": "부등식",
+      "subUnitKey": "H15-SA-08-SYSTEM_INEQUALITY",
+      "subUnit": "연립부등식",
+      "problemTypeKey": "PT_H1_LINEAR_SYSTEM_INEQUALITY",
+      "templateKey": "TPL_H1_LINEAR_INEQUALITY_PARAMETER_INTEGER",
+      "crossConceptKeys": [
+        "CC_COMPOUND_LINEAR_INEQUALITY",
+        "CC_INTERVAL_INTERSECTION",
+        "CC_INTEGER_SOLUTION_SUM"
+      ],
+      "difficulty": {
+        "bucket": 2,
+        "confidence": "reconstructed_evidence",
+        "reason": "연립부등식의 두 일차부등식을 풀어 공통해 2<x<=5를 얻고 속하는 양의 정수 3, 4, 5의 합 12를 계산하는 2단계 연립부등식 문항으로 기존 난이도 Bucket 2를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "readingEvidence": {
+        "sourceTextExcerpt": "사차방정식 $x^4+5x^3+5x^2-5x-6=0$의 가장 큰 근을 $\\alpha$, 가장 작은 근을 $\\beta$라 할 때, $\\alpha-\\beta$의 값은? [3.7점]",
+        "solutionDecisiveExcerpt": "가장 큰 근과 가장 작은 근을 찾으려면 사차식을 일차인수의 곱으로 나타낸다.\n$x^4+5x^3+5x^2-5x-6$\n$=(x-1)(x^3+6x^2+11x+6)$이다.\n삼차식은 $x=-1$을 대입하면 $0$이므로 다시 인수분해한다.\n$x^3+6x^2+11x+6$\n$=(x+"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-07",
+      "standardUnit": "여러 가지 방정식",
+      "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+      "subUnit": "고차방정식",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "crossConceptKeys": [
+        "CC_QUARTIC_EQUATION_FACTORIZATION",
+        "CC_SYNTHETIC_DIVISION_REPEATED",
+        "CC_EXTREMAL_ROOT_DIFFERENCE"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "조립제법을 반복 적용하여 (x-1)(x+1)(x+2)(x+3)=0으로 인수분해하고 네 실근 중 최대근 1과 최소근 -3의 차 4를 산출하는 3단계 고차방정식 풀이 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "readingEvidence": {
+        "sourceTextExcerpt": "세 수 $x$, $y$, $z$에 대하여 $x+y+z=3$, $xy+yz+zx=-2$, $xyz=-7$일 때, $(x+y)(y+z)(z+x)$의 값은? [4.7점]",
+        "solutionDecisiveExcerpt": "$(x+y)(y+z)(z+x)$를 곱셈공식으로 변형한다.\n$x+y+z=s$, $xy+yz+zx=t$라 놓으면\n$(x+y)(y+z)(z+x)$\n$=(x+y+z)(xy+yz+zx)-xyz$\n$=st-xyz$이다.\n주어진 조건은 $s=3$, $t=-2$, $xyz=-7$이다"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-01",
+      "standardUnit": "다항식의 연산",
+      "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+      "subUnit": "다항식의 기본 연산",
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "crossConceptKeys": [
+        "CC_SYMMETRIC_POLYNOMIAL_IDENTITY",
+        "CC_THREE_VARIABLE_FACTORIZATION",
+        "CC_ALGEBRAIC_VALUE_EVALUATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "전개식을 (x+y+z)(xy+yz+zx)-xyz=(3)(-2)-(-7)=1로 변형하는 곱셈공식 변형을 적용하여 식의 값을 구하는 3단계 대칭식 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$3000$개의 이차식 $3000x^2-3x-1$, $2999x^2-3x-1$, $\\cdots$, $x^2-3x-1$ 중에서 $x$의 계수와 상수항이 정수인 두 일차식의 곱으로 인수분해되는 것의 개수는? [4.9점]",
+        "solutionDecisiveExcerpt": "각 이차식은 $nx^2-3x-1$ ($1\\le n\\le3000$)이다.\n두 일차식의 계수가 정수이고 상수항의 곱이 $-1$이므로\n$(ax+1)(bx-1)$ 또는 $(ax-1)(bx+1)$ 꼴이다.\n최고차항의 계수에서 $ab=n>0$이므로 $a,b$는 같은 부호다.\n부호"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-03",
+      "standardUnit": "인수분해",
+      "subUnitKey": "H15-SA-03-FACTORIZATION",
+      "subUnit": "인수분해",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_NUMBER_DIVISOR_MULTIPLE",
+        "CC_QUADRATIC_INTEGER_FACTORIZATION",
+        "CC_CONSTRAINED_FACTOR_PARAMETRIZATION",
+        "CC_BOUNDED_INEQUALITY_SEARCH"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "이차식 인수분해 조건 (ax+1)(bx-1)에서 a=b+3을 유도하여 n=b(b+3) 구조를 확립하고 1<=b(b+3)<=3000 부등식을 만족하는 자연수 b의 개수 53을 도출하는 4단계 고난도 정수론 결합 인수분해 문항으로 기존 난이도 Bucket 4를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_INTEGER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "readingEvidence": {
+        "sourceTextExcerpt": "복소수 $z=\\dfrac{1+i}{\\sqrt{2}}$일 때, $z^{430}$의 값은? [4.2점]",
+        "solutionDecisiveExcerpt": "주어진 복소수의 거듭제곱은 반복되는 주기를 이용한다.\n$z=\\dfrac{1+i}{\\sqrt2}$이므로\n$z^2=\\dfrac{(1+i)^2}{2}=\\dfrac{2i}{2}=i$이다.\n따라서\n$z^4=i^2=-1$,\n$z^8=(-1)^2=1$이다.\n지수 $430=8\\cdo"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-04",
+      "standardUnit": "복소수",
+      "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+      "subUnit": "복소수의 연산",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_ROOT_OF_UNITY_PERIOD",
+      "crossConceptKeys": [
+        "CC_COMPLEX_POWER_PERIODICITY",
+        "CC_EIGHTH_ROOT_OF_UNITY",
+        "CC_MODULO_EXPONENT_REDUCTION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "z^2=i, z^8=1의 8주기성을 발견하고 지수 430을 8*53+6으로 분할하여 z^6=-i를 산출하는 3단계 복소수 거듭제곱 주기성 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "readingEvidence": {
+        "sourceTextExcerpt": "다항식 $P(x)$를 $x-3$으로 나누었을 때의 나머지는 $5$이고, $x+1$로 나누었을 때의 나머지는 $1$이다. 다항식 $P(x)$를 $(x-3)(x+1)$로 나누었을 때의 나머지는? [4.1점]",
+        "solutionDecisiveExcerpt": "$(x-3)(x+1)$로 나눈 나머지는 차수가 $2$보다 낮으므로 $R(x)=ax+b$로 놓는다.\n나머지정리에 의해\n$R(3)=P(3)=5$,\n$R(-1)=P(-1)=1$이다.\n따라서\n$3a+b=5$,\n$-a+b=1$이다.\n두 식을 빼면 $4a=4$이므로 $a=1$이고"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-02",
+      "standardUnit": "항등식과 나머지정리",
+      "subUnitKey": "H15-SA-02-REMAINDER_FACTOR",
+      "subUnit": "나머지정리와 인수정리",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "crossConceptKeys": [
+        "CC_SIMULTANEOUS_EQUATION",
+        "CC_REMAINDER_THEOREM",
+        "CC_LINEAR_REMAINDER_SETUP",
+        "CC_TWO_VARIABLE_SYSTEM_SOLVE"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "이차식 제수에 대한 나머지를 R(x)=ax+b로 설정하고 R(3)=5, R(-1)=1의 연립방정식을 풀어 x+2를 도출하는 3단계 나머지정리 표준 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차방정식 $x^2-3x-2=0$의 두 근을 $\\alpha$, $\\beta$라 할 때, $\\alpha^2+\\beta^2$과 $\\alpha\\beta$를 두 근으로 하고 $x^2$의 계수가 $1$인 이차방정식은? [4.",
+        "solutionDecisiveExcerpt": "처음 이차방정식의 두 근에 대해 근과 계수의 관계를 적용한다.\n$x^2-3x-2=0$이므로\n$\\alpha+\\beta=3$,\n$\\alpha\\beta=-2$이다.\n먼저 새로운 첫 번째 근을 구한다.\n$\\alpha^2+\\beta^2$\n$=(\\alpha+\\beta)^2-2\\a"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-05",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+      "subUnit": "이차방정식의 근과 계수",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "crossConceptKeys": [
+        "CC_VIETAS_FORMULAS",
+        "CC_SYMMETRIC_SUM_OF_SQUARES",
+        "CC_QUADRATIC_EQUATION_FORMATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "근과 계수의 관계로부터 합과 곱을 구하고 alpha^2+beta^2=13, alphabeta=-2를 새로운 두 근으로 하는 이차방정식 x^2-11x-26=0을 작성하는 3단계 방정식 작성 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "readingEvidence": {
+        "sourceTextExcerpt": "함수 $f(x)=x^2-2x+5$에 대하여 $f(\\alpha)=2$, $f(\\beta)=2$일 때, $\\alpha^3+\\beta^3$의 값은? (단, $\\alpha\\ne\\beta$) [4.8점]",
+        "solutionDecisiveExcerpt": "조건 $f(\\alpha)=f(\\beta)=2$를 먼저 방정식으로 바꾼다.\n$f(x)=x^2-2x+5$이므로\n$f(x)=2$는\n$x^2-2x+3=0$이다.\n$\\alpha\\ne\\beta$이고 이 방정식의 두 근이므로 근과 계수의 관계에서\n$\\alpha+\\beta=2$,\n$"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-05",
+      "standardUnit": "이차방정식",
+      "subUnitKey": "H15-SA-05-EQUATION_BASIC",
+      "subUnit": "이차방정식의 근과 계수",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_SYMMETRIC_VALUE",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_ROOT_IDENTIFICATION",
+        "CC_VIETAS_FORMULAS",
+        "CC_CUBIC_SUM_SYMMETRIC_EVALUATION"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "f(x)=2를 x^2-2x+3=0 방정식으로 전환하여 두 근의 합 2와 곱 3을 얻고 세제곱의 합 변형식 alpha^3+beta^3=2^3-3(3)(2)=-10을 계산하는 4단계 대칭식 연계 문항으로 기존 난이도 Bucket 4를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차함수 $y=x^2+6x-k$의 그래프가 $x$축과 서로 다른 두 점에서 만나고, 그 두 점 사이의 거리가 $2$일 때, 실수 $k$의 값은? [4.0점]",
+        "solutionDecisiveExcerpt": "그래프가 $x$축과 만나는 점은 이차방정식 $x^2+6x-k=0$의 실근이다.\n완전제곱식으로 정리하면\n$(x+3)^2=9+k$이다.\n두 교점의 $x$좌표는\n$x=-3\\pm\\sqrt{9+k}$이다.\n두 점은 같은 $x$축 위에 있으므로 거리는 두 근의 차이다.\n$(-3+"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-13",
+      "standardUnit": "이차함수",
+      "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_GRAPH_RELATION_GEOMETRY",
+      "crossConceptKeys": [
+        "CC_COMPLETE_SQUARE",
+        "CC_QUADRATIC_GRAPH_X_INTERCEPT",
+        "CC_ROOT_DIFFERENCE_DISTANCE",
+        "CC_DISCRIMINANT_APPLICATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "이차함수와 x축의 두 교점 사이의 거리가 두 실근의 차 2*sqrt(9+k)=2임을 이용하여 9+k=1로부터 k=-8을 도출하는 3단계 기하-대수 융합 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차함수 $y=x^2-2ax+a^2+4a$의 그래프가 실수 $a$의 값에 관계없이 항상 직선 $y=2mx+n$에 접할 때, 실수 $m$, $n$에 대하여 $m+n$의 값은? [4.6점]",
+        "solutionDecisiveExcerpt": "이차함수와 직선의 접점이 한 개이려면 두 식을 연립한 이차방정식의 판별식이 $0$이어야 한다.\n$x^2-2ax+a^2+4a=2mx+n$을 정리하면\n$x^2-2(a+m)x+a^2+4a-n=0$이다.\n판별식의 $\\dfrac D4$를 계산하면\n$(a+m)^2-(a^2+4a-"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-13",
+      "standardUnit": "이차함수",
+      "subUnitKey": "H15-SA-13-QUADRATIC_GRAPH",
+      "subUnit": "이차함수의 그래프",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_PARABOLA_LINE_TANGENCY",
+        "CC_DISCRIMINANT_ZERO_CONDITION",
+        "CC_POLYNOMIAL_IDENTITY_PARAMETER"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "연립이차방정식의 판별식 D/4=(2m-4)a+(m^2+n)=0이 실수 a에 대한 항등식이어야 한다는 조건을 적용하여 m=2, n=-4, m+n=-2를 산출하는 4단계 항등식-접선 융합 문항으로 기존 난이도 Bucket 4를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT"
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$-4\\le x\\le1$일 때, 이차함수 $y=x^2+6x+k$의 최댓값이 $10$일 때, 이 이차함수의 최솟값은? (단, $k$는 상수이다.) [4.4점]",
+        "solutionDecisiveExcerpt": "이차함수 $y=x^2+6x+k$를 완전제곱식으로 고친다.\n$y=(x+3)^2+k-9$이다.\n꼭짓점의 $x$좌표는 $-3$이므로 주어진 구간 $-4\\le x\\le1$ 안에 들어 있다.\n위로 열린 포물선이므로 최솟값은 꼭짓점에서 $k-9$이다.\n최댓값은 양 끝점의 함수값을"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-13",
+      "standardUnit": "이차함수",
+      "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_FUNCTION_VERTEX_INTERVAL",
+        "CC_EXTREMA_BOUNDED_INTERVAL",
+        "CC_PARAMETER_DETERMINATION"
+      ],
+      "difficulty": {
+        "bucket": 3,
+        "confidence": "reconstructed_evidence",
+        "reason": "꼭짓점 x=-3이 구간 안에 있음을 파악하고 양 끝점 중 x=1에서 최댓값 k+7=10으로부터 k=3을 구한 뒤 꼭짓점의 최솟값 3-9=-6을 계산하는 3단계 이차함수 최대·최소 문항으로 기존 난이도 Bucket 3을 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "readingEvidence": {
+        "sourceTextExcerpt": "연립방정식 $\\begin{cases}x+y=-2\\\\x^2+y^2=a+1\\end{cases}$의 해가 오직 한 쌍 $x=b$, $y=c$만 가질 때, $ab-2c$의 값은? (단, $a$는 상수이다.) [4.3점]",
+        "solutionDecisiveExcerpt": "두 식의 해가 오직 한 쌍의 순서쌍이어야 한다는 조건에 주목한다.\n첫째 식에서 $x+y=-2$이고,\n둘째 식에서 $x^2+y^2=a+1$이다.\n$xy$는\n$2xy=(x+y)^2-(x^2+y^2)$\n$=4-(a+1)=3-a$이므로\n$xy=\\dfrac{3-a}{2}$이다."
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-07",
+      "standardUnit": "여러 가지 방정식",
+      "subUnitKey": "H15-SA-07-SUBSTITUTION_SYSTEM",
+      "subUnit": "연립방정식",
+      "problemTypeKey": "PT_H1_SYSTEM_EQUATION",
+      "templateKey": "TPL_H1_SYSTEM_DIRECT",
+      "crossConceptKeys": [
+        "CC_ROOTS_COEFFICIENTS",
+        "CC_SYMMETRIC_SYSTEM_OF_EQUATIONS",
+        "CC_SINGLE_SOLUTION_CONDITION",
+        "CC_COINCIDENT_ROOTS_QUADRATIC"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "대칭 연립방정식의 해가 오직 한 쌍이 되려면 t^2+2t+(3-a)/2=0이 중근 x=y=-1을 가져야 함을 분석하여 a=1, b=-1, c=-1로부터 ab-2c=1을 도출하는 4단계 대칭 연립방정식 심화 문항으로 기존 난이도 Bucket 4를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT"
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x$에 대한 등식 $(x^3-x^2-2x)^5=a_0+a_1x+a_2x^2+\\cdots+a_{15}x^{15}$이 모든 실수 $x$에 대하여 성립할 때, $a_4+a_7+a_9+a_{11}+a_{13}$의 값은?",
+        "solutionDecisiveExcerpt": "전체 전개를 쓰기보다 구해야 하는 차수의 계수만 뽑는다.\n$x^3-x^2-2x=x(x-2)(x+1)$이므로\n$(x^3-x^2-2x)^5=x^5(x-2)^5(x+1)^5$이다.\n따라서 $a_4=0$이고,\n$a_j$ ($j\\ge5$)는 $(x-2)^5(x+1)^5$의 $x"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-01",
+      "standardUnit": "다항식의 연산",
+      "subUnitKey": "H15-SA-01-POLYNOMIAL_BASIC",
+      "subUnit": "다항식의 기본 연산",
+      "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "templateKey": "TPL_H1_POLY_COEFFICIENT_EXTRACTION",
+      "crossConceptKeys": [
+        "CC_MULTINOMIAL_FACTORIZATION_EXPANSION",
+        "CC_BINOMIAL_THEOREM_SELECTIVE_COEFFICIENT",
+        "CC_EXPONENT_SUM_COMBINATIONS"
+      ],
+      "difficulty": {
+        "bucket": 5,
+        "confidence": "reconstructed_evidence",
+        "reason": "공통인수 x^5을 묶어내어 a_4=0임을 즉시 파악하고 (x-2)^5(x+1)^5의 특정 차수 계수 r=2, 4, 6, 8을 이항전개 조합 공식으로 정밀 추출하여 0+0+30-15+0=15를 도출하는 5단계 최고난도 다항식 전개 문항으로 기존 난이도 Bucket 5를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "readingEvidence": {
+        "sourceTextExcerpt": "현우는 불우 이웃 돕기 성금을 마련하기 위하여 친구들과 함께 샌드위치를 만들어 팔기로 하였다. 한 개당 $1000$원의 이익을 남기고 팔면 하루에 $30$개를 팔 수 있는데, 한 개당 이익금을 $100$원씩 줄일 때",
+        "solutionDecisiveExcerpt": "한 개당 이익금을 $100$원씩 줄이는 횟수를 $t$라고 놓는다.\n이익금은 $1000-100t$원이고 판매량은 $30+5t$개이다.\n하루의 전체 이익금은 두 수의 곱이므로\n$P(t)=(1000-100t)(30+5t)$이다.\n전개하면\n$P(t)=30000+5000t-30"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-13",
+      "standardUnit": "이차함수",
+      "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+      "crossConceptKeys": [
+        "CC_REAL_WORLD_QUADRATIC_MODEL",
+        "CC_PROFIT_MAXIMIZATION_EXTREMA",
+        "CC_INTEGER_VERTEX_OPTIMIZATION"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "가격 인하 횟수 t에 대한 일차식의 곱으로 이차 이익함수 P(t)=-500(t-2)^2+32000을 모델링하고 꼭짓점 t=2에서의 판매량 30+5(2)=40개를 산출하는 4단계 실생활 이차함수 활용 문항으로 기존 난이도 Bucket 4를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [
+        "COND_RANGE",
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 20,
+      "questionNo": 20,
+      "readingEvidence": {
+        "sourceTextExcerpt": "이차함수 $y=f(x)$의 그래프가 $x$축과 만나는 점의 $x$좌표는 $-5$, $2$이고 $y$축과 만나는 점의 $y$좌표는 $20$일 때, 이 이차함수의 최댓값을 구하는 풀이 과정과 답을 서술하시오. [6점]",
+        "solutionDecisiveExcerpt": "그래프가 $x$축과 만나는 점의 $x$좌표가 $-5$, $2$이므로 이차함수를\n$f(x)=a(x+5)(x-2)$로 나타낼 수 있다.\n$y$축과 만나는 점의 $y$좌표가 $20$이므로 $x=0$을 대입한다.\n$20=f(0)=a\\cdot5\\cdot(-2)$,\n$20=-10"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-13",
+      "standardUnit": "이차함수",
+      "subUnitKey": "H15-SA-13-QUADRATIC_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "problemTypeKey": "PT_H1_QUADRATIC_RECONSTRUCTION",
+      "templateKey": "TPL_H1_QUADRATIC_RECONSTRUCT_ROOT_VERTEX",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_EXTREMUM",
+        "CC_PARABOLA_ROOT_FORM",
+        "CC_Y_INTERCEPT_COEFFICIENT_SOLVE",
+        "CC_QUADRATIC_VERTEX_MAXIMUM"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "x절편 조건으로부터 f(x)=a(x+5)(x-2)로 설정하고 y절편 f(0)=20을 대입하여 최고차항 계수 a=-2를 구한 뒤 완전제곱식으로 변형하여 최댓값 49/2를 서술하는 4단계 서술형 문항으로 기존 난이도 Bucket 4를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL"
+    },
+    {
+      "questionId": 21,
+      "questionNo": 21,
+      "readingEvidence": {
+        "sourceTextExcerpt": "복소수 $z=x^2+(3+i)x-10-2i$에 대하여 $z$가 실수가 되도록 하는 실수 $x$의 값을 $a$, $z^2$이 음의 실수가 되도록 하는 실수 $x$의 값을 $b$라 할 때, $a-b$의 값을 구하는 풀이",
+        "solutionDecisiveExcerpt": "복소수가 실수이려면 허수부가 $0$이어야 한다.\n$z=x^2+(3+i)x-10-2i$\n$=(x^2+3x-10)+(x-2)i$이다.\n따라서 $z$가 실수가 되는 조건은\n$x-2=0$이므로 $a=2$이다.\n다음으로 $z^2$이 음의 실수가 되는 조건을 살핀다.\n$z=u+v"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-04",
+      "standardUnit": "복소수",
+      "subUnitKey": "H15-SA-04-COMPLEX_OPERATION",
+      "subUnit": "복소수의 연산",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_EQUATION",
+        "CC_COMPLEX_REAL_PART_IMAG_PART",
+        "CC_PURE_IMAGINARY_CONDITION",
+        "CC_COMPLEX_SQUARE_NEGATIVE_REAL"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "실수 조건 허수부 x-2=0으로부터 a=2를 구하고, z^2이 음의 실수가 되기 위한 순허수 조건(실수부=0, 허수부!=0)으로부터 b=-5를 엄밀히 선별하여 a-b=7을 서술하는 4단계 복소수 서술형 문항으로 기존 난이도 Bucket 4를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [
+        "COND_NEGATIVE"
+      ],
+      "integrationPattern": "CASE_BRANCH"
+    },
+    {
+      "questionId": 22,
+      "questionNo": 22,
+      "readingEvidence": {
+        "sourceTextExcerpt": "$x$에 대한 방정식 $x^3-8=m(x-2)$이 중근을 갖도록 하는 모든 실수 $m$의 값의 합을 구하는 풀이 과정과 답을 서술하시오. [7점]",
+        "solutionDecisiveExcerpt": "중근을 갖는 조건을 인수분해한 방정식에서 나누어 찾는다.\n$x^3-8=(x-2)(x^2+2x+4)$이므로\n$x^3-8=m(x-2)$는\n$(x-2)(x^2+2x+4-m)=0$이다.\n중근이 생기는 경우는 두 가지이다.\n\n① 두 인수에 공통으로 $x=2$가 들어갈 때:\n$2"
+      },
+      "pack": "H1_FOUNDATION",
+      "standardCourse": "수학(상)",
+      "standardUnitKey": "H15-SA-07",
+      "standardUnit": "여러 가지 방정식",
+      "subUnitKey": "H15-SA-07-HIGHER_EQUATION",
+      "subUnit": "고차방정식",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "crossConceptKeys": [
+        "CC_ZERO_MULTIPLICITY",
+        "CC_CUBIC_FACTORIZATION_DIFFERENCE",
+        "CC_COMMON_ROOT_MULTIPLICITY",
+        "CC_DISCRIMINANT_ZERO_CONDITION"
+      ],
+      "difficulty": {
+        "bucket": 4,
+        "confidence": "reconstructed_evidence",
+        "reason": "(x-2)(x^2+2x+4-m)=0으로 정리한 후 공통근 x=2를 중근으로 갖는 경우(m=12)와 이차인수 자체가 중근을 갖는 경우(m=3)를 누락 없이 경우 분기하여 합 15를 서술하는 4단계 고차방정식 서술형 문항으로 기존 난이도 Bucket 4를 불변 보존한다."
+      },
+      "auditVerdict": "APPROVED_CANONICAL",
+      "conditionKeys": [],
+      "integrationPattern": "CASE_BRANCH"
+    }
+  ],
+  "courierSourceRevision": {
+    "priorSourceSha256": "d3d183273f22875ba5f39afcdee420d12975b8e6e80bbdb6ff5cd50852573996",
+    "currentProductionSourceSha256": "1c1f454b6f67fbe87a329f1cfc3310264b67afb9f7574abad2896d6eb411d910",
+    "priorFileSha256": "067232cba87883cedad28d0efc79119d939c472f1dedc047741ab91a52acbfef",
+    "priorDriveFileId": "1hqBzWUrnLWRhizqPNC737oqKAMP8g7YE",
+    "sourceParityReport": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-supplement-suncheon21-20261025.source-parity.json",
+      "sha256": "a289e628f219b7ae483806a81512c86d93b885b25301870a5fc76ea5d7b4956d"
+    },
+    "visualOnlyScope": true,
+    "metadataDifferencesRemainUnapproved": true,
+    "metadataDisposition": "Preserve original production metadata; do not use the visual supplement to authorize CC, condition, integrationPattern, PT, or TPL changes.",
+    "currentProductionBlobSha1": "3a9099858fce1e27258f1bee797a3327017de3e3",
+    "sourceArchiveFile": "archive/exams/original/high/h1/1mid/21_순천고_1학기_중간_고1_기출.js"
+  },
+  "courierSupplementRefs": {
+    "audit": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-supplement-suncheon21-20261025.audit.json",
+      "sha256": "7eb4d1cfc0caad3f8016433b610ec7dbece7ee868574263af937bc1753370e6e"
+    },
+    "classification": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-supplement-suncheon21-20261025.classification.json",
+      "sha256": "5c317a31e9f109522b0fc9715516cd93a37555b1b9af7d9618337028a82ffa48"
+    },
+    "manifest": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-supplement-suncheon21-20261025.manifest.json",
+      "sha256": "a9bd8d0adcca8668572ef9e4ffac0761e9c2b2a73a41d70563c045baeefc163e"
+    },
+    "sourceParity": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-supplement-suncheon21-20261025.source-parity.json",
+      "sha256": "a289e628f219b7ae483806a81512c86d93b885b25301870a5fc76ea5d7b4956d"
+    },
+    "visualReport": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-supplement-suncheon21-20261025.supplemental-visual-audit.json",
+      "sha256": "5e523d959963cfa1483ccd17b42af963fc75eb4ce13c1d8468939c7ec04275df"
+    }
+  },
+  "courierSupplementDrive": {
+    "fileId": "1y81YNbxyo_fvl4TDod6x5sujdrxIhits",
+    "title": "META_PIPELINE_SUPPLEMENT_suncheon21_20261025.zip",
+    "url": "https://drive.google.com/file/d/1y81YNbxyo_fvl4TDod6x5sujdrxIhits/view?usp=drivesdk",
+    "folderId": "1f3ku6bJ5FVz3STuMajQvNfeTqFd8WOZJ"
+  },
+  "codexMetadataSupplement": {
+    "kind": "PRESERVE_EXISTING_TAGS_AND_BIND_CANONICAL_PARENT",
+    "originalRawSha256": "a97c9939e8b74de3e7d57046ac6bc4e25cd5ed195cf5bb8f25c7d8f0ff23b890",
+    "studentPayloadChanged": false,
+    "reason": "Source/current condition and concept keys are retained; transport omissions do not erase prior tags. Parent proof uses exact active PT/TPL crosswalk and canonical master, not display-label guessing."
+  }
+}
