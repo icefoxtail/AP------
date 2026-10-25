@@ -9,6 +9,7 @@ import fs from 'node:fs';import path from 'node:path';import crypto from 'node:c
 import {pythonWorker} from './worker.mjs';
 import {assetIdentity} from './contracts.mjs';
 import {specFor} from './phase2.mjs';
+import {isPlaneFigure} from './plane-marks.mjs';
 import {composeConstructionCandidate} from './construction-candidate-svg-v1.mjs';
 import * as cap from './construction-archive-capture-v1.mjs';
 import * as obs from './archive-inverse-observation-v1.mjs';
@@ -125,12 +126,14 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
     stage='frame';
     if(authored.graphPlan){const f=await pythonWorker({action:'frame_graph',graphPlan:authored.graphPlan});if(f.status!=='OK')throw {stage,detail:f.result};plan={...authored,graphPlan:f.result.graphPlan};}
     stage='model';
-    const m=await pythonWorker(plan.graphPlan?{action:'graph',graphPlan:plan.graphPlan}:{action:'construction',graph:plan.mathPlan});if(m.status!=='OK')throw {stage,detail:m.result};
+    // A plane figure with non-special angles carries 22 digit rationals through its intersections: the exact model may need longer than the 10 s default.
+    const m=await pythonWorker(plan.graphPlan?{action:'graph',graphPlan:plan.graphPlan}:{action:'construction',graph:plan.mathPlan},plan.graphPlan?undefined:{timeoutMs:90000});if(m.status!=='OK')throw {stage,detail:m.result};
     let model=m.result;
     // spec -> Archive policy -> L1, once; a construction plan whose labels found no room is retried once with coordinatePlacement PANEL.
     const attempt=async(candidatePlan,suffix)=>{
       stage='spec';
-      const spec=specFor(candidatePlan,model,identity.assetId);let size=model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'?'full':'medium';
+      const spec=specFor(candidatePlan,model,identity.assetId);// A plane figure carries angle arcs, ticks and expression labels: it is measured at the full profile like a coordinate figure.
+      let size=model.coordinateMode==='SOURCE_COORDINATES'||spec.displayFacts.formulaPlacement==='HEADER_BAND'||isPlaneFigure(candidatePlan)?'full':'medium';
       stage='measure';
       const measure=(sizeClass,runSuffix='')=>cap.measureArchiveTypographyPolicy({identity,sourcePath:meta.sourcePath,ordinal:meta.ordinal,requestedSizeClass:sizeClass,intrinsicSvg:{width:spec.viewport.width,height:spec.viewport.height},runId:`pilot-measure-${tag}${suffix}${runSuffix}`});
       let measured=await measure(size);

@@ -17,6 +17,9 @@ const OBSERVER_SCRIPT=fileURLToPath(new URL('primitive-observer-worker.py',impor
 // Quadratic polynomial graphs and piecewise polynomial graphs (HEADER_BAND formula) follow the runPhase2 graph route: graph observer instead of the Cindy peer.
 const GRAPH_CAPABILITIES=new Set(['polynomial-spike-v1','piecewise-polynomial-spike-v1','rational-spike-v1','sqrt-affine-spike-v1','absolute-value-spike-v1','piecewise-affine-spike-v1','exponential-affine-spike-v1','logarithmic-affine-spike-v1','trigonometric-spike-v1']);
 const GRAPH_OBSERVER_SCRIPT=fileURLToPath(new URL('graph-observer-worker.py',import.meta.url));
+const PLANE_MARKS_OBSERVER_SCRIPT=fileURLToPath(new URL('plane-marks-observer-worker.py',import.meta.url));
+// A plan with plane marks (angle arcs, ticks, ...) or styled segments is also read back by the plane-marks observer.
+const usesPlaneMarks=plan=>!!plan?.planeMarks||(plan?.displaySegments||[]).some(segment=>segment.dashed||segment.arrow);
 const observerFrame=({aspectPolicy,...frame}={})=>frame;
 // Same publication viewport display-profile-audit.mjs hands to captureAtDisplaySize.
 const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
@@ -193,12 +196,20 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     const audit=await call(pythonWorker,'staticAudit',{svg,points:peerOf(displayed?.points,peer?.points),lines:graph?graphLines:peerOf(displayed?.lines,peer?.lines),circles:peerOf(displayed?.circles,peer?.circles),segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH'},{script:OBSERVER_SCRIPT});
     // runPhase2 715: graphs also need the graph observer on the final SVG at the intrinsic scale.
     const graphAudit=graph?await call(pythonWorker,'graphAudit',{graphPlan:plan.graphPlan,svg,transform:{...observerFrame(witness.coordinateModel),displayScale:1}},{script:GRAPH_OBSERVER_SCRIPT,timeoutMs:120000}):null;
-    lineage.staticAuditSha256=digest(graph?{primitive:audit,graph:graphAudit}:audit,'staticAudit','OUTPUT_NOT_CANONICAL');
+    // The plane-marks observer recomputes every stated angle, length, parallel and arc fact from the Cindy peer's points and the drawn primitives.
+    const planeAudit=!graph&&usesPlaneMarks(plan)?await call(pythonWorker,'planeMarksAudit',{svg,points:peer.points,marks:plan.planeMarks||{},segments:plan.displaySegments||[],transform:witness.coordinateModel},{script:PLANE_MARKS_OBSERVER_SCRIPT}):null;
+    lineage.staticAuditSha256=digest(graph?{primitive:audit,graph:graphAudit}:planeAudit?{primitive:audit,planeMarks:planeAudit}:audit,'staticAudit','OUTPUT_NOT_CANONICAL');
     const auditErrors=Array.isArray(audit.errors)?[...audit.errors]:[];
     // The observer reports the bytes it parsed; they must be the bytes the render below receives.
     if(audit.status==='PASS'&&audit.finalSvgSha256!==lineage.svgSha256)auditErrors.push('STATIC_AUDIT_SVG_BYTES_MISMATCH');
     state.staticAudit={status:audit.status==='PASS'&&!auditErrors.length?'PASS':'FAIL',errors:auditErrors};
     if(state.staticAudit.status!=='PASS')throw new Stop('STATIC_PRIMITIVE_AUDIT_FAIL',{errors:auditErrors});
+    if(planeAudit){
+      const planeErrors=Array.isArray(planeAudit.errors)?[...planeAudit.errors]:[];
+      if(planeAudit.finalSvgSha256!==lineage.svgSha256)planeErrors.push('STATIC_AUDIT_SVG_BYTES_MISMATCH');
+      state.staticAudit={...state.staticAudit,planeMarks:{status:planeAudit.status==='PASS'&&!planeErrors.length?'PASS':'FAIL',errors:planeErrors,observations:planeAudit.observations}};
+      if(state.staticAudit.planeMarks.status!=='PASS')throw new Stop('PLANE_MARKS_AUDIT_FAIL',{errors:planeErrors});
+    }
     if(graphAudit&&graphAudit.status!=='PASS'){state.staticAudit={status:'FAIL',errors:graphAudit.errors??[]};throw new Stop('STATIC_GRAPH_AUDIT_FAIL',{errors:graphAudit.errors??null});}
 
     // Same SVG string, policy display size; see display-profile-audit.mjs 12-15 (not an Archive mode=sol capture).
