@@ -17,7 +17,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 발문 그림: 학생이 문제를 읽을 때 봐야 하는 주어진 조건만 그린다. 구하는 값, 풀이로 얻는 점, 정답을 암시하는 표시는 넣지 않는다. 엔진은 이를 강제하지 않으므로 작성자가 지킨다.
 - 해설 그림: 풀이의 결정적 관계를 보여 준다. 접점, 교점, 꼭짓점, 대칭점, 수선의 발, 구간에서의 최대·최소, 부등식의 해집합 등.
 - 풀이가 순수 계산(전개, 인수분해, 방정식 풀이)이고 공간이나 그래프 관계가 없으면 그림을 만들지 않고 `{"status":"EXEMPT","reason":"한 문장"}`을 쓴다.
-- 엔진이 못 그리는 것(세로선, 색칠 영역, 삼차 이상 그래프와 직선 조합, 정다면체나 입체 안의 입체)은 `{"status":"UNSUPPORTED","reason":"필요한 것"}`을 쓴다. 비슷하게 억지로 그리지 않는다.
+- 엔진이 못 그리는 것(세로선, 삼차 이상 그래프와 직선 조합, 정다면체나 입체 안의 입체)은 `{"status":"UNSUPPORTED","reason":"필요한 것"}`을 쓴다. 비슷하게 억지로 그리지 않는다. 그래프의 색칠 영역은 아래 3-6-영역의 `graphPlan.regions`로, 중학교 평면도형의 색칠은 3-9의 `planeMarks.regions`로 그린다.
 - 발문 그림과 해설 그림은 별개의 plan이다. 각각 따로 쓴다.
 
 ## 3. 어떤 plan을 쓰는가
@@ -203,6 +203,27 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
  "exactCoordinates":{"B":["1/2","-1/4"]},"axisTickValues":{"x":[2],"y":[2]}},
  "coordinatePlacement":"PANEL","caption":"a=2일 때 y=f(x)와 y=g(x)의 그래프가 x=0, 1, 2의 세 점에서 만난다."}
 ```
+
+### 3-6-영역. 그래프 영역 색칠: `graphPlan.regions` (곡선 아래·곡선 사이 넓이)
+
+적분 넓이·속도와 거리·`|f|` 넓이처럼 **어느 영역을 더했는지**가 풀이의 핵심이면 그래프 plan에 `graphPlan.regions`를 더한다(최대 4개). 영역은 두 경계 사이를 `from`부터 `to`까지 칠한 띠 하나다.
+
+- `{"id":"S1","upper":"f","lower":"axis","from":"-2","to":"1","fill":"LIGHT","label":"S_1"}`: `upper`·`lower`는 `"f"`(그 함수), `"axis"`(x축, y=0), `referenceCurves`의 id, `referenceLines`의 id 중 하나다. `from`·`to`는 정확한 정수·분수·`sqrt(...)` 문자열이고 `from<to`다. 경계가 정의된 구간이면 양 끝이 교점이 아니어도 세로 변으로 닫힌다(예: `x=1`부터 `1+h`까지는 `h`의 표본값을 넣는다).
+- 두 경계가 구간 안에서 만나거나(교차) 한 점에서 폭이 0이 되면 한 영역으로 접지 말고 **만나는 x에서 나눠 여러 영역**으로 쓴다. 끝점에서만 만나는 것은 괜찮다. 축 아래 넓이는 `upper:"axis"`, `lower:"f"`로 따로 칠하고 라벨을 다르게 단다.
+- `fill`은 `LIGHT`(기본) 또는 `MEDIUM`(평면도형 영역과 같은 연한 회색). `label`은 영역 안에 놓이는 짧은 수식(40자 이내, 예: `S_1`, `S_2`)이다.
+- 경계는 그 곡선을 그리는 바로 그 식으로 표본화하므로 색칠 테두리가 곡선 획과 어긋나지 않는다. 엔진은 모든 획 아래에 even-odd path 하나로 칠하고, 독립 관측기는 plan에서 두 경계를 다시 계산해 9개 표본 x에서 채움 경계·안/밖·x 범위·색·획 아래 순서·라벨 내부·영역 겹침을 확인한다.
+
+```json
+{"capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial",
+ "pieces":[{"coefficients":["0","0","1"]}],"breakpoints":[],
+ "sourceDomain":{"kind":"INTERVAL","range":["-2","2"],"states":["CLOSED","CLOSED"]},"formula":"x^2",
+ "regions":[{"id":"S1","upper":"f","lower":"axis","from":"1/5","to":"1","fill":"LIGHT","label":"S_1"}],
+ "requiredPoints":[{"id":"O","x":0,"y":0}],"axisTickValues":{"x":[],"y":[]}},
+ "caption":"곡선 y=x^2과 x축, x=1/5, x=1로 둘러싸인 영역 S_1을 색칠했다."}
+```
+
+- 교점 x를 직접 쓰지 않아도 된다. 교점이 `2±sqrt(2)` 같은 무리수면 `intersectionX`에 쓴 것과 같은 문자열을 `from`·`to`에 그대로 쓴다. 두 경계가 그 x에서 실제로 만나는지, 경계가 구간 전체에 정의되는지는 엔진이 정확히 확인한다.
+- 오류 코드: `GRAPH_REGION_COUNT_INVALID`(4개 초과), `GRAPH_REGION_FIELD_UNKNOWN`/`GRAPH_REGION_FIELD_INVALID`(모르는 필드·형식), `GRAPH_REGION_ID_INVALID`/`GRAPH_REGION_ID_DUPLICATE`, `GRAPH_REGION_BOUNDARY_UNKNOWN`(없는 곡선·직선 id), `GRAPH_REGION_BOUNDARY_UNDEFINED`(그 경계가 구간 전체에 정의되지 않음), `GRAPH_REGION_DOMAIN_INVALID`(`from`≥`to`, 그린 범위 밖), `GRAPH_REGION_BOUNDARIES_CROSS`(안에서 교차·폭 0 → 영역을 나눈다), `GRAPH_REGION_EMPTY`, `GRAPH_REGION_FILL_UNSUPPORTED`, `GRAPH_REGION_LABEL_INVALID`. `regions`는 `piecewise-polynomial-spike-v1`에서만 쓴다(다른 family에 넣으면 `GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL`). 관측기 코드는 `GRAPH_REGION_BOUNDARY_MISMATCH`, `GRAPH_REGION_OUTSIDE_INTERVAL`, `GRAPH_REGION_INTERIOR_MISSING`, `GRAPH_REGION_FILL_MISMATCH`, `GRAPH_REGION_NOT_BENEATH_STROKES`, `GRAPH_REGION_LABEL_OUTSIDE`, `GRAPH_REGION_OVERLAP` 등이다.
 
 ### 3-7. 사인·코사인을 구간(여러 주기)에서 직선과 함께: `INTERVAL_PI`, `referenceLines`
 

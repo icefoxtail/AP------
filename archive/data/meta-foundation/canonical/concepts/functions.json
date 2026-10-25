@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "FUNCTIONS",
-  "shardVersion": "1.5.1",
+  "shardVersion": "1.5.3",
   "status": "ACTIVE",
-  "conceptCount": 32,
+  "conceptCount": 44,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -1044,6 +1044,282 @@
       "supportingItemCount": 1,
       "status": "ACTIVE",
       "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_EXTREMA_EQUATION_ROOTS",
+      "canonicalLabelKo": "극값 조건에서 매개변수 결정",
+      "definition": "주어진 최댓값·최솟값 조건을 함수값 방정식으로 바꾸어 매개변수를 결정하는 절차.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ebb6a46e2af23d722cba147faf6248631895016492b5a6d8aaea3a0ed75c2824"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "H1_FOUNDATION",
+          "evidence": [
+            {
+              "questionUid": "qid_v1_ebb6a46e2af23d722cba147faf6248631895016492b5a6d8aaea3a0ed75c2824",
+              "excerpt": "[식 설정]\n$f(x) = (x-a)^2 + a^2-3$이다. 이차항의 계수가 양수이므로 아래로 볼록한 포물선이며 축은 $x=a$이다.\n\n[전개]\n축 $x=a$의 위치에 따른 케이스 분류:\n1) $0 < a < 1$: 최솟값 $f(1)=2a^2-2a-2=14 \\impl"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13-QUADRATIC_APPLICATION"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_VALUE_SIGN_INEQUALITY",
+      "canonicalLabelKo": "함숫값 부호와 부등식 조건",
+      "definition": "두 근 사이에서 이차함수의 부호를 이용해 매개변수 부등식을 세우는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_916927a3e28b0f2c5fb01b835cbb923e60b60ebc04120997846ed89c6b2c6650"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "H1_FOUNDATION",
+          "evidence": [
+            {
+              "questionUid": "qid_v1_916927a3e28b0f2c5fb01b835cbb923e60b60ebc04120997846ed89c6b2c6650",
+              "excerpt": "[식 설정]\n이차함수 $f(x) = x^2 + 2nx - 8n$이라 할 때, 이차방정식 $f(x)=0$의 두 근 사이에 3이 존재하기 위한 조건을 구한다.\n[전개]\n이차함수 $y=f(x)$의 그래프는 아래로 볼록한 포물선이다.\n두 근 사이에 3이 있으려면 $x=3$일"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-05-EQUATION_FUNCTION_RELATION"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_GRAPH_X_INTERCEPT_COUNT",
+      "canonicalLabelKo": "이차함수와 x축의 교점 개수",
+      "definition": "이차함수 그래프의 x축과의 교점 수를 실근의 개수와 대응하여 판단하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_3477156e45237af44a3bdd506403a936af51ec566ff5d7581226610fa2bf3a3a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "H1_FOUNDATION",
+          "evidence": [
+            {
+              "questionUid": "qid_v1_3477156e45237af44a3bdd506403a936af51ec566ff5d7581226610fa2bf3a3a",
+              "excerpt": "[식 설정]\n이차함수 $y=ax^2+bx+c$의 그래프와 $x$축의 교점의 개수는 이차방정식 $ax^2+bx+c=0$의 실근의 개수와 같으므로 판별식 $D = b^2-4ac$를 사용하여 확인한다.\n[전개]\n이차방정식 $x^2-x+1=0$에서 $a=1, b=-1, c=1"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13-QUADRATIC_GRAPH"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_MOVING_AXIS_PIECEWISE_ANALYSIS",
+      "canonicalLabelKo": "축 위치에 따른 구간별 분석",
+      "definition": "매개변수에 따라 포물선의 축이 정의역 구간 안팎으로 이동하는 경우를 나누어 극값을 계산하는 방법.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ebb6a46e2af23d722cba147faf6248631895016492b5a6d8aaea3a0ed75c2824"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "H1_FOUNDATION",
+          "evidence": [
+            {
+              "questionUid": "qid_v1_ebb6a46e2af23d722cba147faf6248631895016492b5a6d8aaea3a0ed75c2824",
+              "excerpt": "[식 설정]\n$f(x) = (x-a)^2 + a^2-3$이다. 이차항의 계수가 양수이므로 아래로 볼록한 포물선이며 축은 $x=a$이다.\n\n[전개]\n축 $x=a$의 위치에 따른 케이스 분류:\n1) $0 < a < 1$: 최솟값 $f(1)=2a^2-2a-2=14 \\impl"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13-QUADRATIC_APPLICATION"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EXTREMA_RESTRICTED_INTERVAL",
+      "canonicalLabelKo": "제한된 구간의 이차함수 극값",
+      "definition": "축과 구간의 위치를 고려해 이차함수의 최댓값·최솟값을 구하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ebb6a46e2af23d722cba147faf6248631895016492b5a6d8aaea3a0ed75c2824"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "H1_FOUNDATION",
+          "evidence": [
+            {
+              "questionUid": "qid_v1_ebb6a46e2af23d722cba147faf6248631895016492b5a6d8aaea3a0ed75c2824",
+              "excerpt": "[식 설정]\n$f(x) = (x-a)^2 + a^2-3$이다. 이차항의 계수가 양수이므로 아래로 볼록한 포물선이며 축은 $x=a$이다.\n\n[전개]\n축 $x=a$의 위치에 따른 케이스 분류:\n1) $0 < a < 1$: 최솟값 $f(1)=2a^2-2a-2=14 \\impl"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_EXTREMA"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-13-QUADRATIC_APPLICATION"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_ROOT_LOCATION_BETWEEN",
+      "canonicalLabelKo": "두 근 사이의 수 위치",
+      "definition": "이차함수의 부호 또는 그래프 위치를 이용해 주어진 수가 두 근 사이에 놓이는지 판단하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_916927a3e28b0f2c5fb01b835cbb923e60b60ebc04120997846ed89c6b2c6650"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "sourceUnit": "H1_FOUNDATION",
+          "evidence": [
+            {
+              "questionUid": "qid_v1_916927a3e28b0f2c5fb01b835cbb923e60b60ebc04120997846ed89c6b2c6650",
+              "excerpt": "[식 설정]\n이차함수 $f(x) = x^2 + 2nx - 8n$이라 할 때, 이차방정식 $f(x)=0$의 두 근 사이에 3이 존재하기 위한 조건을 구한다.\n[전개]\n이차함수 $y=f(x)$의 그래프는 아래로 볼록한 포물선이다.\n두 근 사이에 3이 있으려면 $x=3$일"
+            }
+          ]
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+      ],
+      "curriculumRefs": [
+        "2015:수학(상):H15-SA-05-EQUATION_FUNCTION_RELATION"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_VERTEX_FORM",
+      "canonicalLabelKo": "이차함수의 꼭짓점 꼴",
+      "definition": "이차함수를 y=a(x−p)^2+q 꼴로 바꾸어 꼭짓점 좌표와 함수값을 읽는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_afeec1b3fccbf7f9306e64f0333530edf4de8af25e6ddc625d08aff208cc750e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_OPTIMIZATION_MODEL",
+      "canonicalLabelKo": "이차함수 최적화 모델",
+      "definition": "기하 조건으로 변수를 소거해 넓이 등을 이차함수로 나타내고 꼭짓점으로 최댓값을 구하는 모델.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_943ba771369d8ef5116226df3e5a573bcb6e4644cfb274c149da721d6e52c717"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_RESTRICTED_DOMAIN_EXTREMA",
+      "canonicalLabelKo": "제한된 정의역의 극값",
+      "definition": "주어진 구간과 제외된 입력 조건을 반영하여 함수의 극값 후보와 실제 달성 여부를 판단하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_a6d53c6b5c394349896526e20c71cce267b1d9e15b2e08933787acac05b4f3db"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_PARAMETRIC_PARABOLA_VERTEX",
+      "canonicalLabelKo": "매개변수 이차함수의 꼭짓점",
+      "definition": "계수 매개변수에 따라 포물선의 축과 꼭짓점 위치가 어떻게 정해지는지 나타내는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_a68ed00223a0290c0f88261a3dcebacdea647b96daaf83acd552f2870dcadab7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_AXIS_OF_SYMMETRY_INTERVAL_CASES",
+      "canonicalLabelKo": "대칭축과 구간의 위치별 극값",
+      "definition": "포물선의 대칭축이 주어진 구간 안·밖·경계에 있는 경우를 나누어 극값 조건을 결정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_a68ed00223a0290c0f88261a3dcebacdea647b96daaf83acd552f2870dcadab7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_LINE_PARABOLA_INTERSECTION",
+      "canonicalLabelKo": "직선과 포물선의 교점",
+      "definition": "직선과 포물선의 교점을 두 함수의 연립으로 나타내고 교점 개수와 좌표 관계를 해석하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_740aa3ad09ad635472bb204d1bd5c66ec30523fc408a453677def106eb25f19e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
     }
   ]
 }
