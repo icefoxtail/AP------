@@ -34,7 +34,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q01-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 1의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "점 P(3,4)와 x축에 대하여 대칭인 P′(3,−4)를 x축과 함께 나타낸 좌표평면이다. x좌표는 그대로이고 y좌표의 부호만 바뀌는 이동을 보여 준다.",
     "solutionImageSize": "full"
   },
   {
@@ -70,7 +70,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q02-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 2의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "직선 y=−2x+2를 (3,1)만큼 평행이동한 y=−2x+9를 나란히 그린 좌표평면이다. 점 (0,2)가 (3,3)으로 옮겨지는 이동벡터 (3,1)이 표시되어 있다.",
     "solutionImageSize": "full"
   },
   {
@@ -240,7 +240,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q07-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 7의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "포물선 y=2x²+4x+5의 꼭짓점 V(−1,3)을 (2,−2)만큼 옮긴 V′(1,1)을 표시한 그림이다. 이동한 꼭짓점이 직선 y=x 위에 놓이는 모습을 보여 준다.",
     "solutionImageSize": "full"
   },
   {
@@ -409,7 +409,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 먼저 조건을 완전제곱식으로 정리하여 대칭의 중심을 구한다.\n조건 정리: $a^2+b^2=2a+4b-5$이고 원래 직선은 $y=-3x+2$이다.\n풀이 방향: $(a,b)$를 구한 뒤 점대칭의 좌표 관계를 직선의 식에 대입한다.\n정석 풀이: $a^2-2a+b^2-4b+5=0$이므로 $(a-1)^2+(b-2)^2=0$이다. 따라서 $(a,b)=(1,2)$이다. 대칭이동한 점을 $(x,y)$라 하면 원래 점은 $(2-x,4-y)$이다. 원래 점이 직선 위에 있으므로 $4-y=-3(2-x)+2$이다. 정리하면 $3x+y-8=0$이다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 12의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "직선 l:y=−3x+2와 이를 점 S(1,2)에 대하여 점대칭이동한 l′:y=−3x+8을 나란히 그린 그림이다. 두 직선이 대칭 중심 S에서 같은 거리에 있음을 보여 준다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-REFLECTION",
     "subUnit": "대칭이동",
@@ -553,7 +553,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 두 교점의 $x$좌표의 평균이 중점 $M$의 $x$좌표이고, $MH$는 그 절댓값이다.\n조건 정리: 대칭이동한 포물선은 $y=f(x)$, 대칭이동한 직선은 $y=g(x)$이다.\n풀이 방향: 두 식을 구해 교점의 $x$좌표를 찾고 산술평균과 기하평균의 관계를 적용한다.\n정석 풀이: $y=(x+a)^2-a^2$을 $y$축에 대하여 대칭이동하면 $f(x)=(-x+a)^2-a^2=x^2-2ax$이다. $y=-\\dfrac4a x$를 $x$축에 대하여 대칭이동하면 $g(x)=\\dfrac4a x$이다. 교점에서는 $x^2-2ax=\\dfrac4a x$이므로 $x=0$ 또는 $x=2a+\\dfrac4a$이다. 따라서 중점의 $x$좌표는 $a+\\dfrac2a$이고 $a\\gt0$이므로 $MH=a+\\dfrac2a$이다. $a+\\dfrac2a\\ge2\\sqrt2$이며 등호는 $a=\\dfrac2a$일 때 성립하므로 $a=\\sqrt2$이다.\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 16의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "y축에 대칭한 포물선 f:y=x²−2√2x와 x축에 대칭한 직선 g:y=2√2x의 교점 A(0,0), B, 중점 M(2√2,8)을 표시한 그림이다. M에서 y축에 내린 수선 MH의 길이가 2√2임을 보여 준다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-REFLECTION",
     "subUnit": "대칭이동",
@@ -623,7 +623,7 @@ window.questionBank = [
     "answer": "$3\\sqrt{10}$",
     "solution": "[키포인트] 꺾인 경로의 최솟값은 한 점을 직선 $y=x$에 대하여 대칭이동하여 두 점 사이의 직선거리로 바꾼다.\n조건 정리: $P,Q$는 서로 독립적으로 직선 $y=x$ 위를 움직인다.\n풀이 방향: $AP+PB$와 $BQ+QC$를 각각 따로 최소화한 뒤 더한다.\n정석 풀이: $A(-1,1)$을 $y=x$에 대하여 대칭이동하면 $A'(1,-1)$이다. $P$가 $y=x$ 위에 있으므로 $AP=A'P$이고 $AP+PB\\ge A'B$이다. 선분 $A'B$는 $y=x$와 만나므로 등호가 성립하며 $A'B=\\sqrt{(1-0)^2+(-1-2)^2}=\\sqrt{10}$이다.\n또 $C(4,6)$을 대칭이동하면 $C'(6,4)$이다. 같은 방법으로 $BQ+QC=BQ+QC'\\ge BC'$이고 선분 $BC'$도 $y=x$와 만나므로 등호가 성립한다. $BC'=\\sqrt{(6-0)^2+(4-2)^2}=2\\sqrt{10}$이다. 두 등호를 각각 만족시키는 $P,Q$를 잡을 수 있으므로 전체 최솟값은 $\\sqrt{10}+2\\sqrt{10}=3\\sqrt{10}$이다.\n따라서 구하는 최솟값은 $3\\sqrt{10}$이다.",
     "solutionImage": "assets/images/23_금당고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 18의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "직선 y=x에 대한 대칭점 A′(1,−1), C′(6,4)와 B(0,2), y=x 위의 P, Q(3,3)를 표시한 좌표평면이다. A′B=√10과 BC′=2√10을 더해 최솟값 3√10이 됨을 보여 준다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SA-12-REFLECTION",
     "subUnit": "대칭이동",

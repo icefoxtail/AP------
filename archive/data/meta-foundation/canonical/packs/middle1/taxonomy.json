@@ -4,7 +4,7 @@
   "hierarchy": "standardUnitKey -> subUnitKey -> problemTypeKey -> templateKey",
   "semanticRegistrySharedAcrossCurricula": true,
   "problemTypeCount": 88,
-  "templateCount": 194,
+  "templateCount": 200,
   "problemTypes": [
     {
       "problemTypeKey": "PT_ABSOLUTE_VALUE_SIGN_EXTREMES",
@@ -100,7 +100,7 @@
       ]
     },
     {
-      "problemTypeKey": "PT_COORD_TRIANGLE_AREA",
+      "problemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
       "canonicalLabelKo": "좌표를 이용한 삼각형의 넓이",
       "definition": "좌표평면에서 삼각형의 꼭짓점 좌표로 밑변과 수직 높이 또는 대응하는 좌표 관계를 구해 넓이를 계산한다.",
       "aliases": [],
@@ -3002,7 +3002,7 @@
     },
     {
       "templateKey": "TPL_COORD_TRIANGLE_AREA_CORE",
-      "parentProblemTypeKey": "PT_COORD_TRIANGLE_AREA",
+      "parentProblemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
       "canonicalLabelKo": "좌표를 이용한 삼각형의 넓이 — 기본 풀이 골격",
       "definition": "Substitute x=8 into y=5x/4, then calculate area.",
       "internalSkeleton": "A lies on y=(5/4)x with x=8, so A=(8,10). Then area △AOB=½·8·10=40.",
@@ -8834,6 +8834,27 @@
           "representativeQuestionUid": "qid_v1_0a7d7b3d981e3dfcb89aed3e22c4c0ef5440509f4657dc4a15ffdd0776751a93",
           "representativePrimaryMethod": "거리-시간 그래프의 시작 좌표와 특정 거리에 도달하는 좌표를 읽는다.",
           "representativeDecisiveStep": "토끼는 10분 뒤 출발하고 거북은 60분에 2km 지점에 도착한다."
+        }
+      ]
+    },
+    {
+      "templateKey": "TPL_M1_COORD_TRIANGLE_AREA_DIRECT",
+      "canonicalLabelKo": "좌표를 이용한 삼각형의 넓이 구하기",
+      "definition": "세 점의 좌표에서 삼각형의 넓이를 직접 계산한다.",
+      "internalSkeleton": "세 점의 좌표에서 삼각형의 넓이를 직접 계산한다.",
+      "parentProblemTypeKey": "PT_M1_COORD_TRIANGLE_AREA",
+      "ownerPack": "MIDDLE1",
+      "status": "ACTIVE",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_39daa9b5678f54009795ee5a5cae10998aff7beee77417e3bdf2eae3a34e1998"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnit": "M1-04",
+      "evidenceProvenance": [
+        {
+          "source": "docs/operations/META_CANONICAL_KEY_COLLISION_REPAIR_20261025.json",
+          "reason": "Preserve the existing M1 direct-area skeleton under its grade-scoped PT identity; high-school TPL_AREA_DIRECT remains unchanged."
         }
       ]
     }

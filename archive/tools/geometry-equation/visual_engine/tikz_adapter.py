@@ -20,6 +20,7 @@ def draft(prepared,layout):
         elif p['kind']=='circle':rows.append(r'\draw '+coord(p['at'])+f' circle[radius={p["radius"]:.9f}pt];')
         elif p['kind'] in {'polyline','polygon'}:
             rows.append(r'\draw '+' -- '.join(coord(v) for v in p['points'])+(' -- cycle' if p['kind']=='polygon' else '')+';')
+        elif p['kind']=='path' and p.get('role')=='region':rows.append(r'ill[even odd rule,black!10] '+' '.join(' -- '.join(coord(v) for v in poly)+' -- cycle' for poly in p['fillPolygons'])+';')
         else:raise ValueError('TIKZ_UNSUPPORTED_PRIMITIVE')
     for label in layout['labels']:
         if label.get('sourceMath'):content='$'+serialize(parse(label['sourceMath']))+'$'

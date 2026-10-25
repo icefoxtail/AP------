@@ -776,7 +776,7 @@ window.questionBank = [
     "answer": "$\\dfrac13\\le k\\lt \\dfrac{11}{6}$",
     "solution": "무리함수의 그래프 위에서는\n$y\\ge0$이고\n$x=\\dfrac{2-y^2}{3}$이다.\n이를 직선\n$y=-\\dfrac12x+k$\n에 대입한다.\n$y=-\\dfrac12\\cdot\\dfrac{2-y^2}{3}+k$이므로\n$6y=y^2-2+6k$이다.\n따라서\n$y^2-6y+6k-2=0$이다.\n서로 다른 두 교점을 가지려면 이 방정식이 서로 다른 두 실근을 가져야 하므로\n$36-4(6k-2)>0$이다.\n따라서\n$k<\\dfrac{11}{6}$이다.\n또 두 교점이 모두 무리함수의 그래프 위에 있으려면 두 근이 모두 $0$ 이상이어야 한다.\n두 근의 합은 $6>0$이고 곱은 $6k-2$이므로\n$6k-2\\ge0$,\n$k\\ge\\dfrac13$이다.\n$k=\\dfrac13$일 때 두 근은 $0$, $6$으로 서로 다르므로 포함된다.\n따라서\n$\\dfrac13\\le k<\\dfrac{11}{6}$이다.",
     "solutionImage": "assets/images/25_팔마고_2학기_기말_고1_기출/q23-solution.svg",
-    "solutionImageAlt": "무리함수와 직선의 두 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "무리함수 y=√(2−3x)의 감소하는 곡선과 기울기 −1/2인 직선 y=−x/2+1이 만나는 두 점 P₁, P₂를 표시한 그림. 두 교점이 생기는 k의 범위가 1/3≤k<11/6임을 보여준다.",
     "solutionImageCaption": "무리함수의 정의역과 직선의 교점 두 개를 표시하여 1/3≤k<11/6 범위를 확인한다.",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-09-FUNCTION_BASIC",

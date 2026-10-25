@@ -2,12 +2,13 @@
 // A plan's `planeMarks` is the author's statement of facts the figure shows; this module checks each statement against the model's points
 // (the SymPy snapshot) and turns it into visual-engine objects. The independent check of the FINAL SVG is plane-marks-observer-worker.py,
 // which recomputes every fact from the Cindy peer's points and from the drawn primitives.
+import {regionSpec,regionPointRefs} from './plane-regions.mjs';
 export const PLANE_RECIPE='PLANE_FIGURE_v1';
 export const isPlaneFigure=plan=>plan?.mathPlan?.realization?.recipeId===PLANE_RECIPE;
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
-const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','facts'],
-  angles:['id','refs','side','arcs','ring','value','label','labelKind','equalGroup','factRole','noLabel'],
+const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','regions','facts'],
+  angles:['id','refs','side','arcs','ring','style','value','label','labelKind','equalGroup','factRole','noLabel'],
   equalLengths:['id','count','segments'],parallels:['id','count','segments'],
   expressionLabels:['id','ownerSegment','text','factRole'],
   arcs:['id','circle','center','from','to','side','label','labelKind','highlight','factRole'],
@@ -66,6 +67,9 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(!Number.isInteger(arcs)||arcs<1||arcs>3)bad('ANGLE_ARC_COUNT_INVALID:'+row.id);
     const ring=row.ring??1;
     if(!Number.isInteger(ring)||ring<1||ring>3)bad('ANGLE_RING_INVALID:'+row.id);
+    // Textbook look: a small filled sector by default (SECTOR); ARC keeps the stroke-only arcs.
+    const style=row.style??'SECTOR';
+    if(!['SECTOR','ARC'].includes(style))bad('ANGLE_MARK_STYLE_INVALID:'+row.id);
     const kind=row.labelKind??'DEGREE';
     if(!['DEGREE','NAME'].includes(kind))bad('MARK_FIELD_INVALID:angles.labelKind:'+row.id);
     // A degree label names the declared value; a mark with neither a label nor `noLabel` states nothing a student can read.
@@ -73,12 +77,13 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     if(text===null&&row.noLabel!==true)bad('ANGLE_MARK_LABEL_REQUIRED:'+row.id);
     if(row.equalGroup!==undefined){
       if(!Number.isInteger(row.equalGroup)||row.equalGroup<1)bad('MARK_FIELD_INVALID:angles.equalGroup:'+row.id);
-      const g=groups.get(row.equalGroup)??{measured,arcs,ids:[]};
+      const g=groups.get(row.equalGroup)??{measured,arcs,style,ids:[]};
       if(Math.abs(g.measured-measured)>ANGLE_TOLERANCE_DEGREES)bad('ANGLE_EQUAL_GROUP_MISMATCH:'+row.id);
       if(g.arcs!==arcs)bad('ANGLE_EQUAL_GROUP_ARC_COUNT:'+row.id);
+      if(g.style!==style)bad('ANGLE_EQUAL_GROUP_STYLE_MISMATCH:'+row.id);
       g.ids.push(row.id);groups.set(row.equalGroup,g);
     }
-    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,...(ring>1?{ring}:{}),...(side==='OUTER'?{outer:true}:{})};
+    const object={id:row.id,kind:'ANGLE_MARK',refs:row.refs,value:measured,arcs,style,...(ring>1?{ring}:{}),...(side==='OUTER'?{outer:true}:{})};
     if(text!==null){object.labelText=text;object.labelKind=kind;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);
   }
@@ -157,6 +162,9 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(!(plan.displayLines??[]).includes(row.tangent)&&!segmentIds.has(row.tangent))bad('FACT_TARGET_NOT_DRAWN:'+row.tangent);
     }else bad('MARK_FIELD_INVALID:facts.kind');
   }
+  // --- region fills (plane-regions.mjs)
+  const regionFacts=regionSpec(plan,model,points,used);
+  objects.push(...regionFacts.objects);Object.assign(factRolesByLabel,regionFacts.factRolesByLabel);
   return {objects,factRolesByLabel};
 }
 
@@ -167,5 +175,5 @@ export function planeMarkPointRefs(plan){
   for(const row of Array.isArray(marks.angles)?marks.angles:[])if(Array.isArray(row?.refs))refs.push(...row.refs);
   for(const row of Array.isArray(marks.arcs)?marks.arcs:[])refs.push(row?.center,row?.from,row?.to);
   for(const row of Array.isArray(marks.facts)?marks.facts:[]){if(Array.isArray(row?.points))refs.push(...row.points);refs.push(row?.center,row?.contact);}
-  return refs.filter(id=>typeof id==='string');
+  return [...refs,...regionPointRefs(plan)].filter(id=>typeof id==='string');
 }

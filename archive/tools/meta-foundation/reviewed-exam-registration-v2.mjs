@@ -245,7 +245,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
           !row.problemTypeKey || !row.templateKey || !row.standardUnitKey || !row.subUnitKey ||
           !(row.targetPack || row.pack) || !rowDifficultyReason ||
           flatV3 && (!row.readingEvidence?.sourceTextExcerpt || !row.readingEvidence?.solutionDecisiveExcerpt ||
-            !candidate.readingEvidence?.sourceTextExcerpt || !candidate.readingEvidence?.solutionDecisiveExcerpt ||
+            candidate.readingEvidence !== undefined && (!candidate.readingEvidence?.sourceTextExcerpt || !candidate.readingEvidence?.solutionDecisiveExcerpt) ||
             !Number.isInteger(row.difficulty?.bucket) || row.difficulty.bucket < 1 || row.difficulty.bucket > 5))
         fail(`META_PIPELINE_AUDIT ${flatV3 ? "sourceDrive v3" : "v2"} record incomplete: ${row.questionId}`);
       if (new Set(crossConceptKeys).size !== crossConceptKeys.length ||
@@ -266,9 +266,11 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
             : flatV3 && field === "targetPack" ? candidate.pack : candidate[field];
         if (!eq(auditValue ?? null, candidateValue ?? null)) fail(`META_PIPELINE_AUDIT ${flatV3 ? "sourceDrive v3" : "v2"} classification mismatch: ${ordinal}.${field}`);
       }
-      if (flatV3 && (!eq(row.difficulty?.confidence, candidate.difficultyConfidence) ||
+      if (flatV3 && (!eq(row.difficulty?.bucket, candidate.difficultyBucket) ||
+          !eq(row.difficulty?.confidence, candidate.difficultyConfidence) ||
           !eq(row.difficulty?.reason, candidate.difficultyReason) ||
-          !eq(row.readingEvidence, candidate.readingEvidence)))
+          candidate.readingEvidence !== undefined && (!eq(row.readingEvidence?.sourceTextExcerpt, candidate.readingEvidence.sourceTextExcerpt) ||
+            !eq(row.readingEvidence?.solutionDecisiveExcerpt, candidate.readingEvidence.solutionDecisiveExcerpt))))
         fail(`META_PIPELINE_AUDIT sourceDrive v3 evidence mismatch: ${ordinal}`);
       if (!eq(crossConceptKeys, candidate.crossConceptKeys) || !eq(conditionKeys, candidate.conditionKeys || []))
         fail(`META_PIPELINE_AUDIT ${auditV3SourceDriveFlat ? "sourceDrive v3" : "v2"} classification tags mismatch: ${ordinal}`);
@@ -309,7 +311,9 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
         ...(flatV3 ? {
           readingEvidence: normalizedReadingEvidence,
           difficultyEvidence: { ...row.difficulty },
-          sourceSchemaVisualEvidence: "NOT_PROVIDED",
+          classificationReadingEvidenceStatus: candidate.readingEvidence === undefined ? "NOT_PROVIDED_AUDIT_EXCERPTS_VERIFIED" : "TEXT_EXCERPTS_MATCHED_FINAL_AUDIT",
+          sourceSchemaVisualEvidence: typeof row.readingEvidence.visualAssetChecked === "boolean"
+            ? (row.readingEvidence.visualAssetChecked ? "EXPLICITLY_CHECKED" : "EXPLICITLY_NOT_CHECKED") : "NOT_PROVIDED",
         } : { legacyV2Evidence: {
           sourceTextExcerpt: readingEvidence?.sourceTextExcerpt || candidate.contentSnippet,
           solutionDecisiveExcerpt: readingEvidence?.solutionDecisiveExcerpt || null,
@@ -924,8 +928,10 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredRep
     if (ref.path !== masterPath || !(patch.evidenceRefs || []).some(e => e.path === ref.path)) fail("target parent reference is not evidence-bound");
     const compact = value => String(value).normalize("NFC").replace(/\s/g, "");
     const matches = (read(masterPath).records || []).filter(r => r.curriculum === ref.curriculum && r.scope === ref.scope && r.majorUnit === ref.majorUnit && r.midUnit === ref.midUnit);
+    // Same two legacy scope aliases used by archive2-canonical's master-path projection.
+    const masterCourse = ({ 수학_상: "수학(상)", 수학_하: "수학(하)" })[ref.scope] || ref.scope;
     const canonicalMidLabels = [resolved.binding.L2, resolved.sub?.labelKo, resolved.unit.labelKo].filter(Boolean);
-    if (!matches.length || ref.curriculum !== resolved.curriculum || compact(ref.scope) !== compact(row.courseKey || resolved.course) ||
+    if (!matches.length || ref.curriculum !== resolved.curriculum || compact(masterCourse) !== compact(row.courseKey || resolved.course) ||
         !canonicalMidLabels.includes(ref.midUnit) || resolved.binding.L1 && ref.majorUnit !== resolved.binding.L1) fail("canonical target parent mismatch");
     return { ...labels, L1: ref.majorUnit, L2: ref.midUnit };
   };
@@ -1296,7 +1302,14 @@ export function registerReviewedExamV2({ root, request: req, write = false, veri
       inputAuditVariant: metaPipelineAudit.inputAuditVariant,
       ...(metaPipelineAudit.inputAuditVariant === "source_drive_flat_v3" ? { sourceSchemaNormalization: {
         statistics: metaPipelineAudit.audit.statistics,
-        visualEvidence: "NOT_PROVIDED_IN_SOURCE_SCHEMA",
+        visualEvidence: metaPipelineAudit.audit.records.every(row => row.sourceSchemaVisualEvidence === "NOT_PROVIDED")
+          ? "NOT_PROVIDED_IN_SOURCE_SCHEMA" : "PER_RECORD_PROVIDED_STATUS",
+        visualEvidenceCounts: {
+          checked: metaPipelineAudit.audit.records.filter(row => row.sourceSchemaVisualEvidence === "EXPLICITLY_CHECKED").length,
+          notChecked: metaPipelineAudit.audit.records.filter(row => row.sourceSchemaVisualEvidence === "EXPLICITLY_NOT_CHECKED").length,
+          notProvided: metaPipelineAudit.audit.records.filter(row => row.sourceSchemaVisualEvidence === "NOT_PROVIDED").length,
+        },
+        classificationEvidenceAbsent: metaPipelineAudit.audit.records.filter(row => row.classificationReadingEvidenceStatus === "NOT_PROVIDED_AUDIT_EXCERPTS_VERIFIED").length,
       } } : {}),
       ...(metaPipelineAudit.classificationRef ? { classificationSha256: metaPipelineAudit.classificationRef.sha256 } : {}),
       sourceFileDriveId: metaPipelineAudit.sourceFileDriveId,

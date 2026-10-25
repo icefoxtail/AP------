@@ -1010,7 +1010,7 @@ window.questionBank = [
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
     "solutionImage": "assets/images/23_여천고_1학기_중간_고1_기출/q22-solution-graph.svg",
-    "solutionImageAlt": "문항 22 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageAlt": "좌표평면에 아래로 볼록한 포물선 y=(9/2)(x−1)²+8과 직선 y=18x−10이 그려져 있고, 꼭짓점 (1,8)과 다른 교점 (5,80)이 표시되어 있으며 1≤x≤5에서 최솟값은 8이다.",
     "solutionImageSize": "full"
   },
   {

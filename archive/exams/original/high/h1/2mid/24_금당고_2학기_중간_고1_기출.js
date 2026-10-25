@@ -33,7 +33,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q01-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 1의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "점 P(1,2)를 이동벡터 (2,3)만큼 옮긴 P′(3,5)를 화살표와 함께 나타낸 좌표평면이다. x좌표에 2, y좌표에 3을 더하는 평행이동을 보여 준다.",
     "solutionImageSize": "full"
   },
   {
@@ -295,7 +295,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 9의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "직선 y=2x−1을 (1,−2)만큼 평행이동한 y=2x−5와 점 P(3,1)을 표시한 좌표평면이다. (0,−1)이 (1,−3)으로 옮겨지고 P가 이동한 직선 위에 있음을 보여 준다.",
     "solutionImageSize": "full"
   },
   {
@@ -487,7 +487,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트] 새 식의 두 입력을 원래 좌표로 놓고, 원래 도형의 꼭짓점이 어디로 이동하는지 계산한다.\n조건 정리: 원래 도형의 꼭짓점은 $(1,-3)$, $(4,-3)$, $(4,0)$이다.\n풀이 방향: $u=y+1$, $v=-x-3$으로 놓아 원래 좌표 $(u,v)$와 새 좌표 $(x,y)$의 관계를 구한다.\n정석 풀이: $u=y+1$, $v=-x-3$에서 $x=-v-3$, $y=u-1$이다. 따라서 원래 점 $(u,v)$는 새 좌표 $(-v-3,\\,u-1)$로 옮겨진다. $(1,-3)$은 $(0,0)$으로, $(4,-3)$은 $(0,3)$으로, $(4,0)$은 $(-3,3)$으로 옮겨진다. 그러므로 새 도형은 제2사분면에 있고 꼭짓점이 $(0,0)$, $(0,3)$, $(-3,3)$인 삼각형이다.\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q15-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 15의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "꼭짓점 A(1,−3), B(4,−3), C(4,0)인 삼각형과 이를 옮긴 A′(0,0), B′(0,3), C′(−3,3)인 삼각형을 한 좌표평면에 함께 그린 그림이다. 대응하는 꼭짓점의 좌표 변화를 화살표로 보여 준다.",
     "solutionImageSize": "full",
     "image": "assets/images/24_금당고_2학기_중간_고1_기출/q15.png",
     "imageSize": "tall",
@@ -526,7 +526,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "[키포인트] 대각선의 교점 주위 네 삼각형에서는 서로 마주 보는 두 넓이의 곱이 같다.\n조건 정리: $[OAB]=16$, $[OCD]=9$이고, 나머지 두 삼각형의 넓이를 $[OBC]=x$, $[ODA]=y$라 하자.\n풀이 방향: 같은 높이를 갖는 삼각형의 넓이비로 $xy$를 구한 뒤 $x+y$의 최솟값을 구한다.\n정석 풀이: 삼각형 $OAB$와 $OBC$는 꼭짓점 $B$에서 직선 $AC$에 내린 높이가 같으므로 $\\dfrac{x}{16}=\\dfrac{OC}{OA}$이다. 삼각형 $ODA$와 $OCD$는 꼭짓점 $D$에서 직선 $AC$에 내린 높이가 같으므로 $\\dfrac{9}{y}=\\dfrac{OC}{OA}$이다. 따라서 $\\dfrac{x}{16}=\\dfrac9y$이고 $xy=144$이다. 사각형의 넓이는 $16+9+x+y=25+x+y$이다. $(x-y)^2\\ge0$에서 $x+y\\ge2\\sqrt{xy}=24$이므로 전체 넓이는 $49$ 이상이다. $x=y=12$일 때 등호가 성립할 수 있으므로 최솟값은 $49$이다.\n따라서 정답은 ④이다.",
     "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q16-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 16의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "사각형 ABCD의 대각선 교점 O 주위 네 삼각형에 [OAB]=16, [OBC]=12, [OCD]=9, [ODA]=12를 표시한 그림이다. xy=144에서 x=y=12일 때 전체 넓이가 49로 최소가 됨을 보여 준다.",
     "solutionImageSize": "full",
     "image": "assets/images/24_금당고_2학기_중간_고1_기출/q16.png",
     "subUnitKey": "H15-SA-09-GEOMETRY_APPLICATION",
@@ -645,7 +645,7 @@ window.questionBank = [
     "answer": "$15$",
     "solution": "[키포인트] 대칭이동으로 각 선분의 길이를 보존한 뒤, 먼저 삼각부등식으로 모든 경우의 하한을 구하고 실제로 그 하한이 만들어지는 점을 확인한다.\n조건 정리: $P$는 선분 $AB$ 위, $Q$는 $y$축 위, $R$은 $x$축 위에 있고 $Q\\ne R$이다.\n풀이 방향: $P$를 $y$축에 대하여 대칭이동한 점을 $P'$, $C(5,4)$를 $x$축에 대하여 대칭이동한 점을 $C'(5,-4)$라 하여 삼각부등식을 적용한다.\n정석 풀이: 대칭이동에 의해 $PQ=P'Q$, $RC=RC'$이므로 $PQ+QR+RC=P'Q+QR+RC'$이다. 세 점을 잇는 꺾은선의 길이는 양 끝점 사이의 거리보다 작을 수 없으므로 $P'Q+QR+RC'\\ge P'C'$이다. $C'$를 다시 $y$축에 대하여 대칭이동한 점을 $D(-5,-4)$라 하면 $P'C'=PD$이므로 모든 $P,Q,R$에 대하여 $PQ+QR+RC\\ge PD$이다. 따라서 전체 길이는 점 $D$와 선분 $AB$ 사이의 거리 이상이다. $A(4,8)$, $B(8,5)$를 지나는 직선의 방정식은 $3x+4y-44=0$이다. 점 $D(-5,-4)$에서 이 직선까지의 거리는 $\\dfrac{|3(-5)+4(-4)-44|}{\\sqrt{3^2+4^2}}=\\dfrac{75}{5}=15$이다. 또 직선 $DA$의 기울기는 $\\dfrac{8-(-4)}{4-(-5)}=\\dfrac43$이고, 직선 $AB$의 기울기는 $\\dfrac{5-8}{8-4}=-\\dfrac34$이다. 두 직선의 기울기의 곱이 $-1$이므로 $DA\\perp AB$이다. 따라서 점 $D$에서 직선 $AB$에 내린 수선의 발은 선분 위의 점 $A$이다. 따라서 모든 경우에 $PQ+QR+RC\\ge15$이다. 이제 $P=A$로 잡으면 $P'=(-4,8)$이다. 선분 $P'C'$는 $y$축과 $Q=\\left(0,\\dfrac83\\right)$에서 만나고, 그 다음 $x$축과 $R=(2,0)$에서 만난다. 두 점은 서로 다르고 $P',Q,R,C'$가 한 직선 위에 이 순서로 놓이므로 $P'Q+QR+RC'=P'C'=15$이다. 따라서 하한 $15$가 실제로 성립한다.\n따라서 구하는 최솟값은 $15$이다.",
     "solutionImage": "assets/images/24_금당고_2학기_중간_고1_기출/q20-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 20의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "A(4,8), C′(5,−4), D(−5,−4), y축 위의 Q(0,8/3), x축 위의 R(2,0)을 표시하고 D와 C′를 수평선분으로 이은 좌표평면이다. 꺾인 경로 PQ+QR+RC의 최솟값이 15가 되는 배치를 보여 준다.",
     "solutionImageSize": "full",
     "image": "assets/images/24_금당고_2학기_중간_고1_기출/q20.png",
     "imageSize": "full",

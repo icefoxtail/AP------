@@ -107,8 +107,9 @@ def fit_overview(plan):
     if plan.get('family')=='sqrt-affine':return _fit_sqrt_affine_overview(plan)
     if plan.get('family')=='absolute-value':return _fit_absolute_value_overview(plan)
     if plan.get('family')=='piecewise-affine':return _fit_piecewise_affine_overview(plan)
-    if plan.get('family')=='exponential-affine':return _fit_exponential_affine_overview(plan)
-    if plan.get('family')=='logarithmic-affine':return _fit_logarithmic_affine_overview(plan)
+    if plan.get('family')=='exponential-affine':return _fit_exponential_base_overview(plan) if plan.get('base') is not None or plan.get('shiftX') is not None else _fit_exponential_affine_overview(plan)
+    if plan.get('family')=='logarithmic-affine':return _fit_logarithmic_base_overview(plan) if plan.get('base') is not None else _fit_logarithmic_affine_overview(plan)
+    if plan.get('family')=='exp-log-pair':return _fit_exp_log_pair_overview(plan)
     if plan.get('family')=='trigonometric':return _fit_trigonometric_overview(plan)
     if plan.get('family')=='piecewise-polynomial':return fit_piecewise_polynomial(plan)
     if plan.get('family')!='polynomial':raise ValueError('UNSUPPORTED_OVERVIEW_FAMILY')
@@ -534,6 +535,179 @@ def _valid_exp_log_display(plan,code):
     if not isinstance(domain,list) or len(domain)!=2 or any(isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value) for value in domain) or not domain[0]<domain[1]:raise ValueError('INVALID_'+code+'_DRAW_INTERVAL')
     if not isinstance(viewport,list) or len(viewport)!=4 or any(isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value) for value in viewport) or not viewport[0]<viewport[1] or not viewport[2]<viewport[3]:raise ValueError('INVALID_'+code+'_VIEWPORT')
 
+def exp_log_base(value,code):
+    """The exact base of a base-a exponential/logarithm: a positive integer, a reduced fraction of positive integers, or sqrt(n) with n a
+    square-free integer > 1. None means the natural base e. Symbolic, nested, decimal and non-positive bases are refused."""
+    if value is None:return None
+    if not isinstance(value,str) or len(value)>32:raise ValueError(code+'_BASE_GRAMMAR_REQUIRED')
+    text=value.strip()
+    if re.fullmatch(r'-?\d+',text):
+        parsed=Fraction(int(text));kind='INTEGER'
+    elif re.fullmatch(r'-?\d+/[1-9]\d*',text):
+        parsed=Fraction(text);kind='RATIONAL'
+    elif re.fullmatch(r'sqrt\([1-9]\d*\)',text):
+        n=int(text[5:-1]);root=math.isqrt(n)
+        if root*root==n or any(n%(prime*prime)==0 for prime in range(2,root+1)):raise ValueError(code+'_BASE_RADICAL_NOT_SQUARE_FREE')
+        parsed=None;kind='RADICAL'
+    else:raise ValueError(code+'_BASE_GRAMMAR_REQUIRED')
+    if kind=='RATIONAL' and parsed.denominator==1:kind='INTEGER'
+    if kind!='RADICAL' and (parsed<=0 or parsed==1):raise ValueError(code+'_BASE_OUT_OF_RANGE')
+    exact=S.Integer(int(text)) if kind=='INTEGER' else S.Rational(parsed.numerator,parsed.denominator) if kind=='RATIONAL' else S.sqrt(int(text[5:-1]))
+    greater=kind=='RADICAL' or parsed>1
+    return {'text':str(int(parsed)) if kind=='INTEGER' else str(parsed) if kind=='RATIONAL' else 'sqrt('+text[5:-1]+')','kind':kind,'exact':exact,'greaterThanOne':greater,'float':float(exact.evalf(30))}
+
+def natural_exp_log_base():
+    """The natural base e represented in the base features (used only when a shift is given without an explicit base)."""
+    return {'text':'e','kind':'NATURAL','exact':S.E,'greaterThanOne':True,'float':math.e}
+
+def exp_log_shift(value,code):
+    if value is None:return Fraction(0),'0'
+    parsed=_piecewise_fraction(value,code)
+    return parsed,_fraction_text(parsed)
+
+def _exp_log_base_features(base):
+    return {'base':base['text'],'baseKind':base['kind'],'baseGreaterThanOne':base['greaterThanOne']}
+
+def _fit_exponential_base_overview(plan):
+    if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:raise ValueError('EXPONENTIAL_SOURCE_DOMAIN_REQUIRES_ALL_REALS')
+    _valid_exp_log_display(plan,'EXPONENTIAL')
+    base=exp_log_base(plan.get('base'),'EXPONENTIAL') or natural_exp_log_base()
+    a,k,c=_exp_log_coefficients(plan.get('coefficients'),3,'EXPONENTIAL')
+    shift,shift_text=exp_log_shift(plan.get('shiftX'),'EXPONENTIAL_SHIFT_INVALID')
+    if a==0 or k==0:raise ValueError('EXPONENTIAL_NONZERO_SCALE_AND_RATE_REQUIRED')
+    rate=abs(float(k)*math.log(base['float']))
+    if not math.isfinite(rate) or rate<=0 or rate>1e6:raise ValueError('EXPONENTIAL_BASE_RATE_INVALID')
+    radius=3/rate;lo=float(shift)-radius;hi=float(shift)+radius
+    def evaluate(value):
+        try:result=float(a)*(base['float']**(float(k)*(value-float(shift))))+float(c)
+        except OverflowError:raise ValueError('UNSUPPORTED_EXPONENTIAL_NUMERIC_SCOPE') from None
+        if not math.isfinite(result) or abs(result)>1e8:raise ValueError('UNSUPPORTED_EXPONENTIAL_NUMERIC_SCOPE')
+        return result
+    endpoint_values=[evaluate(lo),evaluate(hi)];reference_y=float(a+c);low=min(float(c),reference_y,*endpoint_values);high=max(float(c),reference_y,*endpoint_values);ypad=.15*max(1.0,high-low,abs(low),abs(high));xpad=.04*(hi-lo)
+    viewport=[lo-xpad,hi+xpad,min(0.0,low)-ypad,max(0.0,high)+ypad]
+    growth_positive=(k>0)==base['greaterThanOne']
+    features={'schemaVersion':'EXPONENTIAL_BASE_FEATURES_v1',**_exp_log_base_features(base),'shiftX':shift_text,'referencePoint':{'x':_fraction_text(shift),'y':_fraction_text(a+c)},'horizontalAsymptote':{'y':_fraction_text(c),'side':'LEFT' if growth_positive else 'RIGHT','approachedFrom':'ABOVE' if a>0 else 'BELOW'},'monotonicity':'INCREASING' if (a>0)==growth_positive else 'DECREASING','growthSide':'RIGHT' if growth_positive else 'LEFT','growthDirection':'UP' if a>0 else 'DOWN'}
+    policy={'schemaVersion':'EXPONENTIAL_BASE_FEATURE_POLICY_v1','sourceDomain':'ALL_REALS','referenceArgument':'EXPONENT_ZERO','asymptotePolicy':'EXACT_VERTICAL_SHIFT','basePolicy':'POSITIVE_BASE_NOT_ONE','referenceMarkerRadiusIntrinsicPx':4,'minimumReferenceMarkerDiameterCssPx':3,'minimumAsymptoteSeparationCssPx':2,'minimumBranchSpanCssPx':32}
+    fitted={**plan,'base':base['text'],'shiftX':shift_text,'domain':[lo,hi],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'EXPONENTIAL_BASE_OVERVIEW_v1','exponentialFeatures':features,'exponentialFeaturePolicy':policy}
+    return {'graphPlan':fitted,'policy':'EXPONENTIAL_BASE_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan['domain'],'viewport':plan['viewport']}}
+
+def _fit_logarithmic_base_overview(plan):
+    if plan.get('sourceDomain')!={'kind':'NATURAL_LOG_AFFINE'}:raise ValueError('LOGARITHMIC_SOURCE_DOMAIN_REQUIRES_NATURAL_AFFINE')
+    _valid_exp_log_display(plan,'LOGARITHMIC')
+    base=exp_log_base(plan.get('base'),'LOGARITHMIC') or natural_exp_log_base()
+    a,k,b,c=_exp_log_coefficients(plan.get('coefficients'),4,'LOGARITHMIC')
+    if a==0 or k==0:raise ValueError('LOGARITHMIC_NONZERO_SCALE_AND_RATE_REQUIRED')
+    root=-b/k;reference=(1-b)/k;root_f=float(root);reference_f=float(reference);rate=abs(float(k));epsilon=.125/rate
+    if k>0:lo=root_f+epsilon;hi=reference_f+3/rate
+    else:lo=reference_f-3/rate;hi=root_f-epsilon
+    if not lo<hi:raise ValueError('LOGARITHMIC_DRAW_INTERVAL_INVALID')
+    log_base=math.log(base['float'])
+    def evaluate(value):
+        argument=float(k)*value+float(b)
+        if argument<=0:raise ValueError('LOGARITHMIC_DRAW_INTERVAL_CROSSES_DOMAIN_BOUNDARY')
+        try:result=float(a)*math.log(argument)/log_base+float(c)
+        except (ValueError,ZeroDivisionError,OverflowError):raise ValueError('UNSUPPORTED_LOGARITHMIC_NUMERIC_SCOPE') from None
+        if not math.isfinite(result) or abs(result)>1e8:raise ValueError('UNSUPPORTED_LOGARITHMIC_NUMERIC_SCOPE')
+        return result
+    start_y=evaluate(lo);end_y=evaluate(hi);reference_y=float(c);low=min(0.0,start_y,end_y,reference_y);high=max(0.0,start_y,end_y,reference_y);ypad=.15*max(1.0,high-low,abs(low),abs(high));xpad=max(.16*(hi-lo),.5/rate)
+    viewport=[lo-xpad,hi+xpad,min(0.0,low)-ypad,max(0.0,high)+ypad]
+    increasing=(a*k>0)==base['greaterThanOne']
+    features={'schemaVersion':'LOGARITHMIC_BASE_FEATURES_v1',**_exp_log_base_features(base),'naturalDomainBoundaryX':_fraction_text(root),'boundarySide':'RIGHT' if k>0 else 'LEFT','boundaryLimitDirection':'DOWN' if a>0 else 'UP','referencePoint':{'x':_fraction_text(reference),'y':_fraction_text(c),'argument':'1'},'monotonicity':'INCREASING' if increasing else 'DECREASING','sampleBoundaryArgument':'1/8','sampleDomain':[lo,hi]}
+    policy={'schemaVersion':'LOGARITHMIC_BASE_FEATURE_POLICY_v1','sourceDomain':'kx+b>0','domainBoundaryPolicy':'NATURAL_OPEN_BOUNDARY','referenceArgument':'1','sampleBoundaryArgument':'1/8','boundaryCue':'DASHED_VERTICAL_LINE','basePolicy':'POSITIVE_BASE_NOT_ONE','referenceMarkerRadiusIntrinsicPx':4,'minimumReferenceMarkerDiameterCssPx':3,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':32}
+    fitted={**plan,'base':base['text'],'domain':[lo,hi],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'LOGARITHMIC_BASE_OVERVIEW_v1','logarithmicFeatures':features,'logarithmicFeaturePolicy':policy}
+    return {'graphPlan':fitted,'policy':'LOGARITHMIC_BASE_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan['domain'],'viewport':plan['viewport']}}
+
+def _exp_log_curve_spec(row,index,code):
+    if not isinstance(row,dict):raise ValueError(code)
+    allowed={'id','family','base','coefficients','sourceDomain','shiftX'}
+    if set(row)-allowed:raise ValueError(code)
+    curve_id=row.get('id')
+    if not isinstance(curve_id,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',curve_id):raise ValueError(code+'_ID_INVALID')
+    family=row.get('family')
+    if family not in {'exponential-affine','logarithmic-affine'}:raise ValueError(code+'_FAMILY_UNSUPPORTED')
+    base=exp_log_base(row.get('base'),'EXP_LOG_PAIR') or natural_exp_log_base()
+    coefficients=_exp_log_coefficients(row.get('coefficients'),3 if family=='exponential-affine' else 4,'EXP_LOG_PAIR')
+    if coefficients[0]==0 or coefficients[1]==0:raise ValueError(code+'_NONZERO_SCALE_AND_RATE_REQUIRED')
+    if family=='exponential-affine':
+        if row.get('sourceDomain')!={'kind':'ALL_REALS'}:raise ValueError('EXPONENTIAL_SOURCE_DOMAIN_REQUIRES_ALL_REALS')
+        shift,shift_text=exp_log_shift(row.get('shiftX'),'EXP_LOG_PAIR_SHIFT_INVALID')
+        return {'id':curve_id,'family':family,'base':base,'coefficients':coefficients,'shift':shift,'shiftText':shift_text}
+    if row.get('sourceDomain')!={'kind':'NATURAL_LOG_AFFINE'}:raise ValueError('LOGARITHMIC_SOURCE_DOMAIN_REQUIRES_NATURAL_AFFINE')
+    if row.get('shiftX') is not None:raise ValueError(code+'_SHIFT_UNSUPPORTED')
+    a,k,b,c=coefficients
+    return {'id':curve_id,'family':family,'base':base,'coefficients':coefficients,'boundary':-b/k,'reference':(1-b)/k}
+
+def _fit_exp_log_pair_overview(plan):
+    code='EXP_LOG_PAIR_PLAN_INVALID'
+    if plan.get('sourceDomain') is not None or plan.get('domain') is not None or plan.get('viewport') is not None:raise ValueError(code)
+    rows=plan.get('curves')
+    if not isinstance(rows,list) or len(rows)!=2:raise ValueError(code)
+    curves=[_exp_log_curve_spec(row,index,code) for index,row in enumerate(rows)]
+    if len({row['id'] for row in curves})!=2:raise ValueError(code+'_ID_DUPLICATE')
+    identity=plan.get('identityLine',False)
+    if not isinstance(identity,bool):raise ValueError(code+'_IDENTITY_LINE_INVALID')
+    spans=[]
+    for row in curves:
+        base=row['base'];a,k,c=row['coefficients'][:3]
+        if row['family']=='exponential-affine':
+            rate=abs(float(k)*math.log(base['float']))
+            if not math.isfinite(rate) or rate<=0:raise ValueError('EXP_LOG_PAIR_SCALE_UNSUPPORTED')
+            half=3/rate
+            if not math.isfinite(half) or half>8:raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
+            row['display']=(float(row['shift'])-half,float(row['shift'])+half)
+            row['referencePoint']=(float(row['shift']),float(a+c))
+        else:
+            rate=abs(float(k));half=3/rate;epsilon=.125/rate
+            if k>0:row['display']=(float(row['boundary'])+epsilon,float(row['reference'])+half)
+            else:row['display']=(float(row['reference'])-half,float(row['boundary'])-epsilon)
+            row['referencePoint']=(float(row['reference']),float(c))
+        lo_display,hi_display=row['display']
+        if not (math.isfinite(lo_display) and math.isfinite(hi_display) and lo_display<hi_display):raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
+        spans.append((lo_display,hi_display))
+    lo=max(spans[0][0],spans[1][0]);hi=min(spans[0][1],spans[1][1])
+    if not lo<hi:raise ValueError('EXP_LOG_PAIR_NO_SHARED_WINDOW')
+    anchors=[row['referencePoint'][0] for row in curves]
+    lo=min(lo,*anchors);hi=max(hi,*anchors)
+    if not math.isfinite(lo) or not math.isfinite(hi) or hi-lo>16:raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
+    pad=max(.75,.18*(hi-lo));lo-=pad;hi+=pad
+    def exp_value(row,value):
+        a,k,c=row['coefficients'];base=row['base']['float']
+        try:result=float(a)*(base**(float(k)*(value-float(row['shift']))))+float(c)
+        except OverflowError:raise ValueError('UNSUPPORTED_EXPONENTIAL_NUMERIC_SCOPE') from None
+        if not math.isfinite(result) or abs(result)>1e8:raise ValueError('UNSUPPORTED_EXPONENTIAL_NUMERIC_SCOPE')
+        return result
+    def log_value(row,value):
+        a,k,b,c=row['coefficients'];argument=float(k)*value+float(b)
+        if argument<=0:raise ValueError('LOGARITHMIC_DRAW_INTERVAL_CROSSES_DOMAIN_BOUNDARY')
+        result=float(a)*math.log(argument)/math.log(row['base']['float'])+float(c)
+        if not math.isfinite(result) or abs(result)>1e8:raise ValueError('UNSUPPORTED_LOGARITHMIC_NUMERIC_SCOPE')
+        return result
+    feature_rows=[];ys=[0.0,lo,hi]
+    for row in curves:
+        draw_lo=max(lo,row['display'][0]);draw_hi=min(hi,row['display'][1])
+        if not draw_lo<draw_hi:raise ValueError('EXP_LOG_PAIR_NO_SHARED_WINDOW')
+        if row['family']=='exponential-affine':
+            values=[exp_value(row,draw_lo),exp_value(row,draw_hi),row['referencePoint'][1],float(row['coefficients'][2])]
+            growth_positive=(row['coefficients'][1]>0)==row['base']['greaterThanOne'];a=row['coefficients'][0];c=row['coefficients'][2]
+            feature_rows.append({'id':row['id'],'family':row['family'],**_exp_log_base_features(row['base']),'coefficients':[_fraction_text(value) for value in row['coefficients']],'shiftX':row['shiftText'],'domain':[draw_lo,draw_hi],'referencePoint':{'x':_fraction_text(row['shift']),'y':_fraction_text(a+c)},'horizontalAsymptote':{'y':_fraction_text(c),'side':'LEFT' if growth_positive else 'RIGHT','approachedFrom':'ABOVE' if a>0 else 'BELOW'},'monotonicity':'INCREASING' if (a>0)==growth_positive else 'DECREASING','growthSide':'RIGHT' if growth_positive else 'LEFT','growthDirection':'UP' if a>0 else 'DOWN'})
+        else:
+            values=[log_value(row,draw_lo),log_value(row,draw_hi),row['referencePoint'][1]]
+            a,k,b,c=row['coefficients'];increasing=(a*k>0)==row['base']['greaterThanOne']
+            feature_rows.append({'id':row['id'],'family':row['family'],**_exp_log_base_features(row['base']),'coefficients':[_fraction_text(value) for value in row['coefficients']],'domain':[draw_lo,draw_hi],'naturalDomainBoundaryX':_fraction_text(row['boundary']),'boundarySide':'RIGHT' if k>0 else 'LEFT','boundaryLimitDirection':'DOWN' if a>0 else 'UP','referencePoint':{'x':_fraction_text(row['reference']),'y':_fraction_text(c),'argument':'1'},'monotonicity':'INCREASING' if increasing else 'DECREASING'})
+        ys.extend(values)
+    # The inverse-pair figure is drawn at ONE scale on both axes (the dashed y=x must read at 45 degrees). The display window keeps both
+    # reference points, the identity line over the shared x window, and enough height for both curves to be recognisable; the sampler clips
+    # the parts above/below this window.
+    anchors=[0.0,lo,hi,*[row['referencePoint'][1] for row in curves]]
+    center=(min(anchors)+max(anchors))/2;half=max((hi-lo)*.8,(max(anchors)-min(anchors))/2+.15)
+    low=center-half;high=center+half
+    viewport=[lo,hi,low,high]
+    if not all(math.isfinite(value) and abs(value)<=1e8 for value in viewport):raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
+    features={'schemaVersion':'EXP_LOG_PAIR_FEATURES_v1','identityLine':identity,'curves':feature_rows,'sampleBoundaryArgument':'1/8'}
+    policy={'schemaVersion':'EXP_LOG_PAIR_POLICY_v1','identityLinePolicy':'DASHED_4_3' if identity else 'NONE','referenceMarkerRadiusIntrinsicPx':4,'minimumReferenceMarkerDiameterCssPx':3,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':32,'minimumAsymptoteSeparationCssPx':2}
+    fitted={**plan,'domain':[lo,hi],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'EXP_LOG_PAIR_OVERVIEW_v1','expLogPairFeatures':features,'expLogPairPolicy':policy,'equalUnits':True,'axisRatio':1}
+    return {'graphPlan':fitted,'policy':'EXP_LOG_PAIR_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':None,'viewport':None}}
+
 def _fit_exponential_affine_overview(plan):
     if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:raise ValueError('EXPONENTIAL_SOURCE_DOMAIN_REQUIRES_ALL_REALS')
     _valid_exp_log_display(plan,'EXPONENTIAL')
@@ -729,9 +903,14 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
+# Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
+PIECEWISE_POLY_MAX_PIECES=4
+# A reference curve may list as many crossings as four piece pairs can produce in a readable figure.
+PIECEWISE_POLY_MAX_CURVE_INTERSECTIONS=8
+PIECEWISE_POLY_MAX_REQUIRED_POINTS=24
 
 def _pp_rational(value,code):
     """An exact rational: a decimal integer, an 'a/b' string, or a JSON integer."""
@@ -891,7 +1070,7 @@ def piecewise_polynomial_source(plan):
     unknown=sorted(set(plan)-PIECEWISE_POLY_FIELDS)
     if unknown:raise ValueError('PIECEWISE_POLY_FIELD_UNKNOWN:'+unknown[0])
     raw_pieces=plan.get('pieces');raw_breaks=plan.get('breakpoints',[])
-    if not isinstance(raw_pieces,list) or not 1<=len(raw_pieces)<=3:raise ValueError('PIECEWISE_POLY_PIECE_COUNT_INVALID')
+    if not isinstance(raw_pieces,list) or not 1<=len(raw_pieces)<=PIECEWISE_POLY_MAX_PIECES:raise ValueError('PIECEWISE_POLY_PIECE_COUNT_INVALID')
     if not isinstance(raw_breaks,list) or len(raw_breaks)!=len(raw_pieces)-1:raise ValueError('PIECEWISE_POLY_BREAKPOINT_COUNT_INVALID')
     pieces=[]
     for piece in raw_pieces:
@@ -972,30 +1151,131 @@ def piecewise_polynomial_crossings(pieces,intervals,level,source,slope=S.Integer
 
 def _pp_text(value):return pp_surd_text(value)
 
-def piecewise_reference_curves(plan,pieces,breaks):
-    """The referenceCurves of a piecewise plan: at most two other quadratics drawn with the function ({id,coefficients,intersectionX}). Exact
-    coefficients (one radical for the whole plan), a nonzero x^2 coefficient, an id that is a short ASCII name."""
+def pp_in_closed(x_value,interval):
+    """x inside the closed piece interval, where an unbounded end is None."""
+    a,b=interval
+    return (a is None or a<=x_value) and (b is None or x_value<=b)
+
+def pp_in_source(x_value,source):
+    """x inside the source domain; an OPEN end excludes its own value."""
+    lo,hi,states=source
+    if lo is not None and (x_value<lo or x_value==lo and states[0]=='OPEN'):return False
+    if hi is not None and (x_value>hi or x_value==hi and states[1]=='OPEN'):return False
+    return True
+
+def pp_in_domain(x_value,interval,source):
+    return pp_in_closed(x_value,interval) and pp_in_source(x_value,source)
+
+def _pp_reference_source(entry,ref_id,breaks):
+    """{kind:'ALL_REALS'} (default) or {kind:'INTERVAL',range,states} for a reference curve; exact ends, breakpoints strictly inside."""
+    raw=entry.get('sourceDomain',{'kind':'ALL_REALS'})
+    if raw=={'kind':'ALL_REALS'}:return None,None,['CLOSED','CLOSED']
+    if isinstance(raw,dict) and raw.get('kind')=='INTERVAL':
+        try:lo,hi,states=quadratic_source_interval(raw)
+        except ValueError:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_SOURCE_DOMAIN_INVALID:'+ref_id) from None
+        lo,hi=S.Rational(lo.numerator,lo.denominator),S.Rational(hi.numerator,hi.denominator)
+        if any(not lo<x_value<hi for x_value,_ in breaks):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_OUTSIDE_SOURCE_INTERVAL:'+ref_id)
+        return lo,hi,list(states)
+    raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_SOURCE_DOMAIN_INVALID:'+ref_id)
+
+def piecewise_ref_formula_ok(formula,ref_id,pieces,intervals):
+    """A reference curve's optional display formula is the same function as its pieces: exact values at nine points of every piece."""
+    if any(pp_radicand(c) is not None for piece in pieces for c in piece):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_FORMULA_IRRATIONAL_UNSUPPORTED:'+ref_id)
+    for coefficients,(a,b) in zip(pieces,intervals):
+        if a is not None and b is not None:samples=[a+(b-a)*k/8 for k in range(9)]
+        elif b is not None:samples=[b-S.Rational(k,2) for k in range(9)]+[b-10,b-100]
+        elif a is not None:samples=[a+S.Rational(k,2) for k in range(9)]+[a+10,a+100]
+        else:samples=[S.Rational(k-4,2) for k in range(9)]+[S.Integer(-100),S.Integer(100)]
+        for x_value in samples:
+            value=pp_formula_value(formula,x_value)
+            if S.Rational(value.numerator,value.denominator)!=_pp_poly_value(coefficients,x_value):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_FORMULA_MISMATCH:'+ref_id+':'+_pp_text(x_value))
+
+def piecewise_reference_curves(plan,pieces,breaks,source,intervals):
+    """The referenceCurves of a piecewise plan (at most two). Each is either the legacy quadratic {id,name?,coefficients,intersectionX} defined
+    on the whole line, or a piecewise curve {id,name?,pieces,breakpoints?,sourceDomain?,formula?,intersectionX} with its own up to four
+    continuous pieces and its own domain (open/closed ends). Exact coefficients (one radical for the whole plan), short ASCII ids, and the
+    exact x of every crossing with the function that both are defined at."""
     raw=plan.get('referenceCurves',[])
     if not isinstance(raw,list) or len(raw)>2:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
     rows=[];ids=set()
     for entry in raw:
-        if not isinstance(entry,dict) or set(entry)-{'name'}!={'id','coefficients','intersectionX'} or ('name' in entry and not (isinstance(entry['name'],str) and re.fullmatch(r'[a-hj-wz]',entry['name']))) or not isinstance(entry['id'],str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',entry['id']) or entry['id'] in ids:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
-        values=entry['coefficients']
-        if not isinstance(values,list) or len(values)!=3 or not isinstance(entry['intersectionX'],list) or len(entry['intersectionX'])>6:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
-        coefficients=[pp_surd(value,'PIECEWISE_POLY_COEFFICIENT_INVALID') for value in values]
-        if coefficients[2]==0:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_NOT_QUADRATIC:'+entry['id'])
-        ids.add(entry['id']);rows.append({'id':entry['id'],'coefficients':coefficients,'intersectionX':entry['intersectionX']})
-    radicands={r for r in (pp_radicand(v) for v in [c for piece in pieces for c in piece]+[v for pair in breaks for v in pair]+[c for row in rows for c in row['coefficients']]) if r is not None}
+        if not isinstance(entry,dict) or set(entry)-{'id','name','coefficients','pieces','breakpoints','sourceDomain','formula','intersectionX'} or not isinstance(entry.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',entry['id']) or entry['id'] in ids:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        if 'name' in entry and not (isinstance(entry['name'],str) and re.fullmatch(r'[a-hj-wz]',entry['name'])):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        claimed=entry.get('intersectionX')
+        if not isinstance(claimed,list) or len(claimed)>PIECEWISE_POLY_MAX_CURVE_INTERSECTIONS:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        ids.add(entry['id'])
+        if ('coefficients' in entry)==('pieces' in entry):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        if 'coefficients' in entry:
+            if 'breakpoints' in entry or 'sourceDomain' in entry or 'formula' in entry:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+            values=entry['coefficients']
+            if not isinstance(values,list) or len(values)!=3:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+            coefficients=[pp_surd(value,'PIECEWISE_POLY_COEFFICIENT_INVALID') for value in values]
+            if coefficients[2]==0:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_NOT_QUADRATIC:'+entry['id'])
+            rows.append({'id':entry['id'],'name':entry.get('name'),'kind':'quadratic','coefficients':coefficients,'pieces':[coefficients],'intervals':[(None,None)],'source':(None,None,['CLOSED','CLOSED']),'corners':[],'extrema':[],'intersectionX':claimed,'formula':None})
+            continue
+        raw_pieces=entry['pieces'];raw_breaks=entry.get('breakpoints',[])
+        if not isinstance(raw_pieces,list) or not 1<=len(raw_pieces)<=PIECEWISE_POLY_MAX_PIECES:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_PIECE_COUNT_INVALID:'+entry['id'])
+        if not isinstance(raw_breaks,list) or len(raw_breaks)!=len(raw_pieces)-1:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_COUNT_INVALID:'+entry['id'])
+        ref_pieces=[]
+        for piece in raw_pieces:
+            if not isinstance(piece,dict) or set(piece)!={'coefficients'} or not isinstance(piece['coefficients'],list) or not 1<=len(piece['coefficients'])<=3:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_PIECE_INVALID:'+entry['id'])
+            ref_pieces.append([pp_surd(value,'PIECEWISE_POLY_COEFFICIENT_INVALID') for value in piece['coefficients']]+[S.Integer(0)]*(3-len(piece['coefficients'])))
+        ref_breaks=[]
+        for row in raw_breaks:
+            if not isinstance(row,dict) or set(row)!={'x','y'}:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_INVALID:'+entry['id'])
+            ref_breaks.append((pp_surd(row['x'],'PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_INVALID:'+entry['id']),pp_surd(row['y'],'PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_INVALID:'+entry['id'])))
+        if any(not left[0]<right[0] for left,right in zip(ref_breaks,ref_breaks[1:])):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINTS_NOT_INCREASING:'+entry['id'])
+        ref_lo,ref_hi,ref_states=_pp_reference_source(entry,entry['id'],ref_breaks)
+        cuts=[ref_lo,*[x_value for x_value,_ in ref_breaks],ref_hi];ref_intervals=list(zip(cuts,cuts[1:]))
+        corners=[]
+        for index,(x_value,y_value) in enumerate(ref_breaks):
+            left,right=_pp_poly_value(ref_pieces[index],x_value),_pp_poly_value(ref_pieces[index+1],x_value)
+            if left!=right:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_DISCONTINUOUS:'+entry['id']+':'+_pp_text(x_value))
+            if left!=y_value:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_VALUE_MISMATCH:'+entry['id']+':'+_pp_text(x_value))
+            corners.append((x_value,y_value))
+        formula=entry.get('formula')
+        if formula is not None:piecewise_ref_formula_ok(formula,entry['id'],ref_pieces,ref_intervals)
+        rows.append({'id':entry['id'],'name':entry.get('name'),'kind':'piecewise','coefficients':None,'pieces':ref_pieces,'intervals':ref_intervals,'source':(ref_lo,ref_hi,ref_states),'corners':corners,'extrema':piecewise_polynomial_extrema(ref_pieces,ref_intervals),'intersectionX':claimed,'formula':formula})
+    radicands={r for r in (pp_radicand(v) for v in [c for piece in pieces for c in piece]+[v for pair in breaks for v in pair]+[c for row in rows for piece in row['pieces'] for c in piece]+[v for row in rows for pair in row['corners'] for v in pair]) if r is not None}
     if len(radicands)>1:raise ValueError('PIECEWISE_POLY_IRRATIONAL_RADICANDS_MIXED:'+','.join(str(r) for r in sorted(radicands)))
     return rows
 
+def piecewise_reference_crossings(pieces,intervals,source,ref):
+    """Every x where the function and a reference curve are both defined and equal, exactly and once (piece pair by piece pair, so a root
+    outside either piece's domain or at an OPEN end is never counted). A piece equal to a reference piece is refused."""
+    found=[]
+    for coefficients,(a,b) in zip(pieces,intervals):
+        for other,(c,d) in zip(ref['pieces'],ref['intervals']):
+            roots=pp_quadratic_roots(coefficients[0]-other[0],coefficients[1]-other[1],coefficients[2]-other[2])
+            if roots is None:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_CONTAINS_A_PIECE')
+            for root in roots:
+                if not pp_in_domain(root,(a,b),source) or not pp_in_domain(root,(c,d),ref['source']):continue
+                if not any(pp_same(root,seen) for seen in found):found.append(root)
+    return sorted(found,key=lambda value:float(value))
+
 def fit_piecewise_polynomial(plan):
     if 'functionName' in plan and not (isinstance(plan['functionName'],str) and re.fullmatch(r'[a-hj-wz]',plan['functionName'])):raise ValueError('PIECEWISE_POLY_FUNCTION_NAME_INVALID')
+    if 'sampleNote' in plan and (not isinstance(plan['sampleNote'],str) or not re.fullmatch(r'[0-9A-Za-z=+\-*/(). ]{1,32}',plan['sampleNote']) or not plan['sampleNote'].strip()):raise ValueError('PIECEWISE_POLY_SAMPLE_NOTE_INVALID')
     pieces,breaks,source,intervals=piecewise_polynomial_source(plan)
     lo,hi,states=source
-    refs=piecewise_reference_curves(plan,pieces,breaks)
-    def ref_value(row,x_value):return _pp_poly_value(row['coefficients'],x_value)
-    def ref_float(row,x_value):return sum(float(c)*x_value**i for i,c in enumerate(row['coefficients']))
+    refs=piecewise_reference_curves(plan,pieces,breaks,source,intervals)
+    def ref_value(row,x_value):
+        """The exact value of a reference curve at x, or None when x is outside its own domain (open ends excluded)."""
+        at=S.sympify(x_value)
+        for coefficients,(a,b) in zip(row['pieces'],row['intervals']):
+            if pp_in_domain(at,(a,b),row['source']):return _pp_poly_value(coefficients,at)
+        return None
+    def ref_float(row,x_value):
+        try:at=S.Rational(str(x_value))
+        except (TypeError,ValueError):at=S.Float(x_value)
+        value=ref_value(row,at)
+        return None if value is None else float(value)
+    def ref_boundary_value(row,x_value):
+        """The value at a source-domain end, including an OPEN end (its dot is drawn there even though the point is excluded)."""
+        at=S.sympify(x_value)
+        for coefficients,(a,b) in zip(row['pieces'],row['intervals']):
+            if pp_in_closed(at,(a,b)):return _pp_poly_value(coefficients,at)
+        return None
     def g(x_value):
         x_value=S.sympify(x_value)
         for coefficients,interval in zip(pieces,intervals):
@@ -1009,7 +1289,7 @@ def fit_piecewise_polynomial(plan):
     extrema=piecewise_polynomial_extrema(pieces,intervals)
     # Key points the author marks: every corner and every vertex inside a piece must be among them (the claim), and each lies on the curve.
     required=plan.get('requiredPoints',[])
-    if not isinstance(required,list) or len(required)>16:raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
+    if not isinstance(required,list) or len(required)>PIECEWISE_POLY_MAX_REQUIRED_POINTS:raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
     ids=set();required_xy=[];exact_points={};normalized=[]
     for point in required:
         if not isinstance(point,dict) or set(point)!={'id','x','y'} or not isinstance(point['id'],str) or not point['id'] or point['id'] in ids:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
@@ -1026,12 +1306,13 @@ def fit_piecewise_polynomial(plan):
             if abs(floats[k])>1e6:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
         ids.add(point['id']);at=exact['x'] if 'x' in exact else S.Rational(str(floats['x']))
         if lo is not None and (not lo<=at<=hi or at==lo and states[0]=='OPEN' or at==hi and states[1]=='OPEN'):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_OUTSIDE_SOURCE_DOMAIN:'+point['id'])
-        # A key point lies on the function or, with referenceCurves, on one of those curves.
+        # A key point lies on the function or, with referenceCurves, on one of those curves inside that curve's own domain.
         near=lambda value:abs(value-floats['y'])<=1e-8*max(1,abs(floats['y']))
-        if not (near(g_float(floats['x'])) or any(near(ref_float(row,floats['x'])) for row in refs)):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
+        if not (near(g_float(floats['x'])) or any((value:=ref_float(row,floats['x'])) is not None and near(value) for row in refs)):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
         if len(exact)==2:
             tiny=S.Float('1e-40',60)
-            if abs(S.N(g(exact['x'])-exact['y'],60))>tiny and all(abs(S.N(ref_value(row,exact['x'])-exact['y'],60))>tiny for row in refs):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
+            on_ref=lambda row:ref_value(row,exact['x']) is not None and abs(S.N(ref_value(row,exact['x'])-exact['y'],60))<=tiny
+            if abs(S.N(g(exact['x'])-exact['y'],60))>tiny and not any(on_ref(row) for row in refs):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
         if exact:
             exact_points[point['id']]=[pp_surd_text(exact[k]) if k in exact else (str(Fraction(str(floats[k]))) if floats[k]==int(floats[k]) else None) for k in ('x','y')]
             if None in exact_points[point['id']]:raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_MIXED_EXACT:'+point['id'])
@@ -1042,11 +1323,18 @@ def fit_piecewise_polynomial(plan):
         if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_CORNER_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value))
     for x_value,y_value,_ in extrema:
         if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value))
-    # The vertex of every reference curve is a key point the author must mark.
+    # The vertex of a quadratic reference curve, and every corner and in-piece vertex of a piecewise one, is a key point the author must mark.
     for row in refs:
-        h=_pp_norm(-row['coefficients'][1]/(2*row['coefficients'][2]))
-        row['vertex']=(h,ref_value(row,h))
-        if not marked(h,row['vertex'][1]):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_VERTEX_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(h))
+        if row['kind']=='quadratic':
+            h=_pp_norm(-row['coefficients'][1]/(2*row['coefficients'][2]))
+            row['vertex']=(h,ref_value(row,h))
+            if not marked(h,row['vertex'][1]):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_VERTEX_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(h))
+            continue
+        row['vertex']=None
+        for x_value,y_value in row['corners']:
+            if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_CORNER_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(x_value))
+        for x_value,y_value,_ in row['extrema']:
+            if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(x_value))
     # The display formula (optional) must be the same function as the pieces: exact values at nine points of every piece.
     formula=plan.get('formula')
     if formula is not None:
@@ -1099,7 +1387,7 @@ def fit_piecewise_polynomial(plan):
     curve_crossings=[]
     for row in refs:
         if row['id'] in line_ids:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
-        exact=piecewise_polynomial_crossings(pieces,intervals,None,source,None,curve=row['coefficients'])
+        exact=piecewise_reference_crossings(pieces,intervals,source,row)
         claimed=sorted(((text,pp_exact_value(text)) for text in row['intersectionX']),key=lambda item:float(item[1]))
         if len(claimed)!=len(exact) or any(not pp_same(value,root) for (_,value),root in zip(claimed,exact)):
             raise ValueError('PIECEWISE_POLY_INTERSECTION_MISMATCH:'+row['id']+':engine finds '+str(len(exact))+' intersection(s)')
@@ -1115,7 +1403,16 @@ def fit_piecewise_polynomial(plan):
     key=[(float(x_value),float(y_value)) for x_value,y_value in corners]+[(float(x_value),float(y_value)) for x_value,y_value,_ in extrema]+required_xy
     key+=[(point['xValue'],point['yValue'] if 'slope' in row else pp_exact_float(row['y'])) for row in crossings for point in row['points']]
     key+=[(0.0,pp_exact_float(row['intercept'] if 'slope' in row else row['y'])) for row in crossings if not row['points']]
-    key+=[(point['xValue'],point['yValue']) for row in curve_crossings for point in row['points']]+[(float(row['vertex'][0]),float(row['vertex'][1])) for row in refs if row.get('vertex')]
+    key+=[(point['xValue'],point['yValue']) for row in curve_crossings for point in row['points']]
+    key+=[(float(row['vertex'][0]),float(row['vertex'][1])) for row in refs if row.get('vertex')]
+    # A piecewise reference curve also contributes its own corners, in-piece vertices and its domain ends (drawn as hollow/filled dots).
+    for row in refs:
+        if row['kind']!='piecewise':continue
+        key+=[(float(x_value),float(y_value)) for x_value,y_value in row['corners']]
+        key+=[(float(x_value),float(y_value)) for x_value,y_value,_ in row['extrema']]
+        ref_lo,ref_hi,_=row['source']
+        if ref_lo is not None:key.append((float(ref_lo),float(ref_boundary_value(row,ref_lo))))
+        if ref_hi is not None:key.append((float(ref_hi),float(ref_boundary_value(row,ref_hi))))
     limit=plot_height_limit(plan)
     if lo is not None:
         ends=[(float(lo),float(g(lo))),(float(hi),float(g(hi)))]
@@ -1124,7 +1421,8 @@ def fit_piecewise_polynomial(plan):
         # leaves the key heights by a quarter of their range (at least 1), so a steep arm never flattens the figure.
         xs=[p[0] for p in key] or [0.0];ys=[p[1] for p in key] or [0.0]
         span=max(xs)-min(xs);extend=max(1.0,.2*span);ylo,yhi=min(ys),max(ys);band=max(1.0,.25*(yhi-ylo))
-        inband=lambda at:all(ylo-band<=height<=yhi+band for height in [g_float(at)]+[ref_float(row,at) for row in refs])
+        ref_heights=lambda at:[value for value in (ref_float(row,at) for row in refs) if value is not None]
+        inband=lambda at:all(ylo-band<=height<=yhi+band for height in [g_float(at)]+ref_heights(at))
         def arm(start,direction):
             far=start+direction*extend
             if inband(far):return far
@@ -1137,7 +1435,8 @@ def fit_piecewise_polynomial(plan):
         left_x,right_x=arm(min(xs),-1),arm(max(xs),1)
         ends=[(left_x,g_float(left_x)),(right_x,g_float(right_x))]
     for attempt in range(2):
-        points=[(0.0,0.0)]+key+ends+[(end[0],ref_float(row,end[0])) for end in ends for row in refs]
+        ref_end_points=[(end[0],value) for end in ends for value in (ref_float(row,end[0]) for row in refs) if value is not None]
+        points=[(0.0,0.0)]+key+ends+ref_end_points
         for ratio in axis_ratios(plan,points,limit):
             viewport,height,scale=equal_unit_frame(points,limit,ratio)
             if (ends[1][0]-ends[0][0])*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
@@ -1161,7 +1460,25 @@ def fit_piecewise_polynomial(plan):
         start=draw[0] if a is None else float(a);end=draw[1] if b is None else float(b)
         piece_rows.append({'coefficients':[_pp_text(c) for c in coefficients],'interval':[None if a is None else _pp_text(a),None if b is None else _pp_text(b)],'drawInterval':[start,end]})
     features={'schemaVersion':'PIECEWISE_POLYNOMIAL_FEATURES_v1','pieces':piece_rows,'corners':[{'x':_pp_text(x_value),'y':_pp_text(y_value)} for x_value,y_value in corners],'extrema':[{'x':_pp_text(x_value),'y':_pp_text(y_value),'kind':kind} for x_value,y_value,kind in extrema],'intersections':crossings}
-    if refs:features['referenceCurves']=[{'id':row['id'],'coefficients':[_pp_text(c) for c in row['coefficients']],'drawInterval':draw} for row in refs];features['curveIntersections']=curve_crossings
+    if refs:
+        ref_rows=[]
+        for row in refs:
+            if row['kind']=='quadratic':
+                ref_rows.append({'id':row['id'],'coefficients':[_pp_text(c) for c in row['coefficients']],'drawInterval':draw})
+                continue
+            drawn=[]
+            for coefficients,(a,b) in zip(row['pieces'],row['intervals']):
+                start=draw[0] if a is None else max(draw[0],float(a));end=draw[1] if b is None else min(draw[1],float(b))
+                if end-start<=1e-9:continue
+                drawn.append({'coefficients':[_pp_text(c) for c in coefficients],'interval':[None if a is None else _pp_text(a),None if b is None else _pp_text(b)],'drawInterval':[start,end]})
+            if not drawn:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_OUTSIDE_VIEW:'+row['id'])
+            entry={'id':row['id'],'pieces':drawn,'corners':[{'x':_pp_text(x_value),'y':_pp_text(y_value)} for x_value,y_value in row['corners']],'extrema':[{'x':_pp_text(x_value),'y':_pp_text(y_value),'kind':kind} for x_value,y_value,kind in row['extrema']]}
+            ref_lo,ref_hi,ref_states=row['source']
+            if ref_lo is not None:entry['sourceInterval']={'lo':_pp_text(ref_lo),'hi':_pp_text(ref_hi),'startState':ref_states[0],'endState':ref_states[1],'startY':_pp_text(ref_boundary_value(row,ref_lo)),'endY':_pp_text(ref_boundary_value(row,ref_hi))}
+            if row.get('name') is not None:entry['name']=row['name']
+            if row.get('formula') is not None:entry['formula']=row['formula']
+            ref_rows.append(entry)
+        features['referenceCurves']=ref_rows;features['curveIntersections']=curve_crossings
     fitted={key_name:value for key_name,value in plan.items() if key_name not in ('domain','viewport')}
     if exact_points:
         merged=dict(plan.get('exactCoordinates') or {})

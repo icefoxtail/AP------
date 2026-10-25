@@ -749,7 +749,7 @@ window.questionBank = [
     "layoutTag": "grid",
     "wide": false,
     "solutionImage": "assets/images/24_제일고_1학기_중간_고1_기출/q16-solution-graph.svg",
-    "solutionImageAlt": "문항 16 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageAlt": "두 직선 3x+4y−1=0과 2x+y−4=0의 교점 A(3,−2), 점 P(2,1), 선분 AP를 표시하고, AP의 기울기 −3을 이용해 P까지의 거리가 최대인 직선을 찾는 해설 그림이다.",
     "solutionImageSize": "full"
   },
   {

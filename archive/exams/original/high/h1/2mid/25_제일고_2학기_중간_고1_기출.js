@@ -465,7 +465,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q14-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 14의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageAlt": "a=1일 때 기울기 1/2인 직선과 기울기 −2인 직선을, a=3일 때 수직선 x=−7과 수평선 y=5를 각각 그려 두 경우 모두 두 직선이 수직임을 보여 준다.",
     "solutionImageCaption": "수직 관계 · a=1: 기울기 1/2와 −2 · a=3: 수직선과 수평선",
     "solutionImageSize": "full"
   },
@@ -606,7 +606,7 @@ window.questionBank = [
     "answer": "④",
     "solution": "정사각형의 꼭짓점은\n$O=(0,0)$, $A=(16,0)$, $B=(16,16)$, $C=(0,16)$이다.\n$OD:DC=3:1$이므로 $D=(0,12)$이다. $AE:EB=3:1$이므로 $E=(16,12)$이다. 따라서 선분 $DE$는 $y=12$이다.\n점 $F$는 $OA$ 위에서 $OF=5$이므로 $F=(5,0)$이다. 접는 선을 $y=mx+n$이라 하고\n$O'=(u,16)$, $F'=(v,12)$라 두자.\n접는 선은 $OO'$와 $FF'$의 수직이등분선이다. 중점은 접는 선 위에 있고, 두 선분은 접는 선과 수직이다.\n$m=0$이면 접는 선은 수평이다. $O$를 $y=16$으로 옮기려면 접는 선은 $y=8$이어야 하지만, 그러면 $F$는 $y=16$으로 옮겨져 $DE$ 위에 놓일 수 없다. 따라서 $m\\ne0$이다.\n$OO'$의 기울기는 $\\dfrac{16}{u}$이다. 접는 선과 수직이므로\n$m\\cdot\\dfrac{16}{u}=-1$,\n$u=-16m$이다.\n$OO'$의 중점은 $\\left(-8m,8\\right)$이다. 이 점이 접는 선 위에 있으므로\n$8=-8m^2+n$,\n$n=8+8m^2$이다.\n$FF'$의 기울기는 $\\dfrac{12}{v-5}$이다. 마찬가지로\n$m\\cdot\\dfrac{12}{v-5}=-1$,\n$v=5-12m$이다.\n$FF'$의 중점은 $\\left(5-6m,6\\right)$이다. 이 점도 접는 선 위에 있으므로\n$6=m(5-6m)+n$이다.\n$n=8+8m^2$를 대입하면\n$2m^2+5m+2=0$,\n$(2m+1)(m+2)=0$이다.\n따라서 $m=-\\dfrac12$ 또는 $m=-2$이다.\n$m=-2$이면 $n=40$이어서 접는 선이 $OC$와 만나지 않는다. 그러므로 $m=-\\dfrac12$이고 $n=10$이다.\n이때 $P=(0,10)$, $Q=(16,2)$는 각각 $OC$, $AB$ 위에 있다. 또 $u=8$, $v=11$이므로 $O'=(8,16)$은 $BC$ 위에, $F'=(11,12)$는 $DE$ 위에 있다.\n\n따라서 $mn=-\\dfrac12\\cdot10=-5$이다. 정답은 ④이다.",
     "solutionImage": "assets/images/25_제일고_2학기_중간_고1_기출/q18-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 18의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "한 변이 16인 정사각형 OABC에서 OC와 AB를 3:1로 나눈 D(0,12), E(16,12)와 F(5,0)를 잡고, 접는 선 PQ: y=−x/2+10에 따라 O가 O′(8,16), F가 F′(11,12)로 옮겨진 모습을 나타낸다.",
     "solutionImageCaption": "D(0,12), E(16,12), DE:y=12를 먼저 확인한 뒤 O→O′, F→F′와 접는 선을 연결한다.",
     "solutionImageSize": "full",
     "image": "assets/images/25_제일고_2학기_중간_고1_기출/q18.png",
