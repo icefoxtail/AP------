@@ -306,7 +306,7 @@ window.questionBank = [
       "대단원 마무리"
     ],
     "wide": false,
-    "content": "다음은 조립제법을 이용하여 다항식 $x^3+ax^2-2x+b$를 $x+2$로 나누었을 때의 몫과 나머지를 구하는 과정이다. $a$~$e$의 값으로 옳지 않은 것은?\n<img src=\"q10.png\" />",
+    "content": "다음은 조립제법을 이용하여 다항식 $x^3+ax^2-2x+b$를 $x+2$로 나누었을 때의 몫과 나머지를 구하는 과정이다. $a$~$e$의 값으로 옳지 않은 것은?\n<img src=\"assets/images/미래엔_공통수학1_다항식_대단원마무리_고1/q10.png\" />",
     "choices": [
       "$a=0$",
       "$b=7$",
@@ -520,7 +520,7 @@ window.questionBank = [
       "대단원 마무리"
     ],
     "wide": false,
-    "content": "모든 양수 $x$에 대하여 세 모서리의 길이가 각각 $x+1, x+a, x+b$인 직육면체의 부피가 항상 $x^3+7x^2+cx+8$과 같다고 한다. 양수 $a, b, c$에 대하여 $a+b+c$의 값을 구하시오.\n<img src=\"q17.png\" />",
+    "content": "모든 양수 $x$에 대하여 세 모서리의 길이가 각각 $x+1, x+a, x+b$인 직육면체의 부피가 항상 $x^3+7x^2+cx+8$과 같다고 한다. 양수 $a, b, c$에 대하여 $a+b+c$의 값을 구하시오.\n<img src=\"assets/images/미래엔_공통수학1_다항식_대단원마무리_고1/q17.png\" />",
     "choices": [],
     "answer": "",
     "solution": ""
