@@ -1713,6 +1713,21 @@ def fit_piecewise_discontinuous(plan):
         viewport,height,scale=equal_unit_frame(points,limit,ratio)
         if (ends[1][0]-ends[0][0])*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
     else:raise ValueError('PIECEWISE_DISCONTINUOUS_CURVE_TOO_NARROW')
+    # An unbounded end is drawn out to the edge of the panel (never stopped short of it) while its own height still lies inside
+    # the framed viewport, so a graph on |x|>1 does not look as if it ended at the last marked point.
+    def reach_edge(anchor,direction):
+        edge=viewport[0] if direction<0 else viewport[1]
+        if not viewport[2]<=coverage(edge)<=viewport[3]:
+            near,far=anchor,edge
+            for _ in range(60):
+                mid=(near+far)/2
+                if viewport[2]<=coverage(mid)<=viewport[3]:near=mid
+                else:far=mid
+            edge=near
+        return edge
+    if pieces[0]['a'] is None:left_x=reach_edge(left_x,-1)
+    if pieces[-1]['b'] is None:right_x=reach_edge(right_x,1)
+    ends=[(left_x,coverage(left_x)),(right_x,coverage(right_x))]
     # Distinct marked features closer than 4 px could not be told apart.
     marks=[]
     for mark in sorted(set(key)):
