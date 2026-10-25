@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-runtime-overlay-v1",
   "status": "ACTIVE",
-  "runtimeVersion": "H1_FOUNDATION@1.0.1/reviewed-exam-v2",
+  "runtimeVersion": "H1_FOUNDATION@1.0.2/reviewed-exam-v2",
   "packId": "H1_FOUNDATION",
-  "packVersion": "1.0.1",
+  "packVersion": "1.0.2",
   "generatedFrom": {
     "immutableOutlierReviewHead": "70ffc893777e543989a01566d9106f9f1b76b991",
     "mergedOriginMainHead": "4be6351d3f4cd722ca12639d9e652777e51426db",
@@ -19,10 +19,11 @@
     "questionMetadata": "archive/data/question_metadata.json",
     "questionIdentityMap": "archive/data/question_identity_map.json",
     "reviewedExam_meta-pipeline-geumdang25-v2rev-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang25-v2rev-20261026.json",
-    "reviewedExam_meta-pipeline-suncheon21-final-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheon21-final-20261026.json"
+    "reviewedExam_meta-pipeline-suncheon21-final-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-suncheon21-final-20261026.json",
+    "reviewedExam_meta-pipeline-geumdang21-final-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json"
   },
   "counts": {
-    "records": 1193,
+    "records": 1215,
     "finalL3": 1159,
     "finalL4": 1049,
     "explicitL3Hold": 11,
@@ -31,11 +32,11 @@
     "difficultyHold": 61,
     "sourceHold": 0,
     "explicitHold": 130,
-    "defaultSelectable": 908,
+    "defaultSelectable": 930,
     "runtimeSelectable": 650,
-    "automaticEligibleExpected": 679,
+    "automaticEligibleExpected": 701,
     "catalogUidDirectJoin": 1170,
-    "taxonomyRows": 245,
+    "taxonomyRows": 246,
     "l3ProblemTypeCount": 32,
     "l4TemplateCount": 61,
     "crossConceptReferenceCount": 233,
@@ -2248,7 +2249,7 @@
       "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 1
+      "supportingItemCount": 2
     },
     {
       "curriculumKey": "2022",
@@ -2261,7 +2262,7 @@
       "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 2
+      "supportingItemCount": 5
     },
     {
       "curriculumKey": "2022",
@@ -2372,13 +2373,26 @@
       "courseKey": "공통수학1",
       "L1": "다항식",
       "L2": "항등식과 나머지정리",
+      "L3": "곱셈공식과 대칭식",
+      "L4": "곱셈공식·대칭식 변형",
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "다항식",
+      "L2": "항등식과 나머지정리",
       "L3": "항등식과 미정계수",
       "L4": "항등식의 계수비교",
       "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
       "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 10
+      "supportingItemCount": 11
     },
     {
       "curriculumKey": "2022",
@@ -2430,7 +2444,7 @@
       "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 4
+      "supportingItemCount": 6
     },
     {
       "curriculumKey": "2022",
@@ -2443,7 +2457,7 @@
       "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 3
+      "supportingItemCount": 4
     },
     {
       "curriculumKey": "2022",
@@ -2560,7 +2574,7 @@
       "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 2
+      "supportingItemCount": 3
     },
     {
       "curriculumKey": "2022",
@@ -2599,7 +2613,7 @@
       "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 4
+      "supportingItemCount": 5
     },
     {
       "curriculumKey": "2022",
@@ -2664,7 +2678,7 @@
       "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 10
+      "supportingItemCount": 12
     },
     {
       "curriculumKey": "2022",
@@ -2976,7 +2990,7 @@
       "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 7
+      "supportingItemCount": 8
     },
     {
       "curriculumKey": "2022",
@@ -3041,7 +3055,7 @@
       "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 13
+      "supportingItemCount": 14
     },
     {
       "curriculumKey": "2022",
@@ -3106,7 +3120,7 @@
       "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 3
+      "supportingItemCount": 4
     },
     {
       "curriculumKey": "2022",
@@ -3184,7 +3198,7 @@
       "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 7
+      "supportingItemCount": 8
     },
     {
       "curriculumKey": "2022",
@@ -3210,7 +3224,7 @@
       "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 9
+      "supportingItemCount": 10
     },
     {
       "curriculumKey": "2022",
@@ -3223,7 +3237,7 @@
       "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 30
+      "supportingItemCount": 33
     },
     {
       "curriculumKey": "2022",
@@ -3249,7 +3263,7 @@
       "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 6
+      "supportingItemCount": 7
     },
     {
       "curriculumKey": "2022",
@@ -9287,6 +9301,76 @@
       "selectabilityReasonCodes": []
     },
     {
+      "questionUid": "qid_v1_14febd88e579cb65e2dce89be655f009a349b7d26394ee202c22c7b5a7ae23ce",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2",
+      "sourceFingerprint": "06ecb1a194ed5f35174dcb129cd6714324e53182ec80cb94ad6a3283e2f974e6",
+      "contentFingerprint": "6bc5a3304cb7d83ed511e7cae076f7146886c0cd863bb691e0b04eca6b243f69",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-02",
+      "standardUnit": "항등식과 나머지정리",
+      "subUnitKey": "H22-C-02-CORE",
+      "subUnit": "항등식",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT",
+      "templateKey": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_IDENTITY",
+        "CC_COEFFICIENT_COMPARISON"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 1,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "다항식",
+      "L2": "항등식과 나머지정리",
+      "level": "하",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "항등식과 미정계수",
+      "L4": "항등식의 계수비교",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#2",
+      "approvedSourceFingerprint": "06ecb1a194ed5f35174dcb129cd6714324e53182ec80cb94ad6a3283e2f974e6",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_15137637b7fbae1183098cde6af3ccf750502e6ccd99c5617c071243d6744a14",
       "sourceArchiveFile": "original/high/h1/1mid/25_제일고_1학기_중간_고1_기출.js",
       "sourceOrdinal": 19,
@@ -9899,6 +9983,76 @@
         "difficulty",
         "applicability"
       ]
+    },
+    {
+      "questionUid": "qid_v1_17511a3411735deb3102b8408891980a0adcaf76be00ef9c855fbdf730df3bad",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceFingerprint": "c2456b5644a0ea640ca63827f1aeb431efd241f6a72292220c75953acda2961e",
+      "contentFingerprint": "bd7e3778f3428670a9deae9073fc8dfb0e4adba39a316121f9977f412ee4c80c",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-01",
+      "standardUnit": "다항식의 연산",
+      "subUnitKey": "H22-C-01-POLYNOMIAL_BASIC",
+      "subUnit": "다항식의 연산",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION",
+      "templateKey": "TPL_H1_POLY_OPERATION_DIRECT",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_ADDITION_SUBTRACTION",
+        "CC_DISTRIBUTIVE_PROPERTY"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 1,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "다항식",
+      "L2": "다항식의 연산",
+      "level": "하",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "다항식의 연산과 전개",
+      "L4": "다항식의 직접 연산",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#1",
+      "approvedSourceFingerprint": "c2456b5644a0ea640ca63827f1aeb431efd241f6a72292220c75953acda2961e",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_17ab44ee68aaea51184913d9737c5cc2d28b88a9bf867f155e898b521ab7a756",
@@ -15794,6 +15948,76 @@
       "selectabilityReasonCodes": []
     },
     {
+      "questionUid": "qid_v1_2bc009fbdb5d5a9fe56c5bbdeaba20701587035f28da5c004aab4ce9db4a29b3",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "sourceFingerprint": "1f314dd45539ffae55d736c20f66f542dbf9b5ce2fc4c5a1b0ae87e4f63be1a1",
+      "contentFingerprint": "c0d806747664430a0b010920782f4258f4670f2588e65d2c1805376bf8733e3b",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-04",
+      "standardUnit": "복소수와 이차방정식",
+      "subUnitKey": "H22-C-04-COMPLEX_ROOT",
+      "subUnit": "허근과 켤레복소수",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
+      "crossConceptKeys": [
+        "CC_ROOTS_COEFFICIENTS",
+        "CC_CONJUGATE_ROOT_THEOREM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 2,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식",
+      "level": "중",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "복소수 조건과 방정식",
+      "L4": "켤레근과 방정식의 근",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#8",
+      "approvedSourceFingerprint": "1f314dd45539ffae55d736c20f66f542dbf9b5ce2fc4c5a1b0ae87e4f63be1a1",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_2bee38d08097d32aab5f52ad3ff8bd97632a062a5fb1e51857a9d496bd918de4",
       "sourceArchiveFile": "original/high/h1/2final/21_강남여고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 21,
@@ -19694,6 +19918,76 @@
       "sourceStatus": "VERIFIED",
       "gradeConflict": false,
       "metadataConflicts": []
+    },
+    {
+      "questionUid": "qid_v1_39a4409b1e8759d5b558fccae38e0ef9b76c2358e040e4101b52e5be1df01a99",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "sourceFingerprint": "105ab804137fb77e3acfbce55bc22bd405120fc42f5fe61623f0807f9b20a150",
+      "contentFingerprint": "b01b10bc1685803d84285bf603b4dbad9aeb0f41f6d7a737fb04a044b5b7300d",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-04",
+      "standardUnit": "복소수와 이차방정식",
+      "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+      "subUnit": "복소수의 연산",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_COMPLEX_CONDITION_EQUATION",
+      "templateKey": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_COMPLEX_CONJUGATE_DIVISION",
+        "CC_PURE_REAL_CONDITION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 1,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "복소수",
+      "level": "하",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "복소수 조건과 방정식",
+      "L4": "실수·순허수 조건",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#4",
+      "approvedSourceFingerprint": "105ab804137fb77e3acfbce55bc22bd405120fc42f5fe61623f0807f9b20a150",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_3a47d05eef3364aaf9192c69608efbd3478dbbd3903460e16e63546f7658bf3a",
@@ -36510,6 +36804,80 @@
       "selectabilityReasonCodes": []
     },
     {
+      "questionUid": "qid_v1_740aa3ad09ad635472bb204d1bd5c66ec30523fc408a453677def106eb25f19e",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceFingerprint": "002e47008ab7186199f86628b1e17facaa4b9f8c098ac1eeaa2d9c11c1ec30bd",
+      "contentFingerprint": "cefca3e79499afa3c7602079553c4874a973be9facbdc6b98e329c206e4fd170",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
+      "templateKey": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_LINE_PARABOLA_INTERSECTION",
+        "CC_ROOTS_COEFFICIENTS"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 5,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식과 이차함수",
+      "level": "상",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "이차함수의 그래프와 교점",
+      "L4": "이차함수와 직선의 교점·접점",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#21",
+      "approvedSourceFingerprint": "002e47008ab7186199f86628b1e17facaa4b9f8c098ac1eeaa2d9c11c1ec30bd",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_74784ce0d619b781f09f558e9d19b447462fcee86a0689e339cabc23c4cbcb92",
       "sourceArchiveFile": "original/high/h1/2final/24_강남여고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 7,
@@ -40652,6 +41020,76 @@
       ]
     },
     {
+      "questionUid": "qid_v1_8354f1f6035c1f3c7445961339bb17e7c885b23c4f3c08f29a949513ce9e3f1d",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": "3",
+      "sourceFingerprint": "bbd84dcd6e7e8607865765b468b18487b85bcdb2a4120e7fff1c1471148855d4",
+      "contentFingerprint": "3c304148e253f3f4f70464f42409b648c81abccd1c6718d1cc4d5e9adcd32e29",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-02",
+      "standardUnit": "다항식의 나눗셈과 항등식",
+      "subUnitKey": "H22-C-02-CORE",
+      "subUnit": "다항식의 나눗셈과 항등식",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "crossConceptKeys": [
+        "CC_REMAINDER_THEOREM",
+        "CC_SIMULTANEOUS_EQUATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 2,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "다항식",
+      "L2": "항등식과 나머지정리",
+      "level": "하",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "나머지정리",
+      "L4": "합성 제수 나머지 조건 결합",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#3",
+      "approvedSourceFingerprint": "bbd84dcd6e7e8607865765b468b18487b85bcdb2a4120e7fff1c1471148855d4",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_8392b73b9343964248874f5761d05af420c0182b3df6a45fa6e55a48021f39b4",
       "sourceArchiveFile": "original/high/h1/1mid/23_부영여고_1학기_중간_고1_기출.js",
       "sourceOrdinal": 8,
@@ -41453,6 +41891,79 @@
       "selectabilityReasonCodes": [
         "difficulty"
       ]
+    },
+    {
+      "questionUid": "qid_v1_84f48846915218ff6e0176abb226ccfcf8e2480ce708dc86649e578db979a83c",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "29ca5e773511d83cd9010c803c7215ebde474b2b0aa908a32c6f943db6265c98",
+      "contentFingerprint": "cdb80a519c1b67eb4cc0ac5d72724900e89e594570566181dd8707f6ea3e9b99",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-03",
+      "standardUnit": "인수분해",
+      "subUnitKey": "H22-C-03-FACTORIZATION",
+      "subUnit": "인수분해",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_FACTORIZATION",
+        "CC_INTEGER_PARAMETER_ANALYSIS",
+        "CC_DISCRIMINANT_INTEGER_CONDITION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 5,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "다항식",
+      "L2": "인수분해",
+      "level": "상",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "다항식의 인수분해",
+      "L4": "인수분해 구조의 활용",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#20",
+      "approvedSourceFingerprint": "29ca5e773511d83cd9010c803c7215ebde474b2b0aa908a32c6f943db6265c98",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_851da1fe3f9a95fbf8a1c47b738489a2c6d0f24aa893b60cdbfd0859402dba4d",
@@ -44056,6 +44567,77 @@
       "selectabilityReasonCodes": []
     },
     {
+      "questionUid": "qid_v1_8c5debd5256a20b232478a3ee9aa7e404f0e0800f22a4223b3db3ca4724e7b4d",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "22",
+      "sourceFingerprint": "17b9ebbcae856720d4d57dd78b4307dd87e458e30cc06eb4b670eeb6fcfe621a",
+      "contentFingerprint": "e46dd4ed9bf1be27820fd7c6501f9bac5e83ea4d47eb088b4f4346828086933a",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-02",
+      "standardUnit": "다항식의 나눗셈과 항등식",
+      "subUnitKey": "H22-C-02-CORE",
+      "subUnit": "다항식의 나눗셈과 항등식",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_NESTED_DIVISION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_DEGREE_INFERENCE",
+        "CC_NESTED_DIVISION_REMAINDER",
+        "CC_HIGH_ORDER_IDENTITY_SOLVING"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 5,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "다항식",
+      "L2": "항등식과 나머지정리",
+      "level": "상",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "나머지정리",
+      "L4": "중첩 나눗셈 몫·나머지 관계",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#22",
+      "approvedSourceFingerprint": "17b9ebbcae856720d4d57dd78b4307dd87e458e30cc06eb4b670eeb6fcfe621a",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_8c6447407fb02413b29ca3624ccf0e624bcf1b50395512bc47717ea8b8fdcedf",
       "sourceArchiveFile": "original/high/h1/1final/26_효천고_1학기_기말_고1_기출.js",
       "sourceOrdinal": 2,
@@ -45850,6 +46432,79 @@
       "runtimeSelectable": true
     },
     {
+      "questionUid": "qid_v1_9155a1cc4d7a4801dab34e9e7a9f57c9b625d22f4982a7836e09dfa81a6932b7",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceFingerprint": "ca81e2e1a40cb704e380fdb7f3657c80ecf8852be044ca87adf2424ca122419c",
+      "contentFingerprint": "7c7b8c80b14b7a59338655639c92dee8fefc6473da6cff1891c2a33f9741947e",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-02",
+      "standardUnit": "항등식과 나머지정리",
+      "subUnitKey": "H22-C-02-CORE",
+      "subUnit": "항등식",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC",
+      "templateKey": "TPL_H1_FORMULA_SYMMETRIC",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_IDENTITY",
+        "CC_COMPLETE_SQUARE",
+        "CC_POLYNOMIAL_COEFFICIENT_DETERMINATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "다항식",
+      "L2": "항등식과 나머지정리",
+      "level": "상",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "곱셈공식과 대칭식",
+      "L4": "곱셈공식·대칭식 변형",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#17",
+      "approvedSourceFingerprint": "ca81e2e1a40cb704e380fdb7f3657c80ecf8852be044ca87adf2424ca122419c",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_91644f20ac71a305bdb493ce8470373f82a3e6dd7d03fbc4acb5368c1eaeb500",
       "sourceArchiveFile": "original/high/h1/1mid/24_한영고_1학기_중간_고1_기출.js",
       "sourceOrdinal": 15,
@@ -46740,6 +47395,78 @@
         "sourceQuestionNo": "21"
       },
       "selectabilityReasonCodes": []
+    },
+    {
+      "questionUid": "qid_v1_943ba771369d8ef5116226df3e5a573bcb6e4644cfb274c149da721d6e52c717",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceFingerprint": "f2f508cf45b282ede32e7b550607dc816d9ee21cbc0e0acbcf952e868e15308c",
+      "contentFingerprint": "830fe4c5c8ba8460b8dfcc510146317ccae64f47fa0901a90849238a53ddc79b",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
+      "crossConceptKeys": [
+        "CC_GEOMETRIC_PERIMETER_CONSTRAINT",
+        "CC_QUADRATIC_OPTIMIZATION_MODEL"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식과 이차함수",
+      "level": "중",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "이차함수의 최대·최소",
+      "L4": "조건·도형을 이차함수로 모델링",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#12",
+      "approvedSourceFingerprint": "f2f508cf45b282ede32e7b550607dc816d9ee21cbc0e0acbcf952e868e15308c",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_946ba4b46b7e3654aa532a4c9e2eafa5e780645647345a30ff293e4de9e4d4dd",
@@ -52217,6 +52944,80 @@
       "selectabilityReasonCodes": []
     },
     {
+      "questionUid": "qid_v1_a68ed00223a0290c0f88261a3dcebacdea647b96daaf83acd552f2870dcadab7",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": "19",
+      "sourceFingerprint": "63a8e4f9be270e8b17a2c7d9fba105fd2e55c827faa4fe9b997eff2156203c66",
+      "contentFingerprint": "1364f39db13eaf09fcc8b7f437a988189508b26780baba497124a681ffba5c35",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_PARAMETRIC_PARABOLA_VERTEX",
+        "CC_AXIS_OF_SYMMETRY_INTERVAL_CASES"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE",
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식과 이차함수",
+      "level": "상",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "이차함수의 최대·최소",
+      "L4": "꼭짓점·제한구간의 최대·최소",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#19",
+      "approvedSourceFingerprint": "63a8e4f9be270e8b17a2c7d9fba105fd2e55c827faa4fe9b997eff2156203c66",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_a6cdeb09bc4c92fee4802a11beaaf543febfa666dc8ef405f3b818b307a1f06a",
       "sourceArchiveFile": "original/high/h1/1final/26_효천고_1학기_기말_고1_기출.js",
       "sourceOrdinal": 8,
@@ -52277,6 +53078,79 @@
         "sourceQuestionNo": "8"
       },
       "selectabilityReasonCodes": []
+    },
+    {
+      "questionUid": "qid_v1_a6d53c6b5c394349896526e20c71cce267b1d9e15b2e08933787acac05b4f3db",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "sourceFingerprint": "9b83a9f395907ffad52df3cefe001b410d5c99a72443dc2917e8fac8f6c5044a",
+      "contentFingerprint": "4508b98c0e66189dc358f2ec6b1abcc6fa79a4111c9d105eb6c36d6394e131a4",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "crossConceptKeys": [
+        "CC_PIECEWISE_FUNCTION",
+        "CC_RESTRICTED_DOMAIN_EXTREMA"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE",
+        "COND_NONZERO"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식과 이차함수",
+      "level": "상",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "이차함수의 최대·최소",
+      "L4": "꼭짓점·제한구간의 최대·최소",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#18",
+      "approvedSourceFingerprint": "9b83a9f395907ffad52df3cefe001b410d5c99a72443dc2917e8fac8f6c5044a",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_a71e54ce46277a96f67409a79800e5af47dcc515da097bb5b186e6823ebf3cab",
@@ -55201,6 +56075,79 @@
       ]
     },
     {
+      "questionUid": "qid_v1_af9d821026049c17ce754c2516ee60f70c8bf5d1c3ea93381af0caef07eb96b2",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "sourceFingerprint": "0e4727adf740acc1f5a7dc26ccaec376442f82d26aedc5bd192f5eea9906c096",
+      "contentFingerprint": "ed1a005ca913829e051df556af7e141932afcd3d5fad4018aa960c66323bdfa8",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-06",
+      "standardUnit": "여러 가지 방정식과 부등식",
+      "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+      "subUnit": "삼차방정식",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "crossConceptKeys": [
+        "CC_ROOTS_COEFFICIENTS",
+        "CC_CUBIC_FACTORIZATION_PARAMETER",
+        "CC_PYTHAGOREAN_THEOREM_ON_ROOTS"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "여러 가지 방정식",
+      "level": "상",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "고차방정식의 풀이",
+      "L4": "고차방정식의 인수분해",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#16",
+      "approvedSourceFingerprint": "0e4727adf740acc1f5a7dc26ccaec376442f82d26aedc5bd192f5eea9906c096",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_afeda2f814aeaee65914010a03a6d75a4d56dbf678dc59d5edd52d0103818ebc",
       "sourceArchiveFile": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
       "sourceOrdinal": 13,
@@ -55265,6 +56212,76 @@
       "sourceStatus": "VERIFIED",
       "gradeConflict": false,
       "metadataConflicts": []
+    },
+    {
+      "questionUid": "qid_v1_afeec1b3fccbf7f9306e64f0333530edf4de8af25e6ddc625d08aff208cc750e",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": "6",
+      "sourceFingerprint": "71ecd771705bbb0fd55a1b5f275bf3d7173dd7a8da70f1eca04ce8c43082afa3",
+      "contentFingerprint": "50b2d3e90d1c015f2be2e997f688b975a8b84ea2c1cc4b376b0e4cf7c0c50472",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_QUADRATIC_EXTREMA",
+      "templateKey": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
+      "crossConceptKeys": [
+        "CC_QUADRATIC_VERTEX_FORM",
+        "CC_QUADRATIC_EXTREMUM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 1,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식과 이차함수",
+      "level": "하",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "이차함수의 최대·최소",
+      "L4": "꼭짓점·제한구간의 최대·최소",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#6",
+      "approvedSourceFingerprint": "71ecd771705bbb0fd55a1b5f275bf3d7173dd7a8da70f1eca04ce8c43082afa3",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_affe64d8c773b0d2f63ffd3d4604402cd90fc1a562e8b32708bc9720f7250924",
@@ -55636,6 +56653,76 @@
         "sourceQuestionNo": "7"
       },
       "selectabilityReasonCodes": []
+    },
+    {
+      "questionUid": "qid_v1_b1c7a2c04d9e42dbd99bf81c67337a8c7d0d784e9fe044a99ff2aa5cab074623",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "sourceFingerprint": "6a5878e37f60a74878ac1116aded86edc6e98096c3c0fb5e01d5432bf0ccaa26",
+      "contentFingerprint": "c6156da6c1420652648d1d61288cb133d9b65ccedb33649a4bab94c29c2b3c3b",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-03",
+      "standardUnit": "인수분해",
+      "subUnitKey": "H22-C-03-FACTORIZATION",
+      "subUnit": "인수분해",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_SUM_PRODUCT_SYSTEM",
+        "CC_POLYNOMIAL_FACTOR_IDENTIFICATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "다항식",
+      "L2": "인수분해",
+      "level": "중",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "다항식의 인수분해",
+      "L4": "인수분해 구조의 활용",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#11",
+      "approvedSourceFingerprint": "6a5878e37f60a74878ac1116aded86edc6e98096c3c0fb5e01d5432bf0ccaa26",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_b21e466f810a0f2290dee4d4b24ad0ffb7a976c908e4136e56f243f5124e6177",
@@ -61556,6 +62643,76 @@
       "selectabilityReasonCodes": []
     },
     {
+      "questionUid": "qid_v1_c20e871dc0b1a0e1defd1f3ef3d0b8d57af14ee2a43ea7072d6d6ce6952142f5",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceFingerprint": "b3cab94064c0552651ee98b1173e081aff9026197e717d5cb7a0d154b3ae61b5",
+      "contentFingerprint": "b25922f230e21f9e85a3373bceb6bca165d83dce6667178d33a3747bfddcf2c3",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-03",
+      "standardUnit": "인수분해",
+      "subUnitKey": "H22-C-03-FACTORIZATION",
+      "subUnit": "인수분해",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_POLY_FACTORIZATION",
+      "templateKey": "TPL_H1_FACTORIZATION_APPLICATION",
+      "crossConceptKeys": [
+        "CC_MULTIVARIATE_POLYNOMIAL_FACTORIZATION",
+        "CC_COEFFICIENT_MATCHING"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 2,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "다항식",
+      "L2": "인수분해",
+      "level": "하",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "다항식의 인수분해",
+      "L4": "인수분해 구조의 활용",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#9",
+      "approvedSourceFingerprint": "b3cab94064c0552651ee98b1173e081aff9026197e717d5cb7a0d154b3ae61b5",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_c25d8543d75fbfb740775d72cf01978aa4043363628978b161cda1fa39bf4b50",
       "sourceArchiveFile": "original/high/h1/1mid/26_팔마고_1학기_중간_고1_기출_c.js",
       "sourceOrdinal": 11,
@@ -64844,6 +66001,76 @@
         "sourceQuestionNo": "20"
       },
       "selectabilityReasonCodes": []
+    },
+    {
+      "questionUid": "qid_v1_cd6b42ed731fb408f9220b149cdf60a48fe27afbf9468c965ce6e2dc0af033e0",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "sourceFingerprint": "134df6f82b2fbbf72fbc56e0a9b04246cba06ac9ff50f98ccdeab40394474515",
+      "contentFingerprint": "c6c56cec1649b822307c8b75acc44fe63000517ee355d0819314aa13dbb3349f",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-02",
+      "standardUnit": "다항식의 나눗셈과 항등식",
+      "subUnitKey": "H22-C-02-CORE",
+      "subUnit": "다항식의 나눗셈과 항등식",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_REMAINDER_THEOREM",
+      "templateKey": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
+      "crossConceptKeys": [
+        "CC_POLYNOMIAL_DIVISION",
+        "CC_REMAINDER_SUBSTITUTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "다항식",
+      "L2": "항등식과 나머지정리",
+      "level": "중",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "나머지정리",
+      "L4": "합성 제수 나머지 조건 결합",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#15",
+      "approvedSourceFingerprint": "134df6f82b2fbbf72fbc56e0a9b04246cba06ac9ff50f98ccdeab40394474515",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_cd9a8adba4c7a494a174d29fbe93bf687c2e91b1329fbedade9bc00a1e2d2a2d",
@@ -68203,6 +69430,75 @@
       "selectabilityReasonCodes": []
     },
     {
+      "questionUid": "qid_v1_da4efd549554320b1c0d57c217c2fb02976e95dd407bc8b6870ec9f7267c3968",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceFingerprint": "bff9719435f34f5a10371c85e7e2db07a309aa323c2ec5135f3b99dfaa6c7841",
+      "contentFingerprint": "4ef083d3f8e9a946aaedf868866879370a6b9d134a4f4398a8c981e5252701a6",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+      "subUnit": "이차방정식",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION",
+      "templateKey": "TPL_H1_VIETA_TRANSFORMED_ROOT",
+      "crossConceptKeys": [
+        "CC_SYMMETRIC_ROOT_REDUCTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "DEEP_COMPOSITE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식",
+      "level": "상",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "근과 계수의 관계",
+      "L4": "변환된 근과 매개변수",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#14",
+      "approvedSourceFingerprint": "bff9719435f34f5a10371c85e7e2db07a309aa323c2ec5135f3b99dfaa6c7841",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_da7c0dc30fbdd538feb4f4a4d70ada227051eff8221fa1e8897ef4c5b1b1dcf6",
       "sourceArchiveFile": "original/high/h1/1final/25_순천여고_1학기_기말_고1_기출c.js",
       "sourceOrdinal": 8,
@@ -70911,6 +72207,76 @@
       "selectabilityReasonCodes": [
         "applicability"
       ]
+    },
+    {
+      "questionUid": "qid_v1_e56c0b74100a07611365059c21a1491798208ec4272b83deb5bc0ff1e3c5f439",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "sourceFingerprint": "fe6aa027eb7fc968bfc786c82fb487f116cb7b1f19241477f1ff16efe5b165dc",
+      "contentFingerprint": "716fb3dfd89d679b69d2aed1f3718b09fbb92650b7eee0ae0f826b9ed4351ad5",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_FUNCTION_APPLICATION",
+      "subUnit": "이차함수의 활용",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_IDENTITY_IN_PARAMETER"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식과 이차함수",
+      "level": "중",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "이차방정식의 근과 판별식",
+      "L4": "판별식으로 근의 존재·중복 판정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#10",
+      "approvedSourceFingerprint": "fe6aa027eb7fc968bfc786c82fb487f116cb7b1f19241477f1ff16efe5b165dc",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_e576dd20cc0c97063a154535be735c1d05248e8a3d44efaa4822e38ea579343e",
@@ -74929,6 +76295,76 @@
       "selectabilityReasonCodes": []
     },
     {
+      "questionUid": "qid_v1_f3e382415072847c00e2f2c1ce2965b61adfcaeaaf4a60bea1dc7925ef5927c3",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceFingerprint": "b90aec86286c0a1013a934230b3748883c3bfdf45422efc1eb0a5ce72adb1cce",
+      "contentFingerprint": "2adb22c98d310db93c8ec5b6ad1570760c95a3ce6fe1e984ee6356168e554006",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-04",
+      "standardUnit": "복소수와 이차방정식",
+      "subUnitKey": "H22-C-04-COMPLEX_BASIC",
+      "subUnit": "복소수의 연산",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_COMPLEX_POWER_ROOT",
+      "templateKey": "TPL_H1_COMPLEX_I_PERIOD",
+      "crossConceptKeys": [
+        "CC_CUBIC_OMEGA_PROPERTIES",
+        "CC_CYCLIC_EXPONENT_REDUCTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "복소수",
+      "level": "중",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "복소수의 거듭제곱과 단위근",
+      "L4": "허수단위 i의 거듭제곱 주기",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#13",
+      "approvedSourceFingerprint": "b90aec86286c0a1013a934230b3748883c3bfdf45422efc1eb0a5ce72adb1cce",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_f486a85f544a1ff979e29bb63bcbd0f904d6e2f50ea291eb8c94a4db1f3af5ed",
       "sourceArchiveFile": "original/high/h1/1final/25_매산여고_1학기_기말_고1_기출c.js",
       "sourceOrdinal": 7,
@@ -75549,6 +76985,77 @@
       "selectabilityReasonCodes": [
         "applicability"
       ]
+    },
+    {
+      "questionUid": "qid_v1_f64fcb74269ed2820fae86436cdc6e10ff85cf003684707a9a80eabb4fde3b34",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "sourceFingerprint": "fa425d979967878c846da6a45786405b1d247893892e597ada6c00ff82b64eac",
+      "contentFingerprint": "758ccf862705ac3e6d6f3c847b1a7d17e90178328424b6a69fef6000d2b4cbd4",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-06",
+      "standardUnit": "여러 가지 방정식과 부등식",
+      "subUnitKey": "H22-C-06-HIGHER_EQUATION",
+      "subUnit": "삼차방정식",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_HIGHER_DEGREE_EQUATION",
+      "templateKey": "TPL_H1_HIGHER_FACTOR_ROOT",
+      "crossConceptKeys": [
+        "CC_ROOTS_COEFFICIENTS",
+        "CC_POLYNOMIAL_ROOT_SUBSTITUTION",
+        "CC_CUBIC_FACTORIZATION_VIETA"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 2,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "여러 가지 방정식",
+      "level": "하",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "고차방정식의 풀이",
+      "L4": "고차방정식의 인수분해",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#7",
+      "approvedSourceFingerprint": "fa425d979967878c846da6a45786405b1d247893892e597ada6c00ff82b64eac",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_f66a6b26e817c318d66980bd46b8a03d3aa4fd303ec5bc9f2b3946a98eed24d9",
@@ -76916,6 +78423,78 @@
         "sourceQuestionNo": "1"
       },
       "selectabilityReasonCodes": []
+    },
+    {
+      "questionUid": "qid_v1_f9ddfafd8b3740b00b3f64d4a270be6d25773d5ea0a9365cdd7b49a67b0fd759",
+      "sourceArchiveFile": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "sourceFingerprint": "785365b75830fe7bcf20079886b6f764a7117ff5b6046da5f60e67d0795e03a2",
+      "contentFingerprint": "e0138f2926c6f1a433a9fa73c88bf36d74596a5c824bce88b0258afa6db21fef",
+      "standardCourse": "공통수학1",
+      "standardUnitKey": "H22-C-05",
+      "standardUnit": "이차방정식과 이차함수",
+      "subUnitKey": "H22-C-05-QUADRATIC_EQUATION",
+      "subUnit": "이차방정식",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT",
+      "templateKey": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
+      "crossConceptKeys": [
+        "CC_DISCRIMINANT",
+        "CC_QUADRATIC_DOUBLE_ROOT"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:H1_FOUNDATION@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-geumdang21-final-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-geumdang21-final-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 1,
+      "curriculumKey": "2022",
+      "courseKey": "공통수학1",
+      "L1": "방정식과 부등식",
+      "L2": "이차방정식",
+      "level": "하",
+      "difficultyConfidence": "source_preserved",
+      "curriculum": "2022",
+      "L3": "이차방정식의 근과 판별식",
+      "L4": "판별식으로 근의 존재·중복 판정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "H1_FOUNDATION",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h1/1mid/21_금당고_1학기_중간_고1_기출.js#5",
+      "approvedSourceFingerprint": "785365b75830fe7bcf20079886b6f764a7117ff5b6046da5f60e67d0795e03a2",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_f9ecb683a252464ea1f85fc7da492acad0d2da3249aa9293fd96aa421c8821cf",
@@ -78543,7 +80122,7 @@
   ],
   "usage": {
     "schemaVersion": "archive-reviewed-runtime-usage-v1",
-    "records": 1193,
+    "records": 1215,
     "problemTypes": [
       {
         "key": "PT_ABSOLUTE_INEQUALITY_EXTREMUM",
@@ -78810,7 +80389,7 @@
       },
       {
         "key": "PT_H1_COMPLEX_CONDITION_EQUATION",
-        "count": 31,
+        "count": 33,
         "questionUids": [
           "qid_v1_0100e7cb6bdbd0161019fb1f8b070e89133c43ee744bbdf80dc4024bbf985f67",
           "qid_v1_060d2bfb5f484e724a6f0490b6dd25d379a441528dab5e5944fc3eac738612ad",
@@ -78820,7 +80399,9 @@
           "qid_v1_216e01e272c9d61c206085d829a2f98ddd0e8023ad60fcb63dea14f8eabdc579",
           "qid_v1_2285e404a04c1d77665cd3dd364448308a4cad177d3c8adc5affec9b7e504943",
           "qid_v1_2804947c80dd27b859a5f9f0075e342c43cf3b0533db9443dbfc8f8571d54f38",
+          "qid_v1_2bc009fbdb5d5a9fe56c5bbdeaba20701587035f28da5c004aab4ce9db4a29b3",
           "qid_v1_35dd9d16ace81c5bdeb3952203b852f4c9490b42a30c00fba97e02764db18c33",
+          "qid_v1_39a4409b1e8759d5b558fccae38e0ef9b76c2358e040e4101b52e5be1df01a99",
           "qid_v1_47b0b11614bbfea49b2470257683cf2cf01c6392a0f4f3469a52344a554f66aa",
           "qid_v1_5e85377e3fb6be51904c114d3b0c2340c6fa9344fa07963ba53e4e343c7e8cdf",
           "qid_v1_6c5db5fc28d081633ce9bb498ca02102b2ec9ddaa23fe2417f2d1c30d819df41",
@@ -78899,7 +80480,7 @@
       },
       {
         "key": "PT_H1_COMPLEX_POWER_ROOT",
-        "count": 51,
+        "count": 52,
         "questionUids": [
           "qid_v1_001f885bd69f9a2ec9670bea41d728b0b095e913dd82105f2a75df575e0e70d3",
           "qid_v1_043d07c2dd4b3715362da986043bae79d971ba8fd5117b46e7e362b49dfd3ec3",
@@ -78950,6 +80531,7 @@
           "qid_v1_e6f1e2b9a91e0e5b7d5f1707a052e9aada1dc694b45e38ebe19aa6e307ff55e3",
           "qid_v1_e8790bca6355161b307e7d1b7e82d2e400912fdbd0cec757467142eb7ea8432d",
           "qid_v1_eeb1223ec487adcbae8aa0cade893eb7a2e27c1816337327ab22654d897f4b1b",
+          "qid_v1_f3e382415072847c00e2f2c1ce2965b61adfcaeaaf4a60bea1dc7925ef5927c3",
           "qid_v1_f5e5be00babf568f08d1f94d44d9067bb5ec91173b8b8bb4c6dd8aedd1c1246b",
           "qid_v1_fd67803bf9578bcefc1c7bc29158d8f3e28d232b181ac2bd7b3a7c43415a56f2"
         ]
@@ -79096,7 +80678,7 @@
       },
       {
         "key": "PT_H1_HIGHER_DEGREE_EQUATION",
-        "count": 35,
+        "count": 37,
         "questionUids": [
           "qid_v1_2dd60862ab8a1f9ce69ad49428f81c927cfd1037765ea148aacc4c286aa2cbda",
           "qid_v1_32165283a3eb8427f274f4889af91afee9eae2db0996abe8be5d24793f6a4ab5",
@@ -79118,6 +80700,7 @@
           "qid_v1_aa446f9cafd559492aa7fbbb62e1ef358edb0e2d98a19fd6e1b8ed220ba4c516",
           "qid_v1_add08511019791e83caba2719666f5849e9eeaf95b25113cff58bd8a15096f7b",
           "qid_v1_af8fdbf9ce4c87c6bb062c567893785fa932616f7785fea9111aa668a26613f9",
+          "qid_v1_af9d821026049c17ce754c2516ee60f70c8bf5d1c3ea93381af0caef07eb96b2",
           "qid_v1_b1682a9c4907ef48c15f0a8ce9b4d8ba71e629b428cdb6e8525a5e647951694a",
           "qid_v1_b525aff33c87853d61e7eadc1e1037c9ffe46e82ef2327dfada0064e5e2bd2cb",
           "qid_v1_b9607bdcb91730681acb43e4d2b879b1d2312aae00eed9e8099b5fa6cbe86e9a",
@@ -79131,6 +80714,7 @@
           "qid_v1_e973a9e3b5a9e4f4cfca0088760d7681bbf5df7565fea3de00dea0e7f6c41e9b",
           "qid_v1_ef9d857dc2a803e6c940e372de534f321756b13423fc47fb7cd5d8d38953a114",
           "qid_v1_f32d26daa791cc15128b80149d7f32283721bbe9c33c1e23d122e181fe4526f7",
+          "qid_v1_f64fcb74269ed2820fae86436cdc6e10ff85cf003684707a9a80eabb4fde3b34",
           "qid_v1_f6ca961b2586a25ed4af3bc74478f4e204483241942319e272ebfe8d48613bcf",
           "qid_v1_fbbe424efec817be4329ad8dcf5f78dde1adcce72ad6aaf6d2de12384004c93d"
         ]
@@ -79338,7 +80922,7 @@
       },
       {
         "key": "PT_H1_POLY_FACTORIZATION",
-        "count": 42,
+        "count": 45,
         "questionUids": [
           "qid_v1_001962b3c8131aa6e7eb564b2e802d95871374cac8e5db91cce53fcdeb993891",
           "qid_v1_0219b9b3724a3e31acbbe20acd662bf37d1f92cf721d28ebacea764d517ff251",
@@ -79364,6 +80948,7 @@
           "qid_v1_77ff739f96fe22578c26863c7f9abb3660ec0a3cad0ed6286da6c495121e8691",
           "qid_v1_7ac9ba1089e9580371efd79670fbab5cd3d8d897187dce53c36b643e09b10294",
           "qid_v1_7d887c7038e17b63b7815a83df38f3de93288816bece55217e86162730c3ff1e",
+          "qid_v1_84f48846915218ff6e0176abb226ccfcf8e2480ce708dc86649e578db979a83c",
           "qid_v1_86685097e2580dde9a083a0f927895e11b29c3018281a4b5b86db82f8772a053",
           "qid_v1_8c0addc3572dd8b4882f40627afd66db22aa3371311c4661d6a0b4ae73ad23ab",
           "qid_v1_99ec988e292c053ceeeedd3fce5ba467519c4f498a34cef19576236a41b008d6",
@@ -79371,8 +80956,10 @@
           "qid_v1_a3149d44f83e65aa9ccd9fdd31deee24ab72e1a8283131291fa82f75e6eeb7b9",
           "qid_v1_a8bdf7d756d2c3b167c61ead976546a7654fb8e20c6094bd1f0a63677add3b25",
           "qid_v1_aa431eb3d98df345279652bad701ef48ea8f45f3103a03f8c3ffa97cd6644e67",
+          "qid_v1_b1c7a2c04d9e42dbd99bf81c67337a8c7d0d784e9fe044a99ff2aa5cab074623",
           "qid_v1_b3572fb504cda7b5195b03c0917f7f7951b3565c53c629ee560f15a244cc6ed3",
           "qid_v1_bae5b2c590c5a426ce93613835dad90a7a089b6f41ea731826b37f33647dae1f",
+          "qid_v1_c20e871dc0b1a0e1defd1f3ef3d0b8d57af14ee2a43ea7072d6d6ce6952142f5",
           "qid_v1_c94099a77aec4b1cb01cf9c98fa934c2603bd8f4553b71e3ada41778b976143d",
           "qid_v1_d3b95dd7aa9a7af6e916cae16e235be25cb2340e1ada6b424b7cb7bee90427aa",
           "qid_v1_d64dbc261e2ce0c4d1cbb4e2e32ffd5a799a1f1ef90ebfae0229a6fa60c96bb6",
@@ -79386,7 +80973,7 @@
       },
       {
         "key": "PT_H1_POLY_FORMULA_SYMMETRIC",
-        "count": 25,
+        "count": 26,
         "questionUids": [
           "qid_v1_01fa7810502c157339d77e1f53ccac96bc6fbeffce2e5b07d9f72edbbd01fbe0",
           "qid_v1_021dde5d08a5c729376894bf0b3f1012193fb65147d089799eeafc99ec74ac51",
@@ -79403,6 +80990,7 @@
           "qid_v1_71cee9311e06f65ac055b10493a43d2252e66967dde16d5febac1f923afe023a",
           "qid_v1_7a24927101af27baaf96e17a9fc972abf90af7246fb96699e78b0e7ffe6d0bef",
           "qid_v1_9155039afc4c3d200bee8f4abaa4ccc14df31581af6a5e657a08de9dfbee5a01",
+          "qid_v1_9155a1cc4d7a4801dab34e9e7a9f57c9b625d22f4982a7836e09dfa81a6932b7",
           "qid_v1_aa9b1edf5ef18fc25871970c6be5b070c6d02782922de67ee025afb9159735d4",
           "qid_v1_bd278f69cb7d7e1c24bd08a46fa5ac8167108441fd6775b63e7e51280061645a",
           "qid_v1_c0132a38f3a6a0029ffd97dd971933a2d2a81b6ff0a289542c3741468d665595",
@@ -79417,12 +81005,13 @@
       },
       {
         "key": "PT_H1_POLY_IDENTITY_COEFFICIENT",
-        "count": 32,
+        "count": 33,
         "questionUids": [
           "qid_v1_002dfb0aef014c024b03d93fd7897ffd03482fb56be8146a1f6d99cfdbc035da",
           "qid_v1_0063916952c5a55211088071f64bf88aa3bad9fd2335d6c3f2fe17ab603dbabd",
           "qid_v1_0547c180f0440e25cd8d0e3f6d6d99a191b7af3a42cec8628c91ffa97f1a820e",
           "qid_v1_0e332b197acf3a0f72f50f234cda4a292bdaade96db304a5e8cc482a3d033ed9",
+          "qid_v1_14febd88e579cb65e2dce89be655f009a349b7d26394ee202c22c7b5a7ae23ce",
           "qid_v1_1e0cbbffd815f776e797e18e099207770615ab1a104f7a1887da3905d21f29e0",
           "qid_v1_249667d9e3c3779fca5d2e3aaee7bcb4878c92b2c03d4e7b586e93eae13d253e",
           "qid_v1_282a9c34b52d70cac3f3b1e1c0fca687ffff3ef7dd86e45d88cdd2692f730646",
@@ -79455,10 +81044,11 @@
       },
       {
         "key": "PT_H1_POLY_OPERATION_EXPANSION",
-        "count": 38,
+        "count": 39,
         "questionUids": [
           "qid_v1_0052ff977f1f3544bf2248816a9882d5cc522c83bc7671a48c41d55690d7f07f",
           "qid_v1_04feafe5354072d798c30a9482bfbb9870bc7d7e6c6e39a68c87cc429fa62db5",
+          "qid_v1_17511a3411735deb3102b8408891980a0adcaf76be00ef9c855fbdf730df3bad",
           "qid_v1_1c3e81f73186e605ad3785c8d753f21b5c8864749bd7bd6ded3e19132d270714",
           "qid_v1_27872e02d093266766c343ed4e6cd0735a44f7a60e955d62c9dbbe6b9ced7242",
           "qid_v1_2adc2e67c5c5431bc81954fb90b2aafa03a3c6d3838874b62b725a9c6b8d11d9",
@@ -79499,7 +81089,7 @@
       },
       {
         "key": "PT_H1_QUADRATIC_DISCRIMINANT",
-        "count": 51,
+        "count": 53,
         "questionUids": [
           "qid_v1_018259ac378dc4b8523c105a69118933a109c5fade4990d1ff2bc2882d38332c",
           "qid_v1_0aee0b669f79a7bf4ebf653f98907480a2133324b2c09a2ac4302d693d5853da",
@@ -79548,15 +81138,17 @@
           "qid_v1_e26496daeb92f08edfbfcc08c5f74da57d0693f000f26904a4a96a50da0163ea",
           "qid_v1_e2ea98f3bf53f78593670a306cd82413653d281972c28bf474458b609807d8c9",
           "qid_v1_e30c45d4a3d6bfb3f01220ea02fd476ab610736dd0d38038c7cd5927e428969a",
+          "qid_v1_e56c0b74100a07611365059c21a1491798208ec4272b83deb5bc0ff1e3c5f439",
           "qid_v1_e62e88143042f55a19395c2d96eea5201af8f2a577f6ad1791f3095272da4603",
           "qid_v1_e767fa7012aa8d616ca93962f4896495d2234a19384aebc8e410c8d17c4114e0",
           "qid_v1_ec37277753402a53359b450c1969a014d85863a15ad03dbbaec6260e11a50251",
+          "qid_v1_f9ddfafd8b3740b00b3f64d4a270be6d25773d5ea0a9365cdd7b49a67b0fd759",
           "qid_v1_ffe6753a424ceabcb1b5e7e85711ee95aa24663689664017c147662f31c3b13b"
         ]
       },
       {
         "key": "PT_H1_QUADRATIC_EXTREMA",
-        "count": 81,
+        "count": 85,
         "questionUids": [
           "qid_v1_01b2b5125e35efc02c32155fcca176d22836bcf0c567568d959aa0756366517f",
           "qid_v1_08adf9eb0770dbddb4ccb075c78ac1cf8236046e1fa001c01515148b83010d1f",
@@ -79596,6 +81188,7 @@
           "qid_v1_90785a0fbcd1e3b01694bd90a7db7f1976fae32c7bcb08023b22542d6e6d1cfb",
           "qid_v1_9108b3300f150cc744d882202fb3788a1dd211d324ffa7504f2a0e5937330d8e",
           "qid_v1_919a0c25632ceb1899558d1f045646b7bb7f96a69fde1da70666051936f61bbb",
+          "qid_v1_943ba771369d8ef5116226df3e5a573bcb6e4644cfb274c149da721d6e52c717",
           "qid_v1_9579ff334bd789c3b83b0567119e038d883554e01579e73ac2da22caddf0e9b6",
           "qid_v1_96de77da4eaca59d810febb1973d4d1c87a42fd4baf37d0842035110e1a80683",
           "qid_v1_97022be2836bd60b478c2e34045bf8706e50edd5390d142a0a941b31ee1bcc73",
@@ -79605,9 +81198,12 @@
           "qid_v1_a2d355f09dd007ab41878b9b18a31ca8b09a6edef351ccafa196b2ee4b3e7758",
           "qid_v1_a377e080df9c6927b7387fc3397fd7b83b493a5bb36bd3c3dd3100364136184c",
           "qid_v1_a67de3e7589006e88f9a65c2e560ec776f673afda8f66391036a25ee73ccfc3e",
+          "qid_v1_a68ed00223a0290c0f88261a3dcebacdea647b96daaf83acd552f2870dcadab7",
           "qid_v1_a6cdeb09bc4c92fee4802a11beaaf543febfa666dc8ef405f3b818b307a1f06a",
+          "qid_v1_a6d53c6b5c394349896526e20c71cce267b1d9e15b2e08933787acac05b4f3db",
           "qid_v1_a9087c1259ff45d4ecd9ece722de1c10461f0b51463ca2822e014edc5bf46ed1",
           "qid_v1_af5fa4ef4a53985170e1f58ca72a01248e0ba5adf6d159598c9fba7ea45d52d5",
+          "qid_v1_afeec1b3fccbf7f9306e64f0333530edf4de8af25e6ddc625d08aff208cc750e",
           "qid_v1_b03930b0131ad35ddd3b8b7e1ea831faa8f6b831215430a8f2d1aa0c376a4fa9",
           "qid_v1_b8706913f481f07756f2690a70d777d28ab80e7e55827021d087f4e71bd65f60",
           "qid_v1_b8e11024835d18b58e930cb36b4be095dc5627739a530b71c5db686d7fc3422b",
@@ -79643,7 +81239,7 @@
       },
       {
         "key": "PT_H1_QUADRATIC_GRAPH_INTERSECTION",
-        "count": 46,
+        "count": 47,
         "questionUids": [
           "qid_v1_0ad47a6beabd99610d878cf54396ebc8df59c5a2984e79e8482d595d3fa08e42",
           "qid_v1_0d1d3d1b6c7342bd39b684d13a7811196c9528b0be3f59adec0623536a66bfd3",
@@ -79667,6 +81263,7 @@
           "qid_v1_6ca38d70d4711e3a6510256a09c40b28941a3b39f1798ebe3c8fe760c98a36fb",
           "qid_v1_6f26274d9b6f40c07863bcbd0a61998191f3c00262108ce82b67d7489a11ca67",
           "qid_v1_7074c0c0adc54aae801e9c7b23daa6cb049b7ff943c42a493c83271069e6b861",
+          "qid_v1_740aa3ad09ad635472bb204d1bd5c66ec30523fc408a453677def106eb25f19e",
           "qid_v1_7fbeae58dc30f6e56bc228fb9cee41d33286fe98cd1c0b2321da9ac659bdd652",
           "qid_v1_848ec75c7ab48f52cc6348ff5dc14ecf0f94c3cac07270709f23fcbe0e0b83e0",
           "qid_v1_916927a3e28b0f2c5fb01b835cbb923e60b60ebc04120997846ed89c6b2c6650",
@@ -79790,7 +81387,7 @@
       },
       {
         "key": "PT_H1_REMAINDER_THEOREM",
-        "count": 34,
+        "count": 37,
         "questionUids": [
           "qid_v1_01e5498b4b31a7119675c3e924804a291b8bf1fe410af46a060d19de74ab9884",
           "qid_v1_042acac1a09ac5e5dde1c9fb154f909a5473f2cc63db516d9152b5e287a97431",
@@ -79810,6 +81407,8 @@
           "qid_v1_5eb428c1a8f5bd0cd94f01f35639eaa3e48d9021b9657815b8ebacbb25e66eab",
           "qid_v1_605f150cb827a9f1bc7e3ea2ee5b4f23ca360fd327f83740bf4a504f092d6687",
           "qid_v1_73e54cbaf648061f24a78d07128394705b9b0e4b552c5e5bab53a21c6692b6a7",
+          "qid_v1_8354f1f6035c1f3c7445961339bb17e7c885b23c4f3c08f29a949513ce9e3f1d",
+          "qid_v1_8c5debd5256a20b232478a3ee9aa7e404f0e0800f22a4223b3db3ca4724e7b4d",
           "qid_v1_985a68184115ce51cd885be09d18add6678a75ba52498cb09c37df3493984374",
           "qid_v1_a069a7cf45962ad79c5afbf255d205ea5aa097474a9ef3974895aa481475fc98",
           "qid_v1_b277f6aa10deedbc893e2aace264873c4ea02a54dca62fdc736b9d9c8a00d5ac",
@@ -79820,6 +81419,7 @@
           "qid_v1_c06f8893e7a1d8e509856c7584de23e57a9119aebf5c76ae7e6ab7fe1dea1523",
           "qid_v1_c20730bfe4d0d96f6eef0c44275c2fc7b54eb98d3777816e783a75f0bf8f55bc",
           "qid_v1_c5452cc9bfd7df4549f8e92d83f6fe6db1e4d6dd6aaa48471d22c27e198521a4",
+          "qid_v1_cd6b42ed731fb408f9220b149cdf60a48fe27afbf9468c965ce6e2dc0af033e0",
           "qid_v1_d0a41c96083b56e59d02c8d3fcda0231fb22d377ed236def500e06f9e19434d2",
           "qid_v1_d67d0b2fdf7cdbef33980cb30ebab8badee05068c3718395121d55bf091271b5",
           "qid_v1_e576dd20cc0c97063a154535be735c1d05248e8a3d44efaa4822e38ea579343e",
@@ -79830,7 +81430,7 @@
       },
       {
         "key": "PT_H1_ROOT_COEFFICIENT_RELATION",
-        "count": 40,
+        "count": 41,
         "questionUids": [
           "qid_v1_029992844f56de4daa8c6ebc8e7faade386ad5018852e93e48ae7a57b1767a60",
           "qid_v1_1257935ab9009d98dc26559a35c60bce02a76f2c6cbc6275e24ee60e44467d3d",
@@ -79870,6 +81470,7 @@
           "qid_v1_c1693cae5a50d9e0fea3c4322c35a70b64fb035cfc9cf0ed964f85ddc4202f4a",
           "qid_v1_c2de69bac2fad895eb4b910ef621cca165acaded83630099e655ef8f551576c4",
           "qid_v1_d361fa7851062e8f453b6d2eb08820c02d959d7c4497f5cbdca57ab5533dfeb9",
+          "qid_v1_da4efd549554320b1c0d57c217c2fb02976e95dd407bc8b6870ec9f7267c3968",
           "qid_v1_dedab558e5c28d1968ec3e309c8b703fd9f8026c9a1ebb3f753aaaaf0e38ad90",
           "qid_v1_e59025a13c48ac361bdc37bf95c57314154bb5471f8323fde8f771ac39c4e4fd"
         ]
@@ -80167,7 +81768,7 @@
       },
       {
         "key": "TPL_H1_COMPLEX_CONJUGATE_ROOT_EQUATION",
-        "count": 20,
+        "count": 21,
         "questionUids": [
           "qid_v1_0100e7cb6bdbd0161019fb1f8b070e89133c43ee744bbdf80dc4024bbf985f67",
           "qid_v1_060d2bfb5f484e724a6f0490b6dd25d379a441528dab5e5944fc3eac738612ad",
@@ -80175,6 +81776,7 @@
           "qid_v1_0e49600e12cf3ae6a0df37f8e9ef78e2c5d88f55b8307c663361cd18fb7091b7",
           "qid_v1_216e01e272c9d61c206085d829a2f98ddd0e8023ad60fcb63dea14f8eabdc579",
           "qid_v1_2804947c80dd27b859a5f9f0075e342c43cf3b0533db9443dbfc8f8571d54f38",
+          "qid_v1_2bc009fbdb5d5a9fe56c5bbdeaba20701587035f28da5c004aab4ce9db4a29b3",
           "qid_v1_47b0b11614bbfea49b2470257683cf2cf01c6392a0f4f3469a52344a554f66aa",
           "qid_v1_5e85377e3fb6be51904c114d3b0c2340c6fa9344fa07963ba53e4e343c7e8cdf",
           "qid_v1_6c5db5fc28d081633ce9bb498ca02102b2ec9ddaa23fe2417f2d1c30d819df41",
@@ -80193,7 +81795,7 @@
       },
       {
         "key": "TPL_H1_COMPLEX_I_PERIOD",
-        "count": 9,
+        "count": 10,
         "questionUids": [
           "qid_v1_12d324b74780a063ea6860bdfc32fb8fb6aee56eb669ece03f05e2d85faf8d43",
           "qid_v1_172411105815ba594f319bd6e7f04920b8c7a3782c7276291b426fcb2541c6ac",
@@ -80203,16 +81805,18 @@
           "qid_v1_8ed4a57ffc190e393831eb5b07534fcd4ab9a1f89e1a68a5fc989c01949bc6d9",
           "qid_v1_aedf53bd47b9464f526c6e5984a7f33ad586cc78a3f37d9e3d876e2b15aebd08",
           "qid_v1_c62ba54f59d65f06fed01c67d8a18fe7b4eddb4ae368f9080f4eeae2177ca6fe",
-          "qid_v1_e0acc4956d4542098fb512af7bf6c86900a041a7f5c263a25a6314980885b507"
+          "qid_v1_e0acc4956d4542098fb512af7bf6c86900a041a7f5c263a25a6314980885b507",
+          "qid_v1_f3e382415072847c00e2f2c1ce2965b61adfcaeaaf4a60bea1dc7925ef5927c3"
         ]
       },
       {
         "key": "TPL_H1_COMPLEX_REAL_IMAG_CONSTRAINT",
-        "count": 5,
+        "count": 6,
         "questionUids": [
           "qid_v1_1bc4e4bb598eef6d5dff6bf76e237dc00ec881f1b67bd0cb96ade7e355b0ea15",
           "qid_v1_2285e404a04c1d77665cd3dd364448308a4cad177d3c8adc5affec9b7e504943",
           "qid_v1_35dd9d16ace81c5bdeb3952203b852f4c9490b42a30c00fba97e02764db18c33",
+          "qid_v1_39a4409b1e8759d5b558fccae38e0ef9b76c2358e040e4101b52e5be1df01a99",
           "qid_v1_79dc5d371de9c83631453c8041b3b678bdb8960a92ef764716906f1a9c3ed3bb",
           "qid_v1_a458ea446717717f82aad05ae872dfa085172b9e83693a5118c09c1218b14f53"
         ]
@@ -80401,7 +82005,7 @@
       },
       {
         "key": "TPL_H1_DISCRIMINANT_ROOT_EXISTENCE",
-        "count": 42,
+        "count": 44,
         "questionUids": [
           "qid_v1_018259ac378dc4b8523c105a69118933a109c5fade4990d1ff2bc2882d38332c",
           "qid_v1_0aee0b669f79a7bf4ebf653f98907480a2133324b2c09a2ac4302d693d5853da",
@@ -80442,14 +82046,16 @@
           "qid_v1_e26496daeb92f08edfbfcc08c5f74da57d0693f000f26904a4a96a50da0163ea",
           "qid_v1_e2ea98f3bf53f78593670a306cd82413653d281972c28bf474458b609807d8c9",
           "qid_v1_e30c45d4a3d6bfb3f01220ea02fd476ab610736dd0d38038c7cd5927e428969a",
+          "qid_v1_e56c0b74100a07611365059c21a1491798208ec4272b83deb5bc0ff1e3c5f439",
           "qid_v1_e62e88143042f55a19395c2d96eea5201af8f2a577f6ad1791f3095272da4603",
           "qid_v1_ec37277753402a53359b450c1969a014d85863a15ad03dbbaec6260e11a50251",
+          "qid_v1_f9ddfafd8b3740b00b3f64d4a270be6d25773d5ea0a9365cdd7b49a67b0fd759",
           "qid_v1_ffe6753a424ceabcb1b5e7e85711ee95aa24663689664017c147662f31c3b13b"
         ]
       },
       {
         "key": "TPL_H1_FACTORIZATION_APPLICATION",
-        "count": 10,
+        "count": 13,
         "questionUids": [
           "qid_v1_001962b3c8131aa6e7eb564b2e802d95871374cac8e5db91cce53fcdeb993891",
           "qid_v1_046b45fac97cc283c007b448e8d80af0a03c011ccc0306cd45067526a67feeac",
@@ -80457,9 +82063,12 @@
           "qid_v1_163385facfa8a9da00f5d31a4399cf0a5cc641059376ce491c112b698f083e31",
           "qid_v1_5ebf91ee4dcffb8fef64d4f567cfb38bbb8a7f0073d7adb3138760eadfcdb20a",
           "qid_v1_60e3f418926d8b5895788d751a655e1cfc810be7baa3487c086cc7c8908c7bd4",
+          "qid_v1_84f48846915218ff6e0176abb226ccfcf8e2480ce708dc86649e578db979a83c",
           "qid_v1_86685097e2580dde9a083a0f927895e11b29c3018281a4b5b86db82f8772a053",
           "qid_v1_a26c63951d9a3c752ee571c25feb01a5c5315a6df7cfd0a79265eacb75624185",
           "qid_v1_aa431eb3d98df345279652bad701ef48ea8f45f3103a03f8c3ffa97cd6644e67",
+          "qid_v1_b1c7a2c04d9e42dbd99bf81c67337a8c7d0d784e9fe044a99ff2aa5cab074623",
+          "qid_v1_c20e871dc0b1a0e1defd1f3ef3d0b8d57af14ee2a43ea7072d6d6ce6952142f5",
           "qid_v1_d3b95dd7aa9a7af6e916cae16e235be25cb2340e1ada6b424b7cb7bee90427aa"
         ]
       },
@@ -80503,7 +82112,7 @@
       },
       {
         "key": "TPL_H1_FORMULA_SYMMETRIC",
-        "count": 25,
+        "count": 26,
         "questionUids": [
           "qid_v1_01fa7810502c157339d77e1f53ccac96bc6fbeffce2e5b07d9f72edbbd01fbe0",
           "qid_v1_021dde5d08a5c729376894bf0b3f1012193fb65147d089799eeafc99ec74ac51",
@@ -80520,6 +82129,7 @@
           "qid_v1_71cee9311e06f65ac055b10493a43d2252e66967dde16d5febac1f923afe023a",
           "qid_v1_7a24927101af27baaf96e17a9fc972abf90af7246fb96699e78b0e7ffe6d0bef",
           "qid_v1_9155039afc4c3d200bee8f4abaa4ccc14df31581af6a5e657a08de9dfbee5a01",
+          "qid_v1_9155a1cc4d7a4801dab34e9e7a9f57c9b625d22f4982a7836e09dfa81a6932b7",
           "qid_v1_aa9b1edf5ef18fc25871970c6be5b070c6d02782922de67ee025afb9159735d4",
           "qid_v1_bd278f69cb7d7e1c24bd08a46fa5ac8167108441fd6775b63e7e51280061645a",
           "qid_v1_c0132a38f3a6a0029ffd97dd971933a2d2a81b6ff0a289542c3741468d665595",
@@ -80534,7 +82144,7 @@
       },
       {
         "key": "TPL_H1_HIGHER_FACTOR_ROOT",
-        "count": 24,
+        "count": 26,
         "questionUids": [
           "qid_v1_2dd60862ab8a1f9ce69ad49428f81c927cfd1037765ea148aacc4c286aa2cbda",
           "qid_v1_510615a80a8a8cb42b92b0eef2e48654658d49129ebaa9d57b5e4bc8c3959ed1",
@@ -80553,12 +82163,14 @@
           "qid_v1_aa446f9cafd559492aa7fbbb62e1ef358edb0e2d98a19fd6e1b8ed220ba4c516",
           "qid_v1_add08511019791e83caba2719666f5849e9eeaf95b25113cff58bd8a15096f7b",
           "qid_v1_af8fdbf9ce4c87c6bb062c567893785fa932616f7785fea9111aa668a26613f9",
+          "qid_v1_af9d821026049c17ce754c2516ee60f70c8bf5d1c3ea93381af0caef07eb96b2",
           "qid_v1_b1682a9c4907ef48c15f0a8ce9b4d8ba71e629b428cdb6e8525a5e647951694a",
           "qid_v1_b9607bdcb91730681acb43e4d2b879b1d2312aae00eed9e8099b5fa6cbe86e9a",
           "qid_v1_da7c0dc30fbdd538feb4f4a4d70ada227051eff8221fa1e8897ef4c5b1b1dcf6",
           "qid_v1_e717e63a4674c209c4181be1aea03f3924594d716c57af0b2e7ec1352572c2cf",
           "qid_v1_ef9d857dc2a803e6c940e372de534f321756b13423fc47fb7cd5d8d38953a114",
           "qid_v1_f32d26daa791cc15128b80149d7f32283721bbe9c33c1e23d122e181fe4526f7",
+          "qid_v1_f64fcb74269ed2820fae86436cdc6e10ff85cf003684707a9a80eabb4fde3b34",
           "qid_v1_fbbe424efec817be4329ad8dcf5f78dde1adcce72ad6aaf6d2de12384004c93d"
         ]
       },
@@ -80580,11 +82192,12 @@
       },
       {
         "key": "TPL_H1_IDENTITY_COEFFICIENT_COMPARE",
-        "count": 28,
+        "count": 29,
         "questionUids": [
           "qid_v1_002dfb0aef014c024b03d93fd7897ffd03482fb56be8146a1f6d99cfdbc035da",
           "qid_v1_0063916952c5a55211088071f64bf88aa3bad9fd2335d6c3f2fe17ab603dbabd",
           "qid_v1_0e332b197acf3a0f72f50f234cda4a292bdaade96db304a5e8cc482a3d033ed9",
+          "qid_v1_14febd88e579cb65e2dce89be655f009a349b7d26394ee202c22c7b5a7ae23ce",
           "qid_v1_1e0cbbffd815f776e797e18e099207770615ab1a104f7a1887da3905d21f29e0",
           "qid_v1_249667d9e3c3779fca5d2e3aaee7bcb4878c92b2c03d4e7b586e93eae13d253e",
           "qid_v1_282a9c34b52d70cac3f3b1e1c0fca687ffff3ef7dd86e45d88cdd2692f730646",
@@ -80852,8 +82465,9 @@
       },
       {
         "key": "TPL_H1_POLY_OPERATION_DIRECT",
-        "count": 7,
+        "count": 8,
         "questionUids": [
+          "qid_v1_17511a3411735deb3102b8408891980a0adcaf76be00ef9c855fbdf730df3bad",
           "qid_v1_1c3e81f73186e605ad3785c8d753f21b5c8864749bd7bd6ded3e19132d270714",
           "qid_v1_b31a42219516d03827dd14717ba936488fc3e2e14a083a325e1feea0b53380bc",
           "qid_v1_b5beba73269e37417a790d542d6dea4aca84ce39b152460d834b411c2ab06f89",
@@ -80865,7 +82479,7 @@
       },
       {
         "key": "TPL_H1_QUADRATIC_EXTREMA_MODEL",
-        "count": 17,
+        "count": 18,
         "questionUids": [
           "qid_v1_0c1e438417a64dd2d2e9d4c97d58569c8535efaf923168b09419be79d9663a27",
           "qid_v1_0c5833123f1079571aac3b4cdb5345b8d379b6aaef99e92603407505529960ee",
@@ -80878,6 +82492,7 @@
           "qid_v1_8201e3d8bc0e160eaec020cbf9f95dd80b773836b58844ecfca01a1f7d6a993f",
           "qid_v1_8ea03640fb933156e1f0dca437f50429e980c9986d3a82b032f93e040b0505af",
           "qid_v1_9108b3300f150cc744d882202fb3788a1dd211d324ffa7504f2a0e5937330d8e",
+          "qid_v1_943ba771369d8ef5116226df3e5a573bcb6e4644cfb274c149da721d6e52c717",
           "qid_v1_a9087c1259ff45d4ecd9ece722de1c10461f0b51463ca2822e014edc5bf46ed1",
           "qid_v1_b03930b0131ad35ddd3b8b7e1ea831faa8f6b831215430a8f2d1aa0c376a4fa9",
           "qid_v1_c44e04361c5e060123a91ae5c1e42ef395090c7feb125e842b836f6af7e01ffa",
@@ -80888,7 +82503,7 @@
       },
       {
         "key": "TPL_H1_QUADRATIC_EXTREMA_VERTEX_INTERVAL",
-        "count": 50,
+        "count": 53,
         "questionUids": [
           "qid_v1_01b2b5125e35efc02c32155fcca176d22836bcf0c567568d959aa0756366517f",
           "qid_v1_08adf9eb0770dbddb4ccb075c78ac1cf8236046e1fa001c01515148b83010d1f",
@@ -80922,8 +82537,11 @@
           "qid_v1_a2d355f09dd007ab41878b9b18a31ca8b09a6edef351ccafa196b2ee4b3e7758",
           "qid_v1_a377e080df9c6927b7387fc3397fd7b83b493a5bb36bd3c3dd3100364136184c",
           "qid_v1_a67de3e7589006e88f9a65c2e560ec776f673afda8f66391036a25ee73ccfc3e",
+          "qid_v1_a68ed00223a0290c0f88261a3dcebacdea647b96daaf83acd552f2870dcadab7",
           "qid_v1_a6cdeb09bc4c92fee4802a11beaaf543febfa666dc8ef405f3b818b307a1f06a",
+          "qid_v1_a6d53c6b5c394349896526e20c71cce267b1d9e15b2e08933787acac05b4f3db",
           "qid_v1_af5fa4ef4a53985170e1f58ca72a01248e0ba5adf6d159598c9fba7ea45d52d5",
+          "qid_v1_afeec1b3fccbf7f9306e64f0333530edf4de8af25e6ddc625d08aff208cc750e",
           "qid_v1_b8e11024835d18b58e930cb36b4be095dc5627739a530b71c5db686d7fc3422b",
           "qid_v1_bc0eb321214ce140d07d2f9279e2ae6a172dff2a1888f320db7cca20bef24518",
           "qid_v1_bdf55809a2db21e90e4f73fba38e0bd60bf17569643bb6b3c7355d2b3e13f78d",
@@ -81061,7 +82679,7 @@
       },
       {
         "key": "TPL_H1_QUADRATIC_INTERSECTION_TANGENCY",
-        "count": 16,
+        "count": 17,
         "questionUids": [
           "qid_v1_0ad47a6beabd99610d878cf54396ebc8df59c5a2984e79e8482d595d3fa08e42",
           "qid_v1_1cfeefb6dc6f0a09b25d2496a1235c05395adebe38d617f812a566c98b51b7da",
@@ -81073,6 +82691,7 @@
           "qid_v1_3477156e45237af44a3bdd506403a936af51ec566ff5d7581226610fa2bf3a3a",
           "qid_v1_48ef3ca312078c6d9943204a24a3d6c3c64a5f51aede0d7eaf7b334d81d81d71",
           "qid_v1_6f26274d9b6f40c07863bcbd0a61998191f3c00262108ce82b67d7489a11ca67",
+          "qid_v1_740aa3ad09ad635472bb204d1bd5c66ec30523fc408a453677def106eb25f19e",
           "qid_v1_7fbeae58dc30f6e56bc228fb9cee41d33286fe98cd1c0b2321da9ac659bdd652",
           "qid_v1_b2d23aa5df57807e9a97b260caffcf3ae9b9cc09b127e564625e632024589045",
           "qid_v1_b680c2d7f748bc337e0f6853d3e35183b1a9f525e23417faf10162168b8527bf",
@@ -81105,7 +82724,7 @@
       },
       {
         "key": "TPL_H1_REMAINDER_COMPOSITE_DIVISOR",
-        "count": 12,
+        "count": 14,
         "questionUids": [
           "qid_v1_042acac1a09ac5e5dde1c9fb154f909a5473f2cc63db516d9152b5e287a97431",
           "qid_v1_271ae4da63f6aad5eb5907016c57fb333b3dec9e3d144b9fde570e98308f36b9",
@@ -81113,21 +82732,24 @@
           "qid_v1_511c03ae0c962459b1699a01f931f7b775e651a67048aa016302f56f95e788dd",
           "qid_v1_58e387824cd804671c59f8848d617c9b0483e54010a7d0e96457dcfff4457a35",
           "qid_v1_605f150cb827a9f1bc7e3ea2ee5b4f23ca360fd327f83740bf4a504f092d6687",
+          "qid_v1_8354f1f6035c1f3c7445961339bb17e7c885b23c4f3c08f29a949513ce9e3f1d",
           "qid_v1_b6d649209ea7f09165ac3bcf9b58581fa3119802a18873e12ed6c8535a35c3a4",
           "qid_v1_b7f6ac68b02270802b9a5c7d85813fb0267709f68bd797658603995deeeba2e5",
           "qid_v1_b89b39ef15b0ea72e49e7e2ffa532eb42b75effcc7c63c142914fd39b73cd970",
           "qid_v1_c5452cc9bfd7df4549f8e92d83f6fe6db1e4d6dd6aaa48471d22c27e198521a4",
+          "qid_v1_cd6b42ed731fb408f9220b149cdf60a48fe27afbf9468c965ce6e2dc0af033e0",
           "qid_v1_f032900137475d0ed240e089e045895c1a25dc0defba3a849d3c30669c65e159",
           "qid_v1_f66a6b26e817c318d66980bd46b8a03d3aa4fd303ec5bc9f2b3946a98eed24d9"
         ]
       },
       {
         "key": "TPL_H1_REMAINDER_NESTED_DIVISION",
-        "count": 6,
+        "count": 7,
         "questionUids": [
           "qid_v1_0f498504c2ab0ad8604fbff8b1fe398cb4551f88aa6f15f80b634be2f3fe912c",
           "qid_v1_18b5493b640ee728ceb9fa66aaffe0695217cbee6a4a614bb9f1d4cd7c0331ee",
           "qid_v1_1effa253a07fd6ca3711ac9d6f4cf42513dcbc1e8939482a8c8b42fe4ce9184e",
+          "qid_v1_8c5debd5256a20b232478a3ee9aa7e404f0e0800f22a4223b3db3ca4724e7b4d",
           "qid_v1_a069a7cf45962ad79c5afbf255d205ea5aa097474a9ef3974895aa481475fc98",
           "qid_v1_b277f6aa10deedbc893e2aace264873c4ea02a54dca62fdc736b9d9c8a00d5ac",
           "qid_v1_d67d0b2fdf7cdbef33980cb30ebab8badee05068c3718395121d55bf091271b5"
@@ -81247,7 +82869,7 @@
       },
       {
         "key": "TPL_H1_VIETA_TRANSFORMED_ROOT",
-        "count": 12,
+        "count": 13,
         "questionUids": [
           "qid_v1_029992844f56de4daa8c6ebc8e7faade386ad5018852e93e48ae7a57b1767a60",
           "qid_v1_5a5dfc271c54c0915ed7776e9ad0e72a5c7f8a1b4068335669e01c8687d8bf92",
@@ -81260,7 +82882,8 @@
           "qid_v1_9924b8a65cc4c55cc76dc854c5b8fe188d3ec5077ea32edd87c90d636b21beb5",
           "qid_v1_9b91ae8657987485c3b83cfd7019069fece40dd05bd4c0e51c1000e432e0fbdb",
           "qid_v1_a947c5e744a86fbb6c2f69c9fa9a1a203744e738210833c0252bb68225c49153",
-          "qid_v1_ab7dc64db81bbd7ef0c90a3adf207efeada2c9348d1a6b08b079def02d16e1cd"
+          "qid_v1_ab7dc64db81bbd7ef0c90a3adf207efeada2c9348d1a6b08b079def02d16e1cd",
+          "qid_v1_da4efd549554320b1c0d57c217c2fb02976e95dd407bc8b6870ec9f7267c3968"
         ]
       },
       {
@@ -81412,6 +83035,13 @@
         ]
       },
       {
+        "key": "CC_AXIS_OF_SYMMETRY_INTERVAL_CASES",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_a68ed00223a0290c0f88261a3dcebacdea647b96daaf83acd552f2870dcadab7"
+        ]
+      },
+      {
         "key": "CC_BINOMIAL_PRODUCT_EXPANSION",
         "count": 2,
         "questionUids": [
@@ -81434,10 +83064,24 @@
         ]
       },
       {
+        "key": "CC_COEFFICIENT_COMPARISON",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_14febd88e579cb65e2dce89be655f009a349b7d26394ee202c22c7b5a7ae23ce"
+        ]
+      },
+      {
         "key": "CC_COEFFICIENT_EXTRACTION_SELECTIVE",
         "count": 1,
         "questionUids": [
           "qid_v1_cc7b910744d78f0ff8697711b93deee16b6cf9901f8a297e9ec5dcb8973d51bd"
+        ]
+      },
+      {
+        "key": "CC_COEFFICIENT_MATCHING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_c20e871dc0b1a0e1defd1f3ef3d0b8d57af14ee2a43ea7072d6d6ce6952142f5"
         ]
       },
       {
@@ -81480,9 +83124,10 @@
       },
       {
         "key": "CC_COMPLETE_SQUARE",
-        "count": 2,
+        "count": 3,
         "questionUids": [
           "qid_v1_4665c874d25612dd391bfac7d1a8ee9841c954ca7cfa7d8b5a7f5633b5917189",
+          "qid_v1_9155a1cc4d7a4801dab34e9e7a9f57c9b625d22f4982a7836e09dfa81a6932b7",
           "qid_v1_fdcc93d68211215c8da002b613270f6c72a194290e25f1bbb49e1781a60451e9"
         ]
       },
@@ -81491,6 +83136,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_48054959c9ea3c776f169be421b02f0013d4fbe38bd8e7793787be142c20ef83"
+        ]
+      },
+      {
+        "key": "CC_COMPLEX_CONJUGATE_DIVISION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_39a4409b1e8759d5b558fccae38e0ef9b76c2358e040e4101b52e5be1df01a99"
         ]
       },
       {
@@ -81564,6 +83216,13 @@
         ]
       },
       {
+        "key": "CC_CONJUGATE_ROOT_THEOREM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_2bc009fbdb5d5a9fe56c5bbdeaba20701587035f28da5c004aab4ce9db4a29b3"
+        ]
+      },
+      {
         "key": "CC_CONSTANT_TERM_SEPARATION",
         "count": 1,
         "questionUids": [
@@ -81593,6 +83252,27 @@
         ]
       },
       {
+        "key": "CC_CUBIC_FACTORIZATION_PARAMETER",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_af9d821026049c17ce754c2516ee60f70c8bf5d1c3ea93381af0caef07eb96b2"
+        ]
+      },
+      {
+        "key": "CC_CUBIC_FACTORIZATION_VIETA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f64fcb74269ed2820fae86436cdc6e10ff85cf003684707a9a80eabb4fde3b34"
+        ]
+      },
+      {
+        "key": "CC_CUBIC_OMEGA_PROPERTIES",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f3e382415072847c00e2f2c1ce2965b61adfcaeaaf4a60bea1dc7925ef5927c3"
+        ]
+      },
+      {
         "key": "CC_CUBIC_SUM_FORMULA",
         "count": 1,
         "questionUids": [
@@ -81604,6 +83284,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_44123b45d7d62c9dbbbbd501aecc30618b8d3844e66e2617198b86bfcbbd42a7"
+        ]
+      },
+      {
+        "key": "CC_CYCLIC_EXPONENT_REDUCTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f3e382415072847c00e2f2c1ce2965b61adfcaeaaf4a60bea1dc7925ef5927c3"
         ]
       },
       {
@@ -81622,7 +83309,7 @@
       },
       {
         "key": "CC_DISCRIMINANT",
-        "count": 26,
+        "count": 30,
         "questionUids": [
           "qid_v1_060d2bfb5f484e724a6f0490b6dd25d379a441528dab5e5944fc3eac738612ad",
           "qid_v1_0e49600e12cf3ae6a0df37f8e9ef78e2c5d88f55b8307c663361cd18fb7091b7",
@@ -81633,11 +83320,13 @@
           "qid_v1_3a47d05eef3364aaf9192c69608efbd3478dbbd3903460e16e63546f7658bf3a",
           "qid_v1_62d5f7264d054d25de2cf29333477a97421fa147db541f62d6ca329f01678ee1",
           "qid_v1_6a42e4fb1e7e72304189ecd74e3bcc8245568d33119669c0ed82938767da8075",
+          "qid_v1_740aa3ad09ad635472bb204d1bd5c66ec30523fc408a453677def106eb25f19e",
           "qid_v1_7bfbe4370b425525d27584eadac162bb8cfde9bab66c3c786f1577d97a6dc5ea",
           "qid_v1_8415295eceb11c0c1ae555af640775620c4991972c9b6456cf7ea00e4ad2cece",
           "qid_v1_8843154832ce67e9a3141d405afc230dd5a341db679db2e9c205eaf5a1138f80",
           "qid_v1_9924b8a65cc4c55cc76dc854c5b8fe188d3ec5077ea32edd87c90d636b21beb5",
           "qid_v1_a13cff4edf5cc8185ad7865aaf40d3cb22b7be39f5a5d9d1aa179ea6422c9787",
+          "qid_v1_a68ed00223a0290c0f88261a3dcebacdea647b96daaf83acd552f2870dcadab7",
           "qid_v1_a8597d9c046d8d55a57d01ce828a1778f4e14571ce48b85e4fe8b5696a4eb8df",
           "qid_v1_b2688c55a446ce13608ef95212f0dab2ac7c2543021e51a792bc488275fe40ba",
           "qid_v1_be3afff582d5632a98a5e46485a8e16c6a34c70ce556f52afbb61c5839d3f079",
@@ -81646,9 +83335,11 @@
           "qid_v1_dcce92f8647d76a488b8fd018f00075624a4610f904e4aa56744b9f55493a9bc",
           "qid_v1_e2feeb9444f3dafc8bd1d876decf02a0ac2fb7a871c5ad506a8b8aac6ddd62e1",
           "qid_v1_e30c45d4a3d6bfb3f01220ea02fd476ab610736dd0d38038c7cd5927e428969a",
+          "qid_v1_e56c0b74100a07611365059c21a1491798208ec4272b83deb5bc0ff1e3c5f439",
           "qid_v1_f17059bdf5e0c3b62f55ad859628b311eb7e9eb9e617764151a6cf7f77a3439c",
           "qid_v1_f5bbad2c95da75a26505290b2a933a794a8858c8febd97286b5dc3e37aa985ee",
           "qid_v1_f7dec04d16259b22721e1554e7fd3ebb23c0155080506b551bc377625e1cf4f3",
+          "qid_v1_f9ddfafd8b3740b00b3f64d4a270be6d25773d5ea0a9365cdd7b49a67b0fd759",
           "qid_v1_fc37bcd84e4ee2f71c8cb5db6cfa790f8e86698e0767a4fd2572a04cdf00a290"
         ]
       },
@@ -81657,6 +83348,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_4665c874d25612dd391bfac7d1a8ee9841c954ca7cfa7d8b5a7f5633b5917189"
+        ]
+      },
+      {
+        "key": "CC_DISCRIMINANT_INTEGER_CONDITION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_84f48846915218ff6e0176abb226ccfcf8e2480ce708dc86649e578db979a83c"
         ]
       },
       {
@@ -81694,6 +83392,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_b5beba73269e37417a790d542d6dea4aca84ce39b152460d834b411c2ab06f89"
+        ]
+      },
+      {
+        "key": "CC_DISTRIBUTIVE_PROPERTY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_17511a3411735deb3102b8408891980a0adcaf76be00ef9c855fbdf730df3bad"
         ]
       },
       {
@@ -81790,6 +83495,13 @@
         ]
       },
       {
+        "key": "CC_GEOMETRIC_PERIMETER_CONSTRAINT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_943ba771369d8ef5116226df3e5a573bcb6e4644cfb274c149da721d6e52c717"
+        ]
+      },
+      {
         "key": "CC_GRAPH_X_INTERCEPT_COUNT",
         "count": 1,
         "questionUids": [
@@ -81809,6 +83521,20 @@
         "count": 1,
         "questionUids": [
           "qid_v1_37b93301408d72343acd8d69e8cdfe93c981508a048a4c3c9127adad140b1662"
+        ]
+      },
+      {
+        "key": "CC_HIGH_ORDER_IDENTITY_SOLVING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_8c5debd5256a20b232478a3ee9aa7e404f0e0800f22a4223b3db3ca4724e7b4d"
+        ]
+      },
+      {
+        "key": "CC_IDENTITY_IN_PARAMETER",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_e56c0b74100a07611365059c21a1491798208ec4272b83deb5bc0ff1e3c5f439"
         ]
       },
       {
@@ -81859,6 +83585,13 @@
         ]
       },
       {
+        "key": "CC_INTEGER_PARAMETER_ANALYSIS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_84f48846915218ff6e0176abb226ccfcf8e2480ce708dc86649e578db979a83c"
+        ]
+      },
+      {
         "key": "CC_INTEGER_SOLUTION_SUM",
         "count": 1,
         "questionUids": [
@@ -81885,6 +83618,13 @@
         "questionUids": [
           "qid_v1_0c1e438417a64dd2d2e9d4c97d58569c8535efaf923168b09419be79d9663a27",
           "qid_v1_f288c7a1a3d40764af2a74631d94b2762971b54b786fc5a813f2364b9697d84e"
+        ]
+      },
+      {
+        "key": "CC_LINE_PARABOLA_INTERSECTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_740aa3ad09ad635472bb204d1bd5c66ec30523fc408a453677def106eb25f19e"
         ]
       },
       {
@@ -81920,6 +83660,20 @@
         "count": 1,
         "questionUids": [
           "qid_v1_ea01606d2a44bb0ee0be34a392be74f1827e0022227d0f1f16651ad4f8eb6026"
+        ]
+      },
+      {
+        "key": "CC_MULTIVARIATE_POLYNOMIAL_FACTORIZATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_c20e871dc0b1a0e1defd1f3ef3d0b8d57af14ee2a43ea7072d6d6ce6952142f5"
+        ]
+      },
+      {
+        "key": "CC_NESTED_DIVISION_REMAINDER",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_8c5debd5256a20b232478a3ee9aa7e404f0e0800f22a4223b3db3ca4724e7b4d"
         ]
       },
       {
@@ -82026,6 +83780,13 @@
         ]
       },
       {
+        "key": "CC_PARAMETRIC_PARABOLA_VERTEX",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_a68ed00223a0290c0f88261a3dcebacdea647b96daaf83acd552f2870dcadab7"
+        ]
+      },
+      {
         "key": "CC_PERFECT_SQUARE_FACTORIZATION",
         "count": 1,
         "questionUids": [
@@ -82048,6 +83809,13 @@
         ]
       },
       {
+        "key": "CC_PIECEWISE_FUNCTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_a6d53c6b5c394349896526e20c71cce267b1d9e15b2e08933787acac05b4f3db"
+        ]
+      },
+      {
         "key": "CC_POINT_LINE_DISTANCE",
         "count": 1,
         "questionUids": [
@@ -82056,9 +83824,17 @@
       },
       {
         "key": "CC_POLYNOMIAL_ADDITION_SUBTRACTION",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_17511a3411735deb3102b8408891980a0adcaf76be00ef9c855fbdf730df3bad",
+          "qid_v1_b31a42219516d03827dd14717ba936488fc3e2e14a083a325e1feea0b53380bc"
+        ]
+      },
+      {
+        "key": "CC_POLYNOMIAL_COEFFICIENT_DETERMINATION",
         "count": 1,
         "questionUids": [
-          "qid_v1_b31a42219516d03827dd14717ba936488fc3e2e14a083a325e1feea0b53380bc"
+          "qid_v1_9155a1cc4d7a4801dab34e9e7a9f57c9b625d22f4982a7836e09dfa81a6932b7"
         ]
       },
       {
@@ -82066,6 +83842,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_6e9c9eb4fb999a24aa4d80579647db2323896c622a8391c4cc290f328ce94917"
+        ]
+      },
+      {
+        "key": "CC_POLYNOMIAL_DEGREE_INFERENCE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_8c5debd5256a20b232478a3ee9aa7e404f0e0800f22a4223b3db3ca4724e7b4d"
         ]
       },
       {
@@ -82077,10 +83860,11 @@
       },
       {
         "key": "CC_POLYNOMIAL_DIVISION",
-        "count": 2,
+        "count": 3,
         "questionUids": [
           "qid_v1_8af06999d1a0b438d90a0643d1c241e20c11317b78164ec7e057c5e1720a6960",
-          "qid_v1_aa431eb3d98df345279652bad701ef48ea8f45f3103a03f8c3ffa97cd6644e67"
+          "qid_v1_aa431eb3d98df345279652bad701ef48ea8f45f3103a03f8c3ffa97cd6644e67",
+          "qid_v1_cd6b42ed731fb408f9220b149cdf60a48fe27afbf9468c965ce6e2dc0af033e0"
         ]
       },
       {
@@ -82091,17 +83875,33 @@
         ]
       },
       {
+        "key": "CC_POLYNOMIAL_FACTOR_IDENTIFICATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_b1c7a2c04d9e42dbd99bf81c67337a8c7d0d784e9fe044a99ff2aa5cab074623"
+        ]
+      },
+      {
         "key": "CC_POLYNOMIAL_FACTORIZATION",
-        "count": 8,
+        "count": 9,
         "questionUids": [
           "qid_v1_4ef3769a001484c238b1c06367c40d0d8416302b9ec7f10460f436cd2df2df27",
           "qid_v1_6c79454fc7a40b3688142b677112a76b316ef7a84cfe1810a6de5c7b648d59f4",
           "qid_v1_78d4b01896491e11e0d194578453adfb891e762dc7bc833c455c8b2e7ae469a4",
+          "qid_v1_84f48846915218ff6e0176abb226ccfcf8e2480ce708dc86649e578db979a83c",
           "qid_v1_b9607bdcb91730681acb43e4d2b879b1d2312aae00eed9e8099b5fa6cbe86e9a",
           "qid_v1_da7c0dc30fbdd538feb4f4a4d70ada227051eff8221fa1e8897ef4c5b1b1dcf6",
           "qid_v1_dad058a459d2cc61b5547b40c438c207016bdc26202e14746df1ad5fc3933709",
           "qid_v1_dff7b867626a8b76ed59e074c64f27e2e0127c9a17f3fe8dbc87dafd2532906a",
           "qid_v1_f32d26daa791cc15128b80149d7f32283721bbe9c33c1e23d122e181fe4526f7"
+        ]
+      },
+      {
+        "key": "CC_POLYNOMIAL_IDENTITY",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_14febd88e579cb65e2dce89be655f009a349b7d26394ee202c22c7b5a7ae23ce",
+          "qid_v1_9155a1cc4d7a4801dab34e9e7a9f57c9b625d22f4982a7836e09dfa81a6932b7"
         ]
       },
       {
@@ -82123,6 +83923,20 @@
         "count": 1,
         "questionUids": [
           "qid_v1_f032900137475d0ed240e089e045895c1a25dc0defba3a849d3c30669c65e159"
+        ]
+      },
+      {
+        "key": "CC_POLYNOMIAL_ROOT_SUBSTITUTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f64fcb74269ed2820fae86436cdc6e10ff85cf003684707a9a80eabb4fde3b34"
+        ]
+      },
+      {
+        "key": "CC_POLYNOMIAL_SUM_PRODUCT_SYSTEM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_b1c7a2c04d9e42dbd99bf81c67337a8c7d0d784e9fe044a99ff2aa5cab074623"
         ]
       },
       {
@@ -82165,6 +83979,13 @@
         ]
       },
       {
+        "key": "CC_PURE_REAL_CONDITION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_39a4409b1e8759d5b558fccae38e0ef9b76c2358e040e4101b52e5be1df01a99"
+        ]
+      },
+      {
         "key": "CC_PYTHAGOREAN",
         "count": 8,
         "questionUids": [
@@ -82179,6 +84000,13 @@
         ]
       },
       {
+        "key": "CC_PYTHAGOREAN_THEOREM_ON_ROOTS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_af9d821026049c17ce754c2516ee60f70c8bf5d1c3ea93381af0caef07eb96b2"
+        ]
+      },
+      {
         "key": "CC_QUADRATIC_DISCRIMINANT",
         "count": 1,
         "questionUids": [
@@ -82190,6 +84018,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_ce8d33b475869856de0f6f815d34450b2f72598fc93ebaeb720f9303005838f2"
+        ]
+      },
+      {
+        "key": "CC_QUADRATIC_DOUBLE_ROOT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f9ddfafd8b3740b00b3f64d4a270be6d25773d5ea0a9365cdd7b49a67b0fd759"
         ]
       },
       {
@@ -82217,7 +84052,7 @@
       },
       {
         "key": "CC_QUADRATIC_EXTREMUM",
-        "count": 16,
+        "count": 17,
         "questionUids": [
           "qid_v1_052d2f9bd2cd2390a80221888a605ad6eebada38112033354146012050a10655",
           "qid_v1_111196a6100596287fe44d3a14c073618524061755efe8005fdbf0b01652b8a8",
@@ -82229,6 +84064,7 @@
           "qid_v1_8d5e2e21e865927abc73cf26d7ab1c69418ff24a63af834e7bc879fe39a0f965",
           "qid_v1_9924b8a65cc4c55cc76dc854c5b8fe188d3ec5077ea32edd87c90d636b21beb5",
           "qid_v1_a947c5e744a86fbb6c2f69c9fa9a1a203744e738210833c0252bb68225c49153",
+          "qid_v1_afeec1b3fccbf7f9306e64f0333530edf4de8af25e6ddc625d08aff208cc750e",
           "qid_v1_b8e2910a08836ecdf6954c13313e0a356b9efe0b37de59e2fe9033ea0c5c0fe9",
           "qid_v1_c353238de0bb41215ee268652e75477f0f97160aabd31595e61ebc5c719aa012",
           "qid_v1_dad058a459d2cc61b5547b40c438c207016bdc26202e14746df1ad5fc3933709",
@@ -82277,6 +84113,13 @@
         ]
       },
       {
+        "key": "CC_QUADRATIC_OPTIMIZATION_MODEL",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_943ba771369d8ef5116226df3e5a573bcb6e4644cfb274c149da721d6e52c717"
+        ]
+      },
+      {
         "key": "CC_QUADRATIC_RECONSTRUCTION_CONDITIONS",
         "count": 1,
         "questionUids": [
@@ -82288,6 +84131,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_44123b45d7d62c9dbbbbd501aecc30618b8d3844e66e2617198b86bfcbbd42a7"
+        ]
+      },
+      {
+        "key": "CC_QUADRATIC_VERTEX_FORM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_afeec1b3fccbf7f9306e64f0333530edf4de8af25e6ddc625d08aff208cc750e"
         ]
       },
       {
@@ -82355,9 +84205,17 @@
         ]
       },
       {
-        "key": "CC_REMAINDER_THEOREM",
+        "key": "CC_REMAINDER_SUBSTITUTION",
         "count": 1,
         "questionUids": [
+          "qid_v1_cd6b42ed731fb408f9220b149cdf60a48fe27afbf9468c965ce6e2dc0af033e0"
+        ]
+      },
+      {
+        "key": "CC_REMAINDER_THEOREM",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_8354f1f6035c1f3c7445961339bb17e7c885b23c4f3c08f29a949513ce9e3f1d",
           "qid_v1_b7f6ac68b02270802b9a5c7d85813fb0267709f68bd797658603995deeeba2e5"
         ]
       },
@@ -82374,6 +84232,13 @@
         "questionUids": [
           "qid_v1_0f498504c2ab0ad8604fbff8b1fe398cb4551f88aa6f15f80b634be2f3fe912c",
           "qid_v1_c5452cc9bfd7df4549f8e92d83f6fe6db1e4d6dd6aaa48471d22c27e198521a4"
+        ]
+      },
+      {
+        "key": "CC_RESTRICTED_DOMAIN_EXTREMA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_a6d53c6b5c394349896526e20c71cce267b1d9e15b2e08933787acac05b4f3db"
         ]
       },
       {
@@ -82421,7 +84286,7 @@
       },
       {
         "key": "CC_ROOTS_COEFFICIENTS",
-        "count": 30,
+        "count": 34,
         "questionUids": [
           "qid_v1_07159aa634e59c3a068b7d0f4042c2aa130c684b3427af0ae86490412eea2ec4",
           "qid_v1_0cd2b956408919775a3e88685b139e0ac2dbf8a6e0ff37c4d231b188041b9bec",
@@ -82429,6 +84294,7 @@
           "qid_v1_13e74004ef514a2cbaffc568c6d018226a20ef5f9e235fd7c49dad38248e3ea8",
           "qid_v1_1cfeefb6dc6f0a09b25d2496a1235c05395adebe38d617f812a566c98b51b7da",
           "qid_v1_2745f2252d0311f43cba2e2a41906d80db91b86bb8f29541677d8b914a397cf1",
+          "qid_v1_2bc009fbdb5d5a9fe56c5bbdeaba20701587035f28da5c004aab4ce9db4a29b3",
           "qid_v1_2d172cf391bd92a6816a8b684d61f7393bf3c3df919b56f13e4b2f792d45eee5",
           "qid_v1_30e2017482c2bc02f9abff16e8b2b313f0a1a39b79e0ef48f90b8dec531dfef2",
           "qid_v1_3959b557db1d5f1b5525ca32676b73e2959f9009158e680d2ebfd8e93093b5ef",
@@ -82440,11 +84306,13 @@
           "qid_v1_5ff476f424a293db7e093b30e319086121801ae36a3f37f9868cf6b1607f5b07",
           "qid_v1_6c39508cf6db461e083adf26bdc3235ff29ed4f203f9635079dfbdf05b2f7ee7",
           "qid_v1_721a09b13db981cba1d0bf976d36a9314746b2c053e1538d60450c22c535b95d",
+          "qid_v1_740aa3ad09ad635472bb204d1bd5c66ec30523fc408a453677def106eb25f19e",
           "qid_v1_7b715d7001a5ce4f23046ace2b88dc9acae82d5a5e2bf2b21b4e7e095d5a39fc",
           "qid_v1_7e6b7239490946195cdfd044f6118c23149e8a203f93a5016982d3e77a58a66d",
           "qid_v1_9924b8a65cc4c55cc76dc854c5b8fe188d3ec5077ea32edd87c90d636b21beb5",
           "qid_v1_9a8319ccf1f66cb2ea96af675e0c5c249434545c88873e5f5b6c3bcae4e2f2cd",
           "qid_v1_a2a562806104771bb0a13be910dedfcebf0eb5b4afe2f4c42b38e134b7d124ca",
+          "qid_v1_af9d821026049c17ce754c2516ee60f70c8bf5d1c3ea93381af0caef07eb96b2",
           "qid_v1_b2d23aa5df57807e9a97b260caffcf3ae9b9cc09b127e564625e632024589045",
           "qid_v1_c0fc5276ecd8768571bbfa0be685191d123f7d891a56645dae0e317dcbca7ff9",
           "qid_v1_c2721776b0bdd0841c69c2e610da0b748b88724a8ef66a325770bcf5ea5c9ce8",
@@ -82452,7 +84320,8 @@
           "qid_v1_d24381ccfa6732fdd088e8a52c8d44d0594f88f7167e7ad6b18d115383acd75a",
           "qid_v1_d3b95dd7aa9a7af6e916cae16e235be25cb2340e1ada6b424b7cb7bee90427aa",
           "qid_v1_e51fbad11da6b5f8e30c27bdd4ca8a139b1582c5048e91d188380fdf92da0c60",
-          "qid_v1_e71782c9f170833e339f095b56b5e344ae1dd2726cb7eef2c055534e4c221acd"
+          "qid_v1_e71782c9f170833e339f095b56b5e344ae1dd2726cb7eef2c055534e4c221acd",
+          "qid_v1_f64fcb74269ed2820fae86436cdc6e10ff85cf003684707a9a80eabb4fde3b34"
         ]
       },
       {
@@ -82469,10 +84338,11 @@
       },
       {
         "key": "CC_SIMULTANEOUS_EQUATION",
-        "count": 5,
+        "count": 6,
         "questionUids": [
           "qid_v1_40ef813ad0cf60ce7ff0794e010ef20a691347d5667f09db666209b479e84c4d",
           "qid_v1_7794c339b6be0cd50bc5819af432e7d4834445e4537f5a21ee63e7dd4880812d",
+          "qid_v1_8354f1f6035c1f3c7445961339bb17e7c885b23c4f3c08f29a949513ce9e3f1d",
           "qid_v1_8d5a2c1fe964ed1c43439f25038b9d5155a87b43a56d6cb42ab714cb07060bf1",
           "qid_v1_b7f6ac68b02270802b9a5c7d85813fb0267709f68bd797658603995deeeba2e5",
           "qid_v1_fae2e725be9a2730df84fa59b241921efe59785cee2a5bd824b7bc9e54584dbb"
@@ -82528,6 +84398,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_37b93301408d72343acd8d69e8cdfe93c981508a048a4c3c9127adad140b1662"
+        ]
+      },
+      {
+        "key": "CC_SYMMETRIC_ROOT_REDUCTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_da4efd549554320b1c0d57c217c2fb02976e95dd407bc8b6870ec9f7267c3968"
         ]
       },
       {
@@ -82645,7 +84522,7 @@
     "conditions": [
       {
         "key": "COND_INTEGER",
-        "count": 112,
+        "count": 113,
         "questionUids": [
           "qid_v1_001962b3c8131aa6e7eb564b2e802d95871374cac8e5db91cce53fcdeb993891",
           "qid_v1_02143bc08df277e86e73598b679b7fc06780983caa85bbd0da2dda5a84eb823e",
@@ -82721,6 +84598,7 @@
           "qid_v1_ab00d0fc95efd3711c48d9dc52d861558a5b1c4ed8a5e882cc9e1735886cb366",
           "qid_v1_aba85417468c8fb506aaec8756ca4f29470f9ade761af4e5b63bc9eedfc681b5",
           "qid_v1_ac21224f31accb8847ce3988ef0f6a461d714fa05cafe71da0ab4fa2dcf01d2a",
+          "qid_v1_af9d821026049c17ce754c2516ee60f70c8bf5d1c3ea93381af0caef07eb96b2",
           "qid_v1_b21e466f810a0f2290dee4d4b24ad0ffb7a976c908e4136e56f243f5124e6177",
           "qid_v1_b245186c03d836c81b29616e7cac4cd94e21b2abdfc6f594ae308dbd56f43cf1",
           "qid_v1_b2fd27170298cd3a490b7375d9ace680e495653562efcff5e4191c01041db772",
@@ -82763,7 +84641,7 @@
       },
       {
         "key": "COND_NATURAL_NUMBER",
-        "count": 108,
+        "count": 110,
         "questionUids": [
           "qid_v1_043dfcf4899c69f665dd7961825775cbc49f3c25cf5a0ff03bc71bd965cf15d0",
           "qid_v1_057d0484edf04d9862c111926987ce7100eb516a9fb7778edbee3e7d38489622",
@@ -82811,6 +84689,7 @@
           "qid_v1_6a42e4fb1e7e72304189ecd74e3bcc8245568d33119669c0ed82938767da8075",
           "qid_v1_716f0664049ec7ec179c7cd77fa6d0ce8af45cebe7879b76e41e92f60374dba3",
           "qid_v1_72cb8ccaf24e54de9b544ce339e7ac7355e5aa3576b87c78137edde41754ef5e",
+          "qid_v1_740aa3ad09ad635472bb204d1bd5c66ec30523fc408a453677def106eb25f19e",
           "qid_v1_7b317815d5fc240b7b7367da6301c222920a98ce4f3cedb36f47ae2812b5b308",
           "qid_v1_7b5e5b44500f6940d6c7cc48ec6e8091d7c71833031cc270cca6ba8eda90c10b",
           "qid_v1_7b715d7001a5ce4f23046ace2b88dc9acae82d5a5e2bf2b21b4e7e095d5a39fc",
@@ -82819,6 +84698,7 @@
           "qid_v1_8115723fe6393a2d1502c910d8c80c57cf8b5a3113f7ffbf825bc7fc084eadaf",
           "qid_v1_814fcd10e49108231ba38a9db731649835188dcc6247c7a3e9fa2237f0942c44",
           "qid_v1_8178aeb581833a2603f4dae9ecbdf35172e6f183d72ded2c907abdf913b30cf7",
+          "qid_v1_84f48846915218ff6e0176abb226ccfcf8e2480ce708dc86649e578db979a83c",
           "qid_v1_85d79d4af3537ab4e6bc96ad87df0a45d8be2eca3878610efbdbbb594f26ccef",
           "qid_v1_862f44d64b7879b5cdadf18bb44265b5e1ffc5fb0a99f3bd8fa5369d28f65e48",
           "qid_v1_863676485b4cc37b01acc3aa061159bedcdcf89c1699549c43ad79a2992e9f74",
@@ -82895,7 +84775,7 @@
       },
       {
         "key": "COND_NONZERO",
-        "count": 36,
+        "count": 37,
         "questionUids": [
           "qid_v1_048aa9a335cd0d7ca74f51793e125760c180583b512d5b50db052114fa0b6b3f",
           "qid_v1_0c8a5ce6ac86fab7c6e6e35cf36e07d809fea789dbe3b72e2091d17b5c935ee3",
@@ -82919,6 +84799,7 @@
           "qid_v1_a1d9b6509715350a57b74586aa68a1bf0472bedc2a108e899249609a1ddd57a6",
           "qid_v1_a458ea446717717f82aad05ae872dfa085172b9e83693a5118c09c1218b14f53",
           "qid_v1_a629eeff8309a667131549fc54883f7d5c5c3006e7a6158c25457ab0f62c581e",
+          "qid_v1_a6d53c6b5c394349896526e20c71cce267b1d9e15b2e08933787acac05b4f3db",
           "qid_v1_af6e931563a5683cf80e1f76074ccaea2dc5084a4365931307f2f0fc641eb9a4",
           "qid_v1_b9607bdcb91730681acb43e4d2b879b1d2312aae00eed9e8099b5fa6cbe86e9a",
           "qid_v1_c0ed374f651cfb56856bce63178444ab31976984a3b1a7a488834c6985f6bf8f",
@@ -82937,7 +84818,7 @@
       },
       {
         "key": "COND_POSITIVE",
-        "count": 61,
+        "count": 65,
         "questionUids": [
           "qid_v1_0052ff977f1f3544bf2248816a9882d5cc522c83bc7671a48c41d55690d7f07f",
           "qid_v1_01fa7810502c157339d77e1f53ccac96bc6fbeffce2e5b07d9f72edbbd01fbe0",
@@ -82980,8 +84861,11 @@
           "qid_v1_8d9513e01ad9063815b737c5c1e77ef0a8d98ffc071b7fe8b03eb2e8ed4072c8",
           "qid_v1_8fab03d61717354293372d737db242ae344f76a93f62ecd7ebee3fe61e856c74",
           "qid_v1_908dd06dcd3af428ed988fff6b59fbe669d8ec1a70d086ff4e31b87dc58e5a93",
+          "qid_v1_9155a1cc4d7a4801dab34e9e7a9f57c9b625d22f4982a7836e09dfa81a6932b7",
+          "qid_v1_943ba771369d8ef5116226df3e5a573bcb6e4644cfb274c149da721d6e52c717",
           "qid_v1_a0af7bf534f3ad302b57082756859bad249b36760687d031d698e4ce93feb70d",
           "qid_v1_a377e080df9c6927b7387fc3397fd7b83b493a5bb36bd3c3dd3100364136184c",
+          "qid_v1_a68ed00223a0290c0f88261a3dcebacdea647b96daaf83acd552f2870dcadab7",
           "qid_v1_a6cdeb09bc4c92fee4802a11beaaf543febfa666dc8ef405f3b818b307a1f06a",
           "qid_v1_a8bdf7d756d2c3b167c61ead976546a7654fb8e20c6094bd1f0a63677add3b25",
           "qid_v1_b630f5a4df64722301b29f5f1d956d8a1c8dce778c43ef6bab81e437c2a01cfc",
@@ -82999,12 +84883,13 @@
           "qid_v1_ecaf81bbf6105d7c887f3e981e468f5fda8723a862716bda09e2663ebc3def9a",
           "qid_v1_f288c7a1a3d40764af2a74631d94b2762971b54b786fc5a813f2364b9697d84e",
           "qid_v1_f580d8cbfa739bed4257e533bef4873d0f7342510ca13d9a69cbad0dbeccf862",
-          "qid_v1_f803b386a28bb345ce140812801122e0da6032e3cf1b14a46b1b7695c9e780ae"
+          "qid_v1_f803b386a28bb345ce140812801122e0da6032e3cf1b14a46b1b7695c9e780ae",
+          "qid_v1_f9ddfafd8b3740b00b3f64d4a270be6d25773d5ea0a9365cdd7b49a67b0fd759"
         ]
       },
       {
         "key": "COND_RANGE",
-        "count": 241,
+        "count": 244,
         "questionUids": [
           "qid_v1_01b2b5125e35efc02c32155fcca176d22836bcf0c567568d959aa0756366517f",
           "qid_v1_0338aa3027352d1e280cccb9649bf68b3e86422cf6ffe538567efd357139ce0e",
@@ -83104,6 +84989,7 @@
           "qid_v1_6fe0d891005112d09d0bdf0139493fc5c129d4079f0da97f4d1f7a3e660a51fc",
           "qid_v1_70a2f00001730563bd4de6aee18fe4da1cd77275466f5d4583431d6c6c69d4d2",
           "qid_v1_73b60e65330a8d60f85f7f1f651f66fd90f4c88c25ac1881a9939df072347ab7",
+          "qid_v1_740aa3ad09ad635472bb204d1bd5c66ec30523fc408a453677def106eb25f19e",
           "qid_v1_74784ce0d619b781f09f558e9d19b447462fcee86a0689e339cabc23c4cbcb92",
           "qid_v1_775cc8a1c0036b271485133065633332a4d124d78612268b432ee8e353c7a0bb",
           "qid_v1_779e2243dd574128fbf4f57410c034bb182ffa56bfadd3722a2d3158be9630f7",
@@ -83149,7 +85035,9 @@
           "qid_v1_a45f4b36c986a16433e807f93e53c6df6a7c9ae786708b9e11356b9c731731c4",
           "qid_v1_a650b4d498b48b3905a3c0525aea17e19ca1a3f51ded73cad8a6feeaf3cedc34",
           "qid_v1_a67de3e7589006e88f9a65c2e560ec776f673afda8f66391036a25ee73ccfc3e",
+          "qid_v1_a68ed00223a0290c0f88261a3dcebacdea647b96daaf83acd552f2870dcadab7",
           "qid_v1_a6cdeb09bc4c92fee4802a11beaaf543febfa666dc8ef405f3b818b307a1f06a",
+          "qid_v1_a6d53c6b5c394349896526e20c71cce267b1d9e15b2e08933787acac05b4f3db",
           "qid_v1_a88fd1e37e0408ce94d4e8c268e1ed70c4f23618a259d89376b363ba860ed8bf",
           "qid_v1_a8a020699659ae2cdc4d19b266fd1ed2cb695dc3fb69da50052ab942b4d70ca3",
           "qid_v1_a8cfd20ae2e20a19314fef2e831176d198bac89837a0345c10b958a7b771a5e4",

@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.5",
+  "shardVersion": "1.4.6",
   "status": "ACTIVE",
-  "conceptCount": 154,
+  "conceptCount": 180,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -5170,6 +5170,397 @@
         "2015:수학(상):H15-SA-13"
       ],
       "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_DISTRIBUTIVE_PROPERTY",
+      "canonicalLabelKo": "분배법칙",
+      "definition": "다항식에 수를 곱할 때 그 수를 각 항에 곱해 괄호를 전개하는 성질.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_17511a3411735deb3102b8408891980a0adcaf76be00ef9c855fbdf730df3bad"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-01"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_IDENTITY",
+      "canonicalLabelKo": "다항식 항등식",
+      "definition": "모든 값에서 성립하는 다항식 등식의 계수 관계를 이용해 미지 다항식이나 계수를 결정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_14febd88e579cb65e2dce89be655f009a349b7d26394ee202c22c7b5a7ae23ce",
+        "qid_v1_9155a1cc4d7a4801dab34e9e7a9f57c9b625d22f4982a7836e09dfa81a6932b7"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H22-C-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_COEFFICIENT_COMPARISON",
+      "canonicalLabelKo": "계수 비교",
+      "definition": "두 다항식이 항등적으로 같을 때 같은 차수의 계수를 대응시켜 미지수를 구하는 방법.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_14febd88e579cb65e2dce89be655f009a349b7d26394ee202c22c7b5a7ae23ce"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_COMPLEX_CONJUGATE_DIVISION",
+      "canonicalLabelKo": "켤레복소수를 이용한 나눗셈",
+      "definition": "복소수 분수에서 분모의 켤레복소수를 곱해 실수 분모로 바꾸는 절차.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_39a4409b1e8759d5b558fccae38e0ef9b76c2358e040e4101b52e5be1df01a99"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-04"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_PURE_REAL_CONDITION",
+      "canonicalLabelKo": "복소수의 실수 조건",
+      "definition": "복소수 값이 실수가 되도록 허수부분을 0으로 두는 조건.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_39a4409b1e8759d5b558fccae38e0ef9b76c2358e040e4101b52e5be1df01a99"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-04"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_DOUBLE_ROOT",
+      "canonicalLabelKo": "이차방정식의 중근",
+      "definition": "이차방정식이 같은 실근을 두 번 갖는 경우를 판별식 0으로 판정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f9ddfafd8b3740b00b3f64d4a270be6d25773d5ea0a9365cdd7b49a67b0fd759"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_ROOT_SUBSTITUTION",
+      "canonicalLabelKo": "다항방정식의 근 대입",
+      "definition": "다항방정식에서 주어진 근을 대입하여 계수 사이의 조건을 얻는 방법.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f64fcb74269ed2820fae86436cdc6e10ff85cf003684707a9a80eabb4fde3b34"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_CUBIC_FACTORIZATION_VIETA",
+      "canonicalLabelKo": "근과 계수 관계를 이용한 삼차식 인수분해",
+      "definition": "알려진 근과 나머지 두 근의 합·곱 관계를 이용해 삼차다항식을 인수분해하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f64fcb74269ed2820fae86436cdc6e10ff85cf003684707a9a80eabb4fde3b34"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_CONJUGATE_ROOT_THEOREM",
+      "canonicalLabelKo": "켤레근 정리",
+      "definition": "실수 계수 다항방정식에 비실수 근이 있으면 그 켤레복소수도 근이라는 정리.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2bc009fbdb5d5a9fe56c5bbdeaba20701587035f28da5c004aab4ce9db4a29b3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-04"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_MULTIVARIATE_POLYNOMIAL_FACTORIZATION",
+      "canonicalLabelKo": "다변수 다항식의 인수분해",
+      "definition": "두 변수 이상을 포함한 다항식을 항의 배열과 계수 구조를 이용하여 인수의 곱으로 나타내는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_c20e871dc0b1a0e1defd1f3ef3d0b8d57af14ee2a43ea7072d6d6ce6952142f5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_COEFFICIENT_MATCHING",
+      "canonicalLabelKo": "다항식 계수 대조",
+      "definition": "인수분해한 식을 전개해 주어진 다항식과 같은 차수의 계수를 대조하여 미정계수를 정하는 방법.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_c20e871dc0b1a0e1defd1f3ef3d0b8d57af14ee2a43ea7072d6d6ce6952142f5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_IDENTITY_IN_PARAMETER",
+      "canonicalLabelKo": "매개변수 항등식",
+      "definition": "모든 매개변수 값에서 성립하는 조건을 다항식 항등식으로 보고 각 계수를 비교하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_e56c0b74100a07611365059c21a1491798208ec4272b83deb5bc0ff1e3c5f439"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_SUM_PRODUCT_SYSTEM",
+      "canonicalLabelKo": "다항식의 합과 곱 조건",
+      "definition": "두 다항식의 합과 곱으로 주어진 정보를 함께 사용하여 각 다항식을 결정하는 구조.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b1c7a2c04d9e42dbd99bf81c67337a8c7d0d784e9fe044a99ff2aa5cab074623"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_FACTOR_IDENTIFICATION",
+      "canonicalLabelKo": "다항식 인수의 복원",
+      "definition": "두 다항식의 합·곱 조건에서 대칭식과 계수 비교를 거쳐 개별 인수를 복원하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b1c7a2c04d9e42dbd99bf81c67337a8c7d0d784e9fe044a99ff2aa5cab074623"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_CUBIC_OMEGA_PROPERTIES",
+      "canonicalLabelKo": "세제곱근의 단위원 성질",
+      "definition": "x^3=1의 허근 ω가 만족하는 ω^3=1 및 ω^2+ω+1=0 관계를 식 변형에 이용하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f3e382415072847c00e2f2c1ce2965b61adfcaeaaf4a60bea1dc7925ef5927c3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-04"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_CYCLIC_EXPONENT_REDUCTION",
+      "canonicalLabelKo": "주기성을 이용한 지수 축약",
+      "definition": "근의 거듭제곱이 일정 주기로 반복되는 성질을 이용해 고차 거듭제곱을 낮은 지수로 줄이는 방법.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f3e382415072847c00e2f2c1ce2965b61adfcaeaaf4a60bea1dc7925ef5927c3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-04"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_ROOT_REDUCTION",
+      "canonicalLabelKo": "근의 대칭식 축약",
+      "definition": "두 근의 합과 곱으로 이루어진 대칭식을 이용해 근에 대한 고차식을 간단한 식으로 바꾸는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_da4efd549554320b1c0d57c217c2fb02976e95dd407bc8b6870ec9f7267c3968"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_REMAINDER_SUBSTITUTION",
+      "canonicalLabelKo": "나머지 조건의 대입",
+      "definition": "나머지정리에 따라 나눗셈 조건을 특정 함수값으로 바꾸어 계수 방정식을 세우는 방법.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_cd6b42ed731fb408f9220b149cdf60a48fe27afbf9468c965ce6e2dc0af033e0"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_CUBIC_FACTORIZATION_PARAMETER",
+      "canonicalLabelKo": "매개변수 삼차방정식의 인수분해",
+      "definition": "매개변수가 포함된 삼차식을 인수분해하여 근 조건과 매개변수 제약을 함께 분석하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_af9d821026049c17ce754c2516ee60f70c8bf5d1c3ea93381af0caef07eb96b2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_PYTHAGOREAN_THEOREM_ON_ROOTS",
+      "canonicalLabelKo": "근 사이의 피타고라스 관계",
+      "definition": "방정식의 근들을 길이로 해석하여 직각삼각형의 피타고라스 관계로 조건을 판정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_af9d821026049c17ce754c2516ee60f70c8bf5d1c3ea93381af0caef07eb96b2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_COEFFICIENT_DETERMINATION",
+      "canonicalLabelKo": "다항식 계수 결정",
+      "definition": "다항식 항등식의 계수 관계를 사용해 미정 다항식의 계수를 결정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_9155a1cc4d7a4801dab34e9e7a9f57c9b625d22f4982a7836e09dfa81a6932b7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_INTEGER_PARAMETER_ANALYSIS",
+      "canonicalLabelKo": "정수 매개변수 분석",
+      "definition": "정수 또는 자연수 제한을 사용해 매개변수의 가능한 값과 해의 후보를 걸러내는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_84f48846915218ff6e0176abb226ccfcf8e2480ce708dc86649e578db979a83c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_DISCRIMINANT_INTEGER_CONDITION",
+      "canonicalLabelKo": "판별식과 정수 조건",
+      "definition": "판별식·인수 계수 관계와 정수성 조건을 결합하여 가능한 매개변수를 결정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_84f48846915218ff6e0176abb226ccfcf8e2480ce708dc86649e578db979a83c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_DEGREE_INFERENCE",
+      "canonicalLabelKo": "나눗셈 조건에서 차수 추론",
+      "definition": "몫·나머지의 차수 제한과 최고차항 조건을 거꾸로 사용하여 다항식의 차수를 정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8c5debd5256a20b232478a3ee9aa7e404f0e0800f22a4223b3db3ca4724e7b4d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_NESTED_DIVISION_REMAINDER",
+      "canonicalLabelKo": "연속 나눗셈의 몫·나머지 관계",
+      "definition": "여러 다항식 나눗셈 조건을 하나의 항등식으로 연결하여 중첩된 몫과 나머지를 해석하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8c5debd5256a20b232478a3ee9aa7e404f0e0800f22a4223b3db3ca4724e7b4d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_HIGH_ORDER_IDENTITY_SOLVING",
+      "canonicalLabelKo": "고차 다항식 항등식 풀이",
+      "definition": "다항식의 항등식과 계수 구조를 결합해 고차 표현의 미정계수와 함숫값을 결정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8c5debd5256a20b232478a3ee9aa7e404f0e0800f22a4223b3db3ca4724e7b4d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
     }
   ]
 }

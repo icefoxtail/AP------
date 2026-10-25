@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "FUNCTIONS",
-  "shardVersion": "1.5.2",
+  "shardVersion": "1.5.3",
   "status": "ACTIVE",
-  "conceptCount": 38,
+  "conceptCount": 44,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -1230,6 +1230,96 @@
         "2015:수학(상):H15-SA-05-EQUATION_FUNCTION_RELATION"
       ],
       "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_VERTEX_FORM",
+      "canonicalLabelKo": "이차함수의 꼭짓점 꼴",
+      "definition": "이차함수를 y=a(x−p)^2+q 꼴로 바꾸어 꼭짓점 좌표와 함수값을 읽는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_afeec1b3fccbf7f9306e64f0333530edf4de8af25e6ddc625d08aff208cc750e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_OPTIMIZATION_MODEL",
+      "canonicalLabelKo": "이차함수 최적화 모델",
+      "definition": "기하 조건으로 변수를 소거해 넓이 등을 이차함수로 나타내고 꼭짓점으로 최댓값을 구하는 모델.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_943ba771369d8ef5116226df3e5a573bcb6e4644cfb274c149da721d6e52c717"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_RESTRICTED_DOMAIN_EXTREMA",
+      "canonicalLabelKo": "제한된 정의역의 극값",
+      "definition": "주어진 구간과 제외된 입력 조건을 반영하여 함수의 극값 후보와 실제 달성 여부를 판단하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_a6d53c6b5c394349896526e20c71cce267b1d9e15b2e08933787acac05b4f3db"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_PARAMETRIC_PARABOLA_VERTEX",
+      "canonicalLabelKo": "매개변수 이차함수의 꼭짓점",
+      "definition": "계수 매개변수에 따라 포물선의 축과 꼭짓점 위치가 어떻게 정해지는지 나타내는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_a68ed00223a0290c0f88261a3dcebacdea647b96daaf83acd552f2870dcadab7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_AXIS_OF_SYMMETRY_INTERVAL_CASES",
+      "canonicalLabelKo": "대칭축과 구간의 위치별 극값",
+      "definition": "포물선의 대칭축이 주어진 구간 안·밖·경계에 있는 경우를 나누어 극값 조건을 결정하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_a68ed00223a0290c0f88261a3dcebacdea647b96daaf83acd552f2870dcadab7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_LINE_PARABOLA_INTERSECTION",
+      "canonicalLabelKo": "직선과 포물선의 교점",
+      "definition": "직선과 포물선의 교점을 두 함수의 연립으로 나타내고 교점 개수와 좌표 관계를 해석하는 개념.",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_740aa3ad09ad635472bb204d1bd5c66ec30523fc408a453677def106eb25f19e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE"
     }
   ]
 }
