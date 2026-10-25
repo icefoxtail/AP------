@@ -2,11 +2,12 @@
 // A plan's `planeMarks` is the author's statement of facts the figure shows; this module checks each statement against the model's points
 // (the SymPy snapshot) and turns it into visual-engine objects. The independent check of the FINAL SVG is plane-marks-observer-worker.py,
 // which recomputes every fact from the Cindy peer's points and from the drawn primitives.
+import {regionSpec,regionPointRefs} from './plane-regions.mjs';
 export const PLANE_RECIPE='PLANE_FIGURE_v1';
 export const isPlaneFigure=plan=>plan?.mathPlan?.realization?.recipeId===PLANE_RECIPE;
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
-const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','facts'],
+const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','regions','facts'],
   angles:['id','refs','side','arcs','ring','value','label','labelKind','equalGroup','factRole','noLabel'],
   equalLengths:['id','count','segments'],parallels:['id','count','segments'],
   expressionLabels:['id','ownerSegment','text','factRole'],
@@ -157,6 +158,9 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       if(!(plan.displayLines??[]).includes(row.tangent)&&!segmentIds.has(row.tangent))bad('FACT_TARGET_NOT_DRAWN:'+row.tangent);
     }else bad('MARK_FIELD_INVALID:facts.kind');
   }
+  // --- region fills (plane-regions.mjs)
+  const regionFacts=regionSpec(plan,model,points,used);
+  objects.push(...regionFacts.objects);Object.assign(factRolesByLabel,regionFacts.factRolesByLabel);
   return {objects,factRolesByLabel};
 }
 
@@ -167,5 +171,5 @@ export function planeMarkPointRefs(plan){
   for(const row of Array.isArray(marks.angles)?marks.angles:[])if(Array.isArray(row?.refs))refs.push(...row.refs);
   for(const row of Array.isArray(marks.arcs)?marks.arcs:[])refs.push(row?.center,row?.from,row?.to);
   for(const row of Array.isArray(marks.facts)?marks.facts:[]){if(Array.isArray(row?.points))refs.push(...row.points);refs.push(row?.center,row?.contact);}
-  return refs.filter(id=>typeof id==='string');
+  return [...refs,...regionPointRefs(plan)].filter(id=>typeof id==='string');
 }

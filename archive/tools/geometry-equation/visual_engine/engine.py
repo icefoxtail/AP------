@@ -21,7 +21,7 @@ from .viewport import for_spec
 from .function_sampling import sample
 from .math_expression import Expr,parse,serialize,evaluate,exact_coordinate
 from .label_layout import Box,layout,approximate_size,DIRECTIONS
-from .svg_composer import compose
+from .svg_composer import compose,num as _num
 from .style_tokens import load
 from .config import resolve_output
 
@@ -42,6 +42,48 @@ def mark_label(label_id,target,text,label_kind,at,extra):
     label={'id':label_id,'kind':'EQUATION_LABEL','target':target,'text':plain,'markup':markup,'tex':tex,'math':True,'sourceMath':text,'font':tokens['mathLabel'],'priority':0,'at':list(at),'allowSuppress':False,**extra}
     label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
     return label
+
+REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
+
+def _region_label_centres(polygons,obstacles,step=3.0,limit=900):
+    """Interior points of an even-odd region (screen px), widest clearance first (from its boundary and from every stroke inside it): where a label has the most room."""
+    edges=[(a,b) for poly in polygons for a,b in zip(poly,poly[1:]+poly[:1])]
+    strokes=[]
+    for o in obstacles:
+        g=o.get('geometry')
+        if o.get('kind') in {'point','circle'}:strokes.append(('disc' if o['kind']=='point' else 'ring',g))
+        elif g and len(g)>=2 and all(isinstance(p,(list,tuple)) for p in g):strokes.extend(('seg',(a,b)) for a,b in zip(g,g[1:]))
+    xs=[p[0] for poly in polygons for p in poly];ys=[p[1] for poly in polygons for p in poly]
+    def inside(x,y):
+        hit=False
+        for (ax,ay),(bx,by) in edges:
+            if (ay>y)!=(by>y) and x<(bx-ax)*(y-ay)/(by-ay)+ax:hit=not hit
+        return hit
+    def seg_distance(x,y,a,b):
+        (ax,ay),(bx,by)=a,b;dx,dy=bx-ax,by-ay;n=dx*dx+dy*dy
+        t=0.0 if n==0 else max(0.0,min(1.0,((x-ax)*dx+(y-ay)*dy)/n))
+        return math.hypot(x-ax-t*dx,y-ay-t*dy)
+    def clearance(x,y):
+        best=min(seg_distance(x,y,a,b) for a,b in edges)
+        for kind,g in strokes:
+            if kind=='seg':best=min(best,seg_distance(x,y,*g))
+            elif kind=='ring':best=min(best,abs(math.hypot(x-g[0],y-g[1])-g[2]))
+            else:best=min(best,math.hypot(x-g[0],y-g[1])-g[2])
+        return best
+    found=[]
+    x=min(xs)
+    while x<=max(xs):
+        y=min(ys)
+        while y<=max(ys):
+            if inside(x,y):found.append((clearance(x,y),x,y))
+            y+=step
+        x+=step
+    found.sort(key=lambda row:-row[0]);chosen=[]
+    for c,x,y in found:
+        if c<3.0:break
+        if all(math.hypot(x-px,y-py)>=4.0 for px,py in chosen):chosen.append((x,y))
+        if len(chosen)>=limit:break
+    return [list(p) for p in chosen]
 
 def prepare(spec):
     semantic=validate(spec);spec=semantic['spec'];geometry=semantic['geometry'];tokens=load();critical=[]
@@ -299,6 +341,45 @@ def prepare(spec):
                     return -(dx*ox+dy*oy)/(norm*math.hypot(dx,dy))
                 directions=sorted(DIRECTIONS,key=alignment)
                 labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),outward,{'directions':tuple(directions[:5]),'gaps':(14,24,32,48),'leaderOwned':[oid]}))
+        elif kind=='FILL_REGION':
+            # A filled region: one even-odd <path> (shapes minus holes) with exact SVG arcs, drawn beneath every stroke. The label is placed inside it.
+            if not vp.equal:raise ValueError('REGION_REQUIRES_EQUAL_UNITS')
+            d_parts=[];polygons=[];owners=[]
+            for loop in obj['loops']:
+                current=loop['start'];first=vp.screen(geometry[current]);d_parts.append('M'+_num(first[0])+' '+_num(first[1]));dense=[first];owners.append(current)
+                for step in loop['steps']:
+                    p0=geometry[current];p1=geometry[step['to']];end=vp.screen(p1);arc=step.get('arc')
+                    if arc is None:
+                        d_parts.append('L'+_num(end[0])+' '+_num(end[1]));dense.append(end)
+                    elif arc.get('full'):
+                        # a whole circle: two half arcs through the antipode of its start point
+                        centre=geometry[arc['center']];radius=math.dist(p0,centre);owners.append(arc['center'])
+                        anti=(2*centre[0]-p0[0],2*centre[1]-p0[1]);anti_screen=vp.screen(anti);screen_radius=radius*vp.sx;flag='0' if arc['sweep']=='CCW' else '1'
+                        a0=math.atan2(p0[1]-centre[1],p0[0]-centre[0]);direction=1 if arc['sweep']=='CCW' else -1
+                        d_parts.append('A'+_num(screen_radius)+' '+_num(screen_radius)+' 0 0 '+flag+' '+_num(anti_screen[0])+' '+_num(anti_screen[1]))
+                        d_parts.append('A'+_num(screen_radius)+' '+_num(screen_radius)+' 0 0 '+flag+' '+_num(end[0])+' '+_num(end[1]))
+                        dense.extend(vp.screen((centre[0]+radius*math.cos(a0+direction*2*math.pi*i/180),centre[1]+radius*math.sin(a0+direction*2*math.pi*i/180))) for i in range(1,180))
+                        dense.append(end)
+                    else:
+                        centre=geometry[arc['center']];radius=math.dist(p0,centre);owners.append(arc['center'])
+                        a0=math.atan2(p0[1]-centre[1],p0[0]-centre[0]);ccw=(math.atan2(p1[1]-centre[1],p1[0]-centre[0])-a0)%(2*math.pi)
+                        angle=ccw if arc['sweep']=='CCW' else 2*math.pi-ccw;direction=1 if arc['sweep']=='CCW' else -1
+                        screen_radius=radius*vp.sx
+                        d_parts.append('A'+_num(screen_radius)+' '+_num(screen_radius)+' 0 '+('1' if angle>math.pi+1e-9 else '0')+' '+('0' if arc['sweep']=='CCW' else '1')+' '+_num(end[0])+' '+_num(end[1]))
+                        count=max(8,math.ceil(math.degrees(angle)/2))
+                        dense.extend(vp.screen((centre[0]+radius*math.cos(a0+direction*angle*i/count),centre[1]+radius*math.sin(a0+direction*angle*i/count))) for i in range(1,count))
+                        dense.append(end)
+                    current=step['to'];owners.append(current)
+                dense.pop();d_parts.append('Z');polygons.append(dense)
+            primitive({'id':oid,'kind':'path','d':' '.join(d_parts),'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS[obj['fill']],'noStroke':True,'fillRule':'evenodd',
+                       'mark':'region','markId':oid,'ownerPoints':sorted(set(owners)),'fillPolygons':polygons})
+            if obj.get('labelText') is not None:
+                tree=parse(obj['labelText']);markup=serialize(tree,'svg')
+                label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':serialize(tree,'plain'),'markup':markup,'tex':serialize(tree,'tex'),'math':True,'sourceMath':obj['labelText'],
+                       'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':polygons,'labelGap':34}
+                label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
+                label['candidateCenters']=_region_label_centres(polygons,obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygons[0][0])
+                labels.append(label)
         elif kind=='FUNCTION_GRAPH':
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
             sampling.append({'id':oid,**{k:v for k,v in result.items() if k!='branches'}})

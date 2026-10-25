@@ -7,6 +7,7 @@ import re
 import sys
 import xml.etree.ElementTree as ET
 from worker import read_request,VERSION
+from plane_regions_observer import audit_regions
 
 ANGLE_TOLERANCE=0.5          # degrees: a drawn angle against its stated value
 RAY_TOLERANCE=0.05           # degrees: an arc end against the ray it should start on
@@ -67,6 +68,7 @@ def audit(p):
         if n.get('data-mark'):by_mark.setdefault((n.get('data-mark'),n.get('data-mark-id')),[]).append(n)
     declared={('angle',r['id']) for r in marks.get('angles',[])}|{('equal',r['id']) for r in marks.get('equalLengths',[])}|{('parallel',r['id']) for r in marks.get('parallels',[])}|{('arc',r['id']) for r in marks.get('arcs',[]) if r.get('highlight',True)}
     declared|={('arrow',s['id']) for s in p.get('segments',[]) if s.get('arrow')}
+    declared|={('region',r['id']) for r in marks.get('regions',[])}
     for key in by_mark:
         if key not in declared:errors.append('UNDECLARED_MARK:'+key[0]+':'+str(key[1]))
     label_boxes={}   # label id -> (x,y,w,h) in svg px
@@ -234,6 +236,9 @@ def audit(p):
                 c=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
                 if norm(sub(c,center))<=radius:errors.append('ARC_LABEL_INSIDE_CIRCLE:'+oid)
                 leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5)
+
+    # ---- filled regions (plane_regions_observer.py)
+    audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes)
 
     # ---- facts read from the drawn primitives only
     for row in marks.get('facts',[]):

@@ -414,7 +414,7 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         # leaderOwned: ids of the marks (angle arcs, highlighted arcs) a label names; beyond the near gaps a visible leader from its anchor ties it to them.
         leader_owned_ids=set(label.get('leaderOwned',()))
         def acceptable(box,owner_check=True):
-            return (safe_area.contains(box) and not any(collision(box,o) for o in occupied)
+            return (safe_area.contains(box) and not any(collision(box,o,label['labelGap']) if o['kind']=='label' and 'labelGap' in label else collision(box,o) for o in occupied)
                 and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines))
                 and (owner_marker is None or not owner_check or point_box_has_unambiguous_owner(box,owner_marker,competing_markers))
                 and (tick_owner is None or tick_callout is not None or tick_box_respects_owner(box,label['at'],label['tickAxis'])))
