@@ -156,4 +156,62 @@ class Observer(unittest.TestCase):
         squeezed={**t,'sy':t['sy']*.9}
         self.assertIn('EQUAL_UNIT_SCALE_MISMATCH',audit(g,out['svg'],squeezed)['errors'])
 
+# Two piecewise functions in one figure (26 Geumdang H1 mid c q17 at a=2): f is -x^2 then x^2-x, g is 2x+2, 0, 2x-2.
+TWO_PIECEWISE={'family':'piecewise-polynomial','pieces':[{'coefficients':['0','0','-1']},{'coefficients':['0','-1','1']}],'breakpoints':[{'x':'0','y':'0'}],
+     'sourceDomain':{'kind':'ALL_REALS'},'functionName':'f',
+     'referenceCurves':[{'id':'g','name':'g','pieces':[{'coefficients':['2','2']},{'coefficients':['0']},{'coefficients':['-2','2']}],
+       'breakpoints':[{'x':'-1','y':'0'},{'x':'1','y':'0'}],'intersectionX':['0','1','2']}],
+     'requiredPoints':[{'id':'A','x':0,'y':0},{'id':'B','x':0.5,'y':-0.25},{'id':'C','x':-1,'y':0},{'id':'D','x':1,'y':0}],
+     'exactCoordinates':{'B':['1/2','-1/4']},'axisTickValues':{'x':[2],'y':[2]}}
+# g exists only on [2,3]: the algebraic crossings x=0,1 of x^2=x are outside its domain and are not intersections.
+OUTSIDE_DOMAIN={'family':'piecewise-polynomial','pieces':[{'coefficients':['0','0','1']}],'sourceDomain':{'kind':'ALL_REALS'},
+     'referenceCurves':[{'id':'g','name':'g','pieces':[{'coefficients':['0','1']}],'sourceDomain':{'kind':'INTERVAL','range':[2,3],'states':['CLOSED','CLOSED']},'intersectionX':[]}],
+     'requiredPoints':[{'id':'V','x':0,'y':0}],'axisTickValues':{'x':[],'y':[]}}
+OPEN_END={'family':'piecewise-polynomial','pieces':[{'coefficients':['0','0','1']}],'sourceDomain':{'kind':'ALL_REALS'},
+     'referenceCurves':[{'id':'g','name':'g','pieces':[{'coefficients':['1']}],'sourceDomain':{'kind':'INTERVAL','range':[1,2],'states':['OPEN','CLOSED']},'intersectionX':[]}],
+     'requiredPoints':[{'id':'V','x':0,'y':0}],'axisTickValues':{'x':[],'y':[]}}
+FOUR_PIECES={'family':'piecewise-polynomial','pieces':[{'coefficients':['0','0','1']},{'coefficients':['1']},{'coefficients':['1']},{'coefficients':['0','0','1']}],
+     'breakpoints':[{'x':'-1','y':'1'},{'x':'0','y':'1'},{'x':'1','y':'1'}],'sourceDomain':{'kind':'ALL_REALS'},
+     'requiredPoints':[{'id':'A','x':-1,'y':1},{'id':'B','x':0,'y':1},{'id':'C','x':1,'y':1}],'axisTickValues':{'x':[],'y':[]}}
+
+class TwoPiecewise(unittest.TestCase):
+    def test_two_piecewise_inventory_and_model(self):
+        g=fit_overview(TWO_PIECEWISE)['graphPlan'];f=g['piecewisePolynomialFeatures']
+        self.assertEqual([point['x'] for point in f['curveIntersections'][0]['points']],['0','1','2'])
+        self.assertEqual([point.get('keyPoint') for point in f['curveIntersections'][0]['points']],['A','D',None])
+        self.assertEqual(f['referenceCurves'][0]['pieces'][0]['interval'],[None,'-1'])
+        out=produce(g);result=audit(g,out['svg'],out['transform'])
+        self.assertEqual(result['status'],'PASS',result['errors'])
+    def test_four_pieces_are_supported(self):
+        g=fit_overview(FOUR_PIECES)['graphPlan'];self.assertEqual(len(g['piecewisePolynomialFeatures']['pieces']),4)
+        out=produce(g);self.assertEqual(audit(g,out['svg'],out['transform'])['status'],'PASS')
+    def test_no_fake_intersections_outside_a_piece_domain(self):
+        g=fit_overview(OUTSIDE_DOMAIN)['graphPlan'];self.assertEqual(g['piecewisePolynomialFeatures']['curveIntersections'][0]['points'],[])
+        out=produce(g);self.assertEqual(audit(g,out['svg'],out['transform'])['status'],'PASS')
+        bad=copy.deepcopy(OUTSIDE_DOMAIN);bad['referenceCurves'][0]['intersectionX']=['0','1']
+        self.assertTrue((refused(bad) or '').startswith('PIECEWISE_POLY_INTERSECTION_MISMATCH:g:engine finds 0'))
+        o=fit_overview(OPEN_END)['graphPlan'];self.assertEqual(o['piecewisePolynomialFeatures']['curveIntersections'][0]['points'],[])
+        bad=copy.deepcopy(OPEN_END);bad['referenceCurves'][0]['intersectionX']=['1']
+        self.assertTrue((refused(bad) or '').startswith('PIECEWISE_POLY_INTERSECTION_MISMATCH:g:engine finds 0'))
+    def test_reference_claims_fail_closed(self):
+        cases=[]
+        p=copy.deepcopy(TWO_PIECEWISE);p['requiredPoints']=[point for point in p['requiredPoints'] if point['id']!='C'];cases.append((p,'PIECEWISE_POLY_REFERENCE_CURVE_CORNER_NOT_IN_REQUIRED_POINTS:g:-1'))
+        p=copy.deepcopy(TWO_PIECEWISE);p['referenceCurves'][0]['breakpoints'][0]['y']='1';cases.append((p,'PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_VALUE_MISMATCH:g:-1'))
+        p=copy.deepcopy(TWO_PIECEWISE);p['referenceCurves'][0]['pieces'][1]['coefficients']=['1'];p['referenceCurves'][0]['breakpoints'][0]['y']='1';cases.append((p,'PIECEWISE_POLY_REFERENCE_CURVE_DISCONTINUOUS:g:-1'))
+        p=copy.deepcopy(TWO_PIECEWISE);p['referenceCurves'][0]['pieces'].extend([{'coefficients':['0']},{'coefficients':['0']}]);p['referenceCurves'][0]['breakpoints'].extend([{'x':'2','y':'2'},{'x':'3','y':'0'}]);cases.append((p,'PIECEWISE_POLY_REFERENCE_CURVE_PIECE_COUNT_INVALID:g'))
+        p=copy.deepcopy(TWO_PIECEWISE);p['referenceCurves'][0]['formula']='x^2';cases.append((p,'PIECEWISE_POLY_REFERENCE_CURVE_FORMULA_MISMATCH:g'))
+        for plan,code in cases:
+            with self.subTest(code=code):self.assertTrue((refused(plan) or '').startswith(code),refused(plan))
+    def test_observer_reads_reference_domains(self):
+        g,out=self._model(OPEN_END)
+        result=audit(g,out['svg'],out['transform']);self.assertEqual(result['status'],'PASS',result['errors'])
+        stretched=copy.deepcopy(g);stretched['piecewisePolynomialFeatures']['referenceCurves'][0]['pieces'][0]['drawInterval']=[0.5,3.5]
+        out2=produce(stretched)
+        self.assertTrue(any(error.startswith(('PIECEWISE_POLY_REFERENCE_PIECE_CROSSES_ITS_INTERVAL','PIECEWISE_POLY_REFERENCE_CURVE_COVERAGE_FAIL')) for error in audit(stretched,out2['svg'],out2['transform'])['errors']))
+        dropped=re.sub(r'<circle id="ref-endpoint-g-start"[^>]*/>','',out['svg'])
+        self.assertIn('PIECEWISE_POLY_REFERENCE_ENDPOINT_MARKER_MISMATCH:g-start',audit(g,dropped,out['transform'])['errors'])
+    @staticmethod
+    def _model(plan):
+        g=fit_overview(plan)['graphPlan'];return g,produce(g)
+
 if __name__=='__main__':unittest.main()

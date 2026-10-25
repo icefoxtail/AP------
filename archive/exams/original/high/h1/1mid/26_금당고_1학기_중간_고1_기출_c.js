@@ -739,7 +739,11 @@ window.questionBank = [
     "difficultyBucket": 5,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "B45",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/26_금당고_1학기_중간_고1_기출_c/q17-solution.svg",
+    "solutionImageAlt": "a=2일 때 y=f(x)와 y=g(x)의 그래프가 x=0, 1, 2의 세 점에서 만나는 모습이다. f는 x<0에서 아래로 열린 포물선, x≥0에서 꼭짓점이 (1/2,-1/4)인 포물선이고, g는 x=-1, x=1에서 꺾여 가운데 구간에서 0이다.",
+    "solutionImageCaption": "a=2일 때 y=f(x)와 y=g(x)의 그래프가 x=0, 1, 2의 세 점에서 만나는 모습이다. f는 x<0에서 아래로 열린 포물선, x≥0에서 꼭짓점이 (1/2,-1/4)인 포물선이고, g는 x=-1, x=1에서 꺾여 가운데 구간에서 0이다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 18,
