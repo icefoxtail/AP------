@@ -1,0 +1,1104 @@
+import {fileURLToPath} from 'node:url';
+import {objectSha,bytesSha} from '../../pipeline-core/canonical.mjs';
+import {pythonWorker} from './worker.mjs';
+import {typesetter} from './typography.mjs';
+import {launchBrowser} from '../visual-browser-runtime.mjs';
+import {captureAtDisplaySize,analyzeRenderedLayout} from '../verify-rendered-layout.mjs';
+import {Stop,isDomainCode,esc,overlaps} from './quadratic-inequality-chain-v1.mjs';
+
+// A solid figure (solid-figure-v1): prisms, pyramids, pyramid frusta, cylinders, cones, cone frusta, spheres and hemispheres drawn in ONE fixed
+// orthographic projection (yaw 28 deg, pitch 20 deg: a textbook "dimetric" look; circles become axis-aligned ellipses), with hidden edges dashed by
+// a depth test, vertex names, length labels beside their segments and optional highlights; or the NET of such a solid (polyhedra unfolded along a
+// spanning tree of faces, cylinder and cone nets). The engine builds the 3D model from the plan; solid_figure_observer.py re-derives the same model
+// from the plan alone (never from the engine's numbers) and checks the final SVG: visible/hidden per edge, vertex positions, ellipse axes and
+// tangent lines, net face congruence and adjacency, label values and places.
+export const SOLID_CAPABILITY='solid-figure-v1';
+export const SOLID_MODEL_VERSION='SOLID_FIGURE_MODEL_v1',SOLID_SPEC_VERSION='SOLID_FIGURE_SPEC_v1',SOLID_SVG_VERSION='solid-figure-svg-v1';
+const OBSERVER_SCRIPT=fileURLToPath(new URL('solid_figure_observer_worker.py',import.meta.url));
+const PUBLICATION_VIEWPORT=Object.freeze({width:1440,height:1000});
+const bad=code=>{throw Error(code);};
+const isPlain=value=>!!value&&typeof value==='object'&&!Array.isArray(value);
+const onlyKeys=(value,keys,code)=>{if(!isPlain(value)||Object.keys(value).some(key=>!keys.includes(key)))bad(code);};
+const r6=value=>{const v=Math.round(value*1e6)/1e6;return v===0?0:v;};
+const finite=x=>Number.isFinite(x);
+const pos=(x,code)=>{if(typeof x!=='number'||!finite(x)||!(x>0)||x>1000)bad(code);return x;};
+
+// --- projection -------------------------------------------------------------------------------------------------------------------------------
+export const YAW_DEG=28,PITCH_DEG=20;
+const YAW=YAW_DEG*Math.PI/180,PITCH=PITCH_DEG*Math.PI/180;
+const cY=Math.cos(YAW),sY=Math.sin(YAW),cP=Math.cos(PITCH),sP=Math.sin(PITCH);
+/** World (x right, y into the picture, z up) -> screen units (x right, y up). */
+export const project=p=>[p[0]*cY+p[1]*sY,-p[0]*sP*sY+p[1]*sP*cY+p[2]*cP];
+const VIEW=[sY*cP,-cY*cP,sP];// unit vector from the object toward the viewer
+const sub=(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]],add=(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]],mulv=(a,k)=>[a[0]*k,a[1]*k,a[2]*k];
+const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
+const len=a=>Math.hypot(a[0],a[1],a[2]);
+const unit=a=>{const l=len(a);return l===0?a:mulv(a,1/l);};
+const lerp=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
+const EX=[cY,sY,0];// world direction of the screen's horizontal
+
+// --- the 3D model -----------------------------------------------------------------------------------------------------------------------------
+const NAME=/^[A-Z]$/;
+const LETTERS='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+function polygonArea2(points){let s=0;for(let i=0;i<points.length;i++){const [a,b]=[points[i],points[(i+1)%points.length]];s+=a[0]*b[1]-b[0]*a[1];}return s/2;}
+function segmentsCross(a,b,c,d){
+  const o=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]);
+  const d1=o(a,b,c),d2=o(a,b,d),d3=o(c,d,a),d4=o(c,d,b),eps=1e-9;
+  return ((d1>eps&&d2<-eps)||(d1<-eps&&d2>eps))&&((d3>eps&&d4<-eps)||(d3<-eps&&d4>eps));
+}
+function isSimple(points){
+  const n=points.length;
+  for(let i=0;i<n;i++)for(let j=i+1;j<n;j++){
+    if(j===i+1||(i===0&&j===n-1))continue;
+    if(segmentsCross(points[i],points[(i+1)%n],points[j],points[(j+1)%n]))return false;
+  }
+  return Math.abs(polygonArea2(points))>1e-9;
+}
+function isConvex(points){
+  const n=points.length;let sign=0;
+  for(let i=0;i<n;i++){
+    const a=points[i],b=points[(i+1)%n],c=points[(i+2)%n];
+    const z=(b[0]-a[0])*(c[1]-b[1])-(b[1]-a[1])*(c[0]-b[0]);
+    if(Math.abs(z)<1e-9)return false;
+    if(sign&&Math.sign(z)!==sign)return false;
+    sign=Math.sign(z);
+  }
+  return true;
+}
+function basePolygon(base){
+  if(!isPlain(base))bad('SOLID_BASE_INVALID');
+  onlyKeys(base,['kind','width','depth','n','side','points','plane'],'SOLID_BASE_INVALID');
+  const plane=base.plane??'XY';
+  if(plane!=='XY'&&plane!=='XZ')bad('SOLID_BASE_INVALID');
+  let points;
+  if(base.kind==='RECT'){
+    const w=pos(base.width,'SOLID_PARAM_INVALID'),d=pos(base.depth,'SOLID_PARAM_INVALID');
+    points=[[0,0],[w,0],[w,d],[0,d]];
+  }else if(base.kind==='REGULAR'){
+    const n=base.n;
+    if(!Number.isInteger(n)||n<3||n>8)bad('SOLID_PARAM_INVALID');
+    const side=pos(base.side,'SOLID_PARAM_INVALID'),R=side/(2*Math.sin(Math.PI/n));
+    // first side horizontal along the front (the bottom of a prism seen from above), counter-clockwise
+    points=[...Array(n).keys()].map(k=>{const a=-Math.PI/2-Math.PI/n+2*Math.PI*k/n;return [r6(R*Math.cos(a)),r6(R*Math.sin(a))];});
+  }else if(base.kind==='POLYGON'){
+    if(!Array.isArray(base.points)||base.points.length<3||base.points.length>8||base.points.some(p=>!Array.isArray(p)||p.length!==2||p.some(c=>typeof c!=='number'||!finite(c)||Math.abs(c)>1000)))bad('SOLID_BASE_INVALID');
+    points=base.points.map(p=>[...p]);
+    if(!isSimple(points))bad('SOLID_BASE_NOT_SIMPLE');
+  }else bad('SOLID_BASE_INVALID');
+  return {points,plane};
+}
+function letters(start,count){return [...Array(count).keys()].map(k=>LETTERS[start+k]??null);}
+/** Vertex names of a polyhedron: a string / array in base,top|apex order, an object {base,top,apex}, or consecutive letters. */
+function polyNames(kind,n,names){
+  const clean=list=>{if(!Array.isArray(list)||list.some(x=>x!==null&&x!=='.'&&!NAME.test(String(x))))bad('SOLID_NAMES_INVALID');return list.map(x=>x==='.'?null:x);};
+  if(names===undefined)return {base:letters(0,n),top:kind==='PYRAMID'?[]:letters(n,n),apex:kind==='PYRAMID'?LETTERS[n]:null};
+  if(typeof names==='string'||Array.isArray(names)){
+    const list=clean(typeof names==='string'?[...names]:names),need=kind==='PYRAMID'?n+1:2*n;
+    if(list.length!==need)bad('SOLID_NAMES_INVALID');
+    return kind==='PYRAMID'?{base:list.slice(0,n),top:[],apex:list[n]}:{base:list.slice(0,n),top:list.slice(n),apex:null};
+  }
+  onlyKeys(names,['base','top','apex'],'SOLID_NAMES_INVALID');
+  const base=names.base===undefined?letters(0,n):clean(typeof names.base==='string'?[...names.base]:names.base);
+  const top=kind==='PYRAMID'?[]:names.top===undefined?letters(n,n):clean(typeof names.top==='string'?[...names.top]:names.top);
+  if(base.length!==n||(kind!=='PYRAMID'&&top.length!==n))bad('SOLID_NAMES_INVALID');
+  const apex=kind==='PYRAMID'?(names.apex===undefined?LETTERS[n]:names.apex):null;
+  if(apex!==null&&apex!==undefined&&!NAME.test(apex))bad('SOLID_NAMES_INVALID');
+  return {base,top,apex:apex??null};
+}
+const faceNormal=pts=>{let n=[0,0,0];for(let i=0;i<pts.length;i++)n=add(n,cross(pts[i],pts[(i+1)%pts.length]));return unit(n);};
+
+/** One polyhedron: prism, pyramid or pyramid frustum. Faces are cycles of vertex indices oriented counter-clockwise seen from OUTSIDE. */
+function buildPolyhedron(spec){
+  const kind=spec.kind;
+  const allowed={PRISM:['id','kind','base','height','names'],PYRAMID:['id','kind','base','height','apex','names'],FRUSTUM:['id','kind','base','height','topScale','foot','names']}[kind];
+  onlyKeys(spec,allowed,'SOLID_PARAM_INVALID');
+  const {points,plane}=basePolygon(spec.base);
+  const n=points.length,height=pos(spec.height,'SOLID_PARAM_INVALID');
+  let bottom,top,apex=null,E;
+  const lift=(p,extra=0)=>plane==='XY'?[p[0],p[1],extra]:[p[0],extra,p[1]];
+  if(kind==='PRISM'){
+    E=plane==='XY'?[0,0,height]:[0,height,0];
+    bottom=points.map(p=>lift(p));top=bottom.map(p=>add(p,E));
+  }else{
+    if(plane!=='XY')bad('SOLID_BASE_PLANE_UNSUPPORTED');
+    if(!isConvex(points))bad('SOLID_BASE_NOT_CONVEX');
+    E=[0,0,height];
+    bottom=points.map(p=>lift(p));
+    const centroid=points.reduce((s,p)=>[s[0]+p[0]/n,s[1]+p[1]/n],[0,0]);
+    if(kind==='PYRAMID'){
+      let foot=centroid;
+      if(spec.apex!==undefined){
+        if(!Array.isArray(spec.apex)||spec.apex.length!==2||spec.apex.some(c=>typeof c!=='number'||!finite(c)))bad('SOLID_PARAM_INVALID');
+        foot=spec.apex;
+      }
+      apex=[foot[0],foot[1],height];
+    }else{
+      const k=spec.topScale;
+      if(typeof k!=='number'||!(k>0)||!(k<1))bad('SOLID_PARAM_INVALID');
+      let foot=centroid;
+      if(spec.foot!==undefined){if(!Array.isArray(spec.foot)||spec.foot.length!==2||spec.foot.some(c=>typeof c!=='number'||!finite(c)))bad('SOLID_PARAM_INVALID');foot=spec.foot;}
+      top=points.map(p=>[foot[0]+k*(p[0]-foot[0]),foot[1]+k*(p[1]-foot[1]),height]);
+    }
+  }
+  const baseCycle=[...Array(n).keys()];
+  const axis=kind==='PRISM'?unit(E):[0,0,1];
+  const baseRunsUp=dot(faceNormal(bottom),axis)>0;// the cycle b0..bn-1 runs counter-clockwise about +axis
+  const nm=polyNames(kind,n,spec.names);
+  const vertices=[];
+  bottom.forEach((p,i)=>vertices.push({name:nm.base[i],p:p.map(r6)}));
+  if(kind==='PYRAMID')vertices.push({name:nm.apex,p:apex.map(r6)});else top.forEach((p,i)=>vertices.push({name:nm.top[i],p:p.map(r6)}));
+  const faces=[];
+  const orient=(id,idx,expected)=>{
+    const normal=faceNormal(idx.map(i=>vertices[i].p));
+    faces.push({id,idx:dot(normal,expected)>=0?idx:[...idx].reverse()});
+  };
+  const interior=vertices.reduce((s,v)=>add(s,mulv(v.p,1/vertices.length)),[0,0,0]);
+  if(kind==='PRISM'){
+    const sign=baseRunsUp?1:-1;// +1 when the base cycle is counter-clockwise about +axis
+    orient('bottom',baseCycle,mulv(axis,-1));orient('top',baseCycle.map(i=>i+n),axis);
+    for(let i=0;i<n;i++){
+      const j=(i+1)%n,d=sub(bottom[j],bottom[i]);
+      orient('side'+i,[i,j,j+n,i+n],mulv(cross(d,axis),sign));
+    }
+  }else if(kind==='PYRAMID'){
+    orient('bottom',baseCycle,[0,0,-1]);
+    for(let i=0;i<n;i++){const j=(i+1)%n;orient('side'+i,[i,j,n],sub(mulv(add(add(vertices[i].p,vertices[j].p),vertices[n].p),1/3),interior));}
+  }else{
+    orient('bottom',baseCycle,[0,0,-1]);orient('top',baseCycle.map(i=>i+n),[0,0,1]);
+    for(let i=0;i<n;i++){const j=(i+1)%n;orient('side'+i,[i,j,j+n,i+n],sub(mulv(add(add(vertices[i].p,vertices[j].p),add(vertices[i+n].p,vertices[j+n].p)),0.25),interior));}
+  }
+  const edgeKey=new Map();
+  for(const face of faces)for(let k=0;k<face.idx.length;k++){const a=face.idx[k],b=face.idx[(k+1)%face.idx.length];edgeKey.set(a<b?a+','+b:b+','+a,[Math.min(a,b),Math.max(a,b)]);}
+  const edges=[...edgeKey.values()].sort((x,y)=>x[0]-y[0]||x[1]-y[1]);
+  // every face must be planar
+  for(const face of faces){
+    const pts=face.idx.map(i=>vertices[i].p),nrm=faceNormal(pts);
+    if(pts.some(p=>Math.abs(dot(nrm,sub(p,pts[0])))>1e-6))bad('SOLID_FACE_NOT_PLANAR');
+  }
+  return {id:spec.id,kind,category:'POLY',vertices,faces,edges,height};
+}
+
+/** A solid of revolution (cylinder, cone, cone frustum), a sphere or a hemisphere standing on the plane z=0 with its axis on the z axis. */
+function buildRound(spec){
+  const kind=spec.kind;
+  const keys={CYLINDER:['id','kind','radius','height','names'],CONE:['id','kind','radius','height','names'],CONE_FRUSTUM:['id','kind','radius','topRadius','height','names'],SPHERE:['id','kind','radius','names'],HEMISPHERE:['id','kind','radius','names']}[kind];
+  onlyKeys(spec,keys,'SOLID_PARAM_INVALID');
+  const r=pos(spec.radius,'SOLID_PARAM_INVALID');
+  let r1=r,height;
+  if(kind==='SPHERE'||kind==='HEMISPHERE')height=kind==='SPHERE'?2*r:r;
+  else height=pos(spec.height,'SOLID_PARAM_INVALID');
+  if(kind==='CONE')r1=0;
+  if(kind==='CONE_FRUSTUM'){r1=pos(spec.topRadius,'SOLID_PARAM_INVALID');if(!(r1<r))bad('SOLID_FRUSTUM_TOP_NOT_SMALLER');}
+  const names=spec.names??{};
+  onlyKeys(names,['center','top','apex'],'SOLID_NAMES_INVALID');
+  for(const key of Object.keys(names))if(!NAME.test(names[key]))bad('SOLID_NAMES_INVALID');
+  const points=[];
+  if(kind==='SPHERE'){points.push({name:names.center??null,id:'center',p:[0,0,r]});}
+  else if(kind==='HEMISPHERE'){points.push({name:names.center??null,id:'center',p:[0,0,0]});}
+  else{
+    points.push({name:names.center??null,id:'center',p:[0,0,0]});
+    if(kind!=='CONE')points.push({name:names.top??null,id:'top',p:[0,0,height]});
+    else points.push({name:names.apex??null,id:'apex',p:[0,0,height]});
+  }
+  return {id:spec.id,kind,category:kind==='SPHERE'||kind==='HEMISPHERE'?'SPHERE':'REV',radius:r,topRadius:r1,height,points};
+}
+
+const shiftSolid=(solid,s)=>{
+  // move along the screen's horizontal (and recentre the footprint on the origin first)
+  const d=mulv(EX,s);
+  if(solid.category==='POLY'){for(const v of solid.vertices)v.p=add(v.p,d).map(r6);}
+  else for(const q of solid.points)q.p=add(q.p,d).map(r6);
+  solid.offset=r6(s);
+};
+function recentre(solid){
+  if(solid.category!=='POLY')return;
+  const xs=solid.vertices.map(v=>v.p[0]),ys=solid.vertices.map(v=>v.p[1]);
+  const cx=(Math.min(...xs)+Math.max(...xs))/2,cy=(Math.min(...ys)+Math.max(...ys))/2;
+  for(const v of solid.vertices)v.p=[r6(v.p[0]-cx),r6(v.p[1]-cy),v.p[2]];
+}
+
+// --- visibility of polyhedron edges ------------------------------------------------------------------------------------------------------------
+const facePlane=(solid,face)=>{
+  const pts=face.idx.map(i=>solid.vertices[i].p),n=faceNormal(pts);
+  const axis=[0,1,2].sort((a,b)=>Math.abs(n[b])-Math.abs(n[a]))[0],keep=[0,1,2].filter(k=>k!==axis);
+  return {pts,n,d:dot(n,pts[0]),poly:pts.map(p=>[p[keep[0]],p[keep[1]]]),keep};
+};
+function inside2(poly,q){
+  let c=false;
+  for(let i=0,j=poly.length-1;i<poly.length;j=i++){
+    const [xi,yi]=poly[i],[xj,yj]=poly[j];
+    if((yi>q[1])!==(yj>q[1])&&q[0]<(xj-xi)*(q[1]-yi)/(yj-yi)+xi)c=!c;
+  }
+  return c;
+}
+/** True when some face (not in `skip`) lies between the point and the viewer. */
+function occluded(planes,P,skip){
+  for(const [id,fp] of planes){
+    if(skip.has(id))continue;
+    const denom=dot(fp.n,VIEW);
+    if(Math.abs(denom)<1e-9)continue;
+    const t=(fp.d-dot(fp.n,P))/denom;
+    if(t<=1e-7)continue;
+    const H=add(P,mulv(VIEW,t));
+    if(inside2(fp.poly,[H[fp.keep[0]],H[fp.keep[1]]]))return true;
+  }
+  return false;
+}
+/** Per edge: contiguous runs {t0,t1,hidden} along the edge from vertex a to vertex b (depth test by rays toward the viewer). */
+export function edgeRuns(solid){
+  const planes=new Map(solid.faces.map(face=>[face.id,facePlane(solid,face)]));
+  const runs=[];
+  for(const [a,b] of solid.edges){
+    const A=solid.vertices[a].p,B=solid.vertices[b].p;
+    const skip=new Set(solid.faces.filter(f=>f.idx.includes(a)&&f.idx.includes(b)&&f.idx.some((x,k)=>{const y=f.idx[(k+1)%f.idx.length];return (x===a&&y===b)||(x===b&&y===a);})).map(f=>f.id));
+    const hiddenAt=t=>occluded(planes,lerp(A,B,t),skip);
+    const N=160,flags=[...Array(N).keys()].map(k=>hiddenAt((k+0.5)/N));
+    const cuts=[0];
+    for(let k=1;k<N;k++)if(flags[k]!==flags[k-1]){
+      let lo=(k-0.5)/N,hi=(k+0.5)/N;const fl=flags[k-1];
+      for(let it=0;it<42;it++){const mid=(lo+hi)/2;if(hiddenAt(mid)===fl)lo=mid;else hi=mid;}
+      cuts.push((lo+hi)/2);
+    }
+    cuts.push(1);
+    const edgeRunList=[];
+    let state=flags[0];
+    for(let c=0;c<cuts.length-1;c++){edgeRunList.push({t0:r6(cuts[c]),t1:r6(cuts[c+1]),hidden:state});state=!state;}
+    runs.push({a,b,runs:edgeRunList});
+  }
+  return runs;
+}
+
+// --- numbers as label text --------------------------------------------------------------------------------------------------------------------
+/** The exact text of a length: 5, 7.5, 5\sqrt{2}, \frac{10}{3}, 8\pi, \frac{7}{2}\pi. Null when no exact short form exists. */
+export function lengthTex(L){
+  const near=(x,y)=>Math.abs(x-y)<=1e-9*Math.max(1,Math.abs(y));
+  const ri=Math.round(L);if(near(L,ri))return String(ri);
+  const dec=Number(L.toFixed(3));if(near(L,dec))return String(dec);
+  const m=Math.round(L*L);
+  if(m>0&&Math.abs(L*L-m)<1e-7){let a=1,b=m;for(let k=Math.floor(Math.sqrt(m));k>1;k--)if(m%(k*k)===0){a=k;b=m/(k*k);break;}return (a>1?String(a):'')+'\\sqrt{'+b+'}';}
+  for(let q=3;q<=12;q++){const p=Math.round(L*q);if(p>0&&near(L*q,p))return '\\frac{'+p+'}{'+q+'}';}
+  const k=L/Math.PI,kr=Math.round(k);
+  if(kr>0&&near(k,kr))return (kr>1?String(kr):'')+'\\pi';
+  const kd=Number(k.toFixed(3));if(kd>0&&near(k,kd))return kd+'\\pi';
+  for(let q=3;q<=12;q++){const p=Math.round(k*q);if(p>0&&near(k*q,p))return '\\frac{'+p+'}{'+q+'}\\pi';}
+  return null;
+}
+/** The number a numeric label text stands for (units stripped), or null when it is symbolic. */
+export function labelNumber(tex){
+  const t=String(tex).replace(/\\,?\\mathrm\{[a-z]+\}/g,'').replace(/\\,/g,'').replace(/\s+/g,'');
+  let m;
+  if((m=/^(\d+(?:\.\d+)?)$/.exec(t)))return Number(m[1]);
+  if((m=/^(\d*)\\sqrt\{(\d+)\}$/.exec(t)))return (m[1]===''?1:Number(m[1]))*Math.sqrt(Number(m[2]));
+  if((m=/^\\frac\{(\d+)\}\{(\d+)\}$/.exec(t)))return Number(m[1])/Number(m[2]);
+  if((m=/^(\d*(?:\.\d+)?)\\pi$/.exec(t)))return (m[1]===''?1:Number(m[1]))*Math.PI;
+  if((m=/^\\frac\{(\d+)\}\{(\d+)\}\\pi$/.exec(t)))return Number(m[1])/Number(m[2])*Math.PI;
+  if((m=/^(\d+(?:\.\d+)?)\^\\circ$/.exec(t)))return Number(m[1]);
+  return null;
+}
+const SYMBOLIC=/^[A-Za-z0-9_\\{}^+\-=.() ]{1,24}$/;
+function dimLabel(raw,value,unit,code,{angle=false}={}){
+  // raw: undefined (auto) or a TeX string. A numeric label must equal the value; anything else is a symbol and says so.
+  let tex,numeric=true;
+  if(raw===undefined){
+    tex=lengthTex(value);
+    if(tex===null)bad('SOLID_DIM_NOT_EXPRESSIBLE:'+code);
+    if(angle)tex=tex+'^\\circ';
+  }else{
+    if(typeof raw!=='string'||!SYMBOLIC.test(raw))bad('SOLID_DIM_LABEL_INVALID:'+code);
+    tex=raw;
+    const n=labelNumber(tex);
+    if(n===null)numeric=false;
+    else if(Math.abs(n-value)>1e-6*Math.max(1,Math.abs(value)))bad('SOLID_DIM_VALUE_MISMATCH:'+code);
+  }
+  const text=tex;
+  return {tex:numeric&&unit&&!angle?tex+'\\,\\mathrm{'+unit+'}':tex,text,numeric,value:r6(value)};
+}
+
+// --- solving the figure ---------------------------------------------------------------------------------------------------------------------
+const POLY_KINDS=['PRISM','PYRAMID','FRUSTUM'],ROUND_KINDS=['CYLINDER','CONE','CONE_FRUSTUM','SPHERE','HEMISPHERE'];
+const UNIT=/^(cm|mm|m|km)$/;
+export function solveSolidFigure(plan){
+  if(!isPlain(plan)||plan.capability!==SOLID_CAPABILITY)bad('SOLID_PLAN_INVALID');
+  onlyKeys(plan,['capability','unit','solids','net','dims','highlights','segments','section','solidCaption','caption','sourceConditions','newVisualInformation'],'SOLID_PLAN_INVALID');
+  if((plan.solids===undefined)===(plan.net===undefined))bad('SOLID_PLAN_INVALID');
+  if(plan.unit!==undefined&&(typeof plan.unit!=='string'||!UNIT.test(plan.unit)))bad('SOLID_UNIT_INVALID');
+  const model=plan.net!==undefined?solveNet(plan):solveSolids(plan);
+  // the Archive publication check reads text: a figure with no name and no length at all cannot be published
+  const names=model.mode==='SOLIDS'?model.solids.reduce((sum,solid)=>sum+(solid.category==='POLY'?solid.vertices:solid.points).filter(q=>q.name).length,0)
+    :model.netKind==='POLYHEDRON'?model.faces.reduce((sum,f)=>sum+f.corners.filter(Boolean).length,0):0;
+  if(names+model.dims.length===0)bad('SOLID_FIGURE_NEEDS_A_LABEL');
+  return model;
+}
+function solveSolids(plan){
+  if(!Array.isArray(plan.solids)||plan.solids.length<1||plan.solids.length>3)bad('SOLID_COUNT_INVALID');
+  const solids=plan.solids.map((spec,i)=>{
+    if(!isPlain(spec))bad('SOLID_PARAM_INVALID');
+    const withId={...spec,id:spec.id??'s'+(i+1)};
+    if(typeof withId.id!=='string'||!/^[a-z][a-z0-9]{0,7}$/.test(withId.id))bad('SOLID_ID_INVALID');
+    if(POLY_KINDS.includes(spec.kind))return buildPolyhedron(withId);
+    if(ROUND_KINDS.includes(spec.kind))return buildRound(withId);
+    return bad('SOLID_KIND_UNSUPPORTED:'+String(spec.kind).slice(0,24));
+  });
+  if(new Set(solids.map(s=>s.id)).size!==solids.length)bad('SOLID_ID_INVALID');
+  for(const solid of solids)recentre(solid);
+  // side-by-side placement on the screen's horizontal
+  const boxes=solids.map(solid=>{const pts=solidScreenPoints(solid);return {x0:Math.min(...pts.map(p=>p[0])),x1:Math.max(...pts.map(p=>p[0]))};});
+  const gap=0.3*Math.max(...boxes.map(b=>b.x1-b.x0));
+  let cursor=0;
+  solids.forEach((solid,i)=>{
+    const b=boxes[i],w=b.x1-b.x0;
+    const target=cursor-b.x0;// leftmost screen x at the cursor
+    shiftSolid(solid,target);cursor+=w+gap;
+  });
+  for(const solid of solids){
+    if(solid.category==='POLY')solid.runs=edgeRuns(solid);
+  }
+  // names are global; points are read after the placement
+  const named=new Map();
+  for(const solid of solids){
+    const list=solid.category==='POLY'?solid.vertices:solid.points;
+    for(const q of list){if(q.name===null||q.name===undefined)continue;if(named.has(q.name))bad('SOLID_NAME_DUPLICATE:'+q.name);named.set(q.name,{solid:solid.id,p:q.p});}
+  }
+  // segments (aux) between named points
+  const segments=[];
+  if(plan.segments!==undefined){
+    if(!Array.isArray(plan.segments)||plan.segments.length>8)bad('SOLID_SEGMENTS_INVALID');
+    for(const s of plan.segments){
+      onlyKeys(s,['from','to','style','role'],'SOLID_SEGMENTS_INVALID');
+      if(!named.has(s.from)||!named.has(s.to)||s.from===s.to)bad('SOLID_NAME_UNKNOWN');
+      const style=s.style??'SOLID';
+      if(!['SOLID','DASHED','AUTO'].includes(style))bad('SOLID_SEGMENTS_INVALID');
+      if(s.role!==undefined&&!['ACCENT','REF'].includes(s.role))bad('SOLID_SEGMENTS_INVALID');
+      segments.push({from:s.from,to:s.to,style,role:s.role??'ACCENT'});
+    }
+  }
+  const drawnPair=(a,b)=>segments.some(s=>(s.from===a&&s.to===b)||(s.from===b&&s.to===a))||solids.some(solid=>solid.category==='POLY'&&solid.edges.some(([i,j])=>{const x=solid.vertices[i].name,y=solid.vertices[j].name;return (x===a&&y===b)||(x===b&&y===a);}));
+  // auto visibility of an AUTO segment: depth test at several points
+  for(const s of segments)if(s.style==='AUTO'){
+    const solid=solids.find(x=>x.id===named.get(s.from).solid);
+    if(solid.category!=='POLY')bad('SOLID_SEGMENTS_INVALID');
+    const planes=new Map(solid.faces.map(face=>[face.id,facePlane(solid,face)]));
+    const A=named.get(s.from).p,B=named.get(s.to).p;
+    const hiddenSamples=[0.2,0.4,0.6,0.8].map(t=>occluded(planes,lerp(A,B,t),new Set()));
+    s.hidden=hiddenSamples.filter(Boolean).length>=2;
+  }
+  // highlights: planar polygons of named vertices
+  const highlights=[];
+  if(plan.highlights!==undefined){
+    if(!Array.isArray(plan.highlights)||plan.highlights.length>3)bad('SOLID_HIGHLIGHT_INVALID');
+    for(const h of plan.highlights){
+      onlyKeys(h,['polygon'],'SOLID_HIGHLIGHT_INVALID');
+      if(!Array.isArray(h.polygon)||h.polygon.length<3||h.polygon.length>6||new Set(h.polygon).size!==h.polygon.length)bad('SOLID_HIGHLIGHT_INVALID');
+      const pts=h.polygon.map(name=>{if(!named.has(name))bad('SOLID_NAME_UNKNOWN');return named.get(name).p;});
+      const nrm=faceNormal(pts);
+      if(pts.some(p=>Math.abs(dot(nrm,sub(p,pts[0])))>1e-6)||len(nrm)<0.5)bad('SOLID_HIGHLIGHT_NOT_PLANAR');
+      for(let k=0;k<h.polygon.length;k++){const a=h.polygon[k],b=h.polygon[(k+1)%h.polygon.length];if(!drawnPair(a,b))bad('SOLID_HIGHLIGHT_EDGE_NOT_DRAWN:'+a+b);}
+      highlights.push({polygon:[...h.polygon]});
+    }
+  }
+  // axial section of a round solid
+  let section=null;
+  if(plan.section!==undefined){
+    onlyKeys(plan.section,['solid','kind','at'],'SOLID_SECTION_INVALID');
+    if(plan.section.kind!=='AXIAL'&&plan.section.kind!=='LEVEL')bad('SOLID_SECTION_UNSUPPORTED');
+    const target=plan.section.solid??solids.find(s=>s.category==='REV')?.id;
+    const solid=solids.find(s=>s.id===target);
+    if(!solid||solid.category!=='REV')bad('SOLID_SECTION_UNSUPPORTED');
+    if(plan.section.kind==='AXIAL'){if(plan.section.at!==undefined)bad('SOLID_SECTION_INVALID');section={solid:solid.id,kind:'AXIAL'};}
+    else{
+      // a plane parallel to the base at the fraction `at` ("1/3") of the height: the water level of a vessel
+      const m=/^([1-9]\d?)\/([1-9]\d?)$/.exec(plan.section.at??'');
+      if(!m||Number(m[1])>=Number(m[2]))bad('SOLID_SECTION_INVALID');
+      const f=Number(m[1])/Number(m[2]),z=f*solid.height,r=solid.radius+(solid.topRadius-solid.radius)*f;
+      section={solid:solid.id,kind:'LEVEL',at:plan.section.at,z:r6(z),r:r6(r)};
+    }
+  }
+  // dimensions
+  const dims=[];
+  const unit=plan.unit??null;
+  if(plan.dims!==undefined){
+    if(!Array.isArray(plan.dims)||plan.dims.length>10)bad('SOLID_DIMS_INVALID');
+    plan.dims.forEach((d,k)=>{
+      onlyKeys(d,['from','to','edge','radius','height','slant','level','solid','label'],'SOLID_DIMS_INVALID');
+      if((d.from===undefined)!==(d.to===undefined))bad('SOLID_DIMS_INVALID');
+      if([d.edge!==undefined,d.from!==undefined,d.radius!==undefined,d.height!==undefined,d.slant!==undefined,d.level!==undefined].filter(Boolean).length!==1)bad('SOLID_DIMS_INVALID');
+      const code='d'+(k+1);
+      if(d.edge!==undefined||d.from!==undefined){
+        let a,b;
+        if(d.edge!==undefined){if(typeof d.edge!=='string'||d.edge.length!==2)bad('SOLID_DIMS_INVALID');[a,b]=[...d.edge];}else{a=d.from;b=d.to;}
+        if(!named.has(a)||!named.has(b)||a===b)bad('SOLID_NAME_UNKNOWN');
+        if(!drawnPair(a,b))bad('SOLID_DIM_SEGMENT_NOT_DRAWN:'+a+b);
+        const value=len(sub(named.get(a).p,named.get(b).p));
+        dims.push({id:'dim-'+(k+1),type:'SEGMENT',from:a,to:b,...dimLabel(d.label,value,unit,code)});
+      }else{
+        const solid=solids.find(s=>s.id===(d.solid??(d.level!==undefined?section?.solid:d.radius!==undefined||d.slant!==undefined?solids.find(s2=>s2.category==='REV'||s2.category==='SPHERE')?.id:solids.find(s2=>s2.category==='REV'||s2.kind==='PYRAMID'||s2.kind==='FRUSTUM')?.id)));
+        if(!solid)bad('SOLID_DIMS_INVALID');
+        if(d.radius!==undefined){
+          if(solid.category==='POLY')bad('SOLID_DIMS_INVALID');
+          const which=d.radius;
+          if(!['bottom','top','center'].includes(which))bad('SOLID_DIMS_INVALID');
+          const rr=which==='top'?solid.topRadius:solid.radius;
+          if(which==='top'&&(solid.kind==='CYLINDER'?false:solid.kind!=='CONE_FRUSTUM'))bad('SOLID_DIMS_INVALID');
+          if(which==='center'&&solid.category!=='SPHERE')bad('SOLID_DIMS_INVALID');
+          if(which!=='center'&&solid.category==='SPHERE')bad('SOLID_DIMS_INVALID');
+          const z=solid.category==='SPHERE'?(solid.kind==='SPHERE'?solid.radius:0):(which==='top'?solid.height:0);
+          const rimR=which==='top'&&solid.kind==='CYLINDER'?solid.radius:rr;
+          dims.push({id:'dim-'+(k+1),type:'RADIUS',solid:solid.id,which,z,r:r6(rimR),...dimLabel(d.label,rimR,unit,code)});
+        }else if(d.level!==undefined){
+          if(d.level!==true||!section||section.kind!=='LEVEL'||section.solid!==solid.id)bad('SOLID_DIMS_INVALID');
+          dims.push({id:'dim-'+(k+1),type:'LEVEL',solid:solid.id,...dimLabel(d.label,section.z,unit,code)});
+        }else if(d.height!==undefined){
+          if(d.height!==true)bad('SOLID_DIMS_INVALID');
+          if(solid.category==='SPHERE'&&solid.kind==='SPHERE')bad('SOLID_DIMS_INVALID');
+          const h=solid.height;
+          dims.push({id:'dim-'+(k+1),type:'HEIGHT',solid:solid.id,...dimLabel(d.label,h,unit,code)});
+        }else{
+          if(d.slant!==true||(solid.kind!=='CONE'&&solid.kind!=='CONE_FRUSTUM'))bad('SOLID_DIMS_INVALID');
+          const l=Math.hypot(solid.radius-solid.topRadius,solid.height);
+          dims.push({id:'dim-'+(k+1),type:'SLANT',solid:solid.id,...dimLabel(d.label,l,unit,code)});
+        }
+      }
+    });
+  }
+  // a height dimension of a pyramid / frustum is the foot line from the apex (or top centre) to the base plane
+  for(const d of dims)if(d.type==='HEIGHT'){
+    const solid=solids.find(s=>s.id===d.solid);
+    if(solid.category==='POLY'){
+      if(solid.kind==='PRISM')bad('SOLID_DIMS_INVALID');
+      const apexV=solid.kind==='PYRAMID'?solid.vertices[solid.vertices.length-1]:null;
+      const topP=apexV?apexV.p:solid.vertices.slice(solid.vertices.length/2).reduce((s,v)=>add(s,mulv(v.p,2/solid.vertices.length)),[0,0,0]);
+      d.top=topP.map(r6);d.foot=[topP[0],topP[1],0].map(r6);
+    }
+  }
+  return {schemaVersion:SOLID_MODEL_VERSION,mode:'SOLIDS',unit,yawDeg:YAW_DEG,pitchDeg:PITCH_DEG,solids,segments,highlights,section,dims};
+}
+function solidScreenPoints(solid){
+  if(solid.category==='POLY')return solid.vertices.map(v=>project(v.p));
+  const r=solid.radius,pts=[];
+  const ox=solid.offset??0;
+  const ell=(rad,z)=>{const c=project([0,0,z]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+rad*Math.cos(u),c[1]+rad*sP*Math.sin(u)]);}};
+  if(solid.kind==='SPHERE'){const c=project([0,0,r]);c[0]+=ox;for(let k=0;k<24;k++){const u=2*Math.PI*k/24;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}}
+  else if(solid.kind==='HEMISPHERE'){const c=project([0,0,0]);c[0]+=ox;for(let k=0;k<=12;k++){const u=Math.PI*k/12;pts.push([c[0]+r*Math.cos(u),c[1]+r*Math.sin(u)]);}ell(r,0);}
+  else{ell(solid.radius,0);if(solid.topRadius>0)ell(solid.topRadius,solid.height);else{const q=project([0,0,solid.height]);pts.push([q[0]+ox,q[1]]);}}
+  return pts;
+}
+
+// --- nets -----------------------------------------------------------------------------------------------------------------------------------
+const rot=(p,c,s)=>[p[0]*c-p[1]*s,p[0]*s+p[1]*c];
+/** Local 2D coordinates of a face seen from outside (counter-clockwise): origin at its first vertex, x along its first edge. */
+function flatten(pts3){
+  const n=faceNormal(pts3),ex=unit(sub(pts3[1],pts3[0])),ey=cross(n,ex);
+  return pts3.map(p=>{const d=sub(p,pts3[0]);return [r6(dot(d,ex)),r6(dot(d,ey))];});
+}
+function polyOverlap(a,b){
+  const na=a.length,nb=b.length;
+  for(let i=0;i<na;i++)for(let j=0;j<nb;j++)if(segmentsCross(a[i],a[(i+1)%na],b[j],b[(j+1)%nb]))return true;
+  const cen=p=>p.reduce((s,q)=>[s[0]+q[0]/p.length,s[1]+q[1]/p.length],[0,0]);
+  // a face strictly inside another (identical centroids included)
+  const shrink=(p)=>{const c=cen(p);return p.map(q=>[c[0]+(q[0]-c[0])*0.9,c[1]+(q[1]-c[1])*0.9]);};
+  return shrink(a).some(q=>inside2(b,q))||shrink(b).some(q=>inside2(a,q))||inside2(b,cen(a))||inside2(a,cen(b));
+}
+function solveNet(plan){
+  const net=plan.net;
+  if(plan.dims!==undefined||plan.highlights!==undefined||plan.segments!==undefined||plan.section!==undefined)bad('SOLID_PLAN_INVALID');
+  onlyKeys(net,['solid','root','joins','corners','dims','kind','radius','height','slant'],'SOLID_NET_INVALID');
+  const unit=plan.unit??null;
+  if(net.kind==='CYLINDER'||net.kind==='CONE'){
+    const r=pos(net.radius,'SOLID_PARAM_INVALID');
+    const dims=[];
+    if(net.kind==='CYLINDER'){
+      const h=pos(net.height,'SOLID_PARAM_INVALID'),W=2*Math.PI*r;
+      const shapes={rect:{x:0,y:0,w:r6(W),h},bottom:{cx:r6(W/2),cy:r6(-r),r},top:{cx:r6(W/2),cy:r6(h+r),r}};
+      for(const [k,d] of (net.dims??[]).entries()){
+        onlyKeys(d,['part','label'],'SOLID_DIMS_INVALID');
+        const code='d'+(k+1);
+        const spec={'rect-width':W,'rect-height':h,'radius-top':r,'radius-bottom':r}[d.part];
+        if(spec===undefined)bad('SOLID_DIMS_INVALID');
+        dims.push({id:'dim-'+(k+1),type:'NETPART',part:d.part,...dimLabel(d.label,spec,unit,code)});
+      }
+      return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'CYLINDER',radius:r,height:h,shapes,dims};
+    }
+    const l=net.slant!==undefined?pos(net.slant,'SOLID_PARAM_INVALID'):Math.hypot(r,pos(net.height,'SOLID_PARAM_INVALID'));
+    if(!(l>r))bad('SOLID_CONE_SLANT_TOO_SHORT');
+    const theta=360*r/l;
+    const shapes={sector:{radius:l,angleDeg:r6(theta)},base:{cx:0,cy:r6(-(l+r)),r}};
+    for(const [k,d] of (net.dims??[]).entries()){
+      onlyKeys(d,['part','label'],'SOLID_DIMS_INVALID');
+      const code='d'+(k+1);
+      const value={slant:l,arc:2*Math.PI*r,radius:r,angle:theta}[d.part];
+      if(value===undefined)bad('SOLID_DIMS_INVALID');
+      dims.push({id:'dim-'+(k+1),type:'NETPART',part:d.part,...dimLabel(d.label,value,unit,code,{angle:d.part==='angle'})});
+    }
+    return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'CONE',radius:r,slant:r6(l),shapes,dims};
+  }
+  if(net.kind!==undefined)bad('SOLID_NET_UNSUPPORTED:'+String(net.kind).slice(0,24));
+  if(!isPlain(net.solid)||!POLY_KINDS.includes(net.solid.kind))bad('SOLID_NET_INVALID');
+  const solid=buildPolyhedron({...net.solid,id:'s1'});
+  const faceById=new Map(solid.faces.map(f=>[f.id,f]));
+  if(typeof net.root!=='string'||!faceById.has(net.root))bad('SOLID_NET_FACE_UNKNOWN');
+  if(!Array.isArray(net.joins)||net.joins.length!==solid.faces.length-1)bad('SOLID_NET_NOT_A_TREE');
+  const shared=(fa,fb)=>{
+    const common=fa.idx.filter(i=>fb.idx.includes(i));
+    if(common.length!==2)return null;
+    // the edge must be consecutive in both cycles; fa traverses it a->b, fb b->a
+    const n=fa.idx.length;
+    for(let k=0;k<n;k++){const a=fa.idx[k],b=fa.idx[(k+1)%n];if(common.includes(a)&&common.includes(b))return [a,b];}
+    return null;
+  };
+  const placed=new Map();
+  const flat=new Map(solid.faces.map(f=>[f.id,flatten(f.idx.map(i=>solid.vertices[i].p))]));
+  placed.set(net.root,{poly:flat.get(net.root).map(p=>[...p]),parent:null});
+  const pending=net.joins.map(j=>{if(!Array.isArray(j)||j.length!==2||!faceById.has(j[0])||!faceById.has(j[1]))bad('SOLID_NET_FACE_UNKNOWN');return j;});
+  const joinsOut=[];
+  let guard=0;
+  while(pending.length&&guard++<20){
+    const k=pending.findIndex(([p,c])=>placed.has(p)&&!placed.has(c));
+    if(k<0)bad('SOLID_NET_NOT_A_TREE');
+    const [pid,cid]=pending.splice(k,1)[0];
+    const fp=faceById.get(pid),fc=faceById.get(cid),edge=shared(fp,fc);
+    if(!edge)bad('SOLID_NET_FACES_NOT_ADJACENT:'+pid+','+cid);
+    const [a,b]=edge,parentPoly=placed.get(pid).poly,pa=parentPoly[fp.idx.indexOf(a)],pb=parentPoly[fp.idx.indexOf(b)];
+    const local=flat.get(cid),ca=local[fc.idx.indexOf(a)],cb=local[fc.idx.indexOf(b)];
+    // the child traverses the shared edge b->a; map ca->pa, cb->pb by a rotation + translation
+    const ang=Math.atan2(pb[1]-pa[1],pb[0]-pa[0])-Math.atan2(cb[1]-ca[1],cb[0]-ca[0]),c=Math.cos(ang),s=Math.sin(ang);
+    const rc=rot(ca,c,s);
+    const poly=local.map(q=>{const r=rot(q,c,s);return [r6(r[0]-rc[0]+pa[0]),r6(r[1]-rc[1]+pa[1])];});
+    placed.set(cid,{poly,parent:pid});
+    joinsOut.push({parent:pid,child:cid,edge:[a,b]});
+  }
+  if(pending.length||placed.size!==solid.faces.length)bad('SOLID_NET_NOT_A_TREE');
+  const ids=[...placed.keys()];
+  for(let i=0;i<ids.length;i++)for(let j=i+1;j<ids.length;j++)if(polyOverlap(placed.get(ids[i]).poly,placed.get(ids[j]).poly))bad('SOLID_NET_FACES_OVERLAP:'+ids[i]+','+ids[j]);
+  // corner names
+  const corners={};
+  for(const f of solid.faces){
+    const given=net.corners?.[f.id];
+    if(given!==undefined){
+      const list=typeof given==='string'?[...given]:given;
+      if(!Array.isArray(list)||list.length!==f.idx.length||list.some(x=>x!==null&&!NAME.test(String(x))))bad('SOLID_NAMES_INVALID');
+      corners[f.id]=list;
+    }else corners[f.id]=f.idx.map(i=>solid.vertices[i].name);
+  }
+  if(net.corners)for(const key of Object.keys(net.corners))if(!faceById.has(key))bad('SOLID_NET_FACE_UNKNOWN');
+  const dims=[];
+  for(const [k,d] of (net.dims??[]).entries()){
+    onlyKeys(d,['face','edge','label'],'SOLID_DIMS_INVALID');
+    if(!faceById.has(d.face)||!Number.isInteger(d.edge)||d.edge<0||d.edge>=faceById.get(d.face).idx.length)bad('SOLID_DIMS_INVALID');
+    const f=faceById.get(d.face),a=f.idx[d.edge],b=f.idx[(d.edge+1)%f.idx.length];
+    const value=len(sub(solid.vertices[a].p,solid.vertices[b].p));
+    dims.push({id:'dim-'+(k+1),type:'NETEDGE',face:d.face,edge:d.edge,...dimLabel(d.label,value,unit,'d'+(k+1))});
+  }
+  return {schemaVersion:SOLID_MODEL_VERSION,mode:'NET',unit,netKind:'POLYHEDRON',solid:{kind:solid.kind,vertices:solid.vertices,faces:solid.faces},root:net.root,joins:joinsOut,
+    faces:solid.faces.map(f=>({id:f.id,idx:f.idx,poly:placed.get(f.id).poly,corners:corners[f.id]})),dims};
+}
+
+// --- layout and spec ----------------------------------------------------------------------------------------------------------------------------
+const WIDTH=480,MARGIN_X=62,MARGIN_Y=50,SAFE=10,MAX_FIG_H=300,MAX_SCALE=70;
+function figureExtent(model){
+  const pts=[];
+  if(model.mode==='SOLIDS'){for(const solid of model.solids)pts.push(...solidScreenPoints(solid));}
+  else if(model.netKind==='POLYHEDRON'){for(const f of model.faces)pts.push(...f.poly);}
+  else if(model.netKind==='CYLINDER'){const s=model.shapes;pts.push([s.rect.x,s.rect.y],[s.rect.x+s.rect.w,s.rect.y+s.rect.h],[s.bottom.cx-s.bottom.r,s.bottom.cy-s.bottom.r],[s.bottom.cx+s.bottom.r,s.bottom.cy+s.bottom.r],[s.top.cx-s.top.r,s.top.cy-s.top.r],[s.top.cx+s.top.r,s.top.cy+s.top.r]);}
+  else{
+    const {sector,base}=model.shapes,half=sector.angleDeg/2*Math.PI/180;
+    pts.push([0,0]);
+    for(let k=0;k<=24;k++){const a=-Math.PI/2-half+2*half*k/24;pts.push([sector.radius*Math.cos(a),sector.radius*Math.sin(a)]);}
+    pts.push([base.cx-base.r,base.cy-base.r],[base.cx+base.r,base.cy+base.r]);
+  }
+  return {x0:Math.min(...pts.map(p=>p[0])),x1:Math.max(...pts.map(p=>p[0])),y0:Math.min(...pts.map(p=>p[1])),y1:Math.max(...pts.map(p=>p[1]))};
+}
+/** Scale, origin and size of the panel; known from the model alone (the Archive policy is measured before anything is composed). */
+export function figureFrame(model){
+  const e=figureExtent(model),bw=e.x1-e.x0,bh=e.y1-e.y0;
+  const scale=r6(Math.min((WIDTH-2*MARGIN_X)/bw,MAX_FIG_H/bh,MAX_SCALE));
+  const height=Math.ceil(bh*scale+2*MARGIN_Y);
+  return {scale,width:WIDTH,height,origin:[r6(WIDTH/2-scale*(e.x0+e.x1)/2),r6(height/2+scale*(e.y0+e.y1)/2)],extent:e};
+}
+export const figurePanelSize=model=>{const f=figureFrame(model);return {width:f.width,height:f.height};};
+
+const ELL_SAMPLES=36;
+/**
+ * The figure before typesetting: every primitive in px with its role, then the label requests (anchor, preferred direction). Deterministic.
+ * Primitives: {t:'line'|'arc'|'circle'|'poly'|'path',...}.
+ */
+export function solidFigureSpec(plan,model){
+  if(plan?.capability!==SOLID_CAPABILITY)bad('SOLID_PLAN_INVALID');
+  if(objectSha(solveSolidFigure(plan))!==objectSha(model))bad('SOLID_MODEL_MISMATCH');
+  const frame=figureFrame(model),S=frame.scale,[OX,OY]=frame.origin;
+  const X=u=>r6(OX+S*u),Y=v=>r6(OY-S*v),pt=q=>[X(q[0]),Y(q[1])];
+  const prims=[],labels=[];
+  const line=(id,role,a,b,extra={})=>{prims.push({t:'line',id,role,x1:a[0],y1:a[1],x2:b[0],y2:b[1],...extra});};
+  if(model.mode==='SOLIDS')spec3d(plan,model,{S,X,Y,pt,prims,labels,line,frame});
+  else specNet(plan,model,{S,X,Y,pt,prims,labels,line,frame});
+  return {schemaVersion:SOLID_SPEC_VERSION,size:{width:frame.width,height:frame.height},frame:{scale:S,origin:frame.origin},prims,labels};
+}
+function ellipseOf(S,solid,rad,z){
+  const c=project([0,0,z]);// the solid's axis is shifted along the screen horizontal by its offset
+  return {cx:c[0]+(solid.offset??0),cy:c[1],a:rad,b:rad*sP};
+}
+const heightDimX=(solid,X)=>r6(Math.max(SAFE+2,Math.min(...solid.vertices.map(v=>X(project(v.p)[0])))-26));
+function spec3d(plan,model,ctx){
+  const {S,X,Y,pt,prims,labels,line}=ctx;
+  const named=new Map();
+  for(const solid of model.solids){
+    if(solid.category==='POLY')solid.vertices.forEach(v=>{if(v.name)named.set(v.name,v.p);});
+    else for(const q of solid.points)if(q.name)named.set(q.name,q.p);
+  }
+  const arcPrim=(id,role,e,u0,u1,vis,attrs={})=>prims.push({t:'arc',id,role,cx:X(e.cx),cy:Y(e.cy),rx:r6(S*e.a),ry:r6(S*e.b),u0:r6(u0),u1:r6(u1),vis,...attrs});
+  const outline=[];// polylines for label obstacles are derived from prims later
+  const fillFirst=[];
+  for(const h of model.highlights){
+    fillFirst.push({t:'poly',id:'highlight-'+h.polygon.join(''),role:'highlight-face',points:h.polygon.map(n=>pt(project(named.get(n)))),polygon:h.polygon.join('')});
+  }
+  prims.push(...fillFirst);
+  void outline;
+  for(const solid of model.solids){
+    const sid=solid.id;
+    if(solid.category==='POLY'){
+      for(const {a,b,runs} of solid.runs){
+        const va=solid.vertices[a],vb=solid.vertices[b];
+        const nm=(v,i)=>v.name??('v'+i);
+        runs.forEach((run,k)=>{
+          const p0=pt(project(lerp(va.p,vb.p,run.t0))),p1=pt(project(lerp(va.p,vb.p,run.t1)));
+          if(Math.hypot(p1[0]-p0[0],p1[1]-p0[1])<0.4)return;
+          line(`${sid}-edge-${nm(va,a)}${nm(vb,b)}-${k+1}`,'edge',p0,p1,{solid:sid,edge:nm(va,a)+nm(vb,b),vis:run.hidden?'hidden':'solid',t0:run.t0,t1:run.t1});
+        });
+      }
+    }else if(solid.category==='REV')specRev(solid,ctx,arcPrim);
+    else specSphere(solid,ctx,arcPrim);
+  }
+  for(const [k,s] of model.segments.entries()){
+    const a=pt(project(named.get(s.from))),b=pt(project(named.get(s.to)));
+    line(`segment-${s.from}${s.to}`,'segment',a,b,{edge:s.from+s.to,vis:s.style==='AUTO'?(s.hidden?'hidden':'solid'):s.style==='DASHED'?'hidden':'solid',accent:s.role,style:s.style});
+    void k;
+  }
+  if(model.section?.kind==='AXIAL'){
+    const solid=model.solids.find(s=>s.id===model.section.solid);
+    const pts=sectionPolygon(solid);
+    prims.push({t:'poly',id:'section-'+solid.id,role:'section',solid:solid.id,points:pts.map(q=>pt(project(q))),polygon:'axial'});
+  }else if(model.section?.kind==='LEVEL'){
+    const solid=model.solids.find(s=>s.id===model.section.solid),e=ellipseOf(S,solid,model.section.r,model.section.z);
+    prims.push({t:'ellipse',id:'level-'+solid.id,role:'level-fill',solid:solid.id,cx:X(e.cx),cy:Y(e.cy),rx:r6(S*e.a),ry:r6(S*e.b)});
+    arcPrim(solid.id+'-level-back','ellipse-arc',e,0,Math.PI,'solid',{solid:solid.id,circle:'level',half:'BACK'});
+    arcPrim(solid.id+'-level-front','ellipse-arc',e,Math.PI,2*Math.PI,'solid',{solid:solid.id,circle:'level',half:'FRONT'});
+  }
+  // dimension lines (radius, height) are drawn; segment dims label an existing segment
+  for(const d of model.dims){
+    if(d.type==='RADIUS'){
+      const solid=model.solids.find(s=>s.id===d.solid);
+      const c=project([solid.offset?EX[0]*solid.offset:0,solid.offset?EX[1]*solid.offset:0,d.z]);
+      const rim=[c[0]+d.r,c[1]];// screen-horizontal radius: ends at the ellipse's right extreme
+      line(d.id+'-line','dim-line',pt(c),pt(rim),{solid:solid.id,dim:d.id,kind:'RADIUS',vis:'solid'});
+    }else if(d.type==='HEIGHT'){
+      const solid=model.solids.find(s=>s.id===d.solid);
+      if(solid.category==='POLY'){
+        // A pyramid/frustum is narrow at mid-height: keep the dashed height axis inside, draw the dimension line outside the silhouette
+        // (with extension lines to the apex and the base-centre level) so the length never has to sit between two edges.
+        const top=pt(project(d.top)),foot=pt(project(d.foot));
+        line(d.id+'-axis','height-axis',foot,top,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'hidden'});
+        const x=heightDimX(solid,X);
+        line(d.id+'-line','dim-line',[x,foot[1]],[x,top[1]],{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+        line(d.id+'-ext-top','dim-ext',[x,top[1]],top,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+        line(d.id+'-ext-bottom','dim-ext',[x,foot[1]],foot,{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'solid'});
+      }
+      else{
+        const bottom=solid.kind==='HEMISPHERE'?[0,0,0]:[0,0,0],top=[0,0,solid.height];
+        const sh=mulv(EX,solid.offset??0);
+        line(d.id+'-line','dim-line',pt(project(add(bottom,sh))),pt(project(add(top,sh))),{solid:solid.id,dim:d.id,kind:'HEIGHT',vis:'hidden'});
+      }
+    }else if(d.type==='LEVEL'){
+      const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
+      line(d.id+'-line','dim-line',pt(project(sh)),pt(project(add([0,0,model.section.z],sh))),{solid:solid.id,dim:d.id,kind:'LEVEL',vis:'hidden'});
+    }else if(d.type==='SLANT'){
+      const solid=model.solids.find(s=>s.id===d.solid);
+      void solid;
+    }
+  }
+  // label requests
+  const centroidScreen=(()=>{const pts=model.solids.flatMap(solidScreenPoints);return [pts.reduce((s,p)=>s+p[0],0)/pts.length,pts.reduce((s,p)=>s+p[1],0)/pts.length];})();
+  for(const solid of model.solids){
+    if(solid.category==='POLY'){
+      solid.vertices.forEach((v,i)=>{
+        if(!v.name)return;
+        const here=project(v.p);let dir=[0,0];
+        for(const [a,b] of solid.edges){
+          const other=a===i?b:b===i?a:-1;if(other<0)continue;
+          const q=project(solid.vertices[other].p),d=[q[0]-here[0],q[1]-here[1]],l=Math.hypot(d[0],d[1]);
+          if(l>1e-9){dir[0]-=d[0]/l;dir[1]-=d[1]/l;}
+        }
+        let l=Math.hypot(dir[0],dir[1]);
+        if(l<0.35){dir=[here[0]-centroidScreen[0],here[1]-centroidScreen[1]];l=Math.hypot(dir[0],dir[1])||1;}
+        labels.push({id:'name-'+v.name,role:'vertex-name',owner:'vertex-'+v.name,kind:'MATH',tex:v.name,plain:v.name,value:v.name,anchor:pt(here),dir:[r6(dir[0]/l),r6(dir[1]/l)]});
+      });
+    }else{
+      for(const q of solid.points){
+        if(!q.name)continue;
+        const here=project(q.p),isTop=q.id==='top'||q.id==='apex';
+        labels.push({id:'name-'+q.name,role:'vertex-name',owner:'point-'+q.name,kind:'MATH',tex:q.name,plain:q.name,value:q.name,anchor:pt(here),dir:isTop?[0,1]:[0,-1]});
+      }
+    }
+  }
+  for(const d of model.dims){
+    const label={id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id};
+    if(d.type==='SEGMENT'){
+      const a=pt(project(named.get(d.from))),b=pt(project(named.get(d.to)));
+      labels.push({...label,segment:[a,b],segmentOf:d.from+d.to});
+    }else if(d.type==='RADIUS'){
+      const solid=model.solids.find(s=>s.id===d.solid);
+      const c=project([EX[0]*(solid.offset??0),EX[1]*(solid.offset??0),d.z]);
+      labels.push({...label,segment:[pt(c),pt([c[0]+d.r,c[1]])],segmentOf:'radius'});
+    }else if(d.type==='HEIGHT'){
+      const solid=model.solids.find(s=>s.id===d.solid);
+      if(solid.category==='POLY'){const top=pt(project(d.top)),foot=pt(project(d.foot)),x=heightDimX(solid,X);labels.push({...label,segment:[[x,foot[1]],[x,top[1]]],segmentOf:'height'});}
+      else{const sh=mulv(EX,solid.offset??0);labels.push({...label,segment:[pt(project(add([0,0,0],sh))),pt(project(add([0,0,solid.height],sh)))],segmentOf:'height'});}
+    }else if(d.type==='LEVEL'){
+      const solid=model.solids.find(s=>s.id===d.solid),sh=mulv(EX,solid.offset??0);
+      labels.push({...label,segment:[pt(project(sh)),pt(project(add([0,0,model.section.z],sh)))],segmentOf:'level'});
+    }else if(d.type==='SLANT'){
+      const solid=model.solids.find(s=>s.id===d.solid);
+      const apex=apexOf(solid),bt=tangentPoints(ellipseOf(S,solid,solid.radius,0),apex);
+      const tt=solid.kind==='CONE'?apex:tangentPoints(ellipseOf(S,solid,solid.topRadius,solid.height),apex)[1];
+      labels.push({...label,segment:[pt(bt[1]),pt(tt)],segmentOf:'slant'});
+    }
+  }
+}
+function apexOf(solid){
+  // the screen point of the (virtual) apex of a cone or cone frustum
+  const k=solid.radius/(solid.radius-solid.topRadius),za=solid.height*k;
+  const c=project([0,0,za]);return [c[0]+(solid.offset??0),c[1]];
+}
+/** The two tangent points (left, right) from a point straight above the centre of an axis-aligned ellipse (sin u = b/d). */
+function tangentPoints(e,apex){
+  const d=apex[1]-e.cy;
+  if(d<=e.b+1e-9)return [[e.cx-e.a,e.cy],[e.cx+e.a,e.cy]];
+  const s=e.b/d,cu=Math.sqrt(1-s*s);
+  return [[e.cx-e.a*cu,e.cy+e.b*s],[e.cx+e.a*cu,e.cy+e.b*s]];
+}
+function sectionPolygon(solid){
+  const sh=mulv(EX,solid.offset??0),r=solid.radius,r1=solid.topRadius,h=solid.height;
+  const p=(s,z)=>add([s*EX[0],s*EX[1],z],sh);
+  if(solid.kind==='CONE')return [p(-r,0),p(r,0),p(0,h)];
+  return [p(-r,0),p(r,0),p(r1,h),p(-r1,h)];
+}
+function specRev(solid,ctx,arcPrim){
+  const {S,pt,prims,line}=ctx;
+  const sid=solid.id,bot=ellipseOf(S,solid,solid.radius,0);
+  const cone=solid.kind==='CONE'||solid.kind==='CONE_FRUSTUM';
+  if(!cone){
+    // cylinder: the base ellipse's back half hidden, the top ellipse whole; verticals at x = +-r
+    const top=ellipseOf(S,solid,solid.radius,solid.height);
+    arcPrim(sid+'-base-front','ellipse-arc',bot,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'bottom',half:'FRONT'});
+    arcPrim(sid+'-base-back','ellipse-arc',bot,0,Math.PI,'hidden',{solid:sid,circle:'bottom',half:'BACK'});
+    arcPrim(sid+'-top-back','ellipse-arc',top,0,Math.PI,'solid',{solid:sid,circle:'top',half:'BACK'});
+    arcPrim(sid+'-top-front','ellipse-arc',top,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'top',half:'FRONT'});
+    for(const sgn of [-1,1])line(`${sid}-side-${sgn<0?'left':'right'}`,'silhouette',pt([bot.cx+sgn*bot.a,bot.cy]),pt([top.cx+sgn*top.a,top.cy]),{solid:sid,side:sgn<0?'LEFT':'RIGHT',vis:'solid'});
+    return;
+  }
+  const apex=apexOf(solid),[bl,br]=tangentPoints(bot,apex);
+  const uOf=(e,q)=>Math.atan2((q[1]-e.cy)/e.b,(q[0]-e.cx)/e.a);
+  const uR=uOf(bot,br),uL=uOf(bot,bl);// uR in (0,pi/2), uL = pi-uR
+  arcPrim(sid+'-base-front','ellipse-arc',bot,uL,2*Math.PI+uR,'solid',{solid:sid,circle:'bottom',half:'FRONT'});
+  arcPrim(sid+'-base-back','ellipse-arc',bot,uR,uL,'hidden',{solid:sid,circle:'bottom',half:'BACK'});
+  if(solid.kind==='CONE'){
+    line(`${sid}-side-left`,'silhouette',pt(apexOf(solid)),pt(bl),{solid:sid,side:'LEFT',vis:'solid'});
+    line(`${sid}-side-right`,'silhouette',pt(apexOf(solid)),pt(br),{solid:sid,side:'RIGHT',vis:'solid'});
+  }else{
+    const top=ellipseOf(S,solid,solid.topRadius,solid.height),[tl,tr]=tangentPoints(top,apex);
+    arcPrim(sid+'-top-back','ellipse-arc',top,0,Math.PI,'solid',{solid:sid,circle:'top',half:'BACK'});
+    arcPrim(sid+'-top-front','ellipse-arc',top,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'top',half:'FRONT'});
+    line(`${sid}-side-left`,'silhouette',pt(bl),pt(tl),{solid:sid,side:'LEFT',vis:'solid'});
+    line(`${sid}-side-right`,'silhouette',pt(br),pt(tr),{solid:sid,side:'RIGHT',vis:'solid'});
+  }
+}
+function specSphere(solid,ctx,arcPrim){
+  const {S,X,Y,prims}=ctx;
+  const sid=solid.id,r=solid.radius,sh=solid.offset??0;
+  if(solid.kind==='SPHERE'){
+    const c=project([0,0,r]),cx=c[0]+sh;
+    const eq={cx,cy:c[1],a:r,b:r*sP};
+    arcPrim(sid+'-outline-upper','sphere-outline',{cx,cy:c[1],a:r,b:r},0,Math.PI,'solid',{solid:sid,part:'UPPER'});
+    arcPrim(sid+'-outline-lower','sphere-outline',{cx,cy:c[1],a:r,b:r},Math.PI,2*Math.PI,'solid',{solid:sid,part:'LOWER'});
+    arcPrim(sid+'-equator-front','ellipse-arc',eq,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'equator',half:'FRONT'});
+    arcPrim(sid+'-equator-back','ellipse-arc',eq,0,Math.PI,'hidden',{solid:sid,circle:'equator',half:'BACK'});
+  }else{
+    const c=project([0,0,0]),cx=c[0]+sh;
+    const base={cx,cy:c[1],a:r,b:r*sP};
+    arcPrim(sid+'-outline-upper','sphere-outline',{cx,cy:c[1],a:r,b:r},0,Math.PI,'solid',{solid:sid,part:'UPPER'});
+    arcPrim(sid+'-base-front','ellipse-arc',base,Math.PI,2*Math.PI,'solid',{solid:sid,circle:'bottom',half:'FRONT'});
+    arcPrim(sid+'-base-back','ellipse-arc',base,0,Math.PI,'hidden',{solid:sid,circle:'bottom',half:'BACK'});
+  }
+  void X;void Y;void S;void prims;
+}
+function specNet(plan,model,ctx){
+  const {S,pt,prims,labels,line}=ctx;
+  const fold='hidden';
+  if(model.netKind==='POLYHEDRON'){
+    const byId=new Map(model.faces.map(f=>[f.id,f]));
+    const joinOf=new Map();
+    for(const j of model.joins){joinOf.set(j.parent+'|'+j.edge.join(','),j);}
+    const foldEdges=new Set();
+    for(const j of model.joins){
+      const fp=byId.get(j.parent),fc=byId.get(j.child);
+      foldEdges.add(j.parent+':'+Math.min(...j.edge)+'-'+Math.max(...j.edge));foldEdges.add(j.child+':'+Math.min(...j.edge)+'-'+Math.max(...j.edge));
+      void fp;void fc;
+    }
+    for(const f of model.faces)prims.push({t:'poly',id:'net-face-'+f.id,role:'net-face',face:f.id,points:f.poly.map(pt)});
+    const drawn=new Set();
+    for(const f of model.faces){
+      const n=f.idx.length;
+      for(let k=0;k<n;k++){
+        const a=f.idx[k],b=f.idx[(k+1)%n],key=f.id+':'+Math.min(a,b)+'-'+Math.max(a,b),isFold=foldEdges.has(key);
+        const pairKey=Math.min(a,b)+'-'+Math.max(a,b)+(isFold?'-fold':'-'+f.id);
+        if(isFold&&drawn.has(pairKey))continue;
+        drawn.add(pairKey);
+        line(`net-edge-${f.id}-${k}`,'net-edge',pt(f.poly[k]),pt(f.poly[(k+1)%n]),{face:f.id,edgeIndex:k,vis:isFold?fold:'solid',fold:isFold?1:0});
+      }
+    }
+    const cen=model.faces.flatMap(f=>f.poly);const mean=[cen.reduce((s,p)=>s+p[0],0)/cen.length,cen.reduce((s,p)=>s+p[1],0)/cen.length];
+    // corner names: corners that coincide in the net are one place (a name is written once there); the name sits where no edge runs
+    const corners=[];
+    for(const f of model.faces){
+      const n=f.poly.length;
+      f.poly.forEach((p,k)=>{
+        const prev=f.poly[(k+n-1)%n],next=f.poly[(k+1)%n];
+        corners.push({p,name:f.corners[k],face:f.id,index:k,around:[prev,next]});
+      });
+    }
+    const clusters=[];
+    for(const c of corners){
+      const px=pt(c.p);
+      const home=clusters.find(g=>Math.hypot(g.px[0]-px[0],g.px[1]-px[1])<0.35);
+      if(home)home.members.push(c);else clusters.push({px,members:[c]});
+    }
+    for(const g of clusters){
+      const dirs=[];
+      for(const c of g.members)for(const other of c.around){
+        const d=[other[0]-c.p[0],other[1]-c.p[1]],l=Math.hypot(d[0],d[1]),u=[d[0]/l,d[1]/l];
+        if(!dirs.some(v=>Math.hypot(v[0]-u[0],v[1]-u[1])<1e-3))dirs.push(u);
+      }
+      let dx=-dirs.reduce((sum,v)=>sum+v[0],0),dy=-dirs.reduce((sum,v)=>sum+v[1],0),l=Math.hypot(dx,dy);
+      if(l<0.3){dx=g.members[0].p[0]-mean[0];dy=g.members[0].p[1]-mean[1];l=Math.hypot(dx,dy)||1;}
+      const written=new Set();
+      for(const c of g.members){
+        if(!c.name||written.has(c.name))continue;
+        written.add(c.name);
+        labels.push({id:`corner-${c.face}-${c.index}`,role:'vertex-name',owner:`corner-${c.face}-${c.index}`,kind:'MATH',tex:c.name,plain:c.name,value:c.name,face:c.face,index:c.index,anchor:g.px,dir:[r6(dx/l),r6(dy/l)]});
+      }
+    }
+    for(const d of model.dims){
+      const f=byId.get(d.face),n=f.poly.length,a=f.poly[d.edge],b=f.poly[(d.edge+1)%n];
+      labels.push({id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id,segment:[pt(a),pt(b)],segmentOf:'net-edge:'+d.face+':'+d.edge});
+    }
+    return;
+  }
+  const circle=(id,part,c)=>prims.push({t:'circle',id,role:'net-circle',part,cx:ctx.X(c.cx),cy:ctx.Y(c.cy),r:r6(S*c.r)});
+  if(model.netKind==='CYLINDER'){
+    const {rect,bottom,top}=model.shapes;
+    const x0=rect.x,x1=rect.x+rect.w,y0=rect.y,y1=rect.y+rect.h;
+    prims.push({t:'poly',id:'net-rect',role:'net-face',face:'rect',points:[[x0,y0],[x1,y0],[x1,y1],[x0,y1]].map(pt)});
+    line('net-rect-bottom','net-edge',pt([x0,y0]),pt([x1,y0]),{face:'rect',vis:'hidden',fold:1,part:'bottom'});
+    line('net-rect-top','net-edge',pt([x0,y1]),pt([x1,y1]),{face:'rect',vis:'hidden',fold:1,part:'top'});
+    line('net-rect-left','net-edge',pt([x0,y0]),pt([x0,y1]),{face:'rect',vis:'solid',fold:0,part:'left'});
+    line('net-rect-right','net-edge',pt([x1,y0]),pt([x1,y1]),{face:'rect',vis:'solid',fold:0,part:'right'});
+    circle('net-circle-bottom','bottom',bottom);circle('net-circle-top','top',top);
+    for(const d of model.dims){
+      const seg={'rect-width':[[x0,y1],[x1,y1]],'rect-height':[[x1,y0],[x1,y1]],'radius-top':[[top.cx,top.cy],[top.cx+top.r,top.cy]],'radius-bottom':[[bottom.cx,bottom.cy],[bottom.cx+bottom.r,bottom.cy]]}[d.part];
+      if(d.part.startsWith('radius'))line(d.id+'-line','dim-line',pt(seg[0]),pt(seg[1]),{dim:d.id,kind:d.part,vis:'solid'});
+      labels.push({id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id,segment:[pt(seg[0]),pt(seg[1])],segmentOf:'net-part:'+d.part});
+    }
+    return;
+  }
+  // cone
+  const {sector,base}=model.shapes,half=sector.angleDeg/2*Math.PI/180,L=sector.radius;
+  const p1=[L*Math.cos(-Math.PI/2-half),L*Math.sin(-Math.PI/2-half)],p2=[L*Math.cos(-Math.PI/2+half),L*Math.sin(-Math.PI/2+half)];
+  prims.push({t:'sector',id:'net-sector',role:'net-face',face:'sector',apex:pt([0,0]),p1:pt(p1),p2:pt(p2),radius:r6(S*L),large:sector.angleDeg>180?1:0,angleDeg:sector.angleDeg});
+  circle('net-circle-base','base',base);
+  for(const d of model.dims){
+    let seg;
+    if(d.part==='slant')seg=[[0,0],p2];
+    else if(d.part==='radius')seg=[[base.cx,base.cy],[base.cx+base.r,base.cy]];
+    else if(d.part==='arc')seg=[[-0.12*L,-L],[0.12*L,-L]];// the tangent at the arc's middle (the arc is symmetric about the vertical)
+    else seg=[[0,0],[0,-L*0.35]];
+    if(d.part==='radius')line(d.id+'-line','dim-line',pt(seg[0]),pt(seg[1]),{dim:d.id,kind:'radius',vis:'solid'});
+    if(d.part==='slant')line(d.id+'-line','dim-line',pt(seg[0]),pt(seg[1]),{dim:d.id,kind:'slant',vis:'solid'});
+    labels.push({id:d.id+'-label',role:'dim',owner:d.id,kind:'MATH',tex:d.tex,plain:d.text,value:String(d.value),numeric:d.numeric,dim:d.id,segment:[pt(seg[0]),pt(seg[1])],segmentOf:'net-part:'+d.part,inside:d.part==='angle'});
+  }
+}
+
+// --- composing ----------------------------------------------------------------------------------------------------------------------------------
+const arcPoints=(p,n=ELL_SAMPLES)=>{const pts=[];for(let k=0;k<=n;k++){const u=p.u0+(p.u1-p.u0)*k/n;pts.push([p.cx+p.rx*Math.cos(u),p.cy-p.ry*Math.sin(u)]);}return pts;};
+function obstacleSegments(spec){
+  const segs=[];
+  const poly=(pts,closed)=>{for(let i=0;i<pts.length-(closed?0:1);i++)segs.push([pts[i],pts[(i+1)%pts.length]]);};
+  for(const p of spec.prims){
+    if(p.t==='line')segs.push([[p.x1,p.y1],[p.x2,p.y2]]);
+    else if(p.t==='arc')poly(arcPoints(p),false);
+    else if(p.t==='circle'){const pts=[];for(let k=0;k<ELL_SAMPLES;k++){const u=2*Math.PI*k/ELL_SAMPLES;pts.push([p.cx+p.r*Math.cos(u),p.cy-p.r*Math.sin(u)]);}poly(pts,true);}
+    else if(p.t==='poly'&&p.role==='net-face')poly(p.points,true);
+    else if(p.t==='sector'){
+      // The drawn arc runs from p1 to p2 with sweep-flag 0 (the short way round in screen coordinates): keep the signed angle difference.
+      const pts=[p.apex],a=Math.atan2(p.p1[1]-p.apex[1],p.p1[0]-p.apex[0]),b=Math.atan2(p.p2[1]-p.apex[1],p.p2[0]-p.apex[0]),d=b-a;
+      for(let k=0;k<=ELL_SAMPLES*2;k++)pts.push([p.apex[0]+p.radius*Math.cos(a+d*k/(ELL_SAMPLES*2)),p.apex[1]+p.radius*Math.sin(a+d*k/(ELL_SAMPLES*2))]);
+      poly(pts,true);
+    }
+  }
+  return segs;
+}
+function segmentHitsBox(a,b,box,pad){
+  const x0=box.x-pad,y0=box.y-pad,x1=box.x+box.width+pad,y1=box.y+box.height+pad;
+  const inside=p=>p[0]>=x0&&p[0]<=x1&&p[1]>=y0&&p[1]<=y1;
+  if(inside(a)||inside(b))return true;
+  const edges=[[[x0,y0],[x1,y0]],[[x1,y0],[x1,y1]],[[x1,y1],[x0,y1]],[[x0,y1],[x0,y0]]];
+  return edges.some(([c,d])=>{
+    const o=(p,q,r)=>(q[0]-p[0])*(r[1]-p[1])-(q[1]-p[1])*(r[0]-p[0]);
+    return (o(a,b,c)*o(a,b,d)<0)&&(o(c,d,a)*o(c,d,b)<0);
+  });
+}
+const BOX_PAD=2.2;
+/** Place every label near its anchor: names on the open side of their corner, lengths beside their segment, never over a stroke or another label. */
+function placeLabels(spec,fragments,errors){
+  const obstacles=obstacleSegments(spec),placed=[];
+  const {width,height}=spec.size,SAFE_MARGIN=SAFE;
+  const free=(box,ignoreOwn)=>{
+    if(box.x<SAFE_MARGIN||box.y<SAFE_MARGIN||box.x+box.width>width-SAFE_MARGIN||box.y+box.height>height-SAFE_MARGIN)return false;
+    if(placed.some(p=>overlaps({x:p.box.x-BOX_PAD,y:p.box.y-BOX_PAD,width:p.box.width+2*BOX_PAD,height:p.box.height+2*BOX_PAD},box)))return false;
+    return !obstacles.some(([a,b])=>segmentHitsBox(a,b,box,BOX_PAD)&&!(ignoreOwn&&false));
+  };
+  const order=[...spec.labels].sort((a,b)=>(a.role==='vertex-name'?0:1)-(b.role==='vertex-name'?0:1));
+  for(const label of order){
+    const frag=fragments.get(label.id),{width:w,height:h}=frag.intrinsic;
+    let chosen=null;
+    const candidates=[];
+    if(label.role==='vertex-name'){
+      const base=Math.atan2(label.dir[1],label.dir[0]);
+      for(const dist of [5,8,12,17,24])for(const da of [0,0.5,-0.5,1.0,-1.0,1.6,-1.6,2.3,-2.3,Math.PI]){
+        const a=base+da,dx=Math.cos(a),dy=-Math.sin(a);
+        const cx=label.anchor[0]+dx*(dist+Math.abs(dx)*w/2),cy=label.anchor[1]+dy*(dist+Math.abs(dy)*h/2);
+        candidates.push({x:cx-w/2,y:cy-h/2});
+      }
+    }else{
+      const [a,b]=label.segment,dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1,nx=-dy/l,ny=dx/l;
+      for(const dist of [3,6,10,15,21])for(const frac of [0.5,0.4,0.6,0.3,0.7,0.2,0.8])for(const side of [1,-1]){
+        const mx=a[0]+dx*frac,my=a[1]+dy*frac;
+        // the box edge (not its centre) stands `dist` px from the segment
+        const ext=Math.abs(nx)*w/2+Math.abs(ny)*h/2;
+        const cx=mx+side*nx*(dist+ext),cy=my+side*ny*(dist+ext);
+        candidates.push({x:cx-w/2,y:cy-h/2,side});
+      }
+      if(label.inside){candidates.unshift({x:(a[0]+b[0])/2-w/2,y:(a[1]+b[1])/2-h/2+30});}
+    }
+    for(const c of candidates){const box={x:r6(c.x),y:r6(c.y),width:w,height:h};if(free(box)){chosen=box;break;}}
+    let leader=null;
+    if(!chosen&&label.role==='dim'){
+      // no room beside the segment: the label goes to the nearest free place and a thin leader line joins it to the middle of its segment
+      const [a,b]=label.segment,mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2;
+      search:for(const dist of [24,34,46,60,76])for(let k=0;k<16;k++){
+        const ang=k*Math.PI/8,dx=Math.cos(ang),dy=Math.sin(ang);
+        const box={x:r6(mx+dx*(dist+Math.abs(dx)*w/2)-w/2),y:r6(my+dy*(dist+Math.abs(dy)*h/2)-h/2),width:w,height:h};
+        if(!free(box))continue;
+        const nx=Math.max(box.x,Math.min(mx,box.x+box.width)),ny=Math.max(box.y,Math.min(my,box.y+box.height));
+        if(placed.some(p=>segmentHitsBox([nx,ny],[mx,my],p.box,1)))continue;
+        if(obstacles.some(([c,d])=>segmentsCross([nx,ny],[mx,my],c,d)))continue;// a leader never crosses a stroke
+        chosen=box;leader=[[r6(nx),r6(ny)],[r6(mx),r6(my)]];obstacles.push(leader);break search;
+      }
+    }
+    if(!chosen){errors.push(label.id);continue;}
+    placed.push({label,fragment:frag,box:chosen,leader});
+  }
+  return placed;
+}
+const strokeFor=p=>p.vis==='hidden'?' stroke-dasharray="5 4"':'';
+function renderPrims(spec,model){
+  let body='';
+  const f=spec.frame;
+  // fills first
+  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='net-face'))body+=`<g data-layer="10"><polygon id="${p.id}" data-role="net-face" data-face="${p.face}" fill="#f4f6fa" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='sector'))body+=`<g data-layer="10"><path id="${p.id}" data-role="net-face" data-face="sector" data-angle="${p.angleDeg}" data-radius-px="${p.radius}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" d="M ${p.apex.join(' ')} L ${p.p1.join(' ')} A ${p.radius} ${p.radius} 0 ${p.large} 0 ${p.p2.join(' ')} Z"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='circle'))body+=`<g data-layer="12"><circle id="${p.id}" data-role="net-circle" data-part="${p.part}" fill="#f4f6fa" stroke="#111" stroke-width="1.6" cx="${p.cx}" cy="${p.cy}" r="${p.r}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='highlight-face'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="highlight-face" data-polygon="${p.polygon}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='ellipse'))body+=`<g data-layer="20"><ellipse id="${p.id}" data-role="level-fill" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="none" cx="${p.cx}" cy="${p.cy}" rx="${p.rx}" ry="${p.ry}"/></g>`;
+  for(const p of spec.prims.filter(p=>p.t==='poly'&&p.role==='section'))body+=`<g data-layer="20"><polygon id="${p.id}" data-role="section" data-section="axial" data-solid="${p.solid}" fill="#7fa6e8" fill-opacity="0.32" stroke="#2457b8" stroke-width="1.6" stroke-dasharray="6 3" points="${p.points.map(q=>q.join(',')).join(' ')}"/></g>`;
+  for(const p of spec.prims){
+    if(p.t==='line'){
+      const accent=p.accent==='ACCENT'?' stroke="#c0392b"':'';
+      const w=p.role==='dim-line'||p.role==='dim-ext'?1.1:p.role==='segment'?2.4:p.role==='silhouette'?1.7:1.6;
+      const attrs=[`id="${p.id}"`,`data-role="${p.role}"`,p.solid?`data-solid="${p.solid}"`:'',p.edge?`data-edge="${p.edge}"`:'',p.vis?`data-vis="${p.vis}"`:'',p.t0!==undefined?`data-t0="${p.t0}" data-t1="${p.t1}"`:'',p.side?`data-side="${p.side}"`:'',p.dim?`data-dim="${p.dim}" data-kind="${p.kind}"`:'',p.face?`data-face="${p.face}" data-edge-index="${p.edgeIndex??''}" data-fold="${p.fold}"`:'',p.part?`data-part="${p.part}"`:'',p.style?`data-style="${p.style}"`:''].filter(Boolean).join(' ');
+      body+=`<g data-layer="40"><line ${attrs} stroke="${p.accent==='ACCENT'?'#c0392b':'#111'}" stroke-width="${w}"${strokeFor(p)} fill="none" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}"/></g>`;
+      void accent;
+    }else if(p.t==='arc'){
+      const A=[p.cx+p.rx*Math.cos(p.u0),p.cy-p.ry*Math.sin(p.u0)].map(r6),B=[p.cx+p.rx*Math.cos(p.u1),p.cy-p.ry*Math.sin(p.u1)].map(r6);
+      const large=(p.u1-p.u0)>Math.PI+1e-9?1:0;
+      body+=`<g data-layer="40"><path id="${p.id}" data-role="${p.role}" data-solid="${p.solid}" ${p.circle?`data-circle="${p.circle}" data-half="${p.half}"`:`data-part="${p.part}"`} data-vis="${p.vis}" stroke="#111" stroke-width="1.6"${strokeFor(p)} fill="none" d="M ${A.join(' ')} A ${p.rx} ${p.ry} 0 ${large} 0 ${B.join(' ')}"/></g>`;
+    }
+  }
+  void f;void model;
+  return body;
+}
+/** Typeset every label, place it, build the SVG, run the independent observer on its bytes and the rendered layout check in Chrome. */
+export async function composeSolidFigurePanel({plan,model,identity,typographyPolicy,browser}={}){
+  const lineage={planSha256:null,modelSha256:null,typographyPolicySha256:null,specSha256:null,fragmentSha256s:null,svgSha256:null,staticAuditSha256:null,renderedLayoutSha256:null};
+  const state={svg:null,staticAudit:{status:'NOT_RUN'},renderedLayout:{status:'NOT_RUN'}};
+  const outcome=(status,detail=null)=>({schemaVersion:SOLID_SVG_VERSION,status,detail,svg:status==='COMPOSED'?state.svg:null,lineage:{...lineage},staticAudit:state.staticAudit,renderedLayout:state.renderedLayout,layoutRepairs:[],productionAuthorized:false,qualification:'NOT_RUN'});
+  let ownBrowser=null;
+  try{
+    if(!typographyPolicy||!Number.isFinite(typographyPolicy.baseFontPx)||!(typographyPolicy.displayScale>0))throw new Stop('TYPOGRAPHY_POLICY_INVALID');
+    lineage.planSha256=objectSha(plan);lineage.modelSha256=objectSha(model);lineage.typographyPolicySha256=objectSha(typographyPolicy);
+    let spec;
+    try{spec=solidFigureSpec(plan,model);}catch(error){if(!isDomainCode(error))throw error;throw new Stop(error.message==='SOLID_MODEL_MISMATCH'?error.message:'SOLID_SPEC_ERROR',{code:error.message});}
+    lineage.specSha256=objectSha(spec);
+    const typeset=typesetter(),font=typographyPolicy.baseFontPx,fragments=new Map();
+    for(const label of spec.labels){
+      try{fragments.set(label.id,typeset({id:label.id,owner:label.owner,factRole:label.role==='dim'?'CONCLUSION':'DERIVED_INTERMEDIATE',fontPx:font,panelId:'solid',kind:'MATH',tex:label.role==='dim'?label.tex:label.tex},identity));}
+      catch(error){if(!isDomainCode(error))throw error;throw new Stop('SOLID_TYPESET_ERROR',{labelId:label.id,code:error.message});}
+    }
+    const failed=[];
+    const placed=placeLabels(spec,fragments,failed);
+    if(failed.length)throw new Stop('SOLID_LABELS_NO_ROOM',{labels:failed});
+    lineage.fragmentSha256s=Object.fromEntries(placed.map(item=>[item.label.id,item.fragment.fragmentSha256]));
+    const {width,height}=spec.size;
+    let body=`<rect width="${width}" height="${height}" fill="#fff"/>`+renderPrims(spec,model);
+    for(const {label,leader} of placed)if(leader)body+=`<g data-layer="40"><line id="leader-${label.id}" data-role="leader" data-owner-label="${label.id}" data-label="${label.id}" stroke="#555" stroke-width="0.9" fill="none" x1="${leader[0][0]}" y1="${leader[0][1]}" x2="${leader[1][0]}" y2="${leader[1][1]}"/></g>`;
+    for(const {label,fragment,box,leader} of placed){
+      body+=`<g data-layer="90"><g id="${label.id}" data-label-kind="${label.role==='dim'?'EQUATION_LABEL':'COORDINATE_LABEL'}" data-label-role="${label.role}" data-priority="0" data-font-px="${font}"${leader?' data-leader="1"':''} data-owner="${label.owner}" data-value="${esc(label.value)}"${label.numeric!==undefined?` data-numeric="${label.numeric?1:0}"`:''}${label.dim?` data-dim="${label.dim}"`:''}${label.segmentOf?` data-segment="${esc(label.segmentOf)}"`:''}${label.face?` data-face="${label.face}" data-corner="${label.index}"`:''} data-tex="${esc(label.tex)}" data-fragment-sha="${fragment.fragmentSha256}" transform="translate(${box.x} ${box.y})">${fragment.svg}</g></g>`;
+    }
+    const dataAttrs=` data-solid-figure="${SOLID_CAPABILITY}" data-mode="${model.mode}" data-scale="${spec.frame.scale}" data-origin="${spec.frame.origin.join(' ')}"${model.mode==='SOLIDS'?` data-yaw="${YAW_DEG}" data-pitch="${PITCH_DEG}"`:''}${model.unit?` data-unit="${model.unit}"`:''}`;
+    const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" preserveAspectRatio="xMidYMid meet" role="img"${dataAttrs} data-publication-profile="fragment-publication-spike-v1" data-safe-margin="${SAFE}" style="max-width:100%;height:auto;stroke-linejoin:round;stroke-linecap:round">${body}</svg>`;
+    lineage.svgSha256=bytesSha(Buffer.from(svg,'utf8'));
+    if(process.env.APMS_DRAFT_DIR)(await import('node:fs')).writeFileSync(process.env.APMS_DRAFT_DIR+'/'+(process.env.APMS_DRAFT_TAG||'draft')+'-solid-'+Date.now()+'.svg',svg);
+    let response;
+    try{response=await pythonWorker({solidFigure:plan,svg},{script:OBSERVER_SCRIPT,timeoutMs:30000});}catch(error){throw new Stop('WORKER_ERROR',{stage:'solidFigureAudit',code:String(error?.message??error)});}
+    if(response?.status!=='OK')throw new Stop('WORKER_ERROR',{stage:'solidFigureAudit',code:response?.result?.code??null});
+    const audit=response.result;lineage.staticAuditSha256=objectSha(audit);
+    const errors=[...(audit.errors??[])];
+    if(audit.status==='PASS'&&audit.finalSvgSha256!==lineage.svgSha256)errors.push('STATIC_AUDIT_SVG_BYTES_MISMATCH');
+    state.staticAudit={status:audit.status==='PASS'&&!errors.length?'PASS':'FAIL',errors};
+    if(state.staticAudit.status!=='PASS')throw new Stop('SOLID_STATIC_AUDIT_FAIL',{errors});
+    const display={width:width*typographyPolicy.displayScale,height:height*typographyPolicy.displayScale};
+    const page=await (browser??(ownBrowser=await launchBrowser())).newPage({viewport:{width:Math.max(1,Math.ceil(display.width)),height:Math.max(1,Math.ceil(display.height))}});
+    let layout;
+    try{layout=analyzeRenderedLayout(await captureAtDisplaySize(page,svg,display,{publicationViewport:PUBLICATION_VIEWPORT}));}finally{await page.close();}
+    lineage.renderedLayoutSha256=objectSha({svgSha256:lineage.svgSha256,layout});
+    state.renderedLayout={status:layout.status,display,errors:layout.errors};
+    if(layout.status!=='PASS')throw new Stop('SOLID_RENDERED_LAYOUT_FAIL',{errors:layout.errors});
+    state.svg=svg;
+    return outcome('COMPOSED');
+  }catch(error){
+    if(!(error instanceof Stop))throw error;
+    return outcome(error.status,error.detail);
+  }finally{if(ownBrowser)await ownBrowser.close();}
+}
+
+// --- the author plan ----------------------------------------------------------------------------------------------------------------------------
+const CAPTION_TEXT=/^.{1,24}$/;
+/**
+ * {capability:'solid-figure-v1',solids|net,dims?,highlights?,segments?,section?,unit?,solidCaption?:{text},caption,sourceConditions,newVisualInformation}
+ * -> the one-panel composite-panels-v1 it stands for. The model is built here first, so a plan that cannot be drawn is refused before anything is.
+ */
+export function expandSolidFigure(plan){
+  const model=solveSolidFigure(plan);
+  const cap=plan.solidCaption;
+  if(cap!==undefined&&(!isPlain(cap)||Object.keys(cap).some(k=>k!=='text')||typeof cap.text!=='string'||!CAPTION_TEXT.test(cap.text)))bad('SOLID_CAPTION_INVALID');
+  const {caption,sourceConditions,newVisualInformation,solidCaption,...figure}=plan;void solidCaption;
+  return {capability:'composite-panels-v1',chain:SOLID_CAPABILITY,panels:[{caption:cap??{text:model.mode==='NET'?'전개도':'입체도형'},plan:figure}],caption,sourceConditions,newVisualInformation};
+}
