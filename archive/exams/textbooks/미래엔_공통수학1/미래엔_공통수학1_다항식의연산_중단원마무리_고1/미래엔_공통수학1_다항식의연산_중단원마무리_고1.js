@@ -276,7 +276,7 @@ window.questionBank = [
       "중단원 마무리"
     ],
     "wide": false,
-    "content": "오른쪽 그림과 같이 밑면의 가로와 세로의 길이가 각각 $a$와 $b$이고 높이가 $c$인 직육면체의 겉넓이는 $94$이다. 대각선 $\\mathrm{AG}$의 길이가 $5\\sqrt{2}$일 때, $a+b+c$의 값을 구하시오.\n<img src=\"q10.png\" />",
+    "content": "오른쪽 그림과 같이 밑면의 가로와 세로의 길이가 각각 $a$와 $b$이고 높이가 $c$인 직육면체의 겉넓이는 $94$이다. 대각선 $\\mathrm{AG}$의 길이가 $5\\sqrt{2}$일 때, $a+b+c$의 값을 구하시오.\n<img src=\"assets/images/미래엔_공통수학1_다항식의연산_중단원마무리_고1/q10.png\" />",
     "choices": [],
     "answer": "",
     "solution": ""

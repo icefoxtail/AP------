@@ -5,7 +5,28 @@ import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 
-import { auditGitGrowth } from '../tools/check-git-growth.mjs';
+import { auditGitGrowth, FOOTPRINT_LIMITS } from '../tools/check-git-growth.mjs';
+
+test('ordinary changed-blob and changeset limit is 64 MiB', () => {
+  assert.equal(FOOTPRINT_LIMITS.changedBlobBytes, 64 * 1024 * 1024);
+});
+
+test('ordinary change between 32 and 64 MiB passes the growth audit', () => {
+  const repo = makeRepo();
+  try {
+    write(repo.root, 'receipts/large-but-allowed.bin', Buffer.alloc(40 * 1024 * 1024, 0x5a));
+    execFileSync('git', ['add', '--', 'receipts/large-but-allowed.bin'], { cwd: repo.root });
+    const head = execFileSync('git', ['write-tree'], { cwd: repo.root, encoding: 'utf8' }).trim();
+    const commitOid = execFileSync('git', ['commit-tree', head, '-p', repo.base, '-m', 'allowed 40 MiB change'], {
+      cwd: repo.root, encoding: 'utf8',
+    }).trim();
+    const report = auditGitGrowth({ root: repo.root, base: repo.base, head: commitOid });
+    assert.equal(report.ok, true, report.errors.join('\n'));
+    assert.equal(report.countedChangedBytes, 40 * 1024 * 1024);
+  } finally {
+    cleanRepo(repo);
+  }
+});
 
 function makeRepo() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'git-growth-policy-'));
@@ -252,7 +273,7 @@ test('working-tree CRLF conversion follows the Git clean-filter path', () => {
 test('non-image file under an image directory is not a production exemption', () => {
   const repo = makeRepo();
   try {
-    write(repo.root, 'archive/assets/images/approved/catalog.bin', Buffer.alloc(33 * 1024 * 1024));
+    write(repo.root, 'archive/assets/images/approved/catalog.bin', Buffer.alloc(65 * 1024 * 1024));
     commit(repo.root, 'add oversized non-image data');
     const report = auditGitGrowth({ root: repo.root, base: repo.base, head: 'HEAD' });
     assert.equal(report.ok, false);
@@ -357,7 +378,7 @@ test('unrelated-root tree comparison still rejects oversized ordinary and raw ad
     const base = repo.base;
     const ordinaryPath = 'receipts/disconnected-large.bin';
     const rawPath = 'archive/analysis/disconnected-raw.json';
-    write(repo.root, ordinaryPath, Buffer.alloc(33 * 1024 * 1024, 0x5a));
+    write(repo.root, ordinaryPath, Buffer.alloc(65 * 1024 * 1024, 0x5a));
     write(repo.root, rawPath, '{"status":"cold"}\n');
     execFileSync('git', ['add', '--', ordinaryPath], { cwd: repo.root });
     execFileSync('git', ['add', '-f', '--', rawPath], { cwd: repo.root });
