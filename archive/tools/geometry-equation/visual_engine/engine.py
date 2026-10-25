@@ -65,6 +65,12 @@ def prepare(spec):
     if interval_features is not None:
         if interval_features.get('schemaVersion')!='POLYNOMIAL_INTERVAL_FEATURES_v1':raise ValueError('POLYNOMIAL_INTERVAL_INVENTORY_REQUIRED')
         for endpoint in interval_features.get('endpoints',[]):critical.append((_exact_float(endpoint['x']),_exact_float(endpoint['y'])))
+    reference_interval_features=spec['displayFacts'].get('referenceIntervalFeatures')
+    if reference_interval_features is not None:
+        if not isinstance(reference_interval_features,list):raise ValueError('REFERENCE_INTERVAL_INVENTORY_REQUIRED')
+        for row in reference_interval_features:
+            critical.append((_exact_float(row['lo']),_exact_float(row['startY'])))
+            critical.append((_exact_float(row['hi']),_exact_float(row['endY'])))
     exponential_features=spec['displayFacts'].get('exponentialFeatures')
     if exponential_features is not None:
         if exponential_features.get('schemaVersion')!='EXPONENTIAL_AFFINE_FEATURES_v1':raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
@@ -211,6 +217,14 @@ def prepare(spec):
             # A closed end is a filled dot, an open end a hollow one, drawn over the curve end.
             at=vp.screen((_exact_float(endpoint['x']),_exact_float(endpoint['y'])))
             primitive({'id':'interval-endpoint-'+endpoint['side'].lower(),'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'interval-endpoint','fill':'#fff' if endpoint['state']=='OPEN' else '#111','state':endpoint['state']},'circle')
+    if reference_interval_features is not None:
+        policy=spec['displayFacts'].get('referenceIntervalFeaturePolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('REFERENCE_INTERVAL_MARKER_POLICY_REQUIRED')
+        for row in reference_interval_features:
+            for side,state,x_text,y_text in (('start',row['startState'],row['lo'],row['startY']),('end',row['endState'],row['hi'],row['endY'])):
+                if state not in ('OPEN','CLOSED'):raise ValueError('INVALID_REFERENCE_INTERVAL_ENDPOINT')
+                at=vp.screen((_exact_float(x_text),_exact_float(y_text)))
+                primitive({'id':'ref-endpoint-'+row['id']+'-'+side,'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'reference-endpoint','fill':'#fff' if state=='OPEN' else '#111','state':state},'circle')
     exponential_features=spec['displayFacts'].get('exponentialFeatures')
     if exponential_features is not None:
         if exponential_features.get('schemaVersion')!='EXPONENTIAL_AFFINE_FEATURES_v1':raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')

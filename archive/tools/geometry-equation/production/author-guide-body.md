@@ -79,7 +79,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 
 이 계열의 오류 코드: `<FAMILY>_SOURCE_DOMAIN_REQUIRES_*`/`_SOURCE_DOMAIN_UNSUPPORTED`(정의역 형식이 위 표와 다르다. 표대로 고친다), `<FAMILY>_SOURCE_SCHEMA_INVALID`/`*_GRAMMAR_REQUIRED`(계수 개수·형식이 다르다), `*_NONZERO_*_REQUIRED`/`*_POSITIVE_SLOPE_REQUIRED`(0인 계수나 음의 기울기 반지름식), `*_OUTSIDE_OVERVIEW`/`*_OUTSIDE_VIEWPORT`(점근선·경계·꺾임점이 viewport 밖. viewport나 domain을 넓힌다), `*_BELOW_PROFILE_FLOOR`/`*_BELOW_DISPLAY_RESOLUTION`(특징이 너무 작아 학생 화면에서 구분되지 않는다. 범위를 좁히거나 UNSUPPORTED), `*_OVERVIEW_POLICY_REQUIRED`/`*_FEATURE_INVENTORY_MISMATCH`(plan 형식이 계약과 다르다. 계약 전문을 다시 읽는다), `UNSUPPORTED_CAPABILITY`(위 한계를 벗어난 plan이다).
 
-### 3-3. 이어진 조각 그래프(이차식 조각 최대 3개)와 직선
+### 3-3. 이어진 조각 그래프(이차식 조각 최대 4개)와 직선
 
 `|x²-4x-12|`, `x²-2|x|+1`, 이차함수 두 개를 구간별로 이은 `h(x)`처럼 **끊어지지 않는** 한 함수에 수평선 또는 **기울어진 직선**을 겹쳐 교점을 보이는 풀이에 쓴다. `capability:"piecewise-polynomial-spike-v1"`, `graphPlan.family:"piecewise-polynomial"`.
 
@@ -92,7 +92,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
  "coordinatePlacement":"PANEL","caption":"k=10일 때 직선 y=3x+10과 그래프가 네 점에서 만난다."}
 ```
 
-- `pieces`는 왼쪽부터 1~3개, 계수는 `[상수, x, x²]`(정수·분수 문자열). `breakpoints`는 조각 수보다 하나 적게, 이어지는 점의 `x`, `y`(두 조각이 모두 그 값을 주어야 한다). 끊김은 `PIECEWISE_POLY_DISCONTINUOUS`.
+- `pieces`는 왼쪽부터 1~4개, 계수는 `[상수, x, x²]`(정수·분수 문자열). `breakpoints`는 조각 수보다 하나 적게, 이어지는 점의 `x`, `y`(두 조각이 모두 그 값을 주어야 한다). 끊김은 `PIECEWISE_POLY_DISCONTINUOUS`.
 - `requiredPoints`에는 모든 꺾임점과 조각 안쪽 꼭짓점을 넣는다(엔진이 따로 계산해 빠지면 거절).
 - **수평선**: `{"id","y","intersectionX"}`. **기울어진 직선**: `{"id","slope","intercept","intersectionX"}`로 `y=slope·x+intercept`. `slope`는 0이 아닌 정수·분수 문자열, `intercept`는 정수·분수 문자열이다. 둘을 섞어 쓰지 않는다. 최대 3개.
 - `intersectionX`에는 직선과 **곡선 전체**의 교점의 x를 하나도 빠짐없이 쓴다. 정수·분수·`sqrt(...)`가 들어간 정확한 값(`(3+sqrt(34)/2)/2`)이고, 엔진과 독립 관측기가 각각 SymPy로 다시 풀어 개수와 값이 다르면 `PIECEWISE_POLY_INTERSECTION_MISMATCH:<id>:engine finds N intersection(s)`로 거절한다. 중근(접점)은 한 번 센다.
@@ -107,7 +107,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - `PIECEWISE_POLY_SLANTED_LINE_LABELS_UNSUPPORTED`: 기울어진 직선에는 `labelIntersections`를 쓸 수 없다(위 `requiredPoints` 방법).
 - `PIECEWISE_POLY_REFERENCE_LINE_INVALID`: `y`와 `slope/intercept` 중 하나만, 필드 이름이 맞는지 확인한다.
 - `PIECEWISE_POLY_REFERENCE_LINE_CONTAINS_A_PIECE`: 직선이 조각 하나와 완전히 겹친다(교점이 무한개). 그릴 수 없다.
-- 수직선, 조각 4개 이상(`PIECEWISE_POLY_PIECE_COUNT_INVALID`), 삼차 이상 조각, 끊어지는 함수는 지원하지 않는다. UNSUPPORTED. 둘째 이차함수(f와 g)가 필요하면 3-6절의 `referenceCurves`를 쓴다.
+- 수직선, 조각 5개 이상(`PIECEWISE_POLY_PIECE_COUNT_INVALID`), 삼차 이상 조각, 끊어지는 함수는 지원하지 않는다. UNSUPPORTED. 둘째 함수(f와 g, g도 구간별)가 필요하면 3-6절의 `referenceCurves`를 쓴다.
 
 ### 3-4. 무리수 계수: `p+q√r` (접하는 조건의 매개변수, 무리수 기울기·절편·교점)
 
@@ -157,21 +157,41 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
  "coordinatePlacement":"PANEL","caption":"줄이는 횟수 n=2일 때 하루 이익금이 38400원으로 최대이다."}
 ```
 
-### 3-6. 두 이차함수를 한 그림에: `referenceCurves`
+### 3-6. 두 함수를 한 그림에: `referenceCurves` (이차함수 또는 구간별 함수)
 
-`f`와 `g`가 만나고 `f(x)≤g(x)`의 해를 읽는 풀이처럼 **이차함수 둘**이 한 그림에 필요하면 `piecewise-polynomial-spike-v1`의 조각 하나(또는 이어진 조각)를 함수로 쓰고, 둘째 이차함수는 `graphPlan.referenceCurves`에 쓴다(최대 2개, 이차식만).
+`f`와 `g`가 만나고 `f(x)≤g(x)`의 해를 읽는 풀이처럼 **함수 둘**이 한 그림에 필요하면 `piecewise-polynomial-spike-v1`의 조각(또는 이어진 조각)을 `f`로 쓰고, 둘째 함수 `g`는 `graphPlan.referenceCurves`에 쓴다(최대 2개). `g`는 이차함수 하나일 수도 있고, **자기 조각·꺾임점·정의역을 가진 구간별 함수**일 수도 있다(조각 최대 4개, 끊어지지 않아야 한다).
 
-- `{"id":"g","name":"g","coefficients":["1/2","1","-1/2"],"intersectionX":["-1/3","3"]}`: `coefficients`는 `[상수, x, x²]`(정수·분수·`p+q*sqrt(r)` 문자열, x² 계수는 0이 아니다, 한 plan에 근호 하나). `intersectionX`에는 **함수와 이 곡선의 교점 x를 하나도 빠짐없이** 쓴다(접점은 한 번). 엔진과 독립 관측기가 조각마다 따로 풀어 다르면 `PIECEWISE_POLY_INTERSECTION_MISMATCH:g:engine finds N intersection(s)`로 거절한다.
-- `name`(소문자 한 글자, i·x·y 제외)을 쓰면 띠에 `g(x)=-x^2/2+x+1/2`로 쓰인다. 함수의 머리줄은 `graphPlan.functionName:"f"`와 `formula`로 `f(x)=x²/4-x-1/4`가 된다. 둘 다 안 쓰면 `y=`로 나온다.
-- 곡선의 **꼭짓점은 반드시 `requiredPoints`에 쓴다**(`PIECEWISE_POLY_REFERENCE_CURVE_VERTEX_NOT_IN_REQUIRED_POINTS`). `requiredPoints`의 점은 함수 위에 있거나 참조 곡선 위에 있으면 된다. 교점은 점으로만 그려지고(핵심 점과 같으면 그 점 하나), 이름이 필요하면 `requiredPoints`에 넣는다.
-- 곡선은 함수와 같은 구간에 그려진다. 한 곡선이 조각 하나와 완전히 같으면 `PIECEWISE_POLY_REFERENCE_CURVE_CONTAINS_A_PIECE`, 이차식이 아니면 `PIECEWISE_POLY_REFERENCE_CURVE_NOT_QUADRATIC`, 3개 이상이거나 형식이 틀리면 `PIECEWISE_POLY_REFERENCE_CURVES_INVALID`다. 삼차 이상, 세로선, 색칠은 여전히 UNSUPPORTED다.
+**이차함수 하나로 쓸 때(가장 간단한 형식):**
+
+- `{"id":"g","name":"g","coefficients":["1/2","1","-1/2"],"intersectionX":["-1/3","3"]}`: `coefficients`는 `[상수, x, x²]`(정확한 문자열, x² 계수는 0이 아니다). 이 형식은 실수 전체에서 정의된다.
+- `name`(소문자 한 글자, i·x·y 제외)을 쓰면 띠에 `g(x)=-x^2/2+x+1/2`로 쓰인다. 함수의 머리줄은 `graphPlan.functionName:"f"`와 `formula`로 `f(x)=x²/4-x-1/4`가 된다.
+
+**`g`도 구간별 함수일 때:**
 
 ```json
-{"capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["-1/4","-1","1/4"]}],
- "sourceDomain":{"kind":"ALL_REALS"},"functionName":"f","formula":"x^2/4-x-1/4",
- "referenceCurves":[{"id":"g","name":"g","coefficients":["1/2","1","-1/2"],"intersectionX":["-1/3","3"]}],
- "requiredPoints":[{"id":"A","x":2,"y":"-5/4"},{"id":"B","x":1,"y":1}],"exactCoordinates":{"A":["2","-5/4"],"B":["1","1"]},"axisTickValues":{"x":[],"y":[]}},
- "coordinatePlacement":"PANEL","caption":"두 포물선은 x=-1/3, x=3에서 만나고 그 사이에서 g가 f보다 위에 있다."}
+{"id":"g","name":"g",
+ "pieces":[{"coefficients":["2","2"]},{"coefficients":["0"]},{"coefficients":["-2","2"]}],
+ "breakpoints":[{"x":"-1","y":"0"},{"x":"1","y":"0"}],
+ "sourceDomain":{"kind":"ALL_REALS"},
+ "intersectionX":["0","1","2"]}
+```
+
+- `pieces`는 왼쪽부터 1~4개, 계수는 `[상수, x, x²]`(일차식은 두 개, 상수는 한 개). `breakpoints`는 조각 수보다 하나 적고, 이웃한 두 조각이 그 점에서 같은 값을 주어야 한다(끊기면 `PIECEWISE_POLY_REFERENCE_CURVE_DISCONTINUOUS`). `breakpoints[i].y`가 두 조각의 값과 다르면 `PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_VALUE_MISMATCH`.
+- `sourceDomain`은 `g`만의 정의역이다. 생략하거나 `{"kind":"ALL_REALS"}`이면 실수 전체, `{"kind":"INTERVAL","range":[lo,hi],"states":["OPEN"|"CLOSED", ...]}`이면 그 구간만 정의된다. 열린 끝은 속이 빈 점, 닫힌 끝은 찬 점으로 그려지고, 정의역 밖에서는 교점을 세지 않는다.
+- **교점은 두 함수가 모두 정의된 곳에서만, 조각 쌍마다 따로 푼다.** `intersectionX`에는 그런 교점 x를 하나도 빠짐없이 쓴다(중근은 한 번, 최대 8개). 어느 한쪽 조각의 구간 밖이거나 열린 끝인 근은 교점이 아니다. 엔진과 독립 관측기가 각각 SymPy로 다시 풀어 다르면 `PIECEWISE_POLY_INTERSECTION_MISMATCH:g:engine finds N intersection(s)`로 거절한다.
+- `g`의 **모든 꺾임점과 조각 안쪽 꼭짓점은 `requiredPoints`에 쓴다**(`PIECEWISE_POLY_REFERENCE_CURVE_CORNER_NOT_IN_REQUIRED_POINTS`, `..._EXTREMUM_NOT_IN_REQUIRED_POINTS`). 이차함수 형식이면 꼭짓점을 쓴다(`PIECEWISE_POLY_REFERENCE_CURVE_VERTEX_NOT_IN_REQUIRED_POINTS`).
+- `formula`(선택)는 `g`의 식을 `g(x)=...` 꼴로 곡선 곁에 쓴다. `abs(...)` 등 3-3의 식 문법을 따르고, 조각과 같은 함수인지 엔진이 확인한다(`PIECEWISE_POLY_REFERENCE_CURVE_FORMULA_MISMATCH`). 조각만으로 주어지는 함수는 `formula` 없이 `name`만 쓰면 곡선 곁에 `g(x)`로 표시된다. 이때 `f`도 `formula` 없이 `functionName`만 주면 머리줄 대신 곡선 곁에 `f(x)`로 표시되어 두 곡선을 구별할 수 있다.
+- `coefficients` 형식에서 x² 계수가 0이면 이차함수가 아니다(`PIECEWISE_POLY_REFERENCE_CURVE_NOT_QUADRATIC:<id>`). `pieces`의 각 조각은 **자기 정의역 위에만** 그려진다. 한 곡선이 함수의 조각 하나와 완전히 같으면 `PIECEWISE_POLY_REFERENCE_CURVE_CONTAINS_A_PIECE`, 형식이 틀리면 `PIECEWISE_POLY_REFERENCE_CURVES_INVALID`, 조각이 5개 이상이면 `PIECEWISE_POLY_REFERENCE_CURVE_PIECE_COUNT_INVALID`, 정의역·꺾임점이 틀리면 `PIECEWISE_POLY_REFERENCE_CURVE_SOURCE_DOMAIN_INVALID`/`..._BREAKPOINT_INVALID`다. 삼차 이상, 세로선, 색칠은 여전히 UNSUPPORTED다.
+- `sampleNote`(선택, 32자 이내): `a=2`처럼 풀이가 고른 매개변수 값을 그림 안 왼쪽 위에 보인다. caption에도 같은 값을 쓴다. 형식이 틀리면 `PIECEWISE_POLY_SAMPLE_NOTE_INVALID`.
+
+```json
+{"capability":"piecewise-polynomial-spike-v1","graphPlan":{"family":"piecewise-polynomial","pieces":[{"coefficients":["0","0","-1"]},{"coefficients":["0","-1","1"]}],
+ "breakpoints":[{"x":"0","y":"0"}],"sourceDomain":{"kind":"ALL_REALS"},"functionName":"f",
+ "referenceCurves":[{"id":"g","name":"g","pieces":[{"coefficients":["2","2"]},{"coefficients":["0"]},{"coefficients":["-2","2"]}],
+  "breakpoints":[{"x":"-1","y":"0"},{"x":"1","y":"0"}],"intersectionX":["0","1","2"]}],
+ "requiredPoints":[{"id":"A","x":0,"y":0},{"id":"B","x":0.5,"y":-0.25},{"id":"C","x":-1,"y":0},{"id":"D","x":1,"y":0}],
+ "exactCoordinates":{"B":["1/2","-1/4"]},"axisTickValues":{"x":[2],"y":[2]}},
+ "coordinatePlacement":"PANEL","caption":"a=2일 때 y=f(x)와 y=g(x)의 그래프가 x=0, 1, 2의 세 점에서 만난다."}
 ```
 
 ### 3-7. 사인·코사인을 구간(여러 주기)에서 직선과 함께: `INTERVAL_PI`, `referenceLines`
