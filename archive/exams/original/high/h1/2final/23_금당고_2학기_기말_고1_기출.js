@@ -257,7 +257,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/23_금당고_2학기_기말_고1_기출/q08-solution.svg",
 
-    "solutionImageAlt": "이차함수와 역함수의 두 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "포물선 f(x)=(x−1/2)²+1/2와 그 역함수의 그래프가 직선 y=x 위의 두 점 P(1/2,1/2), Q(3/2,3/2)에서 만나고, PQ=√2임을 표시한다.",
 
     "solutionImageCaption": "교점 P=(1/2,1/2), Q=(3/2,3/2)와 PQ=√2를 확인한다.",
 

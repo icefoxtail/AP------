@@ -248,7 +248,7 @@ window.questionBank = [
     ],
     "answer": "①",
     "solutionImage": "assets/images/24_팔마고_1학기_기말_고2_수학I/q9-solution.svg",
-    "solutionImageAlt": "삼각함수 그래프 candidate · 24 팔마고 q9",
+    "solutionImageAlt": "최댓값 3, 최솟값 −3이고 한 주기가 π인 사인곡선 y=3sin(2x−π/3)의 그래프이다. y=3, y=−3 기준선과 원점 O를 표시해 진폭 3, 주기 π, 오른쪽 이동 π/6을 읽도록 한 그림이다.",
     "solutionImageCaption": "y=3sin(2x−π/3), amplitude 3, period π, phase shift π/6",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",

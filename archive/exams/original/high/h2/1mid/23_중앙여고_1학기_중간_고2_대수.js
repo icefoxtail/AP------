@@ -115,7 +115,7 @@ window.questionBank = [
     "id": 4,
     "level": "상",
     "solutionImage": "assets/images/23_중앙여고_1학기_중간_고2_대수/q4-solution.svg",
-    "solutionImageAlt": "23_jungang_q4_quadratic",
+    "solutionImageAlt": "t=log₂x로 치환한 포물선 t²−2t−log₂k가 t축에 접하거나 그 위에 있도록 판별식 D≤0을 적용해 0<k≤1/2임을 나타낸다.",
     "solutionImageCaption": "quadratic",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",

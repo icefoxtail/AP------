@@ -540,7 +540,7 @@ window.questionBank = [
   {
     "id": 16,
     "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q16-solution.svg",
-    "solutionImageAlt": "24_geumdang_q16_exp_log_triangle",
+    "solutionImageAlt": "점 A(8,0), B(2,6), C(6,2), D(216,6)와 선분 BC, BD를 표시하고 삼각형 BCD를 색칠해 넓이 428을 나타낸 그림이다.",
     "solutionImageCaption": "triangle_log",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
@@ -582,7 +582,7 @@ window.questionBank = [
   {
     "id": 17,
     "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q17-solution.svg",
-    "solutionImageAlt": "24_geumdang_q17_cos_counts",
+    "solutionImageAlt": "k=1부터 5까지 다섯 개의 작은 좌표평면에 f(x)의 그래프와 수평선 y=cos(kπ/3)의 교점을 각각 2,2,1,2,2개 표시하고 합이 9임을 보여주는 그래프이다.",
     "solutionImageCaption": "cos_counts",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
@@ -624,7 +624,7 @@ window.questionBank = [
   {
     "id": 18,
     "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q18-solution.svg",
-    "solutionImageAlt": "24_geumdang_q18_log_transform",
+    "solutionImageAlt": "y=log₂x의 그래프와, 이를 아래로 3만큼 평행이동한 뒤 x축에 대칭이동한 그래프 y=−log₂x+3=log₁/₂(x/8)을 같은 좌표평면에 그린 그림이다.",
     "solutionImageCaption": "log_transform",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
@@ -659,7 +659,7 @@ window.questionBank = [
   {
     "id": 19,
     "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q19-solution.svg",
-    "solutionImageAlt": "24_geumdang_q19_abs_sine_range",
+    "solutionImageAlt": "f(x)=|6sin 2x+3|의 그래프가 3과 9 사이에서 주기적으로 진동하는 모습과, f(t)=4가 되는 t의 범위 3<t<9를 함께 적어 놓은 그래프이다.",
     "solutionImageCaption": "abs_sine",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
@@ -723,7 +723,7 @@ window.questionBank = [
   {
     "id": 21,
     "solutionImage": "assets/images/24_금당고_1학기_중간_고2_대수/q21-solution.svg",
-    "solutionImageAlt": "24_geumdang_q21_exp_log_triangle",
+    "solutionImageAlt": "역함수 관계인 두 곡선 y=a^(x−3), y=log_a(x−3)과 기울기 −1인 직선, 점 A(7/2,9/2)와 C(3,0)을 표시해 a=81/4를 구하는 그림이다.",
     "solutionImageCaption": "exp_log_triangle",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",

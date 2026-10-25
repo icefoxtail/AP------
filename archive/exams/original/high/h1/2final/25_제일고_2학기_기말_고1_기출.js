@@ -57,7 +57,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q02-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 2의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "점 (4,1)에서 (−1,3)으로 가는 좌표 변화 (−5,2)를 화살표로 보이고, 같은 이동으로 P(2,5)가 P′(−3,7)로 옮겨지는 모습을 나타낸 좌표평면이다.",
     "solutionImageSize": "full"
   },
   {
@@ -172,7 +172,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "점 $A(2,1)$을 직선 $y=x$에 대하여 대칭이동하면\n$A'=(1,2)$이다.\n$P$가 $y=x$ 위에 있으므로 $PA=PA'$이다. 따라서\n$PA+PB=A'P+PB$이다.\n삼각형에서 두 변의 길이의 합은 나머지 한 변보다 작지 않으므로\n$A'P+PB\\ge A'B$이다.\n$A'B=\\sqrt{(5-1)^2+(4-2)^2}=2\\sqrt5$이다.\n$A'$에서 $y-x=1$이고 $B$에서 $y-x=-1$이므로 선분 $A'B$는 직선 $y=x$와 만난다. 그 교점을 $P$로 잡으면 등호가 성립한다.\n\n따라서 최솟값은 $2\\sqrt5$이고 정답은 ②이다.",
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q06-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 6의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "직선 y=x에 대한 A(2,1)의 대칭점 A′(1,2)와 B(5,4)를 잇는 선분을 그린 좌표평면이다. y=x 위의 P(3,3)에서 A′P+PB가 최소 2√5가 됨을 보여 준다.",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-04-CORE",
     "subUnit": "도형의 이동 핵심 개념",
@@ -405,7 +405,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/25_제일고_2학기_기말_고1_기출/q13-solution.svg",
 
-    "solutionImageAlt": "유리함수의 점근선과 중심을 나타낸 해설 그래프",
+    "solutionImageAlt": "유리함수 y=−1−1/(x−1)의 그래프와 점근선 x=1, y=−1, 대칭의 중심 (1,−1)을 표시한 좌표평면이다. 두 곡선이 점근선에 접근하며 제3사분면을 지나는 모습을 보여 준다.",
 
     "solutionImageCaption": "y=−1−1/(x−1)에서 점근선 x=1, y=−1과 중심 (1,−1)을 확인한다.",
 
