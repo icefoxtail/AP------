@@ -112,6 +112,7 @@ def fit_overview(plan):
     if plan.get('family')=='exp-log-pair':return _fit_exp_log_pair_overview(plan)
     if plan.get('family')=='trigonometric':return _fit_trigonometric_overview(plan)
     if plan.get('family')=='piecewise-polynomial':return fit_piecewise_polynomial(plan)
+    if plan.get('family')=='piecewise-discontinuous':return fit_piecewise_discontinuous(plan)
     if plan.get('family')!='polynomial':raise ValueError('UNSUPPORTED_OVERVIEW_FAMILY')
     values=plan.get('coefficients')
     if not isinstance(values,list) or not 1<=len(values)<=5 or any(not isinstance(v,str) or len(v)>64 or not re.fullmatch(r'-?\d+(?:/\d+)?',v) for v in values):raise ValueError('INVALID_FRAMING_COEFFICIENTS')
@@ -1490,3 +1491,247 @@ def fit_piecewise_polynomial(plan):
         fitted['intervalFeatures']={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':[{'side':'START','x':_pp_text(lo),'y':_pp_text(g(lo)),'state':states[0]},{'side':'END','x':_pp_text(hi),'y':_pp_text(g(hi)),'state':states[1]}]}
         fitted['intervalFeaturePolicy']={'schemaVersion':'POLYNOMIAL_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':4,'minimumMarkerDiameterCssPx':3}
     return {'graphPlan':fitted,'policy':'PIECEWISE_POLYNOMIAL_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
+
+# ---- piecewise discontinuous: one to six polynomial pieces (degree <= 2) on their own intervals, each end OPEN or CLOSED ----------
+# Unlike piecewise-polynomial-spike-v1 the pieces need not meet: a junction may jump, the function value there is declared either by a
+# CLOSED end or by jumpValues, and a jumpValue may also stand alone as an isolated point. A staircase is written as a step block.
+PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit'}
+PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY='PIECEWISE_DISCONTINUOUS_OVERVIEW_v1'
+PIECEWISE_DISCONTINUOUS_MAX_PIECES=6
+PIECEWISE_DISCONTINUOUS_MAX_JUMP_VALUES=8
+PIECEWISE_DISCONTINUOUS_MAX_REQUIRED_POINTS=24
+PIECEWISE_DISCONTINUOUS_MIN_FEATURE_GAP_PX=4
+
+def _pd_piece(entry,index):
+    """One piece: exact coefficients of degree at most 2 and its own interval, each end OPEN or CLOSED (null = an unbounded end)."""
+    if not isinstance(entry,dict) or 'coefficients' not in entry or 'domain' not in entry or set(entry)-{'coefficients','domain','start','end'}:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
+    raw=entry['coefficients']
+    if not isinstance(raw,list) or not 1<=len(raw)<=3:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
+    coefficients=[pp_surd(value,'PIECEWISE_DISCONTINUOUS_COEFFICIENT_INVALID') for value in raw]+[S.Integer(0)]*(3-len(raw))
+    domain=entry['domain']
+    if not isinstance(domain,list) or len(domain)!=2:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
+    a=None if domain[0] is None else pp_surd(domain[0],'PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
+    b=None if domain[1] is None else pp_surd(domain[1],'PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
+    if a is not None and b is not None and not a<b:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
+    start=entry.get('start','CLOSED');end=entry.get('end','CLOSED')
+    if start not in INTERVAL_STATES or end not in INTERVAL_STATES:raise ValueError('PIECEWISE_ENDPOINT_STATE_INVALID:'+str(index))
+    if a is None and start=='OPEN' or b is None and end=='OPEN':raise ValueError('PIECEWISE_ENDPOINT_STATE_INVALID:'+str(index))
+    return {'coefficients':coefficients,'a':a,'b':b,'start':start,'end':end}
+
+def piecewise_discontinuous_step(step):
+    """A staircase: values[i] on the i-th equal subinterval of [xFrom,xTo], every piece closed on the left and open on the right except
+    the last, which is closed at xTo. Returns the same piece rows as the pieces field."""
+    if not isinstance(step,dict) or set(step)!={'values','xFrom','xTo'}:raise ValueError('STEP_INTERVAL_INVALID')
+    values=step['values']
+    if not isinstance(values,list) or not 1<=len(values)<=PIECEWISE_DISCONTINUOUS_MAX_PIECES:raise ValueError('STEP_INTERVAL_INVALID')
+    x_from=pp_surd(step['xFrom'],'STEP_INTERVAL_INVALID');x_to=pp_surd(step['xTo'],'STEP_INTERVAL_INVALID')
+    if not x_from<x_to:raise ValueError('STEP_INTERVAL_INVALID')
+    heights=[pp_surd(value,'PIECEWISE_DISCONTINUOUS_COEFFICIENT_INVALID') for value in values]
+    width=(x_to-x_from)/len(heights)
+    pieces=[]
+    for index,height in enumerate(heights):
+        a=x_from+index*width;b=x_from+(index+1)*width
+        pieces.append({'coefficients':[height,S.Integer(0),S.Integer(0)],'a':a,'b':b,'start':'CLOSED','end':'CLOSED' if index==len(heights)-1 else 'OPEN'})
+    return pieces
+
+def piecewise_discontinuous_pieces(plan):
+    """The exact pieces of a discontinuous plan: either pieces (1 to 6) or a step block (exactly one of them), ordered left to right,
+    with at most one unbounded end on each side and no overlapping domain."""
+    if ('pieces' in plan)==('step' in plan):raise ValueError('PIECEWISE_DISCONTINUOUS_SOURCE_INVALID')
+    if 'step' in plan:
+        pieces=piecewise_discontinuous_step(plan['step'])
+    else:
+        raw=plan['pieces']
+        if not isinstance(raw,list) or not 1<=len(raw)<=PIECEWISE_DISCONTINUOUS_MAX_PIECES:raise ValueError('PIECEWISE_TOO_MANY_PIECES')
+        pieces=[_pd_piece(entry,index+1) for index,entry in enumerate(raw)]
+    if len(pieces)>PIECEWISE_DISCONTINUOUS_MAX_PIECES:raise ValueError('PIECEWISE_TOO_MANY_PIECES')
+    for index,piece in enumerate(pieces):
+        if piece['a'] is None and index!=0 or piece['b'] is None and index!=len(pieces)-1:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index+1))
+    for previous,current in zip(pieces,pieces[1:]):
+        if previous['b'] is None or current['a'] is None:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID')
+        if previous['b']>current['a']:raise ValueError('PIECEWISE_DOMAIN_OVERLAP:'+_pp_text(current['a']))
+    return pieces
+
+def pd_defines_at(piece,x_value):
+    """Whether this piece's own interval contains x (an OPEN end excludes its value)."""
+    a,b=piece['a'],piece['b']
+    if a is not None and (x_value<a or pp_same(x_value,a) and piece['start']=='OPEN'):return False
+    if b is not None and (x_value>b or pp_same(x_value,b) and piece['end']=='OPEN'):return False
+    return True
+
+def pd_piece_value(piece,x_value):
+    return _pp_norm(sum((c*S.sympify(x_value)**i for i,c in enumerate(piece['coefficients'])),S.Integer(0)))
+
+def piecewise_discontinuous_values(plan,pieces):
+    """The declared jump values {x,y} (an isolated point or the function value at a jump), checked against the pieces: a value inside a
+    piece must be that piece's value, two entries at one x contradict each other, and every junction where neither end is CLOSED needs one."""
+    raw=plan.get('jumpValues',[])
+    if not isinstance(raw,list) or len(raw)>PIECEWISE_DISCONTINUOUS_MAX_JUMP_VALUES:raise ValueError('PIECEWISE_DISCONTINUOUS_JUMP_VALUES_INVALID')
+    rows=[]
+    for entry in raw:
+        if not isinstance(entry,dict) or set(entry)!={'x','y'}:raise ValueError('PIECEWISE_DISCONTINUOUS_JUMP_VALUES_INVALID')
+        x_value=pp_surd(entry['x'],'PIECEWISE_DISCONTINUOUS_JUMP_VALUES_INVALID');y_value=pp_surd(entry['y'],'PIECEWISE_DISCONTINUOUS_JUMP_VALUES_INVALID')
+        if any(pp_same(x_value,other[0]) for other in rows):raise ValueError('PIECEWISE_VALUE_CONFLICT:'+_pp_text(x_value))
+        rows.append((x_value,y_value))
+    for x_value,y_value in rows:
+        for piece in pieces:
+            if pd_defines_at(piece,x_value) and not pp_same(pd_piece_value(piece,x_value),y_value):raise ValueError('PIECEWISE_VALUE_CONFLICT:'+_pp_text(x_value))
+    for previous,current in zip(pieces,pieces[1:]):
+        if previous['b'] is None or current['a'] is None or not pp_same(previous['b'],current['a']):continue
+        x_value=current['a'];left_closed=previous['end']=='CLOSED';right_closed=current['start']=='CLOSED'
+        if left_closed and right_closed:raise ValueError('PIECEWISE_DOMAIN_OVERLAP:'+_pp_text(x_value))
+        declared=[value for at,value in rows if pp_same(at,x_value)]
+        if not left_closed and not right_closed:
+            if not declared:raise ValueError('PIECEWISE_DISCONTINUITY_UNDECLARED:'+_pp_text(x_value))
+        elif declared:
+            expected=pd_piece_value(previous if left_closed else current,x_value)
+            if any(not pp_same(value,expected) for value in declared):raise ValueError('PIECEWISE_VALUE_CONFLICT:'+_pp_text(x_value))
+    return rows
+
+def piecewise_discontinuous_markers(pieces,jump_values):
+    """The dots of the figure: every bounded piece end (hollow when OPEN, filled when CLOSED) and every declared value, deduplicated by
+    point (a filled dot wins over a hollow one at the same coordinates)."""
+    markers=[]
+    def add(x_value,y_value,state):
+        for row in markers:
+            if pp_same(row[0],x_value) and pp_same(row[1],y_value):
+                if state=='CLOSED':row[2]='CLOSED'
+                return
+        markers.append([x_value,y_value,state])
+    for piece in pieces:
+        if piece['a'] is not None:add(piece['a'],pd_piece_value(piece,piece['a']),piece['start'])
+        if piece['b'] is not None:add(piece['b'],pd_piece_value(piece,piece['b']),piece['end'])
+    for x_value,y_value in jump_values:add(x_value,y_value,'CLOSED')
+    return sorted(markers,key=lambda row:(float(row[0]),float(row[1])))
+
+def piecewise_discontinuous_crossings(pieces,level,jump_values):
+    """Every x where the function equals the horizontal line y=level, exactly and once: a root inside a piece's interval (an OPEN end is
+    not on the graph) or a declared value at that height. A piece equal to the line is refused."""
+    found=[]
+    for piece in pieces:
+        c0,c1,c2=piece['coefficients']
+        roots=pp_quadratic_roots(c0-level,c1,c2)
+        if roots is None:raise ValueError('PIECEWISE_REFERENCE_LINE_CONTAINS_A_PIECE')
+        for root in roots:
+            if not pd_defines_at(piece,root):continue
+            if not any(pp_same(root,other) for other in found):found.append(root)
+    for x_value,y_value in jump_values:
+        if pp_same(y_value,level) and not any(pp_same(x_value,other) for other in found):found.append(x_value)
+    return sorted(found,key=lambda value:float(value))
+
+def fit_piecewise_discontinuous(plan):
+    if 'functionName' in plan and not (isinstance(plan['functionName'],str) and re.fullmatch(r'[a-hj-wz]',plan['functionName'])):raise ValueError('PIECEWISE_DISCONTINUOUS_FUNCTION_NAME_INVALID')
+    unknown=sorted(set(plan)-PIECEWISE_DISCONTINUOUS_FIELDS)
+    if unknown:raise ValueError('PIECEWISE_DISCONTINUOUS_FIELD_UNKNOWN:'+unknown[0])
+    pieces=piecewise_discontinuous_pieces(plan)
+    jumps=piecewise_discontinuous_values(plan,pieces)
+    intervals=[(piece['a'],piece['b']) for piece in pieces]
+    extrema=piecewise_polynomial_extrema([piece['coefficients'] for piece in pieces],intervals)
+    # Reference lines y=level: the claimed exact crossings must be exactly the engine's own (including declared values on the line).
+    raw_lines=plan.get('referenceLines',[])
+    if not isinstance(raw_lines,list) or len(raw_lines)>3:raise ValueError('PIECEWISE_REFERENCE_LINES_INVALID')
+    line_ids=set();lines=[]
+    for line in raw_lines:
+        if not isinstance(line,dict) or not isinstance(line.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',line['id']) or line['id'] in line_ids or not isinstance(line.get('intersectionX'),list) or len(line['intersectionX'])>6 or line.get('labelIntersections',False) not in (True,False):raise ValueError('PIECEWISE_REFERENCE_LINE_INVALID')
+        if set(line)-{'id','y','intersectionX','labelIntersections'}:raise ValueError('PIECEWISE_REFERENCE_LINE_INVALID')
+        line_ids.add(line['id'])
+        level=pp_surd(line['y'],'PIECEWISE_REFERENCE_LINE_INVALID')
+        exact=piecewise_discontinuous_crossings(pieces,level,jumps)
+        claimed=sorted(((text,pp_exact_value(text)) for text in line['intersectionX']),key=lambda row:float(row[1]))
+        if len(claimed)!=len(exact) or any(not pp_same(value,root) for (_,value),root in zip(claimed,exact)):
+            raise ValueError('PIECEWISE_INTERSECTION_MISMATCH:'+line['id']+':engine finds '+str(len(exact))+' intersection(s)')
+        lines.append({'id':line['id'],'level':level,'claimed':claimed,'labelIntersections':line.get('labelIntersections',False)})
+    # Key points the author marks: every in-piece vertex, each on the function or on a declared value.
+    required=plan.get('requiredPoints',[])
+    if not isinstance(required,list) or len(required)>PIECEWISE_DISCONTINUOUS_MAX_REQUIRED_POINTS:raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
+    ids=set();required_xy=[];exact_points={};normalized=[]
+    for point in required:
+        if not isinstance(point,dict) or set(point)!={'id','x','y'} or not isinstance(point['id'],str) or not point['id'] or point['id'] in ids:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+        floats={};exact={}
+        for k in ('x','y'):
+            value=point[k]
+            if isinstance(value,str):
+                try:exact[k]=pp_exact_value(value);floats[k]=float(exact[k])
+                except ValueError:raise ValueError('INVALID_REQUIRED_GRAPH_POINT') from None
+            elif isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value):raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+            else:floats[k]=value
+            if abs(floats[k])>1e6:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+        ids.add(point['id']);at=exact['x'] if 'x' in exact else S.Rational(str(floats['x']))
+        near=lambda value:abs(value-floats['y'])<=1e-8*max(1,abs(floats['y']))
+        on_piece=any(pd_defines_at(piece,at) and near(float(pd_piece_value(piece,at))) for piece in pieces)
+        on_value=any(pp_same(at,at_value) and near(float(value)) for at_value,value in jumps)
+        if not on_piece and not on_value:raise ValueError('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
+        if len(exact)==2:
+            tiny=S.Float('1e-40',60)
+            exact_on=any(pd_defines_at(piece,exact['x']) and abs(S.N(pd_piece_value(piece,exact['x'])-exact['y'],60))<=tiny for piece in pieces) or any(pp_same(exact['x'],at_value) and pp_same(exact['y'],value) for at_value,value in jumps)
+            if not exact_on:raise ValueError('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
+        if exact:
+            exact_points[point['id']]=[pp_surd_text(exact[k]) if k in exact else (str(Fraction(str(floats[k]))) if floats[k]==int(floats[k]) else None) for k in ('x','y')]
+            if None in exact_points[point['id']]:raise ValueError('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_MIXED_EXACT:'+point['id'])
+        normalized.append({'id':point['id'],'x':floats['x'],'y':floats['y']});required_xy.append((floats['x'],floats['y']))
+    required=normalized
+    marked=lambda x_value,y_value:any(abs(px-float(x_value))<=1e-9*max(1,abs(px)) and abs(py-float(y_value))<=1e-9*max(1,abs(py)) for px,py in required_xy)
+    for x_value,y_value,_ in extrema:
+        if not marked(x_value,y_value):raise ValueError('PIECEWISE_DISCONTINUOUS_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value))
+    def key_at(x_float,y_float):
+        return next((point for point in required if abs(point['x']-x_float)<=1e-9*max(1,abs(x_float)) and abs(point['y']-y_float)<=1e-9*max(1,abs(y_float))),None)
+    markers=piecewise_discontinuous_markers(pieces,jumps)
+    crossings=[]
+    for line in lines:
+        points=[]
+        for text,root in line['claimed']:
+            x_float=float(root);key_point=key_at(x_float,float(line['level']))
+            row={'x':text.replace(' ',''),'xValue':x_float}
+            if key_point is not None:row['keyPoint']=key_point['id']
+            elif any(pp_same(root,at) and pp_same(line['level'],value) for at,value,_ in markers):row['marker']=True
+            points.append(row)
+        crossings.append({'lineId':line['id'],'y':_pp_text(line['level']),'points':points})
+    marker_rows=[{'id':'endpoint-'+str(index),'x':_pp_text(x_value),'y':_pp_text(y_value),'state':state} for index,(x_value,y_value,state) in enumerate(markers,1)]
+    key=[(float(x_value),float(y_value)) for x_value,y_value,_ in markers]+[(float(x_value),float(y_value)) for x_value,y_value,_ in extrema]+required_xy+[(float(root),float(line['level'])) for line in lines for _,root in line['claimed']]+[(0.0,0.0)]
+    def coverage(x_value):
+        for piece in pieces:
+            a,b=piece['a'],piece['b']
+            if (a is None or float(a)<=x_value) and (b is None or x_value<=float(b)):return float(pd_piece_value(piece,x_value))
+        raise ValueError('PIECEWISE_DISCONTINUOUS_POINT_OUTSIDE_SOURCE_DOMAIN')
+    xs=[p[0] for p in key];span=max(xs)-min(xs);extend=max(1.0,.2*span)
+    ys=[p[1] for p in key];ylo,yhi=min(ys),max(ys);band=max(1.0,.25*(yhi-ylo))
+    def arm(anchor,direction):
+        far=anchor+direction*extend
+        if ylo-band<=coverage(far)<=yhi+band:return far
+        near=anchor
+        for _ in range(60):
+            mid=(near+far)/2
+            if ylo-band<=coverage(mid)<=yhi+band:near=mid
+            else:far=mid
+        return near
+    left_x=float(pieces[0]['a']) if pieces[0]['a'] is not None else arm(min(xs),-1)
+    right_x=float(pieces[-1]['b']) if pieces[-1]['b'] is not None else arm(max(xs),1)
+    ends=[(left_x,coverage(left_x)),(right_x,coverage(right_x))]
+    limit=plot_height_limit(plan)
+    points=[(0.0,0.0)]+key+ends
+    for ratio in axis_ratios(plan,points,limit):
+        viewport,height,scale=equal_unit_frame(points,limit,ratio)
+        if (ends[1][0]-ends[0][0])*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
+    else:raise ValueError('PIECEWISE_DISCONTINUOUS_CURVE_TOO_NARROW')
+    # Distinct marked features closer than 4 px could not be told apart.
+    marks=[]
+    for mark in sorted(set(key)):
+        if not any(abs(mark[0]-m[0])<=1e-9*max(1,abs(m[0])) and abs(mark[1]-m[1])<=1e-9*max(1,abs(m[1])) for m in marks):marks.append(mark)
+    for index,(ax,ay) in enumerate(marks):
+        for bx,by in marks[index+1:]:
+            if math.hypot((ax-bx)*scale,(ay-by)*scale*ratio)<PIECEWISE_DISCONTINUOUS_MIN_FEATURE_GAP_PX:raise ValueError('PIECEWISE_DISCONTINUOUS_FEATURES_BELOW_RESOLUTION')
+    draw=[ends[0][0],ends[1][0]]
+    piece_rows=[]
+    for piece in pieces:
+        start=draw[0] if piece['a'] is None else max(draw[0],float(piece['a']))
+        end=draw[1] if piece['b'] is None else min(draw[1],float(piece['b']))
+        piece_rows.append({'coefficients':[_pp_text(c) for c in piece['coefficients']],'interval':[None if piece['a'] is None else _pp_text(piece['a']),None if piece['b'] is None else _pp_text(piece['b'])],'drawInterval':[start,end],'start':piece['start'],'end':piece['end']})
+    features={'schemaVersion':'PIECEWISE_DISCONTINUOUS_FEATURES_v1','pieces':piece_rows,'markers':marker_rows,'extrema':[{'x':_pp_text(x_value),'y':_pp_text(y_value),'kind':kind} for x_value,y_value,kind in extrema],'intersections':crossings}
+    fitted={key_name:value for key_name,value in plan.items() if key_name not in ('domain','viewport')}
+    if exact_points:
+        merged=dict(plan.get('exactCoordinates') or {})
+        if any(point_id in merged and merged[point_id]!=pair for point_id,pair in exact_points.items()):raise ValueError('PIECEWISE_DISCONTINUOUS_EXACT_COORDINATES_CONFLICT')
+        merged.update(exact_points);fitted['exactCoordinates']=merged
+    fitted['requiredPoints']=required
+    fitted.update({'domain':draw,'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY,'piecewiseDiscontinuousFeatures':features,'equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}})
+    return {'graphPlan':fitted,'policy':PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY,'sourceDomainPreserved':False,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}

@@ -109,6 +109,10 @@ def prepare(spec):
     if interval_features is not None:
         if interval_features.get('schemaVersion')!='POLYNOMIAL_INTERVAL_FEATURES_v1':raise ValueError('POLYNOMIAL_INTERVAL_INVENTORY_REQUIRED')
         for endpoint in interval_features.get('endpoints',[]):critical.append((_exact_float(endpoint['x']),_exact_float(endpoint['y'])))
+    discontinuous_endpoint_features=spec['displayFacts'].get('discontinuousEndpointFeatures')
+    if discontinuous_endpoint_features is not None:
+        if discontinuous_endpoint_features.get('schemaVersion')!='PIECEWISE_DISCONTINUOUS_ENDPOINTS_v1':raise ValueError('PIECEWISE_DISCONTINUOUS_ENDPOINT_INVENTORY_REQUIRED')
+        for marker in discontinuous_endpoint_features.get('markers',[]):critical.append((_exact_float(marker['x']),_exact_float(marker['y'])))
     reference_interval_features=spec['displayFacts'].get('referenceIntervalFeatures')
     if reference_interval_features is not None:
         if not isinstance(reference_interval_features,list):raise ValueError('REFERENCE_INTERVAL_INVENTORY_REQUIRED')
@@ -277,6 +281,14 @@ def prepare(spec):
             # A closed end is a filled dot, an open end a hollow one, drawn over the curve end.
             at=vp.screen((_exact_float(endpoint['x']),_exact_float(endpoint['y'])))
             primitive({'id':'interval-endpoint-'+endpoint['side'].lower(),'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'interval-endpoint','fill':'#fff' if endpoint['state']=='OPEN' else '#111','state':endpoint['state']},'circle')
+    if discontinuous_endpoint_features is not None:
+        policy=spec['displayFacts'].get('discontinuousEndpointFeaturePolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('PIECEWISE_DISCONTINUOUS_ENDPOINT_POLICY_REQUIRED')
+        for marker in discontinuous_endpoint_features.get('markers',[]):
+            if marker.get('state') not in {'OPEN','CLOSED'} or not isinstance(marker.get('id'),str) or not marker['id']:raise ValueError('INVALID_PIECEWISE_DISCONTINUOUS_ENDPOINT')
+            # A CLOSED end or a declared value is a filled dot; an OPEN end is hollow and the function is not defined there.
+            at=vp.screen((_exact_float(marker['x']),_exact_float(marker['y'])))
+            primitive({'id':'discontinuous-'+marker['id'],'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'discontinuous-endpoint','fill':'#fff' if marker['state']=='OPEN' else '#111','state':marker['state']},'circle')
     if reference_interval_features is not None:
         policy=spec['displayFacts'].get('referenceIntervalFeaturePolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
         if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('REFERENCE_INTERVAL_MARKER_POLICY_REQUIRED')

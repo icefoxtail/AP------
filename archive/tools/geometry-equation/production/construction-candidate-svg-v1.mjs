@@ -15,7 +15,7 @@ const CAPABILITY='construction-spike-v1';
 const POLICY_VERSION='REQUESTED_PROFILE_TYPOGRAPHY_v1';
 const OBSERVER_SCRIPT=fileURLToPath(new URL('primitive-observer-worker.py',import.meta.url));
 // Quadratic polynomial graphs and piecewise polynomial graphs (HEADER_BAND formula) follow the runPhase2 graph route: graph observer instead of the Cindy peer.
-const GRAPH_CAPABILITIES=new Set(['polynomial-spike-v1','piecewise-polynomial-spike-v1','rational-spike-v1','sqrt-affine-spike-v1','absolute-value-spike-v1','piecewise-affine-spike-v1','exponential-affine-spike-v1','logarithmic-affine-spike-v1','trigonometric-spike-v1','exp-log-pair-spike-v1']);
+const GRAPH_CAPABILITIES=new Set(['polynomial-spike-v1','piecewise-polynomial-spike-v1','rational-spike-v1','sqrt-affine-spike-v1','absolute-value-spike-v1','piecewise-affine-spike-v1','exponential-affine-spike-v1','logarithmic-affine-spike-v1','trigonometric-spike-v1','exp-log-pair-spike-v1','piecewise-discontinuous-spike-v1']);
 const GRAPH_OBSERVER_SCRIPT=fileURLToPath(new URL('graph-observer-worker.py',import.meta.url));
 const PLANE_MARKS_OBSERVER_SCRIPT=fileURLToPath(new URL('plane-marks-observer-worker.py',import.meta.url));
 // A plan with plane marks (angle arcs, ticks, ...) or styled segments is also read back by the plane-marks observer.
@@ -192,7 +192,7 @@ export async function composeConstructionCandidate({plan,model,identity,typograp
     // Always the real worker and observer: a caller-supplied worker could otherwise answer PASS for any SVG.
     // Graph lines are audited against the plan's own exact slope and intercept (a=slope, b=-1, c=intercept for ax+by+c=0).
     // A piecewise polynomial's referenceLines are y=c (a=0, b=-1, c) or, with slope and intercept, y=m*x+c (a=m, b=-1, c).
-    const graphLines=graph?Object.fromEntries([...(plan.graphPlan.lines||[]).map(line=>['line-'+line.id,[exactValue(line.slope),-1,exactValue(line.intercept)]]),...(plan.capability==='piecewise-polynomial-spike-v1'?(plan.graphPlan.referenceLines||[]).map(line=>['line-'+line.id,[line.slope===undefined?0:exactValue(String(line.slope)),-1,exactValue(String(line.slope===undefined?line.y:line.intercept))]]):[])]):null;
+    const graphLines=graph?Object.fromEntries([...(plan.graphPlan.lines||[]).map(line=>['line-'+line.id,[exactValue(line.slope),-1,exactValue(line.intercept)]]),...((plan.capability==='piecewise-polynomial-spike-v1'||plan.capability==='piecewise-discontinuous-spike-v1')?(plan.graphPlan.referenceLines||[]).map(line=>['line-'+line.id,[line.slope===undefined?0:exactValue(String(line.slope)),-1,exactValue(String(line.slope===undefined?line.y:line.intercept))]]):[])]):null;
     const audit=await call(pythonWorker,'staticAudit',{svg,points:peerOf(displayed?.points,peer?.points),lines:graph?graphLines:peerOf(displayed?.lines,peer?.lines),circles:peerOf(displayed?.circles,peer?.circles),segments:plan.displaySegments||[],rightAngles:plan.rightAngles||[],transform:witness.coordinateModel,fragments,coordinateMode:model.coordinateMode??'FUNCTION_GRAPH'},{script:OBSERVER_SCRIPT});
     // runPhase2 715: graphs also need the graph observer on the final SVG at the intrinsic scale.
     const graphAudit=graph?await call(pythonWorker,'graphAudit',{graphPlan:plan.graphPlan,svg,transform:{...observerFrame(witness.coordinateModel),displayScale:1}},{script:GRAPH_OBSERVER_SCRIPT,timeoutMs:120000}):null;
