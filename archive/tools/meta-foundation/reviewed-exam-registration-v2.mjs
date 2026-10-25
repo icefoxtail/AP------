@@ -931,8 +931,24 @@ function labelsFor(root, patch, row, resolved, read, sourceBlob, { registeredRep
     // Same two legacy scope aliases used by archive2-canonical's master-path projection.
     const masterCourse = ({ 수학_상: "수학(상)", 수학_하: "수학(하)" })[ref.scope] || ref.scope;
     const canonicalMidLabels = [resolved.binding.L2, resolved.sub?.labelKo, resolved.unit.labelKo].filter(Boolean);
+    let exactTypeParent = false;
+    if (ref.crosswalkRef) {
+      const cross = ref.crosswalkRef;
+      if (!/^archive\/data\/meta-foundation\/crosswalks\/rpm-primary-v1\.0\/[a-z0-9-]+\.json$/.test(cross.path || "") ||
+          !(patch.evidenceRefs || []).some(e => e.path === cross.path && e.sha256 === cross.sha256))
+        fail("canonical target crosswalk is not evidence-bound");
+      const doc = read(cross.path), rows = (doc.records || []).filter(r => r.id === cross.recordId);
+      const r = rows[0];
+      const normalizedScope = value => ({ 수학_상: "수학(상)", 수학_하: "수학(하)" })[value] || value;
+      if (doc.status !== "ACTIVE_REFERENCE" || rows.length !== 1 || r.bindingStatus !== "ACTIVE" ||
+          r.curriculum !== resolved.curriculum || compact(normalizedScope(r.scope)) !== compact(resolved.course) ||
+          r.problemTypeKey !== row.problemTypeKey || r.templateKey !== row.templateKey ||
+          r.rpmPath?.majorUnit !== ref.majorUnit || r.rpmPath?.midUnit !== ref.midUnit)
+        fail("canonical target crosswalk classification/parent mismatch");
+      exactTypeParent = true;
+    }
     if (!matches.length || ref.curriculum !== resolved.curriculum || compact(masterCourse) !== compact(row.courseKey || resolved.course) ||
-        !canonicalMidLabels.includes(ref.midUnit) || resolved.binding.L1 && ref.majorUnit !== resolved.binding.L1) fail("canonical target parent mismatch");
+        !canonicalMidLabels.includes(ref.midUnit) && !exactTypeParent || resolved.binding.L1 && ref.majorUnit !== resolved.binding.L1) fail("canonical target parent mismatch");
     return { ...labels, L1: ref.majorUnit, L2: ref.midUnit };
   };
   if (patch.approvedMetadataRef) {
