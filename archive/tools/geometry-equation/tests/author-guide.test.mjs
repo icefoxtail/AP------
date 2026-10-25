@@ -10,7 +10,7 @@ test('AUTHOR_GUIDE.md is the current build of its body plus the phase2 contract'
 test('the guide carries the contract passages an author needs',()=>{
   const guide=fs.readFileSync(guidePath,'utf8');
   const contract=contractText();
-  for(const capability of ['polynomial-spike-v1','composite-panels-v1','piecewise-polynomial-spike-v1','quadratic-inequality-chain-v1','construction-spike-v1']){
+  for(const capability of ['polynomial-spike-v1','composite-panels-v1','piecewise-polynomial-spike-v1','piecewise-discontinuous-spike-v1','quadratic-inequality-chain-v1','construction-spike-v1']){
     assert.ok(contract.includes(capability),'contract text lacks '+capability);
     assert.ok(guide.includes(capability),'guide lacks '+capability);
   }
