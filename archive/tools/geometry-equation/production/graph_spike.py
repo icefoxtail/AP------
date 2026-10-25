@@ -7,6 +7,21 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from visual_engine.function_sampling import sample
 from visual_engine.viewport import Viewport
 
+def _exp_log_base_expression(row):
+    """The sampler expression of one exp/log curve. A non-natural base is written with ln(base) only inside the expression; the framing and
+    observer keep the exact base and recompute the curve independently."""
+    base=row.get('base')
+    if row['family']=='exponential-affine':
+        a,k,c=row['coefficients'];shift=row.get('shiftX','0');natural=base in (None,'e')
+        if natural and shift=='0':return f'({a})*exp(({k})*x)+({c})'
+        exponent=f'({k})*(x-({shift}))' if natural else f'({k})*ln({base})*(x-({shift}))'
+        return f'({a})*exp({exponent})+({c})'
+    if row['family']=='logarithmic-affine':
+        a,k,b,c=row['coefficients']
+        if base in (None,'e'):return f'({a})*log(({k})*x+({b}))+({c})'
+        return f'({a})*log(({k})*x+({b}))/ln({base})+({c})'
+    raise ValueError('UNSUPPORTED_GRAPH_FAMILY')
+
 def expression(plan):
     def poly(values):
         return '('+'+'.join('('+v+')*x^'+str(i) for i,v in enumerate(values))+')'
@@ -16,10 +31,7 @@ def expression(plan):
     if plan['family']=='absolute-value':
         b,a,scale,offset=plan['coefficients']
         return '(('+scale+')*abs(('+a+')*x+('+b+'))+('+offset+'))'
-    if plan['family']=='exponential-affine':
-        a,k,c=plan['coefficients'];return f'({a})*exp(({k})*x)+({c})'
-    if plan['family']=='logarithmic-affine':
-        a,k,b,c=plan['coefficients'];return f'({a})*log(({k})*x+({b}))+({c})'
+    if plan['family'] in {'exponential-affine','logarithmic-affine'}:return _exp_log_base_expression(plan)
     if plan['family']=='trigonometric':
         a,k,c=plan['coefficients'];fn=plan['function'].lower();return f'({a})*{fn}(({k})*x+({plan["phasePi"]})*pi)+({c})'
     raise ValueError('UNSUPPORTED_GRAPH_FAMILY')
@@ -34,6 +46,7 @@ def produce(plan):
     vp=Viewport(*plan['viewport'],width=plot['width']+64 if plot else 420,height=plot['height']+64 if plot else 280,panel=0,margin=32,equal=plan.get('equalUnits') is True and plan.get('axisRatio',1)==1)
     if plan.get('family')=='piecewise-affine':return _produce_piecewise_affine(plan,vp)
     if plan.get('family')=='piecewise-polynomial':return _produce_piecewise_polynomial(plan,vp)
+    if plan.get('family')=='exp-log-pair':return _produce_exp_log_pair(plan,vp)
     critical=[p['x'] for p in plan.get('requiredPoints',[])]+[feature['x'] for feature in plan.get('overviewFeatures',[]) if feature.get('kind')!='TAIL_DIRECTION']
     if plan['family']=='sqrt-affine':
         b,a=[float(Fraction(v)) for v in plan['radicand']]
@@ -46,7 +59,9 @@ def produce(plan):
         critical.append(float(Fraction(plan['absoluteFeatures']['corner']['x'])))
         critical.extend(float(Fraction(value)) for value in plan['absoluteFeatures']['xIntercepts'])
     if plan['family']=='exponential-affine' and plan.get('overviewPolicy')=='EXPONENTIAL_AFFINE_OVERVIEW_v1':critical.append(0.0)
+    if plan['family']=='exponential-affine' and plan.get('overviewPolicy')=='EXPONENTIAL_BASE_OVERVIEW_v1':critical.append(float(Fraction(plan['exponentialFeatures']['referencePoint']['x'])))
     if plan['family']=='logarithmic-affine' and plan.get('overviewPolicy')=='LOGARITHMIC_AFFINE_OVERVIEW_v1':critical.append(float(Fraction(plan['logarithmicFeatures']['referencePoint']['x'])))
+    if plan['family']=='logarithmic-affine' and plan.get('overviewPolicy')=='LOGARITHMIC_BASE_OVERVIEW_v1':critical.append(float(Fraction(plan['logarithmicFeatures']['referencePoint']['x'])))
     if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_PERIODIC_OVERVIEW_v1':
         features=plan.get('trigFeatures',{})
         if plan.get('function') in {'SIN','COS'}:critical.extend(float(Fraction(row['xPiMultiple']))*math.pi for row in features.get('phasePoints',[]))
@@ -101,9 +116,23 @@ def produce(plan):
         curves.append(f'<line id="exponential-horizontal-asymptote" data-role="exponential-asymptote" data-axis="horizontal" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
         ref=features['referencePoint'];at=vp.screen((float(Fraction(ref['x'])),float(Fraction(ref['y']))));radius=float(policy['referenceMarkerRadiusIntrinsicPx'])
         curves.append(f'<circle id="exponential-reference-point" data-role="exponential-reference" data-state="CLOSED" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
+    if plan['family']=='exponential-affine' and plan.get('overviewPolicy')=='EXPONENTIAL_BASE_OVERVIEW_v1':
+        features=plan.get('exponentialFeatures');policy=plan.get('exponentialFeaturePolicy')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='EXPONENTIAL_BASE_FEATURES_v1' or not isinstance(policy,dict):raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
+        asymptote=float(Fraction(features['horizontalAsymptote']['y']));a,b=vp.screen((plan['viewport'][0],asymptote)),vp.screen((plan['viewport'][1],asymptote))
+        curves.append(f'<line id="exponential-horizontal-asymptote" data-role="exponential-asymptote" data-axis="horizontal" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
+        ref=features['referencePoint'];at=vp.screen((float(Fraction(ref['x'])),float(Fraction(ref['y']))));radius=float(policy['referenceMarkerRadiusIntrinsicPx'])
+        curves.append(f'<circle id="exponential-reference-point" data-role="exponential-reference" data-state="CLOSED" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
     if plan['family']=='logarithmic-affine' and plan.get('overviewPolicy')=='LOGARITHMIC_AFFINE_OVERVIEW_v1':
         features=plan.get('logarithmicFeatures');policy=plan.get('logarithmicFeaturePolicy')
         if not isinstance(features,dict) or features.get('schemaVersion')!='LOGARITHMIC_AFFINE_FEATURES_v1' or not isinstance(policy,dict):raise ValueError('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED')
+        boundary=float(Fraction(features['naturalDomainBoundaryX']));a,b=vp.screen((boundary,plan['viewport'][2])),vp.screen((boundary,plan['viewport'][3]))
+        curves.append(f'<line id="logarithmic-domain-boundary" data-role="logarithmic-domain-boundary" data-axis="vertical" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
+        ref=features['referencePoint'];at=vp.screen((float(Fraction(ref['x'])),float(Fraction(ref['y']))));radius=float(policy['referenceMarkerRadiusIntrinsicPx'])
+        curves.append(f'<circle id="logarithmic-reference-point" data-role="logarithmic-reference" data-state="CLOSED" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
+    if plan['family']=='logarithmic-affine' and plan.get('overviewPolicy')=='LOGARITHMIC_BASE_OVERVIEW_v1':
+        features=plan.get('logarithmicFeatures');policy=plan.get('logarithmicFeaturePolicy')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='LOGARITHMIC_BASE_FEATURES_v1' or not isinstance(policy,dict):raise ValueError('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED')
         boundary=float(Fraction(features['naturalDomainBoundaryX']));a,b=vp.screen((boundary,plan['viewport'][2])),vp.screen((boundary,plan['viewport'][3]))
         curves.append(f'<line id="logarithmic-domain-boundary" data-role="logarithmic-domain-boundary" data-axis="vertical" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
         ref=features['referencePoint'];at=vp.screen((float(Fraction(ref['x'])),float(Fraction(ref['y']))));radius=float(policy['referenceMarkerRadiusIntrinsicPx'])
@@ -143,6 +172,37 @@ def produce(plan):
             curves.append(f'<circle id="interval-endpoint-{endpoint["side"].lower()}" data-role="interval-endpoint" data-state="{endpoint["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="{float(interval_policy["markerRadiusIntrinsicPx"]):.12g}" fill="{"#fff" if endpoint["state"]=="OPEN" else "#111"}" stroke="black" stroke-width="1"/>')
     svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(curves)+'</svg>'
     return {'svg':svg,'sampling':result,'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
+
+def _produce_exp_log_pair(plan,vp):
+    """Two exp/log curves in one plane (optionally with the identity line y=x), each tagged with its curve id so the observer can bind every
+    polyline, asymptote/boundary and reference marker to the exact curve it belongs to."""
+    features=plan.get('expLogPairFeatures');policy=plan.get('expLogPairPolicy')
+    if not isinstance(features,dict) or features.get('schemaVersion')!='EXP_LOG_PAIR_FEATURES_v1' or not isinstance(policy,dict):raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
+    rows=features.get('curves')
+    if not isinstance(rows,list) or len(rows)!=2:raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
+    parts=[];samplings=[]
+    for row in rows:
+        result=sample(_exp_log_base_expression(row),row['domain'],vp,critical_x=[float(Fraction(row['referencePoint']['x']))])
+        samplings.append({'id':'curve-'+row['id'],**{key:value for key,value in result.items() if key!='branches'}})
+        for index,branch in enumerate(result['branches']):
+            points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in branch)
+            parts.append(f'<polyline id="curve-{row["id"]}-{index}" data-role="curve" data-branch="REF_{row["id"]}" points="{points}" fill="none" stroke="black"/>')
+        reference=row['referencePoint'];cx,cy=vp.screen((float(Fraction(reference['x'])),float(Fraction(reference['y']))));radius=float(policy['referenceMarkerRadiusIntrinsicPx'])
+        if row['family']=='exponential-affine':
+            asymptote=float(Fraction(row['horizontalAsymptote']['y']));a,b=vp.screen((plan['viewport'][0],asymptote)),vp.screen((plan['viewport'][1],asymptote))
+            parts.append(f'<line id="asymptote-{row["id"]}" data-role="exponential-asymptote" data-branch="{row["id"]}" data-axis="horizontal" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
+            parts.append(f'<circle id="reference-{row["id"]}" data-role="exponential-reference" data-branch="{row["id"]}" data-state="CLOSED" cx="{cx:.12g}" cy="{cy:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
+        else:
+            boundary=float(Fraction(row['naturalDomainBoundaryX']));a,b=vp.screen((boundary,plan['viewport'][2])),vp.screen((boundary,plan['viewport'][3]))
+            parts.append(f'<line id="boundary-{row["id"]}" data-role="logarithmic-domain-boundary" data-branch="{row["id"]}" data-axis="vertical" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
+            parts.append(f'<circle id="reference-{row["id"]}" data-role="logarithmic-reference" data-branch="{row["id"]}" data-state="CLOSED" cx="{cx:.12g}" cy="{cy:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
+    if features.get('identityLine'):
+        xmin,xmax,ymin,ymax=plan['viewport'];lo=max(xmin,ymin);hi=min(xmax,ymax)
+        if not lo<hi:raise ValueError('EXP_LOG_PAIR_IDENTITY_OUTSIDE_VIEWPORT')
+        a,b=vp.screen((lo,lo)),vp.screen((hi,hi))
+        parts.append(f'<line id="identity-line" data-role="auxiliary" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="4 3"/>')
+    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(parts)+'</svg>'
+    return {'svg':svg,'sampling':{'branches':samplings,'branchCount':len(samplings),'status':'PASS' if all(row['status']=='PASS' for row in samplings) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
 
 def _produce_piecewise_affine(plan,vp):
     from fractions import Fraction

@@ -98,8 +98,9 @@ def fit_overview(plan):
     if plan.get('family')=='sqrt-affine':return _fit_sqrt_affine_overview(plan)
     if plan.get('family')=='absolute-value':return _fit_absolute_value_overview(plan)
     if plan.get('family')=='piecewise-affine':return _fit_piecewise_affine_overview(plan)
-    if plan.get('family')=='exponential-affine':return _fit_exponential_affine_overview(plan)
-    if plan.get('family')=='logarithmic-affine':return _fit_logarithmic_affine_overview(plan)
+    if plan.get('family')=='exponential-affine':return _fit_exponential_base_overview(plan) if plan.get('base') is not None or plan.get('shiftX') is not None else _fit_exponential_affine_overview(plan)
+    if plan.get('family')=='logarithmic-affine':return _fit_logarithmic_base_overview(plan) if plan.get('base') is not None else _fit_logarithmic_affine_overview(plan)
+    if plan.get('family')=='exp-log-pair':return _fit_exp_log_pair_overview(plan)
     if plan.get('family')=='trigonometric':return _fit_trigonometric_overview(plan)
     if plan.get('family')=='piecewise-polynomial':return fit_piecewise_polynomial(plan)
     if plan.get('family')!='polynomial':raise ValueError('UNSUPPORTED_OVERVIEW_FAMILY')
@@ -524,6 +525,179 @@ def _valid_exp_log_display(plan,code):
     domain=plan.get('domain');viewport=plan.get('viewport')
     if not isinstance(domain,list) or len(domain)!=2 or any(isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value) for value in domain) or not domain[0]<domain[1]:raise ValueError('INVALID_'+code+'_DRAW_INTERVAL')
     if not isinstance(viewport,list) or len(viewport)!=4 or any(isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value) for value in viewport) or not viewport[0]<viewport[1] or not viewport[2]<viewport[3]:raise ValueError('INVALID_'+code+'_VIEWPORT')
+
+def exp_log_base(value,code):
+    """The exact base of a base-a exponential/logarithm: a positive integer, a reduced fraction of positive integers, or sqrt(n) with n a
+    square-free integer > 1. None means the natural base e. Symbolic, nested, decimal and non-positive bases are refused."""
+    if value is None:return None
+    if not isinstance(value,str) or len(value)>32:raise ValueError(code+'_BASE_GRAMMAR_REQUIRED')
+    text=value.strip()
+    if re.fullmatch(r'-?\d+',text):
+        parsed=Fraction(int(text));kind='INTEGER'
+    elif re.fullmatch(r'-?\d+/[1-9]\d*',text):
+        parsed=Fraction(text);kind='RATIONAL'
+    elif re.fullmatch(r'sqrt\([1-9]\d*\)',text):
+        n=int(text[5:-1]);root=math.isqrt(n)
+        if root*root==n or any(n%(prime*prime)==0 for prime in range(2,root+1)):raise ValueError(code+'_BASE_RADICAL_NOT_SQUARE_FREE')
+        parsed=None;kind='RADICAL'
+    else:raise ValueError(code+'_BASE_GRAMMAR_REQUIRED')
+    if kind=='RATIONAL' and parsed.denominator==1:kind='INTEGER'
+    if kind!='RADICAL' and (parsed<=0 or parsed==1):raise ValueError(code+'_BASE_OUT_OF_RANGE')
+    exact=S.Integer(int(text)) if kind=='INTEGER' else S.Rational(parsed.numerator,parsed.denominator) if kind=='RATIONAL' else S.sqrt(int(text[5:-1]))
+    greater=kind=='RADICAL' or parsed>1
+    return {'text':str(int(parsed)) if kind=='INTEGER' else str(parsed) if kind=='RATIONAL' else 'sqrt('+text[5:-1]+')','kind':kind,'exact':exact,'greaterThanOne':greater,'float':float(exact.evalf(30))}
+
+def natural_exp_log_base():
+    """The natural base e represented in the base features (used only when a shift is given without an explicit base)."""
+    return {'text':'e','kind':'NATURAL','exact':S.E,'greaterThanOne':True,'float':math.e}
+
+def exp_log_shift(value,code):
+    if value is None:return Fraction(0),'0'
+    parsed=_piecewise_fraction(value,code)
+    return parsed,_fraction_text(parsed)
+
+def _exp_log_base_features(base):
+    return {'base':base['text'],'baseKind':base['kind'],'baseGreaterThanOne':base['greaterThanOne']}
+
+def _fit_exponential_base_overview(plan):
+    if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:raise ValueError('EXPONENTIAL_SOURCE_DOMAIN_REQUIRES_ALL_REALS')
+    _valid_exp_log_display(plan,'EXPONENTIAL')
+    base=exp_log_base(plan.get('base'),'EXPONENTIAL') or natural_exp_log_base()
+    a,k,c=_exp_log_coefficients(plan.get('coefficients'),3,'EXPONENTIAL')
+    shift,shift_text=exp_log_shift(plan.get('shiftX'),'EXPONENTIAL_SHIFT_INVALID')
+    if a==0 or k==0:raise ValueError('EXPONENTIAL_NONZERO_SCALE_AND_RATE_REQUIRED')
+    rate=abs(float(k)*math.log(base['float']))
+    if not math.isfinite(rate) or rate<=0 or rate>1e6:raise ValueError('EXPONENTIAL_BASE_RATE_INVALID')
+    radius=3/rate;lo=float(shift)-radius;hi=float(shift)+radius
+    def evaluate(value):
+        try:result=float(a)*(base['float']**(float(k)*(value-float(shift))))+float(c)
+        except OverflowError:raise ValueError('UNSUPPORTED_EXPONENTIAL_NUMERIC_SCOPE') from None
+        if not math.isfinite(result) or abs(result)>1e8:raise ValueError('UNSUPPORTED_EXPONENTIAL_NUMERIC_SCOPE')
+        return result
+    endpoint_values=[evaluate(lo),evaluate(hi)];reference_y=float(a+c);low=min(float(c),reference_y,*endpoint_values);high=max(float(c),reference_y,*endpoint_values);ypad=.15*max(1.0,high-low,abs(low),abs(high));xpad=.04*(hi-lo)
+    viewport=[lo-xpad,hi+xpad,min(0.0,low)-ypad,max(0.0,high)+ypad]
+    growth_positive=(k>0)==base['greaterThanOne']
+    features={'schemaVersion':'EXPONENTIAL_BASE_FEATURES_v1',**_exp_log_base_features(base),'shiftX':shift_text,'referencePoint':{'x':_fraction_text(shift),'y':_fraction_text(a+c)},'horizontalAsymptote':{'y':_fraction_text(c),'side':'LEFT' if growth_positive else 'RIGHT','approachedFrom':'ABOVE' if a>0 else 'BELOW'},'monotonicity':'INCREASING' if (a>0)==growth_positive else 'DECREASING','growthSide':'RIGHT' if growth_positive else 'LEFT','growthDirection':'UP' if a>0 else 'DOWN'}
+    policy={'schemaVersion':'EXPONENTIAL_BASE_FEATURE_POLICY_v1','sourceDomain':'ALL_REALS','referenceArgument':'EXPONENT_ZERO','asymptotePolicy':'EXACT_VERTICAL_SHIFT','basePolicy':'POSITIVE_BASE_NOT_ONE','referenceMarkerRadiusIntrinsicPx':4,'minimumReferenceMarkerDiameterCssPx':3,'minimumAsymptoteSeparationCssPx':2,'minimumBranchSpanCssPx':32}
+    fitted={**plan,'base':base['text'],'shiftX':shift_text,'domain':[lo,hi],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'EXPONENTIAL_BASE_OVERVIEW_v1','exponentialFeatures':features,'exponentialFeaturePolicy':policy}
+    return {'graphPlan':fitted,'policy':'EXPONENTIAL_BASE_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan['domain'],'viewport':plan['viewport']}}
+
+def _fit_logarithmic_base_overview(plan):
+    if plan.get('sourceDomain')!={'kind':'NATURAL_LOG_AFFINE'}:raise ValueError('LOGARITHMIC_SOURCE_DOMAIN_REQUIRES_NATURAL_AFFINE')
+    _valid_exp_log_display(plan,'LOGARITHMIC')
+    base=exp_log_base(plan.get('base'),'LOGARITHMIC') or natural_exp_log_base()
+    a,k,b,c=_exp_log_coefficients(plan.get('coefficients'),4,'LOGARITHMIC')
+    if a==0 or k==0:raise ValueError('LOGARITHMIC_NONZERO_SCALE_AND_RATE_REQUIRED')
+    root=-b/k;reference=(1-b)/k;root_f=float(root);reference_f=float(reference);rate=abs(float(k));epsilon=.125/rate
+    if k>0:lo=root_f+epsilon;hi=reference_f+3/rate
+    else:lo=reference_f-3/rate;hi=root_f-epsilon
+    if not lo<hi:raise ValueError('LOGARITHMIC_DRAW_INTERVAL_INVALID')
+    log_base=math.log(base['float'])
+    def evaluate(value):
+        argument=float(k)*value+float(b)
+        if argument<=0:raise ValueError('LOGARITHMIC_DRAW_INTERVAL_CROSSES_DOMAIN_BOUNDARY')
+        try:result=float(a)*math.log(argument)/log_base+float(c)
+        except (ValueError,ZeroDivisionError,OverflowError):raise ValueError('UNSUPPORTED_LOGARITHMIC_NUMERIC_SCOPE') from None
+        if not math.isfinite(result) or abs(result)>1e8:raise ValueError('UNSUPPORTED_LOGARITHMIC_NUMERIC_SCOPE')
+        return result
+    start_y=evaluate(lo);end_y=evaluate(hi);reference_y=float(c);low=min(0.0,start_y,end_y,reference_y);high=max(0.0,start_y,end_y,reference_y);ypad=.15*max(1.0,high-low,abs(low),abs(high));xpad=max(.16*(hi-lo),.5/rate)
+    viewport=[lo-xpad,hi+xpad,min(0.0,low)-ypad,max(0.0,high)+ypad]
+    increasing=(a*k>0)==base['greaterThanOne']
+    features={'schemaVersion':'LOGARITHMIC_BASE_FEATURES_v1',**_exp_log_base_features(base),'naturalDomainBoundaryX':_fraction_text(root),'boundarySide':'RIGHT' if k>0 else 'LEFT','boundaryLimitDirection':'DOWN' if a>0 else 'UP','referencePoint':{'x':_fraction_text(reference),'y':_fraction_text(c),'argument':'1'},'monotonicity':'INCREASING' if increasing else 'DECREASING','sampleBoundaryArgument':'1/8','sampleDomain':[lo,hi]}
+    policy={'schemaVersion':'LOGARITHMIC_BASE_FEATURE_POLICY_v1','sourceDomain':'kx+b>0','domainBoundaryPolicy':'NATURAL_OPEN_BOUNDARY','referenceArgument':'1','sampleBoundaryArgument':'1/8','boundaryCue':'DASHED_VERTICAL_LINE','basePolicy':'POSITIVE_BASE_NOT_ONE','referenceMarkerRadiusIntrinsicPx':4,'minimumReferenceMarkerDiameterCssPx':3,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':32}
+    fitted={**plan,'base':base['text'],'domain':[lo,hi],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'LOGARITHMIC_BASE_OVERVIEW_v1','logarithmicFeatures':features,'logarithmicFeaturePolicy':policy}
+    return {'graphPlan':fitted,'policy':'LOGARITHMIC_BASE_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan['domain'],'viewport':plan['viewport']}}
+
+def _exp_log_curve_spec(row,index,code):
+    if not isinstance(row,dict):raise ValueError(code)
+    allowed={'id','family','base','coefficients','sourceDomain','shiftX'}
+    if set(row)-allowed:raise ValueError(code)
+    curve_id=row.get('id')
+    if not isinstance(curve_id,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',curve_id):raise ValueError(code+'_ID_INVALID')
+    family=row.get('family')
+    if family not in {'exponential-affine','logarithmic-affine'}:raise ValueError(code+'_FAMILY_UNSUPPORTED')
+    base=exp_log_base(row.get('base'),'EXP_LOG_PAIR') or natural_exp_log_base()
+    coefficients=_exp_log_coefficients(row.get('coefficients'),3 if family=='exponential-affine' else 4,'EXP_LOG_PAIR')
+    if coefficients[0]==0 or coefficients[1]==0:raise ValueError(code+'_NONZERO_SCALE_AND_RATE_REQUIRED')
+    if family=='exponential-affine':
+        if row.get('sourceDomain')!={'kind':'ALL_REALS'}:raise ValueError('EXPONENTIAL_SOURCE_DOMAIN_REQUIRES_ALL_REALS')
+        shift,shift_text=exp_log_shift(row.get('shiftX'),'EXP_LOG_PAIR_SHIFT_INVALID')
+        return {'id':curve_id,'family':family,'base':base,'coefficients':coefficients,'shift':shift,'shiftText':shift_text}
+    if row.get('sourceDomain')!={'kind':'NATURAL_LOG_AFFINE'}:raise ValueError('LOGARITHMIC_SOURCE_DOMAIN_REQUIRES_NATURAL_AFFINE')
+    if row.get('shiftX') is not None:raise ValueError(code+'_SHIFT_UNSUPPORTED')
+    a,k,b,c=coefficients
+    return {'id':curve_id,'family':family,'base':base,'coefficients':coefficients,'boundary':-b/k,'reference':(1-b)/k}
+
+def _fit_exp_log_pair_overview(plan):
+    code='EXP_LOG_PAIR_PLAN_INVALID'
+    if plan.get('sourceDomain') is not None or plan.get('domain') is not None or plan.get('viewport') is not None:raise ValueError(code)
+    rows=plan.get('curves')
+    if not isinstance(rows,list) or len(rows)!=2:raise ValueError(code)
+    curves=[_exp_log_curve_spec(row,index,code) for index,row in enumerate(rows)]
+    if len({row['id'] for row in curves})!=2:raise ValueError(code+'_ID_DUPLICATE')
+    identity=plan.get('identityLine',False)
+    if not isinstance(identity,bool):raise ValueError(code+'_IDENTITY_LINE_INVALID')
+    spans=[]
+    for row in curves:
+        base=row['base'];a,k,c=row['coefficients'][:3]
+        if row['family']=='exponential-affine':
+            rate=abs(float(k)*math.log(base['float']))
+            if not math.isfinite(rate) or rate<=0:raise ValueError('EXP_LOG_PAIR_SCALE_UNSUPPORTED')
+            half=3/rate
+            if not math.isfinite(half) or half>8:raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
+            row['display']=(float(row['shift'])-half,float(row['shift'])+half)
+            row['referencePoint']=(float(row['shift']),float(a+c))
+        else:
+            rate=abs(float(k));half=3/rate;epsilon=.125/rate
+            if k>0:row['display']=(float(row['boundary'])+epsilon,float(row['reference'])+half)
+            else:row['display']=(float(row['reference'])-half,float(row['boundary'])-epsilon)
+            row['referencePoint']=(float(row['reference']),float(c))
+        lo_display,hi_display=row['display']
+        if not (math.isfinite(lo_display) and math.isfinite(hi_display) and lo_display<hi_display):raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
+        spans.append((lo_display,hi_display))
+    lo=max(spans[0][0],spans[1][0]);hi=min(spans[0][1],spans[1][1])
+    if not lo<hi:raise ValueError('EXP_LOG_PAIR_NO_SHARED_WINDOW')
+    anchors=[row['referencePoint'][0] for row in curves]
+    lo=min(lo,*anchors);hi=max(hi,*anchors)
+    if not math.isfinite(lo) or not math.isfinite(hi) or hi-lo>16:raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
+    pad=max(.75,.18*(hi-lo));lo-=pad;hi+=pad
+    def exp_value(row,value):
+        a,k,c=row['coefficients'];base=row['base']['float']
+        try:result=float(a)*(base**(float(k)*(value-float(row['shift']))))+float(c)
+        except OverflowError:raise ValueError('UNSUPPORTED_EXPONENTIAL_NUMERIC_SCOPE') from None
+        if not math.isfinite(result) or abs(result)>1e8:raise ValueError('UNSUPPORTED_EXPONENTIAL_NUMERIC_SCOPE')
+        return result
+    def log_value(row,value):
+        a,k,b,c=row['coefficients'];argument=float(k)*value+float(b)
+        if argument<=0:raise ValueError('LOGARITHMIC_DRAW_INTERVAL_CROSSES_DOMAIN_BOUNDARY')
+        result=float(a)*math.log(argument)/math.log(row['base']['float'])+float(c)
+        if not math.isfinite(result) or abs(result)>1e8:raise ValueError('UNSUPPORTED_LOGARITHMIC_NUMERIC_SCOPE')
+        return result
+    feature_rows=[];ys=[0.0,lo,hi]
+    for row in curves:
+        draw_lo=max(lo,row['display'][0]);draw_hi=min(hi,row['display'][1])
+        if not draw_lo<draw_hi:raise ValueError('EXP_LOG_PAIR_NO_SHARED_WINDOW')
+        if row['family']=='exponential-affine':
+            values=[exp_value(row,draw_lo),exp_value(row,draw_hi),row['referencePoint'][1],float(row['coefficients'][2])]
+            growth_positive=(row['coefficients'][1]>0)==row['base']['greaterThanOne'];a=row['coefficients'][0];c=row['coefficients'][2]
+            feature_rows.append({'id':row['id'],'family':row['family'],**_exp_log_base_features(row['base']),'coefficients':[_fraction_text(value) for value in row['coefficients']],'shiftX':row['shiftText'],'domain':[draw_lo,draw_hi],'referencePoint':{'x':_fraction_text(row['shift']),'y':_fraction_text(a+c)},'horizontalAsymptote':{'y':_fraction_text(c),'side':'LEFT' if growth_positive else 'RIGHT','approachedFrom':'ABOVE' if a>0 else 'BELOW'},'monotonicity':'INCREASING' if (a>0)==growth_positive else 'DECREASING','growthSide':'RIGHT' if growth_positive else 'LEFT','growthDirection':'UP' if a>0 else 'DOWN'})
+        else:
+            values=[log_value(row,draw_lo),log_value(row,draw_hi),row['referencePoint'][1]]
+            a,k,b,c=row['coefficients'];increasing=(a*k>0)==row['base']['greaterThanOne']
+            feature_rows.append({'id':row['id'],'family':row['family'],**_exp_log_base_features(row['base']),'coefficients':[_fraction_text(value) for value in row['coefficients']],'domain':[draw_lo,draw_hi],'naturalDomainBoundaryX':_fraction_text(row['boundary']),'boundarySide':'RIGHT' if k>0 else 'LEFT','boundaryLimitDirection':'DOWN' if a>0 else 'UP','referencePoint':{'x':_fraction_text(row['reference']),'y':_fraction_text(c),'argument':'1'},'monotonicity':'INCREASING' if increasing else 'DECREASING'})
+        ys.extend(values)
+    # The inverse-pair figure is drawn at ONE scale on both axes (the dashed y=x must read at 45 degrees). The display window keeps both
+    # reference points, the identity line over the shared x window, and enough height for both curves to be recognisable; the sampler clips
+    # the parts above/below this window.
+    anchors=[0.0,lo,hi,*[row['referencePoint'][1] for row in curves]]
+    center=(min(anchors)+max(anchors))/2;half=max((hi-lo)*.8,(max(anchors)-min(anchors))/2+.15)
+    low=center-half;high=center+half
+    viewport=[lo,hi,low,high]
+    if not all(math.isfinite(value) and abs(value)<=1e8 for value in viewport):raise ValueError('EXP_LOG_PAIR_WINDOW_TOO_WIDE')
+    features={'schemaVersion':'EXP_LOG_PAIR_FEATURES_v1','identityLine':identity,'curves':feature_rows,'sampleBoundaryArgument':'1/8'}
+    policy={'schemaVersion':'EXP_LOG_PAIR_POLICY_v1','identityLinePolicy':'DASHED_4_3' if identity else 'NONE','referenceMarkerRadiusIntrinsicPx':4,'minimumReferenceMarkerDiameterCssPx':3,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':32,'minimumAsymptoteSeparationCssPx':2}
+    fitted={**plan,'domain':[lo,hi],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'EXP_LOG_PAIR_OVERVIEW_v1','expLogPairFeatures':features,'expLogPairPolicy':policy,'equalUnits':True,'axisRatio':1}
+    return {'graphPlan':fitted,'policy':'EXP_LOG_PAIR_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':None,'viewport':None}}
 
 def _fit_exponential_affine_overview(plan):
     if plan.get('sourceDomain')!={'kind':'ALL_REALS'}:raise ValueError('EXPONENTIAL_SOURCE_DOMAIN_REQUIRES_ALL_REALS')

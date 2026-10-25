@@ -117,11 +117,11 @@ def prepare(spec):
             critical.append((_exact_float(row['hi']),_exact_float(row['endY'])))
     exponential_features=spec['displayFacts'].get('exponentialFeatures')
     if exponential_features is not None:
-        if exponential_features.get('schemaVersion')!='EXPONENTIAL_AFFINE_FEATURES_v1':raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
+        if exponential_features.get('schemaVersion') not in {'EXPONENTIAL_AFFINE_FEATURES_v1','EXPONENTIAL_BASE_FEATURES_v1'}:raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
         reference=exponential_features['referencePoint'];critical.append((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
     logarithmic_features=spec['displayFacts'].get('logarithmicFeatures')
     if logarithmic_features is not None:
-        if logarithmic_features.get('schemaVersion')!='LOGARITHMIC_AFFINE_FEATURES_v1':raise ValueError('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED')
+        if logarithmic_features.get('schemaVersion') not in {'LOGARITHMIC_AFFINE_FEATURES_v1','LOGARITHMIC_BASE_FEATURES_v1'}:raise ValueError('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED')
         reference=logarithmic_features['referencePoint'];critical.append((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
     trig_features=spec['displayFacts'].get('trigFeatures')
     if trig_features is not None:
@@ -130,6 +130,10 @@ def prepare(spec):
             critical.extend((float(Fraction(row['xPiMultiple']))*math.pi,float(Fraction(row['y']))) for row in trig_features.get('phasePoints',[]))
         elif trig_features.get('referencePoint'):
             reference=trig_features['referencePoint'];critical.append((float(Fraction(reference['xPiMultiple']))*math.pi,float(Fraction(reference['y']))))
+    pair_features=spec['displayFacts'].get('expLogPairFeatures')
+    if pair_features is not None:
+        if pair_features.get('schemaVersion')!='EXP_LOG_PAIR_FEATURES_v1':raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
+        for row in pair_features.get('curves',[]):critical.append((float(Fraction(row['referencePoint']['x'])),float(Fraction(row['referencePoint']['y']))))
     if isinstance(axis_option,bool) and axis_option:critical.extend([(0,0),(1,0),(0,1)])
     vp=for_spec(spec,critical)
     if not vp.equal and any(isinstance(v,(Circle,CircularArc)) for v in geometry.values()):raise ValueError('CIRCLE_REQUIRES_EQUAL_UNITS')
@@ -185,8 +189,20 @@ def prepare(spec):
                 values=[(index*step,index) for index in range(math.ceil(lo/step),math.floor(hi/step)+1)]
             else:
                 values=[(float(Fraction(str(raw_value))),None) for raw_value in axis_tick_values.get(axis,[])]
+            reference_positions=[]
+            for feature in (exponential_features,logarithmic_features):
+                if isinstance(feature,dict) and isinstance(feature.get('referencePoint'),dict):
+                    try:reference_positions.append(float(Fraction(feature['referencePoint']['x'])))
+                    except (TypeError,ValueError,ZeroDivisionError):pass
+            if isinstance(pair_features,dict):
+                for row in pair_features.get('curves',[]):
+                    try:reference_positions.append(float(Fraction(row['referencePoint']['x'])))
+                    except (TypeError,KeyError,ValueError,ZeroDivisionError):pass
             for value,index in values:
                 if abs(value)<1e-12:continue
+                # A tick number exactly at a drawn graph reference point would repeat that point's x on the axis and collide with its label/marker:
+                # the reference point already carries the value, so the redundant tick is omitted.
+                if axis=='x' and any(abs(value-item)<=1e-12 for item in reference_positions):continue
                 at=(value,0) if axis=='x' else (0,value);p=vp.screen(at);delta=(0,4) if axis=='x' else (-4,0)
                 display_token=str(int(value)) if float(value).is_integer() else f'{value:.10g}'
                 id_token=str(index) if index is not None else display_token
@@ -271,7 +287,7 @@ def prepare(spec):
                 primitive({'id':'ref-endpoint-'+row['id']+'-'+side,'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'reference-endpoint','fill':'#fff' if state=='OPEN' else '#111','state':state},'circle')
     exponential_features=spec['displayFacts'].get('exponentialFeatures')
     if exponential_features is not None:
-        if exponential_features.get('schemaVersion')!='EXPONENTIAL_AFFINE_FEATURES_v1':raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
+        if exponential_features.get('schemaVersion') not in {'EXPONENTIAL_AFFINE_FEATURES_v1','EXPONENTIAL_BASE_FEATURES_v1'}:raise ValueError('EXPONENTIAL_FEATURE_INVENTORY_REQUIRED')
         policy=spec['displayFacts'].get('exponentialFeaturePolicy',{});radius=policy.get('referenceMarkerRadiusIntrinsicPx')
         if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('EXPONENTIAL_REFERENCE_MARKER_POLICY_REQUIRED')
         y=float(Fraction(exponential_features['horizontalAsymptote']['y']));xmin,xmax,ymin,ymax=vp.bounds
@@ -280,13 +296,31 @@ def prepare(spec):
         primitive({'id':'exponential-reference-point','kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'exponential-reference','fill':'#111','state':'CLOSED'},'circle')
     logarithmic_features=spec['displayFacts'].get('logarithmicFeatures')
     if logarithmic_features is not None:
-        if logarithmic_features.get('schemaVersion')!='LOGARITHMIC_AFFINE_FEATURES_v1':raise ValueError('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED')
+        if logarithmic_features.get('schemaVersion') not in {'LOGARITHMIC_AFFINE_FEATURES_v1','LOGARITHMIC_BASE_FEATURES_v1'}:raise ValueError('LOGARITHMIC_FEATURE_INVENTORY_REQUIRED')
         policy=spec['displayFacts'].get('logarithmicFeaturePolicy',{});radius=policy.get('referenceMarkerRadiusIntrinsicPx')
         if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('LOGARITHMIC_REFERENCE_MARKER_POLICY_REQUIRED')
         x=float(Fraction(logarithmic_features['naturalDomainBoundaryX']));xmin,xmax,ymin,ymax=vp.bounds
         primitive({'id':'logarithmic-domain-boundary','kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'logarithmic-domain-boundary','dash':'5 4'},'line')
         reference=logarithmic_features['referencePoint'];at=vp.screen((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
         primitive({'id':'logarithmic-reference-point','kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'logarithmic-reference','fill':'#111','state':'CLOSED'},'circle')
+    pair_features=spec['displayFacts'].get('expLogPairFeatures')
+    if pair_features is not None:
+        if pair_features.get('schemaVersion')!='EXP_LOG_PAIR_FEATURES_v1':raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
+        policy=spec['displayFacts'].get('expLogPairPolicy',{});radius=policy.get('referenceMarkerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('EXP_LOG_PAIR_MARKER_POLICY_REQUIRED')
+        xmin,xmax,ymin,ymax=vp.bounds
+        for row in pair_features.get('curves',[]):
+            curve_id=str(row['id'])
+            if row.get('family')=='exponential-affine':
+                y=float(Fraction(row['horizontalAsymptote']['y']))
+                primitive({'id':'asymptote-'+curve_id,'kind':'line','from':vp.screen((xmin,y)),'to':vp.screen((xmax,y)),'token':'auxiliary','layer':25,'role':'exponential-asymptote','dash':'5 4','branch':curve_id},'line')
+                reference=row['referencePoint'];at=vp.screen((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
+                primitive({'id':'reference-'+curve_id,'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'exponential-reference','fill':'#111','state':'CLOSED','branch':curve_id},'circle')
+            else:
+                x=float(Fraction(row['naturalDomainBoundaryX']))
+                primitive({'id':'boundary-'+curve_id,'kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'logarithmic-domain-boundary','dash':'5 4','branch':curve_id},'line')
+                reference=row['referencePoint'];at=vp.screen((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
+                primitive({'id':'reference-'+curve_id,'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'logarithmic-reference','fill':'#111','state':'CLOSED','branch':curve_id},'circle')
     trig_features=spec['displayFacts'].get('trigFeatures')
     if trig_features is not None:
         if trig_features.get('schemaVersion')!='TRIGONOMETRIC_FEATURES_v1':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
