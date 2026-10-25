@@ -21,7 +21,7 @@ const runtimeReceipt = readJson("archive/data/meta-foundation/runtime/runtime-br
 
 assert.strictEqual(runtime.status, "ACTIVE");
 assert.strictEqual(runtime.packId, "MIDDLE_GEOMETRY");
-assert.strictEqual(runtime.packVersion, "1.0.0");
+assert.strictEqual(runtime.packVersion, "1.0.1");
 assert.strictEqual(runtime.records.length, 928);
 assert.strictEqual(runtime.counts.records, 928);
 assert.strictEqual(runtime.counts.finalL3, 921);

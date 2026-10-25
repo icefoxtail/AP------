@@ -230,3 +230,40 @@ class PlanModel(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class Extensions(unittest.TestCase):
+    def test_apex_down_radii_apex_and_level_geometry(self):
+        cone = O.build_solid({'kind': 'CONE', 'radius': 3, 'height': 9, 'orientation': 'APEX_DOWN', 'id': 's1'})
+        self.assertEqual((cone['r0'], cone['r1']), (0.0, 3.0))
+        self.assertAlmostEqual(O._apex_z(cone), 0.0)
+        self.assertEqual({q[1]: q[2] for q in cone['points']}['apex'], (0.0, 0.0, 0.0))
+        self.assertEqual({q[1]: q[2] for q in cone['points']}['center'], (0.0, 0.0, 9.0))
+        frustum = O.build_solid({'kind': 'CONE_FRUSTUM', 'radius': 6, 'topRadius': 2, 'height': 8, 'orientation': 'APEX_DOWN', 'id': 's1'})
+        self.assertEqual((frustum['r0'], frustum['r1']), (2.0, 6.0))
+        self.assertLess(O._apex_z(frustum), 0.0)
+        with self.assertRaises(ValueError): O.build_solid({'kind': 'CYLINDER', 'radius': 2, 'height': 3, 'orientation': 'APEX_DOWN', 'id': 's1'})
+        with self.assertRaises(ValueError): O.build_solid({'kind': 'CONE', 'radius': 2, 'height': 3, 'orientation': 'SIDEWAYS', 'id': 's1'})
+
+    def test_liquid_boundary_is_the_smaller_cone_below_the_level(self):
+        solid = O.build_solid({'kind': 'CONE', 'radius': 3, 'height': 9, 'orientation': 'APEX_DOWN', 'id': 's1'})
+        pts = O._liquid_boundary(solid, 3.0, 1.0)
+        self.assertEqual(len(pts), O.LIQUID_SAMPLES + 2)          # the apex and the far arc
+        self.assertEqual(pts[0], O.project((0.0, 0.0, 0.0)))     # starts at the apex
+        # every other point is on the level ellipse
+        c = O.project((0.0, 0.0, 3.0))
+        b = 1.0 * math.sin(O.PITCH)
+        for x, y in pts[1:]:
+            self.assertAlmostEqual(((x - c[0]) / 1.0) ** 2 + ((y - c[1]) / b) ** 2, 1.0, places=9)
+        # the far arc goes above the level centre (the back of the water surface)
+        self.assertGreater(max(y for _, y in pts[1:]), c[1] + b * 0.9)
+        squat = O.build_solid({'kind': 'CONE', 'radius': 10, 'height': 1, 'orientation': 'APEX_DOWN', 'id': 's1'})
+        with self.assertRaises(ValueError): O._liquid_boundary(squat, 0.5, 5.0)
+
+    def test_a_nested_sphere_is_built_on_its_host_ids(self):
+        plan = {'capability': 'solid-figure-v1', 'solids': [
+            {'id': 's1', 'kind': 'CYLINDER', 'radius': 3, 'height': 6},
+            {'id': 's2', 'kind': 'SPHERE', 'radius': 3, 'inside': 's1'}]}
+        solids = [O.build_solid(s) for s in plan['solids']]
+        self.assertEqual(solids[1]['inside'], 's1')
+        self.assertEqual({q[1]: q[2] for q in solids[1]['points']}['center'], (0.0, 0.0, 3.0))

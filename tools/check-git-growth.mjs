@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 export const FOOTPRINT_LIMITS = Object.freeze({
   analysisBlobBytes: 2 * 1024 * 1024,
   transientBlobBytes: 8 * 1024 * 1024,
-  changedBlobBytes: 32 * 1024 * 1024
+  changedBlobBytes: 64 * 1024 * 1024
 });
 
 // Canonical catalog projections are production inputs consumed by the live

@@ -17,10 +17,24 @@ const server=http.createServer((req,res)=>{
     {executablePath:process.env.CHROME_BIN,headless:true} : {channel:'chrome',headless:true});
   const context=await browser.newContext();
   await context.addInitScript(()=>{Storage.prototype.setItem=()=>{throw new DOMException('quota','QuotaExceededError');};});
-  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+  const page=await context.newPage(),errors=[],networkErrors=[];
+  page.on('pageerror',e=>errors.push(e.message));
+  page.on('requestfailed',req=>networkErrors.push(`${req.url()} (${req.failure()?.errorText||'failed'})`));
   const base=`http://127.0.0.1:${server.address().port}/archive/`;
   await page.goto(base+'problem-bank-search.html');
-  await page.waitForFunction(()=>typeof inventory!=='undefined'&&inventory.length>10000);
+  try{
+   await page.waitForFunction(()=>{
+    const status=document.querySelector('#status')?.textContent||'';
+    if(typeof inventory!=='undefined'&&inventory.length>10000)return true;
+    if(status&&!status.includes('불러오는 중')&&!status.includes('문항'))throw new Error('problem-bank-search init failed: '+status);
+    return false;
+   });
+  }catch(waitErr){
+   const currentStatus=await page.locator('#status').textContent().catch(()=>'unavailable');
+   const netInfo=networkErrors.length?` (network failures: ${networkErrors.join(', ')})`:'';
+   const pageErrInfo=errors.length?` (page errors: ${errors.join(', ')})`:'';
+   throw new Error(`${waitErr.message} [diagnostic: #status="${currentStatus}"${pageErrInfo}${netInfo}]`);
+  }
   assert.equal(await page.locator('#results article').count(),40);
   const original=await page.locator('#results article a').first().getAttribute('href');
   assert.match(original,/engine\.html\?data=exams%2F/);
