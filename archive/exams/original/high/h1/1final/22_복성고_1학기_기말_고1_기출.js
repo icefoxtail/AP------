@@ -33,7 +33,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q01-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 1의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "점 P(−1,5)를 이동벡터 (2,−1)만큼 평행이동한 점 P′(1,4)를 좌표평면에 화살표로 표시한다.",
     "solutionImageSize": "full"
   },
   {
@@ -298,7 +298,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q09-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 9의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "중심 (−2,−1), 반지름 √3인 원을 평행이동해 중심 (2,1)이 된 원을 원점에 대하여 대칭이동하면 다시 중심 (−2,−1)로 돌아와 처음 원과 겹치는 모습을 보여 준다.",
     "solutionImageSize": "full"
   },
   {
@@ -363,7 +363,7 @@ window.questionBank = [
     "answer": "⑤",
     "solution": "[키포인트]\n직사각형의 높이를 문자로 두고, 닮음을 이용하여 그 높이에서의 가로 길이를 나타낸다.\n조건 정리\n삼각형의 밑변은 $10$, 높이는 $8$이다. 직사각형의 높이를 $x$라 하자.\n풀이 과정\n밑변에서 높이 $x$만큼 올라간 곳에서 삼각형의 가로 길이는 닮음에 의해 선형적으로 줄어든다.\n높이가 $0$일 때 가로 길이는 $10$, 높이가 $8$일 때 가로 길이는 $0$이므로, 높이 $x$에서의 가로 길이는\n$10\\left(1-\\dfrac{x}{8}\\right)=10-\\dfrac54x$이다.\n따라서 직사각형의 넓이 $S$는\n$S=x\\left(10-\\dfrac54x\\right)$\n$=-\\dfrac54x^2+10x$이다.\n이 이차함수는 아래로 열린 포물선이므로 꼭짓점에서 최댓값을 갖는다.\n꼭짓점의 $x$좌표는\n$x=-\\dfrac{10}{2\\times(-5/4)}=4$이다.\n따라서 최댓값은\n$S=-\\dfrac54\\times4^2+10\\times4=-20+40=20$이다.\n결론\n따라서 정답은 ⑤이다.",
     "solutionImage": "assets/images/22_복성고_1학기_기말_고1_기출/q11-solution.svg",
-    "solutionImageAlt": "평면좌표 문항 11의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "밑변 BC=10, 높이 8인 이등변삼각형 ABC에 내접한 직사각형 DEFG를 그리고, 높이 x일 때 가로 길이 10−5x/4, 최대 넓이 20이 되는 x=4인 경우를 표시한다.",
     "solutionImageSize": "full",
     "image": "assets/images/22_복성고_1학기_기말_고1_기출/q11.png",
     "subUnitKey": "H15-SA-09-GEOMETRY_APPLICATION",

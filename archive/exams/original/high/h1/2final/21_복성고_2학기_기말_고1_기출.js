@@ -84,7 +84,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "[키포인트] 분모가 $0$이 되는 값이 수직점근선이고, 분자와 분모의 최고차항 계수의 비가 수평점근선이다.\\n정석 풀이: $2x-3=0$에서 $x=\\dfrac32$이므로 $a=\\dfrac32$이다. 또한 최고차항 계수의 비는 $\\dfrac{-4}{2}=-2$이므로 $b=-2$이다. 따라서 $ab=\\dfrac32\\cdot(-2)=-3$이다.\\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q03-solution.svg",
-    "solutionImageAlt": "유리함수의 두 점근선을 나타낸 해설 그래프",
+    "solutionImageAlt": "쌍곡선 y=−2+1/(x−3/2)의 두 점근선 x=3/2, y=−2와 x절편 P(2,0)를 좌표평면에 표시한다.",
     "solutionImageCaption": "점근선 x=3/2, y=−2를 읽어 ab=−3을 확인한다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-04-RATIONAL_BASIC",
@@ -120,7 +120,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q04-solution.svg",
 
-    "solutionImageAlt": "무리함수의 끝점·정의역·치역을 나타낸 해설 그래프",
+    "solutionImageAlt": "무리함수 y=−√(4−2x)+4의 그래프가 끝점 V(2,4)에서 시작해 왼쪽 아래로 뻗고, x절편 (−6,0)과 정의역 x≤2, 치역 y≤4를 표시한다.",
 
     "solutionImageCaption": "끝점 (2,4)와 정의역 x≤2, 치역 y≤4를 확인한다.",
 
@@ -302,7 +302,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q10-solution.svg",
 
-    "solutionImageAlt": "유리함수의 점근선과 절편을 나타낸 해설 그래프",
+    "solutionImageAlt": "유리함수 y=−3−3/(x−2)의 그래프에 수직점근선 x=2와 수평점근선 y=−3, x절편 (1,0), x=4에서의 점 f(4)를 표시하고 c=−2, cf(4)=9를 보여 준다.",
 
     "solutionImageCaption": "점근선 x=2, y=−3과 x절편, cf(4)=9를 확인한다.",
 
@@ -341,7 +341,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/21_복성고_2학기_기말_고1_기출/q11-solution.svg",
 
-    "solutionImageAlt": "무리함수와 직선의 두 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "무리함수 y=√(4−2x)와 직선 y=−x+9/4가 만나는 두 점 P, Q를 표시하고, 두 교점이 생기는 k의 범위 2≤k<5/2를 제시한다.",
 
     "solutionImageCaption": "2≤k<5/2에서 두 교점이 생기며 대표값 k=9/4를 확인한다.",
 

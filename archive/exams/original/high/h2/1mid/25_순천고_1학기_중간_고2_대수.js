@@ -146,7 +146,7 @@ window.questionBank = [
   {
     "id": 5,
     "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q5-solution.svg",
-    "solutionImageAlt": "25_suncheon_q5_exp_shift_graph",
+    "solutionImageAlt": "지수함수 y=2^(x+2)−2의 그래프와 수평점근선 y=−2, y절편 (0,2)를 표시한 좌표평면으로, a=b=−2이므로 ab=4임을 보여 준다.",
     "solutionImageCaption": "exp_shift_graph",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
@@ -295,7 +295,7 @@ window.questionBank = [
   {
     "id": 9,
     "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q9-solution.svg",
-    "solutionImageAlt": "25_suncheon_q9_log_inverse",
+    "solutionImageAlt": "로그함수 y=log₃(x−1)과 그 역함수 y=3^x+1의 그래프를 함께 그리고, 수직점근선 x=1과 두 그래프가 직선 y=x에 대하여 대칭임을 나타낸다.",
     "solutionImageCaption": "log_inverse",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
@@ -444,7 +444,7 @@ window.questionBank = [
   {
     "id": 13,
     "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q13-solution.svg",
-    "solutionImageAlt": "25_suncheon_q13_sector_annulus",
+    "solutionImageAlt": "공통 중심 O를 갖는 두 부채꼴의 반지름 R=9, r=6과 중심각 θ=2π/9를 표시하고, 색칠한 환부채꼴의 넓이가 5π임을 나타낸 그림이다.",
     "solutionImageCaption": "sector_annulus",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
@@ -827,7 +827,7 @@ window.questionBank = [
   {
     "id": 24,
     "solutionImage": "assets/images/25_순천고_1학기_중간_고2_대수/q24-solution.svg",
-    "solutionImageAlt": "25_suncheon_q24_inverse_graph",
+    "solutionImageAlt": "지수함수 y=a^(x−2), 로그함수 y=log_a(x−2), 직선 y=−x+6과 대칭축 y=x−2를 그리고, 교점 A(3,3)·B와 C(0,6), 중점 M(4,2)을 표시하여 a=3임을 보여 준다.",
     "solutionImageCaption": "inverse_line",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",

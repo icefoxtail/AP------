@@ -581,7 +581,7 @@ window.questionBank = [
     "subUnitConfidence": "candidate_evidence",
     "subUnitClassificationDepth": "complete_candidate",
     "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q16-solution-graph.svg",
-    "solutionImageAlt": "문항 16 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageAlt": "k=0일 때 y=x²과 k=−1일 때 y=(x+1)²−3의 그래프가 각각 직선 y=3x−9/4에 접하는 두 장면을 그린 그림. 접점 (3/2,9/4)과 (1/2,−3/4)을 표시해 a=3, b=−9/4임을 보여준다.",
     "solutionImageSize": "full"
   },
   {
@@ -781,7 +781,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_제일고_1학기_중간_고1_기출/q22-solution-graph.svg",
-    "solutionImageAlt": "문항 22 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageAlt": "−2≤x≤3에서 이차함수 y=(x−2)²−8의 그래프를 그리고 꼭짓점 (2,−8)에서 최솟값 −8, 끝점 (−2,8)에서 최댓값 8, 다른 끝점 (3,−7)을 표시한 그림.",
     "solutionImageSize": "full"
   }
 ];

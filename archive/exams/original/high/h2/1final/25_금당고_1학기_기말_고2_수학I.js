@@ -483,7 +483,7 @@ window.questionBank = [
     ],
     "wide": false,
     "solutionImage": "assets/images/25_금당고_1학기_기말_고2_수학I/q17-solution.svg",
-    "solutionImageAlt": "25_geumdang_final_q17_cycle",
+    "solutionImageAlt": "8→2→5→8로 되돌아오는 3주기를 세 점과 화살표로 나타낸 순환 그림이다. 이 순환이 a₃부터 시작되어 p의 최솟값이 3이 됨을 적어 놓았다.",
     "solutionImageCaption": "cycle",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",

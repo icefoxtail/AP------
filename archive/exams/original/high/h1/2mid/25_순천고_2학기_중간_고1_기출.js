@@ -98,7 +98,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q03-solution.svg",
 
-    "solutionImageAlt": "평면좌표 문항 3의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "평행사변형 ABCD에서 두 대각선 AC, BD가 중점 M(1,−1/2)에서 만나며, A(1,2), B(−1,−1), D(3,0)으로부터 제4사분면의 꼭짓점 C(1,−3)를 정해 ab=−3임을 보여 준다.",
 
 
     "solutionImageSize": "full",
@@ -210,7 +210,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q06-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 6의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageAlt": "좌표평면에 서로 평행한 세 직선 x+y+3=0, x+y+11=0, x+y−5=0을 그려, 두 평행선 사이 거리가 4√2가 되는 k=11 또는 −5와 그 합 6을 나타낸다.",
     "solutionImageCaption": "평행 관계 · 두 평행선 사이 거리=4√2 · k=11 또는 −5, 합=6",
     "solutionImageSize": "full"
   },
@@ -280,7 +280,7 @@ window.questionBank = [
     "subUnitConfidence": "rule_inferred",
     "subUnitClassificationDepth": "complete_rule",
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q08-solution.svg",
-    "solutionImageAlt": "도형의 이동 문항 8의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "직선 y=−2x+4 위의 점 (0,4)가 이동벡터 (1,−2)로 (1,2)에 옮겨지고, 이 직선이 기준 직선 x−2y−2=0과 점 (2,0)에서 수직으로 만나는 모습을 나타낸다.",
     "solutionImageSize": "full"
   },
   {
@@ -420,7 +420,7 @@ window.questionBank = [
     "answer": "②",
     "solution": "[키포인트] 거리의 제곱을 식으로 나타낸 뒤 완전제곱식을 이용하여 최댓값과 등호 성립 조건을 구한다.\n원점 $O$와 직선\n$(k+1)x+(k-1)y-k-3=0$\n사이의 거리의 제곱을 $D^2$이라 하면\n$D^2=\\dfrac{(k+3)^2}{(k+1)^2+(k-1)^2} =\\dfrac{(k+3)^2}{2(k^2+1)}$이다.\n이때\n$10(k^2+1)-(k+3)^2 =9k^2-6k+1 =(3k-1)^2\\ge0$이므로\n$(k+3)^2\\le10(k^2+1)$이다.\n따라서\n$D^2=\\dfrac{(k+3)^2}{2(k^2+1)}\\le5$이고,\n등호는 $3k-1=0$, 즉 $k=\\dfrac13$일 때 성립한다.\n$k=\\dfrac13$을 원래 직선에 대입하면\n$\\dfrac43x-\\dfrac23y-\\dfrac{10}{3}=0$,\n즉 $2x-y-5=0$이다.\n이 직선의 $x$절편은 $\\dfrac52$, $y$절편은 $-5$이므로\n삼각형 $AOB$의 넓이는\n$\\dfrac12\\cdot\\dfrac52\\cdot5 =\\dfrac{25}{4}$이다.\n\n따라서 정답은 ②이다.",
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q12-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 12의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageAlt": "원점 O와 직선 2x−y−5=0 사이의 거리가 최대가 되는 k=1/3일 때, 이 직선이 x축, y축과 만나는 A(5/2,0), B(0,−5)를 표시하고 삼각형 AOB의 넓이 25/4를 보여 준다.",
     "solutionImageCaption": "교점 · 절편 · 거리 · 최대 조건 k=1/3 · A=(5/2,0), B=(0,−5)",
     "solutionImageSize": "full",
     "subUnitKey": "H22-C2-02-RELATION",
@@ -531,7 +531,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q15-solution.svg",
 
-    "solutionImageAlt": "도형의 이동 문항 15의 핵심 관계를 표시한 해설 도형",
+    "solutionImageAlt": "중심 (3,−2), 반지름 1인 원을 a+b가 최소가 되도록 평행이동해 중심이 (−1−√2,−1)이 된 원이 x축과 직선 y=x에 동시에 접하는 모습을 나타낸다.",
 
 
     "solutionImageSize": "full",
@@ -726,7 +726,7 @@ window.questionBank = [
     "subUnitConfidence": "category_or_cue_inferred",
     "subUnitClassificationDepth": "complete_category",
     "solutionImage": "assets/images/25_순천고_2학기_중간_고1_기출/q21-solution.svg",
-    "solutionImageAlt": "직선의 방정식 문항 21의 실제 점과 직선 관계를 표시한 해설 도형",
+    "solutionImageAlt": "점 A(2,−3)에서 직선 l: x−y+2=0에 내린 수선 x+y+1=0의 발 H(−3/2,1/2)와 두 점 사이의 거리 7/√2를 표시한다.",
     "solutionImageCaption": "수직 관계 · 교점 · A=(2,−3) · H=(−3/2,1/2), 거리=7/√2",
     "solutionImageSize": "full"
   },

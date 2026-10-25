@@ -95,7 +95,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/21_팔마고_2학기_기말_고1_기출/q03-solution.svg",
 
-    "solutionImageAlt": "유리함수의 점근선과 중심을 나타낸 해설 그래프",
+    "solutionImageAlt": "좌표평면에 유리함수 y=−3+5/(x+1)의 두 갈래 곡선과 점근선 x=−1, y=−3, 중심 (−1,−3)이 그려져 있고, 오른쪽 곡선이 y축과 만나는 점 P가 표시되어 있다.",
 
     "solutionImageCaption": "y=−3+5/(x+1)에서 점근선 x=−1, y=−3과 중심을 확인한다.",
 
