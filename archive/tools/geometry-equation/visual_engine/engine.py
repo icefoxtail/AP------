@@ -68,32 +68,46 @@ def _region_label_centres(polygons,obstacles,step=3.0,limit=900):
         if o.get('kind') in {'point','circle'}:strokes.append(('disc' if o['kind']=='point' else 'ring',g))
         elif g and len(g)>=2 and all(isinstance(p,(list,tuple)) for p in g):strokes.extend(('seg',(a,b)) for a,b in zip(g,g[1:]))
     xs=[p[0] for poly in polygons for p in poly];ys=[p[1] for poly in polygons for p in poly]
-    def inside(x,y):
+    # A long sampled band (a graph region carries one edge per boundary sample) is ranked on a coarse copy of the same closed loops and a
+    # grid of at most 4000 points; every centre that survives is then re-checked against the full edge set, so the returned points are interior
+    # with their exact clearance and the cost stays bounded.
+    coarse=[[poly[0]]+[point for index,point in enumerate(poly) if index%max(1,math.ceil(len(poly)/60))==0]+[poly[-1]] if len(poly)>60 else poly for poly in polygons]
+    rank_edges=[(a,b) for poly in coarse for a,b in zip(poly,poly[1:]+poly[:1])]
+    def inside(x,y,edge_rows):
         hit=False
-        for (ax,ay),(bx,by) in edges:
+        for (ax,ay),(bx,by) in edge_rows:
             if (ay>y)!=(by>y) and x<(bx-ax)*(y-ay)/(by-ay)+ax:hit=not hit
         return hit
     def seg_distance(x,y,a,b):
         (ax,ay),(bx,by)=a,b;dx,dy=bx-ax,by-ay;n=dx*dx+dy*dy
         t=0.0 if n==0 else max(0.0,min(1.0,((x-ax)*dx+(y-ay)*dy)/n))
         return math.hypot(x-ax-t*dx,y-ay-t*dy)
-    def clearance(x,y):
-        best=min(seg_distance(x,y,a,b) for a,b in edges)
+    def clearance(x,y,edge_rows):
+        best=min(seg_distance(x,y,a,b) for a,b in edge_rows)
         for kind,g in strokes:
             if kind=='seg':best=min(best,seg_distance(x,y,*g))
             elif kind=='ring':best=min(best,abs(math.hypot(x-g[0],y-g[1])-g[2]))
             else:best=min(best,math.hypot(x-g[0],y-g[1])-g[2])
         return best
-    found=[]
-    x=min(xs)
-    while x<=max(xs):
-        y=min(ys)
-        while y<=max(ys):
-            if inside(x,y):found.append((clearance(x,y),x,y))
-            y+=step
-        x+=step
-    found.sort(key=lambda row:-row[0]);chosen=[]
-    for c,x,y in found:
+    step=max(step,math.sqrt(max((max(xs)-min(xs))*(max(ys)-min(ys)),1.0)/4000))
+    def grid(edge_rows):
+        found=[]
+        x=min(xs)
+        while x<=max(xs):
+            y=min(ys)
+            while y<=max(ys):
+                if inside(x,y,edge_rows):found.append((clearance(x,y,edge_rows),x,y))
+                y+=step
+            x+=step
+        return found
+    found=grid(rank_edges)
+    if not found:found=grid(edges)  # a band thinner than the coarse loop: rank on every edge once
+    found.sort(key=lambda row:-row[0])
+    refined=[]
+    for _,x,y in found[:max(limit,120)]:
+        if inside(x,y,edges):refined.append((clearance(x,y,edges),x,y))
+    refined.sort(key=lambda row:-row[0]);chosen=[]
+    for c,x,y in refined:
         if c<3.0:break
         if all(math.hypot(x-px,y-py)>=4.0 for px,py in chosen):chosen.append((x,y))
         if len(chosen)>=limit:break
