@@ -742,7 +742,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "아래로 열린 포물선이므로 꼭짓점 $x=a$와 구간 $0\\le x\\le1$의 위치를 나누어 본다.\n\n① $a<0$일 때\n구간에서 최댓값은 $x=0$에서 생긴다.\n$-a^2+b=4$이므로 $b=a^2+4$이다.\n따라서\n$a+b=a^2+a+4=\\left(a+\\dfrac12\\right)^2+\\dfrac{15}{4}$이고\n$a=-\\dfrac12$에서 최솟값 $\\dfrac{15}{4}$를 갖는다.\n\n② $0\\le a\\le1$일 때\n꼭짓점이 구간 안에 있으므로 최댓값은 $b=4$이다.\n$a+b=a+4\\ge4$이다.\n\n③ $a>1$일 때\n구간에서 최댓값은 $x=1$에서 생긴다.\n$-(1-a)^2+b=4$이므로\n$a+b=a+(a-1)^2+4=a^2-a+5>5$이다.\n\n따라서 전체 최솟값은\n$k=\\dfrac{15}{4}$이고\n$8k=8\\cdot\\dfrac{15}{4}=30$이다.\n정답은 ③이다.",
     "solutionImage": "assets/images/23_충무고_1학기_중간_고1_기출/q16-solution-graph.svg",
-    "solutionImageAlt": "문항 16 해설에 쓰는 그래프와 핵심 점을 표시한 해설 그림",
+    "solutionImageAlt": "아래로 열린 포물선 y=−(x−a)²+b가 0≤x≤1 구간의 왼쪽에 꼭짓점을 두고, 구간에서의 최댓값이 x=0에서 4가 되는 a<0인 경우를 보여주는 그래프이다.",
     "solutionImageSize": "full"
   },
   {
