@@ -297,7 +297,7 @@ window.questionBank = [
     "answer": "①",
     "solution": "제곱근 안이 $0$ 이상이므로 $x\\le1$이다.\n$t=\\sqrt{2-2x}$로 놓으면 $t\\ge0$이고\n$t^2=2-2x\\ \\Rightarrow\\ x=1-\\dfrac{t^2}{2}$\n두 그래프의 교점에서 $-t=x+k$이므로\n$-t=1-\\dfrac{t^2}{2}+k$\n$k=\\dfrac{t^2}{2}-t-1$\n$=\\dfrac{(t-1)^2}{2}-\\dfrac32$\n따라서\n$(t-1)^2=2k+3$\n$t=1\\pm\\sqrt{2k+3}$\n서로 다른 두 교점이 생기려면 두 $t$가 서로 다르고 모두 $0$ 이상이어야 한다.\n$2k+3>0\\ \\Rightarrow\\ k>-\\dfrac32$\n$1-\\sqrt{2k+3}\\ge0\\ \\Rightarrow\\ k\\le-1$\n$k=-1$일 때 $t=0,2$이므로 두 점이고, $k=-\\dfrac32$에서는 $t=1$로 한 점이다.\n따라서 $-\\dfrac32<k\\le-1$이고\n$a+b=-\\dfrac32+(-1)=-\\dfrac52$\n따라서 정답은 ①이다.",
     "solutionImage": "assets/images/24_금당고_2학기_기말_고1_기출/q10-solution.svg",
-    "solutionImageAlt": "무리함수와 직선의 두 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "무리함수 y=−√(2−2x)의 그래프와 두 점 P₁, P₂에서 만나는 예시 직선 y=x−1.4를 그리고, 교점이 두 개인 조건 −3/2<k≤−1을 적은 좌표평면이다.",
     "solutionImageCaption": "k=−1.4인 직선과 무리함수의 두 교점을 표시하고 −3/2<k≤−1 범위의 경계를 확인한다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_INVERSE",
