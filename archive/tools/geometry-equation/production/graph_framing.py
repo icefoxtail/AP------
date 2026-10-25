@@ -101,7 +101,7 @@ def _fit_cubic_quartic(plan,coefficients):
     fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','overviewFeatures':features,'overviewFeaturePolicy':feature_policy,'overviewEndDirections':end_directions}
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
-def fit_overview(plan):
+def _fit_overview_family(plan):
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
     if plan.get('family')=='rational':return _fit_rational_overview(plan)
     if plan.get('family')=='sqrt-affine':return _fit_sqrt_affine_overview(plan)
@@ -903,7 +903,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
@@ -1490,3 +1490,259 @@ def fit_piecewise_polynomial(plan):
         fitted['intervalFeatures']={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':[{'side':'START','x':_pp_text(lo),'y':_pp_text(g(lo)),'state':states[0]},{'side':'END','x':_pp_text(hi),'y':_pp_text(g(hi)),'state':states[1]}]}
         fitted['intervalFeaturePolicy']={'schemaVersion':'POLYNOMIAL_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':4,'minimumMarkerDiameterCssPx':3}
     return {'graphPlan':fitted,'policy':'PIECEWISE_POLYNOMIAL_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
+
+# ---------------------------------------------------------------------------
+# Graph overlays (G1): one general graphPlan.overlays object draws lines, vertical lines, segments between named points, dashed guide
+# segments to the axes, simple polygons and extra named points on the curve. Every coordinate is recomputed here exactly; the plan names
+# the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
+# the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
+OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2}
+
+def _overlay_fail(code,ident=None):
+    raise ValueError(code if ident is None else code+':'+str(ident))
+
+def _overlay_exact(value,ident):
+    try:
+        number=pp_exact_value(value)
+    except ValueError:
+        _overlay_fail('OVERLAY_VALUE_INVALID',ident)
+    if not number.is_real or not number.is_finite:
+        _overlay_fail('OVERLAY_VALUE_INVALID',ident)
+    return number
+
+def _overlay_id(value,kind):
+    if not isinstance(value,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_\']{0,11}',value):
+        _overlay_fail('OVERLAY_ID_INVALID',kind)
+    return value
+
+def _overlay_base(value):
+    if value in (None,'e'):return S.E
+    try:
+        return exp_log_base(value,'OVERLAY_BASE_INVALID')['exact']
+    except (ValueError,KeyError,TypeError):
+        _overlay_fail('OVERLAY_BASE_INVALID',str(value))
+
+def _overlay_curve_exact(plan,x_value,curve_id=None):
+    """The exact y of the plan's drawn function at x, from the same exact coefficients the family framer used. Raises
+    OVERLAY_POINT_NOT_ON_CURVE when the curve is undefined there (outside a source domain, pole, negative radicand, ...)."""
+    family=plan.get('family')
+    try:
+        if family=='polynomial':
+            return sum((_overlay_exact(c,'curve')*x_value**i for i,c in enumerate(plan['coefficients'])),S.Integer(0))
+        if family=='rational':
+            numerator=sum((_overlay_exact(c,'curve')*x_value**i for i,c in enumerate(plan['numerator'])),S.Integer(0))
+            denominator=sum((_overlay_exact(c,'curve')*x_value**i for i,c in enumerate(plan['denominator'])),S.Integer(0))
+            if denominator==0:_overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+            return numerator/denominator
+        if family=='sqrt-affine':
+            radicand=sum((_overlay_exact(c,'curve')*x_value**i for i,c in enumerate(plan['radicand'])),S.Integer(0))
+            if radicand<0:_overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+            return S.sqrt(radicand)
+        if family=='absolute-value':
+            b,a,scale,offset=(_overlay_exact(value,'curve') for value in plan['coefficients'])
+            return scale*S.Abs(a*x_value+b)+offset
+        if family=='piecewise-affine':
+            source=plan.get('sourceDomain') or {};interval=source.get('range')
+            if interval:
+                lo,hi=(_overlay_exact(value,'curve') for value in interval)
+                if not lo<=x_value<=hi:_overlay_fail('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN',str(x_value))
+            break_x=_overlay_exact(plan['piecewise']['breakX'],'curve');owner=plan['piecewise'].get('owner','RIGHT')
+            left=plan['piecewise']['left'];right=plan['piecewise']['right'];coefficients=left if x_value<break_x or (x_value==break_x and owner=='LEFT') else right
+            return _overlay_exact(coefficients[0],'curve')*x_value+_overlay_exact(coefficients[1],'curve')
+        if family=='exponential-affine':
+            a,k,c=(_overlay_exact(value,'curve') for value in plan['coefficients']);base=_overlay_base(plan.get('base'));shift=_overlay_exact(plan.get('shiftX','0'),'curve')
+            return a*base**(k*(x_value-shift))+c
+        if family=='logarithmic-affine':
+            a,k,b,c=(_overlay_exact(value,'curve') for value in plan['coefficients']);base=_overlay_base(plan.get('base'));argument=k*x_value+b
+            if argument<=0:_overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+            return a*S.log(argument)/S.log(base)+c
+        if family=='trigonometric':
+            a,k,c=(_overlay_exact(value,'curve') for value in plan['coefficients']);phase=_overlay_exact(plan.get('phasePi','0'),'curve')
+            argument=k*x_value+phase*S.pi;function=plan.get('function','SIN')
+            value={'SIN':S.sin,'COS':S.cos,'TAN':S.tan}.get(function)
+            if value is None:_overlay_fail('OVERLAY_CURVE_UNSUPPORTED',function)
+            return a*value(argument)+c
+        if family=='piecewise-polynomial':
+            pieces=plan.get('pieces') or [];breaks=plan.get('breakpoints') or [];source=plan.get('sourceDomain') or {}
+            lo=hi=None
+            if source.get('kind')=='INTERVAL':
+                range_=source.get('range') or [None,None];lo,hi=(None if value is None else _overlay_exact(value,'curve') for value in range_)
+            if lo is not None and x_value<lo or hi is not None and x_value>hi:_overlay_fail('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN',str(x_value))
+            cut=[_overlay_exact(breakpoint['x'],'curve') for breakpoint in breaks]
+            for index,piece in enumerate(pieces):
+                left=None if index==0 else cut[index-1];right=None if index==len(pieces)-1 else cut[index]
+                if (left is None or left<=x_value) and (right is None or x_value<=right):
+                    return sum((_overlay_exact(coefficient,'curve')*x_value**power for power,coefficient in enumerate(piece.get('coefficients') or [])),S.Integer(0))
+            _overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+        if family=='exp-log-pair':
+            rows=plan.get('curves') or []
+            row=next((item for item in rows if item.get('id')==curve_id),None)
+            if row is None:_overlay_fail('OVERLAY_CURVE_UNKNOWN',str(curve_id))
+            if row.get('family')=='exponential-affine':
+                a,k,c=(_overlay_exact(value,'curve') for value in row['coefficients']);base=_overlay_base(row.get('base'));shift=_overlay_exact(row.get('shiftX','0'),'curve')
+                return a*base**(k*(x_value-shift))+c
+            if row.get('family')=='logarithmic-affine':
+                a,k,b,c=(_overlay_exact(value,'curve') for value in row['coefficients']);base=_overlay_base(row.get('base'));argument=k*x_value+b
+                if argument<=0:_overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+                return a*S.log(argument)/S.log(base)+c
+            _overlay_fail('OVERLAY_CURVE_UNSUPPORTED',str(curve_id))
+    except (KeyError,IndexError,TypeError):
+        _overlay_fail('OVERLAY_CURVE_UNSUPPORTED',family)
+    _overlay_fail('OVERLAY_CURVE_UNSUPPORTED',family)
+
+def _overlay_number(value):
+    return float(S.N(value,30))
+
+def _overlay_line_text(line):
+    if line.get('label') is not None:
+        if not isinstance(line['label'],str) or not re.fullmatch(r'[0-9A-Za-z=+\-*/().\^ ]{1,40}',line['label']):
+            _overlay_fail('OVERLAY_LABEL_INVALID',line.get('id'))
+        return line['label']
+    if line['kind']=='VERTICAL':return 'x='+pp_surd_text(line['x'])
+    slope,intercept=line['slope'],line['intercept']
+    if slope=='0':return 'y='+pp_surd_text(intercept)
+    slope_text='x' if slope=='1' else '-x' if slope=='-1' else (slope if re.fullmatch(r'-?\d+(?:/\d+)?',slope) else '('+slope+')')+'*x'
+    if intercept=='0':return 'y='+slope_text
+    sign='-' if intercept.startswith('-') else '+'
+    return 'y='+slope_text+sign+pp_surd_text(intercept).lstrip('-')
+
+def _overlay_label_anchor(viewport,line):
+    xmin,xmax,ymin,ymax=viewport;spanx=xmax-xmin;spany=ymax-ymin
+    if line['kind']=='VERTICAL':return [_overlay_number(line['x']),ymax-spany*.08]
+    m=_overlay_number(line['slope']);q=_overlay_number(line['intercept'])
+    for fraction in (.85,.15,.5):
+        x=xmin+spanx*fraction;y=m*x+q
+        if ymin+spany*.05<=y<=ymax-spany*.05:return [x,y]
+    if m!=0:
+        y=ymax-spany*.05;x=(y-q)/m
+        if xmin+spanx*.05<=x<=xmax-spanx*.05:return [x,y]
+    return [xmin+spanx*.85,ymax-spany*.08]
+
+def _overlay_line_crosses_view(viewport,line):
+    xmin,xmax,ymin,ymax=viewport
+    if line['kind']=='VERTICAL':return xmin<_overlay_number(pp_exact_value(line['x']))<xmax
+    m=_overlay_number(pp_exact_value(line['slope']));q=_overlay_number(pp_exact_value(line['intercept']))
+    y_left=m*xmin+q;y_right=m*xmax+q
+    if ymin<=y_left<=ymax or ymin<=y_right<=ymax:return True
+    if m==0:return ymin<q<ymax
+    x_bottom=(ymin-q)/m;x_top=(ymax-q)/m
+    return max(xmin,min(x_bottom,x_top))<min(xmax,max(x_bottom,x_top))
+
+def _overlay_features(plan):
+    raw=plan.get('overlays')
+    if raw is None:return None
+    if not isinstance(raw,dict) or set(raw)-set(OVERLAY_LIMITS):_overlay_fail('OVERLAY_PLAN_INVALID')
+    for key,limit in OVERLAY_LIMITS.items():
+        rows=raw.get(key,[])
+        if not isinstance(rows,list) or len(rows)>limit:_overlay_fail('OVERLAY_TOO_MANY',key)
+    seen=set()
+    def claim(ident,code='OVERLAY_ID_DUPLICATE'):
+        if ident in seen:_overlay_fail(code,ident)
+        seen.add(ident)
+    lines=[]
+    for entry in raw.get('lines',[]):
+        if not isinstance(entry,dict):_overlay_fail('OVERLAY_LINE_INVALID','line')
+        if set(entry)-{'id','slope','intercept','x','label'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
+        ident=_overlay_id(entry.get('id'),'line');claim('line:'+ident)
+        if 'x' in entry:
+            if 'slope' in entry or 'intercept' in entry:_overlay_fail('OVERLAY_LINE_INVALID',ident)
+            x=_overlay_exact(entry['x'],ident)
+            line={'id':ident,'kind':'VERTICAL','x':pp_surd_text(x),'xValue':_overlay_number(x),'label':entry.get('label')}
+        else:
+            if 'slope' not in entry or 'intercept' not in entry:_overlay_fail('OVERLAY_LINE_INVALID',ident)
+            slope=_overlay_exact(entry['slope'],ident);intercept=_overlay_exact(entry['intercept'],ident)
+            line={'id':ident,'kind':'LINE','slope':pp_surd_text(slope),'intercept':pp_surd_text(intercept),'slopeValue':_overlay_number(slope),'interceptValue':_overlay_number(intercept),'label':entry.get('label')}
+        line['text']=_overlay_line_text(line)
+        if not _overlay_line_crosses_view(plan['viewport'],line):_overlay_fail('OVERLAY_LINE_OUTSIDE_VIEWPORT',ident)
+        line['labelAt']=_overlay_label_anchor(plan['viewport'],line)
+        lines.append(line)
+    by_line={line['id']:line for line in lines}
+    points=[];by_point={}
+    required_ids={point.get('id') for point in plan.get('requiredPoints',[]) if isinstance(point,dict)}
+    for entry in raw.get('points',[]):
+        if not isinstance(entry,dict):_overlay_fail('OVERLAY_POINT_INVALID','point')
+        if set(entry)-{'id','curveX','curve','x','y','axis','value','intersect'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
+        ident=_overlay_id(entry.get('id'),'point')
+        if ident in required_ids:_overlay_fail('OVERLAY_POINT_ID_CONFLICT',ident)
+        claim('point:'+ident)
+        forms=sum(1 for key in ('curveX','intersect','axis','x') if key in entry)
+        if forms!=1 or ('curve' in entry and 'curveX' not in entry) or ('value' in entry)!=(entry.get('axis') is not None):_overlay_fail('OVERLAY_POINT_INVALID',ident)
+        if 'curveX' in entry:
+            x=_overlay_exact(entry['curveX'],ident)
+            curve_id=entry.get('curve')
+            if plan.get('family')=='exp-log-pair' and curve_id is None:_overlay_fail('OVERLAY_CURVE_REQUIRED',ident)
+            if plan.get('family')!='exp-log-pair' and curve_id is not None:_overlay_fail('OVERLAY_CURVE_UNKNOWN',ident)
+            lo,hi=plan['domain']
+            if not lo<=float(S.N(x,30))<=hi:_overlay_fail('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN',ident)
+            y=_overlay_curve_exact(plan,x,curve_id)
+        elif 'intersect' in entry:
+            pair=entry['intersect']
+            if not isinstance(pair,list) or len(pair)!=2 or len(set(pair))!=2:_overlay_fail('OVERLAY_POINT_INVALID',ident)
+            first=by_line.get(pair[0]);second=by_line.get(pair[1])
+            if first is None or second is None:_overlay_fail('OVERLAY_POINT_UNKNOWN',ident)
+            if first['kind']=='VERTICAL' and second['kind']=='VERTICAL':_overlay_fail('OVERLAY_LINE_PARALLEL',ident)
+            if first['kind']=='VERTICAL':x=pp_exact_value(first['x']);y=pp_exact_value(second['slope'])*x+pp_exact_value(second['intercept'])
+            elif second['kind']=='VERTICAL':x=pp_exact_value(second['x']);y=pp_exact_value(first['slope'])*x+pp_exact_value(first['intercept'])
+            else:
+                m1=pp_exact_value(first['slope']);q1=pp_exact_value(first['intercept']);m2=pp_exact_value(second['slope']);q2=pp_exact_value(second['intercept'])
+                if m1==m2:_overlay_fail('OVERLAY_LINE_PARALLEL',ident)
+                x=(q2-q1)/(m1-m2);y=m1*x+q1
+        elif 'axis' in entry:
+            axis=entry.get('axis');value=_overlay_exact(entry.get('value'),ident)
+            if axis=='x':x,y=value,S.Integer(0)
+            elif axis=='y':x,y=S.Integer(0),value
+            else:_overlay_fail('OVERLAY_POINT_INVALID',ident)
+        else:
+            x=_overlay_exact(entry['x'],ident);y=_overlay_exact(entry['y'],ident)
+        xmin,xmax,ymin,ymax=plan['viewport'];xf,yf=_overlay_number(x),_overlay_number(y)
+        if not (xmin<xf<xmax and ymin<yf<ymax):_overlay_fail('OVERLAY_POINT_OUTSIDE_VIEWPORT',ident)
+        row={'id':ident,'x':xf,'y':yf,'xExact':pp_surd_text(x),'yExact':pp_surd_text(y)}
+        points.append(row);by_point[ident]=row
+    def point_ref(value,ident):
+        if not isinstance(value,str) or value not in by_point:_overlay_fail('OVERLAY_POINT_UNKNOWN',ident)
+        return value
+    segments=[]
+    for entry in raw.get('segments',[]):
+        if not isinstance(entry,dict):_overlay_fail('OVERLAY_SEGMENT_INVALID','segment')
+        if set(entry)-{'id','from','to','dashed'}:_overlay_fail('OVERLAY_SEGMENT_INVALID',entry.get('id'))
+        ident=_overlay_id(entry.get('id'),'segment');claim('segment:'+ident)
+        start=point_ref(entry.get('from'),ident);end=point_ref(entry.get('to'),ident)
+        if start==end:_overlay_fail('OVERLAY_SEGMENT_DEGENERATE',ident)
+        dashed=entry.get('dashed',False)
+        if not isinstance(dashed,bool):_overlay_fail('OVERLAY_SEGMENT_INVALID',ident)
+        segments.append({'id':ident,'from':start,'to':end,'dashed':dashed})
+    guides=[]
+    for entry in raw.get('guides',[]):
+        if not isinstance(entry,dict):_overlay_fail('OVERLAY_GUIDE_INVALID','guide')
+        if set(entry)-{'id','from','axis','dashed'}:_overlay_fail('OVERLAY_GUIDE_INVALID',entry.get('id'))
+        ident=_overlay_id(entry.get('id'),'guide');claim('guide:'+ident)
+        start=point_ref(entry.get('from'),ident);axis=entry.get('axis','BOTH')
+        if axis not in ('x','y','BOTH'):_overlay_fail('OVERLAY_GUIDE_INVALID',ident)
+        dashed=entry.get('dashed',True)
+        if not isinstance(dashed,bool):_overlay_fail('OVERLAY_GUIDE_INVALID',ident)
+        guides.append({'id':ident,'from':start,'axis':axis,'dashed':dashed})
+    polygons=[]
+    for entry in raw.get('polygons',[]):
+        if not isinstance(entry,dict):_overlay_fail('OVERLAY_POLYGON_INVALID','polygon')
+        if set(entry)-{'id','points','fill'}:_overlay_fail('OVERLAY_POLYGON_INVALID',entry.get('id'))
+        ident=_overlay_id(entry.get('id'),'polygon');claim('polygon:'+ident)
+        refs=entry.get('points')
+        if not isinstance(refs,list) or not 3<=len(refs)<=6 or len(set(refs))!=len(refs):_overlay_fail('OVERLAY_POLYGON_INVALID',ident)
+        refs=[point_ref(value,ident) for value in refs]
+        fill=entry.get('fill','LIGHT')
+        if fill not in ('LIGHT','MEDIUM','NONE'):_overlay_fail('OVERLAY_FILL_INVALID',ident)
+        coords=[(by_point[value]['x'],by_point[value]['y']) for value in refs]
+        area=sum(coords[i][0]*coords[(i+1)%len(coords)][1]-coords[(i+1)%len(coords)][0]*coords[i][1] for i in range(len(coords)))
+        if abs(area)<1e-9:_overlay_fail('OVERLAY_POLYGON_DEGENERATE',ident)
+        polygons.append({'id':ident,'points':refs,'fill':fill})
+    return {'schemaVersion':'GRAPH_OVERLAYS_FEATURES_v1','points':points,'lines':lines,'segments':segments,'guides':guides,'polygons':polygons}
+
+def fit_overview(plan):
+    """The family framer, then the optional graph overlays: every overlay coordinate is recomputed exactly and must stay inside the
+    framed viewport. The fitted plan carries overlaysFeatures for the model/spec; the independent observer recomputes them from the raw
+    overlays field. Unsupported or out-of-view overlays are refused, never silently dropped."""
+    framed=_fit_overview_family(plan)
+    features=_overlay_features(framed['graphPlan'])
+    if features is None:return framed
+    framed['graphPlan']={**framed['graphPlan'],'overlaysFeatures':features}
+    return framed

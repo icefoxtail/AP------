@@ -1634,7 +1634,264 @@ def trigonometric_interval_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':head,'lines':detail,'curvePoints':len(points),'mathMethod':'SYMPY_EXACT_EXPRESSION_AND_MPMATH_40_DIGIT_ROOT_SCAN_OF_THE_GAP_AND_ITS_DERIVATIVE'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
-def audit(plan,svg,transform):
+# ---------------------------------------------------------------------------
+# Graph overlays (G1), observed independently: the observer re-derives every overlay coordinate from the RAW graphPlan.overlays field
+# with its own exact reader and its own curve evaluator, then compares the FINAL SVG (and the model SVG) element by element.
+OVERLAY_ERROR_PREFIX='OVERLAY_'
+
+def _ov_reader(value,code='OVERLAY_VALUE_INVALID'):
+    try:return _pp_coeff(value)
+    except ValueError:raise ValueError(code) from None
+
+def _ov_base(value):
+    if value in (None,'e'):return S.E
+    if not isinstance(value,str):raise ValueError('OVERLAY_BASE_INVALID')
+    match=re.fullmatch(r'sqrt\((\d+)\)',value)
+    if match:
+        base=S.sqrt(S.Integer(int(match.group(1))))
+    else:
+        try:base=S.Rational(value)
+        except (ValueError,ZeroDivisionError):raise ValueError('OVERLAY_BASE_INVALID') from None
+    if base<=0 or base==1:raise ValueError('OVERLAY_BASE_INVALID')
+    return base
+
+def _ov_curve_value(plan,value,curve_id=None):
+    """The observer's own exact y at x: it never reads overlaysFeatures or any producer number."""
+    family=plan.get('family')
+    if family=='polynomial':
+        return sum((_ov_reader(c)*value**i for i,c in enumerate(plan['coefficients'])),S.Integer(0))
+    if family=='rational':
+        numerator=sum((_ov_reader(c)*value**i for i,c in enumerate(plan['numerator'])),S.Integer(0))
+        denominator=sum((_ov_reader(c)*value**i for i,c in enumerate(plan['denominator'])),S.Integer(0))
+        if denominator==0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+        return numerator/denominator
+    if family=='sqrt-affine':
+        radicand=sum((_ov_reader(c)*value**i for i,c in enumerate(plan['radicand'])),S.Integer(0))
+        if radicand<0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+        return S.sqrt(radicand)
+    if family=='absolute-value':
+        b,a,scale,offset=(_ov_reader(item) for item in plan['coefficients'])
+        return scale*S.Abs(a*value+b)+offset
+    if family=='piecewise-affine':
+        source=plan.get('sourceDomain') or {};interval=source.get('range')
+        if interval:
+            lo,hi=(_ov_reader(item) for item in interval)
+            if not lo<=value<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
+        piece=plan['piecewise'];break_x=_ov_reader(piece['breakX']);owner=piece.get('owner','RIGHT')
+        coefficients=piece['left'] if value<break_x or (value==break_x and owner=='LEFT') else piece['right']
+        return _ov_reader(coefficients[0])*value+_ov_reader(coefficients[1])
+    if family=='exponential-affine':
+        a,k,c=(_ov_reader(item) for item in plan['coefficients']);base=_ov_base(plan.get('base'));shift=_ov_reader(plan.get('shiftX','0'))
+        return a*base**(k*(value-shift))+c
+    if family=='logarithmic-affine':
+        a,k,b,c=(_ov_reader(item) for item in plan['coefficients']);base=_ov_base(plan.get('base'));argument=k*value+b
+        if argument<=0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+        return a*S.log(argument)/S.log(base)+c
+    if family=='trigonometric':
+        a,k,c=(_ov_reader(item) for item in plan['coefficients']);phase=_ov_reader(plan.get('phasePi','0'))
+        function={'SIN':S.sin,'COS':S.cos,'TAN':S.tan}.get(plan.get('function'))
+        if function is None:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+        return a*function(k*value+phase*S.pi)+c
+    if family=='piecewise-polynomial':
+        pieces=plan.get('pieces') or [];breaks=plan.get('breakpoints') or []
+        values=[_pp_coeff_coefficients(piece.get('coefficients')) for piece in pieces]
+        points=[_ov_reader(breakpoint.get('x')) for breakpoint in breaks]
+        source=plan.get('sourceDomain') or {}
+        if source.get('kind')=='INTERVAL':
+            lo,hi=(_ov_reader(item) for item in source.get('range',[]))
+            if not lo<=value<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
+        for index,coefficients in enumerate(values):
+            left=None if index==0 else points[index-1];right=None if index==len(values)-1 else points[index]
+            if (left is None or left<=value) and (right is None or value<=right):
+                return sum((coefficient*value**i for i,coefficient in enumerate(coefficients)),S.Integer(0))
+        raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+    if family=='exp-log-pair':
+        rows=plan.get('curves') or []
+        row=next((item for item in rows if item.get('id')==curve_id),None)
+        if row is None:raise ValueError('OVERLAY_CURVE_UNKNOWN')
+        if row.get('family')=='exponential-affine':
+            a,k,c=(_ov_reader(item) for item in row['coefficients']);base=_ov_base(row.get('base'));shift=_ov_reader(row.get('shiftX','0'))
+            return a*base**(k*(value-shift))+c
+        if row.get('family')=='logarithmic-affine':
+            a,k,b,c=(_ov_reader(item) for item in row['coefficients']);base=_ov_base(row.get('base'));argument=k*value+b
+            if argument<=0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+            return a*S.log(argument)/S.log(base)+c
+        raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+    raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+
+def _pp_coeff_coefficients(values):
+    if not isinstance(values,list) or len(values)>4:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+    return [_ov_reader(item) for item in values]
+
+def _ov_line(entry):
+    if not isinstance(entry,dict):raise ValueError('OVERLAY_LINE_INVALID')
+    if 'x' in entry:
+        if 'slope' in entry or 'intercept' in entry:raise ValueError('OVERLAY_LINE_INVALID')
+        return {'id':entry.get('id'),'kind':'VERTICAL','x':_ov_reader(entry.get('x'))}
+    if 'slope' not in entry or 'intercept' not in entry:raise ValueError('OVERLAY_LINE_INVALID')
+    return {'id':entry.get('id'),'kind':'LINE','slope':_ov_reader(entry.get('slope')),'intercept':_ov_reader(entry.get('intercept'))}
+
+def _ov_expected(plan):
+    """Every overlay element recomputed from the raw plan: points; lines; segments, guides and polygons."""
+    raw=plan.get('overlays')
+    if raw is None:return None
+    if not isinstance(raw,dict):raise ValueError('OVERLAY_PLAN_INVALID')
+    lines=[_ov_line(entry) for entry in raw.get('lines',[])]
+    by_line={line['id']:line for line in lines}
+    points={}
+    for entry in raw.get('points',[]):
+        if not isinstance(entry,dict):raise ValueError('OVERLAY_POINT_INVALID')
+        ident=entry.get('id')
+        if not isinstance(ident,str) or ident in points:raise ValueError('OVERLAY_POINT_INVALID')
+        if 'curveX' in entry:
+            x=_ov_reader(entry.get('curveX'));lo,hi=plan.get('domain',[None,None])
+            if lo is not None and not lo<=float(S.N(x,30))<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
+            y=_ov_curve_value(plan,x,entry.get('curve'))
+        elif 'intersect' in entry:
+            pair=entry.get('intersect')
+            if not isinstance(pair,list) or len(pair)!=2:raise ValueError('OVERLAY_POINT_INVALID')
+            first=by_line.get(pair[0]);second=by_line.get(pair[1])
+            if first is None or second is None:raise ValueError('OVERLAY_POINT_UNKNOWN')
+            if first['kind']=='VERTICAL' and second['kind']=='VERTICAL':raise ValueError('OVERLAY_LINE_PARALLEL')
+            if first['kind']=='VERTICAL':x=first['x'];y=second['slope']*x+second['intercept']
+            elif second['kind']=='VERTICAL':x=second['x'];y=first['slope']*x+first['intercept']
+            else:
+                if first['slope']==second['slope']:raise ValueError('OVERLAY_LINE_PARALLEL')
+                x=(second['intercept']-first['intercept'])/(first['slope']-second['slope']);y=first['slope']*x+first['intercept']
+        elif 'axis' in entry:
+            value=_ov_reader(entry.get('value'))
+            if entry.get('axis')=='x':x,y=value,S.Integer(0)
+            elif entry.get('axis')=='y':x,y=S.Integer(0),value
+            else:raise ValueError('OVERLAY_POINT_INVALID')
+        elif 'x' in entry and 'y' in entry:
+            x,y=_ov_reader(entry['x']),_ov_reader(entry['y'])
+        else:raise ValueError('OVERLAY_POINT_INVALID')
+        points[ident]=(x,y)
+    def point_ref(value):
+        if value not in points:raise ValueError('OVERLAY_POINT_UNKNOWN')
+        return points[value]
+    segments=[]
+    for entry in raw.get('segments',[]):
+        if not isinstance(entry,dict):raise ValueError('OVERLAY_SEGMENT_INVALID')
+        segments.append({'id':entry.get('id'),'from':point_ref(entry.get('from')),'to':point_ref(entry.get('to')),'dashed':entry.get('dashed',False)})
+    guides=[]
+    for entry in raw.get('guides',[]):
+        if not isinstance(entry,dict):raise ValueError('OVERLAY_GUIDE_INVALID')
+        point=point_ref(entry.get('from'));axis=entry.get('axis','BOTH')
+        if axis not in ('x','y','BOTH'):raise ValueError('OVERLAY_GUIDE_INVALID')
+        guides.append({'id':entry.get('id'),'from':point,'axis':axis,'dashed':entry.get('dashed',True)})
+    polygons=[]
+    for entry in raw.get('polygons',[]):
+        if not isinstance(entry,dict) or not isinstance(entry.get('points'),list) or not 3<=len(entry['points'])<=6:raise ValueError('OVERLAY_POLYGON_INVALID')
+        polygons.append({'id':entry.get('id'),'points':[point_ref(value) for value in entry['points']],'fill':entry.get('fill','LIGHT')})
+    return {'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons}
+
+def _ov_clip(viewport,line):
+    xmin,xmax,ymin,ymax=viewport
+    if line['kind']=='VERTICAL':
+        x=float(line['x']);return [(x,ymin),(x,ymax)]
+    m=float(line['slope']);q=float(line['intercept']);ends=[]
+    for x in (xmin,xmax):
+        y=m*x+q
+        if ymin-1e-6<=y<=ymax+1e-6:ends.append((x,max(ymin,min(ymax,y))))
+    if m!=0:
+        for y in (ymin,ymax):
+            x=(y-q)/m
+            if xmin-1e-6<=x<=xmax+1e-6 and not any(abs(x-a)<1e-6 for a,_ in ends):ends.append((max(xmin,min(xmax,x)),y))
+    return ends[:2]
+
+def overlays_audit(plan,svg,transform):
+    raw=plan.get('overlays')
+    if raw is None:return None
+    errors=[]
+    try:
+        expected=_ov_expected(plan)
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:
+            return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')]
+        to_data=lambda px,py:((px-ox)/sx,(oy-py)/sy)
+        xtol=.35/(sx*transform['displayScale']);ytol=.35/(sy*transform['displayScale'])
+        root=ET.fromstring(svg)
+        lines={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='line'}
+        circles={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle'}
+        polylines={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='polyline'}
+        def read_line(ident):
+            node=lines.get(ident)
+            if node is None:return None
+            try:return [to_data(float(node.get('x1')),float(node.get('y1'))),to_data(float(node.get('x2')),float(node.get('y2')))]
+            except (TypeError,ValueError):return None
+        def read_circle(ident):
+            node=circles.get(ident)
+            if node is None:return None
+            try:return to_data(float(node.get('cx')),float(node.get('cy')))
+            except (TypeError,ValueError):return None
+        def read_polyline(ident):
+            node=polylines.get(ident)
+            if node is None:return None
+            try:
+                values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+                return [to_data(values[i],values[i+1]) for i in range(0,len(values)-1,2)]
+            except (TypeError,ValueError,IndexError):return None
+        def near(a,b,tolerance_x=xtol,tolerance_y=ytol):
+            return abs(a[0]-b[0])<=max(tolerance_x,1e-6*max(1,abs(b[0]))) and abs(a[1]-b[1])<=max(tolerance_y,1e-6*max(1,abs(b[1])))
+        claimed=set()
+        for line in expected['lines']:
+            obj_id='overlay-line-'+str(line['id']);claimed.add(obj_id)
+            got=read_line(obj_id)
+            if got is None:errors.append('OVERLAY_LINE_MISSING:'+str(line['id']));continue
+            want=_ov_clip(plan['viewport'],line)
+            if len(want)!=2:errors.append('OVERLAY_LINE_OUTSIDE_VIEWPORT:'+str(line['id']));continue
+            if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_LINE_MISMATCH:'+str(line['id']))
+        for ident,(x,y) in expected['points'].items():
+            claimed.add(ident);got=read_circle(ident)
+            if got is None:errors.append('OVERLAY_POINT_MISSING:'+ident)
+            elif not near(got,(float(S.N(x,30)),float(S.N(y,30)))):errors.append('OVERLAY_POINT_MISMATCH:'+ident)
+        for segment in expected['segments']:
+            ident='overlay-segment-'+str(segment['id']);claimed.add(ident);got=read_line(ident)
+            if got is None:errors.append('OVERLAY_SEGMENT_MISSING:'+str(segment['id']));continue
+            want=[(float(S.N(segment['from'][0],30)),float(S.N(segment['from'][1],30))),(float(S.N(segment['to'][0],30)),float(S.N(segment['to'][1],30)))]
+            if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_SEGMENT_MISMATCH:'+str(segment['id']))
+        for guide in expected['guides']:
+            point=guide['from'];px,py=float(S.N(point[0],30)),float(S.N(point[1],30))
+            wanted=[]
+            if guide['axis'] in ('x','BOTH'):wanted.append(('overlay-guide-'+str(guide['id'])+'-x',[(px,py),(px,0.0)]))
+            if guide['axis'] in ('y','BOTH'):wanted.append(('overlay-guide-'+str(guide['id'])+'-y',[(px,py),(0.0,py)]))
+            for ident,want in wanted:
+                claimed.add(ident);got=read_line(ident)
+                if got is None:errors.append('OVERLAY_GUIDE_MISSING:'+str(guide['id']));continue
+                if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_GUIDE_MISMATCH:'+str(guide['id']))
+        for polygon in expected['polygons']:
+            ident='overlay-polygon-'+str(polygon['id']);claimed.add(ident)
+            got=read_polyline(ident)
+            want=[(float(S.N(x,30)),float(S.N(y,30))) for x,y in polygon['points']]
+            if got is None:errors.append('OVERLAY_POLYGON_MISSING:'+str(polygon['id']));continue
+            if len(got)!=len(want)+1 or any(not near(a,b) for a,b in zip(got,want)) or not near(got[-1],want[0]):errors.append('OVERLAY_POLYGON_MISMATCH:'+str(polygon['id']))
+            if polygon['fill']!='NONE':
+                claimed.add(ident+'-fill');fill=polylines.get(ident+'-fill',None) or root.find(f'.//*[@id="{ident}-fill"]')
+                if fill is None:errors.append('OVERLAY_FILL_MISSING:'+str(polygon['id']))
+        # Labels: in the composed figure every overlay line has its equation label, owned by that line. (The model SVG has no labels.)
+        if 'data-label-kind' in svg:
+            groups={}
+            for node in root.iter():
+                if node.tag.split('}')[-1]=='g' and node.get('id'):groups[node.get('id')]=node
+            for line in expected['lines']:
+                label_id='overlay-line-'+str(line['id'])+'-equation';claimed.add(label_id)
+                node=groups.get(label_id)
+                if node is None:errors.append('OVERLAY_LABEL_MISSING:'+str(line['id']))
+                elif node.get('data-owner')!='overlay-line-'+str(line['id']):errors.append('OVERLAY_LABEL_OWNER_MISMATCH:'+str(line['id']))
+                elif not any(child.tag.split('}')[-1] in {'path','text'} for child in node.iter()):errors.append('OVERLAY_LABEL_EMPTY:'+str(line['id']))
+        # No undeclared overlay element may sneak into the figure.
+        for node in root.iter():
+            ident=node.get('id') or ''
+            if not ident.startswith('overlay-'):continue
+            if ident.endswith('-fill') or ident.endswith('-equation'):continue
+            if ident not in claimed:errors.append('OVERLAY_UNDECLARED:'+ident)
+        status='FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors)),'points':len(expected['points']),'lines':len(expected['lines']),'segments':len(expected['segments']),'guides':len(expected['guides']),'polygons':len(expected['polygons']),'mathMethod':'INDEPENDENT_EXACT_OVERLAY_RECOMPUTATION_AND_FINAL_SVG_READBACK'}
+    except (ValueError,KeyError,TypeError,IndexError,ZeroDivisionError,ET.ParseError) as error:
+        return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'OVERLAY_SOURCE_SCHEMA_INVALID']}
+
+def _audit_family(plan,svg,transform):
     if plan.get('family')=='piecewise-polynomial':
         return piecewise_polynomial_audit(plan,svg,transform)
     if plan.get('family')=='piecewise-affine' and plan.get('shapeIntent')=='OVERVIEW':
@@ -1731,3 +1988,16 @@ def audit(plan,svg,transform):
     if overview['status'] in ('FAIL','UNSUPPORTED'):errors.extend(overview['errors'])
     status='UNSUPPORTED' if overview['status']=='UNSUPPORTED' else 'FAIL' if errors else 'PASS'
     return {'status':status,'errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}
+
+def audit(plan,svg,transform):
+    """The family audit plus the optional graph overlays: the observer re-derives every overlay element from the raw overlays field and
+    reads the same element ids back from the model and the final SVG."""
+    result=_audit_family(plan,svg,transform)
+    if plan.get('overlays') is None:return result
+    overlay=overlays_audit(plan,svg,transform)
+    if overlay is None:return result
+    errors=sorted(set([*(result.get('errors') or []),*(overlay.get('errors') or [])]))
+    if result.get('status')=='UNSUPPORTED' or overlay.get('status')=='UNSUPPORTED':status='UNSUPPORTED'
+    elif result.get('status')=='FAIL' or overlay.get('status')=='FAIL' or errors:status='FAIL'
+    else:status='PASS'
+    return {**result,'status':status,'errors':errors,'overlays':overlay}
