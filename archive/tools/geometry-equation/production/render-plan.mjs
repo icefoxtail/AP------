@@ -17,6 +17,7 @@ import {fileRef} from '../../pipeline-core/canonical.mjs';
 import * as comp from './composite-candidate-svg-v1.mjs';
 import * as chain from './quadratic-inequality-chain-v1.mjs';
 import * as nlf from './number-line-v1.mjs';
+import * as sol from './solid-figure-v1.mjs';
 import {observeDisplayedPointNames,planNameExpectations} from './point-name-observer.mjs';
 
 // The git worktree root: production/ -> geometry-equation/ -> tools/ -> archive/ -> root.
@@ -59,17 +60,21 @@ export async function renderPlan({item,plan:planInput,outDir,packetDir}){
       write(`${name}-state.json`,JSON.stringify({meta,identity,plan,model,composed,capture,packetDir:packet?.packetDir,packetSha256:packet?.packetSha256},null,1));
       write(`${name}-solution.svg`,composed.svg);
     };
-    if(authored.capability==='composite-panels-v1'||authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY){
+    if(authored.capability==='composite-panels-v1'||authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY||authored.capability===sol.SOLID_CAPABILITY){
       // Panels: frame -> model -> spec each; one Archive policy for the stacked size; L1 per panel inside the composite; then the same capture.
       stage='composite-panels';
       // A panel whose key point coordinates found no room retries once with only those coordinates in its band (as fallback 1 for one figure).
       // A quadratic inequality chain is the composite it stands for: its graph panel over its number-line panel (solved exactly first).
       // A standalone number-line figure (number-line-figure-v1) is the one-panel composite it stands for.
-      stage=authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY?'chain':stage;
-      let current=authored.capability===chain.CHAIN_CAPABILITY?chain.expandInequalityChain(authored):authored.capability===nlf.FIGURE_CAPABILITY?nlf.expandNumberLineFigure(authored):authored,checked,framedPanels,panelModels,plan,measured,composed;stage='composite-panels';
+      stage=authored.capability===chain.CHAIN_CAPABILITY||authored.capability===nlf.FIGURE_CAPABILITY||authored.capability===sol.SOLID_CAPABILITY?'chain':stage;
+      let current=authored.capability===chain.CHAIN_CAPABILITY?chain.expandInequalityChain(authored):authored.capability===nlf.FIGURE_CAPABILITY?nlf.expandNumberLineFigure(authored):authored.capability===sol.SOLID_CAPABILITY?sol.expandSolidFigure(authored):authored,checked,framedPanels,panelModels,plan,measured,composed;stage='composite-panels';
       for(let attempt=0;attempt<3;attempt++){
       checked=comp.compositePanels(current);framedPanels=[];panelModels=[];const panelSizes=[];
       for(const panel of checked){
+        if(comp.isSolidPanel(panel.plan)){
+          const solved=sol.solveSolidFigure(panel.plan);
+          framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(sol.figurePanelSize(solved));continue;
+        }
         if(comp.isNumberLinePanel(panel.plan)){
           const solved=chain.solveNumberLine(panel.plan.numberLine);
           framedPanels.push({caption:panel.caption,plan:panel.plan});panelModels.push(solved);panelSizes.push(chain.numberLinePanelSize(solved));continue;
