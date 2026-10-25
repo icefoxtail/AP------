@@ -114,6 +114,31 @@ test("normal registration sync refreshes parent links and then rebuilds the boun
     "the refreshed readiness receipt must pass its unchanged stale check");
 });
 
+test("PR registration sync persists generated identity, metadata, index, and catalog outputs", () => {
+  const workflow = read(".github/workflows/archive-registration-sync.yml");
+  const generatedScopeGuard = workflow.indexOf("- name: Guard generated scope");
+  const persistOutputs = workflow.indexOf("- name: Persist generated registration outputs on PR branch");
+
+  assert.ok(generatedScopeGuard >= 0 && persistOutputs > generatedScopeGuard,
+    "generated output persistence runs after the whitelist guard");
+  assert.match(workflow.slice(persistOutputs),
+    /if: github\.event_name == 'pull_request' && github\.event\.pull_request\.head\.repo\.full_name == github\.repository/,
+    "only same-repository pull request branches are written");
+  for (const output of [
+    "archive/data/question_identity_map.json",
+    "archive/data/question_metadata.json",
+    "archive/question-index.js",
+    "archive/data/archive2-catalog.json",
+    "archive/data/archive2-canonical-input-manifest.json",
+  ]) assert.ok(workflow.slice(persistOutputs).includes(output), `${output} is persisted`);
+  assert.match(workflow.slice(persistOutputs), /git push origin "HEAD:refs\/heads\/\$\{PR_HEAD_REF\}"/,
+    "generated registration output is committed back to the source PR branch");
+  assert.match(workflow, /actions:\s*write/,
+    "the workflow can dispatch a verification run for the updated PR head");
+  assert.match(workflow.slice(persistOutputs), /actions\/workflows\/archive-registration-sync\.yml\/dispatches/,
+    "the persisted PR head receives a fresh registration-sync check");
+});
+
 test("parent-link generation binds stable authority inputs instead of its own final catalog hash", () => {
   const generator = read("archive/tools/build-basic-scope-parent-links.mjs");
   assert.match(generator, /authorityInputsSha256/,
