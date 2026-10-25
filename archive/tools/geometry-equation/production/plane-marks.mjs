@@ -7,11 +7,12 @@ export const PLANE_RECIPE='PLANE_FIGURE_v1';
 export const isPlaneFigure=plan=>plan?.mathPlan?.realization?.recipeId===PLANE_RECIPE;
 export const ANGLE_TOLERANCE_DEGREES=0.5;
 const ID=/^[A-Za-z][A-Za-z0-9_-]{0,31}$/;
-const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','regions','facts'],
+const KEYS={planeMarks:['angles','equalLengths','parallels','expressionLabels','arcs','traces','regions','facts'],
   angles:['id','refs','side','arcs','ring','style','value','label','labelKind','equalGroup','factRole','noLabel'],
   equalLengths:['id','count','segments'],parallels:['id','count','segments'],
   expressionLabels:['id','ownerSegment','text','factRole'],
   arcs:['id','circle','center','from','to','side','label','labelKind','highlight','factRole'],
+  traces:['id','center','radius','through','spanDeg','label','factRole'],
   facts:['kind','circle','points','center','contact','tangent']};
 const FACT_ROLES=['GIVEN','DERIVED_INTERMEDIATE','CONCLUSION'];
 const bad=code=>{throw Error(code);};
@@ -148,6 +149,41 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     objects.push(object);
   }
 
+  // --- construction traces (compass arcs): a thin arc of the declared radius around each intersection it produces
+  for(const row of list(marks.traces,'traces')){
+    if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:traces');
+    keysOk(row,KEYS.traces,'traces');claim(row.id,'traces');
+    const center=at(row.center);
+    if(!row.radius||typeof row.radius!=='object'||Array.isArray(row.radius))bad('TRACE_RADIUS_INVALID:'+row.id);
+    const radiusKeys=Object.keys(row.radius);
+    if(radiusKeys.length!==1||!['point','segment'].includes(radiusKeys[0]))bad('TRACE_RADIUS_INVALID:'+row.id);
+    let radiusPoint=null,radiusSegment=null,radius;
+    if(radiusKeys[0]==='point'){
+      radiusPoint=row.radius.point;
+      if(typeof radiusPoint!=='string'||radiusPoint===row.center)bad('TRACE_RADIUS_INVALID:'+row.id);
+      radius=norm(sub(at(radiusPoint),center));
+    }else{
+      radiusSegment=row.radius.segment;
+      if(typeof radiusSegment!=='string')bad('TRACE_RADIUS_INVALID:'+row.id);
+      const [p,q]=segEnds(radiusSegment);radius=norm(sub(q,p));
+    }
+    if(!(radius>1e-12))bad('TRACE_RADIUS_INVALID:'+row.id);
+    if(!Array.isArray(row.through)||row.through.length<1||row.through.length>8||row.through.some(id=>typeof id!=='string'))bad('MARK_FIELD_INVALID:traces.through:'+row.id);
+    if(new Set(row.through).size!==row.through.length)bad('TRACE_TARGETS_DEGENERATE:'+row.id);
+    for(const id of row.through){
+      if(id===row.center)bad('TRACE_TARGETS_DEGENERATE:'+row.id);
+      const p=at(id);
+      if(Math.abs(norm(sub(p,center))-radius)>1e-6*Math.max(1,radius))bad('TRACE_TARGET_NOT_ON_ARC:'+id);
+    }
+    const span=row.spanDeg===undefined?24:numberOf(row.spanDeg);
+    if(span===null||span<2||span>120)bad('TRACE_SPAN_INVALID:'+row.id);
+    const label=row.label===undefined?null:String(row.label);
+    if(label!==null&&!/^[1-9][0-9]?$/.test(label))bad('TRACE_LABEL_INVALID:'+row.id);
+    const object={id:row.id,kind:'TRACE_ARC',centerPoint:row.center,through:[...row.through],spanDeg:span,...(radiusPoint?{radiusPoint}:{radiusSegment})};
+    if(label!==null){object.labelText=label;factRolesByLabel[row.id+'-label']=role(row);}
+    objects.push(object);
+  }
+
   // --- facts the final SVG must show (checked only by the observer, from the drawn primitives)
   for(const row of list(marks.facts,'facts')){
     if(!row||typeof row!=='object'||Array.isArray(row))bad('MARK_FIELD_INVALID:facts');
@@ -174,6 +210,7 @@ export function planeMarkPointRefs(plan){
   const refs=[];
   for(const row of Array.isArray(marks.angles)?marks.angles:[])if(Array.isArray(row?.refs))refs.push(...row.refs);
   for(const row of Array.isArray(marks.arcs)?marks.arcs:[])refs.push(row?.center,row?.from,row?.to);
+  for(const row of Array.isArray(marks.traces)?marks.traces:[]){refs.push(row?.center,row?.radius?.point,...(Array.isArray(row?.through)?row.through:[]));}
   for(const row of Array.isArray(marks.facts)?marks.facts:[]){if(Array.isArray(row?.points))refs.push(...row.points);refs.push(row?.center,row?.contact);}
   return [...refs,...regionPointRefs(plan)].filter(id=>typeof id==='string');
 }

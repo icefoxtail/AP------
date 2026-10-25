@@ -6,14 +6,14 @@ import re
 from .geometry_model import (Line,Circle,CircularArc,point,finite,line_intersection,
     parallel_check,perpendicular_check,point_on_line,tangent_check)
 
-KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRCULAR_ARC',
+KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRCULAR_ARC','TRACE_ARC',
     'FUNCTION_GRAPH','INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR',
     'PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUATION_LABEL','EQUAL_MARK','PARALLEL_MARK',
     'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUAL_MARK','PARALLEL_MARK'}
-FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill'}
-REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'}}
+FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','through','spanDeg','radiusPoint','radiusSegment'}
+REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'TRACE_ARC':{'centerPoint','through'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'}}
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
@@ -84,6 +84,37 @@ def validate(spec):
                 if not obj.get('lines') or not all(isinstance(v,str) or (isinstance(v,dict) and isinstance(v.get('text'),str) and isinstance(v.get('math',False),bool) and not set(v)-{'text','math'}) for v in obj['lines']):
                     raise ValueError('CONDITION_LINES_REQUIRED')
             elif not isinstance(obj.get('text'),str): raise ValueError('LABEL_TEXT_REQUIRED')
+    for obj in spec['objects']:
+        if obj['kind'] != 'TRACE_ARC': continue
+        # A construction trace: thin compass arcs of one radius around the intersections the plan says they produce.
+        center_id=obj['centerPoint']
+        if objects.get(center_id,{}).get('kind')!='POINT':raise ValueError('TRACE_ARC_POINT_REFS_REQUIRED:'+obj['id'])
+        has_point='radiusPoint' in obj;has_segment='radiusSegment' in obj
+        if has_point==has_segment:raise ValueError('TRACE_ARC_RADIUS_REQUIRED:'+obj['id'])
+        through=obj.get('through')
+        if not isinstance(through,list) or not 1<=len(through)<=8 or any(objects.get(pid,{}).get('kind')!='POINT' for pid in through):
+            raise ValueError('TRACE_ARC_POINT_REFS_REQUIRED:'+obj['id'])
+        if len(set(through))!=len(through) or center_id in through:raise ValueError('TRACE_TARGETS_DEGENERATE:'+obj['id'])
+        center=geometry[center_id]
+        if has_point:
+            pid=obj['radiusPoint']
+            if objects.get(pid,{}).get('kind')!='POINT' or pid==center_id:raise ValueError('TRACE_ARC_RADIUS_REQUIRED:'+obj['id'])
+            radius=math.dist(center,geometry[pid])
+        else:
+            sid=obj['radiusSegment']
+            if objects.get(sid,{}).get('kind')!='SEGMENT':raise ValueError('TRACE_ARC_RADIUS_REQUIRED:'+obj['id'])
+            radius=math.dist(*geometry[sid])
+        if radius<=0:raise ValueError('TRACE_ARC_RADIUS_REQUIRED:'+obj['id'])
+        span=obj.get('spanDeg',24)
+        if isinstance(span,bool) or not isinstance(span,(int,float)) or not math.isfinite(span) or not 2<=span<=120:
+            raise ValueError('TRACE_SPAN_INVALID:'+obj['id'])
+        rows=[]
+        for pid in through:
+            target=geometry[pid];distance=math.dist(center,target)
+            if abs(distance-radius)>1e-6*max(1,radius):raise ValueError('TRACE_TARGET_NOT_ON_ARC:'+pid)
+            rows.append((pid,target,math.atan2(target[1]-center[1],target[0]-center[0])))
+        geometry[obj['id']]={'center':center,'radius':radius,'through':rows,'spanDeg':float(span)}
+        relations.append({'id':obj['id'],'kind':'TRACE_ARC','status':'PASS','observed':radius})
     for obj in spec['objects']:
         if obj['kind'] != 'CIRCULAR_ARC': continue
         refs=(obj['centerPoint'],obj['startPoint'],obj['endPoint'])
