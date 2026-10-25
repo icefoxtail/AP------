@@ -122,3 +122,23 @@ test('error codes: false facts, and marks outside a plane or coordinate figure, 
   const graphPlan={capability:'polynomial-spike-v1',caption:'graph',graphPlan:{family:'polynomial',coefficients:['0','1'],domain:[-1,1],viewport:[-2,2,-2,2],planeMarks:{angles:[]}}};
   assert.throws(()=>specFor({...graphPlan,planeMarks:{angles:[]}},model,identity.assetId),/PLANE_MARKS_UNSUPPORTED_ON_GRAPH/);
 });
+
+// A 30 degree wedge is too narrow for a value label beside the arc: the label slides out along the bisector until it clears both rays, and a
+// MATH label names the angle by its own symbol (5theta) instead of writing a degree value.
+test('a narrow coordinate angle carries a symbol label inside the wedge',async()=>{
+  const narrow={schemaVersion:'construction-spike-v1',realization:{recipeId:'SOURCE_COORDINATE_AXES_v1',unit:'source-coordinate',reflectionEquivalent:false},nodes:[
+    derived('O','NORMALIZATION_ORIGIN',[],'POINT'),derived('U','NORMALIZATION_AXIS',[],'POINT',{length:int(1)}),
+    source('X',6,0),{...node('P','POLAR_POINT',['O','X'],'POINT',{length:int(6),angleDeg:int(30),turn:'CCW'}),factRole:'GIVEN'}]};
+  const plan={capability:'construction-spike-v1',caption:'30도 각',mathPlan:narrow,displayPoints:['O','X','P'],
+    displaySegments:[{id:'sOP',refs:['O','P']}],coordinateCanvas:{width:640,height:480},axisTickValues:{x:[],y:[]},
+    planeMarks:{angles:[{id:'aXOP',refs:['X','O','P'],value:30,label:'5θ',labelKind:'MATH'}]}};
+  const response=await pythonWorker({action:'construction',graph:narrow},{timeoutMs:90000});assert.equal(response.status,'OK',JSON.stringify(response.result));
+  const composedNarrow=await composeConstructionCandidate({plan,model:response.result,identity,typographyPolicy:policy,browser});
+  assert.equal(composedNarrow.status,'COMPOSED',JSON.stringify(composedNarrow.detail));
+  assert.equal(composedNarrow.staticAudit.planeMarks.status,'PASS',JSON.stringify(composedNarrow.staticAudit.planeMarks.errors));
+  const row=composedNarrow.staticAudit.planeMarks.observations.find(observation=>observation.id==='aXOP');
+  assert.ok(Math.abs(row.drawnDegrees-30)<1e-6);
+  const at=composedNarrow.svg.indexOf('id="aXOP-label"'),fragment=composedNarrow.svg.slice(at,composedNarrow.svg.indexOf('</g></g>',at));
+  assert.ok(fragment.includes('data-c="1D703"'),'the label is the theta symbol');                 // U+1D703, mathematical italic theta
+  assert.ok(!fragment.includes('data-c="2218"'),'a MATH label writes no degree sign');             // U+2218, the degree ring
+});

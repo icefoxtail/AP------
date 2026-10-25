@@ -451,13 +451,17 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                 # An angle label inside its angle: slide the box out along the bisector until it clears the marks and stays within the two rays.
                 from .publication import box_owned
                 ws=label['wedgeSearch'];vertex=ws['vertex'];radius=ws['rMin']
+                # A narrow wedge only clears a label of this size well away from the vertex: the fixed outer+44 cap is a guess that is too small
+                # there, so the inside limit also covers the distance the two rays need to diverge past the label box (still inside the angle).
+                half=abs(ws['delta'])/2
+                inside_limit=ws['rMax'] if half<=1e-6 else max(ws['rMax'],min(ws.get('rFar',ws['rMax']),(w/2+6)/math.sin(half)+h))
                 while radius<=ws.get('rFar',ws['rMax']) and chosen is None:
                     # On the bisector first, then slid to either side of it (a segment that lies on the bisector would otherwise block every radius).
                     for lateral in (0,w/2+6,-(w/2+6),w/2+14,-(w/2+14)):
                         center=(vertex[0]+radius*math.cos(ws['bisector'])-lateral*math.sin(ws['bisector']),vertex[1]+radius*math.sin(ws['bisector'])+lateral*math.cos(ws['bisector']))
                         box=Box(center[0]-w/2,center[1]-h/2,w,h)
                         if not (acceptable(box) and box_owned({'ownerWedge':[vertex,ws['start'],ws['delta'],ws.get('rFar',ws['rMax'])+max(w,h)]},box)):continue
-                        if radius<=ws['rMax']:chosen=box;method='ANGLE_WEDGE_INSIDE';default_gaps=();break
+                        if radius<=inside_limit:chosen=box;method='ANGLE_WEDGE_INSIDE';default_gaps=();break
                         # Farther than a reader associates with the arc: a visible leader from the arc to the label.
                         # The leader leaves the outer arc in the direction of the label (a segment lying on the bisector would block one that leaves at the bisector).
                         phi=math.atan2(center[1]-vertex[1],center[0]-vertex[0]);start=(vertex[0]+ws['arcRadius']*math.cos(phi),vertex[1]+ws['arcRadius']*math.sin(phi))

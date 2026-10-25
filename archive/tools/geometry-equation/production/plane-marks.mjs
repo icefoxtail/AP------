@@ -75,7 +75,8 @@ export function planeMarkSpec(plan,model,points,segmentIds){
     const style=row.style??'SECTOR';
     if(!['SECTOR','ARC'].includes(style))bad('ANGLE_MARK_STYLE_INVALID:'+row.id);
     const kind=row.labelKind??'DEGREE';
-    if(!['DEGREE','NAME'].includes(kind))bad('MARK_FIELD_INVALID:angles.labelKind:'+row.id);
+    // DEGREE writes the value with a degree sign, NAME writes the angle by its letters (ABC -> the angle ABC) and MATH writes a symbol such as theta.
+    if(!['DEGREE','NAME','MATH'].includes(kind))bad('MARK_FIELD_INVALID:angles.labelKind:'+row.id);
     // A degree label names the declared value; a mark with neither a label nor `noLabel` states nothing a student can read.
     const text=labelOf(row,declared!==null?String(row.value).replace(/\.0+$/,''):null,true);
     if(text===null&&row.noLabel!==true)bad('ANGLE_MARK_LABEL_REQUIRED:'+row.id);
@@ -146,7 +147,7 @@ export function planeMarkSpec(plan,model,points,segmentIds){
       const minorCcw=ccw<Math.PI;sweep=(row.side==='MAJOR')===minorCcw?'CW':'CCW';
     }else bad('MARK_FIELD_INVALID:arcs.side:'+row.id);
     const kind=row.labelKind??'DEGREE';
-    if(!['DEGREE','NAME'].includes(kind))bad('MARK_FIELD_INVALID:arcs.labelKind:'+row.id);
+    if(!['DEGREE','NAME','MATH'].includes(kind))bad('MARK_FIELD_INVALID:arcs.labelKind:'+row.id);
     const object={id:row.id,kind:'CIRCULAR_ARC',centerPoint:row.center,startPoint:row.from,endPoint:row.to,sweep,highlight:row.highlight!==false};
     if(row.label!==undefined){object.labelText=String(row.label);object.labelKind=kind;factRolesByLabel[row.id+'-label']=role(row);}
     objects.push(object);

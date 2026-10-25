@@ -31,13 +31,14 @@ def canonical(value):return json.dumps(value,ensure_ascii=False,sort_keys=True,s
 def sha(value):return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
 def mark_label(label_id,target,text,label_kind,at,extra):
-    """A math label for a mark: 'DEGREE' = the expression followed by the degree sign (40 -> 40°, x -> x°), 'NAME' = the angle written by its letters (ABC -> ∠ABC)."""
+    """A math label for a mark: 'DEGREE' = the expression followed by the degree sign (40 -> 40°, x -> x°), 'NAME' = the angle written by its letters (ABC -> ∠ABC), 'MATH' = the expression as it stands (a symbol such as theta names the angle)."""
     tokens=load()
     if label_kind=='NAME':
         if not re.fullmatch(r'[A-Z][A-Z0-9]{1,3}',text):raise ValueError('ANGLE_LABEL_NAME_INVALID')
         plain='∠'+text;markup=html.escape(plain);tex='\\angle '+text
-    elif label_kind=='DEGREE':
-        tree=Expr('degree','',(parse(text),));plain=serialize(tree,'plain');markup=serialize(tree,'svg');tex=serialize(tree,'tex')
+    elif label_kind in ('DEGREE','MATH'):
+        tree=Expr('degree','',(parse(text),)) if label_kind=='DEGREE' else parse(text)
+        plain=serialize(tree,'plain');markup=serialize(tree,'svg');tex=serialize(tree,'tex')
     else:raise ValueError('ANGLE_LABEL_KIND_INVALID')
     label={'id':label_id,'kind':'EQUATION_LABEL','target':target,'text':plain,'markup':markup,'tex':tex,'math':True,'sourceMath':text,'font':tokens['mathLabel'],'priority':0,'at':list(at),'allowSuppress':False,**extra}
     label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
