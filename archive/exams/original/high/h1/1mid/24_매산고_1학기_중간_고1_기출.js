@@ -733,7 +733,11 @@ window.questionBank = [
     "difficultyBucket": 3,
     "difficultyConfidence": "medium",
     "difficultyBoundaryFlag": "NONE",
-    "legacyLevelCompatibility": "NORMAL"
+    "legacyLevelCompatibility": "NORMAL",
+    "solutionImage": "assets/images/24_매산고_1학기_중간_고1_기출/q17-solution.svg",
+    "solutionImageAlt": "a=-1일 때 y=x^3-3x+2는 x=1에서, a=1/8일 때 y=x^3-3/4x-1/4는 x=-1/2에서 x축에 접하는 두 그래프",
+    "solutionImageCaption": "a=-1이면 (x-1)^2(x+2)=0, a=1/8이면 (x-1)(x+1/2)^2=0이므로 두 경우 모두 서로 다른 실근이 2개이고, 중근인 x=1과 x=-1/2에서 그래프가 x축에 접한다.",
+    "solutionImageSize": "large"
   },
   {
     "id": 18,
