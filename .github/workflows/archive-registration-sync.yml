@@ -26,6 +26,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  actions: write
   contents: write
 
 concurrency:
@@ -133,3 +134,54 @@ jobs:
             fi
           done
           printf '%s\n' "${changed[@]}"
+
+      - name: Persist generated registration outputs on PR branch
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PR_HEAD_REF: ${{ github.head_ref }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet origin/main...HEAD -- \
+            archive/db.js \
+            archive/exams \
+            archive/data/basic-scope-source-links.json \
+            archive/data/basic-scope-parent-groups.json \
+            archive/data/meta-foundation/runtime \
+            archive/data/meta-foundation/crosswalks/rpm-primary-v1.0 \
+            archive/data/r2e-intake; then
+            echo "No registration inputs changed; generated outputs need no PR commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- \
+            archive/db.js \
+            archive/data/question_identity_map.json \
+            archive/data/question_metadata.json \
+            archive/question-identity.js \
+            archive/question-index.js \
+            archive/question-index-report.md \
+            archive/question-index-audit.md \
+            archive/data/archive2-catalog.json \
+            archive/data/archive2-source-verification-index.json \
+            archive/data/archive2-source-verification/v1 \
+            archive/data/archive2-crosswalk-inventory.json \
+            archive/data/archive2-canonical-input-manifest.json \
+            archive/data/archive2-canonical-projection-policy.json \
+            archive/data/archive2-item-review-overrides.json \
+            archive/data/basic-scope-parent-links.json \
+            archive/data/meta-foundation/runtime
+          if git diff --cached --quiet; then
+            echo "Registration outputs already match the source PR."
+            exit 0
+          fi
+          git commit -m "chore: sync archive registration outputs"
+          git push origin "HEAD:refs/heads/${PR_HEAD_REF}"
+          curl --fail --silent --show-error --request POST \
+            --header "Authorization: Bearer ${GITHUB_TOKEN}" \
+            --header "Accept: application/vnd.github+json" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            --data "$(jq -n --arg ref "$PR_HEAD_REF" '{ref: $ref}')" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/workflows/archive-registration-sync.yml/dispatches"
