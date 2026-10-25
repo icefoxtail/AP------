@@ -411,6 +411,8 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
         line_owner=next((o for o in obstacles if label.get('lineOwned') and o.get('kind')=='line' and o.get('id')==label.get('target')),None)
         if label.get('lineOwned') and line_owner is None:raise ValueError('LINE_LABEL_OWNER_LINE_REQUIRED:'+label['id'])
         other_lines=[o for o in obstacles if line_owner is not None and o.get('kind')=='line' and o is not line_owner]
+        # leaderOwned: ids of the marks (angle arcs, highlighted arcs) a label names; beyond the near gaps a visible leader from its anchor ties it to them.
+        leader_owned_ids=set(label.get('leaderOwned',()))
         def acceptable(box,owner_check=True):
             return (safe_area.contains(box) and not any(collision(box,o) for o in occupied)
                 and (line_owner is None or not owner_check or line_label_unambiguous(box,line_owner,other_lines))
@@ -444,6 +446,25 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
                     'axis':label['tickAxis'],'value':label['tickValue']})
                 occupied.append({'id':leader_id,'kind':'leader','geometry':[list(label['at']),end]})
         else:
+            if 'wedgeSearch' in label:
+                # An angle label inside its angle: slide the box out along the bisector until it clears the marks and stays within the two rays.
+                from .publication import box_owned
+                ws=label['wedgeSearch'];vertex=ws['vertex'];radius=ws['rMin']
+                while radius<=ws.get('rFar',ws['rMax']) and chosen is None:
+                    # On the bisector first, then slid to either side of it (a segment that lies on the bisector would otherwise block every radius).
+                    for lateral in (0,w/2+6,-(w/2+6),w/2+14,-(w/2+14)):
+                        center=(vertex[0]+radius*math.cos(ws['bisector'])-lateral*math.sin(ws['bisector']),vertex[1]+radius*math.sin(ws['bisector'])+lateral*math.cos(ws['bisector']))
+                        box=Box(center[0]-w/2,center[1]-h/2,w,h)
+                        if not (acceptable(box) and box_owned({'ownerWedge':[vertex,ws['start'],ws['delta'],ws.get('rFar',ws['rMax'])+max(w,h)]},box)):continue
+                        if radius<=ws['rMax']:chosen=box;method='ANGLE_WEDGE_INSIDE';default_gaps=();break
+                        # Farther than a reader associates with the arc: a visible leader from the arc to the label.
+                        # The leader leaves the outer arc in the direction of the label (a segment lying on the bisector would block one that leaves at the bisector).
+                        phi=math.atan2(center[1]-vertex[1],center[0]-vertex[0]);start=(vertex[0]+ws['arcRadius']*math.cos(phi),vertex[1]+ws['arcRadius']*math.sin(phi))
+                        end=visible_owner_leader(start,box,occupied,leader_owned_ids)
+                        if end is not None:
+                            label={**label,'at':list(start)};tie_to_owner(end);chosen=box;default_gaps=()
+                            theta=math.degrees(ws['bisector'])%360;method='OWNER_LEADER_'+('E','SE','S','SW','W','NW','N','NE')[int(((theta+22.5)%360)//45)];break
+                    radius+=2
             if 'candidateBaselines' in label:
                 for x, y in label['candidateBaselines']:
                     box=Box(x,y-h*.8,w,h)
@@ -486,10 +507,11 @@ def layout(labels,obstacles,safe_area,panel=None,measurements=None,require_measu
             for gap in default_gaps:
                 for direction in directions:
                     box=candidate(label['at'],w,h,direction,gap)
-                    if line_owner is not None and gap>=NEAR_RELOCATION_LEADER_MIN_GAP:
-                        # Too far to read as beside its line: a visible leader from the anchor on the line ties it back; it may touch only that line.
+                    if (line_owner is not None or leader_owned_ids) and gap>=NEAR_RELOCATION_LEADER_MIN_GAP:
+                        # Too far to read as beside its line: a visible leader from the anchor on the line ties it back; it may touch only that line
+                        # (or, for a mark label, only the mark it names).
                         if not acceptable(box,owner_check=False):continue
-                        start=tuple(label['at']);end=visible_owner_leader(start,box,occupied,{line_owner['id']})
+                        start=tuple(label['at']);end=visible_owner_leader(start,box,occupied,{line_owner['id']} if line_owner is not None else leader_owned_ids)
                         if end is None:continue
                         tie_to_owner(end);chosen=box;method='OWNER_LEADER_'+direction;break
                     if not acceptable(box):continue

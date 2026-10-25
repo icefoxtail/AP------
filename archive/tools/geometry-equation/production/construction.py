@@ -6,6 +6,9 @@ import sympy as S
 import mpmath
 if S.__version__!='1.14.0' or mpmath.__version__!='1.3.0': raise ValueError('PYTHON_DEPENDENCY_VERSION_MISMATCH')
 
+PLANE_RECIPE='PLANE_FIGURE_v1'
+POLAR_DIGITS=30
+
 SIGNATURES = {
     'SOURCE_POINT': ([], 'POINT'), 'NORMALIZATION_ORIGIN': ([], 'POINT'),
     'NORMALIZATION_AXIS': ([], 'POINT'), 'MIDPOINT': (['POINT','POINT'],'POINT'),
@@ -17,6 +20,7 @@ SIGNATURES = {
     'POINT_REFLECTION': (['POINT','POINT'],'POINT'), 'LINE_REFLECTION': (['POINT','LINE'],'POINT'),
     'PERPENDICULAR_THROUGH': (['POINT','LINE'],'LINE'),
     'TRANSLATE_POINT': (['POINT'],'POINT'), 'TRANSLATE_LINE': (['LINE'],'LINE'),
+    'POLAR_POINT': (['POINT','POINT'],'POINT'),
     'CIRCLE_CENTER_RADIUS': (['POINT'],'CIRCLE'),
     'CIRCLE_THROUGH_3': (['POINT','POINT','POINT'],'CIRCLE'),
     'CIRCLE_THROUGH_POINT': (['POINT','POINT'],'CIRCLE'),
@@ -66,6 +70,41 @@ def exact(value):
         return result
     raise ValueError('UNSUPPORTED_EXACT_OUTPUT')
 
+def exact_or_decimal(value):
+    """The exact typed scalar, or - for a value without a short closed form (a point placed by a non-special angle) - a 34 digit decimal."""
+    def small(node):
+        if node['kind']=='integer':return abs(int(node['value']))<=1000000
+        if node['kind']=='rational':return abs(int(node['numerator']))<=1000000000 and int(node['denominator'])<=1000000000
+        return all(small(child) for child in node.get('args',[]))
+    try:
+        result=exact(value)
+        if len(str(result))<=480 and small(result):return result
+    except (ValueError,RecursionError):pass
+    return {'kind':'decimal','value':str(S.N(value,34))}
+
+def _rational_from_mp(x):
+    from fractions import Fraction
+    fraction=Fraction(mpmath.nstr(x,POLAR_DIGITS-8,min_fixed=-80,max_fixed=80))
+    return S.Rational(fraction.numerator,fraction.denominator)
+
+def trig_pair(angle_degrees):
+    """cos and sin of an angle in degrees: sympy radicals when they exist (multiples of 15), otherwise 22 digit rationals computed by mpmath."""
+    theta=S.pi*angle_degrees/180
+    c,s=S.cos(theta),S.sin(theta)
+    if not c.has(S.cos,S.sin) and not s.has(S.cos,S.sin):return c,s
+    mpmath.mp.dps=2*POLAR_DIGITS
+    radians=mpmath.mpf(str(S.N(theta,2*POLAR_DIGITS)))
+    return _rational_from_mp(mpmath.cos(radians)),_rational_from_mp(mpmath.sin(radians))
+
+def polar_point(center,reference,length,angle_degrees,turn):
+    """The point at distance length from center, on the ray that is the direction center->reference turned by angle_degrees (CCW or CW)."""
+    vx,vy=reference.x-center.x,reference.y-center.y
+    norm=S.sqrt(vx**2+vy**2)
+    c,s=trig_pair(angle_degrees)
+    s=s if turn=='CCW' else -s
+    ux,uy=vx/norm,vy/norm
+    return S.Point(center.x+length*(ux*c-uy*s),center.y+length*(ux*s+uy*c))
+
 def dependencies(node):
     refs=list(node['inputs'])
     if node['op']=='SELECT_POINT': refs.extend(node['branch']['refs'])
@@ -94,8 +133,9 @@ def validate(graph):
             b=node.get('branch',{})
             if set(b)!={'kind','refs','sign'} or b['kind']!='SIDE_OF_ORIENTED_LINE' or len(b['refs'])!=2 or b['sign'] not in (-1,1): raise ValueError('INVALID_BRANCH')
         elif 'branch' in node: raise ValueError('UNEXPECTED_BRANCH')
-        expected={'SOURCE_POINT':{'coordinates'},'NORMALIZATION_ORIGIN':set(),'NORMALIZATION_AXIS':{'length'},'CIRCLE_CENTER_RADIUS':{'radius'},'ANGLE_BISECTOR':{'mode'},'SOURCE_LINE':{'a','b','c'},'DIVISION_POINT':{'m','n','mode'},'TRANSLATE_POINT':{'dx','dy'},'TRANSLATE_LINE':{'dx','dy'}}.get(node['op'],set())
+        expected={'SOURCE_POINT':{'coordinates'},'NORMALIZATION_ORIGIN':set(),'NORMALIZATION_AXIS':{'length'},'CIRCLE_CENTER_RADIUS':{'radius'},'ANGLE_BISECTOR':{'mode'},'SOURCE_LINE':{'a','b','c'},'DIVISION_POINT':{'m','n','mode'},'TRANSLATE_POINT':{'dx','dy'},'TRANSLATE_LINE':{'dx','dy'},'POLAR_POINT':{'length','angleDeg','turn'}}.get(node['op'],set())
         if set(node['args'])!=expected: raise ValueError('UNSUPPORTED_NODE_ARGS')
+        if node['op']=='POLAR_POINT' and node['args']['turn'] not in ('CCW','CW'):raise ValueError('INVALID_POLAR_TURN')
         if node['op']=='DIVISION_POINT' and node['args']['mode'] not in ('INTERNAL','EXTERNAL'):raise ValueError('INVALID_DIVISION_MODE')
         if node['op']=='ANGLE_BISECTOR' and node['args']['mode'] not in ('INTERNAL','EXTERNAL'):raise ValueError('INVALID_ANGLE_BISECTOR_MODE')
         nodes[node['id']]=node
@@ -128,7 +168,13 @@ def validate(graph):
         while sorter.is_active():
             ready=sorted(sorter.get_ready());order.extend(ready);sorter.done(*ready)
     except CycleError: raise ValueError('CONSTRUCTION_CYCLE') from None
-    if any(n['op'].startswith('NORMALIZATION_') for n in nodes.values()):
+    recipe_plane=graph.get('realization',{})
+    if recipe_plane.get('recipeId')==PLANE_RECIPE:
+        # Axis-free plane figure: every point has exact (or high-precision) internal coordinates, no frame helpers, no axes drawn.
+        if recipe_plane.get('unit')!='source-length' or recipe_plane.get('reflectionEquivalent') is not False or set(recipe_plane)-{'recipeId','unit','reflectionEquivalent'}:raise ValueError('REALIZATION_RECIPE_REQUIRED')
+        if any(n['op'].startswith('NORMALIZATION_') for n in nodes.values()):raise ValueError('PLANE_FIGURE_HAS_FRAME_HELPERS')
+        if not any(n['op']=='SOURCE_POINT' for n in nodes.values()):raise ValueError('PLANE_FIGURE_SOURCE_POINT_REQUIRED')
+    elif any(n['op'].startswith('NORMALIZATION_') for n in nodes.values()):
         recipe=graph.get('realization',{})
         source_axes=recipe.get('recipeId')=='SOURCE_COORDINATE_AXES_v1' and recipe.get('unit')=='source-coordinate' and recipe.get('reflectionEquivalent') is False
         if source_axes:
@@ -152,6 +198,12 @@ def execute(graph):
             length=scalar(args['length'])
             if length.is_positive is not True: raise ValueError('INVALID_SOURCE_LENGTH')
             value=S.Point(length,0)
+        elif op=='POLAR_POINT':
+            length,angle=scalar(args['length']),scalar(args['angleDeg'])
+            if length.is_positive is not True:raise ValueError('INVALID_POLAR_LENGTH')
+            if angle.is_positive is not True or not (angle<360):raise ValueError('INVALID_POLAR_ANGLE')
+            if a[0]==a[1]:raise ValueError('DEGENERATE_POLAR_REFERENCE')
+            value=polar_point(a[0],a[1],length,angle,args['turn'])
         elif op=='MIDPOINT': value=a[0].midpoint(a[1])
         elif op=='SOURCE_LINE':
             # A line given only by its equation ax+by+c=0 (exact coefficients): two exact points on it, then the same Line as LINE_THROUGH.
@@ -249,17 +301,17 @@ def execute(graph):
         if isinstance(value,S.Point2D):
             numeric=[float(v.evalf(17)) for v in value]
             if not all(math.isfinite(v) for v in numeric): raise ValueError('NONFINITE_POINT')
-            points[key]={'exact':[exact(v) for v in value],'approximation':numeric,'precisionDigits':17}
-        elif nodes[key]['outputType']=='SCALAR':scalars[key]={'exact':exact(value),'approximation':float(value.evalf(17))}
+            points[key]={'exact':[exact_or_decimal(v) for v in value],'approximation':numeric,'precisionDigits':17}
+        elif nodes[key]['outputType']=='SCALAR':scalars[key]={'exact':exact_or_decimal(value),'approximation':float(value.evalf(17))}
         elif nodes[key]['outputType']=='LINE':
             coefficients=list(value.coefficients)
             numeric=[float(term.evalf(17)) for term in coefficients]
             if not all(math.isfinite(v) for v in numeric):raise ValueError('NONFINITE_LINE')
-            lines[key]={'exact':[exact(term) for term in coefficients],'approximation':numeric}
+            lines[key]={'exact':[exact_or_decimal(term) for term in coefficients],'approximation':numeric}
         elif nodes[key]['outputType']=='CIRCLE':
             center=value.center;radius=value.radius;numeric=[float(center.x.evalf(17)),float(center.y.evalf(17)),float(radius.evalf(17))]
             if not all(math.isfinite(v) for v in numeric):raise ValueError('NONFINITE_CIRCLE')
-            circles[key]={'centerExact':[exact(center.x),exact(center.y)],'radiusExact':exact(radius),'approximation':numeric}
+            circles[key]={'centerExact':[exact_or_decimal(center.x),exact_or_decimal(center.y)],'radiusExact':exact_or_decimal(radius),'approximation':numeric}
         elif nodes[key]['outputType']=='POINT_SET':
             if not isinstance(value,(list,tuple)):raise ValueError('INVALID_POINT_SET')
             rows=[]
@@ -267,7 +319,7 @@ def execute(graph):
                 if not isinstance(point_value,S.Point2D):raise ValueError('INVALID_POINT_SET_MEMBER')
                 numeric=[float(v.evalf(17)) for v in point_value]
                 if not all(math.isfinite(v) for v in numeric):raise ValueError('NONFINITE_POINT_SET')
-                rows.append({'exact':[exact(v) for v in point_value],'approximation':numeric})
+                rows.append({'exact':[exact_or_decimal(v) for v in point_value],'approximation':numeric})
             point_sets[key]=rows
         else:raise ValueError('UNEMITTED_NODE_OUTPUT:'+key)
     condition_rows=[]

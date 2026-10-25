@@ -19,6 +19,8 @@ export function scalar(v,depth=0) {
     if(n>1000000000n||n< -1000000000n||d>1000000000n)throw Error('UNSUPPORTED_CINDY_EXACT_RATIONAL');
     return numericEnvelope(Number(n)/Number(d));
   }
+  // A point placed by a non-special angle (POLAR_POINT) has no closed form: the model gives a 34 digit decimal.
+  if(v.kind==='decimal' && typeof v.value==='string' && /^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][-+]?[0-9]+)?$/.test(v.value))return Number(v.value);
   if(v.kind==='constant' && ['pi','e'].includes(v.name))return v.name==='pi'?Math.PI:Math.E;
   if(v.kind==='expression'){
     const a=v.args.map(x=>scalar(x,depth+1));
@@ -52,6 +54,10 @@ export function reconstruct(graph) {
       if(!/^[A-Za-z][A-Za-z0-9]{0,31}$/.test(n.id))throw Error('INVALID_NODE_NAME');
       const base={name:n.id,args:n.inputs};
       if(n.op==='SOURCE_POINT')addGeometry({...base,type:'Free',pos:n.args.coordinates.map(scalar)});
+      else if(n.op==='POLAR_POINT'){
+        // Cindy has no polar primitive: a free point pinned below from the Cindy-evaluated inputs with Math.cos/Math.sin (not the engine's mpmath).
+        addGeometry({name:n.id,type:'Free',pos:[0,0]});branchEvents.push({kind:'POLAR_POINT',node:n});
+      }
       else if(n.op==='NORMALIZATION_ORIGIN')addGeometry({...base,type:'Free',pos:[0,0]});
       else if(n.op==='NORMALIZATION_AXIS')addGeometry({...base,type:'Free',pos:[scalar(n.args.length),0]});
       else if(n.op==='MIDPOINT')addGeometry({...base,type:'Mid'});
@@ -159,6 +165,12 @@ export function reconstruct(graph) {
         if(!(m>0)||!(k>0)||!['INTERNAL','EXTERNAL'].includes(n.args.mode)||Math.hypot(b[0]-a[0],b[1]-a[1])<=1e-10||(!internal&&Math.abs(m-k)<=1e-12))throw Error('INVALID_CINDY_DIVISION');
         const denominator=internal?m+k:m-k,sign=internal?1:-1;
         geometry.find(value=>value.name===n.id).pos=[0,1].map(i=>(sign*k*a[i]+m*b[i])/denominator);
+      }else if(event.kind==='POLAR_POINT'){
+        const n=event.node,[center,reference]=n.inputs.map(point),length=scalar(n.args.length),angle=scalar(n.args.angleDeg);
+        const dx=reference[0]-center[0],dy=reference[1]-center[1],norm=Math.hypot(dx,dy);
+        if(!(length>0)||!(angle>0)||!(angle<360)||norm<=1e-10||!['CCW','CW'].includes(n.args.turn))throw Error('INVALID_CINDY_POLAR');
+        const theta=angle*Math.PI/180*(n.args.turn==='CCW'?1:-1),c=Math.cos(theta),s=Math.sin(theta),ux=dx/norm,uy=dy/norm;
+        geometry.find(value=>value.name===n.id).pos=[center[0]+length*(ux*c-uy*s),center[1]+length*(ux*s+uy*c)];
       }else if(event.kind==='ANGLE_BISECTOR'){
         const row=event,p=point(row.vertex),a=point(row.first),b=point(row.last),u=[a[0]-p[0],a[1]-p[1]],v=[b[0]-p[0],b[1]-p[1]],nu=Math.hypot(...u),nv=Math.hypot(...v);
         if(nu<=1e-10||nv<=1e-10)throw Error('DEGENERATE_CINDY_ANGLE_RAY');

@@ -1,6 +1,8 @@
 """Pure STANDARD builder and candidate-only CLI orchestration."""
 import argparse
 import hashlib
+import html
+import re
 import json
 import math
 import xml.etree.ElementTree as ET
@@ -18,7 +20,7 @@ def _exact_float(text):
 from .viewport import for_spec
 from .function_sampling import sample
 from .math_expression import Expr,parse,serialize,evaluate,exact_coordinate
-from .label_layout import Box,layout,approximate_size
+from .label_layout import Box,layout,approximate_size,DIRECTIONS
 from .svg_composer import compose
 from .style_tokens import load
 from .config import resolve_output
@@ -27,6 +29,19 @@ ROOT=Path(__file__).resolve().parents[4]
 
 def canonical(value):return json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':'),allow_nan=False)
 def sha(value):return hashlib.sha256(value.encode('utf-8')).hexdigest()
+
+def mark_label(label_id,target,text,label_kind,at,extra):
+    """A math label for a mark: 'DEGREE' = the expression followed by the degree sign (40 -> 40°, x -> x°), 'NAME' = the angle written by its letters (ABC -> ∠ABC)."""
+    tokens=load()
+    if label_kind=='NAME':
+        if not re.fullmatch(r'[A-Z][A-Z0-9]{1,3}',text):raise ValueError('ANGLE_LABEL_NAME_INVALID')
+        plain='∠'+text;markup=html.escape(plain);tex='\\angle '+text
+    elif label_kind=='DEGREE':
+        tree=Expr('degree','',(parse(text),));plain=serialize(tree,'plain');markup=serialize(tree,'svg');tex=serialize(tree,'tex')
+    else:raise ValueError('ANGLE_LABEL_KIND_INVALID')
+    label={'id':label_id,'kind':'EQUATION_LABEL','target':target,'text':plain,'markup':markup,'tex':tex,'math':True,'sourceMath':text,'font':tokens['mathLabel'],'priority':0,'at':list(at),'allowSuppress':False,**extra}
+    label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
+    return label
 
 def prepare(spec):
     semantic=validate(spec);spec=semantic['spec'];geometry=semantic['geometry'];tokens=load();critical=[]
@@ -230,6 +245,8 @@ def prepare(spec):
                 primitive({'id':'trig-'+pole['id'],'kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'trig-pole','dash':'5 4','poleSide':pole['side']},'line')
             reference=trig_features['referencePoint'];at=vp.screen((float(Fraction(reference['xPiMultiple']))*math.pi,float(Fraction(reference['y']))))
             primitive({'id':'trig-reference-point','kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'trig-reference','fill':'#111'},'circle')
+    point_marks=[vp.screen(geometry[v['id']]) for v in spec['objects'] if v['kind']=='POINT']
+    mark_spots=[]   # where equal ticks / parallel arrows already stand: a second mark on the same segment keeps clear of the first
     by_id={v['id']:v for v in spec['objects']}
     tangent_lines={v['refs'][0] for v in spec['objects'] if v['kind']=='TANGENT'}
     # Drawn lines ax+by+c=0, for SEGMENTs that lie on one (they would vanish under the heavier line stroke).
@@ -254,14 +271,34 @@ def prepare(spec):
                 elif show_y and abs(a[0]-origin[0])<=.5 and abs(b[0]-origin[0])<=.5:overlap='y'
                 # The same for a SEGMENT on a drawn line (both ends within 0.5 screen px of it): heavier and above the line.
                 elif any(math.hypot(l[0],l[1])>0 and all(abs(l[0]*p[0]+l[1]*p[1]+l[2])/math.hypot(l[0],l[1])*vp.sx<=.5 for p in value) for _,l in drawn_lines):overlap='line'
-            primitive({'id':oid,'kind':'line','from':a,'to':b,'token':'leaderLine' if kind=='LEADER_LINE' else 'axisOverlapShape' if overlap else 'secondaryShape','layer':80 if kind=='LEADER_LINE' else 45 if overlap=='line' else 35 if overlap else 30,'role':'leader' if kind=='LEADER_LINE' else 'line',**({'axisOverlap':overlap} if overlap else {})},'leader' if kind=='LEADER_LINE' else 'line')
+            primitive({'id':oid,'kind':'line','from':a,'to':b,'token':'leaderLine' if kind=='LEADER_LINE' else 'axisOverlapShape' if overlap else 'secondaryShape','layer':80 if kind=='LEADER_LINE' else 45 if overlap=='line' else 35 if overlap else 30,'role':'leader' if kind=='LEADER_LINE' else 'line',**({'axisOverlap':overlap} if overlap else {}),**({'dash':'6 4'} if kind=='SEGMENT' and obj.get('dash') else {})},'leader' if kind=='LEADER_LINE' else 'line')
+            if kind=='SEGMENT' and obj.get('arrow'):
+                # A ray / extension: arrowheads whose tips stand exactly on the segment's end points (START = the first point, END = the second).
+                if obj['arrow'] not in {'START','END','BOTH'}:raise ValueError('INVALID_SEGMENT_ARROW')
+                length=math.dist(a,b)
+                if length<=24:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
+                for end,(tip,back) in {'START':(a,b),'END':(b,a)}.items():
+                    if obj['arrow']!='BOTH' and obj['arrow']!=end:continue
+                    ux,uy=(tip[0]-back[0])/length,(tip[1]-back[1])/length
+                    base=(tip[0]-ux*10,tip[1]-uy*10)
+                    primitive({'id':oid+'-arrow-'+end.lower(),'kind':'polygon','points':[tip,(base[0]-uy*3.6,base[1]+ux*3.6),(base[0]+uy*3.6,base[1]-ux*3.6)],'token':'indicator','layer':62,'role':'indicator','fill':'#111','mark':'arrow','markId':oid,'markEnd':end},'curve')
         elif kind=='CIRCLE':
             primitive({'id':oid,'kind':'circle','at':vp.screen(value.center),'radius':value.radius*vp.sx,'token':'mainShape','layer':40,'role':'circle'},'circle')
         elif kind=='CIRCULAR_ARC':
             primitive({'id':oid,'kind':'polyline','points':[vp.screen(p) for p in value.sample_points()],
-                       'token':'mainShape','layer':40,'role':'circularArc',
+                       'token':'axisOverlapShape' if obj.get('highlight') else 'mainShape','layer':46 if obj.get('highlight') else 40,'role':'circularArc',
                        'ownerPoints':[obj['startPoint'],obj['endPoint']],
-                       'centerPoint':obj['centerPoint'],'ownerRadius':value.radius,'sweep':value.sweep},'curve')
+                       'centerPoint':obj['centerPoint'],'ownerRadius':value.radius,'sweep':value.sweep,
+                       **({'mark':'arc','markId':oid} if obj.get('highlight') else {})},'curve')
+            if obj.get('labelText') is not None:
+                middle=value.start_angle+value.sweep_radians/2;outward=vp.screen((value.center[0]+value.radius*math.cos(middle),value.center[1]+value.radius*math.sin(middle)))
+                centre=vp.screen(value.center);ox,oy=outward[0]-centre[0],outward[1]-centre[1];norm=math.hypot(ox,oy)
+                # Only directions that point away from the circle's centre: the label names the arc from outside.
+                def alignment(direction):
+                    dx=1 if 'E' in direction else -1 if 'W' in direction else 0;dy=1 if 'S' in direction else -1 if 'N' in direction else 0
+                    return -(dx*ox+dy*oy)/(norm*math.hypot(dx,dy))
+                directions=sorted(DIRECTIONS,key=alignment)
+                labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),outward,{'directions':tuple(directions[:5]),'gaps':(14,24,32,48),'leaderOwned':[oid]}))
         elif kind=='FUNCTION_GRAPH':
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
             sampling.append({'id':oid,**{k:v for k,v in result.items() if k!='branches'}})
@@ -281,12 +318,46 @@ def prepare(spec):
         elif kind=='ANGLE_MARK':
             if not vp.equal:raise ValueError('ANGLE_REQUIRES_EQUAL_UNITS')
             a,v,b=(vp.screen(geometry[r]) for r in obj['refs']);start=math.atan2(a[1]-v[1],a[0]-v[0]);end=math.atan2(b[1]-v[1],b[0]-v[0]);delta=(end-start+math.pi)%(2*math.pi)-math.pi
+            if obj.get('outer') is True:delta=delta-2*math.pi if delta>0 else delta+2*math.pi
             pts=[(v[0]+tokens['angleArcRadius']*math.cos(start+delta*i/32),v[1]+tokens['angleArcRadius']*math.sin(start+delta*i/32)) for i in range(33)]
             if oid in spec['displayFacts'].get('squareAngleIds',[]):
                 if abs(obj['value']-90)>1e-9:raise ValueError('SQUARE_REQUIRES_RIGHT_ANGLE')
                 size=tokens['rightAngleSize'];u=[(a[i]-v[i])/math.dist(a,v)*size for i in range(2)];w=[(b[i]-v[i])/math.dist(b,v)*size for i in range(2)]
                 pts=[(v[0]+u[0],v[1]+u[1]),(v[0]+u[0]+w[0],v[1]+u[1]+w[1]),(v[0]+w[0],v[1]+w[1])]
+            elif obj.get('arcs') is not None:
+                # Textbook angle arcs: 1-3 concentric arcs (equal angles share the count) around the vertex, from one ray to the other.
+                count=obj['arcs'];rays=min(math.dist(a,v),math.dist(b,v))
+                if isinstance(count,bool) or not isinstance(count,int) or not 1<=count<=3:raise ValueError('ANGLE_ARC_COUNT_INVALID')
+                ring=obj.get('ring',1);first=min(28.0,max(16.0,.25*rays))+9.0*(ring-1)
+                if rays<first+4.5*(count-1)+8:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+oid)
+                steps=max(16,math.ceil(abs(math.degrees(delta))/4));outer_radius=first+4.5*(count-1)
+                for k in range(count):
+                    radius=first+4.5*k
+                    primitive({'id':oid+'-arc-'+str(k+1),'kind':'polyline','points':[(v[0]+radius*math.cos(start+delta*i/steps),v[1]+radius*math.sin(start+delta*i/steps)) for i in range(steps+1)],'token':'secondaryShape','layer':60,'role':'indicator','ownerPoints':obj['refs'],'mark':'angle','markId':oid,'markIndex':k+1,'markCount':count,'markSide':'OUTER' if obj.get('outer') is True else 'INNER'},'curve')
+                if obj.get('labelText') is not None:
+                    middle=start+delta/2;anchor=(v[0]+outer_radius*math.cos(middle),v[1]+outer_radius*math.sin(middle))
+                    labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),anchor,{'wedgeSearch':{'vertex':list(v),'bisector':middle,'start':start,'delta':delta,'rMin':outer_radius+4.0,'rMax':max(outer_radius+12.0,min(outer_radius+44.0,.9*rays)),'rFar':max(outer_radius+12.0,.92*rays),'arcRadius':outer_radius},'gaps':(24,32,48,64),'leaderOwned':[oid+'-arc-'+str(k+1) for k in range(count)]}))
+                continue
             primitive({'id':oid,'kind':'polyline','points':pts,'token':'indicator','layer':60,'role':'indicator'},'curve')
+        elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
+            ends=[(vp.screen(geometry[r][0]),vp.screen(geometry[r][1])) for r in obj['refs']];count=obj['count']
+            reference=(ends[0][1][0]-ends[0][0][0],ends[0][1][1]-ends[0][0][1])
+            for ref,(p,q) in zip(obj['refs'],ends):
+                length=math.dist(p,q)
+                if length<30+6*count:raise ValueError('MARK_SEGMENT_TOO_SHORT:'+ref)
+                d=((q[0]-p[0])/length,(q[1]-p[1])/length);n=(-d[1],d[0])
+                # The marks sit at the middle of the segment, or at the nearest of a few other places that keeps clear of any displayed point (a midpoint M, a foot H).
+                spots=[.5,.3,.7,.2,.8];room=lambda t:min([math.dist((p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t),at) for at in [*point_marks,*mark_spots] if math.dist(at,p)>1e-6 and math.dist(at,q)>1e-6]+[1e9])
+                spot=next((t for t in spots if room(t)>=10*count+12),max(spots,key=room))
+                mid=(p[0]+(q[0]-p[0])*spot,p[1]+(q[1]-p[1])*spot);mark_spots.append(mid)
+                if kind=='PARALLEL_MARK' and d[0]*reference[0]+d[1]*reference[1]<0:d=(-d[0],-d[1]);n=(-d[1],d[0])
+                for i in range(count):
+                    shift=(i-(count-1)/2)*(5 if kind=='EQUAL_MARK' else 6);c=(mid[0]+d[0]*shift,mid[1]+d[1]*shift)
+                    if kind=='EQUAL_MARK':
+                        primitive({'id':oid+'-'+ref+'-'+str(i+1),'kind':'line','from':(c[0]-n[0]*5.5,c[1]-n[1]*5.5),'to':(c[0]+n[0]*5.5,c[1]+n[1]*5.5),'token':'secondaryShape','layer':55,'role':'indicator','mark':'equal','markId':oid,'markSegment':ref,'markIndex':i+1,'markCount':count},'curve')
+                    else:
+                        tip=(c[0]+d[0]*3.5,c[1]+d[1]*3.5);back=(c[0]-d[0]*3.5,c[1]-d[1]*3.5)
+                        primitive({'id':oid+'-'+ref+'-'+str(i+1),'kind':'polyline','points':[(back[0]+n[0]*4.5,back[1]+n[1]*4.5),tip,(back[0]-n[0]*4.5,back[1]-n[1]*4.5)],'token':'secondaryShape','layer':55,'role':'indicator','mark':'parallel','markId':oid,'markSegment':ref,'markIndex':i+1,'markCount':count},'curve')
         elif kind in {'POINT_NAME','COORDINATE_LABEL','EQUATION_LABEL','GRAPH_ANNOTATION','CONDITION_BOX','LENGTH_LABEL'}:
             label={**obj,'font':tokens['pointName'] if kind=='POINT_NAME' else tokens['coordinateLabel'] if kind=='COORDINATE_LABEL' else tokens['conditionBox'] if kind=='CONDITION_BOX' else tokens['mathLabel'],'priority':obj.get('priority',1 if kind in {'POINT_NAME','CONDITION_BOX'} else 2)}
             label['at']=vp.screen(geometry[obj['target']]) if kind in {'POINT_NAME','COORDINATE_LABEL'} else vp.screen(obj['at'])

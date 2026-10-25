@@ -8,12 +8,12 @@ from .geometry_model import (Line,Circle,CircularArc,point,finite,line_intersect
 
 KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRCULAR_ARC',
     'FUNCTION_GRAPH','INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR',
-    'PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUATION_LABEL',
+    'PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUATION_LABEL','EQUAL_MARK','PARALLEL_MARK',
     'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
-RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL'}
-FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt'}
-REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'}}
+RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUAL_MARK','PARALLEL_MARK'}
+FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned'}
+REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'}}
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
@@ -137,8 +137,23 @@ def validate(spec):
                 u=(a[0]-v[0],a[1]-v[1]); w=(b[0]-v[0],b[1]-v[1])
                 if math.hypot(*u)==0 or math.hypot(*w)==0: raise ValueError('DEGENERATE_ANGLE')
                 observed=math.degrees(math.acos(max(-1,min(1,(u[0]*w[0]+u[1]*w[1])/(math.hypot(*u)*math.hypot(*w))))))
+                if obj.get('outer') is True:observed=360-observed
                 ok=parity(observed,finite(obj['value']))
+            elif kind in {'EQUAL_MARK','PARALLEL_MARK'}:
+                if len(refs)<2 or len(set(refs))!=len(refs) or any(objects[r]['kind']!='SEGMENT' for r in refs):raise ValueError('SEGMENT_REFS_REQUIRED')
+                if isinstance(obj.get('count'),bool) or not isinstance(obj.get('count'),int) or not 1<=obj['count']<=(3 if kind=='EQUAL_MARK' else 2):raise ValueError('MARK_COUNT_INVALID')
+                if kind=='EQUAL_MARK':
+                    lengths=[math.dist(*geometry[r]) for r in refs];observed=lengths
+                    ok=all(abs(length-lengths[0])<=1e-6*max(1,lengths[0]) for length in lengths)
+                    if not ok:raise ValueError('EQUAL_MARK_LENGTH_MISMATCH:'+obj['id'])
+                else:
+                    def unit(r):
+                        p,q=geometry[r];n=math.dist(p,q);return ((q[0]-p[0])/n,(q[1]-p[1])/n)
+                    units=[unit(r) for r in refs];observed=[abs(u[0]*units[0][1]-u[1]*units[0][0]) for u in units]
+                    ok=all(value<=math.sin(math.radians(0.5)) for value in observed)
+                    if not ok:raise ValueError('PARALLEL_MARK_NOT_PARALLEL:'+obj['id'])
         except (KeyError,TypeError,ValueError) as exc:
+            if str(exc).startswith(('EQUAL_MARK_LENGTH_MISMATCH','PARALLEL_MARK_NOT_PARALLEL')):raise
             raise ValueError('UNVERIFIED_SEMANTIC_MARK:'+obj['id']) from exc
         if not ok: raise ValueError('UNVERIFIED_SEMANTIC_MARK:'+obj['id'])
         relations.append({'id':obj['id'],'kind':kind,'status':'PASS','observed':observed})
