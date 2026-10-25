@@ -50,8 +50,8 @@ test('reflected shifted general sqrt writes domain/range labels and exact key-po
   const domain=spec.objects.find(object=>object.id==='sqrt-domain-label');
   const range=spec.objects.find(object=>object.id==='sqrt-range-label');
   assert.ok(domain&&domain.math);
-  assert.match(domain.text,/2\\le x/);
-  assert.match(range.text,/y\\le 3/);
+  assert.match(domain.text,/2<=x/);
+  assert.match(range.text,/y<=3/);
   const marker=spec.objects.find(object=>object.id==='required-point-1');
   const coordinate=spec.objects.find(object=>object.id==='required-point-1-coordinates');
   assert.deepEqual(marker.at,[4,1]);

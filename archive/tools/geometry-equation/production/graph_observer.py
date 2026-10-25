@@ -1824,21 +1824,34 @@ def audit(plan,svg,transform):
         for (a,ya),(b,yb) in zip(points,points[1:]):
             if a==b and ya==yb:continue  # identical SVG-quantized vertex, no segment
             if not a<b: errors.append('NONMONOTONE_SEGMENT');continue
-            if any(a<r<b for r in topology['holes']+topology['poles']+topology['boundary']):errors.append('DOMAIN_CROSSING');continue
+            if any(a<r<b for r in topology['holes']+topology['poles']):errors.append('DOMAIN_CROSSING');continue
+            # A sqrt branch can END exactly on its radicand boundary: the SVG-quantized last vertex may sit a hair beyond it,
+            # so the boundary check uses the same sub-pixel tolerance as the corner check (the family audit still verifies
+            # independently that no point lies beyond the boundary).
+            if any(a<r-corner_x_tolerance and b>r+corner_x_tolerance for r in topology['boundary']):errors.append('DOMAIN_CROSSING');continue
             if any(a<r-corner_x_tolerance and b>r+corner_x_tolerance for r in topology.get('corners',[])):errors.append('DOMAIN_CROSSING');continue
             if abs(ya)<1e-9:observed_roots.append(a)
             if abs(yb)<1e-9:observed_roots.append(b)
             if ya*yb<0:observed_roots.append(a+(b-a)*(-ya)/(yb-ya))
             try:
-                fa,fb=float(evaluate(a)),float(evaluate(b));vertex=max(abs(ya-fa),abs(yb-fb))*scale
+                # A sqrt branch endpoint sits exactly on its radicand boundary; the SVG-quantized vertex can land a
+                # floating-point hair outside it, which would make the exact evaluation sqrt(negative). Clamp only that
+                # sub-pixel overshoot (the family audit independently rejects any real point beyond the boundary).
+                evaluate_a,evaluate_b=a,b
+                if plan['family']=='sqrt-affine' and plan.get('overviewPolicy')==SQRT_AFFINE_GENERAL_POLICY:
+                    _,g_slope,_,_,_,_,g_root=_sqrt_general_fields(plan)
+                    root_float=float(g_root)
+                    if g_slope>0:evaluate_a,evaluate_b=max(a,root_float),max(b,root_float)
+                    else:evaluate_a,evaluate_b=min(a,root_float),min(b,root_float)
+                fa,fb=float(evaluate(evaluate_a)),float(evaluate(evaluate_b));vertex=max(abs(ya-fa),abs(yb-fb))*scale
                 if plan['family']=='sqrt-affine':
                     if plan.get('overviewPolicy')==SQRT_AFFINE_GENERAL_POLICY:
                         g_constant,g_slope,g_amplitude,g_sign,g_offset,g_scale,g_root=_sqrt_general_fields(plan)
                         c_float,b_float,scale_float=float(g_constant),float(g_slope),float(g_scale)
                     else:c_float,b_float,scale_float=float(poly.nth(0)),float(poly.nth(1)),1.0
-                    m=(fb-fa)/(b-a);t=(scale_float*b_float/(2*m))**2 if m and b_float else 0
-                    at=(t-c_float)/b_float if b_float else a;at=max(a,min(b,at))
-                    bound=abs(float(evaluate(at))-(fa+m*(at-a)))*scale
+                    m=(fb-fa)/(evaluate_b-evaluate_a);t=(scale_float*b_float/(2*m))**2 if m and b_float else 0
+                    at=(t-c_float)/b_float if b_float else evaluate_a;at=max(evaluate_a,min(evaluate_b,at))
+                    bound=abs(float(evaluate(at))-(fa+m*(at-evaluate_a)))*scale
                 elif plan['family']=='absolute-value':
                     bound=0.0
                 else:

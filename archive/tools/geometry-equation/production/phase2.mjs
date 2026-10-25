@@ -375,13 +375,12 @@ export function specFor(plan,model,id){
       const boundaryStep=(1.2/(plotSy*Math.sqrt(slope)))**2;
       if(Math.abs(start-boundary)<1e-10&&boundary+boundaryStep<p.domain[1])criticalX.push(boundary+boundaryStep);
     }
-    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX},{id:'formula',kind:'EQUATION_LABEL',text:'y='+formulaText,at:[v[0]+(v[1]-v[0])*.22,v[3]-(v[3]-v[2])*.12],priority:0}];
+    const objects=[{id:'f',kind:'FUNCTION_GRAPH',expression,domain:p.domain,criticalX},{id:'formula',kind:'EQUATION_LABEL',text:'y='+formulaText,at:[v[0]+(v[1]-v[0])*(general?.72:.22),v[3]-(v[3]-v[2])*.12],priority:0}];
     if(features.sourceEndpoints.length>1){const end=features.sourceEndpoints[features.sourceEndpoints.length-1];objects.push({id:'sqrt-source-end-label',kind:'GRAPH_ANNOTATION',text:'x='+end.x,at:[number(end.x)-(v[1]-v[0])*.08,end.y+(v[3]-v[2])*.08],math:true,priority:0});}
     if(general&&p.domainRangeLabels===true){
-      const tex=text=>String(text).replace(/sqrt\(([^()]*)\)/g,'\\sqrt{$1}').replace(/(\d+)\/(\d+)/g,'\\frac{$1}{$2}');
-      const endpoint=features.endpoint,spanX=v[1]-v[0],spanY=v[3]-v[2];
-      const domainText=features.sourceDomainMode==='CLOSED_INTERVAL'?tex(features.sourceEndpoints[0].x)+'\\le x\\le '+tex(features.sourceEndpoints[1].x):(features.branchDirection==='RIGHT'?tex(endpoint.x)+'\\le x':'x\\le '+tex(endpoint.x));
-      const rangeText=features.rangeDirection==='ABOVE'?'y\\ge '+tex(endpoint.y):'y\\le '+tex(endpoint.y);
+      const text=value=>String(value),endpoint=features.endpoint,spanX=v[1]-v[0],spanY=v[3]-v[2];
+      const domainText=features.sourceDomainMode==='CLOSED_INTERVAL'?text(features.sourceEndpoints[0].x)+'<=x<='+text(features.sourceEndpoints[1].x):(features.branchDirection==='RIGHT'?text(endpoint.x)+'<=x':'x<='+text(endpoint.x));
+      const rangeText=features.rangeDirection==='ABOVE'?'y>='+text(endpoint.y):'y<='+text(endpoint.y);
       objects.push({id:'sqrt-domain-label',kind:'GRAPH_ANNOTATION',text:domainText,at:[v[0]+spanX*.06,v[3]-spanY*.21],math:true,priority:0});
       objects.push({id:'sqrt-range-label',kind:'GRAPH_ANNOTATION',text:rangeText,at:[v[0]+spanX*.06,v[3]-spanY*.30],math:true,priority:0});
     }
@@ -400,7 +399,7 @@ export function specFor(plan,model,id){
         if(coordinates)objects.push({id:markerId+'-coordinates',kind:'COORDINATE_LABEL',target:markerId,exact:coordinates});
       }
     }
-    return {id,visualType:'function_graph',viewport:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:384,height:320,panel:140},axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{sqrtFeatures:features,sqrtFeaturePolicy:p.sqrtFeaturePolicy},objects};
+    return {id,visualType:'function_graph',viewport:{xMin:v[0],xMax:v[1],yMin:v[2],yMax:v[3],width:general?610:384,height:320,panel:140},axes:{x:showX,y:showY},title:plan.caption,sourceFacts:{},derivedFacts:{},displayFacts:{sqrtFeatures:features,sqrtFeaturePolicy:p.sqrtFeaturePolicy,...(general?axisTickDisplayFacts(p):{})},objects};
   }
   if(plan.capability==='rational-spike-v1'){
     const p=plan.graphPlan,v=p.viewport,features=p.rationalFeatures;
