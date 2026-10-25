@@ -67,6 +67,14 @@ class Framing(unittest.TestCase):
             self.assertAlmostEqual(point['x'],want[0],9,plan['family'])
             self.assertAlmostEqual(point['y'],want[1],8,plan['family'])
 
+    def test_overlay_points_widen_the_frame_within_the_declared_interval(self):
+        plan=copy.deepcopy(QUADRATIC);plan['domain']=[-3,8];plan['viewport']=[-3,8,-2,60]
+        plan['overlays']={'points':[{'id':'B','curveX':'7'}]}
+        framed=fitted(plan)
+        self.assertLessEqual(framed['domain'][0],7.0);self.assertLessEqual(framed['domain'][1],8.0);self.assertGreaterEqual(framed['domain'][1],7.0)
+        point=next(item for item in framed['overlaysFeatures']['points'] if item['id']=='B')
+        self.assertEqual((point['x'],point['y']),(7.0,48.0))
+
     def test_overlay_claims_fail_closed(self):
         cases=[]
         plan=copy.deepcopy(QUADRATIC);plan['overlays']['points'][0]['curveX']='9';cases.append((plan,'OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN:P'))

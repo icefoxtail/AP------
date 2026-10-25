@@ -60,7 +60,8 @@ def _fit_cubic_quartic(plan,coefficients):
         if abs(expected-float(point['y']))>1e-8:raise ValueError('REQUIRED_GRAPH_POINT_NOT_ON_CURVE')
         required_x.append(float(point['x']));required_y.append(float(point['y']))
     feature_x=[row['x'] for row in math_features]
-    coordinates=[0.0,*feature_x,*required_x]
+    anchor_points=plan.get('overlayAnchors',[])
+    coordinates=[0.0,*feature_x,*required_x,*[x for x,_ in anchor_points]]
     feature_extent=max(abs(value) for value in coordinates)
     leading=abs(float(coefficients[-1]))
     if not math.isfinite(leading) or leading<=0:raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_LEADING_COEFFICIENT')
@@ -77,18 +78,15 @@ def _fit_cubic_quartic(plan,coefficients):
     # sit close to one tail boundary (for example x^4-x has its right root at
     # x=1); reserve common display-only room beyond the outer feature so unit
     # ticks remain distinct from both the frame edge and the curve.
-    if degree==4:
-        tail_margin=max(.4,feature_extent*.25)
-        lo=min(-radius,min(coordinates)-tail_margin)
-        hi=max(radius,max(coordinates)+tail_margin)
-    else:
-        lo,hi=-radius,radius
+    tail_margin=max(.4,feature_extent*.25)
+    lo=min(-radius,min(coordinates)-tail_margin)
+    hi=max(radius,max(coordinates)+tail_margin)
     if not all(math.isfinite(v) and abs(v)<=1e6 for v in (lo,hi)):raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_NUMERIC_SCOPE')
     def evaluate(value):
         result=float(polynomial.eval(S.Rational(str(value))))
         if not math.isfinite(result) or abs(result)>1e12:raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_NUMERIC_SCOPE')
         return result
-    values=[evaluate(lo),evaluate(hi),0.0,*[row['y'] for row in math_features],*required_y]
+    values=[evaluate(lo),evaluate(hi),0.0,*[row['y'] for row in math_features],*required_y,*[y for _,y in anchor_points]]
     low,high=min(values),max(values);span=max(1.0,high-low,abs(low),abs(high));padding=.15*span
     ymin=min(0.0,low)-padding;ymax=max(0.0,high)+padding
     sign=1 if polynomial.LC()>0 else -1
@@ -145,11 +143,14 @@ def _fit_overview_family(plan):
     # potentially source-restricted domain to make a prettier picture.
     lo,hi=plan['domain']
     if not lo<hf<hi or min(hf-lo,hi-hf)<natural:raise ValueError('OVERVIEW_DRAW_INTERVAL_TOO_NARROW_REVIEW_DOMAIN')
-    radius=min(hf-lo,hi-hf)/1.15
     if any(not lo<=p['x']<=hi for p in required):raise ValueError('REQUIRED_FEATURE_OUTSIDE_REVIEWED_DRAW_INTERVAL')
+    anchors=plan.get('overlayAnchors',[])
+    if anchors:
+        lo=min(lo,min(x for x,_ in anchors)-.5);hi=max(hi,max(x for x,_ in anchors)+.5)
+    radius=min(hf-lo,hi-hf)/1.15
     # The curve is drawn over [lo,hi], so its height there decides the frame (radius alone left the drawn ends above ymax).
     span=max(hf-lo,hi-hf)
-    rise=max([abs(af)*span*span]+[1.15*abs(p['y']-kf) for p in required+line_points])
+    rise=max([abs(af)*span*span]+[1.15*abs(p['y']-kf) for p in required+line_points]+[1.15*abs(y-kf) for _,y in anchors])
     ymin=min(0,kf-.15*rise) if af>0 else min(0,kf-1.15*rise)
     ymax=max(0,kf+1.15*rise) if af>0 else max(0,kf+.15*rise)
     xpad=(hi-lo)*.1 if required or line_points else 0
@@ -207,7 +208,7 @@ def _fit_quadratic_equal_unit(plan,hf,kf,af,natural,required,line_points):
     """All reals: the vertex, the natural arms (half-span 2/sqrt|a|, rise 4), the key and line points and the origin, at one scale; the curve
     runs to just inside the top (or bottom) edge."""
     rise=4 if af>0 else -4
-    points=[(0.0,0.0),(hf,kf),(hf-natural,kf+rise),(hf+natural,kf+rise)]+[(p['x'],p['y']) for p in required+line_points]
+    points=[(0.0,0.0),(hf,kf),(hf-natural,kf+rise),(hf+natural,kf+rise)]+[(p['x'],p['y']) for p in required+line_points]+[(x,y) for x,y in plan.get('overlayAnchors',[])]
     limit=plot_height_limit(plan)
     for ratio in axis_ratios(plan,points,limit):
         viewport,height,scale=equal_unit_frame(points,limit,ratio)
@@ -275,6 +276,7 @@ def _fit_quadratic_interval(plan,c,source_domain,required,line_points):
     xs=[float(lo),float(hi)]+([float(h)] if lo<h<hi else [])
     points=[(0.0,0.0)]+list(zip(xs,[float(v) for v in values]))+[(p['x'],p['y']) for p in required+line_points]
     application=plan.get('applicationAxes')
+    if not application:points=points+[(x,y) for x,y in plan.get('overlayAnchors',[])]
     if application not in (None,True):raise ValueError('INVALID_APPLICATION_AXES')
     if application:
         if plan.get('axisSqueeze') is not None or plan.get('plotCanvas') is not None:raise ValueError('INVALID_APPLICATION_AXES')
@@ -343,14 +345,15 @@ def _fit_rational_overview(plan):
     # overview. A very wide all-real display compresses the y-axis tick column
     # against both the nearby branch and the pole cue without adding useful
     # information about the source function.
-    radius=max(6.0,abs(singularity_x)*1.25+.5,abs(root_x-singularity_x)*1.2+1.0,*[abs(px-singularity_x)*1.2 for px in required_x])
+    anchors=plan.get('overlayAnchors',[])
+    radius=max(6.0,abs(singularity_x)*1.25+.5,abs(root_x-singularity_x)*1.2+1.0,*[abs(px-singularity_x)*1.2 for px in required_x],*[abs(ax-singularity_x)*1.2 for ax,_ in anchors])
     lo,hi=singularity_x-radius,singularity_x+radius
     def evaluate_exact(x_value):
         exact_x=Fraction(str(x_value));den=numerator[0]*0+denominator[0]+denominator[1]*exact_x
         if den==0:raise ValueError('RATIONAL_FRAME_ENDPOINT_IS_SINGULAR')
         return float((numerator[0]+numerator[1]*exact_x)/den)
     endpoint_values=[evaluate_exact(lo),evaluate_exact(hi)]
-    key_values=[0.0,float(horizontal),*required_y]
+    key_values=[0.0,float(horizontal),*required_y,*[y for _,y in anchors]]
     if x_intercept is not None:key_values.append(0.0)
     if is_hole:key_values.append(float(singularity['y']))
     low=min([*endpoint_values,*key_values]);high=max([*endpoint_values,*key_values])
@@ -903,7 +906,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
@@ -1405,6 +1408,7 @@ def fit_piecewise_polynomial(plan):
     key+=[(0.0,pp_exact_float(row['intercept'] if 'slope' in row else row['y'])) for row in crossings if not row['points']]
     key+=[(point['xValue'],point['yValue']) for row in curve_crossings for point in row['points']]
     key+=[(float(row['vertex'][0]),float(row['vertex'][1])) for row in refs if row.get('vertex')]
+    key+=[(x,y) for x,y in plan.get('overlayAnchors',[])]
     # A piecewise reference curve also contributes its own corners, in-piece vertices and its domain ends (drawn as hollow/filled dots).
     for row in refs:
         if row['kind']!='piecewise':continue
@@ -1737,11 +1741,59 @@ def _overlay_features(plan):
         polygons.append({'id':ident,'points':refs,'fill':fill})
     return {'schemaVersion':'GRAPH_OVERLAYS_FEATURES_v1','points':points,'lines':lines,'segments':segments,'guides':guides,'polygons':polygons}
 
+def _overlay_anchor_points(plan):
+    """Best-effort exact coordinates of every declared overlay point, computed before framing so the family framer can put the whole
+    declared overlay inside its window (a point in the source domain still needs the frame to reach it). Validation is not done here:
+    _overlay_features remains the single authority after framing, so a bad entry still gets its own explicit error code."""
+    raw=plan.get('overlays')
+    if not isinstance(raw,dict):return []
+    lines={}
+    for entry in raw.get('lines') or []:
+        if not isinstance(entry,dict):continue
+        try:
+            if 'x' in entry:lines[entry.get('id')]=('V',_overlay_exact(entry['x'],'line'))
+            elif 'slope' in entry and 'intercept' in entry:lines[entry.get('id')]=('L',(_overlay_exact(entry['slope'],'line'),_overlay_exact(entry['intercept'],'line')))
+        except (ValueError,TypeError):continue
+    viewport=plan.get('viewport');domain=plan.get('domain');anchors=[]
+    for entry in raw.get('points') or []:
+        if not isinstance(entry,dict):continue
+        try:
+            on_curve=False
+            if 'curveX' in entry:
+                x=_overlay_exact(entry['curveX'],'point');y=_overlay_curve_exact(plan,x,entry.get('curve'));on_curve=True
+            elif 'intersect' in entry:
+                pair=entry['intersect'];first=lines.get(pair[0]);second=lines.get(pair[1])
+                if first is None or second is None:continue
+                if first[0]=='V' and second[0]=='V':continue
+                if first[0]=='V':x=first[1];y=second[1][0]*x+second[1][1]
+                elif second[0]=='V':x=second[1];y=first[1][0]*x+first[1][1]
+                else:
+                    m1,q1=first[1];m2,q2=second[1]
+                    if m1==m2:continue
+                    x=(q2-q1)/(m1-m2);y=m1*x+q1
+            elif 'axis' in entry:
+                value=_overlay_exact(entry.get('value'),'point')
+                x,y=(value,S.Integer(0)) if entry.get('axis')=='x' else (S.Integer(0),value)
+            elif 'x' in entry and 'y' in entry:
+                x,y=_overlay_exact(entry['x'],'point'),_overlay_exact(entry['y'],'point')
+            else:continue
+            xf,yf=float(S.N(x,30)),float(S.N(y,30))
+            if not (math.isfinite(xf) and math.isfinite(yf)):continue
+            # A declared point outside the author's reviewed draw interval or viewport is not a frame anchor: the framer must not
+            # enlarge its window to make an invalid claim look valid (the overlay validator then refuses it).
+            if on_curve and isinstance(domain,list) and len(domain)==2 and not (domain[0]-1e-9<=xf<=domain[1]+1e-9):continue
+            if isinstance(viewport,list) and len(viewport)==4 and not (viewport[0]-1e-9<=xf<=viewport[1]+1e-9 and viewport[2]-1e-9<=yf<=viewport[3]+1e-9):continue
+            anchors.append((xf,yf))
+        except (ValueError,KeyError,TypeError,ZeroDivisionError):continue
+    return anchors
+
 def fit_overview(plan):
     """The family framer, then the optional graph overlays: every overlay coordinate is recomputed exactly and must stay inside the
     framed viewport. The fitted plan carries overlaysFeatures for the model/spec; the independent observer recomputes them from the raw
     overlays field. Unsupported or out-of-view overlays are refused, never silently dropped."""
-    framed=_fit_overview_family(plan)
+    anchors=_overlay_anchor_points(plan)
+    framed=_fit_overview_family({**plan,'overlayAnchors':anchors} if anchors else plan)
+    framed['graphPlan'].pop('overlayAnchors',None)
     features=_overlay_features(framed['graphPlan'])
     if features is None:return framed
     framed['graphPlan']={**framed['graphPlan'],'overlaysFeatures':features}
