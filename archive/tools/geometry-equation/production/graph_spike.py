@@ -190,14 +190,30 @@ def _produce_piecewise_polynomial(plan,vp):
         sampling.append({'id':'curve-piece-'+str(index),**{key:value for key,value in result.items() if key!='branches'}})
         points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
         parts.append(f'<polyline id="curve-piece-{index}" data-role="curve" data-branch="PIECE_{index}" points="{points}" fill="none" stroke="black"/>')
-    # Reference curves (referenceCurves): each its own polyline tagged REF_<id>, over the same draw interval as the function.
+    # Reference curves (referenceCurves): a quadratic is one polyline tagged REF_<id>; a piecewise curve is one polyline per piece tagged
+    # REF_<id> (one piece) or REF_<id>_<n>, each only over its own draw interval.
     critical_curve=[p['x'] for p in plan.get('requiredPoints',[])]+[point['xValue'] for row in features.get('curveIntersections',[]) for point in row['points']]
     for curve in features.get('referenceCurves',[]):
-        result=sample(_polynomial_text(curve['coefficients']),curve['drawInterval'],vp,critical_x=critical_curve)
-        if len(result['branches'])!=1:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_SAMPLING_FAILED')
-        sampling.append({'id':'curve-ref-'+curve['id'],**{key:value for key,value in result.items() if key!='branches'}})
-        points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
-        parts.append(f'<polyline id="curve-ref-{curve["id"]}" data-role="curve" data-branch="REF_{curve["id"]}" points="{points}" fill="none" stroke="black"/>')
+        if 'pieces' in curve:
+            rows=[(piece['coefficients'],piece['drawInterval'],'REF_'+curve['id'] if len(curve['pieces'])==1 else 'REF_'+curve['id']+'_'+str(index)) for index,piece in enumerate(curve['pieces'],1)]
+            extra=[pp_exact_float(row['x']) for row in curve.get('corners',[])+curve.get('extrema',[])]
+            source=curve.get('sourceInterval')
+            if source:extra.extend([pp_exact_float(source['lo']),pp_exact_float(source['hi'])])
+        else:
+            rows=[(curve['coefficients'],curve['drawInterval'],'REF_'+curve['id'])];extra=[]
+        for coefficients,draw_interval,branch in rows:
+            critical=[value for value in critical_curve+extra if draw_interval[0]<=value<=draw_interval[1]]
+            result=sample(_polynomial_text(coefficients),draw_interval,vp,critical_x=critical)
+            if len(result['branches'])!=1:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_SAMPLING_FAILED')
+            sampling.append({'id':'curve-ref-'+branch.split('_',1)[1],**{key:value for key,value in result.items() if key!='branches'}})
+            points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
+            parts.append(f'<polyline id="curve-ref-{branch[4:]}" data-role="curve" data-branch="{branch}" points="{points}" fill="none" stroke="black"/>')
+        source=curve.get('sourceInterval')
+        if source:
+            for side,state,x_text,y_text in [('start',source['startState'],source['lo'],source['startY']),('end',source['endState'],source['hi'],source['endY'])]:
+                cx,cy=vp.screen((pp_exact_float(x_text),pp_exact_float(y_text)))
+                fill='white' if state=='OPEN' else 'black'
+                parts.append(f'<circle id="ref-endpoint-{curve["id"]}-{side}" data-role="reference-endpoint" data-state="{state}" cx="{cx:.12g}" cy="{cy:.12g}" r="4" fill="{fill}" stroke="black" stroke-width="1"/>')
     for row in features.get('curveIntersections',[]):
         for k,point in enumerate(row['points'],1):
             if point.get('keyPoint'):continue

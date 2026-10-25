@@ -210,7 +210,7 @@ window.questionBank = [
     "answer": "③",
     "solution": "[키포인트] 무리함수는 정의역·치역·특정 점 대입·평행이동량을 각각 확인하면 선지를 빠르게 판정할 수 있다.\n조건 정리: $2x+3\\ge0$이므로 정의역은 $x\\ge-\\dfrac32$이고, $-\\sqrt{2x+3}\\le0$이므로 치역은 $y\\le2$이다.\n풀이 방향: 각 선택지의 핵심 조건을 직접 확인한다.\n정석 풀이: ①의 정의역 $x\\ge\\dfrac32$는 틀리고, ②의 치역 $y\\ge2$도 틀리다. $x=3$을 대입하면 $y=-\\sqrt9+2=-1$이므로 그래프는 $(3,-1)$을 지나 ③은 참이다. 따라서 제4사분면을 지나지 않는다는 ④는 거짓이다. 또한 $y=-\\sqrt{2x}$에서 근호 안의 $2x$를 $2x+3=2(x+\\dfrac32)$로 바꾸려면 $x$축 방향 이동량은 $-\\dfrac32$이므로 ⑤도 거짓이다.\n따라서 정답은 ③이다.",
     "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q07-solution.svg",
-    "solutionImageAlt": "무리함수의 끝점·정의역·치역을 나타낸 해설 그래프",
+    "solutionImageAlt": "정의역의 끝점 V(−3/2,2)에서 시작해 오른쪽 아래로 내려가는 무리함수 y=−√(2x+3)+2의 그래프와 그 위의 점 P(3,−1)을 표시한 좌표평면이다. x≥−3/2, y≤2임을 보여 준다.",
     "solutionImageCaption": "끝점 (−3/2,2), 정의역 x≥−3/2, 치역 y≤2와 점 (3,−1)을 확인한다.",
     "solutionImageSize": "full",
     "subUnitKey": "H15-SB-05-IRRATIONAL_BASIC",
@@ -467,7 +467,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/22_복성고_2학기_기말_고1_기출/q15-solution.svg",
 
-    "solutionImageAlt": "유리함수가 네 사분면을 지나는 모습을 나타낸 해설 그래프",
+    "solutionImageAlt": "점근선 x=2, y=2를 점선으로 표시한 유리함수 y=2+5/(x−2)의 두 갈래 곡선을 그린 좌표평면이다. 음의 x절편을 지나 왼쪽 가지가 제2·3·4사분면을, 오른쪽 가지가 제1사분면을 지나며 모든 사분면을 지나는 조건이 k>3임을 보여 준다.",
 
     "solutionImageCaption": "k=4 대표 그래프와 일반 조건 k>3을 확인한다.",
 

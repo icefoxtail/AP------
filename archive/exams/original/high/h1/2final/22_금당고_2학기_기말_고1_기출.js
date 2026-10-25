@@ -33,7 +33,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/22_금당고_2학기_기말_고1_기출/q01-solution.svg",
 
-    "solutionImageAlt": "유리함수의 두 점근선을 나타낸 해설 그래프",
+    "solutionImageAlt": "유리함수 y=2/(x−2)−1의 두 갈래 그래프와 점근선 x=2, y=−1을 좌표평면에 나타내고, 그래프 위의 점 P를 표시한 그림.",
 
     "solutionImageCaption": "y=2/(x−2)−1에서 수직점근선 x=2와 수평점근선 y=−1을 확인한다.",
 

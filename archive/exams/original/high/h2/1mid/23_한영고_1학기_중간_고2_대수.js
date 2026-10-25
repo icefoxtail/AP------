@@ -74,7 +74,7 @@ window.questionBank = [
   {
     "id": 3,
     "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q3-solution.svg",
-    "solutionImageAlt": "23_hanyoung_q3_log_shift",
+    "solutionImageAlt": "로그함수 y=log₁⁄₃(x−2)−1의 그래프가 점근선 x=2에 한없이 가까워지고 점 (3,−1)을 지나며 오른쪽으로 갈수록 감소하는 모습을 나타낸 그래프.",
     "solutionImageCaption": "log_shift",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
@@ -294,7 +294,7 @@ window.questionBank = [
   {
     "id": 9,
     "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q9-solution.svg",
-    "solutionImageAlt": "23_hanyoung_q9_graph_inequality",
+    "solutionImageAlt": "두 곡선 y=f(x)와 y=g(x)가 x=−3, −1, 2에서 만나는 그래프로, f(x)의 그래프가 g(x)보다 위쪽에 있는 구간이 −3<x<−1 또는 x>2임을 함께 적어 나타낸다.",
     "solutionImageCaption": "graph_compare",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
@@ -410,7 +410,7 @@ window.questionBank = [
   {
     "id": 12,
     "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q12-solution.svg",
-    "solutionImageAlt": "23_hanyoung_q12_exp_compare",
+    "solutionImageAlt": "두 지수함수 y=a^x와 y=b^x의 그래프를 겹쳐 그려 x<0인 구간에서 a^x가 b^x보다 위에 있으면 a<b임을 보여주고, 옳은 보기 ㄱ, ㄷ을 표시한 그래프.",
     "solutionImageCaption": "exp_compare",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",
@@ -452,7 +452,7 @@ window.questionBank = [
   {
     "id": 13,
     "solutionImage": "assets/images/23_한영고_1학기_중간_고2_대수/q13-solution.svg",
-    "solutionImageAlt": "23_hanyoung_q13_cos_params",
+    "solutionImageAlt": "최댓값 3, 중심선 1, 최솟값 −1을 갖고 마루가 x=5π/8, 15π/8, 25π/8에 나타나는 코사인 그래프로, y=2cos((4/5)(x−5π/8))+1과 주기 5π/2를 표시한다.",
     "solutionImageCaption": "cos_params",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",

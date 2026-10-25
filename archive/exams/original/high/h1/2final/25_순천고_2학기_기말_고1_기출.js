@@ -374,7 +374,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q13-solution.svg",
 
-    "solutionImageAlt": "유리함수의 점근선과 절편을 나타낸 해설 그래프",
+    "solutionImageAlt": "유리함수 y=(x+5)/(x+3)의 그래프와 x절편 (−5,0), 수직점근선 x=−3, 수평점근선 y=1을 함께 표시한 좌표평면이다.",
 
     "solutionImageCaption": "x절편 −5, 점근선 x=−3, y=1을 이용해 a=5, b=1, c=3을 확인한다.",
 
@@ -412,7 +412,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q14-solution.svg",
 
-    "solutionImageAlt": "유리함수가 네 사분면을 지나는 모습을 나타낸 해설 그래프",
+    "solutionImageAlt": "수직점근선 x=2, 수평점근선 y=−1/4를 가진 y=1/(2−x)−1/4의 그래프가 제1·2·3·4사분면을 모두 지나는 모습을 그린 좌표평면이다.",
 
     "solutionImageCaption": "a=−1/4일 때 −1/2<a<0이므로 네 사분면을 모두 지남을 확인한다.",
 
@@ -450,7 +450,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/25_순천고_2학기_기말_고1_기출/q15-solution.svg",
 
-    "solutionImageAlt": "이차함수와 역함수의 두 교점을 나타낸 해설 그래프",
+    "solutionImageAlt": "a=12일 때 y=f(x)=1/2(x−4)²+4(x≥4)와 그 역함수 y=4+√(2(x−4))가 직선 y=x에 대하여 대칭이며 (4,4), (6,6)에서 만나는 모습을 그린 그래프이다.",
 
     "solutionImageCaption": "a=12에서 (4,4), (6,6)의 두 고정점을 확인한다.",
 

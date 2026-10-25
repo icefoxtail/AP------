@@ -161,7 +161,7 @@ window.questionBank = [
 
     "solutionImage": "assets/images/24_매산여고_2학기_기말_고1_기출/q05-solution.svg",
 
-    "solutionImageAlt": "유리함수의 점근선과 중심을 나타낸 해설 그래프",
+    "solutionImageAlt": "유리함수 y=−3+5/(x+1)의 그래프와 점근선 x=−1, y=−3, 대칭의 중심 (−1,−3), 그래프 위의 점 P를 표시한 좌표평면이다. 곡선이 제1사분면을 지나는 모습을 보여 준다.",
 
     "solutionImageCaption": "y=−3+5/(x+1)에서 점근선 x=−1, y=−3과 중심을 확인한다.",
 

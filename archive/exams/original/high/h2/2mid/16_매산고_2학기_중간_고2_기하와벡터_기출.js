@@ -323,7 +323,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q07-solution.svg",
-    "solutionImageAlt": "쌍곡선 q7 풀이의 실제 수학 관계를 나타낸 그림",
+    "solutionImageAlt": "쌍곡선 x²/5−y²/4=1 위의 제1사분면 점 P(5,4)와 원점 대칭점 Q(−5,−4)를 초점 F′(−3,0), F(3,0)과 이어 사각형 F′QFP를 그린 그림. 사각형의 넓이가 24임을 보여준다.",
     "solutionImageCaption": "쌍곡선의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
     "solutionImageSize": "full"
   },
@@ -419,7 +419,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q09-solution.svg",
-    "solutionImageAlt": "삼각함수의 미분 q9 풀이의 실제 수학 관계를 나타낸 그림",
+    "solutionImageAlt": "반지름 1인 단위원 위의 점 P(cos t, sin t)에서 접선 방향 속도 v와 중심을 향하는 가속도 a를 화살표로 표시한 그림. 두 벡터가 수직이라 내적 v·a=0임을 나타낸다.",
     "solutionImageCaption": "삼각함수의 미분의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
     "solutionImageSize": "full"
   },
@@ -471,7 +471,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q10-solution.svg",
-    "solutionImageAlt": "타원 q10 풀이의 실제 수학 관계를 나타낸 그림",
+    "solutionImageAlt": "타원 x²/4+y²/3=1의 두 초점 F′(−1,0), F(1,0)과 타원 위의 점 P를 잇고, 장축 끝 A′, A로 만든 삼각형과 두 초점으로 만든 삼각형을 함께 표시한 그림. 넓이비 a/c=2와 둘레 2a+2c=6에서 a²+b²=7임을 보여준다.",
     "solutionImageCaption": "타원의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
     "solutionImageSize": "full"
   },
@@ -523,7 +523,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q11-solution.svg",
-    "solutionImageAlt": "쌍곡선 q11 풀이의 실제 수학 관계를 나타낸 그림",
+    "solutionImageAlt": "쌍곡선 y²−x²=1 위의 점 P(1/2,√5/2)에서 그은 접선이 A(−2,0)을 지나는 모습을 그린 그림. 접선의 기울기 aₙ=√(n/5)이고 Σ1/(aₙ+aₙ₊₁)=8√5임을 나타낸다.",
     "solutionImageCaption": "쌍곡선의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
     "solutionImageSize": "full"
   },
@@ -571,7 +571,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q12-solution.svg",
-    "solutionImageAlt": "벡터의 연산 q12 풀이의 실제 수학 관계를 나타낸 그림",
+    "solutionImageAlt": "삼각형 ABC 내부의 점 P에서 A, B, C로 그은 선분을 연장해 변 BC, CA, AB와 만나는 점 D, E, F를 표시한 그림. AB 위의 F가 AF:FB=1:2를 만족하고 세 선분이 P에서 만남을 보여준다.",
     "solutionImageCaption": "벡터의 연산의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
     "solutionImageSize": "full"
   },
@@ -621,7 +621,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q13-solution.svg",
-    "solutionImageAlt": "평면벡터의 성분과 내적 q13 풀이의 실제 수학 관계를 나타낸 그림",
+    "solutionImageAlt": "좌표평면에 벡터 조건 |xp+yq|=2√5가 만드는 타원 x²+y²/4=1을 그린 그림. 원점에서 타원까지의 거리가 장축 끝에서 최대 2, 단축 끝에서 최소 1이고 그 합이 3임을 표시한다.",
     "solutionImageCaption": "평면벡터의 성분과 내적의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
     "solutionImageSize": "full"
   },
@@ -671,7 +671,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q14-solution.svg",
-    "solutionImageAlt": "여러 가지 적분법 q14 풀이의 실제 수학 관계를 나타낸 그림",
+    "solutionImageAlt": "매개곡선 위의 t=π/2인 점 (1,1)과 t=3π/2인 점 (−1,1)을 지나며 접선 l: y=1에 접하는 모습을 그린 그림. 두 점 사이를 움직인 거리가 π임을 보여준다.",
     "solutionImageCaption": "여러 가지 적분법의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
     "solutionImageSize": "full"
   },
@@ -715,7 +715,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q15-solution.svg",
-    "solutionImageAlt": "벡터의 연산 q15 풀이의 실제 수학 관계를 나타낸 그림",
+    "solutionImageAlt": "삼각형 OAB에서 OA의 중점 M, OB를 1:2로 내분하는 점 N을 잡고 BM과 AN의 교점 P를 표시한 그림. OP=(2a+b)/5이므로 m+n=3/5임을 나타낸다.",
     "solutionImageCaption": "벡터의 연산의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
     "solutionImageSize": "full"
   },
@@ -797,7 +797,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q17-solution.svg",
-    "solutionImageAlt": "타원 q17 풀이의 실제 수학 관계를 나타낸 그림",
+    "solutionImageAlt": "두 원 C₁(중심 (0,2), 반지름 5)과 C₂(중심 (0,−1), 반지름 1)에 접하는 움직이는 원의 중심 P를 표시한 그림. PC₁+PC₂=6이 일정해 초점 (0,2), (0,−1)인 타원 4x²/27+(y−1/2)²/9=1을 이룸을 보여준다.",
     "solutionImageCaption": "타원의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
     "solutionImageSize": "full"
   },
@@ -841,7 +841,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q18-solution.svg",
-    "solutionImageAlt": "포물선 q18 풀이의 실제 수학 관계를 나타낸 그림",
+    "solutionImageAlt": "포물선 y²=4px와 점 (p,0)을 지나 기울기 p인 직선의 두 교점 A, B를 표시한 그림. 현 AB의 길이가 4(p+1/p)임을 나타낸다.",
     "solutionImageCaption": "포물선의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
     "solutionImageSize": "full"
   },
@@ -883,7 +883,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "중",
     "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q19-solution.svg",
-    "solutionImageAlt": "도함수의 활용 q19 풀이의 실제 수학 관계를 나타낸 그림",
+    "solutionImageAlt": "곡선 y=x² 위의 점 P(2,4)에서 x축에 내린 수선의 발 Q(2,0)와, 곡선·x축·PQ로 둘러싸인 넓이 S=x³/3을 표시한 그림. 이때 점 P의 속력이 √17/2임을 보여준다.",
     "solutionImageCaption": "도함수의 활용의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
     "solutionImageSize": "full"
   },
@@ -925,7 +925,7 @@ window.questionBank = [
     "legacyLevelCompatibility": "NORMAL",
     "level": "상",
     "solutionImage": "assets/images/16_매산고_2학기_중간_고2_기하와벡터_기출/q20-solution.svg",
-    "solutionImageAlt": "평면벡터의 성분과 내적 q20 풀이의 실제 수학 관계를 나타낸 그림",
+    "solutionImageAlt": "∠AOB=90°인 직각삼각형 OAB에서 빗변 AB의 중점 P를 표시한 그림. AB=6이므로 외심인 P까지의 거리 BP=3임을 나타낸다.",
     "solutionImageCaption": "평면벡터의 성분과 내적의 조건·좌표·관계를 풀이와 같은 수치로 나타낸다.",
     "solutionImageSize": "full"
   }

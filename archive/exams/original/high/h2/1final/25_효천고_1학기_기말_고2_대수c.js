@@ -758,7 +758,7 @@ window.questionBank = [
     ],
     "wide": false,
     "solutionImage": "assets/images/25_효천고_1학기_기말_고2_대수/q23-solution.svg",
-    "solutionImageAlt": "25_hyochon_final_q23_two_circles",
+    "solutionImageAlt": "중심 O₁, O₂이고 반지름이 3인 두 원 C₁, C₂에서 A·O₁·O₂와 C·O₂·D가 각각 한 직선 위에 있고, AB=2, O₁D=4√2, CO₂·O₂D=14를 표시한 그림이다.",
     "solutionImageCaption": "two_circles",
     "solutionImageSize": "full",
     "solutionImageStatus": "asset_verified",

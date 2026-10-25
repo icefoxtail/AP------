@@ -1,6 +1,6 @@
 {
   "schemaVersion": "exam-figure-ledger-v1",
-  "updated": "2026-10-24",
+  "updated": "2026-10-25",
   "rule": "시험지는 시험지 단위 점검 후 모든 문항이 PUBLISHED이거나 최종 사유가 있는 EXEMPT일 때만 CLOSED로 닫는다(OPEN_UNSUPPORTED/OPEN_LAYOUT/OPEN_OTHER가 하나라도 있으면 OPEN). CLOSED 시험지는 다시 작업하지 않는다.",
   "exams": [
     {
@@ -4831,11 +4831,13 @@
         },
         {
           "ord": 17,
-          "state": "UNSUPPORTED",
+          "state": "PUBLISHED",
           "camp": "camp5a",
           "key": "batchA-p08",
           "fam": "QUAD",
-          "reason": "최종: f와 g가 모두 구간별 함수(이차식·일차식 조각)라 한 그림에 정확히 그릴 수 없다. 둘째 함수를 구간별로 받는 형식이 없고, 전체 직선을 겹치면 정의되지 않은 구간에 가짜 교점이 생긴다."
+          "figures": [
+            "assets/images/26_금당고_1학기_중간_고1_기출_c/q17-solution.svg"
+          ]
         },
         {
           "ord": 20,
@@ -4849,7 +4851,7 @@
         }
       ],
       "status": "CLOSED",
-      "closedBy": "batch3",
+      "closedBy": "followup-two-piecewise",
       "publishedBy": [
         "776"
       ]
@@ -5194,15 +5196,17 @@
         },
         {
           "ord": 20,
-          "state": "UNSUPPORTED",
-          "camp": "camp8",
-          "key": "wrongpk-batchA-p05",
+          "state": "PUBLISHED",
+          "camp": "x4",
+          "key": "x4-q20-appaxes",
           "fam": "QUAD",
-          "reason": "최종: 이익 0~45000과 인상 횟수 0~50의 두 축 크기가 900배 차이 나 같은 배율(세로 최대 1/2 압축)로는 곡선이 선처럼 되고, 축 눈금 배율 분리는 규칙상 허용되지 않는다."
+          "figures": [
+            "assets/images/26_순천고_1학기_기말_고1_기출/q20-solution-fig.svg"
+          ]
         }
       ],
       "status": "CLOSED",
-      "closedBy": "batch1",
+      "closedBy": "followup-x4",
       "publishedBy": [
         "776"
       ]

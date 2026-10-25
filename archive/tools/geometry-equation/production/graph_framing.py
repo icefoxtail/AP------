@@ -720,9 +720,14 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
+# Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
+PIECEWISE_POLY_MAX_PIECES=4
+# A reference curve may list as many crossings as four piece pairs can produce in a readable figure.
+PIECEWISE_POLY_MAX_CURVE_INTERSECTIONS=8
+PIECEWISE_POLY_MAX_REQUIRED_POINTS=24
 
 def _pp_rational(value,code):
     """An exact rational: a decimal integer, an 'a/b' string, or a JSON integer."""
@@ -882,7 +887,7 @@ def piecewise_polynomial_source(plan):
     unknown=sorted(set(plan)-PIECEWISE_POLY_FIELDS)
     if unknown:raise ValueError('PIECEWISE_POLY_FIELD_UNKNOWN:'+unknown[0])
     raw_pieces=plan.get('pieces');raw_breaks=plan.get('breakpoints',[])
-    if not isinstance(raw_pieces,list) or not 1<=len(raw_pieces)<=3:raise ValueError('PIECEWISE_POLY_PIECE_COUNT_INVALID')
+    if not isinstance(raw_pieces,list) or not 1<=len(raw_pieces)<=PIECEWISE_POLY_MAX_PIECES:raise ValueError('PIECEWISE_POLY_PIECE_COUNT_INVALID')
     if not isinstance(raw_breaks,list) or len(raw_breaks)!=len(raw_pieces)-1:raise ValueError('PIECEWISE_POLY_BREAKPOINT_COUNT_INVALID')
     pieces=[]
     for piece in raw_pieces:
@@ -963,30 +968,131 @@ def piecewise_polynomial_crossings(pieces,intervals,level,source,slope=S.Integer
 
 def _pp_text(value):return pp_surd_text(value)
 
-def piecewise_reference_curves(plan,pieces,breaks):
-    """The referenceCurves of a piecewise plan: at most two other quadratics drawn with the function ({id,coefficients,intersectionX}). Exact
-    coefficients (one radical for the whole plan), a nonzero x^2 coefficient, an id that is a short ASCII name."""
+def pp_in_closed(x_value,interval):
+    """x inside the closed piece interval, where an unbounded end is None."""
+    a,b=interval
+    return (a is None or a<=x_value) and (b is None or x_value<=b)
+
+def pp_in_source(x_value,source):
+    """x inside the source domain; an OPEN end excludes its own value."""
+    lo,hi,states=source
+    if lo is not None and (x_value<lo or x_value==lo and states[0]=='OPEN'):return False
+    if hi is not None and (x_value>hi or x_value==hi and states[1]=='OPEN'):return False
+    return True
+
+def pp_in_domain(x_value,interval,source):
+    return pp_in_closed(x_value,interval) and pp_in_source(x_value,source)
+
+def _pp_reference_source(entry,ref_id,breaks):
+    """{kind:'ALL_REALS'} (default) or {kind:'INTERVAL',range,states} for a reference curve; exact ends, breakpoints strictly inside."""
+    raw=entry.get('sourceDomain',{'kind':'ALL_REALS'})
+    if raw=={'kind':'ALL_REALS'}:return None,None,['CLOSED','CLOSED']
+    if isinstance(raw,dict) and raw.get('kind')=='INTERVAL':
+        try:lo,hi,states=quadratic_source_interval(raw)
+        except ValueError:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_SOURCE_DOMAIN_INVALID:'+ref_id) from None
+        lo,hi=S.Rational(lo.numerator,lo.denominator),S.Rational(hi.numerator,hi.denominator)
+        if any(not lo<x_value<hi for x_value,_ in breaks):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_OUTSIDE_SOURCE_INTERVAL:'+ref_id)
+        return lo,hi,list(states)
+    raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_SOURCE_DOMAIN_INVALID:'+ref_id)
+
+def piecewise_ref_formula_ok(formula,ref_id,pieces,intervals):
+    """A reference curve's optional display formula is the same function as its pieces: exact values at nine points of every piece."""
+    if any(pp_radicand(c) is not None for piece in pieces for c in piece):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_FORMULA_IRRATIONAL_UNSUPPORTED:'+ref_id)
+    for coefficients,(a,b) in zip(pieces,intervals):
+        if a is not None and b is not None:samples=[a+(b-a)*k/8 for k in range(9)]
+        elif b is not None:samples=[b-S.Rational(k,2) for k in range(9)]+[b-10,b-100]
+        elif a is not None:samples=[a+S.Rational(k,2) for k in range(9)]+[a+10,a+100]
+        else:samples=[S.Rational(k-4,2) for k in range(9)]+[S.Integer(-100),S.Integer(100)]
+        for x_value in samples:
+            value=pp_formula_value(formula,x_value)
+            if S.Rational(value.numerator,value.denominator)!=_pp_poly_value(coefficients,x_value):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_FORMULA_MISMATCH:'+ref_id+':'+_pp_text(x_value))
+
+def piecewise_reference_curves(plan,pieces,breaks,source,intervals):
+    """The referenceCurves of a piecewise plan (at most two). Each is either the legacy quadratic {id,name?,coefficients,intersectionX} defined
+    on the whole line, or a piecewise curve {id,name?,pieces,breakpoints?,sourceDomain?,formula?,intersectionX} with its own up to four
+    continuous pieces and its own domain (open/closed ends). Exact coefficients (one radical for the whole plan), short ASCII ids, and the
+    exact x of every crossing with the function that both are defined at."""
     raw=plan.get('referenceCurves',[])
     if not isinstance(raw,list) or len(raw)>2:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
     rows=[];ids=set()
     for entry in raw:
-        if not isinstance(entry,dict) or set(entry)-{'name'}!={'id','coefficients','intersectionX'} or ('name' in entry and not (isinstance(entry['name'],str) and re.fullmatch(r'[a-hj-wz]',entry['name']))) or not isinstance(entry['id'],str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',entry['id']) or entry['id'] in ids:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
-        values=entry['coefficients']
-        if not isinstance(values,list) or len(values)!=3 or not isinstance(entry['intersectionX'],list) or len(entry['intersectionX'])>6:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
-        coefficients=[pp_surd(value,'PIECEWISE_POLY_COEFFICIENT_INVALID') for value in values]
-        if coefficients[2]==0:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_NOT_QUADRATIC:'+entry['id'])
-        ids.add(entry['id']);rows.append({'id':entry['id'],'coefficients':coefficients,'intersectionX':entry['intersectionX']})
-    radicands={r for r in (pp_radicand(v) for v in [c for piece in pieces for c in piece]+[v for pair in breaks for v in pair]+[c for row in rows for c in row['coefficients']]) if r is not None}
+        if not isinstance(entry,dict) or set(entry)-{'id','name','coefficients','pieces','breakpoints','sourceDomain','formula','intersectionX'} or not isinstance(entry.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',entry['id']) or entry['id'] in ids:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        if 'name' in entry and not (isinstance(entry['name'],str) and re.fullmatch(r'[a-hj-wz]',entry['name'])):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        claimed=entry.get('intersectionX')
+        if not isinstance(claimed,list) or len(claimed)>PIECEWISE_POLY_MAX_CURVE_INTERSECTIONS:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        ids.add(entry['id'])
+        if ('coefficients' in entry)==('pieces' in entry):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+        if 'coefficients' in entry:
+            if 'breakpoints' in entry or 'sourceDomain' in entry or 'formula' in entry:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+            values=entry['coefficients']
+            if not isinstance(values,list) or len(values)!=3:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
+            coefficients=[pp_surd(value,'PIECEWISE_POLY_COEFFICIENT_INVALID') for value in values]
+            if coefficients[2]==0:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_NOT_QUADRATIC:'+entry['id'])
+            rows.append({'id':entry['id'],'name':entry.get('name'),'kind':'quadratic','coefficients':coefficients,'pieces':[coefficients],'intervals':[(None,None)],'source':(None,None,['CLOSED','CLOSED']),'corners':[],'extrema':[],'intersectionX':claimed,'formula':None})
+            continue
+        raw_pieces=entry['pieces'];raw_breaks=entry.get('breakpoints',[])
+        if not isinstance(raw_pieces,list) or not 1<=len(raw_pieces)<=PIECEWISE_POLY_MAX_PIECES:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_PIECE_COUNT_INVALID:'+entry['id'])
+        if not isinstance(raw_breaks,list) or len(raw_breaks)!=len(raw_pieces)-1:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_COUNT_INVALID:'+entry['id'])
+        ref_pieces=[]
+        for piece in raw_pieces:
+            if not isinstance(piece,dict) or set(piece)!={'coefficients'} or not isinstance(piece['coefficients'],list) or not 1<=len(piece['coefficients'])<=3:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_PIECE_INVALID:'+entry['id'])
+            ref_pieces.append([pp_surd(value,'PIECEWISE_POLY_COEFFICIENT_INVALID') for value in piece['coefficients']]+[S.Integer(0)]*(3-len(piece['coefficients'])))
+        ref_breaks=[]
+        for row in raw_breaks:
+            if not isinstance(row,dict) or set(row)!={'x','y'}:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_INVALID:'+entry['id'])
+            ref_breaks.append((pp_surd(row['x'],'PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_INVALID:'+entry['id']),pp_surd(row['y'],'PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_INVALID:'+entry['id'])))
+        if any(not left[0]<right[0] for left,right in zip(ref_breaks,ref_breaks[1:])):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINTS_NOT_INCREASING:'+entry['id'])
+        ref_lo,ref_hi,ref_states=_pp_reference_source(entry,entry['id'],ref_breaks)
+        cuts=[ref_lo,*[x_value for x_value,_ in ref_breaks],ref_hi];ref_intervals=list(zip(cuts,cuts[1:]))
+        corners=[]
+        for index,(x_value,y_value) in enumerate(ref_breaks):
+            left,right=_pp_poly_value(ref_pieces[index],x_value),_pp_poly_value(ref_pieces[index+1],x_value)
+            if left!=right:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_DISCONTINUOUS:'+entry['id']+':'+_pp_text(x_value))
+            if left!=y_value:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_BREAKPOINT_VALUE_MISMATCH:'+entry['id']+':'+_pp_text(x_value))
+            corners.append((x_value,y_value))
+        formula=entry.get('formula')
+        if formula is not None:piecewise_ref_formula_ok(formula,entry['id'],ref_pieces,ref_intervals)
+        rows.append({'id':entry['id'],'name':entry.get('name'),'kind':'piecewise','coefficients':None,'pieces':ref_pieces,'intervals':ref_intervals,'source':(ref_lo,ref_hi,ref_states),'corners':corners,'extrema':piecewise_polynomial_extrema(ref_pieces,ref_intervals),'intersectionX':claimed,'formula':formula})
+    radicands={r for r in (pp_radicand(v) for v in [c for piece in pieces for c in piece]+[v for pair in breaks for v in pair]+[c for row in rows for piece in row['pieces'] for c in piece]+[v for row in rows for pair in row['corners'] for v in pair]) if r is not None}
     if len(radicands)>1:raise ValueError('PIECEWISE_POLY_IRRATIONAL_RADICANDS_MIXED:'+','.join(str(r) for r in sorted(radicands)))
     return rows
 
+def piecewise_reference_crossings(pieces,intervals,source,ref):
+    """Every x where the function and a reference curve are both defined and equal, exactly and once (piece pair by piece pair, so a root
+    outside either piece's domain or at an OPEN end is never counted). A piece equal to a reference piece is refused."""
+    found=[]
+    for coefficients,(a,b) in zip(pieces,intervals):
+        for other,(c,d) in zip(ref['pieces'],ref['intervals']):
+            roots=pp_quadratic_roots(coefficients[0]-other[0],coefficients[1]-other[1],coefficients[2]-other[2])
+            if roots is None:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_CONTAINS_A_PIECE')
+            for root in roots:
+                if not pp_in_domain(root,(a,b),source) or not pp_in_domain(root,(c,d),ref['source']):continue
+                if not any(pp_same(root,seen) for seen in found):found.append(root)
+    return sorted(found,key=lambda value:float(value))
+
 def fit_piecewise_polynomial(plan):
     if 'functionName' in plan and not (isinstance(plan['functionName'],str) and re.fullmatch(r'[a-hj-wz]',plan['functionName'])):raise ValueError('PIECEWISE_POLY_FUNCTION_NAME_INVALID')
+    if 'sampleNote' in plan and (not isinstance(plan['sampleNote'],str) or not re.fullmatch(r'[0-9A-Za-z=+\-*/(). ]{1,32}',plan['sampleNote']) or not plan['sampleNote'].strip()):raise ValueError('PIECEWISE_POLY_SAMPLE_NOTE_INVALID')
     pieces,breaks,source,intervals=piecewise_polynomial_source(plan)
     lo,hi,states=source
-    refs=piecewise_reference_curves(plan,pieces,breaks)
-    def ref_value(row,x_value):return _pp_poly_value(row['coefficients'],x_value)
-    def ref_float(row,x_value):return sum(float(c)*x_value**i for i,c in enumerate(row['coefficients']))
+    refs=piecewise_reference_curves(plan,pieces,breaks,source,intervals)
+    def ref_value(row,x_value):
+        """The exact value of a reference curve at x, or None when x is outside its own domain (open ends excluded)."""
+        at=S.sympify(x_value)
+        for coefficients,(a,b) in zip(row['pieces'],row['intervals']):
+            if pp_in_domain(at,(a,b),row['source']):return _pp_poly_value(coefficients,at)
+        return None
+    def ref_float(row,x_value):
+        try:at=S.Rational(str(x_value))
+        except (TypeError,ValueError):at=S.Float(x_value)
+        value=ref_value(row,at)
+        return None if value is None else float(value)
+    def ref_boundary_value(row,x_value):
+        """The value at a source-domain end, including an OPEN end (its dot is drawn there even though the point is excluded)."""
+        at=S.sympify(x_value)
+        for coefficients,(a,b) in zip(row['pieces'],row['intervals']):
+            if pp_in_closed(at,(a,b)):return _pp_poly_value(coefficients,at)
+        return None
     def g(x_value):
         x_value=S.sympify(x_value)
         for coefficients,interval in zip(pieces,intervals):
@@ -1000,7 +1106,7 @@ def fit_piecewise_polynomial(plan):
     extrema=piecewise_polynomial_extrema(pieces,intervals)
     # Key points the author marks: every corner and every vertex inside a piece must be among them (the claim), and each lies on the curve.
     required=plan.get('requiredPoints',[])
-    if not isinstance(required,list) or len(required)>16:raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
+    if not isinstance(required,list) or len(required)>PIECEWISE_POLY_MAX_REQUIRED_POINTS:raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
     ids=set();required_xy=[];exact_points={};normalized=[]
     for point in required:
         if not isinstance(point,dict) or set(point)!={'id','x','y'} or not isinstance(point['id'],str) or not point['id'] or point['id'] in ids:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
@@ -1017,12 +1123,13 @@ def fit_piecewise_polynomial(plan):
             if abs(floats[k])>1e6:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
         ids.add(point['id']);at=exact['x'] if 'x' in exact else S.Rational(str(floats['x']))
         if lo is not None and (not lo<=at<=hi or at==lo and states[0]=='OPEN' or at==hi and states[1]=='OPEN'):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_OUTSIDE_SOURCE_DOMAIN:'+point['id'])
-        # A key point lies on the function or, with referenceCurves, on one of those curves.
+        # A key point lies on the function or, with referenceCurves, on one of those curves inside that curve's own domain.
         near=lambda value:abs(value-floats['y'])<=1e-8*max(1,abs(floats['y']))
-        if not (near(g_float(floats['x'])) or any(near(ref_float(row,floats['x'])) for row in refs)):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
+        if not (near(g_float(floats['x'])) or any((value:=ref_float(row,floats['x'])) is not None and near(value) for row in refs)):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
         if len(exact)==2:
             tiny=S.Float('1e-40',60)
-            if abs(S.N(g(exact['x'])-exact['y'],60))>tiny and all(abs(S.N(ref_value(row,exact['x'])-exact['y'],60))>tiny for row in refs):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
+            on_ref=lambda row:ref_value(row,exact['x']) is not None and abs(S.N(ref_value(row,exact['x'])-exact['y'],60))<=tiny
+            if abs(S.N(g(exact['x'])-exact['y'],60))>tiny and not any(on_ref(row) for row in refs):raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
         if exact:
             exact_points[point['id']]=[pp_surd_text(exact[k]) if k in exact else (str(Fraction(str(floats[k]))) if floats[k]==int(floats[k]) else None) for k in ('x','y')]
             if None in exact_points[point['id']]:raise ValueError('PIECEWISE_POLY_REQUIRED_POINT_MIXED_EXACT:'+point['id'])
@@ -1033,11 +1140,18 @@ def fit_piecewise_polynomial(plan):
         if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_CORNER_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value))
     for x_value,y_value,_ in extrema:
         if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value))
-    # The vertex of every reference curve is a key point the author must mark.
+    # The vertex of a quadratic reference curve, and every corner and in-piece vertex of a piecewise one, is a key point the author must mark.
     for row in refs:
-        h=_pp_norm(-row['coefficients'][1]/(2*row['coefficients'][2]))
-        row['vertex']=(h,ref_value(row,h))
-        if not marked(h,row['vertex'][1]):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_VERTEX_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(h))
+        if row['kind']=='quadratic':
+            h=_pp_norm(-row['coefficients'][1]/(2*row['coefficients'][2]))
+            row['vertex']=(h,ref_value(row,h))
+            if not marked(h,row['vertex'][1]):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_VERTEX_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(h))
+            continue
+        row['vertex']=None
+        for x_value,y_value in row['corners']:
+            if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_CORNER_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(x_value))
+        for x_value,y_value,_ in row['extrema']:
+            if not marked(x_value,y_value):raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+row['id']+':'+_pp_text(x_value))
     # The display formula (optional) must be the same function as the pieces: exact values at nine points of every piece.
     formula=plan.get('formula')
     if formula is not None:
@@ -1090,7 +1204,7 @@ def fit_piecewise_polynomial(plan):
     curve_crossings=[]
     for row in refs:
         if row['id'] in line_ids:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVES_INVALID')
-        exact=piecewise_polynomial_crossings(pieces,intervals,None,source,None,curve=row['coefficients'])
+        exact=piecewise_reference_crossings(pieces,intervals,source,row)
         claimed=sorted(((text,pp_exact_value(text)) for text in row['intersectionX']),key=lambda item:float(item[1]))
         if len(claimed)!=len(exact) or any(not pp_same(value,root) for (_,value),root in zip(claimed,exact)):
             raise ValueError('PIECEWISE_POLY_INTERSECTION_MISMATCH:'+row['id']+':engine finds '+str(len(exact))+' intersection(s)')
@@ -1106,7 +1220,16 @@ def fit_piecewise_polynomial(plan):
     key=[(float(x_value),float(y_value)) for x_value,y_value in corners]+[(float(x_value),float(y_value)) for x_value,y_value,_ in extrema]+required_xy
     key+=[(point['xValue'],point['yValue'] if 'slope' in row else pp_exact_float(row['y'])) for row in crossings for point in row['points']]
     key+=[(0.0,pp_exact_float(row['intercept'] if 'slope' in row else row['y'])) for row in crossings if not row['points']]
-    key+=[(point['xValue'],point['yValue']) for row in curve_crossings for point in row['points']]+[(float(row['vertex'][0]),float(row['vertex'][1])) for row in refs if row.get('vertex')]
+    key+=[(point['xValue'],point['yValue']) for row in curve_crossings for point in row['points']]
+    key+=[(float(row['vertex'][0]),float(row['vertex'][1])) for row in refs if row.get('vertex')]
+    # A piecewise reference curve also contributes its own corners, in-piece vertices and its domain ends (drawn as hollow/filled dots).
+    for row in refs:
+        if row['kind']!='piecewise':continue
+        key+=[(float(x_value),float(y_value)) for x_value,y_value in row['corners']]
+        key+=[(float(x_value),float(y_value)) for x_value,y_value,_ in row['extrema']]
+        ref_lo,ref_hi,_=row['source']
+        if ref_lo is not None:key.append((float(ref_lo),float(ref_boundary_value(row,ref_lo))))
+        if ref_hi is not None:key.append((float(ref_hi),float(ref_boundary_value(row,ref_hi))))
     limit=plot_height_limit(plan)
     if lo is not None:
         ends=[(float(lo),float(g(lo))),(float(hi),float(g(hi)))]
@@ -1115,7 +1238,8 @@ def fit_piecewise_polynomial(plan):
         # leaves the key heights by a quarter of their range (at least 1), so a steep arm never flattens the figure.
         xs=[p[0] for p in key] or [0.0];ys=[p[1] for p in key] or [0.0]
         span=max(xs)-min(xs);extend=max(1.0,.2*span);ylo,yhi=min(ys),max(ys);band=max(1.0,.25*(yhi-ylo))
-        inband=lambda at:all(ylo-band<=height<=yhi+band for height in [g_float(at)]+[ref_float(row,at) for row in refs])
+        ref_heights=lambda at:[value for value in (ref_float(row,at) for row in refs) if value is not None]
+        inband=lambda at:all(ylo-band<=height<=yhi+band for height in [g_float(at)]+ref_heights(at))
         def arm(start,direction):
             far=start+direction*extend
             if inband(far):return far
@@ -1128,7 +1252,8 @@ def fit_piecewise_polynomial(plan):
         left_x,right_x=arm(min(xs),-1),arm(max(xs),1)
         ends=[(left_x,g_float(left_x)),(right_x,g_float(right_x))]
     for attempt in range(2):
-        points=[(0.0,0.0)]+key+ends+[(end[0],ref_float(row,end[0])) for end in ends for row in refs]
+        ref_end_points=[(end[0],value) for end in ends for value in (ref_float(row,end[0]) for row in refs) if value is not None]
+        points=[(0.0,0.0)]+key+ends+ref_end_points
         for ratio in axis_ratios(plan,points,limit):
             viewport,height,scale=equal_unit_frame(points,limit,ratio)
             if (ends[1][0]-ends[0][0])*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
@@ -1152,7 +1277,25 @@ def fit_piecewise_polynomial(plan):
         start=draw[0] if a is None else float(a);end=draw[1] if b is None else float(b)
         piece_rows.append({'coefficients':[_pp_text(c) for c in coefficients],'interval':[None if a is None else _pp_text(a),None if b is None else _pp_text(b)],'drawInterval':[start,end]})
     features={'schemaVersion':'PIECEWISE_POLYNOMIAL_FEATURES_v1','pieces':piece_rows,'corners':[{'x':_pp_text(x_value),'y':_pp_text(y_value)} for x_value,y_value in corners],'extrema':[{'x':_pp_text(x_value),'y':_pp_text(y_value),'kind':kind} for x_value,y_value,kind in extrema],'intersections':crossings}
-    if refs:features['referenceCurves']=[{'id':row['id'],'coefficients':[_pp_text(c) for c in row['coefficients']],'drawInterval':draw} for row in refs];features['curveIntersections']=curve_crossings
+    if refs:
+        ref_rows=[]
+        for row in refs:
+            if row['kind']=='quadratic':
+                ref_rows.append({'id':row['id'],'coefficients':[_pp_text(c) for c in row['coefficients']],'drawInterval':draw})
+                continue
+            drawn=[]
+            for coefficients,(a,b) in zip(row['pieces'],row['intervals']):
+                start=draw[0] if a is None else max(draw[0],float(a));end=draw[1] if b is None else min(draw[1],float(b))
+                if end-start<=1e-9:continue
+                drawn.append({'coefficients':[_pp_text(c) for c in coefficients],'interval':[None if a is None else _pp_text(a),None if b is None else _pp_text(b)],'drawInterval':[start,end]})
+            if not drawn:raise ValueError('PIECEWISE_POLY_REFERENCE_CURVE_OUTSIDE_VIEW:'+row['id'])
+            entry={'id':row['id'],'pieces':drawn,'corners':[{'x':_pp_text(x_value),'y':_pp_text(y_value)} for x_value,y_value in row['corners']],'extrema':[{'x':_pp_text(x_value),'y':_pp_text(y_value),'kind':kind} for x_value,y_value,kind in row['extrema']]}
+            ref_lo,ref_hi,ref_states=row['source']
+            if ref_lo is not None:entry['sourceInterval']={'lo':_pp_text(ref_lo),'hi':_pp_text(ref_hi),'startState':ref_states[0],'endState':ref_states[1],'startY':_pp_text(ref_boundary_value(row,ref_lo)),'endY':_pp_text(ref_boundary_value(row,ref_hi))}
+            if row.get('name') is not None:entry['name']=row['name']
+            if row.get('formula') is not None:entry['formula']=row['formula']
+            ref_rows.append(entry)
+        features['referenceCurves']=ref_rows;features['curveIntersections']=curve_crossings
     fitted={key_name:value for key_name,value in plan.items() if key_name not in ('domain','viewport')}
     if exact_points:
         merged=dict(plan.get('exactCoordinates') or {})
