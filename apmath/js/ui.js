@@ -807,6 +807,7 @@ const DRAWER_ICON_SVG = {
     archive: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="4" rx="1.5"/><path d="M5 8.5v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9"/><path d="M10 12h4"/></svg>',
     manage: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2 3.4-.2-.1a1.7 1.7 0 0 0-1.9.3 1.7 1.7 0 0 0-.6 1.7v.2H9v-.2a1.7 1.7 0 0 0-.6-1.7 1.7 1.7 0 0 0-1.9-.3l-.2.1-2-3.4.1-.1A1.7 1.7 0 0 0 4.6 15 1.7 1.7 0 0 0 3 13.8h-.2v-3.6H3A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1 2-3.4.2.1a1.7 1.7 0 0 0 1.9-.3A1.7 1.7 0 0 0 9 1.7v-.2h6v.2a1.7 1.7 0 0 0 .6 1.7 1.7 1.7 0 0 0 1.9.3l.2-.1 2 3.4-.1.1A1.7 1.7 0 0 0 19.4 9 1.7 1.7 0 0 0 21 10.2h.2v3.6H21a1.7 1.7 0 0 0-1.6 1.2z"/></svg>',
     logout: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4"/><path d="M14 8l4 4-4 4"/><path d="M18 12H9"/></svg>',
+    playground: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2v7.31L4.17 19.5A2 2 0 0 0 5.89 22h12.22a2 2 0 0 0 1.72-2.5L14 9.31V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></svg>',
     default: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/></svg>'
 };
 
@@ -846,11 +847,29 @@ function openExamScoreMenu() {
     `);
 }
 
+function drawerPlaygroundEntry() {
+    return `
+        <div class="drw-playground-entry" style="margin:4px 10px 14px; padding:12px 14px; border-radius:14px; background:linear-gradient(135deg, #1A5CFF 0%, #6E66C9 100%); color:#ffffff; cursor:pointer; box-shadow:0 4px 14px rgba(26,92,255,0.25); display:flex; align-items:center; justify-content:space-between; gap:10px; transition:transform 0.16s ease, box-shadow 0.16s ease;" onclick="closeAppDrawer(); window.open('./playground/teacher-hub.html', '_blank', 'noopener');" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 6px 18px rgba(26,92,255,0.35)';" onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 14px rgba(26,92,255,0.25)';" role="button" tabindex="0" title="도형·함수 실험실 새 탭으로 열기">
+            <div style="display:flex; align-items:center; gap:10px; min-width:0;">
+                <span style="font-size:22px; line-height:1; flex-shrink:0;" aria-hidden="true">🔬</span>
+                <div style="min-width:0;">
+                    <div style="font-size:14px; font-weight:800; line-height:1.2; letter-spacing:-0.3px; color:#ffffff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">도형 · 함수 실험실</div>
+                    <div style="font-size:11px; opacity:0.88; margin-top:2px; color:#ffffff; font-weight:500; white-space:nowrap;">Playground 바로가기</div>
+                </div>
+            </div>
+            <span style="font-size:14px; font-weight:700; opacity:0.9; flex-shrink:0;" aria-hidden="true">↗</span>
+        </div>
+    `;
+}
+
 function buildDrawerMenu(roleKey) {
     const isAdminDrawer = roleKey === 'admin';
+    const playgroundBanner = drawerPlaygroundEntry();
 
     if (isAdminDrawer) {
         return `
+            ${playgroundBanner}
+
             ${drawerSection('학생 관리')}
             ${drawerItem('students', '학생관리', "closeAppDrawer(); openAddressBook();")}
             ${drawerItem('class', '학급관리', "closeAppDrawer(); openClassManageModal();")}
@@ -863,7 +882,6 @@ function buildDrawerMenu(roleKey) {
 
             ${drawerSection('수업 자료')}
             ${drawerItem('archive', '아카이브', "closeAppDrawer(); if(typeof openDashboardArchiveWindow==='function') openDashboardArchiveWindow(event); else toast('아카이브를 불러오지 못했습니다.', 'warn');")}
-            ${drawerItem('playground', '🔬 도형·함수 실험실', "closeAppDrawer(); window.open('./playground/teacher-hub.html', '_blank', 'noopener');")}
 
             ${drawerSection('지원')}
             ${drawerItem('manage', '관리', "closeAppDrawer(); if(typeof openAdminOperationMenu==='function') openAdminOperationMenu(); else toast('관리 기능을 불러오지 못했습니다.', 'warn');")}
@@ -873,6 +891,8 @@ function buildDrawerMenu(roleKey) {
     }
 
     return `
+        ${playgroundBanner}
+
         ${drawerSection('수업 관리')}
         ${drawerItem('timetable', '시간표', "closeAppDrawer(); if(typeof openLiveTimetable==='function') openLiveTimetable(); else if(typeof renderTimetable==='function') renderTimetable(); else toast('시간표 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('attendance', '출석부', "closeAppDrawer(); if(typeof openAttendanceLedger==='function') openAttendanceLedger(); else if(typeof renderAttendanceLedger==='function') renderAttendanceLedger(); else toast('출석부 기능을 불러오지 못했습니다.', 'warn');")}
@@ -888,7 +908,6 @@ function buildDrawerMenu(roleKey) {
         ${drawerItem('material', '수업자료', "closeAppDrawer(); if(typeof openStudyMaterialWrongCenter==='function') openStudyMaterialWrongCenter(); else toast('수업자료 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('exam', '시험지 보관함', "closeAppDrawer(); window.open(appendArchiveSessionToUrlForUi('../archive/assessment/assessment-mvp.html'), '_blank', 'noopener');")}
         ${drawerItem('clinic', '클리닉', "closeAppDrawer(); if(typeof openClinicCenter==='function') openClinicCenter(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
-        ${drawerItem('playground', '🔬 도형·함수 실험실', "closeAppDrawer(); window.open('./playground/teacher-hub.html', '_blank', 'noopener');")}
 
         ${drawerSection('평가')}
         ${drawerItem('report', '리포트 센터', "closeAppDrawer(); if(typeof openReportCenterHome==='function') openReportCenterHome(); else toast('리포트 센터를 불러오지 못했습니다.', 'warn');")}
