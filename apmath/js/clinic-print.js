@@ -25,6 +25,25 @@ let clinicPrintRecommendationSettings = {
 let clinicPrintAssessmentClient = null;
 let clinicPrintAssessmentFormValues = { classId: '', title: '', examDate: '' };
 const clinicPrintRecommendationAssessmentStates = new Map();
+let clinicPrintRepeatClient = null;
+let clinicPrintRepeatState = {
+    classId: '',
+    studentId: '',
+    requestId: 0,
+    busy: '',
+    error: '',
+    available: null,
+    missing: [],
+    policies: [],
+    statusResult: null,
+    policy: null,
+    evaluation: null,
+    rounds: [],
+    roundContext: null,
+    candidates: null,
+    candidatesError: '',
+    mode: ''
+};
 let clinicPrintRecommendationState = {
     scope: 'class',
     status: 'idle',
@@ -737,6 +756,935 @@ async function clinicPrintVerifyFollowUpStillLatest(action, state, requestId, co
     }
 }
 
+function clinicPrintBuildSourceProvenance(action) {
+    // A0: freeze the teacher-confirmed source assignment/session per recipient.
+    // Only exact follow-up modes carry a source; plain transfers stay without it
+    // so the student read model can report an honest "관계 확인 불가".
+    const mode = String(action?.mode || '');
+    if (!action || (mode !== 'same_uid' && mode !== 'similar_uid')) return null;
+    const state = clinicPrintGetRecommendationAssessmentState(action.classId);
+    const source = (state.discovered || []).find(row =>
+        String(row.assignmentId || '') === String(action.assignmentId || '') &&
+        String(row.classId || '') === String(action.classId || ''));
+    // A follow-up without its exact frozen source must not be issued: it would
+    // leave an unverifiable relation on the student card.
+    if (!source) throw new Error('기준 시험의 동결 정보를 확인할 수 없습니다. 후속 후보를 다시 불러온 뒤 다시 시도하세요.');
+    const targetScope = action.targetScope ? {
+        pathKey: String(action.targetScope.pathKey || ''),
+        difficultyBucket: action.targetScope.difficultyBucket == null ? null : Number(action.targetScope.difficultyBucket),
+        targetUidCount: Number(action.targetUidCount || 0)
+    } : null;
+    return {
+        schema: 'clinic-source-provenance-v1',
+        relationKind: mode,
+        recipients: [{
+            studentId: String(action.studentId || ''),
+            classId: String(source.classId || ''),
+            source: {
+                assignmentId: String(source.assignmentId || ''),
+                sessionId: String(action.sourceSessionId || action.sessionId || ''),
+                savedPaperId: String(source.savedPaperId || ''),
+                examTitle: String(source.examTitle || ''),
+                examDate: String(source.examDate || ''),
+                archiveFile: String(source.archiveFile || ''),
+                questionCount: Number(source.questionCount || 0)
+            },
+            resultSignature: String(action.resultSignature || ''),
+            targetScope
+        }]
+    };
+}
+
+// ---------------------------------------------------------------------------
+// Teacher-confirmed repeat operations (Worker C contract)
+//
+// The repeat controller never issues an exam. It reserves a round, then the
+// existing teacher-confirmed recommendation flow creates/saves/assigns the
+// paper, and the server verifies the resulting assignment rows before the round
+// becomes ISSUED.
+// ---------------------------------------------------------------------------
+
+function clinicPrintResetRepeatState(classId = '') {
+    clinicPrintRepeatState = {
+        classId: String(classId || ''),
+        studentId: '',
+        requestId: Number(clinicPrintRepeatState?.requestId || 0) + 1,
+        busy: '',
+        error: '',
+        available: null,
+        missing: [],
+        policies: [],
+        statusResult: null,
+        policyId: '',
+        policy: null,
+        evaluation: null,
+        rounds: [],
+        roundContext: null,
+        candidates: null,
+        candidatesError: '',
+        truncated: false,
+        openRoundPolicyIds: [],
+        mode: ''
+    };
+}
+
+function clinicPrintGetRepeatClient() {
+    if (clinicPrintRepeatClient) return clinicPrintRepeatClient;
+    if (!window.ClinicRepeat || typeof window.ClinicRepeat.create !== 'function') {
+        throw new Error('반복 운영 모듈을 불러오지 못했습니다. 화면을 새로고침해 주세요.');
+    }
+    clinicPrintRepeatClient = window.ClinicRepeat.create({
+        request: clinicPrintCreateAssessmentTransport(),
+        onRoundReserved: (round, context) => clinicPrintOnRepeatRoundReserved(round, context)
+    });
+    return clinicPrintRepeatClient;
+}
+
+function clinicPrintRepeatNowIso(value) {
+    const text = String(value || '').trim();
+    if (!text) return '';
+    const parsed = Date.parse(text);
+    if (!Number.isFinite(parsed)) return text;
+    try {
+        return new Date(parsed).toLocaleString('ko-KR', { dateStyle: 'medium', timeStyle: 'short' });
+    } catch {
+        return text;
+    }
+}
+
+function clinicPrintRepeatStatusLabel(evaluation) {
+    if (!evaluation || typeof evaluation !== 'object') return '상태 확인 필요';
+    const label = String(evaluation.label || '').trim();
+    if (label) return label;
+    return ({
+        NEEDS_CHECK: '결과 확인 필요',
+        WAITING_CADENCE: '다음 추천 가능 시점 전',
+        CONFIRMATION_NEEDED: '교사 확인 후 다음 회차 준비',
+        CLOSED: '종료'
+    })[String(evaluation.state || '')] || '상태 확인 필요';
+}
+
+function clinicPrintRepeatSourceAssignments(classId, studentId = clinicPrintRepeatState.studentId) {
+    const assessment = clinicPrintGetRecommendationAssessmentState(classId);
+    const outcomes = new Map((Array.isArray(assessment.outcomes) ? assessment.outcomes : [])
+        .map(row => [String(row.assignmentId || row.result?.assignment?.assignmentId || ''), row]));
+    return (Array.isArray(assessment.discovered) ? assessment.discovered : [])
+        .filter(row => String(row.classId || '') === String(classId || '') && String(row.assignmentId || ''))
+        .filter(row => {
+            if (!studentId) return true;
+            const outcome = outcomes.get(String(row.assignmentId || ''))?.result;
+            const student = (outcome?.students || []).find(candidate => String(candidate.studentId || '') === String(studentId));
+            return !!student && student.status === 'result' && student.followUpContext?.recommendationInput?.eligible === true;
+        })
+        .slice(0, 80);
+}
+
+async function clinicPrintRefreshRepeatSourceList(classId) {
+    await clinicPrintRefreshRecommendationAssessment(classId, { quiet: true });
+    clinicPrintRenderRepeatSection(classId);
+}
+
+function clinicPrintRepeatSettingsOf(policy) {
+    const settings = policy?.settings;
+    return settings && typeof settings === 'object' ? settings : null;
+}
+
+// The repeat policy's explicit question/difficulty/seen choices are carried into
+// the round reservation and then into the existing recommendation options. They
+// are never silently ignored in favour of the separate recommendation panel.
+function clinicPrintRepeatCandidateFromPolicy(policy, mode) {
+    const settings = clinicPrintRepeatSettingsOf(policy) || {};
+    const candidate = {};
+    const questionCount = Number(settings.questionCount);
+    if (Number.isInteger(questionCount) && questionCount >= 1 && questionCount <= 400) {
+        candidate.questionCount = questionCount;
+    }
+    if (Array.isArray(settings.difficultyBuckets) && settings.difficultyBuckets.length) {
+        candidate.difficultyBuckets = settings.difficultyBuckets
+            .map(Number).filter(value => Number.isInteger(value) && value >= 1 && value <= 5)
+            .sort((a, b) => a - b);
+        if (!candidate.difficultyBuckets.length) delete candidate.difficultyBuckets;
+    }
+    if (typeof settings.includeSeenQuestionUids === 'boolean') {
+        candidate.includeSeenQuestionUids = settings.includeSeenQuestionUids;
+    }
+    if (settings.note) candidate.note = String(settings.note);
+    if (mode === 'same_uid' || mode === 'similar_uid') candidate.mode = mode;
+    return candidate;
+}
+
+function clinicPrintRepeatRecommendationOptions(candidate, baseOptions) {
+    if (!candidate || typeof candidate !== 'object') return null;
+    const base = baseOptions && typeof baseOptions === 'object'
+        ? baseOptions
+        : { countPerStudent: 5, difficultyMode: 'match_wrong', selectedDifficultyBuckets: [] };
+    const buckets = Array.isArray(candidate.difficultyBuckets)
+        ? candidate.difficultyBuckets.map(Number).filter(value => Number.isInteger(value) && value >= 1 && value <= 5)
+        : [];
+    const questionCount = Number(candidate.questionCount);
+    if (!buckets.length && !(Number.isInteger(questionCount) && questionCount >= 1)) return null;
+    const countPerStudent = Number.isInteger(questionCount) && questionCount >= 1
+        ? questionCount
+        : Number(base.countPerStudent) || 5;
+    return {
+        countPerStudent,
+        difficultyMode: buckets.length ? 'selected' : String(base.difficultyMode || 'match_wrong'),
+        selectedDifficultyBuckets: buckets.length
+            ? buckets
+            : (String(base.difficultyMode) === 'selected' && Array.isArray(base.selectedDifficultyBuckets)
+                ? base.selectedDifficultyBuckets.map(Number) : [])
+    };
+}
+
+function clinicPrintRepeatRoundCandidate(state) {
+    const fromContext = state?.roundContext?.candidate;
+    if (fromContext && typeof fromContext === 'object') return fromContext;
+    const summary = state?.evaluation?.openRound?.candidateSummary;
+    return summary && typeof summary === 'object' ? summary : {};
+}
+
+function clinicPrintRepeatRenderSettings(classId) {
+    const state = clinicPrintRepeatState;
+    const settings = clinicPrintRepeatSettingsOf(state.policy);
+    const bucketSet = new Set(Array.isArray(settings?.difficultyBuckets) ? settings.difficultyBuckets.map(Number) : []);
+    const includeSeen = settings?.includeSeenQuestionUids;
+    return `<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;align-items:flex-end;">
+        <label style="font-size:11px;font-weight:700;">재추천 간격(일)<input id="clinic-print-repeat-cadence" type="number" min="1" max="365" step="1" value="${settings ? clinicPrintEscapeAttr(settings.cadenceDays) : ''}" placeholder="교사가 직접 입력" style="display:block;width:110px;margin-top:3px;"></label>
+        <label style="font-size:11px;font-weight:700;">최대 회차<input id="clinic-print-repeat-max-rounds" type="number" min="1" max="50" step="1" value="${settings ? clinicPrintEscapeAttr(settings.maxRounds) : ''}" placeholder="교사가 직접 입력" style="display:block;width:90px;margin-top:3px;"></label>
+        <label style="font-size:11px;font-weight:700;">관측 오답 0일 때<select id="clinic-print-repeat-stop" style="display:block;margin-top:3px;"><option value="">직접 선택</option><option value="false" ${settings?.stopOnCompleteNoObservedWrongs === false ? 'selected' : ''}>계속 운영</option><option value="true" ${settings?.stopOnCompleteNoObservedWrongs === true ? 'selected' : ''}>종료(숙련 판정 아님)</option></select></label>
+        <label style="font-size:11px;font-weight:700;">문항 수(선택)<input id="clinic-print-repeat-questions" type="number" min="1" max="400" step="1" value="${settings?.questionCount ? clinicPrintEscapeAttr(settings.questionCount) : ''}" placeholder="선택" style="display:block;width:90px;margin-top:3px;"></label>
+        <label style="font-size:11px;font-weight:700;">이미 푼 문항<select id="clinic-print-repeat-include-seen" style="display:block;margin-top:3px;"><option value="">직접 선택</option><option value="false" ${includeSeen === false ? 'selected' : ''}>제외</option><option value="true" ${includeSeen === true ? 'selected' : ''}>포함</option></select></label>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;align-items:center;"><span style="font-size:11px;font-weight:700;">난이도(선택)</span>${[1,2,3,4,5].map(bucket => `<label style="font-size:11px;display:inline-flex;gap:3px;align-items:center;"><input type="checkbox" name="clinic-print-repeat-bucket" value="${bucket}" ${bucketSet.has(bucket) ? 'checked' : ''}>${bucket}</label>`).join('')}<label style="font-size:11px;font-weight:700;flex:1;min-width:180px;">메모(선택)<input id="clinic-print-repeat-note" type="text" maxlength="500" value="${settings?.note ? clinicPrintEscapeAttr(settings.note) : ''}" placeholder="선택" style="display:block;width:100%;margin-top:3px;"></label></div>
+    ${state.policy ? '<div style="font-size:10px;color:var(--secondary);margin-top:4px;">저장된 설정을 불러왔습니다. 수정하면 새 revision으로 저장되며 이미 발행된 회차는 바뀌지 않습니다. 문항 수·난이도·이미 푼 문항 설정은 다음 회차 예약에 그대로 적용됩니다.</div>' : '<div style="font-size:10px;color:var(--secondary);margin-top:4px;">기본값은 없습니다. 재추천 간격·최대 회차·종료 여부를 교사가 직접 선택해야 저장됩니다. 문항 수·난이도·이미 푼 문항은 다음 회차 예약에 적용됩니다.</div>'}`;
+}
+
+function clinicPrintReadRepeatSettings() {
+    const errors = [];
+    const cadenceRaw = String(document.getElementById('clinic-print-repeat-cadence')?.value || '').trim();
+    const maxRoundsRaw = String(document.getElementById('clinic-print-repeat-max-rounds')?.value || '').trim();
+    const stopRaw = String(document.getElementById('clinic-print-repeat-stop')?.value || '').trim();
+    const questionRaw = String(document.getElementById('clinic-print-repeat-questions')?.value || '').trim();
+    const includeSeenRaw = String(document.getElementById('clinic-print-repeat-include-seen')?.value || '').trim();
+    const note = String(document.getElementById('clinic-print-repeat-note')?.value || '').trim();
+    if (!/^\d+$/.test(cadenceRaw) || Number(cadenceRaw) < 1 || Number(cadenceRaw) > 365) {
+        errors.push('재추천 간격은 1~365일 사이 정수로 직접 입력하세요.');
+    }
+    if (!/^\d+$/.test(maxRoundsRaw) || Number(maxRoundsRaw) < 1 || Number(maxRoundsRaw) > 50) {
+        errors.push('최대 회차는 1~50 사이 정수로 직접 입력하세요.');
+    }
+    if (stopRaw !== 'true' && stopRaw !== 'false') {
+        errors.push('관측 오답 0일 때 종료할지 직접 선택하세요.');
+    }
+    if (questionRaw && (!/^\d+$/.test(questionRaw) || Number(questionRaw) < 1 || Number(questionRaw) > 400)) {
+        errors.push('문항 수는 1~400 사이 정수로 입력하세요.');
+    }
+    if (includeSeenRaw && includeSeenRaw !== 'true' && includeSeenRaw !== 'false') {
+        errors.push('이미 푼 문항 포함 여부를 직접 선택하세요.');
+    }
+    const buckets = Array.from(document.querySelectorAll('input[name="clinic-print-repeat-bucket"]:checked'))
+        .map(input => Number(input.value)).filter(value => Number.isInteger(value) && value >= 1 && value <= 5).sort((a, b) => a - b);
+    if (errors.length) return { errors, settings: null };
+    return {
+        errors: [],
+        settings: {
+            cadenceDays: Number(cadenceRaw),
+            maxRounds: Number(maxRoundsRaw),
+            stopOnCompleteNoObservedWrongs: stopRaw === 'true',
+            ...(questionRaw ? { questionCount: Number(questionRaw) } : {}),
+            ...(buckets.length ? { difficultyBuckets: buckets } : {}),
+            ...(includeSeenRaw ? { includeSeenQuestionUids: includeSeenRaw === 'true' } : {}),
+            ...(note ? { note } : {})
+        }
+    };
+}
+
+function clinicPrintRenderRepeatSection(classId = clinicPrintActiveClassId) {
+    const root = document.getElementById('clinic-print-repeat-body');
+    if (!root) return;
+    const state = clinicPrintRepeatState;
+    if (String(state.classId || '') !== String(classId || '')) {
+        root.innerHTML = '<div class="clinic-print-note">반복 운영 상태를 다시 불러오세요.</div>';
+        return;
+    }
+    const students = clinicPrintGetClassStudents(classId);
+    const studentOptions = students.map(student => `<option value="${clinicPrintEscapeAttr(student.id)}" ${String(student.id) === String(state.studentId) ? 'selected' : ''}>${clinicPrintEscapeHtml(student.name || student.id)}</option>`).join('');
+    const studentSelect = `<label style="font-size:11px;font-weight:700;">대상 학생<select id="clinic-print-repeat-student" style="display:block;min-width:160px;margin-top:3px;" onchange="clinicPrintOnRepeatStudentChange('${clinicPrintEscapeJsString(classId)}',this.value)"><option value="">학생 선택…</option>${studentOptions}</select></label>`;
+    if (!state.studentId) {
+        root.innerHTML = `<div class="clinic-print-note">학생을 선택하면 그 학생의 반복 정책·상태를 조회합니다. 정책은 교사가 확인한 경우에만 저장됩니다.</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:7px;">${studentSelect}</div>`;
+        return;
+    }
+    if (state.busy === 'loading') {
+        root.innerHTML = `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:2px;">${studentSelect}</div><div class="clinic-print-note" aria-live="polite">반복 정책·상태를 조회하고 있습니다.</div>`;
+        return;
+    }
+    if (state.available === false) {
+        root.innerHTML = `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:2px;">${studentSelect}</div><div class="clinic-print-note" aria-live="polite">추천클리닉 반복 운영 기능이 아직 준비되지 않았습니다. 기존 수동 배정·클리닉은 그대로 사용할 수 있습니다.</div>`;
+        return;
+    }
+    const policies = Array.isArray(state.policies) ? state.policies : [];
+    const policyOptions = policies.map(policy => {
+        const id = String(policy.policy?.policyId || '');
+        const source = String(policy.policy?.sourceIdentity || policy.policy?.sourceAssignmentId || '');
+        return `<option value="${clinicPrintEscapeAttr(id)}" ${id === String(state.policyId) ? 'selected' : ''}>${clinicPrintEscapeHtml(source)} · ${clinicPrintEscapeHtml(clinicPrintRepeatStatusLabel(policy.evaluation))}</option>`;
+    }).join('');
+    const policySelect = policies.length > 1
+        ? `<label style="font-size:11px;font-weight:700;">반복 정책<select id="clinic-print-repeat-policy" style="display:block;min-width:220px;margin-top:3px;" onchange="clinicPrintOnRepeatPolicyChange('${clinicPrintEscapeJsString(classId)}',this.value)">${policyOptions}</select></label>` : '';
+    const sourceAssignments = clinicPrintRepeatSourceAssignments(classId, state.studentId);
+    const sourceOptions = sourceAssignments.map(row => `<option value="${clinicPrintEscapeAttr(row.assignmentId)}">${clinicPrintEscapeHtml(`${row.examDate || '날짜 미상'} · ${row.examTitle || '추천 보충시험'} · ${Number(row.questionCount || 0)}문항`)}</option>`).join('');
+    const policy = state.policy;
+    const evaluation = state.evaluation || {};
+    const roundContext = state.roundContext;
+    const canReserve = evaluation.canReserve === true;
+    const mode = String(state.mode || clinicPrintRepeatRoundCandidate(state).mode || '');
+    const openRound = evaluation.openRound || (roundContext ? {
+        roundId: roundContext.roundId,
+        operationId: roundContext.operationId,
+        status: String(roundContext.status || 'RESERVED'),
+        candidateSummary: roundContext.candidate || {}
+    } : null);
+    const canResumeIssue = !canReserve && !!openRound && String(openRound.status || 'RESERVED') === 'RESERVED' &&
+        !!policy && policy.status === 'ACTIVE';
+    const truncationNotice = state.truncated
+        ? `<div style="font-size:11px;color:var(--warning);margin-top:5px;" role="status">정책/회차가 많아 일부만 표시됩니다. 열린 회차 정책은 우선 포함되지만, 새 정책 만들기는 잠시 제한됩니다. 기존 정책을 정리한 뒤 다시 확인하세요.</div>`
+        : '';
+    const statusText = clinicPrintRepeatStatusText(state, evaluation);
+    const errorHtml = state.error ? `<div style="font-size:11px;color:var(--error);margin-top:5px;" role="alert">${clinicPrintEscapeHtml(state.error)}</div>` : '';
+    const roundRows = (Array.isArray(state.rounds) ? state.rounds : []).slice(0, 6).map(round => `<div>${clinicPrintEscapeHtml(window.ClinicRepeat?.roundLabel ? window.ClinicRepeat.roundLabel(round) : `${Number(round.roundNo || 0)}회차 · ${String(round.status || '')}`)}${round.confirmedAt ? ` · ${clinicPrintEscapeHtml(clinicPrintRepeatNowIso(round.confirmedAt))}` : ''}</div>`).join('');
+    const policyBlock = policy ? `<div class="clinic-print-note" style="margin-top:6px;"><strong>${clinicPrintEscapeHtml(clinicPrintRepeatStatusLabel(evaluation))}</strong> · 회차 ${Number(evaluation.roundsUsed || 0)}/${evaluation.maxRounds == null ? '-' : Number(evaluation.maxRounds)}${evaluation.nextEligibleAt ? ` · 다음 가능 ${clinicPrintEscapeHtml(clinicPrintRepeatNowIso(evaluation.nextEligibleAt))}` : ''}<div style="margin-top:3px;">기준: ${clinicPrintEscapeHtml(policy.sourceIdentity || policy.sourceAssignmentId || '')} · revision ${Number(policy.revision || 0)} · ${clinicPrintEscapeHtml(window.ClinicRepeat?.settingsSummary ? window.ClinicRepeat.settingsSummary(policy.settings || {}) : '')}</div>${statusText ? `<div style="margin-top:3px;">${clinicPrintEscapeHtml(statusText)}</div>` : ''}${roundRows ? `<details style="margin-top:4px;"><summary style="cursor:pointer;font-size:10px;font-weight:700;">최근 회차 ${Math.min(6, state.rounds.length)}건</summary>${roundRows}</details>` : ''}</div>` : '';
+    const modeOptions = `<option value="">직접 선택</option><option value="same_uid" ${mode === 'same_uid' ? 'selected' : ''}>같은 UID 재연습</option><option value="similar_uid" ${mode === 'similar_uid' ? 'selected' : ''}>다른 유사문항</option>`;
+    const actions = policy ? `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:7px;">
+        ${canReserve ? `<label style="font-size:11px;font-weight:700;">회차 방식<select id="clinic-print-repeat-mode" style="display:block;margin-top:2px;" onchange="clinicPrintSetRepeatMode(this.value)">${modeOptions}</select></label><button type="button" class="clinic-print-mini-btn clinic-print-mini-btn--primary" onclick="clinicPrintRepeatReserve('${clinicPrintEscapeJsString(classId)}')">교사 확인 후 ${Number(evaluation.roundsUsed || 0) + 1}회차 준비</button>` : ''}
+        ${openRound ? `<button type="button" class="clinic-print-mini-btn" onclick="clinicPrintRepeatRecoverOpenRound('${clinicPrintEscapeJsString(classId)}')">열린 회차 배정 확인</button><button type="button" class="clinic-print-mini-btn" onclick="clinicPrintRepeatMarkUnresolved('${clinicPrintEscapeJsString(classId)}')">결과 미확정 표시</button><button type="button" class="clinic-print-mini-btn" onclick="clinicPrintRepeatRelease('${clinicPrintEscapeJsString(classId)}')">배정 없음 확인 후 해제</button>` : ''}
+        ${canResumeIssue ? `<label style="font-size:11px;font-weight:700;">회차 방식<select id="clinic-print-repeat-mode" style="display:block;margin-top:2px;" onchange="clinicPrintSetRepeatMode(this.value)">${modeOptions}</select></label><button type="button" class="clinic-print-mini-btn clinic-print-mini-btn--primary" onclick="clinicPrintRepeatResumeIssue('${clinicPrintEscapeJsString(classId)}')">회차 발행 흐름 다시 열기</button>` : ''}
+        ${policy.status === 'ACTIVE' ? `<button type="button" class="clinic-print-mini-btn" ${openRound ? 'disabled title="열린 회차를 먼저 확정하거나 해제하세요."' : ''} onclick="clinicPrintRepeatClose('${clinicPrintEscapeJsString(classId)}')">반복 운영 종료</button>` : `<button type="button" class="clinic-print-mini-btn" onclick="clinicPrintRepeatReopen('${clinicPrintEscapeJsString(classId)}')">반복 운영 재개</button>`}
+        <button type="button" class="clinic-print-mini-btn" onclick="clinicPrintRefreshRepeat('${clinicPrintEscapeJsString(classId)}')">상태 새로고침</button>
+    </div>` : '';
+    const canCreatePolicy = !policy && !state.truncated;
+    const createBlock = !policy ? `<div style="margin-top:8px;border-top:1px solid var(--border);padding-top:8px;">
+        <div style="font-size:11px;font-weight:700;">새 반복 정책</div>
+        <label style="font-size:11px;font-weight:700;display:block;margin-top:4px;">기준 시험 배정<select id="clinic-print-repeat-source" style="display:block;min-width:240px;max-width:100%;margin-top:3px;"><option value="">기준 배정 선택…</option>${sourceOptions}</select></label>
+        ${!sourceAssignments.length ? '<div style="font-size:10px;color:var(--secondary);margin-top:3px;">기준 배정 목록이 없습니다. 아래 버튼으로 기존 배정·응시 결과를 먼저 새로고침하세요.</div>' : ''}
+        <button type="button" class="clinic-print-mini-btn" style="margin-top:5px;" onclick="clinicPrintRefreshRepeatSourceList('${clinicPrintEscapeJsString(classId)}')">기존 배정·응시 결과 새로고침</button>
+        ${clinicPrintRepeatRenderSettings(classId)}
+        ${canCreatePolicy
+            ? `<button type="button" class="clinic-print-mini-btn" style="margin-top:7px;" onclick="clinicPrintRepeatSaveSettings('${clinicPrintEscapeJsString(classId)}')">반복 정책 저장</button>`
+            : '<div style="font-size:10px;color:var(--warning);margin-top:7px;">정책 수가 많아 새 정책 저장을 잠시 제한했습니다. 기존 정책을 정리한 뒤 다시 시도하세요.</div>'}
+    </div>` : `<details style="margin-top:8px;"><summary style="cursor:pointer;font-size:11px;font-weight:700;">저장된 반복 설정 보기·수정</summary>${clinicPrintRepeatRenderSettings(classId)}<button type="button" class="clinic-print-mini-btn" style="margin-top:7px;" onclick="clinicPrintRepeatSaveSettings('${clinicPrintEscapeJsString(classId)}')">설정 수정 저장</button></details>`;
+    const candidates = state.candidates;
+    const candidateHtml = candidates ? `<div class="clinic-print-note" style="margin-top:7px;">열린 회차 배정 후보: ${Number((candidates.suggestedAssignmentIds || []).length)}개${candidates.discovery === 'NONE' ? ' (아직 저장·배정 기록 없음)' : ''}${candidates.groups?.length ? ` · 묶음 ${candidates.groups.length}개` : ''}${state.candidatesError ? ` · ${clinicPrintEscapeHtml(state.candidatesError)}` : ''}</div>` : '';
+    root.innerHTML = `<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;">${studentSelect}${policySelect}</div>${truncationNotice}${errorHtml}${policyBlock}${actions}${candidateHtml}${createBlock}`;
+}
+
+function clinicPrintRepeatStatusText(state, evaluation) {
+    if (!evaluation || !evaluation.state) return '';
+    if (evaluation.state === 'WAITING_CADENCE') return '다음 추천 가능 시점 전에는 새 회차를 준비하지 않습니다.';
+    if (evaluation.state === 'CONFIRMATION_NEEDED') return '교사가 확인해야만 다음 회차를 준비할 수 있습니다.';
+    if (evaluation.state === 'CLOSED') {
+        if (evaluation.openRound) {
+            return '종료된 정책에 열린 회차가 남아 있습니다. 회차를 확정하거나 해제한 뒤 다시 종료하거나, 정책을 재개하세요.';
+        }
+        return evaluation.reasonCode === 'NO_OBSERVED_WRONGS'
+            ? '관측 오답 0으로 종료했습니다. 이는 숙련 완료 판정이 아닙니다.'
+            : '반복 운영이 종료되었습니다.';
+    }
+    if (evaluation.state === 'NEEDS_CHECK') return '학생 응시·기준 결과 확인이 필요합니다. 미확인을 0점으로 채우지 않습니다.';
+    return '';
+}
+
+async function clinicPrintRefreshRepeat(classId, studentId = clinicPrintRepeatState.studentId) {
+    const wantedClassId = String(classId || '');
+    const wantedStudentId = String(studentId || '');
+    if (!wantedClassId || wantedStudentId == null || wantedStudentId === '') return;
+    if (String(clinicPrintRepeatState.classId || '') !== wantedClassId) clinicPrintResetRepeatState(wantedClassId);
+    const state = clinicPrintRepeatState;
+    state.studentId = wantedStudentId;
+    state.requestId = Number(state.requestId || 0) + 1;
+    const requestId = state.requestId;
+    state.busy = 'loading';
+    state.error = '';
+    clinicPrintRenderRepeatSection(wantedClassId);
+    try {
+        const client = clinicPrintGetRepeatClient();
+        const [listResult, statusResult] = await Promise.all([
+            client.list({ classId: wantedClassId, studentId: wantedStudentId, requestId }),
+            client.status({ classId: wantedClassId, studentId: wantedStudentId, requestId })
+        ]);
+        if (state.requestId !== requestId) return;
+        if (listResult.stale || statusResult.stale) return;
+        state.policies = Array.isArray(statusResult.data?.policies) ? statusResult.data.policies : [];
+        state.truncated = statusResult.data?.truncated === true;
+        state.openRoundPolicyIds = Array.isArray(statusResult.data?.openRoundPolicyIds)
+            ? statusResult.data.openRoundPolicyIds.map(String) : [];
+        if (!state.policyId || !state.policies.some(policy => String(policy.policy?.policyId || '') === String(state.policyId))) {
+            const openPolicy = state.policies.find(policy => policy?.evaluation?.openRound);
+            state.policyId = String(openPolicy?.policy?.policyId || state.policies[0]?.policy?.policyId || '');
+        }
+        clinicPrintApplyRepeatPolicyState(state);
+        state.available = true;
+        state.busy = '';
+        clinicPrintRenderRepeatSection(wantedClassId);
+    } catch (error) {
+        if (state.requestId !== requestId) return;
+        state.busy = '';
+        state.truncated = false;
+        state.openRoundPolicyIds = [];
+        if (window.ClinicRepeat?.isFeatureUnavailable(error)) {
+            state.available = false;
+            state.missing = Array.isArray(error.extra?.data?.missing) ? error.extra.data.missing : [];
+            state.error = '';
+        } else {
+            state.available = true;
+            state.error = String(error?.message || '반복 운영 상태를 불러오지 못했습니다.');
+        }
+        clinicPrintRenderRepeatSection(wantedClassId);
+    }
+}
+
+function clinicPrintApplyRepeatPolicyState(state) {
+    const selected = (state.policies || []).find(policy => String(policy.policy?.policyId || '') === String(state.policyId || '')) || null;
+    state.statusResult = selected;
+    state.policy = selected?.policy || null;
+    state.evaluation = selected?.evaluation || null;
+    state.rounds = Array.isArray(selected?.rounds) ? selected.rounds : [];
+    const open = state.evaluation?.openRound || null;
+    if (open && open.roundId && open.operationId) {
+        state.roundContext = {
+            classId: String(state.classId || ''),
+            studentId: String(state.studentId || ''),
+            policyId: String(state.policy?.policyId || ''),
+            roundId: String(open.roundId),
+            operationId: String(open.operationId),
+            status: String(open.status || 'RESERVED'),
+            sourceAssignmentId: String(state.policy?.sourceAssignmentId || ''),
+            candidate: open.candidateSummary && typeof open.candidateSummary === 'object' ? open.candidateSummary : {},
+            mode: String(state.mode || '')
+        };
+    } else if (!open) {
+        state.roundContext = null;
+    }
+}
+
+function clinicPrintOnRepeatStudentChange(classId, studentId) {
+    const wantedStudentId = String(studentId || '').trim();
+    if (!wantedStudentId) {
+        clinicPrintRepeatState.studentId = '';
+        clinicPrintRepeatState.policyId = '';
+        clinicPrintRepeatState.policy = null;
+        clinicPrintRepeatState.evaluation = null;
+        clinicPrintRepeatState.policies = [];
+        clinicPrintRepeatState.roundContext = null;
+        clinicPrintRepeatState.candidates = null;
+        clinicPrintRepeatState.error = '';
+        clinicPrintRenderRepeatSection(classId);
+        return;
+    }
+    clinicPrintRepeatState.policyId = '';
+    clinicPrintRepeatState.policy = null;
+    clinicPrintRepeatState.evaluation = null;
+    clinicPrintRepeatState.policies = [];
+    clinicPrintRepeatState.roundContext = null;
+    clinicPrintRepeatState.candidates = null;
+    clinicPrintRepeatState.error = '';
+    clinicPrintRefreshRepeat(classId, wantedStudentId);
+}
+
+function clinicPrintSetRepeatMode(mode) {
+    const value = String(mode || '');
+    clinicPrintRepeatState.mode = value === 'same_uid' || value === 'similar_uid' ? value : '';
+}
+
+function clinicPrintOnRepeatPolicyChange(classId, policyId) {
+    const state = clinicPrintRepeatState;
+    if (String(state.classId || '') !== String(classId || '')) return;
+    state.policyId = String(policyId || '');
+    state.candidates = null;
+    state.candidatesError = '';
+    state.error = '';
+    clinicPrintApplyRepeatPolicyState(state);
+    clinicPrintRenderRepeatSection(classId);
+}
+
+async function clinicPrintRepeatSaveSettings(classId) {
+    const state = clinicPrintRepeatState;
+    if (String(state.classId || '') !== String(classId || '') || !state.studentId) return;
+    if (!state.policy && state.truncated) {
+        state.error = '정책 수가 많아 새 반복 정책을 저장할 수 없습니다. 기존 정책을 정리한 뒤 다시 시도하세요.';
+        clinicPrintRenderRepeatSection(classId);
+        return;
+    }
+    const read = clinicPrintReadRepeatSettings();
+    if (read.errors.length) {
+        state.error = read.errors.join(' ');
+        clinicPrintRenderRepeatSection(classId);
+        return;
+    }
+    state.busy = 'saving';
+    state.error = '';
+    clinicPrintRenderRepeatSection(classId);
+    try {
+        const client = clinicPrintGetRepeatClient();
+        if (!state.policy) {
+            const sourceAssignmentId = String(document.getElementById('clinic-print-repeat-source')?.value || '').trim();
+            if (!sourceAssignmentId) throw new Error('기준 시험 배정을 선택하세요.');
+            await client.createPolicy({
+                classId, studentId: state.studentId, sourceAssignmentId, settings: read.settings
+            });
+        } else {
+            await client.updatePolicy({
+                policyId: state.policy.policyId,
+                classId,
+                studentId: state.studentId,
+                expectedRevision: Number(state.policy.revision || 0),
+                settings: read.settings
+            });
+        }
+        state.busy = '';
+        await clinicPrintRefreshRepeat(classId, state.studentId);
+        toast(state.policy ? '반복 설정을 저장했습니다.' : '반복 정책을 만들었습니다.');
+    } catch (error) {
+        state.busy = '';
+        state.error = String(error?.message || '반복 설정을 저장하지 못했습니다.');
+        clinicPrintRenderRepeatSection(classId);
+    }
+}
+
+async function clinicPrintRepeatReserve(classId) {
+    const state = clinicPrintRepeatState;
+    const policy = state.policy;
+    const evaluation = state.evaluation;
+    if (!policy || !evaluation?.canReserve) {
+        toast(clinicPrintRepeatStatusLabel(evaluation), 'warn');
+        return;
+    }
+    const mode = String(document.getElementById('clinic-print-repeat-mode')?.value || state.mode || '');
+    if (mode !== 'same_uid' && mode !== 'similar_uid') {
+        toast('이번 회차의 후속 방식을 직접 선택하세요.', 'warn');
+        return;
+    }
+    state.mode = mode;
+    const confirmed = window.confirm(`선생님 확인: ${state.studentId} 학생의 ${Number(evaluation.roundsUsed || 0) + 1}회차 반복 운영을 준비합니다.\n\n기준 배정: ${policy.sourceAssignmentId}\n현재 결과 근거 서명: ${String(evaluation.evidenceSignature || '').slice(0, 12)}…\n후속 방식: ${mode === 'same_uid' ? '같은 UID 재연습' : '다른 유사문항'}\n\n이 확인 후에도 시험지는 자동 발행되지 않습니다. 기존 확정 추천 선택·배정 절차에서 실제 발행을 완료해야 합니다.`);
+    if (!confirmed) return;
+    state.busy = 'reserving';
+    state.error = '';
+    clinicPrintRenderRepeatSection(classId);
+    try {
+        const client = clinicPrintGetRepeatClient();
+        const candidate = clinicPrintRepeatCandidateFromPolicy(policy, mode);
+        const result = await client.reserveRound({
+            policyId: policy.policyId,
+            classId,
+            studentId: state.studentId,
+            confirmed: true,
+            expectedRevision: Number(policy.revision || 0),
+            evidenceSignature: evaluation.evidenceSignature,
+            // No open round is resending an id here: the controller always
+            // creates a fresh operation id when no RESERVED/UNRESOLVED round
+            // exists, so round 2 and post-release reservations work.
+            operationId: '',
+            candidate
+        });
+        if (result.stale) return;
+        state.busy = '';
+        if (!result.data?.round) throw new Error('회차 예약 응답을 확인할 수 없습니다.');
+        // onRoundReserved normally sets this; keep it as a fallback.
+        if (!state.roundContext) {
+            state.roundContext = {
+                classId: String(classId),
+                studentId: String(state.studentId),
+                policyId: String(policy.policyId),
+                roundId: String(result.data.round.roundId),
+                operationId: String(result.data.round.operationId),
+                status: String(result.data.round.status || 'RESERVED'),
+                sourceAssignmentId: String(policy.sourceAssignmentId),
+                candidate,
+                mode
+            };
+        }
+        await clinicPrintRefreshRepeat(classId, state.studentId);
+    } catch (error) {
+        state.busy = '';
+        state.error = String(error?.message || '회차를 준비하지 못했습니다.');
+        // A lost response on the first reserve means the round already exists;
+        // refresh so the open-round recovery actions become reachable.
+        if (String(error?.code || '') === 'OPEN_ROUND_EXISTS' || String(error?.code || '') === 'ROUND_ALREADY_RESERVED') {
+            toast('이미 열린 회차가 있습니다. "열린 회차 배정 확인"에서 이어서 진행하세요.', 'warn');
+            await clinicPrintRefreshRepeat(classId, state.studentId);
+            return;
+        }
+        clinicPrintRenderRepeatSection(classId);
+    }
+}
+
+function clinicPrintRepeatOperationIdFor(classId, followUpAction) {
+    const context = clinicPrintRepeatState.roundContext;
+    if (!context) return '';
+    if (String(context.classId || '') !== String(classId || '')) return '';
+    if (String(context.studentId || '') !== String(followUpAction?.studentId || '')) return '';
+    if (String(context.sourceAssignmentId || '') !== String(followUpAction?.assignmentId || '')) return '';
+    return String(context.operationId || '');
+}
+
+function clinicPrintOnRepeatRoundReserved(round, context) {
+    const state = clinicPrintRepeatState;
+    if (!round?.roundId || !round?.operationId) return;
+    const policy = context?.policy || state.policy || {};
+    const status = String(round.status || 'RESERVED');
+    const candidate = context?.candidate && typeof context.candidate === 'object' ? context.candidate : {};
+    state.roundContext = {
+        classId: String(state.classId || ''),
+        studentId: String(state.studentId || ''),
+        policyId: String(policy.policyId || state.policyId || ''),
+        roundId: String(round.roundId),
+        operationId: String(round.operationId),
+        status,
+        sourceAssignmentId: String(policy.sourceAssignmentId || ''),
+        candidate,
+        mode: String(candidate.mode || state.mode || '')
+    };
+    state.candidates = null;
+    state.candidatesError = '';
+    const idempotent = context?.idempotent === true;
+    const knownAssignments = Array.isArray(context?.existingAssignmentIds)
+        ? context.existingAssignmentIds.filter(Boolean) : null;
+    const discoveryUnsupported = context?.assignmentDiscoverySupported === false;
+    // An idempotent retry or an UNRESOLVED round must reconcile stored
+    // assignments before any issue flow. Opening the flow again could create a
+    // second saved-paper/assignment group for the same operation id.
+    const mustReconcile = idempotent || status === 'UNRESOLVED' ||
+        (knownAssignments && knownAssignments.length > 0) || discoveryUnsupported;
+    setTimeout(() => {
+        if (mustReconcile) {
+            clinicPrintRepeatRecoverOpenRound(String(state.classId || ''));
+            return;
+        }
+        clinicPrintStartRepeatRecommendationFlow(
+            String(state.classId || ''),
+            String(state.studentId || ''),
+            String(state.roundContext?.mode || state.mode || '')
+        );
+    }, 0);
+}
+
+// Explicit teacher action after a refresh between reserve and issue: re-open the
+// existing confirmed recommendation flow for the already-reserved round without
+// losing the reservation or generating a new operation identity.
+async function clinicPrintRepeatResumeIssue(classId) {
+    const state = clinicPrintRepeatState;
+    const open = state.evaluation?.openRound || null;
+    if (!state.policy || !state.policy.policyId) return toast('반복 정책을 먼저 선택하세요.', 'warn');
+    if (state.policy.status !== 'ACTIVE') return toast('종료된 정책입니다. 정책을 재개한 뒤 발행 흐름을 열 수 있습니다.', 'warn');
+    if (!open || !open.roundId || !open.operationId || String(open.status || 'RESERVED') !== 'RESERVED') {
+        return toast('발행 흐름을 다시 열 수 있는 배정 확인 대기 회차가 없습니다.', 'warn');
+    }
+    const mode = String(document.getElementById('clinic-print-repeat-mode')?.value || state.mode || open.candidateSummary?.mode || '');
+    if (mode !== 'same_uid' && mode !== 'similar_uid') {
+        return toast('이번 회차의 후속 방식을 직접 선택하세요.', 'warn');
+    }
+    if (!window.confirm('이미 예약된 회차의 발행 흐름을 다시 엽니다.\n\n새 회차를 만들지 않고 기존 예약·작업 번호를 그대로 사용합니다. 실제 발행 후 열린 회차 배정 확인에서 서버 기록으로 확정하세요.')) return;
+    state.mode = mode;
+    state.roundContext = {
+        classId: String(classId),
+        studentId: String(state.studentId),
+        policyId: String(state.policy.policyId),
+        roundId: String(open.roundId),
+        operationId: String(open.operationId),
+        status: 'RESERVED',
+        sourceAssignmentId: String(state.policy.sourceAssignmentId || ''),
+        candidate: open.candidateSummary && typeof open.candidateSummary === 'object' ? open.candidateSummary : {},
+        mode
+    };
+    await clinicPrintStartRepeatRecommendationFlow(classId, state.studentId, mode);
+}
+
+async function clinicPrintStartRepeatRecommendationFlow(classId, studentId, mode) {
+    const state = clinicPrintRepeatState;
+    const context = state.roundContext;
+    if (!context || context.classId !== String(classId || '') || context.studentId !== String(studentId || '')) return;
+    if (state.policy && state.policy.status !== 'ACTIVE') {
+        state.error = '종료된 반복 정책입니다. 발행 흐름을 열려면 정책을 재개하세요.';
+        clinicPrintRenderRepeatSection(classId);
+        return;
+    }
+    const candidate = context.candidate && typeof context.candidate === 'object'
+        ? context.candidate
+        : clinicPrintRepeatRoundCandidate(state);
+    const effectiveMode = (mode === 'same_uid' || mode === 'similar_uid') ? mode
+        : (candidate.mode === 'same_uid' || candidate.mode === 'similar_uid') ? candidate.mode : '';
+    if (!effectiveMode) {
+        state.error = '회차 후속 방식을 선택한 뒤 발행 흐름을 다시 열어 주세요.';
+        clinicPrintRenderRepeatSection(classId);
+        return;
+    }
+    state.mode = effectiveMode;
+    try {
+        await clinicPrintRefreshRecommendationAssessment(classId, { quiet: true });
+        if (!clinicPrintRepeatState.roundContext || clinicPrintRepeatState.roundContext.roundId !== context.roundId) return;
+        const assessment = clinicPrintGetRecommendationAssessmentState(classId);
+        const assignment = (assessment.discovered || []).find(row => String(row.assignmentId || '') === String(context.sourceAssignmentId));
+        const outcome = (assessment.outcomes || []).find(row => String(row.assignmentId || row.result?.assignment?.assignmentId || '') === String(context.sourceAssignmentId))?.result;
+        const student = (outcome?.students || []).find(row => String(row.studentId || '') === String(studentId));
+        if (!assignment || !student || student.status !== 'result' || student.followUpContext?.recommendationInput?.eligible !== true) {
+            throw new Error('반복 회차의 기준 응시가 최신 완결 결과로 확인되지 않습니다. 기존 배정·응시 결과를 새로고침한 뒤 열린 회차를 확인하세요.');
+        }
+        await clinicPrintStartFollowUpRecommendations(classId, context.sourceAssignmentId, studentId, effectiveMode, null, candidate);
+    } catch (error) {
+        if (!clinicPrintRepeatState.roundContext || clinicPrintRepeatState.roundContext.roundId !== context.roundId) return;
+        clinicPrintRepeatState.error = String(error?.message || '기존 확정 추천 흐름을 열지 못했습니다.');
+        clinicPrintRenderRepeatSection(classId);
+    }
+}
+
+async function clinicPrintReconcileRepeatIssue(classId, result) {
+    const state = clinicPrintRepeatState;
+    const context = state.roundContext;
+    if (!context || String(context.classId || '') !== String(classId || '')) return;
+    if (!result || typeof result !== 'object') return;
+    const assignmentIds = (Array.isArray(result.cohorts) ? result.cohorts : [])
+        .flatMap(cohort => (Array.isArray(cohort.saveBatches) ? cohort.saveBatches : [])
+            .flatMap(batch => (Array.isArray(batch.papers) ? batch.papers : []).map(paper => String(paper.assignmentId || ''))))
+        .filter(Boolean);
+    try {
+        const client = clinicPrintGetRepeatClient();
+        if (result.status === 'ASSIGNED' && assignmentIds.length) {
+            const confirmed = window.confirm(`실제 배정 ${assignmentIds.length}개를 ${context.roundId} 회차로 확정할까요?\n\n서버는 저장 시험지 마커·수신 학생·문항 수·배정 ID를 다시 검증합니다.`);
+            if (!confirmed) {
+                toast('회차 확정을 보류했습니다. 열린 회차 배정 확인에서 다시 확정할 수 있습니다.', 'warn');
+                return;
+            }
+            const response = await client.confirmRound({
+                roundId: context.roundId,
+                classId,
+                studentId: context.studentId,
+                policyId: context.policyId,
+                operationId: context.operationId,
+                assignmentIds
+            });
+            if (response.stale) return;
+            state.roundContext = null;
+            state.candidates = null;
+            const extra = Array.isArray(response.data?.additionalAssignmentIds)
+                ? response.data.additionalAssignmentIds.filter(Boolean) : [];
+            const policyMismatch = response.data?.policyQuestionCountMismatch === true;
+            if (extra.length) {
+                toast(`반복 회차를 확정했지만 같은 작업 번호의 다른 배정 ${extra.length}개가 남아 있습니다. 중복 배정 여부를 직접 확인하세요.`, 'warn');
+            } else if (policyMismatch) {
+                toast('회차를 확정했지만 발행 문항 수가 정책 설정보다 많습니다. 정책 설정과 발행 내용을 확인하세요.', 'warn');
+            } else {
+                toast('반복 회차 배정을 서버 기록으로 확정했습니다.');
+            }
+            await clinicPrintRefreshRepeat(classId, state.studentId);
+            return;
+        }
+        if (result.status === 'ASSIGNED' && !assignmentIds.length) {
+            await client.markRoundUnresolved({
+                roundId: context.roundId,
+                classId,
+                studentId: context.studentId,
+                policyId: context.policyId,
+                operationId: context.operationId,
+                reason: 'ISSUE_OUTCOME_UNKNOWN'
+            });
+            toast('배정 성공 응답에 실제 배정 ID가 없어 회차를 미확정으로 표시했습니다. 실제 배정을 확인하세요.', 'warn');
+            await clinicPrintRefreshRepeat(classId, state.studentId);
+            return;
+        }
+        if (['OUTCOME_UNKNOWN', 'IN_PROGRESS', 'FAILED'].includes(String(result.status || ''))) {
+            await client.markRoundUnresolved({
+                roundId: context.roundId,
+                classId,
+                studentId: context.studentId,
+                policyId: context.policyId,
+                operationId: context.operationId,
+                reason: result.status === 'IN_PROGRESS' ? 'PARTIAL_ISSUE' : 'ISSUE_OUTCOME_UNKNOWN'
+            });
+            toast('배정 결과가 미확정입니다. 새 회차를 만들지 말고 열린 회차 배정 확인으로 복구하세요.', 'warn');
+            await clinicPrintRefreshRepeat(classId, state.studentId);
+        }
+    } catch (error) {
+        state.error = String(error?.message || '반복 회차 확정에 실패했습니다.');
+        clinicPrintRenderRepeatSection(classId);
+    }
+}
+
+async function clinicPrintRepeatRecoverOpenRound(classId) {
+    const state = clinicPrintRepeatState;
+    const fallbackOpen = state.evaluation?.openRound || null;
+    const context = state.roundContext || (fallbackOpen ? {
+        classId: String(classId),
+        studentId: String(state.studentId),
+        policyId: String(state.policy?.policyId || ''),
+        roundId: String(fallbackOpen.roundId),
+        operationId: String(fallbackOpen.operationId),
+        status: String(fallbackOpen.status || 'RESERVED'),
+        sourceAssignmentId: String(state.policy?.sourceAssignmentId || ''),
+        candidate: fallbackOpen.candidateSummary && typeof fallbackOpen.candidateSummary === 'object' ? fallbackOpen.candidateSummary : {},
+        mode: String(state.mode || '')
+    } : null);
+    if (!context) {
+        toast('확인할 열린 회차가 없습니다.', 'warn');
+        return;
+    }
+    if (!context.status) context.status = String(fallbackOpen?.status || 'RESERVED');
+    state.roundContext = context;
+    state.busy = 'recovering';
+    state.error = '';
+    state.candidatesError = '';
+    clinicPrintRenderRepeatSection(classId);
+    try {
+        const client = clinicPrintGetRepeatClient();
+        const response = await client.listRoundCandidates({
+            roundId: context.roundId,
+            classId,
+            studentId: context.studentId
+        });
+        if (response.stale) return;
+        state.candidates = response.data || null;
+        state.busy = '';
+        const suggested = Array.isArray(response.data?.suggestedAssignmentIds) ? response.data.suggestedAssignmentIds : [];
+        if (!suggested.length) {
+            // No stored assignment group yet. A refreshed RESERVED round is
+            // legitimately still issuable; an UNRESOLVED one may only re-open
+            // after an explicit teacher confirmation that no assignment exists.
+            const reserved = String(context.status || 'RESERVED') === 'RESERVED';
+            state.candidatesError = reserved
+                ? '저장된 배정 기록이 없습니다. 기존 확정 추천 흐름을 다시 열어 발행을 완료할 수 있습니다.'
+                : '배정 결과가 미확정입니다. 실제 배정이 없다고 확인한 경우에만 발행 흐름을 다시 엽니다.';
+            clinicPrintRenderRepeatSection(classId);
+            const allowResume = reserved
+                ? window.confirm('저장된 배정 기록이 없습니다.\n\n예약된 회차를 유지한 채 기존 확정 추천 선택 흐름을 다시 열까요? 시험지는 자동 발행되지 않습니다.')
+                : window.confirm('미확정 회차입니다. 이미 발행된 배정이 없다는 것을 직접 확인했습니까?\n\n확인한 경우에만 같은 회차·작업 번호로 발행 흐름을 다시 엽니다. 이미 발행된 배정이 있으면 확정만 하세요.');
+            if (!allowResume) return;
+            if (state.policy && state.policy.status !== 'ACTIVE') {
+                toast('종료된 정책입니다. 정책을 재개한 뒤 발행 흐름을 열 수 있습니다.', 'warn');
+                return;
+            }
+            const mode = String(context.mode || context.candidate?.mode || state.mode || '');
+            if (mode !== 'same_uid' && mode !== 'similar_uid') {
+                toast('회차 후속 방식을 선택한 뒤 "회차 발행 흐름 다시 열기"를 사용하세요.', 'warn');
+                return;
+            }
+            await clinicPrintStartRepeatRecommendationFlow(classId, context.studentId, mode);
+            return;
+        }
+        const confirmed = window.confirm(`열린 회차에 연결할 실제 배정 ${suggested.length}개를 확인했습니다.\n\n서버가 배정 마커·저장 시험지·수신 학생·문항 수를 다시 검증한 뒤 회차를 확정합니다.`);
+        if (!confirmed) {
+            clinicPrintRenderRepeatSection(classId);
+            return;
+        }
+        const confirmedRound = await client.confirmRound({
+            roundId: context.roundId,
+            classId,
+            studentId: context.studentId,
+            policyId: context.policyId,
+            operationId: context.operationId,
+            assignmentIds: suggested
+        });
+        if (confirmedRound.stale) return;
+        state.roundContext = null;
+        state.candidates = null;
+        toast(confirmedRound.data?.policyQuestionCountMismatch === true
+            ? '열린 회차를 확정했지만 발행 문항 수가 정책 설정보다 많습니다. 설정을 확인하세요.'
+            : '열린 회차를 실제 배정 기록으로 확정했습니다.', confirmedRound.data?.policyQuestionCountMismatch === true ? 'warn' : 'ok');
+        await clinicPrintRefreshRepeat(classId, state.studentId);
+    } catch (error) {
+        state.busy = '';
+        state.error = String(error?.message || '열린 회차 배정을 확인하지 못했습니다.');
+        clinicPrintRenderRepeatSection(classId);
+    }
+}
+
+async function clinicPrintRepeatMarkUnresolved(classId) {
+    const state = clinicPrintRepeatState;
+    const context = state.roundContext;
+    if (!context) return toast('확인할 열린 회차가 없습니다.', 'warn');
+    if (!window.confirm('이 회차의 배정 결과를 미확정으로 표시할까요? 새 회차를 만들지 말고 실제 배정을 먼저 확인해야 합니다.')) return;
+    try {
+        await clinicPrintGetRepeatClient().markRoundUnresolved({
+            roundId: context.roundId,
+            classId,
+            studentId: context.studentId,
+            policyId: context.policyId,
+            operationId: context.operationId,
+            reason: 'ISSUE_OUTCOME_UNKNOWN'
+        });
+        state.candidates = null;
+        await clinicPrintRefreshRepeat(classId, state.studentId);
+    } catch (error) {
+        state.error = String(error?.message || '회차를 미확정으로 표시하지 못했습니다.');
+        clinicPrintRenderRepeatSection(classId);
+    }
+}
+
+async function clinicPrintRepeatRelease(classId) {
+    const state = clinicPrintRepeatState;
+    const context = state.roundContext;
+    if (!context) return toast('확인할 열린 회차가 없습니다.', 'warn');
+    if (!window.confirm('이 회차의 실제 배정이 없음을 확인했습니까? 서버가 operationId로 배정을 다시 조회하며, 배정이 발견되면 해제되지 않습니다.')) return;
+    try {
+        await clinicPrintGetRepeatClient().releaseRound({
+            roundId: context.roundId,
+            classId,
+            studentId: context.studentId,
+            policyId: context.policyId,
+            operationId: context.operationId
+        });
+        state.roundContext = null;
+        state.candidates = null;
+        toast('배정이 없는 회차를 해제했습니다.');
+        await clinicPrintRefreshRepeat(classId, state.studentId);
+    } catch (error) {
+        state.error = String(error?.message || '회차를 해제하지 못했습니다.');
+        clinicPrintRenderRepeatSection(classId);
+    }
+}
+
+async function clinicPrintRepeatClose(classId) {
+    const state = clinicPrintRepeatState;
+    if (!state.policy) return;
+    const open = state.evaluation?.openRound || null;
+    if (open) {
+        toast('확인 대기 중인 회차가 있어 반복 운영을 종료할 수 없습니다. 회차를 먼저 확정하거나 해제하세요.', 'warn');
+        return;
+    }
+    if (!window.confirm('이 학생의 반복 운영을 종료할까요? 이미 발행된 회차와 배정 기록은 삭제되지 않습니다.')) return;
+    try {
+        await clinicPrintGetRepeatClient().closePolicy({
+            policyId: state.policy.policyId,
+            classId,
+            studentId: state.studentId,
+            expectedRevision: Number(state.policy.revision || 0),
+            reason: 'MANUAL_STOP'
+        });
+        await clinicPrintRefreshRepeat(classId, state.studentId);
+    } catch (error) {
+        state.error = String(error?.message || '반복 운영을 종료하지 못했습니다.');
+        if (String(error?.code || '') === 'OPEN_ROUND_EXISTS') {
+            await clinicPrintRefreshRepeat(classId, state.studentId);
+            return;
+        }
+        clinicPrintRenderRepeatSection(classId);
+    }
+}
+
+async function clinicPrintRepeatReopen(classId) {
+    const state = clinicPrintRepeatState;
+    if (!state.policy) return;
+    if (!window.confirm('이 학생의 반복 운영을 다시 시작할까요?')) return;
+    try {
+        await clinicPrintGetRepeatClient().reopenPolicy({
+            policyId: state.policy.policyId,
+            classId,
+            studentId: state.studentId,
+            expectedRevision: Number(state.policy.revision || 0)
+        });
+        await clinicPrintRefreshRepeat(classId, state.studentId);
+    } catch (error) {
+        state.error = String(error?.message || '반복 운영을 재개하지 못했습니다.');
+        clinicPrintRenderRepeatSection(classId);
+    }
+}
+
 async function clinicPrintCreateRecommendationAssessment(classId) {
     const state = clinicPrintGetRecommendationAssessmentState(classId);
     if (['planning', 'issuing', 'refreshing', 'reconciling'].includes(state.status)) return;
@@ -813,13 +1761,37 @@ async function clinicPrintCreateRecommendationAssessment(classId) {
         const verifiedSelections = clinicPrintGetRecommendationAssessmentSelections(classId, selectedStudentIds)
             .filter(row => row.selection.items.length);
         const recommendationSettings = clinicPrintReadRecommendationSettings();
+        const repeatCandidate = followUpAction?.repeatCandidate && typeof followUpAction.repeatCandidate === 'object'
+            ? followUpAction.repeatCandidate : null;
         const recommendationOptions = followUpAction?.mode === 'same_uid'
             ? clinicPrintRecommendationState.result?.recommendationOptions
             : recommendationSettings.recommendationOptions;
         if (!recommendationOptions) {
             throw new Error(recommendationSettings.errors.map(row => row.message).join(' '));
         }
-        const historyCoverage = clinicPrintRecommendationState.result?.coverage || {};
+        if (repeatCandidate) {
+            // The issued paper must use the round's policy options, not whatever
+            // the separate recommendation panel currently shows.
+            const expected = clinicPrintRepeatRecommendationOptions(repeatCandidate,
+                clinicPrintRecommendationState.result?.recommendationOptions || recommendationSettings.recommendationOptions);
+            if (expected) {
+                const selected = Array.isArray(recommendationOptions.selectedDifficultyBuckets)
+                    ? recommendationOptions.selectedDifficultyBuckets.map(Number).sort((a, b) => a - b) : null;
+                const countMismatch = recommendationOptions.countPerStudent != null &&
+                    Number(recommendationOptions.countPerStudent) !== Number(expected.countPerStudent);
+                const modeMismatch = recommendationOptions.difficultyMode != null &&
+                    String(recommendationOptions.difficultyMode) !== String(expected.difficultyMode);
+                const bucketMismatch = selected !== null &&
+                    JSON.stringify(selected) !== JSON.stringify(expected.selectedDifficultyBuckets);
+                if (countMismatch || modeMismatch || bucketMismatch) {
+                    throw new Error('반복 회차 설정과 현재 추천 옵션이 다릅니다. 반복 운영 화면에서 회차 발행 흐름을 다시 여세요.');
+                }
+            }
+        }
+        const historyCoverage = {
+            ...(clinicPrintRecommendationState.result?.coverage || {}),
+            ...(repeatCandidate?.includeSeenQuestionUids === true ? { includeSeenQuestionUids: true } : {})
+        };
         const candidateCatalog = await clinicPrintWithTimeout(
             clinicPrintLoadArchive2CandidateCatalog(), 95000, 'Archive 2.0 문항 목록 조회 시간이 초과되었습니다.'
         );
@@ -830,6 +1802,28 @@ async function clinicPrintCreateRecommendationAssessment(classId) {
             throw new Error('시험 계획을 만드는 동안 수신 학생 또는 추천 문항 선택이 바뀌었습니다. 다시 확인해 주세요.');
         }
         const client = clinicPrintGetAssessmentClient();
+        const sourceProvenance = clinicPrintBuildSourceProvenance(followUpAction);
+        const repeatOperationId = clinicPrintRepeatOperationIdFor(classId, followUpAction);
+        const repeatContext = clinicPrintRepeatState.roundContext;
+        if (repeatContext && String(repeatContext.classId || '') === String(classId || '') &&
+            String(repeatContext.studentId || '') === String(selectedStudentIds[0] || '') && !repeatOperationId) {
+            throw new Error('열린 반복 회차의 기준 시험과 선택한 후속 후보가 다릅니다. 열린 회차 배정 확인 또는 반복 운영 화면에서 다시 시작하세요.');
+        }
+        if (repeatOperationId && repeatContext?.roundId) {
+            // Never create a second saved-paper/assignment group for the same
+            // operation id. Existing groups belong to reconciliation.
+            const preflight = await clinicPrintGetRepeatClient().listRoundCandidates({
+                roundId: repeatContext.roundId,
+                classId,
+                studentId: selectedStudentIds[0]
+            });
+            if (preflight.stale) return;
+            const existing = Array.isArray(preflight.data?.suggestedAssignmentIds)
+                ? preflight.data.suggestedAssignmentIds.filter(Boolean) : [];
+            if (existing.length) {
+                throw new Error('이미 이 회차의 배정이 저장되어 있습니다. 새로 발행하지 말고 "열린 회차 배정 확인"에서 서버 기록으로 확정하세요.');
+            }
+        }
         const plan = await client.createPlan({
             title,
             examDate,
@@ -837,6 +1831,8 @@ async function clinicPrintCreateRecommendationAssessment(classId) {
             recommendationOptions,
             recommendationMode: followUpAction?.mode || undefined,
             coverage: historyCoverage,
+            ...(repeatOperationId ? { operationId: repeatOperationId } : {}),
+            ...(sourceProvenance ? { sourceProvenance } : {}),
             selections: verifiedSelections.map(row => ({
                 ...row.selection,
                 items: row.selection.items.map(item => ({
@@ -898,6 +1894,7 @@ async function clinicPrintCreateRecommendationAssessment(classId) {
         });
         state.status = state.result?.status === 'ASSIGNED' ? 'complete' : 'partial';
         clinicPrintRenderRecommendationAssessmentPanel(classId);
+        await clinicPrintReconcileRepeatIssue(classId, state.result);
         await clinicPrintRefreshRecommendationAssessment(classId, { quiet: true });
     } catch (error) {
         state.status = 'error';
@@ -927,6 +1924,7 @@ async function clinicPrintRetryRecommendationAssessment(classId) {
         });
         state.status = state.result?.status === 'ASSIGNED' ? 'complete' : 'partial';
         clinicPrintRenderRecommendationAssessmentPanel(classId);
+        await clinicPrintReconcileRepeatIssue(classId, state.result);
         await clinicPrintRefreshRecommendationAssessment(classId, { quiet: true });
     } catch (error) {
         state.status = 'error';
@@ -1987,7 +2985,7 @@ async function clinicPrintStartTypeFollowUpRecommendations(classId, studentId, p
     });
 }
 
-async function clinicPrintStartFollowUpRecommendations(classId, assignmentId, studentId, mode, typeContext = null) {
+async function clinicPrintStartFollowUpRecommendations(classId, assignmentId, studentId, mode, typeContext = null, repeatCandidate = null) {
     const normalizedMode = mode === 'same_uid' || mode === 'similar_uid' ? mode : '';
     if (!normalizedMode || String(clinicPrintActiveClassId || '') !== String(classId || '')) return;
     if (document.querySelector('input[name="clinic-print-mode"]:checked')?.value !== 'student') {
@@ -2050,6 +3048,7 @@ async function clinicPrintStartFollowUpRecommendations(classId, assignmentId, st
         typeObservedWrongCount: typeContext ? Number(typeContext.typeObservedWrongCount) : 0,
         sourceExamDate: typeContext?.sourceExamDate || '',
         sourceExamTitle: typeContext?.sourceExamTitle || '',
+        repeatCandidate: repeatCandidate && typeof repeatCandidate === 'object' ? repeatCandidate : null,
         questionResults: student.questionResults,
         coverage: outcome.coverage || {}
     };
@@ -2067,7 +3066,9 @@ async function clinicPrintStartFollowUpRecommendations(classId, assignmentId, st
 
     try {
         const settings = clinicPrintReadRecommendationSettings();
-        if (normalizedMode === 'similar_uid' && !settings.recommendationOptions) {
+        const baseRecommendationOptions = settings.recommendationOptions || null;
+        const repeatOptions = clinicPrintRepeatRecommendationOptions(repeatCandidate, baseRecommendationOptions);
+        if (normalizedMode === 'similar_uid' && !baseRecommendationOptions && !repeatOptions) {
             throw new Error(settings.errors.map(row => row.message).join(' '));
         }
         const catalog = await clinicPrintWithTimeout(
@@ -2079,7 +3080,7 @@ async function clinicPrintStartFollowUpRecommendations(classId, assignmentId, st
         if (!window.ClinicRecommendations || typeof window.ClinicRecommendations.buildFollowUpCandidates !== 'function') {
             throw new Error('후속 추천 모듈을 불러오지 못했습니다.');
         }
-        const recommendationOptions = settings.recommendationOptions || {
+        const recommendationOptions = repeatOptions || baseRecommendationOptions || {
             countPerStudent: 5,
             difficultyMode: 'match_wrong',
             selectedDifficultyBuckets: []
@@ -5032,6 +6033,7 @@ async function openClinicPrintCenter(classId, options = {}) {
         }
     }
     clinicPrintActiveClassId = classId;
+    if (String(clinicPrintRepeatState.classId || '') !== String(classId || '')) clinicPrintResetRepeatState(classId);
     if (clinicPrintAssessmentFormValues.classId !== String(classId || '')) {
         clinicPrintAssessmentFormValues = {
             classId: String(classId || ''),
@@ -5174,6 +6176,15 @@ async function openClinicPrintCenter(classId, options = {}) {
                 <div id="clinic-print-recommendation-assessment-body" style="margin-top:9px;"></div>
             </section>
 
+            <section id="clinic-print-repeat-section" class="clinic-print-section" style="border:1px solid var(--border);border-radius:12px;padding:12px;">
+                <div class="clinic-print-section-head">
+                    <div class="clinic-print-section-title">추천클리닉 반복 운영</div>
+                    <span class="clinic-print-section-title--soft">교사 확인 필수</span>
+                </div>
+                <div class="clinic-print-note">교사가 확인한 경우에만 다음 회차를 준비합니다. 실제 시험지 발행은 기존 확정 추천 선택·배정 절차가 수행하며, 서버가 실제 배정 기록을 검증한 뒤 회차를 확정합니다. cron·알림·무인 발행은 없습니다.</div>
+                <div id="clinic-print-repeat-body" style="margin-top:8px;"></div>
+            </section>
+
             <section class="clinic-print-section clinic-print-header-card">
                 <input type="hidden" id="clinic-print-header-title-dirty" value="0">
                 <div class="clinic-print-section-title">인쇄 설정</div>
@@ -5210,6 +6221,7 @@ async function openClinicPrintCenter(classId, options = {}) {
     document.getElementById('modal-content')?.classList.add('clinic-print-fullscreen');
     clinicPrintRenderRecommendationPanel(classId);
     clinicPrintRenderRecommendationAssessmentPanel(classId);
+    clinicPrintRenderRepeatSection(classId);
     document.getElementById('clinic-print-preview-frame')?.addEventListener('load', () => {
         clinicPrintSchedulePreviewPush(classId, 0);
     });
