@@ -22,12 +22,24 @@ def _exp_log_base_expression(row):
         return f'({a})*log(({k})*x+({b}))/ln({base})+({c})'
     raise ValueError('UNSUPPORTED_GRAPH_FAMILY')
 
+
+def _sqrt_exact_text(value):
+    return str(value).replace(' ','')
+
+def _sqrt_general_expression(plan):
+    """y = q + s*k*sqrt(c + b*x): every coefficient is an exact string, so the sampler evaluates exactly the source function."""
+    radicand=plan['radicand'];amplitude=plan.get('amplitude','1');sign=plan.get('sign',1);offset=plan.get('offset','0')
+    scale=f'({sign})*({amplitude})' if sign==-1 or str(amplitude)!='1' else '1'
+    return f'({offset})+({scale})*sqrt((({radicand[0]})+({radicand[1]})*x))'
+
 def expression(plan):
     def poly(values):
         return '('+'+'.join('('+v+')*x^'+str(i) for i,v in enumerate(values))+')'
     if plan['family']=='polynomial':return poly(plan['coefficients'])
     if plan['family']=='rational':return poly(plan['numerator'])+'/'+poly(plan['denominator'])
-    if plan['family']=='sqrt-affine':return 'sqrt('+poly(plan['radicand'])+')'
+    if plan['family']=='sqrt-affine':
+        if plan.get('overviewPolicy')=='SQRT_AFFINE_GENERAL_OVERVIEW_v1':return _sqrt_general_expression(plan)
+        return 'sqrt('+poly(plan['radicand'])+')'
     if plan['family']=='absolute-value':
         b,a,scale,offset=plan['coefficients']
         return '(('+scale+')*abs(('+a+')*x+('+b+'))+('+offset+'))'
@@ -52,7 +64,16 @@ def _produce(plan):
     if plan.get('family')=='piecewise-polynomial':return _produce_piecewise_polynomial(plan,vp)
     if plan.get('family')=='exp-log-pair':return _produce_exp_log_pair(plan,vp)
     critical=[p['x'] for p in plan.get('requiredPoints',[])]+[feature['x'] for feature in plan.get('overviewFeatures',[]) if feature.get('kind')!='TAIL_DIRECTION']
-    if plan['family']=='sqrt-affine':
+    if plan['family']=='sqrt-affine' and plan.get('overviewPolicy')=='SQRT_AFFINE_GENERAL_OVERVIEW_v1':
+        from graph_framing import pp_exact_float
+        c,b=pp_exact_float(plan['radicand'][0]),pp_exact_float(plan['radicand'][1])
+        amplitude=pp_exact_float(plan.get('amplitude','1'));sign=plan.get('sign',1);scale=sign*amplitude
+        boundary=-c/b
+        # The boundary secant gap grows with |scale|*sqrt(|b|*dx); reserve margin below .35px.
+        step=(1.2/(vp.sy*abs(scale)*math.sqrt(abs(b))))**2
+        if b>0 and plan['domain'][0]<=boundary<plan['domain'][1]:critical.append(boundary+step)
+        if b<0 and plan['domain'][0]<boundary<=plan['domain'][1]:critical.append(boundary-step)
+    elif plan['family']=='sqrt-affine':
         b,a=[float(Fraction(v)) for v in plan['radicand']]
         if a<=0:raise ValueError('UNSUPPORTED_SQRT_RADICAND')
         boundary=-b/a
@@ -92,13 +113,16 @@ def _produce(plan):
             radius=float(plan['rationalFeaturePolicy']['holeMarkerRadiusIntrinsicPx'])
             curves.append(f'<circle id="rational-removable-hole" data-role="hole" cx="{cx:.12g}" cy="{cy:.12g}" r="{radius:.12g}" fill="white" stroke="black" stroke-width="1"/>')
         else:raise ValueError('INVALID_RATIONAL_SINGULARITY_KIND')
-    if plan['family']=='sqrt-affine' and plan.get('overviewPolicy')=='SQRT_AFFINE_ENDPOINT_OVERVIEW_v1':
+    if plan['family']=='sqrt-affine' and plan.get('overviewPolicy') in {'SQRT_AFFINE_ENDPOINT_OVERVIEW_v1','SQRT_AFFINE_GENERAL_OVERVIEW_v1'}:
+        from graph_framing import pp_exact_float
         features=plan.get('sqrtFeatures');policy=plan.get('sqrtFeaturePolicy')
-        if not isinstance(features,dict) or features.get('schemaVersion')!='SQRT_AFFINE_FEATURES_v1' or not isinstance(policy,dict):raise ValueError('SQRT_ENDPOINT_INVENTORY_REQUIRED')
+        general=plan.get('overviewPolicy')=='SQRT_AFFINE_GENERAL_OVERVIEW_v1'
+        schema='SQRT_AFFINE_GENERAL_FEATURES_v1' if general else 'SQRT_AFFINE_FEATURES_v1'
+        if not isinstance(features,dict) or features.get('schemaVersion')!=schema or not isinstance(policy,dict):raise ValueError('SQRT_ENDPOINT_INVENTORY_REQUIRED')
         radius=float(policy['endpointMarkerRadiusIntrinsicPx'])
         for index,endpoint in enumerate(features.get('sourceEndpoints',[])):
             if endpoint.get('state')!='CLOSED':raise ValueError('UNSUPPORTED_OPEN_SQRT_SOURCE_ENDPOINT')
-            at=vp.screen((float(Fraction(endpoint['x'])),float(endpoint['y'])))
+            at=vp.screen((pp_exact_float(endpoint['x']) if general else float(Fraction(endpoint['x'])),float(endpoint['y'])))
             curves.append(f'<circle id="sqrt-domain-endpoint-{index}" data-role="domain-endpoint" data-endpoint-state="CLOSED" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
     if plan['family']=='polynomial' and plan.get('overviewPolicy')=='POLYNOMIAL_INTERVAL_OVERVIEW_v1':
         features=plan.get('intervalFeatures');policy=plan.get('intervalFeaturePolicy')

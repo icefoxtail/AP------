@@ -269,12 +269,13 @@ def prepare(spec):
         else:raise ValueError('INVALID_RATIONAL_SINGULARITY_KIND')
     sqrt_features=spec['displayFacts'].get('sqrtFeatures')
     if sqrt_features is not None:
-        if sqrt_features.get('schemaVersion')!='SQRT_AFFINE_FEATURES_v1':raise ValueError('SQRT_ENDPOINT_INVENTORY_REQUIRED')
+        general=sqrt_features.get('schemaVersion')=='SQRT_AFFINE_GENERAL_FEATURES_v1'
+        if not general and sqrt_features.get('schemaVersion')!='SQRT_AFFINE_FEATURES_v1':raise ValueError('SQRT_ENDPOINT_INVENTORY_REQUIRED')
         policy=spec['displayFacts'].get('sqrtFeaturePolicy',{});radius=policy.get('endpointMarkerRadiusIntrinsicPx')
         if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('SQRT_ENDPOINT_MARKER_POLICY_REQUIRED')
         for index,endpoint in enumerate(sqrt_features.get('sourceEndpoints',[])):
             if endpoint.get('state')!='CLOSED':raise ValueError('UNSUPPORTED_OPEN_SQRT_SOURCE_ENDPOINT')
-            at=vp.screen((float(Fraction(endpoint['x'])),float(endpoint['y'])))
+            at=vp.screen((_exact_float(endpoint['x']) if general else float(Fraction(endpoint['x'])),float(endpoint['y'])))
             primitive({'id':'sqrt-domain-endpoint-'+str(index),'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'domain-endpoint','fill':'#111'},'circle')
     absolute_features=spec['displayFacts'].get('absoluteFeatures')
     if absolute_features is not None:
