@@ -28,8 +28,8 @@
 ### 2.1 역할
 - **컨트롤러(Codex)**: 조사 결과를 보고 작업을 나누고, 지시서(brief)를 쓰고, 작업자를 띄우고, 감독하고, 결과 diff·테스트를 확인하고, main 병합·그림 전달·원장/문서 갱신만 한다. 코드를 직접 길게 쓰지 않는다(충돌 해결·작은 수정만).
 - **작업자(DeepSeek)**: 사용자의 OpenCode Go 구독으로 `opencode` CLI를 돌린다. 모델 `opencode-go/deepseek-v4.1-flash`. 구현·테스트·실문항 렌더·검토 실행·PR 작성까지 한다. 병합은 하지 않는다.
-- **독립 그림 검토자**: `ops/tools/review-figures.mjs`. 기본은 Claude CLI(`sonnet`)였다. **Claude 토큰이 없으면 `REVIEW_BACKEND=opencode`**(기본 모델 `opencode-go/gemini-4-argon`, 구현자와 다른 계열 → 독립성 유지).
-  - 2026-10-26 시험: `REVIEW_BACKEND=opencode REVIEW_CHUNK=1 REVIEW_PARALLEL=1 node archive/tools/geometry-equation/ops/tools/review-figures.mjs <rows.json> <워크트리> <out>` 정상 동작(판정 기록·세션 삭제 확인). 이 검토자는 X7의 `25_팔마중_2학기_중간_중1_기출` q10 그림(정답지 item27과 같은 plan)을 **FAIL**로 봤다(교점 C·D 역할이 해설과 반대로 보임, X·Y·Q·R 이름 누락). 이전 Claude 검토는 PASS였다 → **게시 전에 이 그림을 해설과 다시 대조할 것**. 검토자끼리 엄격도가 다를 수 있으니 FAIL은 이유를 읽고 판단한다.
+- **독립 그림 검토자**: 각 검토는 구현자와 다른 새 OpenCode agent/session에서 정확히 `opencode-go/deepseek-v4.1-flash`로 실행하고 read-only로 둔다. 학생용 원문·최종 SVG·실제 렌더 PNG를 제공하고, 검토자는 원문에서 먼저 관계를 독립 도출한 뒤 시각 결과와 대조한다. PNG 픽셀 입력이 실제 제공되지 않으면 그 사실을 적고 시각 PASS를 주장하지 않는다. Claude/Gemini를 검토 backend로 사용하지 않는다.
+  - 2026-10-26 `REVIEW_BACKEND=opencode` 시험은 이전 구현/검토 도구의 역사적 실행 기록이며, 지금의 검토 backend 지시가 아니다. 해당 과거 X7 검토자는 `25_팔마중_2학기_중간_중1_기출` q10(정답지 item27과 같은 plan)을 **FAIL**로 봤다(교점 C·D 역할이 해설과 반대로 보임, X·Y·Q·R 이름 누락). 과거 PASS 표시는 현재 승인으로 승계하지 말고, 게시 전 원문·해설·실제 렌더를 새 DeepSeek 독립 검토로 확인한다.
 
 ### 2.2 opencode 사용법과 함정
 - 설치: `npm i -g opencode-ai` (현재 1.19.4, `C:\nvm4w\nodejs\opencode`). 로그인은 사용자가 `opencode` 대화형에서 `/connect` → **OpenCode Go** 선택 → 키 입력(이미 됨). 워크스페이스 Privacy는 Global(이미 설정).
