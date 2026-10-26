@@ -823,9 +823,9 @@ window.questionBank = [
     "difficultyConfidence": "high",
     "difficultyBoundaryFlag": "NONE",
     "legacyLevelCompatibility": "NORMAL",
-    "solutionImage": "assets/images/23_매산고_1학기_중간_고1_기출/q20-solution-b4.svg",
-    "solutionImageAlt": "t=3/2일 때 직선 y=3x+9/4는 포물선에 점 C(3/2, 27/4)에서 접하고 y축과 (0, 9/4)에서, x축과 (-3/4, 0)에서 만난다.",
-    "solutionImageCaption": "t=3/2일 때 직선 y=3x+9/4는 포물선에 점 C(3/2, 27/4)에서 접하고 y축과 (0, 9/4)에서, x축과 (-3/4, 0)에서 만난다.",
-    "solutionImageSize": "full"
+    "solutionImage": "assets/images/23_매산고_1학기_중간_고1_기출/q20-solution-g1-complete.svg",
+    "solutionImageAlt": "포물선 y=-x^2+6x와 접선 ℓ이 C(3/2, 27/4)에서 접하고, 수선의 발 D(3/2, 0)와 접선의 절편 A(-3/4, 0), B(0, 9/4)를 나타낸다.",
+    "solutionImageCaption": "접점 C의 수선의 발 D와 접선 ℓ의 x절편 A, y절편 B의 위치 관계를 보여 준다.",
+    "solutionImageSize": "large"
   }
 ];
