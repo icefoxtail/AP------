@@ -13,6 +13,8 @@ import {
   submitWrongClinicPacketForStudent
 } from './wrong-clinics.js';
 import { saveAssessmentResultItems } from '../helpers/assessment-result-items.js';
+import { buildStudentClinicLineage, unavailableClinicLineage } from '../helpers/clinic-provenance.js';
+import { loadStudentLearningHistory } from '../helpers/student-learning-history.js';
 
 const columnCacheByEnv = new WeakMap();
 
@@ -530,7 +532,60 @@ export async function handleStudentPortal(request, env, teacher, path, url) {
       exactAssignmentId,
       allowedClassIds,
     );
-    return jsonResponse({ success: true, access_mode: verified.accessMode, read_only: verified.readOnly, exams });
+    // Additive, optional source lineage: only the frozen per-recipient
+    // provenance stored in this student's own clinic assignments is read, and
+    // every referenced node is re-authorized before a title/ID is exposed.
+    let lineage = null;
+    try {
+      lineage = await buildStudentClinicLineage(env, {
+        studentId: verified.student.id,
+        assignments: exams,
+        allowedClassIds,
+      });
+    } catch (error) {
+      console.warn('[student-portal] clinic lineage read failed:', error);
+      lineage = unavailableClinicLineage(exams, 'LINEAGE_READ_FAILED');
+    }
+    if (!lineage || !lineage.byAssignmentId.size) {
+      return jsonResponse({ success: true, access_mode: verified.accessMode, read_only: verified.readOnly, exams });
+    }
+    return jsonResponse({
+      success: true,
+      access_mode: verified.accessMode,
+      read_only: verified.readOnly,
+      exams: exams.map(exam => {
+        const entry = lineage.byAssignmentId.get(String(exam.assignment_id || ''));
+        return entry ? { ...exam, clinic_lineage: entry } : exam;
+      }),
+      clinic_lineage_coverage: lineage.coverage,
+    });
+  }
+
+  if (method === 'GET' && id === 'learning-history') {
+    // Observation-only read model for one already-verified student. The
+    // student id comes from the token/teacher guard, never from the query.
+    const studentId = String(url.searchParams.get('student_id') || '').trim();
+    const studentToken = pickStudentPortalToken(url, request);
+    const verified = await verifyStudentPortalReadAccess(env, teacher, studentId, studentToken, { requireRewonStudent: true });
+    if (verified.error) return verified.error;
+    const allowedClassIds = await teacherPreviewAllowedClassIds(env, teacher, verified.accessMode);
+    const history = await loadStudentLearningHistory(env, {
+      studentId: verified.student.id,
+      allowedClassIds,
+      period: url.searchParams.get('period'),
+      filter: url.searchParams.get('filter'),
+      cursor: url.searchParams.get('cursor'),
+      pageSize: url.searchParams.get('page_size'),
+    });
+    if (!history.ok) {
+      return jsonResponse({ success: false, code: history.code, message: history.message }, history.status);
+    }
+    return jsonResponse({
+      success: true,
+      access_mode: verified.accessMode,
+      read_only: verified.readOnly,
+      ...history,
+    });
   }
 
   if (method === 'GET' && id === 'wrong-clinics') {

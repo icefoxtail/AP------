@@ -43,6 +43,18 @@ def mark_label(label_id,target,text,label_kind,at,extra):
     label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
     return label
 
+def _sample_graph_boundary(rows,vp):
+    """Screen points of one region boundary: each exact row is sampled on its own interval (the same sampler the curve is drawn with), and the
+    rows are joined left to right. A boundary that leaves its declared rows is refused, never silently bridged."""
+    points=[]
+    for row in rows:
+        result=sample(row['expression'],row['domain'],vp,critical_x=[])
+        if len(result['branches'])!=1 or not result['branches'][0]:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+        pts=[vp.screen(value) for value in result['branches'][0]]
+        if points and pts and abs(points[-1][0]-pts[0][0])<=1e-9:pts=pts[1:]
+        points.extend(pts)
+    return points
+
 REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
 # A light neutral grey, clearly apart from the cooler region fills above, so an angle sector stays distinguishable from a shaded area.
 SECTOR_FILL='#d9d9d9'
@@ -56,32 +68,46 @@ def _region_label_centres(polygons,obstacles,step=3.0,limit=900):
         if o.get('kind') in {'point','circle'}:strokes.append(('disc' if o['kind']=='point' else 'ring',g))
         elif g and len(g)>=2 and all(isinstance(p,(list,tuple)) for p in g):strokes.extend(('seg',(a,b)) for a,b in zip(g,g[1:]))
     xs=[p[0] for poly in polygons for p in poly];ys=[p[1] for poly in polygons for p in poly]
-    def inside(x,y):
+    # A long sampled band (a graph region carries one edge per boundary sample) is ranked on a coarse copy of the same closed loops and a
+    # grid of at most 4000 points; every centre that survives is then re-checked against the full edge set, so the returned points are interior
+    # with their exact clearance and the cost stays bounded.
+    coarse=[[poly[0]]+[point for index,point in enumerate(poly) if index%max(1,math.ceil(len(poly)/60))==0]+[poly[-1]] if len(poly)>60 else poly for poly in polygons]
+    rank_edges=[(a,b) for poly in coarse for a,b in zip(poly,poly[1:]+poly[:1])]
+    def inside(x,y,edge_rows):
         hit=False
-        for (ax,ay),(bx,by) in edges:
+        for (ax,ay),(bx,by) in edge_rows:
             if (ay>y)!=(by>y) and x<(bx-ax)*(y-ay)/(by-ay)+ax:hit=not hit
         return hit
     def seg_distance(x,y,a,b):
         (ax,ay),(bx,by)=a,b;dx,dy=bx-ax,by-ay;n=dx*dx+dy*dy
         t=0.0 if n==0 else max(0.0,min(1.0,((x-ax)*dx+(y-ay)*dy)/n))
         return math.hypot(x-ax-t*dx,y-ay-t*dy)
-    def clearance(x,y):
-        best=min(seg_distance(x,y,a,b) for a,b in edges)
+    def clearance(x,y,edge_rows):
+        best=min(seg_distance(x,y,a,b) for a,b in edge_rows)
         for kind,g in strokes:
             if kind=='seg':best=min(best,seg_distance(x,y,*g))
             elif kind=='ring':best=min(best,abs(math.hypot(x-g[0],y-g[1])-g[2]))
             else:best=min(best,math.hypot(x-g[0],y-g[1])-g[2])
         return best
-    found=[]
-    x=min(xs)
-    while x<=max(xs):
-        y=min(ys)
-        while y<=max(ys):
-            if inside(x,y):found.append((clearance(x,y),x,y))
-            y+=step
-        x+=step
-    found.sort(key=lambda row:-row[0]);chosen=[]
-    for c,x,y in found:
+    step=max(step,math.sqrt(max((max(xs)-min(xs))*(max(ys)-min(ys)),1.0)/4000))
+    def grid(edge_rows):
+        found=[]
+        x=min(xs)
+        while x<=max(xs):
+            y=min(ys)
+            while y<=max(ys):
+                if inside(x,y,edge_rows):found.append((clearance(x,y,edge_rows),x,y))
+                y+=step
+            x+=step
+        return found
+    found=grid(rank_edges)
+    if not found:found=grid(edges)  # a band thinner than the coarse loop: rank on every edge once
+    found.sort(key=lambda row:-row[0])
+    refined=[]
+    for _,x,y in found[:max(limit,120)]:
+        if inside(x,y,edges):refined.append((clearance(x,y,edges),x,y))
+    refined.sort(key=lambda row:-row[0]);chosen=[]
+    for c,x,y in refined:
         if c<3.0:break
         if all(math.hypot(x-px,y-py)>=4.0 for px,py in chosen):chosen.append((x,y))
         if len(chosen)>=limit:break
@@ -125,11 +151,17 @@ def prepare(spec):
         reference=logarithmic_features['referencePoint'];critical.append((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
     trig_features=spec['displayFacts'].get('trigFeatures')
     if trig_features is not None:
-        if trig_features.get('schemaVersion')!='TRIGONOMETRIC_FEATURES_v1':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        if trig_features.get('schemaVersion') not in {'TRIGONOMETRIC_FEATURES_v1','TRIGONOMETRIC_FEATURES_v2'}:raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        general=trig_features.get('schemaVersion')=='TRIGONOMETRIC_FEATURES_v2'
         if trig_features.get('function') in {'SIN','COS'}:
-            critical.extend((float(Fraction(row['xPiMultiple']))*math.pi,float(Fraction(row['y']))) for row in trig_features.get('phasePoints',[]))
+            critical.extend(((float(Fraction(row['x'])),float(Fraction(row['y']))) if general else (float(Fraction(row['xPiMultiple']))*math.pi,float(Fraction(row['y'])))) for row in trig_features.get('phasePoints',[]))
         elif trig_features.get('referencePoint'):
-            reference=trig_features['referencePoint'];critical.append((float(Fraction(reference['xPiMultiple']))*math.pi,float(Fraction(reference['y']))))
+            reference=trig_features['referencePoint'];critical.append((float(Fraction(reference['x'] if general else reference['xPiMultiple']))*(1 if general else math.pi),float(Fraction(reference['y']))))
+    trig_interval_features=spec['displayFacts'].get('trigIntervalFeatures')
+    if trig_interval_features is not None:
+        if trig_interval_features.get('schemaVersion')!='TRIGONOMETRIC_INTERVAL_FEATURES_v2':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        factor=math.pi if trig_interval_features.get('axisUnit')=='PI' else 1.0
+        critical.extend((float(Fraction(row['x']))*factor,float(Fraction(row['y']))) for row in trig_interval_features.get('keyPoints',[]))
     pair_features=spec['displayFacts'].get('expLogPairFeatures')
     if pair_features is not None:
         if pair_features.get('schemaVersion')!='EXP_LOG_PAIR_FEATURES_v1':raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
@@ -159,6 +191,15 @@ def prepare(spec):
                     except (TypeError,ValueError,ZeroDivisionError):raise ValueError('INVALID_AXIS_TICK_VALUE:'+axis) from None
                     if not math.isfinite(value) or abs(value)<=1e-12:raise ValueError('INVALID_AXIS_TICK_VALUE:'+axis)
                     if not (xmin<=value<=xmax if axis=='x' else ymin<=value<=ymax):raise ValueError('AXIS_TICK_VALUE_OUT_OF_VIEW:'+axis)
+        tick_pi_labels=spec['displayFacts'].get('tickPiLabels')
+        if tick_pi_labels is not None:
+            if not isinstance(tick_pi_labels,list):raise ValueError('INVALID_TICK_PI_LABELS')
+            for row in tick_pi_labels:
+                if (not isinstance(row,dict) or set(row)!={'value','text','multiple'} or not isinstance(row['text'],str)
+                    or not isinstance(row['multiple'],str)):raise ValueError('INVALID_TICK_PI_LABELS')
+                try:level=float(row['value'])
+                except (TypeError,ValueError):raise ValueError('INVALID_TICK_PI_LABELS') from None
+                if not math.isfinite(level) or abs(level)<=1e-12:raise ValueError('INVALID_TICK_PI_LABELS')
         raw_tick_callouts=spec['displayFacts'].get('tickLabelCallouts',[])
         if not isinstance(raw_tick_callouts,list):raise ValueError('INVALID_TICK_LABEL_CALLOUTS')
         tick_callouts={}
@@ -169,7 +210,7 @@ def prepare(spec):
             key=(callout['axis'],float(Fraction(callout['value'])))
             if key in tick_callouts:raise ValueError('DUPLICATE_TICK_LABEL_CALLOUT')
             tick_callouts[key]=callout
-        unit_ticks=[]
+        unit_ticks=[];used_pi=set()
         if axis_tick_values is None:
             if show_x and xmin<=1<=xmax:unit_ticks.append(('model-x-unit','x',1,(1,0),(0,4)))
             if show_y and ymin<=1<=ymax:unit_ticks.append(('model-y-unit','y',1,(0,1),(-4,0)))
@@ -211,18 +252,23 @@ def prepare(spec):
                     oid='model-x-unit' if axis=='x' else 'model-y-unit'
                     if axis_tick_values is not None and not any(item['id']==oid for item in primitives):primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
                 else:primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
-                text=display_token.replace('-','−')
+                text=display_token.replace('-','−');tick_pi=None
+                if tick_pi_labels is not None:
+                    matches=[row for row in tick_pi_labels if axis=='x' and abs(float(row['value'])-value)<=1e-9]
+                    if len(matches)!=1:raise ValueError('TICK_PI_LABEL_MISMATCH')
+                    tick_pi=matches[0];text=tick_pi['text'];used_pi.add(id(tick_pi))
                 tick_id=('model-x-unit' if axis=='x' else 'model-y-unit') if abs(value-1)<=1e-12 else oid
                 label_id=f'tick-{axis}-{id_token}-label'
                 tick_primitive=next((item for item in primitives if item['id']==tick_id),None)
                 if tick_primitive is None:raise ValueError('TICK_LABEL_REQUIRED_PRIMITIVE_MISSING:'+label_id)
                 tick_primitive['requiredLabelId']=label_id
-                label={'id':label_id,'kind':'TICK_LABEL','tickId':tick_id,'target':tick_id,'owner':tick_id,'tickAxis':axis,'tickValue':value,'tickDisplayValue':text,'at':p,'text':text,'font':tokens['tickLabel'],'priority':0,'allowSuppress':False,'preferred':'S' if axis=='x' else 'W','directions':('S','N') if axis=='x' else ('W','E'),'gaps':(8,12),'centered':True,'math':True}
+                label={'id':label_id,'kind':'TICK_LABEL','tickId':tick_id,'target':tick_id,'owner':tick_id,'tickAxis':axis,'tickValue':value,'tickDisplayValue':text,'at':p,'text':text,'font':tokens['tickLabel'],'priority':0,'allowSuppress':False,'preferred':'S' if axis=='x' else 'W','directions':('S','N') if axis=='x' else ('W','E'),'gaps':(8,12),'centered':True,'math':True,**({'tickPiValue':tick_pi['multiple']} if tick_pi else {})}
                 callout=tick_callouts.pop((axis,value),None)
                 if callout is not None:
                     label['tickLabelCallout']={'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','tickId':tick_id,'axis':axis,'value':value,'sourceAt':list(p),'offsetUser':list(callout['offsetUser'])}
                 labels.append(label)
         if tick_callouts:raise ValueError('TICK_LABEL_CALLOUT_OWNER_NOT_FOUND')
+        if tick_pi_labels is not None and len(used_pi)!=len(tick_pi_labels):raise ValueError('TICK_PI_LABEL_UNUSED')
     rational_features=spec['displayFacts'].get('rationalGraphFeatures')
     if rational_features is not None:
         if rational_features.get('schemaVersion')!='RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1':raise ValueError('RATIONAL_FEATURE_INVENTORY_REQUIRED')
@@ -243,12 +289,13 @@ def prepare(spec):
         else:raise ValueError('INVALID_RATIONAL_SINGULARITY_KIND')
     sqrt_features=spec['displayFacts'].get('sqrtFeatures')
     if sqrt_features is not None:
-        if sqrt_features.get('schemaVersion')!='SQRT_AFFINE_FEATURES_v1':raise ValueError('SQRT_ENDPOINT_INVENTORY_REQUIRED')
+        general=sqrt_features.get('schemaVersion')=='SQRT_AFFINE_GENERAL_FEATURES_v1'
+        if not general and sqrt_features.get('schemaVersion')!='SQRT_AFFINE_FEATURES_v1':raise ValueError('SQRT_ENDPOINT_INVENTORY_REQUIRED')
         policy=spec['displayFacts'].get('sqrtFeaturePolicy',{});radius=policy.get('endpointMarkerRadiusIntrinsicPx')
         if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('SQRT_ENDPOINT_MARKER_POLICY_REQUIRED')
         for index,endpoint in enumerate(sqrt_features.get('sourceEndpoints',[])):
             if endpoint.get('state')!='CLOSED':raise ValueError('UNSUPPORTED_OPEN_SQRT_SOURCE_ENDPOINT')
-            at=vp.screen((float(Fraction(endpoint['x'])),float(endpoint['y'])))
+            at=vp.screen((_exact_float(endpoint['x']) if general else float(Fraction(endpoint['x'])),float(endpoint['y'])))
             primitive({'id':'sqrt-domain-endpoint-'+str(index),'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'domain-endpoint','fill':'#111'},'circle')
     absolute_features=spec['displayFacts'].get('absoluteFeatures')
     if absolute_features is not None:
@@ -323,20 +370,35 @@ def prepare(spec):
                 primitive({'id':'reference-'+curve_id,'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'logarithmic-reference','fill':'#111','state':'CLOSED','branch':curve_id},'circle')
     trig_features=spec['displayFacts'].get('trigFeatures')
     if trig_features is not None:
-        if trig_features.get('schemaVersion')!='TRIGONOMETRIC_FEATURES_v1':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        if trig_features.get('schemaVersion') not in {'TRIGONOMETRIC_FEATURES_v1','TRIGONOMETRIC_FEATURES_v2'}:raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
         policy=spec['displayFacts'].get('trigFeaturePolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
         if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('TRIG_MARKER_POLICY_REQUIRED')
+        general=trig_features.get('schemaVersion')=='TRIGONOMETRIC_FEATURES_v2'
+        def trig_x(row):return float(Fraction(row['x'] if general else row['xPiMultiple']))*(1.0 if general else math.pi)
         if trig_features.get('function') in {'SIN','COS'}:
             for feature in trig_features.get('phasePoints',[]):
-                at=vp.screen((float(Fraction(feature['xPiMultiple']))*math.pi,float(Fraction(feature['y']))))
+                at=vp.screen((trig_x(feature),float(Fraction(feature['y']))))
                 primitive({'id':'trig-'+feature['id'],'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'trig-feature','fill':'#111','owner':feature['id'],'featureKind':feature['kind']},'circle')
         elif trig_features.get('function')=='TAN':
             xmin,xmax,ymin,ymax=vp.bounds
             for pole in trig_features.get('poles',[]):
-                x=float(Fraction(pole['xPiMultiple']))*math.pi
-                primitive({'id':'trig-'+pole['id'],'kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'trig-pole','dash':'5 4','poleSide':pole['side']},'line')
-            reference=trig_features['referencePoint'];at=vp.screen((float(Fraction(reference['xPiMultiple']))*math.pi,float(Fraction(reference['y']))))
+                x=trig_x(pole)
+                primitive({'id':'trig-'+pole['id'],'kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'trig-pole','dash':'5 4',**({'poleSide':pole['side']} if 'side' in pole else {})},'line')
+            reference=trig_features['referencePoint'];at=vp.screen((trig_x(reference),float(Fraction(reference['y']))))
             primitive({'id':'trig-reference-point','kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'trig-reference','fill':'#111'},'circle')
+    trig_interval_features=spec['displayFacts'].get('trigIntervalFeatures')
+    if trig_interval_features is not None:
+        if trig_interval_features.get('schemaVersion')!='TRIGONOMETRIC_INTERVAL_FEATURES_v2':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        policy=spec['displayFacts'].get('trigIntervalPolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('TRIG_MARKER_POLICY_REQUIRED')
+        factor=math.pi if trig_interval_features.get('axisUnit')=='PI' else 1.0
+        for feature in trig_interval_features.get('keyPoints',[]):
+            at=vp.screen((float(Fraction(feature['x']))*factor,float(Fraction(feature['y']))))
+            primitive({'id':'trig-'+feature['id'],'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'trig-key-point','fill':'#111','owner':feature['id'],'featureKind':feature['kind']},'circle')
+        xmin,xmax,ymin,ymax=vp.bounds
+        for pole in trig_interval_features.get('poles',[]):
+            x=float(Fraction(pole['x']))*factor
+            primitive({'id':'trig-'+pole['id'],'kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'trig-pole','dash':'5 4','poleSide':pole.get('side','RIGHT')},'line')
     point_marks=[vp.screen(geometry[v['id']]) for v in spec['objects'] if v['kind']=='POINT']
     mark_spots=[]   # where equal ticks / parallel arrows already stand: a second mark on the same segment keeps clear of the first
     by_id={v['id']:v for v in spec['objects']}
@@ -446,6 +508,24 @@ def prepare(spec):
                        'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':polygons,'labelGap':14}
                 label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
                 label['candidateCenters']=_region_label_centres(polygons,obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygons[0][0])
+                labels.append(label)
+        elif kind=='GRAPH_REGION':
+            # A shaded band between two drawn graph boundaries (graph_plan regions): sample the exact rows named by the plan, then one even-odd
+            # path painted beneath every stroke. The independent graph observer recomputes the rows from the plan and reads this path back.
+            if obj['fill'] not in REGION_FILLS:raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+oid)
+            upper=_sample_graph_boundary(obj['upper'],vp);lower=_sample_graph_boundary(obj['lower'],vp)
+            if len(upper)<2 or len(lower)<2:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+            polygon=upper+list(reversed(lower))
+            if any(b[0]<a[0] for a,b in zip(upper,upper[1:])) or any(b[0]<a[0] for a,b in zip(lower,lower[1:])):raise ValueError('GRAPH_REGION_BOUNDARY_NOT_INCREASING')
+            d='M'+_num(polygon[0][0])+' '+_num(polygon[0][1])+' '+' '.join('L'+_num(x)+' '+_num(y) for x,y in polygon[1:])+' Z'
+            primitive({'id':oid,'kind':'path','d':d,'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS[obj['fill']],'noStroke':True,'fillRule':'evenodd',
+                       'mark':'graph-region','markId':oid,'fillPolygons':[polygon]})
+            if obj.get('labelText') is not None:
+                tree=parse(obj['labelText']);markup=serialize(tree,'svg')
+                label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':serialize(tree,'plain'),'markup':markup,'tex':serialize(tree,'tex'),'math':True,'sourceMath':obj['labelText'],
+                       'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':[polygon],'labelGap':14}
+                label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
+                label['candidateCenters']=_region_label_centres([polygon],obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygon[0])
                 labels.append(label)
         elif kind=='FUNCTION_GRAPH':
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
