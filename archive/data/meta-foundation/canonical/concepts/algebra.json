@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.7",
+  "shardVersion": "1.4.8",
   "status": "ACTIVE",
-  "conceptCount": 182,
+  "conceptCount": 191,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -5629,6 +5629,321 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_AM_GM_INEQUALITY",
+      "canonicalLabelKo": "산술평균과 기하평균의 관계",
+      "definition": "양수 조건에서 두 수의 합과 곱 사이의 절대부등식 a+b >= 2sqrt(ab) 및 등호 성립 조건",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
+          "sourceOrdinal": 9,
+          "classificationRationale": "직선의 절편 방정식과 정점 통과 조건에서 산술·기하평균(또는 유리식 변형)으로 두 절편 합의 최솟값을 구하는 GEOMETRY_EQUATIONS 정본 유형",
+          "decisiveEvidence": "3/a+12/b=1에서 t=a-3>0으로 놓으면 b=12+36/t이므로 a+b=t+15+36/t>=27 (t=6일 때 등호 성립)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_INTERCEPT_OPTIMIZATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-02"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_COMPLEX_FRACTION_SIMPLIFY",
+      "canonicalLabelKo": "번분수식의 단계적 통분 정리",
+      "definition": "분모 또는 분자에 분수식이 포함된 번분수식을 안쪽부터 순차적으로 통분·역수 연산하여 간단히 하는 방법",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2d47742a5a6d83a701b34f39de5a476cf4e81ac0f175bef5a448dc865e15e25b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_2d47742a5a6d83a701b34f39de5a476cf4e81ac0f175bef5a448dc865e15e25b",
+          "sourceOrdinal": 16,
+          "classificationRationale": "복분수(번분수) 형태의 유리식을 단계적으로 정리하여 미정계수를 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "안쪽부터 정리하면 1-1/(x+1)=x/(x+1), 2-(x+1)/x=(x-1)/x이므로 전체 식은 x/(x-1)이 되어 a=1, b=0, a+b=1이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_RATIONAL_EXPRESSION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_IRRATIONAL_EQUATION_ROOT",
+      "canonicalLabelKo": "무리방정식의 풀이와 무연근 검증",
+      "definition": "양변을 제곱하여 얻은 이차방정식의 해 중 정의역·치역 부호 조건을 만족하는 실근만 선택하는 과정",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_aa432a165d8888db7b96c9a7e2d5495ce881cddc57d5eb19aef0ade05b7f7bd7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_aa432a165d8888db7b96c9a7e2d5495ce881cddc57d5eb19aef0ade05b7f7bd7",
+          "sourceOrdinal": 20,
+          "classificationRationale": "무리함수와 그 역함수 그래프의 교점을 직선 y=x와의 연립방정식으로 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "증가함수이므로 교점은 y=x 위에 있고 sqrt(x+2)=x (x>=0)에서 (x-2)(x+1)=0이므로 교점은 (2,2)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_INVERSE_GRAPH"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LINEAR_INEQUALITY_BOUND",
+      "canonicalLabelKo": "부등식의 영역과 경계값",
+      "definition": "두 실수의 부등식 조건에서 합의 최솟값·최댓값 경계를 비교하는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_99c21975638c202e7427a20b95557efdd29be831fa8cc30fcc0ee066cf038513"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_99c21975638c202e7427a20b95557efdd29be831fa8cc30fcc0ee066cf038513",
+          "sourceOrdinal": 4,
+          "classificationRationale": "대우 명제의 동치성과 부등식의 경계 조건을 결합하여 미지수 k의 범위를 구하는 SETS_PROPOSITIONS 정본 유형",
+          "decisiveEvidence": "x>=4, y>=k+3이면 x+y>=k+7이고 가정 x+y<6이 성립할 수 없어야 하므로 k+7>=6에서 k>=-1이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROPOSITION_PARAMETER_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_PARTIAL_FRACTION_DECOMPOSITION",
+      "canonicalLabelKo": "부분분수 변형",
+      "definition": "분모가 두 인수의 곱인 유리식 1/(AB)를 1/(B-A) * (1/A - 1/B)로 분해하는 항등 변형",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975",
+          "sourceOrdinal": 21,
+          "classificationRationale": "유리식을 부분분수로 변형하여 망원급수(연속 소거) 형태로 함숫값의 합을 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "1/(x(x+1)) = 1/x - 1/(x+1)이므로 합은 (1-1/2)+(1/2-1/3)+...+(1/99-1/100) = 1-1/100 = 99/100이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_RATIONAL_EXPRESSION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_IDENTITY_COEFFICIENTS",
+      "canonicalLabelKo": "항등식의 계수 비교",
+      "definition": "양변의 유리식을 같은 형태로 정리한 뒤 분자의 동류항 계수를 비교하여 미지수를 구하는 원리",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_2d47742a5a6d83a701b34f39de5a476cf4e81ac0f175bef5a448dc865e15e25b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_2d47742a5a6d83a701b34f39de5a476cf4e81ac0f175bef5a448dc865e15e25b",
+          "sourceOrdinal": 16,
+          "classificationRationale": "복분수(번분수) 형태의 유리식을 단계적으로 정리하여 미정계수를 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "안쪽부터 정리하면 1-1/(x+1)=x/(x+1), 2-(x+1)/x=(x-1)/x이므로 전체 식은 x/(x-1)이 되어 a=1, b=0, a+b=1이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_RATIONAL_EXPRESSION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_INEQUALITY_ALWAYS_TRUE",
+      "canonicalLabelKo": "모든 실수에서 성립하는 이차부등식",
+      "definition": "이차식이 모든 실수 x에 대하여 0 이상이 되기 위한 완전제곱식 최솟값 또는 판별식 조건",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_9f30615d65bdf06c4126f43f0d3f691f9d53622f18f4dbcf2ee01feb3fed7953"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9f30615d65bdf06c4126f43f0d3f691f9d53622f18f4dbcf2ee01feb3fed7953",
+          "sourceOrdinal": 19,
+          "classificationRationale": "'어떤'이 포함된 명제의 부정을 작성하고 모든 실수에서 이차부등식이 성립할 상수 조건을 구하는 SETS_PROPOSITIONS 정본 유형",
+          "decisiveEvidence": "부정은 '모든 실수 x에 대하여 x^2-4x+k>=0이다.'이고 (x-2)^2+k-4>=0에서 k-4>=0이므로 최솟값은 4이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_QUANTIFIER_NEGATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_SYSTEM_OF_LINEAR_EQUATIONS",
+      "canonicalLabelKo": "미지수가 2개인 연립일차방정식",
+      "definition": "주어진 두 함숫값 조건을 일차방정식으로 세워 가감법·대입법으로 계수를 결정하는 연산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_eb6acad9fa980414d8b98a932fbb621b7e9e534813df638566e212383a044869"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_eb6acad9fa980414d8b98a932fbb621b7e9e534813df638566e212383a044869",
+          "sourceOrdinal": 15,
+          "classificationRationale": "함숫값과 역함숫값 조건을 연립방정식으로 풀어 일차함수의 계수를 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "5a+b=2와 -a+b=5를 연립하면 a=-1/2, b=9/2이므로 a+b=4이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_RECOVERY"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_VIETA_FORMULAS",
+      "canonicalLabelKo": "이차방정식의 근과 계수의 관계",
+      "definition": "이차방정식의 두 근의 합과 곱을 계수들의 비로 나타내는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+          "sourceOrdinal": 7,
+          "classificationRationale": "원 밖의 한 점에서 원에 그은 두 접선의 기울기의 곱을 점과 직선 사이의 거리 및 이차방정식으로 구하는 GEOMETRY_EQUATIONS 정본 유형",
+          "decisiveEvidence": "중심 (3,-2)에서 직선 mx-y+m+2=0까지의 거리가 2이므로 3m^2+8m+3=0이고 근과 계수의 관계에서 m1*m2=1이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-03"
       ],
       "ownerConceptShard": "ALGEBRA"
     }

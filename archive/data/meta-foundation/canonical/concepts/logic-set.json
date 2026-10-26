@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "LOGIC_SET",
-  "shardVersion": "1.0.2",
+  "shardVersion": "1.0.3",
   "status": "ACTIVE",
-  "conceptCount": 7,
+  "conceptCount": 17,
   "concepts": [
     {
       "conceptKey": "CC_COUNTEREXAMPLE",
@@ -168,6 +168,356 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-03"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_CONTRADICTORY_STATEMENTS",
+      "canonicalLabelKo": "상호 모순 진술 쌍",
+      "definition": "두 진술이 서로 부정의 관계에 있어 둘 중 하나는 반드시 참이고 다른 하나는 반드시 거짓이 되는 논리 관계",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2",
+          "sourceOrdinal": 8,
+          "classificationRationale": "진술 간의 모순 관계와 참·거짓 조건을 결합하여 범인·당첨자를 추론하는 SETS_PROPOSITIONS 정본 유형",
+          "decisiveEvidence": "A와 D의 말은 서로 반대이므로 B, C의 말은 모두 참이다. C의 말이 참이므로 당첨자는 D이고 거짓말을 한 사람은 A이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LOGIC_CHAIN"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_CONTRAPOSITIVE_EQUIVALENCE",
+      "canonicalLabelKo": "명제와 대우의 동치 관계",
+      "definition": "명제 p→q와 그 대우 ~q→~p의 참·거짓이 항상 일치하는 논리적 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_99c21975638c202e7427a20b95557efdd29be831fa8cc30fcc0ee066cf038513"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_99c21975638c202e7427a20b95557efdd29be831fa8cc30fcc0ee066cf038513",
+          "sourceOrdinal": 4,
+          "classificationRationale": "대우 명제의 동치성과 부등식의 경계 조건을 결합하여 미지수 k의 범위를 구하는 SETS_PROPOSITIONS 정본 유형",
+          "decisiveEvidence": "x>=4, y>=k+3이면 x+y>=k+7이고 가정 x+y<6이 성립할 수 없어야 하므로 k+7>=6에서 k>=-1이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROPOSITION_PARAMETER_CONDITION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_INTERVAL_BOUNDARY",
+      "canonicalLabelKo": "수직선 구간의 경계 비교",
+      "definition": "수직선 위에서 부등식 구간의 포함 관계가 성립하기 위한 양 끝 경계값의 대소 및 등호 조건",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_4f7f7736f58db060810f87511af1118a8fb781282ae1f0cd497e47ddefd54a30"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_4f7f7736f58db060810f87511af1118a8fb781282ae1f0cd497e47ddefd54a30",
+          "sourceOrdinal": 5,
+          "classificationRationale": "수직선 구간으로 주어진 조건들의 필요조건·충분조건 관계로부터 매개변수의 최대·최소를 구하는 SETS_PROPOSITIONS 정본 유형",
+          "decisiveEvidence": "p⇒q에서 -2>a이므로 정수 최댓값 a=-3이고, r⇒p에서 b>5이므로 정수 최솟값 b=6이어서 a+b=3이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NEC_SUFF_RELATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_LOGICAL_CASE_ELIMINATION",
+      "canonicalLabelKo": "논리적 경우 소거 추론",
+      "definition": "참·거짓 조건의 개수를 기준으로 가능한 경우를 좁혀 참인 결론을 확정하는 추론",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_cc7005ff1c74273573c3c79993e6ab94ae7cef23e47291e546563acf344cb2a2",
+          "sourceOrdinal": 8,
+          "classificationRationale": "진술 간의 모순 관계와 참·거짓 조건을 결합하여 범인·당첨자를 추론하는 SETS_PROPOSITIONS 정본 유형",
+          "decisiveEvidence": "A와 D의 말은 서로 반대이므로 B, C의 말은 모두 참이다. C의 말이 참이므로 당첨자는 D이고 거짓말을 한 사람은 A이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_LOGIC_CHAIN"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_NECESSARY_SUFFICIENT_CONDITION",
+      "canonicalLabelKo": "필요조건과 충분조건",
+      "definition": "명제 p→q가 참일 때 p는 q이기 위한 충분조건, q는 p이기 위한 필요조건이 되는 관계",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_4f7f7736f58db060810f87511af1118a8fb781282ae1f0cd497e47ddefd54a30"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_4f7f7736f58db060810f87511af1118a8fb781282ae1f0cd497e47ddefd54a30",
+          "sourceOrdinal": 5,
+          "classificationRationale": "수직선 구간으로 주어진 조건들의 필요조건·충분조건 관계로부터 매개변수의 최대·최소를 구하는 SETS_PROPOSITIONS 정본 유형",
+          "decisiveEvidence": "p⇒q에서 -2>a이므로 정수 최댓값 a=-3이고, r⇒p에서 b>5이므로 정수 최솟값 b=6이어서 a+b=3이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NEC_SUFF_RELATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_OPEN_SENTENCE_CONDITION",
+      "canonicalLabelKo": "조건과 진리집합",
+      "definition": "변수의 값에 따라 참·거짓이 결정되는 문장이나 식(조건)과 이를 참이 되게 하는 원소들의 집합",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b3c13a9d1ee5ba7fc5d6d61320387ab5d1062eb84a1d43e04a41c94856e23a32"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b3c13a9d1ee5ba7fc5d6d61320387ab5d1062eb84a1d43e04a41c94856e23a32",
+          "sourceOrdinal": 1,
+          "classificationRationale": "주어진 문장·식이 참·거짓을 판별할 수 있는 명제인지 변수에 따라 달라지는 조건인지 구별하는 SETS_PROPOSITIONS 정본 유형",
+          "decisiveEvidence": "⑤ $2x+3=5$는 $x$의 값에 따라 참·거짓이 달라진다. 예를 들어 $x=1$이면 참이고 $x=0$이면 거짓이므로 명제가 아니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROPOSITION_JUDGMENT"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_PROOF_BY_CONTRADICTION",
+      "canonicalLabelKo": "귀류법 증명",
+      "definition": "명제의 결론을 부정한 뒤 논리적 추론을 통해 가정이나 알려진 사실에 모순됨을 보여 원명제가 참임을 증명하는 방법",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_07c5348413bc3219960f00ffb307c01eefcfa6704b78c80b2287ead8b53b845b",
+          "sourceOrdinal": 22,
+          "classificationRationale": "자연수의 홀짝성과 제곱수를 4로 나눈 나머지 성질을 이용하여 귀류법으로 명제를 증명하는 SETS_PROPOSITIONS 정본 유형",
+          "decisiveEvidence": "a,b,c가 모두 홀수라 가정하면 홀수의 제곱은 4로 나눈 나머지가 1이므로 a^2+b^2은 나머지가 2이고 c^2은 1이어서 모순이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONTRADICTION_PROOF"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_PROPOSITION_DEFINITION",
+      "canonicalLabelKo": "명제의 뜻",
+      "definition": "참인지 거짓인지를 명확하게 판별할 수 있는 문장이나 식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b3c13a9d1ee5ba7fc5d6d61320387ab5d1062eb84a1d43e04a41c94856e23a32"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b3c13a9d1ee5ba7fc5d6d61320387ab5d1062eb84a1d43e04a41c94856e23a32",
+          "sourceOrdinal": 1,
+          "classificationRationale": "주어진 문장·식이 참·거짓을 판별할 수 있는 명제인지 변수에 따라 달라지는 조건인지 구별하는 SETS_PROPOSITIONS 정본 유형",
+          "decisiveEvidence": "⑤ $2x+3=5$는 $x$의 값에 따라 참·거짓이 달라진다. 예를 들어 $x=1$이면 참이고 $x=0$이면 거짓이므로 명제가 아니다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROPOSITION_JUDGMENT"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_QUANTIFIER_NEGATION",
+      "canonicalLabelKo": "모든·어떤이 있는 명제의 부정",
+      "definition": "'어떤 x에 대하여 p(x)'의 부정이 '모든 x에 대하여 ~p(x)'가 되는 양화명제 부정 법칙",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_9f30615d65bdf06c4126f43f0d3f691f9d53622f18f4dbcf2ee01feb3fed7953"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9f30615d65bdf06c4126f43f0d3f691f9d53622f18f4dbcf2ee01feb3fed7953",
+          "sourceOrdinal": 19,
+          "classificationRationale": "'어떤'이 포함된 명제의 부정을 작성하고 모든 실수에서 이차부등식이 성립할 상수 조건을 구하는 SETS_PROPOSITIONS 정본 유형",
+          "decisiveEvidence": "부정은 '모든 실수 x에 대하여 x^2-4x+k>=0이다.'이고 (x-2)^2+k-4>=0에서 k-4>=0이므로 최솟값은 4이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_QUANTIFIER_NEGATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_TRUTH_SET_INCLUSION",
+      "canonicalLabelKo": "진리집합의 포함 관계",
+      "definition": "조건명제의 참·거짓을 두 진리집합 사이의 부분집합 포함 관계(P⊂Q)로 해석하는 원리",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_4f7f7736f58db060810f87511af1118a8fb781282ae1f0cd497e47ddefd54a30"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_4f7f7736f58db060810f87511af1118a8fb781282ae1f0cd497e47ddefd54a30",
+          "sourceOrdinal": 5,
+          "classificationRationale": "수직선 구간으로 주어진 조건들의 필요조건·충분조건 관계로부터 매개변수의 최대·최소를 구하는 SETS_PROPOSITIONS 정본 유형",
+          "decisiveEvidence": "p⇒q에서 -2>a이므로 정수 최댓값 a=-3이고, r⇒p에서 b>5이므로 정수 최솟값 b=6이어서 a+b=3이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NEC_SUFF_RELATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
       ],
       "ownerConceptShard": "LOGIC_SET"
     }

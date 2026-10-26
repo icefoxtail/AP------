@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "PLANE_GEOMETRY",
-  "shardVersion": "1.3.4",
+  "shardVersion": "1.3.5",
   "status": "ACTIVE",
-  "conceptCount": 35,
+  "conceptCount": 38,
   "concepts": [
     {
       "conceptKey": "CC_ANGLE_BISECTOR",
@@ -1418,6 +1418,111 @@
       ],
       "curriculumRefs": [
         "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_POLYGON_AREA_INTEGRATION",
+      "canonicalLabelKo": "꺾인 선 그래프와 축으로 둘러싸인 넓이",
+      "definition": "구간별 일차함수로 이루어진 그래프와 좌표축 사이의 영역을 삼각형·사다리꼴로 분할하여 넓이를 구하는 계산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_d4f1a92208816b516820f926746e23312693f501e9c00c8dcff17ea60bb8ed55"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_d4f1a92208816b516820f926746e23312693f501e9c00c8dcff17ea60bb8ed55",
+          "sourceOrdinal": 18,
+          "classificationRationale": "조각함수(구간별 정의된 함수)의 합성함수 그래프를 구간별로 작성하고 좌표축으로 둘러싸인 도형의 넓이를 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "구간 [0,1)에서 2-x, [1,3/2)에서 2x-1, [3/2,2]에서 -4x+8이므로 둘러싸인 넓이는 3/2 + 3/4 + 1/2 = 11/4이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COMPOSITE_FUNCTION_ANALYSIS"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_RECTANGLE_AREA_EQUATION",
+      "canonicalLabelKo": "점근선으로 둘러싸인 직사각형의 넓이",
+      "definition": "수직 점근선과 수평 점근선 사이의 거리의 곱으로 둘러싸인 직사각형 넓이를 세우는 방정식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+          "sourceOrdinal": 14,
+          "classificationRationale": "유리함수의 점근선들로 둘러싸인 직사각형의 넓이 조건으로부터 미지수 k를 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "네 점근선 x=k, y=0, x=1, y=k로 둘러싸인 넓이는 k|k-1|=12이고 k>1에서 (k-4)(k+3)=0이므로 k=4이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_RATIONAL_ASYMPTOTE"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SQUARE_SIDE_EQUALITY",
+      "canonicalLabelKo": "좌표평면 위 정사각형의 변 길이 조건",
+      "definition": "축에 평행한 변을 갖는 정사각형에서 가로 길이(x좌표 차)와 세로 길이(y좌표 차)가 같다는 방정식 조건",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1b8dda0f45ede17995e86942c9ba49d77dbd796a059761f30072544402a1ba57"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-09"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1b8dda0f45ede17995e86942c9ba49d77dbd796a059761f30072544402a1ba57",
+          "sourceOrdinal": 17,
+          "classificationRationale": "무리함수 그래프 위의 점들이 이루는 정사각형의 변 길이 조건을 방정식으로 풀어 좌표를 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "A=(a, sqrt(2a))이면 D=(2a, sqrt(2a))이고 정사각형 조건에서 가로 AD=a와 세로 AB=sqrt(2a)가 같으므로 a=2이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_GEOMETRY"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-09"
       ],
       "ownerConceptShard": "PLANE_GEOMETRY"
     }

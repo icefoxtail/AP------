@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COORDINATE_GEOMETRY",
-  "shardVersion": "1.1.5",
+  "shardVersion": "1.1.6",
   "status": "ACTIVE",
-  "conceptCount": 32,
+  "conceptCount": 42,
   "concepts": [
     {
       "conceptKey": "CC_CIRCLE_CENTER_RADIUS",
@@ -1544,6 +1544,368 @@
       ],
       "curriculumRefs": [
         "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_TANGENT_LINE",
+      "canonicalLabelKo": "원의 접선의 방정식",
+      "definition": "원 위의 접점 또는 원 밖의 한 점에서 원에 그은 접선의 방정식과 접선 조건",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+        "qid_v1_f309b4c9d23cfe88c53f8e07e6347db0140c4f11fef601a8e042b1677bdf7db3"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f309b4c9d23cfe88c53f8e07e6347db0140c4f11fef601a8e042b1677bdf7db3",
+          "sourceOrdinal": 3,
+          "classificationRationale": "원 위의 한 점에서의 접선의 방정식을 구하는 GEOMETRY_EQUATIONS 정본 유형",
+          "decisiveEvidence": "접선은 반지름에 수직이므로 기울기는 -3/4이고 y-4=-3/4(x-3)을 정리하면 3x+4y=25이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+          "sourceOrdinal": 7,
+          "classificationRationale": "원 밖의 한 점에서 원에 그은 두 접선의 기울기의 곱을 점과 직선 사이의 거리 및 이차방정식으로 구하는 GEOMETRY_EQUATIONS 정본 유형",
+          "decisiveEvidence": "중심 (3,-2)에서 직선 mx-y+m+2=0까지의 거리가 2이므로 3m^2+8m+3=0이고 근과 계수의 관계에서 m1*m2=1이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_COORDINATE_DISPLACEMENT",
+      "canonicalLabelKo": "좌표 변화량",
+      "definition": "대응하는 두 점의 좌표 차이를 통해 평행이동 성분을 구하는 연산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8bc12777f135e12acce07e0e0b42e6eeb11800ea1b642646d84f2355929f70fd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-04"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8bc12777f135e12acce07e0e0b42e6eeb11800ea1b642646d84f2355929f70fd",
+          "sourceOrdinal": 2,
+          "classificationRationale": "점의 평행이동 규칙으로부터 이동 성분을 구해 다른 점의 이동 후 좌표를 계산하는 GEOMETRY_EQUATIONS 정본 유형",
+          "decisiveEvidence": "좌표 변화는 (-1-4, 3-1)=(-5, 2)이므로 점 (2, 5)에 적용하면 (2-5, 5+2)=(-3, 7)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_POINT_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_DISTANCE_FORMULA",
+      "canonicalLabelKo": "좌표평면 위의 두 점 사이의 거리",
+      "definition": "피타고라스 정리를 이용하여 좌표평면 위 두 점 사이의 거리를 구하는 공식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_3904d93a26b02f90221332d7d997efe20a41f27d4cfe9620b170c77ea46e6f25"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-04"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_3904d93a26b02f90221332d7d997efe20a41f27d4cfe9620b170c77ea46e6f25",
+          "sourceOrdinal": 6,
+          "classificationRationale": "한 직선에 대한 점의 대칭이동을 이용하여 두 선분 길이의 합의 최솟값을 구하는 GEOMETRY_EQUATIONS 정본 유형",
+          "decisiveEvidence": "점 A(2,1)을 직선 y=x에 대칭이동하면 A'=(1,2)이고 PA+PB = A'P+PB >= A'B = sqrt(16+4) = 2sqrt(5)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_REFLECTION_SHORTEST"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_IDENTITY_LINE_REFLECTION",
+      "canonicalLabelKo": "항등함수 직선 y=x와 좌표 읽기",
+      "definition": "직선 y=x 위의 점을 이용해 y축 눈금을 x축 눈금과 대응시켜 합성·역함숫값을 읽는 원리",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+          "sourceOrdinal": 12,
+          "classificationRationale": "함수 y=f(x)와 직선 y=x의 그래프에서 함숫값과 역함숫값을 읽어 계산하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "그림에서 f(5)=3이고 f(8)=7에서 f^(-1)(7)=8이므로 f(5)+f^(-1)(7)=3+8=11이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_INVERSE_VALUE"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_LINE_INTERCEPT_EQUATION",
+      "canonicalLabelKo": "직선의 절편 방정식",
+      "definition": "x절편이 a, y절편이 b인 직선의 방정식 x/a + y/b = 1",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-02"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc",
+          "sourceOrdinal": 9,
+          "classificationRationale": "직선의 절편 방정식과 정점 통과 조건에서 산술·기하평균(또는 유리식 변형)으로 두 절편 합의 최솟값을 구하는 GEOMETRY_EQUATIONS 정본 유형",
+          "decisiveEvidence": "3/a+12/b=1에서 t=a-3>0으로 놓으면 b=12+36/t이므로 a+b=t+15+36/t>=27 (t=6일 때 등호 성립)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_INTERCEPT_OPTIMIZATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-02"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_LINE_SYMMETRY_REFLECTION",
+      "canonicalLabelKo": "직선에 대한 대칭이동",
+      "definition": "점이나 도형을 직선 y=x 또는 일반 직선에 대하여 대칭이동하는 변환",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_3904d93a26b02f90221332d7d997efe20a41f27d4cfe9620b170c77ea46e6f25"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-04"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_3904d93a26b02f90221332d7d997efe20a41f27d4cfe9620b170c77ea46e6f25",
+          "sourceOrdinal": 6,
+          "classificationRationale": "한 직선에 대한 점의 대칭이동을 이용하여 두 선분 길이의 합의 최솟값을 구하는 GEOMETRY_EQUATIONS 정본 유형",
+          "decisiveEvidence": "점 A(2,1)을 직선 y=x에 대칭이동하면 A'=(1,2)이고 PA+PB = A'P+PB >= A'B = sqrt(16+4) = 2sqrt(5)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_REFLECTION_SHORTEST"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PERPENDICULAR_SLOPE",
+      "canonicalLabelKo": "수직인 두 직선의 기울기",
+      "definition": "서로 수직인 두 직선의 기울기의 곱이 -1이 되는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f309b4c9d23cfe88c53f8e07e6347db0140c4f11fef601a8e042b1677bdf7db3"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f309b4c9d23cfe88c53f8e07e6347db0140c4f11fef601a8e042b1677bdf7db3",
+          "sourceOrdinal": 3,
+          "classificationRationale": "원 위의 한 점에서의 접선의 방정식을 구하는 GEOMETRY_EQUATIONS 정본 유형",
+          "decisiveEvidence": "접선은 반지름에 수직이므로 기울기는 -3/4이고 y-4=-3/4(x-3)을 정리하면 3x+4y=25이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_POINT_TO_LINE_DISTANCE",
+      "canonicalLabelKo": "점과 직선 사이의 거리",
+      "definition": "한 점 (x1, y1)에서 직선 ax+by+c=0에 내린 수선의 길이를 구하는 공식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+          "sourceOrdinal": 7,
+          "classificationRationale": "원 밖의 한 점에서 원에 그은 두 접선의 기울기의 곱을 점과 직선 사이의 거리 및 이차방정식으로 구하는 GEOMETRY_EQUATIONS 정본 유형",
+          "decisiveEvidence": "중심 (3,-2)에서 직선 mx-y+m+2=0까지의 거리가 2이므로 3m^2+8m+3=0이고 근과 계수의 관계에서 m1*m2=1이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_POINT_TRANSLATION",
+      "canonicalLabelKo": "점의 평행이동",
+      "definition": "좌표평면 위의 점 (x, y)를 x축 방향으로 a만큼, y축 방향으로 b만큼 옮기는 변환 (x+a, y+b)",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8bc12777f135e12acce07e0e0b42e6eeb11800ea1b642646d84f2355929f70fd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-04"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8bc12777f135e12acce07e0e0b42e6eeb11800ea1b642646d84f2355929f70fd",
+          "sourceOrdinal": 2,
+          "classificationRationale": "점의 평행이동 규칙으로부터 이동 성분을 구해 다른 점의 이동 후 좌표를 계산하는 GEOMETRY_EQUATIONS 정본 유형",
+          "decisiveEvidence": "좌표 변화는 (-1-4, 3-1)=(-5, 2)이므로 점 (2, 5)에 적용하면 (2-5, 5+2)=(-3, 7)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_POINT_TRANSLATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SHORTEST_DISTANCE_COLLINEAR",
+      "canonicalLabelKo": "대칭이동을 이용한 최단거리",
+      "definition": "대칭이동한 점과 다른 한 점을 일직선으로 이은 선분의 길이로 꺾인 선분 합의 최솟값을 구하는 원리",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_3904d93a26b02f90221332d7d997efe20a41f27d4cfe9620b170c77ea46e6f25"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-04"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_3904d93a26b02f90221332d7d997efe20a41f27d4cfe9620b170c77ea46e6f25",
+          "sourceOrdinal": 6,
+          "classificationRationale": "한 직선에 대한 점의 대칭이동을 이용하여 두 선분 길이의 합의 최솟값을 구하는 GEOMETRY_EQUATIONS 정본 유형",
+          "decisiveEvidence": "점 A(2,1)을 직선 y=x에 대칭이동하면 A'=(1,2)이고 PA+PB = A'P+PB >= A'B = sqrt(16+4) = 2sqrt(5)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_MOVE_REFLECTION_SHORTEST"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-04"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
     }

@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "FUNCTIONS",
-  "shardVersion": "1.5.3",
+  "shardVersion": "1.5.4",
   "status": "ACTIVE",
-  "conceptCount": 44,
+  "conceptCount": 52,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
@@ -1320,6 +1320,340 @@
       ],
       "legacyKeys": [],
       "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_GRAPH_SYMMETRY_CENTER",
+      "canonicalLabelKo": "유리함수 그래프의 대칭성",
+      "definition": "유리함수 그래프가 두 점근선의 교점 (p, q) 및 기울기 ±1인 직선에 대하여 대칭인 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473",
+          "sourceOrdinal": 13,
+          "classificationRationale": "유리함수 식을 표준형으로 변형하여 점근선, 대칭점, 평행이동, 사분면 통과 성질을 판정하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "y=-1-1/(x-1)이므로 점근선은 x=1, y=-1이고 x<0이면 y<0이어서 제3사분면을 지나므로 ⑤가 옳지 않다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_PROPERTIES"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_INVERSE_FUNCTION_EVALUATION",
+      "canonicalLabelKo": "역함수의 뜻과 함숫값",
+      "definition": "일대일대응 함수 f에서 f^(-1)(b)=a와 f(a)=b의 동치 관계를 이용한 함숫값 계산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_eb6acad9fa980414d8b98a932fbb621b7e9e534813df638566e212383a044869",
+        "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6",
+          "sourceOrdinal": 12,
+          "classificationRationale": "함수 y=f(x)와 직선 y=x의 그래프에서 함숫값과 역함숫값을 읽어 계산하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "그림에서 f(5)=3이고 f(8)=7에서 f^(-1)(7)=8이므로 f(5)+f^(-1)(7)=3+8=11이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_eb6acad9fa980414d8b98a932fbb621b7e9e534813df638566e212383a044869",
+          "sourceOrdinal": 15,
+          "classificationRationale": "함숫값과 역함숫값 조건을 연립방정식으로 풀어 일차함수의 계수를 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "5a+b=2와 -a+b=5를 연립하면 a=-1/2, b=9/2이므로 a+b=4이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_RECOVERY",
+        "PT_INVERSE_VALUE"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_INVERSE_GRAPH_INTERSECTION",
+      "canonicalLabelKo": "함수와 그 역함수 그래프의 교점",
+      "definition": "증가하는 함수 y=f(x)와 역함수 y=f^(-1)(x)의 교점이 직선 y=x 위에 존재함을 이용한 방정식 풀이",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_aa432a165d8888db7b96c9a7e2d5495ce881cddc57d5eb19aef0ade05b7f7bd7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_aa432a165d8888db7b96c9a7e2d5495ce881cddc57d5eb19aef0ade05b7f7bd7",
+          "sourceOrdinal": 20,
+          "classificationRationale": "무리함수와 그 역함수 그래프의 교점을 직선 y=x와의 연립방정식으로 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "증가함수이므로 교점은 y=x 위에 있고 sqrt(x+2)=x (x>=0)에서 (x-2)(x+1)=0이므로 교점은 (2,2)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_INVERSE_GRAPH"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_IRRATIONAL_FUNCTION_GRAPH",
+      "canonicalLabelKo": "무리함수의 그래프와 시작점",
+      "definition": "무리함수 y=±sqrt(a(x-p))+q의 시작점 (p, q), 정의역, 치역 및 그래프 개형",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1b8dda0f45ede17995e86942c9ba49d77dbd796a059761f30072544402a1ba57",
+        "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H22-C2-09"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+          "sourceOrdinal": 11,
+          "classificationRationale": "무리함수의 시작점과 정의역·절편을 구하여 그래프가 지나는 사분면을 판정하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "정의역은 x<=-1이고 x=-2에서 y=0이므로 x<-2에서 제2사분면, -2<x<=-1에서 제3사분면을 지난다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1b8dda0f45ede17995e86942c9ba49d77dbd796a059761f30072544402a1ba57",
+          "sourceOrdinal": 17,
+          "classificationRationale": "무리함수 그래프 위의 점들이 이루는 정사각형의 변 길이 조건을 방정식으로 풀어 좌표를 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "A=(a, sqrt(2a))이면 D=(2a, sqrt(2a))이고 정사각형 조건에서 가로 AD=a와 세로 AB=sqrt(2a)가 같으므로 a=2이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_GEOMETRY",
+        "PT_FUNCTION_GRAPH_QUADRANT"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-09"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_MAPPING_DIAGRAM_READING",
+      "canonicalLabelKo": "대응 그림에서의 함숫값 추적",
+      "definition": "유한집합 사이의 화살표 대응 그림에서 원소의 함숫값을 순차적으로 읽는 해석",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_01eeaa3d642bb7d576d6b811d6dae0a1c47f1be0ffa754453aeda7f53e47fb9b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_01eeaa3d642bb7d576d6b811d6dae0a1c47f1be0ffa754453aeda7f53e47fb9b",
+          "sourceOrdinal": 10,
+          "classificationRationale": "유한집합의 대응 그림에서 합성함수의 함숫값을 순차적으로 추적하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "대응 그림에서 f(2)=4이고 f(4)=5이므로 (f∘f)(2)=f(f(2))=f(4)=5이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COMPOSITION_EVALUATION"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_PIECEWISE_FUNCTION_COMPOSITION",
+      "canonicalLabelKo": "구간별 정의된 함수의 합성",
+      "definition": "내부 함수 f(x)의 함숫값이 외부 함수 g의 구간 경계를 지나는 x값을 기준으로 정의역을 세분화하여 합성함수 식을 구하는 방법",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_d4f1a92208816b516820f926746e23312693f501e9c00c8dcff17ea60bb8ed55"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-07"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_d4f1a92208816b516820f926746e23312693f501e9c00c8dcff17ea60bb8ed55",
+          "sourceOrdinal": 18,
+          "classificationRationale": "조각함수(구간별 정의된 함수)의 합성함수 그래프를 구간별로 작성하고 좌표축으로 둘러싸인 도형의 넓이를 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "구간 [0,1)에서 2-x, [1,3/2)에서 2x-1, [3/2,2]에서 -4x+8이므로 둘러싸인 넓이는 3/2 + 3/4 + 1/2 = 11/4이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COMPOSITE_FUNCTION_ANALYSIS"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-07"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_QUADRANT_PASSAGE_CONDITION",
+      "canonicalLabelKo": "그래프가 지나는 사분면 판정",
+      "definition": "함수의 정의역·치역과 좌표축 절편의 부호를 이용하여 그래프가 지나는 사분면을 결정하는 방법",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473",
+        "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H22-C2-08",
+        "H22-C2-09"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fcd1380af2d103f9f78c297bf77ffa804e47dc0a0fbd3ce5507c40dd087018e2",
+          "sourceOrdinal": 11,
+          "classificationRationale": "무리함수의 시작점과 정의역·절편을 구하여 그래프가 지나는 사분면을 판정하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "정의역은 x<=-1이고 x=-2에서 y=0이므로 x<-2에서 제2사분면, -2<x<=-1에서 제3사분면을 지난다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473",
+          "sourceOrdinal": 13,
+          "classificationRationale": "유리함수 식을 표준형으로 변형하여 점근선, 대칭점, 평행이동, 사분면 통과 성질을 판정하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "y=-1-1/(x-1)이므로 점근선은 x=1, y=-1이고 x<0이면 y<0이어서 제3사분면을 지나므로 ⑤가 옳지 않다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_PROPERTIES",
+        "PT_FUNCTION_GRAPH_QUADRANT"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08",
+        "2022:공통수학2:H22-C2-09"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
+    },
+    {
+      "conceptKey": "CC_RATIONAL_FUNCTION_ASYMPTOTE",
+      "canonicalLabelKo": "유리함수의 점근선과 표준형",
+      "definition": "유리함수 y=(cx+d)/(ax+b)를 표준형 y=k/(x-p)+q로 변형하여 점근선 x=p, y=q를 구하는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473",
+        "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473",
+          "sourceOrdinal": 13,
+          "classificationRationale": "유리함수 식을 표준형으로 변형하여 점근선, 대칭점, 평행이동, 사분면 통과 성질을 판정하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "y=-1-1/(x-1)이므로 점근선은 x=1, y=-1이고 x<0이면 y<0이어서 제3사분면을 지나므로 ⑤가 옳지 않다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+          "sourceOrdinal": 14,
+          "classificationRationale": "유리함수의 점근선들로 둘러싸인 직사각형의 넓이 조건으로부터 미지수 k를 구하는 FUNCTIONS_GRAPHS 정본 유형",
+          "decisiveEvidence": "네 점근선 x=k, y=0, x=1, y=k로 둘러싸인 넓이는 k|k-1|=12이고 k>1에서 (k-4)(k+3)=0이므로 k=4이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+            "sha256": "6c9a937aa2bac4c7eed47db574254c6d1d3b19b202935250be5b99407577e016"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_PROPERTIES",
+        "PT_RATIONAL_ASYMPTOTE"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
+      ],
+      "ownerConceptShard": "FUNCTIONS"
     }
   ]
 }
