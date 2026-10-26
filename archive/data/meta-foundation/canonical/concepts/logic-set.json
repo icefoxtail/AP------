@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "LOGIC_SET",
-  "shardVersion": "1.0.1",
+  "shardVersion": "1.0.2",
   "status": "ACTIVE",
-  "conceptCount": 5,
+  "conceptCount": 7,
   "concepts": [
     {
       "conceptKey": "CC_COUNTEREXAMPLE",
@@ -99,6 +99,76 @@
       "supportingItemCount": 1,
       "status": "ACTIVE",
       "aliases": [],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_DEMORGAN_LAWS",
+      "canonicalLabelKo": "드모르간의 법칙",
+      "definition": "합사건과 교사건의 여사건 관계 (A∪B)^c = A^c ∩ B^c",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ac7030626aa34da8b91102ccc2b4aa8a964813cc6e5188ea8dd7508476ad1a23"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ac7030626aa34da8b91102ccc2b4aa8a964813cc6e5188ea8dd7508476ad1a23",
+          "sourceOrdinal": 1,
+          "classificationRationale": "드모르간의 법칙과 여사건의 확률 관계를 이용하여 합사건의 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(A^c∩B^c)=7/18-1/9=5/18이므로 P(A∪B)=1-P(A^c∩B^c)=13/18이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-03"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SET_DIFFERENCE_IDENTITY",
+      "canonicalLabelKo": "차집합과 교집합의 확률 관계",
+      "definition": "사건의 연산에서 P(B^c - (A∩B^c)) = P(A^c∩B^c) = P(B^c) - P(A∩B^c)가 성립하는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_ac7030626aa34da8b91102ccc2b4aa8a964813cc6e5188ea8dd7508476ad1a23"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ac7030626aa34da8b91102ccc2b4aa8a964813cc6e5188ea8dd7508476ad1a23",
+          "sourceOrdinal": 1,
+          "classificationRationale": "드모르간의 법칙과 여사건의 확률 관계를 이용하여 합사건의 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(A^c∩B^c)=7/18-1/9=5/18이므로 P(A∪B)=1-P(A^c∩B^c)=13/18이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-03"
+      ],
       "ownerConceptShard": "LOGIC_SET"
     }
   ]
