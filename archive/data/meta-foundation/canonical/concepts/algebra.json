@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.10",
+  "shardVersion": "1.4.11",
   "status": "ACTIVE",
-  "conceptCount": 194,
+  "conceptCount": 195,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -6049,6 +6049,41 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_RADICAL_ABSOLUTE_VALUE",
+      "canonicalLabelKo": "근호와 절댓값의 정리",
+      "definition": "실수 A에 대하여 √(A²)=|A|임을 이용해 부호에 따라 근호를 벗겨내는 대수 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c28e9c13282182e1b1a5e00099b45d4aea91b14be2b61491923edbf088674529"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c28e9c13282182e1b1a5e00099b45d4aea91b14be2b61491923edbf088674529",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_RADICAL_ABSOLUTE_VALUE for PT_TRIG_RATIO/TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION at M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 5 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
       ],
       "ownerConceptShard": "ALGEBRA"
     }

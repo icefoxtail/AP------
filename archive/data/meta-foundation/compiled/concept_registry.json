@@ -4,8 +4,8 @@
   "sourceShards": [
     {
       "shardId": "ALGEBRA",
-      "version": "1.4.10",
-      "conceptCount": 194
+      "version": "1.4.11",
+      "conceptCount": 195
     },
     {
       "shardId": "FUNCTIONS",
@@ -24,8 +24,8 @@
     },
     {
       "shardId": "PLANE_GEOMETRY",
-      "version": "1.3.7",
-      "conceptCount": 43
+      "version": "1.3.8",
+      "conceptCount": 52
     },
     {
       "shardId": "COUNTING",
@@ -44,8 +44,8 @@
     },
     {
       "shardId": "TRIGONOMETRY",
-      "version": "1.0.1",
-      "conceptCount": 12
+      "version": "1.0.2",
+      "conceptCount": 23
     },
     {
       "shardId": "SEQUENCES",
@@ -63,7 +63,7 @@
       "conceptCount": 64
     }
   ],
-  "conceptCount": 499,
+  "conceptCount": 520,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -6113,6 +6113,41 @@
       "ownerConceptShard": "ALGEBRA"
     },
     {
+      "conceptKey": "CC_RADICAL_ABSOLUTE_VALUE",
+      "canonicalLabelKo": "근호와 절댓값의 정리",
+      "definition": "실수 A에 대하여 √(A²)=|A|임을 이용해 부호에 따라 근호를 벗겨내는 대수 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c28e9c13282182e1b1a5e00099b45d4aea91b14be2b61491923edbf088674529"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c28e9c13282182e1b1a5e00099b45d4aea91b14be2b61491923edbf088674529",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_RADICAL_ABSOLUTE_VALUE for PT_TRIG_RATIO/TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION at M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 5 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
       "conceptKey": "CC_ABSOLUTE_VALUE_GRAPH",
       "canonicalLabelKo": "절댓값 기호가 포함된 함수의 그래프",
       "definition": "절댓값 기호가 포함된 식을 구간별 식으로 나누어 함수의 그래프와 교점 구조를 해석하는 개념.",
@@ -11914,6 +11949,321 @@
       "ownerConceptShard": "PLANE_GEOMETRY"
     },
     {
+      "conceptKey": "CC_REGULAR_OCTAGON_AREA",
+      "canonicalLabelKo": "정다각형의 삼각비 넓이 분할",
+      "definition": "외접원의 중심과 꼭짓점을 이어 생기는 합동인 이등변삼각형들의 삼각비 넓이 합으로 다각형 넓이 산출",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_76c01a675d734cb05888d8566b0f29d109b58b1306f27003e9341f547410452a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_76c01a675d734cb05888d8566b0f29d109b58b1306f27003e9341f547410452a",
+          "sourceOrdinal": 9,
+          "classificationRationale": "META_PIPELINE_AUDIT record 9 binds CC_REGULAR_OCTAGON_AREA for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_DIRECT_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 9 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_RECTANGLE_PERCENT_AREA",
+      "canonicalLabelKo": "변의 변화율에 따른 도형의 넓이 변화",
+      "definition": "가로와 세로의 길이 변화율(배수)의 곱으로 넓이의 최종 비율을 결정하는 대수 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_763678c7f343c5bac5cadb5609bed76bfeb03877905b04e4a77c1a3128b5f0fd"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_763678c7f343c5bac5cadb5609bed76bfeb03877905b04e4a77c1a3128b5f0fd",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_RECTANGLE_PERCENT_AREA for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_DIRECT_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 12 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PAPER_FOLDING_SIMILARITY",
+      "canonicalLabelKo": "직사각형 종이접기의 대칭성과 삼각비",
+      "definition": "종이를 접었을 때 접힌 선은 대칭축이 되어 대응 선분의 길이가 같음을 이용한 직각삼각형 모델링",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_fe666e358be6ce39a16edad6c823caf7054cda5da58fbeaca379763cab2238c2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fe666e358be6ce39a16edad6c823caf7054cda5da58fbeaca379763cab2238c2",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_PAPER_FOLDING_SIMILARITY for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 14 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_RADIUS_DEFINITION",
+      "canonicalLabelKo": "원의 중심과 반지름의 정의",
+      "definition": "평면 위의 한 정점(중심)으로부터 일정한 거리에 있는 점들의 모임이 원이며 모든 반지름은 같다",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1cf3d85ff4d544dc0a3e559c81a1fe06863b63152549eaa68eef1b06415ac34f"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1cf3d85ff4d544dc0a3e559c81a1fe06863b63152549eaa68eef1b06415ac34f",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_CIRCLE_RADIUS_DEFINITION for PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_ANGLE_DEFINITION_CLAIM_AUDIT at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 16 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_ANGLE_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_CHORD_DISTANCE",
+      "canonicalLabelKo": "중심에서 현까지의 거리와 현의 길이",
+      "definition": "원의 중심에서 같은 거리에 있는 두 현의 길이는 같고, 길이가 같은 두 현은 중심에서 같은 거리에 있다",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_fdc584adc0bb7d0ab7c77addd88238d37ebf061993b4c242d64280f9e7cf050c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fdc584adc0bb7d0ab7c77addd88238d37ebf061993b4c242d64280f9e7cf050c",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_CIRCLE_CHORD_DISTANCE for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 17 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_TANGENT_LENGTH",
+      "canonicalLabelKo": "원의 접선의 성질과 중심각",
+      "definition": "원 밖의 한 점에서 그은 두 접선의 길이는 같고 접점과 중심을 잇는 반지름은 접선과 수직이다",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_07176266b8389d6e921c2051341d13fe0d10efe594a3d888c70e2476f2a1697a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_07176266b8389d6e921c2051341d13fe0d10efe594a3d888c70e2476f2a1697a",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_CIRCLE_TANGENT_LENGTH for PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 18 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_CENTER_CONSTRUCTION",
+      "canonicalLabelKo": "현의 수직이등분선을 이용한 원의 중심 작도",
+      "definition": "원의 중심에서 현에 내린 수선은 현을 이등분하므로 서로 다른 두 현의 수직이등분선의 교점이 중심이다",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f7f95a9c5b6a01d2279ce37df3e53225c1dd1c5ffd4c30ab65324e456249c6c2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f7f95a9c5b6a01d2279ce37df3e53225c1dd1c5ffd4c30ab65324e456249c6c2",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_CIRCLE_CENTER_CONSTRUCTION for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_PERP_BISECTOR at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 19 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_RECTANGLE_INSCRIBED_CIRCLE_TANGENT",
+      "canonicalLabelKo": "직사각형에 접하는 원과 접선의 방정식",
+      "definition": "직사각형 변과 접선이 이루는 접점들 사이의 길이 관계를 피타고라스 정리와 결합하여 해결",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ff524c074130ef8a29ca1f0cac5a2d87cae4abd25409c2f24b93e0174f95ee6c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ff524c074130ef8a29ca1f0cac5a2d87cae4abd25409c2f24b93e0174f95ee6c",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_RECTANGLE_INSCRIBED_CIRCLE_TANGENT for PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 20 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_INSCRIBED_CIRCLE_PERIMETER",
+      "canonicalLabelKo": "삼각형의 내접원과 둘레의 길이",
+      "definition": "삼각형의 세 꼭짓점에서 내접원에 그은 접선 조각 쌍들의 합으로 삼각형의 둘레를 산출",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_516d3c9603d771c158accb86c57c96ce5fa2ab0da7c209e4f2565d99e6dd7c6c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_516d3c9603d771c158accb86c57c96ce5fa2ab0da7c209e4f2565d99e6dd7c6c",
+          "sourceOrdinal": 21,
+          "classificationRationale": "META_PIPELINE_AUDIT record 21 binds CC_TRIANGLE_INSCRIBED_CIRCLE_PERIMETER for PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 21 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
       "conceptKey": "CC_COMBINATORICS_COUNTING",
       "canonicalLabelKo": "순열과 조합을 이용한 경우의 수",
       "definition": "집합의 원소 선택·배열·분할을 순열, 조합, 곱의 법칙 등으로 세는 개념.",
@@ -14184,6 +14534,529 @@
       ],
       "supportingItemCount": 1,
       "status": "ACTIVE",
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIG_RATIO",
+      "canonicalLabelKo": "삼각비의 기본 정의",
+      "definition": "직각삼각형에서 직각이 아닌 한 각에 대한 두 변의 길이의 비(sin, cos, tan)",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_07f2a2d9ffade1b306afc80e93a2ed65cd1f45036f14dfb164c17415bc4ef7e0",
+        "qid_v1_8f6823ece16f22ec12e271eb0c507cc0d5c9e57f50ae0fb427d6e85ca22add8c",
+        "qid_v1_93d653274f9d3c72e5fde6b4c7c65fe4a75b5a14c8ae3f9864bb38d12b555e26",
+        "qid_v1_fe666e358be6ce39a16edad6c823caf7054cda5da58fbeaca379763cab2238c2"
+      ],
+      "supportingItemCount": 4,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8f6823ece16f22ec12e271eb0c507cc0d5c9e57f50ae0fb427d6e85ca22add8c",
+          "sourceOrdinal": 1,
+          "classificationRationale": "META_PIPELINE_AUDIT record 1 binds CC_TRIG_RATIO for PT_TRIG_RATIO/TPL_TRIG_RATIO_BASIC_RELATION at M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 1 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_93d653274f9d3c72e5fde6b4c7c65fe4a75b5a14c8ae3f9864bb38d12b555e26",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_TRIG_RATIO for PT_TRIG_RATIO/TPL_TRIG_RATIO_GEOMETRIC_DERIVATION at M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 3 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_07f2a2d9ffade1b306afc80e93a2ed65cd1f45036f14dfb164c17415bc4ef7e0",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_TRIG_RATIO for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 7 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fe666e358be6ce39a16edad6c823caf7054cda5da58fbeaca379763cab2238c2",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_TRIG_RATIO for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 14 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO",
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_SPECIAL_ANGLES",
+      "canonicalLabelKo": "특수각의 삼각비",
+      "definition": "30°, 45°, 60° 등 특수각에 대한 정형화된 삼각비 값과 사칙연산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_07176266b8389d6e921c2051341d13fe0d10efe594a3d888c70e2476f2a1697a",
+        "qid_v1_345038ca84be90614fd17a1336fbf604fb22bbb68c0e628899141792570733c6",
+        "qid_v1_6091ca048b32cb7f22553683e70ce1d8a95e57c7af5be43dffa368419be404d2",
+        "qid_v1_76c01a675d734cb05888d8566b0f29d109b58b1306f27003e9341f547410452a",
+        "qid_v1_7a66edb776a1e141e675cae83802f5343e2f7e97f1c973b320867cb2d07de6df",
+        "qid_v1_f4e02451c669123c77210aa4ed2d11de4e70ad545199146c98e07c04f3f7c939"
+      ],
+      "supportingItemCount": 6,
+      "sourceUnits": [
+        "M3-05",
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f4e02451c669123c77210aa4ed2d11de4e70ad545199146c98e07c04f3f7c939",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_SPECIAL_ANGLES for PT_TRIG_RATIO/TPL_TRIG_RATIO_SPECIAL_ANGLE at M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 2 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_76c01a675d734cb05888d8566b0f29d109b58b1306f27003e9341f547410452a",
+          "sourceOrdinal": 9,
+          "classificationRationale": "META_PIPELINE_AUDIT record 9 binds CC_SPECIAL_ANGLES for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_DIRECT_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 9 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_345038ca84be90614fd17a1336fbf604fb22bbb68c0e628899141792570733c6",
+          "sourceOrdinal": 11,
+          "classificationRationale": "META_PIPELINE_AUDIT record 11 binds CC_SPECIAL_ANGLES for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 11 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_07176266b8389d6e921c2051341d13fe0d10efe594a3d888c70e2476f2a1697a",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_SPECIAL_ANGLES for PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 18 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7a66edb776a1e141e675cae83802f5343e2f7e97f1c973b320867cb2d07de6df",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_SPECIAL_ANGLES for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 22 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6091ca048b32cb7f22553683e70ce1d8a95e57c7af5be43dffa368419be404d2",
+          "sourceOrdinal": 23,
+          "classificationRationale": "META_PIPELINE_AUDIT record 23 binds CC_SPECIAL_ANGLES for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_DIRECT_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 23 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT",
+        "PT_TRIG_RATIO",
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05",
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_UNIT_QUARTER_CIRCLE",
+      "canonicalLabelKo": "단위 사분원에서의 삼각비 표현",
+      "definition": "반지름이 1인 사분원에서 동경과 원, 접선의 교점 좌표로 삼각비 값을 기하학적으로 판독하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_93d653274f9d3c72e5fde6b4c7c65fe4a75b5a14c8ae3f9864bb38d12b555e26"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_93d653274f9d3c72e5fde6b4c7c65fe4a75b5a14c8ae3f9864bb38d12b555e26",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_UNIT_QUARTER_CIRCLE for PT_TRIG_RATIO/TPL_TRIG_RATIO_GEOMETRIC_DERIVATION at M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 3 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_COMPLEMENTARY_ANGLE_TRIG",
+      "canonicalLabelKo": "여각의 삼각비 관계",
+      "definition": "합이 90°인 두 각에 대하여 sin(90°-A)=cos A, cos(90°-A)=sin A, tan(90°-A)=1/tan A가 성립하는 성질",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_4676e57abcc33bb276f3abf5e2dcca18220de29dbf966f6362077a76bf1f4d05",
+        "qid_v1_d5a08130b5531823cad8cfc7847ecc23939a927df1a704cb186ecca07a2693ff"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_4676e57abcc33bb276f3abf5e2dcca18220de29dbf966f6362077a76bf1f4d05",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_COMPLEMENTARY_ANGLE_TRIG for PT_TRIG_RATIO/TPL_TRIG_RATIO_BASIC_RELATION at M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 4 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_d5a08130b5531823cad8cfc7847ecc23939a927df1a704cb186ecca07a2693ff",
+          "sourceOrdinal": 8,
+          "classificationRationale": "META_PIPELINE_AUDIT record 8 binds CC_COMPLEMENTARY_ANGLE_TRIG for PT_TRIG_RATIO/TPL_TRIG_RATIO_GEOMETRIC_DERIVATION at M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 8 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIG_RATIO_ORDER",
+      "canonicalLabelKo": "삼각비의 대소 관계 비교",
+      "definition": "0°부터 90°까지 각이 증가함에 따라 sin은 증가, cos은 감소, tan는 급격히 증가하는 단조성",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1b5921815d46d39d6bd4c156f581d6cf972e7b5a9e8349e988aaae8e7538593f",
+        "qid_v1_c28e9c13282182e1b1a5e00099b45d4aea91b14be2b61491923edbf088674529"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c28e9c13282182e1b1a5e00099b45d4aea91b14be2b61491923edbf088674529",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_TRIG_RATIO_ORDER for PT_TRIG_RATIO/TPL_TRIG_RATIO_ALGEBRAIC_SIMPLIFICATION at M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 5 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1b5921815d46d39d6bd4c156f581d6cf972e7b5a9e8349e988aaae8e7538593f",
+          "sourceOrdinal": 6,
+          "classificationRationale": "META_PIPELINE_AUDIT record 6 binds CC_TRIG_RATIO_ORDER for PT_TRIG_RATIO/TPL_TRIG_RATIO_SPECIAL_ANGLE at M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 6 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_COORDINATE_TRIG",
+      "canonicalLabelKo": "좌표평면에서의 삼각비 좌표 투영",
+      "definition": "원점으로부터의 거리 r과 기울기 각에 대하여 점의 좌표를 (r cos θ, r sin θ)로 나타내는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6ec5a1ef3b7e75159773eaf695f09c99dbe2004e86c926a0a9a3baef5d5351e7",
+        "qid_v1_d5a08130b5531823cad8cfc7847ecc23939a927df1a704cb186ecca07a2693ff"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_d5a08130b5531823cad8cfc7847ecc23939a927df1a704cb186ecca07a2693ff",
+          "sourceOrdinal": 8,
+          "classificationRationale": "META_PIPELINE_AUDIT record 8 binds CC_COORDINATE_TRIG for PT_TRIG_RATIO/TPL_TRIG_RATIO_GEOMETRIC_DERIVATION at M3-05-TRIG_RATIO.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 8 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6ec5a1ef3b7e75159773eaf695f09c99dbe2004e86c926a0a9a3baef5d5351e7",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_COORDINATE_TRIG for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 15 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO",
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_LINE_SLOPE_TANGENT",
+      "canonicalLabelKo": "직선의 기울기와 탄젠트",
+      "definition": "직선이 x축의 양의 방향과 이루는 각이 α일 때 직선의 기울기 m = tan α가 된다는 성질",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_f6ba276aa54d160612353a780681f341dec48a239c8bacaefc57df78aef71add"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f6ba276aa54d160612353a780681f341dec48a239c8bacaefc57df78aef71add",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_LINE_SLOPE_TANGENT for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 10 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_OBLIQUE_TRIANGLE_MEASURE",
+      "canonicalLabelKo": "일반 삼각형의 변의 길이 측정",
+      "definition": "특수각 꼭짓점에서 대변에 수선을 내려 두 직각삼각형으로 분할하여 미지의 변을 구하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_345038ca84be90614fd17a1336fbf604fb22bbb68c0e628899141792570733c6"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_345038ca84be90614fd17a1336fbf604fb22bbb68c0e628899141792570733c6",
+          "sourceOrdinal": 11,
+          "classificationRationale": "META_PIPELINE_AUDIT record 11 binds CC_OBLIQUE_TRIANGLE_MEASURE for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 11 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIG_TABLE_LOOKUP",
+      "canonicalLabelKo": "삼각비표의 활용",
+      "definition": "각도에 따른 삼각비의 근삿값이 기록된 표를 읽고 수직 투영 높이를 계산하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e583ae5cf335ebbab4013293bc1503be955cc182c4c62d4d9359dee2571e05f9"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e583ae5cf335ebbab4013293bc1503be955cc182c4c62d4d9359dee2571e05f9",
+          "sourceOrdinal": 13,
+          "classificationRationale": "META_PIPELINE_AUDIT record 13 binds CC_TRIG_TABLE_LOOKUP for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_DIRECT_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 13 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_QUADRILATERAL_AREA_TRIG",
+      "canonicalLabelKo": "사각형의 대각선 분할과 삼각비 넓이",
+      "definition": "대각선으로 나뉜 두 삼각형의 넓이를 각각 직각삼각형 및 둔각삼각형 넓이 공식으로 구하여 합산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_7a66edb776a1e141e675cae83802f5343e2f7e97f1c973b320867cb2d07de6df"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7a66edb776a1e141e675cae83802f5343e2f7e97f1c973b320867cb2d07de6df",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_QUADRILATERAL_AREA_TRIG for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 22 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "TRIGONOMETRY"
+    },
+    {
+      "conceptKey": "CC_CLINOMETER_ELEVATION_ANGLE",
+      "canonicalLabelKo": "클리노미터 측정과 올려본각",
+      "definition": "측정 장치의 추 각도로부터 올려본각을 계산하고 거리와 눈높이를 결합하여 물체의 높이 측량",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6091ca048b32cb7f22553683e70ce1d8a95e57c7af5be43dffa368419be404d2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6091ca048b32cb7f22553683e70ce1d8a95e57c7af5be43dffa368419be404d2",
+          "sourceOrdinal": 23,
+          "classificationRationale": "META_PIPELINE_AUDIT record 23 binds CC_CLINOMETER_ELEVATION_ANGLE for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_DIRECT_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 23 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.audit.json",
+            "sha256": "bcb4e9dff5c5248b51ffadf039b4a78ac2740870795e4c8f4ecfe31bfd1e1f83"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
       "ownerConceptShard": "TRIGONOMETRY"
     },
     {
