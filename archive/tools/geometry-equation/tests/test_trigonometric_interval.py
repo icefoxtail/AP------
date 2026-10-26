@@ -60,7 +60,7 @@ class TrigonometricInterval(unittest.TestCase):
         self.assertEqual(refused(request([{'id':'k','slope':'0','intercept':'1','intersectionCount':0}])),'TRIG_LINE_SLOPE_ZERO:k')
         self.assertEqual(refused(request([{'id':'k','y':'1/2','slope':'1','intersectionCount':6}])),'TRIG_LINE_FORM_INVALID:k')
         self.assertEqual(refused(request([{'id':'k','y':'0.5','intersectionCount':6}])),'TRIG_LINE_COEFFICIENT_INVALID:k')
-        tan=request([],'TAN');self.assertEqual(refused(tan),'TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+        tan=request([{'id':'k','y':'1/2','intersectionCount':0}],'TAN');self.assertEqual(refused(tan),'TRIG_TAN_REFERENCE_LINES_UNSUPPORTED')
         one=request([{'id':'k','y':'1/2','intersectionCount':6}]);one['sourceDomain']={'kind':'ALL_REALS'}
         self.assertEqual(refused(one),'TRIG_REFERENCE_LINES_REQUIRE_INTERVAL_PI')
 

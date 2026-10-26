@@ -912,26 +912,27 @@ def trig_interval_source(plan):
     if not lo<hi or not isinstance(states,list) or len(states)!=2 or any(state not in {'OPEN','CLOSED'} for state in states):raise ValueError('INVALID_TRIG_INTERVAL')
     return lo,hi,list(states)
 
-def trig_line_crossings(function,a,k,c,phase,lo,hi,states,line):
-    """Every x (radians) in the interval where a*F(k*x+phase*pi)+c meets the line, with its y. Closed form for a horizontal line, sign changes for a slanted one."""
-    x0,x1=float(lo)*math.pi,float(hi)*math.pi;slope,intercept=float(line['slope']),float(line['intercept'])
+def trig_line_crossings(function,a,rate,phase,c,x0,x1,states,line):
+    """Every x (radians, x0<x<x1) where a*F(rate*x+phase)+c meets the line, with its y. Closed form for a horizontal line, sign changes for a
+    slanted one. rate and phase are already the effective radian rate and phase (pi already folded in)."""
+    slope,intercept=float(line['slope']),float(line['intercept'])
     def inside(x):
         eps=1e-9*max(1.0,abs(x))
         return (x>x0+eps if states[0]=='OPEN' else x>=x0-eps) and (x<x1-eps if states[1]=='OPEN' else x<=x1+eps)
     found=[]
     if line['horizontal']:
-        t=(line['intercept']-c)/a
+        t=(intercept-float(c))/float(a)
         if abs(t)<=1:
-            base=math.asin(float(t)) if function=='SIN' else math.acos(float(t))
+            base=math.asin(t) if function=='SIN' else math.acos(t)
             thetas=[base,math.pi-base] if function=='SIN' else [base,-base]
-            kf=float(k);shift=float(phase)*math.pi
-            reach=sorted([kf*x0+shift,kf*x1+shift])
+            rate_f=float(rate);shift=float(phase)
+            reach=sorted([rate_f*x0+shift,rate_f*x1+shift])
             for theta in thetas:
                 first=math.floor((reach[0]-theta)/(2*math.pi))-1;last=math.ceil((reach[1]-theta)/(2*math.pi))+1
-                for j in range(first,last+1):found.append((theta+2*math.pi*j-shift)/kf)
+                for j in range(first,last+1):found.append((theta+2*math.pi*j-shift)/rate_f)
     else:
-        kf=float(k);shift=float(phase)*math.pi;af=float(a);cf=float(c);fn=math.sin if function=='SIN' else math.cos
-        gap=lambda x:af*fn(kf*x+shift)+cf-(slope*x+intercept)
+        rate_f=float(rate);shift=float(phase);af=float(a);cf=float(c);fn=math.sin if function=='SIN' else math.cos
+        gap=lambda x:af*fn(rate_f*x+shift)+cf-(slope*x+intercept)
         steps=max(2000,int(400*(x1-x0)/math.pi));previous=x0;value=gap(previous)
         for index in range(1,steps+1):
             current=x0+(x1-x0)*index/steps;now=gap(current)
@@ -962,7 +963,7 @@ def _fit_trigonometric_interval(plan,function):
     x0,x1=float(lo)*math.pi,float(hi)*math.pi
     rows=[];ys=[float(c-abs(a)),float(c+abs(a)),0.0]
     for line in trig_line_specs(plan):
-        crossings=trig_line_crossings(function,a,k,c,phase,lo,hi,states,line)
+        crossings=trig_line_crossings(function,float(a),float(k),float(phase)*math.pi,float(c),x0,x1,states,line)
         if len(crossings)!=line['claim']:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_MISMATCH:'+line['id']+':engine finds '+str(len(crossings))+' intersection(s)')
         for x,_ in crossings:
             if (states[0]=='CLOSED' and abs(x-x0)<1e-9) or (states[1]=='CLOSED' and abs(x-x1)<1e-9):raise ValueError('TRIG_LINE_THROUGH_INTERVAL_END:'+line['id'])
@@ -980,54 +981,253 @@ def _fit_trigonometric_interval(plan,function):
     fitted={**plan,'domain':[x0,x1],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v1','trigIntervalFeatures':features,'trigIntervalPolicy':policy,'intervalFeatures':interval,'intervalFeaturePolicy':interval_policy}
     return {'graphPlan':fitted,'policy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
 
-def _fit_trigonometric_overview(plan):
+# ---- general trigonometric parameters (rate or phase carrying pi, plain x interval, tan branches) --------------------------------
+# The v1 grammar above stays byte-compatible. The additive grammar is:
+#   graphPlan.ratePi  an exact rational m: the rate is m*pi and coefficients are [A,C] (rate without pi stays [A,k,C]).
+#   graphPlan.phase   an exact rational phase in radians; phasePi stays the phase as a rational multiple of pi (exactly one is given).
+#   sourceDomain {kind:'INTERVAL',range:[lo,hi],states:[start,end]} measures x in plain units (a time or month axis) and requires ratePi.
+#   sourceDomain {kind:'INTERVAL_PI',...} keeps the pi-unit x axis; a rate carrying pi is refused there.
+#   keyPoints:true marks every exact extremum and midline crossing inside the interval (SIN/COS with a pi-multiple phase).
+#   axisTickPi:true labels the x ticks (axisTickValues.x, exact multiples of pi) as pi/2, pi, 3*pi/2 on a pi-unit axis.
+TRIG_KEY_POINT_MAX=60
+
+def trig_spec(plan):
+    """The exact general trigonometric parameters, parsed once for the several display forms."""
     function=plan.get('function')
     if function not in {'SIN','COS','TAN'}:raise ValueError('UNSUPPORTED_TRIGONOMETRIC_FUNCTION')
-    if isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL_PI':return _fit_trigonometric_interval(plan,function)
-    if plan.get('referenceLines') is not None:raise ValueError('TRIG_REFERENCE_LINES_REQUIRE_INTERVAL_PI')
-    expected_domain={'kind':'ALL_REALS'} if function in {'SIN','COS'} else {'kind':'ALL_REALS_WITH_TAN_POLES'}
-    if plan.get('sourceDomain')!=expected_domain:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    coefficients=plan.get('coefficients');rate_field=plan.get('ratePi')
+    if rate_field is not None:
+        rate=_piecewise_fraction(rate_field,'INVALID_TRIGONOMETRIC_RATE')
+        if not isinstance(coefficients,list) or len(coefficients)!=2:raise ValueError('TRIG_GRAMMAR_UNSUPPORTED')
+        a,c=(_piecewise_fraction(value,'TRIGONOMETRIC_COEFFICIENT_INVALID') for value in coefficients)
+        rate_has_pi=True
+    else:
+        if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError('TRIG_GRAMMAR_UNSUPPORTED')
+        a,rate,c=(_piecewise_fraction(value,'TRIGONOMETRIC_COEFFICIENT_INVALID') for value in coefficients)
+        rate_has_pi=False
+    phase_pi=plan.get('phasePi');phase_plain=plan.get('phase')
+    if (phase_pi is None)==(phase_plain is None):raise ValueError('INVALID_TRIGONOMETRIC_PHASE')
+    if phase_pi is not None:
+        phase=_piecewise_fraction(phase_pi,'INVALID_TRIGONOMETRIC_PHASE');phase_has_pi=True
+    else:
+        phase=_piecewise_fraction(phase_plain,'INVALID_TRIGONOMETRIC_PHASE');phase_has_pi=False
+    if a==0 or rate==0:raise ValueError('TRIGONOMETRIC_NONZERO_SCALE_AND_RATE_REQUIRED')
+    return {'function':function,'a':a,'c':c,'rate':rate,'rateHasPi':rate_has_pi,'phase':phase,'phaseHasPi':phase_has_pi}
+
+def trig_effective(spec):
+    """The radian rate and phase (the pi factors folded in) used by display and evaluation."""
+    rate=float(spec['rate'])*(math.pi if spec['rateHasPi'] else 1.0)
+    phase=float(spec['phase'])*(math.pi if spec['phaseHasPi'] else 1.0)
+    return rate,phase
+
+def trig_axis_period(spec):
+    """One period measured in axis units: 2/|rate| (SIN/COS) or 1/|rate| (TAN) whichever unit the pi factor and the interval use."""
+    return Fraction(2,1)/abs(spec['rate']) if spec['function'] in {'SIN','COS'} else Fraction(1,1)/abs(spec['rate'])
+
+def trig_interval_v2_source(plan):
+    source=plan.get('sourceDomain')
+    if not isinstance(source,dict) or source.get('kind') not in {'INTERVAL','INTERVAL_PI'}:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    kind=source['kind'];key='range' if kind=='INTERVAL' else 'rangePi'
+    if set(source)-{'kind',key,'states'} or not isinstance(source.get(key),list) or len(source[key])!=2:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    lo,hi=(_piecewise_fraction(value,'INVALID_TRIG_INTERVAL') for value in source[key])
+    states=source.get('states',['CLOSED','CLOSED'])
+    if not lo<hi or not isinstance(states,list) or len(states)!=2 or any(state not in {'OPEN','CLOSED'} for state in states):raise ValueError('INVALID_TRIG_INTERVAL')
+    return kind,lo,hi,list(states)
+
+def trig_key_points(spec,lo,hi,states):
+    """Every extremum and midline crossing inside the interval, with exact axis coordinates (phase must be a pi multiple)."""
+    if spec['function'] not in {'SIN','COS'}:raise ValueError('TRIG_KEY_POINTS_REQUIRE_SIN_COS')
+    if not spec['phaseHasPi']:raise ValueError('TRIG_KEY_POINTS_REQUIRE_RATIONAL_PHASE')
+    function=spec['function'];rate=spec['rate'];phase=spec['phase'];a=spec['a'];c=spec['c']
+    first=math.ceil(float((rate*lo+phase)*2)-1e-12);last=math.floor(float((rate*hi+phase)*2)+1e-12)
+    rows=[]
+    for m in range(first,last+1):
+        x=(Fraction(m,2)-phase)/rate
+        if not lo<x<hi:continue
+        if function=='SIN':factor=Fraction(0) if m%2==0 else (Fraction(1) if m%4==1 else Fraction(-1))
+        else:factor=(Fraction(1) if m%4==0 else Fraction(-1)) if m%2==0 else Fraction(0)
+        y=a*factor+c
+        if factor==0:kind='X_INTERCEPT' if y==0 else 'MIDLINE_CROSSING'
+        else:kind='MAXIMUM' if y>c else 'MINIMUM'
+        rows.append({'id':'key-'+str(m),'kind':kind,'x':str(x),'y':str(y)})
+    if len(rows)>TRIG_KEY_POINT_MAX:raise ValueError('TRIG_KEY_POINTS_TOO_MANY')
+    return rows
+
+def trig_interval_poles(spec,lo,hi):
+    """Every pole of tan strictly inside the interval, with its exact axis coordinate (phase must be a pi multiple)."""
+    if spec['function']!='TAN':return []
+    if not spec['phaseHasPi']:raise ValueError('TRIG_TAN_REQUIRES_PI_PHASE')
+    rate=spec['rate'];phase=spec['phase']
+    first=math.ceil(float(rate*lo+phase-Fraction(1,2))-1e-12);last=math.floor(float(rate*hi+phase-Fraction(1,2))+1e-12)
+    rows=[]
+    for n in range(first,last+1):
+        x=(Fraction(1,2)+n-phase)/rate
+        if x==lo or x==hi:raise ValueError('TRIG_TAN_POLE_AT_INTERVAL_END')
+        if lo<x<hi:rows.append({'id':'pole-'+str(len(rows)+1),'x':str(x),'side':'LEFT' if rate>0 else 'RIGHT'})
+    if not rows:raise ValueError('TRIG_TAN_INTERVAL_NO_POLE')
+    return rows
+
+def trig_pi_ticks(plan,kind,x0,x1):
+    """Validate pi-unit x tick multiples. Returns the exact multiples (axis units) when axisTickPi is on."""
+    flag=plan.get('axisTickPi')
+    if flag is None or flag is False:return []
+    if flag is not True:raise ValueError('INVALID_TRIG_TICK_PI_FLAG')
+    if kind!='INTERVAL_PI':raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
+    values=plan.get('axisTickValues')
+    if not isinstance(values,dict) or set(values)!={'x','y'} or not isinstance(values.get('x'),list) or not isinstance(values.get('y'),list):raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+    multiples=[]
+    for value in values['x']:
+        multiple=_piecewise_fraction(value,'TRIG_PI_TICK_VALUE_INVALID')
+        if multiple==0:raise ValueError('TRIG_PI_TICK_VALUE_INVALID')
+        position=float(multiple)*math.pi
+        if not x0<position<x1:raise ValueError('TRIG_PI_TICK_OUTSIDE_VIEW')
+        multiples.append(multiple)
+    return multiples
+
+def _fit_trigonometric_interval_v2(plan,spec):
+    function=spec['function'];a=spec['a'];rate=spec['rate'];c=spec['c']
+    kind,lo,hi,states=trig_interval_v2_source(plan)
+    if kind=='INTERVAL' and not spec['rateHasPi']:raise ValueError('TRIG_INTERVAL_REQUIRES_RATE_PI')
+    if kind=='INTERVAL_PI' and spec['rateHasPi']:raise ValueError('TRIG_RATE_PI_REQUIRES_PLAIN_INTERVAL')
+    if kind=='INTERVAL_PI' and not spec['phaseHasPi']:raise ValueError('TRIG_INTERVAL_PI_PHASE_MUST_BE_PI')
+    if 'domain' in plan or 'viewport' in plan:_valid_exp_log_display(plan,'TRIGONOMETRIC')
+    period=trig_axis_period(spec);axis_unit='PI' if kind=='INTERVAL_PI' else 'ONE'
+    periods=(hi-lo)/period
+    if periods<Fraction(1,4) or periods>TRIG_INTERVAL_MAX_PERIODS:raise ValueError('TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED')
+    x0=float(lo)*(math.pi if axis_unit=='PI' else 1.0);x1=float(hi)*(math.pi if axis_unit=='PI' else 1.0)
+    rate_eff,phase_eff=trig_effective(spec)
+    rows=[];ys=[float(c-abs(a)),float(c+abs(a)),0.0]
+    key_rows=[];pole_rows=[]
+    if plan.get('keyPoints') is not None and not isinstance(plan.get('keyPoints'),bool):raise ValueError('INVALID_TRIG_KEY_POINTS')
+    if plan.get('keyPoints') is True and function not in {'SIN','COS'}:raise ValueError('TRIG_KEY_POINTS_REQUIRE_SIN_COS')
+    if function=='TAN':
+        if plan.get('referenceLines'):raise ValueError('TRIG_TAN_REFERENCE_LINES_UNSUPPORTED')
+        pole_rows=trig_interval_poles(spec,lo,hi)
+    else:
+        for line in trig_line_specs(plan):
+            crossings=trig_line_crossings(function,float(a),rate_eff,phase_eff,float(c),x0,x1,states,line)
+            if len(crossings)!=line['claim']:raise ValueError('TRIG_LINE_INTERSECTION_COUNT_MISMATCH:'+line['id']+':engine finds '+str(len(crossings))+' intersection(s)')
+            for x,_ in crossings:
+                if (states[0]=='CLOSED' and abs(x-x0)<1e-9) or (states[1]=='CLOSED' and abs(x-x1)<1e-9):raise ValueError('TRIG_LINE_THROUGH_INTERVAL_END:'+line['id'])
+            ys.append(float(line['intercept']) if line['horizontal'] else 0.0);ys.extend(y for _,y in crossings)
+            rows.append({'id':line['id'],'kind':'HORIZONTAL' if line['horizontal'] else 'SLANTED','slope':str(line['slope']),'intercept':str(line['intercept']),'intersections':[{'x':x,'y':y} for x,y in crossings]})
+        if plan.get('keyPoints') is True:
+            key_rows=trig_key_points(spec,lo,hi,states);ys.extend(float(Fraction(row['y'])) for row in key_rows)
+    trig_pi_ticks(plan,kind,x0,x1)
+    evaluator=math.sin if function=='SIN' else math.cos if function=='COS' else math.tan
+    end_y=[float(a)*evaluator(rate_eff*x+phase_eff)+float(c) for x in (x0,x1)]
+    xpad=max(.04*(x1-x0),.3)
+    if function=='TAN':
+        half=max(1.0,2.2*abs(float(a)));low=min(0.0,float(c)-half);high=max(0.0,float(c)+half);ypad=.05*max(1.0,high-low)
+    else:
+        low=min(ys);high=max(ys);ypad=.18*max(1.0,high-low)
+    viewport=[x0-xpad,x1+xpad,low-ypad,high+ypad]
+    features={'schemaVersion':'TRIGONOMETRIC_INTERVAL_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'axisUnit':axis_unit,'amplitude':str(a),'midline':str(c),'sourceInterval':{'kind':kind,'lo':str(lo),'hi':str(hi),'states':states},'lines':rows,'keyPoints':key_rows,'poles':pole_rows}
+    policy={'schemaVersion':'TRIGONOMETRIC_INTERVAL_POLICY_v2','markerRadiusIntrinsicPx':3.2,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':40,'minimumAmplitudeCssPx':20,'minimumPoleApproachGapCssPx':2}
+    interval={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':[{'side':'START','x':repr(x0),'y':repr(end_y[0]),'state':states[0]},{'side':'END','x':repr(x1),'y':repr(end_y[1]),'state':states[1]}]}
+    interval_policy={'schemaVersion':'POLYNOMIAL_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':4,'minimumMarkerDiameterCssPx':3}
+    if not all(math.isfinite(value) and abs(value)<=1e6 for value in [x0,x1,*viewport]):raise ValueError('UNSUPPORTED_TRIGONOMETRIC_NUMERIC_SCOPE')
+    fitted={**plan,'domain':[x0,x1],'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v2','trigIntervalFeatures':features,'trigIntervalPolicy':policy,'intervalFeatures':interval,'intervalFeaturePolicy':interval_policy}
+    return {'graphPlan':fitted,'policy':'TRIGONOMETRIC_INTERVAL_OVERVIEW_v2','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
+
+def _fit_trigonometric_period_v2(plan,spec):
+    function=spec['function'];a=spec['a'];rate=spec['rate'];c=spec['c']
+    expected={'kind':'ALL_REALS'} if function in {'SIN','COS'} else {'kind':'ALL_REALS_WITH_TAN_POLES'}
+    if plan.get('sourceDomain')!=expected:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    if not spec['phaseHasPi']:raise ValueError('TRIG_PHASE_RATIONAL_REQUIRES_INTERVAL')
     _valid_exp_log_display(plan,'TRIGONOMETRIC')
-    a,k,c=_exp_log_coefficients(plan.get('coefficients'),3,'TRIGONOMETRIC');phase=_piecewise_fraction(plan.get('phasePi'),'INVALID_TRIGONOMETRIC_PHASE')
-    if a==0 or k==0:raise ValueError('TRIGONOMETRIC_NONZERO_SCALE_AND_RATE_REQUIRED')
-    center=-phase/k;rate=abs(k);center_f=float(center);rate_f=float(rate);sign_k=1 if k>0 else -1
+    rate_eff,phase_eff=trig_effective(spec);center=-phase_eff/rate_eff;radius=math.pi/abs(rate_eff)
+    period=trig_axis_period(spec)
     if function in {'SIN','COS'}:
-        radius=math.pi/rate_f;lo=center_f*math.pi-radius;hi=center_f*math.pi+radius
-        rows=[]
+        lo,hi=center-radius,center+radius;rows=[]
         for index in range(-2,3):
-            phase_offset=Fraction(index,2*1)/rate
-            phase_offset*=1 if index>=0 else 1
-            x_pi=center+phase_offset
-            factor=(0 if index in {-2,0,2} else (sign_k if index>0 else -sign_k)) if function=='SIN' else (1 if index==0 else 0 if abs(index)==1 else -1)
+            x_pi=(Fraction(index,2)-spec['phase'])/rate
+            x=float(x_pi)
+            if function=='SIN':factor=Fraction(0) if index%2==0 else (Fraction(1) if index%4==1 else Fraction(-1))
+            else:factor=(Fraction(1) if index%4==0 else Fraction(-1)) if index%2==0 else Fraction(0)
             y=a*factor+c
-            kind='X_INTERCEPT' if y==0 and factor==0 else 'MIDLINE_CROSSING' if factor==0 else 'EXTREMUM'
-            row={'id':f'phase-{index+2}','kind':kind,'index':index,'xPiMultiple':str(x_pi),'y':str(y)}
+            if factor==0:kind='X_INTERCEPT' if y==0 else 'MIDLINE_CROSSING'
+            else:kind='EXTREMUM'
+            row={'id':f'phase-{index+2}','kind':kind,'index':index,'x':str(x_pi),'y':str(y)}
             if kind=='EXTREMUM':row['extreme']='MAXIMUM' if y>c else 'MINIMUM'
             rows.append(row)
-        points=[(float(_piecewise_fraction(row['xPiMultiple'],'INVALID_TRIG_FEATURE_X'))*math.pi,float(Fraction(row['y']))) for row in rows]
-        ymin=min(float(c-abs(a)),*([point[1] for point in points]));ymax=max(float(c+abs(a)),*([point[1] for point in points]));ypad=.15*max(1.0,ymax-ymin,abs(ymin),abs(ymax));xpad=.04*(hi-lo)
+        points=[(float(Fraction(row['x'])),float(Fraction(row['y']))) for row in rows]
+        ymin=min(float(c-abs(a)),*(point[1] for point in points));ymax=max(float(c+abs(a)),*(point[1] for point in points));ypad=.15*max(1.0,ymax-ymin,abs(ymin),abs(ymax));xpad=.04*(hi-lo)
         viewport=[lo-xpad,hi+xpad,min(0.0,ymin)-ypad,max(0.0,ymax)+ypad]
-        center_behavior=('INCREASING' if a*k>0 else 'DECREASING') if function=='SIN' else ('MAXIMUM' if a>0 else 'MINIMUM')
-        features={'schemaVersion':'TRIGONOMETRIC_FEATURES_v1','function':function,'phasePi':str(phase),'cycleCenterPi':str(center),'periodPiMultiple':str(Fraction(2,1)/rate),'amplitude':str(a),'midline':str(c),'centerBehavior':center_behavior,'phasePoints':rows}
-        policy={'schemaVersion':'TRIGONOMETRIC_FEATURE_POLICY_v1','function':function,'sourceDomain':'ALL_REALS','displayWindow':'ONE_FULL_PERIOD','markerRadiusIntrinsicPx':3.5,'minimumMarkerDiameterCssPx':2.5,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':80,'minimumAmplitudeCssPx':20}
+        center_behavior=('INCREASING' if a*rate>0 else 'DECREASING') if function=='SIN' else ('MAXIMUM' if a>0 else 'MINIMUM')
+        features={'schemaVersion':'TRIGONOMETRIC_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'amplitude':str(a),'midline':str(c),'centerBehavior':center_behavior,'phasePoints':rows}
+        policy={'schemaVersion':'TRIGONOMETRIC_FEATURE_POLICY_v2','function':function,'sourceDomain':'ALL_REALS','displayWindow':'ONE_FULL_PERIOD','markerRadiusIntrinsicPx':3.5,'minimumMarkerDiameterCssPx':2.5,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':80,'minimumAmplitudeCssPx':20}
         domain=[lo,hi]
     else:
-        epsilon=.12/rate_f;left_pole=center_f*math.pi-math.pi/(2*rate_f);right_pole=center_f*math.pi+math.pi/(2*rate_f)
-        lo=left_pole+epsilon;hi=right_pole-epsilon
+        epsilon=Fraction(3,25)/abs(rate);first_pole=(-spec['phase']-Fraction(1,2))/rate;second_pole=(-spec['phase']+Fraction(1,2))/rate
+        left_pole,right_pole=sorted((first_pole,second_pole))
+        lo=float(left_pole)+float(epsilon);hi=float(right_pole)-float(epsilon)
         def evaluate(value):
-            angle=float(k)*value+float(phase)*math.pi
-            result=float(a)*math.tan(angle)+float(c)
+            result=float(a)*math.tan(rate_eff*value+phase_eff)+float(c)
             if not math.isfinite(result) or abs(result)>1e8:raise ValueError('UNSUPPORTED_TANGENT_NUMERIC_SCOPE')
             return result
         start_y=evaluate(lo);end_y=evaluate(hi);low=min(float(c),start_y,end_y);high=max(float(c),start_y,end_y);ypad=.15*max(1.0,high-low,abs(low),abs(high));xpad=.04*(hi-lo)
         viewport=[lo-xpad,hi+xpad,min(0.0,low)-ypad,max(0.0,high)+ypad]
-        left_pole_pi=center-Fraction(1,2)/rate;right_pole_pi=center+Fraction(1,2)/rate
-        features={'schemaVersion':'TRIGONOMETRIC_FEATURES_v1','function':'TAN','phasePi':str(phase),'cycleCenterPi':str(center),'periodPiMultiple':str(Fraction(1,1)/rate),'amplitude':str(a),'midline':str(c),'centerBehavior':'INCREASING' if a*k>0 else 'DECREASING','referencePoint':{'xPiMultiple':str(center),'y':str(c)},'poles':[{'id':'pole-left','xPiMultiple':str(left_pole_pi),'side':'LEFT'},{'id':'pole-right','xPiMultiple':str(right_pole_pi),'side':'RIGHT'}],'sampleBoundaryDistance':str(Fraction(3,25))}
-        policy={'schemaVersion':'TRIGONOMETRIC_FEATURE_POLICY_v1','function':'TAN','sourceDomain':'ALL_REALS_WITH_TAN_POLES','displayWindow':'ONE_COMPLETE_POLE_TO_POLE_BRANCH','markerRadiusIntrinsicPx':3.5,'minimumMarkerDiameterCssPx':2.5,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':80}
+        features={'schemaVersion':'TRIGONOMETRIC_FEATURES_v2','function':'TAN','rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'amplitude':str(a),'midline':str(c),'centerBehavior':'INCREASING' if a*rate>0 else 'DECREASING','referencePoint':{'x':str(-spec['phase']/rate),'y':str(c)},'poles':[{'id':'pole-left','x':str(left_pole)},{'id':'pole-right','x':str(right_pole)}],'sampleBoundaryDistance':'3/25'}
+        policy={'schemaVersion':'TRIGONOMETRIC_FEATURE_POLICY_v2','function':'TAN','sourceDomain':'ALL_REALS_WITH_TAN_POLES','displayWindow':'ONE_COMPLETE_POLE_TO_POLE_BRANCH','markerRadiusIntrinsicPx':3.5,'minimumMarkerDiameterCssPx':2.5,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':80}
         domain=[lo,hi]
     if not all(math.isfinite(value) and abs(value)<=1e6 for value in [*domain,*viewport]):raise ValueError('UNSUPPORTED_TRIGONOMETRIC_NUMERIC_SCOPE')
-    fitted={**plan,'domain':domain,'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'TRIGONOMETRIC_PERIODIC_OVERVIEW_v1','trigFeatures':features,'trigFeaturePolicy':policy}
-    return {'graphPlan':fitted,'policy':'TRIGONOMETRIC_PERIODIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan['domain'],'viewport':plan['viewport']}}
+    fitted={**plan,'domain':domain,'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'TRIGONOMETRIC_PERIODIC_OVERVIEW_v2','trigFeatures':features,'trigFeaturePolicy':policy}
+    return {'graphPlan':fitted,'policy':'TRIGONOMETRIC_PERIODIC_OVERVIEW_v2','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan['domain'],'viewport':plan['viewport']}}
+
+def _fit_trigonometric_overview(plan):
+    function=plan.get('function')
+    if function not in {'SIN','COS','TAN'}:raise ValueError('UNSUPPORTED_TRIGONOMETRIC_FUNCTION')
+    source=plan.get('sourceDomain')
+    if isinstance(source,dict) and source.get('kind') in {'INTERVAL_PI','INTERVAL'}:
+        legacy=source.get('kind')=='INTERVAL_PI' and plan.get('ratePi') is None and plan.get('phase') is None and plan.get('axisTickPi') is None and plan.get('keyPoints') is not True and function in {'SIN','COS'}
+        if legacy:return _fit_trigonometric_interval(plan,function)
+        return _fit_trigonometric_interval_v2(plan,trig_spec(plan))
+    if plan.get('referenceLines') is not None:raise ValueError('TRIG_REFERENCE_LINES_REQUIRE_INTERVAL_PI')
+    if plan.get('ratePi') is None and plan.get('phase') is None:
+        expected_domain={'kind':'ALL_REALS'} if function in {'SIN','COS'} else {'kind':'ALL_REALS_WITH_TAN_POLES'}
+        if plan.get('sourceDomain')!=expected_domain:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+        _valid_exp_log_display(plan,'TRIGONOMETRIC')
+        a,k,c=_exp_log_coefficients(plan.get('coefficients'),3,'TRIGONOMETRIC');phase=_piecewise_fraction(plan.get('phasePi'),'INVALID_TRIGONOMETRIC_PHASE')
+        if a==0 or k==0:raise ValueError('TRIGONOMETRIC_NONZERO_SCALE_AND_RATE_REQUIRED')
+        center=-phase/k;rate=abs(k);center_f=float(center);rate_f=float(rate);sign_k=1 if k>0 else -1
+        if function in {'SIN','COS'}:
+            radius=math.pi/rate_f;lo=center_f*math.pi-radius;hi=center_f*math.pi+radius
+            rows=[]
+            for index in range(-2,3):
+                phase_offset=Fraction(index,2*1)/rate
+                x_pi=center+phase_offset
+                factor=(0 if index in {-2,0,2} else (sign_k if index>0 else -sign_k)) if function=='SIN' else (1 if index==0 else 0 if abs(index)==1 else -1)
+                y=a*factor+c
+                kind='X_INTERCEPT' if y==0 and factor==0 else 'MIDLINE_CROSSING' if factor==0 else 'EXTREMUM'
+                row={'id':f'phase-{index+2}','kind':kind,'index':index,'xPiMultiple':str(x_pi),'y':str(y)}
+                if kind=='EXTREMUM':row['extreme']='MAXIMUM' if y>c else 'MINIMUM'
+                rows.append(row)
+            points=[(float(_piecewise_fraction(row['xPiMultiple'],'INVALID_TRIG_FEATURE_X'))*math.pi,float(Fraction(row['y']))) for row in rows]
+            ymin=min(float(c-abs(a)),*([point[1] for point in points]));ymax=max(float(c+abs(a)),*([point[1] for point in points]));ypad=.15*max(1.0,ymax-ymin,abs(ymin),abs(ymax));xpad=.04*(hi-lo)
+            viewport=[lo-xpad,hi+xpad,min(0.0,ymin)-ypad,max(0.0,ymax)+ypad]
+            center_behavior=('INCREASING' if a*k>0 else 'DECREASING') if function=='SIN' else ('MAXIMUM' if a>0 else 'MINIMUM')
+            features={'schemaVersion':'TRIGONOMETRIC_FEATURES_v1','function':function,'phasePi':str(phase),'cycleCenterPi':str(center),'periodPiMultiple':str(Fraction(2,1)/rate),'amplitude':str(a),'midline':str(c),'centerBehavior':center_behavior,'phasePoints':rows}
+            policy={'schemaVersion':'TRIGONOMETRIC_FEATURE_POLICY_v1','function':function,'sourceDomain':'ALL_REALS','displayWindow':'ONE_FULL_PERIOD','markerRadiusIntrinsicPx':3.5,'minimumMarkerDiameterCssPx':2.5,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':80,'minimumAmplitudeCssPx':20}
+            domain=[lo,hi]
+        else:
+            epsilon=.12/rate_f;left_pole=center_f*math.pi-math.pi/(2*rate_f);right_pole=center_f*math.pi+math.pi/(2*rate_f)
+            lo=left_pole+epsilon;hi=right_pole-epsilon
+            def evaluate(value):
+                angle=float(k)*value+float(phase)*math.pi
+                result=float(a)*math.tan(angle)+float(c)
+                if not math.isfinite(result) or abs(result)>1e8:raise ValueError('UNSUPPORTED_TANGENT_NUMERIC_SCOPE')
+                return result
+            start_y=evaluate(lo);end_y=evaluate(hi);low=min(float(c),start_y,end_y);high=max(float(c),start_y,end_y);ypad=.15*max(1.0,high-low,abs(low),abs(high));xpad=.04*(hi-lo)
+            viewport=[lo-xpad,hi+xpad,min(0.0,low)-ypad,max(0.0,high)+ypad]
+            left_pole_pi=center-Fraction(1,2)/rate;right_pole_pi=center+Fraction(1,2)/rate
+            features={'schemaVersion':'TRIGONOMETRIC_FEATURES_v1','function':'TAN','phasePi':str(phase),'cycleCenterPi':str(center),'periodPiMultiple':str(Fraction(1,1)/rate),'amplitude':str(a),'midline':str(c),'centerBehavior':'INCREASING' if a*k>0 else 'DECREASING','referencePoint':{'xPiMultiple':str(center),'y':str(c)},'poles':[{'id':'pole-left','xPiMultiple':str(left_pole_pi),'side':'LEFT'},{'id':'pole-right','xPiMultiple':str(right_pole_pi),'side':'RIGHT'}],'sampleBoundaryDistance':str(Fraction(3,25))}
+            policy={'schemaVersion':'TRIGONOMETRIC_FEATURE_POLICY_v1','function':'TAN','sourceDomain':'ALL_REALS_WITH_TAN_POLES','displayWindow':'ONE_COMPLETE_POLE_TO_POLE_BRANCH','markerRadiusIntrinsicPx':3.5,'minimumMarkerDiameterCssPx':2.5,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':80}
+            domain=[lo,hi]
+        if not all(math.isfinite(value) and abs(value)<=1e6 for value in [*domain,*viewport]):raise ValueError('UNSUPPORTED_TRIGONOMETRIC_NUMERIC_SCOPE')
+        fitted={**plan,'domain':domain,'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':'TRIGONOMETRIC_PERIODIC_OVERVIEW_v1','trigFeatures':features,'trigFeaturePolicy':policy}
+        return {'graphPlan':fitted,'policy':'TRIGONOMETRIC_PERIODIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan['domain'],'viewport':plan['viewport']}}
+    return _fit_trigonometric_period_v2(plan,trig_spec(plan))
 
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
