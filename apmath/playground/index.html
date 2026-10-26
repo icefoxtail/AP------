@@ -176,7 +176,15 @@
           document.getElementById('cardSubtitle').textContent = meta.subtitle || '';
           document.getElementById('cardFormula').textContent = meta.formula || '';
           document.getElementById('cardDesc').textContent = meta.description || '';
-          document.getElementById('cardBtnEnter').href = `./teacher-hub.html?filter=${encodeURIComponent(meta.id)}`;
+          const hasDedicatedFilter = ['polyhedra', 'ellipse', 'parabola', 'hyperbola', 'circle', 'solid', 'vector', 'calculus'].includes(meta.id);
+          const enterBtn = document.getElementById('cardBtnEnter');
+          if (hasDedicatedFilter) {
+            enterBtn.href = `./teacher-hub.html?filter=${encodeURIComponent(meta.id)}`;
+            enterBtn.querySelector('span').textContent = '해당 단원 실험실로 이동';
+          } else {
+            enterBtn.href = './teacher-hub.html';
+            enterBtn.querySelector('span').textContent = '전체 실험실 허브로 이동';
+          }
 
           document.querySelectorAll('.celestial-pill').forEach(p => {
             p.classList.toggle('active', p.dataset.celestial === meta.id);
@@ -268,7 +276,15 @@
             document.getElementById('cardSubtitle').textContent = found.metadata.subtitle || '';
             document.getElementById('cardFormula').textContent = found.metadata.formula || '';
             document.getElementById('cardDesc').textContent = found.metadata.description || '';
-            document.getElementById('cardBtnEnter').href = `./teacher-hub.html?filter=${encodeURIComponent(id)}`;
+            const hasDedicatedFilter = ['polyhedra', 'ellipse', 'parabola', 'hyperbola', 'circle', 'solid', 'vector', 'calculus'].includes(id);
+            const enterBtn = document.getElementById('cardBtnEnter');
+            if (hasDedicatedFilter) {
+              enterBtn.href = `./teacher-hub.html?filter=${encodeURIComponent(id)}`;
+              enterBtn.querySelector('span').textContent = '해당 단원 실험실로 이동';
+            } else {
+              enterBtn.href = './teacher-hub.html';
+              enterBtn.querySelector('span').textContent = '전체 실험실 허브로 이동';
+            }
 
             document.querySelectorAll('.celestial-pill').forEach(p => p.classList.remove('active'));
             pill.classList.add('active');
