@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COUNTING",
-  "shardVersion": "1.0.5",
+  "shardVersion": "1.0.6",
   "status": "ACTIVE",
-  "conceptCount": 42,
+  "conceptCount": 44,
   "concepts": [
     {
       "conceptKey": "CC_COMBINATORICS_COUNTING",
@@ -1228,6 +1228,76 @@
           "auditPackageRef": {
             "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
             "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_SELECTION_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_THEOREM_GENERAL_TERM",
+      "canonicalLabelKo": "이항정리의 일반항",
+      "definition": "(a+b)^n의 전개식에서 r번째 항 nCr*a^(n-r)*b^r을 이용하여 계수를 구하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5d076c0a47d96726dad3c8d2c846f3fb0c9080fb7b48bffbee5bc1a70d7fabb0"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5d076c0a47d96726dad3c8d2c846f3fb0c9080fb7b48bffbee5bc1a70d7fabb0",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_BINOMIAL_THEOREM_GENERAL_TERM for PT_BINOMIAL_THEOREM/TPL_BINOMIAL_TERM_COEFFICIENT at H15-PS-02-BINOMIAL_THEOREM.",
+          "decisiveEvidence": "a^6의 항은 r=3일 때 발생하며, 4C3×(2a^2)^3×(-1)^1 = 4×8×(-1) = −32이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_THEOREM"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-02"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_TERM_COUNT",
+      "canonicalLabelKo": "다항식 전개식의 서로 다른 항의 개수",
+      "definition": "각 문자의 지수의 합이 일정한 음이 아닌 정수해의 개수를 중복조합으로 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_020beeb7a632d018c1ab89977efb1e0fb665ad194c46cd17aafe7f704d852862"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_020beeb7a632d018c1ab89977efb1e0fb665ad194c46cd17aafe7f704d852862",
+          "sourceOrdinal": 8,
+          "classificationRationale": "META_PIPELINE_AUDIT record 8 binds CC_POLYNOMIAL_TERM_COUNT for PT_COUNTING_SELECTION_DISTRIBUTION/TPL_REPEATED_COMBINATION_DISTRIBUTION at H15-PS-01-COMBINATION.",
+          "decisiveEvidence": "전체 항의 개수는 3H4=6C4=15개이고, gamma가 없는 항의 개수는 2H4=5C4=5개이므로 gamma를 포함하는 항은 15−5=10개이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
           }
         }
       ],
