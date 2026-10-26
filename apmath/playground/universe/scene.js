@@ -61,21 +61,59 @@ export function createMathUniverse({
   controls.minPolarAngle = Math.PI * 0.15;
   controls.target.copy(initialCamTarget);
 
-  // 5. Lighting: Multi-point Jewel Studio Lighting
-  const ambientLight = new THREE.AmbientLight(MATH_COLORS.deepPlum, 1.6);
+  // 5. Lighting: Multi-point Jewel Studio Lighting & Cosmic Environment Map
+  const ambientLight = new THREE.AmbientLight(MATH_COLORS.deepPlum, 1.5);
   scene.add(ambientLight);
 
-  const keyLight = new THREE.DirectionalLight(MATH_COLORS.warmIvory, 1.8);
-  keyLight.position.set(30, 45, 35);
+  const keyLight = new THREE.DirectionalLight(MATH_COLORS.warmIvory, 2.0);
+  keyLight.position.set(32, 48, 38);
   scene.add(keyLight);
 
-  const emeraldRimLight = new THREE.DirectionalLight(MATH_COLORS.emerald, 1.5);
+  const emeraldRimLight = new THREE.DirectionalLight(MATH_COLORS.emerald, 1.6);
   emeraldRimLight.position.set(-35, -20, -25);
   scene.add(emeraldRimLight);
 
-  const amethystFillLight = new THREE.PointLight(MATH_COLORS.softAmethyst, 1.2, 100);
-  amethystFillLight.position.set(0, -30, 25);
+  const crystalBackLight = new THREE.DirectionalLight(MATH_COLORS.champagneGold, 1.5);
+  crystalBackLight.position.set(-22, 18, -28);
+  scene.add(crystalBackLight);
+
+  const amethystFillLight = new THREE.PointLight(MATH_COLORS.softAmethyst, 1.3, 110);
+  amethystFillLight.position.set(0, -32, 28);
   scene.add(amethystFillLight);
+
+  // Cosmic Reflection Environment for Crystal Facets & Metals
+  function createCosmicEnvironmentMap() {
+    const envCanvas = document.createElement('canvas');
+    envCanvas.width = 512;
+    envCanvas.height = 256;
+    const ctx = envCanvas.getContext('2d');
+
+    const grad = ctx.createLinearGradient(0, 0, 0, 256);
+    grad.addColorStop(0, '#241433');   // deep plum zenith
+    grad.addColorStop(0.35, '#120c1c'); // upper atmosphere
+    grad.addColorStop(0.5, '#161022');  // horizon with emerald & gold tint
+    grad.addColorStop(0.7, '#0a0812');
+    grad.addColorStop(1, '#050408');    // obsidian nadir
+
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 512, 256);
+
+    ctx.fillStyle = 'rgba(85, 203, 163, 0.08)';
+    ctx.beginPath();
+    ctx.ellipse(180, 110, 160, 40, Math.PI / 6, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = 'rgba(216, 183, 126, 0.06)';
+    ctx.beginPath();
+    ctx.ellipse(360, 140, 180, 50, -Math.PI / 8, 0, Math.PI * 2);
+    ctx.fill();
+
+    const tex = new THREE.CanvasTexture(envCanvas);
+    tex.mapping = THREE.EquirectangularReflectionMapping;
+    tex.colorSpace = THREE.SRGBColorSpace;
+    return tex;
+  }
+  scene.environment = createCosmicEnvironmentMap();
 
   // 6. Deep Space Background: Far & Near Starfields
   function createStarfield(count, radiusMin, radiusMax, size, opacity) {
@@ -175,13 +213,18 @@ export function createMathUniverse({
     });
   }
 
+  // =========================================================================
+  // 3-Tier Galaxy Spatial Staging (Foreground Hero / Midground / Deep Space)
+  // =========================================================================
+
+  // [Tier 1: Foreground Hero - z = -7 ~ -9]
   // Hero 1: Polyhedra Dual Crystal (정다면체)
   addCelestial({
     builder: createPolyhedronObject,
-    options: { radius: isMobile ? 3.2 : 3.8 },
-    basePos: new THREE.Vector3(-14, 3, -6),
-    orbitRadius: 2.2,
-    orbitSpeed: 0.12,
+    options: { radius: isMobile ? 3.3 : 3.9 },
+    basePos: new THREE.Vector3(-15, 3.2, -7),
+    orbitRadius: 2.0,
+    orbitSpeed: 0.11,
     orbitPlane: 'xz',
     selfRot: new THREE.Vector3(0.04, 0.08, 0.02),
   });
@@ -189,78 +232,80 @@ export function createMathUniverse({
   // Hero 2: Ellipse & Dual Foci (타원과 두 초점)
   addCelestial({
     builder: createEllipseObject,
-    options: { a: isMobile ? 6.2 : 7.6, b: isMobile ? 3.8 : 4.6 },
-    basePos: new THREE.Vector3(15, -2, -8),
-    orbitRadius: 2.5,
+    options: { a: isMobile ? 6.4 : 7.6, b: isMobile ? 3.8 : 4.4 },
+    basePos: new THREE.Vector3(16, -2.8, -9),
+    orbitRadius: 2.2,
     orbitSpeed: -0.09,
     orbitPlane: 'xz',
     selfRot: new THREE.Vector3(0.02, 0.05, 0.01),
   });
 
+  // [Tier 2: Midground Constellation - z = -19 ~ -28]
   // Hero 3: Parabola, Focus & Directrix (포물선과 준선)
   addCelestial({
     builder: createParabolaObject,
-    options: { p: 2.0, yRange: isMobile ? 5.2 : 6.2 },
-    basePos: new THREE.Vector3(0, 11, -16),
+    options: { p: 2.1, yRange: isMobile ? 5.4 : 6.4 },
+    basePos: new THREE.Vector3(0, 11.5, -19),
     orbitRadius: 1.8,
-    orbitSpeed: 0.14,
+    orbitSpeed: 0.13,
     orbitPlane: 'xy',
-    selfRot: new THREE.Vector3(0.03, 0.02, 0.06),
+    selfRot: new THREE.Vector3(0.03, 0.02, 0.05),
   });
 
-  // Secondary 4: Hyperbola (쌍곡선)
+  // Secondary 4: Cubic Calculus (삼차함수와 접선)
+  addCelestial({
+    builder: createCalculusObject,
+    options: { xRange: 3.6 },
+    basePos: new THREE.Vector3(0, -12.5, -21),
+    orbitRadius: 2.0,
+    orbitSpeed: -0.11,
+    orbitPlane: 'xz',
+    selfRot: new THREE.Vector3(0.02, 0.03, 0.04),
+  });
+
+  // Secondary 5: Vector Space (공간벡터)
+  addCelestial({
+    builder: createVectorObject,
+    options: { length: 4.2 },
+    basePos: new THREE.Vector3(20, -14.5, -25),
+    orbitRadius: 2.4,
+    orbitSpeed: 0.12,
+    orbitPlane: 'xz',
+    selfRot: new THREE.Vector3(0.02, 0.07, 0.01),
+  });
+
+  // Secondary 6: Hyperbola (쌍곡선)
   addCelestial({
     builder: createHyperbolaObject,
     options: { a: 2.8, b: 2.1 },
-    basePos: new THREE.Vector3(-26, -11, -26),
-    orbitRadius: 3.2,
+    basePos: new THREE.Vector3(-25, -11, -28),
+    orbitRadius: 2.8,
     orbitSpeed: -0.08,
     orbitPlane: 'xz',
     selfRot: new THREE.Vector3(0.02, 0.04, 0.02),
   });
 
-  // Secondary 5: Circle & Sector (원과 부채꼴)
+  // [Tier 3: Deep Space Cosmic Layer - z = -44 ~ -52]
+  // Secondary 7: Circle & Sector (원과 부채꼴)
   addCelestial({
     builder: createCircleSectorObject,
     options: { radius: 3.8 },
-    basePos: new THREE.Vector3(26, 12, -28),
-    orbitRadius: 2.8,
-    orbitSpeed: 0.11,
+    basePos: new THREE.Vector3(28, 14, -46),
+    orbitRadius: 3.2,
+    orbitSpeed: 0.09,
     orbitPlane: 'xz',
-    selfRot: new THREE.Vector3(0.01, 0.05, 0.03),
+    selfRot: new THREE.Vector3(0.01, 0.04, 0.02),
   });
 
-  // Secondary 6: Solid Geometry (공간도형)
+  // Secondary 8: Solid Geometry (공간도형)
   addCelestial({
     builder: createSolidGeometryObject,
     options: { radius: 2.8 },
-    basePos: new THREE.Vector3(-20, 16, -34),
-    orbitRadius: 2.4,
-    orbitSpeed: -0.1,
+    basePos: new THREE.Vector3(-22, 17, -50),
+    orbitRadius: 2.8,
+    orbitSpeed: -0.09,
     orbitPlane: 'xy',
-    selfRot: new THREE.Vector3(0.05, 0.06, 0.02),
-  });
-
-  // Secondary 7: Vector Space (공간벡터)
-  addCelestial({
-    builder: createVectorObject,
-    options: { length: 4.2 },
-    basePos: new THREE.Vector3(19, -15, -24),
-    orbitRadius: 2.6,
-    orbitSpeed: 0.13,
-    orbitPlane: 'xz',
-    selfRot: new THREE.Vector3(0.02, 0.08, 0.01),
-  });
-
-  // Secondary 8: Cubic Calculus (삼차함수와 접선)
-  addCelestial({
-    builder: createCalculusObject,
-    options: { xRange: 3.6 },
-    basePos: new THREE.Vector3(0, -13, -18),
-    orbitRadius: 2.0,
-    orbitSpeed: -0.12,
-    orbitPlane: 'xz',
-    selfRot: new THREE.Vector3(0.02, 0.03, 0.04),
+    selfRot: new THREE.Vector3(0.04, 0.05, 0.02),
   });
 
   // 9. Raycasting & User Interaction
