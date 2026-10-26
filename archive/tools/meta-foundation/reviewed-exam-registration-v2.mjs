@@ -45,6 +45,14 @@ export function metaPipelineCrossConceptCountMatches(statistics, audit) {
   const bindingCount = records.reduce((sum, row) => sum + (row?.classification?.crossConceptKeys || []).length, 0);
   return statistics?.atomicCrossConceptsBound === uniqueCount || statistics?.atomicCrossConceptsBound === bindingCount;
 }
+export function metaPipelineTemplateReuseCountMatches(statistics, audit) {
+  const keys = (audit?.records || []).map(row => row?.classification?.templateKey);
+  if (!keys.length || keys.some(key => typeof key !== "string" || !key.trim())) return false;
+  const count = statistics?.canonicalTemplatesReused;
+  // Gemini rich packages report either item bindings or distinct reused keys.
+  // Every individual ACTIVE TPL/PT binding is still checked by the registrar.
+  return count === keys.length || count === new Set(keys).size;
+}
 const hasPendingMetaReason = (question, field) =>
   question.projectionStatus === "BINDING_PENDING"
     ? typeof question[`${field}NullReason`] === "string" && question[`${field}NullReason`].trim().length > 0
@@ -341,7 +349,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   }
   const stats = audit.statistics;
   if (!stats || stats.totalQuestions !== expectedQuestionCount || stats.approved !== expectedQuestionCount ||
-      stats.holdRemaining !== 0 || stats.newTemplatesCreated !== 0 || stats.canonicalTemplatesReused !== expectedQuestionCount) fail("META_PIPELINE_AUDIT denominator/hold/template gate mismatch");
+      stats.holdRemaining !== 0 || stats.newTemplatesCreated !== 0 || !metaPipelineTemplateReuseCountMatches(stats, audit)) fail("META_PIPELINE_AUDIT denominator/hold/template gate mismatch");
   const manifestV2 = manifest.schemaVersion === "COURIER_INTAKE_MANIFEST_v2";
   const manifestV3 = ["ALIVE_COURIER_INTAKE_MANIFEST_v3", "COURIER_INTAKE_MANIFEST_v3"].includes(manifest.schemaVersion);
   if ((!manifestV2 && !manifestV3) || manifest.examTitle !== expectedTitle ||
@@ -375,7 +383,7 @@ function validateMetaPipelineAudit({ root, approval, source, sourceBytes, source
   // v3 manifests omit the redundant payloadSummary. The rich audit above remains
   // authoritative for zero template inflation; v3 must still prove N/N and zero holds.
   if (manifestV3 && (manifest.totalQuestions !== expectedQuestionCount || manifest.totalHoldCount !== 0 ||
-      stats.newTemplatesCreated !== 0 || stats.canonicalTemplatesReused !== expectedQuestionCount))
+      stats.newTemplatesCreated !== 0 || !metaPipelineTemplateReuseCountMatches(stats, audit)))
     fail("META_PIPELINE_AUDIT v3 manifest denominator/hold/template gate mismatch");
   if (!Array.isArray(audit.records) || audit.records.length !== expectedQuestionCount ||
       !Array.isArray(manifest.recordsToBind) || manifest.recordsToBind.length !== expectedQuestionCount) fail("META_PIPELINE_AUDIT record denominator mismatch");

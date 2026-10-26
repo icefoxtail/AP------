@@ -6,7 +6,16 @@ import os from "node:os";
 import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { isMetaPipelineApprovedTypeRebindAllowed, metaPipelineCrossConceptCountMatches, registerReviewedExamV2, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+import { isMetaPipelineApprovedTypeRebindAllowed, metaPipelineCrossConceptCountMatches, metaPipelineTemplateReuseCountMatches, registerReviewedExamV2, verifyConsumerValues } from "../archive/tools/meta-foundation/reviewed-exam-registration-v2.mjs";
+
+test("template reuse statistics accept exact distinct-key or item-binding counts", () => {
+  const audit = {records:[{classification:{templateKey:"TPL_A"}},{classification:{templateKey:"TPL_A"}},{classification:{templateKey:"TPL_B"}}]};
+  assert.equal(metaPipelineTemplateReuseCountMatches({canonicalTemplatesReused:2},audit),true);
+  assert.equal(metaPipelineTemplateReuseCountMatches({canonicalTemplatesReused:3},audit),true);
+  for(const count of [0,1,4,2.5,"2",null]) assert.equal(metaPipelineTemplateReuseCountMatches({canonicalTemplatesReused:count},audit),false);
+  assert.equal(metaPipelineTemplateReuseCountMatches({canonicalTemplatesReused:0},{records:[]}),false);
+  assert.equal(metaPipelineTemplateReuseCountMatches({canonicalTemplatesReused:1},{records:[{classification:{templateKey:"TPL_A"}},{}]}),false);
+});
 
 const CANON = "archive/data/meta-foundation/canonical";
 const META = "archive/data/question_metadata.json";
