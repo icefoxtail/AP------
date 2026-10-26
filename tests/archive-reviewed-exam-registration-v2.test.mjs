@@ -592,6 +592,54 @@ test("canonical parent scope aliases do not cross the upper and lower math cours
   assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /canonical target parent mismatch/);
 });
 
+function attachExactTypeParent(f) {
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true, targetCanonicalParent: true });
+  const item = f.request.items[0], parent = item.targetParentRef;
+  const master = f.read(parent.path);
+  parent.midUnit = "RPM 전용 부모";
+  master.records[0].midUnit = parent.midUnit;
+  f.put(parent.path, master);
+  const newHash = hash(fs.readFileSync(path.join(f.root, parent.path)));
+  const visit = value => {
+    if (!value || typeof value !== "object") return;
+    if (value.path === parent.path && value.sha256) value.sha256 = newHash;
+    Object.values(value).forEach(visit);
+  };
+  visit(f.request);
+  item.after.L2 = parent.midUnit;
+  const crossPath = "archive/data/meta-foundation/crosswalks/rpm-primary-v1.0/high1.json";
+  f.put(crossPath, { status: "ACTIVE_REFERENCE", records: [{ id: "EXACT-TYPE", curriculum: item.after.curriculum,
+    scope: item.after.standardCourse, problemTypeKey: item.after.problemTypeKey, templateKey: item.after.templateKey,
+    bindingStatus: "ACTIVE", rpmPath: { majorUnit: parent.majorUnit, midUnit: parent.midUnit } }] });
+  const ref = { path: crossPath, sha256: hash(fs.readFileSync(path.join(f.root, crossPath))) };
+  parent.crosswalkRef = { ...ref, recordId: "EXACT-TYPE" };
+  item.evidenceRefs.push(ref);
+  return { item, crossPath };
+}
+
+test("canonical parent accepts an evidence-bound exact ACTIVE PT/TPL crosswalk parent", t => {
+  const f = fixture(t, "기하");
+  attachExactTypeParent(f);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
+});
+
+test("canonical crosswalk parent rejects wrong PT, course, parent, inactive and unbound references", t => {
+  for (const field of ["problemTypeKey", "scope", "bindingStatus", "parent", "sha256"]) {
+    const f = fixture(t, "기하"), { item, crossPath } = attachExactTypeParent(f);
+    if (field === "sha256") item.targetParentRef.crosswalkRef.sha256 = "0".repeat(64);
+    else {
+      const doc = f.read(crossPath);
+      if (field === "parent") doc.records[0].rpmPath.midUnit = "잘못된 부모";
+      else doc.records[0][field] = "WRONG";
+      f.put(crossPath, doc);
+      const updated = hash(fs.readFileSync(path.join(f.root, crossPath)));
+      item.targetParentRef.crosswalkRef.sha256 = updated;
+      item.evidenceRefs.find(ref => ref.path === crossPath).sha256 = updated;
+    }
+    assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /canonical target crosswalk/);
+  }
+});
+
 test("META_PIPELINE_AUDIT permits audit/current Drive hash drift only with exact per-UID student parity", t => {
   const f = fixture(t);
   attachMetaPipelineAudit(f, { driveSourceHashDrift: true });

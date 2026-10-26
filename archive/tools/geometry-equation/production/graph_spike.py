@@ -22,25 +22,41 @@ def _exp_log_base_expression(row):
         return f'({a})*log(({k})*x+({b}))/ln({base})+({c})'
     raise ValueError('UNSUPPORTED_GRAPH_FAMILY')
 
+
+def _sqrt_exact_text(value):
+    return str(value).replace(' ','')
+
+def _sqrt_general_expression(plan):
+    """y = q + s*k*sqrt(c + b*x): every coefficient is an exact string, so the sampler evaluates exactly the source function."""
+    radicand=plan['radicand'];amplitude=plan.get('amplitude','1');sign=plan.get('sign',1);offset=plan.get('offset','0')
+    scale=f'({sign})*({amplitude})' if sign==-1 or str(amplitude)!='1' else '1'
+    return f'({offset})+({scale})*sqrt((({radicand[0]})+({radicand[1]})*x))'
+
 def expression(plan):
     def poly(values):
         return '('+'+'.join('('+v+')*x^'+str(i) for i,v in enumerate(values))+')'
     if plan['family']=='polynomial':return poly(plan['coefficients'])
     if plan['family']=='rational':return poly(plan['numerator'])+'/'+poly(plan['denominator'])
-    if plan['family']=='sqrt-affine':return 'sqrt('+poly(plan['radicand'])+')'
+    if plan['family']=='sqrt-affine':
+        if plan.get('overviewPolicy')=='SQRT_AFFINE_GENERAL_OVERVIEW_v1':return _sqrt_general_expression(plan)
+        return 'sqrt('+poly(plan['radicand'])+')'
     if plan['family']=='absolute-value':
         b,a,scale,offset=plan['coefficients']
         return '(('+scale+')*abs(('+a+')*x+('+b+'))+('+offset+'))'
     if plan['family'] in {'exponential-affine','logarithmic-affine'}:return _exp_log_base_expression(plan)
     if plan['family']=='trigonometric':
-        a,k,c=plan['coefficients'];fn=plan['function'].lower();return f'({a})*{fn}(({k})*x+({plan["phasePi"]})*pi)+({c})'
+        fn=plan['function'].lower();rate_pi=plan.get('ratePi')
+        if rate_pi is not None:a,c=plan['coefficients'];rate=f'({rate_pi})*pi'
+        else:a,k,c=plan['coefficients'];rate=f'({k})'
+        phase=f'({plan["phasePi"]})*pi' if plan.get('phasePi') is not None else f'({plan["phase"]})'
+        return f'({a})*{fn}(({rate})*x+({phase}))+({c})'
     raise ValueError('UNSUPPORTED_GRAPH_FAMILY')
 
 def svg_number(value):
     text=f'{value:.9f}'.rstrip('0').rstrip('.')
     return text if text and text!='-0' else '0'
 
-def produce(plan):
+def _produce(plan):
     # A graph framed at one scale is modelled at its own plot size, so the model's px measures match the final figure's. Cubic/quartic
     # overviews are composed on the 610x420 overview canvas (phase2 GRAPH_OVERVIEW_CANVAS, panel 140): the model uses the same plot so its
     # tail/feature px measures are the ones the final figure has.
@@ -52,7 +68,16 @@ def produce(plan):
     if plan.get('family')=='piecewise-polynomial':return _produce_piecewise_polynomial(plan,vp)
     if plan.get('family')=='exp-log-pair':return _produce_exp_log_pair(plan,vp)
     critical=[p['x'] for p in plan.get('requiredPoints',[])]+[feature['x'] for feature in plan.get('overviewFeatures',[]) if feature.get('kind')!='TAIL_DIRECTION']
-    if plan['family']=='sqrt-affine':
+    if plan['family']=='sqrt-affine' and plan.get('overviewPolicy')=='SQRT_AFFINE_GENERAL_OVERVIEW_v1':
+        from graph_framing import pp_exact_float
+        c,b=pp_exact_float(plan['radicand'][0]),pp_exact_float(plan['radicand'][1])
+        amplitude=pp_exact_float(plan.get('amplitude','1'));sign=plan.get('sign',1);scale=sign*amplitude
+        boundary=-c/b
+        # The boundary secant gap grows with |scale|*sqrt(|b|*dx); reserve margin below .35px.
+        step=(1.2/(vp.sy*abs(scale)*math.sqrt(abs(b))))**2
+        if b>0 and plan['domain'][0]<=boundary<plan['domain'][1]:critical.append(boundary+step)
+        if b<0 and plan['domain'][0]<boundary<=plan['domain'][1]:critical.append(boundary-step)
+    elif plan['family']=='sqrt-affine':
         b,a=[float(Fraction(v)) for v in plan['radicand']]
         if a<=0:raise ValueError('UNSUPPORTED_SQRT_RADICAND')
         boundary=-b/a
@@ -72,7 +97,20 @@ def produce(plan):
         elif features.get('referencePoint'):critical.append(float(Fraction(features['referencePoint']['xPiMultiple']))*math.pi)
     if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v1':
         critical.extend(point['x'] for row in plan.get('trigIntervalFeatures',{}).get('lines',[]) for point in row['intersections'])
+    if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_PERIODIC_OVERVIEW_v2':
+        features=plan.get('trigFeatures',{})
+        if plan.get('function') in {'SIN','COS'}:critical.extend(float(Fraction(row['x'])) for row in features.get('phasePoints',[]))
+        elif features.get('referencePoint'):critical.append(float(Fraction(features['referencePoint']['x'])))
+    if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':
+        features=plan.get('trigIntervalFeatures',{});factor=math.pi if features.get('axisUnit')=='PI' else 1.0
+        critical.extend(point['x'] for row in features.get('lines',[]) for point in row['intersections'])
+        critical.extend(float(Fraction(row['x']))*factor for row in features.get('keyPoints',[]))
+        critical.extend(float(Fraction(row['x']))*factor for row in features.get('poles',[]))
     result=sample(expression(plan),plan['domain'],vp,critical_x=critical)
+    # A tangent branch near a pole can exceed the finite wire range in its refinement-cap report; the code is the evidence, not the huge px.
+    for warning in result.get('warnings',[]):
+        if isinstance(warning,dict) and 'errorPx' in warning and not (math.isfinite(warning['errorPx']) and abs(warning['errorPx'])<=9007199254740991):warning['errorPx']=None
+    if not (math.isfinite(result.get('screenSpaceChordErrorPx',0)) and abs(result.get('screenSpaceChordErrorPx',0))<=9007199254740991):result['screenSpaceChordErrorPx']=None
     curves=[]
     for i,branch in enumerate(result['branches']):
         points=' '.join(','.join(svg_number(v) for v in vp.screen(p)) for p in branch)
@@ -92,13 +130,16 @@ def produce(plan):
             radius=float(plan['rationalFeaturePolicy']['holeMarkerRadiusIntrinsicPx'])
             curves.append(f'<circle id="rational-removable-hole" data-role="hole" cx="{cx:.12g}" cy="{cy:.12g}" r="{radius:.12g}" fill="white" stroke="black" stroke-width="1"/>')
         else:raise ValueError('INVALID_RATIONAL_SINGULARITY_KIND')
-    if plan['family']=='sqrt-affine' and plan.get('overviewPolicy')=='SQRT_AFFINE_ENDPOINT_OVERVIEW_v1':
+    if plan['family']=='sqrt-affine' and plan.get('overviewPolicy') in {'SQRT_AFFINE_ENDPOINT_OVERVIEW_v1','SQRT_AFFINE_GENERAL_OVERVIEW_v1'}:
+        from graph_framing import pp_exact_float
         features=plan.get('sqrtFeatures');policy=plan.get('sqrtFeaturePolicy')
-        if not isinstance(features,dict) or features.get('schemaVersion')!='SQRT_AFFINE_FEATURES_v1' or not isinstance(policy,dict):raise ValueError('SQRT_ENDPOINT_INVENTORY_REQUIRED')
+        general=plan.get('overviewPolicy')=='SQRT_AFFINE_GENERAL_OVERVIEW_v1'
+        schema='SQRT_AFFINE_GENERAL_FEATURES_v1' if general else 'SQRT_AFFINE_FEATURES_v1'
+        if not isinstance(features,dict) or features.get('schemaVersion')!=schema or not isinstance(policy,dict):raise ValueError('SQRT_ENDPOINT_INVENTORY_REQUIRED')
         radius=float(policy['endpointMarkerRadiusIntrinsicPx'])
         for index,endpoint in enumerate(features.get('sourceEndpoints',[])):
             if endpoint.get('state')!='CLOSED':raise ValueError('UNSUPPORTED_OPEN_SQRT_SOURCE_ENDPOINT')
-            at=vp.screen((float(Fraction(endpoint['x'])),float(endpoint['y'])))
+            at=vp.screen((pp_exact_float(endpoint['x']) if general else float(Fraction(endpoint['x'])),float(endpoint['y'])))
             curves.append(f'<circle id="sqrt-domain-endpoint-{index}" data-role="domain-endpoint" data-endpoint-state="CLOSED" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
     if plan['family']=='polynomial' and plan.get('overviewPolicy')=='POLYNOMIAL_INTERVAL_OVERVIEW_v1':
         features=plan.get('intervalFeatures');policy=plan.get('intervalFeaturePolicy')
@@ -156,6 +197,21 @@ def produce(plan):
                 curves.append(f'<line id="trig-{pole["id"]}" data-role="trig-pole" data-pole-side="{pole["side"]}" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
             ref=features['referencePoint'];at=vp.screen((float(Fraction(ref['xPiMultiple']))*math.pi,float(Fraction(ref['y']))))
             curves.append(f'<circle id="trig-reference-point" data-role="trig-reference" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
+    if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_PERIODIC_OVERVIEW_v2':
+        features=plan.get('trigFeatures');policy=plan.get('trigFeaturePolicy')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='TRIGONOMETRIC_FEATURES_v2' or not isinstance(policy,dict):raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        radius=float(policy['markerRadiusIntrinsicPx'])
+        if plan['function'] in {'SIN','COS'}:
+            for feature in features.get('phasePoints',[]):
+                at=vp.screen((float(Fraction(feature['x'])),float(Fraction(feature['y']))))
+                curves.append(f'<circle id="trig-{feature["id"]}" data-role="trig-feature" data-feature-kind="{feature["kind"]}" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
+        else:
+            lo,hi,ylo,yhi=plan['viewport']
+            for pole in features.get('poles',[]):
+                pole_x=float(Fraction(pole['x']));a,b=vp.screen((pole_x,ylo)),vp.screen((pole_x,yhi))
+                curves.append(f'<line id="trig-{pole["id"]}" data-role="trig-pole" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
+            ref=features['referencePoint'];at=vp.screen((float(Fraction(ref['x'])),float(Fraction(ref['y']))))
+            curves.append(f'<circle id="trig-reference-point" data-role="trig-reference" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
     if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v1':
         features=plan.get('trigIntervalFeatures');interval=plan.get('intervalFeatures');interval_policy=plan.get('intervalFeaturePolicy')
         if not isinstance(features,dict) or features.get('schemaVersion')!='TRIGONOMETRIC_INTERVAL_FEATURES_v1' or not isinstance(interval,dict) or not isinstance(interval_policy,dict):raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
@@ -171,6 +227,32 @@ def produce(plan):
             for k,point in enumerate(row['intersections'],1):
                 cx,cy=vp.screen((point['x'],point['y']))
                 curves.append(f'<circle id="intersection-{row["id"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
+        for endpoint in interval['endpoints']:
+            cx,cy=vp.screen((float(Fraction(endpoint['x'])),float(Fraction(endpoint['y']))))
+            curves.append(f'<circle id="interval-endpoint-{endpoint["side"].lower()}" data-role="interval-endpoint" data-state="{endpoint["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="{float(interval_policy["markerRadiusIntrinsicPx"]):.12g}" fill="{"#fff" if endpoint["state"]=="OPEN" else "#111"}" stroke="black" stroke-width="1"/>')
+    if plan['family']=='trigonometric' and plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':
+        features=plan.get('trigIntervalFeatures');interval=plan.get('intervalFeatures');interval_policy=plan.get('intervalFeaturePolicy');policy=plan.get('trigIntervalPolicy')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='TRIGONOMETRIC_INTERVAL_FEATURES_v2' or not isinstance(interval,dict) or not isinstance(interval_policy,dict):raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        factor=math.pi if features.get('axisUnit')=='PI' else 1.0;radius=float(policy['markerRadiusIntrinsicPx'])
+        xmin,xmax,ymin,ymax=plan['viewport']
+        for row in features['lines']:
+            slope,intercept=float(Fraction(row['slope'])),float(Fraction(row['intercept']))
+            if row['kind']=='HORIZONTAL':a,b=vp.screen((xmin,intercept)),vp.screen((xmax,intercept))
+            else:
+                ends=sorted([(ymin-intercept)/slope,(ymax-intercept)/slope]);left,right=max(xmin,ends[0]),min(xmax,ends[1])
+                if not left<right:raise ValueError('TRIG_LINE_OUTSIDE_VIEW:'+row['id'])
+                a,b=vp.screen((left,slope*left+intercept)),vp.screen((right,slope*right+intercept))
+            curves.append(f'<line id="line-{row["id"]}" data-role="line" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"/>')
+            for k,point in enumerate(row['intersections'],1):
+                cx,cy=vp.screen((point['x'],point['y']))
+                curves.append(f'<circle id="intersection-{row["id"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
+        for row in features.get('keyPoints',[]):
+            at=vp.screen((float(Fraction(row['x']))*factor,float(Fraction(row['y']))))
+            curves.append(f'<circle id="trig-{row["id"]}" data-role="trig-key-point" data-feature-kind="{row["kind"]}" cx="{at[0]:.12g}" cy="{at[1]:.12g}" r="{radius:.12g}" fill="black" stroke="black" stroke-width="1"/>')
+        lo,hi,ylo,yhi=plan['viewport']
+        for pole in features.get('poles',[]):
+            pole_x=float(Fraction(pole['x']))*factor;a,b=vp.screen((pole_x,ylo)),vp.screen((pole_x,yhi))
+            curves.append(f'<line id="trig-{pole["id"]}" data-role="trig-pole" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black" stroke-dasharray="5 4"/>')
         for endpoint in interval['endpoints']:
             cx,cy=vp.screen((float(Fraction(endpoint['x'])),float(Fraction(endpoint['y']))))
             curves.append(f'<circle id="interval-endpoint-{endpoint["side"].lower()}" data-role="interval-endpoint" data-state="{endpoint["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="{float(interval_policy["markerRadiusIntrinsicPx"]):.12g}" fill="{"#fff" if endpoint["state"]=="OPEN" else "#111"}" stroke="black" stroke-width="1"/>')
@@ -240,6 +322,38 @@ def _produce_piecewise_affine(plan,vp):
 def _polynomial_text(coefficients):
     return '('+'+'.join('('+value+')*x^'+str(index) for index,value in enumerate(coefficients))+')'
 
+def _region_boundary_points(rows,vp):
+    from graph_framing import pp_exact_float
+    points=[]
+    for row in rows:
+        domain=[pp_exact_float(row['interval'][0]),pp_exact_float(row['interval'][1])]
+        result=sample(_polynomial_text(row['coefficients']),domain,vp,critical_x=[])
+        if len(result['branches'])!=1 or not result['branches'][0]:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+        pts=[vp.screen(value) for value in result['branches'][0]]
+        if points and pts and abs(points[-1][0]-pts[0][0])<=1e-9:pts=pts[1:]
+        points.extend(pts)
+    return points
+
+def _region_parts(features,vp):
+    """The model-stage drawing of graphPlan.regions: one even-odd fill path and its plain label, with the same ids the final figure uses. The
+    independent observer re-reads both the model SVG and the composed final SVG through the same code path."""
+    import html
+    fills=[];labels=[]
+    for region in features.get('regions',[]):
+        upper=_region_boundary_points(region['upperRows'],vp);lower=_region_boundary_points(region['lowerRows'],vp)
+        if len(upper)<2 or len(lower)<2:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+        polygon=upper+list(reversed(lower))
+        path='M'+','.join(svg_number(value) for value in polygon[0])+' '+' '.join('L'+','.join(svg_number(value) for value in point) for point in polygon[1:])+' Z'
+        fill={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}[region.get('fill','LIGHT')]
+        fills.append(f'<path id="region-{region["id"]}" data-role="region" data-mark="graph-region" data-mark-id="{region["id"]}" fill="{fill}" fill-rule="evenodd" stroke="none" d="{path}"/>')
+        if region.get('label') is not None:
+            # A point inside the band: halfway between the two boundaries at the middle x (never a centroid that a concave band could leave).
+            mid=(min(point[0] for point in polygon)+max(point[0] for point in polygon))/2
+            upper_at=min(upper,key=lambda point:abs(point[0]-mid));lower_at=min(lower,key=lambda point:abs(point[0]-mid))
+            cx,cy=(upper_at[0]+lower_at[0])/2,(upper_at[1]+lower_at[1])/2
+            labels.append(f'<text id="region-{region["id"]}-label" x="{cx:.12g}" y="{cy:.12g}" text-anchor="middle" font-size="12">{html.escape(region["label"])}</text>')
+    return fills,labels
+
 def _produce_piecewise_polynomial(plan,vp):
     """The framed pieces (each on its draw interval), the key points, the horizontal lines and their intersection dots, with the ids the
     final figure uses, so the graph observer reads the model and the final SVG the same way."""
@@ -248,6 +362,7 @@ def _produce_piecewise_polynomial(plan,vp):
     features=plan.get('piecewisePolynomialFeatures')
     if not isinstance(features,dict) or features.get('schemaVersion')!='PIECEWISE_POLYNOMIAL_FEATURES_v1':raise ValueError('PIECEWISE_POLY_FEATURE_INVENTORY_REQUIRED')
     parts=[];sampling=[]
+    region_fills,region_labels=_region_parts(features,vp)
     for index,piece in enumerate(features['pieces'],1):
         result=sample(_polynomial_text(piece['coefficients']),piece['drawInterval'],vp,critical_x=[p['x'] for p in plan.get('requiredPoints',[])]+[point['xValue'] for row in features['intersections'] for point in row['points']])
         if len(result['branches'])!=1:raise ValueError('PIECEWISE_POLY_PIECE_SAMPLING_FAILED')
@@ -306,5 +421,67 @@ def _produce_piecewise_polynomial(plan,vp):
         for endpoint in interval['endpoints']:
             cx,cy=vp.screen((pp_exact_float(endpoint['x']),pp_exact_float(endpoint['y'])))
             parts.append(f'<circle id="interval-endpoint-{endpoint["side"].lower()}" data-role="interval-endpoint" data-state="{endpoint["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="4" fill="{"#fff" if endpoint["state"]=="OPEN" else "#111"}" stroke="black" stroke-width="1"/>')
-    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(parts)+'</svg>'
+    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(region_fills+parts+region_labels)+'</svg>'
     return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(sampling),'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
+
+# ---------------------------------------------------------------------------
+# Graph overlays (G1): the model SVG carries the same overlay ids and shapes the final figure does (the observed model is read back by the
+# same independent observer), so every overlay line, vertical line, segment, guide, polygon and extra point is checked before and after
+# composition. The labels are composed by the final spec, not here.
+def _overlay_model_svg(plan,transform):
+    features=plan.get('overlaysFeatures')
+    if not isinstance(features,dict) or features.get('schemaVersion')!='GRAPH_OVERLAYS_FEATURES_v1':return ''
+    ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')]
+    xmin,xmax,ymin,ymax=plan['viewport']
+    screen=lambda x,y:(ox+x*sx,oy-y*sy)
+    parts=[]
+    def clip_line(kind):
+        if kind['kind']=='VERTICAL':
+            x=float(kind['xValue'])
+            if not xmin<x<xmax:raise ValueError('OVERLAY_LINE_OUTSIDE_VIEWPORT:'+kind['id'])
+            return (x,ymin),(x,ymax)
+        m=float(kind['slopeValue']);q=float(kind['interceptValue']);ends=[]
+        for x in (xmin,xmax):
+            y=m*x+q
+            if ymin-1e-9<=y<=ymax+1e-9:ends.append((x,max(ymin,min(ymax,y))))
+        for y in (ymin,ymax):
+            if m!=0:
+                x=(y-q)/m
+                if xmin-1e-9<=x<=xmax+1e-9 and not any(abs(x-a)<1e-9 and abs(y-b)<1e-9 for a,b in ends):ends.append((max(xmin,min(xmax,x)),y))
+        if len(ends)<2:raise ValueError('OVERLAY_LINE_OUTSIDE_VIEWPORT:'+kind['id'])
+        return ends[0],ends[1]
+    for line in features['lines']:
+        a,b=clip_line(line);p,q=screen(*a),screen(*b)
+        parts.append(f'<line id="overlay-line-{line["id"]}" data-role="overlayLine" x1="{p[0]:.12g}" y1="{p[1]:.12g}" x2="{q[0]:.12g}" y2="{q[1]:.12g}" stroke="black"/>')
+    points={point['id']:point for point in features['points']}
+    def at(ident):
+        point=points.get(ident)
+        if point is None:raise ValueError('OVERLAY_POINT_UNKNOWN:'+str(ident))
+        return screen(point['x'],point['y'])
+    for segment in features['segments']:
+        a,b=at(segment['from']),at(segment['to'])
+        dash=' stroke-dasharray="6 4"' if segment['dashed'] else ''
+        parts.append(f'<line id="overlay-segment-{segment["id"]}" data-role="overlaySegment" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"{dash}/>')
+    for guide in features['guides']:
+        point=points[guide['from']];origin=screen(point['x'],point['y']);axis=guide['axis'];dash=' stroke-dasharray="6 4"' if guide['dashed'] else ''
+        if axis in ('x','BOTH'):
+            end=screen(point['x'],0.0);parts.append(f'<line id="overlay-guide-{guide["id"]}-x" data-role="overlayGuide" x1="{origin[0]:.12g}" y1="{origin[1]:.12g}" x2="{end[0]:.12g}" y2="{end[1]:.12g}" stroke="black"{dash}/>')
+        if axis in ('y','BOTH'):
+            end=screen(0.0,point['y']);parts.append(f'<line id="overlay-guide-{guide["id"]}-y" data-role="overlayGuide" x1="{origin[0]:.12g}" y1="{origin[1]:.12g}" x2="{end[0]:.12g}" y2="{end[1]:.12g}" stroke="black"{dash}/>')
+    for polygon in features['polygons']:
+        vertices=[at(ident) for ident in polygon['points']]
+        outline=' '.join(f'{x:.12g},{y:.12g}' for x,y in vertices)
+        if polygon['fill']!='NONE':
+            parts.append(f'<polygon id="overlay-polygon-{polygon["id"]}-fill" data-role="region" points="{outline}" fill="#eef2f7" stroke="none"/>')
+        parts.append(f'<polyline id="overlay-polygon-{polygon["id"]}" data-role="overlayPolygon" points="{outline} {vertices[0][0]:.12g},{vertices[0][1]:.12g}" fill="none" stroke="black"/>')
+    for point in features['points']:
+        x,y=screen(point['x'],point['y'])
+        parts.append(f'<circle id="{point["id"]}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="3.2" fill="#111" stroke="black"/>')
+    return ''.join(parts)
+
+def produce(plan):
+    result=_produce(plan)
+    extra=_overlay_model_svg(plan,result['transform'])
+    if extra:
+        svg=result['svg'];result['svg']=svg[:-len('</svg>')]+extra+'</svg>'
+    return result

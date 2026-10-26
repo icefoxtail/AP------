@@ -1,0 +1,371 @@
+{
+  "schemaVersion": "meta-pipeline-cross-concept-reuse-equivalence-v1",
+  "requestId": "meta-pipeline-geumdang25-v2rev-20261026",
+  "examUid": "25_금당고_1학기_중간_고1_기출",
+  "policy": "EXISTING_CANONICAL_DEFINITIONS_IMMUTABLE",
+  "counts": {
+    "auditedCrossConcepts": 50,
+    "reusedExisting": 2,
+    "additiveNew": 48
+  },
+  "existing": [
+    {
+      "conceptKey": "CC_POLYNOMIAL_FACTORIZATION",
+      "canonicalLabelKo": "다항식의 인수분해",
+      "canonicalDefinition": "다항식의 근·중근·곱구조를 인수분해하여 함수·도함수·방정식의 구조를 분석하는 개념.",
+      "auditedLabelKo": "다항식의 인수분해",
+      "auditedDefinition": "다항식의 근·중근·곱구조를 인수분해하여 함수·도함수·방정식의 구조를 분석하는 개념.",
+      "wordingIdentical": false,
+      "disposition": "REUSE_CANONICAL",
+      "rationale": "The audited usage is itemized by the same exact concept key (CC_POLYNOMIAL_FACTORIZATION) already owned by ALGEBRA. The canonical label/definition is retained byte-for-byte; this registration only binds the audited UIDs/usage and never rewrites or merges the canonical entry."
+    },
+    {
+      "conceptKey": "CC_PRIME_FACTORIZATION",
+      "canonicalLabelKo": "소인수분해",
+      "canonicalDefinition": "자연수를 소인수분해하여 함수 관계식 또는 함수값 계산에 사용하는 개념.",
+      "auditedLabelKo": "소인수분해",
+      "auditedDefinition": "자연수를 소인수분해하여 함수 관계식 또는 함수값 계산에 사용하는 개념.",
+      "wordingIdentical": false,
+      "disposition": "REUSE_CANONICAL",
+      "rationale": "The audited usage is itemized by the same exact concept key (CC_PRIME_FACTORIZATION) already owned by NUMBER_THEORY. The canonical label/definition is retained byte-for-byte; this registration only binds the audited UIDs/usage and never rewrites or merges the canonical entry."
+    }
+  ],
+  "additive": [
+    {
+      "conceptKey": "CC_ALGEBRAIC_POLYNOMIAL_SUBSTITUTION",
+      "canonicalLabelKo": "다항식 식의 대입",
+      "definition": "다항식 기호를 주어진 식으로 바꾸어 전체 식을 계산하는 절차.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_PRODUCT_EXPANSION",
+      "canonicalLabelKo": "두 식의 곱 전개",
+      "definition": "두 다항식의 곱을 대응되는 항끼리 곱하고 동류항을 정리하는 전개 과정.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION"
+    },
+    {
+      "conceptKey": "CC_COEFFICIENT_EXTRACTION_SELECTIVE",
+      "canonicalLabelKo": "특정 차수 계수의 선택 추출",
+      "definition": "곱을 전개할 때 목표 차수에 기여하는 항만 골라 계수를 합하는 방법.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION"
+    },
+    {
+      "conceptKey": "CC_COMPLEX_ARITHMETIC_SUBTRACTION",
+      "canonicalLabelKo": "복소수의 뺄셈",
+      "definition": "복소수에서 실수부분과 허수부분을 각각 계산하여 차를 구하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_OPERATION"
+    },
+    {
+      "conceptKey": "CC_COMPLEX_DIVISION_REALIZATION",
+      "canonicalLabelKo": "켤레복소수를 이용한 나눗셈",
+      "definition": "분모의 켤레복소수를 곱해 복소수의 나눗셈을 실수 분모 형태로 정리하는 절차.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_OPERATION"
+    },
+    {
+      "conceptKey": "CC_COMPLEX_PERIODICITY_4",
+      "canonicalLabelKo": "허수단위 거듭제곱의 4주기",
+      "definition": "i의 거듭제곱이 1,i,-1,-i 순으로 네 항마다 반복되는 주기성.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_POWER_ROOT"
+    },
+    {
+      "conceptKey": "CC_COMPLEX_UNIT_ROOT_PERIODICITY",
+      "canonicalLabelKo": "복소수 거듭제곱의 단위주기",
+      "definition": "절댓값이 1인 복소수의 정수 거듭제곱이 특정 주기 후 반복되는 성질.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_POWER_ROOT"
+    },
+    {
+      "conceptKey": "CC_CONJUGATE_COMPLEX_DEFINITION",
+      "canonicalLabelKo": "켤레복소수의 정의",
+      "definition": "a+bi의 켤레복소수 a-bi에서 실수부는 유지하고 허수부의 부호를 반대로 바꾸는 대응.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_OPERATION"
+    },
+    {
+      "conceptKey": "CC_CONSTANT_TERM_SEPARATION",
+      "canonicalLabelKo": "상수항과 나머지 계수의 분리",
+      "definition": "계수 전체 합에서 x=0 함수값인 상수항을 빼 상수항 외 계수의 합을 구하는 방법.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT"
+    },
+    {
+      "conceptKey": "CC_CUBIC_SUM_FORMULA",
+      "canonicalLabelKo": "세제곱의 합 공식",
+      "definition": "(a+b)(a²-ab+b²)을 a³+b³로 바꾸어 계산하는 곱셈공식.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION"
+    },
+    {
+      "conceptKey": "CC_DEGREE_DETERMINATION",
+      "canonicalLabelKo": "항등식에서 다항식의 차수 결정",
+      "definition": "최고차항의 차수와 계수 조건을 비교해 가능한 다항식의 차수나 계수를 제한하는 방법.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT"
+    },
+    {
+      "conceptKey": "CC_DISCRIMINANT_ZERO_DOUBLE_ROOT",
+      "canonicalLabelKo": "판별식이 0인 중근 조건",
+      "definition": "이차방정식이 중근을 가질 필요충분조건으로 판별식이 0임을 사용하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT"
+    },
+    {
+      "conceptKey": "CC_DISJOINT_CASE_SYNTHESIS",
+      "canonicalLabelKo": "배타적 경우의 결과 합성",
+      "definition": "겹치지 않는 모든 조건별 후보를 빠짐없이 합쳐 목표 함수값이나 나머지를 구하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM"
+    },
+    {
+      "conceptKey": "CC_DOUBLE_ROOT_HORNER_METHOD",
+      "canonicalLabelKo": "중근 인수의 조립제법 반복",
+      "definition": "(x-a)^2으로 나누어떨어지는 조건을 조립제법 두 번의 나머지 조건으로 표현하는 절차.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM"
+    },
+    {
+      "conceptKey": "CC_EXTREMA_EQUATION_ROOTS",
+      "canonicalLabelKo": "극값 조건에서 매개변수 결정",
+      "definition": "주어진 최댓값·최솟값 조건을 함수값 방정식으로 바꾸어 매개변수를 결정하는 절차.",
+      "ownerConceptShard": "FUNCTIONS",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_EXTREMA"
+    },
+    {
+      "conceptKey": "CC_FACTORIZATION_NUMERICAL_APPLICATION",
+      "canonicalLabelKo": "인수분해 결과의 수치 활용",
+      "definition": "인수분해된 다항식에 정수값을 대입해 수의 곱으로 바꾸고 약수 관련 값을 계산하는 절차.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_FACTORIZATION"
+    },
+    {
+      "conceptKey": "CC_FACTOR_THEOREM_CUBIC",
+      "canonicalLabelKo": "삼차다항식의 인수정리",
+      "definition": "삼차다항식에서 근 후보를 대입해 인수 여부를 확인하고 인수분해하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_FACTORIZATION"
+    },
+    {
+      "conceptKey": "CC_FUNCTIONAL_POLYNOMIAL_IDENTITY",
+      "canonicalLabelKo": "함수값으로 표현된 다항식 항등식",
+      "definition": "여러 입력값에서 성립하는 다항식 함수 관계를 항등식 조건으로 사용하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT"
+    },
+    {
+      "conceptKey": "CC_FUNCTION_VALUE_SIGN_INEQUALITY",
+      "canonicalLabelKo": "함숫값 부호와 부등식 조건",
+      "definition": "두 근 사이에서 이차함수의 부호를 이용해 매개변수 부등식을 세우는 개념.",
+      "ownerConceptShard": "FUNCTIONS",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+    },
+    {
+      "conceptKey": "CC_GRAPH_X_INTERCEPT_COUNT",
+      "canonicalLabelKo": "이차함수와 x축의 교점 개수",
+      "definition": "이차함수 그래프의 x축과의 교점 수를 실근의 개수와 대응하여 판단하는 개념.",
+      "ownerConceptShard": "FUNCTIONS",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+    },
+    {
+      "conceptKey": "CC_HIGH_DEGREE_SYMMETRIC_SUM",
+      "canonicalLabelKo": "고차 대칭 거듭제곱합",
+      "definition": "주어진 저차 대칭식 값으로 고차 거듭제곱의 합을 계산하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC"
+    },
+    {
+      "conceptKey": "CC_IDENTITY_PARAMETER_MATCHING",
+      "canonicalLabelKo": "항등식의 매개변수 계수 비교",
+      "definition": "모든 변수값에서 성립하는 항등식의 각 차수 계수를 비교해 매개변수를 결정하는 방법.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_DISCRIMINANT"
+    },
+    {
+      "conceptKey": "CC_MOVING_AXIS_PIECEWISE_ANALYSIS",
+      "canonicalLabelKo": "축 위치에 따른 구간별 분석",
+      "definition": "매개변수에 따라 포물선의 축이 정의역 구간 안팎으로 이동하는 경우를 나누어 극값을 계산하는 방법.",
+      "ownerConceptShard": "FUNCTIONS",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_EXTREMA"
+    },
+    {
+      "conceptKey": "CC_OPPOSITE_SIGN_PHASE_CONDITION",
+      "canonicalLabelKo": "복소수 거듭제곱의 반대 부호 조건",
+      "definition": "두 복소수 거듭제곱의 합이 0이 되도록 두 값이 서로 반대가 되는 지수를 찾는 조건.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_POWER_ROOT"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_ADDITION_SUBTRACTION",
+      "canonicalLabelKo": "다항식의 덧셈과 뺄셈",
+      "definition": "다항식의 계수를 더하거나 빼고 같은 차수의 항을 정리하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_OPERATION_EXPANSION"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_COEFFICIENT_SUM_SUBSTITUTION",
+      "canonicalLabelKo": "계수의 합과 x=1 대입",
+      "definition": "다항식의 모든 계수 합을 x=1에서의 함수값으로 계산하는 관계.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_DIVISIBILITY_BRANCHING",
+      "canonicalLabelKo": "다항식 나눗셈 조건의 경우 분류",
+      "definition": "다항식의 나눗셈 가능 조건을 함수값의 가능한 경우들로 바꾸어 배타적으로 분류하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_EVALUATION",
+      "canonicalLabelKo": "다항식의 함수값 계산",
+      "definition": "주어진 x값을 다항식에 대입해 함수값을 계산하는 절차.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM"
+    },
+    {
+      "conceptKey": "CC_POLYNOMIAL_REMAINDER_SETUP",
+      "canonicalLabelKo": "나머지 조건의 식 세우기",
+      "definition": "나눗셈의 나머지를 함수값 조건으로 바꾸어 미지수 식을 세우는 절차.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM"
+    },
+    {
+      "conceptKey": "CC_PRIME_FACTORIZATION_DIVISOR_COUNT",
+      "canonicalLabelKo": "소인수분해와 약수의 개수",
+      "definition": "자연수의 소인수 지수에 각각 1을 더한 수를 곱해 약수의 개수를 구하는 정리.",
+      "ownerConceptShard": "NUMBER_THEORY",
+      "parentProblemTypeKey": "PT_H1_POLY_FACTORIZATION"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_DISCRIMINANT",
+      "canonicalLabelKo": "이차방정식의 판별식",
+      "definition": "이차방정식의 판별식 부호를 이용해 실근의 개수와 그래프의 축 교점 수를 판정하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_EXTREMA_RESTRICTED_INTERVAL",
+      "canonicalLabelKo": "제한된 구간의 이차함수 극값",
+      "definition": "축과 구간의 위치를 고려해 이차함수의 최댓값·최솟값을 구하는 개념.",
+      "ownerConceptShard": "FUNCTIONS",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_EXTREMA"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_LINE_INTERSECTION_EQUATION",
+      "canonicalLabelKo": "이차함수와 직선의 교점 방정식",
+      "definition": "이차함수와 직선의 교점을 연립방정식의 근으로 바꾸어 구간 경계를 결정하는 방법.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_EXTREMA"
+    },
+    {
+      "conceptKey": "CC_QUADRATIC_RECONSTRUCTION_CONDITIONS",
+      "canonicalLabelKo": "조건값으로 이차다항식 복원",
+      "definition": "서로 다른 점에서의 함수값과 근 조건을 이용해 가능한 이차다항식을 계수별로 결정하는 방법.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM"
+    },
+    {
+      "conceptKey": "CC_REAL_IMAGINARY_PART_EQUATION",
+      "canonicalLabelKo": "복소수의 실수부·허수부 조건",
+      "definition": "복소수가 실수 등 조건을 만족할 때 실수부와 허수부를 각각 비교해 미지수를 정하는 방법.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_OPERATION"
+    },
+    {
+      "conceptKey": "CC_RECIPROCAL_SUM_EXPANSION",
+      "canonicalLabelKo": "역수 거듭제곱합의 곱셈 전개",
+      "definition": "x^m+1/x^m 형태를 곱해 목표 지수합과 교차항의 합으로 분해하는 전개 방법.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC"
+    },
+    {
+      "conceptKey": "CC_RECIPROCAL_SUM_PERIOD",
+      "canonicalLabelKo": "복소수 거듭제곱과 역수합의 주기",
+      "definition": "복소수의 거듭제곱과 역수의 거듭제곱이 반복하는 값을 묶어 합의 주기를 계산하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_COMPLEX_POWER_ROOT"
+    },
+    {
+      "conceptKey": "CC_REMAINDER_THEOREM_CUBIC_DIVISOR",
+      "canonicalLabelKo": "다항식의 이차식 제수 나머지",
+      "definition": "두 근을 갖는 이차식으로 나눌 때 나머지를 일차식으로 두고 조건값으로 계수를 정하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM"
+    },
+    {
+      "conceptKey": "CC_REMAINDER_THEOREM_LINEAR",
+      "canonicalLabelKo": "일차식 나눗셈의 나머지정리",
+      "definition": "다항식을 x-a로 나눈 나머지가 P(a)임을 이용하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM"
+    },
+    {
+      "conceptKey": "CC_ROOT_LOCATION_BETWEEN",
+      "canonicalLabelKo": "두 근 사이의 수 위치",
+      "definition": "이차함수의 부호 또는 그래프 위치를 이용해 주어진 수가 두 근 사이에 놓이는지 판단하는 개념.",
+      "ownerConceptShard": "FUNCTIONS",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_GRAPH_INTERSECTION"
+    },
+    {
+      "conceptKey": "CC_ROOT_LOCATION_RESTRICTION",
+      "canonicalLabelKo": "근 위치에 따른 구간 제한",
+      "definition": "근이 주어진 경계에 대해 놓이는 위치를 이용해 가능한 구간이나 끝점을 제한하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_EXTREMA"
+    },
+    {
+      "conceptKey": "CC_ROOT_TRANSFORMATION_QUADRATIC",
+      "canonicalLabelKo": "근의 대칭식 변환",
+      "definition": "두 근의 합·곱으로 근의 곱과 합의 곱 같은 대칭식을 다시 표현하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION"
+    },
+    {
+      "conceptKey": "CC_SPECIAL_VALUE_SUBSTITUTION",
+      "canonicalLabelKo": "항등식의 특수값 대입",
+      "definition": "항등식에 0, 1 또는 부호가 대칭인 값을 넣어 필요한 함수값을 얻는 방법.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_IDENTITY_COEFFICIENT"
+    },
+    {
+      "conceptKey": "CC_SUCCESSIVE_DIVISION_REMAINDER",
+      "canonicalLabelKo": "연속 나눗셈의 나머지 조건",
+      "definition": "같은 일차식으로 연속 나누는 조립제법의 두 나머지 조건을 이용하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_REMAINDER_THEOREM"
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_POLYNOMIAL_RECURSION",
+      "canonicalLabelKo": "대칭 거듭제곱합의 점화 관계",
+      "definition": "x+1/x의 값을 이용하여 x^n+1/x^n 형태의 값들을 낮은 차수의 관계로 순차 계산하는 개념.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_POLY_FORMULA_SYMMETRIC"
+    },
+    {
+      "conceptKey": "CC_SYMMETRIC_SUM_PRODUCT",
+      "canonicalLabelKo": "근의 합과 곱으로 대칭식 계산",
+      "definition": "두 변수의 대칭식 값을 합과 곱만으로 계산하는 방법.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION"
+    },
+    {
+      "conceptKey": "CC_SYSTEM_OF_INEQUALITIES",
+      "canonicalLabelKo": "여러 부등식 조건의 연립",
+      "definition": "서로 다른 함수·매개변수 조건이 주는 부등식 범위를 교집합으로 결합하는 방법.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_QUADRATIC_EXTREMA"
+    },
+    {
+      "conceptKey": "CC_VIETA_FORMULAS_QUADRATIC",
+      "canonicalLabelKo": "이차방정식의 근과 계수",
+      "definition": "이차방정식에서 두 근의 합과 곱을 계수와 연결하는 비에타 관계.",
+      "ownerConceptShard": "ALGEBRA",
+      "parentProblemTypeKey": "PT_H1_ROOT_COEFFICIENT_RELATION"
+    }
+  ]
+}

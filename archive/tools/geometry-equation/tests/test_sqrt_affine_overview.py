@@ -55,7 +55,7 @@ class SqrtAffineOverview(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'UNSUPPORTED_SQRT_AFFINE_GRAMMAR'):
             fit_overview(graph(radicand=('-1','2','3')))
         with self.assertRaisesRegex(ValueError,'UNSUPPORTED_SQRT_AFFINE_SLOPE'):
-            fit_overview(graph(radicand=('1','-2')))
+            fit_overview(graph(radicand=('1','0')))
         with self.assertRaisesRegex(ValueError,'SQRT_SOURCE_DOMAIN_UNSUPPORTED'):
             fit_overview(graph(source_domain={'kind':'OPEN_INTERVAL','range':['100','120']}))
         with self.assertRaisesRegex(ValueError,'SQRT_SOURCE_INTERVAL_BELOW_NATURAL_BOUNDARY'):

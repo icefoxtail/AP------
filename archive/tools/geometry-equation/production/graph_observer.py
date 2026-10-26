@@ -166,8 +166,47 @@ def cubic_quartic_overview_audit(plan,poly,points,transform):
     errors.extend(root_axis_behaviour_errors(roots,points,transform))
     return {'status':'FAIL' if errors else 'PASS','errors':sorted(set(errors)),'degree':poly.degree(),'plotCssSize':[width,height],'features':feature_rows,'endDirections':end_directions,'arms':arms if critical else [],'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','mathMethod':'EXACT_RATIONAL_SOURCE_ROOT_ISOLATION','rootMultiplicities':[{'x':root,'multiplicity':multiplicity} for root,multiplicity in roots]}
 
+
+SQRT_AFFINE_GENERAL_POLICY='SQRT_AFFINE_GENERAL_OVERVIEW_v1'
+
+def _sqrt_general_coefficient(value,code):
+    """Exact rational or p+q*sqrt(r) coefficient, read by the observer's own parser (never the producer's)."""
+    try:return _pp_coeff(value)
+    except ValueError as error:
+        if 'IRRATIONAL_FORM' in str(error):raise ValueError('SQRT_AFFINE_IRRATIONAL_FORM_UNSUPPORTED')
+        raise ValueError(code) from None
+
+def _sqrt_general_fields(plan):
+    radicand=plan.get('radicand')
+    if not isinstance(radicand,list) or len(radicand)!=2:raise ValueError('UNSUPPORTED_SQRT_AFFINE_GRAMMAR')
+    constant=_sqrt_general_coefficient(radicand[0],'INVALID_SQRT_AFFINE_COEFFICIENT')
+    slope=_sqrt_general_coefficient(radicand[1],'INVALID_SQRT_AFFINE_COEFFICIENT')
+    if slope==0:raise ValueError('UNSUPPORTED_SQRT_AFFINE_SLOPE')
+    amplitude=_sqrt_general_coefficient(plan.get('amplitude','1'),'INVALID_SQRT_AMPLITUDE')
+    if amplitude<=0:raise ValueError('SQRT_AMPLITUDE_MUST_BE_POSITIVE')
+    sign=plan.get('sign',1)
+    if isinstance(sign,bool) or sign not in (1,-1):raise ValueError('INVALID_SQRT_SIGN')
+    offset=_sqrt_general_coefficient(plan.get('offset','0'),'INVALID_SQRT_OFFSET')
+    scale=S.Integer(int(sign))*amplitude
+    boundary=-constant/slope
+    return constant,slope,amplitude,int(sign),offset,scale,boundary
+
+def _sqrt_exact_text(value):
+    """Canonical text of a rational or p+q*sqrt(r), written exactly like the plan's exact-value strings."""
+    value=S.radsimp(S.expand(value))
+    if value.is_Rational:return str(value)
+    powers=[power for power in value.atoms(S.Pow) if power.exp==S.Rational(1,2) and power.base.is_Integer and power.base>1]
+    if len(powers)!=1 or len({power.base for power in powers})!=1:return str(value)
+    base=powers[0].base
+    constant=S.expand(value.subs(S.sqrt(base),0));coefficient=S.simplify((value-constant)/S.sqrt(base))
+    if not constant.is_Rational or not coefficient.is_Rational:return str(value)
+    def rat(number):return str(Fraction(int(number.p),int(number.q)))
+    magnitude=abs(coefficient);body=('' if magnitude.p==1 else str(int(magnitude.p))+'*')+'sqrt('+str(int(base))+')'+('' if magnitude.q==1 else '/'+str(int(magnitude.q)))
+    head='' if constant==0 else rat(constant)
+    return head+('-' if coefficient<0 else '+' if constant!=0 else '')+body
+
 def resolve(plan):
-    family=plan['family'];holes=[];poles=[];boundary=[];corners=[];root_inventory=None
+    family=plan['family'];holes=[];poles=[];boundary=[];corners=[];root_inventory=None;general_sqrt=None
     if family=='polynomial':
         p=polynomial(plan['coefficients'],4);f=p.as_expr();den=S.Poly(1,x)
     elif family=='rational':
@@ -179,6 +218,16 @@ def resolve(plan):
             g=S.gcd(p,den)
             matches=[m for r,m in real_roots(g,*plan['domain']) if abs(root-r)<1e-12]
             (holes if matches and matches[0]>=multiplicity else poles).append(root)
+    elif family=='sqrt-affine' and plan.get('overviewPolicy')==SQRT_AFFINE_GENERAL_POLICY:
+        constant,slope,amplitude,sign,offset,scale,root_x=_sqrt_general_fields(plan)
+        general_sqrt=(constant,slope,offset,scale,root_x)
+        p=S.Poly(S.expand(constant+slope*x),x)
+        f=offset+scale*S.sqrt(p.as_expr());den=S.Poly(1,x);boundary=[float(root_x)]
+        threshold=-offset/scale
+        if threshold>=0:
+            target=threshold*threshold;root_value=(target-constant)/slope
+            root_inventory=[(float(root_value),1)] if S.N(constant+slope*root_value)>=0 else []
+        else:root_inventory=[]
     elif family=='sqrt-affine':
         p=polynomial(plan['radicand'],1)
         if p.degree()!=1 or p.nth(1)<=0: raise ValueError('UNSUPPORTED_SQRT_RADICAND')
@@ -197,11 +246,21 @@ def resolve(plan):
     else: raise ValueError('UNSUPPORTED_GRAPH_FAMILY')
     lo,hi=plan['domain'];xmin,xmax,ymin,ymax=plan['viewport']
     if not all(math.isfinite(v) for v in [lo,hi,xmin,xmax,ymin,ymax]) or not lo<hi or not xmin<xmax or not ymin<ymax: raise ValueError('INVALID_GRAPH_DOMAIN')
-    lo=max(lo,xmin,boundary[0] if boundary else lo);hi=min(hi,xmax)
+    if general_sqrt is not None:
+        if general_sqrt[1]>0:lo=max(lo,xmin,float(general_sqrt[4]))
+        else:hi=min(hi,xmax,float(general_sqrt[4]))
+    else:lo=max(lo,xmin,boundary[0] if boundary else lo)
+    hi=min(hi,xmax)
     cuts=[lo,hi,*holes,*poles,*boundary,*corners]
     for level in [ymin,ymax]:
         if family=='sqrt-affine':
-            if level>=0:cuts.extend(r for r,_ in real_roots(S.Poly(p.as_expr()-S.Rational(str(level))**2,x),lo,hi))
+            if general_sqrt is not None:
+                constant,slope,offset,scale,root_x=general_sqrt
+                target=(S.Rational(str(level))-offset)/scale
+                if target>=0:
+                    crossing=(target*target-constant)/slope
+                    if lo<=float(crossing)<=hi:cuts.append(float(crossing))
+            elif level>=0:cuts.extend(r for r,_ in real_roots(S.Poly(p.as_expr()-S.Rational(str(level))**2,x),lo,hi))
         elif family=='absolute-value':
             distance=(S.Rational(str(level))-offset)/scale
             if distance>=0:
@@ -563,6 +622,98 @@ def sqrt_affine_overview_audit(plan,poly,points,transform,topology,svg_root):
             if 2*marker['radius']*transform['displayScale']<policy['minimumEndpointMarkerDiameterCssPx']:unsupported.append('SQRT_ENDPOINT_MARKER_BELOW_DISPLAY_RESOLUTION')
     return {'status':'UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS','errors':sorted(set(errors+unsupported)),'features':wanted,'plotCssSize':[(xmax-xmin)*sx,(ymax-ymin)*sy],'endpointToTailSpanCss':endpoint_to_tail_span_css,'minimumEndpointToTailSpanCss':policy['minimumEndpointToTailSpanCssPx'],'topology':{'boundary':topology.get('boundary'),'visibleIntervals':topology.get('visibleIntervals')},'observedEndpointMarkers':len(markers),'rightTailDirection':'UP','mathMethod':'EXACT_AFFINE_RADICAND_DOMAIN_AND_ENDPOINT'}
 
+def sqrt_affine_general_overview_audit(plan,points,transform,topology,svg_root):
+    """y = q + s*k*sqrt(a*(x-p)): the endpoint, branch side, monotone direction, range side, endpoints/markers and key points are all
+    recomputed from the plan's exact coefficients and checked against the final polyline."""
+    errors=[];unsupported=[]
+    try:constant,slope,amplitude,sign,offset,scale,root_x=_sqrt_general_fields(plan)
+    except (ValueError,TypeError):return {'status':'UNSUPPORTED','errors':['SQRT_AFFINE_GENERAL_GRAMMAR_REQUIRED']}
+    right=slope>0
+    source_domain=plan.get('sourceDomain')
+    if source_domain=={'kind':'NATURAL_SQRT_AFFINE'}:
+        mode='NATURAL_SQRT_AFFINE';source_range=None
+        endpoints=[{'x':_sqrt_exact_text(root_x),'y':float(offset),'state':'CLOSED','source':'NATURAL_RADICAND_BOUNDARY'}]
+    elif isinstance(source_domain,dict) and set(source_domain)=={'kind','range'} and source_domain.get('kind')=='CLOSED_INTERVAL':
+        raw=source_domain.get('range')
+        if not isinstance(raw,list) or len(raw)!=2:return {'status':'UNSUPPORTED','errors':['INVALID_SQRT_SOURCE_INTERVAL']}
+        try:exact_range=[S.Rational(value) for value in raw]
+        except (TypeError,ValueError):return {'status':'UNSUPPORTED','errors':['INVALID_SQRT_SOURCE_INTERVAL']}
+        if not exact_range[0]<exact_range[1]:return {'status':'UNSUPPORTED','errors':['INVALID_SQRT_SOURCE_INTERVAL']}
+        if right and exact_range[0]<root_x:return {'status':'UNSUPPORTED','errors':['SQRT_SOURCE_INTERVAL_BELOW_NATURAL_BOUNDARY']}
+        if not right and exact_range[1]>root_x:return {'status':'UNSUPPORTED','errors':['SQRT_SOURCE_INTERVAL_BEYOND_NATURAL_BOUNDARY']}
+        mode='CLOSED_INTERVAL';source_range=[float(value) for value in exact_range]
+        endpoints=[]
+        for value,source_name in ((exact_range[0],'SOURCE_INTERVAL_START'),(exact_range[1],'SOURCE_INTERVAL_END')):
+            y_value=offset+scale*S.sqrt(constant+slope*value)
+            endpoints.append({'x':str(value),'y':float(y_value),'state':'CLOSED','source':source_name})
+    else:return {'status':'UNSUPPORTED','errors':['SQRT_SOURCE_DOMAIN_UNSUPPORTED']}
+    branch_direction='RIGHT' if right else 'LEFT';tail_direction='UP' if scale>0 else 'DOWN';range_direction='ABOVE' if scale>0 else 'BELOW'
+    policy={'schemaVersion':'SQRT_AFFINE_GENERAL_FEATURE_POLICY_v1','sourceDomainMode':mode,'boundaryPolicy':'NATURAL_NONNEGATIVE_RADICAND','endpointState':'CLOSED','branchDirection':branch_direction,'tailDirection':tail_direction,'rangeDirection':range_direction,'endpointMarkerRadiusIntrinsicPx':4,'minimumEndpointMarkerDiameterCssPx':3,'minimumEndpointToTailSpanCssPx':48}
+    wanted={'schemaVersion':'SQRT_AFFINE_GENERAL_FEATURES_v1','endpoint':{'x':_sqrt_exact_text(root_x),'y':_sqrt_exact_text(offset)},'radicandBoundaryX':_sqrt_exact_text(root_x),'branchDirection':branch_direction,'tailDirection':tail_direction,'rangeDirection':range_direction,'sourceEndpoints':endpoints}
+    if plan.get('overviewPolicy')!=SQRT_AFFINE_GENERAL_POLICY:return {'status':'UNSUPPORTED','errors':['SQRT_AFFINE_GENERAL_OVERVIEW_POLICY_REQUIRED']}
+    if plan.get('sqrtFeaturePolicy')!=policy:errors.append('SQRT_GENERAL_FEATURE_POLICY_MISMATCH')
+    actual=plan.get('sqrtFeatures')
+    if not isinstance(actual,dict) or set(actual)!=set(wanted) or any(actual.get(key)!=wanted[key] for key in ('schemaVersion','endpoint','radicandBoundaryX','branchDirection','tailDirection','rangeDirection')) or not isinstance(actual.get('sourceEndpoints'),list) or len(actual['sourceEndpoints'])!=len(endpoints):errors.append('SQRT_GENERAL_ENDPOINT_INVENTORY_MISMATCH')
+    else:
+        for got,expected in zip(actual['sourceEndpoints'],endpoints):
+            if not isinstance(got,dict) or set(got)!=set(expected) or any(got.get(key)!=expected[key] for key in ('x','state','source')) or not isinstance(got.get('y'),(int,float)) or not math.isfinite(got['y']) or abs(got['y']-expected['y'])>1e-8:errors.append('SQRT_GENERAL_ENDPOINT_INVENTORY_MISMATCH');break
+    lo,hi=plan['domain'];xmin,xmax,ymin,ymax=plan['viewport'];sx=transform['sx']*transform['displayScale'];sy=transform['sy']*transform['displayScale'];x_tol=.35/max(1e-12,sx);y_tol=.35/max(1e-12,sy)
+    start=source_range[0] if mode=='CLOSED_INTERVAL' else (float(root_x) if right else lo)
+    end=source_range[1] if mode=='CLOSED_INTERVAL' else (hi if right else float(root_x))
+    if mode=='CLOSED_INTERVAL':
+        if lo!=source_range[0] or hi!=source_range[1]:errors.append('SQRT_SOURCE_INTERVAL_EXPANDED_OR_SHRUNK')
+    elif right:
+        if abs(lo-float(root_x))>1e-10:errors.append('SQRT_GENERAL_DOMAIN_START_MISMATCH')
+    else:
+        if abs(hi-float(root_x))>1e-10:errors.append('SQRT_GENERAL_DOMAIN_START_MISMATCH')
+    if not (xmin-1e-6<=start<=xmax+1e-6 and xmin-1e-6<=end<=xmax+1e-6):errors.append('SQRT_ENDPOINT_OR_AXES_OUTSIDE_OVERVIEW')
+    if any(not ymin-1e-6<=endpoint['y']<=ymax+1e-6 for endpoint in endpoints):errors.append('SQRT_ENDPOINT_OR_AXES_OUTSIDE_OVERVIEW')
+    endpoint_to_tail_span_css=(end-start)*sx
+    if endpoint_to_tail_span_css<policy['minimumEndpointToTailSpanCssPx']:unsupported.append('SQRT_ENDPOINT_TO_TAIL_SPAN_BELOW_PROFILE_FLOOR')
+    if lo<start-1e-10 or hi>end+1e-10:errors.append('SQRT_SAMPLED_OUTSIDE_SOURCE_DOMAIN')
+    if not points:return {'status':'FAIL','errors':['SQRT_FINAL_CURVE_MISSING']}
+    ordered=sorted(points,key=lambda point:point[0])
+    if right and ordered[0][0]<float(root_x)-x_tol:errors.append('SQRT_CURVE_BEFORE_SOURCE_DOMAIN')
+    if not right and ordered[-1][0]>float(root_x)+x_tol:errors.append('SQRT_CURVE_BEFORE_SOURCE_DOMAIN')
+    if mode=='CLOSED_INTERVAL':
+        if abs(ordered[0][0]-start)*sx>.5 or abs(ordered[0][1]-endpoints[0]['y'])*sy>.35:errors.append('SQRT_SOURCE_START_ENDPOINT_NOT_OBSERVED')
+        if abs(ordered[-1][0]-end)*sx>.5 or abs(ordered[-1][1]-endpoints[-1]['y'])*sy>.35:errors.append('SQRT_SOURCE_END_ENDPOINT_NOT_OBSERVED')
+    elif right:
+        if abs(ordered[0][0]-start)*sx>.5 or abs(ordered[0][1]-endpoints[0]['y'])*sy>.35:errors.append('SQRT_SOURCE_START_ENDPOINT_NOT_OBSERVED')
+        if abs(ordered[-1][0]-end)*sx>.5:errors.append('SQRT_SOURCE_END_ENDPOINT_NOT_OBSERVED')
+    else:
+        if abs(ordered[0][0]-start)*sx>.5:errors.append('SQRT_SOURCE_START_ENDPOINT_NOT_OBSERVED')
+        if abs(ordered[-1][0]-end)*sx>.5 or abs(ordered[-1][1]-endpoints[0]['y'])*sy>.35:errors.append('SQRT_SOURCE_END_ENDPOINT_NOT_OBSERVED')
+    increasing=scale*slope>0
+    trend_errors=[(right_point[1]-left_point[1])*(1 if increasing else -1) for left_point,right_point in zip(ordered,ordered[1:])]
+    if any(value<-y_tol for value in trend_errors):errors.append('SQRT_ONE_SIDED_TREND_NOT_INCREASING' if increasing else 'SQRT_ONE_SIDED_TREND_NOT_DECREASING')
+    if increasing and ordered[-1][1]<=ordered[0][1]:errors.append('SQRT_RIGHT_TAIL_NOT_INCREASING')
+    if not increasing and ordered[-1][1]>=ordered[0][1]:errors.append('SQRT_RIGHT_TAIL_NOT_DECREASING')
+    offset_float=float(offset)
+    if any((point[1]-offset_float)*(1 if scale>0 else -1)<-y_tol for point in ordered):errors.append('SQRT_RANGE_SIDE_MISMATCH')
+    for point in plan.get('requiredPoints',[]):
+        px,py=float(point['x']),float(point['y']);radicand=constant+slope*S.Rational(str(px));root_term=(S.Rational(str(py))-offset)/scale
+        if radicand<0 or root_term<0 or abs(S.N(root_term*root_term-radicand,40))>S.Float('1e-20',40):errors.append('SQRT_REQUIRED_POINT_NOT_ON_CURVE:'+point['id']);continue
+        if text_outside(px,start,end,right,mode):errors.append('SQRT_REQUIRED_POINT_OUTSIDE_SOURCE_INTERVAL:'+point['id'])
+        if not any(abs(x-px)<=x_tol and abs(y-py)<=y_tol for x,y in points):errors.append('SQRT_REQUIRED_POINT_NOT_OBSERVED:'+point['id'])
+    markers=[]
+    for node in svg_root.iter():
+        if node.tag.split('}')[-1]=='circle' and node.get('data-role')=='domain-endpoint':
+            try:markers.append({'point':((float(node.get('cx'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('cy')))/transform['sy']),'radius':float(node.get('r')),'fill':node.get('fill'),'stroke':node.get('stroke'),'strokeWidth':float(node.get('stroke-width'))})
+            except (TypeError,ValueError):errors.append('SQRT_ENDPOINT_MARKER_INVALID')
+    if len(markers)!=len(endpoints):errors.append('SQRT_ENDPOINT_MARKER_COUNT_MISMATCH')
+    else:
+        for marker,endpoint in zip(markers,endpoints):
+            endpoint_x=float(S.Rational(endpoint['x'])) if re.fullmatch(r'-?\d+(?:/\d+)?',endpoint['x']) else float(S.N(S.sympify(endpoint['x'])))
+            if abs(marker['point'][0]-endpoint_x)*sx>.35 or abs(marker['point'][1]-endpoint['y'])*sy>.35:errors.append('SQRT_ENDPOINT_MARKER_POSITION_MISMATCH')
+            if marker['fill'] not in {'#111','black','#000'} or marker['stroke'] in (None,'none','') or marker['strokeWidth']<=0 or marker['radius']<policy['endpointMarkerRadiusIntrinsicPx']-.01:errors.append('SQRT_ENDPOINT_MARKER_MUST_BE_CLOSED_AND_OUTLINED')
+            if 2*marker['radius']*transform['displayScale']<policy['minimumEndpointMarkerDiameterCssPx']:unsupported.append('SQRT_ENDPOINT_MARKER_BELOW_DISPLAY_RESOLUTION')
+    return {'status':'UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS','errors':sorted(set(errors+unsupported)),'features':wanted,'plotCssSize':[(xmax-xmin)*sx,(ymax-ymin)*sy],'endpointToTailSpanCss':endpoint_to_tail_span_css,'minimumEndpointToTailSpanCss':policy['minimumEndpointToTailSpanCssPx'],'topology':{'boundary':topology.get('boundary'),'visibleIntervals':topology.get('visibleIntervals')},'observedEndpointMarkers':len(markers),'branchDirection':branch_direction,'tailDirection':tail_direction,'rangeDirection':range_direction,'mathMethod':'EXACT_GENERAL_SQRT_ENDPOINT_BRANCH_AND_RANGE_SIDE'}
+
+def text_outside(value,start,end,right,mode):
+    if mode=='CLOSED_INTERVAL':return not start-1e-9<=value<=end+1e-9
+    return value<start-1e-9 if right else value>end+1e-9
+
 def _piecewise_rational(value,code):
     if not isinstance(value,str) or len(value)>64 or not re.fullmatch(r'(?:0|-?[1-9]\d*)(?:/[1-9]\d*)?',value):raise ValueError(code)
     try:parsed=Fraction(value)
@@ -650,13 +801,19 @@ def piecewise_affine_overview_audit(plan,svg,transform):
     except (ValueError,KeyError,TypeError,ZeroDivisionError,ET.ParseError) as error:
         return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'PIECEWISE_SOURCE_OR_SVG_SCHEMA_INVALID']}
 
-def _observed_svg_points(root,transform):
-    sx,sy,display=transform['sx'],transform['sy'],transform['displayScale']
+def _observed_svg_points(root,transform,multiple=False):
+    sx,sy=transform['sx'],transform['sy']
     paths=[node for node in root.iter() if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve']
-    if len(paths)!=1:return [],['GRAPH_CURVE_PRIMITIVE_INVENTORY_MISMATCH']
-    values=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',paths[0].get('points',''))]
-    if len(values)<4 or len(values)%2 or not all(math.isfinite(value) for value in values):return [],['GRAPH_CURVE_POINTS_INVALID']
-    return [((values[i]-transform['originX'])/sx,(transform['originY']-values[i+1])/sy) for i in range(0,len(values),2)],[ ]
+    if multiple:
+        if not paths:return [],['GRAPH_CURVE_PRIMITIVE_INVENTORY_MISMATCH']
+        paths=sorted(paths,key=lambda node:int(re.search(r'-(\d+)$',node.get('id','-0')).group(1)) if re.search(r'-(\d+)$',node.get('id','')) else 0)
+    elif len(paths)!=1:return [],['GRAPH_CURVE_PRIMITIVE_INVENTORY_MISMATCH']
+    points=[]
+    for path in paths:
+        values=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',path.get('points',''))]
+        if len(values)<4 or len(values)%2 or not all(math.isfinite(value) for value in values):return [],['GRAPH_CURVE_POINTS_INVALID']
+        points.extend(((values[i]-transform['originX'])/sx,(transform['originY']-values[i+1])/sy) for i in range(0,len(values),2))
+    return points,[ ]
 
 def _audit_feature_line(root,role,axis,coordinate,transform):
     nodes=[node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('data-role')==role]
@@ -1242,6 +1399,171 @@ def _pp_ref_crossings(pieces,intervals,source,row):
                 if not any(abs(at-seen)<S.Float('1e-40',60) for seen in found):found.append(at)
     return sorted(found)
 
+
+GRAPH_REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
+GRAPH_REGION_BOUNDARY_TOLERANCE=0.75   # svg px: a fill boundary against the boundary curve at sample x
+GRAPH_REGION_OUTSIDE=0.02              # relative band height: how far outside counts as outside the fill
+
+def _region_rows(plan,pieces,intervals,refs,name,from_x,to_x,region_id):
+    """One band side recomputed from the plan's exact fields (no producer rows are trusted): 'f', 'axis', a reference curve id or a line id."""
+    def polynomial_rows(rows):
+        out=[]
+        for poly,(a,b) in rows:
+            start=from_x if a is None else max(from_x,a);end=to_x if b is None else min(to_x,b)
+            if start<end:out.append(([poly.nth(index) if hasattr(poly,'nth') else poly[index] for index in range(3)],(start,end)))
+        out.sort(key=lambda row:float(row[1][0]))
+        return out
+    if from_x>=to_x:raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+region_id)
+    if name=='axis':rows=[([S.Integer(0),S.Integer(0),S.Integer(0)],(from_x,to_x))]
+    elif name=='f':rows=polynomial_rows(list(zip(pieces,intervals)))
+    else:
+        match=[ref for ref in refs if ref['id']==name];rows=[]
+        if match:
+            ref=match[0];rows=polynomial_rows(list(zip(ref['pieces'],ref['intervals'])))
+        else:
+            line=next((entry for entry in plan.get('referenceLines',[]) if entry.get('id')==name),None)
+            if line is None:raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+region_id+':'+str(name))
+            if 'slope' in line:m=_pp_coeff(line['slope']);level=_pp_coeff(line['intercept'])
+            else:m=S.Integer(0);level=_pp_coeff(line['y'])
+            rows=[([level,m,S.Integer(0)],(from_x,to_x))]
+    if not rows or abs(float(rows[0][1][0])-float(from_x))>1e-9 or abs(float(rows[-1][1][1])-float(to_x))>1e-9:
+        raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+str(name))
+    for (_,first),(_,(next_start,_)) in zip(rows,rows[1:]):
+        if abs(float(first[1])-float(next_start))>1e-9:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+str(name))
+    return rows
+
+def _region_value(rows,x_value):
+    for coefficients,(a,b) in rows:
+        if float(a)<=x_value<=float(b):
+            return float(coefficients[0])+float(coefficients[1])*x_value+float(coefficients[2])*x_value*x_value
+    raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED')
+
+def _region_polygon(node):
+    d=node.get('d') or ''
+    if not d.strip().startswith('M') or not d.strip().endswith('Z'):raise ValueError('GRAPH_REGION_PATH_INVALID')
+    if re.search(r'[AaCcQqSsTt]',d):raise ValueError('GRAPH_REGION_PATH_INVALID')
+    values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',d)]
+    if len(values)<6 or len(values)%2:raise ValueError('GRAPH_REGION_PATH_INVALID')
+    return [(values[i],values[i+1]) for i in range(0,len(values),2)]
+
+def _region_inside(polygon,point):
+    x,y=point;hit=False
+    for (ax,ay),(bx,by) in zip(polygon,polygon[1:]+polygon[:1]):
+        if (ay>y)!=(by>y) and x<(bx-ax)*(y-ay)/(by-ay)+ax:hit=not hit
+    return hit
+
+def _region_crossings(polygon,x):
+    ys=[]
+    for (ax,ay),(bx,by) in zip(polygon,polygon[1:]+polygon[:1]):
+        if (ax>x)!=(bx>x):ys.append(ay+(by-ay)*(x-ax)/(bx-ax))
+    return sorted(ys)
+
+def _region_label_box(elements,label_id):
+    node=elements.get(label_id)
+    if node is None:return None
+    kind=node.tag.split('}')[-1]
+    if kind=='text':
+        try:return (float(node.get('x')),float(node.get('y')),0.0,0.0)
+        except (TypeError,ValueError):return None
+    if kind=='g' and node.get('transform'):
+        match=re.fullmatch(r'translate\(([-\d.eE+]+)[ ,]([-\d.eE+]+)\)',node.get('transform'))
+        inner=next((child for child in node if child.tag.split('}')[-1]=='svg'),None)
+        if match and inner is not None:
+            try:return (float(match.group(1)),float(match.group(2)),float(inner.get('width')),float(inner.get('height')))
+            except (TypeError,ValueError):return None
+    return None
+
+def graph_region_audit(plan,svg,transform,pieces,intervals,refs,features,root):
+    """Independent graph-region check on the FINAL SVG: the expected band is rebuilt from the plan's exact fields; the drawn fill path must
+    follow both boundaries, stay inside [from,to], be painted beneath every stroke, carry the declared fill and hold its label inside."""
+    errors=[];observations=[]
+    declared=plan.get('regions') or []
+    frozen=features.get('regions') or []
+    if not isinstance(declared,list) or not isinstance(frozen,list):raise ValueError('GRAPH_REGION_INVENTORY_REQUIRED')
+    frozen_by={row.get('id'):row for row in frozen if isinstance(row,dict)}
+    if sorted(frozen_by)!=sorted(row.get('id') for row in declared if isinstance(row,dict)):errors.append('GRAPH_REGION_INVENTORY_MISMATCH')
+    elements={node.get('id'):node for node in root.iter() if node.get('id')}
+    order={id(node):index for index,node in enumerate(root.iter())}
+    paths={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='path' and node.get('data-mark')=='graph-region'}
+    declared_ids=set();polygons=[]
+    for entry in declared:
+        if not isinstance(entry,dict):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
+        region_id=entry.get('id')
+        if not isinstance(region_id,str):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
+        declared_ids.add(region_id)
+        frozen_row=frozen_by.get(region_id)
+        try:
+            from_x=_pp_exact(str(entry.get('from')).replace(' ',''));to_x=_pp_exact(str(entry.get('to')).replace(' ',''))
+            if from_x>=to_x:raise ValueError
+            upper=_region_rows(plan,pieces,intervals,refs,entry.get('upper'),from_x,to_x,region_id)
+            lower=_region_rows(plan,pieces,intervals,refs,entry.get('lower'),from_x,to_x,region_id)
+        except (ValueError,KeyError,TypeError):
+            errors.append('GRAPH_REGION_INVENTORY_MISMATCH:'+str(region_id));continue
+        fill=entry.get('fill','LIGHT')
+        if fill not in GRAPH_REGION_FILLS:errors.append('GRAPH_REGION_FILL_UNSUPPORTED:'+region_id)
+        if frozen_row is not None:
+            try:
+                frozen_same=(abs(float(_pp_exact(str(frozen_row.get('from')).replace(' ','')))-float(from_x))<=1e-9*max(1,abs(float(from_x)))
+                    and abs(float(_pp_exact(str(frozen_row.get('to')).replace(' ','')))-float(to_x))<=1e-9*max(1,abs(float(to_x)))
+                    and frozen_row.get('upper')==entry.get('upper') and frozen_row.get('lower')==entry.get('lower')
+                    and frozen_row.get('fill')==fill and frozen_row.get('label')==entry.get('label'))
+            except (ValueError,TypeError):frozen_same=False
+            if not frozen_same:errors.append('GRAPH_REGION_INVENTORY_MISMATCH:'+region_id)
+        node=paths.get('region-'+region_id)
+        if node is None:errors.append('GRAPH_REGION_MISSING:'+region_id);continue
+        if node.get('fill')!=GRAPH_REGION_FILLS.get(fill):errors.append('GRAPH_REGION_FILL_MISMATCH:'+region_id)
+        if node.get('fill-rule')!='evenodd':errors.append('GRAPH_REGION_FILL_RULE_MISMATCH:'+region_id)
+        if node.get('stroke') not in {None,'none'}:errors.append('GRAPH_REGION_STROKE_PRESENT:'+region_id)
+        try:polygon=[((px-transform['originX'])/transform['sx'],(transform['originY']-py)/transform['sy']) for px,py in _region_polygon(node)]
+        except ValueError as error:errors.append(str(error)+':'+region_id);continue
+        if not polygon:errors.append('GRAPH_REGION_PATH_INVALID:'+region_id);continue
+        polygons.append((region_id,polygon))
+        xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale']
+        xtol=GRAPH_REGION_BOUNDARY_TOLERANCE/max(1e-12,xscale);ytol=GRAPH_REGION_BOUNDARY_TOLERANCE/max(1e-12,yscale)
+        if abs(min(x for x,_ in polygon)-float(from_x))>xtol or abs(max(x for x,_ in polygon)-float(to_x))>xtol:errors.append('GRAPH_REGION_OUTSIDE_INTERVAL:'+region_id)
+        if any(x<float(from_x)-xtol or x>float(to_x)+xtol for x,_ in polygon):errors.append('GRAPH_REGION_OUTSIDE_INTERVAL:'+region_id)
+        checks=0
+        for index in range(1,10):
+            x=float(from_x)+(float(to_x)-float(from_x))*index/10
+            try:yu=_region_value(upper,x);yl=_region_value(lower,x)
+            except ValueError:errors.append('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id);break
+            if yu<=yl:errors.append('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id);break
+            crossings=_region_crossings(polygon,x)
+            if len(crossings)!=2:
+                nudged=_region_crossings(polygon,x+1e-7*max(1,abs(x)))
+                if len(nudged)!=2:errors.append('GRAPH_REGION_BOUNDARY_MISMATCH:'+region_id);continue
+                crossings=nudged
+            if abs(crossings[-1]-yu)>ytol or abs(crossings[0]-yl)>ytol:errors.append('GRAPH_REGION_BOUNDARY_MISMATCH:'+region_id)
+            band=max(abs(yu-yl),1e-9)
+            if not _region_inside(polygon,(x,(yu+yl)/2)):errors.append('GRAPH_REGION_INTERIOR_MISSING:'+region_id)
+            if _region_inside(polygon,(x,yu+max(4*ytol,GRAPH_REGION_OUTSIDE*band))):errors.append('GRAPH_REGION_OUTSIDE_BOUNDARY:'+region_id)
+            if _region_inside(polygon,(x,yl-max(4*ytol,GRAPH_REGION_OUTSIDE*band))):errors.append('GRAPH_REGION_OUTSIDE_BOUNDARY:'+region_id)
+            checks+=1
+        mine=order[id(node)]
+        if any(order[id(other)]<mine and (other.tag.split('}')[-1] in {'line','circle','polyline','polygon'} or (other.tag.split('}')[-1]=='path' and other.get('data-mark')!='graph-region')) for other in root.iter()):
+            errors.append('GRAPH_REGION_NOT_BENEATH_STROKES:'+region_id)
+        if entry.get('label') is not None:
+            box=_region_label_box(elements,'region-'+region_id+'-label')
+            if box is None:errors.append('GRAPH_REGION_LABEL_MISSING:'+region_id)
+            else:
+                x,y,w,h=box
+                to_model=lambda px,py:((px-transform['originX'])/transform['sx'],(transform['originY']-py)/transform['sy'])
+                corners=[to_model(x,y),to_model(x+w,y),to_model(x,y+h),to_model(x+w,y+h)]
+                if not _region_inside(polygon,to_model(x+w/2,y+h/2)) or any(not _region_inside(polygon,corner) for corner in corners):errors.append('GRAPH_REGION_LABEL_OUTSIDE:'+region_id)
+        observations.append({'id':region_id,'type':'GRAPH_REGION','fill':fill,'from':float(from_x),'to':float(to_x),'samples':checks,'areaPx2':abs(0.5*sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(polygon,polygon[1:]+polygon[:1])))})
+    for path_id in paths:
+        if path_id not in {'region-'+region_id for region_id in declared_ids}:errors.append('GRAPH_REGION_UNDECLARED:'+str(path_id))
+    for index,(left_id,left) in enumerate(polygons):
+        for right_id,right in polygons[index+1:]:
+            xs=sorted({point[0] for point in left});ys=sorted({point[1] for point in left})
+            found=False
+            for i in range(1,10):
+                for j in range(1,10):
+                    point=(xs[0]+(xs[-1]-xs[0])*i/10,ys[0]+(ys[-1]-ys[0])*j/10)
+                    if _region_inside(left,point) and _region_inside(right,point):errors.append('GRAPH_REGION_OVERLAP:'+left_id+':'+right_id);found=True;break
+                if found:break
+    return sorted(set(errors)),observations
+
 def piecewise_polynomial_audit(plan,svg,transform):
     """Independent: the pieces, continuity, breakpoint claims, vertices, every crossing with each horizontal line and the display formula are
     recomputed from the source fields; then the drawn pieces, key points, lines, crossing dots and interval end dots are read from the SVG."""
@@ -1507,13 +1829,16 @@ def piecewise_polynomial_audit(plan,svg,transform):
                 value=_pp_ref_boundary_value(ref,at)
                 node=circles.get('ref-endpoint-'+ref['id']+'-'+side)
                 if node is None or node.get('data-role')!='reference-endpoint' or not dot_at('ref-endpoint-'+ref['id']+'-'+side,float(at),float(value),'reference-endpoint') or node.get('fill') not in INTERVAL_STATE_FILLS[state]:errors.append('PIECEWISE_POLY_REFERENCE_ENDPOINT_MARKER_MISMATCH:'+ref['id']+'-'+side)
+        # Shaded regions: rebuild each band from the plan's exact fields and read the final fill path back.
+        region_errors,region_observations=graph_region_audit(plan,svg,transform,pieces,intervals,refs,features,root)
+        errors.extend(region_errors)
         # Marks closer than one CSS pixel cannot be told apart at this size.
         marks=[]
         for mark in sorted(set([(float(fx),float(fy)) for fx,fy,_ in corners_exact+extrema_exact]+[(v,h) for _,_,xs,_,_,heights in expected_rows for v,h in zip(xs,heights)]+[(v,h) for _,_,xs,_,heights in curve_rows for v,h in zip(xs,heights)]+[(float(a),float(b)) for a,b,_ in ref_vertices])):
             if not any(abs(mark[0]-m[0])<=1e-9*max(1,abs(m[0])) and abs(mark[1]-m[1])<=1e-9*max(1,abs(m[1])) for m in marks):marks.append(mark)
         if any(math.hypot((a[0]-b[0])*sx*display,(a[1]-b[1])*sy*display)<1 for i,a in enumerate(marks) for b in marks[i+1:]):unsupported.append('PIECEWISE_POLY_FEATURES_BELOW_DISPLAY_RESOLUTION')
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
-        return {'status':status,'errors':sorted(set(errors+unsupported)),'corners':corners,'extrema':extrema,'intersections':[{'lineId':i,**({'slope':m,'intercept':l} if m else {'y':l}),'x':xs,'keyPoints':keys} for i,l,xs,keys,m,_ in expected_rows],'coverage':coverage,'topology':{'pieces':len(pieces),'continuity':'CONTINUOUS' if not any(e.startswith('PIECEWISE_POLY_DISCONTINUOUS') for e in errors) else 'BROKEN'},'policy':'PIECEWISE_POLYNOMIAL_OVERVIEW_v1','mathMethod':'EXACT_RATIONAL_PIECES_AND_SYMPY_SURD_CROSSINGS'}
+        return {'status':status,'errors':sorted(set(errors+unsupported)),'corners':corners,'extrema':extrema,'intersections':[{'lineId':i,**({'slope':m,'intercept':l} if m else {'y':l}),'x':xs,'keyPoints':keys} for i,l,xs,keys,m,_ in expected_rows],'coverage':coverage,'topology':{'pieces':len(pieces),'continuity':'CONTINUOUS' if not any(e.startswith('PIECEWISE_POLY_DISCONTINUOUS') for e in errors) else 'BROKEN'},'regions':region_observations,'policy':'PIECEWISE_POLYNOMIAL_OVERVIEW_v1','mathMethod':'EXACT_RATIONAL_PIECES_AND_SYMPY_SURD_CROSSINGS'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,ET.ParseError) as error:
         return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'PIECEWISE_POLY_SOURCE_OR_SVG_SCHEMA_INVALID']}
 
@@ -1634,7 +1959,613 @@ def trigonometric_interval_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':head,'lines':detail,'curvePoints':len(points),'mathMethod':'SYMPY_EXACT_EXPRESSION_AND_MPMATH_40_DIGIT_ROOT_SCAN_OF_THE_GAP_AND_ITS_DERIVATIVE'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
-def audit(plan,svg,transform):
+# ---------------------------------------------------------------------------
+# Graph overlays (G1), observed independently: the observer re-derives every overlay coordinate from the RAW graphPlan.overlays field
+# with its own exact reader and its own curve evaluator, then compares the FINAL SVG (and the model SVG) element by element.
+OVERLAY_ERROR_PREFIX='OVERLAY_'
+
+def _ov_reader(value,code='OVERLAY_VALUE_INVALID'):
+    try:return _pp_coeff(value)
+    except ValueError:raise ValueError(code) from None
+
+def _ov_base(value):
+    if value in (None,'e'):return S.E
+    if not isinstance(value,str):raise ValueError('OVERLAY_BASE_INVALID')
+    match=re.fullmatch(r'sqrt\((\d+)\)',value)
+    if match:
+        base=S.sqrt(S.Integer(int(match.group(1))))
+    else:
+        try:base=S.Rational(value)
+        except (ValueError,ZeroDivisionError):raise ValueError('OVERLAY_BASE_INVALID') from None
+    if base<=0 or base==1:raise ValueError('OVERLAY_BASE_INVALID')
+    return base
+
+def _ov_curve_value(plan,value,curve_id=None):
+    """The observer's own exact y at x: it never reads overlaysFeatures or any producer number."""
+    family=plan.get('family')
+    if family=='polynomial':
+        return sum((_ov_reader(c)*value**i for i,c in enumerate(plan['coefficients'])),S.Integer(0))
+    if family=='rational':
+        numerator=sum((_ov_reader(c)*value**i for i,c in enumerate(plan['numerator'])),S.Integer(0))
+        denominator=sum((_ov_reader(c)*value**i for i,c in enumerate(plan['denominator'])),S.Integer(0))
+        if denominator==0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+        return numerator/denominator
+    if family=='sqrt-affine':
+        radicand=sum((_ov_reader(c)*value**i for i,c in enumerate(plan['radicand'])),S.Integer(0))
+        if radicand<0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+        return S.sqrt(radicand)
+    if family=='absolute-value':
+        b,a,scale,offset=(_ov_reader(item) for item in plan['coefficients'])
+        return scale*S.Abs(a*value+b)+offset
+    if family=='piecewise-affine':
+        source=plan.get('sourceDomain') or {};interval=source.get('range')
+        if interval:
+            lo,hi=(_ov_reader(item) for item in interval)
+            if not lo<=value<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
+        piece=plan['piecewise'];break_x=_ov_reader(piece['breakX']);owner=piece.get('owner','RIGHT')
+        coefficients=piece['left'] if value<break_x or (value==break_x and owner=='LEFT') else piece['right']
+        return _ov_reader(coefficients[0])*value+_ov_reader(coefficients[1])
+    if family=='exponential-affine':
+        a,k,c=(_ov_reader(item) for item in plan['coefficients']);base=_ov_base(plan.get('base'));shift=_ov_reader(plan.get('shiftX','0'))
+        return a*base**(k*(value-shift))+c
+    if family=='logarithmic-affine':
+        a,k,b,c=(_ov_reader(item) for item in plan['coefficients']);base=_ov_base(plan.get('base'));argument=k*value+b
+        if argument<=0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+        return a*S.log(argument)/S.log(base)+c
+    if family=='trigonometric':
+        a,k,c=(_ov_reader(item) for item in plan['coefficients']);phase=_ov_reader(plan.get('phasePi','0'))
+        function={'SIN':S.sin,'COS':S.cos,'TAN':S.tan}.get(plan.get('function'))
+        if function is None:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+        return a*function(k*value+phase*S.pi)+c
+    if family=='piecewise-polynomial':
+        pieces=plan.get('pieces') or [];breaks=plan.get('breakpoints') or []
+        values=[_pp_coeff_coefficients(piece.get('coefficients')) for piece in pieces]
+        points=[_ov_reader(breakpoint.get('x')) for breakpoint in breaks]
+        source=plan.get('sourceDomain') or {}
+        if source.get('kind')=='INTERVAL':
+            lo,hi=(_ov_reader(item) for item in source.get('range',[]))
+            if not lo<=value<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
+        for index,coefficients in enumerate(values):
+            left=None if index==0 else points[index-1];right=None if index==len(values)-1 else points[index]
+            if (left is None or left<=value) and (right is None or value<=right):
+                return sum((coefficient*value**i for i,coefficient in enumerate(coefficients)),S.Integer(0))
+        raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+    if family=='exp-log-pair':
+        rows=plan.get('curves') or []
+        row=next((item for item in rows if item.get('id')==curve_id),None)
+        if row is None:raise ValueError('OVERLAY_CURVE_UNKNOWN')
+        if row.get('family')=='exponential-affine':
+            a,k,c=(_ov_reader(item) for item in row['coefficients']);base=_ov_base(row.get('base'));shift=_ov_reader(row.get('shiftX','0'))
+            return a*base**(k*(value-shift))+c
+        if row.get('family')=='logarithmic-affine':
+            a,k,b,c=(_ov_reader(item) for item in row['coefficients']);base=_ov_base(row.get('base'));argument=k*value+b
+            if argument<=0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+            return a*S.log(argument)/S.log(base)+c
+        raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+    raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+
+def _pp_coeff_coefficients(values):
+    if not isinstance(values,list) or len(values)>4:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+    return [_ov_reader(item) for item in values]
+
+def _ov_line(entry):
+    if not isinstance(entry,dict):raise ValueError('OVERLAY_LINE_INVALID')
+    if 'x' in entry:
+        if 'slope' in entry or 'intercept' in entry:raise ValueError('OVERLAY_LINE_INVALID')
+        return {'id':entry.get('id'),'kind':'VERTICAL','x':_ov_reader(entry.get('x'))}
+    if 'slope' not in entry or 'intercept' not in entry:raise ValueError('OVERLAY_LINE_INVALID')
+    return {'id':entry.get('id'),'kind':'LINE','slope':_ov_reader(entry.get('slope')),'intercept':_ov_reader(entry.get('intercept'))}
+
+def _ov_expected(plan):
+    """Every overlay element recomputed from the raw plan: points; lines; segments, guides and polygons."""
+    raw=plan.get('overlays')
+    if raw is None:return None
+    if not isinstance(raw,dict):raise ValueError('OVERLAY_PLAN_INVALID')
+    lines=[_ov_line(entry) for entry in raw.get('lines',[])]
+    by_line={line['id']:line for line in lines}
+    points={}
+    for entry in raw.get('points',[]):
+        if not isinstance(entry,dict):raise ValueError('OVERLAY_POINT_INVALID')
+        ident=entry.get('id')
+        if not isinstance(ident,str) or ident in points:raise ValueError('OVERLAY_POINT_INVALID')
+        if 'curveX' in entry:
+            x=_ov_reader(entry.get('curveX'));lo,hi=plan.get('domain',[None,None])
+            if lo is not None and not lo<=float(S.N(x,30))<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
+            y=_ov_curve_value(plan,x,entry.get('curve'))
+        elif 'intersect' in entry:
+            pair=entry.get('intersect')
+            if not isinstance(pair,list) or len(pair)!=2:raise ValueError('OVERLAY_POINT_INVALID')
+            first=by_line.get(pair[0]);second=by_line.get(pair[1])
+            if first is None or second is None:raise ValueError('OVERLAY_POINT_UNKNOWN')
+            if first['kind']=='VERTICAL' and second['kind']=='VERTICAL':raise ValueError('OVERLAY_LINE_PARALLEL')
+            if first['kind']=='VERTICAL':x=first['x'];y=second['slope']*x+second['intercept']
+            elif second['kind']=='VERTICAL':x=second['x'];y=first['slope']*x+first['intercept']
+            else:
+                if first['slope']==second['slope']:raise ValueError('OVERLAY_LINE_PARALLEL')
+                x=(second['intercept']-first['intercept'])/(first['slope']-second['slope']);y=first['slope']*x+first['intercept']
+        elif 'axis' in entry:
+            value=_ov_reader(entry.get('value'))
+            if entry.get('axis')=='x':x,y=value,S.Integer(0)
+            elif entry.get('axis')=='y':x,y=S.Integer(0),value
+            else:raise ValueError('OVERLAY_POINT_INVALID')
+        elif 'x' in entry and 'y' in entry:
+            x,y=_ov_reader(entry['x']),_ov_reader(entry['y'])
+        else:raise ValueError('OVERLAY_POINT_INVALID')
+        points[ident]=(x,y)
+    def point_ref(value):
+        if value not in points:raise ValueError('OVERLAY_POINT_UNKNOWN')
+        return points[value]
+    segments=[]
+    for entry in raw.get('segments',[]):
+        if not isinstance(entry,dict):raise ValueError('OVERLAY_SEGMENT_INVALID')
+        segments.append({'id':entry.get('id'),'from':point_ref(entry.get('from')),'to':point_ref(entry.get('to')),'dashed':entry.get('dashed',False)})
+    guides=[]
+    for entry in raw.get('guides',[]):
+        if not isinstance(entry,dict):raise ValueError('OVERLAY_GUIDE_INVALID')
+        point=point_ref(entry.get('from'));axis=entry.get('axis','BOTH')
+        if axis not in ('x','y','BOTH'):raise ValueError('OVERLAY_GUIDE_INVALID')
+        guides.append({'id':entry.get('id'),'from':point,'axis':axis,'dashed':entry.get('dashed',True)})
+    polygons=[]
+    for entry in raw.get('polygons',[]):
+        if not isinstance(entry,dict) or not isinstance(entry.get('points'),list) or not 3<=len(entry['points'])<=6:raise ValueError('OVERLAY_POLYGON_INVALID')
+        polygons.append({'id':entry.get('id'),'points':[point_ref(value) for value in entry['points']],'fill':entry.get('fill','LIGHT')})
+    return {'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons}
+
+def _ov_clip(viewport,line):
+    xmin,xmax,ymin,ymax=viewport
+    if line['kind']=='VERTICAL':
+        x=float(line['x']);return [(x,ymin),(x,ymax)]
+    m=float(line['slope']);q=float(line['intercept']);ends=[]
+    for x in (xmin,xmax):
+        y=m*x+q
+        if ymin-1e-6<=y<=ymax+1e-6:ends.append((x,max(ymin,min(ymax,y))))
+    if m!=0:
+        for y in (ymin,ymax):
+            x=(y-q)/m
+            if xmin-1e-6<=x<=xmax+1e-6 and not any(abs(x-a)<1e-6 for a,_ in ends):ends.append((max(xmin,min(xmax,x)),y))
+    return ends[:2]
+
+def overlays_audit(plan,svg,transform):
+    raw=plan.get('overlays')
+    if raw is None:return None
+    errors=[]
+    try:
+        expected=_ov_expected(plan)
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:
+            return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')]
+        to_data=lambda px,py:((px-ox)/sx,(oy-py)/sy)
+        xtol=.35/(sx*transform['displayScale']);ytol=.35/(sy*transform['displayScale'])
+        root=ET.fromstring(svg)
+        lines={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='line'}
+        circles={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle'}
+        polylines={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='polyline'}
+        def read_line(ident):
+            node=lines.get(ident)
+            if node is None:return None
+            try:return [to_data(float(node.get('x1')),float(node.get('y1'))),to_data(float(node.get('x2')),float(node.get('y2')))]
+            except (TypeError,ValueError):return None
+        def read_circle(ident):
+            node=circles.get(ident)
+            if node is None:return None
+            try:return to_data(float(node.get('cx')),float(node.get('cy')))
+            except (TypeError,ValueError):return None
+        def read_polyline(ident):
+            node=polylines.get(ident)
+            if node is None:return None
+            try:
+                values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+                return [to_data(values[i],values[i+1]) for i in range(0,len(values)-1,2)]
+            except (TypeError,ValueError,IndexError):return None
+        def near(a,b,tolerance_x=xtol,tolerance_y=ytol):
+            return abs(a[0]-b[0])<=max(tolerance_x,1e-6*max(1,abs(b[0]))) and abs(a[1]-b[1])<=max(tolerance_y,1e-6*max(1,abs(b[1])))
+        claimed=set()
+        for line in expected['lines']:
+            obj_id='overlay-line-'+str(line['id']);claimed.add(obj_id)
+            got=read_line(obj_id)
+            if got is None:errors.append('OVERLAY_LINE_MISSING:'+str(line['id']));continue
+            want=_ov_clip(plan['viewport'],line)
+            if len(want)!=2:errors.append('OVERLAY_LINE_OUTSIDE_VIEWPORT:'+str(line['id']));continue
+            if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_LINE_MISMATCH:'+str(line['id']))
+        for ident,(x,y) in expected['points'].items():
+            claimed.add(ident);got=read_circle(ident)
+            if got is None:errors.append('OVERLAY_POINT_MISSING:'+ident)
+            elif not near(got,(float(S.N(x,30)),float(S.N(y,30)))):errors.append('OVERLAY_POINT_MISMATCH:'+ident)
+        for segment in expected['segments']:
+            ident='overlay-segment-'+str(segment['id']);claimed.add(ident);got=read_line(ident)
+            if got is None:errors.append('OVERLAY_SEGMENT_MISSING:'+str(segment['id']));continue
+            want=[(float(S.N(segment['from'][0],30)),float(S.N(segment['from'][1],30))),(float(S.N(segment['to'][0],30)),float(S.N(segment['to'][1],30)))]
+            if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_SEGMENT_MISMATCH:'+str(segment['id']))
+        for guide in expected['guides']:
+            point=guide['from'];px,py=float(S.N(point[0],30)),float(S.N(point[1],30))
+            wanted=[]
+            if guide['axis'] in ('x','BOTH'):wanted.append(('overlay-guide-'+str(guide['id'])+'-x',[(px,py),(px,0.0)]))
+            if guide['axis'] in ('y','BOTH'):wanted.append(('overlay-guide-'+str(guide['id'])+'-y',[(px,py),(0.0,py)]))
+            for ident,want in wanted:
+                claimed.add(ident);got=read_line(ident)
+                if got is None:errors.append('OVERLAY_GUIDE_MISSING:'+str(guide['id']));continue
+                if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_GUIDE_MISMATCH:'+str(guide['id']))
+        for polygon in expected['polygons']:
+            ident='overlay-polygon-'+str(polygon['id']);claimed.add(ident)
+            got=read_polyline(ident)
+            want=[(float(S.N(x,30)),float(S.N(y,30))) for x,y in polygon['points']]
+            if got is None:errors.append('OVERLAY_POLYGON_MISSING:'+str(polygon['id']));continue
+            if len(got)!=len(want)+1 or any(not near(a,b) for a,b in zip(got,want)) or not near(got[-1],want[0]):errors.append('OVERLAY_POLYGON_MISMATCH:'+str(polygon['id']))
+            if polygon['fill']!='NONE':
+                claimed.add(ident+'-fill');fill=polylines.get(ident+'-fill',None) or root.find(f'.//*[@id="{ident}-fill"]')
+                if fill is None:errors.append('OVERLAY_FILL_MISSING:'+str(polygon['id']))
+        # Labels: in the composed figure every overlay line has its equation label, owned by that line. (The model SVG has no labels.)
+        if 'data-label-kind' in svg:
+            groups={}
+            for node in root.iter():
+                if node.tag.split('}')[-1]=='g' and node.get('id'):groups[node.get('id')]=node
+            for line in expected['lines']:
+                label_id='overlay-line-'+str(line['id'])+'-equation';claimed.add(label_id)
+                node=groups.get(label_id)
+                if node is None:errors.append('OVERLAY_LABEL_MISSING:'+str(line['id']))
+                elif node.get('data-owner')!='overlay-line-'+str(line['id']):errors.append('OVERLAY_LABEL_OWNER_MISMATCH:'+str(line['id']))
+                elif not any(child.tag.split('}')[-1] in {'path','text'} for child in node.iter()):errors.append('OVERLAY_LABEL_EMPTY:'+str(line['id']))
+        # No undeclared overlay element may sneak into the figure.
+        for node in root.iter():
+            ident=node.get('id') or ''
+            if not ident.startswith('overlay-'):continue
+            if ident.endswith('-fill') or ident.endswith('-equation'):continue
+            if ident not in claimed:errors.append('OVERLAY_UNDECLARED:'+ident)
+        status='FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors)),'points':len(expected['points']),'lines':len(expected['lines']),'segments':len(expected['segments']),'guides':len(expected['guides']),'polygons':len(expected['polygons']),'mathMethod':'INDEPENDENT_EXACT_OVERLAY_RECOMPUTATION_AND_FINAL_SVG_READBACK'}
+    except (ValueError,KeyError,TypeError,IndexError,ZeroDivisionError,ET.ParseError) as error:
+        return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'OVERLAY_SOURCE_SCHEMA_INVALID']}
+
+# ---- general trigonometric parameters (v2): independent recomputation from the source fields ----------------
+TRIG_V2_MAX_PERIODS=12
+
+def _trig_v2_spec(plan):
+    function=plan.get('function')
+    if function not in {'SIN','COS','TAN'}:raise ValueError('UNSUPPORTED_TRIGONOMETRIC_FUNCTION')
+    coefficients=plan.get('coefficients');rate_field=plan.get('ratePi')
+    if rate_field is not None:
+        rate=_piecewise_rational(rate_field,'INVALID_TRIGONOMETRIC_RATE')
+        if not isinstance(coefficients,list) or len(coefficients)!=2:raise ValueError('TRIG_GRAMMAR_UNSUPPORTED')
+        a,c=(_piecewise_rational(value,'TRIGONOMETRIC_COEFFICIENT_INVALID') for value in coefficients)
+        rate_has_pi=True
+    else:
+        if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError('TRIG_GRAMMAR_UNSUPPORTED')
+        a,rate,c=(_piecewise_rational(value,'TRIGONOMETRIC_COEFFICIENT_INVALID') for value in coefficients)
+        rate_has_pi=False
+    phase_pi=plan.get('phasePi');phase_plain=plan.get('phase')
+    if (phase_pi is None)==(phase_plain is None):raise ValueError('INVALID_TRIGONOMETRIC_PHASE')
+    if phase_pi is not None:phase=_piecewise_rational(phase_pi,'INVALID_TRIGONOMETRIC_PHASE');phase_has_pi=True
+    else:phase=_piecewise_rational(phase_plain,'INVALID_TRIGONOMETRIC_PHASE');phase_has_pi=False
+    if a==0 or rate==0:raise ValueError('TRIGONOMETRIC_NONZERO_SCALE_AND_RATE_REQUIRED')
+    return {'function':function,'a':a,'c':c,'rate':rate,'rateHasPi':rate_has_pi,'phase':phase,'phaseHasPi':phase_has_pi}
+
+def _trig_v2_period(spec):
+    return Fraction(2,1)/abs(spec['rate']) if spec['function'] in {'SIN','COS'} else Fraction(1,1)/abs(spec['rate'])
+
+def _trig_v2_interval_source(plan):
+    source=plan.get('sourceDomain')
+    if not isinstance(source,dict) or source.get('kind') not in {'INTERVAL','INTERVAL_PI'}:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    kind=source['kind'];key='range' if kind=='INTERVAL' else 'rangePi'
+    if set(source)-{'kind',key,'states'} or not isinstance(source.get(key),list) or len(source[key])!=2:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    lo,hi=(_piecewise_rational(value,'INVALID_TRIG_INTERVAL') for value in source[key])
+    states=source.get('states',['CLOSED','CLOSED'])
+    if not lo<hi or not isinstance(states,list) or len(states)!=2 or any(state not in INTERVAL_STATE_FILLS for state in states):raise ValueError('INVALID_TRIG_INTERVAL')
+    return kind,lo,hi,list(states)
+
+def _trig_v2_key_rows(spec,lo,hi,states):
+    if spec['function'] not in {'SIN','COS'}:raise ValueError('TRIG_KEY_POINTS_REQUIRE_SIN_COS')
+    if not spec['phaseHasPi']:raise ValueError('TRIG_KEY_POINTS_REQUIRE_RATIONAL_PHASE')
+    function=spec['function'];rate=spec['rate'];phase=spec['phase'];a=spec['a'];c=spec['c']
+    first=math.ceil(float((rate*lo+phase)*2)-1e-12);last=math.floor(float((rate*hi+phase)*2)+1e-12)
+    rows=[]
+    for m in range(first,last+1):
+        x=(Fraction(m,2)-phase)/rate
+        if not lo<x<hi:continue
+        if function=='SIN':factor=Fraction(0) if m%2==0 else (Fraction(1) if m%4==1 else Fraction(-1))
+        else:factor=(Fraction(1) if m%4==0 else Fraction(-1)) if m%2==0 else Fraction(0)
+        y=a*factor+c
+        if factor==0:kind='X_INTERCEPT' if y==0 else 'MIDLINE_CROSSING'
+        else:kind='MAXIMUM' if y>c else 'MINIMUM'
+        rows.append({'id':'key-'+str(m),'kind':kind,'x':str(x),'y':str(y)})
+    return rows
+
+def _trig_v2_pole_rows(spec,lo,hi):
+    if spec['function']!='TAN':return []
+    if not spec['phaseHasPi']:raise ValueError('TRIG_TAN_REQUIRES_PI_PHASE')
+    rate=spec['rate'];phase=spec['phase']
+    first=math.ceil(float(rate*lo+phase-Fraction(1,2))-1e-12);last=math.floor(float(rate*hi+phase-Fraction(1,2))+1e-12)
+    rows=[]
+    for n in range(first,last+1):
+        x=(Fraction(1,2)+n-phase)/rate
+        if x==lo or x==hi:raise ValueError('TRIG_TAN_POLE_AT_INTERVAL_END')
+        if lo<x<hi:rows.append({'id':'pole-'+str(len(rows)+1),'x':str(x),'side':'LEFT' if rate>0 else 'RIGHT'})
+    if not rows:raise ValueError('TRIG_TAN_INTERVAL_NO_POLE')
+    return rows
+
+def _trig_v2_tick_multiples(plan,kind,x0,x1):
+    flag=plan.get('axisTickPi')
+    if flag is None or flag is False:return []
+    if flag is not True:raise ValueError('INVALID_TRIG_TICK_PI_FLAG')
+    if kind!='INTERVAL_PI':raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
+    values=plan.get('axisTickValues')
+    if not isinstance(values,dict) or set(values)!={'x','y'} or not isinstance(values.get('x'),list) or not isinstance(values.get('y'),list):raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+    multiples=[]
+    for value in values['x']:
+        multiple=_piecewise_rational(value,'TRIG_PI_TICK_VALUE_INVALID')
+        if multiple==0:raise ValueError('TRIG_PI_TICK_VALUE_INVALID')
+        if not x0<float(multiple)*math.pi<x1:raise ValueError('TRIG_PI_TICK_OUTSIDE_VIEW')
+        multiples.append(multiple)
+    return multiples
+
+def _trig_pi_tick_text(value):
+    multiple=Fraction(value);sign='−' if multiple<0 else '';multiple=abs(multiple)
+    numerator,denominator=multiple.numerator,multiple.denominator
+    head='π' if numerator==1 else f'{numerator}π'
+    return sign+(head if denominator==1 else head+f'/{denominator}')
+
+def _trig_v2_interval_expected(plan):
+    spec=_trig_v2_spec(plan);function=spec['function'];a=spec['a'];rate=spec['rate'];c=spec['c']
+    kind,lo,hi,states=_trig_v2_interval_source(plan)
+    if kind=='INTERVAL' and not spec['rateHasPi']:raise ValueError('TRIG_INTERVAL_REQUIRES_RATE_PI')
+    if kind=='INTERVAL_PI' and spec['rateHasPi']:raise ValueError('TRIG_RATE_PI_REQUIRES_PLAIN_INTERVAL')
+    if kind=='INTERVAL_PI' and not spec['phaseHasPi']:raise ValueError('TRIG_INTERVAL_PI_PHASE_MUST_BE_PI')
+    axis_unit='PI' if kind=='INTERVAL_PI' else 'ONE'
+    period=_trig_v2_period(spec);periods=(hi-lo)/period
+    if periods<Fraction(1,4) or periods>TRIG_V2_MAX_PERIODS:raise ValueError('TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED')
+    rate_eff=float(rate)*(math.pi if spec['rateHasPi'] else 1.0);phase_eff=float(spec['phase'])*(math.pi if spec['phaseHasPi'] else 1.0)
+    x0=float(lo)*(math.pi if axis_unit=='PI' else 1.0);x1=float(hi)*(math.pi if axis_unit=='PI' else 1.0)
+    import mpmath
+    trig={'SIN':S.sin,'COS':S.cos,'TAN':S.tan}[function]
+    rat=lambda value:S.Rational(value.numerator,value.denominator)
+    expression=rat(a)*trig(rat(rate)*(S.pi if spec['rateHasPi'] else 1)*x+rat(spec['phase'])*(S.pi if spec['phaseHasPi'] else 1))+rat(c)
+    mpmath.mp.dps=40
+    lines=[]
+    if function!='TAN':
+        lo_f,hi_f=mpmath.mpf(repr(x0)),mpmath.mpf(repr(x1))
+        period_radians=2*math.pi/abs(rate_eff)
+        steps=max(4000,int(1600*max(1e-9,(x1-x0)/period_radians)))
+        for row in plan.get('referenceLines') or []:
+            if not isinstance(row,dict) or not isinstance(row.get('id'),str):raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+            if 'y' in row:slope=Fraction(0);intercept=_piecewise_rational(row['y'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
+            else:slope=_piecewise_rational(row.get('slope'),'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']);intercept=_piecewise_rational(row.get('intercept'),'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
+            gap=expression-(rat(slope)*x+rat(intercept))
+            g=S.lambdify(x,gap,'mpmath');dg=S.lambdify(x,S.diff(gap,x),'mpmath')
+            grid=[lo_f+(hi_f-lo_f)*i/steps for i in range(steps+1)]
+            values=[g(t) for t in grid];slopes=[dg(t) for t in grid];roots=[]
+            for i in range(steps):
+                if values[i]==0:roots.append(grid[i])
+                elif values[i]*values[i+1]<0:roots.append(_trig_v2_refine(g,grid[i],grid[i+1]))
+            if values[-1]==0:roots.append(grid[-1])
+            for i in range(steps):
+                if slopes[i]*slopes[i+1]<0:
+                    critical=_trig_v2_refine(dg,grid[i],grid[i+1])
+                    if abs(g(critical))<mpmath.mpf(10)**-25:roots.append(critical)
+            unique=[]
+            for r in sorted(roots):
+                if not unique or abs(r-unique[-1])>mpmath.mpf(10)**-12:unique.append(r)
+            eps=mpmath.mpf(10)**-12
+            kept=[r for r in unique if (r>lo_f+eps if states[0]=='OPEN' else r>=lo_f-eps) and (r<hi_f-eps if states[1]=='OPEN' else r<=hi_f+eps)]
+            lines.append({'id':row['id'],'kind':'HORIZONTAL' if 'y' in row else 'SLANTED','slope':slope,'intercept':intercept,'claim':row.get('intersectionCount'),'x':[float(r) for r in kept]})
+    if plan.get('keyPoints') is not None and not isinstance(plan.get('keyPoints'),bool):raise ValueError('INVALID_TRIG_KEY_POINTS')
+    if plan.get('keyPoints') is True and function not in {'SIN','COS'}:raise ValueError('TRIG_KEY_POINTS_REQUIRE_SIN_COS')
+    key_rows=_trig_v2_key_rows(spec,lo,hi,states) if plan.get('keyPoints') is True else []
+    pole_rows=_trig_v2_pole_rows(spec,lo,hi) if function=='TAN' else []
+    ticks=_trig_v2_tick_multiples(plan,kind,x0,x1)
+    f=S.lambdify(x,expression,'mpmath')
+    features={'schemaVersion':'TRIGONOMETRIC_INTERVAL_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'axisUnit':axis_unit,'amplitude':str(a),'midline':str(c),'sourceInterval':{'kind':kind,'lo':str(lo),'hi':str(hi),'states':states},'lines':[{'id':row['id'],'kind':row['kind'],'slope':str(row['slope']),'intercept':str(row['intercept']),'intersections':[{'x':point,'y':float(row['slope'])*point+float(row['intercept'])} for point in row['x']]} for row in lines],'keyPoints':key_rows,'poles':pole_rows}
+    policy={'schemaVersion':'TRIGONOMETRIC_INTERVAL_POLICY_v2','markerRadiusIntrinsicPx':3.2,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':40,'minimumAmplitudeCssPx':20,'minimumPoleApproachGapCssPx':2}
+    return {'spec':spec,'function':function,'a':a,'rate':rate,'c':c,'kind':kind,'lo':lo,'hi':hi,'states':states,'axisUnit':axis_unit,'period':period,'x0':x0,'x1':x1,'rateEff':rate_eff,'phaseEff':phase_eff,'f':f,'lines':lines,'keyPoints':key_rows,'poles':pole_rows,'ticks':ticks,'features':features,'policy':policy,'endY':[float(f(mpmath.mpf(repr(x0)))),float(f(mpmath.mpf(repr(x1))))]}
+
+def _trig_v2_refine(fn,left,right):
+    fl=fn(left)
+    for _ in range(140):
+        mid=(left+right)/2;fm=fn(mid)
+        if fl*fm<=0:right=mid
+        else:left,fl=mid,fm
+    return (left+right)/2
+
+def _observed_curve_branch_list(root,transform):
+    sx,sy=transform['sx'],transform['sy']
+    branches=[]
+    for node in root.iter():
+        if node.tag.split('}')[-1]!='polyline' or node.get('data-role')!='curve':continue
+        values=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+        if len(values)<4 or len(values)%2 or not all(math.isfinite(value) for value in values):return [],['GRAPH_CURVE_POINTS_INVALID']
+        branches.append([((values[i]-transform['originX'])/sx,(transform['originY']-values[i+1])/sy) for i in range(0,len(values),2)])
+    return branches,[ ]
+
+def _trig_v2_tick_audit(plan,root,transform,expected):
+    errors=[]
+    axes=[node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('data-role')=='axis' and node.get('data-axis')=='x']
+    if not axes:return errors
+    labels=[node for node in root.iter() if node.tag.split('}')[-1]=='text' and node.get('data-label-kind')=='TICK_LABEL' and node.get('data-tick-axis')=='x']
+    pi_labels=[node for node in labels if node.get('data-tick-pi-value') is not None]
+    got=[]
+    for node in pi_labels:
+        try:got.append(Fraction(node.get('data-tick-pi-value')))
+        except (ValueError,ZeroDivisionError):errors.append('TRIG_PI_TICK_VALUE_INVALID');continue
+    if sorted(got)!=sorted(expected):errors.append('TRIG_PI_TICK_INVENTORY_MISMATCH')
+    for multiple in expected:
+        node=next((item for item in pi_labels if Fraction(item.get('data-tick-pi-value'))==multiple),None)
+        if node is None:errors.append('TRIG_PI_TICK_LABEL_MISSING:'+str(multiple));continue
+        text=''.join(node.itertext()).strip()
+        if text!=_trig_pi_tick_text(multiple):errors.append('TRIG_PI_TICK_LABEL_TEXT_MISMATCH:'+str(multiple))
+        try:source_x=float(node.get('data-tick-source-x'))
+        except (TypeError,ValueError):errors.append('TRIG_PI_TICK_SOURCE_INVALID:'+str(multiple));continue
+        want=transform['originX']+transform['sx']*float(multiple)*math.pi
+        if abs(source_x-want)*transform['displayScale']>.35:errors.append('TRIG_PI_TICK_POSITION_MISMATCH:'+str(multiple))
+        ticks=[line for line in root.iter() if line.tag.split('}')[-1]=='line' and line.get('data-role')=='tick' and line.get('data-axis')=='x']
+        if not any(abs(float(line.get('data-value'))-float(multiple)*math.pi)<1e-9 for line in ticks if line.get('data-value') is not None):errors.append('TRIG_PI_TICK_PRIMITIVE_MISSING:'+str(multiple))
+    return errors
+
+def trigonometric_interval_v2_audit(plan,svg,transform):
+    errors=[];unsupported=[]
+    try:
+        import mpmath
+        want=_trig_v2_interval_expected(plan);features=plan.get('trigIntervalFeatures');policy=plan.get('trigIntervalPolicy')
+        if plan.get('overviewPolicy')!='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':errors.append('TRIG_OVERVIEW_POLICY_REQUIRED')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='TRIGONOMETRIC_INTERVAL_FEATURES_v2' or not isinstance(policy,dict) or policy.get('schemaVersion')!='TRIGONOMETRIC_INTERVAL_POLICY_v2':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        if {key:value for key,value in features.items() if key!='lines'}!={key:value for key,value in want['features'].items() if key!='lines'}:errors.append('TRIG_FEATURE_INVENTORY_MISMATCH')
+        if policy!=want['policy']:errors.append('TRIG_FEATURE_POLICY_MISMATCH')
+        domain=plan.get('domain')
+        if not isinstance(domain,list) or len(domain)!=2 or any(abs(actual-expected)>1e-9*max(1.0,abs(expected)) for actual,expected in zip(domain,[want['x0'],want['x1']])):errors.append('TRIG_DRAW_WINDOW_MISMATCH')
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        root=ET.fromstring(svg);branches,point_errors=_observed_curve_branch_list(root,transform);errors.extend(point_errors)
+        points=[point for branch in branches for point in branch]
+        if not points:return {'status':'FAIL','errors':sorted(set(errors+['TRIG_FINAL_CURVE_MISSING']))}
+        xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale'];x_tol=.35/max(1e-12,xscale)
+        points=sorted(points,key=lambda point:point[0])
+        if abs(points[0][0]-want['x0'])>x_tol or abs(points[-1][0]-want['x1'])>x_tol:errors.append('TRIG_DRAW_DOMAIN_COVERAGE_FAIL')
+        in_view=plan['viewport'][2]-1e-9<=0<=plan['viewport'][3]+1e-9
+        for branch in branches:
+            if any(right[0]<left[0]-1e-12 for left,right in zip(branch,branch[1:])):errors.append('TRIG_CURVE_NOT_MONOTONE_IN_X');break
+        for px,py in points:
+            if not want['x0']-x_tol<=px<=want['x1']+x_tol:errors.append('TRIG_CURVE_OUTSIDE_INTERVAL');break
+            expected=float(want['f'](mpmath.mpf(px)))
+            if want['function']=='TAN':
+                for pole in want['poles']:
+                    if abs(px-float(Fraction(pole['x']))*(math.pi if want['axisUnit']=='PI' else 1.0))<1e-7:errors.append('TRIG_TAN_CURVE_AT_POLE');break
+                span_y=(plan['viewport'][3]-plan['viewport'][2])*2
+                if expected<plan['viewport'][2]-span_y or expected>plan['viewport'][3]+span_y:continue
+            if not math.isfinite(expected) or abs(py-expected)*yscale>.35:errors.append('TRIG_WRONG_FUNCTION_CURVE');break
+        span=(want['x1']-want['x0'])*xscale
+        if span<want['policy']['minimumPeriodSpanCssPx']:unsupported.append('TRIG_PERIOD_BELOW_PROFILE_FLOOR')
+        if want['function']!='TAN':
+            amplitude=abs(float(want['a']))*yscale
+            if amplitude<want['policy']['minimumAmplitudeCssPx']:unsupported.append('TRIG_AMPLITUDE_BELOW_PROFILE_FLOOR')
+        circles={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle'};line_nodes={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='line'}
+        def read_circle(node_id):
+            node=circles.get(node_id)
+            if node is None:return None
+            try:return ((float(node.get('cx'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('cy')))/transform['sy'],node)
+            except (TypeError,ValueError):return None
+        for side,(wx,wy),state in zip(('start','end'),((want['x0'],want['endY'][0]),(want['x1'],want['endY'][1])),want['states']):
+            got=read_circle('interval-endpoint-'+side)
+            if got is None or abs(got[0]-wx)*xscale>.35 or abs(got[1]-wy)*yscale>.35 or got[2].get('fill') not in INTERVAL_STATE_FILLS[state]:errors.append('TRIG_INTERVAL_END_MARKER_MISMATCH:'+side)
+        frozen=features.get('lines');frozen_ids=[row.get('id') for row in frozen] if isinstance(frozen,list) else None
+        if frozen_ids!=[row['id'] for row in want['lines']]:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
+        detail=[];all_marks=[]
+        for index,row in enumerate(want['lines']):
+            xs=row['x'];count=len(xs)
+            if row['claim']!=count:errors.append('TRIG_LINE_INTERSECTION_COUNT_MISMATCH:'+row['id']+':observer finds '+str(count)+' intersection(s)')
+            slope,intercept=float(row['slope']),float(row['intercept']);ys=[slope*t+intercept for t in xs]
+            if isinstance(frozen,list) and index<len(frozen) and frozen[index].get('id')==row['id']:
+                got=frozen[index].get('intersections')
+                if not isinstance(got,list) or len(got)!=count or any(abs(g['x']-t)>1e-6*max(1.0,abs(t)) or abs(g['y']-v)>1e-6*max(1.0,abs(v)) for g,t,v in zip(got,xs,ys)):errors.append('TRIG_LINE_INTERSECTION_INVENTORY_MISMATCH:'+row['id'])
+                if frozen[index].get('slope')!=str(row['slope']) or frozen[index].get('intercept')!=str(row['intercept']) or frozen[index].get('kind')!=row['kind']:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
+            node=line_nodes.get('line-'+row['id'])
+            if node is None:errors.append('TRIG_LINE_MISSING:'+row['id'])
+            else:
+                try:
+                    p1=((float(node.get('x1'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('y1')))/transform['sy']);p2=((float(node.get('x2'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('y2')))/transform['sy'])
+                    if any(abs(p[1]-(slope*p[0]+intercept))*yscale>.35 for p in (p1,p2)):errors.append('TRIG_LINE_POSITION_MISMATCH:'+row['id'])
+                    if xs and not (min(p1[0],p2[0])<=min(xs)+x_tol and max(p1[0],p2[0])>=max(xs)-x_tol):errors.append('TRIG_LINE_DOES_NOT_SPAN_CROSSINGS:'+row['id'])
+                except (TypeError,ValueError):errors.append('TRIG_LINE_INVALID:'+row['id'])
+            dots=[node_id for node_id in circles if node_id and node_id.startswith('intersection-'+row['id']+'-')]
+            if len(dots)!=count:errors.append('TRIG_INTERSECTION_DOT_COUNT_MISMATCH:'+row['id'])
+            for k,(tx,ty) in enumerate(zip(xs,ys),1):
+                got=read_circle('intersection-'+row['id']+'-'+str(k))
+                if got is None or abs(got[0]-tx)*xscale>.35 or abs(got[1]-ty)*yscale>.35:errors.append('TRIG_INTERSECTION_DOT_MISSING:'+row['id']+'-'+str(k))
+            all_marks.extend(zip(xs,ys));detail.append({'id':row['id'],'kind':row['kind'],'crossings':count,'x':xs})
+        for row in want['keyPoints']:
+            node_id='trig-'+row['id'];got=read_circle(node_id);sx=float(Fraction(row['x']))*(math.pi if want['axisUnit']=='PI' else 1.0);sy=float(Fraction(row['y']))
+            if got is None or abs(got[0]-sx)*xscale>.35 or abs(got[1]-sy)*yscale>.35:errors.append('TRIG_KEY_POINT_MISMATCH:'+row['id'])
+            elif got[2].get('data-feature-kind')!=row['kind']:errors.append('TRIG_KEY_POINT_KIND_MISMATCH:'+row['id'])
+            all_marks.append((sx,sy))
+        for pole in want['poles']:
+            node=line_nodes.get('trig-'+pole['id'])
+            if node is None:errors.append('TRIG_POLE_CUE_MISSING_OR_DUPLICATED:'+pole['id']);continue
+            pole_x=float(Fraction(pole['x']))*(math.pi if want['axisUnit']=='PI' else 1.0)
+            try:
+                x1=(float(node.get('x1'))-transform['originX'])/transform['sx'];x2=(float(node.get('x2'))-transform['originX'])/transform['sx'];y1=(transform['originY']-float(node.get('y1')))/transform['sy'];y2=(transform['originY']-float(node.get('y2')))/transform['sy']
+            except (TypeError,ValueError):errors.append('TRIG_POLE_CUE_INVALID:'+pole['id']);continue
+            if abs(x1-pole_x)*xscale>.35 or abs(x2-pole_x)*xscale>.35 or node.get('stroke-dasharray') not in {'5 4','5,4'}:errors.append('TRIG_POLE_CUE_POSITION_OR_STYLE_FAIL:'+pole['id'])
+        errors.extend(_trig_v2_tick_audit(plan,root,transform,want['ticks']))
+        if any(math.hypot((p[0]-q[0])*xscale,(p[1]-q[1])*yscale)<want['policy']['minimumFeatureSeparationCssPx'] for i,p in enumerate(all_marks) for q in all_marks[i+1:]):unsupported.append('TRIG_INTERSECTIONS_BELOW_PROFILE_FLOOR')
+        status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors+unsupported)),'features':want['features'],'lines':detail,'keyPoints':want['keyPoints'],'poles':want['poles'],'curveBranches':len(branches),'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_MPMATH_40_DIGIT_ROOT_SCAN'}
+    except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
+
+def _trig_v2_period_expected(plan):
+    spec=_trig_v2_spec(plan);function=spec['function'];a=spec['a'];rate=spec['rate'];c=spec['c']
+    expected={'kind':'ALL_REALS'} if function in {'SIN','COS'} else {'kind':'ALL_REALS_WITH_TAN_POLES'}
+    if plan.get('sourceDomain')!=expected:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    if not spec['phaseHasPi']:raise ValueError('TRIG_PHASE_RATIONAL_REQUIRES_INTERVAL')
+    rate_eff=float(rate)*(math.pi if spec['rateHasPi'] else 1.0);phase_eff=float(spec['phase'])*(math.pi if spec['phaseHasPi'] else 1.0)
+    center=-phase_eff/rate_eff;radius=math.pi/abs(rate_eff);period=_trig_v2_period(spec)
+    if function in {'SIN','COS'}:
+        lo,hi=center-radius,center+radius;rows=[]
+        for index in range(-2,3):
+            x_pi=(Fraction(index,2)-spec['phase'])/rate
+            if function=='SIN':factor=Fraction(0) if index%2==0 else (Fraction(1) if index%4==1 else Fraction(-1))
+            else:factor=(Fraction(1) if index%4==0 else Fraction(-1)) if index%2==0 else Fraction(0)
+            y=a*factor+c
+            if factor==0:kind='X_INTERCEPT' if y==0 else 'MIDLINE_CROSSING'
+            else:kind='EXTREMUM'
+            row={'id':f'phase-{index+2}','kind':kind,'index':index,'x':str(x_pi),'y':str(y)}
+            if kind=='EXTREMUM':row['extreme']='MAXIMUM' if y>c else 'MINIMUM'
+            rows.append(row)
+        features={'schemaVersion':'TRIGONOMETRIC_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'amplitude':str(a),'midline':str(c),'centerBehavior':('INCREASING' if a*rate>0 else 'DECREASING') if function=='SIN' else ('MAXIMUM' if a>0 else 'MINIMUM'),'phasePoints':rows}
+        policy={'schemaVersion':'TRIGONOMETRIC_FEATURE_POLICY_v2','function':function,'sourceDomain':'ALL_REALS','displayWindow':'ONE_FULL_PERIOD','markerRadiusIntrinsicPx':3.5,'minimumMarkerDiameterCssPx':2.5,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':80,'minimumAmplitudeCssPx':20}
+        domain=[lo,hi]
+    else:
+        epsilon=float(Fraction(3,25)/abs(rate));first_pole=(-spec['phase']-Fraction(1,2))/rate;second_pole=(-spec['phase']+Fraction(1,2))/rate
+        left_pole,right_pole=sorted((first_pole,second_pole));lo=float(left_pole)+epsilon;hi=float(right_pole)-epsilon
+        features={'schemaVersion':'TRIGONOMETRIC_FEATURES_v2','function':'TAN','rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'amplitude':str(a),'midline':str(c),'centerBehavior':'INCREASING' if a*rate>0 else 'DECREASING','referencePoint':{'x':str(-spec['phase']/rate),'y':str(c)},'poles':[{'id':'pole-left','x':str(left_pole)},{'id':'pole-right','x':str(right_pole)}],'sampleBoundaryDistance':'3/25'}
+        policy={'schemaVersion':'TRIGONOMETRIC_FEATURE_POLICY_v2','function':'TAN','sourceDomain':'ALL_REALS_WITH_TAN_POLES','displayWindow':'ONE_COMPLETE_POLE_TO_POLE_BRANCH','markerRadiusIntrinsicPx':3.5,'minimumMarkerDiameterCssPx':2.5,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':80}
+        domain=[lo,hi]
+    return {'spec':spec,'function':function,'features':features,'policy':policy,'domain':domain,'f':S.lambdify(x,S.Rational(a.numerator,a.denominator)*{'SIN':S.sin,'COS':S.cos,'TAN':S.tan}[function](S.Rational(rate.numerator,rate.denominator)*(S.pi if spec['rateHasPi'] else 1)*x+S.Rational(spec['phase'].numerator,spec['phase'].denominator)*(S.pi if spec['phaseHasPi'] else 1))+S.Rational(c.numerator,c.denominator),'math')}
+
+def trigonometric_period_v2_audit(plan,svg,transform):
+    errors=[];unsupported=[]
+    try:
+        import mpmath
+        want=_trig_v2_period_expected(plan);features=plan.get('trigFeatures');policy=plan.get('trigFeaturePolicy')
+        if plan.get('overviewPolicy')!='TRIGONOMETRIC_PERIODIC_OVERVIEW_v2':errors.append('TRIG_OVERVIEW_POLICY_REQUIRED')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='TRIGONOMETRIC_FEATURES_v2' or not isinstance(policy,dict) or policy.get('schemaVersion')!='TRIGONOMETRIC_FEATURE_POLICY_v2':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        if features!=want['features']:errors.append('TRIG_FEATURE_INVENTORY_MISMATCH')
+        if policy!=want['policy']:errors.append('TRIG_FEATURE_POLICY_MISMATCH')
+        domain=plan.get('domain')
+        if not isinstance(domain,list) or len(domain)!=2 or any(abs(actual-expected)>1e-9*max(1.0,abs(expected)) for actual,expected in zip(domain,want['domain'])):errors.append('TRIG_DRAW_WINDOW_MISMATCH')
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        root=ET.fromstring(svg);branches,point_errors=_observed_curve_branch_list(root,transform);errors.extend(point_errors)
+        points=[point for branch in branches for point in branch]
+        if not points:return {'status':'FAIL','errors':sorted(set(errors+['TRIG_FINAL_CURVE_MISSING']))}
+        points=sorted(points,key=lambda point:point[0]);xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale'];x_tol=.35/max(1e-12,xscale)
+        if abs(points[0][0]-want['domain'][0])>x_tol or abs(points[-1][0]-want['domain'][1])>x_tol:errors.append('TRIG_DRAW_DOMAIN_COVERAGE_FAIL')
+        for px,py in points:
+            expected=float(want['f'](mpmath.mpf(px)))
+            if not math.isfinite(expected) or abs(py-expected)*yscale>.35:errors.append('TRIG_WRONG_FUNCTION_CURVE');break
+        span=(want['domain'][1]-want['domain'][0])*xscale
+        if want['function'] in {'SIN','COS'}:
+            amplitude=abs(float(want['spec']['a']))*yscale
+            if span<policy['minimumPeriodSpanCssPx']:unsupported.append('TRIG_PERIOD_BELOW_PROFILE_FLOOR')
+            if amplitude<policy['minimumAmplitudeCssPx']:unsupported.append('TRIG_AMPLITUDE_BELOW_PROFILE_FLOOR')
+            circles={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle'}
+            for row in features['phasePoints']:
+                node=circles.get('trig-'+row['id'])
+                if node is None:errors.append('TRIG_FEATURE_MARKER_MISSING:'+row['id']);continue
+                try:observed=((float(node.get('cx'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('cy')))/transform['sy'])
+                except (TypeError,ValueError):errors.append('TRIG_FEATURE_MARKER_INVALID:'+row['id']);continue
+                wanted=(float(Fraction(row['x'])),float(Fraction(row['y'])))
+                if node.get('data-feature-kind')!=row['kind'] or abs(observed[0]-wanted[0])*xscale>.35 or abs(observed[1]-wanted[1])*yscale>.35:errors.append('TRIG_FEATURE_MARKER_POSITION_OR_KIND_MISMATCH:'+row['id'])
+        else:
+            line_nodes={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='line'}
+            for pole in features['poles']:
+                node=line_nodes.get('trig-'+pole['id'])
+                if node is None:errors.append('TRIG_POLE_CUE_MISSING_OR_DUPLICATED:'+pole['id']);continue
+                expected_x=float(Fraction(pole['x']))
+                try:x1=(float(node.get('x1'))-transform['originX'])/transform['sx'];x2=(float(node.get('x2'))-transform['originX'])/transform['sx']
+                except (TypeError,ValueError):errors.append('TRIG_POLE_CUE_INVALID:'+pole['id']);continue
+                if abs(x1-expected_x)*xscale>.35 or abs(x2-expected_x)*xscale>.35 or node.get('stroke-dasharray') not in {'5 4','5,4'}:errors.append('TRIG_POLE_CUE_POSITION_OR_STYLE_FAIL:'+pole['id'])
+            circles={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle'}
+            reference=features['referencePoint']
+            if 'trig-reference-point' not in circles:errors.append('TRIG_REFERENCE_MARKER_MISSING')
+        status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors+unsupported)),'features':features,'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_INDEPENDENT_EVALUATION'}
+    except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
+
+def _audit_family(plan,svg,transform):
     if plan.get('family')=='piecewise-polynomial':
         return piecewise_polynomial_audit(plan,svg,transform)
     if plan.get('family')=='piecewise-affine' and plan.get('shapeIntent')=='OVERVIEW':
@@ -1649,6 +2580,8 @@ def audit(plan,svg,transform):
         return exp_log_pair_overview_audit(plan,svg,transform)
     if plan.get('family')=='trigonometric' and plan.get('shapeIntent')=='OVERVIEW':
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v1':return trigonometric_interval_audit(plan,svg,transform)
+        if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':return trigonometric_interval_v2_audit(plan,svg,transform)
+        if plan.get('overviewPolicy')=='TRIGONOMETRIC_PERIODIC_OVERVIEW_v2':return trigonometric_period_v2_audit(plan,svg,transform)
         return trigonometric_overview_audit(plan,svg,transform)
     try:f,den,poly,evaluate,topology=resolve(plan)
     except (ValueError,KeyError,TypeError) as error:return {'status':'UNSUPPORTED','errors':[str(error)]}
@@ -1673,17 +2606,34 @@ def audit(plan,svg,transform):
         for (a,ya),(b,yb) in zip(points,points[1:]):
             if a==b and ya==yb:continue  # identical SVG-quantized vertex, no segment
             if not a<b: errors.append('NONMONOTONE_SEGMENT');continue
-            if any(a<r<b for r in topology['holes']+topology['poles']+topology['boundary']):errors.append('DOMAIN_CROSSING');continue
+            if any(a<r<b for r in topology['holes']+topology['poles']):errors.append('DOMAIN_CROSSING');continue
+            # A sqrt branch can END exactly on its radicand boundary: the SVG-quantized last vertex may sit a hair beyond it,
+            # so the boundary check uses the same sub-pixel tolerance as the corner check (the family audit still verifies
+            # independently that no point lies beyond the boundary).
+            if any(a<r-corner_x_tolerance and b>r+corner_x_tolerance for r in topology['boundary']):errors.append('DOMAIN_CROSSING');continue
             if any(a<r-corner_x_tolerance and b>r+corner_x_tolerance for r in topology.get('corners',[])):errors.append('DOMAIN_CROSSING');continue
             if abs(ya)<1e-9:observed_roots.append(a)
             if abs(yb)<1e-9:observed_roots.append(b)
             if ya*yb<0:observed_roots.append(a+(b-a)*(-ya)/(yb-ya))
             try:
-                fa,fb=float(evaluate(a)),float(evaluate(b));vertex=max(abs(ya-fa),abs(yb-fb))*scale
+                # A sqrt branch endpoint sits exactly on its radicand boundary; the SVG-quantized vertex can land a
+                # floating-point hair outside it, which would make the exact evaluation sqrt(negative). Clamp only that
+                # sub-pixel overshoot (the family audit independently rejects any real point beyond the boundary).
+                evaluate_a,evaluate_b=a,b
+                if plan['family']=='sqrt-affine' and plan.get('overviewPolicy')==SQRT_AFFINE_GENERAL_POLICY:
+                    _,g_slope,_,_,_,_,g_root=_sqrt_general_fields(plan)
+                    root_float=float(g_root)
+                    if g_slope>0:evaluate_a,evaluate_b=max(a,root_float),max(b,root_float)
+                    else:evaluate_a,evaluate_b=min(a,root_float),min(b,root_float)
+                fa,fb=float(evaluate(evaluate_a)),float(evaluate(evaluate_b));vertex=max(abs(ya-fa),abs(yb-fb))*scale
                 if plan['family']=='sqrt-affine':
-                    m=(fb-fa)/(b-a);t=(float(poly.nth(1))/(2*m))**2 if m else 0
-                    at=(t-float(poly.nth(0)))/float(poly.nth(1));at=max(a,min(b,at))
-                    bound=abs(float(evaluate(at))-(fa+m*(at-a)))*scale
+                    if plan.get('overviewPolicy')==SQRT_AFFINE_GENERAL_POLICY:
+                        g_constant,g_slope,g_amplitude,g_sign,g_offset,g_scale,g_root=_sqrt_general_fields(plan)
+                        c_float,b_float,scale_float=float(g_constant),float(g_slope),float(g_scale)
+                    else:c_float,b_float,scale_float=float(poly.nth(0)),float(poly.nth(1)),1.0
+                    m=(fb-fa)/(evaluate_b-evaluate_a);t=(scale_float*b_float/(2*m))**2 if m and b_float else 0
+                    at=(t-c_float)/b_float if b_float else evaluate_a;at=max(evaluate_a,min(evaluate_b,at))
+                    bound=abs(float(evaluate(at))-(fa+m*(at-evaluate_a)))*scale
                 elif plan['family']=='absolute-value':
                     bound=0.0
                 else:
@@ -1724,10 +2674,23 @@ def audit(plan,svg,transform):
         lim=float(S.limit(f,x,S.Rational(str(hole))))
         if plan['viewport'][2]<=lim<=plan['viewport'][3] and not any(abs(mx-hole)<1e-7 and abs(my-lim)*scale<=tolerance for mx,my in markers):errors.append('REMOVABLE_HOLE_MARKER_MISSING')
     if plan.get('family')=='rational' and plan.get('shapeIntent')=='OVERVIEW':overview=rational_overview_audit(plan,poly,actual_points,transform,topology,root)
-    elif plan.get('family')=='sqrt-affine' and plan.get('shapeIntent')=='OVERVIEW':overview=sqrt_affine_overview_audit(plan,poly,actual_points,transform,topology,root)
+    elif plan.get('family')=='sqrt-affine' and plan.get('shapeIntent')=='OVERVIEW':overview=sqrt_affine_general_overview_audit(plan,actual_points,transform,topology,root) if plan.get('overviewPolicy')==SQRT_AFFINE_GENERAL_POLICY else sqrt_affine_overview_audit(plan,poly,actual_points,transform,topology,root)
     elif plan.get('family')=='absolute-value' and plan.get('shapeIntent')=='OVERVIEW':overview=absolute_value_overview_audit(plan,poly,actual_points,transform,topology,root)
     elif plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL':overview=polynomial_interval_audit(plan,poly,actual_points,transform,root)
     else:overview=overview_audit(plan,poly,actual_points,transform) if plan.get('shapeIntent')=='OVERVIEW' else {'status':'NOT_REQUESTED'}
     if overview['status'] in ('FAIL','UNSUPPORTED'):errors.extend(overview['errors'])
     status='UNSUPPORTED' if overview['status']=='UNSUPPORTED' else 'FAIL' if errors else 'PASS'
     return {'status':status,'errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}
+
+def audit(plan,svg,transform):
+    """The family audit plus the optional graph overlays: the observer re-derives every overlay element from the raw overlays field and
+    reads the same element ids back from the model and the final SVG."""
+    result=_audit_family(plan,svg,transform)
+    if plan.get('overlays') is None:return result
+    overlay=overlays_audit(plan,svg,transform)
+    if overlay is None:return result
+    errors=sorted(set([*(result.get('errors') or []),*(overlay.get('errors') or [])]))
+    if result.get('status')=='UNSUPPORTED' or overlay.get('status')=='UNSUPPORTED':status='UNSUPPORTED'
+    elif result.get('status')=='FAIL' or overlay.get('status')=='FAIL' or errors:status='FAIL'
+    else:status='PASS'
+    return {**result,'status':status,'errors':errors,'overlays':overlay}

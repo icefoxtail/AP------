@@ -81,7 +81,7 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       try{for(let i=0;i<e.getNumberOfChars();i++){const c=value[i];if(c&&!/\s/.test(c)){const b=e.getExtentOfChar(i);if(!b.width||!b.height)missing++;}}}catch{missing++;}
       const style=getComputedStyle(e),matrix=e.getScreenCTM(),fontPx=Number.parseFloat(style.fontSize);
       const tickSource=e.hasAttribute('data-tick-source-x')?[strictNumber(e.getAttribute('data-tick-source-x')),strictNumber(e.getAttribute('data-tick-source-y'))]:null;
-      return{id:e.id,kind:e.getAttribute('data-label-kind')||'LEGACY_TEXT',visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value,bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:missing,font:style.fontFamily,baseFontPx:fontPx,effectiveFontPx:matrix&&Number.isFinite(fontPx)?fontPx*Math.hypot(matrix.a,matrix.b):NaN,owner:e.getAttribute('data-owner'),annotation:e.getAttribute('data-annotation'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'TEXT')};
+      return{id:e.id,kind:e.getAttribute('data-label-kind')||'LEGACY_TEXT',visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value,bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:missing,font:style.fontFamily,baseFontPx:fontPx,effectiveFontPx:matrix&&Number.isFinite(fontPx)?fontPx*Math.hypot(matrix.a,matrix.b):NaN,owner:e.getAttribute('data-owner'),annotation:e.getAttribute('data-annotation'),tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickPiValue:e.getAttribute('data-tick-pi-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'TEXT')};
     });
     for(const e of svg.querySelectorAll('g[data-fragment-sha]')){
       const bbox=safeBox(e),client=rect(e.getBoundingClientRect()),matrix=e.getScreenCTM(),font=Number(e.getAttribute('data-font-px'));
@@ -98,7 +98,7 @@ export async function collectRenderedLayout(page,publicationViewport=page.viewpo
       });
       const effectiveFontPx=fontScales.length?Math.min(...fontScales):(matrix?font*Math.hypot(matrix.a,matrix.b):NaN);
       const tickSource=e.hasAttribute('data-tick-source-x')?[strictNumber(e.getAttribute('data-tick-source-x')),strictNumber(e.getAttribute('data-tick-source-y'))]:null;
-      labels.push({id:e.id,kind:e.getAttribute('data-label-kind'),visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value:e.getAttribute('data-fragment-sha'),bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:Number(!bbox.width||!bbox.height),font:'FROZEN_OUTLINE',baseFontPx:font,effectiveFontPx,owner:e.getAttribute('data-owner'),annotation:null,tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'OUTLINE')});
+      labels.push({id:e.id,kind:e.getAttribute('data-label-kind'),visualRole:e.getAttribute('data-visual-role'),priority:Number(e.getAttribute('data-priority')||2),value:e.getAttribute('data-fragment-sha'),bbox,client,paintOrder:paintOrder.get(e)??null,missingGlyphCount:Number(!bbox.width||!bbox.height),font:'FROZEN_OUTLINE',baseFontPx:font,effectiveFontPx,owner:e.getAttribute('data-owner'),annotation:null,tickOwner:e.getAttribute('data-tick-owner'),tickAxis:e.getAttribute('data-tick-axis'),tickValue:e.getAttribute('data-tick-value'),tickDisplayValue:e.getAttribute('data-tick-display-value'),tickPiValue:e.getAttribute('data-tick-pi-value'),tickCalloutSchema:e.getAttribute('data-tick-callout'),tickSource,tickSourceClient:tickSource?project(svg,...tickSource):null,renderedVisibility:renderedVisibility(e,'OUTLINE')});
     }
     const geometry=[...svg.querySelectorAll('circle,line,polyline,polygon,path,rect[data-role="conditionBox"],rect[data-role="tick-label-knockout"]')].filter(e=>!e.closest('g[data-fragment-sha]')&&e.getAttribute('data-role')!=='region').map(e=>{   // a region fill is paint, not a stroke: labels and leaders may lie on it (plane_regions_observer.py checks it)
       const tag=e.tagName;const client=rect(e.getBoundingClientRect());
@@ -279,11 +279,13 @@ export function analyzeRenderedLayout(capture) {
   }
   const ownedCounts=new Map(tickLabels.map(v=>[v.tickOwner,(tickLabels.filter(x=>x.tickOwner===v.tickOwner).length)]));
   const normalized=v=>String(v??'').replace(/−/g,'-').trim();
+  const parsePiMultiple=value=>{const match=/^(\d+)(?:\/(\d+))?$/.exec(String(value??''));if(!match)return null;const denominator=match[2]?Number(match[2]):1;return denominator>0?Number(match[1])/denominator:null;};
+  const piLabelText=value=>{const match=/^(\d+)(?:\/(\d+))?$/.exec(String(value??''));const numerator=Number(match[1]),denominator=match[2]?Number(match[2]):1;const head=numerator===1?'π':numerator+'π';return head+(denominator===1?'':'/'+denominator);};
   for(const label of tickLabels) {
     const labelErrors=[],ownerId=label.tickOwner,ownerMatches=capture.geometry.filter(v=>v.id===ownerId&&v.kind==='tick'),owner=ownerMatches.length===1?ownerMatches[0]:null;
     const axisMatches=capture.geometry.filter(v=>v.id===`${label.tickAxis}-axis`&&v.kind==='axis'),axis=axisMatches.length===1?axisMatches[0]:null;
     const labelVisibility=visibleTickLabel(label),ownerVisibility=owner?visibleGeometry(owner):null,axisVisibility=axis?visibleGeometry(axis):null;
-    const tickValue=strictFiniteNumber(label.tickValue),primitiveValue=strictFiniteNumber(owner?.value),displayValue=strictFiniteNumber(normalized(label.tickDisplayValue));
+    const tickValue=strictFiniteNumber(label.tickValue),primitiveValue=strictFiniteNumber(owner?.value),displayValue=strictFiniteNumber(normalized(label.tickDisplayValue)),piValue=label.tickPiValue??null;
     const fail=(code)=>{labelErrors.push(`${code}:${label.id}`);errors.push(`${code}:${label.id}`);};
     if(label.kind!=='TICK_LABEL')fail('TICK_LABEL_KIND_MISMATCH');
     if(!ownerId||ownerMatches.length!==1)fail('TICK_LABEL_OWNER_MISSING_OR_AMBIGUOUS');
@@ -293,8 +295,14 @@ export function analyzeRenderedLayout(capture) {
     if(primitiveValue===null)fail('TICK_LABEL_PRIMITIVE_VALUE_INVALID');
     if(!axis||axis.axis!==label.tickAxis||!['x','y'].includes(label.tickAxis)||owner?.axis!==label.tickAxis)fail('TICK_LABEL_AXIS_VALUE_PARITY');
     else if(tickValue!==null&&primitiveValue!==null&&Math.abs(primitiveValue-tickValue)>1e-9)fail('TICK_LABEL_AXIS_VALUE_PARITY');
-    if(displayValue===null)fail('TICK_LABEL_DISPLAY_VALUE_INVALID');
-    else if(tickValue!==null&&Math.abs(displayValue-tickValue)>1e-9)fail('TICK_LABEL_DISPLAY_VALUE_PARITY');
+    if(displayValue===null&&piValue===null)fail('TICK_LABEL_DISPLAY_VALUE_INVALID');
+    else if(displayValue!==null&&tickValue!==null&&Math.abs(displayValue-tickValue)>1e-9)fail('TICK_LABEL_DISPLAY_VALUE_PARITY');
+    if(piValue!==null){
+      const multiple=parsePiMultiple(piValue);
+      if(multiple===null)fail('TICK_LABEL_PI_VALUE_INVALID');
+      else if(tickValue===null||Math.abs(tickValue-multiple*Math.PI)>1e-9)fail('TICK_LABEL_PI_VALUE_MISMATCH');
+      if(normalized(label.value)!==normalized(piLabelText(piValue)))fail('TICK_LABEL_PI_TEXT_MISMATCH');
+    }
     if(label.font!=='FROZEN_OUTLINE'&&normalized(label.value)!==normalized(label.tickDisplayValue))fail('TICK_LABEL_RENDERED_TEXT_PARITY');
     if(!labelVisibility.ok)fail(labelVisibility.code);
     if(owner&&!ownerVisibility.ok)fail(ownerVisibility.effectStatus==='UNSUPPORTED'?'TICK_LABEL_OWNER_VISIBILITY_UNSUPPORTED':'TICK_LABEL_OWNER_NOT_VISIBLE');
