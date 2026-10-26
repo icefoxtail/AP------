@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COORDINATE_GEOMETRY",
-  "shardVersion": "1.1.4",
+  "shardVersion": "1.1.5",
   "status": "ACTIVE",
-  "conceptCount": 28,
+  "conceptCount": 32,
   "concepts": [
     {
       "conceptKey": "CC_CIRCLE_CENTER_RADIUS",
@@ -1381,6 +1381,171 @@
           }
         }
       ]
+    },
+    {
+      "conceptKey": "CC_INTERSECTION_POINT_LINE",
+      "canonicalLabelKo": "교점과 교선",
+      "definition": "선과 선 또는 선과 면이 만나서 생기는 점(교점)과 면과 면이 만나서 생기는 선(교선)의 뜻과 개수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8228c2dc39bc673b58087774cbe345c34df54c41d6b2ee58cf7cb79f0f7c35b6"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8228c2dc39bc673b58087774cbe345c34df54c41d6b2ee58cf7cb79f0f7c35b6",
+          "sourceOrdinal": 1,
+          "classificationRationale": "기본도형의 기본 요소(점·선·면, 교점, 교선, 중점) 진술의 참·거짓을 1단계로 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "③ 직육면체의 교선은 모서리이므로 12개이다. 8개가 아니다. 따라서 옳지 않은 것은 ③이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_BASIC_GEOMETRY_JUDGMENT"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_POLYHEDRON_NET",
+      "canonicalLabelKo": "다면체의 전개도와 입체 복원",
+      "definition": "정육면체 등 다면체의 전개도를 접었을 때 맞닿는 꼭짓점과 모서리의 공간적 위치 추적",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1b1675a2c8615493667f50b6fbce23ec7204d03b2a980b1468291ab7e90fe173"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-07"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1b1675a2c8615493667f50b6fbce23ec7204d03b2a980b1468291ab7e90fe173",
+          "sourceOrdinal": 7,
+          "classificationRationale": "정육면체 전개도를 접어 복원한 입체도형에서 모서리 간의 꼬인 위치 여부를 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "전개도를 접어 AB의 위치를 잡으면 CD, DM, EF, EL은 꼬인 위치이고 DE는 꼬인 위치가 아니므로 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-07"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SEGMENT_MIDPOINT",
+      "canonicalLabelKo": "선분의 중점",
+      "definition": "선분 위의 한 점이 양 끝점으로부터 같은 거리에 있을 때 선분의 길이를 이등분하는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6d0a2353ed2d1be344b29036b16896a6d4c618fbd2c518074dcedcc48599fc78",
+        "qid_v1_8228c2dc39bc673b58087774cbe345c34df54c41d6b2ee58cf7cb79f0f7c35b6",
+        "qid_v1_b7eba583a5f8b279a38796bb1eafe7f57b6950dad03a27b29a5494538cfb5720"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8228c2dc39bc673b58087774cbe345c34df54c41d6b2ee58cf7cb79f0f7c35b6",
+          "sourceOrdinal": 1,
+          "classificationRationale": "기본도형의 기본 요소(점·선·면, 교점, 교선, 중점) 진술의 참·거짓을 1단계로 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "③ 직육면체의 교선은 모서리이므로 12개이다. 8개가 아니다. 따라서 옳지 않은 것은 ③이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6d0a2353ed2d1be344b29036b16896a6d4c618fbd2c518074dcedcc48599fc78",
+          "sourceOrdinal": 4,
+          "classificationRationale": "연속된 선분의 중점 조건을 순차 적용하여 선분의 길이를 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "M은 AB의 중점이므로 AM=16/2=8cm, N은 AM의 중점이므로 NM=8/2=4cm",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b7eba583a5f8b279a38796bb1eafe7f57b6950dad03a27b29a5494538cfb5720",
+          "sourceOrdinal": 20,
+          "classificationRationale": "선분 길이의 비와 중점 조건을 미지수 x로 연립하여 전체 선분의 길이를 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "AB=x라 하면 BD=3x, AD=4x이고 중점 C에서 AC=2x이므로 BC=2x-x=x=6, 따라서 AD=4x=24cm",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+        "PT_M1_SEGMENT_LENGTH_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SPATIAL_POSITION_RELATION",
+      "canonicalLabelKo": "공간에서 직선과 평면의 위치 관계",
+      "definition": "공간에서 두 직선, 직선과 평면, 두 평면 사이의 평행·교차·수직·꼬인 위치 판별",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b",
+          "sourceOrdinal": 5,
+          "classificationRationale": "공간에서 직선과 평면, 평면과 평면의 위치 관계 진술의 참·거짓을 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "① 한 직선에 평행한 서로 다른 두 직선은 같은 방향이므로 서로 평행하다. ②~⑤는 교차·비평행 가능하므로 옳은 것은 ①이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_SPATIAL_LINE_PLANE_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
     }
   ]
 }

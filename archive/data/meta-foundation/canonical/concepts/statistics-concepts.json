@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "STATISTICS_CONCEPTS",
-  "shardVersion": "1.0.2",
+  "shardVersion": "1.0.3",
   "status": "ACTIVE",
-  "conceptCount": 27,
+  "conceptCount": 31,
   "concepts": [
     {
       "conceptKey": "CC_BINOMIAL_DISTRIBUTION",
@@ -890,6 +890,197 @@
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-05",
         "2015:확률과 통계:H15-PS-06"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_EXTREME_VALUES",
+      "canonicalLabelKo": "변량의 최댓값과 최솟값",
+      "definition": "주어진 통계 자료에서 가장 큰 변량과 가장 작은 변량을 찾아 합이나 차를 구하는 해석",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_12a1816524c461ebce3d3c3b5ca9a10058b2a52e4d35052c12066ef5a14e3c56"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_12a1816524c461ebce3d3c3b5ca9a10058b2a52e4d35052c12066ef5a14e3c56",
+          "sourceOrdinal": 17,
+          "classificationRationale": "줄기와 잎 그림에서 최대 변량과 최소 변량을 읽어 합을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "가장 적은 나이는 24세, 가장 많은 나이는 56세이므로 24+56 = 80세(③)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_DATA_EXTREME_VALUE_SUM"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-08"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_FREQUENCY_DISTRIBUTION_TABLE",
+      "canonicalLabelKo": "도수분포표와 계급의 도수",
+      "definition": "자료를 일정한 간격의 계급으로 나누고 각 계급에 속하는 변량의 개수(도수)와 총합 관계를 해석하는 표",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_802cde2ac31a51b8ccfd0319c392ef3f3ba9a17998b37729eba08f38dba28259",
+        "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M1-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905",
+          "sourceOrdinal": 18,
+          "classificationRationale": "도수분포표에서 백분율 조건을 이용해 누락된 계급의 도수를 복원하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "전체 30명의 20%는 6명이고 170~180 도수가 3명이므로 160~170의 도수는 6-3=3명(①)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_802cde2ac31a51b8ccfd0319c392ef3f3ba9a17998b37729eba08f38dba28259",
+          "sourceOrdinal": 19,
+          "classificationRationale": "도수분포표의 총도수 보존 성질로 빈 계급의 도수를 구하고 특정 기준 미만 누적 도수를 산출하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "140~150의 도수는 30-(4+9+3+3)=11명이므로 150cm 미만은 4+11=15명(④)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_FREQUENCY_DISTRIBUTION_READING"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-08"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_PERCENTAGE_CALCULATION",
+      "canonicalLabelKo": "백분율과 비율 계산",
+      "definition": "전체 도수에 대한 특정 계급이나 범주의 도수 비율에 100을 곱하여 백분율(%)을 구하는 연산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
+        "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M1-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
+          "sourceOrdinal": 16,
+          "classificationRationale": "줄기와 잎 그림에서 특정 계급의 도수가 전체에서 차지하는 백분율을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "40대 선생님은 7명이고 전체는 20명이므로 (7/20)×100 = 35%(⑤)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905",
+          "sourceOrdinal": 18,
+          "classificationRationale": "도수분포표에서 백분율 조건을 이용해 누락된 계급의 도수를 복원하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "전체 30명의 20%는 6명이고 170~180 도수가 3명이므로 160~170의 도수는 6-3=3명(①)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "PT_M1_FREQUENCY_DISTRIBUTION_READING"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-08"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_STEM_AND_LEAF_PLOT",
+      "canonicalLabelKo": "줄기와 잎 그림",
+      "definition": "변량을 줄기와 잎으로 구분하여 자료의 분포와 개별 변량 값을 순서대로 나타내는 통계 표",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_12a1816524c461ebce3d3c3b5ca9a10058b2a52e4d35052c12066ef5a14e3c56",
+        "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
+        "qid_v1_8f15d845eba89e2d56a945f5c7a0549c2345bb54906a2777b1d9ba0d133b77ac"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M1-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8f15d845eba89e2d56a945f5c7a0549c2345bb54906a2777b1d9ba0d133b77ac",
+          "sourceOrdinal": 15,
+          "classificationRationale": "원자료를 줄기와 잎 그림으로 정리하여 빈칸 미지수를 복원하고 식의 값을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "20대 잎에서 a=5, 30대 잎에서 b=8, 40대 잎에서 c=7이므로 a×b-c = 5×8-7 = 33(④)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
+          "sourceOrdinal": 16,
+          "classificationRationale": "줄기와 잎 그림에서 특정 계급의 도수가 전체에서 차지하는 백분율을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "40대 선생님은 7명이고 전체는 20명이므로 (7/20)×100 = 35%(⑤)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_12a1816524c461ebce3d3c3b5ca9a10058b2a52e4d35052c12066ef5a14e3c56",
+          "sourceOrdinal": 17,
+          "classificationRationale": "줄기와 잎 그림에서 최대 변량과 최소 변량을 읽어 합을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "가장 적은 나이는 24세, 가장 많은 나이는 56세이므로 24+56 = 80세(③)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "PT_M1_DATA_EXTREME_VALUE_SUM",
+        "PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-08"
       ],
       "ownerConceptShard": "STATISTICS_CONCEPTS"
     }
