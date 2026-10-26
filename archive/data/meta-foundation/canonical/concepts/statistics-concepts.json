@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "STATISTICS_CONCEPTS",
-  "shardVersion": "1.0.3",
+  "shardVersion": "1.0.4",
   "status": "ACTIVE",
-  "conceptCount": 31,
+  "conceptCount": 42,
   "concepts": [
     {
       "conceptKey": "CC_BINOMIAL_DISTRIBUTION",
@@ -1081,6 +1081,466 @@
       ],
       "curriculumRefs": [
         "2015:중1 수학:M1-08"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_PROBABILITY",
+      "canonicalLabelKo": "이항확률 분포 모델",
+      "definition": "성공 확률이 일정한 독립시행의 누적 횟수에 따른 확률을 계산하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_27eefa4045c439e7b3f1e9636772d5124aef2857ed5071b4e28b35c3c008ae3e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_27eefa4045c439e7b3f1e9636772d5124aef2857ed5071b4e28b35c3c008ae3e",
+          "sourceOrdinal": 13,
+          "classificationRationale": "META_PIPELINE_AUDIT record 13 binds CC_BINOMIAL_PROBABILITY for PT_PROBABILITY_REPEATED_TRIALS/TPL_INDEPENDENT_TRIAL_PROBABILITY at H15-PS-04-CONDITIONAL_BASIC.",
+          "decisiveEvidence": "<p>이미 두 팀이 한 번씩 이겼으므로 $B$가 우승하려면 남은 경기에서 $B$가 세 번 먼저 이겨야 합니다. $B$의 승률은 $\\dfrac13$, $A$의 승률은 $\\dfrac23$입니다.</p> <p>$B$의 세",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_REPEATED_TRIALS"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_COIN_TOSS_EXPERIMENT",
+      "canonicalLabelKo": "동전 던지기 대칭 시행",
+      "definition": "앞면과 뒷면이 나올 확률이 각각 1/2인 대칭 독립시행 모델",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b4e222042b71b245b610f173c8495d786c20e07e7716607116c6b7e6f5fa64a5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b4e222042b71b245b610f173c8495d786c20e07e7716607116c6b7e6f5fa64a5",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_COIN_TOSS_EXPERIMENT for PT_PROBABILITY_REPEATED_TRIALS/TPL_INDEPENDENT_TRIAL_PROBABILITY at H15-PS-04-CONDITIONAL_BASIC.",
+          "decisiveEvidence": "<p>앞면의 횟수를 $X$라 하면 뒷면은 $6-X$번이므로 조건 $X\\ge6-X$는 $X\\ge3$과 같습니다.</p> <p>전체 동전 결과는 $2^6=64$가지이고 유리한 경우는 $\\binom63+\\binom64+\\",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_REPEATED_TRIALS"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_CONTINGENCY_TABLE_PROBABILITY",
+      "canonicalLabelKo": "분할표(교차분류표)에서의 조건부확률",
+      "definition": "두 범주형 변수로 분류된 2×2 또는 다원 분할표에서 특정 행 또는 열의 부분합을 새로운 표본공간(분모)으로 삼아 확률을 계산하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_2e072f6e31b28e59c23c8d6b97cb6c904ca509f5adecc84db318fd7c9b122375",
+        "qid_v1_b6fdf99f67c29342c48123c2ffaa865f26fb4c7381bafc569e5d299ec68a47ec"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_2e072f6e31b28e59c23c8d6b97cb6c904ca509f5adecc84db318fd7c9b122375",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_CONTINGENCY_TABLE_PROBABILITY for PT_CONDITIONAL_PROBABILITY/TPL_CONDITIONAL_PROBABILITY_DIRECT at H15-PS-04-CONDITIONAL_PROBABILITY.",
+          "decisiveEvidence": "<p>이미 양념치킨을 좋아한다고 알려졌으므로 전체 32명이 아니라 양념치킨을 좋아하는 22명만 분모로 잡습니다.</p> <p>그중 뼈를 좋아하는 학생은 10명이므로 $P(\\text{뼈}\\mid\\text{양념})=\\d",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b6fdf99f67c29342c48123c2ffaa865f26fb4c7381bafc569e5d299ec68a47ec",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_CONTINGENCY_TABLE_PROBABILITY for PT_CONDITIONAL_PROBABILITY/TPL_CONDITIONAL_PROBABILITY_DIRECT at H15-PS-04-CONDITIONAL_PROBABILITY.",
+          "decisiveEvidence": "<p>전체 175명 중 $A$부서는 $175\\times0.4=70$명, $B$부서는 $175\\times0.6=105$명입니다.</p> <p>$A$부서 여성은 $70\\times0.7=49$명입니다. $B$부서 남성이 ",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONDITIONAL_PROBABILITY"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_DICE_EXPERIMENT",
+      "canonicalLabelKo": "주사위 던지기 시행의 표본공간",
+      "definition": "1부터 6까지의 눈을 갖는 정육면체 주사위를 독립적으로 던져 나오는 순서쌍을 표본공간으로 설정하는 모델",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_3e58ab1eb279a8e58027e825dd3da7678d0f6a378ca586d197296a2648c8c0db",
+        "qid_v1_8977ed5c1fbd2c9e629affa85e85dafe3a6c002d0539ca04519205f407999788",
+        "qid_v1_faeef90e97323f769bbc73ee044f27c71d18670b4585b673e16854a4f8a19514"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "H15-PS-03",
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8977ed5c1fbd2c9e629affa85e85dafe3a6c002d0539ca04519205f407999788",
+          "sourceOrdinal": 8,
+          "classificationRationale": "META_PIPELINE_AUDIT record 8 binds CC_DICE_EXPERIMENT for PT_PROBABILITY_PROPERTIES_APPLICATION/TPL_PROBABILITY_BASIC_COUNT_RATIO at H15-PS-03-PROBABILITY_BASIC.",
+          "decisiveEvidence": "<p>방정식 $ax-b=0$의 해는 $x=\\dfrac ba$이므로 $a$가 $b$의 약수여야 정수입니다. 서로 다른 두 카드를 순서대로 뽑으므로 전체는 $6\\times5=30$가지입니다.</p> <p>$a=1$이면 ",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_3e58ab1eb279a8e58027e825dd3da7678d0f6a378ca586d197296a2648c8c0db",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_DICE_EXPERIMENT for PT_PROBABILITY_REPEATED_TRIALS/TPL_INDEPENDENT_TRIAL_PROBABILITY at H15-PS-04-CONDITIONAL_BASIC.",
+          "decisiveEvidence": "<p>[핵심] 원본 삼각형에서 A는 왼쪽 아래, B는 오른쪽 아래, C는 위쪽이므로 $A\\to B\\to C\\to A$는 반시계방향입니다.</p> <p>두 주사위의 곱이 홀수일 확률은 두 눈이 모두 홀수일 확률 $\\f",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_faeef90e97323f769bbc73ee044f27c71d18670b4585b673e16854a4f8a19514",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_DICE_EXPERIMENT for PT_PROBABILITY_PROPERTIES_APPLICATION/TPL_PROBABILITY_BASIC_COUNT_RATIO at H15-PS-03-PROBABILITY_BASIC.",
+          "decisiveEvidence": "<p>세 수를 크기순으로 $x\\le y\\le z$라고 하면 조건은 가운데 수 $y$가 양 끝의 차 $z-x$보다 작다는 것, 즉 $x+y<z$입니다.</p> <p>$x<y<z$인 세 수의 조합 중 $x+y<z$를 만",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_PROPERTIES_APPLICATION",
+        "PT_PROBABILITY_REPEATED_TRIALS"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-03",
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_INDEPENDENCE_PROOF",
+      "canonicalLabelKo": "여사건의 독립성 연역 증명",
+      "definition": "A와 B가 독립일 때 P(A^c ∩ B)를 대수적으로 전개하여 P(A^c)P(B)와 같음을 연역적으로 증명하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_9f9ad172b684d9c55047dcdcc3705f86329b2cf5df11e847b8085f41b7040ba1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9f9ad172b684d9c55047dcdcc3705f86329b2cf5df11e847b8085f41b7040ba1",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_INDEPENDENCE_PROOF for PT_EVENT_INDEPENDENCE/TPL_EVENT_INDEPENDENCE_JUDGMENT at H15-PS-04-INDEPENDENCE.",
+          "decisiveEvidence": "<p>독립인 $A,B$에서 $P(A\\cap B)=P(A)P(B)$이고 $B=(A\\cap B)\\cup(A^c\\cap B)$입니다.</p> <p>①은 $P(A^c\\cap B)$, ②는 $P(A)P(B\\mid A)$, ③",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_EVENT_INDEPENDENCE"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_INDEPENDENT_EVENTS",
+      "canonicalLabelKo": "사건의 독립과 판정 조건",
+      "definition": "한 사건의 발생이 다른 사건의 확률에 영향을 주지 않아 P(A ∩ B) = P(A)P(B)를 만족하는 두 사건의 관계",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_2e388c2377a2f17f26bd33865125fb4191ed0befaabba9b396751a9430fcc5a2",
+        "qid_v1_6314738cb591fc0d5b1fa11c16aa237dc753f2f0a49b302f1fd0464c1467efdb",
+        "qid_v1_c8bf14defdd2997cec5dc58e08140c6a14b7c1b0a303917b06fc35ac24466a72"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_2e388c2377a2f17f26bd33865125fb4191ed0befaabba9b396751a9430fcc5a2",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_INDEPENDENT_EVENTS for PT_EVENT_INDEPENDENCE/TPL_EVENT_INDEPENDENCE_JUDGMENT at H15-PS-04-INDEPENDENCE.",
+          "decisiveEvidence": "<p>독립인 두 사건에서는 $P(A\\cap B)=P(A)P(B)$입니다.</p> <p>$\\dfrac25=\\dfrac34P(B)$에서 $P(B)=\\dfrac25\\times\\dfrac43=\\dfrac8{15}$입니다.<",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6314738cb591fc0d5b1fa11c16aa237dc753f2f0a49b302f1fd0464c1467efdb",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_INDEPENDENT_EVENTS for PT_EVENT_INDEPENDENCE/TPL_EVENT_INDEPENDENCE_JUDGMENT at H15-PS-04-INDEPENDENCE.",
+          "decisiveEvidence": "<p>ㄱ: 근원사건의 가능성이 같아야 $n(A)/n(S)$로 계산하므로 거짓입니다.</p> <p>ㄴ: 시행을 많이 반복하면 상대도수는 $1/2$에 가까워지는 경향이 있으므로 참입니다(큰 수의 법칙).</p> <p>ㄷ",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c8bf14defdd2997cec5dc58e08140c6a14b7c1b0a303917b06fc35ac24466a72",
+          "sourceOrdinal": 21,
+          "classificationRationale": "META_PIPELINE_AUDIT record 21 binds CC_INDEPENDENT_EVENTS for PT_EVENT_INDEPENDENCE/TPL_EVENT_INDEPENDENCE_JUDGMENT at H15-PS-04-INDEPENDENCE.",
+          "decisiveEvidence": "<p>$P(A_n)=\\dfrac3{12}=\\dfrac14$, $P(B)=\\dfrac4{12}=\\dfrac13$입니다. 두 사건이 독립이려면 $P(A_n\\cap B)=\\dfrac1{12}$여야 합니다.</p> <p>표",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_EVENT_INDEPENDENCE"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_PERCENTAGE_PARTITION",
+      "canonicalLabelKo": "백분율 비율로 분할된 집단 구조 분석",
+      "definition": "전체 인원수에 대한 부서별 비율과 성별 비율을 결합하여 각 하위 집단의 실제 도수를 산출하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b6fdf99f67c29342c48123c2ffaa865f26fb4c7381bafc569e5d299ec68a47ec"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b6fdf99f67c29342c48123c2ffaa865f26fb4c7381bafc569e5d299ec68a47ec",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_PERCENTAGE_PARTITION for PT_CONDITIONAL_PROBABILITY/TPL_CONDITIONAL_PROBABILITY_DIRECT at H15-PS-04-CONDITIONAL_PROBABILITY.",
+          "decisiveEvidence": "<p>전체 175명 중 $A$부서는 $175\\times0.4=70$명, $B$부서는 $175\\times0.6=105$명입니다.</p> <p>$A$부서 여성은 $70\\times0.7=49$명입니다. $B$부서 남성이 ",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONDITIONAL_PROBABILITY"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_PROBABILITY_AXIOMS",
+      "canonicalLabelKo": "확률의 기본 공리와 논리적 판정",
+      "definition": "표본공간의 성질, 덧셈정리, 배반과 독립의 정의 등 확률의 기초 공리적 체계를 바탕으로 진위를 판별하는 논리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6314738cb591fc0d5b1fa11c16aa237dc753f2f0a49b302f1fd0464c1467efdb"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6314738cb591fc0d5b1fa11c16aa237dc753f2f0a49b302f1fd0464c1467efdb",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_PROBABILITY_AXIOMS for PT_EVENT_INDEPENDENCE/TPL_EVENT_INDEPENDENCE_JUDGMENT at H15-PS-04-INDEPENDENCE.",
+          "decisiveEvidence": "<p>ㄱ: 근원사건의 가능성이 같아야 $n(A)/n(S)$로 계산하므로 거짓입니다.</p> <p>ㄴ: 시행을 많이 반복하면 상대도수는 $1/2$에 가까워지는 경향이 있으므로 참입니다(큰 수의 법칙).</p> <p>ㄷ",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_EVENT_INDEPENDENCE"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_PROBABILITY_DEFINITION",
+      "canonicalLabelKo": "수학적 확률의 기본 정의",
+      "definition": "표본공간의 각 근원사건이 일어날 가능성이 같을 때 사건의 원소 수를 표본공간 전체 원소 수로 나눈 비율",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5b1e8d3e48f9b8159b5ab1a801883ce29bb1f43bd0aa604841590037bde33fa5",
+        "qid_v1_c657b3822278390e22bbfbc4fe59a24b2315a8e8f023176389652d26c2175560"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H15-PS-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c657b3822278390e22bbfbc4fe59a24b2315a8e8f023176389652d26c2175560",
+          "sourceOrdinal": 1,
+          "classificationRationale": "META_PIPELINE_AUDIT record 1 binds CC_PROBABILITY_DEFINITION for PT_PROBABILITY_PROPERTIES_APPLICATION/TPL_EVENT_RELATION_COMPLEMENT_ADDITION at H15-PS-03-PROBABILITY_ADDITION.",
+          "decisiveEvidence": "<p>배반사건은 두 사건이 동시에 일어날 수 없는 경우입니다. $A=\\{2,4,6\\}$이므로 $A$와 공통 원소가 없어야 합니다.</p> <p>$\\{1,3,5\\}\\cap\\{2,4,6\\}=\\varnothing$이므로 ",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5b1e8d3e48f9b8159b5ab1a801883ce29bb1f43bd0aa604841590037bde33fa5",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_PROBABILITY_DEFINITION for PT_PROBABILITY_PROPERTIES_APPLICATION/TPL_PROBABILITY_BASIC_COUNT_RATIO at H15-PS-03-PROBABILITY_BASIC.",
+          "decisiveEvidence": "<p>순서 없이 두 공을 뽑으므로 전체 경우의 수는 $\\binom72=21$입니다.</p> <p>흰 공 하나와 검은 공 하나를 고르는 경우는 $\\binom31\\binom41=3\\times4=12$가지입니다.</p> ",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-03"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_PROBABILITY_MULTIPLICATION",
+      "canonicalLabelKo": "확률의 곱셈정리",
+      "definition": "두 사건이 연이어 일어날 확률을 P(A ∩ B) = P(A)P(B|A) (독립일 때는 P(A)P(B))로 구하는 원리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_2e388c2377a2f17f26bd33865125fb4191ed0befaabba9b396751a9430fcc5a2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_2e388c2377a2f17f26bd33865125fb4191ed0befaabba9b396751a9430fcc5a2",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_PROBABILITY_MULTIPLICATION for PT_EVENT_INDEPENDENCE/TPL_EVENT_INDEPENDENCE_JUDGMENT at H15-PS-04-INDEPENDENCE.",
+          "decisiveEvidence": "<p>독립인 두 사건에서는 $P(A\\cap B)=P(A)P(B)$입니다.</p> <p>$\\dfrac25=\\dfrac34P(B)$에서 $P(B)=\\dfrac25\\times\\dfrac43=\\dfrac8{15}$입니다.<",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_EVENT_INDEPENDENCE"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_TRANSITION_PROBABILITY",
+      "canonicalLabelKo": "상태 전이와 전체확률의 정리",
+      "definition": "이전 상태의 결과에 따라 다음 상태의 확률이 달라지는 마르코프형 연쇄에서 모든 경로의 확률을 합산하는 원리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_22d85dd19b3d95b4c2563cf3be8d96cc43381397c4cb6313d8daf7d5ea54282b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_22d85dd19b3d95b4c2563cf3be8d96cc43381397c4cb6313d8daf7d5ea54282b",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_TRANSITION_PROBABILITY for PT_CONDITIONAL_PROBABILITY/TPL_CONDITIONAL_PROBABILITY_DIRECT at H15-PS-04-CONDITIONAL_PROBABILITY.",
+          "decisiveEvidence": "<p>월요일에 비가 왔으므로 화요일에 비가 올 확률은 $0.7$, 오지 않을 확률은 $0.3$입니다. 수요일에 비가 오지 않는 경우를 화요일 날씨로 나눕니다.</p> <p>화요일에 비가 오고 수요일에 오지 않을 확률",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONDITIONAL_PROBABILITY"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
       ],
       "ownerConceptShard": "STATISTICS_CONCEPTS"
     }

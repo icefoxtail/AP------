@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "NUMBER_THEORY",
-  "shardVersion": "1.1.4",
+  "shardVersion": "1.1.5",
   "status": "ACTIVE",
-  "conceptCount": 19,
+  "conceptCount": 20,
   "concepts": [
     {
       "conceptKey": "CC_NUMBER_DIVISOR_MULTIPLE",
@@ -626,6 +626,41 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_PARITY_ANALYSIS",
+      "canonicalLabelKo": "홀수와 짝수의 곱과 합의 홀짝성 분석",
+      "definition": "여러 수의 곱이 짝수가 되려면 적어도 하나가 짝수여야 함을 여사건(모두 홀수)으로 분석하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_2a71465034c2737929b24c7c58c0099b7cca99c4128226528c12f2a8728cf19d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_2a71465034c2737929b24c7c58c0099b7cca99c4128226528c12f2a8728cf19d",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_PARITY_ANALYSIS for PT_PROBABILITY_PROPERTIES_APPLICATION/TPL_EVENT_RELATION_COMPLEMENT_ADDITION at H15-PS-03-PROBABILITY_ADDITION.",
+          "decisiveEvidence": "<p>세 수의 곱이 홀수가 되려면 뽑은 세 수가 모두 홀수여야 합니다. $S$의 홀수는 $1,3,5,7$ 네 개입니다.</p> <p>전체 부분집합은 $\\binom73=35$개이고 홀수 곱인 경우는 $\\binom43=",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-03"
       ],
       "ownerConceptShard": "NUMBER_THEORY"
     }

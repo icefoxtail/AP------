@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "LOGIC_SET",
-  "shardVersion": "1.0.3",
+  "shardVersion": "1.0.4",
   "status": "ACTIVE",
-  "conceptCount": 17,
+  "conceptCount": 18,
   "concepts": [
     {
       "conceptKey": "CC_COUNTEREXAMPLE",
@@ -518,6 +518,41 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-06"
+      ],
+      "ownerConceptShard": "LOGIC_SET"
+    },
+    {
+      "conceptKey": "CC_SET_INTERSECTION",
+      "canonicalLabelKo": "집합의 교집합과 원소의 포함관계",
+      "definition": "자연수 구간 집합 A_n과 고정 집합 B의 교집합 원소 개수를 n의 변화에 따라 체계적으로 추적하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c8bf14defdd2997cec5dc58e08140c6a14b7c1b0a303917b06fc35ac24466a72"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c8bf14defdd2997cec5dc58e08140c6a14b7c1b0a303917b06fc35ac24466a72",
+          "sourceOrdinal": 21,
+          "classificationRationale": "META_PIPELINE_AUDIT record 21 binds CC_SET_INTERSECTION for PT_EVENT_INDEPENDENCE/TPL_EVENT_INDEPENDENCE_JUDGMENT at H15-PS-04-INDEPENDENCE.",
+          "decisiveEvidence": "<p>$P(A_n)=\\dfrac3{12}=\\dfrac14$, $P(B)=\\dfrac4{12}=\\dfrac13$입니다. 두 사건이 독립이려면 $P(A_n\\cap B)=\\dfrac1{12}$여야 합니다.</p> <p>표",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_EVENT_INDEPENDENCE"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
       ],
       "ownerConceptShard": "LOGIC_SET"
     }
