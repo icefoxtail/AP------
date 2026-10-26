@@ -1209,6 +1209,513 @@ export function createCalculusObject({ xRange = 3.6 } = {}) {
 // -------------------------------------------------------------
 // Object Factory Registry (8 Families)
 // -------------------------------------------------------------
+
+// -------------------------------------------------------------
+// 9. Möbius Strip (뫼비우스의 띠 - Single-sided Topology)
+// -------------------------------------------------------------
+export function createMobiusObject({ radius = 3.6, width = 1.1, isMobile = false } = {}) {
+  const group = new THREE.Group();
+  group.name = 'math-mobius';
+
+  const uSegments = isMobile ? 80 : 120;
+  const vSegments = 16;
+  const positions = [];
+  const indices = [];
+
+  for (let i = 0; i <= uSegments; i++) {
+    const u = (i / uSegments) * Math.PI * 2;
+    for (let j = 0; j <= vSegments; j++) {
+      const v = -width + (j / vSegments) * (2 * width);
+      const halfU = u / 2;
+      const x = (radius + v * Math.cos(halfU)) * Math.cos(u);
+      const y = (radius + v * Math.cos(halfU)) * Math.sin(u);
+      const z = v * Math.sin(halfU);
+      positions.push(x, y, z);
+    }
+  }
+
+  for (let i = 0; i < uSegments; i++) {
+    for (let j = 0; j < vSegments; j++) {
+      const a = i * (vSegments + 1) + j;
+      const b = (i + 1) * (vSegments + 1) + j;
+      const c = (i + 1) * (vSegments + 1) + (j + 1);
+      const d = i * (vSegments + 1) + (j + 1);
+      indices.push(a, b, d);
+      indices.push(b, c, d);
+    }
+  }
+
+  const mobiusGeo = new THREE.BufferGeometry();
+  mobiusGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  mobiusGeo.setIndex(indices);
+  mobiusGeo.computeVertexNormals();
+
+  const mobiusMat = new THREE.MeshPhysicalMaterial({
+    color: 0x1f1430,
+    emissive: 0x0f081c,
+    roughness: 0.12,
+    metalness: 0.75,
+    clearcoat: 0.85,
+    clearcoatRoughness: 0.05,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.88,
+  });
+  const mobiusMesh = new THREE.Mesh(mobiusGeo, mobiusMat);
+  group.add(mobiusMesh);
+
+  // Single continuous boundary line: v = width for u in [0, 4PI]
+  const edgePts = [];
+  const edgeSteps = 160;
+  for (let i = 0; i <= edgeSteps; i++) {
+    const u = (i / edgeSteps) * Math.PI * 4;
+    const v = width;
+    const halfU = u / 2;
+    const x = (radius + v * Math.cos(halfU)) * Math.cos(u);
+    const y = (radius + v * Math.cos(halfU)) * Math.sin(u);
+    const z = v * Math.sin(halfU);
+    edgePts.push(new THREE.Vector3(x, y, z));
+  }
+  const edgeLineGeo = new THREE.BufferGeometry().setFromPoints(edgePts);
+  const edgeLineMat = new THREE.LineBasicMaterial({
+    color: MATH_COLORS.emeraldBright,
+    transparent: true,
+    opacity: 0.95,
+  });
+  const edgeLine = new THREE.Line(edgeLineGeo, edgeLineMat);
+  group.add(edgeLine);
+
+  // Centerline in Champagne Gold dashed line (v = 0)
+  const centerPts = [];
+  for (let i = 0; i <= 80; i++) {
+    const u = (i / 80) * Math.PI * 2;
+    centerPts.push(new THREE.Vector3(radius * Math.cos(u), radius * Math.sin(u), 0));
+  }
+  const centerLineGeo = new THREE.BufferGeometry().setFromPoints(centerPts);
+  const centerLineMat = new THREE.LineDashedMaterial({
+    color: MATH_COLORS.champagneGold,
+    dashSize: 0.35,
+    gapSize: 0.2,
+    opacity: 0.6,
+    transparent: true,
+  });
+  const centerLine = new THREE.Line(centerLineGeo, centerLineMat);
+  centerLine.computeLineDistances();
+  group.add(centerLine);
+
+  // Traveling Particle demonstrating single-sidedness
+  const particle = new THREE.Mesh(
+    new THREE.SphereGeometry(0.14, 16, 16),
+    new THREE.MeshStandardMaterial({
+      color: MATH_COLORS.warmIvory,
+      emissive: MATH_COLORS.champagneGold,
+      emissiveIntensity: 0.8,
+    })
+  );
+  const partGlowTex = createGlowSpriteTexture(MATH_COLORS.champagneGold, 0.85);
+  const partSprite = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: partGlowTex,
+    color: MATH_COLORS.champagneGold,
+    blending: THREE.AdditiveBlending,
+    transparent: true,
+  }));
+  partSprite.scale.set(1.0, 1.0, 1.0);
+  particle.add(partSprite);
+  group.add(particle);
+
+  return {
+    group,
+    metadata: {
+      id: 'mobius',
+      title: '뫼비우스의 띠',
+      subtitle: '단측 곡면 · 위상수학과 비가향성',
+      formula: '안과 밖의 구분이 없는 1개의 면과 1개의 모서리',
+      grade: '고등 기하 · 위상수학',
+      category: '곡면과 위상',
+      description: '단 하나의 면과 경계선만을 갖는 신비로운 3차원 곡면. 입자가 2바퀴(4π)를 돌아야 원래 위치로 복귀하는 비가향성의 아름다움입니다.',
+    },
+    update(time) {
+      const u = (time * 0.7) % (Math.PI * 4);
+      const v = 0.5 * Math.sin(time * 0.5);
+      const halfU = u / 2;
+      const px = (radius + v * Math.cos(halfU)) * Math.cos(u);
+      const py = (radius + v * Math.cos(halfU)) * Math.sin(u);
+      const pz = v * Math.sin(halfU);
+      particle.position.set(px, py, pz);
+
+      group.rotation.x = Math.sin(time * 0.12) * 0.15;
+      group.rotation.y = time * 0.10;
+      group.rotation.z = Math.cos(time * 0.14) * 0.08;
+    },
+    dispose() {
+      mobiusGeo.dispose();
+      mobiusMat.dispose();
+      edgeLineGeo.dispose();
+      edgeLineMat.dispose();
+      centerLineGeo.dispose();
+      centerLineMat.dispose();
+      particle.geometry.dispose();
+      partGlowTex.dispose();
+    },
+  };
+}
+
+// -------------------------------------------------------------
+// 10. Golden Spiral (황금 나선과 피보나치 은하)
+// -------------------------------------------------------------
+export function createGoldenSpiralObject({ turns = 3.2, isMobile = false } = {}) {
+  const group = new THREE.Group();
+  group.name = 'math-golden-spiral';
+
+  const b = 0.30635;
+  const maxTheta = turns * Math.PI * 2;
+  const pts = [];
+  const steps = 180;
+
+  for (let i = 0; i <= steps; i++) {
+    const theta = (i / steps) * maxTheta;
+    const r = 0.18 * Math.exp(b * theta);
+    const x = r * Math.cos(theta);
+    const y = r * Math.sin(theta);
+    const z = (theta / maxTheta) * 0.8 - 0.4;
+    pts.push(new THREE.Vector3(x, y, z));
+  }
+
+  const spiralCurve = new THREE.CatmullRomCurve3(pts);
+  const spiralTubeGeo = new THREE.TubeGeometry(spiralCurve, 180, isMobile ? 0.045 : 0.06, 8, false);
+  const spiralMat = new THREE.MeshStandardMaterial({
+    color: MATH_COLORS.champagneGold,
+    emissive: 0x36250e,
+    metalness: 0.9,
+    roughness: 0.18,
+  });
+  const spiralMesh = new THREE.Mesh(spiralTubeGeo, spiralMat);
+  group.add(spiralMesh);
+
+  // Fibonacci logarithmic grid frames
+  const gridGroup = new THREE.Group();
+  const frameMat = new THREE.LineBasicMaterial({
+    color: MATH_COLORS.emerald,
+    transparent: true,
+    opacity: 0.35,
+  });
+  for (let k = 1; k <= 6; k++) {
+    const curTheta = k * (Math.PI / 2);
+    const curR = 0.18 * Math.exp(b * curTheta);
+    const rectGeo = new THREE.BufferGeometry().setFromPoints([
+      new THREE.Vector3(-curR, -curR, 0),
+      new THREE.Vector3(curR, -curR, 0),
+      new THREE.Vector3(curR, curR, 0),
+      new THREE.Vector3(-curR, curR, 0),
+      new THREE.Vector3(-curR, -curR, 0),
+    ]);
+    const rectLine = new THREE.Line(rectGeo, frameMat);
+    gridGroup.add(rectLine);
+  }
+  group.add(gridGroup);
+
+  // Central Golden Singularity Core
+  const coreMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(0.22, 16, 16),
+    new THREE.MeshStandardMaterial({
+      color: MATH_COLORS.champagneGold,
+      emissive: MATH_COLORS.champagneGold,
+      emissiveIntensity: 0.9,
+      metalness: 0.95,
+      roughness: 0.1,
+    })
+  );
+  const coreTex = createGlowSpriteTexture(MATH_COLORS.champagneGold, 0.95);
+  const coreSprite = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: coreTex,
+    color: MATH_COLORS.champagneGold,
+    blending: THREE.AdditiveBlending,
+    transparent: true,
+  }));
+  coreSprite.scale.set(1.6, 1.6, 1.6);
+  coreMesh.add(coreSprite);
+  group.add(coreMesh);
+
+  // Stardust vortex streaming inward
+  const dustCount = isMobile ? 36 : 72;
+  const dustGeo = new THREE.BufferGeometry();
+  const dustPos = new Float32Array(dustCount * 3);
+  const dustOffsets = new Float32Array(dustCount);
+  for (let i = 0; i < dustCount; i++) {
+    dustOffsets[i] = (i / dustCount) * maxTheta;
+  }
+  dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+  const dustMat = new THREE.PointsMaterial({
+    color: MATH_COLORS.emeraldBright,
+    size: 0.14,
+    transparent: true,
+    opacity: 0.85,
+    blending: THREE.AdditiveBlending,
+  });
+  const dustVortex = new THREE.Points(dustGeo, dustMat);
+  group.add(dustVortex);
+
+  return {
+    group,
+    metadata: {
+      id: 'golden-spiral',
+      title: '황금 나선과 피보나치 은하',
+      subtitle: '대수 나선 · 자기유사성과 황금비',
+      formula: 'r = a·e^{bθ},  φ = (1 + √5)/2 ≈ 1.618',
+      grade: '고등 수1 · 기하',
+      category: '특수 곡선',
+      description: '황금비율로 끝없이 뻗어나가는 대수 나선. 은하의 나선팔, 앵무조개, 태풍의 중심에서 발견되는 자연과 우주의 절대 기하학입니다.',
+    },
+    update(time) {
+      const p = dustGeo.attributes.position.array;
+      for (let i = 0; i < dustCount; i++) {
+        let th = (dustOffsets[i] - time * 0.6) % maxTheta;
+        if (th < 0) th += maxTheta;
+        const r = 0.18 * Math.exp(b * th);
+        p[i * 3] = r * Math.cos(th);
+        p[i * 3 + 1] = r * Math.sin(th);
+        p[i * 3 + 2] = (th / maxTheta) * 0.8 - 0.4 + Math.sin(time + th) * 0.05;
+      }
+      dustGeo.attributes.position.needsUpdate = true;
+
+      coreSprite.scale.setScalar(1.5 + Math.sin(time * 3.0) * 0.25);
+
+      group.rotation.z = time * 0.08;
+      group.rotation.x = Math.sin(time * 0.15) * 0.1;
+    },
+    dispose() {
+      spiralTubeGeo.dispose();
+      spiralMat.dispose();
+      coreMesh.geometry.dispose();
+      coreTex.dispose();
+      dustGeo.dispose();
+      dustMat.dispose();
+    },
+  };
+}
+
+// -------------------------------------------------------------
+// 11. Hyperboloid of One Sheet (일엽쌍곡면 - 괘선 곡면 타워)
+// -------------------------------------------------------------
+export function createHyperboloidObject({ a = 1.8, c = 2.8, height = 5.2, isMobile = false } = {}) {
+  const group = new THREE.Group();
+  group.name = 'math-hyperboloid';
+
+  const lineCount = isMobile ? 18 : 28;
+  const maxU = (height / 2) / c;
+
+  const lines1Geo = new THREE.BufferGeometry();
+  const lines2Geo = new THREE.BufferGeometry();
+  const pos1 = new Float32Array(lineCount * 2 * 3);
+  const pos2 = new Float32Array(lineCount * 2 * 3);
+
+  for (let i = 0; i < lineCount; i++) {
+    const theta = (i / lineCount) * Math.PI * 2;
+    const cosT = Math.cos(theta);
+    const sinT = Math.sin(theta);
+
+    const x1_a = a * cosT - (-maxU) * a * sinT;
+    const y1_a = a * sinT + (-maxU) * a * cosT;
+    const z1_a = -maxU * c;
+
+    const x1_b = a * cosT - (maxU) * a * sinT;
+    const y1_b = a * sinT + (maxU) * a * cosT;
+    const z1_b = maxU * c;
+
+    pos1[i * 6] = x1_a; pos1[i * 6 + 1] = y1_a; pos1[i * 6 + 2] = z1_a;
+    pos1[i * 6 + 3] = x1_b; pos1[i * 6 + 4] = y1_b; pos1[i * 6 + 5] = z1_b;
+
+    const x2_a = a * cosT + (-maxU) * a * sinT;
+    const y2_a = a * sinT - (-maxU) * a * cosT;
+    const z2_a = -maxU * c;
+
+    const x2_b = a * cosT + (maxU) * a * sinT;
+    const y2_b = a * sinT - (maxU) * a * cosT;
+    const z2_b = maxU * c;
+
+    pos2[i * 6] = x2_a; pos2[i * 6 + 1] = y2_a; pos2[i * 6 + 2] = z2_a;
+    pos2[i * 6 + 3] = x2_b; pos2[i * 6 + 4] = y2_b; pos2[i * 6 + 5] = z2_b;
+  }
+
+  lines1Geo.setAttribute('position', new THREE.BufferAttribute(pos1, 3));
+  lines2Geo.setAttribute('position', new THREE.BufferAttribute(pos2, 3));
+
+  const mat1 = new THREE.LineBasicMaterial({
+    color: MATH_COLORS.champagneGold,
+    transparent: true,
+    opacity: 0.85,
+  });
+  const mat2 = new THREE.LineBasicMaterial({
+    color: MATH_COLORS.softAmethyst,
+    transparent: true,
+    opacity: 0.75,
+  });
+
+  const mesh1 = new THREE.LineSegments(lines1Geo, mat1);
+  const mesh2 = new THREE.LineSegments(lines2Geo, mat2);
+  group.add(mesh1);
+  group.add(mesh2);
+
+  // Glowing waist circle
+  const waistGeo = new THREE.BufferGeometry().setFromPoints(
+    Array.from({ length: 65 }, (_, idx) => {
+      const th = (idx / 64) * Math.PI * 2;
+      return new THREE.Vector3(a * Math.cos(th), a * Math.sin(th), 0);
+    })
+  );
+  const waistMat = new THREE.LineBasicMaterial({
+    color: MATH_COLORS.emeraldBright,
+    linewidth: 2,
+  });
+  const waistRing = new THREE.Line(waistGeo, waistMat);
+  group.add(waistRing);
+
+  // Central axis beam
+  const axisGeo = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(0, 0, -height * 0.65),
+    new THREE.Vector3(0, 0, height * 0.65),
+  ]);
+  const axisMat = new THREE.LineDashedMaterial({
+    color: MATH_COLORS.warmIvory,
+    dashSize: 0.3,
+    gapSize: 0.15,
+    opacity: 0.5,
+    transparent: true,
+  });
+  const axisLine = new THREE.Line(axisGeo, axisMat);
+  axisLine.computeLineDistances();
+  group.add(axisLine);
+
+  return {
+    group,
+    metadata: {
+      id: 'hyperboloid',
+      title: '일엽쌍곡면과 괘선 곡면',
+      subtitle: '직선들의 회전으로 탄생하는 3차원 곡면',
+      formula: '(x² + y²)/a² - z²/c² = 1',
+      grade: '고등 기하 · 미적분',
+      category: '3차원 곡면',
+      description: '완벽한 직선들이 비틀려 모여 하나의 유려한 모래시계형 곡면을 형성하는 이중 괘선 곡면(Ruled Surface). 현대 천체물리학과 건축 구조의 정수입니다.',
+    },
+    update(time) {
+      group.rotation.z = time * 0.12;
+      group.rotation.x = Math.PI / 4 + Math.sin(time * 0.15) * 0.1;
+      group.rotation.y = Math.cos(time * 0.12) * 0.08;
+    },
+    dispose() {
+      lines1Geo.dispose();
+      lines2Geo.dispose();
+      mat1.dispose();
+      mat2.dispose();
+      waistGeo.dispose();
+      waistMat.dispose();
+      axisGeo.dispose();
+      axisMat.dispose();
+    },
+  };
+}
+
+// -------------------------------------------------------------
+// 12. Torus & Villarceau Circles (원환면과 비야르소 원)
+// -------------------------------------------------------------
+export function createTorusVillarceauObject({ R = 3.6, r = 1.35, isMobile = false } = {}) {
+  const group = new THREE.Group();
+  group.name = 'math-torus-villarceau';
+
+  const torusGeo = new THREE.TorusGeometry(R, r, isMobile ? 16 : 24, isMobile ? 48 : 64);
+  const torusMat = new THREE.MeshPhysicalMaterial({
+    color: 0x181024,
+    emissive: 0x0a0612,
+    roughness: 0.10,
+    metalness: 0.15,
+    transmission: isMobile ? 0.35 : 0.82,
+    thickness: 1.4,
+    ior: 1.52,
+    clearcoat: 0.9,
+    transparent: true,
+    opacity: 0.75,
+    depthWrite: false,
+  });
+  const torusMesh = new THREE.Mesh(torusGeo, torusMat);
+  group.add(torusMesh);
+
+  // Bitangent planes sliced at angle alpha = arcsin(r / R)
+  const alpha = Math.asin(r / R);
+  const circlePts1 = [];
+  const circlePts2 = [];
+  const segs = 96;
+
+  for (let i = 0; i <= segs; i++) {
+    const th = (i / segs) * Math.PI * 2;
+    const p1 = new THREE.Vector3(R * Math.cos(th), R * Math.sin(th), 0);
+    p1.applyAxisAngle(new THREE.Vector3(1, 0, 0), alpha);
+    circlePts1.push(p1);
+
+    const p2 = new THREE.Vector3(R * Math.cos(th), R * Math.sin(th), 0);
+    p2.applyAxisAngle(new THREE.Vector3(1, 0, 0), -alpha);
+    circlePts2.push(p2);
+  }
+
+  const vCircle1Geo = new THREE.BufferGeometry().setFromPoints(circlePts1);
+  const vCircle1Mat = new THREE.LineBasicMaterial({
+    color: MATH_COLORS.emeraldBright,
+    linewidth: 2,
+  });
+  const vCircle1 = new THREE.Line(vCircle1Geo, vCircle1Mat);
+  group.add(vCircle1);
+
+  const vCircle2Geo = new THREE.BufferGeometry().setFromPoints(circlePts2);
+  const vCircle2Mat = new THREE.LineBasicMaterial({
+    color: MATH_COLORS.softAmethyst,
+    linewidth: 2,
+  });
+  const vCircle2 = new THREE.Line(vCircle2Geo, vCircle2Mat);
+  group.add(vCircle2);
+
+  // Glowing intersection nodes
+  const nodeGeo = new THREE.SphereGeometry(0.16, 16, 16);
+  const nodeMat = new THREE.MeshStandardMaterial({
+    color: MATH_COLORS.champagneGold,
+    emissive: MATH_COLORS.champagneGold,
+    emissiveIntensity: 0.8,
+  });
+  const node1 = new THREE.Mesh(nodeGeo, nodeMat);
+  node1.position.set(R, 0, 0);
+  group.add(node1);
+
+  const node2 = new THREE.Mesh(nodeGeo, nodeMat);
+  node2.position.set(-R, 0, 0);
+  group.add(node2);
+
+  return {
+    group,
+    metadata: {
+      id: 'torus',
+      title: '원환면과 비야르소 원',
+      subtitle: '토러스의 공통 접평면이 만드는 대칭 원',
+      formula: '(R - √(x²+y²))² + z² = r²,  각도 α = arcsin(r/R)',
+      grade: '고등 기하 · 해석기하',
+      category: '공간도형',
+      description: '도넛 형태의 원환면을 비스듬히 자를 때 나타나는 2개의 완벽한 교차 원. 1848년 비야르소가 증명한 4차원 대칭성의 3차원 투영입니다.',
+    },
+    update(time) {
+      group.rotation.x = time * 0.12;
+      group.rotation.y = time * 0.16;
+      group.rotation.z = Math.sin(time * 0.1) * 0.08;
+    },
+    dispose() {
+      torusGeo.dispose();
+      torusMat.dispose();
+      vCircle1Geo.dispose();
+      vCircle1Mat.dispose();
+      vCircle2Geo.dispose();
+      vCircle2Mat.dispose();
+      nodeGeo.dispose();
+      nodeMat.dispose();
+    },
+  };
+}
+
 export const MATH_OBJECT_FACTORIES = Object.freeze({
   polyhedra: createPolyhedronObject,
   ellipse: createEllipseObject,
@@ -1218,4 +1725,8 @@ export const MATH_OBJECT_FACTORIES = Object.freeze({
   solid: createSolidGeometryObject,
   vector: createVectorObject,
   calculus: createCalculusObject,
+  mobius: createMobiusObject,
+  'golden-spiral': createGoldenSpiralObject,
+  hyperboloid: createHyperboloidObject,
+  torus: createTorusVillarceauObject,
 });

@@ -14,6 +14,10 @@ import {
   createSolidGeometryObject,
   createVectorObject,
   createCalculusObject,
+  createMobiusObject,
+  createGoldenSpiralObject,
+  createHyperboloidObject,
+  createTorusVillarceauObject,
 } from './math-objects.js';
 import { MathGalaxyMotionEngine } from './math-motion.js';
 
@@ -215,10 +219,11 @@ export function createMathUniverse({
 
   // =========================================================================
   // 3-Tier Galaxy Spatial Staging (Foreground Hero / Midground / Deep Space)
+  // 12 Mathematical Celestial Bodies Distributed Across Quadrants & Depth
   // =========================================================================
 
   // [Tier 1: Foreground Hero - z = -7 ~ -9]
-  // Hero 1: Polyhedra Dual Crystal (정다면체)
+  // Hero 1: Polyhedra Dual Crystal (정다면체 결정) - Left Hero
   addCelestial({
     builder: createPolyhedronObject,
     options: { radius: isMobile ? 3.3 : 3.9 },
@@ -229,7 +234,7 @@ export function createMathUniverse({
     selfRot: new THREE.Vector3(0.04, 0.08, 0.02),
   });
 
-  // Hero 2: Ellipse & Dual Foci (타원과 두 초점)
+  // Hero 2: Ellipse & Dual Foci (타원과 두 초점) - Right Hero
   addCelestial({
     builder: createEllipseObject,
     options: { a: isMobile ? 6.4 : 7.6, b: isMobile ? 3.8 : 4.4 },
@@ -241,7 +246,7 @@ export function createMathUniverse({
   });
 
   // [Tier 2: Midground Constellation - z = -19 ~ -28]
-  // Hero 3: Parabola, Focus & Directrix (포물선과 준선)
+  // Celestial 3: Parabola, Focus & Directrix (포물선과 준선) - Midground Top
   addCelestial({
     builder: createParabolaObject,
     options: { p: 2.1, yRange: isMobile ? 5.4 : 6.4 },
@@ -252,7 +257,7 @@ export function createMathUniverse({
     selfRot: new THREE.Vector3(0.03, 0.02, 0.05),
   });
 
-  // Secondary 4: Cubic Calculus (삼차함수와 접선)
+  // Celestial 4: Cubic Calculus (삼차함수와 접선) - Midground Bottom
   addCelestial({
     builder: createCalculusObject,
     options: { xRange: 3.6 },
@@ -263,45 +268,89 @@ export function createMathUniverse({
     selfRot: new THREE.Vector3(0.02, 0.03, 0.04),
   });
 
-  // Secondary 5: Vector Space (공간벡터)
+  // Celestial 5: Möbius Strip (뫼비우스의 띠) - Midground Upper-Left
+  addCelestial({
+    builder: createMobiusObject,
+    options: { radius: isMobile ? 3.0 : 3.6, width: 1.1 },
+    basePos: new THREE.Vector3(-22, 12.0, -25),
+    orbitRadius: 2.2,
+    orbitSpeed: 0.10,
+    orbitPlane: 'xy',
+    selfRot: new THREE.Vector3(0.02, 0.05, 0.03),
+  });
+
+  // Celestial 6: Hyperboloid (일엽쌍곡면 타워) - Midground Upper-Right
+  addCelestial({
+    builder: createHyperboloidObject,
+    options: { a: 1.7, c: 2.6, height: 5.0 },
+    basePos: new THREE.Vector3(22, 12.5, -24),
+    orbitRadius: 2.1,
+    orbitSpeed: -0.10,
+    orbitPlane: 'xz',
+    selfRot: new THREE.Vector3(0.03, 0.04, 0.02),
+  });
+
+  // Celestial 7: Vector Space (공간벡터) - Midground Lower-Right
   addCelestial({
     builder: createVectorObject,
     options: { length: 4.2 },
-    basePos: new THREE.Vector3(20, -14.5, -25),
+    basePos: new THREE.Vector3(21, -13.5, -25),
     orbitRadius: 2.4,
     orbitSpeed: 0.12,
     orbitPlane: 'xz',
     selfRot: new THREE.Vector3(0.02, 0.07, 0.01),
   });
 
-  // Secondary 6: Hyperbola (쌍곡선)
+  // Celestial 8: Hyperbola (쌍곡선) - Midground Lower-Left
   addCelestial({
     builder: createHyperbolaObject,
     options: { a: 2.8, b: 2.1 },
-    basePos: new THREE.Vector3(-25, -11, -28),
-    orbitRadius: 2.8,
+    basePos: new THREE.Vector3(-23, -12.0, -27),
+    orbitRadius: 2.6,
     orbitSpeed: -0.08,
     orbitPlane: 'xz',
     selfRot: new THREE.Vector3(0.02, 0.04, 0.02),
   });
 
-  // [Tier 3: Deep Space Cosmic Layer - z = -44 ~ -52]
-  // Secondary 7: Circle & Sector (원과 부채꼴)
+  // [Tier 3: Deep Space Cosmic Layer - z = -38 ~ -52]
+  // Celestial 9: Golden Spiral (황금 나선과 피보나치) - Deep Space Lower-Left
+  addCelestial({
+    builder: createGoldenSpiralObject,
+    options: { turns: 3.2 },
+    basePos: new THREE.Vector3(-18, -17.0, -38),
+    orbitRadius: 2.8,
+    orbitSpeed: 0.08,
+    orbitPlane: 'xy',
+    selfRot: new THREE.Vector3(0.02, 0.03, 0.05),
+  });
+
+  // Celestial 10: Torus & Villarceau Circles (원환면과 비야르소 원) - Deep Space Lower-Right
+  addCelestial({
+    builder: createTorusVillarceauObject,
+    options: { R: 3.4, r: 1.3 },
+    basePos: new THREE.Vector3(20, -18.0, -40),
+    orbitRadius: 3.0,
+    orbitSpeed: -0.08,
+    orbitPlane: 'xz',
+    selfRot: new THREE.Vector3(0.03, 0.04, 0.02),
+  });
+
+  // Celestial 11: Circle & Sector (원과 부채꼴) - Deep Space Upper-Right
   addCelestial({
     builder: createCircleSectorObject,
     options: { radius: 3.8 },
-    basePos: new THREE.Vector3(28, 14, -46),
+    basePos: new THREE.Vector3(28, 15.0, -46),
     orbitRadius: 3.2,
     orbitSpeed: 0.09,
     orbitPlane: 'xz',
     selfRot: new THREE.Vector3(0.01, 0.04, 0.02),
   });
 
-  // Secondary 8: Solid Geometry (공간도형)
+  // Celestial 12: Solid Geometry (공간도형) - Deep Space Upper-Left
   addCelestial({
     builder: createSolidGeometryObject,
     options: { radius: 2.8 },
-    basePos: new THREE.Vector3(-22, 17, -50),
+    basePos: new THREE.Vector3(-24, 18.0, -50),
     orbitRadius: 2.8,
     orbitSpeed: -0.09,
     orbitPlane: 'xy',
