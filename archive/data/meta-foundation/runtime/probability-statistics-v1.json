@@ -13,19 +13,20 @@
     "reviewedExam_gangnam25-probstat-finalqa-meta-20261021": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/gangnam25-probstat-finalqa-meta-20261021.json",
     "reviewedExam_meta-pipeline-25-jeil-2final-probstat-20261023": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-25-jeil-2final-probstat-20261023.json",
     "reviewedExam_meta-pipeline-25-jeil-h2-probstats-20261023": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-25-jeil-h2-probstats-20261023.json",
-    "reviewedExam_meta-pipeline-18-maesan-h2-probstats-20261024-codex-audit": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-18-maesan-h2-probstats-20261024-codex-audit.json"
+    "reviewedExam_meta-pipeline-18-maesan-h2-probstats-20261024-codex-audit": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-18-maesan-h2-probstats-20261024-codex-audit.json",
+    "reviewedExam_meta-pipeline-03-boksung-h2-probstats-20261024": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json"
   },
   "counts": {
     "canonicalAssignments": 704,
     "records": 722,
-    "taxonomyRows": 116,
+    "taxonomyRows": 117,
     "defaultSelectable": 722,
     "bindingGap": 0,
     "sourceRepairPending": 0,
     "difficultyReviewed": 704,
     "catalogUidDirectJoin": 704,
     "catalogSourceIdentityRepairJoin": 0,
-    "automaticEligibleExpected": 65,
+    "automaticEligibleExpected": 85,
     "catalogJoinMismatch": 0,
     "sourceHold": 0,
     "supplementary": 0
@@ -42,6 +43,12 @@
       "courseKey": "확률과 통계",
       "L1": "경우의 수",
       "L2": "순열"
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합"
     },
     {
       "curriculumKey": "2015",
@@ -464,6 +471,19 @@
       "curriculumKey": "2015",
       "courseKey": "확률과 통계",
       "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "순열",
+      "L4": "같은 것이 있는 순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
       "L2": "이항정리 핵심 개념",
       "L3": "이항정리",
       "L4": "이항계수의 성질·활용",
@@ -562,7 +582,7 @@
       "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 8
+      "supportingItemCount": 7
     },
     {
       "curriculumKey": "2015",
@@ -978,7 +998,7 @@
       "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 12
+      "supportingItemCount": 13
     },
     {
       "curriculumKey": "2015",
@@ -991,7 +1011,7 @@
       "templateKey": "TPL_NORMAL_STANDARDIZATION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 23
+      "supportingItemCount": 22
     },
     {
       "curriculumKey": "2015",
@@ -1186,7 +1206,7 @@
       "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 49
+      "supportingItemCount": 48
     },
     {
       "curriculumKey": "2015",
@@ -1199,7 +1219,7 @@
       "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 10
+      "supportingItemCount": 11
     },
     {
       "curriculumKey": "2015",
@@ -3612,40 +3632,77 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 4,
       "sourceQuestionNo": "4",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "f4d62064d026093fc6079a35c3925808f38a4b7fc97687d6afd7165254c14dfd",
+      "contentFingerprint": "ff4a8355dbc1191328f61b782bb2cfc873d66ae66a0cf690b2577daa644da429",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-04",
       "standardUnit": "조건부확률",
-      "standardUnitOrder": 4,
-      "sourceSubUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
       "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "subUnit": "조건부확률",
+      "conceptClusterKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_CONDITIONAL_PROBABILITY_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "확률",
       "L2": "조건부확률",
       "L3": "조건부확률",
       "L4": "조건부확률의 직접 계산",
-      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
-      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#4",
+      "approvedSourceFingerprint": "f4d62064d026093fc6079a35c3925808f38a4b7fc97687d6afd7165254c14dfd",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_0ffbd5ab375abbccb76f981af8c5d4b152001f36206c7cd8a4551a9babb78f2d",
@@ -4626,42 +4683,78 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 5,
       "sourceQuestionNo": "5",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "572d7156ed29b78aa9673982bd2e81704189e534091f862d12162e9a7413b4f1",
+      "contentFingerprint": "b37735776a9216c42cc163425263c5a04c8d7038d949ce25d8716a55ff873c40",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-03",
       "standardUnit": "확률의 뜻과 활용",
-      "standardUnitOrder": 3,
-      "sourceSubUnitKey": "H15-PS-03-PROBABILITY_BASIC",
       "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "conceptClusterKey": "H15-PS-03-PROBABILITY_BASIC",
+      "problemTypeKey": "PT_PROBABILITY_REPEATED_TRIALS",
+      "templateKey": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_INDEPENDENT_TRIALS_PROBABILITY",
+        "CC_INDEPENDENT_EVENTS_MULTIPLICATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "확률",
       "L2": "확률의 뜻과 활용",
-      "L3": "확률의 기본 성질과 활용",
-      "L4": "확률의 뜻·기본 계산",
-      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
-      "crossConceptKeys": [
-        "CC_COMBINATORICS_COUNTING"
-      ],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "L3": "독립시행의 확률",
+      "L4": "독립시행의 확률",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#5",
+      "approvedSourceFingerprint": "572d7156ed29b78aa9673982bd2e81704189e534091f862d12162e9a7413b4f1",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_15f00a5b57e124262e25ad8b9c4a76c071f34007f76c640ef7c1b7eaa16226e2",
@@ -5712,40 +5805,79 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 9,
       "sourceQuestionNo": "9",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "b1508e02b04fb24463b713a6712e26067edb96565f2ce0da92509de82148e91e",
+      "contentFingerprint": "648a39eb7980921d0c95a94d652b6af00223eb1aaca33fa09f230173d3444f18",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-06",
       "standardUnit": "통계적 추정",
-      "standardUnitOrder": 6,
-      "sourceSubUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
       "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "conceptClusterKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "통계적 추정",
       "L3": "표본평균과 모평균의 관계",
       "L4": "표본평균의 분포",
-      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
-      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#9",
+      "approvedSourceFingerprint": "b1508e02b04fb24463b713a6712e26067edb96565f2ce0da92509de82148e91e",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_20072b5021b8111d10369d6ce63af73015fdbeee57c58449b3d790e1adb501af",
@@ -14055,40 +14187,79 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 8,
       "sourceQuestionNo": "8",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "f88687a8c7df8dbd0799e9a99e99460ba1fa499a3d128824f7cd3064ecc97e96",
+      "contentFingerprint": "e7de0fc2e28157b4ab8524e1698070b73868cdb9728f0b69fbe4ab68bfc7d598",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-06",
       "standardUnit": "통계적 추정",
-      "standardUnitOrder": 6,
-      "sourceSubUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
       "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "conceptClusterKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "통계적 추정",
       "L3": "표본평균과 모평균의 관계",
       "L4": "표본평균의 분포",
-      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
-      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#8",
+      "approvedSourceFingerprint": "f88687a8c7df8dbd0799e9a99e99460ba1fa499a3d128824f7cd3064ecc97e96",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_65fdff648133a18fdfc3fc27b080df9ab31064a0bb85c3902addab350cd4ccae",
@@ -15073,40 +15244,77 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 16,
       "sourceQuestionNo": "16",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "d5f7d8c99c5918850db2989a43ccbb2d514b2e04587f42bc7c314d9a61e4bee4",
+      "contentFingerprint": "4243ca5878d45f89ce53b296b02e7120f4938656fab6a5e784e61e107a28527d",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-05",
       "standardUnit": "확률분포",
-      "standardUnitOrder": 5,
-      "sourceSubUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
       "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DENSITY_CONDITIONS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "확률분포",
       "L3": "확률변수와 확률분포",
       "L4": "연속확률변수와 확률밀도함수",
-      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
-      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#16",
+      "approvedSourceFingerprint": "d5f7d8c99c5918850db2989a43ccbb2d514b2e04587f42bc7c314d9a61e4bee4",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_6ff1113ab802f0b91607c238c84367b37a14f937151249edf90a1afbf95a0f2e",
@@ -15352,42 +15560,78 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 2,
       "sourceQuestionNo": "2",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "4d9f68106da9f87d1c307541998fba3835033d7ae6ec064f65822a2ca1da59b8",
+      "contentFingerprint": "870d1c13278ae8064e637026fb6ca5e00ba8191294e2186aa3acaccb65540030",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-03",
       "standardUnit": "확률의 뜻과 활용",
-      "standardUnitOrder": 3,
-      "sourceSubUnitKey": "H15-PS-03-PROBABILITY_BASIC",
       "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "conceptClusterKey": "H15-PS-03-PROBABILITY_BASIC",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_COMBINATION_PROBABILITY",
+        "CC_MUTUALLY_EXCLUSIVE_CASE_SUM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "확률",
       "L2": "확률의 뜻과 활용",
       "L3": "확률의 기본 성질과 활용",
       "L4": "확률의 뜻·기본 계산",
-      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
-      "crossConceptKeys": [
-        "CC_COMBINATORICS_COUNTING"
-      ],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#2",
+      "approvedSourceFingerprint": "4d9f68106da9f87d1c307541998fba3835033d7ae6ec064f65822a2ca1da59b8",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_720429bebec6bb54c74d9ea4b4627424837da700aa6d1122eeef152c8dad8013",
@@ -18047,40 +18291,79 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 19,
       "sourceQuestionNo": "19",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "d4284eac563a60a31b792b12381a5637ffa142832304b5283349d0ced3ff3bcc",
+      "contentFingerprint": "7098a98fc6571ec7581c868922b7cd70c6e7e2e9eb0c8bbc72afc113fb65e0b9",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-05",
       "standardUnit": "확률분포",
-      "standardUnitOrder": 5,
-      "sourceSubUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
       "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_BINOMIAL_NORMAL_APPROXIMATION",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "확률분포",
       "L3": "정규분포",
       "L4": "이항분포와 정규분포의 관계",
-      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
-      "templateKey": "TPL_BINOMIAL_NORMAL_RELATION",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 3,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "B34",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#19",
+      "approvedSourceFingerprint": "d4284eac563a60a31b792b12381a5637ffa142832304b5283349d0ced3ff3bcc",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_8643a6c913adf86b4dea806850968b9b112b6bf6b642c06f4c0fc0afa1cefa23",
@@ -18557,40 +18840,78 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 6,
       "sourceQuestionNo": "6",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "4f5f931afe17c3d298d1f0ed8d1706d47a9bc848419cf226db332cac853c0e27",
+      "contentFingerprint": "7d8d863b5aa806fac6ed037bed3c20516db7896cf34b4950f66ce2503638d9d6",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-01",
       "standardUnit": "순열과 조합",
-      "standardUnitOrder": 1,
-      "sourceSubUnitKey": "H15-PS-01-COMBINATION",
-      "subUnitKey": "H15-PS-01-COMBINATION",
-      "L1": "경우의 수",
-      "L2": "조합",
-      "L3": "순열",
-      "L4": "일반 순열·조건 배열",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "H15-PS-01-COMBINATION",
       "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
-      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_COMBINATION_SELECTION",
+        "CC_ORDER_FIXED_PERMUTATION"
+      ],
       "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "순열",
+      "L4": "같은 것이 있는 순열",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#6",
+      "approvedSourceFingerprint": "4f5f931afe17c3d298d1f0ed8d1706d47a9bc848419cf226db332cac853c0e27",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_8888c097785ecd71e74f5d458579fda472773932cbadc933b1bfda805213edc4",
@@ -18884,40 +19205,77 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 7,
       "sourceQuestionNo": "7",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "aeaf648574f8b70b0d86ff7eee95181a8bb833d3e49c6969cfd3fc1a4e862c16",
+      "contentFingerprint": "1ebcb5416b454278996b64158d7295eb1897b4e9c6a406a6460608b17cdd18cb",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-06",
       "standardUnit": "통계적 추정",
-      "standardUnitOrder": 6,
-      "sourceSubUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
       "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "conceptClusterKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "통계적 추정",
       "L3": "표본평균과 모평균의 관계",
       "L4": "표본평균의 분포",
-      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
-      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#7",
+      "approvedSourceFingerprint": "aeaf648574f8b70b0d86ff7eee95181a8bb833d3e49c6969cfd3fc1a4e862c16",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_8ba1eabc8a3646fd37b88aec83c1bf279ab91705a025718d080485930d1d5871",
@@ -19559,40 +19917,77 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 18,
       "sourceQuestionNo": "18",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "f6fa2df8cf135c8d95c630193eca35825bee4d5b7197172037b1995028d252a1",
+      "contentFingerprint": "5198848320558d8588ab8fdf8e289473dcf0ff0228b2ecf565af969b0be26c86",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-06",
       "standardUnit": "통계적 추정",
-      "standardUnitOrder": 6,
-      "sourceSubUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
       "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "conceptClusterKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_LENGTH"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "통계적 추정",
       "L3": "통계적 추정",
       "L4": "신뢰구간·표본크기",
-      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
-      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#18",
+      "approvedSourceFingerprint": "f6fa2df8cf135c8d95c630193eca35825bee4d5b7197172037b1995028d252a1",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_90fccb7c9626d128f2b08f86ab0b8c94f4a62c414545e2a09526fdea0bce775f",
@@ -21185,40 +21580,77 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 11,
       "sourceQuestionNo": "11",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "61bbd47f1777df722da9c763b272dd2aad01109e20fa28ae853931eed12ddfad",
+      "contentFingerprint": "ebb02a3185268a939b5845e32bf4e673a7f69459e259f0711ce17e390d45d956",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-06",
       "standardUnit": "통계적 추정",
-      "standardUnitOrder": 6,
-      "sourceSubUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
       "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "conceptClusterKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
+      "difficultyBucket": null,
+      "tagConfidence": "rule_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "통계적 추정",
       "L3": "통계적 추정",
       "L4": "모평균의 추정",
-      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
-      "templateKey": "TPL_POPULATION_MEAN_ESTIMATION",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#11",
+      "approvedSourceFingerprint": "61bbd47f1777df722da9c763b272dd2aad01109e20fa28ae853931eed12ddfad",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_9f5979410aaa5265904a0c7c574f90e343abf36559f3d238a07eee9b0c4d8480",
@@ -23182,40 +23614,79 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 1,
       "sourceQuestionNo": "1",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "a183fee96fdcbac75990b682a687c4ccca9c29fca3b4b642b9cf0011bbc4f56e",
+      "contentFingerprint": "cb182c63b13b19016eab3f88d8aaa35ade70034d0a141b37d616536c357dd04c",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-03",
       "standardUnit": "확률의 뜻과 활용",
-      "standardUnitOrder": 3,
-      "sourceSubUnitKey": "H15-PS-03-PROBABILITY_BASIC",
       "subUnitKey": "H15-PS-03-PROBABILITY_BASIC",
+      "subUnit": "확률의 뜻과 활용",
+      "conceptClusterKey": "H15-PS-03-PROBABILITY_BASIC",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_COMPLEMENTARY_EVENT_PROBABILITY",
+        "CC_SET_DIFFERENCE_IDENTITY",
+        "CC_DEMORGAN_LAWS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "확률",
       "L2": "확률의 뜻과 활용",
       "L3": "확률의 기본 성질과 활용",
       "L4": "사건의 관계·덧셈정리·여사건",
-      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "B12",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#1",
+      "approvedSourceFingerprint": "a183fee96fdcbac75990b682a687c4ccca9c29fca3b4b642b9cf0011bbc4f56e",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_ac772bed78a998d2051d72f10832df215755fe65d42d344cae50abc4f5a315e4",
@@ -24115,40 +24586,79 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 15,
       "sourceQuestionNo": "15",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "cb5ba54623e053ceb342d54198a951dc9b80a0993842bfccd59463775c29d560",
+      "contentFingerprint": "75112e690489bd3703d564ec2774bd8e1da1534bd7935d5348b882789592265d",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-06",
       "standardUnit": "통계적 추정",
-      "standardUnitOrder": 6,
-      "sourceSubUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
       "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "conceptClusterKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_NORMAL_CURVE_SYMMETRY",
+        "CC_Z_SCORE_STANDARDIZATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "통계적 추정",
       "L3": "표본평균과 모평균의 관계",
       "L4": "표본평균의 분포",
-      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
-      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 3,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#15",
+      "approvedSourceFingerprint": "cb5ba54623e053ceb342d54198a951dc9b80a0993842bfccd59463775c29d560",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_b3f6940e0d19b7b9e22e36f7742495eda75fc50ab53298d255c997ffea7375f0",
@@ -25123,40 +25633,78 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 3,
       "sourceQuestionNo": "3",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "4596942628fba5b78c4d282c37465add386499e35257a88454cc63a318a74cab",
+      "contentFingerprint": "7821c76b0f400a8e2308da71da7631bd894ad79ec83f763a290e1c68a36d9629",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-02",
       "standardUnit": "이항정리",
-      "standardUnitOrder": 2,
-      "sourceSubUnitKey": "H15-PS-02-BINOMIAL_BASIC",
       "subUnitKey": "H15-PS-02-BINOMIAL_BASIC",
+      "subUnit": "이항정리",
+      "conceptClusterKey": "H15-PS-02-BINOMIAL_BASIC",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_GENERAL_TERM",
+        "CC_EXPONENT_LAWS"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "경우의 수",
       "L2": "이항정리",
       "L3": "이항정리",
       "L4": "전개식의 항·계수",
-      "problemTypeKey": "PT_BINOMIAL_THEOREM",
-      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#3",
+      "approvedSourceFingerprint": "4596942628fba5b78c4d282c37465add386499e35257a88454cc63a318a74cab",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_bd90fadbab11fa02300c82ec0d4135fb17e7f076850c585db6b52231caa55ed2",
@@ -29803,42 +30351,80 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 12,
       "sourceQuestionNo": "12",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "0388385c6c07f9b3ec5a5a845bccea2e0f8f9990a732e98db31cdeba6035192a",
+      "contentFingerprint": "80ba59d161b785cb6e4f4f96cd413368b2bec7ef4787f0c447ce7ecea652a857",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-06",
       "standardUnit": "통계적 추정",
-      "standardUnitOrder": 6,
-      "sourceSubUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
       "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "conceptClusterKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
+      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_SAMPLE_MEAN_MOMENTS",
+        "CC_Z_SCORE_STANDARDIZATION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "통계적 추정",
       "L3": "표본평균과 모평균의 관계",
       "L4": "표본평균의 분포",
-      "problemTypeKey": "PT_SAMPLE_MEAN_DISTRIBUTION",
-      "templateKey": "TPL_SAMPLE_MEAN_DISTRIBUTION",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [
-        "COND_NATURAL_NUMBER"
-      ],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "medium",
-      "difficultyBoundaryFlag": "B23",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#12",
+      "approvedSourceFingerprint": "0388385c6c07f9b3ec5a5a845bccea2e0f8f9990a732e98db31cdeba6035192a",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_e56e122709d4ee21036913d6e350f74e6718adf1ded2bdad5c1b1564bb3e514c",
@@ -31756,40 +32342,78 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 13,
       "sourceQuestionNo": "13",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "a4226a5c875304668189908d7cfec3ccb72d4bd6be3f1c938e1009f19099e597",
+      "contentFingerprint": "1673d9fdeff412ca231838193e6c3417318c11071d163435e9e64025bf79b657",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-05",
       "standardUnit": "확률분포",
-      "standardUnitOrder": 5,
-      "sourceSubUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
       "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_EXPECTED_FREQUENCY_COUNT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "확률분포",
       "L3": "정규분포",
-      "L4": "정규분포의 표준화",
-      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
-      "templateKey": "TPL_NORMAL_STANDARDIZATION",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "L4": "정규분포의 확률·활용",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#13",
+      "approvedSourceFingerprint": "a4226a5c875304668189908d7cfec3ccb72d4bd6be3f1c938e1009f19099e597",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_f21e0f18c8c07769016dd9a778e3246b41c3979c213768b2d48bf356b595d3a4",
@@ -32762,40 +33386,78 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 14,
       "sourceQuestionNo": "14",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "bcce69df9cd65ce2be25279ca8baf678a64a76ed9ae4ccbc486bee16b7ad648d",
+      "contentFingerprint": "3fb22721a55c21fa6e074f602d22423794917c8ceca35ca5cc201a53fe3c6fc9",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-05",
       "standardUnit": "확률분포",
-      "standardUnitOrder": 5,
-      "sourceSubUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
       "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_DISCRETE_EXPECTATION",
+        "CC_LINEAR_EXPECTATION_PROPERTY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "확률분포",
       "L3": "기댓값과 표준편차",
       "L4": "기댓값과 확률변수의 변환",
-      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
-      "templateKey": "TPL_EXPECTATION_TRANSFORM",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#14",
+      "approvedSourceFingerprint": "bcce69df9cd65ce2be25279ca8baf678a64a76ed9ae4ccbc486bee16b7ad648d",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_f80811a77e0a75c8857db00f0947db38c23dafa3179304df20ad5db7ce25583f",
@@ -32842,40 +33504,78 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 17,
       "sourceQuestionNo": "17",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "bb202e42bb1ca13f540b8f2ab2de8c541757911ed8a6cb3908e450efaabae57a",
+      "contentFingerprint": "45884afadf0981f2400ec21f0f3e7f9c895819c0a74627e626a7f6ba4bc39af5",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-05",
       "standardUnit": "확률분포",
-      "standardUnitOrder": 5,
-      "sourceSubUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
       "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "확률분포",
       "L3": "정규분포",
       "L4": "정규분포의 표준화",
-      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
-      "templateKey": "TPL_NORMAL_STANDARDIZATION",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#17",
+      "approvedSourceFingerprint": "bb202e42bb1ca13f540b8f2ab2de8c541757911ed8a6cb3908e450efaabae57a",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_f8961df4971e63e398b2bc87e9939d1b8fb7064a82b5e7c7f904b3beb482b93a",
@@ -33162,40 +33862,79 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 20,
       "sourceQuestionNo": "20",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "79cc178bd2d63ebd4481232239f95114b8886e28cd931886d5bbb91c17ee9ee3",
+      "contentFingerprint": "5b8afbb30637a72a4b9346b59070a1834e85f222b10b325608d98c940af6243b",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-05",
       "standardUnit": "확률분포",
-      "standardUnitOrder": 5,
-      "sourceSubUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
       "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "conceptClusterKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "difficultyBucket": null,
+      "tagConfidence": "category_or_cue_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_Z_SCORE_STANDARDIZATION",
+        "CC_NORMAL_CURVE_SYMMETRY",
+        "CC_STANDARD_NORMAL_TABLE_READING"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "확률분포",
       "L3": "정규분포",
       "L4": "정규분포의 표준화",
-      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
-      "templateKey": "TPL_NORMAL_STANDARDIZATION",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#20",
+      "approvedSourceFingerprint": "79cc178bd2d63ebd4481232239f95114b8886e28cd931886d5bbb91c17ee9ee3",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_fdc41dbd51c90c9d13c91d997dc4e674a51fa29b2449bb3be86664b3cc01ff5d",
@@ -33286,42 +34025,78 @@
       "sourceArchiveFile": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 10,
       "sourceQuestionNo": "10",
-      "curriculumKey": "2015",
-      "courseKey": "확률과 통계",
+      "sourceFingerprint": "1ed664c1ffc550531714381af14bb2888a0795071bc30305322c700259018542",
+      "contentFingerprint": "d9fe7c0c0f118ec84881527d5b2d1e607dc832fab75de242a7128a2f290ea43f",
       "standardCourse": "확률과 통계",
       "standardUnitKey": "H15-PS-06",
       "standardUnit": "통계적 추정",
-      "standardUnitOrder": 6,
-      "sourceSubUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
       "subUnitKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "subUnit": "통계적 추정",
+      "conceptClusterKey": "H15-PS-06-STATISTICAL_ESTIMATION",
+      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
+      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
+      "difficultyBucket": null,
+      "tagConfidence": "rule_inferred",
+      "tagStatus": "approved_subunit_concept_partial",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "EVIDENCE_DEBT",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-03-boksung-h2-probstats-20261024",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_23_복성고_2학기_기말_고2_확률과통계.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-boksung-h2-probstats-20261024.source-parity.json"
+      ],
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_CONFIDENCE_INTERVAL_LENGTH",
+        "CC_RADICAL_INEQUALITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
       "L1": "통계",
       "L2": "통계적 추정",
       "L3": "통계적 추정",
       "L4": "신뢰구간·표본크기",
-      "problemTypeKey": "PT_STATISTICAL_ESTIMATION",
-      "templateKey": "TPL_CONFIDENCE_INTERVAL_SAMPLE_SIZE",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [
-        "COND_RANGE"
-      ],
-      "integrationPattern": "NONE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "bindingResolutionStatus": "RESOLVED",
-      "sourceRepairPending": false,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.0",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "PROBABILITY_STATISTICS",
-      "metaFoundationPackVersion": "1.0.0",
-      "metaFoundationDifficultyStatus": "FRESH_BLIND_RECHECK_PASS",
-      "difficultyBucket": 2,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyEvidenceDebt": {
+        "field": "difficultyBucket",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge the 1–5 difficulty bucket; neither the exact source nor the already-approved metadata row contains a valid integer 1–5 value. Preserve null instead of inferring from level or the audit difficulty description."
+      },
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h2/2final/23_복성고_2학기_기말_고2_확률과통계.js#10",
+      "approvedSourceFingerprint": "1ed664c1ffc550531714381af14bb2888a0795071bc30305322c700259018542",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     }
   ],
   "usage": {
@@ -33864,7 +34639,7 @@
       },
       {
         "key": "PT_PROBABILITY_PROPERTIES_APPLICATION",
-        "count": 117,
+        "count": 116,
         "questionUids": [
           "qid_v1_006ac16005ec9ff5f863f1523b460156a78c1af67a53dea1666f7bae49b97d5d",
           "qid_v1_01d62a71839003bffcfcd423ce1711713fcedc1f523cfb1e8cfeb0a95c5751b9",
@@ -33875,7 +34650,6 @@
           "qid_v1_0c0f93355bc70abe9451f09676bf0ea835f27726cc3fd1c0624a09a257660e1c",
           "qid_v1_126e9c5ca128f4c90ccbfe28545568bfda4e2d0d1d72a142e2b703461f48787a",
           "qid_v1_149bd11fc69b28af2c6275aa2d0f8e511220b5c7d26fcdbb9fed229f2795d38f",
-          "qid_v1_15b5a1f0a33abf72c1f3a2eced772c5e00d0a219f8ce7c4436489f6a1ab1837e",
           "qid_v1_1859c2ae96fc302a88f4f52f2a9c33583dc142953720b2e2b1b9d954c89b1bbd",
           "qid_v1_1a5dc2df1d8487e777537f71e96413f62c95b6c662dfe766ad9f1927b937065b",
           "qid_v1_1cfd855b142b3e43b29902141febd702effff18336a136f3d387abe53c38b4ee",
@@ -33987,8 +34761,9 @@
       },
       {
         "key": "PT_PROBABILITY_REPEATED_TRIALS",
-        "count": 22,
+        "count": 23,
         "questionUids": [
+          "qid_v1_15b5a1f0a33abf72c1f3a2eced772c5e00d0a219f8ce7c4436489f6a1ab1837e",
           "qid_v1_164fa437ea514c66b30ca67305fdd3f7da889db9a7c6b0bdecfbd80577f8291d",
           "qid_v1_1d123638c1a65721f65e59dfdf91fd9c5034468e349a093d8b46daaa4c77d67a",
           "qid_v1_2bea817689676be2b8ace9fcae3f74bdd6c608444dd08b889d8a1cc0554888b5",
@@ -34628,7 +35403,7 @@
       },
       {
         "key": "TPL_IDENTICAL_OBJECT_PERMUTATION",
-        "count": 14,
+        "count": 15,
         "questionUids": [
           "qid_v1_0336c08107fed0ac0e59c5cb0e7ed1d179534096cf6c9b8f9fcc818f03cb1530",
           "qid_v1_15868165e987322d51cb0b07beffb8b6dfddccfe0e195e8b6ac4b32d2deaa546",
@@ -34638,6 +35413,7 @@
           "qid_v1_37bf59a6fb3428b127092be87995a38450447225db1c4e68df79c5582659b2cc",
           "qid_v1_55a83349bb8df4a06e08b8bb79bd06192f90bad55cea20160d352638fe0f4351",
           "qid_v1_7060643cd3fe5d63c5ac093b8ecd84d9f629d4ae50428bd86a9a11c675e1c769",
+          "qid_v1_8887153151de1c84e6a484803326c15bee3b4ea188382a7b6632788723f004de",
           "qid_v1_930cd5e82819bb60d9cae24b5bf30ce2af8d429c8651384989ce043924c661ae",
           "qid_v1_940f24b66f4b31e4d594671bff86b6d02dc63f0bec9657da213b97592e1c3b6b",
           "qid_v1_ac614035e19f33794f1c23fc9e20db1246d74347c782e85df48eff168948bcd9",
@@ -34648,8 +35424,9 @@
       },
       {
         "key": "TPL_INDEPENDENT_TRIAL_PROBABILITY",
-        "count": 21,
+        "count": 22,
         "questionUids": [
+          "qid_v1_15b5a1f0a33abf72c1f3a2eced772c5e00d0a219f8ce7c4436489f6a1ab1837e",
           "qid_v1_164fa437ea514c66b30ca67305fdd3f7da889db9a7c6b0bdecfbd80577f8291d",
           "qid_v1_1d123638c1a65721f65e59dfdf91fd9c5034468e349a093d8b46daaa4c77d67a",
           "qid_v1_2bea817689676be2b8ace9fcae3f74bdd6c608444dd08b889d8a1cc0554888b5",
@@ -34701,7 +35478,7 @@
       },
       {
         "key": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
-        "count": 20,
+        "count": 21,
         "questionUids": [
           "qid_v1_07712711cabfab991e33243ca8b82bf3d0f23c1477c9e5541c53d9e1b2b7d7e3",
           "qid_v1_105a73b6819e86235fedbbf9bb6b351df5d9cdde0d956ee5ee35ef833be4de35",
@@ -34722,12 +35499,13 @@
           "qid_v1_ca67d83ffc60b9e45ca01c1c5bb7d2ce7fba1085e8364edc49b9567121bad46c",
           "qid_v1_e9a2f185ddf81500515d7e378b922439967c44f30070d5746b4bf9f33ae23a4f",
           "qid_v1_eec64f63546080a19a835830a4c3b662770b51525564a210573952b08675de3a",
+          "qid_v1_f1b84dd5c75298bff7b4d4e3c3abd2f0dfcf6c191190af00dc225ce44c040aa8",
           "qid_v1_f2309b887b8ff6fde9ff501b307393d15c4bc720ce8bff66803e62fdc805d14d"
         ]
       },
       {
         "key": "TPL_NORMAL_STANDARDIZATION",
-        "count": 37,
+        "count": 36,
         "questionUids": [
           "qid_v1_1452a8235a2d438a3be00622760059eec84d9c924a2c875f712e9beb2c7ebc13",
           "qid_v1_16f3704f73588b14982bfd0b20c51952c82a57eebe862f7e966eea9783fe78b3",
@@ -34762,7 +35540,6 @@
           "qid_v1_e29c900cf349193eb179b0f7442f07716afe36e11925a74db0006dc0ca7a9fde",
           "qid_v1_e70cb36b6f91e1f195693526700c7284918a5312bc4355b8310b836a9f5f5a8c",
           "qid_v1_ec1d209ba6d02fefe52da2b46592653f853891c077207a95f5663dfe8471511d",
-          "qid_v1_f1b84dd5c75298bff7b4d4e3c3abd2f0dfcf6c191190af00dc225ce44c040aa8",
           "qid_v1_f8369a1b0c90a18df5ec721038bf7b873506575ca38e4f245012deb940207870",
           "qid_v1_fac6c179237ab452e957bbe63de44705555acf8043f9fd79b9dcd920f05dee52",
           "qid_v1_fd8d0074396a32166381be0563c9cd71d0a71ceeb8b3a33db45651f0ea205ab4"
@@ -34770,7 +35547,7 @@
       },
       {
         "key": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
-        "count": 25,
+        "count": 24,
         "questionUids": [
           "qid_v1_057dd4f5a8da80380a76bea86bd62120acf231a3f4f9b9e2e4a9b9da467d27a5",
           "qid_v1_0bab61d4be8704abd645ebe4415ffa24c9a1bdcabc9cef4d62b5b402f4fc316c",
@@ -34787,7 +35564,6 @@
           "qid_v1_75be2be4b162c94ec936faff7da90decb608179ebef8b86fea68a9f42c440317",
           "qid_v1_7eaa0ee21706b47d7ab34980c836b72b730ca924aebc16dfdcff40330faa11f0",
           "qid_v1_848064a6f96108197632cfb085c359164f519252abcf38e953bd29fdcc7baae3",
-          "qid_v1_8887153151de1c84e6a484803326c15bee3b4ea188382a7b6632788723f004de",
           "qid_v1_9d387617486bfd63239227fdd5eedc062bde1244019e255a917f8ab643dedfb3",
           "qid_v1_9f5979410aaa5265904a0c7c574f90e343abf36559f3d238a07eee9b0c4d8480",
           "qid_v1_a52719e0ae4bc9864c64cdcf77e2ae4ed326cbe6974b5784bf0be15d7bd9478d",
@@ -34814,7 +35590,7 @@
       },
       {
         "key": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
-        "count": 72,
+        "count": 71,
         "questionUids": [
           "qid_v1_01d62a71839003bffcfcd423ce1711713fcedc1f523cfb1e8cfeb0a95c5751b9",
           "qid_v1_026523601705ff3f363d9e5c2b8e2c8c06ef40994c522720d8fd9f7d0723b1c6",
@@ -34823,7 +35599,6 @@
           "qid_v1_0c0f93355bc70abe9451f09676bf0ea835f27726cc3fd1c0624a09a257660e1c",
           "qid_v1_126e9c5ca128f4c90ccbfe28545568bfda4e2d0d1d72a142e2b703461f48787a",
           "qid_v1_149bd11fc69b28af2c6275aa2d0f8e511220b5c7d26fcdbb9fed229f2795d38f",
-          "qid_v1_15b5a1f0a33abf72c1f3a2eced772c5e00d0a219f8ce7c4436489f6a1ab1837e",
           "qid_v1_1a5dc2df1d8487e777537f71e96413f62c95b6c662dfe766ad9f1927b937065b",
           "qid_v1_1cfd855b142b3e43b29902141febd702effff18336a136f3d387abe53c38b4ee",
           "qid_v1_218898ab3b3cd5c8fde5a10e34bd3a271e59f0560aecec9d148d4f19f78044d9",
@@ -35097,6 +35872,20 @@
         ]
       },
       {
+        "key": "CC_BINOMIAL_GENERAL_TERM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_bd7533c35f814fd0d69b5dff6c1caeb8154becd42be87274498bf58b99f0e553"
+        ]
+      },
+      {
+        "key": "CC_BINOMIAL_NORMAL_APPROXIMATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_85df927c852dc33ca57a4ed4c4c14e5f12e7fc0c174e7e9c533e5ef7bb35cb32"
+        ]
+      },
+      {
         "key": "CC_BINOMIAL_THEOREM",
         "count": 2,
         "questionUids": [
@@ -35121,8 +35910,22 @@
         ]
       },
       {
+        "key": "CC_COMBINATION_PROBABILITY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_7189c8803e1fc19ffc5c47b8e70772a30396fff6a9cdd95553bb6866132a613c"
+        ]
+      },
+      {
+        "key": "CC_COMBINATION_SELECTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_8887153151de1c84e6a484803326c15bee3b4ea188382a7b6632788723f004de"
+        ]
+      },
+      {
         "key": "CC_COMBINATORICS_COUNTING",
-        "count": 83,
+        "count": 81,
         "questionUids": [
           "qid_v1_006ac16005ec9ff5f863f1523b460156a78c1af67a53dea1666f7bae49b97d5d",
           "qid_v1_009755ac4ebc17d05ea98087035c4648902dfaf6ee2cc1289d0b78a0494a25a7",
@@ -35135,7 +35938,6 @@
           "qid_v1_126e9c5ca128f4c90ccbfe28545568bfda4e2d0d1d72a142e2b703461f48787a",
           "qid_v1_14104c62b8e963581f9d376248790fe449ae5367c58684e32526e3fc93ae33e6",
           "qid_v1_149bd11fc69b28af2c6275aa2d0f8e511220b5c7d26fcdbb9fed229f2795d38f",
-          "qid_v1_15b5a1f0a33abf72c1f3a2eced772c5e00d0a219f8ce7c4436489f6a1ab1837e",
           "qid_v1_15f00a5b57e124262e25ad8b9c4a76c071f34007f76c640ef7c1b7eaa16226e2",
           "qid_v1_1a5dc2df1d8487e777537f71e96413f62c95b6c662dfe766ad9f1927b937065b",
           "qid_v1_1b6b9d2d2c9b7bac6542e78780cd2ea29a402530192fc47685a835a631a9c10c",
@@ -35166,7 +35968,6 @@
           "qid_v1_6c03f041a11620997e3f7f40ca299e06c07b70485c7a0fe38ad0e276b96a07dc",
           "qid_v1_705a8df5202ffd3d24ce2592b085c7c67c66e8244dfbd52dd6afd756e05a9da4",
           "qid_v1_711c18c3b9b181bce5a2a3c4d8e74e452a9251e5768cc47fdb430d3648cc9b75",
-          "qid_v1_7189c8803e1fc19ffc5c47b8e70772a30396fff6a9cdd95553bb6866132a613c",
           "qid_v1_76acf6071063ec9275e40f82471f3443939959f6738fb097a2b1e8ebb9a88cdd",
           "qid_v1_782850966aa7e68888ffa67088d76ba2f1dfc4be62c2ac01c7701bf8a9b29b0a",
           "qid_v1_7a62badc1eac7bddac23b1c653ebc0264ad11f55f39c70ea4b54cb428d4f7237",
@@ -35218,8 +36019,9 @@
       },
       {
         "key": "CC_COMPLEMENTARY_EVENT_PROBABILITY",
-        "count": 1,
+        "count": 2,
         "questionUids": [
+          "qid_v1_ac7030626aa34da8b91102ccc2b4aa8a964813cc6e5188ea8dd7508476ad1a23",
           "qid_v1_b32071d9583a0b13c2f5ac60748c104cdb4452a1973e58c5a27e8415efd4fd12"
         ]
       },
@@ -35228,6 +36030,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_e882e3659f48fe8c15de82824380b4cffb825583966ac2d522ef90a7e6035cb8"
+        ]
+      },
+      {
+        "key": "CC_CONDITIONAL_PROBABILITY_FORMULA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0fe4c1faa956dd7ba6f9492cc490882e973e6c29ddad54ede1848f4c38855805"
         ]
       },
       {
@@ -35241,6 +36050,21 @@
           "qid_v1_8bf38e90143eb1179fa3f43ad3f2b1179ab911192cb73bf89ceb179b6303ab72",
           "qid_v1_a3aca28c6b105ac1c50cfdfbbb91450ae7b5d112c6f44bc7f548dbff6abac22c",
           "qid_v1_f628a0336d33a33f8cb2e9cefad4734794bd9ee832dff5104ba1cb21562775b1"
+        ]
+      },
+      {
+        "key": "CC_CONFIDENCE_INTERVAL_FORMULA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_9f3f7a52403ebfd5c74837427c3e2d1a24e16444a3e1aeee5b8f44fbbb69bcf1"
+        ]
+      },
+      {
+        "key": "CC_CONFIDENCE_INTERVAL_LENGTH",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_8f33facd9d20721aaeaa9afce717ff141d8a0a7fe8134947a8ed37ef8f8b63f6",
+          "qid_v1_ffa95da1aaa80141adf99129d9b783073ac6d370db4fd172ae7a1e69bcee6791"
         ]
       },
       {
@@ -35266,6 +36090,20 @@
         ]
       },
       {
+        "key": "CC_DEMORGAN_LAWS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ac7030626aa34da8b91102ccc2b4aa8a964813cc6e5188ea8dd7508476ad1a23"
+        ]
+      },
+      {
+        "key": "CC_DISCRETE_EXPECTATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f7d8e4dd8f901ef3fe091c662431b1e23eca9de9b5d56fa4789400b057cd26ac"
+        ]
+      },
+      {
         "key": "CC_DISCRETE_RANDOM_VARIABLE",
         "count": 2,
         "questionUids": [
@@ -35284,6 +36122,20 @@
           "qid_v1_c9e4f7f42ae64f45db67af882cbd66aabcc7717495a939fb04794ad188341d3e",
           "qid_v1_e56e122709d4ee21036913d6e350f74e6718adf1ded2bdad5c1b1564bb3e514c",
           "qid_v1_f21e0f18c8c07769016dd9a778e3246b41c3979c213768b2d48bf356b595d3a4"
+        ]
+      },
+      {
+        "key": "CC_EXPECTED_FREQUENCY_COUNT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f1b84dd5c75298bff7b4d4e3c3abd2f0dfcf6c191190af00dc225ce44c040aa8"
+        ]
+      },
+      {
+        "key": "CC_EXPONENT_LAWS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_bd7533c35f814fd0d69b5dff6c1caeb8154becd42be87274498bf58b99f0e553"
         ]
       },
       {
@@ -35322,6 +36174,13 @@
         ]
       },
       {
+        "key": "CC_INDEPENDENT_EVENTS_MULTIPLICATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_15b5a1f0a33abf72c1f3a2eced772c5e00d0a219f8ce7c4436489f6a1ab1837e"
+        ]
+      },
+      {
         "key": "CC_INDEPENDENT_TRIALS",
         "count": 1,
         "questionUids": [
@@ -35329,10 +36188,31 @@
         ]
       },
       {
+        "key": "CC_INDEPENDENT_TRIALS_PROBABILITY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_15b5a1f0a33abf72c1f3a2eced772c5e00d0a219f8ce7c4436489f6a1ab1837e"
+        ]
+      },
+      {
         "key": "CC_INTEGER_CLASSIFICATION",
         "count": 1,
         "questionUids": [
           "qid_v1_6533f2becefe3b1705e0fdffee303f5651ca0731dc52b6b3bbac6f594e92d42c"
+        ]
+      },
+      {
+        "key": "CC_LINEAR_EXPECTATION_PROPERTY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f7d8e4dd8f901ef3fe091c662431b1e23eca9de9b5d56fa4789400b057cd26ac"
+        ]
+      },
+      {
+        "key": "CC_MUTUALLY_EXCLUSIVE_CASE_SUM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_7189c8803e1fc19ffc5c47b8e70772a30396fff6a9cdd95553bb6866132a613c"
         ]
       },
       {
@@ -35347,6 +36227,14 @@
         "count": 1,
         "questionUids": [
           "qid_v1_a2de3e997a03836f829f71aa73077b97f10f0d44564a7d25d8a2dd607e8524f5"
+        ]
+      },
+      {
+        "key": "CC_NORMAL_CURVE_SYMMETRY",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_b3597107a651f9a9b1414b0598ed28bc404d297c0312b5a629038ebd2b6418bd",
+          "qid_v1_fd8d0074396a32166381be0563c9cd71d0a71ceeb8b3a33db45651f0ea205ab4"
         ]
       },
       {
@@ -35474,6 +36362,13 @@
         ]
       },
       {
+        "key": "CC_ORDER_FIXED_PERMUTATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_8887153151de1c84e6a484803326c15bee3b4ea188382a7b6632788723f004de"
+        ]
+      },
+      {
         "key": "CC_PARITY_CLASSIFICATION",
         "count": 2,
         "questionUids": [
@@ -35499,6 +36394,13 @@
         ]
       },
       {
+        "key": "CC_PROBABILITY_DENSITY_CONDITIONS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_6fb43318cd6655e7cfeebb4ce7b21d5ef79be1e1a291bb674ddb0ebc8531b4f7"
+        ]
+      },
+      {
         "key": "CC_PRODUCT_RULE",
         "count": 1,
         "questionUids": [
@@ -35511,6 +36413,13 @@
         "questionUids": [
           "qid_v1_49ecfbb0bd14874b81a29ae8ac7c1d0b674f839b1bb8298b735417a62edfcd52",
           "qid_v1_b341c03bd71811be55fb7d6a265de281f4ea0d31464b073de40f22b39439860f"
+        ]
+      },
+      {
+        "key": "CC_RADICAL_INEQUALITY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ffa95da1aaa80141adf99129d9b783073ac6d370db4fd172ae7a1e69bcee6791"
         ]
       },
       {
@@ -35540,6 +36449,17 @@
         ]
       },
       {
+        "key": "CC_SAMPLE_MEAN_MOMENTS",
+        "count": 5,
+        "questionUids": [
+          "qid_v1_1f84e5b140cb6f2bada17672dd95e7945b35d4c07d266bfc43e0bf6f330b3780",
+          "qid_v1_655a370de00bb9a08592a344adabb8a2bcc61936e67561346da784099289220e",
+          "qid_v1_8b075d58c580e7e5f920339820b717eeff33f13f3058f9cdae76165abc31686c",
+          "qid_v1_b3597107a651f9a9b1414b0598ed28bc404d297c0312b5a629038ebd2b6418bd",
+          "qid_v1_e559deb7f4b056ab34eee4507a86fcdb3b592ea01a66b4dfd9602d9243019ab2"
+        ]
+      },
+      {
         "key": "CC_SERIES_SUM",
         "count": 1,
         "questionUids": [
@@ -35566,6 +36486,13 @@
         ]
       },
       {
+        "key": "CC_SET_DIFFERENCE_IDENTITY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ac7030626aa34da8b91102ccc2b4aa8a964813cc6e5188ea8dd7508476ad1a23"
+        ]
+      },
+      {
         "key": "CC_SET_PARTITION",
         "count": 2,
         "questionUids": [
@@ -35589,10 +36516,35 @@
         ]
       },
       {
+        "key": "CC_STANDARD_NORMAL_TABLE_READING",
+        "count": 5,
+        "questionUids": [
+          "qid_v1_1f84e5b140cb6f2bada17672dd95e7945b35d4c07d266bfc43e0bf6f330b3780",
+          "qid_v1_655a370de00bb9a08592a344adabb8a2bcc61936e67561346da784099289220e",
+          "qid_v1_85df927c852dc33ca57a4ed4c4c14e5f12e7fc0c174e7e9c533e5ef7bb35cb32",
+          "qid_v1_f8369a1b0c90a18df5ec721038bf7b873506575ca38e4f245012deb940207870",
+          "qid_v1_fd8d0074396a32166381be0563c9cd71d0a71ceeb8b3a33db45651f0ea205ab4"
+        ]
+      },
+      {
         "key": "CC_SUBSET_RELATION",
         "count": 1,
         "questionUids": [
           "qid_v1_bd90fadbab11fa02300c82ec0d4135fb17e7f076850c585db6b52231caa55ed2"
+        ]
+      },
+      {
+        "key": "CC_Z_SCORE_STANDARDIZATION",
+        "count": 8,
+        "questionUids": [
+          "qid_v1_1f84e5b140cb6f2bada17672dd95e7945b35d4c07d266bfc43e0bf6f330b3780",
+          "qid_v1_655a370de00bb9a08592a344adabb8a2bcc61936e67561346da784099289220e",
+          "qid_v1_85df927c852dc33ca57a4ed4c4c14e5f12e7fc0c174e7e9c533e5ef7bb35cb32",
+          "qid_v1_b3597107a651f9a9b1414b0598ed28bc404d297c0312b5a629038ebd2b6418bd",
+          "qid_v1_e559deb7f4b056ab34eee4507a86fcdb3b592ea01a66b4dfd9602d9243019ab2",
+          "qid_v1_f1b84dd5c75298bff7b4d4e3c3abd2f0dfcf6c191190af00dc225ce44c040aa8",
+          "qid_v1_f8369a1b0c90a18df5ec721038bf7b873506575ca38e4f245012deb940207870",
+          "qid_v1_fd8d0074396a32166381be0563c9cd71d0a71ceeb8b3a33db45651f0ea205ab4"
         ]
       }
     ],
@@ -35701,7 +36653,7 @@
       },
       {
         "key": "COND_RANGE",
-        "count": 40,
+        "count": 39,
         "questionUids": [
           "qid_v1_02ce1505dc9411b6942245be586bb943e180d9bfd20e4228b1c1bf5d9cca3169",
           "qid_v1_0bab61d4be8704abd645ebe4415ffa24c9a1bdcabc9cef4d62b5b402f4fc316c",
@@ -35741,8 +36693,7 @@
           "qid_v1_e81018cbf9ee0927231217a9b479f1c44bc587fce266a79b9930d71ecec93d7f",
           "qid_v1_e8f9f59449a6c4894b1fdd61b23b94b59048b4bdad927006b489624c91346694",
           "qid_v1_ea357b7c991fb391058257e5fc13a08e8fac90fc7c9ad5a9a5c696d0264385d7",
-          "qid_v1_ed48ad784e55db4a60158e3098af48e2ba56841e252b70a004f085e77e1bbcc9",
-          "qid_v1_ffa95da1aaa80141adf99129d9b783073ac6d370db4fd172ae7a1e69bcee6791"
+          "qid_v1_ed48ad784e55db4a60158e3098af48e2ba56841e252b70a004f085e77e1bbcc9"
         ]
       }
     ]

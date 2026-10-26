@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "STATISTICS_CONCEPTS",
-  "shardVersion": "1.0.1",
+  "shardVersion": "1.0.2",
   "status": "ACTIVE",
-  "conceptCount": 12,
+  "conceptCount": 27,
   "concepts": [
     {
       "conceptKey": "CC_BINOMIAL_DISTRIBUTION",
@@ -154,6 +154,744 @@
       "supportingItemCount": 1,
       "status": "ACTIVE",
       "aliases": []
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_NORMAL_APPROXIMATION",
+      "canonicalLabelKo": "이항분포의 정규분포 근사",
+      "definition": "시행 횟수 n이 충분히 클 때 이항분포 B(n, p)를 평균 np, 분산 np(1-p)인 정규분포 N(np, npq)로 근사하는 방법",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_85df927c852dc33ca57a4ed4c4c14e5f12e7fc0c174e7e9c533e5ef7bb35cb32"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_85df927c852dc33ca57a4ed4c4c14e5f12e7fc0c174e7e9c533e5ef7bb35cb32",
+          "sourceOrdinal": 19,
+          "classificationRationale": "개별 정규분포 확률을 사건 발생 확률 p로 삼는 이항분포 B(n,p)를 구성한 뒤 정규분포로 근사하여 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "p=P(695<=X<=705)=P(-0.5<=Z<=0.5)=0.40이므로 Y~B(600,0.4)를 N(240,12^2)으로 근사하면 P(252<=Y<=258)=P(1<=Z<=1.5)=0.43-0.35=0.08이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NORMAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_CONDITIONAL_PROBABILITY_FORMULA",
+      "canonicalLabelKo": "조건부확률의 정의",
+      "definition": "사건 A가 일어났을 때 사건 B가 일어날 조건부확률 P(B|A) = P(A∩B) / P(A)",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_0fe4c1faa956dd7ba6f9492cc490882e973e6c29ddad54ede1848f4c38855805"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0fe4c1faa956dd7ba6f9492cc490882e973e6c29ddad54ede1848f4c38855805",
+          "sourceOrdinal": 4,
+          "classificationRationale": "사건의 비율로부터 조건부확률 정의식을 직접 적용하여 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(M)=0.48, P(S∩M)=0.30이므로 구하는 확률은 P(S|M)=0.30/0.48=5/8이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONDITIONAL_PROBABILITY"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_CONFIDENCE_INTERVAL_FORMULA",
+      "canonicalLabelKo": "모평균의 신뢰구간 추정 공식",
+      "definition": "표본평균 x̄, 모표준편차 σ, 표본 크기 n으로부터 신뢰구간 x̄ ± k*(σ/sqrt(n))을 구하는 공식",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_9f3f7a52403ebfd5c74837427c3e2d1a24e16444a3e1aeee5b8f44fbbb69bcf1"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9f3f7a52403ebfd5c74837427c3e2d1a24e16444a3e1aeee5b8f44fbbb69bcf1",
+          "sourceOrdinal": 11,
+          "classificationRationale": "모평균의 신뢰구간 추정 공식을 직접 적용하여 신뢰구간을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "오차한계는 2.58*(8/4)=5.16이므로 신뢰구간은 10±5.16, 즉 4.84<=m<=15.16이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_STATISTICAL_ESTIMATION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-06"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_CONFIDENCE_INTERVAL_LENGTH",
+      "canonicalLabelKo": "모평균 신뢰구간의 길이",
+      "definition": "신뢰구간 [a, b]의 길이 b-a = 2 * k * (σ / sqrt(n))와 표본의 크기 n 사이의 관계",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8f33facd9d20721aaeaa9afce717ff141d8a0a7fe8134947a8ed37ef8f8b63f6",
+        "qid_v1_ffa95da1aaa80141adf99129d9b783073ac6d370db4fd172ae7a1e69bcee6791"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H15-PS-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ffa95da1aaa80141adf99129d9b783073ac6d370db4fd172ae7a1e69bcee6791",
+          "sourceOrdinal": 10,
+          "classificationRationale": "모평균 신뢰구간의 길이 부등식 조건을 만족하는 표본 크기 n의 최솟값을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "b-a = 2*1.96*(9/sqrt(n)) = 35.28/sqrt(n) <= 2.94에서 sqrt(n)>=12이므로 n>=144이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8f33facd9d20721aaeaa9afce717ff141d8a0a7fe8134947a8ed37ef8f8b63f6",
+          "sourceOrdinal": 18,
+          "classificationRationale": "모평균 신뢰구간의 양 끝점 차(신뢰구간의 길이)와 신뢰상수 k의 관계식을 정리하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "신뢰구간의 길이는 y-x = 2k*(1/2)/5 = k/5이므로 k=5(y-x)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_STATISTICAL_ESTIMATION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-06"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_DISCRETE_EXPECTATION",
+      "canonicalLabelKo": "이산확률변수의 기댓값(평균)",
+      "definition": "이산확률변수 X가 취하는 각 값과 그 확률의 곱의 총합 E(X) = Σ x_i * p_i",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f7d8e4dd8f901ef3fe091c662431b1e23eca9de9b5d56fa4789400b057cd26ac"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f7d8e4dd8f901ef3fe091c662431b1e23eca9de9b5d56fa4789400b057cd26ac",
+          "sourceOrdinal": 14,
+          "classificationRationale": "이산확률변수 X의 기댓값을 구하고 일차변환된 확률변수 aX+b의 기댓값 성질을 적용하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "E(X)=(1+1+2+2+2+4)/6=2이므로 E(5X+3)=5E(X)+3=5×2+3=13이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_EXPECTATION_VARIANCE"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_EXPECTED_FREQUENCY_COUNT",
+      "canonicalLabelKo": "상대도수 확률과 기대 인원 산출",
+      "definition": "전체 인원 N에 특정 사건이 일어날 확률 p를 곱하여 해당 구간에 속하는 기대 인원수 Np를 구하는 계산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f1b84dd5c75298bff7b4d4e3c3abd2f0dfcf6c191190af00dc225ce44c040aa8"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f1b84dd5c75298bff7b4d4e3c3abd2f0dfcf6c191190af00dc225ce44c040aa8",
+          "sourceOrdinal": 13,
+          "classificationRationale": "정규분포의 표준화로 합격 확률을 구하고 전체 인원을 곱해 기대 합격자 수를 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(X>=60)=P(Z>=0.8)=0.5-0.2881=0.2119이므로 합격자 수는 1000×0.2119 ≈ 212명이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NORMAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_INDEPENDENT_EVENTS_MULTIPLICATION",
+      "canonicalLabelKo": "독립사건의 확률의 곱셈정리",
+      "definition": "서로 독립인 두 사건이 동시에 일어날 확률이 각 확률의 곱과 같다는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_15b5a1f0a33abf72c1f3a2eced772c5e00d0a219f8ce7c4436489f6a1ab1837e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_15b5a1f0a33abf72c1f3a2eced772c5e00d0a219f8ce7c4436489f6a1ab1837e",
+          "sourceOrdinal": 5,
+          "classificationRationale": "독립시행의 확률 공식을 두 팀의 결과에 결합하여 경기 승리 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "B팀 5명은 모두 성공하고 A팀은 5명 중 1명만 실패해야 하므로 확률은 5C1*(0.2)*(0.8)^4*(0.8)^5 = 0.8^9이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_REPEATED_TRIALS"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-03"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_INDEPENDENT_TRIALS_PROBABILITY",
+      "canonicalLabelKo": "독립시행의 확률",
+      "definition": "동일한 조건에서 반복되는 독립시행 n회에서 사건이 r회 일어날 확률 nCr * p^r * (1-p)^(n-r)",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_15b5a1f0a33abf72c1f3a2eced772c5e00d0a219f8ce7c4436489f6a1ab1837e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_15b5a1f0a33abf72c1f3a2eced772c5e00d0a219f8ce7c4436489f6a1ab1837e",
+          "sourceOrdinal": 5,
+          "classificationRationale": "독립시행의 확률 공식을 두 팀의 결과에 결합하여 경기 승리 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "B팀 5명은 모두 성공하고 A팀은 5명 중 1명만 실패해야 하므로 확률은 5C1*(0.2)*(0.8)^4*(0.8)^5 = 0.8^9이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_REPEATED_TRIALS"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-03"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_LINEAR_EXPECTATION_PROPERTY",
+      "canonicalLabelKo": "일차변환된 확률변수의 기댓값",
+      "definition": "확률변수 X와 상수 a, b에 대하여 E(aX+b) = aE(X)+b가 성립하는 기댓값의 선형성",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_f7d8e4dd8f901ef3fe091c662431b1e23eca9de9b5d56fa4789400b057cd26ac"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f7d8e4dd8f901ef3fe091c662431b1e23eca9de9b5d56fa4789400b057cd26ac",
+          "sourceOrdinal": 14,
+          "classificationRationale": "이산확률변수 X의 기댓값을 구하고 일차변환된 확률변수 aX+b의 기댓값 성질을 적용하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "E(X)=(1+1+2+2+2+4)/6=2이므로 E(5X+3)=5E(X)+3=5×2+3=13이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_EXPECTATION_VARIANCE"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_MUTUALLY_EXCLUSIVE_CASE_SUM",
+      "canonicalLabelKo": "배반사건의 경우의 수 합",
+      "definition": "'k개 이상' 조건을 배반인 세부 개수 케이스들로 나누어 각 경우의 수를 더하는 합의 법칙",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_7189c8803e1fc19ffc5c47b8e70772a30396fff6a9cdd95553bb6866132a613c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-03"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_7189c8803e1fc19ffc5c47b8e70772a30396fff6a9cdd95553bb6866132a613c",
+          "sourceOrdinal": 2,
+          "classificationRationale": "조합을 이용하여 동시에 꺼낸 공의 개수 조건에 따른 수학적 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "전체 경우의 수는 9C4=126이고 흰 공이 2개 이상인 경우의 수는 60+20+1=81이므로 확률은 81/126=9/14이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-03"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_NORMAL_CURVE_SYMMETRY",
+      "canonicalLabelKo": "표준정규분포 곡선의 대칭성",
+      "definition": "표준정규분포 곡선이 z=0에 대하여 대칭이므로 P(Z<=a)+P(Z<=b)=1이면 a+b=0이 성립하는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b3597107a651f9a9b1414b0598ed28bc404d297c0312b5a629038ebd2b6418bd",
+        "qid_v1_fd8d0074396a32166381be0563c9cd71d0a71ceeb8b3a33db45651f0ea205ab4"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H15-PS-05",
+        "H15-PS-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b3597107a651f9a9b1414b0598ed28bc404d297c0312b5a629038ebd2b6418bd",
+          "sourceOrdinal": 15,
+          "classificationRationale": "두 표본평균의 정규분포 표준화와 표준정규분포의 대칭성(확률 합 1)을 연립하여 미지수 σ와 목표 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(X̄<=53)=P(Z<=1.5)이므로 P(Ȳ<=69)=P(Z<=-1.5)에서 (69-75)/(σ/5)=-1.5, σ=20이고 P(Ȳ>=71)=P(Z>=-1)=0.5+0.3413=0.8413이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fd8d0074396a32166381be0563c9cd71d0a71ceeb8b3a33db45651f0ea205ab4",
+          "sourceOrdinal": 20,
+          "classificationRationale": "정규분포의 꼬리 확률 조건과 표준정규분포표를 이용하여 모평균 m을 역산하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(Z<3-m)=0.05이고 표에서 P(0<=Z<=1.6)=0.45이므로 P(Z<=-1.6)=0.05에서 3-m=-1.6, m=4.6이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NORMAL_DISTRIBUTION",
+        "PT_SAMPLE_MEAN_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05",
+        "2015:확률과 통계:H15-PS-06"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_PROBABILITY_DENSITY_CONDITIONS",
+      "canonicalLabelKo": "확률밀도함수의 성질",
+      "definition": "정의된 구간 [a, b]에서 항상 f(x) >= 0이고 곡선과 x축 사이의 전체 넓이(정적분)가 1이어야 하는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6fb43318cd6655e7cfeebb4ce7b21d5ef79be1e1a291bb674ddb0ebc8531b4f7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6fb43318cd6655e7cfeebb4ce7b21d5ef79be1e1a291bb674ddb0ebc8531b4f7",
+          "sourceOrdinal": 16,
+          "classificationRationale": "연속확률변수의 확률밀도함수가 되기 위한 비음수 조건과 전구간 넓이 1 조건을 판정하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "확률밀도함수는 구간에서 0 이상이고 적분값이 1이어야 하므로 ㄱ(넓이 1)과 ㄷ(넓이 1)은 가능하고 ㄴ(x<0에서 음수)은 불가능하다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_RANDOM_VARIABLE_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_SAMPLE_MEAN_MOMENTS",
+      "canonicalLabelKo": "표본평균의 평균과 표준편차",
+      "definition": "모평균 m, 모표준편차 σ인 모집단에서 크기 n인 표본을 임의추출할 때 E(X̄)=m, σ(X̄)=σ/sqrt(n)이 되는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1f84e5b140cb6f2bada17672dd95e7945b35d4c07d266bfc43e0bf6f330b3780",
+        "qid_v1_655a370de00bb9a08592a344adabb8a2bcc61936e67561346da784099289220e",
+        "qid_v1_8b075d58c580e7e5f920339820b717eeff33f13f3058f9cdae76165abc31686c",
+        "qid_v1_b3597107a651f9a9b1414b0598ed28bc404d297c0312b5a629038ebd2b6418bd",
+        "qid_v1_e559deb7f4b056ab34eee4507a86fcdb3b592ea01a66b4dfd9602d9243019ab2"
+      ],
+      "supportingItemCount": 5,
+      "sourceUnits": [
+        "H15-PS-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8b075d58c580e7e5f920339820b717eeff33f13f3058f9cdae76165abc31686c",
+          "sourceOrdinal": 7,
+          "classificationRationale": "표본평균의 평균과 표준편차 공식을 직접 적용하여 값을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "E(X̄)=50이고 σ(X̄)=20/sqrt(100)=2이므로 E(X̄)+σ(X̄)=50+2=52이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_655a370de00bb9a08592a344adabb8a2bcc61936e67561346da784099289220e",
+          "sourceOrdinal": 8,
+          "classificationRationale": "표본평균의 정규분포를 표준화하고 표준정규분포표를 이용하여 구간 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "표본평균 표준편차는 18/9=2이므로 P(71<=X̄<=75)=P(-0.5<=Z<=1.5)=0.1915+0.4332=0.6247(약 0.62)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1f84e5b140cb6f2bada17672dd95e7945b35d4c07d266bfc43e0bf6f330b3780",
+          "sourceOrdinal": 9,
+          "classificationRationale": "표본평균의 확률 조건과 표준정규분포표를 역추적하여 모표준편차 σ를 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(0<=Z<=4/(σ/5))=0.4772이고 표에서 P(0<=Z<=2.0)=0.4772이므로 4/(σ/5)=2에서 σ=10이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e559deb7f4b056ab34eee4507a86fcdb3b592ea01a66b4dfd9602d9243019ab2",
+          "sourceOrdinal": 12,
+          "classificationRationale": "모집단 확률변수와 표본평균의 표준화 구간을 비교하여 표본의 크기 n을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(20<=X<=32)=P(0<=Z<=4)이고 P(20<=X̄<=23)=P(0<=Z<=sqrt(n))이므로 sqrt(n)=4에서 n=16이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b3597107a651f9a9b1414b0598ed28bc404d297c0312b5a629038ebd2b6418bd",
+          "sourceOrdinal": 15,
+          "classificationRationale": "두 표본평균의 정규분포 표준화와 표준정규분포의 대칭성(확률 합 1)을 연립하여 미지수 σ와 목표 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(X̄<=53)=P(Z<=1.5)이므로 P(Ȳ<=69)=P(Z<=-1.5)에서 (69-75)/(σ/5)=-1.5, σ=20이고 P(Ȳ>=71)=P(Z>=-1)=0.5+0.3413=0.8413이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_SAMPLE_MEAN_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-06"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_STANDARD_NORMAL_TABLE_READING",
+      "canonicalLabelKo": "표준정규분포표 확률 읽기",
+      "definition": "표준정규분포표에 주어진 P(0 <= Z <= z) 값을 이용해 구간 확률을 구하거나 역으로 z값을 찾는 해석",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1f84e5b140cb6f2bada17672dd95e7945b35d4c07d266bfc43e0bf6f330b3780",
+        "qid_v1_655a370de00bb9a08592a344adabb8a2bcc61936e67561346da784099289220e",
+        "qid_v1_85df927c852dc33ca57a4ed4c4c14e5f12e7fc0c174e7e9c533e5ef7bb35cb32",
+        "qid_v1_f8369a1b0c90a18df5ec721038bf7b873506575ca38e4f245012deb940207870",
+        "qid_v1_fd8d0074396a32166381be0563c9cd71d0a71ceeb8b3a33db45651f0ea205ab4"
+      ],
+      "supportingItemCount": 5,
+      "sourceUnits": [
+        "H15-PS-05",
+        "H15-PS-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_655a370de00bb9a08592a344adabb8a2bcc61936e67561346da784099289220e",
+          "sourceOrdinal": 8,
+          "classificationRationale": "표본평균의 정규분포를 표준화하고 표준정규분포표를 이용하여 구간 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "표본평균 표준편차는 18/9=2이므로 P(71<=X̄<=75)=P(-0.5<=Z<=1.5)=0.1915+0.4332=0.6247(약 0.62)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1f84e5b140cb6f2bada17672dd95e7945b35d4c07d266bfc43e0bf6f330b3780",
+          "sourceOrdinal": 9,
+          "classificationRationale": "표본평균의 확률 조건과 표준정규분포표를 역추적하여 모표준편차 σ를 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(0<=Z<=4/(σ/5))=0.4772이고 표에서 P(0<=Z<=2.0)=0.4772이므로 4/(σ/5)=2에서 σ=10이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f8369a1b0c90a18df5ec721038bf7b873506575ca38e4f245012deb940207870",
+          "sourceOrdinal": 17,
+          "classificationRationale": "정규분포를 표준정규분포로 표준화하여 구간 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(60<=X<=85)=P(-1<=Z<=1.5)=P(0<=Z<=1)+P(0<=Z<=1.5)=0.3413+0.4332=0.7745이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_85df927c852dc33ca57a4ed4c4c14e5f12e7fc0c174e7e9c533e5ef7bb35cb32",
+          "sourceOrdinal": 19,
+          "classificationRationale": "개별 정규분포 확률을 사건 발생 확률 p로 삼는 이항분포 B(n,p)를 구성한 뒤 정규분포로 근사하여 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "p=P(695<=X<=705)=P(-0.5<=Z<=0.5)=0.40이므로 Y~B(600,0.4)를 N(240,12^2)으로 근사하면 P(252<=Y<=258)=P(1<=Z<=1.5)=0.43-0.35=0.08이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fd8d0074396a32166381be0563c9cd71d0a71ceeb8b3a33db45651f0ea205ab4",
+          "sourceOrdinal": 20,
+          "classificationRationale": "정규분포의 꼬리 확률 조건과 표준정규분포표를 이용하여 모평균 m을 역산하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(Z<3-m)=0.05이고 표에서 P(0<=Z<=1.6)=0.45이므로 P(Z<=-1.6)=0.05에서 3-m=-1.6, m=4.6이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NORMAL_DISTRIBUTION",
+        "PT_SAMPLE_MEAN_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05",
+        "2015:확률과 통계:H15-PS-06"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_Z_SCORE_STANDARDIZATION",
+      "canonicalLabelKo": "정규분포의 표준화",
+      "definition": "정규분포 N(m, σ^2)을 따르는 확률변수 X를 Z = (X-m)/σ로 변환하여 표준정규분포 N(0, 1)로 나타내는 방법",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1f84e5b140cb6f2bada17672dd95e7945b35d4c07d266bfc43e0bf6f330b3780",
+        "qid_v1_655a370de00bb9a08592a344adabb8a2bcc61936e67561346da784099289220e",
+        "qid_v1_85df927c852dc33ca57a4ed4c4c14e5f12e7fc0c174e7e9c533e5ef7bb35cb32",
+        "qid_v1_b3597107a651f9a9b1414b0598ed28bc404d297c0312b5a629038ebd2b6418bd",
+        "qid_v1_e559deb7f4b056ab34eee4507a86fcdb3b592ea01a66b4dfd9602d9243019ab2",
+        "qid_v1_f1b84dd5c75298bff7b4d4e3c3abd2f0dfcf6c191190af00dc225ce44c040aa8",
+        "qid_v1_f8369a1b0c90a18df5ec721038bf7b873506575ca38e4f245012deb940207870",
+        "qid_v1_fd8d0074396a32166381be0563c9cd71d0a71ceeb8b3a33db45651f0ea205ab4"
+      ],
+      "supportingItemCount": 8,
+      "sourceUnits": [
+        "H15-PS-05",
+        "H15-PS-06"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_655a370de00bb9a08592a344adabb8a2bcc61936e67561346da784099289220e",
+          "sourceOrdinal": 8,
+          "classificationRationale": "표본평균의 정규분포를 표준화하고 표준정규분포표를 이용하여 구간 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "표본평균 표준편차는 18/9=2이므로 P(71<=X̄<=75)=P(-0.5<=Z<=1.5)=0.1915+0.4332=0.6247(약 0.62)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1f84e5b140cb6f2bada17672dd95e7945b35d4c07d266bfc43e0bf6f330b3780",
+          "sourceOrdinal": 9,
+          "classificationRationale": "표본평균의 확률 조건과 표준정규분포표를 역추적하여 모표준편차 σ를 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(0<=Z<=4/(σ/5))=0.4772이고 표에서 P(0<=Z<=2.0)=0.4772이므로 4/(σ/5)=2에서 σ=10이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e559deb7f4b056ab34eee4507a86fcdb3b592ea01a66b4dfd9602d9243019ab2",
+          "sourceOrdinal": 12,
+          "classificationRationale": "모집단 확률변수와 표본평균의 표준화 구간을 비교하여 표본의 크기 n을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(20<=X<=32)=P(0<=Z<=4)이고 P(20<=X̄<=23)=P(0<=Z<=sqrt(n))이므로 sqrt(n)=4에서 n=16이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f1b84dd5c75298bff7b4d4e3c3abd2f0dfcf6c191190af00dc225ce44c040aa8",
+          "sourceOrdinal": 13,
+          "classificationRationale": "정규분포의 표준화로 합격 확률을 구하고 전체 인원을 곱해 기대 합격자 수를 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(X>=60)=P(Z>=0.8)=0.5-0.2881=0.2119이므로 합격자 수는 1000×0.2119 ≈ 212명이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b3597107a651f9a9b1414b0598ed28bc404d297c0312b5a629038ebd2b6418bd",
+          "sourceOrdinal": 15,
+          "classificationRationale": "두 표본평균의 정규분포 표준화와 표준정규분포의 대칭성(확률 합 1)을 연립하여 미지수 σ와 목표 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(X̄<=53)=P(Z<=1.5)이므로 P(Ȳ<=69)=P(Z<=-1.5)에서 (69-75)/(σ/5)=-1.5, σ=20이고 P(Ȳ>=71)=P(Z>=-1)=0.5+0.3413=0.8413이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_f8369a1b0c90a18df5ec721038bf7b873506575ca38e4f245012deb940207870",
+          "sourceOrdinal": 17,
+          "classificationRationale": "정규분포를 표준정규분포로 표준화하여 구간 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(60<=X<=85)=P(-1<=Z<=1.5)=P(0<=Z<=1)+P(0<=Z<=1.5)=0.3413+0.4332=0.7745이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_85df927c852dc33ca57a4ed4c4c14e5f12e7fc0c174e7e9c533e5ef7bb35cb32",
+          "sourceOrdinal": 19,
+          "classificationRationale": "개별 정규분포 확률을 사건 발생 확률 p로 삼는 이항분포 B(n,p)를 구성한 뒤 정규분포로 근사하여 확률을 구하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "p=P(695<=X<=705)=P(-0.5<=Z<=0.5)=0.40이므로 Y~B(600,0.4)를 N(240,12^2)으로 근사하면 P(252<=Y<=258)=P(1<=Z<=1.5)=0.43-0.35=0.08이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fd8d0074396a32166381be0563c9cd71d0a71ceeb8b3a33db45651f0ea205ab4",
+          "sourceOrdinal": 20,
+          "classificationRationale": "정규분포의 꼬리 확률 조건과 표준정규분포표를 이용하여 모평균 m을 역산하는 PROBABILITY_STATISTICS 정본 유형",
+          "decisiveEvidence": "P(Z<3-m)=0.05이고 표에서 P(0<=Z<=1.6)=0.45이므로 P(Z<=-1.6)=0.05에서 3-m=-1.6, m=4.6이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_23_복성고_2학기_기말_고2_확률과통계.json",
+            "sha256": "377201b6dfc8f9371f6809bdcc7fef8573557af5dc12bd9ce841683772c392e9"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NORMAL_DISTRIBUTION",
+        "PT_SAMPLE_MEAN_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05",
+        "2015:확률과 통계:H15-PS-06"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
     }
   ]
 }
