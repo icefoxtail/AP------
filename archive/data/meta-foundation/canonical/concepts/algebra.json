@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.8",
+  "shardVersion": "1.4.9",
   "status": "ACTIVE",
-  "conceptCount": 191,
+  "conceptCount": 193,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -5944,6 +5944,76 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_INEQUALITY_ORDERED_PAIRS",
+      "canonicalLabelKo": "부등식을 만족하는 순서쌍의 체계적 계수",
+      "definition": "주사위 세 눈 a, b, c에 대한 대소 관계 및 합·곱 부등식을 만족하는 격자점 순서쌍을 기준 변수별로 분기하여 세는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_faeef90e97323f769bbc73ee044f27c71d18670b4585b673e16854a4f8a19514"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_faeef90e97323f769bbc73ee044f27c71d18670b4585b673e16854a4f8a19514",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_INEQUALITY_ORDERED_PAIRS for PT_PROBABILITY_PROPERTIES_APPLICATION/TPL_PROBABILITY_BASIC_COUNT_RATIO at H15-PS-03-PROBABILITY_BASIC.",
+          "decisiveEvidence": "<p>세 수를 크기순으로 $x\\le y\\le z$라고 하면 조건은 가운데 수 $y$가 양 끝의 차 $z-x$보다 작다는 것, 즉 $x+y<z$입니다.</p> <p>$x<y<z$인 세 수의 조합 중 $x+y<z$를 만",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LINEAR_EQUATION_SOLUTION",
+      "canonicalLabelKo": "일차방정식의 정수해와 범위 제한",
+      "definition": "주사위 눈의 값에 따라 일차방정식의 근이 주어진 자연수 범위 내에 존재할 조건을 만족하는 순서쌍을 찾는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8977ed5c1fbd2c9e629affa85e85dafe3a6c002d0539ca04519205f407999788"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8977ed5c1fbd2c9e629affa85e85dafe3a6c002d0539ca04519205f407999788",
+          "sourceOrdinal": 8,
+          "classificationRationale": "META_PIPELINE_AUDIT record 8 binds CC_LINEAR_EQUATION_SOLUTION for PT_PROBABILITY_PROPERTIES_APPLICATION/TPL_PROBABILITY_BASIC_COUNT_RATIO at H15-PS-03-PROBABILITY_BASIC.",
+          "decisiveEvidence": "<p>방정식 $ax-b=0$의 해는 $x=\\dfrac ba$이므로 $a$가 $b$의 약수여야 정수입니다. 서로 다른 두 카드를 순서대로 뽑으므로 전체는 $6\\times5=30$가지입니다.</p> <p>$a=1$이면 ",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-03"
       ],
       "ownerConceptShard": "ALGEBRA"
     }

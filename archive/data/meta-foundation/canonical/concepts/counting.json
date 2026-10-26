@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COUNTING",
-  "shardVersion": "1.0.3",
+  "shardVersion": "1.0.4",
   "status": "ACTIVE",
-  "conceptCount": 18,
+  "conceptCount": 21,
   "concepts": [
     {
       "conceptKey": "CC_COMBINATORICS_COUNTING",
@@ -357,6 +357,138 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_COMPLEMENT_EVENT",
+      "canonicalLabelKo": "여사건의 확률과 간접 계산법",
+      "definition": "사건 A가 일어나지 않을 확률 P(A^c) = 1 - P(A)를 이용하여 '적어도' 또는 '모두 홀수' 등의 사건을 간접 계산하는 원리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_2a71465034c2737929b24c7c58c0099b7cca99c4128226528c12f2a8728cf19d",
+        "qid_v1_8c88e43dffac519e1409dc2cd13d1a23f1757e57f7f59675778c58cd9aea6989",
+        "qid_v1_9f9ad172b684d9c55047dcdcc3705f86329b2cf5df11e847b8085f41b7040ba1"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "H15-PS-03",
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8c88e43dffac519e1409dc2cd13d1a23f1757e57f7f59675778c58cd9aea6989",
+          "sourceOrdinal": 6,
+          "classificationRationale": "META_PIPELINE_AUDIT record 6 binds CC_COMPLEMENT_EVENT for PT_PROBABILITY_PROPERTIES_APPLICATION/TPL_EVENT_RELATION_COMPLEMENT_ADDITION at H15-PS-03-PROBABILITY_ADDITION.",
+          "decisiveEvidence": "<p>“$a$ 또는 $b$”는 적어도 한 명이 뽑힌다는 뜻입니다. 두 명 모두 뽑히지 않는 여사건을 세는 편이 간단합니다.</p> <p>전체 경우는 $\\binom63=20$가지, 둘 다 제외한 네 명 중 세 명을 고",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_2a71465034c2737929b24c7c58c0099b7cca99c4128226528c12f2a8728cf19d",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_COMPLEMENT_EVENT for PT_PROBABILITY_PROPERTIES_APPLICATION/TPL_EVENT_RELATION_COMPLEMENT_ADDITION at H15-PS-03-PROBABILITY_ADDITION.",
+          "decisiveEvidence": "<p>세 수의 곱이 홀수가 되려면 뽑은 세 수가 모두 홀수여야 합니다. $S$의 홀수는 $1,3,5,7$ 네 개입니다.</p> <p>전체 부분집합은 $\\binom73=35$개이고 홀수 곱인 경우는 $\\binom43=",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9f9ad172b684d9c55047dcdcc3705f86329b2cf5df11e847b8085f41b7040ba1",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_COMPLEMENT_EVENT for PT_EVENT_INDEPENDENCE/TPL_EVENT_INDEPENDENCE_JUDGMENT at H15-PS-04-INDEPENDENCE.",
+          "decisiveEvidence": "<p>독립인 $A,B$에서 $P(A\\cap B)=P(A)P(B)$이고 $B=(A\\cap B)\\cup(A^c\\cap B)$입니다.</p> <p>①은 $P(A^c\\cap B)$, ②는 $P(A)P(B\\mid A)$, ③",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_EVENT_INDEPENDENCE",
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-03",
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_NEIGHBORING_PERMUTATION",
+      "canonicalLabelKo": "이웃하는 대상을 한 묶음으로 취급하는 순열",
+      "definition": "일렬 배열에서 이웃해야 하는 대상들을 하나의 원소로 묶어 전체를 배열한 뒤 묶음 내부의 순서를 곱하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0c0473c7dc309e13572c0d799f53a1bd879064c3b51d1918f552ebb01c85cc80"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0c0473c7dc309e13572c0d799f53a1bd879064c3b51d1918f552ebb01c85cc80",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_NEIGHBORING_PERMUTATION for PT_COUNTING_ARRANGEMENT/TPL_PERMUTATION_STANDARD_CONSTRAINT at H15-PS-01-PERMUTATION.",
+          "decisiveEvidence": "<p>여자 세 명이 서로 붙어 있어야 하므로 여자 세 명을 하나의 묶음으로 생각합니다.</p> <p>여자 묶음과 남자 세 명의 배열은 $4!$가지이고, 묶음 안 여자 배열은 $3!$가지입니다. 전체 여섯 명의 배열은",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_ARRANGEMENT"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_UNITS_DIGIT_PERIODICITY",
+      "canonicalLabelKo": "거듭제곱의 일의 자리 수의 주기성",
+      "definition": "자연수의 거듭제곱 3^x의 일의 자리 수가 4주기(3, 9, 7, 1)로 반복됨을 이용하여 각 수의 발생 빈도를 분류하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_113781fc680ef6ab14868c82188147fdee7aa756e75d9e39bae651d1798dbf7e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-03"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_113781fc680ef6ab14868c82188147fdee7aa756e75d9e39bae651d1798dbf7e",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_UNITS_DIGIT_PERIODICITY for PT_PROBABILITY_PROPERTIES_APPLICATION/TPL_EVENT_RELATION_COMPLEMENT_ADDITION at H15-PS-03-PROBABILITY_ADDITION.",
+          "decisiveEvidence": "<p>$3^x$의 일의 자리는 $3,9,7,1$이 주기 4로 반복됩니다. $1$부터 $10$까지에서 일의 자리가 같은 카드의 개수는 차례로 $3,3,2,2$장입니다.</p> <p>두 카드의 함수값이 같은 경우는 $\\",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
+            "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_PROBABILITY_PROPERTIES_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-03"
       ],
       "ownerConceptShard": "COUNTING"
     }
