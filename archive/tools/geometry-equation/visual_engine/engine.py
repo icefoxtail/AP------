@@ -43,6 +43,18 @@ def mark_label(label_id,target,text,label_kind,at,extra):
     label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
     return label
 
+def _sample_graph_boundary(rows,vp):
+    """Screen points of one region boundary: each exact row is sampled on its own interval (the same sampler the curve is drawn with), and the
+    rows are joined left to right. A boundary that leaves its declared rows is refused, never silently bridged."""
+    points=[]
+    for row in rows:
+        result=sample(row['expression'],row['domain'],vp,critical_x=[])
+        if len(result['branches'])!=1 or not result['branches'][0]:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+        pts=[vp.screen(value) for value in result['branches'][0]]
+        if points and pts and abs(points[-1][0]-pts[0][0])<=1e-9:pts=pts[1:]
+        points.extend(pts)
+    return points
+
 REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
 # A light neutral grey, clearly apart from the cooler region fills above, so an angle sector stays distinguishable from a shaded area.
 SECTOR_FILL='#d9d9d9'
@@ -56,32 +68,46 @@ def _region_label_centres(polygons,obstacles,step=3.0,limit=900):
         if o.get('kind') in {'point','circle'}:strokes.append(('disc' if o['kind']=='point' else 'ring',g))
         elif g and len(g)>=2 and all(isinstance(p,(list,tuple)) for p in g):strokes.extend(('seg',(a,b)) for a,b in zip(g,g[1:]))
     xs=[p[0] for poly in polygons for p in poly];ys=[p[1] for poly in polygons for p in poly]
-    def inside(x,y):
+    # A long sampled band (a graph region carries one edge per boundary sample) is ranked on a coarse copy of the same closed loops and a
+    # grid of at most 4000 points; every centre that survives is then re-checked against the full edge set, so the returned points are interior
+    # with their exact clearance and the cost stays bounded.
+    coarse=[[poly[0]]+[point for index,point in enumerate(poly) if index%max(1,math.ceil(len(poly)/60))==0]+[poly[-1]] if len(poly)>60 else poly for poly in polygons]
+    rank_edges=[(a,b) for poly in coarse for a,b in zip(poly,poly[1:]+poly[:1])]
+    def inside(x,y,edge_rows):
         hit=False
-        for (ax,ay),(bx,by) in edges:
+        for (ax,ay),(bx,by) in edge_rows:
             if (ay>y)!=(by>y) and x<(bx-ax)*(y-ay)/(by-ay)+ax:hit=not hit
         return hit
     def seg_distance(x,y,a,b):
         (ax,ay),(bx,by)=a,b;dx,dy=bx-ax,by-ay;n=dx*dx+dy*dy
         t=0.0 if n==0 else max(0.0,min(1.0,((x-ax)*dx+(y-ay)*dy)/n))
         return math.hypot(x-ax-t*dx,y-ay-t*dy)
-    def clearance(x,y):
-        best=min(seg_distance(x,y,a,b) for a,b in edges)
+    def clearance(x,y,edge_rows):
+        best=min(seg_distance(x,y,a,b) for a,b in edge_rows)
         for kind,g in strokes:
             if kind=='seg':best=min(best,seg_distance(x,y,*g))
             elif kind=='ring':best=min(best,abs(math.hypot(x-g[0],y-g[1])-g[2]))
             else:best=min(best,math.hypot(x-g[0],y-g[1])-g[2])
         return best
-    found=[]
-    x=min(xs)
-    while x<=max(xs):
-        y=min(ys)
-        while y<=max(ys):
-            if inside(x,y):found.append((clearance(x,y),x,y))
-            y+=step
-        x+=step
-    found.sort(key=lambda row:-row[0]);chosen=[]
-    for c,x,y in found:
+    step=max(step,math.sqrt(max((max(xs)-min(xs))*(max(ys)-min(ys)),1.0)/4000))
+    def grid(edge_rows):
+        found=[]
+        x=min(xs)
+        while x<=max(xs):
+            y=min(ys)
+            while y<=max(ys):
+                if inside(x,y,edge_rows):found.append((clearance(x,y,edge_rows),x,y))
+                y+=step
+            x+=step
+        return found
+    found=grid(rank_edges)
+    if not found:found=grid(edges)  # a band thinner than the coarse loop: rank on every edge once
+    found.sort(key=lambda row:-row[0])
+    refined=[]
+    for _,x,y in found[:max(limit,120)]:
+        if inside(x,y,edges):refined.append((clearance(x,y,edges),x,y))
+    refined.sort(key=lambda row:-row[0]);chosen=[]
+    for c,x,y in refined:
         if c<3.0:break
         if all(math.hypot(x-px,y-py)>=4.0 for px,py in chosen):chosen.append((x,y))
         if len(chosen)>=limit:break
@@ -441,6 +467,24 @@ def prepare(spec):
                        'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':polygons,'labelGap':14}
                 label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
                 label['candidateCenters']=_region_label_centres(polygons,obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygons[0][0])
+                labels.append(label)
+        elif kind=='GRAPH_REGION':
+            # A shaded band between two drawn graph boundaries (graph_plan regions): sample the exact rows named by the plan, then one even-odd
+            # path painted beneath every stroke. The independent graph observer recomputes the rows from the plan and reads this path back.
+            if obj['fill'] not in REGION_FILLS:raise ValueError('GRAPH_REGION_FILL_UNSUPPORTED:'+oid)
+            upper=_sample_graph_boundary(obj['upper'],vp);lower=_sample_graph_boundary(obj['lower'],vp)
+            if len(upper)<2 or len(lower)<2:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+            polygon=upper+list(reversed(lower))
+            if any(b[0]<a[0] for a,b in zip(upper,upper[1:])) or any(b[0]<a[0] for a,b in zip(lower,lower[1:])):raise ValueError('GRAPH_REGION_BOUNDARY_NOT_INCREASING')
+            d='M'+_num(polygon[0][0])+' '+_num(polygon[0][1])+' '+' '.join('L'+_num(x)+' '+_num(y) for x,y in polygon[1:])+' Z'
+            primitive({'id':oid,'kind':'path','d':d,'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS[obj['fill']],'noStroke':True,'fillRule':'evenodd',
+                       'mark':'graph-region','markId':oid,'fillPolygons':[polygon]})
+            if obj.get('labelText') is not None:
+                tree=parse(obj['labelText']);markup=serialize(tree,'svg')
+                label={'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':serialize(tree,'plain'),'markup':markup,'tex':serialize(tree,'tex'),'math':True,'sourceMath':obj['labelText'],
+                       'font':tokens['mathLabel'],'priority':2,'allowSuppress':False,'ownerRegion':[polygon],'labelGap':14}
+                label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
+                label['candidateCenters']=_region_label_centres([polygon],obstacles);label['at']=list(label['candidateCenters'][0]) if label['candidateCenters'] else list(polygon[0])
                 labels.append(label)
         elif kind=='FUNCTION_GRAPH':
             result=sample(obj['expression'],obj['domain'],vp,critical_x=obj.get('criticalX',[]),breaks=obj.get('breaks',[]))
