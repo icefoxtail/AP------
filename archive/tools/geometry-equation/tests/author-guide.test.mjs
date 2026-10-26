@@ -15,6 +15,8 @@ test('the guide carries the contract passages an author needs',()=>{
     assert.ok(guide.includes(capability),'guide lacks '+capability);
   }
   assert.ok(contract.includes('axisVariable'),'contract text lacks axisVariable');
+  assert.ok(guide.includes('SOURCE_COORDINATE_AXES_v1'),'guide must explain plane marks on a coordinate construction plan');
+  assert.ok(guide.includes('PLANE_MARKS_UNSUPPORTED_ON_GRAPH'),'guide must state that a graph plan refuses planeMarks');
   assert.ok(guide.includes('EXEMPT')&&guide.includes('UNSUPPORTED'),'guide must explain the no-figure outcomes');
   assert.ok(guide.includes('sourceQuote'),'guide must explain the item-binding quote');
 });
