@@ -472,6 +472,23 @@ def prepare(spec):
                     return -(dx*ox+dy*oy)/(norm*math.hypot(dx,dy))
                 directions=sorted(DIRECTIONS,key=alignment)
                 labels.append(mark_label(oid+'-label',oid,obj['labelText'],obj.get('labelKind','DEGREE'),outward,{'directions':tuple(directions[:5]),'gaps':(14,24,32,48),'leaderOwned':[oid]}))
+        elif kind=='TRACE_ARC':
+            # Construction traces (compass arcs): a thin solid arc of the declared radius around each intersection the trace produces.
+            if not vp.equal:raise ValueError('TRACE_ARC_REQUIRES_EQUAL_UNITS')
+            centre=value['center'];radius=value['radius'];span_degrees=value['spanDeg'];span=math.radians(span_degrees)
+            steps=max(8,math.ceil(span_degrees/3))
+            for index,(_pid,_target,angle) in enumerate(value['through'],1):
+                points=[vp.screen((centre[0]+radius*math.cos(angle-span/2+span*i/steps),centre[1]+radius*math.sin(angle-span/2+span*i/steps))) for i in range(steps+1)]
+                primitive({'id':oid+'-'+str(index),'kind':'polyline','points':points,'token':'auxiliary','layer':48,'role':'traceArc',
+                           'mark':'trace','markId':oid,'markIndex':index,'markCount':len(value['through']),
+                           'centerPoint':obj['centerPoint'],'ownerRadius':radius,'sweep':'CCW','ownerPoints':[obj['centerPoint']]},'curve')
+            if obj.get('labelText') is not None:
+                _pid,_target,angle=value['through'][0]
+                gap=10.0
+                anchor=vp.screen((centre[0]+(radius+gap/vp.sx)*math.cos(angle),centre[1]+(radius+gap/vp.sy)*math.sin(angle)))
+                labels.append({'id':oid+'-label','kind':'EQUATION_LABEL','target':oid,'text':obj['labelText'],'tex':obj['labelText'],'math':True,'sourceMath':obj['labelText'],
+                               'font':tokens['tickLabel'],'priority':0,'at':list(anchor),'allowSuppress':False,
+                               'directions':('E','NE','N','SE','S','NW','W','SW'),'gaps':(8,12,18,26)})
         elif kind=='FILL_REGION':
             # A filled region: one even-odd <path> (shapes minus holes) with exact SVG arcs, drawn beneath every stroke. The label is placed inside it.
             if not vp.equal:raise ValueError('REGION_REQUIRES_EQUAL_UNITS')

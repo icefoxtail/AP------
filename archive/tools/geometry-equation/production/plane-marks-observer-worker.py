@@ -69,6 +69,7 @@ def audit(p):
     for n in root.iter():
         if n.get('data-mark'):by_mark.setdefault((n.get('data-mark'),n.get('data-mark-id')),[]).append(n)
     declared={('angle',r['id']) for r in marks.get('angles',[])}|{('equal',r['id']) for r in marks.get('equalLengths',[])}|{('parallel',r['id']) for r in marks.get('parallels',[])}|{('arc',r['id']) for r in marks.get('arcs',[]) if r.get('highlight',True)}
+    declared|={('trace',r['id']) for r in marks.get('traces',[])}
     declared|={('arrow',s['id']) for s in p.get('segments',[]) if s.get('arrow')}
     declared|={('region',r['id']) for r in marks.get('regions',[])}
     for key in by_mark:
@@ -271,6 +272,51 @@ def audit(p):
                 c=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
                 if norm(sub(c,center))<=radius:errors.append('ARC_LABEL_INSIDE_CIRCLE:'+oid)
                 leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5)
+
+    # ---- construction traces: thin solid compass arcs around the declared intersections
+    for row in marks.get('traces',[]):
+        oid=row['id'];nodes=by_mark.get(('trace',oid),[])
+        center=peer_point(row['center'])
+        radius_spec=row.get('radius') or {}
+        if 'point' in radius_spec:
+            radius=norm(sub(peer_point(radius_spec['point']),center))
+        else:
+            sid=radius_spec.get('segment');seg=next((s for s in p.get('segments',[]) if s['id']==sid),None)
+            if seg is None:errors.append('TRACE_RADIUS_MISSING:'+oid);continue
+            radius=norm(sub(peer_point(seg['refs'][1]),peer_point(seg['refs'][0])))
+        through=list(row.get('through') or [])
+        span=float(row.get('spanDeg',24))
+        if not nodes:errors.append('TRACE_ARC_MISSING:'+oid);continue
+        if len(nodes)!=len(through):errors.append('TRACE_ARC_COUNT_MISMATCH:'+oid);continue
+        arcs=sorted(nodes,key=lambda n:int(n.get('data-mark-index','0')))
+        for arc,pid in zip(arcs,through):
+            points=poly_model(arc)
+            if len(points)<8:errors.append('TRACE_ARC_MISSING:'+oid);continue
+            distances=[norm(sub(q,center)) for q in points]
+            if max(abs(d-radius) for d in distances)>1e-6*max(1.0,radius):errors.append('TRACE_ARC_RADIUS_MISMATCH:'+oid+':'+pid)
+            target=peer_point(pid)
+            if abs(norm(sub(target,center))-radius)>1e-6*max(1.0,radius):errors.append('TRACE_TARGET_NOT_ON_ARC:'+pid)
+            theta=direction_degrees(sub(target,center))
+            offsets=[wrap180(direction_degrees(sub(q,center))-theta) for q in points]
+            if min(offsets)>RAY_TOLERANCE or max(offsets)<-RAY_TOLERANCE:errors.append('TRACE_ARC_DOES_NOT_PASS_THROUGH:'+oid+':'+pid)
+            drawn_span=max(offsets)-min(offsets)
+            if abs(drawn_span-span)>1.0:errors.append('TRACE_ARC_SPAN_MISMATCH:'+oid+':'+pid)
+            if arc.get('stroke-dasharray'):errors.append('TRACE_ARC_DASHED:'+oid+':'+pid)
+            try:width=float(arc.get('stroke-width'))
+            except (TypeError,ValueError):width=math.inf
+            if width>1.2:errors.append('TRACE_ARC_TOO_THICK:'+oid+':'+pid)
+            if str(arc.get('fill','none')).lower() not in ('none',''):errors.append('TRACE_ARC_HAS_FILL:'+oid+':'+pid)
+        observations.append({'id':oid,'type':'TRACE','center':row['center'],'radius':radius,'arcs':len(arcs),'through':through,'spanDeg':span})
+        if row.get('label') is not None:
+            box=label_clear(oid+'-label')
+            if box is not None:
+                middle=inverse(box[0]+box[2]/2,box[1]+box[3]/2)
+                if norm(sub(middle,center))<radius:errors.append('TRACE_LABEL_INSIDE_CIRCLE:'+oid)
+                leader_ok(oid+'-label',box,lambda q:abs(norm(sub(inverse(*q),center))-radius)*sx<=1.5)
+            node=elements.get(oid+'-label')
+            codes=[] if node is None else [n.get('data-c','').upper() for n in node.iter() if tag(n)=='path' and n.get('data-c')]
+            want=[format(ord(ch),'X') for ch in str(row['label'])]
+            if codes and codes!=want:errors.append('TRACE_LABEL_MISMATCH:'+oid)
 
     # ---- filled regions (plane_regions_observer.py)
     audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes)

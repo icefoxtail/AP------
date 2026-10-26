@@ -32,6 +32,20 @@ class LayoutTests(unittest.TestCase):
         self.assertEqual(r['status'],'PASS')
         self.assertEqual(r['labels'][0]['font'],13.25)
         self.assertTrue(Box(32,32,556,436).contains(Box(**r['labels'][0]['box'])))
+    def test_narrow_wedge_label_moves_farther_inside_instead_of_a_leader_hidden_by_the_rays(self):
+        v=(300,300);bis=math.radians(9.5);end=math.radians(19)
+        at=[v[0]+32*math.cos(bis),v[1]+32*math.sin(bis)]
+        item=label('a-label',at,'19',kind='EQUATION_LABEL',priority=0,
+            wedgeSearch={'vertex':list(v),'bisector':bis,'start':0.0,'delta':end,'rMin':32,'rMax':72,'rFar':200,'arcRadius':26},
+            gaps=(24,32,48,64),leaderOwned=['arc1'])
+        obstacles=[{'id':'ray1','kind':'line','geometry':[list(v),[700,300]]},
+            {'id':'ray2','kind':'line','geometry':[list(v),[v[0]+400*math.cos(end),v[1]+400*math.sin(end)]]},
+            {'id':'arc1','kind':'curve','geometry':[[v[0]+26*math.cos(bis),v[1]+26*math.sin(bis)]]}]
+        r=layout([item],obstacles,Box(0,0,720,600),measurements={'a-label':(40,20)})
+        self.assertEqual(r['status'],'PASS',r)
+        # Inside the angle without a leader (main's wedge limit may already call this ANGLE_WEDGE_INSIDE).
+        self.assertIn(r['labels'][0]['placement'],('ANGLE_WEDGE_INSIDE','ANGLE_WEDGE_INSIDE_FAR'))
+        self.assertFalse([l for l in r.get('leaders',[]) if l.get('ownerLabelId')=='a-label' or l.get('labelId')=='a-label'])
     def test_explicit_polish(self):
         r=layout([label('n',(50,50),'LONG'*100)],[],Box(32,32,40,40))
         self.assertEqual(r['status'],'POLISH_REQUIRED')

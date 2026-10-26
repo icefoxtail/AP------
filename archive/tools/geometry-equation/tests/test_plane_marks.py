@@ -219,6 +219,59 @@ class ObserverTests(unittest.TestCase):
         again=OBSERVER.audit({**base,'svg':shifted,'segments':[{'id':'sAB','refs':['A','B'],'arrow':'END'},{'id':'sBC','refs':['B','C'],'dashed':True}]})
         self.assertIn('SEGMENT_ARROW_TIP_OFF_END',[e.split(':')[0] for e in again['errors']])
 
+class TraceTests(unittest.TestCase):
+    """Construction traces: a thin arc of one declared radius around each intersection, checked by the independent observer."""
+    def setUp(self):
+        self.points={'A':(0.0,0.0),'B':(5.0,0.0),'P':(3.0,4.0)}
+        self.objects=[{'id':'tr','kind':'TRACE_ARC','centerPoint':'A','radiusPoint':'B','through':['P'],'spanDeg':30}]
+        self.result=build(spec_of(self.points,self.objects));self.svg=self.result['svg'];self.transform=self.result['witness']['coordinateModel']
+        self.marks={'traces':[{'id':'tr','center':'A','radius':{'point':'B'},'through':['P'],'spanDeg':30}]}
+    def audit(self,svg=None,points=None,marks=None):
+        return OBSERVER.audit({'svg':svg or self.svg,'points':points or {k:list(v) for k,v in self.points.items()},'marks':marks if marks is not None else self.marks,'segments':[],'transform':self.transform})
+    def codes(self,**kw):return [error.split(':')[0] for error in self.audit(**kw)['errors']]
+    def tag(self,identifier):return re.search(r'<polyline\s(?:[^>]*\s)?id="'+re.escape(identifier)+r'"[^>]*/>',self.svg).group(0)
+    def rewrite(self,identifier,change):
+        tag=self.tag(identifier);attribute=re.search(r'\spoints="([^"]*)"',tag)
+        pairs=[tuple(map(float,part.split(','))) for part in attribute.group(1).split()]
+        return self.svg.replace(tag,tag.replace(attribute.group(0),' points="'+' '.join('%.9f,%.9f'%p for p in change(pairs))+'"'),1)
+    def test_genuine_trace_passes_and_the_arc_is_thin_and_undashed(self):
+        report=self.audit();self.assertEqual(report['errors'],[]);self.assertEqual(report['status'],'PASS')
+        row=next(item for item in report['observations'] if item['type']=='TRACE')
+        self.assertEqual(row['id'],'tr');self.assertAlmostEqual(row['radius'],5.0,places=9);self.assertEqual(row['through'],['P'])
+        self.assertIn('stroke-width="1',self.svg);self.assertNotIn('stroke-dasharray',self.tag('tr-1'))
+    def test_tamper_an_arc_of_the_wrong_radius_or_off_its_intersection(self):
+        def scale(pairs):
+            (cx,cy)=pairs[0]
+            return [(cx+(x-cx)*1.2,cy+(y-cy)*1.2) for x,y in pairs]
+        self.assertIn('TRACE_ARC_RADIUS_MISMATCH',self.codes(svg=self.rewrite('tr-1',scale)))
+        center=(self.transform['originX']+self.points['A'][0]*self.transform['sx'],self.transform['originY']-self.points['A'][1]*self.transform['sy'])
+        def rotate(pairs):
+            (cx,cy)=center;t=math.radians(25)
+            return [(cx+(x-cx)*math.cos(t)-(y-cy)*math.sin(t),cy+(x-cx)*math.sin(t)+(y-cy)*math.cos(t)) for x,y in pairs]
+        codes=self.codes(svg=self.rewrite('tr-1',rotate));self.assertTrue({'TRACE_ARC_DOES_NOT_PASS_THROUGH','TRACE_ARC_RADIUS_MISMATCH'}&set(codes),codes)
+    def test_tamper_dashed_thick_or_missing_arc(self):
+        self.assertIn('TRACE_ARC_DASHED',self.codes(svg=self.svg.replace('<polyline id="tr-1"','<polyline id="tr-1" stroke-dasharray="4 3"')))
+        self.assertIn('TRACE_ARC_TOO_THICK',self.codes(svg=re.sub(r'stroke-width="1(?:\.0)?"','stroke-width="3"',self.svg)))
+        self.assertIn('TRACE_ARC_MISSING',self.codes(svg=self.svg.replace(self.tag('tr-1'),'')))
+    def test_tamper_a_false_radius_or_an_undeclared_trace(self):
+        wider={'traces':[{'id':'tr','center':'A','radius':{'segment':'sAB'},'through':['P'],'spanDeg':30}]}
+        self.assertIn('TRACE_RADIUS_MISSING',self.codes(marks=wider))     # no such segment is passed
+        points={k:list(v) for k,v in self.points.items()};points['P']=[4.0,4.0]
+        self.assertIn('TRACE_TARGET_NOT_ON_ARC',self.codes(points=points))
+        self.assertIn('UNDECLARED_MARK',self.codes(marks={'traces':[]}))
+    def test_engine_refuses_a_trace_that_does_not_match_its_points(self):
+        off=dict(self.points);off['Q']=(4.0,4.0)
+        with self.assertRaises(ValueError) as caught:build(spec_of(off,[{'id':'tr','kind':'TRACE_ARC','centerPoint':'A','radiusPoint':'B','through':['Q']}]))
+        self.assertEqual(str(caught.exception),'TRACE_TARGET_NOT_ON_ARC:Q')
+        cases=[([{'id':'tr','kind':'TRACE_ARC','centerPoint':'A','radiusPoint':'B','through':['A'],'spanDeg':30}],'TRACE_TARGETS_DEGENERATE:tr'),
+               ([{'id':'tr','kind':'TRACE_ARC','centerPoint':'A','radiusPoint':'A','through':['P'],'spanDeg':30}],'TRACE_ARC_RADIUS_REQUIRED:tr'),
+               ([{'id':'tr','kind':'TRACE_ARC','centerPoint':'A','radiusPoint':'B','through':['P'],'spanDeg':200}],'TRACE_SPAN_INVALID:tr'),
+               ([{'id':'tr','kind':'TRACE_ARC','centerPoint':'A','radiusPoint':'B','radiusSegment':'sAB','through':['P']}],'TRACE_ARC_RADIUS_REQUIRED:tr'),
+               ([{'id':'tr','kind':'TRACE_ARC','centerPoint':'A','radiusPoint':'B','through':'P'}],'TRACE_ARC_POINT_REFS_REQUIRED:tr')]
+        for objects,code in cases:
+            with self.assertRaises(ValueError,msg=code) as caught:build(spec_of(self.points,objects))
+            self.assertEqual(str(caught.exception),code)
+
 class EngineErrorTests(unittest.TestCase):
     def test_engine_refuses_false_equal_and_parallel_marks(self):
         pts,objects=parallelogram()
