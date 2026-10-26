@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "meta-pipeline-audited-condition-promotion-v1",
+  "requestId": "meta-pipeline-r3-1-df2990692916",
+  "approvedBy": "CODEX_ROOT",
+  "originalAuditRef": {
+    "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.source.json",
+    "sha256": "fb94045db34e778cb3433356d523ad8ee188071862d6097e1107b477b7e0d6f1"
+  },
+  "definitions": [
+    {
+      "conditionKey": "COND_EDGE_RESTRICTIONS",
+      "canonicalLabelKo": "양끝 자리 제한",
+      "definition": "나열한 대상의 양끝에 지정된 종류의 대상이 오도록 하는 제한을 배열의 경우의 수에 반영한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "owner": "CONDITION_CORE",
+      "supportingQuestionUids": [
+        "qid_v1_dca203dcb640219ed443b82d6efb27add8e3c2c3fe87e9736859e659dfa0c59d"
+      ],
+      "supportingItemCount": 1,
+      "evidenceProvenance": [
+        {
+          "questionUid": "qid_v1_dca203dcb640219ed443b82d6efb27add8e3c2c3fe87e9736859e659dfa0c59d",
+          "sourceOrdinal": 6,
+          "sourceTextExcerpt": "happiness에 있는 9개의 문자를 일렬로 나열할 때, 모음이 양 끝에 오도록 나열하는 경우의 수는? [3.9점]",
+          "solutionDecisiveExcerpt": "$happiness$의 모음은 서로 다른 $a,i,e$ 세 개이고, 자음 여섯 개에는 $p$가 두 번, $s$가 두 번 있다. 양 끝의 모음을 순서 있게 정하면 $3\\cdot2=6"
+        }
+      ]
+    },
+    {
+      "conditionKey": "COND_FREQUENCY_CONSTRAINTS",
+      "canonicalLabelKo": "선택 횟수 제한",
+      "definition": "각 대상별로 허용되는 선택 횟수가 정해져 있어 그 횟수 조건에 맞는 구성과 배열만 센다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "owner": "CONDITION_CORE",
+      "supportingQuestionUids": [
+        "qid_v1_bb7222edccc45302764d1e70235dc421514d37a6e3e6beb5e1bc3ed634ecff13"
+      ],
+      "supportingItemCount": 1,
+      "evidenceProvenance": [
+        {
+          "questionUid": "qid_v1_bb7222edccc45302764d1e70235dc421514d37a6e3e6beb5e1bc3ed634ecff13",
+          "sourceOrdinal": 7,
+          "sourceTextExcerpt": "숫자 $1, 2, 3, 4, 5$ 중에서 중복을 허락하여 네 자리의 자연수를 만들 때, 다음 조건을 만족하는 네 자리 자연수의 개수는?<br><br>(가) 각각의 홀수는 선택하지 않거나 한 번만 선택한다.<br>(나) 각각의 짝수는 선택하지 않거나 두 번만 선택한다. [4.5점]",
+          "solutionDecisiveExcerpt": "홀수 $1,3,5$는 각 한 번 이하, 짝수 $2,4$는 사용한다면 정확히 두 번씩이다. 짝수 두 종류를 모두 쓰면 $2,2,4,4$의 배열로 $\\frac{4!}{2!2!}=6$개"
+        }
+      ]
+    },
+    {
+      "conditionKey": "COND_UPPER_BOUND",
+      "canonicalLabelKo": "상한 조건",
+      "definition": "선택 개수 또는 변수의 값이 제시된 상한을 넘지 않아야 한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "owner": "CONDITION_CORE",
+      "supportingQuestionUids": [
+        "qid_v1_cd45f5a2b8bb9c16b992d4e8ad3b31d059566693ed7a41caef4599c14205fc53",
+        "qid_v1_fa081633fe292b004e906af53dd0adbdbeb14ccdc2d3ab9ddde4b998aa1c3274"
+      ],
+      "supportingItemCount": 2,
+      "evidenceProvenance": [
+        {
+          "questionUid": "qid_v1_fa081633fe292b004e906af53dd0adbdbeb14ccdc2d3ab9ddde4b998aa1c3274",
+          "sourceOrdinal": 10,
+          "sourceTextExcerpt": "어느 스포츠용품 가게에서 축구공, 농구공, 배구공 중 $k$개의 공을 사는 경우의 수가 55일 때, 축구공 1개 이하, 농구공 1개 이상, 배구공은 2개 이상을 포함하여 $k$개의 공을 사는 경우의 수는? (단, 각 종류의 공은 $k$개 이상씩 있고, 같은 종류의 공은 서로 구별하지 않는다.) [4.5점]",
+          "solutionDecisiveExcerpt": "세 종류의 공에서 중복을 허용해 $k$개를 고르는 방법은 $\\binom{k+2}{2}=55$이다. 따라서 $(k+2)(k+1)=110$이므로 $k=9$이다. 축구공 수를 $s\\in"
+        },
+        {
+          "questionUid": "qid_v1_cd45f5a2b8bb9c16b992d4e8ad3b31d059566693ed7a41caef4599c14205fc53",
+          "sourceOrdinal": 14,
+          "sourceTextExcerpt": "파란색 카드 2장, 빨간색 카드 4장, 노란색 카드 4장, 초록색 카드 4장 중에서 4장의 카드를 택하는 경우의 수는? (단, 같은 색의 카드는 서로 구별하지 않는다.) [3.9점]",
+          "solutionDecisiveExcerpt": "색별로 고른 카드 수를 $b,r,y,g$라 하면 $b+r+y+g=4$이고 $0\\le b\\le2$, 나머지는 $0$ 이상이다. 제한을 무시한 해는 $\\binom{4+4-1}{3}=\\"
+        }
+      ]
+    },
+    {
+      "conditionKey": "COND_LOWER_BOUND",
+      "canonicalLabelKo": "하한 조건",
+      "definition": "선택 개수 또는 변수의 값이 제시된 하한 이상이어야 한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "owner": "CONDITION_CORE",
+      "supportingQuestionUids": [
+        "qid_v1_fa081633fe292b004e906af53dd0adbdbeb14ccdc2d3ab9ddde4b998aa1c3274"
+      ],
+      "supportingItemCount": 1,
+      "evidenceProvenance": [
+        {
+          "questionUid": "qid_v1_fa081633fe292b004e906af53dd0adbdbeb14ccdc2d3ab9ddde4b998aa1c3274",
+          "sourceOrdinal": 10,
+          "sourceTextExcerpt": "어느 스포츠용품 가게에서 축구공, 농구공, 배구공 중 $k$개의 공을 사는 경우의 수가 55일 때, 축구공 1개 이하, 농구공 1개 이상, 배구공은 2개 이상을 포함하여 $k$개의 공을 사는 경우의 수는? (단, 각 종류의 공은 $k$개 이상씩 있고, 같은 종류의 공은 서로 구별하지 않는다.) [4.5점]",
+          "solutionDecisiveExcerpt": "세 종류의 공에서 중복을 허용해 $k$개를 고르는 방법은 $\\binom{k+2}{2}=55$이다. 따라서 $(k+2)(k+1)=110$이므로 $k=9$이다. 축구공 수를 $s\\in"
+        }
+      ]
+    },
+    {
+      "conditionKey": "COND_NO_CONSECUTIVE_ELEMENTS",
+      "canonicalLabelKo": "연속 선택 금지",
+      "definition": "선택한 정수 번호 중 연속된 두 번호가 함께 포함되지 않아야 한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "owner": "CONDITION_CORE",
+      "supportingQuestionUids": [
+        "qid_v1_61c3d2c294ef6e66bd845602e9631a5f169a7336327a254786bbb0eb2923d5d9"
+      ],
+      "supportingItemCount": 1,
+      "evidenceProvenance": [
+        {
+          "questionUid": "qid_v1_61c3d2c294ef6e66bd845602e9631a5f169a7336327a254786bbb0eb2923d5d9",
+          "sourceOrdinal": 15,
+          "sourceTextExcerpt": "1번부터 10번까지 좌석 번호가 적힌 10개의 의자가 있다. 3명의 학생이 서로 다른 좌석 번호의 의자를 각각 1개씩 선택할 때, 3명의 학생이 선택한 좌석의 세 번호 중 어느 두 번호도 연속되지 않도록 선택하는 경우의 수는? [4.1점]",
+          "solutionDecisiveExcerpt": "선택한 세 좌석 번호를 $1\\le a<b<c\\le10$으로 놓고 서로 연속되지 않게 하려면 $b\\ge a+2$, $c\\ge b+2$다. $a,b-1,c-2$를 고르면 $1$부터 $"
+        }
+      ]
+    },
+    {
+      "conditionKey": "COND_INEQUALITY_CONSTRAINT",
+      "canonicalLabelKo": "변수 사이의 부등식 조건",
+      "definition": "둘 이상의 변수 사이에 제시된 대소 관계를 만족하는 값만 해 또는 경우로 인정한다.",
+      "aliases": [],
+      "status": "ACTIVE",
+      "owner": "CONDITION_CORE",
+      "supportingQuestionUids": [
+        "qid_v1_1d6eb24bb54f4107d8a483033bd6cb542235dd4cff333cfdb9cca124405070b8"
+      ],
+      "supportingItemCount": 1,
+      "evidenceProvenance": [
+        {
+          "questionUid": "qid_v1_1d6eb24bb54f4107d8a483033bd6cb542235dd4cff333cfdb9cca124405070b8",
+          "sourceOrdinal": 23,
+          "sourceTextExcerpt": "<서술형 3><br>다음 조건을 만족시키는 음이 아닌 정수 $a, b, c, d$의 모든 순서쌍 $(a, b, c, d)$의 개수를 구하는 풀이 과정과 답을 서술하시오.<br><br>(가) $a+b+c-d=8$<br>(나) $d \\le 3$이고 $d < a$이다. [9점]",
+          "solutionDecisiveExcerpt": "$d$는 $0,1,2,3$의 네 경우다. $a>d$이므로 $a'=a-(d+1)\\ge0$으로 두면 $a+b+c-d=8$은 $a'+b+c=7$로 바뀐다. 고정된 $d$마다 음이 아닌 "
+        }
+      ]
+    }
+  ],
+  "scope": "Additive definitions of the actual conditionKeys explicitly bound by the audit; existing definitions and student payload unchanged."
+}
