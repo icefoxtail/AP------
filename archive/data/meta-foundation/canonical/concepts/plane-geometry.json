@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "PLANE_GEOMETRY",
-  "shardVersion": "1.3.8",
+  "shardVersion": "1.3.9",
   "status": "ACTIVE",
-  "conceptCount": 52,
+  "conceptCount": 61,
   "concepts": [
     {
       "conceptKey": "CC_ANGLE_BISECTOR",
@@ -2010,6 +2010,381 @@
       ],
       "taxonomyRefs": [
         "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_CHORD_PROPERTY",
+      "canonicalLabelKo": "원의 현의 성질",
+      "definition": "원의 중심에서 현에 내린 수선은 현을 이등분하고, 중심에서 같은 거리에 있는 현의 길이는 같다",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98",
+        "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
+        "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+        "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a",
+        "qid_v1_bac3c1fdf12dedd4e1ce4354cd4abec4861860ee41c7ab7b489dbdd0f06af761"
+      ],
+      "supportingItemCount": 5,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_CIRCLE_CHORD_PROPERTY for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 3 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bac3c1fdf12dedd4e1ce4354cd4abec4861860ee41c7ab7b489dbdd0f06af761",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_CIRCLE_CHORD_PROPERTY for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_PERP_BISECTOR at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 14 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_CIRCLE_CHORD_PROPERTY for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 15 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_CIRCLE_CHORD_PROPERTY for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 16 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+          "sourceOrdinal": 24,
+          "classificationRationale": "META_PIPELINE_AUDIT record 24 binds CC_CIRCLE_CHORD_PROPERTY for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_PERP_BISECTOR at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 24 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_CIRCUMFERENCE",
+      "canonicalLabelKo": "원의 둘레와 넓이",
+      "definition": "반지름 r인 원의 둘레 2πr 및 넓이 πr² 산출",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_CIRCLE_CIRCUMFERENCE for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 3 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PERPENDICULAR_CHORDS",
+      "canonicalLabelKo": "원 내부의 수직 평행현",
+      "definition": "서로 수직인 평행현 쌍에서 원의 중심으로부터의 대칭적 거리와 피타고라스 정리를 이용한 현의 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_PERPENDICULAR_CHORDS for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 16 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_TANGENT_PROPERTY",
+      "canonicalLabelKo": "원의 접선의 성질",
+      "definition": "원 밖의 한 점에서 그은 두 접선의 길이는 같고, 접선은 접점을 지나는 반지름과 수직을 이룬다",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+        "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_CIRCLE_TANGENT_PROPERTY for PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 17 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_CIRCLE_TANGENT_PROPERTY for PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 20 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_SIMILARITY",
+      "canonicalLabelKo": "삼각형의 닮음 조건과 성질",
+      "definition": "대응하는 두 각의 크기가 같을 때(AA) 성립하는 삼각형의 닮음 및 대응변의 길이의 비",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_TRIANGLE_SIMILARITY for PT_TRIG_RATIO_APPLICATION/TPL_TRIG_APPLICATION_CHAINED_MEASURE at M3-05-TRIG_RATIO_APPLICATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 18 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_TRIG_RATIO_APPLICATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_SECTOR_AREA",
+      "canonicalLabelKo": "부채꼴의 넓이",
+      "definition": "반지름 r, 중심각 x°인 부채꼴의 넓이 S = πr² × (x/360)",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_CIRCLE_SECTOR_AREA for PT_CIRCLE_ANGLE_RELATIONS/TPL_CIRCLE_ANGLE_SECTOR_MEASURE at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 19 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_ANGLE_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_INSCRIBED_CIRCLE",
+      "canonicalLabelKo": "삼각형의 내접원",
+      "definition": "삼각형의 세 변에 접하는 원으로 중심에서 세 변에 이르는 거리가 내접반지름 r로 일정하다",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_INSCRIBED_CIRCLE for PT_CIRCLE_TANGENT/TM_TANGENT_LENGTH at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 20 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_TANGENT"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_CONGRUENCE_RHS",
+      "canonicalLabelKo": "직각삼각형의 RHS 합동",
+      "definition": "두 직각삼각형에서 빗변의 길이와 다른 한 변의 길이가 각각 같을 때 성립하는 합동 조건",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+          "sourceOrdinal": 24,
+          "classificationRationale": "META_PIPELINE_AUDIT record 24 binds CC_TRIANGLE_CONGRUENCE_RHS for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_PERP_BISECTOR at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 24 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION"
+      ],
+      "curriculumRefs": [
+        "2015:중3 수학:M3-06"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_GEOMETRIC_PROOF",
+      "canonicalLabelKo": "기하학적 논증과 증명",
+      "definition": "주어진 조건과 기호, 공리 및 정리를 논리적으로 서술하여 결론을 이끌어내는 서술형 증명",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M3-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+          "sourceOrdinal": 24,
+          "classificationRationale": "META_PIPELINE_AUDIT record 24 binds CC_GEOMETRIC_PROOF for PT_CIRCLE_LINE_RELATION/TM_CIRCLE_CHORD_PERP_BISECTOR at M3-06-CIRCLE_PROPERTY.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 24 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+            "sha256": "46d0f7791bc0b555e6079af073ff52c94a9f3317492e7d5c6bcfb6dadb500d0e"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CIRCLE_LINE_RELATION"
       ],
       "curriculumRefs": [
         "2015:중3 수학:M3-06"
