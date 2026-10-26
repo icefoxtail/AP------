@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AP Math Playground · 원 안의 원들 · AI Studio 업그레이드 기준 틀</title>
+<!-- 이 문서는 기존 AI Studio 원본에서 핵심 Canvas 엔진을 그대로 추출하고
+     원본 실험실의 정보 구조(유형 선택/큰 칠판/선·면/재생/되감기)를 독립적으로 재현한 참고본입니다.
+     공개된 v5 사이트의 실제 HTML을 복제한 것은 아닙니다. -->
+<style>
+  :root {font-family:Pretendard,system-ui,"Malgun Gothic",sans-serif;color:#102a20;background:#f6f8f7}
+  * {box-sizing:border-box}body {margin:0;min-height:100vh}
+  button {font:inherit;cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #f59e0b;outline-offset:2px}
+  .top {padding:13px clamp(16px,3vw,36px);display:flex;align-items:center;justify-content:space-between;gap:14px;background:white;border-bottom:1px solid #d4e2dc}
+  .top strong {font-size:17px;font-weight:900;letter-spacing:-.04em}.top small{display:block;margin-top:3px;color:#547168;font-size:11px}
+  .top .meta{padding:7px 12px;border-radius:30px;background:#e9f5ef;font-size:11px;font-weight:800;color:#146645}
+  .shell {display:grid;grid-template-columns:215px minmax(0,1fr) 226px;min-height:calc(100vh - 67px);max-width:1620px;margin:auto}
+  .types{padding:21px 12px;border-right:1px solid #d3e2d9;background:#ffffff}
+  .types h2,.tools h2{font-size:13px;color:#47685a;margin:0 8px 13px;font-weight:850}
+  .type{display:block;width:100%;text-align:left;border:1px solid #d9e4dd;border-radius:13px;padding:12px 11px;background:#f8fbf9;margin-bottom:9px;color:#17362a;font-size:12px;font-weight:800;line-height:1.5;transition:.14s}
+  .type.selected{border-color:#e9a535;background:#fff6e7;color:#704213;box-shadow:0 0 0 1px #e9a535}
+  .type .idx{display:block;font-size:10px;color:#619476;margin-bottom:5px}
+  .center{min-width:0;display:flex;flex-direction:column;padding:15px;gap:10px}
+  .heading{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+  .heading h1{font-size:16px;margin:0;font-weight:900}.heading p{font-size:11px;margin:4px 0 0;color:#638072}
+  .heading span{font-size:10px;border:1px solid #d8e3db;background:white;color:#527361;border-radius:20px;padding:6px 9px}
+  .board{position:relative;flex:1;min-height:500px;border-radius:19px;overflow:hidden;background:radial-gradient(circle at 50% 45%, #153127 0%, #0b1d17 66%, #05100c 100%);box-shadow:inset 0 0 90px rgba(0,0,0,.5);border:1px solid #315844}
+  #boardCanvas{display:block;width:100%;height:100%;touch-action:manipulation;cursor:pointer}
+  .boardTip{pointer-events:none;position:absolute;left:17px;top:14px;color:#b4dfc2;font-size:11px;font-weight:750;background:#061b14ae;padding:7px 10px;border-radius:10px}
+  .buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .action{border:1px solid #cbded3;background:white;color:#194932;border-radius:12px;padding:12px 6px;font-size:12px;font-weight:850;min-height:45px}
+  .action.active{background:#e5f8ec;border-color:#34a46c}.action.primary{background:#177c57;border-color:#177c57;color:white}
+  .tools{background:white;border-left:1px solid #d3e2d9;padding:22px 14px;display:flex;flex-direction:column;gap:15px}
+  .tools label{display:block;font-size:12px;font-weight:850;margin:0 0 7px;color:#375a48}
+  .tools input[type=range]{width:100%;accent-color:#e29d2c;min-height:22px}
+  .tools .block{border:1px solid #e1e9e3;border-radius:13px;padding:12px;background:#f9fbf9}
+  .tools .value{color:#c07812;font-size:12px;font-weight:800;float:right}
+  .tools p{font-size:11px;color:#789082;line-height:1.55;margin:4px 0}
+  .small{border:1px solid #cbded3;background:white;color:#194932;padding:10px;border-radius:11px;font-size:12px;font-weight:850;width:100%}
+  @media(max-width:1100px){.shell{grid-template-columns:175px minmax(0,1fr)}.tools{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid #d3e2d9;border-left:0}.tools>h2{grid-column:1/-1}.board{min-height:470px}}
+  @media(max-width:650px){.top .meta{display:none}.shell{display:flex;flex-direction:column}.types{border-right:0;border-bottom:1px solid #e4ebe6;display:flex;overflow-x:auto;gap:7px;padding:10px 12px}.types h2{display:none}.type{margin:0;min-width:152px;flex:0 0 152px;padding:9px}.center{padding:10px}.board{height:clamp(400px,61svh,570px);min-height:400px;flex:0 0 auto}.buttons{grid-template-columns:repeat(2,1fr)}.tools{grid-template-columns:1fr 1fr;gap:8px;padding:10px}.tools>h2{display:none}.tools .block{padding:9px}.boardTip{font-size:10px}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div style="display:flex;align-items:center;gap:12px;">
+  <a href="../teacher-hub.html" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;border:1px solid #cbded3;background:#f0f7f3;color:#177c57;font-size:12px;font-weight:800;text-decoration:none;">← 실험실 허브</a>
+  <div><strong>AP MATH PLAYGROUND · 원과 부채꼴</strong><small>유형 01 · 원 안의 원들 — 실험실 기준 프레임</small></div>
+ </div>
+ <div class="meta">선 = 둘레 · 면 = 넓이</div>
+</header>
+<div class="shell">
+ <nav class="types" aria-label="도형 유형 선택">
+  <h2>실험할 도형</h2>
+  <button class="type" data-sub="donut"><span class="idx">01-A</span>🍩 도넛 (큰 원 − 작은 원)</button>
+  <button class="type" data-sub="babyCircle"><span class="idx">01-B</span>👶 엄마 원 안의 아기 원</button>
+  <button class="type" data-sub="snowman"><span class="idx">01-C</span>⛄ 지름 위 작은 원들</button>
+  <button class="type" data-sub="chordArc"><span class="idx">01-D</span>⚖️ 호와 현·활꼴</button>
+ </nav>
+ <main class="center">
+  <div class="heading"><div><h1 id="labTitle">엄마 원 안의 아기 원</h1><p>도형을 선택하면 바로 움직입니다. 칠판을 눌러 다시 보세요.</p></div><span>원본 Canvas 렌더러 발췌 · 실제 동작</span></div>
+  <div class="board"><div class="boardTip">🐜 둘레는 선을 따라 · 🎨 넓이는 색칠된 면으로</div><canvas id="boardCanvas" aria-label="움직이는 원과 부채꼴 실험 칠판" title="누르면 분리·합체 애니메이션 재생"></canvas></div>
+  <div class="buttons">
+   <button class="action primary" id="btnPlay">▶ 움직이기</button>
+   <button class="action" id="btnLine">🐜 선·둘레 보기</button>
+   <button class="action" id="btnArea">🎨 면·넓이 보기</button>
+   <button class="action" id="btnReset">↺ 처음 모습</button>
+  </div>
+ </main>
+ <aside class="tools">
+  <h2>직접 만져보기</h2>
+  <div class="block"><label for="sliderAnimProg">도형 분리·이동 <span class="value" id="valAnim">0%</span></label><input id="sliderAnimProg" type="range" min="0" max="1" step=".01" value="0"></div>
+  <div class="block"><label for="sliderParam1">큰 원 반지름 <span class="value" id="valRadius">6</span></label><input id="sliderParam1" type="range" min="2" max="10" step="2" value="6"></div>
+  <div class="block"><label for="sliderParam2">각도·작은 원 개수 <span class="value" id="valExtra">60</span></label><input id="sliderParam2" type="range" min="30" max="300" step="15" value="60"></div>
+  <div class="block"><button class="small" id="btnAnt">🐜 경계 따라가기</button><p>개미의 이동 경로와 아래 줄자에서 둘레를 관찰합니다.</p></div>
+  <div class="block"><button class="small" id="btnBoth">선 + 면 함께</button><p>원본 형태는 보존하고, 새 제작에서는 움직임·겹침·펼치기를 강화합니다.</p></div>
+ </aside>
+</div>
+<script>
+'use strict';
+// 출처: 사용자 제공 AI Studio 원본 circle-sectors(1).html / 렌더 함수는 변경하지 않음.
+// 아래 state/버튼 접속부는 원본 6실험실에서 Lab1만 독립 구동하도록 얇게 분리한 래퍼.
+const state = {
+  mode:1,subType:{1:'babyCircle'},lens:'both',steps:{1:true,2:true,3:true},
+  antActive:false,antProg:0,animProg:0,animTarget:null,
+  param1:6,param2:60,scale:1,offsetX:0,offsetY:0
+};
+const canvas=document.getElementById('boardCanvas');
+const ctx=canvas.getContext('2d');
+let rect={width:800,height:540};
+function resizeCanvas(){
+  const r=canvas.getBoundingClientRect();if(!r.width||!r.height)return;
+  rect={width:r.width,height:r.height};
+  const dpr=Math.min(window.devicePixelRatio||1,2.5);
+  canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);render();
+}
+function render(){ctx.clearRect(0,0,rect.width,rect.height);drawChalkGrid(rect);renderLab1(rect);}
+
+// ---------- 이하: 원본의 실제 도형 및 개미/보조선 렌더러(원문 발췌) ----------
+function drawSmartLabel(pt, text, centerPt, dist = 20, color = '#fef08a', fontSize = 13) {
+      if (!state.steps[1] && state.lens !== 'def' && state.lens !== 'both') return;
+      let dx = pt.x - (centerPt ? centerPt.x : pt.x);
+      let dy = pt.y - (centerPt ? centerPt.y : pt.y - 1);
+      const len = Math.hypot(dx, dy) || 1;
+      dx /= len;
+      dy /= len;
+
+      const lx = pt.x + dx * dist;
+      const ly = pt.y + dy * dist;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+      ctx.strokeStyle = '#06110d';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      ctx.font = `extrabold ${fontSize}px Pretendard, sans-serif`;
+      ctx.fillStyle = color;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = 'rgba(0,0,0,0.95)';
+      ctx.shadowBlur = 5;
+      ctx.fillText(text, lx, ly);
+      ctx.restore();
+    }
+
+
+
+function drawTickMarks(A, B, count = 1, color = '#fda4af', size = 7) {
+      if (!state.steps[1] && state.lens !== 'def' && state.lens !== 'aux' && state.lens !== 'both') return;
+      const mx = (A.x + B.x) / 2;
+      const my = (A.y + B.y) / 2;
+      const dx = B.x - A.x;
+      const dy = B.y - A.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const ux = dx / len, uy = dy / len;
+      const nx = -uy, ny = ux;
+      const gap = 4.5;
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.2;
+      for (let i = 0; i < count; i++) {
+        const offset = (i - (count - 1) / 2) * gap;
+        const cx = mx + ux * offset;
+        const cy = my + uy * offset;
+        ctx.beginPath();
+        ctx.moveTo(cx - nx * size, cy - ny * size);
+        ctx.lineTo(cx + nx * size, cy + ny * size);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+
+
+function drawAntAndTapeMeasure(rect, segments, antProgVal, totalFormulaStr) {
+      if (!segments || segments.length === 0) return;
+      const showTape = state.steps[2] || state.lens === 'perimeter' || state.antActive;
+      if (!showTape) return;
+
+      const by = rect.height - 60;
+      const tapeW = Math.min(490, rect.width * 0.72);
+      const startX = rect.width / 2 - tapeW / 2;
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(6, 17, 13, 0.94)';
+      ctx.strokeStyle = 'rgba(251, 191, 36, 0.6)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(startX - 18, by - 30, tapeW + 36, 55, 12);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.font = 'extrabold 11.5px Pretendard, sans-serif';
+      ctx.fillStyle = '#fef08a';
+      ctx.textAlign = 'left';
+      ctx.fillText(`📏 [개미의 둘레 줄자 펼치기] 테두리를 순서대로 더해요(+) : 총 둘레 = ${totalFormulaStr}`, startX - 6, by - 13);
+
+      const activeProg = state.antActive ? antProgVal : 1.0;
+      let accWeight = 0;
+      let curAntPt = null;
+      let curSegLabel = '';
+
+      segments.forEach((seg, idx) => {
+        const segStartW = accWeight;
+        const segEndW = accWeight + seg.weight;
+        const x0 = startX + segStartW * tapeW;
+        const segFullW = seg.weight * tapeW;
+
+        let fillRatio = 1.0;
+        if (state.antActive) {
+          if (activeProg <= segStartW) fillRatio = 0;
+          else if (activeProg >= segEndW) fillRatio = 1;
+          else {
+            fillRatio = (activeProg - segStartW) / seg.weight;
+            curAntPt = seg.ptAt(fillRatio);
+            curSegLabel = `${seg.label} (${seg.lenText})`;
+          }
+        }
+
+        ctx.fillStyle = 'rgba(255,255,255,0.08)';
+        ctx.fillRect(x0 + 2, by - 4, segFullW - 4, 18);
+
+        if (fillRatio > 0) {
+          ctx.fillStyle = seg.color;
+          ctx.fillRect(x0 + 2, by - 4, (segFullW - 4) * fillRatio, 18);
+        }
+
+        ctx.fillStyle = fillRatio > 0.35 ? '#06110d' : seg.color;
+        ctx.font = 'extrabold 10.5px Pretendard, monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(`${seg.label}:${seg.lenText}`, x0 + segFullW / 2, by + 9);
+
+        if (idx < segments.length - 1) {
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'extrabold 12px Pretendard, sans-serif';
+          ctx.fillText('+', x0 + segFullW, by + 9);
+        }
+        accWeight = segEndW;
+      });
+
+      if (state.antActive && curAntPt) {
+        ctx.beginPath();
+        ctx.arc(curAntPt.x, curAntPt.y, 9, 0, Math.PI * 2);
+        ctx.fillStyle = '#f43f5e';
+        ctx.shadowColor = '#f43f5e';
+        ctx.shadowBlur = 16;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = '#ffffff';
+        ctx.stroke();
+
+        const badgeTxt = `🐜 ${curSegLabel} 걷는 중!`;
+        ctx.font = 'extrabold 12px Pretendard, sans-serif';
+        const bw = ctx.measureText(badgeTxt).width + 18;
+        ctx.fillStyle = 'rgba(6, 17, 13, 0.95)';
+        ctx.strokeStyle = '#fbbf24';
+        ctx.beginPath();
+        ctx.roundRect(curAntPt.x - bw / 2, curAntPt.y - 36, bw, 24, 8);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = '#fef08a';
+        ctx.textAlign = 'center';
+        ctx.fillText(badgeTxt, curAntPt.x, curAntPt.y - 20);
+      }
+
+      ctx.restore();
+    }
+
+    
+
+function drawChalkGrid(rect) {
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height / 2 + state.offsetY;
+      const step = 36 * state.scale;
+
+      ctx.save();
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.055)';
+      ctx.lineWidth = 1;
+      for (let x = cx % step; x < rect.width; x += step) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, rect.height); ctx.stroke();
+      }
+      for (let y = cy % step; y < rect.height; y += step) {
+        ctx.beginPath(); ctx.moveTo(0, y);
+        ctx.lineTo(rect.width, y);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+
+
+function renderLab1(rect) {
+      const sub = state.subType[1];
+      const r = state.param1;
+      const deg = state.param2;
+      const t = state.animProg;
+
+      const pxPerCm = Math.min(rect.width, rect.height) * 0.035 * state.scale;
+      const R = Math.max(75, Math.min(138, r * pxPerCm));
+      const Rin = R / 2;
+
+      const showArea = state.lens === 'both' || state.lens === 'area' || state.lens === 'def';
+      const showPerim = state.lens === 'both' || state.lens === 'perimeter' || state.lens === 'def';
+
+      const cx = rect.width / 2 + state.offsetX;
+      const cy = rect.height * 0.45 + state.offsetY;
+
+      ctx.save();
+
+      if (sub === 'donut' || sub === 'babyCircle') {
+        const isDonut = sub === 'donut';
+        const baseCx = cx - t * (R * 0.55);
+        const holeOriginX = isDonut ? baseCx : baseCx + Rin;
+        const holeCurX = holeOriginX + t * (R * 1.45);
+
+        // 1) 큰 원 O
+        if (showArea) {
+          ctx.beginPath();
+          ctx.arc(baseCx, cy, R, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(52, 211, 153, 0.38)';
+          ctx.fill();
+
+          // 구멍 뚫기
+          ctx.save();
+          ctx.globalCompositeOperation = 'destination-out';
+          ctx.beginPath();
+          ctx.arc(holeOriginX, cy, Rin, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        // 분리되어 나오는 안쪽 구멍 원 (t > 0.02)
+        if (t > 0.02) {
+          ctx.beginPath();
+          ctx.arc(holeCurX, cy, Rin, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(244, 63, 94, 0.35)';
+          ctx.fill();
+          ctx.strokeStyle = '#f43f5e';
+          ctx.lineWidth = 3;
+          ctx.setLineDash([5, 4]);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.fillStyle = '#fda4af';
+          ctx.font = 'extrabold 12.5px Pretendard, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(`빠져나온 작은 원 (r=${r / 2}cm)`, holeCurX, cy + Rin + 22);
+          ctx.fillText(`넓이 = ${(r / 2) ** 2}π cm²`, holeCurX, cy + Rin + 40);
+        }
+
+        if (showPerim) {
+          ctx.beginPath(); ctx.arc(baseCx, cy, R, 0, Math.PI * 2); ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 5.5; ctx.stroke();
+          ctx.beginPath(); ctx.arc(holeOriginX, cy, Rin, 0, Math.PI * 2); ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 5; ctx.stroke();
+        }
+
+        // 반지름 보조선 및 등변 마크
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(baseCx, cy);
+        ctx.lineTo(baseCx + R, cy);
+        ctx.stroke();
+
+        if (!isDonut) {
+          drawTickMarks({ x: baseCx, y: cy }, { x: holeOriginX, y: cy }, 1, '#7dd3fc', 7);
+          drawTickMarks({ x: holeOriginX, y: cy }, { x: baseCx + R, y: cy }, 1, '#7dd3fc', 7);
+          drawSmartLabel({ x: holeOriginX, y: cy }, `O'(r=${r / 2})`, { x: holeOriginX, y: cy + 30 }, 20, '#f9a8d4');
+        } else {
+          ctx.beginPath(); ctx.moveTo(baseCx, cy); ctx.lineTo(baseCx, cy - Rin);
+          ctx.strokeStyle = '#f472b6'; ctx.lineWidth = 3; ctx.stroke();
+        }
+
+        drawSmartLabel({ x: baseCx, y: cy }, `O(R=${r})`, { x: baseCx - 30, y: cy + 30 }, 22, '#fef08a');
+        drawSmartLabel({ x: baseCx + R, y: cy }, 'A', { x: baseCx, y: cy }, 20, '#fef08a');
+
+        drawAntAndTapeMeasure(
+          rect,
+          [
+            {
+              label: '① 바깥 큰 원주',
+              lenText: `${2 * r}π`,
+              weight: 0.66,
+              color: '#fbbf24',
+              ptAt: (u) => ({ x: baseCx + R * Math.cos(u * Math.PI * 2), y: cy + R * Math.sin(u * Math.PI * 2) })
+            },
+            {
+              label: '② 안쪽 작은 원주',
+              lenText: `${r}π`,
+              weight: 0.34,
+              color: '#f472b6',
+              ptAt: (u) => ({ x: holeOriginX + Rin * Math.cos(u * Math.PI * 2), y: cy + Rin * Math.sin(u * Math.PI * 2) })
+            }
+          ],
+          state.antProg,
+          `${2 * r}π + ${r}π = ${3 * r}π cm (둘레는 더하기!)`
+        );
+      } else if (sub === 'snowman') {
+        // 지름 위 작은 원 n개 (2개 또는 3개)
+        const nSm = deg >= 150 ? 3 : 2;
+        const rSmPx = R / nSm;
+
+        if (showArea) {
+          ctx.beginPath();
+          ctx.arc(cx, cy, R, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.36)';
+          ctx.fill();
+
+          ctx.save();
+          ctx.globalCompositeOperation = 'destination-out';
+          for (let i = 0; i < nSm; i++) {
+            const sx = cx - R + rSmPx * (2 * i + 1);
+            ctx.beginPath();
+            ctx.arc(sx, cy, rSmPx, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+
+        // 지름 기준선 AB
+        ctx.beginPath();
+        ctx.moveTo(cx - R, cy);
+        ctx.lineTo(cx + R, cy);
+        ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+        ctx.setLineDash([5, 4]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        if (showPerim) {
+          ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 5.5; ctx.stroke();
+          for (let i = 0; i < nSm; i++) {
+            const sx = cx - R + rSmPx * (2 * i + 1);
+            const liftY = cy + (i % 2 === 0 ? -1 : 1) * t * 18;
+            ctx.beginPath();
+            ctx.arc(sx, liftY, rSmPx, 0, Math.PI * 2);
+            ctx.strokeStyle = '#f472b6';
+            ctx.lineWidth = 4.5;
+            ctx.stroke();
+            drawSmartLabel({ x: sx, y: liftY }, `O${i + 1}`, { x: sx, y: liftY + 25 }, 16, '#f9a8d4', 11);
+          }
+        }
+
+        drawSmartLabel({ x: cx - R, y: cy }, 'A', { x: cx, y: cy }, 20, '#fef08a');
+        drawSmartLabel({ x: cx + R, y: cy }, 'B', { x: cx, y: cy }, 20, '#fef08a');
+
+        drawAntAndTapeMeasure(
+          rect,
+          [
+            {
+              label: '① 큰 원 둘레',
+              lenText: `${2 * r}π`,
+              weight: 0.5,
+              color: '#fbbf24',
+              ptAt: (u) => ({ x: cx + R * Math.cos(u * Math.PI * 2), y: cy + R * Math.sin(u * Math.PI * 2) })
+            },
+            {
+              label: `② 작은 원 ${nSm}개 둘레 합`,
+              lenText: `${2 * r}π`,
+              weight: 0.5,
+              color: '#f472b6',
+              ptAt: (u) => {
+                const idx = Math.min(nSm - 1, Math.floor(u * nSm));
+                const localU = u * nSm - idx;
+                const sx = cx - R + rSmPx * (2 * idx + 1);
+                return { x: sx + rSmPx * Math.cos(localU * Math.PI * 2), y: cy + rSmPx * Math.sin(localU * Math.PI * 2) };
+              }
+            }
+          ],
+          state.antProg,
+          `${2 * r}π + ${2 * r}π = ${4 * r}π cm (원 개수에 상관없이 항상 2배!)`
+        );
+      } else {
+        // chordArc: 중심각 2배일 때 호 vs 현·활꼴 (t 애니메이션 완벽 연동!)
+        const baseDeg = Math.min(85, Math.max(30, deg));
+        const rad1 = (baseDeg * Math.PI) / 180;
+        const oPt = { x: cx - R * 0.2, y: cy };
+        const pA = { x: oPt.x + R * Math.cos(-rad1), y: oPt.y + R * Math.sin(-rad1) };
+        const pB = { x: oPt.x + R, y: oPt.y };
+        const pC = { x: oPt.x + R * Math.cos(rad1), y: oPt.y + R * Math.sin(rad1) };
+
+        ctx.beginPath(); ctx.arc(oPt.x, oPt.y, R, 0, Math.PI * 2);
+        ctx.setLineDash([5, 5]); ctx.strokeStyle = 'rgba(148,163,184,0.28)'; ctx.stroke(); ctx.setLineDash([]);
+
+        // 1번째 부채꼴 AOB
+        ctx.beginPath(); ctx.moveTo(oPt.x, oPt.y); ctx.arc(oPt.x, oPt.y, R, -rad1, 0); ctx.closePath();
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.28)'; ctx.fill(); ctx.strokeStyle = '#38bdf8'; ctx.stroke();
+
+        // 2번째 회전 복제 부채꼴 (t=0일 때 AOB와 겹쳐 있다가 t=1일 때 BOC로 회전 합체!)
+        ctx.beginPath(); ctx.moveTo(oPt.x, oPt.y); ctx.arc(oPt.x, oPt.y, R, -rad1 + t * rad1, t * rad1); ctx.closePath();
+        ctx.fillStyle = 'rgba(52, 211, 153, 0.30)'; ctx.fill(); ctx.strokeStyle = '#34d399'; ctx.stroke();
+
+        // 활꼴 보너스 삼각형 ΔABC
+        ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.closePath();
+        ctx.fillStyle = `rgba(251, 191, 36, ${0.15 + 0.28 * t})`; ctx.fill();
+
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.setLineDash([6, 4]);
+        ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.stroke(); ctx.setLineDash([]);
+        drawTickMarks(pA, pB, 2, '#38bdf8', 6);
+        drawTickMarks(pB, pC, 2, '#38bdf8', 6);
+
+        ctx.strokeStyle = '#f43f5e'; ctx.lineWidth = 5;
+        ctx.beginPath(); ctx.moveTo(pA.x, pA.y); ctx.lineTo(pC.x, pC.y); ctx.stroke();
+
+        ctx.beginPath(); ctx.arc(oPt.x, oPt.y, R, -rad1, rad1);
+        ctx.strokeStyle = '#fbbf24'; ctx.lineWidth = 5.5; ctx.stroke();
+
+        drawSmartLabel(oPt, `O(${baseDeg}°×2)`, { x: oPt.x + R, y: oPt.y }, 46, '#fef08a');
+        drawSmartLabel(pA, 'A', oPt, 20, '#fef08a');
+        drawSmartLabel(pB, 'B(중간점)', oPt, 35, '#7dd3fc');
+        drawSmartLabel(pC, 'C', oPt, 20, '#fef08a');
+      }
+
+      ctx.restore();
+    }
+
+
+// ---------- 이상: 사용자 원본의 실제 렌더러 ----------
+const names={donut:'도넛 모양',babyCircle:'엄마 원 안의 아기 원',snowman:'지름 위 작은 원들',chordArc:'호 vs 현 · 활꼴'};
+function refresh(){
+ document.querySelectorAll('.type').forEach(b=>b.classList.toggle('selected',b.dataset.sub===state.subType[1]));
+ document.getElementById('labTitle').textContent=names[state.subType[1]];
+ document.getElementById('valAnim').textContent=Math.round(state.animProg*100)+'%';
+ document.getElementById('valRadius').textContent=state.param1;
+ document.getElementById('valExtra').textContent=state.param2;
+ document.getElementById('sliderAnimProg').value=state.animProg;
+ document.getElementById('btnLine').classList.toggle('active',state.lens==='perimeter');
+ document.getElementById('btnArea').classList.toggle('active',state.lens==='area');
+ document.getElementById('btnBoth').classList.toggle('active',state.lens==='both');
+}
+function play(){state.animProg=0;state.animTarget=1;state.antActive=false;state.antProg=0;refresh();render();}
+function setSubType(sub){state.subType[1]=sub;state.lens='both';play()}
+function setLens(l){state.lens=l;refresh();render()}
+function startAnt(){state.lens='perimeter';state.antActive=true;state.antProg=0;state.steps[2]=true;refresh();render();}
+function reset(){state.animTarget=null;state.animProg=0;state.antActive=false;state.antProg=0;state.lens='both';refresh();render()}
+document.querySelectorAll('.type').forEach(b=>b.addEventListener('click',()=>setSubType(b.dataset.sub)));
+document.getElementById('btnPlay').onclick=play;
+document.getElementById('btnLine').onclick=()=>{setLens('perimeter');startAnt()};
+document.getElementById('btnArea').onclick=()=>{setLens('area');play()};
+document.getElementById('btnReset').onclick=reset;
+document.getElementById('btnAnt').onclick=startAnt;
+document.getElementById('btnBoth').onclick=()=>{setLens('both');play()};
+document.getElementById('sliderAnimProg').oninput=e=>{state.animTarget=null;state.animProg=Number(e.target.value);refresh();render()};
+document.getElementById('sliderParam1').oninput=e=>{state.param1=Number(e.target.value);refresh();render()};
+document.getElementById('sliderParam2').oninput=e=>{state.param2=Number(e.target.value);refresh();render()};
+canvas.addEventListener('click',()=>{state.animProg>0.5?reset():play()});
+function animateLoop(){
+ let changed=false;
+ if(state.animTarget!==null){const diff=state.animTarget-state.animProg;if(Math.abs(diff)<.008){state.animProg=state.animTarget;state.animTarget=null}else state.animProg+=diff*.068;changed=true;}
+ if(state.antActive){state.antProg+=.005;if(state.antProg>=1){state.antProg=1;state.antActive=false;}changed=true;}
+ if(changed){refresh();render()};requestAnimationFrame(animateLoop);
+}
+new ResizeObserver(resizeCanvas).observe(canvas);
+resizeCanvas();refresh();requestAnimationFrame(animateLoop);
+</script>
+</body></html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AP Math Playground · 3차원 벡터 성분과 내적 3D 실험실</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    :root {
+      --bg: #09090D;
+      --surface: #120E18;
+      --card: #181220;
+      --accent-gold: #D8B77E;
+      --accent-emerald: #55CBA3;
+      --accent-amethyst: #A78AC8;
+      --text: #F5F0E9;
+      --text-sub: #BDB8C2;
+      --border: rgba(216, 183, 126, 0.18);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      height: 60px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(18, 14, 24, 0.9);
+      backdrop-filter: blur(12px);
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .btn-back {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--accent-gold);
+      font-size: 13px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-back:hover { border-color: var(--accent-emerald); color: var(--text); }
+    .lab-title { font-size: 16px; font-weight: 850; }
+    .lab-meta { font-size: 11px; color: var(--accent-emerald); margin-left: 6px; }
+    .layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      overflow: hidden;
+    }
+    #canvas3d {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+    #canvas3d:active { cursor: grabbing; }
+    aside {
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      overflow-y: auto;
+    }
+    .control-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .control-block label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .val-chip { color: var(--accent-gold); font-family: monospace; font-size: 14px; }
+    input[type=range] { width: 100%; accent-color: var(--accent-emerald); margin-bottom: 6px; }
+    .proof-box {
+      background: rgba(9, 9, 13, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .proof-formula {
+      font-family: 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+    .proof-stat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      margin-bottom: 4px;
+      color: var(--text-sub);
+    }
+    .proof-sum {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 850;
+      color: var(--accent-emerald);
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+    }
+    @media (max-width: 820px) {
+      .layout { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+      aside { height: 260px; border-left: none; border-top: 1px solid var(--border); }
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "../universe/vendor/three.module.js",
+        "three/addons/": "../universe/vendor/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="../teacher-hub.html" class="btn-back">← 메인 허브로</a>
+      <div>
+        <span class="lab-title">3차원 공간벡터와 내적·정사영</span>
+        <span class="lab-meta">기하 · 공간벡터</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <canvas id="canvas3d"></canvas>
+    <aside>
+      <div class="control-block">
+        <label>기준 벡터 u (x, z) <span class="val-chip" id="valU">(3.0, 1.0)</span></label>
+        <input type="range" id="sliderUx" min="-4.0" max="4.0" step="0.5" value="3.0">
+        <input type="range" id="sliderUz" min="-4.0" max="4.0" step="0.5" value="1.0">
+      </div>
+
+      <div class="control-block">
+        <label>대상 벡터 v (x, y) <span class="val-chip" id="valV">(1.5, 3.0)</span></label>
+        <input type="range" id="sliderVx" min="-4.0" max="4.0" step="0.5" value="1.5">
+        <input type="range" id="sliderVy" min="-4.0" max="4.0" step="0.5" value="3.0">
+      </div>
+
+      <div class="proof-box">
+        <div class="proof-formula">u · v = |u||v|cos θ = u₁v₁ + u₂v₂ + u₃v₃</div>
+        <div class="proof-stat"><span>벡터 |u| 길이</span><span id="statLenU">3.16</span></div>
+        <div class="proof-stat"><span>벡터 |v| 길이</span><span id="statLenV">3.35</span></div>
+        <div class="proof-stat"><span>두 벡터 사잇각 θ</span><span id="statAngle">64.9°</span></div>
+        <div class="proof-sum"><span>내적 값 (u · v)</span><span id="statDot">4.50</span></div>
+      </div>
+
+      <div class="proof-box" style="font-size: 12.5px; color: var(--text-sub);">
+        <strong>내적의 기하학적 의미:</strong><br>
+        <span style="color:var(--accent-emerald);">u · v &gt; 0</span>이면 예각, <span style="color:var(--accent-gold);">u · v = 0</span>이면 직교(수직), <span style="color:var(--accent-amethyst);">u · v &lt; 0</span>이면 둔각을 이룹니다.
+      </div>
+    </aside>
+  </div>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/OrbitControls.js';
+
+    const canvas = document.getElementById('canvas3d');
+    const sliderUx = document.getElementById('sliderUx');
+    const sliderUz = document.getElementById('sliderUz');
+    const sliderVx = document.getElementById('sliderVx');
+    const sliderVy = document.getElementById('sliderVy');
+    const valU = document.getElementById('valU');
+    const valV = document.getElementById('valV');
+    const statLenU = document.getElementById('statLenU');
+    const statLenV = document.getElementById('statLenV');
+    const statAngle = document.getElementById('statAngle');
+    const statDot = document.getElementById('statDot');
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x09090D);
+
+    const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+    camera.position.set(6, 5, 8);
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+
+    // Lights
+    const amb = new THREE.AmbientLight(0xffffff, 1.0);
+    scene.add(amb);
+
+    // Axes
+    const axesHelper = new THREE.AxesHelper(5);
+    scene.add(axesHelper);
+
+    // Grid helper
+    const grid = new THREE.GridHelper(10, 20, 0x55CBA3, 0x241727);
+    scene.add(grid);
+
+    let arrowU, arrowV, projLine;
+
+    function build() {
+      if (arrowU) scene.remove(arrowU);
+      if (arrowV) scene.remove(arrowV);
+      if (projLine) scene.remove(projLine);
+
+      const ux = parseFloat(sliderUx.value);
+      const uz = parseFloat(sliderUz.value);
+      const uVec = new THREE.Vector3(ux, 0, uz);
+
+      const vx = parseFloat(sliderVx.value);
+      const vy = parseFloat(sliderVy.value);
+      const vVec = new THREE.Vector3(vx, vy, 0);
+
+      valU.textContent = `(${ux.toFixed(1)}, 0, ${uz.toFixed(1)})`;
+      valV.textContent = `(${vx.toFixed(1)}, ${vy.toFixed(1)}, 0)`;
+
+      const lenU = uVec.length();
+      const lenV = vVec.length();
+      const dot = uVec.dot(vVec);
+
+      statLenU.textContent = lenU.toFixed(2);
+      statLenV.textContent = lenV.toFixed(2);
+      statDot.textContent = dot.toFixed(2);
+
+      let rad = 0;
+      if (lenU > 0.01 && lenV > 0.01) {
+        const cosTheta = Math.max(-1, Math.min(1, dot / (lenU * lenV)));
+        rad = Math.acos(cosTheta);
+        statAngle.textContent = `${(rad * 180 / Math.PI).toFixed(1)}° (${rad.toFixed(2)} rad)`;
+      } else {
+        statAngle.textContent = '--';
+      }
+
+      // Arrow U (Emerald)
+      if (lenU > 0.01) {
+        arrowU = new THREE.ArrowHelper(uVec.clone().normalize(), new THREE.Vector3(0, 0, 0), lenU, 0x55CBA3, 0.4, 0.25);
+        scene.add(arrowU);
+      }
+
+      // Arrow V (Gold)
+      if (lenV > 0.01) {
+        arrowV = new THREE.ArrowHelper(vVec.clone().normalize(), new THREE.Vector3(0, 0, 0), lenV, 0xD8B77E, 0.4, 0.25);
+        scene.add(arrowV);
+      }
+
+      // Projection dashed line from V to U
+      if (lenU > 0.01) {
+        const projVec = uVec.clone().multiplyScalar(dot / (lenU * lenU));
+        const lineGeo = new THREE.BufferGeometry().setFromPoints([vVec, projVec]);
+        const lineMat = new THREE.LineDashedMaterial({ color: 0xA78AC8, dashSize: 0.2, gapSize: 0.1 });
+        projLine = new THREE.Line(lineGeo, lineMat);
+        projLine.computeLineDistances();
+        scene.add(projLine);
+      }
+    }
+
+    [sliderUx, sliderUz, sliderVx, sliderVy].forEach(s => s.addEventListener('input', build));
+    build();
+
+    function onResize() {
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    }
+    window.addEventListener('resize', onResize);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+</body>
+</html>
