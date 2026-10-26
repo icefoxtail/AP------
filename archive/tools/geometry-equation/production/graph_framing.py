@@ -60,7 +60,8 @@ def _fit_cubic_quartic(plan,coefficients):
         if abs(expected-float(point['y']))>1e-8:raise ValueError('REQUIRED_GRAPH_POINT_NOT_ON_CURVE')
         required_x.append(float(point['x']));required_y.append(float(point['y']))
     feature_x=[row['x'] for row in math_features]
-    coordinates=[0.0,*feature_x,*required_x]
+    anchor_points=plan.get('overlayAnchors',[])
+    coordinates=[0.0,*feature_x,*required_x,*[x for x,_ in anchor_points]]
     feature_extent=max(abs(value) for value in coordinates)
     leading=abs(float(coefficients[-1]))
     if not math.isfinite(leading) or leading<=0:raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_LEADING_COEFFICIENT')
@@ -77,7 +78,7 @@ def _fit_cubic_quartic(plan,coefficients):
     # sit close to one tail boundary (for example x^4-x has its right root at
     # x=1); reserve common display-only room beyond the outer feature so unit
     # ticks remain distinct from both the frame edge and the curve.
-    if degree==4:
+    if degree==4 or anchor_points:
         tail_margin=max(.4,feature_extent*.25)
         lo=min(-radius,min(coordinates)-tail_margin)
         hi=max(radius,max(coordinates)+tail_margin)
@@ -88,7 +89,7 @@ def _fit_cubic_quartic(plan,coefficients):
         result=float(polynomial.eval(S.Rational(str(value))))
         if not math.isfinite(result) or abs(result)>1e12:raise ValueError('UNSUPPORTED_CUBIC_QUARTIC_NUMERIC_SCOPE')
         return result
-    values=[evaluate(lo),evaluate(hi),0.0,*[row['y'] for row in math_features],*required_y]
+    values=[evaluate(lo),evaluate(hi),0.0,*[row['y'] for row in math_features],*required_y,*[y for _,y in anchor_points]]
     low,high=min(values),max(values);span=max(1.0,high-low,abs(low),abs(high));padding=.15*span
     ymin=min(0.0,low)-padding;ymax=max(0.0,high)+padding
     sign=1 if polynomial.LC()>0 else -1
@@ -101,7 +102,7 @@ def _fit_cubic_quartic(plan,coefficients):
     fitted={**plan,'domain':[lo,hi],'viewport':[lo,hi,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','overviewFeatures':features,'overviewFeaturePolicy':feature_policy,'overviewEndDirections':end_directions}
     return {'graphPlan':fitted,'policy':'POLYNOMIAL_CUBIC_QUARTIC_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
-def fit_overview(plan):
+def _fit_overview_family(plan):
     if 'regions' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
     if plan.get('family')=='rational':return _fit_rational_overview(plan)
@@ -113,6 +114,7 @@ def fit_overview(plan):
     if plan.get('family')=='exp-log-pair':return _fit_exp_log_pair_overview(plan)
     if plan.get('family')=='trigonometric':return _fit_trigonometric_overview(plan)
     if plan.get('family')=='piecewise-polynomial':return fit_piecewise_polynomial(plan)
+    if plan.get('family')=='piecewise-discontinuous':return fit_piecewise_discontinuous(plan)
     if plan.get('family')!='polynomial':raise ValueError('UNSUPPORTED_OVERVIEW_FAMILY')
     values=plan.get('coefficients')
     if not isinstance(values,list) or not 1<=len(values)<=5 or any(not isinstance(v,str) or len(v)>64 or not re.fullmatch(r'-?\d+(?:/\d+)?',v) for v in values):raise ValueError('INVALID_FRAMING_COEFFICIENTS')
@@ -146,11 +148,14 @@ def fit_overview(plan):
     # potentially source-restricted domain to make a prettier picture.
     lo,hi=plan['domain']
     if not lo<hf<hi or min(hf-lo,hi-hf)<natural:raise ValueError('OVERVIEW_DRAW_INTERVAL_TOO_NARROW_REVIEW_DOMAIN')
-    radius=min(hf-lo,hi-hf)/1.15
     if any(not lo<=p['x']<=hi for p in required):raise ValueError('REQUIRED_FEATURE_OUTSIDE_REVIEWED_DRAW_INTERVAL')
+    anchors=plan.get('overlayAnchors',[])
+    if anchors:
+        lo=min(lo,min(x for x,_ in anchors)-.5);hi=max(hi,max(x for x,_ in anchors)+.5)
+    radius=min(hf-lo,hi-hf)/1.15
     # The curve is drawn over [lo,hi], so its height there decides the frame (radius alone left the drawn ends above ymax).
     span=max(hf-lo,hi-hf)
-    rise=max([abs(af)*span*span]+[1.15*abs(p['y']-kf) for p in required+line_points])
+    rise=max([abs(af)*span*span]+[1.15*abs(p['y']-kf) for p in required+line_points]+[1.15*abs(y-kf) for _,y in anchors])
     ymin=min(0,kf-.15*rise) if af>0 else min(0,kf-1.15*rise)
     ymax=max(0,kf+1.15*rise) if af>0 else max(0,kf+.15*rise)
     xpad=(hi-lo)*.1 if required or line_points else 0
@@ -208,7 +213,7 @@ def _fit_quadratic_equal_unit(plan,hf,kf,af,natural,required,line_points):
     """All reals: the vertex, the natural arms (half-span 2/sqrt|a|, rise 4), the key and line points and the origin, at one scale; the curve
     runs to just inside the top (or bottom) edge."""
     rise=4 if af>0 else -4
-    points=[(0.0,0.0),(hf,kf),(hf-natural,kf+rise),(hf+natural,kf+rise)]+[(p['x'],p['y']) for p in required+line_points]
+    points=[(0.0,0.0),(hf,kf),(hf-natural,kf+rise),(hf+natural,kf+rise)]+[(p['x'],p['y']) for p in required+line_points]+[(x,y) for x,y in plan.get('overlayAnchors',[])]
     limit=plot_height_limit(plan)
     for ratio in axis_ratios(plan,points,limit):
         viewport,height,scale=equal_unit_frame(points,limit,ratio)
@@ -276,6 +281,7 @@ def _fit_quadratic_interval(plan,c,source_domain,required,line_points):
     xs=[float(lo),float(hi)]+([float(h)] if lo<h<hi else [])
     points=[(0.0,0.0)]+list(zip(xs,[float(v) for v in values]))+[(p['x'],p['y']) for p in required+line_points]
     application=plan.get('applicationAxes')
+    if not application:points=points+[(x,y) for x,y in plan.get('overlayAnchors',[])]
     if application not in (None,True):raise ValueError('INVALID_APPLICATION_AXES')
     if application:
         if plan.get('axisSqueeze') is not None or plan.get('plotCanvas') is not None:raise ValueError('INVALID_APPLICATION_AXES')
@@ -344,14 +350,15 @@ def _fit_rational_overview(plan):
     # overview. A very wide all-real display compresses the y-axis tick column
     # against both the nearby branch and the pole cue without adding useful
     # information about the source function.
-    radius=max(6.0,abs(singularity_x)*1.25+.5,abs(root_x-singularity_x)*1.2+1.0,*[abs(px-singularity_x)*1.2 for px in required_x])
+    anchors=plan.get('overlayAnchors',[])
+    radius=max(6.0,abs(singularity_x)*1.25+.5,abs(root_x-singularity_x)*1.2+1.0,*[abs(px-singularity_x)*1.2 for px in required_x],*[abs(ax-singularity_x)*1.2 for ax,_ in anchors])
     lo,hi=singularity_x-radius,singularity_x+radius
     def evaluate_exact(x_value):
         exact_x=Fraction(str(x_value));den=numerator[0]*0+denominator[0]+denominator[1]*exact_x
         if den==0:raise ValueError('RATIONAL_FRAME_ENDPOINT_IS_SINGULAR')
         return float((numerator[0]+numerator[1]*exact_x)/den)
     endpoint_values=[evaluate_exact(lo),evaluate_exact(hi)]
-    key_values=[0.0,float(horizontal),*required_y]
+    key_values=[0.0,float(horizontal),*required_y,*[y for _,y in anchors]]
     if x_intercept is not None:key_values.append(0.0)
     if is_hole:key_values.append(float(singularity['y']))
     low=min([*endpoint_values,*key_values]);high=max([*endpoint_values,*key_values])
@@ -1226,7 +1233,7 @@ def _fit_trigonometric_overview(plan):
 # ---- piecewise polynomial: one continuous y=g(x) of up to three pieces (degree <= 2 each) plus up to three horizontal lines y=c ----------
 # The plan claims the breakpoint values, marks every corner and every vertex inside a piece as a requiredPoint, and lists the exact x of every
 # intersection with each line. All of it is recomputed here exactly (Fractions, SymPy surds) and a disagreement refuses the plan.
-PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote','regions'}
+PIECEWISE_POLY_FIELDS={'family','pieces','breakpoints','sourceDomain','formula','referenceLines','requiredPoints','exactCoordinates','axisTickValues','domain','viewport','axisSqueeze','plotHeightLimit','referenceCurves','functionName','sampleNote','overlays','overlayAnchors','regions'}
 PIECEWISE_POLY_MIN_ARM_PX=12
 PIECEWISE_POLY_MIN_FEATURE_GAP_PX=4
 # Four pieces cover the two-piecewise exam items (f and g both piecewise); a fifth piece is refused.
@@ -1809,6 +1816,7 @@ def fit_piecewise_polynomial(plan):
     key+=[(0.0,pp_exact_float(row['intercept'] if 'slope' in row else row['y'])) for row in crossings if not row['points']]
     key+=[(point['xValue'],point['yValue']) for row in curve_crossings for point in row['points']]
     key+=[(float(row['vertex'][0]),float(row['vertex'][1])) for row in refs if row.get('vertex')]
+    key+=[(x,y) for x,y in plan.get('overlayAnchors',[])]
     # A piecewise reference curve also contributes its own corners, in-piece vertices and its domain ends (drawn as hollow/filled dots).
     for row in refs:
         if row['kind']!='piecewise':continue
@@ -1898,3 +1906,566 @@ def fit_piecewise_polynomial(plan):
         fitted['intervalFeatures']={'schemaVersion':'POLYNOMIAL_INTERVAL_FEATURES_v1','endpoints':[{'side':'START','x':_pp_text(lo),'y':_pp_text(g(lo)),'state':states[0]},{'side':'END','x':_pp_text(hi),'y':_pp_text(g(hi)),'state':states[1]}]}
         fitted['intervalFeaturePolicy']={'schemaVersion':'POLYNOMIAL_INTERVAL_POLICY_v1','markerRadiusIntrinsicPx':4,'minimumMarkerDiameterCssPx':3}
     return {'graphPlan':fitted,'policy':'PIECEWISE_POLYNOMIAL_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
+
+# ---- piecewise discontinuous: one to six polynomial pieces (degree <= 2) on their own intervals, each end OPEN or CLOSED ----------
+# Unlike piecewise-polynomial-spike-v1 the pieces need not meet: a junction may jump, the function value there is declared either by a
+# CLOSED end or by jumpValues, and a jumpValue may also stand alone as an isolated point. A staircase is written as a step block.
+PIECEWISE_DISCONTINUOUS_FIELDS={'family','pieces','step','jumpValues','referenceLines','requiredPoints','exactCoordinates','axisTickValues','functionName','domain','viewport','plotHeightLimit'}
+PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY='PIECEWISE_DISCONTINUOUS_OVERVIEW_v1'
+PIECEWISE_DISCONTINUOUS_MAX_PIECES=6
+PIECEWISE_DISCONTINUOUS_MAX_JUMP_VALUES=8
+PIECEWISE_DISCONTINUOUS_MAX_REQUIRED_POINTS=24
+PIECEWISE_DISCONTINUOUS_MIN_FEATURE_GAP_PX=4
+
+def _pd_piece(entry,index):
+    """One piece: exact coefficients of degree at most 2 and its own interval, each end OPEN or CLOSED (null = an unbounded end)."""
+    if not isinstance(entry,dict) or 'coefficients' not in entry or 'domain' not in entry or set(entry)-{'coefficients','domain','start','end'}:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
+    raw=entry['coefficients']
+    if not isinstance(raw,list) or not 1<=len(raw)<=3:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
+    coefficients=[pp_surd(value,'PIECEWISE_DISCONTINUOUS_COEFFICIENT_INVALID') for value in raw]+[S.Integer(0)]*(3-len(raw))
+    domain=entry['domain']
+    if not isinstance(domain,list) or len(domain)!=2:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
+    a=None if domain[0] is None else pp_surd(domain[0],'PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
+    b=None if domain[1] is None else pp_surd(domain[1],'PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
+    if a is not None and b is not None and not a<b:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index))
+    start=entry.get('start','CLOSED');end=entry.get('end','CLOSED')
+    if start not in INTERVAL_STATES or end not in INTERVAL_STATES:raise ValueError('PIECEWISE_ENDPOINT_STATE_INVALID:'+str(index))
+    if a is None and start=='OPEN' or b is None and end=='OPEN':raise ValueError('PIECEWISE_ENDPOINT_STATE_INVALID:'+str(index))
+    return {'coefficients':coefficients,'a':a,'b':b,'start':start,'end':end}
+
+def piecewise_discontinuous_step(step):
+    """A staircase: values[i] on the i-th equal subinterval of [xFrom,xTo], every piece closed on the left and open on the right except
+    the last, which is closed at xTo. Returns the same piece rows as the pieces field."""
+    if not isinstance(step,dict) or set(step)!={'values','xFrom','xTo'}:raise ValueError('STEP_INTERVAL_INVALID')
+    values=step['values']
+    if not isinstance(values,list) or not 1<=len(values)<=PIECEWISE_DISCONTINUOUS_MAX_PIECES:raise ValueError('STEP_INTERVAL_INVALID')
+    x_from=pp_surd(step['xFrom'],'STEP_INTERVAL_INVALID');x_to=pp_surd(step['xTo'],'STEP_INTERVAL_INVALID')
+    if not x_from<x_to:raise ValueError('STEP_INTERVAL_INVALID')
+    heights=[pp_surd(value,'PIECEWISE_DISCONTINUOUS_COEFFICIENT_INVALID') for value in values]
+    width=(x_to-x_from)/len(heights)
+    pieces=[]
+    for index,height in enumerate(heights):
+        a=x_from+index*width;b=x_from+(index+1)*width
+        pieces.append({'coefficients':[height,S.Integer(0),S.Integer(0)],'a':a,'b':b,'start':'CLOSED','end':'CLOSED' if index==len(heights)-1 else 'OPEN'})
+    return pieces
+
+def piecewise_discontinuous_pieces(plan):
+    """The exact pieces of a discontinuous plan: either pieces (1 to 6) or a step block (exactly one of them), ordered left to right,
+    with at most one unbounded end on each side and no overlapping domain."""
+    if ('pieces' in plan)==('step' in plan):raise ValueError('PIECEWISE_DISCONTINUOUS_SOURCE_INVALID')
+    if 'step' in plan:
+        pieces=piecewise_discontinuous_step(plan['step'])
+    else:
+        raw=plan['pieces']
+        if not isinstance(raw,list) or not 1<=len(raw)<=PIECEWISE_DISCONTINUOUS_MAX_PIECES:raise ValueError('PIECEWISE_TOO_MANY_PIECES')
+        pieces=[_pd_piece(entry,index+1) for index,entry in enumerate(raw)]
+    if len(pieces)>PIECEWISE_DISCONTINUOUS_MAX_PIECES:raise ValueError('PIECEWISE_TOO_MANY_PIECES')
+    for index,piece in enumerate(pieces):
+        if piece['a'] is None and index!=0 or piece['b'] is None and index!=len(pieces)-1:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID:'+str(index+1))
+    for previous,current in zip(pieces,pieces[1:]):
+        if previous['b'] is None or current['a'] is None:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_INVALID')
+        if previous['b']>current['a']:raise ValueError('PIECEWISE_DOMAIN_OVERLAP:'+_pp_text(current['a']))
+    return pieces
+
+def pd_defines_at(piece,x_value):
+    """Whether this piece's own interval contains x (an OPEN end excludes its value)."""
+    a,b=piece['a'],piece['b']
+    if a is not None and (x_value<a or pp_same(x_value,a) and piece['start']=='OPEN'):return False
+    if b is not None and (x_value>b or pp_same(x_value,b) and piece['end']=='OPEN'):return False
+    return True
+
+def pd_piece_value(piece,x_value):
+    return _pp_norm(sum((c*S.sympify(x_value)**i for i,c in enumerate(piece['coefficients'])),S.Integer(0)))
+
+def piecewise_discontinuous_values(plan,pieces):
+    """The declared jump values {x,y} (an isolated point or the function value at a jump), checked against the pieces: a value inside a
+    piece must be that piece's value, two entries at one x contradict each other, and every junction where neither end is CLOSED needs one."""
+    raw=plan.get('jumpValues',[])
+    if not isinstance(raw,list) or len(raw)>PIECEWISE_DISCONTINUOUS_MAX_JUMP_VALUES:raise ValueError('PIECEWISE_DISCONTINUOUS_JUMP_VALUES_INVALID')
+    rows=[]
+    for entry in raw:
+        if not isinstance(entry,dict) or set(entry)!={'x','y'}:raise ValueError('PIECEWISE_DISCONTINUOUS_JUMP_VALUES_INVALID')
+        x_value=pp_surd(entry['x'],'PIECEWISE_DISCONTINUOUS_JUMP_VALUES_INVALID');y_value=pp_surd(entry['y'],'PIECEWISE_DISCONTINUOUS_JUMP_VALUES_INVALID')
+        if any(pp_same(x_value,other[0]) for other in rows):raise ValueError('PIECEWISE_VALUE_CONFLICT:'+_pp_text(x_value))
+        rows.append((x_value,y_value))
+    for x_value,y_value in rows:
+        for piece in pieces:
+            if pd_defines_at(piece,x_value) and not pp_same(pd_piece_value(piece,x_value),y_value):raise ValueError('PIECEWISE_VALUE_CONFLICT:'+_pp_text(x_value))
+    for previous,current in zip(pieces,pieces[1:]):
+        if previous['b'] is None or current['a'] is None or not pp_same(previous['b'],current['a']):continue
+        x_value=current['a'];left_closed=previous['end']=='CLOSED';right_closed=current['start']=='CLOSED'
+        if left_closed and right_closed:raise ValueError('PIECEWISE_DOMAIN_OVERLAP:'+_pp_text(x_value))
+        declared=[value for at,value in rows if pp_same(at,x_value)]
+        if not left_closed and not right_closed:
+            if not declared:raise ValueError('PIECEWISE_DISCONTINUITY_UNDECLARED:'+_pp_text(x_value))
+        elif declared:
+            expected=pd_piece_value(previous if left_closed else current,x_value)
+            if any(not pp_same(value,expected) for value in declared):raise ValueError('PIECEWISE_VALUE_CONFLICT:'+_pp_text(x_value))
+    return rows
+
+def piecewise_discontinuous_markers(pieces,jump_values):
+    """The dots of the figure: every bounded piece end (hollow when OPEN, filled when CLOSED) and every declared value, deduplicated by
+    point (a filled dot wins over a hollow one at the same coordinates)."""
+    markers=[]
+    def add(x_value,y_value,state):
+        for row in markers:
+            if pp_same(row[0],x_value) and pp_same(row[1],y_value):
+                if state=='CLOSED':row[2]='CLOSED'
+                return
+        markers.append([x_value,y_value,state])
+    for piece in pieces:
+        if piece['a'] is not None:add(piece['a'],pd_piece_value(piece,piece['a']),piece['start'])
+        if piece['b'] is not None:add(piece['b'],pd_piece_value(piece,piece['b']),piece['end'])
+    for x_value,y_value in jump_values:add(x_value,y_value,'CLOSED')
+    return sorted(markers,key=lambda row:(float(row[0]),float(row[1])))
+
+def piecewise_discontinuous_crossings(pieces,level,jump_values):
+    """Every x where the function equals the horizontal line y=level, exactly and once: a root inside a piece's interval (an OPEN end is
+    not on the graph) or a declared value at that height. A piece equal to the line is refused."""
+    found=[]
+    for piece in pieces:
+        c0,c1,c2=piece['coefficients']
+        roots=pp_quadratic_roots(c0-level,c1,c2)
+        if roots is None:raise ValueError('PIECEWISE_REFERENCE_LINE_CONTAINS_A_PIECE')
+        for root in roots:
+            if not pd_defines_at(piece,root):continue
+            if not any(pp_same(root,other) for other in found):found.append(root)
+    for x_value,y_value in jump_values:
+        if pp_same(y_value,level) and not any(pp_same(x_value,other) for other in found):found.append(x_value)
+    return sorted(found,key=lambda value:float(value))
+
+def fit_piecewise_discontinuous(plan):
+    if 'functionName' in plan and not (isinstance(plan['functionName'],str) and re.fullmatch(r'[a-hj-wz]',plan['functionName'])):raise ValueError('PIECEWISE_DISCONTINUOUS_FUNCTION_NAME_INVALID')
+    unknown=sorted(set(plan)-PIECEWISE_DISCONTINUOUS_FIELDS)
+    if unknown:raise ValueError('PIECEWISE_DISCONTINUOUS_FIELD_UNKNOWN:'+unknown[0])
+    pieces=piecewise_discontinuous_pieces(plan)
+    jumps=piecewise_discontinuous_values(plan,pieces)
+    intervals=[(piece['a'],piece['b']) for piece in pieces]
+    extrema=piecewise_polynomial_extrema([piece['coefficients'] for piece in pieces],intervals)
+    # Reference lines y=level: the claimed exact crossings must be exactly the engine's own (including declared values on the line).
+    raw_lines=plan.get('referenceLines',[])
+    if not isinstance(raw_lines,list) or len(raw_lines)>3:raise ValueError('PIECEWISE_REFERENCE_LINES_INVALID')
+    line_ids=set();lines=[]
+    for line in raw_lines:
+        if not isinstance(line,dict) or not isinstance(line.get('id'),str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9]{0,7}',line['id']) or line['id'] in line_ids or not isinstance(line.get('intersectionX'),list) or len(line['intersectionX'])>6 or line.get('labelIntersections',False) not in (True,False):raise ValueError('PIECEWISE_REFERENCE_LINE_INVALID')
+        if set(line)-{'id','y','intersectionX','labelIntersections'}:raise ValueError('PIECEWISE_REFERENCE_LINE_INVALID')
+        line_ids.add(line['id'])
+        level=pp_surd(line['y'],'PIECEWISE_REFERENCE_LINE_INVALID')
+        exact=piecewise_discontinuous_crossings(pieces,level,jumps)
+        claimed=sorted(((text,pp_exact_value(text)) for text in line['intersectionX']),key=lambda row:float(row[1]))
+        if len(claimed)!=len(exact) or any(not pp_same(value,root) for (_,value),root in zip(claimed,exact)):
+            raise ValueError('PIECEWISE_INTERSECTION_MISMATCH:'+line['id']+':engine finds '+str(len(exact))+' intersection(s)')
+        lines.append({'id':line['id'],'level':level,'claimed':claimed,'labelIntersections':line.get('labelIntersections',False)})
+    # Key points the author marks: every in-piece vertex, each on the function or on a declared value.
+    required=plan.get('requiredPoints',[])
+    if not isinstance(required,list) or len(required)>PIECEWISE_DISCONTINUOUS_MAX_REQUIRED_POINTS:raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
+    ids=set();required_xy=[];exact_points={};normalized=[]
+    for point in required:
+        if not isinstance(point,dict) or set(point)!={'id','x','y'} or not isinstance(point['id'],str) or not point['id'] or point['id'] in ids:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+        floats={};exact={}
+        for k in ('x','y'):
+            value=point[k]
+            if isinstance(value,str):
+                try:exact[k]=pp_exact_value(value);floats[k]=float(exact[k])
+                except ValueError:raise ValueError('INVALID_REQUIRED_GRAPH_POINT') from None
+            elif isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value):raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+            else:floats[k]=value
+            if abs(floats[k])>1e6:raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+        ids.add(point['id']);at=exact['x'] if 'x' in exact else S.Rational(str(floats['x']))
+        near=lambda value:abs(value-floats['y'])<=1e-8*max(1,abs(floats['y']))
+        on_piece=any(pd_defines_at(piece,at) and near(float(pd_piece_value(piece,at))) for piece in pieces)
+        on_value=any(pp_same(at,at_value) and near(float(value)) for at_value,value in jumps)
+        if not on_piece and not on_value:raise ValueError('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
+        if len(exact)==2:
+            tiny=S.Float('1e-40',60)
+            exact_on=any(pd_defines_at(piece,exact['x']) and abs(S.N(pd_piece_value(piece,exact['x'])-exact['y'],60))<=tiny for piece in pieces) or any(pp_same(exact['x'],at_value) and pp_same(exact['y'],value) for at_value,value in jumps)
+            if not exact_on:raise ValueError('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_NOT_ON_CURVE:'+point['id'])
+        if exact:
+            exact_points[point['id']]=[pp_surd_text(exact[k]) if k in exact else (str(Fraction(str(floats[k]))) if floats[k]==int(floats[k]) else None) for k in ('x','y')]
+            if None in exact_points[point['id']]:raise ValueError('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_MIXED_EXACT:'+point['id'])
+        normalized.append({'id':point['id'],'x':floats['x'],'y':floats['y']});required_xy.append((floats['x'],floats['y']))
+    required=normalized
+    marked=lambda x_value,y_value:any(abs(px-float(x_value))<=1e-9*max(1,abs(px)) and abs(py-float(y_value))<=1e-9*max(1,abs(py)) for px,py in required_xy)
+    for x_value,y_value,_ in extrema:
+        if not marked(x_value,y_value):raise ValueError('PIECEWISE_DISCONTINUOUS_EXTREMUM_NOT_IN_REQUIRED_POINTS:'+_pp_text(x_value))
+    def key_at(x_float,y_float):
+        return next((point for point in required if abs(point['x']-x_float)<=1e-9*max(1,abs(x_float)) and abs(point['y']-y_float)<=1e-9*max(1,abs(y_float))),None)
+    markers=piecewise_discontinuous_markers(pieces,jumps)
+    crossings=[]
+    for line in lines:
+        points=[]
+        for text,root in line['claimed']:
+            x_float=float(root);key_point=key_at(x_float,float(line['level']))
+            row={'x':text.replace(' ',''),'xValue':x_float}
+            if key_point is not None:row['keyPoint']=key_point['id']
+            elif any(pp_same(root,at) and pp_same(line['level'],value) for at,value,_ in markers):row['marker']=True
+            points.append(row)
+        crossings.append({'lineId':line['id'],'y':_pp_text(line['level']),'points':points})
+    marker_rows=[{'id':'endpoint-'+str(index),'x':_pp_text(x_value),'y':_pp_text(y_value),'state':state} for index,(x_value,y_value,state) in enumerate(markers,1)]
+    key=[(float(x_value),float(y_value)) for x_value,y_value,_ in markers]+[(float(x_value),float(y_value)) for x_value,y_value,_ in extrema]+required_xy+[(float(root),float(line['level'])) for line in lines for _,root in line['claimed']]+[(0.0,0.0)]
+    def coverage(x_value):
+        for piece in pieces:
+            a,b=piece['a'],piece['b']
+            if (a is None or float(a)<=x_value) and (b is None or x_value<=float(b)):return float(pd_piece_value(piece,x_value))
+        raise ValueError('PIECEWISE_DISCONTINUOUS_POINT_OUTSIDE_SOURCE_DOMAIN')
+    xs=[p[0] for p in key];span=max(xs)-min(xs);extend=max(1.0,.2*span)
+    ys=[p[1] for p in key];ylo,yhi=min(ys),max(ys);band=max(1.0,.25*(yhi-ylo))
+    def arm(anchor,direction):
+        far=anchor+direction*extend
+        if ylo-band<=coverage(far)<=yhi+band:return far
+        near=anchor
+        for _ in range(60):
+            mid=(near+far)/2
+            if ylo-band<=coverage(mid)<=yhi+band:near=mid
+            else:far=mid
+        return near
+    left_x=float(pieces[0]['a']) if pieces[0]['a'] is not None else arm(min(xs),-1)
+    right_x=float(pieces[-1]['b']) if pieces[-1]['b'] is not None else arm(max(xs),1)
+    ends=[(left_x,coverage(left_x)),(right_x,coverage(right_x))]
+    limit=plot_height_limit(plan)
+    points=[(0.0,0.0)]+key+ends
+    for ratio in axis_ratios(plan,points,limit):
+        viewport,height,scale=equal_unit_frame(points,limit,ratio)
+        if (ends[1][0]-ends[0][0])*scale>=EQUAL_UNIT_MIN_CURVE_PX:break
+    else:raise ValueError('PIECEWISE_DISCONTINUOUS_CURVE_TOO_NARROW')
+    # An unbounded end is drawn out to the edge of the panel (never stopped short of it) while its own height still lies inside
+    # the framed viewport, so a graph on |x|>1 does not look as if it ended at the last marked point.
+    def reach_edge(anchor,direction):
+        edge=viewport[0] if direction<0 else viewport[1]
+        if not viewport[2]<=coverage(edge)<=viewport[3]:
+            near,far=anchor,edge
+            for _ in range(60):
+                mid=(near+far)/2
+                if viewport[2]<=coverage(mid)<=viewport[3]:near=mid
+                else:far=mid
+            edge=near
+        return edge
+    if pieces[0]['a'] is None:left_x=reach_edge(left_x,-1)
+    if pieces[-1]['b'] is None:right_x=reach_edge(right_x,1)
+    ends=[(left_x,coverage(left_x)),(right_x,coverage(right_x))]
+    # Distinct marked features closer than 4 px could not be told apart.
+    marks=[]
+    for mark in sorted(set(key)):
+        if not any(abs(mark[0]-m[0])<=1e-9*max(1,abs(m[0])) and abs(mark[1]-m[1])<=1e-9*max(1,abs(m[1])) for m in marks):marks.append(mark)
+    for index,(ax,ay) in enumerate(marks):
+        for bx,by in marks[index+1:]:
+            if math.hypot((ax-bx)*scale,(ay-by)*scale*ratio)<PIECEWISE_DISCONTINUOUS_MIN_FEATURE_GAP_PX:raise ValueError('PIECEWISE_DISCONTINUOUS_FEATURES_BELOW_RESOLUTION')
+    draw=[ends[0][0],ends[1][0]]
+    piece_rows=[]
+    for piece in pieces:
+        start=draw[0] if piece['a'] is None else max(draw[0],float(piece['a']))
+        end=draw[1] if piece['b'] is None else min(draw[1],float(piece['b']))
+        piece_rows.append({'coefficients':[_pp_text(c) for c in piece['coefficients']],'interval':[None if piece['a'] is None else _pp_text(piece['a']),None if piece['b'] is None else _pp_text(piece['b'])],'drawInterval':[start,end],'start':piece['start'],'end':piece['end']})
+    features={'schemaVersion':'PIECEWISE_DISCONTINUOUS_FEATURES_v1','pieces':piece_rows,'markers':marker_rows,'extrema':[{'x':_pp_text(x_value),'y':_pp_text(y_value),'kind':kind} for x_value,y_value,kind in extrema],'intersections':crossings}
+    fitted={key_name:value for key_name,value in plan.items() if key_name not in ('domain','viewport')}
+    if exact_points:
+        merged=dict(plan.get('exactCoordinates') or {})
+        if any(point_id in merged and merged[point_id]!=pair for point_id,pair in exact_points.items()):raise ValueError('PIECEWISE_DISCONTINUOUS_EXACT_COORDINATES_CONFLICT')
+        merged.update(exact_points);fitted['exactCoordinates']=merged
+    fitted['requiredPoints']=required
+    fitted.update({'domain':draw,'viewport':viewport,'shapeIntent':'OVERVIEW','overviewPolicy':PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY,'piecewiseDiscontinuousFeatures':features,'equalUnits':True,'axisRatio':ratio,'plotCanvas':{'width':QUADRATIC_PLOT_WIDTH,'height':height}})
+    return {'graphPlan':fitted,'policy':PIECEWISE_DISCONTINUOUS_OVERVIEW_POLICY,'sourceDomainPreserved':False,'displayOnly':True,'features':features,'originalDisplay':{'domain':plan.get('domain'),'viewport':plan.get('viewport')}}
+
+# ---------------------------------------------------------------------------
+# Graph overlays (G1): one general graphPlan.overlays object draws lines, vertical lines, segments between named points, dashed guide
+# segments to the axes, simple polygons and extra named points on the curve. Every coordinate is recomputed here exactly; the plan names
+# the points and the elements, never raw derived coordinates. The fitted plan carries overlaysFeatures (numeric, for the model/spec) and
+# the independent graph observer recomputes the same values from the raw overlays field and reads the FINAL SVG back.
+OVERLAY_LIMITS={'points':8,'lines':6,'segments':6,'guides':4,'polygons':2}
+
+def _overlay_fail(code,ident=None):
+    raise ValueError(code if ident is None else code+':'+str(ident))
+
+def _overlay_exact(value,ident):
+    try:
+        number=pp_exact_value(value)
+    except ValueError:
+        _overlay_fail('OVERLAY_VALUE_INVALID',ident)
+    if not number.is_real or not number.is_finite:
+        _overlay_fail('OVERLAY_VALUE_INVALID',ident)
+    return number
+
+def _overlay_id(value,kind):
+    if not isinstance(value,str) or not re.fullmatch(r'[A-Za-z][A-Za-z0-9_\']{0,11}',value):
+        _overlay_fail('OVERLAY_ID_INVALID',kind)
+    return value
+
+def _overlay_base(value):
+    if value in (None,'e'):return S.E
+    try:
+        return exp_log_base(value,'OVERLAY_BASE_INVALID')['exact']
+    except (ValueError,KeyError,TypeError):
+        _overlay_fail('OVERLAY_BASE_INVALID',str(value))
+
+def _overlay_curve_exact(plan,x_value,curve_id=None):
+    """The exact y of the plan's drawn function at x, from the same exact coefficients the family framer used. Raises
+    OVERLAY_POINT_NOT_ON_CURVE when the curve is undefined there (outside a source domain, pole, negative radicand, ...)."""
+    family=plan.get('family')
+    try:
+        if family=='polynomial':
+            return sum((_overlay_exact(c,'curve')*x_value**i for i,c in enumerate(plan['coefficients'])),S.Integer(0))
+        if family=='rational':
+            numerator=sum((_overlay_exact(c,'curve')*x_value**i for i,c in enumerate(plan['numerator'])),S.Integer(0))
+            denominator=sum((_overlay_exact(c,'curve')*x_value**i for i,c in enumerate(plan['denominator'])),S.Integer(0))
+            if denominator==0:_overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+            return numerator/denominator
+        if family=='sqrt-affine':
+            radicand=sum((_overlay_exact(c,'curve')*x_value**i for i,c in enumerate(plan['radicand'])),S.Integer(0))
+            if radicand<0:_overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+            return S.sqrt(radicand)
+        if family=='absolute-value':
+            b,a,scale,offset=(_overlay_exact(value,'curve') for value in plan['coefficients'])
+            return scale*S.Abs(a*x_value+b)+offset
+        if family=='piecewise-affine':
+            source=plan.get('sourceDomain') or {};interval=source.get('range')
+            if interval:
+                lo,hi=(_overlay_exact(value,'curve') for value in interval)
+                if not lo<=x_value<=hi:_overlay_fail('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN',str(x_value))
+            break_x=_overlay_exact(plan['piecewise']['breakX'],'curve');owner=plan['piecewise'].get('owner','RIGHT')
+            left=plan['piecewise']['left'];right=plan['piecewise']['right'];coefficients=left if x_value<break_x or (x_value==break_x and owner=='LEFT') else right
+            return _overlay_exact(coefficients[0],'curve')*x_value+_overlay_exact(coefficients[1],'curve')
+        if family=='exponential-affine':
+            a,k,c=(_overlay_exact(value,'curve') for value in plan['coefficients']);base=_overlay_base(plan.get('base'));shift=_overlay_exact(plan.get('shiftX','0'),'curve')
+            return a*base**(k*(x_value-shift))+c
+        if family=='logarithmic-affine':
+            a,k,b,c=(_overlay_exact(value,'curve') for value in plan['coefficients']);base=_overlay_base(plan.get('base'));argument=k*x_value+b
+            if argument<=0:_overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+            return a*S.log(argument)/S.log(base)+c
+        if family=='trigonometric':
+            a,k,c=(_overlay_exact(value,'curve') for value in plan['coefficients']);phase=_overlay_exact(plan.get('phasePi','0'),'curve')
+            argument=k*x_value+phase*S.pi;function=plan.get('function','SIN')
+            value={'SIN':S.sin,'COS':S.cos,'TAN':S.tan}.get(function)
+            if value is None:_overlay_fail('OVERLAY_CURVE_UNSUPPORTED',function)
+            return a*value(argument)+c
+        if family=='piecewise-polynomial':
+            pieces=plan.get('pieces') or [];breaks=plan.get('breakpoints') or [];source=plan.get('sourceDomain') or {}
+            lo=hi=None
+            if source.get('kind')=='INTERVAL':
+                range_=source.get('range') or [None,None];lo,hi=(None if value is None else _overlay_exact(value,'curve') for value in range_)
+            if lo is not None and x_value<lo or hi is not None and x_value>hi:_overlay_fail('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN',str(x_value))
+            cut=[_overlay_exact(breakpoint['x'],'curve') for breakpoint in breaks]
+            for index,piece in enumerate(pieces):
+                left=None if index==0 else cut[index-1];right=None if index==len(pieces)-1 else cut[index]
+                if (left is None or left<=x_value) and (right is None or x_value<=right):
+                    return sum((_overlay_exact(coefficient,'curve')*x_value**power for power,coefficient in enumerate(piece.get('coefficients') or [])),S.Integer(0))
+            _overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+        if family=='exp-log-pair':
+            rows=plan.get('curves') or []
+            row=next((item for item in rows if item.get('id')==curve_id),None)
+            if row is None:_overlay_fail('OVERLAY_CURVE_UNKNOWN',str(curve_id))
+            if row.get('family')=='exponential-affine':
+                a,k,c=(_overlay_exact(value,'curve') for value in row['coefficients']);base=_overlay_base(row.get('base'));shift=_overlay_exact(row.get('shiftX','0'),'curve')
+                return a*base**(k*(x_value-shift))+c
+            if row.get('family')=='logarithmic-affine':
+                a,k,b,c=(_overlay_exact(value,'curve') for value in row['coefficients']);base=_overlay_base(row.get('base'));argument=k*x_value+b
+                if argument<=0:_overlay_fail('OVERLAY_POINT_NOT_ON_CURVE',str(x_value))
+                return a*S.log(argument)/S.log(base)+c
+            _overlay_fail('OVERLAY_CURVE_UNSUPPORTED',str(curve_id))
+    except (KeyError,IndexError,TypeError):
+        _overlay_fail('OVERLAY_CURVE_UNSUPPORTED',family)
+    _overlay_fail('OVERLAY_CURVE_UNSUPPORTED',family)
+
+def _overlay_number(value):
+    return float(S.N(value,30))
+
+def _overlay_line_text(line):
+    if line.get('label') is not None:
+        if not isinstance(line['label'],str) or not re.fullmatch(r'[0-9A-Za-z=+\-*/().\^ ]{1,40}',line['label']):
+            _overlay_fail('OVERLAY_LABEL_INVALID',line.get('id'))
+        return line['label']
+    if line['kind']=='VERTICAL':return 'x='+pp_surd_text(line['x'])
+    slope,intercept=line['slope'],line['intercept']
+    if slope=='0':return 'y='+pp_surd_text(intercept)
+    slope_text='x' if slope=='1' else '-x' if slope=='-1' else (slope if re.fullmatch(r'-?\d+(?:/\d+)?',slope) else '('+slope+')')+'*x'
+    if intercept=='0':return 'y='+slope_text
+    sign='-' if intercept.startswith('-') else '+'
+    return 'y='+slope_text+sign+pp_surd_text(intercept).lstrip('-')
+
+def _overlay_label_anchor(viewport,line):
+    xmin,xmax,ymin,ymax=viewport;spanx=xmax-xmin;spany=ymax-ymin
+    if line['kind']=='VERTICAL':return [_overlay_number(line['x']),ymax-spany*.08]
+    m=_overlay_number(line['slope']);q=_overlay_number(line['intercept'])
+    for fraction in (.85,.15,.5):
+        x=xmin+spanx*fraction;y=m*x+q
+        if ymin+spany*.05<=y<=ymax-spany*.05:return [x,y]
+    if m!=0:
+        y=ymax-spany*.05;x=(y-q)/m
+        if xmin+spanx*.05<=x<=xmax-spanx*.05:return [x,y]
+    return [xmin+spanx*.85,ymax-spany*.08]
+
+def _overlay_line_crosses_view(viewport,line):
+    xmin,xmax,ymin,ymax=viewport
+    if line['kind']=='VERTICAL':return xmin<_overlay_number(pp_exact_value(line['x']))<xmax
+    m=_overlay_number(pp_exact_value(line['slope']));q=_overlay_number(pp_exact_value(line['intercept']))
+    y_left=m*xmin+q;y_right=m*xmax+q
+    if ymin<=y_left<=ymax or ymin<=y_right<=ymax:return True
+    if m==0:return ymin<q<ymax
+    x_bottom=(ymin-q)/m;x_top=(ymax-q)/m
+    return max(xmin,min(x_bottom,x_top))<min(xmax,max(x_bottom,x_top))
+
+def _overlay_features(plan):
+    raw=plan.get('overlays')
+    if raw is None:return None
+    if not isinstance(raw,dict) or set(raw)-set(OVERLAY_LIMITS):_overlay_fail('OVERLAY_PLAN_INVALID')
+    for key,limit in OVERLAY_LIMITS.items():
+        rows=raw.get(key,[])
+        if not isinstance(rows,list) or len(rows)>limit:_overlay_fail('OVERLAY_TOO_MANY',key)
+    seen=set()
+    def claim(ident,code='OVERLAY_ID_DUPLICATE'):
+        if ident in seen:_overlay_fail(code,ident)
+        seen.add(ident)
+    lines=[]
+    for entry in raw.get('lines',[]):
+        if not isinstance(entry,dict):_overlay_fail('OVERLAY_LINE_INVALID','line')
+        if set(entry)-{'id','slope','intercept','x','label'}:_overlay_fail('OVERLAY_LINE_INVALID',entry.get('id'))
+        ident=_overlay_id(entry.get('id'),'line');claim('line:'+ident)
+        if 'x' in entry:
+            if 'slope' in entry or 'intercept' in entry:_overlay_fail('OVERLAY_LINE_INVALID',ident)
+            x=_overlay_exact(entry['x'],ident)
+            line={'id':ident,'kind':'VERTICAL','x':pp_surd_text(x),'xValue':_overlay_number(x),'label':entry.get('label')}
+        else:
+            if 'slope' not in entry or 'intercept' not in entry:_overlay_fail('OVERLAY_LINE_INVALID',ident)
+            slope=_overlay_exact(entry['slope'],ident);intercept=_overlay_exact(entry['intercept'],ident)
+            line={'id':ident,'kind':'LINE','slope':pp_surd_text(slope),'intercept':pp_surd_text(intercept),'slopeValue':_overlay_number(slope),'interceptValue':_overlay_number(intercept),'label':entry.get('label')}
+        line['text']=_overlay_line_text(line)
+        if not _overlay_line_crosses_view(plan['viewport'],line):_overlay_fail('OVERLAY_LINE_OUTSIDE_VIEWPORT',ident)
+        line['labelAt']=_overlay_label_anchor(plan['viewport'],line)
+        lines.append(line)
+    by_line={line['id']:line for line in lines}
+    points=[];by_point={}
+    required_ids={point.get('id') for point in plan.get('requiredPoints',[]) if isinstance(point,dict)}
+    for entry in raw.get('points',[]):
+        if not isinstance(entry,dict):_overlay_fail('OVERLAY_POINT_INVALID','point')
+        if set(entry)-{'id','curveX','curve','x','y','axis','value','intersect'}:_overlay_fail('OVERLAY_POINT_INVALID',entry.get('id'))
+        ident=_overlay_id(entry.get('id'),'point')
+        if ident in required_ids:_overlay_fail('OVERLAY_POINT_ID_CONFLICT',ident)
+        claim('point:'+ident)
+        forms=sum(1 for key in ('curveX','intersect','axis','x') if key in entry)
+        if forms!=1 or ('curve' in entry and 'curveX' not in entry) or ('value' in entry)!=(entry.get('axis') is not None):_overlay_fail('OVERLAY_POINT_INVALID',ident)
+        if 'curveX' in entry:
+            x=_overlay_exact(entry['curveX'],ident)
+            curve_id=entry.get('curve')
+            if plan.get('family')=='exp-log-pair' and curve_id is None:_overlay_fail('OVERLAY_CURVE_REQUIRED',ident)
+            if plan.get('family')!='exp-log-pair' and curve_id is not None:_overlay_fail('OVERLAY_CURVE_UNKNOWN',ident)
+            lo,hi=plan['domain']
+            if not lo<=float(S.N(x,30))<=hi:_overlay_fail('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN',ident)
+            y=_overlay_curve_exact(plan,x,curve_id)
+        elif 'intersect' in entry:
+            pair=entry['intersect']
+            if not isinstance(pair,list) or len(pair)!=2 or len(set(pair))!=2:_overlay_fail('OVERLAY_POINT_INVALID',ident)
+            first=by_line.get(pair[0]);second=by_line.get(pair[1])
+            if first is None or second is None:_overlay_fail('OVERLAY_POINT_UNKNOWN',ident)
+            if first['kind']=='VERTICAL' and second['kind']=='VERTICAL':_overlay_fail('OVERLAY_LINE_PARALLEL',ident)
+            if first['kind']=='VERTICAL':x=pp_exact_value(first['x']);y=pp_exact_value(second['slope'])*x+pp_exact_value(second['intercept'])
+            elif second['kind']=='VERTICAL':x=pp_exact_value(second['x']);y=pp_exact_value(first['slope'])*x+pp_exact_value(first['intercept'])
+            else:
+                m1=pp_exact_value(first['slope']);q1=pp_exact_value(first['intercept']);m2=pp_exact_value(second['slope']);q2=pp_exact_value(second['intercept'])
+                if m1==m2:_overlay_fail('OVERLAY_LINE_PARALLEL',ident)
+                x=(q2-q1)/(m1-m2);y=m1*x+q1
+        elif 'axis' in entry:
+            axis=entry.get('axis');value=_overlay_exact(entry.get('value'),ident)
+            if axis=='x':x,y=value,S.Integer(0)
+            elif axis=='y':x,y=S.Integer(0),value
+            else:_overlay_fail('OVERLAY_POINT_INVALID',ident)
+        else:
+            x=_overlay_exact(entry['x'],ident);y=_overlay_exact(entry['y'],ident)
+        xmin,xmax,ymin,ymax=plan['viewport'];xf,yf=_overlay_number(x),_overlay_number(y)
+        if not (xmin<xf<xmax and ymin<yf<ymax):_overlay_fail('OVERLAY_POINT_OUTSIDE_VIEWPORT',ident)
+        row={'id':ident,'x':xf,'y':yf,'xExact':pp_surd_text(x),'yExact':pp_surd_text(y)}
+        points.append(row);by_point[ident]=row
+    def point_ref(value,ident):
+        if not isinstance(value,str) or value not in by_point:_overlay_fail('OVERLAY_POINT_UNKNOWN',ident)
+        return value
+    segments=[]
+    for entry in raw.get('segments',[]):
+        if not isinstance(entry,dict):_overlay_fail('OVERLAY_SEGMENT_INVALID','segment')
+        if set(entry)-{'id','from','to','dashed'}:_overlay_fail('OVERLAY_SEGMENT_INVALID',entry.get('id'))
+        ident=_overlay_id(entry.get('id'),'segment');claim('segment:'+ident)
+        start=point_ref(entry.get('from'),ident);end=point_ref(entry.get('to'),ident)
+        if start==end:_overlay_fail('OVERLAY_SEGMENT_DEGENERATE',ident)
+        dashed=entry.get('dashed',False)
+        if not isinstance(dashed,bool):_overlay_fail('OVERLAY_SEGMENT_INVALID',ident)
+        segments.append({'id':ident,'from':start,'to':end,'dashed':dashed})
+    guides=[]
+    for entry in raw.get('guides',[]):
+        if not isinstance(entry,dict):_overlay_fail('OVERLAY_GUIDE_INVALID','guide')
+        if set(entry)-{'id','from','axis','dashed'}:_overlay_fail('OVERLAY_GUIDE_INVALID',entry.get('id'))
+        ident=_overlay_id(entry.get('id'),'guide');claim('guide:'+ident)
+        start=point_ref(entry.get('from'),ident);axis=entry.get('axis','BOTH')
+        if axis not in ('x','y','BOTH'):_overlay_fail('OVERLAY_GUIDE_INVALID',ident)
+        dashed=entry.get('dashed',True)
+        if not isinstance(dashed,bool):_overlay_fail('OVERLAY_GUIDE_INVALID',ident)
+        guides.append({'id':ident,'from':start,'axis':axis,'dashed':dashed})
+    polygons=[]
+    for entry in raw.get('polygons',[]):
+        if not isinstance(entry,dict):_overlay_fail('OVERLAY_POLYGON_INVALID','polygon')
+        if set(entry)-{'id','points','fill'}:_overlay_fail('OVERLAY_POLYGON_INVALID',entry.get('id'))
+        ident=_overlay_id(entry.get('id'),'polygon');claim('polygon:'+ident)
+        refs=entry.get('points')
+        if not isinstance(refs,list) or not 3<=len(refs)<=6 or len(set(refs))!=len(refs):_overlay_fail('OVERLAY_POLYGON_INVALID',ident)
+        refs=[point_ref(value,ident) for value in refs]
+        fill=entry.get('fill','LIGHT')
+        if fill not in ('LIGHT','MEDIUM','NONE'):_overlay_fail('OVERLAY_FILL_INVALID',ident)
+        coords=[(by_point[value]['x'],by_point[value]['y']) for value in refs]
+        area=sum(coords[i][0]*coords[(i+1)%len(coords)][1]-coords[(i+1)%len(coords)][0]*coords[i][1] for i in range(len(coords)))
+        if abs(area)<1e-9:_overlay_fail('OVERLAY_POLYGON_DEGENERATE',ident)
+        polygons.append({'id':ident,'points':refs,'fill':fill})
+    return {'schemaVersion':'GRAPH_OVERLAYS_FEATURES_v1','points':points,'lines':lines,'segments':segments,'guides':guides,'polygons':polygons}
+
+def _overlay_anchor_points(plan):
+    """Best-effort exact coordinates of every declared overlay point, computed before framing so the family framer can put the whole
+    declared overlay inside its window (a point in the source domain still needs the frame to reach it). Validation is not done here:
+    _overlay_features remains the single authority after framing, so a bad entry still gets its own explicit error code."""
+    raw=plan.get('overlays')
+    if not isinstance(raw,dict):return []
+    lines={}
+    for entry in raw.get('lines') or []:
+        if not isinstance(entry,dict):continue
+        try:
+            if 'x' in entry:lines[entry.get('id')]=('V',_overlay_exact(entry['x'],'line'))
+            elif 'slope' in entry and 'intercept' in entry:lines[entry.get('id')]=('L',(_overlay_exact(entry['slope'],'line'),_overlay_exact(entry['intercept'],'line')))
+        except (ValueError,TypeError):continue
+    viewport=plan.get('viewport');domain=plan.get('domain');anchors=[]
+    for entry in raw.get('points') or []:
+        if not isinstance(entry,dict):continue
+        try:
+            on_curve=False
+            if 'curveX' in entry:
+                x=_overlay_exact(entry['curveX'],'point');y=_overlay_curve_exact(plan,x,entry.get('curve'));on_curve=True
+            elif 'intersect' in entry:
+                pair=entry['intersect'];first=lines.get(pair[0]);second=lines.get(pair[1])
+                if first is None or second is None:continue
+                if first[0]=='V' and second[0]=='V':continue
+                if first[0]=='V':x=first[1];y=second[1][0]*x+second[1][1]
+                elif second[0]=='V':x=second[1];y=first[1][0]*x+first[1][1]
+                else:
+                    m1,q1=first[1];m2,q2=second[1]
+                    if m1==m2:continue
+                    x=(q2-q1)/(m1-m2);y=m1*x+q1
+            elif 'axis' in entry:
+                value=_overlay_exact(entry.get('value'),'point')
+                x,y=(value,S.Integer(0)) if entry.get('axis')=='x' else (S.Integer(0),value)
+            elif 'x' in entry and 'y' in entry:
+                x,y=_overlay_exact(entry['x'],'point'),_overlay_exact(entry['y'],'point')
+            else:continue
+            xf,yf=float(S.N(x,30)),float(S.N(y,30))
+            if not (math.isfinite(xf) and math.isfinite(yf)):continue
+            # A declared point outside the author's reviewed draw interval or viewport is not a frame anchor: the framer must not
+            # enlarge its window to make an invalid claim look valid (the overlay validator then refuses it).
+            if on_curve and isinstance(domain,list) and len(domain)==2 and not (domain[0]-1e-9<=xf<=domain[1]+1e-9):continue
+            if isinstance(viewport,list) and len(viewport)==4 and not (viewport[0]-1e-9<=xf<=viewport[1]+1e-9 and viewport[2]-1e-9<=yf<=viewport[3]+1e-9):continue
+            anchors.append((xf,yf))
+        except (ValueError,KeyError,TypeError,ZeroDivisionError):continue
+    return anchors
+
+def fit_overview(plan):
+    """The family framer, then the optional graph overlays: every overlay coordinate is recomputed exactly and must stay inside the
+    framed viewport. The fitted plan carries overlaysFeatures for the model/spec; the independent observer recomputes them from the raw
+    overlays field. Unsupported or out-of-view overlays are refused, never silently dropped."""
+    anchors=_overlay_anchor_points(plan)
+    framed=_fit_overview_family({**plan,'overlayAnchors':anchors} if anchors else plan)
+    framed['graphPlan'].pop('overlayAnchors',None)
+    features=_overlay_features(framed['graphPlan'])
+    if features is None:return framed
+    framed['graphPlan']={**framed['graphPlan'],'overlaysFeatures':features}
+    return framed

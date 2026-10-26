@@ -56,7 +56,7 @@ def svg_number(value):
     text=f'{value:.9f}'.rstrip('0').rstrip('.')
     return text if text and text!='-0' else '0'
 
-def produce(plan):
+def _produce(plan):
     # A graph framed at one scale is modelled at its own plot size, so the model's px measures match the final figure's. Cubic/quartic
     # overviews are composed on the 610x420 overview canvas (phase2 GRAPH_OVERVIEW_CANVAS, panel 140): the model uses the same plot so its
     # tail/feature px measures are the ones the final figure has.
@@ -66,6 +66,7 @@ def produce(plan):
     vp=Viewport(*plan['viewport'],width=plot['width']+64 if plot else 610 if overview else 420,height=plot['height']+64 if plot else 420 if overview else 280,panel=140 if overview else 0,margin=32,equal=plan.get('equalUnits') is True and plan.get('axisRatio',1)==1)
     if plan.get('family')=='piecewise-affine':return _produce_piecewise_affine(plan,vp)
     if plan.get('family')=='piecewise-polynomial':return _produce_piecewise_polynomial(plan,vp)
+    if plan.get('family')=='piecewise-discontinuous':return _produce_piecewise_discontinuous(plan,vp)
     if plan.get('family')=='exp-log-pair':return _produce_exp_log_pair(plan,vp)
     critical=[p['x'] for p in plan.get('requiredPoints',[])]+[feature['x'] for feature in plan.get('overviewFeatures',[]) if feature.get('kind')!='TAIL_DIRECTION']
     if plan['family']=='sqrt-affine' and plan.get('overviewPolicy')=='SQRT_AFFINE_GENERAL_OVERVIEW_v1':
@@ -423,3 +424,99 @@ def _produce_piecewise_polynomial(plan,vp):
             parts.append(f'<circle id="interval-endpoint-{endpoint["side"].lower()}" data-role="interval-endpoint" data-state="{endpoint["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="4" fill="{"#fff" if endpoint["state"]=="OPEN" else "#111"}" stroke="black" stroke-width="1"/>')
     svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(region_fills+parts+region_labels)+'</svg>'
     return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(sampling),'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
+
+def _produce_piecewise_discontinuous(plan,vp):
+    """Each discontinuous piece on its own draw interval (so a jump is never bridged by a connecting segment), the endpoint/value dots
+    (filled CLOSED, hollow OPEN), the reference lines and their crossing dots, and the key points - with the ids the final figure uses."""
+    from graph_framing import pp_exact_float
+    features=plan.get('piecewiseDiscontinuousFeatures')
+    if not isinstance(features,dict) or features.get('schemaVersion')!='PIECEWISE_DISCONTINUOUS_FEATURES_v1':raise ValueError('PIECEWISE_DISCONTINUOUS_FEATURE_INVENTORY_REQUIRED')
+    required_x=[p['x'] for p in plan.get('requiredPoints',[])]
+    cross_x=[point['xValue'] for row in features.get('intersections',[]) for point in row['points']]
+    parts=[];sampling=[]
+    for index,piece in enumerate(features['pieces'],1):
+        critical=[value for value in required_x+cross_x if piece['drawInterval'][0]<=value<=piece['drawInterval'][1]]
+        result=sample(_polynomial_text(piece['coefficients']),piece['drawInterval'],vp,critical_x=critical)
+        if len(result['branches'])!=1:raise ValueError('PIECEWISE_DISCONTINUOUS_PIECE_SAMPLING_FAILED')
+        sampling.append({'id':'curve-piece-'+str(index),**{key:value for key,value in result.items() if key!='branches'}})
+        points=' '.join(','.join(svg_number(value) for value in vp.screen(point)) for point in result['branches'][0])
+        parts.append(f'<polyline id="curve-piece-{index}" data-role="curve" data-branch="PIECE_{index}" points="{points}" fill="none" stroke="black"/>')
+    xmin,xmax=plan['viewport'][0],plan['viewport'][1]
+    for row in features.get('intersections',[]):
+        level=pp_exact_float(row['y']);a,b=vp.screen((xmin,level)),vp.screen((xmax,level))
+        parts.append(f'<line id="line-{row["lineId"]}" data-role="line" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"/>')
+        for k,point in enumerate(row['points'],1):
+            if point.get('keyPoint') or point.get('marker'):continue
+            cx,cy=vp.screen((point['xValue'],level))
+            parts.append(f'<circle id="intersection-{row["lineId"]}-{k}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
+    for marker in features.get('markers',[]):
+        cx,cy=vp.screen((pp_exact_float(marker['x']),pp_exact_float(marker['y'])))
+        fill='#fff' if marker['state']=='OPEN' else '#111'
+        parts.append(f'<circle id="discontinuous-{marker["id"]}" data-role="discontinuous-endpoint" data-state="{marker["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="4" fill="{fill}" stroke="black" stroke-width="1"/>')
+    for index,point in enumerate(plan.get('requiredPoints',[]),1):
+        cx,cy=vp.screen((point['x'],point['y']))
+        parts.append(f'<circle id="required-point-{index}" data-role="point" cx="{cx:.12g}" cy="{cy:.12g}" r="3.2" fill="#111" stroke="black"/>')
+    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(parts)+'</svg>'
+    return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(sampling),'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
+
+# ---------------------------------------------------------------------------
+# Graph overlays (G1): the model SVG carries the same overlay ids and shapes the final figure does (the observed model is read back by the
+# same independent observer), so every overlay line, vertical line, segment, guide, polygon and extra point is checked before and after
+# composition. The labels are composed by the final spec, not here.
+def _overlay_model_svg(plan,transform):
+    features=plan.get('overlaysFeatures')
+    if not isinstance(features,dict) or features.get('schemaVersion')!='GRAPH_OVERLAYS_FEATURES_v1':return ''
+    ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')]
+    xmin,xmax,ymin,ymax=plan['viewport']
+    screen=lambda x,y:(ox+x*sx,oy-y*sy)
+    parts=[]
+    def clip_line(kind):
+        if kind['kind']=='VERTICAL':
+            x=float(kind['xValue'])
+            if not xmin<x<xmax:raise ValueError('OVERLAY_LINE_OUTSIDE_VIEWPORT:'+kind['id'])
+            return (x,ymin),(x,ymax)
+        m=float(kind['slopeValue']);q=float(kind['interceptValue']);ends=[]
+        for x in (xmin,xmax):
+            y=m*x+q
+            if ymin-1e-9<=y<=ymax+1e-9:ends.append((x,max(ymin,min(ymax,y))))
+        for y in (ymin,ymax):
+            if m!=0:
+                x=(y-q)/m
+                if xmin-1e-9<=x<=xmax+1e-9 and not any(abs(x-a)<1e-9 and abs(y-b)<1e-9 for a,b in ends):ends.append((max(xmin,min(xmax,x)),y))
+        if len(ends)<2:raise ValueError('OVERLAY_LINE_OUTSIDE_VIEWPORT:'+kind['id'])
+        return ends[0],ends[1]
+    for line in features['lines']:
+        a,b=clip_line(line);p,q=screen(*a),screen(*b)
+        parts.append(f'<line id="overlay-line-{line["id"]}" data-role="overlayLine" x1="{p[0]:.12g}" y1="{p[1]:.12g}" x2="{q[0]:.12g}" y2="{q[1]:.12g}" stroke="black"/>')
+    points={point['id']:point for point in features['points']}
+    def at(ident):
+        point=points.get(ident)
+        if point is None:raise ValueError('OVERLAY_POINT_UNKNOWN:'+str(ident))
+        return screen(point['x'],point['y'])
+    for segment in features['segments']:
+        a,b=at(segment['from']),at(segment['to'])
+        dash=' stroke-dasharray="6 4"' if segment['dashed'] else ''
+        parts.append(f'<line id="overlay-segment-{segment["id"]}" data-role="overlaySegment" x1="{a[0]:.12g}" y1="{a[1]:.12g}" x2="{b[0]:.12g}" y2="{b[1]:.12g}" stroke="black"{dash}/>')
+    for guide in features['guides']:
+        point=points[guide['from']];origin=screen(point['x'],point['y']);axis=guide['axis'];dash=' stroke-dasharray="6 4"' if guide['dashed'] else ''
+        if axis in ('x','BOTH'):
+            end=screen(point['x'],0.0);parts.append(f'<line id="overlay-guide-{guide["id"]}-x" data-role="overlayGuide" x1="{origin[0]:.12g}" y1="{origin[1]:.12g}" x2="{end[0]:.12g}" y2="{end[1]:.12g}" stroke="black"{dash}/>')
+        if axis in ('y','BOTH'):
+            end=screen(0.0,point['y']);parts.append(f'<line id="overlay-guide-{guide["id"]}-y" data-role="overlayGuide" x1="{origin[0]:.12g}" y1="{origin[1]:.12g}" x2="{end[0]:.12g}" y2="{end[1]:.12g}" stroke="black"{dash}/>')
+    for polygon in features['polygons']:
+        vertices=[at(ident) for ident in polygon['points']]
+        outline=' '.join(f'{x:.12g},{y:.12g}' for x,y in vertices)
+        if polygon['fill']!='NONE':
+            parts.append(f'<polygon id="overlay-polygon-{polygon["id"]}-fill" data-role="region" points="{outline}" fill="#eef2f7" stroke="none"/>')
+        parts.append(f'<polyline id="overlay-polygon-{polygon["id"]}" data-role="overlayPolygon" points="{outline} {vertices[0][0]:.12g},{vertices[0][1]:.12g}" fill="none" stroke="black"/>')
+    for point in features['points']:
+        x,y=screen(point['x'],point['y'])
+        parts.append(f'<circle id="{point["id"]}" data-role="point" data-overlay="true" cx="{x:.12g}" cy="{y:.12g}" r="3.2" fill="#111" stroke="black"/>')
+    return ''.join(parts)
+
+def produce(plan):
+    result=_produce(plan)
+    extra=_overlay_model_svg(plan,result['transform'])
+    if extra:
+        svg=result['svg'];result['svg']=svg[:-len('</svg>')]+extra+'</svg>'
+    return result

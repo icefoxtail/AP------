@@ -1959,6 +1959,498 @@ def trigonometric_interval_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':head,'lines':detail,'curvePoints':len(points),'mathMethod':'SYMPY_EXACT_EXPRESSION_AND_MPMATH_40_DIGIT_ROOT_SCAN_OF_THE_GAP_AND_ITS_DERIVATIVE'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
+def _pd_pieces(plan):
+    """The pieces read again from the plan's own fields (pieces or a step block), exact and ordered."""
+    if ('pieces' in plan)==('step' in plan):raise ValueError('PIECEWISE_DISCONTINUOUS_SOURCE_INVALID')
+    if 'step' in plan:
+        step=plan['step']
+        if not isinstance(step,dict) or set(step)!={'values','xFrom','xTo'}:raise ValueError('STEP_INTERVAL_INVALID')
+        values=step['values']
+        if not isinstance(values,list) or not 1<=len(values)<=6:raise ValueError('STEP_INTERVAL_INVALID')
+        x_from=_pp_rational(step['xFrom']);x_to=_pp_rational(step['xTo'])
+        if not x_from<x_to:raise ValueError('STEP_INTERVAL_INVALID')
+        heights=[_pp_coeff(value) for value in values]
+        width=S.Rational(x_to-x_from,len(heights))
+        return [{'coefficients':[height,S.Integer(0),S.Integer(0)],'a':S.Rational(x_from+index*width),'b':S.Rational(x_from+(index+1)*width),'start':'CLOSED','end':'CLOSED' if index==len(heights)-1 else 'OPEN'} for index,height in enumerate(heights)]
+    raw=plan['pieces']
+    if not isinstance(raw,list) or not 1<=len(raw)<=6:raise ValueError('PIECEWISE_TOO_MANY_PIECES')
+    pieces=[]
+    for entry in raw:
+        if not isinstance(entry,dict) or set(entry)-{'coefficients','domain','start','end'} or 'coefficients' not in entry or 'domain' not in entry:raise ValueError('PIECEWISE_DISCONTINUOUS_SOURCE_INVALID')
+        values=entry['coefficients']
+        if not isinstance(values,list) or not 1<=len(values)<=3:raise ValueError('PIECEWISE_DISCONTINUOUS_SOURCE_INVALID')
+        coefficients=[_pp_coeff(value) for value in values]+[S.Integer(0)]*(3-len(values))
+        domain=entry['domain']
+        if not isinstance(domain,list) or len(domain)!=2:raise ValueError('PIECEWISE_DISCONTINUOUS_SOURCE_INVALID')
+        a=None if domain[0] is None else _pp_coeff(domain[0]);b=None if domain[1] is None else _pp_coeff(domain[1])
+        if a is not None and b is not None and not a<b:raise ValueError('PIECEWISE_DISCONTINUOUS_SOURCE_INVALID')
+        start=entry.get('start','CLOSED');end=entry.get('end','CLOSED')
+        if start not in INTERVAL_STATE_FILLS or end not in INTERVAL_STATE_FILLS:raise ValueError('PIECEWISE_ENDPOINT_STATE_INVALID')
+        if a is None and start=='OPEN' or b is None and end=='OPEN':raise ValueError('PIECEWISE_ENDPOINT_STATE_INVALID')
+        pieces.append({'coefficients':coefficients,'a':a,'b':b,'start':start,'end':end})
+    for index,piece in enumerate(pieces):
+        if piece['a'] is None and index!=0 or piece['b'] is None and index!=len(pieces)-1:raise ValueError('PIECEWISE_DISCONTINUOUS_SOURCE_INVALID')
+    for previous,current in zip(pieces,pieces[1:]):
+        if previous['b'] is None or current['a'] is None:raise ValueError('PIECEWISE_DISCONTINUOUS_SOURCE_INVALID')
+        if previous['b']>current['a']:raise ValueError('PIECEWISE_DOMAIN_OVERLAP')
+    return pieces
+
+def _pd_defines(piece,value):
+    tolerance=S.Float('1e-40',60);a,b=piece['a'],piece['b']
+    if a is not None and (value<S.N(a,60)-tolerance or abs(value-S.N(a,60))<tolerance and piece['start']=='OPEN'):return False
+    if b is not None and (value>S.N(b,60)+tolerance or abs(value-S.N(b,60))<tolerance and piece['end']=='OPEN'):return False
+    return True
+
+def _pd_value(piece,value):
+    poly=S.Poly(sum(coefficient*x**index for index,coefficient in enumerate(piece['coefficients'])),x)
+    return poly.eval(value)
+
+def _pd_jumps(plan,pieces):
+    raw=plan.get('jumpValues',[])
+    if not isinstance(raw,list) or len(raw)>8:raise ValueError('PIECEWISE_DISCONTINUOUS_JUMP_VALUES_INVALID')
+    rows=[]
+    for entry in raw:
+        if not isinstance(entry,dict) or set(entry)!={'x','y'}:raise ValueError('PIECEWISE_DISCONTINUOUS_JUMP_VALUES_INVALID')
+        at=_pp_coeff(entry['x']);value=_pp_coeff(entry['y'])
+        if any(_pp_same(at,other[0]) for other in rows):raise ValueError('PIECEWISE_VALUE_CONFLICT')
+        rows.append((at,value))
+    for at,value in rows:
+        for piece in pieces:
+            if _pd_defines(piece,at) and not _pp_same(_pd_value(piece,at),value):raise ValueError('PIECEWISE_VALUE_CONFLICT')
+    for previous,current in zip(pieces,pieces[1:]):
+        if previous['b'] is None or current['a'] is None or not _pp_same(previous['b'],current['a']):continue
+        left,right=previous['end']=='CLOSED',current['start']=='CLOSED'
+        if left and right:raise ValueError('PIECEWISE_DOMAIN_OVERLAP')
+        declared=[value for at,value in rows if _pp_same(at,current['a'])]
+        if not left and not right:
+            if not declared:raise ValueError('PIECEWISE_DISCONTINUITY_UNDECLARED')
+        elif declared:
+            expected=_pd_value(previous if left else current,current['a'])
+            if any(not _pp_same(value,expected) for value in declared):raise ValueError('PIECEWISE_VALUE_CONFLICT')
+    return rows
+
+def _pd_markers(pieces,jumps):
+    rows=[]
+    def add(at,value,state):
+        for row in rows:
+            if _pp_same(row[0],at) and _pp_same(row[1],value):
+                if state=='CLOSED':row[2]='CLOSED'
+                return
+        rows.append([at,value,state])
+    for piece in pieces:
+        if piece['a'] is not None:add(piece['a'],_pd_value(piece,piece['a']),piece['start'])
+        if piece['b'] is not None:add(piece['b'],_pd_value(piece,piece['b']),piece['end'])
+    for at,value in jumps:add(at,value,'CLOSED')
+    return sorted(rows,key=lambda row:(float(row[0]),float(row[1])))
+
+def _pd_extrema(pieces):
+    rows=[]
+    for piece in pieces:
+        poly=S.Poly(sum(coefficient*x**index for index,coefficient in enumerate(piece['coefficients'])),x)
+        if poly.degree()!=2:continue
+        h=S.radsimp(S.expand(-poly.nth(1)/(2*poly.nth(2))))
+        if (piece['a'] is None or h>piece['a']) and (piece['b'] is None or h<piece['b']):rows.append((h,S.radsimp(S.expand(poly.eval(h))),'MAX' if poly.nth(2)<0 else 'MIN'))
+    return rows
+
+def _pd_crossings(pieces,level,jumps):
+    tolerance=S.Float('1e-40',60);found=[]
+    for piece in pieces:
+        poly=S.Poly(sum(coefficient*x**index for index,coefficient in enumerate(piece['coefficients'])),x)-S.Poly(level,x)
+        roots=_pp_real_roots(poly)
+        if roots is None:raise ValueError('PIECEWISE_REFERENCE_LINE_CONTAINS_A_PIECE')
+        for root in roots:
+            if not _pd_defines(piece,root):continue
+            if not any(abs(root-other)<tolerance for other in found):found.append(root)
+    for at,value in jumps:
+        if _pp_same(value,level) and not any(abs(S.N(at,60)-other)<tolerance for other in found):found.append(S.N(at,60))
+    return sorted(found)
+
+def piecewise_discontinuous_audit(plan,svg,transform):
+    """Independent: the pieces, their endpoint states and jumps, the declared values, the in-piece vertices and every crossing with each
+    horizontal line are recomputed from the plan; then the drawn pieces (one polyline per piece, never bridged across a jump), the
+    hollow/filled endpoint dots and the crossing dots are read from the final SVG."""
+    errors=[];unsupported=[]
+    try:
+        pieces=_pd_pieces(plan);jumps=_pd_jumps(plan,pieces)
+        extrema=_pd_extrema(pieces)
+        required=plan.get('requiredPoints',[])
+        if not isinstance(required,list):raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
+        def defined_value(value):
+            for piece in pieces:
+                if _pd_defines(piece,value):return _pd_value(piece,value)
+            return None
+        for point in required:
+            at=_pp_coeff(str(point['x']));near=lambda value:abs(float(value)-point['y'])<=1e-8*max(1,abs(point['y']))
+            value=defined_value(at)
+            if not ((value is not None and near(value)) or any(_pp_same(at,at_value) and near(declared) for at_value,declared in jumps)):errors.append('PIECEWISE_DISCONTINUOUS_REQUIRED_POINT_NOT_ON_CURVE:'+str(point.get('id')))
+        for at,value,_ in extrema:
+            if not any(abs(p['x']-float(at))<=1e-9*max(1,abs(p['x'])) and abs(p['y']-float(value))<=1e-9*max(1,abs(p['y'])) for p in required):errors.append('PIECEWISE_DISCONTINUOUS_EXTREMUM_NOT_MARKED:'+str(at))
+        markers=_pd_markers(pieces,jumps)
+        features=plan.get('piecewiseDiscontinuousFeatures')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='PIECEWISE_DISCONTINUOUS_FEATURES_v1':raise ValueError('PIECEWISE_DISCONTINUOUS_FEATURE_INVENTORY_REQUIRED')
+        # The frozen inventory must be exactly what the plan says (pieces, endpoint states, declared values, vertices).
+        frozen_pieces=features.get('pieces')
+        if not isinstance(frozen_pieces,list) or len(frozen_pieces)!=len(pieces):errors.append('PIECEWISE_DISCONTINUOUS_PIECE_INVENTORY_MISMATCH')
+        else:
+            for row,piece in zip(frozen_pieces,pieces):
+                try:
+                    coefficients_same=all(_pp_same(_pp_coeff(str(value)),piece['coefficients'][index]) for index,value in enumerate(row.get('coefficients',[]))) and len(row.get('coefficients',[]))==3
+                except (ValueError,AttributeError):coefficients_same=False
+                interval=row.get('interval')
+                interval_same=isinstance(interval,list) and len(interval)==2 and ((piece['a'] is None and interval[0] is None) or (piece['a'] is not None and interval[0] is not None and _pp_same(_pp_coeff(interval[0]),piece['a']))) and ((piece['b'] is None and interval[1] is None) or (piece['b'] is not None and interval[1] is not None and _pp_same(_pp_coeff(interval[1]),piece['b'])))
+                if not coefficients_same or not interval_same or row.get('start')!=piece['start'] or row.get('end')!=piece['end']:errors.append('PIECEWISE_DISCONTINUOUS_PIECE_INVENTORY_MISMATCH')
+        frozen_markers=features.get('markers')
+        if not isinstance(frozen_markers,list) or len(frozen_markers)!=len(markers):errors.append('PIECEWISE_DISCONTINUOUS_MARKER_INVENTORY_MISMATCH')
+        else:
+            for index,(row,(at,value,state)) in enumerate(zip(frozen_markers,markers),1):
+                try:same=_pp_same(_pp_coeff(str(row.get('x'))),at) and _pp_same(_pp_coeff(str(row.get('y'))),value)
+                except (ValueError,AttributeError):same=False
+                if not same or row.get('state')!=state or row.get('id')!='endpoint-'+str(index):errors.append('PIECEWISE_DISCONTINUOUS_MARKER_INVENTORY_MISMATCH')
+        frozen_extrema=features.get('extrema')
+        if not isinstance(frozen_extrema,list) or len(frozen_extrema)!=len(extrema):errors.append('PIECEWISE_DISCONTINUOUS_EXTREMUM_INVENTORY_MISMATCH')
+        else:
+            for row,(at,value,kind) in zip(frozen_extrema,extrema):
+                try:same=_pp_same(_pp_coeff(str(row.get('x'))),at) and _pp_same(_pp_coeff(str(row.get('y'))),value)
+                except (ValueError,AttributeError):same=False
+                if not same or row.get('kind')!=kind:errors.append('PIECEWISE_DISCONTINUOUS_EXTREMUM_INVENTORY_MISMATCH')
+        # Reference lines: the claimed exact crossings are recomputed piece by piece; the frozen inventory is compared too.
+        lines=plan.get('referenceLines',[])
+        if not isinstance(lines,list):raise ValueError('PIECEWISE_REFERENCE_LINES_INVALID')
+        claimed_rows={row.get('lineId'):row for row in features.get('intersections',[]) if isinstance(row,dict)}
+        if len(claimed_rows)!=len(lines):errors.append('PIECEWISE_INTERSECTION_INVENTORY_MISMATCH')
+        expected=[]
+        for line in lines:
+            level=_pp_coeff(line['y']);roots=_pd_crossings(pieces,level,jumps)
+            claimed=sorted((_pp_coeff(str(text)) for text in line.get('intersectionX',[])),key=float)
+            if len(claimed)!=len(roots) or any(not _pp_same(value,root) for value,root in zip(claimed,[S.N(root,60) for root in roots])):errors.append('PIECEWISE_INTERSECTION_CLAIM_MISMATCH:'+str(line.get('id')))
+            frozen=claimed_rows.get(line.get('id')) or {}
+            keys=[next((p.get('id') for p in required if abs(p['x']-root)<=1e-9*max(1,abs(root)) and abs(p['y']-float(level))<=1e-9*max(1,abs(float(level)))),None) for root in roots]
+            marker_flags=[key is None and any(abs(float(at)-root)<=1e-9*max(1,abs(root)) and abs(float(value)-float(level))<=1e-9*max(1,abs(float(level))) for at,value,_ in markers) for root,key in zip(roots,keys)]
+            if len(frozen.get('points',[]))!=len(roots) or any(abs(point.get('xValue',math.nan)-root)>1e-9*max(1,abs(root)) or point.get('keyPoint')!=key or bool(point.get('marker'))!=flag for point,root,key,flag in zip(frozen.get('points',[]),roots,keys,marker_flags)):errors.append('PIECEWISE_INTERSECTION_INVENTORY_MISMATCH:'+str(line.get('id')))
+            expected.append((line.get('id'),float(level),roots,keys,marker_flags))
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not isinstance(v,(int,float)) or not math.isfinite(v) for v in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        sx,sy,display=transform['sx'],transform['sy'],transform['displayScale'];x_tol=.35/(sx*display);y_tol=.35/(sy*display)
+        root=ET.fromstring(svg);xmin,xmax,ymin,ymax=plan['viewport']
+        to_model=lambda px,py:((px-transform['originX'])/sx,(transform['originY']-py)/sy)
+        domain=plan.get('domain')
+        if not isinstance(domain,list) or len(domain)!=2 or not domain[0]<domain[1]:raise ValueError('PIECEWISE_DISCONTINUOUS_DRAW_DOMAIN_INVALID')
+        expected_draw=[[domain[0] if piece['a'] is None else float(piece['a']),domain[1] if piece['b'] is None else float(piece['b'])] for piece in pieces]
+        for row,draw in zip(frozen_pieces or [],expected_draw):
+            if row.get('drawInterval')!=draw:errors.append('PIECEWISE_DISCONTINUOUS_DRAW_INTERVAL_MISMATCH')
+        if plan.get('equalUnits') is not True:errors.append('EQUAL_UNIT_DECLARATION_MISSING')
+        errors.extend(axis_ratio_errors(plan,transform))
+        # One polyline per piece, on its own interval only: a jump is never bridged by a connecting segment.
+        curves=[node for node in root.iter() if node.get('data-role')=='curve']
+        if any(node.tag.split('}')[-1]!='polyline' for node in curves):errors.append('PIECEWISE_DISCONTINUOUS_STRAY_CURVE_PRIMITIVE')
+        by_piece={}
+        for node in curves:by_piece.setdefault(node.get('data-branch'),[]).append(node)
+        if sorted(by_piece)!=sorted('PIECE_'+str(index) for index in range(1,len(pieces)+1)) or any(len(nodes)!=1 for nodes in by_piece.values()):errors.append('PIECEWISE_DISCONTINUOUS_PIECE_PRIMITIVE_INVENTORY_MISMATCH')
+        coverage=[]
+        for index,(piece,(start,end)) in enumerate(zip(pieces,expected_draw),1):
+            nodes=by_piece.get('PIECE_'+str(index))
+            if not nodes:continue
+            values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',nodes[0].get('points',''))]
+            if len(values)<4 or len(values)%2:errors.append('PIECEWISE_DISCONTINUOUS_CURVE_POINTS_INVALID');continue
+            points=[to_model(values[i],values[i+1]) for i in range(0,len(values),2)]
+            if any(b[0]<=a[0] for a,b in zip(points,points[1:])):errors.append('PIECEWISE_DISCONTINUOUS_PIECE_NOT_INCREASING_X:'+str(index))
+            if abs(points[0][0]-start)>x_tol or abs(points[-1][0]-end)>x_tol:errors.append('PIECEWISE_DISCONTINUOUS_PIECE_COVERAGE_FAIL:'+str(index))
+            if any(px<start-x_tol or px>end+x_tol for px,_ in points):errors.append('PIECEWISE_DISCONTINUOUS_PIECE_CROSSES_ITS_INTERVAL:'+str(index))
+            poly=S.Poly(sum(coefficient*x**k for k,coefficient in enumerate(piece['coefficients'])),x)
+            curvature=abs(float(poly.nth(2)))*2 if poly.degree()==2 else 0.0;worst=0.0
+            for (ax,ay),(bx,by) in zip(points,points[1:]):
+                worst=max(worst,(max(abs(ay-_pp_eval_poly(poly,ax)),abs(by-_pp_eval_poly(poly,bx)))+curvature*(bx-ax)**2/8)*sy*display)
+            for px,py in points:
+                if not (xmin-x_tol<=px<=xmax+x_tol and ymin-y_tol<=py<=ymax+y_tol):errors.append('PIECEWISE_DISCONTINUOUS_CURVE_OUTSIDE_VIEW:'+str(index));break
+            if worst>.35:errors.append('PIECEWISE_DISCONTINUOUS_CURVE_INTERIOR_BOUND_FAIL:'+str(index))
+            coverage.append({'piece':index,'interval':[start,end],'points':len(points),'maxErrorCssPx':worst})
+        circles={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle'}
+        def dot_at(node_id,wx,wy):
+            node=circles.get(node_id)
+            if node is None:return False
+            mx,my=to_model(float(node.get('cx')),float(node.get('cy')))
+            return abs(mx-wx)<=x_tol and abs(my-wy)<=y_tol
+        marker_nodes=[node for node in root.iter() if node.get('data-role')=='discontinuous-endpoint']
+        if len(marker_nodes)!=len(markers):errors.append('PIECEWISE_DISCONTINUOUS_MARKER_COUNT_MISMATCH')
+        for index,(at,value,state) in enumerate(markers,1):
+            node=circles.get('discontinuous-endpoint-'+str(index))
+            if node is None or node.get('data-role')!='discontinuous-endpoint' or not dot_at('discontinuous-endpoint-'+str(index),float(at),float(value)) or node.get('fill') not in INTERVAL_STATE_FILLS[state]:errors.append('PIECEWISE_DISCONTINUOUS_ENDPOINT_MARKER_MISMATCH:'+str(index))
+        for index,point in enumerate(required,1):
+            if not dot_at('required-point-'+str(index),point['x'],point['y']):errors.append('PIECEWISE_DISCONTINUOUS_KEY_POINT_DOT_MISSING:'+str(point.get('id')))
+        for line_id,level,roots,keys,marker_flags in expected:
+            node=next((n for n in root.iter() if n.tag.split('}')[-1]=='line' and n.get('id')=='line-'+str(line_id)),None)
+            if node is None:errors.append('PIECEWISE_REFERENCE_LINE_MISSING:'+str(line_id));continue
+            (ax,ay),(bx,by)=to_model(float(node.get('x1')),float(node.get('y1'))),to_model(float(node.get('x2')),float(node.get('y2')))
+            if abs(ay-level)>y_tol or abs(by-level)>y_tol or min(ax,bx)>domain[0]+x_tol or max(ax,bx)<domain[1]-x_tol:errors.append('PIECEWISE_REFERENCE_LINE_POSITION_MISMATCH:'+str(line_id))
+            dots=[node_id for node_id in circles if node_id and node_id.startswith('intersection-'+str(line_id)+'-')]
+            if len(dots)!=sum(key is None and not flag for key,flag in zip(keys,marker_flags)):errors.append('PIECEWISE_INTERSECTION_DOT_COUNT_MISMATCH:'+str(line_id))
+            for k,(value,key,flag) in enumerate(zip(roots,keys,marker_flags),1):
+                if key is None and not flag and not dot_at('intersection-'+str(line_id)+'-'+str(k),value,level):errors.append('PIECEWISE_INTERSECTION_DOT_MISSING:'+str(line_id)+'-'+str(k))
+        marks=[]
+        for mark in sorted(set([(float(at),float(value)) for at,value,_ in markers]+[(float(at),float(value)) for at,value,_ in extrema]+[(float(root),level) for _,level,roots,_,_ in expected for root in roots])):
+            if not any(abs(mark[0]-other[0])<=1e-9*max(1,abs(mark[0])) and abs(mark[1]-other[1])<=1e-9*max(1,abs(mark[1])) for other in marks):marks.append(mark)
+        if any(math.hypot((a[0]-b[0])*sx*display,(a[1]-b[1])*sy*display)<1 for i,a in enumerate(marks) for b in marks[i+1:]):unsupported.append('PIECEWISE_DISCONTINUOUS_FEATURES_BELOW_DISPLAY_RESOLUTION')
+        status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors+unsupported)),'markers':[{'x':float(at),'y':float(value),'state':state} for at,value,state in markers],'extrema':[{'x':float(at),'y':float(value),'kind':kind} for at,value,kind in extrema],'intersections':[{'lineId':line_id,'y':level,'x':[float(root) for root in roots],'keyPoints':keys} for line_id,level,roots,keys,marker_flags in expected],'coverage':coverage,'topology':{'pieces':len(pieces),'discontinuous':True},'policy':'PIECEWISE_DISCONTINUOUS_OVERVIEW_v1','mathMethod':'EXACT_RATIONAL_PIECES_WITH_ENDPOINT_STATES_AND_SYMPY_ROOT_SCAN'}
+    except (ValueError,KeyError,TypeError,ZeroDivisionError,ET.ParseError) as error:
+        return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'PIECEWISE_DISCONTINUOUS_SOURCE_OR_SVG_SCHEMA_INVALID']}
+
+# ---------------------------------------------------------------------------
+# Graph overlays (G1), observed independently: the observer re-derives every overlay coordinate from the RAW graphPlan.overlays field
+# with its own exact reader and its own curve evaluator, then compares the FINAL SVG (and the model SVG) element by element.
+OVERLAY_ERROR_PREFIX='OVERLAY_'
+
+def _ov_reader(value,code='OVERLAY_VALUE_INVALID'):
+    try:return _pp_coeff(value)
+    except ValueError:raise ValueError(code) from None
+
+def _ov_base(value):
+    if value in (None,'e'):return S.E
+    if not isinstance(value,str):raise ValueError('OVERLAY_BASE_INVALID')
+    match=re.fullmatch(r'sqrt\((\d+)\)',value)
+    if match:
+        base=S.sqrt(S.Integer(int(match.group(1))))
+    else:
+        try:base=S.Rational(value)
+        except (ValueError,ZeroDivisionError):raise ValueError('OVERLAY_BASE_INVALID') from None
+    if base<=0 or base==1:raise ValueError('OVERLAY_BASE_INVALID')
+    return base
+
+def _ov_curve_value(plan,value,curve_id=None):
+    """The observer's own exact y at x: it never reads overlaysFeatures or any producer number."""
+    family=plan.get('family')
+    if family=='polynomial':
+        return sum((_ov_reader(c)*value**i for i,c in enumerate(plan['coefficients'])),S.Integer(0))
+    if family=='rational':
+        numerator=sum((_ov_reader(c)*value**i for i,c in enumerate(plan['numerator'])),S.Integer(0))
+        denominator=sum((_ov_reader(c)*value**i for i,c in enumerate(plan['denominator'])),S.Integer(0))
+        if denominator==0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+        return numerator/denominator
+    if family=='sqrt-affine':
+        radicand=sum((_ov_reader(c)*value**i for i,c in enumerate(plan['radicand'])),S.Integer(0))
+        if radicand<0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+        return S.sqrt(radicand)
+    if family=='absolute-value':
+        b,a,scale,offset=(_ov_reader(item) for item in plan['coefficients'])
+        return scale*S.Abs(a*value+b)+offset
+    if family=='piecewise-affine':
+        source=plan.get('sourceDomain') or {};interval=source.get('range')
+        if interval:
+            lo,hi=(_ov_reader(item) for item in interval)
+            if not lo<=value<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
+        piece=plan['piecewise'];break_x=_ov_reader(piece['breakX']);owner=piece.get('owner','RIGHT')
+        coefficients=piece['left'] if value<break_x or (value==break_x and owner=='LEFT') else piece['right']
+        return _ov_reader(coefficients[0])*value+_ov_reader(coefficients[1])
+    if family=='exponential-affine':
+        a,k,c=(_ov_reader(item) for item in plan['coefficients']);base=_ov_base(plan.get('base'));shift=_ov_reader(plan.get('shiftX','0'))
+        return a*base**(k*(value-shift))+c
+    if family=='logarithmic-affine':
+        a,k,b,c=(_ov_reader(item) for item in plan['coefficients']);base=_ov_base(plan.get('base'));argument=k*value+b
+        if argument<=0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+        return a*S.log(argument)/S.log(base)+c
+    if family=='trigonometric':
+        a,k,c=(_ov_reader(item) for item in plan['coefficients']);phase=_ov_reader(plan.get('phasePi','0'))
+        function={'SIN':S.sin,'COS':S.cos,'TAN':S.tan}.get(plan.get('function'))
+        if function is None:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+        return a*function(k*value+phase*S.pi)+c
+    if family=='piecewise-polynomial':
+        pieces=plan.get('pieces') or [];breaks=plan.get('breakpoints') or []
+        values=[_pp_coeff_coefficients(piece.get('coefficients')) for piece in pieces]
+        points=[_ov_reader(breakpoint.get('x')) for breakpoint in breaks]
+        source=plan.get('sourceDomain') or {}
+        if source.get('kind')=='INTERVAL':
+            lo,hi=(_ov_reader(item) for item in source.get('range',[]))
+            if not lo<=value<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
+        for index,coefficients in enumerate(values):
+            left=None if index==0 else points[index-1];right=None if index==len(values)-1 else points[index]
+            if (left is None or left<=value) and (right is None or value<=right):
+                return sum((coefficient*value**i for i,coefficient in enumerate(coefficients)),S.Integer(0))
+        raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+    if family=='exp-log-pair':
+        rows=plan.get('curves') or []
+        row=next((item for item in rows if item.get('id')==curve_id),None)
+        if row is None:raise ValueError('OVERLAY_CURVE_UNKNOWN')
+        if row.get('family')=='exponential-affine':
+            a,k,c=(_ov_reader(item) for item in row['coefficients']);base=_ov_base(row.get('base'));shift=_ov_reader(row.get('shiftX','0'))
+            return a*base**(k*(value-shift))+c
+        if row.get('family')=='logarithmic-affine':
+            a,k,b,c=(_ov_reader(item) for item in row['coefficients']);base=_ov_base(row.get('base'));argument=k*value+b
+            if argument<=0:raise ValueError('OVERLAY_POINT_NOT_ON_CURVE')
+            return a*S.log(argument)/S.log(base)+c
+        raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+    raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+
+def _pp_coeff_coefficients(values):
+    if not isinstance(values,list) or len(values)>4:raise ValueError('OVERLAY_CURVE_UNSUPPORTED')
+    return [_ov_reader(item) for item in values]
+
+def _ov_line(entry):
+    if not isinstance(entry,dict):raise ValueError('OVERLAY_LINE_INVALID')
+    if 'x' in entry:
+        if 'slope' in entry or 'intercept' in entry:raise ValueError('OVERLAY_LINE_INVALID')
+        return {'id':entry.get('id'),'kind':'VERTICAL','x':_ov_reader(entry.get('x'))}
+    if 'slope' not in entry or 'intercept' not in entry:raise ValueError('OVERLAY_LINE_INVALID')
+    return {'id':entry.get('id'),'kind':'LINE','slope':_ov_reader(entry.get('slope')),'intercept':_ov_reader(entry.get('intercept'))}
+
+def _ov_expected(plan):
+    """Every overlay element recomputed from the raw plan: points; lines; segments, guides and polygons."""
+    raw=plan.get('overlays')
+    if raw is None:return None
+    if not isinstance(raw,dict):raise ValueError('OVERLAY_PLAN_INVALID')
+    lines=[_ov_line(entry) for entry in raw.get('lines',[])]
+    by_line={line['id']:line for line in lines}
+    points={}
+    for entry in raw.get('points',[]):
+        if not isinstance(entry,dict):raise ValueError('OVERLAY_POINT_INVALID')
+        ident=entry.get('id')
+        if not isinstance(ident,str) or ident in points:raise ValueError('OVERLAY_POINT_INVALID')
+        if 'curveX' in entry:
+            x=_ov_reader(entry.get('curveX'));lo,hi=plan.get('domain',[None,None])
+            if lo is not None and not lo<=float(S.N(x,30))<=hi:raise ValueError('OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN')
+            y=_ov_curve_value(plan,x,entry.get('curve'))
+        elif 'intersect' in entry:
+            pair=entry.get('intersect')
+            if not isinstance(pair,list) or len(pair)!=2:raise ValueError('OVERLAY_POINT_INVALID')
+            first=by_line.get(pair[0]);second=by_line.get(pair[1])
+            if first is None or second is None:raise ValueError('OVERLAY_POINT_UNKNOWN')
+            if first['kind']=='VERTICAL' and second['kind']=='VERTICAL':raise ValueError('OVERLAY_LINE_PARALLEL')
+            if first['kind']=='VERTICAL':x=first['x'];y=second['slope']*x+second['intercept']
+            elif second['kind']=='VERTICAL':x=second['x'];y=first['slope']*x+first['intercept']
+            else:
+                if first['slope']==second['slope']:raise ValueError('OVERLAY_LINE_PARALLEL')
+                x=(second['intercept']-first['intercept'])/(first['slope']-second['slope']);y=first['slope']*x+first['intercept']
+        elif 'axis' in entry:
+            value=_ov_reader(entry.get('value'))
+            if entry.get('axis')=='x':x,y=value,S.Integer(0)
+            elif entry.get('axis')=='y':x,y=S.Integer(0),value
+            else:raise ValueError('OVERLAY_POINT_INVALID')
+        elif 'x' in entry and 'y' in entry:
+            x,y=_ov_reader(entry['x']),_ov_reader(entry['y'])
+        else:raise ValueError('OVERLAY_POINT_INVALID')
+        points[ident]=(x,y)
+    def point_ref(value):
+        if value not in points:raise ValueError('OVERLAY_POINT_UNKNOWN')
+        return points[value]
+    segments=[]
+    for entry in raw.get('segments',[]):
+        if not isinstance(entry,dict):raise ValueError('OVERLAY_SEGMENT_INVALID')
+        segments.append({'id':entry.get('id'),'from':point_ref(entry.get('from')),'to':point_ref(entry.get('to')),'dashed':entry.get('dashed',False)})
+    guides=[]
+    for entry in raw.get('guides',[]):
+        if not isinstance(entry,dict):raise ValueError('OVERLAY_GUIDE_INVALID')
+        point=point_ref(entry.get('from'));axis=entry.get('axis','BOTH')
+        if axis not in ('x','y','BOTH'):raise ValueError('OVERLAY_GUIDE_INVALID')
+        guides.append({'id':entry.get('id'),'from':point,'axis':axis,'dashed':entry.get('dashed',True)})
+    polygons=[]
+    for entry in raw.get('polygons',[]):
+        if not isinstance(entry,dict) or not isinstance(entry.get('points'),list) or not 3<=len(entry['points'])<=6:raise ValueError('OVERLAY_POLYGON_INVALID')
+        polygons.append({'id':entry.get('id'),'points':[point_ref(value) for value in entry['points']],'fill':entry.get('fill','LIGHT')})
+    return {'lines':lines,'points':points,'segments':segments,'guides':guides,'polygons':polygons}
+
+def _ov_clip(viewport,line):
+    xmin,xmax,ymin,ymax=viewport
+    if line['kind']=='VERTICAL':
+        x=float(line['x']);return [(x,ymin),(x,ymax)]
+    m=float(line['slope']);q=float(line['intercept']);ends=[]
+    for x in (xmin,xmax):
+        y=m*x+q
+        if ymin-1e-6<=y<=ymax+1e-6:ends.append((x,max(ymin,min(ymax,y))))
+    if m!=0:
+        for y in (ymin,ymax):
+            x=(y-q)/m
+            if xmin-1e-6<=x<=xmax+1e-6 and not any(abs(x-a)<1e-6 for a,_ in ends):ends.append((max(xmin,min(xmax,x)),y))
+    return ends[:2]
+
+def overlays_audit(plan,svg,transform):
+    raw=plan.get('overlays')
+    if raw is None:return None
+    errors=[]
+    try:
+        expected=_ov_expected(plan)
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:
+            return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        ox,oy,sx,sy=[transform[key] for key in ('originX','originY','sx','sy')]
+        to_data=lambda px,py:((px-ox)/sx,(oy-py)/sy)
+        xtol=.35/(sx*transform['displayScale']);ytol=.35/(sy*transform['displayScale'])
+        root=ET.fromstring(svg)
+        lines={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='line'}
+        circles={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle'}
+        polylines={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='polyline'}
+        def read_line(ident):
+            node=lines.get(ident)
+            if node is None:return None
+            try:return [to_data(float(node.get('x1')),float(node.get('y1'))),to_data(float(node.get('x2')),float(node.get('y2')))]
+            except (TypeError,ValueError):return None
+        def read_circle(ident):
+            node=circles.get(ident)
+            if node is None:return None
+            try:return to_data(float(node.get('cx')),float(node.get('cy')))
+            except (TypeError,ValueError):return None
+        def read_polyline(ident):
+            node=polylines.get(ident)
+            if node is None:return None
+            try:
+                values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+                return [to_data(values[i],values[i+1]) for i in range(0,len(values)-1,2)]
+            except (TypeError,ValueError,IndexError):return None
+        def near(a,b,tolerance_x=xtol,tolerance_y=ytol):
+            return abs(a[0]-b[0])<=max(tolerance_x,1e-6*max(1,abs(b[0]))) and abs(a[1]-b[1])<=max(tolerance_y,1e-6*max(1,abs(b[1])))
+        claimed=set()
+        for line in expected['lines']:
+            obj_id='overlay-line-'+str(line['id']);claimed.add(obj_id)
+            got=read_line(obj_id)
+            if got is None:errors.append('OVERLAY_LINE_MISSING:'+str(line['id']));continue
+            want=_ov_clip(plan['viewport'],line)
+            if len(want)!=2:errors.append('OVERLAY_LINE_OUTSIDE_VIEWPORT:'+str(line['id']));continue
+            if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_LINE_MISMATCH:'+str(line['id']))
+        for ident,(x,y) in expected['points'].items():
+            claimed.add(ident);got=read_circle(ident)
+            if got is None:errors.append('OVERLAY_POINT_MISSING:'+ident)
+            elif not near(got,(float(S.N(x,30)),float(S.N(y,30)))):errors.append('OVERLAY_POINT_MISMATCH:'+ident)
+        for segment in expected['segments']:
+            ident='overlay-segment-'+str(segment['id']);claimed.add(ident);got=read_line(ident)
+            if got is None:errors.append('OVERLAY_SEGMENT_MISSING:'+str(segment['id']));continue
+            want=[(float(S.N(segment['from'][0],30)),float(S.N(segment['from'][1],30))),(float(S.N(segment['to'][0],30)),float(S.N(segment['to'][1],30)))]
+            if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_SEGMENT_MISMATCH:'+str(segment['id']))
+        for guide in expected['guides']:
+            point=guide['from'];px,py=float(S.N(point[0],30)),float(S.N(point[1],30))
+            wanted=[]
+            if guide['axis'] in ('x','BOTH'):wanted.append(('overlay-guide-'+str(guide['id'])+'-x',[(px,py),(px,0.0)]))
+            if guide['axis'] in ('y','BOTH'):wanted.append(('overlay-guide-'+str(guide['id'])+'-y',[(px,py),(0.0,py)]))
+            for ident,want in wanted:
+                claimed.add(ident);got=read_line(ident)
+                if got is None:errors.append('OVERLAY_GUIDE_MISSING:'+str(guide['id']));continue
+                if not (near(got[0],want[0]) and near(got[1],want[1]) or near(got[0],want[1]) and near(got[1],want[0])):errors.append('OVERLAY_GUIDE_MISMATCH:'+str(guide['id']))
+        for polygon in expected['polygons']:
+            ident='overlay-polygon-'+str(polygon['id']);claimed.add(ident)
+            got=read_polyline(ident)
+            want=[(float(S.N(x,30)),float(S.N(y,30))) for x,y in polygon['points']]
+            if got is None:errors.append('OVERLAY_POLYGON_MISSING:'+str(polygon['id']));continue
+            if len(got)!=len(want)+1 or any(not near(a,b) for a,b in zip(got,want)) or not near(got[-1],want[0]):errors.append('OVERLAY_POLYGON_MISMATCH:'+str(polygon['id']))
+            if polygon['fill']!='NONE':
+                claimed.add(ident+'-fill');fill=polylines.get(ident+'-fill',None) or root.find(f'.//*[@id="{ident}-fill"]')
+                if fill is None:errors.append('OVERLAY_FILL_MISSING:'+str(polygon['id']))
+        # Labels: in the composed figure every overlay line has its equation label, owned by that line. (The model SVG has no labels.)
+        if 'data-label-kind' in svg:
+            groups={}
+            for node in root.iter():
+                if node.tag.split('}')[-1]=='g' and node.get('id'):groups[node.get('id')]=node
+            for line in expected['lines']:
+                label_id='overlay-line-'+str(line['id'])+'-equation';claimed.add(label_id)
+                node=groups.get(label_id)
+                if node is None:errors.append('OVERLAY_LABEL_MISSING:'+str(line['id']))
+                elif node.get('data-owner')!='overlay-line-'+str(line['id']):errors.append('OVERLAY_LABEL_OWNER_MISMATCH:'+str(line['id']))
+                elif not any(child.tag.split('}')[-1] in {'path','text'} for child in node.iter()):errors.append('OVERLAY_LABEL_EMPTY:'+str(line['id']))
+        # No undeclared overlay element may sneak into the figure.
+        for node in root.iter():
+            ident=node.get('id') or ''
+            if not ident.startswith('overlay-'):continue
+            if ident.endswith('-fill') or ident.endswith('-equation'):continue
+            if ident not in claimed:errors.append('OVERLAY_UNDECLARED:'+ident)
+        status='FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors)),'points':len(expected['points']),'lines':len(expected['lines']),'segments':len(expected['segments']),'guides':len(expected['guides']),'polygons':len(expected['polygons']),'mathMethod':'INDEPENDENT_EXACT_OVERLAY_RECOMPUTATION_AND_FINAL_SVG_READBACK'}
+    except (ValueError,KeyError,TypeError,IndexError,ZeroDivisionError,ET.ParseError) as error:
+        return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'OVERLAY_SOURCE_SCHEMA_INVALID']}
+
 # ---- general trigonometric parameters (v2): independent recomputation from the source fields ----------------
 TRIG_V2_MAX_PERIODS=12
 
@@ -2308,9 +2800,11 @@ def trigonometric_period_v2_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':features,'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_INDEPENDENT_EVALUATION'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
-def audit(plan,svg,transform):
+def _audit_family(plan,svg,transform):
     if plan.get('family')=='piecewise-polynomial':
         return piecewise_polynomial_audit(plan,svg,transform)
+    if plan.get('family')=='piecewise-discontinuous':
+        return piecewise_discontinuous_audit(plan,svg,transform)
     if plan.get('family')=='piecewise-affine' and plan.get('shapeIntent')=='OVERVIEW':
         return piecewise_affine_overview_audit(plan,svg,transform)
     if plan.get('family')=='exponential-affine' and plan.get('shapeIntent')=='OVERVIEW':
@@ -2424,3 +2918,16 @@ def audit(plan,svg,transform):
     if overview['status'] in ('FAIL','UNSUPPORTED'):errors.extend(overview['errors'])
     status='UNSUPPORTED' if overview['status']=='UNSUPPORTED' else 'FAIL' if errors else 'PASS'
     return {'status':status,'errors':sorted(set(errors)),'topology':topology,'segments':rows,'overview':overview,'maxChordErrorPx':tolerance,'verificationMethod':'INDEPENDENT_SOURCE_INTERVAL_AND_SECOND_DERIVATIVE_BOUND'}
+
+def audit(plan,svg,transform):
+    """The family audit plus the optional graph overlays: the observer re-derives every overlay element from the raw overlays field and
+    reads the same element ids back from the model and the final SVG."""
+    result=_audit_family(plan,svg,transform)
+    if plan.get('overlays') is None:return result
+    overlay=overlays_audit(plan,svg,transform)
+    if overlay is None:return result
+    errors=sorted(set([*(result.get('errors') or []),*(overlay.get('errors') or [])]))
+    if result.get('status')=='UNSUPPORTED' or overlay.get('status')=='UNSUPPORTED':status='UNSUPPORTED'
+    elif result.get('status')=='FAIL' or overlay.get('status')=='FAIL' or errors:status='FAIL'
+    else:status='PASS'
+    return {**result,'status':status,'errors':errors,'overlays':overlay}

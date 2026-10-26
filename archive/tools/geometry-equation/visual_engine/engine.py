@@ -31,13 +31,14 @@ def canonical(value):return json.dumps(value,ensure_ascii=False,sort_keys=True,s
 def sha(value):return hashlib.sha256(value.encode('utf-8')).hexdigest()
 
 def mark_label(label_id,target,text,label_kind,at,extra):
-    """A math label for a mark: 'DEGREE' = the expression followed by the degree sign (40 -> 40°, x -> x°), 'NAME' = the angle written by its letters (ABC -> ∠ABC)."""
+    """A math label for a mark: 'DEGREE' = the expression followed by the degree sign (40 -> 40°, x -> x°), 'NAME' = the angle written by its letters (ABC -> ∠ABC), 'MATH' = the expression as it stands (a symbol such as theta names the angle)."""
     tokens=load()
     if label_kind=='NAME':
         if not re.fullmatch(r'[A-Z][A-Z0-9]{1,3}',text):raise ValueError('ANGLE_LABEL_NAME_INVALID')
         plain='∠'+text;markup=html.escape(plain);tex='\\angle '+text
-    elif label_kind=='DEGREE':
-        tree=Expr('degree','',(parse(text),));plain=serialize(tree,'plain');markup=serialize(tree,'svg');tex=serialize(tree,'tex')
+    elif label_kind in ('DEGREE','MATH'):
+        tree=Expr('degree','',(parse(text),)) if label_kind=='DEGREE' else parse(text)
+        plain=serialize(tree,'plain');markup=serialize(tree,'svg');tex=serialize(tree,'tex')
     else:raise ValueError('ANGLE_LABEL_KIND_INVALID')
     label={'id':label_id,'kind':'EQUATION_LABEL','target':target,'text':plain,'markup':markup,'tex':tex,'math':True,'sourceMath':text,'font':tokens['mathLabel'],'priority':0,'at':list(at),'allowSuppress':False,**extra}
     label['layoutText']=''.join(ET.fromstring('<text>'+markup+'</text>').itertext())
@@ -135,6 +136,10 @@ def prepare(spec):
     if interval_features is not None:
         if interval_features.get('schemaVersion')!='POLYNOMIAL_INTERVAL_FEATURES_v1':raise ValueError('POLYNOMIAL_INTERVAL_INVENTORY_REQUIRED')
         for endpoint in interval_features.get('endpoints',[]):critical.append((_exact_float(endpoint['x']),_exact_float(endpoint['y'])))
+    discontinuous_endpoint_features=spec['displayFacts'].get('discontinuousEndpointFeatures')
+    if discontinuous_endpoint_features is not None:
+        if discontinuous_endpoint_features.get('schemaVersion')!='PIECEWISE_DISCONTINUOUS_ENDPOINTS_v1':raise ValueError('PIECEWISE_DISCONTINUOUS_ENDPOINT_INVENTORY_REQUIRED')
+        for marker in discontinuous_endpoint_features.get('markers',[]):critical.append((_exact_float(marker['x']),_exact_float(marker['y'])))
     reference_interval_features=spec['displayFacts'].get('referenceIntervalFeatures')
     if reference_interval_features is not None:
         if not isinstance(reference_interval_features,list):raise ValueError('REFERENCE_INTERVAL_INVENTORY_REQUIRED')
@@ -324,6 +329,14 @@ def prepare(spec):
             # A closed end is a filled dot, an open end a hollow one, drawn over the curve end.
             at=vp.screen((_exact_float(endpoint['x']),_exact_float(endpoint['y'])))
             primitive({'id':'interval-endpoint-'+endpoint['side'].lower(),'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'interval-endpoint','fill':'#fff' if endpoint['state']=='OPEN' else '#111','state':endpoint['state']},'circle')
+    if discontinuous_endpoint_features is not None:
+        policy=spec['displayFacts'].get('discontinuousEndpointFeaturePolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('PIECEWISE_DISCONTINUOUS_ENDPOINT_POLICY_REQUIRED')
+        for marker in discontinuous_endpoint_features.get('markers',[]):
+            if marker.get('state') not in {'OPEN','CLOSED'} or not isinstance(marker.get('id'),str) or not marker['id']:raise ValueError('INVALID_PIECEWISE_DISCONTINUOUS_ENDPOINT')
+            # A CLOSED end or a declared value is a filled dot; an OPEN end is hollow and the function is not defined there.
+            at=vp.screen((_exact_float(marker['x']),_exact_float(marker['y'])))
+            primitive({'id':'discontinuous-'+marker['id'],'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'discontinuous-endpoint','fill':'#fff' if marker['state']=='OPEN' else '#111','state':marker['state']},'circle')
     if reference_interval_features is not None:
         policy=spec['displayFacts'].get('referenceIntervalFeaturePolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
         if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('REFERENCE_INTERVAL_MARKER_POLICY_REQUIRED')
@@ -438,6 +451,12 @@ def prepare(spec):
                     primitive({'id':oid+'-arrow-'+end.lower(),'kind':'polygon','points':[tip,(base[0]-uy*3.6,base[1]+ux*3.6),(base[0]+uy*3.6,base[1]-ux*3.6)],'token':'indicator','layer':62,'role':'indicator','fill':'#111','mark':'arrow','markId':oid,'markEnd':end},'curve')
         elif kind=='CIRCLE':
             primitive({'id':oid,'kind':'circle','at':vp.screen(value.center),'radius':value.radius*vp.sx,'token':'mainShape','layer':40,'role':'circle'},'circle')
+        elif kind=='POLYGON':
+            # A simple closed polygon of displayed points (graph overlays): a light fill under the strokes, then its own closed outline.
+            vertices=[vp.screen(p) for p in value]
+            if obj.get('fill') and obj['fill']!='NONE':
+                primitive({'id':oid+'-fill','kind':'polygon','points':vertices,'token':'secondaryShape','layer':10,'role':'region','fill':REGION_FILLS.get(obj['fill'],REGION_FILLS['LIGHT']),'noStroke':True},'curve')
+            primitive({'id':oid,'kind':'polyline','points':vertices+[vertices[0]],'token':'secondaryShape','layer':35,'role':'overlayPolygon'},'line')
         elif kind=='CIRCULAR_ARC':
             primitive({'id':oid,'kind':'polyline','points':[vp.screen(p) for p in value.sample_points()],
                        'token':'axisOverlapShape' if obj.get('highlight') else 'mainShape','layer':46 if obj.get('highlight') else 40,'role':'circularArc',

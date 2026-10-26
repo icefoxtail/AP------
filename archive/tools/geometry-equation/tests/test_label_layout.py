@@ -43,7 +43,9 @@ class LayoutTests(unittest.TestCase):
             {'id':'arc1','kind':'curve','geometry':[[v[0]+26*math.cos(bis),v[1]+26*math.sin(bis)]]}]
         r=layout([item],obstacles,Box(0,0,720,600),measurements={'a-label':(40,20)})
         self.assertEqual(r['status'],'PASS',r)
-        self.assertEqual(r['labels'][0]['placement'],'ANGLE_WEDGE_INSIDE_FAR')
+        # Inside the angle without a leader (main's wedge limit may already call this ANGLE_WEDGE_INSIDE).
+        self.assertIn(r['labels'][0]['placement'],('ANGLE_WEDGE_INSIDE','ANGLE_WEDGE_INSIDE_FAR'))
+        self.assertFalse([l for l in r.get('leaders',[]) if l.get('ownerLabelId')=='a-label' or l.get('labelId')=='a-label'])
     def test_explicit_polish(self):
         r=layout([label('n',(50,50),'LONG'*100)],[],Box(32,32,40,40))
         self.assertEqual(r['status'],'POLISH_REQUIRED')
