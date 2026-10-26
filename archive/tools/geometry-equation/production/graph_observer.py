@@ -1242,6 +1242,171 @@ def _pp_ref_crossings(pieces,intervals,source,row):
                 if not any(abs(at-seen)<S.Float('1e-40',60) for seen in found):found.append(at)
     return sorted(found)
 
+
+GRAPH_REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
+GRAPH_REGION_BOUNDARY_TOLERANCE=0.75   # svg px: a fill boundary against the boundary curve at sample x
+GRAPH_REGION_OUTSIDE=0.02              # relative band height: how far outside counts as outside the fill
+
+def _region_rows(plan,pieces,intervals,refs,name,from_x,to_x,region_id):
+    """One band side recomputed from the plan's exact fields (no producer rows are trusted): 'f', 'axis', a reference curve id or a line id."""
+    def polynomial_rows(rows):
+        out=[]
+        for poly,(a,b) in rows:
+            start=from_x if a is None else max(from_x,a);end=to_x if b is None else min(to_x,b)
+            if start<end:out.append(([poly.nth(index) if hasattr(poly,'nth') else poly[index] for index in range(3)],(start,end)))
+        out.sort(key=lambda row:float(row[1][0]))
+        return out
+    if from_x>=to_x:raise ValueError('GRAPH_REGION_DOMAIN_INVALID:'+region_id)
+    if name=='axis':rows=[([S.Integer(0),S.Integer(0),S.Integer(0)],(from_x,to_x))]
+    elif name=='f':rows=polynomial_rows(list(zip(pieces,intervals)))
+    else:
+        match=[ref for ref in refs if ref['id']==name];rows=[]
+        if match:
+            ref=match[0];rows=polynomial_rows(list(zip(ref['pieces'],ref['intervals'])))
+        else:
+            line=next((entry for entry in plan.get('referenceLines',[]) if entry.get('id')==name),None)
+            if line is None:raise ValueError('GRAPH_REGION_BOUNDARY_UNKNOWN:'+region_id+':'+str(name))
+            if 'slope' in line:m=_pp_coeff(line['slope']);level=_pp_coeff(line['intercept'])
+            else:m=S.Integer(0);level=_pp_coeff(line['y'])
+            rows=[([level,m,S.Integer(0)],(from_x,to_x))]
+    if not rows or abs(float(rows[0][1][0])-float(from_x))>1e-9 or abs(float(rows[-1][1][1])-float(to_x))>1e-9:
+        raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+str(name))
+    for (_,first),(_,(next_start,_)) in zip(rows,rows[1:]):
+        if abs(float(first[1])-float(next_start))>1e-9:raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id+':'+str(name))
+    return rows
+
+def _region_value(rows,x_value):
+    for coefficients,(a,b) in rows:
+        if float(a)<=x_value<=float(b):
+            return float(coefficients[0])+float(coefficients[1])*x_value+float(coefficients[2])*x_value*x_value
+    raise ValueError('GRAPH_REGION_BOUNDARY_UNDEFINED')
+
+def _region_polygon(node):
+    d=node.get('d') or ''
+    if not d.strip().startswith('M') or not d.strip().endswith('Z'):raise ValueError('GRAPH_REGION_PATH_INVALID')
+    if re.search(r'[AaCcQqSsTt]',d):raise ValueError('GRAPH_REGION_PATH_INVALID')
+    values=[float(v) for v in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',d)]
+    if len(values)<6 or len(values)%2:raise ValueError('GRAPH_REGION_PATH_INVALID')
+    return [(values[i],values[i+1]) for i in range(0,len(values),2)]
+
+def _region_inside(polygon,point):
+    x,y=point;hit=False
+    for (ax,ay),(bx,by) in zip(polygon,polygon[1:]+polygon[:1]):
+        if (ay>y)!=(by>y) and x<(bx-ax)*(y-ay)/(by-ay)+ax:hit=not hit
+    return hit
+
+def _region_crossings(polygon,x):
+    ys=[]
+    for (ax,ay),(bx,by) in zip(polygon,polygon[1:]+polygon[:1]):
+        if (ax>x)!=(bx>x):ys.append(ay+(by-ay)*(x-ax)/(bx-ax))
+    return sorted(ys)
+
+def _region_label_box(elements,label_id):
+    node=elements.get(label_id)
+    if node is None:return None
+    kind=node.tag.split('}')[-1]
+    if kind=='text':
+        try:return (float(node.get('x')),float(node.get('y')),0.0,0.0)
+        except (TypeError,ValueError):return None
+    if kind=='g' and node.get('transform'):
+        match=re.fullmatch(r'translate\(([-\d.eE+]+)[ ,]([-\d.eE+]+)\)',node.get('transform'))
+        inner=next((child for child in node if child.tag.split('}')[-1]=='svg'),None)
+        if match and inner is not None:
+            try:return (float(match.group(1)),float(match.group(2)),float(inner.get('width')),float(inner.get('height')))
+            except (TypeError,ValueError):return None
+    return None
+
+def graph_region_audit(plan,svg,transform,pieces,intervals,refs,features,root):
+    """Independent graph-region check on the FINAL SVG: the expected band is rebuilt from the plan's exact fields; the drawn fill path must
+    follow both boundaries, stay inside [from,to], be painted beneath every stroke, carry the declared fill and hold its label inside."""
+    errors=[];observations=[]
+    declared=plan.get('regions') or []
+    frozen=features.get('regions') or []
+    if not isinstance(declared,list) or not isinstance(frozen,list):raise ValueError('GRAPH_REGION_INVENTORY_REQUIRED')
+    frozen_by={row.get('id'):row for row in frozen if isinstance(row,dict)}
+    if sorted(frozen_by)!=sorted(row.get('id') for row in declared if isinstance(row,dict)):errors.append('GRAPH_REGION_INVENTORY_MISMATCH')
+    elements={node.get('id'):node for node in root.iter() if node.get('id')}
+    order={id(node):index for index,node in enumerate(root.iter())}
+    paths={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='path' and node.get('data-mark')=='graph-region'}
+    declared_ids=set();polygons=[]
+    for entry in declared:
+        if not isinstance(entry,dict):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
+        region_id=entry.get('id')
+        if not isinstance(region_id,str):errors.append('GRAPH_REGION_INVENTORY_MISMATCH');continue
+        declared_ids.add(region_id)
+        frozen_row=frozen_by.get(region_id)
+        try:
+            from_x=_pp_exact(str(entry.get('from')).replace(' ',''));to_x=_pp_exact(str(entry.get('to')).replace(' ',''))
+            if from_x>=to_x:raise ValueError
+            upper=_region_rows(plan,pieces,intervals,refs,entry.get('upper'),from_x,to_x,region_id)
+            lower=_region_rows(plan,pieces,intervals,refs,entry.get('lower'),from_x,to_x,region_id)
+        except (ValueError,KeyError,TypeError):
+            errors.append('GRAPH_REGION_INVENTORY_MISMATCH:'+str(region_id));continue
+        fill=entry.get('fill','LIGHT')
+        if fill not in GRAPH_REGION_FILLS:errors.append('GRAPH_REGION_FILL_UNSUPPORTED:'+region_id)
+        if frozen_row is not None:
+            try:
+                frozen_same=(abs(float(_pp_exact(str(frozen_row.get('from')).replace(' ','')))-float(from_x))<=1e-9*max(1,abs(float(from_x)))
+                    and abs(float(_pp_exact(str(frozen_row.get('to')).replace(' ','')))-float(to_x))<=1e-9*max(1,abs(float(to_x)))
+                    and frozen_row.get('upper')==entry.get('upper') and frozen_row.get('lower')==entry.get('lower')
+                    and frozen_row.get('fill')==fill and frozen_row.get('label')==entry.get('label'))
+            except (ValueError,TypeError):frozen_same=False
+            if not frozen_same:errors.append('GRAPH_REGION_INVENTORY_MISMATCH:'+region_id)
+        node=paths.get('region-'+region_id)
+        if node is None:errors.append('GRAPH_REGION_MISSING:'+region_id);continue
+        if node.get('fill')!=GRAPH_REGION_FILLS.get(fill):errors.append('GRAPH_REGION_FILL_MISMATCH:'+region_id)
+        if node.get('fill-rule')!='evenodd':errors.append('GRAPH_REGION_FILL_RULE_MISMATCH:'+region_id)
+        if node.get('stroke') not in {None,'none'}:errors.append('GRAPH_REGION_STROKE_PRESENT:'+region_id)
+        try:polygon=[((px-transform['originX'])/transform['sx'],(transform['originY']-py)/transform['sy']) for px,py in _region_polygon(node)]
+        except ValueError as error:errors.append(str(error)+':'+region_id);continue
+        if not polygon:errors.append('GRAPH_REGION_PATH_INVALID:'+region_id);continue
+        polygons.append((region_id,polygon))
+        xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale']
+        xtol=GRAPH_REGION_BOUNDARY_TOLERANCE/max(1e-12,xscale);ytol=GRAPH_REGION_BOUNDARY_TOLERANCE/max(1e-12,yscale)
+        if abs(min(x for x,_ in polygon)-float(from_x))>xtol or abs(max(x for x,_ in polygon)-float(to_x))>xtol:errors.append('GRAPH_REGION_OUTSIDE_INTERVAL:'+region_id)
+        if any(x<float(from_x)-xtol or x>float(to_x)+xtol for x,_ in polygon):errors.append('GRAPH_REGION_OUTSIDE_INTERVAL:'+region_id)
+        checks=0
+        for index in range(1,10):
+            x=float(from_x)+(float(to_x)-float(from_x))*index/10
+            try:yu=_region_value(upper,x);yl=_region_value(lower,x)
+            except ValueError:errors.append('GRAPH_REGION_BOUNDARY_UNDEFINED:'+region_id);break
+            if yu<=yl:errors.append('GRAPH_REGION_BOUNDARIES_CROSS:'+region_id);break
+            crossings=_region_crossings(polygon,x)
+            if len(crossings)!=2:
+                nudged=_region_crossings(polygon,x+1e-7*max(1,abs(x)))
+                if len(nudged)!=2:errors.append('GRAPH_REGION_BOUNDARY_MISMATCH:'+region_id);continue
+                crossings=nudged
+            if abs(crossings[-1]-yu)>ytol or abs(crossings[0]-yl)>ytol:errors.append('GRAPH_REGION_BOUNDARY_MISMATCH:'+region_id)
+            band=max(abs(yu-yl),1e-9)
+            if not _region_inside(polygon,(x,(yu+yl)/2)):errors.append('GRAPH_REGION_INTERIOR_MISSING:'+region_id)
+            if _region_inside(polygon,(x,yu+max(4*ytol,GRAPH_REGION_OUTSIDE*band))):errors.append('GRAPH_REGION_OUTSIDE_BOUNDARY:'+region_id)
+            if _region_inside(polygon,(x,yl-max(4*ytol,GRAPH_REGION_OUTSIDE*band))):errors.append('GRAPH_REGION_OUTSIDE_BOUNDARY:'+region_id)
+            checks+=1
+        mine=order[id(node)]
+        if any(order[id(other)]<mine and (other.tag.split('}')[-1] in {'line','circle','polyline','polygon'} or (other.tag.split('}')[-1]=='path' and other.get('data-mark')!='graph-region')) for other in root.iter()):
+            errors.append('GRAPH_REGION_NOT_BENEATH_STROKES:'+region_id)
+        if entry.get('label') is not None:
+            box=_region_label_box(elements,'region-'+region_id+'-label')
+            if box is None:errors.append('GRAPH_REGION_LABEL_MISSING:'+region_id)
+            else:
+                x,y,w,h=box
+                to_model=lambda px,py:((px-transform['originX'])/transform['sx'],(transform['originY']-py)/transform['sy'])
+                corners=[to_model(x,y),to_model(x+w,y),to_model(x,y+h),to_model(x+w,y+h)]
+                if not _region_inside(polygon,to_model(x+w/2,y+h/2)) or any(not _region_inside(polygon,corner) for corner in corners):errors.append('GRAPH_REGION_LABEL_OUTSIDE:'+region_id)
+        observations.append({'id':region_id,'type':'GRAPH_REGION','fill':fill,'from':float(from_x),'to':float(to_x),'samples':checks,'areaPx2':abs(0.5*sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(polygon,polygon[1:]+polygon[:1])))})
+    for path_id in paths:
+        if path_id not in {'region-'+region_id for region_id in declared_ids}:errors.append('GRAPH_REGION_UNDECLARED:'+str(path_id))
+    for index,(left_id,left) in enumerate(polygons):
+        for right_id,right in polygons[index+1:]:
+            xs=sorted({point[0] for point in left});ys=sorted({point[1] for point in left})
+            found=False
+            for i in range(1,10):
+                for j in range(1,10):
+                    point=(xs[0]+(xs[-1]-xs[0])*i/10,ys[0]+(ys[-1]-ys[0])*j/10)
+                    if _region_inside(left,point) and _region_inside(right,point):errors.append('GRAPH_REGION_OVERLAP:'+left_id+':'+right_id);found=True;break
+                if found:break
+    return sorted(set(errors)),observations
+
 def piecewise_polynomial_audit(plan,svg,transform):
     """Independent: the pieces, continuity, breakpoint claims, vertices, every crossing with each horizontal line and the display formula are
     recomputed from the source fields; then the drawn pieces, key points, lines, crossing dots and interval end dots are read from the SVG."""
@@ -1507,13 +1672,16 @@ def piecewise_polynomial_audit(plan,svg,transform):
                 value=_pp_ref_boundary_value(ref,at)
                 node=circles.get('ref-endpoint-'+ref['id']+'-'+side)
                 if node is None or node.get('data-role')!='reference-endpoint' or not dot_at('ref-endpoint-'+ref['id']+'-'+side,float(at),float(value),'reference-endpoint') or node.get('fill') not in INTERVAL_STATE_FILLS[state]:errors.append('PIECEWISE_POLY_REFERENCE_ENDPOINT_MARKER_MISMATCH:'+ref['id']+'-'+side)
+        # Shaded regions: rebuild each band from the plan's exact fields and read the final fill path back.
+        region_errors,region_observations=graph_region_audit(plan,svg,transform,pieces,intervals,refs,features,root)
+        errors.extend(region_errors)
         # Marks closer than one CSS pixel cannot be told apart at this size.
         marks=[]
         for mark in sorted(set([(float(fx),float(fy)) for fx,fy,_ in corners_exact+extrema_exact]+[(v,h) for _,_,xs,_,_,heights in expected_rows for v,h in zip(xs,heights)]+[(v,h) for _,_,xs,_,heights in curve_rows for v,h in zip(xs,heights)]+[(float(a),float(b)) for a,b,_ in ref_vertices])):
             if not any(abs(mark[0]-m[0])<=1e-9*max(1,abs(m[0])) and abs(mark[1]-m[1])<=1e-9*max(1,abs(m[1])) for m in marks):marks.append(mark)
         if any(math.hypot((a[0]-b[0])*sx*display,(a[1]-b[1])*sy*display)<1 for i,a in enumerate(marks) for b in marks[i+1:]):unsupported.append('PIECEWISE_POLY_FEATURES_BELOW_DISPLAY_RESOLUTION')
         status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
-        return {'status':status,'errors':sorted(set(errors+unsupported)),'corners':corners,'extrema':extrema,'intersections':[{'lineId':i,**({'slope':m,'intercept':l} if m else {'y':l}),'x':xs,'keyPoints':keys} for i,l,xs,keys,m,_ in expected_rows],'coverage':coverage,'topology':{'pieces':len(pieces),'continuity':'CONTINUOUS' if not any(e.startswith('PIECEWISE_POLY_DISCONTINUOUS') for e in errors) else 'BROKEN'},'policy':'PIECEWISE_POLYNOMIAL_OVERVIEW_v1','mathMethod':'EXACT_RATIONAL_PIECES_AND_SYMPY_SURD_CROSSINGS'}
+        return {'status':status,'errors':sorted(set(errors+unsupported)),'corners':corners,'extrema':extrema,'intersections':[{'lineId':i,**({'slope':m,'intercept':l} if m else {'y':l}),'x':xs,'keyPoints':keys} for i,l,xs,keys,m,_ in expected_rows],'coverage':coverage,'topology':{'pieces':len(pieces),'continuity':'CONTINUOUS' if not any(e.startswith('PIECEWISE_POLY_DISCONTINUOUS') for e in errors) else 'BROKEN'},'regions':region_observations,'policy':'PIECEWISE_POLYNOMIAL_OVERVIEW_v1','mathMethod':'EXACT_RATIONAL_PIECES_AND_SYMPY_SURD_CROSSINGS'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,ET.ParseError) as error:
         return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'PIECEWISE_POLY_SOURCE_OR_SVG_SCHEMA_INVALID']}
 

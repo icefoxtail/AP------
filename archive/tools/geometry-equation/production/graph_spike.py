@@ -240,6 +240,38 @@ def _produce_piecewise_affine(plan,vp):
 def _polynomial_text(coefficients):
     return '('+'+'.join('('+value+')*x^'+str(index) for index,value in enumerate(coefficients))+')'
 
+def _region_boundary_points(rows,vp):
+    from graph_framing import pp_exact_float
+    points=[]
+    for row in rows:
+        domain=[pp_exact_float(row['interval'][0]),pp_exact_float(row['interval'][1])]
+        result=sample(_polynomial_text(row['coefficients']),domain,vp,critical_x=[])
+        if len(result['branches'])!=1 or not result['branches'][0]:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+        pts=[vp.screen(value) for value in result['branches'][0]]
+        if points and pts and abs(points[-1][0]-pts[0][0])<=1e-9:pts=pts[1:]
+        points.extend(pts)
+    return points
+
+def _region_parts(features,vp):
+    """The model-stage drawing of graphPlan.regions: one even-odd fill path and its plain label, with the same ids the final figure uses. The
+    independent observer re-reads both the model SVG and the composed final SVG through the same code path."""
+    import html
+    fills=[];labels=[]
+    for region in features.get('regions',[]):
+        upper=_region_boundary_points(region['upperRows'],vp);lower=_region_boundary_points(region['lowerRows'],vp)
+        if len(upper)<2 or len(lower)<2:raise ValueError('GRAPH_REGION_BOUNDARY_SAMPLING_FAILED')
+        polygon=upper+list(reversed(lower))
+        path='M'+','.join(svg_number(value) for value in polygon[0])+' '+' '.join('L'+','.join(svg_number(value) for value in point) for point in polygon[1:])+' Z'
+        fill={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}[region.get('fill','LIGHT')]
+        fills.append(f'<path id="region-{region["id"]}" data-role="region" data-mark="graph-region" data-mark-id="{region["id"]}" fill="{fill}" fill-rule="evenodd" stroke="none" d="{path}"/>')
+        if region.get('label') is not None:
+            # A point inside the band: halfway between the two boundaries at the middle x (never a centroid that a concave band could leave).
+            mid=(min(point[0] for point in polygon)+max(point[0] for point in polygon))/2
+            upper_at=min(upper,key=lambda point:abs(point[0]-mid));lower_at=min(lower,key=lambda point:abs(point[0]-mid))
+            cx,cy=(upper_at[0]+lower_at[0])/2,(upper_at[1]+lower_at[1])/2
+            labels.append(f'<text id="region-{region["id"]}-label" x="{cx:.12g}" y="{cy:.12g}" text-anchor="middle" font-size="12">{html.escape(region["label"])}</text>')
+    return fills,labels
+
 def _produce_piecewise_polynomial(plan,vp):
     """The framed pieces (each on its draw interval), the key points, the horizontal lines and their intersection dots, with the ids the
     final figure uses, so the graph observer reads the model and the final SVG the same way."""
@@ -248,6 +280,7 @@ def _produce_piecewise_polynomial(plan,vp):
     features=plan.get('piecewisePolynomialFeatures')
     if not isinstance(features,dict) or features.get('schemaVersion')!='PIECEWISE_POLYNOMIAL_FEATURES_v1':raise ValueError('PIECEWISE_POLY_FEATURE_INVENTORY_REQUIRED')
     parts=[];sampling=[]
+    region_fills,region_labels=_region_parts(features,vp)
     for index,piece in enumerate(features['pieces'],1):
         result=sample(_polynomial_text(piece['coefficients']),piece['drawInterval'],vp,critical_x=[p['x'] for p in plan.get('requiredPoints',[])]+[point['xValue'] for row in features['intersections'] for point in row['points']])
         if len(result['branches'])!=1:raise ValueError('PIECEWISE_POLY_PIECE_SAMPLING_FAILED')
@@ -306,7 +339,7 @@ def _produce_piecewise_polynomial(plan,vp):
         for endpoint in interval['endpoints']:
             cx,cy=vp.screen((pp_exact_float(endpoint['x']),pp_exact_float(endpoint['y'])))
             parts.append(f'<circle id="interval-endpoint-{endpoint["side"].lower()}" data-role="interval-endpoint" data-state="{endpoint["state"]}" cx="{cx:.12g}" cy="{cy:.12g}" r="4" fill="{"#fff" if endpoint["state"]=="OPEN" else "#111"}" stroke="black" stroke-width="1"/>')
-    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(parts)+'</svg>'
+    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="{vp.width:.12g}" height="{vp.height:.12g}" viewBox="0 0 {vp.width:.12g} {vp.height:.12g}">'+''.join(region_fills+parts+region_labels)+'</svg>'
     return {'svg':svg,'sampling':{'branches':sampling,'branchCount':len(sampling),'status':'PASS' if all(row['status']=='PASS' for row in sampling) else 'POLISH_REQUIRED'},'transform':{**{k:v for k,v in vp.model().items() if k!='aspectPolicy'},'displayScale':plan.get('displayScale',1)}}
 
 # ---------------------------------------------------------------------------
