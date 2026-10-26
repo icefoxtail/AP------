@@ -1,0 +1,55 @@
+{
+ "capability": "trigonometric-spike-v1",
+ "graphPlan": {
+  "family": "trigonometric",
+  "function": "COS",
+  "ratePi": "1/2",
+  "coefficients": [
+   "1",
+   "0"
+  ],
+  "phasePi": "0",
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "0",
+    "8"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "referenceLines": [
+   {
+    "id": "h",
+    "y": "1/2",
+    "intersectionCount": 4
+   }
+  ],
+  "keyPoints": true,
+  "axisTickValues": {
+   "x": [
+    "2",
+    "4",
+    "6"
+   ],
+   "y": [
+    "1",
+    "-1"
+   ]
+  }
+ },
+ "caption": "cos(πx/2)>1/2인 x의 구간은 주기 4마다 되풀이되고, 자연수 중에서는 4의 배수만 이 부등식을 만족한다.",
+ "sourceQuote": "$\\cos\\dfrac{\\pi x}{2}>\\dfrac{1}{2}$",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "2cos^2(πx/2)>1-cos(πx/2)에서 t=cos(πx/2)로 치환하면 cos(πx/2)>1/2",
+   "mappedTo": "graphPlan"
+  }
+ ],
+ "newVisualInformation": [
+  "한 주기 4 안에서 곡선이 y=1/2보다 위에 있는 구간이 두 번 되풀이되며, 자연수 4, 8이 그 안에 있다"
+ ]
+}

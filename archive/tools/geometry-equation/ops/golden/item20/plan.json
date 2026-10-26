@@ -1,0 +1,255 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "X",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "cO",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "8"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "8"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "135"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "8"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "45"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "8"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "261"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [
+  "cO"
+ ],
+ "displaySegments": [
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sOB",
+   "refs": [
+    "O",
+    "B"
+   ]
+  },
+  {
+   "id": "sOC",
+   "refs": [
+    "O",
+    "C"
+   ]
+  },
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sAC",
+   "refs": [
+    "A",
+    "C"
+   ]
+  }
+ ],
+ "rightAngles": [
+  {
+   "id": "rO",
+   "refs": [
+    "A",
+    "O",
+    "C"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "O",
+  "A",
+  "C",
+  "B"
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "eR",
+    "count": 1,
+    "segments": [
+     "sOA",
+     "sOB",
+     "sOC"
+    ]
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "tOC",
+    "ownerSegment": "sOC",
+    "text": "8"
+   }
+  ],
+  "regions": [
+   {
+    "id": "rg1",
+    "fill": "LIGHT",
+    "label": "16pi-32",
+    "factRole": "CONCLUSION",
+    "shapes": [
+     {
+      "segment": {
+       "center": "O",
+       "from": "C",
+       "to": "A"
+      }
+     }
+    ]
+   }
+  ]
+ },
+ "caption": "원 O 위의 세 점 A, B, C에서 ∠BAO=27°, ∠BCO=18°, OC=8이면 ∠AOC=90°이므로 색칠한 활꼴의 넓이는 16π-32이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "세 점 A, B, C가 원 O 위, ∠BAO=27°, ∠BCO=18°, OC=8",
+   "mappedTo": [
+    "O",
+    "A",
+    "B",
+    "C"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "∠AOC=90°와 색칠한 활꼴 AC"
+ ],
+ "sourceQuote": "부채꼴 $AOC$의 넓이는 $\\pi\\times8^2\\times\\dfrac{90}{360}=16\\pi$이다",
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 560
+ }
+}

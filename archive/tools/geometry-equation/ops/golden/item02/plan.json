@@ -1,0 +1,50 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "1"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-5"}, {"kind": "integer", "value": "-2"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "3"}, {"kind": "integer", "value": "-4"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "lAB", "op": "LINE_THROUGH", "inputs": ["A", "B"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "lAC", "op": "LINE_THROUGH", "inputs": ["A", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "dAB", "op": "SEGMENT_LENGTH", "inputs": ["A", "B"], "args": {}, "outputType": "SCALAR", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "dAC", "op": "SEGMENT_LENGTH", "inputs": ["A", "C"], "args": {}, "outputType": "SCALAR", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "dBC", "op": "SEGMENT_LENGTH", "inputs": ["B", "C"], "args": {}, "outputType": "SCALAR", "factRole": "DERIVED_INTERMEDIATE"}
+    ],
+    "conditionAudits": [
+      {"id": "auIso", "kind": "EQUAL_DISTANCE", "refs": ["A", "B", "A", "C"], "sourceConditionId": "scIso"},
+      {"id": "auPerp", "kind": "PERPENDICULAR", "refs": ["lAB", "lAC"], "sourceConditionId": "scRight"}
+    ]
+  },
+  "displaySegments": [
+    {"id": "sAB", "refs": ["A", "B"]},
+    {"id": "sAC", "refs": ["A", "C"]},
+    {"id": "sBC", "refs": ["B", "C"]}
+  ],
+  "displayPoints": ["A", "B", "C"],
+  "displayLines": [],
+  "coordinateLabels": ["A", "B", "C"],
+  "scalarLabels": [
+    {"nodeId": "dAB", "ownerSegment": "sAB", "prefix": ""},
+    {"nodeId": "dAC", "ownerSegment": "sAC", "prefix": ""},
+    {"nodeId": "dBC", "ownerSegment": "sBC", "prefix": ""}
+  ],
+  "rightAngles": [
+    {"id": "raA", "refs": ["B", "A", "C"], "factRole": "DERIVED_INTERMEDIATE"}
+  ],
+  "axisTickValues": {"x": [], "y": []},
+  "sourceConditions": [
+    {"id": "scA", "condition": "점 A의 좌표는 (0,1)이다.", "mappedTo": ["A"]},
+    {"id": "scB", "condition": "점 B의 좌표는 (-5,-2)이다.", "mappedTo": ["B"]},
+    {"id": "scC", "condition": "점 C의 좌표는 (3,-4)이다.", "mappedTo": ["C"]},
+    {"id": "scIso", "condition": "저장된 풀이에서 AB^2=AC^2=34이므로 AB=AC이다.", "mappedTo": ["dAB", "dAC", "auIso", "sAB", "sAC"]},
+    {"id": "scRight", "condition": "저장된 풀이에서 BC^2=68=AB^2+AC^2이므로 각 A는 90도이다.", "mappedTo": ["dBC", "raA", "auPerp", "lAB", "lAC", "sBC"]},
+    {"id": "scBank", "condition": "문제 본문, 보기, 정답 ④, 풀이는 문제은행 원본을 그대로 유지한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK"}
+  ],
+  "newVisualInformation": [
+    "세 점 A, B, C가 이루는 삼각형의 모양과 좌표평면 위 위치",
+    "AB와 AC의 길이가 같다는 것과 꼭짓점 A에서의 직각 표시"
+  ],
+  "caption": "AB=AC이고 각 A가 직각이므로 직각이등변삼각형이다."
+}

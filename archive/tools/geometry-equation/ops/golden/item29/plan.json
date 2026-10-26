@@ -1,0 +1,23 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLine": {
+  "rows": [{"kind": "POINTS", "points": [
+   {"id": "A", "value": "-5"},
+   {"id": "P", "value": "-5+2*sqrt(5)"},
+   {"id": "C", "value": "1"},
+   {"id": "Q", "value": "1+sqrt(5)"}
+  ]}],
+  "constructions": [
+   {"id": "cA", "center": "A", "radius": {"value": "2*sqrt(5)"}, "arc": {"side": "RIGHT"}, "hits": [{"id": "P", "branch": "RIGHT"}]},
+   {"id": "cC", "center": "C", "radius": {"value": "sqrt(5)"}, "arc": {"side": "RIGHT"}, "hits": [{"id": "Q", "branch": "RIGHT"}]}
+  ]
+ },
+ "numberLineCaption": {"text": "AB=2√5, CD=√5를 옮긴 호"},
+ "caption": "선분 AB, CD의 길이를 수직선 위의 AP, CQ로 옮긴 작도",
+ "sourceConditions": [
+  {"id": "c1", "condition": "한 눈금의 길이가 1인 모눈 위의 두 선분 AB, CD", "mappedTo": "numberLine.constructions"},
+  {"id": "c2", "condition": "AB=AP가 되도록 A를 중심으로 한 호 위의 점 P", "mappedTo": "numberLine.constructions"},
+  {"id": "c3", "condition": "CD=CQ가 되도록 C를 중심으로 한 호 위의 점 Q", "mappedTo": "numberLine.constructions"}
+ ],
+ "newVisualInformation": ["P=-5+2√5, Q=1+√5인 두 점과 옮긴 길이 2√5, √5"]
+}

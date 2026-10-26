@@ -1,0 +1,42 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "HISTOGRAM",
+  "polygon": true,
+  "boundaries": [
+   "20",
+   "25",
+   "30",
+   "35",
+   "40",
+   "45",
+   "50"
+  ],
+  "series": [
+   {
+    "frequencies": [
+     2,
+     5,
+     6,
+     12,
+     10,
+     5
+    ]
+   }
+  ],
+  "xTitle": "기록(회)",
+  "yTitle": "도수(명)",
+  "grid": true
+ },
+ "caption": "팔굽혀 펴기 기록의 히스토그램과 도수분포다각형",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "계급 20~50 (크기 5회), 도수 2,5,6,12,10,5",
+   "mappedTo": "chart"
+  }
+ ],
+ "newVisualInformation": [
+  "팔굽혀 펴기 기록의 히스토그램과 도수분포다각형"
+ ]
+}

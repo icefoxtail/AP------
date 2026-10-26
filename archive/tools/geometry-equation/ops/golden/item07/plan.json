@@ -1,0 +1,36 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["4", "4", "1"],
+    "domain": [-5, 1],
+    "viewport": [-6, 2, -2, 10],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [
+      { "id": "T", "x": -2, "y": 0 }
+    ],
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "k=4일 때 y=(x+2)²의 그래프는 꼭짓점 (-2, 0)에서 x축에 접한다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "이차함수 y=x^2+4x+k이다. 풀이에서 판별식 D=16-4k=0으로 k=4가 확정되므로 그래프는 y=x^2+4x+4이다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "S2",
+      "condition": "그래프가 x축에 접한다. k=4일 때 x^2+4x+4=(x+2)^2=0이 중근 x=-2를 가지므로 접점은 (-2, 0)이고 꼭짓점과 일치한다.",
+      "mappedTo": ["graphPlan.requiredPoints", "graphPlan.viewport"]
+    },
+    {
+      "id": "S3",
+      "condition": "문제 본문, 점수, 보기 1~5, 정답 ④, 풀이 본문은 변경하지 않는다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "k=4일 때 포물선이 x축과 오직 한 점 (-2, 0)에서 접하며 그 점이 꼭짓점임을 보여 준다.",
+    "접점 양쪽으로 두 팔이 모두 x축 위쪽에 있어 그래프가 x축 아래로 내려가지 않음을 보여 준다."
+  ]
+}

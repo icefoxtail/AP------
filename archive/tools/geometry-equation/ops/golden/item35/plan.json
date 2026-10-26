@@ -1,0 +1,183 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "U",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "X",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "6"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "150"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "Q",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "6"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "30"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "displayPoints": [
+  "O",
+  "X",
+  "P",
+  "Q"
+ ],
+ "displaySegments": [
+  {
+   "id": "sOP",
+   "refs": [
+    "O",
+    "P"
+   ]
+  },
+  {
+   "id": "sOQ",
+   "refs": [
+    "O",
+    "Q"
+   ]
+  }
+ ],
+ "coordinateLabels": [],
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 480
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "aXOP",
+    "refs": [
+     "X",
+     "O",
+     "P"
+    ],
+    "value": 150,
+    "label": "θ",
+    "labelKind": "MATH",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "aXOQ",
+    "refs": [
+     "X",
+     "O",
+     "Q"
+    ],
+    "value": 30,
+    "label": "5θ",
+    "labelKind": "MATH",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "caption": "π/2<θ<3π/2에서 θ=5π/6일 때 동경 OP가 나타내는 각 θ는 150°이고, 5θ=25π/6의 동경 OQ는 30°(≡π/6)이다. 두 동경은 y축에 대하여 대칭이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "동경 OP가 나타내는 각 θ=5π/6 (150°)",
+   "mappedTo": [
+    "P"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "동경 OQ가 나타내는 각 5θ=25π/6≡π/6 (30°)",
+   "mappedTo": [
+    "Q"
+   ]
+  },
+  {
+   "id": "c3",
+   "condition": "두 동경이 y축에 대하여 대칭",
+   "mappedTo": [
+    "P",
+    "Q"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "두 동경과 그 각 θ=150°, 5θ=30°의 표시"
+ ],
+ "sourceQuote": "θ를 나타내는 동경과 5θ를 나타내는 동경이 y축에 대하여 대칭인"
+}

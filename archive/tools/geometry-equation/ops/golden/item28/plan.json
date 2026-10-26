@@ -1,0 +1,28 @@
+{
+ "capability": "set-diagram-figure-v1",
+ "diagram": {
+  "kind": "VENN",
+  "sets": [
+   { "id": "A" },
+   { "id": "B" }
+  ],
+  "elements": [
+   { "text": "16", "in": ["A"] },
+   { "text": "7", "in": ["A", "B"] },
+   { "text": "12", "in": ["B"] },
+   { "text": "5", "in": [] }
+  ],
+  "shade": "(A∩B)∪(A∪B)^c"
+ },
+ "caption": "A∩B=7과 바깥 5를 더해 색칠한 부분 12를 구하는 벤다이어그램",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "n(U)=40, n(A)=23, n(B)=19, n(A∪B)=35",
+   "mappedTo": "diagram"
+  }
+ ],
+ "newVisualInformation": [
+  "교집합 7과 바깥 영역 5가 색칠 영역을 이룬다"
+ ]
+}

@@ -1,0 +1,36 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["5", "4", "-1"],
+    "domain": [-2, 6],
+    "viewport": [-3, 7, -9, 11],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [
+      { "id": "V", "x": 2, "y": 9 }
+    ],
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "y=-(x-2)²+9의 그래프는 꼭짓점 (2, 9)에서 가장 높고, 최댓값은 9이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "이차함수 y=-x^2+4x+5이고 최고차항 계수가 음수이므로 위로 볼록한 포물선이다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "S2",
+      "condition": "완전제곱식 y=-(x-2)^2+9로 고치면 x=2일 때 꼭짓점 (2, 9)에서 최댓값 9를 갖는다.",
+      "mappedTo": ["graphPlan.requiredPoints", "graphPlan.viewport"]
+    },
+    {
+      "id": "S3",
+      "condition": "문제 본문, 점수, 보기 1~5, 정답 ⑤, 풀이 본문은 변경하지 않는다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "그래프가 위로 볼록하고 꼭짓점 (2, 9)가 가장 높은 점이며 y좌표 9가 최댓값임을 보여 준다.",
+    "꼭짓점 양쪽으로 두 팔이 아래로 내려가는 모양과 x=2에 대한 좌우 대칭을 보여 준다."
+  ]
+}

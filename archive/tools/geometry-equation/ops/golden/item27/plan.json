@@ -1,0 +1,322 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "4"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "8"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "X",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "A",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "B"
+    ],
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "4"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "50"
+     },
+     "turn": "CCW"
+    }
+   },
+   {
+    "id": "X2",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "P"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "C",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "P",
+     "X2"
+    ],
+    "outputType": "POINT",
+    "factRole": "GIVEN",
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "4"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "50"
+     },
+     "turn": "CCW"
+    }
+   },
+   {
+    "id": "D",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "P"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "4"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sOA",
+   "refs": [
+    "O",
+    "A"
+   ]
+  },
+  {
+   "id": "sOB",
+   "refs": [
+    "O",
+    "B"
+   ]
+  },
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sPC",
+   "refs": [
+    "P",
+    "C"
+   ]
+  },
+  {
+   "id": "sPD",
+   "refs": [
+    "P",
+    "D"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "O",
+  "B",
+  "P",
+  "A",
+  "C",
+  "D"
+ ],
+ "caption": "O를 중심으로 한 호가 두 변과 만나는 점이 A, B이고, 같은 반지름의 호를 P를 중심으로 그어 C, D를 잡는다. AB의 길이를 옮긴 호가 C를 정하므로 ∠AOB=∠CPD이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "OA=OB=PC=PD, AB의 길이를 옮겨 ∠AOB=∠CPD",
+   "mappedTo": [
+    "O",
+    "A",
+    "B",
+    "P",
+    "C",
+    "D"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "1·2의 같은 반지름 호와 3의 AB 호가 같은 각을 만든다."
+ ],
+ "sourceQuote": "아래 그림은 $\\angle XOY$와 크기가 같고 반직선 $PQ$를 한 변으로 하는 $\\angle RPQ$를 작도하는 과정",
+ "planeMarks": {
+  "traces": [
+   {
+    "id": "tO",
+    "center": "O",
+    "radius": {
+     "point": "B"
+    },
+    "through": [
+     "A",
+     "B"
+    ],
+    "spanDeg": 30,
+    "label": "1"
+   },
+   {
+    "id": "tP",
+    "center": "P",
+    "radius": {
+     "point": "D"
+    },
+    "through": [
+     "C",
+     "D"
+    ],
+    "spanDeg": 30,
+    "label": "2"
+   },
+   {
+    "id": "tD",
+    "center": "D",
+    "radius": {
+     "segment": "sAB"
+    },
+    "through": [
+     "C"
+    ],
+    "spanDeg": 40,
+    "label": "3"
+   }
+  ],
+  "angles": [
+   {
+    "id": "aO",
+    "refs": [
+     "A",
+     "O",
+     "B"
+    ],
+    "value": 50,
+    "arcs": 2,
+    "equalGroup": 1,
+    "noLabel": true
+   },
+   {
+    "id": "aP",
+    "refs": [
+     "C",
+     "P",
+     "D"
+    ],
+    "arcs": 2,
+    "equalGroup": 1,
+    "noLabel": true
+   }
+  ],
+  "equalLengths": [
+   {
+    "id": "eR",
+    "count": 1,
+    "segments": [
+     "sOA",
+     "sOB",
+     "sPC",
+     "sPD"
+    ]
+   }
+  ]
+ },
+ "coordinateCanvas": {
+  "width": 640,
+  "height": 360
+ }
+}

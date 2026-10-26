@@ -1,0 +1,41 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "1"}, {"kind": "integer", "value": "2"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "3"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-1"}, {"kind": "integer", "value": "-2"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "dAB", "op": "SEGMENT_LENGTH", "inputs": ["A", "B"], "args": {}, "outputType": "SCALAR", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "dBC", "op": "SEGMENT_LENGTH", "inputs": ["B", "C"], "args": {}, "outputType": "SCALAR", "factRole": "DERIVED_INTERMEDIATE"},
+      {"id": "dCA", "op": "SEGMENT_LENGTH", "inputs": ["C", "A"], "args": {}, "outputType": "SCALAR", "factRole": "DERIVED_INTERMEDIATE"}
+    ],
+    "conditionAudits": [
+      {"id": "auIso", "kind": "EQUAL_DISTANCE", "refs": ["B", "C", "C", "A"], "sourceConditionId": "scIso"}
+    ]
+  },
+  "displaySegments": [
+    {"id": "sAB", "refs": ["A", "B"]},
+    {"id": "sBC", "refs": ["B", "C"]},
+    {"id": "sCA", "refs": ["C", "A"]}
+  ],
+  "coordinateLabels": ["A", "B", "C"],
+  "scalarLabels": [
+    {"nodeId": "dAB", "ownerSegment": "sAB", "prefix": ""},
+    {"nodeId": "dBC", "ownerSegment": "sBC", "prefix": ""},
+    {"nodeId": "dCA", "ownerSegment": "sCA", "prefix": ""}
+  ],
+  "axisTickValues": {"x": [], "y": []},
+  "sourceConditions": [
+    {"id": "scA", "condition": "점 A의 좌표는 (1,2)이다.", "mappedTo": ["A"]},
+    {"id": "scB", "condition": "점 B의 좌표는 (3,0)이다.", "mappedTo": ["B"]},
+    {"id": "scC", "condition": "점 C의 좌표는 (-1,-2)이다.", "mappedTo": ["C"]},
+    {"id": "scIso", "condition": "저장된 풀이에서 AB^2=8, BC^2=CA^2=20이므로 BC=CA인 이등변삼각형이다.", "mappedTo": ["dAB", "dBC", "dCA", "auIso", "sAB", "sBC", "sCA"]},
+    {"id": "scBank", "condition": "문제 본문, 배점, 보기, 정답 ④, 풀이는 문제은행 원본을 그대로 유지한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK"}
+  ],
+  "newVisualInformation": [
+    "세 점 A, B, C가 이루는 삼각형의 모양과 좌표평면 위 위치",
+    "BC와 CA의 길이가 같고 AB는 그보다 짧다는 것을 길이 표시로 확인"
+  ],
+  "caption": "BC와 CA의 길이가 같으므로 점 C가 꼭짓점인 이등변삼각형이다."
+}

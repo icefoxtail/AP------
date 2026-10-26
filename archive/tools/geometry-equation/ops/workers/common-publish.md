@@ -1,0 +1,10 @@
+# Common rules for publishing solution figures into exam JS and closing exams
+
+- Exams: `archive/exams/original/**.js` (ORIGINAL past exams only). Each question object may get fields `solutionImage` (relative path `assets/images/<exam file name without .js>/q<N>-solution.svg`), `solutionImageAlt`, `solutionImageCaption`, `solutionImageSize` (`medium` or `large`).
+- Publish exactly like the previous batches: see `git log --oneline -40 origin/main` for commits named `feat(archive): <exam> 해설 그림 마감` (e.g. PR #807) and copy their pattern. Only add/replace the `solutionImage*` fields of the target question; keep every other byte of the exam file identical (BOM, line endings, key order, other questions). Copy the final SVG to `archive/assets/images/<exam>/`; never overwrite an existing asset with different content — use a new name such as `q<N>-solution-fig.svg`.
+- The renderer writes `<name>-solution.svg`, `<name>-result.json`, `<name>-state.json` into its out dir; the figure to publish is the ARCHIVE_BOUND `-solution.svg`.
+- `solutionImageAlt` / `solutionImageCaption`: one or two concrete Korean sentences describing what the figure shows for THIS question (curves, points, values), never a generic sentence.
+- After publishing, open the real solution page: `APMS_ROOT=<worktree> node D:/AI_WORKSPACES/APMS/svg-engine-line-20261019/.tmp/archive/svg-engine-development-20261015/AUTO/verify-published-loose.mjs <report.json> <out.json>` (read its first 30 lines for the report format) → must be OK.
+- Before committing exam changes run from the worktree root: `node --test tests/m2-*-create-gate-*.test.js` (golden-sample SHA pins) → must pass. Never touch `25_효천고_2학기_중간` or `25_매산여고_2학기_중간` (golden samples).
+- Ledger `archive/tools/geometry-equation/production/exam-figure-ledger.json`: update the item (`state` PUBLISHED with `figures` path, or UNSUPPORTED with a final reason) and keep the exam `status:"CLOSED"`; set `closedBy` to your PR label (e.g. "followup-<name>"). Keep JSON formatting (2-space? check the file) and LF.
+- Commit per exam: `feat(archive): <exam> 해설 그림 갱신` + Co-Authored-By line from the common rules.

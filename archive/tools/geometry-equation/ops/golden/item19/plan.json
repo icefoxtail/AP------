@@ -1,0 +1,294 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "0"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "X",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "c1",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "5"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "270"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "A",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "160"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "C",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "O",
+     "X"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "5"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "20"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "M",
+    "op": "MIDPOINT",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "N",
+    "op": "MIDPOINT",
+    "inputs": [
+     "B",
+     "C"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [
+  "c1"
+ ],
+ "displaySegments": [
+  {
+   "id": "sAB",
+   "refs": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "sBC",
+   "refs": [
+    "B",
+    "C"
+   ]
+  },
+  {
+   "id": "sCA",
+   "refs": [
+    "C",
+    "A"
+   ]
+  },
+  {
+   "id": "sOM",
+   "refs": [
+    "O",
+    "M"
+   ]
+  },
+  {
+   "id": "sON",
+   "refs": [
+    "O",
+    "N"
+   ]
+  }
+ ],
+ "rightAngles": [
+  {
+   "id": "rM",
+   "refs": [
+    "O",
+    "M",
+    "A"
+   ]
+  },
+  {
+   "id": "rN",
+   "refs": [
+    "O",
+    "N",
+    "C"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "O",
+  "B",
+  "A",
+  "C",
+  "M",
+  "N"
+ ],
+ "planeMarks": {
+  "equalLengths": [
+   {
+    "id": "eOM",
+    "count": 1,
+    "segments": [
+     "sOM",
+     "sON"
+    ]
+   },
+   {
+    "id": "eAB",
+    "count": 2,
+    "segments": [
+     "sAB",
+     "sBC"
+    ]
+   }
+  ],
+  "angles": [
+   {
+    "id": "aO",
+    "refs": [
+     "M",
+     "O",
+     "N"
+    ],
+    "value": 110
+   },
+   {
+    "id": "aC",
+    "refs": [
+     "A",
+     "C",
+     "B"
+    ],
+    "value": 55,
+    "label": "55",
+    "factRole": "CONCLUSION"
+   }
+  ],
+  "facts": [
+   {
+    "kind": "ON_CIRCLE",
+    "circle": "c1",
+    "points": [
+     "A",
+     "B",
+     "C"
+    ]
+   }
+  ]
+ },
+ "caption": "원 O에서 OM⊥AB, ON⊥BC, OM=ON이고 ∠MON=110°이면 AB=BC이고 ∠ABC=70°이므로 ∠ACB=55°이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "OM⊥AB, ON⊥BC, OM=ON, ∠MON=110°",
+   "mappedTo": [
+    "O",
+    "M",
+    "N",
+    "A",
+    "B",
+    "C"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "AB=BC (같은 눈금)과 ∠ACB=55°"
+ ],
+ "sourceQuote": "$OM=ON$이므로 현 $AB$와 $BC$의 중심으로부터 거리가 같아 두 현은 같다"
+}
