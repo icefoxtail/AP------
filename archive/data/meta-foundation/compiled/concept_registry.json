@@ -19,13 +19,13 @@
     },
     {
       "shardId": "COORDINATE_GEOMETRY",
-      "version": "1.1.4",
-      "conceptCount": 28
+      "version": "1.1.5",
+      "conceptCount": 32
     },
     {
       "shardId": "PLANE_GEOMETRY",
-      "version": "1.3.3",
-      "conceptCount": 24
+      "version": "1.3.4",
+      "conceptCount": 35
     },
     {
       "shardId": "COUNTING",
@@ -59,11 +59,11 @@
     },
     {
       "shardId": "STATISTICS_CONCEPTS",
-      "version": "1.0.2",
-      "conceptCount": 27
+      "version": "1.0.3",
+      "conceptCount": 31
     }
   ],
-  "conceptCount": 369,
+  "conceptCount": 388,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -8552,6 +8552,171 @@
       ]
     },
     {
+      "conceptKey": "CC_INTERSECTION_POINT_LINE",
+      "canonicalLabelKo": "교점과 교선",
+      "definition": "선과 선 또는 선과 면이 만나서 생기는 점(교점)과 면과 면이 만나서 생기는 선(교선)의 뜻과 개수",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_8228c2dc39bc673b58087774cbe345c34df54c41d6b2ee58cf7cb79f0f7c35b6"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8228c2dc39bc673b58087774cbe345c34df54c41d6b2ee58cf7cb79f0f7c35b6",
+          "sourceOrdinal": 1,
+          "classificationRationale": "기본도형의 기본 요소(점·선·면, 교점, 교선, 중점) 진술의 참·거짓을 1단계로 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "③ 직육면체의 교선은 모서리이므로 12개이다. 8개가 아니다. 따라서 옳지 않은 것은 ③이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_BASIC_GEOMETRY_JUDGMENT"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_POLYHEDRON_NET",
+      "canonicalLabelKo": "다면체의 전개도와 입체 복원",
+      "definition": "정육면체 등 다면체의 전개도를 접었을 때 맞닿는 꼭짓점과 모서리의 공간적 위치 추적",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_1b1675a2c8615493667f50b6fbce23ec7204d03b2a980b1468291ab7e90fe173"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-07"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1b1675a2c8615493667f50b6fbce23ec7204d03b2a980b1468291ab7e90fe173",
+          "sourceOrdinal": 7,
+          "classificationRationale": "정육면체 전개도를 접어 복원한 입체도형에서 모서리 간의 꼬인 위치 여부를 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "전개도를 접어 AB의 위치를 잡으면 CD, DM, EF, EL은 꼬인 위치이고 DE는 꼬인 위치가 아니므로 정답은 ⑤이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_POLYHEDRON_EDGE_FACE_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-07"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SEGMENT_MIDPOINT",
+      "canonicalLabelKo": "선분의 중점",
+      "definition": "선분 위의 한 점이 양 끝점으로부터 같은 거리에 있을 때 선분의 길이를 이등분하는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_6d0a2353ed2d1be344b29036b16896a6d4c618fbd2c518074dcedcc48599fc78",
+        "qid_v1_8228c2dc39bc673b58087774cbe345c34df54c41d6b2ee58cf7cb79f0f7c35b6",
+        "qid_v1_b7eba583a5f8b279a38796bb1eafe7f57b6950dad03a27b29a5494538cfb5720"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8228c2dc39bc673b58087774cbe345c34df54c41d6b2ee58cf7cb79f0f7c35b6",
+          "sourceOrdinal": 1,
+          "classificationRationale": "기본도형의 기본 요소(점·선·면, 교점, 교선, 중점) 진술의 참·거짓을 1단계로 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "③ 직육면체의 교선은 모서리이므로 12개이다. 8개가 아니다. 따라서 옳지 않은 것은 ③이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6d0a2353ed2d1be344b29036b16896a6d4c618fbd2c518074dcedcc48599fc78",
+          "sourceOrdinal": 4,
+          "classificationRationale": "연속된 선분의 중점 조건을 순차 적용하여 선분의 길이를 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "M은 AB의 중점이므로 AM=16/2=8cm, N은 AM의 중점이므로 NM=8/2=4cm",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b7eba583a5f8b279a38796bb1eafe7f57b6950dad03a27b29a5494538cfb5720",
+          "sourceOrdinal": 20,
+          "classificationRationale": "선분 길이의 비와 중점 조건을 미지수 x로 연립하여 전체 선분의 길이를 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "AB=x라 하면 BD=3x, AD=4x이고 중점 C에서 AC=2x이므로 BC=2x-x=x=6, 따라서 AD=4x=24cm",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_BASIC_GEOMETRY_JUDGMENT",
+        "PT_M1_SEGMENT_LENGTH_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_SPATIAL_POSITION_RELATION",
+      "canonicalLabelKo": "공간에서 직선과 평면의 위치 관계",
+      "definition": "공간에서 두 직선, 직선과 평면, 두 평면 사이의 평행·교차·수직·꼬인 위치 판별",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b3ccc5bd3cc2e7bc3bec8c7e019c10df316730f5984bea3de02af0d3edcc927b",
+          "sourceOrdinal": 5,
+          "classificationRationale": "공간에서 직선과 평면, 평면과 평면의 위치 관계 진술의 참·거짓을 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "① 한 직선에 평행한 서로 다른 두 직선은 같은 방향이므로 서로 평행하다. ②~⑤는 교차·비평행 가능하므로 옳은 것은 ①이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_SPATIAL_LINE_PLANE_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
       "conceptKey": "CC_ANGLE_BISECTOR",
       "canonicalLabelKo": "각의 이등분선",
       "definition": "각의 이등분선이(가) Primary L1~L4 밖에서 정답에 도달하는 결정적 풀이 경로에 실제로 필요한 경우에만 기록한다.",
@@ -9469,6 +9634,503 @@
       ],
       "legacyKeys": [],
       "status": "ACTIVE"
+    },
+    {
+      "conceptKey": "CC_AUXILIARY_PARALLEL_LINE",
+      "canonicalLabelKo": "평행선 사이의 꺾인 선과 보조선",
+      "definition": "평행선 사이의 꺾인 점을 지나 주어진 직선에 평행한 보조선을 그어 각을 분할·이동하는 해법",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_82e0c79c6f7e1282d2302430461bc75232191b1d0ab3571c01a86471baa0a04a",
+        "qid_v1_d4876c0d4cd0e7dbf508cc8a783b7434fdc26b1f4f658c0378f9285ab5605ee8"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_82e0c79c6f7e1282d2302430461bc75232191b1d0ab3571c01a86471baa0a04a",
+          "sourceOrdinal": 6,
+          "classificationRationale": "평행선 사이의 꺾인 선에서 평행 보조선을 그어 엇각·동위각 이동으로 각의 합을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "꺾인 두 점을 지나 l,m과 평행한 보조선을 각각 그리면 x=220°-α, y=α+50°이므로 x+y=270°",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_d4876c0d4cd0e7dbf508cc8a783b7434fdc26b1f4f658c0378f9285ab5605ee8",
+          "sourceOrdinal": 8,
+          "classificationRationale": "평행선 사이의 다중 꺾인 각들을 평행 보조선과 동위각·엇각으로 누적 이동하여 합을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "각 꺾인 점을 지나 l,m과 평행한 보조선을 그리면 a+b+c+d+25°=180°이므로 a+b+c+d=155°",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_PARALLEL_ANGLE_TRANSFER"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_EQUILATERAL_TRIANGLE",
+      "canonicalLabelKo": "정삼각형의 성질",
+      "definition": "세 변의 길이가 모두 같고 세 내각의 크기가 모두 60도인 정삼각형의 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80",
+          "sourceOrdinal": 14,
+          "classificationRationale": "정삼각형의 변과 내각 성질을 결합하여 두 삼각형의 합동 조건(SAS)을 추론하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "AC=BC, CD=CE이고 ∠ACD=180°-60°=120°=∠BCE이므로 두 변과 끼인각이 각각 같아 SAS 합동(②)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_CONGRUENCE_UNIQUENESS"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_GEOMETRIC_CONSTRUCTION",
+      "canonicalLabelKo": "눈금 없는 자와 컴퍼스 작도",
+      "definition": "눈금 없는 자(직선 연결)와 컴퍼스(선분 길이 및 각의 크기 이동)만을 이용한 기본 작도 원리",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_11fa49c90c62aa2233f83a694f52816f8bafdba0e580d7635a3d2349670267ae",
+        "qid_v1_aaed4a920ff547b8e0bee08ae3c53e25c5e7bcd98406f4e3f587f82d6d277088"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_aaed4a920ff547b8e0bee08ae3c53e25c5e7bcd98406f4e3f587f82d6d277088",
+          "sourceOrdinal": 9,
+          "classificationRationale": "눈금 없는 자와 컴퍼스의 작도 도구 역할 및 기본 용어를 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "선분의 길이를 다른 곳으로 옮길 때에는 컴퍼스로 길이를 잡아 옮기므로 '자를 이용한다'는 ②가 옳지 않다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_11fa49c90c62aa2233f83a694f52816f8bafdba0e580d7635a3d2349670267ae",
+          "sourceOrdinal": 10,
+          "classificationRationale": "크기가 같은 동위각의 작도를 이용하여 점 P를 지나고 직선 l에 평행한 직선을 작도하는 순서를 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "보조선(㉠)을 긋고 아래 교점의 호(㉤)와 점 P의 호(㉡), 현의 길이(㉥, ㉢)를 옮겨 평행선(㉣)을 긋는 ②의 순서가 된다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_BASIC_CONSTRUCTION",
+        "PT_M1_PARALLEL_ANGLE_TRANSFER"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_ISOSCELES_TRIANGLE",
+      "canonicalLabelKo": "이등변삼각형의 성질",
+      "definition": "두 변의 길이가 같은 삼각형에서 두 밑각의 크기가 같고 세 내각의 합이 180도인 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f",
+          "sourceOrdinal": 22,
+          "classificationRationale": "직사각형 종이접기에서 평행선의 엇각과 접은 각의 크기 보존을 이용해 이등변삼각형의 밑각을 구하는 MIDDLE1 정본 유형 (원본 타 학년 키 PT_MOVE_FOLDING_REFLECTION을 MIDDLE1 정본으로 격리 보정)",
+          "decisiveEvidence": "접은 각과 엇각 성질로 GE=GF인 이등변삼각형 △EGF에서 ∠EGF=120°이므로 ∠GFE=(180°-120°)/2=30°",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_PARALLEL_ANGLE_TRANSFER"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PAPER_FOLDING_ANGLES",
+      "canonicalLabelKo": "종이접기에서의 각의 크기 보존",
+      "definition": "직사각형 모양의 종이를 접었을 때 접힌 각의 크기가 같고 평행선의 엇각과 같아지는 기하적 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f",
+          "sourceOrdinal": 22,
+          "classificationRationale": "직사각형 종이접기에서 평행선의 엇각과 접은 각의 크기 보존을 이용해 이등변삼각형의 밑각을 구하는 MIDDLE1 정본 유형 (원본 타 학년 키 PT_MOVE_FOLDING_REFLECTION을 MIDDLE1 정본으로 격리 보정)",
+          "decisiveEvidence": "접은 각과 엇각 성질로 GE=GF인 이등변삼각형 △EGF에서 ∠EGF=120°이므로 ∠GFE=(180°-120°)/2=30°",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_PARALLEL_ANGLE_TRANSFER"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_PARALLEL_LINE_ANGLES",
+      "canonicalLabelKo": "평행선의 동위각과 엇각",
+      "definition": "평행한 두 직선이 다른 한 직선과 만날 때 동위각과 엇각의 크기가 각각 같다는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_11fa49c90c62aa2233f83a694f52816f8bafdba0e580d7635a3d2349670267ae",
+        "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f",
+        "qid_v1_82e0c79c6f7e1282d2302430461bc75232191b1d0ab3571c01a86471baa0a04a",
+        "qid_v1_9e3fb9c25efc48190feab764a74c2f6862e4224a70f6f4f748c288d6d726a7aa",
+        "qid_v1_d4876c0d4cd0e7dbf508cc8a783b7434fdc26b1f4f658c0378f9285ab5605ee8"
+      ],
+      "supportingItemCount": 5,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_82e0c79c6f7e1282d2302430461bc75232191b1d0ab3571c01a86471baa0a04a",
+          "sourceOrdinal": 6,
+          "classificationRationale": "평행선 사이의 꺾인 선에서 평행 보조선을 그어 엇각·동위각 이동으로 각의 합을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "꺾인 두 점을 지나 l,m과 평행한 보조선을 각각 그리면 x=220°-α, y=α+50°이므로 x+y=270°",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_d4876c0d4cd0e7dbf508cc8a783b7434fdc26b1f4f658c0378f9285ab5605ee8",
+          "sourceOrdinal": 8,
+          "classificationRationale": "평행선 사이의 다중 꺾인 각들을 평행 보조선과 동위각·엇각으로 누적 이동하여 합을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "각 꺾인 점을 지나 l,m과 평행한 보조선을 그리면 a+b+c+d+25°=180°이므로 a+b+c+d=155°",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_11fa49c90c62aa2233f83a694f52816f8bafdba0e580d7635a3d2349670267ae",
+          "sourceOrdinal": 10,
+          "classificationRationale": "크기가 같은 동위각의 작도를 이용하여 점 P를 지나고 직선 l에 평행한 직선을 작도하는 순서를 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "보조선(㉠)을 긋고 아래 교점의 호(㉤)와 점 P의 호(㉡), 현의 길이(㉥, ㉢)를 옮겨 평행선(㉣)을 긋는 ②의 순서가 된다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9e3fb9c25efc48190feab764a74c2f6862e4224a70f6f4f748c288d6d726a7aa",
+          "sourceOrdinal": 21,
+          "classificationRationale": "평행선의 엇각 성질과 공통변 조건으로부터 두 삼각형의 ASA 합동을 증명하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "AD∥BC에서 ∠BCA=∠DAC(엇각), AB∥CD에서 ∠BAC=∠DCA(엇각), AC는 공통이므로 △ABC≡△CDA (ASA 합동)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5fe1c5b8d8fbd32e2408e393045dd4cfef058f82ed6e952352e6eb962bea502f",
+          "sourceOrdinal": 22,
+          "classificationRationale": "직사각형 종이접기에서 평행선의 엇각과 접은 각의 크기 보존을 이용해 이등변삼각형의 밑각을 구하는 MIDDLE1 정본 유형 (원본 타 학년 키 PT_MOVE_FOLDING_REFLECTION을 MIDDLE1 정본으로 격리 보정)",
+          "decisiveEvidence": "접은 각과 엇각 성질로 GE=GF인 이등변삼각형 △EGF에서 ∠EGF=120°이므로 ∠GFE=(180°-120°)/2=30°",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_CONGRUENCE_UNIQUENESS",
+        "PT_M1_PARALLEL_ANGLE_TRANSFER"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_RAY_DEFINITION",
+      "canonicalLabelKo": "반직선의 뜻과 결정 조건",
+      "definition": "시작점과 뻗어나가는 방향(점)에 의해 결정되는 반직선의 정의와 개수 산출",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_b2a06e7ecb837ddcfdd702c1c04e4b0ae71379ebdfdb030b52a9a187949e1e56"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b2a06e7ecb837ddcfdd702c1c04e4b0ae71379ebdfdb030b52a9a187949e1e56",
+          "sourceOrdinal": 2,
+          "classificationRationale": "평면 위의 네 점에서 결정되는 서로 다른 반직선의 개수를 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "한 점을 시작점으로 잡으면 나머지 3개 점을 향하는 반직선을 만들 수 있다. 시작점은 4개이므로 4×3=12",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_GENERATED_GEOMETRIC_OBJECT_COUNT"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_STRAIGHT_ANGLE",
+      "canonicalLabelKo": "평각의 크기",
+      "definition": "직선 위의 한 점에 모인 이웃한 각들의 합이 180도(평각)가 되는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_e8d3e7a91931e0ac34f0c811281f881f4c2e36e6d924e57fe1bc45459cbeb690"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e8d3e7a91931e0ac34f0c811281f881f4c2e36e6d924e57fe1bc45459cbeb690",
+          "sourceOrdinal": 3,
+          "classificationRationale": "두 직선의 교차각에서 맞꼭지각과 평각의 성질로 미지수 방정식을 풀어 각을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "맞꼭지각 x+40=70에서 x=30, 이웃한 각 y=180-70=110이므로 y-x=110-30=80",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_INTERSECTING_ANGLE_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_CONGRUENCE",
+      "canonicalLabelKo": "삼각형의 합동과 대응 요소",
+      "definition": "합동인 두 삼각형에서 대응변의 길이와 대응각의 크기가 각각 같다는 성질 및 합동 조건(SSS, SAS, ASA)",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80",
+        "qid_v1_9e3fb9c25efc48190feab764a74c2f6862e4224a70f6f4f748c288d6d726a7aa",
+        "qid_v1_c191c327afac4b082a2cc09357e670df4d22f116b31191efc94adc6a87cdddc3"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c191c327afac4b082a2cc09357e670df4d22f116b31191efc94adc6a87cdddc3",
+          "sourceOrdinal": 12,
+          "classificationRationale": "합동 기호의 꼭짓점 대응 순서와 그림에 주어진 수치로부터 대응변·대응각을 찾는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "EF는 BC에 대응하고 BC의 길이는 그림에 직접 주어져 있지 않으므로 추가 계산 없이 알 수 없는 것은 EF(②)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_009a623840f3787069338e221321fafe3af2e0e315d9cb5b4d353776d75ebe80",
+          "sourceOrdinal": 14,
+          "classificationRationale": "정삼각형의 변과 내각 성질을 결합하여 두 삼각형의 합동 조건(SAS)을 추론하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "AC=BC, CD=CE이고 ∠ACD=180°-60°=120°=∠BCE이므로 두 변과 끼인각이 각각 같아 SAS 합동(②)이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9e3fb9c25efc48190feab764a74c2f6862e4224a70f6f4f748c288d6d726a7aa",
+          "sourceOrdinal": 21,
+          "classificationRationale": "평행선의 엇각 성질과 공통변 조건으로부터 두 삼각형의 ASA 합동을 증명하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "AD∥BC에서 ∠BCA=∠DAC(엇각), AB∥CD에서 ∠BAC=∠DCA(엇각), AC는 공통이므로 △ABC≡△CDA (ASA 합동)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_CONGRUENCE_DATA_TRANSFER",
+        "PT_M1_CONGRUENCE_UNIQUENESS"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_TRIANGLE_DETERMINATION",
+      "canonicalLabelKo": "삼각형의 결정 조건",
+      "definition": "세 변의 길이(SSS), 두 변의 길이와 끼인각(SAS), 한 변의 길이와 양 끝 각(ASA)이 주어질 때 삼각형이 하나로 결정되는 조건",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_298a0fedf4b99765ce48e1a14852d07cb5fdda9c517e415eaad84ad0d478a0db",
+        "qid_v1_aaed4a920ff547b8e0bee08ae3c53e25c5e7bcd98406f4e3f587f82d6d277088"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_aaed4a920ff547b8e0bee08ae3c53e25c5e7bcd98406f4e3f587f82d6d277088",
+          "sourceOrdinal": 9,
+          "classificationRationale": "눈금 없는 자와 컴퍼스의 작도 도구 역할 및 기본 용어를 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "선분의 길이를 다른 곳으로 옮길 때에는 컴퍼스로 길이를 잡아 옮기므로 '자를 이용한다'는 ②가 옳지 않다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_298a0fedf4b99765ce48e1a14852d07cb5fdda9c517e415eaad84ad0d478a0db",
+          "sourceOrdinal": 11,
+          "classificationRationale": "주어진 변의 길이와 각의 크기 조건으로부터 삼각형이 하나로 결정되는지 판별하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "③ AB=8, BC=9와 ∠C=40°는 두 변과 끼인각(∠B)이 아닌 한 각이 주어진 경우라 하나로 결정되지 않는다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_BASIC_CONSTRUCTION",
+        "PT_M1_CONGRUENCE_UNIQUENESS"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_VERTICAL_ANGLES",
+      "canonicalLabelKo": "맞꼭지각의 성질",
+      "definition": "두 직선이 한 점에서 만날 때 서로 마주 보는 맞꼭지각의 크기가 같다는 성질",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_e8d3e7a91931e0ac34f0c811281f881f4c2e36e6d924e57fe1bc45459cbeb690"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-05"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e8d3e7a91931e0ac34f0c811281f881f4c2e36e6d924e57fe1bc45459cbeb690",
+          "sourceOrdinal": 3,
+          "classificationRationale": "두 직선의 교차각에서 맞꼭지각과 평각의 성질로 미지수 방정식을 풀어 각을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "맞꼭지각 x+40=70에서 x=30, 이웃한 각 y=180-70=110이므로 y-x=110-30=80",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_INTERSECTING_ANGLE_RELATIONS"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-05"
+      ],
+      "ownerConceptShard": "PLANE_GEOMETRY"
     },
     {
       "conceptKey": "CC_COMBINATORICS_COUNTING",
@@ -11757,6 +12419,197 @@
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-05",
         "2015:확률과 통계:H15-PS-06"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_EXTREME_VALUES",
+      "canonicalLabelKo": "변량의 최댓값과 최솟값",
+      "definition": "주어진 통계 자료에서 가장 큰 변량과 가장 작은 변량을 찾아 합이나 차를 구하는 해석",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_12a1816524c461ebce3d3c3b5ca9a10058b2a52e4d35052c12066ef5a14e3c56"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "M1-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_12a1816524c461ebce3d3c3b5ca9a10058b2a52e4d35052c12066ef5a14e3c56",
+          "sourceOrdinal": 17,
+          "classificationRationale": "줄기와 잎 그림에서 최대 변량과 최소 변량을 읽어 합을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "가장 적은 나이는 24세, 가장 많은 나이는 56세이므로 24+56 = 80세(③)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_DATA_EXTREME_VALUE_SUM"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-08"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_FREQUENCY_DISTRIBUTION_TABLE",
+      "canonicalLabelKo": "도수분포표와 계급의 도수",
+      "definition": "자료를 일정한 간격의 계급으로 나누고 각 계급에 속하는 변량의 개수(도수)와 총합 관계를 해석하는 표",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_802cde2ac31a51b8ccfd0319c392ef3f3ba9a17998b37729eba08f38dba28259",
+        "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M1-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905",
+          "sourceOrdinal": 18,
+          "classificationRationale": "도수분포표에서 백분율 조건을 이용해 누락된 계급의 도수를 복원하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "전체 30명의 20%는 6명이고 170~180 도수가 3명이므로 160~170의 도수는 6-3=3명(①)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_802cde2ac31a51b8ccfd0319c392ef3f3ba9a17998b37729eba08f38dba28259",
+          "sourceOrdinal": 19,
+          "classificationRationale": "도수분포표의 총도수 보존 성질로 빈 계급의 도수를 구하고 특정 기준 미만 누적 도수를 산출하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "140~150의 도수는 30-(4+9+3+3)=11명이므로 150cm 미만은 4+11=15명(④)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_FREQUENCY_DISTRIBUTION_READING"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-08"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_PERCENTAGE_CALCULATION",
+      "canonicalLabelKo": "백분율과 비율 계산",
+      "definition": "전체 도수에 대한 특정 계급이나 범주의 도수 비율에 100을 곱하여 백분율(%)을 구하는 연산",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
+        "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "M1-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
+          "sourceOrdinal": 16,
+          "classificationRationale": "줄기와 잎 그림에서 특정 계급의 도수가 전체에서 차지하는 백분율을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "40대 선생님은 7명이고 전체는 20명이므로 (7/20)×100 = 35%(⑤)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fdfac22f23043116e47a2e82fa65ef199c8fad26a93b9ae89037f8267d235905",
+          "sourceOrdinal": 18,
+          "classificationRationale": "도수분포표에서 백분율 조건을 이용해 누락된 계급의 도수를 복원하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "전체 30명의 20%는 6명이고 170~180 도수가 3명이므로 160~170의 도수는 6-3=3명(①)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "PT_M1_FREQUENCY_DISTRIBUTION_READING"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-08"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_STEM_AND_LEAF_PLOT",
+      "canonicalLabelKo": "줄기와 잎 그림",
+      "definition": "변량을 줄기와 잎으로 구분하여 자료의 분포와 개별 변량 값을 순서대로 나타내는 통계 표",
+      "aliases": [],
+      "supportingQuestionUids": [
+        "qid_v1_12a1816524c461ebce3d3c3b5ca9a10058b2a52e4d35052c12066ef5a14e3c56",
+        "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
+        "qid_v1_8f15d845eba89e2d56a945f5c7a0549c2345bb54906a2777b1d9ba0d133b77ac"
+      ],
+      "supportingItemCount": 3,
+      "sourceUnits": [
+        "M1-08"
+      ],
+      "legacyKeys": [],
+      "status": "ACTIVE",
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8f15d845eba89e2d56a945f5c7a0549c2345bb54906a2777b1d9ba0d133b77ac",
+          "sourceOrdinal": 15,
+          "classificationRationale": "원자료를 줄기와 잎 그림으로 정리하여 빈칸 미지수를 복원하고 식의 값을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "20대 잎에서 a=5, 30대 잎에서 b=8, 40대 잎에서 c=7이므로 a×b-c = 5×8-7 = 33(④)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_792f091b7ee5304cae242664ea69c427c956a18b46ac395efe3e4a8b3fb90598",
+          "sourceOrdinal": 16,
+          "classificationRationale": "줄기와 잎 그림에서 특정 계급의 도수가 전체에서 차지하는 백분율을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "40대 선생님은 7명이고 전체는 20명이므로 (7/20)×100 = 35%(⑤)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_12a1816524c461ebce3d3c3b5ca9a10058b2a52e4d35052c12066ef5a14e3c56",
+          "sourceOrdinal": 17,
+          "classificationRationale": "줄기와 잎 그림에서 최대 변량과 최소 변량을 읽어 합을 구하는 MIDDLE1 정본 유형",
+          "decisiveEvidence": "가장 적은 나이는 24세, 가장 많은 나이는 56세이므로 24+56 = 80세(③)",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_24_연향중_2학기_중간_중1_기출.json",
+            "sha256": "1e6aa926d3cf42a3f130e55c2dc44def1bd616b80968ba80070de3b076d644d1"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_M1_DATA_CATEGORY_PERCENTAGE",
+        "PT_M1_DATA_EXTREME_VALUE_SUM",
+        "PT_M1_STEM_LEAF_PLACEHOLDER_EVALUATION"
+      ],
+      "curriculumRefs": [
+        "2015:중1 수학:M1-08"
       ],
       "ownerConceptShard": "STATISTICS_CONCEPTS"
     }
