@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "COORDINATE_GEOMETRY",
-  "shardVersion": "1.1.6",
+  "shardVersion": "1.1.7",
   "status": "ACTIVE",
-  "conceptCount": 42,
+  "conceptCount": 43,
   "concepts": [
     {
       "conceptKey": "CC_CIRCLE_CENTER_RADIUS",
@@ -1906,6 +1906,41 @@
       ],
       "curriculumRefs": [
         "2022:공통수학2:H22-C2-04"
+      ],
+      "ownerConceptShard": "COORDINATE_GEOMETRY"
+    },
+    {
+      "conceptKey": "CC_CIRCLE_INTERSECTION_CHORD",
+      "canonicalLabelKo": "중심이 일치하는 원과 대칭 곡선의 교점 거리",
+      "definition": "유리함수의 대칭 중심을 중심으로 하는 원과 유리함수의 교점이 대칭축에 대하여 대칭임을 이용해 두 교점 사이의 거리를 구하는 개념",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_5a4ae04c9cd6aa33a5bd30ed2533e1b5ada64a30426a542ca6b83151fe704f39"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-08"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_5a4ae04c9cd6aa33a5bd30ed2533e1b5ada64a30426a542ca6b83151fe704f39",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_CIRCLE_INTERSECTION_CHORD for PT_FUNCTION_GRAPH_GEOMETRY/TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH at H22-C2-08-FUNCTION_BASIC.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 18 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_FUNCTION_GRAPH_GEOMETRY"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-08"
       ],
       "ownerConceptShard": "COORDINATE_GEOMETRY"
     }

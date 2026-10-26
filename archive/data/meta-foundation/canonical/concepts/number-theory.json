@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "NUMBER_THEORY",
-  "shardVersion": "1.1.5",
+  "shardVersion": "1.1.6",
   "status": "ACTIVE",
-  "conceptCount": 20,
+  "conceptCount": 21,
   "concepts": [
     {
       "conceptKey": "CC_NUMBER_DIVISOR_MULTIPLE",
@@ -661,6 +661,41 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-03"
+      ],
+      "ownerConceptShard": "NUMBER_THEORY"
+    },
+    {
+      "conceptKey": "CC_PARITY_DIVISIBILITY",
+      "canonicalLabelKo": "정수의 홀짝성과 배수·나머지 성질",
+      "definition": "홀수와 짝수의 합·차·곱의 성질 및 짝수의 제곱수가 4의 배수(4k)가 되는 정수론적 성질",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_0879e2c326564d076dffd1818f152847649d81ef73e2fc24b3d3578b7ac3298d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H22-C2-06"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_0879e2c326564d076dffd1818f152847649d81ef73e2fc24b3d3578b7ac3298d",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_PARITY_DIVISIBILITY for PT_CONTRADICTION_PROOF/TPL_DIVISIBILITY_PARITY_CONTRADICTION at H22-C2-06-CORE.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 16 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+            "sha256": "fb241d32978d940e228842d47a49710034d6896847d83934464ff7d1b05c7bf6"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONTRADICTION_PROOF"
+      ],
+      "curriculumRefs": [
+        "2022:공통수학2:H22-C2-06"
       ],
       "ownerConceptShard": "NUMBER_THEORY"
     }

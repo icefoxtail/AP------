@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-runtime-overlay-v1",
   "status": "ACTIVE",
-  "runtimeVersion": "FUNCTIONS_GRAPHS@1.0.5/reviewed-exam-v2",
+  "runtimeVersion": "FUNCTIONS_GRAPHS@1.0.6/reviewed-exam-v2",
   "packId": "FUNCTIONS_GRAPHS",
-  "packVersion": "1.0.5",
+  "packVersion": "1.0.6",
   "generatedFrom": {
     "assignments": "archive/data/meta-foundation/evidence/functions-graphs/v1/item_metadata_assignments_520.json",
     "taxonomy": "archive/data/meta-foundation/canonical/packs/functions-graphs/taxonomy.json",
@@ -14,15 +14,16 @@
     "reviewedExam_suncheon26-algebra-finalqa-meta-20261021": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/suncheon26-algebra-finalqa-meta-20261021.json",
     "reviewedExam_meta-pipeline-24-maesanyeogo-h2-math1-20261024-codex-audit-v2": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-20261024-codex-audit-v2.json",
     "reviewedExam_meta-pipeline-24-maesanyeogo-h2-math1-parent-correction-20261024-v1": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-24-maesanyeogo-h2-math1-parent-correction-20261024-v1.json",
-    "reviewedExam_meta-pipeline-02-jeil-h1-2final-20261026-current": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.json"
+    "reviewedExam_meta-pipeline-02-jeil-h1-2final-20261026-current": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.json",
+    "reviewedExam_meta-pipeline-high-1-b0eefadb76ed-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json"
   },
   "counts": {
     "canonicalAssignments": 523,
     "records": 528,
-    "taxonomyRows": 182,
-    "defaultSelectable": 526,
+    "taxonomyRows": 181,
+    "defaultSelectable": 525,
     "supplementary": 0,
-    "automaticEligibleExpected": 17,
+    "automaticEligibleExpected": 32,
     "sourceHold": 0,
     "catalogUnregisteredExcluded": 0
   },
@@ -1881,7 +1882,7 @@
       "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 2
+      "supportingItemCount": 1
     },
     {
       "curriculumKey": "2022",
@@ -1894,7 +1895,7 @@
       "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 1
+      "supportingItemCount": 2
     },
     {
       "curriculumKey": "2022",
@@ -1972,20 +1973,7 @@
       "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 1
-    },
-    {
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
-      "L1": "함수",
-      "L2": "유리함수",
-      "L3": "함수식 구하기",
-      "L4": "그래프의 특징으로 함수식 구하기",
-      "problemTypeKey": "PT_FUNCTION_RECOVERY",
-      "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "supportingItemCount": 1
+      "supportingItemCount": 2
     },
     {
       "curriculumKey": "2022",
@@ -2239,19 +2227,6 @@
       "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "함수",
-      "L3": "함수식 구하기",
-      "L4": "입력 치환으로 함수식 구하기",
-      "problemTypeKey": "PT_FUNCTION_RECOVERY",
-      "templateKey": "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "supportingItemCount": 1
-    },
-    {
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
-      "L1": "함수",
-      "L2": "함수",
       "L3": "함수방정식",
       "L4": "가법형 함수방정식",
       "problemTypeKey": "PT_FUNCTIONAL_EQUATION",
@@ -2308,6 +2283,19 @@
       "L4": "역함수의 성질 판정",
       "problemTypeKey": "PT_INVERSE_PROPERTIES",
       "templateKey": "TPL_INVERSE_PROPERTY_JUDGMENT",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
+      "L1": "함수",
+      "L2": "함수",
+      "L3": "역함수 구하기와 함수값",
+      "L4": "f(ax+b)의 역함수",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_AFFINE_INPUT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
       "supportingItemCount": 1
@@ -2693,33 +2681,101 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 4,
       "sourceQuestionNo": "4",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "d77ca2f69a4fab131a8794d4f150e297a51ab7ddcc87898aabc1de8327d56ebe",
+      "contentFingerprint": "b765736f5af9bad0022fa1b45f570cd7e7255eeea5663b3cc6f268c85b34d0aa",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "standardUnit": "함수",
-      "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "conceptClusterKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "problemTypeKey": "PT_COMPOSITION_EVALUATION",
       "templateKey": "TPL_COMPOSITION_VALUE_MAPPING",
+      "difficultyBucket": 1,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-07/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "함수",
       "L3": "합성함수의 계산",
       "L4": "대응도에서 합성함숫값 계산",
-      "crossConceptKeys": [],
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B45",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "legacyLevel": "하",
+      "legacyStandardUnitKey": "H22-C2-07",
+      "legacySubUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "legacySubUnit": "합성함수",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "합성함수",
+        "L4": "합성함수 계산"
+      },
+      "primaryConcept": "합성함수",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "A/B normalized fields are equal; common value selected for final candidate.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "하",
+      "crossConceptKeys": [
+        "CC_FUNCTION_COMPOSITION",
+        "CC_FUNCTION_MAPPING_DIAGRAM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2",
-      "integrationPattern": "NONE",
-      "difficultyBucket": 1
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#4",
+      "approvedSourceFingerprint": "d77ca2f69a4fab131a8794d4f150e297a51ab7ddcc87898aabc1de8327d56ebe",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_027388d0674177b4c7c0bf34188e744f0ed75ec35075ec716c98aafcb1ed2426",
@@ -5441,41 +5497,106 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 15,
       "sourceQuestionNo": "15",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "1b5b8818da5fe8c9409f6b150d58303602a7dec00f3504a8b4b70cc7650089b5",
+      "contentFingerprint": "8f4faf418fad866f71c3d7f4b346411d9137e623e4098a5d06f3971839e5cee0",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "standardUnit": "함수",
-      "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "conceptClusterKey": "H22-C2-07-FUNCTION_BASIC",
       "problemTypeKey": "PT_INVERSE_GRAPH",
       "templateKey": "TPL_INVERSE_GRAPH_INTERSECTION",
+      "difficultyBucket": 4,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-07/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "함수",
       "L3": "역함수의 그래프",
       "L4": "함수와 역함수의 교점·접점",
-      "crossConceptKeys": [
-        "CC_DISCRIMINANT",
-        "CC_QUADRATIC_FUNCTION"
-      ],
       "secondaryConceptKeys": [
-        "CC_DISCRIMINANT",
-        "CC_QUADRATIC_FUNCTION"
+        "이차방정식과 이차함수"
       ],
-      "conditionKeys": [
-        "COND_NATURAL_NUMBER"
-      ],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevel": "상",
+      "legacyStandardUnitKey": "H22-C2-07",
+      "legacySubUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "legacySubUnit": "함수의 뜻과 그래프",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "역함수",
+        "L4": "그래프 대칭"
+      },
+      "primaryConcept": "제한 이차함수와 역함수 교점 개수",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "Intersections with the inverse are fixed points of the increasing restricted quadratic; A's inverse-graph path is exact and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "상",
+      "crossConceptKeys": [
+        "CC_INVERSE_GRAPH_SYMMETRY",
+        "CC_QUADRATIC_ROOT_SEPARATION",
+        "CC_DISCRIMINANT"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL"
+      ],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2",
-      "integrationPattern": "INTERDEPENDENT",
-      "difficultyBucket": 3
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#15",
+      "approvedSourceFingerprint": "1b5b8818da5fe8c9409f6b150d58303602a7dec00f3504a8b4b70cc7650089b5",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_21e3ea74d7de3776e1481fbae093363ca1edd303d8235717751edd2f9e539207",
@@ -7618,31 +7739,96 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 7,
       "sourceQuestionNo": "7",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "3a0f15a04fde14ba166dfa6ffe6a9cd3af4eaa0253a4f405c673cf9657bf8b2b",
+      "contentFingerprint": "b73df5ae2c0d28a6e509f05a7a2920762cb120840324fb872e2bc4da48a52436",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-09",
       "standardUnit": "무리함수",
-      "standardUnitOrder": 9,
       "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "conceptClusterKey": "H22-C2-09-FUNCTION_BASIC",
       "problemTypeKey": "PT_DOMAIN_RANGE_SURJECTIVITY",
       "templateKey": "TPL_FUNCTION_DOMAIN_RANGE_DIRECT",
+      "difficultyBucket": 1,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "difficultyBoundaryFlag": "MOTHER_FINAL",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "무리함수",
       "L3": "정의역·공역·치역",
       "L4": "정의역·치역 직접 구하기",
-      "crossConceptKeys": [],
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "무리함수",
+        "L3": "무리함수의 정의역과 치역",
+        "L4": "정의역 조건"
+      },
+      "primaryConcept": "무리함수의 정의역과 치역",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The radical starts at x=5 and y=−3, so a+b=2; A's radical-specific hierarchy is more precise than B's generic graph-position leaf.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "legacyLevelCompatibility": "MOTHER_FINAL_REVIEW",
+      "reviewStatus": "MOTHER_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "하",
+      "crossConceptKeys": [
+        "CC_RADICAL_FUNCTION_DOMAIN_RANGE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#7",
+      "approvedSourceFingerprint": "3a0f15a04fde14ba166dfa6ffe6a9cd3af4eaa0253a4f405c673cf9657bf8b2b",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_43a1130c39b62d3e737885dd21d84dcfe4cc16d58dea2779e6277cb33050364d",
@@ -8132,33 +8318,101 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 22,
       "sourceQuestionNo": "22",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "7f672a240a683024b737acda989291eb8708663c017089cc0e29c9fb66e2c293",
+      "contentFingerprint": "bcf9160cd6aab5db8680fccda11c7dac761285b404b467af8fae90caa2cb5119",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "standardUnit": "함수",
-      "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnit": "합성함수",
+      "conceptClusterKey": "H22-C2-07-FUNCTION_COMPOSITION",
       "problemTypeKey": "PT_COMPOSITE_FUNCTION_ANALYSIS",
       "templateKey": "TPL_COMPOSITE_PIECEWISE_GRAPH_ANALYSIS",
+      "difficultyBucket": 4,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-07/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "함수",
       "L3": "합성함수의 그래프와 치역",
       "L4": "합성함수의 구간별 그래프 분석",
-      "crossConceptKeys": [],
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H22-C2-07",
+      "legacySubUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "legacySubUnit": "합성함수",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "합성함수",
+        "L4": "합성함수 계산"
+      },
+      "primaryConcept": "조각함수의 합성 구간 분할",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The source explicitly asks for the branch conditions and three formulas of f∘f; A's composition path is exact and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_PIECEWISE_FUNCTION",
+        "CC_FUNCTION_COMPOSITION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2",
-      "integrationPattern": "CASE_BRANCH",
-      "difficultyBucket": 3
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#22",
+      "approvedSourceFingerprint": "7f672a240a683024b737acda989291eb8708663c017089cc0e29c9fb66e2c293",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_4a4705bf71e4073073148726aa93c733f79f40e2aa7413eda8fedf5909c8a8e3",
@@ -8534,31 +8788,97 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 14,
       "sourceQuestionNo": "14",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "039601e3a61b6b3d1edf035af7eea0271f6d1f9c02a18de570bac43563b8986e",
+      "contentFingerprint": "420c45e2c11bdab3b6aadeb120f35eb5974edb067e7a2d542cc95e48b9b07176",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-08",
       "standardUnit": "유리함수",
-      "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "conceptClusterKey": "H22-C2-08-FUNCTION_BASIC",
       "problemTypeKey": "PT_FUNCTION_GRAPH_QUADRANT",
       "templateKey": "TPL_FUNCTION_QUADRANT_PARAMETER",
+      "difficultyBucket": 3,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "difficultyBoundaryFlag": "MOTHER_FINAL",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "유리함수",
       "L3": "함수 그래프와 사분면",
       "L4": "매개변수에 따른 사분면 조건",
-      "crossConceptKeys": [],
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "유리함수",
+        "L3": "점근선과 위치",
+        "L4": "그래프의 사분면"
+      },
+      "primaryConcept": "유리함수 전 사분면 통과 조건",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "A and B agree on the canonical path and primary; the sign check against the answer choices is a moderate difficulty-3 task, so B's difficulty is selected.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "legacyLevelCompatibility": "MOTHER_FINAL_REVIEW",
+      "reviewStatus": "MOTHER_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION_ASYMPTOTE",
+        "CC_QUADRANT_INTERSECTION_CONDITION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#14",
+      "approvedSourceFingerprint": "039601e3a61b6b3d1edf035af7eea0271f6d1f9c02a18de570bac43563b8986e",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_4e5822b96a047fe4ba5f8573a4064e6ead9a33c93dd82c3ccd66fd939a0f857a",
@@ -9363,33 +9683,105 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 21,
       "sourceQuestionNo": "21",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "9e1721bfe3b37dfd992b85eb4bafead599bd4de272e50555b9922665fd0514af",
+      "contentFingerprint": "2fecb5508285c0efd273904452208875f542ef89338f98f6bb18306d65f72c4f",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "standardUnit": "함수",
-      "standardUnitOrder": 7,
-      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "conceptClusterKey": "H22-C2-07-FUNCTION_BASIC",
       "problemTypeKey": "PT_FINITE_BIJECTION",
       "templateKey": "TPL_FINITE_BIJECTION_COMPOSITION_DEDUCTION",
+      "difficultyBucket": 4,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-07/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "함수",
       "L3": "유한집합의 일대일대응",
       "L4": "합성함수 조건으로 일대일대응 결정",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
+      "secondaryConceptKeys": [
+        "역함수",
+        "합성함수"
+      ],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H22-C2-07",
+      "legacySubUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "legacySubUnit": "함수의 뜻과 그래프",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "함수의 성질",
+        "L4": "일대일함수"
+      },
+      "primaryConcept": "전단사 함수값과 합성 제약",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "Two bijections on a three-element set are constrained by values and composition; A's function-property path is exact and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_BIJECTION_CONDITION",
+        "CC_FUNCTION_COMPOSITION",
+        "CC_INVERSE_FUNCTION_EVALUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2",
-      "integrationPattern": "SEQUENTIAL",
-      "difficultyBucket": 2
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#21",
+      "approvedSourceFingerprint": "9e1721bfe3b37dfd992b85eb4bafead599bd4de272e50555b9922665fd0514af",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_58dea249244b72af85b24c3f3cf3ffeeb0abe346f50a0afa6ba673a62a01fe22",
@@ -9522,31 +9914,102 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 18,
       "sourceQuestionNo": "18",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "d445be77f2c053642c6eabe3daaa5ada74e28ee358acfdd577bd4c097f9bd178",
+      "contentFingerprint": "679959a2e3239c04f2ac3d989d0cce508f8f8daf81a2c21e6a9d3484333ac541",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-08",
       "standardUnit": "유리함수",
-      "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "conceptClusterKey": "H22-C2-08-FUNCTION_BASIC",
       "problemTypeKey": "PT_FUNCTION_GRAPH_GEOMETRY",
       "templateKey": "TPL_FUNCTION_GRAPH_GEOMETRY_DISTANCE_LENGTH",
+      "difficultyBucket": 5,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "FOUNDATION_DEFECT_CANDIDATE",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "difficultyBoundaryFlag": "MOTHER_FINAL",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "유리함수",
       "L3": "함수 그래프와 도형",
       "L4": "그래프 위 점의 거리·길이 구하기",
-      "crossConceptKeys": [],
-      "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
+      "canonicalRaw": {
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "원의 방정식",
+        "L4": "CANONICAL_NO_FIT"
+      },
+      "primaryConcept": "원과 유리함수 교점 거리",
+      "primaryConceptReason": "The selected Mother value explicitly carries UNKNOWN/CANONICAL_NO_FIT.",
+      "decisiveSolutionStep": null,
+      "secondaryConceptKeys": [
+        "유리함수"
+      ],
+      "canonicalState": "EXPLICIT_NO_FIT_OR_UNKNOWN",
+      "l4ReviewStatus": "MOTHER_REVIEWED_L4_GAP",
+      "l4GapReason": "The selected Mother value explicitly carries UNKNOWN/CANONICAL_NO_FIT.",
+      "status": "FOUNDATION_DEFECT_CANDIDATE",
+      "statusReason": "The source combines a circle with a reciprocal curve and asks for the chord distance; no honest high1 circle L4 represents this mixed curve intersection.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
       "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "defaultSelectable": false,
+      "legacyLevelCompatibility": "MOTHER_FINAL_REVIEW",
+      "reviewStatus": "MOTHER_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "상",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION_SYMMETRY",
+        "CC_CIRCLE_INTERSECTION_CHORD",
+        "CC_SYMMETRIC_POLYNOMIAL_REDUCTION"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#18",
+      "approvedSourceFingerprint": "d445be77f2c053642c6eabe3daaa5ada74e28ee358acfdd577bd4c097f9bd178",
+      "legacyLevel": "상",
+      "runtimeSelectable": false
     },
     {
       "questionUid": "qid_v1_5ad65111d03f342559056b026042125bd4ef88b6b2c1b9810e1a6391f5effb87",
@@ -11300,33 +11763,101 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 10,
       "sourceQuestionNo": "10",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "61af890450bb9ea1030b6f03c0757707e4906708e370eef398368ecc1c26665d",
+      "contentFingerprint": "7b7054665b34ad0a1efd3fc1b7f60018c5492af920ca95607f388ef502031591",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "standardUnit": "함수",
-      "standardUnitOrder": 7,
-      "subUnitKey": "H22-C2-07-FUNCTION_COMPOSITION",
+      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "conceptClusterKey": "H22-C2-07-FUNCTION_BASIC",
       "problemTypeKey": "PT_COMPOSITION_EVALUATION",
       "templateKey": "TPL_COMPOSITION_GRAPH_TRACE_VALUE",
+      "difficultyBucket": 2,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-07/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "함수",
       "L3": "합성함수의 계산",
       "L4": "그래프에서 합성함숫값 역추적",
-      "crossConceptKeys": [],
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H22-C2-07",
+      "legacySubUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "legacySubUnit": "함수의 뜻과 그래프",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "합성함수",
+        "L4": "합성함수 계산"
+      },
+      "primaryConcept": "합성함수",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "A/B normalized fields are equal; common value selected for final candidate.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_FUNCTION_COMPOSITION",
+        "CC_IDENTITY_LINE_REFLECTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2",
-      "integrationPattern": "SEQUENTIAL",
-      "difficultyBucket": 1
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#10",
+      "approvedSourceFingerprint": "61af890450bb9ea1030b6f03c0757707e4906708e370eef398368ecc1c26665d",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_7737e71d940417b3ed67211d0d3cf7d730f1b3ccc55f6df89eaeba009655159e",
@@ -12692,31 +13223,99 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 3,
       "sourceQuestionNo": "3",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "da1fed40b73d4dc3e405e67a85ef56afe7e7e29e0ad456062ceb95eb599cc79f",
+      "contentFingerprint": "860b90ee6408b85962f5ae70460db3a04d4e69f8852a5db77e13fba4b107fe01",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-09",
       "standardUnit": "무리함수",
-      "standardUnitOrder": 9,
       "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "conceptClusterKey": "H22-C2-09-FUNCTION_BASIC",
       "problemTypeKey": "PT_RADICAL_EXPRESSION",
       "templateKey": "TPL_RADICAL_REAL_VALUE_RANGE",
+      "difficultyBucket": 1,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "difficultyBoundaryFlag": "MOTHER_FINAL",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "무리함수",
       "L3": "무리식의 계산",
       "L4": "무리식이 실수가 되는 범위",
-      "crossConceptKeys": [],
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "무리함수",
+        "L3": "정의역과 치역",
+        "L4": "정의역 조건"
+      },
+      "primaryConcept": "무리식의 정의 조건",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "Both radicands being nonnegative gives 3≤x≤5, an exact radical-domain condition represented by B's canonical path; A's no-fit is unnecessarily narrow.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "legacyLevelCompatibility": "MOTHER_FINAL_REVIEW",
+      "reviewStatus": "MOTHER_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "하",
+      "crossConceptKeys": [
+        "CC_RADICAL_REAL_CONDITION",
+        "CC_SIMULTANEOUS_LINEAR_INEQUALITIES"
+      ],
+      "conditionKeys": [
+        "COND_INTEGER"
+      ],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#3",
+      "approvedSourceFingerprint": "da1fed40b73d4dc3e405e67a85ef56afe7e7e29e0ad456062ceb95eb599cc79f",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_9067a64e0ad1dbc7b110ac5fad2bd770c05aa97cddf88e99b37a6fa7ac503202",
@@ -12956,33 +13555,101 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 12,
       "sourceQuestionNo": "12",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "dbc524cbc47c249c71aba55cf37e60113d4d91e4739c609b652cd7dc8481f512",
+      "contentFingerprint": "bfa69396d37cafb66e32d6f7dc0631900b5135ceb68ab2255ad2307f0fc71785",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "standardUnit": "함수",
-      "standardUnitOrder": 7,
-      "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
-      "problemTypeKey": "PT_FUNCTION_RECOVERY",
-      "templateKey": "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE",
+      "subUnitKey": "H22-C2-07-FUNCTION_INVERSE",
+      "subUnit": "역함수",
+      "conceptClusterKey": "H22-C2-07-FUNCTION_BASIC",
+      "problemTypeKey": "PT_INVERSE_VALUE",
+      "templateKey": "TPL_INVERSE_AFFINE_INPUT",
+      "difficultyBucket": 2,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-07/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "함수",
-      "L3": "함수식 구하기",
-      "L4": "입력 치환으로 함수식 구하기",
-      "crossConceptKeys": [],
+      "L3": "역함수 구하기와 함수값",
+      "L4": "f(ax+b)의 역함수",
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H22-C2-07",
+      "legacySubUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "legacySubUnit": "함수의 뜻과 그래프",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "역함수",
+        "L4": "역함수 구하기"
+      },
+      "primaryConcept": "일차함수 역함수값 계산",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "Rewrite f(2x+1)=3x+5 and solve f(t)=14 directly; B's difficulty 2 reflects the short calculation.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_INVERSE_FUNCTION_EVALUATION",
+        "CC_LINEAR_SUBSTITUTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2",
-      "integrationPattern": "REINTERPRETATION",
-      "difficultyBucket": 2
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#12",
+      "approvedSourceFingerprint": "dbc524cbc47c249c71aba55cf37e60113d4d91e4739c609b652cd7dc8481f512",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_9636d68e1db5f54ee7b8ca1b07c45ead800a95b960de8ecc07fbf90fd816c86e",
@@ -14654,33 +15321,101 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 8,
       "sourceQuestionNo": "8",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "4a245ca3f5ff824ca80654cf5d34c2d5989266be226afce538f412aa6c05c839",
+      "contentFingerprint": "0cce7996135a513904d1c5b04f00341a0b04e41d3bc94c1d24a328cdb58b1908",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "standardUnit": "함수",
-      "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "conceptClusterKey": "H22-C2-07-FUNCTION_BASIC",
       "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
       "templateKey": "TPL_AFFINE_INTERVAL_BIJECTION",
+      "difficultyBucket": 2,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-07/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "함수",
       "L3": "일대일함수와 일대일대응",
       "L4": "일차함수의 구간 일대일대응",
-      "crossConceptKeys": [],
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H22-C2-07",
+      "legacySubUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "legacySubUnit": "함수의 뜻과 그래프",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "함수의 성질",
+        "L4": "일대일함수"
+      },
+      "primaryConcept": "선형 자기함수의 전단사 조건",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The linear self-map of (−∞,4] must cover the same interval bijectively, determining a=8; A's function-property path is valid and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_BIJECTION_CONDITION",
+        "CC_MONOTONICITY_BOUNDARY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2",
-      "integrationPattern": "SEQUENTIAL",
-      "difficultyBucket": 2
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#8",
+      "approvedSourceFingerprint": "4a245ca3f5ff824ca80654cf5d34c2d5989266be226afce538f412aa6c05c839",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_ab0c9ec3c48b69a7702650a99e6aaf6c3090661b379d0a70dcf90ec8830fa190",
@@ -15014,31 +15749,98 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 17,
       "sourceQuestionNo": "17",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "95b7198e8c89a9249b8124a914728abf2992557ad31a55779c1813c59d866e51",
+      "contentFingerprint": "96eb5a87a905501251ea065e130d53fc685a820c43253a9b5a4bd0bfd2883a81",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-09",
       "standardUnit": "무리함수",
-      "standardUnitOrder": 9,
       "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "conceptClusterKey": "H22-C2-09-FUNCTION_BASIC",
       "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
       "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+      "difficultyBucket": 5,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "difficultyBoundaryFlag": "MOTHER_FINAL",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "무리함수",
       "L3": "함수 그래프의 교점",
       "L4": "절댓값·조각함수 그래프의 교점",
-      "crossConceptKeys": [],
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "무리함수",
+        "L3": "무리함수의 교점",
+        "L4": "무리함수의 교점"
+      },
+      "primaryConcept": "절댓값 무리함수와 직선 두 교점",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "Split the absolute radical graph into branches and analyze the two-intersection condition; A's radical-intersection path is grounded and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "legacyLevelCompatibility": "MOTHER_FINAL_REVIEW",
+      "reviewStatus": "MOTHER_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "상",
+      "crossConceptKeys": [
+        "CC_ABSOLUTE_VALUE_GRAPH_FOLDING",
+        "CC_FIXED_POINT_LINE_ROTATION",
+        "CC_RADICAL_LINE_INTERSECTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#17",
+      "approvedSourceFingerprint": "95b7198e8c89a9249b8124a914728abf2992557ad31a55779c1813c59d866e51",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_aeeeab1f99cd912835e5a58f1ae69cca316c99c71bd5861af1e54d1d5ba4729c",
@@ -18506,39 +19308,106 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 9,
       "sourceQuestionNo": "9",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "0a6732b6eb94730764b7dc706f0593d95c256967aeebfa8b9b2f8aac7a05b87f",
+      "contentFingerprint": "56f6f506bfdaf423e3d1c019865359efd7989669fd429b7128745ac312b29b55",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-07",
       "standardUnit": "함수",
-      "standardUnitOrder": 7,
       "subUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "conceptClusterKey": "H22-C2-07-FUNCTION_BASIC",
       "problemTypeKey": "PT_ONE_TO_ONE_BIJECTION",
       "templateKey": "TPL_PIECEWISE_RANGE_STITCH_BIJECTION",
+      "difficultyBucket": 5,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-07/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "함수",
       "L3": "일대일함수와 일대일대응",
       "L4": "조각함수의 일대일대응 조건",
-      "crossConceptKeys": [
-        "CC_QUADRATIC_FUNCTION"
-      ],
       "secondaryConceptKeys": [
-        "CC_QUADRATIC_FUNCTION"
+        "이차방정식과 이차함수"
+      ],
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "reviewStatus": "MOTHER_FINAL",
+      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevel": "상",
+      "legacyStandardUnitKey": "H22-C2-07",
+      "legacySubUnitKey": "H22-C2-07-FUNCTION_BASIC",
+      "legacySubUnit": "함수의 뜻과 그래프",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "함수",
+        "L3": "함수의 성질",
+        "L4": "일대일함수"
+      },
+      "primaryConcept": "조각함수 역함수 존재의 치역 접합",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The two pieces must have nonoverlapping complementary ranges for an inverse, forcing a=1,b=6 at the minimum; A's function-property path is exact and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "상",
+      "crossConceptKeys": [
+        "CC_BIJECTION_CONDITION",
+        "CC_INVERSE_EXISTENCE_CONDITION",
+        "CC_PIECEWISE_FUNCTION"
       ],
       "conditionKeys": [
         "COND_INTEGER"
       ],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2",
-      "integrationPattern": "INTERDEPENDENT",
-      "difficultyBucket": 4
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#9",
+      "approvedSourceFingerprint": "0a6732b6eb94730764b7dc706f0593d95c256967aeebfa8b9b2f8aac7a05b87f",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_dc6b77d19163ba2eacf184a48ef6eb3290cec51a6a68711d5df7c8c79c778621",
@@ -18677,31 +19546,98 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 23,
       "sourceQuestionNo": "23",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "a79dd16726df5480991db8cf3e9208120d8cabacf8ceeb381778aa3b59717bce",
+      "contentFingerprint": "4f11f5bcd14a7e0d349f5d0df4afe19c671a5e1c03c69cc046f0147457e33268",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-09",
       "standardUnit": "무리함수",
-      "standardUnitOrder": 9,
       "subUnitKey": "H22-C2-09-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "conceptClusterKey": "H22-C2-09-FUNCTION_BASIC",
       "problemTypeKey": "PT_FUNCTION_GRAPH_INTERSECTION",
       "templateKey": "TPL_FUNCTION_INTERSECTION_ABSOLUTE_PIECEWISE",
+      "difficultyBucket": 5,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "difficultyBoundaryFlag": "MOTHER_FINAL",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "무리함수",
       "L3": "함수 그래프의 교점",
       "L4": "절댓값·조각함수 그래프의 교점",
-      "crossConceptKeys": [],
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "무리함수",
+        "L3": "무리함수의 교점",
+        "L4": "무리함수의 교점"
+      },
+      "primaryConcept": "조각 무리함수와 직선의 네 교점",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "Each radical branch contributes intersection conditions and the common k is determined; A's radical-intersection path is valid and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "legacyLevelCompatibility": "MOTHER_FINAL_REVIEW",
+      "reviewStatus": "MOTHER_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "상",
+      "crossConceptKeys": [
+        "CC_PIECEWISE_FUNCTION",
+        "CC_RADICAL_LINE_INTERSECTION",
+        "CC_DISCRIMINANT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#23",
+      "approvedSourceFingerprint": "a79dd16726df5480991db8cf3e9208120d8cabacf8ceeb381778aa3b59717bce",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_de040ad6dbae88a03058776a1c86a6fadba7a42d841088168dabe40abd4f8f24",
@@ -18944,31 +19880,99 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 19,
       "sourceQuestionNo": "19",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "f47bd75a303dadfdc5c595e0a096068656f2f75e6bd0215672f75db458b48cdf",
+      "contentFingerprint": "657d2c60dfd074426380e0c3f019acd53f3ca9cadef81c60ce2137a6a80dcffd",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-08",
       "standardUnit": "유리함수",
-      "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "conceptClusterKey": "H22-C2-08-FUNCTION_BASIC",
       "problemTypeKey": "PT_FUNCTION_EXTREMUM",
-      "templateKey": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
+      "templateKey": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
+      "difficultyBucket": 3,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "difficultyBoundaryFlag": "MOTHER_FINAL",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "유리함수",
       "L3": "함수의 최댓값·최솟값",
-      "L4": "구간 끝점과 함수의 최댓값·최솟값",
-      "crossConceptKeys": [],
+      "L4": "매개변수 함수의 최댓값·최솟값",
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "유리함수",
+        "L3": "유리함수의 활용",
+        "L4": "유리함수의 최대·최소"
+      },
+      "primaryConcept": "유리함수의 최대·최소",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The source is explicitly a rational-function maximum on x>3; B's function taxonomy is more exact than A's generic inequality technique.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "legacyLevelCompatibility": "MOTHER_FINAL_REVIEW",
+      "reviewStatus": "MOTHER_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_RATIONAL_EXPRESSION_TRANSFORM",
+        "CC_AM_GM_INEQUALITY"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#19",
+      "approvedSourceFingerprint": "f47bd75a303dadfdc5c595e0a096068656f2f75e6bd0215672f75db458b48cdf",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_dfbb913abebfcd1d5a65c8da0ae4a453d4c2b067185adc88f983b8d7629f502a",
@@ -20814,31 +21818,97 @@
       "sourceArchiveFile": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 13,
       "sourceQuestionNo": "13",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "f958bb4183e8896cc92d14821963c5214a35fa75ace1137d6f01c013a5afbb46",
+      "contentFingerprint": "4d71bbffc58341f4f39626c109ab7d934b2f3088207c010702ef8f113a553013",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-08",
       "standardUnit": "유리함수",
-      "standardUnitOrder": 8,
       "subUnitKey": "H22-C2-08-FUNCTION_BASIC",
+      "subUnit": "함수의 뜻과 그래프",
+      "conceptClusterKey": "H22-C2-08-FUNCTION_BASIC",
       "problemTypeKey": "PT_FUNCTION_RECOVERY",
-      "templateKey": "TPL_FUNCTION_FORM_FROM_GRAPH",
+      "templateKey": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
+      "difficultyBucket": 3,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.6:exam-meta_pipeline_audit-v2:meta-pipeline-high-1-b0eefadb76ed-20261026",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.audit.literal.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-high-1-b0eefadb76ed-20261026.source-parity.json"
+      ],
+      "difficultyConfidence": "HIGH",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "difficultyBoundaryFlag": "MOTHER_FINAL",
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "함수",
       "L2": "유리함수",
       "L3": "함수식 구하기",
-      "L4": "그래프의 특징으로 함수식 구하기",
-      "crossConceptKeys": [],
+      "L4": "점근선과 한 점으로 함수식 구하기",
+      "canonicalRaw": {
+        "L1": "함수",
+        "L2": "유리함수",
+        "L3": "점근선과 위치",
+        "L4": "점근선"
+      },
+      "primaryConcept": "유리함수 그래프 계수 결정",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The graph's x-intercept and asymptotes recover a,b,c; A's point-position path is exact and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:FUNCTIONS_GRAPHS@1.0.2",
+      "legacyLevelCompatibility": "MOTHER_FINAL_REVIEW",
+      "reviewStatus": "MOTHER_FINAL",
+      "metaFoundationPackVersion": "1.0.6",
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_RATIONAL_FUNCTION_ASYMPTOTE",
+        "CC_AXIS_INTERCEPT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "FUNCTIONS_GRAPHS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_순천고_2학기_기말_고1_기출.js#13",
+      "approvedSourceFingerprint": "f958bb4183e8896cc92d14821963c5214a35fa75ace1137d6f01c013a5afbb46",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_f783f7feed6ce7535dd579aa6058766d0b10f75c0a7b4e6da81897f447785e4f",
@@ -21716,7 +22786,7 @@
       },
       {
         "key": "PT_FUNCTION_RECOVERY",
-        "count": 26,
+        "count": 25,
         "questionUids": [
           "qid_v1_09e546ba4d730899a821410f1ac9ae12630bd472f0761bc0c1cbb8b0b7e3552f",
           "qid_v1_0d121b6b91621b9197b4e248ebd50c99c0fa5d4cdbb4ab5cc0b5687ce57e3aa6",
@@ -21736,7 +22806,6 @@
           "qid_v1_7dae3a707c16ad23e9568cf7c9930dd616825b568a53395954ad6140833d47ec",
           "qid_v1_88463e8391870792b644670bfcb5ba2ee3e9051e463f2cd91374e26775417f2b",
           "qid_v1_8a01638c95315a10a28956b1b0570b512d02e5276f5cb621dfcabe47e2ec1b64",
-          "qid_v1_94ad7b77587f5d27a1d080b95fa299a08e1aa704d8f60bfa92edf1efecb376ad",
           "qid_v1_96a12c43adec27d4d9c1e1f0a6a985bf45ce8dc1dec5d2b2f82e2aeb21ff36cd",
           "qid_v1_a5c57946534aad8bc92d77b91ac3e6b3681126a80fb32e7d829055cc7c712d99",
           "qid_v1_ac12ed3bc4cb34a1c6d560a9dc4a8f2c11fc483d530bfdb60fa4a5fad867eb7b",
@@ -21849,7 +22918,7 @@
       },
       {
         "key": "PT_INVERSE_VALUE",
-        "count": 29,
+        "count": 30,
         "questionUids": [
           "qid_v1_013a373e6a7236edc5563aa3906f296223b53863793ba74d2bb804543b81289b",
           "qid_v1_04cd46cffa27f89b66d70f315d2aa513cc3a536737b81511653e52361a063a98",
@@ -21869,6 +22938,7 @@
           "qid_v1_65c1c2b86691587b7bf088ca38e15590a9be8b649058465e2f8c0293c07e2df8",
           "qid_v1_7d135b7e7f0a9dead3acc7d3b99f7eb49acde81785821db584b8001065cecb55",
           "qid_v1_8e9d12b8d57e05523dd5761ae2be06fb949c5380cad3f9997d86723d445583d9",
+          "qid_v1_94ad7b77587f5d27a1d080b95fa299a08e1aa704d8f60bfa92edf1efecb376ad",
           "qid_v1_a5874d4f9399b74b8ed13c5ce7289b931a1a9b8c9fdafc02da27ab7de3ac833f",
           "qid_v1_a96d362f0f63719f68bceaa1a34f4206604725dd6c3c2b4ca6c1f7a421175828",
           "qid_v1_c0801dff75a213302c13c3498e985bcf555797f8145ffef007979e3682a2bb07",
@@ -22344,7 +23414,7 @@
       },
       {
         "key": "TPL_FUNCTION_EXTREMUM_INTERVAL_ENDPOINT",
-        "count": 11,
+        "count": 10,
         "questionUids": [
           "qid_v1_34b44884347051cf12fece2f41074f33a77b42133a1a8a57f811a8b40518e7ee",
           "qid_v1_3ed615f7b073e04f8651c729afbdf3789a8b0807914d31beb2d960619f5a18bd",
@@ -22354,30 +23424,31 @@
           "qid_v1_a43d10ae6712d8b5f53b85f168894dbab85f01bf37d4f8db3b1f73d356015ac6",
           "qid_v1_cd22ffa589e2eaec25b40bfc7bd625185dd31cb14d5b48f2475836d701b88573",
           "qid_v1_cd9470be46df0cf7c2704d43295884cc4bfd183eb29d41b58493bfaf56b0386b",
-          "qid_v1_df9e5e7e97f5f8e5f9d6d67a8c39cfc3376a0caee4cc75323cc8a4381178bf0b",
           "qid_v1_f198ca07a6b64efe0d09bf19a92bdfb7f33378e8b20bb1e45d280e29d0b9d442",
           "qid_v1_f94e361b6dcb29316399b73c2b8e2efa0a534c0d4408419842edb71c7c13d88f"
         ]
       },
       {
         "key": "TPL_FUNCTION_EXTREMUM_PARAMETER_MODEL",
-        "count": 3,
+        "count": 4,
         "questionUids": [
           "qid_v1_a5bbec7168a1a923a7b013ce63dd6c8b8768cbc5c6a34a566856b7c305c85d90",
           "qid_v1_d02a18c8ec6cbc9de40160b3368079ddcc9fbfb5abfcaa0f786b05133da3fa78",
+          "qid_v1_df9e5e7e97f5f8e5f9d6d67a8c39cfc3376a0caee4cc75323cc8a4381178bf0b",
           "qid_v1_f783f7feed6ce7535dd579aa6058766d0b10f75c0a7b4e6da81897f447785e4f"
         ]
       },
       {
         "key": "TPL_FUNCTION_FORM_FROM_ASYMPTOTE_POINT",
-        "count": 1,
+        "count": 2,
         "questionUids": [
-          "qid_v1_62fe17e4a415a25a64de6ceaec5247d83d59a93b6f21f4bef649f488f4edba42"
+          "qid_v1_62fe17e4a415a25a64de6ceaec5247d83d59a93b6f21f4bef649f488f4edba42",
+          "qid_v1_f771476a7a8ef7cf736900dc50689738dcecda0ab52dffbb3d84cd1bf2502f84"
         ]
       },
       {
         "key": "TPL_FUNCTION_FORM_FROM_GRAPH",
-        "count": 9,
+        "count": 8,
         "questionUids": [
           "qid_v1_09e546ba4d730899a821410f1ac9ae12630bd472f0761bc0c1cbb8b0b7e3552f",
           "qid_v1_0e8782016b00f03d4cfef5f4e770a64141fb37c78d6cb0f5c71fcffab2bb928b",
@@ -22386,8 +23457,7 @@
           "qid_v1_72b1fae9c4ca7f4322ee0bb577b45a18956e6ac00f6a8fb70596a15caa39cf2b",
           "qid_v1_7a7b7527f4e8c254d3c978d1ad7a60ba1bb3b9df621716211577596b9e43f18a",
           "qid_v1_88463e8391870792b644670bfcb5ba2ee3e9051e463f2cd91374e26775417f2b",
-          "qid_v1_d7286b88b173eba107aa51b7bc036f33bde8a1fd0aef5728242034fff18beeee",
-          "qid_v1_f771476a7a8ef7cf736900dc50689738dcecda0ab52dffbb3d84cd1bf2502f84"
+          "qid_v1_d7286b88b173eba107aa51b7bc036f33bde8a1fd0aef5728242034fff18beeee"
         ]
       },
       {
@@ -22717,11 +23787,12 @@
       },
       {
         "key": "TPL_INVERSE_AFFINE_INPUT",
-        "count": 3,
+        "count": 4,
         "questionUids": [
           "qid_v1_0a6423aadca9242d5d2acd59e18c76cc0bfb91e8822ea7826aed79de7296747e",
           "qid_v1_43709196cd8d24fa483353da3c22626eaa0067e0af5fbece13b34a10c4e128ba",
-          "qid_v1_8e9d12b8d57e05523dd5761ae2be06fb949c5380cad3f9997d86723d445583d9"
+          "qid_v1_8e9d12b8d57e05523dd5761ae2be06fb949c5380cad3f9997d86723d445583d9",
+          "qid_v1_94ad7b77587f5d27a1d080b95fa299a08e1aa704d8f60bfa92edf1efecb376ad"
         ]
       },
       {
@@ -23106,11 +24177,10 @@
       },
       {
         "key": "TPL_RECOVER_FUNCTION_BY_INPUT_CHANGE",
-        "count": 3,
+        "count": 2,
         "questionUids": [
           "qid_v1_1ee532de31960998ea7b2ed457ecd71c3cf4622ccdb2df84ba465e5543459f34",
-          "qid_v1_4d67b3a1967d7ab20ea2393845bd34c33837c77b0029688d0864a670d24849c5",
-          "qid_v1_94ad7b77587f5d27a1d080b95fa299a08e1aa704d8f60bfa92edf1efecb376ad"
+          "qid_v1_4d67b3a1967d7ab20ea2393845bd34c33837c77b0029688d0864a670d24849c5"
         ]
       },
       {
@@ -23197,6 +24267,43 @@
         ]
       },
       {
+        "key": "CC_ABSOLUTE_VALUE_GRAPH_FOLDING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_aecda0ef62a2c4911712aaf991651f5af9e0a918ed76bac0cef4dd54d3c6a6d9"
+        ]
+      },
+      {
+        "key": "CC_AM_GM_INEQUALITY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_df9e5e7e97f5f8e5f9d6d67a8c39cfc3376a0caee4cc75323cc8a4381178bf0b"
+        ]
+      },
+      {
+        "key": "CC_AXIS_INTERCEPT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f771476a7a8ef7cf736900dc50689738dcecda0ab52dffbb3d84cd1bf2502f84"
+        ]
+      },
+      {
+        "key": "CC_BIJECTION_CONDITION",
+        "count": 3,
+        "questionUids": [
+          "qid_v1_58d0ace91f7b508bc009fe65ced90ee29a30087180a4777f09a5b618e88b237e",
+          "qid_v1_aaf6f76c02f6719ce1bb877781a99b0af1ecd78d42a741873f6f75e902ef5a3c",
+          "qid_v1_dc1bd74a6da4692d69874ceca5709a15f4c52b4dccd557de9e622dc90cdf6b0c"
+        ]
+      },
+      {
+        "key": "CC_CIRCLE_INTERSECTION_CHORD",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_5a4ae04c9cd6aa33a5bd30ed2533e1b5ada64a30426a542ca6b83151fe704f39"
+        ]
+      },
+      {
         "key": "CC_COMBINATORICS_COUNTING",
         "count": 5,
         "questionUids": [
@@ -23230,7 +24337,7 @@
       },
       {
         "key": "CC_DISCRIMINANT",
-        "count": 7,
+        "count": 8,
         "questionUids": [
           "qid_v1_21d9dad0675dff7208f3406303e769885acec72813b9cad045d4695f071b9d8a",
           "qid_v1_3481f583e47fa5ff295a69cd20436263915710237aab376824f5c610369041a6",
@@ -23238,6 +24345,7 @@
           "qid_v1_8ba7e1aa71f724eb187fb52e3e89215494b5b4331d73e38eda31b23c6cb70e48",
           "qid_v1_8e3717742991e91165038de17a707c9e5e12e776504d57ca0157de2362378a1f",
           "qid_v1_d570b59e309a32bed77776f5a7dabece82abf08717f24c9c4f182a635fa17383",
+          "qid_v1_dddd3bf34a29b84fbd74e92472bf0fd348b9eb71137a11eacaa80ee3af70c5bb",
           "qid_v1_de3fb11c423d1677a97f7448cc03967e1610a0effed3f7d6b47cebe3664d4066"
         ]
       },
@@ -23249,10 +24357,28 @@
         ]
       },
       {
-        "key": "CC_FUNCTION_COMPOSITION",
+        "key": "CC_FIXED_POINT_LINE_ROTATION",
         "count": 1,
         "questionUids": [
-          "qid_v1_01eeaa3d642bb7d576d6b811d6dae0a1c47f1be0ffa754453aeda7f53e47fb9b"
+          "qid_v1_aecda0ef62a2c4911712aaf991651f5af9e0a918ed76bac0cef4dd54d3c6a6d9"
+        ]
+      },
+      {
+        "key": "CC_FUNCTION_COMPOSITION",
+        "count": 5,
+        "questionUids": [
+          "qid_v1_01eeaa3d642bb7d576d6b811d6dae0a1c47f1be0ffa754453aeda7f53e47fb9b",
+          "qid_v1_0237b4a53870f00c9a013af45e35dd7971ba5f565cd01b3033b78bfa6b26c4fe",
+          "qid_v1_491505a6336c8222f00020f8e7a7d1c161a48485d78200fa013bc6c02d9f5720",
+          "qid_v1_58d0ace91f7b508bc009fe65ced90ee29a30087180a4777f09a5b618e88b237e",
+          "qid_v1_7726ff0240eebe3f169a7d561d14e55c39e39baa4208229899de21c5cba95753"
+        ]
+      },
+      {
+        "key": "CC_FUNCTION_MAPPING_DIAGRAM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0237b4a53870f00c9a013af45e35dd7971ba5f565cd01b3033b78bfa6b26c4fe"
         ]
       },
       {
@@ -23264,8 +24390,9 @@
       },
       {
         "key": "CC_IDENTITY_LINE_REFLECTION",
-        "count": 1,
+        "count": 2,
         "questionUids": [
+          "qid_v1_7726ff0240eebe3f169a7d561d14e55c39e39baa4208229899de21c5cba95753",
           "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6"
         ]
       },
@@ -23278,9 +24405,18 @@
         ]
       },
       {
-        "key": "CC_INVERSE_FUNCTION_EVALUATION",
-        "count": 2,
+        "key": "CC_INVERSE_EXISTENCE_CONDITION",
+        "count": 1,
         "questionUids": [
+          "qid_v1_dc1bd74a6da4692d69874ceca5709a15f4c52b4dccd557de9e622dc90cdf6b0c"
+        ]
+      },
+      {
+        "key": "CC_INVERSE_FUNCTION_EVALUATION",
+        "count": 4,
+        "questionUids": [
+          "qid_v1_58d0ace91f7b508bc009fe65ced90ee29a30087180a4777f09a5b618e88b237e",
+          "qid_v1_94ad7b77587f5d27a1d080b95fa299a08e1aa704d8f60bfa92edf1efecb376ad",
           "qid_v1_eb6acad9fa980414d8b98a932fbb621b7e9e534813df638566e212383a044869",
           "qid_v1_f442341d29eb865f4e1adaa48f5b495f615efd636315b7daf79cfe5e60dd93c6"
         ]
@@ -23290,6 +24426,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_aa432a165d8888db7b96c9a7e2d5495ce881cddc57d5eb19aef0ade05b7f7bd7"
+        ]
+      },
+      {
+        "key": "CC_INVERSE_GRAPH_SYMMETRY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_21d9dad0675dff7208f3406303e769885acec72813b9cad045d4695f071b9d8a"
         ]
       },
       {
@@ -23316,6 +24459,13 @@
         ]
       },
       {
+        "key": "CC_LINEAR_SUBSTITUTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_94ad7b77587f5d27a1d080b95fa299a08e1aa704d8f60bfa92edf1efecb376ad"
+        ]
+      },
+      {
         "key": "CC_MAPPING_DIAGRAM_READING",
         "count": 1,
         "questionUids": [
@@ -23323,10 +24473,26 @@
         ]
       },
       {
+        "key": "CC_MONOTONICITY_BOUNDARY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_aaf6f76c02f6719ce1bb877781a99b0af1ecd78d42a741873f6f75e902ef5a3c"
+        ]
+      },
+      {
         "key": "CC_PARTIAL_FRACTION_DECOMPOSITION",
         "count": 1,
         "questionUids": [
           "qid_v1_c37cf96ada0cb90998b7afad93207ef2cd95d80646243a07f37b6e8fa6999975"
+        ]
+      },
+      {
+        "key": "CC_PIECEWISE_FUNCTION",
+        "count": 3,
+        "questionUids": [
+          "qid_v1_491505a6336c8222f00020f8e7a7d1c161a48485d78200fa013bc6c02d9f5720",
+          "qid_v1_dc1bd74a6da4692d69874ceca5709a15f4c52b4dccd557de9e622dc90cdf6b0c",
+          "qid_v1_dddd3bf34a29b84fbd74e92472bf0fd348b9eb71137a11eacaa80ee3af70c5bb"
         ]
       },
       {
@@ -23358,6 +24524,13 @@
         ]
       },
       {
+        "key": "CC_QUADRANT_INTERSECTION_CONDITION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_4e4d23ee6a285d23402ef5375d1ee3e40b059c2e559fa30bafe6e7ba541fd561"
+        ]
+      },
+      {
         "key": "CC_QUADRANT_PASSAGE_CONDITION",
         "count": 2,
         "questionUids": [
@@ -23376,14 +24549,13 @@
       },
       {
         "key": "CC_QUADRATIC_FUNCTION",
-        "count": 42,
+        "count": 40,
         "questionUids": [
           "qid_v1_0714a9edf362151e8d5c29ec0de4f66e202aac879d090774c666bc3b7bbdcebb",
           "qid_v1_0f4a0717da88662713dab3143c06d903eef04a6a4d0a4cecbb45abee96a8c520",
           "qid_v1_11c5032f8271bb046040f8c07d6592b45deb004c68e7bea49976813b991e2698",
           "qid_v1_1484bf77d7c260ddea773d832de1912cd4065d0fe35bdf02c1212d7d71de6fca",
           "qid_v1_1ee532de31960998ea7b2ed457ecd71c3cf4622ccdb2df84ba465e5543459f34",
-          "qid_v1_21d9dad0675dff7208f3406303e769885acec72813b9cad045d4695f071b9d8a",
           "qid_v1_26d6391918689b1a8e8b8f8a335d007e3f4b868229749b41299252ac10dffc50",
           "qid_v1_3e20b7a6b1f61c5f2a326dc8b8caf820f49f34ed955a3c46daa1818516e0a0c2",
           "qid_v1_3e81764e9e14546718893916aa0ccd60fc4da90f86645c8a207b56a819bc2b88",
@@ -23413,13 +24585,19 @@
           "qid_v1_c833a22742c99df9c309f1f712a5ab18fca3124505f42c182a98437f303f36f0",
           "qid_v1_cfea07da6f5b0e7c15f96a2fd16b5b5434e4694b206721713c70e40e24abcd9d",
           "qid_v1_d570b59e309a32bed77776f5a7dabece82abf08717f24c9c4f182a635fa17383",
-          "qid_v1_dc1bd74a6da4692d69874ceca5709a15f4c52b4dccd557de9e622dc90cdf6b0c",
           "qid_v1_de3fb11c423d1677a97f7448cc03967e1610a0effed3f7d6b47cebe3664d4066",
           "qid_v1_dfc5231aa2f6aed9cf496b294a09335404452496ce90376d8e8ac09b023064a3",
           "qid_v1_e4e80bb89efff75859ad219a929aa63f6de33efcf57a3af1c0d85e2767229ace",
           "qid_v1_ebf7fe78aab7edc3a3f02fa74d780cd252fb1e4f8ed2eb3a9f7caab25fbf2700",
           "qid_v1_f5151588197b9c81026412921cd9c4f58e4f5e992cc67ceec4199d532355e83c",
           "qid_v1_f5b0d6e41345437442261b3bc9870fe28ad3159209342132bbb7a1732943b244"
+        ]
+      },
+      {
+        "key": "CC_QUADRATIC_ROOT_SEPARATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_21d9dad0675dff7208f3406303e769885acec72813b9cad045d4695f071b9d8a"
         ]
       },
       {
@@ -23437,6 +24615,35 @@
           "qid_v1_b9aa5f6c70f90a6211fa83914ccce369f224353382708e01b15e82b83774cd09",
           "qid_v1_da748b06acd54020aa9aff23c9177fe71f92d062ea08a97c28e5931b0bd24c52",
           "qid_v1_eff1efb4a8b814f33f3e2ef64c5cf64185fd03ec3118267a910722325f59f45b"
+        ]
+      },
+      {
+        "key": "CC_RADICAL_FUNCTION_DOMAIN_RANGE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_438c05bb435a0b7b15f8fa7e6cb4daa78df2c62d8075f49b50311cbdc1ba3c6f"
+        ]
+      },
+      {
+        "key": "CC_RADICAL_LINE_INTERSECTION",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_aecda0ef62a2c4911712aaf991651f5af9e0a918ed76bac0cef4dd54d3c6a6d9",
+          "qid_v1_dddd3bf34a29b84fbd74e92472bf0fd348b9eb71137a11eacaa80ee3af70c5bb"
+        ]
+      },
+      {
+        "key": "CC_RADICAL_REAL_CONDITION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_90314d4905eaa98e930b510a2088ab7acef1edcf7a0486c64493309c28c926c9"
+        ]
+      },
+      {
+        "key": "CC_RATIONAL_EXPRESSION_TRANSFORM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_df9e5e7e97f5f8e5f9d6d67a8c39cfc3376a0caee4cc75323cc8a4381178bf0b"
         ]
       },
       {
@@ -23469,10 +24676,19 @@
       },
       {
         "key": "CC_RATIONAL_FUNCTION_ASYMPTOTE",
-        "count": 2,
+        "count": 4,
         "questionUids": [
           "qid_v1_160082e8798c82361680e4eb673c90c63d5aa09427b2e5210d0fadea5fa05473",
-          "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48"
+          "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
+          "qid_v1_4e4d23ee6a285d23402ef5375d1ee3e40b059c2e559fa30bafe6e7ba541fd561",
+          "qid_v1_f771476a7a8ef7cf736900dc50689738dcecda0ab52dffbb3d84cd1bf2502f84"
+        ]
+      },
+      {
+        "key": "CC_RATIONAL_FUNCTION_SYMMETRY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_5a4ae04c9cd6aa33a5bd30ed2533e1b5ada64a30426a542ca6b83151fe704f39"
         ]
       },
       {
@@ -23505,6 +24721,13 @@
         ]
       },
       {
+        "key": "CC_SIMULTANEOUS_LINEAR_INEQUALITIES",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_90314d4905eaa98e930b510a2088ab7acef1edcf7a0486c64493309c28c926c9"
+        ]
+      },
+      {
         "key": "CC_SINE_FUNCTION_PERIOD",
         "count": 1,
         "questionUids": [
@@ -23523,6 +24746,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_1b8dda0f45ede17995e86942c9ba49d77dbd796a059761f30072544402a1ba57"
+        ]
+      },
+      {
+        "key": "CC_SYMMETRIC_POLYNOMIAL_REDUCTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_5a4ae04c9cd6aa33a5bd30ed2533e1b5ada64a30426a542ca6b83151fe704f39"
         ]
       },
       {
@@ -23575,13 +24805,14 @@
       },
       {
         "key": "COND_INTEGER",
-        "count": 10,
+        "count": 11,
         "questionUids": [
           "qid_v1_1ec420fd038157665bac943230a6b0a7f30fdcf3ebe50d8be32c713bba9ae104",
           "qid_v1_29555484189fa35b758b89051021ff81efacec55f4ca61855c063c95c3375825",
           "qid_v1_3c0a5225677db511c33a3cf0fc10ce334a81bb6adef3267863db5ae9043dfc28",
           "qid_v1_7b7c47bf47c9f4b7033e22d78553d7b5a1c0c627ab6e4e7349805bf3959f06df",
           "qid_v1_8e3717742991e91165038de17a707c9e5e12e776504d57ca0157de2362378a1f",
+          "qid_v1_90314d4905eaa98e930b510a2088ab7acef1edcf7a0486c64493309c28c926c9",
           "qid_v1_9702b8c76fa41553cfa1e9036f84b39f8c823ccd91ca24885ac89b63ed38f52e",
           "qid_v1_9908b504105d14ee3429f21379e77449fc17e7aa59e86ce13870eebc2e13ff64",
           "qid_v1_aacd74a75c2ec98ac2ac29a04c1b5321105f3c870c611ef4d99bc77f05f7f6e2",
@@ -23590,12 +24821,18 @@
         ]
       },
       {
+        "key": "COND_NATURAL",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_21d9dad0675dff7208f3406303e769885acec72813b9cad045d4695f071b9d8a"
+        ]
+      },
+      {
         "key": "COND_NATURAL_NUMBER",
-        "count": 11,
+        "count": 10,
         "questionUids": [
           "qid_v1_076d9c111bf1b45c3cc590a4c3f974fb5f2f100653d41c4587b1d0cc9ff9379f",
           "qid_v1_16ff13c7c97ef1d86b011191020c2194e5b52aeb056b83e660aaef49f62b6cae",
-          "qid_v1_21d9dad0675dff7208f3406303e769885acec72813b9cad045d4695f071b9d8a",
           "qid_v1_9afbe7bbc52dd441a33e0dc601c5fb402272d3348b74e42bbd6f09404d70af8f",
           "qid_v1_aff259e5befcab07f1e7be43161a2249d7bccc0eb4c5fccc8a7842cef452dc74",
           "qid_v1_c6f02529625c32e858d2db7fee94bd37a83cf9bc917be582a61e69d88870e37e",
@@ -23626,17 +24863,19 @@
       },
       {
         "key": "COND_POSITIVE",
-        "count": 9,
+        "count": 11,
         "questionUids": [
           "qid_v1_31143d74bf891a3e10a6c8c34665ac054450c573ec48c3ab37d2eddf99d68a48",
           "qid_v1_3481f583e47fa5ff295a69cd20436263915710237aab376824f5c610369041a6",
           "qid_v1_3a95090e00bfda8bb2be20829c4cc54dcf861ef4dea3d46dd459f803b931d4b9",
           "qid_v1_468059daee150aad7ca3376ef2a077c0a56957b7899af4d041c59cbb4d9e2d4b",
+          "qid_v1_5a4ae04c9cd6aa33a5bd30ed2533e1b5ada64a30426a542ca6b83151fe704f39",
           "qid_v1_7a1ec72b55743d4e449737ed777f15fb30819a8c5406434f3fb69023c8533ae4",
           "qid_v1_9908b504105d14ee3429f21379e77449fc17e7aa59e86ce13870eebc2e13ff64",
           "qid_v1_a9e5a7593831541893febbdeae23eccc8a7f52cb1ad4905b01de23fec29890df",
           "qid_v1_bf695cd7b5535f4b5fd0ad4e0a238d268787b3e624b66acd4940641dea04eaa4",
-          "qid_v1_c81f4d939194fc2977007704d5845c61eb1fe905d74b7d323ec6ab64594f82ea"
+          "qid_v1_c81f4d939194fc2977007704d5845c61eb1fe905d74b7d323ec6ab64594f82ea",
+          "qid_v1_df9e5e7e97f5f8e5f9d6d67a8c39cfc3376a0caee4cc75323cc8a4381178bf0b"
         ]
       },
       {
