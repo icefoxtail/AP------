@@ -794,6 +794,7 @@ const DRAWER_ICON_SVG = {
     manual: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v14H6.5A2.5 2.5 0 0 1 4 15.5z"/><path d="M8 8h8"/><path d="M8 12h7"/><path d="M8 16h6"/></svg>',
     discharged: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 19c0-2.2-1.8-4-4-4s-4 1.8-4 4"/><circle cx="12" cy="8" r="3"/><path d="M17 12h4"/></svg>',
     archive: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="4" rx="1.5"/><path d="M5 8.5v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-9"/><path d="M10 12h4"/></svg>',
+    playground: '<svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 22,8 22,16 12,22 2,16 2,8" fill="none" stroke="currentColor" stroke-width="1.8"/><ellipse cx="12" cy="12" rx="6" ry="3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>',
     manage: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2 3.4-.2-.1a1.7 1.7 0 0 0-1.9.3 1.7 1.7 0 0 0-.6 1.7v.2H9v-.2a1.7 1.7 0 0 0-.6-1.7 1.7 1.7 0 0 0-1.9-.3l-.2.1-2-3.4.1-.1A1.7 1.7 0 0 0 4.6 15 1.7 1.7 0 0 0 3 13.8h-.2v-3.6H3A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1 2-3.4.2.1a1.7 1.7 0 0 0 1.9-.3A1.7 1.7 0 0 0 9 1.7v-.2h6v.2a1.7 1.7 0 0 0 .6 1.7 1.7 1.7 0 0 0 1.9.3l.2-.1 2 3.4-.1.1A1.7 1.7 0 0 0 19.4 9 1.7 1.7 0 0 0 21 10.2h.2v3.6H21a1.7 1.7 0 0 0-1.6 1.2z"/></svg>',
     logout: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4"/><path d="M14 8l4 4-4 4"/><path d="M18 12H9"/></svg>',
     default: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/></svg>'
@@ -851,6 +852,7 @@ function buildDrawerMenu(roleKey) {
             ${drawerItem('exam', '진단평가', "closeAppDrawer(); if(typeof openAdminDiagnosticPanel==='function') openAdminDiagnosticPanel(); else toast('진단평가 기능을 불러오지 못했습니다.', 'warn');")}
 
             ${drawerSection('수업 자료')}
+            ${drawerItem('playground', '도형·함수 실험실', "closeAppDrawer(); window.open('./playground/index.html', '_blank', 'noopener');")}
             ${drawerItem('archive', '아카이브', "closeAppDrawer(); if(typeof openDashboardArchiveWindow==='function') openDashboardArchiveWindow(event); else toast('아카이브를 불러오지 못했습니다.', 'warn');")}
 
             ${drawerSection('지원')}
@@ -872,6 +874,7 @@ function buildDrawerMenu(roleKey) {
         ${drawerItem('schedule', '일정관리', "closeAppDrawer(); if(typeof openExamScheduleModal==='function') openExamScheduleModal(); else toast('일정관리 기능을 불러오지 못했습니다.', 'warn');")}
 
         ${drawerSection('수업 자료')}
+        ${drawerItem('playground', '도형·함수 실험실', "closeAppDrawer(); window.open('./playground/index.html', '_blank', 'noopener');")}
         ${drawerItem('textbook', '교재관리', "closeAppDrawer(); if(typeof openGlobalTextbookManage==='function') openGlobalTextbookManage(); else toast('교재관리 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('material', '수업자료', "closeAppDrawer(); if(typeof openStudyMaterialWrongCenter==='function') openStudyMaterialWrongCenter(); else toast('수업자료 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('exam', '시험지 보관함', "closeAppDrawer(); window.open(appendArchiveSessionToUrlForUi('../archive/assessment/assessment-mvp.html'), '_blank', 'noopener');")}

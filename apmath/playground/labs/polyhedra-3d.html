@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AP Math Playground · 정다면체 결정과 쌍대 구조 실험실</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    :root {
+      --bg: #09090D;
+      --surface: #120E18;
+      --card: #181220;
+      --accent-gold: #D8B77E;
+      --accent-emerald: #55CBA3;
+      --accent-amethyst: #A78AC8;
+      --text: #F5F0E9;
+      --text-sub: #BDB8C2;
+      --border: rgba(216, 183, 126, 0.18);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      height: 60px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(18, 14, 24, 0.9);
+      backdrop-filter: blur(12px);
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .btn-back {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--accent-gold);
+      font-size: 13px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-back:hover {
+      border-color: var(--accent-emerald);
+      color: var(--text);
+    }
+    .lab-title {
+      font-size: 16px;
+      font-weight: 850;
+    }
+    .lab-meta {
+      font-size: 11px;
+      color: var(--accent-emerald);
+      margin-left: 6px;
+    }
+    .layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      overflow: hidden;
+    }
+    #canvas3d {
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: grab;
+    }
+    #canvas3d:active { cursor: grabbing; }
+    aside {
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      overflow-y: auto;
+    }
+    .control-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .control-block label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .val-chip {
+      color: var(--accent-gold);
+      font-family: monospace;
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--accent-emerald);
+    }
+    .proof-box {
+      background: rgba(9, 9, 13, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .proof-formula {
+      font-family: 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+    .proof-stat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      margin-bottom: 4px;
+      color: var(--text-sub);
+    }
+    .proof-match {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 850;
+      color: var(--accent-emerald);
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+    }
+    @media (max-width: 820px) {
+      .layout { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+      aside { height: 260px; border-left: none; border-top: 1px solid var(--border); }
+    }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "../universe/vendor/three.module.js",
+      "three/addons/controls/OrbitControls.js": "../universe/vendor/OrbitControls.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a class="btn-back" href="../teacher-hub.html">← 실험실 허브</a>
+      <div>
+        <span class="lab-title">정다면체 결정과 오일러 다면체 정리</span>
+        <span class="lab-meta">중1 입체도형 · 고등 기하</span>
+      </div>
+    </div>
+    <div style="font-size: 12px; color: var(--accent-gold);">마우스 드래그로 360° 회전 및 휠 줌</div>
+  </header>
+
+  <div class="layout">
+    <canvas id="canvas3d"></canvas>
+
+    <aside>
+      <div class="control-block">
+        <label>내부 쌍대 20면체 비율 <span class="val-chip" id="valScale">0.58</span></label>
+        <input id="sliderScale" type="range" min="0.1" max="1.2" step="0.02" value="0.58">
+      </div>
+
+      <div class="control-block">
+        <label>크리스털 표면 투명도 <span class="val-chip" id="valAlpha">85%</span></label>
+        <input id="sliderAlpha" type="range" min="0.1" max="1.0" step="0.05" value="0.85">
+      </div>
+
+      <div class="proof-box">
+        <div class="proof-formula">V - E + F = 2 (오일러 정리)</div>
+        <div style="font-weight:800; color:var(--accent-emerald); margin: 6px 0 4px;">정십이면체 (Dodecahedron)</div>
+        <div class="proof-stat"><span>꼭짓점 수 (V)</span><span class="val-chip">20</span></div>
+        <div class="proof-stat"><span>모서리 수 (E)</span><span class="val-chip">30</span></div>
+        <div class="proof-stat"><span>면의 수 (F)</span><span class="val-chip">12 (정오각형)</span></div>
+        <div class="proof-match">
+          <span>오일러 지수 (20 - 30 + 12)</span>
+          <span style="color:#55CBA3;">= 2 (성립)</span>
+        </div>
+
+        <div style="font-weight:800; color:var(--accent-gold); margin: 12px 0 4px;">정이십면체 (Icosahedron, 쌍대)</div>
+        <div class="proof-stat"><span>꼭짓점 수 (V)</span><span class="val-chip">12</span></div>
+        <div class="proof-stat"><span>모서리 수 (E)</span><span class="val-chip">30</span></div>
+        <div class="proof-stat"><span>면의 수 (F)</span><span class="val-chip">20 (정삼각형)</span></div>
+        <div class="proof-match">
+          <span>오일러 지수 (12 - 30 + 20)</span>
+          <span style="color:#D8B77E;">= 2 (성립)</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script type="module">
+    import * as THREE from '../universe/vendor/three.module.js';
+    import { OrbitControls } from '../universe/vendor/OrbitControls.js';
+
+    const canvas = document.getElementById('canvas3d');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x09090D);
+
+    const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 200);
+    camera.position.set(0, 0, 16);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+
+    scene.add(new THREE.AmbientLight(0x241727, 2.0));
+    const dir1 = new THREE.DirectionalLight(0xF5F0E9, 2.0);
+    dir1.position.set(15, 25, 20);
+    scene.add(dir1);
+
+    const dir2 = new THREE.DirectionalLight(0x55CBA3, 1.5);
+    dir2.position.set(-15, -15, -10);
+    scene.add(dir2);
+
+    // Group
+    const root = new THREE.Group();
+    scene.add(root);
+
+    // Outer Dodecahedron
+    const dodecaGeo = new THREE.DodecahedronGeometry(4.2, 0);
+    const crystalMat = new THREE.MeshPhysicalMaterial({
+      color: 0x241727,
+      emissive: 0x120B16,
+      roughness: 0.1,
+      metalness: 0.15,
+      transmission: 0.85,
+      transparent: true,
+      opacity: 0.85,
+      ior: 1.52,
+    });
+    const dodecaMesh = new THREE.Mesh(dodecaGeo, crystalMat);
+    root.add(dodecaMesh);
+
+    const dodecaWire = new THREE.LineSegments(
+      new THREE.WireframeGeometry(dodecaGeo),
+      new THREE.LineBasicMaterial({ color: 0x55CBA3, linewidth: 2 })
+    );
+    root.add(dodecaWire);
+
+    // Inner Icosahedron (Dual)
+    const icoGeo = new THREE.IcosahedronGeometry(4.2 * 0.58, 0);
+    const icoWire = new THREE.LineSegments(
+      new THREE.WireframeGeometry(icoGeo),
+      new THREE.LineBasicMaterial({ color: 0xD8B77E, linewidth: 1.8 })
+    );
+    root.add(icoWire);
+
+    // Sliders
+    document.getElementById('sliderScale').addEventListener('input', (e) => {
+      const s = parseFloat(e.target.value);
+      icoWire.scale.set(s / 0.58, s / 0.58, s / 0.58);
+      document.getElementById('valScale').textContent = s.toFixed(2);
+    });
+
+    document.getElementById('sliderAlpha').addEventListener('input', (e) => {
+      const a = parseFloat(e.target.value);
+      crystalMat.opacity = a;
+      crystalMat.transmission = a * 0.95;
+      document.getElementById('valAlpha').textContent = Math.round(a * 100) + '%';
+    });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    });
+
+    let time = 0;
+    function renderLoop() {
+      requestAnimationFrame(renderLoop);
+      time += 0.01;
+      root.rotation.x = time * 0.2;
+      root.rotation.y = time * 0.3;
+      icoWire.rotation.y = -time * 0.5;
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    renderLoop();
+  </script>
+</body>
+</html>

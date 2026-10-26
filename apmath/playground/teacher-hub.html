@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#09090D">
+  <title>AP Math Playground · 수학 시각화 실험실 메인 허브</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpolygon points='24,4 44,16 44,36 24,44 4,36 4,16' fill='none' stroke='%2355CBA3' stroke-width='3'/%3E%3Cellipse cx='24' cy='24' rx='16' ry='8' fill='none' stroke='%23D8B77E' stroke-width='2' stroke-dasharray='3 2'/%3E%3Ccircle cx='18' cy='24' r='2' fill='%23A78AC8'/%3E%3Ccircle cx='30' cy='24' r='2' fill='%23A78AC8'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    :root {
+      --bg-obsidian: #09090D;
+      --bg-surface: #120E18;
+      --bg-card: #181220;
+      --bg-card-hover: #221A2D;
+      --bg-plum: #241727;
+      --text-ivory: #F5F0E9;
+      --text-silver: #BDB8C2;
+      --text-muted: #7E7887;
+      --accent-gold: #D8B77E;
+      --accent-gold-soft: #EAD8B6;
+      --accent-emerald: #55CBA3;
+      --accent-emerald-glow: rgba(85, 203, 163, 0.35);
+      --accent-amethyst: #A78AC8;
+      --border-subtle: rgba(216, 183, 126, 0.14);
+      --border-card: rgba(189, 184, 194, 0.15);
+      --border-card-hover: rgba(85, 203, 163, 0.45);
+      --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-serif: 'Times New Roman', serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 999px;
+      --maxw: 1360px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-obsidian);
+      color: var(--text-ivory);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* Ambient Background Glow */
+    .hub-background-glow {
+      position: fixed;
+      top: -15vw;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80vw;
+      height: 45vw;
+      max-width: 1200px;
+      background: radial-gradient(ellipse at center, rgba(36, 23, 39, 0.6) 0%, rgba(9, 9, 13, 0) 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Header */
+    .hub-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(9, 9, 13, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hub-header-in {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      height: 70px;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .hub-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-ivory);
+      cursor: pointer;
+    }
+
+    .hub-sigil {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid var(--accent-gold);
+      background: rgba(216, 183, 126, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--accent-gold);
+      box-shadow: 0 0 14px rgba(216, 183, 126, 0.2);
+    }
+
+    .hub-brand-name {
+      font-size: 16px;
+      font-weight: 850;
+      letter-spacing: -0.01em;
+      color: var(--text-ivory);
+    }
+
+    .hub-brand-badge {
+      font-size: 11px;
+      font-weight: 750;
+      color: var(--accent-emerald);
+      background: rgba(85, 203, 163, 0.12);
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(85, 203, 163, 0.25);
+      margin-left: 6px;
+    }
+
+    /* Search & Header Actions */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .search-box {
+      position: relative;
+      width: clamp(180px, 25vw, 320px);
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 38px;
+      padding: 0 36px 0 38px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-card);
+      background: rgba(18, 14, 24, 0.8);
+      color: var(--text-ivory);
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s var(--ease);
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent-gold);
+      background: rgba(24, 18, 32, 0.95);
+      box-shadow: 0 0 16px rgba(216, 183, 126, 0.25);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 14px;
+      pointer-events: none;
+    }
+
+    .search-shortcut {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 2px 6px;
+      font-size: 10.5px;
+      font-weight: 800;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .hub-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      height: 38px;
+      padding: 0 16px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      color: var(--accent-gold);
+      font-size: 13px;
+      font-weight: 750;
+      text-decoration: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s var(--ease);
+    }
+
+    .hub-link-btn:hover {
+      border-color: var(--accent-emerald);
+      color: var(--text-ivory);
+      background: rgba(36, 23, 39, 0.9);
+      box-shadow: 0 0 14px rgba(85, 203, 163, 0.2);
+    }
+
+    /* Main Container */
+    .hub-main {
+      position: relative;
+      z-index: 10;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+    }
+
+    /* Hero Banner */
+    .hub-intro {
+      margin-bottom: 34px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .hub-intro-text h1 {
+      font-size: clamp(24px, 3.2vw, 34px);
+      font-weight: 900;
+      color: var(--text-ivory);
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+    }
+
+    .hub-intro-text h1 em {
+      font-style: normal;
+      color: var(--accent-gold);
+    }
+
+    .hub-intro-text p {
+      font-size: 14.5px;
+      color: var(--text-silver);
+      margin-top: 8px;
+      max-width: 620px;
+    }
+
+    .hub-stats-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      background: rgba(18, 14, 24, 0.7);
+      border: 1px solid var(--border-subtle);
+      font-size: 13px;
+      color: var(--text-silver);
+    }
+
+    .hub-stats-badge b {
+      color: var(--accent-emerald);
+      font-weight: 900;
+      font-size: 16px;
+      margin-right: 4px;
+    }
+
+    /* Course Navigation Tabs */
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 28px;
+      scrollbar-width: none;
+    }
+
+    .tabs-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-card);
+      background: var(--bg-surface);
+      color: var(--text-silver);
+      font-size: 13.5px;
+      font-weight: 750;
+      font-family: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s var(--ease);
+    }
+
+    .tab-btn:hover {
+      border-color: var(--border-card-hover);
+      color: var(--text-ivory);
+      background: var(--bg-card);
+    }
+
+    .tab-btn.active {
+      border-color: var(--accent-gold);
+      background: rgba(36, 23, 39, 0.95);
+      color: var(--accent-gold-soft);
+      box-shadow: 0 0 16px rgba(216, 183, 126, 0.22);
+    }
+
+    /* Lab Cards Grid */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 22px;
+    }
+
+    /* Individual Lab Card (Entire Card Clickable) */
+    .lab-card {
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-card);
+      background: var(--bg-card);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: all 0.28s var(--ease);
+      position: relative;
+    }
+
+    .lab-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-emerald);
+      background: var(--bg-card-hover);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 24px var(--accent-emerald-glow);
+    }
+
+    /* Card Mathematical Visual Preview Canvas/SVG */
+    .card-preview {
+      width: 100%;
+      height: 160px;
+      background: radial-gradient(circle at 50% 50%, #1c1527 0%, #100b17 80%, #09090D 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-bottom: 1px solid var(--border-subtle);
+      overflow: hidden;
+    }
+
+    .card-preview svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: transform 0.35s var(--ease);
+    }
+
+    .lab-card:hover .card-preview svg {
+      transform: scale(1.06);
+    }
+
+    .card-badge-layer {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .chip-grade {
+      font-size: 11px;
+      font-weight: 850;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(9, 9, 13, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: var(--text-ivory);
+    }
+
+    .chip-badge {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(85, 203, 163, 0.15);
+      border: 1px solid var(--accent-emerald);
+      color: var(--accent-emerald);
+    }
+
+    .card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      font-size: 12px;
+      color: var(--accent-gold);
+      font-weight: 750;
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 850;
+      color: var(--text-ivory);
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .card-formula {
+      font-family: var(--font-serif);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--accent-gold-soft);
+      padding: 5px 9px;
+      border-radius: 6px;
+      background: rgba(9, 9, 13, 0.6);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .card-summary {
+      font-size: 13px;
+      color: var(--text-silver);
+      line-height: 1.55;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-emerald);
+    }
+
+    .card-footer-arrow {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: transform 0.2s var(--ease);
+    }
+
+    .lab-card:hover .card-footer-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Empty state */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+    }
+
+    .empty-state h3 {
+      font-size: 18px;
+      color: var(--text-silver);
+      margin-bottom: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hub-header-in {
+        padding: 0 16px;
+      }
+      .hub-main {
+        padding: 24px 16px 60px;
+      }
+      .search-box {
+        width: 160px;
+      }
+      .search-shortcut {
+        display: none;
+      }
+      .hub-intro {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .lab-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hub-background-glow"></div>
+
+  <!-- Header -->
+  <header class="hub-header">
+    <div class="hub-header-in">
+      <a class="hub-brand" href="./teacher-hub.html">
+        <div class="hub-sigil">Ω</div>
+        <span class="hub-brand-name">AP Math Playground</span>
+        <span class="hub-brand-badge">실험실 허브</span>
+      </a>
+
+      <div class="header-actions">
+        <div class="search-box">
+          <span class="search-icon">⌕</span>
+          <input id="searchInput" type="search" placeholder="단원·개념·도형 검색" autocomplete="off">
+          <kbd class="search-shortcut">/</kbd>
+        </div>
+        <a class="hub-link-btn" href="./index.html" title="3차원 수학 유니버스로 이동합니다">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          <span>유니버스 우주</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="hub-main">
+    <section class="hub-intro">
+      <div class="hub-intro-text">
+        <h1>도형·함수 <em>시각화 실험실</em></h1>
+        <p>움직이는 도형과 인터랙티브 그래프로 개념을 직관적으로 이해하는 AP Math 수업 실험실 라이브러리입니다.</p>
+      </div>
+      <div class="hub-stats-badge" id="statsBadge">
+        <span>등록 실험실 <b id="statCount">0</b>개</span>
+        <span>•</span>
+        <span>수학 천체 <b>8</b>계열</span>
+      </div>
+    </section>
+
+    <!-- Course Navigation Tabs -->
+    <nav class="tabs-nav" id="tabsNav" aria-label="과정별 필터">
+      <!-- Generated via JS from COURSE_TABS -->
+    </nav>
+
+    <!-- Lab Grid -->
+    <section class="lab-grid" id="labGrid" aria-label="수학 실험실 목록">
+      <!-- Populated via JS -->
+    </section>
+  </main>
+
+  <script type="module">
+    import { MATH_LAB_REGISTRY, COURSE_TABS } from './universe/math-routes.js';
+
+    // SVG Generators for actual mathematical previews on cards!
+    const SVG_PREVIEWS = {
+      'circle-baby': `
+        <svg viewBox="0 0 320 160">
+          <defs>
+            <radialGradient id="gBaby" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#55CBA3" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#55CBA3" stop-opacity="0.05"/>
+            </radialGradient>
+          </defs>
+          <circle cx="160" cy="80" r="54" fill="url(#gBaby)" stroke="#55CBA3" stroke-width="2.5"/>
+          <circle cx="160" cy="98" r="36" fill="#09090D" stroke="#D8B77E" stroke-width="2.2" stroke-dasharray="4 3"/>
+          <circle cx="160" cy="80" r="3" fill="#F5F0E9"/>
+          <circle cx="160" cy="98" r="3" fill="#D8B77E"/>
+          <line x1="160" y1="80" x2="200" y2="44" stroke="#A78AC8" stroke-width="1.5"/>
+          <text x="185" y="58" fill="#F5F0E9" font-size="11" font-weight="800">R=2r</text>
+        </svg>`,
+      'circle-donut': `
+        <svg viewBox="0 0 320 160">
+          <circle cx="160" cy="80" r="54" fill="#55CBA3" fill-opacity="0.22" stroke="#55CBA3" stroke-width="2"/>
+          <circle cx="160" cy="80" r="28" fill="#100b17" stroke="#D8B77E" stroke-width="2"/>
+          <line x1="160" y1="80" x2="214" y2="80" stroke="#EAD8B6" stroke-width="1.5" stroke-dasharray="3 2"/>
+        </svg>`,
+      'circle-snowman': `
+        <svg viewBox="0 0 320 160">
+          <path d="M 100 80 A 60 60 0 0 1 220 80" fill="none" stroke="#55CBA3" stroke-width="2.5"/>
+          <path d="M 100 80 A 20 20 0 0 1 140 80" fill="none" stroke="#D8B77E" stroke-width="2"/>
+          <path d="M 140 80 A 40 40 0 0 1 220 80" fill="none" stroke="#A78AC8" stroke-width="2"/>
+          <line x1="90" y1="80" x2="230" y2="80" stroke="#7E7887" stroke-width="1.2"/>
+        </svg>`,
+      'circle-chord': `
+        <svg viewBox="0 0 320 160">
+          <circle cx="160" cy="80" r="50" fill="none" stroke="#7E7887" stroke-width="1.2"/>
+          <path d="M 125 115 A 50 50 0 0 1 195 115" fill="none" stroke="#55CBA3" stroke-width="3"/>
+          <line x1="125" y1="115" x2="195" y2="115" stroke="#D8B77E" stroke-width="2"/>
+          <line x1="160" y1="80" x2="125" y2="115" stroke="#A78AC8" stroke-width="1.2"/>
+          <line x1="160" y1="80" x2="195" y2="115" stroke="#A78AC8" stroke-width="1.2"/>
+        </svg>`,
+      'polyhedra-crystal': `
+        <svg viewBox="0 0 320 160">
+          <polygon points="160,35 205,52 205,108 160,125 115,108 115,52" fill="#55CBA3" fill-opacity="0.12" stroke="#55CBA3" stroke-width="2"/>
+          <polygon points="160,55 190,75 180,105 140,105 130,75" fill="none" stroke="#D8B77E" stroke-width="1.6"/>
+          <circle cx="160" cy="35" r="3.5" fill="#A78AC8"/>
+          <circle cx="205" cy="52" r="3.5" fill="#A78AC8"/>
+          <circle cx="205" cy="108" r="3.5" fill="#A78AC8"/>
+          <circle cx="160" cy="125" r="3.5" fill="#A78AC8"/>
+          <circle cx="115" cy="108" r="3.5" fill="#A78AC8"/>
+          <circle cx="115" cy="52" r="3.5" fill="#A78AC8"/>
+        </svg>`,
+      'linear-graph': `
+        <svg viewBox="0 0 320 160">
+          <line x1="80" y1="120" x2="240" y2="120" stroke="#7E7887" stroke-width="1.2"/>
+          <line x1="120" y1="140" x2="120" y2="20" stroke="#7E7887" stroke-width="1.2"/>
+          <line x1="90" y1="135" x2="230" y2="35" stroke="#55CBA3" stroke-width="3"/>
+          <circle cx="120" y1="113" r="4" fill="#D8B77E"/>
+          <circle cx="170" y1="78" r="4" fill="#F5F0E9"/>
+        </svg>`,
+      'triangle-centers': `
+        <svg viewBox="0 0 320 160">
+          <polygon points="160,36 105,124 215,124" fill="#55CBA3" fill-opacity="0.1" stroke="#55CBA3" stroke-width="2"/>
+          <circle cx="160" cy="88" r="42" fill="none" stroke="#D8B77E" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <circle cx="160" cy="88" r="3.5" fill="#A78AC8"/>
+        </svg>`,
+      'pythagoras-square': `
+        <svg viewBox="0 0 320 160">
+          <polygon points="145,95 185,95 185,65" fill="#55CBA3" fill-opacity="0.25" stroke="#55CBA3" stroke-width="2"/>
+          <rect x="145" y="95" width="40" height="40" fill="none" stroke="#D8B77E" stroke-width="1.5"/>
+          <rect x="185" y="35" width="30" height="30" fill="none" stroke="#A78AC8" stroke-width="1.5"/>
+        </svg>`,
+      'quadratic-curve': `
+        <svg viewBox="0 0 320 160">
+          <line x1="80" y1="125" x2="240" y2="125" stroke="#7E7887" stroke-width="1"/>
+          <line x1="160" y1="145" x2="160" y2="20" stroke="#7E7887" stroke-width="1"/>
+          <path d="M 100 135 Q 160 30 220 135" fill="none" stroke="#55CBA3" stroke-width="3"/>
+          <circle cx="160" cy="56" r="4" fill="#D8B77E"/>
+        </svg>`,
+      'trig-circle': `
+        <svg viewBox="0 0 320 160">
+          <circle cx="160" cy="80" r="48" fill="none" stroke="#7E7887" stroke-width="1.2"/>
+          <line x1="100" y1="80" x2="220" y2="80" stroke="#7E7887" stroke-width="1"/>
+          <line x1="160" y1="20" x2="160" y2="140" stroke="#7E7887" stroke-width="1"/>
+          <line x1="160" y1="80" x2="194" y2="46" stroke="#D8B77E" stroke-width="2.2"/>
+          <line x1="194" y1="46" x2="194" y2="80" stroke="#55CBA3" stroke-width="2.5"/>
+          <circle cx="194" cy="46" r="3.5" fill="#F5F0E9"/>
+        </svg>`,
+      'ellipse-foci': `
+        <svg viewBox="0 0 320 160">
+          <ellipse cx="160" cy="80" rx="66" ry="40" fill="#55CBA3" fill-opacity="0.1" stroke="#55CBA3" stroke-width="2.5"/>
+          <circle cx="112" cy="80" r="4.5" fill="#A78AC8"/>
+          <circle cx="208" cy="80" r="4.5" fill="#A78AC8"/>
+          <polyline points="112,80 185,46 208,80" fill="none" stroke="#D8B77E" stroke-width="1.8"/>
+          <circle cx="185" cy="46" r="3.5" fill="#F5F0E9"/>
+        </svg>`,
+      'parabola-directrix': `
+        <svg viewBox="0 0 320 160">
+          <line x1="105" y1="20" x2="105" y2="140" stroke="#D8B77E" stroke-width="2"/>
+          <path d="M 225 30 Q 140 80 225 130" fill="none" stroke="#55CBA3" stroke-width="2.8"/>
+          <circle cx="175" cy="80" r="4.5" fill="#55CBA3"/>
+          <polyline points="105,52 195,52 175,80" fill="none" stroke="#EAD8B6" stroke-width="1.6" stroke-dasharray="3 2"/>
+        </svg>`,
+      'hyperbola-cone': `
+        <svg viewBox="0 0 320 160">
+          <path d="M 125 30 Q 145 80 125 130" fill="none" stroke="#55CBA3" stroke-width="2.5"/>
+          <path d="M 195 30 Q 175 80 195 130" fill="none" stroke="#55CBA3" stroke-width="2.5"/>
+          <line x1="110" y1="35" x2="210" y2="125" stroke="#D8B77E" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <line x1="110" y1="125" x2="210" y2="35" stroke="#D8B77E" stroke-width="1.2" stroke-dasharray="3 3"/>
+        </svg>`,
+      'spatial-sphere': `
+        <svg viewBox="0 0 320 160">
+          <circle cx="160" cy="80" r="46" fill="#241727" stroke="#A78AC8" stroke-width="1.8"/>
+          <ellipse cx="160" cy="74" rx="42" ry="16" fill="#55CBA3" fill-opacity="0.3" stroke="#55CBA3" stroke-width="2"/>
+          <line x1="160" y1="74" x2="160" y2="35" stroke="#D8B77E" stroke-width="2"/>
+        </svg>`,
+      'vector-arrow': `
+        <svg viewBox="0 0 320 160">
+          <line x1="160" y1="115" x2="230" y2="115" stroke="#7E7887" stroke-width="1.2"/>
+          <line x1="160" y1="115" x2="160" y2="45" stroke="#7E7887" stroke-width="1.2"/>
+          <line x1="160" y1="115" x2="115" y2="135" stroke="#7E7887" stroke-width="1.2"/>
+          <line x1="160" y1="115" x2="215" y2="60" stroke="#55CBA3" stroke-width="3"/>
+          <polygon points="215,60 205,68 208,60" fill="#55CBA3"/>
+          <polyline points="215,60 215,115 160,115" fill="none" stroke="#D8B77E" stroke-width="1.2" stroke-dasharray="3 2"/>
+        </svg>`,
+      'calculus-curve': `
+        <svg viewBox="0 0 320 160">
+          <line x1="80" y1="80" x2="240" y2="80" stroke="#7E7887" stroke-width="1"/>
+          <path d="M 105 130 C 135 40 185 120 215 30" fill="none" stroke="#55CBA3" stroke-width="3"/>
+          <line x1="125" y1="65" x2="175" y2="65" stroke="#D8B77E" stroke-width="2"/>
+          <circle cx="150" cy="65" r="3.5" fill="#F5F0E9"/>
+        </svg>`,
+      'wave-ribbon': `
+        <svg viewBox="0 0 320 160">
+          <line x1="70" y1="80" x2="250" y2="80" stroke="#7E7887" stroke-width="1"/>
+          <path d="M 80 80 Q 110 30 140 80 T 200 80 T 240 80" fill="none" stroke="#55CBA3" stroke-width="3"/>
+          <path d="M 80 80 Q 110 130 140 80 T 200 80 T 240 80" fill="none" stroke="#A78AC8" stroke-width="1.6" stroke-dasharray="4 3"/>
+        </svg>`,
+    };
+
+    // State
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    // URL parameter parsing (?filter=ellipse, etc.)
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialParam = urlParams.get('filter');
+    if (initialParam) {
+      currentFilter = initialParam;
+    }
+
+    const tabsNav = document.getElementById('tabsNav');
+    const labGrid = document.getElementById('labGrid');
+    const statCount = document.getElementById('statCount');
+    const searchInput = document.getElementById('searchInput');
+
+    // Build Tabs
+    function renderTabs() {
+      tabsNav.innerHTML = '';
+      COURSE_TABS.forEach((tab) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `tab-btn ${currentFilter === tab.key ? 'active' : ''}`;
+        btn.textContent = tab.label;
+        btn.onclick = () => {
+          currentFilter = tab.key;
+          renderTabs();
+          renderCards();
+        };
+        tabsNav.appendChild(btn);
+      });
+    }
+
+    // Filter labs
+    function getFilteredLabs() {
+      return MATH_LAB_REGISTRY.filter((lab) => {
+        // Tab filter match
+        let matchesTab = true;
+        if (currentFilter !== 'all') {
+          if (['m1', 'm2', 'm3', 'high-geometry', 'high-calculus'].includes(currentFilter)) {
+            matchesTab = lab.courseKey === currentFilter;
+          } else {
+            // Filter by celestial ID (e.g. ellipse, polyhedra, parabola)
+            matchesTab = lab.celestialId === currentFilter;
+          }
+        }
+
+        // Search query match
+        let matchesSearch = true;
+        if (searchQuery.trim()) {
+          const q = searchQuery.toLowerCase().trim();
+          matchesSearch =
+            lab.title.toLowerCase().includes(q) ||
+            lab.category.toLowerCase().includes(q) ||
+            lab.unit.toLowerCase().includes(q) ||
+            lab.summary.toLowerCase().includes(q) ||
+            lab.grade.toLowerCase().includes(q) ||
+            lab.formula.toLowerCase().includes(q);
+        }
+
+        return matchesTab && matchesSearch;
+      });
+    }
+
+    // Render Cards
+    function renderCards() {
+      const labs = getFilteredLabs();
+      statCount.textContent = labs.length;
+      labGrid.innerHTML = '';
+
+      if (labs.length === 0) {
+        labGrid.innerHTML = `
+          <div class="empty-state">
+            <h3>검색 결과가 없습니다</h3>
+            <p>검색어를 변경하거나 다른 학년 탭을 선택해 보세요.</p>
+          </div>
+        `;
+        return;
+      }
+
+      labs.forEach((lab) => {
+        const previewSvg = SVG_PREVIEWS[lab.iconType] || SVG_PREVIEWS['circle-baby'];
+        const card = document.createElement('a');
+        card.className = 'lab-card';
+        card.href = lab.path;
+        card.setAttribute('aria-label', `${lab.title} (${lab.grade}) 실험실 열기`);
+
+        card.innerHTML = `
+          <div class="card-preview">
+            <div class="card-badge-layer">
+              <span class="chip-grade">${lab.grade}</span>
+              <span class="chip-badge">${lab.badge}</span>
+            </div>
+            ${previewSvg}
+          </div>
+          <div class="card-body">
+            <div class="card-meta-row">
+              <span>${lab.category} · ${lab.unit}</span>
+              ${lab.scenes ? `<span>${lab.scenes}개 장면</span>` : ''}
+            </div>
+            <h2 class="card-title">${lab.title}</h2>
+            <div class="card-formula">${lab.formula}</div>
+            <p class="card-summary">${lab.summary}</p>
+            <div class="card-footer">
+              <span>실험실 바로 입장</span>
+              <span class="card-footer-arrow">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </span>
+            </div>
+          </div>
+        `;
+
+        card.addEventListener('click', (e) => {
+          // Record recently visited lab
+          try {
+            const recent = JSON.parse(localStorage.getItem('APMATH_PLAYGROUND_RECENT') || '[]');
+            const updated = [lab.id, ...recent.filter(id => id !== lab.id)].slice(0, 5);
+            localStorage.setItem('APMATH_PLAYGROUND_RECENT', JSON.stringify(updated));
+          } catch (_) {}
+        });
+
+        labGrid.appendChild(card);
+      });
+    }
+
+    // Search events
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderCards();
+    });
+
+    // Keyboard shortcut '/' to focus search
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '/' && document.activeElement !== searchInput) {
+        e.preventDefault();
+        searchInput.focus();
+      }
+    });
+
+    // Initial render
+    renderTabs();
+    renderCards();
+  </script>
+</body>
+</html>

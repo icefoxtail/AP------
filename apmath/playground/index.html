@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#09090D">
+  <title>AP MATH UNIVERSE · 수학의 우주를 탐험하다</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpolygon points='24,4 44,16 44,36 24,44 4,36 4,16' fill='none' stroke='%2355CBA3' stroke-width='3'/%3E%3Cellipse cx='24' cy='24' rx='16' ry='8' fill='none' stroke='%23D8B77E' stroke-width='2' stroke-dasharray='3 2'/%3E%3Ccircle cx='18' cy='24' r='2' fill='%23A78AC8'/%3E%3Ccircle cx='30' cy='24' r='2' fill='%23A78AC8'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="stylesheet" href="./universe/universe.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./universe/vendor/three.module.js",
+      "three/addons/controls/OrbitControls.js": "./universe/vendor/OrbitControls.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- 3D Cosmic Space Canvas -->
+  <div class="cosmic-gradient-sky"></div>
+  <canvas id="space" aria-label="3차원 수학 우주 공간"></canvas>
+  <div class="cosmic-vignette"></div>
+
+  <!-- Warp Curtain for Cinematic Entrance -->
+  <div class="warp-curtain" id="warpCurtain" aria-hidden="true"></div>
+
+  <!-- Universe UI Overlay -->
+  <div class="universe-ui" id="universeUi">
+    <!-- Top Navigation Header -->
+    <header class="top-nav">
+      <a class="brand-sigil" href="./index.html" aria-label="AP Math Universe 홈">
+        <div class="sigil-glyph">Ω</div>
+        <div class="brand-text-wrap">
+          <span class="brand-name">AP Math Universe</span>
+          <span class="brand-sub">도형·함수 시각화 실험실</span>
+        </div>
+      </a>
+
+      <div class="top-controls">
+        <button class="glass-btn" id="btnToggleHud" type="button" title="화면의 글자를 숨기고 우주만 감상합니다">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span id="hudBtnText">우주 감상</span>
+        </button>
+        <button class="glass-btn" id="btnToggleMotion" type="button" title="천체의 공전 및 유영 모션을 일시정지합니다">
+          <svg id="motionIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          <span id="motionBtnText">모션 정지</span>
+        </button>
+        <a class="glass-btn" href="../index.html" title="AP Math OS 대시보드로 돌아갑니다">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>OS 대시보드</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Central Hero CTA Section -->
+    <main class="hero-center" id="heroCenter">
+      <div class="brand-kicker">
+        <span class="kicker-dot"></span>
+        <span>The Universe of Mathematics</span>
+      </div>
+      <h1 class="hero-title">
+        수학의 우주를<br>
+        <em>탐험하다</em>
+      </h1>
+      <p class="hero-subtitle">
+        도형이 움직이고, 그래프가 살아나는 수학 시각화 실험실.<br>
+        공간 속의 수학 천체를 직접 회전하고 탐구해 보세요.
+      </p>
+
+      <button class="cta-entrance" id="btnEnterLab" type="button">
+        <span>실험실 입장</span>
+        <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </main>
+
+    <!-- Bottom Navigation Bar & Celestial Selector Pills -->
+    <footer class="bottom-bar">
+      <div class="bottom-hint">
+        <span class="hint-dot"></span>
+        <span>마우스 드래그로 360° 우주를 회전하고, 천체를 클릭해 상세 원리를 확인하세요.</span>
+      </div>
+
+      <nav class="celestial-selector-pills" aria-label="수학 천체 바로가기">
+        <button class="celestial-pill" type="button" data-celestial="polyhedra">💎 정다면체</button>
+        <button class="celestial-pill" type="button" data-celestial="ellipse">🪐 타원</button>
+        <button class="celestial-pill" type="button" data-celestial="parabola">📡 포물선</button>
+        <button class="celestial-pill" type="button" data-celestial="hyperbola">⚡ 쌍곡선</button>
+        <button class="celestial-pill" type="button" data-celestial="circle">🔘 원과 부채꼴</button>
+        <button class="celestial-pill" type="button" data-celestial="solid">🌐 공간도형</button>
+        <button class="celestial-pill" type="button" data-celestial="vector">↗️ 벡터</button>
+        <button class="celestial-pill" type="button" data-celestial="calculus">📈 미적분</button>
+      </nav>
+    </footer>
+  </div>
+
+  <!-- Floating Hover Tooltip -->
+  <div class="hover-tooltip" id="hoverTooltip" aria-hidden="true"></div>
+
+  <!-- Floating Celestial Detail Card (Modal) -->
+  <aside class="celestial-card" id="celestialCard" aria-hidden="true">
+    <div class="card-header">
+      <span class="card-badge" id="cardBadge">이차곡선</span>
+      <button class="card-close" id="cardClose" type="button" aria-label="창 닫기">×</button>
+    </div>
+    <h2 class="card-title" id="cardTitle">타원과 두 초점</h2>
+    <div class="card-subtitle" id="cardSubtitle">초점 거리 합 불변성</div>
+    <div class="card-formula" id="cardFormula">x²/a² + y²/b² = 1  (|PF₁| + |PF₂| = 2a)</div>
+    <p class="card-desc" id="cardDesc">두 초점으로부터의 거리의 합이 일정한 점들의 궤적. 행성의 공전 궤도와 원뿔곡선의 대표 천체입니다.</p>
+    <div class="card-actions">
+      <a class="card-btn-enter" id="cardBtnEnter" href="./teacher-hub.html">
+        <span>해당 단원 실험실로 이동</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+      <button class="card-btn-back" id="cardBtnResetCam" type="button">전체 우주 보기</button>
+    </div>
+  </aside>
+
+  <!-- WebGL Fallback Screen (Graceful Degradation) -->
+  <noscript>
+    <div class="webgl-fallback">
+      <h2>3D 하드웨어 가속 필요</h2>
+      <p>AP Math Universe 3D 엔진은 JavaScript 및 WebGL 2.0 지원 브라우저에서 실행됩니다.</p>
+      <a class="cta-entrance" href="./teacher-hub.html">메인 실험실 허브로 직접 입장</a>
+    </div>
+  </noscript>
+
+  <script type="module">
+    import { createMathUniverse } from './universe/scene.js';
+
+    const canvas = document.getElementById('space');
+    const warpCurtain = document.getElementById('warpCurtain');
+    const universeUi = document.getElementById('universeUi');
+    const hoverTooltip = document.getElementById('hoverTooltip');
+    const celestialCard = document.getElementById('celestialCard');
+    const btnEnterLab = document.getElementById('btnEnterLab');
+    const btnToggleHud = document.getElementById('btnToggleHud');
+    const hudBtnText = document.getElementById('hudBtnText');
+    const btnToggleMotion = document.getElementById('btnToggleMotion');
+    const motionBtnText = document.getElementById('motionBtnText');
+    const motionIcon = document.getElementById('motionIcon');
+    const cardClose = document.getElementById('cardClose');
+    const cardBtnResetCam = document.getElementById('cardBtnResetCam');
+
+    let universe = null;
+
+    try {
+      universe = createMathUniverse({
+        canvas,
+        onHoverNode: (meta, mouseX, mouseY) => {
+          if (!meta) {
+            hoverTooltip.classList.remove('visible');
+            return;
+          }
+          hoverTooltip.textContent = `${meta.title} (${meta.grade})`;
+          hoverTooltip.style.left = `${mouseX}px`;
+          hoverTooltip.style.top = `${mouseY}px`;
+          hoverTooltip.classList.add('visible');
+        },
+        onSelectNode: (meta) => {
+          if (!meta) {
+            celestialCard.classList.remove('open');
+            celestialCard.setAttribute('aria-hidden', 'true');
+            document.querySelectorAll('.celestial-pill').forEach(p => p.classList.remove('active'));
+            return;
+          }
+          document.getElementById('cardBadge').textContent = meta.category || meta.grade;
+          document.getElementById('cardTitle').textContent = meta.title;
+          document.getElementById('cardSubtitle').textContent = meta.subtitle || '';
+          document.getElementById('cardFormula').textContent = meta.formula || '';
+          document.getElementById('cardDesc').textContent = meta.description || '';
+          document.getElementById('cardBtnEnter').href = `./teacher-hub.html?filter=${encodeURIComponent(meta.id)}`;
+
+          document.querySelectorAll('.celestial-pill').forEach(p => {
+            p.classList.toggle('active', p.dataset.celestial === meta.id);
+          });
+
+          celestialCard.classList.add('open');
+          celestialCard.setAttribute('aria-hidden', 'false');
+        },
+      });
+    } catch (err) {
+      console.error('Failed to initialize Math Universe 3D Engine:', err);
+      const fallback = document.createElement('div');
+      fallback.className = 'webgl-fallback';
+      fallback.innerHTML = `
+        <h2>3D 그래픽 초기화 실패</h2>
+        <p>기기의 WebGL 가속을 시작할 수 없습니다. 메인 허브를 통해 모든 수학 실험실을 이용하실 수 있습니다.</p>
+        <a class="cta-entrance" href="./teacher-hub.html">실험실 허브 바로가기</a>
+      `;
+      document.body.appendChild(fallback);
+    }
+
+    // 1. Entrance Action (Camera Warp Flight & Page Transition)
+    btnEnterLab.addEventListener('click', () => {
+      btnEnterLab.disabled = true;
+      btnEnterLab.style.pointerEvents = 'none';
+      warpCurtain.classList.add('active');
+
+      if (universe && typeof universe.triggerLabEntranceFlight === 'function') {
+        universe.triggerLabEntranceFlight(() => {
+          setTimeout(() => {
+            window.location.href = './teacher-hub.html';
+          }, 450);
+        });
+      } else {
+        setTimeout(() => {
+          window.location.href = './teacher-hub.html';
+        }, 500);
+      }
+    });
+
+    // 2. Toggle HUD (우주 감상 모드)
+    let hudVisible = true;
+    btnToggleHud.addEventListener('click', () => {
+      hudVisible = !hudVisible;
+      universeUi.classList.toggle('hud-hidden', !hudVisible);
+      btnToggleHud.classList.toggle('active', !hudVisible);
+      hudBtnText.textContent = hudVisible ? '우주 감상' : '정보 보기';
+    });
+
+    // Double tap/click canvas in HUD-hidden mode to restore UI
+    canvas.addEventListener('dblclick', () => {
+      if (!hudVisible) {
+        hudVisible = true;
+        universeUi.classList.remove('hud-hidden');
+        hudBtnText.textContent = '우주 감상';
+      }
+    });
+
+    // 3. Motion Toggle (일시정지/재개)
+    btnToggleMotion.addEventListener('click', () => {
+      if (!universe) return;
+      const isRunning = universe.toggleMotion();
+      motionBtnText.textContent = isRunning ? '모션 정지' : '모션 재생';
+      motionIcon.innerHTML = isRunning
+        ? '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>'
+        : '<polygon points="5,3 19,12 5,21"/>';
+    });
+
+    // 4. Close Card / Reset Camera
+    function dismissCard() {
+      celestialCard.classList.remove('open');
+      celestialCard.setAttribute('aria-hidden', 'true');
+      document.querySelectorAll('.celestial-pill').forEach(p => p.classList.remove('active'));
+      if (universe) universe.resetFocus();
+    }
+    cardClose.addEventListener('click', dismissCard);
+    cardBtnResetCam.addEventListener('click', dismissCard);
+
+    // 5. Celestial Pills Click to Focus
+    document.querySelectorAll('.celestial-pill').forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const id = pill.dataset.celestial;
+        if (universe) {
+          universe.focusOnCelestial(id);
+          const found = universe.celestialRegistry.find(c => c.metadata.id === id);
+          if (found) {
+            document.getElementById('cardBadge').textContent = found.metadata.category || found.metadata.grade;
+            document.getElementById('cardTitle').textContent = found.metadata.title;
+            document.getElementById('cardSubtitle').textContent = found.metadata.subtitle || '';
+            document.getElementById('cardFormula').textContent = found.metadata.formula || '';
+            document.getElementById('cardDesc').textContent = found.metadata.description || '';
+            document.getElementById('cardBtnEnter').href = `./teacher-hub.html?filter=${encodeURIComponent(id)}`;
+
+            document.querySelectorAll('.celestial-pill').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+
+            celestialCard.classList.add('open');
+            celestialCard.setAttribute('aria-hidden', 'false');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

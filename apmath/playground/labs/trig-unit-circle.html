@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AP Math Playground · 단위원과 삼각비의 기하학적 정의</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <style>
+    :root {
+      --bg: #09090D;
+      --surface: #120E18;
+      --card: #181220;
+      --accent-gold: #D8B77E;
+      --accent-emerald: #55CBA3;
+      --accent-amethyst: #A78AC8;
+      --text: #F5F0E9;
+      --text-sub: #BDB8C2;
+      --border: rgba(216, 183, 126, 0.18);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Pretendard', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      height: 60px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(18, 14, 24, 0.9);
+      backdrop-filter: blur(12px);
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .btn-back {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--accent-gold);
+      font-size: 13px;
+      font-weight: 750;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-back:hover { border-color: var(--accent-emerald); color: var(--text); }
+    .lab-title { font-size: 16px; font-weight: 850; }
+    .lab-meta { font-size: 11px; color: var(--accent-emerald); margin-left: 6px; }
+    .layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      overflow: hidden;
+    }
+    #canvasView {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: radial-gradient(circle at center, #1b1322 0%, #09090D 80%);
+    }
+    aside {
+      background: var(--surface);
+      border-left: 1px solid var(--border);
+      padding: 22px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      overflow-y: auto;
+    }
+    .control-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .control-block label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .val-chip { color: var(--accent-gold); font-family: monospace; font-size: 14px; }
+    input[type=range] { width: 100%; accent-color: var(--accent-emerald); }
+    .btn-action {
+      margin-top: 10px;
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--accent-gold);
+      font-weight: 750;
+      cursor: pointer;
+    }
+    .btn-action:hover { border-color: var(--accent-emerald); color: var(--text); }
+    .proof-box {
+      background: rgba(9, 9, 13, 0.7);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .proof-formula {
+      font-family: 'Times New Roman', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+    .proof-stat {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      margin-bottom: 4px;
+      color: var(--text-sub);
+    }
+    .proof-sum {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 850;
+      color: var(--accent-emerald);
+      display: flex;
+      justify-content: space-between;
+      font-size: 13.5px;
+    }
+    @media (max-width: 820px) {
+      .layout { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+      aside { height: 260px; border-left: none; border-top: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="../teacher-hub.html" class="btn-back">← 메인 허브로</a>
+      <div>
+        <span class="lab-title">단위원과 삼각비의 기하학적 정의</span>
+        <span class="lab-meta">중3 · 삼각비</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <canvas id="canvasView"></canvas>
+    <aside>
+      <div class="control-block">
+        <label>회전각 θ <span class="val-chip" id="valAngle">45°</span></label>
+        <input type="range" id="sliderAngle" min="0" max="360" step="1" value="45">
+        <button class="btn-action" id="btnAnim">자동 회전 재생</button>
+      </div>
+
+      <div class="proof-box">
+        <div class="proof-formula">sin²θ + cos²θ = 1</div>
+        <div class="proof-stat"><span>밑변 (cos θ)</span><span id="statCos" style="color:var(--accent-gold);">+0.707</span></div>
+        <div class="proof-stat"><span>높이 (sin θ)</span><span id="statSin" style="color:var(--accent-emerald);">+0.707</span></div>
+        <div class="proof-stat"><span>접선 길이 (tan θ)</span><span id="statTan" style="color:var(--accent-amethyst);">+1.000</span></div>
+        <div class="proof-sum"><span>cos²θ + sin²θ 항등식</span><span id="statIdentity">1.000</span></div>
+      </div>
+
+      <div class="proof-box" style="font-size: 12.5px; color: var(--text-sub);">
+        <strong>단위원의 본질:</strong><br>
+        반지름이 1인 단위원 위의 동점 좌표는 그 자체로 <span style="color:var(--text);">(cos θ, sin θ)</span>입니다. 피타고라스 정리에 의해 동점은 원둘레 위에 항상 구속됩니다.
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('canvasView');
+    const ctx = canvas.getContext('2d');
+    const sliderAngle = document.getElementById('sliderAngle');
+    const valAngle = document.getElementById('valAngle');
+    const btnAnim = document.getElementById('btnAnim');
+    const statCos = document.getElementById('statCos');
+    const statSin = document.getElementById('statSin');
+    const statTan = document.getElementById('statTan');
+    const statIdentity = document.getElementById('statIdentity');
+
+    let isPlaying = false;
+
+    function resize() {
+      canvas.width = canvas.clientWidth * window.devicePixelRatio;
+      canvas.height = canvas.clientHeight * window.devicePixelRatio;
+      draw();
+    }
+    window.addEventListener('resize', resize);
+
+    function update() {
+      const deg = parseFloat(sliderAngle.value);
+      valAngle.textContent = `${deg}° (${(deg * Math.PI / 180).toFixed(2)} rad)`;
+
+      const rad = (deg * Math.PI) / 180;
+      const c = Math.cos(rad);
+      const s = Math.sin(rad);
+      const t = Math.abs(c) > 0.001 ? Math.tan(rad) : (s > 0 ? 999 : -999);
+
+      statCos.textContent = (c >= 0 ? '+' : '') + c.toFixed(3);
+      statSin.textContent = (s >= 0 ? '+' : '') + s.toFixed(3);
+      statTan.textContent = Math.abs(t) > 50 ? '±∞ (정의 안 됨)' : (t >= 0 ? '+' : '') + t.toFixed(3);
+      statIdentity.textContent = (c*c + s*s).toFixed(3);
+
+      draw();
+    }
+
+    sliderAngle.addEventListener('input', update);
+
+    btnAnim.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      btnAnim.textContent = isPlaying ? '회전 일시정지' : '자동 회전 재생';
+    });
+
+    function draw() {
+      const w = canvas.width;
+      const h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const cx = w / 2;
+      const cy = h / 2;
+      const R = Math.min(w, h) * 0.35;
+
+      // Coordinate axes
+      ctx.strokeStyle = '#7E7887';
+      ctx.lineWidth = 1.5 * window.devicePixelRatio;
+      ctx.beginPath();
+      ctx.moveTo(0, cy); ctx.lineTo(w, cy);
+      ctx.moveTo(cx, 0); ctx.lineTo(cx, h);
+      ctx.stroke();
+
+      // Unit circle
+      ctx.beginPath();
+      ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+      ctx.lineWidth = 2 * window.devicePixelRatio;
+      ctx.stroke();
+
+      const deg = parseFloat(sliderAngle.value);
+      const rad = (deg * Math.PI) / 180;
+      const px = cx + R * Math.cos(rad);
+      const py = cy - R * Math.sin(rad);
+
+      // Triangle fill
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(px, cy);
+      ctx.lineTo(px, py);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(85, 203, 163, 0.12)';
+      ctx.fill();
+
+      // cos line (Gold on x-axis)
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(px, cy);
+      ctx.strokeStyle = '#D8B77E';
+      ctx.lineWidth = 3.5 * window.devicePixelRatio;
+      ctx.stroke();
+
+      // sin line (Emerald vertical)
+      ctx.beginPath();
+      ctx.moveTo(px, cy);
+      ctx.lineTo(px, py);
+      ctx.strokeStyle = '#55CBA3';
+      ctx.lineWidth = 3.5 * window.devicePixelRatio;
+      ctx.stroke();
+
+      // Radius hypotenuse
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(px, py);
+      ctx.strokeStyle = '#F5F0E9';
+      ctx.lineWidth = 2 * window.devicePixelRatio;
+      ctx.stroke();
+
+      // Tangent line if in range
+      const tanVal = Math.tan(rad);
+      if (Math.abs(tanVal) < 4) {
+        ctx.save();
+        ctx.setLineDash([4 * window.devicePixelRatio, 3 * window.devicePixelRatio]);
+        ctx.beginPath();
+        ctx.moveTo(cx + R, cy);
+        ctx.lineTo(cx + R, cy - R * tanVal);
+        ctx.strokeStyle = '#A78AC8';
+        ctx.lineWidth = 2.5 * window.devicePixelRatio;
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // Dot P(cos θ, sin θ)
+      ctx.beginPath();
+      ctx.arc(px, py, 6 * window.devicePixelRatio, 0, Math.PI * 2);
+      ctx.fillStyle = '#55CBA3';
+      ctx.fill();
+      ctx.strokeStyle = '#F5F0E9';
+      ctx.lineWidth = 2 * window.devicePixelRatio;
+      ctx.stroke();
+
+      // Label
+      ctx.font = `bold ${13 * window.devicePixelRatio}px Pretendard`;
+      ctx.fillStyle = '#F5F0E9';
+      ctx.fillText(`P (cos θ, sin θ)`, px + 10, py - 10);
+    }
+
+    function loop() {
+      if (isPlaying) {
+        let deg = (parseFloat(sliderAngle.value) + 0.6) % 360;
+        sliderAngle.value = deg;
+        update();
+      }
+      requestAnimationFrame(loop);
+    }
+
+    resize();
+    update();
+    loop();
+  </script>
+</body>
+</html>
