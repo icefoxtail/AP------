@@ -3,7 +3,7 @@
 // - 온라인: HTTP 캐시를 우회해 항상 네트워크 응답을 사용하고 캐시를 갱신
 // - 오프라인/네트워크 불안: 마지막으로 성공한 응답을 캐시에서 제공
 // - API 호출(workers.dev 등 다른 출처)은 가로채지 않고 브라우저 기본 동작에 맡긴다.
-const CACHE_NAME = 'apmath-os-shell-v3';
+const CACHE_NAME = 'apmath-os-shell-v4-playground';
 
 self.addEventListener('install', function (event) {
     self.skipWaiting();
