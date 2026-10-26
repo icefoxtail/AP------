@@ -46,6 +46,51 @@ test("approved PT/TPL rebinding is limited to active prior keys and META_PIPELIN
   assert.equal(isMetaPipelineApprovedTypeRebindAllowed({ field: "crossConceptKeys", current, priorTypeStatus: "ACTIVE" }), false);
 });
 
+function missingLegacyConceptFixture(t, status, sourceTags = [], reverseAfter = false) {
+  const f = fixture(t, "기하");
+  f.q.crossConceptKeys = sourceTags;
+  if (sourceTags.length) {
+    f.request.items[0].after.crossConceptKeys = ["CC_NEW", "CC_EXTRA"];
+    if (reverseAfter) f.request.items[0].after.crossConceptKeys.reverse();
+    const concepts = f.request.registryChanges.find(change => change.path.includes("/concepts/")).after.concepts;
+    concepts.push({ ...concepts[0], conceptKey: "CC_EXTRA", canonicalLabelKo: "추가 보조 개념", definition: "별도 검수된 보조 개념" });
+  }
+  const sourceText = `window.questions = ${JSON.stringify([f.q])};`;
+  f.put(`archive/exams/${f.request.sourceArchiveFile}`, sourceText);
+  f.request.expectedSourceBlobSha1 = blob(sourceText);
+  const doc = f.read(META);
+  doc.records[0].reviewStatus = "reviewed_pass";
+  doc.records[0].metadataStatus = status;
+  doc.records[0].fieldStatus = { concept: "approved_classification" };
+  delete doc.records[0].crossConceptKeys;
+  f.put(META, doc);
+  f.request.items[0].before.crossConceptKeys = null;
+  for (const key of ["L1", "L2", "L3", "L4"]) f.request.items[0].before[key] = doc.records[0][key] ?? null;
+  f.request.items[0].sourceMetadataBefore = { crossConceptKeys: sourceTags };
+  attachMetaPipelineAudit(f, { promoteCanonicalTypes: true, exactSourceHashBasis: true });
+  return f;
+}
+
+test("partial legacy rows may materialize audited concepts when source explicitly has an empty list", t => {
+  const f = missingLegacyConceptFixture(t, "approved_partial_with_explicit_holds");
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
+});
+
+test("missing concepts on a fully approved legacy row do not authorize rebinding", t => {
+  const f = missingLegacyConceptFixture(t, "approved_full");
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /source\/approved metadata parity/);
+});
+
+test("partial missing-array projection preserves explicit source tags as an ordered prefix", t => {
+  const f = missingLegacyConceptFixture(t, "approved_partial_with_explicit_holds", ["CC_NEW"]);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
+});
+
+test("partial missing-array projection rejects reordering an explicit source tag", t => {
+  const f = missingLegacyConceptFixture(t, "approved_partial_with_explicit_holds", ["CC_NEW"], true);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /source\/approved metadata parity/);
+});
+
 function fixture(t, course = "중1 수학", curriculum = "2022") {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "archive-meta-v2-"));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
@@ -129,8 +174,8 @@ function attachMetaPipelineAudit(f, { existingConcept = false, existingConceptLa
     readingEvidence: { sourceTextExcerpt: "학생용 발문 발췌", solutionDecisiveExcerpt: "핵심 풀이 발췌", visualAssetChecked: dualVisual, visualType: dualVisual ? "SVG_IMAGE" : "NONE" } };
   const audit = { schemaVersion: "ALIVE_META_AUDIT_ATOMIC_v3", examTitle, sourceFileDriveId, sourceSha256: hash(sourceBytes),
     auditedTimestamp: "2026-10-23T00:00:00Z", auditVerdict: "ALL_APPROVED_CANONICAL_STANDARDIZED",
-    statistics: { totalQuestions: 1, approved: 1, holdRemaining: 0, canonicalTemplatesReused: 1, newTemplatesCreated: 0, atomicCrossConceptsBound: 1 },
-    boundAtomicCrossConcepts: [{ conceptKey: auditConcept.conceptKey, labelKo: auditConcept.canonicalLabelKo, definition: auditConcept.definition }],
+    statistics: { totalQuestions: 1, approved: 1, holdRemaining: 0, canonicalTemplatesReused: 1, newTemplatesCreated: 0, atomicCrossConceptsBound: target.crossConceptKeys.length },
+    boundAtomicCrossConcepts: [auditConcept, ...conceptChange.after.concepts.slice(1)].map(concept => ({ conceptKey: concept.conceptKey, labelKo: concept.canonicalLabelKo, definition: concept.definition })),
     handOffToCourier: { status: "READY_FOR_COURIER_REGISTRATION", author: "META_PIPELINE_UNIFIED_AUTHOR", registrationProtocol: "DIRECT_ATOMIC_METADATA_BINDING" },
     records: [record] };
   const manifest = { schemaVersion: "COURIER_INTAKE_MANIFEST_v2", examTitle, sourceFileDriveId, sourceSha256: hash(sourceBytes),

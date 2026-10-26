@@ -95,7 +95,9 @@ const canRebindPendingAuditMetadata = ({ approvalType, metaPipelineAudit, before
     auditedDifficulty.bucket >= 1 && auditedDifficulty.bucket <= 5 && final.difficultyBucket === auditedDifficulty.bucket &&
     final.difficultyConfidence === auditedDifficulty.confidence && Object.hasOwn(patch.sourceMetadataBefore || {}, "difficultyBucket") &&
     eq(patch.sourceMetadataBefore.difficultyBucket ?? null, question.difficultyBucket ?? null);
-  const existingConcepts = current.crossConceptKeys;
+  const legacySourceConcepts = current.metadataStatus === "approved_partial_with_explicit_holds" &&
+    current.crossConceptKeys == null && Array.isArray(question.crossConceptKeys);
+  const existingConcepts = legacySourceConcepts ? question.crossConceptKeys : current.crossConceptKeys;
   const nextConcepts = final.crossConceptKeys;
   const additiveApprovedConcepts = field === "crossConceptKeys" && approved(current) &&
     Array.isArray(existingConcepts) && Array.isArray(nextConcepts) && nextConcepts.length > existingConcepts.length &&
