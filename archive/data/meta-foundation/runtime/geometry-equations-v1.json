@@ -1,20 +1,21 @@
 {
   "schemaVersion": "meta-foundation-runtime-overlay-v1",
   "status": "ACTIVE",
-  "runtimeVersion": "GEOMETRY_EQUATIONS@1.0.2/runtime-bridge-v1",
+  "runtimeVersion": "GEOMETRY_EQUATIONS@1.0.2/reviewed-exam-v2",
   "packId": "GEOMETRY_EQUATIONS",
   "packVersion": "1.0.2",
   "generatedFrom": {
     "assignments": "archive/data/meta-foundation/evidence/geometry-equations/v1/item_metadata_assignments_400.json",
     "taxonomy": "archive/data/meta-foundation/canonical/packs/geometry-equations/taxonomy.json",
-    "bindings": "archive/data/meta-foundation/canonical/packs/geometry-equations/bindings.json"
+    "bindings": "archive/data/meta-foundation/canonical/packs/geometry-equations/bindings.json",
+    "reviewedExam_meta-pipeline-02-jeil-h1-2final-20261026-current": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.json"
   },
   "counts": {
     "records": 448,
     "taxonomyRows": 187,
-    "defaultSelectable": 447,
+    "defaultSelectable": 446,
     "supplementary": 0,
-    "automaticEligibleExpected": 48,
+    "automaticEligibleExpected": 52,
     "sourceHold": 0
   },
   "ownedScopes": [
@@ -6971,41 +6972,102 @@
       "sourceArchiveFile": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 6,
       "sourceQuestionNo": "6",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "1b00b6b950f6b9cbf1f83cc1248a020d1f555b668f4b39a6ea2892d6412a2397",
+      "contentFingerprint": "4a01573949d9e0888517b85125e507b24b4d046b4a94dc71dd7be6cc40becd62",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-04",
       "standardUnit": "도형의 이동",
-      "standardUnitOrder": 4,
       "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "conceptClusterKey": "H22-C2-04-CORE",
       "problemTypeKey": "PT_MOVE_REFLECTION_SHORTEST",
       "templateKey": "TT_SHORTEST_ONE_LINE",
+      "difficultyBucket": 3,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-02-jeil-h1-2final-20261026-current",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-04/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_25_제일고_2학기_기말_고1_기출.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "도형의 방정식",
       "L2": "도형의 이동",
       "L3": "대칭이동을 이용한 최단거리",
       "L4": "한 직선에 대한 대칭이동을 이용한 최단거리",
-      "crossConceptKeys": [
-        "CC_DISTANCE_TWO_POINTS"
-      ],
-      "secondaryConceptKeys": [
-        "CC_DISTANCE_TWO_POINTS"
-      ],
-      "conditionKeys": [],
-      "integrationPattern": "REINTERPRETATION",
-      "level": "중",
-      "difficultyBucket": 3,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
+      "secondaryConceptKeys": [],
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H22-C2-04",
+      "legacySubUnitKey": "H22-C2-04-CORE",
+      "legacySubUnit": "도형의 이동 핵심 개념",
+      "reviewStatus": "MOTHER_FINAL",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "도형의 방정식",
+        "L2": "직선의 방정식",
+        "L3": "점과 직선 사이의 거리",
+        "L4": "도형의 넓이·최소거리"
+      },
+      "primaryConcept": "반사에 의한 두 점 거리합 최솟값",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "Reflecting A across y=x turns AP+BP into a straight-line distance; A's minimum-distance primary is exact and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_LINE_SYMMETRY_REFLECTION",
+        "CC_SHORTEST_DISTANCE_COLLINEAR",
+        "CC_DISTANCE_FORMULA"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "GEOMETRY_EQUATIONS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js#6",
+      "approvedSourceFingerprint": "1b00b6b950f6b9cbf1f83cc1248a020d1f555b668f4b39a6ea2892d6412a2397",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_3a9f3be3978029800641dcf24023685bade376adb0e158ee763f11a4dfac35fd",
@@ -7912,39 +7974,104 @@
       "sourceArchiveFile": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 9,
       "sourceQuestionNo": "9",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "aafb9689a46616ae2a0d64925c27e730dd185d6b0263194520e6294fdffb5756",
+      "contentFingerprint": "ca22680e0c080f864c434afdccb23a952752239bac2f14279f33cdfc91368966",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-02",
       "standardUnit": "직선의 방정식",
-      "standardUnitOrder": 2,
       "subUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+      "subUnit": "방정식과 부등식의 활용",
+      "conceptClusterKey": "H22-C2-02-LINE_EQUATION",
       "problemTypeKey": "PT_INTERCEPT_OPTIMIZATION",
       "templateKey": "TPL_INTERCEPT_SUM_MINIMUM",
+      "difficultyBucket": 3,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-02-jeil-h1-2final-20261026-current",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-02/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_25_제일고_2학기_기말_고1_기출.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "도형의 방정식",
       "L2": "직선의 방정식",
       "L3": "절편을 이용한 최댓값·최솟값",
       "L4": "두 절편의 합의 최솟값",
-      "crossConceptKeys": [],
       "secondaryConceptKeys": [],
-      "conditionKeys": [
-        "COND_POSITIVE"
-      ],
-      "integrationPattern": "CASE_BRANCH",
-      "level": "상",
-      "difficultyBucket": 3,
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2",
+      "legacyLevel": "상",
+      "legacyStandardUnitKey": "H22-C2-02",
+      "legacySubUnitKey": "H22-C2-02-EQUATION_APPLICATION",
+      "legacySubUnit": "방정식과 부등식의 활용",
+      "reviewStatus": "FOUNDATION_DEFECT_CANDIDATE",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "방정식과 부등식",
+        "L2": "여러 가지 부등식",
+        "L3": "절대부등식",
+        "L4": "산술·기하평균"
+      },
+      "primaryConcept": "절편합의 산술·기하평균 최솟값",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The point condition reduces OA+OB to t+36/t and AM-GM gives 27; A's inequality optimization path is exact and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "foundationDefectCandidate": true,
+      "level": "상",
+      "crossConceptKeys": [
+        "CC_LINE_INTERCEPT_EQUATION",
+        "CC_AM_GM_INEQUALITY"
+      ],
+      "conditionKeys": [
+        "COND_POSITIVE"
+      ],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "GEOMETRY_EQUATIONS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js#9",
+      "approvedSourceFingerprint": "aafb9689a46616ae2a0d64925c27e730dd185d6b0263194520e6294fdffb5756",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_4479f1f43c5538247ed92940d0ae06a8392d048297e0b90847832b95463b8c91",
@@ -13368,37 +13495,101 @@
       "sourceArchiveFile": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 2,
       "sourceQuestionNo": "2",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "ff855e80403c8645d33ca35269d6a3d62dbd3978130ac4a705acf851549c4547",
+      "contentFingerprint": "60eb12b7aaba7e6d92f3a4b0949fe27d1ca015145838071c25d4b3793743cd26",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-04",
       "standardUnit": "도형의 이동",
-      "standardUnitOrder": 4,
       "subUnitKey": "H22-C2-04-CORE",
+      "subUnit": "도형의 이동 핵심 개념",
+      "conceptClusterKey": "",
       "problemTypeKey": "PT_MOVE_POINT_TRANSLATION",
       "templateKey": "TT_POINT_TRANSLATION_COORD",
+      "difficultyBucket": 1,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-02-jeil-h1-2final-20261026-current",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-04/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_25_제일고_2학기_기말_고1_기출.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "도형의 방정식",
       "L2": "도형의 이동",
       "L3": "점의 평행이동",
       "L4": "점의 평행이동과 좌표",
-      "crossConceptKeys": [],
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "SEQUENTIAL",
-      "level": "하",
-      "difficultyBucket": 1,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2",
+      "difficultyConfidence": "high",
+      "difficultyBoundaryFlag": "NONE",
+      "legacyLevelCompatibility": "STRONG_CONFLICT",
+      "legacyLevel": "하",
+      "legacyStandardUnitKey": "H22-C2-04",
+      "legacySubUnitKey": "H22-C2-04-CORE",
+      "legacySubUnit": "도형의 이동 핵심 개념",
+      "reviewStatus": "MOTHER_FINAL",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "도형의 방정식",
+        "L2": "도형의 이동",
+        "L3": "평행이동",
+        "L4": "점·직선의 이동"
+      },
+      "primaryConcept": "평행이동",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "A/B normalized fields are equal; common value selected for final candidate.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "level": "하",
+      "crossConceptKeys": [
+        "CC_POINT_TRANSLATION",
+        "CC_COORDINATE_DISPLACEMENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "GEOMETRY_EQUATIONS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js#2",
+      "approvedSourceFingerprint": "ff855e80403c8645d33ca35269d6a3d62dbd3978130ac4a705acf851549c4547",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_8d85d4dcd1b111ef18af2bede5958e174238660c20110c9a05a915e61831c32a",
@@ -15938,41 +16129,104 @@
       "sourceArchiveFile": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 7,
       "sourceQuestionNo": "7",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "35fc8ffc195c33c6eca0a6dd6decaf6ae09b5f923b4d5d1572936e4ab63d7546",
+      "contentFingerprint": "dfedc0dca4d15094163c0d8158c6431d8b6a5d1b0f14d63ec430569fae838f04",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-03",
       "standardUnit": "원의 방정식",
-      "standardUnitOrder": 3,
       "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "conceptClusterKey": "",
       "problemTypeKey": "PT_CIRCLE_TANGENT",
       "templateKey": "TM_TANGENT_TWO_SLOPES",
+      "difficultyBucket": 3,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-02-jeil-h1-2final-20261026-current",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-03/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_25_제일고_2학기_기말_고1_기출.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "도형의 방정식",
       "L2": "원의 방정식",
       "L3": "원의 접선",
       "L4": "두 접선의 기울기",
-      "crossConceptKeys": [
-        "CC_ROOTS_COEFFICIENTS"
-      ],
       "secondaryConceptKeys": [
-        "CC_ROOTS_COEFFICIENTS"
+        "근과 계수의 관계"
+      ],
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": false,
+      "difficultyConfidence": "medium",
+      "difficultyBoundaryFlag": "B34",
+      "legacyLevelCompatibility": "NORMAL",
+      "legacyLevel": "중",
+      "legacyStandardUnitKey": "H22-C2-03",
+      "legacySubUnitKey": "H22-C2-03-TANGENT",
+      "legacySubUnit": "원과 접선",
+      "reviewStatus": "HOLD",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "원의 접선",
+        "L4": "기울기가 주어진 접선"
+      },
+      "primaryConcept": "외부점에서 원에 그은 접선 기울기",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "The source asks for the product of slopes of the two tangents from an external point; A's circle-tangent path is exact and B is UNKNOWN.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "level": "중",
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_LINE",
+        "CC_POINT_TO_LINE_DISTANCE",
+        "CC_VIETA_FORMULAS"
       ],
       "conditionKeys": [],
-      "integrationPattern": "REINTERPRETATION",
-      "level": "중",
-      "difficultyBucket": 3,
-      "difficultyConfidence": "high",
-      "difficultyBoundaryFlag": "NONE",
-      "legacyLevelCompatibility": "NORMAL",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
-      "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2",
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "GEOMETRY_EQUATIONS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js#7",
+      "approvedSourceFingerprint": "35fc8ffc195c33c6eca0a6dd6decaf6ae09b5f923b4d5d1572936e4ab63d7546",
+      "runtimeSelectable": false
     },
     {
       "questionUid": "qid_v1_b9c9cad033aa5452420d31bd021ae449b5d9dbdf3b34618a655bc6644fa7c54c",
@@ -19815,37 +20069,101 @@
       "sourceArchiveFile": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js",
       "sourceOrdinal": 3,
       "sourceQuestionNo": "3",
-      "curriculumKey": "2022",
-      "courseKey": "공통수학2",
+      "sourceFingerprint": "62269e0ed19f5eecc753cad82e4cb504c408f56f4b890e0493caf01c94aeed45",
+      "contentFingerprint": "82c5b89d6ca67f702854dd8d802b08fa69320cb03efef42e86171294348aa071",
       "standardCourse": "공통수학2",
       "standardUnitKey": "H22-C2-03",
       "standardUnit": "원의 방정식",
-      "standardUnitOrder": 3,
       "subUnitKey": "H22-C2-03-TANGENT",
+      "subUnit": "원과 접선",
+      "conceptClusterKey": "",
       "problemTypeKey": "PT_CIRCLE_TANGENT",
       "templateKey": "TM_TANGENT_AT_POINT",
+      "difficultyBucket": 1,
+      "tagConfidence": "MOTHER_FINAL",
+      "tagStatus": "DIRECT_TAGGED",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "mother_final",
+        "canonical": "mother_final",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit",
+        "integrationPattern": "EVIDENCE_DEBT"
+      },
+      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-02-jeil-h1-2final-20261026-current",
+      "approvalEvidence": [
+        "archive/_generated/intelligence/phase3/complete-subunit-classification/archive-complete-subunit-classification-v1.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1/H22-C2-03/metadata_candidate.json",
+        "archive/_generated/intelligence/phase3/metadata-foundation-h1-direct-tagging/mother-final-candidate.json",
+        "HIGH1_METADATA_RELEASE_REPORT.md",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/META_AUDIT_ATOMIC_PACKAGE_25_제일고_2학기_기말_고1_기출.literal-source-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/COURIER_INTAKE_MANIFEST_25_제일고_2학기_기말_고1_기출.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-02-jeil-h1-2final-20261026-current.source-parity.json"
+      ],
+      "curriculumKey": "2022",
+      "courseKey": "공통수학2",
       "L1": "도형의 방정식",
       "L2": "원의 방정식",
       "L3": "원의 접선",
       "L4": "원 위의 점에서의 접선의 방정식",
-      "crossConceptKeys": [],
       "secondaryConceptKeys": [],
-      "conditionKeys": [],
-      "integrationPattern": "NONE",
-      "level": "하",
-      "difficultyBucket": 1,
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL",
-      "metaFoundationCurriculumApplicability": "CORE_OR_SOURCE_VALID",
-      "curriculumApplicability": "DEFAULT_SCOPE",
-      "defaultSelectable": true,
+      "legacyLevel": "하",
+      "legacyStandardUnitKey": "H22-C2-03",
+      "legacySubUnitKey": "H22-C2-03-TANGENT",
+      "legacySubUnit": "원과 접선",
       "reviewStatus": "reviewed_pass",
-      "metadataStatus": "META_FOUNDATION_CANONICAL",
-      "metadataRevision": "meta-foundation:GEOMETRY_EQUATIONS@1.0.2",
+      "difficultyReason": "Mother final source-grounded difficulty adjudication.",
+      "canonicalRaw": {
+        "L1": "도형의 방정식",
+        "L2": "원의 방정식",
+        "L3": "원의 접선",
+        "L4": "접점이 주어진 접선"
+      },
+      "primaryConcept": "원의 접선",
+      "primaryConceptReason": "Mother canonical alias normalization matched the exact RPM v1.0 master path.",
+      "decisiveSolutionStep": null,
+      "canonicalState": "CANONICAL_PATH_MATCH",
+      "l4ReviewStatus": "EXACT_MATCH",
+      "l4GapReason": null,
+      "status": "DIRECT_TAGGED",
+      "statusReason": "A/B normalized fields are equal; common value selected for final candidate.",
+      "sourceMetadataVerification": "MOTHER_SOURCE_BOUND_FINAL",
+      "level": "하",
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_LINE",
+        "CC_PERPENDICULAR_SLOPE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": null,
+      "curriculum": "2022",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
       "metaFoundationStatus": "ACTIVE",
       "metaFoundationPackId": "GEOMETRY_EQUATIONS",
-      "metaFoundationPackVersion": "1.0.2"
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "integrationPatternEvidenceDebt": {
+        "field": "integrationPattern",
+        "status": "EVIDENCE_DEBT",
+        "reason": "META_PIPELINE_AUDIT does not judge IntegrationPattern and the exact source has no explicit value. Preserve null; do not infer NONE."
+      },
+      "sourceIdentity": "original/high/h1/2final/25_제일고_2학기_기말_고1_기출.js#3",
+      "approvedSourceFingerprint": "62269e0ed19f5eecc753cad82e4cb504c408f56f4b890e0493caf01c94aeed45",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_f3ec1529e55a216dd7c0f9aa7756376f5d05ee95a9b87e61bf9b589a399cec8a",
@@ -22713,6 +23031,13 @@
         ]
       },
       {
+        "key": "CC_AM_GM_INEQUALITY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc"
+        ]
+      },
+      {
         "key": "CC_ANGLE_BISECTOR",
         "count": 2,
         "questionUids": [
@@ -22795,6 +23120,14 @@
         ]
       },
       {
+        "key": "CC_CIRCLE_TANGENT_LINE",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
+          "qid_v1_f309b4c9d23cfe88c53f8e07e6347db0140c4f11fef601a8e042b1677bdf7db3"
+        ]
+      },
+      {
         "key": "CC_CIRCUMCIRCLE",
         "count": 2,
         "questionUids": [
@@ -22814,6 +23147,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_f8cc6a86f8ecbdfaf7a4752a5026e38b847c12b516150c334233660e3faed50b"
+        ]
+      },
+      {
+        "key": "CC_COORDINATE_DISPLACEMENT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_8bc12777f135e12acce07e0e0b42e6eeb11800ea1b642646d84f2355929f70fd"
         ]
       },
       {
@@ -22846,8 +23186,15 @@
         ]
       },
       {
+        "key": "CC_DISTANCE_FORMULA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_3904d93a26b02f90221332d7d997efe20a41f27d4cfe9620b170c77ea46e6f25"
+        ]
+      },
+      {
         "key": "CC_DISTANCE_TWO_POINTS",
-        "count": 43,
+        "count": 42,
         "questionUids": [
           "qid_v1_02ae81088bede0e4dba03093f9dc6c986f3c8d17255070024a8f83eb482bfc25",
           "qid_v1_0303fcdceaa62c455ce285e18e3a640b0c158dcf0d8120bec99225a5c3f53029",
@@ -22859,7 +23206,6 @@
           "qid_v1_2006962e93914c1417b1250fd0ffe9dace46fa8ed45d9bc1196664b38b20f0db",
           "qid_v1_2d324b63161761d876a58767cbd013f6238747235bb02c0e3a42136dbb1c6f1c",
           "qid_v1_377ab047fc7a4fe97cea561ac04ec9410830e699c80ddfc063eac903d150d1a1",
-          "qid_v1_3904d93a26b02f90221332d7d997efe20a41f27d4cfe9620b170c77ea46e6f25",
           "qid_v1_424b4bd7cd47d039bba3d1791c144eff5e11296ee097acf94fd5d9a835b84cfd",
           "qid_v1_427b3cc67c32a212ff10fdb6193e5de70847dfff4c2e4537f86495843c37884f",
           "qid_v1_458a1e0657ead69e5d853f4067b4b74222a08d8803b5e83f8a22f628e6f02a38",
@@ -22941,6 +23287,13 @@
         ]
       },
       {
+        "key": "CC_LINE_INTERCEPT_EQUATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_432f715c1ecb2d487ffa187535ac53fe686cc735551b3ee7919c1399e2724dfc"
+        ]
+      },
+      {
         "key": "CC_LINE_INTERSECTION",
         "count": 11,
         "questionUids": [
@@ -22955,6 +23308,13 @@
           "qid_v1_c5307b8fed7affeb71c56ab4b4bc2eeaaf50266ee932e5e5e15b22a415583489",
           "qid_v1_e72428f49edd7ae0e2a368c575a7be76fcf9bfcc177d8558b6998b0055c851c9",
           "qid_v1_e82f96e7b97f32e92b6888ab5c2bda42cb06089270bb59bab43c23c8a490efa6"
+        ]
+      },
+      {
+        "key": "CC_LINE_SYMMETRY_REFLECTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_3904d93a26b02f90221332d7d997efe20a41f27d4cfe9620b170c77ea46e6f25"
         ]
       },
       {
@@ -23027,6 +23387,13 @@
         ]
       },
       {
+        "key": "CC_PERPENDICULAR_SLOPE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f309b4c9d23cfe88c53f8e07e6347db0140c4f11fef601a8e042b1677bdf7db3"
+        ]
+      },
+      {
         "key": "CC_POINT_LINE_DISTANCE",
         "count": 38,
         "questionUids": [
@@ -23068,6 +23435,20 @@
           "qid_v1_ef4f28d04d47c135b04093ed13e6ac9239077d690fb47a8a70b9b3eb2bdc5b73",
           "qid_v1_efa6eb16fddb16fb3c572d37fe5f24486f91e85dd7ad7f83c974a905de838d2e",
           "qid_v1_f3ec1529e55a216dd7c0f9aa7756376f5d05ee95a9b87e61bf9b589a399cec8a"
+        ]
+      },
+      {
+        "key": "CC_POINT_TO_LINE_DISTANCE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606"
+        ]
+      },
+      {
+        "key": "CC_POINT_TRANSLATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_8bc12777f135e12acce07e0e0b42e6eeb11800ea1b642646d84f2355929f70fd"
         ]
       },
       {
@@ -23152,7 +23533,7 @@
       },
       {
         "key": "CC_ROOTS_COEFFICIENTS",
-        "count": 8,
+        "count": 7,
         "questionUids": [
           "qid_v1_0f69ee6c0fab1b7663b7cdf12026634e7c000f994a244efdb40cb6551b63359b",
           "qid_v1_1da8ffcbefa5371c4036906957d7b0659d02fcadc18ccfb3417c11d853e1866b",
@@ -23160,7 +23541,6 @@
           "qid_v1_300f7816d6f5c17498d71a9b364d753531ebb9baf9aa8b20a58ff142f6255fe8",
           "qid_v1_3705de271ea24f274dcae1784e231872164be02133e2b4b2e61143da8496c2d5",
           "qid_v1_83e46fa862f2c22541a442f4070d167c9031d84a0c129e409c6d1c208ebcd11f",
-          "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606",
           "qid_v1_f0cdf7dac099bfbfb3643b35c86a4aff2188d4444839c641bf8e10faac3aef84"
         ]
       },
@@ -23169,6 +23549,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_c8d8e1346f53bf8cd8a47684242e46f2db1cd1068f33e32f1c5b4cbaf2eb12a5"
+        ]
+      },
+      {
+        "key": "CC_SHORTEST_DISTANCE_COLLINEAR",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_3904d93a26b02f90221332d7d997efe20a41f27d4cfe9620b170c77ea46e6f25"
         ]
       },
       {
@@ -23289,6 +23676,13 @@
         "questionUids": [
           "qid_v1_e82759ea5a0b7f4f95ca6cceed41efd5486c8f7974b908dd8cbf1450acf662f1",
           "qid_v1_f1fd143ed62340a01cd64c64873272f4aeba64856faed891eba46f7a17cd16f2"
+        ]
+      },
+      {
+        "key": "CC_VIETA_FORMULAS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_b9644a17aa0796f6680f4939f9db5ddade955db7f8164805d1990aaf15637606"
         ]
       }
     ],
