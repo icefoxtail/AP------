@@ -151,7 +151,7 @@ def compose(prepared,layout,viewport,fragments=None):
             if root.tag.split('}')[-1]!='svg' or any(n.tag.split('}')[-1] not in {'svg','g','path','rect','defs','title','desc'} for n in root.iter()):raise ValueError('UNSAFE_FROZEN_FRAGMENT')
             validate_fragment_font(root,fragment['fontPx'])
             binding=''
-            if label['kind']=='TICK_LABEL':binding=(f' data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'+(f' data-tick-callout="{esc(label["tickLabelCallout"]["schemaVersion"])}"' if label.get('tickLabelCallout') else ''))
+            if label['kind']=='TICK_LABEL':binding=(f' data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'+(f' data-tick-pi-value="{esc(label["tickPiValue"])}"' if label.get('tickPiValue') is not None else '')+(f' data-tick-callout="{esc(label["tickLabelCallout"]["schemaVersion"])}"' if label.get('tickLabelCallout') else ''))
             role=' data-visual-role="tick-label"' if label['kind']=='TICK_LABEL' else ''
             layers.append((90,index,f'<g id="{oid}" data-label-kind="{esc(label["kind"])}"{role} data-priority="{label.get("priority",2)}" data-font-px="{num(fragment["fontPx"])}" data-owner="{esc(fragment["owner"])}" data-fragment-sha="{esc(fragment["fragmentSha256"])}"{binding} transform="translate({num(box["x"])} {num(box["y"])})">'+fragment['svg']+'</g>'))
             continue
@@ -159,6 +159,7 @@ def compose(prepared,layout,viewport,fragments=None):
         attrs+=owner_attrs(label)
         if label['kind']=='TICK_LABEL':
             attrs+=f' data-visual-role="tick-label" data-tick-owner="{esc(label["tickId"])}" data-tick-axis="{esc(label["tickAxis"])}" data-tick-value="{esc(label["tickValue"])}" data-tick-display-value="{esc(label["tickDisplayValue"])}" data-tick-source-x="{num(label["at"][0])}" data-tick-source-y="{num(label["at"][1])}"'
+            if label.get('tickPiValue') is not None:attrs+=f' data-tick-pi-value="{esc(label["tickPiValue"])}"'
             if label.get('tickLabelCallout'):attrs+=f' data-tick-callout="{esc(label["tickLabelCallout"]["schemaVersion"])}"'
         if label.get('centered'):attrs+=' text-anchor="middle" dominant-baseline="central"'
         if label.get('math') or label.get('hasMath'):attrs+=' data-math="true"'

@@ -29,7 +29,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 여러 경우(k=-2일 때, k=3일 때)를 비교하는 풀이: `composite-panels-v1` (경우마다 패널 하나, 2~3개). 삼차·사차 그래프 두 경우(예: a=-1과 a=1/8의 중근)도 2패널로 비교한다(3패널은 이차함수만).
 - 사인·코사인과 수평선·직선의 교점 개수를 구간에서 세는 풀이: `trigonometric-spike-v1`의 `INTERVAL_PI`(아래 3-7).
 - 이어진 조각 그래프(이차식의 절댓값 등)와 수평선 또는 기울어진 직선: `piecewise-polynomial-spike-v1`(아래 3-3).
-- **끊어지는(불연속) 조각함수**: 조각마다 다른 종류(상수·일차·이차)이고 경계에서 점프하거나 함수값이 따로 정해진 경우, 고립점, 계단함수: `piecewise-discontinuous-spike-v1`(아래 3-13).
+- **끊어지는(불연속) 조각함수**: 조각마다 다른 종류(상수·일차·이차)이고 경계에서 점프하거나 함수값이 따로 정해진 경우, 고립점, 계단함수: `piecewise-discontinuous-spike-v1`(아래 3-14).
 - 이차부등식 풀이(판별식, 그래프, 구간, 수직선): `quadratic-inequality-chain-v1` 하나로 쓴다. 계수와 부등호만 주면 끝점, 열린·닫힌 점, 정수점은 엔진이 계산한다. 해가 구간 하나인 경우만 된다(두 조각이거나 공집합이면 거절된다). 계수가 고정된 이차부등식 하나일 때만 쓴다. 매개변수(a, n 등) 때문에 경우가 나뉘거나("n=1, n=2~4, n≥5"), 부등식이 여러 개이거나, 풀이가 결과 요약뿐이면 체인이 아니다. 그때 풀이가 해집합을 수직선 위에서 비교하는 것이면 아래 `number-line-figure-v1`을 쓴다. 그래프가 필요하면 풀이가 실제로 쓰는 그래프 하나(예: 해가 한 점인 접점 그래프)만 `polynomial-spike-v1`로 그리거나, 그림이 없어도 되면 EXEMPT, 못 그리면 UNSUPPORTED를 쓴다.
 - 수직선만 필요한 풀이(두 부등식 해의 교집합, 끝점이 a에 따라 움직이는 해집합, 정수해, 수직선 위 내분점): `number-line-figure-v1`. `numberLine.rows`에 해집합을 한 줄씩(`SET`) 쓰면 같은 눈금 위에 겹쳐 그려지고, `RESULT` 줄은 위 줄들의 공통 범위를 엔진이 계산해 마지막 줄로 그린다(그 끝점은 직접 쓰지 않는다). 한 줄은 구간 한두 조각(`x<-1 또는 x>2`는 두 조각)이고, 끝점은 `{"value":"-1","state":"OPEN"}`(OPEN은 <, >, CLOSED는 ≤, ≥), 끝이 무한이면 `null`, 끝이 근호이면 정확한 문자열 `{"value":"-sqrt(10)","state":"OPEN"}`(`p+q*sqrt(r)` 꼴, 한 plan에 근호 하나; 소수는 안 된다, 관련 오류 `NUMBER_LINE_VALUE_INVALID`/`NUMBER_LINE_RADICALS_MIXED`; 근호 끝값이 다른 끝과 너무 가까우면(`3`과 `sqrt(10)`) `NUMBER_LINE_LABELS_TOO_CLOSE`이니 공통 범위 줄(RESULT)을 빼고 줄만 비교한다), 끝이 a에 따라 움직이면 `{"param":{"mul":"1/3","add":"2/3"},"state":"OPEN"}`(=mul*a+add, 라벨은 분수가 세로로 쌓인 (a+2)/3으로 엔진이 쓴다)이다. `param` 끝이 있으면 `"parameter":{"name":"a","value":"-1"}`로 **그림을 그릴 a의 값**을 정한다(그림에 "a=-1 일 때의 그림"이 표시된다). 풀이가 다루는 경우(경계값 등)를 골라 쓰고 caption에 밝힌다. a에 따라 해의 모양이 달라지는 풀이는 그 한 경우만 그려지니 전체 답의 그림인 척 쓰지 않는다. 정수점은 해당 줄에 `"integerPoints":true`(유계) 또는 `{"range":["-5","5"]}`(최대 25개)를 쓴다. 내분점은 `{"kind":"POINTS","points":[{"id":"A","value":"-2"},{"id":"B","value":"4"},{"id":"P","divides":{"from":"A","to":"B","ratio":["1","2"]}}]}`로 쓰면 P가 AP:PB=1:2인 자리에 놓이고 AP, PB 위에 1, 2가 표시된다(외분점은 안 된다). 이차함수 그래프가 풀이에 필요하면 이것이 아니라 `quadratic-inequality-chain-v1`을 쓴다. 판 전체 모양은 `{"capability":"number-line-figure-v1","numberLine":{"parameter":{...},"rows":[...]},"numberLineCaption":{"text":"두 해의 공통 범위"},"caption":...,"sourceConditions":...,"newVisualInformation":...}`다.
 - 입체도형(각기둥·각뿔·각뿔대·원기둥·원뿔·원뿔대·구·반구)을 숨은 모서리 점선·꼭짓점 이름·길이와 함께, 또는 각기둥·각뿔·원기둥·원뿔의 전개도, 회전축을 지나는 단면, 원뿔 모양 그릇의 수면: `solid-figure-v1`(아래 3-입체). 치수를 실제 길이로 쓰면 엔진이 3차원 모델에서 투영·숨은선·전개를 계산한다.
@@ -64,7 +64,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 |---|---|---|
 | 삼차·사차 다항 | `polynomial-spike-v1` / `polynomial` | `coefficients`는 오름차순 3차·4차 계수, `sourceDomain:{"kind":"ALL_REALS"}`. 중근(접점)도 지원하고 근의 중복도는 엔진·관측기가 계수에서 다시 계산한다 |
 | 유리 (일차/일차) | `rational-spike-v1` / `rational` | `numerator`, `denominator` 각각 [상수항, x계수], `sourceDomain` ALL_REALS. 점근선·구멍은 엔진이 표시 |
-| 무리 √(일차) | `sqrt-affine-spike-v1` / `sqrt-affine` | `radicand` [상수항, 양의 x계수], `sourceDomain:{"kind":"NATURAL_SQRT_AFFINE"}` 또는 `{"kind":"CLOSED_INTERVAL","range":[a,b]}` |
+| 무리 √(일차), 일반형 y=s·k√(a(x−p))+q | `sqrt-affine-spike-v1` / `sqrt-affine` | `radicand` [상수항, x계수(0 불가, 음수면 왼쪽으로 열림)], 선택 `amplitude`(k>0, 기본 1)·`sign`(1 또는 −1)·`offset`(q, 기본 0), `sourceDomain:{"kind":"NATURAL_SQRT_AFFINE"}` 또는 `{"kind":"CLOSED_INTERVAL","range":[a,b]}` |
 | 절댓값 k·\|ax+b\|+c | `absolute-value-spike-v1` / `absolute-value` | `coefficients` [b,a,k,c], ALL_REALS |
 | 두 조각 일차 (구간 닫힘) | `piecewise-affine-spike-v1` / `piecewise-affine` | `sourceDomain:{"kind":"CLOSED_INTERVAL","range":[lo,hi]}`, `piecewise:{breakX,owner:"LEFT"\|"RIGHT",left:[b,m],right:[b,m]}` |
 | 지수 A·e^(kx)+C (자연밑) | `exponential-affine-spike-v1` / `exponential-affine` | `coefficients` [A,k,C], ALL_REALS |
@@ -73,17 +73,21 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 | 로그 A·log_a(kx+b)+C (정수·분수·근호 밑) | `logarithmic-affine-spike-v1` / `logarithmic-affine` | `coefficients` [A,k,b,C], `base`, `sourceDomain:{"kind":"NATURAL_LOG_AFFINE"}` |
 | 지수+로그 두 곡선 (역함수, y=x) | `exp-log-pair-spike-v1` / `exp-log-pair` | `curves`(정확히 2개: `id`, `family`, `base`, `coefficients`, `sourceDomain`, 선택 `shiftX`), `identityLine:true\|false` |
 | 사인·코사인·탄젠트 | `trigonometric-spike-v1` / `trigonometric` | `function:"SIN"\|"COS"\|"TAN"`, `coefficients` [A,k,C], `phasePi`(π의 유리수 배), 정의역 ALL_REALS (TAN은 `ALL_REALS_WITH_TAN_POLES`) |
+| 삼각함수 일반형 (π 계수·평행이동·여러 주기) | `trigonometric-spike-v1` / `trigonometric` | `ratePi`(k=mπ, `coefficients` [A,C]) 또는 `coefficients` [A,k,C], `phasePi`/`phase`, `sourceDomain:{"kind":"INTERVAL","range":[lo,hi]}` 또는 `INTERVAL_PI`, 선택 `keyPoints`, `axisTickPi` (아래 3-13절) |
 
 가장 작은 예: `{"capability":"exponential-affine-spike-v1","graphPlan":{"family":"exponential-affine","coefficients":["1","1","0"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-2,2],"viewport":[-3,3,-2,12]},"caption":"지수함수의 증가와 점근선"}`
 밑이 있는 예: `{"capability":"exponential-affine-spike-v1","graphPlan":{"family":"exponential-affine","base":"2","shiftX":"1","coefficients":["1","1","3"],"sourceDomain":{"kind":"ALL_REALS"},"domain":[-2,2],"viewport":[-3,3,-2,12]},"caption":"y=2^(x-1)+3의 그래프"}` (기준점 (1,4), 점근선 y=3)
 로그 예: `{"capability":"logarithmic-affine-spike-v1","graphPlan":{"family":"logarithmic-affine","base":"3","coefficients":["2","1","0","0"],"sourceDomain":{"kind":"NATURAL_LOG_AFFINE"},"domain":[0.1,4],"viewport":[-1,5,-5,5]},"caption":"y=2log_3 x의 그래프"}`
 역함수 두 곡선 예: `{"capability":"exp-log-pair-spike-v1","graphPlan":{"family":"exp-log-pair","curves":[{"id":"f","family":"logarithmic-affine","base":"3","coefficients":["2","1","0","0"],"sourceDomain":{"kind":"NATURAL_LOG_AFFINE"}},{"id":"g","family":"exponential-affine","base":"sqrt(3)","coefficients":["1","1","0"],"sourceDomain":{"kind":"ALL_REALS"}}],"identityLine":true},"caption":"y=2log_3 x와 그 역함수 y=(√3)^x는 직선 y=x에 대하여 대칭이다."}`
 
+**무리함수 일반형** `y=q+s·k√(a(x−p))`: `radicand:[c,a]`의 시작점은 `p=-c/a`, `q=offset`이고 닫힌 점으로 표시된다. `amplitude`(k>0, 기본 1)·`sign`(s=1 또는 −1)·`offset`(q, 기본 0)을 쓰면 `y=q+s·k√(c+a x)`를 그대로 그린다(a>0이면 `x≥p`에서 오른쪽으로, a<0이면 `x≤p`에서 왼쪽으로 열리고, s·k>0이면 위로, s·k<0이면 아래로 뻗는다). 계수는 정확한 정수·분수 또는 `p+q*sqrt(r)`이고 한 plan에 근호 하나만 쓴다(3-4와 같은 표기). `sourceDomain`이 `NATURAL_SQRT_AFFINE`이면 그린 구간이 경계에서 시작/끝나고, `CLOSED_INTERVAL`이면 `domain`이 그 구간과 같아야 하며 양 끝이 모두 닫힌 점으로 그려진다. 문항이 요구하는 점은 `requiredPoints:[{"id":"A","x":-3,"y":7}]`(곡선 위여야 한다)로 넣고, 정확한 좌표를 띠에 쓰려면 `exactCoordinates:{"A":["-3","7"]}`를 함께 쓴다. 정의역·치역을 그림에 쓰려면 `domainRangeLabels:true`다(예: `x<=2`, `y>=1`). 예: `{"capability":"sqrt-affine-spike-v1","graphPlan":{"family":"sqrt-affine","radicand":["1","-1"],"sign":-1,"offset":"-3","sourceDomain":{"kind":"NATURAL_SQRT_AFFINE"},"domain":[-8,1],"viewport":[-8,2,-7,-2],"domainRangeLabels":true},"caption":"y=-√(1-x)-3의 그래프는 끝점 (1,-3)에서 왼쪽 위로 뻗는다."}`
+- 일반형 오류 코드: `SQRT_AMPLITUDE_MUST_BE_POSITIVE`/`INVALID_SQRT_SIGN`(k≤0, s가 ±1이 아님), `INVALID_SQRT_AFFINE_COEFFICIENT`/`UNSUPPORTED_SQRT_AFFINE_SLOPE`(계수 형식, x계수 0), `REQUIRED_SQRT_POINT_NOT_ON_CURVE`/`REQUIRED_SQRT_POINT_OUTSIDE_SOURCE_INTERVAL`(필수점이 곡선 밖·구간 밖), `SQRT_SOURCE_INTERVAL_BELOW_NATURAL_BOUNDARY`/`SQRT_SOURCE_INTERVAL_BEYOND_NATURAL_BOUNDARY`(닫힌 구간이 자연 정의역 밖), `SQRT_DRAW_INTERVAL_MUST_PRESERVE_SOURCE_INTERVAL`/`SQRT_DRAW_INTERVAL_MUST_PRESERVE_ENDPOINT`(그린 구간이 sourceDomain과 다름), `EXACT_COORDINATES_MISMATCH:<id>`(정확한 좌표가 숫자 좌표와 다름), `SQRT_AFFINE_IRRATIONAL_FORM_UNSUPPORTED`(중첩근호·두 근호), `SQRT_ENDPOINT_TO_TAIL_SPAN_BELOW_PROFILE_FLOOR`(UNSUPPORTED: 끝점에서 꼬리까지가 화면에서 48 CSS px보다 짧다. domain/viewport를 넓힌다). 독립 관측기가 시작점·열린 쪽·단조 방향·치역 방향·필수점·끝점 마커를 plan의 정확값에서 다시 계산해 최종 SVG와 대조한다.
+
 한계(가짜 지원 없이 오류 코드로 거절된다):
 - 삼차·사차의 **중근**: 계수를 주면 근의 중복도를 SymPy로 정확히 계산해, 짝수 중복(2·4중근)은 x축에 접하고 홀수 중복(3중근)은 x축을 뚫으며 평평하게 지난다. 독립 관측기가 최종 SVG에서 근 위의 점, 접하는 쪽(짝수) 또는 부호가 바뀌는지(홀수), 3중근의 평평한 구간을 다시 확인한다. 근이 1 CSS px보다 가까우면 `OVERVIEW_ROOTS_BELOW_DISPLAY_RESOLUTION`/`OVERVIEW_FEATURES_BELOW_DISPLAY_RESOLUTION`(UNSUPPORTED)이다. 근의 위치를 고정할 수 없을 만큼 넓은 중근은 `UNSUPPORTED_CUBIC_QUARTIC_REPEATED_ROOT_IMPRECISE`다(3·4차 중근은 유리수 또는 p+q√r이라 실제로는 거의 없다). 식은 x^3-3/4*x-1/4처럼 분수를 세로로 쌓아 쓰고, 분수 둘레에 괄호를 남기지 않는다.
 - 지수·로그는 **밑을 생략하면 자연밑 e**이고, `base`로 양의 정수("2", "3"), 양의 분수("1/2", "3/2"), `sqrt(n)`(n은 1보다 큰 제곱인수가 없는 정수, 예: "sqrt(2)", "sqrt(3)")을 쓸 수 있다. 엔진과 관측기는 `base`와 유리수 계수에서 곡선·기준점·점근선·정의역 경계를 각각 SymPy로 다시 계산한다. `base`가 문자 a이거나 0 이하·1이면 `*_BASE_GRAMMAR_REQUIRED`/`*_BASE_OUT_OF_RANGE`, 중첩근호·제곱수 근호(`sqrt(2+sqrt(3))`, `sqrt(4)`, `sqrt(8)`)는 `*_BASE_RADICAL_NOT_SQUARE_FREE`로 거절한다. 소수 밑도 안 된다. 지수 `shiftX`는 정확한 정수·분수 문자열만 된다.
 - 두 곡선은 `exp-log-pair-spike-v1`에서만 되고 **정확히 두 개**다. 각 곡선의 `sourceDomain`은 계열 규칙을 그대로 따르고, 두 곡선의 표시 구간이 겹치지 않거나 폭이 16을 넘으면 `EXP_LOG_PAIR_NO_SHARED_WINDOW`/`EXP_LOG_PAIR_WINDOW_TOO_WIDE`다. `identityLine:true`는 점선 `y=x`를 함께 그린다. 교점의 정확한 좌표 표시, 곡선 위의 임의 점·삼각형·색칠 영역은 이 계열에서 지원하지 않는다.
-- 삼각함수는 정의역 전체에서 **한 주기**(SIN·COS) 또는 **인접한 두 극 사이 한 가지**(TAN)만 그리고, k는 유리수다(`sin πx`처럼 k에 π가 들면 안 된다. `phasePi`만 π의 배수를 받는다). 구간을 제한한 그래프와 직선·수평선과의 교점 개수(사인·코사인만)는 아래 3-7절, 합성·거듭제곱, 두 함수의 비교는 안 된다.
+- 삼각함수는 기본 문법에서 정의역 전체의 **한 주기**(SIN·COS) 또는 **인접한 두 극 사이 한 가지**(TAN)만 그리고, k는 유리수다(`sin πx`처럼 k에 π가 들면 안 된다. `phasePi`만 π의 배수를 받는다). 구간을 제한한 그래프와 직선·수평선과의 교점 개수(사인·코사인만)는 아래 3-7절, π 계수·평행이동·여러 주기·탄젠트 점근선은 3-13절, 합성·거듭제곱, 두 함수의 비교는 안 된다.
 - 곡선은 한 개다(위 표의 계열 기준. 이어진 조각 그래프와 직선은 3-3). 직선(`y=-1/2`, `y=x+k`; 단 사인·코사인과 직선은 3-7절), 수직선, 둘째 곡선(이차함수 둘은 3-6), 색칠 영역, 보조선은 같이 그릴 수 없다. 교점의 개수를 보이는 풀이면 이 그림이 풀이의 전부를 보여 주지 못하니 UNSUPPORTED로 쓴다. 곡선의 모양만 풀이가 쓸 때(점근선, 정의역 경계, 주기·극값, 꺾이는 점)에 쓴다.
 - 유리함수는 분자·분모 모두 일차, 절댓값은 `|일차식|` 하나, 조각은 두 조각이고 꺾임점이 구간 안쪽이다. `|x²-2x|` 같은 이차식의 절댓값은 `piecewise-polynomial-spike-v1`을 쓴다.
 - 눈금: 기본 눈금은 x=1, y=1 두 곳이다. 곡선이 그 눈금 숫자 자리를 실제로 지나가면(코사인의 최댓값 y=1, 로그의 기준점 x=1) 숫자가 곡선에 겹쳐 `LAYOUT_INVENTORY_INCOMPLETE`(`unresolved: tick-y-1-label` 등)로 거절된다. 엔진이 숫자를 곡선 위에 얹지 않는 것이 맞으니, 이때는 plan에 `axisTickValues:{"x":[],"y":[]}`(또는 겹치지 않는 값만)를 쓴다. 최댓값·기준점 같은 특징점의 값은 엔진이 따로 표시한다.
@@ -430,8 +434,30 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 
 **오류와 한계.** 집합 4개 이상, 열 4개 이상, 열당 원소 9개 이상, 벤다이어그램 원소 13개 이상은 지원하지 않는다(`SET_COUNT_UNSUPPORTED`, `MAPPING_COLUMN_COUNT_UNSUPPORTED`, `MAPPING_TOO_MANY_ELEMENTS`, `SET_TOO_MANY_ELEMENTS`). 집합을 `{x|x≤10}` 같은 무한집합·구간 기호로 직접 쓰지 말고, 문제가 말한 유한 원소만 `elements`에 넣는다. 원소 글자가 영역에 들어갈 자리가 없으면 `SET_ELEMENT_NO_ROOM`/`SET_LABEL_NO_ROOM`, 집합 이름이 들어갈 자리가 없으면 `SET_LABEL_NO_ROOM`이니 원소 수나 집합 수를 줄인다. 대응도의 화살표가 다른 원소 글자를 가로지르면 `MAPPING_ARROW_BLOCKS_LABEL`, 원소 글자가 타원 밖으로 나가면 `MAPPING_ELEMENT_OUT_OF_OVAL`이다. 정답을 그림에 쓰지 말고 풀이에서 쓰는 값·영역·대응만 표시한다.
 
+### 3-13. 삼각함수 일반형: 진폭·주기·평행이동, π 계수, 탄젠트 가지: `ratePi`, `phase`, `keyPoints`, `axisTickPi`
 
-### 3-13. 불연속·혼합 조각함수: 조각별 열린·닫힌 끝, 점프, 고립점, 계단 (`piecewise-discontinuous-spike-v1`)
+`y=a·sin(bx+c)+d`처럼 **b가 π의 유리수 배수이거나 c가 π의 배수·라디안인** 사인·코사인·탄젠트 그래프, 그리고 여러 주기를 한 그림에 보이는 풀이에 쓴다. 기본 한 주기·π 구간 문법(3-2, 3-7)은 그대로 두고 아래 필드만 더한다.
+
+- `graphPlan.ratePi: "1/6"`: b=π/6처럼 **b에 π가 들 때** 쓴다. 이때 `coefficients`는 [a, d] 두 개다(a는 진폭, d는 평행이동). π가 들지 않는 b는 기존처럼 `coefficients` [a, b, d] 세 개로 쓴다. a와 b는 0이 아니어야 한다.
+- `graphPlan.phasePi: "-1/6"` 또는 `graphPlan.phase: "1/2"`: c를 각각 **π의 유리수 배** 또는 **라디안**으로 쓴다(둘 중 하나만). 한 주기 그림(정의역 ALL_REALS)에서는 phase가 π의 배수여야 하고, 라디안 phase는 구간 그림에서만 된다.
+- **주기:** 사인·코사인은 `2/|b|`(ratePi면 b=mπ이므로 x 축 단위로 `2/|m|`), 탄젠트는 `1/|b|`다. 주기는 엔진이 계산해 `T=...` 라벨로 쓰므로 plan에 쓰지 않는다.
+- **구간:** `sourceDomain:{"kind":"INTERVAL","range":["0","8"],"states":["CLOSED","CLOSED"]}`는 x를 **보통 수 단위**(시간·개월·자연수)로 재는 구간이고, 이때는 `ratePi`가 있어야 한다. `{"kind":"INTERVAL_PI","rangePi":["0","6"]}`는 x를 **π 단위**로 재는 구간이고, 이때는 b에 π가 들면 안 되며 phase는 π의 배수여야 한다. 두 형식을 섞으면 거절된다. 주기는 1/4~12개까지 그린다.
+- `graphPlan.keyPoints: true`: 구간 안의 **모든 극값과 중심선 교점**(사인·코사인)을 정확한 좌표로 계산해 작은 점으로 찍는다. phase가 π의 배수일 때만 된다. 점이 너무 많으면(60개 초과) 거절하니 구간을 줄인다.
+- `graphPlan.axisTickPi: true`: π 단위 x축의 눈금 숫자를 `axisTickValues.x`에 적은 **π의 유리수 배수**로 쓴다(`"1/2"`→π/2, `"2"`→2π). 값은 0이 아니고 화면 안에 있어야 한다. 보통 수 축이면 이 필드를 쓰지 않고 `axisTickValues`에 그냥 수를 쓴다.
+- `graphPlan.referenceLines`: 사인·코사인에서만 되고 수평선·기울어진 직선과의 교점 개수를 주장한다(3-7절과 같은 규칙). **탄젠트에는 쓸 수 없다.**
+- 탄젠트를 구간에 그리면 **여러 가지**가 나오고, 구간 안의 모든 극(pole)을 x좌표 정확값으로 찾아 점선으로 긋는다. 극이 구간 끝과 겹치거나 구간 안에 하나도 없으면 거절된다.
+
+```json
+{"capability":"trigonometric-spike-v1","graphPlan":{"family":"trigonometric","function":"COS","ratePi":"1/2","coefficients":["1","0"],"phasePi":"0",
+ "sourceDomain":{"kind":"INTERVAL","range":["0","8"],"states":["CLOSED","CLOSED"]},
+ "referenceLines":[{"id":"h","y":"1/2","intersectionCount":4}],"keyPoints":true,
+ "axisTickValues":{"x":["2","4","6"],"y":["1","-1"]}},
+ "caption":"y=cos(πx/2)의 그래프는 주기 4마다 되풀이되고, 직선 y=1/2과 한 주기에 두 점씩 만난다."}
+```
+
+오류 코드: `TRIG_GRAMMAR_UNSUPPORTED`(ratePi와 계수 개수가 안 맞는다. ratePi면 [a,d], 아니면 [a,b,d]), `INVALID_TRIGONOMETRIC_RATE`/`TRIGONOMETRIC_COEFFICIENT_INVALID`/`INVALID_TRIGONOMETRIC_PHASE`(정확한 정수·분수 문자열이 아니다), `TRIGONOMETRIC_NONZERO_SCALE_AND_RATE_REQUIRED`(a나 b가 0), `TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED`/`INVALID_TRIG_INTERVAL`(구간 형식·끝 상태·순서), `TRIG_INTERVAL_REQUIRES_RATE_PI`(보통 수 구간인데 b에 π가 없다), `TRIG_RATE_PI_REQUIRES_PLAIN_INTERVAL`(b에 π가 있는데 π 단위 구간을 썼다), `TRIG_INTERVAL_PI_PHASE_MUST_BE_PI`(π 단위 구간인데 라디안 phase), `TRIG_PHASE_RATIONAL_REQUIRES_INTERVAL`(한 주기 그림에 라디안 phase), `TRIG_KEY_POINTS_REQUIRE_SIN_COS`/`TRIG_KEY_POINTS_REQUIRE_RATIONAL_PHASE`/`TRIG_KEY_POINTS_TOO_MANY`/`INVALID_TRIG_KEY_POINTS`, `TRIG_TAN_REFERENCE_LINES_UNSUPPORTED`/`TRIG_TAN_REQUIRES_PI_PHASE`/`TRIG_TAN_POLE_AT_INTERVAL_END`/`TRIG_TAN_INTERVAL_NO_POLE`, `TRIG_TICK_PI_REQUIRES_PI_AXIS`/`INVALID_TRIG_TICK_PI_FLAG`/`INVALID_TRIG_AXIS_TICK_VALUES`/`TRIG_PI_TICK_VALUE_INVALID`/`TRIG_PI_TICK_OUTSIDE_VIEW`, `TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED`(1/4주기 미만·12주기 초과), `TRIG_LINE_INTERSECTION_COUNT_MISMATCH`/`TRIG_LINE_THROUGH_INTERVAL_END`(3-7절과 같다), `UNSUPPORTED_TRIGONOMETRIC_NUMERIC_SCOPE`.
+
+### 3-14. 불연속·혼합 조각함수: 조각별 열린·닫힌 끝, 점프, 고립점, 계단 (`piecewise-discontinuous-spike-v1`)
 
 조각이 **서로 이어지지 않아도 되는** 한 함수를 그린다. 상수·일차·이차 조각을 섞을 수 있고, 경계에서 점프하거나 함수값이 따로 정해지며(고립점), 끝점이 열린·닫힌 점으로 표시된다. 계단함수도 이 capability로 쓴다. `capability:"piecewise-discontinuous-spike-v1"`, `graphPlan.family:"piecewise-discontinuous"`.
 

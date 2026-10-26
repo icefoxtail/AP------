@@ -155,11 +155,17 @@ def prepare(spec):
         reference=logarithmic_features['referencePoint'];critical.append((float(Fraction(reference['x'])),float(Fraction(reference['y']))))
     trig_features=spec['displayFacts'].get('trigFeatures')
     if trig_features is not None:
-        if trig_features.get('schemaVersion')!='TRIGONOMETRIC_FEATURES_v1':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        if trig_features.get('schemaVersion') not in {'TRIGONOMETRIC_FEATURES_v1','TRIGONOMETRIC_FEATURES_v2'}:raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        general=trig_features.get('schemaVersion')=='TRIGONOMETRIC_FEATURES_v2'
         if trig_features.get('function') in {'SIN','COS'}:
-            critical.extend((float(Fraction(row['xPiMultiple']))*math.pi,float(Fraction(row['y']))) for row in trig_features.get('phasePoints',[]))
+            critical.extend(((float(Fraction(row['x'])),float(Fraction(row['y']))) if general else (float(Fraction(row['xPiMultiple']))*math.pi,float(Fraction(row['y'])))) for row in trig_features.get('phasePoints',[]))
         elif trig_features.get('referencePoint'):
-            reference=trig_features['referencePoint'];critical.append((float(Fraction(reference['xPiMultiple']))*math.pi,float(Fraction(reference['y']))))
+            reference=trig_features['referencePoint'];critical.append((float(Fraction(reference['x'] if general else reference['xPiMultiple']))*(1 if general else math.pi),float(Fraction(reference['y']))))
+    trig_interval_features=spec['displayFacts'].get('trigIntervalFeatures')
+    if trig_interval_features is not None:
+        if trig_interval_features.get('schemaVersion')!='TRIGONOMETRIC_INTERVAL_FEATURES_v2':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        factor=math.pi if trig_interval_features.get('axisUnit')=='PI' else 1.0
+        critical.extend((float(Fraction(row['x']))*factor,float(Fraction(row['y']))) for row in trig_interval_features.get('keyPoints',[]))
     pair_features=spec['displayFacts'].get('expLogPairFeatures')
     if pair_features is not None:
         if pair_features.get('schemaVersion')!='EXP_LOG_PAIR_FEATURES_v1':raise ValueError('EXP_LOG_PAIR_FEATURE_INVENTORY_REQUIRED')
@@ -189,6 +195,15 @@ def prepare(spec):
                     except (TypeError,ValueError,ZeroDivisionError):raise ValueError('INVALID_AXIS_TICK_VALUE:'+axis) from None
                     if not math.isfinite(value) or abs(value)<=1e-12:raise ValueError('INVALID_AXIS_TICK_VALUE:'+axis)
                     if not (xmin<=value<=xmax if axis=='x' else ymin<=value<=ymax):raise ValueError('AXIS_TICK_VALUE_OUT_OF_VIEW:'+axis)
+        tick_pi_labels=spec['displayFacts'].get('tickPiLabels')
+        if tick_pi_labels is not None:
+            if not isinstance(tick_pi_labels,list):raise ValueError('INVALID_TICK_PI_LABELS')
+            for row in tick_pi_labels:
+                if (not isinstance(row,dict) or set(row)!={'value','text','multiple'} or not isinstance(row['text'],str)
+                    or not isinstance(row['multiple'],str)):raise ValueError('INVALID_TICK_PI_LABELS')
+                try:level=float(row['value'])
+                except (TypeError,ValueError):raise ValueError('INVALID_TICK_PI_LABELS') from None
+                if not math.isfinite(level) or abs(level)<=1e-12:raise ValueError('INVALID_TICK_PI_LABELS')
         raw_tick_callouts=spec['displayFacts'].get('tickLabelCallouts',[])
         if not isinstance(raw_tick_callouts,list):raise ValueError('INVALID_TICK_LABEL_CALLOUTS')
         tick_callouts={}
@@ -199,7 +214,7 @@ def prepare(spec):
             key=(callout['axis'],float(Fraction(callout['value'])))
             if key in tick_callouts:raise ValueError('DUPLICATE_TICK_LABEL_CALLOUT')
             tick_callouts[key]=callout
-        unit_ticks=[]
+        unit_ticks=[];used_pi=set()
         if axis_tick_values is None:
             if show_x and xmin<=1<=xmax:unit_ticks.append(('model-x-unit','x',1,(1,0),(0,4)))
             if show_y and ymin<=1<=ymax:unit_ticks.append(('model-y-unit','y',1,(0,1),(-4,0)))
@@ -241,18 +256,23 @@ def prepare(spec):
                     oid='model-x-unit' if axis=='x' else 'model-y-unit'
                     if axis_tick_values is not None and not any(item['id']==oid for item in primitives):primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
                 else:primitive({'id':oid,'kind':'line','from':p,'to':(p[0]+delta[0],p[1]+delta[1]),'token':'indicator','layer':30,'role':'tick','axis':axis,'value':value},'line')
-                text=display_token.replace('-','−')
+                text=display_token.replace('-','−');tick_pi=None
+                if tick_pi_labels is not None:
+                    matches=[row for row in tick_pi_labels if axis=='x' and abs(float(row['value'])-value)<=1e-9]
+                    if len(matches)!=1:raise ValueError('TICK_PI_LABEL_MISMATCH')
+                    tick_pi=matches[0];text=tick_pi['text'];used_pi.add(id(tick_pi))
                 tick_id=('model-x-unit' if axis=='x' else 'model-y-unit') if abs(value-1)<=1e-12 else oid
                 label_id=f'tick-{axis}-{id_token}-label'
                 tick_primitive=next((item for item in primitives if item['id']==tick_id),None)
                 if tick_primitive is None:raise ValueError('TICK_LABEL_REQUIRED_PRIMITIVE_MISSING:'+label_id)
                 tick_primitive['requiredLabelId']=label_id
-                label={'id':label_id,'kind':'TICK_LABEL','tickId':tick_id,'target':tick_id,'owner':tick_id,'tickAxis':axis,'tickValue':value,'tickDisplayValue':text,'at':p,'text':text,'font':tokens['tickLabel'],'priority':0,'allowSuppress':False,'preferred':'S' if axis=='x' else 'W','directions':('S','N') if axis=='x' else ('W','E'),'gaps':(8,12),'centered':True,'math':True}
+                label={'id':label_id,'kind':'TICK_LABEL','tickId':tick_id,'target':tick_id,'owner':tick_id,'tickAxis':axis,'tickValue':value,'tickDisplayValue':text,'at':p,'text':text,'font':tokens['tickLabel'],'priority':0,'allowSuppress':False,'preferred':'S' if axis=='x' else 'W','directions':('S','N') if axis=='x' else ('W','E'),'gaps':(8,12),'centered':True,'math':True,**({'tickPiValue':tick_pi['multiple']} if tick_pi else {})}
                 callout=tick_callouts.pop((axis,value),None)
                 if callout is not None:
                     label['tickLabelCallout']={'schemaVersion':'TICK_LABEL_OWNER_LEADER_v1','tickId':tick_id,'axis':axis,'value':value,'sourceAt':list(p),'offsetUser':list(callout['offsetUser'])}
                 labels.append(label)
         if tick_callouts:raise ValueError('TICK_LABEL_CALLOUT_OWNER_NOT_FOUND')
+        if tick_pi_labels is not None and len(used_pi)!=len(tick_pi_labels):raise ValueError('TICK_PI_LABEL_UNUSED')
     rational_features=spec['displayFacts'].get('rationalGraphFeatures')
     if rational_features is not None:
         if rational_features.get('schemaVersion')!='RATIONAL_LINEAR_OVER_LINEAR_FEATURES_v1':raise ValueError('RATIONAL_FEATURE_INVENTORY_REQUIRED')
@@ -273,12 +293,13 @@ def prepare(spec):
         else:raise ValueError('INVALID_RATIONAL_SINGULARITY_KIND')
     sqrt_features=spec['displayFacts'].get('sqrtFeatures')
     if sqrt_features is not None:
-        if sqrt_features.get('schemaVersion')!='SQRT_AFFINE_FEATURES_v1':raise ValueError('SQRT_ENDPOINT_INVENTORY_REQUIRED')
+        general=sqrt_features.get('schemaVersion')=='SQRT_AFFINE_GENERAL_FEATURES_v1'
+        if not general and sqrt_features.get('schemaVersion')!='SQRT_AFFINE_FEATURES_v1':raise ValueError('SQRT_ENDPOINT_INVENTORY_REQUIRED')
         policy=spec['displayFacts'].get('sqrtFeaturePolicy',{});radius=policy.get('endpointMarkerRadiusIntrinsicPx')
         if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('SQRT_ENDPOINT_MARKER_POLICY_REQUIRED')
         for index,endpoint in enumerate(sqrt_features.get('sourceEndpoints',[])):
             if endpoint.get('state')!='CLOSED':raise ValueError('UNSUPPORTED_OPEN_SQRT_SOURCE_ENDPOINT')
-            at=vp.screen((float(Fraction(endpoint['x'])),float(endpoint['y'])))
+            at=vp.screen((_exact_float(endpoint['x']) if general else float(Fraction(endpoint['x'])),float(endpoint['y'])))
             primitive({'id':'sqrt-domain-endpoint-'+str(index),'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'domain-endpoint','fill':'#111'},'circle')
     absolute_features=spec['displayFacts'].get('absoluteFeatures')
     if absolute_features is not None:
@@ -361,20 +382,35 @@ def prepare(spec):
                 primitive({'id':'reference-'+curve_id,'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'logarithmic-reference','fill':'#111','state':'CLOSED','branch':curve_id},'circle')
     trig_features=spec['displayFacts'].get('trigFeatures')
     if trig_features is not None:
-        if trig_features.get('schemaVersion')!='TRIGONOMETRIC_FEATURES_v1':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        if trig_features.get('schemaVersion') not in {'TRIGONOMETRIC_FEATURES_v1','TRIGONOMETRIC_FEATURES_v2'}:raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
         policy=spec['displayFacts'].get('trigFeaturePolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
         if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('TRIG_MARKER_POLICY_REQUIRED')
+        general=trig_features.get('schemaVersion')=='TRIGONOMETRIC_FEATURES_v2'
+        def trig_x(row):return float(Fraction(row['x'] if general else row['xPiMultiple']))*(1.0 if general else math.pi)
         if trig_features.get('function') in {'SIN','COS'}:
             for feature in trig_features.get('phasePoints',[]):
-                at=vp.screen((float(Fraction(feature['xPiMultiple']))*math.pi,float(Fraction(feature['y']))))
+                at=vp.screen((trig_x(feature),float(Fraction(feature['y']))))
                 primitive({'id':'trig-'+feature['id'],'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'trig-feature','fill':'#111','owner':feature['id'],'featureKind':feature['kind']},'circle')
         elif trig_features.get('function')=='TAN':
             xmin,xmax,ymin,ymax=vp.bounds
             for pole in trig_features.get('poles',[]):
-                x=float(Fraction(pole['xPiMultiple']))*math.pi
-                primitive({'id':'trig-'+pole['id'],'kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'trig-pole','dash':'5 4','poleSide':pole['side']},'line')
-            reference=trig_features['referencePoint'];at=vp.screen((float(Fraction(reference['xPiMultiple']))*math.pi,float(Fraction(reference['y']))))
+                x=trig_x(pole)
+                primitive({'id':'trig-'+pole['id'],'kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'trig-pole','dash':'5 4',**({'poleSide':pole['side']} if 'side' in pole else {})},'line')
+            reference=trig_features['referencePoint'];at=vp.screen((trig_x(reference),float(Fraction(reference['y']))))
             primitive({'id':'trig-reference-point','kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'trig-reference','fill':'#111'},'circle')
+    trig_interval_features=spec['displayFacts'].get('trigIntervalFeatures')
+    if trig_interval_features is not None:
+        if trig_interval_features.get('schemaVersion')!='TRIGONOMETRIC_INTERVAL_FEATURES_v2':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        policy=spec['displayFacts'].get('trigIntervalPolicy',{});radius=policy.get('markerRadiusIntrinsicPx')
+        if not isinstance(radius,(int,float)) or isinstance(radius,bool) or radius<=0:raise ValueError('TRIG_MARKER_POLICY_REQUIRED')
+        factor=math.pi if trig_interval_features.get('axisUnit')=='PI' else 1.0
+        for feature in trig_interval_features.get('keyPoints',[]):
+            at=vp.screen((float(Fraction(feature['x']))*factor,float(Fraction(feature['y']))))
+            primitive({'id':'trig-'+feature['id'],'kind':'circle','at':at,'radius':radius,'token':'indicator','layer':65,'role':'trig-key-point','fill':'#111','owner':feature['id'],'featureKind':feature['kind']},'circle')
+        xmin,xmax,ymin,ymax=vp.bounds
+        for pole in trig_interval_features.get('poles',[]):
+            x=float(Fraction(pole['x']))*factor
+            primitive({'id':'trig-'+pole['id'],'kind':'line','from':vp.screen((x,ymin)),'to':vp.screen((x,ymax)),'token':'auxiliary','layer':25,'role':'trig-pole','dash':'5 4','poleSide':pole.get('side','RIGHT')},'line')
     point_marks=[vp.screen(geometry[v['id']]) for v in spec['objects'] if v['kind']=='POINT']
     mark_spots=[]   # where equal ticks / parallel arrows already stand: a second mark on the same segment keeps clear of the first
     by_id={v['id']:v for v in spec['objects']}
