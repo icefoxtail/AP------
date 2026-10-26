@@ -15,22 +15,23 @@
     "reviewOverrides": "archive/data/meta-foundation/evidence/review-overrides/v1",
     "reviewOverrideDigest": "e14dcc132d12ebd053759eb74b96a823e15f8b15e9bce26a0a3eb112634e3d2a",
     "canonicalIdentityRepair20261025": "docs/operations/META_CANONICAL_KEY_COLLISION_REPAIR_20261025.json",
-    "reviewedExam_meta-pipeline-middle-1-ee88316d175e-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.json"
+    "reviewedExam_meta-pipeline-middle-1-ee88316d175e-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-1-ee88316d175e-20261026.json",
+    "reviewedExam_meta-pipeline-middle-3-18d13404206e-20261026": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json"
   },
   "counts": {
-    "records": 951,
+    "records": 975,
     "finalL3": 921,
     "finalL4": 901,
     "explicitL4Hold": 20,
     "routeOut": 7,
     "difficultyHold": 781,
-    "defaultSelectable": 161,
+    "defaultSelectable": 185,
     "supplementary": 0,
     "sourceHold": 0,
-    "automaticEligibleExpected": 23,
+    "automaticEligibleExpected": 47,
     "catalogUidDirectJoin": 928,
     "catalogSourceIdentityRepairJoin": 0,
-    "taxonomyRows": 75
+    "taxonomyRows": 76
   },
   "ownedScopes": [
     {
@@ -131,7 +132,7 @@
       "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 2
+      "supportingItemCount": 4
     },
     {
       "curriculumKey": "2015",
@@ -157,7 +158,7 @@
       "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 2
+      "supportingItemCount": 4
     },
     {
       "curriculumKey": "2015",
@@ -170,7 +171,7 @@
       "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 6
+      "supportingItemCount": 15
     },
     {
       "curriculumKey": "2015",
@@ -183,7 +184,7 @@
       "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 4
+      "supportingItemCount": 7
     },
     {
       "curriculumKey": "2015",
@@ -203,13 +204,26 @@
       "courseKey": "M3-2",
       "L1": "원의 성질",
       "L2": "원과 직선",
+      "L3": "원주각·중심각과 원의 각 관계",
+      "L4": "부채꼴과 원이 포함된 도형의 길이·넓이",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 1
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "L1": "원의 성질",
+      "L2": "원과 직선",
       "L3": "원과 직선",
       "L4": "현의 길이",
       "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
       "templateKey": "TM_CIRCLE_CHORD_LENGTH",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 1
+      "supportingItemCount": 4
     },
     {
       "curriculumKey": "2015",
@@ -222,7 +236,7 @@
       "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 1
+      "supportingItemCount": 3
     },
     {
       "curriculumKey": "2015",
@@ -235,7 +249,7 @@
       "templateKey": "TM_TANGENT_LENGTH",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 3
+      "supportingItemCount": 5
     },
     {
       "curriculumKey": "2015",
@@ -1689,6 +1703,76 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_04ffcbf3befa26a307a87e5037cafd0ffecf7cf1e30a57b5dcbf25aeabb24fff",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "sourceFingerprint": "21196f6ea2137d6f0f3b236aeab6d677366cb9a121e199994f35668b89db4049",
+      "contentFingerprint": "adef04e4942c1f3202365bdfec45401c509519958dc0631c7a79d1b895fc0098",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "삼각비의 값과 관계",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_TRIG_RATIO",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 1,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비",
+      "L3": "삼각비의 값과 관계",
+      "L4": "삼각비의 기본 관계",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#4",
+      "approvedSourceFingerprint": "21196f6ea2137d6f0f3b236aeab6d677366cb9a121e199994f35668b89db4049",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_054c513c153211005b0ecb009789871a8e38422f9bd84652a0c83b21862e9c09",
       "sourceArchiveFile": "original/middle/m2/2final/23_연향중_2학기_기말_중2_기출.js",
       "sourceOrdinal": 1,
@@ -2950,6 +3034,76 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_0db703b21a0a6fb130d81f94cc4091088d55267e1e70ba29de11299b9e7668e5",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "sourceFingerprint": "f8d48b603eb0b7e5a985d6829f1ab680fae120655bec5e53eabe89a3745f202c",
+      "contentFingerprint": "8fff958687e69899d44e5eedee74aa26af008fa901c0de3e18380dad1b45501d",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "삼각비로 직접 길이·높이·거리 구하기",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIG_TABLE_LOOKUP",
+        "CC_TRIG_MEASUREMENT"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비로 직접 길이·높이·거리 구하기",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#5",
+      "approvedSourceFingerprint": "f8d48b603eb0b7e5a985d6829f1ab680fae120655bec5e53eabe89a3745f202c",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_0dd10b5dcfcf58ed72d73eef59124cd4bb850f9a5b84a47edb1aca14dd2921e1",
       "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 7,
@@ -2994,6 +3148,77 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_0e389d9c42fdce03a188d2b167e3c575ed4a2ef70b7fe2e1ba1476cae466c51b",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "22",
+      "sourceFingerprint": "96d4c48b422b2afcee2822ad679bc8d3751a4f6d2adc0d13551ef2fcc0e5aacf",
+      "contentFingerprint": "20b3a27679c3832432d5ffe69dcb764503da14d2d30490d42fa361dda8e9de48",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "삼각비 연쇄 측정",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIG_MEASUREMENT",
+        "CC_ELEVATION_ANGLE",
+        "CC_LINEAR_EQUATIONS"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비 연쇄 측정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#22",
+      "approvedSourceFingerprint": "96d4c48b422b2afcee2822ad679bc8d3751a4f6d2adc0d13551ef2fcc0e5aacf",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_0f7283b784125bdf1f050712a770dd5edbb2bbabd709f39a8ef3f481238c4842",
@@ -6290,6 +6515,77 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_258ac8b815c64e7956d4d63116168b9cebc123aae2147051bf86dfaa992141ac",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceFingerprint": "e9ef9501350e0b161836c32957530062a3682f9a9d01556f66fa95db77aa91db",
+      "contentFingerprint": "7ba4ad0a2be6257b085a4184beb7fdf371251486018b6632ed66891a0c355b58",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_QUADRILATERAL_AREA_TRIG",
+        "CC_SPECIAL_ANGLES",
+        "CC_RADICAL_ARITHMETIC"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비 연쇄 측정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#13",
+      "approvedSourceFingerprint": "e9ef9501350e0b161836c32957530062a3682f9a9d01556f66fa95db77aa91db",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_25a30c22a4dbc3c2d536452552020c939263b06b1b94aa1157de73a4e46c97a5",
       "sourceArchiveFile": "original/middle/m3/2mid/23_풍덕중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 24,
@@ -7962,6 +8258,77 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "sourceFingerprint": "c102c14130993bd5736972b6d1dada9d2ec90e58544dd5633519fc3fefc1f720",
+      "contentFingerprint": "94df829dad6449ba4b65465cb6fa21c26722187a4987496f177fe1e5362d67db",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "원의 성질",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CHORD_PROPERTY",
+        "CC_PYTHAGOREAN_THEOREM",
+        "CC_PERPENDICULAR_CHORDS"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "원의 성질",
+      "L2": "원과 직선",
+      "L3": "원과 직선",
+      "L4": "현의 길이",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#16",
+      "approvedSourceFingerprint": "c102c14130993bd5736972b6d1dada9d2ec90e58544dd5633519fc3fefc1f720",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_32c8608ad82c5fafe0d02cc716756c9a42b7cf1d8a4a44de9bc6a06676ab9463",
       "sourceArchiveFile": "original/middle/m3/2mid/24_금당중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 13,
@@ -8103,6 +8470,77 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": "19",
+      "sourceFingerprint": "1b60f4fa8133fe52849538a6e715fe17af0d762aad0177b616d87b2b8c1dbe45",
+      "contentFingerprint": "abcf8ac8d1a174a66145067d03ce41129b1322d53f3b645ac5b626bc868d79d0",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+      "templateKey": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+      "crossConceptKeys": [
+        "CC_EQUILATERAL_TRIANGLE",
+        "CC_CIRCLE_SECTOR_AREA",
+        "CC_SPECIAL_ANGLES"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "원의 성질",
+      "L2": "원과 직선",
+      "L3": "원주각·중심각과 원의 각 관계",
+      "L4": "부채꼴과 원이 포함된 도형의 길이·넓이",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#19",
+      "approvedSourceFingerprint": "1b60f4fa8133fe52849538a6e715fe17af0d762aad0177b616d87b2b8c1dbe45",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_343e7824d8a9451a5260291db013aa2946bbb7efd679d973f3b92f47b8387f32",
@@ -12910,6 +13348,77 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceFingerprint": "2e01f7ee56d2f66032b622a07b8d04e0d843be0b6abb659f66c99d9dccbc1a19",
+      "contentFingerprint": "3b7ee57ce0574c283c2fbb2571dd3dab22f4fb67bdbf7f4b1ca6d3334421a995",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "원의 성질",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_CIRCLE_TANGENT_PROPERTY",
+        "CC_TRIANGLE_AREA_TRIG",
+        "CC_SPECIAL_ANGLES"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "원의 성질",
+      "L2": "원과 직선",
+      "L3": "원의 접선",
+      "L4": "접선의 길이",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#17",
+      "approvedSourceFingerprint": "2e01f7ee56d2f66032b622a07b8d04e0d843be0b6abb659f66c99d9dccbc1a19",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_4fed26b676eeb692a532ccbe037c13db8c9e8bd611e22aef6ff093a0fd84d18d",
       "sourceArchiveFile": "original/middle/m2/2mid/23_신흥중_2학기_중간_중2_수학.js",
       "sourceOrdinal": 20,
@@ -13260,6 +13769,77 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_51c09408f0cac455e25ebdc85bb85bf1efbbb6fbf2222cbef8e5cbc693e79e4a",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceFingerprint": "f1cd02092bba1f638c96e5ba261a94db220ac0fbac2139dd99947bac5b9bfa91",
+      "contentFingerprint": "ea42e0477c96a46ce707a1ea0e0456a9e8e2754308c52120b6d5b74d0354db1c",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "삼각비 연쇄 측정",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_SPECIAL_ANGLES",
+        "CC_PYTHAGOREAN_THEOREM",
+        "CC_TRIG_MEASUREMENT"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비 연쇄 측정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#9",
+      "approvedSourceFingerprint": "f1cd02092bba1f638c96e5ba261a94db220ac0fbac2139dd99947bac5b9bfa91",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_51cc84ebcd574fe7c01c26f74510211b1842175d9cd05a83aac9ef912eba6be9",
@@ -15635,6 +16215,78 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "sourceFingerprint": "39edaa52e5332d38ae8d8794618d0effce9a55cbda006f85d2d84247b8a3e4ff",
+      "contentFingerprint": "a007f45c8eb654c84f146b9b40d5b5c0bd591d75730d0f3b4aabf6757b02f2eb",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "삼각비 연쇄 측정",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_ISOSCELES_TRIANGLE",
+        "CC_ANGLE_BISECTOR",
+        "CC_TRIANGLE_SIMILARITY",
+        "CC_QUADRATIC_FORMULA"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비 연쇄 측정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#18",
+      "approvedSourceFingerprint": "39edaa52e5332d38ae8d8794618d0effce9a55cbda006f85d2d84247b8a3e4ff",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_5dcb8542cf6691de45932898df65d47b17d7dfc5e47676fda9e0086721caa47b",
       "sourceArchiveFile": "original/middle/m3/2final/24_연향중_2학기_기말_중3_기출.js",
       "sourceOrdinal": 8,
@@ -17064,6 +17716,77 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_675fd78074a129d25aeae426fc763ee79c0980b6c90f17976e51a1a206277ac7",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceFingerprint": "f8b5cedd63c6cb6e4160e2e74f563d037cda71b2f45f296969a248ead47e98d8",
+      "contentFingerprint": "7fb60abbb944bdba7f506263e829e78ed18b709555ec948f5299abe553de5d22",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "삼각비 연쇄 측정",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_PAPER_FOLDING_SIMILARITY",
+        "CC_EQUILATERAL_TRIANGLE",
+        "CC_SPECIAL_ANGLES"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비 연쇄 측정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#21",
+      "approvedSourceFingerprint": "f8b5cedd63c6cb6e4160e2e74f563d037cda71b2f45f296969a248ead47e98d8",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_678a6ce0df51fd0073757798ba501fd278f3f89c562d8f88bc7b7ad7eb6eb09d",
       "sourceArchiveFile": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
       "sourceOrdinal": 21,
@@ -17624,6 +18347,76 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_693599656600a299f1a8a6719ebeee5a484e2739e4c0819b51709350b3ca5833",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": "23",
+      "sourceFingerprint": "fc9fdad63226f806ab3f5af14999878e0e4c80d0d786e22d252478fc60d55613",
+      "contentFingerprint": "dd4b60cd2d1ca6f25c91a363d0d137430467dd39a4a3358306561c19b6aac8ad",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "삼각비 연쇄 측정",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA_TRIG",
+        "CC_RATIO"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비 연쇄 측정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#23",
+      "approvedSourceFingerprint": "fc9fdad63226f806ab3f5af14999878e0e4c80d0d786e22d252478fc60d55613",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_697e5d0d0a4b3df846d57906d09dfff1ef49c5de796b72b0c5eb00661140a5d9",
@@ -19886,6 +20679,76 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "sourceFingerprint": "86b3034570caa10a67e847eb5e51df9dc60ee4dd09651e94fd47ff301c1db66b",
+      "contentFingerprint": "270cd6422f4580d6674bb1f7d0fce6109dc9e6a9e56b499055311f90f7ff6ec6",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "원의 성질",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CHORD_PROPERTY",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "원의 성질",
+      "L2": "원과 직선",
+      "L3": "원과 직선",
+      "L4": "현의 길이",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#15",
+      "approvedSourceFingerprint": "86b3034570caa10a67e847eb5e51df9dc60ee4dd09651e94fd47ff301c1db66b",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_741ad2ac93c41abb022cd9429f82743163cc96a363292eab663f1970bc422586",
@@ -22572,6 +23435,77 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 24,
+      "sourceQuestionNo": "24",
+      "sourceFingerprint": "5e8a62c15338cc22e445d7909fee9f707de6f53827b241ee28cd376be6cc68ba",
+      "contentFingerprint": "5eb0b1f2996886e14490dfb1d341c6554f8cd96f916d9ec6359d9cfd5ed55aae",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CHORD_PROPERTY",
+        "CC_TRIANGLE_CONGRUENCE_RHS",
+        "CC_GEOMETRIC_PROOF"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "원의 성질",
+      "L2": "원과 직선",
+      "L3": "원과 직선",
+      "L4": "현의 수직이등분선",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#24",
+      "approvedSourceFingerprint": "5e8a62c15338cc22e445d7909fee9f707de6f53827b241ee28cd376be6cc68ba",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_8243e350842dd62efc02a3b7d538b561e52f79637a96cf514b893cb67d22f5a8",
@@ -25637,6 +26571,77 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "099584af8b87a1d10bb3755d292f8bd2e311a0eb2c8de2fdd4196582a0167f0e",
+      "contentFingerprint": "f871d213ad3959e5c59b21ad5769c1470f6538617ae19726e78ada7c69b53616",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "원의 성질",
+      "problemTypeKey": "PT_CIRCLE_TANGENT",
+      "templateKey": "TM_TANGENT_LENGTH",
+      "crossConceptKeys": [
+        "CC_INSCRIBED_CIRCLE",
+        "CC_CIRCLE_TANGENT_PROPERTY",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "원의 성질",
+      "L2": "원과 직선",
+      "L3": "원의 접선",
+      "L4": "접선의 길이",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#20",
+      "approvedSourceFingerprint": "099584af8b87a1d10bb3755d292f8bd2e311a0eb2c8de2fdd4196582a0167f0e",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_92a45dfe873ad5a9a859e2df24653790be358e87b31b1fdf39353026ee87cbe3",
       "sourceArchiveFile": "original/middle/m3/2mid/23_동산중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 11,
@@ -26643,6 +27648,76 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_95d20bd9267e65fc10e8a15d8371d9ebf65a5e2060930784b7bf33472195cab9",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "sourceFingerprint": "34ec901c272e15df1b107fa9066bde49d9df71146aecb8e21f629a79daaf1d27",
+      "contentFingerprint": "ab107d7886d6abb26b032fc082e8fa9fc1ac070935ebb309b4608052dc4dd526",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "삼각비 연쇄 측정",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_SPECIAL_ANGLES",
+        "CC_TRIG_MEASUREMENT"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비 연쇄 측정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#10",
+      "approvedSourceFingerprint": "34ec901c272e15df1b107fa9066bde49d9df71146aecb8e21f629a79daaf1d27",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_9636e5f1f521f5e8aebfbe82a8e744aa4fa8d4593fc9bedccba11692d21e67c3",
       "sourceArchiveFile": "original/middle/m3/2mid/25_왕운중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 4,
@@ -27201,6 +28276,77 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_99715774e895ed62bf2d40572626df5348e2c23f66db9a84c87a382853a6c8b9",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": "6",
+      "sourceFingerprint": "8fd4a784d0697e0c58c0f6f8a8e7cb5f06a20a095e4cf4d2422e47369317db58",
+      "contentFingerprint": "2f631dd2c3819a20bcd1d9b6cd7d425165adaae74e8644a2ac2b7849cc9ced22",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "삼각비 연쇄 측정",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_SPECIAL_ANGLES",
+        "CC_QUADRILATERAL_AREA_TRIG",
+        "CC_RIGHT_TRIANGLE"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비 연쇄 측정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#6",
+      "approvedSourceFingerprint": "8fd4a784d0697e0c58c0f6f8a8e7cb5f06a20a095e4cf4d2422e47369317db58",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_9975c6b3fcdbadfd243185da969df01533172647d0bdb47de1816e4e88ce78a3",
       "sourceArchiveFile": "original/middle/m3/2mid/25_풍덕중_2학기_중간_중3_수학.js",
       "sourceOrdinal": 3,
@@ -27669,6 +28815,77 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_9bdc3e6b81038ca4b03e08cb1dde57537405e799aa7b8fa888acb28a584b319e",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "sourceFingerprint": "8b8659f818825258a96c6e229a4d2b7e9b79100cc5b032b699ac241f66dd6252",
+      "contentFingerprint": "d2dc41466dbedb3f103250b735f59f6c4a610821298561db30874147cbd382bd",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "삼각비 연쇄 측정",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIANGLE_AREA_TRIG",
+        "CC_SPECIAL_ANGLES",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비로 직접 길이·높이·거리 구하기",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#11",
+      "approvedSourceFingerprint": "8b8659f818825258a96c6e229a4d2b7e9b79100cc5b032b699ac241f66dd6252",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_9c12caea8ebcfde4230f8fe3065e9a5acb9275ae4f719b49191a95d6b847cadd",
@@ -28785,6 +30002,77 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_a21adf9e4f10ce07392543d6a1507f93315a17fe930e6e4ce3fb8dbe0ec868da",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceFingerprint": "19a04337306186ee82bc4fa362949c6dc3d49928ee56a30a8275b748aff7453d",
+      "contentFingerprint": "cfbd590794e75039e8fd54b2ee234501aca9531f681d055669623c04d12fcb4a",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비의 활용",
+      "conceptClusterKey": "TRIG_RATIO_APPLICATION",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
+      "crossConceptKeys": [
+        "CC_PARALLELOGRAM_AREA",
+        "CC_SPECIAL_ANGLES",
+        "CC_TRIANGLE_AREA_TRIG"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비 연쇄 측정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#12",
+      "approvedSourceFingerprint": "19a04337306186ee82bc4fa362949c6dc3d49928ee56a30a8275b748aff7453d",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_a233514de1b9181236d8408e8a7a58f36f01cb09fccf5a8bc6a391093de34591",
@@ -30001,6 +31289,76 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "sourceFingerprint": "8e6c1e27d2abd9a3d7b6af0cd4a4e1aaa10795e90339867acdccaf1cec1a24d5",
+      "contentFingerprint": "fe317b1f9df72fe7bbc7a1fb6a8c682137574242fcf896621317997e5ad68b8e",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO_APPLICATION",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "TRIG_RATIO",
+      "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+      "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
+      "crossConceptKeys": [
+        "CC_TRIG_RATIO",
+        "CC_TRIG_MEASUREMENT"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비의 활용",
+      "L3": "삼각비의 활용",
+      "L4": "삼각비로 직접 길이·높이·거리 구하기",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#8",
+      "approvedSourceFingerprint": "8e6c1e27d2abd9a3d7b6af0cd4a4e1aaa10795e90339867acdccaf1cec1a24d5",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_a8f6074dd81823cca2bee7bad4f3a7c9dcc2d64f3e0e19eb4ec69956089139f6",
       "sourceArchiveFile": "original/middle/m2/2mid/25_삼산중_2학기_중간_중2_수학.js",
       "sourceOrdinal": 6,
@@ -30469,6 +31827,77 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_ab95fc3ac35a546243376fb7ffd4c66ae94161c410fc794f00417c54d512f192",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2",
+      "sourceFingerprint": "d5dbee68dcd7ec7378f104fa227313d00834ae312c989c307482d0f512f38866",
+      "contentFingerprint": "1e69b63cb7ec75483ef97cb0e3e2e649a4d67649ac74c7559fb1e951d59c14ab",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "삼각비의 값과 관계",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "crossConceptKeys": [
+        "CC_SPECIAL_ANGLES",
+        "CC_TRIG_RATIO",
+        "CC_RADICAL_ARITHMETIC"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 1,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비",
+      "L3": "삼각비의 값과 관계",
+      "L4": "특수각의 삼각비",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#2",
+      "approvedSourceFingerprint": "d5dbee68dcd7ec7378f104fa227313d00834ae312c989c307482d0f512f38866",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_ac231d89920800c27a9dffdae2d9f312fcca2ce437c36cf69ddee161668c6420",
@@ -33473,6 +34902,77 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": "3",
+      "sourceFingerprint": "47d188481b8b6574dae0ea47089091fc592a80a59f5cd028d42ec2611923ec85",
+      "contentFingerprint": "84b57898b10a383f82583d808290b8aaf6cf04535215af97d01be696713f3f37",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "CIRCLE_LINE",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_LENGTH",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CHORD_PROPERTY",
+        "CC_PYTHAGOREAN_THEOREM",
+        "CC_CIRCLE_CIRCUMFERENCE"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 1,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "원의 성질",
+      "L2": "원과 직선",
+      "L3": "원과 직선",
+      "L4": "현의 길이",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#3",
+      "approvedSourceFingerprint": "47d188481b8b6574dae0ea47089091fc592a80a59f5cd028d42ec2611923ec85",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_b9ee6ecb8a42d55e5ca61f6bdf4ecbaffe490a87b2ddc9505791c9cbaa0fe893",
       "sourceArchiveFile": "original/middle/m2/2mid/24_왕운중_2학기_중간_중2_수학.js",
       "sourceOrdinal": 6,
@@ -33568,6 +35068,76 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_bac3c1fdf12dedd4e1ce4354cd4abec4861860ee41c7ab7b489dbdd0f06af761",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceFingerprint": "6c4a8f833e984db783fc79b5b87ef7630bf451dd75886d95e3abbd9a9d0e8564",
+      "contentFingerprint": "edfd7a151e6413689395e2d4a8c2befb32b0f7f7d47baf2f37142580e69391cb",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-06",
+      "standardUnit": "원의 성질",
+      "subUnitKey": "M3-06-CIRCLE_PROPERTY",
+      "subUnit": "원과 직선",
+      "conceptClusterKey": "원의 성질",
+      "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+      "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR",
+      "crossConceptKeys": [
+        "CC_CIRCLE_CHORD_PROPERTY",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "원의 성질",
+      "L2": "원과 직선",
+      "L3": "원과 직선",
+      "L4": "현의 수직이등분선",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#14",
+      "approvedSourceFingerprint": "6c4a8f833e984db783fc79b5b87ef7630bf451dd75886d95e3abbd9a9d0e8564",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_bb041a51a6cb613d8a6d33bb2ef938a5d31aea93e4005a3dbf2055c2c64018fb",
@@ -43478,6 +45048,76 @@
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
     },
     {
+      "questionUid": "qid_v1_f1aa4b2260fb163c51e65b7d7e79112ad9d1b6a6fa75c995c6bd3fed04b687f9",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "sourceFingerprint": "7d76730b0835b350d988ef58870aa1d982bca380b5174c287b47ee0a07f31dd1",
+      "contentFingerprint": "4954d946880fc951e49d698566275dcbf687c4635441ba7fc17073ee8c122839",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "삼각비의 값과 관계",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
+      "crossConceptKeys": [
+        "CC_TRIG_RATIO_DEFINITIONS",
+        "CC_ISOSCELES_RIGHT_TRIANGLE"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비",
+      "L3": "삼각비의 값과 관계",
+      "L4": "특수각의 삼각비",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#7",
+      "approvedSourceFingerprint": "7d76730b0835b350d988ef58870aa1d982bca380b5174c287b47ee0a07f31dd1",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_f1ddbf57a4d17f4d8bb30c857fc401d30a193945bb24f8c684dd8086e322d7d2",
       "sourceArchiveFile": "original/middle/m2/2mid/24_연향중_2학기_중간_중2_수학.js",
       "sourceOrdinal": 19,
@@ -43666,6 +45306,77 @@
       "metaFoundationPackId": "MIDDLE_GEOMETRY",
       "metaFoundationPackVersion": "1.0.0",
       "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.0"
+    },
+    {
+      "questionUid": "qid_v1_f34ac4def739b5c9db53ce1866bd7f4eb1fa8a982ed2b6a601f3e901e9d890f1",
+      "sourceArchiveFile": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceFingerprint": "066caeab4f6cd9a4d33318a820cdbfc3e5140944bd1317ad55c595dd26661e8b",
+      "contentFingerprint": "68201a18a199c8402331e7133b176876b38bbf8c613206f819b0fe217564f800",
+      "standardCourse": "중3 수학",
+      "standardUnitKey": "M3-05",
+      "standardUnit": "삼각비",
+      "subUnitKey": "M3-05-TRIG_RATIO",
+      "subUnit": "삼각비",
+      "conceptClusterKey": "삼각비의 값과 관계",
+      "problemTypeKey": "PT_TRIG_RATIO",
+      "templateKey": "TPL_TRIG_RATIO_BASIC_RELATION",
+      "crossConceptKeys": [
+        "CC_TRIG_RATIO",
+        "CC_RIGHT_TRIANGLE",
+        "CC_PYTHAGOREAN_THEOREM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:MIDDLE_GEOMETRY@1.0.2:exam-meta_pipeline_audit-v2:meta-pipeline-middle-3-18d13404206e-20261026",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-middle-3-18d13404206e-20261026.source-parity.json"
+      ],
+      "difficultyBucket": 1,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "M3-2",
+      "difficultyConfidence": "medium",
+      "L1": "삼각비",
+      "L2": "삼각비",
+      "L3": "삼각비의 값과 관계",
+      "L4": "삼각비의 기본 관계",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "MIDDLE_GEOMETRY",
+      "metaFoundationPackVersion": "1.0.2",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/middle/m3/2mid/26_삼산중_2학기_중간_중3_기출.js#1",
+      "approvedSourceFingerprint": "066caeab4f6cd9a4d33318a820cdbfc3e5140944bd1317ad55c595dd26661e8b",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_f350ad5ef2250d59378569873f1608031d50e2094c567363956a06804f7ada85",
@@ -46055,11 +47766,11 @@
   },
   "usage": {
     "schemaVersion": "archive-reviewed-runtime-usage-v1",
-    "records": 951,
+    "records": 975,
     "problemTypes": [
       {
         "key": "PT_CIRCLE_ANGLE_RELATIONS",
-        "count": 180,
+        "count": 181,
         "questionUids": [
           "qid_v1_006d3d7fb3c9f11a0355c15b8df9cc7ec43e9de53da5b4e7d3171318ff7e23d3",
           "qid_v1_008cc63f23e60f21a423438119a659a8af896f4d1c4d6b3b77fdc2b6bac030de",
@@ -46087,6 +47798,7 @@
           "qid_v1_29466913f6562c3361e3021b80b01056348ecd7fc4086d0df356b7e9adfc11cb",
           "qid_v1_2f1c5a1c5eb8f02c71b6de3feeb051166061fde8a3a269f92a4041bc6767756c",
           "qid_v1_314a8cfbc2af2bb915ea297000052dfa05669dc2eb27ec597156626c820397b2",
+          "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
           "qid_v1_3513bf30e6463d7530fda4f7c825e92e95c20a8ebbc807d3c5d3786a4554b486",
           "qid_v1_35165b145f472d65fd19b63184b7fccc577e1aacdfbc300a869884b9212e2ab5",
           "qid_v1_384adc683b26efc99bcb92b0a3de31cc561785d6cb18168ebaa7f253310c7a82",
@@ -46245,7 +47957,7 @@
       },
       {
         "key": "PT_CIRCLE_LINE_RELATION",
-        "count": 69,
+        "count": 74,
         "questionUids": [
           "qid_v1_04adc05ee4d1761f8a35b62c1f5ff1e2680fe04518010a4f48fe323b371153dc",
           "qid_v1_05e6edfa6a0170fbcc06329f25bb82927039a99a1902afa71d8cd792aea1c3ef",
@@ -46253,6 +47965,7 @@
           "qid_v1_2515124ea3df7ccd339ec3f8fd63d36d7b99c191d835abcb7d87ceda83dc00dd",
           "qid_v1_2a9eee33c43b8cb3b3fef0f403b18403fa7cd7912a7a67f23398d396368f571a",
           "qid_v1_2b145ea17d1845b6cc4b6729b16f2417f4c4934657d4faf840968c844bc9c686",
+          "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98",
           "qid_v1_3442cd271d618c9c386c359c311a9dd5802675f587fde14f7f7ece2ce4dcce30",
           "qid_v1_34768661ba54d8eacc7bb3b7fbd4e039734adf721df1da81eaa6034afd9ded51",
           "qid_v1_35dcd2a9965ece1571d38f00cebfdbc6fcada74344985ee37808a8bec5cd099b",
@@ -46276,6 +47989,7 @@
           "qid_v1_6af6fc516448eabcdcbcd39bab4c9e20a878c88f7371cfd90e24936f8644ff14",
           "qid_v1_6f536ec14b23bd64ae8c5a163cbe8ed09a677ff7a6858c33b4aa76870bbf9fee",
           "qid_v1_73b8510d5fc947e981a8a6170487ffe099ee4aa46cc8d1c84de1a1a64ed794a0",
+          "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
           "qid_v1_76fe6e5976783f4bf46af4a91a7a07711d0373ea681f0b8ac2a644e8543fa916",
           "qid_v1_7716a1d4f757041ef0f10c447e3c22d4d1bbeee9d6b01c1cdf531f6ec9fb9c1f",
           "qid_v1_7bf434c68e3a8321f3e77ea9866f4be6b7a8de45351278820911568719a0d740",
@@ -46283,6 +47997,7 @@
           "qid_v1_7d0633cc3d175ee66d91fbb31a920fc7c55febc7f80c3f0f2babe2907460005f",
           "qid_v1_7fad6ed9e5fa9b42efa230a0ccfb793e236c419cfcc1d0a4795a950a2be6bd01",
           "qid_v1_8121df11cf45bc2a3dbf232a0dd1d0dbde082755afa7ec207d1e4ce1bcf20c6b",
+          "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
           "qid_v1_8765b3924331c8d21b6cfc3c5ff1c15ab16687f6aaf5d2182bfcda9f2f858b68",
           "qid_v1_8da9c6b955714eada8c0673e9faff6d6c1b994ccde93ed478c74b726314d5d32",
           "qid_v1_8eef3617c70d09f0257f7671e71067c6c33adc0a11d2a77c126c05c1c309d846",
@@ -46299,6 +48014,8 @@
           "qid_v1_b207ae5e08f97f03c78b9c6543dd2b911c3c41b232604de0b91915dab1a5f0e6",
           "qid_v1_b26012318f59fa9a19a6aab59d304fdce44d6936e22913161d448ccdf3d5513a",
           "qid_v1_b27f9b0951e1911be696a953a0487fd045fe4223484b5208afa67eba28109fd7",
+          "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a",
+          "qid_v1_bac3c1fdf12dedd4e1ce4354cd4abec4861860ee41c7ab7b489dbdd0f06af761",
           "qid_v1_bbe02e6833be413735e75692b08d1b8f551d00fe6d23f02be5aff507e9fb92c6",
           "qid_v1_bfd294b95008c4847e29edeead6ef68af185bda67573af3b502933d5ef1589b3",
           "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
@@ -46320,7 +48037,7 @@
       },
       {
         "key": "PT_CIRCLE_TANGENT",
-        "count": 56,
+        "count": 58,
         "questionUids": [
           "qid_v1_03d625a6a8c7bfefeb10b9d01602b30986891a6f7ed9219f397b72999cb2737f",
           "qid_v1_07176266b8389d6e921c2051341d13fe0d10efe594a3d888c70e2476f2a1697a",
@@ -46337,6 +48054,7 @@
           "qid_v1_337fee2425d80f0a2a846abd7d9a57a522868138dbab53eba82a7af4f0cf1e16",
           "qid_v1_3d81a351ac3e9b43bbdf93a491c893e373882bf821af0ac92cd4567e4523975c",
           "qid_v1_4b65c4d5f07e51a20f54254f3cb58c9896ffb5937c786ce253157270ef683c1a",
+          "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
           "qid_v1_516d3c9603d771c158accb86c57c96ce5fa2ab0da7c209e4f2565d99e6dd7c6c",
           "qid_v1_54ad11846cf70bd3571b22e27e2dbd7de5f03a717a20f044bfd1a239cac81b33",
           "qid_v1_5788432f5b5b3adbcc0a2967150227d42e9a326490ad21a5e2e37a0d8adb641a",
@@ -46353,6 +48071,7 @@
           "qid_v1_8ade55894bec14e81d3bdd214fdce2a4f6c1406be813f1f7d9ddcd68978a65e3",
           "qid_v1_91cf132f70ed7fda51e475594f5450b9964e7594f9c365921e0a2aab29e9f3b6",
           "qid_v1_9216a5060b5da3317c50e54893acf8d00127d140675288be8edf88024a6d3e8d",
+          "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb",
           "qid_v1_940219bb88124e4093b1b5a4303c01cd4d5cf604c249581707277dc0178d8d79",
           "qid_v1_9d02f48df27640bc11ee8b1e79d9facb54437e6e9e16bf68bf0afa098268c5bb",
           "qid_v1_9e21171cfd928dc42d5c422956c2008bc420e3ee8d386acc663b749c4dd40b2b",
@@ -46846,11 +48565,12 @@
       },
       {
         "key": "PT_TRIG_RATIO",
-        "count": 113,
+        "count": 117,
         "questionUids": [
           "qid_v1_0189487af051645c00d2ed8db73b3ef9d66ac526f53401f9c15700405391a2da",
           "qid_v1_020eec100424bc478eabae41c66b091d4bf1c17939e7a07be556532478e2f1b0",
           "qid_v1_03e962b41a24d3959224dd18ef0ed113aab35cb531ae6a825a3b874f6b293225",
+          "qid_v1_04ffcbf3befa26a307a87e5037cafd0ffecf7cf1e30a57b5dcbf25aeabb24fff",
           "qid_v1_0c96d768aacaee8c4b1b0d4053909d4267fd30875f566520e7e0dfcf6c638a60",
           "qid_v1_0dd10b5dcfcf58ed72d73eef59124cd4bb850f9a5b84a47edb1aca14dd2921e1",
           "qid_v1_1879f5e1d630fe7274a001a41a705ee2ce2153e9361b5c148b5102e7d1a7d550",
@@ -46920,6 +48640,7 @@
           "qid_v1_9f6d97bddf206cfeca068b1c95be9afad4b599440e3c4aafe1f3f6d676df2382",
           "qid_v1_a4642d7aecfe828652292a0713a339e2ced66d80520dbb461582bbd435b4129d",
           "qid_v1_a8bf3b379efa6be01e0eeb43ca48e189edc8dc8ec2992a63a176e0feaff914c2",
+          "qid_v1_ab95fc3ac35a546243376fb7ffd4c66ae94161c410fc794f00417c54d512f192",
           "qid_v1_ad2d0a8d7055daa183852f9e62f1b0e6b0596f9aca20a436e84c651d9c4c42c3",
           "qid_v1_ae5d7c4aec3190a689cf32a79024d6afaa43818477a734917fb056e02e21d15b",
           "qid_v1_afb7405379a870f39cd14d9ace9aa55ff5da0588d0f033a133985fe701b81e6a",
@@ -46955,6 +48676,8 @@
           "qid_v1_e40c204b4fce0ff09ba2e294b82f5f03a4392492b96973867e07d14e10cc54ab",
           "qid_v1_ea5d42b90e7b81ab4b878475cbbf77af95a9031e3de6101047f33d81dbab69f8",
           "qid_v1_f082c7f54847431451ab99767e3604118fa14ac2d0b973c935d6c065b735c04d",
+          "qid_v1_f1aa4b2260fb163c51e65b7d7e79112ad9d1b6a6fa75c995c6bd3fed04b687f9",
+          "qid_v1_f34ac4def739b5c9db53ce1866bd7f4eb1fa8a982ed2b6a601f3e901e9d890f1",
           "qid_v1_f4e02451c669123c77210aa4ed2d11de4e70ad545199146c98e07c04f3f7c939",
           "qid_v1_f75a27ad85b4d180da6c0214a3f5342ab91121d55466b03cddafcc1f70ec6b35",
           "qid_v1_f7ada0a57ec4aa02f4dbb6f16e28fb60d17c3421a23bff850378a67e6fb2c83d",
@@ -46965,10 +48688,12 @@
       },
       {
         "key": "PT_TRIG_RATIO_APPLICATION",
-        "count": 107,
+        "count": 119,
         "questionUids": [
           "qid_v1_07f2a2d9ffade1b306afc80e93a2ed65cd1f45036f14dfb164c17415bc4ef7e0",
           "qid_v1_088f18a8d4cb9c5c3b70025cb6ae49977a3b9698d8543bf839eac90ba14dd745",
+          "qid_v1_0db703b21a0a6fb130d81f94cc4091088d55267e1e70ba29de11299b9e7668e5",
+          "qid_v1_0e389d9c42fdce03a188d2b167e3c575ed4a2ef70b7fe2e1ba1476cae466c51b",
           "qid_v1_1023a3f547cd537a29cb63b79e30722eaf9f09c8cbb0e5f5011f30bd46ad34e3",
           "qid_v1_1092068cb60241198f084a7833ae7dc350f5610f20e848eaa0fe9eb54b7642ff",
           "qid_v1_12310c3e6195b68457caa0eeba691c2b39b6935d15fc11deece486701ad92cdb",
@@ -46977,6 +48702,7 @@
           "qid_v1_1813858f13499d38ecde6be24bb5f630fda0afb7e270898fe370c17afd65460b",
           "qid_v1_1c2bc8d09671077119a3b1413455123a40412e5232561eeee8fe7bead26d2c7d",
           "qid_v1_1e0b251bc85954b528ca320dc0b7f6c9e8a755fac3cde5fbb427cf911dc85677",
+          "qid_v1_258ac8b815c64e7956d4d63116168b9cebc123aae2147051bf86dfaa992141ac",
           "qid_v1_25a30c22a4dbc3c2d536452552020c939263b06b1b94aa1157de73a4e46c97a5",
           "qid_v1_25c7a6f96303eaa85b941ec574e332e678a473d6fc0ea9a36e448cf0ccc8c6b1",
           "qid_v1_28f9bf57454f0a261784dcace2ab93458cbefb98f38bfd3bf4603c8818fb1095",
@@ -46995,6 +48721,7 @@
           "qid_v1_42f1b753a140d8225c8953aad1581fbd9bee8c657220c0b9e6b68681d93fcfd4",
           "qid_v1_46394b46f3ef7790fc20dcdc3004aa4333779629f88d438f54a6d16e6db79292",
           "qid_v1_50420e20370de4341a6e1c32103ee9a79317b9c6274011542d5f56fee39d30c5",
+          "qid_v1_51c09408f0cac455e25ebdc85bb85bf1efbbb6fbf2222cbef8e5cbc693e79e4a",
           "qid_v1_51da12b13c9a61f7ca85495c82d0432bbcd6dfa7e6bbcf5154d2d2802b809d7b",
           "qid_v1_53ef9bf3ecbe0d5b35ecfce969e59f661f90b33356ba03e648c1f5b17b5e1efc",
           "qid_v1_5401f00834a7aaa8d21cd98292a0176a777369796f75cd3585d805039c87b2e7",
@@ -47005,10 +48732,13 @@
           "qid_v1_596eb5a67f7de198f8062a2605bbd5afed283e807b0cdff1862cb61bd8f0cbda",
           "qid_v1_5ae74042b7a3e0a3931817563037c2b03b896fcebcce9f2962c6dedc993ff8e3",
           "qid_v1_5d3ed32e4aa8d38ff3f13f914223f2dff58e31cde58394c450fe81b0ee26ef70",
+          "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b",
           "qid_v1_5dd193c2b70025c981a2e926e8a36929efff680b5bb3ca1e1f4c85e9c94a99c1",
           "qid_v1_5deb7c5d441ef68f0cf4992c484ee0a99854f181a58053f8ce0778a1e889797b",
           "qid_v1_6091ca048b32cb7f22553683e70ce1d8a95e57c7af5be43dffa368419be404d2",
+          "qid_v1_675fd78074a129d25aeae426fc763ee79c0980b6c90f17976e51a1a206277ac7",
           "qid_v1_68f8cd80062fd52f3edc8219559cbfb3d84aa14e690766bfceaa9441141cafec",
+          "qid_v1_693599656600a299f1a8a6719ebeee5a484e2739e4c0819b51709350b3ca5833",
           "qid_v1_6dca47ecfc9efe7628b87970416e37e74e24258481c787f97413e49d96fb8c2b",
           "qid_v1_6ec5a1ef3b7e75159773eaf695f09c99dbe2004e86c926a0a9a3baef5d5351e7",
           "qid_v1_70424d218e8b0702bbddf425a372b1fed363f69fc0173af9ed514954b481b832",
@@ -47030,11 +48760,16 @@
           "qid_v1_9202c6f30fcd0cb01d38e83a6001b2d682be37edc39786ec2999fd30fdfb4956",
           "qid_v1_92b13ad02eb38a3298d946d6b4d38e45bffb39c50974272174814424f27891d1",
           "qid_v1_92dd1bbb6dcd0eaadc7c0cf460b25e0408d219e0256beeb50a91840c087426bb",
+          "qid_v1_95d20bd9267e65fc10e8a15d8371d9ebf65a5e2060930784b7bf33472195cab9",
           "qid_v1_98238fc71e8d920d2a2d3eaf342362fddf2e4fa56bb6f5ed4043f2cb2adccda3",
+          "qid_v1_99715774e895ed62bf2d40572626df5348e2c23f66db9a84c87a382853a6c8b9",
+          "qid_v1_9bdc3e6b81038ca4b03e08cb1dde57537405e799aa7b8fa888acb28a584b319e",
           "qid_v1_9ee84629c993c881702ce3002bfbeed2feab345942000aed68de0733fd2e8e9b",
+          "qid_v1_a21adf9e4f10ce07392543d6a1507f93315a17fe930e6e4ce3fb8dbe0ec868da",
           "qid_v1_a4106036235b3eef539123ae337e7b98be5da922e6fb49e50d3cee85f2ee45d6",
           "qid_v1_a612ad2192a14f213e880ee1e73614054d15e251b1b36846bdb332e24f4538e4",
           "qid_v1_a879ad5fcdf38165002e06b94bb1e3d602db90a32384be81c1f09339b7799eb0",
+          "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
           "qid_v1_a9bf82420f265643bbe59712ecb5cb358918ca7677256bc2b15207914d176462",
           "qid_v1_adc5b8076cf0415bbe3c12620827c9ce058d2352e08f319df0740319bc8f3f16",
           "qid_v1_b1302a27a5035b7ae0a6bea743c24076fe5d75f079e36fcce037aa71579c1924",
@@ -47095,13 +48830,14 @@
     "templates": [
       {
         "key": "TM_CIRCLE_CHORD_LENGTH",
-        "count": 55,
+        "count": 58,
         "questionUids": [
           "qid_v1_04adc05ee4d1761f8a35b62c1f5ff1e2680fe04518010a4f48fe323b371153dc",
           "qid_v1_05e6edfa6a0170fbcc06329f25bb82927039a99a1902afa71d8cd792aea1c3ef",
           "qid_v1_1629824d0b99dd6df92f964bb2f7681caddfbfd33e01e5d02bf92163ea060cda",
           "qid_v1_2a9eee33c43b8cb3b3fef0f403b18403fa7cd7912a7a67f23398d396368f571a",
           "qid_v1_2b145ea17d1845b6cc4b6729b16f2417f4c4934657d4faf840968c844bc9c686",
+          "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98",
           "qid_v1_3442cd271d618c9c386c359c311a9dd5802675f587fde14f7f7ece2ce4dcce30",
           "qid_v1_35dcd2a9965ece1571d38f00cebfdbc6fcada74344985ee37808a8bec5cd099b",
           "qid_v1_3a591ad156bc97789d5e4932c310f519bc57523ffafc6cd0652dfe5bbf4de3bd",
@@ -47119,6 +48855,7 @@
           "qid_v1_6a1361f9eb0f176534755fa7c2f70bfa204c0d368d5c3f2ec323a4e4a98c5782",
           "qid_v1_6af6fc516448eabcdcbcd39bab4c9e20a878c88f7371cfd90e24936f8644ff14",
           "qid_v1_73b8510d5fc947e981a8a6170487ffe099ee4aa46cc8d1c84de1a1a64ed794a0",
+          "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
           "qid_v1_76fe6e5976783f4bf46af4a91a7a07711d0373ea681f0b8ac2a644e8543fa916",
           "qid_v1_7716a1d4f757041ef0f10c447e3c22d4d1bbeee9d6b01c1cdf531f6ec9fb9c1f",
           "qid_v1_7bf434c68e3a8321f3e77ea9866f4be6b7a8de45351278820911568719a0d740",
@@ -47139,6 +48876,7 @@
           "qid_v1_b207ae5e08f97f03c78b9c6543dd2b911c3c41b232604de0b91915dab1a5f0e6",
           "qid_v1_b26012318f59fa9a19a6aab59d304fdce44d6936e22913161d448ccdf3d5513a",
           "qid_v1_b27f9b0951e1911be696a953a0487fd045fe4223484b5208afa67eba28109fd7",
+          "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a",
           "qid_v1_bbe02e6833be413735e75692b08d1b8f551d00fe6d23f02be5aff507e9fb92c6",
           "qid_v1_bfd294b95008c4847e29edeead6ef68af185bda67573af3b502933d5ef1589b3",
           "qid_v1_c3d8ee3d1d81990cc34f0f52591b34a90ac32a2e7525010ad2a5a8ab818e53e8",
@@ -47156,7 +48894,7 @@
       },
       {
         "key": "TM_CIRCLE_CHORD_PERP_BISECTOR",
-        "count": 12,
+        "count": 14,
         "questionUids": [
           "qid_v1_2515124ea3df7ccd339ec3f8fd63d36d7b99c191d835abcb7d87ceda83dc00dd",
           "qid_v1_34768661ba54d8eacc7bb3b7fbd4e039734adf721df1da81eaa6034afd9ded51",
@@ -47165,8 +48903,10 @@
           "qid_v1_5bb62b9f0239c580b74b94a61b9d75d9c0cc8672478d082cd49af9c6bf1aadd3",
           "qid_v1_613e50e6ae0e3974bb02b71a644360feaacedbd8d055e75fa6822905d52ba6e1",
           "qid_v1_6f536ec14b23bd64ae8c5a163cbe8ed09a677ff7a6858c33b4aa76870bbf9fee",
+          "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
           "qid_v1_9ad76dfea4ad1b70be3eef74afcce9beef5f032f0db3fc039c6e15e14ccee4cc",
           "qid_v1_ac46f1ab88c21417faaa3afafbd6775acee63ed186e6faa6101677d8e5260e8b",
+          "qid_v1_bac3c1fdf12dedd4e1ce4354cd4abec4861860ee41c7ab7b489dbdd0f06af761",
           "qid_v1_d4d9b6d64a756eab8ff48b23f5d8b3bbbd6c5fc667ee3ffaeb59346394b6da42",
           "qid_v1_ee7791fdddb3e5c607b53ef75dc5b2495ed5476e0857b3436a722674f42a019c",
           "qid_v1_f7f95a9c5b6a01d2279ce37df3e53225c1dd1c5ffd4c30ab65324e456249c6c2"
@@ -47197,7 +48937,7 @@
       },
       {
         "key": "TM_TANGENT_LENGTH",
-        "count": 53,
+        "count": 55,
         "questionUids": [
           "qid_v1_03d625a6a8c7bfefeb10b9d01602b30986891a6f7ed9219f397b72999cb2737f",
           "qid_v1_07176266b8389d6e921c2051341d13fe0d10efe594a3d888c70e2476f2a1697a",
@@ -47213,6 +48953,7 @@
           "qid_v1_29d1d071c92184711e96cbbcd9e2cc4bdffa5de06775bb0c7e66de491875d749",
           "qid_v1_337fee2425d80f0a2a846abd7d9a57a522868138dbab53eba82a7af4f0cf1e16",
           "qid_v1_4b65c4d5f07e51a20f54254f3cb58c9896ffb5937c786ce253157270ef683c1a",
+          "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
           "qid_v1_516d3c9603d771c158accb86c57c96ce5fa2ab0da7c209e4f2565d99e6dd7c6c",
           "qid_v1_54ad11846cf70bd3571b22e27e2dbd7de5f03a717a20f044bfd1a239cac81b33",
           "qid_v1_5788432f5b5b3adbcc0a2967150227d42e9a326490ad21a5e2e37a0d8adb641a",
@@ -47228,6 +48969,7 @@
           "qid_v1_8ade55894bec14e81d3bdd214fdce2a4f6c1406be813f1f7d9ddcd68978a65e3",
           "qid_v1_91cf132f70ed7fda51e475594f5450b9964e7594f9c365921e0a2aab29e9f3b6",
           "qid_v1_9216a5060b5da3317c50e54893acf8d00127d140675288be8edf88024a6d3e8d",
+          "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb",
           "qid_v1_9d02f48df27640bc11ee8b1e79d9facb54437e6e9e16bf68bf0afa098268c5bb",
           "qid_v1_9e21171cfd928dc42d5c422956c2008bc420e3ee8d386acc663b749c4dd40b2b",
           "qid_v1_a191c2905bf30c5885615de8af7eeca7fec68f1fc5d44760a6a63ad021334ab3",
@@ -47471,6 +49213,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_1cf3d85ff4d544dc0a3e559c81a1fe06863b63152549eaa68eef1b06415ac34f"
+        ]
+      },
+      {
+        "key": "TPL_CIRCLE_ANGLE_SECTOR_MEASURE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6"
         ]
       },
       {
@@ -48009,12 +49758,14 @@
       },
       {
         "key": "TPL_TRIG_APPLICATION_CHAINED_MEASURE",
-        "count": 60,
+        "count": 69,
         "questionUids": [
           "qid_v1_07f2a2d9ffade1b306afc80e93a2ed65cd1f45036f14dfb164c17415bc4ef7e0",
+          "qid_v1_0e389d9c42fdce03a188d2b167e3c575ed4a2ef70b7fe2e1ba1476cae466c51b",
           "qid_v1_1092068cb60241198f084a7833ae7dc350f5610f20e848eaa0fe9eb54b7642ff",
           "qid_v1_12b03adc6ab27ca9fded29172176c9d29c16cdea222c82c784c6babaa7c10e59",
           "qid_v1_1813858f13499d38ecde6be24bb5f630fda0afb7e270898fe370c17afd65460b",
+          "qid_v1_258ac8b815c64e7956d4d63116168b9cebc123aae2147051bf86dfaa992141ac",
           "qid_v1_25a30c22a4dbc3c2d536452552020c939263b06b1b94aa1157de73a4e46c97a5",
           "qid_v1_25c7a6f96303eaa85b941ec574e332e678a473d6fc0ea9a36e448cf0ccc8c6b1",
           "qid_v1_28f9bf57454f0a261784dcace2ab93458cbefb98f38bfd3bf4603c8818fb1095",
@@ -48025,6 +49776,7 @@
           "qid_v1_410374f66b4e556a33930c31fb5f22c87feab975a7fdf6b1a86c11d67e99dcee",
           "qid_v1_42e6667be8df1c261747d3b70538e38dbbc42c9d1eb3edb2a885329090c49b35",
           "qid_v1_50420e20370de4341a6e1c32103ee9a79317b9c6274011542d5f56fee39d30c5",
+          "qid_v1_51c09408f0cac455e25ebdc85bb85bf1efbbb6fbf2222cbef8e5cbc693e79e4a",
           "qid_v1_53ef9bf3ecbe0d5b35ecfce969e59f661f90b33356ba03e648c1f5b17b5e1efc",
           "qid_v1_5401f00834a7aaa8d21cd98292a0176a777369796f75cd3585d805039c87b2e7",
           "qid_v1_54894b757a5e03e33bba8dcc3c2a4a43e9aa8b52b700ccb5bfddb0525506077d",
@@ -48032,7 +49784,10 @@
           "qid_v1_596eb5a67f7de198f8062a2605bbd5afed283e807b0cdff1862cb61bd8f0cbda",
           "qid_v1_5ae74042b7a3e0a3931817563037c2b03b896fcebcce9f2962c6dedc993ff8e3",
           "qid_v1_5d3ed32e4aa8d38ff3f13f914223f2dff58e31cde58394c450fe81b0ee26ef70",
+          "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b",
           "qid_v1_5dd193c2b70025c981a2e926e8a36929efff680b5bb3ca1e1f4c85e9c94a99c1",
+          "qid_v1_675fd78074a129d25aeae426fc763ee79c0980b6c90f17976e51a1a206277ac7",
+          "qid_v1_693599656600a299f1a8a6719ebeee5a484e2739e4c0819b51709350b3ca5833",
           "qid_v1_6ec5a1ef3b7e75159773eaf695f09c99dbe2004e86c926a0a9a3baef5d5351e7",
           "qid_v1_73b9b29319bc88b9f76e834a21cf3bc29f336e480ea8474b3ddfd5be4c8b7334",
           "qid_v1_73e76e3491461fbec691af78dfa34d8b9136708fca52ee0f21bb4982f92e076c",
@@ -48042,8 +49797,11 @@
           "qid_v1_861c4adf5ccda2b04d1f2b53a995f023a6f6cba1ae3e87eee366099e647fb26d",
           "qid_v1_861ca0026e01c9157133ffdcb9c47c8a1c0b48baff37646485885d2bdb073790",
           "qid_v1_9085daae1976da47ba5f2e7cdd228aa87af076292981d26101827622ab38feca",
+          "qid_v1_95d20bd9267e65fc10e8a15d8371d9ebf65a5e2060930784b7bf33472195cab9",
           "qid_v1_98238fc71e8d920d2a2d3eaf342362fddf2e4fa56bb6f5ed4043f2cb2adccda3",
+          "qid_v1_99715774e895ed62bf2d40572626df5348e2c23f66db9a84c87a382853a6c8b9",
           "qid_v1_9ee84629c993c881702ce3002bfbeed2feab345942000aed68de0733fd2e8e9b",
+          "qid_v1_a21adf9e4f10ce07392543d6a1507f93315a17fe930e6e4ce3fb8dbe0ec868da",
           "qid_v1_a612ad2192a14f213e880ee1e73614054d15e251b1b36846bdb332e24f4538e4",
           "qid_v1_a9bf82420f265643bbe59712ecb5cb358918ca7677256bc2b15207914d176462",
           "qid_v1_b1302a27a5035b7ae0a6bea743c24076fe5d75f079e36fcce037aa71579c1924",
@@ -48075,8 +49833,9 @@
       },
       {
         "key": "TPL_TRIG_APPLICATION_DIRECT_MEASURE",
-        "count": 35,
+        "count": 38,
         "questionUids": [
+          "qid_v1_0db703b21a0a6fb130d81f94cc4091088d55267e1e70ba29de11299b9e7668e5",
           "qid_v1_1023a3f547cd537a29cb63b79e30722eaf9f09c8cbb0e5f5011f30bd46ad34e3",
           "qid_v1_12310c3e6195b68457caa0eeba691c2b39b6935d15fc11deece486701ad92cdb",
           "qid_v1_171c3168d2b05fe8278d13ea71e6c69f5e11be9d8c516c9e1f6c382fdacba166",
@@ -48101,7 +49860,9 @@
           "qid_v1_9202c6f30fcd0cb01d38e83a6001b2d682be37edc39786ec2999fd30fdfb4956",
           "qid_v1_92b13ad02eb38a3298d946d6b4d38e45bffb39c50974272174814424f27891d1",
           "qid_v1_92dd1bbb6dcd0eaadc7c0cf460b25e0408d219e0256beeb50a91840c087426bb",
+          "qid_v1_9bdc3e6b81038ca4b03e08cb1dde57537405e799aa7b8fa888acb28a584b319e",
           "qid_v1_a4106036235b3eef539123ae337e7b98be5da922e6fb49e50d3cee85f2ee45d6",
+          "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
           "qid_v1_b1a85fa8cbda851713da571650107925da1abbef633266796fcb9085f3fc480c",
           "qid_v1_b80c2821aa690cb62996294b6bc7c7c877df8ccd23ab84b43a8545bbe812a8cf",
           "qid_v1_b87d57ef04701290854e403f2ee6b9f5d7ed7621be3aec2619db7528cc876b97",
@@ -48154,8 +49915,9 @@
       },
       {
         "key": "TPL_TRIG_RATIO_BASIC_RELATION",
-        "count": 32,
+        "count": 34,
         "questionUids": [
+          "qid_v1_04ffcbf3befa26a307a87e5037cafd0ffecf7cf1e30a57b5dcbf25aeabb24fff",
           "qid_v1_1879f5e1d630fe7274a001a41a705ee2ce2153e9361b5c148b5102e7d1a7d550",
           "qid_v1_1aaa56aedf38eb0e78a60aed8bf950e1bd29fdc0abb0f74b67133ebbd851c2d0",
           "qid_v1_1b65b306112cfae1d945882887ec02d62706fd0ce916e42c442412268067ccce",
@@ -48186,6 +49948,7 @@
           "qid_v1_cc44d06ccfc5958c4d46719cdc85dadbe422808e0824e171a71989f8d413bd03",
           "qid_v1_d34d5cae69eef26f3dab533aa8dc973fc1b53b76dfc19f44f079a2ca4e9aff99",
           "qid_v1_e40c204b4fce0ff09ba2e294b82f5f03a4392492b96973867e07d14e10cc54ab",
+          "qid_v1_f34ac4def739b5c9db53ce1866bd7f4eb1fa8a982ed2b6a601f3e901e9d890f1",
           "qid_v1_f7ada0a57ec4aa02f4dbb6f16e28fb60d17c3421a23bff850378a67e6fb2c83d",
           "qid_v1_fc7031dcd660e5d84aa3a872886dc2b24e74bf279cd18f55e12edf1b4ef46486"
         ]
@@ -48229,7 +49992,7 @@
       },
       {
         "key": "TPL_TRIG_RATIO_SPECIAL_ANGLE",
-        "count": 25,
+        "count": 27,
         "questionUids": [
           "qid_v1_020eec100424bc478eabae41c66b091d4bf1c17939e7a07be556532478e2f1b0",
           "qid_v1_1b5921815d46d39d6bd4c156f581d6cf972e7b5a9e8349e988aaae8e7538593f",
@@ -48249,12 +50012,14 @@
           "qid_v1_9d2409d65b0e6dd5a4f2b3e314baf4f331d7b137713c03673eed50f494bc7791",
           "qid_v1_9f6d97bddf206cfeca068b1c95be9afad4b599440e3c4aafe1f3f6d676df2382",
           "qid_v1_a4642d7aecfe828652292a0713a339e2ced66d80520dbb461582bbd435b4129d",
+          "qid_v1_ab95fc3ac35a546243376fb7ffd4c66ae94161c410fc794f00417c54d512f192",
           "qid_v1_ae5d7c4aec3190a689cf32a79024d6afaa43818477a734917fb056e02e21d15b",
           "qid_v1_b4876493b7e531af2f809f4cc17ba44f87b6b22108806266a49aaa522556a24c",
           "qid_v1_ca9668a1ebdfda727a4dbda5ccd194f99e69acf80c24433d61827ffa9c52f8bc",
           "qid_v1_cafbde01d6a8fd4209d56828060b5090bb09b725ecf15de2a21c6933d5bd80ed",
           "qid_v1_ea5d42b90e7b81ab4b878475cbbf77af95a9031e3de6101047f33d81dbab69f8",
           "qid_v1_f082c7f54847431451ab99767e3604118fa14ac2d0b973c935d6c065b735c04d",
+          "qid_v1_f1aa4b2260fb163c51e65b7d7e79112ad9d1b6a6fa75c995c6bd3fed04b687f9",
           "qid_v1_f4e02451c669123c77210aa4ed2d11de4e70ad545199146c98e07c04f3f7c939"
         ]
       },
@@ -48279,7 +50044,7 @@
     "crossConcepts": [
       {
         "key": "CC_ANGLE_BISECTOR",
-        "count": 27,
+        "count": 28,
         "questionUids": [
           "qid_v1_0d3f0261acf9b67c7089bdbb7760f60b6854c1662d15b94faeda93e16e56cd20",
           "qid_v1_21c7eb29cbe6be44f3123d723245b692cd113ac1cf381bc4266a259d34e3a8f8",
@@ -48288,6 +50053,7 @@
           "qid_v1_3e3632da90a08a2aea2595516ff497d8f10ece7b3f3774c1a985bd816eb6f69b",
           "qid_v1_43100c677921e57a90799b99e024c2c0f99a81d42cf424f62988557c88b88032",
           "qid_v1_54d9e914570853eb3891648cad5570f1bd85f85f4ada6564fd543288b651a00c",
+          "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b",
           "qid_v1_64661daf2fea0bc0430a163d82c8fbb7340274320504caa149dc5927fd0411c6",
           "qid_v1_6f1de3eb319b36c570361eb3164a980b1f035db257d63c935538f25970ee6018",
           "qid_v1_89fb195a61e6340da8e296a6455292033d025b5bf7c9a309472d5939cf037e15",
@@ -48355,6 +50121,24 @@
         ]
       },
       {
+        "key": "CC_CIRCLE_CHORD_PROPERTY",
+        "count": 5,
+        "questionUids": [
+          "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98",
+          "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
+          "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5",
+          "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a",
+          "qid_v1_bac3c1fdf12dedd4e1ce4354cd4abec4861860ee41c7ab7b489dbdd0f06af761"
+        ]
+      },
+      {
+        "key": "CC_CIRCLE_CIRCUMFERENCE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a"
+        ]
+      },
+      {
         "key": "CC_CIRCLE_RADIUS_DEFINITION",
         "count": 1,
         "questionUids": [
@@ -48362,10 +50146,25 @@
         ]
       },
       {
+        "key": "CC_CIRCLE_SECTOR_AREA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6"
+        ]
+      },
+      {
         "key": "CC_CIRCLE_TANGENT_LENGTH",
         "count": 1,
         "questionUids": [
           "qid_v1_07176266b8389d6e921c2051341d13fe0d10efe594a3d888c70e2476f2a1697a"
+        ]
+      },
+      {
+        "key": "CC_CIRCLE_TANGENT_PROPERTY",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+          "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb"
         ]
       },
       {
@@ -48425,6 +50224,28 @@
         ]
       },
       {
+        "key": "CC_ELEVATION_ANGLE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0e389d9c42fdce03a188d2b167e3c575ed4a2ef70b7fe2e1ba1476cae466c51b"
+        ]
+      },
+      {
+        "key": "CC_EQUILATERAL_TRIANGLE",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
+          "qid_v1_675fd78074a129d25aeae426fc763ee79c0980b6c90f17976e51a1a206277ac7"
+        ]
+      },
+      {
+        "key": "CC_GEOMETRIC_PROOF",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5"
+        ]
+      },
+      {
         "key": "CC_INSCRIBED_ANGLE",
         "count": 20,
         "questionUids": [
@@ -48451,9 +50272,24 @@
         ]
       },
       {
-        "key": "CC_ISOSCELES_TRIANGLE",
+        "key": "CC_INSCRIBED_CIRCLE",
         "count": 1,
         "questionUids": [
+          "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb"
+        ]
+      },
+      {
+        "key": "CC_ISOSCELES_RIGHT_TRIANGLE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f1aa4b2260fb163c51e65b7d7e79112ad9d1b6a6fa75c995c6bd3fed04b687f9"
+        ]
+      },
+      {
+        "key": "CC_ISOSCELES_TRIANGLE",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b",
           "qid_v1_fdc584adc0bb7d0ab7c77addd88238d37ebf061993b4c242d64280f9e7cf050c"
         ]
       },
@@ -48462,6 +50298,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_f6ba276aa54d160612353a780681f341dec48a239c8bacaefc57df78aef71add"
+        ]
+      },
+      {
+        "key": "CC_LINEAR_EQUATIONS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_0e389d9c42fdce03a188d2b167e3c575ed4a2ef70b7fe2e1ba1476cae466c51b"
         ]
       },
       {
@@ -48497,8 +50340,9 @@
       },
       {
         "key": "CC_PAPER_FOLDING_SIMILARITY",
-        "count": 1,
+        "count": 2,
         "questionUids": [
+          "qid_v1_675fd78074a129d25aeae426fc763ee79c0980b6c90f17976e51a1a206277ac7",
           "qid_v1_fe666e358be6ce39a16edad6c823caf7054cda5da58fbeaca379763cab2238c2"
         ]
       },
@@ -48510,6 +50354,13 @@
           "qid_v1_7929bc32886dc9e9a862c84d3add991f57b58efd8d4763743985491ab2d854de",
           "qid_v1_aa3c1ee5ab7ec90917755d06c8c44c1b8d06b3a14fde0c985c4fc769572eb51b",
           "qid_v1_d81b0ca6ee3a8238598e586f84197df3e173cdbe2f8081fdc57165e435acb717"
+        ]
+      },
+      {
+        "key": "CC_PARALLELOGRAM_AREA",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_a21adf9e4f10ce07392543d6a1507f93315a17fe930e6e4ce3fb8dbe0ec868da"
         ]
       },
       {
@@ -48531,6 +50382,13 @@
           "qid_v1_dac810bf3b89381938743c5d437577d0a6f110a2aca3b641cb951416b1e8e053",
           "qid_v1_dbe75705e39c315c4f85d2f3ab8400eceadbd3427c4f826b9ed75874359fe2a1",
           "qid_v1_ef6f8fb975efde2d9df111dda5acaca3127662d056b740d01d79924a89790e48"
+        ]
+      },
+      {
+        "key": "CC_PERPENDICULAR_CHORDS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98"
         ]
       },
       {
@@ -48641,23 +50499,41 @@
       },
       {
         "key": "CC_PYTHAGOREAN_THEOREM",
-        "count": 8,
+        "count": 17,
         "questionUids": [
+          "qid_v1_04ffcbf3befa26a307a87e5037cafd0ffecf7cf1e30a57b5dcbf25aeabb24fff",
           "qid_v1_07f2a2d9ffade1b306afc80e93a2ed65cd1f45036f14dfb164c17415bc4ef7e0",
+          "qid_v1_31be3cf034898f29ef8c92b416032ff58d60dfee46bff9e8abc2ef1d229ede98",
           "qid_v1_345038ca84be90614fd17a1336fbf604fb22bbb68c0e628899141792570733c6",
           "qid_v1_4676e57abcc33bb276f3abf5e2dcca18220de29dbf966f6362077a76bf1f4d05",
+          "qid_v1_51c09408f0cac455e25ebdc85bb85bf1efbbb6fbf2222cbef8e5cbc693e79e4a",
           "qid_v1_6ec5a1ef3b7e75159773eaf695f09c99dbe2004e86c926a0a9a3baef5d5351e7",
+          "qid_v1_74037d24650772819c3d4a931d8b4d6a6b20b6f0889c33e5b8ae00912121351b",
           "qid_v1_8f6823ece16f22ec12e271eb0c507cc0d5c9e57f50ae0fb427d6e85ca22add8c",
+          "qid_v1_9299b97b522f856c87b85870f97b64baa99d5664e8fe4294c3442d30ab56bacb",
+          "qid_v1_9bdc3e6b81038ca4b03e08cb1dde57537405e799aa7b8fa888acb28a584b319e",
+          "qid_v1_b9c9f63dc8bbaee0857f3f55383b27e3a6eb53a5c9b0fa7b6d13494921afe62a",
+          "qid_v1_bac3c1fdf12dedd4e1ce4354cd4abec4861860ee41c7ab7b489dbdd0f06af761",
+          "qid_v1_f34ac4def739b5c9db53ce1866bd7f4eb1fa8a982ed2b6a601f3e901e9d890f1",
           "qid_v1_f6ba276aa54d160612353a780681f341dec48a239c8bacaefc57df78aef71add",
           "qid_v1_fe666e358be6ce39a16edad6c823caf7054cda5da58fbeaca379763cab2238c2",
           "qid_v1_ff524c074130ef8a29ca1f0cac5a2d87cae4abd25409c2f24b93e0174f95ee6c"
         ]
       },
       {
-        "key": "CC_QUADRILATERAL_AREA_TRIG",
+        "key": "CC_QUADRATIC_FORMULA",
         "count": 1,
         "questionUids": [
-          "qid_v1_7a66edb776a1e141e675cae83802f5343e2f7e97f1c973b320867cb2d07de6df"
+          "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b"
+        ]
+      },
+      {
+        "key": "CC_QUADRILATERAL_AREA_TRIG",
+        "count": 3,
+        "questionUids": [
+          "qid_v1_258ac8b815c64e7956d4d63116168b9cebc123aae2147051bf86dfaa992141ac",
+          "qid_v1_7a66edb776a1e141e675cae83802f5343e2f7e97f1c973b320867cb2d07de6df",
+          "qid_v1_99715774e895ed62bf2d40572626df5348e2c23f66db9a84c87a382853a6c8b9"
         ]
       },
       {
@@ -48665,6 +50541,21 @@
         "count": 1,
         "questionUids": [
           "qid_v1_c28e9c13282182e1b1a5e00099b45d4aea91b14be2b61491923edbf088674529"
+        ]
+      },
+      {
+        "key": "CC_RADICAL_ARITHMETIC",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_258ac8b815c64e7956d4d63116168b9cebc123aae2147051bf86dfaa992141ac",
+          "qid_v1_ab95fc3ac35a546243376fb7ffd4c66ae94161c410fc794f00417c54d512f192"
+        ]
+      },
+      {
+        "key": "CC_RATIO",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_693599656600a299f1a8a6719ebeee5a484e2739e4c0819b51709350b3ca5833"
         ]
       },
       {
@@ -48709,13 +50600,15 @@
       },
       {
         "key": "CC_RIGHT_TRIANGLE",
-        "count": 5,
+        "count": 7,
         "questionUids": [
           "qid_v1_6924b95f2fc7a3ac361bf071a3cac7745002ee35c74088d27f0157fc66491582",
+          "qid_v1_99715774e895ed62bf2d40572626df5348e2c23f66db9a84c87a382853a6c8b9",
           "qid_v1_9ad76dfea4ad1b70be3eef74afcce9beef5f032f0db3fc039c6e15e14ccee4cc",
           "qid_v1_9fb066b8f38205e481a94c6a1c98dd5f159af8a3e1ea77e8ab5ccfd86d9949f7",
           "qid_v1_a128f16ac561a6c75d9c73014a15cd521deedefebf54ef8cd9dfba73c4596dda",
-          "qid_v1_d25432f163f75c5da045c0522b5fb2d5f08213dd67bf52105e16da23579cd5fd"
+          "qid_v1_d25432f163f75c5da045c0522b5fb2d5f08213dd67bf52105e16da23579cd5fd",
+          "qid_v1_f34ac4def739b5c9db53ce1866bd7f4eb1fa8a982ed2b6a601f3e901e9d890f1"
         ]
       },
       {
@@ -48752,13 +50645,23 @@
       },
       {
         "key": "CC_SPECIAL_ANGLES",
-        "count": 6,
+        "count": 16,
         "questionUids": [
           "qid_v1_07176266b8389d6e921c2051341d13fe0d10efe594a3d888c70e2476f2a1697a",
+          "qid_v1_258ac8b815c64e7956d4d63116168b9cebc123aae2147051bf86dfaa992141ac",
+          "qid_v1_33f49f33adf78019df1acb10e48a89a2e935dadcc5344a44df6d6d948f65a5f6",
           "qid_v1_345038ca84be90614fd17a1336fbf604fb22bbb68c0e628899141792570733c6",
+          "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+          "qid_v1_51c09408f0cac455e25ebdc85bb85bf1efbbb6fbf2222cbef8e5cbc693e79e4a",
           "qid_v1_6091ca048b32cb7f22553683e70ce1d8a95e57c7af5be43dffa368419be404d2",
+          "qid_v1_675fd78074a129d25aeae426fc763ee79c0980b6c90f17976e51a1a206277ac7",
           "qid_v1_76c01a675d734cb05888d8566b0f29d109b58b1306f27003e9341f547410452a",
           "qid_v1_7a66edb776a1e141e675cae83802f5343e2f7e97f1c973b320867cb2d07de6df",
+          "qid_v1_95d20bd9267e65fc10e8a15d8371d9ebf65a5e2060930784b7bf33472195cab9",
+          "qid_v1_99715774e895ed62bf2d40572626df5348e2c23f66db9a84c87a382853a6c8b9",
+          "qid_v1_9bdc3e6b81038ca4b03e08cb1dde57537405e799aa7b8fa888acb28a584b319e",
+          "qid_v1_a21adf9e4f10ce07392543d6a1507f93315a17fe930e6e4ce3fb8dbe0ec868da",
+          "qid_v1_ab95fc3ac35a546243376fb7ffd4c66ae94161c410fc794f00417c54d512f192",
           "qid_v1_f4e02451c669123c77210aa4ed2d11de4e70ad545199146c98e07c04f3f7c939"
         ]
       },
@@ -48880,6 +50783,16 @@
         ]
       },
       {
+        "key": "CC_TRIANGLE_AREA_TRIG",
+        "count": 4,
+        "questionUids": [
+          "qid_v1_4fc73de6a596f143e7930c5bebb294566587dfdbf3ac6aa2a9e40adec415c618",
+          "qid_v1_693599656600a299f1a8a6719ebeee5a484e2739e4c0819b51709350b3ca5833",
+          "qid_v1_9bdc3e6b81038ca4b03e08cb1dde57537405e799aa7b8fa888acb28a584b319e",
+          "qid_v1_a21adf9e4f10ce07392543d6a1507f93315a17fe930e6e4ce3fb8dbe0ec868da"
+        ]
+      },
+      {
         "key": "CC_TRIANGLE_CENTROID",
         "count": 7,
         "questionUids": [
@@ -48893,6 +50806,13 @@
         ]
       },
       {
+        "key": "CC_TRIANGLE_CONGRUENCE_RHS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_823f9c92a2d327410617d109b00a79f645487b131bf659d58fce415e017225d5"
+        ]
+      },
+      {
         "key": "CC_TRIANGLE_INSCRIBED_CIRCLE_PERIMETER",
         "count": 1,
         "questionUids": [
@@ -48900,13 +50820,42 @@
         ]
       },
       {
-        "key": "CC_TRIG_RATIO",
-        "count": 4,
+        "key": "CC_TRIANGLE_SIMILARITY",
+        "count": 1,
         "questionUids": [
+          "qid_v1_5da70df84542e97ed003765e12378a3386174fda8b727b780dc821c9a3bd174b"
+        ]
+      },
+      {
+        "key": "CC_TRIG_MEASUREMENT",
+        "count": 5,
+        "questionUids": [
+          "qid_v1_0db703b21a0a6fb130d81f94cc4091088d55267e1e70ba29de11299b9e7668e5",
+          "qid_v1_0e389d9c42fdce03a188d2b167e3c575ed4a2ef70b7fe2e1ba1476cae466c51b",
+          "qid_v1_51c09408f0cac455e25ebdc85bb85bf1efbbb6fbf2222cbef8e5cbc693e79e4a",
+          "qid_v1_95d20bd9267e65fc10e8a15d8371d9ebf65a5e2060930784b7bf33472195cab9",
+          "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74"
+        ]
+      },
+      {
+        "key": "CC_TRIG_RATIO",
+        "count": 8,
+        "questionUids": [
+          "qid_v1_04ffcbf3befa26a307a87e5037cafd0ffecf7cf1e30a57b5dcbf25aeabb24fff",
           "qid_v1_07f2a2d9ffade1b306afc80e93a2ed65cd1f45036f14dfb164c17415bc4ef7e0",
           "qid_v1_8f6823ece16f22ec12e271eb0c507cc0d5c9e57f50ae0fb427d6e85ca22add8c",
           "qid_v1_93d653274f9d3c72e5fde6b4c7c65fe4a75b5a14c8ae3f9864bb38d12b555e26",
+          "qid_v1_a8c5d1d8ea9e5070f5bd3c74fdd8997f9bd9c3b372169d039b2655b9fe37ec74",
+          "qid_v1_ab95fc3ac35a546243376fb7ffd4c66ae94161c410fc794f00417c54d512f192",
+          "qid_v1_f34ac4def739b5c9db53ce1866bd7f4eb1fa8a982ed2b6a601f3e901e9d890f1",
           "qid_v1_fe666e358be6ce39a16edad6c823caf7054cda5da58fbeaca379763cab2238c2"
+        ]
+      },
+      {
+        "key": "CC_TRIG_RATIO_DEFINITIONS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_f1aa4b2260fb163c51e65b7d7e79112ad9d1b6a6fa75c995c6bd3fed04b687f9"
         ]
       },
       {
@@ -48919,8 +50868,9 @@
       },
       {
         "key": "CC_TRIG_TABLE_LOOKUP",
-        "count": 1,
+        "count": 2,
         "questionUids": [
+          "qid_v1_0db703b21a0a6fb130d81f94cc4091088d55267e1e70ba29de11299b9e7668e5",
           "qid_v1_e583ae5cf335ebbab4013293bc1503be955cc182c4c62d4d9359dee2571e05f9"
         ]
       },

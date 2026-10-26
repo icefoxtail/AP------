@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "archive-meta-pipeline-audit-normalization-v1",
+  "sourceAuditSha256": "d5d9bb3d6d729deb564a80a7bbe6c264f75384ba6d2057dac06be82a69992c5f",
+  "sourceAuditSchemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+  "targetProofSchema": "meta-pipeline-audit-approval-v2",
+  "reason": "The Drive audit carries definition objects with flat per-record classification. Split it into the registrar-supported paired v2 proof without changing any audited value or definition.",
+  "packScopeCorrections": [],
+  "typeCorrections": [
+    {
+      "sourceOrdinal": 3,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "reason": "현 24 cm와 중심에서 현까지의 거리 9 cm에서 중심에서 현에 내린 수선이 현을 이등분함을 이용해 반지름을 구하고 원둘레를 계산한다. 현의 길이와 중심거리 조건을 쓰는 PT_CIRCLE_LINE_RELATION·TM_CIRCLE_CHORD_LENGTH가 정확하다.",
+      "sourceDecisiveExcerpt": "원의 중심에서 현에 내린 수선은 현을 이등분한다. 따라서 현의 절반은 12 cm이다."
+    },
+    {
+      "sourceOrdinal": 14,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR"
+      },
+      "reason": "현 AB가 반지름 OC를 수직이등분한다는 조건에서 교점까지의 중심거리가 r/2임을 파악하고 직각삼각형에서 반지름을 구한다. 현의 수직이등분선이 중심을 지나는 성질(중심에서 현에 내린 수선의 이등분)을 쓰므로 TM_CIRCLE_CHORD_PERP_BISECTOR가 정확하다.",
+      "sourceDecisiveExcerpt": "현 AB가 반지름 OC를 수직이등분하므로 교점에서 OC가 반으로 나뉜다."
+    },
+    {
+      "sourceOrdinal": 15,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "reason": "AB⊥OM에서 중심에서 현에 내린 수선이 현 AB를 이등분함을 이용해 AM을 구하고, AB=CD(같은 길이의 현은 중심에서 같은 거리) 조건으로 CD의 중심거리를 OM과 같게 적용해 삼각형 넓이를 구한다. 현 길이·거리 조건 유형이다.",
+      "sourceDecisiveExcerpt": "중심에서 현에 내린 수선은 현을 이등분한다. O에서 CD까지의 거리도 같은 길이의 현이므로 6이다."
+    },
+    {
+      "sourceOrdinal": 16,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_LENGTH"
+      },
+      "reason": "길이가 같은 두 쌍의 평행한 현 AB, CD와 EF, GH가 중심을 사이에 두고 대칭으로 놓인다는 성질로 중심거리 5와 3을 얻고, 한 현의 반과 중심거리로 반지름을 구한 뒤 다른 현의 길이를 구한다. 현의 길이·중심거리 조건 유형이다.",
+      "sourceDecisiveExcerpt": "평행한 같은 길이의 두 현은 중심에서 같은 거리에 있고 중심을 사이에 둔다."
+    },
+    {
+      "sourceOrdinal": 17,
+      "before": {
+        "problemTypeKey": "PT_TRIG_RATIO_APPLICATION",
+        "templateKey": "TPL_TRIG_APPLICATION_DIRECT_MEASURE"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH"
+      },
+      "reason": "한 점에서 원에 그은 두 접선의 길이가 같음으로 BD=BE, CF=CE를 구해 BC를 만들고, 삼각비 넓이 공식으로 △ACB의 넓이를 구한다. 원 단원의 접선 길이 상등이 결정적이므로 PT_CIRCLE_LINE_RELATION이 맞으나, ACTIVE 템플릿에 접선 길이 템플릿이 없고 삼각비 DIRECT 템플릿도 목표를 길이·높이·거리로 한정해 넓이를 명시하지 않는다. GAP: 접선 길이 템플릿 필요. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+      "sourceDecisiveExcerpt": "한 점에서 원에 그은 두 접선의 길이는 같다. AD=18, AB=13이므로 BD=5, 따라서 BE=5이다."
+    },
+    {
+      "sourceOrdinal": 20,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_TANGENT",
+        "templateKey": "TM_TANGENT_LENGTH"
+      },
+      "reason": "직각삼각형의 내접원 접점에서 접선 길이 상등(BE=BD, CF=CE)으로 변을 만들고 피타고라스로 내접원 반지름을 구한 뒤 중심에서 세 꼭짓점까지 거리를 계산한다. 접선 길이 성질이 결정적이나 ACTIVE 접선 길이 템플릿이 없다. GAP: 접선 길이 템플릿 필요. ROOT located existing ACTIVE TM_TANGENT_LENGTH under PT_CIRCLE_TANGENT (not under PT_CIRCLE_LINE_RELATION); its exact definition is tangent length from an exterior point and it has an ACTIVE M3-06 binding. No new template or method was introduced.",
+      "sourceDecisiveExcerpt": "접선 길이 성질에서 BE=BD=5, CF=CE=12이다. AF=AD=x라 하면 AB=x+5, AC=x+12, BC=17이다."
+    },
+    {
+      "sourceOrdinal": 24,
+      "before": {
+        "problemTypeKey": "PT_CIRCLE_ANGLE_RELATIONS",
+        "templateKey": "TPL_CIRCLE_ANGLE_COMPOSITE"
+      },
+      "after": {
+        "problemTypeKey": "PT_CIRCLE_LINE_RELATION",
+        "templateKey": "TM_CIRCLE_CHORD_PERP_BISECTOR"
+      },
+      "reason": "(1) 서로 다른 두 현의 수직이등분선의 교점으로 원의 중심을 복원하고, (2) OA=OB, OM 공통, ∠OMA=∠OMB=90°로 RHS 합동을 보여 중심에서 현에 내린 수선이 현을 이등분함을 증명한다. 현의 수직이등분선 성질 그 자체이므로 TM_CIRCLE_CHORD_PERP_BISECTOR가 정확하다.",
+      "sourceDecisiveExcerpt": "원의 중심은 서로 다른 두 현의 수직이등분선의 교점이다. 두 직각삼각형 OMA, OMB는 RHS 합동이므로 AM=BM이다."
+    }
+  ]
+}
