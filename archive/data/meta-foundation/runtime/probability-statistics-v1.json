@@ -15,19 +15,20 @@
     "reviewedExam_meta-pipeline-25-jeil-h2-probstats-20261023": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-25-jeil-h2-probstats-20261023.json",
     "reviewedExam_meta-pipeline-18-maesan-h2-probstats-20261024-codex-audit": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-18-maesan-h2-probstats-20261024-codex-audit.json",
     "reviewedExam_meta-pipeline-03-boksung-h2-probstats-20261024": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-03-boksung-h2-probstats-20261024.json",
-    "reviewedExam_meta-pipeline-r3-2-f2bf38e88c97": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.json"
+    "reviewedExam_meta-pipeline-r3-2-f2bf38e88c97": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.json",
+    "reviewedExam_meta-pipeline-r3-1-df2990692916": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json"
   },
   "counts": {
     "canonicalAssignments": 704,
-    "records": 746,
-    "taxonomyRows": 118,
-    "defaultSelectable": 746,
+    "records": 769,
+    "taxonomyRows": 122,
+    "defaultSelectable": 769,
     "bindingGap": 0,
     "sourceRepairPending": 0,
     "difficultyReviewed": 704,
     "catalogUidDirectJoin": 704,
     "catalogSourceIdentityRepairJoin": 0,
-    "automaticEligibleExpected": 109,
+    "automaticEligibleExpected": 132,
     "catalogJoinMismatch": 0,
     "sourceHold": 0,
     "supplementary": 0
@@ -474,12 +475,25 @@
       "L1": "경우의 수",
       "L2": "순열과 조합",
       "L3": "순열",
+      "L4": "원순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 4
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "순열",
       "L4": "같은 것이 있는 순열",
       "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
       "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 1
+      "supportingItemCount": 3
     },
     {
       "curriculumKey": "2015",
@@ -492,7 +506,46 @@
       "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 1
+      "supportingItemCount": 2
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "중복순열",
+      "L4": "중복순열·반복 배정",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 2
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "조합·중복조합",
+      "L4": "조합과 선택",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 2
+    },
+    {
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "조합·중복조합",
+      "L4": "중복조합·정수해·동일물 분배",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "supportingItemCount": 6
     },
     {
       "curriculumKey": "2015",
@@ -557,7 +610,7 @@
       "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 6
+      "supportingItemCount": 10
     },
     {
       "curriculumKey": "2015",
@@ -570,7 +623,7 @@
       "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
       "curriculumApplicability": "DEFAULT_SCOPE",
       "defaultSelectable": true,
-      "supportingItemCount": 17
+      "supportingItemCount": 19
     },
     {
       "curriculumKey": "2015",
@@ -5277,6 +5330,74 @@
       "legacyLevelCompatibility": "NORMAL"
     },
     {
+      "questionUid": "qid_v1_199d13db811181c9254590a86dbc0d4bfa3eeb9f62933896a7b19c97fbaa4f25",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 17,
+      "sourceQuestionNo": "17",
+      "sourceFingerprint": "04415c03e9145f22cd19a1c6352187135d6a6d69b63ca7bf58bdc74194d72e13",
+      "contentFingerprint": "5b1871c58cbcd724e0a81fb3fa2b003b22c37819fd490f7f7cfef2c4caf4fd07",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항정리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_SUM_POWER_OF_TWO"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "이항정리",
+      "L3": "이항정리",
+      "L4": "이항계수의 성질·활용",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#17",
+      "approvedSourceFingerprint": "04415c03e9145f22cd19a1c6352187135d6a6d69b63ca7bf58bdc74194d72e13",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_19e18ccacac54bf9f9aa97a6af207b63e4a0bb1c602d1253faaf5ed23b72001a",
       "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_확률과통계.js",
       "sourceOrdinal": 5,
@@ -5645,6 +5766,76 @@
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL"
+    },
+    {
+      "questionUid": "qid_v1_1d6eb24bb54f4107d8a483033bd6cb542235dd4cff333cfdb9cca124405070b8",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 23,
+      "sourceQuestionNo": "23",
+      "sourceFingerprint": "aecae329a4c931808483f8cd5982731247b579de65bf68359d43128a1704a483",
+      "contentFingerprint": "16bd409e7a9a72d959f6a00532756d24a7ca52e6fbd60d352044e6da466bec8e",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_NON_NEGATIVE_INTEGER_SOLUTIONS_VARIABLE_CASE"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "조합·중복조합",
+      "L4": "중복조합·정수해·동일물 분배",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#23",
+      "approvedSourceFingerprint": "aecae329a4c931808483f8cd5982731247b579de65bf68359d43128a1704a483",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_1d99fc73591e2df503675f07b6af2df5a9418bf612feacc06d6a1bc21c84a159",
@@ -6915,6 +7106,74 @@
       "legacyLevelCompatibility": "NORMAL"
     },
     {
+      "questionUid": "qid_v1_264f0764aabba7eea65b9a25c6c3363328dc6a93cebc66397e549961afe48e3e",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 4,
+      "sourceQuestionNo": "4",
+      "sourceFingerprint": "d461256883fc2f1ec6b308671b1235d1d6674ed941db08a6c8e59dbefd7e14f9",
+      "contentFingerprint": "5e895c9d69d19e3685f5b34628bdc781cd588438c561c00769f54273a82bb00c",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "crossConceptKeys": [
+        "CC_INDEPENDENT_PRODUCT_RULE"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 1,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "중복순열",
+      "L4": "중복순열·반복 배정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#4",
+      "approvedSourceFingerprint": "d461256883fc2f1ec6b308671b1235d1d6674ed941db08a6c8e59dbefd7e14f9",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_266b798eda69320d9a8f12d13b564022df098b099f063c6d82b04ee6eb46c11b",
       "sourceArchiveFile": "original/high/h2/1mid/25_수피아여고_1학기_중간_고2_확률과통계.js",
       "sourceOrdinal": 17,
@@ -7232,6 +7491,77 @@
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "questionUid": "qid_v1_29a182e0300f26cae6924831c01a46eafbe3a663db83cf7ba3d3e76d7c712ce7",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 1,
+      "sourceQuestionNo": "1",
+      "sourceFingerprint": "6880c5840f3ba2417d0b35c4f0c31ea56512b4d7135b11637e4cc114190e941d",
+      "contentFingerprint": "0fab99918ecd624aedc0e6c0890ab23f47db6acc2dc8ad01fb4afbc96642f9d0",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_CIRCULAR_PERMUTATION",
+        "CC_COMBINATION_SELECTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_NO_ADJACENT_SELECTED_SYMBOLS"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "순열",
+      "L4": "원순열",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#1",
+      "approvedSourceFingerprint": "6880c5840f3ba2417d0b35c4f0c31ea56512b4d7135b11637e4cc114190e941d",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_29e2c6f998393e58fbaf5a7a5747db4e2b819539619a32043d8c9cd56dc51ec6",
@@ -8869,6 +9199,74 @@
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL"
+    },
+    {
+      "questionUid": "qid_v1_327575f31da6e4d6b122ed0cdb206178db47c411d70244e6ec25066e41ec0d5b",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 18,
+      "sourceQuestionNo": "18",
+      "sourceFingerprint": "d086985ba87a06ec9ac9b788bb68afc33cef8e7c18c4b325917de632061feccd",
+      "contentFingerprint": "7177a9341468f70e0033f8a0a86210970e7b3dc45817d50984570f53ef0fa166",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항정리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_PASCAL_HOCKEY_STICK_IDENTITY"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "이항정리",
+      "L3": "이항정리",
+      "L4": "이항계수의 성질·활용",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#18",
+      "approvedSourceFingerprint": "d086985ba87a06ec9ac9b788bb68afc33cef8e7c18c4b325917de632061feccd",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_328d5531d571610c68b6b1eb51e1a90dffccca4635788ee377590a8f41ad7e26",
@@ -12518,6 +12916,74 @@
       "legacyLevelCompatibility": "NORMAL"
     },
     {
+      "questionUid": "qid_v1_524cab4ee2904af12fba99ddb53f1e1cdc611e7c3a9113d890af210e3a9e5241",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 21,
+      "sourceQuestionNo": "21",
+      "sourceFingerprint": "11e0347d3d829fdde69330bcaaa766f52fa1ab2b5ae5757f79e68c9b31373f3c",
+      "contentFingerprint": "f90e9e9a9b49ec24816ba27fa8f253842dcc47b42c9fecdb39ea21e4c899a335",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항정리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_COEFFICIENT_EQUATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "이항정리",
+      "L3": "이항정리",
+      "L4": "전개식의 항·계수",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#21",
+      "approvedSourceFingerprint": "11e0347d3d829fdde69330bcaaa766f52fa1ab2b5ae5757f79e68c9b31373f3c",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_52f15cf9120cd5d4e5a1820b811a8653dfc9dc86f2c31894c4c088e07d259893",
       "sourceArchiveFile": "original/high/h2/1final/23_팔마고_1학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 24,
@@ -14031,6 +14497,75 @@
       "runtimeSelectable": true
     },
     {
+      "questionUid": "qid_v1_608760d10141ca4cd3b2a9c6d1579575b088dd8840ab8ef145afc2ac7c574f59",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 22,
+      "sourceQuestionNo": "22",
+      "sourceFingerprint": "c1d51db8138bc53453f4a7d8931bdc982ea09c3bdf90888bfd044a577677386d",
+      "contentFingerprint": "2231dffb39e6769766838cb9b6a958a98543e03db6a874e6398d050b11f094b5",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_CONCENTRIC_ROTATIONAL_COLORING",
+        "CC_COMBINATION_SELECTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "순열",
+      "L4": "원순열",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#22",
+      "approvedSourceFingerprint": "c1d51db8138bc53453f4a7d8931bdc982ea09c3bdf90888bfd044a577677386d",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_60d908beb3601232492fff1fd6ad474e32c1fbc7e8fa495c73e91001a8465a5a",
       "sourceArchiveFile": "original/high/h2/1mid/24_수피아여고_1학기_중간_고2_확률과통계.js",
       "sourceOrdinal": 9,
@@ -14149,6 +14684,146 @@
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL"
+    },
+    {
+      "questionUid": "qid_v1_61c3d2c294ef6e66bd845602e9631a5f169a7336327a254786bbb0eb2923d5d9",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 15,
+      "sourceQuestionNo": "15",
+      "sourceFingerprint": "79254e6bfbf83ea70a7338b317e568caf30a7f3650a37368a2c8f048d91481c0",
+      "contentFingerprint": "aaab2f1e48f441eeb00a421b947cc387fb87a9357c225c23acc9e0cf97cdc177",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [
+        "CC_NON_CONSECUTIVE_SELECTION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_NO_CONSECUTIVE_ELEMENTS"
+      ],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "조합·중복조합",
+      "L4": "조합과 선택",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#15",
+      "approvedSourceFingerprint": "79254e6bfbf83ea70a7338b317e568caf30a7f3650a37368a2c8f048d91481c0",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
+      "questionUid": "qid_v1_61e5aabea65b5b7f178f09aebcc2ef9851fddccc7344e6b36d79d8c317453486",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 5,
+      "sourceQuestionNo": "5",
+      "sourceFingerprint": "ab31b19c4ce956dd5caf349d9a28f7a05c46f65e7928825b1297026cd5cab075",
+      "contentFingerprint": "a8d08aa27be378e39e5d1d648287c3cd3f961fe10bd9f5fd526e57cfee489a55",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "crossConceptKeys": [
+        "CC_REPEATED_PERMUTATION_DIGIT_BOUND"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "중복순열",
+      "L4": "중복순열·반복 배정",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#5",
+      "approvedSourceFingerprint": "ab31b19c4ce956dd5caf349d9a28f7a05c46f65e7928825b1297026cd5cab075",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_62bbaed12b9fc136bdbf5d87e5b30cfd780ab1a6f5354bbae3eeb3b86b7a74fd",
@@ -15332,6 +16007,76 @@
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
+    },
+    {
+      "questionUid": "qid_v1_6a726cd5a33675adb53130ce679bf8e7a19eed90d72aad2e810f6ed51402b53f",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 11,
+      "sourceQuestionNo": "11",
+      "sourceFingerprint": "ed86aff087ffae7da64aa77a7732f8035feb93e19dc2d5d9166d1336592278e0",
+      "contentFingerprint": "3994e776097e8458b5670486b18648ecc669695ffa7fdfaa6044fd1f0b8b6cc6",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_INTEGER_SOLUTIONS_DIGIT_SUM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_DIGIT_SUM"
+      ],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "조합·중복조합",
+      "L4": "중복조합·정수해·동일물 분배",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#11",
+      "approvedSourceFingerprint": "ed86aff087ffae7da64aa77a7732f8035feb93e19dc2d5d9166d1336592278e0",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_6a99bdd95f4c5f0a6d9bf7f25b8defb7fd5d46565c26609b0e62fdc928c072c0",
@@ -24973,6 +25718,74 @@
       "legacyLevelCompatibility": "NORMAL"
     },
     {
+      "questionUid": "qid_v1_ad239510bdbc1cf8d5eafc4e2281a60c7c7483fcd495bd6eead635ba2c5a8a41",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 19,
+      "sourceQuestionNo": "19",
+      "sourceFingerprint": "10c4f216a2f274928ed1883d1c8f054b2d0d62890292927ce31e7db2e0559c27",
+      "contentFingerprint": "75a23b89fdd51639dc59ea919631ca50484ed3afb2be742da90a686228ca5b49",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항정리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_POWER_SUM_TRANSFORM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "이항정리",
+      "L3": "이항정리",
+      "L4": "이항계수의 성질·활용",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#19",
+      "approvedSourceFingerprint": "10c4f216a2f274928ed1883d1c8f054b2d0d62890292927ce31e7db2e0559c27",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_ad523be5ef5a2a294e8f370fd5561ddfc45081b0e2326e6dd93fbb62b1744501",
       "sourceArchiveFile": "original/high/h2/2mid/23_매산여고_2학기_중간_고2_확률과통계.js",
       "sourceOrdinal": 11,
@@ -25095,6 +25908,74 @@
       "legacyLevelCompatibility": "NORMAL"
     },
     {
+      "questionUid": "qid_v1_af18691333c800ef57af48dad82dc3cea33519135bb547362eefd49f9108903d",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 12,
+      "sourceQuestionNo": "12",
+      "sourceFingerprint": "1439ebd7e8e41b804d0ce6d1156c477983e79a76a7e481ab6ac2c1d3c25083c1",
+      "contentFingerprint": "002adeb4857a840dcf7c65573d179bf8a9c2232b28f83e607d4a91f8ae57805b",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_REPEATED_COMBINATION_EQUAL_CASE_EXCLUSION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "INTERDEPENDENT",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 5,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "조합·중복조합",
+      "L4": "중복조합·정수해·동일물 분배",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#12",
+      "approvedSourceFingerprint": "1439ebd7e8e41b804d0ce6d1156c477983e79a76a7e481ab6ac2c1d3c25083c1",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_b04feee5df789e982dd463561c6668a898aa92bf8586a7d45cfee80df0a13a62",
       "sourceArchiveFile": "original/high/h2/2mid/25_순천고_2학기_중간_고2_확률과통계.js",
       "sourceOrdinal": 17,
@@ -25133,6 +26014,76 @@
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL"
+    },
+    {
+      "questionUid": "qid_v1_b0757d6b493fd81bf2974e23697aec1b29daba4b8f3800b14ddcd38777e1b66c",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 20,
+      "sourceQuestionNo": "20",
+      "sourceFingerprint": "3885bdccd4d91aede321f8d6ce2210f3377581dd454a65634313ac6417e8c2d7",
+      "contentFingerprint": "230ce001309eee9cd0cc085db9337e675a5ef6eeef92c5dbf42880d9e5df077d",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항정리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_ODD_SUBSETS_HALF_POWER"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "이항정리",
+      "L3": "이항정리",
+      "L4": "이항계수의 성질·활용",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#20",
+      "approvedSourceFingerprint": "3885bdccd4d91aede321f8d6ce2210f3377581dd454a65634313ac6417e8c2d7",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_b07b8a8305473bbd886137e6fd06012843e1d8389a3af98b2cf8f3824a80c530",
@@ -26570,6 +27521,77 @@
       "legacyLevelCompatibility": "NORMAL"
     },
     {
+      "questionUid": "qid_v1_bb7222edccc45302764d1e70235dc421514d37a6e3e6beb5e1bc3ed634ecff13",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 7,
+      "sourceQuestionNo": "7",
+      "sourceFingerprint": "fce8c3d5dd3c00becbf4b5988285a4734d2a6bc45c89100cd2af068ba2d46838",
+      "contentFingerprint": "3570519b2786d62b3c23e6252bfc17313a2ea5b2ed687e1391734d44ba4a558d",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_CASE_EXHAUSTION_PERMUTATION",
+        "CC_IDENTICAL_OBJECT_PERMUTATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_FREQUENCY_CONSTRAINTS"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "순열",
+      "L4": "같은 것이 있는 순열",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#7",
+      "approvedSourceFingerprint": "fce8c3d5dd3c00becbf4b5988285a4734d2a6bc45c89100cd2af068ba2d46838",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_bb9d344012f3f08c3335d0c9e3d40d365a37efea77652e047101b995108136c7",
       "sourceArchiveFile": "original/high/h2/1final/24_팔마고_1학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 20,
@@ -27608,6 +28630,74 @@
       "legacyLevelCompatibility": "NORMAL"
     },
     {
+      "questionUid": "qid_v1_c2dbfb990656f5eb552e4d8986a987b26b1cc35b48b6684aa63dc34d1f2d16ba",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 2,
+      "sourceQuestionNo": "2",
+      "sourceFingerprint": "522047d5146e9e5b3787f0432fdaa78a020ef09c157b888f0f740f08d9f9d29a",
+      "contentFingerprint": "81a8317a0e06c8318f7f20b8244e8d64777171b2d1caf710f994bc8ea7e406ac",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_POLYHEDRON_COLORING_ROTATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "순열",
+      "L4": "원순열",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#2",
+      "approvedSourceFingerprint": "522047d5146e9e5b3787f0432fdaa78a020ef09c157b888f0f740f08d9f9d29a",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_c303fb88457fe896bd8481a25fc845eb346a6b8fe37c5cb82c91c68aa77d2fcb",
       "sourceArchiveFile": "original/high/h2/1final/22_효천고_1학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 11,
@@ -28487,6 +29577,76 @@
       "legacyLevelCompatibility": "NORMAL"
     },
     {
+      "questionUid": "qid_v1_c8b3be06497e85cb7e83a6bfc05a460ca86c7abc8ad9da6fd243f2769272ea9d",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 3,
+      "sourceQuestionNo": "3",
+      "sourceFingerprint": "3c37f6bf0c456748d99e2dc75e6800575ee7ede0e870d6b97eb8bb99c1017404",
+      "contentFingerprint": "e84d4ed0721891fb068b8e416bf4a06d1ac196843a37e10a014b47518c9deb41",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_POLYGON_TABLE_PERMUTATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_CONSECUTIVE_GROUPING"
+      ],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "순열",
+      "L4": "원순열",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#3",
+      "approvedSourceFingerprint": "3c37f6bf0c456748d99e2dc75e6800575ee7ede0e870d6b97eb8bb99c1017404",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_c8bf14defdd2997cec5dc58e08140c6a14b7c1b0a303917b06fc35ac24466a72",
       "sourceArchiveFile": "original/high/h2/1final/22_효천고_1학기_기말_고2_확률과통계.js",
       "sourceOrdinal": 21,
@@ -29085,6 +30245,76 @@
       "legacyLevelCompatibility": "NORMAL"
     },
     {
+      "questionUid": "qid_v1_cd45f5a2b8bb9c16b992d4e8ad3b31d059566693ed7a41caef4599c14205fc53",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 14,
+      "sourceQuestionNo": "14",
+      "sourceFingerprint": "d4e472cbcf3e6b1d78da16a3e2a562d58557b422ae1f7a9d8f9e0eb5efda6f62",
+      "contentFingerprint": "70ac15fef84db730562ac8a162e90a35711827abef9559296e1c96a7d55c4268",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_UPPER_BOUNDED_REPEATED_COMBINATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_UPPER_BOUND"
+      ],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "조합·중복조합",
+      "L4": "중복조합·정수해·동일물 분배",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#14",
+      "approvedSourceFingerprint": "d4e472cbcf3e6b1d78da16a3e2a562d58557b422ae1f7a9d8f9e0eb5efda6f62",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_cdea1c4fbf686ef25797181171c095948628f05236f88a6a590a8c128d9ded0f",
       "sourceArchiveFile": "original/high/h2/1mid/25_순천고_1학기_중간_고2_확률과통계.js",
       "sourceOrdinal": 12,
@@ -29165,6 +30395,74 @@
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL"
+    },
+    {
+      "questionUid": "qid_v1_ce3503643b035720f629c6d7dfd5811136c4fe1e7203764888dd042927f4a11c",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 9,
+      "sourceQuestionNo": "9",
+      "sourceFingerprint": "7b1aa4d0b390d9843d5c3a26317097607f01b1a3609f6212a177feed8c9a65f8",
+      "contentFingerprint": "cc5e28296d0c113d3dc77dc4116fbdc46c4a673ac740e20ed2e222d0db5158a0",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_ORDER_FIXED_PERMUTATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 2,
+      "level": "하",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "순열",
+      "L4": "일반 순열·조건 배열",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#9",
+      "approvedSourceFingerprint": "7b1aa4d0b390d9843d5c3a26317097607f01b1a3609f6212a177feed8c9a65f8",
+      "legacyLevel": "하",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_ce358f9d1668a44022b81e6477d1f291893ee643de5490205e67d7b6d0d7121c",
@@ -31052,6 +32350,76 @@
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
+      "questionUid": "qid_v1_dca203dcb640219ed443b82d6efb27add8e3c2c3fe87e9736859e659dfa0c59d",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 6,
+      "sourceQuestionNo": "6",
+      "sourceFingerprint": "90ccef7a9c7704ba533f81738244349c7f7ca828829d96b718ffb70c19572486",
+      "contentFingerprint": "a5014e63d52d50cfe40c3d60110b7f96e67819e3fce3a5268714d30f2f5a5e0f",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_IDENTICAL_OBJECT_PERMUTATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_EDGE_RESTRICTIONS"
+      ],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 3,
+      "level": "중",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "순열",
+      "L4": "같은 것이 있는 순열",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#6",
+      "approvedSourceFingerprint": "90ccef7a9c7704ba533f81738244349c7f7ca828829d96b718ffb70c19572486",
+      "legacyLevel": "중",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_dcee7ce0dada9af9c598a1eb13494581e455e8b844684f36304ce92160057db9",
       "sourceArchiveFile": "original/high/h2/1mid/18_매산고_1학기_중간_고2_확률과통계.js",
       "sourceOrdinal": 16,
@@ -31364,6 +32732,76 @@
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL"
+    },
+    {
+      "questionUid": "qid_v1_e00794dcd61abba86ad01540d65047068500962690cff00f943b904154d93de2",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 13,
+      "sourceQuestionNo": "13",
+      "sourceFingerprint": "c15d13f9936a5ca658af88b07853fd90bdde55aada1952ac54c6fca6c0b09877",
+      "contentFingerprint": "d40d7c035fb6a12ad04ff5fa75a084b0f73dc20356dd14ca6e554e7d017092eb",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_MONOTONIC_FUNCTION_REPEATED_COMBINATION"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_MONOTONIC_ORDER"
+      ],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "조합·중복조합",
+      "L4": "중복조합·정수해·동일물 분배",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#13",
+      "approvedSourceFingerprint": "c15d13f9936a5ca658af88b07853fd90bdde55aada1952ac54c6fca6c0b09877",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_e087ffe38d45693cc4b1a25620e6f76f3cc1590f82670228180b14c79f2fb22e",
@@ -32862,6 +34300,74 @@
       "difficultyConfidence": "high",
       "difficultyBoundaryFlag": "NONE",
       "legacyLevelCompatibility": "NORMAL"
+    },
+    {
+      "questionUid": "qid_v1_e9cf5e7562babd0cdd63652a4aa881e44b01cf44d330a4ad554853010f44bc46",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 16,
+      "sourceQuestionNo": "16",
+      "sourceFingerprint": "f069f883ceba963fb13905a79a962457eea169b5d5852f0bc8bb64a43e06f1d5",
+      "contentFingerprint": "ba3c3f5d8bd15d3a33d9aa89d9ad343499c0021df3a39c8c6c01f76f9fe260b2",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항정리",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_TERM_COEFFICIENT"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "이항정리",
+      "L3": "이항정리",
+      "L4": "전개식의 항·계수",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#16",
+      "approvedSourceFingerprint": "f069f883ceba963fb13905a79a962457eea169b5d5852f0bc8bb64a43e06f1d5",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
     },
     {
       "questionUid": "qid_v1_e9fc6275d035236abd72c486fbe8cfc1dc316c1de3f4cb9cb5973e00ef9bedde",
@@ -35388,6 +36894,77 @@
       "legacyLevelCompatibility": "BORDERLINE_ACCEPTABLE"
     },
     {
+      "questionUid": "qid_v1_fa081633fe292b004e906af53dd0adbdbeb14ccdc2d3ab9ddde4b998aa1c3274",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 10,
+      "sourceQuestionNo": "10",
+      "sourceFingerprint": "243b7fc498699a0c2e83e22a1d8df27b406396d1aefa5c8d565f96dfa7d1e360",
+      "contentFingerprint": "54fba9daeeaaf90d557720e70ab6a6863f8edaa9aa02f06a47a8dcd8962af07f",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_REPEATED_COMBINATION_TOTAL_SUM"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [
+        "COND_UPPER_BOUND",
+        "COND_LOWER_BOUND"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "조합·중복조합",
+      "L4": "중복조합·정수해·동일물 분배",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#10",
+      "approvedSourceFingerprint": "243b7fc498699a0c2e83e22a1d8df27b406396d1aefa5c8d565f96dfa7d1e360",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
       "questionUid": "qid_v1_fa920845bcdb9f3c59e526d9a652cb2d9c0e18d25b3a961c84aab4d07f4bfb40",
       "sourceArchiveFile": "original/high/h2/2mid/23_제일고_2학기_중간_고2_확률과통계.js",
       "sourceOrdinal": 7,
@@ -35535,6 +37112,74 @@
       "defaultSelectable": true,
       "sourceIdentity": "original/high/h2/1final/22_효천고_1학기_기말_고2_확률과통계.js#20",
       "approvedSourceFingerprint": "5296cb5cb2349b968951a7507908ea6031572ab2c030f8e0adef448c4ac4e027",
+      "legacyLevel": "상",
+      "runtimeSelectable": true
+    },
+    {
+      "questionUid": "qid_v1_fb3f0dc0e52108d5d0c647d2b91d52d9372326dabb004eeaba1d6e40b73b2eea",
+      "sourceArchiveFile": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js",
+      "sourceOrdinal": 8,
+      "sourceQuestionNo": "8",
+      "sourceFingerprint": "3afab11718dc112452aff9eb5f0418de004ea70e761565af51cc1bfc6483d659",
+      "contentFingerprint": "653856952cfe388d4cfdb7b1e02d37cce3746611e8d669b9e78ef67c3f12698e",
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "conceptClusterKey": "",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [
+        "CC_GRID_SHORTEST_PATH"
+      ],
+      "secondaryConceptKeys": [],
+      "conditionKeys": [],
+      "integrationPattern": "NONE",
+      "tagConfidence": "review_required",
+      "tagStatus": "review_required",
+      "reviewStatus": "review_required",
+      "metadataStatus": "approved_semantic_review",
+      "fieldStatus": {
+        "standardUnit": "approved_meta_pipeline_audit",
+        "subUnit": "approved_meta_pipeline_audit",
+        "concept": "approved_meta_pipeline_audit",
+        "problemType": "approved_meta_pipeline_audit",
+        "template": "approved_meta_pipeline_audit",
+        "difficulty": "source_unreviewed",
+        "crossConcept": "approved_meta_pipeline_audit",
+        "condition": "approved_meta_pipeline_audit"
+      },
+      "metadataRevision": "meta-foundation:PROBABILITY_STATISTICS@1.0.3:exam-meta_pipeline_audit-v2:meta-pipeline-r3-1-df2990692916",
+      "approvalEvidence": [
+        "archive/tools/intelligence/sync-pending-question-metadata-v1.mjs",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.json",
+        "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.source-parity.json"
+      ],
+      "difficultyBucket": 4,
+      "level": "상",
+      "curriculum": "2015",
+      "curriculumKey": "2015",
+      "courseKey": "확률과 통계",
+      "L1": "경우의 수",
+      "L2": "순열과 조합",
+      "L3": "조합·중복조합",
+      "L4": "조합과 선택",
+      "metadataApprovalType": "META_PIPELINE_AUDIT",
+      "foundationTaxonomyStatus": "CONFIRMED",
+      "projectionStatus": "REUSE",
+      "metaFoundationStatus": "ACTIVE",
+      "metaFoundationPackId": "PROBABILITY_STATISTICS",
+      "metaFoundationPackVersion": "1.0.3",
+      "metaFoundationHoldReason": null,
+      "l3Disposition": "ASSIGNED",
+      "l4Disposition": "ASSIGNED",
+      "curriculumApplicability": "DEFAULT_SCOPE",
+      "defaultSelectable": true,
+      "sourceIdentity": "original/high/h2/1mid/21_순천여고_1학기_중간_고2_확률과통계.js#8",
+      "approvedSourceFingerprint": "3afab11718dc112452aff9eb5f0418de004ea70e761565af51cc1bfc6483d659",
       "legacyLevel": "상",
       "runtimeSelectable": true
     },
@@ -35782,7 +37427,7 @@
   ],
   "usage": {
     "schemaVersion": "archive-reviewed-runtime-usage-v1",
-    "records": 746,
+    "records": 769,
     "problemTypes": [
       {
         "key": "PT_BINOMIAL_DISTRIBUTION",
@@ -35832,7 +37477,7 @@
       },
       {
         "key": "PT_BINOMIAL_THEOREM",
-        "count": 51,
+        "count": 57,
         "questionUids": [
           "qid_v1_000b5c0c27e9f3ef131a819bc4cbcfb925ddb5f8ff2340ed123e5fb16adb05b7",
           "qid_v1_050ea92b99d8348067763cc05ef6ea4cd9601fac46b9d59c8b4c747b3818b420",
@@ -35843,6 +37488,7 @@
           "qid_v1_12e31a314f410913342fa9661937f7486ca5bee3de802d6e7fa990e0c3a04f2b",
           "qid_v1_1442b6b28a28bdcb3035e15b6db38b77a91cda6ee383346a0fe8e24d39671661",
           "qid_v1_14a95bd799d4b51c633629cc5911dec05c5ff75572f2dea0be56c53086ee4287",
+          "qid_v1_199d13db811181c9254590a86dbc0d4bfa3eeb9f62933896a7b19c97fbaa4f25",
           "qid_v1_23b0de8d6af07845dc19e478db9e5183593dbed6784663975bddf1010c34f0ab",
           "qid_v1_25f63257f9db589b679af5ee531cd7bb2a3882c7933d461359ccf75d157c83fb",
           "qid_v1_266b798eda69320d9a8f12d13b564022df098b099f063c6d82b04ee6eb46c11b",
@@ -35850,11 +37496,13 @@
           "qid_v1_2c2f66aa1b53222870183fd66d75ecc8b9d98265dea04ab5f8d6dda7343a8e9f",
           "qid_v1_2c9a4b3c15d63c1a47a9c95a8fda402bcc3526343d5da7162c942358fa6f6454",
           "qid_v1_31417c1f99a1d4d62f0f337fd4b91e52454a849bf62bcac1214a3e816869662c",
+          "qid_v1_327575f31da6e4d6b122ed0cdb206178db47c411d70244e6ec25066e41ec0d5b",
           "qid_v1_32c6a42d9a9fd8388ee3d332658b6ead2398401608c22c26f2a00c5f98deef73",
           "qid_v1_37278eb071d9414156419a69d3bf792976aabeadc0929ebcd00bfbe0b4e03bde",
           "qid_v1_3f5d716829437cc36a70bfdf7635bcff035ecd555d841e2e243621d78543c42d",
           "qid_v1_4f60845647c13033e553ee011d3bd0023293ab9259f7a244dfaf295adeda952b",
           "qid_v1_51ed3fac71f81a11fba4e3cc74077c4d6d4082bf721c22a517b62fb060e91980",
+          "qid_v1_524cab4ee2904af12fba99ddb53f1e1cdc611e7c3a9113d890af210e3a9e5241",
           "qid_v1_53a31fb5346e3ad26845bd44e1d2d4dc175b17862f557350d1b9455956dcca65",
           "qid_v1_63bc0b4ad42696a3742264250220928cfb9b877525f0881a0b85bd558fdaee64",
           "qid_v1_6ff1113ab802f0b91607c238c84367b37a14f937151249edf90a1afbf95a0f2e",
@@ -35863,6 +37511,8 @@
           "qid_v1_8efb31d8d5800359c815b20e01aaad5bede475741fc5e4cdb3eb1795ef201330",
           "qid_v1_9618234b76f5f417b0bce7ff4d3365f2017ace3b06e600d04ebe2e012630a8a8",
           "qid_v1_9f85982d06d2a0afd85e141759878dfb092d1e8c1eb473c6349ea496750a8ca2",
+          "qid_v1_ad239510bdbc1cf8d5eafc4e2281a60c7c7483fcd495bd6eead635ba2c5a8a41",
+          "qid_v1_b0757d6b493fd81bf2974e23697aec1b29daba4b8f3800b14ddcd38777e1b66c",
           "qid_v1_b4fa613e3bbb5ce7574487bc6b17c0ec405750190f0ec09a87f3419b07912256",
           "qid_v1_bd7533c35f814fd0d69b5dff6c1caeb8154becd42be87274498bf58b99f0e553",
           "qid_v1_c4ea00885a2505143eeb0c848295460f6e0d776ffac7002bde9843eb27337cf0",
@@ -35878,6 +37528,7 @@
           "qid_v1_e7f80bedb1d2f36112a0492ba684d30e840dead2506ee11cfd4c92e974110579",
           "qid_v1_e8bb0dbccba85fbe20da1160f3682129d22552829d6b35b7308c4f0fde307f8c",
           "qid_v1_e8f9f59449a6c4894b1fdd61b23b94b59048b4bdad927006b489624c91346694",
+          "qid_v1_e9cf5e7562babd0cdd63652a4aa881e44b01cf44d330a4ad554853010f44bc46",
           "qid_v1_ed48ad784e55db4a60158e3098af48e2ba56841e252b70a004f085e77e1bbcc9",
           "qid_v1_ed8b8721fd091f498c95af83bb05f2eeed5eae30a968673eed96ea2f42849e96",
           "qid_v1_efbe80b4b531548b5c87c4e984816f8c8b66f53487066f288b6afa73cf615d63",
@@ -35957,7 +37608,7 @@
       },
       {
         "key": "PT_COUNTING_ARRANGEMENT",
-        "count": 68,
+        "count": 75,
         "questionUids": [
           "qid_v1_0088a4661314e8e80d615d8d4673008dc12ae4b5f3841367d56a108793801836",
           "qid_v1_01d54e815875b129799a4f018dfee75fd1ba3010a0ccb4bbd7b24fed528ad241",
@@ -35975,6 +37626,7 @@
           "qid_v1_22d363d1d4a7569ed18cf182e87786bc4bcce10199a6378886bf6517122292ba",
           "qid_v1_24ce9578e0e985cc25640c1b84be337834e2a9c7dc5e8a9fafd4495597ece2c1",
           "qid_v1_251728492adee5165b884aa4a16992b8174ea0660493b8add1d168b97cf89ce6",
+          "qid_v1_29a182e0300f26cae6924831c01a46eafbe3a663db83cf7ba3d3e76d7c712ce7",
           "qid_v1_2a80882181e7ce82df562058ca42f250b7ac3eb8afcae6a45bc56f9f85b0521b",
           "qid_v1_2d968b52dbed22ba83a3341f237e7c2743fd152ea1bb47689f743d604c21f7cf",
           "qid_v1_2eb99c0e27b67c1e6abae31e26ca7547877851fa6225e64bfaf970e67b4a6aa0",
@@ -35993,6 +37645,7 @@
           "qid_v1_56b8391ce62aa84ba6c3efdd3be4f36439fa81e0ecb07e0837ac10c3c8ea7868",
           "qid_v1_575a12dc75884035bb5b799d87026ee985f3334f141c67791c4ca8c03d0b1a8c",
           "qid_v1_5cbfd7af57472a2ac9f0e5fed0afae5da54766981208644a2e78c5fe4d673e69",
+          "qid_v1_608760d10141ca4cd3b2a9c6d1579575b088dd8840ab8ef145afc2ac7c574f59",
           "qid_v1_63ccea551a439821e035f8674df5519ccdf906bc4faca0de5da8f48360fe62a7",
           "qid_v1_6b1d53d7630c0b11637234b54f42eed148e957639d069c3e7cfc73dac71e3924",
           "qid_v1_6c4ac881b5e42bb0656ce75c7831d67c7aa9bba4d628d4ee794d473be556c9ac",
@@ -36015,11 +37668,16 @@
           "qid_v1_a52719e0ae4bc9864c64cdcf77e2ae4ed326cbe6974b5784bf0be15d7bd9478d",
           "qid_v1_a99a6e3f41f0ddb7b3d03a6b016e0906d7a9d67dd51f258f19f275401dd92ff1",
           "qid_v1_ac614035e19f33794f1c23fc9e20db1246d74347c782e85df48eff168948bcd9",
+          "qid_v1_bb7222edccc45302764d1e70235dc421514d37a6e3e6beb5e1bc3ed634ecff13",
           "qid_v1_bdd94b95da3efa20a91992b2788beb310407379b745952ad1cc8f09bb3c7e087",
+          "qid_v1_c2dbfb990656f5eb552e4d8986a987b26b1cc35b48b6684aa63dc34d1f2d16ba",
           "qid_v1_c48d93d5e1c9bffbc0ebe8a3194ffdb92a7681e321b9637caf392aab3bbb4591",
           "qid_v1_c4c92ddac45b336496c62595e40f7d4295a5c6f0dad85e4a1f9386a24ac64e90",
+          "qid_v1_c8b3be06497e85cb7e83a6bfc05a460ca86c7abc8ad9da6fd243f2769272ea9d",
+          "qid_v1_ce3503643b035720f629c6d7dfd5811136c4fe1e7203764888dd042927f4a11c",
           "qid_v1_d431437ed804ece28d1077e295a4bcc293058650b46729c16b4d7e3d72b17df3",
           "qid_v1_d9b20f4cf19f9cfe887ed2a71aa6284c31fbaccfc0e2809b8371baed2098ef4d",
+          "qid_v1_dca203dcb640219ed443b82d6efb27add8e3c2c3fe87e9736859e659dfa0c59d",
           "qid_v1_e64a5bdb5a070132ca4c629db5039aa9739a419e4be266d5aad0bc3b8882303f",
           "qid_v1_eb50fac3bd79545054ae55f399c8a28b177f807cc51690b4635b07f784177301",
           "qid_v1_ed2c55cae246be4b06d10985d25eb71f06f00bd311e18f8cf794c94676f183d9",
@@ -36031,13 +37689,14 @@
       },
       {
         "key": "PT_COUNTING_REPEATED_ASSIGNMENT",
-        "count": 34,
+        "count": 36,
         "questionUids": [
           "qid_v1_0af58214062fe4d7fabb2c5d6daea8dec531418e6d248ef79e70ed6b6de45bc1",
           "qid_v1_0fd5f829770742f70b7d8d159576a7105896abe2f99d837b10dd22d7afa3d699",
           "qid_v1_1418d8bf271533d57f21014713064fdedfaa8004cdd893c1b37167c34cd4aa40",
           "qid_v1_1f02789ecd3b834780fadd7cede6f6fe991f7ed8d23d1b2d81dd71ec2358f03d",
           "qid_v1_209ee6bcc334f81c86a65606c98f0926f662c517547b8e329b9a85ca62bd6f7c",
+          "qid_v1_264f0764aabba7eea65b9a25c6c3363328dc6a93cebc66397e549961afe48e3e",
           "qid_v1_341c44e047cfd7307c9369271db78f7dc29c23a0300ec3253faa6f6acfe27643",
           "qid_v1_3b1e67b38eeed87b1b0ab976477247a24951de2118a5e05f01309d3b582e54a7",
           "qid_v1_3ed8cae4761a6b916f63ea50073a86da140dfea2a306b5297a223efa7750d050",
@@ -36046,6 +37705,7 @@
           "qid_v1_4c24ec5535cb8716816d6bbad154ea44feee3203b6039afeee60882faa1d2202",
           "qid_v1_4f5972cc660621db5cc169f69bf347a82c55dcb17a83c4434993301ef490f4a6",
           "qid_v1_5fe767ace86ee9a30f073db0a4f873fb9fa1c9f3ebac9bc729de4c83dac5dfb8",
+          "qid_v1_61e5aabea65b5b7f178f09aebcc2ef9851fddccc7344e6b36d79d8c317453486",
           "qid_v1_642a839c9333aa0896122b76eeb0f992ff516b5191698b7d57a82de0a50d2095",
           "qid_v1_8c174c227e42cb30b2ccec6b7597c4f5d5d34d831b97f3d9ff24e45125ac5895",
           "qid_v1_8ef741060b073266b5ed18c0ad1270b7cf2a8e376776e4f591e7604fdf09fbeb",
@@ -36071,13 +37731,14 @@
       },
       {
         "key": "PT_COUNTING_SELECTION_DISTRIBUTION",
-        "count": 53,
+        "count": 61,
         "questionUids": [
           "qid_v1_01c0e35e9d66a6e1b3a5dd4c5f400c296deb32456fb92eb0ad4c69f34a5295ff",
           "qid_v1_03542f3f57fee5481d44c7b336b7082727dd2df2826c61c3b87d7f7d1fd0dd46",
           "qid_v1_0458d466d20e44358e3fba1cd6ad6a4a4700660759e145f144db6515cf636c85",
           "qid_v1_0f33ad7bf507d1cf8e78f0898053a911d8a9b83f2321ad2d07ddaeedf69c7ea6",
           "qid_v1_135f12430f2b1ed2ab6886560c4a30b3a42e0591eb392d9858b3b06e426332ce",
+          "qid_v1_1d6eb24bb54f4107d8a483033bd6cb542235dd4cff333cfdb9cca124405070b8",
           "qid_v1_273d5e8473a847ec833c8e672eab3115857f52d170f19461932e70e88707e3a8",
           "qid_v1_2ada1a60a47b37138de1cc3dd3bfa04e74c458b7d3268bfe664e1848f522a3f7",
           "qid_v1_2fdc8c92c0a0a587b84109c6b93015c63ccb03b8b516e05fa1cf5cb19491d4a8",
@@ -36093,6 +37754,8 @@
           "qid_v1_5a3087cf1f5c58d49bf6dd14fdf408ffce998dbcb7bcf5fbb9e702ae42a5ab2c",
           "qid_v1_5a4fb77d4ab2a218fd06db320881cf79c6e1030aac80608d47b666478b5afaa8",
           "qid_v1_5e08223e7199114db551cc6d8d7a20e4fd41c21ad94c6579f02f202b026f8ffc",
+          "qid_v1_61c3d2c294ef6e66bd845602e9631a5f169a7336327a254786bbb0eb2923d5d9",
+          "qid_v1_6a726cd5a33675adb53130ce679bf8e7a19eed90d72aad2e810f6ed51402b53f",
           "qid_v1_6e42a3c5089025f65b5fda826f5416f6fa8228340ba285ac6920a101a5ed2633",
           "qid_v1_83f527df6e49e1a1e4cbc503155c715416f0c19a5b4e62cc55189e3967d34224",
           "qid_v1_8888c097785ecd71e74f5d458579fda472773932cbadc933b1bfda805213edc4",
@@ -36103,6 +37766,7 @@
           "qid_v1_a2de3e997a03836f829f71aa73077b97f10f0d44564a7d25d8a2dd607e8524f5",
           "qid_v1_a59569991cb14664de62f9a63a2d3094855dc688221cd1ef70a86e0f345508cb",
           "qid_v1_abb9f209f1115e5d5d52ed1fe88142b1b3ec238151297a5b035616919a06382e",
+          "qid_v1_af18691333c800ef57af48dad82dc3cea33519135bb547362eefd49f9108903d",
           "qid_v1_b794da859c556d5d2b9f3c256103474ed2bc39c9d8c6242fa16edfd891af9d1a",
           "qid_v1_ba519deb9518ebb64680d4a601c0fc050bf08ff2a1201157bb7b899a71670c39",
           "qid_v1_bc0fb9b5c751dd87f271fbd3835dc2e795398c0b69fbd00d10f03dd418aa5d13",
@@ -36110,12 +37774,14 @@
           "qid_v1_bdee9eb78bc9f39a0ab47adb393b959aa213fb2f11b0b78425c293684f7bb48e",
           "qid_v1_c448d1714c534c3d1e62fe7cd1cb97b1a096558489c1a497d4fbfb421f6a631d",
           "qid_v1_c48b05ba1c906a77e7a5b765d8f15fe9e59d9804fd0934008d7163eebd330c06",
+          "qid_v1_cd45f5a2b8bb9c16b992d4e8ad3b31d059566693ed7a41caef4599c14205fc53",
           "qid_v1_cdea1c4fbf686ef25797181171c095948628f05236f88a6a590a8c128d9ded0f",
           "qid_v1_cdf8062c9d660c92cd39c60d708deed805bb276301356decff1332f26866ebc3",
           "qid_v1_d6b132502bff4fbad58a631778ce05f5b7dbf97aaf81877f36a94400958b7afe",
           "qid_v1_da0667223334e1e3addecfa01e853557bf94d01166857d3271db14429e5953e9",
           "qid_v1_db36e7fb2795840d13eaa87574faefb8ba66aa564e29aa999229bc92eb830578",
           "qid_v1_dc0e7f47adfddd3837744ddc3922d230e85e9fa2e6b48fbfc9a08758352233f6",
+          "qid_v1_e00794dcd61abba86ad01540d65047068500962690cff00f943b904154d93de2",
           "qid_v1_e0a3fb82353290d0fa8d6df24e3847662e50d2ad8d5ee429fbbcbc10e95e01c5",
           "qid_v1_e222b142a8d1bd144781e0403e7220e5625dfb317b42ef63d5898e2fde0460a8",
           "qid_v1_e6af08b92130932cb82de30b31e22727cbf7a43d7ac35d55db967f00ddf28c0b",
@@ -36125,7 +37791,9 @@
           "qid_v1_eead02a831a271986fe69dbe5db4258c3f375858ccf4d7ec5f84aa74159321a7",
           "qid_v1_eec4a810141e877b9c97a49a2de077f171ed340f5724ffa35ff31059956400c9",
           "qid_v1_f352fe19429723475a294f46c3a46de9f04552cdb5c19edceca7b7b06a2f5c1f",
-          "qid_v1_f5623ffa50c95dda17ea42b0558a8ba8e9ba2f038aa9716f7f77a186c0db005c"
+          "qid_v1_f5623ffa50c95dda17ea42b0558a8ba8e9ba2f038aa9716f7f77a186c0db005c",
+          "qid_v1_fa081633fe292b004e906af53dd0adbdbeb14ccdc2d3ab9ddde4b998aa1c3274",
+          "qid_v1_fb3f0dc0e52108d5d0c647d2b91d52d9372326dabb004eeaba1d6e40b73b2eea"
         ]
       },
       {
@@ -36624,20 +38292,24 @@
     "templates": [
       {
         "key": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
-        "count": 16,
+        "count": 20,
         "questionUids": [
           "qid_v1_0ef847f0e8943a8ccdaf7ec9dfb21e98833a442df80199e6ed95b4344db9995b",
           "qid_v1_14a95bd799d4b51c633629cc5911dec05c5ff75572f2dea0be56c53086ee4287",
+          "qid_v1_199d13db811181c9254590a86dbc0d4bfa3eeb9f62933896a7b19c97fbaa4f25",
           "qid_v1_25f63257f9db589b679af5ee531cd7bb2a3882c7933d461359ccf75d157c83fb",
           "qid_v1_266b798eda69320d9a8f12d13b564022df098b099f063c6d82b04ee6eb46c11b",
           "qid_v1_2a2504fcadfeaea2e7003fbe19db2b60b913a27df3a5ef4ea9cd9cffdc3de25d",
           "qid_v1_31417c1f99a1d4d62f0f337fd4b91e52454a849bf62bcac1214a3e816869662c",
+          "qid_v1_327575f31da6e4d6b122ed0cdb206178db47c411d70244e6ec25066e41ec0d5b",
           "qid_v1_3f5d716829437cc36a70bfdf7635bcff035ecd555d841e2e243621d78543c42d",
           "qid_v1_4f60845647c13033e553ee011d3bd0023293ab9259f7a244dfaf295adeda952b",
           "qid_v1_53a31fb5346e3ad26845bd44e1d2d4dc175b17862f557350d1b9455956dcca65",
           "qid_v1_7e0140660df7916ecec6f71666ba3ac5e32ba3884c50b1e2f9d5d5cdc2885741",
           "qid_v1_8efb31d8d5800359c815b20e01aaad5bede475741fc5e4cdb3eb1795ef201330",
           "qid_v1_9618234b76f5f417b0bce7ff4d3365f2017ace3b06e600d04ebe2e012630a8a8",
+          "qid_v1_ad239510bdbc1cf8d5eafc4e2281a60c7c7483fcd495bd6eead635ba2c5a8a41",
+          "qid_v1_b0757d6b493fd81bf2974e23697aec1b29daba4b8f3800b14ddcd38777e1b66c",
           "qid_v1_c865adbf66e1078ec150ed352de03330fcbc546a103b4fd796fc8b3893aa1384",
           "qid_v1_ed48ad784e55db4a60158e3098af48e2ba56841e252b70a004f085e77e1bbcc9",
           "qid_v1_efbe80b4b531548b5c87c4e984816f8c8b66f53487066f288b6afa73cf615d63",
@@ -36728,7 +38400,7 @@
       },
       {
         "key": "TPL_BINOMIAL_TERM_COEFFICIENT",
-        "count": 35,
+        "count": 37,
         "questionUids": [
           "qid_v1_000b5c0c27e9f3ef131a819bc4cbcfb925ddb5f8ff2340ed123e5fb16adb05b7",
           "qid_v1_050ea92b99d8348067763cc05ef6ea4cd9601fac46b9d59c8b4c747b3818b420",
@@ -36743,6 +38415,7 @@
           "qid_v1_32c6a42d9a9fd8388ee3d332658b6ead2398401608c22c26f2a00c5f98deef73",
           "qid_v1_37278eb071d9414156419a69d3bf792976aabeadc0929ebcd00bfbe0b4e03bde",
           "qid_v1_51ed3fac71f81a11fba4e3cc74077c4d6d4082bf721c22a517b62fb060e91980",
+          "qid_v1_524cab4ee2904af12fba99ddb53f1e1cdc611e7c3a9113d890af210e3a9e5241",
           "qid_v1_63bc0b4ad42696a3742264250220928cfb9b877525f0881a0b85bd558fdaee64",
           "qid_v1_6ff1113ab802f0b91607c238c84367b37a14f937151249edf90a1afbf95a0f2e",
           "qid_v1_75e65d7361f9c21686f48668294c67100a065b775c19e69dc51be3c99e784330",
@@ -36761,6 +38434,7 @@
           "qid_v1_e7f80bedb1d2f36112a0492ba684d30e840dead2506ee11cfd4c92e974110579",
           "qid_v1_e8bb0dbccba85fbe20da1160f3682129d22552829d6b35b7308c4f0fde307f8c",
           "qid_v1_e8f9f59449a6c4894b1fdd61b23b94b59048b4bdad927006b489624c91346694",
+          "qid_v1_e9cf5e7562babd0cdd63652a4aa881e44b01cf44d330a4ad554853010f44bc46",
           "qid_v1_ed8b8721fd091f498c95af83bb05f2eeed5eae30a968673eed96ea2f42849e96",
           "qid_v1_f44ea31af0244f865812144cee71787af02ce34662974657114f17a317118781",
           "qid_v1_f6e58429b262c5e6fcafa7519ee3862eca758c280fc87a14395098e667fb987c",
@@ -36776,7 +38450,7 @@
       },
       {
         "key": "TPL_CIRCULAR_PERMUTATION",
-        "count": 28,
+        "count": 32,
         "questionUids": [
           "qid_v1_0088a4661314e8e80d615d8d4673008dc12ae4b5f3841367d56a108793801836",
           "qid_v1_01d54e815875b129799a4f018dfee75fd1ba3010a0ccb4bbd7b24fed528ad241",
@@ -36785,6 +38459,7 @@
           "qid_v1_1681a002e1a573111694ce35d53cacad948d1b1ac3541ccaa1a80e9eeacfa0d7",
           "qid_v1_1e2ef849aef98ded8f7f0c2c31e8b9135552d0c7c4a798ceb7e44903fae580e2",
           "qid_v1_24ce9578e0e985cc25640c1b84be337834e2a9c7dc5e8a9fafd4495597ece2c1",
+          "qid_v1_29a182e0300f26cae6924831c01a46eafbe3a663db83cf7ba3d3e76d7c712ce7",
           "qid_v1_2a80882181e7ce82df562058ca42f250b7ac3eb8afcae6a45bc56f9f85b0521b",
           "qid_v1_2d968b52dbed22ba83a3341f237e7c2743fd152ea1bb47689f743d604c21f7cf",
           "qid_v1_31116f20a0a36e9f704dd74eacb751c6fa059c32a847f7f0573cfb28b6a04a0b",
@@ -36793,6 +38468,7 @@
           "qid_v1_561ad52ec3833f2a8baf15db0104ea00e0a40322b5775a51cf4d41eb8c40b8c4",
           "qid_v1_56b8391ce62aa84ba6c3efdd3be4f36439fa81e0ecb07e0837ac10c3c8ea7868",
           "qid_v1_575a12dc75884035bb5b799d87026ee985f3334f141c67791c4ca8c03d0b1a8c",
+          "qid_v1_608760d10141ca4cd3b2a9c6d1579575b088dd8840ab8ef145afc2ac7c574f59",
           "qid_v1_63ccea551a439821e035f8674df5519ccdf906bc4faca0de5da8f48360fe62a7",
           "qid_v1_6c4ac881b5e42bb0656ce75c7831d67c7aa9bba4d628d4ee794d473be556c9ac",
           "qid_v1_7d77df6630f9cd9aa3dd93a22bf8364a65dfc767fc05467413b3866496dfc464",
@@ -36803,6 +38479,8 @@
           "qid_v1_99d2ba63fd0da6e1b924d2ff52228bb69cbd336bcfcc1c4819249d12e7f2db86",
           "qid_v1_a0aaaab18e65d0c8edaf54cad8faf7406ae3e6d821698593d677f106e805f07c",
           "qid_v1_bdd94b95da3efa20a91992b2788beb310407379b745952ad1cc8f09bb3c7e087",
+          "qid_v1_c2dbfb990656f5eb552e4d8986a987b26b1cc35b48b6684aa63dc34d1f2d16ba",
+          "qid_v1_c8b3be06497e85cb7e83a6bfc05a460ca86c7abc8ad9da6fd243f2769272ea9d",
           "qid_v1_d9b20f4cf19f9cfe887ed2a71aa6284c31fbaccfc0e2809b8371baed2098ef4d",
           "qid_v1_e64a5bdb5a070132ca4c629db5039aa9739a419e4be266d5aad0bc3b8882303f",
           "qid_v1_f80811a77e0a75c8857db00f0947db38c23dafa3179304df20ad5db7ce25583f"
@@ -36810,13 +38488,14 @@
       },
       {
         "key": "TPL_COMBINATION_SELECTION",
-        "count": 15,
+        "count": 17,
         "questionUids": [
           "qid_v1_0f33ad7bf507d1cf8e78f0898053a911d8a9b83f2321ad2d07ddaeedf69c7ea6",
           "qid_v1_3a1d2c2277d0cee2b650ab1cd6359127bf04f44f64d6cdab865c9fdbcb3a6496",
           "qid_v1_3c026a973151baf117fa9e7f4af50d5d0652d3d4384370d7f03ef500cf515a05",
           "qid_v1_5912b18c34493fe8027c237f3ef97ef23d038561d830056a0d87b8d311cc02c6",
           "qid_v1_5e08223e7199114db551cc6d8d7a20e4fd41c21ad94c6579f02f202b026f8ffc",
+          "qid_v1_61c3d2c294ef6e66bd845602e9631a5f169a7336327a254786bbb0eb2923d5d9",
           "qid_v1_83f527df6e49e1a1e4cbc503155c715416f0c19a5b4e62cc55189e3967d34224",
           "qid_v1_8888c097785ecd71e74f5d458579fda472773932cbadc933b1bfda805213edc4",
           "qid_v1_98f7feb204655d26a7239321f6e8d8b41a5c2baa698da7593b4c3e347994d443",
@@ -36826,7 +38505,8 @@
           "qid_v1_cdea1c4fbf686ef25797181171c095948628f05236f88a6a590a8c128d9ded0f",
           "qid_v1_e0a3fb82353290d0fa8d6df24e3847662e50d2ad8d5ee429fbbcbc10e95e01c5",
           "qid_v1_ea0ff0e910a581d119871faea6d1eea60521ec5217745817889073f7c30f5133",
-          "qid_v1_f5623ffa50c95dda17ea42b0558a8ba8e9ba2f038aa9716f7f77a186c0db005c"
+          "qid_v1_f5623ffa50c95dda17ea42b0558a8ba8e9ba2f038aa9716f7f77a186c0db005c",
+          "qid_v1_fb3f0dc0e52108d5d0c647d2b91d52d9372326dabb004eeaba1d6e40b73b2eea"
         ]
       },
       {
@@ -37121,7 +38801,7 @@
       },
       {
         "key": "TPL_IDENTICAL_OBJECT_PERMUTATION",
-        "count": 15,
+        "count": 17,
         "questionUids": [
           "qid_v1_0336c08107fed0ac0e59c5cb0e7ed1d179534096cf6c9b8f9fcc818f03cb1530",
           "qid_v1_15868165e987322d51cb0b07beffb8b6dfddccfe0e195e8b6ac4b32d2deaa546",
@@ -37135,6 +38815,8 @@
           "qid_v1_930cd5e82819bb60d9cae24b5bf30ce2af8d429c8651384989ce043924c661ae",
           "qid_v1_940f24b66f4b31e4d594671bff86b6d02dc63f0bec9657da213b97592e1c3b6b",
           "qid_v1_ac614035e19f33794f1c23fc9e20db1246d74347c782e85df48eff168948bcd9",
+          "qid_v1_bb7222edccc45302764d1e70235dc421514d37a6e3e6beb5e1bc3ed634ecff13",
+          "qid_v1_dca203dcb640219ed443b82d6efb27add8e3c2c3fe87e9736859e659dfa0c59d",
           "qid_v1_eb50fac3bd79545054ae55f399c8a28b177f807cc51690b4635b07f784177301",
           "qid_v1_ed2c55cae246be4b06d10985d25eb71f06f00bd311e18f8cf794c94676f183d9",
           "qid_v1_f8961df4971e63e398b2bc87e9939d1b8fb7064a82b5e7c7f904b3beb482b93a"
@@ -37270,7 +38952,7 @@
       },
       {
         "key": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
-        "count": 25,
+        "count": 26,
         "questionUids": [
           "qid_v1_057dd4f5a8da80380a76bea86bd62120acf231a3f4f9b9e2e4a9b9da467d27a5",
           "qid_v1_0bab61d4be8704abd645ebe4415ffa24c9a1bdcabc9cef4d62b5b402f4fc316c",
@@ -37294,6 +38976,7 @@
           "qid_v1_a99a6e3f41f0ddb7b3d03a6b016e0906d7a9d67dd51f258f19f275401dd92ff1",
           "qid_v1_c48d93d5e1c9bffbc0ebe8a3194ffdb92a7681e321b9637caf392aab3bbb4591",
           "qid_v1_c4c92ddac45b336496c62595e40f7d4295a5c6f0dad85e4a1f9386a24ac64e90",
+          "qid_v1_ce3503643b035720f629c6d7dfd5811136c4fe1e7203764888dd042927f4a11c",
           "qid_v1_d431437ed804ece28d1077e295a4bcc293058650b46729c16b4d7e3d72b17df3",
           "qid_v1_f247ab57ee28e54c8ac127790ea6f250b7c221dbc7ac4f9e01d0b96b2c79b71a",
           "qid_v1_f4b6921baf938085cc5f0932c83eb2e44d57010ee4ce47a6dc4064ca89818e4e"
@@ -37396,12 +39079,13 @@
       },
       {
         "key": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
-        "count": 38,
+        "count": 44,
         "questionUids": [
           "qid_v1_01c0e35e9d66a6e1b3a5dd4c5f400c296deb32456fb92eb0ad4c69f34a5295ff",
           "qid_v1_03542f3f57fee5481d44c7b336b7082727dd2df2826c61c3b87d7f7d1fd0dd46",
           "qid_v1_0458d466d20e44358e3fba1cd6ad6a4a4700660759e145f144db6515cf636c85",
           "qid_v1_135f12430f2b1ed2ab6886560c4a30b3a42e0591eb392d9858b3b06e426332ce",
+          "qid_v1_1d6eb24bb54f4107d8a483033bd6cb542235dd4cff333cfdb9cca124405070b8",
           "qid_v1_273d5e8473a847ec833c8e672eab3115857f52d170f19461932e70e88707e3a8",
           "qid_v1_2ada1a60a47b37138de1cc3dd3bfa04e74c458b7d3268bfe664e1848f522a3f7",
           "qid_v1_2fdc8c92c0a0a587b84109c6b93015c63ccb03b8b516e05fa1cf5cb19491d4a8",
@@ -37413,40 +39097,46 @@
           "qid_v1_54b1d4323bd70f2791cb6391d34d516314692677314bb04f3f51b710b134b5fb",
           "qid_v1_5a3087cf1f5c58d49bf6dd14fdf408ffce998dbcb7bcf5fbb9e702ae42a5ab2c",
           "qid_v1_5a4fb77d4ab2a218fd06db320881cf79c6e1030aac80608d47b666478b5afaa8",
+          "qid_v1_6a726cd5a33675adb53130ce679bf8e7a19eed90d72aad2e810f6ed51402b53f",
           "qid_v1_6e42a3c5089025f65b5fda826f5416f6fa8228340ba285ac6920a101a5ed2633",
           "qid_v1_953a8cf4f44642b714d9fc6694e7b77964c4d78131d88b5ee94a04bc059354c5",
           "qid_v1_97a8c2ab71723f9f2ed6fdee5a2e02949221e996381a3f52ce67f980e596f497",
           "qid_v1_a2d11ceffb23a79f72e7ccd43048618c817141788527fdf6d8bfbe635a208e97",
           "qid_v1_a2de3e997a03836f829f71aa73077b97f10f0d44564a7d25d8a2dd607e8524f5",
           "qid_v1_a59569991cb14664de62f9a63a2d3094855dc688221cd1ef70a86e0f345508cb",
+          "qid_v1_af18691333c800ef57af48dad82dc3cea33519135bb547362eefd49f9108903d",
           "qid_v1_b794da859c556d5d2b9f3c256103474ed2bc39c9d8c6242fa16edfd891af9d1a",
           "qid_v1_ba519deb9518ebb64680d4a601c0fc050bf08ff2a1201157bb7b899a71670c39",
           "qid_v1_bc0fb9b5c751dd87f271fbd3835dc2e795398c0b69fbd00d10f03dd418aa5d13",
           "qid_v1_bdee9eb78bc9f39a0ab47adb393b959aa213fb2f11b0b78425c293684f7bb48e",
           "qid_v1_c48b05ba1c906a77e7a5b765d8f15fe9e59d9804fd0934008d7163eebd330c06",
+          "qid_v1_cd45f5a2b8bb9c16b992d4e8ad3b31d059566693ed7a41caef4599c14205fc53",
           "qid_v1_cdf8062c9d660c92cd39c60d708deed805bb276301356decff1332f26866ebc3",
           "qid_v1_d6b132502bff4fbad58a631778ce05f5b7dbf97aaf81877f36a94400958b7afe",
           "qid_v1_da0667223334e1e3addecfa01e853557bf94d01166857d3271db14429e5953e9",
           "qid_v1_db36e7fb2795840d13eaa87574faefb8ba66aa564e29aa999229bc92eb830578",
           "qid_v1_dc0e7f47adfddd3837744ddc3922d230e85e9fa2e6b48fbfc9a08758352233f6",
+          "qid_v1_e00794dcd61abba86ad01540d65047068500962690cff00f943b904154d93de2",
           "qid_v1_e222b142a8d1bd144781e0403e7220e5625dfb317b42ef63d5898e2fde0460a8",
           "qid_v1_e6af08b92130932cb82de30b31e22727cbf7a43d7ac35d55db967f00ddf28c0b",
           "qid_v1_e91eabf53b39b9c2fe2eb2547449006ce63c1956bc7156b0232c539c35ef2cc1",
           "qid_v1_ebde8fa155908763614a145ab946781d2e496194870c87bdae963a29f07287f4",
           "qid_v1_eead02a831a271986fe69dbe5db4258c3f375858ccf4d7ec5f84aa74159321a7",
           "qid_v1_eec4a810141e877b9c97a49a2de077f171ed340f5724ffa35ff31059956400c9",
-          "qid_v1_f352fe19429723475a294f46c3a46de9f04552cdb5c19edceca7b7b06a2f5c1f"
+          "qid_v1_f352fe19429723475a294f46c3a46de9f04552cdb5c19edceca7b7b06a2f5c1f",
+          "qid_v1_fa081633fe292b004e906af53dd0adbdbeb14ccdc2d3ab9ddde4b998aa1c3274"
         ]
       },
       {
         "key": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
-        "count": 34,
+        "count": 36,
         "questionUids": [
           "qid_v1_0af58214062fe4d7fabb2c5d6daea8dec531418e6d248ef79e70ed6b6de45bc1",
           "qid_v1_0fd5f829770742f70b7d8d159576a7105896abe2f99d837b10dd22d7afa3d699",
           "qid_v1_1418d8bf271533d57f21014713064fdedfaa8004cdd893c1b37167c34cd4aa40",
           "qid_v1_1f02789ecd3b834780fadd7cede6f6fe991f7ed8d23d1b2d81dd71ec2358f03d",
           "qid_v1_209ee6bcc334f81c86a65606c98f0926f662c517547b8e329b9a85ca62bd6f7c",
+          "qid_v1_264f0764aabba7eea65b9a25c6c3363328dc6a93cebc66397e549961afe48e3e",
           "qid_v1_341c44e047cfd7307c9369271db78f7dc29c23a0300ec3253faa6f6acfe27643",
           "qid_v1_3b1e67b38eeed87b1b0ab976477247a24951de2118a5e05f01309d3b582e54a7",
           "qid_v1_3ed8cae4761a6b916f63ea50073a86da140dfea2a306b5297a223efa7750d050",
@@ -37455,6 +39145,7 @@
           "qid_v1_4c24ec5535cb8716816d6bbad154ea44feee3203b6039afeee60882faa1d2202",
           "qid_v1_4f5972cc660621db5cc169f69bf347a82c55dcb17a83c4434993301ef490f4a6",
           "qid_v1_5fe767ace86ee9a30f073db0a4f873fb9fa1c9f3ebac9bc729de4c83dac5dfb8",
+          "qid_v1_61e5aabea65b5b7f178f09aebcc2ef9851fddccc7344e6b36d79d8c317453486",
           "qid_v1_642a839c9333aa0896122b76eeb0f992ff516b5191698b7d57a82de0a50d2095",
           "qid_v1_8c174c227e42cb30b2ccec6b7597c4f5d5d34d831b97f3d9ff24e45125ac5895",
           "qid_v1_8ef741060b073266b5ed18c0ad1270b7cf2a8e376776e4f591e7604fdf09fbeb",
@@ -37591,6 +39282,13 @@
         ]
       },
       {
+        "key": "CC_BINOMIAL_COEFFICIENT_EQUATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_524cab4ee2904af12fba99ddb53f1e1cdc611e7c3a9113d890af210e3a9e5241"
+        ]
+      },
+      {
         "key": "CC_BINOMIAL_DISTRIBUTION",
         "count": 4,
         "questionUids": [
@@ -37615,10 +39313,31 @@
         ]
       },
       {
+        "key": "CC_BINOMIAL_POWER_SUM_TRANSFORM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_ad239510bdbc1cf8d5eafc4e2281a60c7c7483fcd495bd6eead635ba2c5a8a41"
+        ]
+      },
+      {
         "key": "CC_BINOMIAL_PROBABILITY",
         "count": 1,
         "questionUids": [
           "qid_v1_27eefa4045c439e7b3f1e9636772d5124aef2857ed5071b4e28b35c3c008ae3e"
+        ]
+      },
+      {
+        "key": "CC_BINOMIAL_SUM_POWER_OF_TWO",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_199d13db811181c9254590a86dbc0d4bfa3eeb9f62933896a7b19c97fbaa4f25"
+        ]
+      },
+      {
+        "key": "CC_BINOMIAL_TERM_COEFFICIENT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_e9cf5e7562babd0cdd63652a4aa881e44b01cf44d330a4ad554853010f44bc46"
         ]
       },
       {
@@ -37630,9 +39349,17 @@
         ]
       },
       {
-        "key": "CC_CIRCULAR_PERMUTATION",
+        "key": "CC_CASE_EXHAUSTION_PERMUTATION",
         "count": 1,
         "questionUids": [
+          "qid_v1_bb7222edccc45302764d1e70235dc421514d37a6e3e6beb5e1bc3ed634ecff13"
+        ]
+      },
+      {
+        "key": "CC_CIRCULAR_PERMUTATION",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_29a182e0300f26cae6924831c01a46eafbe3a663db83cf7ba3d3e76d7c712ce7",
           "qid_v1_b32071d9583a0b13c2f5ac60748c104cdb4452a1973e58c5a27e8415efd4fd12"
         ]
       },
@@ -37661,8 +39388,10 @@
       },
       {
         "key": "CC_COMBINATION_SELECTION",
-        "count": 1,
+        "count": 3,
         "questionUids": [
+          "qid_v1_29a182e0300f26cae6924831c01a46eafbe3a663db83cf7ba3d3e76d7c712ce7",
+          "qid_v1_608760d10141ca4cd3b2a9c6d1579575b088dd8840ab8ef145afc2ac7c574f59",
           "qid_v1_8887153151de1c84e6a484803326c15bee3b4ea188382a7b6632788723f004de"
         ]
       },
@@ -37782,6 +39511,13 @@
         "questionUids": [
           "qid_v1_ac7030626aa34da8b91102ccc2b4aa8a964813cc6e5188ea8dd7508476ad1a23",
           "qid_v1_b32071d9583a0b13c2f5ac60748c104cdb4452a1973e58c5a27e8415efd4fd12"
+        ]
+      },
+      {
+        "key": "CC_CONCENTRIC_ROTATIONAL_COLORING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_608760d10141ca4cd3b2a9c6d1579575b088dd8840ab8ef145afc2ac7c574f59"
         ]
       },
       {
@@ -37957,6 +39693,21 @@
         ]
       },
       {
+        "key": "CC_GRID_SHORTEST_PATH",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_fb3f0dc0e52108d5d0c647d2b91d52d9372326dabb004eeaba1d6e40b73b2eea"
+        ]
+      },
+      {
+        "key": "CC_IDENTICAL_OBJECT_PERMUTATION",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_bb7222edccc45302764d1e70235dc421514d37a6e3e6beb5e1bc3ed634ecff13",
+          "qid_v1_dca203dcb640219ed443b82d6efb27add8e3c2c3fe87e9736859e659dfa0c59d"
+        ]
+      },
+      {
         "key": "CC_INDEPENDENCE_PROOF",
         "count": 1,
         "questionUids": [
@@ -37977,6 +39728,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_15b5a1f0a33abf72c1f3a2eced772c5e00d0a219f8ce7c4436489f6a1ab1837e"
+        ]
+      },
+      {
+        "key": "CC_INDEPENDENT_PRODUCT_RULE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_264f0764aabba7eea65b9a25c6c3363328dc6a93cebc66397e549961afe48e3e"
         ]
       },
       {
@@ -38012,6 +39770,13 @@
         ]
       },
       {
+        "key": "CC_INTEGER_SOLUTIONS_DIGIT_SUM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_6a726cd5a33675adb53130ce679bf8e7a19eed90d72aad2e810f6ed51402b53f"
+        ]
+      },
+      {
         "key": "CC_LINEAR_EQUATION_SOLUTION",
         "count": 1,
         "questionUids": [
@@ -38023,6 +39788,13 @@
         "count": 1,
         "questionUids": [
           "qid_v1_f7d8e4dd8f901ef3fe091c662431b1e23eca9de9b5d56fa4789400b057cd26ac"
+        ]
+      },
+      {
+        "key": "CC_MONOTONIC_FUNCTION_REPEATED_COMBINATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_e00794dcd61abba86ad01540d65047068500962690cff00f943b904154d93de2"
         ]
       },
       {
@@ -38048,10 +39820,24 @@
         ]
       },
       {
+        "key": "CC_NON_CONSECUTIVE_SELECTION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_61c3d2c294ef6e66bd845602e9631a5f169a7336327a254786bbb0eb2923d5d9"
+        ]
+      },
+      {
         "key": "CC_NON_NEGATIVE_INTEGER_SOLUTION",
         "count": 1,
         "questionUids": [
           "qid_v1_a2de3e997a03836f829f71aa73077b97f10f0d44564a7d25d8a2dd607e8524f5"
+        ]
+      },
+      {
+        "key": "CC_NON_NEGATIVE_INTEGER_SOLUTIONS_VARIABLE_CASE",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_1d6eb24bb54f4107d8a483033bd6cb542235dd4cff333cfdb9cca124405070b8"
         ]
       },
       {
@@ -38180,6 +39966,13 @@
         ]
       },
       {
+        "key": "CC_ODD_SUBSETS_HALF_POWER",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_b0757d6b493fd81bf2974e23697aec1b29daba4b8f3800b14ddcd38777e1b66c"
+        ]
+      },
+      {
         "key": "CC_ONE_TO_ONE_FUNCTION",
         "count": 1,
         "questionUids": [
@@ -38188,9 +39981,10 @@
       },
       {
         "key": "CC_ORDER_FIXED_PERMUTATION",
-        "count": 1,
+        "count": 2,
         "questionUids": [
-          "qid_v1_8887153151de1c84e6a484803326c15bee3b4ea188382a7b6632788723f004de"
+          "qid_v1_8887153151de1c84e6a484803326c15bee3b4ea188382a7b6632788723f004de",
+          "qid_v1_ce3503643b035720f629c6d7dfd5811136c4fe1e7203764888dd042927f4a11c"
         ]
       },
       {
@@ -38206,6 +40000,13 @@
         "questionUids": [
           "qid_v1_02ce1505dc9411b6942245be586bb943e180d9bfd20e4228b1c1bf5d9cca3169",
           "qid_v1_bcc3cd914a0f5a1c0133c62e3bcf4e4c0a30c30aa4ec38c1690d2bba48eeffe3"
+        ]
+      },
+      {
+        "key": "CC_PASCAL_HOCKEY_STICK_IDENTITY",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_327575f31da6e4d6b122ed0cdb206178db47c411d70244e6ec25066e41ec0d5b"
         ]
       },
       {
@@ -38226,10 +40027,24 @@
         ]
       },
       {
+        "key": "CC_POLYGON_TABLE_PERMUTATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_c8b3be06497e85cb7e83a6bfc05a460ca86c7abc8ad9da6fd243f2769272ea9d"
+        ]
+      },
+      {
         "key": "CC_POLYGON_VERTEX_MOTION",
         "count": 1,
         "questionUids": [
           "qid_v1_3e58ab1eb279a8e58027e825dd3da7678d0f6a378ca586d197296a2648c8c0db"
+        ]
+      },
+      {
+        "key": "CC_POLYHEDRON_COLORING_ROTATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_c2dbfb990656f5eb552e4d8986a987b26b1cc35b48b6684aa63dc34d1f2d16ba"
         ]
       },
       {
@@ -38302,11 +40117,32 @@
         ]
       },
       {
+        "key": "CC_REPEATED_COMBINATION_EQUAL_CASE_EXCLUSION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_af18691333c800ef57af48dad82dc3cea33519135bb547362eefd49f9108903d"
+        ]
+      },
+      {
+        "key": "CC_REPEATED_COMBINATION_TOTAL_SUM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_fa081633fe292b004e906af53dd0adbdbeb14ccdc2d3ab9ddde4b998aa1c3274"
+        ]
+      },
+      {
         "key": "CC_REPEATED_PERMUTATION",
         "count": 2,
         "questionUids": [
           "qid_v1_5fe767ace86ee9a30f073db0a4f873fb9fa1c9f3ebac9bc729de4c83dac5dfb8",
           "qid_v1_bd90fadbab11fa02300c82ec0d4135fb17e7f076850c585db6b52231caa55ed2"
+        ]
+      },
+      {
+        "key": "CC_REPEATED_PERMUTATION_DIGIT_BOUND",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_61e5aabea65b5b7f178f09aebcc2ef9851fddccc7344e6b36d79d8c317453486"
         ]
       },
       {
@@ -38425,6 +40261,13 @@
         ]
       },
       {
+        "key": "CC_UPPER_BOUNDED_REPEATED_COMBINATION",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_cd45f5a2b8bb9c16b992d4e8ad3b31d059566693ed7a41caef4599c14205fc53"
+        ]
+      },
+      {
         "key": "CC_Z_SCORE_STANDARDIZATION",
         "count": 8,
         "questionUids": [
@@ -38441,10 +40284,45 @@
     ],
     "conditions": [
       {
+        "key": "COND_CONSECUTIVE_GROUPING",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_c8b3be06497e85cb7e83a6bfc05a460ca86c7abc8ad9da6fd243f2769272ea9d"
+        ]
+      },
+      {
+        "key": "COND_DIGIT_SUM",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_6a726cd5a33675adb53130ce679bf8e7a19eed90d72aad2e810f6ed51402b53f"
+        ]
+      },
+      {
+        "key": "COND_EDGE_RESTRICTIONS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_dca203dcb640219ed443b82d6efb27add8e3c2c3fe87e9736859e659dfa0c59d"
+        ]
+      },
+      {
+        "key": "COND_FREQUENCY_CONSTRAINTS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_bb7222edccc45302764d1e70235dc421514d37a6e3e6beb5e1bc3ed634ecff13"
+        ]
+      },
+      {
         "key": "COND_FUNCTION_VALUE_CONSTRAINT",
         "count": 1,
         "questionUids": [
           "qid_v1_c303fb88457fe896bd8481a25fc845eb346a6b8fe37c5cb82c91c68aa77d2fcb"
+        ]
+      },
+      {
+        "key": "COND_INEQUALITY_CONSTRAINT",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_1d6eb24bb54f4107d8a483033bd6cb542235dd4cff333cfdb9cca124405070b8"
         ]
       },
       {
@@ -38468,6 +40346,20 @@
           "qid_v1_c448d1714c534c3d1e62fe7cd1cb97b1a096558489c1a497d4fbfb421f6a631d",
           "qid_v1_c48b05ba1c906a77e7a5b765d8f15fe9e59d9804fd0934008d7163eebd330c06",
           "qid_v1_d6b132502bff4fbad58a631778ce05f5b7dbf97aaf81877f36a94400958b7afe"
+        ]
+      },
+      {
+        "key": "COND_LOWER_BOUND",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_fa081633fe292b004e906af53dd0adbdbeb14ccdc2d3ab9ddde4b998aa1c3274"
+        ]
+      },
+      {
+        "key": "COND_MONOTONIC_ORDER",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_e00794dcd61abba86ad01540d65047068500962690cff00f943b904154d93de2"
         ]
       },
       {
@@ -38533,6 +40425,20 @@
         ]
       },
       {
+        "key": "COND_NO_ADJACENT_SELECTED_SYMBOLS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_29a182e0300f26cae6924831c01a46eafbe3a663db83cf7ba3d3e76d7c712ce7"
+        ]
+      },
+      {
+        "key": "COND_NO_CONSECUTIVE_ELEMENTS",
+        "count": 1,
+        "questionUids": [
+          "qid_v1_61c3d2c294ef6e66bd845602e9631a5f169a7336327a254786bbb0eb2923d5d9"
+        ]
+      },
+      {
         "key": "COND_NONZERO",
         "count": 3,
         "questionUids": [
@@ -38554,7 +40460,7 @@
       },
       {
         "key": "COND_RANGE",
-        "count": 39,
+        "count": 41,
         "questionUids": [
           "qid_v1_02ce1505dc9411b6942245be586bb943e180d9bfd20e4228b1c1bf5d9cca3169",
           "qid_v1_0bab61d4be8704abd645ebe4415ffa24c9a1bdcabc9cef4d62b5b402f4fc316c",
@@ -38573,6 +40479,7 @@
           "qid_v1_54b1d4323bd70f2791cb6391d34d516314692677314bb04f3f51b710b134b5fb",
           "qid_v1_5a3087cf1f5c58d49bf6dd14fdf408ffce998dbcb7bcf5fbb9e702ae42a5ab2c",
           "qid_v1_5cbfd7af57472a2ac9f0e5fed0afae5da54766981208644a2e78c5fe4d673e69",
+          "qid_v1_61e5aabea65b5b7f178f09aebcc2ef9851fddccc7344e6b36d79d8c317453486",
           "qid_v1_62c6ce801c20ac0634cd05d6dd23a5bad1182f185ecff7ae61ac78ce687c1ac2",
           "qid_v1_67a0e6ce95cbff01ecbf0d69093ac9bf226dc66351a88b7976f1e8eb389d807f",
           "qid_v1_6e42a3c5089025f65b5fda826f5416f6fa8228340ba285ac6920a101a5ed2633",
@@ -38582,6 +40489,7 @@
           "qid_v1_81a4d885d15c2a1c25604afac82d9d0e922e48586fc2377cec1315b32ca740e6",
           "qid_v1_83f527df6e49e1a1e4cbc503155c715416f0c19a5b4e62cc55189e3967d34224",
           "qid_v1_a2d11ceffb23a79f72e7ccd43048618c817141788527fdf6d8bfbe635a208e97",
+          "qid_v1_b0757d6b493fd81bf2974e23697aec1b29daba4b8f3800b14ddcd38777e1b66c",
           "qid_v1_b0a435e58b32b58c1cc3785a46671405f7008f407ba19ccf8fa40bf367e8e2e5",
           "qid_v1_b341c03bd71811be55fb7d6a265de281f4ea0d31464b073de40f22b39439860f",
           "qid_v1_b794da859c556d5d2b9f3c256103474ed2bc39c9d8c6242fa16edfd891af9d1a",
@@ -38609,6 +40517,14 @@
         "count": 1,
         "questionUids": [
           "qid_v1_faeef90e97323f769bbc73ee044f27c71d18670b4585b673e16854a4f8a19514"
+        ]
+      },
+      {
+        "key": "COND_UPPER_BOUND",
+        "count": 2,
+        "questionUids": [
+          "qid_v1_cd45f5a2b8bb9c16b992d4e8ad3b31d059566693ed7a41caef4599c14205fc53",
+          "qid_v1_fa081633fe292b004e906af53dd0adbdbeb14ccdc2d3ab9ddde4b998aa1c3274"
         ]
       }
     ]

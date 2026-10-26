@@ -29,8 +29,8 @@
     },
     {
       "shardId": "COUNTING",
-      "version": "1.0.4",
-      "conceptCount": 21
+      "version": "1.0.5",
+      "conceptCount": 42
     },
     {
       "shardId": "NUMBER_THEORY",
@@ -63,7 +63,7 @@
       "conceptCount": 42
     }
   ],
-  "conceptCount": 449,
+  "conceptCount": 470,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -12222,6 +12222,753 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-03"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_POLYHEDRON_COLORING_ROTATION",
+      "canonicalLabelKo": "입체도형의 면 색칠과 회전 대칭",
+      "definition": "다면체의 각 면을 서로 다른 색으로 칠할 때 중심축 회전에 의한 대칭 중복도로 나누어 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c2dbfb990656f5eb552e4d8986a987b26b1cc35b48b6684aa63dc34d1f2d16ba"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c2dbfb990656f5eb552e4d8986a987b26b1cc35b48b6684aa63dc34d1f2d16ba",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_POLYHEDRON_COLORING_ROTATION for PT_COUNTING_ARRANGEMENT/TPL_CIRCULAR_PERMUTATION at H15-PS-01-PERMUTATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 2 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_ARRANGEMENT"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_POLYGON_TABLE_PERMUTATION",
+      "canonicalLabelKo": "정다각형 탁자의 원순열",
+      "definition": "정다각형 둘레에 사람들을 배치할 때 다각형의 회전 대칭군 크기로 나누어 구하는 원순열",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c8b3be06497e85cb7e83a6bfc05a460ca86c7abc8ad9da6fd243f2769272ea9d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c8b3be06497e85cb7e83a6bfc05a460ca86c7abc8ad9da6fd243f2769272ea9d",
+          "sourceOrdinal": 3,
+          "classificationRationale": "META_PIPELINE_AUDIT record 3 binds CC_POLYGON_TABLE_PERMUTATION for PT_COUNTING_ARRANGEMENT/TPL_CIRCULAR_PERMUTATION at H15-PS-01-PERMUTATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 3 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_ARRANGEMENT"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_INDEPENDENT_PRODUCT_RULE",
+      "canonicalLabelKo": "독립 시행의 곱의 법칙",
+      "definition": "서로 독립인 선택지들이 연속하여 일어날 때 각 경우의 수를 곱하여 총 경우의 수를 구하는 법칙",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_264f0764aabba7eea65b9a25c6c3363328dc6a93cebc66397e549961afe48e3e"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_264f0764aabba7eea65b9a25c6c3363328dc6a93cebc66397e549961afe48e3e",
+          "sourceOrdinal": 4,
+          "classificationRationale": "META_PIPELINE_AUDIT record 4 binds CC_INDEPENDENT_PRODUCT_RULE for PT_COUNTING_REPEATED_ASSIGNMENT/TPL_REPEATED_PERMUTATION_ASSIGNMENT at H15-PS-01-PERMUTATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 4 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_REPEATED_ASSIGNMENT"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_REPEATED_PERMUTATION_DIGIT_BOUND",
+      "canonicalLabelKo": "중복순열과 자릿수 제약",
+      "definition": "중복을 허용하여 만든 자연수 중 특정 값보다 큰 경우를 최고자리부터 단계별로 분류하여 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_61e5aabea65b5b7f178f09aebcc2ef9851fddccc7344e6b36d79d8c317453486"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_61e5aabea65b5b7f178f09aebcc2ef9851fddccc7344e6b36d79d8c317453486",
+          "sourceOrdinal": 5,
+          "classificationRationale": "META_PIPELINE_AUDIT record 5 binds CC_REPEATED_PERMUTATION_DIGIT_BOUND for PT_COUNTING_REPEATED_ASSIGNMENT/TPL_REPEATED_PERMUTATION_ASSIGNMENT at H15-PS-01-PERMUTATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 5 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_REPEATED_ASSIGNMENT"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_IDENTICAL_OBJECT_PERMUTATION",
+      "canonicalLabelKo": "같은 것이 있는 순열",
+      "definition": "n개 중 같은 것이 각각 p개, q개, ... 있을 때 전체 배열의 수 n!/(p!q!...)",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bb7222edccc45302764d1e70235dc421514d37a6e3e6beb5e1bc3ed634ecff13",
+        "qid_v1_dca203dcb640219ed443b82d6efb27add8e3c2c3fe87e9736859e659dfa0c59d"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_dca203dcb640219ed443b82d6efb27add8e3c2c3fe87e9736859e659dfa0c59d",
+          "sourceOrdinal": 6,
+          "classificationRationale": "META_PIPELINE_AUDIT record 6 binds CC_IDENTICAL_OBJECT_PERMUTATION for PT_COUNTING_ARRANGEMENT/TPL_IDENTICAL_OBJECT_PERMUTATION at H15-PS-01-PERMUTATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 6 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bb7222edccc45302764d1e70235dc421514d37a6e3e6beb5e1bc3ed634ecff13",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_IDENTICAL_OBJECT_PERMUTATION for PT_COUNTING_ARRANGEMENT/TPL_IDENTICAL_OBJECT_PERMUTATION at H15-PS-01-PERMUTATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 7 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_ARRANGEMENT"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_CASE_EXHAUSTION_PERMUTATION",
+      "canonicalLabelKo": "빈도 조건에 따른 경우 분류 순열",
+      "definition": "홀수, 짝수 등의 사용 빈도 제약 조건에 따라 배정 가능한 원소 조합을 분류하고 순열 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_bb7222edccc45302764d1e70235dc421514d37a6e3e6beb5e1bc3ed634ecff13"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_bb7222edccc45302764d1e70235dc421514d37a6e3e6beb5e1bc3ed634ecff13",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_CASE_EXHAUSTION_PERMUTATION for PT_COUNTING_ARRANGEMENT/TPL_IDENTICAL_OBJECT_PERMUTATION at H15-PS-01-PERMUTATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 7 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_ARRANGEMENT"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_GRID_SHORTEST_PATH",
+      "canonicalLabelKo": "격자 도로망의 최단 경로",
+      "definition": "가로와 세로 이동의 합으로 최단 거리를 표현하고 특정 경유지와 결손 도로를 반영한 조합 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_fb3f0dc0e52108d5d0c647d2b91d52d9372326dabb004eeaba1d6e40b73b2eea"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fb3f0dc0e52108d5d0c647d2b91d52d9372326dabb004eeaba1d6e40b73b2eea",
+          "sourceOrdinal": 8,
+          "classificationRationale": "META_PIPELINE_AUDIT record 8 binds CC_GRID_SHORTEST_PATH for PT_COUNTING_SELECTION_DISTRIBUTION/TPL_COMBINATION_SELECTION at H15-PS-01-COMBINATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 8 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_SELECTION_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_REPEATED_COMBINATION_TOTAL_SUM",
+      "canonicalLabelKo": "중복조합의 총합 공식 역산",
+      "definition": "nHr = C(n+r-1, r)의 총 경우의 수 값으로부터 선택 개수 r을 거꾸로 구하는 대수 방정식",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_fa081633fe292b004e906af53dd0adbdbeb14ccdc2d3ab9ddde4b998aa1c3274"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_fa081633fe292b004e906af53dd0adbdbeb14ccdc2d3ab9ddde4b998aa1c3274",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_REPEATED_COMBINATION_TOTAL_SUM for PT_COUNTING_SELECTION_DISTRIBUTION/TPL_REPEATED_COMBINATION_DISTRIBUTION at H15-PS-01-COMBINATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 10 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_SELECTION_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_INTEGER_SOLUTIONS_DIGIT_SUM",
+      "canonicalLabelKo": "자릿수 합 조건과 중복조합",
+      "definition": "각 자리 숫자의 합이 일정한 자연수의 개수를 최고자리 치환을 통해 음이 아닌 정수해 중복조합으로 변환",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_6a726cd5a33675adb53130ce679bf8e7a19eed90d72aad2e810f6ed51402b53f"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_6a726cd5a33675adb53130ce679bf8e7a19eed90d72aad2e810f6ed51402b53f",
+          "sourceOrdinal": 11,
+          "classificationRationale": "META_PIPELINE_AUDIT record 11 binds CC_INTEGER_SOLUTIONS_DIGIT_SUM for PT_COUNTING_SELECTION_DISTRIBUTION/TPL_REPEATED_COMBINATION_DISTRIBUTION at H15-PS-01-COMBINATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 11 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_SELECTION_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_REPEATED_COMBINATION_EQUAL_CASE_EXCLUSION",
+      "canonicalLabelKo": "여사건을 이용한 중복조합 배분",
+      "definition": "전체 배분 경우의 수에서 세 대상 또는 두 대상이 같은 값을 갖는 특수 케이스를 차감하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_af18691333c800ef57af48dad82dc3cea33519135bb547362eefd49f9108903d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_af18691333c800ef57af48dad82dc3cea33519135bb547362eefd49f9108903d",
+          "sourceOrdinal": 12,
+          "classificationRationale": "META_PIPELINE_AUDIT record 12 binds CC_REPEATED_COMBINATION_EQUAL_CASE_EXCLUSION for PT_COUNTING_SELECTION_DISTRIBUTION/TPL_REPEATED_COMBINATION_DISTRIBUTION at H15-PS-01-COMBINATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 12 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_SELECTION_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_MONOTONIC_FUNCTION_REPEATED_COMBINATION",
+      "canonicalLabelKo": "단조함수와 중복조합",
+      "definition": "x1 < x2 일 때 f(x1) ≤ f(x2)를 만족하는 함수의 개수를 치역에서 중복을 허용해 선택하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e00794dcd61abba86ad01540d65047068500962690cff00f943b904154d93de2"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e00794dcd61abba86ad01540d65047068500962690cff00f943b904154d93de2",
+          "sourceOrdinal": 13,
+          "classificationRationale": "META_PIPELINE_AUDIT record 13 binds CC_MONOTONIC_FUNCTION_REPEATED_COMBINATION for PT_COUNTING_SELECTION_DISTRIBUTION/TPL_REPEATED_COMBINATION_DISTRIBUTION at H15-PS-01-COMBINATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 13 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_SELECTION_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_UPPER_BOUNDED_REPEATED_COMBINATION",
+      "canonicalLabelKo": "상한 제약이 있는 중복조합",
+      "definition": "특정 대상의 선택 개수에 상한선이 있을 때 전체 중복조합에서 상한 초과 케이스를 차감하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_cd45f5a2b8bb9c16b992d4e8ad3b31d059566693ed7a41caef4599c14205fc53"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_cd45f5a2b8bb9c16b992d4e8ad3b31d059566693ed7a41caef4599c14205fc53",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_UPPER_BOUNDED_REPEATED_COMBINATION for PT_COUNTING_SELECTION_DISTRIBUTION/TPL_REPEATED_COMBINATION_DISTRIBUTION at H15-PS-01-COMBINATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 14 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_SELECTION_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_NON_CONSECUTIVE_SELECTION",
+      "canonicalLabelKo": "이웃하지 않는 대상의 선택 조합",
+      "definition": "연속하지 않는 번호를 선택할 때 사이사이 공간에 대상을 끼워 넣는 방식으로 조합 수 산출",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_61c3d2c294ef6e66bd845602e9631a5f169a7336327a254786bbb0eb2923d5d9"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_61c3d2c294ef6e66bd845602e9631a5f169a7336327a254786bbb0eb2923d5d9",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_NON_CONSECUTIVE_SELECTION for PT_COUNTING_SELECTION_DISTRIBUTION/TPL_COMBINATION_SELECTION at H15-PS-01-COMBINATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 15 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_SELECTION_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_TERM_COEFFICIENT",
+      "canonicalLabelKo": "이항정리 전개식의 항의 계수",
+      "definition": "(a+b)ⁿ 전개식의 일반항 nCr aⁿ⁻ʳ bʳ을 이용하여 특정 차수의 계수를 구하는 정리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e9cf5e7562babd0cdd63652a4aa881e44b01cf44d330a4ad554853010f44bc46"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e9cf5e7562babd0cdd63652a4aa881e44b01cf44d330a4ad554853010f44bc46",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_BINOMIAL_TERM_COEFFICIENT for PT_BINOMIAL_THEOREM/TPL_BINOMIAL_TERM_COEFFICIENT at H15-PS-02-BINOMIAL_COEFFICIENT.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 16 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_THEOREM"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-02"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_SUM_POWER_OF_TWO",
+      "canonicalLabelKo": "이항계수의 총합 성질",
+      "definition": "Σ nCr = 2ⁿ 공식에서 누락된 특정 항(nC0 등)을 제외하여 합을 계산하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_199d13db811181c9254590a86dbc0d4bfa3eeb9f62933896a7b19c97fbaa4f25"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_199d13db811181c9254590a86dbc0d4bfa3eeb9f62933896a7b19c97fbaa4f25",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_BINOMIAL_SUM_POWER_OF_TWO for PT_BINOMIAL_THEOREM/TPL_BINOMIAL_COEFFICIENT_IDENTITY at H15-PS-02-BINOMIAL_COEFFICIENT.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 17 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_THEOREM"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-02"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_PASCAL_HOCKEY_STICK_IDENTITY",
+      "canonicalLabelKo": "파스칼 삼각형과 하키스틱 항등식",
+      "definition": "Σ kCr = ₘ₊₁Cᵣ₊₁ 항등식을 이용하여 누적된 이항계수의 합을 하나의 조합수로 축약하는 공식",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_327575f31da6e4d6b122ed0cdb206178db47c411d70244e6ec25066e41ec0d5b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_327575f31da6e4d6b122ed0cdb206178db47c411d70244e6ec25066e41ec0d5b",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_PASCAL_HOCKEY_STICK_IDENTITY for PT_BINOMIAL_THEOREM/TPL_BINOMIAL_COEFFICIENT_IDENTITY at H15-PS-02-BINOMIAL_COEFFICIENT.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 18 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_THEOREM"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-02"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_POWER_SUM_TRANSFORM",
+      "canonicalLabelKo": "이항정리 거듭제곱 계수합 변형",
+      "definition": "Σ nCr xʳ = (1+x)ⁿ 전개식의 대칭성과 거듭제곱 곱을 결합하여 총합을 계산하는 변형 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_ad239510bdbc1cf8d5eafc4e2281a60c7c7483fcd495bd6eead635ba2c5a8a41"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_ad239510bdbc1cf8d5eafc4e2281a60c7c7483fcd495bd6eead635ba2c5a8a41",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_BINOMIAL_POWER_SUM_TRANSFORM for PT_BINOMIAL_THEOREM/TPL_BINOMIAL_COEFFICIENT_IDENTITY at H15-PS-02-BINOMIAL_COEFFICIENT.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 19 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_THEOREM"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-02"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_ODD_SUBSETS_HALF_POWER",
+      "canonicalLabelKo": "홀수 크기 부분집합의 개수",
+      "definition": "원소가 n개인 유한집합에서 원소의 개수가 홀수인 부분집합의 총 개수는 2ⁿ⁻¹이 된다는 성질",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_b0757d6b493fd81bf2974e23697aec1b29daba4b8f3800b14ddcd38777e1b66c"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_b0757d6b493fd81bf2974e23697aec1b29daba4b8f3800b14ddcd38777e1b66c",
+          "sourceOrdinal": 20,
+          "classificationRationale": "META_PIPELINE_AUDIT record 20 binds CC_ODD_SUBSETS_HALF_POWER for PT_BINOMIAL_THEOREM/TPL_BINOMIAL_COEFFICIENT_IDENTITY at H15-PS-02-BINOMIAL_COEFFICIENT.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 20 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_THEOREM"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-02"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_COEFFICIENT_EQUATION",
+      "canonicalLabelKo": "이항계수 조건 방정식",
+      "definition": "전개식의 특정 차수 계수 조건으로부터 미지수 a의 거듭제곱 값을 구하는 대수 풀이",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_524cab4ee2904af12fba99ddb53f1e1cdc611e7c3a9113d890af210e3a9e5241"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-02"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_524cab4ee2904af12fba99ddb53f1e1cdc611e7c3a9113d890af210e3a9e5241",
+          "sourceOrdinal": 21,
+          "classificationRationale": "META_PIPELINE_AUDIT record 21 binds CC_BINOMIAL_COEFFICIENT_EQUATION for PT_BINOMIAL_THEOREM/TPL_BINOMIAL_TERM_COEFFICIENT at H15-PS-02-BINOMIAL_COEFFICIENT.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 21 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_THEOREM"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-02"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_CONCENTRIC_ROTATIONAL_COLORING",
+      "canonicalLabelKo": "동심원 영역의 회전 대칭 색칠",
+      "definition": "중심축 회전에 의해 일치하는 원형 영역들을 원순열과 직교 회전 중복도로 나누어 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_608760d10141ca4cd3b2a9c6d1579575b088dd8840ab8ef145afc2ac7c574f59"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_608760d10141ca4cd3b2a9c6d1579575b088dd8840ab8ef145afc2ac7c574f59",
+          "sourceOrdinal": 22,
+          "classificationRationale": "META_PIPELINE_AUDIT record 22 binds CC_CONCENTRIC_ROTATIONAL_COLORING for PT_COUNTING_ARRANGEMENT/TPL_CIRCULAR_PERMUTATION at H15-PS-01-PERMUTATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 22 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_ARRANGEMENT"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
+      ],
+      "ownerConceptShard": "COUNTING"
+    },
+    {
+      "conceptKey": "CC_NON_NEGATIVE_INTEGER_SOLUTIONS_VARIABLE_CASE",
+      "canonicalLabelKo": "조건부 부정방정식의 중복조합 순서쌍",
+      "definition": "특정 변수의 부등식 조건(a>d)에 따라 치환을 적용하여 음이 아닌 정수해 중복조합으로 해결",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1d6eb24bb54f4107d8a483033bd6cb542235dd4cff333cfdb9cca124405070b8"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-01"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1d6eb24bb54f4107d8a483033bd6cb542235dd4cff333cfdb9cca124405070b8",
+          "sourceOrdinal": 23,
+          "classificationRationale": "META_PIPELINE_AUDIT record 23 binds CC_NON_NEGATIVE_INTEGER_SOLUTIONS_VARIABLE_CASE for PT_COUNTING_SELECTION_DISTRIBUTION/TPL_REPEATED_COMBINATION_DISTRIBUTION at H15-PS-01-COMBINATION.",
+          "decisiveEvidence": "META_PIPELINE_AUDIT record 23 approved canonical binding",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.audit.json",
+            "sha256": "c6a9b0b1f4a132f8d7f671432b29b36928ac551041f14dffc903ad76c1b90453"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_COUNTING_SELECTION_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-01"
       ],
       "ownerConceptShard": "COUNTING"
     },

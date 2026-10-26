@@ -1,0 +1,484 @@
+{
+  "schemaVersion": "ALIVE_COURIER_INTAKE_MANIFEST_v3",
+  "examTitle": "21_순천여고_1학기_중간_고2_확률과통계",
+  "sourceFileDriveId": "1hszdlHaIg8s571G0KEA0iSq7x5w6jFnD",
+  "sourceSha256": "125a5ecf0ce9a2b1f9651da13af7d88cb7b55f99e6799431182387990c8baff1",
+  "status": "READY_FOR_COURIER_REGISTRATION",
+  "manifestTimestamp": "2026-10-24T10:00:00Z",
+  "totalQuestions": 23,
+  "totalHoldCount": 0,
+  "recordsToBind": [
+    {
+      "questionId": 1,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_CIRCULAR_PERMUTATION",
+        "CC_COMBINATION_SELECTION"
+      ],
+      "conditionKeys": [
+        "COND_NO_ADJACENT_SELECTED_SYMBOLS"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "A, B를 포함한 5명을 고르는 조합 C(5,3)=10과 전체 원순열 4!=24에서 이웃한 경우 3!×2=12를 뺀 12를 곱하여 120을 산출하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_POLYHEDRON_COLORING_ROTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "오각뿔대의 윗면, 아랫면 및 옆면 5개에 7색을 칠하는 전체 7!가지 중 5회전 대칭에 의한 중복도 5로 나누어 7!/5=1008을 도출하는 3단계 입체 원순열 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_POLYGON_TABLE_PERMUTATION"
+      ],
+      "conditionKeys": [
+        "COND_CONSECUTIVE_GROUPING"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "3개 학급을 세 변에 배정하는 3!가지와 각 변 2명의 자리바꿈 2³가지를 곱한 뒤 정삼각형 120° 회전 중복도 3으로 나누어 3!×8/3=16을 구하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "중복순열",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "crossConceptKeys": [
+        "CC_INDEPENDENT_PRODUCT_RULE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "5개 문항에 대해 O, X의 2가지 선택지를 독립 배정하는 중복순열 2⁵=32를 직접 계산하는 1단계 기초 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "중복순열",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "crossConceptKeys": [
+        "CC_REPEATED_PERMUTATION_DIGIT_BOUND"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "천의 자리가 3, 4일 때(2×5³=250), 24일 때(5²=25), 23일 때(5²-1=24)를 정밀 케이스 분류하여 250+25+24=299를 산출하는 4단계 분류 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "같은 것이 있는 순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_IDENTICAL_OBJECT_PERMUTATION"
+      ],
+      "conditionKeys": [
+        "COND_EDGE_RESTRICTIONS"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "모음 a, i, e 중 양 끝에 올 2개를 택하는 3×2=6가지와 남은 7개 문자(p 2개, s 2개 포함)의 같은 것이 있는 순열 7!/(2!2!)=1260을 곱해 7560을 구하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "같은 것이 있는 순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_CASE_EXHAUSTION_PERMUTATION",
+        "CC_IDENTICAL_OBJECT_PERMUTATION"
+      ],
+      "conditionKeys": [
+        "COND_FREQUENCY_CONSTRAINTS"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "짝수 2종류 사용(2,2,4,4 -> 6개)과 짝수 1종류 사용(C(2,1)×C(3,2)×4!/2! -> 72개)을 케이스 분류하여 6+72=78을 산출하는 4단계 심화 분류 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합과 최단경로",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [
+        "CC_GRID_SHORTEST_PATH"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "학교에서 서점까지의 최단경로 C(5,2)=10과 서점 직후 도로 결손을 반영한 서점에서 집까지의 경로 4가지를 곱해 10×4=40을 도출하는 4단계 격자 분석 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_ORDER_FIXED_PERMUTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "5개 과제의 전체 순열 5!=120가지 중 두 과제의 상대적 선후 관계가 대칭으로 절반(1/2)이므로 120/2=60을 즉시 구하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "중복조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_REPEATED_COMBINATION_TOTAL_SUM"
+      ],
+      "conditionKeys": [
+        "COND_UPPER_BOUND",
+        "COND_LOWER_BOUND"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "중복조합 방정식 C(k+2, 2)=55로부터 k=9를 역산하고, 축구공 0개일 때 C(9,1)=9, 1개일 때 C(8,1)=8을 합산하여 17을 구하는 4단계 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "중복조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_INTEGER_SOLUTIONS_DIGIT_SUM"
+      ],
+      "conditionKeys": [
+        "COND_DIGIT_SUM"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "천의 자리가 1 이상이므로 a₁'=a₁-1≥0으로 치환하여 a₁'+a₂+a₃+a₄=8의 음이 아닌 정수해 4H8=C(11,3)=165를 산출하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "중복조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_REPEATED_COMBINATION_EQUAL_CASE_EXCLUSION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "선택받지 못한 상자의 수 x+y+z=24의 전체 중복조합 3H24=C(26,2)=325에서 세 상자가 모두 같을 때(1가지)와 두 상자만 같을 때(3×12=36가지)를 여사건으로 차감하여 325-37=288을 구하는 5단계 고난도 문항이므로 원본 난이도 Bucket 5를 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "중복조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_MONOTONIC_FUNCTION_REPEATED_COMBINATION"
+      ],
+      "conditionKeys": [
+        "COND_MONOTONIC_ORDER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "단조증가 함수에서 f(2)=2, f(5)=4 고정 조건에 따라 f(1) 2가지, f(3),f(4) 3H2=6가지, f(6),f(7) 4H2=10가지를 곱해 2×6×10=120을 산출하는 4단계 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "중복조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_UPPER_BOUNDED_REPEATED_COMBINATION"
+      ],
+      "conditionKeys": [
+        "COND_UPPER_BOUND"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "4색 카드 4장 선택 b+r+y+g=4의 전체 중복조합 4H4=35에서 파란 카드 3장(4가지), 4장(1가지)인 5가지를 여사건으로 빼 35-5=30을 구하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합과 배치",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [
+        "CC_NON_CONSECUTIVE_SELECTION"
+      ],
+      "conditionKeys": [
+        "COND_NO_CONSECUTIVE_ELEMENTS"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "10개 의자 중 이웃하지 않는 3개 좌석을 고르는 경우 C(10-3+1, 3)=C(8, 3)=56과 3명 학생의 착석 3!=6을 곱해 56×6=336을 구하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_TERM_COEFFICIENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "전개식 일반항으로부터 x³이 나오는 두 경우 4a와 -4a를 종합하여 계수 관계식을 세우고 상수 a의 값을 도출하는 4단계 다항식 계수 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수의 성질",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_SUM_POWER_OF_TWO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "이항계수의 총합 2⁹=512에서 누락된 C(9, 0)=1을 차감하여 512-1=511을 구하는 2단계 공식 적용 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수의 성질",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_PASCAL_HOCKEY_STICK_IDENTITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "파스칼 항등식의 누적 하키스틱 공식을 적용해 Σ C(n, 2)=C(12, 3)-C(2, 2)=220-1=219를 도출하는 3단계 항등식 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수의 성질",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_POWER_SUM_TRANSFORM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "C(20, 20-k)=C(20, k) 대칭성을 이용해 2Σ C(20, k)2^k = 2(1+2)²⁰ = 2×3²⁰으로 변형하여 n=20을 확정하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수의 성질",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_ODD_SUBSETS_HALF_POWER"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "홀수 크기 부분집합의 개수가 2ⁿ⁻¹임을 유도하고 100≤2ⁿ⁻¹≤2000을 만족하는 n-1=7,8,9,10에서 n=8,9,10,11(4개)을 산출하는 4단계 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 21,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항정리의 활용",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_COEFFICIENT_EQUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "x² 계수 10a³=80에서 a=2를 구하고, x 계수 C(5,1)a⁴=5×16=80을 완결 서술하는 3단계 정형 서술형 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 22,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_CONCENTRIC_ROTATIONAL_COLORING",
+        "CC_COMBINATION_SELECTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "10색 중 8색을 선택하고 안쪽 4영역 원순열과 바깥쪽 4영역 배열을 4회전 대칭으로 나누어 C(10,8)×(4-1)!×4! = 45×6×24=6480 또는 해설의 세부 제약식을 엄밀히 완결하는 4단계 서술형 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    },
+    {
+      "questionId": 23,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "중복조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_NON_NEGATIVE_INTEGER_SOLUTIONS_VARIABLE_CASE"
+      ],
+      "conditionKeys": [
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "d=0,1,2,3의 4가지 경우에 대해 a>d 치환으로 각각 3H7=36가지를 얻어 4×36=144를 완결 서술하는 4단계 서술형 중복조합 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "pack": "PROBABILITY_STATISTICS"
+    }
+  ],
+  "courierNormalization": {
+    "originalManifestRef": {
+      "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-1-df2990692916.manifest.source.json",
+      "sha256": "85379955ec89d38c8e7dd9f5ef6e52f754cb39eb3f32ff44f7b2da6f5eb88a9c"
+    },
+    "reason": "Per-record owner inherited from the audit's explicit full-N byPack declaration; no key or meaning changed."
+  }
+}

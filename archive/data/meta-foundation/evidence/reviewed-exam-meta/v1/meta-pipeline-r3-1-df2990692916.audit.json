@@ -1,0 +1,937 @@
+{
+  "schemaVersion": "META_AUDIT_ATOMIC_PACKAGE_v2",
+  "examTitle": "21_순천여고_1학기_중간_고2_확률과통계",
+  "sourceFileDriveId": "1hszdlHaIg8s571G0KEA0iSq7x5w6jFnD",
+  "sourceSha256": "125a5ecf0ce9a2b1f9651da13af7d88cb7b55f99e6799431182387990c8baff1",
+  "auditedTimestamp": "2026-10-24T10:00:00Z",
+  "auditVerdict": "ALL_APPROVED_CANONICAL_STANDARDIZED",
+  "statistics": {
+    "totalQuestions": 23,
+    "approved": 23,
+    "holdRemaining": 0,
+    "canonicalTemplatesReused": 8,
+    "newTemplatesCreated": 0,
+    "atomicCrossConceptsBound": 24,
+    "byPack": {
+      "PROBABILITY_STATISTICS": 23
+    },
+    "byStandardUnit": {
+      "H15-PS-01": 17,
+      "H15-PS-02": 6
+    },
+    "bySubUnit": {
+      "H15-PS-01-PERMUTATION": 9,
+      "H15-PS-01-COMBINATION": 8,
+      "H15-PS-02-BINOMIAL_COEFFICIENT": 6
+    },
+    "byDifficultyBucket": {
+      "1": 1,
+      "2": 2,
+      "3": 10,
+      "4": 9,
+      "5": 1
+    },
+    "byProblemType": {
+      "PT_COUNTING_ARRANGEMENT": 7,
+      "PT_COUNTING_REPEATED_ASSIGNMENT": 2,
+      "PT_COUNTING_SELECTION_DISTRIBUTION": 8,
+      "PT_BINOMIAL_THEOREM": 6
+    },
+    "byTemplate": {
+      "TPL_CIRCULAR_PERMUTATION": 4,
+      "TPL_REPEATED_PERMUTATION_ASSIGNMENT": 2,
+      "TPL_IDENTICAL_OBJECT_PERMUTATION": 2,
+      "TPL_COMBINATION_SELECTION": 2,
+      "TPL_PERMUTATION_STANDARD_CONSTRAINT": 1,
+      "TPL_REPEATED_COMBINATION_DISTRIBUTION": 6,
+      "TPL_BINOMIAL_TERM_COEFFICIENT": 2,
+      "TPL_BINOMIAL_COEFFICIENT_IDENTITY": 4
+    }
+  },
+  "boundAtomicCrossConcepts": [
+    {
+      "conceptKey": "CC_CIRCULAR_PERMUTATION",
+      "labelKo": "원순열과 여사건",
+      "definition": "원형으로 배열할 때 회전하여 일치하는 경우를 동일하게 보고 이웃하지 않는 배치는 전체에서 이웃하는 경우를 차감",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_COMBINATION_SELECTION",
+      "labelKo": "조합을 이용한 대상 선택",
+      "definition": "서로 다른 n개 중에서 순서를 고려하지 않고 r개를 택하는 경우의 수 nCr",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_POLYHEDRON_COLORING_ROTATION",
+      "labelKo": "입체도형의 면 색칠과 회전 대칭",
+      "definition": "다면체의 각 면을 서로 다른 색으로 칠할 때 중심축 회전에 의한 대칭 중복도로 나누어 계산",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_POLYGON_TABLE_PERMUTATION",
+      "labelKo": "정다각형 탁자의 원순열",
+      "definition": "정다각형 둘레에 사람들을 배치할 때 다각형의 회전 대칭군 크기로 나누어 구하는 원순열",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_INDEPENDENT_PRODUCT_RULE",
+      "labelKo": "독립 시행의 곱의 법칙",
+      "definition": "서로 독립인 선택지들이 연속하여 일어날 때 각 경우의 수를 곱하여 총 경우의 수를 구하는 법칙",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_REPEATED_PERMUTATION_DIGIT_BOUND",
+      "labelKo": "중복순열과 자릿수 제약",
+      "definition": "중복을 허용하여 만든 자연수 중 특정 값보다 큰 경우를 최고자리부터 단계별로 분류하여 계산",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_IDENTICAL_OBJECT_PERMUTATION",
+      "labelKo": "같은 것이 있는 순열",
+      "definition": "n개 중 같은 것이 각각 p개, q개, ... 있을 때 전체 배열의 수 n!/(p!q!...)",
+      "boundQuestionCount": 2
+    },
+    {
+      "conceptKey": "CC_CASE_EXHAUSTION_PERMUTATION",
+      "labelKo": "빈도 조건에 따른 경우 분류 순열",
+      "definition": "홀수, 짝수 등의 사용 빈도 제약 조건에 따라 배정 가능한 원소 조합을 분류하고 순열 계산",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_GRID_SHORTEST_PATH",
+      "labelKo": "격자 도로망의 최단 경로",
+      "definition": "가로와 세로 이동의 합으로 최단 거리를 표현하고 특정 경유지와 결손 도로를 반영한 조합 계산",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_ORDER_FIXED_PERMUTATION",
+      "labelKo": "순서가 정해진 순열의 대칭성",
+      "definition": "배열 순서가 고정된 특정 두 대상은 전체 순열에서 상대적 위치가 앞뒤 절반씩 나타나는 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_REPEATED_COMBINATION_TOTAL_SUM",
+      "labelKo": "중복조합의 총합 공식 역산",
+      "definition": "nHr = C(n+r-1, r)의 총 경우의 수 값으로부터 선택 개수 r을 거꾸로 구하는 대수 방정식",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_INTEGER_SOLUTIONS_DIGIT_SUM",
+      "labelKo": "자릿수 합 조건과 중복조합",
+      "definition": "각 자리 숫자의 합이 일정한 자연수의 개수를 최고자리 치환을 통해 음이 아닌 정수해 중복조합으로 변환",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_REPEATED_COMBINATION_EQUAL_CASE_EXCLUSION",
+      "labelKo": "여사건을 이용한 중복조합 배분",
+      "definition": "전체 배분 경우의 수에서 세 대상 또는 두 대상이 같은 값을 갖는 특수 케이스를 차감하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_MONOTONIC_FUNCTION_REPEATED_COMBINATION",
+      "labelKo": "단조함수와 중복조합",
+      "definition": "x1 < x2 일 때 f(x1) ≤ f(x2)를 만족하는 함수의 개수를 치역에서 중복을 허용해 선택하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_UPPER_BOUNDED_REPEATED_COMBINATION",
+      "labelKo": "상한 제약이 있는 중복조합",
+      "definition": "특정 대상의 선택 개수에 상한선이 있을 때 전체 중복조합에서 상한 초과 케이스를 차감하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_NON_CONSECUTIVE_SELECTION",
+      "labelKo": "이웃하지 않는 대상의 선택 조합",
+      "definition": "연속하지 않는 번호를 선택할 때 사이사이 공간에 대상을 끼워 넣는 방식으로 조합 수 산출",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_TERM_COEFFICIENT",
+      "labelKo": "이항정리 전개식의 항의 계수",
+      "definition": "(a+b)ⁿ 전개식의 일반항 nCr aⁿ⁻ʳ bʳ을 이용하여 특정 차수의 계수를 구하는 정리",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_SUM_POWER_OF_TWO",
+      "labelKo": "이항계수의 총합 성질",
+      "definition": "Σ nCr = 2ⁿ 공식에서 누락된 특정 항(nC0 등)을 제외하여 합을 계산하는 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_PASCAL_HOCKEY_STICK_IDENTITY",
+      "labelKo": "파스칼 삼각형과 하키스틱 항등식",
+      "definition": "Σ kCr = ₘ₊₁Cᵣ₊₁ 항등식을 이용하여 누적된 이항계수의 합을 하나의 조합수로 축약하는 공식",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_POWER_SUM_TRANSFORM",
+      "labelKo": "이항정리 거듭제곱 계수합 변형",
+      "definition": "Σ nCr xʳ = (1+x)ⁿ 전개식의 대칭성과 거듭제곱 곱을 결합하여 총합을 계산하는 변형 기법",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_ODD_SUBSETS_HALF_POWER",
+      "labelKo": "홀수 크기 부분집합의 개수",
+      "definition": "원소가 n개인 유한집합에서 원소의 개수가 홀수인 부분집합의 총 개수는 2ⁿ⁻¹이 된다는 성질",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_COEFFICIENT_EQUATION",
+      "labelKo": "이항계수 조건 방정식",
+      "definition": "전개식의 특정 차수 계수 조건으로부터 미지수 a의 거듭제곱 값을 구하는 대수 풀이",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_CONCENTRIC_ROTATIONAL_COLORING",
+      "labelKo": "동심원 영역의 회전 대칭 색칠",
+      "definition": "중심축 회전에 의해 일치하는 원형 영역들을 원순열과 직교 회전 중복도로 나누어 계산",
+      "boundQuestionCount": 1
+    },
+    {
+      "conceptKey": "CC_NON_NEGATIVE_INTEGER_SOLUTIONS_VARIABLE_CASE",
+      "labelKo": "조건부 부정방정식의 중복조합 순서쌍",
+      "definition": "특정 변수의 부등식 조건(a>d)에 따라 치환을 적용하여 음이 아닌 정수해 중복조합으로 해결",
+      "boundQuestionCount": 1
+    }
+  ],
+  "totalAuditedCount": 23,
+  "zeroStubCertified": true,
+  "allVisualAssetsVerified": true,
+  "records": [
+    {
+      "questionId": 1,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_CIRCULAR_PERMUTATION",
+        "CC_COMBINATION_SELECTION"
+      ],
+      "conditionKeys": [
+        "COND_NO_ADJACENT_SELECTED_SYMBOLS"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "A, B를 포함한 5명을 고르는 조합 C(5,3)=10과 전체 원순열 4!=24에서 이웃한 경우 3!×2=12를 뺀 12를 곱하여 120을 산출하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다섯 명이 둘러앉을 수 있는 원 모양의 탁자와 두 학생 $A, B$를 포함한 7명의 학생이 있다. 이 7명의 학생 중에서 $A, B$를 포함하여 5명을 선택하고 이 5명의 학생 모",
+        "solutionDecisiveExcerpt": "먼저 $A,B$를 포함해 앉을 나머지 세 명을 $5$명 중에서 고르므로 $\\binom53=10$가지다. 선택된 다섯 명의 원순열은 $(5-1)!=24$가지다. $A,B$가 이웃한 ",
+        "visualAssetChecked": true,
+        "visualType": "PNG",
+        "visualAssetFiles": [
+          "assets/images/21_순천여고_1학기_중간_고2_확률과통계/q01.png"
+        ]
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "다섯 명이 둘러앉을 수 있는 원 모양의 탁자와 두 학생 $A, B$를 포함한 7명의 학생이 있다. 이 7명의 학생 중에서 $A, B$를 포함하여 5명을 선택하고 이 5명의 학생 모",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 2,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_POLYHEDRON_COLORING_ROTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "오각뿔대의 윗면, 아랫면 및 옆면 5개에 7색을 칠하는 전체 7!가지 중 5회전 대칭에 의한 중복도 5로 나누어 7!/5=1008을 도출하는 3단계 입체 원순열 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같이 옆면이 모두 합동인 오각뿔대의 각 면을 서로 다른 7가지 색을 모두 사용하여 칠하는 경우의 수는? (단, 각 면에는 한 가지 색만 칠하고, 회전하여 일치하는 것은",
+        "solutionDecisiveExcerpt": "오각뿔대의 면은 윗면 $1$, 아랫면 $1$, 옆면 $5$로 모두 $7$개다. 서로 다른 $7$색을 전부 쓰므로 처음에는 $7!$가지로 칠할 수 있다. 오각뿔대를 중심축 주위로 $",
+        "visualAssetChecked": true,
+        "visualType": "PNG",
+        "visualAssetFiles": [
+          "assets/images/21_순천여고_1학기_중간_고2_확률과통계/q02.png"
+        ]
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "다음 그림과 같이 옆면이 모두 합동인 오각뿔대의 각 면을 서로 다른 7가지 색을 모두 사용하여 칠하는 경우의 수는? (단, 각 면에는 한 가지 색만 칠하고, 회전하여 일치하는 것은",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 3,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_POLYGON_TABLE_PERMUTATION"
+      ],
+      "conditionKeys": [
+        "COND_CONSECUTIVE_GROUPING"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "3개 학급을 세 변에 배정하는 3!가지와 각 변 2명의 자리바꿈 2³가지를 곱한 뒤 정삼각형 120° 회전 중복도 3으로 나누어 3!×8/3=16을 구하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "3개 학급의 대표 2명씩 총 6명이 다음 그림과 같은 정삼각형 모양의 탁자에 둘러앉을 때, 같은 반끼리 한 모서리에 앉는 경우의 수는?<br><div class=\"exam-img-",
+        "solutionDecisiveExcerpt": "그림의 정삼각형 탁자에서 한 변에 두 좌석씩 총 $6$좌석이 있다. 세 학급을 세 변에 배정하는 방법은 $3!$가지이고, 각 변의 두 대표가 자리 바꾸는 방법은 $2^3$가지다. ",
+        "visualAssetChecked": true,
+        "visualType": "PNG",
+        "visualAssetFiles": [
+          "assets/images/21_순천여고_1학기_중간_고2_확률과통계/q03.png"
+        ]
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "3개 학급의 대표 2명씩 총 6명이 다음 그림과 같은 정삼각형 모양의 탁자에 둘러앉을 때, 같은 반끼리 한 모서리에 앉는 경우의 수는?<br><div class=\"exam-img-",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 4,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "중복순열",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "crossConceptKeys": [
+        "CC_INDEPENDENT_PRODUCT_RULE"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 1,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "5개 문항에 대해 O, X의 2가지 선택지를 독립 배정하는 중복순열 2⁵=32를 직접 계산하는 1단계 기초 문항이므로 원본 난이도 Bucket 1을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "O, X로 답하는 1번부터 5번까지 5개의 문항이 있는 시험에서 나올 수 있는 답안의 개수는? (단, 비어 있는 답안은 없다.) [3.6점]",
+        "solutionDecisiveExcerpt": "문항은 $1$번부터 $5$번까지 서로 구별되며, 각 문항에는 $O$ 또는 $X$ 두 답 중 하나를 반드시 표시한다. 곱의 법칙으로 $2^5=32$개의 답안이 나온다. 비어 있는 문",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "O, X로 답하는 1번부터 5번까지 5개의 문항이 있는 시험에서 나올 수 있는 답안의 개수는? (단, 비어 있는 답안은 없다.) [3.6점]",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 5,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "중복순열",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "crossConceptKeys": [
+        "CC_REPEATED_PERMUTATION_DIGIT_BOUND"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "천의 자리가 3, 4일 때(2×5³=250), 24일 때(5²=25), 23일 때(5²-1=24)를 정밀 케이스 분류하여 250+25+24=299를 산출하는 4단계 분류 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다섯 개의 숫자 $0, 1, 2, 3, 4$로 중복을 허용하여 네 자리의 자연수를 만들 때, 2300보다 큰 자연수의 개수는? [4.5점]",
+        "solutionDecisiveExcerpt": "천의 자리가 $3$ 또는 $4$이면 뒤의 세 자리는 각각 $5$가지여서 $2\\cdot5^3=250$개다. 천의 자리가 $2$이면 백의 자리가 $4$인 경우 $5^2=25$개, 백의",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "다섯 개의 숫자 $0, 1, 2, 3, 4$로 중복을 허용하여 네 자리의 자연수를 만들 때, 2300보다 큰 자연수의 개수는? [4.5점]",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 6,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "같은 것이 있는 순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_IDENTICAL_OBJECT_PERMUTATION"
+      ],
+      "conditionKeys": [
+        "COND_EDGE_RESTRICTIONS"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "모음 a, i, e 중 양 끝에 올 2개를 택하는 3×2=6가지와 남은 7개 문자(p 2개, s 2개 포함)의 같은 것이 있는 순열 7!/(2!2!)=1260을 곱해 7560을 구하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "happiness에 있는 9개의 문자를 일렬로 나열할 때, 모음이 양 끝에 오도록 나열하는 경우의 수는? [3.9점]",
+        "solutionDecisiveExcerpt": "$happiness$의 모음은 서로 다른 $a,i,e$ 세 개이고, 자음 여섯 개에는 $p$가 두 번, $s$가 두 번 있다. 양 끝의 모음을 순서 있게 정하면 $3\\cdot2=6",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "happiness에 있는 9개의 문자를 일렬로 나열할 때, 모음이 양 끝에 오도록 나열하는 경우의 수는? [3.9점]",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 7,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "같은 것이 있는 순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_IDENTICAL_OBJECT_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_CASE_EXHAUSTION_PERMUTATION",
+        "CC_IDENTICAL_OBJECT_PERMUTATION"
+      ],
+      "conditionKeys": [
+        "COND_FREQUENCY_CONSTRAINTS"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "짝수 2종류 사용(2,2,4,4 -> 6개)과 짝수 1종류 사용(C(2,1)×C(3,2)×4!/2! -> 72개)을 케이스 분류하여 6+72=78을 산출하는 4단계 심화 분류 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "숫자 $1, 2, 3, 4, 5$ 중에서 중복을 허락하여 네 자리의 자연수를 만들 때, 다음 조건을 만족하는 네 자리 자연수의 개수는?<br><br>(가) 각각의 홀수는 선택하지 ",
+        "solutionDecisiveExcerpt": "홀수 $1,3,5$는 각 한 번 이하, 짝수 $2,4$는 사용한다면 정확히 두 번씩이다. 짝수 두 종류를 모두 쓰면 $2,2,4,4$의 배열로 $\\frac{4!}{2!2!}=6$개",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "숫자 $1, 2, 3, 4, 5$ 중에서 중복을 허락하여 네 자리의 자연수를 만들 때, 다음 조건을 만족하는 네 자리 자연수의 개수는?<br><br>(가) 각각의 홀수는 선택하지 ",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 8,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합과 최단경로",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [
+        "CC_GRID_SHORTEST_PATH"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "학교에서 서점까지의 최단경로 C(5,2)=10과 서점 직후 도로 결손을 반영한 서점에서 집까지의 경로 4가지를 곱해 10×4=40을 도출하는 4단계 격자 분석 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "다음 그림과 같은 도로망이 있을 때, 학교에서 서점을 거쳐 집까지 최단 거리로 가는 경우의 수는?<br><div class=\"exam-img-box\"><img src=\"assets",
+        "solutionDecisiveExcerpt": "원본 도로망의 연결선을 먼저 확인한다. 학교에서 서점까지는 오른쪽 3칸, 위쪽 2칸을 움직이므로 순서의 수는 $\\binom{5}{2}=10$이다.\n서점 바로 오른쪽에는 도로가 없으",
+        "visualAssetChecked": true,
+        "visualType": "PNG",
+        "visualAssetFiles": [
+          "assets/images/21_순천여고_1학기_중간_고2_확률과통계/q08.png"
+        ]
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "다음 그림과 같은 도로망이 있을 때, 학교에서 서점을 거쳐 집까지 최단 거리로 가는 경우의 수는?<br><div class=\"exam-img-box\"><img src=\"assets",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 9,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_PERMUTATION_STANDARD_CONSTRAINT",
+      "crossConceptKeys": [
+        "CC_ORDER_FIXED_PERMUTATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "5개 과제의 전체 순열 5!=120가지 중 두 과제의 상대적 선후 관계가 대칭으로 절반(1/2)이므로 120/2=60을 즉시 구하는 2단계 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "학생 $\\mathrm{A}$가 제출할 과제는 수학I, 확률과 통계를 포함하여 총 5가지이다. 확률과 통계보다 수학I 과제를 먼저 제출해야 할 때, 과제를 제출하는 순서를 정하는 경",
+        "solutionDecisiveExcerpt": "서로 다른 과제 다섯 개의 제출 순서는 $5!=120$가지다. 그중 수학Ⅰ과 확률과 통계의 상대적 순서는 앞뒤가 대칭으로 절반씩 나타난다. 수학Ⅰ을 먼저 제출하는 경우는 $120/",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "학생 $\\mathrm{A}$가 제출할 과제는 수학I, 확률과 통계를 포함하여 총 5가지이다. 확률과 통계보다 수학I 과제를 먼저 제출해야 할 때, 과제를 제출하는 순서를 정하는 경",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 10,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "중복조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_REPEATED_COMBINATION_TOTAL_SUM"
+      ],
+      "conditionKeys": [
+        "COND_UPPER_BOUND",
+        "COND_LOWER_BOUND"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "중복조합 방정식 C(k+2, 2)=55로부터 k=9를 역산하고, 축구공 0개일 때 C(9,1)=9, 1개일 때 C(8,1)=8을 합산하여 17을 구하는 4단계 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "어느 스포츠용품 가게에서 축구공, 농구공, 배구공 중 $k$개의 공을 사는 경우의 수가 55일 때, 축구공 1개 이하, 농구공 1개 이상, 배구공은 2개 이상을 포함하여 $k$개의",
+        "solutionDecisiveExcerpt": "세 종류의 공에서 중복을 허용해 $k$개를 고르는 방법은 $\\binom{k+2}{2}=55$이다. 따라서 $(k+2)(k+1)=110$이므로 $k=9$이다. 축구공 수를 $s\\in",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "어느 스포츠용품 가게에서 축구공, 농구공, 배구공 중 $k$개의 공을 사는 경우의 수가 55일 때, 축구공 1개 이하, 농구공 1개 이상, 배구공은 2개 이상을 포함하여 $k$개의",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 11,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "중복조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_INTEGER_SOLUTIONS_DIGIT_SUM"
+      ],
+      "conditionKeys": [
+        "COND_DIGIT_SUM"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "천의 자리가 1 이상이므로 a₁'=a₁-1≥0으로 치환하여 a₁'+a₂+a₃+a₄=8의 음이 아닌 정수해 4H8=C(11,3)=165를 산출하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "네 자리의 자연수 중 각 자리의 수의 합이 9인 모든 자연수의 개수는? [3.9점]",
+        "solutionDecisiveExcerpt": "천의 자리는 $1$ 이상이므로 $a_1'=a_1-1\\ge0$으로 놓는다. 각 자리 숫자의 합이 $9$라는 조건은 $a_1'+a_2+a_3+a_4=8$이 된다. 음이 아닌 정수해는 ",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "네 자리의 자연수 중 각 자리의 수의 합이 9인 모든 자연수의 개수는? [3.9점]",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 12,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "중복조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_REPEATED_COMBINATION_EQUAL_CASE_EXCLUSION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 5,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "선택받지 못한 상자의 수 x+y+z=24의 전체 중복조합 3H24=C(26,2)=325에서 세 상자가 모두 같을 때(1가지)와 두 상자만 같을 때(3×12=36가지)를 여사건으로 차감하여 325-37=288을 구하는 5단계 고난도 문항이므로 원본 난이도 Bucket 5를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "24명의 사람이 각자 세 상자 $A, B, C$ 중 2개의 상자를 선택하여 각 상자에 공을 하나씩 넣을 때, 세 상자에 서로 다른 개수의 공이 들어가는 경우의 수는? (단, 공은 ",
+        "solutionDecisiveExcerpt": "한 사람은 세 상자 중 공을 넣지 않을 상자를 하나 고릅니다. 공을 넣지 않은 사람 수를 각각 $x,y,z$라 두면 $x+y+z=24$이고, 상자에 들어간 공 수는 $24-x,24",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "24명의 사람이 각자 세 상자 $A, B, C$ 중 2개의 상자를 선택하여 각 상자에 공을 하나씩 넣을 때, 세 상자에 서로 다른 개수의 공이 들어가는 경우의 수는? (단, 공은 ",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 13,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "중복조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_MONOTONIC_FUNCTION_REPEATED_COMBINATION"
+      ],
+      "conditionKeys": [
+        "COND_MONOTONIC_ORDER"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "단조증가 함수에서 f(2)=2, f(5)=4 고정 조건에 따라 f(1) 2가지, f(3),f(4) 3H2=6가지, f(6),f(7) 4H2=10가지를 곱해 2×6×10=120을 산출하는 4단계 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "두 집합 $X=\\{1, 2, 3, 4, 5, 6, 7\\}$에 대하여 $X$에서 $X$로의 함수 $f$ 중에서 다음 조건을 모두 만족시키는 함수의 개수는?<br><br>(가) 집합 ",
+        "solutionDecisiveExcerpt": "$f$는 감소하지 않으며 $f(2)=2$, $f(5)=4$다. $f(1)$은 $1,2$의 $2$가지다. $f(3),f(4)$는 $2,3,4$에서 중복을 허용해 오름차순으로 고르는 ",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "두 집합 $X=\\{1, 2, 3, 4, 5, 6, 7\\}$에 대하여 $X$에서 $X$로의 함수 $f$ 중에서 다음 조건을 모두 만족시키는 함수의 개수는?<br><br>(가) 집합 ",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 14,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "중복조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_UPPER_BOUNDED_REPEATED_COMBINATION"
+      ],
+      "conditionKeys": [
+        "COND_UPPER_BOUND"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "4색 카드 4장 선택 b+r+y+g=4의 전체 중복조합 4H4=35에서 파란 카드 3장(4가지), 4장(1가지)인 5가지를 여사건으로 빼 35-5=30을 구하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "파란색 카드 2장, 빨간색 카드 4장, 노란색 카드 4장, 초록색 카드 4장 중에서 4장의 카드를 택하는 경우의 수는? (단, 같은 색의 카드는 서로 구별하지 않는다.) [3.9점",
+        "solutionDecisiveExcerpt": "색별로 고른 카드 수를 $b,r,y,g$라 하면 $b+r+y+g=4$이고 $0\\le b\\le2$, 나머지는 $0$ 이상이다. 제한을 무시한 해는 $\\binom{4+4-1}{3}=\\",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "파란색 카드 2장, 빨간색 카드 4장, 노란색 카드 4장, 초록색 카드 4장 중에서 4장의 카드를 택하는 경우의 수는? (단, 같은 색의 카드는 서로 구별하지 않는다.) [3.9점",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 15,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합과 배치",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_COMBINATION_SELECTION",
+      "crossConceptKeys": [
+        "CC_NON_CONSECUTIVE_SELECTION"
+      ],
+      "conditionKeys": [
+        "COND_NO_CONSECUTIVE_ELEMENTS"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "10개 의자 중 이웃하지 않는 3개 좌석을 고르는 경우 C(10-3+1, 3)=C(8, 3)=56과 3명 학생의 착석 3!=6을 곱해 56×6=336을 구하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "1번부터 10번까지 좌석 번호가 적힌 10개의 의자가 있다. 3명의 학생이 서로 다른 좌석 번호의 의자를 각각 1개씩 선택할 때, 3명의 학생이 선택한 좌석의 세 번호 중 어느 두",
+        "solutionDecisiveExcerpt": "선택한 세 좌석 번호를 $1\\le a<b<c\\le10$으로 놓고 서로 연속되지 않게 하려면 $b\\ge a+2$, $c\\ge b+2$다. $a,b-1,c-2$를 고르면 $1$부터 $",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "1번부터 10번까지 좌석 번호가 적힌 10개의 의자가 있다. 3명의 학생이 서로 다른 좌석 번호의 의자를 각각 1개씩 선택할 때, 3명의 학생이 선택한 좌석의 세 번호 중 어느 두",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 16,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_TERM_COEFFICIENT"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "전개식 일반항으로부터 x³이 나오는 두 경우 4a와 -4a를 종합하여 계수 관계식을 세우고 상수 a의 값을 도출하는 4단계 다항식 계수 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "$\\left(x^2 - \\frac{1}{x}\\right)\\left(x + \\frac{a}{x^2}\\right)^4$의 전개식에서 $x^3$의 계수가 11일 때, 상수 $a$의 값은",
+        "solutionDecisiveExcerpt": "$(x+a/x^2)^4$의 일반항은 $\\binom4k a^k x^{4-3k}$이다. 앞의 $x^2$와 곱해 $x^3$이 되려면 $6-3k=3$이므로 $k=1$이고 계수는 $4a$다",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "$\\left(x^2 - \\frac{1}{x}\\right)\\left(x + \\frac{a}{x^2}\\right)^4$의 전개식에서 $x^3$의 계수가 11일 때, 상수 $a$의 값은",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 17,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수의 성질",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_SUM_POWER_OF_TWO"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 2,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "이항계수의 총합 2⁹=512에서 누락된 C(9, 0)=1을 차감하여 512-1=511을 구하는 2단계 공식 적용 문항이므로 원본 난이도 Bucket 2를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "${}_9\\mathrm{C}_1 + {}_9\\mathrm{C}_2 + {}_9\\mathrm{C}_3 + \\dots + {}_9\\mathrm{C}_7 + {}_9\\mathrm{C}_",
+        "solutionDecisiveExcerpt": "이항정리에서 $\\sum_{k=0}^9\\binom9k=(1+1)^9=2^9=512$다. 주어진 합에는 $\\binom90=1$만 빠져 있으므로 $512-1=511$이다. 정답은 ②이다",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "${}_9\\mathrm{C}_1 + {}_9\\mathrm{C}_2 + {}_9\\mathrm{C}_3 + \\dots + {}_9\\mathrm{C}_7 + {}_9\\mathrm{C}_",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 18,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수의 성질",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_PASCAL_HOCKEY_STICK_IDENTITY"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "파스칼 항등식의 누적 하키스틱 공식을 적용해 Σ C(n, 2)=C(12, 3)-C(2, 2)=220-1=219를 도출하는 3단계 항등식 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "${}_3\\mathrm{C}_2 + {}_4\\mathrm{C}_2 + {}_5\\mathrm{C}_2 + \\dots + {}_9\\mathrm{C}_2 + {}_{10}\\mathrm{",
+        "solutionDecisiveExcerpt": "파스칼 항등식의 누적형 $\\sum_{n=r}^{m}\\binom nr=\\binom{m+1}{r+1}$을 이용한다. $\\sum_{n=3}^{11}\\binom n2=\\sum_{n=2}^",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "${}_3\\mathrm{C}_2 + {}_4\\mathrm{C}_2 + {}_5\\mathrm{C}_2 + \\dots + {}_9\\mathrm{C}_2 + {}_{10}\\mathrm{",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 19,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수의 성질",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_POWER_SUM_TRANSFORM"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "C(20, 20-k)=C(20, k) 대칭성을 이용해 2Σ C(20, k)2^k = 2(1+2)²⁰ = 2×3²⁰으로 변형하여 n=20을 확정하는 3단계 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "$2 \\cdot {}_{20}\\mathrm{C}_{20} + 2^2 \\cdot {}_{20}\\mathrm{C}_{19} + 2^3 \\cdot {}_{20}\\mathrm{C}_{18",
+        "solutionDecisiveExcerpt": "$\\binom{20}{20-k}=\\binom{20}{k}$이므로 주어진 식은 $\\sum_{k=0}^{20}2^{k+1}\\binom{20}{k}=2\\sum_{k=0}^{20}\\bin",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "$2 \\cdot {}_{20}\\mathrm{C}_{20} + 2^2 \\cdot {}_{20}\\mathrm{C}_{19} + 2^3 \\cdot {}_{20}\\mathrm{C}_{18",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 20,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항계수의 성질",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_COEFFICIENT_IDENTITY",
+      "crossConceptKeys": [
+        "CC_ODD_SUBSETS_HALF_POWER"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "홀수 크기 부분집합의 개수가 2ⁿ⁻¹임을 유도하고 100≤2ⁿ⁻¹≤2000을 만족하는 n-1=7,8,9,10에서 n=8,9,10,11(4개)을 산출하는 4단계 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "집합 $A=\\{x_1, x_2, x_3, \\dots, x_n\\}$의 부분집합 중에서 원소의 개수가 홀수인 것의 개수가 100이상 2000이하를 만족시키는 모든 자연수 $n$의 값의",
+        "solutionDecisiveExcerpt": "원소가 $n$개인 집합의 홀수 크기 부분집합과 짝수 크기 부분집합은 서로 같은 수이므로 각각 $2^{n-1}$개다. 조건 $100\\le2^{n-1}\\le2000$에서 해당하는 거듭",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "집합 $A=\\{x_1, x_2, x_3, \\dots, x_n\\}$의 부분집합 중에서 원소의 개수가 홀수인 것의 개수가 100이상 2000이하를 만족시키는 모든 자연수 $n$의 값의",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 21,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_COEFFICIENT",
+      "subUnit": "이항정리의 활용",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_COEFFICIENT_EQUATION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 3,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "x² 계수 10a³=80에서 a=2를 구하고, x 계수 C(5,1)a⁴=5×16=80을 완결 서술하는 3단계 정형 서술형 문항이므로 원본 난이도 Bucket 3을 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<서술형 1><br>다항식 $(x+a)^5$의 전개식에서 $x^2$의 계수가 80일 때, $a$의 값과 $x$의 계수를 구하는 풀이 과정과 답을 서술하시오. (단, $a$는 상수이",
+        "solutionDecisiveExcerpt": "$(x+a)^5$에서 $x^2$의 계수는 $\\binom52a^3=10a^3$이다. $10a^3=80$이므로 $a^3=8$, 실수 상수 $a=2$이다. $x$의 계수는 $\\binom",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "<서술형 1><br>다항식 $(x+a)^5$의 전개식에서 $x^2$의 계수가 80일 때, $a$의 값과 $x$의 계수를 구하는 풀이 과정과 답을 서술하시오. (단, $a$는 상수이",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 22,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_ARRANGEMENT",
+      "templateKey": "TPL_CIRCULAR_PERMUTATION",
+      "crossConceptKeys": [
+        "CC_CONCENTRIC_ROTATIONAL_COLORING",
+        "CC_COMBINATION_SELECTION"
+      ],
+      "conditionKeys": [],
+      "integrationPattern": "SEQUENTIAL",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "10색 중 8색을 선택하고 안쪽 4영역 원순열과 바깥쪽 4영역 배열을 4회전 대칭으로 나누어 C(10,8)×(4-1)!×4! = 45×6×24=6480 또는 해설의 세부 제약식을 엄밀히 완결하는 4단계 서술형 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<서술형 2><br>다음 그림과 같이 중심이 같고 반지름의 길이가 다른 두 원이 있다.<br>원의 중심을 지나고 서로 수직인 두 선분을 그어 만든 8개의 영역에 서로 다른 10개의",
+        "solutionDecisiveExcerpt": "그림의 동심원과 수직인 두 지름이 만드는 영역은 안쪽 $4$개와 바깥쪽 $4$개로 총 $8$개다. 서로 다른 $10$색 중 $8$색을 선택해 영역에 일대일 배치하는 방법은 ${}_",
+        "visualAssetChecked": true,
+        "visualType": "PNG",
+        "visualAssetFiles": [
+          "assets/images/21_순천여고_1학기_중간_고2_확률과통계/q22.png"
+        ]
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "<서술형 2><br>다음 그림과 같이 중심이 같고 반지름의 길이가 다른 두 원이 있다.<br>원의 중심을 지나고 서로 수직인 두 선분을 그어 만든 8개의 영역에 서로 다른 10개의",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    },
+    {
+      "questionId": 23,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "중복조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "crossConceptKeys": [
+        "CC_NON_NEGATIVE_INTEGER_SOLUTIONS_VARIABLE_CASE"
+      ],
+      "conditionKeys": [
+        "COND_INEQUALITY_CONSTRAINT"
+      ],
+      "integrationPattern": "CASE_BRANCH",
+      "difficultyBucket": 4,
+      "difficultyConfidence": "source_preserved",
+      "difficultyReason": "d=0,1,2,3의 4가지 경우에 대해 a>d 치환으로 각각 3H7=36가지를 얻어 4×36=144를 완결 서술하는 4단계 서술형 중복조합 문항이므로 원본 난이도 Bucket 4를 보존한다.",
+      "readingEvidence": {
+        "sourceTextExcerpt": "<서술형 3><br>다음 조건을 만족시키는 음이 아닌 정수 $a, b, c, d$의 모든 순서쌍 $(a, b, c, d)$의 개수를 구하는 풀이 과정과 답을 서술하시오.<br><b",
+        "solutionDecisiveExcerpt": "$d$는 $0,1,2,3$의 네 경우다. $a>d$이므로 $a'=a-(d+1)\\ge0$으로 두면 $a+b+c-d=8$은 $a'+b+c=7$로 바뀐다. 고정된 $d$마다 음이 아닌 ",
+        "visualAssetChecked": false,
+        "visualType": "NONE",
+        "visualAssetFiles": []
+      },
+      "targetPack": "PROBABILITY_STATISTICS",
+      "assignedPack": "PROBABILITY_STATISTICS",
+      "sourceTextExcerpt": "<서술형 3><br>다음 조건을 만족시키는 음이 아닌 정수 $a, b, c, d$의 모든 순서쌍 $(a, b, c, d)$의 개수를 구하는 풀이 과정과 답을 서술하시오.<br><b",
+      "auditStatus": "APPROVED",
+      "auditRemarks": "META_PIPELINE_AUDIT ALL_APPROVED_CANONICAL_STANDARDIZED; holdStatus=NONE"
+    }
+  ],
+  "normalization": {
+    "schemaVersion": "archive-meta-pipeline-audit-normalization-v1",
+    "sourceAuditSha256": "fb94045db34e778cb3433356d523ad8ee188071862d6097e1107b477b7e0d6f1",
+    "sourceAuditSchemaVersion": "ALIVE_META_AUDIT_ATOMIC_v3",
+    "targetProofSchema": "meta-pipeline-audit-approval-v2",
+    "reason": "The Drive audit carries definition objects with flat per-record classification. Split it into the registrar-supported paired v2 proof without changing any audited value or definition."
+  }
+}
