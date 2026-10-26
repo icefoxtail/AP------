@@ -33,6 +33,7 @@ import { handleWrongClinics } from './routes/wrong-clinics.js';
 import { handleOnboarding } from './routes/onboarding.js';
 import { handleEie } from './routes/eie.js';
 import { handleBackdoor } from './routes/backdoor.js';
+import { handleClinicRepeat } from './routes/clinic-repeat.js';
 
 const DEFAULT_ALLOWED_ORIGINS = ['https://icefoxtail.github.io'];
 
@@ -3607,6 +3608,13 @@ async function handleApiRequest(request, env) {
         if (resource === 'student-portal') {
           const teacher = await verifyAuth(request, env);
           const routed = await handleStudentPortal(request, env, teacher, path, url);
+          if (routed) return routed;
+        }
+
+        if (resource === 'clinic-repeat') {
+          const teacher = await verifyAuth(request, env);
+          if (!teacher) return jsonResponse({ error: 'Unauthorized' }, 401);
+          const routed = await handleClinicRepeat(request, env, teacher, path, url);
           if (routed) return routed;
         }
 

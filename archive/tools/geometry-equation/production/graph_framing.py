@@ -105,7 +105,7 @@ def fit_overview(plan):
     if 'regions' in plan and plan.get('family')!='piecewise-polynomial':raise ValueError('GRAPH_REGION_REQUIRES_PIECEWISE_POLYNOMIAL')
     if 'applicationAxes' in plan and not (plan.get('family')=='polynomial' and isinstance(plan.get('sourceDomain'),dict) and plan['sourceDomain'].get('kind')=='INTERVAL'):raise ValueError('APPLICATION_AXES_REQUIRES_QUADRATIC_INTERVAL')
     if plan.get('family')=='rational':return _fit_rational_overview(plan)
-    if plan.get('family')=='sqrt-affine':return _fit_sqrt_affine_overview(plan)
+    if plan.get('family')=='sqrt-affine':return _fit_sqrt_affine_general_overview(plan) if _sqrt_affine_general_plan(plan) else _fit_sqrt_affine_overview(plan)
     if plan.get('family')=='absolute-value':return _fit_absolute_value_overview(plan)
     if plan.get('family')=='piecewise-affine':return _fit_piecewise_affine_overview(plan)
     if plan.get('family')=='exponential-affine':return _fit_exponential_base_overview(plan) if plan.get('base') is not None or plan.get('shiftX') is not None else _fit_exponential_affine_overview(plan)
@@ -431,6 +431,128 @@ def _fit_sqrt_affine_overview(plan):
     policy={'schemaVersion':'SQRT_AFFINE_FEATURE_POLICY_v1','sourceDomainMode':mode,'boundaryPolicy':'NATURAL_NONNEGATIVE_RADICAND','endpointState':'CLOSED','rightTailDirection':'UP','endpointMarkerRadiusIntrinsicPx':4,'minimumEndpointMarkerDiameterCssPx':3,'minimumEndpointToTailSpanCssPx':48}
     fitted={**plan,'domain':[lo,hi],'viewport':[xmin,xmax,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'SQRT_AFFINE_ENDPOINT_OVERVIEW_v1','sqrtFeatures':features,'sqrtFeaturePolicy':policy,'requiredPoints':required_points}
     return {'graphPlan':fitted,'policy':'SQRT_AFFINE_ENDPOINT_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
+
+# ---- General square-root functions y = s*k*sqrt(a(x-p)) + q (sqrt-affine family, GENERAL policy) -------------
+# The plan keeps the affine radicand [constant, x coefficient] (the coefficient may now be negative, so the domain is
+# x <= p) and adds three optional exact fields: amplitude k (> 0), sign s (+1 or -1) and offset q. Every coefficient is
+# an exact rational or p+q*sqrt(r) string. The starting point is (p, q); the branch opens to the right of p when the
+# radicand slope is positive and to the left when it is negative.
+def _sqrt_affine_general_plan(plan):
+    if plan.get('amplitude') is not None or plan.get('sign') is not None or plan.get('offset') is not None:return True
+    if plan.get('domainRangeLabels') is not None:return True
+    radicand=plan.get('radicand')
+    if isinstance(radicand,list) and len(radicand)==2:
+        if any(isinstance(value,str) and 'sqrt' in value for value in radicand):return True
+        try:
+            constant=pp_surd(radicand[0],'UNSUPPORTED_SQRT_AFFINE_GRAMMAR');slope=pp_surd(radicand[1],'UNSUPPORTED_SQRT_AFFINE_GRAMMAR')
+        except (ValueError,TypeError):return False
+        return slope<0 or not constant.is_Rational or not slope.is_Rational
+    return False
+
+def _sqrt_general_surd(value,code):
+    try:return pp_surd(value,code)
+    except ValueError as error:
+        if 'IRRATIONAL_FORM' in str(error):raise ValueError('SQRT_AFFINE_IRRATIONAL_FORM_UNSUPPORTED') from None
+        raise
+
+def _sqrt_affine_general_fields(plan):
+    radicand=plan.get('radicand')
+    if not isinstance(radicand,list) or len(radicand)!=2:
+        raise ValueError('UNSUPPORTED_SQRT_AFFINE_GRAMMAR')
+    constant=_sqrt_general_surd(radicand[0],'INVALID_SQRT_AFFINE_COEFFICIENT')
+    slope=_sqrt_general_surd(radicand[1],'INVALID_SQRT_AFFINE_COEFFICIENT')
+    if slope==0:raise ValueError('UNSUPPORTED_SQRT_AFFINE_SLOPE')
+    amplitude=_sqrt_general_surd(plan.get('amplitude','1'),'INVALID_SQRT_AMPLITUDE')
+    if amplitude.is_real is False or amplitude<=0:raise ValueError('SQRT_AMPLITUDE_MUST_BE_POSITIVE')
+    sign=plan.get('sign',1)
+    if isinstance(sign,bool) or sign not in (1,-1):raise ValueError('INVALID_SQRT_SIGN')
+    offset=_sqrt_general_surd(plan.get('offset','0'),'INVALID_SQRT_OFFSET')
+    scale=S.Integer(int(sign))*amplitude
+    boundary=-constant/slope
+    if boundary.is_real is False:raise ValueError('UNSUPPORTED_SQRT_AFFINE_COEFFICIENT')
+    return constant,slope,amplitude,int(sign),offset,scale,boundary
+
+def _sqrt_general_point_on_curve(constant,slope,offset,scale,point):
+    try:x_exact=S.Rational(str(point.get('x')))
+    except (ValueError,TypeError):x_exact=S.Float(str(point.get('x')),40)
+    try:y_exact=S.Rational(str(point.get('y')))
+    except (ValueError,TypeError):y_exact=S.Float(str(point.get('y')),40)
+    radicand_value=constant+slope*x_exact
+    if radicand_value.is_real is False or radicand_value<0:return False
+    root_term=(y_exact-offset)/scale
+    if root_term.is_real is False or root_term<0:return False
+    return abs(S.N(root_term*root_term-radicand_value,40))<S.Float('1e-25',40)
+
+def _fit_sqrt_affine_general_overview(plan):
+    constant,slope,amplitude,sign,offset,scale,boundary=_sqrt_affine_general_fields(plan)
+    right=slope>0
+    boundary_f=float(boundary);offset_f=float(offset)
+    source_domain=plan.get('sourceDomain')
+    if source_domain=={'kind':'NATURAL_SQRT_AFFINE'}:
+        mode='NATURAL_SQRT_AFFINE';source_interval_exact=None
+    elif isinstance(source_domain,dict) and set(source_domain)=={'kind','range'} and source_domain.get('kind')=='CLOSED_INTERVAL':
+        raw=source_domain.get('range')
+        if not isinstance(raw,list) or len(raw)!=2:raise ValueError('INVALID_SQRT_SOURCE_INTERVAL')
+        source_interval_exact=[_pp_rational(value,'INVALID_SQRT_SOURCE_INTERVAL') for value in raw]
+        if not source_interval_exact[0]<source_interval_exact[1]:raise ValueError('INVALID_SQRT_SOURCE_INTERVAL')
+        if right and source_interval_exact[0]<boundary:raise ValueError('SQRT_SOURCE_INTERVAL_BELOW_NATURAL_BOUNDARY')
+        if not right and source_interval_exact[1]>boundary:raise ValueError('SQRT_SOURCE_INTERVAL_BEYOND_NATURAL_BOUNDARY')
+        mode='CLOSED_INTERVAL'
+    else:raise ValueError('SQRT_SOURCE_DOMAIN_UNSUPPORTED')
+    original_domain=plan.get('domain');original_viewport=plan.get('viewport')
+    if not isinstance(original_domain,list) or len(original_domain)!=2 or any(isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value) for value in original_domain) or not original_domain[0]<original_domain[1]:raise ValueError('INVALID_SQRT_DRAW_INTERVAL')
+    if not isinstance(original_viewport,list) or len(original_viewport)!=4 or any(isinstance(value,bool) or not isinstance(value,(int,float)) or not math.isfinite(value) for value in original_viewport) or not original_viewport[0]<original_viewport[1] or not original_viewport[2]<original_viewport[3]:raise ValueError('INVALID_SQRT_VIEWPORT')
+    required=plan.get('requiredPoints',[])
+    if not isinstance(required,list) or len(required)>16:raise ValueError('INVALID_REQUIRED_GRAPH_FEATURES')
+    ids=set();required_points=[]
+    for point in required:
+        if not isinstance(point,dict) or set(point)!={'id','x','y'} or not isinstance(point['id'],str) or not point['id'] or point['id'] in ids or any(isinstance(point[key],bool) or not isinstance(point[key],(int,float)) or not math.isfinite(point[key]) or abs(point[key])>1e6 for key in ('x','y')):raise ValueError('INVALID_REQUIRED_GRAPH_POINT')
+        if not _sqrt_general_point_on_curve(constant,slope,offset,scale,point):raise ValueError('REQUIRED_SQRT_POINT_NOT_ON_CURVE')
+        ids.add(point['id']);required_points.append({'id':point['id'],'x':float(point['x']),'y':float(point['y'])})
+    if not math.isfinite(boundary_f) or abs(boundary_f)>1e6:raise ValueError('UNSUPPORTED_SQRT_NUMERIC_SCOPE')
+    span=max(4.0,4.0/math.sqrt(abs(float(slope))),abs(boundary_f)*.25+4.0,*[max(0.0,abs(point['x']-boundary_f))*.25+2.0 for point in required_points])
+    if mode=='NATURAL_SQRT_AFFINE':
+        if right:
+            lo=boundary_f
+            hi=max(float(original_domain[1]),boundary_f+span,*[point['x']+span*.25 for point in required_points])
+        else:
+            hi=boundary_f
+            lo=min(float(original_domain[0]),boundary_f-span,*[point['x']-span*.25 for point in required_points])
+    else:
+        lo,hi=(float(value) for value in source_interval_exact)
+        if original_domain!=[lo,hi]:raise ValueError('SQRT_DRAW_INTERVAL_MUST_PRESERVE_SOURCE_INTERVAL')
+        if any(not lo<=point['x']<=hi for point in required_points):raise ValueError('REQUIRED_SQRT_POINT_OUTSIDE_SOURCE_INTERVAL')
+    if right and lo<boundary_f:raise ValueError('SQRT_DRAW_INTERVAL_MUST_PRESERVE_ENDPOINT')
+    if not right and hi>boundary_f:raise ValueError('SQRT_DRAW_INTERVAL_MUST_PRESERVE_ENDPOINT')
+    if not lo<hi:raise ValueError('SQRT_DRAW_INTERVAL_MUST_PRESERVE_ENDPOINT')
+    def curve_y_exact(x_text):
+        radicand_value=constant+slope*S.Rational(x_text)
+        if radicand_value<0:raise ValueError('SQRT_ENDPOINT_BELOW_NATURAL_BOUNDARY')
+        return offset+scale*S.sqrt(radicand_value)
+    if mode=='NATURAL_SQRT_AFFINE':
+        endpoints=[{'x':pp_surd_text(boundary),'y':float(offset),'state':'CLOSED','source':'NATURAL_RADICAND_BOUNDARY'}]
+    else:
+        endpoints=[]
+        for value,source_name in ((source_interval_exact[0],'SOURCE_INTERVAL_START'),(source_interval_exact[1],'SOURCE_INTERVAL_END')):
+            endpoints.append({'x':str(value),'y':float(curve_y_exact(str(value))),'state':'CLOSED','source':source_name})
+    tail_x=hi if right else lo
+    try:tail_exact=S.Rational(str(tail_x))
+    except (ValueError,TypeError):tail_exact=S.Float(str(tail_x),40)
+    tail_value=float(offset+scale*S.sqrt(constant+slope*tail_exact))
+    endpoint_y=[endpoint['y'] for endpoint in endpoints]
+    required_y=[point['y'] for point in required_points]
+    low=min([offset_f,tail_value,*endpoint_y,*required_y]);high=max([offset_f,tail_value,*endpoint_y,*required_y])
+    yspan=max(1.0,high-low,abs(high-offset_f));ypad=.15*yspan
+    xspan=max(1.0,hi-lo)
+    xmin=lo-.1*xspan if right else lo
+    xmax=hi if right else hi+.1*xspan
+    ymin=low-ypad;ymax=high+ypad
+    if not all(math.isfinite(value) and abs(value)<=1e6 for value in (lo,hi,xmin,xmax,ymin,ymax)):raise ValueError('UNSUPPORTED_SQRT_NUMERIC_SCOPE')
+    tail_direction='UP' if scale>0 else 'DOWN'
+    features={'schemaVersion':'SQRT_AFFINE_GENERAL_FEATURES_v1','endpoint':{'x':pp_surd_text(boundary),'y':pp_surd_text(offset)},'radicandBoundaryX':pp_surd_text(boundary),'branchDirection':'RIGHT' if right else 'LEFT','tailDirection':tail_direction,'rangeDirection':'ABOVE' if scale>0 else 'BELOW','sourceEndpoints':endpoints}
+    policy={'schemaVersion':'SQRT_AFFINE_GENERAL_FEATURE_POLICY_v1','sourceDomainMode':mode,'boundaryPolicy':'NATURAL_NONNEGATIVE_RADICAND','endpointState':'CLOSED','branchDirection':features['branchDirection'],'tailDirection':tail_direction,'rangeDirection':features['rangeDirection'],'endpointMarkerRadiusIntrinsicPx':4,'minimumEndpointMarkerDiameterCssPx':3,'minimumEndpointToTailSpanCssPx':48}
+    fitted={**plan,'domain':[lo,hi],'viewport':[xmin,xmax,ymin,ymax],'shapeIntent':'OVERVIEW','overviewPolicy':'SQRT_AFFINE_GENERAL_OVERVIEW_v1','sqrtFeatures':features,'sqrtFeaturePolicy':policy,'requiredPoints':required_points}
+    return {'graphPlan':fitted,'policy':'SQRT_AFFINE_GENERAL_OVERVIEW_v1','sourceDomainPreserved':True,'displayOnly':True,'features':features,'originalDisplay':{'domain':original_domain,'viewport':original_viewport}}
 
 def _fit_absolute_value_overview(plan):
     values=plan.get('coefficients')
