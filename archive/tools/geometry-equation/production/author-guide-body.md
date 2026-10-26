@@ -29,7 +29,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 여러 경우(k=-2일 때, k=3일 때)를 비교하는 풀이: `composite-panels-v1` (경우마다 패널 하나, 2~3개). 삼차·사차 그래프 두 경우(예: a=-1과 a=1/8의 중근)도 2패널로 비교한다(3패널은 이차함수만).
 - 사인·코사인과 수평선·직선의 교점 개수를 구간에서 세는 풀이: `trigonometric-spike-v1`의 `INTERVAL_PI`(아래 3-7).
 - 이어진 조각 그래프(이차식의 절댓값 등)와 수평선 또는 기울어진 직선: `piecewise-polynomial-spike-v1`(아래 3-3).
-- **끊어지는(불연속) 조각함수**: 조각마다 다른 종류(상수·일차·이차)이고 경계에서 점프하거나 함수값이 따로 정해진 경우, 고립점, 계단함수: `piecewise-discontinuous-spike-v1`(아래 3-14).
+- **끊어지는(불연속) 조각함수**: 조각마다 다른 종류(상수·일차·이차)이고 경계에서 점프하거나 함수값이 따로 정해진 경우, 고립점, 계단함수: `piecewise-discontinuous-spike-v1`(아래 3-15).
 - 이차부등식 풀이(판별식, 그래프, 구간, 수직선): `quadratic-inequality-chain-v1` 하나로 쓴다. 계수와 부등호만 주면 끝점, 열린·닫힌 점, 정수점은 엔진이 계산한다. 해가 구간 하나인 경우만 된다(두 조각이거나 공집합이면 거절된다). 계수가 고정된 이차부등식 하나일 때만 쓴다. 매개변수(a, n 등) 때문에 경우가 나뉘거나("n=1, n=2~4, n≥5"), 부등식이 여러 개이거나, 풀이가 결과 요약뿐이면 체인이 아니다. 그때 풀이가 해집합을 수직선 위에서 비교하는 것이면 아래 `number-line-figure-v1`을 쓴다. 그래프가 필요하면 풀이가 실제로 쓰는 그래프 하나(예: 해가 한 점인 접점 그래프)만 `polynomial-spike-v1`로 그리거나, 그림이 없어도 되면 EXEMPT, 못 그리면 UNSUPPORTED를 쓴다.
 - 수직선만 필요한 풀이(두 부등식 해의 교집합, 끝점이 a에 따라 움직이는 해집합, 정수해, 수직선 위 내분점): `number-line-figure-v1`. `numberLine.rows`에 해집합을 한 줄씩(`SET`) 쓰면 같은 눈금 위에 겹쳐 그려지고, `RESULT` 줄은 위 줄들의 공통 범위를 엔진이 계산해 마지막 줄로 그린다(그 끝점은 직접 쓰지 않는다). 한 줄은 구간 한두 조각(`x<-1 또는 x>2`는 두 조각)이고, 끝점은 `{"value":"-1","state":"OPEN"}`(OPEN은 <, >, CLOSED는 ≤, ≥), 끝이 무한이면 `null`, 끝이 근호이면 정확한 문자열 `{"value":"-sqrt(10)","state":"OPEN"}`(`p+q*sqrt(r)` 꼴, 한 plan에 근호 하나; 소수는 안 된다, 관련 오류 `NUMBER_LINE_VALUE_INVALID`/`NUMBER_LINE_RADICALS_MIXED`; 근호 끝값이 다른 끝과 너무 가까우면(`3`과 `sqrt(10)`) `NUMBER_LINE_LABELS_TOO_CLOSE`이니 공통 범위 줄(RESULT)을 빼고 줄만 비교한다), 끝이 a에 따라 움직이면 `{"param":{"mul":"1/3","add":"2/3"},"state":"OPEN"}`(=mul*a+add, 라벨은 분수가 세로로 쌓인 (a+2)/3으로 엔진이 쓴다)이다. `param` 끝이 있으면 `"parameter":{"name":"a","value":"-1"}`로 **그림을 그릴 a의 값**을 정한다(그림에 "a=-1 일 때의 그림"이 표시된다). 풀이가 다루는 경우(경계값 등)를 골라 쓰고 caption에 밝힌다. a에 따라 해의 모양이 달라지는 풀이는 그 한 경우만 그려지니 전체 답의 그림인 척 쓰지 않는다. 정수점은 해당 줄에 `"integerPoints":true`(유계) 또는 `{"range":["-5","5"]}`(최대 25개)를 쓴다. 내분점은 `{"kind":"POINTS","points":[{"id":"A","value":"-2"},{"id":"B","value":"4"},{"id":"P","divides":{"from":"A","to":"B","ratio":["1","2"]}}]}`로 쓰면 P가 AP:PB=1:2인 자리에 놓이고 AP, PB 위에 1, 2가 표시된다(외분점은 안 된다). 이차함수 그래프가 풀이에 필요하면 이것이 아니라 `quadratic-inequality-chain-v1`을 쓴다. 판 전체 모양은 `{"capability":"number-line-figure-v1","numberLine":{"parameter":{...},"rows":[...]},"numberLineCaption":{"text":"두 해의 공통 범위"},"caption":...,"sourceConditions":...,"newVisualInformation":...}`다.
 - 입체도형(각기둥·각뿔·각뿔대·원기둥·원뿔·원뿔대·구·반구)을 숨은 모서리 점선·꼭짓점 이름·길이와 함께, 또는 각기둥·각뿔·원기둥·원뿔의 전개도, 회전축을 지나는 단면, 원뿔 모양 그릇의 수면: `solid-figure-v1`(아래 3-입체). 치수를 실제 길이로 쓰면 엔진이 3차원 모델에서 투영·숨은선·전개를 계산한다.
@@ -457,7 +457,29 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 
 오류 코드: `TRIG_GRAMMAR_UNSUPPORTED`(ratePi와 계수 개수가 안 맞는다. ratePi면 [a,d], 아니면 [a,b,d]), `INVALID_TRIGONOMETRIC_RATE`/`TRIGONOMETRIC_COEFFICIENT_INVALID`/`INVALID_TRIGONOMETRIC_PHASE`(정확한 정수·분수 문자열이 아니다), `TRIGONOMETRIC_NONZERO_SCALE_AND_RATE_REQUIRED`(a나 b가 0), `TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED`/`INVALID_TRIG_INTERVAL`(구간 형식·끝 상태·순서), `TRIG_INTERVAL_REQUIRES_RATE_PI`(보통 수 구간인데 b에 π가 없다), `TRIG_RATE_PI_REQUIRES_PLAIN_INTERVAL`(b에 π가 있는데 π 단위 구간을 썼다), `TRIG_INTERVAL_PI_PHASE_MUST_BE_PI`(π 단위 구간인데 라디안 phase), `TRIG_PHASE_RATIONAL_REQUIRES_INTERVAL`(한 주기 그림에 라디안 phase), `TRIG_KEY_POINTS_REQUIRE_SIN_COS`/`TRIG_KEY_POINTS_REQUIRE_RATIONAL_PHASE`/`TRIG_KEY_POINTS_TOO_MANY`/`INVALID_TRIG_KEY_POINTS`, `TRIG_TAN_REFERENCE_LINES_UNSUPPORTED`/`TRIG_TAN_REQUIRES_PI_PHASE`/`TRIG_TAN_POLE_AT_INTERVAL_END`/`TRIG_TAN_INTERVAL_NO_POLE`, `TRIG_TICK_PI_REQUIRES_PI_AXIS`/`INVALID_TRIG_TICK_PI_FLAG`/`INVALID_TRIG_AXIS_TICK_VALUES`/`TRIG_PI_TICK_VALUE_INVALID`/`TRIG_PI_TICK_OUTSIDE_VIEW`, `TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED`(1/4주기 미만·12주기 초과), `TRIG_LINE_INTERSECTION_COUNT_MISMATCH`/`TRIG_LINE_THROUGH_INTERVAL_END`(3-7절과 같다), `UNSUPPORTED_TRIGONOMETRIC_NUMERIC_SCOPE`.
 
-### 3-14. 불연속·혼합 조각함수: 조각별 열린·닫힌 끝, 점프, 고립점, 계단 (`piecewise-discontinuous-spike-v1`)
+### 3-14. 그래프 위 보조 요소: `overlays` (직선·세로선·점·선분·축 보조선·다각형)
+
+단일 곡선 그래프(다항·이차·삼차·사차, 구간별 다항, 구간별 일차, 유리, 무리, 절댓값, 지수, 로그, 삼각, exp-log pair) 위에 **둘째 요소**를 그릴 때 `graphPlan.overlays`를 쓴다. `referenceCurves`가 두 번째 *함수*를 그리는 것과 달리, `overlays`는 직선 하나, 세로선, 이름 있는 점, 점 사이 선분, 축까지의 점선 보조선, 다각형을 같은 계층에서 그린다. 모든 값은 정확한 정수·분수·`sqrt(...)` 문자열로 쓰고, 좌표는 엔진이 SymPy로 다시 계산한다.
+
+**직선·세로선.** `lines:[{"id":"g","slope":"-2","intercept":"0"}]`는 `y=slope*x+intercept`(slope 0 허용)를, `{"id":"k","x":"3"}`는 세로선 `x=3`을 그린다. 직선은 그림 영역에 맞춰 잘리고 식(`y=...`, `x=...`)이 직선 옆에 지시선으로 붙는다. 식 대신 다른 글자를 쓰려면 `label`을 준다(예: `"label":"x=k"`). 두 점을 잇는 *선분*은 직선이 아니므로 `segments`를 쓴다.
+
+**점.** `points`의 한 점은 다음 중 **하나**로 쓴다.
+- `{"id":"A","curveX":"0"}`: 그은 곡선 위의 점(엔진이 y를 정확히 계산). exp-log pair는 `"curve":"<curves의 id>"`를 함께 쓴다.
+- `{"id":"P","intersect":["g","k"]}`: overlay 직선 두 개의 교점(평행·두 세로선은 거절).
+- `{"id":"C","axis":"x","value":"-1-sqrt(7)"}`: 축 위의 점(`axis`는 `x` 또는 `y`).
+- `{"id":"Q","x":"3","y":"-6"}`: 좌표를 직접 준 점.
+
+점 id는 영문자로 시작하는 ASCII 12자 이내이고 `requiredPoints`의 id와 겹치면 안 된다. 그림에 보이는 이름은 지금처럼 `pointNames`로 정한다(오버레이 점도 키가 될 수 있다). 곡선 위 점은 그은 정의역 안, 모든 점은 이미 잡힌 그림 영역 안에 있어야 한다. 엔진은 잘못된 점을 담으려고 화면을 억지로 넓히지 않는다(자동 프레이밍은 작성자가 선언한 `domain`·`viewport` 안에서만 오버레이 점을 참고한다).
+
+**선분·보조선.** `segments:[{"id":"AB","from":"A","to":"B","dashed":true}]`는 두 오버레이 점을 잇는다(`dashed` 생략 시 실선). `guides:[{"id":"PA","from":"P","axis":"BOTH"}]`는 점에서 x축·y축으로 내리는 **점선** 보조선이다(`axis`는 `x`, `y`, `BOTH`; 기본 점선). 수선의 발을 따로 찍으려면 `axis` 점을 하나 더 선언한다.
+
+**다각형.** `polygons:[{"id":"T","points":["A","O","C"],"fill":"LIGHT"}]`는 꼭짓점 3~6개(모두 오버레이 점)의 단순 닫힌 다각형을 그린다. `fill`은 `LIGHT`(기본)·`MEDIUM`·`NONE`이고, 칠은 선 아래에 깔린다. 삼각형 OAB처럼 곡선 위 점과 원점으로 만드는 도형에 쓴다. 꼭짓점이 일직선이면 거절한다.
+
+**한도와 오류.** 직선 6, 점 8, 선분 6, 보조선 4, 다각형 2개까지다. 거절 코드: `OVERLAY_PLAN_INVALID`, `OVERLAY_TOO_MANY:<kind>`, `OVERLAY_ID_INVALID:<kind>`, `OVERLAY_ID_DUPLICATE:<id>`, `OVERLAY_POINT_ID_CONFLICT:<id>`, `OVERLAY_POINT_INVALID:<id>`, `OVERLAY_POINT_UNKNOWN:<id>`, `OVERLAY_POINT_NOT_ON_CURVE:<id>`, `OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN:<id>`, `OVERLAY_POINT_OUTSIDE_VIEWPORT:<id>`, `OVERLAY_CURVE_REQUIRED:<id>`, `OVERLAY_CURVE_UNKNOWN:<id>`, `OVERLAY_LINE_INVALID:<id>`, `OVERLAY_LINE_PARALLEL:<id>`, `OVERLAY_LINE_OUTSIDE_VIEWPORT:<id>`, `OVERLAY_SEGMENT_INVALID:<id>`, `OVERLAY_SEGMENT_DEGENERATE:<id>`, `OVERLAY_GUIDE_INVALID:<id>`, `OVERLAY_POLYGON_INVALID:<id>`, `OVERLAY_POLYGON_DEGENERATE:<id>`, `OVERLAY_FILL_INVALID:<id>`, `OVERLAY_VALUE_INVALID:<id>`, `OVERLAY_LABEL_INVALID:<id>`, `OVERLAY_BASE_INVALID`. `OVERLAY_POINT_OUTSIDE_VIEWPORT`가 나면 점이 화면 밖이라는 뜻이니 `domain`/`viewport`를 넓히거나(같은 배율 유지) 그 점을 빼고, `OVERLAY_POINT_OUTSIDE_SOURCE_DOMAIN`이면 곡선이 그 x에서 정의되지 않거나 그은 정의역 밖이다.
+
+**독립 검수.** 그래프 관측기가 같은 overlay 입력에서 모든 점·직선·선분·보조선·다각형·식 라벨을 다시 계산해 최종 SVG와 대조한다. 점을 옮기거나, 선을 지우거나, 없는 요소를 그리거나, 식 라벨을 빼면 FAIL이다. 오버레이는 풀이가 실제로 쓰는 요소만 그린다(문제에 없는 보조선·다각형으로 정답을 암시하지 않는다).
+
+### 3-15. 불연속·혼합 조각함수: 조각별 열린·닫힌 끝, 점프, 고립점, 계단 (`piecewise-discontinuous-spike-v1`)
 
 조각이 **서로 이어지지 않아도 되는** 한 함수를 그린다. 상수·일차·이차 조각을 섞을 수 있고, 경계에서 점프하거나 함수값이 따로 정해지며(고립점), 끝점이 열린·닫힌 점으로 표시된다. 계단함수도 이 capability로 쓴다. `capability:"piecewise-discontinuous-spike-v1"`, `graphPlan.family:"piecewise-discontinuous"`.
 
@@ -489,7 +511,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 ## 4. 이름과 표기 규칙 (자주 걸리는 것)
 
 - 그림에 나오는 점 이름은 노드 id다. 문항과 풀이 텍스트에 쓴 이름과 같아야 한다. 풀이가 점 이름을 쓰지 않으면 한 글자 대문자(A, B, P)만 쓰고, O0, Pp, C1 같은 내부식 이름은 쓰지 않는다. 풀이에 쓰지 않은 보조점은 숨김 필드를 쓴다.
-- **프라임·아래첨자 이름(A′, T₁, T₂):** id는 `A`, `T1`, `T2`처럼 간단하게 두고, plan 최상위에 `"pointNames":{"T1":"T_1","T2":"T_2","A":"A'"}`을 쓴다(작도 plan, 그래프 plan, 수직선 도형 plan 모두 같은 모양, 합성 패널이면 그 패널 plan 안). 키는 그림이 실제로 그리는 점의 id(작도 `displayPoints`, 그래프 `requiredPoints`, 수직선 `POINTS` 행의 점)이고, 값은 **대문자 한 글자 + 프라임(`'` `′` `″`, 최대 2개) + 아래첨자 숫자 1~9(최대 2자리)** 순서다. `T_1`, `T_{1}`, `T₁`은 같은 이름이고 `A'`, `A′`도 같다. 그림에는 진짜 아래첨자와 ′가 그려지고(점 이름과 좌표 띠 `T₁(3, 2)` 모두), 풀이 글에는 같은 이름을 쓴다.
+- **프라임·아래첨자 이름(A′, T₁, T₂):** id는 `A`, `T1`, `T2`처럼 간단하게 두고, plan 최상위에 `"pointNames":{"T1":"T_1","T2":"T_2","A":"A'"}`을 쓴다(작도 plan, 그래프 plan, 수직선 도형 plan 모두 같은 모양, 합성 패널이면 그 패널 plan 안). 키는 그림이 실제로 그리는 점의 id(작도 `displayPoints`, 그래프 `requiredPoints`와 `graphPlan.overlays.points`, 수직선 `POINTS` 행의 점)이고, 값은 **대문자 한 글자 + 프라임(`'` `′` `″`, 최대 2개) + 아래첨자 숫자 1~9(최대 2자리)** 순서다. `T_1`, `T_{1}`, `T₁`은 같은 이름이고 `A'`, `A′`도 같다. 그림에는 진짜 아래첨자와 ′가 그려지고(점 이름과 좌표 띠 `T₁(3, 2)` 모두), 풀이 글에는 같은 이름을 쓴다.
   - 이름이 있는 그래프 점은 좌표가 있으면 좌표 띠로 올라간다(`T₁(x, y)`). 좌표가 없으면 점 옆에 이름만 그린다.
   - 소문자·낱말·숫자 0·두 글자 이상·프라임보다 앞선 아래첨자는 쓸 수 없다. 두 점이 같은 이름을 보이면 안 되고, `hiddenPointNames`로 숨긴 점에는 이름을 못 붙인다. 점 id에는 ′나 아래첨자를 직접 쓰지 않는다.
 - 풀이가 치환(t=x²−2x)하고 그 변수의 그래프를 그리면 `graphPlan.axisVariable`에 그 문자를 쓴다(소문자 한 글자, y 제외). 판별식 D를 a에 대한 함수로 그리면 `"axisVariable":"a"`다. 축과 식이 그 문자로 나온다.
