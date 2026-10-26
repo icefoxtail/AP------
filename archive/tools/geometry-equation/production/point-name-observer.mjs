@@ -73,6 +73,10 @@ export function planNameExpectations(plan){
   const names=plan?.pointNames;
   if(!names||typeof names!=='object')return [];
   if(plan.mathPlan)return Object.entries(names).map(([id,name])=>({owner:id,name}));
-  const required=plan.graphPlan?.requiredPoints??[];
-  return Object.entries(names).flatMap(([id,name])=>{const index=required.findIndex(point=>point?.id===id);return index<0?[]:[{owner:'required-point-'+(index+1),name}];});
+  const required=plan.graphPlan?.requiredPoints??[],overlay=new Set((plan.graphPlan?.overlays?.points??[]).map(point=>point?.id));
+  return Object.entries(names).flatMap(([id,name])=>{
+    const index=required.findIndex(point=>point?.id===id);
+    if(index>=0)return [{owner:'required-point-'+(index+1),name}];
+    return overlay.has(id)?[{owner:id,name}]:[];
+  });
 }

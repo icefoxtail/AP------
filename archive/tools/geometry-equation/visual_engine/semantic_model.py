@@ -9,11 +9,11 @@ from .geometry_model import (Line,Circle,CircularArc,point,finite,line_intersect
 KINDS = {'POINT','POINT_NAME','COORDINATE_LABEL','LINE','SEGMENT','CIRCLE','CIRCULAR_ARC',
     'FUNCTION_GRAPH','INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR',
     'PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUATION_LABEL','EQUAL_MARK','PARALLEL_MARK',
-    'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION','GRAPH_REGION'}
+    'GRAPH_ANNOTATION','CONDITION_BOX','AUXILIARY_LINE','LEADER_LINE','FILL_REGION','POLYGON','GRAPH_REGION'}
 VISUAL_TYPES={'coordinate_geometry','line_circle_geometry','function_graph','calculus_graph','explanation_card'}
 RELATIONS={'INTERSECTION','TANGENT','PARALLEL','PERPENDICULAR','PERPENDICULAR_MARK','ANGLE_MARK','LENGTH_LABEL','EQUAL_MARK','PARALLEL_MARK'}
 FIELDS={'id','kind','at','from','to','center','radius','centerPoint','startPoint','endPoint','sweep','coefficients','expression','domain','text','target','refs','value','exact','priority','name','math','lines','breaks','criticalX','allowSuppress','sourceDecimalEvidence','branch','preferred','lineOwned','alternateAt','arcs','ring','outer','style','labelText','labelKind','highlight','dash','arrow','count','directions','gaps','leaderOwned','loops','fill','upper','lower'}
-REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'GRAPH_REGION':{'upper','lower','domain','fill'}}
+REQUIRED={'POINT':{'at'},'POINT_NAME':{'target','text'},'COORDINATE_LABEL':{'target','exact'},'LINE':{'coefficients'},'AUXILIARY_LINE':{'coefficients'},'SEGMENT':{'from','to'},'LEADER_LINE':{'from','to'},'CIRCLE':{'center','radius'},'CIRCULAR_ARC':{'centerPoint','startPoint','endPoint','sweep'},'FUNCTION_GRAPH':{'expression','domain'},'INTERSECTION':{'refs','target'},'PARALLEL':{'refs'},'PERPENDICULAR':{'refs'},'PERPENDICULAR_MARK':{'refs','at'},'TANGENT':{'refs','at'},'ANGLE_MARK':{'refs','value'},'EQUAL_MARK':{'refs','count'},'PARALLEL_MARK':{'refs','count'},'LENGTH_LABEL':{'refs','value','at','text'},'EQUATION_LABEL':{'text','at'},'GRAPH_ANNOTATION':{'text','at'},'CONDITION_BOX':{'at','lines'},'FILL_REGION':{'loops','fill'},'POLYGON':{'refs'},'GRAPH_REGION':{'upper','lower','domain','fill'}}
 
 def parity(a,b):
     if isinstance(a,bool) or isinstance(b,bool): return a is b
@@ -116,6 +116,14 @@ def validate(spec):
                 if r<=0 or abs(math.dist(geometry[step['to']],c)-r)>1e-6*max(1,r): raise ValueError('REGION_ARC_ENDPOINT_NOT_ON_CIRCLE:'+obj['id'])
         geometry[obj['id']]={'loops':loops}
         relations.append({'id':obj['id'],'kind':'FILL_REGION','status':'PASS','observed':len(loops)})
+    for obj in spec['objects']:
+        if obj['kind'] != 'POLYGON': continue
+        # A simple closed polygon of displayed points (a triangle OAB, a trapezoid of two chords): its own outline, optionally filled.
+        refs=obj['refs']
+        if len(refs)<3 or len(set(refs))!=len(refs) or any(objects.get(ref,{}).get('kind')!='POINT' for ref in refs): raise ValueError('POLYGON_POINT_REFS_REQUIRED:'+obj['id'])
+        if 'fill' in obj and obj['fill'] not in {'LIGHT','MEDIUM','NONE'}: raise ValueError('REGION_FILL_UNSUPPORTED:'+obj['id'])
+        geometry[obj['id']]=[geometry[ref] for ref in refs]
+        relations.append({'id':obj['id'],'kind':'POLYGON','status':'PASS','observed':len(refs)})
     for obj in spec['objects']:
         if obj['kind'] != 'GRAPH_REGION': continue
         # A graph region is a band between two sampled function boundaries over [lo,hi]: each side is rows of {expression, domain} that
