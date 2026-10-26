@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 340" width="380" height="340" role="img" aria-labelledby="q15-title q15-desc">
+  <title id="q15-title">좌표평면 위의 점</title>
+  <desc id="q15-desc">좌표평면 위에 네 점 A(3, 2), B(-4, 3), C(-2, -3), D(4, -2)와 원점 O가 표시된 그림</desc>
+  <rect width="380" height="340" fill="#ffffff"/>
+
+  <!-- Coordinate Axes -->
+  <g stroke="#333333" stroke-width="1.5">
+    <!-- X axis -->
+    <line x1="30" y1="170" x2="350" y2="170"/>
+    <polyline points="342,165 350,170 342,175" fill="none"/>
+    <!-- Y axis -->
+    <line x1="190" y1="310" x2="190" y2="30"/>
+    <polyline points="185,38 190,30 195,38" fill="none"/>
+  </g>
+
+  <!-- Axis and Origin Labels -->
+  <g font-family="sans-serif" font-size="14" fill="#111111" font-weight="bold">
+    <text x="355" y="175">x</text>
+    <text x="190" y="22" text-anchor="middle">y</text>
+    <text x="176" y="186">O</text>
+  </g>
+
+  <!-- Dashed Guidelines -->
+  <g stroke="#777777" stroke-width="1.2" stroke-dasharray="4,4">
+    <!-- Point A(3, 2) -->
+    <line x1="262" y1="170" x2="262" y2="122"/>
+    <line x1="190" y1="122" x2="262" y2="122"/>
+    <!-- Point B(-4, 3) -->
+    <line x1="94" y1="170" x2="94" y2="98"/>
+    <line x1="94" y1="98" x2="190" y2="98"/>
+    <!-- Point C(-2, -3) -->
+    <line x1="142" y1="170" x2="142" y2="242"/>
+    <line x1="142" y1="242" x2="190" y2="242"/>
+    <!-- Point D(4, -2) -->
+    <line x1="286" y1="170" x2="286" y2="218"/>
+    <line x1="190" y1="218" x2="286" y2="218"/>
+  </g>
+
+  <!-- Axis Numbers & Ticks -->
+  <g font-family="sans-serif" font-size="12" fill="#333333">
+    <!-- X axis ticks -->
+    <text x="262" y="186" text-anchor="middle">3</text>
+    <text x="94" y="186" text-anchor="middle">-4</text>
+    <text x="142" y="164" text-anchor="middle">-2</text>
+    <text x="286" y="164" text-anchor="middle">4</text>
+    <!-- Y axis ticks -->
+    <text x="184" y="126" text-anchor="end">2</text>
+    <text x="184" y="102" text-anchor="end">3</text>
+    <text x="198" y="246" text-anchor="start">-3</text>
+    <text x="198" y="222" text-anchor="start">-2</text>
+  </g>
+
+  <!-- Points and Labels -->
+  <g fill="#d32f2f">
+    <circle cx="262" cy="122" r="4.5"/>
+    <circle cx="94" cy="98" r="4.5"/>
+    <circle cx="142" cy="242" r="4.5"/>
+    <circle cx="286" cy="218" r="4.5"/>
+  </g>
+
+  <g font-family="sans-serif" font-size="15" fill="#111111" font-weight="bold">
+    <text x="272" y="118">A</text>
+    <text x="80" y="92">B</text>
+    <text x="126" y="258">C</text>
+    <text x="296" y="228">D</text>
+  </g>
+</svg>
