@@ -632,6 +632,32 @@ test("canonical parent accepts an evidence-bound exact ACTIVE PT/TPL crosswalk p
   assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
 });
 
+function attachDeclaredCrosswalkCourseAlias(f, declared) {
+  const data = attachExactTypeParent(f), alias = "GEOMETRY_ALIAS";
+  const packChange = f.request.registryChanges.find(change => change.path.endsWith("/pack.json"));
+  if (declared) packChange.after.standardCourses.push(alias);
+  data.item.after.courseKey = alias;
+  data.item.targetParentRef.scope = alias;
+  const masterPath = data.item.targetParentRef.path, master = f.read(masterPath), crosswalk = f.read(data.crossPath);
+  master.records[0].scope = alias; crosswalk.records[0].scope = alias;
+  f.put(masterPath, master); f.put(data.crossPath, crosswalk);
+  const hashes = new Map([masterPath, data.crossPath].map(p => [p, hash(fs.readFileSync(path.join(f.root, p)))]));
+  const update = o => { if (!o || typeof o !== "object") return; if (hashes.has(o.path) && o.sha256) o.sha256 = hashes.get(o.path); Object.values(o).forEach(update); };
+  update(f.request);
+}
+
+test("exact crosswalk parent accepts a courseKey alias declared by its ACTIVE owner pack", t => {
+  const f = fixture(t, "기하");
+  attachDeclaredCrosswalkCourseAlias(f, true);
+  assert.equal(registerReviewedExamV2({ root: f.root, request: f.request }).totalQuestions, 1);
+});
+
+test("exact crosswalk parent rejects an alias absent from its ACTIVE owner pack", t => {
+  const f = fixture(t, "기하");
+  attachDeclaredCrosswalkCourseAlias(f, false);
+  assert.throws(() => registerReviewedExamV2({ root: f.root, request: f.request }), /curriculum\/course aliases disagree/);
+});
+
 test("canonical crosswalk parent rejects wrong PT, course, parent, inactive and unbound references", t => {
   for (const field of ["problemTypeKey", "scope", "bindingStatus", "parent", "sha256"]) {
     const f = fixture(t, "기하"), { item, crossPath } = attachExactTypeParent(f);
