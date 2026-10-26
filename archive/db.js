@@ -27853,6 +27853,37 @@ window.mainDB = {
       "primaryStandardCourse": ""
     },
     {
+      "file": "similar/middle/m1/1mid/16_연향중_1학기_중간_중1_유사.js",
+      "school": "연향중",
+      "topic": "",
+      "grade": "중1",
+      "year": 2016,
+      "semester": "1",
+      "examType": "mid",
+      "subject": "중1 수학",
+      "contentType": "유형",
+      "qCount": 24,
+      "rangeStartUnitKey": "M1-01",
+      "rangeStartUnit": "소인수분해",
+      "rangeStartUnitOrder": 1,
+      "rangeEndUnitKey": "M1-03",
+      "rangeEndUnit": "문자와 식",
+      "rangeEndUnitOrder": 3,
+      "courseRanges": [
+        {
+          "standardCourse": "중1 수학",
+          "courseCode": "M1",
+          "rangeStartUnitKey": "M1-01",
+          "rangeStartUnit": "소인수분해",
+          "rangeStartUnitOrder": 1,
+          "rangeEndUnitKey": "M1-03",
+          "rangeEndUnit": "문자와 식",
+          "rangeEndUnitOrder": 3
+        }
+      ],
+      "primaryStandardCourse": "중1 수학"
+    },
+    {
       "file": "original/high/h2/2mid/15_강남여고_2학기_중간_고2_기하와벡터_기출.js",
       "school": "강남여고",
       "topic": "",
