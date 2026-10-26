@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>공간좌표와 구의 방정식 3D 실전 킬러 랩 (3D Space Coordinates & Sphere Master Lab)</title>
+  <!-- Pretendard Webfont -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- KaTeX CDN (수능 시험지 수식 렌더링 엔진) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+  <style>
+    * {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    body {
+      background-color: #07130e;
+      color: #f1f5f9;
+      overflow: hidden;
+    }
+    /* 칠판 배경 그라디언트 & 깊이감 */
+    .chalkboard-bg {
+      background: radial-gradient(circle at 50% 45%, #163329 0%, #0d211a 65%, #07140f 100%);
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.85);
+    }
+    /* 세로 분수 (.math-frac) 및 KaTeX 보정 스타일 */
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 3px;
+      line-height: 1.05;
+      font-family: 'Pretendard', monospace;
+      font-weight: 700;
+    }
+    .math-frac > .num {
+      border-bottom: 1.5px solid currentColor;
+      padding: 0 4px 2px 4px;
+      font-size: 0.9em;
+      text-align: center;
+      width: 100%;
+    }
+    .math-frac > .den {
+      padding: 2px 4px 0 4px;
+      font-size: 0.9em;
+      text-align: center;
+      width: 100%;
+    }
+    .katex {
+      font-size: 1.05em !important;
+    }
+    /* 스크롤바 스타일링 */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07130e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1d3f32;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2d604d;
+    }
+    /* 레인지 슬라이더 커스텀 */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #11261e;
+      height: 6px;
+      border-radius: 4px;
+      outline: none;
+      border: 1px solid #234739;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #fbbf24;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.8);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    /* 모드 탭 활성화 */
+    .mode-tab.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #07130e;
+      font-weight: 800;
+      border-color: #fbbf24;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+    }
+    .cam-btn:hover {
+      background: rgba(52, 211, 153, 0.25);
+      border-color: #34d399;
+      color: #ffffff;
+    }
+    /* 보조선 Step 버튼 활성화 */
+    .step-btn.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(5, 150, 105, 0.32));
+      border-color: #34d399;
+      color: #ecfdf5;
+      box-shadow: 0 0 12px rgba(52, 211, 153, 0.2);
+    }
+    .chalk-text {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+    }
+    /* 원클릭 스냅 버튼 펄스 애니메이션 */
+    @keyframes subtlePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5); }
+      50% { box-shadow: 0 0 16px 3px rgba(251, 191, 36, 0.35); }
+    }
+    .snap-btn-glow {
+      animation: subtlePulse 2.4s infinite;
+    }
+
+    /* Tailwind CDN 미연결에도 실행되는 레이아웃 최소 안전망 */
+    *{box-sizing:border-box}
+    html,body{margin:0;width:100%;height:100%;}
+    body{display:flex;flex-direction:column;height:100vh;height:100dvh}
+    header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-shrink:0;position:relative;z-index:20;padding:9px 14px;background:#081510;border-bottom:1px solid #14532d}
+    header>div{display:flex;align-items:center;gap:10px}
+    header nav{display:flex;gap:6px;overflow-x:auto;max-width:100%}
+    #ap-workspace{display:flex;flex:1;min-height:0;position:relative;overflow:hidden}
+    #ap-workspace>main{position:relative;min-width:0;flex:1;overflow:hidden;min-height:0}
+    #boardCanvas{display:block;position:absolute;inset:0;width:100%;height:100%}
+    #ap-workspace>aside{display:flex;flex-direction:column;width:440px;flex:0 0 440px;height:100%;min-height:0;overflow:hidden;background:#081611;border-left:1px solid #14532d}
+    #ap-workspace>aside>div{overflow:auto;flex:1;padding:16px}
+    #ap-workspace section{margin-bottom:12px}
+    .ap-top-overlays{display:flex;flex-direction:column;position:absolute;top:14px;left:14px;gap:8px;max-width:420px;z-index:10;pointer-events:none}
+    .ap-top-overlays>div{padding:8px;border:1px solid #22533f;border-radius:10px;background:rgba(5,24,15,.88)}
+    .ap-top-overlays .ap-lens-bar,.ap-top-overlays .cam-btn{pointer-events:auto}
+    .ap-bottom-toolbar{display:flex;align-items:center;gap:5px;position:absolute;bottom:14px;left:14px;z-index:10;padding:6px;background:#07140fe8;border:1px solid #256047;border-radius:10px}
+    .mode-tab,.cam-btn,.step-btn{cursor:pointer;border:1px solid #265642;border-radius:8px;padding:6px 9px;background:#0a261b;color:#d1fae5}
+    .step-btn{width:100%;display:flex;justify-content:space-between;align-items:center;margin:4px 0;text-align:left}
+    .hidden{display:none!important}
+    .grid{display:grid}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .overflow-y-auto{overflow-y:auto}.flex{display:flex}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}
+    .items-center{align-items:center}.justify-between{justify-content:space-between}
+    .w-full{width:100%}.h-full{height:100%}.relative{position:relative}.absolute{position:absolute}
+    .space-y-2>*,.space-y-3>*,.space-y-4>*{margin-bottom:8px}
+    .p-3,.p-3\.5{padding:12px}.rounded-xl{border-radius:12px}
+    .text-xs{font-size:12px}.font-bold,.font-extrabold{font-weight:800}
+    button{font-family:inherit;cursor:pointer}
+    @media(max-width:1023px){#ap-workspace{flex-direction:column}#ap-workspace>aside{width:100%;flex:0 0 42dvh;height:42dvh}#ap-workspace>main{flex:1}}
+    /* Playground 관찰 렌즈 / 조각 해부 / 저해상도 적응형 UI */
+    .ap-back-home{font-size:11px;color:#a7f3d0;border:1px solid #265541;padding:5px 9px;border-radius:8px;white-space:nowrap}
+    .ap-back-home:hover{color:#fbbf24;border-color:#fbbf24}
+    .lens-chip,.preset-chip{font-size:11px;border:1px solid #39715a;color:#bbf7d0;background:#08231a;padding:5px 9px;border-radius:9px;font-weight:700;transition:.15s}
+    .lens-chip.active,.preset-chip.active{background:#fbbf24;color:#111827;border-color:#fef08a}
+    .part-card{border:1px solid #256047;border-radius:10px;padding:10px 11px;background:#082218;cursor:pointer;text-align:left;width:100%;transition:.18s}
+    .part-card:hover,.part-card.active{background:#254b36;border-color:#fbbf24;box-shadow:0 0 14px #fbbf2444}
+    .part-card.dimmed{opacity:.55}
+    #boardCanvas{touch-action:none}
+    @media(max-width:1023px){
+      body{height:100dvh!important}
+      main{min-height:34dvh;flex:1 1 45dvh}
+      aside{height:42dvh!important;flex:0 0 42dvh}
+      header{padding:7px 9px}
+      .ap-top-overlays{top:7px;left:7px;right:7px;max-width:calc(100% - 14px);gap:4px}
+      .ap-top-overlays>div{padding:5px 7px}
+      .ap-top-overlays #canvasActionHint{display:none}
+      .ap-top-overlays #eqDisplay,.ap-top-overlays #subEqDisplay{font-size:11px}
+      .ap-bottom-toolbar{bottom:5px;left:5px;max-width:calc(100% - 10px);flex-wrap:wrap}
+    }
+    @media(max-width:440px){
+      .ap-top-overlays{font-size:10px}
+      .ap-top-overlays .cam-btn,.ap-top-overlays .lens-chip{font-size:10px;padding:3px 4px}
+      .ap-bottom-toolbar button{font-size:10px!important;padding:5px!important}
+      .ap-bottom-toolbar{gap:2px;padding:3px}
+      .ap-lens-bar{max-width:100%;flex-wrap:wrap}
+      #canvasModeBadge{font-size:10px}
+      #examQuestion{font-size:12px}
+      nav .mode-tab{padding:5px 8px}
+    }
+  </style>
+  <style id="ap-mobile-bridge">@media(max-width:640px){.ap-lens-bar{display:flex;flex-wrap:wrap}.part-card{font-size:11px}}</style>
+</head>
+<body class="h-screen w-screen flex flex-col">
+
+  <!-- ===================================================================== -->
+  <!-- 상단 헤더 & 4대 실전 기출 모드 탭 바 -->
+  <!-- ===================================================================== -->
+  <header class="bg-[#081510]/95 border-b border-emerald-900/70 px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 z-20 shrink-0">
+    <div class="flex items-center gap-3">
+      <a href="./index.html" class="ap-back-home" aria-label="전체 단원으로">← 전체 단원</a>
+      <div class="w-9 h-9 rounded-lg bg-amber-500/20 border border-amber-400/60 flex items-center justify-center text-amber-300 shadow-inner">
+        <i class="fa-solid fa-globe text-lg"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-base md:text-lg font-extrabold tracking-tight text-emerald-50 chalk-text">공간좌표 &amp; 구의 방정식 3D 킬러 랩</h1>
+          <span class="text-[11px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">LAB 09 · 3D COORDS &amp; SPHERE</span>
+        </div>
+        <p class="text-[11px] text-emerald-400/85 hidden sm:block">축·평면 수선의 발 &amp; 대칭이동 최단거리 · 평면 교점 내분비(|z₁|:|z₂|) · 구의 교선원(r=√(R²-d²)) · 접선장</p>
+      </div>
+    </div>
+
+    <!-- 4대 기출 모드 탭 -->
+    <nav class="flex items-center gap-1.5 overflow-x-auto py-1 max-w-full">
+      <button onclick="setMode(1)" id="tab-1" class="mode-tab active text-xs md:text-sm px-3.5 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-box-open"></i>
+        <span>1. 수선의 발 &amp; 대칭 최단거리</span>
+      </button>
+      <button onclick="setMode(2)" id="tab-2" class="mode-tab text-xs md:text-sm px-3.5 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-divide"></i>
+        <span>2. 기출1: 내분점 &amp; 평면 교점(|z₁|:|z₂|)</span>
+      </button>
+      <button onclick="setMode(3)" id="tab-3" class="mode-tab text-xs md:text-sm px-3.5 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-circle-radiation"></i>
+        <span>3. 기출2: 구와 평면의 교선원(R²-d²)</span>
+      </button>
+      <button onclick="setMode(4)" id="tab-4" class="mode-tab text-xs md:text-sm px-3.5 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-satellite"></i>
+        <span>4. 기출3: 구 밖의 점 최대·최소 &amp; 접선장</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 메인 워크스페이스 (좌측 3D 칠판 캔버스 + 우측 440px 실전 기출 & 솔루션 패널) -->
+  <!-- ===================================================================== -->
+  <div id="ap-workspace" class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+    <!-- 좌측: 인터랙티브 3D 분필 칠판 캔버스 -->
+    <main class="flex-1 relative chalkboard-bg overflow-hidden flex items-center justify-center">
+      <canvas id="boardCanvas" class="w-full h-full block cursor-grab active:cursor-grabbing"></canvas>
+
+      <!-- 좌측 상단: 현재 모드 배지 & 3D 회전 힌트 + 실시간 KaTeX 핵심 수식 -->
+      <div class="ap-top-overlays absolute top-3.5 left-3.5 pointer-events-none flex flex-col gap-2 max-w-xs sm:max-w-md z-10">
+        <div class="bg-[#07140f]/85 backdrop-blur-md border border-emerald-700/50 rounded-xl px-3.5 py-2.5 shadow-lg">
+          <div class="flex items-center gap-2 text-amber-300 text-xs font-extrabold mb-1">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+            <span id="canvasModeBadge">MODE 1 · 공간좌표 직육면체 투영과 대칭이동 최단거리</span>
+          </div>
+          <p id="canvasActionHint" class="text-[12px] text-emerald-100/90 leading-relaxed">
+            마우스로 3D 칠판을 회전시켜 보세요! <span class="text-sky-300 font-bold">xy평면 위를 거치는 최단거리 AP + PB</span>는 한 점을 대칭이동한 <span class="text-amber-300 font-bold">직선 거리 AB'</span>와 같습니다!
+          </p>
+        </div>
+
+        <!-- 실시간 3D 공간좌표 & 구의 방정식 배지 -->
+        <div class="bg-[#07140f]/90 backdrop-blur-md border border-emerald-800/70 rounded-xl px-3.5 py-2 shadow-md inline-flex flex-wrap items-center gap-3 w-fit">
+          <div class="text-xs text-emerald-100 flex items-center gap-1.5">
+            <span class="text-amber-300 font-extrabold">핵심 공식:</span>
+            <span id="eqDisplay" class="text-amber-200 font-bold"></span>
+          </div>
+          <span class="text-emerald-700">|</span>
+          <div class="text-xs text-sky-300 flex items-center gap-1.5">
+            <span id="subEqDisplay" class="font-bold"></span>
+          </div>
+        </div>
+
+        <div class="ap-lens-bar pointer-events-auto bg-[#07140f]/90 backdrop-blur-md border border-emerald-700/60 rounded-xl p-2 shadow-lg flex flex-wrap gap-1" role="group" aria-label="관찰 렌즈 선택">
+          <span class="text-[11px] text-emerald-300 font-bold px-1">🔎 관찰 렌즈</span>
+          <button type="button" class="lens-chip active" data-lens="all" onclick="setLens('all')">전체</button>
+          <button type="button" class="lens-chip" data-lens="construction" onclick="setLens('construction')">작도</button>
+          <button type="button" class="lens-chip" data-lens="measure" onclick="setLens('measure')">길이·비율</button>
+          <button type="button" class="lens-chip" data-lens="focus" onclick="setLens('focus')">조각 확대</button>
+        </div>
+
+        <!-- [핵심 추가 기능] 3D 공간좌표 뷰포트 & 단면 원클릭 스냅 바 -->
+        <div class="pointer-events-auto bg-[#07140f]/95 backdrop-blur-md border border-emerald-700/60 rounded-xl p-2 shadow-xl flex flex-wrap items-center gap-1.5 w-fit">
+          <span class="text-[11px] text-emerald-300 font-extrabold px-1.5 flex items-center gap-1">
+            <i class="fa-solid fa-video text-amber-400"></i> 3D 좌표 시점:
+          </span>
+          <button onclick="snapCamera('iso')" class="cam-btn px-2.5 py-1 rounded-lg border border-emerald-800 bg-emerald-950/80 text-[11px] text-emerald-100 font-bold transition">
+            🧊 제1팔분면 입체 뷰
+          </button>
+          <button onclick="snapCamera('section')" class="cam-btn px-2.5 py-1 rounded-lg border border-amber-500/50 bg-amber-500/20 text-[11px] text-amber-200 font-extrabold transition" title="3차원 구와 공간도형이 2차원 원과 직각삼각형으로 겹쳐 보이는 킬러 단면 뷰">
+            📐 2D 대원 단면 뷰 (필살기!)
+          </button>
+          <button onclick="snapCamera('xy')" class="cam-btn px-2.5 py-1 rounded-lg border border-emerald-800 bg-emerald-950/80 text-[11px] text-emerald-100 font-bold transition">
+            ⬇️ xy평면 위에서 보기
+          </button>
+        </div>
+      </div>
+
+      <!-- 좌측 하단 플로팅 캔버스 툴바 -->
+      <div class="ap-bottom-toolbar absolute bottom-4 left-4 flex items-center gap-1.5 bg-[#07140f]/90 backdrop-blur-md border border-emerald-800/70 p-1.5 rounded-xl shadow-xl z-10">
+        <button onclick="snapToProblem()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold flex items-center gap-1.5 transition shadow" title="현재 기출 문제 조건으로 즉시 세팅">
+          <i class="fa-solid fa-crosshairs"></i>
+          <span>문제 조건 스냅</span>
+        </button>
+        <button onclick="toggleAutoPlay()" id="btnAutoPlay" class="px-2.5 py-1.5 rounded-lg bg-emerald-900/50 hover:bg-emerald-800/60 border border-emerald-600/40 text-emerald-200 text-xs font-bold flex items-center gap-1.5 transition" title="3D 입체 자동 회전">
+          <i class="fa-solid fa-play" id="iconAutoPlay"></i>
+          <span id="txtAutoPlay">3D 자동 회전</span>
+        </button>
+        <div class="h-4 w-[1px] bg-emerald-800/70 mx-0.5"></div>
+        <button onclick="zoomCanvas(1.15)" class="w-8 h-8 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="확대">
+          <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </button>
+        <button onclick="zoomCanvas(0.87)" class="w-8 h-8 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="축소">
+          <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </button>
+        <button onclick="resetView()" class="w-8 h-8 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="화면 원점 초기화">
+          <i class="fa-solid fa-compress-arrows-alt"></i>
+        </button>
+        <button onclick="toggleGrid()" id="btnGrid" class="px-2.5 py-1.5 rounded-lg bg-emerald-900/50 border border-emerald-600/40 text-emerald-200 text-xs font-medium transition" title="xy평면 모눈 격자 켜기/끄기">
+          <i class="fa-solid fa-border-all"></i>
+        </button>
+      </div>
+
+      <!-- 우측 하단 칠판 지우개 & 분필 소품 -->
+      <div class="absolute bottom-3 right-4 pointer-events-none hidden md:flex items-end gap-2 opacity-75">
+        <div class="w-10 h-2 bg-white rounded-sm shadow"></div>
+        <div class="w-10 h-2 bg-amber-300 rounded-sm shadow"></div>
+        <div class="w-10 h-2 bg-pink-400 rounded-sm shadow"></div>
+        <div class="w-16 h-5 bg-amber-900/90 border-t-4 border-slate-300 rounded-sm shadow-lg"></div>
+      </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- 우측: 실전 기출 문제 & 10초 컷 솔루션 허브 (440px) -->
+    <!-- =================================================================== -->
+    <aside class="w-full lg:w-[440px] bg-[#081611] border-t lg:border-t-0 lg:border-l border-emerald-900/80 flex flex-col h-[52vh] lg:h-full shrink-0 z-10">
+      <div class="p-4 overflow-y-auto flex-1 space-y-4">
+
+        <!-- 1. [Exam View] 실전 기출 문제 카드 & 원클릭 스냅 버튼 -->
+        <section class="bg-gradient-to-br from-[#112a21] to-[#0b1c16] border border-amber-400/50 rounded-xl p-3.5 shadow-lg relative overflow-hidden">
+          <div class="flex items-center justify-between mb-2">
+            <span id="examTag" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40 flex items-center gap-1.5">
+              <i class="fa-solid fa-award"></i> 평가원·수능 핵심 기출 변형
+            </span>
+            <span id="examTarget" class="text-[11px] font-mono text-emerald-300 font-bold">목표 시간: 5초</span>
+          </div>
+
+          <!-- 기출 문제 발문 (KaTeX + 세로 분수 포함) -->
+          <div id="examQuestion" class="text-xs md:text-[13px] text-emerald-50 leading-loose bg-[#07130e]/85 p-3 rounded-lg border border-emerald-800/70 mb-3 font-medium">
+            <!-- JS에서 렌더링 -->
+          </div>
+
+          <!-- 핵심 정답 요약 & 원클릭 문제 조건 스냅 버튼 -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
+            <div class="bg-[#07130e] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2">
+              <span class="text-[11px] text-emerald-400 font-bold">실전 정답:</span>
+              <span id="examAnswerBadge" class="text-xs font-extrabold text-amber-300"></span>
+            </div>
+
+            <button onclick="snapToProblem()" class="snap-btn-glow px-3.5 py-2 rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-extrabold text-xs flex items-center justify-center gap-1.5 transition shadow-md shrink-0">
+              <i class="fa-solid fa-bullseye"></i>
+              <span>🎯 문제 조건으로 원클릭 스냅</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 2. 단계별 칠판 보조선 언락 (Step 1 ~ 3) -->
+        <section class="bg-[#0d211a] border border-emerald-800/70 rounded-xl p-3.5">
+          <div class="flex items-center justify-between mb-2.5">
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-layer-group text-amber-400"></i>
+              <span>단계별 3D 공간좌표·구 보조선 언락 (Steps)</span>
+            </h2>
+            <button onclick="unlockAllSteps()" class="text-[11px] text-amber-300 hover:underline font-semibold">전체 표시</button>
+          </div>
+
+          <div class="space-y-1.5">
+            <button onclick="toggleStep(1)" id="stepBtn1" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">1</span>
+                <span id="stepLabel1" class="text-xs font-semibold">점 A의 좌표 직육면체 및 축·평면 수선의 발</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon1"></i>
+            </button>
+
+            <button onclick="toggleStep(2)" id="stepBtn2" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">2</span>
+                <span id="stepLabel2" class="text-xs font-semibold">xy평면 위 경유점 P 및 꺾인 경로 AP + PB</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon2"></i>
+            </button>
+
+            <button onclick="toggleStep(3)" id="stepBtn3" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">3</span>
+                <span id="stepLabel3" class="text-xs font-semibold">대칭점 B'(x, y, -z) 연결 일직선 최단거리 AB'</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon3"></i>
+            </button>
+          </div>
+        </section>
+
+        <section id="partsBox" class="bg-[#0d211a] border border-emerald-800/70 rounded-xl p-3 space-y-2" aria-label="도형 조각 해부">
+          <div class="flex items-center justify-between"><h2 class="text-xs font-extrabold text-emerald-300">🔬 조각 해부 · 단계별 하이라이트</h2><button type="button" class="text-[11px] text-amber-300" onclick="setPartFocus(null)">전체 조각</button></div>
+          <div class="grid gap-2" id="partCards"></div>
+        </section>
+
+        <!-- 3. 2대 비교 아코디언: [교과서 3분 정석 풀이] vs [10초 컷 실전 기하 비기] -->
+        <section class="space-y-2.5">
+          <!-- 아코디언 1: 교과서식 정석 풀이 (대수적 전개 - 3분 소요) -->
+          <div class="border border-rose-500/40 rounded-xl bg-[#151318] overflow-hidden">
+            <button onclick="toggleAccordion('textbook')" class="w-full px-3.5 py-2.5 flex items-center justify-between text-left bg-rose-950/40 hover:bg-rose-950/60 transition">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/40 text-[10px] font-extrabold">3분 소요</span>
+                <span class="text-xs font-extrabold text-rose-100">교과서식 정석 풀이 (미지수 연립·전개)</span>
+              </div>
+              <i id="accIcon-textbook" class="fa-solid fa-chevron-down text-rose-300 text-xs transition-transform"></i>
+            </button>
+            <div id="accBody-textbook" class="hidden p-3.5 text-xs space-y-2.5 border-t border-rose-500/20">
+              <div id="textbookSteps" class="text-[11.5px] text-slate-200 leading-loose space-y-2 bg-black/40 p-3 rounded-lg border border-rose-900/40">
+                <!-- JS 렌더링 -->
+              </div>
+              <div id="textbookWarning" class="p-2.5 rounded-lg bg-rose-500/15 border border-rose-500/40 text-rose-200 text-[11.5px] font-semibold leading-snug">
+                <!-- JS 렌더링 -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 아코디언 2: 10초 컷 실전 기하 비기 (강사 판서 - 기본 열림) -->
+          <div class="border border-amber-400/60 rounded-xl bg-[#11241b] overflow-hidden shadow-lg">
+            <button onclick="toggleAccordion('shortcut')" class="w-full px-3.5 py-2.5 flex items-center justify-between text-left bg-amber-500/15 hover:bg-amber-500/25 transition">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-extrabold">10초 컷</span>
+                <span class="text-xs font-extrabold text-amber-300">10초 컷 실전 기하 비기 (일타 강사 판서)</span>
+              </div>
+              <i id="accIcon-shortcut" class="fa-solid fa-chevron-up text-amber-300 text-xs transition-transform"></i>
+            </button>
+            <div id="accBody-shortcut" class="p-3.5 text-xs space-y-2.5 border-t border-amber-400/30">
+              <div id="shortcutSteps" class="text-emerald-50 leading-loose space-y-1.5 bg-[#07130e]/90 p-3 rounded-lg border border-emerald-800/80 font-medium">
+                <!-- JS 렌더링 -->
+              </div>
+              <div id="shortcutHighlight" class="p-2.5 rounded-lg bg-amber-400/20 border border-amber-400/50 text-amber-200 text-[12px] font-extrabold leading-snug shadow-inner">
+                <!-- JS 렌더링 -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. 실시간 3D 공간좌표 & 구 수치 모니터 & 슬라이더 -->
+        <section class="bg-[#0d211a] border border-emerald-800/70 rounded-xl p-3.5 space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-gauge-high text-amber-400"></i>
+              <span>실시간 3D 공간좌표·구 모니터</span>
+            </h2>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-600/50">오차 0.000%</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel1" class="text-[10px] text-sky-300">기준점 A / B 공간좌표</div>
+              <div id="statVal1" class="text-xs font-bold text-sky-300 mt-0.5">A(1,1,2) | B(3,4,4)</div>
+            </div>
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel2" class="text-[10px] text-pink-300">대칭점 B' / 내분비</div>
+              <div id="statVal2" class="text-xs font-bold text-pink-300 mt-0.5">B'(3, 4, -4)</div>
+            </div>
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel3" class="text-[10px] text-amber-300">현재 거리 합 vs 최단거리</div>
+              <div id="statVal3" class="text-xs font-bold text-amber-300 mt-0.5">현재 7.00 | 최소 7.00</div>
+            </div>
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel4" class="text-[10px] text-emerald-300">핵심 기하량 (r / 접선장 l)</div>
+              <div id="statVal4" class="text-xs font-bold text-emerald-300 mt-0.5">최단점 P(5/3, 2, 0)</div>
+            </div>
+          </div>
+
+          <!-- 모드별 동적 슬라이더 컨테이너 -->
+          <div class="pt-2 border-t border-emerald-800/60 space-y-2.5">
+            <!-- 모드 1, 2용: 경유점/내분 매개변수 t 슬라이더 -->
+            <div id="sliderGroup12">
+              <div class="flex justify-between text-[11px] mb-1">
+                <span id="sliderLabel12" class="text-emerald-200">경유점 위치 / 내분 비율 <strong class="text-amber-300">t</strong> (0 ~ 1)</span>
+                <span id="valParam12" class="font-mono font-bold text-amber-300">t = 0.33 (최단 일직선!)</span>
+              </div>
+              <input type="range" id="sliderParam12" min="0" max="1" step="0.01" value="0.33" class="w-full" oninput="onParam12Change()" />
+            </div>
+
+            <!-- 모드 3용: 구의 중심 높이 d (평면과의 거리) 슬라이더 -->
+            <div id="sliderGroup3" class="hidden">
+              <div class="flex justify-between text-[11px] mb-1">
+                <span class="text-emerald-200">구 중심 높이 <strong class="text-pink-300">d = |z_C|</strong> (교선원 반지름 r = √(25-d²))</span>
+                <span id="valSphereD" class="font-mono font-bold text-pink-300">d = 3.00 (교선원 r = 4.00)</span>
+              </div>
+              <input type="range" id="sliderSphereD" min="0.0" max="4.8" step="0.1" value="3.0" class="w-full" oninput="onSphereDChange()" />
+            </div>
+
+            <!-- 모드 4용: 구 위의 동점 Q 회전각 슬라이더 -->
+            <div id="sliderGroup4" class="hidden">
+              <div class="flex justify-between text-[11px] mb-1">
+                <span class="text-emerald-200">구 위 동점 Q 각도 <strong class="text-amber-300">θ</strong> (최대 d+R / 최소 d-R / 접점 T)</span>
+                <span id="valSphereTheta" class="font-mono font-bold text-amber-300">접점 각도 (PT = 4.00)</span>
+              </div>
+              <input type="range" id="sliderSphereTheta" min="0" max="360" step="1" value="53" class="w-full" oninput="onSphereThetaChange()" />
+            </div>
+
+            <!-- 공통: 3D 카메라 Yaw / Pitch 슬라이더 -->
+            <div class="grid grid-cols-2 gap-2 pt-1">
+              <div>
+                <div class="flex justify-between text-[10px] mb-1">
+                  <span class="text-emerald-200">3D 회전 <strong class="text-amber-300">Yaw</strong></span>
+                  <span id="valYaw" class="font-mono text-amber-300">-35°</span>
+                </div>
+                <input type="range" id="sliderYaw" min="-180" max="180" step="1" value="-35" class="w-full" oninput="onCameraSlider()" />
+              </div>
+              <div>
+                <div class="flex justify-between text-[10px] mb-1">
+                  <span class="text-emerald-200">3D 기울기 <strong class="text-sky-300">Pitch</strong></span>
+                  <span id="valPitch" class="font-mono text-sky-300">22°</span>
+                </div>
+                <input type="range" id="sliderPitch" min="-15" max="85" step="1" value="22" class="w-full" oninput="onCameraSlider()" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </aside>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 인터랙티브 3D 공간좌표 & 구 와이어프레임 엔진 스크립트 -->
+  <!-- ===================================================================== -->
+  <script>
+    // -------------------------------------------------------------------------
+    // 0. KaTeX 렌더링 헬퍼 함수
+    // -------------------------------------------------------------------------
+    function tex(latexStr) {
+      if (window.katex) {
+        return katex.renderToString(latexStr, { throwOnError: false, displayMode: false });
+      }
+      return latexStr;
+    }
+
+    // -------------------------------------------------------------------------
+    // 1. 전역 상태 관리 (State)
+    //     * 수학적 공간좌표 (x, y, z)에서 z축이 위쪽(높이)이 되도록 표준 공간좌표계 적용!
+    // -------------------------------------------------------------------------
+    const state = {
+      mode: 1, // 1: 수선의발&대칭최단거리, 2: 내분점&평면교점(|z1|:|z2|), 3: 구와평면교선원(R^2-d^2), 4: 구최대최소&접선장
+      yaw: (35 * Math.PI) / 180,
+      pitch: (22 * Math.PI) / 180,
+      scale: 30,
+      offsetX: 40,
+      offsetY: 45,
+      lens: 'all',
+      partIdx: null,
+      hoverPart: null,
+      labels: [],
+      protectedAreas: [],
+      showGrid: true,
+      autoPlay: false,
+      animDir: 1,
+      userZoomed: false,
+      steps: { 1: true, 2: true, 3: true },
+
+      // 모드 1: A(1, 1, 2), B(3, 4, 4), B'(3, 4, -4). 최단점 P는 t = 2/(2+4) = 1/3 지점
+      t12: 1 / 3,
+
+      // 모드 3: 구 반지름 R = 5, 중심 C(0, 0, d) (초기값 d = 3 -> 교선원 반지름 r = 4)
+      R3: 5, // 실제 공간 반지름 5
+      d3: 3.0, // 수학적 중심 높이 d (0 ~ 4.8)
+
+      // 모드 4: 구 중심 C(0,0,0), 반지름 R=3, 외부 점 P(4, 0, 3) (중심거리 d = 5, 접선장 l = 4)
+      theta4: Math.acos(3 / 5), // 접점 T가 되는 각도 (~53.13°)
+
+      isDragging: false,
+      lastMouse: { x: 0, y: 0 },
+      camAnim: {
+        active: false,
+        progress: 0,
+        startYaw: 0,
+        startPitch: 0,
+        targetYaw: 0,
+        targetPitch: 0
+      }
+    };
+
+    // -------------------------------------------------------------------------
+    // 2. 4대 실전 기출 문제 & 3분 정석 vs 10초 컷 솔루션 데이터베이스
+    // -------------------------------------------------------------------------
+    const examData = {
+      1: {
+        badge: "MODE 1 · 공간좌표 수선의 발·대칭이동 & 평면 경유 최단거리 (AB')",
+        hint: "하단 슬라이더 <span class='text-amber-300 font-bold'>t</span>를 움직여 보세요! <span class='text-sky-300 font-bold'>xy평면 위의 점 P</span>가 대칭점 <span class='text-pink-300 font-bold'>B'(3, 4, -4)를 잇는 일직선</span>과 만날 때 최단거리 <span class='text-amber-300 font-bold'>7</span>이 됩니다!",
+        tag: "수능·평가원 3점·4점 필수 최단거리 유형",
+        targetTime: "목표 시간: 5초",
+        question: () => `좌표공간에서 두 점 ${tex('A(1, 1, 2), \\; B(3, 4, 4)')} 와 ${tex('xy')}평면 위를 움직이는 점 ${tex('P')}가 있다. ${tex('\\overline{AP} + \\overline{PB}')}의 최솟값과 그때의 점 ${tex('P')}가 선분 ${tex('AB')}의 정사영을 내분하는 비를 구하시오.`,
+        answerBadge: () => `최솟값 ${tex('= \\overline{AB\'} = 7')}, 내분비 ${tex('= 2 : 4 = 1 : 2')}`,
+        tSnap: 1 / 3,
+        cam: { yaw: (35 * Math.PI) / 180, pitch: (20 * Math.PI) / 180 },
+        sectionCam: { yaw: Math.atan2(3, 2), pitch: 0 },
+        steps: [
+          "두 점 A(1, 1, 2), B(3, 4, 4) 및 xy평면 수선의 발 A₀(1,1,0), B₀(3,4,0)",
+          "xy평면 위의 동점 P 및 꺾인 경로 AP + PB 표시",
+          "점 B의 xy평면 대칭점 B'(3, 4, -4) 연결 ⇒ 일직선 최단거리 AB' = 7"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('xy')}평면 위의 점을 ${tex('P(x, y, 0)')}이라 두면:<br/>
+&nbsp;&nbsp;${tex('\\overline{AP} + \\overline{PB} = \\sqrt{(x-1)^2 + (y-1)^2 + 4} + \\sqrt{(x-3)^2 + (y-4)^2 + 16}')}<br/>
+② 점 ${tex('B(3, 4, 4)')}를 ${tex('xy')}평면에 대칭이동한 점 ${tex("B'(3, 4, -4)")}를 잡으면 ${tex("\\overline{PB} = \\overline{PB'}")}<br/>
+③ 따라서 ${tex("\\overline{AP} + \\overline{PB} = \\overline{AP} + \\overline{PB'} \\ge \\overline{AB'}")}<br/>
+④ 두 점 ${tex("A(1, 1, 2), B'(3, 4, -4)")} 사이의 거리 공식 적용:<br/>
+&nbsp;&nbsp;${tex("\\overline{AB'} = \\sqrt{(3-1)^2 + (4-1)^2 + (-4-2)^2} = \\sqrt{4 + 9 + 36} = 7")}.`,
+          warning: "⚠️ 수선의 발이나 대칭이동에서 어느 좌표의 부호가 바뀌는지 헷갈리면 부호 실수로 오답이 나옵니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[수선의 발 & 대칭이동 1초 암기법]</strong>:<br/>
+&nbsp;&nbsp;• 『<strong>이름에 있는 문자만 살리고</strong> 나머지 0』 ⇒ ${tex('xy')}평면 수선의 발: <strong class="text-sky-300">${tex('(x, y, 0)')}</strong><br/>
+&nbsp;&nbsp;• 『<strong>이름에 없는 문자만 부호 반대</strong>』 ⇒ ${tex('xy')}평면 대칭이동: <strong class="text-pink-300">${tex("B'(3, 4, -4)")}</strong><br/>
+② 최단거리 ${tex("= \\overline{AB'} = \\sqrt{2^2 + 3^2 + (-6)^2} =")} <strong class="text-amber-300">${tex('\\sqrt{4 + 9 + 36} = 7')}</strong>!<br/>
+③ 최단점 ${tex('P')}는 높이가 ${tex('2 : 4')} 이므로 정사영 선분을 무조건 <strong class="text-emerald-300">${tex('1 : 2')}로 내분</strong>!`,
+          highlight: "💡 3차원 피타고라스 황금 조합 암기: ① (1, 2, 2) → 3  ② (2, 3, 6) → 7  ③ (1, 4, 8) → 9  ④ (3, 4, 12) → 13 !"
+        })
+      },
+
+      2: {
+        badge: "MODE 2 · 기출 1: 선분 AB가 좌표평면과 만나는 교점 & 내분비 (|z₁| : |z₂|)",
+        hint: "선분 AB가 <span class='text-sky-300 font-bold'>xy평면(z = 0)을 뚫고 지나가는 교점 P</span>는 무조건 두 점의 높이 절댓값 비인 <span class='text-amber-300 font-bold'>|z₁| : |z₂| 내분점</span>입니다!",
+        tag: "평가원·수능 4점 내분점 10초 컷 킬러",
+        targetTime: "목표 시간: 5초",
+        question: () => `좌표공간의 두 점 ${tex('A(-2, 1, 4), \\; B(4, -5, -2)')} 를 잇는 선분 ${tex('AB')}가 ${tex('xy')}평면과 만나는 점을 ${tex('P')}라 하자. 점 ${tex('P')}가 선분 ${tex('AB')}를 내분하는 비 ${tex('m : n')}과 점 ${tex('P')}의 좌표를 구하시오.`,
+        answerBadge: () => `${tex('2 : 1')} 내분점, ${tex('P(2, -3, 0)')}`,
+        tSnap: 2 / 3, // |4| : |-2| = 4 : 2 = 2 : 1 내분점 (t = 2/3)
+        cam: { yaw: (-32 * Math.PI) / 180, pitch: (18 * Math.PI) / 180 },
+        sectionCam: { yaw: (-45 * Math.PI) / 180, pitch: (2 * Math.PI) / 180 },
+        steps: [
+          "xy평면 위쪽 점 A(-2, 1, 4)와 아래쪽 점 B(4, -5, -2) 연결",
+          "xy평면 수선의 발 A₀, B₀ 및 닮음인 두 직각삼각형 ΔAA₀P ∽ ΔBB₀P",
+          "높이 비 |z₁| : |z₂| = 4 : 2 = 2 : 1 내분점 ⇒ P(2, -3, 0) 즉시 도출!"
+        ],
+        textbook: () => ({
+          steps: `① 선분 ${tex('AB')}를 ${tex('m : n')}으로 내분하는 점 ${tex('P')}의 좌표를 세 문자 모두 작성:<br/>
+&nbsp;&nbsp;${tex('P\\left(\\dfrac{4m - 2n}{m+n}, \\; \\dfrac{-5m + n}{m+n}, \\; \\dfrac{-2m + 4n}{m+n}\\right)')}<br/>
+② ${tex('xy')}평면 위의 점이므로 ${tex('z')}좌표가 ${tex('0')}이어야 함:<br/>
+&nbsp;&nbsp;${tex('\\dfrac{-2m + 4n}{m+n} = 0 \\implies 2m = 4n \\implies m : n = 2 : 1')}<br/>
+③ 다시 ${tex('m = 2, n = 1')}을 ${tex('x, y')}좌표 식에 대입하여 ${tex('P(2, -3, 0)')} 계산...`,
+          warning: "⚠️ m, n 미지수로 내분점 공식을 세 번 다 적은 뒤에 비율을 구하면 식이 번거롭고 시간이 걸립니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 선분 ${tex('AB')}가 ${tex('xy')}평면(${tex('z=0')})을 뚫는다는 것은 <strong>높이(${tex('z')}좌표)가 ${tex('+4')}에서 ${tex('-2')}로 바뀌며 ${tex('0')}을 지난다</strong>는 뜻!<br/>
+② 따라서 내분비는 계산할 필요 없이 무조건 <strong class="text-amber-300">높이의 절댓값 비 ${tex('|z_1| : |z_2| = 4 : 2 = 2 : 1')}</strong>!<br/>
+③ ${tex('2 : 1')} 내분 공식으로 <strong class="text-emerald-300">${tex('x = \\dfrac{8 - 2}{3} = 2, \\; y = \\dfrac{-10 + 1}{3} = -3 \\implies P(2, -3, 0)')}</strong>!`,
+          highlight: "💡 평면 교점 내분비 1초 공식: ① xy평면 교점 = |z₁|:|z₂| ② yz평면 교점 = |x₁|:|x₂| ③ zx평면 교점 = |y₁|:|y₂| !"
+        })
+      },
+
+      3: {
+        badge: "MODE 3 · 기출 2: 구와 평면의 교선원 반지름 공식 (r = √(R² - d²))",
+        hint: "<span class='text-sky-300 font-bold'>[📐 2D 대원 단면 뷰]</span>를 눌러보세요! 3차원 구를 평면으로 자르는 문제는 무조건 중심 수선 <span class='text-pink-300 font-bold'>d</span>를 내려 <span class='text-amber-300 font-bold'>직각삼각형 R² = d² + r²</span>으로 풉니다!",
+        tag: "수능 기하 4점 구의 방정식 최고 빈출",
+        targetTime: "목표 시간: 5초",
+        question: () => `구 ${tex('x^2 + y^2 + (z - 3)^2 = 25')} 가 ${tex('xy')}평면(${tex('z = 0')})과 만나서 생기는 도형(교선원)의 반지름의 길이 ${tex('r')}과 넓이를 구하시오.`,
+        answerBadge: () => `교선원 반지름 ${tex('r = 4')}, 넓이 ${tex('= 16\\pi')}`,
+        dSnap: 3.0,
+        cam: { yaw: (-35 * Math.PI) / 180, pitch: (20 * Math.PI) / 180 },
+        sectionCam: { yaw: (0 * Math.PI) / 180, pitch: (0 * Math.PI) / 180 },
+        steps: [
+          "구의 중심 C(0, 0, 3) 및 구의 반지름 R = 5 와이어프레임",
+          "중심 C에서 xy평면에 내린 수선의 발 H(0, 0, 0) 및 거리 d = 3",
+          "피타고라스 직각삼각형 ΔCHP: 교선원 반지름 r = √(5² - 3²) = 4"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('xy')}평면의 방정식은 ${tex('z = 0')} 이므로 구의 방정식에 ${tex('z = 0')}을 대입:<br/>
+&nbsp;&nbsp;${tex('x^2 + y^2 + (0 - 3)^2 = 25')}<br/>
+② 상수항을 이항하여 정리:<br/>
+&nbsp;&nbsp;${tex('x^2 + y^2 = 25 - 9 = 16 = 4^2, \\; z = 0')}<br/>
+③ 따라서 반지름이 ${tex('r = 4')} 인 원이므로 넓이는 ${tex('16\\pi')}.`,
+          warning: "⚠️ 평면이 좌표평면(z=0)이 아니라 비스듬한 평면으로 주어지는 4점 기출에서는 대입법 자체가 불가능합니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[구는 무조건 중심 C에서 수선의 발 H를 내린다!]</strong><br/>
+② 구의 반지름(빗변) <strong class="text-sky-300">${tex('R = 5')}</strong>, 중심 ${tex('C(0,0,3)')}에서 평면까지 수직 거리 <strong class="text-pink-300">${tex('d = 3')}</strong>!<br/>
+③ 직각삼각형 피타고라스 정리에 의해 교선원 반지름은 언제나:<br/>
+&nbsp;&nbsp;<strong class="text-amber-300">${tex('r = \\sqrt{R^2 - d^2} = \\sqrt{5^2 - 3^2} = 4')}</strong> ⇒ 넓이 <strong class="text-emerald-300">${tex('= 16\\pi')}</strong>!`,
+          highlight: "💡 구가 평면과 만나면 구를 입체로 그리지 마세요! 무조건 단면 원 하나와 직선 하나를 긋고 【 R² = d² + r² 】 직각삼각형만 그리면 끝납니다!"
+        })
+      },
+
+      4: {
+        badge: "MODE 4 · 기출 3: 구 밖의 점에서 최대·최소 거리(d±R) & 접선의 길이",
+        hint: "구 밖의 점 P에서 구 위의 동점 Q까지 거리는 중심을 관통할 때 <span class='text-emerald-300 font-bold'>최대(d+R)</span>·<span class='text-rose-400 font-bold'>최소(d-R)</span>가 되며, 접점 T까지는 <span class='text-amber-300 font-bold'>직각삼각형 ΔCTP (l = √(d²-R²))</span>를 이룹니다!",
+        tag: "수능·평가원 4점 구와 접선 킬러",
+        targetTime: "목표 시간: 5초",
+        question: () => `원점 ${tex('C(0, 0, 0)')}을 중심으로 하고 반지름이 ${tex('R = 3')} 인 구 ${tex('x^2 + y^2 + z^2 = 9')} 와 구 밖의 점 ${tex('P(4, 0, 3)')} 이 있다. 구 위의 점 ${tex('Q')}에 대하여 ${tex('\\overline{PQ}')}의 최댓값 ${tex('M')}, 최솟값 ${tex('m')}, 그리고 점 ${tex('P')}에서 구에 그은 접선의 길이 ${tex('l = \\overline{PT}')}를 구하시오.`,
+        answerBadge: () => `${tex('M = 8, \\; m = 2, \\; \\text{접선장 } l = 4')}`,
+        thetaSnap: Math.acos(3 / 5),
+        cam: { yaw: (-28 * Math.PI) / 180, pitch: (18 * Math.PI) / 180 },
+        sectionCam: { yaw: (0 * Math.PI) / 180, pitch: (0 * Math.PI) / 180 },
+        steps: [
+          "구 중심 C(0,0,0), 반지름 R = 3 및 외부 점 P(4,0,3) 연결 (중심거리 d = 5)",
+          "중심 관통선 위의 최댓값 Q_max(d+R = 8) 및 최솟값 Q_min(d-R = 2)",
+          "접점 T에서의 수직 반지름 CT ⊥ PT ⇒ 접선의 길이 l = √(5² - 3²) = 4"
+        ],
+        textbook: () => ({
+          steps: `① 구의 중심 ${tex('C(0, 0, 0)')}에서 점 ${tex('P(4, 0, 3)')}까지의 거리 계산:<br/>
+&nbsp;&nbsp;${tex('d = \\overline{CP} = \\sqrt{4^2 + 0^2 + 3^2} = 5')}<br/>
+② 삼각부등식 ${tex('|\\overline{CP} - \\overline{CQ}| \\le \\overline{PQ} \\le \\overline{CP} + \\overline{CQ}')} 에 의해 ${tex('M = 8, \\; m = 2')}<br/>
+③ 접선 ${tex('PT')}는 접점 반지름 ${tex('CT')}와 수직(${tex('\\angle CTP = 90^\\circ')})이므로 피타고라스 정리로 ${tex('l = \\sqrt{5^2 - 3^2} = 4')}.`,
+          warning: "⚠️ 구에 그은 접점들이 모이면 '접점 원(고깔모자 밑면)'이 되는데, 3D로만 생각하면 반지름 r' = Rl / d (소공식)를 놓치기 쉽습니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 중심거리 <strong class="text-sky-300">${tex('d = \\overline{CP} = \\sqrt{4^2 + 3^2} = 5')}</strong>, 구 반지름 <strong class="text-pink-300">${tex('R = 3')}</strong> 확인!<br/>
+② 중심 관통선에서 <strong class="text-emerald-300">최대 ${tex('M = d + R = 8')}</strong>, <strong class="text-rose-300">최소 ${tex('m = d - R = 2')}</strong> (1초 컷!)<br/>
+③ 접점 ${tex('T')}에서는 무조건 <strong class="text-amber-300">${tex('3 : 4 : 5')} 직각삼각형 ${tex('\\triangle CTP')}</strong>가 만들어지므로 접선장 <strong class="text-amber-300">${tex('l = \\sqrt{5^2 - 3^2} = 4')}</strong>!<br/>
+&nbsp;&nbsp;(보너스: 접점들이 이루는 원의 반지름은 소공식 ${tex("r' = \\dfrac{R \\times l}{d} = \\dfrac{12}{5}")}!)`,
+          highlight: "💡 구 밖의 점 P 문제 3종 세트: ① 최대/최소 = d ± R ② 접선 길이 l = √(d² - R²) ③ 접점 원 반지름 = (R × l) / d (직각삼각형 소공식)!"
+        })
+      }
+    };
+
+    // -------------------------------------------------------------------------
+    // 3. 캔버스 초기화 및 3D 공간좌표 (x, y, z: z가 위쪽 높이!) -> 2D 투영 엔진
+    // -------------------------------------------------------------------------
+    const canvas = document.getElementById('boardCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function viewportInfo() {
+      const rect=canvas.parentElement.getBoundingClientRect();
+      const fw=Math.max(1,rect.width), fh=Math.max(1,rect.height);
+      const main=canvas.parentElement;
+      const topBar=main.querySelector('.ap-top-overlays');
+      const bottomBar=main.querySelector('.ap-bottom-toolbar');
+      const top=topBar?Math.max(0,topBar.getBoundingClientRect().bottom-rect.top+8):80;
+      const bottom=bottomBar?Math.max(30,fh-(bottomBar.getBoundingClientRect().top-rect.top)+8):58;
+      const side=topBar?topBar.getBoundingClientRect().right-rect.left+20:0;
+      const useSide=(fw>750 && side<fw*.58);
+      const left=useSide?side:12,right=fw-18;
+      const upper=useSide?16:Math.min(top,fh*.58);
+      const lower=Math.max(upper+35,fh-bottom-Math.min(88,fh*.24));
+      const cx=(left+right)/2+(state.offsetX-40);
+      const cy=(upper+lower)/2+(state.offsetY-45);
+      return {rect,fw,fh,cx,cy,upper,lower,left,right};
+    }
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = Math.min(3, window.devicePixelRatio || 1);
+      canvas.width = Math.max(1, Math.round(rect.width * dpr));
+      canvas.height = Math.max(1, Math.round(rect.height * dpr));
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      if (!state.userZoomed) {
+        const vp = viewportInfo();
+        const usable = Math.max(75, vp.lower - vp.upper);
+        state.scale = Math.max(6, Math.min(43, usable / 12.6, (vp.right-vp.left) / 12.8));
+      }
+      render();
+    }
+    window.addEventListener('resize', resizeCanvas);
+    if(window.ResizeObserver){
+      let lastWidth=-1,lastHeight=-1;
+      new ResizeObserver(entries=>{
+        const r=entries[0].contentRect;
+        if(r.width!==lastWidth||r.height!==lastHeight){lastWidth=r.width;lastHeight=r.height;requestAnimationFrame(resizeCanvas);}
+      }).observe(canvas.parentElement);
+    }
+
+    function project3D(mathX,mathY,mathZ) {
+      const {cx,cy} = state.viewport || viewportInfo();
+      const vx = mathX, vy = mathZ, vz = -mathY;
+      const cosY=Math.cos(state.yaw), sinY=Math.sin(state.yaw);
+      const x1=vx*cosY-vz*sinY, z1=vx*sinY+vz*cosY;
+      const cosP=Math.cos(state.pitch), sinP=Math.sin(state.pitch);
+      const y2=vy*cosP-z1*sinP, z2=vy*sinP+z1*cosP;
+      const fov=26, persp=fov/(fov+z2*.16);
+      return {x:cx+x1*state.scale*persp,y:cy-y2*state.scale*persp,depth:z2,persp};
+    }
+
+    // -------------------------------------------------------------------------
+    // 4. 3D 분필 스타일 드로잉 프리미티브 & 구(Sphere) 와이어프레임 렌더러
+    // -------------------------------------------------------------------------
+    function draw3DLine(p1, p2, color = '#ffffff', width = 2.2, dashed = false, glow = false) {
+      const s1 = project3D(p1.x, p1.y, p1.z);
+      const s2 = project3D(p2.x, p2.y, p2.z);
+
+      ctx.save();
+      ctx.beginPath();
+      if (dashed) ctx.setLineDash([6, 6]);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.lineCap = 'round';
+      if (glow) {
+        ctx.shadowColor = color;
+        ctx.shadowBlur = 11;
+      }
+      ctx.moveTo(s1.x, s1.y);
+      ctx.lineTo(s2.x, s2.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function draw3DPolygon(pts, fillColor = 'rgba(52, 211, 153, 0.14)', strokeColor = null, lineWidth = 2.0, dashed = false) {
+      if (pts.length < 3) return;
+      const sPts = pts.map((p) => project3D(p.x, p.y, p.z));
+
+      ctx.save();
+      if (dashed) ctx.setLineDash([5, 5]);
+      ctx.beginPath();
+      ctx.moveTo(sPts[0].x, sPts[0].y);
+      for (let i = 1; i < sPts.length; i++) {
+        ctx.lineTo(sPts[i].x, sPts[i].y);
+      }
+      ctx.closePath();
+      if (fillColor) {
+        ctx.fillStyle = fillColor;
+        ctx.fill();
+      }
+      if (strokeColor) {
+        ctx.strokeStyle = strokeColor;
+        ctx.lineWidth = lineWidth;
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function draw3DPoint(pt, radius=5.5, color='#fbbf24', label='', offset={x:10,y:-10}) {
+      const s=project3D(pt.x,pt.y,pt.z);
+      ctx.save();ctx.beginPath();ctx.arc(s.x,s.y,radius,0,Math.PI*2);
+      ctx.fillStyle=color;ctx.shadowColor=color;ctx.shadowBlur=10;ctx.fill();
+      ctx.strokeStyle='#fff';ctx.lineWidth=1.6;ctx.stroke();ctx.restore();
+      if(label && state.lens!=='construction') state.labels.push({s,label,color,offset,part:state.drawingPart,priority:1});
+    }
+    function drawPointLabels(rect) {
+      const placed=[];
+      const outer=viewportInfo();
+      const pxPad=7;
+      const obstacles=state.protectedAreas || [];
+      const overlaps=(a,b,pad=0)=>a.l<b.r+pad&&a.r>b.l-pad&&a.t<b.b+pad&&a.b>b.t-pad;
+      ctx.save();ctx.font='bold 12px Pretendard, sans-serif';ctx.textBaseline='alphabetic';
+      for(const item of state.labels.sort((a,b)=>b.priority-a.priority)) {
+        const w=Math.min(rect.width-16,ctx.measureText(item.label).width+7), h=18;
+        const offsets=[item.offset,{x:13,y:-20},{x:-w-12,y:-12},{x:12,y:25},{x:-w-12,y:25},{x:23,y:1},{x:-w-15,y:1},{x:0,y:-33},{x:0,y:39}];
+        let chosen=null,score=Infinity;
+        for(const o of offsets) {
+          const x=Math.max(pxPad,Math.min(rect.width-w-pxPad,item.s.x+o.x));
+          const y=Math.max(18,Math.min(rect.height-10,item.s.y+o.y));
+          const box={l:x,r:x+w,t:y-h,b:y+3};
+          let cost=placed.reduce((a,p)=>a+(overlaps(box,p,5)?3000:0),0);
+          cost+=obstacles.reduce((a,p)=>a+(overlaps(box,p,2)?6000:0),0);
+          cost+=Math.hypot(x-item.s.x,y-item.s.y)*.4;
+          if(cost<score){score=cost;chosen={x,y,box};}
+          if(cost<60)break;
+        }
+        if(!chosen)continue;
+        placed.push(chosen.box);
+        ctx.save();ctx.fillStyle=item.color;ctx.shadowColor='rgba(0,0,0,.95)';ctx.shadowBlur=7;
+        if(state.partIdx!==null && item.part!==undefined && item.part!==state.partIdx) ctx.globalAlpha=.6;
+        ctx.fillText(item.label,chosen.x,chosen.y);
+        ctx.restore();
+      }
+      ctx.restore();
+    }
+
+    function inPart(partIdx, callback) {
+      const focused = state.hoverPart ?? state.partIdx;
+      const faint = focused!==null && focused!==partIdx;
+      ctx.save();state.drawingPart=partIdx;
+      if(faint)ctx.globalAlpha=state.lens==='focus'?.1:.22;
+      else if(state.lens==='construction' && partIdx===2)ctx.globalAlpha=.32;
+      callback();ctx.restore();state.drawingPart=undefined;
+    }
+
+    function draw3DRightAngle(originPt, ptA, ptB, sizeMath = 0.42, color = '#fbbf24') {
+      const vA = { x: ptA.x - originPt.x, y: ptA.y - originPt.y, z: ptA.z - originPt.z };
+      const lenA = Math.hypot(vA.x, vA.y, vA.z);
+      const vB = { x: ptB.x - originPt.x, y: ptB.y - originPt.y, z: ptB.z - originPt.z };
+      const lenB = Math.hypot(vB.x, vB.y, vB.z);
+      if (lenA < 0.01 || lenB < 0.01) return;
+
+      const uA = { x: (vA.x / lenA) * sizeMath, y: (vA.y / lenA) * sizeMath, z: (vA.z / lenA) * sizeMath };
+      const uB = { x: (vB.x / lenB) * sizeMath, y: (vB.y / lenB) * sizeMath, z: (vB.z / lenB) * sizeMath };
+
+      const p1 = project3D(originPt.x + uA.x, originPt.y + uA.y, originPt.z + uA.z);
+      const p2 = project3D(originPt.x + uA.x + uB.x, originPt.y + uA.y + uB.y, originPt.z + uA.z + uB.z);
+      const p3 = project3D(originPt.x + uB.x, originPt.y + uB.y, originPt.z + uB.z);
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.8;
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.lineTo(p3.x, p3.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // 3D 구(Sphere) 경도·위도 와이어프레임 & 실루엣 렌더링 함수
+    function draw3DSphereWireframe(center, R, color = 'rgba(56, 189, 248, 0.35)') {
+      const N = 44;
+      // 1) 3대 대원 (xy평면과 평행한 적도원, xz 대원, yz 대원)
+      const eqPts = [];
+      const xzPts = [];
+      const yzPts = [];
+      for (let i = 0; i < N; i++) {
+        const phi = (i / N) * Math.PI * 2;
+        const c = Math.cos(phi);
+        const s = Math.sin(phi);
+        eqPts.push({ x: center.x + R * c, y: center.y + R * s, z: center.z });
+        xzPts.push({ x: center.x + R * c, y: center.y, z: center.z + R * s });
+        yzPts.push({ x: center.x, y: center.y + R * c, z: center.z + R * s });
+      }
+      draw3DPolygon(eqPts, null, color, 1.5, true);
+      draw3DPolygon(xzPts, null, color, 1.5, true);
+      draw3DPolygon(yzPts, null, color, 1.5, true);
+
+      // 2) 외곽 실루엣 원 (시선 방향에 수직인 외곽 원)
+      const sCenter = project3D(center.x, center.y, center.z);
+      const radPx = R * state.scale * sCenter.persp;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(sCenter.x, sCenter.y, radPx, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.07)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.8)';
+      ctx.lineWidth = 2.4;
+      ctx.shadowColor = '#38bdf8';
+      ctx.shadowBlur = 12;
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function draw3DCircle(center,radius,u,v,color='#fbbf24',fill='rgba(251,191,36,.12)',width=2) {
+      const N=96,pts=[];
+      for(let i=0;i<N;i++){
+        const t=2*Math.PI*i/N;
+        pts.push({x:center.x+radius*(u.x*Math.cos(t)+v.x*Math.sin(t)),
+                  y:center.y+radius*(u.y*Math.cos(t)+v.y*Math.sin(t)),
+                  z:center.z+radius*(u.z*Math.cos(t)+v.z*Math.sin(t))});
+      }
+      draw3DPolygon(pts,fill,color,width);
+    }
+    function drawCoordinateBox(A) {
+      const x=A.x,y=A.y,z=A.z;
+      const vertices=[];
+      for(const ix of [0,x])for(const iy of [0,y])for(const iz of [0,z]) vertices.push({x:ix,y:iy,z:iz});
+      for(let i=0;i<8;i++)for(let j=i+1;j<8;j++){
+        const n=(vertices[i].x!==vertices[j].x)+(vertices[i].y!==vertices[j].y)+(vertices[i].z!==vertices[j].z);
+        if(n===1)draw3DLine(vertices[i],vertices[j],'rgba(125,211,252,.70)',1.8,true);
+      }
+      draw3DPoint({x,y:0},3.5,'#6ee7b7','xy 수선의 발',{x:5,y:22});
+      draw3DPoint({x, y:0,z:0},3.0,'#7dd3fc','x축 발',{x:8,y:-9});
+      draw3DPoint({x:0,y,z:0},3.0,'#7dd3fc','y축 발',{x:-51,y:-8});
+      draw3DPoint({x:0,y:0,z},3.0,'#7dd3fc','z축 발',{x:9,y:-7});
+      draw3DPoint({x,y:0,z},3,'#86efac','xz 수선',{x:6,y:16});
+      draw3DPoint({x:0,y,z},3,'#86efac','yz 수선',{x:5,y:14});
+    }
+    function drawBottomTapeBanner({caption,blocks=[],fraction=null}) {
+      const rect=canvas.parentElement.getBoundingClientRect(),w=rect.width,h=rect.height;
+      if(h<180)return;
+      const compact=w<460;
+      const margin=compact?8:14;
+      const x=margin,width=Math.max(80,w-2*margin),height=compact?54:61;
+      const bar=canvas.parentElement.querySelector('.ap-bottom-toolbar');
+      const above=bar?bar.getBoundingClientRect().top-rect.top: h-44;
+      const y=Math.max(4, Math.min(h-height-3,above-height-5));
+      ctx.save();ctx.fillStyle='rgba(7,20,15,.95)';ctx.strokeStyle='rgba(251,191,36,.65)';ctx.lineWidth=1.4;
+      ctx.beginPath();ctx.roundRect(x,y,width,height,10);ctx.fill();ctx.stroke();
+      ctx.textAlign='left';ctx.font=`bold ${compact?10:12}px Pretendard, sans-serif`;ctx.fillStyle='#fef08a';
+      const full=caption||'';let txt=full;
+      while(ctx.measureText(txt).width>width-20&&txt.length>8)txt=txt.slice(0,-2);
+      if(txt!==full)txt+='…';
+      ctx.fillText(txt,x+10,y+15);
+      const inner=x+12,base=y+height-13,total=Math.max(1,blocks.reduce((sum,b)=>sum+Math.max(0,b.value),0));
+      let cursor=inner,room=width-24;
+      for(const b of blocks){
+        const dx=room*Math.max(0,b.value)/total;
+        ctx.fillStyle=b.color||'#34d399';ctx.fillRect(cursor,base-10,Math.max(0,dx),10);
+        ctx.font=`bold ${compact?9:11}px Pretendard,sans-serif`;ctx.textAlign='center';ctx.fillStyle='#fff';
+        if(dx>25)ctx.fillText(b.label,cursor+dx/2,base-14);
+        cursor+=dx;
+      }
+      if(fraction&&!compact){const old=ctx.textAlign;drawCanvasFraction(x+width-32,y+30,fraction[0],fraction[1],'#fbbf24',10);ctx.textAlign=old;}
+      ctx.restore();
+    }
+    function drawFormulaFractionNear(pt,num,den){
+      const p=project3D(pt.x,pt.y,pt.z);
+      if(p.x<0||p.x>canvas.clientWidth||p.y<0||p.y>canvas.clientHeight)return;
+      drawCanvasFraction(p.x+25,p.y+22,num,den,'#fef08a',11);
+    }
+
+    function drawCanvasFraction(px, py, numStr, denStr, color = '#fef08a', fontSize = 12) {
+      ctx.save();
+      ctx.font = `bold ${fontSize}px Pretendard, monospace`;
+      ctx.fillStyle = color;
+      ctx.strokeStyle = color;
+      ctx.textAlign = 'center';
+      ctx.shadowColor = 'rgba(0,0,0,0.9)';
+      ctx.shadowBlur = 4;
+
+      const w = Math.max(ctx.measureText(numStr).width, ctx.measureText(denStr).width) + 8;
+      ctx.fillText(numStr, px, py - 5);
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(px - w / 2, py);
+      ctx.lineTo(px + w / 2, py);
+      ctx.stroke();
+      ctx.fillText(denStr, px, py + fontSize + 2);
+      ctx.restore();
+      return w;
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. 메인 3D 캔버스 렌더링 파이프라인
+    // -------------------------------------------------------------------------
+    function render() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      ctx.clearRect(0,0,rect.width,rect.height);
+      state.labels=[];
+      state.viewport=viewportInfo();
+      const bounds=canvas.parentElement.getBoundingClientRect();
+      state.protectedAreas=[...canvas.parentElement.querySelectorAll('.ap-top-overlays, .ap-bottom-toolbar')].map(el=>{
+        const b=el.getBoundingClientRect();return {l:b.left-bounds.left,r:b.right-bounds.left,t:b.top-bounds.top,b:b.bottom-bounds.top};
+      });
+
+      // 1) 3D xy평면(z = 0) 모눈 격자 및 X, Y, Z 좌표축 렌더링
+      draw3DAxesAndXYPlane();
+
+      // 2) 모드별 3D 공간좌표 & 구 렌더링
+      if (state.mode === 1) {
+        renderMode1(rect);
+      } else if (state.mode === 2) {
+        renderMode2(rect);
+      } else if (state.mode === 3) {
+        renderMode3(rect);
+      } else if (state.mode === 4) {
+        renderMode4(rect);
+      }
+
+      // 3) 내장된 2D 라벨 충돌 회피 + 하단 줄자 배너 + 상태 반영
+      drawPointLabels(rect);
+      const tape=makeTapeData();
+      drawBottomTapeBanner(tape);
+      updateLiveMonitor();
+    }
+
+    function draw3DAxesAndXYPlane() {
+      const range = state.mode===2 ? 6 : 5;
+      if (state.showGrid) {
+        // xy평면(z = 0) 반투명 패치
+        draw3DPolygon(
+          [
+            { x: -range, y: -range, z: 0 },
+            { x: range, y: -range, z: 0 },
+            { x: range, y: range, z: 0 },
+            { x: -range, y: range, z: 0 }
+          ],
+          'rgba(16, 185, 129, 0.06)',
+          'rgba(52, 211, 153, 0.28)',
+          1.2
+        );
+
+        for (let i = -Math.floor(range); i <= Math.floor(range); i++) {
+          draw3DLine({ x: i, y: -range, z: 0 }, { x: i, y: range, z: 0 }, 'rgba(16, 185, 129, 0.09)', 1);
+          draw3DLine({ x: -range, y: i, z: 0 }, { x: range, y: i, z: 0 }, 'rgba(16, 185, 129, 0.09)', 1);
+        }
+      }
+
+      // X축(붉은 분필), Y축(초록 분필), Z축(하늘색 분필 - 위쪽 높이!)
+      draw3DLine({ x: -range, y: 0, z: 0 }, { x: range + 0.6, y: 0, z: 0 }, 'rgba(248, 113, 113, 0.65)', 2.0);
+      draw3DLine({ x: 0, y: -range, z: 0 }, { x: 0, y: range + 0.6, z: 0 }, 'rgba(52, 211, 153, 0.65)', 2.0);
+      draw3DLine({ x: 0, y: 0, z: -3.5 }, { x: 0, y: 0, z: 4.2 }, 'rgba(56, 189, 248, 0.75)', 2.2);
+
+      const sX = project3D(range + 0.8, 0, 0);
+      const sY = project3D(0, range + 0.8, 0);
+      const sZ = project3D(0, 0, 4.4);
+      state.labels.push({s:sX,label:'x축',color:'#fca5a5',offset:{x:5,y:-5},priority:0});
+      state.labels.push({s:sY,label:'y축',color:'#6ee7b7',offset:{x:5,y:-5},priority:0});
+      state.labels.push({s:sZ,label:'z축(높이)',color:'#7dd3fc',offset:{x:5,y:-5},priority:0});
+    }
+
+    // =========================================================================
+    // [모드 1 렌더링] 공간좌표 수선의 발 & xy평면 대칭이동 최단거리 (AB' = 7)
+    // =========================================================================
+    function renderMode1(rect) {
+      const A = { x: 1, y: 1, z: 2 };
+      const B = { x: 3, y: 4, z: 4 };
+      const Bp = { x: 3, y: 4, z: -4 }; // xy평면 대칭점 B'(3, 4, -4)
+
+      const A0 = { x: A.x, y: A.y, z: 0 };
+      const B0 = { x: B.x, y: B.y, z: 0 };
+
+      const t = state.t12;
+      const P = {
+        x: A0.x + t * (B0.x - A0.x),
+        y: A0.y + t * (B0.y - A0.y),
+        z: 0
+      };
+
+      // Step 1: 두 점 A, B에서 xy평면에 내린 수선의 발 A0, B0 및 정사영 선분
+      if (state.steps[1]) inPart(0,()=>{
+        drawCoordinateBox(A);
+        draw3DLine(A, A0, 'rgba(56, 189, 248, 0.7)', 2.2, true);
+        draw3DLine(B, B0, 'rgba(244, 114, 182, 0.7)', 2.2, true);
+        draw3DLine(A0, B0, 'rgba(255, 255, 255, 0.45)', 2.0, true);
+
+        draw3DPoint(A0, 4.5, '#38bdf8', 'A₀(1,1,0)', { x: -65, y: 16 });
+        draw3DPoint(B0, 4.5, '#f472b6', 'B₀(3,4,0)', { x: 10, y: 16 });
+      });
+
+      // Step 3: 점 B의 xy평면 대칭점 B'(3, 4, -4) 및 일직선 최단거리 AB'
+      if (state.steps[3]) inPart(2,()=>{
+        draw3DLine(B0, Bp, 'rgba(244, 114, 182, 0.6)', 2.2, true);
+        draw3DLine(P, Bp, '#f472b6', 2.4, true);
+        draw3DLine(A, Bp, '#fbbf24', 3.4, false, true); // 일직선 최단 경로 AB'
+        draw3DPoint(Bp, 6.5, '#f43f5e', "대칭점 B'(3, 4, -4)", { x: 12, y: 14 });
+
+        const mathPx = 1 + t * 2;
+        const mathPy = 1 + t * 3;
+        const curDist = Math.hypot(mathPx - 1, mathPy - 1, 2) + Math.hypot(3 - mathPx, 4 - mathPy, 4);
+
+        if(state.lens==='measure')drawFormulaFractionNear(P,'5','3');
+      });
+
+
+
+      // Step 2: xy평면 위의 경유점 P 및 실제 꺾인 경로 AP + PB
+      if (state.steps[2]) inPart(1,()=>{
+        draw3DLine(A, P, '#34d399', 3.4, false, true);
+        draw3DLine(P, B, '#34d399', 3.4, false, true);
+        draw3DPoint(P, 7.5, '#fbbf24', `경유점 P (t=${t.toFixed(2)})`, { x: -95, y: -12 });
+      });
+
+      draw3DPoint(A, 7, '#38bdf8', 'A(1, 1, 2)', { x: -75, y: -12 });
+      draw3DPoint(B, 7, '#f472b6', 'B(3, 4, 4)', { x: 12, y: -10 });
+    }
+
+    // =========================================================================
+    // [모드 2 렌더링] 기출 1 - 선분 AB가 xy평면과 만나는 교점 & 내분비 (|z1| : |z2|)
+    // =========================================================================
+    function renderMode2(rect) {
+      const A = { x: -2, y: 1, z: 4 };
+      const B = { x: 4, y: -5, z: -2 };
+      const A0 = { x: A.x, y: A.y, z: 0 };
+      const B0 = { x: B.x, y: B.y, z: 0 };
+
+      const t = state.t12;
+      const P = {
+        x: A.x + t * (B.x - A.x),
+        y: A.y + t * (B.y - A.y),
+        z: A.z + t * (B.z - A.z)
+      };
+
+      // 실제 xy평면 교점 P_hit (t = 2/3)
+      const Phit = {
+        x: A.x + (2 / 3) * (B.x - A.x),
+        y: A.y + (2 / 3) * (B.y - A.y),
+        z: 0
+      };
+
+      // Step 2: 수선의 발 A0, B0 및 닮음인 두 직각삼각형 ΔAA0P_hit ∽ ΔBB0P_hit
+      if (state.steps[2]) inPart(1,()=>{
+        draw3DPolygon([A, A0, Phit], 'rgba(56, 189, 248, 0.22)');
+        draw3DPolygon([B, B0, Phit], 'rgba(244, 114, 182, 0.22)');
+
+        draw3DLine(A, A0, '#38bdf8', 3.0, true);
+        draw3DLine(B, B0, '#f472b6', 3.0, true);
+        draw3DLine(A0, B0, '#fde047', 2.4, true);
+
+        draw3DRightAngle(A0, A, Phit, 0.38, '#38bdf8');
+        draw3DRightAngle(B0, B, Phit, 0.38, '#f472b6');
+
+        draw3DPoint(A0, 5, '#38bdf8', 'A₀ (높이 |z₁|=4)', { x: -105, y: 16 });
+        draw3DPoint(B0, 5, '#f472b6', 'B₀ (깊이 |z₂|=2)', { x: 10, y: -10 });
+      });
+
+      // Step 1: 선분 AB 연결
+      if (state.steps[1]) inPart(0,()=>{
+        draw3DLine(A, B, '#e2e8f0', 3.2, false, true);
+      });
+
+      // Step 3: xy평면 관통 교점 P(2, -3, 0) 강조 및 하단 세로 분수 배너
+      if (state.steps[3]) inPart(2,()=>{
+        draw3DPoint(Phit, 7, '#34d399', '교점 P(2, -3, 0) [2:1 내분]', { x: 14, y: -12 });
+
+        if(state.lens==='measure')drawFormulaFractionNear(Phit,'2×4 + 1×(-2)','2+1');
+      });
+
+
+
+      draw3DPoint(A, 7, '#38bdf8', 'A(-2, 1, 4)', { x: -85, y: -12 });
+      draw3DPoint(B, 7, '#f472b6', 'B(4, -5, -2)', { x: 12, y: 16 });
+      if (Math.abs(t - 2 / 3) > 0.02) {
+        draw3DPoint(P, 6.5, '#fbbf24', `동점 (t=${t.toFixed(2)})`, { x: 10, y: -10 });
+      }
+    }
+
+    // =========================================================================
+    // [모드 3 렌더링] 기출 2 - 구와 평면의 교선원 반지름 공식 (r = √(R² - d²))
+    // =========================================================================
+    function renderMode3(rect) {
+      // 모든 렌더 좌표는 모눈과 동일한 수학 단위 (축소계수 금지).
+      const mathR = 5.0;
+      const mathD = state.d3;
+      const mathR_sec = Math.sqrt(Math.max(0, mathR * mathR - mathD * mathD));
+
+      const R = mathR;
+      const d = mathD;
+      const rSec = mathR_sec;
+
+      const C = { x: 0, y: 0, z: d }; // 구의 중심 C(0, 0, d)
+      const H = { x: 0, y: 0, z: 0 }; // xy평면 수선의 발 H(0, 0, 0)
+      const P = { x: rSec, y: 0, z: 0 }; // 교선원 위의 대표점 P
+
+      // Step 1: 3D 구 와이어프레임 및 중심 C
+      if (state.steps[1]) inPart(0,()=>{
+        draw3DSphereWireframe(C, R);
+      });
+
+      // Step 2: xy평면과 만나서 생기는 교선원(Section Circle) 렌더링
+      if (state.steps[2] && rSec > 0.05) inPart(1,()=>{
+        const N = 48;
+        const secPts = [];
+        for (let i = 0; i < N; i++) {
+          const phi = (i / N) * Math.PI * 2;
+          secPts.push({ x: rSec * Math.cos(phi), y: rSec * Math.sin(phi), z: 0 });
+        }
+        draw3DPolygon(secPts, 'rgba(251, 191, 36, 0.25)', '#fbbf24', 3.2);
+      });
+
+      // Step 3: 피타고라스 직각삼각형 ΔCHP (빗변 R = 5, 높이 d, 밑변 r)
+      if (state.steps[3]) inPart(2,()=>{
+        draw3DPolygon([C, H, P], 'rgba(244, 114, 182, 0.24)');
+        draw3DLine(C, H, '#f472b6', 3.6, false, true); // 거리 d
+        draw3DLine(H, P, '#fbbf24', 3.6, false, true); // 교선원 반지름 r
+        draw3DLine(C, P, '#38bdf8', 3.6, false, true); // 구 반지름 R = 5
+
+        if (d > 0.15 && rSec > 0.15) {
+          draw3DRightAngle(H, C, P, 0.38, '#fbbf24');
+        }
+
+      });
+
+
+
+      draw3DPoint(C, 6.5, '#f472b6', `구 중심 C(0,0,${mathD.toFixed(1)})`, { x: 12, y: -10 });
+      draw3DPoint(H, 5.5, '#34d399', '수선의 발 H(0,0,0)', { x: -115, y: 18 });
+      draw3DPoint(P, 6.5, '#fbbf24', `교선원 P (r=${mathR_sec.toFixed(2)})`, { x: 12, y: 16 });
+    }
+
+    // =========================================================================
+    // [모드 4 렌더링] 기출 3 - 구 밖의 점 P에서 최대·최소(d±R) 및 접선장 l = √(d²-R²)
+    // =========================================================================
+    function renderMode4(rect) {
+      // 수학적 구 중심 C(0,0,0), 반지름 R = 3, 외부 점 P(4, 0, 3) -> 중심거리 d = 5, 접선장 l = 4
+      const C = { x: 0, y: 0, z: 0 };
+      const R = 3;
+      const P = { x: 4, y: 0, z: 3 };
+
+      const angCP = Math.atan2(3.0, 4.0); // xz평면 위 CP의 각도
+      const ux = Math.cos(angCP);
+      const uz = Math.sin(angCP);
+
+      // 최댓값 점 Q_max(d+R = 8) 및 최솟값 점 Q_min(d-R = 2)
+      const Qmax = { x: -R * ux, y: 0, z: -R * uz };
+      const Qmin = { x: R * ux, y: 0, z: R * uz };
+
+      // 접점 T (∠CTP = 90°, cos(∠TCP) = R/d = 3/5)
+      const alpha = Math.acos(3 / 5);
+      const angT = angCP + alpha;
+      const T = { x: R * Math.cos(angT), y: 0, z: R * Math.sin(angT) };
+
+      // 동점 Q
+      const phi = angCP + state.theta4;
+      const Q = { x: R * Math.cos(phi), y: 0, z: R * Math.sin(phi) };
+
+      const theta=state.theta4;
+      const pq=Math.sqrt(34-30*Math.cos(theta));
+      // Step 1: 구 와이어프레임 및 중심 C, 외부 점 P
+      if (state.steps[1]) inPart(0,()=>{
+        draw3DSphereWireframe(C, R);
+      });
+
+      // Step 2: 중심 관통선 및 최대(Q_max, 8), 최소(Q_min, 2) 표시
+      if (state.steps[2]) inPart(1,()=>{
+        draw3DLine(Qmax, P, 'rgba(52, 211, 153, 0.75)', 2.4, true);
+        draw3DPoint(Qmax, 6, '#34d399', '최대 Q_max (d+R = 8)', { x: -135, y: 18 });
+        draw3DPoint(Qmin, 6, '#f43f5e', '최소 Q_min (d-R = 2)', { x: 12, y: 16 });
+      });
+
+      // Step 3: 접선 PT (길이 l = 4) 및 직각삼각형 ΔCTP (∠CTP = 90°)
+      if (state.steps[3]) inPart(2,()=>{
+        // CP의 단위벡터 n, 접점 원 중심 = (R²/d)n; 반지름 R*l/d = 12/5.
+        const n={x:4/5,y:0,z:3/5};
+        const circleCenter={x:(R*R/5)*n.x,y:0,z:(R*R/5)*n.z};
+        const basisU={x:-3/5,y:0,z:4/5},basisV={x:0,y:1,z:0};
+        draw3DCircle(circleCenter,12/5,basisU,basisV,'#fbbf24','rgba(251,191,36,.17)',2.8);
+        const Tp={x:R*Math.cos(angCP-alpha),y:0,z:R*Math.sin(angCP-alpha)};
+        draw3DLine(P,Tp,'rgba(251,191,36,.7)',2,true);
+        draw3DPoint(Tp,5,'#fde68a',"대칭 접점 T′",{x:12,y:14});
+        draw3DPolygon([C, T, P], 'rgba(251, 191, 36, 0.22)');
+        draw3DLine(C, T, '#f472b6', 3.2, false, true); // 반지름 R = 3
+        draw3DLine(P, T, '#fbbf24', 3.6, false, true); // 접선 l = 4
+        draw3DLine(C, P, '#38bdf8', 2.8);              // 중심거리 d = 5
+        draw3DRightAngle(T, C, P, 0.36, '#fbbf24');
+
+        draw3DPoint(T, 6.5, '#fbbf24', '접점 T (∠CTP=90°, PT=4)', { x: -65, y: -14 });
+
+        if(state.lens==='measure')drawFormulaFractionNear(circleCenter,'12','5');
+      });
+
+
+
+      // 동점 Q 표시
+      draw3DLine(P, Q, 'rgba(255,255,255,0.45)', 1.6, true);
+      draw3DPoint(Q, 5.5, '#e2e8f0', `Q (PQ=${pq.toFixed(2)})`, { x: -18, y: -10 });
+      draw3DPoint(C, 6, '#38bdf8', '중심 C(0,0,0)', { x: -45, y: 22 });
+      draw3DPoint(P, 7.5, '#fbbf24', '외부 점 P(4, 0, 3)', { x: 12, y: -10 });
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. 우측 패널 실시간 모니터 & UI 컨트롤러
+    // -------------------------------------------------------------------------
+    function updateLiveMonitor() {
+      const yawDeg = Math.round((state.yaw * 180) / Math.PI);
+      const pitchDeg = Math.round((state.pitch * 180) / Math.PI);
+      document.getElementById('valYaw').textContent = `${yawDeg}°`;
+      document.getElementById('valPitch').textContent = `${pitchDeg}°`;
+      document.getElementById('sliderYaw').value = yawDeg;
+      document.getElementById('sliderPitch').value = pitchDeg;
+
+      if (state.mode === 1) {
+        const t = state.t12;
+        const px = 1 + t * 2;
+        const py = 1 + t * 3;
+        const curDist = Math.hypot(px - 1, py - 1, 2) + Math.hypot(3 - px, 4 - py, 4);
+
+        document.getElementById('eqDisplay').innerHTML = tex("\\overline{AP} + \\overline{PB} = \\overline{AP} + \\overline{PB'} \\ge \\overline{AB'}");
+        document.getElementById('subEqDisplay').innerHTML = tex("\\min = 7.00");
+
+        document.getElementById('statLabel1').textContent = '두 점 A, B 공간좌표';
+        document.getElementById('statVal1').textContent = 'A(1,1,2) | B(3,4,4)';
+        document.getElementById('statLabel2').textContent = "xy평면 대칭점 B'";
+        document.getElementById('statVal2').textContent = "B'(3, 4, -4) [z부호 반대]";
+        document.getElementById('statLabel3').textContent = '현재 AP+PB vs 최단거리';
+        document.getElementById('statVal3').textContent = `현재 ${curDist.toFixed(2)} | 최소 7.00`;
+        document.getElementById('statLabel4').textContent = '경유점 P 좌표 (z = 0)';
+        document.getElementById('statVal4').textContent = `P(${px.toFixed(2)}, ${py.toFixed(2)}, 0)`;
+
+        document.getElementById('valParam12').textContent = `t = ${t.toFixed(2)} (AP+PB = ${curDist.toFixed(2)})`;
+        document.getElementById('sliderParam12').value = t;
+      } else if (state.mode === 2) {
+        const t = state.t12;
+        const px = -2 + t * 6;
+        const py = 1 + t * -6;
+        const pz = 4 + t * -6;
+
+        document.getElementById('eqDisplay').innerHTML = tex('m : n = |z_1| : |z_2| = 4 : 2 = 2 : 1');
+        document.getElementById('subEqDisplay').innerHTML = tex('P(2, -3, 0)');
+
+        document.getElementById('statLabel1').textContent = '두 점 A, B 높이 (z좌표)';
+        document.getElementById('statVal1').textContent = 'z₁ = +4 | z₂ = -2';
+        document.getElementById('statLabel2').textContent = 'xy평면(z=0) 교점 내분비';
+        document.getElementById('statVal2').textContent = '|4| : |-2| = 2 : 1 내분';
+        document.getElementById('statLabel3').textContent = '현재 내분점 좌표';
+        document.getElementById('statVal3').textContent = `(${px.toFixed(1)}, ${py.toFixed(1)}, ${pz.toFixed(1)})`;
+        document.getElementById('statLabel4').textContent = '평면 관통 교점 P';
+        document.getElementById('statVal4').textContent = 'P(2, -3, 0)';
+
+        document.getElementById('valParam12').textContent = `t = ${t.toFixed(2)} (z = ${pz.toFixed(2)})`;
+        document.getElementById('sliderParam12').value = t;
+      } else if (state.mode === 3) {
+        const d = state.d3;
+        const r = Math.sqrt(Math.max(0, 25 - d * d));
+
+        document.getElementById('eqDisplay').innerHTML = tex('r = \\sqrt{R^2 - d^2}');
+        document.getElementById('subEqDisplay').innerHTML = tex(`r = \\sqrt{25 - ${d.toFixed(1)}^2} = ${r.toFixed(2)}`);
+
+        document.getElementById('statLabel1').textContent = '구 반지름 R / 중심 높이 d';
+        document.getElementById('statVal1').textContent = `R = 5.00 | d = ${d.toFixed(2)}`;
+        document.getElementById('statLabel2').textContent = '교선원 반지름 r = √(R²-d²)';
+        document.getElementById('statVal2').textContent = `r = ${r.toFixed(3)}`;
+        document.getElementById('statLabel3').textContent = '교선원 둘레 2πr';
+        document.getElementById('statVal3').textContent = `${(2 * r).toFixed(2)}π`;
+        document.getElementById('statLabel4').textContent = '교선원 넓이 πr²';
+        document.getElementById('statVal4').textContent = `${(r * r).toFixed(2)}π`;
+
+        document.getElementById('valSphereD').textContent = `d = ${d.toFixed(2)} (교선원 r = ${r.toFixed(2)})`;
+        document.getElementById('sliderSphereD').value = d;
+      } else {
+        const deg = Math.round((state.theta4 * 180) / Math.PI);
+        document.getElementById('eqDisplay').innerHTML = tex('M = d+R, \\; m = d-R, \\; l = \\sqrt{d^2 - R^2}');
+        document.getElementById('subEqDisplay').innerHTML = tex('l = \\sqrt{5^2 - 3^2} = 4');
+
+        document.getElementById('statLabel1').textContent = '중심거리 d = |CP| / 반지름 R';
+        document.getElementById('statVal1').textContent = 'd = 5.00 | R = 3.00';
+        document.getElementById('statLabel2').textContent = '최댓값 M = d + R';
+        document.getElementById('statVal2').textContent = 'M = 5 + 3 = 8.00';
+        document.getElementById('statLabel3').textContent = '최솟값 m = d - R';
+        document.getElementById('statVal3').textContent = 'm = 5 - 3 = 2.00';
+        const pq=Math.sqrt(34-30*Math.cos(state.theta4));
+        document.getElementById('statLabel4').textContent = '현재 PQ / 고정 접선장 PT';
+        document.getElementById('statVal4').textContent = `PQ = ${pq.toFixed(3)} | PT = 4.00`;
+        document.getElementById('subEqDisplay').innerHTML=tex(`PQ = \\sqrt{34-30\\cos(${deg}^\\circ)} = ${pq.toFixed(2)}`);
+        document.getElementById('valSphereTheta').textContent = `θ = ${deg}° (현재 PQ=${pq.toFixed(2)} / PT=4.00)`;
+        document.getElementById('sliderSphereTheta').value = deg;
+      }
+    }
+
+    function makeTapeData(){
+      if(state.mode===1){
+        const t=state.t12,x=1+2*t,y=1+3*t;
+        const a=Math.hypot(x-1,y-1,2),b=Math.hypot(x-3,y-4,4);
+        return {caption:`AP + PB = ${(a+b).toFixed(2)} ≥ AB′ = 7.00 · 최단 P=(5/3,2,0)`,blocks:[{label:`AP ${a.toFixed(2)}`,value:a,color:'#34d399'},{label:`PB ${b.toFixed(2)}`,value:b,color:'#38bdf8'}],fraction:['5','3']};
+      }
+      if(state.mode===2){
+        const t=state.t12;
+        return {caption:`xy평면 교점 P(2,-3,0) · 내분비 4:2=2:1 · 현재 t=${t.toFixed(2)}, z=${(4-6*t).toFixed(2)}`,blocks:[{label:'AP · 2',value:2,color:'#38bdf8'},{label:'PB · 1',value:1,color:'#f472b6'}],fraction:['2×4−2','3']};
+      }
+      if(state.mode===3){
+        const d=state.d3,r=Math.sqrt(Math.max(0,25-d*d));
+        return {caption:`R² = d² + r² : 25 = ${d.toFixed(1)}² + ${r.toFixed(2)}²  |  넓이 ${(r*r).toFixed(2)}π`,blocks:[{label:`d ${d.toFixed(1)}`,value:d,color:'#f472b6'},{label:`r ${r.toFixed(2)}`,value:r,color:'#fbbf24'}]};
+      }
+      const pq=Math.sqrt(34-30*Math.cos(state.theta4));
+      return {caption:`현재 PQ = ${pq.toFixed(2)}  ·  최소 2 / 최대 8  ·  접선 PT=4  ·  접점 원 r′=12/5`,blocks:[{label:`PQ ${pq.toFixed(2)}`,value:pq,color:'#38bdf8'},{label:'PT 4',value:4,color:'#fbbf24'}],fraction:['12','5']};
+    }
+    function updateLensControls(){
+      document.querySelectorAll('.lens-chip').forEach(b=>{
+        b.classList.toggle('active',b.dataset.lens===state.lens);
+        b.setAttribute('aria-pressed',String(b.dataset.lens===state.lens));
+      });
+    }
+    function setLens(lens){
+      state.lens=lens;updateLensControls();
+      if(lens==='focus' && state.partIdx===null)state.partIdx=0;
+      if(lens==='all')state.partIdx=null;
+      updatePartCards();render();
+    }
+    function setPartFocus(idx){
+      state.partIdx=(idx===state.partIdx?null:idx);
+      state.hoverPart=null;updatePartCards();render();
+    }
+    function buildPartCards(){
+      const box=document.getElementById('partCards');
+      box.innerHTML=examData[state.mode].steps.map((label,i)=>`<button type="button" class="part-card" data-part="${i}" partIdx="${i}" onclick="setPartFocus(${i})"><strong class="text-amber-300">조각 ${i+1}</strong><span class="text-[11px] text-emerald-100 ml-2">${label}</span></button>`).join('');
+      box.querySelectorAll('.part-card').forEach(b=>{
+        b.addEventListener('mouseenter',()=>{state.hoverPart=Number(b.dataset.part);updatePartCards();render();});
+        b.addEventListener('mouseleave',()=>{state.hoverPart=null;updatePartCards();render();});
+        b.addEventListener('focus',()=>{state.hoverPart=Number(b.dataset.part);updatePartCards();render();});
+        b.addEventListener('blur',()=>{state.hoverPart=null;updatePartCards();render();});
+      });
+      for(let i=1;i<=3;i++){
+        const step=document.getElementById(`stepBtn${i}`);
+        step.onmouseenter=()=>{state.hoverPart=i-1;render();};
+        step.onmouseleave=()=>{state.hoverPart=null;updatePartCards();render();};
+      }
+      updatePartCards();
+    }
+    function updatePartCards(){
+      document.querySelectorAll('.part-card').forEach(b=>{
+        const i=Number(b.dataset.part),selected=(state.hoverPart ?? state.partIdx)===i;
+        b.classList.toggle('active',selected);
+        b.classList.toggle('dimmed',state.partIdx!==null&&!selected);
+        b.setAttribute('aria-pressed',String(selected));
+        b.setAttribute('aria-disabled',String(!state.steps[i+1]));
+      });
+    }
+    window.APBoardRelHost={
+      getState:()=>({mode:state.mode,lens:state.lens,partIdx:state.partIdx,steps:{...state.steps},yaw:state.yaw,pitch:state.pitch}),
+      setMode:(m)=>setMode(Number(m)),setLens,focusPart:setPartFocus,
+      reset:()=>snapToProblem(),render:()=>render(),snapCamera
+    };
+
+    function setMode(m) {
+      state.mode = m;
+      state.partIdx=null;state.hoverPart=null;
+      for (let i = 1; i <= 4; i++) {
+        const tab = document.getElementById(`tab-${i}`);
+        if (i === m) tab.classList.add('active');
+        else tab.classList.remove('active');
+      }
+
+      document.getElementById('sliderGroup12').classList.toggle('hidden', m !== 1 && m !== 2);
+      document.getElementById('sliderGroup3').classList.toggle('hidden', m !== 3);
+      document.getElementById('sliderGroup4').classList.toggle('hidden', m !== 4);
+
+      const data = examData[m];
+      document.getElementById('canvasModeBadge').textContent = data.badge;
+      document.getElementById('canvasActionHint').innerHTML = data.hint;
+      document.getElementById('examTag').innerHTML = `<i class="fa-solid fa-award"></i> ${data.tag}`;
+      document.getElementById('examTarget').textContent = data.targetTime;
+      document.getElementById('examQuestion').innerHTML = data.question();
+      document.getElementById('examAnswerBadge').innerHTML = data.answerBadge();
+
+      document.getElementById('stepLabel1').textContent = data.steps[0];
+      document.getElementById('stepLabel2').textContent = data.steps[1];
+      document.getElementById('stepLabel3').textContent = data.steps[2];
+
+      const tb = data.textbook();
+      const sc = data.shortcut();
+      document.getElementById('textbookSteps').innerHTML = tb.steps;
+      document.getElementById('textbookWarning').innerHTML = tb.warning;
+      document.getElementById('shortcutSteps').innerHTML = sc.steps;
+      document.getElementById('shortcutHighlight').innerHTML = sc.highlight;
+
+      buildPartCards();
+      updateLensControls();
+      snapToProblem();
+    }
+
+    function snapCamera(preset) {
+      state.autoPlay = false;
+      document.getElementById('iconAutoPlay').className = 'fa-solid fa-play';
+      document.getElementById('txtAutoPlay').textContent = '3D 자동 회전';
+
+      const data = examData[state.mode];
+      let targetYaw = data.cam.yaw;
+      let targetPitch = data.cam.pitch;
+
+      if (preset === 'section') {
+        targetYaw = data.sectionCam.yaw;
+        targetPitch = data.sectionCam.pitch;
+      } else if (preset === 'xy') {
+        targetYaw = 0;
+        targetPitch = (85 * Math.PI) / 180;
+      }
+
+      state.camAnim.active = true;
+      state.camAnim.progress = 0;
+      state.camAnim.startYaw = state.yaw;
+      state.camAnim.startPitch = state.pitch;
+      state.camAnim.targetYaw = targetYaw;
+      state.camAnim.targetPitch = targetPitch;
+    }
+
+    function snapToProblem() {
+      unlockAllSteps();
+      const data = examData[state.mode];
+      if (data.tSnap !== undefined) state.t12 = data.tSnap;
+      if (data.dSnap !== undefined) state.d3 = data.dSnap;
+      if (data.thetaSnap !== undefined) state.theta4 = data.thetaSnap;
+      snapCamera('iso');
+    }
+
+    function toggleAccordion(type) {
+      const body = document.getElementById(`accBody-${type}`);
+      const icon = document.getElementById(`accIcon-${type}`);
+      const isHidden = body.classList.contains('hidden');
+      if (isHidden) {
+        body.classList.remove('hidden');
+        icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        body.classList.add('hidden');
+        icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    function toggleStep(s) {
+      state.steps[s] = !state.steps[s];
+      const btn = document.getElementById(`stepBtn${s}`);
+      const icon = document.getElementById(`stepIcon${s}`);
+      if (state.steps[s]) {
+        btn.classList.add('active');
+        icon.className = 'fa-solid fa-check text-emerald-400 text-xs';
+      } else {
+        btn.classList.remove('active');
+        icon.className = 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      }
+      updatePartCards();render();
+    }
+
+    function unlockAllSteps() {
+      [1, 2, 3].forEach((s) => {
+        state.steps[s] = true;
+        document.getElementById(`stepBtn${s}`).classList.add('active');
+        document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
+      });
+      updatePartCards();render();
+    }
+
+    function onParam12Change() {
+      state.t12 = parseFloat(document.getElementById('sliderParam12').value);
+      render();
+    }
+
+    function onSphereDChange() {
+      state.d3 = parseFloat(document.getElementById('sliderSphereD').value);
+      render();
+    }
+
+    function onSphereThetaChange() {
+      const deg = parseFloat(document.getElementById('sliderSphereTheta').value);
+      state.theta4 = (deg * Math.PI) / 180;
+      render();
+    }
+
+    function onCameraSlider() {
+      state.camAnim.active = false;
+      state.yaw = (parseFloat(document.getElementById('sliderYaw').value) * Math.PI) / 180;
+      state.pitch = (parseFloat(document.getElementById('sliderPitch').value) * Math.PI) / 180;
+      render();
+    }
+
+    function zoomCanvas(factor) {
+      state.userZoomed = true;
+      state.scale = Math.max(5, Math.min(110, state.scale * factor));
+      render();
+    }
+
+    function resetView() {
+      state.userZoomed = false;
+      state.offsetX = 40;
+      state.offsetY = 45;
+      snapCamera('iso');
+      resizeCanvas();
+    }
+
+    function toggleGrid() {
+      state.showGrid = !state.showGrid;
+      render();
+    }
+
+    function toggleAutoPlay() {
+      state.autoPlay = !state.autoPlay;
+      const icon = document.getElementById('iconAutoPlay');
+      const txt = document.getElementById('txtAutoPlay');
+      if (state.autoPlay) {
+        icon.className = 'fa-solid fa-pause';
+        txt.textContent = '일시 정지';
+      } else {
+        icon.className = 'fa-solid fa-play';
+        txt.textContent = '3D 자동 회전';
+      }
+    }
+
+    function animateLoop() {
+      let needsRender = false;
+
+      if (state.camAnim.active) {
+        state.camAnim.progress += 0.08;
+        const t = state.camAnim.progress >= 1 ? 1 : 1 - Math.pow(1 - state.camAnim.progress, 3);
+        state.yaw = state.camAnim.startYaw + (state.camAnim.targetYaw - state.camAnim.startYaw) * t;
+        state.pitch = state.camAnim.startPitch + (state.camAnim.targetPitch - state.camAnim.startPitch) * t;
+        if (state.camAnim.progress >= 1) state.camAnim.active = false;
+        needsRender = true;
+      }
+
+      if (state.autoPlay && !state.isDragging && !state.camAnim.active) {
+        state.yaw += 0.01;
+        if (state.yaw > Math.PI) state.yaw -= Math.PI * 2;
+        needsRender = true;
+      }
+
+      if (needsRender) render();
+      requestAnimationFrame(animateLoop);
+    }
+
+    // -------------------------------------------------------------------------
+    // 7. 마우스 & 모바일 터치 3D 회전 핸들러
+    // -------------------------------------------------------------------------
+    function getPointerPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+      }
+      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
+    function handlePointerDown(e) {
+      state.camAnim.active = false;
+      state.isDragging = true;
+      state.lastMouse = getPointerPos(e);
+    }
+
+    function handlePointerMove(e) {
+      if (!state.isDragging) return;
+      e.preventDefault();
+      const pos = getPointerPos(e);
+      const dx = pos.x - state.lastMouse.x;
+      const dy = pos.y - state.lastMouse.y;
+
+      state.yaw += dx * 0.0085;
+      if (state.yaw > Math.PI) state.yaw -= Math.PI * 2;
+      if (state.yaw < -Math.PI) state.yaw += Math.PI * 2;
+
+      state.pitch = Math.max((-15 * Math.PI) / 180, Math.min((85 * Math.PI) / 180, state.pitch + dy * 0.0075));
+      state.lastMouse = pos;
+      render();
+    }
+
+    function handlePointerUp() {
+      state.isDragging = false;
+    }
+
+    canvas.addEventListener('mousedown', handlePointerDown);
+    window.addEventListener('mousemove', handlePointerMove);
+    window.addEventListener('mouseup', handlePointerUp);
+
+    canvas.addEventListener('touchstart', handlePointerDown, { passive: false });
+    window.addEventListener('touchmove', handlePointerMove, { passive: false });
+    window.addEventListener('touchend', handlePointerUp);
+
+    canvas.addEventListener(
+      'wheel',
+      (e) => {
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.09 : 0.92;
+        zoomCanvas(factor);
+      },
+      { passive: false }
+    );
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setMode(1);
+      resizeCanvas();
+      requestAnimationFrame(animateLoop);
+    });
+  </script>
+  <script id="ap-mobile-adapter">
+    (()=>{
+      const refresh=()=>document.documentElement.style.setProperty('--ap-viewport-height',window.innerHeight+'px');
+      refresh();window.addEventListener('orientationchange',refresh);window.addEventListener('resize',refresh);
+    })();
+  </script>
+  <script id="ap-touch-adapter">
+    (()=>{
+      const c=document.getElementById('boardCanvas');
+      if(c){c.style.touchAction='none';c.addEventListener('touchcancel',()=>{if(typeof handlePointerUp==='function')handlePointerUp();},{passive:true});}
+    })();
+  </script>
+  <script src="board-relations.js" defer></script>
+  <script src="geometry-relations.js" defer></script>
+  <script src="student-guide.js" defer></script>
+</body>
+</html>

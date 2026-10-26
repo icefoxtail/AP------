@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>속도·가속도·이동거리 킬러 랩 (Velocity & Distance Triple Sync Lab)</title>
+  <!-- Pretendard Webfont -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- KaTeX CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+  <style>
+    * {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    body {
+      background-color: #07130e;
+      color: #f1f5f9;
+      overflow: hidden;
+    }
+    .chalkboard-bg {
+      background: radial-gradient(circle at 50% 45%, #163329 0%, #0d211a 65%, #07140f 100%);
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.82);
+    }
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 3px;
+      line-height: 1.05;
+      font-family: 'Pretendard', monospace;
+      font-weight: 700;
+    }
+    .math-frac > .num {
+      border-bottom: 1.5px solid currentColor;
+      padding: 0 4px 2px 4px;
+      font-size: 0.9em;
+      text-align: center;
+      width: 100%;
+    }
+    .math-frac > .den {
+      padding: 2px 4px 0 4px;
+      font-size: 0.9em;
+      text-align: center;
+      width: 100%;
+    }
+    .katex {
+      font-size: 1.04em !important;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07130e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1d3f32;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2d604d;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #11261e;
+      height: 6px;
+      border-radius: 4px;
+      outline: none;
+      border: 1px solid #234739;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #fbbf24;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.85);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .mode-tab.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #07130e;
+      font-weight: 800;
+      border-color: #fbbf24;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+    }
+    .step-btn.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(5, 150, 105, 0.32));
+      border-color: #34d399;
+      color: #ecfdf5;
+      box-shadow: 0 0 12px rgba(52, 211, 153, 0.2);
+    }
+    .chalk-text {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+    }
+    @keyframes subtlePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5); }
+      50% { box-shadow: 0 0 16px 3px rgba(251, 191, 36, 0.35); }
+    }
+    .snap-btn-glow {
+      animation: subtlePulse 2.4s infinite;
+    }
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col">
+
+  <!-- ===================================================================== -->
+  <!-- 상단 헤더 & 5대 핵심 실험·기출 모드 탭 바 + 다운로드 유틸리티 -->
+  <!-- ===================================================================== -->
+  <header class="bg-[#081510]/95 border-b border-emerald-900/70 px-4 py-2 flex flex-wrap items-center justify-between gap-2 z-20 shrink-0">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-amber-500/20 border border-amber-400/60 flex items-center justify-center text-amber-300 shadow-inner">
+        <i class="fa-solid fa-gauge-Simple-high text-lg"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-base md:text-lg font-extrabold tracking-tight text-emerald-50 chalk-text">미적분Ⅰ · 속도·가속도·이동거리 LAB</h1>
+          <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">TRIPLE SYNC v2.0</span>
+        </div>
+        <p class="text-[11px] text-emerald-400/85 hidden xl:block">1차원 수직선 운동 트랙 + 위치 x(t) + 속도 v(t) 3단 동기화 · 변위 vs 이동거리 · 방향 전환 · 두 점 추격전</p>
+      </div>
+    </div>
+
+    <!-- 5대 실험·기출 모드 탭 -->
+    <nav class="flex items-center gap-1.5 overflow-x-auto py-1 max-w-full">
+      <button onclick="setMode(1)" id="tab-1" class="mode-tab active text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-route"></i>
+        <span>1. 변위 vs 이동거리</span>
+      </button>
+      <button onclick="setMode(2)" id="tab-2" class="mode-tab text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-rotate-left"></i>
+        <span>2. 운동 방향 전환(유턴)</span>
+      </button>
+      <button onclick="setMode(3)" id="tab-3" class="mode-tab text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-flag-checkered"></i>
+        <span>3. 원점 복귀 &amp; 최대속력</span>
+      </button>
+      <button onclick="setMode(4)" id="tab-4" class="mode-tab text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-people-arrows"></i>
+        <span>4. 두 점 P·Q 추격전</span>
+      </button>
+      <button onclick="setMode(5)" id="tab-5" class="mode-tab text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>5. 위치 x(t) vs 속도 v(t) 함정</span>
+      </button>
+    </nav>
+
+    <!-- 우측 상단: 자체 파일 다운로드 & 칠판 캡처 버튼 -->
+    <div class="flex items-center gap-1.5 shrink-0">
+      <button onclick="downloadSelfHTML()" class="px-2.5 py-1.5 rounded-lg bg-emerald-800/60 hover:bg-emerald-700/70 border border-emerald-500/50 text-emerald-100 text-xs font-bold flex items-center gap-1.5 transition shadow" title="현재 웹앱을 단일 HTML 파일로 즉시 다운로드">
+        <i class="fa-solid fa-file-arrow-down text-amber-300"></i>
+        <span class="hidden sm:inline">HTML 저장</span>
+      </button>
+      <button onclick="captureChalkboard()" class="px-2.5 py-1.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-900/80 border border-emerald-700/60 text-emerald-200 text-xs font-bold flex items-center gap-1.5 transition" title="칠판 판서 화면을 PNG 이미지로 캡처 저장">
+        <i class="fa-solid fa-camera text-sky-300"></i>
+        <span class="hidden sm:inline">판서 캡처</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 메인 워크스페이스 (좌측 3단 동기화 칠판 + 우측 440px 기출·솔루션·슬라이더 패널) -->
+  <!-- ===================================================================== -->
+  <div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+    <!-- 좌측: 인터랙티브 분필 칠판 캔버스 (상단 수직선 트랙 + 중단 위치 x(t) + 하단 속도 v(t)) -->
+    <main class="flex-1 relative chalkboard-bg overflow-hidden flex items-center justify-center">
+      <canvas id="boardCanvas" class="w-full h-full block cursor-grab active:cursor-grabbing"></canvas>
+
+      <!-- 좌측 상단: 현재 모드 배지 & 실시간 수식 배지 -->
+      <div class="absolute top-3 left-3 pointer-events-none flex flex-col gap-1.5 max-w-xs sm:max-w-xl z-10">
+        <div class="bg-[#07140f]/90 backdrop-blur-md border border-emerald-700/50 rounded-xl px-3.5 py-2 shadow-lg">
+          <div class="flex items-center justify-between gap-2 mb-0.5">
+            <div class="flex items-center gap-2 text-amber-300 text-xs font-extrabold">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+              <span id="canvasModeBadge">MODE 1 · 위치의 변화량(변위) vs 실제 움직인 거리</span>
+            </div>
+            <span id="conditionBadge" class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-400/50">
+              3단 트랙 동기화 활성
+            </span>
+          </div>
+          <p id="canvasActionHint" class="text-[11.5px] text-emerald-100/90 leading-snug">
+            하단 <span class="text-amber-300 font-bold">[▶ 주행 재생]</span>을 누르거나 노란 시간 마커 <span class="text-amber-300 font-bold">t</span>를 드래그해 보세요!
+          </p>
+        </div>
+
+        <!-- 위치 x(t) 및 속도 v(t) 실시간 KaTeX 수식 배지 -->
+        <div class="bg-[#07140f]/90 backdrop-blur-md border border-emerald-800/70 rounded-xl px-3.5 py-1.5 shadow-md flex flex-wrap items-center gap-3 w-fit">
+          <div class="text-xs text-emerald-100 flex items-center gap-1.5">
+            <span class="text-amber-300 font-extrabold">위치:</span>
+            <span id="eqDisplay" class="text-amber-200 font-bold"></span>
+          </div>
+          <span class="text-emerald-700">|</span>
+          <div class="text-xs text-sky-300 flex items-center gap-1.5">
+            <span class="font-bold">속도/가속도:</span>
+            <span id="derivDisplay" class="font-bold"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 좌측 하단 플로팅 캔버스 툴바 -->
+      <div class="absolute bottom-4 left-4 flex flex-wrap items-center gap-1.5 bg-[#07140f]/92 backdrop-blur-md border border-emerald-800/70 p-1.5 rounded-xl shadow-xl z-10">
+        <button onclick="snapToProblem()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold flex items-center gap-1.5 transition shadow" title="현재 기출 문제 조건으로 즉시 세팅">
+          <i class="fa-solid fa-crosshairs"></i>
+          <span>문제 조건 스냅</span>
+        </button>
+        <button onclick="toggleAutoPlay()" id="btnAutoPlay" class="px-3 py-1.5 rounded-lg bg-emerald-500/25 hover:bg-emerald-500/35 border border-emerald-400/60 text-emerald-100 text-xs font-extrabold flex items-center gap-1.5 transition shadow" title="시간 t=0 부터 실시간 주행 애니메이션 재생">
+          <i class="fa-solid fa-play text-amber-300" id="iconAutoPlay"></i>
+          <span id="txtAutoPlay">▶ 주행 재생</span>
+        </button>
+        <button onclick="toggleDualView()" id="btnDualView" class="px-3 py-1.5 rounded-lg bg-sky-400 text-slate-950 text-xs font-extrabold flex items-center gap-1.5 transition shadow-md" title="위치 x(t)와 속도 v(t) 동시 관찰 뷰 토글">
+          <i class="fa-solid fa-arrows-split-up-and-left"></i>
+          <span id="txtDualView">x(t)·v(t) 동시 뷰 ON</span>
+        </button>
+        <div class="h-4 w-[1px] bg-emerald-800/70 mx-0.5"></div>
+        <button onclick="zoomCanvas(1.15)" class="w-8 h-8 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="확대">
+          <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </button>
+        <button onclick="zoomCanvas(0.87)" class="w-8 h-8 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="축소">
+          <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </button>
+        <button onclick="resetView()" class="w-8 h-8 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="화면 원점 초기화">
+          <i class="fa-solid fa-compress-arrows-alt"></i>
+        </button>
+        <button onclick="toggleGrid()" id="btnGrid" class="px-2.5 py-1.5 rounded-lg bg-emerald-900/50 border border-emerald-600/40 text-emerald-200 text-xs font-medium transition" title="격자 표시 켜기/끄기">
+          <i class="fa-solid fa-border-all"></i>
+        </button>
+      </div>
+
+      <!-- 우측 하단 칠판 지우개 & 분필 소품 -->
+      <div class="absolute bottom-3 right-4 pointer-events-none hidden md:flex items-end gap-2 opacity-75">
+        <div class="w-10 h-2 bg-white rounded-sm shadow"></div>
+        <div class="w-10 h-2 bg-amber-300 rounded-sm shadow"></div>
+        <div class="w-10 h-2 bg-pink-400 rounded-sm shadow"></div>
+        <div class="w-16 h-5 bg-amber-900/90 border-t-4 border-slate-300 rounded-sm shadow-lg"></div>
+      </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- 우측: 실전 기출 문제 & 10초 컷 솔루션 허브 (440px) -->
+    <!-- =================================================================== -->
+    <aside class="w-full lg:w-[440px] bg-[#081611] border-t lg:border-t-0 lg:border-l border-emerald-900/80 flex flex-col h-[52vh] lg:h-full shrink-0 z-10">
+      <div class="p-4 overflow-y-auto flex-1 space-y-4">
+
+        <!-- 1. [Exam View] 실전 기출 문제 카드 & 원클릭 스냅 버튼 -->
+        <section class="bg-gradient-to-br from-[#112a21] to-[#0b1c16] border border-amber-400/50 rounded-xl p-3.5 shadow-lg relative overflow-hidden">
+          <div class="flex items-center justify-between mb-2">
+            <span id="examTag" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40 flex items-center gap-1.5">
+              <i class="fa-solid fa-award"></i> 수능·평가원 100% 출제 유형
+            </span>
+            <span id="examTarget" class="text-[11px] font-mono text-emerald-300 font-bold">목표 시간: 5초</span>
+          </div>
+
+          <div id="examQuestion" class="text-xs md:text-[13px] text-emerald-50 leading-loose bg-[#07130e]/85 p-3 rounded-lg border border-emerald-800/70 mb-3 font-medium">
+            <!-- JS 렌더링 -->
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
+            <div class="bg-[#07130e] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2">
+              <span class="text-[11px] text-emerald-400 font-bold">실전 정답:</span>
+              <span id="examAnswerBadge" class="text-xs font-extrabold text-amber-300"></span>
+            </div>
+
+            <button onclick="snapToProblem()" class="snap-btn-glow px-3.5 py-2 rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-extrabold text-xs flex items-center justify-center gap-1.5 transition shadow-md shrink-0">
+              <i class="fa-solid fa-bullseye"></i>
+              <span>🎯 문제 조건으로 원클릭 스냅</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 2. 단계별 칠판 보조선 언락 (Step 1 ~ 3) -->
+        <section class="bg-[#0d211a] border border-emerald-800/70 rounded-xl p-3.5">
+          <div class="flex items-center justify-between mb-2.5">
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-layer-group text-amber-400"></i>
+              <span>단계별 칠판 보조선 언락 (Steps)</span>
+            </h2>
+            <button onclick="unlockAllSteps()" class="text-[11px] text-amber-300 hover:underline font-semibold">전체 표시</button>
+          </div>
+
+          <div class="space-y-1.5">
+            <button onclick="toggleStep(1)" id="stepBtn1" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">1</span>
+                <span id="stepLabel1" class="text-xs font-semibold">최상단 1차원 수직선 운동 트랙 &amp; 유턴 부메랑 궤적(Trail)</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon1"></i>
+            </button>
+
+            <button onclick="toggleStep(2)" id="stepBtn2" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">2</span>
+                <span id="stepLabel2" class="text-xs font-semibold">속도 v(t) 정적분 면적 색칠 (전진 +S₁ vs 후진 -S₂)</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon2"></i>
+            </button>
+
+            <button onclick="toggleStep(3)" id="stepBtn3" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">3</span>
+                <span id="stepLabel3" class="text-xs font-semibold">운동 방향 전환(v=0) 수직 동기화선 및 변위·이동거리 판서</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon3"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- 3. 2대 비교 아코디언 -->
+        <section class="space-y-2.5">
+          <!-- 아코디언 1 -->
+          <div class="border border-rose-500/40 rounded-xl bg-[#151318] overflow-hidden">
+            <button onclick="toggleAccordion('textbook')" class="w-full px-3.5 py-2.5 flex items-center justify-between text-left bg-rose-950/40 hover:bg-rose-950/60 transition">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/40 text-[10px] font-extrabold">3분 소요</span>
+                <span class="text-xs font-extrabold text-rose-100">교과서식 정석 풀이 (구간 쪼개어 절댓값 부정적분 계산)</span>
+              </div>
+              <i id="accIcon-textbook" class="fa-solid fa-chevron-down text-rose-300 text-xs transition-transform"></i>
+            </button>
+            <div id="accBody-textbook" class="hidden p-3.5 text-xs space-y-2.5 border-t border-rose-500/20">
+              <div id="textbookSteps" class="text-[11.5px] text-slate-200 leading-loose space-y-2 bg-black/40 p-3 rounded-lg border border-rose-900/40">
+                <!-- JS 렌더링 -->
+              </div>
+              <div id="textbookWarning" class="p-2.5 rounded-lg bg-rose-500/15 border border-rose-500/40 text-rose-200 text-[11.5px] font-semibold leading-snug">
+                <!-- JS 렌더링 -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 아코디언 2 -->
+          <div class="border border-amber-400/60 rounded-xl bg-[#11241b] overflow-hidden shadow-lg">
+            <button onclick="toggleAccordion('shortcut')" class="w-full px-3.5 py-2.5 flex items-center justify-between text-left bg-amber-500/15 hover:bg-amber-500/25 transition">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-extrabold">10초 컷</span>
+                <span class="text-xs font-extrabold text-amber-300">10초 컷 실전 속도 넓이·비율 비기 (일타 강사 판서)</span>
+              </div>
+              <i id="accIcon-shortcut" class="fa-solid fa-chevron-up text-amber-300 text-xs transition-transform"></i>
+            </button>
+            <div id="accBody-shortcut" class="p-3.5 text-xs space-y-2.5 border-t border-amber-400/30">
+              <div id="shortcutSteps" class="text-emerald-50 leading-loose space-y-1.5 bg-[#07130e]/90 p-3 rounded-lg border border-emerald-800/80 font-medium">
+                <!-- JS 렌더링 -->
+              </div>
+              <div id="shortcutHighlight" class="p-2.5 rounded-lg bg-amber-400/20 border border-amber-400/50 text-amber-200 text-[12px] font-extrabold leading-snug shadow-inner">
+                <!-- JS 렌더링 -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. 실시간 불변성 스트레스 테스트 모니터 & 슬라이더 -->
+        <section class="bg-[#0d211a] border border-emerald-800/70 rounded-xl p-3.5 space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-gauge-high text-amber-400"></i>
+              <span>주행 텔레메트리 라이브 모니터</span>
+            </h2>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-600/50">실시간 계측 중</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel1" class="text-[10px] text-emerald-400">현재 시각 t / 위치 x(t)</div>
+              <div id="statVal1" class="text-xs font-bold text-amber-300 mt-0.5">t = 3.00초 | x = 0.00</div>
+            </div>
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel2" class="text-[10px] text-sky-300">현재 속도 v(t) / 가속도 a(t)</div>
+              <div id="statVal2" class="text-xs font-bold text-sky-300 mt-0.5">v = +9.00 | a = +12.0</div>
+            </div>
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel3" class="text-[10px] text-pink-300">위치 변화량(변위 ∫v dt)</div>
+              <div id="statVal3" class="text-xs font-bold text-pink-300 mt-0.5">Δx = 0.00 (원점 복귀)</div>
+            </div>
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel4" class="text-[10px] text-purple-300">실제 움직인 거리 (∫|v| dt)</div>
+              <div id="statVal4" class="text-xs font-bold text-purple-300 mt-0.5">이동거리 D = 8.00</div>
+            </div>
+          </div>
+
+          <!-- 파라미터 수동 조작 슬라이더 -->
+          <div class="pt-2 border-t border-emerald-800/60 space-y-2.5">
+            <!-- 슬라이더 1: 시각 t -->
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span class="text-emerald-200">관찰 시각 <strong class="text-amber-300">t (초)</strong> (0초 ~ 3.5초 드래그)</span>
+                <span id="valT" class="font-mono font-bold text-amber-300">t = 3.00 초</span>
+              </div>
+              <input type="range" id="sliderT" min="0.0" max="3.5" step="0.02" value="3.0" class="w-full" oninput="onTSlider()" />
+            </div>
+
+            <!-- 슬라이더 2: 운동 파라미터 p -->
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span class="text-emerald-200" id="labelParam">운동 제어 파라미터 <strong class="text-sky-300">p</strong></span>
+                <span id="valParam" class="font-mono font-bold text-sky-300">p = 1.00</span>
+              </div>
+              <input type="range" id="sliderParam" min="-0.5" max="2.0" step="0.05" value="1.0" class="w-full" oninput="onParamSlider()" />
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </aside>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 인터랙티브 미적분Ⅰ 속도·가속도·이동거리 3단 동기화 엔진 스크립트 -->
+  <!-- ===================================================================== -->
+  <script>
+    // -------------------------------------------------------------------------
+    // 0. KaTeX 및 파일 저장 유틸리티
+    // -------------------------------------------------------------------------
+    function tex(latexStr) {
+      if (window.katex) {
+        return katex.renderToString(latexStr, { throwOnError: false, displayMode: false });
+      }
+      return latexStr;
+    }
+
+    function downloadSelfHTML() {
+      const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '미적분1_속도와거리_LAB.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function captureChalkboard() {
+      const canvasEl = document.getElementById('boardCanvas');
+      const dataUrl = canvasEl.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `속도와거리_칠판판서_Mode${state.mode}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // -------------------------------------------------------------------------
+    // 1. 전역 상태 관리 (State)
+    // -------------------------------------------------------------------------
+    const state = {
+      mode: 1,                  // 1: 변위vs이동거리, 2: 방향전환(관통vs접함), 3: 원점복귀&최대속력, 4: 두 점 P·Q 추격전, 5: x(t) vs v(t) 함정
+      t: 3.0,                   // 현재 시각 t (0 <= t <= 3.5)
+      param: 1.0,               // 모드별 제어 파라미터 (예: δ 또는 Q의 속도 k)
+      dualView: true,           // 위치 x(t) + 속도 v(t) 동시 관찰 뷰 (기본 ON)
+      steps: { 1: true, 2: true, 3: true },
+      scale: 68,                // 가로축 t 스케일
+      offsetX: -120,
+      offsetY: 0,
+      showGrid: true,
+      autoPlay: false,
+      userZoomed: false,
+      isDragging: false,
+      dragType: null,           // 'TIME', 'PAN'
+      lastMouse: { x: 0, y: 0 },
+      snapAnim: {
+        active: false,
+        startT: 3.0, startParam: 1.0,
+        targetT: 3.0, targetParam: 1.0,
+        progress: 0
+      }
+    };
+
+    // -------------------------------------------------------------------------
+    // 2. 점 P와 Q의 위치 x(t), 속도 v(t), 가속도 a(t), 실제 이동거리 D(t) 모델
+    //    기본 모델: x(t) = (t-1)^3 - 3*p*(t-1) + (1 - 3p)  (항상 x(0) = 0 출발!)
+    //    속도:      v(t) = 3[(t-1)^2 - p]
+    //    가속도:    a(t) = 6(t-1)
+    //    * p = 1 일 때: x(t) = t^3 - 3t^2, v(t) = 3t^2 - 6t = 3t(t - 2)
+    //    * p = 0 일 때: x(t) = (t-1)^3 + 1, v(t) = 3(t-1)^2 >= 0 (t=1에서 멈칫 후 계속 전진!)
+    // -------------------------------------------------------------------------
+    function evalX(t) {
+      const p = state.mode === 2 ? state.param : 1.0;
+      const u = t - 1.0;
+      const x0 = -1.0 + 3.0 * p; // t=0 일 때 u=-1 이므로 (-1) - 3p(-1) + c = 0 => c = 1 - 3p
+      return u * u * u - 3.0 * p * u + (1.0 - 3.0 * p);
+    }
+
+    function evalV(t) {
+      const p = state.mode === 2 ? state.param : 1.0;
+      const u = t - 1.0;
+      return 3.0 * (u * u - p);
+    }
+
+    function evalA(t) {
+      return 6.0 * (t - 1.0);
+    }
+
+    // Mode 4의 두 번째 점 Q: 등속도 또는 등가속도 운동
+    // v_Q(t) = 3t, x_Q(t) = 1.5t^2 (점 P는 v_P(t) = -3t^2 + 6t => x_P(t) = -t^3 + 3t^2)
+    function evalXP_Mode4(t) {
+      return -t * t * t + 3.0 * t * t;
+    }
+    function evalVP_Mode4(t) {
+      return -3.0 * t * t + 6.0 * t;
+    }
+    function evalXQ_Mode4(t) {
+      return 1.5 * state.param * t * t;
+    }
+    function evalVQ_Mode4(t) {
+      return 3.0 * state.param * t;
+    }
+
+    // 시각 0 부터 t 까지의 누적 이동거리 ∫_0^t |v(s)| ds 수치 적분
+    function evalDistance(tEnd) {
+      if (tEnd <= 0.001) return { posArea: 0, negArea: 0, totalDist: 0, disp: 0 };
+      const N = 160;
+      const dt = tEnd / N;
+      let pos = 0;
+      let neg = 0;
+      for (let i = 0; i < N; i++) {
+        const tm = (i + 0.5) * dt;
+        const v = state.mode === 4 ? evalVP_Mode4(tm) : evalV(tm);
+        if (v >= 0) pos += v * dt;
+        else neg += Math.abs(v) * dt;
+      }
+      return {
+        posArea: pos,
+        negArea: neg,
+        totalDist: pos + neg,
+        disp: pos - neg
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // 3. 5대 실전 기출 문제 & 3분 정석 vs 10초 컷 솔루션 데이터베이스
+    // -------------------------------------------------------------------------
+    const examData = {
+      1: {
+        badge: "MODE 1 · 위치의 변화량(변위 Δx) vs 실제 움직인 거리(D) 3단 동기화",
+        hint: "하단 <span class='text-amber-300 font-bold'>[▶ 주행 재생]</span>을 눌러보세요! 점 P가 <span class='text-sky-300 font-bold'>t=2초까지 왼쪽(-4)으로 후진</span>했다가 유턴하여 <span class='text-pink-300 font-bold'>t=3초에 원점(0)으로 복귀</span>하므로 변위는 0이지만 이동거리는 8이 됩니다!",
+        tag: "수능·평가원 출제율 100% 필수 유형",
+        targetTime: "목표 시간: 5초",
+        question: () => `수직선 위를 움직이는 점 ${tex('P')}의 시각 ${tex('t \\; (t \\ge 0)')}에서의 속도가 ${tex('v(t) = 3t^2 - 6t')} 이고 ${tex('t = 0')} 일 때 원점에서 출발한다. ${tex('t = 0')} 에서 ${tex('t = 3')} 까지 점 ${tex('P')}의 위치의 변화량 ${tex('\\Delta x')}와 실제로 움직인 거리 ${tex('D')}를 각각 구하시오.`,
+        answerBadge: () => `위치 변화량 ${tex('\\Delta x = 0')}, 움직인 거리 ${tex('D = 8')}`,
+        snap: { t: 3.0, param: 1.0, dualView: true },
+        steps: [
+          "최상단: 1차원 수직선 트랙 위의 점 P 실시간 주행 및 유턴 부메랑 궤적",
+          "중단/하단: 위치 x(t) 그래프와 속도 v(t)의 정적분 면적(-S₂ 후진 vs +S₁ 전진)",
+          "변위(Δx = S₁ - S₂ = 0) vs 이동거리(D = S₁ + S₂ = 8) 비교 칠판 판서"
+        ],
+        textbook: () => ({
+          steps: `① 위치의 변화량: ${tex('\\Delta x = \\int_{0}^{3} (3t^2 - 6t)\\,dt = \\left[ t^3 - 3t^2 \\right]_{0}^{3} = 27 - 27 = 0')}<br/>
+② 실제 움직인 거리는 ${tex('v(t) = 0')} 인 ${tex('t = 2')} 에서 구간을 쪼개어 절댓값 적분:<br/>
+&nbsp;&nbsp;${tex('D = \\int_{0}^{2} (-3t^2 + 6t)\\,dt + \\int_{2}^{3} (3t^2 - 6t)\\,dt')}<br/>
+③ 각각 부정적분 계산: ${tex('4 + 4 = 8')}...`,
+          warning: "⚠️ 이동거리를 구할 때마다 부정적분에 위끝·아래끝을 대입하지 마세요! 이차 속도함수는 1/6 넓이 공식과 2:1 비율로 암산됩니다!"
+        }),
+        shortcut: () => ({
+          steps: `① ${tex('v(t) = 3t(t - 2)')} 에서 ${tex('0 \\sim 2')}초 후진 넓이는 <strong>[1/6 공식]</strong>으로 즉시 <strong class="text-sky-300">${tex('S_2 = \\dfrac{3}{6}(2 - 0)^3 = 4')}</strong>!<br/>
+② <strong>[2 : 1 정적분 상쇄 법칙]</strong>에 의해 ${tex('2 \\sim 3')}초 전진 넓이도 똑같이 <strong class="text-pink-300">${tex('S_1 = 4')}</strong>!<br/>
+③ 따라서 ${tex('t = 3')}초일 때 위치 변화량 <strong class="text-amber-300">${tex('\\Delta x = -4 + 4 = 0')}</strong>, 실제 움직인 거리 <strong class="text-emerald-300">${tex('D = 4 + 4 = 8')}</strong>!`,
+          highlight: "💡 『위치의 변화량 = 원함수 x(t)의 높이 차(S₁-S₂)』이고, 『움직인 거리 = 유턴 지점에서 꺾어 더한 총 발자국 길이(S₁+S₂)』입니다!"
+        })
+      },
+
+      2: {
+        badge: "MODE 2 · 운동 방향 전환 판별기 (v(t)=0 관통 유턴 vs 중근 접함 멈칫)",
+        hint: "우측 슬라이더로 <span class='text-sky-300 font-bold'>파라미터 p를 0으로</span> 맞춰보세요! <span class='text-amber-300 font-bold'>v(t) = 3(t-1)² 이 되어 t=1에서 속도가 0이 되지만</span> 부호가 바뀌지 않으므로 점 P는 유턴하지 않고 계속 앞으로 전진합니다!",
+        tag: "평가원 합답형(ㄱ,ㄴ,ㄷ) 오답률 1위 함정",
+        targetTime: "목표 시간: 3초",
+        question: () => `수직선 위를 움직이는 점 ${tex('P')}의 속도가 ${tex('v_1(t) = 3(t-1)^2 - 3')} 일 때와 ${tex('v_2(t) = 3(t-1)^2')} 일 때, 출발 후(${tex('t > 0')}) 점 ${tex('P')}가 운동 방향을 바꾸는 횟수를 각각 구하시오.`,
+        answerBadge: () => `${tex('v_1(t)')}는 ${tex('1')}번(${tex('t=2')}), ${tex('v_2(t)')}는 ${tex('0')}번 (방향 전환 없음!)`,
+        snap: { t: 2.5, param: 0.0, dualView: true },
+        steps: [
+          "상단 수직선 트랙: t = 1 에서 잠깐 멈췄다가(v=0) 계속 오른쪽으로 전진하는 궤적",
+          "중단 위치 x(t): 극값이 아닌 3중근 변곡점(기울기 0 후 계속 증가) 확인",
+          "하단 속도 v(t): t축 관통(부호 변화 = 유턴) vs t축 접함(부호 불변 = 직진) 비교"
+        ],
+        textbook: () => ({
+          steps: `① 학생들의 흔한 실수: ${tex('v_2(t) = 3(t-1)^2 = 0')} 에서 ${tex('t = 1')} 이므로 ${tex('t = 1')} 에서 운동 방향을 바꾼다고 착각하여 오답 선택!<br/>
+② 정석 판정: ${tex('t = 1')} 의 좌우에서 ${tex('v_2(t)')} 의 부호가 ${tex('(+) \\to 0 \\to (+)')} 로 바뀌지 않으므로 운동 방향은 바뀌지 않는다.`,
+          warning: "⚠️ '운동 방향을 바꾼다'는 조건을 단순히 'v(t) = 0 이다'로 풀면 평가원 함정에 100% 걸려듭니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[운동 방향 전환 = 위치 $x(t)$의 극값]</strong> 속도가 $0$이 되어도 <strong>부호가 바뀌어야(${tex('+ \\leftrightarrow -')}, 관통)</strong> 유턴합니다!<br/>
+② ${tex('v_2(t) = 3(t-1)^2')} 은 ${tex('t = 1')} 에서 ${tex('t')}축에 <strong>접하므로(중근)</strong> 신호등에 잠깐 멈췄다가 다시 직진하는 것과 같습니다!<br/>
+③ 따라서 운동 방향 전환 횟수는 <strong class="text-amber-300">0번</strong>!`,
+          highlight: "💡 『점 P가 운동 방향을 바꾼다 ⇔ 속도 v(t)가 t축을 '관통'하여 부호가 바뀐다 (접하면 유턴 아님!)』"
+        })
+      },
+
+      3: {
+        badge: "MODE 3 · 원점 복귀 시각(2:1 비율) & 최대 속력(|v(t)| 최대 ⇔ a(t)=0)",
+        hint: "시간 마커 <span class='text-amber-300 font-bold'>t</span>를 <span class='text-pink-300 font-bold'>t=1, t=2, t=3</span>에 차례로 맞춰보세요! <span class='text-sky-300 font-bold'>t=1(가속도 0)에서 속력이 최대(3)</span>, t=2에서 원점으로부터 최고 멀리(-4), <span class='text-emerald-300 font-bold'>t=3에서 원점 복귀</span>합니다!",
+        tag: "수능 4점 속도·가속도 종합 추론",
+        targetTime: "목표 시간: 5초",
+        question: () => `원점에서 출발하여 수직선 위를 움직이는 점 ${tex('P')}의 속도가 ${tex('v(t) = 3t^2 - 6t')} 일 때, ① 닫힌구간 ${tex('[0, 2]')}에서 점 ${tex('P')}의 속력이 최대인 시각, ② 원점으로부터 가장 멀리 떨어진 시각, ③ 출발 후 다시 원점을 지나는 시각을 각각 구하시오.`,
+        answerBadge: () => `① 최대속력 ${tex('t=1')}, ② 최고점 ${tex('t=2')}, ③ 원점복귀 ${tex('t=3')}`,
+        snap: { t: 1.0, param: 1.0, dualView: true },
+        steps: [
+          "t = 1 : 가속도 a(1)=v'(1)=0 (위치 변곡점) ⇒ 구간 [0, 2] 최대 속력 |v(1)| = 3",
+          "t = 2 : 속도 v(2)=0 부호 변화 ⇒ 원점으로부터 최고 멀리 떨어진 유턴 지점(x = -4)",
+          "t = 3 : 2 : 1 정적분 넓이 상쇄(S₁ = S₂) ⇒ 출발 후 원점(x = 0) 복귀!"
+        ],
+        textbook: () => ({
+          steps: `① 속력 ${tex('|v(t)| = |-3t^2 + 6t| = 3(t-1)^2 - 3')} 의 꼭짓점 ${tex('t = 1')} 에서 최댓값 ${tex('3')}<br/>
+② 위치 ${tex('x(t) = t^3 - 3t^2')} 을 적분으로 구한 뒤 극솟값 ${tex('x(2) = -4')} 계산<br/>
+③ 원점 복귀 시각은 방정식 ${tex('t^3 - 3t^2 = t^2(t - 3) = 0')} 을 풀어 ${tex('t = 3')} 도출...`,
+          warning: "⚠️ 속도 그래프 하나로 ① 꼭짓점(가속도 0 = 최대 속력), ② 영점(유턴 최고점), ③ 2:1 비율(원점 복귀) 세 가지를 동시에 읽어야 합니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[최대 속력]</strong> 이차 속도함수의 대칭축(가속도 ${tex('a(t)=0')})인 <strong class="text-sky-300">${tex('t = 1')}초</strong> (속력 ${tex('|-3|=3')})!<br/>
+② <strong>[원점 최원거리]</strong> 한쪽으로만 끝까지 간 유턴 시점 <strong class="text-pink-300">${tex('t = 2')}초</strong> (거리 ${tex('= \\dfrac{3}{6}\\cdot 2^3 = 4')})!<br/>
+③ <strong>[원점 복귀]</strong> 이차함수 <strong>[2 : 1 넓이 상쇄 법칙]</strong>으로 적분 없이 즉시 <strong class="text-amber-300">${tex('t = 3')}초</strong>!`,
+          highlight: "💡 이차 속도함수 v(t) = a·t(t - 2k) 에서는 무조건 【 t=k 최대속력, t=2k 유턴(최고점), t=3k 원점복귀 】 1:2:3 세트입니다!"
+        })
+      },
+
+      4: {
+        badge: "MODE 4 · 두 점 P, Q 의 실시간 추격전 (최대 거리 v_P=v_Q vs 추월 S₁=S₂)",
+        hint: "하단 <span class='text-amber-300 font-bold'>[▶ 주행 재생]</span>을 눌러 상단 트랙의 <span class='text-amber-300 font-bold'>점 P</span>와 <span class='text-sky-300 font-bold'>점 Q</span>의 경주를 관찰하세요! <span class='text-pink-300 font-bold'>t=1초(속도 일치)에 간격이 최대</span>로 벌어지고, <span class='text-emerald-300 font-bold'>t=1.5초에 다시 만납니다!</span>",
+        tag: "수능·평가원 두 점의 운동 킬러 유형",
+        targetTime: "목표 시간: 5초",
+        question: () => `원점에서 동시에 출발하여 수직선 위를 움직이는 두 점 ${tex('P, Q')}의 속도가 각각 ${tex('v_P(t) = -3t^2 + 6t')}, ${tex('v_Q(t) = 3t')} 이다. 출발 후 두 점 ${tex('P, Q')}가 다시 만날 때까지 두 점 사이의 거리가 최대가 되는 시각 ${tex('t_1')}과 다시 만나는 시각 ${tex('t_2')}를 구하시오.`,
+        answerBadge: () => `최대 거리 시각 ${tex('t_1 = 1')}, 다시 만나는 시각 ${tex('t_2 = \\dfrac{3}{2} \\; (1.5)')}`,
+        snap: { t: 1.5, param: 1.0, dualView: true },
+        steps: [
+          "최상단 트랙: 두 점 P(노란색)와 Q(하늘색)의 실시간 추격전 및 간격 표시",
+          "중단 위치 그래프: x_P(t) 와 x_Q(t) 의 세로 간격 최대 지점 및 교점",
+          "하단 속도 그래프: 두 속도가 같은 교점(t=1) 및 넓이 상쇄 지점(t=1.5) 비교"
+        ],
+        textbook: () => ({
+          steps: `① 각각 적분하여 위치 구하기: ${tex('x_P(t) = -t^3 + 3t^2')}, ${tex('x_Q(t) = \\dfrac{3}{2}t^2')}<br/>
+② 거리 함수 ${tex('f(t) = x_P(t) - x_Q(t) = -t^3 + \\dfrac{3}{2}t^2')} 를 다시 미분하여 극댓값 조사<br/>
+③ 방정식 ${tex('-t^3 + \\dfrac{3}{2}t^2 = 0')} 을 풀어 만나는 시각 ${tex('t_2 = \\dfrac{3}{2}')} 도출...`,
+          warning: "⚠️ 많은 학생들이 두 속도 그래프가 만나는 점(v_P = v_Q, t=1)에서 두 점이 만난다고 착각합니다! 속도가 같을 때는 거리가 최대가 되는 순간입니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[거리 최대 시각]</strong> 앞선 점 ${tex('P')}가 더 빠르다가 뒷점 ${tex('Q')}가 더 빨라지는 경계, 즉 <strong class="text-pink-300">두 속도가 같아지는 순간(${tex('v_P = v_Q')})</strong>에 거리가 최대!<br/>
+&nbsp;&nbsp;${tex('-3t^2 + 6t = 3t \\implies 3t(t - 1) = 0 \\implies')} 즉시 <strong class="text-amber-300">${tex('t_1 = 1')}초</strong>!<br/>
+② <strong>[다시 만나는 시각]</strong> 이차 차함수 ${tex('v_P - v_Q = -3t(t - 1)')} 의 <strong>[2 : 1 정적분 상쇄 법칙]</strong>에 의해 ${tex('1')}초의 ${tex('1.5')}배인 <strong class="text-emerald-300">${tex('t_2 = 1.5')}초</strong>에 즉시 추월!`,
+          highlight: "💡 『두 점 사이의 거리가 최대인 순간 ⇔ 두 속도가 같아지는 순간(v_P = v_Q)』이고, 『만나는 순간 ⇔ 속도 차의 넓이가 0이 되는 순간(2:1 비율)』입니다!"
+        })
+      },
+
+      5: {
+        badge: "MODE 5 · 세로축 함정 정복: 주어진 그래프가 『위치 x(t)』인가 『속도 v(t)』인가?",
+        hint: "중단 <span class='text-amber-300 font-bold'>위치 x(t) 그래프</span>와 하단 <span class='text-sky-300 font-bold'>속도 v(t) 그래프</span>를 비교해 보세요! <span class='text-pink-300 font-bold'>위치 그래프에서는 '극점(꺾이는 꼭대기)'이 유턴</span>이고, <span class='text-emerald-300 font-bold'>속도 그래프에서는 't축 관통점'이 유턴</span>입니다!",
+        tag: "내신·수능 합답형 실수 방지 필수 훈련",
+        targetTime: "목표 시간: 3초",
+        question: () => `시각 ${tex('t')}에 대한 삼차 위치 그래프 ${tex('x(t) = t^3 - 3t^2')} 과 이차 속도 그래프 ${tex('v(t) = 3t^2 - 6t')} 를 비교할 때, ① 위치 그래프 ${tex('x(t)')}에서 운동 방향이 바뀌는 지점의 기하학적 특징과, ② 속도 그래프 ${tex('v(t)')}에서 운동 방향이 바뀌는 지점의 특징을 각각 말하시오.`,
+        answerBadge: () => `위치 ${tex('x(t)')}: 극대·극소점(${tex('t=2')}) / 속도 ${tex('v(t)')}: ${tex('t')}축 관통점(${tex('t=2')})`,
+        snap: { t: 2.0, param: 1.0, dualView: true },
+        steps: [
+          "상단 수직선 트랙: t = 2초(x = -4)에서 실제 운동 방향이 왼쪽→오른쪽으로 바뀌는 순간",
+          "중단 위치 x(t) 그래프: 접선의 기울기가 0이 되는 '극소점'이 곧 방향 전환점!",
+          "하단 속도 v(t) 그래프: 함숫값이 0을 '관통'하여 부호가 바뀌는 점이 곧 방향 전환점!"
+        ],
+        textbook: () => ({
+          steps: `① 시험 문제에서 그래프가 주어졌을 때 세로축 라벨이 ${tex('x(t)')}(위치)인지 ${tex('v(t)')}(속도)인지 확인하지 않고 풀면 정반대의 답을 고르게 됨<br/>
+② 위치 그래프의 ${tex('t')}절편(${tex('t=3')})을 운동 방향 전환점으로 착각하는 오답이 매우 빈번함...`,
+          warning: "⚠️ 속도·거리 문제를 풀기 전 0.1초 만에 가장 먼저 해야 할 일은 세로축 이름(위치 x 인지 속도 v 인지)에 동그라미를 치는 것입니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 세로축이 <strong class="text-amber-300">【 위치 ${tex('x(t)')} 】</strong>일 때:<br/>
+&nbsp;&nbsp;• ${tex('t')}절편(${tex('x=0')}) $=$ <strong>원점 통과</strong> / 극대·극소(기울기 0) $=$ <strong>운동 방향 전환(유턴)</strong>!<br/>
+② 세로축이 <strong class="text-sky-300">【 속도 ${tex('v(t)')} 】</strong>일 때:<br/>
+&nbsp;&nbsp;• ${tex('t')}절편 관통(${tex('v=0')}) $=$ <strong>운동 방향 전환(유턴)</strong> / 극대·극소(기울기 0) $=$ <strong>가속도 0(최대 속력 후보)</strong>!`,
+          highlight: "💡 『위치 그래프의 극점 = 속도 그래프의 영점(관통) = 운동 방향 전환(유턴)』 — 3단 동기화 화면을 머릿속에 통째로 캡처해 두세요!"
+        })
+      }
+    };
+
+    // -------------------------------------------------------------------------
+    // 4. 캔버스 초기화 및 3단 영역(Track / Position / Velocity) 좌표 변환
+    // -------------------------------------------------------------------------
+    const canvas = document.getElementById('boardCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const minDim = Math.min(rect.width, rect.height);
+      if (!state.userZoomed) {
+        state.scale = Math.max(48, Math.min(76, minDim / 9.2));
+      }
+      render();
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+
+    // 캔버스 상단 22%는 1차원 수직선 트랙, 그 아래를 위치 x(t)와 속도 v(t)가 나눔
+    function getPaneCenterY(pane, rectHeight) {
+      if (!state.dualView) {
+        return rectHeight * 0.62 + state.offsetY;
+      }
+      if (pane === 'main') {
+        return rectHeight * 0.42 + state.offsetY * 0.5;
+      } else {
+        return rectHeight * 0.80 + state.offsetY * 0.3;
+      }
+    }
+
+    function getPaneScaleY(pane) {
+      if (!state.dualView) return state.scale * 0.45;
+      return pane === 'main' ? state.scale * 0.32 : state.scale * 0.25;
+    }
+
+    // 가로축은 시간 t, 세로축은 x(t) 또는 v(t)
+    function toScreen(t, val, pane = 'main') {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const cx = rect.width * 0.35 + state.offsetX;
+      const cy = getPaneCenterY(pane, rect.height);
+      const sy = getPaneScaleY(pane);
+      return {
+        x: cx + t * state.scale,
+        y: cy - val * sy
+      };
+    }
+
+    function toMath(px, py, pane = 'main') {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const cx = rect.width * 0.35 + state.offsetX;
+      const cy = getPaneCenterY(pane, rect.height);
+      const sy = getPaneScaleY(pane);
+      return {
+        x: (px - cx) / state.scale,
+        y: (cy - py) / sy
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. 분필 스타일 드로잉 프리미티브
+    // -------------------------------------------------------------------------
+    function drawChalkLine(x1, y1, x2, y2, color = '#ffffff', width = 2, dashed = false, glow = false, pane = 'main') {
+      const p1 = toScreen(x1, y1, pane);
+      const p2 = toScreen(x2, y2, pane);
+      ctx.save();
+      ctx.beginPath();
+      if (dashed) ctx.setLineDash([6, 5]);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.lineCap = 'round';
+      if (glow) {
+        ctx.shadowColor = color;
+        ctx.shadowBlur = 10;
+      }
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawScreenLine(px1, py1, px2, py2, color = '#ffffff', width = 1.8, dashed = false) {
+      ctx.save();
+      ctx.beginPath();
+      if (dashed) ctx.setLineDash([5, 5]);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.moveTo(px1, py1);
+      ctx.lineTo(px2, py2);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawChalkPoint(x, y, radius = 5.5, color = '#fbbf24', label = '', labelOffset = { x: 10, y: -10 }, pane = 'main') {
+      const pt = toScreen(x, y, pane);
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 12;
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+
+      if (label) {
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = 'rgba(0,0,0,0.95)';
+        ctx.font = 'bold 12px Pretendard, sans-serif';
+        ctx.fillStyle = color;
+        ctx.fillText(label, pt.x + labelOffset.x, pt.y + labelOffset.y);
+      }
+      ctx.restore();
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. 메인 캔버스 3단 렌더링 파이프라인
+    // -------------------------------------------------------------------------
+    function render() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const trackBottomY = h * 0.24;
+      const splitY = state.dualView ? h * 0.59 : h;
+
+      // 1) [최상단] 1차원 수직선 운동 트랙 & 유턴 부메랑 궤적 렌더링
+      if (state.steps[1]) {
+        renderMotionTrack(w, trackBottomY);
+      }
+
+      // 2) [중단] 위치 그래프 y = x(t) 렌더링
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(0, trackBottomY, w, splitY - trackBottomY);
+      ctx.clip();
+
+      drawGridAndAxes(w, splitY, 'main', trackBottomY, '위치 x(t)');
+      renderPositionPane(w, splitY, trackBottomY);
+      ctx.restore();
+
+      // 3) [하단] 속도 그래프 y = v(t) 렌더링 (Dual Sync View)
+      if (state.dualView) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(0, splitY, w, h - splitY);
+        ctx.clip();
+
+        ctx.fillStyle = 'rgba(5, 16, 12, 0.58)';
+        ctx.fillRect(0, splitY, w, h - splitY);
+
+        drawGridAndAxes(w, h, 'deriv', splitY, '속도 v(t)');
+        renderVelocityPane(w, h, splitY);
+        ctx.restore();
+
+        drawScreenLine(0, splitY, w, splitY, 'rgba(56, 189, 248, 0.55)', 2, false);
+        ctx.save();
+        ctx.fillStyle = '#07140f';
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.roundRect(14, splitY - 13, 285, 24, 8);
+        ctx.fill();
+        ctx.stroke();
+        ctx.font = 'bold 11px Pretendard, sans-serif';
+        ctx.fillStyle = '#7dd3fc';
+        ctx.fillText('▼ 속도 y = v(t) 및 정적분 면적(이동거리) 동기화 뷰', 24, splitY + 3);
+        ctx.restore();
+      }
+
+      // 4) 현재 시각 t 수직 관통 동기화선 (Step 3)
+      if (state.steps[3]) {
+        const sxT = toScreen(state.t, 0, 'main').x;
+        drawScreenLine(sxT, trackBottomY + 8, sxT, h - 55, 'rgba(251, 191, 36, 0.85)', 2.2, true);
+      }
+
+      // 5) 하단 칠판 판서 배너
+      renderBottomChalkBanner(w, h);
+
+      // 6) 우측 텔레메트리 모니터 업데이트
+      updateLiveMonitor();
+    }
+
+    // =========================================================================
+    // [최상단] 1차원 수직선 운동 트랙 & 유턴 부메랑 궤적(Trail) 렌더러
+    // =========================================================================
+    function renderMotionTrack(w, trackH) {
+      ctx.save();
+      ctx.fillStyle = 'rgba(6, 18, 13, 0.88)';
+      ctx.fillRect(0, 0, w, trackH);
+      drawScreenLine(0, trackH, w, trackH, 'rgba(52, 211, 153, 0.55)', 2, false);
+
+      // 트랙 중심 (우측 상단에 배치하여 좌측 배지와 겹치지 않게 함)
+      const trackCenterX = w * 0.64;
+      const trackY = trackH * 0.62;
+      const trackScale = Math.min(46, w * 0.055);
+
+      const xToTrack = (posVal) => trackCenterX + posVal * trackScale;
+
+      // 트랙 수직선 눈금 (-5 ~ +5)
+      drawScreenLine(xToTrack(-5.2), trackY, xToTrack(5.2), trackY, 'rgba(209, 250, 229, 0.5)', 2.2, false);
+      ctx.font = 'bold 10.5px Pretendard, monospace';
+      ctx.textAlign = 'center';
+      for (let i = -5; i <= 5; i++) {
+        const tx = xToTrack(i);
+        drawScreenLine(tx, trackY - 5, tx, trackY + 5, i === 0 ? '#fbbf24' : 'rgba(209, 250, 229, 0.45)', i === 0 ? 2.5 : 1.4, false);
+        ctx.fillStyle = i === 0 ? '#fde047' : 'rgba(209, 250, 229, 0.65)';
+        ctx.fillText(i === 0 ? '원점(0)' : `${i}`, tx, trackY + 18);
+      }
+
+      if (state.mode === 4) {
+        // Mode 4: 두 점 P와 Q의 추격전 트랙
+        const xp = evalXP_Mode4(state.t);
+        const xq = evalXQ_Mode4(state.t);
+        const pxP = xToTrack(xp);
+        const pxQ = xToTrack(xq);
+
+        // 간격 연결선
+        drawScreenLine(pxP, trackY - 18, pxQ, trackY - 18, '#f472b6', 3.0, false);
+        ctx.fillStyle = '#f9a8d4';
+        ctx.fillText(`간격 |x_P - x_Q| = ${Math.abs(xp - xq).toFixed(2)}`, (pxP + pxQ) / 2, trackY - 26);
+
+        // 점 P (위쪽 레일) & 점 Q (아래쪽 레일)
+        ctx.beginPath();
+        ctx.arc(pxP, trackY - 8, 7, 0, Math.PI * 2);
+        ctx.fillStyle = '#fbbf24';
+        ctx.fill();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fillText(`P(${xp.toFixed(2)})`, pxP, trackY - 20);
+
+        ctx.beginPath();
+        ctx.arc(pxQ, trackY + 6, 7, 0, Math.PI * 2);
+        ctx.fillStyle = '#38bdf8';
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = '#7dd3fc';
+        ctx.fillText(`Q(${xq.toFixed(2)})`, pxQ, trackY + 32);
+        ctx.restore();
+        return;
+      }
+
+      // 일반 모드: 점 P의 부메랑 왕복 궤적(Trail) 및 현재 위치, 속도 화살표
+      const currX = evalX(state.t);
+      const currV = evalV(state.t);
+      const pxCurr = xToTrack(currX);
+
+      // p = 1 일 때 0~2초 후진(0 -> -4), 2초 이후 전진(-4 -> x(t)) 부메랑 궤적 표시
+      if (state.mode !== 2 || state.param > 0.05) {
+        const turnT = 1.0 + Math.sqrt(Math.max(0, state.mode === 2 ? state.param : 1.0));
+        if (state.t <= turnT) {
+          drawScreenLine(xToTrack(0), trackY - 12, pxCurr, trackY - 12, '#38bdf8', 3.5, false);
+        } else {
+          const turnX = evalX(turnT);
+          drawScreenLine(xToTrack(0), trackY - 16, xToTrack(turnX), trackY - 16, 'rgba(56, 189, 248, 0.7)', 3.0, false);
+          drawScreenLine(xToTrack(turnX), trackY - 8, pxCurr, trackY - 8, '#f472b6', 3.5, false);
+        }
+      } else {
+        drawScreenLine(xToTrack(0), trackY - 12, pxCurr, trackY - 12, '#f472b6', 3.5, false);
+      }
+
+      // 속도 벡터 화살표
+      if (Math.abs(currV) > 0.1) {
+        const arrowLen = Math.max(-65, Math.min(65, currV * 10));
+        drawScreenLine(pxCurr, trackY - 26, pxCurr + arrowLen, trackY - 26, currV > 0 ? '#f472b6' : '#38bdf8', 2.8, false);
+        ctx.fillStyle = currV > 0 ? '#f9a8d4' : '#7dd3fc';
+        ctx.fillText(`v=${currV.toFixed(1)} ${currV > 0 ? '→(전진)' : '←(후진)'}`, pxCurr + arrowLen * 0.5, trackY - 34);
+      } else {
+        ctx.fillStyle = '#fde047';
+        ctx.fillText(`⚡ v = 0 (순간 정지!)`, pxCurr, trackY - 30);
+      }
+
+      // 점 P 본체
+      ctx.beginPath();
+      ctx.arc(pxCurr, trackY, 8, 0, Math.PI * 2);
+      ctx.fillStyle = '#fbbf24';
+      ctx.shadowColor = '#fbbf24';
+      ctx.shadowBlur = 14;
+      ctx.fill();
+      ctx.lineWidth = 2.2;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = '#fde047';
+      ctx.font = 'extrabold 12px Pretendard, monospace';
+      ctx.fillText(`점 P (x = ${currX.toFixed(2)})`, pxCurr, trackY + 34);
+      ctx.restore();
+    }
+
+    function drawGridAndAxes(w, bottomY, pane = 'main', topY = 0, yLabel = '') {
+      const origin = toScreen(0, 0, pane);
+
+      if (state.showGrid) {
+        ctx.save();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(16, 185, 129, 0.08)';
+
+        const startX = Math.floor(toMath(0, 0, pane).x) - 1;
+        const endX = Math.ceil(toMath(w, 0, pane).x) + 1;
+        const startY = Math.floor(toMath(0, bottomY, pane).y) - 1;
+        const endY = Math.ceil(toMath(0, topY, pane).y) + 1;
+
+        ctx.beginPath();
+        for (let i = startX; i <= endX; i++) {
+          const sx = toScreen(i, 0, pane).x;
+          ctx.moveTo(sx, topY);
+          ctx.lineTo(sx, bottomY);
+        }
+        for (let j = startY; j <= endY; j++) {
+          const sy = toScreen(0, j, pane).y;
+          ctx.moveTo(0, sy);
+          ctx.lineTo(w, sy);
+        }
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      ctx.save();
+      ctx.strokeStyle = 'rgba(209, 250, 229, 0.38)';
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(0, origin.y);
+      ctx.lineTo(w, origin.y);
+      ctx.moveTo(origin.x, topY);
+      ctx.lineTo(origin.x, bottomY);
+      ctx.stroke();
+
+      ctx.fillStyle = '#a7f3d0';
+      ctx.font = 'extrabold 11.5px Pretendard, sans-serif';
+      ctx.fillText(yLabel, origin.x + 8, topY + 18);
+      ctx.fillText('시각 t(초)', w - 65, origin.y - 8);
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // [중단] 위치 그래프 y = x(t) 렌더링
+    // =========================================================================
+    function renderPositionPane(w, splitY, topY) {
+      const maxT = toMath(w, 0, 'main').x + 0.2;
+
+      if (state.mode === 4) {
+        // Mode 4: x_P(t) 와 x_Q(t) 동시 작도
+        ctx.save();
+        ctx.beginPath();
+        for (let t = 0; t <= maxT; t += 0.03) {
+          const s = toScreen(t, evalXP_Mode4(t), 'main');
+          if (t === 0) ctx.moveTo(s.x, s.y);
+          else ctx.lineTo(s.x, s.y);
+        }
+        ctx.strokeStyle = '#f8fafc';
+        ctx.lineWidth = 2.8;
+        ctx.stroke();
+
+        ctx.beginPath();
+        for (let t = 0; t <= maxT; t += 0.03) {
+          const s = toScreen(t, evalXQ_Mode4(t), 'main');
+          if (t === 0) ctx.moveTo(s.x, s.y);
+          else ctx.lineTo(s.x, s.y);
+        }
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2.8;
+        ctx.stroke();
+        ctx.restore();
+
+        const xp = evalXP_Mode4(state.t);
+        const xq = evalXQ_Mode4(state.t);
+        drawChalkLine(state.t, xp, state.t, xq, '#f472b6', 2.8, false, true, 'main');
+        drawChalkPoint(state.t, xp, 6.5, '#fbbf24', `x_P(${state.t.toFixed(2)})=${xp.toFixed(2)}`, { x: 10, y: -10 }, 'main');
+        drawChalkPoint(state.t, xq, 6.5, '#38bdf8', `x_Q(${state.t.toFixed(2)})=${xq.toFixed(2)}`, { x: 10, y: 18 }, 'main');
+        return;
+      }
+
+      ctx.save();
+      ctx.beginPath();
+      for (let t = 0; t <= maxT; t += 0.03) {
+        const y = evalX(t);
+        if (Math.abs(y) > 35) continue;
+        const s = toScreen(t, y, 'main');
+        if (t === 0) ctx.moveTo(s.x, s.y);
+        else ctx.lineTo(s.x, s.y);
+      }
+      ctx.strokeStyle = '#f8fafc';
+      ctx.lineWidth = 3.0;
+      ctx.shadowColor = '#34d399';
+      ctx.shadowBlur = 10;
+      ctx.stroke();
+      ctx.restore();
+
+      const currX = evalX(state.t);
+      drawChalkPoint(state.t, currX, 7, '#fbbf24', `위치 x(${state.t.toFixed(2)}) = ${currX.toFixed(2)} [드래그]`, { x: 12, y: -10 }, 'main');
+
+      if (state.mode !== 2 || state.param > 0.05) {
+        const turnT = 1.0 + Math.sqrt(Math.max(0, state.mode === 2 ? state.param : 1.0));
+        drawChalkPoint(turnT, evalX(turnT), 5.5, '#f43f5e', `유턴 극소(t=${turnT.toFixed(1)}, x=${evalX(turnT).toFixed(1)})`, { x: 10, y: 16 }, 'main');
+      }
+    }
+
+    // =========================================================================
+    // [하단] 속도 그래프 y = v(t) 및 정적분 면적 렌더링
+    // =========================================================================
+    function renderVelocityPane(w, h, splitY) {
+      const maxT = toMath(w, 0, 'deriv').x + 0.2;
+      const yZero = toScreen(0, 0, 'deriv').y;
+
+      if (state.mode === 4) {
+        // Mode 4: v_P(t) 와 v_Q(t) 사이 면적 색칠 및 교점 표시
+        if (state.steps[2] && state.t > 0.02) {
+          ctx.save();
+          const steps = 90;
+          for (let i = 0; i < steps; i++) {
+            const t1 = (state.t * i) / steps;
+            const t2 = (state.t * (i + 1)) / steps;
+            const tm = (t1 + t2) / 2;
+            const vp = evalVP_Mode4(tm);
+            const vq = evalVQ_Mode4(tm);
+            const s1 = toScreen(t1, vp, 'deriv');
+            const s2 = toScreen(t2, vq, 'deriv');
+            ctx.fillStyle = vp >= vq ? 'rgba(244, 114, 182, 0.28)' : 'rgba(56, 189, 248, 0.28)';
+            ctx.fillRect(s1.x, Math.min(s1.y, s2.y), s2.x - s1.x + 1, Math.abs(s2.y - s1.y));
+          }
+          ctx.restore();
+        }
+
+        ctx.save();
+        ctx.beginPath();
+        for (let t = 0; t <= maxT; t += 0.03) {
+          const s = toScreen(t, evalVP_Mode4(t), 'deriv');
+          if (t === 0) ctx.moveTo(s.x, s.y);
+          else ctx.lineTo(s.x, s.y);
+        }
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 2.8;
+        ctx.stroke();
+
+        ctx.beginPath();
+        for (let t = 0; t <= maxT; t += 0.03) {
+          const s = toScreen(t, evalVQ_Mode4(t), 'deriv');
+          if (t === 0) ctx.moveTo(s.x, s.y);
+          else ctx.lineTo(s.x, s.y);
+        }
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2.8;
+        ctx.stroke();
+        ctx.restore();
+
+        drawChalkPoint(1.0, 3.0, 6.5, '#f472b6', `v_P=v_Q (t=1, 거리 최대!)`, { x: 10, y: -10 }, 'deriv');
+        return;
+      }
+
+      // Step 2: 0 ~ state.t 구간 속도 정적분 넓이 (전진 +S1 핑크 / 후진 -S2 블루)
+      if (state.steps[2] && state.t > 0.02) {
+        ctx.save();
+        const steps = 100;
+        for (let i = 0; i < steps; i++) {
+          const t1 = (state.t * i) / steps;
+          const t2 = (state.t * (i + 1)) / steps;
+          const tm = (t1 + t2) / 2;
+          const vVal = evalV(tm);
+          const s1 = toScreen(t1, vVal, 'deriv');
+          const s2 = toScreen(t2, 0, 'deriv');
+          ctx.fillStyle = vVal >= 0 ? 'rgba(244, 114, 182, 0.30)' : 'rgba(56, 189, 248, 0.30)';
+          ctx.fillRect(s1.x, Math.min(s1.y, yZero), s2.x - s1.x + 1, Math.abs(s1.y - yZero));
+        }
+        ctx.restore();
+      }
+
+      // 속도 곡선 y = v(t)
+      ctx.save();
+      ctx.beginPath();
+      for (let t = 0; t <= maxT; t += 0.03) {
+        const y = evalV(t);
+        if (Math.abs(y) > 35) continue;
+        const s = toScreen(t, y, 'deriv');
+        if (t === 0) ctx.moveTo(s.x, s.y);
+        else ctx.lineTo(s.x, s.y);
+      }
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 2.8;
+      ctx.shadowColor = '#38bdf8';
+      ctx.shadowBlur = 10;
+      ctx.stroke();
+      ctx.restore();
+
+      const currV = evalV(state.t);
+      drawChalkPoint(state.t, currV, 7, '#fbbf24', `속도 v(${state.t.toFixed(2)}) = ${currV.toFixed(2)}`, { x: 12, y: -10 }, 'deriv');
+      drawChalkPoint(1.0, evalV(1.0), 5.5, '#c084fc', `가속도 a(1)=0 (꼭짓점)`, { x: -65, y: 18 }, 'deriv');
+    }
+
+    function renderBottomChalkBanner(w, h) {
+      if (!state.steps[3]) return;
+
+      const by = h - 54;
+      const cx = w * 0.54;
+      const distStats = evalDistance(state.t);
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(7, 20, 15, 0.93)';
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.55)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(cx - 220, by - 21, 440, 42, 11);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.font = 'bold 12.5px Pretendard, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#fef08a';
+
+      if (state.mode === 4) {
+        const xp = evalXP_Mode4(state.t);
+        const xq = evalXQ_Mode4(state.t);
+        ctx.fillText(
+          `시각 t=${state.t.toFixed(2)}초 : 점 P(${xp.toFixed(2)}) vs 점 Q(${xq.toFixed(2)})  ⇒  간격 = ${Math.abs(xp - xq).toFixed(2)}`,
+          cx,
+          by + 4
+        );
+      } else {
+        ctx.fillText(
+          `[0 ~ ${state.t.toFixed(2)}초] 위치 변화량(변위 ∫v dt) = ${distStats.disp.toFixed(2)}  |  실제 움직인 거리(∫|v| dt) = ${distStats.totalDist.toFixed(2)}`,
+          cx,
+          by + 4
+        );
+      }
+      ctx.restore();
+    }
+
+    // -------------------------------------------------------------------------
+    // 7. 우측 패널 실시간 텔레메트리 모니터 & UI 컨트롤러
+    // -------------------------------------------------------------------------
+    function updateLiveMonitor() {
+      const t = state.t;
+      const distStats = evalDistance(t);
+
+      if (state.mode === 4) {
+        const xp = evalXP_Mode4(t);
+        const xq = evalXQ_Mode4(t);
+        const vp = evalVP_Mode4(t);
+        const vq = evalVQ_Mode4(t);
+
+        document.getElementById('eqDisplay').innerHTML = tex(`x_P(t) = -t^3 + 3t^2, \\; x_Q(t) = 1.5t^2`);
+        document.getElementById('derivDisplay').innerHTML = tex(`v_P(t) = -3t^2 + 6t, \\; v_Q(t) = 3t`);
+
+        document.getElementById('statVal1').textContent = `t=${t.toFixed(2)}초 | 간격=${Math.abs(xp - xq).toFixed(2)}`;
+        document.getElementById('statVal2').textContent = `v_P=${vp.toFixed(2)} | v_Q=${vq.toFixed(2)}`;
+        document.getElementById('statVal3').textContent = `x_P=${xp.toFixed(2)} | x_Q=${xq.toFixed(2)}`;
+        document.getElementById('statVal4').textContent = Math.abs(t - 1.0) < 0.05 ? '★최대 간격(v_P=v_Q)!' : (Math.abs(t - 1.5) < 0.05 ? '★두 점 만남(추월)!' : '추격 진행 중');
+      } else {
+        const p = state.mode === 2 ? state.param : 1.0;
+        const currX = evalX(t);
+        const currV = evalV(t);
+        const currA = evalA(t);
+
+        document.getElementById('eqDisplay').innerHTML = p === 1.0
+          ? tex(`x(t) = t^3 - 3t^2`)
+          : tex(`x(t) = (t-1)^3 - ${(3 * p).toFixed(1)}(t-1) + ${(1 - 3 * p).toFixed(1)}`);
+        document.getElementById('derivDisplay').innerHTML = tex(`v(t) = 3(t-1)^2 - ${(3 * p).toFixed(1)}, \\; a(t) = 6t - 6`);
+
+        document.getElementById('statVal1').textContent = `t = ${t.toFixed(2)}초 | x = ${currX.toFixed(2)}`;
+        document.getElementById('statVal2').textContent = `v = ${currV.toFixed(2)} | a = ${currA.toFixed(1)}`;
+        document.getElementById('statVal3').textContent = `변위 Δx = ${distStats.disp.toFixed(2)}`;
+        document.getElementById('statVal4').textContent = `이동거리 D = ${distStats.totalDist.toFixed(2)}`;
+      }
+
+      document.getElementById('valT').textContent = `t = ${t.toFixed(2)} 초`;
+      document.getElementById('valParam').textContent = `p = ${state.param.toFixed(2)}`;
+
+      document.getElementById('sliderT').value = t;
+      document.getElementById('sliderParam').value = state.param;
+    }
+
+    function updateDualViewButtonUI() {
+      const btn = document.getElementById('btnDualView');
+      const txt = document.getElementById('txtDualView');
+      if (state.dualView) {
+        btn.className = 'px-3 py-1.5 rounded-lg bg-sky-400 text-slate-950 text-xs font-extrabold flex items-center gap-1.5 transition shadow-md';
+        txt.textContent = 'x(t)·v(t) 동시 뷰 ON';
+      } else {
+        btn.className = 'px-3 py-1.5 rounded-lg bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/50 text-sky-200 text-xs font-extrabold flex items-center gap-1.5 transition';
+        txt.textContent = 'x(t)·v(t) 동시 뷰 OFF';
+      }
+    }
+
+    function toggleDualView() {
+      state.dualView = !state.dualView;
+      updateDualViewButtonUI();
+      render();
+    }
+
+    function setMode(m) {
+      state.mode = m;
+      for (let i = 1; i <= 5; i++) {
+        const tab = document.getElementById(`tab-${i}`);
+        if (i === m) tab.classList.add('active');
+        else tab.classList.remove('active');
+      }
+
+      const data = examData[m];
+      document.getElementById('canvasModeBadge').textContent = data.badge;
+      document.getElementById('canvasActionHint').innerHTML = data.hint;
+      document.getElementById('examTag').innerHTML = `<i class="fa-solid fa-award"></i> ${data.tag}`;
+      document.getElementById('examTarget').textContent = data.targetTime;
+      document.getElementById('examQuestion').innerHTML = data.question();
+      document.getElementById('examAnswerBadge').innerHTML = data.answerBadge();
+
+      document.getElementById('stepLabel1').textContent = data.steps[0];
+      document.getElementById('stepLabel2').textContent = data.steps[1];
+      document.getElementById('stepLabel3').textContent = data.steps[2];
+
+      const tb = data.textbook();
+      const sc = data.shortcut();
+      document.getElementById('textbookSteps').innerHTML = tb.steps;
+      document.getElementById('textbookWarning').innerHTML = tb.warning;
+      document.getElementById('shortcutSteps').innerHTML = sc.steps;
+      document.getElementById('shortcutHighlight').innerHTML = sc.highlight;
+
+      snapToProblem();
+    }
+
+    function snapToProblem() {
+      state.autoPlay = false;
+      document.getElementById('iconAutoPlay').className = 'fa-solid fa-play text-amber-300';
+      document.getElementById('txtAutoPlay').textContent = '▶ 주행 재생';
+
+      unlockAllSteps();
+
+      const target = examData[state.mode].snap;
+      state.dualView = target.dualView;
+      updateDualViewButtonUI();
+
+      state.snapAnim.active = true;
+      state.snapAnim.startT = state.t;
+      state.snapAnim.startParam = state.param;
+      state.snapAnim.targetT = target.t;
+      state.snapAnim.targetParam = target.param;
+      state.snapAnim.progress = 0;
+    }
+
+    function toggleAccordion(type) {
+      const body = document.getElementById(`accBody-${type}`);
+      const icon = document.getElementById(`accIcon-${type}`);
+      const isHidden = body.classList.contains('hidden');
+      if (isHidden) {
+        body.classList.remove('hidden');
+        icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        body.classList.add('hidden');
+        icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    function toggleStep(s) {
+      state.steps[s] = !state.steps[s];
+      const btn = document.getElementById(`stepBtn${s}`);
+      const icon = document.getElementById(`stepIcon${s}`);
+      if (state.steps[s]) {
+        btn.classList.add('active');
+        icon.className = 'fa-solid fa-check text-emerald-400 text-xs';
+      } else {
+        btn.classList.remove('active');
+        icon.className = 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      }
+      render();
+    }
+
+    function unlockAllSteps() {
+      [1, 2, 3].forEach((s) => {
+        state.steps[s] = true;
+        document.getElementById(`stepBtn${s}`).classList.add('active');
+        document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
+      });
+      render();
+    }
+
+    function onTSlider() {
+      state.snapAnim.active = false;
+      state.t = parseFloat(document.getElementById('sliderT').value);
+      render();
+    }
+
+    function onParamSlider() {
+      state.snapAnim.active = false;
+      state.param = parseFloat(document.getElementById('sliderParam').value);
+      render();
+    }
+
+    function zoomCanvas(factor) {
+      state.userZoomed = true;
+      state.scale = Math.max(30, Math.min(120, state.scale * factor));
+      render();
+    }
+
+    function resetView() {
+      state.userZoomed = false;
+      state.offsetX = -120;
+      state.offsetY = 0;
+      resizeCanvas();
+    }
+
+    function toggleGrid() {
+      state.showGrid = !state.showGrid;
+      render();
+    }
+
+    function toggleAutoPlay() {
+      state.autoPlay = !state.autoPlay;
+      const icon = document.getElementById('iconAutoPlay');
+      const txt = document.getElementById('txtAutoPlay');
+      if (state.autoPlay) {
+        if (state.t >= 3.3) state.t = 0.0;
+        icon.className = 'fa-solid fa-pause text-amber-300';
+        txt.textContent = '일시 정지';
+      } else {
+        icon.className = 'fa-solid fa-play text-amber-300';
+        txt.textContent = '▶ 주행 재생';
+      }
+    }
+
+    function animateLoop() {
+      let needsRender = false;
+
+      if (state.snapAnim.active) {
+        state.snapAnim.progress += 0.08;
+        if (state.snapAnim.progress >= 1) {
+          state.t = state.snapAnim.targetT;
+          state.param = state.snapAnim.targetParam;
+          state.snapAnim.active = false;
+        } else {
+          const p = 1 - Math.pow(1 - state.snapAnim.progress, 3);
+          state.t = state.snapAnim.startT + (state.snapAnim.targetT - state.snapAnim.startT) * p;
+          state.param = state.snapAnim.startParam + (state.snapAnim.targetParam - state.snapAnim.startParam) * p;
+        }
+        needsRender = true;
+      }
+
+      if (state.autoPlay && !state.isDragging && !state.snapAnim.active) {
+        state.t += 0.016;
+        if (state.t > 3.35) state.t = 0.0;
+        needsRender = true;
+      }
+
+      if (needsRender) render();
+      requestAnimationFrame(animateLoop);
+    }
+
+    // -------------------------------------------------------------------------
+    // 8. 마우스 & 모바일 터치 드래그 인터랙션
+    // -------------------------------------------------------------------------
+    function getPointerPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+      }
+      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
+    function handlePointerDown(e) {
+      state.snapAnim.active = false;
+      const pos = getPointerPos(e);
+
+      const sxT = toScreen(state.t, 0, 'main').x;
+      if (Math.abs(pos.x - sxT) < 28) {
+        state.isDragging = true;
+        state.dragType = 'TIME';
+        return;
+      }
+
+      state.isDragging = true;
+      state.dragType = 'PAN';
+      state.lastMouse = pos;
+    }
+
+    function handlePointerMove(e) {
+      const pos = getPointerPos(e);
+
+      if (state.isDragging) {
+        e.preventDefault();
+        if (state.dragType === 'TIME') {
+          const mCoord = toMath(pos.x, pos.y, 'main');
+          let tVal = mCoord.x;
+          // 1.0, 1.5, 2.0, 3.0 근처 자석 스냅
+          [1.0, 1.5, 2.0, 3.0].forEach((snapT) => {
+            if (Math.abs(tVal - snapT) < 0.06) tVal = snapT;
+          });
+          state.t = Math.max(0.0, Math.min(3.5, +tVal.toFixed(2)));
+          render();
+        } else if (state.dragType === 'PAN') {
+          state.offsetX += pos.x - state.lastMouse.x;
+          state.offsetY += pos.y - state.lastMouse.y;
+          state.lastMouse = pos;
+          render();
+        }
+        return;
+      }
+
+      const sxT = toScreen(state.t, 0, 'main').x;
+      canvas.style.cursor = Math.abs(pos.x - sxT) < 24 ? 'ew-resize' : 'grab';
+    }
+
+    function handlePointerUp() {
+      state.isDragging = false;
+      state.dragType = null;
+    }
+
+    canvas.addEventListener('mousedown', handlePointerDown);
+    window.addEventListener('mousemove', handlePointerMove);
+    window.addEventListener('mouseup', handlePointerUp);
+
+    canvas.addEventListener('touchstart', handlePointerDown, { passive: false });
+    window.addEventListener('touchmove', handlePointerMove, { passive: false });
+    window.addEventListener('touchend', handlePointerUp);
+
+    canvas.addEventListener(
+      'wheel',
+      (e) => {
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.09 : 0.92;
+        zoomCanvas(factor);
+      },
+      { passive: false }
+    );
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setMode(1);
+      resizeCanvas();
+      requestAnimationFrame(animateLoop);
+    });
+  </script>
+</body>
+</html>

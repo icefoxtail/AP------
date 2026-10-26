@@ -1,4 +1,4 @@
-/**
+﻿/**
  * AP Math OS [js/dashboard-teacher.js]
  * AP 선생님 전용 대시보드 렌더러
  * AP 선생님 화면 전용 — 타 시스템 게이트 없음

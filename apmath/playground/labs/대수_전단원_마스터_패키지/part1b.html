@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Part 1-B. 로그함수 고유 성질 & 역함수·원·도형 결합 마스터</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <style>
+    * { box-sizing: border-box; font-family: 'Pretendard', sans-serif; user-select: none; }
+    body { margin: 0; background: linear-gradient(135deg, #07130e 0%, #0f261d 50%, #163329 100%); color: #ecfdf5; height: 100vh; width: 100vw; overflow: hidden; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-thumb { background: rgba(52, 211, 153, 0.35); border-radius: 999px; }
+    .chalk-bg { background-color: #0b1d16; background-image: radial-gradient(circle at 25% 25%, rgba(52, 211, 153, 0.045) 0%, transparent 50%); }
+    .tab-btn-active { background: linear-gradient(180deg, rgba(52, 211, 153, 0.24) 0%, rgba(16, 40, 31, 0.95) 100%); border-bottom: 3px solid #fbbf24; color: #fff; }
+    .glow-gold { box-shadow: 0 0 15px rgba(251, 191, 36, 0.28); }
+    input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; background: rgba(255,255,255,0.12); border-radius: 999px; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #34d399; border: 2px solid #fff; cursor: pointer; }
+  </style>
+</head>
+<body class="flex flex-col h-screen w-screen overflow-hidden">
+  <header class="shrink-0 bg-[#07130e]/95 border-b border-emerald-800/60 z-20">
+    <div class="flex items-center justify-between px-4 py-2 border-b border-emerald-900/50">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="px-2.5 py-1 rounded-lg bg-emerald-950 hover:bg-emerald-800 border border-emerald-600/60 text-emerald-200 text-xs font-bold flex items-center gap-1.5 transition" title="통합 인덱스로 이동">
+          <i class="fa-solid fa-house text-amber-400"></i><span>인덱스 홈</span>
+        </a>
+        <span class="px-2 py-0.5 text-[11px] font-extrabold rounded bg-amber-500/20 text-amber-300 border border-amber-400/30">Part 1-B</span>
+        <h1 class="text-sm md:text-base font-extrabold text-white truncate">로그함수 고유 성질 & 역함수·원·도형 결합 마스터</h1>
+      </div>
+      <button onclick="snapToCondition()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold transition flex items-center gap-1.5 shadow">
+        <i class="fa-solid fa-bullseye"></i><span>🎯 문제 조건 스냅</span>
+      </button>
+    </div>
+    <nav id="modeTabBar" class="flex items-center gap-1 px-3 pt-1 overflow-x-auto bg-[#091812]"></nav>
+  </header>
+
+  <main class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+    <section class="flex-1 relative chalk-bg overflow-hidden flex flex-col min-h-[340px]">
+      <div class="absolute top-3 left-3 z-10 pointer-events-none max-w-[420px]">
+        <div class="bg-[#07130e]/90 backdrop-blur-md border border-emerald-700/50 rounded-xl px-3.5 py-2.5 shadow-xl">
+          <div id="hudTypeBadge" class="text-[11px] font-bold text-amber-400 mb-0.5"></div>
+          <div id="hudEquationBox" class="text-xs md:text-sm text-white font-semibold"></div>
+        </div>
+      </div>
+      <canvas id="chalkCanvas" class="w-full h-full cursor-grab active:cursor-grabbing block"></canvas>
+      <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-[#07130e]/90 border border-emerald-700/60 px-3.5 py-1.5 rounded-full shadow-2xl text-xs">
+        <button onclick="zoomCanvas(1.18)" class="hover:text-amber-300 px-1"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+        <button onclick="zoomCanvas(0.85)" class="hover:text-amber-300 px-1"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+        <button onclick="resetView()" class="hover:text-amber-300 px-1.5 font-semibold"><i class="fa-solid fa-rotate-left mr-1"></i>리셋</button>
+        <span class="text-amber-300/90 text-[11px] ml-1"><i class="fa-solid fa-hand-pointer mr-1"></i>칠판 위 노란색 핸들 드래그</span>
+      </div>
+    </section>
+
+    <aside class="w-full lg:w-[450px] shrink-0 bg-[#0b1f17]/95 border-t lg:border-t-0 lg:border-l border-emerald-800/60 overflow-y-auto p-3.5 space-y-3.5 z-10">
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-extrabold text-amber-300"><i class="fa-solid fa-file-signature mr-1"></i>실전 대표 기출 문항</span>
+          <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/50">오차 0.000% 검증</span>
+        </div>
+        <div id="problemTextBox" class="text-[13px] leading-relaxed text-emerald-50 bg-[#091812]/90 border border-emerald-800/60 rounded-lg p-3 mb-2.5"></div>
+        <button onclick="snapToCondition()" class="w-full py-2 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-extrabold text-xs shadow">🎯 문제 조건 원클릭 스냅</button>
+      </div>
+
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg">
+        <div class="text-xs font-extrabold text-emerald-100 mb-2"><i class="fa-solid fa-compass-drafting text-amber-400 mr-1.5"></i>단계별 보조선 Step 1~3</div>
+        <div class="grid grid-cols-3 gap-1.5 mb-2">
+          <button id="stepBtn1" onclick="toggleStep(1)" class="py-1.5 px-2 rounded-lg border text-xs font-bold"></button>
+          <button id="stepBtn2" onclick="toggleStep(2)" class="py-1.5 px-2 rounded-lg border text-xs font-bold"></button>
+          <button id="stepBtn3" onclick="toggleStep(3)" class="py-1.5 px-2 rounded-lg border text-xs font-bold"></button>
+        </div>
+        <div id="stepDescBox" class="text-xs text-emerald-200/90 bg-[#091812]/80 border border-emerald-800/50 rounded-lg px-3 py-2 leading-relaxed"></div>
+      </div>
+
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg space-y-2">
+        <div class="border border-slate-600/50 rounded-lg p-2.5 bg-[#0a1913]">
+          <div class="text-xs font-bold text-slate-200 mb-1">🐢 교과서 3분 정석 풀이</div>
+          <div id="contentTextbook" class="text-xs text-slate-300 space-y-1 leading-relaxed"></div>
+        </div>
+        <div class="border border-amber-500/60 rounded-lg p-2.5 bg-amber-950/25 glow-gold">
+          <div class="text-xs font-extrabold text-amber-300 mb-1">⚡ 10초 컷 실전 기하·구조 비기</div>
+          <div id="contentSecret" class="text-xs text-emerald-50 space-y-1 leading-relaxed"></div>
+        </div>
+        <div class="bg-rose-950/40 border border-rose-500/40 rounded-lg px-3 py-2 text-[11.5px] text-rose-200">
+          <span class="font-extrabold text-rose-300">⚠️ 함정 주의보: </span><span id="trapWarningText"></span>
+        </div>
+      </div>
+
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg space-y-2.5">
+        <div class="text-xs font-extrabold text-cyan-300"><i class="fa-solid fa-sliders mr-1.5"></i>다변수 파라미터 실험 슬라이더</div>
+        <div id="sliderControlsBox" class="space-y-2"></div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const PART = {"id":"part1b","file":"part1b.html","badge":"Part 1-B","title":"로그함수 고유 성질 & 역함수·원·도형 결합 마스터","icon":"fa-clone","desc":"로그 세로 불변량, 진수 짝수차수 양날개 함정, 절댓값 곱 불변량, 어긋난 역함수 대칭축 및 원 결합 킬러","formulaTex":"\\log_a(kx) = \\log_a x + \\log_a k, \\quad |\\log_a x|=t \\implies x_1 x_2 = 1, \\quad y = x - \\frac{(m-n)+(q-p)}{2}","modes":[{"id":"log1","code":"LOG 01","shortTitle":"로그 세로 간격 불변량 & 넓이","icon":"fa-arrows-up-down","stepLabels":["진수 배수 ➔ 세로 평행이동","수직 선분 AB = log₂k","등적 직사각형 넓이"],"stepDescs":["Step 1: $\\log_2(kx) = \\log_2 x + \\log_2 k$이므로 위로 $\\log_2 k$만큼 평행이동한 그래프입니다.","Step 2: 수직선 $x = t$로 자른 세로 선분 길이 $\\overline{AB} = \\log_2 k$는 위치 $t$와 무관하게 일정합니다!","Step 3: 두 수직선과 두 곡선으로 둘러싸인 넓이는 $\\Delta x \\times \\log_2 k$입니다."],"trap":"로그 진수의 곱셈은 확대/축소가 아니라 $y$축 평행이동입니다!","problem":"두 함수 $y = \\log_2 x, y = \\log_2(4x)$와 두 직선 $x = 2, x = 5$로 둘러싸인 영역의 넓이 $S$를 구하시오.","textbook":["1) $\\log_2(4x) - \\log_2 x = 2$로 세로 간격이 일정하다.","2) 가로 간격이 $5 - 2 = 3$이므로 넓이는 $3 \\times 2 = 6$이다."],"secret":["⚡ 세로 불변량 $\\log_2 4 = 2 \\implies (5-2) \\times 2 = 6$ (3초 컷!)"],"params":{"multK":4,"xCut1":2,"xCut2":5},"snapParams":{"multK":4,"xCut1":2,"xCut2":5},"sliders":[{"key":"multK","label":"진수 배수 k (log₂(kx))","min":2,"max":8,"step":0.5},{"key":"xCut1","label":"왼쪽 절단선 x = t₁","min":1,"max":3.5,"step":0.25},{"key":"xCut2","label":"오른쪽 절단선 x = t₂","min":3.5,"max":7,"step":0.25}],"renderType":"log_vert"},{"id":"log2","code":"LOG 02","shortTitle":"진수 함정 log₂(x²) 양날개 & |log₂x| 곱","icon":"fa-code-fork","stepLabels":["log₂(x²)=2log₂|x| 양날개","|log₂x|=t 역수 곱 x₁x₂=1","산술기하 중점 M > 1"],"stepDescs":["Step 1: $y = \\log_2(x^2)$은 진수 조건이 $x \\neq 0$이므로 $y$축 대칭인 왼쪽 날개($x<0$)가 살아납니다!","Step 2: $y = |\\log_2 x|$와 $y = t$의 두 양수 교점 $x_1, x_2$는 서로 역수이므로 $x_1 x_2 = 1$입니다.","Step 3: 산술·기하평균에 의해 두 교점의 중점 $\\frac{x_1+x_2}{2}$은 항상 $1$보다 큽니다!"],"trap":"$\\log_2 x^2 = 2\\log_2 x$로 변형하면 음수 실근을 통째로 놓칩니다! 반드시 $2\\log_2|x|$로 쓰세요!","problem":"함수 $y = |\\log_2 x|$와 직선 $y = 2$가 만나는 두 점 $x_1, x_2$에 대하여 $x_1 x_2$의 값과 중점 $M = \\frac{x_1+x_2}{2}$의 좌표를 구하시오.","textbook":["1) $x_1 = 2^{-2} = \\frac{1}{4}, x_2 = 2^2 = 4$이다.","2) 곱은 $1$이고 중점은 $\\frac{17}{8} = 2.125 > 1$이다."],"secret":["⚡ **[로그 절댓값 불변량]** 높이에 상관없이 $x_1 x_2 = 1$ (역수), 중점 $M > 1$ (우측 이동)!"],"params":{"shiftP":0,"lineT":2},"snapParams":{"shiftP":0,"lineT":2},"sliders":[{"key":"shiftP","label":"점근선 평행이동 p","min":0,"max":3,"step":0.5},{"key":"lineT","label":"수평선 높이 y = t","min":0.5,"max":2.8,"step":0.1}],"renderType":"log_abs"},{"id":"log3","code":"LOG 03","shortTitle":"어긋난 역함수 대칭축 & 원 결합","icon":"fa-arrows-turn-to-dots","stepLabels":["지수·로그 정점 P₁, P₂","이동된 대칭축 y = x + C","원 x²+y²=r² 피타고라스"],"stepDescs":["Step 1: 평행이동이 어긋난 $y=2^{x-m}+n$과 $y=\\log_2(x-p)+q$의 정점 $P_1(m,n+1), P_2(p+1,q)$를 찍습니다.","Step 2: 두 정점의 중점 $M_0$을 지나고 기울기가 $1$인 직선 $y = x + C$가 두 곡선의 진짜 대칭축입니다!","Step 3: 원 $x^2+y^2=r^2$과 역함수가 만나면 $x_1^2+y_1^2=r^2$과 $y_1-x_1=d$로 좌표를 3초 만에 스캔합니다."],"trap":"밑이 같은 지수·로그가 등장하면 평행이동 숫자가 달라도 무조건 직선 $y = x + C$에 대칭입니다!","problem":"두 곡선 $y = 2^{x-1}+2$ (정점 $(1,3)$)와 $y = \\log_2(x-4)-1$ (정점 $(5,-1)$)의 대칭축 방정식 $y = x + C$와 직선 $y = -x + 6$과의 교점 중점 $M$을 구하시오.","textbook":["1) 두 정점 $(1,3), (5,-1)$의 중점은 $(3, 1)$이다.","2) 따라서 대칭축은 $y = x - 2$ ($C=-2$)이고 $y=-x+6$과 연립하면 $M(4, 2)$이다."],"secret":["⚡ **[정점 중점 비기]** 지수 정점과 로그 정점의 중점 $(3, 1)$을 $y = x + C$에 대입하면 $1 = 3 + C \\implies C = -2$ (3초 컷!)"],"params":{"expM":1,"expN":2,"logP":4,"logQ":-1,"lineK":6},"snapParams":{"expM":1,"expN":2,"logP":4,"logQ":-1,"lineK":6},"sliders":[{"key":"expM","label":"지수 x평행이동 m","min":-1,"max":3,"step":0.5},{"key":"logP","label":"로그 x평행이동 p","min":1,"max":5,"step":0.5},{"key":"lineK","label":"절단 직선 y = -x + k","min":4,"max":8,"step":0.5}],"renderType":"log_misinv"},{"id":"log4","code":"LOG 04","shortTitle":"역함수 축 전환 격자점 스캐너","icon":"fa-table-cells","stepLabels":["자연수 격자점 점등","세로줄 슬라이스","가로줄(y=m ➔ x≥2^m) 역산"],"stepDescs":["Step 1: $1 \\le x \\le K, 1 \\le y \\le \\log_2 x$ 영역의 자연수 격자점을 점등합니다.","Step 2: 완만한 로그함수는 세로줄($x$) 대신 **가로줄 층수($y = 1, 2, 3 \\iff x \\ge 2^y$)**로 세면 단 3줄에 끝납니다!","Step 3: 각 층의 점 개수 $(K - 2^y + 1)$을 합산하여 오차 0.000%로 검증합니다."],"trap":"지수함수는 세로선($x=n$) 기준, 로그함수는 가로선($y=m$ 역함수 지수화) 기준으로 세세요!","problem":"$1 \\le x \\le 9,\\; 1 \\le y \\le \\log_2 x$를 만족하는 자연수 순서쌍 $(x, y)$의 개수를 가로줄 역산으로 구하시오.","textbook":["1) $y=1$층($x=2\\sim 9$): $8$개, $y=2$층($x=4\\sim 9$): $6$개, $y=3$층($x=8\\sim 9$): $2$개.","2) 총합은 $8 + 6 + 2 = 16$개이다."],"secret":["⚡ 가로 층별 공식 $\\sum (K - 2^y + 1) = 8 + 6 + 2 = 16$개!"],"params":{"maxX":9},"snapParams":{"maxX":9},"sliders":[{"key":"maxX","label":"스캔 상한 자연수 K","min":4,"max":13,"step":1}],"renderType":"log_lattice"}]};
+    const state = { modeIdx: 0, steps: {1:true, 2:true, 3:true}, params: {}, view: {scale:45, offsetX:-40, offsetY:40}, drag: null, lastX:0, lastY:0 };
+    const canvas = document.getElementById('chalkCanvas');
+    const ctx = canvas.getContext('2d');
+    let handles = [];
+
+    function formatRichMath(t) {
+      if (!t) return '';
+      return t.replace(/\$([^$]+)\$/g, (_, tex) => {
+        try { return katex.renderToString(tex, {throwOnError:false}); } catch(e) { return tex; }
+      });
+    }
+
+    function drawBadge(text, x, y, color='#fbbf24') {
+      ctx.save(); ctx.font = 'bold 12px Pretendard, sans-serif';
+      const w = ctx.measureText(text).width + 16;
+      ctx.fillStyle = 'rgba(7,19,14,0.9)'; ctx.strokeStyle = color; ctx.lineWidth = 1.3;
+      ctx.beginPath(); ctx.roundRect(x - w/2, y - 12, w, 24, 6); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = color; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, x, y);
+      ctx.restore();
+    }
+
+    function selectMode(idx) {
+      state.modeIdx = idx;
+      const m = PART.modes[idx];
+      state.params = JSON.parse(JSON.stringify(m.params));
+      resetView();
+      document.getElementById('modeTabBar').innerHTML = PART.modes.map((mo, i) => `
+        <button onclick="selectMode(${i})" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-bold transition flex items-center gap-2 ${i===idx?'tab-btn-active':'text-emerald-300/75 hover:text-white'}">
+          <span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-emerald-950 text-amber-300 border border-emerald-700/60">${mo.code}</span>
+          <span>${mo.shortTitle}</span>
+        </button>`).join('');
+      document.getElementById('hudTypeBadge').textContent = m.code + ' · ' + m.shortTitle;
+      document.getElementById('problemTextBox').innerHTML = formatRichMath(m.problem);
+      document.getElementById('contentTextbook').innerHTML = m.textbook.map(s => '<div>'+formatRichMath(s)+'</div>').join('');
+      document.getElementById('contentSecret').innerHTML = m.secret.map(s => '<div>'+formatRichMath(s)+'</div>').join('');
+      document.getElementById('trapWarningText').innerHTML = formatRichMath(m.trap);
+      updateStepsUI(1);
+      buildSliders();
+      updateHUD();
+    }
+
+    function toggleStep(n) { state.steps[n] = !state.steps[n]; updateStepsUI(n); }
+    function updateStepsUI(last) {
+      const m = PART.modes[state.modeIdx];
+      [1,2,3].forEach(n => {
+        const b = document.getElementById('stepBtn'+n);
+        b.textContent = 'STEP '+n+' · '+m.stepLabels[n-1];
+        b.className = state.steps[n] ? 'py-1.5 px-1.5 rounded-lg border border-amber-400 bg-amber-500/20 text-amber-200 text-[11px] font-extrabold truncate' : 'py-1.5 px-1.5 rounded-lg border border-emerald-800 bg-[#091812] text-emerald-400/70 text-[11px] font-bold truncate';
+      });
+      document.getElementById('stepDescBox').innerHTML = formatRichMath(m.stepDescs[last-1]);
+    }
+
+    function buildSliders() {
+      const m = PART.modes[state.modeIdx];
+      document.getElementById('sliderControlsBox').innerHTML = m.sliders.map(s => `
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span class="text-emerald-200 font-semibold">${s.label}</span><span id="val_${s.key}" class="font-mono font-bold text-amber-300">${state.params[s.key]}</span></div>
+          <input type="range" id="sl_${s.key}" min="${s.min}" max="${s.max}" step="${s.step}" value="${state.params[s.key]}" oninput="state.params['${s.key}']=parseFloat(this.value); document.getElementById('val_${s.key}').textContent=this.value; updateHUD();" />
+        </div>`).join('');
+    }
+
+    function snapToCondition() {
+      const m = PART.modes[state.modeIdx];
+      state.params = JSON.parse(JSON.stringify(m.snapParams));
+      state.steps = {1:true, 2:true, 3:true};
+      buildSliders(); updateStepsUI(3); updateHUD();
+    }
+
+    function updateHUD() {
+      const m = PART.modes[state.modeIdx];
+      const p = state.params;
+      let eq = '';
+      if (m.renderType === 'exp_root') eq = `$f(${p.k}) = (${p.k}-2)(${p.k}-6) = ${((p.k-2)*(p.k-6)).toFixed(2)}, \\quad x^{${p.n}} = f(k)$`;
+      else if (m.renderType === 'exp_div') eq = `$1 \\le m \\le ${p.maxM}, \\; 2 \\le n \\le ${p.maxN} \\implies \\sqrt[n]{2^m} \\in \\mathbb{N}$`;
+      else if (m.renderType === 'exp_saw') eq = `$\\{\\log x\\} \\text{ vs } \\{${p.multP}\\log x\\} \\implies ${p.modeSum?p.multP+1:p.multP-1}\\log x \\in \\mathbb{Z}$`;
+      else if (m.renderType === 'exp_horiz') eq = `$y=2^x, \\; y=${p.multK}\\cdot 2^x \\implies \\overline{AB} = \\log_2 ${p.multK} = ${Math.log2(p.multK).toFixed(2)}$`;
+      else if (m.renderType === 'exp_abs') eq = `$|2^x - ${p.asymK}| = ${p.lineT} \\implies 2^{x_1+x_2} = ${(p.asymK*p.asymK - p.lineT*p.lineT).toFixed(2)}$`;
+      else if (m.renderType === 'log_vert') eq = `$\\log_2(${p.multK}x) - \\log_2 x = ${Math.log2(p.multK).toFixed(2)}, \\quad S = ${((p.xCut2-p.xCut1)*Math.log2(p.multK)).toFixed(2)}$`;
+      else if (m.renderType === 'log_abs') eq = `$|\\log_2(x-${p.shiftP})| = ${p.lineT} \\implies (x_1-${p.shiftP})(x_2-${p.shiftP}) = 1.000$`;
+      else if (m.renderType === 'log_misinv') eq = `$\\text{정점 } (${p.expM},${p.expN+1}), (${p.logP+1},${p.logQ}) \\implies \\text{이동 대칭축 작도}$`;
+      else if (m.renderType === 'log_lattice') eq = `$1 \\le x \\le ${p.maxX}, \\; 1 \\le y \\le \\log_2 x \\iff 2^y \\le x \\le ${p.maxX}$`;
+      else if (m.renderType === 'trig_unit') eq = `$\\theta = ${p.deg}^\\circ \\implies \\cos\\theta = ${Math.cos(p.deg*Math.PI/180).toFixed(3)}, \\; \\sin\\theta = ${Math.sin(p.deg*Math.PI/180).toFixed(3)}$`;
+      else if (m.renderType === 'trig_ineq') eq = `$${p.isCos?'\\cos x \\le ':'\\sin x \\ge '}${p.kVal} \\quad (\\text{단위원 호 } \\leftrightarrow \\text{ 그래프 해 구간})$`;
+      else if (m.renderType === 'trig_abs4') eq = `$\\text{절댓값 Type #}${p.absType} \\cap (y = ${p.lineT})$`;
+      else if (m.renderType === 'geo_proj') eq = `$\\overline{BC} = c\\cos B + b\\cos C, \\quad \\overline{AB}=${p.sideC}, \\; \\cos B=${p.cosB}$`;
+      else if (m.renderType === 'geo_circles') eq = `$R_1=${p.r1}, \\; R_2=${p.r2} \\implies \\sin B : \\sin D = R_2 : R_1 = ${p.r2} : ${p.r1}$`;
+      else if (m.renderType === 'geo_ptolemy') eq = `$\\text{정삼각형 외접원 불변량: } \\overline{PA} + \\overline{PC} = \\overline{PB} \\;(\\text{오차 } 0.000\%)$`;
+      else if (m.renderType === 'seq_parabola') eq = `$S_{${p.pIdx}} = S_{${p.qIdx}} \\implies \\text{대칭축 } ${(p.pIdx+p.qIdx)/2}, \\; S_{${p.pIdx+p.qIdx}} = 0$`;
+      else if (m.renderType === 'seq_abs') eq = `$S_n = -n(n-${p.zeroSumN}) \\implies \\sum_{k=1}^{${p.targetN}} |a_k| = 2S_{\\max} - S_{${p.targetN}}$`;
+      else if (m.renderType === 'seq_tree') eq = `$a_4 = ${p.targetA4}, \\; k = ${p.threshK} \\implies \\text{역추적 이진 트리 가지치기}$`;
+      document.getElementById('hudEquationBox').innerHTML = formatRichMath(eq);
+    }
+
+    function resizeCanvas() {
+      const r = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = r.width * dpr; canvas.height = r.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function resetView() { state.view.scale = 44; state.view.offsetX = -60; state.view.offsetY = 50; }
+    function zoomCanvas(f) { state.view.scale = Math.max(20, Math.min(120, state.view.scale * f)); }
+    function m2s(x, y) { const r = canvas.getBoundingClientRect(); return { x: r.width/2 + state.view.offsetX + x*state.view.scale, y: r.height/2 + state.view.offsetY - y*state.view.scale }; }
+    function s2m(sx, sy) { const r = canvas.getBoundingClientRect(); return { x: (sx - r.width/2 - state.view.offsetX)/state.view.scale, y: (r.height/2 + state.view.offsetY - sy)/state.view.scale }; }
+
+    function drawSeg(x1,y1,x2,y2,col='#fbbf24',dash=[],w=2.2) {
+      const p1=m2s(x1,y1), p2=m2s(x2,y2);
+      ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=w; ctx.setLineDash(dash);
+      ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke(); ctx.restore();
+    }
+    function drawCurve(fn, col='#34d399', w=2.6, dash=[], x0=-5, x1=9) {
+      ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=w; ctx.setLineDash(dash); ctx.beginPath();
+      let st=false;
+      for(let x=x0; x<=x1; x+=(x1-x0)/300) {
+        const y=fn(x);
+        if(isNaN(y)||!isFinite(y)||Math.abs(y)>40){st=false;continue;}
+        const pt=m2s(x,y);
+        if(!st){ctx.moveTo(pt.x,pt.y);st=true;}else ctx.lineTo(pt.x,pt.y);
+      }
+      ctx.stroke(); ctx.restore();
+    }
+    function drawPt(x,y,lbl='',col='#fbbf24',rad=6,drag=null) {
+      const pt=m2s(x,y); ctx.save();
+      if(drag){ ctx.fillStyle='rgba(251,191,36,0.28)'; ctx.beginPath(); ctx.arc(pt.x,pt.y,rad+6,0,Math.PI*2); ctx.fill(); handles.push({sx:pt.x,sy:pt.y,drag}); }
+      ctx.fillStyle=col; ctx.strokeStyle='#07130e'; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(pt.x,pt.y,rad,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      if(lbl){ ctx.font='bold 12px Pretendard, sans-serif'; ctx.fillStyle='#fff'; ctx.fillText(lbl,pt.x+9,pt.y-7); }
+      ctx.restore();
+    }
+
+    function renderLoop() {
+      const r = canvas.getBoundingClientRect();
+      ctx.clearRect(0,0,r.width,r.height);
+      handles = [];
+      const m = PART.modes[state.modeIdx];
+      const p = state.params;
+
+      // Grid & Axes
+      const o = m2s(0,0);
+      ctx.strokeStyle='rgba(52,211,153,0.08)'; ctx.lineWidth=1;
+      for(let i=-10;i<=15;i++){ const sx=m2s(i,0).x, sy=m2s(0,i).y; ctx.beginPath(); ctx.moveTo(sx,0); ctx.lineTo(sx,r.height); ctx.moveTo(0,sy); ctx.lineTo(r.width,sy); ctx.stroke(); }
+      ctx.strokeStyle='rgba(236,253,245,0.4)'; ctx.lineWidth=1.8;
+      ctx.beginPath(); ctx.moveTo(0,o.y); ctx.lineTo(r.width,o.y); ctx.moveTo(o.x,0); ctx.lineTo(o.x,r.height); ctx.stroke();
+
+      if (m.renderType === 'exp_root') {
+        const fk = 0.5*(p.k-2)*(p.k-6);
+        drawCurve(x => 0.5*(x-2)*(x-6), '#34d399', 2.8, [], -1, 9);
+        drawCurve(x => Math.pow(x+3.5, Math.round(p.n)), '#38bdf8', 2.6, [], -5.5, -1.5);
+        drawSeg(-6, fk, 9, fk, '#fbbf24', [5,4], 1.8);
+        drawPt(p.k, fk, `k=${p.k.toFixed(1)} [드래그]`, '#fbbf24', 8, mp => { p.k = Math.max(0,Math.min(8,Math.round(mp.x*5)/5)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'exp_div') {
+        let tot = 0;
+        for(let n=2; n<=p.maxN; n++) {
+          tot += Math.floor(p.maxM/n);
+          for(let i=1; i<=p.maxM; i++) drawPt(i*0.7, n*0.9, i%n===0?`2^${i/n}`:'', i%n===0?'#fbbf24':'rgba(148,163,184,0.25)', i%n===0?5.5:3);
+        }
+        drawBadge(`총 자연수 순서쌍 = ${tot}개`, r.width*0.5, 45, '#fbbf24');
+      } else if (m.renderType === 'exp_saw') {
+        const c = p.modeSum ? p.multP+1 : p.multP-1;
+        for(let i=0;i<3*c;i++) drawSeg(i/c*2.5, 0, (i+0.98)/c*2.5, 2.5, '#38bdf8', [], 2.5);
+        for(let i=c;i<2*c;i++) drawPt(i/c*2.5, 0, `${i}/${c}`, (p.modeSum&&i===c)?'#fb7185':'#fbbf24', 6.5);
+      } else if (m.renderType === 'exp_horiz') {
+        const dx = Math.log2(p.multK);
+        drawCurve(x => Math.pow(2,x), '#34d399', 2.8, [], -4, 3.5);
+        drawCurve(x => p.multK*Math.pow(2,x), '#38bdf8', 2.8, [], -5, 3);
+        const x1B = Math.log2(p.yCut1), x1A = x1B - dx;
+        drawSeg(x1A, p.yCut1, x1B, p.yCut1, '#fbbf24', [], 3.5);
+        drawPt(x1B, p.yCut1, `AB = ${dx.toFixed(2)} (불변!) [드래그]`, '#fbbf24', 8, mp => { p.yCut1 = Math.max(0.8,Math.min(5,Math.round(mp.y*4)/4)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'exp_abs') {
+        drawSeg(-5, p.asymK, 5, p.asymK, '#c084fc', [5,4], 2);
+        drawCurve(x => Math.abs(Math.pow(2,x)-p.asymK), '#34d399', 3.0, [], -5, 3.5);
+        drawSeg(-5, p.lineT, 5, p.lineT, '#fbbf24', [], 2.2);
+        drawPt(0, p.lineT, `t=${p.lineT} [드래그]`, '#fbbf24', 8, mp => { p.lineT = Math.max(0.5,Math.min(4.5,Math.round(mp.y*4)/4)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'log_vert') {
+        const dy = Math.log2(p.multK);
+        drawCurve(x => Math.log2(x), '#34d399', 2.8, [], 0.08, 9);
+        drawCurve(x => Math.log2(p.multK*x), '#38bdf8', 2.8, [], 0.08, 9);
+        drawSeg(p.xCut1, Math.log2(p.xCut1), p.xCut1, Math.log2(p.multK*p.xCut1), '#fbbf24', [], 3.5);
+        drawPt(p.xCut1, Math.log2(p.multK*p.xCut1), `세로 AB=${dy.toFixed(2)} [드래그]`, '#fbbf24', 8, mp => { p.xCut1 = Math.max(0.5,Math.min(6,Math.round(mp.x*4)/4)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'log_abs') {
+        drawCurve(x => -Math.log2(x-p.shiftP), '#fb7185', 2.8, [], p.shiftP+0.05, p.shiftP+1);
+        drawCurve(x => Math.log2(x-p.shiftP), '#34d399', 2.8, [], p.shiftP+1, 9);
+        drawSeg(0, p.lineT, 9, p.lineT, '#fbbf24', [], 2.2);
+        const x1 = p.shiftP + Math.pow(2,-p.lineT), x2 = p.shiftP + Math.pow(2,p.lineT);
+        drawPt(x1, p.lineT, `x₁=${x1.toFixed(2)}`, '#fb7185', 6);
+        drawPt(x2, p.lineT, `x₂=${x2.toFixed(2)} [드래그]`, '#fbbf24', 8, mp => { p.lineT = Math.max(0.5,Math.min(2.8,Math.round(mp.y*10)/10)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'log_misinv') {
+        drawCurve(x => Math.pow(2,x-p.expM)+p.expN, '#34d399', 2.8, [], -3, 5);
+        drawCurve(x => Math.log2(x-p.logP)+p.logQ, '#38bdf8', 2.8, [], p.logP+0.05, 10);
+        const cShift = 0.5*((p.expN-p.expM)+(p.logQ-p.logP));
+        drawCurve(x => x + cShift, '#c084fc', 2.4, [6,4], -3, 8);
+        drawCurve(x => -x + p.lineK, '#fbbf24', 2.2, [], -2, 8);
+        const mx = 0.5*(p.lineK-cShift), my = 0.5*(p.lineK+cShift);
+        drawPt(mx, my, `대칭중점 M(${mx.toFixed(1)},${my.toFixed(1)}) [드래그]`, '#fbbf24', 8, mp => { p.lineK = Math.max(4,Math.min(8,Math.round((mp.x+mp.y)*2)/2)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'log_lattice') {
+        const K = Math.round(p.maxX);
+        drawCurve(x => Math.log2(x), '#34d399', 2.8, [], 0.2, 14);
+        for(let y=1; Math.pow(2,y)<=K; y++) {
+          drawSeg(Math.pow(2,y), y, K, y, '#fb7185', [], 3);
+          for(let x=Math.pow(2,y); x<=K; x++) drawPt(x, y, '', '#fbbf24', 5);
+        }
+        drawPt(K, Math.log2(K), `K=${K} [드래그]`, '#fbbf24', 8, mp => { p.maxX = Math.max(4,Math.min(13,Math.round(mp.x))); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'trig_unit' || m.renderType === 'trig_ineq') {
+        const R = 2.6, uCx = -2.0;
+        const cPt = m2s(uCx, 0);
+        ctx.strokeStyle='rgba(236,253,245,0.65)'; ctx.lineWidth=2.2; ctx.beginPath(); ctx.arc(cPt.x, cPt.y, R*state.view.scale, 0, Math.PI*2); ctx.stroke();
+        const rad = (p.deg || 60)*Math.PI/180;
+        const px = uCx + R*Math.cos(rad), py = R*Math.sin(rad);
+        drawSeg(uCx, 0, px, 0, '#38bdf8', [], 3.5);
+        drawSeg(px, 0, px, py, '#34d399', [], 3.5);
+        drawSeg(uCx, 0, px, py, '#fbbf24', [], 2.6);
+        drawCurve(x => R*Math.sin(x-1.5), '#34d399', 2.8, [], 1.5, 1.5+Math.PI*2);
+        drawCurve(x => R*Math.cos(x-1.5), '#38bdf8', 2.2, [4,4], 1.5, 1.5+Math.PI*2);
+        drawSeg(1.5, R*p.kVal, 1.5+Math.PI*2, R*p.kVal, '#fbbf24', [], 2.2);
+        drawPt(px, py, `P [드래그]`, '#fbbf24', 8, mp => { let a=Math.atan2(mp.y,mp.x-uCx)*180/Math.PI; if(a<0)a+=360; p.deg=Math.round(a/15)*15; buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'trig_abs4') {
+        const tIdx = Math.round(p.absType);
+        drawCurve(x => tIdx===1?Math.abs(Math.sin(x)):(tIdx===2?Math.sin(Math.abs(x)):(tIdx===3?Math.abs(2*Math.sin(x)-1):Math.sin(x)+Math.abs(Math.sin(x)))), '#34d399', 3.0, [], -3, 7);
+        drawSeg(-3, p.lineT, 7, p.lineT, '#fbbf24', [], 2.2);
+        drawPt(1.5, p.lineT, `t=${p.lineT} [드래그]`, '#fbbf24', 8, mp => { p.lineT = Math.max(0,Math.min(3.2,Math.round(mp.y*10)/10)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'geo_proj') {
+        const sinB = Math.sqrt(1 - p.cosB*p.cosB), bh = p.sideC*p.cosB, h = p.sideC*sinB;
+        const ch = Math.sqrt(Math.max(0.2, p.sideB*p.sideB - h*h));
+        drawSeg(-bh, 0, 0, 0, '#34d399', [], 3.5); drawSeg(0, 0, ch, 0, '#38bdf8', [], 3.5);
+        drawSeg(-bh, 0, 0, h, '#34d399', [], 2.8); drawSeg(ch, 0, 0, h, '#38bdf8', [], 2.8);
+        drawSeg(0, 0, 0, h, '#fbbf24', [5,4], 2.5);
+        drawPt(0, h, `A (h=${h.toFixed(2)}, BC=${(bh+ch).toFixed(2)})`, '#fbbf24', 7.5);
+      } else if (m.renderType === 'geo_circles') {
+        const h = 2.0, d1 = Math.sqrt(Math.max(0.2, p.r1*p.r1-h*h)), d2 = Math.sqrt(Math.max(0.2, p.r2*p.r2-h*h));
+        const c1 = m2s(-d1,0), c2 = m2s(d2,0);
+        ctx.strokeStyle='#34d399'; ctx.lineWidth=2.4; ctx.beginPath(); ctx.arc(c1.x,c1.y,p.r1*state.view.scale,0,Math.PI*2); ctx.stroke();
+        ctx.strokeStyle='#38bdf8'; ctx.lineWidth=2.4; ctx.beginPath(); ctx.arc(c2.x,c2.y,p.r2*state.view.scale,0,Math.PI*2); ctx.stroke();
+        drawSeg(0, -h, 0, h, '#fb7185', [], 3.5);
+        drawPt(0, h, '공통현 AC', '#fbbf24', 7);
+      } else if (m.renderType === 'geo_ptolemy') {
+        const R = p.radiusR, cPt = m2s(0,0);
+        ctx.strokeStyle='#38bdf8'; ctx.lineWidth=2.2; ctx.beginPath(); ctx.arc(cPt.x,cPt.y,R*state.view.scale,0,Math.PI*2); ctx.stroke();
+        const gp = d => ({x:R*Math.cos(d*Math.PI/180), y:R*Math.sin(d*Math.PI/180)});
+        const A=gp(210), B=gp(90), C=gp(330), P=gp(p.posPDeg);
+        drawSeg(A.x,A.y,B.x,B.y,'#34d399',[],2.6); drawSeg(B.x,B.y,C.x,C.y,'#34d399',[],2.6); drawSeg(C.x,C.y,A.x,A.y,'#34d399',[],2.6);
+        drawSeg(P.x,P.y,A.x,A.y,'#38bdf8',[],2.6); drawSeg(P.x,P.y,C.x,C.y,'#38bdf8',[],2.6); drawSeg(P.x,P.y,B.x,B.y,'#fbbf24',[],3.4);
+        drawPt(P.x, P.y, 'P [호 위 드래그]', '#fbbf24', 8, mp => { p.posPDeg = Math.max(-135,Math.min(-40,Math.round(Math.atan2(mp.y,mp.x)*180/Math.PI))); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'seq_parabola' || m.renderType === 'seq_abs') {
+        const N = m.renderType==='seq_parabola' ? (p.pIdx+p.qIdx) : p.zeroSumN;
+        const sc = 0.25;
+        drawCurve(x => sc*(-x*(x-N)), '#34d399', 2.8, [], -0.5, N+2);
+        if (m.renderType === 'seq_abs') {
+          drawCurve(x => sc*Math.abs(-x*(x-N)), '#38bdf8', 2.4, [4,4], 0, N+2.5);
+          const sm = (N/2)*(N/2);
+          drawCurve(x => sc*(x<=N/2 ? -x*(x-N) : 2*sm - (-x*(x-N))), '#fbbf24', 3.0, [], 0, N+2.5);
+        }
+        drawPt(0, 0, '원점 S₀=0', '#38bdf8', 6.5);
+        drawPt(N, 0, `S_${N}=0`, '#fb7185', 7);
+      } else if (m.renderType === 'seq_tree') {
+        const yLv = [4.0, 2.2, 0.4, -1.6];
+        const drawTree = (val, lv, cx, sp, valid) => {
+          drawPt(cx, yLv[lv], `${valid?'':'✕ '}${val}`, valid?(lv===3?'#fbbf24':'#34d399'):'#fb7185', lv===3&&valid?7.5:6);
+          if(lv<3 && valid) {
+            const vL = val/2, okL = Number.isInteger(vL) && vL >= 1 && vL < p.threshK;
+            const vR = val + p.threshK;
+            drawSeg(cx, yLv[lv], cx-sp, yLv[lv+1], okL?'#34d399':'rgba(251,113,133,0.4)', okL?[]:[4,4], 2);
+            drawSeg(cx, yLv[lv], cx+sp, yLv[lv+1], '#34d399', [], 2);
+            drawTree(vL, lv+1, cx-sp, sp*0.5, okL);
+            drawTree(vR, lv+1, cx+sp, sp*0.5, true);
+          }
+        };
+        drawTree(p.targetA4, 0, 2.0, 2.6, true);
+      }
+      requestAnimationFrame(renderLoop);
+    }
+
+    canvas.addEventListener('mousedown', e => {
+      const r = canvas.getBoundingClientRect(), x = e.clientX-r.left, y = e.clientY-r.top;
+      state.lastX = x; state.lastY = y;
+      for(const h of handles) if(Math.hypot(x-h.sx, y-h.sy)<22) { state.drag = h; return; }
+      state.drag = 'pan';
+    });
+    window.addEventListener('mousemove', e => {
+      if(!state.drag) return;
+      const r = canvas.getBoundingClientRect(), x = e.clientX-r.left, y = e.clientY-r.top;
+      if(state.drag === 'pan') { state.view.offsetX += x-state.lastX; state.view.offsetY += y-state.lastY; state.lastX=x; state.lastY=y; }
+      else if(state.drag.drag) state.drag.drag(s2m(x,y));
+    });
+    window.addEventListener('mouseup', () => state.drag = null);
+    canvas.addEventListener('wheel', e => { e.preventDefault(); zoomCanvas(e.deltaY<0?1.1:0.9); }, {passive:false});
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('DOMContentLoaded', () => { resizeCanvas(); selectMode(0); requestAnimationFrame(renderLoop); });
+  </script>
+</body>
+</html>

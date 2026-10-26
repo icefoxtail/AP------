@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>합성함수·절댓값 그래프 킬러 랩 (Composite & Absolute Value Master Lab)</title>
+  <!-- Pretendard Webfont -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- KaTeX CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+  <style>
+    * {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    body {
+      background-color: #07130e;
+      color: #f1f5f9;
+      overflow: hidden;
+    }
+    .chalkboard-bg {
+      background: radial-gradient(circle at 50% 45%, #163329 0%, #0d211a 65%, #07140f 100%);
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.82);
+    }
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 3px;
+      line-height: 1.05;
+      font-family: 'Pretendard', monospace;
+      font-weight: 700;
+    }
+    .math-frac > .num {
+      border-bottom: 1.5px solid currentColor;
+      padding: 0 4px 2px 4px;
+      font-size: 0.9em;
+      text-align: center;
+      width: 100%;
+    }
+    .math-frac > .den {
+      padding: 2px 4px 0 4px;
+      font-size: 0.9em;
+      text-align: center;
+      width: 100%;
+    }
+    .katex {
+      font-size: 1.04em !important;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07130e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1d3f32;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2d604d;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #11261e;
+      height: 6px;
+      border-radius: 4px;
+      outline: none;
+      border: 1px solid #234739;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #fbbf24;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.85);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .mode-tab.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #07130e;
+      font-weight: 800;
+      border-color: #fbbf24;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+    }
+    .step-btn.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(5, 150, 105, 0.32));
+      border-color: #34d399;
+      color: #ecfdf5;
+      box-shadow: 0 0 12px rgba(52, 211, 153, 0.2);
+    }
+    .chalk-text {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+    }
+    @keyframes subtlePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5); }
+      50% { box-shadow: 0 0 16px 3px rgba(251, 191, 36, 0.35); }
+    }
+    .snap-btn-glow {
+      animation: subtlePulse 2.4s infinite;
+    }
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col">
+
+  <!-- ===================================================================== -->
+  <!-- 상단 헤더 & 5대 핵심 실험·기출 모드 탭 바 + 다운로드 유틸리티 -->
+  <!-- ===================================================================== -->
+  <header class="bg-[#081510]/95 border-b border-emerald-900/70 px-4 py-2 flex flex-wrap items-center justify-between gap-2 z-20 shrink-0">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-amber-500/20 border border-amber-400/60 flex items-center justify-center text-amber-300 shadow-inner">
+        <i class="fa-solid fa-clone text-lg"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-base md:text-lg font-extrabold tracking-tight text-emerald-50 chalk-text">미적분Ⅰ · 합성함수·절댓값 그래프 LAB</h1>
+          <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">COMPOSITE &amp; ABS v2.0</span>
+        </div>
+        <p class="text-[11px] text-emerald-400/85 hidden xl:block">4대 절댓값 변환 · |f(x)-t|=k 실근 스캐너 · 첨점 힐링 |f(x)|g(x) · 합성함수 극값 · f(g(x))=k 2단계 치환</p>
+      </div>
+    </div>
+
+    <!-- 5대 실험·기출 모드 탭 -->
+    <nav class="flex items-center gap-1.5 overflow-x-auto py-1 max-w-full">
+      <button onclick="setMode(1)" id="tab-1" class="mode-tab active text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-symmetry-vertical"></i>
+        <span>1. 4대 절댓값 변환</span>
+      </button>
+      <button onclick="setMode(2)" id="tab-2" class="mode-tab text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-wave-Common"></i>
+        <span>2. |f(x)-t|=k 교점 스캔</span>
+      </button>
+      <button onclick="setMode(3)" id="tab-3" class="mode-tab text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-wand-sparkles"></i>
+        <span>3. |f(x)|·g(x) 첨점 힐링</span>
+      </button>
+      <button onclick="setMode(4)" id="tab-4" class="mode-tab text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-sitemap"></i>
+        <span>4. 합성함수 f(g(x)) 극값</span>
+      </button>
+      <button onclick="setMode(5)" id="tab-5" class="mode-tab text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-magnifying-glass-chart"></i>
+        <span>5. f(g(x))=k 2단계 치환</span>
+      </button>
+    </nav>
+
+    <!-- 우측 상단: 자체 파일 다운로드 & 칠판 캡처 버튼 -->
+    <div class="flex items-center gap-1.5 shrink-0">
+      <button onclick="downloadSelfHTML()" class="px-2.5 py-1.5 rounded-lg bg-emerald-800/60 hover:bg-emerald-700/70 border border-emerald-500/50 text-emerald-100 text-xs font-bold flex items-center gap-1.5 transition shadow" title="현재 웹앱을 단일 HTML 파일로 즉시 다운로드">
+        <i class="fa-solid fa-file-arrow-down text-amber-300"></i>
+        <span class="hidden sm:inline">HTML 저장</span>
+      </button>
+      <button onclick="captureChalkboard()" class="px-2.5 py-1.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-900/80 border border-emerald-700/60 text-emerald-200 text-xs font-bold flex items-center gap-1.5 transition" title="칠판 판서 화면을 PNG 이미지로 캡처 저장">
+        <i class="fa-solid fa-camera text-sky-300"></i>
+        <span class="hidden sm:inline">판서 캡처</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 메인 워크스페이스 (좌측 칠판 캔버스 + 우측 440px 기출·솔루션·슬라이더 패널) -->
+  <!-- ===================================================================== -->
+  <div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+    <!-- 좌측: 인터랙티브 분필 칠판 캔버스 -->
+    <main class="flex-1 relative chalkboard-bg overflow-hidden flex items-center justify-center">
+      <canvas id="boardCanvas" class="w-full h-full block cursor-grab active:cursor-grabbing"></canvas>
+
+      <!-- 좌측 상단: 현재 모드 배지 & 드래그 힌트 + 실시간 수식 배지 -->
+      <div class="absolute top-3 left-3 pointer-events-none flex flex-col gap-2 max-w-xs sm:max-w-xl z-10">
+        <div class="bg-[#07140f]/88 backdrop-blur-md border border-emerald-700/50 rounded-xl px-3.5 py-2.5 shadow-lg">
+          <div class="flex items-center justify-between gap-2 mb-1">
+            <div class="flex items-center gap-2 text-amber-300 text-xs font-extrabold">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+              <span id="canvasModeBadge">MODE 1 · 4대 절댓값 그래프 변환과 대칭·미분가능성</span>
+            </div>
+            <span id="conditionBadge" class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-400/50">
+              절댓값 변환 활성
+            </span>
+          </div>
+          <p id="canvasActionHint" class="text-[12px] text-emerald-100/90 leading-relaxed">
+            하단 프리셋 버튼으로 4가지 절댓값 변환을 비교하거나 수평선·제어점을 드래그해 보세요!
+          </p>
+        </div>
+
+        <!-- 원함수 및 변환식 배지 -->
+        <div class="bg-[#07140f]/90 backdrop-blur-md border border-emerald-800/70 rounded-xl px-3.5 py-2 shadow-md flex flex-wrap items-center gap-3 w-fit">
+          <div class="text-xs text-emerald-100 flex items-center gap-1.5">
+            <span class="text-amber-300 font-extrabold">원함수:</span>
+            <span id="eqDisplay" class="text-amber-200 font-bold"></span>
+          </div>
+          <span class="text-emerald-700">|</span>
+          <div class="text-xs text-sky-300 flex items-center gap-1.5">
+            <span class="font-bold">변환/합성식:</span>
+            <span id="derivDisplay" class="font-bold"></span>
+          </div>
+        </div>
+
+        <!-- Mode 1 전용: 4대 절댓값 변환 원클릭 프리셋 바 -->
+        <div id="presetBarMode1" class="pointer-events-auto flex flex-wrap items-center gap-1.5 bg-[#07140f]/90 backdrop-blur-md border border-emerald-800/60 p-1.5 rounded-xl w-fit shadow">
+          <span class="text-[10px] font-extrabold text-emerald-400 px-1.5">절댓값 변환:</span>
+          <button onclick="setAbsType(1)" id="absBtn1" class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-amber-400 text-slate-950 transition">
+            ① y = |f(x)| (아래 접어올림)
+          </button>
+          <button onclick="setAbsType(2)" id="absBtn2" class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-emerald-900/70 text-emerald-100 border border-emerald-600/40 transition">
+            ② y = f(|x|) (x≥0 데칼코마니)
+          </button>
+          <button onclick="setAbsType(3)" id="absBtn3" class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-emerald-900/70 text-emerald-100 border border-emerald-600/40 transition">
+            ③ y = |f(|x|)| (데칼+접어올림)
+          </button>
+        </div>
+      </div>
+
+      <!-- 좌측 하단 플로팅 캔버스 툴바 -->
+      <div class="absolute bottom-4 left-4 flex flex-wrap items-center gap-1.5 bg-[#07140f]/92 backdrop-blur-md border border-emerald-800/70 p-1.5 rounded-xl shadow-xl z-10">
+        <button onclick="snapToProblem()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold flex items-center gap-1.5 transition shadow" title="현재 기출 문제 조건으로 즉시 세팅">
+          <i class="fa-solid fa-crosshairs"></i>
+          <span>문제 조건 스냅</span>
+        </button>
+        <button onclick="toggleDualView()" id="btnDualView" class="px-3 py-1.5 rounded-lg bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/50 text-sky-200 text-xs font-extrabold flex items-center gap-1.5 transition" title="상하 동기화 뷰 토글">
+          <i class="fa-solid fa-arrows-split-up-and-left"></i>
+          <span id="txtDualView">하단 동기화 뷰 OFF</span>
+        </button>
+        <button onclick="toggleAutoPlay()" id="btnAutoPlay" class="px-2.5 py-1.5 rounded-lg bg-emerald-900/50 hover:bg-emerald-800/60 border border-emerald-600/40 text-emerald-200 text-xs font-bold flex items-center gap-1.5 transition" title="자동 스캔 애니메이션">
+          <i class="fa-solid fa-play" id="iconAutoPlay"></i>
+          <span id="txtAutoPlay">자동 실험</span>
+        </button>
+        <div class="h-4 w-[1px] bg-emerald-800/70 mx-0.5"></div>
+        <button onclick="zoomCanvas(1.15)" class="w-8 h-8 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="확대">
+          <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </button>
+        <button onclick="zoomCanvas(0.87)" class="w-8 h-8 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="축소">
+          <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </button>
+        <button onclick="resetView()" class="w-8 h-8 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="화면 원점 초기화">
+          <i class="fa-solid fa-compress-arrows-alt"></i>
+        </button>
+        <button onclick="toggleGrid()" id="btnGrid" class="px-2.5 py-1.5 rounded-lg bg-emerald-900/50 border border-emerald-600/40 text-emerald-200 text-xs font-medium transition" title="격자 표시 켜기/끄기">
+          <i class="fa-solid fa-border-all"></i>
+        </button>
+      </div>
+
+      <!-- 우측 하단 칠판 지우개 & 분필 소품 -->
+      <div class="absolute bottom-3 right-4 pointer-events-none hidden md:flex items-end gap-2 opacity-75">
+        <div class="w-10 h-2 bg-white rounded-sm shadow"></div>
+        <div class="w-10 h-2 bg-amber-300 rounded-sm shadow"></div>
+        <div class="w-10 h-2 bg-pink-400 rounded-sm shadow"></div>
+        <div class="w-16 h-5 bg-amber-900/90 border-t-4 border-slate-300 rounded-sm shadow-lg"></div>
+      </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- 우측: 실전 기출 문제 & 10초 컷 솔루션 허브 (440px) -->
+    <!-- =================================================================== -->
+    <aside class="w-full lg:w-[440px] bg-[#081611] border-t lg:border-t-0 lg:border-l border-emerald-900/80 flex flex-col h-[52vh] lg:h-full shrink-0 z-10">
+      <div class="p-4 overflow-y-auto flex-1 space-y-4">
+
+        <!-- 1. [Exam View] 실전 기출 문제 카드 & 원클릭 스냅 버튼 -->
+        <section class="bg-gradient-to-br from-[#112a21] to-[#0b1c16] border border-amber-400/50 rounded-xl p-3.5 shadow-lg relative overflow-hidden">
+          <div class="flex items-center justify-between mb-2">
+            <span id="examTag" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40 flex items-center gap-1.5">
+              <i class="fa-solid fa-award"></i> 수능·평가원 15번·22번 킬러
+            </span>
+            <span id="examTarget" class="text-[11px] font-mono text-emerald-300 font-bold">목표 시간: 10초</span>
+          </div>
+
+          <div id="examQuestion" class="text-xs md:text-[13px] text-emerald-50 leading-loose bg-[#07130e]/85 p-3 rounded-lg border border-emerald-800/70 mb-3 font-medium">
+            <!-- JS 렌더링 -->
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
+            <div class="bg-[#07130e] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2">
+              <span class="text-[11px] text-emerald-400 font-bold">실전 정답:</span>
+              <span id="examAnswerBadge" class="text-xs font-extrabold text-amber-300"></span>
+            </div>
+
+            <button onclick="snapToProblem()" class="snap-btn-glow px-3.5 py-2 rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-extrabold text-xs flex items-center justify-center gap-1.5 transition shadow-md shrink-0">
+              <i class="fa-solid fa-bullseye"></i>
+              <span>🎯 문제 조건으로 원클릭 스냅</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 2. 단계별 칠판 보조선 언락 (Step 1 ~ 3) -->
+        <section class="bg-[#0d211a] border border-emerald-800/70 rounded-xl p-3.5">
+          <div class="flex items-center justify-between mb-2.5">
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-layer-group text-amber-400"></i>
+              <span>단계별 칠판 보조선 언락 (Steps)</span>
+            </h2>
+            <button onclick="unlockAllSteps()" class="text-[11px] text-amber-300 hover:underline font-semibold">전체 표시</button>
+          </div>
+
+          <div class="space-y-1.5">
+            <button onclick="toggleStep(1)" id="stepBtn1" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">1</span>
+                <span id="stepLabel1" class="text-xs font-semibold">원래 함수 y = f(x) 점선 가이드 및 대칭·접기 기준선 표시</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon1"></i>
+            </button>
+
+            <button onclick="toggleStep(2)" id="stepBtn2" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">2</span>
+                <span id="stepLabel2" class="text-xs font-semibold">절댓값·합성 변환된 최종 그래프 (네온 핑크/블루 곡선)</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon2"></i>
+            </button>
+
+            <button onclick="toggleStep(3)" id="stepBtn3" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">3</span>
+                <span id="stepLabel3" class="text-xs font-semibold">미분불가능 첨점(⚡) · 극값 · 실근 개수 실시간 추적 마커</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon3"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- 3. 2대 비교 아코디언 -->
+        <section class="space-y-2.5">
+          <!-- 아코디언 1 -->
+          <div class="border border-rose-500/40 rounded-xl bg-[#151318] overflow-hidden">
+            <button onclick="toggleAccordion('textbook')" class="w-full px-3.5 py-2.5 flex items-center justify-between text-left bg-rose-950/40 hover:bg-rose-950/60 transition">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/40 text-[10px] font-extrabold">3분 소요</span>
+                <span class="text-xs font-extrabold text-rose-100">교과서식 정석 풀이 (구간별 절댓값 해제 &amp; 합성식 대입)</span>
+              </div>
+              <i id="accIcon-textbook" class="fa-solid fa-chevron-down text-rose-300 text-xs transition-transform"></i>
+            </button>
+            <div id="accBody-textbook" class="hidden p-3.5 text-xs space-y-2.5 border-t border-rose-500/20">
+              <div id="textbookSteps" class="text-[11.5px] text-slate-200 leading-loose space-y-2 bg-black/40 p-3 rounded-lg border border-rose-900/40">
+                <!-- JS 렌더링 -->
+              </div>
+              <div id="textbookWarning" class="p-2.5 rounded-lg bg-rose-500/15 border border-rose-500/40 text-rose-200 text-[11.5px] font-semibold leading-snug">
+                <!-- JS 렌더링 -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 아코디언 2 -->
+          <div class="border border-amber-400/60 rounded-xl bg-[#11241b] overflow-hidden shadow-lg">
+            <button onclick="toggleAccordion('shortcut')" class="w-full px-3.5 py-2.5 flex items-center justify-between text-left bg-amber-500/15 hover:bg-amber-500/25 transition">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-extrabold">10초 컷</span>
+                <span class="text-xs font-extrabold text-amber-300">10초 컷 실전 대칭·치환 비기 (일타 강사 판서)</span>
+              </div>
+              <i id="accIcon-shortcut" class="fa-solid fa-chevron-up text-amber-300 text-xs transition-transform"></i>
+            </button>
+            <div id="accBody-shortcut" class="p-3.5 text-xs space-y-2.5 border-t border-amber-400/30">
+              <div id="shortcutSteps" class="text-emerald-50 leading-loose space-y-1.5 bg-[#07130e]/90 p-3 rounded-lg border border-emerald-800/80 font-medium">
+                <!-- JS 렌더링 -->
+              </div>
+              <div id="shortcutHighlight" class="p-2.5 rounded-lg bg-amber-400/20 border border-amber-400/50 text-amber-200 text-[12px] font-extrabold leading-snug shadow-inner">
+                <!-- JS 렌더링 -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. 실시간 불변성 스트레스 테스트 모니터 & 슬라이더 -->
+        <section class="bg-[#0d211a] border border-emerald-800/70 rounded-xl p-3.5 space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-gauge-high text-amber-400"></i>
+              <span>합성·절댓값 라이브 모니터</span>
+            </h2>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-600/50">실시간 추적 중</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel1" class="text-[10px] text-emerald-400">변환 기준값 t / 파라미터</div>
+              <div id="statVal1" class="text-xs font-bold text-amber-300 mt-0.5">t = 0.00</div>
+            </div>
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel2" class="text-[10px] text-pink-300">탐색 수평선 k / 영점 r</div>
+              <div id="statVal2" class="text-xs font-bold text-pink-300 mt-0.5">k = 2.00</div>
+            </div>
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel3" class="text-[10px] text-sky-300">미분불가능 점(첨점) 개수</div>
+              <div id="statVal3" class="text-xs font-bold text-sky-300 mt-0.5">첨점 3개</div>
+            </div>
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel4" class="text-[10px] text-purple-300">교점(실근) / 극값 개수</div>
+              <div id="statVal4" class="text-xs font-bold text-purple-300 mt-0.5">교점 4개</div>
+            </div>
+          </div>
+
+          <!-- 파라미터 수동 조작 슬라이더 -->
+          <div class="pt-2 border-t border-emerald-800/60 space-y-2.5">
+            <!-- 슬라이더 1 -->
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span class="text-emerald-200" id="labelP1">접기 기준선 / 평행이동 <strong class="text-amber-300">t</strong></span>
+                <span id="valP1" class="font-mono font-bold text-amber-300">t = 0.00</span>
+              </div>
+              <input type="range" id="sliderP1" min="-2.5" max="2.5" step="0.05" value="0.0" class="w-full" oninput="onP1Slider()" />
+            </div>
+
+            <!-- 슬라이더 2 -->
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span class="text-emerald-200" id="labelP2">탐색 수평선 <strong class="text-sky-300">y = k</strong> (교점 개수 스캔)</span>
+                <span id="valP2" class="font-mono font-bold text-sky-300">k = 2.00</span>
+              </div>
+              <input type="range" id="sliderP2" min="-0.5" max="4.0" step="0.05" value="2.0" class="w-full" oninput="onP2Slider()" />
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </aside>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 인터랙티브 미적분Ⅰ 합성함수·절댓값 그래프 캔버스 엔진 스크립트 -->
+  <!-- ===================================================================== -->
+  <script>
+    // -------------------------------------------------------------------------
+    // 0. KaTeX 및 파일 저장 유틸리티
+    // -------------------------------------------------------------------------
+    function tex(latexStr) {
+      if (window.katex) {
+        return katex.renderToString(latexStr, { throwOnError: false, displayMode: false });
+      }
+      return latexStr;
+    }
+
+    function downloadSelfHTML() {
+      const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '미적분1_합성함수와절댓값_LAB.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function captureChalkboard() {
+      const canvasEl = document.getElementById('boardCanvas');
+      const dataUrl = canvasEl.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `합성함수와절댓값_칠판판서_Mode${state.mode}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // -------------------------------------------------------------------------
+    // 1. 전역 상태 관리 (State)
+    // -------------------------------------------------------------------------
+    const state = {
+      mode: 1,                  // 1: 4대 절댓값 변환, 2: |f(x)-t|=k 교점 스캔, 3: |f(x)|·g(x) 첨점 힐링, 4: 합성함수 극값, 5: f(g(x))=k 2단계 치환
+      absType: 1,               // Mode 1: 1=|f(x)|, 2=f(|x|), 3=|f(|x|)|
+      p1: 0.0,                  // Mode 1: 수평이동 m / Mode 2: 접기선 t / Mode 3: g(x)=x-r 근 r / Mode 4,5: 속함수 꼭짓점 높이 c
+      p2: 2.0,                  // Mode 2,5: 탐색 수평선 k
+      dualView: false,          // 상하 동기화 뷰
+      steps: { 1: true, 2: true, 3: true },
+      scale: 46,
+      offsetX: -15,
+      offsetY: 15,
+      showGrid: true,
+      autoPlay: false,
+      animDir: -1,
+      userZoomed: false,
+      isDragging: false,
+      dragType: null,           // 'P1', 'P2', 'PAN'
+      lastMouse: { x: 0, y: 0 },
+      snapAnim: {
+        active: false,
+        startP1: 0, startP2: 2,
+        targetP1: 0, targetP2: 2,
+        progress: 0
+      }
+    };
+
+    // -------------------------------------------------------------------------
+    // 2. 수학 모델 & 방정식 근 탐색기
+    // -------------------------------------------------------------------------
+    // 기본 삼차함수 f(x) = x^3 - 3x (극대 (-1, 2), 극소 (1, -2))
+    function baseCubic(x) {
+      return x * x * x - 3.0 * x;
+    }
+
+    // Mode 4, 5의 바깥함수 f(u) = u^3 - 3u, 안쪽함수 g(x) = 0.5x^2 + p1
+    function outerF(u) {
+      return u * u * u - 3.0 * u;
+    }
+
+    function innerG(x) {
+      return 0.5 * x * x + state.p1;
+    }
+
+    // 구간 [minX, maxX] 에서 fn(x) = targetY 의 교점 x좌표 배열 탐색
+    function findLevelCrossings(fn, targetY, minX = -3.8, maxX = 3.8, step = 0.015) {
+      const roots = [];
+      let prevX = minX;
+      let prevDiff = fn(prevX) - targetY;
+
+      for (let x = minX + step; x <= maxX; x += step) {
+        const currDiff = fn(x) - targetY;
+        if (Math.abs(currDiff) < 0.012 || prevDiff * currDiff < 0) {
+          let lo = prevX;
+          let hi = x;
+          for (let i = 0; i < 10; i++) {
+            const mid = (lo + hi) / 2;
+            if ((fn(lo) - targetY) * (fn(mid) - targetY) <= 0) hi = mid;
+            else lo = mid;
+          }
+          const rx = (lo + hi) / 2;
+          if (!roots.some((r) => Math.abs(r - rx) < 0.09)) {
+            roots.push(rx);
+          }
+        }
+        prevX = x;
+        prevDiff = currDiff;
+      }
+      return roots;
+    }
+
+    // -------------------------------------------------------------------------
+    // 3. 5대 실전 기출 문제 & 3분 정석 vs 10초 컷 솔루션 데이터베이스
+    // -------------------------------------------------------------------------
+    const examData = {
+      1: {
+        badge: "MODE 1 · 4대 절댓값 그래프 변환 (|f(x)|, f(|x|), |f(|x|)|)과 x=0 미분가능성",
+        hint: "좌측 상단 <span class='text-amber-300 font-bold'>절댓값 변환 버튼(①~③)</span>을 눌러보거나 우측 슬라이더로 그래프를 좌우 이동(<span class='text-sky-300 font-bold'>m=1</span>)시켜 <span class='text-pink-300 font-bold'>f(|x|)가 x=0에서 미분가능해지는 순간</span>을 확인하세요!",
+        tag: "내신·모의고사 절댓값 대칭 변환 필수",
+        targetTime: "목표 시간: 5초",
+        question: () => `삼차함수 ${tex('f(x) = (x - m)^3 - 3(x - m)')} 에 대하여 함수 ${tex('g(x) = f(|x|)')} 가 ${tex('x = 0')} 에서 미분가능하도록 하는 모든 양수 ${tex('m')}의 값과 그때 ${tex('g(0)')}의 값을 구하시오.`,
+        answerBadge: () => `${tex("f'(0) = 0 \\implies m = 1, \\; g(0) = 2")}`,
+        snap: { p1: 1.0, p2: 2.0, dualView: false },
+        steps: [
+          "변환 전 원래 함수 y = f(x) (흰색 반투명 점선 가이드) 표시",
+          "절댓값 변환된 그래프 (|f(x)| 또는 f(|x|) 데칼코마니) 네온 실선 작도",
+          "꺾이는 경계점(f(x)=0 또는 x=0)에서의 첨점(⚡) vs 미분가능(✅) 판별"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('g(x) = f(|x|) = \\begin{cases} f(x) & (x \\ge 0) \\\\ f(-x) & (x < 0) \\end{cases}')} 로 구간 분리<br/>
+② ${tex('x = 0')} 에서 우미분계수 ${tex("g'_{+}(0) = f'(0)")}, 좌미분계수 ${tex("g'_{-}(0) = -f'(0)")}<br/>
+③ 미분가능하려면 ${tex("f'(0) = -f'(0) \\implies f'(0) = 0")} 이어야 함<br/>
+④ ${tex("f'(x) = 3(x-m)^2 - 3")} 에 ${tex('x = 0')} 대입: ${tex('3m^2 - 3 = 0 \\implies m = 1')}...`,
+          warning: "⚠️ y = f(|x|) 는 x ≥ 0 부분만 남겨서 y축에 데칼코마니로 찍어내는 그래프입니다!"
+        }),
+        shortcut: () => ({
+          steps: `① ${tex('y = f(|x|)')} 는 오른쪽(${tex('x \\ge 0')})을 ${tex('y')}축에 대칭 복사하므로, ${tex('x = 0')} 에서 뾰족하지 않으려면 <strong>출발점의 기울기가 0</strong>이어야 합니다!<br/>
+② 즉 계산 없이 무조건 <strong class="text-pink-300">${tex("f'(0) = 0")} (극대 또는 극소점이 y축 위에 위치)</strong>!<br/>
+③ 따라서 극대점이 ${tex('x = 0')} 이 되도록 평행이동한 <strong class="text-amber-300">${tex('m = 1')}</strong> 에서 스무스하게 미분가능!`,
+          highlight: "💡 『y = f(|x|) 가 x=0에서 미분가능할 필요충분조건 ⇔ f'(0) = 0 (y축과 수평으로 만난다)!』"
+        })
+      },
+
+      2: {
+        badge: "MODE 2 · 접어 올린 함수 |f(x) - t| 와 수평선 y = k 의 교점 개수 스캐너",
+        hint: "접기 기준선 <span class='text-amber-300 font-bold'>t</span>와 탐색 수평선 <span class='text-sky-300 font-bold'>k</span>를 드래그해 보세요! <span class='text-pink-300 font-bold'>t=0, k=2 일 때 접혀 올라온 봉우리 두 개에 동시에 접하며 교점이 4개</span>가 됩니다!",
+        tag: "수능 15번·22번 실근의 개수 최고난도 킬러",
+        targetTime: "목표 시간: 10초",
+        question: () => `함수 ${tex('f(x) = x^3 - 3x')} 에 대하여 방정식 ${tex('|f(x) - t| = k \\; (k > 0)')} 의 서로 다른 실근의 개수가 ${tex('4')}개가 되도록 하는 ${tex('t = 0')} 일 때의 양수 ${tex('k')}의 값과, 실근이 ${tex('6')}개가 되는 ${tex('k')}의 범위를 구하시오.`,
+        answerBadge: () => `4개: ${tex('k = 2')} / 6개: ${tex('0 < k < 2')}`,
+        snap: { p1: 0.0, p2: 2.0, dualView: false },
+        steps: [
+          "원함수 f(x) = x³ - 3x 와 접기 기준선 y = t 표시",
+          "접어 올린 그래프 g(x) = |f(x) - t| (분홍색 네온 곡선) 작도",
+          "탐색 수평선 y = k 와의 실시간 교점(실근) 포착 및 개수 카운트"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('t = 0')} 일 때 방정식 ${tex('|x^3 - 3x| = k')} 는 ${tex('x^3 - 3x = k')} 또는 ${tex('x^3 - 3x = -k')}<br/>
+② 두 방정식의 실근의 개수의 합이 ${tex('4')}가 되려면 각 방정식이 중근 1개와 단근 1개씩(총 2개씩) 가져야 함<br/>
+③ 극댓값과 극솟값이 ${tex('\\pm 2')} 이므로 ${tex('k = 2')} 도출...`,
+          warning: "⚠️ t가 변할 때마다 식을 ±k로 나누어 풀면 헷갈립니다! y=t를 새로운 바닥(0)으로 보고 접혀 올라온 봉우리 높이를 읽으세요!"
+        }),
+        shortcut: () => ({
+          steps: `① ${tex('t = 0')} 에서 접어 올리면 극소 ${tex('(1, -2)')} 가 위로 접혀 올라와 <strong>높이 ${tex('2')}짜리 쌍봉(W형) 그래프</strong> 완성!<br/>
+② 따라서 바닥과 봉우리 사이인 <strong class="text-sky-300">${tex('0 < k < 2')} 에서는 교점이 최대인 6개</strong>!<br/>
+③ 꼭대기 봉우리 두 개에 동시에 접하는 순간인 <strong class="text-amber-300">${tex('k = 2')} 에서 정확히 교점 4개</strong>!`,
+          highlight: "💡 |f(x) - t| 그래프의 봉우리 두 개의 높이는 무조건 【 |극댓값 - t| 】와 【 |극솟값 - t| 】입니다!"
+        })
+      },
+
+      3: {
+        badge: "MODE 3 · |f(x)| · g(x) 의 미분가능성 (첨점 힐링 법칙)",
+        hint: "상단에서 <span class='text-pink-300 font-bold'>|f(x)|는 x=2에서 뾰족한 첨점</span>을 갖습니다! 일차함수 <span class='text-sky-300 font-bold'>g(x) = x - r</span> 의 절편 <span class='text-amber-300 font-bold'>r을 2에 맞추는 순간</span> 하단 곱함수의 첨점이 스무스하게 펴집니다!",
+        tag: "평가원 4점 미분가능성 출제율 1순위 법칙",
+        targetTime: "목표 시간: 3초",
+        question: () => `함수 ${tex('f(x) = x - 2')} 와 일차함수 ${tex('g(x) = x - r')} 에 대하여, 곱함수 ${tex('h(x) = |f(x)|g(x)')} 가 ${tex('x = 2')} 에서 미분가능하도록 하는 상수 ${tex('r')}의 값과 그때 ${tex("h'(2)")}의 값을 구하시오.`,
+        answerBadge: () => `${tex("g(2) = 0 \\implies r = 2, \\; h'(2) = 0")}`,
+        snap: { p1: 2.0, p2: 0.0, dualView: true },
+        steps: [
+          "상단: x = 2 에서 꺾인 첨점 함수 |x - 2| 와 일차함수 g(x) = x - r",
+          "하단 동기화: 곱함수 h(x) = |x - 2|(x - r) 의 실시간 그래프 및 좌·우접선",
+          "첨점 힐링 법칙 [ |f(x)|가 x=a에서 첨점일 때 |f(x)|g(x)가 미분가능 ⇔ g(a) = 0 ] 판서"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('x \\ge 2')} 일 때 ${tex('h(x) = (x-2)(x-r) \\implies h\'_{+}(2) = 2 - r')}<br/>
+② ${tex('x < 2')} 일 때 ${tex('h(x) = -(x-2)(x-r) \\implies h\'_{-}(2) = -(2 - r)')}<br/>
+③ ${tex('x = 2')} 에서 미분가능하려면 좌미분계수 = 우미분계수여야 하므로:<br/>
+&nbsp;&nbsp;${tex('2 - r = -(2 - r) \\implies 2(2 - r) = 0 \\implies r = 2')}<br/>
+④ 이때 ${tex("h'(2) = 0")} 도출...`,
+          warning: "⚠️ 시험장에서 절댓값을 x ≥ a, x < a 로 나누어 곱의 미분법을 두 번 쓰면 시간이 낭비됩니다!"
+        }),
+        shortcut: () => ({
+          steps: `① ${tex('|f(x)|')} 의 뾰족점(첨점)에서는 좌미분계수와 우미분계수의 <strong>부호가 정반대(${tex('\\pm k')})</strong>!<br/>
+② 부호가 반대인 두 미분계수에 <strong class="text-sky-300">${tex('g(a)')}</strong> 를 곱해서 같게 만들려면 무조건 <strong class="text-amber-300">${tex('g(a) = 0')}</strong> 이어야 합니다!<br/>
+③ 따라서 1초 만에 <strong class="text-emerald-300">${tex('g(2) = 0 \\implies r = 2')}</strong> 이고, 그 점에서의 미분계수는 무조건 <strong class="text-pink-300">${tex("h'(2) = 0")}</strong>!`,
+          highlight: "💡 『불연속을 연속으로 만들 때도 g(a)=0, 뾰족한 첨점(|f(x)|)을 미분가능으로 만들 때도 g(a)=0 (인수 총 2개 효과)!』"
+        })
+      },
+
+      4: {
+        badge: "MODE 4 · 합성함수 h(x) = f(g(x)) 의 극값 생성 원리 (f'(g(x))·g'(x) = 0)",
+        hint: "우측 슬라이더로 하단 속함수 <span class='text-sky-300 font-bold'>g(x) = 0.5x² + c</span> 의 꼭짓점 높이 <span class='text-amber-300 font-bold'>c</span>를 위아래로 바꿔보세요! 속함수가 <span class='text-pink-300 font-bold'>겉함수 극값 기준선(u = ±1)을 관통할 때마다</span> 상단 합성함수에 극값이 생깁니다!",
+        tag: "수능·평가원 합성함수 미분 킬러 핵심",
+        targetTime: "목표 시간: 10초",
+        question: () => `삼차함수 ${tex('f(u) = u^3 - 3u')} (극대 ${tex('u=-1')}, 극소 ${tex('u=1')})와 이차함수 ${tex('g(x) = \\dfrac{1}{2}x^2 - 2')} 에 대하여, 합성함수 ${tex('h(x) = f(g(x))')} 가 극값을 갖는 모든 ${tex('x')}의 개수를 구하시오.`,
+        answerBadge: () => `${tex("g'(x)=0")} (1개) + ${tex('g(x)=\\pm 1')} 관통 (4개) = 총 ${tex('5')}개`,
+        snap: { p1: -2.0, p2: 0.0, dualView: true },
+        steps: [
+          "상단 합성함수 y = f(g(x)) 의 극대·극소 ↔ 하단 속함수 y = g(x) 수직 동기화선",
+          "하단 속함수 위에 겉함수의 극값 위치 수평 기준선 u = -1, u = 1 표시",
+          "합성함수 극값 공식 [ ① 속함수 극값(g'=0) + ② 속함수가 겉함수 극값(u=±1) 관통 ] 판서"
+        ],
+        textbook: () => ({
+          steps: `① 실제로 식을 대입하여 6차함수 전개:<br/>
+&nbsp;&nbsp;${tex('h(x) = \\left(\\dfrac{1}{2}x^2 - 2\\right)^3 - 3\\left(\\dfrac{1}{2}x^2 - 2\\right)')}<br/>
+② 연쇄법칙으로 미분: ${tex("h'(x) = 3(g(x)-1)(g(x)+1) \\cdot x = 0")}<br/>
+③ ${tex('x = 0')}, ${tex('\\dfrac{1}{2}x^2 - 2 = 1')}, ${tex('\\dfrac{1}{2}x^2 - 2 = -1')} 세 방정식의 실근을 각각 구하고 부호 변화 확인...`,
+          warning: "⚠️ 속함수가 삼차·사차함수일 때는 대입해서 전개할 수 없습니다! 하단 속함수에 겉함수 극값 수평선을 긋는 기하학적 해법을 써야 합니다!"
+        }),
+        shortcut: () => ({
+          steps: `① ${tex("h'(x) = f'(g(x)) \\cdot g'(x) = 0")} 에서 극값 후보는 두 종류!<br/>
+② <strong>[후보 1: ${tex("g'(x) = 0")}]</strong> 속함수 꼭짓점 <strong class="text-amber-300">${tex('x = 0')} (1개)</strong>!<br/>
+③ <strong>[후보 2: ${tex("f'(g(x)) = 0")}]</strong> 하단 속함수 ${tex('g(x)')} 그래프에 겉함수의 극값 위치인 <strong>수평선 ${tex('y = -1, \\; y = 1')}</strong> 을 그으면 꼭짓점(${tex('-2')})보다 위에 있으므로 각각 2번씩 <strong class="text-pink-300">총 4번 관통</strong>!<br/>
+④ 따라서 합치면 즉시 <strong class="text-emerald-300">극값 총 ${tex('1 + 4 = 5')}개</strong>! (단, 접하면 부호 불변이라 제외!)`,
+          highlight: "💡 합성함수 f(g(x))의 극값 개수 = 【 속함수 자체의 극값 개수 + 속함수 g(x)가 겉함수 극값 수평선(u=α, β)을 '관통'하는 교점 개수 】!"
+        })
+      },
+
+      5: {
+        badge: "MODE 5 · 합성방정식 f(g(x)) = k 의 실근의 개수 2단계 치환 역추적기",
+        hint: "우측 슬라이더로 상단 수평선 <span class='text-sky-300 font-bold'>y = k</span>를 조절해 보세요! 상단에서 <span class='text-amber-300 font-bold'>f(u)=k 의 근 u₁, u₂, u₃</span>를 찾으면 하단 <span class='text-pink-300 font-bold'>g(x) = uᵢ 수평선</span>이 자동으로 그어지며 실근 개수를 세어줍니다!",
+        tag: "수능·내신 출제율 100% 합성방정식 해법",
+        targetTime: "목표 시간: 10초",
+        question: () => `삼차함수 ${tex('f(u) = u^3 - 3u')} 와 이차함수 ${tex('g(x) = \\dfrac{1}{2}x^2 - 1')} 에 대하여 합성방정식 ${tex('f(g(x)) = 0')} 의 서로 다른 실근의 개수를 구하시오.`,
+        answerBadge: () => `${tex('u = -\\sqrt{3}')}(0개) + ${tex('u = 0')}(2개) + ${tex('u = \\sqrt{3}')}(2개) = 총 ${tex('4')}개`,
+        snap: { p1: -1.0, p2: 0.0, dualView: true },
+        steps: [
+          "1단계(상단): 바깥 방정식 f(u) = k 의 실근 u = u₁, u₂, u₃ 탐색",
+          "2단계(하단): 안쪽 그래프 y = g(x) 위에 수평선 y = u₁, u₂, u₃ 자동 작도",
+          "각 수평선과 y = g(x) 가 만나는 교점(최종 실근 x) 개수 합산 판서"
+        ],
+        textbook: () => ({
+          steps: `① 합성함수 ${tex('y = f(g(x))')} 의 그래프를 직접 그리려고 시도하면 6차함수가 되어 매우 복잡함<br/>
+② 식에 직접 대입하여 6차방정식 ${tex('\\left(\\dfrac{1}{2}x^2 - 1\\right)^3 - 3\\left(\\dfrac{1}{2}x^2 - 1\\right) = 0')} 전개 후 인수분해...`,
+          warning: "⚠️ 합성방정식 f(g(x)) = k 가 나왔을 때 절대로 합성함수 그래프를 그리거나 식을 대입해서 풀지 마세요!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[1단계: 속함수 치환 ${tex('u = g(x)')}]</strong> 바깥 방정식 ${tex('f(u) = u^3 - 3u = 0')} 의 실근은 <strong class="text-amber-300">${tex('u = -\\sqrt{3}, \\; 0, \\; \\sqrt{3}')}</strong>!<br/>
+② <strong>[2단계: 하단 ${tex('g(x) = \\dfrac{1}{2}x^2 - 1')} (최솟값 ${tex('-1')})에 수평선 3줄 긋기]</strong><br/>
+&nbsp;&nbsp;• ${tex('g(x) = -\\sqrt{3} \\; (\\approx -1.73 < -1)')} $\\implies$ 교점 <strong>0개</strong><br/>
+&nbsp;&nbsp;• ${tex('g(x) = 0 \\; (> -1)')} $\\implies$ 교점 <strong class="text-pink-300">2개</strong><br/>
+&nbsp;&nbsp;• ${tex('g(x) = \\sqrt{3} \\; (\\approx 1.73 > -1)')} $\\implies$ 교점 <strong class="text-sky-300">2개</strong><br/>
+③ 합치면 5초 만에 <strong class="text-emerald-300">총 ${tex('0 + 2 + 2 = 4')}개</strong>!`,
+          highlight: "💡 합성방정식 f(g(x)) = k 는 무조건 【 ① f(u) = k 의 근 u₁, u₂, u₃ 구하기 → ② g(x) = uᵢ 수평선 그어 교점 개수 더하기 】 2단계로 푸세요!"
+        })
+      }
+    };
+
+    // -------------------------------------------------------------------------
+    // 4. 캔버스 초기화 및 좌표 변환
+    // -------------------------------------------------------------------------
+    const canvas = document.getElementById('boardCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const minDim = Math.min(rect.width, rect.height);
+      if (!state.userZoomed) {
+        state.scale = Math.max(34, Math.min(52, minDim / 13.0));
+      }
+      render();
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+
+    function getPaneCenterY(pane, rectHeight) {
+      if (!state.dualView) {
+        return rectHeight * 0.56 + state.offsetY;
+      }
+      if (pane === 'main') {
+        return rectHeight * 0.30 + state.offsetY * 0.55;
+      } else {
+        return rectHeight * 0.78 + state.offsetY * 0.30;
+      }
+    }
+
+    function getPaneScaleY(pane) {
+      if (!state.dualView) return state.scale * 0.80;
+      return pane === 'main' ? state.scale * 0.48 : state.scale * 0.46;
+    }
+
+    function toScreen(x, y, pane = 'main') {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const cx = rect.width * 0.48 + state.offsetX;
+      const cy = getPaneCenterY(pane, rect.height);
+      const sy = getPaneScaleY(pane);
+      return {
+        x: cx + x * state.scale,
+        y: cy - y * sy
+      };
+    }
+
+    function toMath(px, py, pane = 'main') {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const cx = rect.width * 0.48 + state.offsetX;
+      const cy = getPaneCenterY(pane, rect.height);
+      const sy = getPaneScaleY(pane);
+      return {
+        x: (px - cx) / state.scale,
+        y: (cy - py) / sy
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. 분필 스타일 드로잉 프리미티브
+    // -------------------------------------------------------------------------
+    function drawChalkLine(x1, y1, x2, y2, color = '#ffffff', width = 2, dashed = false, glow = false, pane = 'main') {
+      const p1 = toScreen(x1, y1, pane);
+      const p2 = toScreen(x2, y2, pane);
+      ctx.save();
+      ctx.beginPath();
+      if (dashed) ctx.setLineDash([6, 5]);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.lineCap = 'round';
+      if (glow) {
+        ctx.shadowColor = color;
+        ctx.shadowBlur = 10;
+      }
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawScreenLine(px1, py1, px2, py2, color = '#ffffff', width = 1.8, dashed = false) {
+      ctx.save();
+      ctx.beginPath();
+      if (dashed) ctx.setLineDash([5, 5]);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.moveTo(px1, py1);
+      ctx.lineTo(px2, py2);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawChalkPoint(x, y, radius = 5.5, color = '#fbbf24', label = '', labelOffset = { x: 10, y: -10 }, pane = 'main') {
+      const pt = toScreen(x, y, pane);
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 12;
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+
+      if (label) {
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = 'rgba(0,0,0,0.95)';
+        ctx.font = 'bold 12px Pretendard, sans-serif';
+        ctx.fillStyle = color;
+        ctx.fillText(label, pt.x + labelOffset.x, pt.y + labelOffset.y);
+      }
+      ctx.restore();
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. 메인 캔버스 렌더링 파이프라인
+    // -------------------------------------------------------------------------
+    function render() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const splitY = state.dualView ? h * 0.52 : h;
+
+      // [상단 칠판 영역]
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(0, 0, w, splitY);
+      ctx.clip();
+
+      drawGridAndAxes(w, splitY, 'main', 0);
+
+      if (state.mode === 1) {
+        renderMode1(w, splitY);
+      } else if (state.mode === 2) {
+        renderMode2(w, splitY);
+      } else if (state.mode === 3) {
+        renderMode3Top(w, splitY);
+      } else if (state.mode === 4) {
+        renderMode4Top(w, splitY);
+      } else if (state.mode === 5) {
+        renderMode5Top(w, splitY);
+      }
+      ctx.restore();
+
+      // [하단 칠판 영역] Dual Sync View 활성화 시
+      if (state.dualView) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(0, splitY, w, h - splitY);
+        ctx.clip();
+
+        ctx.fillStyle = 'rgba(5, 16, 12, 0.58)';
+        ctx.fillRect(0, splitY, w, h - splitY);
+
+        drawGridAndAxes(w, h, 'deriv', splitY);
+        if (state.mode === 3) {
+          renderMode3Bottom(w, h, splitY);
+        } else if (state.mode === 4) {
+          renderMode4Bottom(w, h, splitY);
+        } else if (state.mode === 5) {
+          renderMode5Bottom(w, h, splitY);
+        } else {
+          renderMode4Bottom(w, h, splitY);
+        }
+        ctx.restore();
+
+        drawScreenLine(0, splitY, w, splitY, 'rgba(56, 189, 248, 0.55)', 2, false);
+        ctx.save();
+        ctx.fillStyle = '#07140f';
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.roundRect(14, splitY - 13, 315, 26, 8);
+        ctx.fill();
+        ctx.stroke();
+        ctx.font = 'bold 11.5px Pretendard, sans-serif';
+        ctx.fillStyle = '#7dd3fc';
+        let subTitle = '▼ 하단 동기화 실험실';
+        if (state.mode === 3) subTitle = '▼ 곱함수 h(x) = |f(x)| · g(x) 첨점 힐링 동기화 뷰';
+        else if (state.mode === 4) subTitle = '▼ 속함수 y = g(x) & 겉함수 극값 기준선(u=±1) 동기화 뷰';
+        else if (state.mode === 5) subTitle = '▼ 2단계: 속함수 y = g(x) 와 수평선 y = uᵢ 교점 스캐너';
+        ctx.fillText(subTitle, 24, splitY + 4);
+        ctx.restore();
+      }
+
+      renderBottomChalkBanner(w, h);
+      updateLiveMonitor();
+    }
+
+    function drawGridAndAxes(w, bottomY, pane = 'main', topY = 0) {
+      const origin = toScreen(0, 0, pane);
+
+      if (state.showGrid) {
+        ctx.save();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(16, 185, 129, 0.08)';
+
+        const startX = Math.floor(toMath(0, 0, pane).x) - 1;
+        const endX = Math.ceil(toMath(w, 0, pane).x) + 1;
+        const startY = Math.floor(toMath(0, bottomY, pane).y) - 1;
+        const endY = Math.ceil(toMath(0, topY, pane).y) + 1;
+
+        ctx.beginPath();
+        for (let i = startX; i <= endX; i++) {
+          const sx = toScreen(i, 0, pane).x;
+          ctx.moveTo(sx, topY);
+          ctx.lineTo(sx, bottomY);
+        }
+        for (let j = startY; j <= endY; j++) {
+          const sy = toScreen(0, j, pane).y;
+          ctx.moveTo(0, sy);
+          ctx.lineTo(w, sy);
+        }
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      ctx.save();
+      ctx.strokeStyle = 'rgba(209, 250, 229, 0.35)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(0, origin.y);
+      ctx.lineTo(w, origin.y);
+      ctx.moveTo(origin.x, topY);
+      ctx.lineTo(origin.x, bottomY);
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(209, 250, 229, 0.65)';
+      ctx.font = '11px Pretendard, sans-serif';
+      ctx.fillText('O', origin.x - 14, origin.y + 14);
+      ctx.restore();
+    }
+
+    function drawCurveGeneric(w, pane, fn, strokeCol, glowCol, dashed = false, width = 3.0) {
+      const minX = toMath(0, 0, pane).x - 0.3;
+      const maxX = toMath(w, 0, pane).x + 0.3;
+      ctx.save();
+      ctx.beginPath();
+      if (dashed) ctx.setLineDash([6, 5]);
+      let first = true;
+      for (let x = minX; x <= maxX; x += 0.025) {
+        const y = fn(x);
+        if (Math.abs(y) > 40) {
+          first = true;
+          continue;
+        }
+        const s = toScreen(x, y, pane);
+        if (first) {
+          ctx.moveTo(s.x, s.y);
+          first = false;
+        } else {
+          ctx.lineTo(s.x, s.y);
+        }
+      }
+      ctx.strokeStyle = strokeCol;
+      ctx.lineWidth = width;
+      if (glowCol) {
+        ctx.shadowColor = glowCol;
+        ctx.shadowBlur = 10;
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // [모드 1 렌더링] 4대 절댓값 그래프 변환 (|f(x)|, f(|x|), |f(|x|)|)
+    // =========================================================================
+    function renderMode1(w, bottomY) {
+      const m = state.p1; // f(x) = (x - m)^3 - 3(x - m)
+      const rawFn = (x) => baseCubic(x - m);
+
+      const transFn = (x) => {
+        if (state.absType === 1) return Math.abs(rawFn(x));
+        if (state.absType === 2) return rawFn(Math.abs(x));
+        return Math.abs(rawFn(Math.abs(x)));
+      };
+
+      // Step 1: 원래 함수 y = f(x) 반투명 점선 가이드
+      if (state.steps[1]) {
+        drawCurveGeneric(w, 'main', rawFn, 'rgba(248, 250, 252, 0.32)', null, true, 2.0);
+      }
+
+      // Step 2: 절댓값 변환된 최종 그래프
+      if (state.steps[2]) {
+        drawCurveGeneric(w, 'main', transFn, '#f472b6', '#f472b6', false, 3.2);
+      }
+
+      // Step 3: x=0 또는 x절편에서의 미분가능/첨점 표시
+      if (state.steps[3]) {
+        if (state.absType === 2 || state.absType === 3) {
+          const slope0 = 3 * m * m - 3;
+          const isSmooth = Math.abs(slope0) < 0.15;
+          const y0 = transFn(0);
+          drawChalkPoint(
+            0,
+            y0,
+            7,
+            isSmooth ? '#10b981' : '#f43f5e',
+            isSmooth ? `✅ x=0 미분가능 (f'(0)=0)` : `⚡ x=0 첨점 (우미분=${slope0.toFixed(1)})`,
+            { x: 12, y: -12 }
+          );
+        } else {
+          // |f(x)| 의 세 첨점 m - √3, m, m + √3
+          [m - Math.sqrt(3), m, m + Math.sqrt(3)].forEach((rx, idx) => {
+            drawChalkPoint(rx, 0, 6, '#f43f5e', `⚡첨점(${rx.toFixed(2)})`, { x: -35, y: idx === 1 ? 22 : -12 });
+          });
+        }
+      }
+    }
+
+    // =========================================================================
+    // [모드 2 렌더링] |f(x) - t| = k 의 실근 개수 스캐너
+    // =========================================================================
+    function renderMode2(w, bottomY) {
+      const t = state.p1;
+      const k = state.p2;
+      const absShiftFn = (x) => Math.abs(baseCubic(x) - t);
+
+      // Step 1: 원래 함수 f(x) - t 점선 가이드
+      if (state.steps[1]) {
+        drawCurveGeneric(w, 'main', (x) => baseCubic(x) - t, 'rgba(248, 250, 252, 0.28)', null, true, 1.8);
+      }
+
+      // Step 2: 접어 올린 함수 g(x) = |f(x) - t|
+      if (state.steps[2]) {
+        drawCurveGeneric(w, 'main', absShiftFn, '#e879f9', '#e879f9', false, 3.2);
+      }
+
+      // 탐색 수평선 y = k 및 교점 포착
+      const minX = toMath(0, 0).x - 0.3;
+      const maxX = toMath(w, 0).x + 0.3;
+      drawChalkLine(minX, k, maxX, k, '#38bdf8', 2.5, false, true);
+
+      const roots = findLevelCrossings(absShiftFn, k);
+      if (state.steps[3]) {
+        roots.forEach((rx, idx) => {
+          drawChalkPoint(rx, k, 5.5, '#fde047', `${idx + 1}`, { x: -4, y: -12 });
+        });
+      }
+
+      const syK = toScreen(0, k).y;
+      ctx.save();
+      ctx.font = 'extrabold 12.5px Pretendard, monospace';
+      ctx.fillStyle = '#fde047';
+      ctx.fillText(`수평선 y = k (${k.toFixed(2)}) → 실근 ${roots.length}개 [위아래 드래그]`, w - 315, syK - 8);
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // [모드 3 상단/하단 렌더링] |f(x)| · g(x) 첨점 힐링 법칙
+    // =========================================================================
+    function renderMode3Top(w, splitY) {
+      const r = state.p1; // g(x) = x - r
+      drawCurveGeneric(w, 'main', (x) => Math.abs(x - 2.0), '#f472b6', '#f472b6', false, 3.0);
+      drawCurveGeneric(w, 'main', (x) => x - r, '#38bdf8', '#38bdf8', false, 2.6);
+
+      drawChalkPoint(2.0, 0, 6.5, '#f43f5e', `⚡첨점(2, 0)`, { x: 10, y: 18 }, 'main');
+      drawChalkPoint(r, 0, 7.5, '#fbbf24', `g(x) 영점 r=${r.toFixed(2)} [x=2로 드래그!]`, { x: -95, y: -14 }, 'main');
+    }
+
+    function renderMode3Bottom(w, h, splitY) {
+      const r = state.p1;
+      const isHealed = Math.abs(r - 2.0) < 0.05;
+      const prodFn = (x) => Math.abs(x - 2.0) * (x - r);
+
+      drawCurveGeneric(w, 'deriv', prodFn, isHealed ? '#10b981' : '#fde047', isHealed ? '#10b981' : '#fbbf24', false, 3.2);
+
+      // x = 2 에서 좌접선 기울기 -(2-r), 우접선 기울기 +(2-r)
+      if (state.steps[2]) {
+        const slopeR = 2.0 - r;
+        const slopeL = -(2.0 - r);
+        drawChalkLine(2.0 - 1.5, slopeL * (-1.5), 2.0, 0, '#f43f5e', 2.0, true, false, 'deriv');
+        drawChalkLine(2.0, 0, 2.0 + 1.5, slopeR * 1.5, '#38bdf8', 2.0, true, false, 'deriv');
+      }
+
+      drawChalkPoint(
+        2.0,
+        0,
+        7.5,
+        isHealed ? '#10b981' : '#f43f5e',
+        isHealed ? `✅ 첨점 힐링 완료! 좌미분=우미분=0 (미분가능)` : `⚡ 첨점 유지 (좌미분=${(-(2 - r)).toFixed(1)} ≠ 우미분=${(2 - r).toFixed(1)})`,
+        { x: -120, y: -14 },
+        'deriv'
+      );
+    }
+
+    // =========================================================================
+    // [모드 4 상단/하단 렌더링] 합성함수 h(x) = f(g(x)) 의 극값 생성 원리
+    // =========================================================================
+    function renderMode4Top(w, splitY) {
+      const compFn = (x) => outerF(innerG(x));
+      drawCurveGeneric(w, 'main', compFn, '#f8fafc', '#34d399', false, 3.0);
+
+      // 극값 위치 마커: x = 0 (g'=0) 및 g(x) = -1, g(x) = 1
+      if (state.steps[3]) {
+        drawChalkPoint(0, compFn(0), 6.5, '#fbbf24', `x=0 (속함수 극값)`, { x: -55, y: -14 }, 'main');
+
+        [-1.0, 1.0].forEach((uTarget) => {
+          // 0.5x^2 + p1 = uTarget => x^2 = 2(uTarget - p1)
+          const val = 2.0 * (uTarget - state.p1);
+          if (val > 0.02) {
+            const rx = Math.sqrt(val);
+            [-rx, rx].forEach((xv) => {
+              drawChalkPoint(xv, compFn(xv), 6, '#f472b6', `극값(${xv.toFixed(2)})`, { x: -30, y: uTarget > 0 ? 18 : -12 }, 'main');
+              if (state.steps[1]) {
+                const sx = toScreen(xv, 0, 'main').x;
+                drawScreenLine(sx, 30, sx, splitY * 1.85, 'rgba(244, 114, 182, 0.45)', 1.5, true);
+              }
+            });
+          }
+        });
+      }
+    }
+
+    function renderMode4Bottom(w, h, splitY) {
+      const minX = toMath(0, 0, 'deriv').x - 0.3;
+      const maxX = toMath(w, 0, 'deriv').x + 0.3;
+
+      // Step 2: 겉함수 f(u) = u^3 - 3u 의 극값 위치 수평 기준선 u = -1, u = 1
+      if (state.steps[2]) {
+        drawChalkLine(minX, 1.0, maxX, 1.0, '#f472b6', 2.0, true, false, 'deriv');
+        drawChalkLine(minX, -1.0, maxX, -1.0, '#f472b6', 2.0, true, false, 'deriv');
+
+        ctx.save();
+        ctx.font = 'bold 11.5px Pretendard, monospace';
+        ctx.fillStyle = '#f9a8d4';
+        ctx.fillText('겉함수 극소 기준선 y = 1', w - 210, toScreen(0, 1.0, 'deriv').y - 6);
+        ctx.fillText('겉함수 극대 기준선 y = -1', w - 210, toScreen(0, -1.0, 'deriv').y - 6);
+        ctx.restore();
+      }
+
+      drawCurveGeneric(w, 'deriv', innerG, '#38bdf8', '#38bdf8', false, 3.0);
+      drawChalkPoint(0, state.p1, 7.5, '#fbbf24', `속함수 꼭짓점(0, ${state.p1.toFixed(2)}) [위아래 드래그]`, { x: 12, y: 16 }, 'deriv');
+    }
+
+    // =========================================================================
+    // [모드 5 상단/하단 렌더링] 합성방정식 f(g(x)) = k 의 2단계 치환 역추적기
+    // =========================================================================
+    function renderMode5Top(w, splitY) {
+      const k = state.p2;
+      const minX = toMath(0, 0, 'main').x - 0.3;
+      const maxX = toMath(w, 0, 'main').x + 0.3;
+
+      // 상단은 바깥함수 y = f(u) = u^3 - 3u 와 수평선 y = k
+      drawCurveGeneric(w, 'main', outerF, '#f8fafc', '#34d399', false, 3.0);
+      drawChalkLine(minX, k, maxX, k, '#fde047', 2.4, false, true, 'main');
+
+      const uRoots = findLevelCrossings(outerF, k);
+      uRoots.forEach((uVal, idx) => {
+        drawChalkPoint(uVal, k, 6.5, '#fbbf24', `1단계 근 u_${idx + 1}=${uVal.toFixed(2)}`, { x: -45, y: idx === 1 ? 20 : -12 }, 'main');
+      });
+    }
+
+    function renderMode5Bottom(w, h, splitY) {
+      const k = state.p2;
+      const minX = toMath(0, 0, 'deriv').x - 0.3;
+      const maxX = toMath(w, 0, 'deriv').x + 0.3;
+
+      // 하단은 안쪽함수 y = g(x) = 0.5x^2 + p1
+      drawCurveGeneric(w, 'deriv', innerG, '#38bdf8', '#38bdf8', false, 3.0);
+
+      // 1단계에서 구한 u_1, u_2, u_3 를 하단에 수평선 y = u_i 로 긋고 교점 탐색!
+      const uRoots = findLevelCrossings(outerF, k);
+      const colors = ['#f472b6', '#fde047', '#10b981'];
+
+      uRoots.forEach((uVal, idx) => {
+        const col = colors[idx % colors.length];
+        drawChalkLine(minX, uVal, maxX, uVal, col, 2.0, true, false, 'deriv');
+
+        const xRoots = findLevelCrossings(innerG, uVal);
+        xRoots.forEach((rx) => {
+          drawChalkPoint(rx, uVal, 6, col, `x=${rx.toFixed(2)}`, { x: -25, y: -10 }, 'deriv');
+        });
+      });
+
+      drawChalkPoint(0, state.p1, 7, '#fbbf24', `g(x) 꼭짓점(0, ${state.p1.toFixed(1)}) [드래그]`, { x: 12, y: 18 }, 'deriv');
+    }
+
+    function renderBottomChalkBanner(w, h) {
+      if (!state.steps[3]) return;
+
+      const by = h - 54;
+      const cx = w * 0.54;
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(7, 20, 15, 0.93)';
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.55)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(cx - 220, by - 21, 440, 42, 11);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.font = 'bold 12.5px Pretendard, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#fef08a';
+
+      if (state.mode === 1) {
+        const slope0 = 3 * state.p1 * state.p1 - 3;
+        ctx.fillText(
+          state.absType === 1
+            ? `y = |f(x)| : x축 아랫부분을 접어 올림 (단순 실근에서 뾰족한 첨점 3개 발생)`
+            : `y = f(|x|) : x≥0 데칼코마니  ⇒  ${Math.abs(slope0) < 0.15 ? '✅ f\'(0)=0 이므로 x=0에서 미분가능!' : '⚡ f\'(0)≠0 이므로 x=0에서 첨점 발생!'}`,
+          cx,
+          by + 4
+        );
+      } else if (state.mode === 2) {
+        const cnt = findLevelCrossings((x) => Math.abs(baseCubic(x) - state.p1), state.p2).length;
+        ctx.fillText(`방정식 |f(x) - (${state.p1.toFixed(1)})| = ${state.p2.toFixed(2)} 의 서로 다른 실근의 개수 = ${cnt}개!`, cx, by + 4);
+      } else if (state.mode === 3) {
+        const isHealed = Math.abs(state.p1 - 2.0) < 0.05;
+        ctx.fillStyle = isHealed ? '#6ee7b7' : '#fda4af';
+        ctx.fillText(
+          isHealed
+            ? `✅ g(2) = 0 첨점 힐링 성공! 뾰족점 x=2 에서 곱함수 |f(x)|g(x)가 미분가능해졌습니다!`
+            : `⚡ g(2) ≠ 0 이므로 x = 2 에서 곱함수 |f(x)|g(x)의 뾰족한 첨점이 그대로 남아 있습니다!`,
+          cx,
+          by + 4
+        );
+      } else if (state.mode === 4) {
+        let extCnt = 1; // x=0
+        if (state.p1 < -1.02) extCnt += 4;
+        else if (state.p1 < 0.98) extCnt += 2;
+        ctx.fillText(`합성함수 f(g(x)) 극값 개수 = 속함수 극값(1개) + u=±1 관통(${extCnt - 1}개) = 총 ${extCnt}개!`, cx, by + 4);
+      } else if (state.mode === 5) {
+        const uRoots = findLevelCrossings(outerF, state.p2);
+        let totalX = 0;
+        uRoots.forEach((u) => {
+          totalX += findLevelCrossings(innerG, u).length;
+        });
+        ctx.fillText(`2단계 치환 역추적: 1단계 근 u(${uRoots.length}개) → 2단계 g(x)=uᵢ 교점 합산 = 최종 실근 ${totalX}개!`, cx, by + 4);
+      }
+      ctx.restore();
+    }
+
+    // -------------------------------------------------------------------------
+    // 7. 우측 패널 실시간 모니터 & 프리셋·UI 컨트롤러
+    // -------------------------------------------------------------------------
+    function updateLiveMonitor() {
+      if (state.mode === 1) {
+        const m = state.p1;
+        document.getElementById('eqDisplay').innerHTML = tex(`f(x) = (x-${m.toFixed(1)})^3 - 3(x-${m.toFixed(1)})`);
+        const absLatex = state.absType === 1 ? '|f(x)|' : (state.absType === 2 ? 'f(|x|)' : '|f(|x|)|');
+        document.getElementById('derivDisplay').innerHTML = tex(`g(x) = ${absLatex}`);
+
+        const slope0 = 3 * m * m - 3;
+        document.getElementById('statVal1').textContent = `평행이동 m = ${m.toFixed(2)}`;
+        document.getElementById('statVal2').textContent = `f'(0) = ${slope0.toFixed(2)}`;
+        document.getElementById('statVal3').textContent = state.absType === 1 ? '첨점 3개' : (Math.abs(slope0) < 0.15 ? 'x=0 첨점 0개' : 'x=0 첨점 발생');
+        document.getElementById('statVal4').textContent = state.absType === 2 && Math.abs(slope0) < 0.15 ? '✅ 전 구간 미분가능' : '⚡ 첨점 존재';
+
+        document.getElementById('valP1').textContent = `m = ${m.toFixed(2)}`;
+        document.getElementById('valP2').textContent = `-`;
+      } else if (state.mode === 2) {
+        const t = state.p1;
+        const k = state.p2;
+        const cnt = findLevelCrossings((x) => Math.abs(baseCubic(x) - t), k).length;
+        document.getElementById('eqDisplay').innerHTML = tex(`f(x) = x^3 - 3x`);
+        document.getElementById('derivDisplay').innerHTML = tex(`|f(x) - (${t.toFixed(1)})| = ${k.toFixed(2)} \\implies ${cnt}\\text{개}`);
+
+        const cuspCnt = Math.abs(t) < 1.98 ? 3 : 1;
+        document.getElementById('statVal1').textContent = `접기선 t = ${t.toFixed(2)}`;
+        document.getElementById('statVal2').textContent = `수평선 k = ${k.toFixed(2)}`;
+        document.getElementById('statVal3').textContent = `첨점 ${cuspCnt}개`;
+        document.getElementById('statVal4').textContent = `실근 ${cnt}개`;
+
+        document.getElementById('valP1').textContent = `t = ${t.toFixed(2)}`;
+        document.getElementById('valP2').textContent = `k = ${k.toFixed(2)}`;
+      } else if (state.mode === 3) {
+        const r = state.p1;
+        const isHealed = Math.abs(r - 2.0) < 0.05;
+        document.getElementById('eqDisplay').innerHTML = tex(`|f(x)| = |x - 2|, \\; g(x) = x - ${r.toFixed(2)}`);
+        document.getElementById('derivDisplay').innerHTML = tex(`h(x) = |x - 2|(x - ${r.toFixed(2)})`);
+
+        document.getElementById('statVal1').textContent = `첨점 위치 x = 2.00`;
+        document.getElementById('statVal2').textContent = `g(x) 영점 r = ${r.toFixed(2)}`;
+        document.getElementById('statVal3').textContent = isHealed ? '첨점 0개 (힐링 완료)' : '첨점 1개 (x=2)';
+        document.getElementById('statVal4').textContent = isHealed ? '✅ 미분가능 (h\'(2)=0)' : '⚡ 미분불가능';
+
+        document.getElementById('valP1').textContent = `영점 r = ${r.toFixed(2)}`;
+        document.getElementById('valP2').textContent = `-`;
+      } else if (state.mode === 4) {
+        let extCnt = 1;
+        if (state.p1 < -1.02) extCnt += 4;
+        else if (state.p1 < 0.98) extCnt += 2;
+
+        document.getElementById('eqDisplay').innerHTML = tex(`f(u) = u^3 - 3u, \\; g(x) = 0.5x^2 + (${state.p1.toFixed(1)})`);
+        document.getElementById('derivDisplay').innerHTML = tex(`h'(x) = f'(g(x))g'(x) = 0 \\implies \\text{극값 } ${extCnt}\\text{개}`);
+
+        document.getElementById('statVal1').textContent = `꼭짓점 c = ${state.p1.toFixed(2)}`;
+        document.getElementById('statVal2').textContent = `겉함수 극값 u = -1, 1`;
+        document.getElementById('statVal3').textContent = `속함수 극값 1개 (x=0)`;
+        document.getElementById('statVal4').textContent = `합성 극값 총 ${extCnt}개`;
+
+        document.getElementById('valP1').textContent = `꼭짓점 높이 c = ${state.p1.toFixed(2)}`;
+        document.getElementById('valP2').textContent = `-`;
+      } else if (state.mode === 5) {
+        const uRoots = findLevelCrossings(outerF, state.p2);
+        let totalX = 0;
+        uRoots.forEach((u) => {
+          totalX += findLevelCrossings(innerG, u).length;
+        });
+
+        document.getElementById('eqDisplay').innerHTML = tex(`f(u) = u^3 - 3u = ${state.p2.toFixed(1)}`);
+        document.getElementById('derivDisplay').innerHTML = tex(`f(g(x)) = ${state.p2.toFixed(1)} \\implies \\text{실근 } ${totalX}\\text{개}`);
+
+        document.getElementById('statVal1').textContent = `1단계 근 u : ${uRoots.length}개`;
+        document.getElementById('statVal2').textContent = `수평선 k = ${state.p2.toFixed(2)}`;
+        document.getElementById('statVal3').textContent = `g(x) 최솟값 = ${state.p1.toFixed(2)}`;
+        document.getElementById('statVal4').textContent = `최종 실근 총 ${totalX}개`;
+
+        document.getElementById('valP1').textContent = `g(x) 최솟값 c = ${state.p1.toFixed(2)}`;
+        document.getElementById('valP2').textContent = `우변 상수 k = ${state.p2.toFixed(2)}`;
+      }
+
+      document.getElementById('sliderP1').value = state.p1;
+      document.getElementById('sliderP2').value = state.p2;
+    }
+
+    function setAbsType(t) {
+      state.absType = t;
+      for (let i = 1; i <= 3; i++) {
+        const btn = document.getElementById(`absBtn${i}`);
+        if (i === t) {
+          btn.className = 'text-[11px] font-bold px-2.5 py-1 rounded-md bg-amber-400 text-slate-950 transition';
+        } else {
+          btn.className = 'text-[11px] font-bold px-2.5 py-1 rounded-md bg-emerald-900/70 text-emerald-100 border border-emerald-600/40 transition';
+        }
+      }
+      render();
+    }
+
+    function updateDualViewButtonUI() {
+      const btn = document.getElementById('btnDualView');
+      const txt = document.getElementById('txtDualView');
+      if (state.dualView) {
+        btn.className = 'px-3 py-1.5 rounded-lg bg-sky-400 text-slate-950 text-xs font-extrabold flex items-center gap-1.5 transition shadow-md';
+        txt.textContent = '하단 동기화 뷰 ON';
+      } else {
+        btn.className = 'px-3 py-1.5 rounded-lg bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/50 text-sky-200 text-xs font-extrabold flex items-center gap-1.5 transition';
+        txt.textContent = '하단 동기화 뷰 OFF';
+      }
+    }
+
+    function toggleDualView() {
+      state.dualView = !state.dualView;
+      updateDualViewButtonUI();
+      render();
+    }
+
+    function setMode(m) {
+      state.mode = m;
+      for (let i = 1; i <= 5; i++) {
+        const tab = document.getElementById(`tab-${i}`);
+        if (i === m) tab.classList.add('active');
+        else tab.classList.remove('active');
+      }
+
+      document.getElementById('presetBarMode1').classList.toggle('hidden', m !== 1);
+
+      const data = examData[m];
+      document.getElementById('canvasModeBadge').textContent = data.badge;
+      document.getElementById('canvasActionHint').innerHTML = data.hint;
+      document.getElementById('examTag').innerHTML = `<i class="fa-solid fa-award"></i> ${data.tag}`;
+      document.getElementById('examTarget').textContent = data.targetTime;
+      document.getElementById('examQuestion').innerHTML = data.question();
+      document.getElementById('examAnswerBadge').innerHTML = data.answerBadge();
+
+      document.getElementById('stepLabel1').textContent = data.steps[0];
+      document.getElementById('stepLabel2').textContent = data.steps[1];
+      document.getElementById('stepLabel3').textContent = data.steps[2];
+
+      const tb = data.textbook();
+      const sc = data.shortcut();
+      document.getElementById('textbookSteps').innerHTML = tb.steps;
+      document.getElementById('textbookWarning').innerHTML = tb.warning;
+      document.getElementById('shortcutSteps').innerHTML = sc.steps;
+      document.getElementById('shortcutHighlight').innerHTML = sc.highlight;
+
+      if (m === 1) setAbsType(2);
+      snapToProblem();
+    }
+
+    function snapToProblem() {
+      state.autoPlay = false;
+      document.getElementById('iconAutoPlay').className = 'fa-solid fa-play';
+      document.getElementById('txtAutoPlay').textContent = '자동 실험';
+
+      unlockAllSteps();
+
+      const target = examData[state.mode].snap;
+      state.dualView = target.dualView;
+      updateDualViewButtonUI();
+
+      state.snapAnim.active = true;
+      state.snapAnim.startP1 = state.p1;
+      state.snapAnim.startP2 = state.p2;
+      state.snapAnim.targetP1 = target.p1;
+      state.snapAnim.targetP2 = target.p2;
+      state.snapAnim.progress = 0;
+    }
+
+    function toggleAccordion(type) {
+      const body = document.getElementById(`accBody-${type}`);
+      const icon = document.getElementById(`accIcon-${type}`);
+      const isHidden = body.classList.contains('hidden');
+      if (isHidden) {
+        body.classList.remove('hidden');
+        icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        body.classList.add('hidden');
+        icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    function toggleStep(s) {
+      state.steps[s] = !state.steps[s];
+      const btn = document.getElementById(`stepBtn${s}`);
+      const icon = document.getElementById(`stepIcon${s}`);
+      if (state.steps[s]) {
+        btn.classList.add('active');
+        icon.className = 'fa-solid fa-check text-emerald-400 text-xs';
+      } else {
+        btn.classList.remove('active');
+        icon.className = 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      }
+      render();
+    }
+
+    function unlockAllSteps() {
+      [1, 2, 3].forEach((s) => {
+        state.steps[s] = true;
+        document.getElementById(`stepBtn${s}`).classList.add('active');
+        document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
+      });
+      render();
+    }
+
+    function onP1Slider() {
+      state.snapAnim.active = false;
+      state.p1 = parseFloat(document.getElementById('sliderP1').value);
+      render();
+    }
+
+    function onP2Slider() {
+      state.snapAnim.active = false;
+      state.p2 = parseFloat(document.getElementById('sliderP2').value);
+      render();
+    }
+
+    function zoomCanvas(factor) {
+      state.userZoomed = true;
+      state.scale = Math.max(22, Math.min(110, state.scale * factor));
+      render();
+    }
+
+    function resetView() {
+      state.userZoomed = false;
+      state.offsetX = -15;
+      state.offsetY = 15;
+      resizeCanvas();
+    }
+
+    function toggleGrid() {
+      state.showGrid = !state.showGrid;
+      render();
+    }
+
+    function toggleAutoPlay() {
+      state.autoPlay = !state.autoPlay;
+      const icon = document.getElementById('iconAutoPlay');
+      const txt = document.getElementById('txtAutoPlay');
+      if (state.autoPlay) {
+        icon.className = 'fa-solid fa-pause';
+        txt.textContent = '일시 정지';
+      } else {
+        icon.className = 'fa-solid fa-play';
+        txt.textContent = '자동 실험';
+      }
+    }
+
+    function animateLoop() {
+      let needsRender = false;
+
+      if (state.snapAnim.active) {
+        state.snapAnim.progress += 0.08;
+        if (state.snapAnim.progress >= 1) {
+          state.p1 = state.snapAnim.targetP1;
+          state.p2 = state.snapAnim.targetP2;
+          state.snapAnim.active = false;
+        } else {
+          const p = 1 - Math.pow(1 - state.snapAnim.progress, 3);
+          state.p1 = state.snapAnim.startP1 + (state.snapAnim.targetP1 - state.snapAnim.startP1) * p;
+          state.p2 = state.snapAnim.startP2 + (state.snapAnim.targetP2 - state.snapAnim.startP2) * p;
+        }
+        needsRender = true;
+      }
+
+      if (state.autoPlay && !state.isDragging && !state.snapAnim.active) {
+        if (state.mode === 2) {
+          state.p2 += 0.025 * state.animDir;
+          if (state.p2 < 0.1) state.animDir = 1;
+          if (state.p2 > 3.2) state.animDir = -1;
+        } else {
+          state.p1 += 0.02 * state.animDir;
+          if (state.p1 < -2.2) state.animDir = 1;
+          if (state.p1 > 2.2) state.animDir = -1;
+        }
+        needsRender = true;
+      }
+
+      if (needsRender) render();
+      requestAnimationFrame(animateLoop);
+    }
+
+    // -------------------------------------------------------------------------
+    // 8. 마우스 & 모바일 터치 드래그 인터랙션
+    // -------------------------------------------------------------------------
+    function getPointerPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+      }
+      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
+    function handlePointerDown(e) {
+      state.snapAnim.active = false;
+      const pos = getPointerPos(e);
+
+      if (state.mode === 2) {
+        const syK = toScreen(0, state.p2, 'main').y;
+        if (Math.abs(pos.y - syK) < 22) {
+          state.isDragging = true;
+          state.dragType = 'P2';
+          return;
+        }
+      } else if (state.mode === 3) {
+        const sR = toScreen(state.p1, 0, 'main');
+        if (Math.hypot(pos.x - sR.x, pos.y - sR.y) < 32) {
+          state.isDragging = true;
+          state.dragType = 'P1';
+          return;
+        }
+      } else if (state.mode === 4 || state.mode === 5) {
+        const sV = toScreen(0, state.p1, 'deriv');
+        if (Math.hypot(pos.x - sV.x, pos.y - sV.y) < 32) {
+          state.isDragging = true;
+          state.dragType = 'P1';
+          return;
+        }
+      }
+
+      state.isDragging = true;
+      state.dragType = 'PAN';
+      state.lastMouse = pos;
+    }
+
+    function handlePointerMove(e) {
+      const pos = getPointerPos(e);
+
+      if (state.isDragging) {
+        e.preventDefault();
+        if (state.dragType === 'P2') {
+          const mMain = toMath(pos.x, pos.y, 'main');
+          state.p2 = Math.max(0.0, Math.min(3.8, +mMain.y.toFixed(2)));
+          render();
+        } else if (state.dragType === 'P1') {
+          if (state.mode === 3) {
+            const mMain = toMath(pos.x, pos.y, 'main');
+            let val = mMain.x;
+            if (Math.abs(val - 2.0) < 0.08) val = 2.0; // r=2 자석 스냅
+            state.p1 = Math.max(-1.5, Math.min(2.5, +val.toFixed(2)));
+          } else {
+            const mDeriv = toMath(pos.x, pos.y, 'deriv');
+            state.p1 = Math.max(-2.5, Math.min(2.0, +mDeriv.y.toFixed(2)));
+          }
+          render();
+        } else if (state.dragType === 'PAN') {
+          state.offsetX += pos.x - state.lastMouse.x;
+          state.offsetY += pos.y - state.lastMouse.y;
+          state.lastMouse = pos;
+          render();
+        }
+        return;
+      }
+
+      canvas.style.cursor = 'grab';
+    }
+
+    function handlePointerUp() {
+      state.isDragging = false;
+      state.dragType = null;
+    }
+
+    canvas.addEventListener('mousedown', handlePointerDown);
+    window.addEventListener('mousemove', handlePointerMove);
+    window.addEventListener('mouseup', handlePointerUp);
+
+    canvas.addEventListener('touchstart', handlePointerDown, { passive: false });
+    window.addEventListener('touchmove', handlePointerMove, { passive: false });
+    window.addEventListener('touchend', handlePointerUp);
+
+    canvas.addEventListener(
+      'wheel',
+      (e) => {
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.09 : 0.92;
+        zoomCanvas(factor);
+      },
+      { passive: false }
+    );
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setMode(1);
+      resizeCanvas();
+      requestAnimationFrame(animateLoop);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,2919 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>도형의 닮음 · 보조선 · 차원비 마스터 실험실 | AP Math Playground</title>
+  <!-- Pretendard Webfont -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- KaTeX CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="../../assets/geometry-relations.css" />
+  <link rel="stylesheet" href="../../assets/board-relations.css" />
+
+  <style>
+    * {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #07130e;
+      color: #f1f5f9;
+      overflow: hidden;
+    }
+    .chalkboard-bg {
+      background: radial-gradient(circle at 50% 45%, #163329 0%, #0d211a 65%, #07140f 100%);
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.88);
+    }
+    .katex { font-size: 1.02em !important; }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #07130e; }
+    ::-webkit-scrollbar-thumb { background: #1d3f32; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2d604d; }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #11261e;
+      height: 7px;
+      border-radius: 4px;
+      outline: none;
+      border: 1px solid #234739;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fbbf24;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.85);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.16); }
+
+    .mode-tab.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #07130e;
+      font-weight: 800;
+      border-color: #fbbf24;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+    }
+    .sub-pill.active {
+      background: rgba(52, 211, 153, 0.28);
+      border-color: #34d399;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 0 10px rgba(52, 211, 153, 0.35);
+    }
+    .lens-chip.active {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.32), rgba(245, 158, 11, 0.45));
+      border-color: #fbbf24;
+      color: #fef08a;
+      font-weight: 800;
+    }
+    .preset-chip.active {
+      background: #fbbf24;
+      color: #07130e;
+      border-color: #fef08a;
+      font-weight: 900;
+      box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+    }
+    .part-card {
+      transition: all 0.18s ease;
+      cursor: pointer;
+    }
+    .part-card:hover {
+      transform: translateY(-1px);
+      border-color: #34d399;
+    }
+    .part-card.active {
+      background: rgba(251, 191, 36, 0.18);
+      border-color: #fbbf24;
+      box-shadow: 0 0 12px rgba(251, 191, 36, 0.25);
+    }
+    .chalk-text { text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85); }
+  </style>
+
+  <style id="ap-mobile-bridge">
+  @media (max-width:1023px) {
+    html,body {height:auto!important;min-height:100%!important;width:100%!important;max-width:100%!important;overflow-x:hidden!important;overflow-y:auto!important;}
+    body {display:block!important; margin:0!important; -webkit-overflow-scrolling:touch;}
+    body > header {width:100%!important;position:relative!important;top:auto!important;}
+    body > header > nav {display:flex!important;flex-wrap:nowrap!important;width:100%!important;max-width:100vw!important;overflow-x:auto!important;overflow-y:hidden!important;white-space:nowrap!important;-webkit-overflow-scrolling:touch;}
+    body > header > nav button {flex-shrink:0!important; min-height:36px;}
+    body > div.flex-1.flex.flex-col {display:flex!important;flex-direction:column!important;width:100%!important;max-width:100%!important;height:auto!important;min-height:0!important;overflow:visible!important;}
+    body > div.flex-1.flex.flex-col > main {position:relative!important;width:100%!important;min-width:0!important;max-width:100%!important;height:clamp(460px,64svh,700px)!important;min-height:460px!important;flex:0 0 auto!important;overflow:hidden!important;display:block!important;}
+    main #boardCanvas {display:block!important;width:100%!important;height:100%!important;touch-action:none;}
+    .ap-mobile-top {position:relative!important;left:auto!important;top:auto!important;bottom:auto!important;right:auto!important;z-index:2!important;display:flex!important;flex-direction:column!important;box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-width:0!important;max-height:210px!important;overflow-y:auto!important;overflow-x:hidden!important;gap:6px!important;padding:8px!important;margin:0!important;pointer-events:auto!important;background:#0b2019!important;border-bottom:1px solid #24513e;}
+    .ap-mobile-top > div {max-width:100%!important;min-width:0!important;box-sizing:border-box!important;}
+    .ap-mobile-top #subSelectorBar {max-width:100%!important;max-height:105px!important;overflow-x:auto!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch;}
+    .ap-mobile-tools {position:relative!important;left:auto!important;top:auto!important;bottom:auto!important;right:auto!important;width:100%!important;max-width:100%!important;max-height:none!important;padding:9px!important;margin:0!important;box-sizing:border-box!important;display:flex!important;flex-wrap:wrap!important;gap:7px!important;align-items:center!important;justify-content:flex-start!important;z-index:3!important;background:#0a1b15!important;border-top:1px solid #2b5444;border-bottom:1px solid #2b5444;}
+    .ap-mobile-tools button {min-height:38px!important;touch-action:manipulation;}
+    body > div.flex-1.flex.flex-col > aside {width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;min-height:0!important;flex:0 0 auto!important;overflow:visible!important;display:block!important;}
+    body > div.flex-1.flex.flex-col > aside > div {height:auto!important;max-height:none!important;overflow:visible!important;}
+    body > div.flex-1.flex.flex-col > aside section {max-width:100%!important;}
+  }
+  .ap-back-home{align-self:center;display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:0 0 auto;min-height:33px;padding:6px 11px;background:#153a2e;border:1px solid #49806c;border-radius:10px;color:#d5f6cb;font:700 12px/1.3 system-ui,sans-serif;text-decoration:none;white-space:nowrap;z-index:22}
+  .ap-back-home:hover{background:#215341}
+  @media(max-width:1023px){.ap-back-home{margin:4px 8px 4px 0;}}
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col">
+
+  <!-- ===================================================================== -->
+  <!-- 상단 헤더 & 6대 마스터 탭 (포개진닮음 · 모래시계와이등분선 · 소공식3총사 · 중점과무게중심 · 사각형과종이접기 · 차원비스캐너) -->
+  <!-- ===================================================================== -->
+  <header class="bg-[#081510]/95 border-b border-emerald-900/70 px-3.5 py-2 flex flex-wrap items-center justify-between gap-2 z-20 shrink-0">
+    <div class="flex items-center gap-2.5">
+      <a class="ap-back-home" href="../../index.html" aria-label="전체 실험실로 돌아가기">← 전체 단원</a>
+      <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-400/60 flex items-center justify-center text-amber-300 shadow-inner">
+        <i class="fa-solid fa-shapes text-base"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <h1 class="text-sm md:text-base font-black tracking-tight text-emerald-50 chalk-text">도형의 닮음 · 보조선 · 차원비 마스터 실험실</h1>
+          <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">31종 닮음·보조선·차원비 직접 해부</span>
+        </div>
+        <p class="text-[10.5px] text-emerald-400/85 hidden 2xl:block">거울반전(Flip)·회전 추출 정렬 · 모래시계 &amp; 내·외각 이등분선 · 직각삼각형 소(牛)공식 3총사 · 중점연결 &amp; 무게중심(2:1) · 종이접기 &amp; 원뿔 절단 부피비(1:7:19)</p>
+      </div>
+    </div>
+
+    <!-- 6대 핵심 실험 모드 탭 -->
+    <nav class="flex items-center gap-1 overflow-x-auto py-1 max-w-full">
+      <button onclick="setMode(1)" id="tab-1" class="mode-tab active text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-clone"></i>
+        <span>1. 포개진 삼각형·반전·SAS</span>
+      </button>
+      <button onclick="setMode(2)" id="tab-2" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-hourglass-half"></i>
+        <span>2. 모래시계·평행선·각이등분선</span>
+      </button>
+      <button onclick="setMode(3)" id="tab-3" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-square-root-variable"></i>
+        <span>3. 직각삼각형 수선 3총사(소공식)</span>
+      </button>
+      <button onclick="setMode(4)" id="tab-4" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-scale-balanced"></i>
+        <span>4. 중점연결 &amp; 무게중심(2:1)</span>
+      </button>
+      <button onclick="setMode(5)" id="tab-5" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-vector-square"></i>
+        <span>5. 종이접기 &amp; 사각형 닮음 킬러</span>
+      </button>
+      <button onclick="setMode(6)" id="tab-6" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-amber-500/60 bg-amber-950/40 text-amber-200 hover:bg-amber-900/50 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-cubes"></i>
+        <span>6. 차원비(길이·넓이·부피) &amp; 원뿔절단</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 메인 워크스페이스 (좌측 인터랙티브 분필 칠판 + 우측 435px 직관 해부 조종석) -->
+  <!-- ===================================================================== -->
+  <div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+    <!-- 좌측: 인터랙티브 분필 칠판 캔버스 -->
+    <main class="flex-1 relative chalkboard-bg overflow-hidden flex items-center justify-center">
+      <canvas id="boardCanvas" class="w-full h-full block cursor-grab active:cursor-grabbing"></canvas>
+
+      <!-- 좌측 상단: 현재 실험 배지 + 세부 시나리오 선택 바 + 관찰 렌즈 스위치 -->
+      <div class="absolute top-3 left-3 pointer-events-none flex flex-col gap-2 max-w-xs sm:max-w-2xl z-10">
+        <!-- 현재 도형 배지 & 한 줄 핵심 직관 -->
+        <div class="bg-[#07140f]/92 backdrop-blur-md border border-emerald-700/60 rounded-xl px-3.5 py-2 shadow-xl">
+          <div class="flex items-center gap-2 text-amber-300 text-xs font-extrabold mb-0.5">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+            <span id="canvasModeBadge">탐구 1 · 포개진 삼각형 동위각 평행선 (AD : AB = DE : BC)</span>
+          </div>
+          <p id="canvasActionHint" class="text-[11.5px] text-emerald-100/95 leading-snug"></p>
+        </div>
+
+        <!-- 세부 시나리오 알약 선택 카트리지 바 -->
+        <div id="subSelectorBar" class="pointer-events-auto bg-[#07140f]/95 backdrop-blur-md border border-emerald-700/60 rounded-xl p-1.5 shadow-xl flex flex-wrap items-center gap-1.5 w-fit"></div>
+
+        <!-- 관찰 렌즈 스위치 & 정렬 프리셋 바 -->
+        <div class="pointer-events-auto bg-[#07140f]/95 backdrop-blur-md border border-emerald-700/60 rounded-xl p-1.5 shadow-xl flex flex-wrap items-center gap-1.5 w-fit">
+          <span class="text-[10.5px] text-amber-300 font-extrabold px-1 flex items-center gap-1">
+            <i class="fa-solid fa-eye"></i> 관찰 렌즈:
+          </span>
+          <button onclick="setConceptSwitch('all')" id="sw-all" class="lens-chip active px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">🔍 전체 구조</button>
+          <button onclick="setConceptSwitch('angles')" id="sw-angles" class="lens-chip px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">📐 대응각·기호(•,×,∟)</button>
+          <button onclick="setConceptSwitch('sides')" id="sw-sides" class="lens-chip px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">📏 대응변·치수배지</button>
+          <button onclick="setConceptSwitch('aux')" id="sw-aux" class="lens-chip px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">🪄 보조선·연결브릿지</button>
+
+          <span class="text-emerald-800 mx-0.5 hidden sm:inline">|</span>
+
+          <button onclick="setFoldVal(0)" class="px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/80 hover:bg-emerald-800 text-[10.5px] text-emerald-100 font-bold transition">🧩 원본 합체뷰</button>
+          <button onclick="setFoldVal(1)" class="px-2 py-0.5 rounded-lg border border-amber-500/50 bg-amber-500/20 hover:bg-amber-500/30 text-[10.5px] text-amber-200 font-extrabold transition">✨ 분리·정렬 완료뷰</button>
+          <button onclick="toggleSuperimpose()" id="btnSuperTop" class="px-2 py-0.5 rounded-lg border border-sky-500/50 bg-sky-500/20 hover:bg-sky-500/30 text-[10.5px] text-sky-200 font-extrabold transition">🧲 꼭짓점 포개기</button>
+        </div>
+      </div>
+
+      <!-- 좌측 하단 플로팅 액션 툴바 -->
+      <div class="absolute bottom-3 left-3 flex flex-wrap items-center gap-1.5 bg-[#07140f]/95 backdrop-blur-md border border-emerald-800/70 p-1.5 rounded-xl shadow-xl z-10">
+        <button onclick="toggleFoldAnim()" id="btnFoldToggle" class="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-xs font-black flex items-center gap-1.5 transition shadow-md">
+          <i class="fa-solid fa-wand-magic-sparkles" id="iconFoldToggle"></i>
+          <span id="txtFoldToggle">🎬 숨은 삼각형 분리·정렬 &amp; 보조선 작동!</span>
+        </button>
+        <button onclick="cyclePartHighlight()" class="px-2.5 py-1.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-800/60 border border-emerald-700/50 text-emerald-200 text-xs font-bold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-highlighter text-amber-300"></i>
+          <span class="hidden sm:inline">조각 순차 강조</span>
+        </button>
+        <div class="h-4 w-[1px] bg-emerald-800/70 mx-0.5"></div>
+        <button onclick="zoomCanvas(1.14)" class="w-7 h-7 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="확대"><i class="fa-solid fa-plus"></i></button>
+        <button onclick="zoomCanvas(0.88)" class="w-7 h-7 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="축소"><i class="fa-solid fa-minus"></i></button>
+        <button onclick="resetView()" class="w-7 h-7 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="초기화"><i class="fa-solid fa-rotate-left"></i></button>
+      </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- 우측: 직관 해부 조종석 (435px, 군살 없는 4단 구성) -->
+    <!-- =================================================================== -->
+    <aside class="w-full lg:w-[435px] bg-[#081611] border-t lg:border-t-0 lg:border-l border-emerald-900/80 flex flex-col h-[52vh] lg:h-full shrink-0 z-10">
+      <div class="p-3.5 overflow-y-auto flex-1 space-y-3.5">
+
+        <!-- 1. 분리·정렬·보조선 슬라이더 & 원클릭 비율/치수 프리셋 조종석 -->
+        <section class="bg-gradient-to-br from-[#112a21] to-[#0b1c16] border border-emerald-700/60 rounded-xl p-3.5 shadow-lg space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-extrabold text-amber-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-sliders"></i>
+              <span id="sliderTitle">숨은 도형 분리·회전/반사 정렬 &amp; 보조선 조종석</span>
+            </span>
+            <div class="flex items-center gap-1">
+              <button onclick="setFoldVal(0)" class="px-2 py-0.5 rounded bg-emerald-950 hover:bg-emerald-800 text-[10px] text-emerald-200 border border-emerald-700 font-bold">0% (원본)</button>
+              <button onclick="setFoldVal(0.5)" class="px-2 py-0.5 rounded bg-emerald-950 hover:bg-emerald-800 text-[10px] text-emerald-200 border border-emerald-700 font-bold">50%</button>
+              <button onclick="setFoldVal(1)" class="px-2 py-0.5 rounded bg-amber-500/20 hover:bg-amber-500/30 text-[10px] text-amber-300 border border-amber-400/50 font-extrabold">100% (정렬!)</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-[11px] mb-1">
+              <span id="sliderSubLabel" class="text-emerald-200 font-semibold">원본 포개짐(0%) ↔ 분리·거울반전·회전 정렬(100%)</span>
+              <span id="valFold" class="font-mono font-black text-amber-300">0%</span>
+            </div>
+            <input type="range" id="sliderFold" min="0" max="1" step="0.01" value="0" class="w-full" oninput="onFoldSlider()" />
+          </div>
+
+          <!-- 원클릭 닮음비 / 기준 치수 프리셋 칩 -->
+          <div id="presetControlBox" class="grid grid-cols-2 gap-2.5 pt-2 border-t border-emerald-800/60">
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span id="dim1Label" class="text-sky-300 font-bold">닮음비 / 분할비 (m : n)</span>
+                <span id="valR" class="font-mono font-extrabold text-sky-200">1 : 2</span>
+              </div>
+              <div id="rBtnGroup" class="grid grid-cols-4 gap-1"></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span id="dim2Label" class="text-pink-300 font-bold">기준 변 / 밑변 스케일</span>
+                <span id="valH" class="font-mono font-extrabold text-pink-200">12 cm</span>
+              </div>
+              <div id="hBtnGroup" class="grid grid-cols-4 gap-1"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. 만져서 확인하는 『닮음 삼각형 · 대응변 · 보조선』 해부기 -->
+        <section class="bg-[#0d211a] border border-emerald-800/80 rounded-xl p-3.5 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs font-extrabold text-amber-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-puzzle-piece"></i>
+              <span>만져서 확인하는 『도형 조각 &amp; 보조선』 해부</span>
+            </h2>
+            <span class="text-[10px] text-emerald-300 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-700/60">카드 클릭 ➔ 칠판 발광!</span>
+          </div>
+
+          <div id="partsBox" class="space-y-1.5"></div>
+
+          <div class="bg-[#07130e] p-2.5 rounded-lg border border-amber-400/50 flex items-center justify-between gap-2">
+            <span class="text-xs font-bold text-emerald-200 shrink-0">핵심 결과 요약</span>
+            <span id="totalResultBadge" class="text-xs md:text-sm font-black text-amber-300 font-mono text-right"></span>
+          </div>
+        </section>
+
+        <!-- 3. 한눈에 깨닫는 『대응 순서 번역 & 비례식 원리』 -->
+        <section class="bg-[#0d211a] border border-emerald-800/80 rounded-xl p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs font-extrabold text-sky-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-calculator"></i>
+              <span>한눈에 깨닫는 『대응 순서 &amp; 공식 원리』</span>
+            </h2>
+            <span id="ruleBadge" class="text-[10px] font-bold text-sky-200 bg-sky-950/90 px-2 py-0.5 rounded border border-sky-600/50">AA / SAS / SSS</span>
+          </div>
+
+          <div id="formulaBox" class="text-xs text-emerald-50 leading-relaxed bg-[#07130e]/90 p-3 rounded-lg border border-emerald-800/70 space-y-1.5"></div>
+        </section>
+
+        <!-- 4. 시험장 오답 함정 & 3초 직관 비법 -->
+        <section class="bg-gradient-to-br from-[#132820] to-[#091611] border border-emerald-700/60 rounded-xl p-3.5 space-y-2">
+          <div class="flex items-center gap-1.5 text-xs font-extrabold text-emerald-300">
+            <i class="fa-solid fa-lightbulb text-amber-400"></i>
+            <span>시험장 오답 함정 &amp; 1초 직관 비법!</span>
+          </div>
+          <div id="intuitionNotes" class="text-xs text-emerald-100/95 leading-relaxed space-y-1.5 bg-[#07130e]/80 p-3 rounded-lg border border-emerald-800/60"></div>
+        </section>
+
+      </div>
+    </aside>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 도형의 닮음 · 보조선 · 차원비 통합 렌더링 & 기하 변환 엔진 -->
+  <!-- ===================================================================== -->
+  <script>
+    function tex(latexStr) {
+      if (window.katex) {
+        return katex.renderToString(latexStr, { throwOnError: false, displayMode: false });
+      }
+      return latexStr;
+    }
+
+    function gcd(a, b) {
+      a = Math.abs(Math.round(a));
+      b = Math.abs(Math.round(b));
+      while (b) { const t = b; a = a % b; a = t; b = a % b; }
+      return a || 1;
+    }
+
+    function fmtNum(v) {
+      if (Math.abs(v - Math.round(v)) < 1e-6) return String(Math.round(v));
+      return Number(v.toFixed(2)).toString();
+    }
+
+    // -------------------------------------------------------------------------
+    // 1. 전역 상태 관리 (State - 6대 마스터 탭 × 31종 시나리오)
+    // -------------------------------------------------------------------------
+    const state = {
+      mode: 1,
+      subType: {
+        1: 'nestedParallel', // 'nestedParallel', 'nestedFlip', 'nestedRotated', 'sasShared', 'nestedMulti', 'ssaTrap'
+        2: 'hourglassStd',   // 'hourglassStd', 'hourglassEF', 'parallelProp', 'trapezoidMid', 'angleBisectIn', 'angleBisectEx'
+        3: 'rightTrio',      // 'rightTrio', 'rightLeft', 'rightRight', 'rightCenter', 'rightSoArea'
+        4: 'midpointThm',    // 'midpointThm', 'midpointFour', 'centroidProof', 'centroidSix', 'varignonQuad'
+        5: 'foldRect',       // 'foldRect', 'foldEqui', 'trapArea4', 'paraTrisect', 'rectDiagPerp'
+        6: 'dimConeCut'      // 'dimTile2D', 'dimCube3D', 'dimConeCut', 'alwaysSimilar'
+      },
+      conceptSwitch: 'all', // 'all' | 'angles' | 'sides' | 'aux'
+      activePartIdx: -1,
+
+      fold: 0.0,            // 0% (원본) <-> 100% (분리·정렬 및 보조선 완성)
+      foldTarget: null,
+      isSuperimposed: false,
+
+      ratioIdx: 0,          // 프리셋 그룹 1 (비율 선택 인덱스 0~3)
+      baseScale: 12,        // 프리셋 그룹 2 (기준 길이 8, 10, 12, 15)
+
+      scale: 1.0,
+      panX: 0,
+      panY: 0,
+      isDragging: false,
+      dragMoved: false,
+      lastMouse: { x: 0, y: 0 },
+      steps: { 1: true, 2: true, 3: true }
+    };
+
+    const RATIO_PRESETS = [
+      { m: 1, n: 2, label: '1 : 2' },
+      { m: 2, n: 3, label: '2 : 3' },
+      { m: 1, n: 3, label: '1 : 3' },
+      { m: 3, n: 4, label: '3 : 4' }
+    ];
+    const BASE_PRESETS = [8, 10, 12, 15];
+
+    const SUB_MENUS = {
+      1: [
+        { id: 'nestedParallel', label: '➕ 동위각 평행선 (AD:AB = DE:BC)' },
+        { id: 'nestedFlip', label: '🪞 뒤집힌 포개진형 (∠ADE=∠C 거울반전!)' },
+        { id: 'nestedRotated', label: '🔄 꼭짓점 공유 회전 닮음 (∠BAC=∠DAE)' },
+        { id: 'sasShared', label: '📐 공통 끼인각 SAS 포개진형' },
+        { id: 'nestedMulti', label: '🪜 다중 평행선 3단 연쇄 (1:2:3)' },
+        { id: 'ssaTrap', label: '💥 [반례] SSA 함정 (컴퍼스 원호 2개 생성!)' }
+      ],
+      2: [
+        { id: 'hourglassStd', label: '⏳ 사다리꼴 모래시계 (엇각 Z · 180°회전)' },
+        { id: 'hourglassEF', label: '⚡ 교점 O 평행선 EF (모래시계➔포개진 콤보!)' },
+        { id: 'parallelProp', label: '📏 삼각형 평행선 선분비 (평행이동 보조선)' },
+        { id: 'trapezoidMid', label: '🏛️ 사다리꼴 중간 평행선 EF (평행사변형vs대각선)' },
+        { id: 'angleBisectIn', label: '💖 내각의 이등분선 (AB:AC=BD:CD 하트공식!)' },
+        { id: 'angleBisectEx', label: '👟 외각의 이등분선 (AB:AC=BD:CD 나이키공식!)' }
+      ],
+      3: [
+        { id: 'rightTrio', label: '🐄 수선 3총사 분리·반전·정렬 (△ABC∽△HBA∽△HAC)' },
+        { id: 'rightLeft', label: '👈 왼쪽 날개 제곱 (AB² = BH · BC)' },
+        { id: 'rightRight', label: '👉 오른쪽 날개 제곱 (AC² = CH · CB)' },
+        { id: 'rightCenter', label: '🗼 가운데 기둥 제곱 (AH² = BH · CH)' },
+        { id: 'rightSoArea', label: '🐂 소(牛) 넓이 (AB·AC=BC·AH) & 외심M 비교' }
+      ],
+      4: [
+        { id: 'midpointThm', label: '🔗 삼각형 중점연결정리 (길이 1/2 · 넓이 1:3)' },
+        { id: 'midpointFour', label: '💠 세 변 중점 연결 4합동 분할 (넓이 1/4)' },
+        { id: 'centroidProof', label: '⚖️ 무게중심 G 탄생 증명 (모래시계 1:2 ➔ 2:1)' },
+        { id: 'centroidSix', label: '🍕 세 중선 6등분 & 중점연결 24등분 넓이' },
+        { id: 'varignonQuad', label: '💎 사각형 중점 연결 (바리뇽 평행사변형!)' }
+      ],
+      5: [
+        { id: 'foldRect', label: '📄 직사각형 종이접기 (•+×=90° AA닮음)' },
+        { id: 'foldEqui', label: '🔺 정삼각형 종이접기 (•+×=120° AA닮음!)' },
+        { id: 'trapArea4', label: '✖️ 사다리꼴 대각선 4분할 넓이 (a²:ab:ab:b²)' },
+        { id: 'paraTrisect', label: '🦋 평행사변형 중점과 대각선 3등분 (1:1:1)' },
+        { id: 'rectDiagPerp', label: '▭ 직사각형 대각선 수선 연쇄 닮음' }
+      ],
+      6: [
+        { id: 'dimConeCut', label: '🍦 [킬러] 원뿔 3단 평행절단 부피비 (1 : 7 : 19!)' },
+        { id: 'dimTile2D', label: '🧱 평면 타일 격자 (길이 1:n ➔ 넓이 1:n²)' },
+        { id: 'dimCube3D', label: '🧊 정육면체 블록 (길이 1:n ➔ 부피 1:n³)' },
+        { id: 'alwaysSimilar', label: '🚫 항상 닮음인 도형(⭕) vs 단골 함정 반례(❌)' }
+      ]
+    };
+
+    // -------------------------------------------------------------------------
+    // 2. 2D 기하 유틸리티 & 기하학적 증거 마크 렌더러
+    // -------------------------------------------------------------------------
+    const canvas = document.getElementById('boardCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const pt = (x, y) => ({ x, y });
+    const lerp = (a, b, u) => pt(a.x + (b.x - a.x) * u, a.y + (b.y - a.y) * u);
+    const mid = (a, b) => lerp(a, b, 0.5);
+    const dist = (a, b) => Math.hypot(b.x - a.x, b.y - a.y);
+    const mix3 = (a, b, c) => pt((a.x + b.x + c.x) / 3, (a.y + b.y + c.y) / 3);
+
+    function calcCross(a, b, c, d) {
+      const ux = b.x - a.x, uy = b.y - a.y, vx = d.x - c.x, vy = d.y - c.y;
+      const den = ux * vy - uy * vx;
+      if (Math.abs(den) < 1e-9) return mid(a, b);
+      const u = ((c.x - a.x) * vy - (c.y - a.y) * vx) / den;
+      return pt(a.x + u * ux, a.y + u * uy);
+    }
+
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      render();
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    function drawChalkGrid(rect) {
+      const cx = rect.width / 2 + state.panX;
+      const cy = rect.height / 2 + state.panY;
+      const step = 38 * state.scale;
+      ctx.save();
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.05)';
+      ctx.lineWidth = 1;
+      for (let x = ((cx % step) + step) % step; x < rect.width; x += step) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, rect.height); ctx.stroke();
+      }
+      for (let y = ((cy % step) + step) % step; y < rect.height; y += step) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(rect.width, y); ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    // 실제 꼭짓점 순서 기반 회전·반사(거울 뒤집기)·정렬 변환기
+    function computeAlignedTriangle(origTri, refTri, destCenter, targetScale = 1.0, flipH = false, prog = 1.0) {
+      const cOrig = mix3(origTri[0], origTri[1], origTri[2]);
+      const sx = flipH ? (1 - 2 * prog) : 1;
+      const flippedOrig = origTri.map(p => pt((p.x - cOrig.x) * (-1), p.y - cOrig.y));
+      const baseVecOrig = flipH
+        ? pt(flippedOrig[2].x - flippedOrig[1].x, flippedOrig[2].y - flippedOrig[1].y)
+        : pt(origTri[2].x - origTri[1].x, origTri[2].y - origTri[1].y);
+      const baseVecRef = pt(refTri[2].x - refTri[1].x, refTri[2].y - refTri[1].y);
+
+      let angOrig = Math.atan2(baseVecOrig.y, baseVecOrig.x);
+      let angRef = Math.atan2(baseVecRef.y, baseVecRef.x);
+      let dAng = angRef - angOrig;
+      while (dAng <= -Math.PI) dAng += Math.PI * 2;
+      while (dAng > Math.PI) dAng -= Math.PI * 2;
+
+      const curAng = dAng * prog;
+      const curScale = 1 + (targetScale - 1) * prog;
+      const curCenter = lerp(cOrig, destCenter, prog);
+
+      return origTri.map(p => {
+        const dx = (p.x - cOrig.x) * sx * curScale;
+        const dy = (p.y - cOrig.y) * curScale;
+        const rx = dx * Math.cos(curAng) - dy * Math.sin(curAng);
+        const ry = dx * Math.sin(curAng) + dy * Math.cos(curAng);
+        return pt(curCenter.x + rx, curCenter.y + ry);
+      });
+    }
+
+    function drawAngleArc(g, V, P1, P2, opts = {}) {
+      if (state.conceptSwitch !== 'all' && state.conceptSwitch !== 'angles' && !opts.force) return;
+      const radius = opts.radius || 22;
+      const color = opts.color || '#fbbf24';
+      const arcs = opts.arcs || 1;
+      const symbol = opts.symbol || '';
+      const fill = opts.fill || 'rgba(251, 191, 36, 0.16)';
+
+      const a1 = Math.atan2(P1.y - V.y, P1.x - V.x);
+      const a2 = Math.atan2(P2.y - V.y, P2.x - V.x);
+      let diff = a2 - a1;
+      while (diff <= -Math.PI) diff += Math.PI * 2;
+      while (diff > Math.PI) diff -= Math.PI * 2;
+      const ccw = diff < 0;
+
+      g.save();
+      g.beginPath();
+      g.moveTo(V.x, V.y);
+      g.arc(V.x, V.y, radius, a1, a2, ccw);
+      g.closePath();
+      g.fillStyle = fill;
+      g.fill();
+
+      for (let i = 0; i < arcs; i++) {
+        const r = radius - i * 4.2;
+        g.beginPath();
+        g.arc(V.x, V.y, r, a1, a2, ccw);
+        g.strokeStyle = color;
+        g.lineWidth = 2.2;
+        g.stroke();
+      }
+
+      if (symbol) {
+        const midAng = a1 + diff * 0.5;
+        const sr = radius + (symbol.length > 2 ? 13 : 9);
+        const sx = V.x + Math.cos(midAng) * sr;
+        const sy = V.y + Math.sin(midAng) * sr;
+
+        if (symbol === 'dot') {
+          g.beginPath();
+          g.arc(sx, sy, 3.2, 0, Math.PI * 2);
+          g.fillStyle = color;
+          g.fill();
+        } else if (symbol === 'cross') {
+          const cs = 3.5;
+          g.strokeStyle = color;
+          g.lineWidth = 2.1;
+          g.beginPath();
+          g.moveTo(sx - cs, sy - cs); g.lineTo(sx + cs, sy + cs);
+          g.moveTo(sx + cs, sy - cs); g.lineTo(sx - cs, sy + cs);
+          g.stroke();
+        } else {
+          g.fillStyle = color;
+          g.font = '800 11.5px Pretendard, sans-serif';
+          g.textAlign = 'center';
+          g.textBaseline = 'middle';
+          g.shadowColor = 'rgba(0,0,0,0.95)';
+          g.shadowBlur = 3;
+          g.fillText(symbol, sx, sy);
+        }
+      }
+      g.restore();
+    }
+
+    function drawRightAngleSquare(g, V, P1, P2, size = 12, color = '#f472b6') {
+      if (state.conceptSwitch !== 'all' && state.conceptSwitch !== 'angles') return;
+      const d1 = dist(V, P1) || 1, d2 = dist(V, P2) || 1;
+      const u1 = pt(((P1.x - V.x) / d1) * size, ((P1.y - V.y) / d1) * size);
+      const u2 = pt(((P2.x - V.x) / d2) * size, ((P2.y - V.y) / d2) * size);
+      const C1 = pt(V.x + u1.x, V.y + u1.y);
+      const C2 = pt(V.x + u1.x + u2.x, V.y + u1.y + u2.y);
+      const C3 = pt(V.x + u2.x, V.y + u2.y);
+
+      g.save();
+      g.beginPath();
+      g.moveTo(V.x, V.y); g.lineTo(C1.x, C1.y); g.lineTo(C2.x, C2.y); g.lineTo(C3.x, C3.y);
+      g.closePath();
+      g.fillStyle = 'rgba(244, 114, 182, 0.24)';
+      g.fill();
+      g.beginPath();
+      g.moveTo(C1.x, C1.y); g.lineTo(C2.x, C2.y); g.lineTo(C3.x, C3.y);
+      g.strokeStyle = color;
+      g.lineWidth = 2.2;
+      g.stroke();
+      g.restore();
+    }
+
+    function drawParallelMark(g, A, B, count = 1, color = '#34d399', pos = 0.5) {
+      if (state.conceptSwitch !== 'all' && state.conceptSwitch !== 'angles') return;
+      const d = dist(A, B) || 1;
+      const ux = (B.x - A.x) / d, uy = (B.y - A.y) / d;
+      const nx = -uy, ny = ux, sz = 6.5;
+      g.save();
+      g.strokeStyle = color;
+      g.lineWidth = 2.3;
+      for (let i = 0; i < count; i++) {
+        const offset = (i - (count - 1) / 2) * 7;
+        const cx = A.x + (B.x - A.x) * pos + ux * offset;
+        const cy = A.y + (B.y - A.y) * pos + uy * offset;
+        g.beginPath();
+        g.moveTo(cx - ux * sz + nx * sz * 0.85, cy - uy * sz + ny * sz * 0.85);
+        g.lineTo(cx + ux * sz * 0.4, cy + uy * sz * 0.4);
+        g.lineTo(cx - ux * sz - nx * sz * 0.85, cy - uy * sz - ny * sz * 0.85);
+        g.stroke();
+      }
+      g.restore();
+    }
+
+    function drawTickMarks(g, A, B, count = 1, color = '#fbbf24', pos = 0.5) {
+      if (state.conceptSwitch !== 'all' && state.conceptSwitch !== 'angles' && state.conceptSwitch !== 'sides') return;
+      const d = dist(A, B) || 1;
+      const ux = (B.x - A.x) / d, uy = (B.y - A.y) / d;
+      const nx = -uy, ny = ux, len = 6.5;
+      g.save();
+      g.strokeStyle = color;
+      g.lineWidth = 2.2;
+      for (let i = 0; i < count; i++) {
+        const offset = (i - (count - 1) / 2) * 5.5;
+        const cx = A.x + (B.x - A.x) * pos + ux * offset;
+        const cy = A.y + (B.y - A.y) * pos + uy * offset;
+        g.beginPath();
+        g.moveTo(cx - nx * len, cy - ny * len);
+        g.lineTo(cx + nx * len, cy + ny * len);
+        g.stroke();
+      }
+      g.restore();
+    }
+
+    function drawSideBadge(g, A, B, text, color = '#fbbf24', offsetNormal = 15, pos = 0.5, partIdx = -1) {
+      if (state.conceptSwitch !== 'all' && state.conceptSwitch !== 'sides' && state.activePartIdx !== partIdx) return;
+      const d = dist(A, B) || 1;
+      const nx = -(B.y - A.y) / d, ny = (B.x - A.x) / d;
+      const cx = A.x + (B.x - A.x) * pos + nx * offsetNormal;
+      const cy = A.y + (B.y - A.y) * pos + ny * offsetNormal;
+      const isHi = state.activePartIdx !== -1 && state.activePartIdx === partIdx;
+
+      g.save();
+      g.font = `${isHi ? '900 12.5px' : '800 11.5px'} Pretendard, sans-serif`;
+      const tw = g.measureText(text).width + 10;
+      g.fillStyle = 'rgba(6, 17, 13, 0.92)';
+      g.strokeStyle = color;
+      g.lineWidth = isHi ? 2.4 : 1.3;
+      if (isHi) { g.shadowColor = color; g.shadowBlur = 12; }
+      g.beginPath();
+      g.roundRect(cx - tw / 2, cy - 9.5, tw, 19, 5);
+      g.fill();
+      g.stroke();
+
+      g.shadowBlur = 0;
+      g.fillStyle = color;
+      g.textAlign = 'center';
+      g.textBaseline = 'middle';
+      g.fillText(text, cx, cy + 0.5);
+      g.restore();
+    }
+
+    function drawCorrespondenceBridges(g, srcPts, dstPts, colors = ['#fbbf24', '#38bdf8', '#f472b6']) {
+      if (state.conceptSwitch !== 'all' && state.conceptSwitch !== 'aux') return;
+      if (srcPts.length !== dstPts.length) return;
+      g.save();
+      srcPts.forEach((p, i) => {
+        const q = dstPts[i];
+        const mx = (p.x + q.x) / 2;
+        const my = Math.min(p.y, q.y) - 32 - i * 10;
+        g.beginPath();
+        g.moveTo(p.x, p.y);
+        g.quadraticCurveTo(mx, my, q.x, q.y);
+        g.strokeStyle = colors[i % colors.length];
+        g.lineWidth = 1.6;
+        g.setLineDash([4, 4]);
+        g.globalAlpha = 0.65;
+        g.stroke();
+      });
+      g.restore();
+    }
+
+    function drawCanvasEquationWithFractions(g, leftNum, leftDen, rightNum, rightDen, cx, cy, col1 = '#fbbf24', col2 = '#38bdf8') {
+      g.save();
+      g.fillStyle = 'rgba(6, 17, 13, 0.94)';
+      g.strokeStyle = 'rgba(52, 211, 153, 0.55)';
+      g.lineWidth = 1.5;
+      g.beginPath();
+      g.roundRect(cx - 122, cy - 25, 244, 50, 10);
+      g.fill();
+      g.stroke();
+
+      function drawFrac(numS, denS, fx, fy, col) {
+        g.font = '800 12px Pretendard, sans-serif';
+        g.fillStyle = col;
+        g.strokeStyle = col;
+        g.textAlign = 'center';
+        g.textBaseline = 'middle';
+        const w = Math.max(g.measureText(numS).width, g.measureText(denS).width) + 10;
+        g.fillText(numS, fx, fy - 8.5);
+        g.beginPath();
+        g.moveTo(fx - w / 2, fy);
+        g.lineTo(fx + w / 2, fy);
+        g.lineWidth = 1.8;
+        g.stroke();
+        g.fillText(denS, fx, fy + 9);
+      }
+
+      drawFrac(leftNum, leftDen, cx - 56, cy, col1);
+      g.fillStyle = '#e2e8f0';
+      g.font = '900 15px Pretendard, sans-serif';
+      g.textAlign = 'center';
+      g.textBaseline = 'middle';
+      g.fillText('=', cx, cy);
+      drawFrac(rightNum, rightDen, cx + 56, cy, col2);
+      g.restore();
+    }
+
+    // 하단 실시간 시각적 비율 줄자 배너
+    function drawBottomTapeBanner(rect, titleStr, segments) {
+      const by = rect.height - 78;
+      const bw = Math.min(540, rect.width - 36);
+      const sx = (rect.width - bw) / 2;
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(7, 20, 15, 0.94)';
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.5)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(sx - 12, by - 24, bw + 24, 54, 12);
+      ctx.fill();
+      ctx.stroke();
+
+      if (!segments || segments.length === 0) {
+        ctx.font = '800 12px Pretendard, sans-serif';
+        ctx.fillStyle = '#fef08a';
+        ctx.textAlign = 'center';
+        ctx.fillText(titleStr, rect.width / 2, by + 4);
+      } else {
+        ctx.font = '800 11px Pretendard, sans-serif';
+        ctx.fillStyle = '#a7f3d0';
+        ctx.textAlign = 'left';
+        ctx.fillText(`📏 ${titleStr}`, sx - 2, by - 8);
+
+        let acc = 0;
+        segments.forEach((seg) => {
+          const w = seg.weight * bw;
+          const x0 = sx + acc * bw;
+          ctx.fillStyle = seg.color;
+          ctx.beginPath();
+          ctx.roundRect(x0 + 1, by, Math.max(8, w - 2), 21, 4);
+          ctx.fill();
+          ctx.fillStyle = '#07130e';
+          ctx.font = '800 10.5px Pretendard, monospace';
+          ctx.textAlign = 'center';
+          ctx.fillText(seg.text, x0 + w / 2, by + 13);
+          acc += seg.weight;
+        });
+      }
+      ctx.restore();
+    }
+
+    // -------------------------------------------------------------------------
+    // 3. 6대 탭 × 31종 시나리오별 실시간 명세 생성기 (getSpec)
+    // -------------------------------------------------------------------------
+    function getSpec() {
+      const m = state.mode;
+      const sub = state.subType[m];
+      const rp = RATIO_PRESETS[state.ratioIdx];
+      const M = rp.m, N = rp.n;
+      const K = M / N;
+      const B = state.baseScale; // 8, 10, 12, 15
+
+      // ==================== [탭 1: 포개진 삼각형·반전·SAS] ====================
+      if (m === 1) {
+        if (sub === 'nestedParallel') {
+          const ad = fmtNum(B * K);
+          const db = fmtNum(B * (1 - K));
+          const de = fmtNum(10 * K);
+          return {
+            badge: `탐구 1-A · 동위각 평행선 포개진 닮음 (△ADE ∽ △ABC, 닮음비 ${M} : ${N})`,
+            hint: `밑변끼리 비교할 때는 아랫토막(${tex('\\overline{DB}')})이 아니라 반드시 <strong class="text-amber-300">작은 삼각형 옆변(${tex('\\overline{AD}')}) : 큰 삼각형 전체 옆변(${tex('\\overline{AB}')}) = ${M} : ${N}</strong>을 써야 합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 작은 △ADE 분리·정렬!',
+            dim1Name: '닮음비 (AD : AB)', dim2Name: '전체 변 AB 길이',
+            val1Txt: `${M} : ${N}`, val2Txt: `${B} cm`,
+            parts: [
+              { id: 0, name: `🟡 작은 삼각형 △ADE (AD=${ad}, DE=${de})`, desc: `공통각 ∠A + 동위각 2쌍 일치 (AA 닮음)`, val: `비율 ${M}`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🟢 큰 전체 삼각형 △ABC (AB=${B}, BC=10)`, desc: `전체 옆변 AB = AD(${ad}) + DB(${db}) = ${B} cm`, val: `비율 ${N}`, color: '#34d399', ok: true },
+              { id: 2, name: `❌ [오답 함정] 아랫토막 DB = ${db} cm`, desc: `AD : DB = ${M} : ${N - M} 은 밑변비(DE : BC)와 다름!`, val: `밑변비 사용금지 ❌`, color: '#f43f5e', ok: false }
+            ],
+            totalRes: `AD : AB = ${M} : ${N} ⇒ DE : BC = ${de} : 10 cm`,
+            rule: '포개진 평행선 철칙: 가로 밑변비는 무조건 (작은 옆변 : 전체 옆변)!',
+            formulaHTML: `• <strong>AA 닮음 증명</strong>: ${tex('\\angle A')} 공통, ${tex('\\overline{DE}\\parallel\\overline{BC}')} 이므로 동위각 ${tex('\\angle ADE=\\angle B')}<br/>• <strong>올바른 비례식</strong>: ${tex(`\\dfrac{\\overline{AD}}{\\overline{AB}} = \\dfrac{\\overline{DE}}{\\overline{BC}} \\implies \\dfrac{${ad}}{${B}} = \\dfrac{${de}}{10}`)}`,
+            notes: `• <strong>[최빈출 오답 함정]</strong>: 옆변 토막끼리 ${tex(`\\overline{AD}:\\overline{DB} = ${M}:${N - M}`)} 인 것을 보고 밑변도 ${tex(`\\overline{DE}:\\overline{BC} = ${M}:${N - M}`)} 로 세우면 100% 틀립니다! 사다리꼴 아랫부분은 삼각형이 아닙니다.`,
+            fracEq: [`AD (${ad})`, `AB (${B})`, `DE (${de})`, `BC (10)`],
+            tapeTitle: `전체 옆변 AB(${B}cm) = 위쪽 AD(${ad}cm, 비율 ${M}) + 아랫토막 DB(${db}cm, 비율 ${N - M})`,
+            tapeSegs: [
+              { text: `AD = ${ad}cm (비율 ${M})`, weight: K, color: '#fbbf24' },
+              { text: `DB = ${db}cm (비율 ${N - M})`, weight: 1 - K, color: '#34d399' }
+            ]
+          };
+        }
+        if (sub === 'nestedFlip') {
+          const ad = fmtNum(B * K);
+          const ae = fmtNum(10 * K);
+          const ab = fmtNum((B * B * K) / (10 * K));
+          return {
+            badge: `탐구 1-B · [빈출 1위] 각이 엇갈린 포개진 삼각형 (∠ADE = ∠C 거울 뒤집기 AA 닮음!)`,
+            hint: `슬라이더를 당겨보세요! 작은 삼각형 $\\triangle ADE$를 그냥 떼어내면 각이 맞지 않고, <strong class="text-pink-300">좌우로 거울 뒤집기(Flip)</strong>를 해야만 큰 삼각형 $\\triangle ACB$와 포개집니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 되돌리기' : '🎬 거울 뒤집기(Flip) 정렬!',
+            dim1Name: '닮음비 (AD : AC)', dim2Name: '전체 변 AC 길이',
+            val1Txt: `${M} : ${N}`, val2Txt: `${B} cm`,
+            parts: [
+              { id: 0, name: `🟡 거울 반전될 작은 삼각형 △ADE`, desc: `공통각 ∠A + 엇갈린 같은 각 ∠ADE = ∠C`, val: `AD = ${ad} cm`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 대응 순서가 뒤집힌 큰 삼각형 △ACB`, desc: `점 D ↔ 점 C, 점 E ↔ 점 B 로 X자 교차 대응!`, val: `AC = ${B} cm`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🪄 좌우 반전 대칭축 & X자 교차 대응변`, desc: `AD : AC = AE : AB = ${M} : ${N}`, val: `닮음비 ${M} : ${N}`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `△ADE ∽ △ACB (거울반전 AA) | AD(${ad}) : AC(${B}) = ${M} : ${N}`,
+            rule: '△ADE ∽ △ABC 가 아니라 알파벳 순서가 뒤집힌 △ADE ∽ △ACB!',
+            formulaHTML: `• ${tex('\\angle A')}는 공통각이고 조건에서 ${tex('\\angle ADE = \\angle C')} 이므로 <strong>AA 닮음</strong>!<br/>• <strong>X자 교차 비례식</strong>: ${tex(`\\dfrac{\\overline{AD}}{\\overline{AC}} = \\dfrac{\\overline{AE}}{\\overline{AB}} = \\dfrac{${M}}{${N}}`)}`,
+            notes: `• 시험지 그림에서 평행 표시(>>)가 없는데 각 표시(•)가 반대편 아랫각에 찍혀 있다면 100% <strong>거울 뒤집기(Flip) 닮음</strong>입니다! 작은 삼각형을 옆에 좌우 반전시켜 다시 그려 놓고 풀면 절대 안 틀립니다.`,
+            fracEq: [`AD (${ad})`, `AC (${B})`, `AE (${ae})`, `AB (10)`],
+            tapeTitle: `거울 뒤집기 대응: 왼쪽 위 AD(${ad}) ↔ 오른쪽 전체 AC(${B}) = ${M} : ${N}`,
+            tapeSegs: [
+              { text: `작은변 AD (${M})`, weight: M / (M + N), color: '#fbbf24' },
+              { text: `반대편 전체변 AC (${N})`, weight: N / (M + N), color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'nestedRotated') {
+          const ad = fmtNum(B * K);
+          const de = fmtNum(10 * K);
+          return {
+            badge: `탐구 1-C · 한 꼭짓점 A를 공유하며 회전된 두 삼각형 (∠BAC = ∠DAE, AA 닮음)`,
+            hint: `꼭짓점 $A$에 압정을 꽂고 돌아가 있는 작은 삼각형 $\\triangle ADE$를 시계 반대 방향으로 회전시키면 큰 삼각형 $\\triangle ABC$와 나란히 정렬됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원래 회전 위치로' : '🎬 회전시켜 나란히 정렬!',
+            dim1Name: '닮음비 (AD : AB)', dim2Name: '큰 변 AB 길이',
+            val1Txt: `${M} : ${N}`, val2Txt: `${B} cm`,
+            parts: [
+              { id: 0, name: `🟡 회전된 작은 삼각형 △ADE (AD=${ad})`, desc: `꼭짓점 A를 중심으로 회전 변환된 삼각형`, val: `DE = ${de} cm`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🟢 기준 큰 삼각형 △ABC (AB=${B})`, desc: `∠BAC = ∠DAE, ∠B = ∠D 이므로 AA 닮음`, val: `BC = 10 cm`, color: '#34d399', ok: true }
+            ],
+            totalRes: `△ADE ∽ △ABC (회전 AA 닮음, ${M}:${N}) ⇒ DE = ${de} cm`,
+            rule: '꼭짓점 공유 회전형: 같은 각 기호(•, ×)를 따라 회전 정렬하면 대응변이 일치!',
+            formulaHTML: `• ${tex('\\angle DAE = \\angle BAC')} 이고 ${tex('\\angle D = \\angle B')} 이므로 ${tex('\\triangle ADE \\sim \\triangle ABC')} (AA 닮음)<br/>• ${tex(`\\overline{AD} : \\overline{AB} = \\overline{DE} : \\overline{BC} = ${M} : ${N}`)}`,
+            notes: `• <strong>[개념 주의]</strong>: 꼭짓점 $A$를 공유하지만 두 각이 포개진 '공통각'이 아니라, 회전되어 크기가 같은 대응각(${tex('\\angle DAE = \\angle BAC')})입니다!`,
+            fracEq: [`AD (${ad})`, `AB (${B})`, `DE (${de})`, `BC (10)`],
+            tapeTitle: `회전 정렬 닮음비: AD(${ad}) : AB(${B}) = DE(${de}) : BC(10) = ${M} : ${N}`,
+            tapeSegs: [
+              { text: `△ADE (${M})`, weight: M / (M + N), color: '#fbbf24' },
+              { text: `△ABC (${N})`, weight: N / (M + N), color: '#34d399' }
+            ]
+          };
+        }
+        if (sub === 'sasShared') {
+          const ad = fmtNum(6 * K), ae = fmtNum(8 * K), de = fmtNum(B * K);
+          return {
+            badge: `탐구 1-D · 공통 끼인각 SAS 포개진 닮음 (평행선 조건 없이 두 날개비 일치!)`,
+            hint: `평행선 표시가 전혀 없어도 <strong class="text-pink-300">공통 끼인각 ∠A</strong> 양옆의 두 변의 비가 <strong class="text-amber-300">AD : AB = AE : AC = ${M} : ${N}</strong>로 같으면 <strong>SAS 닮음</strong>이 성립합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 SAS 삼각형 분리·비교!',
+            dim1Name: '양 날개 닮음비', dim2Name: '밑변 BC 길이',
+            val1Txt: `${M} : ${N}`, val2Txt: `${B} cm`,
+            parts: [
+              { id: 0, name: `🩷 공통 끼인각 ∠A`, desc: `작은 삼각형과 큰 삼각형이 공유하는 끼인각`, val: `끼인각 일치 ⭕`, color: '#f472b6', ok: true },
+              { id: 1, name: `🟡 왼쪽 날개비 AD : AB = ${ad} : 6`, desc: `오른쪽 날개비 AE : AC = ${ae} : 8 과 정확히 일치!`, val: `비율 ${M} : ${N}`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🔵 결론: 밑변비 DE : BC = ${de} : ${B}`, desc: `SAS 닮음 성립 결과로 밑변도 ${M} : ${N}`, val: `DE = ${de} cm`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `AD:AB = AE:AC = ${M}:${N} + 끼인각 ∠A ⇒ △ADE ∽ △ABC (SAS 닮음)`,
+            rule: '각도 1개(공통각)와 주변 선분 길이 4개가 주어지면 100% SAS 닮음!',
+            formulaHTML: `• ${tex(`\\dfrac{\\overline{AD}}{\\overline{AB}} = \\dfrac{${ad}}{6} = \\dfrac{${M}}{${N}},\\quad \\dfrac{\\overline{AE}}{\\overline{AC}} = \\dfrac{${ae}}{8} = \\dfrac{${M}}{${N}}`)}<br/>• 끼인각 ${tex('\\angle A')}가 공통이므로 <strong>SAS 닮음</strong> ${tex(`\\implies \\overline{DE} = ${B}\\times\\dfrac{${M}}{${N}} = ${de}\\text{ cm}`)}`,
+            notes: `• 만약 왼쪽 날개와 오른쪽 날개가 뒤바뀌어 ${tex('\\overline{AD}:\\overline{AC} = \\overline{AE}:\\overline{AB}')} 인 경우에는 좌우 거울반전 SAS 닮음(${tex('\\triangle ADE \\sim \\triangle ACB')})이 됩니다!`,
+            fracEq: [`AD (${ad})`, `AB (6)`, `AE (${ae})`, `AC (8)`],
+            tapeTitle: `공통 끼인각 ∠A 양옆 날개비 일치 (${M} : ${N}) ➔ SAS 닮음 완성!`,
+            tapeSegs: [
+              { text: `작은 날개 (${M})`, weight: M / (M + N), color: '#fbbf24' },
+              { text: `큰 날개 (${N})`, weight: N / (M + N), color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'nestedMulti') {
+          const d1 = fmtNum(B / 3), d2 = fmtNum((2 * B) / 3);
+          return {
+            badge: `탐구 1-E · 평행선 2개와 3중 연쇄 닮음 (꼭짓점 A부터 누적 칸수 1 : 2 : 3!)`,
+            hint: `변 $AB$를 3등분($1:1:1$)하는 점에서 평행선을 그으면, 세 삼각형 $\\triangle ADE \\sim \\triangle AFG \\sim \\triangle ABC$의 닮음비는 $1:1:1$이 아니라 <strong class="text-amber-300">꼭짓점 A부터 누적된 1칸 : 2칸 : 3칸 (1 : 2 : 3)</strong>입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 3단 삼각형 계단식 분리!',
+            dim1Name: '3단 누적 닮음비', dim2Name: '맨 아래 BC 길이',
+            val1Txt: '1 : 2 : 3', val2Txt: `${B} cm`,
+            parts: [
+              { id: 0, name: `🟡 1단 삼각형 △ADE (옆변 1칸)`, desc: `DE = BC × (1/3) = ${d1} cm`, val: `DE = ${d1} cm`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 2단 삼각형 △AFG (옆변 누적 2칸!)`, desc: `FG = BC × (2/3) = ${d2} cm`, val: `FG = ${d2} cm`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🟢 3단 전체 삼각형 △ABC (옆변 누적 3칸!)`, desc: `BC = ${B} cm (DE + FG + BC = ${fmtNum(B * 2)} cm)`, val: `BC = ${B} cm`, color: '#34d399', ok: true }
+            ],
+            totalRes: `닮음비 1 : 2 : 3 ⇒ DE = ${d1} cm, FG = ${d2} cm, BC = ${B} cm`,
+            rule: '다중 평행선 밑변비 = 꼭짓점 A에서부터 출발한 누적 옆변의 비(1 : 2 : 3)!',
+            formulaHTML: `• 옆변 토막비는 ${tex('\\overline{AD}:\\overline{DF}:\\overline{FB} = 1:1:1')} 이지만,<br/>• 삼각형 전체 옆변비는 ${tex('\\overline{AD}:\\overline{AF}:\\overline{AB} = 1:(1+1):(1+1+1) = \\mathbf{1:2:3}')}!`,
+            notes: `• 또한 세 조각으로 나뉜 넓이의 비(위 삼각형 : 가운데 사다리꼴 : 아래 사다리꼴)는 제곱의 차인 ${tex('1^2 : (2^2-1^2) : (3^2-2^2) = \\mathbf{1 : 3 : 5}')} 가 됩니다!`,
+            fracEq: [`AD (1칸)`, `AF (2칸)`, `DE (${d1})`, `FG (${d2})`],
+            tapeTitle: `3단 밑변 길이 비교: 1단 DE(${d1}) : 2단 FG(${d2}) : 3단 BC(${B}) = 1 : 2 : 3`,
+            tapeSegs: [
+              { text: `1단 DE (${d1})`, weight: 1 / 6, color: '#fbbf24' },
+              { text: `2단 FG (${d2})`, weight: 2 / 6, color: '#38bdf8' },
+              { text: `3단 BC (${B})`, weight: 3 / 6, color: '#34d399' }
+            ]
+          };
+        }
+        // ssaTrap
+        return {
+          badge: `탐구 1-F · 💥 [최고난도 반례] 왜 끼인각이 아닌 각(SSA)이 같으면 닮음이 안 될까?`,
+          hint: `두 변의 길이(${tex('\\overline{AB}=8, \\overline{BC}=5')})와 <strong>끼인각이 아닌 각(${tex('\\angle A=30^\\circ')})</strong>만 주어지면, 점 $B$에서 그은 반지름 5인 컴퍼스 원호가 직선과 <strong>두 점 $C_1, C_2$에서 만나 모양이 전혀 다른 두 삼각형</strong>이 생깁니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 합쳐서 원호 보기' : '🎬 둔각 vs 예각 2개 분리 비교!',
+          dim1Name: '반례 조건', dim2Name: '컴퍼스 반지름',
+          val1Txt: 'SSA 불성립', val2Txt: 'BC = 5',
+          parts: [
+            { id: 0, name: `🩷 삼각형 ①: 둔각삼각형 △ABC₁ (BC₁ = 5)`, desc: `원호가 왼쪽에서 만날 때 생기는 둔각삼각형`, val: `둔각삼각형 ❌`, color: '#f472b6', ok: false },
+            { id: 1, name: `🔵 삼각형 ②: 예각삼각형 △ABC₂ (BC₂ = 5)`, desc: `원호가 오른쪽에서 만날 때 생기는 예각삼각형`, val: `예각삼각형 ❌`, color: '#38bdf8', ok: false },
+            { id: 2, name: `🟡 점 B 중심 반지름 5 컴퍼스 원호 보조선`, desc: `AB=8, BC=5, ∠A=30°가 똑같아도 모양이 하나로 결정 안 됨!`, val: `비결정성 증명!`, color: '#fbbf24', ok: true }
+          ],
+          totalRes: `SSA 반례: △ABC₁ ≁ △ABC₂ (반드시 '그 끼인각'이어야만 SAS 닮음 성립!)`,
+          rule: '시험 5지선다 함정: "두 변의 비가 같고 한 각이 같으면 닮음이다(❌)" ➔ 반드시 끼인각!',
+          formulaHTML: `• ${tex('\\triangle ABC_1')}과 ${tex('\\triangle ABC_2')}는 모두 ${tex('\\overline{AB}=8, \\overline{BC}=5, \\angle A=30^\\circ')}를 만족하지만 서로 닮음이 아닙니다!<br/>• <strong>SAS 닮음 조건</strong>의 S-<strong>A</strong>-S에서 A는 반드시 두 변 사이의 <strong>끼인각</strong>이어야 합니다.`,
+          notes: `• 합동 조건에서 'SSA 합동'이 없는 이유와 닮음 조건에서 'SSA 닮음'이 없는 이유가 바로 이 <strong>컴퍼스 원호의 두 교점($C_1, C_2$)</strong> 때문입니다!`,
+          fracEq: [`AB (8)`, `AB (8)`, `BC₁ (5)`, `BC₂ (5)`],
+          tapeTitle: `💥 SSA 함정: 두 변의 비와 끼인각이 아닌 각이 같으면 둔각(△ABC₁)과 예각(△ABC₂) 2개가 생성됩니다!`,
+          tapeSegs: []
+        };
+      }
+
+      // ==================== [탭 2: 모래시계·평행선·각이등분선] ====================
+      if (m === 2) {
+        if (sub === 'hourglassStd') {
+          const topA = fmtNum(B * K);
+          const oa = fmtNum((10 * M) / (M + N));
+          const oc = fmtNum((10 * N) / (M + N));
+          return {
+            badge: `탐구 2-A · 모래시계(X형) 기본 닮음 — 엇각(Z) 2쌍 + 맞꼭지각 (180° 회전 정렬!)`,
+            hint: `윗변과 아랫변이 평행(${tex('\\overline{AD}\\parallel\\overline{BC}')})한 모래시계는 윗삼각형을 그대로 내리는 것이 아니라 <strong class="text-amber-300">교점 O를 중심으로 180° 회전</strong>시켜야 아랫삼각형과 포개집니다! 따라서 <strong>A ↔ C, D ↔ B</strong>가 대응점입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 모래시계로 합치기' : '🎬 180° 회전시켜 나란히 정렬!',
+            dim1Name: '닮음비 (AD : BC)', dim2Name: '아랫변 BC 길이',
+            val1Txt: `${M} : ${N}`, val2Txt: `${B} cm`,
+            parts: [
+              { id: 0, name: `🟡 위쪽 삼각형 △OAD (윗변 AD = ${topA} cm)`, desc: `180° 회전하면 아래쪽 △OCB와 방향 완벽 일치!`, val: `OA = ${oa} cm`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 아래쪽 삼각형 △OCB (아랫변 BC = ${B} cm)`, desc: `대각선 AC(10cm)를 ${M} : ${N} 으로 내분!`, val: `OC = ${oc} cm`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🟢 엇각 Z궤적 보조선 (∠OAD = ∠OCB)`, desc: `평행선을 타고 대각선 건너편으로 각이 복사됨`, val: `AA 닮음 (${M}:${N})`, color: '#34d399', ok: true }
+            ],
+            totalRes: `△OAD ∽ △OCB (AA, ${M}:${N}) ⇒ OA : OC = OD : OB = ${M} : ${N}`,
+            rule: '모래시계는 대각선 줄기를 타고 건너편으로! (윗변 : 아랫변 = 위 대각선 : 아래 대각선)',
+            formulaHTML: `• 맞꼭지각 ${tex('\\angle AOD = \\angle COB')}, 엇각 ${tex('\\angle OAD = \\angle OCB')} 이므로 <strong>AA 닮음</strong>!<br/>• ${tex(`\\overline{OA} : \\overline{OC} = \\overline{AD} : \\overline{CB} = ${M} : ${N} \\implies \\overline{OA} = 10\\times\\dfrac{${M}}{${M}+${N}} = ${oa}\\text{ cm}`)}`,
+            notes: `• <strong>[방향 주의]</strong>: 왼쪽 위 선분 $OA$의 짝꿍은 왼쪽 아래 $OB$가 아니라 <strong>같은 대각선 줄기 위의 오른쪽 아래 $OC$</strong>입니다!`,
+            fracEq: [`AD (${topA})`, `CB (${B})`, `OA (${oa})`, `OC (${oc})`],
+            tapeTitle: `대각선 AC(10cm) 내분: 위쪽 OA(${oa}cm, 비율 ${M}) : 아래쪽 OC(${oc}cm, 비율 ${N})`,
+            tapeSegs: [
+              { text: `OA = ${oa}cm (${M})`, weight: M / (M + N), color: '#fbbf24' },
+              { text: `OC = ${oc}cm (${N})`, weight: N / (M + N), color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'hourglassEF') {
+          const a = M * 2, b = N * 2;
+          const oe = fmtNum((a * b) / (a + b));
+          const ef = fmtNum((2 * a * b) / (a + b));
+          return {
+            badge: `탐구 2-B · [내신 1등급 킬러] 대각선 교점 O를 지나는 평행선 EF (모래시계 ➔ 포개진 2단 콤보!)`,
+            hint: `<strong>1단계(모래시계)</strong>로 $OA : OC = ${M} : ${N}$을 구한 뒤, <strong>2단계(포개진 삼각형 $\\triangle AEO \\sim \\triangle ABC$)</strong>에서는 닮음비가 ${M}:${N}이 아니라 <strong class="text-pink-300">${M} : (${M}+${N}) = ${M} : ${M + N}</strong>으로 바뀝니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 1단계 모래시계 보기' : '🎬 2단계 포개진 삼각형 분리!',
+            dim1Name: '윗변:아랫변 비', dim2Name: '공식 결과',
+            val1Txt: `${a} : ${b}`, val2Txt: `EF = ${ef}`,
+            parts: [
+              { id: 0, name: `🟡 1단계 [모래시계]: △OAD ∽ △OCB (${M} : ${N})`, desc: `윗변(${a}) : 아랫변(${b}) ⇒ 대각선비 OA : OC = ${M} : ${N}`, val: `OA:OC = ${M}:${N}`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 2단계 [포개진형]: △AEO ∽ △ABC (${M} : ${M + N}!)`, desc: `OA : AC = ${M} : (${M}+${N}) = ${M} : ${M + N} (분모 주의!)`, val: `OE = ${oe} cm`, color: '#f472b6', ok: true },
+              { id: 2, name: `🔵 결론: 양쪽 대칭이므로 OE = OF (EF = 2·OE)`, desc: `EF = 2ab / (a+b) = ${ef} cm (조화평균 공식!)`, val: `EF = ${ef} cm`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `OE = OF = ab/(a+b) = ${oe} cm | 전체 EF = 2ab/(a+b) = ${ef} cm`,
+            rule: '1단계 모래시계(a : b) ➔ 2단계 포개진 삼각형(a : a+b) ➔ OE = ab / (a+b)!',
+            formulaHTML: `• <strong>1단계</strong>: ${tex(`\\overline{OA}:\\overline{OC} = a:b = ${M}:${N}`)}<br/>• <strong>2단계</strong>: ${tex(`\\triangle AEO \\sim \\triangle ABC`)} 에서 ${tex(`\\overline{OE}:b = a:(a+b) \\implies \\mathbf{\\overline{OE} = \\dfrac{ab}{a+b} = ${oe}}`)}`,
+            notes: `• <strong>[3초 암산 공식]</strong>: 교점 $O$를 지나는 평행선에서 한쪽 날개 ${tex('\\overline{OE} = \\overline{OF} = \\dfrac{\\text{윗변}\\times\\text{아랫변}}{\\text{윗변}+\\text{아랫변}}')}, 전체 ${tex('\\overline{EF} = \\dfrac{2\\times\\text{윗변}\\times\\text{아랫변}}{\\text{윗변}+\\text{아랫변}}')} 입니다!`,
+            fracEq: [`OA (${M})`, `AC (${M + N})`, `OE (${oe})`, `BC (${b})`],
+            tapeTitle: `2단 콤보 비율 변환: 모래시계 OA:OC = ${M}:${N} ➔ 포개진 삼각형 OA:AC = ${M}:${M + N}!`,
+            tapeSegs: [
+              { text: `OA (비율 ${M})`, weight: M / (M + N), color: '#fbbf24' },
+              { text: `OC (비율 ${N}) ➔ 합쳐서 AC (${M + N})`, weight: N / (M + N), color: '#f472b6' }
+            ]
+          };
+        }
+        if (sub === 'parallelProp') {
+          const ad = M * 2, db = N * 2;
+          const ae = M * 3, ec = N * 3;
+          return {
+            badge: `탐구 2-C · 평행선과 선분비 (AD : DB = AE : EC) — 평행이동 보조선 완벽 증명!`,
+            hint: `왜 아랫토막끼리도 ${tex('\\overline{AD}:\\overline{DB} = \\overline{AE}:\\overline{EC}')}가 성립할까요? 슬라이더를 당겨 <strong class="text-pink-300">점 E를 지나 변 AB에 평행한 보조선 EF</strong>를 그으면 왼쪽 아래는 <strong>평행사변형($DB=EF$)</strong>이 되고 오른쪽 아래에 닮음 삼각형이 생기기 때문입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 보조선 숨기기' : '🎬 평행이동 보조선 EF 작도!',
+            dim1Name: '위 : 아래 토막비', dim2Name: '비례 상수',
+            val1Txt: `${M} : ${N}`, val2Txt: `우측 1.5배`,
+            parts: [
+              { id: 0, name: `🟡 위쪽 작은 삼각형 △ADE (AD=${ad}, AE=${ae})`, desc: `오른쪽 아래 삼각형 △EFC와 동위각 AA 닮음!`, val: `윗구간 ${M}`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 평행이동 보조선 EF & 삼각형 △EFC`, desc: `평행사변형 DBFE에 의해 DB(${db}) = EF(${db}) 로 복사됨!`, val: `아랫구간 ${N}`, color: '#f472b6', ok: true },
+              { id: 2, name: `🔵 결론: AD : DB = AE : EC (${ad}:${db} = ${ae}:${ec})`, desc: `옆변끼리는 위:아래 = 위:아래 비례식이 100% 성립!`, val: `${M} : ${N} 일치!`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `옆변 분할비: AD(${ad}) : DB(${db}) = AE(${ae}) : EC(${ec}) = ${M} : ${N}`,
+            rule: '옆변끼리 비교할 때는 (위 : 아래 = 위 : 아래) OK! 단, 가로 밑변을 구할 때만 (위 : 전체)!',
+            formulaHTML: `• 보조선 ${tex('\\overline{EF}\\parallel\\overline{AB}')} 를 그으면 사각형 $DBFE$는 평행사변형이므로 ${tex(`\\overline{DB}=\\overline{EF}=${db}`)}<br/>• ${tex('\\triangle ADE \\sim \\triangle EFC')} (AA 닮음) 이므로 ${tex(`\\overline{AD}:\\overline{EF} = \\overline{AE}:\\overline{EC} \\implies \\overline{AD}:\\overline{DB} = \\overline{AE}:\\overline{EC}`)}`,
+            notes: `• <strong>[상황별 공식 총정리]</strong>:<br/>&nbsp;&nbsp;① 옆변 토막만 물어볼 때: <strong>위 : 아래 = 위 : 아래</strong> (${tex(`${ad}:${db} = ${ae}:${ec}`)})<br/>&nbsp;&nbsp;② 가로선 $DE, BC$가 껴 있을 때: 무조건 <strong>위 : 전체 = DE : BC</strong> (${tex(`${M}:${M + N}`)})!`,
+            fracEq: [`AD (${ad})`, `DB (${db})`, `AE (${ae})`, `EC (${ec})`],
+            tapeTitle: `평행선 옆변 복사: 왼쪽 AD(${ad}) : DB(${db}) = 오른쪽 AE(${ae}) : EC(${ec}) = ${M} : ${N}`,
+            tapeSegs: [
+              { text: `윗구간 (${M})`, weight: M / (M + N), color: '#fbbf24' },
+              { text: `아랫구간 (${N})`, weight: N / (M + N), color: '#f472b6' }
+            ]
+          };
+        }
+        if (sub === 'trapezoidMid') {
+          const a = 6, b = B;
+          const eg = a;
+          const gf = fmtNum(((b - a) * M) / (M + N));
+          const ef = fmtNum((a * N + b * M) / (M + N));
+          return {
+            badge: `탐구 2-D · 사다리꼴의 중간 평행선 EF 길이 구하기 (①평행사변형 분할법 vs ②대각선 침투법)`,
+            hint: `사다리꼴에서 옆변을 ${M} : ${N}으로 나누는 평행선 $EF$의 길이는 보조선 하나로 끝납니다! <strong class="text-amber-300">점 D에서 AB에 평행한 선 DH</strong>를 그어 <strong>평행사변형(${a}cm) + 삼각형(${gf}cm)</strong>으로 쪼개어 더하세요!`,
+            actionTxt: state.fold > 0.5 ? '🎬 보조선 전환/초기화' : '🎬 평행사변형+삼각형 보조선 작도!',
+            dim1Name: '옆변 분할비 (m : n)', dim2Name: '아랫변 BC 길이',
+            val1Txt: `${M} : ${N}`, val2Txt: `${b} cm (윗변 6)`,
+            parts: [
+              { id: 0, name: `🟢 왼쪽 평행사변형 ABHD 조각 (EG = HC = 6 cm)`, desc: `윗변 AD(6cm)가 그대로 아래로 내려와 EG = 6 cm!`, val: `EG = 6 cm`, color: '#34d399', ok: true },
+              { id: 1, name: `🟡 오른쪽 포개진 삼각형 △DGF ∽ △DHC (${M} : ${M + N})`, desc: `밑변 HC(${b - a}cm)의 ${M}/(${M}+${N})배 ⇒ GF = ${gf} cm!`, val: `GF = ${gf} cm`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🩷 합체 공식: EF = EG + GF = (an + bm)/(m+n)`, desc: `6 + ${gf} = ${ef} cm (크로스 곱 공식과 100% 일치!)`, val: `EF = ${ef} cm`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `EF = 평행사변형(6) + 삼각형(${gf}) = ${ef} cm`,
+            rule: '사다리꼴 보조선 필살기: 한 꼭짓점에서 옆변에 평행선을 그어 [평행사변형 + 삼각형]으로 쪼갠다!',
+            formulaHTML: `• <strong>정석 보조선 해법</strong>: ${tex(`\\overline{EF} = \\overline{EG} + \\overline{GF} = 6 + (${b}-6)\\times\\dfrac{${M}}{${M}+${N}} = \\mathbf{${ef}\\text{ cm}}`)}<br/>• <strong>크로스 공식</strong>: ${tex(`\\overline{EF} = \\dfrac{a\\cdot n + b\\cdot m}{m+n} = \\dfrac{6\\times ${N} + ${b}\\times ${M}}{${M}+${N}} = \\mathbf{${ef}\\text{ cm}}`)}`,
+            notes: `• 삼각형 넓이나 비례식에서는 꼭짓점부터 누적된 <strong>${tex(`${M} : (${M}+${N})`)}</strong> 비율을 써야 한다는 점만 조심하면 백발백중입니다!`,
+            fracEq: [`DG (${M})`, `DH (${M + N})`, `GF (${gf})`, `HC (${b - a})`],
+            tapeTitle: `중간 평행선 EF(${ef}cm) = 왼쪽 평행사변형 EG(6cm) + 오른쪽 삼각형 GF(${gf}cm)`,
+            tapeSegs: [
+              { text: `평행사변형 EG (6cm)`, weight: 6 / Math.max(7, parseFloat(ef)), color: '#34d399' },
+              { text: `삼각형 GF (${gf}cm)`, weight: Math.max(0.08, parseFloat(gf) / Math.max(7, parseFloat(ef))), color: '#fbbf24' }
+            ]
+          };
+        }
+        if (sub === 'angleBisectIn') {
+          const ab = M * 3, ac = N * 3;
+          const bd = fmtNum((B * M) / (M + N)), cd = fmtNum((B * N) / (M + N));
+          return {
+            badge: `탐구 2-E · 💖 삼각형 내각의 이등분선 정리 (AB : AC = BD : CD 하트 공식 & 보조선 증명!)`,
+            hint: `왜 내각 $\\angle A$를 이등분하면 <strong>왼쪽 날개(AB) : 오른쪽 날개(AC) = 왼쪽 바닥(BD) : 오른쪽 바닥(CD)</strong>가 될까요? 슬라이더를 당겨 <strong class="text-pink-300">점 C를 지나 AD에 평행한 보조선 CE</strong>를 그으면 <strong>이등변삼각형($AC=AE$)</strong>이 탄생하기 때문입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 보조선 접기' : '🎬 연장선+평행 보조선 CE로 이등변삼각형 증명!',
+            dim1Name: '양 날개비 (AB : AC)', dim2Name: '밑변 BC 전체 길이',
+            val1Txt: `${ab} : ${ac} (${M}:${N})`, val2Txt: `${B} cm`,
+            parts: [
+              { id: 0, name: `💖 내각의 이등분선 AD (∠BAD = ∠CAD = •)`, desc: `꼭짓점 A에서 출발해 양 날개와 바닥으로 갈라지는 하트 모양!`, val: `AB:AC = ${M}:${N}`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 증명 보조선 CE (AD ∥ EC) & 이등변삼각형 △ACE!`, desc: `동위각(•) = 엇각(•) 이므로 △ACE는 AE = AC(${ac})인 이등변삼각형!`, val: `AE = AC = ${ac}`, color: '#f472b6', ok: true },
+              { id: 2, name: `🔵 결론: BD : CD = AB : AE = AB : AC`, desc: `전체 밑변 ${B}cm를 ${M} : ${N} 으로 내분 ⇒ BD=${bd}, CD=${cd}`, val: `BD=${bd}, CD=${cd}`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `하트 공식: AB(${ab}) : AC(${ac}) = BD(${bd}) : CD(${cd}) = ${M} : ${N}`,
+            rule: '내각의 이등분선 = 거꾸로 뒤집은 하트(♡) 모양! (왼쪽 변 : 오른쪽 변 = 왼쪽 밑변 : 오른쪽 밑변)',
+            formulaHTML: `• <strong>보조선 증명 과정 (서술형 단골!)</strong>:<br/>&nbsp;&nbsp;① ${tex('\\overline{AD}\\parallel\\overline{EC}')} 이므로 동위각 ${tex('\\angle BAD = \\angle AEC')}, 엇각 ${tex('\\angle CAD = \\angle ACE')}<br/>&nbsp;&nbsp;② ${tex('\\angle AEC = \\angle ACE')} 이므로 ${tex('\\triangle ACE')}는 <strong>이등변삼각형(${tex('\\overline{AC}=\\overline{AE}')})</strong>!<br/>&nbsp;&nbsp;③ 평행선 선분비에 의해 ${tex('\\overline{BA}:\\overline{AE} = \\overline{BD}:\\overline{DC} \\implies \\mathbf{\\overline{AB}:\\overline{AC} = \\overline{BD}:\\overline{CD}}')}!`,
+            notes: `• 또한 ${tex('\\triangle ABD')}와 ${tex('\\triangle ACD')}는 꼭짓점 $A$를 공유하여 높이가 같으므로, <strong>두 삼각형의 넓이비도 밑변비인 ${tex('BD : CD = AB : AC = ' + M + ' : ' + N)}</strong> 과 같습니다!`,
+            fracEq: [`AB (${ab})`, `AC (${ac})`, `BD (${bd})`, `CD (${cd})`],
+            tapeTitle: `밑변 BC(${B}cm) 하트 내분: 왼쪽 BD(${bd}cm, 비율 ${M}) : 오른쪽 CD(${cd}cm, 비율 ${N})`,
+            tapeSegs: [
+              { text: `BD = ${bd}cm (${M})`, weight: M / (M + N), color: '#fbbf24' },
+              { text: `CD = ${cd}cm (${N})`, weight: N / (M + N), color: '#38bdf8' }
+            ]
+          };
+        }
+        // angleBisectEx
+        const bigM = N, smlN = M; // 외각이 오른쪽으로 만나도록 AB > AC 설정
+        const ab = bigM * 3, ac = smlN * 3;
+        const bc = B;
+        const cd = fmtNum((bc * smlN) / (bigM - smlN));
+        const bd = fmtNum(bc + parseFloat(cd));
+        return {
+          badge: `탐구 2-F · 👟 삼각형 외각의 이등분선 정리 (AB : AC = BD : CD 나이키 공식 & 보조선 증명!)`,
+          hint: `꼭짓점 $A$의 외각을 이등분한 선이 밑변 연장선과 점 $D$에서 만날 때, 슬라이더로 <strong class="text-pink-300">점 C를 지나 AD에 평행한 보조선 CF</strong>를 그으면 안쪽에 <strong>이등변삼각형($AF=AC$)</strong>이 생겨 나이키 공식이 증명됩니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 보조선 접기' : '🎬 평행 보조선 CF와 나이키 궤적 작동!',
+          dim1Name: '날개비 (AB : AC)', dim2Name: '원래 밑변 BC 길이',
+          val1Txt: `${ab} : ${ac} (${bigM}:${smlN})`, val2Txt: `${bc} cm`,
+          parts: [
+            { id: 0, name: `👟 나이키(✓) 궤적: AB : AC = BD(전체!) : CD(바깥!)`, desc: `BC : CD 가 아니라 반드시 전체 바닥 BD(${bd}) : 바깥 CD(${cd})!`, val: `${bigM} : ${smlN}`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🩷 평행 보조선 CF (FC ∥ DA) & 이등변삼각형 △AFC`, desc: `동위각 = 엇각이므로 AF = AC = ${ac} cm 인 이등변삼각형!`, val: `AF = AC = ${ac}`, color: '#f472b6', ok: true },
+            { id: 2, name: `🔵 포개진 닮음 △BFC ∽ △BAD ⇒ BD=${bd}, CD=${cd}`, desc: `BC(${bc}) : CD(${cd}) = (${bigM}-${smlN}) : ${smlN}`, val: `CD = ${cd} cm`, color: '#38bdf8', ok: true }
+          ],
+          totalRes: `나이키 공식: AB(${ab}) : AC(${ac}) = BD(${bd}) : CD(${cd}) = ${bigM} : ${smlN}`,
+          rule: '외각의 이등분선 = 나이키(✓) 로고! (긴 변 AB : 짧은 변 AC = 멀리 간 바닥 BD : 돌아온 바닥 CD)',
+          formulaHTML: `• 보조선 ${tex('\\overline{CF}\\parallel\\overline{DA}')} 에 의해 ${tex('\\triangle AFC')}는 ${tex(`\\overline{AF}=\\overline{AC}=${ac}`)} 인 이등변삼각형!<br/>• ${tex(`\\overline{AB}:\\overline{AF} = \\overline{BD}:\\overline{CD} \\implies \\mathbf{\\overline{AB}:\\overline{AC} = \\overline{BD}:\\overline{CD} = ${bigM}:${smlN}}`)}`,
+          notes: `• <strong>[오답 주의보]</strong>: 오른쪽 항에 ${tex('\\overline{BC} : \\overline{CD}')} 를 쓰면 틀립니다! 점 $B$에서 점 $D$까지 <strong>끝까지 갔다(${tex('\\overline{BD}')})가 점 $C$로 돌아오는(${tex('\\overline{CD}')}) 나이키 스우시(✓) 궤적</strong>을 손가락으로 따라가세요!`,
+          fracEq: [`AB (${ab})`, `AC (${ac})`, `BD (${bd})`, `CD (${cd})`],
+          tapeTitle: `전체 바닥 BD(${bd}cm, 비율 ${bigM}) = 원래 밑변 BC(${bc}cm) + 연장선 CD(${cd}cm, 비율 ${smlN})`,
+          tapeSegs: [
+            { text: `BC = ${bc}cm (비율 ${bigM - smlN})`, weight: (bigM - smlN) / bigM, color: '#34d399' },
+            { text: `CD = ${cd}cm (비율 ${smlN})`, weight: smlN / bigM, color: '#38bdf8' }
+          ]
+        };
+      }
+
+      // ==================== [탭 3: 직각삼각형 수선 3총사 & 소(牛)공식] ====================
+      if (m === 3) {
+        // 피타고라스 직각삼각형 세트 (기본 6-8-10 또는 스케일 연동)
+        const scaleMul = B / 10;
+        const ab = fmtNum(6 * scaleMul), ac = fmtNum(8 * scaleMul), bc = fmtNum(10 * scaleMul);
+        const bh = fmtNum(3.6 * scaleMul), ch = fmtNum(6.4 * scaleMul), ah = fmtNum(4.8 * scaleMul);
+
+        if (sub === 'rightTrio') {
+          return {
+            badge: `탐구 3-A · 직각삼각형 수선 3총사 실제 분리·거울반전·정렬 (△ABC ∽ △HBA ∽ △HAC)`,
+            hint: `직각 꼭짓점 $A$에서 빗변에 수선 $AH$를 내리면, $\\bullet + \\times = 90^\\circ$ 각도 돌리기에 의해 <strong class="text-amber-300">큰 삼각형(빗변 ${bc}) · 왼쪽 작은 삼각형(빗변 ${ab}) · 오른쪽 중간 삼각형(빗변 ${ac})</strong> 세 개가 모두 <strong>AA 닮음(5 : 3 : 4)</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본 직각삼각형으로 합치기' : '🎬 3총사 조각 분리·거울반전 정렬!',
+            dim1Name: '3총사 닮음비(빗변비)', dim2Name: '큰 빗변 BC 스케일',
+            val1Txt: '5 : 3 : 4', val2Txt: `${bc} cm`,
+            parts: [
+              { id: 0, name: `🟢 대(大) 직각삼각형 △ABC (빗변 BC = ${bc} cm)`, desc: `내각 (90°, •, ×) — 거울 뒤집어 정렬하면 기준형 완성`, val: `빗변 ${bc} (비율 5)`, color: '#34d399', ok: true },
+              { id: 1, name: `🟡 소(小) 직각삼각형 △HBA (빗변 AB = ${ab} cm)`, desc: `내각 (90°, •, ×) — BH=${bh}, AH=${ah}`, val: `빗변 ${ab} (비율 3)`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🔵 중(中) 직각삼각형 △HAC (빗변 AC = ${ac} cm)`, desc: `내각 (90°, •, ×) — AH=${ah}, CH=${ch}`, val: `빗변 ${ac} (비율 4)`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `△ABC ∽ △HBA ∽ △HAC (AA 닮음) | 닮음비(빗변비) = ${bc} : ${ab} : ${ac} = 5 : 3 : 4`,
+            rule: '직각삼각형 안에 수선을 내리면 (90°, •, ×) 직각삼각형 3총사가 탄생한다!',
+            formulaHTML: `• ${tex('\\angle B = \\bullet, \\angle C = \\times')} 라 하면 ${tex('\\bullet + \\times = 90^\\circ')}<br/>• 왼쪽 ${tex('\\triangle HBA')}에서 ${tex('\\angle BAH = \\times')}, 오른쪽 ${tex('\\triangle HAC')}에서 ${tex('\\angle CAH = \\bullet')}<br/>• 세 삼각형 모두 내각이 ${tex('(90^\\circ, \\bullet, \\times)')}로 같으므로 <strong>AA 닮음</strong>!`,
+            notes: `• 세 삼각형의 넓이비는 닮음비(빗변비 $5 : 3 : 4$)의 제곱인 <strong>$5^2 : 3^2 : 4^2 = 25 : 9 : 16$</strong> 입니다! 실제로 $9 + 16 = 25$ (피타고라스 정리!)가 성립합니다.`,
+            fracEq: [`빗변BC (${bc})`, `빗변BA (${ab})`, `긴변AC (${ac})`, `긴변HA (${ah})`],
+            tapeTitle: `빗변 BC(${bc}cm) 분할: 왼쪽 발 BH(${bh}cm, 9/25) + 오른쪽 발 CH(${ch}cm, 16/25)`,
+            tapeSegs: [
+              { text: `BH = ${bh}cm (9/25)`, weight: 0.36, color: '#fbbf24' },
+              { text: `CH = ${ch}cm (16/25)`, weight: 0.64, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'rightLeft') {
+          return {
+            badge: `탐구 3-B · 👈 왼쪽 날개 제곱 공식 유도 — AB² = BH · BC (가까운 발 × 전체 바닥!)`,
+            hint: `전체 삼각형 $\\triangle ABC$와 왼쪽 작은 삼각형 $\\triangle HBA$의 닮음비(${tex('BC : BA = AB : HB')})에서 외항·내항을 곱하면 <strong class="text-amber-300">(왼쪽 날개 AB)² = (가까운 발 BH) × (전체 바닥 BC)</strong> 공식이 탄생합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 왼쪽 물방울 궤적 & 닮음 정렬!',
+            dim1Name: '적용 공식', dim2Name: '빗변 BC 길이',
+            val1Txt: 'AB² = BH·BC', val2Txt: `${bc} cm`,
+            parts: [
+              { id: 0, name: `🟡 दो 번 곱해지는 왼쪽 날개 AB = ${ab} cm`, desc: `큰 △ABC의 짧은 직각변이자 작은 △HBA의 빗변!`, val: `AB² = ${fmtNum(ab * ab)}`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 가까운 왼쪽 발 BH(${bh}) × 전체 바닥 BC(${bc})`, desc: `${bh} × ${bc} = ${fmtNum(bh * bc)} (오차 0 완벽 일치!)`, val: `${bh}×${bc}=${fmtNum(ab * ab)}`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `AB² = BH · BC ⇒ ${ab}² = ${bh} × ${bc} = ${fmtNum(ab * ab)}`,
+            rule: '왼쪽 꼭짓점 B로 모이는 물방울 공식: (왼쪽 날개)² = (짧은 발 BH) × (긴 전체 바닥 BC)',
+            formulaHTML: `• ${tex('\\triangle ABC \\sim \\triangle HBA')} (공통각 ${tex('\\angle B')}와 직각 ${tex('90^\\circ')})<br/>• ${tex(`\\dfrac{\\overline{BC}}{\\overline{BA}} = \\dfrac{\\overline{AB}}{\\overline{HB}} \\implies \\mathbf{\\overline{AB}^2 = \\overline{BH}\\cdot\\overline{BC}} \\implies ${ab}^2 = ${bh}\\times ${bc}`)}`,
+            notes: `• <strong>[오답 방지]</strong>: ${tex('\\overline{AB}^2 = \\overline{BH}\\cdot\\overline{HC}')} 가 아닙니다! 반드시 왼쪽 끝점 $B$에서 출발하는 두 선분인 <strong>(가까운 $BH$) × (끝까지 간 $BC$)</strong>를 곱해야 합니다!`,
+            fracEq: [`BC (${bc})`, `BA (${ab})`, `AB (${ab})`, `HB (${bh})`],
+            tapeTitle: `왼쪽 제곱 공식: AB²(${fmtNum(ab * ab)}) = 가까운 발 BH(${bh}) × 전체 바닥 BC(${bc})`,
+            tapeSegs: [
+              { text: `가까운 발 BH (${bh}cm)`, weight: 0.36, color: '#fbbf24' },
+              { text: `나머지 HC (${ch}cm) ➔ 전체 BC (${bc}cm)`, weight: 0.64, color: '#34d399' }
+            ]
+          };
+        }
+        if (sub === 'rightRight') {
+          return {
+            badge: `탐구 3-C · 👉 오른쪽 날개 제곱 공식 유도 — AC² = CH · CB (오른쪽 발 × 전체 바닥!)`,
+            hint: `전체 삼각형 $\\triangle ABC$와 오른쪽 중간 삼각형 $\\triangle HAC$의 닮음비(${tex('CB : CA = AC : HC')})에서 <strong class="text-sky-300">(오른쪽 날개 AC)² = (오른쪽 발 CH) × (전체 바닥 CB)</strong> 공식이 유도됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 오른쪽 물방울 궤적 & 닮음 정렬!',
+            dim1Name: '적용 공식', dim2Name: '빗변 BC 길이',
+            val1Txt: 'AC² = CH·CB', val2Txt: `${bc} cm`,
+            parts: [
+              { id: 0, name: `🔵 두 번 곱해지는 오른쪽 날개 AC = ${ac} cm`, desc: `큰 △ABC의 긴 직각변이자 중간 △HAC의 빗변!`, val: `AC² = ${fmtNum(ac * ac)}`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🩷 가까운 오른쪽 발 CH(${ch}) × 전체 바닥 CB(${bc})`, desc: `${ch} × ${bc} = ${fmtNum(ch * bc)} (완벽 일치!)`, val: `${ch}×${bc}=${fmtNum(ac * ac)}`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `AC² = CH · CB ⇒ ${ac}² = ${ch} × ${bc} = ${fmtNum(ac * ac)}`,
+            rule: '오른쪽 꼭짓점 C로 모이는 물방울 공식: (오른쪽 날개)² = (오른쪽 발 CH) × (전체 바닥 CB)',
+            formulaHTML: `• ${tex('\\triangle ABC \\sim \\triangle HAC')} (공통각 ${tex('\\angle C')}와 직각 ${tex('90^\\circ')})<br/>• ${tex(`\\dfrac{\\overline{CB}}{\\overline{CA}} = \\dfrac{\\overline{AC}}{\\overline{HC}} \\implies \\mathbf{\\overline{AC}^2 = \\overline{CH}\\cdot\\overline{CB}} \\implies ${ac}^2 = ${ch}\\times ${bc}`)}`,
+            notes: `• 왼쪽 공식(${tex('\\overline{AB}^2 = \\overline{BH}\\cdot\\overline{BC}')})과 오른쪽 공식(${tex('\\overline{AC}^2 = \\overline{CH}\\cdot\\overline{CB}')})을 변끼리 더하면 ${tex('\\overline{AB}^2 + \\overline{AC}^2 = (\\overline{BH}+\\overline{CH})\\cdot\\overline{BC} = \\overline{BC}^2')} 이 되어 <strong>피타고라스 정리</strong>가 증명됩니다!`,
+            fracEq: [`CB (${bc})`, `CA (${ac})`, `AC (${ac})`, `HC (${ch})`],
+            tapeTitle: `오른쪽 제곱 공식: AC²(${fmtNum(ac * ac)}) = 오른쪽 발 CH(${ch}) × 전체 바닥 CB(${bc})`,
+            tapeSegs: [
+              { text: `왼쪽 BH (${bh}cm)`, weight: 0.36, color: '#34d399' },
+              { text: `오른쪽 발 CH (${ch}cm)`, weight: 0.64, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'rightCenter') {
+          return {
+            badge: `탐구 3-D · 🗼 가운데 기둥 제곱 공식 유도 — AH² = BH · CH (왼쪽 발 × 오른쪽 발!)`,
+            hint: `수선 $AH$를 사이에 둔 <strong>왼쪽 삼각형 $\\triangle HBA$와 오른쪽 삼각형 $\\triangle HAC$의 AA 닮음</strong>에서 수선 $AH$가 한쪽에서는 긴 직각변, 다른 쪽에서는 짧은 직각변이 되어 <strong class="text-pink-300">AH² = BH · CH</strong>가 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 좌·우 두 직각삼각형 분리·비교!',
+            dim1Name: '적용 공식', dim2Name: '빗변 BC 길이',
+            val1Txt: 'AH² = BH·CH', val2Txt: `${bc} cm`,
+            parts: [
+              { id: 0, name: `🩷 가운데 수선 기둥 AH = ${ah} cm`, desc: `왼쪽 △HBA의 긴 직각변 ↔ 오른쪽 △HAC의 짧은 직각변`, val: `AH² = ${fmtNum(ah * ah)}`, color: '#f472b6', ok: true },
+              { id: 1, name: `🟡 왼쪽 발 BH(${bh}) × 오른쪽 발 CH(${ch})`, desc: `${bh} × ${ch} = ${fmtNum(bh * ch)} (완벽 일치!)`, val: `${bh}×${ch}=${fmtNum(ah * ah)}`, color: '#fbbf24', ok: true }
+            ],
+            totalRes: `AH² = BH · CH ⇒ ${ah}² = ${bh} × ${ch} = ${fmtNum(ah * ah)}`,
+            rule: '가운데 기둥을 두 번 내려찍고 양옆으로 벌려라! (가운데 기둥 AH)² = (왼쪽 발 BH) × (오른쪽 발 CH)',
+            formulaHTML: `• ${tex('\\triangle HBA \\sim \\triangle HAC')} (내각이 ${tex('90^\\circ, \\bullet, \\times')}로 같음)<br/>• ${tex(`\\dfrac{\\overline{BH}}{\\overline{AH}} = \\dfrac{\\overline{AH}}{\\overline{CH}} \\implies \\mathbf{\\overline{AH}^2 = \\overline{BH}\\cdot\\overline{CH}} \\implies ${ah}^2 = ${bh}\\times ${ch}`)}`,
+            notes: `• <strong>[초스피드 암산 비법]</strong>: 문제에서 $BH=4, CH=9$ 처럼 제곱수 두 조각이 주어지면 1초 만에 ${tex('\\overline{AH}^2 = 4\\times 9 = 36 \\implies \\overline{AH} = 6')} 으로 구할 수 있습니다!`,
+            fracEq: [`BH (${bh})`, `AH (${ah})`, `AH (${ah})`, `CH (${ch})`],
+            tapeTitle: `가운데 기둥 공식: AH²(${fmtNum(ah * ah)}) = 왼쪽 발 BH(${bh}) × 오른쪽 발 CH(${ch})`,
+            tapeSegs: [
+              { text: `왼쪽 발 BH (${bh}cm)`, weight: 0.36, color: '#fbbf24' },
+              { text: `오른쪽 발 CH (${ch}cm)`, weight: 0.64, color: '#38bdf8' }
+            ]
+          };
+        }
+        // rightSoArea
+        const am = fmtNum(5 * scaleMul);
+        return {
+          badge: `탐구 3-E · 🐂 한자 소(牛) 넓이 공식 (AB·AC = BC·AH) & 빗변의 중점(외심 M) 비교!`,
+          hint: `직각삼각형의 넓이를 두 가지 방법으로 구하면 <strong>½·AB·AC = ½·BC·AH ➔ AB·AC = BC·AH (소 牛 공식)</strong>가 됩니다! 또한 <strong>빗변의 중점(외심 M, AM=${am})</strong>과 <strong>수선의 발(H, AH=${ah})</strong>은 서로 다른 점입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 뷰로' : '🎬 소(牛) 궤적 & 외심 중선 AM 작도!',
+          dim1Name: '소(牛) 공식', dim2Name: '빗변 BC 길이',
+          val1Txt: 'AB·AC = BC·AH', val2Txt: `${bc} cm`,
+          parts: [
+            { id: 0, name: `🐂 소(牛) 공식: AB(${ab}) × AC(${ac}) = BC(${bc}) × AH(${ah})`, desc: `직각을 낀 두 변의 곱 = 빗변 × 수선 높이 = ${fmtNum(ab * ac)}`, val: `AH = ${ah} cm`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 빗변의 중점(외심 M)까지 거리 AM = ${am} cm`, desc: `외접원 반지름 AM = ½BC = ${am} cm (수선 AH=${ah}보다 긺!)`, val: `AM = ${am} cm`, color: '#38bdf8', ok: true },
+            { id: 2, name: `🩷 안쪽 직각삼각형 △AHM (HM = ${fmtNum(1.4 * scaleMul)} cm)`, desc: `외심 M과 수선의 발 H가 결합된 심화 단골 삼각형!`, val: `HM = ${fmtNum(1.4 * scaleMul)}`, color: '#f472b6', ok: true }
+          ],
+          totalRes: `소(牛) 공식 AH = ${ah} cm | 외심 중선 AM = ${am} cm | HM = ${fmtNum(1.4 * scaleMul)} cm`,
+          rule: '외심 M(빗변의 중점, AM = 1/2 BC)과 수선의 발 H(AH = AB·AC/BC)를 절대 혼동하지 마라!',
+          formulaHTML: `• <strong>소(牛) 공식</strong>: ${tex(`\\overline{AB}\\cdot\\overline{AC} = \\overline{BC}\\cdot\\overline{AH} \\implies \\overline{AH} = \\dfrac{${ab}\\times ${ac}}{${bc}} = \\mathbf{${ah}\\text{ cm}}`)}<br/>• <strong>외심 성질</strong>: ${tex(`\\overline{AM} = \\overline{BM} = \\overline{CM} = \\dfrac{1}{2}\\overline{BC} = \\mathbf{${am}\\text{ cm}}`)}`,
+          notes: `• 오직 <strong>직각이등변삼각형(${tex('\\overline{AB}=\\overline{AC}')})</strong>일 때만 수선의 발 $H$와 빗변의 중점(외심 $M$)이 일치합니다! 일반 직각삼각형에서는 언제나 ${tex('\\overline{AM} > \\overline{AH}')} 입니다.`,
+          fracEq: [`BC (${bc})`, `AB (${ab})`, `AC (${ac})`, `AH (${ah})`],
+          tapeTitle: `직각삼각형 넓이 2가지 표현: ½ × AB(${ab}) × AC(${ac}) = ½ × BC(${bc}) × AH(${ah})`,
+          tapeSegs: [
+            { text: `BH (${bh})`, weight: 0.36, color: '#fbbf24' },
+            { text: `HM (${fmtNum(1.4 * scaleMul)})`, weight: 0.14, color: '#f472b6' },
+            { text: `MC (${am})`, weight: 0.5, color: '#38bdf8' }
+          ]
+        };
+      }
+
+      // ==================== [탭 4: 중점연결 & 무게중심(2:1)] ====================
+      if (m === 4) {
+        if (sub === 'midpointThm') {
+          const mn = fmtNum(B / 2);
+          return {
+            badge: `탐구 4-A · 삼각형의 중점연결정리 — MN ∥ BC, MN = ½ BC (길이비 1:2 · 넓이비 1:3 분할!)`,
+            hint: `두 변의 중점 $M, N$을 연결하면 SAS 닮음($1:2$)에 의해 밑변과 평행(${tex('\\overline{MN}\\parallel\\overline{BC}')})하고 길이는 절반(<strong class="text-amber-300">MN = ${mn}cm</strong>)이 됩니다! 넓이는 전체가 $2^2=4$배이므로 <strong class="text-sky-300">위 삼각형(1) : 아래 사다리꼴(3)</strong>로 나뉩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 중점 삼각형 분리 & 평행사변형 증명!',
+            dim1Name: '중점연결 닮음비', dim2Name: '밑변 BC 길이',
+            val1Txt: '1 : 2 (고정)', val2Txt: `${B} cm`,
+            parts: [
+              { id: 0, name: `🟡 위쪽 작은 삼각형 △AMN (MN = ${mn} cm)`, desc: `전체 넓이를 4S라 할 때 위쪽 넓이 = 1S`, val: `MN=${mn}, 넓이 1S`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🟢 아래쪽 사다리꼴 MBCN (BC = ${B} cm)`, desc: `전체(4S) - 위쪽(1S) = 3S (위쪽 삼각형의 3배!)`, val: `BC=${B}, 넓이 3S`, color: '#34d399', ok: true },
+              { id: 2, name: `🩷 점 N에서 AB에 평행한 보조선 ND`, desc: `평행사변형 MBDN에 의해 MN = BD = DC = ½BC 증명!`, val: `MN = ½BC`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `MN = ½BC = ${mn} cm | 넓이비 △AMN : 사다리꼴 MBCN = 1 : 3`,
+            rule: '중점연결선 2대 성질: ① 길이는 절반(1/2)  ② 위·아래 넓이비는 1 : 3 (전체는 4)!',
+            formulaHTML: `• ${tex('\\overline{AM}:\\overline{AB} = \\overline{AN}:\\overline{AC} = 1:2')} 이고 ${tex('\\angle A')} 공통 ${tex('\\implies \\triangle AMN \\sim \\triangle ABC')} (SAS 닮음)<br/>• 넓이비 ${tex('\\triangle AMN : \\triangle ABC = 1^2 : 2^2 = 1 : 4 \\implies \\triangle AMN : \\square MBCN = \\mathbf{1 : 3}')}`,
+            notes: `• <strong>[중점연결정리의 역]</strong>: 한 변의 중점 $M$에서 밑변 $BC$에 평행하게 선을 그으면, 반대편 변 $AC$의 <strong>정확한 중점 $N$</strong>에 도착합니다!`,
+            fracEq: [`AM (1)`, `AB (2)`, `MN (${mn})`, `BC (${B})`],
+            tapeTitle: `전체 넓이(4S) 분할: 위쪽 △AMN(1S, 25%) + 아래쪽 사다리꼴 MBCN(3S, 75%)`,
+            tapeSegs: [
+              { text: `위쪽 △AMN (1S = 25%)`, weight: 0.25, color: '#fbbf24' },
+              { text: `아래쪽 사다리꼴 MBCN (3S = 75%)`, weight: 0.75, color: '#34d399' }
+            ]
+          };
+        }
+        if (sub === 'midpointFour') {
+          const pAll = B * 3;
+          const pMid = fmtNum(pAll / 2);
+          return {
+            badge: `탐구 4-B · 세 변의 중점을 모두 이은 4조각 분할 — 4개의 작은 삼각형은 모두 SSS 합동!`,
+            hint: `삼각형 세 변의 중점 $D, E, F$를 모두 연결하면 4개의 작은 삼각형은 모두 <strong>합동(넓이 각각 $\\frac{1}{4}S$)</strong>이고, 가운데 $\\triangle DEF$를 $180^\\circ$ 회전시키면 전체 $\\triangle ABC$와 <strong>$1 : 2$ SSS 닮음</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 가운데 △DEF 180° 회전 정렬!',
+            dim1Name: '닮음비 (△DEF : △ABC)', dim2Name: '전체 둘레 기준',
+            val1Txt: '1 : 2', val2Txt: `${pAll} cm`,
+            parts: [
+              { id: 0, name: `🟡 가운데 중점 삼각형 △DEF (둘레 = ${pMid} cm)`, desc: `각 변이 원래 변의 ½이므로 둘레도 전체(${pAll})의 ½!`, val: `둘레 ${pMid} cm`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🟢 바깥쪽 3개의 작은 삼각형 (△AFEs, △FBD, △EDC)`, desc: `가운데 △DEF와 SSS 합동! (4조각 모두 넓이가 ¼S로 같음)`, val: `넓이 각 ¼S`, color: '#34d399', ok: true }
+            ],
+            totalRes: `△DEF 둘레 = ½(전체 둘레) = ${pMid} cm | △DEF 넓이 = ¼(전체 넓이)`,
+            rule: '세 변의 중점을 연결하면: 둘레는 1/2배 (길이비), 넓이는 1/4배 (제곱비)!',
+            formulaHTML: `• ${tex('\\overline{EF}=\\frac{1}{2}\\overline{BC},\\; \\overline{FD}=\\frac{1}{2}\\overline{CA},\\; \\overline{DE}=\\frac{1}{2}\\overline{AB} \\implies \\triangle DEF \\sim \\triangle ABC')} (SSS 닮음, $1:2$)<br/>• 사각형 $AFDE, BDEF, CEFD$는 모두 <strong>평행사변형</strong>입니다!`,
+            notes: `• <strong>[단골 함정]</strong>: 둘레의 길이를 구할 때 넓이처럼 $\\div 4$를 하면 안 됩니다! <strong>둘레는 1차원 길이라서 $\\div 2$</strong>, <strong>넓이는 2차원이라서 $\\div 4$</strong> 입니다!`,
+            fracEq: [`둘레DEF (${pMid})`, `둘레ABC (${pAll})`, `넓이DEF (1S)`, `넓이ABC (4S)`],
+            tapeTitle: `전체 넓이 4등분: △DEF(¼) + △AFE(¼) + △FBD(¼) + △EDC(¼) = 모두 합동!`,
+            tapeSegs: [
+              { text: `△DEF (¼)`, weight: 0.25, color: '#fbbf24' },
+              { text: `△AFE (¼)`, weight: 0.25, color: '#38bdf8' },
+              { text: `△FBD (¼)`, weight: 0.25, color: '#34d399' },
+              { text: `△EDC (¼)`, weight: 0.25, color: '#f472b6' }
+            ]
+          };
+        }
+        if (sub === 'centroidProof') {
+          const ag = fmtNum((B * 2) / 3), gd = fmtNum(B / 3);
+          return {
+            badge: `탐구 4-C · ⚖️ 무게중심 G의 탄생 증명 — 왜 중선은 꼭짓점으로부터 2 : 1 로 나뉠까?`,
+            hint: `두 중선 $AD, BE$의 교점 $G$가 왜 $2:1$을 만들까요? 슬라이더로 <strong class="text-pink-300">두 중점 D, E를 연결하는 보조선 DE</strong>를 그으면 중점연결정리로 ${tex('\\overline{DE}\\parallel\\overline{AB},\\; \\overline{DE}=\\frac{1}{2}\\overline{AB}')} 인 <strong>1 : 2 모래시계($\\triangle GDE \\sim \\triangle GAB$)</strong>가 나타나기 때문입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 중점연결선 DE & 1:2 모래시계 분리!',
+            dim1Name: '무게중심 내분비', dim2Name: '중선 AD 전체 길이',
+            val1Txt: '2 : 1 (고정)', val2Txt: `${B} cm`,
+            parts: [
+              { id: 0, name: `🩷 중점연결 보조선 DE (DE ∥ AB, DE = ½AB)`, desc: `BC의 중점 D와 AC의 중점 E를 연결한 핵심 보조선`, val: `DE : AB = 1 : 2`, color: '#f472b6', ok: true },
+              { id: 1, name: `🔵 모래시계 큰 쪽 △GAB (AG = ${ag} cm)`, desc: `꼭짓점 쪽 긴 중선 조각 AG = 전체(${B})의 2/3`, val: `AG = ${ag} cm`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🟡 모래시계 작은 쪽 △GDE (GD = ${gd} cm)`, desc: `밑변 중점 쪽 짧은 중선 조각 GD = 전체(${B})의 1/3`, val: `GD = ${gd} cm`, color: '#fbbf24', ok: true }
+            ],
+            totalRes: `중점연결 DE : AB = 1 : 2 ⇒ 모래시계 △GDE ∽ △GAB ⇒ AG(${ag}) : GD(${gd}) = 2 : 1`,
+            rule: '무게중심 G가 2 : 1 인 이유 = 중점연결선 DE가 만드는 1 : 2 모래시계 닮음 때문!',
+            formulaHTML: `• 중점연결정리에 의해 ${tex('\\overline{DE}\\parallel\\overline{AB}')} 이고 ${tex('\\overline{DE}:\\overline{AB} = 1:2')}<br/>• 모래시계 ${tex('\\triangle GAB \\sim \\triangle GDE')} (AA 닮음) 이므로 ${tex(`\\mathbf{\\overline{AG}:\\overline{GD} = \\overline{BG}:\\overline{GE} = 2:1}`)}!`,
+            notes: `• 또한 위쪽 모래시계의 넓이비는 닮음비 $1:2$의 제곱이므로 ${tex('\\triangle GDE : \\triangle GAB = 1^2 : 2^2 = \\mathbf{1 : 4}')} 입니다!`,
+            fracEq: [`AB (2)`, `DE (1)`, `AG (${ag})`, `GD (${gd})`],
+            tapeTitle: `중선 AD(${B}cm) 내분: 꼭짓점 쪽 AG(${ag}cm, 2/3) : 밑변 중점 쪽 GD(${gd}cm, 1/3) = 2 : 1`,
+            tapeSegs: [
+              { text: `꼭짓점 쪽 AG = ${ag}cm (비율 2)`, weight: 2 / 3, color: '#38bdf8' },
+              { text: `중점 쪽 GD = ${gd}cm (비율 1)`, weight: 1 / 3, color: '#fbbf24' }
+            ]
+          };
+        }
+        if (sub === 'centroidSix') {
+          const sTotal = B * 6; // 48, 60, 72, 90
+          const sOne = B;
+          const sTiny = fmtNum(B / 4);
+          return {
+            badge: `탐구 4-D · 🍕 세 중선에 의한 넓이 6등분 & 중점연결선 위 초미니 조각(1/24 S) 해부!`,
+            hint: `세 중선 $AD, BE, CF$를 모두 그으면 전체 넓이(${sTotal})가 <strong>똑같이 6등분(한 조각 = ${sOne})</strong>됩니다! 여기에 중점연결선 $FE$를 추가하면 중심 $G$와 중선 교점 $M$ 사이의 <strong>초미니 삼각형 $\\triangle FGM$의 넓이는 전체의 $\\frac{1}{24}$</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 6등분 보기' : '🎬 중점연결선 FE & 3:1:2 길이비 해부!',
+            dim1Name: '중선 분할비 (AG:GM:MD)', dim2Name: '1조각 넓이 (전체/6)',
+            val1Txt: '3 : 1 : 2', val2Txt: `${sOne} cm² (전체 ${sTotal})`,
+            parts: [
+              { id: 0, name: `🟡 기본 피자 1조각 △GBD 넓이 (= 1/6 S)`, desc: `전체 넓이(${sTotal}) ÷ 6 = ${sOne} cm² (6조각 모두 넓이 같음!)`, val: `${sOne} cm² (1/6)`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 피자 2조각 합체 (△GBC 또는 사각형 GDCE = 1/3 S)`, desc: `${sOne} × 2 = ${sOne * 2} cm² (전체의 1/3)`, val: `${sOne * 2} cm² (1/3)`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🩷 [킬러] 중점연결선 FE와 중선 분할 (AM : MG : GD = 3 : 1 : 2!)`, desc: `초미니 △FGM 넓이 = (1/6 S) × (1/4) = 전체의 1/24 = ${sTiny} cm²!`, val: `${sTiny} cm² (1/24)`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `전체(${sTotal}) ➔ 1조각(1/6)=${sOne} | 초미니 △FGM(1/24)=${sTiny} | AM:MG:GD = 3:1:2`,
+            rule: '초고난도 암기 코드: 중선 위에서 [꼭짓점 A ~ 중점연결선 M ~ 무게중심 G ~ 바닥 D] = 3 : 1 : 2!',
+            formulaHTML: `• 전체 중선 길이를 $6k$라 하면:<br/>&nbsp;&nbsp;① 중점연결선 $FE$는 중선을 반으로 나누므로 ${tex('\\overline{AM} = \\overline{MD} = 3k')}<br/>&nbsp;&nbsp;② 무게중심 $G$는 $2:1$로 나누므로 ${tex('\\overline{AG} = 4k,\\; \\overline{GD} = 2k')}<br/>&nbsp;&nbsp;③ 따라서 ${tex('\\overline{MG} = 4k - 3k = 1k \\implies \\mathbf{\\overline{AM} : \\overline{MG} : \\overline{GD} = 3 : 1 : 2}')}!`,
+            notes: `• 이 <strong>$3 : 1 : 2$ 비율</strong> 하나만 기억하면 내신 최고난도 무게중심 문제도 5초 만에 풀립니다!`,
+            fracEq: [`AM (3k)`, `MG (1k)`, `GD (2k)`, `AG (4k)`],
+            tapeTitle: `중선 AD(6k) 황금 비율: 위쪽 AM(3k) : 가운데 MG(1k) : 아래쪽 GD(2k) = 3 : 1 : 2!`,
+            tapeSegs: [
+              { text: `AM (3k = 3/6)`, weight: 3 / 6, color: '#38bdf8' },
+              { text: `MG (1k)`, weight: 1 / 6, color: '#f472b6' },
+              { text: `GD (2k = 2/6)`, weight: 2 / 6, color: '#fbbf24' }
+            ]
+          };
+        }
+        // varignonQuad
+        const d1 = B, d2 = 10;
+        const perim = d1 + d2;
+        return {
+          badge: `탐구 4-E · 💎 사각형 네 변의 중점 연결 (바리뇽 정리) — 안쪽 사각형 EFGH는 무조건 평행사변형!`,
+          hint: `아무리 찌그러진 사각형이라도 네 변의 중점 $E, F, G, H$를 연결하면 <strong>대각선 $AC, BD$와 평행하고 길이가 절반</strong>인 선분들이 생겨 안쪽 사각형은 <strong>무조건 평행사변형</strong>이 되며, <strong class="text-amber-300">둘레의 길이는 두 대각선의 합(${d1}+${d2}=${perim}cm)</strong>과 같습니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 대각선 숨기기' : '🎬 두 대각선 AC, BD 보조선과 중점연결 비교!',
+          dim1Name: '안쪽 사각형 정체', dim2Name: '대각선 AC 길이',
+          val1Txt: '무조건 평행사변형', val2Txt: `${d1} cm (BD=10)`,
+          parts: [
+            { id: 0, name: `🟡 가로 중점연결선 EH = FG = ½ BD (5 cm)`, desc: `△ABD와 △CBD의 중점연결정리 ⇒ EH + FG = BD(10cm)!`, val: `합 = BD (10cm)`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 세로 중점연결선 EF = HG = ½ AC (${d1 / 2} cm)`, desc: `△ABC와 △ADC의 중점연결정리 ⇒ EF + HG = AC(${d1}cm)!`, val: `합 = AC (${d1}cm)`, color: '#38bdf8', ok: true },
+            { id: 2, name: `🟢 평행사변형 EFGH 둘레 = AC + BD & 넓이 = ½ 전체`, desc: `둘레 = ${d1} + 10 = ${perim} cm, 넓이는 전체 사각형의 정확히 절반(½)!`, val: `둘레 ${perim} cm`, color: '#34d399', ok: true }
+          ],
+          totalRes: `□EFGH = 평행사변형 | 둘레 = AC(${d1}) + BD(10) = ${perim} cm | 넓이 = ½ 전체`,
+          rule: '사각형 중점 연결: ① 일반사각형➔평행사변형  ② 직사각형/등변사다리꼴➔마름모  ③ 마름모➔직사각형!',
+          formulaHTML: `• ${tex('\\overline{EH}+\\overline{FG} = \\frac{1}{2}\\overline{BD}+\\frac{1}{2}\\overline{BD} = \\overline{BD}')}, ${tex('\\overline{EF}+\\overline{HG} = \\overline{AC}')}<br/>• 따라서 <strong>(${tex('\\square EFGH')}의 둘레) = (두 대각선의 길이의 합 ${tex('\\overline{AC}+\\overline{BD}')})</strong>!`,
+          notes: `• <strong>[시험 100% 출제 변환표]</strong>: 왜 직사각형의 중점을 이으면 <strong>마름모</strong>가 될까요? 직사각형은 두 대각선의 길이가 같아서(${tex('\\overline{AC}=\\overline{BD}')}) 중점 사각형의 네 변이 모두 같아지기 때문입니다! 반대로 마름모는 대각선이 직교(${tex('90^\\circ')})하므로 중점을 이으면 <strong>직사각형</strong>이 됩니다!`,
+          fracEq: [`EH+FG (BD)`, `10 cm`, `EF+HG (AC)`, `${d1} cm`],
+          tapeTitle: `□EFGH 둘레(${perim}cm) = 대각선 AC(${d1}cm) + 대각선 BD(10cm)`,
+          tapeSegs: [
+            { text: `EF + HG = 대각선 AC (${d1}cm)`, weight: d1 / perim, color: '#38bdf8' },
+            { text: `EH + FG = 대각선 BD (10cm)`, weight: 10 / perim, color: '#fbbf24' }
+          ]
+        };
+      }
+
+      // ==================== [탭 5: 종이접기 & 사각형 닮음 킬러] ====================
+      if (m === 5) {
+        if (sub === 'foldRect') {
+          return {
+            badge: `탐구 5-A · 📄 직사각형 종이접기 킬러 — 직각(90°)이 바닥에 닿으면 양옆은 (•+×=90°) AA 닮음!`,
+            hint: `직사각형의 꼭짓점 $D(90^\\circ)$를 변 $BC$ 위의 점 $F$에 접어 내리면, 일직선 $180^\\circ$에서 가운데 $90^\\circ$를 뺀 양옆 각의 합이 $\\bullet + \\times = 90^\\circ$가 되어 <strong class="text-amber-300">왼쪽 $\\triangle ABF(8:6:10)$와 오른쪽 $\\triangle FCE(4:3:5)$가 AA 닮음</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 접힌 원위치로' : '🎬 양옆 두 직각삼각형 분리·정렬!',
+            dim1Name: '△ABF : △FCE 닮음비', dim2Name: '직사각형 규격',
+            val1Txt: '2 : 1 (4:3:5 비)', val2Txt: '가로 10 × 세로 8',
+            parts: [
+              { id: 0, name: `🟡 왼쪽 직각삼각형 △ABF (AB=8, BF=6, AF=10)`, desc: `내각 (90°, •, ×) — 3:4:5 피타고라스 직각삼각형`, val: `8 : 6 : 10`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 오른쪽 직각삼각형 △FCE (FC=4, CE=3, FE=5)`, desc: `AB(8):FC(4) = 2:1 이므로 BF(6):CE = 2:1 ⇒ CE = 3 cm!`, val: `CE = 3 cm!`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🩷 접힌 삼각형 △AFE ≡ 원래 △ADE (합동!)`, desc: `AD = AF = 10 cm, DE = FE = 8 - 3 = 5 cm`, val: `FE = DE = 5`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `△ABF ∽ △FCE (AA 닮음, 2:1) ⇒ EC = 3 cm, DE = EF = 5 cm`,
+            rule: '종이접기 2대 무기: ① 접기 전·후 조각은 합동(AD=AF, DE=FE)  ② 바닥 양옆 삼각형은 AA 닮음!',
+            formulaHTML: `• 평각 $180^\\circ$에서 ${tex('\\angle AFB(\\times) + 90^\\circ + \\angle EFC(\\bullet) = 180^\\circ \\implies \\bullet + \\times = 90^\\circ')}<br/>• 따라서 ${tex('\\triangle ABF \\sim \\triangle FCE')} (AA 닮음) ${tex('\\implies \\dfrac{\\overline{AB}}{\\overline{FC}} = \\dfrac{\\overline{BF}}{\\overline{CE}} \\implies \\dfrac{8}{4} = \\dfrac{6}{\\overline{CE}} \\implies \\mathbf{\\overline{CE}=3\\text{ cm}}')}`,
+            notes: `• <strong>[헷갈림 주의]</strong>: 접힌 삼각형($\\triangle AFE$)과 바닥 삼각형($\\triangle ABF$)이 닮음인 것이 아니라, <strong>바닥 양쪽 구석에 있는 두 직각삼각형($\\triangle ABF \\sim \\triangle FCE$)</strong>끼리 닮음입니다!`,
+            fracEq: [`AB (8)`, `FC (4)`, `BF (6)`, `CE (3)`],
+            tapeTitle: `오른쪽 변 DC(8cm) 분할: 위쪽 접힌 변 DE(=FE=5cm) + 아래쪽 구한 변 EC(3cm) = 8cm`,
+            tapeSegs: [
+              { text: `DE = FE = 5cm`, weight: 5 / 8, color: '#f472b6' },
+              { text: `EC = 3cm`, weight: 3 / 8, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'foldEqui') {
+          return {
+            badge: `탐구 5-B · 🔺 [심화 킬러] 정삼각형 종이접기 — 60° 꼭짓점이 바닥에 닿으면 (•+×=120°) AA 닮음!`,
+            hint: `한 변이 $15\\text{ cm}$인 정삼각형 $ABC$의 꼭짓점 $A(60^\\circ)$를 변 $BC$ 위의 점 $F(BF=3, FC=12)$에 접어 내리면, 양옆 삼각형 $\\triangle DBF$와 $\\triangle FCE$는 모두 한 각이 $60^\\circ$이고 나머지 두 각이 $\\bullet, \\times$로 같아 <strong>AA 닮음</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 접힌 원위치로' : '🎬 양옆 60° 삼각형 분리·정렬!',
+            dim1Name: '양옆 삼각형 관계', dim2Name: '정삼각형 한 변',
+            val1Txt: '△DBF ∽ △FCE', val2Txt: '15 cm (BF=3, FC=12)',
+            parts: [
+              { id: 0, name: `🟡 왼쪽 삼각형 △DBF (∠B=60°, BD=7, BF=3, DF=8)`, desc: `AD=DF=8 이므로 BD = 15 - 8 = 7 cm, BF = 3 cm`, val: `7 : 3 : 8`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 오른쪽 삼각형 △FCE (∠C=60°, FC=12, CE=36/7)`, desc: `△DBF ∽ △FCE 에서 BD(7):CF(12) = BF(3):CE ⇒ CE = 36/7 cm!`, val: `CE = 36/7 cm`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🩷 접힌 정삼각형 각 ∠DFE = ∠A = 60°`, desc: `일직선 180° - 60° = 120° ⇒ ∠BFD(×) + ∠EFC(•) = 120°!`, val: `• + × = 120°`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `∠B=∠C=60° & •+×=120° ⇒ △DBF ∽ △FCE (AA 닮음)`,
+            rule: '직사각형 접기는 (•+×=90°) AA 닮음  |  정삼각형 접기는 (•+×=120°) AA 닮음!',
+            formulaHTML: `• ${tex('\\triangle DBF')}에서 내각의 합 $180^\\circ$이므로 ${tex('60^\\circ + \\bullet + \\times = 180^\\circ \\implies \\bullet + \\times = 120^\\circ')}<br/>• 일직선 $BC$ 위에서도 ${tex('\\times + 60^\\circ + \\angle EFC = 180^\\circ \\implies \\angle EFC = \\bullet')}<br/>• 따라서 ${tex('\\mathbf{\\triangle DBF \\sim \\triangle FCE}')} (AA 닮음)!`,
+            notes: `• 대응 순서를 쓸 때 $60^\\circ$ 각인 점 $B$와 점 $C$를 가운데에 두고 <strong>$\\triangle D\\mathbf{B}F \\sim \\triangle F\\mathbf{C}E$</strong> 순서로 쓰면 대응변이 절대 안 헷갈립니다!`,
+            fracEq: [`BD (7)`, `CF (12)`, `BF (3)`, `CE (36/7)`],
+            tapeTitle: `밑변 BC(15cm) 분할: 왼쪽 BF(3cm) + 오른쪽 FC(12cm) = 15cm`,
+            tapeSegs: [
+              { text: `BF = 3cm`, weight: 3 / 15, color: '#fbbf24' },
+              { text: `FC = 12cm`, weight: 12 / 15, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'trapArea4') {
+          const a2 = M * M, ab = M * N, b2 = N * N;
+          const tot = a2 + 2 * ab + b2;
+          return {
+            badge: `탐구 5-C · ✖️ 사다리꼴 대각선 4분할 넓이비 (위 a² : 양옆 ab : 아래 b²)`,
+            hint: `윗변:아랫변이 ${M}:${N}인 사다리꼴을 대각선으로 4등분하면, <strong>위와 아래는 닮음이라서 제곱비(${M}² : ${N}² = ${a2} : ${b2})</strong>이고, <strong>위와 옆은 높이가 같은 삼각형이라서 밑변 길이비(${M} : ${N} = ${a2} : ${ab})</strong>를 따릅니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 합쳐서 보기' : '🎬 닮음(제곱비) vs 등고(길이비) 비교!',
+            dim1Name: '윗변 : 아랫변 닮음비', dim2Name: '4조각 넓이비 공식',
+            val1Txt: `${M} : ${N}`, val2Txt: `${a2} : ${ab} : ${ab} : ${b2}`,
+            parts: [
+              { id: 0, name: `🟡 위쪽 △OAD (a² = ${a2}S) ↔ 🔵 아래쪽 △OCB (b² = ${b2}S)`, desc: `서로 AA 닮음(${M}:${N})이므로 넓이비는 제곱비 ${a2} : ${b2}!`, val: `위:아래 = ${a2}:${b2}`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 왼쪽 날개 △OAB = 오른쪽 날개 △ODC (ab = ${ab}S)`, desc: `△OAD와 꼭짓점 A를 공유(높이 같음)하므로 밑변비 OD:OB = ${M}:${N}!`, val: `양옆 = 각 ${ab}S`, color: '#f472b6', ok: true },
+              { id: 2, name: `🟢 사다리꼴 전체 넓이 = (a + b)² = ${tot}S`, desc: `${a2}S + ${ab}S + ${ab}S + ${b2}S = (${M}+${N})²S = ${tot}S!`, val: `전체 = ${tot}S`, color: '#34d399', ok: true }
+            ],
+            totalRes: `4분할 넓이비 = 위(${a2}) : 왼(${ab}) : 오른(${ab}) : 아래(${b2}) | 합계 = ${tot}`,
+            rule: '닮음인 두 삼각형(위↔아래)은 제곱비(a²:b²), 꼭짓점을 공유한 옆 삼각형(위↔옆)은 길이비(a:b)!',
+            formulaHTML: `• <strong>[닮음 제곱비]</strong>: ${tex(`\\triangle OAD \\sim \\triangle OCB (${M}:${N}) \\implies S_{\\text{위}}:S_{\\text{아래}} = ${M}^2:${N}^2 = \\mathbf{${a2}:${b2}}`)}<br/>• <strong>[밑변 길이비]</strong>: ${tex(`\\overline{OD}:\\overline{OB} = ${M}:${N} \\implies S_{\\text{위}}:S_{\\text{옆}} = ${M}:${N} = \\mathbf{${a2}:${ab}}`)}`,
+            notes: `• <strong>[등적변형 원리]</strong>: ${tex('\\triangle ABC = \\triangle DBC')} (밑변 $BC$ 공통, 높이 같음)에서 공통부분 ${tex('\\triangle OBC')}를 빼면 <strong>왼쪽 날개(${tex('\\triangle OAB')})와 오른쪽 날개(${tex('\\triangle ODC')})의 넓이는 언제나 똑같습니다($ab = ab$)!</strong>`,
+            fracEq: [`위 (${a2}S)`, `옆 (${ab}S)`, `옆 (${ab}S)`, `아래 (${b2}S)`],
+            tapeTitle: `사다리꼴 전체 넓이(${tot}S) = 위(${a2}S) + 왼쪽날개(${ab}S) + 오른쪽날개(${ab}S) + 아래(${b2}S)`,
+            tapeSegs: [
+              { text: `위 (${a2}S)`, weight: a2 / tot, color: '#fbbf24' },
+              { text: `왼 (${ab}S)`, weight: ab / tot, color: '#f472b6' },
+              { text: `오른 (${ab}S)`, weight: ab / tot, color: '#f472b6' },
+              { text: `아래 (${b2}S)`, weight: b2 / tot, color: '#38bdf8' }
+            ]
+          };
+        }
+        if (sub === 'paraTrisect') {
+          const seg = fmtNum(B / 3);
+          return {
+            badge: `탐구 5-D · 🦋 평행사변형 두 변의 중점(M, N)과 대각선 3등분 정리 (BP = PQ = QD = 1:1:1!)`,
+            hint: `평행사변형 꼭짓점 $A$에서 두 변의 중점 $M, N$에 선을 그으면, 대각선 $BD$와 만나는 두 점 $P, Q$는 각각 $\\triangle ABC$와 $\\triangle ACD$의 <strong>무게중심</strong>이 되어 대각선 $BD$를 정확히 <strong class="text-amber-300">1 : 1 : 1 로 3등분(각 ${seg}cm)</strong>합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 뷰로' : '🎬 대각선 AC 보조선 & 1:2 모래시계 작동!',
+            dim1Name: '대각선 분할비 (BP:PQ:QD)', dim2Name: '대각선 BD 전체 길이',
+            val1Txt: '1 : 1 : 1 (3등분!)', val2Txt: `${B} cm`,
+            parts: [
+              { id: 0, name: `🟡 나비넥타이 모래시계 △PBM ∽ △PDA (1 : 2)`, desc: `BM = ½BC = ½AD 이므로 BP : PD = 1 : 2 ⇒ BP = ⅓BD (${seg}cm)`, val: `BP = ${seg} cm`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 반대쪽 모래시계 △QDN ∽ △QBA (1 : 2)`, desc: `DN = ½CD = ½AB 이므로 QD : QB = 1 : 2 ⇒ QD = ⅓BD (${seg}cm)`, val: `QD = ${seg} cm`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🩷 가운데 조각 PQ = BD - (BP + QD) = ⅓BD!`, desc: `보조선 AC(교점 O)를 그으면 PO = OQ = ⅙BD 이므로 BP=PQ=QD!`, val: `PQ = ${seg} cm`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `BP = PQ = QD = ⅓BD = ${seg} cm (1 : 1 : 1 완벽 3등분!)`,
+            rule: '평행사변형 중점 선분 2개는 대각선을 무조건 1 : 1 : 1 로 삼등분한다! (중심 O 기준 2:1:1:2)',
+            formulaHTML: `• <strong>모래시계 풀이</strong>: ${tex('\\triangle PBM \\sim \\triangle PDA (1:2) \\implies \\overline{BP} = \\frac{1}{3}\\overline{BD}')}, 마찬가지로 ${tex('\\overline{QD} = \\frac{1}{3}\\overline{BD}')}<br/>• <strong>무게중심 풀이</strong>: 대각선 교점 $O$를 그으면 $P, Q$는 각각 무게중심이므로 ${tex('\\overline{BP}:\\overline{PO}:\\overline{OQ}:\\overline{QD} = \\mathbf{2 : 1 : 1 : 2} \\implies 2 : 2 : 2 (1:1:1)')}!`,
+            notes: `• 대각선 교점 $O$까지 함께 물어볼 때는 <strong>$2 : 1 : 1 : 2$</strong> 비율을, 점 $P, Q$만 물어볼 때는 <strong>$1 : 1 : 1$</strong> 비율을 쓰면 3초 만에 해결됩니다!`,
+            fracEq: [`BM (1)`, `AD (2)`, `BP (${seg})`, `PD (${fmtNum(seg * 2)})`],
+            tapeTitle: `대각선 BD(${B}cm) 3등분: 왼쪽 BP(${seg}cm, ⅓) : 가운데 PQ(${seg}cm, ⅓) : 오른쪽 QD(${seg}cm, ⅓)`,
+            tapeSegs: [
+              { text: `BP = ${seg}cm (2k)`, weight: 1 / 3, color: '#fbbf24' },
+              { text: `PQ = ${seg}cm (1k+1k)`, weight: 1 / 3, color: '#f472b6' },
+              { text: `QD = ${seg}cm (2k)`, weight: 1 / 3, color: '#38bdf8' }
+            ]
+          };
+        }
+        // rectDiagPerp
+        const scaleMul = B / 10;
+        const ab = fmtNum(6 * scaleMul), bc = fmtNum(8 * scaleMul), ac = fmtNum(10 * scaleMul);
+        const ah = fmtNum(3.6 * scaleMul), hc = fmtNum(6.4 * scaleMul), bh = fmtNum(4.8 * scaleMul);
+        return {
+          badge: `탐구 5-E · ▭ 직사각형 대각선에 내린 수선 (직각삼각형 소공식 3총사 연쇄 적용!)`,
+          hint: `직사각형 $ABCD$에서 대각선 $AC$에 수선 $BH$를 내리면, 위쪽 반을 가리고 보았을 때 <strong>탐구 3에서 배운 직각삼각형 수선 3총사($\\triangle ABC \\sim \\triangle AHB \\sim \\triangle BHC$)</strong>와 100% 똑같은 그림이 됩니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 원본으로 합치기' : '🎬 직각삼각형 조각 분리·정렬!',
+          dim1Name: '적용 공식', dim2Name: '대각선 AC 길이',
+          val1Txt: 'AB² = AH · AC', val2Txt: `${ac} cm (${ab}×${bc})`,
+          parts: [
+            { id: 0, name: `🟡 왼쪽 작은 직각삼각형 △AHB (AH = ${ah} cm)`, desc: `AB² = AH · AC ⇒ ${ab}² = AH × ${ac} ⇒ AH = ${ah} cm`, val: `AH = ${ah} cm`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 아래쪽 중간 직각삼각형 △BHC (HC = ${hc} cm)`, desc: `BC² = CH · CA ⇒ ${bc}² = HC × ${ac} ⇒ HC = ${hc} cm`, val: `HC = ${hc} cm`, color: '#38bdf8', ok: true },
+            { id: 2, name: `🩷 대각선 수선 BH (소공식 BH = ${bh} cm)`, desc: `AB · BC = AC · BH ⇒ ${ab} × ${bc} = ${ac} × BH ⇒ BH = ${bh} cm`, val: `BH = ${bh} cm`, color: '#f472b6', ok: true }
+          ],
+          totalRes: `AC = ${ac} cm ⇒ AH = ${ah} cm, HC = ${hc} cm, 수선 BH = ${bh} cm`,
+          rule: '직사각형 대각선에 수선이 보이면 ➔ 반쪽 직각삼각형에서 소(牛)공식을 즉시 발동하라!',
+          formulaHTML: `• ${tex(`\\overline{AB}^2 = \\overline{AH}\\cdot\\overline{AC} \\implies ${ab}^2 = \\overline{AH}\\times ${ac} \\implies \\mathbf{\\overline{AH}=${ah}\\text{ cm}}`)}<br/>• ${tex(`\\overline{AB}\\cdot\\overline{BC} = \\overline{AC}\\cdot\\overline{BH} \\implies ${ab}\\times ${bc} = ${ac}\\times\\overline{BH} \\implies \\mathbf{\\overline{BH}=${bh}\\text{ cm}}`)}`,
+          notes: `• 반대쪽 꼭짓점 $D$에서도 대각선 $AC$에 수선 $DH'$을 내리면 합동에 의해 ${tex(`\\overline{AH} = \\overline{CH'} = ${ah}\\text{ cm}`)}가 되어 가운데 남은 선분 길이는 ${tex(`${ac} - 2\\times ${ah} = ${fmtNum((10 - 7.2) * scaleMul)}\\text{ cm}`)}가 됩니다!`,
+          fracEq: [`AC (${ac})`, `AB (${ab})`, `AB (${ab})`, `AH (${ah})`],
+          tapeTitle: `대각선 AC(${ac}cm) 분할: 왼쪽 위 AH(${ah}cm, 9/25) + 오른쪽 아래 HC(${hc}cm, 16/25)`,
+          tapeSegs: [
+            { text: `AH = ${ah}cm`, weight: 0.36, color: '#fbbf24' },
+            { text: `HC = ${hc}cm`, weight: 0.64, color: '#38bdf8' }
+          ]
+        };
+      }
+
+      // ==================== [탭 6: 차원비 스캐너 & 원뿔 절단 킬러] ====================
+      if (sub === 'dimConeCut') {
+        return {
+          badge: `탐구 6-A · 🍦 [입체 닮음 오답 1위!] 원뿔을 높이가 1:1:1이 되도록 평행하게 자른 3조각 부피비!`,
+          hint: `원뿔 높이를 3등분하여 평행하게 자르면, 꼭짓점부터 <strong>전체 원뿔 3개의 닮음비가 $1 : 2 : 3$</strong>이므로 전체 부피비는 세제곱인 <strong class="text-sky-300">$1^3 : 2^3 : 3^3 = 1 : 8 : 27$</strong>이고, 잘린 <strong>각 층(원뿔대)의 부피비는 윗층을 뺀 $1 : (8-1) : (27-8) =$ <span class="text-amber-300">1 : 7 : 19</span></strong>입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 원뿔 하나로 합치기' : '🎬 3단 조각(1 : 7 : 19) 분리 비교!',
+          dim1Name: '누적 원뿔 닮음비', dim2Name: '각 층 실제 부피비',
+          val1Txt: '1 : 2 : 3 (부피 1:8:27)', val2Txt: '1 : 7 : 19 (빼기 필수!)',
+          parts: [
+            { id: 0, name: `🟡 1층 맨 위 작은 원뿔 (닮음비 1 ➔ 부피 1³ = 1V)`, desc: `높이 1칸인 원뿔 부피 = 1V (물 채우는 시간 1분!)`, val: `부피 1V`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 2층 가운데 원뿔대 (2³ - 1³ = 8 - 1 = 7V!)`, desc: `⚠️ 8V가 아니라 위쪽 1V를 뺀 7V! (더 채우는 데 7분 소요!)`, val: `부피 7V (8V 아님!)`, color: '#38bdf8', ok: true },
+            { id: 2, name: `🩷 3층 맨 아래 원뿔대 (3³ - 2³ = 27 - 8 = 19V!)`, desc: `⚠️ 27V가 아니라 위쪽 8V를 뺀 19V!`, val: `부피 19V!`, color: '#f472b6', ok: true }
+          ],
+          totalRes: `전체 원뿔 부피비 = 1 : 8 : 27 | 잘린 3조각(원뿔대) 부피비 = 1 : 7 : 19!`,
+          rule: '원뿔대는 원뿔과 닮음이 아니다! 반드시 (큰 원뿔 부피 n³) - (작은 원뿔 부피 m³)로 빼서 구한다!',
+          formulaHTML: `• <strong>[물 채우기 단골 문제]</strong>: 원뿔 모양 그릇에 절반($\frac{1}{2}$) 높이까지 물을 채우는 데 <strong>3분</strong>이 걸렸다면, 가득 채울 때까지 <strong>더 걸리는 시간</strong>은?<br/>&nbsp;&nbsp;$\implies$ 높이비 $1:2 \implies$ 부피비 $1^3:2^3 = 1:8 \implies$ 남은 빈 공간은 $8-1 = \mathbf{7\text{배}}$ 이므로 $3\text{분}\times 7 = \mathbf{21\text{분}}$!`,
+          notes: `• <strong>[시험장 1순위 함정]</strong>: “절반 높이까지 채웠으니 남은 부분도 $1:8$이라서 8배 걸린다?” $\implies$ <strong>거짓(❌)</strong>! 전체가 8배이므로 이미 채운 1배를 빼서 <strong>남은 부분은 7배($1 : 7$)</strong>입니다!`,
+          fracEq: [`높이비 (1:2)`, `전체부피 (1:8)`, `채운양 (1V)`, `남은양 (7V!)`],
+          tapeTitle: `3단 절단 부피 구성(총 27V): 1층 작은 원뿔(1V) + 2층 원뿔대(7V) + 3층 원뿔대(19V)`,
+          tapeSegs: [
+            { text: `1V`, weight: 2 / 27, color: '#fbbf24' },
+            { text: `2층 원뿔대 = 8 - 1 = 7V`, weight: 7 / 27, color: '#38bdf8' },
+            { text: `3층 원뿔대 = 27 - 8 = 19V`, weight: 18 / 27, color: '#f472b6' }
+          ]
+        };
+      }
+      if (sub === 'dimTile2D') {
+        const kMul = state.ratioIdx === 2 ? 3 : 2;
+        const areaMul = kMul * kMul;
+        return {
+          badge: `탐구 6-B · 🧱 2차원 평면 타일 격자 실험 — 길이비 1 : ${kMul} ➔ 넓이비는 제곱인 1 : ${areaMul}!`,
+          hint: `도형의 가로와 세로가 모두 ${kMul}배씩 커지면, 큰 도형 안에는 작은 도형 타일이 <strong class="text-amber-300">${kMul} × ${kMul} = ${areaMul}장</strong> 빈틈없이 들어갑니다! (둘레의 비는 1차원 길이라서 그대로 $1 : ${kMul}$!)`,
+          actionTxt: state.fold > 0.5 ? '🎬 격자 숨기기' : `🎬 ${areaMul}조각 합동 타일 격자 분할!`,
+          dim1Name: '닮음비(길이·둘레비)', dim2Name: '넓이의 비 (m² : n²)',
+          val1Txt: `1 : ${kMul}`, val2Txt: `1² : ${kMul}² = 1 : ${areaMul}`,
+          parts: [
+            { id: 0, name: `🔵 1차원 [변의 길이 · 높이 · 둘레의 비] = 1 : ${kMul}`, desc: `단위가 cm¹ 인 모든 길이는 닮음비 1 : ${kMul} 그대로!`, val: `1 : ${kMul}`, color: '#38bdf8', ok: true },
+            { id: 1, name: `🟡 2차원 [넓이의 비] = 1² : ${kMul}² = 1 : ${areaMul}!`, desc: `작은 타일 1장 넓이가 ${B}cm²이면 큰 도형은 ${B * areaMul}cm²!`, val: `1 : ${areaMul} (${areaMul}배)`, color: '#fbbf24', ok: true }
+          ],
+          totalRes: `길이·둘레비 = 1 : ${kMul} | 넓이비 = 1² : ${kMul}² = 1 : ${areaMul} (${B}cm² ➔ ${B * areaMul}cm²)`,
+          rule: '둘레의 비 = 길이비(m : n) 그대로!  |  넓이·겉넓이의 비 = 제곱비(m² : n²)!',
+          formulaHTML: `• 삼각형 넓이 ${tex('S = \\frac{1}{2}\\times(\\text{밑변})\\times(\\text{높이})')} 에서 밑변이 ${kMul}배, 높이가 ${kMul}배가 되므로 넓이는 ${tex(`${kMul}\\times ${kMul} = \\mathbf{${areaMul}\\text{배}}`)}가 됩니다!`,
+          notes: `• <strong>[방향 반대로 구하기 주의]</strong>: 만약 두 닮음 도형의 <strong>넓이비가 $4 : 9$</strong>라고 주어지면, 닮음비(길이비)는 $4:9$가 아니라 제곱근인 <strong>$2 : 3$</strong>으로 먼저 바꾼 뒤 둘레나 부피를 구해야 합니다!`,
+          fracEq: [`길이비 (1:${kMul})`, `둘레비 (1:${kMul})`, `작은넓이 (${B})`, `큰넓이 (${B * areaMul})`],
+          tapeTitle: `넓이비 1 : ${areaMul} 비교 — 작은 도형(1장=${B}cm²) vs 큰 도형(${areaMul}장=${B * areaMul}cm²)`,
+          tapeSegs: [
+            { text: `작은 도형 (1장)`, weight: 1 / (1 + areaMul), color: '#38bdf8' },
+            { text: `큰 도형 (${kMul}² = ${areaMul}장 들어감!)`, weight: areaMul / (1 + areaMul), color: '#fbbf24' }
+          ]
+        };
+      }
+      if (sub === 'dimCube3D') {
+        const kMul = state.ratioIdx === 2 ? 3 : 2;
+        const areaMul = kMul * kMul;
+        const volMul = kMul * kMul * kMul;
+        return {
+          badge: `탐구 6-C · 🧊 3차원 입체 블록 실험 — 길이비 1 : ${kMul} ➔ 겉넓이비 1 : ${areaMul} ➔ 부피비 1 : ${volMul}!`,
+          hint: `모서리 길이가 ${kMul}배인 정육면체를 만들려면 가로 ${kMul}개 × 세로 ${kMul}개 × 높이 ${kMul}층 = 총 <strong class="text-pink-300">${kMul}³ = ${volMul}개의 블록</strong>이 필요합니다! 페인트 칠하는 양은 <strong>겉넓이비($1:${areaMul}$)</strong>, 물 채우는 양이나 쇠구슬 개수는 <strong>부피비($1:${volMul}$)</strong>를 따릅니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 외곽만 보기' : `🎬 ${kMul}×${kMul}×${kMul} = ${volMul}개 큐브 블록 해부!`,
+          dim1Name: '닮음비 ➔ 겉넓이비', dim2Name: '3차원 부피의 비 (m³ : n³)',
+          val1Txt: `1:${kMul} ➔ 1:${areaMul}`, val2Txt: `1³ : ${kMul}³ = 1 : ${volMul}`,
+          parts: [
+            { id: 0, name: `🔵 1차원 [모서리 · 높이 · 둘레의 비] = 1 : ${kMul}`, desc: `선분의 길이는 1제곱 비례 (단위: cm¹)`, val: `1 : ${kMul}`, color: '#38bdf8', ok: true },
+            { id: 1, name: `🟡 2차원 [한 면 넓이 · 전체 겉넓이의 비] = 1 : ${areaMul}`, desc: `페인트·포장지 소요량은 제곱 비례 (단위: cm²)`, val: `1²:${kMul}² = 1:${areaMul}`, color: '#fbbf24', ok: true },
+            { id: 2, name: `🩷 3차원 [부피 · 들이 · 무게의 비] = 1 : ${volMul}!`, desc: `물 용량·녹여서 만드는 쇠구슬 개수는 세제곱 비례 (단위: cm³)`, val: `1³:${kMul}³ = 1:${volMul}`, color: '#f472b6', ok: true }
+          ],
+          totalRes: `길이비 1:${kMul} ➔ 겉넓이비 1:${areaMul} ➔ 부피비 1:${volMul} (블록 ${volMul}개!)`,
+          rule: '페인트·겉넓이 = 제곱비(m²:n²)  |  물 용량·쇠구슬 녹이기·무게 = 세제곱비(m³:n³)!',
+          formulaHTML: `• 반지름이 $1\\text{ cm}$인 쇠구슬을 녹여서 반지름이 $${kMul}\\text{ cm}$인 큰 쇠구슬 1개를 만들려면 작은 쇠구슬이 몇 개 필요할까? $\\implies 1^3 : ${kMul}^3 = 1 : ${volMul} \\implies \\mathbf{${volMul}\\text{개}}$!`,
+          notes: `• <strong>[단위 힌트 비법]</strong>: 문제에서 단위가 $\\text{cm}$이면 1제곱, $\\text{cm}^2$이면 2제곱, $\\text{cm}^3$(또는 $\\text{mL, L, g}$)이면 3제곱을 쓰면 절대 안 헷갈립니다!`,
+          fracEq: [`길이 (1:${kMul})`, `겉넓이 (1:${areaMul})`, `부피1 (1³=1)`, `부피2 (${kMul}³=${volMul})`],
+          tapeTitle: `차원별 배율 급증: 길이(${kMul}배) ➔ 겉넓이(${kMul}²=${areaMul}배) ➔ 부피(${kMul}³=${volMul}배!)`,
+          tapeSegs: [
+            { text: `길이 (${kMul})`, weight: kMul / (kMul + areaMul + volMul), color: '#38bdf8' },
+            { text: `겉넓이 (${areaMul})`, weight: areaMul / (kMul + areaMul + volMul), color: '#fbbf24' },
+            { text: `부피 (${kMul}³ = ${volMul}배!)`, weight: volMul / (kMul + areaMul + volMul), color: '#f472b6' }
+          ]
+        };
+      }
+      // alwaysSimilar
+      return {
+        badge: `탐구 6-D · 🚫 [시험 100% 출제] 항상 닮음인 도형(⭕) vs 닮음이 아닌 단골 함정 반례(❌)`,
+        hint: `모양이 하나로 고정된 도형(<strong>원, 정다각형, 직각이등변삼각형, 구, 정다면체</strong>)은 크기에 상관없이 <strong>항상 닮음(⭕)</strong>이지만, 가로·세로 비율이나 꼭지각이 변할 수 있는 도형(<strong>직사각형, 마름모, 이등변삼각형, 원기둥, 원뿔</strong>)은 <strong>항상 닮음이 아닙니다(❌)</strong>!`,
+        actionTxt: state.fold > 0.5 ? '🎬 전체 비교 보기' : '🎬 반례 도형 겹쳐서 대각선/모선 불일치 확인!',
+        dim1Name: '항상 닮음(⭕)', dim2Name: '닮음 아님 반례(❌)',
+        val1Txt: '원·정다각형·구·직각이등변', val2Txt: '직사각형·마름모·원기둥·원뿔',
+        parts: [
+          { id: 0, name: `⭕ [항상 닮음] 두 원 · 두 부채꼴(중심각 같음) · 두 정n각형`, desc: `모든 내각이 같고 변의 비율이 1:1:...:1로 고정됨!`, val: `항상 닮음 ⭕`, color: '#34d399', ok: true },
+          { id: 1, name: `⭕ [항상 닮음] 두 직각이등변삼각형 · 두 구 · 두 정다면체`, desc: `직각이등변삼각형은 내각이 (90°,45°,45°)로 무조건 AA 닮음!`, val: `항상 닮음 ⭕`, color: '#38bdf8', ok: true },
+          { id: 2, name: `❌ [함정 반례] 두 직사각형 · 두 마름모 · 두 이등변삼각형 · 두 원뿔`, desc: `직사각형은 가로·세로비가 다르고, 마름모·이등변은 각도가 다를 수 있음!`, val: `닮음 아님 ❌`, color: '#f43f5e', ok: false }
+        ],
+        totalRes: `항상 닮음(⭕): 원·정다각형·직각이등변·구·정다면체 | 아님(❌): 이등변·직사각형·마름모·원뿔`,
+        rule: '일반 이등변삼각형은 (❌)이지만, 직각이등변삼각형은 (⭕)이다!',
+        formulaHTML: `• <strong>왜 두 직사각형은 닮음이 아닐까?</strong> 네 내각이 모두 $90^\\circ$로 같아도, 정사각형 모양($1\\times 1$)과 길쭉한 직사각형($4\\times 1$)은 가로·세로 대응변의 비가 달라 닮음이 아닙니다!<br/>• <strong>왜 두 마름모는 닮음이 아닐까?</strong> 네 변의 길이비가 모두 같아도 내각의 크기가 다를 수 있어 닮음이 아닙니다!`,
+        notes: `• <strong>[3초 판별 암기법]</strong>: 이름 앞에 <strong>‘정(正)’</strong> 자가 붙은 도형(정삼각형, 정사각형, 정오각형, 정육면체, 정사면체)과 <strong>원, 구, 직각이등변삼각형</strong>만 항상 닮음입니다!`,
+        fracEq: [`직각이등변 (⭕)`, `45°·45°·90°`, `일반이등변 (❌)`, `꼭지각 다름!`],
+        tapeTitle: `항상 닮음 판별: ‘정’다각형 · ‘정’다면체 · 원 · 구 · 직각이등변삼각형만 무조건 참(⭕)!`,
+        tapeSegs: []
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // 4. 메인 렌더링 파이프라인 (모드 1 ~ 6 전체 31종 시나리오 정밀 작도)
+    // -------------------------------------------------------------------------
+    function render() {
+      window.APBoardRel?.begin();
+      const rect = canvas.parentElement.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
+      drawChalkGrid(rect);
+
+      const spec = getSpec();
+      drawSimilarityScene(rect.width, rect.height, spec);
+      drawBottomTapeBanner(rect, spec.tapeTitle, spec.tapeSegs);
+
+      updateUI(spec);
+      window.APBoardRel?.finish();
+    }
+
+    function drawSimilarityScene(w, h, spec) {
+      const g = ctx;
+      const kScale = Math.max(0.1, Math.min(w / 840, h / 530)) * state.scale;
+      g.save();
+      g.translate(w / 2 + state.panX, h / 2 + state.panY - 12);
+      g.scale(kScale, kScale);
+      g.translate(-420, -255);
+      g.lineCap = 'round';
+      g.lineJoin = 'round';
+
+      const green = '#34d399', blue = '#38bdf8', amber = '#fbbf24', pink = '#f472b6', red = '#fb7185', white = '#f1f5f9';
+      const t = state.fold;
+      const m = state.mode;
+      const sub = state.subType[m];
+      const rp = RATIO_PRESETS[state.ratioIdx];
+      const M = rp.m, N = rp.n, K = M / N;
+      const B = state.baseScale;
+
+      function poly(ps, col, fill, stroke = 2.6, partIdx = -1) {
+        g.save();
+        g.beginPath();
+        ps.forEach((p, i) => (i ? g.lineTo(p.x, p.y) : g.moveTo(p.x, p.y)));
+        g.closePath();
+        let fCol = fill || 'rgba(52,211,153,0.08)';
+        let sCol = col || white;
+        let lw = stroke;
+        if (state.activePartIdx !== -1 && partIdx !== -1) {
+          if (state.activePartIdx === partIdx) {
+            lw = stroke + 1.8;
+            g.shadowColor = sCol;
+            g.shadowBlur = 15;
+          } else {
+            fCol = 'rgba(15, 23, 42, 0.08)';
+            sCol = 'rgba(148, 163, 184, 0.25)';
+            lw = 1.2;
+          }
+        }
+        g.fillStyle = fCol;
+        g.fill();
+        g.strokeStyle = sCol;
+        g.lineWidth = lw;
+        g.stroke();
+        g.restore();
+      }
+
+      function line(a, b, col = white, width = 2.2, dash = [], partIdx = -1) {
+        g.save();
+        g.beginPath();
+        g.moveTo(a.x, a.y);
+        g.lineTo(b.x, b.y);
+        let lw = width;
+        if (state.activePartIdx !== -1 && partIdx !== -1 && state.activePartIdx === partIdx) {
+          lw = width + 2;
+          g.shadowColor = col;
+          g.shadowBlur = 14;
+        }
+        g.strokeStyle = col;
+        g.lineWidth = lw;
+        g.setLineDash(dash);
+        g.stroke();
+        g.restore();
+      }
+
+      function txt(s, p, col = white, size = 13.5, align = 'center') {
+        g.save();
+        g.fillStyle = col;
+        g.font = `800 ${size}px Pretendard, system-ui, sans-serif`;
+        g.textAlign = align;
+        g.textBaseline = 'middle';
+        g.shadowColor = 'rgba(0,0,0,0.95)';
+        g.shadowBlur = 4;
+        g.fillText(s, p.x, p.y);
+        g.restore();
+      }
+
+      function dot(p, col = amber, r = 4.2) {
+        g.beginPath();
+        g.arc(p.x, p.y, r, 0, Math.PI * 2);
+        g.fillStyle = col;
+        g.fill();
+      }
+
+      function label(s, p, col = white, dx = 0, dy = -16) {
+        dot(p, col, 3.8);
+        txt(s, pt(p.x + dx, p.y + dy), col, 13);
+      }
+
+      // 좌우 작업 영역 구분선
+      line(pt(470, 70), pt(470, 435), 'rgba(148,163,184,0.25)', 1.5, [6, 6]);
+      txt('원본 기하 구조 & 보조선 실험', pt(245, 76), '#a7f3d0', 12.5);
+      txt('추출·회전/반사 정렬 & 구조 분석', pt(650, 76), amber, 12.5);
+
+      // =====================================================================
+      // [모드 1 렌더링] 포개진 삼각형 · 반전 · SAS · SSA 반례
+      // =====================================================================
+      if (m === 1) {
+        if (sub === 'ssaTrap') {
+          const A = pt(90, 355), B = pt(325, 215);
+          const R = 152;
+          const dy = A.y - B.y;
+          const dx = Math.sqrt(Math.max(0, R * R - dy * dy));
+          const C1 = pt(B.x - dx, A.y), C2 = pt(B.x + dx, A.y);
+
+          line(A, pt(450, A.y), 'rgba(148,163,184,0.5)', 2, [6, 5]);
+          g.save();
+          g.beginPath();
+          g.arc(B.x, B.y, R, 0.15, Math.PI - 0.15, false);
+          g.strokeStyle = amber;
+          g.lineWidth = state.activePartIdx === 2 ? 3.8 : 2.2;
+          g.setLineDash([5, 5]);
+          g.stroke();
+          g.restore();
+
+          poly([A, B, C2], blue, 'rgba(56,189,248,0.16)', 2.4, 1);
+          poly([A, B, C1], pink, 'rgba(244,114,182,0.22)', 2.8, 0);
+
+          label('A', A, green, -14, 12); label('B', B, green, 0, -16);
+          label('C₁(둔각)', C1, pink, -10, 18); label('C₂(예각)', C2, blue, 10, 18);
+          drawAngleArc(g, A, B, C2, { radius: 32, color: green, symbol: '30°' });
+          drawSideBadge(g, A, B, 'AB = 8', green, -15, 0.5, 2);
+          drawSideBadge(g, B, C1, 'BC₁ = 5', pink, -14, 0.5, 0);
+          drawSideBadge(g, B, C2, 'BC₂ = 5', blue, 14, 0.5, 1);
+
+          const pProg = Math.max(0.25, t);
+          const t1 = computeAlignedTriangle([A, B, C1], [A, B, C1], pt(635, 185), 0.72, false, pProg);
+          const t2 = computeAlignedTriangle([A, B, C2], [A, B, C2], pt(645, 325), 0.72, false, pProg);
+          poly(t1, pink, 'rgba(244,114,182,0.22)', 2.5, 0);
+          poly(t2, blue, 'rgba(56,189,248,0.20)', 2.5, 1);
+          txt('① 둔각삼각형 △ABC₁', pt(645, 120), pink, 12);
+          txt('② 예각삼각형 △ABC₂ (서로 닮음 아님!)', pt(645, 260), blue, 12);
+        } else if (sub === 'nestedRotated') {
+          const A = pt(205, 165), B = pt(95, 380), C = pt(405, 380);
+          const angle = 0.82;
+          const rotVec = p => {
+            const dx = p.x - A.x, dy = p.y - A.y;
+            return pt(A.x + K * (dx * Math.cos(angle) - dy * Math.sin(angle)), A.y + K * (dx * Math.sin(angle) + dy * Math.cos(angle)));
+          };
+          const D = rotVec(B), E = rotVec(C);
+
+          poly([A, B, C], green, 'rgba(52,211,153,0.08)', 2.6, 1);
+          poly([A, D, E], amber, 'rgba(251,191,36,0.22)', 2.8, 0);
+          label('A', A, green, 0, -18); label('B', B, green, -14, 14); label('C', C, green, 14, 14);
+          label('D', D, amber, -14, 12); label('E', E, amber, 16, -6);
+
+          drawAngleArc(g, A, B, C, { radius: 28, color: green, symbol: 'dot' });
+          drawAngleArc(g, A, D, E, { radius: 22, color: amber, symbol: 'dot' });
+          drawAngleArc(g, B, C, A, { radius: 24, color: blue, arcs: 2 });
+          drawAngleArc(g, D, E, A, { radius: 20, color: blue, arcs: 2 });
+
+          drawSideBadge(g, A, B, `${B} cm`, green, -15, 0.5, 1);
+          drawSideBadge(g, A, D, `${fmtNum(B * K)} cm`, amber, 15, 0.5, 0);
+          drawSideBadge(g, B, C, '10 cm', green, 16, 0.5, 1);
+
+          const destTri = state.isSuperimposed
+            ? [A, lerp(A, B, K), lerp(A, C, K)]
+            : computeAlignedTriangle([A, D, E], [A, B, C], pt(645, 245), 1.05, false, Math.max(0.15, t));
+          poly(destTri, amber, 'rgba(251,191,36,0.24)', 3, 0);
+          ['A\'', 'D\'(↔B)', 'E\'(↔C)'].forEach((lb, i) => label(lb, destTri[i], amber, i === 0 ? 0 : (i === 1 ? -18 : 18), i === 0 ? -16 : 16));
+          drawAngleArc(g, destTri[0], destTri[1], destTri[2], { radius: 22, color: amber, symbol: 'dot' });
+          drawAngleArc(g, destTri[1], destTri[2], destTri[0], { radius: 20, color: blue, arcs: 2 });
+          drawCorrespondenceBridges(g, [A, B, C], destTri);
+        } else if (sub === 'nestedMulti') {
+          const A = pt(245, 115), B = pt(95, 385), C = pt(405, 385);
+          const D = lerp(A, B, 1 / 3), E = lerp(A, C, 1 / 3);
+          const F = lerp(A, B, 2 / 3), Gp = lerp(A, C, 2 / 3);
+
+          poly([A, B, C], green, 'rgba(52,211,153,0.08)', 2.5, 2);
+          poly([A, F, Gp], blue, 'rgba(56,189,248,0.14)', 2.5, 1);
+          poly([A, D, E], amber, 'rgba(251,191,36,0.22)', 2.8, 0);
+
+          label('A', A, green, 0, -18); label('B', B, green, -14, 14); label('C', C, green, 14, 14);
+          label('D', D, amber, -14, 0); label('E', E, amber, 14, 0);
+          label('F', F, blue, -14, 0); label('G', Gp, blue, 14, 0);
+
+          drawParallelMark(g, D, E, 1, amber);
+          drawParallelMark(g, F, Gp, 1, blue);
+          drawParallelMark(g, B, C, 1, green);
+          drawTickMarks(g, A, D, 1, amber);
+          drawTickMarks(g, D, F, 1, amber);
+          drawTickMarks(g, F, B, 1, amber);
+
+          const d1 = fmtNum(B / 3), d2 = fmtNum((2 * B) / 3);
+          drawSideBadge(g, D, E, `${d1} cm`, amber, -12, 0.5, 0);
+          drawSideBadge(g, F, Gp, `${d2} cm`, blue, -12, 0.5, 1);
+          drawSideBadge(g, B, C, `${B} cm`, green, 15, 0.5, 2);
+
+          const pProg = Math.max(0.2, t);
+          const t1 = computeAlignedTriangle([A, D, E], [A, B, C], pt(645, 145), 0.85, false, pProg);
+          const t2 = computeAlignedTriangle([A, F, Gp], [A, B, C], pt(645, 238), 0.72, false, pProg);
+          const t3 = computeAlignedTriangle([A, B, C], [A, B, C], pt(645, 340), 0.56, false, pProg);
+          poly(t1, amber, 'rgba(251,191,36,0.22)', 2.4, 0);
+          poly(t2, blue, 'rgba(56,189,248,0.18)', 2.4, 1);
+          poly(t3, green, 'rgba(52,211,153,0.14)', 2.4, 2);
+          txt(`1단 (DE=${d1})`, pt(540, 145), amber, 11.5);
+          txt(`2단 (FG=${d2})`, pt(535, 238), blue, 11.5);
+          txt(`3단 (BC=${B})`, pt(530, 340), green, 11.5);
+        } else {
+          // nestedParallel, nestedFlip, sasShared
+          const isFlip = sub === 'nestedFlip';
+          const isSAS = sub === 'sasShared';
+          const A = isFlip ? pt(310, 118) : pt(225, 118);
+          const B_pt = pt(95, 382), C_pt = pt(410, 382);
+          const D = isFlip ? lerp(A, C_pt, K) : lerp(A, B_pt, K);
+          const E = isFlip ? lerp(A, B_pt, K) : lerp(A, C_pt, K);
+
+          poly([A, B_pt, C_pt], green, 'rgba(52,211,153,0.08)', 2.6, 1);
+          poly([A, D, E], amber, 'rgba(251,191,36,0.22)', 3.0, 0);
+          label('A', A, green, 0, -18);
+          label('B', B_pt, green, -14, 14);
+          label('C', C_pt, green, 14, 14);
+          label('D', D, amber, isFlip ? 15 : -15, -2);
+          label('E', E, amber, isFlip ? -15 : 15, -2);
+
+          drawAngleArc(g, A, B_pt, C_pt, { radius: 24, color: pink, symbol: 'dot' });
+
+          if (isFlip) {
+            drawAngleArc(g, D, A, E, { radius: 22, color: blue, arcs: 2, symbol: 'cross' });
+            drawAngleArc(g, C_pt, B_pt, A, { radius: 26, color: blue, arcs: 2, symbol: 'cross' });
+            drawSideBadge(g, A, D, `${fmtNum(B * K)} cm`, amber, 15, 0.5, 0);
+            drawSideBadge(g, A, C_pt, `${B} cm`, blue, 26, 0.72, 1);
+            drawSideBadge(g, A, E, `${fmtNum(10 * K)} cm`, amber, -15, 0.5, 0);
+            drawSideBadge(g, A, B_pt, `10 cm`, blue, -26, 0.72, 1);
+
+            if (state.conceptSwitch === 'all' || state.conceptSwitch === 'aux') {
+              const midBC = mid(B_pt, C_pt);
+              line(A, midBC, 'rgba(244,114,182,0.55)', 2, [6, 5], 2);
+              txt('거울 반전(Flip) 대칭축', pt(midBC.x, midBC.y + 22), pink, 11.5);
+            }
+          } else if (isSAS) {
+            drawSideBadge(g, A, D, `${fmtNum(6 * K)}`, amber, -15, 0.5, 1);
+            drawSideBadge(g, A, B_pt, `6 cm`, green, -28, 0.75, 1);
+            drawSideBadge(g, A, E, `${fmtNum(8 * K)}`, amber, 15, 0.5, 1);
+            drawSideBadge(g, A, C_pt, `8 cm`, green, 28, 0.75, 1);
+            drawSideBadge(g, D, E, `${fmtNum(B * K)} cm`, blue, -13, 0.5, 2);
+            drawSideBadge(g, B_pt, C_pt, `${B} cm`, blue, 15, 0.5, 2);
+          } else {
+            drawParallelMark(g, D, E, 1, amber);
+            drawParallelMark(g, B_pt, C_pt, 1, green);
+            drawAngleArc(g, D, E, A, { radius: 20, color: blue, arcs: 2 });
+            drawAngleArc(g, B_pt, C_pt, A, { radius: 24, color: blue, arcs: 2 });
+            drawSideBadge(g, A, D, `${fmtNum(B * K)} cm`, amber, -15, 0.5, 0);
+            drawSideBadge(g, D, B_pt, `DB=${fmtNum(B * (1 - K))}`, red, -15, 0.5, 2);
+            drawSideBadge(g, D, E, `${fmtNum(10 * K)} cm`, amber, -13, 0.5, 0);
+            drawSideBadge(g, B_pt, C_pt, '10 cm', green, 15, 0.5, 1);
+          }
+
+          const pProg = state.isSuperimposed ? 1.0 : Math.max(0.15, t);
+          const refGuide = computeAlignedTriangle([A, B_pt, C_pt], [A, B_pt, C_pt], pt(645, 260), 0.7, false, 1.0);
+          const aligned = state.isSuperimposed
+            ? [A, lerp(A, B_pt, K), lerp(A, C_pt, K)]
+            : computeAlignedTriangle([A, D, E], [A, B_pt, C_pt], pt(645, 240), 1.05, isFlip, pProg);
+
+          poly(refGuide, 'rgba(52,211,153,0.45)', 'rgba(52,211,153,0.05)', 1.6, 1);
+          poly(aligned, amber, 'rgba(251,191,36,0.24)', 3.0, 0);
+          const lbs = isFlip ? ['A', 'D(↔C)', 'E(↔B)'] : ['A', 'D(↔B)', 'E(↔C)'];
+          aligned.forEach((p, i) => label(lbs[i], p, amber, i === 0 ? 0 : (i === 1 ? -20 : 20), i === 0 ? -16 : 16));
+          drawAngleArc(g, aligned[0], aligned[1], aligned[2], { radius: 20, color: pink, symbol: 'dot' });
+          drawAngleArc(g, aligned[1], aligned[2], aligned[0], { radius: 18, color: blue, arcs: 2 });
+          drawCorrespondenceBridges(g, [A, D, E], aligned);
+        }
+      }
+
+      // =====================================================================
+      // [모드 2 렌더링] 모래시계 · 평행선 선분비 · 사다리꼴 EF · 내·외각 이등분선
+      // =====================================================================
+      else if (m === 2) {
+        if (sub === 'hourglassStd' || sub === 'hourglassEF') {
+          const topW = 190 * K, botW = 210;
+          const A = pt(245 - topW / 2, 125), D = pt(245 + topW / 2, 125);
+          const B_pt = pt(245 - botW / 2, 375), C_pt = pt(245 + botW / 2, 375);
+          const O = calcCross(A, C_pt, D, B_pt);
+
+          if (sub === 'hourglassEF') {
+            line(A, B_pt, 'rgba(148,163,184,0.45)', 2, [5, 5]);
+            line(D, C_pt, 'rgba(148,163,184,0.45)', 2, [5, 5]);
+          }
+
+          poly([O, A, D], amber, 'rgba(251,191,36,0.24)', 2.8, 0);
+          poly([O, C_pt, B_pt], blue, 'rgba(56,189,248,0.20)', 2.8, 1);
+
+          label('A', A, amber, -14, -12); label('D', D, amber, 14, -12);
+          label('O', O, white, 0, -18);
+          label('B', B_pt, blue, -14, 14); label('C', C_pt, blue, 14, 14);
+
+          drawParallelMark(g, A, D, 1, amber);
+          drawParallelMark(g, B_pt, C_pt, 1, blue);
+          drawAngleArc(g, O, A, D, { radius: 18, color: pink, symbol: 'dot' });
+          drawAngleArc(g, O, C_pt, B_pt, { radius: 18, color: pink, symbol: 'dot' });
+          drawAngleArc(g, A, D, O, { radius: 20, color: green, arcs: 2 });
+          drawAngleArc(g, C_pt, B_pt, O, { radius: 22, color: green, arcs: 2 });
+
+          if (sub === 'hourglassEF') {
+            const u = M / (M + N);
+            const E = lerp(A, B_pt, u), F = lerp(D, C_pt, u);
+            poly([A, E, O], pink, 'rgba(244,114,182,0.22)', 2.4, 1);
+            line(E, F, pink, 3.8, [], 2);
+            label('E', E, pink, -16, 0); label('F', F, pink, 16, 0);
+            drawSideBadge(g, A, D, `${M * 2} cm`, amber, -14, 0.5, 0);
+            drawSideBadge(g, B_pt, C_pt, `${N * 2} cm`, blue, 15, 0.5, 0);
+            drawSideBadge(g, E, O, `OE=${fmtNum((M * 2 * N * 2) / (M * 2 + N * 2))}`, pink, 16, 0.5, 1);
+          } else {
+            drawSideBadge(g, A, D, `${fmtNum(B * K)} cm`, amber, -14, 0.5, 0);
+            drawSideBadge(g, B_pt, C_pt, `${B} cm`, blue, 15, 0.5, 1);
+            if (state.conceptSwitch === 'all' || state.conceptSwitch === 'aux') {
+              g.save();
+              g.beginPath();
+              g.moveTo(D.x, D.y); g.lineTo(A.x, A.y); g.lineTo(C_pt.x, C_pt.y); g.lineTo(B_pt.x, B_pt.y);
+              g.strokeStyle = 'rgba(52, 211, 153, 0.7)';
+              g.lineWidth = 3.5;
+              g.setLineDash([6, 4]);
+              g.stroke();
+              g.restore();
+            }
+          }
+
+          const pProg = Math.max(0.15, t);
+          const rotOAD = computeAlignedTriangle([O, A, D], [O, C_pt, B_pt], pt(645, 195), 1.15, false, pProg);
+          const refOCB = computeAlignedTriangle([O, C_pt, B_pt], [O, C_pt, B_pt], pt(645, 315), 0.85, false, 1.0);
+          poly(refOCB, blue, 'rgba(56,189,248,0.14)', 2.0, 1);
+          poly(rotOAD, amber, 'rgba(251,191,36,0.24)', 2.8, 0);
+          ['O', 'A(↔C)', 'D(↔B)'].forEach((lb, i) => label(lb, rotOAD[i], amber, i === 0 ? 0 : (i === 1 ? -22 : 22), i === 0 ? -16 : 16));
+          drawCorrespondenceBridges(g, [O, A, D], rotOAD);
+        } else if (sub === 'parallelProp') {
+          const A = pt(245, 118), B_pt = pt(95, 382), C_pt = pt(405, 382);
+          const u = M / (M + N);
+          const D = lerp(A, B_pt, u), E = lerp(A, C_pt, u);
+          const F = lerp(B_pt, C_pt, u);
+
+          poly([A, B_pt, C_pt], green, 'rgba(52,211,153,0.06)', 2.4);
+          poly([A, D, E], amber, 'rgba(251,191,36,0.22)', 2.8, 0);
+          line(D, E, amber, 3.2);
+
+          const curF = lerp(E, F, Math.max(0.2, t));
+          if (t > 0.05 || state.conceptSwitch === 'aux') {
+            poly([D, B_pt, F, E], 'rgba(52,211,153,0.35)', 'rgba(52,211,153,0.08)', 1.8, 1);
+            poly([E, F, C_pt], pink, 'rgba(244,114,182,0.24)', 2.8, 1);
+            line(E, curF, pink, 3.2, [6, 4], 1);
+            label('F', F, pink, 0, 16);
+            drawParallelMark(g, A, B_pt, 2, pink, 0.55);
+            drawParallelMark(g, E, F, 2, pink, 0.5);
+          }
+
+          label('A', A, green, 0, -18); label('B', B_pt, green, -14, 14); label('C', C_pt, green, 14, 14);
+          label('D', D, amber, -15, 0); label('E', E, amber, 15, 0);
+          drawParallelMark(g, D, E, 1, amber);
+          drawParallelMark(g, B_pt, C_pt, 1, green);
+
+          drawSideBadge(g, A, D, `${M * 2} cm`, amber, -15, 0.5, 0);
+          drawSideBadge(g, D, B_pt, `${N * 2} cm`, pink, -15, 0.5, 1);
+          drawSideBadge(g, A, E, `${M * 3} cm`, blue, 15, 0.5, 2);
+          drawSideBadge(g, E, C_pt, `${N * 3} cm`, blue, 15, 0.5, 2);
+
+          const pProg = Math.max(0.2, t);
+          const tTop = computeAlignedTriangle([A, D, E], [A, B_pt, C_pt], pt(645, 195), 0.95, false, pProg);
+          const tBot = computeAlignedTriangle([E, F, C_pt], [A, B_pt, C_pt], pt(645, 320), 0.95, false, pProg);
+          poly(tTop, amber, 'rgba(251,191,36,0.22)', 2.6, 0);
+          poly(tBot, pink, 'rgba(244,114,182,0.22)', 2.6, 1);
+          txt(`△ADE (AD=${M * 2}, AE=${M * 3})`, pt(645, 130), amber, 12);
+          txt(`△EFC (EF=DB=${N * 2}, EC=${N * 3})`, pt(645, 260), pink, 12);
+        } else if (sub === 'trapezoidMid') {
+          const A = pt(165, 130), D = pt(315, 130);
+          const B_pt = pt(95, 375), C_pt = pt(415, 375);
+          const u = M / (M + N);
+          const E = lerp(A, B_pt, u), F = lerp(D, C_pt, u);
+          const H = pt(B_pt.x + (D.x - A.x), B_pt.y);
+          const G = lerp(D, H, u);
+
+          poly([A, B_pt, H, D], green, 'rgba(52,211,153,0.16)', 2.4, 0);
+          poly([D, H, C_pt], amber, 'rgba(251,191,36,0.18)', 2.6, 1);
+          line(E, F, pink, 3.8, [], 2);
+          line(D, H, white, 2.8, [6, 4], 1);
+
+          label('A', A, green, -12, -12); label('D', D, green, 12, -12);
+          label('B', B_pt, green, -12, 14); label('C', C_pt, amber, 12, 14);
+          label('E', E, pink, -15, 0); label('F', F, pink, 15, 0);
+          label('G', G, white, -10, -14); label('H', H, white, 0, 16);
+
+          const gf = fmtNum(((B - 6) * M) / (M + N));
+          const ef = fmtNum((6 * N + B * M) / (M + N));
+          drawSideBadge(g, A, D, '6 cm', green, -14, 0.5, 0);
+          drawSideBadge(g, E, G, 'EG = 6', green, -13, 0.5, 0);
+          drawSideBadge(g, G, F, `GF = ${gf}`, amber, -13, 0.5, 1);
+          drawSideBadge(g, H, C_pt, `HC = ${B - 6}`, amber, 15, 0.5, 1);
+
+          const pProg = Math.max(0.2, t);
+          const tSml = computeAlignedTriangle([D, G, F], [D, H, C_pt], pt(645, 200), 1.1, false, pProg);
+          const tBig = computeAlignedTriangle([D, H, C_pt], [D, H, C_pt], pt(645, 325), 0.85, false, 1.0);
+          poly(tBig, amber, 'rgba(251,191,36,0.14)', 2.2, 1);
+          poly(tSml, pink, 'rgba(244,114,182,0.24)', 2.8, 2);
+          txt(`평행사변형 EG(6) + 삼각형 GF(${gf}) = EF(${ef}cm)`, pt(645, 130), pink, 12);
+        } else if (sub === 'angleBisectIn') {
+          const A = pt(215, 155), B_pt = pt(85, 375), C_pt = pt(345, 375);
+          const u = M / (M + N);
+          const D = lerp(B_pt, C_pt, u);
+          // 연장선 E: BA를 A 너머로 연장하여 CE ∥ AD가 되는 점
+          const E = pt(A.x + (A.x - B_pt.x) * (N / M) * 0.65, A.y + (A.y - B_pt.y) * (N / M) * 0.65);
+
+          poly([A, B_pt, C_pt], green, 'rgba(52,211,153,0.10)', 2.6, 0);
+          poly([A, C_pt, E], pink, 'rgba(244,114,182,0.18)', 2.4, 1);
+          line(A, E, pink, 2.4, [5, 5], 1);
+          line(C_pt, E, pink, 3.0, [], 1);
+          line(A, D, amber, 3.6, [], 0);
+
+          label('A', A, amber, -14, -10); label('B', B_pt, green, -14, 14);
+          label('C', C_pt, green, 14, 14); label('D', D, amber, 0, 18);
+          label('E(연장)', E, pink, 18, -10);
+
+          drawAngleArc(g, A, B_pt, D, { radius: 26, color: amber, symbol: 'dot' });
+          drawAngleArc(g, A, D, C_pt, { radius: 26, color: amber, symbol: 'dot' });
+          drawAngleArc(g, E, A, C_pt, { radius: 22, color: pink, symbol: 'dot' });
+          drawAngleArc(g, C_pt, A, E, { radius: 24, color: pink, symbol: 'dot' });
+          drawParallelMark(g, D, A, 1, amber, 0.5);
+          drawParallelMark(g, C_pt, E, 1, pink, 0.5);
+          drawTickMarks(g, A, C_pt, 2, pink, 0.5);
+          drawTickMarks(g, A, E, 2, pink, 0.5);
+
+          const ab = M * 3, ac = N * 3;
+          const bd = fmtNum((B * M) / (M + N)), cd = fmtNum((B * N) / (M + N));
+          drawSideBadge(g, A, B_pt, `AB = ${ab}`, amber, -16, 0.5, 0);
+          drawSideBadge(g, A, C_pt, `AC = ${ac}`, amber, -14, 0.55, 0);
+          drawSideBadge(g, A, E, `AE = AC = ${ac}`, pink, -15, 0.5, 1);
+          drawSideBadge(g, B_pt, D, `BD = ${bd}`, blue, 16, 0.5, 2);
+          drawSideBadge(g, D, C_pt, `CD = ${cd}`, blue, 16, 0.5, 2);
+
+          // 우측 하트 공식 다이어그램
+          const hA = pt(645, 155), hB = pt(545, 345), hC = pt(745, 345), hD = lerp(hB, hC, u);
+          poly([hA, hB, hC], 'rgba(251,191,36,0.45)', 'rgba(251,191,36,0.08)', 2.4, 0);
+          line(hA, hD, amber, 3.2);
+          txt(`💖 하트 공식: AB(${ab}) : AC(${ac}) = BD(${bd}) : CD(${cd})`, pt(645, 120), amber, 12);
+          drawSideBadge(g, hA, hB, `왼날개 ${M}`, amber, -14, 0.5);
+          drawSideBadge(g, hA, hC, `오른날개 ${N}`, blue, 14, 0.5);
+          drawSideBadge(g, hB, hD, `왼바닥 ${M}`, amber, 15, 0.5);
+          drawSideBadge(g, hD, hC, `오른바닥 ${N}`, blue, 15, 0.5);
+        } else {
+          // angleBisectEx (외각의 이등분선 나이키 공식)
+          const bigM = N, smlN = M;
+          const A = pt(195, 165), B_pt = pt(85, 365), C_pt = pt(245, 365), D = pt(425, 365);
+          const uF = (bigM - smlN) / bigM;
+          const F = lerp(B_pt, A, uF);
+          const A_ext = pt(A.x + (A.x - B_pt.x) * 0.42, A.y + (A.y - B_pt.y) * 0.42);
+
+          poly([A, B_pt, C_pt], green, 'rgba(52,211,153,0.14)', 2.8, 0);
+          poly([A, C_pt, D], 'rgba(251,191,36,0.35)', 'rgba(251,191,36,0.06)', 2.2, 0);
+          line(A, A_ext, white, 2.2, [5, 4]);
+          line(A, D, amber, 3.6, [], 0);
+          line(F, C_pt, pink, 3.2, [], 1);
+
+          label('A', A, amber, -14, -10); label('B', B_pt, green, -12, 14);
+          label('C', C_pt, green, 0, 18); label('D(외각교점)', D, amber, 0, 18);
+          label('F', F, pink, -15, -4);
+
+          drawAngleArc(g, A, C_pt, D, { radius: 24, color: amber, symbol: 'dot' });
+          drawAngleArc(g, A, D, A_ext, { radius: 24, color: amber, symbol: 'dot' });
+          drawParallelMark(g, F, C_pt, 1, pink);
+          drawParallelMark(g, A, D, 1, amber);
+          drawTickMarks(g, A, F, 2, pink);
+          drawTickMarks(g, A, C_pt, 2, pink);
+
+          const ab = bigM * 3, ac = smlN * 3, bc = B;
+          const cd = fmtNum((bc * smlN) / (bigM - smlN)), bd = fmtNum(bc + parseFloat(cd));
+          drawSideBadge(g, A, B_pt, `AB = ${ab}`, amber, -18, 0.45, 0);
+          drawSideBadge(g, A, C_pt, `AC = ${ac}`, pink, 14, 0.5, 1);
+          drawSideBadge(g, B_pt, C_pt, `BC = ${bc}`, green, 16, 0.5, 2);
+          drawSideBadge(g, C_pt, D, `CD = ${cd}`, blue, 16, 0.5, 2);
+
+          // 우측 나이키 스우시 궤적 다이어그램
+          const nA = pt(600, 175), nB = pt(520, 345), nC = pt(635, 345), nD = pt(765, 345);
+          poly([nA, nB, nC], green, 'rgba(52,211,153,0.12)', 2.4);
+          line(nC, nD, blue, 2.4);
+          line(nA, nD, amber, 3.0);
+          // 나이키 곡선 화살표
+          g.save();
+          g.beginPath();
+          g.moveTo(nB.x, nB.y + 26);
+          g.lineTo(nD.x, nD.y + 26);
+          g.lineTo(nC.x, nC.y + 42);
+          g.strokeStyle = amber;
+          g.lineWidth = 3.5;
+          g.stroke();
+          g.restore();
+          txt(`👟 나이키 공식: AB(${ab}) : AC(${ac}) = 전체 BD(${bd}) : 돌아온 CD(${cd})`, pt(645, 125), amber, 11.5);
+        }
+      }
+
+      // =====================================================================
+      // [모드 3 렌더링] 직각삼각형 수선 3총사 & 소(牛)공식 마스터
+      // =====================================================================
+      else if (m === 3) {
+        const scaleMul = B / 10;
+        const ab = fmtNum(6 * scaleMul), ac = fmtNum(8 * scaleMul), bc = fmtNum(10 * scaleMul);
+        const bh = fmtNum(3.6 * scaleMul), ch = fmtNum(6.4 * scaleMul), ah = fmtNum(4.8 * scaleMul);
+
+        const B_pt = pt(85, 360), C_pt = pt(415, 360);
+        const H = lerp(B_pt, C_pt, 0.36);
+        const A = pt(H.x, 360 - 330 * 0.48);
+        const M_mid = mid(B_pt, C_pt);
+
+        poly([A, B_pt, C_pt], green, 'rgba(52,211,153,0.07)', 2.6, 0);
+        poly([H, B_pt, A], amber, 'rgba(251,191,36,0.16)', 2.4, 1);
+        poly([H, A, C_pt], blue, 'rgba(56,189,248,0.16)', 2.4, 2);
+        line(A, H, pink, 3.4);
+
+        if (sub === 'rightSoArea') {
+          poly([A, H, M_mid], pink, 'rgba(244,114,182,0.26)', 2.6, 2);
+          line(A, M_mid, blue, 3.2, [], 1);
+          label('M(외심·중점)', M_mid, blue, 18, 18);
+          drawSideBadge(g, A, M_mid, `AM=${fmtNum(5 * scaleMul)}`, blue, 18, 0.5, 1);
+        }
+
+        label('A(90°)', A, green, 0, -18);
+        label('B', B_pt, amber, -14, 14);
+        label('C', C_pt, blue, 14, 14);
+        label('H', H, pink, -6, 18);
+
+        drawRightAngleSquare(g, A, B_pt, C_pt, 13, green);
+        drawRightAngleSquare(g, H, B_pt, A, 11, amber);
+        drawRightAngleSquare(g, H, C_pt, A, 11, blue);
+
+        drawAngleArc(g, B_pt, C_pt, A, { radius: 24, color: amber, symbol: 'dot' });
+        drawAngleArc(g, A, H, C_pt, { radius: 22, color: amber, symbol: 'dot' });
+        drawAngleArc(g, C_pt, A, B_pt, { radius: 26, color: blue, arcs: 2, symbol: 'cross' });
+        drawAngleArc(g, A, B_pt, H, { radius: 22, color: blue, arcs: 2, symbol: 'cross' });
+
+        drawSideBadge(g, A, B_pt, `AB = ${ab}`, amber, -16, 0.5, 0);
+        drawSideBadge(g, A, C_pt, `AC = ${ac}`, blue, 16, 0.5, 0);
+        drawSideBadge(g, B_pt, H, `BH = ${bh}`, amber, 16, 0.5, 1);
+        drawSideBadge(g, H, C_pt, `CH = ${ch}`, blue, 16, 0.5, 1);
+        drawSideBadge(g, A, H, `AH = ${ah}`, pink, -24, 0.55, 0);
+
+        // 소(牛)공식 강조 네온 궤적
+        if (sub === 'rightLeft') {
+          line(A, B_pt, amber, 5.5, [], 0);
+          line(B_pt, H, pink, 5.5, [], 1);
+          line(B_pt, C_pt, green, 3.2, [6, 4], 1);
+        } else if (sub === 'rightRight') {
+          line(A, C_pt, blue, 5.5, [], 0);
+          line(C_pt, H, pink, 5.5, [], 1);
+          line(C_pt, B_pt, green, 3.2, [6, 4], 1);
+        } else if (sub === 'rightCenter') {
+          line(A, H, pink, 5.5, [], 0);
+          line(H, B_pt, amber, 5.0, [], 1);
+          line(H, C_pt, blue, 5.0, [], 1);
+        }
+
+        // 우측: 실제 3총사 조각 분리·거울반전·회전 정렬
+        const stdRef = [pt(530, 180), pt(530, 120), pt(610, 180)];
+        const pProg = Math.max(0.25, t);
+        const alignedBig = computeAlignedTriangle([A, B_pt, C_pt], stdRef, pt(635, 148), 0.48, true, pProg);
+        const alignedMid = computeAlignedTriangle([H, A, C_pt], stdRef, pt(635, 250), 0.48, false, pProg);
+        const alignedSml = computeAlignedTriangle([H, B_pt, A], stdRef, pt(635, 342), 0.48, false, pProg);
+
+        poly(alignedBig, green, 'rgba(52,211,153,0.18)', 2.4, 0);
+        poly(alignedMid, blue, 'rgba(56,189,248,0.20)', 2.4, 2);
+        poly(alignedSml, amber, 'rgba(251,191,36,0.22)', 2.4, 1);
+
+        drawRightAngleSquare(g, alignedBig[0], alignedBig[1], alignedBig[2], 9, green);
+        drawRightAngleSquare(g, alignedMid[0], alignedMid[1], alignedMid[2], 8, blue);
+        drawRightAngleSquare(g, alignedSml[0], alignedSml[1], alignedSml[2], 7, amber);
+
+        txt(`대: △ABC (빗변 ${bc})`, pt(750, 148), green, 11.5);
+        txt(`중: △HAC (빗변 ${ac})`, pt(750, 250), blue, 11.5);
+        txt(`소: △HBA (빗변 ${ab})`, pt(750, 342), amber, 11.5);
+      }
+
+      // =====================================================================
+      // [모드 4 렌더링] 삼각형 중점연결정리 & 무게중심(2:1) & 바리뇽 사각형
+      // =====================================================================
+      else if (m === 4) {
+        if (sub === 'varignonQuad') {
+          const A = pt(185, 120), D = pt(365, 145);
+          const B_pt = pt(90, 365), C_pt = pt(395, 380);
+          const E = mid(A, B_pt), F = mid(B_pt, C_pt), Gp = mid(C_pt, D), H = mid(D, A);
+
+          poly([A, B_pt, C_pt, D], 'rgba(148,163,184,0.45)', 'rgba(148,163,184,0.05)', 2.2);
+          line(A, C_pt, blue, 2.4, [6, 4], 1);
+          line(B_pt, D, amber, 2.4, [6, 4], 0);
+          poly([E, F, Gp, H], green, 'rgba(52,211,153,0.24)', 3.2, 2);
+
+          label('A', A, white, 0, -14); label('B', B_pt, white, -14, 12);
+          label('C', C_pt, white, 14, 12); label('D', D, white, 14, -10);
+          label('E', E, green, -16, 0); label('F', F, green, 0, 16);
+          label('G', Gp, green, 16, 0); label('H', H, green, 0, -16);
+
+          drawParallelMark(g, E, H, 1, amber);
+          drawParallelMark(g, F, Gp, 1, amber);
+          drawParallelMark(g, E, F, 2, blue);
+          drawParallelMark(g, H, Gp, 2, blue);
+
+          drawSideBadge(g, E, H, 'EH = ½BD (5)', amber, -14, 0.5, 0);
+          drawSideBadge(g, E, F, `EF = ½AC (${B / 2})`, blue, -14, 0.5, 1);
+
+          // 우측: 사각형 중점 연결 족보 요약 도표
+          const rX = 520, rY = 120;
+          poly([pt(rX, rY), pt(rX + 250, rY), pt(rX + 250, rY + 220), pt(rX, rY + 220)], green, 'rgba(6,17,13,0.85)', 2);
+          txt('💎 사각형 네 변의 중점 연결 족보', pt(rX + 125, rY + 28), amber, 13);
+          txt('1. 일반 사각형 ➔ 평행사변형', pt(rX + 125, rY + 68), green, 12);
+          txt('2. 직사각형 / 등변사다리꼴 ➔ 마름모!', pt(rX + 125, rY + 108), blue, 12);
+          txt('3. 마름모 (대각선 90°) ➔ 직사각형!', pt(rX + 125, rY + 148), pink, 12);
+          txt('4. 정사각형 ➔ 정사각형', pt(rX + 125, rY + 188), white, 12);
+        } else {
+          const A = pt(245, 118), B_pt = pt(95, 382), C_pt = pt(405, 382);
+          const F_ab = mid(A, B_pt), E_ac = mid(A, C_pt), D_bc = mid(B_pt, C_pt);
+          const G = mix3(A, B_pt, C_pt);
+
+          poly([A, B_pt, C_pt], green, 'rgba(52,211,153,0.08)', 2.5, 1);
+          label('A', A, green, 0, -18); label('B', B_pt, green, -14, 14); label('C', C_pt, green, 14, 14);
+
+          if (sub === 'midpointThm') {
+            poly([A, F_ab, E_ac], amber, 'rgba(251,191,36,0.24)', 3.0, 0);
+            line(E_ac, D_bc, pink, 2.4, [6, 4], 2);
+            label('M', F_ab, amber, -16, 0); label('N', E_ac, amber, 16, 0); label('D', D_bc, pink, 0, 16);
+            drawTickMarks(g, A, F_ab, 1, amber); drawTickMarks(g, F_ab, B_pt, 1, amber);
+            drawTickMarks(g, A, E_ac, 2, blue); drawTickMarks(g, E_ac, C_pt, 2, blue);
+            drawParallelMark(g, F_ab, E_ac, 1, amber); drawParallelMark(g, B_pt, C_pt, 1, green);
+            drawSideBadge(g, F_ab, E_ac, `MN = ${fmtNum(B / 2)} cm`, amber, -14, 0.5, 0);
+            drawSideBadge(g, B_pt, C_pt, `BC = ${B} cm`, green, 16, 0.5, 1);
+            txt('넓이 1S', pt(245, 210), amber, 13);
+            txt('사다리꼴 넓이 3S (위쪽의 3배!)', pt(245, 320), green, 13);
+
+            const pProg = Math.max(0.2, t);
+            const aligned = computeAlignedTriangle([A, F_ab, E_ac], [A, B_pt, C_pt], pt(645, 235), 1.25, false, pProg);
+            poly(aligned, amber, 'rgba(251,191,36,0.24)', 2.8, 0);
+            ['A', 'M', 'N'].forEach((lb, i) => label(lb, aligned[i], amber, i === 0 ? 0 : (i === 1 ? -16 : 16), i === 0 ? -16 : 16));
+          } else if (sub === 'midpointFour') {
+            poly([D_bc, E_ac, F_ab], amber, 'rgba(251,191,36,0.26)', 3.0, 0);
+            label('D', D_bc, amber, 0, 18); label('E', E_ac, amber, 16, 0); label('F', F_ab, amber, -16, 0);
+            drawTickMarks(g, A, F_ab, 1, green); drawTickMarks(g, F_ab, B_pt, 1, green);
+            drawTickMarks(g, B_pt, D_bc, 2, blue); drawTickMarks(g, D_bc, C_pt, 2, blue);
+            drawTickMarks(g, A, E_ac, 3, pink); drawTickMarks(g, E_ac, C_pt, 3, pink);
+            txt('¼ S', pt(245, 195), green, 12.5);
+            txt('¼ S', pt(175, 335), green, 12.5);
+            txt('¼ S', pt(315, 335), green, 12.5);
+            txt('¼ S', pt(245, 295), amber, 13.5);
+
+            const pProg = Math.max(0.2, t);
+            const rotDEF = computeAlignedTriangle([D_bc, F_ab, E_ac], [A, B_pt, C_pt], pt(645, 235), 1.2, false, pProg);
+            poly(rotDEF, amber, 'rgba(251,191,36,0.25)', 3.0, 0);
+            ['D(↔A)', 'F(↔B)', 'E(↔C)'].forEach((lb, i) => label(lb, rotDEF[i], amber, i === 0 ? 0 : (i === 1 ? -20 : 20), i === 0 ? -16 : 16));
+          } else if (sub === 'centroidProof') {
+            poly([G, A, B_pt], blue, 'rgba(56,189,248,0.18)', 2.4, 1);
+            poly([G, D_bc, E_ac], amber, 'rgba(251,191,36,0.26)', 2.8, 2);
+            line(A, D_bc, amber, 3.0);
+            line(B_pt, E_ac, blue, 3.0);
+            line(D_bc, E_ac, pink, 3.6, [], 0);
+
+            label('D(BC중점)', D_bc, amber, 0, 18);
+            label('E(AC중점)', E_ac, blue, 26, -4);
+            label('G(무게중심)', G, white, -22, -16);
+            drawParallelMark(g, A, B_pt, 1, blue);
+            drawParallelMark(g, E_ac, D_bc, 1, pink);
+            drawSideBadge(g, A, G, `AG=${fmtNum((B * 2) / 3)}`, blue, -16, 0.5, 1);
+            drawSideBadge(g, G, D_bc, `GD=${fmtNum(B / 3)}`, amber, -16, 0.5, 2);
+
+            const pProg = Math.max(0.2, t);
+            const rotGDE = computeAlignedTriangle([G, D_bc, E_ac], [G, A, B_pt], pt(645, 190), 1.35, false, pProg);
+            const refGAB = computeAlignedTriangle([G, A, B_pt], [G, A, B_pt], pt(645, 315), 0.9, false, 1.0);
+            poly(refGAB, blue, 'rgba(56,189,248,0.18)', 2.4, 1);
+            poly(rotGDE, amber, 'rgba(251,191,36,0.26)', 2.8, 2);
+            txt('모래시계 DE : AB = 1 : 2 ➔ GD : GA = 1 : 2!', pt(645, 120), pink, 12);
+          } else {
+            // centroidSix (세 중선 6등분 + 중점연결 24등분)
+            const M_top = mid(F_ab, E_ac);
+            poly([G, B_pt, D_bc], amber, 'rgba(251,191,36,0.26)', 2.2, 0);
+            poly([G, D_bc, C_pt, E_ac], blue, 'rgba(56,189,248,0.18)', 2.2, 1);
+            poly([F_ab, G, M_top], pink, 'rgba(244,114,182,0.38)', 2.6, 2);
+
+            line(A, D_bc, amber, 2.6);
+            line(B_pt, E_ac, blue, 2.6);
+            line(C_pt, F_ab, green, 2.6);
+            line(F_ab, E_ac, pink, 3.2, [], 2);
+
+            label('D', D_bc, amber, 0, 18); label('E', E_ac, blue, 16, 0);
+            label('F', F_ab, green, -16, 0); label('G', G, white, 14, 10);
+            label('M', M_top, pink, 12, -12);
+
+            // 우측: 중선 AD의 3 : 1 : 2 황금 비율 확대 스캐너
+            const pA = pt(645, 125), pM = pt(645, 225), pG = pt(645, 260), pD = pt(645, 345);
+            line(pA, pD, white, 4);
+            dot(pA, green, 5); dot(pM, pink, 5); dot(pG, amber, 6); dot(pD, blue, 5);
+            txt('A (꼭짓점)', pt(580, 125), green, 12);
+            txt('M (중점연결선 교점)', pt(555, 225), pink, 12);
+            txt('G (무게중심 2:1)', pt(565, 260), amber, 12);
+            txt('D (밑변 중점)', pt(575, 345), blue, 12);
+            drawSideBadge(g, pA, pM, 'AM = 3k', blue, -45, 0.5, 2);
+            drawSideBadge(g, pM, pG, 'MG = 1k!', pink, -48, 0.5, 2);
+            drawSideBadge(g, pG, pD, 'GD = 2k', amber, -45, 0.5, 2);
+          }
+        }
+      }
+
+      // =====================================================================
+      // [모드 5 렌더링] 종이접기 킬러 & 사각형 속 숨은 닮음
+      // =====================================================================
+      else if (m === 5) {
+        if (sub === 'foldRect') {
+          const A = pt(100, 140), B_pt = pt(100, 356), C_pt = pt(370, 356), D = pt(370, 140);
+          const F = pt(100 + 6 * 27, 356), E = pt(370, 356 - 3 * 27);
+
+          poly([A, B_pt, C_pt, D], 'rgba(52,211,153,0.4)', 'rgba(52,211,153,0.04)', 2);
+          line(A, D, 'rgba(148,163,184,0.5)', 2, [5, 5]);
+          line(D, E, 'rgba(148,163,184,0.5)', 2, [5, 5]);
+
+          poly([B_pt, F, A], amber, 'rgba(251,191,36,0.24)', 2.8, 0);
+          poly([C_pt, E, F], blue, 'rgba(56,189,248,0.26)', 2.8, 1);
+          poly([A, F, E], pink, 'rgba(244,114,182,0.18)', 2.6, 2);
+          line(A, E, white, 2.8);
+
+          label('A', A, green, -14, -12); label('B', B_pt, amber, -14, 14);
+          label('C', C_pt, blue, 14, 14); label('D(접힘)', D, '#94a3b8', 16, -12);
+          label('F(90°)', F, pink, 0, 18); label('E', E, pink, 16, 0);
+
+          drawRightAngleSquare(g, B_pt, A, F, 12, amber);
+          drawRightAngleSquare(g, C_pt, F, E, 11, blue);
+          drawRightAngleSquare(g, F, A, E, 12, pink);
+          drawAngleArc(g, A, B_pt, F, { radius: 24, color: amber, symbol: 'dot' });
+          drawAngleArc(g, F, C_pt, E, { radius: 22, color: amber, symbol: 'dot' });
+          drawAngleArc(g, F, A, B_pt, { radius: 24, color: blue, arcs: 2, symbol: 'cross' });
+          drawAngleArc(g, E, F, C_pt, { radius: 20, color: blue, arcs: 2, symbol: 'cross' });
+
+          drawSideBadge(g, A, B_pt, '8 cm', amber, -18, 0.5, 0);
+          drawSideBadge(g, B_pt, F, '6 cm', amber, 16, 0.5, 0);
+          drawSideBadge(g, F, C_pt, '4 cm', blue, 16, 0.5, 1);
+          drawSideBadge(g, C_pt, E, 'CE = 3 cm!', blue, 24, 0.5, 1);
+
+          const pProg = Math.max(0.25, t);
+          const stdR = [pt(530, 200), pt(530, 120), pt(610, 200)];
+          const tri1 = computeAlignedTriangle([B_pt, A, F], stdR, pt(645, 190), 0.56, false, pProg);
+          const tri2 = computeAlignedTriangle([C_pt, F, E], stdR, pt(645, 325), 0.75, true, pProg);
+          poly(tri1, amber, 'rgba(251,191,36,0.24)', 2.8, 0);
+          poly(tri2, blue, 'rgba(56,189,248,0.26)', 2.8, 1);
+          drawRightAngleSquare(g, tri1[0], tri1[1], tri1[2], 10, amber);
+          drawRightAngleSquare(g, tri2[0], tri2[1], tri2[2], 9, blue);
+          txt('△ABF (8 : 6 : 10)', pt(645, 122), amber, 12);
+          txt('△FCE (4 : 3 : 5) ➔ 정확히 2 : 1 AA 닮음!', pt(645, 255), blue, 12);
+        } else if (sub === 'foldEqui') {
+          const sidePx = 285;
+          const B_pt = pt(95, 365), C_pt = pt(95 + sidePx, 365);
+          const A = pt(95 + sidePx / 2, 365 - (sidePx * Math.sqrt(3)) / 2);
+          const F = lerp(B_pt, C_pt, 3 / 15);
+          const D = lerp(B_pt, A, 7 / 15);
+          const E = lerp(C_pt, A, 36 / 105);
+
+          poly([A, B_pt, C_pt], 'rgba(52,211,153,0.35)', 'rgba(52,211,153,0.04)', 2, -1);
+          line(A, D, 'rgba(148,163,184,0.5)', 2, [5, 5]);
+          line(A, E, 'rgba(148,163,184,0.5)', 2, [5, 5]);
+
+          poly([D, B_pt, F], amber, 'rgba(251,191,36,0.24)', 2.8, 0);
+          poly([F, C_pt, E], blue, 'rgba(56,189,248,0.24)', 2.8, 1);
+          poly([D, F, E], pink, 'rgba(244,114,182,0.18)', 2.6, 2);
+
+          label('A(60°접힘)', A, '#94a3b8', 0, -14);
+          label('B(60°)', B_pt, amber, -14, 14);
+          label('C(60°)', C_pt, blue, 14, 14);
+          label('D', D, amber, -16, -4);
+          label('F(60°)', F, pink, 0, 18);
+          label('E', E, blue, 16, -4);
+
+          drawAngleArc(g, F, E, D, { radius: 22, color: pink, symbol: '60°' });
+          drawAngleArc(g, D, B_pt, F, { radius: 18, color: amber, symbol: 'dot' });
+          drawAngleArc(g, F, C_pt, E, { radius: 20, color: amber, symbol: 'dot' });
+          drawAngleArc(g, F, D, B_pt, { radius: 18, color: blue, arcs: 2, symbol: 'cross' });
+          drawAngleArc(g, E, F, C_pt, { radius: 20, color: blue, arcs: 2, symbol: 'cross' });
+
+          drawSideBadge(g, B_pt, D, 'BD = 7', amber, -16, 0.5, 0);
+          drawSideBadge(g, B_pt, F, 'BF = 3', amber, 16, 0.5, 0);
+          drawSideBadge(g, F, C_pt, 'FC = 12', blue, 16, 0.5, 1);
+          drawSideBadge(g, C_pt, E, 'CE = 36/7', blue, 20, 0.5, 1);
+
+          const pProg = Math.max(0.25, t);
+          const refEq = [pt(560, 140), pt(520, 210), pt(610, 210)];
+          const tL = computeAlignedTriangle([D, B_pt, F], refEq, pt(645, 190), 0.9, false, pProg);
+          const tR = computeAlignedTriangle([F, C_pt, E], refEq, pt(645, 325), 0.72, false, pProg);
+          poly(tL, amber, 'rgba(251,191,36,0.24)', 2.8, 0);
+          poly(tR, blue, 'rgba(56,189,248,0.24)', 2.8, 1);
+          txt('△DBF (∠B=60°, •, ×)', pt(645, 122), amber, 12);
+          txt('△FCE (∠C=60°, •, ×) ➔ AA 닮음!', pt(645, 255), blue, 12);
+        } else if (sub === 'trapArea4') {
+          const A = pt(155, 130), D = pt(325, 130);
+          const B_pt = pt(95, 370), C_pt = pt(385, 370);
+          const O = calcCross(A, C_pt, D, B_pt);
+          const a2 = M * M, ab = M * N, b2 = N * N;
+
+          poly([O, A, D], amber, 'rgba(251,191,36,0.26)', 2.6, 0);
+          poly([O, C_pt, B_pt], blue, 'rgba(56,189,248,0.24)', 2.6, 0);
+          poly([O, A, B_pt], pink, 'rgba(244,114,182,0.20)', 2.4, 1);
+          poly([O, D, C_pt], pink, 'rgba(244,114,182,0.20)', 2.4, 1);
+
+          label('A', A, green, -12, -12); label('D', D, green, 12, -12);
+          label('B', B_pt, green, -12, 14); label('C', C_pt, green, 12, 14);
+          label('O', O, white, 0, -18);
+
+          txt(`위: ${M}² = ${a2}S`, pt(O.x, O.y - 42), amber, 13);
+          txt(`아래: ${N}² = ${b2}S`, pt(O.x, O.y + 68), blue, 13.5);
+          txt(`왼: ${ab}S`, pt(O.x - 68, O.y + 8), pink, 12.5);
+          txt(`오른: ${ab}S`, pt(O.x + 68, O.y + 8), pink, 12.5);
+
+          // 우측 넓이비 구조 다이어그램
+          const pProg = Math.max(0.25, t);
+          const rotTop = computeAlignedTriangle([O, A, D], [O, C_pt, B_pt], pt(645, 190), 1.15, false, pProg);
+          const refBot = computeAlignedTriangle([O, C_pt, B_pt], [O, C_pt, B_pt], pt(645, 320), 0.85, false, 1.0);
+          poly(rotTop, amber, 'rgba(251,191,36,0.26)', 2.6, 0);
+          poly(refBot, blue, 'rgba(56,189,248,0.24)', 2.6, 0);
+          txt(`위(${a2}S) ↔ 아래(${b2}S): 닮음 제곱비!`, pt(645, 120), amber, 12);
+          txt(`위(${a2}S) ↔ 옆(${ab}S): 높이 같음 밑변비(${M}:${N})!`, pt(645, 250), pink, 12);
+        } else if (sub === 'paraTrisect') {
+          const A = pt(145, 130), D = pt(415, 130);
+          const B_pt = pt(85, 365), C_pt = pt(355, 365);
+          const M_bc = mid(B_pt, C_pt), N_cd = mid(C_pt, D);
+          const P = calcCross(A, M_bc, B_pt, D);
+          const Q = calcCross(A, N_cd, B_pt, D);
+          const O = mid(B_pt, D);
+
+          poly([A, B_pt, C_pt, D], green, 'rgba(52,211,153,0.07)', 2.4);
+          poly([P, B_pt, M_bc], amber, 'rgba(251,191,36,0.26)', 2.6, 0);
+          poly([P, D, A], 'rgba(251,191,36,0.35)', 'rgba(251,191,36,0.10)', 2.2, 0);
+          poly([Q, D, N_cd], blue, 'rgba(56,189,248,0.26)', 2.6, 1);
+
+          line(B_pt, D, white, 3.2);
+          line(A, M_bc, amber, 2.8);
+          line(A, N_cd, blue, 2.8);
+          if (t > 0.1 || state.conceptSwitch === 'aux') {
+            line(A, C_pt, pink, 2.2, [6, 4], 2);
+            label('O(중심)', O, pink, 0, -16);
+          }
+
+          label('A', A, green, -12, -12); label('D', D, green, 12, -12);
+          label('B', B_pt, green, -12, 14); label('C', C_pt, green, 12, 14);
+          label('M(중점)', M_bc, amber, 0, 18); label('N(중점)', N_cd, blue, 26, 0);
+          label('P', P, amber, -12, -14); label('Q', Q, blue, 12, 14);
+
+          const seg = fmtNum(B / 3);
+          drawSideBadge(g, B_pt, P, `BP=${seg}`, amber, -16, 0.5, 0);
+          drawSideBadge(g, P, Q, `PQ=${seg}`, pink, 18, 0.5, 2);
+          drawSideBadge(g, Q, D, `QD=${seg}`, blue, -16, 0.5, 1);
+
+          // 우측: 대각선 BD의 2 : 1 : 1 : 2 (1:1:1) 확대 바
+          const rB = pt(520, 240), rP = pt(600, 240), rO = pt(640, 240), rQ = pt(680, 240), rD = pt(760, 240);
+          line(rB, rD, white, 4.5);
+          [rB, rP, rO, rQ, rD].forEach((p, idx) => dot(p, idx === 2 ? pink : amber, 5.5));
+          txt('B', pt(520, 215), green, 12.5);
+          txt('P (무게중심1)', pt(590, 210), amber, 11.5);
+          txt('O (중심)', pt(640, 270), pink, 11.5);
+          txt('Q (무게중심2)', pt(695, 210), blue, 11.5);
+          txt('D', pt(760, 215), green, 12.5);
+          drawSideBadge(g, rB, rP, '2k (⅓)', amber, -22, 0.5, 0);
+          drawSideBadge(g, rP, rO, '1k', pink, 22, 0.5, 2);
+          drawSideBadge(g, rO, rQ, '1k', pink, 22, 0.5, 2);
+          drawSideBadge(g, rQ, rD, '2k (⅓)', blue, -22, 0.5, 1);
+          txt('BP : PO : OQ : QD = 2 : 1 : 1 : 2 ➔ BP = PQ = QD!', pt(640, 145), amber, 12);
+        } else {
+          // rectDiagPerp
+          const A = pt(100, 145), D = pt(390, 145), B_pt = pt(100, 360), C_pt = pt(390, 360);
+          const H = lerp(A, C_pt, 0.36);
+          const scaleMul = B / 10;
+
+          poly([A, B_pt, C_pt, D], green, 'rgba(52,211,153,0.06)', 2.4);
+          poly([B_pt, A, H], amber, 'rgba(251,191,36,0.24)', 2.6, 0);
+          poly([B_pt, H, C_pt], blue, 'rgba(56,189,248,0.20)', 2.4, 1);
+          line(A, C_pt, white, 2.8);
+          line(B_pt, H, pink, 3.4, [], 2);
+
+          label('A', A, green, -14, -12); label('D', D, green, 14, -12);
+          label('B', B_pt, green, -14, 14); label('C', C_pt, green, 14, 14);
+          label('H', H, pink, 12, -14);
+          drawRightAngleSquare(g, B_pt, C_pt, A, 13, green);
+          drawRightAngleSquare(g, H, A, B_pt, 11, pink);
+
+          drawSideBadge(g, A, B_pt, `${fmtNum(6 * scaleMul)} cm`, amber, -16, 0.5, 0);
+          drawSideBadge(g, B_pt, C_pt, `${fmtNum(8 * scaleMul)} cm`, blue, 16, 0.5, 1);
+          drawSideBadge(g, A, H, `AH=${fmtNum(3.6 * scaleMul)}`, amber, -14, 0.5, 0);
+          drawSideBadge(g, H, C_pt, `HC=${fmtNum(6.4 * scaleMul)}`, blue, -14, 0.5, 1);
+
+          const pProg = Math.max(0.25, t);
+          const stdR = [pt(530, 200), pt(530, 120), pt(610, 200)];
+          const s1 = computeAlignedTriangle([H, A, B_pt], stdR, pt(645, 190), 0.82, false, pProg);
+          const s2 = computeAlignedTriangle([B_pt, A, C_pt], stdR, pt(645, 325), 0.54, false, pProg);
+          poly(s1, amber, 'rgba(251,191,36,0.24)', 2.6, 0);
+          poly(s2, green, 'rgba(52,211,153,0.18)', 2.6, 1);
+          drawRightAngleSquare(g, s1[0], s1[1], s1[2], 9, amber);
+          drawRightAngleSquare(g, s2[0], s2[1], s2[2], 9, green);
+          txt('AB² = AH · AC (왼쪽 날개 제곱 공식 그대로 적용!)', pt(645, 122), amber, 12);
+        }
+      }
+
+      // =====================================================================
+      // [모드 6 렌더링] 차원비 스캐너 (원뿔 3단 절단 1:7:19 · 타일 격자 · 3D 큐브 · 항상 닮음)
+      // =====================================================================
+      else if (m === 6) {
+        if (sub === 'dimConeCut') {
+          const V_top = pt(240, 110);
+          const y1 = 195, y2 = 280, y3 = 365;
+          const r1 = 42, r2 = 84, r3 = 126;
+
+          // 3층 원뿔대 (19V)
+          poly([pt(240 - r2, y2), pt(240 - r3, y3), pt(240 + r3, y3), pt(240 + r2, y2)], pink, 'rgba(244,114,182,0.22)', 2.6, 2);
+          // 2층 원뿔대 (7V)
+          poly([pt(240 - r1, y1), pt(240 - r2, y2), pt(240 + r2, y2), pt(240 + r1, y1)], blue, 'rgba(56,189,248,0.24)', 2.6, 1);
+          // 1층 작은 원뿔 (1V)
+          poly([V_top, pt(240 - r1, y1), pt(240 + r1, y1)], amber, 'rgba(251,191,36,0.28)', 2.8, 0);
+
+          // 단면 타원 표현
+          [
+            { y: y1, rx: r1, col: amber },
+            { y: y2, rx: r2, col: blue },
+            { y: y3, rx: r3, col: pink }
+          ].forEach(el => {
+            g.save();
+            g.beginPath();
+            g.ellipse(240, el.y, el.rx, el.rx * 0.2, 0, 0, Math.PI * 2);
+            g.strokeStyle = el.col;
+            g.lineWidth = 2;
+            g.stroke();
+            g.restore();
+          });
+
+          txt('1층: 1³ = 1V', pt(240, 165), amber, 12.5);
+          txt('2층 원뿔대: 2³ - 1³ = 7V!', pt(240, 240), blue, 13);
+          txt('3층 원뿔대: 3³ - 2³ = 19V!', pt(240, 325), pink, 13.5);
+
+          // 우측: 3단 분리 비교 다이어그램
+          const shift = Math.max(0.25, t) * 18;
+          poly([pt(645, 105 - shift), pt(645 - 36, 175 - shift), pt(645 + 36, 175 - shift)], amber, 'rgba(251,191,36,0.28)', 2.6, 0);
+          poly([pt(645 - 36, 195), pt(645 - 72, 265), pt(645 + 72, 265), pt(645 + 36, 195)], blue, 'rgba(56,189,248,0.24)', 2.6, 1);
+          poly([pt(645 - 72, 285 + shift), pt(645 - 108, 355 + shift), pt(645 + 108, 355 + shift), pt(645 + 72, 285 + shift)], pink, 'rgba(244,114,182,0.24)', 2.6, 2);
+
+          txt('1V (높이 1칸)', pt(750, 145), amber, 12);
+          txt('7V = 8V - 1V (높이 2칸 원뿔 - 1칸 원뿔)', pt(645, 232), white, 11.5);
+          txt('19V = 27V - 8V (높이 3칸 원뿔 - 2칸 원뿔)', pt(645, 322), white, 11.5);
+        } else if (sub === 'dimTile2D') {
+          const kMul = state.ratioIdx === 2 ? 3 : 2;
+          const sz1 = kMul === 3 ? 68 : 88;
+          const sz2 = sz1 * kMul;
+          const x1 = 155, y1 = 215;
+          const x2 = 535, y2 = 145;
+
+          poly([pt(x1, y1), pt(x1 + sz1, y1), pt(x1 + sz1, y1 + sz1), pt(x1, y1 + sz1)], blue, 'rgba(56,189,248,0.25)', 2.8, 0);
+          poly([pt(x2, y2), pt(x2 + sz2, y2), pt(x2 + sz2, y2 + sz2), pt(x2, y2 + sz2)], amber, 'rgba(251,191,36,0.20)', 3.0, 1);
+
+          for (let i = 1; i < kMul; i++) {
+            line(pt(x2 + i * sz1, y2), pt(x2 + i * sz1, y2 + sz2), amber, 2.0, [5, 4], 1);
+            line(pt(x2, y2 + i * sz1), pt(x2 + sz2, y2 + i * sz1), amber, 2.0, [5, 4], 1);
+          }
+          let count = 1;
+          for (let r = 0; r < kMul; r++) {
+            for (let c = 0; c < kMul; c++) {
+              txt(`#${count++}`, pt(x2 + (c + 0.5) * sz1, y2 + (r + 0.5) * sz1), amber, 13);
+            }
+          }
+
+          txt(`1장 (${B} cm²)`, pt(x1 + sz1 / 2, y1 + sz1 + 26), blue, 13);
+          txt(`${kMul} × ${kMul} = ${kMul * kMul}장 (${B * kMul * kMul} cm²)`, pt(x2 + sz2 / 2, y2 + sz2 + 26), amber, 13.5);
+        } else if (sub === 'dimCube3D') {
+          const kMul = state.ratioIdx === 2 ? 3 : 2;
+          function drawIsoCube(cx, cy, sz, col, fill, divs, pIdx) {
+            const p0 = pt(cx, cy), p1 = pt(cx + sz, cy), p2 = pt(cx + sz, cy + sz), p3 = pt(cx, cy + sz);
+            const dx = sz * 0.42, dy = -sz * 0.34;
+            const q0 = pt(p0.x + dx, p0.y + dy), q1 = pt(p1.x + dx, p1.y + dy), q2 = pt(p2.x + dx, p2.y + dy);
+
+            poly([p0, p1, p2, p3], col, fill, 2.6, pIdx);
+            poly([p0, q0, q1, p1], col, fill, 2.4, pIdx);
+            poly([p1, q1, q2, p2], col, fill, 2.4, pIdx);
+
+            for (let i = 1; i < divs; i++) {
+              const u = i / divs;
+              line(lerp(p0, p1, u), lerp(p3, p2, u), white, 1.5, [4, 3]);
+              line(lerp(p0, p3, u), lerp(p1, p2, u), white, 1.5, [4, 3]);
+              line(lerp(p0, p1, u), lerp(q0, q1, u), white, 1.5, [4, 3]);
+              line(lerp(p0, q0, u), lerp(p1, q1, u), white, 1.5, [4, 3]);
+              line(lerp(p1, q1, u), lerp(p2, q2, u), white, 1.5, [4, 3]);
+              line(lerp(p1, p2, u), lerp(q1, q2, u), white, 1.5, [4, 3]);
+            }
+          }
+          drawIsoCube(155, 225, 66, blue, 'rgba(56,189,248,0.25)', 1, 0);
+          drawIsoCube(535, 175, 156, pink, 'rgba(244,114,182,0.22)', kMul, 2);
+          txt(`모서리 1k · 부피 1³ = 1블록`, pt(200, 330), blue, 13);
+          txt(`모서리 ${kMul}k · 겉넓이 ${kMul}²=${kMul * kMul}배 · 부피 ${kMul}³=${kMul * kMul * kMul}블록!`, pt(645, 370), pink, 13);
+        } else {
+          // alwaysSimilar
+          // 좌측: 항상 닮음인 직각이등변삼각형 2개 & 원 2개 (⭕)
+          poly([pt(95, 210), pt(95, 290), pt(175, 290)], green, 'rgba(52,211,153,0.22)', 2.6, 1);
+          poly([pt(215, 160), pt(215, 290), pt(345, 290)], green, 'rgba(52,211,153,0.22)', 2.6, 1);
+          drawRightAngleSquare(g, pt(95, 290), pt(95, 210), pt(175, 290), 10, green);
+          drawRightAngleSquare(g, pt(215, 290), pt(215, 160), pt(345, 290), 12, green);
+          txt('⭕ 두 직각이등변삼각형 (항상 45°·45°·90° AA닮음!)', pt(235, 325), green, 12);
+
+          // 우측: 닮음이 아닌 두 직사각형 & 두 일반 이등변삼각형 (❌)
+          poly([pt(520, 145), pt(595, 145), pt(595, 215), pt(520, 215)], red, 'rgba(251,113,133,0.20)', 2.6, 2);
+          poly([pt(625, 145), pt(775, 145), pt(775, 215), pt(625, 215)], red, 'rgba(251,113,133,0.20)', 2.6, 2);
+          line(pt(520, 215), pt(595, 145), amber, 2);
+          line(pt(625, 215), pt(775, 145), red, 2);
+          txt('❌ 두 직사각형 (가로·세로비 불일치)', pt(645, 240), red, 12);
+
+          poly([pt(565, 270), pt(530, 365), pt(600, 365)], red, 'rgba(251,113,133,0.20)', 2.6, 2);
+          poly([pt(705, 305), pt(630, 365), pt(780, 365)], red, 'rgba(251,113,133,0.20)', 2.6, 2);
+          txt('❌ 두 이등변삼각형 (꼭지각 40° vs 110° 불일치!)', pt(645, 390), red, 12);
+        }
+      }
+
+      // 우측 하단 칠판 세로 분수 비례식 판서
+      if (spec.fracEq && spec.fracEq.length === 4) {
+        drawCanvasEquationWithFractions(
+          g,
+          spec.fracEq[0], spec.fracEq[1],
+          spec.fracEq[2], spec.fracEq[3],
+          650, 412,
+          amber,
+          blue
+        );
+      }
+
+      g.restore();
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. UI 동기화 및 인터랙티브 컨트롤러
+    // -------------------------------------------------------------------------
+    function renderSubBar() {
+      const m = state.mode;
+      const bar = document.getElementById('subSelectorBar');
+      bar.innerHTML = SUB_MENUS[m]
+        .map(
+          (it) =>
+            `<button onclick="setSubType(${m}, '${it.id}')" class="sub-pill ${
+              state.subType[m] === it.id ? 'active' : 'bg-emerald-950/80 text-emerald-100 hover:bg-emerald-900'
+            } px-2.5 py-1 rounded-lg border border-emerald-800 text-[11px] transition">${it.label}</button>`
+        )
+        .join('');
+    }
+
+    function renderPresetChips() {
+      document.getElementById('rBtnGroup').innerHTML = RATIO_PRESETS.map(
+        (rp, idx) =>
+          `<button onclick="setRatioIdx(${idx})" class="preset-chip ${
+            state.ratioIdx === idx ? 'active' : 'bg-emerald-950/80 text-emerald-200 hover:bg-emerald-900 border-emerald-800'
+          } py-1 rounded border text-[11px] transition">${rp.label}</button>`
+      ).join('');
+
+      document.getElementById('hBtnGroup').innerHTML = BASE_PRESETS.map(
+        (v) =>
+          `<button onclick="setBaseScale(${v})" class="preset-chip ${
+            state.baseScale === v ? 'active' : 'bg-emerald-950/80 text-emerald-200 hover:bg-emerald-900 border-emerald-800'
+          } py-1 rounded border text-[11px] transition">${v}cm</button>`
+      ).join('');
+    }
+
+    function updateUI(spec) {
+      document.getElementById('canvasModeBadge').textContent = spec.badge;
+      document.getElementById('canvasActionHint').innerHTML = spec.hint;
+      document.getElementById('txtFoldToggle').textContent = spec.actionTxt;
+
+      document.getElementById('dim1Label').textContent = spec.dim1Name;
+      document.getElementById('dim2Label').textContent = spec.dim2Name;
+      document.getElementById('valR').textContent = spec.val1Txt;
+      document.getElementById('valH').textContent = spec.val2Txt;
+
+      document.getElementById('sliderFold').value = state.fold;
+      document.getElementById('valFold').textContent = `${Math.round(state.fold * 100)}%`;
+
+      const partsBox = document.getElementById('partsBox');
+      partsBox.innerHTML = spec.parts
+        .map((p) => {
+          const isSelected = state.activePartIdx === p.id;
+          const badgeCls = p.ok
+            ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+            : 'bg-rose-500/20 text-rose-300 border-rose-500/40';
+          return `
+            <div onclick="togglePartHighlight(${p.id})" class="part-card ${
+              isSelected ? 'active' : 'bg-[#07130e]/90 border-emerald-800/70'
+            } p-2.5 rounded-lg border flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-3 h-3 rounded-full shrink-0" style="background:${p.color}"></span>
+                <div class="truncate">
+                  <div class="text-xs font-bold text-emerald-50 truncate">${p.name}</div>
+                  <div class="text-[10.5px] text-emerald-400/85 truncate">${p.desc}</div>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded border text-xs font-mono font-extrabold shrink-0 ${badgeCls}">${p.val}</span>
+            </div>
+          `;
+        })
+        .join('');
+
+      document.getElementById('totalResultBadge').textContent = spec.totalRes;
+      document.getElementById('ruleBadge').textContent = spec.rule;
+      document.getElementById('formulaBox').innerHTML = spec.formulaHTML;
+      document.getElementById('intuitionNotes').innerHTML = spec.notes;
+
+      renderPresetChips();
+    }
+
+    function togglePartHighlight(idx) {
+      state.activePartIdx = state.activePartIdx === idx ? -1 : idx;
+      render();
+    }
+
+    function cyclePartHighlight() {
+      const spec = getSpec();
+      const maxLen = spec.parts.length;
+      state.activePartIdx = state.activePartIdx + 1 >= maxLen ? -1 : state.activePartIdx + 1;
+      render();
+    }
+
+    function setConceptSwitch(sw) {
+      state.conceptSwitch = sw;
+      ['all', 'angles', 'sides', 'aux'].forEach((id) => {
+        document.getElementById(`sw-${id}`).classList.toggle('active', id === sw);
+      });
+      render();
+    }
+
+    function setMode(m) {
+      state.mode = m;
+      state.activePartIdx = -1;
+      state.isSuperimposed = false;
+      for (let i = 1; i <= 6; i++) {
+        document.getElementById(`tab-${i}`).classList.toggle('active', i === m);
+      }
+      state.fold = 0.0;
+      state.foldTarget = 1.0; // 탭 진입 시 부드럽게 정렬·보조선 애니메이션 시연
+      renderSubBar();
+      render();
+    }
+
+    function setSubType(mode, subId) {
+      state.subType[mode] = subId;
+      state.activePartIdx = -1;
+      state.isSuperimposed = false;
+      state.fold = 0.0;
+      state.foldTarget = 1.0;
+      renderSubBar();
+      render();
+    }
+
+    function setRatioIdx(idx) {
+      state.ratioIdx = idx;
+      render();
+    }
+
+    function setBaseScale(val) {
+      state.baseScale = val;
+      render();
+    }
+
+    function setFoldVal(val) {
+      state.isSuperimposed = false;
+      state.foldTarget = val;
+    }
+
+    function onFoldSlider() {
+      state.foldTarget = null;
+      state.isSuperimposed = false;
+      state.fold = parseFloat(document.getElementById('sliderFold').value);
+      render();
+    }
+
+    function toggleFoldAnim() {
+      state.isSuperimposed = false;
+      state.foldTarget = state.fold > 0.5 ? 0.0 : 1.0;
+    }
+
+    function toggleSuperimpose() {
+      state.isSuperimposed = !state.isSuperimposed;
+      state.foldTarget = state.isSuperimposed ? 1.0 : 0.0;
+      render();
+    }
+
+    function zoomCanvas(factor) {
+      state.scale = Math.max(0.65, Math.min(1.85, state.scale * factor));
+      render();
+    }
+
+    function resetView() {
+      state.scale = 1.0;
+      state.panX = 0;
+      state.panY = 0;
+      state.activePartIdx = -1;
+      state.isSuperimposed = false;
+      state.fold = 0.0;
+      state.foldTarget = 1.0;
+      setConceptSwitch('all');
+      render();
+    }
+
+    function animateLoop() {
+      let dirty = false;
+      if (state.foldTarget !== null) {
+        const diff = state.foldTarget - state.fold;
+        if (Math.abs(diff) < 0.008) {
+          state.fold = state.foldTarget;
+          state.foldTarget = null;
+        } else {
+          state.fold += diff * 0.085;
+        }
+        dirty = true;
+      }
+      if (dirty) render();
+      requestAnimationFrame(animateLoop);
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. 마우스 / 터치 캔버스 팬(Pan) & 클릭 토글
+    // -------------------------------------------------------------------------
+    function getPointerPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+      }
+      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
+    canvas.addEventListener('mousedown', (e) => {
+      state.isDragging = true;
+      state.dragMoved = false;
+      state.lastMouse = getPointerPos(e);
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!state.isDragging) return;
+      const pos = getPointerPos(e);
+      const dx = pos.x - state.lastMouse.x;
+      const dy = pos.y - state.lastMouse.y;
+      if (Math.hypot(dx, dy) > 4) state.dragMoved = true;
+      state.panX += dx;
+      state.panY += dy;
+      state.lastMouse = pos;
+      render();
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (state.isDragging && !state.dragMoved) {
+        toggleFoldAnim();
+      }
+      state.isDragging = false;
+    });
+
+    canvas.addEventListener('touchstart', (e) => {
+      state.isDragging = true;
+      state.dragMoved = false;
+      state.lastMouse = getPointerPos(e);
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!state.isDragging) return;
+      const pos = getPointerPos(e);
+      const dx = pos.x - state.lastMouse.x;
+      const dy = pos.y - state.lastMouse.y;
+      if (Math.hypot(dx, dy) > 4) state.dragMoved = true;
+      state.panX += dx;
+      state.panY += dy;
+      state.lastMouse = pos;
+      render();
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+      state.isDragging = false;
+    });
+
+    canvas.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      zoomCanvas(e.deltaY < 0 ? 1.09 : 0.92);
+    }, { passive: false });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setMode(1);
+      resizeCanvas();
+      requestAnimationFrame(animateLoop);
+    });
+  </script>
+
+  <script id="ap-mobile-adapter">
+  (function(){
+    const board = document.querySelector('main');
+    if (!board) return;
+    const items = Array.from(board.children);
+    const top = items.find(el => el.tagName==='DIV' && el.classList.contains('absolute') && Array.from(el.classList).some(c=>c.startsWith('top-')));
+    const tools = items.find(el => el.tagName==='DIV' && el.classList.contains('absolute') && Array.from(el.classList).some(c=>c.startsWith('bottom-')) && Array.from(el.classList).some(c=>c.startsWith('left-')));
+    if (!top || !tools) return;
+    top.classList.add('ap-mobile-top'); tools.classList.add('ap-mobile-tools');
+    let wasMobile=null;
+    function arrange(){
+      const mobile=window.innerWidth<1024;
+      if (mobile===wasMobile) return;
+      wasMobile=mobile;
+      if(mobile){board.before(top);board.after(tools)}
+      else {board.appendChild(top);board.appendChild(tools)}
+      requestAnimationFrame(()=>{
+        if (typeof window.resizeCanvas === 'function') {
+          try {window.resizeCanvas()}catch(e){console.warn('Canvas resize:',e.message)}
+        }
+      });
+    }
+    arrange();
+    window.addEventListener('resize',arrange,{passive:true});
+  })();
+  </script>
+
+  <script>
+  window.APBoardRelHost={
+    getState:()=>state,
+    render:()=>render(),
+    project:(x,y)=>({x,y,depth:0})
+  };
+  </script>
+  <script src="../../assets/board-relations.js" data-board-mode="plane"></script>
+  <script src="../../assets/geometry-relations.js" data-mode="plane"></script>
+  <script defer src="../../assets/student-guide.js"></script>
+</body>
+</html>

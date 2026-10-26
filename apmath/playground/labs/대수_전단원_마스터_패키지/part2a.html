@@ -1,0 +1,3364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>대수 Part 2. 삼각함수 8대 킬러 유형 마스터 칠판</title>
+
+  <!-- Pretendard Webfont -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+  <style id="ap-mobile-bridge">
+    :root {
+      --bg-deep: #07130e;
+      --bg-board: #0d2119;
+      --bg-panel: #10281f;
+      --bg-card: #163329;
+      --neon-emerald: #34d399;
+      --neon-gold: #fbbf24;
+      --neon-cyan: #38bdf8;
+      --neon-coral: #fb7185;
+      --neon-purple: #c084fc;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #07130e 0%, #0f261d 50%, #163329 100%);
+      color: #ecfdf5;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    #chalkCanvas {
+      touch-action: none;
+    }
+
+    @media (max-width: 1023px) {
+      body {
+        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+      }
+      main {
+        overflow: visible !important;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(7, 19, 14, 0.6);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(52, 211, 153, 0.35);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(52, 211, 153, 0.65);
+    }
+
+    .chalk-bg {
+      background-color: #0b1d16;
+      background-image:
+        radial-gradient(circle at 20% 25%, rgba(52, 211, 153, 0.045) 0%, transparent 50%),
+        radial-gradient(circle at 80% 75%, rgba(56, 189, 248, 0.035) 0%, transparent 50%);
+    }
+
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 3px;
+      font-size: 0.92em;
+      line-height: 1.1;
+    }
+    .math-frac > .num {
+      border-bottom: 1.5px solid currentColor;
+      padding: 0 3px 2px 3px;
+      width: 100%;
+      text-align: center;
+    }
+    .math-frac > .den {
+      padding: 2px 3px 0 3px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .glow-gold {
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.25), inset 0 0 8px rgba(251, 191, 36, 0.12);
+    }
+    .glow-emerald {
+      box-shadow: 0 0 15px rgba(52, 211, 153, 0.25), inset 0 0 8px rgba(52, 211, 153, 0.12);
+    }
+
+    .katex {
+      font-size: 1.03em !important;
+      color: inherit;
+    }
+
+    .tab-btn-active {
+      background: linear-gradient(180deg, rgba(52, 211, 153, 0.22) 0%, rgba(16, 40, 31, 0.95) 100%);
+      border-bottom: 3px solid #fbbf24;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .rad-chip {
+      transition: all 0.15s ease;
+    }
+    .rad-chip-active {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      color: #07130e;
+      font-weight: 800;
+      border-color: #fde68a;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.4);
+    }
+  </style>
+</head>
+<body class="flex flex-col h-screen w-screen overflow-hidden">
+
+  <!-- ================= TOP HEADER & 8 KILLER MODE TABS ================= -->
+  <header class="shrink-0 bg-[#07130e]/95 border-b border-emerald-800/60 z-20">
+    <div class="flex items-center justify-between px-4 py-2 border-b border-emerald-900/50">
+      <div class="flex items-center gap-3">
+        <a href="../index.html" class="ap-back-home px-2.5 py-1 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-700/50 text-emerald-300 text-xs font-bold transition flex items-center gap-1 shrink-0" title="전체 단원 목록으로">
+          <i class="fa-solid fa-arrow-left text-[10px]"></i>
+          <span class="hidden sm:inline">전체 단원</span>
+        </a>
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-700 flex items-center justify-center shadow-lg shadow-emerald-900/50 border border-cyan-300/40 shrink-0">
+          <i class="fa-solid fa-wave-square text-white text-lg"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 text-[11px] font-bold rounded bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">2022 개정 대수 (수학 I)</span>
+            <h1 class="text-base md:text-lg font-extrabold tracking-tight text-white">
+              Part 2. 삼각함수 & 도형 활용 <span class="text-amber-400">8대 킬러 유형</span> 마스터 칠판
+            </h1>
+          </div>
+          <p class="text-[11px] text-emerald-300/70 hidden sm:block">
+            전 구간 라디안(π) 특수각 스냅 · 무리수(√2, √3) 실전 판서 · 치환 2중 그래프 · 외접원 지름 2R · 내접사각형 보각
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <div class="hidden xl:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-500/40 text-xs text-emerald-200">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+          <span>특수각 라디안(π/6, π/4, π/3...) 칩을 클릭하거나 노란색 핸들을 드래그하세요!</span>
+        </div>
+        <button onclick="triggerTwinProblem()" class="px-3 py-1.5 rounded-lg bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/50 text-purple-200 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-dice"></i>
+          <span>쌍둥이 변형 생성</span>
+        </button>
+        <button onclick="snapToCondition()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+          <i class="fa-solid fa-bullseye"></i>
+          <span>문제 조건 스냅</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 8 Killer Modes Tab Bar -->
+    <nav id="modeTabBar" class="flex items-center gap-1 px-3 pt-1.5 overflow-x-auto no-scrollbar bg-[#091812]">
+      <!-- Populated by JS -->
+    </nav>
+  </header>
+
+  <!-- ================= MAIN 2-SPLIT WORKSPACE ================= -->
+  <main class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+    <!-- LEFT: Interactive 2D Chalkboard Canvas -->
+    <section class="flex-1 relative chalk-bg overflow-hidden flex flex-col min-h-[420px] lg:min-h-0">
+
+      <!-- Top-Left Canvas HUD -->
+      <div class="absolute top-3 left-3 z-10 pointer-events-none flex flex-col gap-1.5 max-w-[430px]">
+        <div class="bg-[#07130e]/85 backdrop-blur-md border border-emerald-700/50 rounded-xl px-3.5 py-2.5 shadow-xl">
+          <div class="flex items-center justify-between gap-3 mb-1">
+            <span id="hudTypeBadge" class="text-[11px] font-bold uppercase tracking-wider text-amber-400">TYPE 01</span>
+            <span id="hudSubTitle" class="text-[11px] text-emerald-300/80 font-medium">라디안(π) 특수각 실전 판서</span>
+          </div>
+          <div id="hudEquationBox" class="text-sm text-white font-semibold leading-relaxed">
+            <!-- Rendered via KaTeX -->
+          </div>
+        </div>
+
+        <!-- Condition Snap Toast -->
+        <div id="snapToast" class="hidden bg-amber-500/95 text-slate-950 font-extrabold text-xs px-3.5 py-2 rounded-lg shadow-lg items-center gap-2 transition-all">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span id="snapToastText">기출 문제 특수각 조건에 정확히 스냅되었습니다!</span>
+        </div>
+      </div>
+
+      <!-- Top-Right Canvas HUD: What-If Mutator Switches -->
+      <div class="absolute top-3 right-3 z-10 flex flex-wrap justify-end gap-1.5 max-w-[360px]">
+        <button id="btnToggleSym" onclick="toggleMutator('sym')" class="px-2.5 py-1.5 rounded-lg bg-[#07130e]/85 hover:bg-emerald-900/80 border border-emerald-600/50 text-[11px] font-semibold text-emerald-200 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-arrows-left-right-to-line text-amber-400"></i>
+          <span>주기·대칭축 가이드</span>
+        </button>
+        <button id="btnToggleAbs" onclick="toggleMutator('abs')" class="px-2.5 py-1.5 rounded-lg bg-[#07130e]/85 hover:bg-emerald-900/80 border border-emerald-600/50 text-[11px] font-semibold text-emerald-200 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-wave-square text-cyan-400"></i>
+          <span>|f(x)| 절댓값·수선</span>
+        </button>
+        <button id="btnToggleCircle" onclick="toggleMutator('circle')" class="px-2.5 py-1.5 rounded-lg bg-[#07130e]/85 hover:bg-emerald-900/80 border border-emerald-600/50 text-[11px] font-semibold text-emerald-200 transition flex items-center gap-1.5">
+          <i class="fa-regular fa-circle-dot text-purple-400"></i>
+          <span>단위원·외접원 보조선</span>
+        </button>
+      </div>
+
+      <!-- Main HTML5 Canvas -->
+      <canvas id="chalkCanvas" class="w-full h-full cursor-grab active:cursor-grabbing block"></canvas>
+
+      <!-- Bottom Floating Toolbar -->
+      <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 bg-[#07130e]/90 backdrop-blur-md border border-emerald-700/60 px-3 py-1.5 rounded-full shadow-2xl">
+        <button onclick="zoomCanvas(1.18)" title="확대" class="w-7 h-7 rounded-full hover:bg-emerald-800/60 text-emerald-200 flex items-center justify-center text-xs transition">
+          <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </button>
+        <button onclick="zoomCanvas(0.85)" title="축소" class="w-7 h-7 rounded-full hover:bg-emerald-800/60 text-emerald-200 flex items-center justify-center text-xs transition">
+          <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </button>
+        <button onclick="resetView()" title="시점 초기화" class="px-2.5 h-7 rounded-full hover:bg-emerald-800/60 text-emerald-200 flex items-center justify-center gap-1 text-[11px] font-medium transition">
+          <i class="fa-solid fa-rotate-left"></i>
+          <span>시점 리셋</span>
+        </button>
+        <div class="h-3.5 w-[1px] bg-emerald-800 mx-1"></div>
+        <span class="text-[11px] text-amber-300/90 font-medium px-1 flex items-center gap-1">
+          <i class="fa-solid fa-magnet"></i>
+          <span class="hidden sm:inline">노란색 핸들 드래그 시 실전 특수각(π/6, π/4, π/3...)으로 자동 스냅!</span>
+        </span>
+      </div>
+    </section>
+
+    <!-- RIGHT: 460px Control, Problem, Step 1~3 & 3m vs 10s Secret Panel -->
+    <aside class="w-full lg:w-[460px] shrink-0 bg-[#0b1f17]/95 border-t lg:border-t-0 lg:border-l border-emerald-800/60 overflow-y-auto p-3.5 space-y-3.5 z-10">
+
+      <!-- 1. [실전 기출 & 변형 카트리지 카드] -->
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg">
+        <div class="flex items-center justify-between gap-2 mb-2.5">
+          <div id="scenarioChips" class="flex items-center gap-1 flex-wrap">
+            <!-- Populated by JS -->
+          </div>
+          <span id="problemSourceBadge" class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/50 shrink-0">
+            평가원 4점 기출
+          </span>
+        </div>
+
+        <div id="problemTextBox" class="text-[13.5px] leading-relaxed text-emerald-50 bg-[#091812]/90 border border-emerald-800/60 rounded-lg p-3 mb-3">
+          <!-- Rendered with KaTeX -->
+        </div>
+
+        <div class="flex items-center justify-between gap-2">
+          <button onclick="snapToCondition()" class="flex-1 py-2 px-3 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-extrabold text-xs shadow-md shadow-amber-500/20 flex items-center justify-center gap-1.5 transition">
+            <i class="fa-solid fa-bullseye"></i>
+            <span>🎯 문제 조건 원클릭 스냅</span>
+          </button>
+          <button onclick="triggerTwinProblem()" class="py-2 px-3 rounded-lg bg-purple-900/60 hover:bg-purple-800/80 border border-purple-400/50 text-purple-100 font-bold text-xs flex items-center justify-center gap-1.5 transition" title="특수각 조건을 바꾸어 10초 비기를 직접 연습합니다">
+            <i class="fa-solid fa-dice text-purple-300"></i>
+            <span>🎲 쌍둥이 특수각 변형</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. [단계별 보조선 Step 1~3 언락] -->
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-1.5">
+            <i class="fa-solid fa-compass-drafting text-amber-400 text-sm"></i>
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-100">단계별 사고 확장 보조선 언락</h2>
+          </div>
+          <button onclick="toggleAllSteps()" id="btnAllSteps" class="text-[11px] font-bold text-amber-300 hover:text-amber-200 px-2 py-0.5 rounded bg-amber-500/15 border border-amber-400/30 transition">
+            전체 보조선 켜기
+          </button>
+        </div>
+
+        <div class="grid grid-cols-3 gap-1.5 mb-2">
+          <button id="stepBtn1" onclick="toggleStep(1)" class="py-2 px-2 rounded-lg border text-xs font-bold transition flex flex-col items-center gap-0.5">
+            <span class="text-[10px] opacity-80">STEP 1</span>
+            <span id="stepLabel1" class="truncate w-full text-center">대칭·지름선</span>
+          </button>
+          <button id="stepBtn2" onclick="toggleStep(2)" class="py-2 px-2 rounded-lg border text-xs font-bold transition flex flex-col items-center gap-0.5">
+            <span class="text-[10px] opacity-80">STEP 2</span>
+            <span id="stepLabel2" class="truncate w-full text-center">원주각·합동</span>
+          </button>
+          <button id="stepBtn3" onclick="toggleStep(3)" class="py-2 px-2 rounded-lg border text-xs font-bold transition flex flex-col items-center gap-0.5">
+            <span class="text-[10px] opacity-80">STEP 3</span>
+            <span id="stepLabel3" class="truncate w-full text-center">불변량 판서</span>
+          </button>
+        </div>
+
+        <div id="stepDescBox" class="text-xs text-emerald-200/90 bg-[#091812]/80 border border-emerald-800/50 rounded-lg px-3 py-2 leading-relaxed">
+          Step 1~3 버튼을 눌러 칠판 위에 숨겨진 기하학적·구조적 보조선을 단계별로 작도해보세요.
+        </div>
+      </div>
+
+      <!-- 3. [교과서 3분 정석 풀이 vs 10초 컷 실전 구조·기하 비기] -->
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg space-y-2.5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <i class="fa-solid fa-bolt text-amber-400 text-sm"></i>
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-100">풀이 전략 2대 비교 (정석 vs 실전 비기)</h2>
+          </div>
+          <span class="text-[10px] text-amber-300 font-semibold">클릭하여 펼치기</span>
+        </div>
+
+        <!-- 3-Minute Textbook Solution Accordion -->
+        <div class="border border-slate-600/50 rounded-lg overflow-hidden bg-[#0a1913]">
+          <button onclick="toggleAccordion('textbook')" class="w-full px-3 py-2.5 flex items-center justify-between text-left hover:bg-slate-800/40 transition">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-700 text-slate-200">🐢 교과서 3분 정석</span>
+              <span id="textbookTitle" class="text-xs font-bold text-slate-200">일반해 나열 및 코사인 연립방정식</span>
+            </div>
+            <i id="iconTextbook" class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+          </button>
+          <div id="contentTextbook" class="hidden px-3.5 pb-3 pt-1 text-xs leading-relaxed text-slate-300 border-t border-slate-800/80 space-y-1.5">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- 10-Second Killer Secret Accordion -->
+        <div class="border border-amber-500/60 rounded-lg overflow-hidden bg-gradient-to-b from-amber-950/30 to-[#091812] glow-gold">
+          <button onclick="toggleAccordion('secret')" class="w-full px-3 py-2.5 flex items-center justify-between text-left hover:bg-amber-900/20 transition">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-400 text-slate-950">⚡ 10초 컷 실전 비기</span>
+              <span id="secretTitle" class="text-xs font-extrabold text-amber-300">대칭축 × 교점수 & 지름 직각삼각형 치환</span>
+            </div>
+            <i id="iconSecret" class="fa-solid fa-chevron-up text-xs text-amber-300 transition-transform"></i>
+          </button>
+          <div id="contentSecret" class="px-3.5 pb-3 pt-1.5 text-xs leading-relaxed text-emerald-50 border-t border-amber-500/30 space-y-2">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Trap Warning Box -->
+        <div class="bg-rose-950/40 border border-rose-500/40 rounded-lg px-3 py-2 flex items-start gap-2">
+          <i class="fa-solid fa-triangle-exclamation text-rose-400 text-xs mt-0.5 shrink-0"></i>
+          <div class="text-[11.5px] leading-snug text-rose-200">
+            <span class="font-extrabold text-rose-300">오답 함정 주의보: </span>
+            <span id="trapWarningText">정의역의 양 끝점 포함 여부와 사분면 부호를 반드시 확인하세요.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. [실전 특수각(라디안) 원클릭 칩 & 불변량 모니터] -->
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <i class="fa-solid fa-microchip text-cyan-400 text-sm"></i>
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-100">라디안(π) 특수각 조작 & 불변량 모니터</h2>
+          </div>
+          <span class="px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-[10px] font-extrabold text-amber-300">
+            100% 특수각·기호 판서
+          </span>
+        </div>
+
+        <div id="invariantMonitorGrid" class="grid grid-cols-2 gap-2">
+          <!-- Populated dynamically -->
+        </div>
+
+        <div id="sliderControlsBox" class="space-y-3 pt-2 border-t border-emerald-800/60">
+          <!-- Populated with Clickable Radian Special-Angle Chips -->
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- ================= APPLICATION JAVASCRIPT ================= -->
+  <script>
+    // =========================================================================
+    // 1. SYMBOLIC RADIAN (π) & EXACT SURD (√2, √3) ENGINE
+    // =========================================================================
+    function mathTextFallback(latex) {
+      return latex
+        .replace(/\\frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, '($1)/($2)')
+        .replace(/\\sqrt\s*\{([^{}]*)\}/g, '√($1)')
+        .replace(/\\overline\s*\{([^{}]*)\}/g, '$1')
+        .replace(/\\text\s*\{([^{}]*)\}/g, '$1')
+        .replace(/\\left|\\right/g, '')
+        .replace(/\\pi/g, 'π').replace(/\\theta/g, 'θ').replace(/\\alpha/g, 'α')
+        .replace(/\\sin/g, 'sin').replace(/\\cos/g, 'cos').replace(/\\tan/g, 'tan')
+        .replace(/\\le/g, '≤').replace(/\\ge/g, '≥').replace(/\\cdot/g, '·')
+        .replace(/\\times/g, '×').replace(/\\implies/g, '⇒').replace(/\\to/g, '→')
+        .replace(/\\triangle/g, '△').replace(/\\sum/g, 'Σ').replace(/\\in/g, '∈')
+        .replace(/\\[,;!]/g, ' ').replace(/\\[{}]/g, '')
+        .replace(/[{}]/g, '').replace(/\s+/g, ' ').trim();
+    }
+
+    function renderMath(latex, displayMode = false) {
+      try {
+        if (typeof katex === 'undefined') return mathTextFallback(latex);
+        return katex.renderToString(latex, {
+          displayMode: displayMode,
+          throwOnError: false,
+          strict: false
+        });
+      } catch (e) {
+        return mathTextFallback(latex);
+      }
+    }
+
+    function formatRichMath(text) {
+      if (!text) return '';
+      const withEmphasis = text.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+      return withEmphasis.replace(/\$\$([^$]+)\$\$/g, (_, tex) => renderMath(tex, true))
+                         .replace(/\$([^$]+)\$/g, (_, tex) => renderMath(tex, false));
+    }
+
+    function gcd(a, b) {
+      a = Math.abs(Math.round(a));
+      b = Math.abs(Math.round(b));
+      while (b) {
+        const t = b;
+        b = a % b;
+        a = t;
+      }
+      return a || 1;
+    }
+
+    // Snap any numeric value to the nearest value in an allowed array
+    function snapToNearest(val, list) {
+      let best = list[0];
+      let minDiff = Math.abs(val - best);
+      for (const item of list) {
+        const d = Math.abs(val - item);
+        if (d < minDiff) {
+          minDiff = d;
+          best = item;
+        }
+      }
+      return best;
+    }
+
+    // Convert degrees (special angles) to clean π-radian string for Canvas ("π/6", "2π/3", "2 rad")
+    function degToPiText(deg) {
+      if (Math.abs(deg - 114.59) < 0.5) return '2 rad';
+      if (Math.abs(deg) < 1e-2) return '0';
+      if (Math.abs(deg - 22.5) < 0.3) return 'π/8';
+      const twelfths = Math.round(deg / 15);
+      if (Math.abs(twelfths * 15 - deg) < 0.5) {
+        const g = gcd(twelfths, 12);
+        const n = twelfths / g;
+        const d = 12 / g;
+        if (d === 1) return n === 1 ? 'π' : (n === -1 ? '-π' : `${n}π`);
+        return n === 1 ? `π/${d}` : (n === -1 ? `-π/${d}` : `${n}π/${d}`);
+      }
+      return `${(deg / 180).toFixed(2)}π`;
+    }
+
+    // Convert degrees (special angles) to LaTeX π-radian string ("\frac{\pi}{6}", "\frac{2\pi}{3}")
+    function degToPiTex(deg) {
+      if (Math.abs(deg - 114.59) < 0.5) return '2\\text{ rad}';
+      if (Math.abs(deg) < 1e-2) return '0';
+      if (Math.abs(deg - 22.5) < 0.3) return '\\frac{\\pi}{8}';
+      const twelfths = Math.round(deg / 15);
+      if (Math.abs(twelfths * 15 - deg) < 0.5) {
+        const g = gcd(twelfths, 12);
+        const n = twelfths / g;
+        const d = 12 / g;
+        if (d === 1) return n === 1 ? '\\pi' : (n === -1 ? '-\\pi' : `${n}\\pi`);
+        return n === 1 ? `\\frac{\\pi}{${d}}` : (n === -1 ? `-\\frac{\\pi}{${d}}` : `\\frac{${n}\\pi}{${d}}`);
+      }
+      return `${(deg / 180).toFixed(2)}\\pi`;
+    }
+
+    // Convert radian x-coordinate to clean π-fraction string for Canvas ("π/6", "5π/6", "3π/2")
+    function radToPiText(rad) {
+      if (Math.abs(rad) < 1e-3) return '0';
+      const ratio = rad / Math.PI;
+      const denom = 24;
+      const num = Math.round(ratio * denom);
+      if (Math.abs(num / denom - ratio) < 1e-2) {
+        const g = gcd(num, denom);
+        const n = num / g;
+        const d = denom / g;
+        if (d === 1) return n === 1 ? 'π' : (n === -1 ? '-π' : `${n}π`);
+        return n === 1 ? `π/${d}` : (n === -1 ? `-π/${d}` : `${n}π/${d}`);
+      }
+      return `${ratio.toFixed(2)}π`;
+    }
+
+    // Convert radian x-coordinate to LaTeX π-fraction ("\frac{\pi}{6}", "\frac{5\pi}{6}")
+    function radToPiTex(rad) {
+      if (Math.abs(rad) < 1e-3) return '0';
+      const ratio = rad / Math.PI;
+      const denom = 24;
+      const num = Math.round(ratio * denom);
+      if (Math.abs(num / denom - ratio) < 1e-2) {
+        const g = gcd(num, denom);
+        const n = num / g;
+        const d = denom / g;
+        if (d === 1) return n === 1 ? '\\pi' : (n === -1 ? '-\\pi' : `${n}\\pi`);
+        return n === 1 ? `\\frac{\\pi}{${d}}` : (n === -1 ? `-\\frac{\\pi}{${d}}` : `\\frac{${n}\\pi}{${d}}`);
+      }
+      return `${ratio.toFixed(2)}\\pi`;
+    }
+
+    // Exact Surd Formatter for Special Ratios & Lengths (Canvas & Monitor text)
+    function formatExactSurdText(val) {
+      if (Math.abs(val) < 1e-4) return '0';
+      const sign = val < 0 ? '-' : '';
+      const v = Math.abs(val);
+
+      const known = [
+        { num: 0.5, str: '1/2', tex: '\\frac{1}{2}' },
+        { num: 1.0, str: '1', tex: '1' },
+        { num: 1.5, str: '3/2', tex: '\\frac{3}{2}' },
+        { num: 2.0, str: '2', tex: '2' },
+        { num: 3.0, str: '3', tex: '3' },
+        { num: 4.0, str: '4', tex: '4' },
+        { num: 5.0, str: '5', tex: '5' },
+        { num: 6.0, str: '6', tex: '6' },
+        { num: 8.0, str: '8', tex: '8' },
+        { num: 10.0, str: '10', tex: '10' },
+        { num: 12.0, str: '12', tex: '12' },
+        { num: 1 / 3, str: '1/3', tex: '\\frac{1}{3}' },
+        { num: 2 / 3, str: '2/3', tex: '\\frac{2}{3}' },
+        { num: 3 / 4, str: '3/4', tex: '\\frac{3}{4}' },
+        { num: Math.SQRT2 / 2, str: '√2/2', tex: '\\frac{\\sqrt{2}}{2}' },
+        { num: Math.sqrt(3) / 2, str: '√3/2', tex: '\\frac{\\sqrt{3}}{2}' },
+        { num: Math.sqrt(3) / 3, str: '√3/3', tex: '\\frac{\\sqrt{3}}{3}' },
+        { num: (2 * Math.sqrt(3)) / 3, str: '2√3/3', tex: '\\frac{2\\sqrt{3}}{3}' },
+        { num: (4 * Math.sqrt(3)) / 3, str: '4√3/3', tex: '\\frac{4\\sqrt{3}}{3}' },
+        { num: (8 * Math.sqrt(3)) / 3, str: '8√3/3', tex: '\\frac{8\\sqrt{3}}{3}' },
+        { num: Math.SQRT2, str: '√2', tex: '\\sqrt{2}' },
+        { num: 2 * Math.SQRT2, str: '2√2', tex: '2\\sqrt{2}' },
+        { num: 3 * Math.SQRT2, str: '3√2', tex: '3\\sqrt{2}' },
+        { num: 4 * Math.SQRT2, str: '4√2', tex: '4\\sqrt{2}' },
+        { num: 5 * Math.SQRT2, str: '5√2', tex: '5\\sqrt{2}' },
+        { num: 6 * Math.SQRT2, str: '6√2', tex: '6\\sqrt{2}' },
+        { num: Math.sqrt(3), str: '√3', tex: '\\sqrt{3}' },
+        { num: 2 * Math.sqrt(3), str: '2√3', tex: '2\\sqrt{3}' },
+        { num: 3 * Math.sqrt(3), str: '3√3', tex: '3\\sqrt{3}' },
+        { num: 4 * Math.sqrt(3), str: '4√3', tex: '4\\sqrt{3}' },
+        { num: 5 * Math.sqrt(3), str: '5√3', tex: '5\\sqrt{3}' },
+        { num: 6 * Math.sqrt(3), str: '6√3', tex: '6\\sqrt{3}' },
+        { num: Math.sqrt(17), str: '√17', tex: '\\sqrt{17}' },
+        { num: Math.sqrt(19), str: '√19', tex: '\\sqrt{19}' },
+        { num: 3 * Math.sqrt(7), str: '3√7', tex: '3\\sqrt{7}' },
+        { num: (Math.sqrt(6) - Math.SQRT2) / 4, str: '(√6-√2)/4', tex: '\\frac{\\sqrt{6}-\\sqrt{2}}{4}' },
+        { num: (Math.sqrt(6) + Math.SQRT2) / 4, str: '(√6+√2)/4', tex: '\\frac{\\sqrt{6}+\\sqrt{2}}{4}' }
+      ];
+
+      for (const k of known) {
+        if (Math.abs(v - k.num) < 1e-3) return sign + k.str;
+      }
+      return (val < 0 ? '-' : '') + v.toFixed(2);
+    }
+
+    function formatExactSurdTex(val) {
+      if (Math.abs(val) < 1e-4) return '0';
+      const sign = val < 0 ? '-' : '';
+      const v = Math.abs(val);
+      const txt = formatExactSurdText(v);
+      const map = {
+        '1/2': '\\frac{1}{2}',
+        '3/2': '\\frac{3}{2}',
+        '1/3': '\\frac{1}{3}',
+        '2/3': '\\frac{2}{3}',
+        '3/4': '\\frac{3}{4}',
+        '√2/2': '\\frac{\\sqrt{2}}{2}',
+        '√3/2': '\\frac{\\sqrt{3}}{2}',
+        '√3/3': '\\frac{\\sqrt{3}}{3}',
+        '2√3/3': '\\frac{2\\sqrt{3}}{3}',
+        '4√3/3': '\\frac{4\\sqrt{3}}{3}',
+        '8√3/3': '\\frac{8\\sqrt{3}}{3}',
+        '√2': '\\sqrt{2}',
+        '2√2': '2\\sqrt{2}',
+        '3√2': '3\\sqrt{2}',
+        '4√2': '4\\sqrt{2}',
+        '5√2': '5\\sqrt{2}',
+        '6√2': '6\\sqrt{2}',
+        '√3': '\\sqrt{3}',
+        '2√3': '2\\sqrt{3}',
+        '3√3': '3\\sqrt{3}',
+        '4√3': '4\\sqrt{3}',
+        '5√3': '5\\sqrt{3}',
+        '6√3': '6\\sqrt{3}',
+        '√17': '\\sqrt{17}',
+        '√19': '\\sqrt{19}',
+        '3√7': '3\\sqrt{7}'
+      };
+      if (map[txt]) return sign + map[txt];
+      return sign + txt;
+    }
+
+    // =========================================================================
+    // 2. CANVAS DRAWING HELPERS (FRACTIONS, BADGES, RIGHT ANGLES, ARCS)
+    // =========================================================================
+    function drawCanvasFraction(ctx, numStr, denStr, x, y, options = {}) {
+      const {
+        color = '#fbbf24',
+        fontSize = 13.0,
+        bgColor = 'rgba(7, 19, 14, 0.92)',
+        borderColor = 'rgba(251, 191, 36, 0.55)',
+        prefix = '',
+        suffix = ''
+      } = options;
+
+      ctx.save();
+      ctx.font = `bold ${fontSize}px Pretendard, sans-serif`;
+      const preW = prefix ? ctx.measureText(prefix).width + 4 : 0;
+      const sufW = suffix ? ctx.measureText(suffix).width + 4 : 0;
+      const numW = ctx.measureText(numStr).width;
+      const denW = ctx.measureText(denStr).width;
+      const fracW = Math.max(numW, denW) + 10;
+      const totalW = preW + fracW + sufW + 16;
+      const totalH = fontSize * 2.55;
+
+      const w = canvas.getBoundingClientRect().width;
+      const h = canvas.getBoundingClientRect().height;
+      const clampedX = Math.max(totalW / 2 + 8, Math.min(w - totalW / 2 - 8, x));
+      const clampedY = Math.max(totalH / 2 + 8, Math.min(h - totalH / 2 - 48, y));
+
+      const left = clampedX - totalW / 2;
+      const top = clampedY - totalH / 2;
+
+      ctx.fillStyle = bgColor;
+      ctx.strokeStyle = borderColor;
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.roundRect(left, top, totalW, totalH, 8);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = color;
+      ctx.textBaseline = 'middle';
+
+      let curX = left + 8;
+      if (prefix) {
+        ctx.textAlign = 'left';
+        ctx.fillText(prefix, curX, clampedY);
+        curX += preW;
+      }
+
+      const centerFracX = curX + fracW / 2;
+      ctx.textAlign = 'center';
+      ctx.fillText(numStr, centerFracX, clampedY - fontSize * 0.58);
+      ctx.fillText(denStr, centerFracX, clampedY + fontSize * 0.62);
+
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(centerFracX - fracW / 2 + 2, clampedY);
+      ctx.lineTo(centerFracX + fracW / 2 - 2, clampedY);
+      ctx.stroke();
+
+      curX += fracW;
+      if (suffix) {
+        ctx.textAlign = 'left';
+        ctx.fillText(suffix, curX + 4, clampedY);
+      }
+      ctx.restore();
+    }
+
+    function drawCanvasBadge(ctx, text, x, y, color = '#34d399', bg = 'rgba(7, 19, 14, 0.90)') {
+      ctx.save();
+      ctx.font = 'bold 12px Pretendard, sans-serif';
+      const w = ctx.measureText(text).width + 16;
+      const h = 24;
+      const cw = canvas.getBoundingClientRect().width;
+      const ch = canvas.getBoundingClientRect().height;
+      const cx = Math.max(w / 2 + 8, Math.min(cw - w / 2 - 8, x));
+      const cy = Math.max(h / 2 + 8, Math.min(ch - h / 2 - 48, y));
+
+      ctx.fillStyle = bg;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.roundRect(cx - w / 2, cy - h / 2, w, h, 6);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = color;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, cx, cy);
+      ctx.restore();
+    }
+
+    function drawRightAngleSign(vx, vy, x1, y1, x2, y2, color = '#fbbf24', sizePx = 11) {
+      const sV = mathToScreen(vx, vy);
+      const s1 = mathToScreen(x1, y1);
+      const s2 = mathToScreen(x2, y2);
+      const d1 = Math.hypot(s1.x - sV.x, s1.y - sV.y);
+      const d2 = Math.hypot(s2.x - sV.x, s2.y - sV.y);
+      if (d1 < 1e-3 || d2 < 1e-3) return;
+
+      const u1x = ((s1.x - sV.x) / d1) * sizePx;
+      const u1y = ((s1.y - sV.y) / d1) * sizePx;
+      const u2x = ((s2.x - sV.x) / d2) * sizePx;
+      const u2y = ((s2.y - sV.y) / d2) * sizePx;
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.fillStyle = 'rgba(251, 191, 36, 0.18)';
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(sV.x + u1x, sV.y + u1y);
+      ctx.lineTo(sV.x + u1x + u2x, sV.y + u1y + u2y);
+      ctx.lineTo(sV.x + u2x, sV.y + u2y);
+      ctx.lineTo(sV.x, sV.y);
+      ctx.closePath();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(sV.x + u1x, sV.y + u1y);
+      ctx.lineTo(sV.x + u1x + u2x, sV.y + u1y + u2y);
+      ctx.lineTo(sV.x + u2x, sV.y + u2y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawAngleArcMarker(vx, vy, x1, y1, x2, y2, color = '#fbbf24', radiusPx = 22, label = '') {
+      const sV = mathToScreen(vx, vy);
+      const s1 = mathToScreen(x1, y1);
+      const s2 = mathToScreen(x2, y2);
+      const a1 = Math.atan2(s1.y - sV.y, s1.x - sV.x);
+      const a2 = Math.atan2(s2.y - sV.y, s2.x - sV.x);
+
+      let diff = a2 - a1;
+      while (diff <= -Math.PI) diff += Math.PI * 2;
+      while (diff > Math.PI) diff -= Math.PI * 2;
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.fillStyle = 'rgba(251, 191, 36, 0.14)';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.moveTo(sV.x, sV.y);
+      ctx.arc(sV.x, sV.y, radiusPx, a1, a1 + diff, diff < 0);
+      ctx.closePath();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(sV.x, sV.y, radiusPx, a1, a1 + diff, diff < 0);
+      ctx.stroke();
+
+      if (label) {
+        const midA = a1 + diff / 2;
+        ctx.font = 'bold 11.5px Pretendard, sans-serif';
+        ctx.fillStyle = color;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(label, sV.x + Math.cos(midA) * (radiusPx + 14), sV.y + Math.sin(midA) * (radiusPx + 14));
+      }
+      ctx.restore();
+    }
+
+    function drawDoubleArrow(x1, y1, x2, y2, color = '#38bdf8', label = '') {
+      const p1 = mathToScreen(x1, y1);
+      const p2 = mathToScreen(x2, y2);
+      const ang = Math.atan2(p2.y - p1.y, p2.x - p1.x);
+      const head = 6;
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.fillStyle = color;
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+
+      [ { pt: p1, dir: ang }, { pt: p2, dir: ang + Math.PI } ].forEach(({ pt, dir }) => {
+        ctx.beginPath();
+        ctx.moveTo(pt.x, pt.y);
+        ctx.lineTo(pt.x + Math.cos(dir - 0.45) * head, pt.y + Math.sin(dir - 0.45) * head);
+        ctx.lineTo(pt.x + Math.cos(dir + 0.45) * head, pt.y + Math.sin(dir + 0.45) * head);
+        ctx.closePath();
+        ctx.fill();
+      });
+
+      if (label) {
+        ctx.font = 'bold 11px Pretendard, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, (p1.x + p2.x) / 2, (p1.y + p2.y) / 2 - 8);
+      }
+      ctx.restore();
+    }
+
+    function solveAbsSinEquation(ampA, shiftC, lineT) {
+      const roots = [];
+      const addSinRoots = (sVal) => {
+        if (sVal < -1 - 1e-4 || sVal > 1 + 1e-4) return;
+        if (Math.abs(sVal - 1) <= 1e-3) {
+          roots.push(Math.PI / 2);
+        } else if (Math.abs(sVal + 1) <= 1e-3) {
+          roots.push((3 * Math.PI) / 2);
+        } else {
+          const clamped = Math.max(-1, Math.min(1, sVal));
+          const alpha = Math.asin(clamped);
+          if (clamped >= 0) {
+            roots.push(alpha, Math.PI - alpha);
+          } else {
+            roots.push(Math.PI - alpha, 2 * Math.PI + alpha);
+          }
+        }
+      };
+
+      if (lineT < -1e-4) return [];
+      if (Math.abs(lineT) <= 1e-3) {
+        addSinRoots(-shiftC / ampA);
+      } else {
+        addSinRoots((lineT - shiftC) / ampA);
+        addSinRoots((-lineT - shiftC) / ampA);
+      }
+
+      roots.sort((a, b) => a - b);
+      const unique = [];
+      for (const r of roots) {
+        if (unique.length === 0 || Math.abs(r - unique[unique.length - 1]) > 1e-3) {
+          unique.push(r);
+        }
+      }
+      return unique;
+    }
+
+    // =========================================================================
+    // 3. 8 KILLER MODES DATA (100% RADIAN SPECIAL-ANGLE CSAT FORMULATIONS)
+    // =========================================================================
+    const KILLER_MODES = [
+      {
+        id: 'type1',
+        code: 'TYPE 01',
+        shortTitle: '동경 대칭 & 부채꼴 극값',
+        icon: 'fa-compass',
+        stepLabels: ['대칭축 y=x (π/4)', 'kθ 동경 중점 평균', '부채꼴 θ=2rad 불변량'],
+        stepDescs: [
+          'Step 1: 단위원 위에 두 동경 $\\theta$와 $k\\theta$의 대칭 기준선($y=x$, 즉 $\\frac{\\pi}{4}$ 동경)을 작도합니다.',
+          'Step 2: 두 동경의 평균 각도 $\\frac{\\theta + k\\theta}{2}$가 대칭축 $\\frac{\\pi}{4}$ 위에 놓이는 등각 이등분 구조를 표시합니다.',
+          'Step 3: 우측 부채꼴($2r + l = L$ 고정)에서 중심각 $\\theta$를 변화시켜도 넓이 $S(\\theta) = \\frac{1}{2}r^2\\theta$가 최대가 되는 순간은 무조건 $\\theta = 2\\text{ rad}$ ($l = 2r$)임을 검증합니다.'
+        ],
+        trapWarning: '두 동경이 "일직선 위에 있고 방향이 반대"일 때는 차가 $\\pi$이지만, "$x$축·$y$축·$y=x$($\\frac{\\pi}{4}$) 대칭"일 때는 두 각의 차가 아니라 **합(평균)**이 일정합니다!',
+        scenarios: [
+          {
+            chip: '기출 A (두 동경의 π/4 대칭 조건)',
+            source: '평가원·교육청 3점~4점 필수',
+            params: { deg: 30, multK: 5, perimL: 16 },
+            snapParams: { deg: 15, multK: 5, perimL: 16 },
+            problem: '$0 < \\theta < \\frac{\\pi}{4}$인 각 $\\theta$에 대하여 $\\theta$를 나타내는 동경과 $5\\theta$를 나타내는 동경이 직선 $y = x$에 대하여 대칭일 때, 각 $\\theta$의 크기($\\text{rad}$)를 구하시오.',
+            textbookTitle: '5θ + θ = 2nπ + π/2 일반각 공식 대입',
+            textbookSteps: [
+              '1) 두 동경 $\\theta, 5\\theta$가 직선 $y=x$ ($\\frac{\\pi}{4}$)에 대하여 대칭이므로 두 각의 합은 $5\\theta + \\theta = 2n\\pi + \\frac{\\pi}{2}$ ($n$은 정수)이다.',
+              '2) $6\\theta = 2n\\pi + \\frac{\\pi}{2}$의 양변을 $6$으로 나누면 $\\theta = \\frac{n\\pi}{3} + \\frac{\\pi}{12}$.',
+              '3) $0 < \\theta < \\frac{\\pi}{4}$이므로 $n=0$일 때 $\\theta = \\frac{\\pi}{12}$.'
+            ],
+            secretTitle: '공식 암기 제로! (두 각의 평균 = 대칭축 각도 π/4)',
+            secretSteps: [
+              '⚡ **[1초 평균 원리]** 대칭이란 두 각의 정중앙(평균)이 대칭축 $\\frac{\\pi}{4}$라는 뜻입니다! $\\frac{\\theta + 5\\theta}{2} = 3\\theta = \\frac{\\pi}{4} \\implies \\theta = \\frac{\\pi}{12}$ 3초 컷!',
+              '⚡ **[일반해 간격]** 다음 해는 무조건 $\\frac{\\pi}{3}$ 간격으로 등장합니다 ($\\frac{\\pi}{12}, \\frac{5\\pi}{12}, \\frac{9\\pi}{12} \\dots$).'
+            ]
+          },
+          {
+            chip: '기출 B (부채꼴 최대 넓이 θ=2 rad 불변량)',
+            source: '내신·수능 기초 4점 불변량',
+            params: { deg: 60, multK: 3, perimL: 20 },
+            snapParams: { deg: 114.59, multK: 3, perimL: 20 },
+            problem: '둘레의 길이가 $L = 20$으로 일정한 부채꼴의 넓이 $S$가 최대일 때, 부채꼴의 반지름 $r$, 호의 길이 $l$, 중심각 $\\theta(\\text{rad})$, 최대 넓이 $S_{\\max}$를 구하시오.',
+            textbookTitle: 'l = 20 - 2r 대입 후 이차함수 표준형',
+            textbookSteps: [
+              '1) 둘레가 $20$이므로 $2r + l = 20 \\implies l = 20 - 2r$ ($0 < r < 10$).',
+              '2) 넓이 $S = \\frac{1}{2}rl = \\frac{1}{2}r(20-2r) = -r^2 + 10r = -(r-5)^2 + 25$.',
+              '3) 따라서 $r = 5$일 때 최대 넓이 $25$를 갖고, 이때 $l = 10$이므로 중심각 $\\theta = \\frac{l}{r} = 2\\text{ rad}$이다.'
+            ],
+            secretTitle: '둘레가 얼마든 최대 넓이 부채꼴은 무조건 θ = 2 rad, r = L/4!',
+            secretSteps: [
+              '⚡ **[우주 불변량]** 산술·기하평균($2r + l \\ge 2\\sqrt{2rl}$) 등호 조건에 의해 최대 넓이일 때는 무조건 **$2r = l \\iff \\theta = \\frac{l}{r} = 2\\text{ rad}$**으로 고정입니다!',
+              '⚡ **[1초 공식]** 둘레 $L$을 정확히 $4$등분하여 **$r = \\frac{L}{4}=5$, $l = \\frac{L}{2}=10$, 최대 넓이 $S = r^2 = 25$** 끝!'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type2',
+        code: 'TYPE 02',
+        shortTitle: '단위원 교점과 각변환 합동',
+        icon: 'fa-circle-nodes',
+        stepLabels: ['점 P 특수각 직각삼각형', 'π/2±θ 합동 삼각형', '좌표(cos, sin) 직독'],
+        stepDescs: [
+          'Step 1: 단위원 $x^2+y^2=1$ 위의 특수각 점 $P(\\cos\\theta, \\sin\\theta)$에서 $x$축에 수선의 발을 내려 기준 직각삼각형($1:\\sqrt{3}:2$ 또는 $1:1:\\sqrt{2}$)을 작도합니다.',
+          'Step 2: 기출 A에서는 $+\\frac{\\pi}{2}$ 회전 합동 점 $Q(-\\sin\\theta, \\cos\\theta)$를, 기출 B에서는 직선 $y=x$ 대칭 합동 점 $R(\\sin\\theta, \\cos\\theta)$를 작도합니다.',
+          'Step 3: 복잡한 각변환 공식 없이 합동 직각삼각형의 긴 변($\\frac{\\sqrt{3}}{2}$)과 짧은 변($\\frac{1}{2}$)의 위치 교환만으로 값을 직독합니다.'
+        ],
+        trapWarning: '제2사분면 각($\\frac{2\\pi}{3}, \\frac{3\\pi}{4}, \\frac{5\\pi}{6}$)에서는 $x$좌표($\\cos$)가 음수($-$)이고 $y$좌표($\\sin$)가 양수($+$)입니다!',
+        scenarios: [
+          {
+            chip: '기출 A (단위원 π/2 + θ 수직 회전)',
+            source: '평가원 4점 단위원 각변환 필수',
+            params: { angleDeg: 30, transType: 0 },
+            snapParams: { angleDeg: 30, transType: 0 },
+            problem: '단위원 $x^2 + y^2 = 1$ 위의 점 $P(\\theta)$ ($\\theta = \\frac{\\pi}{6}$)를 원점을 중심으로 $+\\frac{\\pi}{2}$만큼 회전시킨 점 $Q$의 동경을 $\\alpha = \\theta + \\frac{\\pi}{2} = \\frac{2\\pi}{3}$라 할 때, $\\sin\\alpha - \\cos\\alpha$의 값을 구하시오.',
+            textbookTitle: '각변환 공식 sin(π/2+θ)=cosθ, cos(π/2+θ)=-sinθ',
+            textbookSteps: [
+              '1) $\\theta = \\frac{\\pi}{6}$이므로 $\\cos\\theta = \\frac{\\sqrt{3}}{2}, \\sin\\theta = \\frac{1}{2}$이다.',
+              '2) 각변환 공식에 의해 $\\sin(\\frac{\\pi}{2}+\\theta) = \\cos\\theta = \\frac{\\sqrt{3}}{2}$, $\\cos(\\frac{\\pi}{2}+\\theta) = -\\sin\\theta = -\\frac{1}{2}$이다.',
+              '3) 따라서 $\\sin\\alpha - \\cos\\alpha = \\frac{\\sqrt{3}}{2} - (-\\frac{1}{2}) = \\frac{\\sqrt{3}+1}{2}$.'
+            ],
+            secretTitle: '+π/2 회전 = 직각삼각형 세우기! Q(-1/2, √3/2) 1초 직독',
+            secretSteps: [
+              '⚡ **[합동 직독]** $P(\\frac{\\sqrt{3}}{2}, \\frac{1}{2})$을 $+\\frac{\\pi}{2}$ 회전하면 가로로 누워 있던 $1:\\sqrt{3}:2$ 직각삼각형이 제2사분면에 세워집니다!',
+              '⚡ 따라서 공식 없이 $Q(-\\frac{1}{2}, \\frac{\\sqrt{3}}{2})$을 바로 읽고 $y_Q - x_Q = \\frac{\\sqrt{3}+1}{2}$ 끝!'
+            ]
+          },
+          {
+            chip: '기출 B (y=x 대칭과 여각 변환 π/2 - θ)',
+            source: '수능·모의고사 4점 대칭 결합형',
+            params: { angleDeg: 60, transType: 1 },
+            snapParams: { angleDeg: 60, transType: 1 },
+            problem: '단위원 $x^2+y^2=1$ 위의 점 $P(\\theta)$ ($\\theta = \\frac{\\pi}{3}$)를 직선 $y=x$에 대칭이동한 점 $R$의 동경을 $\\beta = \\frac{\\pi}{2} - \\theta = \\frac{\\pi}{6}$라 할 때, $4\\sin\\theta\\cos\\beta$의 값을 구하시오.',
+            textbookTitle: 'β = π/2 - θ 여각 공식 유도 후 계산',
+            textbookSteps: [
+              '1) $\\theta = \\frac{\\pi}{3}$에서 $\\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}, \\cos\\frac{\\pi}{3} = \\frac{1}{2}$이다.',
+              '2) 직선 $y=x$ 대칭이므로 $\\beta = \\frac{\\pi}{2} - \\theta = \\frac{\\pi}{6}$이고 $\\cos\\beta = \\cos(\\frac{\\pi}{2}-\\theta) = \\sin\\theta = \\frac{\\sqrt{3}}{2}$.',
+              '3) 따라서 $4 \\times \\frac{\\sqrt{3}}{2} \\times \\frac{\\sqrt{3}}{2} = 3$.'
+            ],
+            secretTitle: 'y=x 대칭점 R(√3/2, 1/2)에서 x좌표 읽기 3초 컷',
+            secretSteps: [
+              '⚡ **[대칭 좌표]** $P(\\frac{1}{2}, \\frac{\\sqrt{3}}{2})$을 직선 $y=x$에 대칭이동하면 $x, y$가 바뀐 파란 점 $R(\\frac{\\sqrt{3}}{2}, \\frac{1}{2})$입니다.',
+              '⚡ $\\sin\\theta = y_P = \\frac{\\sqrt{3}}{2}$이고, $\\cos\\beta = x_R = \\frac{\\sqrt{3}}{2}$이므로 $4 \\times \\frac{3}{4} = 3$ 끝!'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type3',
+        code: 'TYPE 03',
+        shortTitle: '주기·대칭성과 교점의 합',
+        icon: 'fa-arrows-left-right',
+        stepLabels: ['대칭축 x = S (π 라디안)', '등거리 화살표(S±d)', '합 = 대칭축 × 개수'],
+        stepDescs: [
+          'Step 1: 삼각함수 $y = \\sin(bx)$의 봉우리 대칭축 $S_1 = \\frac{\\pi}{2b}, S_2 = \\frac{5\\pi}{2b}$와 네 교점의 정중앙 대칭축 $S = \\frac{3\\pi}{2b}$를 라디안($\\pi$) 격자 위에 작도합니다.',
+          'Step 2: 수평선 $y = k$와 만나는 짝꿍 교점들이 대칭축으로부터 정확히 같은 거리($-d, +d$)만큼 떨어져 있음을 양방향 화살표로 보여줍니다.',
+          'Step 3: 개별 근을 구하지 않고 $(\\text{교점의 합}) = (\\text{대칭축 } S) \\times (\\text{개수})$ 및 동심원 가중치 합($x_1+2x_2+2x_3+x_4 = 6S$)을 $\\pi$ 라디안으로 도출합니다.'
+        ],
+        trapWarning: '함수 $y = \\sin(bx)$의 주기는 $T = \\frac{2\\pi}{b}$이고, 첫 번째 양(+)의 봉우리 대칭축은 반주기의 절반인 $x = \\frac{\\pi}{2b}$입니다!',
+        scenarios: [
+          {
+            chip: '기출 A (y=sin 2x와 4개 교점의 합 3π)',
+            source: '수능·평가원 4점 최빈출 유형',
+            params: { freqB: 2, lineK: 0.5 },
+            snapParams: { freqB: 2, lineK: 0.5 },
+            problem: '$0 \\le x \\le 2\\pi$에서 정의된 함수 $f(x) = \\sin 2x$의 그래프와 직선 $y = k$ ($0 < k < 1$)가 만나는 네 점의 $x$좌표를 작은 것부터 차례로 $x_1 < x_2 < x_3 < x_4$라 할 때, $x_1 + x_2 + x_3 + x_4$의 값을 구하시오.',
+            textbookTitle: '주기 π 구한 뒤 α를 이용해 일반해 나열',
+            textbookSteps: [
+              '1) 함수 $f(x) = \\sin 2x$의 주기는 $T = \\frac{2\\pi}{2} = \\pi$이다.',
+              '2) 첫 번째 근을 $x_1 = \\alpha$라 하면 대칭성과 주기에 의해 $x_2 = \\frac{\\pi}{2} - \\alpha$, $x_3 = \\pi + \\alpha$, $x_4 = \\frac{3\\pi}{2} - \\alpha$이다.',
+              '3) 네 근을 모두 더하면 $\\alpha$가 소거되어 $\\frac{\\pi}{2} + \\frac{5\\pi}{2} = 3\\pi$.'
+            ],
+            secretTitle: 'α 설정 금지! (전체 정중앙 대칭축 3π/4 × 교점 4개 = 3π)',
+            secretSteps: [
+              '⚡ **[대칭축 직독]** 첫 봉우리 대칭축은 $S_1 = \\frac{\\pi}{4}$, 둘째 봉우리 대칭축은 $S_2 = \\frac{5\\pi}{4}$이고, 네 점 전체의 정중앙 대칭축은 $S = \\frac{3\\pi}{4}$입니다.',
+              '⚡ **[3초 암산]** $(\\text{총합}) = \\frac{3\\pi}{4} \\times 4 = 3\\pi$! 특히 $k = \\frac{1}{2}$일 때 개별 근 $\\frac{\\pi}{12}, \\frac{5\\pi}{12}, \\frac{13\\pi}{12}, \\frac{17\\pi}{12}$의 합도 정확히 $3\\pi$입니다.'
+            ]
+          },
+          {
+            chip: '기출 B (x₁+2x₂+2x₃+x₄ = 9π 가중치 합)',
+            source: '평가원 모의평가 4점 변형',
+            params: { freqB: 1, lineK: 0.7071 },
+            snapParams: { freqB: 1, lineK: 0.7071 },
+            problem: '$0 \\le x \\le 3\\pi$에서 함수 $y = \\sin x$의 그래프와 직선 $y = k$ ($0 < k < 1$)가 만나는 네 점의 $x$좌표 $x_1 < x_2 < x_3 < x_4$에 대하여, $x_1 + 2x_2 + 2x_3 + x_4$의 값을 구하시오.',
+            textbookTitle: '각 근을 α로 표현하여 계수 맞춰 대입',
+            textbookSteps: [
+              '1) 주기가 $2\\pi$이므로 $x_1 = \\alpha, x_2 = \\pi-\\alpha, x_3 = 2\\pi+\\alpha, x_4 = 3\\pi-\\alpha$이다.',
+              '2) 구하는 식을 $(x_1 + x_4) + 2(x_2 + x_3)$으로 묶는다.',
+              '3) $x_1 + x_4 = 3\\pi$, $x_2 + x_3 = 3\\pi$이므로 $3\\pi + 2(3\\pi) = 9\\pi$.'
+            ],
+            secretTitle: '바깥 짝꿍(x₁, x₄)과 안쪽 짝꿍(x₂, x₃)은 중점이 똑같이 S = 3π/2!',
+            secretSteps: [
+              '⚡ **[동심원 대칭]** 네 점의 정중앙 대칭축은 $S = \\frac{3\\pi}{2}$입니다! 따라서 바깥 짝꿍 합 $x_1+x_4 = 2S = 3\\pi$, 안쪽 짝꿍 합 $x_2+x_3 = 2S = 3\\pi$로 똑같습니다!',
+              '⚡ **[암산]** $(x_1+x_4) + 2(x_2+x_3) = 6S = 6 \\times \\frac{3\\pi}{2} = 9\\pi$ 끝!'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type4',
+        code: 'TYPE 04',
+        shortTitle: '절댓값 삼각함수와 교점 스캐너',
+        icon: 'fa-mountain-sun',
+        stepLabels: ['중심선 반사(|c|)', '2단 봉우리(π/2, 3π/2)', '교점 개수 불연속 경계'],
+        stepDescs: [
+          'Step 1: 원래 삼각함수 $y = a\\sin x + c$ ($0 \\le x < 2\\pi$)의 중심선 $y=c$와 접히기 전 아래쪽 골짜기($x=\\frac{3\\pi}{2}$)를 점선으로 표시합니다.',
+          'Step 2: 절댓값 $|a\\sin x + c|$를 씌우면 $x=\\frac{\\pi}{2}$에서 **작은 봉우리 $||a|-|c||$**, $x=\\frac{3\\pi}{2}$에서 **큰 봉우리 $|a|+|c|$**가 형성됩니다.',
+          'Step 3: 수평선 $y=t$와 만나는 실시간 라디안($\\pi$) 교점들을 표시하고, 교점 개수가 홀수 개로 변하는 극값 경계를 판독합니다.'
+        ],
+        trapWarning: '정의역이 $0 \\le x < 2\\pi$ (오른쪽 끝 $2\\pi$ 제외)인지 $0 \\le x \\le 2\\pi$ (양 끝 모두 포함)인지에 따라 $y = |c|$에서의 교점 개수가 $1$개 차이 납니다!',
+        scenarios: [
+          {
+            chip: '기출 A (절댓값 2단 봉우리와 홀수 실근)',
+            source: '수능·평가원 14번·15번 단골 소재',
+            params: { ampA: 2, shiftC: -1, lineT: 1.0 },
+            snapParams: { ampA: 2, shiftC: -1, lineT: 1.0 },
+            problem: '$0 \\le x < 2\\pi$에서 함수 $f(x) = |2\\sin x - 1|$의 그래프와 직선 $y = t$가 만나는 점의 개수가 **홀수($1$개 또는 $3$개)**가 되도록 하는 모든 실수 $t$의 값의 합을 구하시오.',
+            textbookTitle: '구간별로 절댓값 풀어 그래프 직접 작도',
+            textbookSteps: [
+              '1) $y = 2\\sin x - 1$은 $x = \\frac{\\pi}{2}$에서 최댓값 $1$, $x = \\frac{3\\pi}{2}$에서 최솟값 $-3$이다.',
+              '2) $x$축 아래를 접어 올리면 $x = \\frac{\\pi}{2}$에서 작은 봉우리 높이 $1$, $x = \\frac{3\\pi}{2}$에서 큰 봉우리 높이 $3$을 갖는다.',
+              '3) $0 \\le x < 2\\pi$에서 $t=1$일 때 교점이 $3$개($x=0, \\frac{\\pi}{2}, \\pi$), $t=3$일 때 큰 봉우리 꼭짓점($x=\\frac{3\\pi}{2}$)에서 $1$개이므로 구하는 합은 $1 + 3 = 4$이다.'
+            ],
+            secretTitle: '홀수 교점 경계선 공식: 작은산(x=π/2, |a|-|c|) & 큰산(x=3π/2, |a|+|c|)',
+            secretSteps: [
+              '⚡ **[경계선 공식]** $[0, 2\\pi)$에서 $|a\\sin x + c| = t$ ($a > |c|$)의 교점 개수가 홀수가 되는 순간은 무조건 **$x=\\frac{\\pi}{2}$ 작은 봉우리 $t = |a|-|c|$ (3개)**와 **$x=\\frac{3\\pi}{2}$ 큰 봉우리 $t = |a|+|c|$ (1개)** 두 곳뿐입니다!',
+              '⚡ **[즉시 계산]** $a=2, c=-1$이면 작은 산 $= 1$, 큰 산 $= 3$이므로 합은 $2a = 4$를 3초 만에 추출합니다!'
+            ]
+          },
+          {
+            chip: '기출 B (교점 3개가 되는 실수 t 경계)',
+            source: '모의고사 4점 준킬러',
+            params: { ampA: 3, shiftC: -1, lineT: 2.0 },
+            snapParams: { ampA: 3, shiftC: -1, lineT: 2.0 },
+            problem: '$0 \\le x < 2\\pi$에서 함수 $f(x) = |3\\sin x - 1|$의 그래프와 직선 $y = t$가 만나는 점의 개수가 $3$이 되도록 하는 실수 $t$의 값을 구하시오.',
+            textbookTitle: '최댓값·최솟값 접어 올린 후 교점 카운트',
+            textbookSteps: [
+              '1) $3\\sin x - 1$의 최댓값은 $2$ ($x=\\frac{\\pi}{2}$), 최솟값은 $-4$ ($x=\\frac{3\\pi}{2}$)이다.',
+              '2) 절댓값을 씌우면 작은 산 꼭짓점 높이는 $2$, 큰 산 꼭짓점 높이는 $4$가 된다.',
+              '3) 따라서 $0 < t < 2$일 때 4개, $t = 2$일 때 작은 산 꼭짓점($x=\\frac{\\pi}{2}$)에 접하여 정확히 $3$개의 교점을 갖는다.'
+            ],
+            secretTitle: '교점 3개 = x=π/2 작은 봉우리 접선! (t = |a| - |c| = 2)',
+            secretSteps: [
+              '⚡ **[1초 판독]** 한 주기 $[0, 2\\pi)$에서 절댓값 사인 곡선이 직선과 **3개의 교점**을 갖는 순간은 무조건 **작은 봉우리 꼭짓점 높이 $t = |a| - |c|$**입니다!',
+              '⚡ $t = 3 - 1 = 2$ 끝!'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type5',
+        code: 'TYPE 05',
+        shortTitle: '치환 방정식(t=sinx) 2중 연동',
+        icon: 'fa-diagram-project',
+        stepLabels: ['치환 범위 -1 ≤ t ≤ 1', '포물선 특수비 근 추출', 't ↦ x 라디안 실근 매핑'],
+        stepDescs: [
+          'Step 1: $\\sin x = t$로 치환하면 $0 \\le x < 2\\pi$에서 $t$의 유효 범위는 $-1 \\le t \\le 1$ 띠 영역으로 제한됩니다.',
+          'Step 2: 좌측 이차함수 포물선 $g(t) = (t-t_1)(t-t_2) = 0$의 특수비 근($\\pm\\frac{1}{2}, \\pm\\frac{\\sqrt{2}}{2}, \\pm\\frac{\\sqrt{3}}{2}, \\pm 1$)이 우측 $y = \\sin x$ 곡선으로 수평 투영됩니다.',
+          'Step 3: $t \\in (0, 1)$은 $x$를 2개(합 $\\pi$), $t \\in (-1, 0)$은 2개(합 $3\\pi$), 경계 $t=1$은 1개($\\frac{\\pi}{2}$), $t=-1$은 1개($\\frac{3\\pi}{2}$)로 자동 변환합니다.'
+        ],
+        trapWarning: '$t=0$일 때 $[0, 2\\pi)$에서는 근이 $0, \\pi$ (2개, 합 $\\pi$)이지만, $[0, 2\\pi]$ (양 끝 포함)에서는 $0, \\pi, 2\\pi$ (3개, 합 $3\\pi$)입니다!',
+        scenarios: [
+          {
+            chip: '기출 A (치환 방정식 특수각 실근과 합)',
+            source: '수능·평가원 4점 필수 유형',
+            params: { rootT1: 0.5, rootT2: 2.0 },
+            snapParams: { rootT1: 0.5, rootT2: 2.0 },
+            problem: '$0 \\le x < 2\\pi$일 때, 방정식 $2\\cos^2 x + 5\\sin x - 4 = 0$ (즉 $2\\sin^2 x - 5\\sin x + 2 = 0$)의 모든 실근 $x$의 합과 개수를 구하시오.',
+            textbookTitle: '1 - sin²x 대입 후 인수분해 및 특수각 해 구하기',
+            textbookSteps: [
+              '1) $\\cos^2 x = 1 - \\sin^2 x$를 대입하면 $2(1-\\sin^2 x) + 5\\sin x - 4 = 0 \\implies (2\\sin x - 1)(\\sin x - 2) = 0$이다.',
+              '2) $-1 \\le \\sin x \\le 1$이므로 범위를 벗어난 근($t_2 = 2$)은 버리고 $t_1 = \\frac{1}{2}$만 택한다.',
+              '3) $\\sin x = \\frac{1}{2}$의 해는 $x = \\frac{\\pi}{6}, \\frac{5\\pi}{6}$이므로 개수는 $2$개, 합은 $\\pi$이다.'
+            ],
+            secretTitle: '치환 근 t의 부호만 보면 실근의 합은 계산 없이 고정 상수!',
+            secretSteps: [
+              '⚡ **[부호별 합 불변량]** $[0, 2\\pi)$에서 $\\sin x = t$의 두 근의 합은 $t$가 $\\frac{1}{2}$이든 $\\frac{\\sqrt{3}}{2}$이든 **$0 < t < 1$이면 무조건 합 $= \\pi$**, **$-1 < t < 0$이면 무조건 합 $= 3\\pi$**입니다!',
+              '⚡ 만약 $t_1 = \\frac{1}{2}$과 $t_2 = -\\frac{1}{2}$ 두 개가 모두 해라면 전체 네 근($\\frac{\\pi}{6}, \\frac{5\\pi}{6}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$)의 합은 무조건 $\\pi + 3\\pi = 4\\pi$!'
+            ]
+          },
+          {
+            chip: '기출 B (실근이 홀수 개=3개가 되는 경계 킬러)',
+            source: '평가원 15번·20번급 합성·치환 킬러',
+            params: { rootT1: 0.5, rootT2: -0.866 },
+            snapParams: { rootT1: 0.5, rootT2: -1.0 },
+            problem: '$0 \\le x < 2\\pi$에서 방정식 $(2\\sin x - 1)(\\sin x - k) = 0$의 서로 다른 실근의 개수가 **홀수($3$개)**가 되도록 하는 상수 $k$ ($k < 0$)의 값과 이때 모든 실근의 합을 구하시오.',
+            textbookTitle: 'k값 범위에 따른 케이스 분류',
+            textbookSteps: [
+              '1) $\\sin x = \\frac{1}{2}$에서 이미 서로 다른 두 실근 $x = \\frac{\\pi}{6}, \\frac{5\\pi}{6}$ (2개, 합 $\\pi$)가 나온다.',
+              '2) 전체 실근이 $3$개가 되려면 $\\sin x = k$에서 실근이 정확히 $1$개만 나와야 한다.',
+              '3) $k < 0$에서 $\\sin x = k$가 한 점에서 접할 때는 $k = -1$ ($x = \\frac{3\\pi}{2}$)뿐이므로 모든 실근의 합은 $\\pi + \\frac{3\\pi}{2} = \\frac{5\\pi}{2}$.'
+            ],
+            secretTitle: '홀수 개 실근 = 무조건 극값(t = ±1) 접점 통과!',
+            secretSteps: [
+              '⚡ **[핵심 행동강령]** 삼각방정식의 실근 개수가 **홀수(1개, 3개)**라는 조건이 나오면 100% **치환 근 하나가 꼭짓점 경계 $t = 1$ ($x=\\frac{\\pi}{2}$) 또는 $t = -1$ ($x=\\frac{3\\pi}{2}$)**에 걸린 것입니다!',
+              '⚡ $t_1 = \\frac{1}{2}$(합 $\\pi$) + $t_2 = -1$(단독 근 $\\frac{3\\pi}{2}$) $\\implies \\text{총합 } \\frac{5\\pi}{2}$ 5초 컷!'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type6',
+        code: 'TYPE 06',
+        shortTitle: '사인법칙과 외접원 지름 2R',
+        icon: 'fa-circle-play',
+        stepLabels: ['현 BC와 특수각 ∠A', '지름 보조선 2R 직각삼각형', 'a / sinA = 2R 불변량'],
+        stepDescs: [
+          'Step 1: 외접원(반지름 $R$) 위의 현 $\\overline{BC} = a$와 마주보는 특수각 원주각 $\\angle A \\in \\{\\frac{\\pi}{6}, \\frac{\\pi}{4}, \\frac{\\pi}{3}, \\frac{2\\pi}{3}\\}$를 작도합니다.',
+          'Step 2: 점 $A$를 원 둘레를 따라 외접원 중심 $O$를 지나는 **지름의 끝점 $A\'$로 이동시키면 $\\angle A\'CB = \\frac{\\pi}{2}$($90^\\circ$)인 특수 직각삼각형**이 만들어집니다!',
+          'Step 3: 직각삼각형에서 $\\sin A = \\frac{a}{2R}$이 성립함을 무리수 기호($4\\sqrt{3}, 4\\sqrt{2}$ 등)로 판서하고, 점 $A$의 위치를 옮겨도 원주각이 불변임을 검증합니다.'
+        ],
+        trapWarning: '현 $\\overline{BC}=a$가 같더라도 점 $A$가 짧은 호(둔각) 쪽으로 넘어가면 원주각은 $\\pi - A$가 되지만, $\\sin(\\pi - A) = \\sin A$이므로 사인법칙은 여전히 성립합니다!',
+        scenarios: [
+          {
+            chip: '기출 A (∠A = π/3와 지름 2R 특수 직각삼각형)',
+            source: '수능·평가원 4점 도형 기본기',
+            params: { radiusR: 4, chordAngleDeg: 60, posADeg: 90 },
+            snapParams: { radiusR: 4, chordAngleDeg: 60, posADeg: 105 },
+            problem: '반지름의 길이가 $R = 4$인 원에 내접하고 $\\angle A = \\frac{\\pi}{3}$인 삼각형 $ABC$에서 선분 $\\overline{BC}$의 길이와, 지름 $A\'B$에 대한 직각삼각형 $A\'BC$의 나머지 한 변 $\\overline{A\'C}$의 길이를 구하시오.',
+            textbookTitle: '사인법칙 BC = 2R sin(π/3) 대입',
+            textbookSteps: [
+              '1) 사인법칙 $\\frac{\\overline{BC}}{\\sin A} = 2R$에 $R=4, A=\\frac{\\pi}{3}$를 대입한다.',
+              '2) $\\overline{BC} = 2(4)\\sin\\frac{\\pi}{3} = 8 \\times \\frac{\\sqrt{3}}{2} = 4\\sqrt{3}$이다.',
+              '3) 지름 $A\'B = 8$이고 $\\angle A\'CB = \\frac{\\pi}{2}$이므로 $\\overline{A\'C} = 8\\cos\\frac{\\pi}{3} = 4$이다.'
+            ],
+            secretTitle: '원주각을 지름 보조선(2R=8)으로 옮겨 1 : √3 : 2 직각삼각형 직독!',
+            secretSteps: [
+              '⚡ **[기하 비기]** 칠판의 `Step 2`처럼 꼭짓점 $A$를 지름 끝점 $A\'$로 옮기면 **빗변이 지름 $2R=8$, 한 예각이 $\\frac{\\pi}{3}$인 $1 : \\sqrt{3} : 2$ 특수 직각삼각형**이 됩니다!',
+              '⚡ 따라서 공식에 대입할 필요 없이 마주보는 변 $\\overline{BC} = 4\\sqrt{3}$, 이웃한 변 $\\overline{A\'C} = 4$를 1초 만에 읽어냅니다!'
+            ]
+          },
+          {
+            chip: '기출 B (∠A = π/6, ∠A = π/4 특수비 비교)',
+            source: '모의고사 4점 도형 비율형',
+            params: { radiusR: 6, chordAngleDeg: 30, posADeg: 90 },
+            snapParams: { radiusR: 6, chordAngleDeg: 30, posADeg: 90 },
+            problem: '반지름이 $R = 6$인 원에 내접하는 삼각형 $ABC$에서 $\\angle A = \\frac{\\pi}{6}$일 때 선분 $\\overline{BC}$의 길이를 구하시오.',
+            textbookTitle: 'BC = 2R sin(π/6) 공식 계산',
+            textbookSteps: [
+              '1) 사인법칙에 의해 $\\overline{BC} = 2R \\sin\\frac{\\pi}{6}$이다.',
+              '2) $R = 6, \\sin\\frac{\\pi}{6} = \\frac{1}{2}$을 대입한다.',
+              '3) $\\overline{BC} = 12 \\times \\frac{1}{2} = 6$ (외접원 반지름 $R$과 현의 길이가 같아짐!).'
+            ],
+            secretTitle: '원주각이 π/6이면 현의 길이 BC는 무조건 외접원 반지름 R과 같다!',
+            secretSteps: [
+              '⚡ **[1초 암기 불변량]** $\\sin\\frac{\\pi}{6} = \\frac{1}{2}$이므로 $a = 2R\\sin\\frac{\\pi}{6} = R$입니다! 즉, 원주각이 $\\frac{\\pi}{6}$($30^\\circ$)인 현의 길이는 언제나 외접원 반지름 $R=6$과 똑같습니다!'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type7',
+        code: 'TYPE 07',
+        shortTitle: '코사인법칙 & 내접사각형 보각',
+        icon: 'fa-draw-polygon',
+        stepLabels: ['대각선 AC 분할선', '대각 보각(θ vs π-θ)', 'cosB + cosD = 0 소거식'],
+        stepDescs: [
+          'Step 1: 원에 내접하는 사각형 $ABCD$에서 대각선 $\\overline{AC}$를 그어 위쪽 $\\triangle ABC$와 아래쪽 $\\triangle ADC$로 분할하고 네 변 $a, b, c, d$를 표시합니다.',
+          'Step 2: 내접사각형의 마주보는 두 각의 합은 $\\pi$이므로, $\\angle B = \\theta$이면 $\\angle D = \\pi - \\theta$가 되어 **$\\cos D = -\\cos B$ (부호 정반대 불변량!)**가 성립합니다.',
+          'Step 3: 두 삼각형의 코사인법칙을 연립하여 $\\cos B$를 한 번에 구하는 공식과 넓이 비 $\\frac{S_{ABC}}{S_{ADC}} = \\frac{ab}{cd}$를 판서합니다.'
+        ],
+        trapWarning: '원에 내접하는 사각형에서 마주보는 각($\\theta, \\pi-\\theta$)의 **코사인 값은 부호가 반대($\\cos(\\pi-\\theta)=-\\cos\\theta$)**이지만, **사인 값은 부호가 같습니다($\\sin(\\pi-\\theta)=+\\sin\\theta$)**!',
+        scenarios: [
+          {
+            chip: '기출 A (내접사각형 ∠B=π/3, ∠D=2π/3 보각)',
+            source: '수능 수학I 13번·15번 최다 빈출 킬러',
+            params: { presetIdx: 2, angB: 240, angC: 60, angD: 120, angA: 180, rotationDeg: 0, circumR: 4.0 },
+            snapParams: { presetIdx: 2, angB: 240, angC: 60, angD: 120, angA: 180, rotationDeg: 0, circumR: 4.0 },
+            problem: '원에 내접하는 사각형 $ABCD$에서 $\\angle B = \\frac{\\pi}{3}$일 때, 마주보는 각 $\\angle D$의 크기($\\text{rad}$)와 $\\cos B + \\cos D$, $\\sin B : \\sin D$의 값을 구하시오.',
+            textbookTitle: '내접사각형 대각의 합 = π (보각 성질)',
+            textbookSteps: [
+              '1) 원에 내접하는 사각형에서 마주보는 두 각의 합은 $\\angle B + \\angle D = \\pi$이다.',
+              '2) $\\angle B = \\frac{\\pi}{3}$이므로 $\\angle D = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}$이다.',
+              '3) $\\cos\\frac{\\pi}{3} = \\frac{1}{2}, \\cos\\frac{2\\pi}{3} = -\\frac{1}{2}$이므로 합은 $0$이고, $\\sin\\frac{\\pi}{3} = \\sin\\frac{2\\pi}{3} = \\frac{\\sqrt{3}}{2}$로 같다.'
+            ],
+            secretTitle: '내접사각형 3대 비기: ① ∠B+∠D=π, ② cosB+cosD=0, ③ 넓이비 = ab : cd',
+            secretSteps: [
+              '⚡ **[비기 1] 보각 즉시 치환**: $\\angle B = \\frac{\\pi}{3}$를 보자마자 마주보는 $\\angle D = \\frac{2\\pi}{3}$ ($\\cos D = -\\frac{1}{2}$)를 도형에 적으세요!',
+              '⚡ **[비기 2] 두 삼각형 넓이 비**: $\\sin B = \\sin(\\pi-B) = \\sin D$이므로, $\\frac{\\triangle ABC}{\\triangle ADC} = \\frac{ab}{cd}$ (이웃한 두 변의 곱의 비)!'
+            ]
+          },
+          {
+            chip: '기출 B (정수 변 2, 3, 4, 3 내접사각형 스냅)',
+            source: '평가원 4점 기출 모델 (a=2, b=3, c=4, d=3)',
+            params: { presetIdx: 4, angB: 45, angC: 318.435, angD: 185.88, angA: 99.315, circumR: 2.1866 },
+            snapParams: { presetIdx: 4, angB: 45, angC: 318.435, angD: 185.88, angA: 99.315, circumR: 2.1866 },
+            problem: '원에 내접하는 사각형 $ABCD$에서 $\\overline{AB}=2, \\overline{BC}=3, \\overline{CD}=4, \\overline{DA}=3$일 때, $\\cos B$의 값과 대각선 $\\overline{AC}$의 길이, 그리고 넓이 비 $\\frac{S_{ABC}}{S_{ADC}}$를 구하시오.',
+            textbookTitle: 'AC² = 2²+3²-12cosB = 4²+3²+24cosB 연립',
+            textbookSteps: [
+              '1) $\\triangle ABC$에서 $\\overline{AC}^2 = 4 + 9 - 12\\cos B = 13 - 12\\cos B$.',
+              '2) $\\triangle ADC$에서 $\\angle D = \\pi - B$이므로 $\\overline{AC}^2 = 16 + 9 - 24\\cos(\\pi-B) = 25 + 24\\cos B$.',
+              '3) $13 - 12\\cos B = 25 + 24\\cos B \\implies 36\\cos B = -12 \\implies \\cos B = -\\frac{1}{3}$, $\\overline{AC} = \\sqrt{17}$.'
+            ],
+            secretTitle: '공식 1줄 대입: cosB = (13 - 25) / 2(6 + 12) = -1/3, 넓이비 = 6 : 12 = 1 : 2!',
+            secretSteps: [
+              '⚡ **[10초 암산]** $\\cos B = \\frac{(a^2+b^2)-(c^2+d^2)}{2(ab+cd)} = \\frac{13-25}{36} = -\\frac{1}{3}$! 넓이비 $\\frac{ab}{cd} = \\frac{6}{12} = \\frac{1}{2}$이 즉시 도출됩니다!'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type8',
+        code: 'TYPE 08',
+        shortTitle: '각의 이등분선 & 분할 삼각형',
+        icon: 'fa-share-nodes',
+        stepLabels: ['밑변 내분비 m : n = c : b', '인접 보각 α vs π-α', '넓이 합 & AD² = bc - mn'],
+        stepDescs: [
+          'Step 1: 특수각 $\\angle A \\in \\{\\frac{\\pi}{3}, \\frac{\\pi}{2}, \\frac{2\\pi}{3}\\}$의 이등분선이 밑변 $BC$와 만나는 점 $D$는 옆변의 비 $c : b$로 밑변을 내분합니다.',
+          'Step 2: 밑변 위의 점 $D$에서 왼쪽 각 $\\angle ADB = \\alpha$와 오른쪽 각 $\\angle ADC = \\pi - \\alpha$는 일직선 보각이므로 **$\\cos(\\pi-\\alpha) = -\\cos\\alpha$**가 성립합니다.',
+          'Step 3: 전체 넓이 $S = S_1 + S_2$ 공식과 각의 이등분선 길이 제곱 공식 **$\\overline{AD}^2 = bc - mn$**을 무리수 기호로 판서합니다.'
+        ],
+        trapWarning: '일반 분할선(중선, 수선 등)에서는 $\\cos(\\pi-\\alpha) = -\\cos\\alpha$ 스튜어트 연립을 쓰고, **각의 이등분선**일 때만 $\\overline{AD}^2 = bc - mn$과 넓이 합 공식을 쓸 수 있습니다!',
+        scenarios: [
+          {
+            chip: '기출 A (∠A = 2π/3 각의 이등분선 길이)',
+            source: '수능·평가원 4점 도형 단골',
+            params: { sideC: 6, sideB: 3, angleADeg: 120 },
+            snapParams: { sideC: 6, sideB: 3, angleADeg: 120 },
+            problem: '$\\overline{AB} = 6, \\overline{AC} = 3, \\angle A = \\frac{2\\pi}{3}$인 삼각형 $ABC$에서 $\\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D$라 할 때, 선분 $\\overline{AD}$의 길이를 구하시오.',
+            textbookTitle: '전체 넓이 S = S₁ + S₂ 삼각형 넓이 공식 연립',
+            textbookSteps: [
+              '1) $\\overline{AD} = x$라 하면, 전체 넓이는 $\\triangle ABC = \\frac{1}{2}\\times 6\\times 3\\sin\\frac{2\\pi}{3} = \\frac{9\\sqrt{3}}{2}$이다.',
+              '2) 이등분된 각은 각각 $\\frac{\\pi}{3}$이므로 $\\triangle ABD + \\triangle ACD = \\frac{1}{2}\\cdot 6x\\sin\\frac{\\pi}{3} + \\frac{1}{2}\\cdot 3x\\sin\\frac{\\pi}{3} = \\frac{9\\sqrt{3}}{4}x$.',
+              '3) 두 식이 같으므로 $\\frac{9\\sqrt{3}}{4}x = \\frac{9\\sqrt{3}}{2} \\implies x = 2$.'
+            ],
+            secretTitle: '∠A = 2π/3이면 AD = bc / (b+c)',
+            secretSteps: [
+              '⚡ **[10초 넓이 공식]** $\\overline{AD} = \\frac{2bc\\cos(A/2)}{b+c}$! 특히 $\\angle A = \\frac{2\\pi}{3}$일 때는 $\\cos\\frac{\\pi}{3} = \\frac{1}{2}$이 약분되어 **$\\overline{AD} = \\frac{bc}{b+c} = \\frac{6 \\times 3}{6 + 3} = 2$**로 3초 만에 암산됩니다!',
+              '⚡ **[보너스 비기]** 세 변을 다 알 때는 각도와 무관하게 **$\\overline{AD}^2 = bc - mn$**!'
+            ]
+          },
+          {
+            chip: '기출 B (∠A = π/3 각의 이등분선 & 스튜어트)',
+            source: '평가원 4점 준킬러 변형',
+            params: { sideC: 4, sideB: 2, angleADeg: 60 },
+            snapParams: { sideC: 4, sideB: 2, angleADeg: 60 },
+            problem: '$\\overline{AB} = 4, \\overline{AC} = 2, \\angle A = \\frac{\\pi}{3}$인 삼각형 $ABC$에서 $\\angle A$의 이등분선이 변 $BC$와 만나는 점을 $D$라 할 때, $\\overline{AD}$의 길이와 $\\overline{AD}^2 = bc - mn$ 항등식을 확인하시오.',
+            textbookTitle: '코사인법칙으로 BC 구한 뒤 내분비 적용',
+            textbookSteps: [
+              '1) 코사인법칙으로 $\\overline{BC}^2 = 16 + 4 - 2(4)(2)\\cos\\frac{\\pi}{3} = 12 \\implies \\overline{BC} = 2\\sqrt{3}$.',
+              '2) $2:1$ 내분이므로 $m = \\frac{4\\sqrt{3}}{3}, n = \\frac{2\\sqrt{3}}{3}$이다.',
+              '3) 넓이 합 공식 $\\overline{AD} = \\frac{2(4)(2)\\cos(\\pi/6)}{4+2} = \\frac{8\\sqrt{3}}{6} = \\frac{4\\sqrt{3}}{3}$을 구한다.'
+            ],
+            secretTitle: 'AD² = bc - mn 공식으로 코사인법칙 2번 생략!',
+            secretSteps: [
+              '⚡ **[검산 및 직독]** $bc = 4 \\times 2 = 8$, $mn = \\frac{4\\sqrt{3}}{3} \\times \\frac{2\\sqrt{3}}{3} = \\frac{8}{3}$이므로 **$\\overline{AD}^2 = 8 - \\frac{8}{3} = \\frac{16}{3} \\implies \\overline{AD} = \\frac{4\\sqrt{3}}{3}$**! 오차 `0.000%` 일치!'
+            ]
+          }
+        ]
+      }
+    ];
+
+    // =========================================================================
+    // 4. GLOBAL APPLICATION STATE
+    // =========================================================================
+    const state = {
+      modeIdx: 0,
+      scenarioIdx: 0,
+      steps: { 1: true, 2: true, 3: false },
+      mutators: {
+        sym: false,
+        abs: false,
+        circle: false
+      },
+      params: {},
+      view: {
+        scale: 48,
+        offsetX: 0,
+        offsetY: 0
+      },
+      interaction: {
+        isDragging: false,
+        dragTarget: null,
+        lastX: 0,
+        lastY: 0
+      }
+    };
+
+    const canvas = document.getElementById('chalkCanvas');
+    const ctx = canvas.getContext('2d');
+    let activeHandles = [];
+    let pointLabelBoxes = [];
+
+    // =========================================================================
+    // 5. INITIALIZATION & UI POPULATION
+    // =========================================================================
+    function initApp() {
+      renderModeTabs();
+      selectMode(0, 0);
+      setupCanvasEvents();
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+      requestAnimationFrame(renderLoop);
+    }
+
+    function renderModeTabs() {
+      const tabBar = document.getElementById('modeTabBar');
+      tabBar.innerHTML = KILLER_MODES.map((m, idx) => {
+        const active = idx === state.modeIdx ? 'tab-btn-active' : 'text-emerald-300/75 hover:text-white hover:bg-emerald-900/40';
+        const isGeo = idx >= 5;
+        const badgeColor = isGeo ? 'bg-cyan-950 text-cyan-300 border-cyan-700/60' : 'bg-emerald-950 text-amber-400 border-emerald-700/60';
+        return `
+          <button onclick="selectMode(${idx}, 0)" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-bold transition flex items-center gap-2 ${active}">
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold border ${badgeColor}">${m.code}</span>
+            <i class="fa-solid ${m.icon} ${isGeo ? 'text-cyan-400' : 'text-emerald-400'}"></i>
+            <span>${m.shortTitle}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectMode(modeIdx, scenarioIdx = 0) {
+      state.modeIdx = modeIdx;
+      state.scenarioIdx = scenarioIdx;
+      const mode = KILLER_MODES[modeIdx];
+      const scen = mode.scenarios[scenarioIdx];
+
+      state.params = JSON.parse(JSON.stringify(scen.params));
+      if (mode.id === 'type1' && scenarioIdx === 1) {
+        state.steps = { 1: true, 2: true, 3: true };
+      } else {
+        state.steps = { 1: true, 2: true, 3: false };
+      }
+
+      resetView();
+      renderModeTabs();
+      renderScenarioChips();
+      updateRightPanel();
+      updateStepButtonsUI();
+      updateMutatorButtonsUI();
+    }
+
+    function renderScenarioChips() {
+      const mode = KILLER_MODES[state.modeIdx];
+      const box = document.getElementById('scenarioChips');
+      box.innerHTML = mode.scenarios.map((s, idx) => {
+        const isAct = idx === state.scenarioIdx;
+        const cls = isAct
+          ? 'bg-amber-400 text-slate-950 font-extrabold shadow-sm'
+          : 'bg-emerald-950/90 text-emerald-300 hover:bg-emerald-900 border border-emerald-700/50 font-semibold';
+        return `
+          <button onclick="selectMode(${state.modeIdx}, ${idx})" class="px-2.5 py-1 rounded-md text-[11px] transition ${cls}">
+            ${s.chip}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function updateRightPanel() {
+      const mode = KILLER_MODES[state.modeIdx];
+      const scen = mode.scenarios[state.scenarioIdx];
+      let displayProblem = scen.problem;
+      let displayTitle = scen.textbookTitle;
+      let displaySteps = scen.textbookSteps;
+      if (mode.id === 'type3') {
+        const b = state.params.freqB;
+        const endTex = state.scenarioIdx === 0 ? `\\frac{4\\pi}{${b}}` : `\\frac{3\\pi}{${b}}`;
+        if (!scen.customTwinProblem) {
+          displayProblem = state.scenarioIdx === 0
+            ? `$0 \\le x \\le ${endTex}$에서 $f(x)=\\sin(${b === 1 ? '' : `${b}`}x)$와 $y=k$($0<k<1$)의 네 교점의 $x$좌표 합을 구하시오.`
+            : `$0 \\le x \\le ${endTex}$에서 $y=\\sin(${b === 1 ? '' : `${b}`}x)$와 $y=k$($0<k<1$)의 네 교점 $x_1<x_2<x_3<x_4$에 대해 $x_1+2x_2+2x_3+x_4$를 구하시오.`;
+        }
+        displayTitle = '주기와 정의역에 맞춰 네 교점 짝짓기';
+        displaySteps = state.scenarioIdx === 0
+          ? [
+              `1) 주기는 $2\\pi/${b}$이고, 두 주기 구간 $0\\le x\\le ${endTex}$에서 교점은 네 개다.`,
+              `2) $\\alpha=\\sin^{-1}k$라 두면 네 근은 $\\alpha/${b}, (\\pi-\\alpha)/${b}, (2\\pi+\\alpha)/${b}, (3\\pi-\\alpha)/${b}$이다.`,
+              `3) 첫째와 둘째 근의 합은 $\\pi/${b}$, 셋째와 넷째 근의 합은 $5\\pi/${b}$이므로 총합은 $6\\pi/${b}$이다.`
+            ]
+          : [
+              `1) $0\\le x\\le ${endTex}$는 $\\sin(${b === 1 ? '' : `${b}`}x)$의 한 주기 반 구간이므로 $0<k<1$일 때 교점은 네 개다.`,
+              `2) $\\alpha=\\sin^{-1}k$라 두면 $x_1+x_4=3\\pi/${b}$, $x_2+x_3=3\\pi/${b}$이다.`,
+              `3) $(x_1+x_4)+2(x_2+x_3)=3\\pi/${b}+2\\cdot3\\pi/${b}=9\\pi/${b}$이다.`
+            ];
+      }
+
+      document.getElementById('problemSourceBadge').textContent = scen.source;
+      document.getElementById('problemTextBox').innerHTML = formatRichMath(displayProblem);
+
+      document.getElementById('stepLabel1').textContent = mode.stepLabels[0];
+      document.getElementById('stepLabel2').textContent = mode.stepLabels[1];
+      document.getElementById('stepLabel3').textContent = mode.stepLabels[2];
+
+      document.getElementById('textbookTitle').textContent = displayTitle;
+      document.getElementById('contentTextbook').innerHTML = displaySteps
+        .map(st => `<div class="py-0.5">${formatRichMath(st)}</div>`).join('');
+
+      document.getElementById('secretTitle').textContent = scen.secretTitle;
+      document.getElementById('contentSecret').innerHTML = scen.secretSteps
+        .map(st => `<div class="py-0.5">${formatRichMath(st)}</div>`).join('');
+
+      document.getElementById('trapWarningText').innerHTML = formatRichMath(mode.trapWarning);
+
+      buildSpecialAngleControlsForCurrentMode();
+      updateLiveHUDAndInvariants();
+    }
+
+    // =========================================================================
+    // 6. STEP BUTTONS, ACCORDIONS, SNAP & TWIN PROBLEM GENERATOR
+    // =========================================================================
+    function toggleStep(n) {
+      state.steps[n] = !state.steps[n];
+      updateStepButtonsUI(n);
+    }
+
+    function toggleAllSteps() {
+      const allOn = state.steps[1] && state.steps[2] && state.steps[3];
+      state.steps[1] = !allOn;
+      state.steps[2] = !allOn;
+      state.steps[3] = !allOn;
+      updateStepButtonsUI(3);
+    }
+
+    function updateStepButtonsUI(lastClicked = 1) {
+      const mode = KILLER_MODES[state.modeIdx];
+      [1, 2, 3].forEach(n => {
+        const btn = document.getElementById(`stepBtn${n}`);
+        if (state.steps[n]) {
+          btn.className = 'py-2 px-2 rounded-lg border border-amber-400 bg-amber-500/20 text-amber-200 text-xs font-extrabold transition flex flex-col items-center gap-0.5 glow-gold';
+        } else {
+          btn.className = 'py-2 px-2 rounded-lg border border-emerald-800/70 bg-[#091812] text-emerald-400/70 hover:text-emerald-200 text-xs font-bold transition flex flex-col items-center gap-0.5';
+        }
+      });
+
+      const allOn = state.steps[1] && state.steps[2] && state.steps[3];
+      document.getElementById('btnAllSteps').textContent = allOn ? '전체 보조선 끄기' : '전체 보조선 켜기';
+
+      const activeSteps = [1, 2, 3].filter(n => state.steps[n]);
+      const descBox = document.getElementById('stepDescBox');
+      if (activeSteps.length === 0) {
+        descBox.innerHTML = '보조선이 모두 꺼져 있습니다. 위 버튼을 눌러 기하학적 단서를 켜보세요.';
+      } else {
+        const showIdx = state.steps[lastClicked] ? lastClicked - 1 : activeSteps[activeSteps.length - 1] - 1;
+        const stepText = mode.id === 'type6' && showIdx === 1 && Math.abs(state.params.chordAngleDeg - 90) < 1e-6
+          ? 'Step 2: 이 특수각에서는 $BC$가 지름이고 $A′=C$가 됩니다. 따라서 별도의 보조 직각삼각형을 만들지 않고 지름 관계를 확인합니다.'
+          : mode.stepDescs[showIdx];
+        descBox.innerHTML = formatRichMath(stepText);
+      }
+    }
+
+    function toggleAccordion(which) {
+      const content = document.getElementById(which === 'textbook' ? 'contentTextbook' : 'contentSecret');
+      const icon = document.getElementById(which === 'textbook' ? 'iconTextbook' : 'iconSecret');
+      const isHidden = content.classList.contains('hidden');
+      if (isHidden) {
+        content.classList.remove('hidden');
+        icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        content.classList.add('hidden');
+        icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    function toggleMutator(key) {
+      const mId = KILLER_MODES[state.modeIdx].id;
+      if (key === 'abs' && !['type1', 'type6', 'type8'].includes(mId)) return;
+      state.mutators[key] = !state.mutators[key];
+      updateMutatorButtonsUI();
+      updateLiveHUDAndInvariants();
+    }
+
+    function updateMutatorButtonsUI() {
+      const mId = KILLER_MODES[state.modeIdx].id;
+      const absButton = document.getElementById('btnToggleAbs');
+      const symButton = document.getElementById('btnToggleSym');
+      const absAllowed = ['type1', 'type6', 'type8'].includes(mId);
+      absButton.style.display = absAllowed ? '' : 'none';
+      if (!absAllowed) state.mutators.abs = false;
+      absButton.querySelector('span').textContent = mId === 'type6' ? '수선 보조선' : (mId === 'type8' ? '높이 보조선' : '좌표 절댓값 반사');
+      const symAllowed = !['type7', 'type8'].includes(mId);
+      symButton.style.display = symAllowed ? '' : 'none';
+      if (!symAllowed) state.mutators.sym = false;
+      const setBtn = (el, on) => {
+        if (on) {
+          el.className = 'px-2.5 py-1.5 rounded-lg bg-amber-500/25 border border-amber-400 text-[11px] font-extrabold text-amber-200 transition flex items-center gap-1.5 glow-gold';
+        } else {
+          el.className = 'px-2.5 py-1.5 rounded-lg bg-[#07130e]/85 hover:bg-emerald-900/80 border border-emerald-600/50 text-[11px] font-semibold text-emerald-200 transition flex items-center gap-1.5';
+        }
+      };
+      setBtn(document.getElementById('btnToggleSym'), state.mutators.sym);
+      setBtn(document.getElementById('btnToggleAbs'), state.mutators.abs);
+      setBtn(document.getElementById('btnToggleCircle'), state.mutators.circle);
+    }
+
+    function snapToCondition() {
+      const mode = KILLER_MODES[state.modeIdx];
+      const scen = mode.scenarios[state.scenarioIdx];
+      const target = scen.snapParams;
+
+      for (const k in target) {
+        state.params[k] = target[k];
+      }
+      state.steps = { 1: true, 2: true, 3: true };
+      updateStepButtonsUI(3);
+      buildSpecialAngleControlsForCurrentMode();
+      if (mode.id === 'type3') updateRightPanel();
+      updateLiveHUDAndInvariants();
+      showToast('🎯 기출 문제 특수각(π) 조건에 정확히 스냅되었습니다!');
+    }
+
+    function refreshTwinExplanation(modeId, scen) {
+      const p = state.params;
+      if (modeId === 'type1' && state.scenarioIdx === 0) {
+        const average = (p.deg * (1 + p.multK)) / 2;
+        scen.textbookTitle = '대칭축과 두 동경의 평균';
+        scen.textbookSteps = [
+          '1) 두 동경을 단위원에 그리고, 대칭 기준선 y=x를 확인한다.',
+          '2) y=x 대칭이면 두 동경의 각의 평균이 π/4가 된다.',
+          `3) 현재 θ=${degToPiText(p.deg)}, k=${p.multK}이므로 평균은 ${degToPiText(average)}이다. 이 조건으로 현재 각을 확인한다.`
+        ];
+        scen.secretTitle = '대칭축은 두 동경 각의 중간 방향';
+        scen.secretSteps = [`현재 두 각의 평균은 ${(p.deg * (1 + p.multK) / 2).toFixed(2)}°이며, 기준 대칭축 π/4와 비교한다.`];
+      } else if (modeId === 'type1') {
+        const L = p.perimL, r = L / 4;
+        scen.textbookTitle = '고정 둘레 부채꼴의 최댓값 조건';
+        scen.textbookSteps = [
+          '1) 둘레 조건은 L=2r+l이므로 호의 길이는 l=L−2r이다.',
+          '2) 넓이는 S=rl/2=r(L−2r)/2이며, 이 이차식은 r=L/4에서 최대가 된다.',
+          `3) 현재 L=${L}이면 r=${r}, l=${L/2}, θ=l/r=2 rad이다.`
+        ];
+        scen.secretTitle = '최댓값일 때 호의 길이는 반지름의 두 배';
+        scen.secretSteps = [`현재 조건에서 r=${r}, l=${L/2}, Smax=${r*r}이다.`];
+      } else if (modeId === 'type2') {
+        const theta = degToPiText(p.angleDeg);
+        const trans = p.transType === 1 ? '직선 y=x 대칭: (x,y)→(y,x)' : (p.transType === 2 ? 'y축 대칭: (x,y)→(−x,y)' : '+π/2 회전: (x,y)→(−y,x)');
+        scen.textbookTitle = '단위원 좌표에 각변환 적용';
+        scen.textbookSteps = [
+          `1) 현재 P의 각은 θ=${theta}이고 좌표는 (cosθ, sinθ)이다.`,
+          `2) 선택된 변환은 ${trans}이다. 좌표 변화가 도형의 변 길이와 부호에 어떻게 나타나는지 확인한다.`,
+          '3) 변환된 좌표를 특수각의 sin, cos 값과 대조해 결과를 읽는다.'
+        ];
+        scen.secretTitle = '회전은 좌표 순환, 대칭은 좌표 교환 또는 부호 변화';
+        scen.secretSteps = [`현재 θ=${theta}. 선택된 좌표 규칙: ${trans}.`];
+      } else if (modeId === 'type3') {
+        scen.textbookTitle = '주기와 대칭으로 교점 짝짓기';
+        scen.textbookSteps = [
+          `1) 현재 함수는 sin(${p.freqB === 1 ? '' : p.freqB}x), 주기는 2π/${p.freqB}이다.`,
+          `2) 수평선 높이 k=${formatExactSurdText(p.lineK)}에서 각 주기의 두 교점은 봉우리 대칭축을 기준으로 짝이 된다.`,
+          '3) 각 짝의 합은 대칭축 두 배이므로 근의 합과 가중합은 교점의 순서·개수에 맞춰 계산한다.'
+        ];
+        scen.secretTitle = '주기 이동과 봉우리 대칭이 근의 합을 고정';
+        scen.secretSteps = [`현재 주기 T=${radToPiText(2*Math.PI/p.freqB)}, 높이 k=${formatExactSurdText(p.lineK)}. Mode 3 풀이 패널의 정의역에 맞춰 짝을 확인한다.`];
+      } else if (modeId === 'type4') {
+        const small = Math.abs(p.ampA - Math.abs(p.shiftC));
+        const large = p.ampA + Math.abs(p.shiftC);
+        scen.textbookTitle = '절댓값 그래프의 봉우리와 교점 경계';
+        scen.textbookSteps = [
+          `1) 원래 파동은 ${p.ampA}sin x ${p.shiftC >= 0 ? '+' : '−'} ${Math.abs(p.shiftC)}이고, x축 아래 부분을 위로 접는다.`,
+          `2) 현재 작은 봉우리 높이는 ${small}, 큰 봉우리 높이는 ${large}이다.`,
+          `3) 수평선 y=${formatExactSurdText(p.lineT)}를 움직여 봉우리에서 교점 수가 바뀌는 순간을 확인한다.`
+        ];
+        scen.secretTitle = '봉우리 높이에서 교점 수가 바뀐다';
+        scen.secretSteps = [`현재 경계 높이: 작은 봉우리 ${small}, 큰 봉우리 ${large}; 스캔선 t=${formatExactSurdText(p.lineT)}.`];
+      } else if (modeId === 'type5') {
+        scen.textbookTitle = '치환근을 사인 그래프의 교점으로 읽기';
+        scen.textbookSteps = [
+          '1) t=sin x로 치환하면 가능한 값은 −1≤t≤1이다.',
+          `2) 현재 식의 치환근은 t₁=${formatExactSurdText(p.rootT1)}, t₂=${formatExactSurdText(p.rootT2)}이다. 범위 밖 근은 버린다.`,
+          '3) 내부 근은 사인 그래프와 수평선의 두 교점, 극값 근은 한 교점으로 대응시켜 개수와 합을 확인한다.'
+        ];
+        scen.secretTitle = 't값의 범위와 부호가 근의 개수·합을 정한다';
+        scen.secretSteps = [`현재 치환근: ${formatExactSurdText(p.rootT1)}, ${formatExactSurdText(p.rootT2)}.`];
+      } else if (modeId === 'type6') {
+        scen.textbookTitle = '원주각과 현의 길이';
+        scen.textbookSteps = [
+          `1) 현재 외접원 반지름은 R=${p.radiusR}, 원주각은 ${degToPiText(p.chordAngleDeg)}이다.`,
+          '2) 현 BC와 지름 끝점을 이으면 직각삼각형이 생기고 sin A=BC/(2R)이다.',
+          `3) 따라서 BC=2R sin A=${formatExactSurdText(2*p.radiusR*Math.sin(p.chordAngleDeg*Math.PI/180))}; BC/sin A=2R=${2*p.radiusR}.`
+        ];
+        scen.secretTitle = '현과 마주보는 원주각은 사인법칙으로 연결된다';
+        scen.secretSteps = [`현재 값: R=${p.radiusR}, A=${degToPiText(p.chordAngleDeg)}.`];
+      } else if (modeId === 'type7') {
+        const angleB = [30,45,60,90][p.presetIdx] ?? p.angB;
+        const angleD = 180-angleB;
+        scen.textbookTitle = '내접사각형의 대각과 두 삼각형';
+        scen.textbookSteps = [
+          `1) 현재 원주상에서 ∠B=${degToPiText(angleB)}이고, 반대각은 ∠D=${degToPiText(angleD)}이다.`,
+          '2) 내접사각형의 대각의 합은 π이므로 cosD=−cosB, sinD=sinB이다.',
+          '3) 코사인법칙 두 식을 대각선 AC에 대해 같게 놓고, 넓이는 같은 사인 인자를 이용해 비로 비교한다.'
+        ];
+        scen.secretTitle = '대각의 합 π와 공통 대각선 AC';
+        scen.secretSteps = [`현재 ∠B=${degToPiText(angleB)}, ∠D=${degToPiText(angleD)}이므로 cosB+cosD=0이다.`];
+      } else if (modeId === 'type8') {
+        const a = Math.sqrt(p.sideB*p.sideB + p.sideC*p.sideC - 2*p.sideB*p.sideC*Math.cos(p.angleADeg*Math.PI/180));
+        const m = a*p.sideC/(p.sideB+p.sideC), n = a*p.sideB/(p.sideB+p.sideC);
+        const ad = 2*p.sideB*p.sideC*Math.cos(p.angleADeg*Math.PI/360)/(p.sideB+p.sideC);
+        scen.textbookTitle = '각의 이등분선과 밑변 내분';
+        scen.textbookSteps = [
+          `1) 현재 옆변은 b=${p.sideB}, c=${p.sideC}, 꼭짓각은 ${degToPiText(p.angleADeg)}이다.`,
+          `2) 각의 이등분선 정리에 따라 밑변 분할은 m:n=c:b이며 현재 m=${formatExactSurdText(m)}, n=${formatExactSurdText(n)}이다.`,
+          `3) AD=2bc cos(A/2)/(b+c)이므로 현재 AD=${formatExactSurdText(ad)}이다.`
+        ];
+        scen.secretTitle = '이등분선의 내분비와 길이 공식';
+        scen.secretSteps = [`현재 b=${p.sideB}, c=${p.sideC}, A=${degToPiText(p.angleADeg)}; AD=${formatExactSurdText(ad)}.`];
+      }
+    }
+
+    // Twin Problem Generator using 100% Special Radian Angles
+    function triggerTwinProblem() {
+      const mId = KILLER_MODES[state.modeIdx].id;
+      const scen = KILLER_MODES[state.modeIdx].scenarios[state.scenarioIdx];
+
+      if (mId === 'type1') {
+        if (state.scenarioIdx === 0) {
+          const pairs = [
+            { k: 2, deg: 30, tex: '\\frac{\\pi}{6}' },
+            { k: 3, deg: 22.5, tex: '\\frac{\\pi}{8}' },
+            { k: 5, deg: 15, tex: '\\frac{\\pi}{12}' }
+          ];
+          const pick = pairs[Math.floor(Math.random() * pairs.length)];
+          state.params.multK = pick.k;
+          state.params.deg = pick.deg;
+          scen.snapParams = { ...state.params };
+          scen.problem = `**[🎲 쌍둥이 특수각 변형]** 각 $\\theta$를 나타내는 동경과 $${pick.k}\\theta$를 나타내는 동경이 직선 $y = x$ ($\\frac{\\pi}{4}$)에 대하여 대칭일 때, 평균 원리 $\\frac{\\theta + ${pick.k}\\theta}{2} = \\frac{\\pi}{4}$에 의해 **$\\theta = ${pick.tex}$**입니다!`;
+        } else {
+          state.steps[3] = true;
+          updateStepButtonsUI(3);
+          const L = [12, 16, 20, 24][Math.floor(Math.random() * 4)];
+          const r = L / 4;
+          const maxS = r * r;
+          state.params.perimL = L;
+          state.params.deg = 114.59;
+          scen.snapParams = { ...state.params };
+          scen.problem = `**[🎲 쌍둥이 변형]** 둘레의 길이가 $L = ${L}$인 부채꼴의 넓이가 최대일 때, 중심각은 **$\\theta = 2\\text{ rad}$ (불변!)**이며 반지름 $r = \\frac{${L}}{4} = ${r}$, 최대 넓이는 $S_{\\max} = ${r}^2 = ${maxS}$입니다!`;
+        }
+      } else if (mId === 'type2') {
+        const list = [
+          { deg: 30, tex: '\\frac{\\pi}{6}', cx: '\\frac{\\sqrt{3}}{2}', sy: '\\frac{1}{2}' },
+          { deg: 45, tex: '\\frac{\\pi}{4}', cx: '\\frac{\\sqrt{2}}{2}', sy: '\\frac{\\sqrt{2}}{2}' },
+          { deg: 60, tex: '\\frac{\\pi}{3}', cx: '\\frac{1}{2}', sy: '\\frac{\\sqrt{3}}{2}' }
+        ];
+        const pick = list[Math.floor(Math.random() * list.length)];
+        state.params.angleDeg = pick.deg;
+        if (state.scenarioIdx === 0) {
+          state.params.transType = 0;
+          scen.snapParams = { ...state.params };
+          scen.problem = `**[🎲 쌍둥이 특수각 변형]** 단위원 위의 점 $P(\\theta = ${pick.tex})$를 $+\\frac{\\pi}{2}$ 회전한 점 $Q$의 좌표는 직각삼각형 합동에 의해 **$Q\\left(-${pick.sy},\\; ${pick.cx}\\right)$**입니다!`;
+        } else {
+          state.params.transType = 1;
+          scen.snapParams = { ...state.params };
+          scen.problem = `**[🎲 쌍둥이 특수각 변형]** 단위원 위의 점 $P(\\theta = ${pick.tex})$를 직선 $y=x$에 대칭이동한 점 $R\\left(\\frac{\\pi}{2}-\\theta\\right)$의 좌표는 **$R\\left(${pick.sy},\\; ${pick.cx}\\right)$**입니다!`;
+        }
+      } else if (mId === 'type3') {
+        const bList = [1, 2, 3];
+        const bVal = bList[Math.floor(Math.random() * bList.length)];
+        const kList = [0.5, Math.SQRT2 / 2, Math.sqrt(3) / 2];
+        const kVal = kList[Math.floor(Math.random() * kList.length)];
+        state.params.freqB = bVal;
+        state.params.lineK = kVal;
+        scen.snapParams = { ...state.params };
+        resetView();
+        const sTex = radToPiTex((1.5 * Math.PI) / bVal);
+        const sum4Tex = radToPiTex((6 * Math.PI) / bVal);
+        const sum6Tex = radToPiTex((9 * Math.PI) / bVal);
+        if (state.scenarioIdx === 0) {
+          scen.problem = `**[🎲 쌍둥이 특수각 변형]** 함수 $f(x) = \\sin(${bVal === 1 ? '' : bVal}x)$와 직선 $y = ${formatExactSurdTex(kVal)}$이 만나는 네 교점의 정중앙 대칭축은 $S = ${sTex}$이므로, 네 근의 합은 **$4 \\times ${sTex} = ${sum4Tex}$**입니다!`;
+        } else {
+          scen.problem = `**[🎲 쌍둥이 특수각 변형]** 함수 $y = \\sin(${bVal === 1 ? '' : bVal}x)$에서 정중앙 대칭축은 $S = ${sTex}$이므로, $x_1 + 2x_2 + 2x_3 + x_4 = 6S = ${sum6Tex}$입니다!`;
+        }
+      } else if (mId === 'type4') {
+        const pairs = [[2, -1], [3, -1], [3, -2], [4, -2]];
+        const pick = pairs[Math.floor(Math.random() * pairs.length)];
+        const smallPeak = pick[0] - Math.abs(pick[1]);
+        const bigPeak = pick[0] + Math.abs(pick[1]);
+        state.params.ampA = pick[0];
+        state.params.shiftC = pick[1];
+        state.params.lineT = smallPeak;
+        scen.snapParams = { ...state.params };
+        scen.problem = `**[🎲 쌍둥이 변형]** $0 \\le x < 2\\pi$에서 $f(x) = |${pick[0]}\\sin x ${pick[1]}|$의 작은 봉우리($x=\\frac{\\pi}{2}$) 높이는 $t = ${smallPeak}$ (교점 3개), 큰 봉우리($x=\\frac{3\\pi}{2}$) 높이는 $t = ${bigPeak}$ (교점 1개)입니다!`;
+      } else if (mId === 'type5') {
+        const t1List = [0.5, Math.SQRT2 / 2, Math.sqrt(3) / 2, -0.5, -Math.sqrt(3) / 2];
+        const t1 = t1List[Math.floor(Math.random() * t1List.length)];
+        const sumStr = t1 > 0 ? '\\pi' : '3\\pi';
+        state.params.rootT1 = t1;
+        state.params.rootT2 = 1.0;
+        scen.snapParams = { ...state.params };
+        scen.problem = `**[🎲 쌍둥이 특수각 변형]** $0 \\le x < 2\\pi$에서 $\\left(\\sin x - ${formatExactSurdTex(t1)}\\right)(\\sin x - 1) = 0$의 실근은 $t_1 = ${formatExactSurdTex(t1)}$에서 2개(합 $${sumStr}$), 극점 $t_2 = 1$에서 1개($\\frac{\\pi}{2}$)로 **총 3개**입니다!`;
+      } else if (mId === 'type6') {
+        const rVal = [3, 4, 5, 6][Math.floor(Math.random() * 4)];
+        const ang = [30, 45, 60][Math.floor(Math.random() * 3)];
+        state.params.radiusR = rVal;
+        state.params.chordAngleDeg = ang;
+        scen.snapParams = { ...state.params };
+        const aVal = 2 * rVal * Math.sin(ang * Math.PI / 180);
+        scen.problem = `**[🎲 쌍둥이 특수각 변형]** 외접원 반지름 $R = ${rVal}$ (지름 $2R = ${2*rVal}$)이고 원주각 $\\angle A = ${degToPiTex(ang)}$일 때, 현의 길이는 **$\\overline{BC} = 2R\\sin\\left(${degToPiTex(ang)}\\right) = ${formatExactSurdTex(aVal)}$**입니다!`;
+      } else if (mId === 'type7') {
+        const idx = [0, 1, 2][Math.floor(Math.random() * 3)];
+        applyType7Preset(idx);
+        scen.snapParams = { ...state.params };
+        const bDeg = [30, 45, 60][idx];
+        scen.problem = `**[🎲 쌍둥이 특수각 변형]** 원에 내접하는 사각형에서 $\\angle B = ${degToPiTex(bDeg)}$이면 마주보는 각은 무조건 **$\\angle D = \\pi - ${degToPiTex(bDeg)} = ${degToPiTex(180 - bDeg)}$**이므로 $\\cos B + \\cos D = 0$입니다!`;
+      } else if (mId === 'type8') {
+        const pairs = [[6, 3], [4, 2], [6, 2], [4, 4]];
+        const pick = pairs[Math.floor(Math.random() * pairs.length)];
+        const ang = [60, 120][Math.floor(Math.random() * 2)];
+        state.params.sideC = pick[0];
+        state.params.sideB = pick[1];
+        state.params.angleADeg = ang;
+        scen.snapParams = { ...state.params };
+        const adVal = (2 * pick[0] * pick[1] * Math.cos((ang * Math.PI) / 360)) / (pick[0] + pick[1]);
+        scen.problem = `**[🎲 쌍둥이 특수각 변형]** $\\overline{AB} = ${pick[0]}, \\overline{AC} = ${pick[1]}, \\angle A = ${degToPiTex(ang)}$일 때, 각의 이등분선 길이는 **$\\overline{AD} = ${formatExactSurdTex(adVal)}$**입니다!`;
+      }
+
+      scen.params = { ...state.params };
+      scen.snapParams = { ...state.params };
+      refreshTwinExplanation(mId, scen);
+      if (mId === 'type3') scen.customTwinProblem = true;
+      updateRightPanel();
+      showToast('🎲 새로운 특수각(π) 쌍둥이 변형 문제가 생성되었습니다!');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('snapToast');
+      document.getElementById('snapToastText').textContent = msg;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 2800);
+    }
+
+    // =========================================================================
+    // 7. CLICKABLE RADIAN SPECIAL-ANGLE CHIPS & REAL-TIME INVARIANT MONITOR
+    // =========================================================================
+    function setParamAndRefresh(key, val, shouldResetView = false) {
+      state.params[key] = val;
+      if (shouldResetView) resetView();
+      buildSpecialAngleControlsForCurrentMode();
+      if (KILLER_MODES[state.modeIdx].id === 'type3') {
+        KILLER_MODES[state.modeIdx].scenarios[state.scenarioIdx].customTwinProblem = false;
+        updateRightPanel();
+      }
+      updateLiveHUDAndInvariants();
+    }
+
+    const TYPE7_SPECIAL_ANGLES = [30, 45, 60, 90];
+    const TYPE7_ROTATION_SNAPS = Array.from({ length: 24 }, (_, i) => i * 15);
+    const normalizeDegrees = deg => ((deg % 360) + 360) % 360;
+
+    function setType7SpecialGeometry(angleB, rotationDeg = 0) {
+      const presetIdx = TYPE7_SPECIAL_ANGLES.indexOf(angleB);
+      const rotation = normalizeDegrees(rotationDeg);
+      Object.assign(state.params, {
+        presetIdx,
+        rotationDeg: rotation,
+        angA: normalizeDegrees(180 + rotation),
+        angB: normalizeDegrees(180 + angleB + rotation),
+        angC: normalizeDegrees(180 - 2 * angleB + rotation),
+        angD: normalizeDegrees(180 - angleB + rotation)
+      });
+    }
+
+    function rotateType7Quadrilateral(deltaDeg) {
+      for (const key of ['angA', 'angB', 'angC', 'angD']) {
+        state.params[key] = normalizeDegrees(state.params[key] + deltaDeg);
+      }
+      state.params.rotationDeg = normalizeDegrees((state.params.rotationDeg || 0) + deltaDeg);
+    }
+
+    function applyType7Preset(idx) {
+      state.params.presetIdx = idx;
+      if (idx >= 0 && idx <= 3) {
+        setType7SpecialGeometry(TYPE7_SPECIAL_ANGLES[idx], 0);
+        state.params.circumR = 4.0;
+      } else if (idx === 4) {
+        // Integer sides a=2, b=3, c=4, d=3 => cos B = -1/3
+        Object.assign(state.params, { presetIdx: 4, rotationDeg: 0, angB: 45, angC: 318.435, angD: 185.88, angA: 99.315, circumR: 2.1866 });
+      }
+      resetView();
+      buildSpecialAngleControlsForCurrentMode();
+      updateLiveHUDAndInvariants();
+    }
+
+    function buildSpecialAngleControlsForCurrentMode() {
+      const mId = KILLER_MODES[state.modeIdx].id;
+      const p = state.params;
+      const box = document.getElementById('sliderControlsBox');
+
+      const renderChipGroup = (title, currentVal, items, onClickKey, resetOnClick = false) => {
+        const chipsHtml = items.map(item => {
+          const isAct = Math.abs(currentVal - item.val) < 1e-2;
+          const cls = isAct
+            ? 'rad-chip rad-chip-active border'
+            : 'rad-chip bg-[#091812] hover:bg-emerald-900/70 text-emerald-200 border border-emerald-700/60 font-semibold';
+          return `
+            <button onclick="setParamAndRefresh('${onClickKey}', ${item.val}, ${resetOnClick})"
+              class="px-2.5 py-1.5 rounded-lg text-xs ${cls}">
+              ${item.label}
+            </button>
+          `;
+        }).join('');
+        return `
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-emerald-200 font-bold">${title}</span>
+              <span class="text-[11px] text-amber-300 font-mono">클릭하여 즉시 변환</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">${chipsHtml}</div>
+          </div>
+        `;
+      };
+
+      let html = '';
+
+      if (mId === 'type1') {
+        html += renderChipGroup('기준 동경·부채꼴 라디안 각도 θ', p.deg, [
+          { val: 15, label: 'π/12' },
+          { val: 22.5, label: 'π/8' },
+          { val: 30, label: 'π/6' },
+          { val: 45, label: 'π/4' },
+          { val: 60, label: 'π/3' },
+          { val: 75, label: '5π/12' },
+          { val: 90, label: 'π/2' },
+          { val: 114.59, label: '2 rad (극대)' },
+          { val: 120, label: '2π/3' }
+        ], 'deg');
+        html += renderChipGroup('배수 동경 k (kθ)', p.multK, [
+          { val: 2, label: '2θ' },
+          { val: 3, label: '3θ' },
+          { val: 5, label: '5θ (기출)' },
+          { val: 7, label: '7θ' }
+        ], 'multK');
+        html += renderChipGroup('부채꼴 고정 둘레 L (= 2r + l)', p.perimL, [
+          { val: 12, label: 'L = 12 (r=3)' },
+          { val: 16, label: 'L = 16 (r=4)' },
+          { val: 20, label: 'L = 20 (r=5)' },
+          { val: 24, label: 'L = 24 (r=6)' }
+        ], 'perimL');
+      } else if (mId === 'type2') {
+        html += renderChipGroup('단위원 기준 특수각 θ (라디안)', p.angleDeg, [
+          { val: 30, label: 'π/6' },
+          { val: 45, label: 'π/4' },
+          { val: 60, label: 'π/3' },
+          { val: 120, label: '2π/3' },
+          { val: 135, label: '3π/4' },
+          { val: 150, label: '5π/6' }
+        ], 'angleDeg');
+        html += renderChipGroup('각변환 기하 합동 모드', p.transType || 0, [
+          { val: 0, label: 'π/2 + θ (+90° 회전)' },
+          { val: 1, label: 'π/2 - θ (y=x 대칭)' },
+          { val: 2, label: 'π - θ (y축 대칭)' }
+        ], 'transType');
+      } else if (mId === 'type3') {
+        html += renderChipGroup('함수 y = sin(bx) 주기 선택', p.freqB, [
+          { val: 1, label: 'sin x (주기 2π)' },
+          { val: 2, label: 'sin 2x (주기 π)' },
+          { val: 3, label: 'sin 3x (주기 2π/3)' }
+        ], 'freqB', true);
+        html += renderChipGroup('수평선 y = k 특수비 선택', p.lineK, [
+          { val: 0.5, label: 'k = 1/2' },
+          { val: Math.SQRT2 / 2, label: 'k = √2/2' },
+          { val: Math.sqrt(3) / 2, label: 'k = √3/2' },
+          { val: 0.35, label: 'k = 임의 상수' }
+        ], 'lineK');
+      } else if (mId === 'type4') {
+        html += renderChipGroup('진폭 a (|a sin x + c|)', p.ampA, [
+          { val: 2, label: 'a = 2' },
+          { val: 3, label: 'a = 3' },
+          { val: 4, label: 'a = 4' }
+        ], 'ampA');
+        html += renderChipGroup('y축 평행이동 c', p.shiftC, [
+          { val: -1, label: 'c = -1' },
+          { val: -2, label: 'c = -2' },
+          { val: -Math.sqrt(3), label: 'c = -√3' }
+        ], 'shiftC');
+        html += renderChipGroup('수평 스캔선 y = t (특수 경계)', p.lineT, [
+          { val: 0.0, label: 't = 0 (x축)' },
+          { val: 0.5, label: 't = 1/2' },
+          { val: 1.0, label: 't = 1 (경계)' },
+          { val: 1.5, label: 't = 3/2' },
+          { val: 2.0, label: 't = 2 (경계)' },
+          { val: 3.0, label: 't = 3 (경계)' },
+          { val: 4.0, label: 't = 4 (경계)' }
+        ], 'lineT');
+      } else if (mId === 'type5') {
+        html += renderChipGroup('치환 제1근 t₁ (sin x = t₁ 특수비)', p.rootT1, [
+          { val: -1.0, label: '-1 (3π/2)' },
+          { val: -Math.sqrt(3) / 2, label: '-√3/2' },
+          { val: -Math.SQRT2 / 2, label: '-√2/2' },
+          { val: -0.5, label: '-1/2' },
+          { val: 0.0, label: '0' },
+          { val: 0.5, label: '1/2' },
+          { val: Math.SQRT2 / 2, label: '√2/2' },
+          { val: Math.sqrt(3) / 2, label: '√3/2' },
+          { val: 1.0, label: '1 (π/2)' }
+        ], 'rootT1');
+        html += renderChipGroup('치환 제2근 t₂ (sin x = t₂ 특수비)', p.rootT2, [
+          { val: -1.0, label: '-1 (접점)' },
+          { val: -Math.sqrt(3) / 2, label: '-√3/2' },
+          { val: -0.5, label: '-1/2' },
+          { val: 0.5, label: '1/2' },
+          { val: Math.sqrt(3) / 2, label: '√3/2' },
+          { val: 1.0, label: '1 (접점)' },
+          { val: 2.0, label: '2 (범위 밖 소멸)' }
+        ], 'rootT2');
+      } else if (mId === 'type6') {
+        html += renderChipGroup('원주각 ∠A 특수각 (라디안)', p.chordAngleDeg, [
+          { val: 30, label: 'π/6 (sin=1/2)' },
+          { val: 45, label: 'π/4 (sin=√2/2)' },
+          { val: 60, label: 'π/3 (sin=√3/2)' },
+          { val: 90, label: 'π/2 (지름 2R)' }
+        ], 'chordAngleDeg');
+        html += renderChipGroup('외접원 반지름 R', p.radiusR, [
+          { val: 3, label: 'R = 3 (2R=6)' },
+          { val: 4, label: 'R = 4 (2R=8)' },
+          { val: 5, label: 'R = 5 (2R=10)' },
+          { val: 6, label: 'R = 6 (2R=12)' }
+        ], 'radiusR');
+        html += renderChipGroup('외접원 위 꼭짓점 A 위치 (원주각 불변 확인)', p.posADeg, [
+          { val: 60, label: '우측 호 (π/3)' },
+          { val: 90, label: '정중앙 (π/2)' },
+          { val: 120, label: '좌측 호 (2π/3)' },
+          { val: 135, label: '좌측 끝 (3π/4)' }
+        ], 'posADeg');
+      } else if (mId === 'type7') {
+        const curPreset = p.presetIdx !== undefined ? p.presetIdx : 2;
+        const presets = [
+          { idx: 0, label: '∠B=π/6, ∠D=5π/6' },
+          { idx: 1, label: '∠B=π/4, ∠D=3π/4' },
+          { idx: 2, label: '∠B=π/3, ∠D=2π/3' },
+          { idx: 3, label: '∠B=π/2, ∠D=π/2' },
+          { idx: 4, label: '변 2,3,4,3 (cosB=-1/3)' }
+        ];
+        html += `
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-xs">
+              <span class="text-emerald-200 font-bold">내접사각형 대각(θ, π-θ) 특수각 프리셋</span>
+              <span class="text-[11px] text-amber-300 font-mono">클릭 스냅</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              ${presets.map(pr => `
+                <button onclick="applyType7Preset(${pr.idx})"
+                  class="px-2.5 py-1.5 rounded-lg text-xs ${curPreset === pr.idx ? 'rad-chip rad-chip-active border' : 'rad-chip bg-[#091812] hover:bg-emerald-900/70 text-emerald-200 border border-emerald-700/60 font-semibold'}">
+                  ${pr.label}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      } else if (mId === 'type8') {
+        html += renderChipGroup('꼭짓점 특수각 ∠A (이등분 각 A/2)', p.angleADeg, [
+          { val: 60, label: '∠A = π/3 (이등분 π/6)' },
+          { val: 90, label: '∠A = π/2 (이등분 π/4)' },
+          { val: 120, label: '∠A = 2π/3 (이등분 π/3)' }
+        ], 'angleADeg');
+        html += renderChipGroup('왼쪽 변 c (AB) 길이', p.sideC, [
+          { val: 3, label: 'c = 3' },
+          { val: 4, label: 'c = 4' },
+          { val: 6, label: 'c = 6' }
+        ], 'sideC');
+        html += renderChipGroup('오른쪽 변 b (AC) 길이', p.sideB, [
+          { val: 2, label: 'b = 2' },
+          { val: 3, label: 'b = 3' },
+          { val: 4, label: 'b = 4' }
+        ], 'sideB');
+      }
+
+      box.innerHTML = html;
+    }
+
+    function updateLiveHUDAndInvariants() {
+      const mode = KILLER_MODES[state.modeIdx];
+      const mId = mode.id;
+      const p = state.params;
+
+      document.getElementById('hudTypeBadge').textContent = `${mode.code} · ${mode.shortTitle}`;
+      const hudEq = document.getElementById('hudEquationBox');
+      const grid = document.getElementById('invariantMonitorGrid');
+
+      let cards = [];
+
+      if (mId === 'type1') {
+        const avgDeg = (p.deg * (1 + p.multK)) / 2;
+        const rad = (p.deg * Math.PI) / 180;
+        const secTheta = Math.max(0.25, rad);
+        const curR = p.perimL / (2 + secTheta);
+        const curArea = 0.5 * curR * curR * secTheta;
+        const optR = p.perimL / 4;
+        const optMaxS = optR * optR;
+
+        if (state.scenarioIdx === 1) {
+          hudEq.innerHTML = formatRichMath(
+            `$L = ${p.perimL},\\; \\theta = ${degToPiTex(p.deg)} \\implies r = ${curR.toFixed(2)},\\; S(\\theta) = ${curArea.toFixed(2)} \\le S_{\\max}(${optMaxS})$`
+          );
+        } else {
+          hudEq.innerHTML = formatRichMath(
+            `$\\theta = ${degToPiTex(p.deg)},\\; ${p.multK}\\theta = ${degToPiTex(p.deg * p.multK)} \\implies \\text{평균 } \\frac{\\theta+${p.multK}\\theta}{2} = ${degToPiTex(avgDeg)}$`
+          );
+        }
+        cards = [
+          { title: '기준 동경 각도 θ (rad)', val: degToPiText(p.deg), sub: `배수 동경 ${p.multK}θ = ${degToPiText(p.deg * p.multK)}` },
+          { title: '두 동경 평균 (θ+kθ)/2', val: degToPiText(avgDeg), sub: `합 = ${degToPiText(p.deg * (1 + p.multK))}` },
+          { title: '현재 부채꼴 넓이 S(θ)', val: `${curArea.toFixed(2)}`, sub: `r=${curR.toFixed(2)}, l=${(curR*secTheta).toFixed(2)}` },
+          { title: `둘레 L=${p.perimL} 최대 넓이`, val: `${optMaxS}`, sub: `θ = 2 rad일 때 r = ${optR}, l = ${2*optR}` }
+        ];
+      } else if (mId === 'type2') {
+        const rad = (p.angleDeg * Math.PI) / 180;
+        const xP = Math.cos(rad);
+        const yP = Math.sin(rad);
+        const tMode = p.transType !== undefined ? p.transType : (state.scenarioIdx === 1 ? 1 : 0);
+
+        let xQ, yQ, transTitle, transAngleTex;
+        if (tMode === 1) {
+          xQ = yP; yQ = xP;
+          transTitle = 'y=x 대칭 (π/2 - θ)';
+          transAngleTex = degToPiTex(90 - p.angleDeg);
+        } else if (tMode === 2) {
+          xQ = -xP; yQ = yP;
+          transTitle = 'y축 대칭 (π - θ)';
+          transAngleTex = degToPiTex(180 - p.angleDeg);
+        } else {
+          xQ = -yP; yQ = xP;
+          transTitle = '+π/2 회전 (π/2 + θ)';
+          transAngleTex = degToPiTex(90 + p.angleDeg);
+        }
+
+        hudEq.innerHTML = formatRichMath(
+          `$P\\left(${formatExactSurdTex(xP)},\\; ${formatExactSurdTex(yP)}\\right) \\xrightarrow{\\text{${transTitle}}} Q\\left(${formatExactSurdTex(xQ)},\\; ${formatExactSurdTex(yQ)}\\right)$`
+        );
+        cards = [
+          { title: `기준점 P (θ = ${degToPiText(p.angleDeg)})`, val: `(${formatExactSurdText(xP)}, ${formatExactSurdText(yP)})`, sub: '단위원 x² + y² = 1' },
+          { title: `변환점 (${transTitle})`, val: `(${formatExactSurdText(xQ)}, ${formatExactSurdText(yQ)})`, sub: '직각삼각형 합동' },
+          { title: '변환 동경 cos 값', val: formatExactSurdText(xQ), sub: 'x좌표 직독' },
+          { title: '변환 동경 sin 값', val: formatExactSurdText(yQ), sub: 'y좌표 직독' }
+        ];
+      } else if (mId === 'type3') {
+        const b = p.freqB;
+        const alpha = Math.asin(p.lineK) / b;
+        const hp = Math.PI / b;
+        const x1 = alpha;
+        const x2 = hp - alpha;
+        const x3 = 2 * hp + alpha;
+        const x4 = 3 * hp - alpha;
+        const sumAll = x1 + x2 + x3 + x4;
+        const symAxis = 1.5 * hp;
+        const weightedSum = x1 + 2 * x2 + 2 * x3 + x4;
+
+        if (state.scenarioIdx === 1) {
+          hudEq.innerHTML = formatRichMath(
+            `$x_1 + 2x_2 + 2x_3 + x_4 = (x_1+x_4) + 2(x_2+x_3) = 6S = ${radToPiTex(weightedSum)}$`
+          );
+          cards = [
+            { title: '가중치 합 x₁+2x₂+2x₃+x₄', val: radToPiText(weightedSum), sub: `6 × S(${radToPiText(symAxis)}) = ${radToPiText(weightedSum)}` },
+            { title: '바깥 짝꿍 합 (x₁+x₄)', val: radToPiText(x1 + x4), sub: `2 × S = ${radToPiText(2 * symAxis)} 불변` },
+            { title: '안쪽 짝꿍 합 (x₂+x₃)', val: radToPiText(x2 + x3), sub: `2 × S = ${radToPiText(2 * symAxis)} 불변` },
+            { title: '4개 단순 총합 ∑x_i', val: radToPiText(sumAll), sub: `4 × S = ${radToPiText(4 * symAxis)}` }
+          ];
+        } else {
+          hudEq.innerHTML = formatRichMath(
+            `$y = \\sin(${b === 1 ? '' : b}x) \\cap \\left(y=${formatExactSurdTex(p.lineK)}\\right) \\implies \\sum_{i=1}^{4} x_i = 4 \\times ${radToPiTex(symAxis)} = ${radToPiTex(sumAll)}$`
+          );
+          cards = [
+            { title: '4개 교점의 총합 ∑x_i', val: radToPiText(sumAll), sub: `y = ${formatExactSurdText(p.lineK)} 무관 불변!` },
+            { title: '정중앙 대칭축 S', val: radToPiText(symAxis), sub: `주기 T = ${radToPiText((2 * Math.PI) / b)}` },
+            { title: '첫 봉우리 합 (x₁+x₂)', val: radToPiText(x1 + x2), sub: `x₁=${radToPiText(x1)}, x₂=${radToPiText(x2)}` },
+            { title: '둘째 봉우리 합 (x₃+x₄)', val: radToPiText(x3 + x4), sub: `x₃=${radToPiText(x3)}, x₄=${radToPiText(x4)}` }
+          ];
+        }
+      } else if (mId === 'type4') {
+        const smallPeak = Math.abs(p.ampA - Math.abs(p.shiftC));
+        const bigPeak = p.ampA + Math.abs(p.shiftC);
+        const roots = solveAbsSinEquation(p.ampA, p.shiftC, p.lineT);
+        const cnt = roots.length;
+
+        hudEq.innerHTML = formatRichMath(
+          `$f(x) = |${p.ampA}\\sin x ${formatExactSurdTex(p.shiftC)}| \\cap \\left(y=${formatExactSurdTex(p.lineT)}\\right) \\implies [0, 2\\pi) \\text{ 교점 } ${cnt}\\text{개}$`
+        );
+        cards = [
+          { title: '[0, 2π) 실근(교점) 개수', val: `${cnt}개`, sub: cnt % 2 === 1 ? '⚡ 홀수 개 (극점 접선!)' : '짝수 개 구간' },
+          { title: 'x = π/2 작은 봉우리', val: formatExactSurdText(smallPeak), sub: '||a| - |c|| (교점 3개 경계)' },
+          { title: 'x = 3π/2 큰 봉우리', val: formatExactSurdText(bigPeak), sub: '|a| + |c| (교점 1개 경계)' },
+          { title: '실시간 라디안 실근 합', val: roots.length > 0 ? radToPiText(roots.reduce((a, b) => a + b, 0)) : '0', sub: '대칭축(π/2, 3π/2) 기반' }
+        ];
+      } else if (mId === 'type5') {
+        const rootsForT = (tVal) => {
+          if (tVal < -1 - 1e-4 || tVal > 1 + 1e-4) return { cnt: 0, sum: 0, label: '0개 (범위 밖)' };
+          if (Math.abs(tVal - 1) < 1e-3) return { cnt: 1, sum: Math.PI / 2, label: '1개 (x = π/2)' };
+          if (Math.abs(tVal + 1) < 1e-3) return { cnt: 1, sum: (3 * Math.PI) / 2, label: '1개 (x = 3π/2)' };
+          if (Math.abs(tVal) < 1e-3) return { cnt: 2, sum: Math.PI, label: '2개 (0, π ⟹ 합 π)' };
+          const a = Math.asin(tVal);
+          if (tVal > 0) return { cnt: 2, sum: Math.PI, label: `2개 (${radToPiText(a)}, ${radToPiText(Math.PI - a)})` };
+          return { cnt: 2, sum: 3 * Math.PI, label: `2개 (${radToPiText(Math.PI - a)}, ${radToPiText(2 * Math.PI + a)})` };
+        };
+        const r1 = rootsForT(p.rootT1);
+        const r2 = Math.abs(p.rootT1 - p.rootT2) < 1e-3 ? { cnt: 0, sum: 0, label: '중근 (t₁=t₂)' } : rootsForT(p.rootT2);
+        const totalCnt = r1.cnt + r2.cnt;
+        const totalSum = r1.sum + r2.sum;
+
+        hudEq.innerHTML = formatRichMath(
+          `$\\left(\\sin x - ${formatExactSurdTex(p.rootT1)}\\right)\\left(\\sin x - ${formatExactSurdTex(p.rootT2)}\\right) = 0 \\implies \\text{실근 } ${totalCnt}\\text{개, 합 } ${radToPiTex(totalSum)}$`
+        );
+        cards = [
+          { title: '총 실근 개수 [0, 2π)', val: `${totalCnt}개`, sub: `t₁(${r1.cnt}개) + t₂(${r2.cnt}개)` },
+          { title: '모든 실근의 합 (rad)', val: radToPiText(totalSum), sub: '대칭축 불변량으로 즉시 도출' },
+          { title: `t₁ = ${formatExactSurdText(p.rootT1)} 의 근`, val: r1.label, sub: r1.cnt === 2 ? `합 = ${radToPiText(r1.sum)}` : '극점 접선' },
+          { title: `t₂ = ${formatExactSurdText(p.rootT2)} 의 근`, val: r2.label, sub: Math.abs(p.rootT2) <= 1 ? `합 = ${radToPiText(r2.sum)}` : '[-1, 1] 밖 소멸' }
+        ];
+      } else if (mId === 'type6') {
+        const R = p.radiusR;
+        const radA = (p.chordAngleDeg * Math.PI) / 180;
+        const sideA = 2 * R * Math.sin(radA);
+        const otherLeg = 2 * R * Math.cos(radA);
+
+        hudEq.innerHTML = formatRichMath(
+          `$\\angle A = ${degToPiTex(p.chordAngleDeg)},\\; R = ${R} \\implies \\overline{BC} = 2R\\sin A = ${formatExactSurdTex(sideA)},\\; \\frac{\\overline{BC}}{\\sin A} = ${2*R}$`
+        );
+        cards = [
+          { title: `원주각 ∠A (${degToPiText(p.chordAngleDeg)})`, val: `sin A = ${formatExactSurdText(Math.sin(radA))}`, sub: `위치(${degToPiText(p.posADeg)}) 무관 불변` },
+          { title: '현의 길이 BC (= a)', val: formatExactSurdText(sideA), sub: `2R·sin A = ${2*R} × ${formatExactSurdText(Math.sin(radA))}` },
+          { title: '사인법칙 a / sinA', val: `${2 * R}`, sub: `외접원 지름 2R = ${2 * R} 일치` },
+          { title: '지름 직각삼각형 A\'C', val: formatExactSurdText(otherLeg), sub: `2R·cos A = ${formatExactSurdText(otherLeg)}` }
+        ];
+      } else if (mId === 'type7') {
+        const R = p.circumR || 4.0;
+        const pts = [p.angA, p.angB, p.angC ?? 300, p.angD].map(deg => {
+          const r = (deg * Math.PI) / 180;
+          return { x: R * Math.cos(r), y: R * Math.sin(r) };
+        });
+        const dist = (P, Q) => Math.hypot(P.x - Q.x, P.y - Q.y);
+        const a = dist(pts[0], pts[1]);
+        const b = dist(pts[1], pts[2]);
+        const c = dist(pts[2], pts[3]);
+        const d = dist(pts[3], pts[0]);
+        const ac = dist(pts[0], pts[2]);
+
+        const cosB = (a * a + b * b - ac * ac) / (2 * a * b);
+        const cosD = (c * c + d * d - ac * ac) / (2 * c * d);
+        const degB = (Math.acos(Math.max(-1, Math.min(1, cosB))) * 180) / Math.PI;
+        const degD = (Math.acos(Math.max(-1, Math.min(1, cosD))) * 180) / Math.PI;
+
+        const isIntegerPreset = p.presetIdx === 4;
+        const bStr = isIntegerPreset ? 'arccos(-1/3)' : degToPiText(degB);
+        const dStr = isIntegerPreset ? 'π - B' : degToPiText(degD);
+
+        hudEq.innerHTML = formatRichMath(
+          `$\\angle B + \\angle D = \\pi \\implies \\cos B = ${formatExactSurdTex(cosB)},\\; \\cos D = ${formatExactSurdTex(cosD)},\\; \\cos B + \\cos D = 0$`
+        );
+        cards = [
+          { title: '마주보는 두 각 (B, D)', val: `${bStr}, ${dStr}`, sub: '대각의 합 ∠B + ∠D = π 불변' },
+          { title: 'cos B + cos D 합', val: '0', sub: `cosB=${formatExactSurdText(cosB)}, cosD=${formatExactSurdText(cosD)}` },
+          { title: '공통 대각선 AC 길이', val: formatExactSurdText(ac), sub: `a=${formatExactSurdText(a)}, b=${formatExactSurdText(b)}` },
+          { title: '넓이 비 S_ABC / S_ADC', val: formatExactSurdText((a * b) / (c * d)), sub: 'ab / cd 비율과 100% 일치' }
+        ];
+      } else if (mId === 'type8') {
+        const c = p.sideC;
+        const b = p.sideB;
+        const radA = (p.angleADeg * Math.PI) / 180;
+        const a = Math.sqrt(b * b + c * c - 2 * b * c * Math.cos(radA));
+        const m = (a * c) / (b + c);
+        const n = (a * b) / (b + c);
+        const adSq = b * c - m * n;
+        const adLen = Math.sqrt(Math.max(0, adSq));
+
+        hudEq.innerHTML = formatRichMath(
+          `$\\overline{AB}=${c}, \\; \\overline{AC}=${b}, \\; \\angle A=${degToPiTex(p.angleADeg)} \\implies \\overline{AD} = \\sqrt{bc - mn} = ${formatExactSurdTex(adLen)}$`
+        );
+        cards = [
+          { title: `꼭짓점 각 ∠A (${degToPiText(p.angleADeg)})`, val: `이등분 각 = ${degToPiText(p.angleADeg / 2)}`, sub: `cos(A/2) = ${formatExactSurdText(Math.cos(radA / 2))}` },
+          { title: '이등분선 길이 AD', val: formatExactSurdText(adLen), sub: `AD² = bc - mn = ${formatExactSurdText(adSq)}` },
+          { title: '밑변 내분 길이 (m : n)', val: `${formatExactSurdText(m)} : ${formatExactSurdText(n)}`, sub: `옆변 비 ${c} : ${b} 와 일치` },
+          { title: '인접 보각 코사인 합', val: '0', sub: 'cos(α) + cos(π - α) = 0' }
+        ];
+      }
+
+      grid.innerHTML = cards.map(c => `
+        <div class="bg-[#091812] border border-emerald-800/70 rounded-lg p-2.5">
+          <div class="text-[10.5px] text-emerald-300/80 font-medium truncate">${c.title}</div>
+          <div class="text-sm font-extrabold text-amber-300 font-mono mt-0.5">${c.val}</div>
+          <div class="text-[10px] text-emerald-400/70 truncate mt-0.5">${c.sub}</div>
+        </div>
+      `).join('');
+    }
+
+    // =========================================================================
+    // 8. CANVAS VIEWPORT & MAGNETIC SPECIAL-ANGLE DRAG EVENTS
+    // =========================================================================
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (KILLER_MODES[state.modeIdx].id === 'type1') resetView();
+    }
+
+    function resetView() {
+      const mId = KILLER_MODES[state.modeIdx].id;
+      const p = state.params;
+      state.view.scale = 46;
+      state.view.offsetX = 0;
+      state.view.offsetY = 0;
+
+      if (mId === 'type1') {
+        const rect = canvas.getBoundingClientRect();
+        const width = rect.width || Math.max(360, window.innerWidth * 0.58);
+        const height = rect.height || Math.max(420, window.innerHeight * 0.68);
+        // Reserve room for the unit-circle construction and the independent sector panel
+        // in one shared coordinate frame. Use the largest snapped sector radius possible.
+        const maxSectorR = Math.max(2.8, (24 / (2 + 0.25)) * (2.8 / (24 / 4)));
+        const bounds = {
+          minX: -1.8,
+          maxX: 5.4 + maxSectorR + 0.65,
+          minY: -0.8 - maxSectorR - 0.8,
+          maxY: Math.max(1.5, -0.8 + maxSectorR + 0.65)
+        };
+        const sceneW = bounds.maxX - bounds.minX;
+        const sceneH = bounds.maxY - bounds.minY;
+        state.view.scale = Math.max(20, Math.min(105, (width - 40) / sceneW, (height - 72) / sceneH));
+        state.view.offsetX = -((bounds.minX + bounds.maxX) / 2) * state.view.scale;
+        state.view.offsetY = ((bounds.minY + bounds.maxY) / 2) * state.view.scale;
+      } else if (mId === 'type2') {
+        state.view.scale = 132;
+        state.view.offsetX = 0;
+        state.view.offsetY = 18;
+      } else if (mId === 'type3') {
+        const b = p.freqB || 2;
+        state.view.scale = b === 1 ? 42 : (b === 2 ? 62 : 76);
+        state.view.offsetX = -155;
+        state.view.offsetY = 15;
+      } else if (mId === 'type4') {
+        state.view.scale = 52;
+        state.view.offsetX = -150;
+        state.view.offsetY = 95;
+      } else if (mId === 'type5') {
+        state.view.scale = 46;
+        state.view.offsetX = -65;
+        state.view.offsetY = 15;
+      } else if (mId === 'type6') {
+        state.view.scale = 40;
+        state.view.offsetX = 0;
+        state.view.offsetY = 10;
+      } else if (mId === 'type7') {
+        const cR = p.circumR || 4.0;
+        state.view.scale = cR < 3 ? 72 : 42;
+        state.view.offsetX = 0;
+        state.view.offsetY = 10;
+      } else if (mId === 'type8') {
+        state.view.scale = 46;
+        state.view.offsetX = 0;
+        state.view.offsetY = 55;
+      }
+    }
+
+    function zoomCanvas(factor) {
+      state.view.scale = Math.max(20, Math.min(130, state.view.scale * factor));
+    }
+
+    function mathToScreen(mx, my) {
+      const rect = canvas.getBoundingClientRect();
+      const cx = rect.width / 2 + state.view.offsetX;
+      const cy = rect.height / 2 + state.view.offsetY;
+      return {
+        x: cx + mx * state.view.scale,
+        y: cy - my * state.view.scale
+      };
+    }
+
+    function screenToMath(sx, sy) {
+      const rect = canvas.getBoundingClientRect();
+      const cx = rect.width / 2 + state.view.offsetX;
+      const cy = rect.height / 2 + state.view.offsetY;
+      return {
+        x: (sx - cx) / state.view.scale,
+        y: (cy - sy) / state.view.scale
+      };
+    }
+
+    function setupCanvasEvents() {
+      const getPos = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return { x: clientX - rect.left, y: clientY - rect.top };
+      };
+
+      const onDown = (e) => {
+        const pos = getPos(e);
+        state.interaction.lastX = pos.x;
+        state.interaction.lastY = pos.y;
+        state.interaction.isDragging = true;
+
+        for (const h of activeHandles) {
+          if (Math.hypot(pos.x - h.sx, pos.y - h.sy) < 24) {
+            state.interaction.dragTarget = h;
+            return;
+          }
+        }
+        state.interaction.dragTarget = 'pan';
+      };
+
+      const onMove = (e) => {
+        const pos = getPos(e);
+        if (!state.interaction.isDragging) {
+          const near = activeHandles.some(h => Math.hypot(pos.x - h.sx, pos.y - h.sy) < 22);
+          canvas.style.cursor = near ? 'pointer' : 'grab';
+          return;
+        }
+
+        if (state.interaction.dragTarget === 'pan') {
+          state.view.offsetX += pos.x - state.interaction.lastX;
+          state.view.offsetY += pos.y - state.interaction.lastY;
+          state.interaction.lastX = pos.x;
+          state.interaction.lastY = pos.y;
+        } else if (state.interaction.dragTarget && state.interaction.dragTarget.onDrag) {
+          const mPos = screenToMath(pos.x, pos.y);
+          state.interaction.dragTarget.onDrag(mPos);
+          buildSpecialAngleControlsForCurrentMode();
+          if (KILLER_MODES[state.modeIdx].id === 'type3') {
+            KILLER_MODES[state.modeIdx].scenarios[state.scenarioIdx].customTwinProblem = false;
+            updateRightPanel();
+          }
+          updateLiveHUDAndInvariants();
+        }
+      };
+
+      const onUp = () => {
+        state.interaction.isDragging = false;
+        state.interaction.dragTarget = null;
+      };
+
+      canvas.addEventListener('mousedown', onDown);
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('mouseup', onUp);
+
+      canvas.addEventListener('touchstart', (e) => { onDown(e); }, { passive: true });
+      canvas.addEventListener('touchmove', (e) => { if (state.interaction.isDragging) onMove(e); }, { passive: true });
+      canvas.addEventListener('touchend', onUp);
+
+      canvas.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        zoomCanvas(e.deltaY < 0 ? 1.1 : 0.9);
+      }, { passive: false });
+    }
+
+    // =========================================================================
+    // 9. CHALKBOARD GRID (π-RADIAN X-AXIS FOR WAVE MODES) & MUTATORS
+    // =========================================================================
+    function getModeYScaleFactor() {
+      const mId = KILLER_MODES[state.modeIdx].id;
+      if (mId === 'type3') return 2.8;
+      if (mId === 'type5') return 2.6;
+      return 1.0;
+    }
+
+    function isRadianXAxisMode() {
+      const mId = KILLER_MODES[state.modeIdx].id;
+      return mId === 'type3' || mId === 'type4' || mId === 'type5';
+    }
+
+    function drawGridAndAxes(w, h) {
+      const yFactor = getModeYScaleFactor();
+      const topLeft = screenToMath(0, 0);
+      const botRight = screenToMath(w, h);
+      const minY = Math.floor(botRight.y / yFactor) - 1;
+      const maxY = Math.ceil(topLeft.y / yFactor) + 1;
+
+      ctx.save();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.08)';
+      ctx.fillStyle = 'rgba(167, 243, 208, 0.55)';
+      ctx.font = 'bold 11.5px Pretendard, sans-serif';
+
+      const origin = mathToScreen(0, 0);
+
+      if (isRadianXAxisMode()) {
+        // Pure π-Radian X-Axis Grid (steps of π/4 or π/6)
+        const piStep = state.view.scale > 52 ? Math.PI / 4 : Math.PI / 2;
+        const startK = Math.floor(topLeft.x / piStep) - 1;
+        const endK = Math.ceil(botRight.x / piStep) + 1;
+
+        for (let k = startK; k <= endK; k++) {
+          const xVal = k * piStep;
+          const sx = mathToScreen(xVal, 0).x;
+          const isMajor = Math.abs((xVal / (Math.PI / 2)) - Math.round(xVal / (Math.PI / 2))) < 1e-2;
+          ctx.strokeStyle = isMajor ? 'rgba(52, 211, 153, 0.14)' : 'rgba(52, 211, 153, 0.06)';
+          ctx.beginPath();
+          ctx.moveTo(sx, 0);
+          ctx.lineTo(sx, h);
+          ctx.stroke();
+
+          if (k !== 0 && xVal >= -0.1) {
+            ctx.textAlign = 'center';
+            ctx.fillStyle = isMajor ? '#a7f3d0' : 'rgba(167, 243, 208, 0.45)';
+            ctx.fillText(radToPiText(xVal), sx, Math.min(h - 10, Math.max(15, origin.y + 18)));
+          }
+        }
+      } else {
+        // Geometric Cartesian X-Axis Grid
+        const minX = Math.floor(topLeft.x) - 1;
+        const maxX = Math.ceil(botRight.x) + 1;
+        for (let x = minX; x <= maxX; x++) {
+          const sx = mathToScreen(x, 0).x;
+          ctx.beginPath();
+          ctx.moveTo(sx, 0);
+          ctx.lineTo(sx, h);
+          ctx.stroke();
+
+          if (x !== 0 && state.view.scale > 22) {
+            ctx.textAlign = 'center';
+            ctx.fillText(x, sx, Math.min(h - 10, Math.max(15, origin.y + 16)));
+          }
+        }
+      }
+
+      // Y-Axis Grid
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.08)';
+      ctx.fillStyle = 'rgba(167, 243, 208, 0.5)';
+      const yStep = yFactor > 1 ? 0.5 : 1;
+      for (let yVal = Math.floor(minY); yVal <= Math.ceil(maxY); yVal += yStep) {
+        const sy = mathToScreen(0, yVal * yFactor).y;
+        ctx.beginPath();
+        ctx.moveTo(0, sy);
+        ctx.lineTo(w, sy);
+        ctx.stroke();
+
+        if (Math.abs(yVal) > 1e-4 && state.view.scale > 22) {
+          ctx.textAlign = 'right';
+          const lbl = formatExactSurdText(yVal);
+          ctx.fillText(lbl, Math.min(w - 8, Math.max(28, origin.x - 8)), sy + 4);
+        }
+      }
+
+      // Main Axes
+      ctx.strokeStyle = 'rgba(236, 253, 245, 0.42)';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.moveTo(0, origin.y);
+      ctx.lineTo(w, origin.y);
+      ctx.moveTo(origin.x, 0);
+      ctx.lineTo(origin.x, h);
+      ctx.stroke();
+
+      // Mode-aware Global Mutators
+      const mId = KILLER_MODES[state.modeIdx].id;
+      const p = state.params;
+
+      if (state.mutators.sym) {
+        if (mId === 'type1' || mId === 'type2') {
+          drawMathLine(1, 0, 'rgba(251, 191, 36, 0.45)', [5, 4], 1.6);
+          drawMathLine(-1, 0, 'rgba(56, 189, 248, 0.45)', [5, 4], 1.6);
+        } else if (mId === 'type3') {
+          const b = p.freqB || 2;
+          const hp = Math.PI / b;
+          for (let n = 0; n <= 4; n++) {
+            const xPeriod = n * hp;
+            drawMathSegment(xPeriod, -4.5, xPeriod, 4.5, 'rgba(52, 211, 153, 0.35)', [3, 3], 1.3);
+            if (n < 4) {
+              const xSym = (n + 0.5) * hp;
+              drawMathSegment(xSym, -4.5, xSym, 4.5, 'rgba(251, 191, 36, 0.55)', [5, 4], 1.6);
+            }
+          }
+        } else if (mId === 'type4' || mId === 'type5') {
+          const piAxes = [
+            { x: Math.PI / 2, lbl: 'x = π/2 (대칭축)' },
+            { x: Math.PI, lbl: 'x = π (점대칭)' },
+            { x: (3 * Math.PI) / 2, lbl: 'x = 3π/2 (대칭축)' },
+            { x: 2 * Math.PI, lbl: 'x = 2π (주기)' }
+          ];
+          piAxes.forEach(ax => {
+            drawMathSegment(ax.x, -6, ax.x, 6, 'rgba(251, 191, 36, 0.5)', [5, 4], 1.5);
+            const sPt = mathToScreen(ax.x, -0.45 * yFactor);
+            ctx.fillStyle = '#fbbf24';
+            ctx.textAlign = 'center';
+            ctx.fillText(ax.lbl, sPt.x, sPt.y);
+          });
+        } else if (mId === 'type6' || mId === 'type7' || mId === 'type8') {
+          drawMathSegment(0, -6.5, 0, 6.5, 'rgba(251, 191, 36, 0.5)', [5, 4], 1.6);
+        }
+      }
+
+      if (state.mutators.circle) {
+        if (mId === 'type1' || mId === 'type2') {
+          drawMathCircle(0, 0, 1.5, 'rgba(192, 132, 252, 0.65)', [4, 4], 1.8);
+        } else if (mId === 'type3') {
+          drawMathCircle(-2.8, 0, 2.8, 'rgba(192, 132, 252, 0.55)', [5, 4], 1.8);
+          drawMathSegment(-2.8, 2.8 * p.lineK, 0, 2.8 * p.lineK, 'rgba(192, 132, 252, 0.55)', [3, 3], 1.5);
+        } else if (mId === 'type4') {
+          drawMathCircle(-p.ampA - 0.8, p.shiftC, p.ampA, 'rgba(192, 132, 252, 0.55)', [5, 4], 1.8);
+        } else if (mId === 'type5') {
+          drawMathCircle(-2.6, 0, 2.6, 'rgba(192, 132, 252, 0.55)', [5, 4], 1.8);
+        } else if (mId === 'type6') {
+          const R = p.radiusR;
+          const radA = (p.chordAngleDeg * Math.PI) / 180;
+          const Bx = R * Math.cos(-Math.PI / 2 - radA), By = R * Math.sin(-Math.PI / 2 - radA);
+          const Cx = R * Math.cos(-Math.PI / 2 + radA), Cy = R * Math.sin(-Math.PI / 2 + radA);
+          drawMathSegment(0, 0, Bx, By, 'rgba(192, 132, 252, 0.75)', [4, 4], 1.8);
+          drawMathSegment(0, 0, Cx, Cy, 'rgba(192, 132, 252, 0.75)', [4, 4], 1.8);
+          drawAngleArcMarker(0, 0, Bx, By, Cx, Cy, '#c084fc', 20, `2A = ${degToPiText(2 * p.chordAngleDeg)}`);
+        } else if (mId === 'type7') {
+          const R = p.circumR || 4.0;
+          drawMathPoint(0, 0, 'O(외심)', '#c084fc', 4.5);
+          [p.angA, p.angB, p.angC ?? 300, p.angD].forEach(deg => {
+            const r = (deg * Math.PI) / 180;
+            drawMathSegment(0, 0, R * Math.cos(r), R * Math.sin(r), 'rgba(192, 132, 252, 0.45)', [4, 4], 1.4);
+          });
+        } else if (mId === 'type8') {
+          const c = p.sideC, b = p.sideB, radA = (p.angleADeg * Math.PI) / 180;
+          const a = Math.sqrt(b * b + c * c - 2 * b * c * Math.cos(radA));
+          const R = a / (2 * Math.sin(radA));
+          const oy = a / (2 * Math.tan(radA));
+          drawMathCircle(0, oy, R, 'rgba(192, 132, 252, 0.65)', [6, 4], 2.0);
+          drawMathPoint(0, oy, `외심 O (R=${formatExactSurdText(R)})`, '#c084fc', 5);
+        }
+      }
+
+      ctx.restore();
+    }
+
+    function drawMathCircle(cx, cy, r, color = '#38bdf8', dash = [], width = 2.2) {
+      const center = mathToScreen(cx, cy);
+      const radPx = r * state.view.scale;
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.setLineDash(dash);
+      ctx.beginPath();
+      ctx.arc(center.x, center.y, radPx, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawFunctionCurve(fn, color = '#34d399', lineWidth = 2.6, dash = [], xStart = null, xEnd = null, ignoreAbsMutator = false) {
+      const w = canvas.getBoundingClientRect().width;
+      const minX = xStart !== null ? xStart : screenToMath(0, 0).x;
+      const maxX = xEnd !== null ? xEnd : screenToMath(w, 0).x;
+      const step = (maxX - minX) / 420;
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lineWidth;
+      ctx.setLineDash(dash);
+      ctx.shadowColor = color;
+      ctx.shadowBlur = dash.length === 0 ? 6 : 0;
+
+      ctx.beginPath();
+      let started = false;
+      for (let x = minX; x <= maxX; x += step) {
+        let y = fn(x);
+        if (!ignoreAbsMutator && state.mutators.abs && !isNaN(y)) y = Math.abs(y);
+        if (isNaN(y) || !isFinite(y) || Math.abs(y) > 80) {
+          started = false;
+          continue;
+        }
+        const pt = mathToScreen(x, y);
+        if (!started) {
+          ctx.moveTo(pt.x, pt.y);
+          started = true;
+        } else {
+          ctx.lineTo(pt.x, pt.y);
+        }
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawMathLine(slope, intercept, color = '#fbbf24', dash = [], width = 2) {
+      const w = canvas.getBoundingClientRect().width;
+      const x1 = screenToMath(0, 0).x;
+      const x2 = screenToMath(w, 0).x;
+      const p1 = mathToScreen(x1, slope * x1 + intercept);
+      const p2 = mathToScreen(x2, slope * x2 + intercept);
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.setLineDash(dash);
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawMathSegment(x1, y1, x2, y2, color = '#fbbf24', dash = [], width = 2.2) {
+      const p1 = mathToScreen(x1, y1);
+      const p2 = mathToScreen(x2, y2);
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.setLineDash(dash);
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawMathPoint(x, y, label = '', color = '#fbbf24', radius = 6, isDraggable = false, onDrag = null, labelAlign = 'left', labelOffsetY = -8) {
+      const pt = mathToScreen(x, y);
+      ctx.save();
+
+      if (isDraggable) {
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.26)';
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, radius + 7, 0, Math.PI * 2);
+        ctx.fill();
+        activeHandles.push({ sx: pt.x, sy: pt.y, onDrag });
+      }
+
+      ctx.fillStyle = color;
+      ctx.strokeStyle = '#07130e';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      if (label) {
+        ctx.font = 'bold 12.5px Pretendard, sans-serif';
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = '#000';
+        ctx.shadowBlur = 4;
+        const width = ctx.measureText(label).width;
+        const height = 16;
+        const cw = canvas.getBoundingClientRect().width;
+        const ch = canvas.getBoundingClientRect().height;
+        const preferredX = labelAlign === 'right' ? -10 : (labelAlign === 'center' ? 0 : 10);
+        const candidates = [
+          { align: labelAlign, dx: preferredX, dy: labelOffsetY },
+          { align: labelAlign, dx: preferredX, dy: labelOffsetY - 18 },
+          { align: labelAlign, dx: preferredX, dy: labelOffsetY + 20 },
+          { align: 'left', dx: radius + 10, dy: 4 },
+          { align: 'right', dx: -(radius + 10), dy: 4 }
+        ];
+        let chosen = null;
+        for (const candidate of candidates) {
+          let x = pt.x + candidate.dx;
+          const y = Math.max(12, Math.min(ch - 8, pt.y + candidate.dy));
+          let left = candidate.align === 'right' ? x - width : (candidate.align === 'center' ? x - width / 2 : x);
+          let right = left + width;
+          if (left < 6) { x += 6 - left; left = 6; right = left + width; }
+          if (right > cw - 6) { x -= right - (cw - 6); right = cw - 6; left = right - width; }
+          const box = { left, right, top: y - height, bottom: y + 3 };
+          const collides = pointLabelBoxes.some(other => box.left < other.right + 3 && box.right + 3 > other.left && box.top < other.bottom + 2 && box.bottom + 2 > other.top);
+          if (!collides) { chosen = { x, y, align: candidate.align, box }; break; }
+          if (!chosen) chosen = { x, y, align: candidate.align, box };
+        }
+        ctx.textAlign = chosen.align;
+        ctx.fillText(label, chosen.x, chosen.y);
+        pointLabelBoxes.push(chosen.box);
+      }
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // 10. MODE-SPECIFIC CHALKBOARD RENDERERS (100% RADIAN & SPECIAL ANGLES)
+    // =========================================================================
+    function renderLoop() {
+      const rect = canvas.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
+      activeHandles = [];
+      pointLabelBoxes = [];
+
+      drawGridAndAxes(rect.width, rect.height);
+
+      const mId = KILLER_MODES[state.modeIdx].id;
+      if (mId === 'type1') renderType1();
+      else if (mId === 'type2') renderType2();
+      else if (mId === 'type3') renderType3();
+      else if (mId === 'type4') renderType4();
+      else if (mId === 'type5') renderType5();
+      else if (mId === 'type6') renderType6();
+      else if (mId === 'type7') renderType7();
+      else if (mId === 'type8') renderType8();
+
+      requestAnimationFrame(renderLoop);
+    }
+
+    // --- TYPE 1: Two Radii Symmetry & Sector Max Area (Special Radian Snap) ---
+    function renderType1() {
+      const p = state.params;
+      const R = 1;
+      const rad1 = (p.deg * Math.PI) / 180;
+      const rad2 = (p.deg * p.multK * Math.PI) / 180;
+      const avgRad = (rad1 + rad2) / 2;
+      const avgDeg = (p.deg * (1 + p.multK)) / 2;
+
+      drawMathCircle(0, 0, R, 'rgba(52, 211, 153, 0.5)', [], 2);
+
+      if (state.steps[1]) {
+        drawMathLine(1, 0, 'rgba(251, 191, 36, 0.55)', [6, 5], 1.8);
+      }
+
+      const x1 = R * Math.cos(rad1);
+      const y1 = R * Math.sin(rad1);
+      const x2 = R * Math.cos(rad2);
+      const y2 = R * Math.sin(rad2);
+
+      drawMathSegment(0, 0, x1, y1, '#fbbf24', [], 2.6);
+      drawMathSegment(0, 0, x2, y2, '#38bdf8', [], 2.6);
+      drawMathPoint(x2, y2, `${p.multK}θ = ${degToPiText(p.deg * p.multK)}`, '#38bdf8', 6);
+
+      if (state.mutators.abs) {
+        drawMathPoint(Math.abs(x2), Math.abs(y2), `|P(${p.multK}θ)|`, '#c084fc', 5);
+      }
+
+      if (state.steps[2]) {
+        const xm = (R + 0.5) * Math.cos(avgRad);
+        const ym = (R + 0.5) * Math.sin(avgRad);
+        drawMathSegment(0, 0, xm, ym, '#fb7185', [4, 4], 2.2);
+        const bPos = mathToScreen(0, -R - 0.85);
+        drawCanvasFraction(ctx, `θ + ${p.multK}θ`, '2', bPos.x, bPos.y, {
+          color: '#fb7185',
+          prefix: '평균 동경 = ',
+          suffix: ` = ${degToPiText(avgDeg)}`
+        });
+      }
+
+      if (state.steps[3]) {
+        const secCx = 5.4;
+        const secCy = -0.8;
+        const optR = p.perimL / 4;
+        const secTheta = Math.max(0.25, Math.min(4.2, rad1));
+        const curR = p.perimL / (2 + secTheta);
+        const curArea = 0.5 * curR * curR * secTheta;
+
+        const baseScale = 2.8 / optR;
+        const drawOptR = 2.8;
+        const drawCurR = curR * baseScale;
+        const sCenter = mathToScreen(secCx, secCy);
+
+        ctx.save();
+        ctx.strokeStyle = 'rgba(251, 191, 36, 0.45)';
+        ctx.setLineDash([5, 4]);
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(sCenter.x, sCenter.y);
+        ctx.arc(sCenter.x, sCenter.y, drawOptR * state.view.scale, -2.0, 0);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.save();
+        ctx.fillStyle = Math.abs(secTheta - 2.0) < 0.05 ? 'rgba(251, 191, 36, 0.25)' : 'rgba(56, 189, 248, 0.18)';
+        ctx.strokeStyle = Math.abs(secTheta - 2.0) < 0.05 ? '#fbbf24' : '#38bdf8';
+        ctx.lineWidth = 2.4;
+        ctx.beginPath();
+        ctx.moveTo(sCenter.x, sCenter.y);
+        ctx.arc(sCenter.x, sCenter.y, drawCurR * state.view.scale, -secTheta, 0);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+
+        const allowedDegs = [15, 22.5, 30, 45, 60, 75, 90, 114.59, 120, 135, 150];
+        const tipX = secCx + drawCurR * Math.cos(secTheta);
+        const tipY = secCy + drawCurR * Math.sin(secTheta);
+        drawMathPoint(tipX, tipY, `S=${curArea.toFixed(1)} (θ=${degToPiText(p.deg)})`, '#fbbf24', 6.5, true, (mPos) => {
+          let ang = (Math.atan2(mPos.y - secCy, mPos.x - secCx) * 180) / Math.PI;
+          if (ang < 0) ang += 360;
+          state.params.deg = snapToNearest(ang, allowedDegs);
+        });
+
+        const secLabel = mathToScreen(secCx + 1.2, secCy - 1.1);
+        drawCanvasFraction(ctx, `l = ${(curR * secTheta).toFixed(1)}`, `r = ${curR.toFixed(1)}`, secLabel.x, secLabel.y, {
+          color: '#38bdf8',
+          prefix: `둘레 L=${p.perimL}: θ = `,
+          suffix: ` = ${degToPiText(p.deg)} (극대 S=${optR*optR} @ 2rad)`
+        });
+      }
+
+      const allowedDegs = [15, 22.5, 30, 45, 60, 75, 90, 114.59, 120, 135, 150];
+      drawMathPoint(x1, y1, `P(θ = ${degToPiText(p.deg)}) [특수각 드래그]`, '#fbbf24', 7.5, true, (mPos) => {
+        let ang = (Math.atan2(mPos.y, mPos.x) * 180) / Math.PI;
+        if (ang < 0) ang += 360;
+        state.params.deg = snapToNearest(ang, allowedDegs);
+      });
+    }
+
+    // --- TYPE 2: Unit Circle & Special-Angle Congruent Triangles ---
+    function renderType2() {
+      const p = state.params;
+      const visualR = 1; // Coordinates now use the actual unit-circle radius.
+      const rad = (p.angleDeg * Math.PI) / 180;
+
+      const cosP = Math.cos(rad);
+      const sinP = Math.sin(rad);
+      const xP = visualR * cosP;
+      const yP = visualR * sinP;
+
+      drawMathCircle(0, 0, visualR, 'rgba(52, 211, 153, 0.55)', [], 2.2);
+
+      if (state.steps[1]) {
+        ctx.save();
+        const pO = mathToScreen(0, 0);
+        const pP = mathToScreen(xP, yP);
+        const pPx = mathToScreen(xP, 0);
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.18)';
+        ctx.beginPath();
+        ctx.moveTo(pO.x, pO.y);
+        ctx.lineTo(pP.x, pP.y);
+        ctx.lineTo(pPx.x, pPx.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+
+        drawMathSegment(xP, yP, xP, 0, '#fbbf24', [4, 4], 2);
+        drawMathSegment(0, 0, xP, 0, '#fbbf24', [], 2.5);
+        drawRightAngleSign(xP, 0, 0, 0, xP, yP, '#fbbf24', 10);
+      }
+
+      const tMode = p.transType !== undefined ? p.transType : (state.scenarioIdx === 1 ? 1 : 0);
+      let cosQ, sinQ, lblMode;
+      if (tMode === 1) {
+        cosQ = sinP; sinQ = cosP;
+        lblMode = `R(π/2 - θ = ${degToPiText(90 - p.angleDeg)})`;
+        drawMathLine(1, 0, 'rgba(251, 191, 36, 0.65)', [6, 4], 1.8);
+      } else if (tMode === 2) {
+        cosQ = -cosP; sinQ = sinP;
+        lblMode = `Q(π - θ = ${degToPiText(180 - p.angleDeg)})`;
+      } else {
+        cosQ = -sinP; sinQ = cosP;
+        lblMode = `Q(π/2 + θ = ${degToPiText(90 + p.angleDeg)})`;
+      }
+
+      const xQ = visualR * cosQ;
+      const yQ = visualR * sinQ;
+
+      if (state.steps[2]) {
+        ctx.save();
+        const pO = mathToScreen(0, 0);
+        const pQ = mathToScreen(xQ, yQ);
+        const pQx = mathToScreen(xQ, 0);
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.18)';
+        ctx.beginPath();
+        ctx.moveTo(pO.x, pO.y);
+        ctx.lineTo(pQ.x, pQ.y);
+        ctx.lineTo(pQx.x, pQx.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+
+        drawMathSegment(0, 0, xQ, yQ, '#38bdf8', [], 2.4);
+        drawMathSegment(xQ, yQ, xQ, 0, '#38bdf8', [4, 4], 2);
+        drawRightAngleSign(xQ, 0, 0, 0, xQ, yQ, '#38bdf8', 10);
+        if (tMode === 0) drawRightAngleSign(0, 0, xP, yP, xQ, yQ, '#34d399', 11);
+        if (tMode === 1) drawMathSegment(xP, yP, xQ, yQ, '#fb7185', [3, 3], 1.6);
+
+        drawMathPoint(
+          xQ,
+          yQ,
+          `${lblMode}: (${formatExactSurdText(cosQ)}, ${formatExactSurdText(sinQ)})`,
+          '#38bdf8',
+          6.5,
+          false,
+          null,
+          cosQ < 0 ? 'right' : 'left',
+          14
+        );
+      }
+
+      if (state.steps[3]) {
+        const fPos = mathToScreen(0, -visualR - 0.85);
+        drawCanvasBadge(
+          ctx,
+          `단위원 직독: P(${formatExactSurdText(cosP)}, ${formatExactSurdText(sinP)}) ⟹ 변환점 (${formatExactSurdText(cosQ)}, ${formatExactSurdText(sinQ)})`,
+          fPos.x,
+          fPos.y,
+          '#fbbf24'
+        );
+      }
+
+      const allowedSpecial = [30, 45, 60, 120, 135, 150];
+      drawMathSegment(0, 0, xP, yP, '#fbbf24', [], 2.6);
+      drawMathPoint(
+        xP,
+        yP,
+        `P(θ=${degToPiText(p.angleDeg)}): (${formatExactSurdText(cosP)}, ${formatExactSurdText(sinP)})`,
+        '#fbbf24',
+        7.5,
+        true,
+        (mPos) => {
+          let deg = (Math.atan2(mPos.y, mPos.x) * 180) / Math.PI;
+          state.params.angleDeg = snapToNearest(deg, allowedSpecial);
+        }
+      );
+    }
+
+    // --- TYPE 3: Period, Symmetry & Sum of Intersections on π-Radian X-Axis ---
+    function renderType3() {
+      const p = state.params;
+      const b = p.freqB || 2;
+      const hp = Math.PI / b;
+      const xDomainEnd = (state.scenarioIdx === 0 ? 4 : 3) * hp;
+      const scaleY = 2.8;
+
+      drawFunctionCurve(x => scaleY * Math.sin(b * x), '#34d399', 2.8, [], -0.2, xDomainEnd + 0.3);
+
+      const yLine = scaleY * p.lineK;
+      drawMathSegment(-0.2, yLine, xDomainEnd + 0.3, yLine, '#fbbf24', [], 2.2);
+
+      const alpha = Math.asin(p.lineK) / b;
+      const xs = [alpha, hp - alpha, 2 * hp + alpha, 3 * hp - alpha];
+      const sym1 = 0.5 * hp;
+      const sym2 = 2.5 * hp;
+      const globalSym = 1.5 * hp;
+
+      if (state.steps[1]) {
+        drawMathSegment(sym1, -3.2, sym1, 3.2, 'rgba(56, 189, 248, 0.65)', [5, 4], 1.8);
+        drawMathSegment(sym2, -3.2, sym2, 3.2, 'rgba(56, 189, 248, 0.65)', [5, 4], 1.8);
+        drawMathSegment(globalSym, -3.5, globalSym, 3.5, '#fb7185', [6, 4], 2.4);
+
+        const gPos = mathToScreen(globalSym, -3.25);
+        drawCanvasBadge(ctx, `전체 정중앙 대칭축 S = ${radToPiText(globalSym)}`, gPos.x, gPos.y, '#fb7185');
+      }
+
+      if (state.steps[2]) {
+        drawDoubleArrow(xs[0], yLine + 0.4, sym1, yLine + 0.4, '#38bdf8', '-d');
+        drawDoubleArrow(sym1, yLine + 0.4, xs[1], yLine + 0.4, '#38bdf8', '+d');
+        drawDoubleArrow(xs[2], yLine + 0.4, sym2, yLine + 0.4, '#34d399', '-d');
+        drawDoubleArrow(sym2, yLine + 0.4, xs[3], yLine + 0.4, '#34d399', '+d');
+
+        xs.forEach((xi, i) => {
+          drawMathSegment(xi, yLine, xi, 0, 'rgba(251, 191, 36, 0.55)', [3, 3], 1.5);
+          const align = (i % 2 === 0) ? 'right' : 'left';
+          const offY = (i % 2 === 0) ? -10 : 16;
+          drawMathPoint(xi, yLine, `x_${i+1}=${radToPiText(xi)}`, i < 2 ? '#38bdf8' : '#34d399', 5.5, false, null, align, offY);
+        });
+      }
+
+      if (state.steps[3]) {
+        const topPos = mathToScreen(globalSym, 3.35);
+        if (state.scenarioIdx === 1) {
+          drawCanvasBadge(ctx, `W = (x₁+x₄)+2(x₂+x₃) = 2S+2·2S = 6S = ${radToPiText(6 * globalSym)}`, topPos.x, topPos.y, '#fbbf24');
+        } else {
+          drawCanvasFraction(ctx, `x₁ + x₂ + x₃ + x₄`, '4', topPos.x, topPos.y, {
+            color: '#fbbf24',
+            prefix: '대칭 평균 = ',
+            suffix: ` = ${radToPiText(globalSym)} ⟹ 총합 = ${radToPiText(4 * globalSym)}`
+          });
+        }
+      }
+
+      const specialKs = [0.35, 0.5, Math.SQRT2 / 2, Math.sqrt(3) / 2];
+      drawMathPoint(globalSym, yLine, `y = ${formatExactSurdText(p.lineK)} [특수비 스냅]`, '#fbbf24', 7.5, true, (mPos) => {
+        const rawK = mPos.y / scaleY;
+        state.params.lineK = snapToNearest(rawK, specialKs);
+      }, 'center', 18);
+    }
+
+    // --- TYPE 4: Absolute Value Trig |a sinx + c| on π-Radian X-Axis ---
+    function renderType4() {
+      const p = state.params;
+      const fnOrig = x => p.ampA * Math.sin(x) + p.shiftC;
+      const smallPeak = Math.abs(p.ampA - Math.abs(p.shiftC));
+      const bigPeak = p.ampA + Math.abs(p.shiftC);
+      const fnAbs = x => Math.abs(fnOrig(x));
+
+      if (state.steps[1]) {
+        drawFunctionCurve(fnOrig, 'rgba(56, 189, 248, 0.35)', 1.8, [5, 5], 0, Math.PI * 2, true);
+        drawMathSegment(0, p.shiftC, Math.PI * 2, p.shiftC, 'rgba(56, 189, 248, 0.45)', [4, 4], 1.5);
+      }
+
+      drawFunctionCurve(fnAbs, '#34d399', 3.0, [], 0, Math.PI * 2, true);
+
+      if (state.steps[2]) {
+        drawMathSegment(0, smallPeak, Math.PI * 2, smallPeak, 'rgba(56, 189, 248, 0.6)', [4, 4], 1.5);
+        drawMathSegment(0, bigPeak, Math.PI * 2, bigPeak, 'rgba(192, 132, 252, 0.6)', [4, 4], 1.5);
+        drawMathPoint(Math.PI / 2, smallPeak, `(π/2, ${formatExactSurdText(smallPeak)})`, '#38bdf8', 6);
+        drawMathPoint((3 * Math.PI) / 2, bigPeak, `(3π/2, ${formatExactSurdText(bigPeak)})`, '#c084fc', 6);
+      }
+
+      drawMathSegment(-0.3, p.lineT, Math.PI * 2 + 0.4, p.lineT, '#fbbf24', [], 2.3);
+
+      const roots = solveAbsSinEquation(p.ampA, p.shiftC, p.lineT);
+      roots.forEach((rx, idx) => {
+        drawMathPoint(rx, p.lineT, `${radToPiText(rx)}`, '#fb7185', 5.5, false, null, 'center', idx % 2 === 0 ? -12 : 16);
+      });
+
+      if (state.steps[3]) {
+        const bPos = mathToScreen(Math.PI, -0.75);
+        drawCanvasBadge(
+          ctx,
+          `[0,2π) 교점 ${roots.length}개 | 작은산(x=π/2): t=${formatExactSurdText(smallPeak)} / 큰산(x=3π/2): t=${formatExactSurdText(bigPeak)}`,
+          bPos.x,
+          bPos.y,
+          '#fbbf24'
+        );
+      }
+
+      const specialTs = [0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 5.0];
+      drawMathPoint(Math.PI, p.lineT, `y = t (${formatExactSurdText(p.lineT)}) [드래그]`, '#fbbf24', 7.5, true, (mPos) => {
+        state.params.lineT = snapToNearest(mPos.y, specialTs);
+      }, 'left', 16);
+    }
+
+    // --- TYPE 5: Substitution t = sin(x) Dual Linked View on π-Radian X-Axis ---
+    function renderType5() {
+      const p = state.params;
+      const scaleY = 2.6;
+
+      drawFunctionCurve(x => scaleY * Math.sin(x), '#34d399', 2.8, [], 0, Math.PI * 2);
+
+      if (state.steps[1]) {
+        drawMathSegment(-4.2, scaleY, Math.PI * 2, scaleY, 'rgba(52, 211, 153, 0.35)', [4, 4], 1.4);
+        drawMathSegment(-4.2, -scaleY, Math.PI * 2, -scaleY, 'rgba(52, 211, 153, 0.35)', [4, 4], 1.4);
+      }
+
+      const axisX = -2.2;
+      drawMathSegment(axisX, -scaleY * 1.6, axisX, scaleY * 2.1, 'rgba(192, 132, 252, 0.45)', [4, 4], 1.5);
+
+      ctx.save();
+      ctx.strokeStyle = '#c084fc';
+      ctx.lineWidth = 2.2;
+      ctx.beginPath();
+      let started = false;
+      for (let tVal = -1.55; tVal <= 2.1; tVal += 0.03) {
+        const gVal = (tVal - p.rootT1) * (tVal - p.rootT2);
+        const mathX = axisX + gVal * 0.85;
+        const mathY = tVal * scaleY;
+        const sPt = mathToScreen(mathX, mathY);
+        if (!started) {
+          ctx.moveTo(sPt.x, sPt.y);
+          started = true;
+        } else {
+          ctx.lineTo(sPt.x, sPt.y);
+        }
+      }
+      ctx.stroke();
+      ctx.restore();
+
+      const y1 = scaleY * p.rootT1;
+      const y2 = scaleY * p.rootT2;
+
+      drawMathSegment(axisX, y1, Math.PI * 2, y1, '#fbbf24', [], 2.2);
+      drawMathSegment(axisX, y2, Math.PI * 2, y2, '#38bdf8', [5, 4], 2.0);
+
+      const isDoubleRoot = Math.abs(p.rootT1 - p.rootT2) < 1e-2;
+      const drawRootsForT = (tVal, color) => {
+        if (tVal < -1 - 1e-3 || tVal > 1 + 1e-3) return;
+        const clamped = Math.max(-1, Math.min(1, tVal));
+        const a = Math.asin(clamped);
+        let xs = [];
+        if (Math.abs(clamped - 1) <= 1e-3) xs = [Math.PI / 2];
+        else if (Math.abs(clamped + 1) <= 1e-3) xs = [(3 * Math.PI) / 2];
+        else if (clamped >= 0) xs = [a, Math.PI - a];
+        else xs = [Math.PI - a, 2 * Math.PI + a];
+
+        xs.forEach((xVal, i) => {
+          const yPlot = state.mutators.abs ? Math.abs(scaleY * clamped) : scaleY * clamped;
+          drawMathPoint(xVal, yPlot, `${radToPiText(xVal)}`, color, 5.5, false, null, i === 0 ? 'right' : 'left');
+        });
+      };
+
+      if (state.steps[2]) {
+        if (isDoubleRoot) {
+          drawRootsForT(p.rootT1, '#fbbf24');
+        } else {
+          drawRootsForT(p.rootT1, '#fbbf24');
+          drawRootsForT(p.rootT2, '#38bdf8');
+        }
+      }
+
+      if (state.steps[3]) {
+        const pos = mathToScreen(2.2, -scaleY - 0.9);
+        drawCanvasBadge(ctx, `t ∈ (0,1) ⟹ 합 π  |  t ∈ (-1,0) ⟹ 합 3π  |  t = ±1 ⟹ 극점(π/2, 3π/2) 1개`, pos.x, pos.y, '#fbbf24');
+      }
+
+      const specialSinRatios = [-1.0, -Math.sqrt(3) / 2, -Math.SQRT2 / 2, -0.5, 0.0, 0.5, Math.SQRT2 / 2, Math.sqrt(3) / 2, 1.0, 2.0];
+      drawMathPoint(axisX, y1, `t₁=${formatExactSurdText(p.rootT1)}`, '#fbbf24', 7.5, true, (mPos) => {
+        state.params.rootT1 = snapToNearest(mPos.y / scaleY, specialSinRatios.slice(0, 9));
+      }, 'right', -8);
+      drawMathPoint(axisX, y2, `t₂=${formatExactSurdText(p.rootT2)}`, '#38bdf8', 7, true, (mPos) => {
+        state.params.rootT2 = snapToNearest(mPos.y / scaleY, specialSinRatios);
+      }, 'right', 14);
+    }
+
+    // --- TYPE 6: Law of Sines & Circumcircle Diameter 2R (Special Radian Angles) ---
+    function renderType6() {
+      const p = state.params;
+      const R = p.radiusR;
+
+      drawMathCircle(0, 0, R, 'rgba(56, 189, 248, 0.65)', [], 2.4);
+      drawMathPoint(0, 0, 'O(외심)', '#38bdf8', 4.5);
+
+      const radA = (p.chordAngleDeg * Math.PI) / 180;
+      const angB = -Math.PI / 2 - radA;
+      const angC = -Math.PI / 2 + radA;
+
+      const Bx = R * Math.cos(angB), By = R * Math.sin(angB);
+      const Cx = R * Math.cos(angC), Cy = R * Math.sin(angC);
+
+      const angA = (p.posADeg * Math.PI) / 180;
+      const Ax = R * Math.cos(angA), Ay = R * Math.sin(angA);
+
+      if (state.steps[2] && Math.abs(p.chordAngleDeg - 90) < 1e-6) {
+        drawMathSegment(Bx, By, Cx, Cy, '#fbbf24', [6, 4], 2.5);
+        const diameterPos = mathToScreen(0, By - 0.7);
+        drawCanvasBadge(ctx, '∠A=90°이면 BC가 지름: A′=C라 보조삼각형은 퇴화', diameterPos.x, diameterPos.y, '#fbbf24');
+      } else if (state.steps[2]) {
+        const Apx = -Bx, Apy = -By;
+        ctx.save();
+        const pAp = mathToScreen(Apx, Apy);
+        const pB = mathToScreen(Bx, By);
+        const pC = mathToScreen(Cx, Cy);
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.14)';
+        ctx.beginPath();
+        ctx.moveTo(pAp.x, pAp.y);
+        ctx.lineTo(pB.x, pB.y);
+        ctx.lineTo(pC.x, pC.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+
+        drawMathSegment(Bx, By, Apx, Apy, '#fbbf24', [6, 4], 2.2);
+        drawMathSegment(Apx, Apy, Cx, Cy, '#fbbf24', [6, 4], 2.0);
+        drawRightAngleSign(Cx, Cy, Apx, Apy, Bx, By, '#fbbf24', 12);
+        drawAngleArcMarker(Apx, Apy, Bx, By, Cx, Cy, '#fbbf24', 20, degToPiText(p.chordAngleDeg));
+        drawMathPoint(Apx, Apy, `A'(지름 끝점, ∠A'CB = π/2)`, '#fbbf24', 6, false, null, 'right');
+      }
+
+      drawMathSegment(Ax, Ay, Bx, By, '#34d399', [], 2.6);
+      drawMathSegment(Bx, By, Cx, Cy, '#fb7185', [], 3.0);
+      drawMathSegment(Cx, Cy, Ax, Ay, '#34d399', [], 2.6);
+      drawAngleArcMarker(Ax, Ay, Bx, By, Cx, Cy, '#34d399', 22, degToPiText(p.chordAngleDeg));
+
+      if (state.mutators.abs) {
+        drawMathSegment(Ax, Ay, Ax, By, 'rgba(192, 132, 252, 0.65)', [4, 4], 1.8);
+        drawRightAngleSign(Ax, By, Ax, Ay, Cx, Cy, '#c084fc', 10);
+      }
+
+      const sideA = Math.hypot(Cx - Bx, Cy - By);
+      if (state.steps[1]) {
+        const midBC = mathToScreen((Bx + Cx) / 2, (By + Cy) / 2 - 0.48);
+        drawCanvasBadge(ctx, `현 BC = a = ${formatExactSurdText(sideA)}`, midBC.x, midBC.y, '#fb7185');
+      }
+
+      if (state.steps[3]) {
+        const fPos = mathToScreen(0, By - 1.15);
+        drawCanvasFraction(ctx, `BC (${formatExactSurdText(sideA)})`, `sin(${degToPiText(p.chordAngleDeg)})`, fPos.x, fPos.y, {
+          prefix: '사인법칙: ',
+          suffix: ` = 2R = ${2 * R} (불변!)`
+        });
+      }
+
+      const allowedPosA = [45, 60, 75, 90, 105, 120, 135];
+      drawMathPoint(Bx, By, 'B', '#34d399', 6, false, null, 'right');
+      drawMathPoint(Cx, Cy, 'C', '#34d399', 6, false, null, 'left');
+      drawMathPoint(Ax, Ay, `A(∠A = ${degToPiText(p.chordAngleDeg)}) [드래그]`, '#fbbf24', 8, true, (mPos) => {
+        let deg = (Math.atan2(mPos.y, mPos.x) * 180) / Math.PI;
+        state.params.posADeg = snapToNearest(deg, allowedPosA);
+      });
+    }
+
+    // --- TYPE 7: Law of Cosines & Inscribed Quadrilateral (Special Radian Angles) ---
+    function renderType7() {
+      const p = state.params;
+      const R = p.circumR || 4.0;
+      drawMathCircle(0, 0, R, 'rgba(56, 189, 248, 0.5)', [], 2.2);
+
+      const degs = [p.angA, p.angB, p.angC ?? 300, p.angD];
+      const pts = degs.map(d => {
+        const r = (d * Math.PI) / 180;
+        return { x: R * Math.cos(r), y: R * Math.sin(r) };
+      });
+
+      const dist = (P, Q) => Math.hypot(P.x - Q.x, P.y - Q.y);
+      const sideLengths = [
+        { name: 'a', val: dist(pts[0], pts[1]) },
+        { name: 'b', val: dist(pts[1], pts[2]) },
+        { name: 'c', val: dist(pts[2], pts[3]) },
+        { name: 'd', val: dist(pts[3], pts[0]) }
+      ];
+      const ac = dist(pts[0], pts[2]);
+      const cosB = (sideLengths[0].val ** 2 + sideLengths[1].val ** 2 - ac ** 2) / (2 * sideLengths[0].val * sideLengths[1].val);
+      const degB = (Math.acos(Math.max(-1, Math.min(1, cosB))) * 180) / Math.PI;
+      const degD = 180 - degB;
+
+      if (state.steps[1]) {
+        ctx.save();
+        const s0 = mathToScreen(pts[0].x, pts[0].y);
+        const s1 = mathToScreen(pts[1].x, pts[1].y);
+        const s2 = mathToScreen(pts[2].x, pts[2].y);
+        const s3 = mathToScreen(pts[3].x, pts[3].y);
+
+        ctx.fillStyle = 'rgba(52, 211, 153, 0.14)';
+        ctx.beginPath();
+        ctx.moveTo(s0.x, s0.y); ctx.lineTo(s1.x, s1.y); ctx.lineTo(s2.x, s2.y); ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.14)';
+        ctx.beginPath();
+        ctx.moveTo(s0.x, s0.y); ctx.lineTo(s2.x, s2.y); ctx.lineTo(s3.x, s3.y); ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+
+        drawMathSegment(pts[0].x, pts[0].y, pts[2].x, pts[2].y, '#fb7185', [6, 4], 2.6);
+      }
+
+      for (let i = 0; i < 4; i++) {
+        const next = (i + 1) % 4;
+        drawMathSegment(pts[i].x, pts[i].y, pts[next].x, pts[next].y, '#34d399', [], 2.6);
+        const mx = (pts[i].x + pts[next].x) / 2;
+        const my = (pts[i].y + pts[next].y) / 2;
+        const sMid = mathToScreen(mx * 1.13, my * 1.13);
+        ctx.save();
+        ctx.font = 'bold 11.5px Pretendard, sans-serif';
+        ctx.fillStyle = '#a7f3d0';
+        ctx.textAlign = 'center';
+        ctx.fillText(`${sideLengths[i].name}=${formatExactSurdText(sideLengths[i].val)}`, sMid.x, sMid.y);
+        ctx.restore();
+      }
+
+      if (state.steps[2]) {
+        const lblB = p.presetIdx === 4 ? 'θ' : degToPiText(degB);
+        const lblD = p.presetIdx === 4 ? 'π-θ' : degToPiText(degD);
+        drawAngleArcMarker(pts[1].x, pts[1].y, pts[0].x, pts[0].y, pts[2].x, pts[2].y, '#34d399', 20, lblB);
+        drawAngleArcMarker(pts[3].x, pts[3].y, pts[2].x, pts[2].y, pts[0].x, pts[0].y, '#fbbf24', 20, lblD);
+      }
+
+      if (state.steps[3]) {
+        const fPos = mathToScreen(0, -R - 0.78);
+        drawCanvasFraction(ctx, '(a²+b²) - (c²+d²)', '2(ab + cd)', fPos.x, fPos.y, {
+          prefix: `cos B = ${formatExactSurdText(cosB)} = `,
+          suffix: '  [cos B + cos D = 0]'
+        });
+      }
+
+      const currentRotation = p.rotationDeg || 0;
+      const angleFromOrigin = mPos => normalizeDegrees((Math.atan2(mPos.y, mPos.x) * 180) / Math.PI);
+      const rotateFromHandle = (mPos, currentDeg) => {
+        const targetDeg = snapToNearest(angleFromOrigin(mPos), TYPE7_ROTATION_SNAPS);
+        rotateType7Quadrilateral(targetDeg - currentDeg);
+      };
+      const setAngleBFromHandle = mPos => {
+        if (p.presetIdx === 4) {
+          rotateFromHandle(mPos, p.angB);
+          return;
+        }
+        const relative = normalizeDegrees(angleFromOrigin(mPos) - currentRotation - 180);
+        setType7SpecialGeometry(snapToNearest(relative, TYPE7_SPECIAL_ANGLES), currentRotation);
+      };
+      const setAngleDFromHandle = mPos => {
+        if (p.presetIdx === 4) {
+          rotateFromHandle(mPos, p.angD);
+          return;
+        }
+        const relative = normalizeDegrees(180 + currentRotation - angleFromOrigin(mPos));
+        setType7SpecialGeometry(snapToNearest(relative, TYPE7_SPECIAL_ANGLES), currentRotation);
+      };
+
+      drawMathPoint(pts[0].x, pts[0].y, 'A [회전 드래그]', '#fbbf24', 7.5, true, mPos => {
+        rotateFromHandle(mPos, p.angA);
+      }, 'left', -10);
+      drawMathPoint(pts[1].x, pts[1].y, `B (∠B=${p.presetIdx === 4 ? 'θ' : degToPiText(degB)}) [특수각]`, '#fbbf24', 7.5, true, setAngleBFromHandle, 'left', -8);
+      drawMathPoint(pts[2].x, pts[2].y, 'C', '#38bdf8', 6, false, null, 'left', 14);
+      drawMathPoint(pts[3].x, pts[3].y, `D (∠D=${p.presetIdx === 4 ? 'π-θ' : degToPiText(degD)}) [특수각]`, '#fbbf24', 7.5, true, setAngleDFromHandle, 'right', 14);
+    }
+
+    // --- TYPE 8: Angle Bisector & Split Triangle (Special Radian Angles) ---
+    function renderType8() {
+      const p = state.params;
+      const c = p.sideC;
+      const b = p.sideB;
+      const radA = (p.angleADeg * Math.PI) / 180;
+      const a = Math.sqrt(b * b + c * c - 2 * b * c * Math.cos(radA));
+
+      const Bx = -a / 2, By = 0;
+      const Cx = a / 2, Cy = 0;
+
+      const cosB = (a * a + c * c - b * b) / (2 * a * c);
+      const sinB = Math.sqrt(Math.max(0, 1 - cosB * cosB));
+      const Ax = Bx + c * cosB;
+      const Ay = c * sinB;
+
+      const m = (a * c) / (b + c);
+      const n = (a * b) / (b + c);
+      const Dx = Bx + m, Dy = 0;
+
+      if (state.steps[1]) {
+        ctx.save();
+        const sA = mathToScreen(Ax, Ay);
+        const sB = mathToScreen(Bx, By);
+        const sC = mathToScreen(Cx, Cy);
+        const sD = mathToScreen(Dx, Dy);
+
+        ctx.fillStyle = 'rgba(52, 211, 153, 0.15)';
+        ctx.beginPath();
+        ctx.moveTo(sA.x, sA.y); ctx.lineTo(sB.x, sB.y); ctx.lineTo(sD.x, sD.y); ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.15)';
+        ctx.beginPath();
+        ctx.moveTo(sA.x, sA.y); ctx.lineTo(sD.x, sD.y); ctx.lineTo(sC.x, sC.y); ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+
+        const mPos = mathToScreen((Bx + Dx) / 2, -0.48);
+        const nPos = mathToScreen((Dx + Cx) / 2, -0.48);
+        drawCanvasBadge(ctx, `m = ${formatExactSurdText(m)}`, mPos.x, mPos.y, '#34d399');
+        drawCanvasBadge(ctx, `n = ${formatExactSurdText(n)}`, nPos.x, nPos.y, '#38bdf8');
+      }
+
+      drawMathSegment(Ax, Ay, Bx, By, '#34d399', [], 2.8);
+      drawMathSegment(Ax, Ay, Cx, Cy, '#38bdf8', [], 2.8);
+      drawMathSegment(Bx, By, Cx, Cy, '#ecfdf5', [], 2.4);
+      drawMathSegment(Ax, Ay, Dx, Dy, '#fbbf24', [], 3.0);
+
+      const halfAText = degToPiText(p.angleADeg / 2);
+      drawAngleArcMarker(Ax, Ay, Bx, By, Dx, Dy, '#fbbf24', 22, halfAText);
+      drawAngleArcMarker(Ax, Ay, Dx, Dy, Cx, Cy, '#fbbf24', 28, halfAText);
+
+      const midAB = mathToScreen((Ax + Bx) / 2 - 0.45, (Ay + By) / 2 + 0.25);
+      const midAC = mathToScreen((Ax + Cx) / 2 + 0.45, (Ay + Cy) / 2 + 0.25);
+      drawCanvasBadge(ctx, `c = ${c}`, midAB.x, midAB.y, '#34d399');
+      drawCanvasBadge(ctx, `b = ${b}`, midAC.x, midAC.y, '#38bdf8');
+
+      if (state.mutators.abs) {
+        drawMathSegment(Ax, Ay, Ax, 0, 'rgba(192, 132, 252, 0.7)', [4, 4], 1.8);
+        drawRightAngleSign(Ax, 0, Ax, Ay, Cx, Cy, '#c084fc', 10);
+      }
+
+      const adLen = Math.hypot(Ax - Dx, Ay - Dy);
+
+      if (state.steps[2]) {
+        drawAngleArcMarker(Dx, Dy, Ax, Ay, Bx, By, '#fb7185', 18, 'α');
+        const dPos = mathToScreen(0, -1.18);
+        drawCanvasBadge(ctx, '인접 보각 불변량: ∠ADB = α, ∠ADC = π-α ⟹ cos(π-α) = -cos α', dPos.x, dPos.y, '#fb7185');
+      }
+
+      if (state.steps[3]) {
+        const topPos = mathToScreen(Ax, Ay + 0.95);
+        drawCanvasFraction(ctx, `2bc·cos(${halfAText})`, `b + c`, topPos.x, topPos.y, {
+          prefix: `AD = √(bc - mn) = `,
+          suffix: ` = ${formatExactSurdText(adLen)}`
+        });
+      }
+
+      const allowedAnglesA = [60, 90, 120];
+      const allowedSidesC = [3, 4, 6];
+      drawMathPoint(Bx, By, `B`, '#34d399', 6, false, null, 'right', 6);
+      drawMathPoint(Cx, Cy, `C`, '#38bdf8', 6, false, null, 'left', 6);
+      drawMathPoint(Dx, Dy, `D`, '#fbbf24', 6.5, false, null, 'center', 18);
+      drawMathPoint(Ax, Ay, `A(∠A=${degToPiText(p.angleADeg)}, AD=${formatExactSurdText(adLen)}) [특수각 스냅]`, '#fbbf24', 8, true, (mPos) => {
+        const curY = Math.max(0.6, mPos.y);
+        const distB = Math.hypot(mPos.x - Bx, curY - By);
+        const distC = Math.hypot(mPos.x - Cx, curY - Cy);
+        const cosAVal = (distB * distB + distC * distC - a * a) / (2 * distB * distC);
+        const newAngA = (Math.acos(Math.max(-0.77, Math.min(0.77, cosAVal))) * 180) / Math.PI;
+        state.params.sideC = snapToNearest(distB, allowedSidesC);
+        state.params.angleADeg = snapToNearest(newAngA, allowedAnglesA);
+      }, 'center', -14);
+    }
+
+    // AP Math Playground Standard Host Interface
+    window.APBoardRelHost = {
+      getState: () => state,
+      selectMode,
+      snapToCondition,
+      triggerTwinProblem
+    };
+
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+
+  <script id="ap-mobile-adapter">
+    (function () {
+      window.addEventListener('orientationchange', function () {
+        setTimeout(resizeCanvas, 180);
+      });
+    })();
+  </script>
+  <script id="ap-touch-adapter">
+    (function () {
+      const c = document.getElementById('chalkCanvas');
+      if (c) {
+        c.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+      }
+    })();
+  </script>
+</body>
+</html>

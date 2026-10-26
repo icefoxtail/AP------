@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>도함수 ↔ 원함수 개형 추론 킬러 랩 (Derivative to Function Master Lab)</title>
+  <!-- Pretendard Webfont -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- KaTeX CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+  <style>
+    * {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    body {
+      background-color: #07130e;
+      color: #f1f5f9;
+      overflow: hidden;
+    }
+    .chalkboard-bg {
+      background: radial-gradient(circle at 50% 45%, #163329 0%, #0d211a 65%, #07140f 100%);
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.82);
+    }
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 3px;
+      line-height: 1.05;
+      font-family: 'Pretendard', monospace;
+      font-weight: 700;
+    }
+    .math-frac > .num {
+      border-bottom: 1.5px solid currentColor;
+      padding: 0 4px 2px 4px;
+      font-size: 0.9em;
+      text-align: center;
+      width: 100%;
+    }
+    .math-frac > .den {
+      padding: 2px 4px 0 4px;
+      font-size: 0.9em;
+      text-align: center;
+      width: 100%;
+    }
+    .katex {
+      font-size: 1.04em !important;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07130e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1d3f32;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2d604d;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #11261e;
+      height: 6px;
+      border-radius: 4px;
+      outline: none;
+      border: 1px solid #234739;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #fbbf24;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.85);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    .mode-tab.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #07130e;
+      font-weight: 800;
+      border-color: #fbbf24;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+    }
+    .step-btn.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(5, 150, 105, 0.32));
+      border-color: #34d399;
+      color: #ecfdf5;
+      box-shadow: 0 0 12px rgba(52, 211, 153, 0.2);
+    }
+    .chalk-text {
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+    }
+    @keyframes subtlePulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5); }
+      50% { box-shadow: 0 0 16px 3px rgba(251, 191, 36, 0.35); }
+    }
+    .snap-btn-glow {
+      animation: subtlePulse 2.4s infinite;
+    }
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col">
+
+  <!-- ===================================================================== -->
+  <!-- 상단 헤더 & 5대 핵심 실험·기출 모드 탭 바 + 다운로드 유틸리티 -->
+  <!-- ===================================================================== -->
+  <header class="bg-[#081510]/95 border-b border-emerald-900/70 px-4 py-2 flex flex-wrap items-center justify-between gap-2 z-20 shrink-0">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-amber-500/20 border border-amber-400/60 flex items-center justify-center text-amber-300 shadow-inner">
+        <i class="fa-solid fa-layer-group text-lg"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-base md:text-lg font-extrabold tracking-tight text-emerald-50 chalk-text">미적분Ⅰ · 도함수 ↔ 원함수 개형 추론 LAB</h1>
+          <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">SIGN CHART ENGINE</span>
+        </div>
+        <p class="text-[11px] text-emerald-400/85 hidden xl:block">실시간 증감표 오버레이 · 단근(극값) vs 중근(변곡점) · 극값 부호와 실근 개수 · 차함수 · ∫f(t)dt 개형</p>
+      </div>
+    </div>
+
+    <!-- 5대 실험·기출 모드 탭 -->
+    <nav class="flex items-center gap-1.5 overflow-x-auto py-1 max-w-full">
+      <button onclick="setMode(1)" id="tab-1" class="mode-tab active text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-arrow-trend-up"></i>
+        <span>1. 삼차 개형 &amp; 증감표</span>
+      </button>
+      <button onclick="setMode(2)" id="tab-2" class="mode-tab text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>2. 사차 개형 조각가</span>
+      </button>
+      <button onclick="setMode(3)" id="tab-3" class="mode-tab text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-hashtag"></i>
+        <span>3. 극값 부호 &amp; 실근 개수</span>
+      </button>
+      <button onclick="setMode(4)" id="tab-4" class="mode-tab text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-code-compare"></i>
+        <span>4. f'-g' 차함수 추론</span>
+      </button>
+      <button onclick="setMode(5)" id="tab-5" class="mode-tab text-xs px-3 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1.5">
+        <i class="fa-solid fa-integral"></i>
+        <span>5. g(x)=∫ₐˣ f(t)dt 추론</span>
+      </button>
+    </nav>
+
+    <!-- 우측 상단: 자체 파일 다운로드 & 칠판 캡처 버튼 -->
+    <div class="flex items-center gap-1.5 shrink-0">
+      <button onclick="downloadSelfHTML()" class="px-2.5 py-1.5 rounded-lg bg-emerald-800/60 hover:bg-emerald-700/70 border border-emerald-500/50 text-emerald-100 text-xs font-bold flex items-center gap-1.5 transition shadow" title="현재 웹앱을 단일 HTML 파일로 즉시 다운로드">
+        <i class="fa-solid fa-file-arrow-down text-amber-300"></i>
+        <span class="hidden sm:inline">HTML 저장</span>
+      </button>
+      <button onclick="captureChalkboard()" class="px-2.5 py-1.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-900/80 border border-emerald-700/60 text-emerald-200 text-xs font-bold flex items-center gap-1.5 transition" title="칠판 판서 화면을 PNG 이미지로 캡처 저장">
+        <i class="fa-solid fa-camera text-sky-300"></i>
+        <span class="hidden sm:inline">판서 캡처</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 메인 워크스페이스 (좌측 칠판 캔버스 + 우측 440px 기출·솔루션·슬라이더 패널) -->
+  <!-- ===================================================================== -->
+  <div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+    <!-- 좌측: 인터랙티브 분필 칠판 캔버스 (상단 원함수 + 중앙 실시간 증감표 + 하단 도함수) -->
+    <main class="flex-1 relative chalkboard-bg overflow-hidden flex items-center justify-center">
+      <canvas id="boardCanvas" class="w-full h-full block cursor-grab active:cursor-grabbing"></canvas>
+
+      <!-- 좌측 상단: 현재 모드 배지 & 드래그 힌트 + 실시간 수식 배지 -->
+      <div class="absolute top-3 left-3 pointer-events-none flex flex-col gap-2 max-w-xs sm:max-w-xl z-10">
+        <div class="bg-[#07140f]/88 backdrop-blur-md border border-emerald-700/50 rounded-xl px-3.5 py-2.5 shadow-lg">
+          <div class="flex items-center justify-between gap-2 mb-1">
+            <div class="flex items-center gap-2 text-amber-300 text-xs font-extrabold">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+              <span id="canvasModeBadge">MODE 1 · 이차 도함수 f'(x)의 부호 변화와 삼차함수 개형 &amp; 증감표</span>
+            </div>
+            <span id="conditionBadge" class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-400/50">
+              서로 다른 두 실근 (극대·극소 활성)
+            </span>
+          </div>
+          <p id="canvasActionHint" class="text-[12px] text-emerald-100/90 leading-relaxed">
+            하단 도함수 칠판의 근을 드래그하거나 프리셋을 눌러 원함수 개형이 어떻게 바뀌는지 관찰하세요!
+          </p>
+        </div>
+
+        <!-- 원함수 및 도함수 실시간 KaTeX 수식 배지 -->
+        <div class="bg-[#07140f]/90 backdrop-blur-md border border-emerald-800/70 rounded-xl px-3.5 py-2 shadow-md flex flex-wrap items-center gap-3 w-fit">
+          <div class="text-xs text-emerald-100 flex items-center gap-1.5">
+            <span class="text-amber-300 font-extrabold" id="labelEqMain">원함수:</span>
+            <span id="eqDisplay" class="text-amber-200 font-bold"></span>
+          </div>
+          <span class="text-emerald-700">|</span>
+          <div class="text-xs text-sky-300 flex items-center gap-1.5">
+            <span class="font-bold" id="labelEqSub">도함수:</span>
+            <span id="derivDisplay" class="font-bold"></span>
+          </div>
+        </div>
+
+        <!-- 도함수 근의 형태 원클릭 프리셋 바 -->
+        <div class="pointer-events-auto flex flex-wrap items-center gap-1.5 bg-[#07140f]/90 backdrop-blur-md border border-emerald-800/60 p-1.5 rounded-xl w-fit shadow">
+          <span class="text-[10px] font-extrabold text-emerald-400 px-1.5">도함수 근 프리셋:</span>
+          <button onclick="applyRootPreset('distinct')" class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-emerald-900/70 hover:bg-amber-500 hover:text-slate-950 text-emerald-100 border border-emerald-600/40 transition">
+            ① 단근 관통 (부호 변화 → 극값)
+          </button>
+          <button onclick="applyRootPreset('double')" class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-emerald-900/70 hover:bg-amber-500 hover:text-slate-950 text-emerald-100 border border-emerald-600/40 transition">
+            ② 중근 접함 (부호 불변 → 변곡점!)
+          </button>
+          <button onclick="applyRootPreset('complex')" class="text-[11px] font-bold px-2.5 py-1 rounded-md bg-emerald-900/70 hover:bg-amber-500 hover:text-slate-950 text-emerald-100 border border-emerald-600/40 transition">
+            ③ 허근/공중부양 (단조증가)
+          </button>
+        </div>
+      </div>
+
+      <!-- 좌측 하단 플로팅 캔버스 툴바 -->
+      <div class="absolute bottom-4 left-4 flex flex-wrap items-center gap-1.5 bg-[#07140f]/92 backdrop-blur-md border border-emerald-800/70 p-1.5 rounded-xl shadow-xl z-10">
+        <button onclick="snapToProblem()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold flex items-center gap-1.5 transition shadow" title="현재 기출 문제 조건으로 즉시 세팅">
+          <i class="fa-solid fa-crosshairs"></i>
+          <span>문제 조건 스냅</span>
+        </button>
+        <button onclick="toggleSignChart()" id="btnSignChart" class="px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 text-xs font-extrabold flex items-center gap-1.5 transition shadow-md" title="칠판 중앙 실시간 증감표(Sign Chart) 표시 토글">
+          <i class="fa-solid fa-table-list"></i>
+          <span id="txtSignChart">실시간 증감표 ON</span>
+        </button>
+        <button onclick="toggleAutoPlay()" id="btnAutoPlay" class="px-2.5 py-1.5 rounded-lg bg-emerald-900/50 hover:bg-emerald-800/60 border border-emerald-600/40 text-emerald-200 text-xs font-bold flex items-center gap-1.5 transition" title="자동 개형 변화 애니메이션">
+          <i class="fa-solid fa-play" id="iconAutoPlay"></i>
+          <span id="txtAutoPlay">자동 실험</span>
+        </button>
+        <div class="h-4 w-[1px] bg-emerald-800/70 mx-0.5"></div>
+        <button onclick="zoomCanvas(1.15)" class="w-8 h-8 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="확대">
+          <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </button>
+        <button onclick="zoomCanvas(0.87)" class="w-8 h-8 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="축소">
+          <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </button>
+        <button onclick="resetView()" class="w-8 h-8 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="화면 원점 초기화">
+          <i class="fa-solid fa-compress-arrows-alt"></i>
+        </button>
+        <button onclick="toggleGrid()" id="btnGrid" class="px-2.5 py-1.5 rounded-lg bg-emerald-900/50 border border-emerald-600/40 text-emerald-200 text-xs font-medium transition" title="격자 표시 켜기/끄기">
+          <i class="fa-solid fa-border-all"></i>
+        </button>
+      </div>
+
+      <!-- 우측 하단 칠판 지우개 & 분필 소품 -->
+      <div class="absolute bottom-3 right-4 pointer-events-none hidden md:flex items-end gap-2 opacity-75">
+        <div class="w-10 h-2 bg-white rounded-sm shadow"></div>
+        <div class="w-10 h-2 bg-amber-300 rounded-sm shadow"></div>
+        <div class="w-10 h-2 bg-pink-400 rounded-sm shadow"></div>
+        <div class="w-16 h-5 bg-amber-900/90 border-t-4 border-slate-300 rounded-sm shadow-lg"></div>
+      </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- 우측: 실전 기출 문제 & 10초 컷 솔루션 허브 (440px) -->
+    <!-- =================================================================== -->
+    <aside class="w-full lg:w-[440px] bg-[#081611] border-t lg:border-t-0 lg:border-l border-emerald-900/80 flex flex-col h-[52vh] lg:h-full shrink-0 z-10">
+      <div class="p-4 overflow-y-auto flex-1 space-y-4">
+
+        <!-- 1. [Exam View] 실전 기출 문제 카드 & 원클릭 스냅 버튼 -->
+        <section class="bg-gradient-to-br from-[#112a21] to-[#0b1c16] border border-amber-400/50 rounded-xl p-3.5 shadow-lg relative overflow-hidden">
+          <div class="flex items-center justify-between mb-2">
+            <span id="examTag" class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40 flex items-center gap-1.5">
+              <i class="fa-solid fa-award"></i> 수능·평가원 개형 추론 킬러
+            </span>
+            <span id="examTarget" class="text-[11px] font-mono text-emerald-300 font-bold">목표 시간: 5초</span>
+          </div>
+
+          <div id="examQuestion" class="text-xs md:text-[13px] text-emerald-50 leading-loose bg-[#07130e]/85 p-3 rounded-lg border border-emerald-800/70 mb-3 font-medium">
+            <!-- JS 렌더링 -->
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
+            <div class="bg-[#07130e] px-3 py-2 rounded-lg border border-emerald-800/60 flex items-center gap-2">
+              <span class="text-[11px] text-emerald-400 font-bold">실전 정답:</span>
+              <span id="examAnswerBadge" class="text-xs font-extrabold text-amber-300"></span>
+            </div>
+
+            <button onclick="snapToProblem()" class="snap-btn-glow px-3.5 py-2 rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-extrabold text-xs flex items-center justify-center gap-1.5 transition shadow-md shrink-0">
+              <i class="fa-solid fa-bullseye"></i>
+              <span>🎯 문제 조건으로 원클릭 스냅</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 2. 단계별 칠판 보조선 언락 (Step 1 ~ 3) -->
+        <section class="bg-[#0d211a] border border-emerald-800/70 rounded-xl p-3.5">
+          <div class="flex items-center justify-between mb-2.5">
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-layer-group text-amber-400"></i>
+              <span>단계별 칠판 보조선 언락 (Steps)</span>
+            </h2>
+            <button onclick="unlockAllSteps()" class="text-[11px] text-amber-300 hover:underline font-semibold">전체 표시</button>
+          </div>
+
+          <div class="space-y-1.5">
+            <button onclick="toggleStep(1)" id="stepBtn1" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">1</span>
+                <span id="stepLabel1" class="text-xs font-semibold">도함수 영점(f'=0) ↔ 원함수 극대·극소·변곡점 수직 동기화선</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon1"></i>
+            </button>
+
+            <button onclick="toggleStep(2)" id="stepBtn2" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">2</span>
+                <span id="stepLabel2" class="text-xs font-semibold">도함수 부호(+ / -) 영역 셰이딩 &amp; 정적분 넓이 = 함숫값 변화량</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon2"></i>
+            </button>
+
+            <button onclick="toggleStep(3)" id="stepBtn3" class="step-btn active w-full text-left px-3 py-2 rounded-lg border border-emerald-800/80 bg-emerald-950/50 transition flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-400 text-emerald-200 text-[11px] font-bold flex items-center justify-center shrink-0">3</span>
+                <span id="stepLabel3" class="text-xs font-semibold">실시간 증감표 바 (↗ 극대 ↘ 극소 ↗) 및 핵심 공식 판서</span>
+              </div>
+              <i class="fa-solid fa-check text-emerald-400 text-xs" id="stepIcon3"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- 3. 2대 비교 아코디언 -->
+        <section class="space-y-2.5">
+          <!-- 아코디언 1 -->
+          <div class="border border-rose-500/40 rounded-xl bg-[#151318] overflow-hidden">
+            <button onclick="toggleAccordion('textbook')" class="w-full px-3.5 py-2.5 flex items-center justify-between text-left bg-rose-950/40 hover:bg-rose-950/60 transition">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/40 text-[10px] font-extrabold">3분 소요</span>
+                <span class="text-xs font-extrabold text-rose-100">교과서식 정석 풀이 (수동 증감표 작성 &amp; 부정적분 계산)</span>
+              </div>
+              <i id="accIcon-textbook" class="fa-solid fa-chevron-down text-rose-300 text-xs transition-transform"></i>
+            </button>
+            <div id="accBody-textbook" class="hidden p-3.5 text-xs space-y-2.5 border-t border-rose-500/20">
+              <div id="textbookSteps" class="text-[11.5px] text-slate-200 leading-loose space-y-2 bg-black/40 p-3 rounded-lg border border-rose-900/40">
+                <!-- JS 렌더링 -->
+              </div>
+              <div id="textbookWarning" class="p-2.5 rounded-lg bg-rose-500/15 border border-rose-500/40 text-rose-200 text-[11.5px] font-semibold leading-snug">
+                <!-- JS 렌더링 -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 아코디언 2 -->
+          <div class="border border-amber-400/60 rounded-xl bg-[#11241b] overflow-hidden shadow-lg">
+            <button onclick="toggleAccordion('shortcut')" class="w-full px-3.5 py-2.5 flex items-center justify-between text-left bg-amber-500/15 hover:bg-amber-500/25 transition">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-extrabold">10초 컷</span>
+                <span class="text-xs font-extrabold text-amber-300">10초 컷 실전 개형 직관 비기 (일타 강사 판서)</span>
+              </div>
+              <i id="accIcon-shortcut" class="fa-solid fa-chevron-up text-amber-300 text-xs transition-transform"></i>
+            </button>
+            <div id="accBody-shortcut" class="p-3.5 text-xs space-y-2.5 border-t border-amber-400/30">
+              <div id="shortcutSteps" class="text-emerald-50 leading-loose space-y-1.5 bg-[#07130e]/90 p-3 rounded-lg border border-emerald-800/80 font-medium">
+                <!-- JS 렌더링 -->
+              </div>
+              <div id="shortcutHighlight" class="p-2.5 rounded-lg bg-amber-400/20 border border-amber-400/50 text-amber-200 text-[12px] font-extrabold leading-snug shadow-inner">
+                <!-- JS 렌더링 -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. 실시간 불변성 스트레스 테스트 모니터 & 슬라이더 -->
+        <section class="bg-[#0d211a] border border-emerald-800/70 rounded-xl p-3.5 space-y-3">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-gauge-high text-amber-400"></i>
+              <span>개형 추론 라이브 모니터</span>
+            </h2>
+            <span id="monitorStatusBadge" class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-600/50">상하 동기화 활성</span>
+          </div>
+
+          <div id="invalidConditionAlert" class="hidden p-2.5 rounded-lg bg-rose-950/90 border border-rose-500/70 text-rose-200 text-[11.5px] font-bold leading-snug">
+            <i class="fa-solid fa-triangle-exclamation text-amber-400 mr-1"></i>
+            <span id="invalidAlertText">도함수의 부호가 바뀌지 않는 중근에서는 극값을 갖지 않습니다!</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel1" class="text-[10px] text-emerald-400">도함수 부호 변화</div>
+              <div id="statVal1" class="text-xs font-bold text-amber-300 mt-0.5">+ → 0 → - → 0 → +</div>
+            </div>
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel2" class="text-[10px] text-pink-300">극댓값 / 극솟값</div>
+              <div id="statVal2" class="text-xs font-bold text-pink-300 mt-0.5">극대=2.0 | 극소=-2.0</div>
+            </div>
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel3" class="text-[10px] text-sky-300">극값 곱 f(α)·f(β) / 넓이</div>
+              <div id="statVal3" class="text-xs font-bold text-sky-300 mt-0.5">곱 = -4.00 (&lt; 0)</div>
+            </div>
+            <div class="bg-[#07130e] p-2.5 rounded-lg border border-emerald-900/80">
+              <div id="statLabel4" class="text-[10px] text-purple-300">방정식 실근 / 극값 개수</div>
+              <div id="statVal4" class="text-xs font-bold text-purple-300 mt-0.5">실근 3개 | 극값 2개</div>
+            </div>
+          </div>
+
+          <!-- 파라미터 수동 조작 슬라이더 -->
+          <div class="pt-2 border-t border-emerald-800/60 space-y-2.5">
+            <!-- 슬라이더 1: 판별 파라미터 δ 또는 내분비 λ -->
+            <div id="sliderBoxParam1">
+              <div class="flex justify-between text-[11px] mb-1">
+                <span class="text-emerald-200" id="labelParam1">도함수 근 간격 파라미터 <strong class="text-amber-300">δ (δ=0 중근 접함)</strong></span>
+                <span id="valParam1" class="font-mono font-bold text-amber-300">δ = 1.00</span>
+              </div>
+              <input type="range" id="sliderParam1" min="-0.6" max="2.0" step="0.05" value="1.0" class="w-full" oninput="onParam1Slider()" />
+            </div>
+
+            <!-- 슬라이더 2: 적분상수 C / 직선 높이 k / 정적분 아래끝 a -->
+            <div id="sliderBoxParam2">
+              <div class="flex justify-between text-[11px] mb-1">
+                <span class="text-emerald-200" id="labelParam2">적분상수(상하 이동) <strong class="text-sky-300">C</strong> (극값 부호 조절)</span>
+                <span id="valParam2" class="font-mono font-bold text-sky-300">C = 0.00</span>
+              </div>
+              <input type="range" id="sliderParam2" min="-3.5" max="3.5" step="0.1" value="0.0" class="w-full" oninput="onParam2Slider()" />
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </aside>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 인터랙티브 미적분Ⅰ 도함수 ↔ 원함수 개형 추론 엔진 스크립트 -->
+  <!-- ===================================================================== -->
+  <script>
+    // -------------------------------------------------------------------------
+    // 0. KaTeX 및 파일 저장 유틸리티
+    // -------------------------------------------------------------------------
+    function tex(latexStr) {
+      if (window.katex) {
+        return katex.renderToString(latexStr, { throwOnError: false, displayMode: false });
+      }
+      return latexStr;
+    }
+
+    function downloadSelfHTML() {
+      const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '미적분1_도함수와원함수_개형추론_LAB.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function captureChalkboard() {
+      const canvasEl = document.getElementById('boardCanvas');
+      const dataUrl = canvasEl.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `도함수와원함수_칠판판서_Mode${state.mode}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    // -------------------------------------------------------------------------
+    // 1. 전역 상태 관리 (State)
+    // -------------------------------------------------------------------------
+    const state = {
+      mode: 1,                  // 1: 이차f'→삼차f, 2: 삼차f'→사차f, 3: 극값부호&실근개수, 4: f'-g' 차함수, 5: g(x)=∫_a^x f(t)dt
+      param1: 1.0,              // Mode 1,3,4,5: δ (극값 간격 제곱), Mode 2: λ (가운데 근 내분비 0~1)
+      param2: 0.0,              // Mode 1,2,3: 적분상수 C(수직이동), Mode 4: g'(x)=k 높이, Mode 5: 아래끝 a
+      showSignChart: true,      // 중앙 실시간 증감표 표시 여부
+      steps: { 1: true, 2: true, 3: true },
+      scale: 46,
+      offsetX: -35,
+      offsetY: 0,
+      showGrid: true,
+      autoPlay: false,
+      animDir: -1,
+      userZoomed: false,
+      isDragging: false,
+      dragType: null,           // 'ROOT', 'SHIFT', 'PAN'
+      lastMouse: { x: 0, y: 0 },
+      snapAnim: {
+        active: false,
+        startP1: 1.0, startP2: 0.0,
+        targetP1: 1.0, targetP2: 0.0,
+        progress: 0
+      }
+    };
+
+    // -------------------------------------------------------------------------
+    // 2. 모드별 원함수(상단) 및 도함수(하단) 수학 모델
+    // -------------------------------------------------------------------------
+    function evalTopFunc(x) {
+      if (state.mode === 1 || state.mode === 3) {
+        // f(x) = (x - 1)^3 - 3*δ*(x - 1) + C
+        const u = x - 1.0;
+        return u * u * u - 3 * state.param1 * u + state.param2;
+      } else if (state.mode === 2) {
+        // 사차함수: α = -1, β = 3 (L=4), γ = -1 + 4*λ
+        const u = x - (-1.0);
+        const L = 4.0;
+        const c = Math.max(0, Math.min(1, state.param1)) * L;
+        return 0.2 * (Math.pow(u, 4) - (4 / 3) * (L + c) * Math.pow(u, 3) + 2 * c * L * u * u) + state.param2 - 1.5;
+      } else if (state.mode === 4) {
+        // 차함수 h(x) = f(x) - g(x), 여기서 f'(x) = 3(x-1)^2 - 3, g'(x) = k (param2)
+        // 즉 h'(x) = 3(x-1)^2 - (3 + k) => h(x) = (x-1)^3 - (3 + k)(x-1)
+        const u = x - 1.0;
+        const effDelta = 1.0 + state.param2 / 3.0;
+        return u * u * u - 3 * effDelta * u;
+      } else if (state.mode === 5) {
+        // 정적분으로 정의된 함수 g(x) = ∫_a^x f(t) dt
+        // 피적분함수(하단) f(t) = 3(t-1)^2 - 3*δ
+        // 원시함수 F(x) = (x-1)^3 - 3*δ*(x-1) 이므로 g(x) = F(x) - F(a)
+        const dlt = state.param1;
+        const a = state.param2;
+        const Fx = Math.pow(x - 1, 3) - 3 * dlt * (x - 1);
+        const Fa = Math.pow(a - 1, 3) - 3 * dlt * (a - 1);
+        return Fx - Fa;
+      }
+      return 0;
+    }
+
+    function evalBottomFunc(x) {
+      if (state.mode === 1 || state.mode === 3 || state.mode === 5) {
+        // f'(x) = 3[(x - 1)^2 - δ]
+        const u = x - 1.0;
+        return 3 * (u * u - state.param1);
+      } else if (state.mode === 2) {
+        // 삼차 도함수 f'(x) = 0.8 (x + 1)(x - γ)(x - 3)
+        const lam = Math.max(0, Math.min(1, state.param1));
+        const gamma = -1.0 + 4.0 * lam;
+        return 0.8 * (x + 1.0) * (x - gamma) * (x - 3.0);
+      } else if (state.mode === 4) {
+        // 하단 기본 곡선 f'(x) = 3(x-1)^2 - 3 (여기에 직선 y = g'(x) = k 가 겹쳐 그려짐)
+        const u = x - 1.0;
+        return 3 * (u * u - 1.0);
+      }
+      return 0;
+    }
+
+    // 삼차방정식 실근 솔버 (Mode 3 실근 개수 판정용)
+    function solveCubicRoots(c3, c2, c1, c0) {
+      const A = c2 / c3;
+      const B = c1 / c3;
+      const C = c0 / c3;
+      const p = B - (A * A) / 3;
+      const q = (2 * A * A * A) / 27 - (A * B) / 3 + C;
+      const disc = (q * q) / 4 + (p * p * p) / 27;
+      const shift = -A / 3;
+      const roots = [];
+
+      if (Math.abs(disc) < 1e-4) {
+        if (Math.abs(q) < 1e-5) roots.push(shift);
+        else {
+          const u1 = Math.cbrt(-q / 2);
+          roots.push(2 * u1 + shift, -u1 + shift);
+        }
+      } else if (disc > 0) {
+        const sqrtD = Math.sqrt(disc);
+        roots.push(Math.cbrt(-q / 2 + sqrtD) + Math.cbrt(-q / 2 - sqrtD) + shift);
+      } else {
+        const r = Math.sqrt(Math.max(0, -p / 3));
+        const phi = Math.acos(Math.max(-1, Math.min(1, -q / (2 * r * r * r))));
+        roots.push(
+          2 * r * Math.cos(phi / 3) + shift,
+          2 * r * Math.cos((phi + 2 * Math.PI) / 3) + shift,
+          2 * r * Math.cos((phi + 4 * Math.PI) / 3) + shift
+        );
+      }
+      return roots.sort((x, y) => x - y);
+    }
+
+    // -------------------------------------------------------------------------
+    // 3. 5대 실전 기출 문제 & 3분 정석 vs 10초 컷 솔루션 데이터베이스
+    // -------------------------------------------------------------------------
+    const examData = {
+      1: {
+        badge: "MODE 1 · 이차 도함수 f'(x)의 근(단근 vs 중근)과 삼차 원함수 개형",
+        hint: "좌측 상단 프리셋에서 <span class='text-amber-300 font-bold'>① 단근 관통</span>과 <span class='text-pink-300 font-bold'>② 중근 접함</span>을 비교해 보세요! 도함수가 0이어도 부호가 바뀌지 않으면 극값이 아닌 변곡점이 됩니다.",
+        tag: "미적분Ⅰ 개형 추론 제1원칙",
+        targetTime: "목표 시간: 3초",
+        question: () => `삼차함수 ${tex('f(x)')}의 도함수 ${tex("y = f'(x)")}가 ${tex("f'(x) = 3x(x - 2)")} 일 때와 ${tex("f'(x) = 3(x - 1)^2")} 일 때, 원함수 ${tex('f(x)')}가 극값을 갖는지 여부를 판별하고 극댓값과 극솟값의 차를 구하시오.`,
+        answerBadge: () => `단근일 때 극값 차 ${tex('= 4')} / 중근일 때 극값 없음`,
+        snap: { p1: 1.0, p2: 0.0 },
+        steps: [
+          "하단 도함수 영점(f'=0) ↔ 상단 원함수 극대·극소·변곡점 수직 동기화선",
+          "도함수 부호(+ / -) 영역 컬러 셰이딩 및 정적분 넓이 표시",
+          "칠판 중앙 실시간 증감표 바 (f' 부호 → f 증가↗ · 감소↘) 오버레이"
+        ],
+        textbook: () => ({
+          steps: `① ${tex("f'(x) = 3x(x - 2) = 0")} 에서 ${tex('x = 0, 2')} 구하기<br/>
+② 종이에 5칸짜리 증감표 표를 직접 그리고 각 구간에 숫자를 대입해 ${tex('+, -, +')} 부호 기입<br/>
+③ 부정적분 ${tex('f(x) = x^3 - 3x^2 + C')} 를 구한 뒤 ${tex('f(0) - f(2) = 4')} 계산...`,
+          warning: "⚠️ 시험장에서 매번 5칸짜리 증감표를 손으로 그리고 있으면 시간이 절대 부족합니다! 도함수 그래프의 부호(+/-)를 보고 바로 위아래로 내리꽂아 개형을 그려야 합니다."
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[제1원칙]</strong> 도함수 ${tex("f'(x)")}가 ${tex('x')}축을 <strong>관통(단근, 부호 변화)</strong>할 때만 극값 생성!<br/>
+② 도함수가 ${tex('x')}축에 <strong>접할 때(중근, 부호 ${tex('+ \\to 0 \\to +')})</strong>는 극값이 아니라 <strong class="text-purple-300">기울기 0인 변곡점(3중근 뚫접)</strong>!<br/>
+③ ${tex("f'(x) = 3x(x-2)")} 와 ${tex('x')}축 사이의 넓이 <strong class="text-sky-300">${tex('S = \\dfrac{3}{6}(2-0)^3 = 4')}</strong> 가 곧 극댓값과 극솟값의 차!`,
+          highlight: "💡 증감표를 그리지 마세요! 도함수의 영점에서 수직선을 내리고 【 관통 = 극값, 접함 = 변곡점 】으로 3초 만에 개형을 그리세요!"
+        })
+      },
+
+      2: {
+        badge: "MODE 2 · 삼차 도함수 f'(x)의 근 조립과 사차함수 4대 개형 조각가",
+        hint: "하단 삼차 도함수의 가운데 근 <span class='text-pink-300 font-bold'>γ</span>를 마우스로 드래그해 왼쪽 근 <span class='text-amber-300 font-bold'>α=-1</span>에 포개보세요! 중근이 되는 순간 사차함수의 극대가 사라지고 <span class='text-purple-300 font-bold'>3:1 변곡점 개형</span>으로 바뀝니다!",
+        tag: "수능 22번 사차함수 개형 결정 핵심",
+        targetTime: "목표 시간: 5초",
+        question: () => `사차함수 ${tex('f(x)')}의 도함수 ${tex("f'(x) = a(x+1)(x-\\gamma)(x-3) \\; (a>0)")} 에 대하여, 함수 ${tex('f(x)')}가 극댓값을 갖지 않도록 하는 상수 ${tex('\\gamma \\; (-1 \\le \\gamma \\le 3)')}의 값과 그때의 극소점의 ${tex('x')}좌표를 구하시오.`,
+        answerBadge: () => `${tex('\\gamma = -1')} (극소 ${tex('x=3')}) 또는 ${tex('\\gamma = 3')} (극소 ${tex('x=-1')})`,
+        snap: { p1: 0.0, p2: 0.0 },
+        steps: [
+          "하단 삼차 도함수 세 실근(α, γ, β) ↔ 상단 사차 원함수 특징점 수직 동기화선",
+          "도함수 부호(- / + / - / +) 변화 및 중근 시 부호 불변(- / 0 / - / +) 시각화",
+          "실시간 사차함수 증감표 바 (↘ 변곡 ↘ 극소 ↗) 오버레이"
+        ],
+        textbook: () => ({
+          steps: `① 사차함수(${tex('a > 0')})가 극댓값을 가지려면 도함수 ${tex("f'(x) = 0")} 이 서로 다른 세 실근을 가져야 함<br/>
+② 따라서 극댓값을 갖지 않으려면 도함수 ${tex("f'(x) = 0")} 이 중근 또는 삼중근, 허근을 가져야 함<br/>
+③ ${tex('\\gamma = -1')} 일 때와 ${tex('\\gamma = 3')} 일 때 각각 증감표를 작성하여 부호 변화 조사...`,
+          warning: "⚠️ 사차함수가 극댓값을 갖지 않을 조건(도함수 중근/허근)은 수능에서 가장 많이 나오는 조건입니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 최고차항이 양수인 사차함수가 <strong>극댓값을 갖지 않으려면</strong> 삼차 도함수 ${tex("f'(x)")}의 부호가 ${tex('(+) \\to (-)')}로 바뀌는 구간이 없어야 합니다!<br/>
+② 따라서 가운데 근 ${tex('\\gamma')}가 양 끝 근에 합쳐져 <strong>중근(${tex('\\gamma = -1')} 또는 ${tex('\\gamma = 3')})</strong>이 되어야 함!<br/>
+③ ${tex('\\gamma = -1')} 이면 ${tex('x = -1')} 은 <strong>부호가 안 바뀌는 변곡접점</strong>이 되고, 부호가 ${tex('(-)\\to(+)')}로 바뀌는 <strong class="text-emerald-300">${tex('x = 3')} 만 유일한 극소점</strong>!`,
+          highlight: "💡 『사차함수가 극값을 1개만 갖는다 ⇔ 삼차 도함수 f'(x)가 x축에 접하거나(중근) 실근이 1개뿐이다!』"
+        })
+      },
+
+      3: {
+        badge: "MODE 3 · 극댓값·극솟값의 부호 곱 f(α)·f(β) 과 방정식 실근의 개수",
+        hint: "우측 슬라이더로 <span class='text-sky-300 font-bold'>적분상수 C(상하 평행이동)</span>를 위아래로 조절해 보세요! 극댓값과 극솟값의 부호가 반대(<span class='text-amber-300 font-bold'>f(α)·f(β) &lt; 0</span>)일 때만 실근이 3개가 됩니다.",
+        tag: "수능·평가원 방정식과 미분 필수 유형",
+        targetTime: "목표 시간: 5초",
+        question: () => `삼차방정식 ${tex('x^3 - 3x^2 + C = 0')} 이 서로 다른 세 실근을 갖도록 하는 상수 ${tex('C')}의 값의 범위와, 중근과 다른 한 실근(총 2개의 실근)을 갖도록 하는 ${tex('C')}의 값을 구하시오.`,
+        answerBadge: () => `세 실근: ${tex('0 < C < 4')} / 두 실근: ${tex('C = 0, \\; 4')}`,
+        // f(x) = (x-1)^3 - 3(x-1) + param2 = x^3 - 3x^2 + 2 + param2. C = 2 + param2.
+        // param2 = 0 이면 C = 2 (극대 2, 극소 -2 -> 세 실근!)
+        snap: { p1: 1.0, p2: 0.0 },
+        steps: [
+          "극대점 A(0, f(0)) 및 극소점 B(2, f(2))에서 x축까지의 부호 거리 표시",
+          "방정식 f(x) = 0 의 실근(x축과의 교점) 실시간 추적 하이라이트",
+          "극값 부호 곱 판정식 [ f(극대) · f(극소) < 0 ⇔ 서로 다른 세 실근 ] 판서"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('f(x) = x^3 - 3x^2 + C')} 로 두고 미분: ${tex("f'(x) = 3x(x - 2) = 0")}<br/>
+② 극댓값 ${tex('f(0) = C')}, 극솟값 ${tex('f(2) = -4 + C')} 계산<br/>
+③ 서로 다른 세 실근을 가질 조건 ${tex('f(0)f(2) < 0')} 부등식 풀이:<br/>
+&nbsp;&nbsp;${tex('C(C - 4) < 0 \\implies 0 < C < 4')}<br/>
+④ 중근을 가질 조건 ${tex('f(0)f(2) = 0 \\implies C = 0')} 또는 ${tex('C = 4')}...`,
+          warning: "⚠️ 상수 C를 넘겨 f(x) = -C 꼴로 해석하거나 도함수 넓이 Δy = 4 를 이용하면 부등식을 세울 필요도 없이 3초 만에 풀립니다!"
+        }),
+        shortcut: () => ({
+          steps: `① 도함수 넓이(= 극댓값과 극솟값의 높이 차)가 <strong class="text-sky-300">${tex('\\Delta y = 4')}</strong> 이고, ${tex('C = 0')} 일 때 ${tex('x = 0')} 에서 ${tex('x')}축에 접합니다(극댓값 0, 극솟값 -4)!<br/>
+② 따라서 그래프를 위로 ${tex('0')}보다 크고 높이차 ${tex('4')}보다 작게 올릴 때만 ${tex('x')}축이 극대와 극소 사이를 관통!<br/>
+③ 즉 계산 없이 즉시 <strong class="text-amber-300">세 실근: ${tex('0 < C < 4')}</strong>, <strong class="text-pink-300">중근(접함): ${tex('C = 0, \\; 4')}</strong>!`,
+          highlight: "💡 삼차방정식이 세 실근을 가질 조건은 무조건 【 극댓값 × 극솟값 < 0 】 또는 【 극값 높이차 Δy = 4|a|h³ 사이 통과 】로 끝내세요!"
+        })
+      },
+
+      4: {
+        badge: "MODE 4 · 두 도함수 f'(x)와 g'(x)의 교점 → 차함수 h(x)=f(x)-g(x) 개형",
+        hint: "하단 도함수 칠판의 보라색 수평선 <span class='text-purple-300 font-bold'>y = g'(x) = k</span>를 위아래로 드래그해 보세요! <span class='text-amber-300 font-bold'>f'(x)와 g'(x)가 접할 때(k=-3)</span> 상단 차함수 h(x)가 변곡점 3중근이 됩니다!",
+        tag: "평가원 14번·20번 차함수 개형 추론 킬러",
+        targetTime: "목표 시간: 5초",
+        question: () => `삼차함수 ${tex('f(x)')}의 도함수 ${tex("f'(x) = 3(x-1)^2 - 3")} 과 일차함수 ${tex('g(x)')}의 도함수 ${tex("g'(x) = k")} 의 그래프가 오직 한 점에서 만나도록(접하도록) 하는 상수 ${tex('k')}의 값과, 그때 함수 ${tex('h(x) = f(x) - g(x)')} 의 극값의 개수를 구하시오.`,
+        answerBadge: () => `${tex('k = -3')}, 차함수 ${tex('h(x)')}의 극값은 ${tex('0')}개 (단조증가)`,
+        snap: { p1: 1.0, p2: -3.0 },
+        steps: [
+          "하단 f'(x) 포물선과 직선 g'(x) = k 의 교점 ↔ 상단 차함수 h(x) 수직 동기화선",
+          "차함수의 도함수 h'(x) = f'(x) - g'(x) 의 부호(+ / -) 영역 표시",
+          "교차(관통) = 차함수 극값 vs 접함(k=-3) = 차함수 변곡점 판서"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('h(x) = f(x) - g(x)')} 로 두면 ${tex("h'(x) = f'(x) - g'(x) = 3(x-1)^2 - 3 - k")}<br/>
+② 두 도함수의 그래프가 한 점에서 접하려면 판별식 ${tex('D = 0')} 이어야 하므로 ${tex('-3 - k = 0 \\implies k = -3')}<br/>
+③ 이때 ${tex("h'(x) = 3(x-1)^2 \\ge 0")} 이므로 모든 실수에서 증가하여 극값을 갖지 않음...`,
+          warning: "⚠️ 문제에 f'(x)와 g'(x)가 따로 그려져 있을 때 식을 구하려 하지 말고, g'(x)를 새로운 x축처럼 생각하여 부호 변화를 읽어야 합니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[차함수 개형 추론 비기]</strong> 하단에서 직선 ${tex("y = g'(x)")} 를 <strong class="text-purple-300">새로운 기준축(가짜 x축)</strong>으로 봅니다!<br/>
+② ${tex("f'(x)")}가 ${tex("g'(x)")}보다 위에 있으면 ${tex("h'(x) > 0")} (증가↗), 아래에 있으면 ${tex("h'(x) < 0")} (감소↘)!<br/>
+③ 꼭짓점 높이 <strong class="text-amber-300">${tex('k = -3')}</strong> 에서 접하면 부호가 ${tex('(+) \\to 0 \\to (+)')} 로 바뀌지 않으므로 상단 차함수 ${tex('h(x)')}는 <strong class="text-emerald-300">극값이 0개인 3중근 개형</strong>!`,
+          highlight: "💡 두 도함수 f'(x), g'(x)가 함께 나오면 무조건 【 g'(x)를 가짜 x축으로 보고 관통(극값) vs 접함(변곡점) 】으로 차함수를 그리세요!"
+        })
+      },
+
+      5: {
+        badge: "MODE 5 · 정적분으로 정의된 함수 g(x) = ∫ₐˣ f(t)dt 개형 추론",
+        hint: "하단 그래프가 곧 도함수 <span class='text-sky-300 font-bold'>g'(x) = f(x)</span>입니다! 우측 슬라이더로 <span class='text-amber-300 font-bold'>적분 아래끝 a</span>를 바꾸면 <span class='text-pink-300 font-bold'>g(a) = 0</span> 조건에 의해 상단 함수 g(x)가 x축과 만나는 점이 바뀝니다!",
+        tag: "수능 15번·22번 정적분 함수 최고난도 킬러",
+        targetTime: "목표 시간: 5초",
+        question: () => `이차함수 ${tex('f(x) = 3x(x - 2)')} 에 대하여 함수 ${tex('g(x) = \\displaystyle\\int_{a}^{x} f(t)\\,dt')} 가 극솟값 ${tex('0')}을 갖도록(즉 ${tex('x')}축에 극소점이 접하도록) 하는 모든 상수 ${tex('a')}의 값을 구하시오.`,
+        answerBadge: () => `${tex('a = 2')} (극소점) 또는 ${tex('a = -1')} (1:1:1 비율 교점)`,
+        // g'(x) = f(x) = 3x(x-2) 이므로 극대는 x=0, 극소는 x=2.
+        // 극솟값 g(2) = 0 이 되려면 g(a) = 0 에서 a = 2 이거나, 삼차함수 1:1:1 비율에 의해 다시 만나는 교점 a = -1!
+        snap: { p1: 1.0, p2: -1.0 },
+        steps: [
+          "하단 피적분함수 f(x) = g'(x) 의 영점(x=0, 2) ↔ 상단 g(x) 극대·극소 수직 동기화",
+          "아래끝 x = a 에서 함숫값 g(a) = 0 (상단 그래프의 x절편 고정핀) 표시",
+          "삼차함수 비율관계(1:1:1)로 g(2) = 0 이 되는 또 다른 아래끝 a = -1 도출"
+        ],
+        textbook: () => ({
+          steps: `① ${tex('g(x) = \\displaystyle\\int_{a}^{x} (3t^2 - 6t)\\,dt = \\left[ t^3 - 3t^2 \\right]_{a}^{x} = x^3 - 3x^2 - (a^3 - 3a^2)')}<br/>
+② ${tex("g'(x) = 3x(x - 2) = 0")} 에서 ${tex('x = 2')} 일 때 극솟값을 가짐<br/>
+③ 극솟값 ${tex('g(2) = 0')} 조건 대입:<br/>
+&nbsp;&nbsp;${tex('8 - 12 - (a^3 - 3a^2) = 0 \\implies a^3 - 3a^2 + 4 = 0')}<br/>
+④ 조립제법으로 인수분해: ${tex('(a + 1)(a - 2)^2 = 0 \\implies a = 2, \\; -1')}...`,
+          warning: "⚠️ 정적분으로 정의된 함수 g(x) = ∫_a^x f(t)dt 가 나오면 적분 계산을 하지 말고 【 ① g(a)=0 (x축 핀 꽂기), ② g'(x)=f(x) (개형 그리기) 】로 풀어야 합니다!"
+        }),
+        shortcut: () => ({
+          steps: `① <strong>[정적분 함수 2대 철칙]</strong> <strong class="text-pink-300">① ${tex('g(a) = 0')} (${tex('x=a')}에서 ${tex('x')}축 통과)</strong>, <strong class="text-sky-300">② ${tex("g'(x) = f(x)")}</strong>!<br/>
+② ${tex("g'(x) = 3x(x-2)")} 이므로 상단 ${tex('g(x)')}는 극대 ${tex('x=0')}, 변곡 ${tex('x=1')}, 극소 ${tex('x=2')}인 삼차함수!<br/>
+③ 극솟값 ${tex('g(2) = 0')} 이란 말은 <strong>극소점 ${tex('x=2')}에서 ${tex('x')}축에 접한다</strong>는 뜻이므로, <strong>[1 : 1 : 1 비율 법칙]</strong>에 의해 ${tex('x')}축과 만나는 점(${tex('g(a)=0')})은 즉시 <strong class="text-amber-300">${tex('a = 2')} 또는 ${tex('a = -1')}</strong>!`,
+          highlight: "💡 『g(x) = ∫ₐˣ f(t)dt 에서 아래끝 a를 바꾼다 = 개형은 그대로 두고 x=a가 원점 높이가 되도록 x축의 위치를 위아래로 맞춘다!』"
+        })
+      }
+    };
+
+    // -------------------------------------------------------------------------
+    // 4. 캔버스 초기화 및 좌표 변환 (상하 동기화 Dual View + 중앙 증감표 밴드)
+    // -------------------------------------------------------------------------
+    const canvas = document.getElementById('boardCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const minDim = Math.min(rect.width, rect.height);
+      if (!state.userZoomed) {
+        state.scale = Math.max(32, Math.min(52, minDim / 13.5));
+      }
+      render();
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+
+    function getPaneCenterY(pane, rectHeight) {
+      if (pane === 'main') {
+        return rectHeight * 0.27 + state.offsetY * 0.55;
+      } else {
+        return rectHeight * 0.78 + state.offsetY * 0.35;
+      }
+    }
+
+    function getPaneScaleY(pane) {
+      return pane === 'main' ? state.scale * 0.56 : state.scale * 0.44;
+    }
+
+    function toScreen(x, y, pane = 'main') {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const cx = rect.width * 0.48 + state.offsetX;
+      const cy = getPaneCenterY(pane, rect.height);
+      const sy = getPaneScaleY(pane);
+      return {
+        x: cx + x * state.scale,
+        y: cy - y * sy
+      };
+    }
+
+    function toMath(px, py, pane = 'main') {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const cx = rect.width * 0.48 + state.offsetX;
+      const cy = getPaneCenterY(pane, rect.height);
+      const sy = getPaneScaleY(pane);
+      return {
+        x: (px - cx) / state.scale,
+        y: (cy - py) / sy
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. 분필 스타일 드로잉 프리미티브 & 세로 분수 렌더러
+    // -------------------------------------------------------------------------
+    function drawChalkLine(x1, y1, x2, y2, color = '#ffffff', width = 2, dashed = false, glow = false, pane = 'main') {
+      const p1 = toScreen(x1, y1, pane);
+      const p2 = toScreen(x2, y2, pane);
+      ctx.save();
+      ctx.beginPath();
+      if (dashed) ctx.setLineDash([6, 5]);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.lineCap = 'round';
+      if (glow) {
+        ctx.shadowColor = color;
+        ctx.shadowBlur = 10;
+      }
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawScreenLine(px1, py1, px2, py2, color = '#ffffff', width = 1.8, dashed = false) {
+      ctx.save();
+      ctx.beginPath();
+      if (dashed) ctx.setLineDash([5, 5]);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.moveTo(px1, py1);
+      ctx.lineTo(px2, py2);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawChalkPoint(x, y, radius = 5.5, color = '#fbbf24', label = '', labelOffset = { x: 10, y: -10 }, pane = 'main') {
+      const pt = toScreen(x, y, pane);
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 12;
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+
+      if (label) {
+        ctx.shadowBlur = 5;
+        ctx.shadowColor = 'rgba(0,0,0,0.95)';
+        ctx.font = 'bold 12px Pretendard, sans-serif';
+        ctx.fillStyle = color;
+        ctx.fillText(label, pt.x + labelOffset.x, pt.y + labelOffset.y);
+      }
+      ctx.restore();
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. 메인 캔버스 렌더링 파이프라인
+    // -------------------------------------------------------------------------
+    function render() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const topH = h * 0.52;
+      const botTopY = state.showSignChart ? h * 0.60 : h * 0.52;
+
+      // 1) 상단 원함수 칠판 렌더링
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(0, 0, w, topH);
+      ctx.clip();
+
+      drawGridAndAxes(w, topH, 'main', 0);
+      renderTopPaneDetails(w, topH);
+      drawFunctionCurve(w, 'main', evalTopFunc, '#f8fafc', '#34d399');
+      renderTopPointsOverlay();
+      ctx.restore();
+
+      // 2) 하단 도함수 칠판 렌더링
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(0, botTopY, w, h - botTopY);
+      ctx.clip();
+
+      ctx.fillStyle = 'rgba(5, 16, 12, 0.58)';
+      ctx.fillRect(0, botTopY, w, h - botTopY);
+
+      drawGridAndAxes(w, h, 'deriv', botTopY);
+      renderBottomPaneDetails(w, h, botTopY);
+      drawFunctionCurve(w, 'deriv', evalBottomFunc, '#38bdf8', '#38bdf8');
+      renderBottomPointsOverlay();
+      ctx.restore();
+
+      // 3) 상하 관통 수직 동기화선 (Step 1)
+      if (state.steps[1]) {
+        renderSyncLines(w, h);
+      }
+
+      // 4) 중앙 실시간 인터랙티브 증감표 바 (Sign Chart Band)
+      if (state.showSignChart && state.steps[3]) {
+        renderSignChartBand(w, topH, botTopY);
+      } else {
+        drawScreenLine(0, topH, w, topH, 'rgba(56, 189, 248, 0.5)', 2, false);
+      }
+
+      // 5) 하단 칠판 판서 배너
+      renderBottomChalkBanner(w, h);
+
+      // 6) 우측 모니터 업데이트
+      updateLiveMonitor();
+    }
+
+    function drawGridAndAxes(w, bottomY, pane = 'main', topY = 0) {
+      const origin = toScreen(0, 0, pane);
+
+      if (state.showGrid) {
+        ctx.save();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(16, 185, 129, 0.08)';
+
+        const startX = Math.floor(toMath(0, 0, pane).x) - 1;
+        const endX = Math.ceil(toMath(w, 0, pane).x) + 1;
+        const startY = Math.floor(toMath(0, bottomY, pane).y) - 1;
+        const endY = Math.ceil(toMath(0, topY, pane).y) + 1;
+
+        ctx.beginPath();
+        for (let i = startX; i <= endX; i++) {
+          const sx = toScreen(i, 0, pane).x;
+          ctx.moveTo(sx, topY);
+          ctx.lineTo(sx, bottomY);
+        }
+        for (let j = startY; j <= endY; j++) {
+          const sy = toScreen(0, j, pane).y;
+          ctx.moveTo(0, sy);
+          ctx.lineTo(w, sy);
+        }
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      ctx.save();
+      ctx.strokeStyle = 'rgba(209, 250, 229, 0.35)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(0, origin.y);
+      ctx.lineTo(w, origin.y);
+      ctx.moveTo(origin.x, topY);
+      ctx.lineTo(origin.x, bottomY);
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(209, 250, 229, 0.65)';
+      ctx.font = '11px Pretendard, sans-serif';
+      ctx.fillText('O', origin.x - 14, origin.y + 14);
+      ctx.restore();
+    }
+
+    function drawFunctionCurve(w, pane, fn, strokeCol, glowCol) {
+      const minX = toMath(0, 0, pane).x - 0.3;
+      const maxX = toMath(w, 0, pane).x + 0.3;
+      ctx.save();
+      ctx.beginPath();
+      let first = true;
+      for (let x = minX; x <= maxX; x += 0.03) {
+        const y = fn(x);
+        if (Math.abs(y) > 40) {
+          first = true;
+          continue;
+        }
+        const s = toScreen(x, y, pane);
+        if (first) {
+          ctx.moveTo(s.x, s.y);
+          first = false;
+        } else {
+          ctx.lineTo(s.x, s.y);
+        }
+      }
+      ctx.strokeStyle = strokeCol;
+      ctx.lineWidth = 3.0;
+      ctx.shadowColor = glowCol;
+      ctx.shadowBlur = 10;
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // 상단 원함수 보조 요소 & 특징점 렌더링
+    // =========================================================================
+    function renderTopPaneDetails(w, topH) {
+      if (state.mode === 3 && state.steps[2]) {
+        // 방정식 f(x) = 0 의 실근(x절편) 하이라이트
+        const dlt = state.param1;
+        const C_shift = state.param2;
+        const uRoots = solveCubicRoots(1, 0, -3 * dlt, C_shift);
+        uRoots.forEach((u, idx) => {
+          const rx = u + 1.0;
+          drawChalkPoint(rx, 0, 6, '#fde047', `실근 x_${idx + 1}=${rx.toFixed(2)}`, { x: -30, y: idx % 2 === 0 ? -14 : 20 }, 'main');
+        });
+      }
+
+      if (state.mode === 5 && state.steps[2]) {
+        // 정적분 함수 g(a) = 0 핀 표시
+        const a = state.param2;
+        drawChalkPoint(a, 0, 7.5, '#fbbf24', `핀 g(a=${a.toFixed(2)})=0 [드래그]`, { x: 12, y: -14 }, 'main');
+      }
+    }
+
+    function renderTopPointsOverlay() {
+      if (state.mode === 2) {
+        const lam = Math.max(0, Math.min(1, state.param1));
+        const alpha = -1.0;
+        const gamma = -1.0 + 4.0 * lam;
+        const beta = 3.0;
+
+        if (lam < 0.02) {
+          drawChalkPoint(alpha, evalTopFunc(alpha), 6.5, '#c084fc', `변곡접점(-1, ${evalTopFunc(alpha).toFixed(1)})`, { x: -110, y: -12 }, 'main');
+          drawChalkPoint(beta, evalTopFunc(beta), 6.5, '#10b981', `극소(3, ${evalTopFunc(beta).toFixed(1)})`, { x: 10, y: 18 }, 'main');
+        } else if (lam > 0.98) {
+          drawChalkPoint(alpha, evalTopFunc(alpha), 6.5, '#10b981', `극소(-1, ${evalTopFunc(alpha).toFixed(1)})`, { x: -100, y: 18 }, 'main');
+          drawChalkPoint(beta, evalTopFunc(beta), 6.5, '#c084fc', `변곡접점(3, ${evalTopFunc(beta).toFixed(1)})`, { x: 10, y: -12 }, 'main');
+        } else {
+          drawChalkPoint(alpha, evalTopFunc(alpha), 6, '#10b981', `극소(-1, ${evalTopFunc(alpha).toFixed(1)})`, { x: -100, y: 18 }, 'main');
+          drawChalkPoint(gamma, evalTopFunc(gamma), 6.5, '#f472b6', `극대(${gamma.toFixed(1)}, ${evalTopFunc(gamma).toFixed(1)})`, { x: -45, y: -12 }, 'main');
+          drawChalkPoint(beta, evalTopFunc(beta), 6, '#10b981', `극소(3, ${evalTopFunc(beta).toFixed(1)})`, { x: 10, y: 18 }, 'main');
+        }
+        return;
+      }
+
+      const effDelta = state.mode === 4 ? 1.0 + state.param2 / 3.0 : state.param1;
+      const m = 1.0;
+      drawChalkPoint(m, evalTopFunc(m), 5.5, '#c084fc', `변곡점(1, ${evalTopFunc(m).toFixed(1)})`, { x: 10, y: 16 }, 'main');
+
+      if (effDelta > 0.005) {
+        const h = Math.sqrt(effDelta);
+        const xA = m - h;
+        const xB = m + h;
+        drawChalkPoint(xA, evalTopFunc(xA), 6.5, '#f472b6', `극대(${xA.toFixed(2)}, ${evalTopFunc(xA).toFixed(2)})`, { x: -110, y: -12 }, 'main');
+        drawChalkPoint(xB, evalTopFunc(xB), 6.5, '#10b981', `극소(${xB.toFixed(2)}, ${evalTopFunc(xB).toFixed(2)})`, { x: 10, y: 18 }, 'main');
+      }
+    }
+
+    // =========================================================================
+    // 하단 도함수 보조 요소 (부호 영역 색칠 & 정적분 면적)
+    // =========================================================================
+    function renderBottomPaneDetails(w, h, botTopY) {
+      const minX = toMath(0, 0, 'deriv').x - 0.2;
+      const maxX = toMath(w, 0, 'deriv').x + 0.2;
+
+      if (state.mode === 4) {
+        // Mode 4: 직선 y = g'(x) = k 그리기 및 f'(x) - g'(x) 면적 색칠
+        const k = state.param2;
+        if (state.steps[2]) {
+          ctx.save();
+          const steps = 100;
+          for (let i = 0; i < steps; i++) {
+            const x1 = minX + ((maxX - minX) * i) / steps;
+            const x2 = minX + ((maxX - minX) * (i + 1)) / steps;
+            const xm = (x1 + x2) / 2;
+            const yCurve = evalBottomFunc(xm);
+            const s1 = toScreen(x1, yCurve, 'deriv');
+            const s2 = toScreen(x2, k, 'deriv');
+            ctx.fillStyle = yCurve >= k ? 'rgba(244, 114, 182, 0.16)' : 'rgba(56, 189, 248, 0.22)';
+            ctx.fillRect(s1.x, Math.min(s1.y, s2.y), s2.x - s1.x + 1, Math.abs(s2.y - s1.y));
+          }
+          ctx.restore();
+        }
+        drawChalkLine(minX, k, maxX, k, '#e879f9', 2.6, false, true, 'deriv');
+        const syK = toScreen(0, k, 'deriv').y;
+        ctx.save();
+        ctx.font = 'bold 12px Pretendard, monospace';
+        ctx.fillStyle = '#f0abfc';
+        ctx.fillText(`직선 g'(x) = k (${k.toFixed(1)}) [위아래 드래그]`, w - 280, syK - 8);
+        ctx.restore();
+        return;
+      }
+
+      // 일반 도함수 부호(+ / -) 영역 셰이딩 (Step 2)
+      if (state.steps[2]) {
+        ctx.save();
+        const steps = 110;
+        const yZero = toScreen(0, 0, 'deriv').y;
+        for (let i = 0; i < steps; i++) {
+          const x1 = minX + ((maxX - minX) * i) / steps;
+          const x2 = minX + ((maxX - minX) * (i + 1)) / steps;
+          const xm = (x1 + x2) / 2;
+          const yVal = evalBottomFunc(xm);
+          if (Math.abs(yVal) > 35) continue;
+          const sPt = toScreen(x1, yVal, 'deriv');
+          const sNext = toScreen(x2, 0, 'deriv');
+          ctx.fillStyle = yVal >= 0 ? 'rgba(244, 114, 182, 0.16)' : 'rgba(56, 189, 248, 0.22)';
+          ctx.fillRect(sPt.x, Math.min(sPt.y, yZero), sNext.x - sPt.x + 1, Math.abs(sPt.y - yZero));
+        }
+        ctx.restore();
+      }
+    }
+
+    function renderBottomPointsOverlay() {
+      if (state.mode === 2) {
+        const lam = Math.max(0, Math.min(1, state.param1));
+        const gamma = -1.0 + 4.0 * lam;
+        drawChalkPoint(-1.0, 0, 5.5, '#10b981', `α=-1`, { x: -42, y: -10 }, 'deriv');
+        drawChalkPoint(gamma, 0, 7.5, '#fbbf24', `γ=${gamma.toFixed(2)} [드래그]`, { x: -35, y: 20 }, 'deriv');
+        drawChalkPoint(3.0, 0, 5.5, '#10b981', `β=3`, { x: 10, y: -10 }, 'deriv');
+        return;
+      }
+
+      const effDelta = state.mode === 4 ? 1.0 + state.param2 / 3.0 : state.param1;
+      const yRef = state.mode === 4 ? state.param2 : 0;
+
+      if (effDelta > 0.005) {
+        const h = Math.sqrt(effDelta);
+        drawChalkPoint(1.0 - h, yRef, 6, '#f472b6', `α=${(1 - h).toFixed(2)} (관통: +→-)`, { x: -115, y: -10 }, 'deriv');
+        drawChalkPoint(1.0 + h, yRef, 7, '#fbbf24', `β=${(1 + h).toFixed(2)} [드래그]`, { x: 10, y: -10 }, 'deriv');
+      } else if (Math.abs(effDelta) <= 0.005) {
+        drawChalkPoint(1.0, yRef, 7.5, '#c084fc', `중근 x=1 (접함: +→0→+ 부호불변!)`, { x: -95, y: 22 }, 'deriv');
+      }
+    }
+
+    // =========================================================================
+    // 칠판 중앙 실시간 인터랙티브 증감표 바 (Sign Chart Band)
+    // =========================================================================
+    function renderSignChartBand(w, topH, botTopY) {
+      const bandH = botTopY - topH;
+      const midY = (topH + botTopY) / 2;
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(7, 20, 15, 0.96)';
+      ctx.fillRect(0, topH, w, bandH);
+      drawScreenLine(0, topH, w, topH, 'rgba(251, 191, 36, 0.65)', 1.8, false);
+      drawScreenLine(0, botTopY, w, botTopY, 'rgba(56, 189, 248, 0.65)', 1.8, false);
+
+      // 좌측 증감표 타이틀 배지
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = 'extrabold 11.5px Pretendard, sans-serif';
+      ctx.fillText('📊 실시간 증감표', 14, midY + 4);
+
+      ctx.font = 'extrabold 12px Pretendard, monospace';
+      ctx.textAlign = 'center';
+
+      if (state.mode === 2) {
+        // 사차함수 증감표
+        const lam = Math.max(0, Math.min(1, state.param1));
+        const gamma = -1.0 + 4.0 * lam;
+        const sxA = toScreen(-1.0, 0, 'main').x;
+        const sxG = toScreen(gamma, 0, 'main').x;
+        const sxB = toScreen(3.0, 0, 'main').x;
+
+        if (lam < 0.02) {
+          ctx.fillStyle = '#7dd3fc';
+          ctx.fillText("f'(-) ↘ 감소", sxA - 65, midY + 4);
+          ctx.fillStyle = '#c084fc';
+          ctx.fillText('[x=-1 변곡0]', sxA, midY + 4);
+          ctx.fillStyle = '#7dd3fc';
+          ctx.fillText("f'(-) ↘ 감소", (sxA + sxB) / 2, midY + 4);
+          ctx.fillStyle = '#10b981';
+          ctx.fillText('[x=3 극소]', sxB, midY + 4);
+          ctx.fillStyle = '#f9a8d4';
+          ctx.fillText("f'(+) ↗ 증가", sxB + 65, midY + 4);
+        } else if (lam > 0.98) {
+          ctx.fillStyle = '#7dd3fc';
+          ctx.fillText("f'(-) ↘ 감소", sxA - 65, midY + 4);
+          ctx.fillStyle = '#10b981';
+          ctx.fillText('[x=-1 극소]', sxA, midY + 4);
+          ctx.fillStyle = '#f9a8d4';
+          ctx.fillText("f'(+) ↗ 증가", (sxA + sxB) / 2, midY + 4);
+          ctx.fillStyle = '#c084fc';
+          ctx.fillText('[x=3 변곡0]', sxB, midY + 4);
+          ctx.fillStyle = '#f9a8d4';
+          ctx.fillText("f'(+) ↗ 증가", sxB + 65, midY + 4);
+        } else {
+          ctx.fillStyle = '#7dd3fc';
+          ctx.fillText("f'(-) ↘", sxA - 50, midY + 4);
+          ctx.fillStyle = '#10b981';
+          ctx.fillText('[극소]', sxA, midY + 4);
+          ctx.fillStyle = '#f9a8d4';
+          ctx.fillText("f'(+) ↗", (sxA + sxG) / 2, midY + 4);
+          ctx.fillStyle = '#fbbf24';
+          ctx.fillText('[극대]', sxG, midY + 4);
+          ctx.fillStyle = '#7dd3fc';
+          ctx.fillText("f'(-) ↘", (sxG + sxB) / 2, midY + 4);
+          ctx.fillStyle = '#10b981';
+          ctx.fillText('[극소]', sxB, midY + 4);
+          ctx.fillStyle = '#f9a8d4';
+          ctx.fillText("f'(+) ↗", sxB + 50, midY + 4);
+        }
+      } else {
+        // 삼차함수 증감표
+        const effDelta = state.mode === 4 ? 1.0 + state.param2 / 3.0 : state.param1;
+        const sxM = toScreen(1.0, 0, 'main').x;
+
+        if (effDelta > 0.005) {
+          const h = Math.sqrt(effDelta);
+          const sxA = toScreen(1.0 - h, 0, 'main').x;
+          const sxB = toScreen(1.0 + h, 0, 'main').x;
+
+          ctx.fillStyle = '#f9a8d4';
+          ctx.fillText("f'(+) ↗ 증가", sxA - 70, midY + 4);
+          ctx.fillStyle = '#fbbf24';
+          ctx.fillText('[극대]', sxA, midY + 4);
+          ctx.fillStyle = '#7dd3fc';
+          ctx.fillText("f'(-) ↘ 감소", (sxA + sxB) / 2, midY + 4);
+          ctx.fillStyle = '#10b981';
+          ctx.fillText('[극소]', sxB, midY + 4);
+          ctx.fillStyle = '#f9a8d4';
+          ctx.fillText("f'(+) ↗ 증가", sxB + 70, midY + 4);
+        } else if (Math.abs(effDelta) <= 0.005) {
+          ctx.fillStyle = '#f9a8d4';
+          ctx.fillText("f'(+) ↗ 증가", sxM - 95, midY + 4);
+          ctx.fillStyle = '#c084fc';
+          ctx.fillText('[f\'=0 중근 변곡점 (극값 아님!)]', sxM, midY + 4);
+          ctx.fillStyle = '#f9a8d4';
+          ctx.fillText("f'(+) ↗ 계속 증가", sxM + 115, midY + 4);
+        } else {
+          ctx.fillStyle = '#f9a8d4';
+          ctx.fillText("모든 실수에서 f'(x) > 0  ⇒  전 구간 ↗ 단조증가 (극값 없음)", sxM, midY + 4);
+        }
+      }
+      ctx.restore();
+    }
+
+    function renderSyncLines(w, h) {
+      if (state.mode === 2) {
+        const lam = Math.max(0, Math.min(1, state.param1));
+        const xs = [-1.0, -1.0 + 4.0 * lam, 3.0];
+        xs.forEach((xv) => {
+          const sx = toScreen(xv, 0, 'main').x;
+          drawScreenLine(sx, 35, sx, h - 55, 'rgba(251, 191, 36, 0.45)', 1.5, true);
+        });
+        return;
+      }
+
+      const effDelta = state.mode === 4 ? 1.0 + state.param2 / 3.0 : state.param1;
+      const sxM = toScreen(1.0, 0, 'main').x;
+      drawScreenLine(sxM, 35, sxM, h - 55, 'rgba(192, 132, 252, 0.45)', 1.5, true);
+
+      if (effDelta > 0.005) {
+        const hVal = Math.sqrt(effDelta);
+        const sxA = toScreen(1.0 - hVal, 0, 'main').x;
+        const sxB = toScreen(1.0 + hVal, 0, 'main').x;
+        drawScreenLine(sxA, 35, sxA, h - 55, 'rgba(244, 114, 182, 0.55)', 1.6, true);
+        drawScreenLine(sxB, 35, sxB, h - 55, 'rgba(16, 185, 129, 0.55)', 1.6, true);
+      }
+    }
+
+    function renderBottomChalkBanner(w, h) {
+      if (!state.steps[3]) return;
+
+      const by = h - 54;
+      const cx = w * 0.54;
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(7, 20, 15, 0.93)';
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.55)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(cx - 220, by - 21, 440, 42, 11);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.font = 'bold 12.5px Pretendard, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#fef08a';
+
+      if (state.mode === 1) {
+        if (state.param1 > 0.005) {
+          ctx.fillText(`단근 관통(δ=${state.param1.toFixed(2)} > 0) : 도함수 부호가 바뀌므로 극대·극소 2개 생성!`, cx, by + 4);
+        } else if (Math.abs(state.param1) <= 0.005) {
+          ctx.fillStyle = '#e879f9';
+          ctx.fillText(`중근 접함(δ = 0) : f'(1)=0 이지만 부호가 (+→0→+) 불변이므로 변곡점 뚫접!`, cx, by + 4);
+        } else {
+          ctx.fillStyle = '#fda4af';
+          ctx.fillText(`허근(δ < 0) : 도함수가 x축 위에 떠 있으므로 극값 없이 단조증가!`, cx, by + 4);
+        }
+      } else if (state.mode === 2) {
+        const lam = state.param1;
+        if (lam < 0.02 || lam > 0.98) {
+          ctx.fillStyle = '#e879f9';
+          ctx.fillText(`삼차 도함수가 중근을 가짐(λ=${lam.toFixed(2)}) ⇒ 사차함수 극댓값 소멸 (3:1 변곡 개형!)`, cx, by + 4);
+        } else {
+          ctx.fillText(`삼차 도함수 서로 다른 세 실근(λ=${lam.toFixed(2)}) ⇒ 사차함수 극소 2개 · 극대 1개 (W형)`, cx, by + 4);
+        }
+      } else if (state.mode === 3) {
+        const yMax = evalTopFunc(1.0 - Math.sqrt(Math.max(0, state.param1)));
+        const yMin = evalTopFunc(1.0 + Math.sqrt(Math.max(0, state.param1)));
+        const prod = yMax * yMin;
+        const cnt = prod < -0.01 ? 3 : (Math.abs(prod) <= 0.01 ? 2 : 1);
+        ctx.fillText(`극댓값(${yMax.toFixed(1)}) × 극솟값(${yMin.toFixed(1)}) = ${prod.toFixed(2)}  ⇒  방정식 f(x)=0 실근 ${cnt}개!`, cx, by + 4);
+      } else if (state.mode === 4) {
+        ctx.fillText(`직선 g'(x) = ${state.param2.toFixed(1)} 를 가짜 x축으로 해석 ⇒ 교차=차함수 극값 / 접함=차함수 변곡점`, cx, by + 4);
+      } else if (state.mode === 5) {
+        ctx.fillText(`g(x) = ∫ₐˣ f(t)dt : 아래끝 a = ${state.param2.toFixed(2)} 에서 항상 g(a) = 0 & 도함수는 g'(x) = f(x)!`, cx, by + 4);
+      }
+      ctx.restore();
+    }
+
+    // -------------------------------------------------------------------------
+    // 7. 우측 패널 실시간 모니터 & UI 컨트롤러
+    // -------------------------------------------------------------------------
+    function updateLiveMonitor() {
+      const condBadge = document.getElementById('conditionBadge');
+      const alertBox = document.getElementById('invalidConditionAlert');
+      const alertText = document.getElementById('invalidAlertText');
+
+      if (state.mode === 2) {
+        const lam = state.param1;
+        const gamma = -1.0 + 4.0 * lam;
+        document.getElementById('eqDisplay').innerHTML = tex(`y = f(x) \\; (\\text{사차 원함수})`);
+        document.getElementById('derivDisplay').innerHTML = tex(`f'(x) = 0.8(x+1)(x-${gamma.toFixed(1)})(x-3)`);
+
+        if (lam < 0.02 || lam > 0.98) {
+          condBadge.className = 'text-[10px] font-extrabold px-2 py-0.5 rounded bg-purple-500/30 text-purple-200 border border-purple-400/70 animate-pulse';
+          condBadge.textContent = `⚡ 도함수 중근 (극댓값 소멸 · 3:1 변곡형)`;
+          alertText.textContent = `삼차 도함수 f'(x)가 중근을 가져 부호가 바뀌지 않으므로 사차함수의 극댓값이 사라지고 변곡접점이 되었습니다!`;
+          alertBox.classList.remove('hidden');
+          document.getElementById('statVal1').textContent = `- → 0(변곡) → - → 0 → +`;
+          document.getElementById('statVal4').textContent = `극값 1개 (극소만 존재)`;
+        } else {
+          condBadge.className = 'text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-400/50';
+          condBadge.textContent = `서로 다른 세 실근 (W형 극값 3개)`;
+          alertBox.classList.add('hidden');
+          document.getElementById('statVal1').textContent = `- → + → - → + (3번 교차)`;
+          document.getElementById('statVal4').textContent = `극값 3개 (극소2 · 극대1)`;
+        }
+        document.getElementById('statVal2').textContent = `f(-1)=${evalTopFunc(-1).toFixed(1)} | f(3)=${evalTopFunc(3).toFixed(1)}`;
+        document.getElementById('statVal3').textContent = `극대 f(${gamma.toFixed(1)})=${evalTopFunc(gamma).toFixed(1)}`;
+
+        document.getElementById('valParam1').textContent = `λ = ${lam.toFixed(2)} (γ = ${gamma.toFixed(2)})`;
+        document.getElementById('valParam2').textContent = `C = ${state.param2.toFixed(2)}`;
+      } else {
+        const effDelta = state.mode === 4 ? 1.0 + state.param2 / 3.0 : state.param1;
+        document.getElementById('eqDisplay').innerHTML = state.mode === 5
+          ? tex(`g(x) = \\int_{${state.param2.toFixed(1)}}^{x} f(t)\\,dt`)
+          : tex(`f(x) = (x-1)^3 - ${(3 * effDelta).toFixed(1)}(x-1) + ${state.param2.toFixed(1)}`);
+        document.getElementById('derivDisplay').innerHTML = state.mode === 4
+          ? tex(`f'(x) = 3(x-1)^2 - 3, \\; g'(x) = ${state.param2.toFixed(1)}`)
+          : tex(`f'(x) = 3(x-1)^2 - ${(3 * effDelta).toFixed(1)}`);
+
+        if (effDelta > 0.005) {
+          const hVal = Math.sqrt(effDelta);
+          const yMax = evalTopFunc(1.0 - hVal);
+          const yMin = evalTopFunc(1.0 + hVal);
+          const prod = yMax * yMin;
+          const rCnt = prod < -0.01 ? 3 : (Math.abs(prod) <= 0.01 ? 2 : 1);
+
+          condBadge.className = 'text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-400/50';
+          condBadge.textContent = `도함수 2회 관통 (극대·극소 활성)`;
+          alertBox.classList.add('hidden');
+
+          document.getElementById('statVal1').textContent = `+ → 0 → - → 0 → +`;
+          document.getElementById('statVal2').textContent = `극대=${yMax.toFixed(1)} | 극소=${yMin.toFixed(1)}`;
+          document.getElementById('statVal3').textContent = `곱 = ${prod.toFixed(2)} (${prod < 0 ? '<0' : '>=0'})`;
+          document.getElementById('statVal4').textContent = `실근 ${rCnt}개 | 극값 2개`;
+        } else if (Math.abs(effDelta) <= 0.005) {
+          condBadge.className = 'text-[10px] font-extrabold px-2 py-0.5 rounded bg-purple-500/30 text-purple-200 border border-purple-400/70 animate-pulse';
+          condBadge.textContent = `⚡ 도함수 중근 접함 (변곡 3중근 · 극값 0개)`;
+          alertText.textContent = `도함수가 x축에 접하여 부호가 (+ → 0 → +)로 바뀌지 않으므로 원함수는 극값을 갖지 않고 변곡접선을 갖습니다!`;
+          alertBox.classList.remove('hidden');
+
+          document.getElementById('statVal1').textContent = `+ → 0(접함) → + (부호불변)`;
+          document.getElementById('statVal2').textContent = `극값 없음 (변곡점만 존재)`;
+          document.getElementById('statVal3').textContent = `Δy = 0.00`;
+          document.getElementById('statVal4').textContent = `실근 1개 | 극값 0개`;
+        } else {
+          condBadge.className = 'text-[10px] font-extrabold px-2 py-0.5 rounded bg-rose-500/30 text-rose-200 border border-rose-400/70';
+          condBadge.textContent = `⚠️ 도함수 허근 (전 구간 단조증가)`;
+          alertText.textContent = `도함수 f'(x) > 0 이므로 원함수는 전 구간에서 단조증가하며 극값이 없습니다!`;
+          alertBox.classList.remove('hidden');
+
+          document.getElementById('statVal1').textContent = `전 구간 + (영점 없음)`;
+          document.getElementById('statVal2').textContent = `극값 없음 (단조증가)`;
+          document.getElementById('statVal3').textContent = `f'(1) = ${(-3 * effDelta).toFixed(2)} > 0`;
+          document.getElementById('statVal4').textContent = `실근 1개 | 극값 0개`;
+        }
+
+        document.getElementById('valParam1').textContent = `δ = ${state.param1.toFixed(2)}`;
+        document.getElementById('valParam2').textContent = state.mode === 4
+          ? `k = ${state.param2.toFixed(2)}`
+          : (state.mode === 5 ? `a = ${state.param2.toFixed(2)}` : `C = ${state.param2.toFixed(2)}`);
+      }
+
+      document.getElementById('sliderParam1').value = state.param1;
+      document.getElementById('sliderParam2').value = state.param2;
+    }
+
+    function applyRootPreset(type) {
+      state.snapAnim.active = true;
+      state.snapAnim.startP1 = state.param1;
+      state.snapAnim.startP2 = state.param2;
+
+      if (state.mode === 2) {
+        state.snapAnim.targetP2 = 0.0;
+        if (type === 'distinct') state.snapAnim.targetP1 = 0.4;
+        else if (type === 'double') state.snapAnim.targetP1 = 0.0;
+        else state.snapAnim.targetP1 = 1.0;
+      } else if (state.mode === 4) {
+        state.snapAnim.targetP1 = 1.0;
+        if (type === 'distinct') state.snapAnim.targetP2 = 0.0;
+        else if (type === 'double') state.snapAnim.targetP2 = -3.0;
+        else state.snapAnim.targetP2 = -4.0;
+      } else {
+        state.snapAnim.targetP2 = state.mode === 5 ? -1.0 : 0.0;
+        if (type === 'distinct') state.snapAnim.targetP1 = 1.0;
+        else if (type === 'double') state.snapAnim.targetP1 = 0.0;
+        else state.snapAnim.targetP1 = -0.4;
+      }
+      state.snapAnim.progress = 0;
+    }
+
+    function toggleSignChart() {
+      state.showSignChart = !state.showSignChart;
+      const btn = document.getElementById('btnSignChart');
+      const txt = document.getElementById('txtSignChart');
+      if (state.showSignChart) {
+        btn.className = 'px-3 py-1.5 rounded-lg bg-amber-400 text-slate-950 text-xs font-extrabold flex items-center gap-1.5 transition shadow-md';
+        txt.textContent = '실시간 증감표 ON';
+      } else {
+        btn.className = 'px-3 py-1.5 rounded-lg bg-emerald-950/70 border border-emerald-700/60 text-emerald-200 text-xs font-bold flex items-center gap-1.5 transition';
+        txt.textContent = '실시간 증감표 OFF';
+      }
+      render();
+    }
+
+    function setMode(m) {
+      state.mode = m;
+      for (let i = 1; i <= 5; i++) {
+        const tab = document.getElementById(`tab-${i}`);
+        if (i === m) tab.classList.add('active');
+        else tab.classList.remove('active');
+      }
+
+      const s1 = document.getElementById('sliderParam1');
+      const s2 = document.getElementById('sliderParam2');
+      const l1 = document.getElementById('labelParam1');
+      const l2 = document.getElementById('labelParam2');
+
+      if (m === 2) {
+        s1.min = '0.0'; s1.max = '1.0'; s1.step = '0.02';
+        l1.innerHTML = `가운데 근 내분비 <strong class="text-amber-300">λ (0·1=중근 / 0.5=대칭)</strong>`;
+        l2.innerHTML = `상하 평행이동 <strong class="text-sky-300">C</strong>`;
+      } else {
+        s1.min = '-0.6'; s1.max = '2.0'; s1.step = '0.05';
+        l1.innerHTML = `도함수 근 파라미터 <strong class="text-amber-300">δ (δ&gt;0 단근 / δ=0 중근)</strong>`;
+        if (m === 4) {
+          s2.min = '-4.0'; s2.max = '2.0';
+          l2.innerHTML = `직선 높이 <strong class="text-purple-300">g'(x) = k</strong> (k=-3 접함)`;
+        } else if (m === 5) {
+          s2.min = '-1.5'; s2.max = '3.2';
+          l2.innerHTML = `정적분 아래끝 <strong class="text-amber-300">x = a</strong> (g(a)=0 고정핀)`;
+        } else {
+          s2.min = '-3.5'; s2.max = '3.5';
+          l2.innerHTML = `적분상수(상하 이동) <strong class="text-sky-300">C</strong> (극값 부호 조절)`;
+        }
+      }
+
+      const data = examData[m];
+      document.getElementById('canvasModeBadge').textContent = data.badge;
+      document.getElementById('canvasActionHint').innerHTML = data.hint;
+      document.getElementById('examTag').innerHTML = `<i class="fa-solid fa-award"></i> ${data.tag}`;
+      document.getElementById('examTarget').textContent = data.targetTime;
+      document.getElementById('examQuestion').innerHTML = data.question();
+      document.getElementById('examAnswerBadge').innerHTML = data.answerBadge();
+
+      document.getElementById('stepLabel1').textContent = data.steps[0];
+      document.getElementById('stepLabel2').textContent = data.steps[1];
+      document.getElementById('stepLabel3').textContent = data.steps[2];
+
+      const tb = data.textbook();
+      const sc = data.shortcut();
+      document.getElementById('textbookSteps').innerHTML = tb.steps;
+      document.getElementById('textbookWarning').innerHTML = tb.warning;
+      document.getElementById('shortcutSteps').innerHTML = sc.steps;
+      document.getElementById('shortcutHighlight').innerHTML = sc.highlight;
+
+      snapToProblem();
+    }
+
+    function snapToProblem() {
+      state.autoPlay = false;
+      document.getElementById('iconAutoPlay').className = 'fa-solid fa-play';
+      document.getElementById('txtAutoPlay').textContent = '자동 실험';
+
+      unlockAllSteps();
+
+      const target = examData[state.mode].snap;
+      state.snapAnim.active = true;
+      state.snapAnim.startP1 = state.param1;
+      state.snapAnim.startP2 = state.param2;
+      state.snapAnim.targetP1 = target.p1;
+      state.snapAnim.targetP2 = target.p2;
+      state.snapAnim.progress = 0;
+    }
+
+    function toggleAccordion(type) {
+      const body = document.getElementById(`accBody-${type}`);
+      const icon = document.getElementById(`accIcon-${type}`);
+      const isHidden = body.classList.contains('hidden');
+      if (isHidden) {
+        body.classList.remove('hidden');
+        icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        body.classList.add('hidden');
+        icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    function toggleStep(s) {
+      state.steps[s] = !state.steps[s];
+      const btn = document.getElementById(`stepBtn${s}`);
+      const icon = document.getElementById(`stepIcon${s}`);
+      if (state.steps[s]) {
+        btn.classList.add('active');
+        icon.className = 'fa-solid fa-check text-emerald-400 text-xs';
+      } else {
+        btn.classList.remove('active');
+        icon.className = 'fa-solid fa-eye-slash text-slate-500 text-xs';
+      }
+      render();
+    }
+
+    function unlockAllSteps() {
+      [1, 2, 3].forEach((s) => {
+        state.steps[s] = true;
+        document.getElementById(`stepBtn${s}`).classList.add('active');
+        document.getElementById(`stepIcon${s}`).className = 'fa-solid fa-check text-emerald-400 text-xs';
+      });
+      render();
+    }
+
+    function onParam1Slider() {
+      state.snapAnim.active = false;
+      state.param1 = parseFloat(document.getElementById('sliderParam1').value);
+      render();
+    }
+
+    function onParam2Slider() {
+      state.snapAnim.active = false;
+      state.param2 = parseFloat(document.getElementById('sliderParam2').value);
+      render();
+    }
+
+    function zoomCanvas(factor) {
+      state.userZoomed = true;
+      state.scale = Math.max(22, Math.min(110, state.scale * factor));
+      render();
+    }
+
+    function resetView() {
+      state.userZoomed = false;
+      state.offsetX = -35;
+      state.offsetY = 0;
+      resizeCanvas();
+    }
+
+    function toggleGrid() {
+      state.showGrid = !state.showGrid;
+      render();
+    }
+
+    function toggleAutoPlay() {
+      state.autoPlay = !state.autoPlay;
+      const icon = document.getElementById('iconAutoPlay');
+      const txt = document.getElementById('txtAutoPlay');
+      if (state.autoPlay) {
+        icon.className = 'fa-solid fa-pause';
+        txt.textContent = '일시 정지';
+      } else {
+        icon.className = 'fa-solid fa-play';
+        txt.textContent = '자동 실험';
+      }
+    }
+
+    function animateLoop() {
+      let needsRender = false;
+
+      if (state.snapAnim.active) {
+        state.snapAnim.progress += 0.08;
+        if (state.snapAnim.progress >= 1) {
+          state.param1 = state.snapAnim.targetP1;
+          state.param2 = state.snapAnim.targetP2;
+          state.snapAnim.active = false;
+        } else {
+          const p = 1 - Math.pow(1 - state.snapAnim.progress, 3);
+          state.param1 = state.snapAnim.startP1 + (state.snapAnim.targetP1 - state.snapAnim.startP1) * p;
+          state.param2 = state.snapAnim.startP2 + (state.snapAnim.targetP2 - state.snapAnim.startP2) * p;
+        }
+        needsRender = true;
+      }
+
+      if (state.autoPlay && !state.isDragging && !state.snapAnim.active) {
+        if (state.mode === 1) {
+          state.param1 += 0.015 * state.animDir;
+          if (state.param1 < -0.4) state.animDir = 1;
+          if (state.param1 > 1.6) state.animDir = -1;
+        } else if (state.mode === 2) {
+          state.param1 += 0.008 * state.animDir;
+          if (state.param1 <= 0.0) state.animDir = 1;
+          if (state.param1 >= 1.0) state.animDir = -1;
+        } else {
+          state.param2 += 0.03 * state.animDir;
+          if (state.param2 < -2.8) state.animDir = 1;
+          if (state.param2 > 2.8) state.animDir = -1;
+        }
+        needsRender = true;
+      }
+
+      if (needsRender) render();
+      requestAnimationFrame(animateLoop);
+    }
+
+    // -------------------------------------------------------------------------
+    // 8. 마우스 & 모바일 터치 드래그 인터랙션
+    // -------------------------------------------------------------------------
+    function getPointerPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+      }
+      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
+    function handlePointerDown(e) {
+      state.snapAnim.active = false;
+      const pos = getPointerPos(e);
+
+      // Mode 2: 하단 삼차 도함수의 가운데 근 gamma 드래그
+      if (state.mode === 2) {
+        const gamma = -1.0 + 4.0 * state.param1;
+        const sG = toScreen(gamma, 0, 'deriv');
+        if (Math.hypot(pos.x - sG.x, pos.y - sG.y) < 30) {
+          state.isDragging = true;
+          state.dragType = 'ROOT';
+          return;
+        }
+      }
+
+      // Mode 4: 하단 직선 y = k 드래그
+      if (state.mode === 4) {
+        const syK = toScreen(0, state.param2, 'deriv').y;
+        if (Math.abs(pos.y - syK) < 18) {
+          state.isDragging = true;
+          state.dragType = 'SHIFT';
+          return;
+        }
+      }
+
+      // Mode 5: 상단 핀 g(a) = 0 드래그
+      if (state.mode === 5) {
+        const sPin = toScreen(state.param2, 0, 'main');
+        if (Math.hypot(pos.x - sPin.x, pos.y - sPin.y) < 30) {
+          state.isDragging = true;
+          state.dragType = 'SHIFT';
+          return;
+        }
+      }
+
+      // Mode 1, 3: 하단 도함수 우측 근 β 드래그
+      if (state.mode === 1 || state.mode === 3) {
+        if (state.param1 >= 0) {
+          const hVal = Math.sqrt(state.param1);
+          const sB = toScreen(1.0 + hVal, 0, 'deriv');
+          if (Math.hypot(pos.x - sB.x, pos.y - sB.y) < 30) {
+            state.isDragging = true;
+            state.dragType = 'ROOT';
+            return;
+          }
+        }
+      }
+
+      state.isDragging = true;
+      state.dragType = 'PAN';
+      state.lastMouse = pos;
+    }
+
+    function handlePointerMove(e) {
+      const pos = getPointerPos(e);
+
+      if (state.isDragging) {
+        e.preventDefault();
+        if (state.dragType === 'ROOT') {
+          const mDeriv = toMath(pos.x, pos.y, 'deriv');
+          if (state.mode === 2) {
+            let lam = (mDeriv.x - (-1.0)) / 4.0;
+            if (Math.abs(lam) < 0.04) lam = 0.0;
+            else if (Math.abs(lam - 0.5) < 0.04) lam = 0.5;
+            else if (Math.abs(lam - 1.0) < 0.04) lam = 1.0;
+            state.param1 = Math.max(0.0, Math.min(1.0, +lam.toFixed(2)));
+          } else {
+            const dist = Math.abs(mDeriv.x - 1.0);
+            state.param1 = dist < 0.12 ? 0.0 : Math.min(2.0, +(dist * dist).toFixed(2));
+          }
+          render();
+        } else if (state.dragType === 'SHIFT') {
+          if (state.mode === 4) {
+            const mDeriv = toMath(pos.x, pos.y, 'deriv');
+            let kVal = mDeriv.y;
+            if (Math.abs(kVal - (-3.0)) < 0.18) kVal = -3.0;
+            state.param2 = Math.max(-4.0, Math.min(2.0, +kVal.toFixed(2)));
+          } else if (state.mode === 5) {
+            const mMain = toMath(pos.x, pos.y, 'main');
+            state.param2 = Math.max(-1.5, Math.min(3.2, +mMain.x.toFixed(2)));
+          }
+          render();
+        } else if (state.dragType === 'PAN') {
+          state.offsetX += pos.x - state.lastMouse.x;
+          state.offsetY += pos.y - state.lastMouse.y;
+          state.lastMouse = pos;
+          render();
+        }
+        return;
+      }
+
+      canvas.style.cursor = 'grab';
+    }
+
+    function handlePointerUp() {
+      state.isDragging = false;
+      state.dragType = null;
+    }
+
+    canvas.addEventListener('mousedown', handlePointerDown);
+    window.addEventListener('mousemove', handlePointerMove);
+    window.addEventListener('mouseup', handlePointerUp);
+
+    canvas.addEventListener('touchstart', handlePointerDown, { passive: false });
+    window.addEventListener('touchmove', handlePointerMove, { passive: false });
+    window.addEventListener('touchend', handlePointerUp);
+
+    canvas.addEventListener(
+      'wheel',
+      (e) => {
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.09 : 0.92;
+        zoomCanvas(factor);
+      },
+      { passive: false }
+    );
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setMode(1);
+      resizeCanvas();
+      requestAnimationFrame(animateLoop);
+    });
+  </script>
+</body>
+</html>

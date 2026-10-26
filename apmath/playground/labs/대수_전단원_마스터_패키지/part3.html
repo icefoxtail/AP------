@@ -1,0 +1,2227 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>대수 Part 3. 수열 8대 킬러 유형 마스터 칠판</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- FontAwesome 6 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<style>
+:root {
+--bg-deep: #07130e;
+--bg-board: #0d2119;
+--bg-panel: #10281f;
+--bg-card: #163329;
+--neon-emerald: #34d399;
+--neon-gold: #fbbf24;
+--neon-cyan: #38bdf8;
+--neon-coral: #fb7185;
+--neon-purple: #c084fc;
+}
+
+* {
+box-sizing: border-box;
+font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+user-select: none;
+}
+
+body {
+margin: 0;
+padding: 0;
+background: linear-gradient(135deg, #07130e 0%, #0f261d 50%, #163329 100%);
+color: #ecfdf5;
+overflow: hidden;
+height: 100vh;
+width: 100vw;
+}
+
+::-webkit-scrollbar {
+width: 6px;
+height: 6px;
+}
+::-webkit-scrollbar-track {
+background: rgba(7, 19, 14, 0.6);
+}
+::-webkit-scrollbar-thumb {
+background: rgba(52, 211, 153, 0.35);
+border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: rgba(52, 211, 153, 0.65);
+}
+
+.chalk-bg {
+background-color: #0b1d16;
+background-image:
+radial-gradient(circle at 25% 20%, rgba(52, 211, 153, 0.045) 0%, transparent 50%),
+radial-gradient(circle at 75% 80%, rgba(251, 191, 36, 0.035) 0%, transparent 50%);
+}
+
+.math-frac {
+display: inline-flex;
+flex-direction: column;
+align-items: center;
+vertical-align: middle;
+margin: 0 3px;
+font-size: 0.92em;
+line-height: 1.1;
+}
+.math-frac > .num {
+border-bottom: 1.5px solid currentColor;
+padding: 0 3px 2px 3px;
+width: 100%;
+text-align: center;
+}
+.math-frac > .den {
+padding: 2px 3px 0 3px;
+width: 100%;
+text-align: center;
+}
+
+.glow-gold {
+box-shadow: 0 0 15px rgba(251, 191, 36, 0.25), inset 0 0 8px rgba(251, 191, 36, 0.12);
+}
+.glow-emerald {
+box-shadow: 0 0 15px rgba(52, 211, 153, 0.25), inset 0 0 8px rgba(52, 211, 153, 0.12);
+}
+
+input[type=range] {
+-webkit-appearance: none;
+appearance: none;
+width: 100%;
+height: 6px;
+background: rgba(255, 255, 255, 0.12);
+border-radius: 999px;
+outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 16px;
+height: 16px;
+border-radius: 50%;
+background: #34d399;
+border: 2px solid #ffffff;
+cursor: pointer;
+box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);
+transition: transform 0.15s ease;
+}
+input[type=range]::-webkit-slider-thumb:hover {
+transform: scale(1.2);
+background: #fbbf24;
+}
+
+.katex {
+font-size: 1.03em !important;
+color: inherit;
+}
+
+.tab-btn-active {
+background: linear-gradient(180deg, rgba(52, 211, 153, 0.22) 0%, rgba(16, 40, 31, 0.95) 100%);
+border-bottom: 3px solid #fbbf24;
+color: #ffffff;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+</style>
+</head>
+<body class="flex flex-col h-screen w-screen overflow-hidden">
+<header class="shrink-0 bg-[#07130e]/95 border-b border-emerald-800/60 z-20">
+<div class="flex items-center justify-between px-4 py-2 border-b border-emerald-900/50">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-gradient-to-br from-amber-500 to-emerald-700 flex items-center justify-center shadow-lg shadow-emerald-900/50 border border-amber-300/40">
+<i class="fa-solid fa-layer-group text-white text-lg"></i>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 text-[11px] font-bold rounded bg-amber-500/20 text-amber-300 border border-amber-400/30">2022 개정 대수 (수학 I)</span>
+<h1 class="text-base md:text-lg font-extrabold tracking-tight text-white">
+Part 3. 수열의 함수적 해석 & 귀납적 추론 <span class="text-amber-400">8대 킬러 유형</span> 마스터 칠판
+</h1>
+</div>
+<p class="text-[11px] text-emerald-300/70 hidden sm:block">
+일반항 직선 · 원점 통과 포물선 Sₙ · 절댓값 꺾은선 · a₁ 점프 스캐너 · 망원급수 레이저 · 점화식 거미줄 & 역추적 트리
+</p>
+</div>
+</div>
+code
+Code
+<div class="flex items-center gap-2">
+    <div class="hidden xl:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-500/40 text-xs text-emerald-200">
+      <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+      <span>칠판의 노란색 제어점을 드래그하여 수열의 기하학적 불변량을 실험하세요!</span>
+    </div>
+    <button onclick="triggerTwinProblem()" class="px-3 py-1.5 rounded-lg bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/50 text-purple-200 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+      <i class="fa-solid fa-dice"></i>
+      <span>쌍둥이 변형 생성</span>
+    </button>
+    <button onclick="snapToCondition()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+      <i class="fa-solid fa-bullseye"></i>
+      <span>문제 조건 스냅</span>
+    </button>
+  </div>
+</div>
+
+<!-- 8 Killer Modes Tab Bar -->
+<nav id="modeTabBar" class="flex items-center gap-1 px-3 pt-1.5 overflow-x-auto no-scrollbar bg-[#091812]">
+  <!-- Populated by JS -->
+</nav>
+</header>
+<main class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+code
+Code
+<!-- LEFT: Interactive 2D Chalkboard Canvas -->
+<section class="flex-1 relative chalk-bg overflow-hidden flex flex-col min-h-[340px]">
+
+  <!-- Top-Left Canvas HUD -->
+  <div class="absolute top-3 left-3 z-10 pointer-events-none flex flex-col gap-1.5 max-w-[420px]">
+    <div class="bg-[#07130e]/85 backdrop-blur-md border border-emerald-700/50 rounded-xl px-3.5 py-2.5 shadow-xl">
+      <div class="flex items-center justify-between gap-3 mb-1">
+        <span id="hudTypeBadge" class="text-[11px] font-bold uppercase tracking-wider text-amber-400">TYPE 01</span>
+        <span id="hudSubTitle" class="text-[11px] text-emerald-300/80 font-medium">실시간 수열·함수 판서</span>
+      </div>
+      <div id="hudEquationBox" class="text-sm text-white font-semibold leading-relaxed">
+        <!-- Rendered via KaTeX -->
+      </div>
+    </div>
+
+    <!-- Condition Snap Toast -->
+    <div id="snapToast" class="hidden bg-amber-500/95 text-slate-950 font-extrabold text-xs px-3.5 py-2 rounded-lg shadow-lg items-center gap-2 transition-all">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <span id="snapToastText">기출 문제 조건에 정확히 스냅되었습니다! (오차 0.000%)</span>
+    </div>
+  </div>
+
+  <!-- Top-Right Canvas HUD: What-If Mutator Switches -->
+  <div class="absolute top-3 right-3 z-10 flex flex-wrap justify-end gap-1.5 max-w-[360px]">
+    <button id="btnToggleCont" onclick="toggleMutator('cont')" class="px-2.5 py-1.5 rounded-lg bg-[#07130e]/85 hover:bg-emerald-900/80 border border-emerald-600/50 text-[11px] font-semibold text-emerald-200 transition flex items-center gap-1.5">
+      <i class="fa-solid fa-bezier-curve text-amber-400"></i>
+      <span>연속 실수함수 실선</span>
+    </button>
+    <button id="btnToggleAbs" onclick="toggleMutator('abs')" class="px-2.5 py-1.5 rounded-lg bg-[#07130e]/85 hover:bg-emerald-900/80 border border-emerald-600/50 text-[11px] font-semibold text-emerald-200 transition flex items-center gap-1.5">
+      <i class="fa-solid fa-chart-line text-cyan-400"></i>
+      <span>|수열| 절댓값 반전</span>
+    </button>
+    <button id="btnToggleStems" onclick="toggleMutator('stems')" class="px-2.5 py-1.5 rounded-lg bg-[#07130e]/85 hover:bg-emerald-900/80 border border-emerald-600/50 text-[11px] font-semibold text-emerald-200 transition flex items-center gap-1.5">
+      <i class="fa-solid fa-chart-column text-purple-400"></i>
+      <span>자연수 항 기둥(Stem)</span>
+    </button>
+  </div>
+
+  <!-- Main HTML5 Canvas -->
+  <canvas id="chalkCanvas" class="w-full h-full cursor-grab active:cursor-grabbing block"></canvas>
+
+  <!-- Bottom Floating Toolbar -->
+  <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 bg-[#07130e]/90 backdrop-blur-md border border-emerald-700/60 px-3 py-1.5 rounded-full shadow-2xl">
+    <button onclick="zoomCanvas(1.18)" title="확대" class="w-7 h-7 rounded-full hover:bg-emerald-800/60 text-emerald-200 flex items-center justify-center text-xs transition">
+      <i class="fa-solid fa-magnifying-glass-plus"></i>
+    </button>
+    <button onclick="zoomCanvas(0.85)" title="축소" class="w-7 h-7 rounded-full hover:bg-emerald-800/60 text-emerald-200 flex items-center justify-center text-xs transition">
+      <i class="fa-solid fa-magnifying-glass-minus"></i>
+    </button>
+    <button onclick="resetView()" title="시점 초기화" class="px-2.5 h-7 rounded-full hover:bg-emerald-800/60 text-emerald-200 flex items-center justify-center gap-1 text-[11px] font-medium transition">
+      <i class="fa-solid fa-rotate-left"></i>
+      <span>시점 리셋</span>
+    </button>
+    <div class="h-3.5 w-[1px] bg-emerald-800 mx-1"></div>
+    <span class="text-[11px] text-amber-300/90 font-medium px-1 flex items-center gap-1">
+      <i class="fa-solid fa-hand-pointer"></i>
+      <span class="hidden sm:inline">노란색 핸들을 드래그하여 수열 조건을 실시간 조작</span>
+    </span>
+  </div>
+</section>
+
+<!-- RIGHT: 460px Control, Problem, Step 1~3 & 3m vs 10s Secret Panel -->
+<aside class="w-full lg:w-[460px] shrink-0 bg-[#0b1f17]/95 border-t lg:border-t-0 lg:border-l border-emerald-800/60 overflow-y-auto p-3.5 space-y-3.5 z-10">
+
+  <!-- 1. [실전 기출 & 변형 카트리지 카드] -->
+  <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg">
+    <div class="flex items-center justify-between gap-2 mb-2.5">
+      <div id="scenarioChips" class="flex items-center gap-1 flex-wrap">
+        <!-- Populated by JS -->
+      </div>
+      <span id="problemSourceBadge" class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/50 shrink-0">
+        수능·평가원 4점
+      </span>
+    </div>
+
+    <div id="problemTextBox" class="text-[13.5px] leading-relaxed text-emerald-50 bg-[#091812]/90 border border-emerald-800/60 rounded-lg p-3 mb-3">
+      <!-- Rendered with KaTeX -->
+    </div>
+
+    <div class="flex items-center justify-between gap-2">
+      <button onclick="snapToCondition()" class="flex-1 py-2 px-3 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-extrabold text-xs shadow-md shadow-amber-500/20 flex items-center justify-center gap-1.5 transition">
+        <i class="fa-solid fa-bullseye"></i>
+        <span>🎯 문제 조건 원클릭 스냅</span>
+      </button>
+      <button onclick="triggerTwinProblem()" class="py-2 px-3 rounded-lg bg-purple-900/60 hover:bg-purple-800/80 border border-purple-400/50 text-purple-100 font-bold text-xs flex items-center justify-center gap-1.5 transition" title="숫자와 조건을 바꾸어 10초 비기를 직접 연습합니다">
+        <i class="fa-solid fa-dice text-purple-300"></i>
+        <span>🎲 쌍둥이 숫자 변형</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. [단계별 보조선 Step 1~3 언락] -->
+  <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg">
+    <div class="flex items-center justify-between mb-2.5">
+      <div class="flex items-center gap-1.5">
+        <i class="fa-solid fa-compass-drafting text-amber-400 text-sm"></i>
+        <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-100">단계별 사고 확장 보조선 언락</h2>
+      </div>
+      <button onclick="toggleAllSteps()" id="btnAllSteps" class="text-[11px] font-bold text-amber-300 hover:text-amber-200 px-2 py-0.5 rounded bg-amber-500/15 border border-amber-400/30 transition">
+        전체 보조선 켜기
+      </button>
+    </div>
+
+    <div class="grid grid-cols-3 gap-1.5 mb-2">
+      <button id="stepBtn1" onclick="toggleStep(1)" class="py-2 px-2 rounded-lg border text-xs font-bold transition flex flex-col items-center gap-0.5">
+        <span class="text-[10px] opacity-80">STEP 1</span>
+        <span id="stepLabel1" class="truncate w-full text-center">함수 개형·대칭축</span>
+      </button>
+      <button id="stepBtn2" onclick="toggleStep(2)" class="py-2 px-2 rounded-lg border text-xs font-bold transition flex flex-col items-center gap-0.5">
+        <span class="text-[10px] opacity-80">STEP 2</span>
+        <span id="stepLabel2" class="truncate w-full text-center">소거·절편 매칭</span>
+      </button>
+      <button id="stepBtn3" onclick="toggleStep(3)" class="py-2 px-2 rounded-lg border text-xs font-bold transition flex flex-col items-center gap-0.5">
+        <span class="text-[10px] opacity-80">STEP 3</span>
+        <span id="stepLabel3" class="truncate w-full text-center">10초 공식 판서</span>
+      </button>
+    </div>
+
+    <div id="stepDescBox" class="text-xs text-emerald-200/90 bg-[#091812]/80 border border-emerald-800/50 rounded-lg px-3 py-2 leading-relaxed">
+      Step 1~3 버튼을 눌러 칠판 위에 숨겨진 함수적·구조적 보조선을 단계별로 작도해보세요.
+    </div>
+  </div>
+
+  <!-- 3. [교과서 3분 정석 풀이 vs 10초 컷 실전 구조·기하 비기] -->
+  <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg space-y-2.5">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-1.5">
+        <i class="fa-solid fa-bolt text-amber-400 text-sm"></i>
+        <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-100">풀이 전략 2대 비교 (정석 vs 실전 비기)</h2>
+      </div>
+      <span class="text-[10px] text-amber-300 font-semibold">클릭하여 펼치기</span>
+    </div>
+
+    <!-- 3-Minute Textbook Solution Accordion -->
+    <div class="border border-slate-600/50 rounded-lg overflow-hidden bg-[#0a1913]">
+      <button onclick="toggleAccordion('textbook')" class="w-full px-3 py-2.5 flex items-center justify-between text-left hover:bg-slate-800/40 transition">
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-700 text-slate-200">🐢 교과서 3분 정석</span>
+          <span id="textbookTitle" class="text-xs font-bold text-slate-200">초항 a₁과 공차 d 연립방정식 전개</span>
+        </div>
+        <i id="iconTextbook" class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+      </button>
+      <div id="contentTextbook" class="hidden px-3.5 pb-3 pt-1 text-xs leading-relaxed text-slate-300 border-t border-slate-800/80 space-y-1.5">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- 10-Second Killer Secret Accordion -->
+    <div class="border border-amber-500/60 rounded-lg overflow-hidden bg-gradient-to-b from-amber-950/30 to-[#091812] glow-gold">
+      <button onclick="toggleAccordion('secret')" class="w-full px-3 py-2.5 flex items-center justify-between text-left hover:bg-amber-900/20 transition">
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-400 text-slate-950">⚡ 10초 컷 실전 비기</span>
+          <span id="secretTitle" class="text-xs font-extrabold text-amber-300">원점 통과 포물선 대칭축 & 역추적 가지치기</span>
+        </div>
+        <i id="iconSecret" class="fa-solid fa-chevron-up text-xs text-amber-300 transition-transform"></i>
+      </button>
+      <div id="contentSecret" class="px-3.5 pb-3 pt-1.5 text-xs leading-relaxed text-emerald-50 border-t border-amber-500/30 space-y-2">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Trap Warning Box -->
+    <div class="bg-rose-950/40 border border-rose-500/40 rounded-lg px-3 py-2 flex items-start gap-2">
+      <i class="fa-solid fa-triangle-exclamation text-rose-400 text-xs mt-0.5 shrink-0"></i>
+      <div class="text-[11.5px] leading-snug text-rose-200">
+        <span class="font-extrabold text-rose-300">오답 함정 주의보: </span>
+        <span id="trapWarningText">수열의 정의역은 자연수이므로 대칭축이 정수가 아닐 때 가장 가까운 자연수 항을 확인하세요.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. [오차 0.000% 실시간 불변량 수치 모니터 & 다변수 슬라이더] -->
+  <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg space-y-3">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-1.5">
+        <i class="fa-solid fa-microchip text-cyan-400 text-sm"></i>
+        <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-100">실시간 불변량 모니터 & 파라미터 실험</h2>
+      </div>
+      <span class="px-2 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-[10px] font-extrabold text-cyan-300">
+        오차 0.000% 검증
+      </span>
+    </div>
+
+    <div id="invariantMonitorGrid" class="grid grid-cols-2 gap-2">
+      <!-- Populated dynamically -->
+    </div>
+
+    <div id="sliderControlsBox" class="space-y-2.5 pt-1 border-t border-emerald-800/60">
+      <!-- Populated dynamically -->
+    </div>
+  </div>
+
+</aside>
+</main>
+<script>
+// =========================================================================
+// 1. KATEX & CANVAS VERTICAL FRACTION RENDERERS
+// =========================================================================
+function renderMath(latex, displayMode = false) {
+try {
+return katex.renderToString(latex, {
+displayMode: displayMode,
+throwOnError: false,
+strict: false
+});
+} catch (e) {
+return latex;
+}
+}
+
+function formatRichMath(text) {
+if (!text) return '';
+return text.replace(/\$\$([^$]+)\$\$/g, (_, tex) => renderMath(tex, true))
+.replace(/\$([^$]+)\$/g, (_, tex) => renderMath(tex, false));
+}
+
+function drawCanvasFraction(ctx, numStr, denStr, x, y, options = {}) {
+const {
+color = '#fbbf24',
+fontSize = 13.5,
+bgColor = 'rgba(7, 19, 14, 0.88)',
+borderColor = 'rgba(251, 191, 36, 0.5)',
+prefix = '',
+suffix = ''
+} = options;
+
+ctx.save();
+ctx.font = `bold ${fontSize}px Pretendard, sans-serif`;
+const preW = prefix ? ctx.measureText(prefix).width + 4 : 0;
+const sufW = suffix ? ctx.measureText(suffix).width + 4 : 0;
+const numW = ctx.measureText(numStr).width;
+const denW = ctx.measureText(denStr).width;
+const fracW = Math.max(numW, denW) + 10;
+const totalW = preW + fracW + sufW + 16;
+const totalH = fontSize * 2.55;
+
+const left = x - totalW / 2;
+const top = y - totalH / 2;
+
+ctx.fillStyle = bgColor;
+ctx.strokeStyle = borderColor;
+ctx.lineWidth = 1.2;
+ctx.beginPath();
+ctx.roundRect(left, top, totalW, totalH, 8);
+ctx.fill();
+ctx.stroke();
+
+ctx.fillStyle = color;
+ctx.textBaseline = 'middle';
+
+let curX = left + 8;
+if (prefix) {
+ctx.textAlign = 'left';
+ctx.fillText(prefix, curX, y);
+curX += preW;
+}
+
+const centerFracX = curX + fracW / 2;
+ctx.textAlign = 'center';
+ctx.fillText(numStr, centerFracX, y - fontSize * 0.58);
+ctx.fillText(denStr, centerFracX, y + fontSize * 0.62);
+
+ctx.strokeStyle = color;
+ctx.lineWidth = 1.6;
+ctx.beginPath();
+ctx.moveTo(centerFracX - fracW / 2 + 2, y);
+ctx.lineTo(centerFracX + fracW / 2 - 2, y);
+ctx.stroke();
+
+curX += fracW;
+if (suffix) {
+ctx.textAlign = 'left';
+ctx.fillText(suffix, curX + 4, y);
+}
+ctx.restore();
+}
+
+function drawCanvasBadge(ctx, text, x, y, color = '#34d399', bg = 'rgba(7, 19, 14, 0.88)') {
+ctx.save();
+ctx.font = 'bold 12px Pretendard, sans-serif';
+const w = ctx.measureText(text).width + 16;
+const h = 24;
+ctx.fillStyle = bg;
+ctx.strokeStyle = color;
+ctx.lineWidth = 1.2;
+ctx.beginPath();
+ctx.roundRect(x - w / 2, y - h / 2, w, h, 6);
+ctx.fill();
+ctx.stroke();
+
+ctx.fillStyle = color;
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.fillText(text, x, y);
+ctx.restore();
+}
+
+// =========================================================================
+// 2. 8 KILLER MODES DATA (PART 3: SEQUENCES & INDUCTIVE REASONING)
+// =========================================================================
+const KILLER_MODES = [
+{
+id: 'type1',
+code: 'TYPE 01',
+shortTitle: '등차 일반항 직선 & 등차중항',
+icon: 'fa-grip-lines',
+stepLabels: ['직선 기울기 = 공차 d', '영점 대칭 상쇄 아치', '등차중항 평균 판서'],
+stepDescs: [
+'Step 1: 등차수열 $a_n = dn + (a_1 - d)$를 기울기가 공차 $d = \\frac{a_q - a_p}{q - p}$인 일차함수 직선 위에 찍힌 자연수 점들로 작도합니다.',
+'Step 2: 직선이 $x$축을 지나는 영점($a_m = 0$)을 중심으로 대칭인 항들($a_{m-k} + a_{m+k} = 0$)이 서로 부호가 반대여서 합이 $0$으로 소거됨을 보여줍니다.',
+'Step 3: 임의의 구간 합 $\\sum_{k=1}^{n} a_k$를 $(\\text{중앙항 } a_{\\frac{n+1}{2}}) \\times (\\text{항수 } n)$으로 1초 만에 계산하는 세로 분수 판서를 표시합니다.'
+],
+trapWarning: '첨자(항 번호)의 합이 같다고 해서 무조건 $a_p + a_q = a_r$이 되는 것이 아니라, **양변의 항의 개수까지 같아야**($a_p + a_q = a_r + a_s \\iff p+q=r+s$) 상수항이 소거됩니다!',
+scenarios: [
+{
+chip: '기출 A (영점 대칭과 부호 반전)',
+source: '수능·평가원 3~4점 필수',
+params: { dSlope: 2, zeroN: 5 },
+snapParams: { dSlope: 2, zeroN: 5 },
+problem: '공차가 $d = 2$인 등차수열 $\\{a_n\\}$에서 $a_3 + a_7 = 0$일 때, $a_5$의 값과 $\\sum_{k=1}^{9} a_k$의 값, 그리고 $a_{10}$의 값을 구하시오.',
+textbookTitle: '초항 a₁과 공차 d로 전개하여 연립',
+textbookSteps: [
+'1) $a_3 + a_7 = (a_1 + 2d) + (a_1 + 6d) = 2a_1 + 8d = 0$이다.',
+'2) $d = 2$를 대입하면 $2a_1 + 16 = 0 \\implies a_1 = -8$.',
+'3) 따라서 $a_5 = -8 + 4(2) = 0$, $S_9 = \\frac{9(-16 + 8\\times 2)}{2} = 0$, $a_{10} = -8 + 9(2) = 10$이다.'
+],
+secretTitle: 'a₁ 구하기 금지! (번호 평균 = 등차중항 & 기울기 점프)',
+secretSteps: [
+'⚡ **[1초 등차중항]** $a_3 + a_7 = 2a_5 = 0 \\implies a_5 = 0$! 초항 $a_1$을 구할 필요가 전혀 없습니다.',
+'⚡ **[대칭 합 소거]** $a_1$부터 $a_9$까지의 정중앙 항이 $a_5 = 0$이므로 $\\sum_{k=1}^{9} a_k = 9 \\times a_5 = 0$!',
+'⚡ **[기울기 점프]** $a_{10}$은 $a_5 = 0$에서 오른쪽으로 $5$칸 이동했으므로 $0 + 5d = 10$ 끝!'
+]
+},
+{
+chip: '기출 B (짝수 번호 대칭 a₄ + a₅ = 0)',
+source: '평가원 4점 준킬러 모델',
+params: { dSlope: -2, zeroN: 4.5 },
+snapParams: { dSlope: -2, zeroN: 4.5 },
+problem: '첫째항이 $7$이고 $a_4 + a_5 = 0$을 만족시키는 등차수열 $\\{a_n\\}$에서 처음으로 음수가 되는 항의 번호와 $\\sum_{k=1}^{8} a_k$의 값을 구하시오.',
+textbookTitle: '초항 7 대입하여 공차 d 계산',
+textbookSteps: [
+'1) $(7 + 3d) + (7 + 4d) = 14 + 7d = 0 \\implies d = -2$.',
+'2) $a_n = 7 - 2(n-1) = 9 - 2n < 0 \\implies n > 4.5$이므로 제$5$항부터 음수이다.',
+'3) $S_8 = \\frac{8(14 + 7\\times(-2))}{2} = 0$.'
+],
+secretTitle: '영점이 4.5번! (4번 양수, 5번 음수 & 1~8번 합 = 0)',
+secretSteps: [
+'⚡ **[중점 영점 직독]** $a_4 + a_5 = 0$은 직선이 **$x = 4.5$에서 $x$축을 뚫고 내려간다**는 뜻입니다! 따라서 $a_4 > 0, a_5 < 0$ (5항부터 음수).',
+'⚡ **[짝수 대칭 합]** $1\\sim 8$번의 평균 번호가 $\\frac{1+8}{2} = 4.5$이므로 $S_8 = 4(a_4 + a_5) = 0$!'
+]
+}
+]
+},
+{
+id: 'type2',
+code: 'TYPE 02',
+shortTitle: '합 Sₙ 원점 통과 포물선',
+icon: 'fa-bezier-curve',
+stepLabels: ['원점 (0,0) 통과 포물선', '대칭축 x = (p+q)/2', '원점 대칭 S_(p+q) = 0'],
+stepDescs: [
+'Step 1: 등차수열의 합 $S_n = \\frac{d}{2}n^2 + \\left(a_1 - \\frac{d}{2}\\right)n$은 상수항이 $0$이므로 **무조건 원점 $(0, 0)$을 지나는 포물선**으로 칠판에 작도됩니다.',
+'Step 2: $S_p = S_q$ ($p \\neq q$)일 때 두 점의 높이가 같으므로 포물선의 **대칭축은 정확히 $x = \\frac{p+q}{2}$**입니다.',
+'Step 3: 원점 $(0,0)$과 대칭축 $\\frac{p+q}{2}$에 의해 반대쪽 $x$절편은 무조건 $(p+q, 0)$ 즉 **$S_{p+q} = 0$**이 됨을 오차 `0.000%`로 검증합니다.'
+],
+trapWarning: '대칭축 $x = \\frac{p+q}{2}$가 $4.5$처럼 반정수(.5)일 때는, $S_n$이 최대가 되는 자연수 $n$이 $4$와 $5$ **두 개($S_4 = S_5$)**이고 이때 $a_5 = 0$입니다!',
+scenarios: [
+{
+chip: '기출 A (S₃ = S₇ ⟹ 대칭축 5, S₁₀ = 0)',
+source: '수능·평가원 4점 최고 빈출',
+params: { pIdx: 3, qIdx: 7, scaleK: -1 },
+snapParams: { pIdx: 3, qIdx: 7, scaleK: -1 },
+problem: '첫째항이 양수인 등차수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라 하자. $S_3 = S_7$일 때, $S_n$이 최대가 되는 자연수 $n$의 값과 $S_k = 0$을 만족시키는 자연수 $k$의 값을 구하시오.',
+textbookTitle: '합 공식 대입 후 a₁과 d 관계식 유도',
+textbookSteps: [
+'1) $S_3 = S_7 \\iff a_4 + a_5 + a_6 + a_7 = 0 \\iff 2(a_5 + a_6) = 0$이다.',
+'2) $2a_1 + 9d = 0 \\implies a_1 = -4.5d$ ($d < 0$).',
+'3) $S_n = \\frac{n(2a_1 + (n-1)d)}{2} = \\frac{d}{2}n(n - 10)$이므로 $n=5$에서 최대이고 $k=10$에서 $S_{10}=0$이다.'
+],
+secretTitle: 'S_p = S_q 보자마자 3초 공식: 대칭축 (p+q)/2, 영점 S_(p+q) = 0!',
+secretSteps: [
+'⚡ **[원점 포물선 비기]** $S_0 = 0$이고 $S_3 = S_7$이므로 **대칭축은 $\\frac{3+7}{2} = 5$** (따라서 $n=5$에서 최댓값)!',
+'⚡ **[원점 대칭 절편]** 원점 $(0,0)$을 대칭축 $5$에 대해 접으면 반대편 절편은 $(3+7, 0) = (10, 0)$! 즉 계산 없이 **$S_{10} = 0$ ($k=10$)** 3초 컷!'
+]
+},
+{
+chip: '기출 B (반정수 대칭축 S₃ = S₆ ⟹ S₉ = 0)',
+source: '평가원 모의평가 4점 변형',
+params: { pIdx: 3, qIdx: 6, scaleK: -1 },
+snapParams: { pIdx: 3, qIdx: 6, scaleK: -1 },
+problem: '첫째항이 양수인 등차수열에서 $S_3 = S_6$일 때, $S_n$이 최대가 되는 모든 자연수 $n$의 값의 합과 $a_k = 0$인 항 번호 $k$를 구하시오.',
+textbookTitle: 'S₆ - S₃ = a₄ + a₅ + a₆ = 0 풀이',
+textbookSteps: [
+'1) $S_6 - S_3 = a_4 + a_5 + a_6 = 3a_5 = 0$이므로 $a_5 = 0$ ($k=5$).',
+'2) 제$4$항까지 양수이고 제$5$항이 $0$이므로 $S_4$와 $S_5$가 모두 최댓값으로 같다.',
+'3) 따라서 최대가 되는 $n$은 $4, 5$이고 합은 $9$이다.'
+],
+secretTitle: '대칭축 4.5에서 가장 가까운 두 자연수 4, 5 동시 최대!',
+secretSteps: [
+'⚡ **[대칭축 판독]** 대칭축이 $\\frac{3+6}{2} = 4.5$이므로, 가장 가까운 두 자연수 **$n=4$와 $n=5$에서 동시에 최댓값**($S_4 = S_5 \\implies a_5 = 0$)을 갖습니다!',
+'⚡ 반대편 영점은 여전히 $S_{3+6} = S_9 = 0$입니다!'
+]
+}
+]
+},
+{
+id: 'type3',
+code: 'TYPE 03',
+shortTitle: '절댓값 수열(|aₙ| 합 & |Sₙ|)',
+icon: 'fa-wave-square',
+stepLabels: ['원래 포물선 Sₙ 궤적', '|Sₙ| W자 꺾은 포물선', '∑|aₖ| = 2S_max - Sₙ'],
+stepDescs: [
+'Step 1: 첫째항이 양수이고 공차가 음수인 등차수열의 합 $S_n$ 포물선(꼭짓점 $S_m$)을 작도합니다.',
+'Step 2: 절댓값 $|S_n|$을 씌우면 $n > p+q$ 이후 음수로 내려가던 포물선 날개가 위로 꺾여 올라오며, 수평선 $y = K$와 최대 $3$개의 자연수 점($S_p = S_q = -S_r$)에서 만납니다.',
+'Step 3: 항별 절댓값 합 $T_n = \\sum_{k=1}^{n} |a_k|$는 꼭짓점 $S_{\\max}$ 이후 감소하는 대신 **꼭짓점 높이 $S_{\\max}$를 기준으로 위로 반사된 포물선 $2S_{\\max} - S_n$**이 됨을 판서합니다.'
+],
+trapWarning: '$|S_n|$ (합 전체에 절댓값)과 $\\sum_{k=1}^{n} |a_k|$ (각 항에 절댓값을 씌워 더한 것)는 완전히 다른 그래프입니다! 전자는 $x$축에서 꺾이고, 후자는 꼭짓점에서 위로 꺾입니다!',
+scenarios: [
+{
+chip: '기출 A (항별 절댓값 합 ∑|aₖ| 반사 공식)',
+source: '수능·평가원 13번·14번 단골',
+params: { zeroSumN: 8, scaleK: -1, targetN: 10 },
+snapParams: { zeroSumN: 8, scaleK: -1, targetN: 10 },
+problem: '등차수열 $\\{a_n\\}$의 합이 $S_n = -n^2 + 8n$일 때, $\\sum_{k=1}^{10} |a_k|$의 값을 구하시오.',
+textbookTitle: '일반항 구해 양수 항·음수 항 분리 계산',
+textbookSteps: [
+'1) $S_n = -n^2 + 8n$에서 $a_n = -2n + 9$이므로 제$4$항까지 양수이고 제$5$항부터 음수이다.',
+'2) $\\sum_{k=1}^{10} |a_k| = (a_1+a_2+a_3+a_4) - (a_5+\\cdots+a_{10}) = S_4 - (S_{10} - S_4) = 2S_4 - S_{10}$.',
+'3) $S_4 = -16 + 32 = 16$, $S_{10} = -100 + 80 = -20$이므로 $2(16) - (-20) = 52$.'
+],
+secretTitle: '일반항 구하기 금지! 꼭짓점 반사 공식 (2S_max - S_n)',
+secretSteps: [
+'⚡ **[꼭짓점 반사 비기]** 양수였던 항들이 음수로 바뀌어 더해지므로, $T_n = \\sum_{k=1}^{n} |a_k|$는 꼭짓점 이후 **$2S_{\\text{꼭짓점}} - S_n$**입니다!',
+'⚡ **[5초 암산]** $S_n = -n(n-8)$의 대칭축은 $n=4$이고 꼭짓점 $S_4 = 16$, $S_{10} = -20$이므로 **$2(16) - (-20) = 52$** 끝!'
+]
+},
+{
+chip: '기출 B (|S₃| = |S₅| = |S₉| 꺾은 포물선 킬러)',
+source: '평가원 모의평가 4점 킬러 모델',
+params: { zeroSumN: 8, scaleK: -1, targetN: 9 },
+snapParams: { zeroSumN: 8, scaleK: -1, targetN: 9 },
+problem: '등차수열의 합 $S_n = k n(n - 8)$ ($k = -1$)에 대하여, $|S_3| = |S_5| = 15$이고 $n > 8$에서 $|S_r| = 15$를 만족시키는 자연수 $r$의 값을 구하시오.',
+textbookTitle: '절댓값 부호 케이스 나누어 이차방정식 풀이',
+textbookSteps: [
+'1) $n=3, 5$는 대칭축 $4$에 대칭이므로 $S_3 = S_5 = 15$이다.',
+'2) $n > 8$에서는 $S_r < 0$이므로 $-S_r = 15 \\implies r(r-8) = 15$.',
+'3) $r^2 - 8r - 15 = 0$ 또는 정수 조건에 맞는 $r$을 구한다 ($S_n = -n(n-8)$에서는 $S_9 = -9$).'
+],
+secretTitle: '|S_p| = |S_q| = |S_r| ⟹ 앞의 둘은 대칭(S_p=S_q), 뒤의 하나는 부호 반전(-S_r)!',
+secretSteps: [
+'⚡ **[W자 그래프 판독]** 이차함수 절댓값 $|S_n|$이 같은 높이를 3번 가지려면, 무조건 **봉우리 양쪽 대칭점 2개($S_p = S_q$)**와 **접혀 올라온 오른쪽 날개 1개($S_p = -S_r$)**입니다!'
+]
+}
+]
+},
+{
+id: 'type4',
+code: 'TYPE 04',
+shortTitle: 'Sₙ 상수항 함정과 a₁ 점프',
+icon: 'fa-arrow-up-right-dots',
+stepLabels: ['n ≥ 2 등차 직선', '초항 a₁ = S₁ 점프 이탈', '미분형 aₙ 1초 공식'],
+stepDescs: [
+'Step 1: $S_n = pn^2 + qn + C$에서 상수항 $C$는 차분 $a_n = S_n - S_{n-1}$ ($n \\ge 2$) 과정에서 완전히 소거되어, 제$2$항부터는 $C$와 무관한 직선 위에 놓입니다.',
+'Step 2: 그러나 첫째항 $a_1 = S_1 = p + q + C$에는 상수항 $C$가 살아남아, **$C \\neq 0$이면 점 $(1, a_1)$ 하나만 직선에서 $C$만큼 위로/아래로 점프(이탈)**합니다!',
+'Step 3: 전개 없이 $S_n = pn^2 + qn + C \\implies a_n = 2pn + (q-p)$ ($n \\ge 2$)를 1초 만에 뽑아내는 공식을 판서합니다.'
+],
+trapWarning: '문제에서 $S_n = n^2 + 2n + 3$을 주고 **$a_1 + a_5$**를 구하라고 할 때, $a_n$ 공식에 $n=1$을 대입하면 100% 틀립니다! 반드시 $a_1 = S_1$로 따로 구하거나 $+C$를 더하세요!',
+scenarios: [
+{
+chip: '기출 A (상수항 C ≠ 0일 때 a₁ + a₅ 함정)',
+source: '내신·수능 3~4점 최고 오답률 함정',
+params: { pCoeff: 1, qCoeff: 2, constC: 3 },
+snapParams: { pCoeff: 1, qCoeff: 2, constC: 3 },
+problem: '수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합이 $S_n = n^2 + 2n + 3$일 때, $a_1 + a_5$의 값을 구하시오.',
+textbookTitle: 'S₁ 따로 구하고 S_n - S_(n-1) 전개',
+textbookSteps: [
+'1) $a_1 = S_1 = 1^2 + 2(1) + 3 = 6$이다.',
+'2) $n \\ge 2$일 때 $a_n = S_n - S_{n-1} = (n^2+2n+3) - \\{(n-1)^2+2(n-1)+3\\} = 2n + 1$.',
+'3) $a_5 = 2(5) + 1 = 11$이므로 $a_1 + a_5 = 6 + 11 = 17$. (만약 $a_1$에 $2n+1$을 잘못 쓰면 $3+11=14$ 오답!)'
+],
+secretTitle: '미분하듯 1초 추출: aₙ = 2pn + (q-p) & a₁ 점프값 +C!',
+secretSteps: [
+'⚡ **[1초 추출법]** $S_n = pn^2 + qn + C$에서 이차항 계수 $p$를 2배 해 내리면 공차 $2p$! 즉 $n \\ge 2$일 때 **$a_n = 2pn + (q - p) = 2n + 1$**입니다.',
+'⚡ **[초항 점프 보정]** 첫째항 $a_1$은 위 식에 $n=1$을 넣은 값($3$)에 **상수항 $C = +3$만 더해주면** $a_1 = 3 + 3 = 6$! 따라서 $6 + 11 = 17$!'
+]
+},
+{
+chip: '기출 B (첫째항부터 등차수열이 될 조건 C = 0)',
+source: '교과서·모의고사 필수 개념',
+params: { pCoeff: 1, qCoeff: 2, constC: 0 },
+snapParams: { pCoeff: 1, qCoeff: 2, constC: 0 },
+problem: '수열의 합 $S_n = n^2 + 2n + C$가 **첫째항부터** 등차수열을 이루도록 하는 상수 $C$의 값과 이때의 일반항 $a_n$을 구하시오.',
+textbookTitle: 'S₁ = a₁(공식값) 일치 조건 비교',
+textbookSteps: [
+'1) $n \\ge 2$일 때 $a_n = 2n + 1$이고, 여기에 $n=1$을 대입한 값은 $3$이다.',
+'2) 실제 첫째항 $S_1 = 1 + 2 + C = 3 + C$가 $3$과 같아야 하므로 $C = 0$이다.'
+],
+secretTitle: '첫째항부터 등차수열 ⟺ S₀ = 0 (상수항 C = 0)!',
+secretSteps: [
+'⚡ **[원점 통과 법칙]** 다항식이나 지수식 구분 없이 어떤 수열의 합 $S_n$이든 **첫째항부터 규칙을 만족할 필요충분조건은 $S_0 = 0$**입니다! ($C = 0$).'
+]
+}
+]
+},
+{
+id: 'type5',
+code: 'TYPE 05',
+shortTitle: '등비수열 구간 블록 합 비기',
+icon: 'fa-cubes-stacked',
+stepLabels: ['구간 조각 P₁, P₂, P₃ 분리', '조각 공비 R = rⁿ 등비중항', '전체 누적합 S_3n 암산'],
+stepDescs: [
+'Step 1: 누적합 $S_n, S_{2n}, S_{3n}$을 그대로 쓰지 않고, $n$개씩 잘라낸 **순수 구간 합 조각 $P_1 = S_n$, $P_2 = S_{2n} - S_n$, $P_3 = S_{3n} - S_{2n}$**으로 분리해 칠판에 기둥으로 세웁니다.',
+'Step 2: 등비수열을 $n$개씩 묶은 조각 $P_1, P_2, P_3$는 그 자체로 **공비가 $R = r^n$인 등비수열($P_2 = R\\cdot P_1, P_3 = R\\cdot P_2$)**을 이룹니다!',
+'Step 3: 인수분해 없이 세 조각을 더해 $S_{3n} = P_1 + P_2 + P_3$를 5초 만에 암산합니다.'
+],
+trapWarning: '등비수열을 이루는 것은 누적합 $S_n, S_{2n}, S_{3n}$ 자체가 아니라, **구간별로 뺀 조각들 $S_n,\\; (S_{2n}-S_n),\\; (S_{3n}-S_{2n})$**입니다! 절대 $S_{2n}^2 = S_n S_{3n}$으로 착각하지 마세요!',
+scenarios: [
+{
+chip: '기출 A (S_n = 10, S_2n = 30일 때 S_3n)',
+source: '수능·평가원·내신 4점 단골',
+params: { block1: 10, blockRatio: 2 },
+snapParams: { block1: 10, blockRatio: 2 },
+problem: '등비수열 $\\{a_n\\}$의 첫째항부터 제$n$항까지의 합을 $S_n$이라 하자. $S_n = 10$, $S_{2n} = 30$일 때, $S_{3n}$의 값을 구하시오.',
+textbookTitle: '등비수열 합 공식 대입 및 인수분해 연립',
+textbookSteps: [
+'1) $\\frac{a(r^n - 1)}{r - 1} = 10$이고, $\\frac{a(r^{2n} - 1)}{r - 1} = \\frac{a(r^n-1)(r^n+1)}{r-1} = 10(r^n + 1) = 30$이다.',
+'2) 따라서 $r^n + 1 = 3 \\implies r^n = 2$를 얻는다.',
+'3) $S_{3n} = \\frac{a(r^{3n}-1)}{r-1} = \\frac{a(r^n-1)}{r-1}(r^{2n} + r^n + 1) = 10(4 + 2 + 1) = 70$.'
+],
+secretTitle: '공식 제로! 3단 조각 블록 [10] ➔ [20] ➔ [40] 더해서 70!',
+secretSteps: [
+'⚡ **[조각 쪼개기]** 첫 번째 묶음 $P_1 = S_n = 10$. 두 번째 묶음 $P_2 = S_{2n} - S_n = 30 - 10 = 20$!',
+'⚡ **[블록 공비 직독]** 묶음끼리도 등비수열이므로 $[10] \\xrightarrow{\\times 2} [20] \\xrightarrow{\\times 2} P_3 = [40]$!',
+'⚡ **[3초 합산]** $S_{3n} = 10 + 20 + 40 = 70$ 끝!'
+]
+},
+{
+chip: '기출 B (조각 공비가 3배인 S_n=5, S_2n=20)',
+source: '모의고사 4점 변형',
+params: { block1: 5, blockRatio: 3 },
+snapParams: { block1: 5, blockRatio: 3 },
+problem: '등비수열에서 $S_n = 5$, $S_{2n} = 20$일 때, 세 번째 구간 합 $S_{3n} - S_{2n}$의 값과 $S_{3n}$의 값을 구하시오.',
+textbookTitle: 'r^n = 3 유도 후 세제곱 공식 대입',
+textbookSteps: [
+'1) $S_{2n} = S_n(r^n + 1) \\implies 20 = 5(r^n + 1) \\implies r^n = 3$.',
+'2) $S_{3n} - S_{2n} = r^{2n} S_n = 9 \\times 5 = 45$이고 $S_{3n} = 20 + 45 = 65$이다.'
+],
+secretTitle: '조각 블록 [5] ➔ [15] ➔ [45] ⟹ 합 65!',
+secretSteps: [
+'⚡ $P_1 = 5$, $P_2 = 20 - 5 = 15$ ($3$배!). 따라서 $P_3 = 15 \\times 3 = 45$이고 $S_{3n} = 5 + 15 + 45 = 65$!'
+]
+}
+]
+},
+{
+id: 'type6',
+code: 'TYPE 06',
+shortTitle: '시그마 망원급수 소거 레이저',
+icon: 'fa-wand-sparkles',
+stepLabels: ['부분분수 1/d 분리', '대각선 연쇄 소거 레이저', '양끝 보존 n/(a₁a_{n+1})'],
+stepDescs: [
+'Step 1: 각 항 $\\frac{1}{a_k a_{k+1}}$을 부분분수 공식 $\\frac{1}{d}\\left(\\frac{1}{a_k} - \\frac{1}{a_{k+1}}\\right)$로 쪼개어 칠판에 나열합니다.',
+'Step 2: 이웃한 항의 뒷부분($-\\frac{1}{a_{k+1}}$)과 다음 항의 앞부분($+\\frac{1}{a_{k+1}}$)을 대각선 네온 레이저로 연쇄 소거합니다.',
+'Step 3: 통분 과정까지 생략하고 **$\\sum_{k=1}^{n} \\frac{1}{a_k a_{k+1}} = \\frac{\\text{항의 개수 } n}{(\\text{맨 앞 } a_1) \\times (\\text{맨 뒤 } a_{n+1})}$** 세로 분수로 3초 만에 답을 냅니다.'
+],
+trapWarning: '만약 분모의 두 인수가 $1$칸 차이가 아니라 **$2$칸 차이**($\\frac{1}{k(k+2)}$)라면, 맨 앞에 작은 쪽 **2개($1, \\frac{1}{2}$)**가 남고 맨 뒤에도 큰 쪽 **2개($-\\frac{1}{n+1}, -\\frac{1}{n+2}$)**가 대칭으로 남습니다!',
+scenarios: [
+{
+chip: '기출 A (등차 부분분수 3초 공식)',
+source: '수능·평가원·내신 필수 유형',
+params: { termCountN: 6, firstA1: 1, diffD: 2 },
+snapParams: { termCountN: 6, firstA1: 1, diffD: 2 },
+problem: '수열 $a_n = 2n - 1$에 대하여 $\\sum_{k=1}^{6} \\frac{1}{a_k a_{k+1}} = \\sum_{k=1}^{6} \\frac{1}{(2k-1)(2k+1)}$의 값을 구하시오.',
+textbookTitle: '1/2 앞으로 묶고 나열 후 마지막 통분',
+textbookSteps: [
+'1) $\\frac{1}{(2k-1)(2k+1)} = \\frac{1}{2}\\left(\\frac{1}{2k-1} - \\frac{1}{2k+1}\\right)$로 변형한다.',
+'2) $k=1\\sim 6$을 대입하면 $\\frac{1}{2}\\left\\{(1 - \\frac{1}{3}) + (\\frac{1}{3} - \\frac{1}{5}) + \\cdots + (\\frac{1}{11} - \\frac{1}{13})\\right\\}$.',
+'3) 중간이 지워져 $\\frac{1}{2}\\left(1 - \\frac{1}{13}\\right) = \\frac{1}{2}\\times\\frac{12}{13} = \\frac{6}{13}$이다.'
+],
+secretTitle: '부분분수 쪼개기 & 통분 생략! (항의 개수 n) / (맨 앞 × 맨 뒤)',
+secretSteps: [
+'⚡ **[우주 최강 3초 공식]** 공차가 일정한 부분분수 합은 앞의 $\\frac{1}{d}$과 통분 시 분자의 $d$가 항상 약분됩니다!',
+'⚡ 따라서 결과는 무조건 **$\\frac{\\text{항의 개수 } n}{(\\text{맨 처음 작은 인수}) \\times (\\text{맨 마지막 큰 인수})} = \\frac{6}{1 \\times 13} = \\frac{6}{13}$** 끝!'
+]
+},
+{
+chip: '기출 B (항수 n=8, 공차 d=3 부분분수)',
+source: '모의고사 변형 연습',
+params: { termCountN: 8, firstA1: 2, diffD: 3 },
+snapParams: { termCountN: 8, firstA1: 2, diffD: 3 },
+problem: '첫째항이 $2$이고 공차가 $3$인 등차수열 $a_n = 3n - 1$에 대하여 $\\sum_{k=1}^{8} \\frac{1}{a_k a_{k+1}}$의 값을 3초 공식으로 구하시오.',
+textbookTitle: '1/3 묶어내고 통분 계산',
+textbookSteps: [
+'1) $\\frac{1}{3}\\left(\\frac{1}{2} - \\frac{1}{26}\\right) = \\frac{1}{3}\\times\\frac{24}{52} = \\frac{8}{52} = \\frac{2}{13}$.'
+],
+secretTitle: '(항수 8) / (맨 앞 a₁=2 × 맨 뒤 a₉=26) = 8 / 52 = 2/13!',
+secretSteps: [
+'⚡ 항의 개수 $8$개, 맨 앞 $a_1 = 2$, 맨 뒤 $a_9 = 26$이므로 **$\\frac{8}{2 \\times 26} = \\frac{2}{13}$** 암산 완료!'
+]
+}
+]
+},
+{
+id: 'type7',
+code: 'TYPE 07',
+shortTitle: '점화식 주기성 거미줄(Cobweb)',
+icon: 'fa-spider',
+stepLabels: ['구간별 함수 y=f(x) & y=x', '거미줄 궤적(a₁→a₂→a₃)', '순환 사이클(Cycle) 합산'],
+stepDescs: [
+'Step 1: 구간별로 정의된 점화식 $a_{n+1} = f(a_n)$의 그래프와 항 번호를 다음 입력으로 넘겨주는 반사 거울선 $y = x$를 칠판에 작도합니다.',
+'Step 2: 첫째항 $a_1$에서 출발하여 곡선 $y=f(x)$에 부딪히고 직선 $y=x$에 반사되는 **거미줄 궤적(Cobweb Plot)**을 따라 항들의 이동 경로를 추적합니다.',
+'Step 3: 궤적이 닫힌 사각형/다각형 고리(**주기 사이클 Cycle Loop**)에 진입하는 순간을 포착하여 $\\sum_{k=1}^{100} a_k$를 묶음 곱셈으로 단숨에 해결합니다.'
+],
+trapWarning: '첫째항 $a_1$부터 바로 주기가 시작되지 않고, $a_1 \\to a_2$까지는 진입 구간(Pre-period)이고 **$a_3$부터 주기가 도는 경우**가 많습니다! 앞의 진입 항을 주기 묶음에 섞지 마세요!',
+scenarios: [
+{
+chip: '기출 A (구간별 점화식 3주기 순환 루프)',
+source: '수능·평가원 15번 주기성 모델',
+params: { startA1: 1, limitN: 30 },
+snapParams: { startA1: 1, limitN: 30 },
+problem: '수열 $\\{a_n\\}$이 모든 자연수 $n$에 대하여 $a_{n+1} = \\begin{cases} a_n + 2 & (a_n < 4) \\\\ a_n - 4 & (a_n \\ge 4) \\end{cases}$를 만족시킨다. $a_1 = 1$일 때, 수열의 주기 $p$와 $\\sum_{k=1}^{30} a_k$의 값을 구하시오.',
+textbookTitle: '항을 차례대로 나열하여 규칙 발견',
+textbookSteps: [
+'1) $a_1 = 1 < 4 \\implies a_2 = 1 + 2 = 3$.',
+'2) $a_2 = 3 < 4 \\implies a_3 = 3 + 2 = 5$.',
+'3) $a_3 = 5 \\ge 4 \\implies a_4 = 5 - 4 = 1 = a_1$! 따라서 주기 $3$인 수열 $[1, 3, 5]$가 반복되므로 $\\sum_{k=1}^{30} a_k = 10 \\times (1+3+5) = 90$.'
+],
+secretTitle: '거미줄 루프(Cycle Box) 감지기: 상승폭(+2) × 2번 = 하강폭(-4) ⟹ 3주기!',
+secretSteps: [
+'⚡ **[루프 균형 법칙]** $+2$씩 두 번 올라가면 $+4$가 되고, 한 번에 $-4$만큼 떨어져 제자리로 돌아오므로 **무조건 $2 + 1 = 3$주기 순환 루프**입니다!',
+'⚡ 한 마디 합 $(1 + 3 + 5) = 9$가 $10$번 반복되므로 $9 \\times 10 = 90$!'
+]
+},
+{
+chip: '기출 B (짝수 출발 루프 [2, 4, 0] 변형)',
+source: '평가원 4점 변형 시나리오',
+params: { startA1: 2, limitN: 31 },
+snapParams: { startA1: 2, limitN: 31 },
+problem: '위와 동일한 점화식에서 첫째항을 $a_1 = 2$로 바꾸었을 때, 순환 마디 $[a_1, a_2, a_3]$과 $\\sum_{k=1}^{31} a_k$의 값을 구하시오.',
+textbookTitle: 'a₁=2부터 대입 후 몫과 나머지 분리',
+textbookSteps: [
+'1) $a_1 = 2 \\to a_2 = 4 \\to a_3 = 0 \\to a_4 = 2$이므로 $[2, 4, 0]$이 주기 $3$으로 반복된다.',
+'2) $31 = 3 \\times 10 + 1$이므로 $\\sum_{k=1}^{31} a_k = 10(2+4+0) + a_1 = 60 + 2 = 62$.'
+],
+secretTitle: '(마디 합 6) × (몫 10) + (나머지 1항 a₁=2) = 62!',
+secretSteps: [
+'⚡ 칠판의 거미줄 그래프에서 출발점 핸들을 $a_1 = 2$로 옮기면 즉시 $[2 \\to 4 \\to 0]$ 삼각형 루프로 바뀝니다!'
+]
+}
+]
+},
+{
+id: 'type8',
+code: 'TYPE 08',
+shortTitle: '점화식 역추적 이진 트리(15번)',
+icon: 'fa-sitemap',
+stepLabels: ['역방향 2갈래 분기식', '정의역 조건 부적격 가지치기', '생존 a₁ 후보 자동 합산'],
+stepDescs: [
+'Step 1: 정방향 점화식 $a_{n+1} = \\begin{cases} 2a_n & (a_n < k) \\\\ a_n - k & (a_n \\ge k) \\end{cases}$를 거꾸로 뒤집어, 이전 항 후보를 **① $a_n = \\frac{1}{2}a_{n+1}$ (단, $a_n < k$)** 또는 **② $a_n = a_{n+1} + k$ (단, $a_n \\ge k$)** 두 갈래로 분기합니다.',
+'Step 2: 각 단계에서 계산된 후보값이 해당 구간의 부등식 조건(또는 자연수 조건)을 위배하면 **빨간색 X(Dead Branch)로 즉시 가지치기(Pruning)**합니다!',
+'Step 3: 제$4$항(또는 제$5$항)에서 출발해 끝까지 살아남은 모든 유효한 $a_1$들을 골든 네온으로 점등하고 합을 구합니다.'
+],
+trapWarning: '역추적할 때 $a_n = \\frac{1}{2}a_{n+1}$을 구한 뒤, **반드시 그 결과값 $a_n$이 원래 조건 범위($a_n < k$) 안에 들어오는지** 검문소 체크를 해야 합니다! 안 그러면 가짜 해가 섞여 들어갑니다!',
+scenarios: [
+{
+chip: '기출 A (수능 15번 역추적 가지치기 정석)',
+source: '수능·평가원 15번 최고난도 킬러 모델',
+params: { targetA4: 4, threshK: 6 },
+snapParams: { targetA4: 4, threshK: 6 },
+problem: '모든 항이 자연수인 수열 $\\{a_n\\}$이 $a_{n+1} = \\begin{cases} 2a_n & (a_n < 6) \\\\ a_n - 6 & (a_n \\ge 6) \\end{cases}$을 만족시킨다. $a_4 = 4$가 되도록 하는 **모든 첫째항 $a_1$의 값의 합**을 칠판의 역추적 트리로 구하시오.',
+textbookTitle: 'a₁을 미지수로 놓고 정방향 케이스 분류',
+textbookSteps: [
+'1) 정방향으로 $a_1 < 6$일 때와 $a_1 \\ge 6$일 때를 나누고, 다시 $a_2, a_3$의 범위를 나누면 총 $2^3 = 8$가지 부등식 연립방정식을 풀어야 한다.',
+'2) 역방향으로 $a_4 = 4$에서 $a_3$을 구하면: (i) $2a_3 = 4 \\implies a_3 = 2 (<6 \\text{ 성립})$, (ii) $a_3 - 6 = 4 \\implies a_3 = 10 (\\ge 6 \\text{ 성립})$.',
+'3) $a_3 = 2 \\implies a_2 \\in \\{1, 8\\}$. $a_3 = 10 \\implies a_2 = 5 (<6)$ 또는 $a_2 = 16 (\\ge 6)$. 다시 $a_1$을 역추적하여 자연수 조건을 만족하는 값만 더한다.'
+],
+secretTitle: '역추적 트리(Backward Tree) & 검문소 가지치기(Pruning) 비기',
+secretSteps: [
+'⚡ **[역연산 2갈래 공식]** 현재 숫자 $y$에서 왼쪽 가지는 **$\\frac{y}{2}$ (검문: $< 6$ & 자연수?)**, 오른쪽 가지는 **$y + 6$ (검문: $\\ge 6$ — 양수면 항상 통과!)**입니다.',
+'⚡ **[트리 즉시 전개]** $a_4=4 \\to a_3 \\in \\{2, 10\\} \\to a_2 \\in \\{1, 8, 5, 16\\} \\to$ 자연수만 살려내면 $a_1 \\in \\{7, 4, 14, 11, 8, 22\\}$! 칠판에서 죽은 가지(홀수 $\\div 2$)가 X로 잘려 나가는 모습을 확인하세요!'
+]
+},
+{
+chip: '기출 B (문턱값 k=4일 때 가지치기 대량 발생)',
+source: '평가원 15번 변형 훈련',
+params: { targetA4: 4, threshK: 4 },
+snapParams: { targetA4: 4, threshK: 4 },
+problem: '위 문제에서 기준 문턱값을 $k = 4$, 목표 항을 $a_4 = 4$로 바꾸었을 때($a_{n+1}=2a_n\\;(a_n<4)$ 또는 $a_n-4\\;(a_n\\ge 4)$), 왼쪽 가지($\\div 2 < 4$) 조건에 의해 살아남는 모든 자연수 $a_1$의 합을 확인하시오.',
+textbookTitle: '단계별 부등식 검산',
+textbookSteps: [
+'1) $a_4 = 4$에서 왼쪽 가지 $\\frac{4}{2} = 2 < 4$(통과), 오른쪽 가지 $4+4 = 8 \\ge 4$(통과).',
+'2) 그러나 $a_3 = 8$에서 왼쪽 가지 $\\frac{8}{2} = 4$는 "$a_2 < 4$" 조건을 위배하므로 **탈락(가지치기)**된다!',
+'3) 살아남은 경로만 따라가 $a_1$ 후보들을 합산한다.'
+],
+secretTitle: '경계값 등호(4 < 4 거짓!)에서 잘려 나가는 킬러 함정 포착!',
+secretSteps: [
+'⚡ **[최고난도 함정]** $8 \\div 2 = 4$는 자연수이지만, 왼쪽 가지의 정의역 조건인 **"$a_n < 4$"를 만족하지 못해($4 < 4$ 거짓!) 죽는 가지**입니다! 칠판 트리에서 빨간색 X를 확인하세요.'
+]
+}
+]
+}
+];
+
+// =========================================================================
+// 3. GLOBAL APPLICATION STATE
+// =========================================================================
+const state = {
+modeIdx: 0,
+scenarioIdx: 0,
+steps: { 1: true, 2: true, 3: false },
+mutators: {
+cont: true,
+abs: false,
+stems: true
+},
+params: {},
+view: {
+scale: 42,
+offsetX: -120,
+offsetY: 60
+},
+interaction: {
+isDragging: false,
+dragTarget: null,
+lastX: 0,
+lastY: 0
+}
+};
+
+const canvas = document.getElementById('chalkCanvas');
+const ctx = canvas.getContext('2d');
+let activeHandles = [];
+
+// =========================================================================
+// 4. INITIALIZATION & UI POPULATION
+// =========================================================================
+function initApp() {
+renderModeTabs();
+selectMode(0, 0);
+setupCanvasEvents();
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+requestAnimationFrame(renderLoop);
+}
+
+function renderModeTabs() {
+const tabBar = document.getElementById('modeTabBar');
+tabBar.innerHTML = KILLER_MODES.map((m, idx) => {
+const active = idx === state.modeIdx ? 'tab-btn-active' : 'text-emerald-300/75 hover:text-white hover:bg-emerald-900/40';
+const isInductive = idx >= 5;
+const badgeColor = isInductive ? 'bg-purple-950 text-purple-300 border-purple-700/60' : 'bg-emerald-950 text-amber-400 border-emerald-700/60';
+return `
+<button onclick="selectMode(${idx}, 0)" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-bold transition flex items-center gap-2 ${active}">
+<span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold border ${badgeColor}">${m.code}</span>
+<i class="fa-solid ${m.icon} ${isInductive ? 'text-purple-400' : 'text-emerald-400'}"></i>
+<span>${m.shortTitle}</span>
+</button>
+`;
+}).join('');
+}
+
+function selectMode(modeIdx, scenarioIdx = 0) {
+state.modeIdx = modeIdx;
+state.scenarioIdx = scenarioIdx;
+const mode = KILLER_MODES[modeIdx];
+const scen = mode.scenarios[scenarioIdx];
+
+state.params = JSON.parse(JSON.stringify(scen.params));
+state.steps = { 1: true, 2: true, 3: false };
+
+resetView();
+renderModeTabs();
+renderScenarioChips();
+updateRightPanel();
+updateStepButtonsUI();
+updateMutatorButtonsUI();
+}
+
+function renderScenarioChips() {
+const mode = KILLER_MODES[state.modeIdx];
+const box = document.getElementById('scenarioChips');
+box.innerHTML = mode.scenarios.map((s, idx) => {
+const isAct = idx === state.scenarioIdx;
+const cls = isAct
+? 'bg-amber-400 text-slate-950 font-extrabold shadow-sm'
+: 'bg-emerald-950/90 text-emerald-300 hover:bg-emerald-900 border border-emerald-700/50 font-semibold';
+return `
+<button onclick="selectMode(${state.modeIdx}, ${idx})" class="px-2.5 py-1 rounded-md text-[11px] transition ${cls}">
+${s.chip}
+</button>
+`;
+}).join('');
+}
+
+function updateRightPanel() {
+const mode = KILLER_MODES[state.modeIdx];
+const scen = mode.scenarios[state.scenarioIdx];
+
+document.getElementById('problemSourceBadge').textContent = scen.source;
+document.getElementById('problemTextBox').innerHTML = formatRichMath(scen.problem);
+
+document.getElementById('stepLabel1').textContent = mode.stepLabels[0];
+document.getElementById('stepLabel2').textContent = mode.stepLabels[1];
+document.getElementById('stepLabel3').textContent = mode.stepLabels[2];
+
+document.getElementById('textbookTitle').textContent = scen.textbookTitle;
+document.getElementById('contentTextbook').innerHTML = scen.textbookSteps
+.map(st => `<div class="py-0.5">${formatRichMath(st)}</div>`).join('');
+
+document.getElementById('secretTitle').textContent = scen.secretTitle;
+document.getElementById('contentSecret').innerHTML = scen.secretSteps
+.map(st => `<div class="py-0.5">${formatRichMath(st)}</div>`).join('');
+
+document.getElementById('trapWarningText').innerHTML = formatRichMath(mode.trapWarning);
+
+buildSlidersForCurrentMode();
+updateLiveHUDAndInvariants();
+}
+
+// =========================================================================
+// 5. STEP BUTTONS, ACCORDIONS, SNAP & TWIN PROBLEM GENERATOR
+// =========================================================================
+function toggleStep(n) {
+state.steps[n] = !state.steps[n];
+updateStepButtonsUI(n);
+}
+
+function toggleAllSteps() {
+const allOn = state.steps[1] && state.steps[2] && state.steps[3];
+state.steps[1] = !allOn;
+state.steps[2] = !allOn;
+state.steps[3] = !allOn;
+updateStepButtonsUI(3);
+}
+
+function updateStepButtonsUI(lastClicked = 1) {
+const mode = KILLER_MODES[state.modeIdx];
+[1, 2, 3].forEach(n => {
+const btn = document.getElementById(`stepBtn${n}`);
+if (state.steps[n]) {
+btn.className = 'py-2 px-2 rounded-lg border border-amber-400 bg-amber-500/20 text-amber-200 text-xs font-extrabold transition flex flex-col items-center gap-0.5 glow-gold';
+} else {
+btn.className = 'py-2 px-2 rounded-lg border border-emerald-800/70 bg-[#091812] text-emerald-400/70 hover:text-emerald-200 text-xs font-bold transition flex flex-col items-center gap-0.5';
+}
+});
+
+const allOn = state.steps[1] && state.steps[2] && state.steps[3];
+document.getElementById('btnAllSteps').textContent = allOn ? '전체 보조선 끄기' : '전체 보조선 켜기';
+
+const activeSteps = [1, 2, 3].filter(n => state.steps[n]);
+const descBox = document.getElementById('stepDescBox');
+if (activeSteps.length === 0) {
+descBox.innerHTML = '보조선이 모두 꺼져 있습니다. 위 버튼을 눌러 기하학적·함수적 단서를 켜보세요.';
+} else {
+const showIdx = state.steps[lastClicked] ? lastClicked - 1 : activeSteps[activeSteps.length - 1] - 1;
+descBox.innerHTML = formatRichMath(mode.stepDescs[showIdx]);
+}
+}
+
+function toggleAccordion(which) {
+const content = document.getElementById(which === 'textbook' ? 'contentTextbook' : 'contentSecret');
+const icon = document.getElementById(which === 'textbook' ? 'iconTextbook' : 'iconSecret');
+const isHidden = content.classList.contains('hidden');
+if (isHidden) {
+content.classList.remove('hidden');
+icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
+} else {
+content.classList.add('hidden');
+icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+}
+}
+
+function toggleMutator(key) {
+state.mutators[key] = !state.mutators[key];
+updateMutatorButtonsUI();
+}
+
+function updateMutatorButtonsUI() {
+const setBtn = (el, on) => {
+if (on) {
+el.className = 'px-2.5 py-1.5 rounded-lg bg-amber-500/25 border border-amber-400 text-[11px] font-extrabold text-amber-200 transition flex items-center gap-1.5 glow-gold';
+} else {
+el.className = 'px-2.5 py-1.5 rounded-lg bg-[#07130e]/85 hover:bg-emerald-900/80 border border-emerald-600/50 text-[11px] font-semibold text-emerald-200 transition flex items-center gap-1.5';
+}
+};
+setBtn(document.getElementById('btnToggleCont'), state.mutators.cont);
+setBtn(document.getElementById('btnToggleAbs'), state.mutators.abs);
+setBtn(document.getElementById('btnToggleStems'), state.mutators.stems);
+}
+
+function snapToCondition() {
+const mode = KILLER_MODES[state.modeIdx];
+const scen = mode.scenarios[state.scenarioIdx];
+const target = scen.snapParams;
+
+const startParams = { ...state.params };
+const startTime = performance.now();
+const duration = 420;
+
+state.steps = { 1: true, 2: true, 3: true };
+updateStepButtonsUI(3);
+
+function animateSnap(now) {
+const t = Math.min(1, (now - startTime) / duration);
+const ease = 1 - Math.pow(1 - t, 3);
+for (const k in target) {
+if (typeof startParams[k] === 'number') {
+state.params[k] = startParams[k] + (target[k] - startParams[k]) * ease;
+} else {
+state.params[k] = target[k];
+}
+}
+if (t === 1) {
+for (const k in target) state.params[k] = target[k];
+}
+syncSlidersFromParams();
+updateLiveHUDAndInvariants();
+if (t < 1) requestAnimationFrame(animateSnap);
+}
+requestAnimationFrame(animateSnap);
+showToast('🎯 문제 조건에 정확히 스냅되었습니다! (불변량 오차 0.000%)');
+}
+
+// Twin Problem Generator for Part 3 (Sequences)
+function triggerTwinProblem() {
+const mId = KILLER_MODES[state.modeIdx].id;
+const scen = KILLER_MODES[state.modeIdx].scenarios[state.scenarioIdx];
+
+if (mId === 'type1') {
+const zN = [4, 5, 6, 7][Math.floor(Math.random() * 4)];
+const dVal = [-3, -2, 2, 3][Math.floor(Math.random() * 4)];
+state.params.zeroN = zN;
+state.params.dSlope = dVal;
+scen.snapParams = { ...state.params };
+scen.problem = `**[🎲 쌍둥이 변형]** 공차가 $d = ${dVal}$이고 제$${zN}$항이 $a_{${zN}} = 0$인 등차수열입니다! 대칭 성질에 의해 প্রথম부터 제$${2*zN - 1}$항까지의 합은 계산할 필요 없이 **$\\sum_{k=1}^{${2*zN-1}} a_k = 0$**입니다!`;
+} else if (mId === 'type2') {
+const pairs = [[2, 6], [2, 8], [3, 9], [4, 8], [3, 11]];
+const pick = pairs[Math.floor(Math.random() * pairs.length)];
+const sym = (pick[0] + pick[1]) / 2;
+const zeroK = pick[0] + pick[1];
+state.params.pIdx = pick[0];
+state.params.qIdx = pick[1];
+scen.snapParams = { ...state.params };
+scen.problem = `**[🎲 쌍둥이 변형]** 등차수열에서 $S_{${pick[0]}} = S_{${pick[1]}}$일 때, 원점 통과 포물선 비기에 의해 최댓값 대칭축은 **$n = \\frac{${pick[0]}+${pick[1]}}{2} = ${sym}$**이고, 합이 $0$이 되는 항은 **$S_{${zeroK}} = 0$ ($k=${zeroK}$)**입니다!`;
+} else if (mId === 'type3') {
+const zSum = [6, 8, 10][Math.floor(Math.random() * 3)];
+const tN = zSum + 2;
+const vMax = (zSum / 2) * (zSum / 2);
+const sTarget = -tN * (tN - zSum);
+const ans = 2 * vMax - sTarget;
+state.params.zeroSumN = zSum;
+state.params.targetN = tN;
+scen.snapParams = { ...state.params };
+scen.problem = `**[🎲 쌍둥이 변형]** $S_n = -n^2 + ${zSum}n$일 때, 꼭짓점은 $S_{${zSum/2}} = ${vMax}$이고 $S_{${tN}} = ${sTarget}$이므로, 반사 공식에 의해 **$\\sum_{k=1}^{${tN}} |a_k| = 2(${vMax}) - (${sTarget}) = ${ans}$**입니다!`;
+} else if (mId === 'type4') {
+const pC = [1, 2, 3][Math.floor(Math.random() * 3)];
+const qC = [1, 3, 5][Math.floor(Math.random() * 3)];
+const cVal = [2, 4, 5][Math.floor(Math.random() * 3)];
+state.params.pCoeff = pC;
+state.params.qCoeff = qC;
+state.params.constC = cVal;
+scen.snapParams = { ...state.params };
+const a1 = pC + qC + cVal;
+const a5 = 2 * pC * 5 + (qC - pC);
+scen.problem = `**[🎲 쌍둥이 변형]** $S_n = ${pC}n^2 + ${qC}n + ${cVal}$일 때, 1초 공식으로 $a_n = ${2*pC}n + (${qC-pC})$ ($n\\ge 2$)이므로 $a_5 = ${a5}$, 첫째항은 점프값 $+${cVal}$을 더해 $a_1 = ${a1}$, 합은 **$${a1 + a5}$**입니다!`;
+} else if (mId === 'type5') {
+const b1 = [4, 5, 8, 10][Math.floor(Math.random() * 4)];
+const r = [2, 3][Math.floor(Math.random() * 2)];
+const s2n = b1 + b1 * r;
+const s3n = s2n + b1 * r * r;
+state.params.block1 = b1;
+state.params.blockRatio = r;
+scen.snapParams = { ...state.params };
+scen.problem = `**[🎲 쌍둥이 변형]** 등비수열에서 $S_n = ${b1},\\; S_{2n} = ${s2n}$일 때, 구간 조각 블록은 $[${b1}] \\to [${b1*r}] \\to [${b1*r*r}]$이므로 **$S_{3n} = ${s3n}$**입니다!`;
+} else if (mId === 'type6') {
+const nCnt = [5, 7, 9, 10][Math.floor(Math.random() * 4)];
+const dVal = [2, 3, 4][Math.floor(Math.random() * 3)];
+state.params.termCountN = nCnt;
+state.params.firstA1 = 1;
+state.params.diffD = dVal;
+scen.snapParams = { ...state.params };
+const lastA = 1 + nCnt * dVal;
+scen.problem = `**[🎲 쌍둥이 변형]** 초항 $a_1 = 1$, 공차 $d = ${dVal}$인 등차수열에서 $\\sum_{k=1}^{${nCnt}} \\frac{1}{a_k a_{k+1}}$은 3초 공식으로 **$\\frac{\\text{항수 } ${nCnt}}{1 \\times ${lastA}} = \\frac{${nCnt}}{${lastA}}$**입니다!`;
+} else if (mId === 'type7') {
+const a1Val = [1, 2, 3][Math.floor(Math.random() * 3)];
+const limN = [24, 27, 30, 33][Math.floor(Math.random() * 4)];
+state.params.startA1 = a1Val;
+state.params.limitN = limN;
+scen.snapParams = { ...state.params };
+scen.problem = `**[🎲 쌍둥이 변형]** 첫째항 $a_1 = ${a1Val}$에서 출발할 때 $3$주기 순환 루프를 따라 제$${limN}$항까지의 합을 칠판 거미줄 그래프에서 즉시 확인해보세요!`;
+} else if (mId === 'type8') {
+const tA4 = [2, 4, 6][Math.floor(Math.random() * 3)];
+const thK = [4, 6, 8][Math.floor(Math.random() * 3)];
+state.params.targetA4 = tA4;
+state.params.threshK = thK;
+scen.snapParams = { ...state.params };
+scen.problem = `**[🎲 쌍둥이 변형]** 목표 항을 $a_4 = ${tA4}$, 분기 문턱값을 $k = ${thK}$로 변형했습니다! 칠판의 역추적 이진 트리에서 살아남은 골든 네온 $a_1$ 후보들과 합을 확인하세요.`;
+}
+
+document.getElementById('problemTextBox').innerHTML = formatRichMath(scen.problem);
+syncSlidersFromParams();
+updateLiveHUDAndInvariants();
+showToast('🎲 새로운 쌍둥이 숫자 변형 문제가 생성되었습니다!');
+}
+
+function showToast(msg) {
+const toast = document.getElementById('snapToast');
+document.getElementById('snapToastText').textContent = msg;
+toast.classList.remove('hidden');
+toast.classList.add('flex');
+clearTimeout(toast._timer);
+toast._timer = setTimeout(() => {
+toast.classList.add('hidden');
+toast.classList.remove('flex');
+}, 2800);
+}
+
+// =========================================================================
+// 6. DYNAMIC SLIDERS & REAL-TIME 0.000% INVARIANT MONITOR
+// =========================================================================
+function buildSlidersForCurrentMode() {
+const mId = KILLER_MODES[state.modeIdx].id;
+const box = document.getElementById('sliderControlsBox');
+let defs = [];
+
+if (mId === 'type1') {
+defs = [
+{ key: 'dSlope', label: '등차수열 공차 d (직선 기울기)', min: -3, max: 3, step: 0.5 },
+{ key: 'zeroN', label: '영점 대칭 중심 번호 m (a_m = 0)', min: 2.5, max: 7.5, step: 0.5 }
+];
+} else if (mId === 'type2') {
+defs = [
+{ key: 'pIdx', label: '첫 번째 대칭 항 번호 p (S_p)', min: 1, max: 5, step: 1 },
+{ key: 'qIdx', label: '두 번째 대칭 항 번호 q (S_q)', min: 5, max: 11, step: 1 }
+];
+} else if (mId === 'type3') {
+defs = [
+{ key: 'zeroSumN', label: '원점 대칭 절편 번호 N (S_N = 0)', min: 6, max: 10, step: 2 },
+{ key: 'targetN', label: '합산 상한 항 번호 n (∑|a_k|)', min: 5, max: 12, step: 1 }
+];
+} else if (mId === 'type4') {
+defs = [
+{ key: 'pCoeff', label: '이차항 계수 p (공차 d = 2p)', min: 1, max: 3, step: 0.5 },
+{ key: 'qCoeff', label: '일차항 계수 q', min: -2, max: 4, step: 1 },
+{ key: 'constC', label: '상수항 C (a₁ 점프 이탈량!)', min: -3, max: 5, step: 1 }
+];
+} else if (mId === 'type5') {
+defs = [
+{ key: 'block1', label: '첫 구간 블록 합 P₁ (= S_n)', min: 2, max: 15, step: 1 },
+{ key: 'blockRatio', label: '구간 블록 공비 R (= rⁿ)', min: 1.5, max: 3.5, step: 0.5 }
+];
+} else if (mId === 'type6') {
+defs = [
+{ key: 'termCountN', label: '시그마 항의 개수 n', min: 3, max: 10, step: 1 },
+{ key: 'firstA1', label: '첫째항 a₁', min: 1, max: 4, step: 1 },
+{ key: 'diffD', label: '등차 공차 d', min: 1, max: 4, step: 1 }
+];
+} else if (mId === 'type7') {
+defs = [
+{ key: 'startA1', label: '출발 첫째항 a₁', min: 0.5, max: 5.5, step: 0.5 },
+{ key: 'limitN', label: '시그마 합산 항수 N', min: 6, max: 36, step: 1 }
+];
+} else if (mId === 'type8') {
+defs = [
+{ key: 'targetA4', label: '목표 제4항 값 a₄', min: 1, max: 8, step: 1 },
+{ key: 'threshK', label: '분기 기준 문턱값 k', min: 3, max: 8, step: 1 }
+];
+}
+
+box.innerHTML = defs.map(d => `
+<div>
+<div class="flex items-center justify-between text-xs mb-1">
+<span class="text-emerald-200 font-semibold">${d.label}</span>
+<span id="val_${d.key}" class="font-mono font-bold text-amber-300">${Number(state.params[d.key]).toFixed(d.step < 1 ? 2 : 0)}</span>
+</div>
+<input type="range" id="slider_${d.key}" min="${d.min}" max="${d.max}" step="${d.step}" value="${state.params[d.key]}"
+oninput="onSliderChange('${d.key}', this.value, ${d.step})" />
+</div>
+`).join('');
+}
+
+function onSliderChange(key, val, step) {
+state.params[key] = parseFloat(val);
+const labelEl = document.getElementById(`val_${key}`);
+if (labelEl) labelEl.textContent = state.params[key].toFixed(step < 1 ? 2 : 0);
+updateLiveHUDAndInvariants();
+}
+
+function syncSlidersFromParams() {
+for (const k in state.params) {
+const s = document.getElementById(`slider_${k}`);
+const v = document.getElementById(`val_${k}`);
+if (s) {
+s.value = state.params[k];
+const step = parseFloat(s.step) || 1;
+if (v) v.textContent = Number(state.params[k]).toFixed(step < 1 ? 2 : 0);
+}
+}
+}
+
+// Helper for Type 8 Backward Tree generation
+function computeBackwardTree(targetA4, k) {
+// Levels: level 0 = a4, level 1 = a3, level 2 = a2, level 3 = a1
+const root = { val: targetA4, level: 0, valid: true, reason: '목표항', children: [] };
+
+function expand(node) {
+if (node.level >= 3 || !node.valid) return;
+const y = node.val;
+
+// Branch 1: 2 * x = y => x = y / 2 (valid if x is integer/natural AND x < k)
+const xLeft = y / 2;
+const isIntLeft = Math.abs(xLeft - Math.round(xLeft)) < 1e-6 && xLeft >= 1;
+const condLeft = xLeft < k;
+const leftNode = {
+val: xLeft,
+level: node.level + 1,
+rule: '÷2',
+valid: isIntLeft && condLeft,
+reason: !isIntLeft ? '자연수 아님' : (!condLeft ? `≥${k} 범위위반` : '통과'),
+children: []
+};
+
+// Branch 2: x - k = y => x = y + k (valid if x >= k and natural)
+const xRight = y + k;
+const rightNode = {
+val: xRight,
+level: node.level + 1,
+rule: `+${k}`,
+valid: xRight >= k && Number.isInteger(Math.round(xRight)),
+reason: '통과',
+children: []
+};
+
+node.children = [leftNode, rightNode];
+expand(leftNode);
+expand(rightNode);
+}
+
+expand(root);
+
+const validA1 = [];
+function collectLeaves(node) {
+if (node.level === 3 && node.valid) validA1.push(node.val);
+node.children.forEach(collectLeaves);
+}
+collectLeaves(root);
+return { root, validA1 };
+}
+
+function updateLiveHUDAndInvariants() {
+const mode = KILLER_MODES[state.modeIdx];
+const mId = mode.id;
+const p = state.params;
+
+document.getElementById('hudTypeBadge').textContent = `${mode.code} · ${mode.shortTitle}`;
+const hudEq = document.getElementById('hudEquationBox');
+const grid = document.getElementById('invariantMonitorGrid');
+
+let cards = [];
+
+if (mId === 'type1') {
+const a1 = -p.dSlope * (p.zeroN - 1);
+const symEnd = Math.round(2 * p.zeroN - 1);
+hudEq.innerHTML = formatRichMath(
+`$a_n = ${p.dSlope.toFixed(1)}(n - ${p.zeroN.toFixed(1)}), \\quad a_1 = ${a1.toFixed(1)}, \\quad \\text{대칭 중심 } m = ${p.zeroN.toFixed(1)}$`
+);
+cards = [
+{ title: '기울기 = 공차 d', val: p.dSlope.toFixed(2), sub: '(a_q - a_p) / (q - p) 불변' },
+{ title: '영점 대칭 중심 번호', val: `${p.zeroN.toFixed(1)}번`, sub: `a_${p.zeroN.toFixed(1)} = 0` },
+{ title: `대칭 구간 합 S_${symEnd}`, val: '0.000', sub: '오차 0.000% 완벽 상쇄!' },
+{ title: '제10항 a₁₀ 값', val: (p.dSlope * (10 - p.zeroN)).toFixed(2), sub: '영점에서 (10-m)·d 점프' }
+];
+} else if (mId === 'type2') {
+const symAxis = (p.pIdx + p.qIdx) / 2;
+const zeroIdx = p.pIdx + p.qIdx;
+const sp = p.pIdx * (zeroIdx - p.pIdx);
+const maxVal = symAxis * symAxis;
+hudEq.innerHTML = formatRichMath(
+`$S_{${p.pIdx}} = S_{${p.qIdx}} = ${sp} \\implies S(n) = -n(n - ${zeroIdx}), \\quad \\text{대칭축 } x = ${symAxis.toFixed(1)}$`
+);
+cards = [
+{ title: '포물선 대칭축 (p+q)/2', val: `${symAxis.toFixed(1)}`, sub: Number.isInteger(symAxis) ? `n=${symAxis} 단독 최대` : `n=${Math.floor(symAxis)}, ${Math.ceil(symAxis)} 동시 최대` },
+{ title: `원점 대칭 절편 S_${zeroIdx}`, val: '0.000', sub: '오차 0.000% (항상 S_{p+q}=0)' },
+{ title: '원점 통과 불변량 S₀', val: '0.000', sub: '상수항 0 이차함수 성질' },
+{ title: '꼭짓점 최댓값', val: maxVal.toFixed(2), sub: `S(${symAxis.toFixed(1)}) 극값` }
+];
+} else if (mId === 'type3') {
+const N = p.zeroSumN;
+const m = N / 2;
+const sMax = m * m;
+const n = Math.round(p.targetN);
+const sn = -n * (n - N);
+const sumAbs = n <= m ? sn : 2 * sMax - sn;
+hudEq.innerHTML = formatRichMath(
+`$S_n = -n(n-${N}), \\quad S_{\\max}=S_{${m}}=${sMax}, \\quad \\sum_{k=1}^{${n}} |a_k| = 2S_{${m}} - S_{${n}} = ${sumAbs}$`
+);
+cards = [
+{ title: `항별 절댓값 합 ∑|a_k| (n=${n})`, val: `${sumAbs}`, sub: `2(${sMax}) - (${sn}) 일치` },
+{ title: '반사 공식 오차', val: '0.000%', sub: '∑|a_k| - (2S_max - S_n) = 0' },
+{ title: `합의 절댓값 |S_${n}|`, val: `${Math.abs(sn)}`, sub: `원래 S_${n} = ${sn}` },
+{ title: '꼭짓점 높이 S_max', val: `${sMax}`, sub: `대칭축 n = ${m}에서 발생` }
+];
+} else if (mId === 'type4') {
+const a1Actual = p.pCoeff + p.qCoeff + p.constC;
+const a1Formula = p.pCoeff + p.qCoeff;
+const a5 = 2 * p.pCoeff * 5 + (p.qCoeff - p.pCoeff);
+hudEq.innerHTML = formatRichMath(
+`$S_n = ${p.pCoeff}n^2 + (${p.qCoeff})n + (${p.constC}) \\implies a_n = ${2*p.pCoeff}n + (${p.qCoeff - p.pCoeff}) \\;(n\\ge 2)$`
+);
+cards = [
+{ title: '실제 첫째항 a₁ (= S₁)', val: a1Actual.toFixed(1), sub: `직선식(${a1Formula.toFixed(1)}) + C(${p.constC})` },
+{ title: '초항 이탈량 (a₁ 점프)', val: `${p.constC >= 0 ? '+' : ''}${p.constC.toFixed(1)}`, sub: p.constC === 0 ? '첫째항부터 등차수열!' : '⚠️ 제2항부터만 등차수열!' },
+{ title: '제5항 a₅ 값', val: a5.toFixed(1), sub: '상수항 C와 무관하게 일정' },
+{ title: 'a₁ + a₅ 정답', val: (a1Actual + a5).toFixed(1), sub: `오답(${(a1Formula+a5).toFixed(1)})과 ${p.constC} 차이` }
+];
+} else if (mId === 'type5') {
+const P1 = p.block1;
+const R = p.blockRatio;
+const P2 = P1 * R;
+const P3 = P2 * R;
+const S2n = P1 + P2;
+const S3n = P1 + P2 + P3;
+hudEq.innerHTML = formatRichMath(
+`$P_1 = S_n = ${P1.toFixed(1)}, \\; P_2 = S_{2n}-S_n = ${P2.toFixed(1)}, \\; P_3 = S_{3n}-S_{2n} = ${P3.toFixed(1)}$`
+);
+cards = [
+{ title: '3구간 누적합 S_3n', val: S3n.toFixed(2), sub: `${P1.toFixed(1)} + ${P2.toFixed(1)} + ${P3.toFixed(1)}` },
+{ title: '조각 등비중항 P₂² - P₁P₃', val: '0.000%', sub: `${(P2*P2).toFixed(1)} = ${(P1*P3).toFixed(1)} 일치` },
+{ title: '2구간 누적합 S_2n', val: S2n.toFixed(2), sub: `P₁ + P₂` },
+{ title: '블록 공비 R (= rⁿ)', val: `${R.toFixed(2)}배`, sub: 'P₂/P₁ = P₃/P₂ 불변' }
+];
+} else if (mId === 'type6') {
+const n = Math.round(p.termCountN);
+const a1 = p.firstA1;
+const d = p.diffD;
+const anPlus1 = a1 + n * d;
+const num = n;
+const den = a1 * anPlus1;
+hudEq.innerHTML = formatRichMath(
+`$\\sum_{k=1}^{${n}} \\frac{1}{a_k a_{k+1}} = \\frac{1}{${d}}\\left(\\frac{1}{${a1}} - \\frac{1}{${anPlus1}}\\right) = \\frac{${num}}{${a1} \\times ${anPlus1}} = \\frac{${num}}{${den}}$`
+);
+cards = [
+{ title: '3초 공식 분수 결과', val: `${num} / ${den}`, sub: `소수값 ${(num/den).toFixed(4)}` },
+{ title: '부분분수 전개식과 오차', val: '0.000%', sub: '통분 약분 항등식 성립' },
+{ title: '맨 앞 생존 인수 a₁', val: `${a1}`, sub: '첫 항의 작은 분모' },
+{ title: `맨 뒤 생존 인수 a_${n+1}`, val: `${anPlus1}`, sub: `마지막 항의 큰 분모` }
+];
+} else if (mId === 'type7') {
+const seq = [p.startA1];
+const N = Math.round(p.limitN);
+for (let i = 0; i < Math.max(N, 12); i++) {
+const cur = seq[i];
+seq.push(cur < 4 ? cur + 2 : cur - 4);
+}
+let sumN = 0;
+for (let i = 0; i < N; i++) sumN += seq[i];
+const cycleSum = seq[0] + seq[1] + seq[2];
+
+hudEq.innerHTML = formatRichMath(
+`$a_1=${p.startA1.toFixed(1)} \\implies [${seq[0].toFixed(1)} \\to ${seq[1].toFixed(1)} \\to ${seq[2].toFixed(1)}] \\text{ (3주기 순환)}, \\quad \\sum_{k=1}^{${N}} a_k = ${sumN.toFixed(1)}$`
+);
+cards = [
+{ title: '3주기 1마디 합', val: cycleSum.toFixed(2), sub: `${seq[0].toFixed(1)} + ${seq[1].toFixed(1)} + ${seq[2].toFixed(1)}` },
+{ title: `제1항~제${N}항 총합`, val: sumN.toFixed(2), sub: `몫 ${Math.floor(N/3)}마디 + 나머지 ${N%3}개` },
+{ title: '순환 주기 불변량', val: 'p = 3', sub: 'a_{n+3} - a_n = 0.000%' },
+{ title: '거미줄 루프 균형', val: '(+2)×2 - 4 = 0', sub: '상승합 + 하강합 = 0' }
+];
+} else if (mId === 'type8') {
+const tA4 = Math.round(p.targetA4);
+const k = Math.round(p.threshK);
+const { validA1 } = computeBackwardTree(tA4, k);
+const sumA1 = validA1.reduce((acc, v) => acc + v, 0);
+
+hudEq.innerHTML = formatRichMath(
+`$a_4 = ${tA4}, \\; k = ${k} \\implies \\text{생존 자연수 } a_1 \\in \\{${validA1.join(', ')}\\}, \\quad \\sum a_1 = ${sumA1}$`
+);
+cards = [
+{ title: '생존한 자연수 a₁ 개수', val: `${validA1.length}개`, sub: `전체 8갈래 중 ${8 - validA1.length}개 가지치기` },
+{ title: '모든 가능한 a₁의 합', val: `${sumA1}`, sub: validA1.join(' + ') || '없음' },
+{ title: '정방향 대입 검산 오차', val: '0.000%', sub: `모든 생존 a₁ ➔ a₄ = ${tA4}` },
+{ title: '왼쪽 가지 통과 조건', val: `짝수 & < ${2*k}`, sub: `÷2 결과가 < ${k} 이어야 생존` }
+];
+}
+
+grid.innerHTML = cards.map(c => `
+<div class="bg-[#091812] border border-emerald-800/70 rounded-lg p-2.5">
+<div class="text-[10.5px] text-emerald-300/80 font-medium truncate">${c.title}</div>
+<div class="text-sm font-extrabold text-amber-300 font-mono mt-0.5">${c.val}</div>
+<div class="text-[10px] text-emerald-400/70 truncate mt-0.5">${c.sub}</div>
+</div>
+`).join('');
+}
+
+// =========================================================================
+// 7. CANVAS VIEWPORT & INTERACTION EVENTS
+// =========================================================================
+function resizeCanvas() {
+const rect = canvas.parentElement.getBoundingClientRect();
+const dpr = window.devicePixelRatio || 1;
+canvas.width = rect.width * dpr;
+canvas.height = rect.height * dpr;
+ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+function resetView() {
+const mId = KILLER_MODES[state.modeIdx].id;
+state.view.scale = 42;
+state.view.offsetX = -150;
+state.view.offsetY = 30;
+
+if (mId === 'type1') {
+state.view.scale = 38;
+state.view.offsetX = -170;
+state.view.offsetY = 20;
+} else if (mId === 'type2' || mId === 'type3') {
+state.view.scale = 34;
+state.view.offsetX = -170;
+state.view.offsetY = 110;
+} else if (mId === 'type4') {
+state.view.scale = 36;
+state.view.offsetX = -140;
+state.view.offsetY = 120;
+} else if (mId === 'type7') {
+state.view.scale = 44;
+state.view.offsetX = -120;
+state.view.offsetY = 120;
+}
+}
+
+function zoomCanvas(factor) {
+state.view.scale = Math.max(18, Math.min(120, state.view.scale * factor));
+}
+
+function mathToScreen(mx, my) {
+const rect = canvas.getBoundingClientRect();
+const cx = rect.width / 2 + state.view.offsetX;
+const cy = rect.height / 2 + state.view.offsetY;
+return {
+x: cx + mx * state.view.scale,
+y: cy - my * state.view.scale
+};
+}
+
+function screenToMath(sx, sy) {
+const rect = canvas.getBoundingClientRect();
+const cx = rect.width / 2 + state.view.offsetX;
+const cy = rect.height / 2 + state.view.offsetY;
+return {
+x: (sx - cx) / state.view.scale,
+y: (cy - sy) / state.view.scale
+};
+}
+
+function setupCanvasEvents() {
+const getPos = (e) => {
+const rect = canvas.getBoundingClientRect();
+const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+return { x: clientX - rect.left, y: clientY - rect.top };
+};
+
+const onDown = (e) => {
+const pos = getPos(e);
+state.interaction.lastX = pos.x;
+state.interaction.lastY = pos.y;
+state.interaction.isDragging = true;
+
+for (const h of activeHandles) {
+if (Math.hypot(pos.x - h.sx, pos.y - h.sy) < 22) {
+state.interaction.dragTarget = h;
+return;
+}
+}
+state.interaction.dragTarget = 'pan';
+};
+
+const onMove = (e) => {
+const pos = getPos(e);
+if (!state.interaction.isDragging) {
+const near = activeHandles.some(h => Math.hypot(pos.x - h.sx, pos.y - h.sy) < 20);
+canvas.style.cursor = near ? 'pointer' : 'grab';
+return;
+}
+
+if (state.interaction.dragTarget === 'pan') {
+state.view.offsetX += pos.x - state.interaction.lastX;
+state.view.offsetY += pos.y - state.interaction.lastY;
+state.interaction.lastX = pos.x;
+state.interaction.lastY = pos.y;
+} else if (state.interaction.dragTarget && state.interaction.dragTarget.onDrag) {
+const mPos = screenToMath(pos.x, pos.y);
+state.interaction.dragTarget.onDrag(mPos);
+syncSlidersFromParams();
+updateLiveHUDAndInvariants();
+}
+};
+
+const onUp = () => {
+state.interaction.isDragging = false;
+state.interaction.dragTarget = null;
+};
+
+canvas.addEventListener('mousedown', onDown);
+window.addEventListener('mousemove', onMove);
+window.addEventListener('mouseup', onUp);
+
+canvas.addEventListener('touchstart', (e) => { onDown(e); }, { passive: true });
+window.addEventListener('touchmove', (e) => { if (state.interaction.isDragging) onMove(e); }, { passive: true });
+canvas.addEventListener('touchend', onUp);
+
+canvas.addEventListener('wheel', (e) => {
+e.preventDefault();
+zoomCanvas(e.deltaY < 0 ? 1.1 : 0.9);
+}, { passive: false });
+}
+
+// =========================================================================
+// 8. CHALKBOARD DRAWING PRIMITIVES
+// =========================================================================
+function drawGridAndAxes(w, h) {
+const mId = KILLER_MODES[state.modeIdx].id;
+// Type 5, 6, 8 use specialized schematic chalkboard layouts
+if (mId === 'type5' || mId === 'type6' || mId === 'type8') return;
+
+const topLeft = screenToMath(0, 0);
+const botRight = screenToMath(w, h);
+const minX = Math.floor(topLeft.x) - 1;
+const maxX = Math.ceil(botRight.x) + 1;
+const minY = Math.floor(botRight.y) - 1;
+const maxY = Math.ceil(topLeft.y) + 1;
+
+ctx.save();
+ctx.lineWidth = 1;
+ctx.strokeStyle = 'rgba(52, 211, 153, 0.08)';
+ctx.fillStyle = 'rgba(167, 243, 208, 0.45)';
+ctx.font = '11px Pretendard, sans-serif';
+
+const origin = mathToScreen(0, 0);
+
+for (let x = minX; x <= maxX; x++) {
+const sx = mathToScreen(x, 0).x;
+ctx.beginPath();
+ctx.moveTo(sx, 0);
+ctx.lineTo(sx, h);
+ctx.stroke();
+
+if (x !== 0 && state.view.scale > 24) {
+ctx.textAlign = 'center';
+ctx.fillText(x, sx, Math.min(h - 10, Math.max(15, origin.y + 16)));
+}
+}
+
+for (let y = minY; y <= maxY; y++) {
+const sy = mathToScreen(0, y).y;
+ctx.beginPath();
+ctx.moveTo(0, sy);
+ctx.lineTo(w, sy);
+ctx.stroke();
+
+if (y !== 0 && state.view.scale > 24) {
+ctx.textAlign = 'right';
+ctx.fillText(y, Math.min(w - 8, Math.max(24, origin.x - 8)), sy + 4);
+}
+}
+
+ctx.strokeStyle = 'rgba(236, 253, 245, 0.45)';
+ctx.lineWidth = 1.8;
+ctx.beginPath();
+ctx.moveTo(0, origin.y);
+ctx.lineTo(w, origin.y);
+ctx.moveTo(origin.x, 0);
+ctx.lineTo(origin.x, h);
+ctx.stroke();
+
+ctx.fillStyle = 'rgba(236, 253, 245, 0.65)';
+ctx.fillText('O', origin.x - 10, origin.y + 15);
+ctx.restore();
+}
+
+function drawFunctionCurve(fn, color = '#34d399', lineWidth = 2.4, dash = [], xStart = null, xEnd = null) {
+if (!state.mutators.cont && dash.length === 0) {
+dash = [4, 4];
+lineWidth = 1.5;
+}
+const w = canvas.getBoundingClientRect().width;
+const minX = xStart !== null ? xStart : screenToMath(0, 0).x;
+const maxX = xEnd !== null ? xEnd : screenToMath(w, 0).x;
+const step = (maxX - minX) / 380;
+
+ctx.save();
+ctx.strokeStyle = color;
+ctx.lineWidth = lineWidth;
+ctx.setLineDash(dash);
+
+ctx.beginPath();
+let started = false;
+for (let x = minX; x <= maxX; x += step) {
+let y = fn(x);
+if (state.mutators.abs && !isNaN(y)) y = Math.abs(y);
+if (isNaN(y) || !isFinite(y) || Math.abs(y) > 90) {
+started = false;
+continue;
+}
+const pt = mathToScreen(x, y);
+if (!started) {
+ctx.moveTo(pt.x, pt.y);
+started = true;
+} else {
+ctx.lineTo(pt.x, pt.y);
+}
+}
+ctx.stroke();
+ctx.restore();
+}
+
+function drawMathSegment(x1, y1, x2, y2, color = '#fbbf24', dash = [], width = 2.2) {
+const p1 = mathToScreen(x1, y1);
+const p2 = mathToScreen(x2, y2);
+ctx.save();
+ctx.strokeStyle = color;
+ctx.lineWidth = width;
+ctx.setLineDash(dash);
+ctx.beginPath();
+ctx.moveTo(p1.x, p1.y);
+ctx.lineTo(p2.x, p2.y);
+ctx.stroke();
+ctx.restore();
+}
+
+function drawMathPoint(x, y, label = '', color = '#fbbf24', radius = 6, isDraggable = false, onDrag = null) {
+const pt = mathToScreen(x, y);
+ctx.save();
+
+if (isDraggable) {
+ctx.fillStyle = 'rgba(251, 191, 36, 0.26)';
+ctx.beginPath();
+ctx.arc(pt.x, pt.y, radius + 7, 0, Math.PI * 2);
+ctx.fill();
+activeHandles.push({ sx: pt.x, sy: pt.y, onDrag });
+}
+
+ctx.fillStyle = color;
+ctx.strokeStyle = '#07130e';
+ctx.lineWidth = 2;
+ctx.beginPath();
+ctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
+ctx.fill();
+ctx.stroke();
+
+if (label) {
+ctx.font = 'bold 12px Pretendard, sans-serif';
+ctx.fillStyle = '#ffffff';
+ctx.textAlign = 'left';
+ctx.shadowColor = '#000';
+ctx.shadowBlur = 4;
+ctx.fillText(label, pt.x + 9, pt.y - 8);
+}
+ctx.restore();
+}
+
+// =========================================================================
+// 9. MODE-SPECIFIC CHALKBOARD RENDERERS (TYPE 1 ~ TYPE 8)
+// =========================================================================
+function renderLoop() {
+const rect = canvas.getBoundingClientRect();
+ctx.clearRect(0, 0, rect.width, rect.height);
+activeHandles = [];
+
+drawGridAndAxes(rect.width, rect.height);
+
+const mId = KILLER_MODES[state.modeIdx].id;
+if (mId === 'type1') renderType1();
+else if (mId === 'type2') renderType2();
+else if (mId === 'type3') renderType3();
+else if (mId === 'type4') renderType4();
+else if (mId === 'type5') renderType5(rect.width, rect.height);
+else if (mId === 'type6') renderType6(rect.width, rect.height);
+else if (mId === 'type7') renderType7();
+else if (mId === 'type8') renderType8(rect.width, rect.height);
+
+requestAnimationFrame(renderLoop);
+}
+
+// --- TYPE 1: Arithmetic Sequence Linear Function & Symmetry ---
+function renderType1() {
+const p = state.params;
+const scaleY = 0.5; // scale down y slightly for comfortable viewing
+const fn = x => scaleY * p.dSlope * (x - p.zeroN);
+
+if (state.steps[1]) {
+drawFunctionCurve(fn, 'rgba(52, 211, 153, 0.55)', 2.2, [], 0, 11);
+}
+
+// Natural number stems (n = 1 .. 10)
+for (let n = 1; n <= 10; n++) {
+let an = p.dSlope * (n - p.zeroN);
+if (state.mutators.abs) an = Math.abs(an);
+const yPlot = scaleY * an;
+const col = an > 0.01 ? '#34d399' : (an < -0.01 ? '#fb7185' : '#fbbf24');
+
+if (state.mutators.stems) {
+drawMathSegment(n, 0, n, yPlot, col, [], 2.5);
+}
+drawMathPoint(n, yPlot, `a_${n}=${an.toFixed(0)}`, col, 5.5);
+}
+
+// Step 2: Symmetric Cancellation Arches around zeroN
+if (state.steps[2]) {
+drawMathSegment(p.zeroN, -5, p.zeroN, 5, '#fbbf24', [5, 4], 1.8);
+const zScreen = mathToScreen(p.zeroN, -4.5);
+drawCanvasBadge(ctx, `영점 대칭 중심 m = ${p.zeroN.toFixed(1)} (양옆 항 부호 반대 상쇄!)`, zScreen.x, zScreen.y, '#fbbf24');
+}
+
+if (state.steps[3]) {
+const fPos = mathToScreen(p.zeroN, 4.5);
+drawCanvasFraction(ctx, `a_q - a_p`, `q - p`, fPos.x, fPos.y, {
+prefix: '직선 기울기 = 공차 d = ',
+suffix: ` = ${p.dSlope.toFixed(1)}`
+});
+}
+
+// Draggable handle at zeroN
+drawMathPoint(p.zeroN, 0, `영점 m=${p.zeroN.toFixed(1)} [좌우 드래그]`, '#fbbf24', 8, true, (mPos) => {
+state.params.zeroN = Math.max(2.5, Math.min(7.5, Math.round(mPos.x * 2) / 2));
+});
+}
+
+// --- TYPE 2: Sum S_n Parabola through Origin (0,0) ---
+function renderType2() {
+const p = state.params;
+const zeroIdx = p.pIdx + p.qIdx;
+const symAxis = zeroIdx / 2;
+const scaleY = 0.28; // visual scaling so S_5 = 25 fits at y = 7
+
+const fnS = x => scaleY * (-x * (x - zeroIdx));
+
+// Step 1: Parabola passing through Origin (0,0)
+drawFunctionCurve(fnS, '#34d399', 2.8, [], -0.8, zeroIdx + 1.5);
+drawMathPoint(0, 0, '원점 S₀=0 (불변!)', '#38bdf8', 7);
+
+// Discrete natural points S_1 .. S_(zeroIdx+1)
+for (let n = 1; n <= zeroIdx + 1; n++) {
+const valS = -n * (n - zeroIdx);
+const yPlot = scaleY * (state.mutators.abs ? Math.abs(valS) : valS);
+const isPair = (n === p.pIdx || n === p.qIdx);
+const isZero = (n === zeroIdx);
+const col = isZero ? '#fb7185' : (isPair ? '#fbbf24' : '#34d399');
+
+if (state.mutators.stems) {
+drawMathSegment(n, 0, n, yPlot, 'rgba(52, 211, 153, 0.25)', [], 1.5);
+}
+drawMathPoint(n, yPlot, isPair || isZero ? `S_${n}=${valS}` : '', col, isPair || isZero ? 6.5 : 4.5);
+}
+
+// Horizontal equality line S_p = S_q
+const spVal = -p.pIdx * (p.pIdx - zeroIdx);
+const yLine = scaleY * spVal;
+drawMathSegment(p.pIdx, yLine, p.qIdx, yLine, '#fbbf24', [5, 4], 2.2);
+
+// Step 2: Axis of Symmetry x = (p+q)/2
+if (state.steps[2]) {
+drawMathSegment(symAxis, -2, symAxis, scaleY * symAxis * symAxis + 1.2, '#fbbf24', [6, 4], 2.2);
+const topPos = mathToScreen(symAxis, scaleY * symAxis * symAxis + 1.4);
+drawCanvasFraction(ctx, `${p.pIdx} + ${p.qIdx}`, '2', topPos.x, topPos.y, {
+prefix: '대칭축 x = ',
+suffix: ` = ${symAxis.toFixed(1)} (극댓값)`
+});
+}
+
+// Step 3: Opposite Root S_(p+q) = 0 target
+if (state.steps[3]) {
+const zPos = mathToScreen(zeroIdx, -1.3);
+drawCanvasBadge(ctx, `원점 대칭 절편: S_(${p.pIdx}+${p.qIdx}) = S_${zeroIdx} = 0!`, zPos.x, zPos.y, '#fb7185');
+}
+
+// Draggable handle on S_q
+drawMathPoint(p.qIdx, yLine, `S_${p.qIdx} [좌우 드래그]`, '#fbbf24', 8, true, (mPos) => {
+state.params.qIdx = Math.max(p.pIdx + 1, Math.min(11, Math.round(mPos.x)));
+});
+}
+
+// --- TYPE 3: Absolute Value |a_n| Sum vs |S_n| Folded Parabola ---
+function renderType3() {
+const p = state.params;
+const N = p.zeroSumN;
+const m = N / 2;
+const sMax = m * m;
+const scaleY = 0.22;
+
+const fnOrigS = x => scaleY * (-x * (x - N));
+const fnAbsS = x => scaleY * Math.abs(-x * (x - N));
+const fnSumAbsA = x => {
+const sn = -x * (x - N);
+return scaleY * (x <= m ? sn : 2 * sMax - sn);
+};
+
+// Step 1: Original S_n dashed below x-axis
+if (state.steps[1]) {
+drawFunctionCurve(fnOrigS, 'rgba(52, 211, 153, 0.35)', 1.8, [5, 5], 0, 12.5);
+}
+
+// Step 2: |S_n| W-shaped folded parabola (Cyan)
+if (state.steps[2]) {
+drawFunctionCurve(fnAbsS, '#38bdf8', 2.6, [], 0, 12.5);
+const wPos = mathToScreen(N + 1.8, scaleY * Math.abs(-(N+1)*1) - 0.8);
+drawCanvasBadge(ctx, `|S_n| : x축(n=${N})에서 꺾임`, wPos.x, wPos.y, '#38bdf8');
+}
+
+// Step 3: Sum of |a_k| reflected upward at vertex (Gold)
+drawFunctionCurve(fnSumAbsA, '#fbbf24', 2.8, [], 0, 12.5);
+drawMathSegment(0, scaleY * sMax, 12, scaleY * sMax, 'rgba(251, 191, 36, 0.45)', [4, 4], 1.5);
+
+const n = Math.round(p.targetN);
+const sn = -n * (n - N);
+const sumAbsVal = n <= m ? sn : 2 * sMax - sn;
+
+if (state.steps[3]) {
+const fPos = mathToScreen(m + 2.5, scaleY * sMax + 1.5);
+drawCanvasBadge(ctx, `∑|a_k| = 2·S_${m}(${sMax}) - S_${n}(${sn}) = ${sumAbsVal}`, fPos.x, fPos.y, '#fbbf24');
+}
+
+drawMathPoint(m, scaleY * sMax, `꼭짓점 S_${m}=${sMax}`, '#34d399', 6.5);
+drawMathPoint(n, scaleY * sumAbsVal, `n=${n} (∑|a_k|=${sumAbsVal}) [드래그]`, '#fbbf24', 8, true, (mPos) => {
+state.params.targetN = Math.max(5, Math.min(12, Math.round(mPos.x)));
+});
+}
+
+// --- TYPE 4: S_n = pn^2 + qn + C and First Term a_1 Jump ---
+function renderType4() {
+const p = state.params;
+const scaleY = 0.45;
+
+// Line for a_n (n >= 2): y = 2p*x + (q - p)
+const fnLine = x => scaleY * (2 * p.pCoeff * x + (p.qCoeff - p.pCoeff));
+
+if (state.steps[1]) {
+drawFunctionCurve(fnLine, '#34d399', 2.4, [], 0.5, 8.5);
+}
+
+// Plot terms n = 2 .. 7 on the line
+for (let n = 2; n <= 7; n++) {
+const an = 2 * p.pCoeff * n + (p.qCoeff - p.pCoeff);
+if (state.mutators.stems) {
+drawMathSegment(n, 0, n, scaleY * an, 'rgba(52, 211, 153, 0.4)', [], 2);
+}
+drawMathPoint(n, scaleY * an, `a_${n}=${an.toFixed(0)}`, '#34d399', 5.5);
+}
+
+// First term n = 1: Formula value vs Actual S_1 = p + q + C
+const a1Formula = p.pCoeff + p.qCoeff;
+const a1Actual = a1Formula + p.constC;
+
+drawMathPoint(1, scaleY * a1Formula, `공식값(${a1Formula.toFixed(0)})`, 'rgba(148, 163, 184, 0.7)', 5);
+
+if (state.steps[2] && Math.abs(p.constC) > 0.01) {
+drawMathSegment(1, scaleY * a1Formula, 1, scaleY * a1Actual, '#fb7185', [4, 3], 3.0);
+const jPos = mathToScreen(2.6, scaleY * ((a1Formula + a1Actual) / 2));
+drawCanvasBadge(ctx, `⚡ 상수항 C=${p.constC} 만큼 a₁ 단독 점프 이탈!`, jPos.x, jPos.y, '#fb7185');
+}
+
+if (state.steps[3]) {
+const topPos = mathToScreen(4.5, scaleY * 18);
+drawCanvasBadge(ctx, `1초 미분형 암산: a_n = ${2*p.pCoeff}n + (${p.qCoeff - p.pCoeff}) (n≥2) | a₁ = ${a1Formula} + C(${p.constC}) = ${a1Actual}`, topPos.x, topPos.y, '#fbbf24');
+}
+
+// Draggable handle on a1Actual (controls constC)
+drawMathPoint(1, scaleY * a1Actual, `실제 a₁=S₁=${a1Actual.toFixed(0)} [위아래 드래그]`, '#fbbf24', 8, true, (mPos) => {
+const rawA1 = mPos.y / scaleY;
+const newC = Math.round(rawA1 - a1Formula);
+state.params.constC = Math.max(-3, Math.min(5, newC));
+});
+}
+
+// --- TYPE 5: Geometric Sequence Block Sums P1, P2, P3 ---
+function renderType5(w, h) {
+const p = state.params;
+const P1 = p.block1;
+const R = p.blockRatio;
+const P2 = P1 * R;
+const P3 = P2 * R;
+const S3n = P1 + P2 + P3;
+
+const baseLineY = h * 0.78;
+const maxVal = Math.max(P3, 60);
+const scaleH = (h * 0.52) / maxVal;
+
+const blocks = [
+{ label: '1~n항 조각 P₁ (= S_n)', val: P1, cum: P1, color: '#34d399', x: w * 0.24 },
+{ label: '(n+1)~2n항 조각 P₂ (= S_2n - S_n)', val: P2, cum: P1 + P2, color: '#38bdf8', x: w * 0.50 },
+{ label: '(2n+1)~3n항 조각 P₃ (= S_3n - S_2n)', val: P3, cum: S3n, color: '#fbbf24', x: w * 0.76 }
+];
+
+// Base line
+ctx.save();
+ctx.strokeStyle = 'rgba(236, 253, 245, 0.4)';
+ctx.lineWidth = 2;
+ctx.beginPath();
+ctx.moveTo(w * 0.1, baseLineY);
+ctx.lineTo(w * 0.9, baseLineY);
+ctx.stroke();
+
+const barW = Math.min(96, w * 0.16);
+
+blocks.forEach((b, idx) => {
+const bh = b.val * scaleH;
+const left = b.x - barW / 2;
+const top = baseLineY - bh;
+
+ctx.fillStyle = b.color + '33';
+ctx.strokeStyle = b.color;
+ctx.lineWidth = 2.4;
+ctx.beginPath();
+ctx.roundRect(left, top, barW, bh, [8, 8, 0, 0]);
+ctx.fill();
+ctx.stroke();
+
+ctx.fillStyle = '#ffffff';
+ctx.font = 'extrabold 15px Pretendard, sans-serif';
+ctx.textAlign = 'center';
+ctx.fillText(`조각 = ${b.val.toFixed(1)}`, b.x, top - 12);
+
+ctx.fillStyle = 'rgba(209, 250, 229, 0.85)';
+ctx.font = 'bold 12px Pretendard, sans-serif';
+ctx.fillText(b.label, b.x, baseLineY + 22);
+ctx.fillStyle = '#fbbf24';
+ctx.fillText(`누적 S_${idx+1}n = ${b.cum.toFixed(1)}`, b.x, baseLineY + 42);
+});
+
+// Step 2: Geometric Ratio Arrows between blocks
+if (state.steps[2]) {
+drawCanvasBadge(ctx, `× R (${R.toFixed(1)}배)`, w * 0.37, baseLineY - P2 * scaleH * 0.6, '#fbbf24');
+drawCanvasBadge(ctx, `× R (${R.toFixed(1)}배)`, w * 0.63, baseLineY - P3 * scaleH * 0.6, '#fbbf24');
+}
+
+if (state.steps[3]) {
+drawCanvasFraction(ctx, `P₂ (${P2.toFixed(1)})`, `P₁ (${P1.toFixed(1)})`, w * 0.5, h * 0.15, {
+prefix: '구간 조각 공비 R = rⁿ = ',
+suffix: ` = ${R.toFixed(2)} ⟹ S_3n = ${S3n.toFixed(1)}`
+});
+}
+
+// Draggable handle on Block 2 top
+const b2Top = baseLineY - P2 * scaleH;
+ctx.fillStyle = '#fbbf24';
+ctx.beginPath();
+ctx.arc(w * 0.5, b2Top, 8, 0, Math.PI * 2);
+ctx.fill();
+activeHandles.push({
+sx: w * 0.5,
+sy: b2Top,
+onDrag: () => {}
+});
+ctx.restore();
+}
+
+// --- TYPE 6: Telescoping Series Laser Cancellation Scanner ---
+function renderType6(w, h) {
+const p = state.params;
+const n = Math.round(p.termCountN);
+const a1 = p.firstA1;
+const d = p.diffD;
+
+ctx.save();
+const startY = h * 0.24;
+const rowH = Math.min(42, (h * 0.56) / Math.min(n, 7));
+const showCount = Math.min(n, 6);
+
+drawCanvasFraction(ctx, '1', `d (${d})`, w * 0.14, startY + (showCount * rowH) / 2, {
+prefix: 'S = ',
+suffix: ' × {'
+});
+
+for (let k = 1; k <= showCount; k++) {
+const idx = (k === showCount && n > 6) ? n : k;
+const ak = a1 + (idx - 1) * d;
+const ak1 = ak + d;
+const cy = startY + (k - 0.5) * rowH;
+
+const xLeft = w * 0.36;
+const xRight = w * 0.62;
+
+// First fraction +1/a_k
+const isFirstSurvivor = (idx === 1);
+drawCanvasBadge(ctx, `+ 1 / ${ak}`, xLeft, cy, isFirstSurvivor ? '#fbbf24' : '#34d399');
+
+// Second fraction -1/a_{k+1}
+const isLastSurvivor = (idx === n);
+drawCanvasBadge(ctx, `- 1 / ${ak1}`, xRight, cy, isLastSurvivor ? '#fbbf24' : '#38bdf8');
+
+// Step 2: Diagonal Neon Cancellation Laser
+if (state.steps[2] && k < showCount) {
+ctx.strokeStyle = '#fb7185';
+ctx.lineWidth = 2.6;
+ctx.beginPath();
+ctx.moveTo(xRight - 30, cy - 8);
+ctx.lineTo(xLeft + 30, cy + rowH + 8);
+ctx.stroke();
+}
+}
+
+if (state.steps[3]) {
+const lastDen = a1 + n * d;
+drawCanvasFraction(ctx, `항의 개수 n (${n})`, `맨앞(${a1}) × 맨뒤(${lastDen})`, w * 0.52, h * 0.86, {
+color: '#fbbf24',
+prefix: '⚡ 3초 공식 정답 = ',
+suffix: ` = ${n} / ${a1 * lastDen}`
+});
+}
+ctx.restore();
+}
+
+// --- TYPE 7: Periodic Recurrence & Cobweb Plot ---
+function renderType7() {
+const p = state.params;
+
+// Step 1: y = x mirror line & Piecewise function y = x + 2 (x < 4), y = x - 4 (x >= 4)
+drawFunctionCurve(x => x, 'rgba(236, 253, 245, 0.45)', 1.8, [5, 5], -1, 8);
+drawFunctionCurve(x => x + 2, '#34d399', 3.0, [], -1, 3.99);
+drawFunctionCurve(x => x - 4, '#38bdf8', 3.0, [], 4.0, 8.5);
+drawMathSegment(4, -2, 4, 7, 'rgba(251, 113, 133, 0.4)', [4, 4], 1.5);
+
+// Compute sequence trajectory
+const seq = [p.startA1];
+for (let i = 0; i < 8; i++) {
+const cur = seq[i];
+seq.push(cur < 4 ? cur + 2 : cur - 4);
+}
+
+// Step 2: Cobweb Trajectory (a1, a1) -> (a1, a2) -> (a2, a2) -> (a2, a3) ...
+if (state.steps[2]) {
+for (let i = 0; i < 5; i++) {
+const x = seq[i];
+const y = seq[i + 1];
+const col = i < 3 ? '#fbbf24' : '#fb7185';
+// Vertical to curve y = f(x)
+drawMathSegment(x, x, x, y, col, [], 2.4);
+// Horizontal to mirror line y = x
+drawMathSegment(x, y, y, y, col, [4, 3], 2.2);
+drawMathPoint(x, y, `P_${i+1}(${x.toFixed(1)}, ${y.toFixed(1)})`, col, 5.5);
+}
+}
+
+if (state.steps[3]) {
+const cSum = seq[0] + seq[1] + seq[2];
+const bPos = mathToScreen(3.0, 6.4);
+drawCanvasBadge(ctx, `3주기 순환 루프: [${seq[0].toFixed(1)} ➔ ${seq[1].toFixed(1)} ➔ ${seq[2].toFixed(1)}] (1마디 합 = ${cSum.toFixed(1)})`, bPos.x, bPos.y, '#fbbf24');
+}
+
+// Draggable starting point (a1, 0)
+drawMathPoint(p.startA1, p.startA1, `출발 a₁=${p.startA1.toFixed(1)} [드래그]`, '#fbbf24', 8, true, (mPos) => {
+state.params.startA1 = Math.max(0.5, Math.min(5.5, Math.round(mPos.x * 2) / 2));
+});
+}
+
+// --- TYPE 8: Backward Branching Tree Simulator (CSAT #15 Killer) ---
+function renderType8(w, h) {
+const p = state.params;
+const tA4 = Math.round(p.targetA4);
+const k = Math.round(p.threshK);
+const { root, validA1 } = computeBackwardTree(tA4, k);
+
+const levelY = [h * 0.18, h * 0.39, h * 0.61, h * 0.83];
+const levelNames = ['제4항 (a₄)', '제3항 (a₃)', '제2항 (a₂)', '첫째항 (a₁ 후보)'];
+
+ctx.save();
+// Draw horizontal level guide bars
+levelY.forEach((ly, idx) => {
+ctx.strokeStyle = 'rgba(52, 211, 153, 0.14)';
+ctx.lineWidth = 1;
+ctx.beginPath();
+ctx.moveTo(w * 0.06, ly);
+ctx.lineTo(w * 0.94, ly);
+ctx.stroke();
+
+ctx.fillStyle = 'rgba(167, 243, 208, 0.7)';
+ctx.font = 'bold 12px Pretendard, sans-serif';
+ctx.textAlign = 'left';
+ctx.fillText(levelNames[idx], w * 0.05, ly - 10);
+});
+
+function drawNodeRecursive(node, cx, spread) {
+const cy = levelY[node.level];
+
+// Draw edges to children first
+if (node.children && node.children.length === 2 && (state.steps[1] || node.level === 0)) {
+node.children.forEach((child, idx) => {
+const childX = idx === 0 ? cx - spread : cx + spread;
+const childY = levelY[child.level];
+
+ctx.strokeStyle = child.valid ? 'rgba(52, 211, 153, 0.75)' : 'rgba(251, 113, 133, 0.45)';
+ctx.lineWidth = child.valid ? 2.4 : 1.6;
+ctx.setLineDash(child.valid ? [] : [4, 4]);
+ctx.beginPath();
+ctx.moveTo(cx, cy + 14);
+ctx.lineTo(childX, childY - 14);
+ctx.stroke();
+ctx.setLineDash([]);
+
+// Rule label on edge
+ctx.fillStyle = child.valid ? '#a7f3d0' : '#fda4af';
+ctx.font = 'bold 10.5px Pretendard, sans-serif';
+ctx.textAlign = 'center';
+ctx.fillText(child.rule, (cx + childX) / 2, (cy + childY) / 2);
+
+drawNodeRecursive(child, childX, spread * 0.5);
+});
+}
+
+// Draw Node Box
+const isLeafValid = (node.level === 3 && node.valid);
+const boxColor = !node.valid
+? '#fb7185'
+: (isLeafValid ? '#fbbf24' : '#34d399');
+const bg = !node.valid
+? 'rgba(136, 19, 55, 0.65)'
+: (isLeafValid ? 'rgba(120, 53, 15, 0.85)' : 'rgba(6, 78, 59, 0.85)');
+
+const valStr = Number.isInteger(node.val) ? `${node.val}` : node.val.toFixed(1);
+const label = !node.valid && state.steps[2] ? `✕ ${valStr}` : valStr;
+
+drawCanvasBadge(ctx, label, cx, cy, boxColor, bg);
+
+if (!node.valid && state.steps[2]) {
+ctx.fillStyle = '#fda4af';
+ctx.font = '10px Pretendard, sans-serif';
+ctx.textAlign = 'center';
+ctx.fillText(node.reason, cx, cy + 20);
+}
+}
+
+drawNodeRecursive(root, w * 0.54, w * 0.21);
+
+if (state.steps[3]) {
+const sumA1 = validA1.reduce((a, b) => a + b, 0);
+drawCanvasBadge(
+ctx,
+`🎯 최종 생존 자연수 a₁ = { ${validA1.join(', ')} } ⟹ 모든 a₁의 합 = ${sumA1}`,
+w * 0.54,
+h * 0.94,
+'#fbbf24',
+'rgba(7, 19, 14, 0.95)'
+);
+}
+ctx.restore();
+}
+
+window.addEventListener('DOMContentLoaded', initApp);
+</script>
+</body>
+</html>

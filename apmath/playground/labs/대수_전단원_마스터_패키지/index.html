@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2022 개정 대수(수학 I) 전 단원 통합 포털 &amp; 원클릭 ZIP 생성기</title>
+
+  <!-- Pretendard Webfont -->
+  <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <!-- JSZip (For One-Click .ZIP Generation in Browser) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; }
+    body {
+      margin: 0; padding: 0;
+      background: linear-gradient(135deg, #07130e 0%, #0d2119 50%, #132e23 100%);
+      color: #ecfdf5; height: 100vh; width: 100vw; overflow: hidden;
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: rgba(7, 19, 14, 0.6); }
+    ::-webkit-scrollbar-thumb { background: rgba(52, 211, 153, 0.35); border-radius: 999px; }
+    .nav-tab-active {
+      background: linear-gradient(180deg, rgba(251, 191, 36, 0.25) 0%, rgba(16, 40, 31, 0.95) 100%);
+      border-bottom: 3px solid #fbbf24; color: #ffffff;
+    }
+    .card-glow:hover {
+      border-color: rgba(251, 191, 36, 0.7);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45), 0 0 15px rgba(52, 211, 153, 0.18);
+      transform: translateY(-2px);
+    }
+    .glow-gold { box-shadow: 0 0 18px rgba(251, 191, 36, 0.35); }
+    .katex { font-size: 1.0em !important; }
+  </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.relative{position:relative}.z-30{z-index:30}.mx-auto{margin-left:auto;margin-right:auto}.mt-0\.5{margin-top:0.125rem}.mb-0\.5{margin-bottom:0.125rem}.mb-2\.5{margin-bottom:0.625rem}.mb-3{margin-bottom:0.75rem}.mb-3\.5{margin-bottom:0.875rem}.mb-4{margin-bottom:1rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-screen{height:100vh}.h-12{height:3rem}.h-9{height:2.25rem}.h-10{height:2.5rem}.w-screen{width:100vw}.w-12{width:3rem}.w-9{width:2.25rem}.w-full{width:100%}.w-10{width:2.5rem}.max-w-7xl{max-width:80rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-3\.5{gap:0.875rem}.gap-4{gap:1rem}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-xl{border-radius:0.75rem}.rounded-lg{border-radius:0.5rem}.rounded-t-lg{border-top-left-radius:0.5rem;border-top-right-radius:0.5rem}.border{border-width:1px}.border-0{border-width:0px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-amber-300\/50{border-color:rgb(252 211 77 / 0.5)}.border-amber-400\/30{border-color:rgb(251 191 36 / 0.3)}.border-amber-400\/50{border-color:rgb(251 191 36 / 0.5)}.border-emerald-500\/50{border-color:rgb(16 185 129 / 0.5)}.border-emerald-600\/60{border-color:rgb(5 150 105 / 0.6)}.border-emerald-800\/70{border-color:rgb(6 95 70 / 0.7)}.border-emerald-900\/60{border-color:rgb(6 78 59 / 0.6)}.border-amber-400\/40{border-color:rgb(251 191 36 / 0.4)}.border-amber-500\/35{border-color:rgb(245 158 11 / 0.35)}.border-emerald-700\/50{border-color:rgb(4 120 87 / 0.5)}.border-emerald-700\/60{border-color:rgb(4 120 87 / 0.6)}.border-emerald-800\/60{border-color:rgb(6 95 70 / 0.6)}.bg-\[\#06110c\]\/95{background-color:rgb(6 17 12 / 0.95)}.bg-\[\#07130e\]{--tw-bg-opacity:1;background-color:rgb(7 19 14 / var(--tw-bg-opacity, 1))}.bg-\[\#081610\]{--tw-bg-opacity:1;background-color:rgb(8 22 16 / var(--tw-bg-opacity, 1))}.bg-\[\#0b1f17\]{--tw-bg-opacity:1;background-color:rgb(11 31 23 / var(--tw-bg-opacity, 1))}.bg-amber-400{--tw-bg-opacity:1;background-color:rgb(251 191 36 / var(--tw-bg-opacity, 1))}.bg-amber-400\/20{background-color:rgb(251 191 36 / 0.2)}.bg-amber-500\/20{background-color:rgb(245 158 11 / 0.2)}.bg-emerald-900\/80{background-color:rgb(6 78 59 / 0.8)}.bg-emerald-950{--tw-bg-opacity:1;background-color:rgb(2 44 34 / var(--tw-bg-opacity, 1))}.bg-rose-600\/80{background-color:rgb(225 29 72 / 0.8)}.bg-\[\#07130e\]\/90{background-color:rgb(7 19 14 / 0.9)}.bg-\[\#091812\]\/85{background-color:rgb(9 24 18 / 0.85)}.bg-\[\#10281f\]\/95{background-color:rgb(16 40 31 / 0.95)}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-amber-400{--tw-gradient-from:#fbbf24 var(--tw-gradient-from-position);--tw-gradient-to:rgb(251 191 36 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-amber-950\/50{--tw-gradient-from:rgb(69 26 3 / 0.5) var(--tw-gradient-from-position);--tw-gradient-to:rgb(69 26 3 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-amber-500{--tw-gradient-from:#f59e0b var(--tw-gradient-from-position);--tw-gradient-to:rgb(245 158 11 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-\[\#10281f\]{--tw-gradient-to:rgb(16 40 31 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #10281f var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-emerald-500{--tw-gradient-to:rgb(16 185 129 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #10b981 var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-yellow-400{--tw-gradient-to:rgb(250 204 21 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #facc15 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-amber-500{--tw-gradient-to:#f59e0b var(--tw-gradient-to-position)}.to-emerald-950\/60{--tw-gradient-to:rgb(2 44 34 / 0.6) var(--tw-gradient-to-position)}.to-teal-700{--tw-gradient-to:#0f766e var(--tw-gradient-to-position)}.to-yellow-400{--tw-gradient-to:#facc15 var(--tw-gradient-to-position)}.p-4{padding:1rem}.p-5{padding:1.25rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.pt-1{padding-top:0.25rem}.pt-3{padding-top:0.75rem}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-\[10\.5px\]{font-size:10.5px}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77 / var(--tw-text-opacity, 1))}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-emerald-100{--tw-text-opacity:1;color:rgb(209 250 229 / var(--tw-text-opacity, 1))}.text-emerald-200{--tw-text-opacity:1;color:rgb(167 243 208 / var(--tw-text-opacity, 1))}.text-emerald-200\/85{color:rgb(167 243 208 / 0.85)}.text-emerald-300\/70{color:rgb(110 231 183 / 0.7)}.text-emerald-400\/70{color:rgb(52 211 153 / 0.7)}.text-slate-950{--tw-text-opacity:1;color:rgb(2 6 23 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-amber-200{--tw-text-opacity:1;color:rgb(253 230 138 / var(--tw-text-opacity, 1))}.text-emerald-300\/75{color:rgb(110 231 183 / 0.75)}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.overline{-webkit-text-decoration-line:overline;text-decoration-line:overline}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-200{transition-duration:200ms}.hover\:bg-amber-300:hover{--tw-bg-opacity:1;background-color:rgb(252 211 77 / var(--tw-bg-opacity, 1))}.hover\:bg-emerald-700:hover{--tw-bg-opacity:1;background-color:rgb(4 120 87 / var(--tw-bg-opacity, 1))}.hover\:bg-emerald-800:hover{--tw-bg-opacity:1;background-color:rgb(6 95 70 / var(--tw-bg-opacity, 1))}.hover\:bg-rose-500:hover{--tw-bg-opacity:1;background-color:rgb(244 63 94 / var(--tw-bg-opacity, 1))}.hover\:bg-emerald-900\/40:hover{background-color:rgb(6 78 59 / 0.4)}.hover\:bg-emerald-900\/50:hover{background-color:rgb(6 78 59 / 0.5)}.hover\:from-amber-300:hover{--tw-gradient-from:#fcd34d var(--tw-gradient-from-position);--tw-gradient-to:rgb(252 211 77 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:from-amber-400:hover{--tw-gradient-from:#fbbf24 var(--tw-gradient-from-position);--tw-gradient-to:rgb(251 191 36 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:to-yellow-300:hover{--tw-gradient-to:#fde047 var(--tw-gradient-to-position)}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}@media (min-width: 640px){.sm\:block{display:block}}@media (min-width: 768px){.md\:flex-row{flex-direction:row}.md\:p-6{padding:1.5rem}.md\:text-base{font-size:1rem;line-height:1.5rem}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}}@media (min-width: 1024px){.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}}</style></head>
+<body class="flex flex-col h-screen w-screen">
+
+  <!-- ================= TOP GLOBAL HEADER & ONE-CLICK ZIP BUTTON ================= -->
+  <header class="shrink-0 bg-[#06110c]/95 border-b border-emerald-800/70 z-30">
+    <div class="flex flex-wrap items-center justify-between px-4 py-2.5 border-b border-emerald-900/60 gap-2">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('home')">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 via-emerald-500 to-teal-700 flex items-center justify-center shadow-lg border border-amber-300/50">
+          <i class="fa-solid fa-box-archive text-slate-950 text-lg"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 text-[10px] font-extrabold rounded bg-amber-500/20 text-amber-300 border border-amber-400/30">ALL-IN-ONE &amp; ZIP PACKAGER</span>
+            <h1 class="text-base md:text-lg font-extrabold tracking-tight text-white">
+              2022 개정 『대수(수학 I)』 <span class="text-amber-400">전 단원 마스터 포털 &amp; ZIP 추출기</span>
+            </h1>
+          </div>
+          <p class="text-[11px] text-emerald-300/70 hidden sm:block">
+            우측 [📦 전체 단원 ZIP 압축파일 다운로드]를 누르면 index.html + 5대 단원별 HTML 파일이 묶인 .zip 파일이 즉시 다운로드됩니다!
+          </p>
+        </div>
+      </div>
+
+      <!-- ZIP Download & Navigation Controls -->
+      <div class="flex items-center gap-2">
+        <button id="btnDownloadZip" onclick="downloadAllAsZip()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-300 text-slate-950 text-xs font-extrabold transition flex items-center gap-2 glow-gold"><i class="fa-solid fa-spinner fa-spin"></i><span>ZIP 압축 파일 생성 중...</span></button>
+
+        <button onclick="switchView('home')" class="px-3 py-2 rounded-xl bg-emerald-950 hover:bg-emerald-800 border border-emerald-600/60 text-emerald-200 text-xs font-bold transition flex items-center gap-1.5">
+          <i class="fa-solid fa-table-cells-large text-amber-400"></i>
+          <span>전체 목차</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Top Module Switcher Tabs -->
+    <nav id="topModuleTabs" class="flex items-center gap-1 px-3 pt-1 overflow-x-auto bg-[#081610]">
+        <button onclick="switchView('home')" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-extrabold transition flex items-center gap-1.5 nav-tab-active">
+          <i class="fa-solid fa-house text-amber-400"></i><span>통합 목차 홈</span>
+        </button>
+      
+          <button onclick="launchPart('part1a')" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-bold transition flex items-center gap-2 text-emerald-300/75 hover:text-white hover:bg-emerald-900/40">
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-emerald-950 text-amber-300 border border-emerald-700/60">Part 1-A</span>
+            <i class="fa-solid fa-superscript text-emerald-400"></i>
+            <span>지수·상용로그 연산 &amp; 지수함수 단독 심화 마스터</span>
+          </button>
+        
+          <button onclick="launchPart('part1b')" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-bold transition flex items-center gap-2 text-emerald-300/75 hover:text-white hover:bg-emerald-900/40">
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-emerald-950 text-amber-300 border border-emerald-700/60">Part 1-B</span>
+            <i class="fa-solid fa-clone text-emerald-400"></i>
+            <span>로그함수 고유 성질 &amp; 역함수·원·도형 결합 마스터</span>
+          </button>
+        
+          <button onclick="launchPart('part2a')" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-bold transition flex items-center gap-2 text-emerald-300/75 hover:text-white hover:bg-emerald-900/40">
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-emerald-950 text-amber-300 border border-emerald-700/60">Part 2-A</span>
+            <i class="fa-solid fa-compass text-emerald-400"></i>
+            <span>삼각함수 단위원 특수각 · 3함수 연동 · 방부등식 조립기</span>
+          </button>
+        
+          <button onclick="launchPart('part2b')" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-bold transition flex items-center gap-2 text-emerald-300/75 hover:text-white hover:bg-emerald-900/40">
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-emerald-950 text-amber-300 border border-emerald-700/60">Part 2-B</span>
+            <i class="fa-solid fa-drafting-compass text-emerald-400"></i>
+            <span>사인·코사인법칙 실전 도형 기하 8대 고속 비기 마스터</span>
+          </button>
+        
+          <button onclick="launchPart('part3')" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-bold transition flex items-center gap-2 text-emerald-300/75 hover:text-white hover:bg-emerald-900/40">
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-emerald-950 text-amber-300 border border-emerald-700/60">Part 3</span>
+            <i class="fa-solid fa-sitemap text-emerald-400"></i>
+            <span>수열의 함수적 해석 &amp; 점화식 역추적 트리 킬러 마스터</span>
+          </button>
+        </nav>
+  </header>
+
+  <!-- ================= VIEW 1: MASTER DASHBOARD ================= -->
+  <main id="dashboardView" class="flex-1 overflow-y-auto p-4 md:p-6">
+    <div class="max-w-7xl mx-auto space-y-5">
+
+      <!-- ZIP Banner Info -->
+      <div class="bg-gradient-to-r from-amber-950/50 via-[#10281f] to-emerald-950/60 border border-amber-400/50 rounded-2xl p-4 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5">
+          <div class="w-12 h-12 rounded-2xl bg-amber-400/20 border border-amber-400/50 flex items-center justify-center text-amber-300 text-2xl shrink-0">
+            <i class="fa-solid fa-cloud-arrow-down"></i>
+          </div>
+          <div>
+            <h2 class="text-sm md:text-base font-extrabold text-white">
+              스크롤하며 하나씩 복사할 필요 없이, <span class="text-amber-300">원클릭으로 전체 폴더(.zip)</span>를 내려받으세요!
+            </h2>
+            <p class="text-xs text-emerald-200/85 mt-0.5">
+              압축 파일 안에는 <code class="text-amber-300 font-mono">index.html, part1a.html, part1b.html, part2a.html, part2b.html, part3.html</code> 총 6개의 독립 실행 파일이 깔끔하게 들어 있습니다. 또한 아래 카드를 클릭하면 압축 다운로드 없이 **지금 이 화면에서도 바로 실행**됩니다!
+            </p>
+          </div>
+        </div>
+        <button onclick="downloadAllAsZip()" class="shrink-0 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs shadow-lg transition flex items-center gap-2">
+          <i class="fa-solid fa-download"></i>
+          <span>대수_전단원_마스터_패키지.zip 받기</span>
+        </button>
+      </div>
+
+      <!-- 5 Modules Grid -->
+      <div id="modulesGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="card-glow bg-[#10281f]/95 border border-emerald-700/60 rounded-2xl p-5 flex flex-col justify-between transition duration-200 shadow-lg">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-2.5">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-600/60 flex items-center justify-center text-amber-400 text-lg shrink-0">
+                  <i class="fa-solid fa-superscript"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded text-[10.5px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-400/40">Part 1-A</span>
+                    <span class="text-xs font-mono text-emerald-400">part1a.html</span>
+                  </div>
+                  <h2 class="text-base font-extrabold text-white mt-0.5">지수·상용로그 연산 &amp; 지수함수 단독 심화 마스터</h2>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-xs text-emerald-200/85 leading-relaxed mb-3">거듭제곱근 실근 매트릭스, 자연수 약수 스캐너, 상용로그 정수·소수부분 톱니파, 가로 간격 불변량, aˣ+a⁻ˣ 현수선</p>
+
+            <div class="bg-[#07130e]/90 border border-amber-500/35 rounded-xl px-3.5 py-2 mb-3.5 text-xs text-amber-200 overflow-x-auto">
+              <div class="text-[10px] font-extrabold text-amber-400 uppercase mb-0.5">⚡ 핵심 10초 불변량 공식</div>
+              <div><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>⋅</mo><msup><mi>a</mi><mi>x</mi></msup><mo>=</mo><msup><mi>a</mi><mrow><mi>x</mi><mo>+</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mi>a</mi></msub><mi>k</mi></mrow></msup><mo separator="true">,</mo><mspace width="1em"></mspace><msup><mi>a</mi><mi>x</mi></msup><mo>+</mo><msup><mi>a</mi><mrow><mo>−</mo><mi>x</mi></mrow></msup><mo>=</mo><mi>t</mi><mo>≥</mo><mn>2</mn><mo separator="true">,</mo><mspace width="1em"></mspace><mi mathvariant="normal">∣</mi><msup><mi>a</mi><mi>x</mi></msup><mo>−</mo><mi>k</mi><mi mathvariant="normal">∣</mi><mo>=</mo><mi>t</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><msup><mi>a</mi><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></msup><mo>=</mo><msup><mi>k</mi><mn>2</mn></msup><mo>−</mo><msup><mi>t</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">k\cdot a^x = a^{x+\log_a k}, \quad a^x+a^{-x} = t \ge 2, \quad |a^x-k|=t \implies a^{x_1+x_2}=k^2-t^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6644em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0435em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mbin mtight">+</span><span class="mop mtight"><span class="mop mtight"><span class="mtight">l</span><span class="mtight">o</span><span class="mtight" style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0417em;"><span style="top:-2.2341em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2659em;"><span></span></span></span></span></span></span><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7713em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7719em;vertical-align:-0.136em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6644em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6391em;vertical-align:-0.024em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7713em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7713em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">+</span><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3173em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></div>
+            </div>
+
+            <div class="space-y-1.5 mb-4">
+              
+                <div onclick="launchPart('part1a', 0)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">EXP 01</span>
+                    <span class="font-semibold text-emerald-100 truncate">거듭제곱근 실근 매트릭스</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part1a', 1)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">EXP 02</span>
+                    <span class="font-semibold text-emerald-100 truncate">자연수 조건 약수 스캐너</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part1a', 2)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">EXP 03</span>
+                    <span class="font-semibold text-emerald-100 truncate">상용로그 소수부분 톱니파</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part1a', 3)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">EXP 04</span>
+                    <span class="font-semibold text-emerald-100 truncate">지수 가로 간격 불변량 &amp; 현수선</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part1a', 4)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">EXP 05</span>
+                    <span class="font-semibold text-emerald-100 truncate">|2ˣ - k| = t 점근선 &amp; 합차 불변량</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 pt-3 border-t border-emerald-800/60">
+            <button onclick="launchPart('part1a', 0)" class="flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-extrabold text-xs shadow flex items-center justify-center gap-2 transition">
+              <i class="fa-solid fa-play"></i>
+              <span>🚀 지금 바로 칠판 열기</span>
+            </button>
+            <button onclick="downloadSinglePart('part1a')" class="py-2.5 px-3 rounded-xl bg-emerald-950 hover:bg-emerald-800 border border-emerald-600/60 text-emerald-200 text-xs font-bold transition flex items-center gap-1.5" title="part1a.html 파일만 단독 다운로드">
+              <i class="fa-solid fa-download text-amber-300"></i>
+              <span>part1a.html</span>
+            </button>
+          </div>
+        </div>
+      
+        <div class="card-glow bg-[#10281f]/95 border border-emerald-700/60 rounded-2xl p-5 flex flex-col justify-between transition duration-200 shadow-lg">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-2.5">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-600/60 flex items-center justify-center text-amber-400 text-lg shrink-0">
+                  <i class="fa-solid fa-clone"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded text-[10.5px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-400/40">Part 1-B</span>
+                    <span class="text-xs font-mono text-emerald-400">part1b.html</span>
+                  </div>
+                  <h2 class="text-base font-extrabold text-white mt-0.5">로그함수 고유 성질 &amp; 역함수·원·도형 결합 마스터</h2>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-xs text-emerald-200/85 leading-relaxed mb-3">로그 세로 불변량, 진수 짝수차수 양날개 함정, 절댓값 곱 불변량, 어긋난 역함수 대칭축 및 원 결합 킬러</p>
+
+            <div class="bg-[#07130e]/90 border border-amber-500/35 rounded-xl px-3.5 py-2 mb-3.5 text-xs text-amber-200 overflow-x-auto">
+              <div class="text-[10px] font-extrabold text-amber-400 uppercase mb-0.5">⚡ 핵심 10초 불변량 공식</div>
+              <div><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mi>a</mi></msub><mo stretchy="false">(</mo><mi>k</mi><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mi>a</mi></msub><mi>x</mi><mo>+</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mi>a</mi></msub><mi>k</mi><mo separator="true">,</mo><mspace width="1em"></mspace><mi mathvariant="normal">∣</mi><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mi>a</mi></msub><mi>x</mi><mi mathvariant="normal">∣</mi><mo>=</mo><mi>t</mi><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><msub><mi>x</mi><mn>1</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mn>1</mn><mo separator="true">,</mo><mspace width="1em"></mspace><mi>y</mi><mo>=</mo><mi>x</mi><mo>−</mo><mfrac><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>−</mo><mi>n</mi><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mi>q</mi><mo>−</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\log_a(kx) = \log_a x + \log_a k, \quad |\log_a x|=t \implies x_1 x_2 = 1, \quad y = x - \frac{(m-n)+(q-p)}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0573em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9386em;vertical-align:-0.2441em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0573em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0573em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0573em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6391em;vertical-align:-0.024em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.355em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">m</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">n</span><span class="mclose mtight">)</span><span class="mbin mtight">+</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">p</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></div>
+            </div>
+
+            <div class="space-y-1.5 mb-4">
+              
+                <div onclick="launchPart('part1b', 0)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">LOG 01</span>
+                    <span class="font-semibold text-emerald-100 truncate">로그 세로 간격 불변량 &amp; 넓이</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part1b', 1)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">LOG 02</span>
+                    <span class="font-semibold text-emerald-100 truncate">진수 함정 log₂(x²) 양날개 &amp; |log₂x| 곱</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part1b', 2)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">LOG 03</span>
+                    <span class="font-semibold text-emerald-100 truncate">어긋난 역함수 대칭축 &amp; 원 결합</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part1b', 3)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">LOG 04</span>
+                    <span class="font-semibold text-emerald-100 truncate">역함수 축 전환 격자점 스캐너</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 pt-3 border-t border-emerald-800/60">
+            <button onclick="launchPart('part1b', 0)" class="flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-extrabold text-xs shadow flex items-center justify-center gap-2 transition">
+              <i class="fa-solid fa-play"></i>
+              <span>🚀 지금 바로 칠판 열기</span>
+            </button>
+            <button onclick="downloadSinglePart('part1b')" class="py-2.5 px-3 rounded-xl bg-emerald-950 hover:bg-emerald-800 border border-emerald-600/60 text-emerald-200 text-xs font-bold transition flex items-center gap-1.5" title="part1b.html 파일만 단독 다운로드">
+              <i class="fa-solid fa-download text-amber-300"></i>
+              <span>part1b.html</span>
+            </button>
+          </div>
+        </div>
+      
+        <div class="card-glow bg-[#10281f]/95 border border-emerald-700/60 rounded-2xl p-5 flex flex-col justify-between transition duration-200 shadow-lg">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-2.5">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-600/60 flex items-center justify-center text-amber-400 text-lg shrink-0">
+                  <i class="fa-solid fa-compass"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded text-[10.5px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-400/40">Part 2-A</span>
+                    <span class="text-xs font-mono text-emerald-400">part2a.html</span>
+                  </div>
+                  <h2 class="text-base font-extrabold text-white mt-0.5">삼각함수 단위원 특수각 · 3함수 연동 · 방부등식 조립기</h2>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-xs text-emerald-200/85 leading-relaxed mb-3">30°·45°·60° 16대 특수각 스냅, 단위원↔sin·cos·tan 3함수 동시 연동, 방정식·부등식 호(Arc) &amp; 해 구간, 절댓값 4종</p>
+
+            <div class="bg-[#07130e]/90 border border-amber-500/35 rounded-xl px-3.5 py-2 mb-3.5 text-xs text-amber-200 overflow-x-auto">
+              <div class="text-[10px] font-extrabold text-amber-400 uppercase mb-0.5">⚡ 핵심 10초 불변량 공식</div>
+              <div><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>sin</mi><mo>⁡</mo><mo>=</mo><mtext>가로절단</mtext><mo stretchy="false">(</mo><mi>y</mi><mo>=</mo><mi>k</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mspace width="1em"></mspace><mi>cos</mi><mo>⁡</mo><mo>=</mo><mtext>세로절단</mtext><mo stretchy="false">(</mo><mi>x</mi><mo>=</mo><mi>k</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mspace width="1em"></mspace><mo>∑</mo><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mo stretchy="false">(</mo><mtext>대칭축</mtext><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mtext>개수</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\sin = \text{가로절단}(y=k), \quad \cos = \text{세로절단}(x=k), \quad \sum x_i = (\text{대칭축})\times(\text{개수})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6679em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord hangul_fallback">가로절단</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord hangul_fallback">세로절단</span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord hangul_fallback">대칭축</span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord text"><span class="mord hangul_fallback">개수</span></span><span class="mclose">)</span></span></span></span></div>
+            </div>
+
+            <div class="space-y-1.5 mb-4">
+              
+                <div onclick="launchPart('part2a', 0)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">TRIG 01</span>
+                    <span class="font-semibold text-emerald-100 truncate">단위원 특수각 스냅 &amp; 3함수 투영</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part2a', 1)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">TRIG 02</span>
+                    <span class="font-semibold text-emerald-100 truncate">단위원 호(Arc) ↔ 방부등식 해 구간</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part2a', 2)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">TRIG 03</span>
+                    <span class="font-semibold text-emerald-100 truncate">절댓값 삼각함수 4종 비교 실험실</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 pt-3 border-t border-emerald-800/60">
+            <button onclick="launchPart('part2a', 0)" class="flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-extrabold text-xs shadow flex items-center justify-center gap-2 transition">
+              <i class="fa-solid fa-play"></i>
+              <span>🚀 지금 바로 칠판 열기</span>
+            </button>
+            <button onclick="downloadSinglePart('part2a')" class="py-2.5 px-3 rounded-xl bg-emerald-950 hover:bg-emerald-800 border border-emerald-600/60 text-emerald-200 text-xs font-bold transition flex items-center gap-1.5" title="part2a.html 파일만 단독 다운로드">
+              <i class="fa-solid fa-download text-amber-300"></i>
+              <span>part2a.html</span>
+            </button>
+          </div>
+        </div>
+      
+        <div class="card-glow bg-[#10281f]/95 border border-emerald-700/60 rounded-2xl p-5 flex flex-col justify-between transition duration-200 shadow-lg">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-2.5">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-600/60 flex items-center justify-center text-amber-400 text-lg shrink-0">
+                  <i class="fa-solid fa-drafting-compass"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded text-[10.5px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-400/40">Part 2-B</span>
+                    <span class="text-xs font-mono text-emerald-400">part2b.html</span>
+                  </div>
+                  <h2 class="text-base font-extrabold text-white mt-0.5">사인·코사인법칙 실전 도형 기하 8대 고속 비기 마스터</h2>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-xs text-emerald-200/85 leading-relaxed mb-3">수선의 발 정사영 분해, 두 외접원 공통현 역비, 숨은 원(공점원) &amp; cosA 축소 닮음, 스튜어트, 방멱, 톨레미·내접 정삼각형</p>
+
+            <div class="bg-[#07130e]/90 border border-amber-500/35 rounded-xl px-3.5 py-2 mb-3.5 text-xs text-amber-200 overflow-x-auto">
+              <div class="text-[10px] font-extrabold text-amber-400 uppercase mb-0.5">⚡ 핵심 10초 불변량 공식</div>
+              <div><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mi>c</mi><mi>cos</mi><mo>⁡</mo><mi>B</mi><mo>+</mo><mi>b</mi><mi>cos</mi><mo>⁡</mo><mi>C</mi><mo separator="true">,</mo><mspace width="1em"></mspace><msub><mi>R</mi><mn>1</mn></msub><mo>:</mo><msub><mi>R</mi><mn>2</mn></msub><mo>=</mo><mi>sin</mi><mo>⁡</mo><mi>D</mi><mo>:</mo><mi>sin</mi><mo>⁡</mo><mi>B</mi><mo separator="true">,</mo><mspace width="1em"></mspace><mover accent="true"><mrow><mi>D</mi><mi>E</mi></mrow><mo stretchy="true">‾</mo></mover><mo>=</mo><mover accent="true"><mrow><mi>B</mi><mi>C</mi></mrow><mo stretchy="true">‾</mo></mover><mi mathvariant="normal">∣</mi><mi>cos</mi><mo>⁡</mo><mi>A</mi><mi mathvariant="normal">∣</mi><mo separator="true">,</mo><mspace width="1em"></mspace><mover accent="true"><mrow><mi>P</mi><mi>A</mi></mrow><mo stretchy="true">‾</mo></mover><mo>+</mo><mover accent="true"><mrow><mi>P</mi><mi>C</mi></mrow><mo stretchy="true">‾</mo></mover><mo>=</mo><mover accent="true"><mrow><mi>P</mi><mi>B</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">a = c\cos B + b\cos C, \quad R_1:R_2 = \sin D:\sin B, \quad \overline{DE}=\overline{BC}|\cos A|, \quad \overline{PA}+\overline{PC}=\overline{PB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0778em;vertical-align:-0.1944em;"></span><span class="mop">sin</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1333em;vertical-align:-0.25em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">BC</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">A</span><span class="mord">∣</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">A</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">PC</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8833em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">PB</span></span></span><span style="top:-3.8033em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span></div>
+            </div>
+
+            <div class="space-y-1.5 mb-4">
+              
+                <div onclick="launchPart('part2b', 0)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">GEO 01</span>
+                    <span class="font-semibold text-emerald-100 truncate">제1코사인 수선의 발 분해</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part2b', 1)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">GEO 02</span>
+                    <span class="font-semibold text-emerald-100 truncate">두 외접원 공통현 &amp; 숨은 원 cosA 닮음</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part2b', 2)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">GEO 03</span>
+                    <span class="font-semibold text-emerald-100 truncate">톨레미 &amp; 내접 정삼각형 (PA+PC=PB)</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 pt-3 border-t border-emerald-800/60">
+            <button onclick="launchPart('part2b', 0)" class="flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-extrabold text-xs shadow flex items-center justify-center gap-2 transition">
+              <i class="fa-solid fa-play"></i>
+              <span>🚀 지금 바로 칠판 열기</span>
+            </button>
+            <button onclick="downloadSinglePart('part2b')" class="py-2.5 px-3 rounded-xl bg-emerald-950 hover:bg-emerald-800 border border-emerald-600/60 text-emerald-200 text-xs font-bold transition flex items-center gap-1.5" title="part2b.html 파일만 단독 다운로드">
+              <i class="fa-solid fa-download text-amber-300"></i>
+              <span>part2b.html</span>
+            </button>
+          </div>
+        </div>
+      
+        <div class="card-glow bg-[#10281f]/95 border border-emerald-700/60 rounded-2xl p-5 flex flex-col justify-between transition duration-200 shadow-lg">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-2.5">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-600/60 flex items-center justify-center text-amber-400 text-lg shrink-0">
+                  <i class="fa-solid fa-sitemap"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded text-[10.5px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-400/40">Part 3</span>
+                    <span class="text-xs font-mono text-emerald-400">part3.html</span>
+                  </div>
+                  <h2 class="text-base font-extrabold text-white mt-0.5">수열의 함수적 해석 &amp; 점화식 역추적 트리 킬러 마스터</h2>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-xs text-emerald-200/85 leading-relaxed mb-3">등차 일반항 직선, 합 Sₙ 원점 통과 포물선, 절댓값 수열 반사 공식, a₁ 점프 스캐너, 망원급수 및 수능 15번 역추적 이진 트리</p>
+
+            <div class="bg-[#07130e]/90 border border-amber-500/35 rounded-xl px-3.5 py-2 mb-3.5 text-xs text-amber-200 overflow-x-auto">
+              <div class="text-[10px] font-extrabold text-amber-400 uppercase mb-0.5">⚡ 핵심 10초 불변량 공식</div>
+              <div><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>p</mi></msub><mo>=</mo><msub><mi>S</mi><mi>q</mi></msub><mtext>  </mtext><mo>⟹</mo><mtext>  </mtext><mtext>대칭축&nbsp;</mtext><mfrac><mrow><mi>p</mi><mo>+</mo><mi>q</mi></mrow><mn>2</mn></mfrac><mo separator="true">,</mo><mtext>  </mtext><msub><mi>S</mi><mrow><mi>p</mi><mo>+</mo><mi>q</mi></mrow></msub><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mspace width="1em"></mspace><msubsup><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mi mathvariant="normal">∣</mi><msub><mi>a</mi><mi>k</mi></msub><mi mathvariant="normal">∣</mi><mo>=</mo><mn>2</mn><msub><mi>S</mi><mi>max</mi><mo>⁡</mo></msub><mo>−</mo><msub><mi>S</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">S_p = S_q \implies \text{대칭축 } \frac{p+q}{2},\; S_{p+q}=0, \quad \sum_{k=1}^{n}|a_k| = 2S_{\max} - S_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1994em;vertical-align:-0.345em;"></span><span class="mord text"><span class="mord hangul_fallback">대칭축</span><span class="mord">&nbsp;</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8544em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.4461em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2583em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">q</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.104em;vertical-align:-0.2997em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:0em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8043em;"><span style="top:-2.4003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2997em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mtight">m</span><span class="mtight">a</span><span class="mtight">x</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></div>
+            </div>
+
+            <div class="space-y-1.5 mb-4">
+              
+                <div onclick="launchPart('part3', 0)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">SEQ 01</span>
+                    <span class="font-semibold text-emerald-100 truncate">등차 합 Sₙ 원점 통과 포물선</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part3', 1)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">SEQ 02</span>
+                    <span class="font-semibold text-emerald-100 truncate">절댓값 합 ∑|aₖ| 반사 &amp; a₁ 점프</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+                <div onclick="launchPart('part3', 2)" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">SEQ 03</span>
+                    <span class="font-semibold text-emerald-100 truncate">점화식 역추적 이진 트리 (수능 15번)</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 pt-3 border-t border-emerald-800/60">
+            <button onclick="launchPart('part3', 0)" class="flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-extrabold text-xs shadow flex items-center justify-center gap-2 transition">
+              <i class="fa-solid fa-play"></i>
+              <span>🚀 지금 바로 칠판 열기</span>
+            </button>
+            <button onclick="downloadSinglePart('part3')" class="py-2.5 px-3 rounded-xl bg-emerald-950 hover:bg-emerald-800 border border-emerald-600/60 text-emerald-200 text-xs font-bold transition flex items-center gap-1.5" title="part3.html 파일만 단독 다운로드">
+              <i class="fa-solid fa-download text-amber-300"></i>
+              <span>part3.html</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= VIEW 2: LIVE EMBEDDED CHALKBOARD RUNNER ================= -->
+  <section id="iframeView" class="hidden flex-1 flex-col bg-[#07130e] relative overflow-hidden">
+    <div class="shrink-0 bg-[#0b1f17] border-b border-emerald-800/70 px-4 py-1.5 flex items-center justify-between text-xs">
+      <div class="flex items-center gap-2">
+        <span id="activeModuleBadge" class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-extrabold border border-amber-400/30">PART 1-A</span>
+        <span id="activeModuleTitle" class="font-bold text-white">모듈 실행 중</span>
+        <span id="activeModuleFile" class="text-emerald-400/70 font-mono text-[11px]">(part1a.html)</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="downloadSinglePart(currentModuleId)" class="px-2.5 py-1 rounded bg-emerald-900/80 hover:bg-emerald-700 border border-emerald-500/50 text-emerald-100 text-[11px] font-bold transition flex items-center gap-1">
+          <i class="fa-solid fa-file-code text-amber-300"></i>
+          <span>이 단원 HTML만 단독 저장</span>
+        </button>
+        <button onclick="switchView('home')" class="px-2.5 py-1 rounded bg-rose-600/80 hover:bg-rose-500 text-white text-[11px] font-bold transition flex items-center gap-1">
+          <i class="fa-solid fa-grip"></i>
+          <span>목차로 돌아가기</span>
+        </button>
+      </div>
+    </div>
+    <iframe id="moduleIframe" class="w-full flex-1 border-0 bg-[#07130e]"></iframe>
+  </section>
+
+  <!-- ================= JAVASCRIPT: PART DATA & DYNAMIC HTML / ZIP GENERATOR ================= -->
+  <script>
+    // =========================================================================
+    // 1. COMPLETE DEFINITIONS FOR ALL 5 STANDALONE PARTS
+    // =========================================================================
+    const PARTS_DATA = [
+      {
+        id: 'part1a',
+        file: 'part1a.html',
+        badge: 'Part 1-A',
+        title: '지수·상용로그 연산 & 지수함수 단독 심화 마스터',
+        icon: 'fa-superscript',
+        desc: '거듭제곱근 실근 매트릭스, 자연수 약수 스캐너, 상용로그 정수·소수부분 톱니파, 가로 간격 불변량, aˣ+a⁻ˣ 현수선',
+        formulaTex: 'k\\cdot a^x = a^{x+\\log_a k}, \\quad a^x+a^{-x} = t \\ge 2, \\quad |a^x-k|=t \\implies a^{x_1+x_2}=k^2-t^2',
+        modes: [
+          {
+            id: 'exp1', code: 'EXP 01', shortTitle: '거듭제곱근 실근 매트릭스', icon: 'fa-root-variable',
+            stepLabels: ['f(k)=0 부호 경계', 'xⁿ=f(k) 홀·짝 분기', '대칭축 자연수 합'],
+            stepDescs: [
+              'Step 1: 이차함수 $f(k)=(k-2)(k-6)$의 부호가 바뀌는 영점 경계($k=2, 6$)를 칠판에 표시합니다.',
+              'Step 2: $x^n = f(k)$의 실근 개수는 $n$이 홀수면 무조건 $1$개, 짝수면 부호($+,0,-$)에 따라 $2, 1, 0$개로 분기됩니다.',
+              'Step 3: 짝수 제곱근이 $0$개인 자연수 $k$들의 합을 대칭축 $\\times$ 개수로 3초 만에 암산합니다.'
+            ],
+            trap: '$n$이 짝수일 때 $f(k)=0$이면 실근은 $0$ 하나뿐이므로 $1$개입니다!',
+            problem: '$f(x)=(x-2)(x-6)$에 대하여 $f(k)$의 $n$제곱근 중 실수인 것의 개수를 $g(k,n)$이라 하자. $g(k,4)=0$인 자연수 $k$의 합과 $\\sum_{n=2}^{5} g(2,n)$의 값을 구하시오.',
+            textbook: ['1) $n=4$(짝수)에서 $g(k,4)=0 \\iff f(k)<0 \\iff 2<k<6$이므로 $k=3,4,5$ (합 $12$).', '2) $k=2$이면 $f(2)=0$이므로 모든 $n$에 대해 실근은 $0$ 하나뿐($1$개)이다. 합은 $4$.'],
+            secret: ['⚡ **[홀짝 매트릭스]** 홀수 제곱근은 무조건 $1$개! 짝수 제곱근이 $0$개인 구간은 $(2, 6)$ 내부 자연수이므로 대칭축 $4 \\times 3 = 12$!', '⚡ **[영점 법칙]** $f(k)=0$인 절편에서는 홀짝 무관 무조건 $1$개씩입니다!'],
+            params: { k: 4, n: 4 }, snapParams: { k: 4, n: 4 },
+            sliders: [
+              { key: 'k', label: '대입값 k (f(k) 부호 조절)', min: 0, max: 8, step: 0.2 },
+              { key: 'n', label: '제곱근 차수 n (홀/짝)', min: 2, max: 7, step: 1 }
+            ],
+            renderType: 'exp_root'
+          },
+          {
+            id: 'exp2', code: 'EXP 02', shortTitle: '자연수 조건 약수 스캐너', icon: 'fa-grip',
+            stepLabels: ['분수지수 2^(m/n)', 'n이 m의 약수 점등', '가우스 몫 ⌊M/n⌋ 합산'],
+            stepDescs: [
+              'Step 1: $\\sqrt[n]{2^m} = 2^{\\frac{m}{n}}$으로 분수지수로 변환합니다.',
+              'Step 2: 결과가 자연수가 되려면 지수 $\\frac{m}{n}$이 자연수, 즉 $m$이 $n$의 배수여야 합니다.',
+              'Step 3: 각 층 $n$마다 배수의 개수는 $\\lfloor M/n \\rfloor$개임을 이용해 즉시 합산합니다.'
+            ],
+            trap: '밑이 $4$나 $8$ 같은 합성수이면 반드시 소인수분해($2^{2m/n}$)를 먼저 한 뒤 약수를 따지세요!',
+            problem: '$1 \\le m \\le 12,\\; 2 \\le n \\le 6$인 두 자연수 $m, n$에 대하여 $\\sqrt[n]{2^m}$이 자연수가 되도록 하는 모든 순서쌍 $(m, n)$의 개수를 구하시오.',
+            textbook: ['1) $n=2$일 때 $2$의 배수 $6$개, $n=3$일 때 $4$개, $n=4$일 때 $3$개, $n=5$일 때 $2$개, $n=6$일 때 $2$개.', '2) 총합은 $6+4+3+2+2 = 17$개이다.'],
+            secret: ['⚡ **[가우스 몫 공식]** 일일이 나열하지 말고 $\\sum_{n=2}^{6} \\lfloor \\frac{12}{n} \\rfloor = 6+4+3+2+2 = 17$개로 5초 만에 암산하세요!'],
+            params: { maxM: 12, maxN: 6 }, snapParams: { maxM: 12, maxN: 6 },
+            sliders: [
+              { key: 'maxM', label: '분자 상한 M (1 ≤ m ≤ M)', min: 6, max: 16, step: 1 },
+              { key: 'maxN', label: '분모 상한 N (2 ≤ n ≤ N)', min: 3, max: 6, step: 1 }
+            ],
+            renderType: 'exp_div'
+          },
+          {
+            id: 'exp3', code: 'EXP 03', shortTitle: '상용로그 소수부분 톱니파', icon: 'fa-stairs',
+            stepLabels: ['소수부분 {log x}', '배수 톱니파 {p log x}', '차=정수 / 합=정수 타겟'],
+            stepDescs: [
+              'Step 1: $\\log x = n + \\alpha$ ($0 \\le \\alpha < 1$)의 소수부분을 기울기 $1$인 톱니파로 작도합니다.',
+              'Step 2: 소수부분이 같으면 빼서 정수($(p-1)\\log x \\in \\mathbb{Z}$), 합이 $1$이면 더해서 정수($(p+1)\\log x \\in \\mathbb{Z}$)가 됩니다.',
+              'Step 3: 합이 $1$일 때는 소수부분이 $0$인 정수 경계점을 반드시 제외합니다!'
+            ],
+            trap: '소수부분의 합이 $1$일 조건에서 $\\alpha = 0$이면 $0 + 0 = 0 \\neq 1$이므로 정수가 되는 끝점을 꼭 빼야 합니다!',
+            problem: '$10 \\le x < 100$ ($1 \\le \\log x < 2$)에서 $\\log x$와 $\\log x^3$의 소수부분이 같도록 하는 모든 실수 $x$의 곱을 구하시오.',
+            textbook: ['1) $3\\log x - \\log x = 2\\log x$가 정수여야 한다.', '2) $2 \\le 2\\log x < 4$에서 정수는 $2, 3$이므로 $\\log x = 1, \\frac{3}{2} \\implies x$의 곱은 $10^{2.5}$이다.'],
+            secret: ['⚡ **[1초 공식]** 소수부분 같음 $\\iff$ 차가 정수! 소수부분 합 $=1 \\iff$ 합이 정수 (단, $\\alpha \\neq 0$)!'],
+            params: { multP: 3, modeSum: 0 }, snapParams: { multP: 3, modeSum: 0 },
+            sliders: [
+              { key: 'multP', label: '진수 지수 p (log x^p)', min: 2, max: 4, step: 1 },
+              { key: 'modeSum', label: '조건 (0: 소수같음, 1: 합=1)', min: 0, max: 1, step: 1 }
+            ],
+            renderType: 'exp_saw'
+          },
+          {
+            id: 'exp4', code: 'EXP 04', shortTitle: '지수 가로 간격 불변량 & 현수선', icon: 'fa-arrows-left-right',
+            stepLabels: ['k·2^x = 2^(x+log₂k)', '가로 선분 AB = log₂k', '등적 직사각형 넓이'],
+            stepDescs: [
+              'Step 1: 지수 앞의 곱셈 계수 $k$는 $x$축 평행이동 $-\\log_2 k$로 흡수됩니다.',
+              'Step 2: 수평선 $y = t$로 자른 가로 선분 길이 $\\overline{AB} = \\log_2 k$는 높이 $t$와 무관하게 일정합니다!',
+              'Step 3: 둘러싸인 곡선 넓이는 직사각형 $\\Delta y \\times \\log_2 k$와 정확히 같습니다.'
+            ],
+            trap: '지수함수는 가로 간격이 일정하고, 로그함수는 세로 간격이 일정합니다!',
+            problem: '두 곡선 $y = 2^x, y = 4\\cdot 2^x$와 두 직선 $y = 2, y = 5$로 둘러싸인 영역의 넓이 $S$를 구하시오.',
+            textbook: ['1) $4\\cdot 2^x = 2^{x+2}$이므로 가로 간격은 항상 $2$이다.', '2) 세로 높이 차가 $5 - 2 = 3$이므로 등적변형 넓이는 $2 \\times 3 = 6$이다.'],
+            secret: ['⚡ 계수 $4$를 보자마자 가로 길이 $\\log_2 4 = 2$ 추출 $\\implies 2 \\times (5-2) = 6$ (3초 컷!)'],
+            params: { multK: 4, yCut1: 2.0, yCut2: 5.0 }, snapParams: { multK: 4, yCut1: 2.0, yCut2: 5.0 },
+            sliders: [
+              { key: 'multK', label: '앞의 계수 k (y = k·2^x)', min: 2, max: 8, step: 0.5 },
+              { key: 'yCut1', label: '아래 수평선 y = t₁', min: 1, max: 3, step: 0.25 },
+              { key: 'yCut2', label: '위 수평선 y = t₂', min: 3.5, max: 6, step: 0.25 }
+            ],
+            renderType: 'exp_horiz'
+          },
+          {
+            id: 'exp5', code: 'EXP 05', shortTitle: '|2ˣ - k| = t 점근선 & 합차 불변량', icon: 'fa-arrows-up-to-line',
+            stepLabels: ['반사 점근선 y = k', '꺾인 날개 2^(x₁)=k-t', '2^(x₁+x₂) = k² - t²'],
+            stepDescs: [
+              'Step 1: $y = |2^x - k|$의 원래 점근선 $y = -k$가 위로 접혀 올라와 $y = +k$가 됩니다.',
+              'Step 2: $0 < t < k$일 때 두 교점에서 $2^{x_1} = k - t$, $2^{x_2} = k + t$가 성립합니다.',
+              'Step 3: 두 식을 곱하면 합차공식에 의해 $2^{x_1+x_2} = k^2 - t^2$으로 두 근의 합이 즉시 도출됩니다!'
+            ],
+            trap: '$t \\ge k$에서는 왼쪽 날개와 만나지 않아 교점이 $1$개로 줄어듭니다!',
+            problem: '함수 $y = |2^x - 4|$와 직선 $y = 2$가 만나는 두 점의 $x$좌표 $x_1, x_2$에 대하여 $2^{x_1+x_2}$의 값을 구하시오.',
+            textbook: ['1) $-(2^{x_1}-4)=2 \\implies 2^{x_1}=2$.', '2) $2^{x_2}-4=2 \\implies 2^{x_2}=6$. 따라서 $2^{x_1+x_2} = 12$이다.'],
+            secret: ['⚡ **[합차공식 비기]** 개별 근 구하기 금지! $a^{x_1+x_2} = k^2 - t^2 = 4^2 - 2^2 = 12$ 끝!'],
+            params: { asymK: 4, lineT: 2.0 }, snapParams: { asymK: 4, lineT: 2.0 },
+            sliders: [
+              { key: 'asymK', label: '반사 점근선 높이 k', min: 2, max: 5, step: 0.5 },
+              { key: 'lineT', label: '수평선 높이 y = t', min: 0.5, max: 4.5, step: 0.25 }
+            ],
+            renderType: 'exp_abs'
+          }
+        ]
+      },
+      {
+        id: 'part1b',
+        file: 'part1b.html',
+        badge: 'Part 1-B',
+        title: '로그함수 고유 성질 & 역함수·원·도형 결합 마스터',
+        icon: 'fa-clone',
+        desc: '로그 세로 불변량, 진수 짝수차수 양날개 함정, 절댓값 곱 불변량, 어긋난 역함수 대칭축 및 원 결합 킬러',
+        formulaTex: '\\log_a(kx) = \\log_a x + \\log_a k, \\quad |\\log_a x|=t \\implies x_1 x_2 = 1, \\quad y = x - \\frac{(m-n)+(q-p)}{2}',
+        modes: [
+          {
+            id: 'log1', code: 'LOG 01', shortTitle: '로그 세로 간격 불변량 & 넓이', icon: 'fa-arrows-up-down',
+            stepLabels: ['진수 배수 ➔ 세로 평행이동', '수직 선분 AB = log₂k', '등적 직사각형 넓이'],
+            stepDescs: [
+              'Step 1: $\\log_2(kx) = \\log_2 x + \\log_2 k$이므로 위로 $\\log_2 k$만큼 평행이동한 그래프입니다.',
+              'Step 2: 수직선 $x = t$로 자른 세로 선분 길이 $\\overline{AB} = \\log_2 k$는 위치 $t$와 무관하게 일정합니다!',
+              'Step 3: 두 수직선과 두 곡선으로 둘러싸인 넓이는 $\\Delta x \\times \\log_2 k$입니다.'
+            ],
+            trap: '로그 진수의 곱셈은 확대/축소가 아니라 $y$축 평행이동입니다!',
+            problem: '두 함수 $y = \\log_2 x, y = \\log_2(4x)$와 두 직선 $x = 2, x = 5$로 둘러싸인 영역의 넓이 $S$를 구하시오.',
+            textbook: ['1) $\\log_2(4x) - \\log_2 x = 2$로 세로 간격이 일정하다.', '2) 가로 간격이 $5 - 2 = 3$이므로 넓이는 $3 \\times 2 = 6$이다.'],
+            secret: ['⚡ 세로 불변량 $\\log_2 4 = 2 \\implies (5-2) \\times 2 = 6$ (3초 컷!)'],
+            params: { multK: 4, xCut1: 2.0, xCut2: 5.0 }, snapParams: { multK: 4, xCut1: 2.0, xCut2: 5.0 },
+            sliders: [
+              { key: 'multK', label: '진수 배수 k (log₂(kx))', min: 2, max: 8, step: 0.5 },
+              { key: 'xCut1', label: '왼쪽 절단선 x = t₁', min: 1, max: 3.5, step: 0.25 },
+              { key: 'xCut2', label: '오른쪽 절단선 x = t₂', min: 3.5, max: 7, step: 0.25 }
+            ],
+            renderType: 'log_vert'
+          },
+          {
+            id: 'log2', code: 'LOG 02', shortTitle: '진수 함정 log₂(x²) 양날개 & |log₂x| 곱', icon: 'fa-code-fork',
+            stepLabels: ['log₂(x²)=2log₂|x| 양날개', '|log₂x|=t 역수 곱 x₁x₂=1', '산술기하 중점 M > 1'],
+            stepDescs: [
+              'Step 1: $y = \\log_2(x^2)$은 진수 조건이 $x \\neq 0$이므로 $y$축 대칭인 왼쪽 날개($x<0$)가 살아납니다!',
+              'Step 2: $y = |\\log_2 x|$와 $y = t$의 두 양수 교점 $x_1, x_2$는 서로 역수이므로 $x_1 x_2 = 1$입니다.',
+              'Step 3: 산술·기하평균에 의해 두 교점의 중점 $\\frac{x_1+x_2}{2}$은 항상 $1$보다 큽니다!'
+            ],
+            trap: '$\\log_2 x^2 = 2\\log_2 x$로 변형하면 음수 실근을 통째로 놓칩니다! 반드시 $2\\log_2|x|$로 쓰세요!',
+            problem: '함수 $y = |\\log_2 x|$와 직선 $y = 2$가 만나는 두 점 $x_1, x_2$에 대하여 $x_1 x_2$의 값과 중점 $M = \\frac{x_1+x_2}{2}$의 좌표를 구하시오.',
+            textbook: ['1) $x_1 = 2^{-2} = \\frac{1}{4}, x_2 = 2^2 = 4$이다.', '2) 곱은 $1$이고 중점은 $\\frac{17}{8} = 2.125 > 1$이다.'],
+            secret: ['⚡ **[로그 절댓값 불변량]** 높이에 상관없이 $x_1 x_2 = 1$ (역수), 중점 $M > 1$ (우측 이동)!'],
+            params: { shiftP: 0, lineT: 2.0 }, snapParams: { shiftP: 0, lineT: 2.0 },
+            sliders: [
+              { key: 'shiftP', label: '점근선 평행이동 p', min: 0, max: 3, step: 0.5 },
+              { key: 'lineT', label: '수평선 높이 y = t', min: 0.5, max: 2.8, step: 0.1 }
+            ],
+            renderType: 'log_abs'
+          },
+          {
+            id: 'log3', code: 'LOG 03', shortTitle: '어긋난 역함수 대칭축 & 원 결합', icon: 'fa-arrows-turn-to-dots',
+            stepLabels: ['지수·로그 정점 P₁, P₂', '이동된 대칭축 y = x + C', '원 x²+y²=r² 피타고라스'],
+            stepDescs: [
+              'Step 1: 평행이동이 어긋난 $y=2^{x-m}+n$과 $y=\\log_2(x-p)+q$의 정점 $P_1(m,n+1), P_2(p+1,q)$를 찍습니다.',
+              'Step 2: 두 정점의 중점 $M_0$을 지나고 기울기가 $1$인 직선 $y = x + C$가 두 곡선의 진짜 대칭축입니다!',
+              'Step 3: 원 $x^2+y^2=r^2$과 역함수가 만나면 $x_1^2+y_1^2=r^2$과 $y_1-x_1=d$로 좌표를 3초 만에 스캔합니다.'
+            ],
+            trap: '밑이 같은 지수·로그가 등장하면 평행이동 숫자가 달라도 무조건 직선 $y = x + C$에 대칭입니다!',
+            problem: '두 곡선 $y = 2^{x-1}+2$ (정점 $(1,3)$)와 $y = \\log_2(x-4)-1$ (정점 $(5,-1)$)의 대칭축 방정식 $y = x + C$와 직선 $y = -x + 6$과의 교점 중점 $M$을 구하시오.',
+            textbook: ['1) 두 정점 $(1,3), (5,-1)$의 중점은 $(3, 1)$이다.', '2) 따라서 대칭축은 $y = x - 2$ ($C=-2$)이고 $y=-x+6$과 연립하면 $M(4, 2)$이다.'],
+            secret: ['⚡ **[정점 중점 비기]** 지수 정점과 로그 정점의 중점 $(3, 1)$을 $y = x + C$에 대입하면 $1 = 3 + C \\implies C = -2$ (3초 컷!)'],
+            params: { expM: 1, expN: 2, logP: 4, logQ: -1, lineK: 6 }, snapParams: { expM: 1, expN: 2, logP: 4, logQ: -1, lineK: 6 },
+            sliders: [
+              { key: 'expM', label: '지수 x평행이동 m', min: -1, max: 3, step: 0.5 },
+              { key: 'logP', label: '로그 x평행이동 p', min: 1, max: 5, step: 0.5 },
+              { key: 'lineK', label: '절단 직선 y = -x + k', min: 4, max: 8, step: 0.5 }
+            ],
+            renderType: 'log_misinv'
+          },
+          {
+            id: 'log4', code: 'LOG 04', shortTitle: '역함수 축 전환 격자점 스캐너', icon: 'fa-table-cells',
+            stepLabels: ['자연수 격자점 점등', '세로줄 슬라이스', '가로줄(y=m ➔ x≥2^m) 역산'],
+            stepDescs: [
+              'Step 1: $1 \\le x \\le K, 1 \\le y \\le \\log_2 x$ 영역의 자연수 격자점을 점등합니다.',
+              'Step 2: 완만한 로그함수는 세로줄($x$) 대신 **가로줄 층수($y = 1, 2, 3 \\iff x \\ge 2^y$)**로 세면 단 3줄에 끝납니다!',
+              'Step 3: 각 층의 점 개수 $(K - 2^y + 1)$을 합산하여 오차 0.000%로 검증합니다.'
+            ],
+            trap: '지수함수는 세로선($x=n$) 기준, 로그함수는 가로선($y=m$ 역함수 지수화) 기준으로 세세요!',
+            problem: '$1 \\le x \\le 9,\\; 1 \\le y \\le \\log_2 x$를 만족하는 자연수 순서쌍 $(x, y)$의 개수를 가로줄 역산으로 구하시오.',
+            textbook: ['1) $y=1$층($x=2\\sim 9$): $8$개, $y=2$층($x=4\\sim 9$): $6$개, $y=3$층($x=8\\sim 9$): $2$개.', '2) 총합은 $8 + 6 + 2 = 16$개이다.'],
+            secret: ['⚡ 가로 층별 공식 $\\sum (K - 2^y + 1) = 8 + 6 + 2 = 16$개!'],
+            params: { maxX: 9 }, snapParams: { maxX: 9 },
+            sliders: [
+              { key: 'maxX', label: '스캔 상한 자연수 K', min: 4, max: 13, step: 1 }
+            ],
+            renderType: 'log_lattice'
+          }
+        ]
+      },
+      {
+        id: 'part2a',
+        file: 'part2a.html',
+        badge: 'Part 2-A',
+        title: '삼각함수 단위원 특수각 · 3함수 연동 · 방부등식 조립기',
+        icon: 'fa-compass',
+        desc: '30°·45°·60° 16대 특수각 스냅, 단위원↔sin·cos·tan 3함수 동시 연동, 방정식·부등식 호(Arc) & 해 구간, 절댓값 4종',
+        formulaTex: '\\sin = \\text{가로절단}(y=k), \\quad \\cos = \\text{세로절단}(x=k), \\quad \\sum x_i = (\\text{대칭축})\\times(\\text{개수})',
+        modes: [
+          {
+            id: 'trig1', code: 'TRIG 01', shortTitle: '단위원 특수각 스냅 & 3함수 투영', icon: 'fa-compass',
+            stepLabels: ['나비넥타이 합동 삼각형', 'sin·cos·tan 3기둥 작도', '2π 물결 레이저 투영'],
+            stepDescs: [
+              'Step 1: 단위원 위에서 $30^\\circ, 45^\\circ, 60^\\circ$ 계열 특수각마다 동경이 자석처럼 스냅되며 나비넥타이 합동 직각삼각형을 그립니다.',
+              'Step 2: 세로 수선($\\sin$), 가로 밑변($\\cos$), $x=1$ 접선 높이($\\tan$) 3개 기둥을 동시에 비교합니다.',
+              'Step 3: 오른쪽 $[0, 2\\pi]$ 물결 그래프로 수평 레이저를 쏘아 원 운동과 파동을 1:1로 연결합니다.'
+            ],
+            trap: '$\\cos\\theta$는 단위원의 가로($x$좌표), $\\sin\\theta$는 세로($y$좌표), $\\tan\\theta$는 $x=1$ 접선의 높이입니다!',
+            problem: '단위원 위의 동경 $\\theta = 120^\\circ$ ($\\frac{2\\pi}{3}$)에서 $\\cos\\theta, \\sin\\theta, \\tan\\theta$의 정확한 값을 나비넥타이 직각삼각형으로 직독하시오.',
+            textbook: ['1) $\\frac{2\\pi}{3} = \\pi - \\frac{\\pi}{3}$이므로 제2사분면 각이다.', '2) $\\cos\\frac{2\\pi}{3} = -\\frac{1}{2}, \\sin\\frac{2\\pi}{3} = \\frac{\\sqrt{3}}{2}, \\tan\\frac{2\\pi}{3} = -\\sqrt{3}$이다.'],
+            secret: ['⚡ $60^\\circ$ 계열(길쭉한 삼각형) 제2사분면$(-, +)$이므로 각변환 없이 $P(-\\frac{1}{2}, \\frac{\\sqrt{3}}{2})$ 1초 직독!'],
+            params: { deg: 120, kVal: 0.5 }, snapParams: { deg: 120, kVal: 0.5 },
+            sliders: [
+              { key: 'deg', label: '단위원 특수각 동경 θ (0°~360°)', min: 0, max: 360, step: 15 },
+              { key: 'kVal', label: '방부등식 절단 상수 k', min: -0.9, max: 0.9, step: 0.05 }
+            ],
+            renderType: 'trig_unit'
+          },
+          {
+            id: 'trig2', code: 'TRIG 02', shortTitle: '단위원 호(Arc) ↔ 방부등식 해 구간', icon: 'fa-grip-lines-vertical',
+            stepLabels: ['sin 가로선 vs cos 세로선', '단위원 해의 호(Arc) 발광', '그래프 x축 해 구간 동기화'],
+            stepDescs: [
+              'Step 1: $\\sin x \\ge k$는 단위원 가로선 $y=k$ 위쪽 호, $\\cos x \\le k$는 단위원 **세로선 $x=k$ 왼쪽 호**로 자릅니다!',
+              'Step 2: 조건을 만족하는 단위원 테두리 호(Arc)가 황금색으로 발광합니다.',
+              'Step 3: 오른쪽 물결 그래프의 해 구간과 대칭 합($\\sum x_i = n\\cdot S$)이 동시에 판서됩니다.'
+            ],
+            trap: '$\\cos x \\le k$는 단위원 왼쪽 호이므로 $[\\alpha, 2\\pi-\\alpha]$ 한 구간이지만, $\\cos x \\ge k$는 $0^\\circ$가 낀 오른쪽 호이므로 양 끝 두 구간으로 나뉩니다!',
+            problem: '$0 \\le x < 2\\pi$에서 부등식 $\\cos x \\le -\\frac{1}{2}$의 해 구간을 단위원 세로선 $x = -\\frac{1}{2}$의 왼쪽 호로 구하시오.',
+            textbook: ['1) $\\cos x = -\\frac{1}{2}$인 각은 $\\frac{2\\pi}{3}, \\frac{4\\pi}{3}$이다.', '2) 세로선 왼쪽 호이므로 $\\frac{2\\pi}{3} \\le x \\le \\frac{4\\pi}{3}$ (대칭 합 $2\\pi$, 구간 길이 $\\frac{2\\pi}{3}$).'],
+            secret: ['⚡ $\\cos$ 부등식은 단위원 **세로 칼질**! 이하($\\le$)는 왼쪽 반원 호를 그대로 읽으면 끝!'],
+            params: { isCos: 1, kVal: -0.5 }, snapParams: { isCos: 1, kVal: -0.5 },
+            sliders: [
+              { key: 'isCos', label: '함수 선택 (0: sin 가로절단, 1: cos 세로절단)', min: 0, max: 1, step: 1 },
+              { key: 'kVal', label: '절단 상수 k', min: -0.9, max: 0.9, step: 0.05 }
+            ],
+            renderType: 'trig_ineq'
+          },
+          {
+            id: 'trig3', code: 'TRIG 03', shortTitle: '절댓값 삼각함수 4종 비교 실험실', icon: 'fa-layer-group',
+            stepLabels: ['원래 sinx 점선 가이드', '절댓값 4종 실선 전환', '주기·우함수·2단 봉우리 판독'],
+            stepDescs: [
+              'Step 1: ① $|\\sin x|$ (주기 $\\pi$ 단축), ② $\\sin|x|$ ($x=0$ V자 비주기 우함수), ③ $|2\\sin x-1|$ (2단 봉우리), ④ $\\sin x+|\\sin x|$ (반파)를 비교합니다.',
+              'Step 2: 수평선 $y = t$를 움직이며 교점 개수가 홀수 개가 되는 극점 접선을 찾습니다.',
+              'Step 3: 합답형(ㄱ·ㄴ·ㄷ) 단골인 주기성과 대칭성을 판별합니다.'
+            ],
+            trap: '$y = |\\sin x|$는 주기가 $\\pi$인 주기함수이지만, $y = \\sin|x|$는 주기함수가 아닙니다!',
+            problem: '$[0, 2\\pi)$에서 $f(x) = |2\\sin x - 1|$ (절댓값 3번)과 직선 $y = t$가 $3$개의 점에서 만나는 $t$의 값을 구하시오.',
+            textbook: ['1) 작은 봉우리 높이는 $|2-1|=1$, 큰 봉우리 높이는 $|-2-1|=3$이다.', '2) 따라서 작은 봉우리 꼭짓점에 접하는 $t = 1$일 때 교점이 $3$개이다.'],
+            secret: ['⚡ 2단 봉우리 절댓값에서 교점 $3$개 $\\iff$ 무조건 작은 산 꼭짓점 $t = |a| - |c| = 1$!'],
+            params: { absType: 3, lineT: 1.0 }, snapParams: { absType: 3, lineT: 1.0 },
+            sliders: [
+              { key: 'absType', label: '절댓값 번호 (1:|sinx|, 2:sin|x|, 3:|2sinx-1|, 4:반파)', min: 1, max: 4, step: 1 },
+              { key: 'lineT', label: '스캔 직선 y = t', min: 0, max: 3.2, step: 0.1 }
+            ],
+            renderType: 'trig_abs4'
+          }
+        ]
+      },
+      {
+        id: 'part2b',
+        file: 'part2b.html',
+        badge: 'Part 2-B',
+        title: '사인·코사인법칙 실전 도형 기하 8대 고속 비기 마스터',
+        icon: 'fa-drafting-compass',
+        desc: '수선의 발 정사영 분해, 두 외접원 공통현 역비, 숨은 원(공점원) & cosA 축소 닮음, 스튜어트, 방멱, 톨레미·내접 정삼각형',
+        formulaTex: 'a = c\\cos B + b\\cos C, \\quad R_1:R_2 = \\sin D:\\sin B, \\quad \\overline{DE}=\\overline{BC}|\\cos A|, \\quad \\overline{PA}+\\overline{PC}=\\overline{PB}',
+        modes: [
+          {
+            id: 'geo1', code: 'GEO 01', shortTitle: '제1코사인 수선의 발 분해', icon: 'fa-person-falling-burst',
+            stepLabels: ['꼭짓점 A 수선의 발 H', 'c cosB + b cosC 정사영', '공통 높이 h 피타고라스'],
+            stepDescs: [
+              'Step 1: 꼭짓점 $A$에서 밑변 $BC$에 수선의 발 $H$를 내려 두 개의 직각삼각형으로 쪼갭니다.',
+              'Step 2: 밑변은 $a = c\\cos B + b\\cos C$로 정사영 분해됩니다.',
+              'Step 3: 제2코사인법칙 이차방정식 없이 피타고라스 정리로 5초 만에 길이를 구합니다.'
+            ],
+            trap: '둔각삼각형일 때는 수선의 발이 밑변 연장선 밖에 떨어지므로 빼주어야 합니다!',
+            problem: '$\\overline{AB}=5, \\cos B = \\frac{3}{5}, \\overline{AC}=2\\sqrt{5}$인 예각삼각형 $ABC$에서 수선의 발 $H$를 내려 $\\overline{BC}$의 길이를 구하시오.',
+            textbook: ['1) 왼쪽 직각삼각형에서 $\\overline{BH}=3, \\overline{AH}=4$이다.', '2) 오른쪽 직각삼각형에서 $\\overline{CH}=\\sqrt{20-16}=2$이므로 $\\overline{BC}=3+2=5$이다.'],
+            secret: ['⚡ 수선의 발 한 줄이면 $(3:4:5)$와 $(2:4:2\\sqrt{5})$ 두 직각삼각형으로 이차방정식 없이 3초 합체!'],
+            params: { sideC: 5, cosB: 0.6, sideB: 4.47 }, snapParams: { sideC: 5, cosB: 0.6, sideB: 4.47 },
+            sliders: [
+              { key: 'sideC', label: '왼쪽 변 c (AB)', min: 3.5, max: 7, step: 0.25 },
+              { key: 'cosB', label: 'cos B 값', min: 0.3, max: 0.8, step: 0.05 },
+              { key: 'sideB', label: '오른쪽 변 b (AC)', min: 3.8, max: 7.5, step: 0.1 }
+            ],
+            renderType: 'geo_proj'
+          },
+          {
+            id: 'geo2', code: 'GEO 02', shortTitle: '두 외접원 공통현 & 숨은 원 cosA 닮음', icon: 'fa-rings-wedding',
+            stepLabels: ['공통현 AC 브릿지', '두 외접원 반지름 R₁, R₂', 'R₁ : R₂ = sinD : sinB 역비'],
+            stepDescs: [
+              'Step 1: 두 외접원이 공유하는 공통현 $\\overline{AC}$를 연결합니다.',
+              'Step 2: $\\overline{AC} = 2R_1\\sin B = 2R_2\\sin D$가 성립합니다.',
+              'Step 3: 따라서 외접원 반지름의 비는 마주보는 원주각 사인값의 역비($R_1:R_2 = \\sin D:\\sin B$)입니다!'
+            ],
+            trap: '더 작은 원에서 바라본 원주각의 사인값이 더 큽니다(역비 주의)!',
+            problem: '선분 $AC$를 공유하는 두 삼각형 $ABC, ADC$의 외접원 반지름 $R_1, R_2$에 대하여 $\\frac{\\sin B}{\\sin D} = \\frac{3}{4}$이고 $R_2 = 3$일 때 $R_1$을 구하시오.',
+            textbook: ['1) $2R_1\\sin B = 2R_2\\sin D$에서 $R_1 = R_2 \\cdot \\frac{\\sin D}{\\sin B} = 3 \\times \\frac{4}{3} = 4$.'],
+            secret: ['⚡ 공통현 보자마자 $R_1 \\sin B = R_2 \\sin D \\implies R_1 : R_2 = 4 : 3 \\implies R_1 = 4$!'],
+            params: { r1: 4.0, r2: 3.0, chordH: 2.2 }, snapParams: { r1: 4.0, r2: 3.0, chordH: 2.2 },
+            sliders: [
+              { key: 'r1', label: '왼쪽 외접원 반지름 R₁', min: 2.5, max: 4.8, step: 0.1 },
+              { key: 'r2', label: '오른쪽 외접원 반지름 R₂', min: 2.2, max: 4.5, step: 0.1 }
+            ],
+            renderType: 'geo_circles'
+          },
+          {
+            id: 'geo3', code: 'GEO 03', shortTitle: '톨레미 & 내접 정삼각형 (PA+PC=PB)', icon: 'fa-gem',
+            stepLabels: ['내접 정삼각형 ABC', '호 위의 동점 P 연결', 'PA + PC = PB 불변량'],
+            stepDescs: [
+              'Step 1: 원에 내접하는 정삼각형 $ABC$와 호 $AC$ 위의 점 $P$를 작도합니다.',
+              'Step 2: 톨레미 정리 $ac + bd = pq$에서 정삼각형의 세 변 $L$을 약분합니다.',
+              'Step 3: 점 $P$가 어디에 있든 짧은 두 현의 합은 가장 긴 현과 같습니다($\\overline{PA} + \\overline{PC} = \\overline{PB}$)!'
+            ],
+            trap: '우변은 항상 점 $P$의 맞은편 꼭짓점까지 이은 가장 긴 현입니다!',
+            problem: '원에 내접하는 정삼각형 $ABC$의 호 $AC$ 위의 점 $P$에서 $\\overline{PA}=3, \\overline{PC}=5$일 때 $\\overline{PB}$의 길이를 구하시오.',
+            textbook: ['1) $\\angle APC = 120^\\circ$에서 $\\overline{AC}=7$을 구한 뒤 다시 $\\angle APB=60^\\circ$ 코사인법칙으로 $\\overline{PB}=8$을 구한다.'],
+            secret: ['⚡ 코사인법칙 2번 생략! 정삼각형 외접원은 무조건 $\\overline{PB} = \\overline{PA} + \\overline{PC} = 3 + 5 = 8$ (1초 컷!)'],
+            params: { posPDeg: -75, radiusR: 4.0 }, snapParams: { posPDeg: -75, radiusR: 4.0 },
+            sliders: [
+              { key: 'posPDeg', label: '호 AC 위 점 P 각도', min: -135, max: -40, step: 1 },
+              { key: 'radiusR', label: '외접원 반지름 R', min: 3.0, max: 5.0, step: 0.2 }
+            ],
+            renderType: 'geo_ptolemy'
+          }
+        ]
+      },
+      {
+        id: 'part3',
+        file: 'part3.html',
+        badge: 'Part 3',
+        title: '수열의 함수적 해석 & 점화식 역추적 트리 킬러 마스터',
+        icon: 'fa-sitemap',
+        desc: '등차 일반항 직선, 합 Sₙ 원점 통과 포물선, 절댓값 수열 반사 공식, a₁ 점프 스캐너, 망원급수 및 수능 15번 역추적 이진 트리',
+        formulaTex: 'S_p = S_q \\implies \\text{대칭축 } \\frac{p+q}{2},\\; S_{p+q}=0, \\quad \\sum_{k=1}^{n}|a_k| = 2S_{\\max} - S_n',
+        modes: [
+          {
+            id: 'seq1', code: 'SEQ 01', shortTitle: '등차 합 Sₙ 원점 통과 포물선', icon: 'fa-bezier-curve',
+            stepLabels: ['원점 (0,0) 통과 포물선', '대칭축 x = (p+q)/2', '반대편 절편 S_(p+q) = 0'],
+            stepDescs: [
+              'Step 1: 등차수열의 합 $S_n = pn^2 + qn$은 상수항이 없으므로 무조건 원점 $(0,0)$을 지나는 포물선입니다.',
+              'Step 2: $S_p = S_q$ ($p \\neq q$)이면 대칭축은 정확히 $x = \\frac{p+q}{2}$입니다.',
+              'Step 3: 원점 $(0,0)$의 대칭점인 $(p+q, 0)$에서 무조건 $S_{p+q} = 0$이 됩니다!'
+            ],
+            trap: '대칭축이 $4.5$처럼 반정수이면 가장 가까운 두 자연수 $n = 4, 5$에서 동시에 최댓값을 갖습니다!',
+            problem: '첫째항이 양수인 등차수열에서 $S_3 = S_7$일 때, $S_n$이 최대가 되는 자연수 $n$과 $S_k = 0$인 자연수 $k$를 구하시오.',
+            textbook: ['1) $a_4+a_5+a_6+a_7 = 0 \\implies 2a_1 + 9d = 0$을 유도해 합 공식에 대입한다.', '2) $n=5$에서 최대이고 $k=10$에서 $S_{10}=0$이다.'],
+            secret: ['⚡ $S_3 = S_7$ 보자마자 대칭축 $\\frac{3+7}{2} = 5$(최대), 원점 대칭 절편 $S_{3+7} = S_{10} = 0$ ($k=10$) 3초 컷!'],
+            params: { pIdx: 3, qIdx: 7 }, snapParams: { pIdx: 3, qIdx: 7 },
+            sliders: [
+              { key: 'pIdx', label: '첫째 대칭 번호 p (S_p)', min: 1, max: 5, step: 1 },
+              { key: 'qIdx', label: '둘째 대칭 번호 q (S_q)', min: 5, max: 11, step: 1 }
+            ],
+            renderType: 'seq_parabola'
+          },
+          {
+            id: 'seq2', code: 'SEQ 02', shortTitle: '절댓값 합 ∑|aₖ| 반사 & a₁ 점프', icon: 'fa-wave-square',
+            stepLabels: ['원래 포물선 Sₙ', '|Sₙ| W자 꺾은 포물선', '∑|aₖ| = 2S_max - Sₙ 반사'],
+            stepDescs: [
+              'Step 1: $S_n = -n(n-N)$의 꼭짓점 $S_{\\max}$를 찾습니다.',
+              'Step 2: $|S_n|$은 $x$축에서 꺾여 올라오는 W자 개형입니다.',
+              'Step 3: 반면 항별 절댓값 합 $\\sum_{k=1}^{n}|a_k|$는 꼭짓점 높이 $S_{\\max}$에서 위로 반사된 $2S_{\\max} - S_n$입니다!'
+            ],
+            trap: '합 전체의 절댓값 $|S_n|$과 항별 절댓값의 합 $\\sum |a_k|$를 절대 혼동하지 마세요!',
+            problem: '합이 $S_n = -n^2 + 8n$인 등차수열에서 $\\sum_{k=1}^{10} |a_k|$의 값을 꼭짓점 반사 공식으로 구하시오.',
+            textbook: ['1) 제$4$항까지 양수($S_4 = 16$)이고 제$5\\sim 10$항은 음수이다.', '2) $S_4 - (S_{10} - S_4) = 2S_4 - S_{10} = 32 - (-20) = 52$이다.'],
+            secret: ['⚡ 일반항 구하기 금지! 대칭축 $n=4$에서 $S_4 = 16$, $S_{10} = -20 \\implies 2(16) - (-20) = 52$!'],
+            params: { zeroSumN: 8, targetN: 10 }, snapParams: { zeroSumN: 8, targetN: 10 },
+            sliders: [
+              { key: 'zeroSumN', label: '절편 번호 N (S_N = 0)', min: 6, max: 10, step: 2 },
+              { key: 'targetN', label: '합산 상한 번호 n', min: 5, max: 12, step: 1 }
+            ],
+            renderType: 'seq_abs'
+          },
+          {
+            id: 'seq3', code: 'SEQ 03', shortTitle: '점화식 역추적 이진 트리 (수능 15번)', icon: 'fa-sitemap',
+            stepLabels: ['역방향 2갈래 분기(÷2, +k)', '부등식 위반 가지치기(✕)', '생존 자연수 a₁ 합산'],
+            stepDescs: [
+              'Step 1: $a_{n+1} = 2a_n\\;(a_n < k)$ 또는 $a_n - k\\;(a_n \\ge k)$를 거꾸로 뒤집어 $a_4$에서 $a_1$로 역추적 트리를 뻗습니다.',
+              'Step 2: 왼쪽 가지($\\div 2$) 결과가 자연수가 아니거나 $\\ge k$이면 빨간색 X로 즉시 가지치기(Pruning)합니다!',
+              'Step 3: 제$1$항까지 살아남은 골든 네온 $a_1$ 후보들을 자동으로 모두 합산합니다.'
+            ],
+            trap: '$a_n = a_{n+1} / 2$가 자연수로 나누어떨어지더라도 원래 구간 조건($a_n < k$)을 만족하는지 반드시 검문하세요!',
+            problem: '모든 항이 자연수이고 $a_{n+1} = \\begin{cases} 2a_n & (a_n < 6) \\\\ a_n - 6 & (a_n \\ge 6) \\end{cases}$일 때, $a_4 = 4$가 되도록 하는 모든 $a_1$의 값의 합을 구하시오.',
+            textbook: ['1) $a_4=4 \\to a_3 \\in \\{2, 10\\} \\to a_2 \\in \\{1, 8, 5, 16\\}$.', '2) 각 $a_2$에서 자연수이고 범위 조건을 만족하는 $a_1 \\in \\{7, 4, 14, 11, 8, 22\\}$의 합은 $66$이다.'],
+            secret: ['⚡ 정방향 케이스 분류 금지! 칠판의 역추적 이진 트리에서 홀수 $\\div 2$ 가지들을 X로 쳐내면 10초 만에 끝납니다!'],
+            params: { targetA4: 4, threshK: 6 }, snapParams: { targetA4: 4, threshK: 6 },
+            sliders: [
+              { key: 'targetA4', label: '목표 제4항 값 a₄', min: 2, max: 8, step: 1 },
+              { key: 'threshK', label: '분기 문턱값 k', min: 4, max: 8, step: 1 }
+            ],
+            renderType: 'seq_tree'
+          }
+        ]
+      }
+    ];
+
+    // =========================================================================
+    // 2. STANDALONE HTML GENERATOR ENGINE (FOR IFRAME & ZIP EXPORT)
+    // =========================================================================
+    function buildStandalonePartHTML(part) {
+      const partJson = JSON.stringify(part);
+      return `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${part.badge}. ${part.title}</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://cdn.tailwindcss.com"><\/script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"><\/script>
+  <style>
+    * { box-sizing: border-box; font-family: 'Pretendard', sans-serif; user-select: none; }
+    body { margin: 0; background: linear-gradient(135deg, #07130e 0%, #0f261d 50%, #163329 100%); color: #ecfdf5; height: 100vh; width: 100vw; overflow: hidden; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-thumb { background: rgba(52, 211, 153, 0.35); border-radius: 999px; }
+    .chalk-bg { background-color: #0b1d16; background-image: radial-gradient(circle at 25% 25%, rgba(52, 211, 153, 0.045) 0%, transparent 50%); }
+    .tab-btn-active { background: linear-gradient(180deg, rgba(52, 211, 153, 0.24) 0%, rgba(16, 40, 31, 0.95) 100%); border-bottom: 3px solid #fbbf24; color: #fff; }
+    .glow-gold { box-shadow: 0 0 15px rgba(251, 191, 36, 0.28); }
+    input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; background: rgba(255,255,255,0.12); border-radius: 999px; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: #34d399; border: 2px solid #fff; cursor: pointer; }
+  </style>
+</head>
+<body class="flex flex-col h-screen w-screen overflow-hidden">
+  <header class="shrink-0 bg-[#07130e]/95 border-b border-emerald-800/60 z-20">
+    <div class="flex items-center justify-between px-4 py-2 border-b border-emerald-900/50">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="px-2.5 py-1 rounded-lg bg-emerald-950 hover:bg-emerald-800 border border-emerald-600/60 text-emerald-200 text-xs font-bold flex items-center gap-1.5 transition" title="통합 인덱스로 이동">
+          <i class="fa-solid fa-house text-amber-400"></i><span>인덱스 홈</span>
+        </a>
+        <span class="px-2 py-0.5 text-[11px] font-extrabold rounded bg-amber-500/20 text-amber-300 border border-amber-400/30">${part.badge}</span>
+        <h1 class="text-sm md:text-base font-extrabold text-white truncate">${part.title}</h1>
+      </div>
+      <button onclick="snapToCondition()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold transition flex items-center gap-1.5 shadow">
+        <i class="fa-solid fa-bullseye"></i><span>🎯 문제 조건 스냅</span>
+      </button>
+    </div>
+    <nav id="modeTabBar" class="flex items-center gap-1 px-3 pt-1 overflow-x-auto bg-[#091812]"></nav>
+  </header>
+
+  <main class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+    <section class="flex-1 relative chalk-bg overflow-hidden flex flex-col min-h-[340px]">
+      <div class="absolute top-3 left-3 z-10 pointer-events-none max-w-[420px]">
+        <div class="bg-[#07130e]/90 backdrop-blur-md border border-emerald-700/50 rounded-xl px-3.5 py-2.5 shadow-xl">
+          <div id="hudTypeBadge" class="text-[11px] font-bold text-amber-400 mb-0.5"></div>
+          <div id="hudEquationBox" class="text-xs md:text-sm text-white font-semibold"></div>
+        </div>
+      </div>
+      <canvas id="chalkCanvas" class="w-full h-full cursor-grab active:cursor-grabbing block"></canvas>
+      <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 bg-[#07130e]/90 border border-emerald-700/60 px-3.5 py-1.5 rounded-full shadow-2xl text-xs">
+        <button onclick="zoomCanvas(1.18)" class="hover:text-amber-300 px-1"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+        <button onclick="zoomCanvas(0.85)" class="hover:text-amber-300 px-1"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+        <button onclick="resetView()" class="hover:text-amber-300 px-1.5 font-semibold"><i class="fa-solid fa-rotate-left mr-1"></i>리셋</button>
+        <span class="text-amber-300/90 text-[11px] ml-1"><i class="fa-solid fa-hand-pointer mr-1"></i>칠판 위 노란색 핸들 드래그</span>
+      </div>
+    </section>
+
+    <aside class="w-full lg:w-[450px] shrink-0 bg-[#0b1f17]/95 border-t lg:border-t-0 lg:border-l border-emerald-800/60 overflow-y-auto p-3.5 space-y-3.5 z-10">
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-extrabold text-amber-300"><i class="fa-solid fa-file-signature mr-1"></i>실전 대표 기출 문항</span>
+          <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/50">오차 0.000% 검증</span>
+        </div>
+        <div id="problemTextBox" class="text-[13px] leading-relaxed text-emerald-50 bg-[#091812]/90 border border-emerald-800/60 rounded-lg p-3 mb-2.5"></div>
+        <button onclick="snapToCondition()" class="w-full py-2 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-extrabold text-xs shadow">🎯 문제 조건 원클릭 스냅</button>
+      </div>
+
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg">
+        <div class="text-xs font-extrabold text-emerald-100 mb-2"><i class="fa-solid fa-compass-drafting text-amber-400 mr-1.5"></i>단계별 보조선 Step 1~3</div>
+        <div class="grid grid-cols-3 gap-1.5 mb-2">
+          <button id="stepBtn1" onclick="toggleStep(1)" class="py-1.5 px-2 rounded-lg border text-xs font-bold"></button>
+          <button id="stepBtn2" onclick="toggleStep(2)" class="py-1.5 px-2 rounded-lg border text-xs font-bold"></button>
+          <button id="stepBtn3" onclick="toggleStep(3)" class="py-1.5 px-2 rounded-lg border text-xs font-bold"></button>
+        </div>
+        <div id="stepDescBox" class="text-xs text-emerald-200/90 bg-[#091812]/80 border border-emerald-800/50 rounded-lg px-3 py-2 leading-relaxed"></div>
+      </div>
+
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg space-y-2">
+        <div class="border border-slate-600/50 rounded-lg p-2.5 bg-[#0a1913]">
+          <div class="text-xs font-bold text-slate-200 mb-1">🐢 교과서 3분 정석 풀이</div>
+          <div id="contentTextbook" class="text-xs text-slate-300 space-y-1 leading-relaxed"></div>
+        </div>
+        <div class="border border-amber-500/60 rounded-lg p-2.5 bg-amber-950/25 glow-gold">
+          <div class="text-xs font-extrabold text-amber-300 mb-1">⚡ 10초 컷 실전 기하·구조 비기</div>
+          <div id="contentSecret" class="text-xs text-emerald-50 space-y-1 leading-relaxed"></div>
+        </div>
+        <div class="bg-rose-950/40 border border-rose-500/40 rounded-lg px-3 py-2 text-[11.5px] text-rose-200">
+          <span class="font-extrabold text-rose-300">⚠️ 함정 주의보: </span><span id="trapWarningText"></span>
+        </div>
+      </div>
+
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg space-y-2.5">
+        <div class="text-xs font-extrabold text-cyan-300"><i class="fa-solid fa-sliders mr-1.5"></i>다변수 파라미터 실험 슬라이더</div>
+        <div id="sliderControlsBox" class="space-y-2"></div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const PART = ${partJson};
+    const state = { modeIdx: 0, steps: {1:true, 2:true, 3:true}, params: {}, view: {scale:45, offsetX:-40, offsetY:40}, drag: null, lastX:0, lastY:0 };
+    const canvas = document.getElementById('chalkCanvas');
+    const ctx = canvas.getContext('2d');
+    let handles = [];
+
+    function formatRichMath(t) {
+      if (!t) return '';
+      return t.replace(/\\$([^$]+)\\$/g, (_, tex) => {
+        try { return katex.renderToString(tex, {throwOnError:false}); } catch(e) { return tex; }
+      });
+    }
+
+    function drawBadge(text, x, y, color='#fbbf24') {
+      ctx.save(); ctx.font = 'bold 12px Pretendard, sans-serif';
+      const w = ctx.measureText(text).width + 16;
+      ctx.fillStyle = 'rgba(7,19,14,0.9)'; ctx.strokeStyle = color; ctx.lineWidth = 1.3;
+      ctx.beginPath(); ctx.roundRect(x - w/2, y - 12, w, 24, 6); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = color; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(text, x, y);
+      ctx.restore();
+    }
+
+    function selectMode(idx) {
+      state.modeIdx = idx;
+      const m = PART.modes[idx];
+      state.params = JSON.parse(JSON.stringify(m.params));
+      resetView();
+      document.getElementById('modeTabBar').innerHTML = PART.modes.map((mo, i) => \`
+        <button onclick="selectMode(\${i})" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-bold transition flex items-center gap-2 \${i===idx?'tab-btn-active':'text-emerald-300/75 hover:text-white'}">
+          <span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-emerald-950 text-amber-300 border border-emerald-700/60">\${mo.code}</span>
+          <span>\${mo.shortTitle}</span>
+        </button>\`).join('');
+      document.getElementById('hudTypeBadge').textContent = m.code + ' · ' + m.shortTitle;
+      document.getElementById('problemTextBox').innerHTML = formatRichMath(m.problem);
+      document.getElementById('contentTextbook').innerHTML = m.textbook.map(s => '<div>'+formatRichMath(s)+'</div>').join('');
+      document.getElementById('contentSecret').innerHTML = m.secret.map(s => '<div>'+formatRichMath(s)+'</div>').join('');
+      document.getElementById('trapWarningText').innerHTML = formatRichMath(m.trap);
+      updateStepsUI(1);
+      buildSliders();
+      updateHUD();
+    }
+
+    function toggleStep(n) { state.steps[n] = !state.steps[n]; updateStepsUI(n); }
+    function updateStepsUI(last) {
+      const m = PART.modes[state.modeIdx];
+      [1,2,3].forEach(n => {
+        const b = document.getElementById('stepBtn'+n);
+        b.textContent = 'STEP '+n+' · '+m.stepLabels[n-1];
+        b.className = state.steps[n] ? 'py-1.5 px-1.5 rounded-lg border border-amber-400 bg-amber-500/20 text-amber-200 text-[11px] font-extrabold truncate' : 'py-1.5 px-1.5 rounded-lg border border-emerald-800 bg-[#091812] text-emerald-400/70 text-[11px] font-bold truncate';
+      });
+      document.getElementById('stepDescBox').innerHTML = formatRichMath(m.stepDescs[last-1]);
+    }
+
+    function buildSliders() {
+      const m = PART.modes[state.modeIdx];
+      document.getElementById('sliderControlsBox').innerHTML = m.sliders.map(s => \`
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span class="text-emerald-200 font-semibold">\${s.label}</span><span id="val_\${s.key}" class="font-mono font-bold text-amber-300">\${state.params[s.key]}</span></div>
+          <input type="range" id="sl_\${s.key}" min="\${s.min}" max="\${s.max}" step="\${s.step}" value="\${state.params[s.key]}" oninput="state.params['\${s.key}']=parseFloat(this.value); document.getElementById('val_\${s.key}').textContent=this.value; updateHUD();" />
+        </div>\`).join('');
+    }
+
+    function snapToCondition() {
+      const m = PART.modes[state.modeIdx];
+      state.params = JSON.parse(JSON.stringify(m.snapParams));
+      state.steps = {1:true, 2:true, 3:true};
+      buildSliders(); updateStepsUI(3); updateHUD();
+    }
+
+    function updateHUD() {
+      const m = PART.modes[state.modeIdx];
+      const p = state.params;
+      let eq = '';
+      if (m.renderType === 'exp_root') eq = \`$f(\${p.k}) = (\${p.k}-2)(\${p.k}-6) = \${((p.k-2)*(p.k-6)).toFixed(2)}, \\\\quad x^{\${p.n}} = f(k)$\`;
+      else if (m.renderType === 'exp_div') eq = \`$1 \\\\le m \\\\le \${p.maxM}, \\\\; 2 \\\\le n \\\\le \${p.maxN} \\\\implies \\\\sqrt[n]{2^m} \\\\in \\\\mathbb{N}$\`;
+      else if (m.renderType === 'exp_saw') eq = \`$\\\\{\\\\log x\\\\} \\\\text{ vs } \\\\{\${p.multP}\\\\log x\\\\} \\\\implies \${p.modeSum?p.multP+1:p.multP-1}\\\\log x \\\\in \\\\mathbb{Z}$\`;
+      else if (m.renderType === 'exp_horiz') eq = \`$y=2^x, \\\\; y=\${p.multK}\\\\cdot 2^x \\\\implies \\\\overline{AB} = \\\\log_2 \${p.multK} = \${Math.log2(p.multK).toFixed(2)}$\`;
+      else if (m.renderType === 'exp_abs') eq = \`$|2^x - \${p.asymK}| = \${p.lineT} \\\\implies 2^{x_1+x_2} = \${(p.asymK*p.asymK - p.lineT*p.lineT).toFixed(2)}$\`;
+      else if (m.renderType === 'log_vert') eq = \`$\\\\log_2(\${p.multK}x) - \\\\log_2 x = \${Math.log2(p.multK).toFixed(2)}, \\\\quad S = \${((p.xCut2-p.xCut1)*Math.log2(p.multK)).toFixed(2)}$\`;
+      else if (m.renderType === 'log_abs') eq = \`$|\\\\log_2(x-\${p.shiftP})| = \${p.lineT} \\\\implies (x_1-\${p.shiftP})(x_2-\${p.shiftP}) = 1.000$\`;
+      else if (m.renderType === 'log_misinv') eq = \`$\\\\text{정점 } (\${p.expM},\${p.expN+1}), (\${p.logP+1},\${p.logQ}) \\\\implies \\\\text{이동 대칭축 작도}$\`;
+      else if (m.renderType === 'log_lattice') eq = \`$1 \\\\le x \\\\le \${p.maxX}, \\\\; 1 \\\\le y \\\\le \\\\log_2 x \\\\iff 2^y \\\\le x \\\\le \${p.maxX}$\`;
+      else if (m.renderType === 'trig_unit') eq = \`$\\\\theta = \${p.deg}^\\\\circ \\\\implies \\\\cos\\\\theta = \${Math.cos(p.deg*Math.PI/180).toFixed(3)}, \\\\; \\\\sin\\\\theta = \${Math.sin(p.deg*Math.PI/180).toFixed(3)}$\`;
+      else if (m.renderType === 'trig_ineq') eq = \`$\${p.isCos?'\\\\cos x \\\\le ':'\\\\sin x \\\\ge '}\${p.kVal} \\\\quad (\\\\text{단위원 호 } \\\\leftrightarrow \\\\text{ 그래프 해 구간})$\`;
+      else if (m.renderType === 'trig_abs4') eq = \`$\\\\text{절댓값 Type #}\${p.absType} \\\\cap (y = \${p.lineT})$\`;
+      else if (m.renderType === 'geo_proj') eq = \`$\\\\overline{BC} = c\\\\cos B + b\\\\cos C, \\\\quad \\\\overline{AB}=\${p.sideC}, \\\\; \\\\cos B=\${p.cosB}$\`;
+      else if (m.renderType === 'geo_circles') eq = \`$R_1=\${p.r1}, \\\\; R_2=\${p.r2} \\\\implies \\\\sin B : \\\\sin D = R_2 : R_1 = \${p.r2} : \${p.r1}$\`;
+      else if (m.renderType === 'geo_ptolemy') eq = \`$\\\\text{정삼각형 외접원 불변량: } \\\\overline{PA} + \\\\overline{PC} = \\\\overline{PB} \\\\;(\\\\text{오차 } 0.000\\%)$\`;
+      else if (m.renderType === 'seq_parabola') eq = \`$S_{\${p.pIdx}} = S_{\${p.qIdx}} \\\\implies \\\\text{대칭축 } \${(p.pIdx+p.qIdx)/2}, \\\\; S_{\${p.pIdx+p.qIdx}} = 0$\`;
+      else if (m.renderType === 'seq_abs') eq = \`$S_n = -n(n-\${p.zeroSumN}) \\\\implies \\\\sum_{k=1}^{\${p.targetN}} |a_k| = 2S_{\\\\max} - S_{\${p.targetN}}$\`;
+      else if (m.renderType === 'seq_tree') eq = \`$a_4 = \${p.targetA4}, \\\\; k = \${p.threshK} \\\\implies \\\\text{역추적 이진 트리 가지치기}$\`;
+      document.getElementById('hudEquationBox').innerHTML = formatRichMath(eq);
+    }
+
+    function resizeCanvas() {
+      const r = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = r.width * dpr; canvas.height = r.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function resetView() { state.view.scale = 44; state.view.offsetX = -60; state.view.offsetY = 50; }
+    function zoomCanvas(f) { state.view.scale = Math.max(20, Math.min(120, state.view.scale * f)); }
+    function m2s(x, y) { const r = canvas.getBoundingClientRect(); return { x: r.width/2 + state.view.offsetX + x*state.view.scale, y: r.height/2 + state.view.offsetY - y*state.view.scale }; }
+    function s2m(sx, sy) { const r = canvas.getBoundingClientRect(); return { x: (sx - r.width/2 - state.view.offsetX)/state.view.scale, y: (r.height/2 + state.view.offsetY - sy)/state.view.scale }; }
+
+    function drawSeg(x1,y1,x2,y2,col='#fbbf24',dash=[],w=2.2) {
+      const p1=m2s(x1,y1), p2=m2s(x2,y2);
+      ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=w; ctx.setLineDash(dash);
+      ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke(); ctx.restore();
+    }
+    function drawCurve(fn, col='#34d399', w=2.6, dash=[], x0=-5, x1=9) {
+      ctx.save(); ctx.strokeStyle=col; ctx.lineWidth=w; ctx.setLineDash(dash); ctx.beginPath();
+      let st=false;
+      for(let x=x0; x<=x1; x+=(x1-x0)/300) {
+        const y=fn(x);
+        if(isNaN(y)||!isFinite(y)||Math.abs(y)>40){st=false;continue;}
+        const pt=m2s(x,y);
+        if(!st){ctx.moveTo(pt.x,pt.y);st=true;}else ctx.lineTo(pt.x,pt.y);
+      }
+      ctx.stroke(); ctx.restore();
+    }
+    function drawPt(x,y,lbl='',col='#fbbf24',rad=6,drag=null) {
+      const pt=m2s(x,y); ctx.save();
+      if(drag){ ctx.fillStyle='rgba(251,191,36,0.28)'; ctx.beginPath(); ctx.arc(pt.x,pt.y,rad+6,0,Math.PI*2); ctx.fill(); handles.push({sx:pt.x,sy:pt.y,drag}); }
+      ctx.fillStyle=col; ctx.strokeStyle='#07130e'; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(pt.x,pt.y,rad,0,Math.PI*2); ctx.fill(); ctx.stroke();
+      if(lbl){ ctx.font='bold 12px Pretendard, sans-serif'; ctx.fillStyle='#fff'; ctx.fillText(lbl,pt.x+9,pt.y-7); }
+      ctx.restore();
+    }
+
+    function renderLoop() {
+      const r = canvas.getBoundingClientRect();
+      ctx.clearRect(0,0,r.width,r.height);
+      handles = [];
+      const m = PART.modes[state.modeIdx];
+      const p = state.params;
+
+      // Grid & Axes
+      const o = m2s(0,0);
+      ctx.strokeStyle='rgba(52,211,153,0.08)'; ctx.lineWidth=1;
+      for(let i=-10;i<=15;i++){ const sx=m2s(i,0).x, sy=m2s(0,i).y; ctx.beginPath(); ctx.moveTo(sx,0); ctx.lineTo(sx,r.height); ctx.moveTo(0,sy); ctx.lineTo(r.width,sy); ctx.stroke(); }
+      ctx.strokeStyle='rgba(236,253,245,0.4)'; ctx.lineWidth=1.8;
+      ctx.beginPath(); ctx.moveTo(0,o.y); ctx.lineTo(r.width,o.y); ctx.moveTo(o.x,0); ctx.lineTo(o.x,r.height); ctx.stroke();
+
+      if (m.renderType === 'exp_root') {
+        const fk = 0.5*(p.k-2)*(p.k-6);
+        drawCurve(x => 0.5*(x-2)*(x-6), '#34d399', 2.8, [], -1, 9);
+        drawCurve(x => Math.pow(x+3.5, Math.round(p.n)), '#38bdf8', 2.6, [], -5.5, -1.5);
+        drawSeg(-6, fk, 9, fk, '#fbbf24', [5,4], 1.8);
+        drawPt(p.k, fk, \`k=\${p.k.toFixed(1)} [드래그]\`, '#fbbf24', 8, mp => { p.k = Math.max(0,Math.min(8,Math.round(mp.x*5)/5)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'exp_div') {
+        let tot = 0;
+        for(let n=2; n<=p.maxN; n++) {
+          tot += Math.floor(p.maxM/n);
+          for(let i=1; i<=p.maxM; i++) drawPt(i*0.7, n*0.9, i%n===0?\`2^\${i/n}\`:'', i%n===0?'#fbbf24':'rgba(148,163,184,0.25)', i%n===0?5.5:3);
+        }
+        drawBadge(\`총 자연수 순서쌍 = \${tot}개\`, r.width*0.5, 45, '#fbbf24');
+      } else if (m.renderType === 'exp_saw') {
+        const c = p.modeSum ? p.multP+1 : p.multP-1;
+        for(let i=0;i<3*c;i++) drawSeg(i/c*2.5, 0, (i+0.98)/c*2.5, 2.5, '#38bdf8', [], 2.5);
+        for(let i=c;i<2*c;i++) drawPt(i/c*2.5, 0, \`\${i}/\${c}\`, (p.modeSum&&i===c)?'#fb7185':'#fbbf24', 6.5);
+      } else if (m.renderType === 'exp_horiz') {
+        const dx = Math.log2(p.multK);
+        drawCurve(x => Math.pow(2,x), '#34d399', 2.8, [], -4, 3.5);
+        drawCurve(x => p.multK*Math.pow(2,x), '#38bdf8', 2.8, [], -5, 3);
+        const x1B = Math.log2(p.yCut1), x1A = x1B - dx;
+        drawSeg(x1A, p.yCut1, x1B, p.yCut1, '#fbbf24', [], 3.5);
+        drawPt(x1B, p.yCut1, \`AB = \${dx.toFixed(2)} (불변!) [드래그]\`, '#fbbf24', 8, mp => { p.yCut1 = Math.max(0.8,Math.min(5,Math.round(mp.y*4)/4)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'exp_abs') {
+        drawSeg(-5, p.asymK, 5, p.asymK, '#c084fc', [5,4], 2);
+        drawCurve(x => Math.abs(Math.pow(2,x)-p.asymK), '#34d399', 3.0, [], -5, 3.5);
+        drawSeg(-5, p.lineT, 5, p.lineT, '#fbbf24', [], 2.2);
+        drawPt(0, p.lineT, \`t=\${p.lineT} [드래그]\`, '#fbbf24', 8, mp => { p.lineT = Math.max(0.5,Math.min(4.5,Math.round(mp.y*4)/4)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'log_vert') {
+        const dy = Math.log2(p.multK);
+        drawCurve(x => Math.log2(x), '#34d399', 2.8, [], 0.08, 9);
+        drawCurve(x => Math.log2(p.multK*x), '#38bdf8', 2.8, [], 0.08, 9);
+        drawSeg(p.xCut1, Math.log2(p.xCut1), p.xCut1, Math.log2(p.multK*p.xCut1), '#fbbf24', [], 3.5);
+        drawPt(p.xCut1, Math.log2(p.multK*p.xCut1), \`세로 AB=\${dy.toFixed(2)} [드래그]\`, '#fbbf24', 8, mp => { p.xCut1 = Math.max(0.5,Math.min(6,Math.round(mp.x*4)/4)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'log_abs') {
+        drawCurve(x => -Math.log2(x-p.shiftP), '#fb7185', 2.8, [], p.shiftP+0.05, p.shiftP+1);
+        drawCurve(x => Math.log2(x-p.shiftP), '#34d399', 2.8, [], p.shiftP+1, 9);
+        drawSeg(0, p.lineT, 9, p.lineT, '#fbbf24', [], 2.2);
+        const x1 = p.shiftP + Math.pow(2,-p.lineT), x2 = p.shiftP + Math.pow(2,p.lineT);
+        drawPt(x1, p.lineT, \`x₁=\${x1.toFixed(2)}\`, '#fb7185', 6);
+        drawPt(x2, p.lineT, \`x₂=\${x2.toFixed(2)} [드래그]\`, '#fbbf24', 8, mp => { p.lineT = Math.max(0.5,Math.min(2.8,Math.round(mp.y*10)/10)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'log_misinv') {
+        drawCurve(x => Math.pow(2,x-p.expM)+p.expN, '#34d399', 2.8, [], -3, 5);
+        drawCurve(x => Math.log2(x-p.logP)+p.logQ, '#38bdf8', 2.8, [], p.logP+0.05, 10);
+        const cShift = 0.5*((p.expN-p.expM)+(p.logQ-p.logP));
+        drawCurve(x => x + cShift, '#c084fc', 2.4, [6,4], -3, 8);
+        drawCurve(x => -x + p.lineK, '#fbbf24', 2.2, [], -2, 8);
+        const mx = 0.5*(p.lineK-cShift), my = 0.5*(p.lineK+cShift);
+        drawPt(mx, my, \`대칭중점 M(\${mx.toFixed(1)},\${my.toFixed(1)}) [드래그]\`, '#fbbf24', 8, mp => { p.lineK = Math.max(4,Math.min(8,Math.round((mp.x+mp.y)*2)/2)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'log_lattice') {
+        const K = Math.round(p.maxX);
+        drawCurve(x => Math.log2(x), '#34d399', 2.8, [], 0.2, 14);
+        for(let y=1; Math.pow(2,y)<=K; y++) {
+          drawSeg(Math.pow(2,y), y, K, y, '#fb7185', [], 3);
+          for(let x=Math.pow(2,y); x<=K; x++) drawPt(x, y, '', '#fbbf24', 5);
+        }
+        drawPt(K, Math.log2(K), \`K=\${K} [드래그]\`, '#fbbf24', 8, mp => { p.maxX = Math.max(4,Math.min(13,Math.round(mp.x))); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'trig_unit' || m.renderType === 'trig_ineq') {
+        const R = 2.6, uCx = -2.0;
+        const cPt = m2s(uCx, 0);
+        ctx.strokeStyle='rgba(236,253,245,0.65)'; ctx.lineWidth=2.2; ctx.beginPath(); ctx.arc(cPt.x, cPt.y, R*state.view.scale, 0, Math.PI*2); ctx.stroke();
+        const rad = (p.deg || 60)*Math.PI/180;
+        const px = uCx + R*Math.cos(rad), py = R*Math.sin(rad);
+        drawSeg(uCx, 0, px, 0, '#38bdf8', [], 3.5);
+        drawSeg(px, 0, px, py, '#34d399', [], 3.5);
+        drawSeg(uCx, 0, px, py, '#fbbf24', [], 2.6);
+        drawCurve(x => R*Math.sin(x-1.5), '#34d399', 2.8, [], 1.5, 1.5+Math.PI*2);
+        drawCurve(x => R*Math.cos(x-1.5), '#38bdf8', 2.2, [4,4], 1.5, 1.5+Math.PI*2);
+        drawSeg(1.5, R*p.kVal, 1.5+Math.PI*2, R*p.kVal, '#fbbf24', [], 2.2);
+        drawPt(px, py, \`P [드래그]\`, '#fbbf24', 8, mp => { let a=Math.atan2(mp.y,mp.x-uCx)*180/Math.PI; if(a<0)a+=360; p.deg=Math.round(a/15)*15; buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'trig_abs4') {
+        const tIdx = Math.round(p.absType);
+        drawCurve(x => tIdx===1?Math.abs(Math.sin(x)):(tIdx===2?Math.sin(Math.abs(x)):(tIdx===3?Math.abs(2*Math.sin(x)-1):Math.sin(x)+Math.abs(Math.sin(x)))), '#34d399', 3.0, [], -3, 7);
+        drawSeg(-3, p.lineT, 7, p.lineT, '#fbbf24', [], 2.2);
+        drawPt(1.5, p.lineT, \`t=\${p.lineT} [드래그]\`, '#fbbf24', 8, mp => { p.lineT = Math.max(0,Math.min(3.2,Math.round(mp.y*10)/10)); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'geo_proj') {
+        const sinB = Math.sqrt(1 - p.cosB*p.cosB), bh = p.sideC*p.cosB, h = p.sideC*sinB;
+        const ch = Math.sqrt(Math.max(0.2, p.sideB*p.sideB - h*h));
+        drawSeg(-bh, 0, 0, 0, '#34d399', [], 3.5); drawSeg(0, 0, ch, 0, '#38bdf8', [], 3.5);
+        drawSeg(-bh, 0, 0, h, '#34d399', [], 2.8); drawSeg(ch, 0, 0, h, '#38bdf8', [], 2.8);
+        drawSeg(0, 0, 0, h, '#fbbf24', [5,4], 2.5);
+        drawPt(0, h, \`A (h=\${h.toFixed(2)}, BC=\${(bh+ch).toFixed(2)})\`, '#fbbf24', 7.5);
+      } else if (m.renderType === 'geo_circles') {
+        const h = 2.0, d1 = Math.sqrt(Math.max(0.2, p.r1*p.r1-h*h)), d2 = Math.sqrt(Math.max(0.2, p.r2*p.r2-h*h));
+        const c1 = m2s(-d1,0), c2 = m2s(d2,0);
+        ctx.strokeStyle='#34d399'; ctx.lineWidth=2.4; ctx.beginPath(); ctx.arc(c1.x,c1.y,p.r1*state.view.scale,0,Math.PI*2); ctx.stroke();
+        ctx.strokeStyle='#38bdf8'; ctx.lineWidth=2.4; ctx.beginPath(); ctx.arc(c2.x,c2.y,p.r2*state.view.scale,0,Math.PI*2); ctx.stroke();
+        drawSeg(0, -h, 0, h, '#fb7185', [], 3.5);
+        drawPt(0, h, '공통현 AC', '#fbbf24', 7);
+      } else if (m.renderType === 'geo_ptolemy') {
+        const R = p.radiusR, cPt = m2s(0,0);
+        ctx.strokeStyle='#38bdf8'; ctx.lineWidth=2.2; ctx.beginPath(); ctx.arc(cPt.x,cPt.y,R*state.view.scale,0,Math.PI*2); ctx.stroke();
+        const gp = d => ({x:R*Math.cos(d*Math.PI/180), y:R*Math.sin(d*Math.PI/180)});
+        const A=gp(210), B=gp(90), C=gp(330), P=gp(p.posPDeg);
+        drawSeg(A.x,A.y,B.x,B.y,'#34d399',[],2.6); drawSeg(B.x,B.y,C.x,C.y,'#34d399',[],2.6); drawSeg(C.x,C.y,A.x,A.y,'#34d399',[],2.6);
+        drawSeg(P.x,P.y,A.x,A.y,'#38bdf8',[],2.6); drawSeg(P.x,P.y,C.x,C.y,'#38bdf8',[],2.6); drawSeg(P.x,P.y,B.x,B.y,'#fbbf24',[],3.4);
+        drawPt(P.x, P.y, 'P [호 위 드래그]', '#fbbf24', 8, mp => { p.posPDeg = Math.max(-135,Math.min(-40,Math.round(Math.atan2(mp.y,mp.x)*180/Math.PI))); buildSliders(); updateHUD(); });
+      } else if (m.renderType === 'seq_parabola' || m.renderType === 'seq_abs') {
+        const N = m.renderType==='seq_parabola' ? (p.pIdx+p.qIdx) : p.zeroSumN;
+        const sc = 0.25;
+        drawCurve(x => sc*(-x*(x-N)), '#34d399', 2.8, [], -0.5, N+2);
+        if (m.renderType === 'seq_abs') {
+          drawCurve(x => sc*Math.abs(-x*(x-N)), '#38bdf8', 2.4, [4,4], 0, N+2.5);
+          const sm = (N/2)*(N/2);
+          drawCurve(x => sc*(x<=N/2 ? -x*(x-N) : 2*sm - (-x*(x-N))), '#fbbf24', 3.0, [], 0, N+2.5);
+        }
+        drawPt(0, 0, '원점 S₀=0', '#38bdf8', 6.5);
+        drawPt(N, 0, \`S_\${N}=0\`, '#fb7185', 7);
+      } else if (m.renderType === 'seq_tree') {
+        const yLv = [4.0, 2.2, 0.4, -1.6];
+        const drawTree = (val, lv, cx, sp, valid) => {
+          drawPt(cx, yLv[lv], \`\${valid?'':'✕ '}\${val}\`, valid?(lv===3?'#fbbf24':'#34d399'):'#fb7185', lv===3&&valid?7.5:6);
+          if(lv<3 && valid) {
+            const vL = val/2, okL = Number.isInteger(vL) && vL >= 1 && vL < p.threshK;
+            const vR = val + p.threshK;
+            drawSeg(cx, yLv[lv], cx-sp, yLv[lv+1], okL?'#34d399':'rgba(251,113,133,0.4)', okL?[]:[4,4], 2);
+            drawSeg(cx, yLv[lv], cx+sp, yLv[lv+1], '#34d399', [], 2);
+            drawTree(vL, lv+1, cx-sp, sp*0.5, okL);
+            drawTree(vR, lv+1, cx+sp, sp*0.5, true);
+          }
+        };
+        drawTree(p.targetA4, 0, 2.0, 2.6, true);
+      }
+      requestAnimationFrame(renderLoop);
+    }
+
+    canvas.addEventListener('mousedown', e => {
+      const r = canvas.getBoundingClientRect(), x = e.clientX-r.left, y = e.clientY-r.top;
+      state.lastX = x; state.lastY = y;
+      for(const h of handles) if(Math.hypot(x-h.sx, y-h.sy)<22) { state.drag = h; return; }
+      state.drag = 'pan';
+    });
+    window.addEventListener('mousemove', e => {
+      if(!state.drag) return;
+      const r = canvas.getBoundingClientRect(), x = e.clientX-r.left, y = e.clientY-r.top;
+      if(state.drag === 'pan') { state.view.offsetX += x-state.lastX; state.view.offsetY += y-state.lastY; state.lastX=x; state.lastY=y; }
+      else if(state.drag.drag) state.drag.drag(s2m(x,y));
+    });
+    window.addEventListener('mouseup', () => state.drag = null);
+    canvas.addEventListener('wheel', e => { e.preventDefault(); zoomCanvas(e.deltaY<0?1.1:0.9); }, {passive:false});
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('DOMContentLoaded', () => { resizeCanvas(); selectMode(0); requestAnimationFrame(renderLoop); });
+  <\/script>
+</body>
+</html>`;
+    }
+
+    // =========================================================================
+    // 3. PORTAL UI, LIVE IFRAME MOUNTING & ONE-CLICK .ZIP EXPORT
+    // =========================================================================
+    let currentView = 'home';
+    let currentModuleId = 'part1a';
+
+    function formatMath(tex) {
+      try { return katex.renderToString(tex, { displayMode: false, throwOnError: false }); }
+      catch (e) { return tex; }
+    }
+
+    function renderTopTabs() {
+      const nav = document.getElementById('topModuleTabs');
+      const hCls = currentView === 'home' ? 'nav-tab-active' : 'text-emerald-300/75 hover:text-white hover:bg-emerald-900/40';
+      let html = `
+        <button onclick="switchView('home')" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-extrabold transition flex items-center gap-1.5 ${hCls}">
+          <i class="fa-solid fa-house text-amber-400"></i><span>통합 목차 홈</span>
+        </button>
+      `;
+      html += PARTS_DATA.map(p => {
+        const cls = currentView === p.id ? 'nav-tab-active' : 'text-emerald-300/75 hover:text-white hover:bg-emerald-900/40';
+        return `
+          <button onclick="launchPart('${p.id}')" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-bold transition flex items-center gap-2 ${cls}">
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-emerald-950 text-amber-300 border border-emerald-700/60">${p.badge}</span>
+            <i class="fa-solid ${p.icon} text-emerald-400"></i>
+            <span>${p.title}</span>
+          </button>
+        `;
+      }).join('');
+      nav.innerHTML = html;
+    }
+
+    function renderDashboard() {
+      const grid = document.getElementById('modulesGrid');
+      grid.innerHTML = PARTS_DATA.map(p => `
+        <div class="card-glow bg-[#10281f]/95 border border-emerald-700/60 rounded-2xl p-5 flex flex-col justify-between transition duration-200 shadow-lg">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-2.5">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-600/60 flex items-center justify-center text-amber-400 text-lg shrink-0">
+                  <i class="fa-solid ${p.icon}"></i>
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded text-[10.5px] font-extrabold bg-amber-500/20 text-amber-300 border border-amber-400/40">${p.badge}</span>
+                    <span class="text-xs font-mono text-emerald-400">${p.file}</span>
+                  </div>
+                  <h2 class="text-base font-extrabold text-white mt-0.5">${p.title}</h2>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-xs text-emerald-200/85 leading-relaxed mb-3">${p.desc}</p>
+
+            <div class="bg-[#07130e]/90 border border-amber-500/35 rounded-xl px-3.5 py-2 mb-3.5 text-xs text-amber-200 overflow-x-auto">
+              <div class="text-[10px] font-extrabold text-amber-400 uppercase mb-0.5">⚡ 핵심 10초 불변량 공식</div>
+              <div>${formatMath(p.formulaTex)}</div>
+            </div>
+
+            <div class="space-y-1.5 mb-4">
+              ${p.modes.map((m, idx) => `
+                <div onclick="launchPart('${p.id}', ${idx})" class="cursor-pointer flex items-center justify-between px-3 py-1.5 rounded-lg bg-[#091812]/85 hover:bg-emerald-900/50 border border-emerald-800/60 text-xs transition">
+                  <div class="flex items-center gap-2 truncate">
+                    <span class="font-mono text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 border border-emerald-700/50">${m.code}</span>
+                    <span class="font-semibold text-emerald-100 truncate">${m.shortTitle}</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-right text-[10px] text-amber-400"></i>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 pt-3 border-t border-emerald-800/60">
+            <button onclick="launchPart('${p.id}', 0)" class="flex-1 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-extrabold text-xs shadow flex items-center justify-center gap-2 transition">
+              <i class="fa-solid fa-play"></i>
+              <span>🚀 지금 바로 칠판 열기</span>
+            </button>
+            <button onclick="downloadSinglePart('${p.id}')" class="py-2.5 px-3 rounded-xl bg-emerald-950 hover:bg-emerald-800 border border-emerald-600/60 text-emerald-200 text-xs font-bold transition flex items-center gap-1.5" title="${p.file} 파일만 단독 다운로드">
+              <i class="fa-solid fa-download text-amber-300"></i>
+              <span>${p.file}</span>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function switchView(viewId) {
+      currentView = viewId;
+      const dash = document.getElementById('dashboardView');
+      const iframeSec = document.getElementById('iframeView');
+      if (viewId === 'home') {
+        dash.classList.remove('hidden');
+        iframeSec.classList.add('hidden');
+        iframeSec.classList.remove('flex');
+      } else {
+        dash.classList.add('hidden');
+        iframeSec.classList.remove('hidden');
+        iframeSec.classList.add('flex');
+      }
+      renderTopTabs();
+    }
+
+    function launchPart(partId, modeIdx = 0) {
+      const part = PARTS_DATA.find(p => p.id === partId);
+      if (!part) return;
+      currentModuleId = part.id;
+      document.getElementById('activeModuleBadge').textContent = part.badge;
+      document.getElementById('activeModuleTitle').textContent = part.title;
+      document.getElementById('activeModuleFile').textContent = `(${part.file})`;
+
+      const htmlContent = buildStandalonePartHTML(part);
+      const iframe = document.getElementById('moduleIframe');
+      iframe.srcdoc = htmlContent;
+      iframe.onload = () => {
+        if (modeIdx > 0 && iframe.contentWindow && iframe.contentWindow.selectMode) {
+          iframe.contentWindow.selectMode(modeIdx);
+        }
+      };
+      switchView(part.id);
+    }
+
+    // Download a single standalone HTML file
+    function downloadSinglePart(partId) {
+      const part = PARTS_DATA.find(p => p.id === partId);
+      if (!part) return;
+      const html = buildStandalonePartHTML(part);
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = part.file;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // One-Click .ZIP Archive Generator using JSZip!
+    async function downloadAllAsZip() {
+      const btn = document.getElementById('btnDownloadZip');
+      const origHTML = btn.innerHTML;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><span>ZIP 압축 파일 생성 중...</span>';
+
+      try {
+        const zip = new JSZip();
+
+        // 1. Add index.html (this portal itself)
+        zip.file('index.html', '<!DOCTYPE html>\n' + document.documentElement.outerHTML);
+
+        // 2. Add all 5 standalone part HTML files
+        PARTS_DATA.forEach(part => {
+          const standaloneHtml = buildStandalonePartHTML(part);
+          zip.file(part.file, standaloneHtml);
+        });
+
+        const content = await zip.generateAsync({ type: 'blob' });
+        const url = URL.createObjectURL(content);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = '대수_전단원_마스터_패키지.zip';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        btn.innerHTML = '<i class="fa-solid fa-check"></i><span>✅ ZIP 다운로드 완료!</span>';
+        setTimeout(() => { btn.innerHTML = origHTML; }, 2500);
+      } catch (err) {
+        alert('ZIP 생성 중 오류가 발생했습니다: ' + err.message);
+        btn.innerHTML = origHTML;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderTopTabs();
+      renderDashboard();
+    });
+  </script>
+
+</body></html>

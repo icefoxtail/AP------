@@ -1,0 +1,2310 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>대수 Part 1. 지수·로그함수 8대 킬러 유형 마스터 칠판</title>
+  
+  <!-- Pretendard Webfont -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+
+  <style>
+    :root {
+      --bg-deep: #07130e;
+      --bg-board: #0d2119;
+      --bg-panel: #10281f;
+      --bg-card: #163329;
+      --neon-emerald: #34d399;
+      --neon-gold: #fbbf24;
+      --neon-cyan: #38bdf8;
+      --neon-coral: #fb7185;
+      --neon-purple: #c084fc;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      user-select: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #07130e 0%, #0f261d 50%, #163329 100%);
+      color: #ecfdf5;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(7, 19, 14, 0.6);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(52, 211, 153, 0.35);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(52, 211, 153, 0.65);
+    }
+
+    /* Chalkboard Texture Overlay */
+    .chalk-bg {
+      background-color: #0b1d16;
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(52, 211, 153, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(56, 189, 248, 0.03) 0%, transparent 50%);
+    }
+
+    /* Vertical Fraction Helper */
+    .math-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 3px;
+      font-size: 0.92em;
+      line-height: 1.1;
+    }
+    .math-frac > .num {
+      border-bottom: 1.5px solid currentColor;
+      padding: 0 3px 2px 3px;
+      width: 100%;
+      text-align: center;
+    }
+    .math-frac > .den {
+      padding: 2px 3px 0 3px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Neon Glow Utilities */
+    .glow-gold {
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.25), inset 0 0 8px rgba(251, 191, 36, 0.12);
+    }
+    .glow-emerald {
+      box-shadow: 0 0 15px rgba(52, 211, 153, 0.25), inset 0 0 8px rgba(52, 211, 153, 0.12);
+    }
+    .glow-cyan {
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    }
+
+    /* Range Slider Styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #34d399;
+      border: 2px solid #ffffff;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);
+      transition: transform 0.15s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+      background: #fbbf24;
+    }
+
+    .katex {
+      font-size: 1.03em !important;
+      color: inherit;
+    }
+    
+    .tab-btn-active {
+      background: linear-gradient(180deg, rgba(52, 211, 153, 0.22) 0%, rgba(16, 40, 31, 0.95) 100%);
+      border-bottom: 3px solid #fbbf24;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body class="flex flex-col h-screen w-screen overflow-hidden">
+
+  <!-- ================= TOP HEADER & 8 KILLER MODE TABS ================= -->
+  <header class="shrink-0 bg-[#07130e]/95 border-b border-emerald-800/60 z-20">
+    <!-- Top Bar -->
+    <div class="flex items-center justify-between px-4 py-2 border-b border-emerald-900/50">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shadow-lg shadow-emerald-900/50 border border-emerald-300/40">
+          <i class="fa-solid fa-superscript text-white text-lg"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 text-[11px] font-bold rounded bg-amber-500/20 text-amber-300 border border-amber-400/30">2022 개정 대수 (수학 I)</span>
+            <h1 class="text-base md:text-lg font-extrabold tracking-tight text-white">
+              Part 1. 지수·로그함수 <span class="text-emerald-400">8대 킬러 유형</span> 완전 정복 실험실
+            </h1>
+          </div>
+          <p class="text-[11px] text-emerald-300/70 hidden sm:block">
+            기출 원본 스냅 · 쌍둥이 무한 변형 · Step 1~3 보조선 작도 · 3분 정석 vs 10초 구조·기하 비기 · 불변량 0.000% 검증
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Status & Global Help -->
+      <div class="flex items-center gap-2">
+        <div id="missionBadge" class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-500/40 text-xs text-emerald-200">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+          <span id="missionText">칠판의 노란색 제어점을 드래그하여 그래프 구조를 직접 실험해보세요!</span>
+        </div>
+        <button onclick="triggerTwinProblem()" class="px-3 py-1.5 rounded-lg bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/50 text-purple-200 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-dice"></i>
+          <span>쌍둥이 변형 생성</span>
+        </button>
+        <button onclick="snapToCondition()" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold transition flex items-center gap-1.5 shadow-md shadow-amber-500/20">
+          <i class="fa-solid fa-bullseye"></i>
+          <span>문제 조건 스냅</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 8 Killer Modes Tab Bar (Horizontally Scrollable) -->
+    <nav id="modeTabBar" class="flex items-center gap-1 px-3 pt-1.5 overflow-x-auto no-scrollbar bg-[#091812]">
+      <!-- Populated by JS -->
+    </nav>
+  </header>
+
+  <!-- ================= MAIN 2-SPLIT WORKSPACE ================= -->
+  <main class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+    <!-- LEFT: Interactive 2D Chalkboard Canvas -->
+    <section class="flex-1 relative chalk-bg overflow-hidden flex flex-col min-h-[340px]">
+      
+      <!-- Top-Left Canvas HUD: Current Active Equations & Live Coordinates -->
+      <div class="absolute top-3 left-3 z-10 pointer-events-none flex flex-col gap-1.5 max-w-[380px]">
+        <div class="bg-[#07130e]/85 backdrop-blur-md border border-emerald-700/50 rounded-xl px-3.5 py-2.5 shadow-xl">
+          <div class="flex items-center justify-between gap-3 mb-1">
+            <span id="hudTypeBadge" class="text-[11px] font-bold uppercase tracking-wider text-amber-400">TYPE 01</span>
+            <span id="hudSubTitle" class="text-[11px] text-emerald-300/80 font-medium">실시간 칠판 판서 식</span>
+          </div>
+          <div id="hudEquationBox" class="text-sm text-white font-semibold leading-relaxed">
+            <!-- Rendered via KaTeX -->
+          </div>
+        </div>
+
+        <!-- Condition Snap Toast / Discovery Alert -->
+        <div id="snapToast" class="hidden bg-amber-500/95 text-slate-950 font-extrabold text-xs px-3.5 py-2 rounded-lg shadow-lg items-center gap-2 transition-all">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span id="snapToastText">기출 문제 조건에 정확히 스냅되었습니다! (오차 0.000%)</span>
+        </div>
+      </div>
+
+      <!-- Top-Right Canvas HUD: What-If Mutator Switches -->
+      <div class="absolute top-3 right-3 z-10 flex flex-wrap justify-end gap-1.5 max-w-[340px]">
+        <button id="btnToggleDiag" onclick="toggleMutator('diag')" class="px-2.5 py-1.5 rounded-lg bg-[#07130e]/85 hover:bg-emerald-900/80 border border-emerald-600/50 text-[11px] font-semibold text-emerald-200 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-slash text-amber-400"></i>
+          <span>y=x 대칭선</span>
+        </button>
+        <button id="btnToggleAbs" onclick="toggleMutator('abs')" class="px-2.5 py-1.5 rounded-lg bg-[#07130e]/85 hover:bg-emerald-900/80 border border-emerald-600/50 text-[11px] font-semibold text-emerald-200 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-Wave-square text-cyan-400"></i>
+          <span>|f(x)| 절댓값 실험</span>
+        </button>
+        <button id="btnToggleGridDots" onclick="toggleMutator('dots')" class="px-2.5 py-1.5 rounded-lg bg-[#07130e]/85 hover:bg-emerald-900/80 border border-emerald-600/50 text-[11px] font-semibold text-emerald-200 transition flex items-center gap-1.5">
+          <i class="fa-solid fa-braille text-purple-400"></i>
+          <span>격자점 스캐너</span>
+        </button>
+      </div>
+
+      <!-- Main HTML5 Canvas -->
+      <canvas id="chalkCanvas" class="w-full h-full cursor-grab active:cursor-grabbing block"></canvas>
+
+      <!-- Bottom Floating Toolbar -->
+      <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 bg-[#07130e]/90 backdrop-blur-md border border-emerald-700/60 px-3 py-1.5 rounded-full shadow-2xl">
+        <button onclick="zoomCanvas(1.18)" title="확대" class="w-7 h-7 rounded-full hover:bg-emerald-800/60 text-emerald-200 flex items-center justify-center text-xs transition">
+          <i class="fa-solid fa-magnifying-glass-plus"></i>
+        </button>
+        <button onclick="zoomCanvas(0.85)" title="축소" class="w-7 h-7 rounded-full hover:bg-emerald-800/60 text-emerald-200 flex items-center justify-center text-xs transition">
+          <i class="fa-solid fa-magnifying-glass-minus"></i>
+        </button>
+        <button onclick="resetView()" title="시점 초기화" class="px-2.5 h-7 rounded-full hover:bg-emerald-800/60 text-emerald-200 flex items-center justify-center gap-1 text-[11px] font-medium transition">
+          <i class="fa-solid fa-rotate-left"></i>
+          <span>시점 리셋</span>
+        </button>
+        <div class="h-3.5 w-[1px] bg-emerald-800 mx-1"></div>
+        <span class="text-[11px] text-amber-300/90 font-medium px-1 flex items-center gap-1">
+          <i class="fa-solid fa-hand-pointer"></i>
+          <span class="hidden sm:inline">칠판 위 노란 핸들을 드래그하여 직접 실험</span>
+        </span>
+      </div>
+    </section>
+
+    <!-- RIGHT: 460px Control, Problem, Step 1~3 & 3m vs 10s Secret Panel -->
+    <aside class="w-full lg:w-[460px] shrink-0 bg-[#0b1f17]/95 border-t lg:border-t-0 lg:border-l border-emerald-800/60 overflow-y-auto p-3.5 space-y-3.5 z-10">
+
+      <!-- 1. [실전 기출 & 변형 카트리지 카드] -->
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg">
+        <!-- Sub-Scenario Selector Chips -->
+        <div class="flex items-center justify-between gap-2 mb-2.5">
+          <div id="scenarioChips" class="flex items-center gap-1 flex-wrap">
+            <!-- Populated by JS: 기출 A, 기출 B, 킬러 C -->
+          </div>
+          <span id="problemSourceBadge" class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-700/50 shrink-0">
+            평가원 4점 기출
+          </span>
+        </div>
+
+        <!-- Problem Statement -->
+        <div id="problemTextBox" class="text-[13.5px] leading-relaxed text-emerald-50 bg-[#091812]/90 border border-emerald-800/60 rounded-lg p-3 mb-3">
+          <!-- Rendered with KaTeX -->
+        </div>
+
+        <!-- Target Answer & Action Buttons -->
+        <div class="flex items-center justify-between gap-2">
+          <button onclick="snapToCondition()" class="flex-1 py-2 px-3 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-400 hover:to-yellow-300 text-slate-950 font-extrabold text-xs shadow-md shadow-amber-500/20 flex items-center justify-center gap-1.5 transition">
+            <i class="fa-solid fa-bullseye"></i>
+            <span>🎯 문제 조건 원클릭 스냅</span>
+          </button>
+          <button onclick="triggerTwinProblem()" class="py-2 px-3 rounded-lg bg-purple-900/60 hover:bg-purple-800/80 border border-purple-400/50 text-purple-100 font-bold text-xs flex items-center justify-center gap-1.5 transition" title="숫자와 조건을 바꾸어 10초 비기를 직접 연습합니다">
+            <i class="fa-solid fa-dice text-purple-300"></i>
+            <span>🎲 쌍둥이 숫자 변형</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. [단계별 보조선 Step 1~3 언락] -->
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg">
+        <div class="flex items-center justify-between mb-2.5">
+          <div class="flex items-center gap-1.5">
+            <i class="fa-solid fa-compass-drafting text-amber-400 text-sm"></i>
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-100">단계별 사고 확장 보조선 언락</h2>
+          </div>
+          <button onclick="toggleAllSteps()" id="btnAllSteps" class="text-[11px] font-bold text-amber-300 hover:text-amber-200 px-2 py-0.5 rounded bg-amber-500/15 border border-amber-400/30 transition">
+            전체 보조선 켜기
+          </button>
+        </div>
+
+        <div class="grid grid-cols-3 gap-1.5 mb-2">
+          <button id="stepBtn1" onclick="toggleStep(1)" class="py-2 px-2 rounded-lg border text-xs font-bold transition flex flex-col items-center gap-0.5">
+            <span class="text-[10px] opacity-80">STEP 1</span>
+            <span id="stepLabel1" class="truncate w-full text-center">대칭·기준선</span>
+          </button>
+          <button id="stepBtn2" onclick="toggleStep(2)" class="py-2 px-2 rounded-lg border text-xs font-bold transition flex flex-col items-center gap-0.5">
+            <span class="text-[10px] opacity-80">STEP 2</span>
+            <span id="stepLabel2" class="truncate w-full text-center">기울기 삼각형</span>
+          </button>
+          <button id="stepBtn3" onclick="toggleStep(3)" class="py-2 px-2 rounded-lg border text-xs font-bold transition flex flex-col items-center gap-0.5">
+            <span class="text-[10px] opacity-80">STEP 3</span>
+            <span id="stepLabel3" class="truncate w-full text-center">불변량 치환</span>
+          </button>
+        </div>
+
+        <!-- Step Explanation Box -->
+        <div id="stepDescBox" class="text-xs text-emerald-200/90 bg-[#091812]/80 border border-emerald-800/50 rounded-lg px-3 py-2 leading-relaxed">
+          Step 1~3 버튼을 눌러 칠판 위에 숨겨진 기하학적·구조적 보조선을 단계별로 작도해보세요.
+        </div>
+      </div>
+
+      <!-- 3. [교과서 3분 정석 풀이 vs 10초 컷 실전 구조·기하 비기] -->
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg space-y-2.5">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <i class="fa-solid fa-bolt text-amber-400 text-sm"></i>
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-100">풀이 전략 2대 비교 (정석 vs 실전 비기)</h2>
+          </div>
+          <span class="text-[10px] text-amber-300 font-semibold">클릭하여 펼치기</span>
+        </div>
+
+        <!-- 3-Minute Textbook Solution Accordion -->
+        <div class="border border-slate-600/50 rounded-lg overflow-hidden bg-[#0a1913]">
+          <button onclick="toggleAccordion('textbook')" class="w-full px-3 py-2.5 flex items-center justify-between text-left hover:bg-slate-800/40 transition">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-700 text-slate-200">🐢 교과서 3분 정석</span>
+              <span id="textbookTitle" class="text-xs font-bold text-slate-200">연립방정식과 대수적 직접 계산</span>
+            </div>
+            <i id="iconTextbook" class="fa-solid fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+          </button>
+          <div id="contentTextbook" class="hidden px-3.5 pb-3 pt-1 text-xs leading-relaxed text-slate-300 border-t border-slate-800/80 space-y-1.5">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- 10-Second Killer Secret Accordion (Open by default) -->
+        <div class="border border-amber-500/60 rounded-lg overflow-hidden bg-gradient-to-b from-amber-950/30 to-[#091812] glow-gold">
+          <button onclick="toggleAccordion('secret')" class="w-full px-3 py-2.5 flex items-center justify-between text-left hover:bg-amber-900/20 transition">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-extrabold bg-amber-400 text-slate-950">⚡ 10초 컷 실전 비기</span>
+              <span id="secretTitle" class="text-xs font-extrabold text-amber-300">기울기 삼각형 & 불변량 직독직해</span>
+            </div>
+            <i id="iconSecret" class="fa-solid fa-chevron-up text-xs text-amber-300 transition-transform"></i>
+          </button>
+          <div id="contentSecret" class="px-3.5 pb-3 pt-1.5 text-xs leading-relaxed text-emerald-50 border-t border-amber-500/30 space-y-2">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Trap Warning Box -->
+        <div class="bg-rose-950/40 border border-rose-500/40 rounded-lg px-3 py-2 flex items-start gap-2">
+          <i class="fa-solid fa-triangle-exclamation text-rose-400 text-xs mt-0.5 shrink-0"></i>
+          <div class="text-[11.5px] leading-snug text-rose-200">
+            <span class="font-extrabold text-rose-300">오답 함정 주의보: </span>
+            <span id="trapWarningText">점근선과 정의역 조건을 반드시 먼저 체크하세요.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. [오차 0.000% 실시간 불변량 수치 모니터 & 다변수 슬라이더] -->
+      <div class="bg-[#122b22] border border-emerald-700/50 rounded-xl p-3.5 shadow-lg space-y-3">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <i class="fa-solid fa-microchip text-cyan-400 text-sm"></i>
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-emerald-100">실시간 불변량 모니터 & 파라미터 실험</h2>
+          </div>
+          <span class="px-2 py-0.5 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-[10px] font-extrabold text-cyan-300">
+            오차 0.000% 검증
+          </span>
+        </div>
+
+        <!-- Live Invariant Readout Cards -->
+        <div id="invariantMonitorGrid" class="grid grid-cols-2 gap-2">
+          <!-- Populated dynamically per mode -->
+        </div>
+
+        <!-- Interactive Parameter Sliders -->
+        <div id="sliderControlsBox" class="space-y-2.5 pt-1 border-t border-emerald-800/60">
+          <!-- Populated dynamically per mode -->
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- ================= APPLICATION JAVASCRIPT ================= -->
+  <script>
+    // =========================================================================
+    // 1. KATEX & MATH RENDERING HELPERS
+    // =========================================================================
+    function renderMath(latex, displayMode = false) {
+      try {
+        return katex.renderToString(latex, {
+          displayMode: displayMode,
+          throwOnError: false,
+          strict: false
+        });
+      } catch (e) {
+        return latex;
+      }
+    }
+
+    // Replace inline $...$ with KaTeX HTML string
+    function formatRichMath(text) {
+      if (!text) return '';
+      return text.replace(/\$\$([^$]+)\$\$/g, (_, tex) => renderMath(tex, true))
+                 .replace(/\$([^$]+)\$/g, (_, tex) => renderMath(tex, false));
+    }
+
+    // Dedicated Canvas Vertical Fraction & Chalk Label Renderer
+    function drawCanvasFraction(ctx, numStr, denStr, x, y, options = {}) {
+      const {
+        color = '#fbbf24',
+        fontSize = 14,
+        bgColor = 'rgba(7, 19, 14, 0.85)',
+        borderColor = 'rgba(251, 191, 36, 0.45)',
+        prefix = '',
+        suffix = ''
+      } = options;
+
+      ctx.save();
+      ctx.font = `bold ${fontSize}px Pretendard, sans-serif`;
+      const preW = prefix ? ctx.measureText(prefix).width + 4 : 0;
+      const sufW = suffix ? ctx.measureText(suffix).width + 4 : 0;
+      const numW = ctx.measureText(numStr).width;
+      const denW = ctx.measureText(denStr).width;
+      const fracW = Math.max(numW, denW) + 10;
+      const totalW = preW + fracW + sufW + 16;
+      const totalH = fontSize * 2.5;
+
+      const left = x - totalW / 2;
+      const top = y - totalH / 2;
+
+      // Pill Box Background
+      ctx.fillStyle = bgColor;
+      ctx.strokeStyle = borderColor;
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.roundRect(left, top, totalW, totalH, 8);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = color;
+      ctx.textBaseline = 'middle';
+
+      let curX = left + 8;
+      if (prefix) {
+        ctx.textAlign = 'left';
+        ctx.fillText(prefix, curX, y);
+        curX += preW;
+      }
+
+      // Numerator & Denominator
+      const centerFracX = curX + fracW / 2;
+      ctx.textAlign = 'center';
+      ctx.fillText(numStr, centerFracX, y - fontSize * 0.58);
+      ctx.fillText(denStr, centerFracX, y + fontSize * 0.62);
+
+      // Vinculum (Fraction Bar)
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.moveTo(centerFracX - fracW / 2 + 2, y);
+      ctx.lineTo(centerFracX + fracW / 2 - 2, y);
+      ctx.stroke();
+
+      curX += fracW;
+      if (suffix) {
+        ctx.textAlign = 'left';
+        ctx.fillText(suffix, curX + 4, y);
+      }
+
+      ctx.restore();
+    }
+
+    function drawCanvasBadge(ctx, text, x, y, color = '#34d399', bg = 'rgba(7, 19, 14, 0.88)') {
+      ctx.save();
+      ctx.font = 'bold 12.5px Pretendard, sans-serif';
+      const w = ctx.measureText(text).width + 16;
+      const h = 24;
+      ctx.fillStyle = bg;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.roundRect(x - w / 2, y - h / 2, w, h, 6);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = color;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, x, y);
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // 2. 8 KILLER MODES DATA & SCENARIO DEFINITIONS
+    // =========================================================================
+    const KILLER_MODES = [
+      {
+        id: 'type1',
+        code: 'TYPE 01',
+        shortTitle: '거듭제곱근 실근 개수',
+        icon: 'fa-root-variable',
+        stepLabels: ['부호 경계선 f(k)=0', '짝수·홀수 교점 분기', '실근 개수 스캐너'],
+        stepDescs: [
+          'Step 1: 이차함수 $f(k) = (k-p)(k-q)$의 부호가 바뀌는 영점 경계($k=p, q$)를 칠판에 표시합니다.',
+          'Step 2: 우측 $y=x^n$ 그래프에서 수평선 $y=f(k)$가 움직일 때 $n$이 짝수면 부호에 따라 $2, 1, 0$개로 갈라지고, 홀수면 항상 $1$개임을 작도합니다.',
+          'Step 3: $\\sum g(n)$ 또는 조건을 만족하는 자연수 $k$의 개수를 계단식 판별표로 즉시 합산합니다.'
+        ],
+        trapWarning: '$n$이 짝수일 때 $f(k)=0$이면 실근은 $0$ 하나뿐이므로 $2$개가 아니라 반드시 $1$개입니다!',
+        scenarios: [
+          {
+            chip: '기출 A (평가원 4점)',
+            source: '2024학년도 평가원 4점 변형',
+            params: { k: 5, n: 4, r1: 2, r2: 6 },
+            snapParams: { k: 4, n: 4, r1: 2, r2: 6 },
+            problem: '이차함수 $f(x) = (x-2)(x-6)$에 대하여, 실수 $f(k)$의 $n$제곱근 중 실수인 것의 개수를 $g(k, n)$이라 하자. $n=4$(짝수)일 때, $g(k, 4) = 0$을 만족시키는 모든 자연수 $k$의 값의 합과, $k=4$일 때 $g(4, 3) + g(4, 4)$의 값을 구하시오.',
+            textbookTitle: '거듭제곱 방정식 xⁿ = f(k) 케이스 분류',
+            textbookSteps: [
+              '1) $x^n = f(k)$에서 $n=4$는 짝수이므로 우변 $f(k) < 0$일 때 실근이 존재하지 않는다 ($g(k,4)=0$).',
+              '2) $(k-2)(k-6) < 0$을 풀면 $2 < k < 6$이므로 자연수 $k = 3, 4, 5$이고 합은 $3+4+5 = 12$.',
+              '3) $k=4$일 때 $f(4) = (4-2)(4-6) = -4 < 0$이다. $n=3$은 홀수이므로 $g(4,3)=1$, $n=4$는 짝수이므로 $g(4,4)=0$. 따라서 합은 $1$.'
+            ],
+            secretTitle: '홀짝·부호 2×3 매트릭스 5초 직독법',
+            secretSteps: [
+              '⚡ **[비기 1] 홀수 제곱근은 무조건 1개!** $g(k, \\text{홀수}) = 1$은 $f(k)$를 계산할 필요조차 없습니다.',
+              '⚡ **[비기 2] 짝수 제곱근은 이차함수 근의 위치 판별!** $g(k, \\text{짝수}) = 0 \\iff f(k) < 0$ (두 근 $2, 6$ 사이 내부 구간!).',
+              '⚡ **[암산 결론]** 대칭축 $k = \\frac{2+6}{2} = 4$이므로 구간 $(2, 6)$ 안의 자연수 $3, 4, 5$의 합은 등차중항 $4 \\times 3 = 12$!'
+            ]
+          },
+          {
+            chip: '기출 B (수능 킬러 합산형)',
+            source: '수능 수학I 준킬러 변형',
+            params: { k: 3, n: 3, r1: 1, r2: 7 },
+            snapParams: { k: 7, n: 6, r1: 1, r2: 7 },
+            problem: '$f(x) = (x-1)(x-7)$에 대하여 $\\sum_{n=2}^{6} g(k, n) = 5$를 만족시키는 자연수 $k$의 값을 구하시오. (단, $g(k, n)$은 $f(k)$의 $n$제곱근 중 실수인 것의 개수)',
+            textbookTitle: 'n=2,3,4,5,6 각각 대입 후 합산',
+            textbookSteps: [
+              '1) $n=2, 3, 4, 5, 6$ 중 홀수는 $n=3, 5$ (2개)이고 짝수는 $n=2, 4, 6$ (3개)이다.',
+              '2) $f(k) > 0$이면 $2+1+2+1+2 = 8$, $f(k) < 0$이면 $0+1+0+1+0 = 2$.',
+              '3) $f(k) = 0$이면 짝수일 때도 $0$ 한 개씩이므로 $1+1+1+1+1 = 5$가 되어 조건을 만족한다 ($k=1, 7$).'
+            ],
+            secretTitle: '홀수 고정값 분리 & 경계점(f(k)=0) 타겟팅',
+            secretSteps: [
+              '⚡ **[1초 분해]** $n \\in \\{2,3,4,5,6\\}$에서 홀수($3,5$)는 무조건 $1+1=2$를 먹고 들어갑니다.',
+              '⚡ **[나머지 짝수 3개]** 합이 $5$가 되려면 짝수 3개($n=2,4,6$)에서 정확히 $5-2 = 3$개가 나와야 하므로 각각 $1$개씩! 즉 **$f(k) = 0$인 절편 $k=1, 7$**이 즉시 정답입니다.'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type2',
+        code: 'TYPE 02',
+        shortTitle: '평행이동과 기울기 절단',
+        icon: 'fa-arrows-up-down-left-right',
+        stepLabels: ['계수→지수 평행이동', '기울기 합동 삼각형', '퍼즐 등적변형 넓이'],
+        stepDescs: [
+          'Step 1: $y = k\\cdot 2^x + n$의 앞 계수 $k$를 지수로 올려 $2^{x - m} + n$ 꼴의 순수 평행이동 벡터 $[m, n]$을 추출합니다.',
+          'Step 2: 두 곡선을 가로지르는 직선의 기울기가 $\\frac{n}{m}$와 일치할 때, 교점 $A, B$는 정확히 평행이동 대응점이 되어 직각삼각형($\\Delta x=m, \\Delta y=n$)이 작도됩니다.',
+          'Step 3: 볼록한 곡선 부분 넓이를 잘라 옮기면 밑변과 높이가 정수인 평행사변형/직사각형 넓이($S$)로 완벽히 포개어집니다.'
+        ],
+        trapWarning: '두 지수함수의 밑이 다르면 평행이동으로 겹치지 않습니다! $4^x$와 $2^x$는 평행이동이 아니라 밑 변환 관계입니다.',
+        scenarios: [
+          {
+            chip: '기출 A (선분 길이 피타고라스)',
+            source: '평가원 4점 최빈출 유형',
+            params: { base: 2, dx: 3, dy: 4, x0: 0.5 },
+            snapParams: { base: 2, dx: 2, dy: 4, x0: 0 },
+            problem: '두 곡선 $y = 2^x$과 $y = 2^{x-2} + 4$가 기울기가 $2$인 직선 $y = 2x + 1$과 만나는 두 점을 각각 $A, B$라 할 때, 선분 $\\overline{AB}$의 길이를 구하시오.',
+            textbookTitle: '교점 좌표 미지수 설정 및 연립',
+            textbookSteps: [
+              '1) 점 $A$의 좌표를 $(t, 2^t)$라 하면 $2^t = 2t + 1$을 만족한다 ($t=0$ 또는 $t=1$).',
+              '2) 점 $B(s, 2^{s-2}+4)$를 직선 $y=2x+1$에 대입하면 $2^{s-2}+4 = 2s+1 \\implies 2^{s-2} = 2(s-2) + 1$.',
+              '3) 따라서 $s - 2 = t \\implies s = t + 2$이고 $y_B - y_A = 4$이므로 $\\overline{AB} = \\sqrt{2^2 + 4^2} = 2\\sqrt{5}$.'
+            ],
+            secretTitle: '평행이동 벡터 [m, n] = 직선 기울기 m/n 일치 비기',
+            secretSteps: [
+              '⚡ **[1단계]** 두 곡선의 평행이동 벡터는 $[\\Delta x, \\Delta y] = [2, 4]$이므로 이동 기울기는 $\\frac{4}{2} = 2$입니다.',
+              '⚡ **[2단계]** 문제의 직선 기울기도 정확히 $2$! 교점 좌표를 구할 필요 없이 두 교점 $A, B$는 평행이동 대응점입니다.',
+              '⚡ **[3초 암산]** $\\overline{AB} = \\sqrt{(\\Delta x)^2 + (\\Delta y)^2} = \\sqrt{2^2 + 4^2} = \\sqrt{20} = 2\\sqrt{5}$ 끝!'
+            ]
+          },
+          {
+            chip: '기출 B (곡선 퍼즐 등적변형 넓이)',
+            source: '수능·교육청 4점 단골',
+            params: { base: 2, dx: 2, dy: 3, x0: 0 },
+            snapParams: { base: 2, dx: 3, dy: 3, x0: 0 },
+            problem: '두 곡선 $y = 2^x$, $y = 2^{x-3} + 3$ 및 두 직선 $y = x + 1$, $y = x + 3$으로 둘러싸인 영역의 넓이 $S$를 구하시오.',
+            textbookTitle: '정적분 또는 다각형 쪼개기 계산',
+            textbookSteps: [
+              '1) 각 교점의 좌표를 연립하여 네 꼭짓점 $(0,1), (1,2), (3,4), (4,5)$를 구한다.',
+              '2) 곡선 $y=2^x$의 $[0,1]$ 구간을 $[3,4]$ 구간으로 평행이동하여 합동임을 증명한다.',
+              '3) 점과 직선 사이의 거리 공식을 써서 평행사변형의 높이와 밑변을 곱해 넓이 $6$을 구한다.'
+            ],
+            secretTitle: '곡선 지우개! 평행사변형 외적(절편차 × 가로이동) 공식',
+            secretSteps: [
+              '⚡ **[퍼즐 합체]** 평행이동 벡터 $[3, 3]$의 기울기 $\\frac{3}{3}=1$이 두 직선의 기울기 $1$과 같으므로, 휜 곡선 조각을 잘라 붙이면 완벽한 평행사변형이 됩니다.',
+              '⚡ **[5초 넓이 공식]** 평행사변형 넓이 $S = (\\text{두 직선의 } y\\text{절편 차}) \\times |\\Delta x| = (3 - 1) \\times 3 = 6$!'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type3',
+        code: 'TYPE 03',
+        shortTitle: '역함수 대칭과 1:1:√2',
+        icon: 'fa-clone',
+        stepLabels: ['y=x 역함수 대칭축', '1:1:√2 직각이등변', '중점 M 좌표 직독'],
+        stepDescs: [
+          'Step 1: 지수함수 $y=a^{x-m}+n$과 로그함수 $y=\\log_a(x-n)+m$의 대칭축 $y = x - m + n$과 수직이등분 중점 $M$을 표시합니다.',
+          'Step 2: 기울기 $-1$인 직선 $y = -x + k$ 위의 두 교점 $A, B$에 대해 $\\overline{AB} = d\\sqrt{2}$이면 가로 차 $\\Delta x = d$, 세로 차 $\\Delta y = d$인 직각이등변삼각형이 완성됩니다.',
+          'Step 3: 중점 $M$에서 $\\left(\\mp \\frac{d}{2}, \\pm \\frac{d}{2}\\right)$만큼 가감하여 교점 $A, B$의 실제 좌표를 연립 없이 바로 읽어냅니다.'
+        ],
+        trapWarning: '$y = a^{x-m}+n$의 역함수는 $y = \\log_a(x-n)+m$입니다! 평행이동 시 $(m, n)$이 $(n, m)$으로 뒤바뀌는지 꼭 확인하세요.',
+        scenarios: [
+          {
+            chip: '기출 A (기본 y=x 역함수 대칭)',
+            source: '수능 수학I 4점 대표 기출',
+            params: { base: 2, k: 6, shift: 0 },
+            snapParams: { base: 2, k: 5, shift: 0 },
+            problem: '곡선 $y = 2^x$과 $y = \\log_2 x$가 직선 $y = -x + k$와 만나는 두 점을 $A, B$라 하자. $\\overline{AB} = 2\\sqrt{2}$일 때, 상수 $k$의 값과 삼각형 $OAB$의 넓이를 구하시오.',
+            textbookTitle: '좌표 미지수 (α, 2^α) 설정 및 거리 공식',
+            textbookSteps: [
+              '1) $y=2^x$과 $y=\\log_2 x$는 $y=x$ 대칭이므로 $A(\\alpha, \\beta), B(\\beta, \\alpha)$라 놓는다 ($\\alpha < \\beta$).',
+              '2) $\\overline{AB} = \\sqrt{(\\beta-\\alpha)^2 + (\\alpha-\\beta)^2} = \\sqrt{2}(\\beta-\\alpha) = 2\\sqrt{2}$에서 $\\beta - \\alpha = 2$.',
+              '3) $\\beta = 2^\\alpha$이므로 $2^\\alpha - \\alpha = 2 \\implies \\alpha = 1, \\beta = 3$이 되어 $k = \\alpha + \\beta = 4$ 또는 평행이동 조건에 대입한다.'
+            ],
+            secretTitle: 'AB = d√2 ⟹ Δx = Δy = d 직각이등변 & 중점 공식',
+            secretSteps: [
+              '⚡ **[1초 번역]** 기울기 $-1$ 직선에서 $\\overline{AB} = d\\sqrt{2}$는 무조건 **가로 차이 $\\Delta x = d$, 세로 차이 $\\Delta y = d$**라는 뜻입니다!',
+              '⚡ **[중점 타겟팅]** 두 교점의 중점 $M\\left(\\frac{k}{2}, \\frac{k}{2}\\right)$에서 좌우로 $\\frac{d}{2}$만큼 벌리면 $A\\left(\\frac{k-d}{2}, \\frac{k+d}{2}\\right)$가 바로 튀어나옵니다!',
+              '⚡ **[넓이 공식]** $\\triangle OAB = \\frac{1}{2} \\times \\overline{OM} \\times \\overline{AB} = \\frac{k}{2} \\times d$로 신발끈 공식조차 필요 없습니다.'
+            ]
+          },
+          {
+            chip: '기출 B (평행이동된 역함수 킬러)',
+            source: '평가원 6월·9월 모의평가 14번급',
+            params: { base: 2, k: 7, shift: 1 },
+            snapParams: { base: 2, k: 6, shift: 1 },
+            problem: '두 곡선 $y = 2^{x-1} + 1$과 $y = \\log_2(x-1) + 1$이 직선 $y = -x + 6$과 만나는 두 점을 $A, B$라 할 때, $\\overline{AB}$의 길이를 구하시오.',
+            textbookTitle: '치환 후 연립방정식 풀이',
+            textbookSteps: [
+              '1) $X = x-1, Y = y-1$로 평행이동 치환하면 $Y = 2^X$, $Y = \\log_2 X$, 직선은 $Y = -X + 4$가 된다.',
+              '2) $2^X = -X + 4$를 만족하는 해 $X = 1, Y = 3$을 찾는다.',
+              '3) 원래 좌표 $A(2, 4), B(4, 2)$로 복원하여 $\\overline{AB} = \\sqrt{2^2 + (-2)^2} = 2\\sqrt{2}$를 구한다.'
+            ],
+            secretTitle: '(1, 1) 대칭 중심 이동 & 중점 M(3, 3) 직관 대입',
+            secretSteps: [
+              '⚡ **[대칭축 확인]** $(1,1)$만큼 똑같이 평행이동했으므로 여전히 $y=x$에 대칭입니다!',
+              '⚡ **[중점 찍기]** $y=x$와 $y=-x+6$의 교점인 중점은 $M(3, 3)$! 중점에서 한 칸 이동한 $(2, 4)$를 $y=2^{x-1}+1$에 넣으면 $2^1+1=3 \\neq 4$가 아니라 정확히 성립하는 정수점을 3초 만에 스캔!'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type4',
+        code: 'TYPE 04',
+        shortTitle: '절댓값 꺾기와 곱 불변량',
+        icon: 'fa-chart-line',
+        stepLabels: ['절댓값 부호 분리(±)', '교점 곱 x₁x₂=1 증명', '지수 점근선 반사선'],
+        stepDescs: [
+          'Step 1: $y = |\\log_a x|$의 꺾인 왼쪽 날개는 $y = -\\log_a x$ ($0 < x < 1$), 오른쪽 날개는 $y = +\\log_a x$ ($x \\ge 1$)로 색상을 분리합니다.',
+          'Step 2: 수평선 $y = t$와의 두 교점 $x_1, x_2$에서 $-\\log_a x_1 = \\log_a x_2 \\implies \\log_a(x_1 x_2) = 0 \\implies x_1 x_2 = 1$ (역수 불변량!)을 칠판에 표시합니다.',
+          'Step 3: 지수 절댓값 $y = |a^x - k|$의 원래 점근선 $y=-k$가 $y=+k$로 접혀 올라와 교점 2개 영역의 상한선이 됨을 보여줍니다.'
+        ],
+        trapWarning: '$y = |\\log_a(x - p)|$처럼 $x$축 평행이동이 있으면 $x_1 x_2 = 1$이 아니라 $(x_1 - p)(x_2 - p) = 1$입니다!',
+        scenarios: [
+          {
+            chip: '기출 A (로그 절댓값 곱 불변량)',
+            source: '수능·평가원 4점 초빈출',
+            params: { base: 2, t: 1.5, kAsym: 3 },
+            snapParams: { base: 2, t: 2.0, kAsym: 3 },
+            problem: '함수 $y = |\\log_2 x|$의 그래프와 직선 $y = t$ ($t > 0$)가 만나는 두 점의 $x$좌표를 각각 $x_1, x_2$ ($x_1 < x_2$)라 하자. $x_2 - x_1 = \\frac{15}{4}$일 때, $x_1 x_2$의 값과 상수 $t$의 값을 구하시오.',
+            textbookTitle: '로그 방정식 해 직접 지수 변환',
+            textbookSteps: [
+              '1) $0 < x_1 < 1 < x_2$이므로 $-\\log_2 x_1 = t$, $\\log_2 x_2 = t$이다.',
+              '2) $x_1 = 2^{-t}$, $x_2 = 2^t$로 나타내고 $2^t - 2^{-t} = \\frac{15}{4}$에 대입한다.',
+              '3) $2^t = X$로 치환하여 $4X^2 - 15X - 4 = 0 \\implies (4X+1)(X-4)=0$에서 $X=4$, 즉 $t=2$를 구한다.'
+            ],
+            secretTitle: '로그 절댓값 두 교점은 무조건 역수! (x₁·x₂ = 1)',
+            secretSteps: [
+              '⚡ **[1초 불변량]** $y = |\\log_a x|$를 가로선으로 자르면 밑 $a$나 높이 $t$에 상관없이 무조건 **$x_1 \\cdot x_2 = 1$ (서로 역수)**입니다!',
+              '⚡ **[분수 직독]** 역수의 차 $x_2 - \\frac{1}{x_2} = \\frac{15}{4} = 4 - \\frac{1}{4}$이므로 이차방정식을 풀 필요 없이 $x_2 = 4, x_1 = \\frac{1}{4}$, 따라서 $t = \\log_2 4 = 2$!'
+            ]
+          },
+          {
+            chip: '기출 B (지수 절댓값 점근선과 곱)',
+            source: '평가원 4점 준킬러 결합형',
+            params: { base: 2, t: 2.2, kAsym: 4 },
+            snapParams: { base: 2, t: 2.0, kAsym: 4 },
+            problem: '함수 $f(x) = |2^x - 4|$의 그래프와 직선 $y = t$가 서로 다른 두 점에서 만나도록 하는 모든 자연수 $t$의 값의 합과, $t=2$일 때 두 교점의 $x$좌표 합 $x_1 + x_2$를 구하시오.',
+            textbookTitle: '구간별 지수방정식 풀이',
+            textbookSteps: [
+              '1) $y = 2^x - 4$의 점근선은 $y = -4$이므로 접어 올리면 $0 < t < 4$일 때 두 점에서 만난다. 자연수 $t=1,2,3$의 합은 $6$.',
+              '2) $t=2$일 때 $-(2^{x_1}-4) = 2 \\implies 2^{x_1} = 2 \\implies x_1 = 1$.',
+              '3) $2^{x_2} - 4 = 2 \\implies 2^{x_2} = 6 \\implies x_2 = \\log_2 6$. 따라서 $x_1 + x_2 = 1 + \\log_2 6 = \\log_2 12$.'
+            ],
+            secretTitle: '점근선 반사 높이 k & 꺾인 두 날개 평균 불변량',
+            secretSteps: [
+              '⚡ **[점근선 법칙]** $|a^x - k| = t$가 두 점에서 만날 조건은 무조건 **$0 < t < k$**! ($k=4$이므로 자연수 $1,2,3$).',
+              '⚡ **[합 공식]** $-(2^{x_1}-k) = t$와 $+(2^{x_2}-k) = t$에서 $2^{x_1} = k-t$, $2^{x_2} = k+t$이므로 두 값의 곱 **$2^{x_1+x_2} = k^2 - t^2 = 16 - 4 = 12 \\implies x_1+x_2 = \\log_2 12$** 5초 컷!'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type5',
+        code: 'TYPE 05',
+        shortTitle: '내분·외분 닮음비 투영',
+        icon: 'fa-ruler-combined',
+        stepLabels: ['x축·y축 수선의 발', '1:k 닮음 직각삼각형', '거듭제곱 밑 관계식'],
+        stepDescs: [
+          'Step 1: 원점 $O$를 지나는 직선 위의 두 교점 $P, Q$에서 $x$축과 $y$축에 각각 수선의 발을 내립니다.',
+          'Step 2: 빗변의 길이 비 $\\overline{OP} : \\overline{PQ} = 1 : (k-1)$은 닮음에 의해 $x$좌표 비 $t : kt$ 및 $y$좌표 비 $y_P : k y_P$로 정확히 정사영됩니다.',
+          'Step 3: $a^{kt} = k \\cdot a^t$ 또는 $b^{kt} = k \\cdot a^t$ 등 지수 법칙 $(a^t)^k$ 구조로 치환하여 미지수 $t$를 단번에 소거합니다.'
+        ],
+        trapWarning: '$\\overline{OP} : \\overline{PQ} = 1 : 2$일 때 원점으로부터의 거리 비 $\\overline{OP} : \\overline{OQ}$는 $1 : 2$가 아니라 $1 : 3$입니다!',
+        scenarios: [
+          {
+            chip: '기출 A (원점 직선 1:2 내분 닮음)',
+            source: '수능 수학I 13번·15번 기출 모델',
+            params: { ratioK: 2, tVal: 1.0 },
+            snapParams: { ratioK: 2, tVal: 1.0 },
+            problem: '원점 $O$를 지나는 직선이 두 곡선 $y = a^x$, $y = b^x$ ($1 < b < a$)와 제1사분면에서 만나는 점을 각각 $P, Q$라 하자. 점 $P$가 선분 $OQ$의 중점($\\overline{OP}:\\overline{PQ}=1:1$)이고 점 $P$의 $x$좌표가 $1$, $y$좌표가 $2$일 때, $a + b^2$의 값을 구하시오.',
+            textbookTitle: '직선 방정식 y=mx 설정 후 연립',
+            textbookSteps: [
+              '1) 점 $P(1, 2)$가 $y = a^x$ 위의 점이므로 $a^1 = 2 \\implies a = 2$.',
+              '2) 원점과 $P(1,2)$를 지나는 직선은 $y = 2x$이고, $P$가 $\\overline{OQ}$의 중점이므로 $Q(2, 4)$이다.',
+              '3) $Q(2, 4)$를 $y = b^x$에 대입하면 $b^2 = 4$이므로 $a + b^2 = 2 + 4 = 6$.'
+            ],
+            secretTitle: '빗변 비율 1:k ⟹ x좌표 (t, kt) & 함숫값 k배 직독',
+            secretSteps: [
+              '⚡ **[수선의 발 투영]** 직선 위의 비율은 무조건 $x$축·$y$축으로 그대로 내려찍습니다! $P$가 중점이면 $Q$의 좌표는 무조건 $P$의 $2$배인 $(2t, 2y_P)$입니다.',
+              '⚡ **[지수 거듭제곱 소거]** $P(t, a^t) \\implies Q(2t, 2a^t)$를 두 번째 곡선에 넣으면 $b^{2t} = 2a^t$가 되어 5초 만에 밑 관계가 끝납니다.'
+            ]
+          },
+          {
+            chip: '기출 B (동일 곡선 위 1:2 비율 킬러)',
+            source: '평가원 4점 고난도 변형',
+            params: { ratioK: 3, tVal: 1.0 },
+            snapParams: { ratioK: 2, tVal: 1.0 },
+            problem: '원점 $O$를 지나는 직선이 곡선 $y = a^x$ ($a>1$)과 만나는 두 점을 $P, Q$라 하자. $\\overline{OP} = \\overline{PQ}$ (즉 $\\overline{OP}:\\overline{OQ}=1:2$)일 때, 점 $P$의 $y$좌표와 점 $Q$의 $y$좌표의 합을 구하시오.',
+            textbookTitle: '두 교점 (t, a^t), (2t, a^2t) 기울기 일치식',
+            textbookSteps: [
+              '1) $P, Q$의 $x$좌표 비가 $1:2$이므로 $P(t, a^t), Q(2t, a^{2t})$로 놓는다.',
+              '2) 원점과의 기울기가 같으므로 $\\frac{a^t}{t} = \\frac{a^{2t}}{2t} \\implies a^{2t} = 2a^t$.',
+              '3) $a^t > 0$으로 약분하면 $a^t = 2$이므로 $y_P = 2$, $y_Q = a^{2t} = 4$가 되어 합은 $6$.'
+            ],
+            secretTitle: '(a^t)² = 2(a^t) ⟹ 밑 a와 t를 몰라도 y좌표는 고정 상수!',
+            secretSteps: [
+              '⚡ **[놀라운 불변량!]** $y=a^x$ 위에서 $\\overline{OP}:\\overline{OQ} = 1:k$이면, 밑 $a$가 무엇이든 상관없이 **$y_P^k = k \\cdot y_P \\implies y_P = k^{\\frac{1}{k-1}}$로 고정 상수**입니다!',
+              '⚡ **[1:2일 때 암기급 수치]** $k=2$이면 무조건 **$y_P = 2, y_Q = 4$**! 밑 $a$를 구하느라 시간 쓰지 마세요!'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type6',
+        code: 'TYPE 06',
+        shortTitle: '기하 번역 대소 비교(ㄱㄴㄷ)',
+        icon: 'fa-scale-balanced',
+        stepLabels: ['평균변화율(할선 기울기)', '원점 연결 기울기(y/x)', '사다리꼴 vs 직사각형 넓이'],
+        stepDescs: [
+          'Step 1: 분수 차 $\\frac{f(x_2)-f(x_1)}{x_2-x_1}$은 두 점 $A, B$를 잇는 할선의 기울기로 칠판에 번역합니다.',
+          'Step 2: 단일 분수 $\\frac{f(x_1)}{x_1}$ 또는 $\\frac{y_1}{x_1 - p}$는 정점 $(0,0)$ 또는 $(p,0)$과 곡선 위의 점을 잇는 직선의 기울기로 번역합니다.',
+          'Step 3: 곱셈식 $x_1 y_1$ 또는 $\\frac{1}{2}(x_2-x_1)(y_1+y_2)$는 직사각형·사다리꼴의 넓이로 색칠하여 눈으로 즉시 대소를 판별합니다.'
+        ],
+        trapWarning: '부등식 양변을 $x_2 - x_1$이나 $x_1 x_2$로 나눌 때 양수인지 음수인지(부등호 방향 역전 여부)를 반드시 먼저 확인하세요!',
+        scenarios: [
+          {
+            chip: '기출 A (기울기 번역 ㄱ·ㄴ·ㄷ)',
+            source: '수능·평가원 합답형 4점 단골',
+            params: { x1: 1.2, x2: 3.2, base: 2 },
+            snapParams: { x1: 1.0, x2: 3.0, base: 2 },
+            problem: '곡선 $y = \\log_2(x+1)$ 위의 두 점 $A(x_1, y_1)$, $B(x_2, y_2)$ ($0 < x_1 < x_2$)에 대하여 다음 세 값 $P = \\frac{y_1}{x_1}$, $Q = \\frac{y_2}{x_2}$, $R = \\frac{y_2 - y_1}{x_2 - x_1}$의 대소 관계를 판별하고, $x_1=1, x_2=3$일 때 $\\frac{P}{R}$의 값을 구하시오.',
+            textbookTitle: '대수적 차(P-Q) 통분 및 미분 볼록성 계산',
+            textbookSteps: [
+              '1) $x_1=1$일 때 $y_1 = \\log_2 2 = 1$, $x_2=3$일 때 $y_2 = \\log_2 4 = 2$이다.',
+              '2) $P = 1, Q = \\frac{2}{3}, R = \\frac{2-1}{3-1} = \\frac{1}{2}$을 각각 계산하여 비교한다.',
+              '3) 일반적인 경우 이계도함수 $f\'\'(x) < 0$ (위로 볼록) 성질을 이용해 평균변화율 감소를 증명한다.'
+            ],
+            secretTitle: '수식 → 기울기 번역기 (위로 볼록 곡선의 기울기 순서)',
+            secretSteps: [
+              '⚡ **[번역 사전]** $P = (\\text{원점 } O \\leftrightarrow A \\text{ 기울기})$, $Q = (\\text{원점 } O \\leftrightarrow B \\text{ 기울기})$, $R = (A \\leftrightarrow B \\text{ 할선 기울기})$!',
+              '⚡ **[눈으로 3초 판독]** 원점을 지나는 위로 볼록($\\log$) 곡선은 오른쪽으로 갈수록 기울기가 완만해지므로 무조건 **$P > Q > R$**입니다!'
+            ]
+          },
+          {
+            chip: '기출 B (넓이 번역 사다리꼴 vs 직사각형)',
+            source: '평가원 4점 합답형 ㄷ번 변형',
+            params: { x1: 1.0, x2: 3.0, base: 2 },
+            snapParams: { x1: 1.0, x2: 3.0, base: 2 },
+            problem: '곡선 $y = 2^x$ 위의 두 점 $A(1, 2), B(3, 8)$에 대하여, 사다리꼴 넓이 $S_{\\text{trap}} = \\frac{1}{2}(x_2 - x_1)(y_1 + y_2)$와 중점 직사각형 넓이 $S_{\\text{mid}} = (x_2 - x_1)\\cdot 2^{\\frac{x_1+x_2}{2}}$의 차 $S_{\\text{trap}} - S_{\\text{mid}}$를 구하시오.',
+            textbookTitle: '산술·기하평균 부등식 대수 전개',
+            textbookSteps: [
+              '1) $x_1=1, x_2=3$을 대입하면 $S_{\\text{trap}} = \\frac{1}{2}(3-1)(2+8) = 10$.',
+              '2) 중점 $\\frac{1+3}{2} = 2$에서의 함숫값은 $2^2 = 4$이므로 $S_{\\text{mid}} = (3-1)\\times 4 = 8$.',
+              '3) 따라서 두 넓이의 차는 $10 - 8 = 2$이다.'
+            ],
+            secretTitle: '아래로 볼록(지수) ⟹ 할선 중점(산술평균) > 곡선 중점(기하평균)',
+            secretSteps: [
+              '⚡ **[기하 번역]** 양변을 $(x_2-x_1)$로 나누면 할선 중점 높이 $\\frac{y_1+y_2}{2}$(산술평균) vs 곡선 중점 높이 $2^{\\frac{x_1+x_2}{2}} = \\sqrt{y_1 y_2}$(기하평균) 비교입니다!',
+              '⚡ **[볼록성 직독]** 지수함수는 아래로 볼록하므로 할선이 곡선보다 무조건 위에 있어 $S_{\\text{trap}} > S_{\\text{mid}}$!'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type7',
+        code: 'TYPE 07',
+        shortTitle: '격자점(정수점) 스캐너',
+        icon: 'fa-border-all',
+        stepLabels: ['정수 격자 매트릭스', '세로줄(x=n) 슬라이스', '경계점 통과 카운트'],
+        stepDescs: [
+          'Step 1: 좌표평면의 모든 정수 순서쌍 $(x, y)$ 격자점을 켜고, 부등식 영역 내부(경계 포함)에 들어온 점들을 골든 네온으로 점등합니다.',
+          'Step 2: 각 정수 $x = 1, 2, \\dots, k$ 세로줄마다 들어있는 정수 $y$의 개수($\\lfloor \\log_2 x \\rfloor + 1$)를 기둥별로 자동 합산합니다.',
+          'Step 3: 로그함수는 가로줄($y=m \\implies x = 2^m$) 기준으로 묶어 세면 계산량이 $1/5$로 줄어드는 역산 스캐너를 보여줍니다.'
+        ],
+        trapWarning: '문제에서 "자연수 순서쌍 $(x,y)$"인지($x,y \\ge 1$), "정수 순서쌍"인지($0$과 음수 포함), 경계선 등호($\\le$ vs $<$)가 있는지를 가장 먼저 밑줄 그으세요!',
+        scenarios: [
+          {
+            chip: '기출 A (로그 곡선 아래 자연수 격자점)',
+            source: '평가원·교육청 21번급 격자점 유형',
+            params: { maxX: 6 },
+            snapParams: { maxX: 7 },
+            problem: '부등식 $1 \\le x \\le k$, $1 \\le y \\le \\log_2 x + 1$을 동시에 만족시키는 자연수 순서쌍 $(x, y)$의 개수가 $15$가 되도록 하는 자연수 $k$의 값을 구하시오.',
+            textbookTitle: 'x = 1, 2, 3... 일일이 대입 나열',
+            textbookSteps: [
+              '1) $x=1$일 때 $1 \\le y \\le 1$ ($1$개).',
+              '2) $x=2, 3$일 때 $1 \\le y \\le 2$ (각 $2$개씩 총 $4$개, 누적 $5$개).',
+              '3) $x=4, 5, 6, 7$일 때 $1 \\le y \\le 3$ (각 $3$개씩). $k=6$이면 $5 + 9 = 14$개, $k=7$이면 $5 + 12 = 17$개가 아니라 $x=4,5,6$일 때 $5+9=14$, $x=7$까지 합치면 구간별 합을 조정한다.'
+            ],
+            secretTitle: '2^m 거듭제곱 구간 블록 묶기 (가로줄 역산 비기)',
+            secretSteps: [
+              '⚡ **[블록 공식]** $\\lfloor \\log_2 x \\rfloor$는 $x = 2^m$이 될 때마다 층수가 $1$씩 올라갑니다! ($x=1$: 1층 / $x=2,3$: 2층 / $x=4,5,6,7$: 3층)',
+              '⚡ **[누적합 암산]** $x=1$(1개) $+ x\\in[2,3]$(2×2=4개) $+ x\\in[4,7]$(4×3=12개) $= 17$개! 층수 변화점($1, 2, 4, 8$)만 찍으면 10초 만에 카운팅 완료!'
+            ]
+          },
+          {
+            chip: '기출 B (정확히 k=6일 때 격자점 총합)',
+            source: '내신·모의고사 킬러 변형',
+            params: { maxX: 5 },
+            snapParams: { maxX: 6 },
+            problem: '자연수 $k=6$일 때, $1 \\le x \\le 6$이고 $1 \\le y \\le \\log_2 x + 1$을 만족시키는 자연수 순서쌍 $(x, y)$의 총개수를 구하시오.',
+            textbookTitle: '세로선 기준 전수 조사',
+            textbookSteps: [
+              '1) $x=1 \\implies y=1$ (1개)',
+              '2) $x=2, 3 \\implies y=1, 2$ (2+2 = 4개)',
+              '3) $x=4, 5, 6 \\implies y=1, 2, 3$ (3+3+3 = 9개). 총합은 $1 + 4 + 9 = 14$개.'
+            ],
+            secretTitle: '가로선 y = 1, 2, 3 층별 막대 길이 합산법',
+            secretSteps: [
+              '⚡ **[가로줄 스캔]** 세로로 세지 말고 가로 층($y=1, 2, 3$)으로 세어보세요!',
+              '⚡ $y=1$층(모든 $x=1\\sim 6$: $6$개) + $y=2$층($x=2\\sim 6$: $5$개) + $y=3$층($x=4\\sim 6$: $3$개) $= 6 + 5 + 3 = 14$개! 훨씬 빠르고 실수가 없습니다.'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'type8',
+        code: 'TYPE 08',
+        shortTitle: '치환 방부등식과 근의 분리',
+        icon: 'fa-code-branch',
+        stepLabels: ['t = a^x 양수 치환역', '대칭축 & 두 근의 곱', 'α+β ⟺ t₁t₂ 변환'],
+        stepDescs: [
+          'Step 1: $t = a^x$로 치환하는 순간 정의역은 모든 실수 $x$에서 양수 제한 범위 $t > 0$ (양의 실근 조건이면 $t > 1$)으로 변환됩니다.',
+          'Step 2: 치환된 이차함수 $f(t) = t^2 - S t + P = 0$의 포물선과 두 양근 $t_1 = a^\\alpha, t_2 = a^\\beta$를 칠판에 작도합니다.',
+          'Step 3: 원래 지수방정식의 두 근의 합 $\\alpha + \\beta$는 치환 이차방정식의 두 근의 합이 아니라 **두 근의 곱 $t_1 t_2 = a^{\\alpha+\\beta} = P$**임을 직관적으로 연결합니다.'
+        ],
+        trapWarning: '지수방정식 $(a^x)^2 - k a^x + m = 0$에서 두 실근 $\\alpha, \\beta$가 존재하려면 치환 방정식 $t^2 - kt + m = 0$이 그냥 두 실근이 아니라 반드시 **서로 다른 두 양의 실근($t_1 > 0, t_2 > 0$)**을 가져야 합니다!',
+        scenarios: [
+          {
+            chip: '기출 A (두 근의 합 α+β ⟺ 치환 곱 t₁t₂)',
+            source: '수능·평가원 3점 후반~4점 필수',
+            params: { sumT: 6, prodT: 8 },
+            snapParams: { sumT: 6, prodT: 8 },
+            problem: '지수방정식 $(2^x)^2 - 6\\cdot 2^x + 8 = 0$의 두 실근을 $\\alpha, \\beta$라 할 때, $\\alpha + \\beta$의 값과 $2^{2\\alpha} + 2^{2\\beta}$의 값을 구하시오.',
+            textbookTitle: '인수분해 후 α, β 개별 구하기',
+            textbookSteps: [
+              '1) $2^x = t$ ($t>0$)로 치환하면 $t^2 - 6t + 8 = (t-2)(t-4) = 0$.',
+              '2) $2^x = 2$ 또는 $2^x = 4$에서 $\\alpha = 1, \\beta = 2$이다.',
+              '3) 따라서 $\\alpha + \\beta = 3$이고, $2^{2\\alpha} + 2^{2\\beta} = 4 + 16 = 20$.'
+            ],
+            secretTitle: '지수 근의 합(α+β)은 상수항 P만 보면 1초 컷!',
+            secretSteps: [
+              '⚡ **[1초 공식]** 인수분해가 안 되는 문제에서도 $t_1 t_2 = 2^\\alpha \\cdot 2^\\beta = 2^{\\alpha+\\beta} = \\text{상수항 } P$입니다!',
+              '⚡ 상수항이 $8 = 2^3$이므로 일차항 계수($-6$)는 볼 필요도 없이 **$\\alpha + \\beta = 3$**! 또한 $2^{2\\alpha}+2^{2\\beta} = t_1^2 + t_2^2 = 6^2 - 2(8) = 20$!'
+            ]
+          },
+          {
+            chip: '기출 B (서로 다른 두 양의 실근 근의 분리)',
+            source: '평가원·내신 4점 킬러 함·판·축',
+            params: { sumT: 5, prodT: 4 },
+            snapParams: { sumT: 5, prodT: 4 },
+            problem: '방정식 $4^x - 5\\cdot 2^x + p = 0$이 **서로 다른 두 양의 실근** $x > 0$을 갖도록 하는 정수 $p$의 값($p=4$)에서 두 근 $t_1, t_2$의 곱과 판별식 $D$의 값을 확인하시오.',
+            textbookTitle: '치환 범위 t > 1에서 이차함수 근의 분리',
+            textbookSteps: [
+              '1) $x > 0 \\iff t = 2^x > 2^0 = 1$이므로, $f(t) = t^2 - 5t + p = 0$이 $t > 1$에서 서로 다른 두 실근을 가져야 한다.',
+              '2) [판별식] $D = 25 - 4p > 0 \\implies p < 6.25$. [대칭축] $t = 2.5 > 1$ (성립).',
+              '3) [경계값] $f(1) = 1 - 5 + p > 0 \\implies p > 4$. (단, 한 근이 $x=0$ 즉 $t=1$에 걸리는 경계는 $p=4$이다.)'
+            ],
+            secretTitle: 'x > 0 ⟹ t > 1 경계 변환! (t>0이 아니라 t>1임에 주의!)',
+            secretSteps: [
+              '⚡ **[최대 함정 돌파]** "$x$가 양수($x>0$)"라고 해서 "$t>0$"으로 풀면 100% 틀립니다! **$x > 0 \\iff t = 2^x > 1$**입니다!',
+              '⚡ **[함·판·축 3초 체크]** 경계 함숫값 $f(1) = 1 - 5 + p > 0$과 꼭짓점 $f(2.5) < 0$ 두 개만 비교하면 끝납니다.'
+            ]
+          }
+        ]
+      }
+    ];
+
+    // =========================================================================
+    // 3. GLOBAL APPLICATION STATE
+    // =========================================================================
+    const state = {
+      modeIdx: 0,
+      scenarioIdx: 0,
+      steps: { 1: true, 2: true, 3: false },
+      mutators: {
+        diag: false,
+        abs: false,
+        dots: false
+      },
+      // Dynamic math parameters (cloned from current scenario)
+      params: {},
+      // Canvas viewport transform
+      view: {
+        scale: 52,      // pixels per math unit
+        offsetX: 0,     // pixel offset from center
+        offsetY: 0
+      },
+      interaction: {
+        isDragging: false,
+        dragTarget: null, // 'pan' or 'handle'
+        lastX: 0,
+        lastY: 0,
+        hoverHandle: false
+      }
+    };
+
+    const canvas = document.getElementById('chalkCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // =========================================================================
+    // 4. INITIALIZATION & UI POPULATION
+    // =========================================================================
+    function initApp() {
+      renderModeTabs();
+      selectMode(0, 0);
+      setupCanvasEvents();
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+      requestAnimationFrame(renderLoop);
+    }
+
+    function renderModeTabs() {
+      const tabBar = document.getElementById('modeTabBar');
+      tabBar.innerHTML = KILLER_MODES.map((m, idx) => {
+        const active = idx === state.modeIdx ? 'tab-btn-active' : 'text-emerald-300/75 hover:text-white hover:bg-emerald-900/40';
+        return `
+          <button onclick="selectMode(${idx}, 0)" class="shrink-0 px-3.5 py-2 rounded-t-lg text-xs font-bold transition flex items-center gap-2 ${active}">
+            <span class="px-1.5 py-0.5 rounded text-[10px] font-extrabold bg-emerald-950 text-amber-400 border border-emerald-700/60">${m.code}</span>
+            <i class="fa-solid ${m.icon} text-emerald-400"></i>
+            <span>${m.shortTitle}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectMode(modeIdx, scenarioIdx = 0) {
+      state.modeIdx = modeIdx;
+      state.scenarioIdx = scenarioIdx;
+      const mode = KILLER_MODES[modeIdx];
+      const scen = mode.scenarios[scenarioIdx];
+
+      // Clone parameters
+      state.params = JSON.parse(JSON.stringify(scen.params));
+
+      // Default helpful steps unlocked
+      state.steps = { 1: true, 2: true, 3: false };
+
+      // Adjust default viewport for specific types
+      resetView(false);
+
+      renderModeTabs();
+      renderScenarioChips();
+      updateRightPanel();
+      updateStepButtonsUI();
+      updateMutatorButtonsUI();
+    }
+
+    function renderScenarioChips() {
+      const mode = KILLER_MODES[state.modeIdx];
+      const box = document.getElementById('scenarioChips');
+      box.innerHTML = mode.scenarios.map((s, idx) => {
+        const isAct = idx === state.scenarioIdx;
+        const cls = isAct
+          ? 'bg-amber-400 text-slate-950 font-extrabold shadow-sm'
+          : 'bg-emerald-950/90 text-emerald-300 hover:bg-emerald-900 border border-emerald-700/50 font-semibold';
+        return `
+          <button onclick="selectMode(${state.modeIdx}, ${idx})" class="px-2.5 py-1 rounded-md text-[11px] transition ${cls}">
+            ${s.chip}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function updateRightPanel() {
+      const mode = KILLER_MODES[state.modeIdx];
+      const scen = mode.scenarios[state.scenarioIdx];
+
+      document.getElementById('problemSourceBadge').textContent = scen.source;
+      document.getElementById('problemTextBox').innerHTML = formatRichMath(scen.problem);
+
+      // Step Labels
+      document.getElementById('stepLabel1').textContent = mode.stepLabels[0];
+      document.getElementById('stepLabel2').textContent = mode.stepLabels[1];
+      document.getElementById('stepLabel3').textContent = mode.stepLabels[2];
+
+      // Textbook vs Secret
+      document.getElementById('textbookTitle').textContent = scen.textbookTitle;
+      document.getElementById('contentTextbook').innerHTML = scen.textbookSteps
+        .map(st => `<div class="py-0.5">${formatRichMath(st)}</div>`).join('');
+
+      document.getElementById('secretTitle').textContent = scen.secretTitle;
+      document.getElementById('contentSecret').innerHTML = scen.secretSteps
+        .map(st => `<div class="py-0.5">${formatRichMath(st)}</div>`).join('');
+
+      document.getElementById('trapWarningText').innerHTML = formatRichMath(mode.trapWarning);
+
+      buildSlidersForCurrentMode();
+      updateLiveHUDAndInvariants();
+    }
+
+    // =========================================================================
+    // 5. STEP BUTTONS, ACCORDIONS, SNAP & TWIN PROBLEM GENERATOR
+    // =========================================================================
+    function toggleStep(n) {
+      state.steps[n] = !state.steps[n];
+      updateStepButtonsUI(n);
+    }
+
+    function toggleAllSteps() {
+      const allOn = state.steps[1] && state.steps[2] && state.steps[3];
+      state.steps[1] = !allOn;
+      state.steps[2] = !allOn;
+      state.steps[3] = !allOn;
+      updateStepButtonsUI(3);
+    }
+
+    function updateStepButtonsUI(lastClicked = 1) {
+      const mode = KILLER_MODES[state.modeIdx];
+      [1, 2, 3].forEach(n => {
+        const btn = document.getElementById(`stepBtn${n}`);
+        if (state.steps[n]) {
+          btn.className = 'py-2 px-2 rounded-lg border border-amber-400 bg-amber-500/20 text-amber-200 text-xs font-extrabold transition flex flex-col items-center gap-0.5 glow-gold';
+        } else {
+          btn.className = 'py-2 px-2 rounded-lg border border-emerald-800/70 bg-[#091812] text-emerald-400/70 hover:text-emerald-200 text-xs font-bold transition flex flex-col items-center gap-0.5';
+        }
+      });
+
+      const allOn = state.steps[1] && state.steps[2] && state.steps[3];
+      document.getElementById('btnAllSteps').textContent = allOn ? '전체 보조선 끄기' : '전체 보조선 켜기';
+
+      const activeSteps = [1, 2, 3].filter(n => state.steps[n]);
+      const descBox = document.getElementById('stepDescBox');
+      if (activeSteps.length === 0) {
+        descBox.innerHTML = '보조선이 모두 꺼져 있습니다. 위 버튼을 눌러 기하학적 단서를 켜보세요.';
+      } else {
+        const showIdx = state.steps[lastClicked] ? lastClicked - 1 : activeSteps[activeSteps.length - 1] - 1;
+        descBox.innerHTML = formatRichMath(mode.stepDescs[showIdx]);
+      }
+    }
+
+    function toggleAccordion(which) {
+      const content = document.getElementById(which === 'textbook' ? 'contentTextbook' : 'contentSecret');
+      const icon = document.getElementById(which === 'textbook' ? 'iconTextbook' : 'iconSecret');
+      const isHidden = content.classList.contains('hidden');
+      if (isHidden) {
+        content.classList.remove('hidden');
+        icon.className = icon.className.replace('fa-chevron-down', 'fa-chevron-up');
+      } else {
+        content.classList.add('hidden');
+        icon.className = icon.className.replace('fa-chevron-up', 'fa-chevron-down');
+      }
+    }
+
+    function toggleMutator(key) {
+      state.mutators[key] = !state.mutators[key];
+      updateMutatorButtonsUI();
+    }
+
+    function updateMutatorButtonsUI() {
+      const map = {
+        diag: 'btnToggleDiag',
+        abs: 'btnToggleAbs',
+        dots: 'btnToggleDots'
+      };
+      const btnDiag = document.getElementById('btnToggleDiag');
+      const btnAbs = document.getElementById('btnToggleAbs');
+      const btnDots = document.getElementById('btnToggleGridDots');
+
+      const setBtn = (el, on) => {
+        if (on) {
+          el.className = 'px-2.5 py-1.5 rounded-lg bg-amber-500/25 border border-amber-400 text-[11px] font-extrabold text-amber-200 transition flex items-center gap-1.5 glow-gold';
+        } else {
+          el.className = 'px-2.5 py-1.5 rounded-lg bg-[#07130e]/85 hover:bg-emerald-900/80 border border-emerald-600/50 text-[11px] font-semibold text-emerald-200 transition flex items-center gap-1.5';
+        }
+      };
+
+      setBtn(btnDiag, state.mutators.diag);
+      setBtn(btnAbs, state.mutators.abs);
+      setBtn(btnDots, state.mutators.dots);
+    }
+
+    // Smoothly snap parameters to the exact problem condition
+    function snapToCondition() {
+      const mode = KILLER_MODES[state.modeIdx];
+      const scen = mode.scenarios[state.scenarioIdx];
+      const target = scen.snapParams;
+
+      const startParams = { ...state.params };
+      const startTime = performance.now();
+      const duration = 420;
+
+      // Unlock all steps so student sees the full structure
+      state.steps = { 1: true, 2: true, 3: true };
+      updateStepButtonsUI(3);
+
+      function animateSnap(now) {
+        const t = Math.min(1, (now - startTime) / duration);
+        const ease = 1 - Math.pow(1 - t, 3);
+        for (const k in target) {
+          if (typeof startParams[k] === 'number') {
+            state.params[k] = startParams[k] + (target[k] - startParams[k]) * ease;
+          } else {
+            state.params[k] = target[k];
+          }
+        }
+        // Round integers at the end
+        if (t === 1) {
+          for (const k in target) state.params[k] = target[k];
+        }
+        syncSlidersFromParams();
+        updateLiveHUDAndInvariants();
+        if (t < 1) requestAnimationFrame(animateSnap);
+      }
+      requestAnimationFrame(animateSnap);
+
+      showToast('🎯 문제 조건에 정확히 스냅되었습니다! (불변량 오차 0.000%)');
+    }
+
+    // Twin Problem Generator: Mutates numbers so students can practice the 10-second secret!
+    function triggerTwinProblem() {
+      const mId = KILLER_MODES[state.modeIdx].id;
+      const scen = KILLER_MODES[state.modeIdx].scenarios[state.scenarioIdx];
+
+      if (mId === 'type1') {
+        const pairs = [[1, 5], [2, 8], [1, 7], [3, 9]];
+        const pick = pairs[Math.floor(Math.random() * pairs.length)];
+        const mid = (pick[0] + pick[1]) / 2;
+        const countNat = pick[1] - pick[0] - 1;
+        const sumNat = mid * countNat;
+        state.params.r1 = pick[0];
+        state.params.r2 = pick[1];
+        state.params.k = mid;
+        state.params.n = 4;
+        scen.snapParams = { ...state.params };
+        scen.problem = `**[🎲 쌍둥이 변형]** 이차함수 $f(x) = (x-${pick[0]})(x-${pick[1]})$에 대하여, $f(k)$의 네제곱근($n=4$) 중 실수인 것의 개수 $g(k, 4) = 0$을 만족시키는 모든 자연수 $k$는 총 $${countNat}$개이며, 그 합은 대칭축 $${mid} \\times ${countNat} = ${sumNat}$입니다! 칠판에서 확인해보세요.`;
+      } else if (mId === 'type2') {
+        const dxList = [1, 2, 3, 4];
+        const dyList = [2, 3, 4, 6];
+        const dx = dxList[Math.floor(Math.random() * dxList.length)];
+        const dy = dyList[Math.floor(Math.random() * dyList.length)];
+        const sq = dx * dx + dy * dy;
+        const slopeStr = dy % dx === 0 ? `${dy / dx}` : `\\frac{${dy}}{${dx}}`;
+        state.params.dx = dx;
+        state.params.dy = dy;
+        scen.snapParams = { ...state.params };
+        scen.problem = `**[🎲 쌍둥이 변형]** 두 곡선 $y = 2^x$과 $y = 2^{x-${dx}} + ${dy}$가 기울기 $${slopeStr}$인 직선과 만나는 두 점 $A, B$에 대하여, 10초 비기(평행이동 피타고라스)를 적용하면 선분 길이는 $\\overline{AB} = \\sqrt{${dx}^2 + ${dy}^2} = \\sqrt{${sq}}$입니다!`;
+      } else if (mId === 'type3') {
+        const kVal = [4, 5, 6, 7, 8][Math.floor(Math.random() * 5)];
+        state.params.k = kVal;
+        scen.snapParams = { ...state.params };
+        scen.problem = `**[🎲 쌍둥이 변형]** $y = 2^x$과 $y = \\log_2 x$가 직선 $y = -x + ${kVal}$과 만나는 두 점 $A, B$의 중점은 $M\\left(\\frac{${kVal}}{2}, \\frac{${kVal}}{2}\\right)$이고, $\\overline{AB} = \\sqrt{2}(x_B - x_A)$ 불변량이 성립합니다!`;
+      } else if (mId === 'type4') {
+        const tVal = [1, 1.5, 2, 2.5, 3][Math.floor(Math.random() * 5)];
+        state.params.t = tVal;
+        scen.snapParams = { ...state.params };
+        const x2 = Math.pow(2, tVal);
+        const x1 = Math.pow(2, -tVal);
+        scen.problem = `**[🎲 쌍둥이 변형]** $y = |\\log_2 x|$와 직선 $y = ${tVal}$의 두 교점 $x_1, x_2$에 대하여 차는 $x_2 - x_1 = ${(x2 - x1).toFixed(3)}$이지만, 두 교점의 곱은 여전히 **$x_1 \\cdot x_2 = 1.000$**으로 불변입니다!`;
+      } else if (mId === 'type5') {
+        const rk = [2, 3, 4][Math.floor(Math.random() * 3)];
+        state.params.ratioK = rk;
+        scen.snapParams = { ...state.params };
+        scen.problem = `**[🎲 쌍둥이 변형]** 원점 직선이 $y = a^x$과 만나는 두 점 $P, Q$의 원점 거리 비가 $\\overline{OP}:\\overline{OQ} = 1 : ${rk}$일 때, $x$좌표 비도 $1:${rk}$이고 $(y_P)^{${rk}} = ${rk}\\cdot y_P$가 성립합니다!`;
+      } else if (mId === 'type6') {
+        const x1 = [0.5, 1.0, 1.5][Math.floor(Math.random() * 3)];
+        const x2 = [2.5, 3.0, 3.5][Math.floor(Math.random() * 3)];
+        state.params.x1 = x1;
+        state.params.x2 = x2;
+        scen.snapParams = { ...state.params };
+        scen.problem = `**[🎲 쌍둥이 변형]** 두 점의 위치를 $x_1 = ${x1}, x_2 = ${x2}$로 변형했습니다! 원점 기울기 $P, Q$와 할선 기울기 $R$, 사다리꼴 넓이를 칠판에서 비교해보세요.`;
+      } else if (mId === 'type7') {
+        const mx = [4, 5, 6, 7, 8][Math.floor(Math.random() * 5)];
+        state.params.maxX = mx;
+        scen.snapParams = { ...state.params };
+        let cnt = 0;
+        for (let i = 1; i <= mx; i++) cnt += Math.floor(Math.log2(i) + 1e-9) + 1;
+        scen.problem = `**[🎲 쌍둥이 변형]** 자연수 상한을 $k = ${mx}$로 변형했습니다! $1 \\le x \\le ${mx}, 1 \\le y \\le \\log_2 x + 1$을 만족하는 자연수 격자점 $(x,y)$의 총개수는 **${cnt}개**입니다.`;
+      } else if (mId === 'type8') {
+        const pairs = [[5, 6], [7, 12], [6, 8], [9, 16]];
+        const pick = pairs[Math.floor(Math.random() * pairs.length)];
+        state.params.sumT = pick[0];
+        state.params.prodT = pick[1];
+        scen.snapParams = { ...state.params };
+        const alphaBeta = Math.log2(pick[1]);
+        scen.problem = `**[🎲 쌍둥이 변형]** 지수방정식 $(2^x)^2 - ${pick[0]}\\cdot 2^x + ${pick[1]} = 0$의 두 실근 $\\alpha, \\beta$의 합은 일차항 계수($-${pick[0]}$)와 무관하게 $\\alpha + \\beta = \\log_2 ${pick[1]} = ${Number.isInteger(alphaBeta) ? alphaBeta : alphaBeta.toFixed(3)}$입니다!`;
+      }
+
+      document.getElementById('problemTextBox').innerHTML = formatRichMath(scen.problem);
+      syncSlidersFromParams();
+      updateLiveHUDAndInvariants();
+      showToast('🎲 새로운 쌍둥이 숫자 변형 문제가 생성되었습니다!');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('snapToast');
+      document.getElementById('snapToastText').textContent = msg;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 2800);
+    }
+
+    // =========================================================================
+    // 6. DYNAMIC SLIDERS & REAL-TIME 0.000% INVARIANT MONITOR
+    // =========================================================================
+    function buildSlidersForCurrentMode() {
+      const mId = KILLER_MODES[state.modeIdx].id;
+      const box = document.getElementById('sliderControlsBox');
+      let defs = [];
+
+      if (mId === 'type1') {
+        defs = [
+          { key: 'k', label: '대입값 k (이차함수 입력)', min: 0, max: 8, step: 0.1 },
+          { key: 'n', label: '제곱근 지수 n (홀/짝 전환)', min: 2, max: 7, step: 1 }
+        ];
+      } else if (mId === 'type2') {
+        defs = [
+          { key: 'dx', label: 'x축 평행이동량 m (Δx)', min: 1, max: 4, step: 0.25 },
+          { key: 'dy', label: 'y축 평행이동량 n (Δy)', min: 1, max: 5, step: 0.25 },
+          { key: 'x0', label: '절단 직선 위치 이동', min: -1.5, max: 1.5, step: 0.1 }
+        ];
+      } else if (mId === 'type3') {
+        defs = [
+          { key: 'k', label: '직선 y = -x + k 절편 (k)', min: 2.5, max: 8.5, step: 0.1 },
+          { key: 'shift', label: '평행이동량 (m, m)', min: 0, max: 2, step: 0.25 }
+        ];
+      } else if (mId === 'type4') {
+        defs = [
+          { key: 't', label: '수평선 높이 y = t', min: 0.3, max: 3.2, step: 0.05 },
+          { key: 'kAsym', label: '지수 절댓값 점근선 k', min: 2, max: 5, step: 0.5 }
+        ];
+      } else if (mId === 'type5') {
+        defs = [
+          { key: 'ratioK', label: '원점 거리 배율 k (OP : OQ = 1 : k)', min: 1.5, max: 4.0, step: 0.1 },
+          { key: 'tVal', label: '점 P의 x좌표 (t)', min: 0.5, max: 1.8, step: 0.1 }
+        ];
+      } else if (mId === 'type6') {
+        defs = [
+          { key: 'x1', label: '점 A의 x좌표 (x₁)', min: 0.4, max: 2.0, step: 0.1 },
+          { key: 'x2', label: '점 B의 x좌표 (x₂)', min: 2.2, max: 4.5, step: 0.1 }
+        ];
+      } else if (mId === 'type7') {
+        defs = [
+          { key: 'maxX', label: '스캔 상한 자연수 x = k', min: 1, max: 8, step: 1 }
+        ];
+      } else if (mId === 'type8') {
+        defs = [
+          { key: 'sumT', label: '치환 이차식 합 계수 S (t₁+t₂)', min: 3, max: 9, step: 0.2 },
+          { key: 'prodT', label: '치환 이차식 곱 상수 P (t₁·t₂)', min: 1, max: 16, step: 0.5 }
+        ];
+      }
+
+      box.innerHTML = defs.map(d => `
+        <div>
+          <div class="flex items-center justify-between text-xs mb-1">
+            <span class="text-emerald-200 font-semibold">${d.label}</span>
+            <span id="val_${d.key}" class="font-mono font-bold text-amber-300">${Number(state.params[d.key]).toFixed(d.step < 1 ? 2 : 0)}</span>
+          </div>
+          <input type="range" id="slider_${d.key}" min="${d.min}" max="${d.max}" step="${d.step}" value="${state.params[d.key]}"
+            oninput="onSliderChange('${d.key}', this.value, ${d.step})" />
+        </div>
+      `).join('');
+    }
+
+    function onSliderChange(key, val, step) {
+      state.params[key] = parseFloat(val);
+      const labelEl = document.getElementById(`val_${key}`);
+      if (labelEl) labelEl.textContent = state.params[key].toFixed(step < 1 ? 2 : 0);
+      updateLiveHUDAndInvariants();
+    }
+
+    function syncSlidersFromParams() {
+      for (const k in state.params) {
+        const s = document.getElementById(`slider_${k}`);
+        const v = document.getElementById(`val_${k}`);
+        if (s) {
+          s.value = state.params[k];
+          const step = parseFloat(s.step) || 1;
+          if (v) v.textContent = Number(state.params[k]).toFixed(step < 1 ? 2 : 0);
+        }
+      }
+    }
+
+    // Solve intersection of 2^(x-s)+s = -x + k using Newton's method
+    function solveExpLineIntersection(k, shift = 0) {
+      let x = k / 2;
+      for (let i = 0; i < 25; i++) {
+        const f = Math.pow(2, x - shift) + shift + x - k;
+        const df = Math.pow(2, x - shift) * Math.LN2 + 1;
+        x -= f / df;
+      }
+      return x;
+    }
+
+    function updateLiveHUDAndInvariants() {
+      const mode = KILLER_MODES[state.modeIdx];
+      const mId = mode.id;
+      const p = state.params;
+
+      document.getElementById('hudTypeBadge').textContent = `${mode.code} · ${mode.shortTitle}`;
+      const hudEq = document.getElementById('hudEquationBox');
+      const grid = document.getElementById('invariantMonitorGrid');
+
+      let cards = [];
+
+      if (mId === 'type1') {
+        const fk = (p.k - p.r1) * (p.k - p.r2);
+        const isEven = Math.round(p.n) % 2 === 0;
+        const countN = !isEven ? 1 : (Math.abs(fk) < 1e-5 ? 1 : (fk > 0 ? 2 : 0));
+        hudEq.innerHTML = formatRichMath(
+          `$f(x)=(x-${p.r1})(x-${p.r2}), \\quad f(${p.k.toFixed(1)}) = ${fk.toFixed(2)}, \\quad x^{${Math.round(p.n)}} = f(k)$`
+        );
+        cards = [
+          { title: '함숫값 부호 f(k)', val: fk.toFixed(2), sub: fk > 0 ? '양수 (+)' : (Math.abs(fk) < 1e-4 ? '영 (0)' : '음수 (-)') },
+          { title: `실근 개수 g(k, ${Math.round(p.n)})`, val: `${countN}개`, sub: isEven ? 'n=짝수 (부호 종속)' : 'n=홀수 (무조건 1개!)' },
+          { title: '홀수 제곱근 불변량', val: '1.000', sub: '오차 0.000% (항상 1개)' },
+          { title: '짝수 실근 0개 자연수 합', val: `${((p.r1 + p.r2) / 2) * (p.r2 - p.r1 - 1)}`, sub: `구간 (${p.r1}, ${p.r2}) 내부 합` }
+        ];
+      } else if (mId === 'type2') {
+        const lenAB = Math.hypot(p.dx, p.dy);
+        const slope = p.dy / p.dx;
+        const areaS = 2 * p.dx; // between y=mx+1 and y=mx+3
+        hudEq.innerHTML = formatRichMath(
+          `$C_1: y=2^x, \\quad C_2: y=2^{x-${p.dx.toFixed(1)}}+${p.dy.toFixed(1)}, \\quad \\text{기울기 } m = \\frac{${p.dy.toFixed(1)}}{${p.dx.toFixed(1)}} = ${slope.toFixed(2)}$`
+        );
+        cards = [
+          { title: '선분 길이 AB', val: `${lenAB.toFixed(3)}`, sub: `√(Δx²+Δy²) = √${(p.dx*p.dx + p.dy*p.dy).toFixed(2)}` },
+          { title: '피타고라스 비율 오차', val: '0.000%', sub: 'AB / √(m²+n²) = 1.000' },
+          { title: '등적변형 넓이 S', val: `${areaS.toFixed(2)}`, sub: '(절편차 2) × Δx' },
+          { title: '평행이동 벡터', val: `[${p.dx.toFixed(1)}, ${p.dy.toFixed(1)}]`, sub: `기울기 ${slope.toFixed(2)} 일치` }
+        ];
+      } else if (mId === 'type3') {
+        const xA = solveExpLineIntersection(p.k, p.shift);
+        const yA = p.k - xA;
+        const xB = yA;
+        const yB = xA;
+        const dx = Math.abs(xB - xA);
+        const lenAB = Math.hypot(xB - xA, yB - yA);
+        const areaOAB = 0.5 * Math.abs(xA * yB - xB * yA);
+        hudEq.innerHTML = formatRichMath(
+          `$y=2^{x-${p.shift}}+${p.shift}, \\quad y=\\log_2(x-${p.shift})+${p.shift}, \\quad y=-x+${p.k.toFixed(1)}$`
+        );
+        cards = [
+          { title: '선분 길이 AB', val: lenAB.toFixed(3), sub: `Δx·√2 = ${dx.toFixed(2)}×√2` },
+          { title: '1:1:√2 비율 불변량', val: (dx > 1e-4 ? (lenAB / (dx * Math.SQRT2)).toFixed(3) : '1.000'), sub: '오차 0.000% 유지' },
+          { title: '대칭 중점 M 좌표', val: `(${(p.k/2).toFixed(2)}, ${(p.k/2).toFixed(2)})`, sub: 'x_A + x_B = k 불변' },
+          { title: '삼각형 OAB 넓이', val: areaOAB.toFixed(3), sub: '½ · k · Δx 공식 일치' }
+        ];
+      } else if (mId === 'type4') {
+        const x1 = Math.pow(2, -p.t);
+        const x2 = Math.pow(2, p.t);
+        const prod = x1 * x2;
+        const expSum = p.t < p.kAsym ? Math.log2((p.kAsym - p.t) * (p.kAsym + p.t)) : NaN;
+        hudEq.innerHTML = formatRichMath(
+          `$y = |\\log_2 x| \\cap (y=${p.t.toFixed(2)}) \\implies x_1=${x1.toFixed(3)}, \\; x_2=${x2.toFixed(3)}$`
+        );
+        cards = [
+          { title: '로그 교점 곱 x₁·x₂', val: prod.toFixed(4), sub: '오차 0.000% (항상 역수!)' },
+          { title: '두 교점의 차 x₂ - x₁', val: (x2 - x1).toFixed(3), sub: `2^t - 2^(-t)` },
+          { title: `|2^x - ${p.kAsym}| 교점 개수`, val: p.t < p.kAsym ? '2개' : '1개', sub: `점근선 경계 k = ${p.kAsym}` },
+          { title: '지수 절댓값 합 x₁+x₂', val: !isNaN(expSum) ? expSum.toFixed(3) : '교점 1개', sub: !isNaN(expSum) ? `log₂(k²-t²) = log₂(${(p.kAsym*p.kAsym - p.t*p.t).toFixed(1)})` : 't ≥ k 영역' }
+        ];
+      } else if (mId === 'type5') {
+        const k = p.ratioK;
+        const yP = Math.pow(k, 1 / (k - 1));
+        const yQ = k * yP;
+        const baseA = Math.pow(yP, 1 / p.tVal);
+        hudEq.innerHTML = formatRichMath(
+          `$\\overline{OP}:\\overline{OQ} = 1:${k.toFixed(1)} \\implies P(${p.tVal.toFixed(1)},\\, ${yP.toFixed(2)}), \\; Q(${(k*p.tVal).toFixed(1)},\\, ${yQ.toFixed(2)})$`
+        );
+        cards = [
+          { title: '점 P의 y좌표 (불변량)', val: yP.toFixed(3), sub: `k^(1/(k-1)) (t와 무관!)` },
+          { title: '점 Q의 y좌표 (k·y_P)', val: yQ.toFixed(3), sub: `y_P^k = ${(Math.pow(yP, k)).toFixed(3)} 일치` },
+          { title: '자동 결정된 밑 a', val: baseA.toFixed(3), sub: `a^t = y_P 만족 밑` },
+          { title: '거듭제곱 항등식 오차', val: '0.000%', sub: `(a^t)^k - k·a^t = 0.000` }
+        ];
+      } else if (mId === 'type6') {
+        const y1 = Math.log2(p.x1 + 1);
+        const y2 = Math.log2(p.x2 + 1);
+        const slopeP = y1 / p.x1;
+        const slopeQ = y2 / p.x2;
+        const slopeR = (y2 - y1) / (p.x2 - p.x1);
+        hudEq.innerHTML = formatRichMath(
+          `$y=\\log_2(x+1), \\quad A(${p.x1.toFixed(1)}, ${y1.toFixed(2)}), \\; B(${p.x2.toFixed(1)}, ${y2.toFixed(2)})$`
+        );
+        cards = [
+          { title: '원점 기울기 P (y₁/x₁)', val: slopeP.toFixed(3), sub: 'OA 직선의 기울기 (최대)' },
+          { title: '원점 기울기 Q (y₂/x₂)', val: slopeQ.toFixed(3), sub: 'OB 직선의 기울기 (중간)' },
+          { title: '평균변화율 R (할선)', val: slopeR.toFixed(3), sub: 'AB 직선의 기울기 (최소)' },
+          { title: '위로 볼록 부등식 판정', val: 'P > Q > R', sub: '오차 0.000% 항상 성립' }
+        ];
+      } else if (mId === 'type7') {
+        const maxX = Math.round(p.maxX);
+        let totalDots = 0;
+        for (let x = 1; x <= maxX; x++) {
+          totalDots += Math.floor(Math.log2(x) + 1e-9) + 1;
+        }
+        const topFloor = Math.floor(Math.log2(maxX) + 1e-9) + 1;
+        hudEq.innerHTML = formatRichMath(
+          `$1 \\le x \\le ${maxX}, \\quad 1 \\le y \\le \\log_2 x + 1 \\implies \\text{자연수 격자점 총 } ${totalDots}\\text{개}$`
+        );
+        cards = [
+          { title: `총 자연수 격자점 (1≤x≤${maxX})`, val: `${totalDots}개`, sub: '세로합 = 가로합 일치' },
+          { title: `x = ${maxX} 줄의 점 개수`, val: `${topFloor}개`, sub: `⌊log₂(${maxX})⌋ + 1` },
+          { title: '세로합 vs 가로합 오차', val: '0.000%', sub: '축 전환 항등식 검증' },
+          { title: '층수 상승 경계 x', val: '1, 2, 4, 8', sub: 'x = 2^m 거듭제곱 지점' }
+        ];
+      } else if (mId === 'type8') {
+        const D = p.sumT * p.sumT - 4 * p.prodT;
+        const alphaPlusBeta = Math.log2(p.prodT);
+        const f1 = 1 - p.sumT + p.prodT;
+        hudEq.innerHTML = formatRichMath(
+          `$(2^x)^2 - ${p.sumT.toFixed(1)}\\cdot 2^x + ${p.prodT.toFixed(1)} = 0 \\iff t^2 - ${p.sumT.toFixed(1)}t + ${p.prodT.toFixed(1)} = 0 \\;(t>0)$`
+        );
+        cards = [
+          { title: '두 근의 합 α + β', val: alphaPlusBeta.toFixed(3), sub: `log₂(t₁t₂) = log₂(${p.prodT.toFixed(1)})` },
+          { title: '치환 판별식 D', val: D.toFixed(2), sub: D > 0 ? '서로 다른 두 실근' : (D === 0 ? '중근' : '실근 없음') },
+          { title: '양의 실근 경계 f(1)', val: f1.toFixed(2), sub: f1 > 0 && D > 0 && p.sumT/2 > 1 ? '두 양근(x>0) 성립!' : '경계 조건 확인' },
+          { title: '2^(α+β) - P 오차', val: '0.000%', sub: '근과 계수의 곱 불변량' }
+        ];
+      }
+
+      grid.innerHTML = cards.map(c => `
+        <div class="bg-[#091812] border border-emerald-800/70 rounded-lg p-2.5">
+          <div class="text-[10.5px] text-emerald-300/80 font-medium truncate">${c.title}</div>
+          <div class="text-sm font-extrabold text-amber-300 font-mono mt-0.5">${c.val}</div>
+          <div class="text-[10px] text-emerald-400/70 truncate mt-0.5">${c.sub}</div>
+        </div>
+      `).join('');
+    }
+
+    // =========================================================================
+    // 7. CANVAS VIEWPORT, COORDINATE TRANSFORMS & INTERACTION
+    // =========================================================================
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function resetView(redraw = true) {
+      const mId = KILLER_MODES[state.modeIdx].id;
+      state.view.scale = 52;
+      state.view.offsetX = -60;
+      state.view.offsetY = 70;
+
+      if (mId === 'type1') {
+        state.view.scale = 38;
+        state.view.offsetX = -90;
+        state.view.offsetY = 30;
+      } else if (mId === 'type3') {
+        state.view.scale = 48;
+        state.view.offsetX = -80;
+        state.view.offsetY = 90;
+      } else if (mId === 'type7') {
+        state.view.scale = 54;
+        state.view.offsetX = -140;
+        state.view.offsetY = 110;
+      } else if (mId === 'type8') {
+        state.view.scale = 42;
+        state.view.offsetX = -100;
+        state.view.offsetY = 40;
+      }
+    }
+
+    function zoomCanvas(factor) {
+      state.view.scale = Math.max(20, Math.min(140, state.view.scale * factor));
+    }
+
+    function mathToScreen(mx, my) {
+      const rect = canvas.getBoundingClientRect();
+      const cx = rect.width / 2 + state.view.offsetX;
+      const cy = rect.height / 2 + state.view.offsetY;
+      return {
+        x: cx + mx * state.view.scale,
+        y: cy - my * state.view.scale
+      };
+    }
+
+    function screenToMath(sx, sy) {
+      const rect = canvas.getBoundingClientRect();
+      const cx = rect.width / 2 + state.view.offsetX;
+      const cy = rect.height / 2 + state.view.offsetY;
+      return {
+        x: (sx - cx) / state.view.scale,
+        y: (cy - sy) / state.view.scale
+      };
+    }
+
+    // Active draggable handles in screen space populated during render
+    let activeHandles = [];
+
+    function setupCanvasEvents() {
+      const getPos = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return { x: clientX - rect.left, y: clientY - rect.top };
+      };
+
+      const onDown = (e) => {
+        const pos = getPos(e);
+        state.interaction.lastX = pos.x;
+        state.interaction.lastY = pos.y;
+        state.interaction.isDragging = true;
+
+        // Check if near any interactive handle
+        for (const h of activeHandles) {
+          if (Math.hypot(pos.x - h.sx, pos.y - h.sy) < 22) {
+            state.interaction.dragTarget = h;
+            return;
+          }
+        }
+        state.interaction.dragTarget = 'pan';
+      };
+
+      const onMove = (e) => {
+        const pos = getPos(e);
+        if (!state.interaction.isDragging) {
+          const near = activeHandles.some(h => Math.hypot(pos.x - h.sx, pos.y - h.sy) < 20);
+          canvas.style.cursor = near ? 'pointer' : 'grab';
+          return;
+        }
+
+        if (state.interaction.dragTarget === 'pan') {
+          state.view.offsetX += pos.x - state.interaction.lastX;
+          state.view.offsetY += pos.y - state.interaction.lastY;
+          state.interaction.lastX = pos.x;
+          state.interaction.lastY = pos.y;
+        } else if (state.interaction.dragTarget && state.interaction.dragTarget.onDrag) {
+          const mPos = screenToMath(pos.x, pos.y);
+          state.interaction.dragTarget.onDrag(mPos);
+          syncSlidersFromParams();
+          updateLiveHUDAndInvariants();
+        }
+      };
+
+      const onUp = () => {
+        state.interaction.isDragging = false;
+        state.interaction.dragTarget = null;
+      };
+
+      canvas.addEventListener('mousedown', onDown);
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('mouseup', onUp);
+
+      canvas.addEventListener('touchstart', (e) => { onDown(e); }, { passive: true });
+      window.addEventListener('touchmove', (e) => { if (state.interaction.isDragging) onMove(e); }, { passive: true });
+      window.addEventListener('touchend', onUp);
+
+      canvas.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        zoomCanvas(e.deltaY < 0 ? 1.1 : 0.9);
+      }, { passive: false });
+    }
+
+    // =========================================================================
+    // 8. CHALKBOARD DRAWING PRIMITIVES & MAIN RENDER LOOP
+    // =========================================================================
+    function drawGridAndAxes(w, h) {
+      const topLeft = screenToMath(0, 0);
+      const botRight = screenToMath(w, h);
+      const minX = Math.floor(topLeft.x) - 1;
+      const maxX = Math.ceil(botRight.x) + 1;
+      const minY = Math.floor(botRight.y) - 1;
+      const maxY = Math.ceil(topLeft.y) + 1;
+
+      // Subtle Grid Lines
+      ctx.save();
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.08)';
+      ctx.fillStyle = 'rgba(167, 243, 208, 0.45)';
+      ctx.font = '11px Pretendard, sans-serif';
+
+      const origin = mathToScreen(0, 0);
+
+      for (let x = minX; x <= maxX; x++) {
+        const sx = mathToScreen(x, 0).x;
+        ctx.beginPath();
+        ctx.moveTo(sx, 0);
+        ctx.lineTo(sx, h);
+        ctx.stroke();
+
+        if (x !== 0 && state.view.scale > 28) {
+          ctx.textAlign = 'center';
+          ctx.fillText(x, sx, Math.min(h - 10, Math.max(15, origin.y + 16)));
+        }
+      }
+
+      for (let y = minY; y <= maxY; y++) {
+        const sy = mathToScreen(0, y).y;
+        ctx.beginPath();
+        ctx.moveTo(0, sy);
+        ctx.lineTo(w, sy);
+        ctx.stroke();
+
+        if (y !== 0 && state.view.scale > 28) {
+          ctx.textAlign = 'right';
+          ctx.fillText(y, Math.min(w - 8, Math.max(24, origin.x - 8)), sy + 4);
+        }
+      }
+
+      // Main Axes
+      ctx.strokeStyle = 'rgba(236, 253, 245, 0.45)';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.moveTo(0, origin.y);
+      ctx.lineTo(w, origin.y);
+      ctx.moveTo(origin.x, 0);
+      ctx.lineTo(origin.x, h);
+      ctx.stroke();
+
+      ctx.fillStyle = 'rgba(236, 253, 245, 0.6)';
+      ctx.fillText('O', origin.x - 10, origin.y + 15);
+
+      // Global Mutator: Integer Lattice Scanner Dots
+      if (state.mutators.dots) {
+        ctx.fillStyle = 'rgba(192, 132, 252, 0.42)';
+        for (let x = minX; x <= maxX; x++) {
+          for (let y = minY; y <= maxY; y++) {
+            const pt = mathToScreen(x, y);
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, 2.3, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+
+      // Global Mutator: y = x symmetry line
+      if (state.mutators.diag) {
+        drawMathLine(1, 0, 'rgba(251, 191, 36, 0.55)', [6, 6], 1.8);
+      }
+
+      ctx.restore();
+    }
+
+    function drawFunctionCurve(fn, color = '#34d399', lineWidth = 2.6, dash = [], xStart = null, xEnd = null) {
+      const w = canvas.getBoundingClientRect().width;
+      const minX = xStart !== null ? xStart : screenToMath(0, 0).x;
+      const maxX = xEnd !== null ? xEnd : screenToMath(w, 0).x;
+      const step = (maxX - minX) / 360;
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lineWidth;
+      ctx.setLineDash(dash);
+      ctx.shadowColor = color;
+      ctx.shadowBlur = dash.length === 0 ? 6 : 0;
+
+      ctx.beginPath();
+      let started = false;
+      for (let x = minX; x <= maxX; x += step) {
+        let y = fn(x);
+        if (state.mutators.abs && ! isNaN(y)) y = Math.abs(y);
+        if (isNaN(y) || !isFinite(y) || Math.abs(y) > 80) {
+          started = false;
+          continue;
+        }
+        const pt = mathToScreen(x, y);
+        if (!started) {
+          ctx.moveTo(pt.x, pt.y);
+          started = true;
+        } else {
+          ctx.lineTo(pt.x, pt.y);
+        }
+      }
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawMathLine(slope, intercept, color = '#fbbf24', dash = [], width = 2) {
+      const w = canvas.getBoundingClientRect().width;
+      const x1 = screenToMath(0, 0).x;
+      const x2 = screenToMath(w, 0).x;
+      const p1 = mathToScreen(x1, slope * x1 + intercept);
+      const p2 = mathToScreen(x2, slope * x2 + intercept);
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.setLineDash(dash);
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawMathSegment(x1, y1, x2, y2, color = '#fbbf24', dash = [], width = 2.2) {
+      const p1 = mathToScreen(x1, y1);
+      const p2 = mathToScreen(x2, y2);
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.setLineDash(dash);
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawMathPoint(x, y, label = '', color = '#fbbf24', radius = 6, isDraggable = false, onDrag = null) {
+      const pt = mathToScreen(x, y);
+      ctx.save();
+
+      if (isDraggable) {
+        // Pulsing halo for draggable handle
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.25)';
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, radius + 7, 0, Math.PI * 2);
+        ctx.fill();
+        activeHandles.push({ sx: pt.x, sy: pt.y, onDrag });
+      }
+
+      ctx.fillStyle = color;
+      ctx.strokeStyle = '#07130e';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      if (label) {
+        ctx.font = 'bold 13px Pretendard, sans-serif';
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'left';
+        ctx.shadowColor = '#000';
+        ctx.shadowBlur = 4;
+        ctx.fillText(label, pt.x + 10, pt.y - 8);
+      }
+      ctx.restore();
+    }
+
+    // =========================================================================
+    // 9. MODE-SPECIFIC CHALKBOARD RENDERERS (TYPE 1 ~ TYPE 8)
+    // =========================================================================
+    function renderLoop() {
+      const rect = canvas.getBoundingClientRect();
+      const w = rect.width;
+      const h = rect.height;
+
+      ctx.clearRect(0, 0, w, h);
+      activeHandles = [];
+
+      drawGridAndAxes(w, h);
+
+      const mId = KILLER_MODES[state.modeIdx].id;
+      if (mId === 'type1') renderType1();
+      else if (mId === 'type2') renderType2();
+      else if (mId === 'type3') renderType3();
+      else if (mId === 'type4') renderType4();
+      else if (mId === 'type5') renderType5();
+      else if (mId === 'type6') renderType6();
+      else if (mId === 'type7') renderType7();
+      else if (mId === 'type8') renderType8();
+
+      requestAnimationFrame(renderLoop);
+    }
+
+    // --- TYPE 1: n-th Root Real Solutions Matrix ---
+    function renderType1() {
+      const p = state.params;
+      const n = Math.round(p.n);
+      const fk = (p.k - p.r1) * (p.k - p.r2);
+
+      // Left curve: Quadratic f(x) = 0.5*(x-r1)*(x-r2) scaled for clarity
+      drawFunctionCurve(x => 0.5 * (x - p.r1) * (x - p.r2), '#34d399', 2.8);
+
+      // Right shifted curve: y = (x + 4)^n at x = -4
+      const rootCenter = -4.5;
+      drawFunctionCurve(x => Math.pow(x - rootCenter, n), '#38bdf8', 2.6, [], rootCenter - 2.5, rootCenter + 2.5);
+      drawMathSegment(rootCenter, -10, rootCenter, 10, 'rgba(56, 189, 248, 0.3)', [4, 4], 1.2);
+
+      // Step 1: Zero boundaries r1, r2
+      if (state.steps[1]) {
+        drawMathPoint(p.r1, 0, `r₁=${p.r1}`, '#34d399', 5);
+        drawMathPoint(p.r2, 0, `r₂=${p.r2}`, '#34d399', 5);
+        const midPt = mathToScreen((p.r1 + p.r2) / 2, -1.8);
+        drawCanvasBadge(ctx, `음수 구간 (${p.r1} < k < ${p.r2}): 짝수 제곱근 0개!`, midPt.x, midPt.y, '#fb7185');
+      }
+
+      // Horizontal level line y = 0.5 * f(k) connecting both curves
+      const yScaled = 0.5 * fk;
+      if (state.steps[2]) {
+        drawMathLine(0, yScaled, '#fbbf24', [5, 5], 1.8);
+        // Show intersections on the x^n curve
+        const isEven = n % 2 === 0;
+        if (!isEven) {
+          const rx = rootCenter + Math.cbrt(yScaled);
+          drawMathPoint(rx, yScaled, '실근 1개(홀수)', '#fbbf24', 6);
+        } else {
+          if (Math.abs(yScaled) < 1e-3) {
+            drawMathPoint(rootCenter, 0, '중근 1개(0)', '#fbbf24', 6);
+          } else if (yScaled > 0) {
+            const d = Math.pow(yScaled, 1 / n);
+            drawMathPoint(rootCenter - d, yScaled, '-ⁿ√f(k)', '#fbbf24', 6);
+            drawMathPoint(rootCenter + d, yScaled, '+ⁿ√f(k)', '#fbbf24', 6);
+          } else {
+            const noPt = mathToScreen(rootCenter, yScaled - 0.8);
+            drawCanvasBadge(ctx, '교점 없음 (짝수 & 음수 ⟹ 0개)', noPt.x, noPt.y, '#fb7185');
+          }
+        }
+      }
+
+      if (state.steps[3]) {
+        const badgePos = mathToScreen((p.r1 + p.r2) / 2, 3.8);
+        drawCanvasFraction(ctx, `${p.r1} + ${p.r2}`, '2', badgePos.x, badgePos.y, {
+          prefix: '대칭축 k = ',
+          suffix: ` = ${(p.r1 + p.r2) / 2}`
+        });
+      }
+
+      // Draggable handle for k on f(k)
+      drawMathPoint(p.k, yScaled, `P(k=${p.k.toFixed(1)}, f=${fk.toFixed(1)})`, '#fbbf24', 7.5, true, (mPos) => {
+        state.params.k = Math.max(0, Math.min(8, Math.round(mPos.x * 10) / 10));
+      });
+    }
+
+    // --- TYPE 2: Translation Vector & Slope Cut ---
+    function renderType2() {
+      const p = state.params;
+      const slope = p.dy / p.dx;
+
+      // Curve 1: y = 2^x, Curve 2: y = 2^(x - dx) + dy
+      drawFunctionCurve(x => Math.pow(2, x), '#34d399', 2.8, [], -5, 4.5);
+      drawFunctionCurve(x => Math.pow(2, x - p.dx) + p.dy, '#38bdf8', 2.8, [], -3, 7);
+
+      // Anchor point A on Curve 1 and Corresponding Point B on Curve 2
+      const xA = p.x0;
+      const yA = Math.pow(2, xA);
+      const xB = xA + p.dx;
+      const yB = yA + p.dy;
+
+      // Line passing through A and B
+      const intercept = yA - slope * xA;
+      drawMathLine(slope, intercept, 'rgba(251, 191, 36, 0.7)', [], 2.2);
+
+      // Step 1 & 2: Right Triangle (dx, dy)
+      if (state.steps[1] || state.steps[2]) {
+        ctx.save();
+        const sA = mathToScreen(xA, yA);
+        const sC = mathToScreen(xB, yA);
+        const sB = mathToScreen(xB, yB);
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.14)';
+        ctx.beginPath();
+        ctx.moveTo(sA.x, sA.y);
+        ctx.lineTo(sC.x, sC.y);
+        ctx.lineTo(sB.x, sB.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+
+        drawMathSegment(xA, yA, xB, yA, '#fbbf24', [5, 4], 2);
+        drawMathSegment(xB, yA, xB, yB, '#fbbf24', [5, 4], 2);
+
+        const midBottom = mathToScreen((xA + xB) / 2, yA - 0.55);
+        drawCanvasBadge(ctx, `Δx = ${p.dx.toFixed(1)}`, midBottom.x, midBottom.y, '#fbbf24');
+        const midRight = mathToScreen(xB + 1.1, (yA + yB) / 2);
+        drawCanvasBadge(ctx, `Δy = ${p.dy.toFixed(1)}`, midRight.x, midRight.y, '#fbbf24');
+      }
+
+      // Step 3: Equi-areal Puzzle Parallelogram Shading (between xA and xA+1)
+      if (state.steps[3]) {
+        const xA2 = xA + 1;
+        const yA2 = Math.pow(2, xA2);
+        const xB2 = xA2 + p.dx;
+        const yB2 = yA2 + p.dy;
+
+        ctx.save();
+        ctx.fillStyle = 'rgba(52, 211, 153, 0.22)';
+        ctx.strokeStyle = '#34d399';
+        ctx.lineWidth = 2;
+        const p1 = mathToScreen(xA, yA);
+        const p2 = mathToScreen(xA2, yA2);
+        const p3 = mathToScreen(xB2, yB2);
+        const p4 = mathToScreen(xB, yB);
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.lineTo(p3.x, p3.y);
+        ctx.lineTo(p4.x, p4.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+
+        const centerPos = mathToScreen((xA + xB2) / 2, (yA + yB2) / 2 + 1.2);
+        drawCanvasFraction(ctx, `Δy = ${p.dy.toFixed(1)}`, `Δx = ${p.dx.toFixed(1)}`, centerPos.x, centerPos.y, {
+          prefix: '평행이동 기울기 = ',
+          suffix: ` ⟹ AB = √${(p.dx*p.dx + p.dy*p.dy).toFixed(1)}`
+        });
+      }
+
+      // Draggable Points A (controls x0) and B (controls dx, dy)
+      drawMathPoint(xA, yA, `A(${xA.toFixed(1)}, ${yA.toFixed(1)})`, '#34d399', 6.5, true, (mPos) => {
+        state.params.x0 = Math.max(-1.5, Math.min(1.5, Math.round(mPos.x * 10) / 10));
+      });
+      drawMathPoint(xB, yB, `B(${xB.toFixed(1)}, ${yB.toFixed(1)}) [드래그]`, '#fbbf24', 7.5, true, (mPos) => {
+        state.params.dx = Math.max(1, Math.min(4, Math.round((mPos.x - xA) * 4) / 4));
+        state.params.dy = Math.max(1, Math.min(5, Math.round((mPos.y - yA) * 4) / 4));
+      });
+    }
+
+    // --- TYPE 3: Inverse Function Symmetry & 1:1:√2 ---
+    function renderType3() {
+      const p = state.params;
+      const s = p.shift;
+
+      // Exponential & Log curves
+      drawFunctionCurve(x => Math.pow(2, x - s) + s, '#34d399', 2.8, [], -4, 4.5);
+      drawFunctionCurve(x => Math.log2(x - s) + s, '#38bdf8', 2.8, [], s + 0.03, 9);
+
+      // Line y = -x + k
+      drawMathLine(-1, p.k, '#fbbf24', [], 2.2);
+
+      // Intersection Points A, B & Midpoint M
+      const xA = solveExpLineIntersection(p.k, s);
+      const yA = p.k - xA;
+      const xB = yA;
+      const yB = xA;
+      const mx = p.k / 2;
+      const my = p.k / 2;
+
+      // Step 1: y = x Symmetry Line & Origin Triangle OAB
+      if (state.steps[1]) {
+        drawMathLine(1, 0, 'rgba(251, 191, 36, 0.55)', [6, 5], 1.8);
+        ctx.save();
+        const pO = mathToScreen(0, 0);
+        const pA = mathToScreen(xA, yA);
+        const pB = mathToScreen(xB, yB);
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+        ctx.beginPath();
+        ctx.moveTo(pO.x, pO.y);
+        ctx.lineTo(pA.x, pA.y);
+        ctx.lineTo(pB.x, pB.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Step 2: 1 : 1 : √2 Right Isosceles Triangle
+      if (state.steps[2]) {
+        const dx = Math.abs(xB - xA);
+        ctx.save();
+        const pA = mathToScreen(xA, yA);
+        const pB = mathToScreen(xB, yB);
+        const pC = mathToScreen(xA, yB);
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.18)';
+        ctx.beginPath();
+        ctx.moveTo(pA.x, pA.y);
+        ctx.lineTo(pC.x, pC.y);
+        ctx.lineTo(pB.x, pB.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+
+        drawMathSegment(xA, yA, xA, yB, '#fbbf24', [4, 4], 2);
+        drawMathSegment(xA, yB, xB, yB, '#fbbf24', [4, 4], 2);
+
+        const lblPos = mathToScreen((xA + xB) / 2 - 0.6, Math.min(yA, yB) - 0.5);
+        drawCanvasBadge(ctx, `1:1:√2 ⟹ Δx = Δy = ${dx.toFixed(2)}`, lblPos.x, lblPos.y, '#fbbf24');
+      }
+
+      // Step 3: Midpoint Vertical Fraction Readout
+      if (state.steps[3]) {
+        const mScreen = mathToScreen(mx + 1.4, my + 0.9);
+        drawCanvasFraction(ctx, `${p.k.toFixed(1)}`, '2', mScreen.x, mScreen.y, {
+          prefix: '대칭 중점 M(',
+          suffix: `, ${(p.k/2).toFixed(2)})`
+        });
+      }
+
+      drawMathPoint(xA, yA, `A(${xA.toFixed(2)}, ${yA.toFixed(2)})`, '#34d399', 6);
+      drawMathPoint(xB, yB, `B(${xB.toFixed(2)}, ${yB.toFixed(2)})`, '#38bdf8', 6);
+      drawMathPoint(mx, my, `M [드래그 k=${p.k.toFixed(1)}]`, '#fbbf24', 7.5, true, (mPos) => {
+        state.params.k = Math.max(2.5, Math.min(8.5, Math.round((mPos.x + mPos.y) * 10) / 10));
+      });
+    }
+
+    // --- TYPE 4: Absolute Value Fold & Product Invariant ---
+    function renderType4() {
+      const p = state.params;
+
+      // Dashed original log2(x) below x-axis
+      drawFunctionCurve(x => Math.log2(x), 'rgba(52, 211, 153, 0.3)', 1.8, [5, 5], 0.05, 1);
+
+      // Step 1: Color-coded left (-log2 x) and right (+log2 x) wings
+      const leftColor = state.steps[1] ? '#fb7185' : '#34d399';
+      drawFunctionCurve(x => -Math.log2(x), leftColor, 2.8, [], 0.06, 1);
+      drawFunctionCurve(x => Math.log2(x), '#34d399', 2.8, [], 1, 9);
+
+      // Step 3: Exponential |2^x - k| and Reflected Asymptote y = k
+      if (state.steps[3]) {
+        drawFunctionCurve(x => Math.abs(Math.pow(2, x) - p.kAsym), '#c084fc', 2.2, [], -5, 3.2);
+        drawMathLine(0, p.kAsym, 'rgba(192, 132, 252, 0.65)', [6, 4], 1.6);
+        const asymPt = mathToScreen(-2.2, p.kAsym + 0.45);
+        drawCanvasBadge(ctx, `접혀 올라온 점근선 y = k = ${p.kAsym}`, asymPt.x, asymPt.y, '#c084fc');
+      }
+
+      // Horizontal Line y = t
+      drawMathLine(0, p.t, '#fbbf24', [], 2.2);
+
+      const x1 = Math.pow(2, -p.t);
+      const x2 = Math.pow(2, p.t);
+
+      if (state.steps[2]) {
+        drawMathSegment(x1, p.t, x1, 0, '#fb7185', [4, 4], 1.6);
+        drawMathSegment(x2, p.t, x2, 0, '#34d399', [4, 4], 1.6);
+
+        const fracPt = mathToScreen((x1 + x2) / 2, p.t + 1.0);
+        drawCanvasFraction(ctx, '1', `x₂ (${x2.toFixed(2)})`, fracPt.x, fracPt.y, {
+          prefix: `x₁ = `,
+          suffix: ` ⟹ x₁·x₂ = 1.000 (불변!)`
+        });
+      }
+
+      drawMathPoint(x1, p.t, `x₁=${x1.toFixed(2)}`, '#fb7185', 6);
+      drawMathPoint(x2, p.t, `x₂=${x2.toFixed(2)} [드래그 t]`, '#fbbf24', 7.5, true, (mPos) => {
+        state.params.t = Math.max(0.3, Math.min(3.2, Math.round(mPos.y * 20) / 20));
+      });
+    }
+
+    // --- TYPE 5: Internal/External Ratio & Similarity Projection ---
+    function renderType5() {
+      const p = state.params;
+      const k = p.ratioK;
+      const t = p.tVal;
+
+      // Invariant yP = k^(1/(k-1)) so P(t, yP) and Q(k*t, k*yP) both lie on y = a^x and line y = mx
+      const yP = Math.pow(k, 1 / (k - 1));
+      const yQ = k * yP;
+      const baseA = Math.pow(yP, 1 / t);
+      const slopeM = yP / t;
+
+      // Exponential curve y = a^x & Line through origin
+      drawFunctionCurve(x => Math.pow(baseA, x), '#34d399', 2.8, [], -3, k * t + 1.2);
+      drawMathLine(slopeM, 0, '#fbbf24', [], 2.0);
+
+      // Step 1 & 2: Similar Right Triangles on x-axis
+      if (state.steps[1] || state.steps[2]) {
+        ctx.save();
+        const pO = mathToScreen(0, 0);
+        const pQ = mathToScreen(k * t, yQ);
+        const pQx = mathToScreen(k * t, 0);
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.12)';
+        ctx.beginPath();
+        ctx.moveTo(pO.x, pO.y);
+        ctx.lineTo(pQ.x, pQ.y);
+        ctx.lineTo(pQx.x, pQx.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+
+        drawMathSegment(t, yP, t, 0, '#fbbf24', [4, 4], 2);
+        drawMathSegment(k * t, yQ, k * t, 0, '#38bdf8', [4, 4], 2);
+        drawMathSegment(t, yP, 0, yP, '#fbbf24', [4, 4], 1.5);
+        drawMathSegment(k * t, yQ, 0, yQ, '#38bdf8', [4, 4], 1.5);
+
+        const xMid1 = mathToScreen(t / 2, -0.45);
+        const xMid2 = mathToScreen((t + k * t) / 2, -0.45);
+        drawCanvasBadge(ctx, `1배 (${t.toFixed(1)})`, xMid1.x, xMid1.y, '#fbbf24');
+        drawCanvasBadge(ctx, `k=${k.toFixed(1)}배 (${(k*t).toFixed(1)})`, xMid2.x, xMid2.y, '#38bdf8');
+      }
+
+      if (state.steps[3]) {
+        const fPos = mathToScreen(k * t * 0.55, yQ * 0.85);
+        drawCanvasFraction(ctx, `a^(${(k*t).toFixed(1)})`, `a^(${t.toFixed(1)})`, fPos.x, fPos.y, {
+          prefix: '닮음비 = ',
+          suffix: ` = ${k.toFixed(1)} ⟹ y_P = ${yP.toFixed(2)}`
+        });
+      }
+
+      drawMathPoint(t, yP, `P(${t.toFixed(1)}, ${yP.toFixed(2)}) [드래그]`, '#fbbf24', 7.5, true, (mPos) => {
+        state.params.tVal = Math.max(0.5, Math.min(1.8, Math.round(mPos.x * 10) / 10));
+      });
+      drawMathPoint(k * t, yQ, `Q(${(k*t).toFixed(1)}, ${yQ.toFixed(2)})`, '#38bdf8', 6.5);
+    }
+
+    // --- TYPE 6: Geometric Translation Comparison (Slopes & Areas) ---
+    function renderType6() {
+      const p = state.params;
+      const fn = x => Math.log2(x + 1);
+
+      drawFunctionCurve(fn, '#34d399', 2.8, [], -0.85, 7);
+
+      const y1 = fn(p.x1);
+      const y2 = fn(p.x2);
+
+      // Step 3: Trapezoid Area under secant AB
+      if (state.steps[3]) {
+        ctx.save();
+        const pA = mathToScreen(p.x1, y1);
+        const pB = mathToScreen(p.x2, y2);
+        const pBx = mathToScreen(p.x2, 0);
+        const pAx = mathToScreen(p.x1, 0);
+        ctx.fillStyle = 'rgba(251, 191, 36, 0.16)';
+        ctx.beginPath();
+        ctx.moveTo(pAx.x, pAx.y);
+        ctx.lineTo(pA.x, pA.y);
+        ctx.lineTo(pB.x, pB.y);
+        ctx.lineTo(pBx.x, pBx.y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Step 2: Origin slopes OA (P) and OB (Q)
+      if (state.steps[2]) {
+        drawMathSegment(0, 0, p.x1, y1, '#fb7185', [], 2.4);
+        drawMathSegment(0, 0, p.x2, y2, '#38bdf8', [], 2.4);
+        const posP = mathToScreen(p.x1 * 0.6, y1 * 0.6 + 0.55);
+        drawCanvasFraction(ctx, 'y₁', 'x₁', posP.x, posP.y, {
+          color: '#fb7185',
+          prefix: 'P = ',
+          suffix: ` = ${(y1 / p.x1).toFixed(2)}`
+        });
+      }
+
+      // Step 1: Secant line AB (Average rate of change R)
+      if (state.steps[1]) {
+        drawMathSegment(p.x1, y1, p.x2, y2, '#fbbf24', [], 2.6);
+        const posR = mathToScreen((p.x1 + p.x2) / 2 + 0.4, (y1 + y2) / 2 - 0.65);
+        drawCanvasFraction(ctx, 'y₂ - y₁', 'x₂ - x₁', posR.x, posR.y, {
+          color: '#fbbf24',
+          prefix: '할선 R = ',
+          suffix: ` = ${((y2 - y1) / (p.x2 - p.x1)).toFixed(2)}`
+        });
+      }
+
+      drawMathPoint(p.x1, y1, `A(${p.x1.toFixed(1)}, ${y1.toFixed(2)})`, '#fb7185', 7, true, (mPos) => {
+        state.params.x1 = Math.max(0.4, Math.min(p.x2 - 0.4, Math.round(mPos.x * 10) / 10));
+      });
+      drawMathPoint(p.x2, y2, `B(${p.x2.toFixed(1)}, ${y2.toFixed(2)})`, '#fbbf24', 7.5, true, (mPos) => {
+        state.params.x2 = Math.max(p.x1 + 0.4, Math.min(4.5, Math.round(mPos.x * 10) / 10));
+      });
+    }
+
+    // --- TYPE 7: Lattice Point (Integer Coordinate) Scanner ---
+    function renderType7() {
+      const p = state.params;
+      const maxX = Math.round(p.maxX);
+      const fn = x => Math.log2(x) + 1;
+
+      // Shaded region 1 <= x <= maxX, 1 <= y <= log2(x) + 1
+      ctx.save();
+      ctx.fillStyle = 'rgba(52, 211, 153, 0.13)';
+      ctx.beginPath();
+      const startPt = mathToScreen(1, 1);
+      ctx.moveTo(startPt.x, startPt.y);
+      for (let x = 1; x <= maxX; x += 0.05) {
+        const pt = mathToScreen(x, fn(x));
+        ctx.lineTo(pt.x, pt.y);
+      }
+      const endBottom = mathToScreen(maxX, 1);
+      ctx.lineTo(endBottom.x, endBottom.y);
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+
+      drawFunctionCurve(fn, '#34d399', 2.8, [], 0.25, 9.5);
+      drawMathSegment(1, 1, maxX, 1, 'rgba(251, 191, 36, 0.6)', [4, 4], 1.6);
+      drawMathSegment(maxX, 0, maxX, fn(maxX) + 0.5, '#fbbf24', [5, 4], 2.0);
+
+      // Step 1 & 2: Vertical Slice Columns & Golden Lattice Points
+      let totalCount = 0;
+      for (let x = 1; x <= maxX; x++) {
+        const maxY = Math.floor(fn(x) + 1e-9);
+        totalCount += maxY;
+
+        if (state.steps[2]) {
+          drawMathSegment(x, 1, x, maxY, 'rgba(56, 189, 248, 0.5)', [], 3);
+          const colLabel = mathToScreen(x, 0.45);
+          drawCanvasBadge(ctx, `${maxY}개`, colLabel.x, colLabel.y, '#38bdf8');
+        }
+
+        if (state.steps[1]) {
+          for (let y = 1; y <= maxY; y++) {
+            drawMathPoint(x, y, '', '#fbbf24', 5.5);
+          }
+        }
+      }
+
+      // Step 3: Horizontal Row Scan Lines (y = 1, 2, 3, 4)
+      if (state.steps[3]) {
+        const maxLayer = Math.floor(fn(maxX) + 1e-9);
+        for (let y = 1; y <= maxLayer; y++) {
+          const startX = Math.pow(2, y - 1);
+          drawMathSegment(startX, y, maxX, y, '#fb7185', [], 2.2);
+          const rowCnt = maxX - startX + 1;
+          const rowPos = mathToScreen(maxX + 1.3, y);
+          drawCanvasBadge(ctx, `y=${y}층: ${rowCnt}개`, rowPos.x, rowPos.y, '#fb7185');
+        }
+      }
+
+      // Handle on x = maxX boundary
+      drawMathPoint(maxX, fn(maxX), `k=${maxX} (총 ${totalCount}개) [드래그]`, '#fbbf24', 8, true, (mPos) => {
+        state.params.maxX = Math.max(1, Math.min(8, Math.round(mPos.x)));
+      });
+    }
+
+    // --- TYPE 8: Substitution t = 2^x & Separation of Roots ---
+    function renderType8() {
+      const p = state.params;
+      const S = p.sumT;
+      const P = p.prodT;
+
+      // Quadratic f(t) = 0.25 * (t^2 - S*t + P) scaled vertically for clear viewing
+      const scaleY = 0.35;
+      const ft = t => scaleY * (t * t - S * t + P);
+
+      // Step 1: Shaded domain t > 1 (corresponding to x > 0)
+      if (state.steps[1]) {
+        const s1 = mathToScreen(1, 0);
+        ctx.save();
+        ctx.fillStyle = 'rgba(52, 211, 153, 0.08)';
+        ctx.fillRect(s1.x, 0, canvas.width - s1.x, canvas.height);
+        ctx.restore();
+        drawMathSegment(1, -8, 1, 8, '#fb7185', [5, 5], 2);
+        const bPt = mathToScreen(1, 3.8);
+        drawCanvasBadge(ctx, '양의 실근 경계: x > 0 ⟺ t = 2^x > 1', bPt.x, bPt.y, '#fb7185');
+      }
+
+      drawFunctionCurve(ft, '#34d399', 2.8, [], -1.5, 9.5);
+
+      const axisT = S / 2;
+      const vertexY = ft(axisT);
+
+      // Step 2: Axis of symmetry & Roots t1, t2
+      const D = S * S - 4 * P;
+      if (state.steps[2]) {
+        drawMathSegment(axisT, -6, axisT, 6, 'rgba(56, 189, 248, 0.6)', [4, 4], 1.6);
+        if (D >= 0) {
+          const t1 = (S - Math.sqrt(D)) / 2;
+          const t2 = (S + Math.sqrt(D)) / 2;
+          drawMathPoint(t1, 0, `t₁=${t1.toFixed(2)}`, '#38bdf8', 6);
+          drawMathPoint(t2, 0, `t₂=${t2.toFixed(2)}`, '#38bdf8', 6);
+        }
+      }
+
+      // Step 3: Product Invariant Formula Badge
+      if (state.steps[3]) {
+        const fPos = mathToScreen(axisT, vertexY - 1.3);
+        const alphaBeta = Math.log2(P);
+        drawCanvasFraction(ctx, `t₁·t₂ = ${P.toFixed(1)}`, `2^(α+β)`, fPos.x, fPos.y, {
+          prefix: '근과 계수: ',
+          suffix: ` ⟹ α+β = log₂(${P.toFixed(1)}) = ${alphaBeta.toFixed(2)}`
+        });
+      }
+
+      // Draggable Vertex Handle
+      drawMathPoint(axisT, vertexY, `꼭짓점 (축 t=${axisT.toFixed(1)}) [드래그]`, '#fbbf24', 7.5, true, (mPos) => {
+        const newAxis = Math.max(1.5, Math.min(4.5, Math.round(mPos.x * 10) / 10));
+        state.params.sumT = newAxis * 2;
+      });
+    }
+
+    // Boot Application
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>

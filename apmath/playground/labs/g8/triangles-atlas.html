@@ -1,0 +1,2830 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>삼각형의 성질 · 외심 · 내심 · 무게중심 마스터 실험실 | AP Math Playground</title>
+  <!-- Pretendard Webfont -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- KaTeX CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="../../assets/geometry-relations.css" />
+
+  <style>
+    * {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #07130e;
+      color: #f1f5f9;
+      overflow: hidden;
+    }
+    .chalkboard-bg {
+      background: radial-gradient(circle at 50% 45%, #163329 0%, #0d211a 65%, #07140f 100%);
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.88);
+    }
+    .katex { font-size: 1.02em !important; }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #07130e; }
+    ::-webkit-scrollbar-thumb { background: #1d3f32; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2d604d; }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #11261e;
+      height: 7px;
+      border-radius: 4px;
+      outline: none;
+      border: 1px solid #234739;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fbbf24;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.85);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.16); }
+
+    .mode-tab.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #07130e;
+      font-weight: 800;
+      border-color: #fbbf24;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+    }
+    .sub-pill.active {
+      background: rgba(52, 211, 153, 0.28);
+      border-color: #34d399;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 0 10px rgba(52, 211, 153, 0.35);
+    }
+    .lens-chip.active {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.32), rgba(245, 158, 11, 0.45));
+      border-color: #fbbf24;
+      color: #fef08a;
+      font-weight: 800;
+    }
+    .preset-chip.active {
+      background: #fbbf24;
+      color: #07130e;
+      border-color: #fef08a;
+      font-weight: 900;
+      box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+    }
+    .part-card {
+      transition: all 0.18s ease;
+      cursor: pointer;
+    }
+    .part-card:hover {
+      transform: translateY(-1px);
+      border-color: #34d399;
+    }
+    .part-card.active {
+      background: rgba(251, 191, 36, 0.18);
+      border-color: #fbbf24;
+      box-shadow: 0 0 12px rgba(251, 191, 36, 0.25);
+    }
+    .chalk-text { text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85); }
+  </style>
+
+  <style id="ap-mobile-bridge">
+  @media (max-width:1023px) {
+    html,body {height:auto!important;min-height:100%!important;width:100%!important;max-width:100%!important;overflow-x:hidden!important;overflow-y:auto!important;}
+    body {display:block!important; margin:0!important; -webkit-overflow-scrolling:touch;}
+    body > header {width:100%!important;position:relative!important;top:auto!important;}
+    body > header > nav {display:flex!important;flex-wrap:nowrap!important;width:100%!important;max-width:100vw!important;overflow-x:auto!important;overflow-y:hidden!important;white-space:nowrap!important;-webkit-overflow-scrolling:touch;}
+    body > header > nav button {flex-shrink:0!important; min-height:36px;}
+    body > div.flex-1.flex.flex-col {display:flex!important;flex-direction:column!important;width:100%!important;max-width:100%!important;height:auto!important;min-height:0!important;overflow:visible!important;}
+    body > div.flex-1.flex.flex-col > main {position:relative!important;width:100%!important;min-width:0!important;max-width:100%!important;height:clamp(460px,64svh,700px)!important;min-height:460px!important;flex:0 0 auto!important;overflow:hidden!important;display:block!important;}
+    main #boardCanvas {display:block!important;width:100%!important;height:100%!important;touch-action:none;}
+    .ap-mobile-top {position:relative!important;left:auto!important;top:auto!important;bottom:auto!important;right:auto!important;z-index:2!important;display:flex!important;flex-direction:column!important;box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-width:0!important;max-height:220px!important;overflow-y:auto!important;overflow-x:hidden!important;gap:6px!important;padding:8px!important;margin:0!important;pointer-events:auto!important;background:#0b2019!important;border-bottom:1px solid #24513e;}
+    .ap-mobile-top > div {max-width:100%!important;min-width:0!important;box-sizing:border-box!important;}
+    .ap-mobile-top #subSelectorBar {max-width:100%!important;max-height:105px!important;overflow-x:auto!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch;}
+    .ap-mobile-tools {position:relative!important;left:auto!important;top:auto!important;bottom:auto!important;right:auto!important;width:100%!important;max-width:100%!important;max-height:none!important;padding:9px!important;margin:0!important;box-sizing:border-box!important;display:flex!important;flex-wrap:wrap!important;gap:7px!important;align-items:center!important;justify-content:flex-start!important;z-index:3!important;background:#0a1b15!important;border-top:1px solid #2b5444;border-bottom:1px solid #2b5444;}
+    .ap-mobile-tools button {min-height:38px!important;touch-action:manipulation;}
+    body > div.flex-1.flex.flex-col > aside {width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;min-height:0!important;flex:0 0 auto!important;overflow:visible!important;display:block!important;}
+    body > div.flex-1.flex.flex-col > aside > div {height:auto!important;max-height:none!important;overflow:visible!important;}
+    body > div.flex-1.flex.flex-col > aside section {max-width:100%!important;}
+  }
+  .ap-back-home{align-self:center;display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:0 0 auto;min-height:33px;padding:6px 11px;background:#153a2e;border:1px solid #49806c;border-radius:10px;color:#d5f6cb;font:700 12px/1.3 system-ui,sans-serif;text-decoration:none;white-space:nowrap;z-index:22}
+  .ap-back-home:hover{background:#215341}
+  @media(max-width:1023px){.ap-back-home{margin:4px 8px 4px 0;}}
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col">
+
+  <!-- ===================================================================== -->
+  <!-- 상단 헤더 & 8대 삼각형 마스터 탐구관 탭 -->
+  <!-- ===================================================================== -->
+  <header class="bg-[#081510]/95 border-b border-emerald-900/70 px-3.5 py-2 flex flex-wrap items-center justify-between gap-2 z-20 shrink-0">
+    <div class="flex items-center gap-2.5">
+      <a class="ap-back-home" href="../../index.html" aria-label="전체 실험실로 돌아가기">← 전체 단원</a>
+      <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-400/60 flex items-center justify-center text-amber-300 shadow-inner">
+        <i class="fa-solid fa-shapes text-base"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <h1 class="text-sm md:text-base font-black tracking-tight text-emerald-50 chalk-text">중2 삼각형의 성질 · 합동 · 외심 · 내심 · 무게중심 마스터 실험실</h1>
+          <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">8대 탐구관 · 47종 직접 해부</span>
+        </div>
+        <p class="text-[10.5px] text-emerald-400/85 hidden 2xl:block">이등변 대칭접기(D·M·H 분리 반례) · RHA/RHS 직각합동 · SSS/SAS/ASA 합동 · 각/수직이등분선 · 외심 O(수직이등분) · 내심 I(넓이 3분할·접선·평행선) · O·I·G 비교 · 고난도 각 추론</p>
+      </div>
+    </div>
+
+    <!-- 8대 핵심 탐구관 탭 -->
+    <nav class="flex items-center gap-1 overflow-x-auto py-1 max-w-full">
+      <button onclick="setMode(1)" id="tab-1" class="mode-tab active text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-caret-up"></i>
+        <span>1. 이등변 &amp; 4대선</span>
+      </button>
+      <button onclick="setMode(2)" id="tab-2" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-ruler-combined"></i>
+        <span>2. 직각합동 RHA/RHS</span>
+      </button>
+      <button onclick="setMode(3)" id="tab-3" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-clone"></i>
+        <span>3. 일반합동 SSS/SAS/ASA</span>
+      </button>
+      <button onclick="setMode(4)" id="tab-4" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-arrows-split-up-and-left"></i>
+        <span>4. 각·수직이등분선</span>
+      </button>
+      <button onclick="setMode(5)" id="tab-5" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-regular fa-circle-dot"></i>
+        <span>5. 외심 O &amp; 수직이등분</span>
+      </button>
+      <button onclick="setMode(6)" id="tab-6" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-bullseye"></i>
+        <span>6. 내심 I &amp; 넓이·접선</span>
+      </button>
+      <button onclick="setMode(7)" id="tab-7" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-compass-drafting"></i>
+        <span>7. 외심·내심·무게중심 비교</span>
+      </button>
+      <button onclick="setMode(8)" id="tab-8" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-amber-500/60 bg-amber-950/40 text-amber-200 hover:bg-amber-900/50 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>8. 고난도 각 &amp; 보조선</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 메인 워크스페이스 (좌측 인터랙티브 분필 칠판 + 우측 435px 직관 해부 조종석) -->
+  <!-- ===================================================================== -->
+  <div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+    <!-- 좌측: 인터랙티브 분필 칠판 캔버스 -->
+    <main class="flex-1 relative chalkboard-bg overflow-hidden flex items-center justify-center">
+      <canvas id="boardCanvas" class="w-full h-full block cursor-grab active:cursor-grabbing"></canvas>
+
+      <!-- 좌측 상단: 현재 실험 배지 + 세부 시나리오 알약 바 + 관찰 렌즈 스위치 -->
+      <div class="absolute top-3 left-3 pointer-events-none flex flex-col gap-2 max-w-xs sm:max-w-2xl z-10">
+        <!-- 현재 도형 배지 & 한 줄 핵심 직관 -->
+        <div class="bg-[#07140f]/92 backdrop-blur-md border border-emerald-700/60 rounded-xl px-3.5 py-2 shadow-xl">
+          <div class="flex items-center gap-2 text-amber-300 text-xs font-extrabold mb-0.5">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+            <span id="canvasModeBadge">탐구 1 · 이등변삼각형의 정의(AB=AC)와 대칭 접기 성질</span>
+          </div>
+          <p id="canvasActionHint" class="text-[11.5px] text-emerald-100/95 leading-snug"></p>
+        </div>
+
+        <!-- 세부 도형·시나리오 선택 카트리지 바 -->
+        <div id="subSelectorBar" class="pointer-events-auto bg-[#07140f]/95 backdrop-blur-md border border-emerald-700/60 rounded-xl p-1.5 shadow-xl flex flex-wrap items-center gap-1.5 w-fit"></div>
+
+        <!-- 관찰 렌즈 스위치 & 드래그 조건 잠금 바 -->
+        <div class="pointer-events-auto bg-[#07140f]/95 backdrop-blur-md border border-emerald-700/60 rounded-xl p-1.5 shadow-xl flex flex-wrap items-center gap-1.5 w-fit">
+          <span class="text-[10.5px] text-amber-300 font-extrabold px-1 flex items-center gap-1">
+            <i class="fa-solid fa-eye"></i> 관찰 렌즈:
+          </span>
+          <button onclick="setConceptSwitch('all')" id="sw-all" class="lens-chip active px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">🔍 전체 구조</button>
+          <button onclick="setConceptSwitch('def')" id="sw-def" class="lens-chip px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">📌 정의·중점·수선의발(D·E·F)</button>
+          <button onclick="setConceptSwitch('p1')" id="sw-p1" class="lens-chip px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">✨ 등거리(R·r)·합동쌍·접선</button>
+          <button onclick="setConceptSwitch('p3')" id="sw-p3" class="lens-chip px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">🪡 중심각(2A vs 90+½A)·외각</button>
+
+          <span class="text-emerald-800 mx-0.5 hidden sm:inline">|</span>
+
+          <button onclick="toggleConstraintLock()" id="btnConstraint" class="px-2 py-0.5 rounded-lg border border-emerald-500/60 bg-emerald-800/80 hover:bg-emerald-700 text-[10.5px] text-emerald-100 font-extrabold transition flex items-center gap-1">
+            <i class="fa-solid fa-lock text-amber-300" id="iconConstraint"></i>
+            <span id="txtConstraint">조건 유지 드래그</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 좌측 하단 플로팅 액션 툴바 -->
+      <div class="absolute bottom-3 left-3 flex flex-wrap items-center gap-1.5 bg-[#07140f]/95 backdrop-blur-md border border-emerald-800/70 p-1.5 rounded-xl shadow-xl z-10">
+        <button onclick="toggleFoldAnim()" id="btnFoldToggle" class="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-xs font-black flex items-center gap-1.5 transition shadow-md">
+          <i class="fa-solid fa-play" id="iconFoldToggle"></i>
+          <span id="txtFoldToggle">🎬 대칭 접기 / 합동 포개기</span>
+        </button>
+        <button onclick="stepSub(-1)" class="px-2.5 py-1.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-800/60 border border-emerald-700/50 text-emerald-200 text-xs font-bold transition" title="이전 시나리오">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button onclick="stepSub(1)" class="px-2.5 py-1.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-800/60 border border-emerald-700/50 text-emerald-200 text-xs font-bold transition" title="다음 시나리오">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <button onclick="toggleTrace()" id="btnTrace" class="px-2.5 py-1.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-800/60 border border-emerald-700/50 text-emerald-200 text-xs font-bold flex items-center gap-1 transition">
+          <i class="fa-solid fa-route"></i>
+          <span class="hidden sm:inline">외심 궤적</span>
+        </button>
+        <div class="h-4 w-[1px] bg-emerald-800/70 mx-0.5"></div>
+        <button onclick="zoomCanvas(1.14)" class="w-7 h-7 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="확대"><i class="fa-solid fa-plus"></i></button>
+        <button onclick="zoomCanvas(0.88)" class="w-7 h-7 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="축소"><i class="fa-solid fa-minus"></i></button>
+        <button onclick="resetView()" class="w-7 h-7 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="초기화"><i class="fa-solid fa-rotate-left"></i></button>
+      </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- 우측: 삼각형 직관 해부 조종석 (435px, 군살 없는 4단 구성!) -->
+    <!-- =================================================================== -->
+    <aside class="w-full lg:w-[435px] bg-[#081611] border-t lg:border-t-0 lg:border-l border-emerald-900/80 flex flex-col h-[52vh] lg:h-full shrink-0 z-10">
+      <div class="p-3.5 overflow-y-auto flex-1 space-y-3.5">
+
+        <!-- 1. 변형·접기 슬라이더 & 원클릭 각도/모양 프리셋 조종석 -->
+        <section class="bg-gradient-to-br from-[#112a21] to-[#0b1c16] border border-emerald-700/60 rounded-xl p-3.5 shadow-lg space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-extrabold text-amber-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-sliders"></i>
+              <span id="sliderTitle">대칭 접기 · 합동 포개기 · 피자 전개 조종석</span>
+            </span>
+            <div class="flex items-center gap-1">
+              <button onclick="setFoldVal(0)" class="px-2 py-0.5 rounded bg-emerald-950 hover:bg-emerald-800 text-[10px] text-emerald-200 border border-emerald-700 font-bold">0% (원위치)</button>
+              <button onclick="setFoldVal(0.5)" class="px-2 py-0.5 rounded bg-emerald-950 hover:bg-emerald-800 text-[10px] text-emerald-200 border border-emerald-700 font-bold">50%</button>
+              <button onclick="setFoldVal(1)" class="px-2 py-0.5 rounded bg-amber-500/20 hover:bg-amber-500/30 text-[10px] text-amber-300 border border-amber-400/50 font-extrabold">100% (완성!)</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-[11px] mb-1">
+              <span id="sliderSubLabel" class="text-emerald-200 font-semibold">기본 도형(0%) ↔ 접기·포개기·넓이 3분할 펼치기(100%)</span>
+              <span id="valFold" class="font-mono font-black text-amber-300">0%</span>
+            </div>
+            <input type="range" id="sliderFold" min="0" max="1" step="0.005" value="0" class="w-full" oninput="onFoldSlider()" />
+          </div>
+
+          <!-- 원클릭 꼭지각 ∠A & 삼각형 형태 프리셋 칩 2그룹 -->
+          <div id="presetControlBox" class="grid grid-cols-2 gap-2.5 pt-2 border-t border-emerald-800/60">
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span id="dim1Label" class="text-sky-300 font-bold">꼭지각 ∠A 원클릭</span>
+                <span id="valP1" class="font-mono font-extrabold text-sky-200">50°</span>
+              </div>
+              <div id="p1BtnGroup" class="grid grid-cols-4 gap-1"></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span id="dim2Label" class="text-pink-300 font-bold">삼각형 모양 전환</span>
+                <span id="valP2" class="font-mono font-extrabold text-pink-200">이등변</span>
+              </div>
+              <div id="p2BtnGroup" class="grid grid-cols-4 gap-1"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. 만져서 확인하는 『도형 조각 & 합동 쌍』 해부기 -->
+        <section class="bg-[#0d211a] border border-emerald-800/80 rounded-xl p-3.5 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs font-extrabold text-amber-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-puzzle-piece"></i>
+              <span>만져서 확인하는 『도형 조각 &amp; 합동 쌍』 해부</span>
+            </h2>
+            <span class="text-[10px] text-emerald-300 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-700/60">카드 클릭 ➔ 칠판 발광!</span>
+          </div>
+
+          <div id="partsBox" class="space-y-1.5"></div>
+
+          <div class="bg-[#07130e] p-2.5 rounded-lg border border-amber-400/50 flex items-center justify-between gap-2">
+            <span class="text-xs font-bold text-emerald-200 shrink-0">핵심 결과 요약</span>
+            <span id="totalResultBadge" class="text-xs md:text-sm font-black text-amber-300 font-mono text-right"></span>
+          </div>
+        </section>
+
+        <!-- 3. 한눈에 깨닫는 『기호 번역 & 공식 원리』 -->
+        <section class="bg-[#0d211a] border border-emerald-800/80 rounded-xl p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs font-extrabold text-sky-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-calculator"></i>
+              <span>한눈에 깨닫는 『기호 번역 &amp; 공식 원리』</span>
+            </h2>
+            <span id="ruleBadge" class="text-[10px] font-bold text-sky-200 bg-sky-950/90 px-2 py-0.5 rounded border border-sky-600/50">SAS / RHA / RHS</span>
+          </div>
+
+          <div id="formulaBox" class="text-xs text-emerald-50 leading-relaxed bg-[#07130e]/90 p-3 rounded-lg border border-emerald-800/70 space-y-1.5"></div>
+        </section>
+
+        <!-- 4. 시험장 오답 함정 & 3초 직관 비법 -->
+        <section class="bg-gradient-to-br from-[#132820] to-[#091611] border border-emerald-700/60 rounded-xl p-3.5 space-y-2">
+          <div class="flex items-center gap-1.5 text-xs font-extrabold text-emerald-300">
+            <i class="fa-solid fa-lightbulb text-amber-400"></i>
+            <span>시험장 오답 함정 &amp; 3초 직관 비법!</span>
+          </div>
+          <div id="intuitionNotes" class="text-xs text-emerald-100/95 leading-relaxed space-y-1.5 bg-[#07130e]/80 p-3 rounded-lg border border-emerald-800/60"></div>
+        </section>
+
+      </div>
+    </aside>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 삼각형 8대 탐구관 × 47종 시나리오 마스터 엔진 스크립트 -->
+  <!-- ===================================================================== -->
+  <script>
+    function tex(latexStr) {
+      if (window.katex) {
+        return katex.renderToString(latexStr, { throwOnError: false, displayMode: false });
+      }
+      return latexStr;
+    }
+
+    const GCOL = {
+      cyan: '#38bdf8',
+      pink: '#f472b6',
+      green: '#34d399',
+      gold: '#fbbf24',
+      white: '#f1f5f9',
+      red: '#f43f5e',
+      purple: '#c084fc'
+    };
+
+    function dist(p1, p2) { return Math.hypot(p2.x - p1.x, p2.y - p1.y); }
+    function midPt(p1, p2) { return { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 }; }
+    const addPt = (p, v) => ({ x: p.x + v.x, y: p.y + v.y });
+    const minusPt = (a, b) => ({ x: a.x - b.x, y: a.y - b.y });
+    const multiply = (v, k) => ({ x: v.x * k, y: v.y * k });
+    const perp = (v) => ({ x: -v.y, y: v.x });
+    const norm = (v) => { const l = Math.hypot(v.x, v.y) || 1; return { x: v.x / l, y: v.y / l }; };
+    const lerp = (a, b, t) => ({ x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t });
+
+    function getAngles(A, B, C) {
+      const a = dist(B, C), b = dist(C, A), c = dist(A, B);
+      function lawOfCos(opp, adj1, adj2) {
+        const denom = 2 * adj1 * adj2;
+        if (denom < 1e-6) return 0;
+        const val = (adj1 * adj1 + adj2 * adj2 - opp * opp) / denom;
+        return Math.acos(Math.max(-1, Math.min(1, val))) * (180 / Math.PI);
+      }
+      return {
+        degA: lawOfCos(a, b, c),
+        degB: lawOfCos(b, c, a),
+        degC: lawOfCos(c, a, b),
+        a, b, c
+      };
+    }
+
+    function projectOnLine(p, p1, p2) {
+      const dx = p2.x - p1.x, dy = p2.y - p1.y;
+      const lenSq = dx * dx + dy * dy;
+      if (lenSq < 1e-6) return { ...p1 };
+      const u = ((p.x - p1.x) * dx + (p.y - p1.y) * dy) / lenSq;
+      return { x: p1.x + u * dx, y: p1.y + u * dy };
+    }
+
+    function intersectTwoLines(a, b, c, d) {
+      const u = minusPt(b, a), v = minusPt(d, c);
+      const det = u.x * v.y - u.y * v.x;
+      if (Math.abs(det) < 1e-9) return null;
+      const w = minusPt(c, a);
+      const t = (w.x * v.y - w.y * v.x) / det;
+      return addPt(a, multiply(u, t));
+    }
+
+    function reflectAcrossLine(p, p1, p2) {
+      const foot = projectOnLine(p, p1, p2);
+      return { x: 2 * foot.x - p.x, y: 2 * foot.y - p.y };
+    }
+
+    function rotatePtAround(p, center, rad) {
+      const dx = p.x - center.x, dy = p.y - center.y;
+      const cos = Math.cos(rad), sin = Math.sin(rad);
+      return {
+        x: center.x + dx * cos - dy * sin,
+        y: center.y + dx * sin + dy * cos
+      };
+    }
+
+    function getAngleBisectorAxis(A, B, C) {
+      const la = dist(A, B) || 1, lb = dist(A, C) || 1;
+      const uAB = { x: (B.x - A.x) / la, y: (B.y - A.y) / la };
+      const uAC = { x: (C.x - A.x) / lb, y: (C.y - A.y) / lb };
+      const bisectDir = { x: uAB.x + uAC.x, y: uAB.y + uAC.y };
+      const len = Math.hypot(bisectDir.x, bisectDir.y) || 1;
+      const p2 = { x: A.x + (bisectDir.x / len) * 300, y: A.y + (bisectDir.y / len) * 300 };
+      const D = intersectTwoLines(A, p2, B, C) || projectOnLine(A, B, C);
+      return { p1: A, p2, D };
+    }
+
+    function getCircumcenter(A, B, C) {
+      const d = 2 * (A.x * (B.y - C.y) + B.x * (C.y - A.y) + C.x * (A.y - B.y));
+      if (Math.abs(d) < 1e-6) return null;
+      const ux = ((A.x * A.x + A.y * A.y) * (B.y - C.y) + (B.x * B.x + B.y * B.y) * (C.y - A.y) + (C.x * C.x + C.y * C.y) * (A.y - B.y)) / d;
+      const uy = ((A.x * A.x + A.y * A.y) * (C.x - B.x) + (B.x * B.x + B.y * B.y) * (A.x - C.x) + (C.x * C.x + C.y * C.y) * (B.x - A.x)) / d;
+      const O = { x: ux, y: uy };
+      const R = dist(O, A);
+      return {
+        O, R,
+        D: midPt(B, C),
+        E: midPt(C, A),
+        F: midPt(A, B)
+      };
+    }
+
+    function getIncenter(A, B, C) {
+      const a = dist(B, C), b = dist(C, A), c = dist(A, B);
+      const perim = a + b + c;
+      if (perim < 1e-6) return null;
+      const Ix = (a * A.x + b * B.x + c * C.x) / perim;
+      const Iy = (a * A.y + b * B.y + c * C.y) / perim;
+      const I = { x: Ix, y: Iy };
+      const s = perim / 2;
+      const S = Math.sqrt(Math.max(0, s * (s - a) * (s - b) * (s - c)));
+      const r = (2 * S) / perim;
+      const D = projectOnLine(I, B, C);
+      const E = projectOnLine(I, C, A);
+      const F = projectOnLine(I, A, B);
+      return { I, r, S, perim, D, E, F };
+    }
+
+    function getCentroid(A, B, C) {
+      return {
+        G: { x: (A.x + B.x + C.x) / 3, y: (A.y + B.y + C.y) / 3 },
+        D: midPt(B, C),
+        E: midPt(C, A),
+        F: midPt(A, B)
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // 1. 전역 상태 관리 (8대 탐구관 × 47종 시나리오)
+    // -------------------------------------------------------------------------
+    const state = {
+      mode: 1, // 1~8
+      subType: {
+        1: 'isoStd',        // 'isoStd', 'isoRight', 'isoSide', 'isoPointP', 'counterDMH', 'counterObtuseH'
+        2: 'rhaPair',       // 'rhaPair', 'rhsPair', 'kiteFold', 'trapezoidRHA', 'lineThruA', 'ssaCounter'
+        3: 'sss',           // 'sss', 'sas', 'asa', 'bowtie', 'parallelZ', 'rot60'
+        4: 'angleBisect',   // 'angleBisect', 'angleBisectConv', 'perpBisect', 'triAreaRatio', 'slantedCounter'
+        5: 'circumStd',     // 'circumStd', 'circumRight', 'circum3060', 'circumAngle', 'circumObtuse'
+        6: 'incenterStd',   // 'incenterStd', 'incenterUnfold', 'incenterTangents', 'incenterRightSq', 'incenterAngle', 'incenterParallel'
+        7: 'oigAll',        // 'oigAll', 'oigEquil', 'oigIso', 'oigRight', 'centroidFocus', 'defCompare'
+        8: 'domino'         // 'domino', 'parallelIso', 'inBisect', 'inExBisect', 'exExBisect', 'boomerang', 'rightAlt', 'equilRot'
+      },
+      conceptSwitch: 'all', // 'all' | 'def' | 'p1' | 'p3'
+      activePartIdx: -1,
+      constraintLocked: true,
+
+      fold: 0.0,
+      foldTarget: null,
+
+      pts: { A: { x: 0, y: -150 }, B: { x: -135, y: 100 }, C: { x: 135, y: 100 } },
+      shapeTag: 'iso', // 'iso' | 'right' | 'scalene' | 'obtuse'
+
+      showTrace: false,
+      tracePoints: [],
+      scale: 1.0,
+      pan: { x: 0, y: 10 },
+      draggingNode: null,
+      isPanning: false,
+      lastMouse: { x: 0, y: 0 }
+    };
+
+    const SUB_MENUS = {
+      1: [
+        { id: 'isoStd', label: '⛺ 표준 이등변 대칭 접기 (AD⊥BC, BD=CD)' },
+        { id: 'isoRight', label: '📐 직각이등변 (AD = BD = CD = ½BC)' },
+        { id: 'isoSide', label: '🔄 옆으로 누운 이등변 (꼭지각·밑변 찾기)' },
+        { id: 'isoPointP', label: '📍 대칭축 AD 위 임의의 점 P (PB = PC)' },
+        { id: 'counterDMH', label: '⚠️ [반례] 일반 예각삼각형 (D ≠ M ≠ H 분리!)' },
+        { id: 'counterObtuseH', label: '⚠️ [반례] 둔각삼각형 (수선의 발 H 외부 이탈)' }
+      ],
+      2: [
+        { id: 'rhaPair', label: '✨ RHA 합동 포개기 (직각+빗변+예각)' },
+        { id: 'rhsPair', label: '🧩 RHS 합동 (붙여서 이등변 만들기!)' },
+        { id: 'trapezoidRHA', label: '🔥 [초빈출] 사다리꼴 속 회전 직각삼각형 (●+×=90°)' },
+        { id: 'lineThruA', label: '📏 직각이등변 꼭짓점 지나는 직선 (△ABD≡△CAE)' },
+        { id: 'kiteFold', label: '🪁 빗변 공유 대칭 연꼴 (△ABC≡△ADC)' },
+        { id: 'ssaCounter', label: '🚫 [반례] 왜 일반 SSA는 합동이 안 될까? (두 삼각형)' }
+      ],
+      3: [
+        { id: 'sss', label: '三条 SSS 합동 (세 대응변 일치)' },
+        { id: 'sas', label: '✂️ SAS 합동 (두 변과 끼인각)' },
+        { id: 'asa', label: '🎯 ASA 합동 (한 변과 양 끝각)' },
+        { id: 'bowtie', label: '🎀 모래시계 맞꼭지각 합동 (SAS)' },
+        { id: 'parallelZ', label: '⚡ 평행선 Z자 엇각 합동 (ASA)' },
+        { id: 'rot60', label: '🔄 정삼각형 60° 회전합동 (△ABD≡△ACE)' }
+      ],
+      4: [
+        { id: 'angleBisect', label: '📌 각의 이등분선 위 점 P (PE = PF, RHA)' },
+        { id: 'angleBisectConv', label: '🔄 각이등분선 역정리 (PE = PF ⟹ 각이등분, RHS)' },
+        { id: 'perpBisect', label: '⊥ 선분의 수직이등분선 위 점 P (PA = PB, SAS)' },
+        { id: 'triAreaRatio', label: '📐 각이등분선과 삼각형 넓이비 (AB : AC)' },
+        { id: 'slantedCounter', label: '🚫 [반례] 비스듬한 선분(PQ>PE) & 중선≠각이등분' }
+      ],
+      5: [
+        { id: 'circumStd', label: '🔵 표준 예각 외심 O (수직이등분선 D·E·F)' },
+        { id: 'circumRight', label: '👑 [1순위] 직각삼각형 외심 (= 빗변의 중점!)' },
+        { id: 'circum3060', label: '💎 30°-60°-90° 직각삼각형 외심과 정삼각형' },
+        { id: 'circumAngle', label: '🎯 외심 각의 성질 (x+y+z=90°, ∠BOC=2∠A)' },
+        { id: 'circumObtuse', label: '🔥 둔각삼각형 외심 (외부 이탈 & 360°-2∠A)' }
+      ],
+      6: [
+        { id: 'incenterStd', label: '🟢 표준 내심 I (각이등분 & 수선의 발 D·E·F)' },
+        { id: 'incenterUnfold', label: '🍕 [필수] 넓이 3분할 피자 펼치기 (S=½r(a+b+c))' },
+        { id: 'incenterTangents', label: '🪡 꼭짓점 접선 길이 쌍 (AF=AE, BF=BD, CD=CE)' },
+        { id: 'incenterRightSq', label: '⬛ 직각삼각형 내접원 (모퉁이 r×r 정사각형!)' },
+        { id: 'incenterAngle', label: '🎯 내심 각의 성질 (x+y+z=90°, ∠BIC=90°+½∠A)' },
+        { id: 'incenterParallel', label: '🔥 [초빈출] 내심 지나는 평행선 (△ADE 둘레 = AB+AC!)' }
+      ],
+      7: [
+        { id: 'oigAll', label: '🔍 외심 O · 내심 I · 무게중심 G 동시 비교' },
+        { id: 'oigEquil', label: '💎 정삼각형 (O = I = G 완벽 일치, R = 2r)' },
+        { id: 'oigIso', label: '⛺ 이등변삼각형 (대칭축 AD 위 O-G-I 정렬)' },
+        { id: 'oigRight', label: '📐 직각삼각형 (빗변 중점 O와 무게중심 거리 GO=⅓R)' },
+        { id: 'centroidFocus', label: '🟣 무게중심 G 집중 탐구 (세 중선 2:1 & 6등분)' },
+        { id: 'defCompare', label: '⚠️ [핵심] 변의 중점 D,E,F(외심) vs 수선의 발 D,E,F(내심)' }
+      ],
+      8: [
+        { id: 'domino', label: '🪜 이등변 도미노 외각 연쇄 (x→2x→3x→4x)' },
+        { id: 'parallelIso', label: '⚡ 평행선 + 각이등분선 = 이등변 출현!' },
+        { id: 'inBisect', label: '① 두 내각 이등분선 교점 (90° + ½∠A)' },
+        { id: 'inExBisect', label: '② 내각 + 외각 이등분선 교점 (½∠A)' },
+        { id: 'exExBisect', label: '③ 두 외각 이등분선 교점 (90° - ½∠A)' },
+        { id: 'boomerang', label: '🪃 부메랑 오목사각형 (∠BDC = ∠A+∠B+∠C)' },
+        { id: 'rightAlt', label: '📐 직각삼각형 빗변 수선 (●+×=90° 각 복제)' },
+        { id: 'equilRot', label: '🔄 정삼각형 내부 점 P 60° 회전 보조선' }
+      ]
+    };
+
+    // -------------------------------------------------------------------------
+    // 2. Canvas 드로잉 프리미티브
+    // -------------------------------------------------------------------------
+    const canvas = document.getElementById('boardCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      render();
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    function toScreen(pt) {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      return {
+        x: rect.width / 2 + state.pan.x + pt.x * state.scale,
+        y: rect.height * 0.48 + state.pan.y + pt.y * state.scale
+      };
+    }
+
+    function toLocal(sPt) {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      return {
+        x: (sPt.x - (rect.width / 2 + state.pan.x)) / state.scale,
+        y: (sPt.y - (rect.height * 0.48 + state.pan.y)) / state.scale
+      };
+    }
+
+    function isPartDimmed(partIdx) {
+      if (state.activePartIdx === -1 || partIdx === undefined) return false;
+      return state.activePartIdx !== partIdx;
+    }
+
+    function isPartHighlighted(partIdx) {
+      return state.activePartIdx !== -1 && state.activePartIdx === partIdx;
+    }
+
+    function drawFloorGrid(rect) {
+      const step = 42 * state.scale;
+      ctx.save();
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.05)';
+      ctx.lineWidth = 1;
+      for (let x = (rect.width / 2 + state.pan.x) % step; x < rect.width; x += step) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, rect.height); ctx.stroke();
+      }
+      for (let y = (rect.height * 0.48 + state.pan.y) % step; y < rect.height; y += step) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(rect.width, y); ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function drawLine(p1, p2, color = '#ffffff', width = 2.2, dashed = false, glow = false, partIdx = undefined) {
+      const dimmed = isPartDimmed(partIdx);
+      const hi = isPartHighlighted(partIdx);
+      const s1 = toScreen(p1), s2 = toScreen(p2);
+      ctx.save();
+      ctx.beginPath();
+      if (dashed) ctx.setLineDash([6, 5]);
+      ctx.strokeStyle = dimmed ? 'rgba(148, 163, 184, 0.22)' : color;
+      ctx.lineWidth = hi ? width + 2.0 : dimmed ? 1.1 : width;
+      ctx.lineCap = 'round';
+      if (glow || hi) {
+        ctx.shadowColor = color;
+        ctx.shadowBlur = hi ? 16 : 12;
+      }
+      ctx.moveTo(s1.x, s1.y);
+      ctx.lineTo(s2.x, s2.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawExtendedLine(p1, p2, ext1 = 55, ext2 = 55, color = 'rgba(251, 191, 36, 0.65)', width = 1.8, dashed = true, partIdx = undefined) {
+      const dir = norm(minusPt(p2, p1));
+      const start = addPt(p1, multiply(dir, -ext1));
+      const end = addPt(p2, multiply(dir, ext2));
+      drawLine(start, end, color, width, dashed, false, partIdx);
+    }
+
+    function drawTruePerpendicularBisector(sideA, sideB, midpoint, circumcenter, color, width = 2, dashed = true, partIdx = undefined) {
+      const direction = perp(norm(minusPt(sideB, sideA)));
+      const projected = Math.abs((circumcenter.x - midpoint.x) * direction.x + (circumcenter.y - midpoint.y) * direction.y);
+      const reach = Math.min(340, Math.max(78, projected + 35));
+      drawLine(addPt(midpoint, multiply(direction, -reach)), addPt(midpoint, multiply(direction, reach)), color, width, dashed, false, partIdx);
+    }
+
+    function drawCircle(center, radius, strokeColor = '#fbbf24', fillColor = null, lineWidth = 2, dashed = false, partIdx = undefined) {
+      const dimmed = isPartDimmed(partIdx);
+      const hi = isPartHighlighted(partIdx);
+      const s = toScreen(center);
+      const rPx = radius * state.scale;
+      ctx.save();
+      ctx.beginPath();
+      if (dashed) ctx.setLineDash([5, 5]);
+      ctx.arc(s.x, s.y, Math.max(0, rPx), 0, Math.PI * 2);
+      if (fillColor) {
+        ctx.fillStyle = dimmed ? 'rgba(15, 23, 42, 0.08)' : fillColor;
+        ctx.fill();
+      }
+      if (strokeColor) {
+        ctx.strokeStyle = dimmed ? 'rgba(148, 163, 184, 0.22)' : strokeColor;
+        ctx.lineWidth = hi ? lineWidth + 1.8 : dimmed ? 1.0 : lineWidth;
+        if (hi) { ctx.shadowColor = strokeColor; ctx.shadowBlur = 15; }
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function drawPoint(pt, radius = 6.0, color = '#fbbf24', label = '', offset = null, refCenter = null) {
+      const s = toScreen(pt);
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 9;
+      ctx.fill();
+      ctx.lineWidth = 1.8;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+
+      if (label) {
+        let off = offset;
+        if (!off) {
+          if (refCenter) {
+            const sRef = toScreen(refCenter);
+            const dx = s.x - sRef.x, dy = s.y - sRef.y;
+            const len = Math.hypot(dx, dy) || 1;
+            off = { x: (dx / len) * 18, y: (dy / len) * 18 + 4 };
+          } else {
+            off = { x: 10, y: -10 };
+          }
+        }
+        ctx.font = '800 13px Pretendard, sans-serif';
+        ctx.textAlign = refCenter ? 'center' : 'left';
+        ctx.lineWidth = 3.5;
+        ctx.strokeStyle = 'rgba(5, 18, 13, 0.92)';
+        ctx.strokeText(label, s.x + off.x, s.y + off.y);
+        ctx.fillStyle = color;
+        ctx.fillText(label, s.x + off.x, s.y + off.y);
+      }
+      ctx.restore();
+    }
+
+    function drawRightAngleSign(vertex, pA, pB, size = 12, color = '#38bdf8') {
+      const v = toScreen(vertex);
+      const sa = toScreen(pA), sb = toScreen(pB);
+      const da = { x: sa.x - v.x, y: sa.y - v.y };
+      const db = { x: sb.x - v.x, y: sb.y - v.y };
+      const la = Math.hypot(da.x, da.y) || 1, lb = Math.hypot(db.x, db.y) || 1;
+      const sPx = size * Math.min(1.25, Math.max(0.8, state.scale));
+      const ua = { x: (da.x / la) * sPx, y: (da.y / la) * sPx };
+      const ub = { x: (db.x / lb) * sPx, y: (db.y / lb) * sPx };
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(v.x, v.y);
+      ctx.lineTo(v.x + ua.x, v.y + ua.y);
+      ctx.lineTo(v.x + ua.x + ub.x, v.y + ua.y + ub.y);
+      ctx.lineTo(v.x + ub.x, v.y + ub.y);
+      ctx.closePath();
+      ctx.fillStyle = color + '38';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.0;
+      ctx.moveTo(v.x + ua.x, v.y + ua.y);
+      ctx.lineTo(v.x + ua.x + ub.x, v.y + ua.y + ub.y);
+      ctx.lineTo(v.x + ub.x, v.y + ub.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawTriangleFilled(p1, p2, p3, fillColor, partIdx = undefined) {
+      if (isPartDimmed(partIdx)) return;
+      const hi = isPartHighlighted(partIdx);
+      const s1 = toScreen(p1), s2 = toScreen(p2), s3 = toScreen(p3);
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(s1.x, s1.y);
+      ctx.lineTo(s2.x, s2.y);
+      ctx.lineTo(s3.x, s3.y);
+      ctx.closePath();
+      ctx.fillStyle = fillColor;
+      ctx.fill();
+      if (hi) {
+        ctx.strokeStyle = '#fbbf24';
+        ctx.lineWidth = 3.2;
+        ctx.shadowColor = '#fbbf24';
+        ctx.shadowBlur = 14;
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function drawQuadFilled(p1, p2, p3, p4, fillColor, strokeColor = null, partIdx = undefined) {
+      if (isPartDimmed(partIdx)) return;
+      const s1 = toScreen(p1), s2 = toScreen(p2), s3 = toScreen(p3), s4 = toScreen(p4);
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(s1.x, s1.y);
+      ctx.lineTo(s2.x, s2.y);
+      ctx.lineTo(s3.x, s3.y);
+      ctx.lineTo(s4.x, s4.y);
+      ctx.closePath();
+      if (fillColor) { ctx.fillStyle = fillColor; ctx.fill(); }
+      if (strokeColor) { ctx.strokeStyle = strokeColor; ctx.lineWidth = 2.4; ctx.stroke(); }
+      ctx.restore();
+    }
+
+    function edgeTicks(p, q, n = 1, color = GCOL.gold, size = 7.2) {
+      const sP = toScreen(p), sQ = toScreen(q);
+      const dx = sQ.x - sP.x, dy = sQ.y - sP.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const d = { x: dx / len, y: dy / len };
+      const v = { x: -d.y, y: d.x };
+      const m = { x: (sP.x + sQ.x) / 2, y: (sP.y + sQ.y) / 2 };
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.3;
+      ctx.lineCap = 'round';
+      for (let i = 0; i < n; i++) {
+        const shift = (i - (n - 1) / 2) * 6.5;
+        const pt = { x: m.x + d.x * shift, y: m.y + d.y * shift };
+        ctx.beginPath();
+        ctx.moveTo(pt.x - v.x * size, pt.y - v.y * size);
+        ctx.lineTo(pt.x + v.x * size, pt.y + v.y * size);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function parallelArrows(p, q, n = 1, color = GCOL.gold) {
+      const sP = toScreen(p), sQ = toScreen(q);
+      const dx = sQ.x - sP.x, dy = sQ.y - sP.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const d = { x: dx / len, y: dy / len };
+      const v = { x: -d.y, y: d.x };
+      const m = { x: (sP.x + sQ.x) / 2, y: (sP.y + sQ.y) / 2 };
+
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.2;
+      for (let i = 0; i < n; i++) {
+        const shift = (i - (n - 1) / 2) * 7;
+        const tip = { x: m.x + d.x * (shift + 4), y: m.y + d.y * (shift + 4) };
+        ctx.beginPath();
+        ctx.moveTo(tip.x - d.x * 7 + v.x * 5.5, tip.y - d.y * 7 + v.y * 5.5);
+        ctx.lineTo(tip.x, tip.y);
+        ctx.lineTo(tip.x - d.x * 7 - v.x * 5.5, tip.y - d.y * 7 - v.y * 5.5);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function curvedAngle(vertex, p, q, color = GCOL.gold, r = 26, rings = 1, text = '', reflex = false) {
+      const a = toScreen(vertex), b = toScreen(p), c = toScreen(q);
+      const t1 = Math.atan2(b.y - a.y, b.x - a.x);
+      const t2 = Math.atan2(c.y - a.y, c.x - a.x);
+      let d = (t2 - t1 + Math.PI * 3) % (Math.PI * 2) - Math.PI;
+      if (reflex) d = d > 0 ? d - Math.PI * 2 : d + Math.PI * 2;
+      const rScaled = r * Math.min(1.25, Math.max(0.78, state.scale));
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.arc(a.x, a.y, rScaled, t1, t1 + d, d < 0);
+      ctx.closePath();
+      ctx.fillStyle = color + '26';
+      ctx.fill();
+
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.2;
+      for (let i = 0; i < rings; i++) {
+        const rad = rScaled - i * 4.5;
+        if (rad > 4) {
+          ctx.beginPath();
+          ctx.arc(a.x, a.y, rad, t1, t1 + d, d < 0);
+          ctx.stroke();
+        }
+      }
+
+      if (text) {
+        const midAng = t1 + d / 2;
+        const tx = a.x + Math.cos(midAng) * (rScaled + 13);
+        const ty = a.y + Math.sin(midAng) * (rScaled + 13) + 4;
+        ctx.font = '800 12px Pretendard, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = 'rgba(5, 18, 13, 0.92)';
+        ctx.strokeText(text, tx, ty);
+        ctx.fillStyle = color;
+        ctx.fillText(text, tx, ty);
+      }
+      ctx.restore();
+    }
+
+    function labelLine(p, t, color = GCOL.white, fontSize = 13) {
+      const s = toScreen(p);
+      ctx.save();
+      ctx.font = `800 ${fontSize}px Pretendard, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.lineWidth = 3.5;
+      ctx.strokeStyle = 'rgba(5, 18, 13, 0.92)';
+      ctx.strokeText(t, s.x, s.y);
+      ctx.fillStyle = color;
+      ctx.fillText(t, s.x, s.y);
+      ctx.restore();
+    }
+
+    function drawBottomTapeBanner(rect, titleStr, segments) {
+      const by = rect.height - 78;
+      const bw = Math.min(545, rect.width - 36);
+      const sx = (rect.width - bw) / 2;
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(7, 20, 15, 0.94)';
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.5)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(sx - 12, by - 24, bw + 24, 54, 12);
+      ctx.fill();
+      ctx.stroke();
+
+      if (!segments || segments.length === 0) {
+        ctx.font = '800 12px Pretendard, sans-serif';
+        ctx.fillStyle = '#fef08a';
+        ctx.textAlign = 'center';
+        ctx.fillText(titleStr, rect.width / 2, by + 4);
+      } else {
+        ctx.font = '800 11px Pretendard, sans-serif';
+        ctx.fillStyle = '#a7f3d0';
+        ctx.textAlign = 'left';
+        ctx.fillText(`📏 ${titleStr}`, sx - 2, by - 8);
+
+        let acc = 0;
+        segments.forEach((seg) => {
+          const w = seg.weight * bw;
+          const x0 = sx + acc * bw;
+          ctx.fillStyle = seg.color;
+          ctx.beginPath();
+          ctx.roundRect(x0 + 1, by, Math.max(8, w - 2), 21, 4);
+          ctx.fill();
+          ctx.fillStyle = '#07130e';
+          ctx.font = '800 10.5px Pretendard, monospace';
+          ctx.textAlign = 'center';
+          ctx.fillText(seg.text, x0 + w / 2, by + 14);
+          acc += seg.weight;
+        });
+      }
+      ctx.restore();
+    }
+
+    function drawMiniOverlayBox(rect, title, lines) {
+      if (rect.width < 560) return;
+      const boxW = 235, boxH = 32 + lines.length * 21;
+      const bx = rect.width - boxW - 14;
+      const by = 14;
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(7, 20, 15, 0.94)';
+      ctx.strokeStyle = '#fbbf24';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.roundRect(bx, by, boxW, boxH, 12);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.font = '800 11.5px Pretendard, sans-serif';
+      ctx.fillStyle = '#fbbf24';
+      ctx.textAlign = 'left';
+      ctx.fillText(title, bx + 12, by + 20);
+
+      lines.forEach((ln, idx) => {
+        ctx.font = '700 11px Pretendard, sans-serif';
+        ctx.fillStyle = ln.col || '#e2e8f0';
+        ctx.fillText(ln.txt, bx + 12, by + 41 + idx * 20);
+      });
+      ctx.restore();
+    }
+
+    // -------------------------------------------------------------------------
+    // 3. 8대 탐구관 × 47종 시나리오별 실시간 명세 생성기 (getSpec)
+    // -------------------------------------------------------------------------
+    function getSpec() {
+      const m = state.mode;
+      const sub = state.subType[m];
+      const A = state.pts.A, B = state.pts.B, C = state.pts.C;
+      const ang = getAngles(A, B, C);
+      const circum = getCircumcenter(A, B, C);
+      const inc = getIncenter(A, B, C);
+      const degA = Math.round(ang.degA), degB = Math.round(ang.degB), degC = Math.round(ang.degC);
+      const aCm = (ang.a / 10).toFixed(1), bCm = (ang.b / 10).toFixed(1), cCm = (ang.c / 10).toFixed(1);
+
+      // ==================== [탭 1: 이등변삼각형 & 4대 보조선] ====================
+      if (m === 1) {
+        if (sub === 'counterDMH' || sub === 'counterObtuseH') {
+          return {
+            badge: `탐구 1 · ⚠️ [결정적 반례] AB ≠ AC인 일반 삼각형에서는 각이등분선(D) ≠ 중선(M) ≠ 수선(H)!`,
+            hint: `슬라이더로 각이등분선 $AD$를 따라 반을 접어보세요! $AB \\ne AC$이면 <strong class="text-rose-400">점 C'가 B와 어긋나며, 각이등분선 교점 D · 중점 M · 수선의 발 H가 서로 다른 3개의 점으로 쪼개집니다!</strong>`,
+            actionTxt: state.fold > 0.5 ? '🎬 접은 삼각형 다시 펼치기' : '🎬 AD 기준으로 접어 어긋남 확인!',
+            parts: [
+              { id: 0, name: `🟨 각이등분선 AD (∠BAD = ∠CAD)`, desc: `각 A만 반으로 나눌 뿐 밑변을 수직이등분하지 못함!`, val: `D ≠ M ≠ H`, color: GCOL.gold, ok: false },
+              { id: 1, name: `🟩 중선 AM (BM = CM 중점 연결)`, desc: `넓이는 이등분하지만 각 A는 이등분하지 않음!`, val: `BM = CM`, color: GCOL.green, ok: true },
+              { id: 2, name: `🟥 수선 AH (AH ⊥ BC 수선의 발)`, desc: sub === 'counterObtuseH' ? `둔각삼각형에서는 H가 변 BC 바깥 연장선에 생김!` : `가장 짧은 수직 높이 선분`, val: `AH ⊥ BC`, color: GCOL.red, ok: true }
+            ],
+            totalRes: `AB ≠ AC 이면 각이등분선 AD · 중선 AM · 수선 AH가 모두 분리됨!`,
+            rule: '4대 선분(각이등분선·중선·수선·수직이등분선) 일치는 오직 이등변삼각형만의 특권!',
+            formulaHTML: `• <strong>이등변삼각형($AB=AC$)</strong>: ${tex(`\\overline{AD}(\\text{각이등분}) = \\overline{AM}(\\text{중선}) = \\overline{AH}(\\text{수선})`)}<br/>• <strong>일반삼각형($AB\\ne AC$)</strong>: ${tex(`D \\ne M \\ne H`)} (접었을 때 포개어지지 않음!)`,
+            notes: `• 둔각삼각형에서는 꼭짓점 $A$에서 밑변 $BC$에 내린 수선의 발 $H$가 <strong>변 $BC$ 바깥쪽 연장선 위</strong>에 떨어진다는 점도 시험 단골입니다!`
+          };
+        }
+        return {
+          badge: `탐구 1 · 이등변삼각형(${sub === 'isoRight' ? '직각이등변' : sub === 'isoSide' ? '옆으로 누운형' : sub === 'isoPointP' ? '대칭축 위 점 P' : '표준형'})의 성질과 대칭 접기`,
+          hint: `꼭짓점 $A, B, C$를 드래그하거나 슬라이더로 반을 접어보세요! <strong class="text-sky-300">AB = AC(${cCm}cm)</strong>이면 <strong class="text-pink-300">두 밑각 ∠B = ∠C = ${degB}°</strong>이고, 꼭지각 이등분선 $AD$는 밑변 $BC$를 <strong class="text-amber-300">수직이등분(AD⊥BC, BD=CD)</strong>합니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 다시 펼치기' : '🎬 AD를 접는 선으로 반 접어 포개기!',
+          parts: [
+            { id: 0, name: `🟦 [정의] 길이가 같은 두 변: AB = AC = ${cCm} cm`, desc: `등변이 만나는 각 ∠A(${degA}°)가 꼭지각, 대변 BC가 밑변!`, val: `AB = AC ⭕`, color: GCOL.cyan, ok: true },
+            { id: 1, name: `🩷 [성질 1] 크기가 같은 두 밑각: ∠B = ∠C = ${degB}°`, desc: `(180° - ${degA}°) ÷ 2 = ${degB}° (SAS 합동 대응각)`, val: `∠B=∠C=${degB}°`, color: GCOL.pink, ok: true },
+            { id: 2, name: sub === 'isoPointP' ? `🟨 [응용] 대칭축 AD 위 점 P: △PBD ≡ △PCD (PB=PC)` : `🟨 [성질 2] 꼭지각 이등분선 AD ⊥ BC, BD = CD`, desc: sub === 'isoRight' ? `직각이등변에서는 AD = BD = CD = ½BC (외심 일치!)` : `△ABD ≡ △ACD (SAS 합동)으로 완벽 대칭!`, val: `AD⊥BC, BD=CD`, color: GCOL.gold, ok: true }
+          ],
+          totalRes: `∠A=${degA}°, ∠B=∠C=${degB}° | △ABD ≡ △ACD (SAS 합동) ➔ AD⊥BC, BD=CD`,
+          rule: '이등변삼각형 2대 성질: ① 두 밑각의 크기가 같다  ② 꼭지각 이등분선은 밑변을 수직이등분한다!',
+          formulaHTML: `• <strong>밑각 공식</strong>: ${tex(`\\angle B = \\angle C = \\dfrac{180^\\circ - \\angle A}{2} = \\dfrac{180^\\circ - ${degA}^\\circ}{2} = \\mathbf{${degB}^\\circ}`)}<br/>• <strong>증명 핵심</strong>: $\\triangle ABD$와 $\\triangle ACD$에서 $AB=AC, \\angle BAD=\\angle CAD, AD\\text{ 공통} \\implies \\mathbf{\\text{SAS 합동}}$!`,
+          notes: `• 도형이 옆으로 누워 있거나 뒤집혀 있어도 바닥 선분을 밑변이라고 착각하지 마세요! <strong>길이가 같은 두 변이 만나는 각이 무조건 꼭지각</strong>입니다.`
+        };
+      }
+
+      // ==================== [탭 2: 직각삼각형 합동 RHA / RHS] ====================
+      if (m === 2) {
+        if (sub === 'trapezoidRHA') {
+          return {
+            badge: `탐구 2-C · 🔥 [내신 출제 1순위] 사다리꼴 속 회전 직각삼각형 (● + × = 90° ➔ RHA 합동!)`,
+            hint: `일직선 $BD$ 위의 점 $C$에서 $\\angle ACE = 90^\\circ$이고 빗변 $AC = CE$일 때, 평각 $180^\\circ$에서 $90^\\circ$를 빼면 <strong class="text-amber-300">● + × = 90°</strong>가 되어 양옆 직각삼각형 <strong class="text-sky-300">△ABC ≡ △CDE (RHA 합동)</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원위치로 복귀' : '🎬 △CDE를 회전·이동해 △ABC에 포개기!',
+            parts: [
+              { id: 0, name: `🟨 직각(R=90°)과 빗변(H: AC = CE) 일치`, desc: `∠B = ∠D = 90°, 빗변 AC = CE`, val: `R + H 충족`, color: GCOL.gold, ok: true },
+              { id: 1, name: `🩷 ● + × = 90° 각 복제 (예각 A 일치 ➔ RHA!)`, desc: `∠A = ∠ECD = ×, ∠ACB = ∠E = ●`, val: `RHA 합동 ⭕`, color: GCOL.pink, ok: true },
+              { id: 2, name: `🟩 대응변의 합: 밑변 BD = BC + CD = DE + AB`, desc: `AB = CD = 12, BC = DE = 16 ➔ BD = 28!`, val: `BD = AB+DE`, color: GCOL.green, ok: true }
+            ],
+            totalRes: `● + × = 90° 에 의해 △ABC ≡ △CDE (RHA 합동) ➔ BD = AB + DE`,
+            rule: '직각(90°)을 끼고 꺾인 두 직각삼각형이 보이면 즉시 양옆에 ●, ×를 적어라 (●+×=90°)!',
+            formulaHTML: `• $\\triangle ABC$에서 $\\angle A + \\bullet = 90^\\circ$ 이고 평각 $C$에서 $\\bullet + \\angle ECD = 90^\\circ \\implies \\mathbf{\\angle A = \\angle ECD(\\times)}$!<br/>• 따라서 $\\triangle ABC \\equiv \\triangle CDE$ (<strong>RHA 합동</strong>) $\\implies \\square ABDE\\text{ 넓이} = \\text{사다리꼴 넓이}$!`,
+            notes: `• 이 그림에서 가운데 끼인 $\\triangle ACE$는 두 변이 같고 끼인각이 $90^\\circ$인 <strong>직각이등변삼각형(45°-45°-90°)</strong>이 됩니다!`
+          };
+        }
+        if (sub === 'ssaCounter') {
+          return {
+            badge: `탐구 2-F · 🚫 [결정적 반례] 왜 일반삼각형에는 SSA 합동이 없고 직각(RHS)에만 있을까?`,
+            hint: `끼인각이 아닌 예각 $\\angle A(34^\\circ)$와 두 변 $AB, BC$의 길이만 고정하면, 점 $B$에서 그린 원이 반직선과 <strong class="text-rose-400">두 점 C₁, C₂에서 만나 모양이 전혀 다른 두 삼각형(△ABC₁ ≠ △ABC₂)</strong>이 생깁니다!`,
+            actionTxt: '🎬 두 교점 C₁(둔각) vs C₂(예각) 비교',
+            parts: [
+              { id: 0, name: `🟦 첫 번째 삼각형 △ABC₁ (둔각삼각형)`, desc: `BC₁ = r 인 안쪽 교점`, val: `△ABC₁`, color: GCOL.cyan, ok: false },
+              { id: 1, name: `🩷 두 번째 삼각형 △ABC₂ (예각삼각형)`, desc: `BC₂ = r 로 변의 길이는 같지만 모양이 다름!`, val: `≠ △ABC₂ ❌`, color: GCOL.pink, ok: false }
+            ],
+            totalRes: `끼인각이 아닌 SSA 조건은 삼각형이 2개로 갈라져 합동 조건이 될 수 없음(❌)!`,
+            rule: '두 변과 한 각이 주어질 때는 반드시 끼인각(SAS)이거나 직각+빗변(RHS)이어야만 합동이다!',
+            formulaHTML: `• 오직 $\\angle A = 90^\\circ$일 때만 피타고라스 정리($b^2 = c^2 - a^2$)에 의해 나머지 한 변의 길이가 유일하게 하나로 결정되어 <strong>RHS 합동</strong>이 성립합니다!`,
+            notes: `• 일반삼각형 합동 조건 3가지(<strong>SSS, SAS, ASA</strong>)와 직각삼각형 합동 조건 2가지(<strong>RHA, RHS</strong>) 외에 SSA나 AAA는 절대 합동 조건이 아닙니다!`
+          };
+        }
+        const isRHS = sub === 'rhsPair' || sub === 'kiteFold';
+        return {
+          badge: `탐구 2 · 직각삼각형의 합동 조건 — ${isRHS ? 'RHS 합동 (직각 R + 빗변 H + 다른 한 변 S)' : 'RHA 합동 (직각 R + 빗변 H + 한 예각 A)'}`,
+          hint: `슬라이더를 밀어 두 직각삼각형을 직접 포개어 보세요! <strong class="text-amber-300">90° 직각(R)과 맞은편 빗변(H)의 길이가 같고</strong>, 추가로 <strong class="text-sky-300">${isRHS ? '다른 한 직각변(S)의 길이가 같으면 RHS 합동' : '한 예각(A)의 크기가 같으면 RHA 합동'}</strong>입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 두 삼각형 분리하기' : '🎬 슬라이딩으로 포개어 합동 검증!',
+          parts: [
+            { id: 0, name: `🟨 조건 1: 직각(R = 90°) + 빗변(H) 길이 일치`, desc: `90° 맞은편 가장 긴 변(빗변)이 같아야 출발 가능!`, val: `R + H 일치 ⭕`, color: GCOL.gold, ok: true },
+            { id: 1, name: isRHS ? `🟦 조건 2: 다른 한 변(S) 길이 일치 ➔ RHS 합동!` : `🩷 조건 2: 한 예각(A) 크기 일치 ➔ RHA 합동!`, desc: isRHS ? `같은 변끼리 맞대어 붙이면 이등변삼각형이 됨!` : `남은 예각도 90°-∠C로 자동 일치 (ASA 원리!)`, val: isRHS ? `RHS 합동 ⭕` : `RHA 합동 ⭕`, color: isRHS ? GCOL.cyan : GCOL.pink, ok: true }
+          ],
+          totalRes: isRHS ? `∠B=∠E=90°(R), AC=DF(H), AB=DE(S) ➔ △ABC ≡ △DEF (RHS)` : `∠B=∠E=90°(R), AC=DF(H), ∠C=∠F(A) ➔ △ABC ≡ △DEF (RHA)`,
+          rule: 'R = Right angle(90°) · H = Hypotenuse(빗변) · A = Angle(예각) · S = Side(변)',
+          formulaHTML: `• <strong>RHA 합동</strong>: 직각($R$) + 빗변($H$) + 한 예각($A$) $\\implies$ 내각의 합으로 <strong>ASA 합동</strong> 귀결!<br/>• <strong>RHS 합동</strong>: 직각($R$) + 빗변($H$) + 한 변($S$) $\\implies$ 붙여서 <strong>이등변삼각형</strong>으로 증명!`,
+          notes: `• <strong>[주의]</strong>: 직각삼각형이라고 해서 무조건 RHA/RHS만 되는 것이 아닙니다! 만약 <strong>빗변(H)이 같다는 조건 없이 두 직각변과 직각(90°)이 같다면 SAS 합동</strong>입니다!`
+        };
+      }
+
+      // ==================== [탭 3: 일반삼각형 합동 SSS / SAS / ASA] ====================
+      if (m === 3) {
+        const map = {
+          sss: { title: 'SSS 합동 (세 쌍의 대응변의 길이가 각각 같을 때)', rule: 'AB = DE, BC = EF, CA = FD ➔ △ABC ≡ △DEF (SSS 합동)' },
+          sas: { title: 'SAS 합동 (두 쌍의 대응변과 그 끼인각이 같을 때)', rule: 'AB = DE, AC = DF, 끼인각 ∠A = ∠D ➔ △ABC ≡ △DEF (SAS 합동)' },
+          asa: { title: 'ASA 합동 (한 쌍의 대응변과 그 양 끝각이 같을 때)', rule: 'BC = EF, 양 끝각 ∠B = ∠E, ∠C = ∠F ➔ △ABC ≡ △DEF (ASA 합동)' },
+          bowtie: { title: '모래시계형 맞꼭지각 합동 (숨은 끼인각 찾기!)', rule: 'OA = OC, OB = OD, 맞꼭지각 ∠AOB = ∠COD ➔ △OAB ≡ △OCD (SAS)' },
+          parallelZ: { title: '평행선 Z자 엇각을 이용한 합동', rule: 'AB ∥ CD (엇각 ∠A=∠C, ∠B=∠D) + AB = CD ➔ △OAB ≡ △OCD (ASA)' },
+          rot60: { title: '정삼각형 2개가 꼭짓점 A를 공유할 때 60° 회전합동', rule: 'AB = AC, AD = AE, ∠BAD = 60°+∠CAD = ∠CAE ➔ △ABD ≡ △ACE (SAS)' }
+        };
+        const cur = map[sub];
+        return {
+          badge: `탐구 3 · 일반삼각형의 합동 — ${cur.title}`,
+          hint: `슬라이더를 오른쪽으로 밀어 두 삼각형이 완벽하게 포개어지는지 확인하세요! <strong class="text-amber-300">${cur.rule}</strong>`,
+          actionTxt: state.fold > 0.5 ? '🎬 두 삼각형 분리하기' : '🎬 이동·회전하여 포개어 합동 확인!',
+          parts: [
+            { id: 0, name: `🟦 첫 번째 삼각형 (기준 도형)`, desc: `대응하는 꼭짓점 순서대로 기호 작성 필수!`, val: `기준 삼각형`, color: GCOL.cyan, ok: true },
+            { id: 1, name: `🩷 두 번째 합동 삼각형 (이동·회전 포개기)`, desc: cur.rule, val: `완벽 합동(≡) ⭕`, color: GCOL.pink, ok: true }
+          ],
+          totalRes: cur.rule,
+          rule: '숨은 조건 3대장: ① 공통변(S)  ② 맞꼭지각(A)  ③ 평행선 엇각·동위각(A)!',
+          formulaHTML: `• <strong>합동 기호 작성 규칙</strong>: $\\triangle ABC \\equiv \\triangle DEF$를 쓸 때는 반드시 <strong>대응하는 꼭짓점 순서</strong>를 맞춰 써야 합니다!`,
+          notes: `• 문제에 안 적혀 있어도 그림에서 스스로 찾아야 하는 조건: <strong>① 겹친 선분 = 공통변, ② X자 교차 = 맞꼭지각, ③ 화살표(≫) = 평행선 엇각</strong>!`
+        };
+      }
+
+      // ==================== [탭 4: 각의 이등분선 & 수직이등분선] ====================
+      if (m === 4) {
+        if (sub === 'perpBisect') {
+          return {
+            badge: `탐구 4-C · 선분 AB의 수직이등분선 성질 — 그 위의 점 P에서 양 끝점까지 PA = PB!`,
+            hint: `선분 $AB$의 중점 $M(AM=BM)$에서 수직($\\perp$)으로 세운 직선 위의 점 $P$는, 슬라이더로 높이를 아무리 위아래로 바꿔도 <strong class="text-amber-300">△PAM ≡ △PBM (SAS 합동)에 의해 항상 PA = PB</strong>입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 점 P 아래로 이동' : '🎬 수직이등분선 따라 점 P 이동 실험!',
+            parts: [
+              { id: 0, name: `🟨 작도 조건: AM = BM (중점) & PM ⊥ AB (수직)`, desc: `PM은 두 직각삼각형의 공통변!`, val: `SAS 합동 조건`, color: GCOL.gold, ok: true },
+              { id: 1, name: `🟦 결론: 양 끝점까지의 거리 일치 (PA = PB)`, desc: `이 성질이 바로 '외심 O에서 OA=OB=OC'의 뿌리!`, val: `PA = PB ⭕`, color: GCOL.cyan, ok: true }
+            ],
+            totalRes: `AM = BM, PM ⊥ AB, PM 공통 ➔ △PAM ≡ △PBM (SAS 합동) ➔ PA = PB`,
+            rule: '선분의 수직이등분선 = 두 끝점 A, B에서 같은 거리에 있는 점들의 모임(외심의 뿌리)!',
+            formulaHTML: `• <strong>정방향($\\text{수직이등분선} \\implies PA=PB$)</strong>: $\\triangle PAM \\equiv \\triangle PBM$ (<strong>SAS 합동</strong>)<br/>• <strong>역방향($PA=PB \\implies \\text{수직이등분선}$)</strong>: $\\triangle PAM \\equiv \\triangle PBM$ (<strong>RHS 합동</strong>)`,
+            notes: `• 외심(탭 5)이 왜 세 꼭짓점까지의 거리가 같은지 이해하는 가장 중요한 기본 정리입니다!`
+          };
+        }
+        if (sub === 'triAreaRatio') {
+          return {
+            badge: `탐구 4-D · [내신 응용] 삼각형 꼭지각 이등분선과 넓이비 (△ABD : △ACD = AB : AC)`,
+            hint: `꼭지각 $\\angle A$의 이등분선이 밑변 $BC$와 만나는 점 $D$에서 두 변 $AB, AC$에 내린 수선의 길이는 <strong class="text-pink-300">DE = DF = h로 똑같습니다!</strong> 따라서 두 삼각형의 넓이비는 곧 <strong class="text-amber-300">밑변 역할을 하는 AB : AC의 길이비</strong>와 같습니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 같은 높이 DE = DF 강조!',
+            parts: [
+              { id: 0, name: `🩷 각이등분선 위 점 D에서 내린 두 수선: DE = DF`, desc: `△ADE ≡ △ADF (RHA 합동)이므로 높이가 DE=DF로 같음!`, val: `높이 DE = DF`, color: GCOL.pink, ok: true },
+              { id: 1, name: `🟦 왼쪽 삼각형 넓이: △ABD = ½ × AB × DE`, desc: `AB를 밑변, DE를 높이로 계산`, val: `비율 = AB`, color: GCOL.cyan, ok: true },
+              { id: 2, name: `🟩 오른쪽 삼각형 넓이: △ACD = ½ × AC × DF`, desc: `높이가 같으므로 넓이비는 곧 AB : AC!`, val: `비율 = AC`, color: GCOL.green, ok: true }
+            ],
+            totalRes: `DE = DF 이므로 넓이비 △ABD : △ACD = AB : AC (= BD : CD)!`,
+            rule: '각이등분선 교점 D는 두 변 AB, AC까지의 수직거리(높이 DE=DF)가 같으므로 넓이비 = AB : AC!',
+            formulaHTML: `• ${tex(`\\triangle ABD : \\triangle ACD = \\left(\\dfrac{1}{2}\\cdot\\overline{AB}\\cdot\\overline{DE}\\right) : \\left(\\dfrac{1}{2}\\cdot\\overline{AC}\\cdot\\overline{DF}\\right) = \\mathbf{\\overline{AB} : \\overline{AC}}`)}`,
+            notes: `• 또한 꼭짓점 $A$에서 본 높이가 같으므로 $\\triangle ABD : \\triangle ACD = BD : CD$가 되어 유명한 <strong>내각의 이등분선 정리($AB : AC = BD : CD$)</strong>가 탄생합니다!`
+          };
+        }
+        const isConv = sub === 'angleBisectConv';
+        const isCounter = sub === 'slantedCounter';
+        return {
+          badge: isCounter
+            ? `탐구 4-E · 🚫 [반례] 수직(90°)이 아닌 비스듬한 선분 PQ는 PE(=PF)보다 항상 길다!`
+            : `탐구 4 · 각의 이등분선의 성질 — ${isConv ? '역정리 (PE = PF ⟹ 각이등분선, RHS 합동)' : '정리 (각이등분선 ⟹ PE = PF, RHA 합동)'}`,
+          hint: isCounter
+            ? `점 $P$에서 변 $AB$에 $90^\\circ$ 수직으로 내린 수선의 발 $E$만이 최단거리($PE=PF$)입니다! 직각 기호가 없는 비스듬한 선분 $PQ$는 빗변이므로 <strong class="text-rose-400">PQ > PE = PF</strong>입니다!`
+            : `각 $\\angle BAC$의 이등분선 위의 점 $P$에서 두 변에 내린 수선의 발을 $E, F$라 하면, <strong class="text-amber-300">△APE ≡ △APF (${isConv ? 'RHS' : 'RHA'} 합동)에 의해 항상 PE = PF이고 AE = AF</strong>입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 점 P 원위치' : '🎬 각이등분선 따라 점 P 이동 실험!',
+          parts: [
+            { id: 0, name: `🟦 위쪽 직각삼각형 △APE (∠AEP = 90°)`, desc: `빗변 AP 공통`, val: `AE = AF`, color: GCOL.cyan, ok: true },
+            { id: 1, name: `🩷 아래쪽 직각삼각형 △APF (∠AFP = 90°)`, desc: isConv ? `PE = PF 로부터 RHS 합동!` : `∠PAE = ∠PAF 로부터 RHA 합동!`, val: `PE = PF ⭕`, color: GCOL.pink, ok: true }
+          ],
+          totalRes: `△APE ≡ △APF (${isConv ? 'RHS' : 'RHA'} 합동)  ➔  수직거리 PE = PF, 접선 길이 AE = AF`,
+          rule: '서술형 감점 1위 포인트: (각이등분 ⟹ PE=PF)는 RHA 합동, (PE=PF ⟹ 각이등분)은 RHS 합동!',
+          formulaHTML: `• <strong>각의 이등분선</strong> = 두 변 $AB, AC$로부터 같은 수직거리에 있는 점들의 모임 (<strong>내심 $I$의 뿌리!</strong>)`,
+          notes: `• 이 성질 때문에 삼각형 세 내각의 이등분선이 만나는 <strong>내심 $I$에서 세 변까지의 수직거리($ID=IE=IF=r$)</strong>가 모두 같아집니다!`
+        };
+      }
+
+      // ==================== [탭 5: 외심 O & 세 변의 수직이등분선] ====================
+      if (m === 5) {
+        const Rcm = circum ? (circum.R / 10).toFixed(1) : '0';
+        const boc = degA <= 90 ? 2 * degA : 360 - 2 * degA;
+        if (sub === 'circumRight' || sub === 'circum3060') {
+          return {
+            badge: `탐구 5 · 👑 [시험 1순위] 직각삼각형의 외심 O는 무조건 『빗변의 정확한 중점』이다!`,
+            hint: `∠B = 90°인 직각삼각형에서 세 변의 수직이등분선을 그으면 놀랍게도 <strong class="text-amber-300">빗변 AC의 중점 E에서 정확히 만납니다(O = E)!</strong> 따라서 <strong class="text-sky-300">외접원 반지름 R = OA = OB = OC = ½ × (빗변 AC)</strong>입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 OA = OB = OC = ½AC 반지름 강조!',
+            parts: [
+              { id: 0, name: `🟨 외심 O의 위치 = 빗변 AC의 중점 E (O = E!)`, desc: `예각(내부)과 둔각(외부)의 경계인 빗변 한가운데!`, val: `O = 빗변 중점`, color: GCOL.gold, ok: true },
+              { id: 1, name: `🟦 세 꼭짓점까지 같은 반지름: OA = OB = OC = R`, desc: `직각 꼭짓점 B에서 빗변 중점 O를 이은 중선 BO도 반지름 R!`, val: `R = ½AC = ${Rcm}cm`, color: GCOL.cyan, ok: true },
+              { id: 2, name: sub === 'circum3060' ? `🩷 30°-60°-90° 특집: △OBC는 정삼각형!` : `🩷 두 이등변삼각형으로 분할: △OAB & △OBC`, desc: sub === 'circum3060' ? `OB = OC = R 이고 ∠C = 60° 이므로 △OBC는 정삼각형!` : `OA=OB 이므로 ∠OAB=∠OBA, OB=OC 이므로 ∠OBC=∠OCB!`, val: sub === 'circum3060' ? `△OBC 정삼각형` : `이등변 2개 탄생`, color: GCOL.pink, ok: true }
+            ],
+            totalRes: `직각삼각형 외심 O = 빗변의 중점  ➔  OA = OB = OC = R = ½ × (빗변) = ${Rcm} cm`,
+            rule: '문제에 직각삼각형의 빗변의 중점 M이 나오면 문제에 안 적혀 있어도 무조건 외심(MA=MB=MC)이다!',
+            formulaHTML: `• ${tex(`\\angle B = 90^\\circ \\implies \\text{외심 } O = \\text{빗변 } AC\\text{의 중점}, \\quad R = \\overline{OA} = \\overline{OB} = \\overline{OC} = \\dfrac{1}{2}\\overline{AC}`)}`,
+            notes: `• <strong>[1초 암산]</strong>: 직각삼각형의 빗변 길이가 $10\\text{ cm}$일 때 외접원의 반지름 $R$은? 피타고라스 쓸 필요도 없이 $10 \\div 2 = \\mathbf{5\\text{ cm}}$입니다!`
+          };
+        }
+        return {
+          badge: `탐구 5 · 삼각형의 외심 O — 세 변의 수직이등분선의 교점 (OA = OB = OC = R)`,
+          hint: `꼭짓점 $A$를 위아래로 드래그하거나 우측 각도 칩을 눌러보세요! <strong class="text-sky-300">예각이면 내부</strong>, <strong class="text-amber-300">직각이면 빗변의 중점</strong>, <strong class="text-rose-400">둔각이면 외부</strong>로 외심 $O$가 이동하지만 언제나 <strong class="text-emerald-300">OA = OB = OC = R(${Rcm}cm)</strong>입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 전체 구조 보기' : '🎬 합동 삼각형 쌍 & 외심각(2∠A) 강조!',
+          parts: [
+            { id: 0, name: `🟦 합동 쌍 ①: △OAF ≡ △OBF (변 AB 수직이등분)`, desc: `AF = BF (중점 F), OF ⊥ AB ➔ OA = OB (SAS/RHS)`, val: `OA = OB = ${Rcm}`, color: GCOL.cyan, ok: true },
+            { id: 1, name: `🟩 합동 쌍 ②: △OBD ≡ △OCD (변 BC 수직이등분)`, desc: `BD = CD (중점 D), OD ⊥ BC ➔ OB = OC`, val: `OB = OC = ${Rcm}`, color: GCOL.green, ok: true },
+            { id: 2, name: `🩷 합동 쌍 ③: △OCE ≡ △OAE & 외심각 ∠BOC = 2∠A`, desc: degA <= 90 ? `∠A=${degA}° ➔ 중심각 ∠BOC = 2×${degA}° = ${2*degA}°!` : `둔각 ∠A=${degA}° ➔ 반사각=${2*degA}°, 안쪽 ∠BOC=${boc}°!`, val: `∠BOC = ${boc}°`, color: GCOL.pink, ok: true }
+          ],
+          totalRes: `OA = OB = OC = R(${Rcm}cm) | ∠x+∠y+∠z = 90° | ∠A=${degA}° ➔ ∠BOC = ${boc}°`,
+          rule: '외심 O 핵심 3요소: ① 세 변의 수직이등분선 교점(중점 D·E·F)  ② OA=OB=OC=R  ③ ∠BOC = 2∠A',
+          formulaHTML: `• <strong>이등변 밑각 합</strong>: $\\triangle OAB, \\triangle OBC, \\triangle OCA$가 이등변이므로 ${tex(`2x+2y+2z=180^\\circ \\implies \\mathbf{\\angle x + \\angle y + \\angle z = 90^\\circ}`)}<br/>• <strong>외심 중심각</strong>: $AO$ 연장선의 외각 성질에 의해 ${tex(`\\mathbf{\\angle BOC = 2x + 2z = 2\\angle A}`)}!`,
+          notes: `• <strong>[둔각 외심각 함정]</strong>: $\\angle A = 110^\\circ$(둔각)일 때 $\\angle BOC$를 물으면 $2 \\times 110^\\circ = 220^\\circ$는 바깥쪽 큰 각(반사각)이므로, 답은 $360^\\circ - 220^\\circ = \\mathbf{140^\\circ}$입니다!`
+        };
+      }
+
+      // ==================== [탭 6: 내심 I & 넓이 3분할 · 접선 · 평행선] ====================
+      if (m === 6) {
+        const rCm = inc ? (inc.r / 10).toFixed(1) : '0';
+        const bic = Math.round(90 + ang.degA / 2);
+        if (sub === 'incenterParallel') {
+          return {
+            badge: `탐구 6-F · 🔥 [시험 100% 출제] 내심 I를 지나고 밑변 BC에 평행한 직선 DE — 『△ADE 둘레 = AB + AC!』`,
+            hint: `내심 $I$를 지나고 $BC$에 평행한 선분 $DE$를 그으면, <strong class="text-amber-300">각이등분선 + 평행선 엇각</strong>에 의해 양쪽에 이등변삼각형 2개(<strong class="text-sky-300">DB = DI</strong>, <strong class="text-pink-300">EC = EI</strong>)가 생깁니다! 슬라이더로 $DI$와 $EI$를 양옆으로 펴보세요!`,
+            actionTxt: state.fold > 0.5 ? '🎬 접어서 △ADE로 만들기' : '🎬 DI ➔ DB, EI ➔ EC로 펴서 AB+AC 확인!',
+            parts: [
+              { id: 0, name: `🟦 왼쪽 이등변삼각형 △DBI (DI = DB)`, desc: `∠DBI = ∠IBC(내심) = ∠DIB(엇각) ➔ DI = DB!`, val: `AD+DI = AB`, color: GCOL.cyan, ok: true },
+              { id: 1, name: `🩷 오른쪽 이등변삼각형 △ECI (EI = EC)`, desc: `∠ECI = ∠ICB(내심) = ∠EIC(엇각) ➔ EI = EC!`, val: `AE+EI = AC`, color: GCOL.pink, ok: true },
+              { id: 2, name: `🟨 결론: △ADE의 둘레 = AB + AC (${(parseFloat(cCm)+parseFloat(bCm)).toFixed(1)} cm)`, desc: `(AD + DI) + (AE + EI) = (AD + DB) + (AE + EC) = AB + AC!`, val: `둘레 = AB+AC`, color: GCOL.gold, ok: true }
+            ],
+            totalRes: `△ADE의 둘레 = AD + DE + AE = (AD+DB) + (AE+EC) = AB + AC! (밑변 BC는 안 씀!)`,
+            rule: '내심 I를 지나는 평행선 DE 문제: 위쪽 작은 △ADE의 둘레 = 왼쪽 변 AB + 오른쪽 변 AC!',
+            formulaHTML: `• ${tex(`(\\triangle ADE\\text{ 둘레}) = \\overline{AD} + (\\overline{DI}+\\overline{IE}) + \\overline{AE} = (\\overline{AD}+\\overline{DB}) + (\\overline{AE}+\\overline{EC}) = \\mathbf{\\overline{AB} + \\overline{AC}}`)}`,
+            notes: `• 문제에서 밑변 $BC$의 길이를 함정으로 함께 알려주더라도 절대 더하지 마세요! <strong>위쪽 $\\triangle ADE$ 둘레는 오직 $AB + AC$의 합</strong>입니다.`
+          };
+        }
+        if (sub === 'incenterRightSq') {
+          return {
+            badge: `탐구 6-D · 직각삼각형(6-8-10) 내접원 반지름 r — 직각 모퉁이 r × r 정사각형 원리!`,
+            hint: `∠B = 90°인 직각삼각형에서는 직각 모퉁이 사각형 $BDIF$가 <strong class="text-amber-300">한 변이 r인 정사각형(BD = BF = r)</strong>이 됩니다! 따라서 <strong class="text-emerald-300">r = (두 직각변 합 6+8 - 빗변 10) ÷ 2 = 2 cm</strong>입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 넓이 3분할 피자 펼치기와 동시 검증!',
+            parts: [
+              { id: 0, name: `🟨 직각 모퉁이 정사각형 □BDIF (한 변 = r = 2)`, desc: `∠B = ∠D = ∠F = 90° 이고 ID = IF = r 이므로 정사각형!`, val: `BD = BF = r`, color: GCOL.gold, ok: true },
+              { id: 1, name: `🟦 꼭짓점 A 쪽 접선 쌍: AF = AE = 6 - r`, desc: `AB(6)에서 BF(r)를 뺀 나머지 = 6 - 2 = 4`, val: `AF = AE = 4`, color: GCOL.cyan, ok: true },
+              { id: 2, name: `🩷 꼭짓점 C 쪽 접선 쌍: CD = CE = 8 - r`, desc: `빗변 AC(10) = (6-r) + (8-r) ➔ 2r = 6+8-10 = 4 ➔ r = 2!`, val: `CD = CE = 6`, color: GCOL.pink, ok: true }
+            ],
+            totalRes: `직각삼각형(6, 8, 10) 내접원 반지름: r = (6 + 8 - 10) ÷ 2 = 2 cm (넓이 = 4π)`,
+            rule: '직각삼각형 내접원 반지름 2대 공식: ① r = (a+c-빗변b)/2   ② ½ac = ½r(a+b+c)',
+            formulaHTML: `• <strong>방법 1 (정사각형 접선)</strong>: ${tex(`r = \\dfrac{6 + 8 - 10}{2} = \\mathbf{2\\text{ cm}}`)}<br/>• <strong>방법 2 (넓이 공식)</strong>: ${tex(`\\dfrac{1}{2}\\times 6\\times 8 = \\dfrac{1}{2}\\times r\\times(6+8+10) \\implies 24 = 12r \\implies \\mathbf{r = 2\\text{ cm}}`)}`,
+            notes: `• <strong>(3,4,5)면 $r=1$</strong>, <strong>(6,8,10)이면 $r=2$</strong>, <strong>(5,12,13)이면 $r=2$</strong>, <strong>(8,15,17)이면 $r=3$</strong>으로 항상 깔끔한 자연수가 나옵니다!`
+          };
+        }
+        return {
+          badge: `탐구 6 · 삼각형의 내심 I — 세 내각의 이등분선의 교점 & 넓이 3분할 (S = ½r(a+b+c))`,
+          hint: `슬라이더를 오른쪽으로 밀어 <strong class="text-amber-300">내심 기준 피자 3조각(△IBC, △ICA, △IAB)을 바닥에 나란히 펼쳐보세요!</strong> 세 조각의 높이가 모두 내접원 반지름 <strong class="text-pink-300">ID = IE = IF = r(${rCm}cm)</strong>로 같아 <strong class="text-emerald-300">S = ½r(a+b+c)</strong>가 됩니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 피자 3조각 다시 합치기' : '🎬 피자 3조각 일렬로 펼쳐 넓이 공식 확인!',
+          parts: [
+            { id: 0, name: `🟨 꼭짓점 A 쪽 합동 쌍: △IAF ≡ △IAE (AF = AE)`, desc: `각이등분선 AI 기준 RHA 합동 ➔ 접선 길이 AF = AE = x`, val: `AF = AE (|)`, color: GCOL.gold, ok: true },
+            { id: 1, name: `🟦 꼭짓점 B 쪽 합동 쌍: △IBF ≡ △IBD (BF = BD)`, desc: `각이등분선 BI 기준 RHA 합동 ➔ 접선 길이 BF = BD = y`, val: `BF = BD (||)`, color: GCOL.cyan, ok: true },
+            { id: 2, name: `🩷 꼭짓점 C 쪽 합동 쌍: △ICD ≡ △ICE & ∠BIC = ${bic}°`, desc: `CD = CE = z | 내심각 ∠BIC = 90° + ½∠A(${degA}°) = ${bic}°!`, val: `∠BIC = ${bic}°`, color: GCOL.pink, ok: true }
+          ],
+          totalRes: `ID = IE = IF = r(${rCm}cm) | S = ½r(a+b+c) | ∠A=${degA}° ➔ ∠BIC = 90°+½A = ${bic}°`,
+          rule: '내심 I 핵심 3요소: ① 세 내각 이등분선 교점  ② 수선의 발 ID=IE=IF=r  ③ ∠BIC = 90° + ½∠A',
+          formulaHTML: `• <strong>넓이 3분할 공식</strong>: ${tex(`S = \\triangle IBC + \\triangle ICA + \\triangle IAB = \\dfrac{1}{2}ar + \\dfrac{1}{2}br + \\dfrac{1}{2}cr = \\mathbf{\\dfrac{1}{2}r(a+b+c)}`)}<br/>• <strong>내심 각 공식</strong>: ${tex(`x+y+z=90^\\circ \\implies \\mathbf{\\angle BIC = 180^\\circ-(y+z) = 90^\\circ + \\dfrac{1}{2}\\angle A = ${bic}^\\circ}`)}`,
+          notes: `• <strong>[외심 vs 내심 합동 비교]</strong>: 외심은 중점 $D,E,F$ 기준 <strong>변 양옆끼리($\\triangle OBD \\equiv \\triangle OCD$)</strong> 합동이지만, 내심은 각이등분선 기준 <strong>꼭짓점 양옆끼리($\\triangle IAF \\equiv \\triangle IAE$)</strong> 합동입니다!`
+        };
+      }
+
+      // ==================== [탭 7: 외심 O · 내심 I · 무게중심 G 비교] ====================
+      if (m === 7) {
+        const Rcm = circum ? (circum.R / 10).toFixed(1) : '0';
+        const rCm = inc ? (inc.r / 10).toFixed(1) : '0';
+        return {
+          badge: `탐구 7 · 삼각형의 3대 중심 완벽 대조 — 외심(O) · 내심(I) · 무게중심(G)`,
+          hint: `우측의 <strong class="text-amber-300">외심 O · 내심 I · 무게중심 G 해부 카드를 클릭</strong>해 보세요! <strong class="text-sky-300">외심과 무게중심의 D,E,F는 '세 변의 중점'</strong>이지만, <strong class="text-emerald-300">내심의 D,E,F는 '수선의 발(접점)'</strong>이라 비대칭 삼각형에서는 위치가 다릅니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 기본 비교 보기' : '🎬 O · I · G 차례대로 하이라이트!',
+          parts: [
+            { id: 0, name: `🔵 외심 O: 세 변의 수직이등분선 교점 (중점 D·E·F⊥)`, desc: `세 꼭짓점까지 등거리 (OA = OB = OC = R = ${Rcm}cm)`, val: `R = ${Rcm} cm`, color: GCOL.cyan, ok: true },
+            { id: 1, name: `🟢 내심 I: 세 내각의 이등분선 교점 (수선의 발 D·E·F⊥)`, desc: `세 변까지 수직 등거리 (ID = IE = IF = r = ${rCm}cm)`, val: `r = ${rCm} cm`, color: GCOL.green, ok: true },
+            { id: 2, name: `🟣 무게중심 G: 세 중선(AD·BE·CF)의 교점 (중점 D·E·F)`, desc: `꼭짓점으로부터 2 : 1 내분 (AG:GD=2:1) & 6등분 넓이 일치!`, val: `AG : GD = 2 : 1`, color: GCOL.purple, ok: true }
+          ],
+          totalRes: sub === 'oigEquil' ? `정삼각형: O = I = G 완벽 일치! (외접원 반지름 R = 2r)` : sub === 'oigRight' ? `직각삼각형: 외심 O = 빗변 중점, 중선 BO = R, 무게중심 GO = ⅓R` : `외심(수직이등분선) · 내심(각이등분선) · 무게중심(중선 2:1)`,
+          rule: '정삼각형은 O = I = G 한 점 일치! 이등변삼각형은 대칭축 AD 위에 O - G - I 일직선 정렬!',
+          formulaHTML: `• <strong>직각삼각형에서 외심 O와 무게중심 G 사이의 거리</strong>:<br/>&nbsp;&nbsp;직각 꼭짓점 $B$에서 빗변 중점 $O$를 이은 중선 $BO = R = \\dfrac{1}{2}AC$ 이므로 ${tex(`\\mathbf{\\overline{GO} = \\dfrac{1}{3}\\overline{BO} = \\dfrac{1}{6}\\overline{AC}}`)}!`,
+          notes: `• <strong>[참/거짓 단골]</strong>: 내심 $I$와 무게중심 $G$는 어떤 둔각삼각형에서도 <strong>무조건 삼각형 내부</strong>에 있지만, 외심 $O$만 둔각에서 <strong>외부</strong>로 나갑니다!`
+        };
+      }
+
+      // ==================== [탭 8: 고난도 각 추론 & 보조선 해부] ====================
+      const chaseMap = {
+        domino: {
+          badge: '탐구 8-A · 이등변삼각형 도미노 외각 연쇄 (∠B = x ➔ 2x ➔ 3x ➔ 4x)',
+          hint: `슬라이더를 밀어 이등변 도미노를 차례대로 세워보세요! 두 번째 외각을 $2x+2x=4x$로 착각하기 쉽지만, <strong class="text-amber-300">바닥 큰 삼각형 △BCD의 외각이므로 x + 2x = 3x, 그다음은 x + 3x = 4x</strong>로 1x씩 커집니다!`,
+          res: '∠B = x  ➔  ∠CAD = 2x  ➔  ∠DCE = 3x  ➔  ∠EDF = 4x (계단식 +x 증가!)',
+          rule: '도미노 이등변 외각 공식: n번째 이등변삼각형의 밑각은 nx, 바깥 외각은 (n+1)x!',
+          form: `• 1단계($\\triangle ABC$): 밑각 $x$, 외각 ${tex(`\\angle CAD = x + x = \\mathbf{2x}`)}<br/>• 2단계($\\triangle BCD$ 외각!): ${tex(`\\angle DCE = \\angle B(x) + \\angle BDC(2x) = \\mathbf{3x}`)} (절대 $4x$ 아님!)<br/>• 3단계($\\triangle BDE$ 외각!): ${tex(`\\angle EDF = \\angle B(x) + \\angle BED(3x) = \\mathbf{4x}`)}`
+        },
+        parallelIso: {
+          badge: '탐구 8-B · 평행선 + 각의 이등분선 (또는 종이접기) = 무조건 이등변삼각형 출현!',
+          hint: `각의 이등분선(<strong class="text-amber-300">∠APM = ∠QPM = ●</strong>)과 평행선 Z자 엇각(<strong class="text-pink-300">∠APM = ∠PMQ = ●</strong>)이 만나면 두 밑각이 같아져 <strong class="text-sky-300">QP = QM인 이등변삼각형</strong>이 탄생합니다!`,
+          res: '이등분각(●) = 엇각(●)  ➔  ∠QPM = ∠PMQ  ➔  △QPM은 QP = QM인 이등변삼각형!',
+          rule: '[각이등분선 + 평행선] 또는 [직사각형 테이프 종이접기] = 100% 이등변삼각형!',
+          form: `• ${tex(`\\angle QPM = \\angle APM(\\text{이등분}) = \\angle PMQ(\\text{엇각}) \\implies \\mathbf{\\overline{QP} = \\overline{QM}}`)}`
+        },
+        inBisect: {
+          badge: '탐구 8-C · [각이등분 3총사 ①] 두 내각의 이등분선의 교점 P (∠BPC = 90° + ½∠A)',
+          hint: `내심 $I$와 완전히 동일한 그림입니다! $\\bullet + \\times = 90^\\circ - \\frac{1}{2}\\angle A$ 이므로 <strong class="text-emerald-300">∠BPC = 90° + ½∠A</strong>입니다.`,
+          res: `현재 ∠A = ${degA}°  ➔  두 내각 이등분선 교점 ∠BPC = 90° + ½(${degA}°) = ${Math.round(90 + degA / 2)}°`,
+          rule: '① 내각+내각 = 90° + ½∠A   ② 내각+외각 = ½∠A   ③ 외각+외각 = 90° - ½∠A',
+          form: `• ${tex(`\\angle A + 2\\bullet + 2\\times = 180^\\circ \\implies \\bullet+\\times = 90^\\circ - \\dfrac{1}{2}\\angle A \\implies \\mathbf{\\angle BPC = 90^\\circ + \\dfrac{1}{2}\\angle A}`)}`
+        },
+        inExBisect: {
+          badge: '탐구 8-D · [각이등분 3총사 ②] 한 내각(∠B) + 한 외각(∠C) 이등분선의 교점 P (∠BPC = ½∠A!)',
+          hint: `오른쪽 위로 뻗어 만나는 점 $P$에서, 큰 삼각형 외각(<strong class="text-pink-300">2× = ∠A + 2●</strong>)을 2로 나누면 <strong class="text-amber-300">× = ½∠A + ●</strong>이고, 작은 삼각형 외각(<strong class="text-emerald-300">× = ∠P + ●</strong>)과 비교하면 <strong class="text-sky-300">∠BPC = ½∠A</strong>가 됩니다!`,
+          res: `내각 이등분선 + 외각 이등분선 교점 각 ∠BPC = ½∠A (꼭지각 A의 딱 절반!)`,
+          rule: '내각 이등분선과 외각 이등분선이 만나는 뾰족한 각 ∠P는 언제나 ∠A의 절반(½∠A)!',
+          form: `• ① $\\triangle ABC$ 외각: ${tex(`2\\times = \\angle A + 2\\bullet \\implies \\times - \\bullet = \\dfrac{1}{2}\\angle A`)}<br/>• ② $\\triangle PBC$ 외각: ${tex(`\\times = \\angle BPC + \\bullet \\implies \\mathbf{\\angle BPC = \\times - \\bullet = \\dfrac{1}{2}\\angle A}`)}`
+        },
+        exExBisect: {
+          badge: '탐구 8-E · [각이등분 3총사 ③] 두 외각의 이등분선의 교점 P (∠BPC = 90° - ½∠A)',
+          hint: `삼각형 바깥쪽 두 외각을 이등분하여 만나는 점 $P$(방심)에서는 내심 공식과 부호만 반대가 되어 <strong class="text-amber-300">∠BPC = 90° - ½∠A</strong>가 됩니다!`,
+          res: `두 외각 이등분선 교점 각 ∠BPC = 90° - ½∠A`,
+          rule: '안쪽(내각 2개)에서 만나면 90° + ½∠A, 바깥쪽(외각 2개)에서 만나면 90° - ½∠A!',
+          form: `• 두 외각의 합 $= (180^\\circ-\\angle B)+(180^\\circ-\\angle C) = 180^\\circ+\\angle A \\implies \\bullet+\\times = 90^\\circ+\\dfrac{1}{2}\\angle A$<br/>• 따라서 ${tex(`\\mathbf{\\angle BPC = 180^\\circ - (\\bullet+\\times) = 90^\\circ - \\dfrac{1}{2}\\angle A}`)}`
+        },
+        boomerang: {
+          badge: '탐구 8-F · 부메랑 도형(오목사각형 ABDC) 외각 법칙 (∠BDC = ∠A + ∠B + ∠C)',
+          hint: `슬라이더로 <strong class="text-amber-300">보조선 AD 연장선(AE)</strong>을 그어보세요! 왼쪽 $\\triangle ABD$의 외각(<strong class="text-sky-300">∠A₁ + ∠B</strong>)과 오른쪽 $\\triangle ACD$의 외각(<strong class="text-pink-300">∠A₂ + ∠C</strong>)이 합쳐져 세 뾰족각의 합이 됩니다!`,
+          res: '오목하게 들어간 각 ∠BDC = ∠A + ∠B + ∠C (세 뾰족한 각의 합!)',
+          rule: '부메랑(여우 머리) 공식: 안쪽 오목한 각 = 뾰족한 세 귀퉁이 각의 합(∠A + ∠B + ∠C)!',
+          form: `• 보조선 $AE$에 의해 ${tex(`\\angle BDC = \\angle BDE + \\angle CDE = (\\angle A_1+\\angle B) + (\\angle A_2+\\angle C) = \\mathbf{\\angle A + \\angle B + \\angle C}`)}`
+        },
+        rightAlt: {
+          badge: '탐구 8-G · 직각삼각형 빗변에 내린 수선 AH — ● + × = 90° 각도 복제',
+          hint: `$\\angle BAC = 90^\\circ$에서 수선 $AH \\perp BC$를 내리면, $\\bullet + \\times = 90^\\circ$ 원리에 의해 <strong class="text-sky-300">∠B = ∠CAH = ●</strong>이고 <strong class="text-pink-300">∠C = ∠BAH = ×</strong>로 각도가 그대로 복제됩니다!`,
+          res: '∠B = ∠CAH = ● (52°),  ∠C = ∠BAH = × (38°)  [3개 직각삼각형 AA 닮음]',
+          rule: '직각에서 빗변에 수선을 내리면 왼쪽 예각(●)과 오른쪽 예각(×)이 안쪽에서도 엇갈려 복제된다!',
+          form: `• $\\triangle ABC$에서 $\\angle B + \\angle C = 90^\\circ$이고, $\\triangle ABH$에서 $\\angle B + \\angle BAH = 90^\\circ \\implies \\mathbf{\\angle BAH = \\angle C(\\times)}$!`
+        },
+        equilRot: {
+          badge: '탐구 8-H · 정삼각형 내부 점 P의 60° 회전 보조선 (△ABP ≡ △ACP′ ➔ △APP′ 정삼각형!)',
+          hint: `슬라이더를 밀어 $\\triangle ABP$를 꼭짓점 $A$ 중심으로 $60^\\circ$ 회전시켜 보세요! $AP = AP'$이고 회전각 $\\angle PAP' = 60^\\circ$이므로 <strong class="text-amber-300">보조선 PP′를 이으면 △APP′는 정삼각형</strong>이 됩니다!`,
+          res: "△ABP ≡ △ACP' (SAS 60° 회전)  ➔  △APP'는 세 변이 AP로 같은 정삼각형!",
+          rule: '정삼각형 안의 점 P 문제 = 한 삼각형을 60° 회전시켜 끼인 정삼각형(△APP′) 만들기!',
+          form: `• $AB=AC, AP=AP', \\angle BAP = 60^\\circ - \\angle PAC = \\angle CAP' \\implies \\triangle ABP \\equiv \\triangle ACP'$ (<strong>SAS 합동</strong>)`
+        }
+      };
+      const ch = chaseMap[sub];
+      return {
+        badge: ch.badge,
+        hint: ch.hint,
+        actionTxt: state.fold > 0.5 ? '🎬 1단계 기본 상태로' : '🎬 보조선 & 외각 단계별 완성!',
+        parts: [
+          { id: 0, name: `🟦 1단계: 기본 도형 및 주어진 등변·각 조건`, desc: `출발점이 되는 밑각(x, ●)과 등변 확인`, val: `1단계 출발`, color: GCOL.cyan, ok: true },
+          { id: 1, name: `🟨 2단계: 핵심 보조선 & 삼각형의 외각 연결`, desc: `(한 외각) = (이웃하지 않는 두 내각의 합)`, val: `외각 사슬`, color: GCOL.gold, ok: true },
+          { id: 2, name: `🩷 3단계: 최종 목표 각도 도출 완성!`, desc: ch.res, val: `완성 ⭕`, color: GCOL.pink, ok: true }
+        ],
+        totalRes: ch.res,
+        rule: ch.rule,
+        formulaHTML: ch.form,
+        notes: `• 삼각형 각도 추론 문제의 90%는 $180^\\circ$에서 빼지 않고 <strong>“(삼각형의 한 외각) = (이웃하지 않는 두 내각의 합)”</strong>을 연속으로 쓰면 암산으로 풀립니다!`
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // 4. 메인 렌더링 파이프라인 (모드 1 ~ 8)
+    // -------------------------------------------------------------------------
+    function render() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
+      drawFloorGrid(rect);
+
+      const A = state.pts.A, B = state.pts.B, C = state.pts.C;
+      const ang = getAngles(A, B, C);
+      const circum = getCircumcenter(A, B, C);
+      const inc = getIncenter(A, B, C);
+      const cent = getCentroid(A, B, C);
+
+      if (state.showTrace && state.tracePoints.length > 1) {
+        ctx.save();
+        ctx.strokeStyle = 'rgba(251, 191, 36, 0.45)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        const s0 = toScreen(state.tracePoints[0]);
+        ctx.moveTo(s0.x, s0.y);
+        for (let i = 1; i < state.tracePoints.length; i++) {
+          const s = toScreen(state.tracePoints[i]);
+          ctx.lineTo(s.x, s.y);
+        }
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      const m = state.mode;
+      if (m === 1) renderMode1Iso(rect, A, B, C, ang, cent.G);
+      else if (m === 2) renderMode2RightCong(rect, A, B, C, ang);
+      else if (m === 3) renderMode3GeneralCong(rect, A, B, C);
+      else if (m === 4) renderMode4Bisectors(rect, A, B, C, ang);
+      else if (m === 5) renderMode5Circumcenter(rect, A, B, C, ang, circum, cent.G);
+      else if (m === 6) renderMode6Incenter(rect, A, B, C, ang, inc, cent.G);
+      else if (m === 7) renderMode7CompareOIG(rect, A, B, C, ang, circum, inc, cent);
+      else if (m === 8) renderMode8AngleChasing(rect, A, B, C, ang, inc);
+
+      const spec = getSpec();
+      updateUI(spec, ang);
+    }
+
+    // =========================================================================
+    // [탭 1 렌더링] 이등변삼각형 & 4대 보조선 (D·M·H 분리 반례 포함)
+    // =========================================================================
+    function renderMode1Iso(rect, A, B, C, ang, G) {
+      const sub = state.subType[1];
+      const bisect = getAngleBisectorAxis(A, B, C);
+      const D = bisect.D;
+      const M = midPt(B, C);
+      const H = projectOnLine(A, B, C);
+      const isIso = Math.abs(ang.b - ang.c) < 2.5;
+      const layer = state.conceptSwitch;
+
+      drawTriangleFilled(A, B, C, 'rgba(56, 189, 248, 0.08)');
+      drawLine(A, B, GCOL.cyan, 3.4, false, layer === 'def', 0);
+      drawLine(A, C, isIso ? GCOL.cyan : GCOL.pink, 3.4, false, layer === 'def', 0);
+      drawLine(B, C, GCOL.white, 3.0);
+
+      if (isIso) {
+        edgeTicks(A, B, 2, GCOL.gold, 8);
+        edgeTicks(A, C, 2, GCOL.gold, 8);
+      }
+
+      if (layer !== 'def') {
+        curvedAngle(B, A, C, GCOL.pink, 28, 1, `${Math.round(ang.degB)}°`);
+        curvedAngle(C, B, A, isIso ? GCOL.pink : GCOL.cyan, 28, isIso ? 1 : 2, `${Math.round(ang.degC)}°`);
+      }
+
+      curvedAngle(A, B, D, GCOL.gold, 30, 1, '●');
+      curvedAngle(A, D, C, GCOL.gold, 34, 1, '●');
+      drawLine(A, D, GCOL.gold, 2.8, true, true, isIso ? 2 : 0);
+
+      if (isIso) {
+        drawRightAngleSign(D, A, C, 13, GCOL.gold);
+        edgeTicks(B, D, 1, GCOL.green, 7.5);
+        edgeTicks(D, C, 1, GCOL.green, 7.5);
+        drawPoint(D, 5.5, GCOL.gold, 'D(중점·수선의 발)', null, A);
+
+        if (sub === 'isoPointP') {
+          const P = lerp(A, D, 0.52);
+          drawTriangleFilled(P, B, D, 'rgba(52, 211, 153, 0.22)', 2);
+          drawTriangleFilled(P, C, D, 'rgba(244, 114, 182, 0.22)', 2);
+          drawLine(P, B, GCOL.green, 3.2, false, true, 2);
+          drawLine(P, C, GCOL.pink, 3.2, false, true, 2);
+          edgeTicks(P, B, 3, GCOL.gold, 7);
+          edgeTicks(P, C, 3, GCOL.gold, 7);
+          drawPoint(P, 6.5, GCOL.gold, 'P(PB = PC!)', { x: 12, y: -6 });
+        }
+      } else {
+        drawPoint(D, 5.5, GCOL.gold, 'D(각이등분)', { x: -18, y: 22 });
+        drawLine(A, M, GCOL.green, 2.4, true, false, 1);
+        edgeTicks(B, M, 1, GCOL.green, 7);
+        edgeTicks(M, C, 1, GCOL.green, 7);
+        drawPoint(M, 5.5, GCOL.green, 'M(중점)', { x: -15, y: -14 });
+
+        drawLine(C, H, GCOL.red, 1.8, true, false, 2);
+        drawLine(A, H, GCOL.red, 2.6, true, false, 2);
+        drawRightAngleSign(H, A, B, 12, GCOL.red);
+        drawPoint(H, 5.5, GCOL.red, 'H(수선의 발)', { x: 8, y: 22 });
+      }
+
+      if (state.fold > 0.01) {
+        const C_ref = reflectAcrossLine(C, bisect.p1, bisect.p2);
+        const curC = lerp(C, C_ref, state.fold);
+        drawTriangleFilled(A, D, curC, 'rgba(244, 114, 182, 0.24)');
+        drawLine(A, curC, GCOL.pink, 3.0, true);
+        drawLine(D, curC, GCOL.pink, 3.0, true);
+        drawPoint(curC, 6, GCOL.pink, "C'(접힌 점)");
+
+        const errDist = dist(B, C_ref);
+        if (errDist > 5 && state.fold > 0.75) {
+          drawLine(B, C_ref, GCOL.red, 3.5, false, true);
+        }
+      }
+
+      drawPoint(A, 7.2, GCOL.gold, `A(${Math.round(ang.degA)}°)`, null, G);
+      drawPoint(B, 7.2, GCOL.cyan, 'B', null, G);
+      drawPoint(C, 7.2, GCOL.pink, 'C', null, G);
+
+      const dA = Math.round(ang.degA), dB = Math.round(ang.degB), dC = 180 - dA - dB;
+      drawBottomTapeBanner(
+        rect,
+        isIso
+          ? `이등변 내각 합 180° = 꼭지각 ∠A(${dA}°) + 밑각 ∠B(${dB}°) + 밑각 ∠C(${dC}°)  |  AD ⊥ BC, BD = CD`
+          : `⚠️ 일반삼각형(AB ≠ AC) 반례: 각이등분선 교점 D ≠ 변의 중점 M ≠ 수선의 발 H`,
+        [
+          { text: `∠A (${dA}°)`, weight: dA / 180, color: GCOL.gold },
+          { text: `밑각 ∠B (${dB}°)`, weight: dB / 180, color: GCOL.cyan },
+          { text: `밑각 ∠C (${dC}°)`, weight: dC / 180, color: GCOL.pink }
+        ]
+      );
+    }
+
+    // =========================================================================
+    // [탭 2 렌더링] 직각삼각형 합동 RHA / RHS & 빗변
+    // =========================================================================
+    function renderMode2RightCong(rect, A, B, C, ang) {
+      const sub = state.subType[2];
+      const t = state.fold;
+
+      if (sub === 'ssaCounter') {
+        const pA = { x: -175, y: 75 }, pB = { x: 115, y: 75 };
+        const theta = 34 * (Math.PI / 180), n = { x: Math.cos(theta), y: -Math.sin(theta) };
+        const len = dist(pA, pB), r = 195;
+        const foot = len * Math.cos(theta), delta = Math.sqrt(r * r - len * len * Math.sin(theta) ** 2);
+        const C1 = addPt(pA, multiply(n, foot - delta));
+        const C2 = addPt(pA, multiply(n, foot + delta));
+
+        drawTriangleFilled(pA, pB, C1, 'rgba(56, 189, 248, 0.16)', 0);
+        drawLine(pA, pB, GCOL.white, 3.2); drawLine(pB, C1, GCOL.cyan, 3.2, false, false, 0); drawLine(C1, pA, GCOL.gold, 3.2);
+        drawTriangleFilled(pA, pB, C2, 'rgba(244, 114, 182, 0.16)', 1);
+        drawLine(pB, C2, GCOL.pink, 3.2, false, false, 1); drawLine(C2, pA, GCOL.gold, 3.2);
+
+        drawCircle(pB, r, GCOL.gold, null, 1.6, true);
+        drawLine(pA, addPt(pA, multiply(n, 395)), GCOL.white, 1.6, true);
+
+        curvedAngle(pA, pB, C2, GCOL.gold, 34, 1, '34°(끼인각 아님)');
+        edgeTicks(pB, C1, 2, GCOL.cyan, 8);
+        edgeTicks(pB, C2, 2, GCOL.pink, 8);
+
+        drawPoint(pA, 7, GCOL.gold, 'A', { x: -18, y: 18 });
+        drawPoint(pB, 7, GCOL.white, 'B', { x: 10, y: 18 });
+        drawPoint(C1, 6.5, GCOL.cyan, 'C₁(둔각삼각형)', { x: -75, y: -12 });
+        drawPoint(C2, 6.5, GCOL.pink, 'C₂(예각삼각형)', { x: 12, y: -8 });
+        drawBottomTapeBanner(rect, '🚫 일반 SSA 반례: 끼인각이 아닌 ∠A와 두 변(AB, BC)만 같으면 △ABC₁과 △ABC₂ 두 개가 생깁니다!');
+        return;
+      }
+
+      if (sub === 'trapezoidRHA') {
+        const B_pt = { x: -165, y: 82 }, C_pt = { x: -15, y: 82 }, D_pt = { x: 97, y: 82 };
+        const A_pt = { x: -165, y: -30 }, E_pt = { x: 97, y: -68 };
+
+        drawQuadFilled(A_pt, B_pt, D_pt, E_pt, 'rgba(255, 255, 255, 0.03)');
+        drawTriangleFilled(A_pt, B_pt, C_pt, 'rgba(56, 189, 248, 0.22)', 0);
+        drawTriangleFilled(C_pt, D_pt, E_pt, 'rgba(52, 211, 153, 0.22)', 1);
+
+        drawLine(A_pt, E_pt, 'rgba(255,255,255,0.35)', 1.8, true);
+        drawLine(A_pt, B_pt, GCOL.cyan, 3.4, false, false, 2);
+        drawLine(B_pt, C_pt, GCOL.green, 3.4, false, false, 2);
+        drawLine(C_pt, D_pt, GCOL.cyan, 3.4, false, false, 2);
+        drawLine(D_pt, E_pt, GCOL.green, 3.4, false, false, 2);
+        drawLine(A_pt, C_pt, GCOL.gold, 3.8, false, true, 0);
+        drawLine(C_pt, E_pt, GCOL.gold, 3.8, false, true, 0);
+
+        drawRightAngleSign(B_pt, A_pt, C_pt, 13, GCOL.cyan);
+        drawRightAngleSign(D_pt, E_pt, C_pt, 13, GCOL.green);
+        drawRightAngleSign(C_pt, A_pt, E_pt, 14, GCOL.gold);
+
+        edgeTicks(A_pt, C_pt, 2, GCOL.gold, 8);
+        edgeTicks(C_pt, E_pt, 2, GCOL.gold, 8);
+
+        curvedAngle(A_pt, B_pt, C_pt, GCOL.pink, 26, 1, '×');
+        curvedAngle(C_pt, A_pt, B_pt, GCOL.cyan, 28, 1, '●');
+        curvedAngle(C_pt, D_pt, E_pt, GCOL.pink, 28, 1, '×');
+        curvedAngle(E_pt, C_pt, D_pt, GCOL.cyan, 26, 1, '●');
+        edgeTicks(A_pt, B_pt, 1, GCOL.cyan, 7); edgeTicks(C_pt, D_pt, 1, GCOL.cyan, 7);
+        edgeTicks(B_pt, C_pt, 3, GCOL.green, 7); edgeTicks(D_pt, E_pt, 3, GCOL.green, 7);
+
+        if (t > 0.01) {
+          const rA = lerp(C_pt, A_pt, t), rB = lerp(D_pt, B_pt, t), rC = lerp(E_pt, C_pt, t);
+          drawTriangleFilled(rA, rB, rC, 'rgba(251, 191, 36, 0.28)');
+          drawLine(rA, rB, GCOL.gold, 2.8, true);
+          drawLine(rB, rC, GCOL.gold, 2.8, true);
+          drawLine(rC, rA, GCOL.gold, 2.8, true);
+        }
+
+        drawPoint(A_pt, 6.5, GCOL.gold, 'A', { x: -18, y: -8 });
+        drawPoint(B_pt, 6.5, GCOL.cyan, 'B(90°)', { x: -22, y: 20 });
+        drawPoint(C_pt, 6.5, GCOL.gold, 'C(90°)', { x: -10, y: 22 });
+        drawPoint(D_pt, 6.5, GCOL.green, 'D(90°)', { x: 0, y: 20 });
+        drawPoint(E_pt, 6.5, GCOL.gold, 'E', { x: 10, y: -8 });
+
+        drawBottomTapeBanner(rect, '● + × = 90° 이므로 △ABC ≡ △CDE (RHA 합동) ➔ 밑변 BD = BC(16) + CD(12) = DE + AB = 28', [
+          { text: 'BC = DE (16)', weight: 16 / 28, color: GCOL.green },
+          { text: 'CD = AB (12)', weight: 12 / 28, color: GCOL.cyan }
+        ]);
+        return;
+      }
+
+      if (sub === 'lineThruA') {
+        const A_pt = { x: 0, y: -32 }, B_pt = { x: -135, y: 58 }, C_pt = { x: 90, y: 103 };
+        const L1 = { x: -205, y: -62 }, L2 = { x: 205, y: -2 };
+        const D_pt = projectOnLine(B_pt, L1, L2);
+        const E_pt = projectOnLine(C_pt, L1, L2);
+
+        drawLine(L1, L2, 'rgba(255,255,255,0.6)', 2.2, true);
+        drawTriangleFilled(A_pt, B_pt, D_pt, 'rgba(56, 189, 248, 0.24)', 0);
+        drawTriangleFilled(C_pt, A_pt, E_pt, 'rgba(52, 211, 153, 0.24)', 1);
+
+        drawLine(B_pt, C_pt, 'rgba(255,255,255,0.35)', 1.8, true);
+        drawLine(B_pt, D_pt, GCOL.cyan, 3.2);
+        drawLine(A_pt, D_pt, GCOL.green, 3.2);
+        drawLine(C_pt, E_pt, GCOL.green, 3.2);
+        drawLine(A_pt, E_pt, GCOL.cyan, 3.2);
+        drawLine(A_pt, B_pt, GCOL.gold, 3.8, false, true);
+        drawLine(A_pt, C_pt, GCOL.gold, 3.8, false, true);
+
+        drawRightAngleSign(A_pt, B_pt, C_pt, 13, GCOL.gold);
+        drawRightAngleSign(D_pt, B_pt, A_pt, 12, GCOL.cyan);
+        drawRightAngleSign(E_pt, C_pt, A_pt, 12, GCOL.green);
+
+        edgeTicks(A_pt, B_pt, 2, GCOL.gold, 8);
+        edgeTicks(A_pt, C_pt, 2, GCOL.gold, 8);
+        curvedAngle(A_pt, D_pt, B_pt, GCOL.cyan, 26, 1, '●');
+        curvedAngle(B_pt, A_pt, D_pt, GCOL.pink, 26, 1, '×');
+        curvedAngle(A_pt, C_pt, E_pt, GCOL.pink, 26, 1, '×');
+        curvedAngle(C_pt, E_pt, A_pt, GCOL.cyan, 26, 1, '●');
+
+        drawPoint(A_pt, 7, GCOL.gold, 'A(90°)', { x: -12, y: -14 });
+        drawPoint(B_pt, 6.5, GCOL.cyan, 'B', { x: -20, y: 16 });
+        drawPoint(C_pt, 6.5, GCOL.pink, 'C', { x: 10, y: 16 });
+        drawPoint(D_pt, 6, GCOL.cyan, 'D(수선의 발)', { x: -35, y: -12 });
+        drawPoint(E_pt, 6, GCOL.green, 'E(수선의 발)', { x: 8, y: -12 });
+        drawBottomTapeBanner(rect, '직각이등변 꼭짓점 A를 지나는 직선: △ABD ≡ △CAE (RHA 합동) ➔ DE = DA + AE = CE + BD');
+        return;
+      }
+
+      if (sub === 'kiteFold') {
+        const rA = { x: -125, y: -85 }, rB = { x: -125, y: 90 }, rC = { x: 125, y: 90 };
+        drawTriangleFilled(rA, rB, rC, 'rgba(56, 189, 248, 0.16)', 0);
+        drawLine(rA, rB, GCOL.cyan, 3.2);
+        drawLine(rB, rC, GCOL.green, 3.2);
+        drawLine(rA, rC, GCOL.gold, 4.0, false, true, 0);
+        drawRightAngleSign(rB, rA, rC, 14, GCOL.gold);
+
+        const progK = t > 0.01 ? t : 1.0;
+        const B_ref = reflectAcrossLine(rB, rA, rC);
+        const curD = lerp(rB, B_ref, progK);
+        drawTriangleFilled(rA, curD, rC, 'rgba(244, 114, 182, 0.18)', 1);
+        drawLine(rA, curD, GCOL.cyan, 2.8, true);
+        drawLine(rC, curD, GCOL.green, 2.8, true);
+        if (progK > 0.85) {
+          drawRightAngleSign(curD, rA, rC, 14, GCOL.pink);
+          edgeTicks(rA, rB, 1, GCOL.cyan, 7.5); edgeTicks(rA, curD, 1, GCOL.cyan, 7.5);
+          edgeTicks(rB, rC, 2, GCOL.green, 7.5); edgeTicks(curD, rC, 2, GCOL.green, 7.5);
+        }
+        drawPoint(rA, 7, GCOL.gold, 'A', { x: -18, y: -8 });
+        drawPoint(rB, 7, GCOL.cyan, 'B(90°)', { x: -25, y: 18 });
+        drawPoint(rC, 7, GCOL.pink, 'C', { x: 10, y: 18 });
+        drawPoint(curD, 6.5, GCOL.pink, 'D(90°)', { x: 12, y: -10 });
+        drawBottomTapeBanner(rect, '빗변 AC를 공유하는 두 직각삼각형: ∠B=∠D=90°(R), AC 공통(H), AB=AD(S) ➔ △ABC ≡ △ADC (RHS)');
+        return;
+      }
+
+      // rhaPair & rhsPair
+      const A1 = { x: -190, y: -85 }, B1 = { x: -190, y: 85 }, C1 = { x: -55, y: 85 };
+      const shiftX = 235 * (1 - t);
+      const A2 = { x: A1.x + shiftX, y: A1.y }, B2 = { x: B1.x + shiftX, y: B1.y }, C2 = { x: C1.x + shiftX, y: C1.y };
+
+      drawTriangleFilled(A1, B1, C1, 'rgba(56, 189, 248, 0.16)', 0);
+      drawLine(A1, B1, GCOL.cyan, 3.2); drawLine(B1, C1, GCOL.green, 3.2); drawLine(A1, C1, GCOL.gold, 3.8, false, true, 0);
+      drawRightAngleSign(B1, A1, C1, 14, GCOL.gold);
+
+      drawTriangleFilled(A2, B2, C2, 'rgba(244, 114, 182, 0.20)', 1);
+      drawLine(A2, B2, GCOL.cyan, 3.2, t > 0.05); drawLine(B2, C2, GCOL.green, 3.2, t > 0.05); drawLine(A2, C2, GCOL.gold, 3.8, t > 0.05, false, 0);
+      drawRightAngleSign(B2, A2, C2, 14, GCOL.gold);
+
+      edgeTicks(A1, C1, 2, GCOL.gold, 8);
+      edgeTicks(A2, C2, 2, GCOL.gold, 8);
+
+      if (sub === 'rhaPair') {
+        curvedAngle(C1, A1, B1, GCOL.pink, 28, 1, '52°');
+        curvedAngle(C2, A2, B2, GCOL.pink, 28, 1, '52°');
+      } else {
+        edgeTicks(A1, B1, 1, GCOL.cyan, 8);
+        edgeTicks(A2, B2, 1, GCOL.cyan, 8);
+      }
+
+      drawPoint(A1, 6.5, GCOL.gold, 'A', { x: -18, y: -8 });
+      drawPoint(B1, 6.5, GCOL.cyan, 'B(90°)', { x: -25, y: 20 });
+      drawPoint(C1, 6.5, GCOL.pink, 'C', { x: 8, y: 20 });
+      drawPoint(A2, 6.5, GCOL.gold, 'D', { x: 10, y: -8 });
+      drawPoint(B2, 6.5, GCOL.cyan, 'E(90°)', { x: 8, y: 20 });
+      drawPoint(C2, 6.5, GCOL.pink, 'F', { x: 10, y: 20 });
+
+      drawBottomTapeBanner(rect, sub === 'rhaPair' ? 'RHA 합동: 직각(∠B=∠E=90°) + 빗변(AC=DF) + 한 예각(∠C=∠F) 일치!' : 'RHS 합동: 직각(∠B=∠E=90°) + 빗변(AC=DF) + 다른 한 변(AB=DE) 일치!');
+    }
+
+    // =========================================================================
+    // [탭 3 렌더링] 일반삼각형 합동 SSS / SAS / ASA
+    // =========================================================================
+    function renderMode3GeneralCong(rect, A, B, C) {
+      const sub = state.subType[3];
+      const t = state.fold;
+
+      if (sub === 'sss' || sub === 'sas' || sub === 'asa') {
+        const left = [{ x: -195, y: -85 }, { x: -270, y: 85 }, { x: -100, y: 85 }];
+        const shiftX = 280 * (1 - t);
+        const right = left.map((p) => ({ x: p.x + shiftX, y: p.y }));
+
+        drawTriangleFilled(...left, 'rgba(56, 189, 248, 0.16)', 0);
+        drawLine(left[0], left[1], GCOL.cyan, 3.2); drawLine(left[1], left[2], GCOL.green, 3.2); drawLine(left[2], left[0], GCOL.pink, 3.2);
+
+        drawTriangleFilled(...right, 'rgba(244, 114, 182, 0.18)', 1);
+        drawLine(right[0], right[1], GCOL.cyan, 3.2); drawLine(right[1], right[2], GCOL.green, 3.2); drawLine(right[2], right[0], GCOL.pink, 3.2);
+
+        left.forEach((p, i) => drawPoint(p, 6, GCOL.cyan, ['A', 'B', 'C'][i], { x: -8, y: i === 0 ? -12 : 20 }));
+        right.forEach((p, i) => drawPoint(p, 6, GCOL.pink, ['D', 'E', 'F'][i], { x: 8, y: i === 0 ? -12 : 20 }));
+
+        if (sub === 'sss') {
+          for (const v of [left, right]) {
+            edgeTicks(v[0], v[1], 1, GCOL.cyan, 7.5);
+            edgeTicks(v[1], v[2], 2, GCOL.green, 7.5);
+            edgeTicks(v[2], v[0], 3, GCOL.pink, 7.5);
+          }
+        } else if (sub === 'sas') {
+          for (const v of [left, right]) {
+            edgeTicks(v[0], v[1], 1, GCOL.cyan, 7.5);
+            edgeTicks(v[0], v[2], 2, GCOL.pink, 7.5);
+            curvedAngle(v[0], v[1], v[2], GCOL.gold, 28, 1, '끼인각');
+          }
+        } else {
+          for (const v of [left, right]) {
+            edgeTicks(v[1], v[2], 1, GCOL.green, 7.5);
+            curvedAngle(v[1], v[0], v[2], GCOL.cyan, 26, 1, '●');
+            curvedAngle(v[2], v[1], v[0], GCOL.pink, 26, 2, '×');
+          }
+        }
+        drawBottomTapeBanner(rect, `일반삼각형 합동: △ABC ≡ △DEF (${sub.toUpperCase()} 합동) — 슬라이더로 두 삼각형을 포개어 보세요!`);
+        return;
+      }
+
+      if (sub === 'bowtie') {
+        const O = { x: 0, y: 0 }, u = { x: -140, y: -80 }, v = { x: -140, y: 80 };
+        const pA = addPt(O, u), pB = addPt(O, v);
+        const pC = rotatePtAround(addPt(O, multiply(u, -1)), O, -t * Math.PI);
+        const pD = rotatePtAround(addPt(O, multiply(v, -1)), O, -t * Math.PI);
+
+        drawTriangleFilled(O, pA, pB, 'rgba(56, 189, 248, 0.20)', 0);
+        drawLine(O, pA, GCOL.cyan, 3.2); drawLine(pA, pB, GCOL.green, 3.2); drawLine(pB, O, GCOL.pink, 3.2);
+        drawTriangleFilled(O, pC, pD, 'rgba(244, 114, 182, 0.20)', 1);
+        drawLine(O, pC, GCOL.cyan, 3.2); drawLine(pC, pD, GCOL.green, 3.2); drawLine(pD, O, GCOL.pink, 3.2);
+
+        edgeTicks(O, pA, 1, GCOL.cyan, 7.5); edgeTicks(O, pC, 1, GCOL.cyan, 7.5);
+        edgeTicks(O, pB, 2, GCOL.pink, 7.5); edgeTicks(O, pD, 2, GCOL.pink, 7.5);
+        curvedAngle(O, pA, pB, GCOL.gold, 28, 1, '맞꼭지각');
+        curvedAngle(O, pC, pD, GCOL.gold, 28, 1, '맞꼭지각');
+
+        drawPoint(O, 6.5, GCOL.gold, 'O(교점)', { x: 0, y: -16 });
+        drawPoint(pA, 6, GCOL.cyan, 'A', { x: -18, y: -8 });
+        drawPoint(pB, 6, GCOL.pink, 'B', { x: -18, y: 18 });
+        drawPoint(pC, 6, GCOL.cyan, 'C', { x: 10, y: 18 });
+        drawPoint(pD, 6, GCOL.pink, 'D', { x: 10, y: -8 });
+        drawBottomTapeBanner(rect, '모래시계 맞꼭지각 합동: OA = OC, OB = OD, ∠AOB = ∠COD(맞꼭지각) ➔ △OAB ≡ △OCD (SAS)');
+        return;
+      }
+
+      if (sub === 'parallelZ') {
+        const O = { x: 0, y: 0 }, pA = { x: -130, y: -85 }, pB = { x: 130, y: -85 }, pC = { x: 130, y: 85 }, pD = { x: -130, y: 85 };
+        drawTriangleFilled(O, pA, pB, 'rgba(56, 189, 248, 0.20)', 0);
+        drawLine(O, pA, GCOL.cyan, 3.0); drawLine(pA, pB, GCOL.gold, 3.4); drawLine(pB, O, GCOL.pink, 3.0);
+        drawTriangleFilled(O, pC, pD, 'rgba(244, 114, 182, 0.20)', 1);
+        drawLine(O, pC, GCOL.cyan, 3.0); drawLine(pC, pD, GCOL.gold, 3.4); drawLine(pD, O, GCOL.pink, 3.0);
+
+        parallelArrows(pA, pB, 2, GCOL.gold);
+        parallelArrows(pD, pC, 2, GCOL.gold);
+        edgeTicks(pA, pB, 1, GCOL.gold, 8);
+        edgeTicks(pC, pD, 1, GCOL.gold, 8);
+
+        curvedAngle(pA, pC, pB, GCOL.cyan, 28, 1, '●(엇각)');
+        curvedAngle(pC, pA, pD, GCOL.cyan, 28, 1, '●(엇각)');
+        curvedAngle(pB, pA, pD, GCOL.pink, 28, 2, '×(엇각)');
+        curvedAngle(pD, pC, pB, GCOL.pink, 28, 2, '×(엇각)');
+
+        drawPoint(O, 6, GCOL.white, 'O', { x: 12, y: 4 });
+        drawPoint(pA, 6, GCOL.cyan, 'A', { x: -18, y: -8 });
+        drawPoint(pB, 6, GCOL.pink, 'B', { x: 10, y: -8 });
+        drawPoint(pC, 6, GCOL.cyan, 'C', { x: 10, y: 18 });
+        drawPoint(pD, 6, GCOL.pink, 'D', { x: -18, y: 18 });
+        drawBottomTapeBanner(rect, '평행선(AB∥CD) Z자 엇각: ∠OAB=∠OCD(●), ∠OBA=∠ODC(×), AB=CD ➔ △OAB ≡ △OCD (ASA)');
+        return;
+      }
+
+      // rot60
+      const pA = { x: -35, y: -110 }, pB = { x: -150, y: 89.18 }, pC = { x: 80, y: 89.18 };
+      const pD = { x: 45, y: 35 }, pE = rotatePtAround(pD, pA, -Math.PI / 3);
+      drawLine(pA, pB, GCOL.cyan, 2.4); drawLine(pB, pC, 'rgba(255,255,255,0.35)', 2.0); drawLine(pC, pA, GCOL.cyan, 2.4);
+      drawLine(pA, pD, GCOL.pink, 2.4); drawLine(pD, pE, 'rgba(255,255,255,0.35)', 2.0); drawLine(pE, pA, GCOL.pink, 2.4);
+
+      const rotRad = -t * (Math.PI / 3);
+      const rB = rotatePtAround(pB, pA, rotRad), rD = rotatePtAround(pD, pA, rotRad);
+      drawTriangleFilled(pA, pC, pE, 'rgba(52, 211, 153, 0.24)', 0);
+      drawLine(pC, pE, GCOL.green, 3.4);
+      drawTriangleFilled(pA, rB, rD, 'rgba(251, 191, 36, 0.26)', 1);
+      drawLine(pA, rB, GCOL.gold, 3.2); drawLine(pA, rD, GCOL.gold, 3.2); drawLine(rB, rD, GCOL.gold, 3.4);
+
+      drawPoint(pA, 7, GCOL.gold, 'A(60° 회전축)', { x: -20, y: -12 });
+      drawPoint(pB, 6, GCOL.cyan, 'B', { x: -18, y: 16 });
+      drawPoint(pC, 6, GCOL.cyan, 'C', { x: 8, y: 18 });
+      drawPoint(pD, 6, GCOL.pink, 'D', { x: -8, y: 20 });
+      drawPoint(pE, 6, GCOL.pink, 'E', { x: 10, y: -6 });
+      drawBottomTapeBanner(rect, '정삼각형 60° 회전합동: AB=AC, AD=AE, ∠BAD = 60°+∠CAD = ∠CAE ➔ △ABD ≡ △ACE (SAS)');
+    }
+
+    // =========================================================================
+    // [탭 4 렌더링] 각의 이등분선 & 선분의 수직이등분선
+    // =========================================================================
+    function renderMode4Bisectors(rect, A, B, C, ang) {
+      const sub = state.subType[4];
+
+      if (sub === 'perpBisect') {
+        const pA = { x: -155, y: 75 }, pB = { x: 155, y: 75 };
+        const M = midPt(pA, pB);
+        const py = -120 + Math.sin(state.fold * Math.PI * 2) * 50;
+        const P = { x: M.x, y: py };
+
+        drawTriangleFilled(P, pA, M, 'rgba(56, 189, 248, 0.18)', 0);
+        drawTriangleFilled(P, pB, M, 'rgba(244, 114, 182, 0.18)', 1);
+
+        drawLine(pA, pB, GCOL.white, 3.4);
+        drawLine({ x: M.x, y: -185 }, { x: M.x, y: 135 }, GCOL.gold, 2.6, true);
+        drawRightAngleSign(M, P, pB, 14, GCOL.gold);
+        edgeTicks(pA, M, 1, GCOL.green, 8);
+        edgeTicks(M, pB, 1, GCOL.green, 8);
+
+        drawLine(P, pA, GCOL.cyan, 3.4, false, true, 1);
+        drawLine(P, pB, GCOL.pink, 3.4, false, true, 1);
+        edgeTicks(P, pA, 2, GCOL.gold, 8);
+        edgeTicks(P, pB, 2, GCOL.gold, 8);
+
+        drawPoint(pA, 7, GCOL.cyan, 'A', { x: -18, y: 18 });
+        drawPoint(pB, 7, GCOL.pink, 'B', { x: 10, y: 18 });
+        drawPoint(M, 6, GCOL.gold, 'M(AB중점)', { x: 12, y: 20 });
+        drawPoint(P, 7.5, GCOL.gold, 'P(수직이등분선 위)', { x: 14, y: 4 });
+        drawBottomTapeBanner(rect, '선분의 수직이등분선: △PAM ≡ △PBM (SAS 합동) ➔ PA = PB (외심 O의 핵심 원리!)');
+        return;
+      }
+
+      if (sub === 'triAreaRatio') {
+        const pA = { x: 25, y: -135 }, pB = { x: -155, y: 90 }, pC = { x: 140, y: 90 };
+        const bisect = getAngleBisectorAxis(pA, pB, pC);
+        const D = bisect.D;
+        const E = projectOnLine(D, pA, pB);
+        const F = projectOnLine(D, pA, pC);
+
+        drawTriangleFilled(pA, pB, D, 'rgba(56, 189, 248, 0.22)', 1);
+        drawTriangleFilled(pA, pC, D, 'rgba(52, 211, 153, 0.22)', 2);
+        drawLine(pA, pB, GCOL.cyan, 3.4); drawLine(pB, pC, GCOL.white, 3.2); drawLine(pC, pA, GCOL.green, 3.4);
+        drawLine(pA, D, GCOL.gold, 3.0, true);
+
+        drawLine(D, E, GCOL.pink, 3.2, false, true, 0);
+        drawLine(D, F, GCOL.pink, 3.2, false, true, 0);
+        drawRightAngleSign(E, D, pA, 11, GCOL.pink);
+        drawRightAngleSign(F, D, pA, 11, GCOL.pink);
+        edgeTicks(D, E, 1, GCOL.gold, 7);
+        edgeTicks(D, F, 1, GCOL.gold, 7);
+
+        curvedAngle(pA, pB, D, GCOL.gold, 28, 1, '●');
+        curvedAngle(pA, D, pC, GCOL.gold, 32, 1, '●');
+
+        drawPoint(pA, 7, GCOL.gold, 'A', { x: 0, y: -14 });
+        drawPoint(pB, 6.5, GCOL.cyan, 'B', { x: -18, y: 18 });
+        drawPoint(pC, 6.5, GCOL.green, 'C', { x: 10, y: 18 });
+        drawPoint(D, 6.5, GCOL.gold, 'D(각이등분 교점)', { x: -20, y: 22 });
+        drawPoint(E, 5.5, GCOL.pink, 'E', { x: -20, y: -6 });
+        drawPoint(F, 5.5, GCOL.pink, 'F', { x: 10, y: -6 });
+
+        drawBottomTapeBanner(rect, '각이등분선 넓이비: 높이 DE = DF 이므로 △ABD : △ACD = AB : AC (= 밑변비 BD : CD)!', [
+          { text: '△ABD 넓이 ∝ AB', weight: 0.56, color: GCOL.cyan },
+          { text: '△ACD 넓이 ∝ AC', weight: 0.44, color: GCOL.green }
+        ]);
+        return;
+      }
+
+      // angleBisect, angleBisectConv, slantedCounter
+      const pA = { x: -165, y: 80 }, pB = { x: 165, y: 80 }, pC = { x: 80, y: -125 };
+      const axis = getAngleBisectorAxis(pA, pB, pC);
+      const dirBis = norm(minusPt(axis.p2, pA));
+      const distP = 185 + state.fold * 55;
+      const P = addPt(pA, multiply(dirBis, distP));
+      const E = projectOnLine(P, pA, pB);
+      const F = projectOnLine(P, pA, pC);
+
+      drawTriangleFilled(pA, P, E, 'rgba(56, 189, 248, 0.20)', 0);
+      drawTriangleFilled(pA, P, F, 'rgba(244, 114, 182, 0.20)', 1);
+
+      drawExtendedLine(pA, pB, 0, 35, GCOL.cyan, 3.4, false);
+      drawExtendedLine(pA, pC, 0, 35, GCOL.cyan, 3.4, false);
+      drawExtendedLine(pA, P, 0, 50, GCOL.gold, 2.8, true);
+
+      curvedAngle(pA, E, P, GCOL.gold, 34, 1, '●');
+      curvedAngle(pA, P, F, GCOL.gold, 38, 1, '●');
+
+      drawLine(P, E, GCOL.pink, 3.4, false, true);
+      drawLine(P, F, GCOL.pink, 3.4, false, true);
+      drawRightAngleSign(E, P, pA, 12, GCOL.pink);
+      drawRightAngleSign(F, P, pA, 12, GCOL.pink);
+      edgeTicks(P, E, 1, GCOL.gold, 7.5);
+      edgeTicks(P, F, 1, GCOL.gold, 7.5);
+      edgeTicks(pA, E, 2, GCOL.cyan, 7.5);
+      edgeTicks(pA, F, 2, GCOL.cyan, 7.5);
+
+      if (sub === 'slantedCounter') {
+        const Q = lerp(pA, pB, 0.42);
+        drawLine(P, Q, GCOL.red, 3.2, true);
+        drawPoint(Q, 5.5, GCOL.red, 'Q(90° 아님!)', { x: -20, y: 22 });
+        labelLine(lerp(P, Q, 0.5), '빗변 PQ > 수선 PE', GCOL.red, 12.5);
+      }
+
+      drawPoint(pA, 7, GCOL.gold, 'A(꼭짓점)', { x: -25, y: 18 });
+      drawPoint(E, 6, GCOL.pink, 'E(수선의 발)', { x: 0, y: 22 });
+      drawPoint(F, 6, GCOL.pink, 'F(수선의 발)', { x: -15, y: -14 });
+      drawPoint(P, 7, GCOL.gold, 'P(각이등분선 위)', { x: 14, y: 5 });
+
+      drawBottomTapeBanner(rect, '각의 이등분선 성질: △APE ≡ △APF (RHA/RHS 합동) ➔ 수직거리 PE = PF, 접선 길이 AE = AF');
+    }
+
+    // =========================================================================
+    // [탭 5 렌더링] 외심 O & 세 변의 수직이등분선
+    // =========================================================================
+    function renderMode5Circumcenter(rect, A, B, C, ang, circum, G) {
+      const sub = state.subType[5];
+      const layer = state.conceptSwitch;
+
+      drawTriangleFilled(A, B, C, 'rgba(56, 189, 248, 0.07)');
+      drawLine(A, B, GCOL.cyan, 3.2);
+      drawLine(B, C, GCOL.cyan, 3.2);
+      drawLine(C, A, GCOL.cyan, 3.2);
+
+      if (circum) {
+        const { O, R, D, E, F } = circum;
+
+        // 합동인 직각삼각형 쌍 색칠 (해부 카드 클릭 연동!)
+        drawTriangleFilled(O, A, F, 'rgba(56, 189, 248, 0.22)', 0);
+        drawTriangleFilled(O, B, F, 'rgba(56, 189, 248, 0.22)', 0);
+        drawTriangleFilled(O, B, D, 'rgba(52, 211, 153, 0.22)', 1);
+        drawTriangleFilled(O, C, D, 'rgba(52, 211, 153, 0.22)', 1);
+        drawTriangleFilled(O, C, E, 'rgba(244, 114, 182, 0.22)', 2);
+        drawTriangleFilled(O, A, E, 'rgba(244, 114, 182, 0.22)', 2);
+
+        if (layer === 'def' || layer === 'all') {
+          const lineCol = layer === 'def' ? 'rgba(251, 191, 36, 0.85)' : 'rgba(255, 255, 255, 0.42)';
+          drawTruePerpendicularBisector(B, C, D, O, lineCol, 2.0, true, 1);
+          drawTruePerpendicularBisector(C, A, E, O, lineCol, 2.0, true, 2);
+          drawTruePerpendicularBisector(A, B, F, O, lineCol, 2.0, true, 0);
+
+          const pDirD = dist(O, D) > 3 ? O : addPt(D, perp(norm(minusPt(C, B))));
+          const pDirE = dist(O, E) > 3 ? O : addPt(E, perp(norm(minusPt(A, C))));
+          const pDirF = dist(O, F) > 3 ? O : addPt(F, perp(norm(minusPt(B, A))));
+          drawRightAngleSign(D, pDirD, C, 11.5, GCOL.green);
+          drawRightAngleSign(E, pDirE, A, 11.5, GCOL.pink);
+          drawRightAngleSign(F, pDirF, B, 11.5, GCOL.cyan);
+
+          edgeTicks(B, D, 1, GCOL.green, 7); edgeTicks(D, C, 1, GCOL.green, 7);
+          edgeTicks(C, E, 2, GCOL.pink, 7); edgeTicks(E, A, 2, GCOL.pink, 7);
+          edgeTicks(A, F, 3, GCOL.cyan, 7); edgeTicks(F, B, 3, GCOL.cyan, 7);
+
+          const midpointTol = Math.max(ang.a, ang.b, ang.c) * 1e-4;
+          drawPoint(D, 5, GCOL.green, dist(D, O) < midpointTol ? '' : 'D(BC중점)', null, G);
+          drawPoint(E, 5, GCOL.pink, dist(E, O) < midpointTol ? '' : 'E(CA중점)', null, G);
+          drawPoint(F, 5, GCOL.cyan, dist(F, O) < midpointTol ? '' : 'F(AB중점)', null, G);
+        }
+
+        drawCircle(O, R, GCOL.gold, 'rgba(251, 191, 36, 0.06)', 2.2);
+        drawLine(O, A, GCOL.gold, 2.8, false, layer === 'p1');
+        drawLine(O, B, GCOL.gold, 2.8, false, layer === 'p1');
+        drawLine(O, C, GCOL.gold, 2.8, false, layer === 'p1');
+
+        if (layer === 'p1' || sub === 'circumRight' || sub === 'circum3060') {
+          edgeTicks(O, A, 2, GCOL.gold, 8);
+          edgeTicks(O, B, 2, GCOL.gold, 8);
+          edgeTicks(O, C, 2, GCOL.gold, 8);
+        }
+
+        if (layer === 'p3' || sub === 'circumAngle' || sub === 'circumObtuse') {
+          const dirAO = norm(minusPt(O, A));
+          const extPt = addPt(O, multiply(dirAO, 80));
+          drawLine(A, extPt, GCOL.white, 2.0, true);
+          curvedAngle(A, B, O, GCOL.cyan, 26, 1, 'x');
+          curvedAngle(B, O, A, GCOL.cyan, 26, 1, 'x');
+          curvedAngle(B, C, O, GCOL.green, 26, 1, 'y');
+          curvedAngle(C, O, B, GCOL.green, 26, 1, 'y');
+          curvedAngle(C, A, O, GCOL.gold, 30, 1, 'z');
+          curvedAngle(A, O, C, GCOL.gold, 30, 1, 'z');
+
+          const degA = Math.round(ang.degA);
+          if (ang.degA <= 90) {
+            curvedAngle(O, B, C, GCOL.pink, 32, 2, `2∠A=${2 * degA}°`);
+          } else {
+            curvedAngle(O, B, C, GCOL.gold, 36, 2, `반사각 2∠A=${2 * degA}°`, true);
+            curvedAngle(O, B, C, GCOL.pink, 24, 1, `${360 - 2 * degA}°`, false);
+          }
+        }
+
+        if (Math.abs(ang.degB - 90) < 1.5) drawRightAngleSign(B, A, C, 14, GCOL.white);
+
+        let oLoc = '내부', locColor = GCOL.green;
+        if (Math.abs(ang.degA - 90) < 1.8 || Math.abs(ang.degB - 90) < 1.8 || Math.abs(ang.degC - 90) < 1.8) {
+          oLoc = '빗변의 중점!';
+          locColor = GCOL.gold;
+        } else if (ang.degA > 90 || ang.degB > 90 || ang.degC > 90) {
+          oLoc = '외부';
+          locColor = GCOL.red;
+        }
+        drawPoint(O, 7.5, locColor, `O(외심·${oLoc})`, { x: 12, y: 16 });
+      }
+
+      drawPoint(A, 7.5, GCOL.gold, `A(${Math.round(ang.degA)}°)`, null, G);
+      drawPoint(B, 7.5, GCOL.cyan, 'B', null, G);
+      drawPoint(C, 7.5, GCOL.pink, 'C', null, G);
+
+      const dA = Math.round(ang.degA);
+      const boc = dA <= 90 ? 2 * dA : 360 - 2 * dA;
+      drawBottomTapeBanner(rect, `외심 각 법칙: ∠x + ∠y + ∠z = 90°  |  꼭지각 ∠A = ${dA}° ➔ 중심각 ∠BOC = ${boc}°`, [
+        { text: '이등변 밑각 ∠x', weight: 0.33, color: GCOL.cyan },
+        { text: '이등변 밑각 ∠y', weight: 0.34, color: GCOL.green },
+        { text: '이등변 밑각 ∠z (합=90°)', weight: 0.33, color: GCOL.gold }
+      ]);
+    }
+
+    // =========================================================================
+    // [탭 6 렌더링] 내심 I & 넓이 3분할 · 접선 · 평행선
+    // =========================================================================
+    function renderMode6Incenter(rect, A, B, C, ang, inc, G) {
+      const sub = state.subType[6];
+      const layer = state.conceptSwitch;
+
+      if (!inc) return;
+      const { I, r, D, E, F } = inc;
+
+      // ★ 6-F: 내심 I를 지나고 밑변 BC에 평행한 선분 DE (△ADE 둘레 = AB + AC!) ★
+      if (sub === 'incenterParallel') {
+        const pL = { x: I.x - 250, y: I.y }, pR = { x: I.x + 250, y: I.y };
+        // BC 방향 벡터와 평행하고 내심 I를 지나는 직선과 AB, AC의 교점 D_par, E_par
+        const dirBC = norm(minusPt(C, B));
+        const D_par = intersectTwoLines(A, B, I, addPt(I, dirBC)) || midPt(A, B);
+        const E_par = intersectTwoLines(A, C, I, addPt(I, dirBC)) || midPt(A, C);
+
+        drawTriangleFilled(A, B, C, 'rgba(255, 255, 255, 0.04)');
+        drawTriangleFilled(D_par, B, I, 'rgba(56, 189, 248, 0.24)', 0);
+        drawTriangleFilled(E_par, C, I, 'rgba(244, 114, 182, 0.24)', 1);
+        drawTriangleFilled(A, D_par, E_par, 'rgba(251, 191, 36, 0.18)', 2);
+
+        drawLine(A, B, GCOL.white, 3.0); drawLine(B, C, GCOL.white, 3.0); drawLine(C, A, GCOL.white, 3.0);
+        drawLine(A, D_par, GCOL.cyan, 4.0, false, true, 0);
+        drawLine(A, E_par, GCOL.pink, 4.0, false, true, 1);
+
+        // 슬라이더 state.fold로 DI를 DB로, EI를 EC로 펴서 AB + AC가 됨을 시각적으로 증명!
+        const curI_left = lerp(I, B, state.fold);
+        const curI_right = lerp(I, C, state.fold);
+        drawLine(D_par, curI_left, GCOL.cyan, 4.2, false, true, 0);
+        drawLine(E_par, curI_right, GCOL.pink, 4.2, false, true, 1);
+        drawLine(D_par, E_par, 'rgba(251, 191, 36, 0.5)', 2.2, true);
+
+        parallelArrows(D_par, E_par, 1, GCOL.gold);
+        parallelArrows(B, C, 1, GCOL.gold);
+        drawLine(B, I, GCOL.cyan, 2.4, true);
+        drawLine(C, I, GCOL.pink, 2.4, true);
+
+        edgeTicks(D_par, B, 1, GCOL.cyan, 7.5); edgeTicks(D_par, I, 1, GCOL.cyan, 7.5);
+        edgeTicks(E_par, C, 2, GCOL.pink, 7.5); edgeTicks(E_par, I, 2, GCOL.pink, 7.5);
+
+        curvedAngle(B, D_par, I, GCOL.cyan, 26, 1, '●');
+        curvedAngle(B, I, C, GCOL.cyan, 30, 1, '●');
+        curvedAngle(I, D_par, B, GCOL.cyan, 26, 1, '●');
+
+        curvedAngle(C, I, E_par, GCOL.pink, 26, 1, '×');
+        curvedAngle(C, B, I, GCOL.pink, 30, 1, '×');
+        curvedAngle(I, C, E_par, GCOL.pink, 26, 1, '×');
+
+        drawPoint(A, 7, GCOL.gold, 'A', null, G);
+        drawPoint(B, 7, GCOL.cyan, 'B', null, G);
+        drawPoint(C, 7, GCOL.pink, 'C', null, G);
+        drawPoint(I, 7, GCOL.green, 'I(내심)', { x: -10, y: 22 });
+        drawPoint(D_par, 6.5, GCOL.cyan, 'D(DB=DI)', { x: -65, y: 4 });
+        drawPoint(E_par, 6.5, GCOL.pink, 'E(EC=EI)', { x: 12, y: 4 });
+
+        const abCm = (ang.c / 10).toFixed(1), acCm = (ang.b / 10).toFixed(1);
+        drawBottomTapeBanner(rect, `내심 평행선(DE∥BC): △ADE 둘레 = (AD+DI) + (AE+EI) = AB(${abCm}) + AC(${acCm}) = ${(parseFloat(abCm)+parseFloat(acCm)).toFixed(1)} cm!`, [
+          { text: `AD + DI = AB (${abCm}cm)`, weight: ang.c / (ang.b + ang.c), color: GCOL.cyan },
+          { text: `AE + EI = AC (${acCm}cm)`, weight: ang.b / (ang.b + ang.c), color: GCOL.pink }
+        ]);
+        return;
+      }
+
+      // 기본 내심 & 접선 쌍 & 넓이 3분할
+      if (sub === 'incenterUnfold' || layer === 'p3') {
+        drawTriangleFilled(I, B, C, 'rgba(56, 189, 248, 0.22)', 1);
+        drawTriangleFilled(I, C, A, 'rgba(52, 211, 153, 0.22)', 2);
+        drawTriangleFilled(I, A, B, 'rgba(251, 191, 36, 0.22)', 0);
+      } else {
+        drawTriangleFilled(I, A, F, 'rgba(251, 191, 36, 0.22)', 0);
+        drawTriangleFilled(I, A, E, 'rgba(251, 191, 36, 0.22)', 0);
+        drawTriangleFilled(I, B, F, 'rgba(56, 189, 248, 0.22)', 1);
+        drawTriangleFilled(I, B, D, 'rgba(56, 189, 248, 0.22)', 1);
+        drawTriangleFilled(I, C, D, 'rgba(244, 114, 182, 0.22)', 2);
+        drawTriangleFilled(I, C, E, 'rgba(244, 114, 182, 0.22)', 2);
+      }
+
+      if (Math.abs(ang.degB - 90) < 1.5) {
+        drawQuadFilled(B, D, I, F, 'rgba(251, 191, 36, 0.35)', GCOL.gold, 0);
+        labelLine(lerp(B, I, 0.5), 'r×r 정사각형', GCOL.gold, 11.5);
+      }
+
+      if (sub === 'incenterTangents' || sub === 'incenterRightSq' || layer === 'p1') {
+        drawLine(A, F, GCOL.gold, 4.0, false, false, 0); drawLine(A, E, GCOL.gold, 4.0, false, false, 0);
+        drawLine(B, F, GCOL.cyan, 4.0, false, false, 1); drawLine(B, D, GCOL.cyan, 4.0, false, false, 1);
+        drawLine(C, D, GCOL.pink, 4.0, false, false, 2); drawLine(C, E, GCOL.pink, 4.0, false, false, 2);
+        edgeTicks(A, F, 1, GCOL.gold, 7.5); edgeTicks(A, E, 1, GCOL.gold, 7.5);
+        edgeTicks(B, F, 2, GCOL.cyan, 7.5); edgeTicks(B, D, 2, GCOL.cyan, 7.5);
+        edgeTicks(C, D, 3, GCOL.pink, 7.5); edgeTicks(C, E, 3, GCOL.pink, 7.5);
+      } else {
+        drawLine(A, B, GCOL.cyan, 3.2);
+        drawLine(B, C, GCOL.cyan, 3.2);
+        drawLine(C, A, GCOL.cyan, 3.2);
+      }
+
+      drawLine(A, I, 'rgba(255,255,255,0.6)', 2.0, true);
+      drawLine(B, I, 'rgba(255,255,255,0.6)', 2.0, true);
+      drawLine(C, I, 'rgba(255,255,255,0.6)', 2.0, true);
+
+      if (layer === 'def' || layer === 'p3' || sub === 'incenterAngle') {
+        curvedAngle(A, B, I, GCOL.gold, 28, 1, 'x');
+        curvedAngle(A, I, C, GCOL.gold, 32, 1, 'x');
+        curvedAngle(B, C, I, GCOL.cyan, 28, 1, 'y');
+        curvedAngle(B, I, A, GCOL.cyan, 32, 1, 'y');
+        curvedAngle(C, A, I, GCOL.pink, 28, 1, 'z');
+        curvedAngle(C, I, B, GCOL.pink, 32, 1, 'z');
+      }
+
+      drawCircle(I, r, GCOL.green, 'rgba(52, 211, 153, 0.10)', 2.4);
+      drawLine(I, D, GCOL.pink, 2.8); drawRightAngleSign(D, I, C, 11.5, GCOL.pink);
+      drawLine(I, E, GCOL.pink, 2.8); drawRightAngleSign(E, I, A, 11.5, GCOL.pink);
+      drawLine(I, F, GCOL.pink, 2.8); drawRightAngleSign(F, I, B, 11.5, GCOL.pink);
+
+      drawPoint(D, 5, GCOL.pink, 'D(수선의 발)', null, I);
+      drawPoint(E, 5, GCOL.pink, 'E(수선의 발)', null, I);
+      drawPoint(F, 5, GCOL.pink, 'F(수선의 발)', null, I);
+
+      const bic = Math.round(90 + ang.degA / 2);
+      if (layer === 'p3' || sub === 'incenterAngle') {
+        curvedAngle(I, B, C, GCOL.gold, 26, 2, `${bic}°`);
+      }
+
+      // ★ 슬라이더(state.fold) 연동: 피자 3조각(△IBC, △ICA, △IAB)을 아래쪽에 일렬로 펼치기! ★
+      if (state.fold > 0.01) {
+        const sc = 0.52;
+        const a = ang.a * sc, b = ang.b * sc, c = ang.c * sc, h = r * sc;
+        const totalW = a + b + c;
+        const baseY = 158;
+        const startX = -totalW / 2;
+
+        const t1B = { x: startX, y: baseY }, t1C = { x: startX + a, y: baseY }, t1I = { x: startX + a / 2, y: baseY - h };
+        const t2C = { x: startX + a, y: baseY }, t2A = { x: startX + a + b, y: baseY }, t2I = { x: startX + a + b / 2, y: baseY - h };
+        const t3A = { x: startX + a + b, y: baseY }, t3B = { x: startX + totalW, y: baseY }, t3I = { x: startX + a + b + c / 2, y: baseY - h };
+
+        const p1B = lerp(B, t1B, state.fold), p1C = lerp(C, t1C, state.fold), p1I = lerp(I, t1I, state.fold);
+        const p2C = lerp(C, t2C, state.fold), p2A = lerp(A, t2A, state.fold), p2I = lerp(I, t2I, state.fold);
+        const p3A = lerp(A, t3A, state.fold), p3B = lerp(B, t3B, state.fold), p3I = lerp(I, t3I, state.fold);
+
+        drawTriangleFilled(p1I, p1B, p1C, 'rgba(56, 189, 248, 0.42)');
+        drawLine(p1I, p1B, GCOL.cyan, 2); drawLine(p1B, p1C, GCOL.cyan, 3); drawLine(p1C, p1I, GCOL.cyan, 2);
+        drawTriangleFilled(p2I, p2C, p2A, 'rgba(52, 211, 153, 0.42)');
+        drawLine(p2I, p2C, GCOL.green, 2); drawLine(p2C, p2A, GCOL.green, 3); drawLine(p2A, p2I, GCOL.green, 2);
+        drawTriangleFilled(p3I, p3A, p3B, 'rgba(251, 191, 36, 0.42)');
+        drawLine(p3I, p3A, GCOL.gold, 2); drawLine(p3A, p3B, GCOL.gold, 3); drawLine(p3B, p3I, GCOL.gold, 2);
+      }
+
+      drawPoint(I, 7.2, GCOL.green, 'I(내심)', { x: 10, y: -8 });
+      drawPoint(A, 7.5, GCOL.gold, `A(${Math.round(ang.degA)}°)`, null, G);
+      drawPoint(B, 7.5, GCOL.cyan, 'B', null, G);
+      drawPoint(C, 7.5, GCOL.pink, 'C', null, G);
+
+      const totP = ang.a + ang.b + ang.c;
+      drawBottomTapeBanner(rect, `내심 넓이 3분할: S = ½r(a + b + c)  |  내심각 ∠BIC = 90° + ½∠A = ${bic}°`, [
+        { text: '△IBC (½ar)', weight: ang.a / totP, color: GCOL.cyan },
+        { text: '△ICA (½br)', weight: ang.b / totP, color: GCOL.green },
+        { text: '△IAB (½cr)', weight: ang.c / totP, color: GCOL.gold }
+      ]);
+    }
+
+    // =========================================================================
+    // [탭 7 렌더링] 외심 O · 내심 I · 무게중심 G 비교
+    // =========================================================================
+    function renderMode7CompareOIG(rect, A, B, C, ang, circum, inc, cent) {
+      const sub = state.subType[7];
+      const G = cent.G;
+      const showO = state.activePartIdx === -1 || state.activePartIdx === 0;
+      const showI = state.activePartIdx === -1 || state.activePartIdx === 1;
+      const showG = state.activePartIdx === -1 || state.activePartIdx === 2;
+
+      if (sub === 'centroidFocus' || state.activePartIdx === 2) {
+        const { D, E, F } = cent;
+        const cols = ['rgba(56,189,248,0.18)', 'rgba(56,189,248,0.10)', 'rgba(52,211,153,0.18)', 'rgba(52,211,153,0.10)', 'rgba(244,114,182,0.18)', 'rgba(244,114,182,0.10)'];
+        drawTriangleFilled(A, F, G, cols[0]); drawTriangleFilled(B, F, G, cols[1]);
+        drawTriangleFilled(B, D, G, cols[2]); drawTriangleFilled(C, D, G, cols[3]);
+        drawTriangleFilled(C, E, G, cols[4]); drawTriangleFilled(A, E, G, cols[5]);
+      } else {
+        drawTriangleFilled(A, B, C, 'rgba(255, 255, 255, 0.04)');
+      }
+
+      drawLine(A, B, GCOL.white, 3.0);
+      drawLine(B, C, GCOL.white, 3.0);
+      drawLine(C, A, GCOL.white, 3.0);
+
+      if (Math.abs(ang.degB - 90) < 1.5) drawRightAngleSign(B, A, C, 14, GCOL.gold);
+
+      if (showO && circum) {
+        const { O, R, D, E, F } = circum;
+        drawCircle(O, R, GCOL.cyan, 'rgba(56, 189, 248, 0.04)', 2.0, true, 0);
+        drawTruePerpendicularBisector(B, C, D, O, 'rgba(56, 189, 248, 0.45)', 1.5, true, 0);
+        drawTruePerpendicularBisector(C, A, E, O, 'rgba(56, 189, 248, 0.45)', 1.5, true, 0);
+        drawTruePerpendicularBisector(A, B, F, O, 'rgba(56, 189, 248, 0.45)', 1.5, true, 0);
+        if (sub === 'defCompare' || state.activePartIdx === 0) {
+          drawPoint(D, 5, GCOL.cyan, 'D_O(BC중점)', { x: -35, y: 20 });
+        }
+        drawPoint(O, 7, GCOL.cyan, 'O(외심)', { x: -55, y: -10 });
+      }
+
+      if (showI && inc) {
+        const { I, r, D } = inc;
+        drawCircle(I, r, GCOL.green, 'rgba(52, 211, 153, 0.10)', 2.2, false, 1);
+        drawLine(I, D, GCOL.pink, 2.4, false, false, 1);
+        drawRightAngleSign(D, I, C, 10, GCOL.pink);
+        if (sub === 'defCompare' || state.activePartIdx === 1) {
+          drawPoint(D, 5, GCOL.pink, 'D_I(수선의 발)', { x: 15, y: 20 });
+        }
+        drawPoint(I, 7, GCOL.green, 'I(내심)', { x: 12, y: -8 });
+      }
+
+      if (showG) {
+        const { D, E, F } = cent;
+        drawLine(A, D, GCOL.purple, 2.4, true, false, 2);
+        drawLine(B, E, GCOL.purple, 2.4, true, false, 2);
+        drawLine(C, F, GCOL.purple, 2.4, true, false, 2);
+        if (sub === 'centroidFocus' || state.activePartIdx === 2) {
+          labelLine(lerp(A, G, 0.5), '2k', GCOL.gold, 13);
+          labelLine(lerp(G, D, 0.5), '1k', GCOL.gold, 13);
+        }
+        drawPoint(G, 7, GCOL.purple, 'G(무게중심 2:1)', { x: 12, y: 14 });
+      }
+
+      drawPoint(A, 7.5, GCOL.gold, 'A', null, G);
+      drawPoint(B, 7.5, GCOL.cyan, 'B', null, G);
+      drawPoint(C, 7.5, GCOL.pink, 'C', null, G);
+
+      drawMiniOverlayBox(rect, '🧭 외심(O) vs 내심(I) vs 무게중심(G)', [
+        { txt: '🔵 외심 O: 수직이등분선 / 중점 D,E,F', col: '#38bdf8' },
+        { txt: '🟢 내심 I: 각이등분선 / 수선의 발 D,E,F', col: '#34d399' },
+        { txt: '🟣 무게중심 G: 세 중선 / 2:1 & 6등분', col: '#c084fc' }
+      ]);
+
+      drawBottomTapeBanner(rect, '무게중심 G 중선 내분비: 꼭짓점으로부터 AG : GD = 2 : 1 (6개 작은 삼각형 넓이 모두 ⅙S!)', [
+        { text: '꼭짓점 쪽 AG (2k)', weight: 2 / 3, color: GCOL.purple },
+        { text: '중점 쪽 GD (1k)', weight: 1 / 3, color: GCOL.gold }
+      ]);
+    }
+
+    // =========================================================================
+    // [탭 8 렌더링] 고난도 각 추론 & 보조선 해부
+    // =========================================================================
+    function renderMode8AngleChasing(rect, A, B, C, ang, inc) {
+      const sub = state.subType[8];
+      const step = state.fold < 0.33 ? 1 : state.fold < 0.67 ? 2 : 3;
+
+      if (sub === 'domino') {
+        const deg = 20 * (Math.PI / 180), L = 115;
+        const pB = { x: -210, y: 78 };
+        const x1 = L, pA = { x: pB.x + x1 * Math.cos(deg), y: pB.y - x1 * Math.sin(deg) };
+        const x2 = 2 * L * Math.cos(deg), pC = { x: pB.x + x2, y: pB.y };
+        const x3 = x1 + 2 * L * Math.cos(2 * deg), pD = { x: pB.x + x3 * Math.cos(deg), y: pB.y - x3 * Math.sin(deg) };
+        const x4 = x2 + 2 * L * Math.cos(3 * deg), pE = { x: pB.x + x4, y: pB.y };
+        const pF = { x: pB.x + 425 * Math.cos(deg), y: pB.y - 425 * Math.sin(deg) };
+        const pG = { x: pB.x + 425, y: pB.y };
+
+        drawLine(pB, pF, GCOL.white, 2.5);
+        drawLine(pB, pG, GCOL.white, 2.5);
+
+        drawTriangleFilled(pB, pA, pC, 'rgba(56, 189, 248, 0.20)', 0);
+        drawLine(pB, pA, GCOL.cyan, 3.4); drawLine(pA, pC, GCOL.cyan, 3.4);
+        edgeTicks(pB, pA, 1, GCOL.cyan, 7); edgeTicks(pA, pC, 1, GCOL.cyan, 7);
+        curvedAngle(pB, pA, pC, GCOL.cyan, 34, 1, 'x');
+        curvedAngle(pC, pA, pB, GCOL.cyan, 30, 1, 'x');
+
+        drawTriangleFilled(pC, pA, pD, 'rgba(52, 211, 153, 0.20)', 1);
+        drawLine(pC, pD, GCOL.green, 3.4);
+        edgeTicks(pC, pD, 1, GCOL.green, 7);
+        curvedAngle(pA, pD, pC, GCOL.green, 28, 1, '2x');
+        curvedAngle(pD, pC, pA, GCOL.green, 28, 1, '2x');
+
+        drawTriangleFilled(pD, pC, pE, 'rgba(244, 114, 182, 0.20)', 2);
+        drawLine(pD, pE, GCOL.pink, 3.4);
+        edgeTicks(pD, pE, 1, GCOL.pink, 7);
+        curvedAngle(pC, pD, pE, GCOL.pink, 26, 1, '3x');
+        curvedAngle(pE, pD, pC, GCOL.pink, 26, 1, '3x');
+        curvedAngle(pD, pF, pE, GCOL.gold, 30, 2, '4x');
+
+        drawPoint(pB, 6, GCOL.white, 'B', { x: -18, y: 16 });
+        drawPoint(pA, 6, GCOL.cyan, 'A', { x: -10, y: -12 });
+        drawPoint(pC, 6, GCOL.cyan, 'C', { x: -6, y: 20 });
+        drawPoint(pD, 6, GCOL.green, 'D', { x: -6, y: -12 });
+        drawPoint(pE, 6, GCOL.pink, 'E', { x: -6, y: 20 });
+        drawBottomTapeBanner(rect, '이등변 도미노 외각: ∠B(x) ➔ ∠CAD(2x) ➔ △BCD 외각 ∠DCE(x+2x=3x) ➔ △BDE 외각 ∠EDF(x+3x=4x)!');
+        return;
+      }
+
+      if (sub === 'parallelIso') {
+        const U = { x: -200, y: -95 }, V = { x: 200, y: -95 }, W = { x: -200, y: 85 }, X = { x: 200, y: 85 };
+        const P = { x: -60, y: -95 }, Q = { x: 100, y: 85 };
+        const v1 = { x: -1, y: 0 }, v2 = norm(minusPt(Q, P)), bis = norm(addPt(v1, v2));
+        const M = { x: P.x + (85 - P.y) * (bis.x / bis.y), y: 85 };
+
+        drawTriangleFilled(P, Q, M, 'rgba(52, 211, 153, 0.22)', 2);
+        drawLine(U, V, GCOL.white, 2.8); drawLine(W, X, GCOL.white, 2.8);
+        parallelArrows(U, P, 1, GCOL.gold); parallelArrows(W, M, 1, GCOL.gold);
+
+        drawLine(P, Q, GCOL.cyan, 3.6); drawLine(Q, M, GCOL.cyan, 3.6); drawLine(P, M, GCOL.gold, 3.0, true);
+        curvedAngle(P, U, M, GCOL.gold, 30, 1, '●(이등분)');
+        curvedAngle(P, M, Q, GCOL.gold, 34, 1, '●(이등분)');
+        curvedAngle(M, P, Q, GCOL.pink, 32, 1, '●(엇각)');
+        edgeTicks(Q, P, 2, GCOL.cyan, 8); edgeTicks(Q, M, 2, GCOL.cyan, 8);
+
+        drawPoint(P, 6.5, GCOL.gold, 'P', { x: 0, y: -12 });
+        drawPoint(Q, 6.5, GCOL.cyan, 'Q', { x: 10, y: 20 });
+        drawPoint(M, 6.5, GCOL.pink, 'M', { x: -10, y: 20 });
+        drawBottomTapeBanner(rect, '평행선 + 각이등분선(또는 종이접기): 이등분각(●) = Z자 엇각(●) ➔ △QPM은 QP = QM인 이등변삼각형!');
+        return;
+      }
+
+      if (sub === 'inBisect' && inc) {
+        const P = inc.I;
+        drawTriangleFilled(A, B, C, 'rgba(56, 189, 248, 0.08)');
+        drawLine(A, B, GCOL.cyan, 3.2); drawLine(B, C, GCOL.white, 3.2); drawLine(C, A, GCOL.cyan, 3.2);
+        drawTriangleFilled(P, B, C, 'rgba(251, 191, 36, 0.18)', 2);
+        drawLine(B, P, GCOL.gold, 3.0, true); drawLine(C, P, GCOL.gold, 3.0, true);
+
+        curvedAngle(A, B, C, GCOL.cyan, 26, 1, `${Math.round(ang.degA)}°`);
+        curvedAngle(B, A, P, GCOL.gold, 26, 1, '●'); curvedAngle(B, P, C, GCOL.gold, 30, 1, '●');
+        curvedAngle(C, P, B, GCOL.pink, 26, 1, '×'); curvedAngle(C, A, P, GCOL.pink, 30, 1, '×');
+        curvedAngle(P, B, C, GCOL.green, 28, 2, `${Math.round(90 + ang.degA / 2)}°`);
+
+        drawPoint(A, 7, GCOL.gold, 'A', { x: 0, y: -14 });
+        drawPoint(B, 7, GCOL.cyan, 'B', { x: -18, y: 18 });
+        drawPoint(C, 7, GCOL.pink, 'C', { x: 10, y: 18 });
+        drawPoint(P, 7.5, GCOL.green, 'P(90°+½A)', { x: 12, y: -8 });
+        drawBottomTapeBanner(rect, '① 두 내각 이등분선의 교점 P: ∠BPC = 90° + ½∠A');
+        return;
+      }
+
+      if (sub === 'inExBisect') {
+        const pA = { x: -65, y: -110 }, pB = { x: -170, y: 85 }, pC = { x: 15, y: 85 }, pD = { x: 185, y: 85 };
+        const uBA = norm(minusPt(pA, pB)), uBC = norm(minusPt(pC, pB)), dirB = norm(addPt(uBA, uBC));
+        const uCA = norm(minusPt(pA, pC)), uCD = norm(minusPt(pD, pC)), dirC = norm(addPt(uCA, uCD));
+        const P = intersectTwoLines(pB, addPt(pB, dirB), pC, addPt(pC, dirC)) || { x: 155, y: -95 };
+        const angABC = getAngles(pA, pB, pC);
+
+        drawTriangleFilled(pA, pB, pC, 'rgba(56, 189, 248, 0.14)', 0);
+        drawLine(pA, pB, GCOL.cyan, 3.2); drawLine(pB, pC, GCOL.white, 3.2); drawLine(pC, pA, GCOL.cyan, 3.2);
+        drawLine(pC, pD, GCOL.white, 2.8);
+
+        drawTriangleFilled(P, pB, pC, 'rgba(251, 191, 36, 0.16)', 2);
+        drawLine(pB, P, GCOL.gold, 3.0, true); drawLine(pC, P, GCOL.pink, 3.0, true);
+
+        curvedAngle(pA, pB, pC, GCOL.cyan, 26, 1, `${Math.round(angABC.degA)}°`);
+        curvedAngle(pB, pA, P, GCOL.gold, 30, 1, '●'); curvedAngle(pB, P, pC, GCOL.gold, 34, 1, '●');
+        curvedAngle(pC, pA, P, GCOL.pink, 26, 1, '×'); curvedAngle(pC, P, pD, GCOL.pink, 30, 1, '×');
+        curvedAngle(P, pB, pC, GCOL.green, 32, 2, `½∠A=${Math.round(angABC.degA / 2)}°`);
+
+        drawPoint(pA, 7, GCOL.cyan, 'A', { x: -10, y: -14 });
+        drawPoint(pB, 7, GCOL.cyan, 'B', { x: -18, y: 18 });
+        drawPoint(pC, 7, GCOL.white, 'C', { x: -6, y: 22 });
+        drawPoint(pD, 5.5, GCOL.white, 'D', { x: -6, y: 22 });
+        drawPoint(P, 7.5, GCOL.gold, 'P(½∠A!)', { x: -65, y: -14 });
+        drawBottomTapeBanner(rect, '② 한 내각(∠B) + 한 외각(∠C) 이등분선의 교점 P: ∠BPC = ½∠A (꼭지각의 절반!)');
+        return;
+      }
+
+      if (sub === 'exExBisect') {
+        const pA = { x: 0, y: -150 }, pB = { x: -95, y: -20 }, pC = { x: 95, y: -20 };
+        const dirAB = norm(minusPt(pB, pA)), dirAC = norm(minusPt(pC, pA));
+        const extB = addPt(pB, multiply(dirAB, 135)), extC = addPt(pC, multiply(dirAC, 135));
+        const aa = dist(pB, pC), bb = dist(pC, pA), cc = dist(pA, pB), den = (-aa + bb + cc) || 1;
+        const P = { x: (-aa * pA.x + bb * pB.x + cc * pC.x) / den, y: (-aa * pA.y + bb * pB.y + cc * pC.y) / den };
+        const angABC = getAngles(pA, pB, pC);
+
+        drawTriangleFilled(pA, pB, pC, 'rgba(56, 189, 248, 0.14)', 0);
+        drawLine(pA, pB, GCOL.cyan, 3.2); drawLine(pB, pC, GCOL.white, 3.2); drawLine(pC, pA, GCOL.cyan, 3.2);
+        drawLine(pB, extB, GCOL.white, 2.2, true); drawLine(pC, extC, GCOL.white, 2.2, true);
+
+        drawTriangleFilled(P, pB, pC, 'rgba(244, 114, 182, 0.16)', 2);
+        drawLine(pB, P, GCOL.pink, 3.0, true); drawLine(pC, P, GCOL.pink, 3.0, true);
+
+        curvedAngle(pA, pB, pC, GCOL.cyan, 26, 1, `${Math.round(angABC.degA)}°`);
+        curvedAngle(pB, extB, P, GCOL.gold, 26, 1, '●'); curvedAngle(pB, P, pC, GCOL.gold, 30, 1, '●');
+        curvedAngle(pC, pB, P, GCOL.pink, 26, 1, '×'); curvedAngle(pC, P, extC, GCOL.pink, 30, 1, '×');
+        curvedAngle(P, pB, pC, GCOL.green, 28, 2, `90°-½A=${Math.round(90 - angABC.degA / 2)}°`);
+
+        drawPoint(pA, 7, GCOL.cyan, 'A', { x: 0, y: -14 });
+        drawPoint(pB, 7, GCOL.cyan, 'B', { x: -22, y: 4 });
+        drawPoint(pC, 7, GCOL.cyan, 'C', { x: 12, y: 4 });
+        drawPoint(P, 7.5, GCOL.gold, 'P(90°-½A)', { x: 14, y: 6 });
+        drawBottomTapeBanner(rect, '③ 두 외각 이등분선의 교점 P(방심): ∠BPC = 90° - ½∠A');
+        return;
+      }
+
+      if (sub === 'boomerang') {
+        const pA = { x: 0, y: -140 }, pB = { x: -150, y: 90 }, pD = { x: 0, y: 15 }, pC = { x: 150, y: 90 };
+        const pE = { x: 0, y: 120 };
+
+        drawTriangleFilled(pA, pB, pD, 'rgba(56, 189, 248, 0.18)', 0);
+        drawTriangleFilled(pA, pC, pD, 'rgba(244, 114, 182, 0.18)', 1);
+        drawLine(pA, pB, GCOL.cyan, 3.4); drawLine(pB, pD, GCOL.cyan, 3.4);
+        drawLine(pD, pC, GCOL.pink, 3.4); drawLine(pC, pA, GCOL.pink, 3.4);
+
+        drawLine(pA, pE, GCOL.gold, 2.8, true, false, 1);
+        drawPoint(pE, 5.5, GCOL.gold, 'E(AD연장선)', { x: 12, y: 4 });
+        curvedAngle(pD, pB, pE, GCOL.cyan, 28, 1, '∠A₁+∠B');
+        curvedAngle(pD, pE, pC, GCOL.pink, 28, 1, '∠A₂+∠C');
+        curvedAngle(pA, pB, pC, GCOL.gold, 28, 1, '∠A');
+        curvedAngle(pB, pD, pA, GCOL.cyan, 26, 1, '∠B');
+        curvedAngle(pC, pA, pD, GCOL.pink, 26, 1, '∠C');
+
+        drawPoint(pA, 7, GCOL.gold, 'A', { x: 0, y: -14 });
+        drawPoint(pB, 7, GCOL.cyan, 'B', { x: -18, y: 18 });
+        drawPoint(pC, 7, GCOL.pink, 'C', { x: 10, y: 18 });
+        drawPoint(pD, 7.5, GCOL.gold, 'D(오목각)', { x: 14, y: -8 });
+        drawBottomTapeBanner(rect, '부메랑(오목사각형) 법칙: 안쪽 오목한 각 ∠BDC = ∠A + ∠B + ∠C (보조선 AE 외각 2번 합!)');
+        return;
+      }
+
+      if (sub === 'rightAlt') {
+        const pB = { x: -170, y: 78 }, pC = { x: 145, y: 78 }, pH = { x: -50, y: 78 };
+        const hLen = Math.sqrt((pH.x - pB.x) * (pC.x - pH.x));
+        const pA = { x: pH.x, y: pH.y - hLen };
+
+        drawTriangleFilled(pA, pB, pH, 'rgba(56, 189, 248, 0.20)', 0);
+        drawTriangleFilled(pA, pH, pC, 'rgba(52, 211, 153, 0.20)', 1);
+        drawLine(pA, pB, GCOL.cyan, 3.4); drawLine(pB, pC, GCOL.white, 3.4); drawLine(pC, pA, GCOL.green, 3.4);
+        drawLine(pA, pH, GCOL.pink, 3.2, true);
+
+        drawRightAngleSign(pA, pB, pC, 14, GCOL.gold);
+        drawRightAngleSign(pH, pA, pB, 12, GCOL.cyan);
+        drawRightAngleSign(pH, pA, pC, 12, GCOL.green);
+
+        curvedAngle(pB, pA, pC, GCOL.cyan, 30, 1, '●(52°)');
+        curvedAngle(pC, pA, pB, GCOL.pink, 34, 2, '×(38°)');
+        curvedAngle(pA, pB, pH, GCOL.pink, 32, 2, '×(38°)');
+        curvedAngle(pA, pH, pC, GCOL.cyan, 36, 1, '●(52°)');
+
+        drawPoint(pA, 7, GCOL.gold, 'A(90°)', { x: 0, y: -14 });
+        drawPoint(pB, 7, GCOL.cyan, 'B', { x: -18, y: 18 });
+        drawPoint(pC, 7, GCOL.green, 'C', { x: 10, y: 18 });
+        drawPoint(pH, 6.5, GCOL.pink, 'H(수선의 발)', { x: -25, y: 22 });
+        drawBottomTapeBanner(rect, '직각삼각형 수선 각 복제: ● + × = 90° 이므로 ∠B = ∠CAH = ●(52°), ∠C = ∠BAH = ×(38°)');
+        return;
+      }
+
+      // equilRot
+      const pA = { x: 0, y: -150 }, pB = { x: -140, y: 85 }, pC = { x: 140, y: 85 };
+      const P = { x: -35, y: 10 }, P_rot = rotatePtAround(P, pA, -Math.PI / 3);
+      drawLine(pA, pB, GCOL.cyan, 2.8); drawLine(pB, pC, GCOL.white, 2.8); drawLine(pC, pA, GCOL.cyan, 2.8);
+      drawTriangleFilled(pA, pB, P, 'rgba(56, 189, 248, 0.22)', 0);
+      drawLine(pA, P, GCOL.gold, 3.2); drawLine(pB, P, GCOL.cyan, 2.8);
+
+      drawTriangleFilled(pA, pC, P_rot, 'rgba(244, 114, 182, 0.22)', 1);
+      drawLine(pA, P_rot, GCOL.gold, 3.2); drawLine(pC, P_rot, GCOL.pink, 2.8);
+      curvedAngle(pA, P, P_rot, GCOL.gold, 32, 1, '60°');
+      edgeTicks(pA, P, 1, GCOL.gold, 7.5); edgeTicks(pA, P_rot, 1, GCOL.gold, 7.5);
+
+      drawTriangleFilled(pA, P, P_rot, 'rgba(251, 191, 36, 0.26)', 2);
+      drawLine(P, P_rot, GCOL.gold, 3.4, true);
+      edgeTicks(P, P_rot, 1, GCOL.gold, 7.5);
+
+      drawPoint(pA, 7, GCOL.gold, 'A(60° 회전축)', { x: 0, y: -14 });
+      drawPoint(pB, 6.5, GCOL.cyan, 'B', { x: -18, y: 18 });
+      drawPoint(pC, 6.5, GCOL.cyan, 'C', { x: 10, y: 18 });
+      drawPoint(P, 6.5, GCOL.cyan, 'P', { x: -18, y: 14 });
+      drawPoint(P_rot, 6.5, GCOL.pink, "P'(회전점)", { x: 12, y: 4 });
+      drawBottomTapeBanner(rect, "정삼각형 60° 회전 보조선: △ABP ≡ △ACP' (SAS) ➔ AP = AP', ∠PAP'=60° ➔ △APP'는 정삼각형!");
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. UI 동기화 및 원클릭 각도·모양 프리셋 컨트롤러
+    // -------------------------------------------------------------------------
+    function renderSubBar() {
+      const m = state.mode;
+      const bar = document.getElementById('subSelectorBar');
+      bar.innerHTML = SUB_MENUS[m]
+        .map(
+          (it) =>
+            `<button onclick="setSubType(${m}, '${it.id}')" class="sub-pill ${
+              state.subType[m] === it.id ? 'active' : 'bg-emerald-950/80 text-emerald-100 hover:bg-emerald-900'
+            } px-2.5 py-1 rounded-lg border border-emerald-800 text-[11px] transition">${it.label}</button>`
+        )
+        .join('');
+    }
+
+    function renderPresetChips(ang) {
+      const curDegA = Math.round(ang.degA);
+      const degList = [40, 60, 80, 120];
+      document.getElementById('p1BtnGroup').innerHTML = degList
+        .map(
+          (d) =>
+            `<button onclick="snapAngleA(${d})" class="preset-chip ${
+              Math.abs(curDegA - d) <= 2 ? 'active' : 'bg-emerald-950/80 text-emerald-200 hover:bg-emerald-900 border-emerald-800'
+            } py-1 rounded border text-[10.5px] transition">${d}°</button>`
+        )
+        .join('');
+      document.getElementById('valP1').textContent = `${curDegA}°`;
+
+      const shapes = [
+        { id: 'iso', label: '이등변' },
+        { id: 'right', label: '직각90°' },
+        { id: 'scalene', label: '비대칭' },
+        { id: 'obtuse', label: '둔각' }
+      ];
+      document.getElementById('p2BtnGroup').innerHTML = shapes
+        .map(
+          (s) =>
+            `<button onclick="snapShape('${s.id}')" class="preset-chip ${
+              state.shapeTag === s.id ? 'active' : 'bg-emerald-950/80 text-emerald-200 hover:bg-emerald-900 border-emerald-800'
+            } py-1 rounded border text-[10.5px] transition">${s.label}</button>`
+        )
+        .join('');
+    }
+
+    function snapAngleA(targetDeg) {
+      // 밑변 BC를 고정하고 꼭지각 ∠A가 정확히 targetDeg인 이등변삼각형으로 꼭짓점 A 이동!
+      state.pts.B = { x: -135, y: 95 };
+      state.pts.C = { x: 135, y: 95 };
+      const halfBase = 135;
+      const radHalf = ((targetDeg / 2) * Math.PI) / 180;
+      const h = halfBase / Math.tan(radHalf);
+      state.pts.A = { x: 0, y: 95 - h };
+      state.shapeTag = targetDeg > 90 ? 'obtuse' : 'iso';
+      render();
+    }
+
+    function snapShape(tag) {
+      state.shapeTag = tag;
+      if (tag === 'iso') {
+        state.pts.A = { x: 0, y: -145 };
+        state.pts.B = { x: -135, y: 95 };
+        state.pts.C = { x: 135, y: 95 };
+        state.constraintLocked = true;
+      } else if (tag === 'right') {
+        state.pts.A = { x: -135, y: -85 };
+        state.pts.B = { x: -135, y: 95 };
+        state.pts.C = { x: 135, y: 95 };
+        state.constraintLocked = true;
+      } else if (tag === 'scalene') {
+        state.pts.A = { x: 65, y: -140 };
+        state.pts.B = { x: -155, y: 95 };
+        state.pts.C = { x: 135, y: 95 };
+        state.constraintLocked = false;
+      } else if (tag === 'obtuse') {
+        state.pts.A = { x: 35, y: -25 };
+        state.pts.B = { x: -155, y: 55 };
+        state.pts.C = { x: 135, y: 55 };
+        state.constraintLocked = false;
+      }
+      syncConstraintBtnUI();
+      render();
+    }
+
+    function updateUI(spec, ang) {
+      document.getElementById('canvasModeBadge').textContent = spec.badge;
+      document.getElementById('canvasActionHint').innerHTML = spec.hint;
+      document.getElementById('txtFoldToggle').textContent = spec.actionTxt;
+
+      document.getElementById('sliderFold').value = state.fold;
+      document.getElementById('valFold').textContent = `${Math.round(state.fold * 100)}%`;
+
+      const partsBox = document.getElementById('partsBox');
+      partsBox.innerHTML = spec.parts
+        .map((p) => {
+          const isSelected = state.activePartIdx === p.id;
+          const badgeCls = p.ok
+            ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+            : 'bg-rose-500/20 text-rose-300 border-rose-500/40';
+          return `
+            <div onclick="togglePartHighlight(${p.id})" class="part-card ${
+            isSelected ? 'active' : 'bg-[#07130e]/90 border-emerald-800/70'
+          } p-2.5 rounded-lg border flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-3 h-3 rounded-full shrink-0" style="background:${p.color}"></span>
+                <div class="truncate">
+                  <div class="text-xs font-bold text-emerald-50 truncate">${p.name}</div>
+                  <div class="text-[10.5px] text-emerald-400/85 truncate">${p.desc}</div>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded border text-xs font-mono font-extrabold shrink-0 ${badgeCls}">${p.val}</span>
+            </div>
+          `;
+        })
+        .join('');
+
+      document.getElementById('totalResultBadge').textContent = spec.totalRes;
+      document.getElementById('ruleBadge').textContent = spec.rule;
+      document.getElementById('formulaBox').innerHTML = spec.formulaHTML;
+      document.getElementById('intuitionNotes').innerHTML = spec.notes;
+
+      renderPresetChips(ang);
+    }
+
+    function togglePartHighlight(idx) {
+      state.activePartIdx = state.activePartIdx === idx ? -1 : idx;
+      render();
+    }
+
+    function setConceptSwitch(sw) {
+      state.conceptSwitch = sw;
+      ['all', 'def', 'p1', 'p3'].forEach((id) => {
+        document.getElementById(`sw-${id}`).classList.toggle('active', id === sw);
+      });
+      render();
+    }
+
+    function applySubTypeGeometry(mode, subId) {
+      state.fold = 0.0;
+      state.foldTarget = null;
+      if (subId === 'isoRight' || subId === 'circumRight' || subId === 'incenterRightSq' || subId === 'oigRight') {
+        snapShape('right');
+      } else if (subId === 'circum3060') {
+        state.pts.A = { x: -115, y: -155 };
+        state.pts.B = { x: -115, y: 95 };
+        state.pts.C = { x: 30, y: 95 };
+        state.shapeTag = 'right';
+      } else if (subId === 'oigEquil') {
+        snapAngleA(60);
+      } else if (subId === 'counterDMH' || subId === 'defCompare') {
+        snapShape('scalene');
+      } else if (subId === 'counterObtuseH' || subId === 'circumObtuse') {
+        snapShape('obtuse');
+      } else if (subId === 'isoSide') {
+        state.pts.A = { x: 140, y: 0 };
+        state.pts.B = { x: -95, y: -120 };
+        state.pts.C = { x: -95, y: 120 };
+      } else {
+        snapAngleA(52);
+      }
+    }
+
+    function setMode(m) {
+      state.mode = m;
+      state.activePartIdx = -1;
+      for (let i = 1; i <= 8; i++) {
+        document.getElementById(`tab-${i}`).classList.toggle('active', i === m);
+      }
+      renderSubBar();
+      applySubTypeGeometry(m, state.subType[m]);
+      render();
+    }
+
+    function setSubType(mode, subId) {
+      state.subType[mode] = subId;
+      state.activePartIdx = -1;
+      renderSubBar();
+      applySubTypeGeometry(mode, subId);
+      render();
+    }
+
+    function stepSub(dir) {
+      const list = SUB_MENUS[state.mode];
+      const curIdx = list.findIndex((it) => it.id === state.subType[state.mode]);
+      const nextIdx = (curIdx + dir + list.length) % list.length;
+      setSubType(state.mode, list[nextIdx].id);
+    }
+
+    function syncConstraintBtnUI() {
+      const icon = document.getElementById('iconConstraint');
+      const txt = document.getElementById('txtConstraint');
+      if (state.constraintLocked) {
+        icon.className = 'fa-solid fa-lock text-amber-300';
+        txt.textContent = '조건 유지 드래그';
+      } else {
+        icon.className = 'fa-solid fa-lock-open text-rose-400';
+        txt.textContent = '자유 변형(반례)';
+      }
+    }
+
+    function toggleConstraintLock() {
+      state.constraintLocked = !state.constraintLocked;
+      syncConstraintBtnUI();
+      render();
+    }
+
+    function toggleTrace() {
+      state.showTrace = !state.showTrace;
+      document.getElementById('btnTrace').classList.toggle('bg-amber-500/25', state.showTrace);
+      render();
+    }
+
+    function setFoldVal(val) { state.foldTarget = val; }
+
+    function onFoldSlider() {
+      state.foldTarget = null;
+      state.fold = parseFloat(document.getElementById('sliderFold').value);
+      render();
+    }
+
+    function toggleFoldAnim() {
+      state.foldTarget = state.fold > 0.5 ? 0.0 : 1.0;
+    }
+
+    function zoomCanvas(factor) {
+      state.scale = Math.max(0.6, Math.min(2.1, state.scale * factor));
+      render();
+    }
+
+    function resetView() {
+      state.scale = 1.0;
+      state.pan = { x: 0, y: 10 };
+      state.activePartIdx = -1;
+      state.tracePoints = [];
+      applySubTypeGeometry(state.mode, state.subType[state.mode]);
+      setConceptSwitch('all');
+      render();
+    }
+
+    function animateLoop() {
+      let dirty = false;
+      if (state.foldTarget !== null) {
+        const diff = state.foldTarget - state.fold;
+        if (Math.abs(diff) < 0.008) {
+          state.fold = state.foldTarget;
+          state.foldTarget = null;
+        } else {
+          state.fold += diff * 0.08;
+        }
+        dirty = true;
+      }
+      if (dirty) render();
+      requestAnimationFrame(animateLoop);
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. 스마트 제약 드래그 & 터치 인터랙션
+    // -------------------------------------------------------------------------
+    function applySmartDrag(node, localPt) {
+      if (state.constraintLocked && state.shapeTag === 'iso') {
+        const midX = (state.pts.B.x + state.pts.C.x) / 2;
+        if (node === 'A') {
+          state.pts.A.x = midX;
+          state.pts.A.y = Math.max(-210, Math.min(160, localPt.y));
+        } else if (node === 'B') {
+          state.pts.B.x = Math.min(midX - 25, localPt.x);
+          state.pts.B.y = localPt.y;
+          state.pts.C.x = 2 * midX - state.pts.B.x;
+          state.pts.C.y = state.pts.B.y;
+        } else if (node === 'C') {
+          state.pts.C.x = Math.max(midX + 25, localPt.x);
+          state.pts.C.y = localPt.y;
+          state.pts.B.x = 2 * midX - state.pts.C.x;
+          state.pts.B.y = state.pts.C.y;
+        }
+      } else if (state.constraintLocked && state.shapeTag === 'right') {
+        if (node === 'A') {
+          state.pts.A.x = state.pts.B.x;
+          state.pts.A.y = Math.min(state.pts.B.y - 30, localPt.y);
+        } else if (node === 'C') {
+          state.pts.C.x = Math.max(state.pts.B.x + 30, localPt.x);
+          state.pts.C.y = state.pts.B.y;
+        } else if (node === 'B') {
+          state.pts.B.x = Math.min(state.pts.C.x - 30, localPt.x);
+          state.pts.B.y = Math.max(state.pts.A.y + 30, localPt.y);
+          state.pts.A.x = state.pts.B.x;
+          state.pts.C.y = state.pts.B.y;
+        }
+      } else {
+        state.pts[node].x = localPt.x;
+        state.pts[node].y = localPt.y;
+      }
+    }
+
+    function isDraggableMode() {
+      return [1, 5, 6, 7].includes(state.mode);
+    }
+
+    canvas.addEventListener('mousedown', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const p = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      state.lastMouse = p;
+      const hitR = 26;
+      const sA = toScreen(state.pts.A), sB = toScreen(state.pts.B), sC = toScreen(state.pts.C);
+
+      if (isDraggableMode() && Math.hypot(p.x - sA.x, p.y - sA.y) < hitR) state.draggingNode = 'A';
+      else if (isDraggableMode() && Math.hypot(p.x - sB.x, p.y - sB.y) < hitR) state.draggingNode = 'B';
+      else if (isDraggableMode() && Math.hypot(p.x - sC.x, p.y - sC.y) < hitR) state.draggingNode = 'C';
+      else state.isPanning = true;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!state.draggingNode && !state.isPanning) return;
+      const rect = canvas.getBoundingClientRect();
+      const p = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      const dx = p.x - state.lastMouse.x;
+      const dy = p.y - state.lastMouse.y;
+
+      if (state.draggingNode) {
+        applySmartDrag(state.draggingNode, toLocal(p));
+        if (state.showTrace) {
+          const circum = getCircumcenter(state.pts.A, state.pts.B, state.pts.C);
+          if (circum) {
+            state.tracePoints.push({ ...circum.O });
+            if (state.tracePoints.length > 80) state.tracePoints.shift();
+          }
+        }
+        render();
+      } else if (state.isPanning) {
+        state.pan.x += dx;
+        state.pan.y += dy;
+        render();
+      }
+      state.lastMouse = p;
+    });
+
+    window.addEventListener('mouseup', () => {
+      state.draggingNode = null;
+      state.isPanning = false;
+    });
+
+    canvas.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      zoomCanvas(e.deltaY < 0 ? 1.09 : 0.92);
+    }, { passive: false });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setMode(1);
+      resizeCanvas();
+      requestAnimationFrame(animateLoop);
+    });
+  </script>
+
+  <script id="ap-mobile-adapter">
+  (function(){
+    const board = document.querySelector('main');
+    if (!board) return;
+    const items = Array.from(board.children);
+    const top = items.find(el => el.tagName==='DIV' && el.classList.contains('absolute') && Array.from(el.classList).some(c=>c.startsWith('top-')));
+    const tools = items.find(el => el.tagName==='DIV' && el.classList.contains('absolute') && Array.from(el.classList).some(c=>c.startsWith('bottom-')) && Array.from(el.classList).some(c=>c.startsWith('left-')));
+    if (!top || !tools) return;
+    top.classList.add('ap-mobile-top'); tools.classList.add('ap-mobile-tools');
+    let wasMobile=null;
+    function arrange(){
+      const mobile=window.innerWidth<1024;
+      if (mobile===wasMobile) return;
+      wasMobile=mobile;
+      if(mobile){board.before(top);board.after(tools)}
+      else {board.appendChild(top);board.appendChild(tools)}
+      requestAnimationFrame(()=>{
+        if (typeof window.resizeCanvas === 'function') {
+          try {window.resizeCanvas()}catch(e){console.warn('Canvas resize:',e.message)}
+        }
+      });
+    }
+    arrange();
+    window.addEventListener('resize',arrange,{passive:true});
+  })();
+  </script>
+
+  <script id="ap-touch-adapter">
+  (function(){
+    const canvas=document.getElementById('boardCanvas'); if(!canvas) return;
+    let active=false;
+    function mouse(type,t){
+      const target=(type==='mousedown')?canvas:window;
+      target.dispatchEvent(new MouseEvent(type,{bubbles:true,cancelable:true,clientX:t.clientX,clientY:t.clientY,button:0,buttons:type==='mouseup'?0:1}));
+    }
+    canvas.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;active=true;mouse('mousedown',e.touches[0]);e.preventDefault()},{passive:false});
+    canvas.addEventListener('touchmove',e=>{if(!active||e.touches.length!==1)return;mouse('mousemove',e.touches[0]);e.preventDefault()},{passive:false});
+    canvas.addEventListener('touchend',e=>{if(!active)return;active=false;mouse('mouseup',e.changedTouches[0]);e.preventDefault()},{passive:false});
+    canvas.addEventListener('touchcancel',e=>{if(!active)return;active=false;mouse('mouseup',e.changedTouches[0])},{passive:false});
+  })();
+  </script>
+
+  <script src="../../assets/geometry-relations.js" data-mode="plane"></script>
+  <script defer src="../../assets/student-guide.js"></script>
+</body>
+</html>

@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이차함수 심화 · 움직이는 축 최대최소 · 절댓값 · 근의 분리 마스터 실험실 | AP Math Playground</title>
+  <!-- Pretendard Webfont -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- KaTeX CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="../../assets/geometry-relations.css" />
+  <link rel="stylesheet" href="../../assets/board-relations.css" />
+
+  <style>
+    * {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #07130e;
+      color: #f1f5f9;
+      overflow: hidden;
+    }
+    .chalkboard-bg {
+      background: radial-gradient(circle at 50% 45%, #163329 0%, #0d211a 65%, #07140f 100%);
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.88);
+    }
+    .katex { font-size: 1.02em !important; }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #07130e; }
+    ::-webkit-scrollbar-thumb { background: #1d3f32; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2d604d; }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: #11261e;
+      height: 7px;
+      border-radius: 4px;
+      outline: none;
+      border: 1px solid #234739;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fbbf24;
+      cursor: pointer;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 10px rgba(251, 191, 36, 0.85);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.16); }
+
+    .mode-tab.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #07130e;
+      font-weight: 800;
+      border-color: #fbbf24;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.45);
+    }
+    .sub-pill.active {
+      background: rgba(52, 211, 153, 0.28);
+      border-color: #34d399;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 0 10px rgba(52, 211, 153, 0.35);
+    }
+    .lens-chip.active {
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.32), rgba(245, 158, 11, 0.45));
+      border-color: #fbbf24;
+      color: #fef08a;
+      font-weight: 800;
+    }
+    .preset-chip.active {
+      background: #fbbf24;
+      color: #07130e;
+      border-color: #fef08a;
+      font-weight: 900;
+      box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+    }
+    .part-card {
+      transition: all 0.18s ease;
+      cursor: pointer;
+    }
+    .part-card:hover {
+      transform: translateY(-1px);
+      border-color: #34d399;
+    }
+    .part-card.active {
+      background: rgba(251, 191, 36, 0.18);
+      border-color: #fbbf24;
+      box-shadow: 0 0 12px rgba(251, 191, 36, 0.25);
+    }
+    .chalk-text { text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85); }
+  </style>
+
+  <style id="ap-mobile-bridge">
+  @media (max-width:1023px) {
+    html,body {height:auto!important;min-height:100%!important;width:100%!important;max-width:100%!important;overflow-x:hidden!important;overflow-y:auto!important;}
+    body {display:block!important; margin:0!important; -webkit-overflow-scrolling:touch;}
+    body > header {width:100%!important;position:relative!important;top:auto!important;}
+    body > header > nav {display:flex!important;flex-wrap:nowrap!important;width:100%!important;max-width:100vw!important;overflow-x:auto!important;overflow-y:hidden!important;white-space:nowrap!important;-webkit-overflow-scrolling:touch;}
+    body > header > nav button {flex-shrink:0!important; min-height:36px;}
+    body > div.flex-1.flex.flex-col {display:flex!important;flex-direction:column!important;width:100%!important;max-width:100%!important;height:auto!important;min-height:0!important;overflow:visible!important;}
+    body > div.flex-1.flex.flex-col > main {position:relative!important;width:100%!important;min-width:0!important;max-width:100%!important;height:clamp(460px,64svh,700px)!important;min-height:460px!important;flex:0 0 auto!important;overflow:hidden!important;display:block!important;}
+    main #boardCanvas {display:block!important;width:100%!important;height:100%!important;touch-action:none;}
+    .ap-mobile-top {position:relative!important;left:auto!important;top:auto!important;bottom:auto!important;right:auto!important;z-index:2!important;display:flex!important;flex-direction:column!important;box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-width:0!important;max-height:210px!important;overflow-y:auto!important;overflow-x:hidden!important;gap:6px!important;padding:8px!important;margin:0!important;pointer-events:auto!important;background:#0b2019!important;border-bottom:1px solid #24513e;}
+    .ap-mobile-top > div {max-width:100%!important;min-width:0!important;box-sizing:border-box!important;}
+    .ap-mobile-top #subSelectorBar {max-width:100%!important;max-height:105px!important;overflow-x:auto!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch;}
+    .ap-mobile-tools {position:relative!important;left:auto!important;top:auto!important;bottom:auto!important;right:auto!important;width:100%!important;max-width:100%!important;max-height:none!important;padding:9px!important;margin:0!important;box-sizing:border-box!important;display:flex!important;flex-wrap:wrap!important;gap:7px!important;align-items:center!important;justify-content:flex-start!important;z-index:3!important;background:#0a1b15!important;border-top:1px solid #2b5444;border-bottom:1px solid #2b5444;}
+    .ap-mobile-tools button {min-height:38px!important;touch-action:manipulation;}
+    body > div.flex-1.flex.flex-col > aside {width:100%!important;max-width:100%!important;height:auto!important;max-height:none!important;min-height:0!important;flex:0 0 auto!important;overflow:visible!important;display:block!important;}
+    body > div.flex-1.flex.flex-col > aside > div {height:auto!important;max-height:none!important;overflow:visible!important;}
+    body > div.flex-1.flex.flex-col > aside section {max-width:100%!important;}
+  }
+  .ap-back-home{align-self:center;display:inline-flex;align-items:center;justify-content:center;gap:6px;flex:0 0 auto;min-height:33px;padding:6px 11px;background:#153a2e;border:1px solid #49806c;border-radius:10px;color:#d5f6cb;font:700 12px/1.3 system-ui,sans-serif;text-decoration:none;white-space:nowrap;z-index:22}
+  .ap-back-home:hover{background:#215341}
+  @media(max-width:1023px){.ap-back-home{margin:4px 8px 4px 0;}}
+  </style>
+</head>
+<body class="h-screen w-screen flex flex-col">
+
+  <!-- ===================================================================== -->
+  <!-- 상단 헤더 & 6대 마스터 탭 (차함수와위치관계 · 움직이는대칭축최대최소 · 절댓값폴딩과교점 · 근의분리함판축 · 절대부등식과제한부등식 · 시험장킬러함정연구소) -->
+  <!-- ===================================================================== -->
+  <header class="bg-[#081510]/95 border-b border-emerald-900/70 px-3.5 py-2 flex flex-wrap items-center justify-between gap-2 z-20 shrink-0">
+    <div class="flex items-center gap-2.5">
+      <a class="ap-back-home" href="../../index.html" aria-label="전체 실험실로 돌아가기">← 전체 단원</a>
+      <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-400/60 flex items-center justify-center text-amber-300 shadow-inner">
+        <i class="fa-solid fa-bezier-curve text-base"></i>
+      </div>
+      <div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <h1 class="text-sm md:text-base font-black tracking-tight text-emerald-50 chalk-text">이차함수 심화 · 움직이는 축 최대최소 · 절댓값 · 근의 분리 마스터 실험실</h1>
+          <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/40">30종 고1 킬러 그래프·함판축 직접 해부</span>
+        </div>
+        <p class="text-[10.5px] text-emerald-400/85 hidden 2xl:block">차함수 h(x)=f(x)-g(x) 수평 변환 · 제한된 범위 움직이는 대칭축 x=p vs 움직이는 구간 · 절댓값 폴딩(|f(x)|, f(|x|)) 교점 스캐너 · 근의 분리(함·판·축) &amp; 제한 부등식</p>
+      </div>
+    </div>
+
+    <!-- 6대 핵심 실험 모드 탭 -->
+    <nav class="flex items-center gap-1 overflow-x-auto py-1 max-w-full">
+      <button onclick="setMode(1)" id="tab-1" class="mode-tab active text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-wave-square"></i>
+        <span>1. 차함수 f-g 변환 &amp; 직선 위치관계</span>
+      </button>
+      <button onclick="setMode(2)" id="tab-2" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-arrows-left-right"></i>
+        <span>2. 움직이는 대칭축 x=p 최대·최소</span>
+      </button>
+      <button onclick="setMode(3)" id="tab-3" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>3. 절댓값 폴딩(|f|, f(|x|)) &amp; 실근개수</span>
+      </button>
+      <button onclick="setMode(4)" id="tab-4" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-lock"></i>
+        <span>4. 실근의 위치 (근의 분리: 함·판·축)</span>
+      </button>
+      <button onclick="setMode(5)" id="tab-5" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-emerald-800/80 bg-emerald-950/60 text-emerald-200 hover:bg-emerald-900/60 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>5. 항상 성립하는 부등식 &amp; 제한부등식</span>
+      </button>
+      <button onclick="setMode(6)" id="tab-6" class="mode-tab text-xs px-2.5 py-1.5 rounded-lg border border-amber-500/60 bg-amber-950/40 text-amber-200 hover:bg-amber-900/50 transition whitespace-nowrap flex items-center gap-1">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>6. 1등급 결정타 함정 연구소</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- 메인 워크스페이스 (좌측 인터랙티브 분필 칠판 + 우측 435px 직관 해부 조종석) -->
+  <!-- ===================================================================== -->
+  <div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
+
+    <!-- 좌측: 인터랙티브 좌표평면 분필 칠판 캔버스 -->
+    <main class="flex-1 relative chalkboard-bg overflow-hidden flex items-center justify-center">
+      <canvas id="boardCanvas" class="w-full h-full block cursor-grab active:cursor-grabbing"></canvas>
+
+      <!-- 좌측 상단: 현재 실험 배지 + 세부 시나리오 선택 바 + 관찰 렌즈 스위치 -->
+      <div class="absolute top-3 left-3 pointer-events-none flex flex-col gap-2 max-w-xs sm:max-w-2xl z-10">
+        <!-- 현재 도형 배지 & 한 줄 핵심 직관 -->
+        <div class="bg-[#07140f]/92 backdrop-blur-md border border-emerald-700/60 rounded-xl px-3.5 py-2 shadow-xl">
+          <div class="flex items-center gap-2 text-amber-300 text-xs font-extrabold mb-0.5">
+            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+            <span id="canvasModeBadge">탐구 1 · 이차함수와 직선의 교점 ⟺ 차함수 h(x) = f(x) - g(x) 의 실근!</span>
+          </div>
+          <p id="canvasActionHint" class="text-[11.5px] text-emerald-100/95 leading-snug"></p>
+        </div>
+
+        <!-- 세부 시나리오 알약 선택 카트리지 바 -->
+        <div id="subSelectorBar" class="pointer-events-auto bg-[#07140f]/95 backdrop-blur-md border border-emerald-700/60 rounded-xl p-1.5 shadow-xl flex flex-wrap items-center gap-1.5 w-fit"></div>
+
+        <!-- 관찰 렌즈 스위치 & 동작 프리셋 바 -->
+        <div class="pointer-events-auto bg-[#07140f]/95 backdrop-blur-md border border-emerald-700/60 rounded-xl p-1.5 shadow-xl flex flex-wrap items-center gap-1.5 w-fit">
+          <span class="text-[10.5px] text-amber-300 font-extrabold px-1 flex items-center gap-1">
+            <i class="fa-solid fa-eye"></i> 관찰 렌즈:
+          </span>
+          <button onclick="setConceptSwitch('all')" id="sw-all" class="lens-chip active px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">🔍 전체 구조</button>
+          <button onclick="setConceptSwitch('axis')" id="sw-axis" class="lens-chip px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">📐 대칭축·꼭짓점·경계</button>
+          <button onclick="setConceptSwitch('roots')" id="sw-roots" class="lens-chip px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">📏 교점·최대최소·실근</button>
+          <button onclick="setConceptSwitch('aux')" id="sw-aux" class="lens-chip px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/90 text-[10.5px] text-emerald-100 transition">🪄 차함수·접선·반례곡선</button>
+
+          <span class="text-emerald-800 mx-0.5 hidden sm:inline">|</span>
+
+          <button onclick="setFoldVal(0)" class="px-2 py-0.5 rounded-lg border border-emerald-800 bg-emerald-950/80 hover:bg-emerald-800 text-[10.5px] text-emerald-100 font-bold transition">🧩 시작 0%</button>
+          <button onclick="setFoldVal(0.5)" class="px-2 py-0.5 rounded-lg border border-sky-500/50 bg-sky-500/20 hover:bg-sky-500/30 text-[10.5px] text-sky-200 font-extrabold transition">🔄 중앙 50%</button>
+          <button onclick="setFoldVal(1)" class="px-2 py-0.5 rounded-lg border border-amber-500/50 bg-amber-500/20 hover:bg-amber-500/30 text-[10.5px] text-amber-200 font-extrabold transition">✨ 완성 100%</button>
+        </div>
+      </div>
+
+      <!-- 좌측 하단 플로팅 액션 툴바 -->
+      <div class="absolute bottom-3 left-3 flex flex-wrap items-center gap-1.5 bg-[#07140f]/95 backdrop-blur-md border border-emerald-800/70 p-1.5 rounded-xl shadow-xl z-10">
+        <button onclick="toggleFoldAnim()" id="btnFoldToggle" class="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-xs font-black flex items-center gap-1.5 transition shadow-md">
+          <i class="fa-solid fa-wand-magic-sparkles" id="iconFoldToggle"></i>
+          <span id="txtFoldToggle">🎬 대칭축 이동 / 절댓값 폴딩 / 차함수 변환 시연!</span>
+        </button>
+        <button onclick="cyclePartHighlight()" class="px-2.5 py-1.5 rounded-lg bg-emerald-950/80 hover:bg-emerald-800/60 border border-emerald-700/50 text-emerald-200 text-xs font-bold flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-highlighter text-amber-300"></i>
+          <span class="hidden sm:inline">조각 순차 강조</span>
+        </button>
+        <div class="h-4 w-[1px] bg-emerald-800/70 mx-0.5"></div>
+        <button onclick="zoomCanvas(1.14)" class="w-7 h-7 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="확대"><i class="fa-solid fa-plus"></i></button>
+        <button onclick="zoomCanvas(0.88)" class="w-7 h-7 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="축소"><i class="fa-solid fa-minus"></i></button>
+        <button onclick="resetView()" class="w-7 h-7 rounded-lg hover:bg-emerald-900/60 text-emerald-200 flex items-center justify-center text-xs transition" title="초기화"><i class="fa-solid fa-rotate-left"></i></button>
+      </div>
+    </main>
+
+    <!-- =================================================================== -->
+    <!-- 우측: 직관 해부 조종석 (435px, 군살 없는 4단 구성) -->
+    <!-- =================================================================== -->
+    <aside class="w-full lg:w-[435px] bg-[#081611] border-t lg:border-t-0 lg:border-l border-emerald-900/80 flex flex-col h-[52vh] lg:h-full shrink-0 z-10">
+      <div class="p-3.5 overflow-y-auto flex-1 space-y-3.5">
+
+        <!-- 1. 변형·대칭축·절댓값 슬라이더 & 원클릭 축/높이 프리셋 조종석 -->
+        <section class="bg-gradient-to-br from-[#112a21] to-[#0b1c16] border border-emerald-700/60 rounded-xl p-3.5 shadow-lg space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-extrabold text-amber-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-sliders"></i>
+              <span id="sliderTitle">움직이는 대칭축 · 절댓값 폴딩 · 차함수 스캔 조종석</span>
+            </span>
+            <div class="flex items-center gap-1">
+              <button onclick="setFoldVal(0)" class="px-2 py-0.5 rounded bg-emerald-950 hover:bg-emerald-800 text-[10px] text-emerald-200 border border-emerald-700 font-bold">0% (왼쪽/원본)</button>
+              <button onclick="setFoldVal(0.5)" class="px-2 py-0.5 rounded bg-emerald-950 hover:bg-emerald-800 text-[10px] text-emerald-200 border border-emerald-700 font-bold">50% (중앙)</button>
+              <button onclick="setFoldVal(1)" class="px-2 py-0.5 rounded bg-amber-500/20 hover:bg-amber-500/30 text-[10px] text-amber-300 border border-amber-400/50 font-extrabold">100% (오른쪽/완성!)</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-[11px] mb-1">
+              <span id="sliderSubLabel" class="text-emerald-200 font-semibold">진행률 조작 (0% ↔ 50% ↔ 100%)</span>
+              <span id="valFold" class="font-mono font-black text-amber-300">0%</span>
+            </div>
+            <input type="range" id="sliderFold" min="0" max="1" step="0.01" value="0" class="w-full" oninput="onFoldSlider()" />
+          </div>
+
+          <!-- 원클릭 대칭축/경계 p & 직선 높이 k 프리셋 칩 -->
+          <div id="presetControlBox" class="grid grid-cols-2 gap-2.5 pt-2 border-t border-emerald-800/60">
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span id="dim1Label" class="text-sky-300 font-bold">대칭축 / 경계 위치 p</span>
+                <span id="valR" class="font-mono font-extrabold text-sky-200">p = 1 (안쪽)</span>
+              </div>
+              <div id="rBtnGroup" class="grid grid-cols-4 gap-1"></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-[11px] mb-1">
+                <span id="dim2Label" class="text-pink-300 font-bold">수평선 y = k / 옵션</span>
+                <span id="valH" class="font-mono font-extrabold text-pink-200">k = 2.5</span>
+              </div>
+              <div id="hBtnGroup" class="grid grid-cols-4 gap-1"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. 만져서 확인하는 『그래프 조각 · 최대최소 · 함판축 조건』 해부기 -->
+        <section class="bg-[#0d211a] border border-emerald-800/80 rounded-xl p-3.5 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs font-extrabold text-amber-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-puzzle-piece"></i>
+              <span>만져서 확인하는 『그래프 조각 &amp; 조건』 해부</span>
+            </h2>
+            <span class="text-[10px] text-emerald-300 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-700/60">카드 클릭 ➔ 칠판 발광!</span>
+          </div>
+
+          <div id="partsBox" class="space-y-1.5"></div>
+
+          <div class="bg-[#07130e] p-2.5 rounded-lg border border-amber-400/50 flex items-center justify-between gap-2">
+            <span class="text-xs font-bold text-emerald-200 shrink-0">핵심 판정 요약</span>
+            <span id="totalResultBadge" class="text-xs md:text-sm font-black text-amber-300 font-mono text-right"></span>
+          </div>
+        </section>
+
+        <!-- 3. 한눈에 깨닫는 『함·판·축 & 차함수 공식 원리』 -->
+        <section class="bg-[#0d211a] border border-emerald-800/80 rounded-xl p-3.5 space-y-2">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs font-extrabold text-sky-300 flex items-center gap-1.5">
+              <i class="fa-solid fa-calculator"></i>
+              <span>한눈에 깨닫는 『기호 번역 &amp; 공식 원리』</span>
+            </h2>
+            <span id="ruleBadge" class="text-[10px] font-bold text-sky-200 bg-sky-950/90 px-2 py-0.5 rounded border border-sky-600/50">고1 킬러 핵심 법칙</span>
+          </div>
+
+          <div id="formulaBox" class="text-xs text-emerald-50 leading-relaxed bg-[#07130e]/90 p-3 rounded-lg border border-emerald-800/70 space-y-1.5"></div>
+        </section>
+
+        <!-- 4. 시험장 오답 함정 & 3초 직관 비법 -->
+        <section class="bg-gradient-to-br from-[#132820] to-[#091611] border border-emerald-700/60 rounded-xl p-3.5 space-y-2">
+          <div class="flex items-center gap-1.5 text-xs font-extrabold text-emerald-300">
+            <i class="fa-solid fa-lightbulb text-amber-400"></i>
+            <span>시험장 오답 함정 &amp; 3초 직관 비법!</span>
+          </div>
+          <div id="intuitionNotes" class="text-xs text-emerald-100/95 leading-relaxed space-y-1.5 bg-[#07130e]/80 p-3 rounded-lg border border-emerald-800/60"></div>
+        </section>
+
+      </div>
+    </aside>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- 이차함수 심화 · 움직이는 대칭축 · 절댓값 폴딩 · 근의 분리 통합 엔진 -->
+  <!-- ===================================================================== -->
+  <script>
+    function tex(latexStr) {
+      if (window.katex) {
+        return katex.renderToString(latexStr, { throwOnError: false, displayMode: false });
+      }
+      return latexStr;
+    }
+
+    function fmtNum(v) {
+      if (Math.abs(v - Math.round(v)) < 1e-6) return String(Math.round(v));
+      return Number(v.toFixed(2)).toString();
+    }
+
+    const QCOL = {
+      cyan: '#38bdf8',
+      pink: '#f472b6',
+      green: '#34d399',
+      gold: '#fbbf24',
+      white: '#f1f5f9',
+      red: '#fb7185'
+    };
+
+    // -------------------------------------------------------------------------
+    // 1. 전역 상태 관리 (State - 6대 마스터 탭 × 30종 시나리오)
+    // -------------------------------------------------------------------------
+    const state = {
+      mode: 1,
+      subType: {
+        1: 'diffFuncFlatten',   // 'diffFuncFlatten', 'tangentDiscriminant', 'chordLengthVieta', 'minDistMaxArea', 'symmetryRootSum'
+        2: 'movingAxisMin',     // 'movingAxisMin', 'movingAxisMaxJump', 'movingWindowInterval', 'substitution2Stage', 'inscribedRectParabola'
+        3: 'absWholeFold',      // 'absWholeFold', 'absXSymmetry', 'absLineRotTangent', 'absPiecewiseSplit', 'maxMinEnvelope'
+        4: 'sepBothGreater',    // 'sepBothGreater', 'sepBetweenOneShot', 'sepInsideInterval', 'sepOneRootInInterval', 'rootSignZero'
+        5: 'alwaysPositiveAll', // 'alwaysPositiveAll', 'restrictedIneqMinMax', 'specialSol4Cases', 'integerCountBoundary', 'compIneqTransform'
+        6: 'trapLeadingZero'    // 'trapLeadingZero', 'trapMaxLtMin', 'trapKIndepDoubleRoot', 'trapIrrationalCoeffs', 'trapParabolaMeetSegment'
+      },
+      conceptSwitch: 'all', // 'all' | 'axis' | 'roots' | 'aux'
+      activePartIdx: -1,
+
+      fold: 0.0,
+      foldTarget: null,
+
+      pIdx: 1, // 대칭축/경계 프리셋 인덱스 (0: p=-1 왼쪽, 1: p=0.6 안쪽좌편향, 2: p=1.4 안쪽우편향, 3: p=3 오른쪽)
+      kIdx: 2, // 직선 높이 k 프리셋 인덱스 (0: k=0, 1: k=2.5, 2: k=4.0 꼭짓점접함!, 3: k=5.2)
+
+      scale: 1.0,
+      panX: 0,
+      panY: 0,
+      isDragging: false,
+      dragMoved: false,
+      lastMouse: { x: 0, y: 0 },
+      steps: { 1: true, 2: true, 3: true }
+    };
+
+    const P_PRESETS = [
+      { p: -1.0, label: 'p=-1(좌)' },
+      { p: 0.6, label: 'p=0.6(안)' },
+      { p: 1.4, label: 'p=1.4(안)' },
+      { p: 3.0, label: 'p=3(우)' }
+    ];
+
+    const K_PRESETS = [
+      { k: 0.0, label: 'k=0(2점)' },
+      { k: 2.5, label: 'k=2.5(4점)' },
+      { k: 4.0, label: 'k=4(3점!)' },
+      { k: 5.2, label: 'k=5.2(2점)' }
+    ];
+
+    const SUB_MENUS = {
+      1: [
+        { id: 'diffFuncFlatten', label: '🔄 [킬러 원리] 교점 ⟺ 차함수 h(x)=f(x)-g(x) 수평 변환!' },
+        { id: 'tangentDiscriminant', label: '⚡ 직선 이동과 판별식 (D>0 2점 · D=0 접선 · D<0 0점)' },
+        { id: 'chordLengthVieta', label: '📏 포물선과 직선이 잘라내는 선분 AB 길이 (√(1+m²)|α-β|)' },
+        { id: 'minDistMaxArea', label: '📐 포물선과 직선 사이 최단거리 & △PAB 최대 넓이(D=0!)' },
+        { id: 'symmetryRootSum', label: '⚖️ 대칭축 x=p 와 실근의 합 불변의 법칙 (α + β = 2p!)' }
+      ],
+      2: [
+        { id: 'movingAxisMin', label: '🎛️ [킬러 1] 고정 구간 [0,2]와 움직이는 대칭축 x=p 최솟값 3구간!' },
+        { id: 'movingAxisMaxJump', label: '⚖️ 최댓값이 점프하는 경계: 구간 정중앙 p = (α+β)/2!' },
+        { id: 'movingWindowInterval', label: '🪟 [역발상] 고정된 포물선과 움직이는 구간 창문 [t, t+2]!' },
+        { id: 'substitution2Stage', label: '🪤 [오답 1위] 치환형 합성함수 t = x²-2x 의 2단계 범위 변환!' },
+        { id: 'inscribedRectParabola', label: '🏛️ 포물선 내접 직사각형 둘레·넓이 최댓값 (대칭축 기준!)' }
+      ],
+      3: [
+        { id: 'absWholeFold', label: '🥟 전체 절댓값 y=|x²-2x-3| 폴딩 & y=k 교점(0→2→4→3→2개!)' },
+        { id: 'absXSymmetry', label: '🪞 x에만 절댓값 y=x²-2|x|-3 (y축 데칼코마니 W자 그래프!)' },
+        { id: 'absLineRotTangent', label: '📐 [1등급 결정타] y=|x²-4|와 회전 직선 y=m(x+3) 교점 3개!' },
+        { id: 'absPiecewiseSplit', label: '✂️ 부분 절댓값 y=x²-2x-3|x-1| (경계 x=1 좌우 이어붙이기)' },
+        { id: 'maxMinEnvelope', label: '📈 두 함수 중 작은 함수 min(f, g) · 큰 함수 max(f, g) 그래프' }
+      ],
+      4: [
+        { id: 'sepBothGreater', label: '🎯 유형 ①: 두 근이 모두 p보다 클 때 (함·판·축 3중 잠금!)' },
+        { id: 'sepBetweenOneShot', label: '🌟 [출제 1순위] 유형 ②: 두 근 사이에 p가 있을 때 (f(p)<0 1개면 끝!)' },
+        { id: 'sepInsideInterval', label: '🚧 유형 ③: 두 근이 모두 구간 (p, q) 사이에 있을 때 (4조건)' },
+        { id: 'sepOneRootInInterval', label: '⚡ 유형 ④: 구간 (p, q) 사이에 오직 한 실근만 있을 때 (f(p)f(q)<0)' },
+        { id: 'rootSignZero', label: '➕ 실근의 부호 판별 (두 양근 · 두 음근 · 서로 다른 부호)' }
+      ],
+      5: [
+        { id: 'alwaysPositiveAll', label: '🎈 모든 실수에서 ax²+bx+c > 0 성립 조건 (왜 D<0 허근일까?)' },
+        { id: 'restrictedIneqMinMax', label: '🔒 [내신 킬러] 제한된 범위(0≤x≤3)에서만 f(x)≥0 성립 조건!' },
+        { id: 'specialSol4Cases', label: '📌 판별식 D=0 (접할 때) 특수 이차부등식 해 4총사 비교' },
+        { id: 'integerCountBoundary', label: '🔢 부등식을 만족하는 정수 x가 3개일 때 등호(≤ vs <) 판별!' },
+        { id: 'compIneqTransform', label: '🔍 f(x)<0 의 해가 -2<x<4 일 때 f(2x-1)<0 3초 치환 해법!' }
+      ],
+      6: [
+        { id: 'trapLeadingZero', label: '💥 [함정 1위] "부등식 kx²+..." vs "이차부등식 kx²+..." (k=0 체크!)' },
+        { id: 'trapMaxLtMin', label: '💥 [함정 2위] 모든 x에 대해 f(x)≥g(x) vs 임의의 x₁,x₂에 대해 f(x₁)≥g(x₂)' },
+        { id: 'trapKIndepDoubleRoot', label: '🎯 "k값에 관계없이 항상 중근" 순서 함정 (①D=0 먼저 ➔ ②항등식)' },
+        { id: 'trapIrrationalCoeffs', label: '💥 무리수·허수 계수 방정식에서 켤레근 성질 오용 반례!' },
+        { id: 'trapParabolaMeetSegment', label: '📐 포물선이 끊어진 선분 AB와 한 점/두 점에서 만날 조건!' }
+      ]
+    };
+
+    // -------------------------------------------------------------------------
+    // 2. 좌표평면 변환기 & 곡선·영역·마커 렌더러
+    // -------------------------------------------------------------------------
+    const canvas = document.getElementById('boardCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      render();
+    }
+    window.addEventListener('resize', resizeCanvas);
+
+    function toScreen(mx, my, ox, oy, unit) {
+      return { x: ox + mx * unit, y: oy - my * unit };
+    }
+
+    function drawCoordPlane(rect, ox, oy, unit) {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.07)';
+      ctx.lineWidth = 1;
+      for (let x = ((ox % unit) + unit) % unit; x < rect.width; x += unit) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, rect.height); ctx.stroke();
+      }
+      for (let y = ((oy % unit) + unit) % unit; y < rect.height; y += unit) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(rect.width, y); ctx.stroke();
+      }
+
+      // X축, Y축
+      ctx.strokeStyle = 'rgba(226, 232, 240, 0.52)';
+      ctx.lineWidth = 2.2;
+      ctx.beginPath();
+      ctx.moveTo(0, oy); ctx.lineTo(rect.width, oy);
+      ctx.moveTo(ox, 0); ctx.lineTo(ox, rect.height);
+      ctx.stroke();
+
+      // 눈금 숫자
+      ctx.font = '700 10.5px Pretendard, monospace';
+      ctx.fillStyle = 'rgba(148, 163, 184, 0.78)';
+      ctx.textAlign = 'center';
+      for (let i = -8; i <= 10; i++) {
+        if (i === 0) continue;
+        const sx = ox + i * unit;
+        const sy = oy - i * unit;
+        if (sx > 25 && sx < rect.width - 25) ctx.fillText(String(i), sx, oy + 15);
+        if (sy > 25 && sy < rect.height - 85) ctx.fillText(String(i), ox - 12, sy + 4);
+      }
+      ctx.fillStyle = '#fbbf24';
+      ctx.font = '800 11.5px Pretendard, sans-serif';
+      ctx.fillText('O', ox - 11, oy + 15);
+      ctx.fillText('x', rect.width - 16, oy - 8);
+      ctx.fillText('y', ox + 12, 18);
+      ctx.restore();
+    }
+
+    // 일반 함수 y = fn(x) 연속 곡선 그리기
+    function drawFuncCurve(fn, xMin, xMax, ox, oy, unit, color = '#38bdf8', width = 3.2, dash = [], partIdx = -1) {
+      ctx.save();
+      let lw = width;
+      if (state.activePartIdx !== -1 && partIdx !== -1 && state.activePartIdx === partIdx) {
+        lw = width + 2.2;
+        ctx.shadowColor = color;
+        ctx.shadowBlur = 14;
+      }
+      ctx.beginPath();
+      const steps = 160;
+      for (let i = 0; i <= steps; i++) {
+        const mx = xMin + ((xMax - xMin) * i) / steps;
+        const my = fn(mx);
+        const sp = toScreen(mx, my, ox, oy, unit);
+        if (i === 0) ctx.moveTo(sp.x, sp.y);
+        else ctx.lineTo(sp.x, sp.y);
+      }
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.lineCap = 'round';
+      ctx.setLineDash(dash);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    // 제한된 구간 [a, b] 반투명 창문(Window) 그리기
+    function drawIntervalWindow(a, b, ox, oy, unit, labelStr = '') {
+      const pL = toScreen(a, 0, ox, oy, unit);
+      const pR = toScreen(b, 0, ox, oy, unit);
+      ctx.save();
+      ctx.fillStyle = 'rgba(52, 211, 153, 0.11)';
+      ctx.fillRect(pL.x, 45, pR.x - pL.x, oy + 160);
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.65)';
+      ctx.lineWidth = 2.0;
+      ctx.setLineDash([6, 4]);
+      ctx.beginPath();
+      ctx.moveTo(pL.x, 45); ctx.lineTo(pL.x, oy + 160);
+      ctx.moveTo(pR.x, 45); ctx.lineTo(pR.x, oy + 160);
+      ctx.stroke();
+
+      if (labelStr) {
+        ctx.setLineDash([]);
+        ctx.font = '800 11.5px Pretendard, sans-serif';
+        ctx.fillStyle = '#6ee7b7';
+        ctx.textAlign = 'center';
+        ctx.fillText(labelStr, (pL.x + pR.x) / 2, 65);
+      }
+      ctx.restore();
+    }
+
+    function qline(a, b, color = '#fbbf24', width = 2.4, dash = [], glow = false, partIdx = -1) {
+      ctx.save();
+      let lw = width, isGlow = glow;
+      if (state.activePartIdx !== -1 && partIdx !== -1 && state.activePartIdx === partIdx) {
+        lw = width + 2.2;
+        isGlow = true;
+      }
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.lineCap = 'round';
+      ctx.setLineDash(dash);
+      if (isGlow) {
+        ctx.shadowColor = color;
+        ctx.shadowBlur = 12;
+      }
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function qdot(p, text = '', col = '#ffffff', ox = 10, oy = -12, r = 5.4) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = col;
+      ctx.shadowColor = col;
+      ctx.shadowBlur = 9;
+      ctx.fill();
+      ctx.lineWidth = 1.8;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+
+      if (text) {
+        ctx.font = '800 12.5px Pretendard, sans-serif';
+        ctx.lineWidth = 3.5;
+        ctx.strokeStyle = 'rgba(5, 16, 12, 0.94)';
+        ctx.strokeText(text, p.x + ox, p.y + oy);
+        ctx.fillStyle = col;
+        ctx.fillText(text, p.x + ox, p.y + oy);
+      }
+      ctx.restore();
+    }
+
+    function drawBottomTapeBanner(rect, titleStr, segments) {
+      const by = rect.height - 78;
+      const bw = Math.min(540, rect.width - 36);
+      const sx = (rect.width - bw) / 2;
+
+      ctx.save();
+      ctx.fillStyle = 'rgba(7, 20, 15, 0.94)';
+      ctx.strokeStyle = 'rgba(52, 211, 153, 0.5)';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.roundRect(sx - 12, by - 24, bw + 24, 54, 12);
+      ctx.fill();
+      ctx.stroke();
+
+      if (!segments || segments.length === 0) {
+        ctx.font = '800 12px Pretendard, sans-serif';
+        ctx.fillStyle = '#fef08a';
+        ctx.textAlign = 'center';
+        ctx.fillText(titleStr, rect.width / 2, by + 4);
+      } else {
+        ctx.font = '800 11px Pretendard, sans-serif';
+        ctx.fillStyle = '#a7f3d0';
+        ctx.textAlign = 'left';
+        ctx.fillText(`📏 ${titleStr}`, sx - 2, by - 8);
+
+        let acc = 0;
+        segments.forEach((seg) => {
+          const w = seg.weight * bw;
+          const x0 = sx + acc * bw;
+          ctx.fillStyle = seg.color;
+          ctx.beginPath();
+          ctx.roundRect(x0 + 1, by, Math.max(8, w - 2), 21, 4);
+          ctx.fill();
+          ctx.fillStyle = '#07130e';
+          ctx.font = '800 10.5px Pretendard, monospace';
+          ctx.textAlign = 'center';
+          ctx.fillText(seg.text, x0 + w / 2, by + 13);
+          acc += seg.weight;
+        });
+      }
+      ctx.restore();
+    }
+
+    // -------------------------------------------------------------------------
+    // 3. 6대 마스터 탭 × 30종 시나리오 실시간 명세 생성기 (getSpec)
+    // -------------------------------------------------------------------------
+    function getSpec() {
+      const m = state.mode;
+      const sub = state.subType[m];
+      const pVal = P_PRESETS[state.pIdx].p;
+      const kVal = K_PRESETS[state.kIdx].k;
+
+      // ==================== [탭 1: 차함수 f-g 변환 & 직선 위치관계] ====================
+      if (m === 1) {
+        if (sub === 'diffFuncFlatten') {
+          return {
+            badge: `탐구 1-A · 🔄 [수능·내신 1순위 원리] 곡선 f(x)와 직선 g(x)의 교점 ⟺ 차함수 h(x)=f(x)-g(x)의 실근!`,
+            hint: `슬라이더를 오른쪽으로 밀어보세요! 기울어진 직선 $g(x) = x + 1$ 이 수평한 $x$축($y=0$)으로 내려앉으면서 이차함수 $f(x) = x^2 - x - 2$ 가 <strong>차함수 $h(x) = x^2 - 2x - 3 = (x+1)(x-3)$</strong> 으로 바뀝니다! 이때 <strong class="text-amber-300">두 교점의 $x$좌표($x = -1, x = 3$)는 수직 점선 위에서 완벽히 보존</strong>됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 원래 곡선 f(x)와 직선 g(x) 보기' : '🎬 직선을 x축으로 평탄화(차함수 h=f-g 변환)!',
+            dim1Name: '교점의 x좌표 (불변!)', dim2Name: '차함수 h(x) = f(x) - g(x)',
+            val1Txt: 'α = -1, β = 3', val2Txt: 'h(x) = (x + 1)(x - 3)',
+            parts: [
+              { id: 0, name: `🔵 원래 상태: 포물선 f(x) = x² - x - 2 와 직선 g(x) = x + 1`, desc: `연립방정식 x² - x - 2 = x + 1 의 해가 교점의 x좌표!`, val: `교점 (-1,0), (3,4)`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🟡 변환 완료: 차함수 h(x) = f(x) - g(x) = x² - 2x - 3 과 x축!`, desc: `기울어진 직선을 x축(y=0)으로 펴서 인수분해 식을 1초 만에 작성!`, val: `h(x)=(x+1)(x-3)`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🩷 [접할 때의 응용] f(x)와 g(x)가 x = α 에서 접하면?`, desc: `차함수 식을 전개 없이 즉시 f(x) - g(x) = a(x - α)² 완전제곱식으로 세운다!`, val: `f - g = a(x - α)²`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `f(x)와 g(x)가 x = α, β 에서 만난다 ⟺ f(x) - g(x) = a(x - α)(x - β) [접하면 a(x - α)²]`,
+            rule: '곡선과 직선이 만나는 점이 주어지면 대입하지 말고 무조건 차함수 f(x) - g(x) = a(x-α)(x-β) 로 식을 세워라!',
+            formulaHTML: `• <strong>차함수 식 세우기 2대 공식</strong>:<br/>&nbsp;&nbsp;① $x = \\alpha, \\beta$ 에서 만날 때: ${tex('\\mathbf{f(x) - (mx+n) = a(x - \\alpha)(x - \\beta)}')}<br/>&nbsp;&nbsp;② $x = \\alpha$ 에서 접할 때(중근): ${tex('\\mathbf{f(x) - (mx+n) = a(x - \\alpha)^2}')}!`,
+            notes: `• <strong>[주의]</strong>: 차함수로 변환하면 $x$절편($\\alpha=-1, \\beta=3$)과 최고차항 계수 $a$는 그대로 유지되지만, **대칭축의 위치는 $x = \\frac{1}{2}$ 에서 $x = 1$ 로 이동**합니다!`,
+            tapeTitle: `차함수 불변량: 직선 g(x)를 x축으로 내려도 두 교점의 x좌표(α = -1, β = 3)는 100% 보존됩니다!`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'tangentDiscriminant') {
+          return {
+            badge: `탐구 1-B · ⚡ 직선 y = x + k 의 상하 이동과 판별식 (D > 0 두 점 · D = 0 접선 · D < 0 만나지 않음)`,
+            hint: `포물선 $y = x^2 - x$ 와 기울기가 $1$인 직선 $y = x + k$ 의 위치관계는 차함수 $x^2 - 2x - k = 0$ 의 판별식 $D/4 = 1 + k$ 부호로 결정됩니다! <strong class="text-amber-300">$k = -1$ 일 때($D = 0$) 점 $(1, 0)$에서 정확히 접합니다!</strong>`,
+            actionTxt: state.fold > 0.5 ? '🎬 두 점 교차(D>0) 보기' : '🎬 직선 평행이동 & 접하는 순간(D=0, k=-1) 스냅!',
+            dim1Name: '접할 조건 (D = 0)', dim2Name: '접점의 x좌표 공식',
+            val1Txt: '1 + k = 0 ➔ k = -1!', val2Txt: '중근 x = 1 (접점 (1, 0))',
+            parts: [
+              { id: 0, name: `🔵 k > -1 (D > 0): 서로 다른 두 점에서 만난다 (교점 2개)`, desc: `차함수 방정식이 서로 다른 두 실근 α, β를 가짐`, val: `D > 0 (2점)`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🟡 k = -1 (D = 0): 한 점에서 접한다! [접선 y = x - 1]`, desc: `x² - 2x + 1 = (x - 1)² = 0 ➔ 접점의 x좌표는 중근 x = 1!`, val: `D = 0 (접선 ⭕)`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🩷 k < -1 (D < 0): 만나지 않는다 (교점 0개, 허근)`, desc: `직선이 포물선보다 아래에 있어 실근이 존재하지 않음`, val: `D < 0 (0점)`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `x² - 2x - k = 0 에서 D/4 = 1 + k ➔ k > -1(2점), k = -1(접함), k < -1(0점)`,
+            rule: '접점의 x좌표는 판별식 D=0 을 풀기 전에 이미 차함수의 대칭축(중근 x = -b/2a)으로 결정되어 있다!',
+            formulaHTML: `• $ax^2 + bx + c = mx + n \\iff ax^2 + (b-m)x + (c-n) = 0$<br/>• 접할 때는 완전제곱식이 되므로, <strong>접점의 $x$좌표는 계산할 필요도 없이 중근인 ${tex('\\mathbf{x = -\\dfrac{b - m}{2a}}')}</strong> 입니다!`,
+            notes: `• 기울기 $m$이 주어졌을 때 접점을 먼저 $x = -\\frac{b-m}{2a}$ 로 구해서 포물선에 대입하면 판별식 전개 없이 3초 만에 접선의 방정식을 구할 수 있습니다!`,
+            tapeTitle: `판별식 부호와 교점 개수: D > 0 (서로 다른 2점)  |  D = 0 (접함, 1점)  |  D < 0 (만나지 않음, 0점)`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'chordLengthVieta') {
+          return {
+            badge: `탐구 1-C · 📏 이차함수와 직선이 잘라내는 선분 AB(현)의 길이 — √(1 + m²) × |α - β| 3초 공식!`,
+            hint: `포물선 $y = x^2 - 2x - 1$ 과 직선 $y = x + 1$ 의 두 교점 $A, B$ 사이의 거리를 구할 때, 근의 공식으로 교점을 구하면 시간이 폭발합니다! <strong>가로 거리 $|\\alpha - \\beta|$를 구한 뒤 기울기($m=1$) 직각삼각형 비율 <span class="text-amber-300">$\\sqrt{1+1^2} = \\sqrt{2}$배</span></strong>만 곱하면 끝납니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 선분 보기' : '🎬 가로차 |α-β| × √(1+m²) 직각삼각형 발광!',
+            dim1Name: '가로 거리 |α - β|', dim2Name: '빗변 선분 AB의 길이',
+            val1Txt: '|4 - (-1)| = 5', val2Txt: '5 × √(1 + 1²) = 5√2!',
+            parts: [
+              { id: 0, name: `🟡 1단계: 차함수 x² - 3x - 2 = 0 (또는 x² - 3x - 4 = 0)에서 |α - β| 구하기`, desc: `(α - β)² = (α + β)² - 4αβ 또는 √D / |a| 공식으로 가로 길이 도출!`, val: `Δx = |α - β| = 5`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 2단계: 직선의 기울기가 m 이므로 세로 길이 Δy = |m| · |α - β|`, desc: `가로 : 세로 : 빗변 = 1 : m : √(1 + m²) 피타고라스 직각삼각형!`, val: `Δy = m|α - β|`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🩷 3단계 [완성]: 선분 AB = √(1 + m²) × |α - β| = 5√2!`, desc: `기울기가 1이면 √2배, 기울기가 2이면 √5배, 기울기가 √3이면 2배!`, val: `AB = 5√2 ⭕`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `선분 AB의 길이 = √(1 + m²) · |α - β| = √(1 + m²) · (√D / |a|)`,
+            rule: '직선 위의 두 점 사이 거리는 점 좌표를 구하지 말고 무조건 (x좌표 차이 |α-β|) × √(1 + m²) 로 구한다!',
+            formulaHTML: `• <strong>두 근의 차 1초 공식</strong>: ${tex('|\\alpha - \\beta| = \\sqrt{(\\alpha+\\beta)^2 - 4\\alpha\\beta} = \\mathbf{\\dfrac{\\sqrt{D}}{|a|}}')}<br/>• <strong>현의 길이 공식</strong>: ${tex('\\mathbf{\\overline{AB} = \\sqrt{1 + m^2}\\cdot |\\alpha - \\beta|}')}!`,
+            notes: `• 기울기 $m = 1$ (45°)이면 가로 길이의 **$\\sqrt{2}$배**, 기울기 $m = 2$ 이면 **$\\sqrt{5}$배**, 기울기 $m = \\frac{3}{4}$ 이면 **$\\frac{5}{4}$배**입니다!`,
+            tapeTitle: `직각삼각형 빗변 비율: 가로(|α - β| = 5) ──[× √(1 + m²)]──▶ 비스듬한 현의 길이 AB = 5√2!`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'minDistMaxArea') {
+          return {
+            badge: `탐구 1-D · 📐 포물선 위의 점 P와 직선 사이의 최단거리 & 삼각형 △PAB의 최대 넓이!`,
+            hint: `포물선 위의 점 $P$와 직선 $l$ 사이의 거리가 <strong>최소</strong>(또는 $\\triangle PAB$ 넓이가 <strong>최대</strong>)가 되는 순간은 언제일까요? 슬라이더로 직선 $l$을 평행이동시켜 <strong>포물선에 정확히 접할 때($D = 0$)의 접점 $P$</strong>일 때입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 일반 점 P 보기' : '🎬 평행한 접선(D=0) 작도 & 접점 P에서 최대 넓이 스냅!',
+            dim1Name: '핵심 전략', dim2Name: '최적점 P의 정체',
+            val1Txt: '같은 기울기 m인 접선(D=0)', val2Txt: '접점 x = (m - b) / 2a!',
+            parts: [
+              { id: 0, name: `🟡 평행한 접선 y = mx + k' (판별식 D = 0 일 때!)`, desc: `직선 l과 기울기 m이 같으면서 포물선에 접하는 직선을 먼저 구함`, val: `접선 D = 0 ⭕`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 접점 P: 직선까지의 수직거리 d가 최소 (교점 삼각형에서는 높이 최대!)`, desc: `평행선 등적변형 원리에 의해 접점 P에서 높이가 극값 달성!`, val: `접점 P ⭕`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `최단거리 & △PAB 최대넓이 ➔ 주어진 직선과 평행한 접선(D=0)의 접점 P에서 발생!`,
+            rule: '포물선 위 동점 P가 등장하는 최대·최소 문제는 100% "주어진 직선과 기울기가 같은 접선(D=0)" 문제다!',
+            formulaHTML: `• <strong>2단계 정석 해법</strong>:<br/>&nbsp;&nbsp;① 주어진 직선 $y = mx + n$ 과 평행한 접선 ${tex('y = mx + k\'')} 를 놓고 차함수 판별식 ${tex('\\mathbf{D = 0}')} 으로 $k'$ 와 접점 $P$를 구한다.<br/>&nbsp;&nbsp;② 두 평행선 사이의 거리 공식으로 최단거리(또는 최대 높이)를 구한다!`,
+            notes: `• 만약 $\\triangle PAB$ 넓이의 최댓값을 묻는 문제라면, 접점 $P$에서 $x$축에 평행한(세로) 길이 $h_{\\text{세로}}$ 의 최댓값 $\\frac{D}{4|a|}$ 에 가로 폭 $\\frac{1}{2}|\\alpha-\\beta|$ 를 곱한 **$\\dfrac{|a|}{8}(\\beta-\\alpha)^3$** 공식으로 3초 검산이 가능합니다!`,
+            tapeTitle: `핵심 통찰: 곡선 위의 움직이는 점 P 문제 ➔ 평행한 접선(D = 0)을 그었을 때의 접점 P가 정답!`,
+            tapeSegs: []
+          };
+        }
+        // symmetryRootSum
+        return {
+          badge: `탐구 1-E · ⚖️ 대칭축 x = p 와 실근의 합 불변의 법칙 — 왜 두 근을 안 구해도 α + β = 2p 일까?`,
+          hint: `대칭축이 $x = 2$ 인 이차함수 $y = f(x)$ 와 수평선 $y = k$ 가 만나는 두 점의 $x$좌표를 $\\alpha, \\beta$ 라 하면, $k$값이 얼마이든 좌우 대칭성에 의해 <strong>두 근의 중점은 항상 $\\frac{\\alpha + \\beta}{2} = 2 \\implies$ <span class="text-amber-300">두 근의 합 $\\alpha + \\beta = 4$</span></strong>로 일정합니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 아래쪽 교점 보기' : '🎬 수평선 y=k 상하 스캔 & 중점(x=2) 불변 확인!',
+          dim1Name: '대칭축 위치', dim2Name: '두 실근의 합 (α + β)',
+          val1Txt: 'x = p (예: p = 2)', val2Txt: '항상 2p (= 4)로 불변!',
+          parts: [
+            { id: 0, name: `🟡 대칭축 x = p (p = 2): 모든 수평 현의 수직이등분선!`, desc: `f(2 - d) = f(2 + d) 대칭 함수식이 성립하는 기준선`, val: `대칭축 x = 2`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 왼쪽 근 α = 2 - d  &  🩷 오른쪽 근 β = 2 + d`, desc: `둘을 더하면 -d 와 +d 가 상쇄되어 α + β = 2 + 2 = 4 불변!`, val: `α + β = 2p = 4 ⭕`, color: '#38bdf8', ok: true }
+          ],
+          totalRes: `대칭축 x = p 인 이차함수에서 f(x) = k 의 두 실근의 합 α + β = 2p (교점 4개면 합 = 4p!)`,
+          rule: '문제에 "모든 실근의 합을 구하시오"가 나오면 근을 각각 구하지 말고 무조건 (대칭축 p) × (실근 개수)로 암산하라!',
+          formulaHTML: `• <strong>대칭성을 나타내는 3가지 기호 번역 (무조건 암기!)</strong>:<br/>&nbsp;&nbsp;${tex('f(p - x) = f(p + x) \\iff f(x) = f(2p - x) \\iff \\mathbf{\\text{대칭축 } x = p}')}!<br/>• 대칭축이 $x = p$ 이면: 실근 2개의 합 $= \\mathbf{2p}$, 절댓값 그래프 실근 4개의 합 $= \\mathbf{4p}$!`,
+          notes: `• 예: $f(2 - x) = f(2 + x)$ 를 만족하는 이차함수와 직선 $y=k$의 네 교점의 $x$좌표 합은? $\\implies$ 대칭축이 $x=2$ 이므로 $2 \\times 4 = \\mathbf{8}$ (1초 컷)!`,
+          tapeTitle: `대칭 상쇄: 왼쪽 근 α(p - d) + 오른쪽 근 β(p + d) = 2p (거리 d가 얼마든 완벽 상쇄!)`,
+          tapeSegs: [
+            { text: `왼쪽 대칭 거리 (-d)`, weight: 0.5, color: '#38bdf8' },
+            { text: `오른쪽 대칭 거리 (+d) ➔ 중점은 항상 x = p!`, weight: 0.5, color: '#f472b6' }
+          ]
+        };
+      }
+
+      // ==================== [탭 2: 제한된 범위에서 움직이는 대칭축 최대·최소] ====================
+      if (m === 2) {
+        const curP = -1.2 + 4.4 * state.fold; // 슬라이더로 p가 -1.2 ~ +3.2 이동
+        if (sub === 'movingAxisMin') {
+          const zone = curP < 0 ? '① 왼쪽 바깥 (p < 0)' : curP <= 2 ? '② 구간 안쪽 (0 ≤ p ≤ 2)' : '③ 오른쪽 바깥 (p > 2)';
+          const minWhere = curP < 0 ? '왼쪽 끝 x = 0 에서 최소!' : curP <= 2 ? `꼭짓점 x = p(${fmtNum(curP)}) 에서 최소!` : '오른쪽 끝 x = 2 에서 최소!';
+          return {
+            badge: `탐구 2-A · 🎛️ [고1 내신 킬러 1위] 고정된 구간 [0, 2]를 통과하는 움직이는 대칭축 x = p (최솟값 3구간 스캔!)`,
+            hint: `슬라이더를 천천히 밀어 대칭축 $x = p$ 가 초록색 유리창 $[0, 2]$를 통과하게 해보세요! 아래로 볼록한 포물선의 최솟값은 <strong>① $p < 0$ 일 때는 $f(0)$</strong>, <strong>② $0 \\le p \\le 2$ 일 때는 꼭짓점 $f(p)$</strong>, <strong>③ $p > 2$ 일 때는 $f(2)$</strong>로 바뀝니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 대칭축을 왼쪽(p<0)으로' : '🎬 대칭축 x=p 가 구간 [0, 2]를 통과하는 3구간 스캔!',
+            dim1Name: `현재 대칭축 p = ${fmtNum(curP)}`, dim2Name: '최솟값 발생 위치',
+            val1Txt: zone, val2Txt: minWhere,
+            parts: [
+              { id: 0, name: `🔵 구간 ① [대칭축이 왼쪽: p < 0] ➔ 왼쪽 끝 f(0) 에서 최소!`, desc: `구간 [0, 2]에서 그래프가 계속 올라가므로 시작점 x=0이 가장 낮음!`, val: `최솟값 = f(0)`, color: '#38bdf8', ok: curP < 0 },
+              { id: 1, name: `🟡 구간 ② [대칭축이 안쪽: 0 ≤ p ≤ 2] ➔ 꼭짓점 f(p) 에서 최소!`, desc: `꼭짓점이 구간 유리창 안에 들어왔으므로 꼭짓점이 무조건 1등!`, val: `최솟값 = f(p) ⭕`, color: '#fbbf24', ok: curP >= 0 && curP <= 2 },
+              { id: 2, name: `🩷 구간 ③ [대칭축이 오른쪽: p > 2] ➔ 오른쪽 끝 f(2) 에서 최소!`, desc: `구간 [0, 2]에서 그래프가 계속 내려가므로 끝점 x=2가 가장 낮음!`, val: `최솟값 = f(2)`, color: '#f472b6', ok: curP > 2 }
+            ],
+            totalRes: `현재 p = ${fmtNum(curP)} [${zone}] ➔ ${minWhere}`,
+            rule: '아래로 볼록한 이차함수의 제한 범위 최솟값은 무조건 [p < α / α ≤ p ≤ β / p > β] 3구간으로 나누어 푼다!',
+            formulaHTML: `• $f(x) = (x - p)^2 + q$ ($\\alpha \\le x \\le \\beta$) 의 최솟값 $m(p)$:<br/>&nbsp;&nbsp;① $p < \\alpha$ 일 때: $m = f(\\alpha)$ &nbsp;&nbsp;② $\\alpha \\le p \\le \\beta$ 일 때: $m = f(p) = q$ &nbsp;&nbsp;③ $p > \\beta$ 일 때: $m = f(\\beta)$`,
+            notes: `• 각 범위에서 구한 $p$값이 <strong>내가 가정한 $p$의 범위(예: $p < 0$) 안에 실제로 들어가는지 마지막에 반드시 확인(교집합 검산!)</strong>해야 버리는 해를 걸러낼 수 있습니다!`,
+            tapeTitle: `대칭축 p 스캔: [p < 0 : f(0) 최소] ──▶ [0 ≤ p ≤ 2 : 꼭짓점 f(p) 최소!] ──▶ [p > 2 : f(2) 최소]`,
+            tapeSegs: [
+              { text: `① p < 0 : f(0) 최소`, weight: 0.3, color: '#38bdf8' },
+              { text: `② 0 ≤ p ≤ 2 : 꼭짓점 f(p) 최소!`, weight: 0.4, color: '#fbbf24' },
+              { text: `③ p > 2 : f(2) 최소`, weight: 0.3, color: '#f472b6' }
+            ]
+          };
+        }
+        if (sub === 'movingAxisMaxJump') {
+          const isLeftMax = curP > 1.0;
+          return {
+            badge: `탐구 2-B · ⚖️ 최댓값 주인공이 점프하는 경계선 — 구간의 정중앙 p = (0 + 2)/2 = 1!`,
+            hint: `아래로 볼록할 때 <strong>최댓값은 대칭축 $x = p$ 로부터 더 멀리 떨어진 구간의 끝점</strong>에서 나옵니다! 따라서 최댓값은 3구간이 아니라 <strong>구간의 정중앙 $x = 1$ 딱 하나를 경계</strong>로 <strong class="text-amber-300">$p < 1$ 이면 $f(2)$가 최대</strong>, <strong class="text-pink-300">$p > 1$ 이면 $f(0)$이 최대</strong>가 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 p < 1 (오른쪽 끝 최대) 보기' : '🎬 대칭축이 정중앙(p=1)을 넘을 때 최댓값 점프 시연!',
+            dim1Name: '최댓값 분할 경계선', dim2Name: `현재(p=${fmtNum(curP)}) 최댓값 위치`,
+            val1Txt: '구간의 중점 p = 1', val2Txt: isLeftMax ? '왼쪽 끝 f(0)이 최대!' : '오른쪽 끝 f(2)가 최대!',
+            parts: [
+              { id: 0, name: `🟡 대칭축이 중점 왼쪽 (p ≤ 1) ➔ 더 먼 오른쪽 끝 f(2) 에서 최대!`, desc: `축 p에서 x=2 까지의 거리가 x=0 까지의 거리보다 더 멀기 때문!`, val: `최댓값 = f(2)`, color: '#fbbf24', ok: !isLeftMax },
+              { id: 1, name: `🩷 대칭축이 중점 오른쪽 (p ≥ 1) ➔ 더 먼 왼쪽 끝 f(0) 에서 최대!`, desc: `축 p가 중앙(1)을 넘는 순간 x=0 까지의 거리가 더 멀어져 최댓값 점프!`, val: `최댓값 = f(0)`, color: '#f472b6', ok: isLeftMax }
+            ],
+            totalRes: `최솟값은 양 끝점(p=0, p=2) 3구간 분할 | 최댓값은 구간의 중점(p=1) 2구간 분할!`,
+            rule: '아래로 볼록에서: 최솟값은 [꼭짓점이 구간에 들어오냐]로 3분할, 최댓값은 [축이 중앙(중점)의 어느 쪽이냐]로 2분할!',
+            formulaHTML: `• 구간 $[\\alpha, \\beta]$의 정중앙(중점)을 ${tex('M = \\dfrac{\\alpha + \\beta}{2}')} 라 할 때 (아래로 볼록 $a>0$ 기준):<br/>&nbsp;&nbsp;① $p \\le M$ 이면 오른쪽 끝이 더 멀므로 <strong>최댓값 $= f(\\beta)$</strong><br/>&nbsp;&nbsp;② $p \\ge M$ 이면 왼쪽 끝이 더 멀므로 <strong>최댓값 $= f(\\alpha)$</strong>!`,
+            notes: `• 최댓값 문제를 풀 때 습관적으로 $p<0, 0\\le p\\le 2, p>2$ 로 나누면 시간만 걸리고 헷갈립니다! 최댓값은 무조건 **구간의 중점 $p = 1$** 기준으로 딱 2번만 나누세요!`,
+            tapeTitle: `최댓값 2분할 경계 (중점 p = 1): [p < 1 이면 오른쪽 끝 f(2) 최대]  |  [p > 1 이면 왼쪽 끝 f(0) 최대]`,
+            tapeSegs: [
+              { text: `p < 1 구간: 오른쪽 끝 f(2) 최대!`, weight: 0.5, color: '#fbbf24' },
+              { text: `p > 1 구간: 왼쪽 끝 f(0) 최대!`, weight: 0.5, color: '#f472b6' }
+            ]
+          };
+        }
+        if (sub === 'movingWindowInterval') {
+          const tWin = -1.0 + 4.0 * state.fold;
+          return {
+            badge: `탐구 2-C · 🪟 [역발상 킬러] 포물선(축 x=2)은 가만히 있고 구간 창문 [t, t + 2]가 움직일 때!`,
+            hint: `이번에는 포물선 $y = (x-2)^2 + 1$ 은 고정되어 있고, 폭이 $2$인 유리창 <strong class="text-emerald-300">$[t,\\; t+2]$</strong>가 슬라이더를 따라 오른쪽으로 이동합니다! <strong>창문의 오른쪽 끝 $t+2$ 가 축 $2$에 닿을 때($t=0$)부터 왼쪽 끝 $t$ 가 축 $2$를 떠날 때($t=2$)까지</strong> 꼭짓점이 최소가 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 창문을 왼쪽으로' : '🎬 구간 창문 [t, t+2] 슬라이딩 스캔!',
+            dim1Name: `현재 창문 [${fmtNum(tWin)}, ${fmtNum(tWin + 2)}]`, dim2Name: '꼭짓점(x=2) 포함 범위',
+            val1Txt: `t = ${fmtNum(tWin)}`, val2Txt: 't ≤ 2 ≤ t+2  ⟺  0 ≤ t ≤ 2!',
+            parts: [
+              { id: 0, name: `🔵 1구간: 창문 오른쪽 끝이 축보다 왼쪽 (t + 2 < 2 ⟺ t < 0)`, desc: `감소 구간만 보이므로 창문 오른쪽 끝 f(t + 2) 에서 최소!`, val: `t < 0: f(t+2)`, color: '#38bdf8', ok: tWin < 0 },
+              { id: 1, name: `🟡 2구간: 창문 안에 대칭축 x=2 가 들어옴 (t ≤ 2 ≤ t+2 ⟺ 0 ≤ t ≤ 2)`, desc: `0 ≤ t ≤ 2 동안에는 최솟값이 계속 꼭짓점 y = 1 로 일정(상수함수)!`, val: `0≤t≤2: 최소=1`, color: '#fbbf24', ok: tWin >= 0 && tWin <= 2 },
+              { id: 2, name: `🩷 3구간: 창문 왼쪽 끝이 축을 지나침 (t > 2)`, desc: `증가 구간만 보이므로 창문 왼쪽 끝 f(t) 에서 최소!`, val: `t > 2: f(t)`, color: '#f472b6', ok: tWin > 2 }
+            ],
+            totalRes: `움직이는 구간 [t, t+2] 최솟값 g(t): t<0 이면 f(t+2) | 0≤t≤2 이면 1(일정!) | t>2 이면 f(t)`,
+            rule: '구간 [t, t+2] 안에 대칭축 x = 2 가 들어있을 조건: "t ≤ 2 ≤ t + 2" 부등식을 풀어 0 ≤ t ≤ 2 를 구한다!',
+            formulaHTML: `• <strong>창문이 축을 품는 조건 세우기</strong>:<br/>&nbsp;&nbsp;${tex('\\text{(창문 왼쪽 끝 } t) \\le (\\text{대칭축 } 2) \\le (\\text{창문 오른쪽 끝 } t+2) \\iff \\mathbf{0 \\le t \\le 2}')}!`,
+            notes: `• 최솟값 함수 $g(t)$ 의 그래프를 그리면 $0 \\le t \\le 2$ 구간에서 **바닥이 평평한 냄비 모양** 그래프가 그려집니다!`,
+            tapeTitle: `창문 스캔 3구간: [t < 0 : 오른쪽 끝 f(t+2)] ──▶ [0 ≤ t ≤ 2 : 꼭짓점 1 일정!] ──▶ [t > 2 : 왼쪽 끝 f(t)]`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'substitution2Stage') {
+          return {
+            badge: `탐구 2-D · 🪤 [오답률 1위] 치환형 합성함수 y = (x²-2x)² - 4(x²-2x) + 3 의 2단계 범위 변환 파이프라인!`,
+            hint: `$-1 \\le x \\le 2$ 일 때 $t = x^2 - 2x$ 로 치환하고 나서 **$t$의 범위를 구하지 않거나 $x$ 범위를 그대로 쓰면 100% 틀립니다!** <strong>좌측 1단계 그래프에서 구한 $t$의 치역($-1 \\le t \\le 3$)이 우측 2단계 그래프 $y = t^2 - 4t + 3$ 의 새로운 정의역(유리창)</strong>이 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 1단계(x➔t) 보기' : '🎬 1단계 치역(-1≤t≤3) ➔ 2단계 정의역 전달 시연!',
+            dim1Name: '1단계: x 범위 ➔ t 범위 탄생', dim2Name: '2단계: t 범위 ➔ y 최대·최소',
+            val1Txt: '-1 ≤ x ≤ 2 ➔ -1 ≤ t ≤ 3!', val2Txt: '최댓값 M=8(t=-1), 최솟값 m=-1(t=2)',
+            parts: [
+              { id: 0, name: `🔵 [좌측 1단계 그래프] t = x² - 2x = (x - 1)² - 1 (-1 ≤ x ≤ 2)`, desc: `꼭짓점 x=1 일 때 최소 t = -1, 먼 끝점 x=-1 일 때 최대 t = 3!`, val: `-1 ≤ t ≤ 3 탄생!`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🟡 [우측 2단계 그래프] y = t² - 4t + 3 = (t - 2)² - 1 (-1 ≤ t ≤ 3)`, desc: `대칭축 t = 2 가 [-1, 3] 안에 있으므로 t=2에서 최소 y=-1, t=-1에서 최대 y=8!`, val: `M = 8, m = -1 ⭕`, color: '#fbbf24', ok: true }
+            ],
+            totalRes: `1단계: -1≤x≤2 에서 -1≤t≤3 도출 ➔ 2단계: -1≤t≤3 에서 최댓값 8 (t=-1, x=-1), 최솟값 -1 (t=2)`,
+            rule: '치환하면 문자만 바뀌는 게 아니라 범위가 새로 태어난다! (1단계 y범위 = 2단계 가로 x축 범위!)',
+            formulaHTML: `• <strong>[서술형 감점 1위 포인트]</strong>: “최솟값을 가질 때의 **$x$의 값**을 구하시오”라고 물었는데 $t = 2$ 를 답으로 쓰면 오답입니다! 반드시 $x^2 - 2x = 2$ 를 다시 풀어 **실제 $x$의 값**을 구해야 합니다!`,
+            notes: `• 이차식 두 개를 연달아 그리는 2단 파이프라인 구조만 손에 익히면 어떤 합성함수 최대·최소 문제도 똑같이 풀립니다!`,
+            tapeTitle: `2단 파이프라인: [입력: -1 ≤ x ≤ 2] ──(1단계 t=x²-2x)──▶ [중간: -1 ≤ t ≤ 3] ──(2단계)──▶ [출력: -1 ≤ y ≤ 8]`,
+            tapeSegs: []
+          };
+        }
+        // inscribedRectParabola
+        const tHalf = 0.4 + 1.2 * state.fold; // 오른쪽 날개 폭
+        return {
+          badge: `탐구 2-E · 🏛️ 포물선 y = -x² + 4x 와 x축 사이에 내접하는 직사각형 ABCD 둘레의 최댓값!`,
+          hint: `포물선의 <strong>대칭축 $x = 2$</strong> 를 기준으로 직사각형도 좌우 대칭입니다! 오른쪽 위 꼭짓점 $D$의 $x$좌표를 $2 + t$ ($0 < t < 2$)로 놓으면, <strong>가로 길이는 $2t$, 세로 길이는 $4 - t^2$</strong> 이 되어 일차항이 깔끔한 이차함수로 단번에 풀립니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 넓이 넓은 직사각형 보기' : '🎬 직사각형 폭 변형 & 최대 둘레(t=1, 둘레=10) 스냅!',
+          dim1Name: '가로 길이 + 세로 길이', dim2Name: '둘레 l = 2(가로 + 세로)',
+          val1Txt: `가로 2t, 세로 4 - t²`, val2Txt: 'l = -2(t-1)² + 10 ➔ 최댓값 10!',
+          parts: [
+            { id: 0, name: `🟡 대칭축 x = 2 기준 좌표 설정: 가로 = 2t, 세로 = -t² + 4`, desc: `점 C의 좌표를 x라 놓는 것보다 대칭축에서 거리 t로 놓으면 식이 훨씬 간단!`, val: `가로 2t, 세로 4-t²`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🟢 둘레의 길이 l(t) = 2(2t + 4 - t²) = -2(t - 1)² + 10`, desc: `t = 1 (가로 2, 세로 3) 일 때 직사각형 둘레는 최댓값 10 달성!`, val: `최대 둘레 = 10 ⭕`, color: '#34d399', ok: true }
+          ],
+          totalRes: `t = 1 (오른쪽 점 x = 3) 일 때 가로 = 2, 세로 = 3 ➔ 직사각형 둘레의 최댓값 = 10!`,
+          rule: '포물선 내접 도형 공식: 오른쪽 아래 점 C를 (x, 0)으로 놓고 가로 = 2(축 - x) 로 세우면 실수가 없다!',
+          formulaHTML: `• 대칭축이 $x = 2$ 이므로 오른쪽 아래 꼭짓점을 $C(a, 0)$ ($2 < a < 4$)이라 하면:<br/>&nbsp;&nbsp;- <strong>반가로 길이</strong> $= a - 2 \\implies$ <strong>전체 가로</strong> $= 2(a - 2)$<br/>&nbsp;&nbsp;- <strong>세로 높이</strong> $= -a^2 + 4a$<br/>&nbsp;&nbsp;- <strong>둘레</strong> $= 2\\{2(a-2) + (-a^2+4a)\\} = -2(a-3)^2 + 10 \\implies a=3$ 일 때 최댓값 $\\mathbf{10}$!`,
+          notes: `• 가로 길이를 그냥 $a$라고 놓는 실수를 가장 많이 합니다! 대칭축부터의 거리 $(a-2)$의 **2배**가 가로 길이입니다!`,
+          tapeTitle: `직사각형 둘레 10 (최대 순간): 가로(2) + 세로(3) + 가로(2) + 세로(3) = 10`,
+          tapeSegs: []
+        };
+      }
+
+      // ==================== [탭 3: 절댓값 폴딩(|f|, f(|x|)) & 실근 개수 스캐너] ====================
+      if (m === 3) {
+        if (sub === 'absWholeFold') {
+          const cnt = kVal < 0 ? 0 : kVal === 0 ? 2 : kVal < 4 ? 4 : kVal === 4 ? 3 : 2;
+          return {
+            badge: `탐구 3-A · 🥟 전체 절댓값 y = |x² - 2x - 3| 종이접기 폴딩 & 직선 y = k 실근 개수(0→2→4→3→2개)!`,
+            hint: `슬라이더로 $x$축 아랫부분을 위로 접어 올려보세요! 원래 꼭짓점 $(1, -4)$가 **$(1, +4)$ 봉우리**로 올라오면서, 우측의 <strong class="text-pink-300">수평선 높이 $k$ 프리셋 칩</strong>에 따라 교점(실근) 개수가 **0개 $\\to$ 2개 $\\to$ 4개 $\\to$ 3개($k=4$!) $\\to$ 2개**로 바뀝니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 접기 전 원래 포물선 보기' : '🎬 x축 아래를 위로 접어 올리는 절댓값 오리가미!',
+            dim1Name: `현재 수평선 높이 y = ${kVal}`, dim2Name: '방정식 |f(x)| = k 실근 개수',
+            val1Txt: kVal === 4 ? 'k = 4 (접힌 꼭짓점!)' : `k = ${kVal}`, val2Txt: `서로 다른 ${cnt}개의 실근!`,
+            parts: [
+              { id: 0, name: `🔵 양수 유지 구간 (x ≤ -1 또는 x ≥ 3): 원래 식 y = +(x² - 2x - 3)`, desc: `원래 x축 위에 있던 양옆 날개는 그대로 유지됨`, val: `+f(x) 유지`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🩷 위로 접혀 올라온 봉우리 (-1 < x < 3): 부호 반전 y = -(x² - 2x - 3)!`, desc: `꼭짓점 (1, -4) 가 x축 대칭되어 (1, +4) 봉우리로 변신!`, val: `-f(x) 반전!`, color: '#f472b6', ok: true },
+              { id: 2, name: `🟡 [핵심 경계] k = 4 일 때 교점 3개  |  0 < k < 4 일 때 교점 4개!`, desc: `네 실근의 합은 대칭축(x=1) × 4개 = 무조건 4!`, val: `현재 교점 ${cnt}개`, color: '#fbbf24', ok: true }
+            ],
+            totalRes: `|x² - 2x - 3| = k 의 실근 개수: k<0(0개) · k=0(2개) · 0<k<4(4개!) · k=4(3개!) · k>4(2개)`,
+            rule: '|f(x)| 그래프와 직선이 접하거나 계산할 때는, 접혀 올라온 봉우리 식에 마이너스(-)를 붙인 -f(x) 를 써야 한다!',
+            formulaHTML: `• <strong>교점 개수에 따른 $k$의 값(또는 범위) 1초 판독</strong>:<br/>&nbsp;&nbsp;- <strong>서로 다른 3개의 실근</strong> $\\iff k = \\mathbf{4}$ (접혀 올라온 꼭짓점 높이!)<br/>&nbsp;&nbsp;- <strong>서로 다른 4개의 실근</strong> $\\iff \\mathbf{0 < k < 4}$ ($x$축과 봉우리 꼭짓점 사이!)`,
+            notes: `• $0 < k < 4$ 일 때 생기는 네 실근 $\\alpha < \\beta < \\gamma < \\delta$ 에서 바깥쪽 두 근($\\alpha, \\delta$)은 $+f(x) = k$ 의 해이고, **안쪽 두 근($\\beta, \\gamma$)은 접혀 올라온 $-f(x) = k$ 의 해**입니다!`,
+            tapeTitle: `높이 k에 따른 교점 개수: [k<0: 0개] ➔ [k=0: 2개] ➔ [0<k<4: 4개!] ➔ [k=4: 3개!] ➔ [k>4: 2개]`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'absXSymmetry') {
+          return {
+            badge: `탐구 3-B · 🪞 문자 x에만 절댓값이 씌워진 y = x² - 2|x| - 3 — y축 데칼코마니 W자 그래프!`,
+            hint: `$|x|^2 = x^2$ 이므로 $y = |x|^2 - 2|x| - 3$ 입니다! <strong>$x \\ge 0$ (오른쪽 반쪽) 그래프만 그린 뒤, 슬라이더로 $y$축에 대해 데칼코마니로 대칭 복사</strong>하면 좌우 대칭인 **W자 모양 그래프**가 완성됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 오른쪽(x≥0) 반쪽만 보기' : '🎬 y축 데칼코마니 대칭 복사(W자 그래프 완성)!',
+            dim1Name: '작도 원리', dim2Name: '교점 3개가 되는 높이 k',
+            val1Txt: 'x ≥ 0 그린 후 y축 대칭!', val2Txt: 'k = -3 (y절편 뾰족점!)',
+            parts: [
+              { id: 0, name: `🔵 1단계 [오른쪽 x ≥ 0]: y = x² - 2x - 3 = (x - 1)² - 4 그리기`, desc: `y절편 (0, -3)에서 출발해 꼭짓점 (1, -4)를 찍고 올라가는 오른쪽 곡선`, val: `오른쪽 꼭짓점(1,-4)`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🩷 2단계 [왼쪽 x < 0]: 오른쪽 그래프를 y축에 대칭 복사!`, desc: `y = x² + 2x - 3 = (x + 1)² - 4 ➔ 왼쪽 꼭짓점 (-1, -4) 생성!`, val: `왼쪽 꼭짓점(-1,-4)`, color: '#f472b6', ok: true },
+              { id: 2, name: `🟡 교점 개수 경계: k = -4 (꼭짓점 2개=2점), -4<k<-3 (4점), k = -3 (3점!)`, desc: `y축 위의 꺾인 점 (0, -3)을 지날 때 교점이 정확히 3개가 됨!`, val: `k=-3 에서 3점!`, color: '#fbbf24', ok: true }
+            ],
+            totalRes: `y = x² - 2|x| - 3 : 최솟값 = -4 (x = ±1 두 곳!), k = -3 일 때 실근 3개, -4 < k < -3 일 때 4개!`,
+            rule: 'x에만 절댓값이 있는 f(|x|) 그래프 = [x ≥ 0 오른쪽만 그리기] ➔ [y축 데칼코마니 복사]!',
+            formulaHTML: `• <strong>두 절댓값 그래프 완벽 비교</strong>:<br/>&nbsp;&nbsp;① 전체 절댓값 $y = |f(x)|$: 전체를 그린 뒤 **$x$축 아랫부분을 위로 접어 올림**<br/>&nbsp;&nbsp;② $x$에만 절댓값 $y = f(|x|)$: **$x \\ge 0$ 만 그린 뒤 $y$축에 대칭 복사**`,
+            notes: `• $y = x^2 - 2|x| - 3$ 은 $y$축($x=0$)에 대하여 완벽한 좌우 대칭이므로, 어떤 수평선 $y=k$ 와 만나든 **모든 실근의 합은 무조건 $0$** 입니다!`,
+            tapeTitle: `W자 그래프 교점 개수: [k<-4: 0개] ➔ [k=-4: 2개] ➔ [-4<k<-3: 4개!] ➔ [k=-3: 3개!] ➔ [k>-3: 2개]`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'absLineRotTangent') {
+          return {
+            badge: `탐구 3-C · 📐 [1등급 결정타] y = |x² - 4| 와 정점 (-3, 0)을 지나는 직선 y = m(x + 3) 이 3점에서 만날 조건!`,
+            hint: `정점 $(-3, 0)$에 압정을 꽂고 직선 $y = m(x+3)$ 의 기울기 $m$을 키워보세요! 교점이 **3개**가 되는 결정적 순간은 <strong>① 오른쪽 끝점 $(2, 0)$을 지날 때($m=0$ 제외 시 왼쪽 $(-2,0)$ 바깥)</strong>와 <strong>② 위로 접혀 올라온 봉우리 곡선 $y = -x^2 + 4$ 에 접할 때($D = 0$)</strong>입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 4점 교차 구간 보기' : '🎬 봉우리 곡선(-x²+4)에 접하는 순간(교점 3개!) 스냅!',
+            dim1Name: '접하는 대상 곡선 식', dim2Name: '교점 3개가 되는 기울기 m',
+            val1Txt: '위로 볼록 봉우리 y = -x² + 4!', val2Txt: 'D = 0 에서 m = 2(√5 - 2)!',
+            parts: [
+              { id: 0, name: `🩷 [핵심!] 접혀 올라온 봉우리 곡선 y = -x² + 4 와 접할 때 (D = 0)`, desc: `-x² + 4 = mx + 3m ➔ x² + mx + 3m - 4 = 0 에서 D = m² - 12m + 16 = 0!`, val: `봉우리 접선 (3점!)`, color: '#f472b6', ok: true },
+              { id: 1, name: `🟡 꺾이는 점 (-2, 0)을 지나는 경계선과 봉우리 접선 사이 ➔ 교점 4개!`, desc: `0 < m < 접선 기울기 일 때 서로 다른 4개의 점에서 만남!`, val: `사이 구간 = 4점!`, color: '#fbbf24', ok: true }
+            ],
+            totalRes: `|x² - 4| = m(x + 3) 교점 3개 ➔ 위로 접혀 올라온 -x² + 4 = m(x + 3) 의 판별식 D = 0!`,
+            rule: '절댓값 그래프와 기울어진 직선이 접할 때는 원래 식 f(x)가 아니라 마이너스를 붙인 "-f(x) = 직선"의 판별식 D=0 을 써야 한다!',
+            formulaHTML: `• 위로 접혀 올라온 볼록 부분의 방정식은 $y = +(x^2-4)$ 가 아니라 **${tex('y = -(x^2 - 4) = -x^2 + 4')}** 입니다!<br/>• 따라서 ${tex('-x^2 + 4 = m(x + 3) \\iff x^2 + mx + 3m - 4 = 0')} 에서 ${tex('\\mathbf{D = m^2 - 4(3m - 4) = 0}')} 을 풀어야 합니다!`,
+            notes: `• $D = 0$ 을 풀면 $m$값이 2개 나오는데, 그중 그림에서 **양수이고 완만한 기울기 1개**만 실제 봉우리 위($-2 < x < 2$)에서 접하는 진짜 정답입니다!`,
+            tapeTitle: `기울기 m 스캔: [m=0: 2점] ➔ [0 < m < m_접선 : 4점!] ➔ [m = m_접선(D=0) : 3점!] ➔ [m > m_접선 : 2점]`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'absPiecewiseSplit') {
+          return {
+            badge: `탐구 3-D · ✂️ 일차항 부분 절댓값 y = x² - 2x - 2|x - 1| — 경계선 x = 1 기준 좌·우 오려 붙이기!`,
+            hint: `식 전체가 아니라 일차항에만 $|x - 1|$ 이 들어 있을 때는 접어 올리는 것이 아닙니다! <strong>절댓값 안이 $0$이 되는 경계선 $x = 1$</strong> 을 기준으로 <strong>오른쪽($x \\ge 1$) 포물선과 왼쪽($x < 1$) 포물선을 각각 그려서 이어 붙이면</strong> 됩니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 완성된 그래프 보기' : '🎬 x ≥ 1 오른쪽 조각 + x < 1 왼쪽 조각 합체 시연!',
+            dim1Name: '오른쪽 (x ≥ 1) 식', dim2Name: '왼쪽 (x < 1) 식',
+            val1Txt: 'y = x² - 4x + 2 (꼭짓점 x=2)', val2Txt: 'y = x² - 2 (꼭짓점 x=0)',
+            parts: [
+              { id: 0, name: `🔵 경계 오른쪽 (x ≥ 1): |x - 1| = +(x - 1) ➔ y = (x - 2)² - 2`, desc: `대칭축 x = 2 가 x ≥ 1 범위에 포함되므로 오른쪽 꼭짓점 (2, -2) 생존!`, val: `우측 꼭짓점(2,-2)`, color: '#38bdf8', ok: true },
+              { id: 1, name: `🩷 경계 왼쪽 (x < 1): |x - 1| = -(x - 1) ➔ y = x² - 2`, desc: `대칭축 x = 0 이 x < 1 범위에 포함되므로 왼쪽 꼭짓점 (0, -2)도 생존!`, val: `좌측 꼭짓점(0,-2)`, color: '#f472b6', ok: true },
+              { id: 2, name: `🟡 경계점 x = 1 에서 두 조각이 점 (1, -1)에서 만나 W자 완성!`, desc: `최솟값은 -2 이고, y = -1 일 때 실근 3개, -2 < y < -1 일 때 실근 4개!`, val: `경계점 (1, -1)`, color: '#fbbf24', ok: true }
+            ],
+            totalRes: `경계 x = 1 기준 ➔ 왼쪽 y = x² - 2 (x<1) 와 오른쪽 y = (x-2)² - 2 (x≥1) 합체!`,
+            rule: '부분 절댓값 |x - a| 가 보이면 무조건 경계선 x = a 를 긋고 (x ≥ a 일 때 식)과 (x < a 일 때 식) 두 개를 따로 그려라!',
+            formulaHTML: `• ① $x \\ge 1$ 일 때: ${tex('y = x^2 - 2x - 2(x - 1) = x^2 - 4x + 2 = \\mathbf{(x - 2)^2 - 2}')}<br/>• ② $x < 1$ 일 때: ${tex('y = x^2 - 2x + 2(x - 1) = \\mathbf{x^2 - 2}')}`,
+            notes: `• 각각의 범위($x \\ge 1$ 또는 $x < 1$) 안에 그 포물선의 꼭짓점이 들어있는지 확인하면 그래프 개형을 10초 만에 정확히 그릴 수 있습니다!`,
+            tapeTitle: `경계선 x = 1 분할: [왼쪽 x < 1 : 포물선 y = x² - 2]  +  [오른쪽 x ≥ 1 : 포물선 y = (x - 2)² - 2]`,
+            tapeSegs: []
+          };
+        }
+        // maxMinEnvelope
+        return {
+          badge: `탐구 3-E · 📈 두 함수 중 크지 않은 함수 h(x) = min(f(x), g(x)) 그래프와 최댓값 찾기!`,
+          hint: `“$f(x)$와 $g(x)$ 중 크지 않은 값(작거나 같은 값)”이라는 말은, 두 그래프를 함께 그려놓고 **교점을 경계로 더 아래쪽에 있는 곡선만 골라서 색칠**하라는 뜻입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 min(f, g) 아래쪽 테두리 보기' : '🎬 max(f, g) 위쪽 테두리 vs min(f, g) 전환!',
+          dim1Name: '기호 번역: (a+b - |a-b|)/2', dim2Name: 'h(x) = min(f, g) 의 최댓값',
+          val1Txt: '더 아래쪽 그래프 선택!', val2Txt: '오른쪽 교점(또는 위로볼록 꼭짓점)!',
+          parts: [
+            { id: 0, name: `🟡 min(f(x), g(x)): 두 그래프 중 더 아래쪽(낮은 쪽) 테두리 선택!`, desc: `교점 안쪽에서는 직선(또는 위로 볼록 곡선), 바깥쪽에서는 내려가는 곡선 따라감`, val: `아래쪽 테두리 ⭕`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 기호 표현 번역: min(A, B) = (A + B - |A - B|) / 2`, desc: `max(A, B) = (A + B + |A - B|) / 2 로 출제되어도 당황하지 말 것!`, val: `절댓값 식 번역`, color: '#38bdf8', ok: true }
+          ],
+          totalRes: `크지 않은 함수 min(f, g) = 교점을 기준으로 더 아래쪽에 위치한 그래프 조각들의 합체!`,
+          rule: '두 그래프를 겹쳐 그린 뒤, min 이면 각 x에서 "아래쪽 선"만 형광펜으로 따라 그리면 끝난다!',
+          formulaHTML: `• 시험 문제에서 ${tex('h(x) = \\dfrac{f(x) + g(x) - |f(x) - g(x)|}{2}')} 로 주어지면:<br/>&nbsp;&nbsp;- $f(x) \\ge g(x)$ 일 때 $h(x) = g(x)$ 이고, $f(x) < g(x)$ 일 때 $h(x) = f(x)$ 이므로 곧 **더 작은 함수 $\\min(f, g)$** 를 뜻합니다!`,
+          notes: `• 형광펜으로 따라 그린 최종 굵은 실선 위에서 가장 높은 봉우리(교점 또는 꼭짓점)의 $y$좌표를 읽으면 최댓값이 됩니다!`,
+          tapeTitle: `기호 암기: (f + g + |f - g|)/2 = 큰 함수 max(f, g)  |  (f + g - |f - g|)/2 = 작은 함수 min(f, g)`,
+          tapeSegs: []
+        };
+      }
+
+      // ==================== [탭 4: 실근의 위치 (근의 분리: 함 · 판 · 축 마스터)] ====================
+      if (m === 4) {
+        if (sub === 'sepBothGreater') {
+          return {
+            badge: `탐구 4-A · 🎯 근의 분리 유형 ①: 두 실근이 모두 p(예: p=1)보다 클 때 — 왜 [함 · 판 · 축] 3개가 다 필요할까?`,
+            hint: `아래로 볼록한 이차방정식 $f(x)=0$ 의 두 근이 모두 $p=1$ 보다 크려면 <strong>① 함숫값 $f(1) > 0$, ② 판별식 $D \\ge 0$, ③ 대칭축 $x_{\\text{축}} > 1$</strong> 세 가지 잠금장치를 모두 걸어야 합니다! 우측 조각 카드를 클릭해 하나라도 빠졌을 때 생기는 반례 포물선을 확인하세요!`,
+            actionTxt: state.fold > 0.5 ? '🎬 올바른 곡선 보기' : '🎬 판별식 누락 반례 & 대칭축 누락 반례 곡선 비교!',
+            dim1Name: '3중 잠금장치 (함·판·축)', dim2Name: '하나라도 빼먹으면?',
+            val1Txt: '①f(p)>0 · ②D≥0 · ③축>p', val2Txt: '허근 또는 왼쪽 치우침 반례 발생!',
+            parts: [
+              { id: 0, name: `🟢 잠금장치 ① [경계 함숫값]: f(p) > 0 (x = p 에서 x축 위에 있음)`, desc: `만약 f(p) ≤ 0 이면 한 근이 p 이하로 넘어가 버림!`, val: `① f(p) > 0 ⭕`, color: '#34d399', ok: true },
+              { id: 1, name: `🟡 잠금장치 ② [판별식]: D ≥ 0 (서로 다른 두 근이면 D > 0)`, desc: `⚠️ f(p)>0 이고 축>p 여도, D<0 이면 공중에 붕 떠서 실근이 없음(반례 ①)!`, val: `② D ≥ 0 필수!`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🔵 잠금장치 ③ [대칭축 위치]: (대칭축 -b/2a) > p`, desc: `⚠️ f(p)>0 이고 D≥0 이어도, 축<p 이면 두 근이 모두 p 왼쪽에 생김(반례 ②)!`, val: `③ 대칭축 > p 필수!`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `두 근이 모두 p보다 클 조건 = [① f(p) > 0] ∩ [② D ≥ 0] ∩ [③ 대칭축 > p] 교집합!`,
+            rule: '두 근이 모두 p의 한쪽(오른쪽 또는 왼쪽)에 몰려 있을 때는 무조건 [함 · 판 · 축] 3개를 다 써야 한다!',
+            formulaHTML: `• <strong>[두 근이 모두 $p$보다 작을 때 ($\alpha \le \beta < p$)]</strong>:<br/>&nbsp;&nbsp;① 함숫값: ${tex('\\mathbf{f(p) > 0}')} (부등호 방향 그대로 $+$>0 주의!)<br/>&nbsp;&nbsp;② 판별식: ${tex('\\mathbf{D \\ge 0}')}<br/>&nbsp;&nbsp;③ 대칭축만 반대로: ${tex('\\mathbf{-\\dfrac{b}{2a} < p}')}!`,
+            notes: `• <strong>[단골 실수]</strong>: “두 근이 모두 $p$보다 작다”고 해서 $f(p) < 0$ 이라고 쓰면 100% 틀립니다! 두 근이 모두 왼쪽에 있어도 경계 $x=p$ 에서는 포물선이 위로 올라와 있으므로 **$f(p) > 0$** 입니다!`,
+            tapeTitle: `함·판·축 3중 교집합: ① f(p) > 0 (경계 위)  ∩  ② D ≥ 0 (실근 존재)  ∩  ③ 대칭축 > p (오른쪽 위치)`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'sepBetweenOneShot') {
+          return {
+            badge: `탐구 4-B · 🌟 [출제 1순위] 근의 분리 유형 ②: 두 실근 사이에 p가 있을 때 (α < p < β) — 오직 f(p) < 0 하나면 끝!`,
+            hint: `왜 두 근 사이에 $p$가 있을 때는 판별식 $D$도 안 쓰고 대칭축도 안 따지고 <strong>오직 <span class="text-amber-300">$f(p) < 0$</span> 단 하나만 쓰면 끝날까요?</strong> 아래로 볼록한 포물선이 $x=p$ 에서 $x$축 아래(물속)로 잠겨 있으면, 양팔이 위로 뻗어 올라가면서 **무조건 왼쪽 1번, 오른쪽 1번 $x$축을 뚫고 올라올 수밖에 없기 때문**입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 대칭축이 어디로 흔들려도 f(p)<0 이면 무조건 두 근 사이임을 시연!',
+            dim1Name: '필요충분조건 (단 1개!)', dim2Name: '판별식 D와 대칭축은?',
+            val1Txt: 'f(p) < 0 (아래로 볼록 기준)', val2Txt: '자동 성립 & 무관 (조사 불필요!)',
+            parts: [
+              { id: 0, name: `🟡 유일한 절대 조건: 경계 함숫값 f(p) < 0 (강바닥 아래로 잠김!)`, desc: `x = p 에서 y값이 음수이면 양옆으로 올라가며 무조건 x축을 2번 뚫음!`, val: `f(p) < 0 단 1개! ⭕`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🟢 왜 판별식 D > 0 을 안 써도 될까? (100% 자동 성립!)`, desc: `f(p) = ap²+bp+c < 0 에서 ac < 0 계열이므로 D = b²-4ac > 0 이 자동 보장됨!`, val: `D > 0 자동보장!`, color: '#34d399', ok: true },
+              { id: 2, name: `🔵 왜 대칭축 위치를 안 따져도 될까?`, desc: `슬라이더로 대칭축을 좌우로 흔들어 보세요! 축이 어디든 α < p < β 는 유지됨!`, val: `대칭축 무관!`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `두 실근 사이에 p가 있을 조건 (α < p < β) ⟺ 오직 f(p) < 0 단 하나만 풀면 3초 컷!`,
+            rule: '"두 근 사이에 p가 있다" ➔ 판별식·대칭축 쳐다보지도 말고 f(p) < 0 하나만 풀고 다음 문제로 넘어가라!',
+            formulaHTML: `• 만약 최고차항 계수 $a$의 부호를 모를 때(또는 위로 볼록일 때)까지 하나로 통일한 공식은:<br/>&nbsp;&nbsp;${tex('\\mathbf{a \\cdot f(p) < 0}')} (최고차항 계수 $a$와 $f(p)$의 부호가 반대!)`,
+            notes: `• <strong>[특수 케이스]</strong>: “한 근은 양수이고 한 근은 음수이다(서로 다른 부호의 두 실근)”라는 말이 바로 **두 근 사이에 $p = 0$ 이 있다**는 뜻이므로 $f(0) = c < 0$ (즉 두 근의 곱 $\\alpha\\beta < 0$) 하나만 쓰는 것입니다!`,
+            tapeTitle: `1초 판별: 두 근이 같은 쪽(모두 > p)이면 [함·판·축 3개]  |  두 근이 갈라지면(α < p < β) [f(p) < 0 단 1개]!`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'sepInsideInterval') {
+          return {
+            badge: `탐구 4-C · 🚧 근의 분리 유형 ③: 두 실근이 모두 구간 (p, q) 사이에 있을 때 (p < α ≤ β < q)`,
+            hint: `두 실근을 양쪽 벽 $x = p(-1)$ 와 $x = q(3)$ 사이의 감옥 안에 가두려면, <strong>① 양쪽 벽 함숫값이 모두 양수($f(p)>0$ 이고 $f(q)>0$)</strong>, <strong>② 판별식 $D \\ge 0$</strong>, <strong>③ 대칭축이 두 벽 사이($p < x_{\\text{축}} < q$)</strong> 4가지를 모두 만족해야 합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 기본 보기' : '🎬 양쪽 벽(p=-1, q=3) 안으로 포물선 가두기 시연!',
+            dim1Name: '양쪽 경계 함숫값 (2개)', dim2Name: '판별식 + 대칭축 가두기',
+            val1Txt: 'f(p) > 0 이고 f(q) > 0', val2Txt: 'D ≥ 0 이고 p < 대칭축 < q',
+            parts: [
+              { id: 0, name: `🟢 양쪽 벽 함숫값: f(-1) > 0  그리고  f(3) > 0`, desc: `양쪽 경계선에서 모두 그래프가 x축 위에 올라와 있어야 함!`, val: `f(p)>0, f(q)>0`, color: '#34d399', ok: true },
+              { id: 1, name: `🟡 바닥 닿기 [판별식]: D ≥ 0 (서로 다른 두 근이면 D > 0)`, desc: `그래프 꼭짓점이 x축 이하로 내려와야 실근이 존재함!`, val: `D ≥ 0`, color: '#fbbf24', ok: true },
+              { id: 2, name: `🔵 중심 가두기 [대칭축]: -1 < (대칭축 -b/2a) < 3`, desc: `대칭축이 구간 (-1, 3) 안에 들어와야 두 근이 그 안에서 생김!`, val: `p < 대칭축 < q`, color: '#38bdf8', ok: true }
+            ],
+            totalRes: `두 근이 모두 (p, q) 안에 있을 조건 = [f(p)>0] ∩ [f(q)>0] ∩ [D≥0] ∩ [p < 대칭축 < q]`,
+            rule: '구간 (p, q) 안에 두 근 가두기 = [함(양끝 2개) · 판(D≥0) · 축(p<축<q)] 연립부등식!',
+            formulaHTML: `• 만약 문제에서 이차함수의 대칭축이 숫자로 고정되어 있고(예: $x = 1$ 이 이미 $(-1, 3)$ 안에 있음!) 상수항 $k$만 미지수라면, 대칭축 조건은 이미 성립하므로 **$f(-1)>0, f(3)>0, D\\ge 0$ 만 풀면 됩니다!**`,
+            notes: `• <strong>[등호 주의]</strong>: 문제에서 “$-1 \\le x \\le 3$ (양 끝점 포함 닫힌구간)”에서 두 근을 갖는다고 하면 함숫값 조건에도 등호를 넣어 **$f(-1) \\ge 0, f(3) \\ge 0$** 으로 풀어야 합니다!`,
+            tapeTitle: `구간 가두기 4조건: [왼쪽 벽 f(p)>0] ∩ [오른쪽 벽 f(q)>0] ∩ [바닥 D≥0] ∩ [중심 p < 축 < q]`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'sepOneRootInInterval') {
+          return {
+            badge: `탐구 4-D · ⚡ 근의 분리 유형 ④: 구간 (p, q) 사이에 '오직 하나의 실근'만 있을 때 (f(p) · f(q) < 0)`,
+            hint: `두 근 중 하나는 구간 $(p, q)$ 안에 있고 다른 하나는 바깥에 있으려면, 포물선이 한쪽 벽에서는 $x$축 아래(음수)에 있고 다른 쪽 벽에서는 $x$축 위(양수)에 있으면 됩니다! 즉 <strong class="text-amber-300">양 끝 함숫값의 곱이 음수($f(p) \\cdot f(q) < 0$)</strong>이면 끝납니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 오른쪽 관통 보기' : '🎬 왼쪽 관통 vs 오른쪽 관통 (f(p)·f(q) < 0) 비교!',
+            dim1Name: '핵심 판별 부등식', dim2Name: '서술형 추가 체크사항',
+            val1Txt: 'f(p) · f(q) < 0 (부호 반대!)', val2Txt: 'f(p)=0 또는 f(q)=0 경계 대입 확인!',
+            parts: [
+              { id: 0, name: `🟡 기본 관통 조건: f(p) · f(q) < 0 (양 끝 함숫값의 부호가 서로 반대!)`, desc: `한쪽이 양수(+)이고 한쪽이 음수(-)이면 그 사이에서 무조건 x축을 1번 뚫음!`, val: `f(p)·f(q) < 0 ⭕`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 [서술형 1등급 디테일] 경계점 f(p) = 0 또는 f(q) = 0 일 때 별도 확인!`, desc: `한 근이 끝점 p에 걸릴 때 나머지 한 근이 (p, q) 안에 들어오는지 직접 대입 체크!`, val: `끝점 0 대입 체크`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `구간 (p, q) 사이에 한 실근만 존재 ➔ ① f(p)·f(q) < 0 풀기  ② f(p)=0, f(q)=0 일 때 직접 검산!`,
+            rule: '두 실근 사이에 p, q 두 점이 있는 게 아니라, p와 q 사이에 실근 1개가 끼어 있을 때는 f(p)·f(q) < 0 이다!',
+            formulaHTML: `• <strong>사이값 정리 원리</strong>: 연속인 이차함수에서 $f(p)$와 $f(q)$의 부호가 반대(${tex('\\mathbf{f(p)\\cdot f(q) < 0}')})이면, 열린구간 $(p, q)$ 사이에서 그래프가 $x$축을 정확히 한 번 가로지릅니다!`,
+            notes: `• 단, 문제 조건이 닫힌구간 $[p, q]$ 이거나 한 근이 $p$일 때 다른 근이 $(p, q)$ 안에 들어올 수 있으므로, **$f(p)=0$ 이 되게 하는 미지수 값을 구해 실제로 조건을 만족하는지 5초만 대입해 확인**하면 완벽합니다!`,
+            tapeTitle: `부호 교차 원리: 왼쪽 벽 f(p)와 오른쪽 벽 f(q)의 부호가 반대(곱 < 0)이면 사이에서 무조건 1번 만난다!`,
+            tapeSegs: []
+          };
+        }
+        // rootSignZero
+        return {
+          badge: `탐구 4-E · ➕ 이차방정식 실근의 부호 판별 (두 양근 · 두 음근 · 서로 다른 부호) = 기준점 p = 0 인 근의 분리!`,
+          hint: `실근의 부호 판별은 새로운 공식이 아니라 <strong>근의 분리에서 기준선이 $p = 0$ ($y$축)인 특수 케이스</strong>입니다! $f(0) = c$ 이고 대칭축이 $-\\frac{b}{2a}$ 이므로 <strong>[함·판·축]이 곧 [곱($\\alpha\\beta$) · 판별식($D$) · 합($\\alpha+\\beta$)]</strong>과 100% 똑같습니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 서로 다른 부호 보기' : '🎬 두 양근(p=0 오른쪽) vs 서로 다른 부호 비교!',
+          dim1Name: '두 양근 조건 (3개)', dim2Name: '서로 다른 부호 조건 (단 1개!)',
+          val1Txt: 'D ≥ 0, α+β > 0, αβ > 0', val2Txt: 'αβ < 0 (오직 두 근의 곱만!)',
+          parts: [
+            { id: 0, name: `🟡 [두 근이 모두 양수] ⟺ 두 근이 0보다 큼: D ≥ 0, α+β > 0, αβ > 0`, desc: `함(f(0)=c>0 ⇔ αβ>0) · 판(D≥0) · 축(-b/2a>0 ⇔ α+β>0) 과 100% 일치!`, val: `3조건 모두 ⭕`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🔵 [두 근이 모두 음수] ⟺ 두 근이 0보다 작음: D ≥ 0, α+β < 0, αβ > 0`, desc: `두 음수를 곱해도 양수(αβ > 0)이고, 합만 음수(α+β < 0)!`, val: `합만 음수 ⭕`, color: '#38bdf8', ok: true },
+            { id: 2, name: `🩷 [서로 다른 부호] ⟺ 두 근 사이에 0이 있음: 오직 αβ < 0 단 1개!`, desc: `f(0) < 0 단 1개 조건과 동일! (단, '음근의 절댓값이 더 크다'면 α+β < 0 추가!)`, val: `αβ < 0 단 1개!`, color: '#f472b6', ok: true }
+          ],
+          totalRes: `두 양근: D≥0, 합>0, 곱>0 | 두 음근: D≥0, 합<0, 곱>0 | 다른 부호: 곱(αβ) < 0 단 1개!`,
+          rule: '서로 다른 부호의 근일 때: "절댓값이 같다" ➔ α+β=0 추가 | "양근의 절댓값이 더 크다" ➔ α+β>0 추가!',
+          formulaHTML: `• <strong>절댓값 크기 조건이 붙은 서로 다른 부호의 근</strong>:<br/>&nbsp;&nbsp;- 기본: ${tex('\\alpha\\beta < 0')}<br/>&nbsp;&nbsp;- 두 근의 절댓값이 같고 부호가 반대: ${tex('\\mathbf{\\alpha\\beta < 0\\text{ 이고 }\\alpha+\\beta = 0}')}<br/>&nbsp;&nbsp;- 음근의 절댓값이 양근보다 크다: ${tex('\\mathbf{\\alpha\\beta < 0\\text{ 이고 }\\alpha+\\beta < 0}')}`,
+          notes: `• “두 양수인 근”이라고만 나오면 중근(같은 두 양근)도 포함되므로 **$D \\ge 0$** 이고, “**서로 다른** 두 양근”이라고 나오면 등호를 뺀 **$D > 0$** 을 써야 합니다!`,
+          tapeTitle: `통합 연결: 근의 분리(기준 p = 0)  ≡  실근의 부호 판별(합 α+β, 곱 αβ, 판별식 D)`,
+          tapeSegs: []
+        };
+      }
+
+      // ==================== [탭 5: 항상 성립하는 부등식 & 제한된 범위 부등식] ====================
+      if (m === 5) {
+        if (sub === 'alwaysPositiveAll') {
+          return {
+            badge: `탐구 5-A · 🎈 모든 실수 x에 대하여 ax² + bx + c > 0 이 성립할 조건 — 왜 D > 0 이 아니라 D < 0 일까?`,
+            hint: `부등식이 $> 0$ 이라고 판별식도 $D > 0$ 으로 쓰는 것이 고1 최대 오답입니다! <strong>그래프 전체가 $x$축보다 위에 둥실 떠 있으려면($y > 0$), $x$축과 만나는 교점이 0개(허근!)여야 하므로 <span class="text-amber-300">$a > 0$ 이고 $D < 0$</span></strong> 이어야 합니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 D > 0 (실패 반례) 보기' : '🎬 포물선을 공중으로 띄워 D < 0 (항상 > 0 성립!) 확인!',
+            dim1Name: '그래프 모양 조건', dim2Name: '판별식 조건 (교점 0개!)',
+            val1Txt: '아래로 볼록 (a > 0)', val2Txt: '공중에 떠 있음 ➔ D < 0 (≥0이면 D≤0!)',
+            parts: [
+              { id: 0, name: `🟢 [절대부등식 성립 ⭕] a > 0 이고 판별식 D < 0 (공중에 붕 떠 있음!)`, desc: `x축과 만나지 않아야 모든 x에서 함숫값 y가 양수(>0)가 됨!`, val: `a>0, D<0 ⭕`, color: '#34d399', ok: true },
+              { id: 1, name: `🟡 만약 등호가 포함된 ax² + bx + c ≥ 0 이 항상 성립하려면?`, desc: `x축에 살짝 닿아도(접해도, y=0) 괜찮으므로 a > 0 이고 D ≤ 0!`, val: `a>0, D≤0 ⭕`, color: '#fbbf24', ok: true },
+              { id: 2, name: `❌ [착시 반례 ❌] 판별식 D > 0 일 때: x축 아래로 파고들어 음수 발생!`, desc: `식 끝에 > 0 이 있다고 D > 0 으로 쓰면 100% 틀림!`, val: `D>0 이면 실패 ❌`, color: '#f43f5e', ok: false }
+            ],
+            totalRes: `모든 실수에서: f(x)>0 ⟺ a>0, D<0 | f(x)≥0 ⟺ a>0, D≤0 | f(x)<0 ⟺ a<0, D<0 | f(x)≤0 ⟺ a<0, D≤0`,
+            rule: '"모든 실수에서 항상 > 0 또는 < 0 이다" (해가 모든 실수 / 해가 없다) ➔ 판별식은 무조건 D < 0 (공중부양)!',
+            formulaHTML: `• <strong>모든 실수에서 성립할 조건 4총사</strong>:<br/>&nbsp;&nbsp;- 항상 $f(x) > 0$ (위에 뜸): ${tex('\\mathbf{a > 0,\\; D < 0}')} &nbsp;&nbsp;- 항상 $f(x) \\ge 0$ (위에 뜨거나 접함): ${tex('\\mathbf{a > 0,\\; D \\le 0}')}<br/>&nbsp;&nbsp;- 항상 $f(x) < 0$ (아래 가라앉음): ${tex('\\mathbf{a < 0,\\; D < 0}')} &nbsp;&nbsp;- 항상 $f(x) \\le 0$: ${tex('\\mathbf{a < 0,\\; D \\le 0}')}`,
+            notes: 	`• 반대로 <strong>“$f(x) \\le 0$ 의 해가 존재하지 않을 조건”</strong>을 물으면, 모든 실수에서 **반대 부등호인 $f(x) > 0$ 이 항상 성립할 조건($a > 0, D < 0$)**으로 번역해서 풀면 됩니다!`,
+            tapeTitle: `핵심 번역: [모든 실수에서 항상 성립한다 = x축을 뚫고 지나가지 않는다 = 판별식 D < 0 (또는 D ≤ 0)!]`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'restrictedIneqMinMax') {
+          return {
+            badge: `탐구 5-B · 🔒 [내신 킬러] 제한된 범위(0 ≤ x ≤ 3)에서만 이차부등식이 항상 성립할 조건!`,
+            hint: `모든 실수가 아니라 <strong>제한된 구간 $0 \\le x \\le 3$ 에서만 $f(x) \\ge 0$ (또는 $\\le 0$)이 성립</strong>하면 될 때는, 구간 바깥에서는 $x$축을 뚫고 가도 상관없으므로 <strong>절대 판별식 $D$를 쓰지 않고 구간 내 [최솟값 $\\ge 0$] 또는 [최댓값 $\\le 0$]</strong>으로 풉니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 아래로 볼록 ≤ 0 (양끝점 조건) 보기' : '🎬 구간 내 최솟값 ≥ 0 vs 양끝점 ≤ 0 비교!',
+            dim1Name: '구간에서 f(x) ≥ 0 성립 조건', dim2Name: '아래로 볼록이 구간에서 f(x) ≤ 0 성립 조건',
+            val1Txt: '(구간 내 최솟값) ≥ 0!', val2Txt: '양 끝점 f(0) ≤ 0 이고 f(3) ≤ 0!',
+            parts: [
+              { id: 0, name: `🟡 유형 ①: 구간 [0, 3]에서 항상 f(x) ≥ 0 ⟺ (구간 내 최솟값) ≥ 0!`, desc: `구간 안에서 제일 낮은 꼴찌(최솟값)만 0 이상이면 전원이 0 이상!`, val: `최솟값 ≥ 0 ⭕`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🩷 유형 ② [꿀팁!]: 아래로 볼록(a>0)이 구간 [0, 3]에서 항상 f(x) ≤ 0 일 조건!`, desc: `아래로 볼록은 양 끝점에서 최대이므로 대칭축 따질 필요 없이 f(0)≤0 이고 f(3)≤0 이면 끝!`, val: `f(0)≤0 & f(3)≤0!`, color: '#f472b6', ok: true }
+            ],
+            totalRes: `제한된 범위 [α, β] 절대부등식 ➔ 판별식 D 금지! 무조건 [최솟값 ≥ 0] 또는 [최댓값 ≤ 0]으로 푼다!`,
+            rule: '[초특급 비법] 아래로 볼록한 함수가 구간 [α, β]에서 "f(x) ≤ 0" 이려면 대칭축 몰라도 그냥 양 끝점 f(α)≤0, f(β)≤0 만 풀면 된다!',
+            formulaHTML: `• <strong>왜 아래로 볼록이 $[0, 3]$에서 $f(x) \\le 0$ 일 때는 대칭축을 안 나눌까?</strong><br/>&nbsp;&nbsp;아래로 볼록한 곡선은 양 끝점 $x=0$ 과 $x=3$ 이 $x$축 아래($f(0)\\le 0,\\; f(3)\\le 0$)에 박혀 있으면, 그 사이의 배불뚝이 아랫부분은 <strong>무조건 $x$축 아래에 잠길 수밖에 없기 때문</strong>입니다!`,
+            notes: `• 반대로 아래로 볼록한 함수가 구간 $[0, 3]$에서 **$f(x) \\ge 0$** 이어야 할 때는 꼭짓점이 어디 있느냐에 따라 최솟값이 바뀌므로 **탐구 2-A처럼 대칭축 위치를 나누어 최솟값 $\\ge 0$** 을 풀어야 합니다!`,
+            tapeTitle: `제한 범위 부등식 황금률: f(x) ≥ 0 이면 (최솟값 ≥ 0)  |  f(x) ≤ 0 이면 (최댓값 ≤ 0)`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'specialSol4Cases') {
+          return {
+            badge: `탐구 5-C · 📌 판별식 D = 0 (x축에 접할 때) 부등호 방향에 따른 특수 해 4총사 완벽 비교!`,
+            hint: `아래로 볼록한 포물선이 점 $x = p(2)$ 에서 $x$축에 접할 때($f(x) = (x-2)^2$), 부등호 모양($>, \\ge, <, \\le$) 하나에 따라 해가 <strong>‘$x \\neq 2$ 인 모든 실수’, ‘모든 실수’, ‘해 없음’, ‘$x = 2$ 단 한 개’</strong>로 극적으로 갈립니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 전체 4가지 비교' : '🎬 접점 x = 2 에서의 등호 포함/제외 정밀 확대!',
+            dim1Name: '(x - 2)² ≤ 0 의 해', dim2Name: '(x - 2)² > 0 의 해',
+            val1Txt: 'x = 2 (단 1개의 실수!)', val2Txt: 'x ≠ 2 인 모든 실수!',
+            parts: [
+              { id: 0, name: `🟡 ① (x - 2)² ≤ 0 의 해: 오직 x = 2 단 한 개뿐!`, desc: `< 0 인 부분은 없지만, = 0 이 되는 접점 x = 2 딱 하나가 살아남음!`, val: `x = 2 (단 1개!)`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🔵 ② (x - 2)² > 0 의 해: x ≠ 2 인 모든 실수!`, desc: `접점 x = 2 에서는 0이 되어 (> 0)을 만족하지 못하므로 구멍(○)이 뚫림!`, val: `x ≠ 2 모든 실수`, color: '#38bdf8', ok: true },
+              { id: 2, name: `🟢 ③ (x - 2)² ≥ 0 (모든 실수)  |  🩷 ④ (x - 2)² < 0 (해는 없다)`, desc: `제곱식은 항상 0 이상이므로 ≥ 0 은 전부 성립, < 0 은 불능!`, val: `전부 / 해 없음`, color: '#34d399', ok: true }
+            ],
+            totalRes: `이차부등식의 해가 단 한 개(x = p)뿐일 조건 ➔ 그래프가 x = p 에서 x축에 접해야 함 (D = 0)!`,
+            rule: '"이차부등식의 해가 오직 한 개뿐이다" 또는 "x ≠ p 인 모든 실수이다" ➔ 무조건 판별식 D = 0 (완전제곱식)!',
+            formulaHTML: `• <strong>문제 역추적 공식</strong>:<br/>&nbsp;&nbsp;- $ax^2+bx+c \\le 0$ 의 해가 오직 $x = 2$ 뿐이다 $\\implies \\mathbf{a > 0}$ 이고 $a(x-2)^2 \\le 0$!<br/>&nbsp;&nbsp;- $ax^2+bx+c \\ge 0$ 의 해가 오직 $x = 2$ 뿐이다 $\\implies \\mathbf{a < 0}$ (위로 볼록!) 이고 $a(x-2)^2 \\ge 0$!`,
+            notes: `• 해가 단 1개뿐인 이차부등식은 부등호의 꼬리 방향($\\le 0$ 이면 아래로 볼록 $a>0$, $\\ge 0$ 이면 위로 볼록 $a<0$)을 보고 최고차항 부호를 즉시 결정합니다!`,
+            tapeTitle: `D = 0 특수 해 4총사: [> 0 : x ≠ p]  |  [≥ 0 : 모든 실수]  |  [< 0 : 해 없음]  |  [≤ 0 : x = p 단 1개!]`,
+            tapeSegs: []
+          };
+        }
+        if (sub === 'integerCountBoundary') {
+          const curK = 3.2 + 0.8 * state.fold;
+          return {
+            badge: `탐구 5-D · 🔢 이차부등식을 만족시키는 정수 x의 개수가 3개일 때 — 등호(≤ vs <) 유무 3초 판별기!`,
+            hint: `부등식 $(x - 1)(x - k) \\le 0$ ($k > 1$)을 만족시키는 정수 $x$가 $1, 2, 3$ 딱 **3개**가 되려면 $k$는 $3$과 $4$ 사이에 있어야 합니다! 이때 <strong>$k = 3$ 이면 정수가 $1,2,3$(3개 ⭕)이고 $k = 4$ 이면 정수가 $1,2,3,4$(4개 ❌)</strong>이므로 정답은 <strong class="text-amber-300">$3 \\le k < 4$</strong> 입니다!`,
+            actionTxt: state.fold > 0.5 ? '🎬 k = 3 경계 스냅' : '🎬 오른쪽 끝 k를 3과 4에 직접 포개어 등호 유무 테스트!',
+            dim1Name: '닫힌구간 (1 ≤ x ≤ k) 일 때', dim2Name: '열린구간 (1 < x < k) 일 때',
+            val1Txt: '정수 1,2,3 (3개) ➔ 3 ≤ k < 4!', val2Txt: '정수 2,3,4 (3개) ➔ 4 < k ≤ 5!',
+            parts: [
+              { id: 0, name: `🟡 1단계: 대략적인 위치 잡기 (정수 1, 2, 3을 포함하고 4는 빼야 함)`, desc: `수직선 위에서 오른쪽 끝 k를 3과 4 사이에 찍어 놓는다 (3 ~ k ~ 4)`, val: `3 과 4 사이`, color: '#fbbf24', ok: true },
+              { id: 1, name: `🟢 2단계 [등호 판별]: k 자리에 실제로 3과 4를 대입해 개수 세어보기!`, desc: `1 ≤ x ≤ k 에 k=3 넣으면 1≤x≤3(3개 ⭕), k=4 넣으면 1≤x≤4(4개 ❌) ⇒ 3 ≤ k < 4!`, val: `3 ≤ k < 4 완성!`, color: '#34d399', ok: true }
+            ],
+            totalRes: `1 ≤ x ≤ k 정수 3개(1,2,3) ➔ 3 ≤ k < 4  |  1 < x < k 정수 3개(2,3,4) ➔ 4 < k ≤ 5`,
+            rule: '등호(=)를 넣을지 말지 머리로 고민하지 말고, 경계 숫자를 직접 k에 대입해서 정수 개수가 맞으면(=) 넣고 틀리면 빼라!',
+            formulaHTML: `• <strong>절대 안 틀리는 2단계 등호 판별법</strong>:<br/>&nbsp;&nbsp;① 만약 구하는 해가 $1 < x < k$ (구멍 $\\circ$)이고 정수가 $2, 3, 4$ (3개)여야 한다면, $k$는 $4$와 $5$ 사이!<br/>&nbsp;&nbsp;② $k=4$ 대입 $\\to 1 < x < 4$ (정수 2,3 두 개뿐 ❌)<br/>&nbsp;&nbsp;③ $k=5$ 대입 $\\to 1 < x < 5$ (정수 2,3,4 세 개 ⭕!) $\\implies$ 정답: ${tex('\\mathbf{4 < k \\le 5}')}!`,
+            notes: `• 부등식에 등호가 있든 없든, **양쪽 경계 정수를 실제로 대입해보는 5초 테스트**를 거치면 등호 실수로 감점당할 일이 평생 사라집니다!`,
+            tapeTitle: `수직선 정수 포함 스캔 (1 ≤ x ≤ k): 정수 [1(●)] ── [2(●)] ── [3(●)] ── k위치(3 ≤ k < 4) ── [4(✕)]`,
+            tapeSegs: []
+          };
+        }
+        // compIneqTransform
+        return {
+          badge: `탐구 5-E · 🔍 f(x) < 0 의 해가 -2 < x < 4 일 때, 합성 부등식 f(2x - 1) < 0 의 해 3초 치환 해법!`,
+          hint: `$f(x) < 0$ 의 해가 $-2 < x < 4$ 라고 주어졌을 때, $f(x) = a(x+2)(x-4)$ 식을 세워 $2x-1$을 대입해 전개할 필요가 전혀 없습니다! <strong>그냥 $f(\\;\\square\\;) < 0$ 의 빈칸 $\\square$ 자리에 들어간 <span class="text-amber-300">$(2x - 1)$ 통째로 $-2$ 와 $4$ 사이에 넣으면</span></strong> 3초 만에 끝납니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 원래 f(x) 보기' : '🎬 빈칸 치환(-2 < 2x - 1 < 4) 3초 해법 발광!',
+          dim1Name: '원래 부등식 f( □ ) < 0 의 해', dim2Name: '합성 부등식 f(2x - 1) < 0 의 해',
+          val1Txt: '-2 < □ < 4', val2Txt: '-2 < 2x - 1 < 4 ➔ -1/2 < x < 5/2!',
+          parts: [
+            { id: 0, name: `🔵 기준 틀: f( □ ) < 0 이 성립하는 빈칸 □ 의 범위 = (-2 < □ < 4)`, desc: `f라는 함수 기계가 음수를 뱉어내는 입력값의 범위는 항상 -2와 4 사이!`, val: `-2 < □ < 4`, color: '#38bdf8', ok: true },
+            { id: 1, name: `🟡 빈칸에 (2x - 1) 그대로 대입: -2 < 2x - 1 < 4`, desc: `양변에 1을 더하면 -1 < 2x < 5 ➔ 2로 나누면 -1/2 < x < 5/2 끝!`, val: `-1/2 < x < 5/2 ⭕`, color: '#fbbf24', ok: true }
+          ],
+          totalRes: `f(x) < 0 해가 -2 < x < 4 ➔ f(2x - 1) < 0 은 -2 < 2x - 1 < 4 ➔ -1/2 < x < 5/2!`,
+          rule: 'f(ax + b) < 0 꼴의 부등식은 식을 전개하지 말고, 괄호 안의 (ax + b)를 통째로 원래 해의 x 자리에 집어넣어라!',
+          formulaHTML: `• 주의: 만약 $f(2x - 1) < 0$ 이 아니라 **$f(2x - 1) > 0$** (부등호 반대!)의 해를 물었다면?<br/>&nbsp;&nbsp;$\\implies$ 원래 $f(\\square) > 0$ 의 해가 바깥 범위($\\square < -2$ 또는 $\\square > 4$)이므로,<br/>&nbsp;&nbsp;${tex('2x - 1 < -2\\text{ 또는 }2x - 1 > 4 \\implies \\mathbf{x < -\\dfrac{1}{2}\\text{ 또는 }x > \\dfrac{5}{2}}')}!`,
+          notes: `• 이 빈칸($\\square$) 치환법은 이차방정식에서 $f(x)=0$ 의 두 근의 합이 $\\alpha+\\beta=6$ 일 때 $f(2x-1)=0$ 의 두 근을 $2x-1 = \\alpha, \\beta$ 로 푸는 것과 100% 동일한 원리입니다!`,
+          tapeTitle: `3초 치환 파이프라인: [-2 < □ < 4] ──(□ = 2x - 1 대입)──▶ [-1 < 2x < 5] ──(÷2)──▶ [-1/2 < x < 5/2]`,
+          tapeSegs: []
+        };
+      }
+
+      // ==================== [탭 6: 1등급 결정타 시험장 함정 연구소] ====================
+      if (sub === 'trapLeadingZero') {
+        return {
+          badge: `탐구 6-A · 💥 [함정 1위] "부등식 kx² - 2kx + 3 > 0" vs "이차부등식 kx² - 2kx + 3 > 0" (k = 0 포함 여부!)`,
+          hint: `문제 맨 앞에 <strong>‘이차’</strong>라는 두 글자가 있는지 없는지가 1등급을 가릅니다! 그냥 <strong>“부등식 $kx^2 - 2kx + 3 > 0$ 이 모든 실수에서 성립할 때”</strong>라고 하면, $k > 0, D < 0$ ($0 < k < 3$)뿐만 아니라 <strong class="text-rose-400">$k = 0$ 일 때 $0 + 0 + 3 > 0$ 이 성립하므로 $0 \\le k < 3$</strong> 이 정답입니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 k > 0 포물선 보기' : '🎬 k = 0 일 때 수평선 y = 3 > 0 성립 확인!',
+          dim1Name: '"이차부등식" 일 때 (k ≠ 0)', dim2Name: '그냥 "부등식" 일 때 (k = 0 체크!)',
+          val1Txt: '0 < k < 3 (등호 없음)', val2Txt: '0 ≤ k < 3 (k = 0 포함! ⭕)',
+          parts: [
+            { id: 0, name: `🔵 1단계 [k ≠ 0 일 때]: 아래로 볼록(k > 0) 이고 판별식 D/4 = k² - 3k < 0`, desc: `k(k - 3) < 0 이므로 0 < k < 3 도출 ("이차부등식"이면 여기서 끝!)`, val: `0 < k < 3`, color: '#38bdf8', ok: true },
+            { id: 1, name: `🩷 2단계 [k = 0 일 때 대입 테스트!]: 0·x² - 0·x + 3 > 0 ➔ 3 > 0 (참!)`, desc: `k = 0 이면 직선 y = 3 이 되어 모든 실수 x에서 0보다 크므로 성립!`, val: `k = 0 성립 ⭕!`, color: '#f472b6', ok: true },
+            { id: 2, name: `❌ 만약 상수항이 -3 이어서 k=0 대입 시 "-3 > 0 (거짓)" 이면?`, desc: `그때는 그냥 "부등식"이라고 나와 있어도 k = 0 은 성립하지 않으므로 제외!`, val: `대입 확인 필수`, color: '#f43f5e', ok: false }
+          ],
+          totalRes: `"이차부등식"이면 0 < k < 3  |  그냥 "부등식"이면 k=0 대입 시 3 > 0 참이므로 0 ≤ k < 3!`,
+          rule: '최고차항 계수에 미지수 k가 있으면 무조건 문제 첫 단어가 "방정식/부등식"인지 "이차방정식/이차부등식"인지 밑줄 그어라!',
+          formulaHTML: `• <strong>$k = 0$ 대입 3초 판별법</strong>:<br/>&nbsp;&nbsp;“부등식 $(k-1)x^2 + 2(k-1)x + 2 > 0$ 이 항상 성립할 조건” $\\implies$ $k = 1$ 을 먼저 대입해보면 $0 + 0 + 2 > 0$ (참!)이므로 정답 범위에 **$k = 1$ 등호를 반드시 추가**해야 합니다!`,
+          notes: `• 학교 선생님들이 서술형과 객관식 마지막 문제에서 변별력을 주려고 가장 즐겨 쓰는 함정 1위입니다!`,
+          tapeTitle: `1등급 체크리스트: 최고차항 계수가 문자(k)일 때 ➔ ① '이차' 단어 유무 확인 ➔ ② k = 0 직접 대입 테스트!`,
+          tapeSegs: []
+        };
+      }
+      if (sub === 'trapMaxLtMin') {
+        return {
+          badge: `탐구 6-B · 💥 [함정 2위] "모든 실수 x에 대하여 f(x) ≥ g(x)" vs "임의의 실수 x₁, x₂에 대하여 f(x₁) ≥ g(x₂)"!`,
+          hint: `두 문장의 차이를 구별해야 합니다! ① 같은 문자 $x$를 넣는 <strong>$f(x) \\ge g(x)$ 는 같은 세로선 위에서 비교하므로 차함수 $f(x)-g(x) \\ge 0$ ($D \\le 0$)</strong>으로 풀지만, ② 서로 다른 $x_1, x_2$ 를 넣는 <strong>$f(x_1) \\ge g(x_2)$ 는 <span class="text-amber-300">($f$의 최솟값) $\\ge$ ($g$의 최댓값)</span></strong>으로 풀어야 합니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 같은 x 비교 f(x)≥g(x) 보기' : '🎬 서로 다른 x₁, x₂ 비교 (f 최솟값 ≥ g 최댓값) 수평선 확인!',
+          dim1Name: '같은 문자: f(x) ≥ g(x)', dim2Name: '다른 문자: f(x₁) ≥ g(x₂)',
+          val1Txt: '차함수 f(x) - g(x) ≥ 0 (D ≤ 0)', val2Txt: '(f의 최솟값) ≥ (g의 최댓값)!',
+          parts: [
+            { id: 0, name: `🔵 [같은 문자 x]: 모든 실수 x에 대하여 f(x) ≥ g(x)`, desc: `같은 x좌표에서만 f가 위쪽에 있으면 됨 ➔ 이항하여 f(x)-g(x) ≥ 0 (D ≤ 0)!`, val: `f - g ≥ 0 (D≤0)`, color: '#38bdf8', ok: true },
+            { id: 1, name: `🟡 [다른 문자 x₁, x₂]: 임의의 실수 x₁, x₂에 대하여 f(x₁) ≥ g(x₂)!`, desc: `f의 제일 낮은 꼴찌(최솟값)가 g의 제일 높은 1등(최댓값)보다 위에 있어야 함!`, val: `min(f) ≥ max(g)!`, color: '#fbbf24', ok: true }
+          ],
+          totalRes: `f(x) ≥ g(x) ⟺ f(x)-g(x) ≥ 0 (D ≤ 0)  |  f(x₁) ≥ g(x₂) ⟺ (f의 최솟값) ≥ (g의 최댓값)!`,
+          rule: 'f(x₁) ≥ g(x₂) 처럼 첨자(x₁, x₂)가 다르면 이항해서 빼면 절대 안 된다! 각각의 꼭짓점(최솟값 ≥ 최댓값)을 비교하라!',
+          formulaHTML: `• <strong>비유로 1초 이해하기</strong>:<br/>&nbsp;&nbsp;- $f(x) \\ge g(x)$: 같은 번호 학생끼리 붙었을 때만 A반($f$)이 B반($g$)보다 키가 크면 됨!<br/>&nbsp;&nbsp;- $f(x_1) \\ge g(x_2)$: A반에서 **제일 작은 학생(최솟값)**이 B반에서 **제일 큰 학생(최댓값)**보다 커야 함!`,
+          notes: `• 따라서 $f(x_1) \\ge g(x_2)$ 가 성립하려면 두 포물선 사이에 **수평한 분리선**이 지나갈 수 있어야 합니다!`,
+          tapeTitle: `문장 구별법: [f(x) ≥ g(x) ➔ 이항 후 D ≤ 0]  vs  [f(x₁) ≥ g(x₂) ➔ (f의 꼭짓점 최솟값) ≥ (g의 꼭짓점 최댓값)]`,
+          tapeSegs: []
+        };
+      }
+      if (sub === 'trapKIndepDoubleRoot') {
+        return {
+          badge: `탐구 6-C · 🎯 "실수 k의 값에 관계없이 항상 중근을 가질 때" — 풀이 순서(① 중근 D=0 먼저 ➔ ② k 항등식) 주의보!`,
+          hint: `문제에서 “$k$의 값에 관계없이”라는 말이 먼저 나왔다고 해서 처음부터 주어진 이차방정식을 $k$로 묶으면 안 됩니다! <strong>먼저 ① ‘중근을 가진다($D = 0$)’를 계산한 뒤, ② 그 판별식 안에서 $k$에 관한 항등식($\\square k + \\triangle = 0$)으로 묶어야 합니다!</strong>`,
+          actionTxt: state.fold > 0.5 ? '🎬 올바른 순서 보기' : '🎬 ① D=0 계산 ➔ ② k 항등식 정리 파이프라인!',
+          dim1Name: '1순위 작업 (조건 먼저!)', dim2Name: '2순위 작업 (k 항등식 정리!)',
+          val1Txt: '이차방정식 판별식 D = 0 작성', val2Txt: '( )k + ( ) = 0 으로 계수 비교!',
+          parts: [
+            { id: 0, name: `🟡 1단계 [무조건 먼저!]: x에 대한 이차방정식의 판별식 D/4 = 0 세우기`, desc: `(k + a)² - (k² + 2k + b) = 0 ➔ k² 이 소거되며 (2a - 2)k + (a² - b) = 0 도출!`, val: `① 판별식 D = 0`, color: '#fbbf24', ok: true },
+            { id: 1, name: `🟢 2단계 [그 다음!]: D = 0 식을 k에 대하여 정리하여 항등식 풀기`, desc: `2a - 2 = 0 이고 a² - b = 0 ➔ a = 1, b = 1 완성!`, val: `② k 항등식 정리`, color: '#34d399', ok: true }
+          ],
+          totalRes: `"k에 관계없이 중근" ➔ ① 판별식 D = 0 을 먼저 세운다 ➔ ② 그 식을 k에 관한 항등식으로 푼다!`,
+          rule: '국어 어순은 "k에 관계없이(②) 중근을 가진다(①)"이지만, 수학 풀이 순서는 무조건 "① D=0 ➔ ② k항등식" 거꾸로다!',
+          formulaHTML: `• 예: $x^2 - 2(k+a)x + k^2 + 2k + b = 0$ 이 $k$값에 관계없이 중근을 가질 때:<br/>&nbsp;&nbsp;① ${tex('D/4 = (k+a)^2 - (k^2+2k+b) = (2a-2)k + (a^2-b) = 0')}<br/>&nbsp;&nbsp;② $k$에 관한 항등식이므로 ${tex('2a-2=0,\\; a^2-b=0 \\implies \\mathbf{a=1,\\; b=1}')}!`,
+          notes: `• 마찬가지로 **“$k$값에 관계없이 항상 일정한 직선에 접할 때”**라는 문제도 $y = mx + n$ 과 연립한 뒤 **① $D = 0$ 을 먼저 세우고 ② $k$에 관한 항등식**으로 풀면 접선 $y = mx + n$ 이 구해집니다!`,
+          tapeTitle: `풀이 순서 고정: [조건: 중근을 가진다 (① 판별식 D = 0 작성)] ──▶ [전제: k에 관계없이 (② k 항등식 계수 = 0)]`,
+          tapeSegs: []
+        };
+      }
+      if (sub === 'trapIrrationalCoeffs') {
+        return {
+          badge: `탐구 6-D · 💥 켤레근 성질 오용 반례 — 계수가 유리수/실수라는 조건이 없으면 켤레근이 아니다!`,
+          hint: `이차방정식의 한 근이 $1 + \\sqrt{2}$ 라고 해서 무조건 다른 한 근을 $1 - \\sqrt{2}$ 라고 쓰면 안 됩니다! <strong>계수가 ‘유리수’라는 조건이 있을 때만 $1 - \\sqrt{2}$ 가 켤레근</strong>이고, 계수에 $\\sqrt{2}$ 가 섞여 있으면 전혀 다른 근이 나옵니다!`,
+          actionTxt: state.fold > 0.5 ? '🎬 반례 방정식 보기' : '🎬 유리수 계수(켤레근 ⭕) vs 무리수 계수(켤레근 ❌) 비교!',
+          dim1Name: '무리수 켤레근 (p ± q√m) 전제', dim2Name: '허수 켤레근 (p ± qi) 전제',
+          val1Txt: '반드시 "유리수 계수"일 때만 ⭕!', val2Txt: '반드시 "실수 계수"일 때만 ⭕!',
+          parts: [
+            { id: 0, name: `🟢 [참 ⭕] 계수가 유리수일 때: 한 근이 1 + √2 이면 다른 근은 1 - √2`, desc: `x² - 2x - 1 = 0 처럼 모든 계수가 유리수일 때만 성립!`, val: `유리수 계수 ⭕`, color: '#34d399', ok: true },
+            { id: 1, name: `❌ [함정 반례 ❌] x² - √2 x - (1 + √2) = 0 의 한 근은 1 + √2 이지만!`, desc: `인수분해하면 (x - (1+√2))(x + 1) = 0 이므로 다른 한 근은 1-√2 가 아니라 -1 이다!`, val: `다른 근 = -1 ❌!`, color: '#f43f5e', ok: false }
+          ],
+          totalRes: `무리수 켤레근은 [계수가 유리수]일 때만! 허수 켤레근은 [계수가 실수]일 때만 사용 가능!`,
+          rule: '문제에 "유리수 a, b" 말이 없거나 계수에 √가 이미 섞여 있으면 절대 켤레근을 쓰지 말고 근을 직접 x 자리에 대입하라!',
+          formulaHTML: `• 계수에 $\\sqrt{2}$ 나 $i$ 가 포함되어 있을 때의 정석 해법:<br/>&nbsp;&nbsp;주어진 근 $x = 1 + \\sqrt{2}$ 를 방정식의 $x$ 자리에 **직접 대입**한 뒤, $(\\text{유리수}) + (\\text{무리수})\\sqrt{2} = 0$ 으로 묶어 미지수를 구하고 인수분해합니다!`,
+          notes: `• 참고로 계수가 유리수일 때 허근 $p + qi$ 가 나오면 유리수는 실수에 포함되므로 당연히 $p - qi$ 도 켤레근이 됩니다! 하지만 **실수 계수(예: $\\sqrt{2}$ 계수)에서 무리수 근이 나올 때는 켤레근이 성립하지 않습니다**!`,
+          tapeTitle: `켤레근 허가증 확인: [유리수 a, b 조건 ➔ p ± q√m 사용 가능]  |  [실수 a, b 조건 ➔ p ± qi 만 사용 가능!]`,
+          tapeSegs: []
+        };
+      }
+      // trapParabolaMeetSegment
+      return {
+        badge: `탐구 6-E · 📐 포물선 y = x² - 2x + k 가 두 점 A(0, 1), B(3, 4)를 잇는 '선분 AB'와 만날 조건!`,
+        hint: `직선 전체가 아니라 **끊어진 선분 $AB$ ($0 \\le x \\le 3$ 구간에서의 직선 $y = x + 1$)** 와 포물선이 만날 때는, 차함수 $x^2 - 3x + (k - 1) = 0$ (즉 $x^2 - 3x + 1 = 2 - k$)이 $0 \\le x \\le 3$ 범위에서 실근을 가질 조건으로 풉니다!`,
+        actionTxt: state.fold > 0.5 ? '🎬 두 점에서 만나는 범위 보기' : '🎬 포물선을 상하로 밀며 접할 때(k=13/4)와 양끝점 통과 스캔!',
+        dim1Name: '접하는 순간 (최대 k)', dim2Name: '양 끝점 통과 (한 점 vs 두 점)',
+        val1Txt: 'D = 0 ➔ k = 13/4 (3.25)', val2Txt: 'A(0,1) 통과 k=1 / B(3,4) 통과 k=1',
+        parts: [
+          { id: 0, name: `🟡 선분 AB에 접하는 순간 (D = 0): x² - 3x + k - 1 = 0 에서 k = 13/4`, desc: `접점 x = 3/2 (1.5) 가 선분 범위 0 ≤ x ≤ 3 안에 들어오므로 유효!`, val: `최대 k = 13/4`, color: '#fbbf24', ok: true },
+          { id: 1, name: `🔵 양 끝점 A(0, 1)과 B(3, 4)를 지나는 순간: k = 1`, desc: `A(0,1) 대입 시 k=1, B(3,4) 대입 시 9-6+k=4 ➔ k=1!`, val: `최소 k = 1`, color: '#38bdf8', ok: true },
+          { id: 2, name: `🟢 결론: 선분 AB와 만나기 위한 범위는 1 ≤ k ≤ 13/4!`, desc: `(일반적인 점 A, B에서는 한 점에서 만나는 범위와 두 점에서 만나는 범위 구분!)`, val: `1 ≤ k ≤ 13/4 ⭕`, color: '#34d399', ok: true }
+        ],
+        totalRes: `선분 AB (y = x + 1, 0 ≤ x ≤ 3) 와 만날 조건 ➔ 1 ≤ k ≤ 13/4!`,
+        rule: '곡선과 "선분 AB"의 교점 문제 = 직선 AB 식을 세워 연립한 뒤, 제한된 범위(x_A ≤ x ≤ x_B)에서의 근의 분리로 푼다!',
+        formulaHTML: `• 선분 $AB$의 방정식은 $y = x + 1$ ($0 \\le x \\le 3$) 이므로 연립하면:<br/>&nbsp;&nbsp;${tex('x^2 - 2x + k = x + 1 \\iff \\mathbf{x^2 - 3x + 1 = 2 - k}\\; (0 \\le x \\le 3)')}<br/>• 좌변 그래프의 $[0, 3]$ 에서의 최솟값($x=\\frac{3}{2}$ 일 때 $-\\frac{5}{4}$)과 최댓값($x=0, 3$ 일 때 $1$) 사이에 $2 - k$ 가 있으면 만납니다!`,
+        notes: `• 미지수 $k$만 우변으로 넘겨 **고정된 그래프 $y = x^2 - 3x + 1$ ($0 \\le x \\le 3$) 과 수평선 $y = 2 - k$ 의 교점**으로 바꾸어 풀면 판별식·근의 분리를 따로 안 써도 10초 만에 풀립니다!`,
+        tapeTitle: `상수 분리 테크닉: x² - 3x + k - 1 = 0 ──▶ 고정 곡선(y = x² - 3x)과 수평선(y = 1 - k)의 교점으로 변환!`,
+        tapeSegs: []
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // 4. 메인 캔버스 렌더링 엔진 (모드 1 ~ 6 전체 30종 정밀 작도)
+    // -------------------------------------------------------------------------
+    function render() {
+      window.APBoardRel?.begin();
+      const rect = canvas.parentElement.getBoundingClientRect();
+      ctx.clearRect(0, 0, rect.width, rect.height);
+
+      const s = state.scale * (rect.width < 700 ? 0.82 : 1.05);
+      const unit = 38 * s;
+      const ox = rect.width * 0.45 + state.panX;
+      const oy = rect.height * 0.52 + state.panY;
+
+      drawCoordPlane(rect, ox, oy, unit);
+
+      const spec = getSpec();
+      ctx.save();
+      drawQuadFuncMasterScene(ox, oy, unit, state.fold, spec);
+      ctx.restore();
+
+      drawBottomTapeBanner(rect, spec.tapeTitle, spec.tapeSegs);
+      updateUI(spec);
+      window.APBoardRel?.finish();
+    }
+
+    function drawQuadFuncMasterScene(ox, oy, unit, t, spec) {
+      const m = state.mode;
+      const sub = state.subType[m];
+      const pPreset = P_PRESETS[state.pIdx].p;
+      const kPreset = K_PRESETS[state.kIdx].k;
+      const S = (mx, my) => toScreen(mx, my, ox, oy, unit);
+
+      // =====================================================================
+      // [모드 1] 이차함수와 직선의 위치관계 & 차함수 h(x) = f(x) - g(x) 수평 변환
+      // =====================================================================
+      if (m === 1) {
+        if (sub === 'diffFuncFlatten') {
+          // f(x) = x^2 - x - 2, g(x) = x + 1 -> 슬라이더 t에 따라 g(x)가 (1-t)(x+1)로 내려앉고 f(x)가 h(x)=x^2-2x-3으로 변형!
+          const fnCur = (x) => x * x - x - 2 - t * (x + 1);
+          const gnCur = (x) => (1 - t) * (x + 1);
+
+          // 원래 곡선 잔상
+          drawFuncCurve((x) => x * x - x - 2, -3.5, 4.5, ox, oy, unit, 'rgba(56, 189, 248, 0.30)', 2.0, [5, 4], 0);
+          drawFuncCurve((x) => x + 1, -4.5, 4.5, ox, oy, unit, 'rgba(52, 211, 153, 0.30)', 2.0, [5, 4], 0);
+
+          // 실시간 변환 곡선
+          drawFuncCurve(gnCur, -4.5, 4.5, ox, oy, unit, QCOL.green, 3.2, [], 1);
+          drawFuncCurve(fnCur, -3.5, 4.8, ox, oy, unit, QCOL.gold, 3.8, [], 1);
+
+          // 교점 x = -1, x = 3 수직 불변 가이드라인!
+          qline(S(-1, -4.5), S(-1, 5.5), QCOL.pink, 2.2, [5, 4], true, 2);
+          qline(S(3, -4.5), S(3, 5.5), QCOL.pink, 2.2, [5, 4], true, 2);
+
+          const pInt1 = S(-1, gnCur(-1)), pInt2 = S(3, gnCur(3));
+          qdot(pInt1, '교점 α = -1 (불변!)', QCOL.pink, -95, -14);
+          qdot(pInt2, '교점 β = 3 (불변!)', QCOL.pink, 12, -14);
+          const vX = 0.5 + 0.5 * t;
+          qdot(S(vX, fnCur(vX)), t > 0.8 ? '차함수 h(x)=(x+1)(x-3)' : 'f(x) ➔ h(x) 변환 중', QCOL.gold, 12, 20);
+        } else if (sub === 'tangentDiscriminant') {
+          drawFuncCurve((x) => x * x - x, -3.2, 4.2, ox, oy, unit, QCOL.cyan, 3.4, [], 0);
+          const curK = 1.5 - 2.5 * t; // t=1 일 때 k = -1 (접선!)
+          drawFuncCurve((x) => x + curK, -4.5, 4.5, ox, oy, unit, Math.abs(curK + 1) < 0.08 ? QCOL.gold : QCOL.pink, 3.4, [], 1);
+
+          // 접선 y = x - 1 기준 점선
+          drawFuncCurve((x) => x - 1, -4.5, 4.5, ox, oy, unit, 'rgba(251, 191, 36, 0.45)', 2.0, [5, 4], 1);
+          qdot(S(1, 0), '접점 (1, 0) [k=-1, D=0!]', QCOL.gold, 14, 18);
+        } else if (sub === 'chordLengthVieta') {
+          // y = 0.5x^2 - x - 1.5 와 y = 0.5x + 1 -> 교점 x = -1, x = 4 (가로차 5)
+          const fn = (x) => 0.4 * (x + 1) * (x - 4) + 0.5 * x + 1;
+          const gn = (x) => 0.5 * x + 1;
+          drawFuncCurve(fn, -3.2, 5.5, ox, oy, unit, QCOL.cyan, 3.2);
+          drawFuncCurve(gn, -4.5, 6.0, ox, oy, unit, QCOL.green, 2.8);
+
+          const pA = S(-1, 0.5), pB = S(4, 3.0), pH = S(4, 0.5);
+          qline(pA, pH, QCOL.gold, 3.4, [5, 4], true, 0);
+          qline(pH, pB, QCOL.cyan, 3.4, [5, 4], true, 1);
+          qline(pA, pB, QCOL.pink, 4.2, [], true, 2);
+
+          qdot(pA, 'A(α = -1)', QCOL.white, -55, -12);
+          qdot(pB, 'B(β = 4)', QCOL.white, 12, -12);
+          qdot(pH, '가로차 |α-β| = 5 ➔ 빗변 AB = √(1+m²)×5!', QCOL.gold, -60, 22);
+        } else if (sub === 'minDistMaxArea') {
+          const fn = (x) => 0.5 * x * x - x + 0.5;
+          drawFuncCurve(fn, -2.8, 4.8, ox, oy, unit, QCOL.cyan, 3.4);
+          // 직선 y = x - 3 과 평행한 접선 y = x - 1.5 (접점 x = 2, y = 0.5)
+          drawFuncCurve((x) => x - 3, -3.5, 5.5, ox, oy, unit, QCOL.green, 3.0);
+          const shiftK = -3 + 1.5 * Math.max(0.2, t);
+          drawFuncCurve((x) => x + shiftK, -3.5, 5.5, ox, oy, unit, QCOL.gold, 3.2, [6, 4], 0);
+
+          const pP = S(2, 0.5), pH = S(2.75, -0.25);
+          qline(pP, pH, QCOL.pink, 3.8, [], true, 1);
+          qdot(pP, '접점 P(2, 0.5) [최단거리 & 넓이 최대!]', QCOL.gold, -85, -16);
+          qdot(pH, 'H(⊥)', QCOL.pink, 12, 16);
+        } else {
+          // symmetryRootSum: 대칭축 x = 2 인 포물선과 수평선 y = k
+          const fn = (x) => 0.6 * (x - 2) * (x - 2) - 2.5;
+          drawFuncCurve(fn, -2.5, 6.5, ox, oy, unit, QCOL.cyan, 3.4);
+          qline(S(2, -4.5), S(2, 5.5), QCOL.gold, 2.8, [6, 4], true, 0);
+
+          const curY = -1.5 + 3.8 * t;
+          qline(S(-3, curY), S(7, curY), QCOL.pink, 3.2, [], false, 1);
+          const d = Math.sqrt((curY + 2.5) / 0.6);
+          qdot(S(2 - d, curY), 'α = 2 - d', QCOL.cyan, -55, -14);
+          qdot(S(2 + d, curY), 'β = 2 + d (합 α+β = 4 불변!)', QCOL.pink, 12, -14);
+          qdot(S(2, curY), '중점 x = 2', QCOL.gold, -28, 22);
+        }
+      }
+
+      // =====================================================================
+      // [모드 2] 제한된 범위에서 움직이는 대칭축 x = p vs 움직이는 구간 창문
+      // =====================================================================
+      else if (m === 2) {
+        if (sub === 'movingAxisMin' || sub === 'movingAxisMaxJump') {
+          drawIntervalWindow(0, 2, ox, oy, unit, '제한된 범위 [0 ≤ x ≤ 2]');
+          const curP = -1.2 + 4.4 * t;
+          const fn = (x) => 0.75 * (x - curP) * (x - curP) - 1.5;
+
+          // 구간 바깥은 점선, 구간 [0, 2] 안쪽은 굵은 네온 실선!
+          drawFuncCurve(fn, -4.5, 6.5, ox, oy, unit, 'rgba(148, 163, 184, 0.38)', 2.0, [5, 4]);
+          drawFuncCurve(fn, 0, 2, ox, oy, unit, QCOL.cyan, 4.5, [], 1);
+
+          // 대칭축 x = p 및 구간 정중앙 x = 1 표시
+          qline(S(curP, -4.5), S(curP, 5.5), QCOL.gold, 2.8, [6, 4], true, 1);
+          if (sub === 'movingAxisMaxJump') {
+            qline(S(1, -4.5), S(1, 5.5), QCOL.pink, 2.2, [3, 3]);
+          }
+
+          const xMinPt = curP < 0 ? 0 : curP <= 2 ? curP : 2;
+          const xMaxPt = curP <= 1 ? 2 : 0;
+          qdot(S(xMinPt, fn(xMinPt)), `최솟값 m (x=${fmtNum(xMinPt)})`, QCOL.gold, -35, 24, 6.5);
+          qdot(S(xMaxPt, fn(xMaxPt)), `최댓값 M (x=${xMaxPt}!)`, QCOL.red, 12, -14, 6.5);
+          qdot(S(curP, -3.8), `대칭축 x = p(${fmtNum(curP)})`, QCOL.gold, -35, 18);
+        } else if (sub === 'movingWindowInterval') {
+          const tWin = -1.0 + 4.0 * t;
+          drawIntervalWindow(tWin, tWin + 2, ox, oy, unit, `움직이는 창문 [${fmtNum(tWin)} ≤ x ≤ ${fmtNum(tWin + 2)}]`);
+          const fn = (x) => 0.75 * (x - 2) * (x - 2) - 1.5;
+
+          drawFuncCurve(fn, -3.5, 6.5, ox, oy, unit, 'rgba(148, 163, 184, 0.38)', 2.0, [5, 4]);
+          drawFuncCurve(fn, tWin, tWin + 2, ox, oy, unit, QCOL.gold, 4.5, [], 1);
+          qline(S(2, -4.5), S(2, 5.5), QCOL.cyan, 2.4, [5, 4]);
+
+          const xMinPt = tWin + 2 < 2 ? tWin + 2 : tWin <= 2 ? 2 : tWin;
+          qdot(S(xMinPt, fn(xMinPt)), `창문 내 최솟값 (x=${fmtNum(xMinPt)})`, QCOL.gold, 12, 22, 6.5);
+        } else if (sub === 'substitution2Stage') {
+          // 좌측: 1단계 t = (x-1)^2 - 1 (-1<=x<=2 -> -1<=t<=3) | 우측: 2단계 y = (t-2)^2 - 1 (-1<=t<=3)
+          const ox1 = ox - 165, ox2 = ox + 165, uSub = unit * 0.72;
+          drawIntervalWindow(-1, 2, ox1, oy, uSub, '1단계: -1 ≤ x ≤ 2');
+          drawFuncCurve((x) => 0.65 * ((x - 1) ** 2 - 1), -2.5, 3.8, ox1, oy, uSub, 'rgba(56,189,248,0.35)', 2.0, [4, 4]);
+          drawFuncCurve((x) => 0.65 * ((x - 1) ** 2 - 1), -1, 2, ox1, oy, uSub, QCOL.cyan, 4.0, [], 0);
+          qdot(toScreen(1, -0.65, ox1, oy, uSub), '최소 t = -1', QCOL.cyan, -25, 22);
+          qdot(toScreen(-1, 1.95, ox1, oy, uSub), '최대 t = 3', QCOL.cyan, -30, -14);
+
+          drawIntervalWindow(-1, 3, ox2, oy, uSub, '2단계 탄생 범위: -1 ≤ t ≤ 3!');
+          drawFuncCurve((tv) => 0.45 * ((tv - 2) ** 2 - 1), -2.2, 4.8, ox2, oy, uSub, 'rgba(251,191,36,0.35)', 2.0, [4, 4]);
+          drawFuncCurve((tv) => 0.45 * ((tv - 2) ** 2 - 1), -1, 3, ox2, oy, uSub, QCOL.gold, 4.0, [], 1);
+          qdot(toScreen(2, -0.45, ox2, oy, uSub), '최솟값 m = -1 (t=2)', QCOL.gold, -30, 22);
+          qdot(toScreen(-1, 3.6, ox2, oy, uSub), '최댓값 M = 8 (t=-1)', QCOL.red, -30, -14);
+        } else {
+          // inscribedRectParabola: y = -x^2 + 4x 내접 직사각형
+          const fn = (x) => -(x - 2) * (x - 2) + 4;
+          drawFuncCurve(fn, -1.2, 5.2, ox, oy, unit, QCOL.cyan, 3.4);
+          qline(S(2, -3.5), S(2, 5.0), QCOL.gold, 2.4, [5, 4], false, 0);
+
+          const tHalf = 0.5 + 0.5 * Math.sin(t * Math.PI) + (t > 0.8 ? 0.5 : 0); // t=1 일 때 tHalf=1.0
+          const hRect = 4 - tHalf * tHalf;
+          const pB = S(2 - tHalf, 0), pC = S(2 + tHalf, 0);
+          const pA = S(2 - tHalf, hRect), pD = S(2 + tHalf, hRect);
+
+          ctx.save();
+          ctx.fillStyle = 'rgba(52, 211, 153, 0.28)';
+          ctx.strokeStyle = QCOL.green;
+          ctx.lineWidth = 3.2;
+          ctx.beginPath();
+          ctx.moveTo(pA.x, pA.y); ctx.lineTo(pB.x, pB.y); ctx.lineTo(pC.x, pC.y); ctx.lineTo(pD.x, pD.y);
+          ctx.closePath();
+          ctx.fill(); ctx.stroke();
+          ctx.restore();
+
+          qdot(pD, `D(2+t, 4-t²) [t=1일 때 둘레 최대 10!]`, QCOL.gold, 12, -12);
+          qdot(S(2, 4), '꼭짓점 (2, 4)', QCOL.cyan, -30, -14);
+        }
+      }
+
+      // =====================================================================
+      // [모드 3] 절댓값 그래프 폴딩(|f|, f(|x|)) & 실근 개수 스캐너
+      // =====================================================================
+      else if (m === 3) {
+        if (sub === 'absWholeFold') {
+          const foldFactor = -1 + 2 * Math.max(0.15, t); // -1(접기 전) -> +1(접기 완료!)
+          // 원래 아랫부분 점선
+          drawFuncCurve((x) => 0.75 * ((x - 1) ** 2 - 4), -1, 3, ox, oy, unit, 'rgba(148, 163, 184, 0.4)', 2.0, [5, 4]);
+          // 바깥 날개 (+f(x))
+          drawFuncCurve((x) => 0.75 * ((x - 1) ** 2 - 4), -3.2, -1, ox, oy, unit, QCOL.cyan, 3.8, [], 0);
+          drawFuncCurve((x) => 0.75 * ((x - 1) ** 2 - 4), 3, 5.2, ox, oy, unit, QCOL.cyan, 3.8, [], 0);
+          // 접혀 올라오는 안쪽 봉우리 (-f(x))
+          drawFuncCurve((x) => foldFactor * 0.75 * (4 - (x - 1) ** 2), -1, 3, ox, oy, unit, QCOL.pink, 4.0, [], 1);
+
+          // 수평선 y = k 스캐너
+          const yScreen = kPreset * 0.75;
+          qline(S(-5, yScreen), S(7, yScreen), QCOL.gold, 3.2, [], true, 2);
+          qdot(S(1, foldFactor * 3.0), '접힌 봉우리 (1, 4): y = -(x²-2x-3)!', QCOL.pink, 14, -12);
+          qdot(S(-3.5, yScreen), `y = k (${kPreset})`, QCOL.gold, 0, -12);
+        } else if (sub === 'absXSymmetry') {
+          // y = x^2 - 2|x| - 3 (y축 데칼코마니)
+          drawFuncCurve((x) => 0.75 * (x * x - 2 * x - 3), -1.5, 0, ox, oy, unit, 'rgba(148, 163, 184, 0.32)', 1.8, [4, 4]);
+          drawFuncCurve((x) => 0.75 * (x * x - 2 * x - 3), 0, 4.5, ox, oy, unit, QCOL.cyan, 3.8, [], 0);
+          if (t > 0.05 || state.activePartIdx !== -1) {
+            drawFuncCurve((x) => 0.75 * (x * x + 2 * x - 3), -4.5 * Math.max(0.2, t), 0, ox, oy, unit, QCOL.pink, 3.8, [], 1);
+          }
+
+          qdot(S(0, -2.25), '꺾인 점 (0, -3) [k=-3 에서 교점 3개!]', QCOL.gold, 14, -8);
+          qdot(S(1, -3.0), '우측 꼭짓점 (1, -4)', QCOL.cyan, 12, 18);
+          qdot(S(-1, -3.0), '좌측 대칭 꼭짓점 (-1, -4)', QCOL.pink, -110, 18);
+        } else if (sub === 'absLineRotTangent') {
+          // y = |x^2 - 4| 와 정점 (-3, 0)을 지나는 직선 y = m(x + 3)
+          drawFuncCurve((x) => 0.75 * (x * x - 4), -4.2, -2, ox, oy, unit, QCOL.cyan, 3.5, [], 1);
+          drawFuncCurve((x) => 0.75 * (x * x - 4), 2, 4.2, ox, oy, unit, QCOL.cyan, 3.5, [], 1);
+          drawFuncCurve((x) => 0.75 * (4 - x * x), -2, 2, ox, oy, unit, QCOL.pink, 3.8, [], 0);
+
+          const mTan = 2 * (Math.sqrt(5) - 2); // 약 0.472
+          const curM = 0.2 + (mTan - 0.2) * Math.max(0.2, t);
+          drawFuncCurve((x) => 0.75 * curM * (x + 3), -4.2, 5.0, ox, oy, unit, QCOL.gold, 3.4, [], 0);
+
+          qdot(S(-3, 0), '정점 (-3, 0)', QCOL.gold, -25, 22);
+          qdot(S(-2, 0), '(-2, 0)', QCOL.white, -15, 20);
+          qdot(S(2, 0), '(2, 0)', QCOL.white, 10, 20);
+          qdot(S(-0.47, 0.75 * (4 - 0.47 ** 2)), '봉우리(-x²+4) 접점 (D=0 ➔ 교점 3개!)', QCOL.gold, 12, -14);
+        } else if (sub === 'absPiecewiseSplit') {
+          // 경계선 x = 1 기준 좌(y = x^2 - 2) + 우(y = (x-2)^2 - 2)
+          qline(S(1, -4.5), S(1, 5.5), QCOL.gold, 2.4, [6, 4], false, 2);
+          drawFuncCurve((x) => x * x - 2, -2.8, 1, ox, oy, unit, QCOL.pink, 3.8, [], 1);
+          drawFuncCurve((x) => (x - 2) * (x - 2) - 2, 1, 4.8, ox, oy, unit, QCOL.cyan, 3.8, [], 0);
+
+          qdot(S(1, -1), '경계점 (1, -1) [x=1 이어붙이기!]', QCOL.gold, 14, -10);
+          qdot(S(0, -2), '왼쪽 꼭짓점 (0, -2)', QCOL.pink, -95, 18);
+          qdot(S(2, -2), '오른쪽 꼭짓점 (2, -2)', QCOL.cyan, 12, 18);
+        } else {
+          // maxMinEnvelope: min(f, g) 아래쪽 테두리
+          const fn = (x) => -0.6 * (x - 1) * (x - 1) + 3.5;
+          const gn = (x) => 0.5 * x + 0.8;
+          drawFuncCurve(fn, -3.5, 5.2, ox, oy, unit, 'rgba(56, 189, 248, 0.38)', 2.2, [5, 4]);
+          drawFuncCurve(gn, -4.5, 5.5, ox, oy, unit, 'rgba(52, 211, 153, 0.38)', 2.2, [5, 4]);
+
+          const envFn = t > 0.6 ? (x) => Math.max(fn(x), gn(x)) : (x) => Math.min(fn(x), gn(x));
+          drawFuncCurve(envFn, -3.5, 5.2, ox, oy, unit, QCOL.gold, 4.5, [], 0);
+          qdot(S(2.43, gn(2.43)), t > 0.6 ? 'max(f, g) 위쪽 테두리' : 'min(f, g) 최댓값 교점!', QCOL.gold, 14, -12);
+        }
+      }
+
+      // =====================================================================
+      // [모드 4] 실근의 위치 (근의 분리: 함 · 판 · 축 마스터)
+      // =====================================================================
+      else if (m === 4) {
+        if (sub === 'sepBothGreater') {
+          qline(S(1, -4.5), S(1, 5.5), QCOL.green, 3.0, [6, 4], true, 0);
+          // 정상 곡선: 두 근이 모두 p = 1 보다 큰 포물선 (축 x = 3)
+          drawFuncCurve((x) => 0.7 * (x - 2) * (x - 4), -1.0, 6.2, ox, oy, unit, QCOL.gold, 3.8, [], 0);
+
+          // 반례 ①: f(1)>0, 축>1 이지만 D < 0 (허근!)
+          if (state.activePartIdx === 1 || t > 0.2) {
+            drawFuncCurve((x) => 0.7 * (x - 3) * (x - 3) + 1.2, -0.5, 6.0, ox, oy, unit, QCOL.red, 2.4, [5, 4], 1);
+            qdot(S(3, 1.2), '반례 ①: D<0 이면 실근 없음 ❌', QCOL.red, 12, -10);
+          }
+          // 반례 ②: f(1)>0, D>0 이지만 대칭축 < 1 (두 근이 왼쪽에 치우침!)
+          if (state.activePartIdx === 2 || t > 0.5) {
+            drawFuncCurve((x) => 0.7 * (x + 1) * (x + 3), -4.8, 1.8, ox, oy, unit, QCOL.pink, 2.4, [5, 4], 2);
+            qdot(S(-2, -0.7), '반례 ②: 축<1 이면 왼쪽에 생김 ❌', QCOL.pink, -75, 22);
+          }
+
+          qdot(S(1, 2.1), '① f(1) > 0 (경계 양수!)', QCOL.green, 12, -8);
+          qdot(S(3, -0.7), '② D ≥ 0 & ③ 대칭축(3) > 1 ⭕', QCOL.gold, 12, 18);
+        } else if (sub === 'sepBetweenOneShot') {
+          // 두 근 사이에 p = 1 이 있을 때: 오직 f(1) < 0 하나면 끝!
+          qline(S(1, -4.5), S(1, 5.5), QCOL.gold, 3.2, [6, 4], true, 0);
+          const axisShift = -0.8 + 2.2 * Math.sin(t * Math.PI * 2);
+          const fn = (x) => 0.55 * (x - (1 + axisShift)) ** 2 - 2.2;
+          drawFuncCurve(fn, -3.8, 6.2, ox, oy, unit, QCOL.cyan, 3.8, [], 0);
+
+          const f1 = fn(1);
+          qline(S(1, 0), S(1, f1), QCOL.pink, 4.5, [], true, 0);
+          qdot(S(1, f1), '오직 f(p) < 0 단 1개! (양옆 자동 관통 ⭕)', QCOL.gold, 14, 16, 6.5);
+        } else if (sub === 'sepInsideInterval') {
+          drawIntervalWindow(-1, 3, ox, oy, unit, '가두기 구간 (-1 < α ≤ β < 3)');
+          const fn = (x) => 0.85 * (x - 0.3) * (x - 2.1);
+          drawFuncCurve(fn, -2.5, 4.5, ox, oy, unit, QCOL.gold, 3.8, [], 1);
+
+          qdot(S(-1, fn(-1)), '① f(-1) > 0', QCOL.green, -65, -10);
+          qdot(S(3, fn(3)), '① f(3) > 0', QCOL.green, 12, -10);
+          qdot(S(1.2, fn(1.2)), '② D ≥ 0 & ③ -1 < 축(1.2) < 3', QCOL.gold, -45, 22);
+        } else if (sub === 'sepOneRootInInterval') {
+          drawIntervalWindow(-1, 2, ox, oy, unit, '구간 (-1, 2) 사이에 오직 1개의 실근');
+          const fn = (x) => 0.5 * (x - 0.5) * (x - 4.2);
+          drawFuncCurve(fn, -2.8, 5.5, ox, oy, unit, QCOL.gold, 3.8, [], 0);
+
+          qdot(S(-1, fn(-1)), 'f(-1) > 0 (+)', QCOL.cyan, -75, -10);
+          qdot(S(2, fn(2)), 'f(2) < 0 (-) ➔ 곱 f(-1)·f(2) < 0!', QCOL.pink, 14, 18);
+          qdot(S(0.5, 0), '유일한 교점 통과 ⭕', QCOL.gold, 10, -14);
+        } else {
+          // rootSignZero: 실근의 부호 판별 (기준점 p = 0 y축!)
+          qline(S(0, -4.5), S(0, 5.5), QCOL.gold, 3.2, [], true, 0);
+          drawFuncCurve((x) => 0.7 * (x - 1.2) * (x - 3.4), -1.2, 5.2, ox, oy, unit, QCOL.gold, 3.6, [], 0);
+          drawFuncCurve((x) => 0.5 * (x + 2.2) * (x - 1.8), -4.0, 3.8, ox, oy, unit, QCOL.pink, 3.0, [5, 4], 2);
+
+          qdot(S(0, 0.7 * 1.2 * 3.4), '두 양근: f(0)=c>0, D≥0, 축>0', QCOL.gold, 12, -10);
+          qdot(S(0, -0.5 * 2.2 * 1.8), '다른 부호: f(0)=c<0 (αβ<0) 단 1개!', QCOL.pink, 12, 16);
+        }
+      }
+
+      // =====================================================================
+      // [모드 5] 항상 성립하는 절대부등식(D < 0) & 제한된 범위 부등식
+      // =====================================================================
+      else if (m === 5) {
+        if (sub === 'alwaysPositiveAll') {
+          // a > 0, D < 0 (위에 붕 떠 있음) vs D > 0 반례
+          const lift = 1.5 - 3.0 * (1 - Math.max(0.25, t)); // t=1 일 때 +1.5 (공중부양 D<0!)
+          drawFuncCurve((x) => 0.6 * (x - 1) * (x - 1) + 1.4, -3.2, 5.2, ox, oy, unit, QCOL.green, 4.0, [], 0);
+          drawFuncCurve((x) => 0.6 * (x + 2.5) * (x + 2.5) - 1.5, -5.5, 0.5, ox, oy, unit, QCOL.red, 2.6, [5, 4], 2);
+
+          qdot(S(1, 1.4), '항상 f(x) > 0 성립: a > 0 이고 D < 0 (교점 0개 허근!)', QCOL.green, 12, -14);
+          qdot(S(-2.5, -1.5), 'D > 0 이면 음수 발생 ❌!', QCOL.red, -60, 22);
+        } else if (sub === 'restrictedIneqMinMax') {
+          drawIntervalWindow(0, 3, ox, oy, unit, '제한된 범위 [0 ≤ x ≤ 3] 에서만 성립하면 OK!');
+          // 구간 [0, 3]에서 f(x) >= 0 (최솟값 >= 0) vs 구간 [0, 3]에서 f(x) <= 0 (양끝점 <= 0)
+          drawFuncCurve((x) => 0.6 * (x - 1.5) * (x - 1.5) + 0.8, -2.5, 5.5, ox, oy, unit, QCOL.gold, 3.6, [], 0);
+          drawFuncCurve((x) => 0.45 * (x + 0.8) * (x - 4.2), -2.5, 5.8, ox, oy, unit, QCOL.pink, 3.6, [], 1);
+
+          qdot(S(1.5, 0.8), '[0,3]에서 f(x)≥0: 최솟값 ≥ 0', QCOL.gold, -45, -14);
+          qdot(S(0, -1.51), 'f(0) ≤ 0', QCOL.pink, -60, 14);
+          qdot(S(3, -2.16), '[0,3]에서 f(x)≤0: 양끝점 f(0)≤0 & f(3)≤0 이면 끝!', QCOL.pink, 12, 16);
+        } else if (sub === 'specialSol4Cases') {
+          // x = 2 에서 x축에 접하는 완전제곱 포물선 (D = 0)
+          drawFuncCurve((x) => 0.75 * (x - 2) * (x - 2), -2.0, 6.0, ox, oy, unit, QCOL.gold, 4.0, [], 0);
+          qdot(S(2, 0), '접점 x = 2 (D = 0) [(x-2)² ≤ 0 의 유일한 해!]', QCOL.gold, -60, 24, 7.0);
+        } else if (sub === 'integerCountBoundary') {
+          const curK = 3.15 + 0.7 * t;
+          const fn = (x) => 0.6 * (x - 1) * (x - curK);
+          drawFuncCurve(fn, -1.5, 6.0, ox, oy, unit, QCOL.cyan, 3.6, [], 0);
+
+          [1, 2, 3].forEach((n) => qdot(S(n, 0), `${n}(포함⭕)`, QCOL.gold, -15, 24));
+          qdot(S(4, 0), '4(제외❌)', QCOL.red, -10, 24);
+          qdot(S(curK, 0), `경계 k (3 ≤ k < 4)`, QCOL.pink, -20, -16);
+        } else {
+          // compIneqTransform: f(x) < 0 (-2 < x < 4) -> f(2x - 1) < 0 (-1/2 < x < 5/2)
+          drawFuncCurve((x) => 0.35 * (x + 2) * (x - 4), -3.8, 5.8, ox, oy, unit, 'rgba(56, 189, 248, 0.45)', 2.4, [5, 4], 0);
+          drawFuncCurve((x) => 0.35 * (2 * x - 1 + 2) * (2 * x - 1 - 4), -2.5, 4.5, ox, oy, unit, QCOL.gold, 3.8, [], 1);
+
+          qdot(S(-2, 0), '-2', QCOL.cyan, -10, 20);
+          qdot(S(4, 0), '4 (원래 해)', QCOL.cyan, 10, 20);
+          qdot(S(-0.5, 0), '-1/2', QCOL.gold, -20, -14);
+          qdot(S(2.5, 0), '5/2 (-2 < 2x-1 < 4 해!)', QCOL.gold, 12, -14);
+        }
+      }
+
+      // =====================================================================
+      // [모드 6] 고1 1등급 결정타 함정 연구소
+      // =====================================================================
+      else {
+        if (sub === 'trapLeadingZero') {
+          // k > 0 포물선 vs k = 0 수평 직선 y = 3 > 0!
+          drawFuncCurve((x) => 0.5 * (x - 1) * (x - 1) + 2.0, -3.5, 5.5, ox, oy, unit, QCOL.cyan, 3.2, [], 0);
+          qline(S(-6, 3), S(7, 3), QCOL.pink, 4.2, [], true, 1);
+          qdot(S(0, 3), 'k = 0 일 때: y = 3 > 0 (모든 실수에서 성립 ⭕!)', QCOL.pink, 14, -12);
+        } else if (sub === 'trapMaxLtMin') {
+          // 좌측: f(x) >= g(x) (같은 x 비교) | 우측: f(x1) >= g(x2) (f의 최솟값 >= g의 최댓값)
+          const fn = (x) => 0.6 * (x + 2) * (x + 2) + 1.5;
+          const gn = (x) => -0.6 * (x - 2.5) * (x - 2.5) + 1.0;
+          drawFuncCurve(fn, -5.2, 1.2, ox, oy, unit, QCOL.cyan, 3.6, [], 0);
+          drawFuncCurve(gn, -0.8, 5.8, ox, oy, unit, QCOL.pink, 3.6, [], 1);
+
+          qline(S(-6, 1.25), S(7, 1.25), QCOL.gold, 2.8, [6, 4], true, 1);
+          qdot(S(-2, 1.5), 'f의 최솟값 (1.5)', QCOL.cyan, -40, -14);
+          qdot(S(2.5, 1.0), 'g의 최댓값 (1.0) [min(f) ≥ max(g)!]', QCOL.pink, -40, 22);
+        } else if (sub === 'trapKIndepDoubleRoot') {
+          // k값이 변해도 항상 x축에 접하며 이동하는 포물선 다발
+          [-2, 0, 2].forEach((kv, idx) => {
+            drawFuncCurve((x) => 0.65 * (x - (kv + 1)) ** 2, kv - 2.2, kv + 4.2, ox, oy, unit, idx === 1 ? QCOL.gold : 'rgba(56, 189, 248, 0.45)', idx === 1 ? 3.8 : 2.2);
+            qdot(S(kv + 1, 0), `k=${kv} 중근`, QCOL.gold, -15, 22);
+          });
+        } else if (sub === 'trapIrrationalCoeffs') {
+          // (x - (1+√2))(x + 1) = 0 -> 근이 x = -1 과 x = 2.414 (1-√2 가 아님!)
+          const r1 = -1, r2 = 1 + Math.sqrt(2);
+          drawFuncCurve((x) => 0.6 * (x - r1) * (x - r2), -3.2, 4.8, ox, oy, unit, QCOL.red, 3.6, [], 1);
+          qdot(S(r2, 0), '한 근 1 + √2', QCOL.gold, 10, -14);
+          qdot(S(r1, 0), '다른 근 = -1 (1-√2 아님 ❌!)', QCOL.red, -85, -14);
+        } else {
+          // trapParabolaMeetSegment: 선분 AB (0,1)~(3,4) 와 포물선 y = x^2 - 2x + k
+          const pA = S(0, 1), pB = S(3, 4);
+          qline(pA, pB, QCOL.green, 4.5, [], true, 2);
+          const curK = 1.0 + 2.25 * t; // k=1 (양끝 통과) ~ k=3.25 (접함!)
+          drawFuncCurve((x) => x * x - 2 * x + curK, -2.2, 4.5, ox, oy, unit, QCOL.gold, 3.6, [], 0);
+
+          qdot(pA, '끝점 A(0, 1) [k=1]', QCOL.green, -85, 6);
+          qdot(pB, '끝점 B(3, 4) [k=1]', QCOL.green, 12, -8);
+          qdot(S(1.5, 2.5), '접점 (1.5, 2.5) [최대 k = 13/4!]', QCOL.gold, 14, 16);
+        }
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. UI 동기화 및 인터랙티브 컨트롤러
+    // -------------------------------------------------------------------------
+    function renderSubBar() {
+      const m = state.mode;
+      const bar = document.getElementById('subSelectorBar');
+      bar.innerHTML = SUB_MENUS[m]
+        .map(
+          (it) =>
+            `<button onclick="setSubType(${m}, '${it.id}')" class="sub-pill ${
+              state.subType[m] === it.id ? 'active' : 'bg-emerald-950/80 text-emerald-100 hover:bg-emerald-900'
+            } px-2.5 py-1 rounded-lg border border-emerald-800 text-[11px] transition">${it.label}</button>`
+        )
+        .join('');
+    }
+
+    function renderPresetChips() {
+      document.getElementById('rBtnGroup').innerHTML = P_PRESETS.map(
+        (po, idx) =>
+          `<button onclick="setPIdx(${idx})" class="preset-chip ${
+            state.pIdx === idx ? 'active' : 'bg-emerald-950/80 text-emerald-200 hover:bg-emerald-900 border-emerald-800'
+          } py-1 rounded border text-[10.5px] transition">${po.label}</button>`
+      ).join('');
+
+      document.getElementById('hBtnGroup').innerHTML = K_PRESETS.map(
+        (ko, idx) =>
+          `<button onclick="setKIdx(${idx})" class="preset-chip ${
+            state.kIdx === idx ? 'active' : 'bg-emerald-950/80 text-emerald-200 hover:bg-emerald-900 border-emerald-800'
+          } py-1 rounded border text-[10.5px] transition">${ko.label}</button>`
+      ).join('');
+    }
+
+    function updateUI(spec) {
+      document.getElementById('canvasModeBadge').textContent = spec.badge;
+      document.getElementById('canvasActionHint').innerHTML = spec.hint;
+      document.getElementById('txtFoldToggle').textContent = spec.actionTxt;
+
+      document.getElementById('dim1Label').textContent = spec.dim1Name;
+      document.getElementById('dim2Label').textContent = spec.dim2Name;
+      document.getElementById('valR').textContent = spec.val1Txt;
+      document.getElementById('valH').textContent = spec.val2Txt;
+
+      document.getElementById('sliderFold').value = state.fold;
+      document.getElementById('valFold').textContent = `${Math.round(state.fold * 100)}%`;
+
+      const partsBox = document.getElementById('partsBox');
+      partsBox.innerHTML = spec.parts
+        .map((p) => {
+          const isSelected = state.activePartIdx === p.id;
+          const badgeCls = p.ok
+            ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+            : 'bg-rose-500/20 text-rose-300 border-rose-500/40';
+          return `
+            <div onclick="togglePartHighlight(${p.id})" class="part-card ${
+              isSelected ? 'active' : 'bg-[#07130e]/90 border-emerald-800/70'
+            } p-2.5 rounded-lg border flex items-center justify-between gap-2">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-3 h-3 rounded-full shrink-0" style="background:${p.color}"></span>
+                <div class="truncate">
+                  <div class="text-xs font-bold text-emerald-50 truncate">${p.name}</div>
+                  <div class="text-[10.5px] text-emerald-400/85 truncate">${p.desc}</div>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded border text-xs font-mono font-extrabold shrink-0 ${badgeCls}">${p.val}</span>
+            </div>
+          `;
+        })
+        .join('');
+
+      document.getElementById('totalResultBadge').textContent = spec.totalRes;
+      document.getElementById('ruleBadge').textContent = spec.rule;
+      document.getElementById('formulaBox').innerHTML = spec.formulaHTML;
+      document.getElementById('intuitionNotes').innerHTML = spec.notes;
+
+      renderPresetChips();
+    }
+
+    function togglePartHighlight(idx) {
+      state.activePartIdx = state.activePartIdx === idx ? -1 : idx;
+      render();
+    }
+
+    function cyclePartHighlight() {
+      const spec = getSpec();
+      const maxLen = spec.parts.length;
+      state.activePartIdx = state.activePartIdx + 1 >= maxLen ? -1 : state.activePartIdx + 1;
+      render();
+    }
+
+    function setConceptSwitch(sw) {
+      state.conceptSwitch = sw;
+      ['all', 'axis', 'roots', 'aux'].forEach((id) => {
+        document.getElementById(`sw-${id}`).classList.toggle('active', id === sw);
+      });
+      render();
+    }
+
+    function setMode(m) {
+      state.mode = m;
+      state.activePartIdx = -1;
+      for (let i = 1; i <= 6; i++) {
+        document.getElementById(`tab-${i}`).classList.toggle('active', i === m);
+      }
+      state.fold = 0.0;
+      state.foldTarget = 1.0;
+      renderSubBar();
+      render();
+    }
+
+    function setSubType(mode, subId) {
+      state.subType[mode] = subId;
+      state.activePartIdx = -1;
+      state.fold = 0.0;
+      state.foldTarget = 1.0;
+      renderSubBar();
+      render();
+    }
+
+    function setPIdx(idx) {
+      state.pIdx = idx;
+      const targetMap = [0.05, 0.41, 0.59, 0.95];
+      state.foldTarget = targetMap[idx];
+      render();
+    }
+
+    function setKIdx(idx) {
+      state.kIdx = idx;
+      render();
+    }
+
+    function setFoldVal(val) {
+      state.foldTarget = val;
+    }
+
+    function onFoldSlider() {
+      state.foldTarget = null;
+      state.fold = parseFloat(document.getElementById('sliderFold').value);
+      render();
+    }
+
+    function toggleFoldAnim() {
+      state.foldTarget = state.fold > 0.5 ? 0.0 : 1.0;
+    }
+
+    function zoomCanvas(factor) {
+      state.scale = Math.max(0.65, Math.min(1.85, state.scale * factor));
+      render();
+    }
+
+    function resetView() {
+      state.scale = 1.0;
+      state.panX = 0;
+      state.panY = 0;
+      state.activePartIdx = -1;
+      state.fold = 0.0;
+      state.foldTarget = 1.0;
+      setConceptSwitch('all');
+      render();
+    }
+
+    function animateLoop() {
+      let dirty = false;
+      if (state.foldTarget !== null) {
+        const diff = state.foldTarget - state.fold;
+        if (Math.abs(diff) < 0.008) {
+          state.fold = state.foldTarget;
+          state.foldTarget = null;
+        } else {
+          state.fold += diff * 0.075;
+        }
+        dirty = true;
+      }
+      if (dirty) render();
+      requestAnimationFrame(animateLoop);
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. 마우스 / 터치 캔버스 드래그 & 클릭 시연 토글
+    // -------------------------------------------------------------------------
+    function getPointerPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+      }
+      return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+    }
+
+    canvas.addEventListener('mousedown', (e) => {
+      state.isDragging = true;
+      state.dragMoved = false;
+      state.lastMouse = getPointerPos(e);
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!state.isDragging) return;
+      const pos = getPointerPos(e);
+      const dx = pos.x - state.lastMouse.x;
+      const dy = pos.y - state.lastMouse.y;
+      if (Math.hypot(dx, dy) > 4) state.dragMoved = true;
+      state.panX += dx;
+      state.panY += dy;
+      state.lastMouse = pos;
+      render();
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (state.isDragging && !state.dragMoved) {
+        toggleFoldAnim();
+      }
+      state.isDragging = false;
+    });
+
+    canvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length !== 1) return;
+      const t = e.touches[0];
+      canvas.dispatchEvent(new MouseEvent('mousedown', { clientX: t.clientX, clientY: t.clientY, bubbles: true }));
+    }, { passive: true });
+
+    canvas.addEventListener('touchmove', (e) => {
+      if (e.touches.length !== 1) return;
+      const t = e.touches[0];
+      window.dispatchEvent(new MouseEvent('mousemove', { clientX: t.clientX, clientY: t.clientY, bubbles: true }));
+    }, { passive: true });
+
+    canvas.addEventListener('touchend', () => {
+      window.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+    });
+
+    canvas.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      zoomCanvas(e.deltaY < 0 ? 1.09 : 0.92);
+    }, { passive: false });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setMode(1);
+      resizeCanvas();
+      requestAnimationFrame(animateLoop);
+    });
+  </script>
+
+  <script id="ap-mobile-adapter">
+  (function(){
+    const board = document.querySelector('main');
+    if (!board) return;
+    const items = Array.from(board.children);
+    const top = items.find(el => el.tagName==='DIV' && el.classList.contains('absolute') && Array.from(el.classList).some(c=>c.startsWith('top-')));
+    const tools = items.find(el => el.tagName==='DIV' && el.classList.contains('absolute') && Array.from(el.classList).some(c=>c.startsWith('bottom-')) && Array.from(el.classList).some(c=>c.startsWith('left-')));
+    if (!top || !tools) return;
+    top.classList.add('ap-mobile-top'); tools.classList.add('ap-mobile-tools');
+    let wasMobile=null;
+    function arrange(){
+      const mobile=window.innerWidth<1024;
+      if (mobile===wasMobile) return;
+      wasMobile=mobile;
+      if(mobile){board.before(top);board.after(tools)}
+      else {board.appendChild(top);board.appendChild(tools)}
+      requestAnimationFrame(()=>{
+        if (typeof window.resizeCanvas === 'function') {
+          try {window.resizeCanvas()}catch(e){console.warn('Canvas resize:',e.message)}
+        }
+      });
+    }
+    arrange();
+    window.addEventListener('resize',arrange,{passive:true});
+  })();
+  </script>
+
+  <script>
+  window.APBoardRelHost={
+    getState:()=>state,
+    render:()=>render(),
+    project:(x,y)=>({x,y,depth:0})
+  };
+  </script>
+  <script src="../../assets/board-relations.js" data-board-mode="plane"></script>
+  <script src="../../assets/geometry-relations.js" data-mode="plane"></script>
+  <script defer src="../../assets/student-guide.js"></script>
+</body>
+</html>

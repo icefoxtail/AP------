@@ -1,0 +1,1781 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>단위원과 파형 · 연동 탐구 실험실</title>
+<link rel="stylesheet" href="./unit-circle-katex/katex.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css'">
+<style>
+:root{color-scheme:dark;--bg:#07130e;--panel:#0d2119;--line:#315640;--muted:#a4c0ae;--sin:#6cd5bd;--cos:#ffc96e;--tan:#f18c82;--accent:#b9e77b;--white:#f4f7ef}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 48% -25%,#1b4933,#0a1a12 46%,var(--bg) 82%);color:var(--white);font-family:Inter,"Pretendard","Noto Sans KR",system-ui,sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer;color:inherit}
+header{max-width:1540px;margin:auto;padding:18px 28px 12px;display:flex;align-items:end;justify-content:space-between;gap:20px}
+.eyebrow{color:var(--accent);font-size:11px;letter-spacing:.16em;font-weight:800}
+.title{font-size:clamp(22px,2.4vw,34px);line-height:1.15;margin:4px 0;letter-spacing:-.04em}
+.sub{margin:0;color:#b8cbbb;font-size:14px;line-height:1.45}
+.header-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.brand{border:1px solid #47745a;background:#143224;padding:7px 12px;border-radius:999px;color:#c9e4c7;font-size:12px;white-space:nowrap}
+.app{max-width:1540px;margin:auto;padding:0 24px 28px}
+.stage{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.visual{background:linear-gradient(145deg,#10261d,#091811);border:1px solid #315640;border-radius:20px;box-shadow:0 18px 48px #0005;overflow:hidden;min-width:0}
+.visual-head{height:50px;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #244a37}
+.visual-head h2{font-size:16px;margin:0}
+.visual-head small{color:var(--muted);font-size:12px}
+.legend{display:flex;gap:12px;font-size:12px;color:#cad8ca}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px}
+/* 한 화면에 캔버스와 컨트롤이 모두 들어오도록 높이 최적화 */
+.canvas-wrap{position:relative;width:100%;min-height:clamp(370px,47vh,530px);aspect-ratio:1.52;background:radial-gradient(ellipse at center,#11291f,#08160f 80%)}
+canvas{display:block;width:100%;height:100%;touch-action:none;position:relative;z-index:1;cursor:grab}
+canvas:active{cursor:grabbing}
+.math-overlay{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.math-label{position:absolute;white-space:nowrap;transform:translate(-50%,-50%);color:#f0f5e8;text-shadow:0 1px 3px #000;background:#0a1a12e8;border:1px solid #385a42;border-radius:5px;padding:1px 4px;line-height:1.2}
+.math-label .katex{font-size:14px}
+.math-label.math-axis{background:#07130ee8;border-color:#557053;padding:2px 4px}
+.math-label.math-landmark{background:#0b1a13d9;border:0;color:#d0e0cb;padding:1px 3px}
+.math-label.math-landmark.selected{background:#d1ec9a;color:#102017;border:1px solid #d1ec9a;font-weight:800}
+.math-label.math-point{font-size:15px;background:#06130ef2;border-color:#a4d76b;padding:4px 7px;border-radius:8px}
+.math-label.math-point .katex{font-size:16px}
+.math-label.math-guide{font-size:12px;background:#0a1a12ef}
+.math-note{font:11px system-ui,sans-serif;margin-left:4px;color:#c3d8bd}
+.math-label.math-angle{background:#d1ec9a;color:#102017;border-color:#d1ec9a;font-weight:800}
+.quad-badge{position:absolute;top:11px;left:13px;z-index:3;pointer-events:none;background:#07130edd;border:1px solid #355942;border-radius:9px;padding:5px 9px;font-size:11px;color:#d2e4d3;display:flex;gap:8px;align-items:center}
+.quad-badge b{color:var(--accent)}
+.sign-pill{padding:1px 5px;border-radius:4px;font-weight:700;font-size:10px}
+.canvas-hint{position:absolute;bottom:10px;left:13px;z-index:3;font-size:11px;color:#9bb5a2;pointer-events:none;background:#07130ebb;padding:4px 8px;border-radius:7px}
+.controls{margin-top:13px;display:grid;grid-template-columns:1.15fr 1fr 1.15fr;gap:12px}
+.card{border:1px solid #2c523d;border-radius:16px;background:linear-gradient(145deg,#10251b,#0b1b13);padding:14px 16px;box-shadow:0 10px 28px #0003;min-width:0}
+.card h3{font-size:14px;margin:0 0 10px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.tag{font-size:10px;color:#c0d8c4;background:#1a3b2b;border-radius:999px;padding:3px 8px;font-weight:700}
+.seg,.button-row,.functions,.domain-row,.krow,.row,.sp-controls,.toggle-bar{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.seg button,.chip,.icon-btn,.special button{border:1px solid #355740;background:#12291e;color:#d3e1d4;border-radius:9px;padding:7px 10px;font-size:12px;transition:.15s}
+.seg button:hover,.chip:hover,.icon-btn:hover,.special button:hover{border-color:#689b78}
+.seg{width:100%}
+.seg button{flex:1}
+.seg button.active,.chip.active,.special button.active{background:#d1ec9a;color:#102017;border-color:#d1ec9a;font-weight:800}
+.row{margin-top:9px}
+.row label,.krow label{font-size:12px;color:#d4e1d5}
+.row input[type=range]{min-width:70px;flex:1;accent-color:var(--accent)}
+.angle-readout{font-size:11px;color:#d1ec9a;min-width:128px;text-align:right;font-weight:600}
+.special{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+.special button{padding:5px 2px;font-size:11px}
+.sp-controls{justify-content:space-between;margin:8px 0 6px}
+.muted,.help{font-size:11px;color:#9db6a3}
+.help{line-height:1.5;margin:8px 0 0}
+.coord-toggle-row{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.all-coordinates{margin-top:7px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;max-height:190px;overflow:auto}
+.all-coordinates.hidden{display:none!important}
+.coord-cell{border:1px solid #2c503b;border-radius:8px;background:#0d2017;padding:5px;color:#c8dbc9;font-size:11px;text-align:center}
+.coord-cell .katex{font-size:12px}
+.exact-card{margin-top:9px;border-radius:11px;background:#142f22;border:1px solid #3b6647;padding:10px 12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;min-height:164px}
+.exact-line{font-size:11px;color:#c9dacb}
+.exact-line b{display:block;color:#f5f7ec;font-size:15px;margin-top:2px;font-weight:650}
+.exact-line.full{grid-column:1/-1;border-top:1px solid #31533d;padding-top:7px}
+.fun{border:1px solid #355740;background:#11271d;padding:7px 10px;border-radius:10px;font-size:12px;cursor:pointer}
+.fun input{vertical-align:-2px;margin:0 6px 0 0}
+.fun[data-f="sin"] b{color:var(--sin)}
+.fun[data-f="cos"] b{color:var(--cos)}
+.fun[data-f="tan"] b{color:var(--tan)}
+.mode-settings{margin-top:10px;padding-top:10px;border-top:1px solid #274936}
+.k-subcontrols{transition:opacity .2s}
+.k-subcontrols.inactive-sub{opacity:.42}
+.kpreset{position:relative}
+.k-current{display:flex;align-items:center;gap:10px;min-width:86px;justify-content:space-between}
+.k-menu{position:absolute;z-index:10;top:calc(100% + 5px);left:0;min-width:150px;max-height:240px;overflow:auto;padding:6px;border:1px solid #4b7052;border-radius:12px;background:#0b1b13;box-shadow:0 12px 28px #0009;display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.k-menu.hidden{display:none!important}
+.k-menu button{border:1px solid transparent;background:#10251b;border-radius:8px;min-height:32px;color:#e5f1df}
+.k-menu button:hover,.k-menu button.active{background:#d1ec9a;color:#102017}
+.k-menu .katex{font-size:13px}
+.k-read{margin-left:auto;color:var(--accent);font-weight:700;font-size:12px}
+.separation{display:flex;gap:8px;align-items:start;border:1px solid #324f39;background:#12251a;padding:7px 9px;border-radius:9px;margin-top:8px;color:#c5d5c3;font-size:11px;line-height:1.4}
+.separation input{margin:2px 0 0;accent-color:var(--accent)}
+.result{margin-top:12px;border-radius:15px;background:#0b1b13;border:1px solid #294934;padding:12px 16px;display:grid;grid-template-columns:minmax(220px,.85fr) 2fr;gap:14px;align-items:center}
+.result h3{font-size:14px;margin:0 0 3px}
+.result p{font-size:11px;color:#a3b7a5;margin:0;line-height:1.45}
+.roots{display:flex;gap:7px;flex-wrap:wrap;max-height:92px;overflow:auto}
+.root-chip .katex{font-size:13px}
+.special-math .katex{font-size:12px}
+.math-inline .katex{font-size:13px}
+.root-chip{border:1px solid #436b49;background:#173322;color:#e0f0d6;border-radius:999px;padding:5px 10px;font-family:"Cambria Math","Times New Roman",serif;font-size:12px;transition:.15s}
+button.root-chip:hover{transform:translateY(-1px);border-color:#a5d678;background:#1e422c}
+.root-chip.selected-root{border-color:#d1ec9a;background:#244b31;box-shadow:0 0 0 1px #d1ec9a}
+.status{margin-top:6px;min-height:15px;color:#b4c9b6;font-size:11px;text-align:right}
+.footer{max-width:1540px;padding:0 24px 18px;margin:auto;color:#77917e;font-size:10px;text-align:right}
+.hidden{display:none!important}
+@media(max-width:960px){
+  .controls{grid-template-columns:1fr 1fr}
+  .controls .card:last-child{grid-column:1/-1}
+  .stage{grid-template-columns:1fr}
+  .canvas-wrap{min-height:400px;aspect-ratio:1.45}
+  header{align-items:start;flex-direction:column;padding:16px}
+  .app{padding:0 14px 24px}
+  .result{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .controls{grid-template-columns:1fr}
+  .controls .card:last-child{grid-column:auto}
+  .canvas-wrap{min-height:330px;aspect-ratio:1.15}
+  .brand{display:none}
+  .visual-head{padding:8px 12px}
+  .visual-head h2{font-size:14px}
+  .legend{gap:6px;font-size:10px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="eyebrow">UNIT CIRCLE × WAVE LAB</div>
+    <h1 class="title">한 점의 움직임이 세 함수가 되는 순간</h1>
+    <p class="sub">단위원의 직각삼각형 좌표(cos 밑변, sin 높이, tan 접선)와 파형을 나란히 조작하며 연결을 발견해 보세요.</p>
+  </div>
+  <div class="header-tools">
+    <button id="toggleDeg" type="button" class="chip active" title="라디안과 육십분법(°)을 함께 표시합니다">각도(°) 병기 ON</button>
+    <button id="toggleApprox" type="button" class="chip active" title="연속 탐구 모드에서도 소수점 근삿값을 표시합니다">연속 근삿값 ON</button>
+    <button id="toggleSnap" type="button" class="chip active" title="원 위에서 드래그할 때 특수각 근처에서 자석처럼 스냅됩니다">특수각 자석 ON</button>
+    <div class="brand">단위원 연동 탐구 · 개선판</div>
+  </div>
+</header>
+
+<main class="app">
+  <section class="stage" aria-label="단위원과 삼각함수 그래프">
+    <article class="visual">
+      <div class="visual-head">
+        <h2>01 · 단위원에서 직각삼각형과 좌표 읽기</h2>
+        <div class="legend">
+          <span><i class="dot" style="background:var(--cos)"></i>cos 가로(x)</span>
+          <span><i class="dot" style="background:var(--sin)"></i>sin 높이(y)</span>
+          <span><i class="dot" style="background:var(--tan)"></i>tan 기울기</span>
+        </div>
+      </div>
+      <div class="canvas-wrap">
+        <div id="quadBadge" class="quad-badge" aria-live="polite"></div>
+        <canvas id="circle" aria-label="각도에 따른 단위원 점과 좌표"></canvas>
+        <div id="circleMath" class="math-overlay" aria-hidden="true"></div>
+        <div class="canvas-hint">점 P를 끌거나 원 둘레의 특수각 점을 클릭해 보세요</div>
+      </div>
+    </article>
+
+    <article class="visual">
+      <div class="visual-head">
+        <h2>02 · 좌표가 파형으로 이어지기</h2>
+        <small id="graphRangeHeader"></small>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="graph" aria-label="sin cos tan 공통 그래프"></canvas>
+        <div id="graphMath" class="math-overlay" aria-hidden="true"></div>
+        <div id="graphHint" class="canvas-hint">빈 곳을 끌어 좌우 이동 · 휠 확대 · 점선(θ) 또는 수평선(k) 끌기</div>
+      </div>
+    </article>
+  </section>
+
+  <section class="controls">
+    <article class="card">
+      <h3>두 가지 각도 탐구 <span class="tag">같은 점 · 같은 파형</span></h3>
+      <div class="seg">
+        <button id="continuousMode" class="active">연속 탐구</button>
+        <button id="specialMode">특수각 탐구</button>
+      </div>
+      <div id="continuousControls">
+        <div class="row">
+          <label for="thetaSlider">각도 이동</label>
+          <input id="thetaSlider" type="range" min="-6.283185307179586" max="12.566370614359172" step="0.001" value="0.7853981633974483">
+          <span id="angleReadout" class="angle-readout"></span>
+        </div>
+        <div class="row">
+          <button id="play" class="icon-btn">▶ 재생</button>
+          <button id="stop" class="icon-btn">■ 정지</button>
+          <span class="muted">원 둘레 특수각 클릭 시 즉시 스냅</span>
+        </div>
+        <div id="approxCard" class="exact-card"></div>
+      </div>
+      <div id="specialControls" class="hidden">
+        <div class="sp-controls">
+          <span class="muted">선택한 특수각에 정확히 멈춥니다</span>
+          <div>
+            <button id="prevSpecial" class="icon-btn">← 이전</button>
+            <button id="nextSpecial" class="icon-btn">다음 →</button>
+          </div>
+        </div>
+        <div id="specialAngles" class="special"></div>
+        <div class="coord-toggle-row">
+          <button id="allCoordinatesToggle" type="button" class="chip" aria-expanded="false">특수각 좌표 모두 보기</button>
+        </div>
+        <div id="allCoordinates" class="all-coordinates hidden"></div>
+        <div id="exactCard" class="exact-card"></div>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3>파형 고르기 <span class="tag">각각 독립 선택</span></h3>
+      <div class="functions">
+        <label class="fun" data-f="sin"><input type="checkbox" id="fnSin" checked><b>sin</b> 사인</label>
+        <label class="fun" data-f="cos"><input type="checkbox" id="fnCos" checked><b>cos</b> 코사인</label>
+        <label class="fun" data-f="tan"><input type="checkbox" id="fnTan" checked><b>tan</b> 탄젠트</label>
+      </div>
+      <p class="help">여러 함수를 켜도 해는 함수별 색으로 따로 표시됩니다. 자동으로 공통해라 가정하지 않습니다.</p>
+      <div class="mode-settings">
+        <div class="seg">
+          <button class="active" data-mode="motion">기본형</button>
+          <button data-mode="equation">방정식</button>
+          <button data-mode="inequality">부등식</button>
+        </div>
+        <div id="kSubControls" class="k-subcontrols inactive-sub">
+          <div class="krow" style="margin-top:10px">
+            <label for="kPresetButton">기준값 k</label>
+            <input id="kPreset" type="hidden" value="1">
+            <div class="kpreset">
+              <button id="kPresetButton" class="chip k-current" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span id="kPresetCurrent"></span><span aria-hidden="true">⌄</span>
+              </button>
+              <div id="kPresetMenu" class="k-menu hidden" role="listbox"></div>
+            </div>
+            <span id="kRead" class="k-read"></span>
+          </div>
+          <div class="row">
+            <label for="kSlider">수평선 높이</label>
+            <input id="kSlider" type="range" min="-2.5" max="2.5" step="0.001" value="0.5">
+          </div>
+          <div class="domain-row" style="margin-top:8px">
+            <span class="muted">해의 정의역</span>
+            <button id="domainOne" class="chip active" data-domain="one"></button>
+            <button class="chip" data-domain="view">현재 보이는 범위</button>
+          </div>
+          <div class="separation">
+            <input id="commonSolutions" type="checkbox">
+            <label for="commonSolutions">공통해도 함께 표시 <span class="muted">(선택 함수 모두의 공통 각)</span></label>
+          </div>
+        </div>
+        <p id="modeHelp" class="help">원점부터 가로 밑변이 cos θ(x좌표), 수직 높이가 sin θ(y좌표), x=1 접선의 높이가 tan θ를 보여줍니다.</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3 id="taskTitle">관찰할 관계</h3>
+      <div id="equationControls" class="hidden">
+        <p class="help" style="margin:0 0 8px">각 파형과 y = k의 교점이 해예요. 단위원에서는 sin은 수평선(y=k), cos는 수직선(x=k), tan은 x = 1 접선과 만나 확인합니다.</p>
+      </div>
+      <div id="inequalityControls" class="hidden">
+        <p class="help" style="margin:0 0 8px">부등호를 고르면 y = k보다 위·아래의 곡선 구간과 단위원의 대응 호를 강조합니다. 경계는 열린 점·닫힌 점으로 구분합니다.</p>
+      </div>
+      <div id="operatorRow" class="button-row hidden" style="margin-bottom:8px">
+        <button class="chip active" data-op="gt">&gt;</button>
+        <button class="chip" data-op="ge">≥</button>
+        <button class="chip" data-op="lt">&lt;</button>
+        <button class="chip" data-op="le">≤</button>
+      </div>
+      <div id="scopeReadout" class="help">현재 정의역: [0, 2π)</div>
+      <div class="help" style="margin-top:10px">
+        그래프 보기 
+        <button id="zoomIn" class="icon-btn">＋ 확대</button>
+        <button id="zoomOut" class="icon-btn">－ 축소</button>
+        <button id="resetView" class="icon-btn">원래 보기</button>
+      </div>
+      <div class="separation" style="margin-top:12px">
+        <div>
+          <b style="color:var(--accent)">탐구 팁</b> · 방정식 모드에서 아래쪽 <b>🔍 각 확인</b> 칩을 누르면 단위원과 파형 양쪽에서 해당 해의 위치를 동시에 가리킵니다.
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="result">
+    <div>
+      <h3 id="resultTitle">각도와 좌표</h3>
+      <p id="resultCaption"></p>
+    </div>
+    <div id="roots" class="roots" aria-live="polite"></div>
+  </section>
+  <div id="status" class="status" aria-live="polite"></div>
+</main>
+<div class="footer">단위원 연동 탐구 실험실 · 외부 이미지 없이 Canvas와 CSS로 구성</div>
+
+<script src="./unit-circle-katex/katex.min.js" onerror="var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js';s.onload=function(){window.UnitCircleLab&&(window.UnitCircleLab.refreshMath?window.UnitCircleLab.refreshMath():window.UnitCircleLab.draw());};document.head.appendChild(s);"></script>
+<script>
+(()=>{'use strict';
+const PI=Math.PI,TAU=2*PI,EPS=1e-7;
+const SP=[
+  ['0',0,0],['π/6',PI/6,30],['π/4',PI/4,45],['π/3',PI/3,60],['π/2',PI/2,90],
+  ['2π/3',2*PI/3,120],['3π/4',3*PI/4,135],['5π/6',5*PI/6,150],['π',PI,180],
+  ['7π/6',7*PI/6,210],['5π/4',5*PI/4,225],['4π/3',4*PI/3,240],['3π/2',3*PI/2,270],
+  ['5π/3',5*PI/3,300],['7π/4',7*PI/4,315],['11π/6',11*PI/6,330],['2π',TAU,360]
+];
+const K=[
+  [0,'0'],[.5,'1/2'],[-.5,'−1/2'],[Math.SQRT1_2,'√2/2'],[-Math.SQRT1_2,'−√2/2'],
+  [Math.sqrt(3)/2,'√3/2'],[-Math.sqrt(3)/2,'−√3/2'],[1,'1'],[-1,'−1'],
+  [1/Math.sqrt(3),'√3/3'],[-1/Math.sqrt(3),'−√3/3'],[Math.sqrt(3),'√3'],[-Math.sqrt(3),'−√3']
+];
+const C={sin:'#6cd5bd',cos:'#ffc96e',tan:'#f18c82'};
+const S={
+  theta:PI/4,mode:'continuous',si:2,activity:'motion',
+  fn:{sin:true,cos:true,tan:true},k:.5,op:'gt',domain:'one',common:false,
+  showDeg:true,showApprox:true,snapSpecial:true,
+  revealedRoot:null,x0:-PI,x1:3*PI,drag:null,playing:false,lastTime:0,playId:0,animId:0,anim:null,katexReady:false
+};
+const $=id=>document.getElementById(id), ca={circle:$('circle'),graph:$('graph')},cx={circle:ca.circle.getContext('2d'),graph:ca.graph.getContext('2d')};
+const active=()=>Object.keys(S.fn).filter(f=>S.fn[f]);
+const MATH_CACHE=new Map(),overlays={circle:{root:$('circleMath'),nodes:new Map(),used:new Set()},graph:{root:$('graphMath'),nodes:new Map(),used:new Set()}};
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;').replace(/'/g,'&#39;');}
+function texFromDisplay(label){
+  let s=String(label).replace(/\{/g,'\\lbrace ').replace(/\}/g,'\\rbrace ').replace(/−/g,'-').replace(/≈/g,'\\approx ').replace(/°/g,'^\\circ ').replace(/∅/g,'\\varnothing ').replace(/√(\d+)/g,'\\sqrt{$1}').replace(/π/g,'\\pi').replace(/θ/g,'\\theta').replace(/≤/g,'\\le ').replace(/≥/g,'\\ge ').replace(/∈/g,'\\in ').replace(/∪/g,'\\cup ').replace(/±/g,'\\pm ').replace(/×/g,'\\times ').replace(/\bsin\b/g,'\\sin ').replace(/\bcos\b/g,'\\cos ').replace(/\btan\b/g,'\\tan ');
+  return s.replace(/ {2,}/g,' ').replace(/([+-]?(?:(?:\\sqrt\{\d+\})|(?:\d+)?\\pi|\d+))\/(\d+)/g,'\\frac{$1}{$2}').replace(/\\frac\{-((?:\d+)?\\pi|\d+|\\sqrt\{\d+\})\}\{(\d+)\}/g,'-\\frac{$1}{$2}').replace(/\\lbrace /g,'\\{').replace(/\\rbrace /g,'\\}');
+}
+function fallbackAtoms(s){
+  return esc(s).replace(/√(\d+)/g,'<msqrt><mn>$1</mn></msqrt>').replace(/π/g,'<mi>π</mi>').replace(/θ/g,'<mi>θ</mi>').replace(/sin/g,'<mi>sin</mi>').replace(/cos/g,'<mi>cos</mi>').replace(/tan/g,'<mi>tan</mi>').replace(/∈/g,'<mo>∈</mo>').replace(/∪/g,'<mo>∪</mo>').replace(/∅/g,'<mi>∅</mi>').replace(/≤/g,'<mo>≤</mo>').replace(/≥/g,'<mo>≥</mo>').replace(/≈/g,'<mo>≈</mo>');
+}
+function fallbackMath(label){
+  let src=String(label),re=/([−-]?(?:\d+π|π|√\d+|\d+))\/(\d+)/g,parts=[],last=0,m;
+  while((m=re.exec(src))){
+    parts.push(fallbackAtoms(src.slice(last,m.index)));
+    let num=m[1],neg=false;
+    if(num.startsWith('−')||num.startsWith('-')){neg=true;num=num.slice(1);}
+    parts.push((neg?'<mo>−</mo>':'')+'<mfrac><mrow>'+fallbackAtoms(num)+'</mrow><mrow><mn>'+m[2]+'</mn></mrow></mfrac>');
+    last=re.lastIndex;
+  }
+  parts.push(fallbackAtoms(src.slice(last)));
+  return '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow>'+parts.join('')+'</mrow></math>';
+}
+function renderMath(tex,fallbackLabel){
+  let key=(window.katex?'K:':'F:')+String(tex);
+  if(MATH_CACHE.has(key))return MATH_CACHE.get(key);
+  let html;
+  try{
+    if(!window.katex)throw new Error('local KaTeX unavailable');
+    html=window.katex.renderToString(String(tex),{throwOnError:false,strict:'ignore',trust:false,output:'htmlAndMathml'});
+  }catch(e){
+    html=fallbackMath(fallbackLabel===undefined?tex:fallbackLabel);
+  }
+  MATH_CACHE.set(key,html);
+  if(MATH_CACHE.size>600){let n=0;for(let k of MATH_CACHE.keys()){MATH_CACHE.delete(k);if(++n>=160)break;}}
+  return html;
+}
+function displayMath(label,cls='math-inline'){return '<span class="'+cls+'">'+renderMath(texFromDisplay(label),label)+'</span>';}
+
+function degText(rad){
+  let deg=rad*180/PI;
+  let r=Math.round(deg);
+  return (Math.abs(deg-r)<0.05?r:deg.toFixed(1))+'°';
+}
+function formatAngleWithDeg(radLabel,radVal){
+  if(!S.showDeg)return displayMath(radLabel);
+  return displayMath(radLabel)+' <span class="muted">('+degText(radVal)+')</span>';
+}
+
+function overlayBegin(name){overlays[name].used.clear();}
+function overlayLabel(name,key,label,x,y,cls='math-label',options={}){
+  let o=overlays[name],el=o.nodes.get(key);
+  if(!el){
+    el=document.createElement('span');
+    el.className='math-label';
+    el.setAttribute('data-math-key',key);
+    o.nodes.set(key,el);
+    o.root.appendChild(el);
+  }
+  let tex=texFromDisplay(label),note=options.note||'',kReady=!!window.katex;
+  if(el.dataset.tex!==tex||el.dataset.note!==note||el.dataset.kready!==String(kReady)){
+    el.innerHTML=renderMath(tex,label)+(note?'<span class="math-note">'+esc(note)+'</span>':'');
+    el.dataset.tex=tex;
+    el.dataset.note=note;
+    el.dataset.kready=String(kReady);
+  }
+  el.className='math-label '+cls;
+  let fs=options.fontSize||14;
+  el.style.fontSize=fs+'px';
+  el.style.display='block';
+  let W=options.width||800,H=options.height||600,anchor=options.anchor||'center';
+  let estW=Math.max(24,(String(label).length+(note?note.length+1:0))*fs*0.52+12);
+  let estH=fs*1.45+6;
+  if(!window.__UNIT_TEST_FAKE_DOM__&&el.offsetWidth>0){estW=el.offsetWidth;estH=el.offsetHeight;}
+  let minX=anchor==='left'?8:anchor==='right'?Math.min(W-8,8+estW):Math.min(W/2,8+estW/2);
+  let maxX=anchor==='left'?Math.max(8,W-8-estW):anchor==='right'?W-8:Math.max(W/2,W-8-estW/2);
+  let minY=Math.min(H/2,6+estH/2),maxY=Math.max(H/2,H-6-estH/2);
+  el.style.left=Math.max(minX,Math.min(maxX,x))+'px';
+  el.style.top=Math.max(minY,Math.min(maxY,y))+'px';
+  el.style.transform=anchor==='left'?'translate(0,-50%)':anchor==='right'?'translate(-100%,-50%)':'translate(-50%,-50%)';
+  o.used.add(key);
+  return el;
+}
+function measureMathLabel(el,label,fontSize){
+  if(!window.__UNIT_TEST_FAKE_DOM__&&el&&el.getBoundingClientRect){
+    let r=el.getBoundingClientRect();
+    if(r.width>0&&r.height>0)return{width:r.width,height:r.height,source:'dom'};
+  }
+  let clean=String(label).replace(/\\[A-Za-z]+/g,'X').replace(/[{}]/g,'').replace(/\s+/g,' '),width=Math.max(58,clean.length*fontSize*.56+18),height=fontSize*1.9+10;
+  return{width,height,source:'model-estimate'};
+}
+function placePointCoordinate(label,px,py,W,H,fontSize=15,note=''){
+  let gap=14,el=overlayLabel('circle','selected-point-coordinate',label,px+gap,py,'math-label math-point',{width:W,height:H,fontSize,anchor:'left',note}),m=measureMathLabel(el,label,fontSize),x=px+gap,y=py,anchor='left';
+  let cx0=W/2,cy0=H/2,dx=px-cx0,dy=py-cy0;
+  let rightSpace=W-8-(px+gap),leftSpace=px-gap-8;
+  let preferLeft=dx<-18;
+  let yShift=Math.abs(dy)<34?(dy<=0?-34:34):(dy<0?-18:18);
+  let targetY=Math.max(8+m.height/2,Math.min(H-8-m.height/2,py+yShift));
+  if(!preferLeft&&rightSpace>=m.width){
+    anchor='left';x=px+gap;y=targetY;
+  }else if(preferLeft&&leftSpace>=m.width){
+    anchor='right';x=px-gap;y=targetY;
+  }else if(rightSpace>=m.width){
+    anchor='left';x=px+gap;y=targetY;
+  }else if(leftSpace>=m.width){
+    anchor='right';x=px-gap;y=targetY;
+  }else if(px-m.width/2>=8&&px+m.width/2<=W-8){
+    anchor='center';x=px;
+    let below=py+gap+m.height/2,above=py-gap-m.height/2;
+    if(dy>=0&&below+m.height/2<=H-8)y=below;
+    else if(above-m.height/2>=8)y=above;
+    else if(below+m.height/2<=H-8)y=below;
+    else y=Math.max(8+m.height/2,Math.min(H-8-m.height/2,py));
+  }else if(rightSpace>=leftSpace){
+    anchor='left';x=Math.max(8,Math.min(W-8-m.width,px+gap));y=targetY;
+  }else{
+    anchor='right';x=Math.max(8+m.width,Math.min(W-8,px-gap));y=targetY;
+  }
+  el=overlayLabel('circle','selected-point-coordinate',label,x,y,'math-label math-point',{width:W,height:H,fontSize,anchor,note});
+  el.dataset.measurementSource=m.source;
+  el.dataset.measuredWidth=String(m.width);
+  el.dataset.measuredHeight=String(m.height);
+  el.dataset.anchor=anchor;
+  return el;
+}
+function overlayEnd(name){for(let [k,el]of overlays[name].nodes)if(!overlays[name].used.has(k))el.style.display='none';}
+
+function buildKMenu(){
+  let menu=$('kPresetMenu');menu.innerHTML='';
+  K.forEach((v,i)=>{
+    let b=document.createElement('button');
+    b.type='button';b.setAttribute('role','option');b.setAttribute('aria-label','특수 비율 '+(i+1));
+    b.innerHTML=displayMath(v[1]);
+    b.addEventListener('click',()=>{
+      if(S.activity==='motion')activity('equation');
+      setK(v[0]);
+      menu.classList.add('hidden');
+      $('kPresetButton').setAttribute('aria-expanded','false');
+    });
+    menu.appendChild(b);
+  });
+  let custom=document.createElement('button');
+  custom.type='button';custom.textContent='직접 조절';
+  custom.addEventListener('click',()=>{menu.classList.add('hidden');$('kPresetButton').setAttribute('aria-expanded','false');$('kSlider').focus();});
+  menu.appendChild(custom);
+}
+function syncKPreset(){
+  let i=K.findIndex(x=>Math.abs(x[0]-S.k)<1e-6);
+  $('kPreset').value=i<0?'custom':String(i);
+  $('kPresetCurrent').innerHTML=i<0?'직접 조절':renderMath(texFromDisplay(K[i][1]),K[i][1]);
+  document.querySelectorAll('#kPresetMenu button').forEach((b,j)=>b.classList.toggle('active',j===i));
+}
+
+const EV=[
+  ['0','1','0'],['1/2','√3/2','√3/3'],['√2/2','√2/2','1'],['√3/2','1/2','√3'],
+  ['1','0','정의되지 않음'],['√3/2','−1/2','−√3'],['√2/2','−√2/2','−1'],['1/2','−√3/2','−√3/3'],
+  ['0','−1','0'],['−1/2','−√3/2','√3/3'],['−√2/2','−√2/2','1'],['−√3/2','−1/2','√3'],
+  ['−1','0','정의되지 않음'],['−√3/2','1/2','−√3'],['−√2/2','√2/2','−1'],['−1/2','√3/2','−√3/3']
+];
+
+function buildCoordinateTable(){
+  let box=$('allCoordinates');box.innerHTML='';
+  SP.forEach((a,i)=>{
+    let v=EV[i===16?0:i],cell=document.createElement('div');
+    cell.className='coord-cell';
+    let degInfo=S.showDeg?' <span class="muted">('+a[2]+'°)</span>':'';
+    cell.innerHTML=displayMath(a[0],'')+degInfo+'<br>'+displayMath('('+v[1]+', '+v[0]+')','');
+    box.appendChild(cell);
+  });
+}
+function buildSpecialAngleButtons(){
+  let box=$('specialAngles');box.innerHTML='';
+  SP.forEach((v,i)=>{
+    let b=document.createElement('button');
+    b.type='button';b.setAttribute('aria-label','특수각 '+(i+1));
+    b.classList.toggle('active',i===S.si);
+    b.innerHTML=displayMath(v[0],'special-math')+(S.showDeg?'<div style="font-size:9px;opacity:.75">'+v[2]+'°</div>':'');
+    b.addEventListener('click',()=>selectSpecial(i));
+    box.appendChild(b);
+  });
+}
+function renderStaticMath(){
+  buildSpecialAngleButtons();
+  buildKMenu();
+  buildCoordinateTable();
+  syncKPreset();
+  $('graphRangeHeader').innerHTML='가로축은 라디안 · 기본 보기 '+displayMath('−π')+'부터 '+displayMath('3π');
+  $('domainOne').innerHTML=displayMath('[0, 2π)');
+  S.katexReady=!!window.katex;
+}
+
+function gcd(a,b){return b?gcd(b,a%b):a;}
+function piText(x){
+  let q=x/PI;
+  for(let d=1;d<=24;d++){
+    let n=Math.round(q*d);
+    if(Math.abs(q-n/d)<1e-5){
+      if(!n)return'0';
+      let z=n<0?'−':'';
+      n=Math.abs(n);
+      let g=gcd(n,d);n/=g;d/=g;
+      return z+(n===1?'':n)+(d===1?'π':'π/'+d);
+    }
+  }
+  return x.toFixed(2);
+}
+function valText(x){
+  if(!Number.isFinite(x))return'정의되지 않음';
+  if(Math.abs(x)<1e-9)return'0';
+  for(const [v,s]of K)if(Math.abs(x-v)<1e-7)return s;
+  return Number(x.toFixed(3)).toString();
+}
+function specialIndex(t){
+  let a=((t%TAU)+TAU)%TAU;
+  if(a<1e-6||TAU-a<1e-6)return 0;
+  return SP.slice(0,16).findIndex(x=>Math.abs(x[1]-a)<1e-6);
+}
+function nearestSpecialIndex(t){
+  let exactIdx=specialIndex(t);
+  if(exactIdx>=0){
+    if(exactIdx===0&&Math.abs(t-TAU)<1e-6)return 16;
+    return exactIdx;
+  }
+  let a=((t%TAU)+TAU)%TAU;
+  let best=0,bestDist=Infinity;
+  for(let i=0;i<16;i++){
+    let d=Math.abs(Math.atan2(Math.sin(a-SP[i][1]),Math.cos(a-SP[i][1])));
+    if(d<bestDist){bestDist=d;best=i;}
+  }
+  if(best===0&&Math.abs(t-TAU)<Math.abs(t))return 16;
+  return best;
+}
+function exactByIndex(si){
+  let i=((si%SP.length)+SP.length)%SP.length;
+  let j=i===16?0:i;
+  return{angle:SP[i][0],rad:SP[i][1],deg:SP[i][2],sin:EV[j][0],cos:EV[j][1],tan:EV[j][2]};
+}
+function exact(t){
+  let i=specialIndex(t);
+  if(i<0)return null;
+  if(S.mode==='special'&&S.anim&&Math.abs(t-S.anim.target)>1e-8)return null;
+  if(S.mode==='special'){
+    if(i!==S.si&&!(S.si===16&&i===0))return null;
+    i=S.si===16?16:i;
+  }else if(i===0&&Math.abs(t-TAU)<1e-6){
+    i=16;
+  }
+  let j=i===16?0:i;
+  return{angle:SP[i][0],rad:SP[i][1],deg:SP[i][2],sin:EV[j][0],cos:EV[j][1],tan:EV[j][2]};
+}
+function currentSpecialDisplay(){
+  if(S.mode!=='special')return null;
+  return exact(S.theta)||exactByIndex(S.si);
+}
+
+function fval(f,t){return f==='sin'?Math.sin(t):f==='cos'?Math.cos(t):(Math.abs(Math.cos(t))<1e-12?NaN:Math.tan(t));}
+function isClosedRightDomain(a,b){
+  return S.domain==='view'&&Math.abs(a-S.x0)<1e-6&&Math.abs(b-S.x1)<1e-6;
+}
+function roots(f,k,a,b,includeRight){
+  let base;
+  if(f==='sin'){
+    if(Math.abs(k)>1+EPS)return[];
+    let t=Math.asin(Math.max(-1,Math.min(1,k)));
+    base=[t,PI-t];
+  }else if(f==='cos'){
+    if(Math.abs(k)>1+EPS)return[];
+    let t=Math.acos(Math.max(-1,Math.min(1,k)));
+    base=[t,-t];
+  }else base=[Math.atan(k)];
+  let step=f==='tan'?PI:TAU,out=[];
+  let closedR=includeRight!==undefined?includeRight:isClosedRightDomain(a,b);
+  for(let t of base){
+    for(let n=Math.ceil((a-t-EPS)/step);n<=Math.floor((b-t+EPS)/step);n++){
+      let r=t+n*step;
+      if(r>=a-EPS&&(closedR?r<=b+EPS:r<b-EPS))out.push(+r.toFixed(9));
+    }
+  }
+  return [...new Set(out)].sort((x,y)=>x-y);
+}
+function satisfies(f,x){
+  let y=fval(f,x),k=S.k;
+  if(!Number.isFinite(y))return false;
+  return S.op==='gt'?y>k+EPS:S.op==='ge'?y>=k-EPS:S.op==='lt'?y<k-EPS:y<=k+EPS;
+}
+function numericIntervals(f,a,b,includeRight){
+  let closedR=includeRight!==undefined?includeRight:isClosedRightDomain(a,b);
+  let cuts=[a,...roots(f,S.k,a,b,true).filter(x=>x>a+EPS&&x<b-EPS)];
+  if(f==='tan'){
+    for(let n=Math.ceil((a-PI/2)/PI);n<=Math.floor((b-PI/2)/PI);n++){
+      let q=PI/2+n*PI;
+      if(q>a+EPS&&q<b-EPS)cuts.push(q);
+    }
+  }
+  cuts.push(b);
+  cuts=[...new Set(cuts.map(x=>+x.toFixed(9)))].sort((x,y)=>x-y);
+  let list=[];
+  for(let i=0;i<cuts.length-1;i++){
+    let u=cuts[i],v=cuts[i+1];
+    if(v-u<1e-7)continue;
+    if(!satisfies(f,(u+v)/2))continue;
+    let left=satisfies(f,u)&&!(f==='tan'&&Math.abs(Math.cos(u))<1e-8);
+    let right=satisfies(f,v)&&!(f==='tan'&&Math.abs(Math.cos(v))<1e-8)&&!(!closedR&&Math.abs(v-b)<1e-6);
+    list.push({u,v,left,right,singleton:false});
+  }
+  let rs=roots(f,S.k,a,b,closedR);
+  for(let r of rs){
+    if(!satisfies(f,r))continue;
+    let covered=list.some(iv=>(r>iv.u+1e-5&&r<iv.v-1e-5)||(iv.left&&Math.abs(r-iv.u)<=1e-5)||(iv.right&&Math.abs(r-iv.v)<=1e-5));
+    if(!covered)list.push({u:r,v:r,left:true,right:true,singleton:true});
+  }
+  return list.sort((x,y)=>x.u-y.u||(x.v-y.v));
+}
+function intervals(f,a,b){
+  return numericIntervals(f,a,b).map(iv=>iv.singleton?'{'+piText(iv.u)+'}':(iv.left?'[':'(')+piText(iv.u)+', '+piText(iv.v)+(iv.right?']':')'));
+}
+function commonNumericIntervals(fs,a,b,includeRight){
+  let closedR=includeRight!==undefined?includeRight:isClosedRightDomain(a,b);
+  let cuts=[a,b];
+  for(let f of fs){
+    for(let r of roots(f,S.k,a,b,true))if(r>a+EPS&&r<b-EPS)cuts.push(r);
+    if(f==='tan'){
+      for(let n=Math.ceil((a-PI/2)/PI);n<=Math.floor((b-PI/2)/PI);n++){
+        let q=PI/2+n*PI;
+        if(q>a+EPS&&q<b-EPS)cuts.push(q);
+      }
+    }
+  }
+  cuts=[...new Set(cuts.map(x=>+x.toFixed(9)))].sort((x,y)=>x-y);
+  let list=[];
+  const allSat=x=>fs.every(f=>satisfies(f,x));
+  const anyTanAsym=x=>fs.includes('tan')&&Math.abs(Math.cos(x))<1e-8;
+  for(let i=0;i<cuts.length-1;i++){
+    let u=cuts[i],v=cuts[i+1];
+    if(v-u<1e-7)continue;
+    if(!allSat((u+v)/2))continue;
+    let left=allSat(u)&&!anyTanAsym(u);
+    let right=allSat(v)&&!anyTanAsym(v)&&!(!closedR&&Math.abs(v-b)<1e-6);
+    list.push({u,v,left,right,singleton:false});
+  }
+  let candidateRoots=[];
+  for(let f of fs)for(let r of roots(f,S.k,a,b,closedR))candidateRoots.push(r);
+  candidateRoots=[...new Set(candidateRoots.map(x=>+x.toFixed(7)))].sort((x,y)=>x-y);
+  for(let r of candidateRoots){
+    if(!allSat(r)||anyTanAsym(r))continue;
+    let covered=list.some(iv=>(r>iv.u+1e-5&&r<iv.v-1e-5)||(iv.left&&Math.abs(r-iv.u)<=1e-5)||(iv.right&&Math.abs(r-iv.v)<=1e-5));
+    if(!covered)list.push({u:r,v:r,left:true,right:true,singleton:true});
+  }
+  return list.sort((x,y)=>x.u-y.u||(x.v-y.v));
+}
+function commonIntervals(fs,a,b){
+  return commonNumericIntervals(fs,a,b).map(iv=>iv.singleton?'{'+piText(iv.u)+'}':(iv.left?'[':'(')+piText(iv.u)+', '+piText(iv.v)+(iv.right?']':')'));
+}
+
+function updateQuadrantBadge(t){
+  let a=((t%TAU)+TAU)%TAU;
+  let c=Math.cos(t),s=Math.sin(t),tn=fval('tan',t);
+  let qName='';
+  if(Math.abs(s)<1e-5||Math.abs(c)<1e-5)qName='축 위의 각';
+  else if(a<PI/2)qName='제1사분면 (모두 +)';
+  else if(a<PI)qName='제2사분면 (sin만 +)';
+  else if(a<3*PI/2)qName='제3사분면 (tan만 +)';
+  else qName='제4사분면 (cos만 +)';
+  const fmt=(name,v,col)=>{
+    let sym=!Number.isFinite(v)?'점근선':Math.abs(v)<1e-6?'0':v>0?'+':'−';
+    return '<span class="sign-pill" style="background:#12291e;border:1px solid '+col+'88;color:'+col+'">'+name+' '+sym+'</span>';
+  };
+  $('quadBadge').innerHTML='<b>'+qName+'</b>'+fmt('cos',c,C.cos)+fmt('sin',s,C.sin)+fmt('tan',tn,C.tan);
+}
+
+function dim(c){
+  let r=c.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1),w=Math.max(1,Math.round(r.width*d)),h=Math.max(1,Math.round(r.height*d));
+  if(c.width!==w||c.height!==h){c.width=w;c.height=h;}
+  return{w,h,d};
+}
+function line(g,a,b,c,d){g.beginPath();g.moveTo(a,b);g.lineTo(c,d);g.stroke();}
+function unitPoint(t){return{x:Math.cos(t),y:Math.sin(t)};}
+function circleCoords(t,cx,cy,R){let q=unitPoint(t);return{x:cx+R*q.x,y:cy-R*q.y};}
+function tanFoot(t,cx,cy,R){let v=fval('tan',t);return Number.isFinite(v)?{x:cx+R,y:cy-v*R,value:v}:null;}
+function arrowHead(g,x,y,a,color){
+  let size=7.5;
+  g.fillStyle=color;
+  g.beginPath();
+  g.moveTo(x,y);
+  g.lineTo(x-size*Math.cos(a-.48),y-size*Math.sin(a-.48));
+  g.lineTo(x-size*Math.cos(a+.48),y-size*Math.sin(a+.48));
+  g.closePath();
+  g.fill();
+}
+function drawTanRay(g,cx,cy,R,t,W,H,color,caption,key='tan-guide',yOffset=0){
+  let q=tanFoot(t,cx,cy,R);if(!q)return null;
+  let cp=circleCoords(t,cx,cy,R);
+  let top=36,bottom=H-36,labelX=Math.min(W-76,cx+R+72);
+  if(Math.cos(t)<-1e-5){
+    g.save();
+    g.strokeStyle=color+'99';
+    g.lineWidth=1.7;
+    g.setLineDash([4,4]);
+    line(g,cp.x,cp.y,cx,cy);
+    g.restore();
+  }
+  if(q.y<top-0.5||q.y>bottom+0.5){
+    let up=q.y<top-0.5,bound=up?top:bottom,tipX=cx+(cy-bound)/q.value;
+    let rayAng=Math.atan2(bound-cy,tipX-cx);
+    g.strokeStyle=color;g.lineWidth=2.5;
+    line(g,cx,cy,tipX,bound);
+    arrowHead(g,tipX,bound,rayAng,color);
+    overlayLabel('circle',key,caption,labelX,(up?top+22:bottom-22)+yOffset,'math-label math-guide',{width:W,height:H,fontSize:12,note:(up?'↑':'↓')+' 화면 밖'});
+    return false;
+  }
+  let qy=Math.max(top,Math.min(bottom,q.y));
+  g.strokeStyle=color;g.lineWidth=2.5;
+  line(g,cx,cy,q.x,qy);
+  g.fillStyle=color;
+  g.beginPath();g.arc(q.x,qy,5,0,TAU);g.fill();
+  overlayLabel('circle',key,caption,labelX,qy+(qy<cy?12:-12)+yOffset,'math-label math-guide',{width:W,height:H,fontSize:12});
+  return true;
+}
+
+function circleDraw(){
+  overlayBegin('circle');
+  let g=cx.circle,{w,h,d}=dim(ca.circle),W=w/d,H=h/d;
+  g.setTransform(d,0,0,d,0,0);
+  g.clearRect(0,0,W,H);
+  let x=W/2,y=H/2,R=Math.min(W*.34,(H*.5-34)/Math.sqrt(3));
+  g.lineCap='round';g.lineJoin='round';
+
+  g.strokeStyle='#183528';g.lineWidth=1;
+  for(let i=-4;i<=4;i++){
+    line(g,x+i*R/2,y-R*1.24,x+i*R/2,y+R*1.24);
+    line(g,x-R*1.24,y+i*R/2,x+R*1.24,y+i*R/2);
+  }
+  g.strokeStyle='#adc8b4';g.lineWidth=1.4;
+  line(g,x-R*1.34,y,x+R*1.38,y);
+  line(g,x,y+R*1.34,x,y-R*1.34);
+  g.font='12px system-ui';g.fillStyle='#c4d7c7';
+  g.textAlign='center';g.textBaseline='top';g.fillText('x',x+R*1.41,y+4);
+  g.textAlign='left';g.textBaseline='middle';g.fillText('y',x+6,y-R*1.41);
+
+  for(let n=-1;n<=1;n++){
+    if(!n)continue;
+    let xx=x+n*R,yy=y-n*R;
+    g.strokeStyle='#71907a';
+    line(g,xx,y-5,xx,y+5);
+    line(g,x-5,yy,x+5,yy);
+  }
+
+  g.strokeStyle='#d4e4d2';g.lineWidth=2.2;
+  g.beginPath();g.arc(x,y,R,0,TAU);g.stroke();
+
+  SP.slice(0,16).forEach((a,i)=>{
+    let q=circleCoords(a[1],x,y,R),outer=circleCoords(a[1],x,y,R+5);
+    g.strokeStyle='#a8c79e';g.lineWidth=1;
+    line(g,q.x,q.y,outer.x,outer.y);
+    g.fillStyle='#d1e6c6';
+    g.beginPath();g.arc(q.x,q.y,3.2,0,TAU);g.fill();
+    let labelR=R+26,lx=x+labelR*Math.cos(a[1]),ly=y-labelR*Math.sin(a[1]),idx=specialIndex(S.theta);
+    let selected=S.mode==='special'?(idx===i||(S.si===16&&i===0)):Math.abs(Math.atan2(Math.sin(S.theta-a[1]),Math.cos(S.theta-a[1])))<.008;
+    let isTwoPi=(i===0&&((S.mode==='special'&&S.si===16)||(S.mode!=='special'&&Math.abs(S.theta-TAU)<1e-4)));
+    let lmText=isTwoPi?'2π':a[0];
+    let degNote=(selected&&S.showDeg)?((isTwoPi?360:a[2])+'°'):'';
+    overlayLabel('circle','landmark-'+i,lmText,lx,ly,'math-label math-landmark'+(selected?' selected':''),{width:W,height:H,fontSize:selected?14:11,note:degNote});
+  });
+
+  overlayLabel('circle','coord-left','(-1, 0)',x-R+34,y+16,'math-label math-landmark',{width:W,height:H,fontSize:11});
+  overlayLabel('circle','coord-right','(1, 0)',x+R-32,y+16,'math-label math-landmark',{width:W,height:H,fontSize:11});
+  overlayLabel('circle','coord-top','(0, 1)',x-32,y-R+18,'math-label math-landmark',{width:W,height:H,fontSize:11});
+  overlayLabel('circle','coord-bottom','(0, -1)',x-35,y+R-18,'math-label math-landmark',{width:W,height:H,fontSize:11});
+
+  if(S.activity!=='motion'&&Math.abs(S.k)<=1.32){
+    g.save();g.setLineDash([7,6]);g.lineWidth=1.5;
+    if(S.fn.sin){
+      g.strokeStyle=C.sin+'aa';
+      let yy=y-S.k*R;g.beginPath();g.moveTo(x-R*1.18,yy);g.lineTo(x+R*1.18,yy);g.stroke();
+    }
+    if(S.fn.cos){
+      g.strokeStyle=C.cos+'aa';
+      let xx=x+S.k*R;g.beginPath();g.moveTo(xx,y-R*1.18);g.lineTo(xx,y+R*1.18);g.stroke();
+    }
+    g.restore();
+  }
+
+  let t=S.theta,cp=circleCoords(t,x,y,R),px=cp.x,py=cp.y;
+  updateQuadrantBadge(t);
+
+  if(S.activity==='inequality'){
+    g.save();
+    g.lineCap='butt';
+    for(let f of active()){
+      let ivs=numericIntervals(f,0,TAU,false);
+      g.strokeStyle=C[f];g.lineWidth=9;g.globalAlpha=.34;
+      for(let iv of ivs){
+        if(iv.singleton)continue;
+        g.beginPath();
+        g.arc(x,y,R,-iv.u,-iv.v,true);
+        g.stroke();
+      }
+    }
+    if(S.common&&active().length>1){
+      let fs=active(),civs=commonNumericIntervals(fs,0,TAU,false);
+      g.strokeStyle='#d1ec9a';g.lineWidth=4;g.globalAlpha=.88;
+      for(let iv of civs){
+        if(iv.singleton){
+          let cq=circleCoords(iv.u,x,y,R);
+          g.beginPath();g.arc(cq.x,cq.y,11,0,TAU);g.stroke();
+        }else{
+          g.beginPath();g.arc(x,y,R,-iv.u,-iv.v,true);g.stroke();
+        }
+      }
+    }
+    g.restore();
+  }
+
+  // [교정 완료] 직각삼각형 투영: 원점(x,y) -> 수선의 발(px,y)는 cos(가로), 수선의 발(px,y) -> 점 P(px,py)는 sin(세로)
+  if(S.fn.cos&&S.fn.sin&&Math.abs(px-x)>14&&Math.abs(py-y)>14){
+    let sq=7,sx=px>x?-sq:sq,sy=py>y?-sq:sq;
+    g.strokeStyle='#9ab8a188';g.lineWidth=1.2;
+    g.beginPath();g.moveTo(px+sx,y);g.lineTo(px+sx,y+sy);g.lineTo(px,y+sy);g.stroke();
+  }
+  if(S.fn.cos){
+    g.strokeStyle=C.cos;g.lineWidth=3.5;
+    line(g,x,y,px,y); // 원점에서 x축 수선의 발까지 가로 밑변 (cos)
+    g.fillStyle=C.cos;
+    g.beginPath();g.arc(px,y,4.2,0,TAU);g.fill();
+    let cosOffY=py<=y?17:-17;
+    let cosX=Math.abs(px-x)<28?(px>=x?x+28:x-28):(px+x)/2;
+    overlayLabel('circle','cos-projection-label','cos θ',cosX,y+cosOffY,'math-label math-guide',{width:W,height:H,fontSize:13});
+  }
+  if(S.fn.sin){
+    g.save();
+    g.strokeStyle=C.sin+'66';g.lineWidth=1.2;g.setLineDash([4,4]);
+    line(g,px,py,x,py); // 점 P에서 y축으로 가는 수평 보조선
+    g.restore();
+    g.strokeStyle=C.sin;g.lineWidth=3.2;
+    line(g,px,y,px,py); // 수선의 발에서 점 P까지 수직 높이 (sin)
+    g.fillStyle=C.sin;
+    g.beginPath();g.arc(x,py,4.2,0,TAU);g.fill(); // y축 위의 sin 좌표점
+    let sinOffX=px>=x?28:-28,sinOffY=Math.abs(py-y)<26?(py<=y?-18:18):0;
+    overlayLabel('circle','sin-projection-label','sin θ',px+sinOffX,(py+y)/2+sinOffY,'math-label math-guide',{width:W,height:H,fontSize:13});
+  }
+
+  g.strokeStyle='#e7eddc';g.lineWidth=2.1;
+  line(g,x,y,px,py);
+
+  g.strokeStyle='#d8dfcb';g.lineWidth=1.5;
+  let rArc=Math.min(30,R*.22),midA=0.25;
+  let fullTurn=(S.mode==='special'&&S.si===16)||Math.abs(t)>=TAU-1e-6;
+  g.beginPath();
+  if(fullTurn){
+    g.arc(x,y,rArc,0,TAU,false);
+    midA=t<0?-0.35:0.35;
+  }else if(t>1e-6){
+    g.arc(x,y,rArc,0,-t,true);
+    midA=t/2;
+  }else if(t<-1e-6){
+    g.arc(x,y,rArc,0,-t,false);
+    midA=t/2;
+  }
+  g.stroke();
+  g.fillStyle='#d8e5d4';g.font='12px system-ui';g.textAlign='center';g.textBaseline='middle';
+  g.fillText('θ',x+Math.cos(midA)*38,y-Math.sin(midA)*38);
+
+  if(S.fn.tan){
+    let tx=x+R;
+    g.strokeStyle='#a66c61';g.lineWidth=1.4;g.setLineDash([5,5]);
+    line(g,tx,y-R*1.82,tx,y+R*1.82);
+    g.setLineDash([]);
+    overlayLabel('circle','tangent-x-label','x = 1',tx+26,Math.max(18,y-R*1.82-2),'math-label math-guide',{width:W,height:H,fontSize:12});
+    let shown=drawTanRay(g,x,y,R,t,W,H,C.tan,'tan θ = '+valText(fval('tan',t)),'tan-guide',0);
+    if(shown===null)overlayLabel('circle','tan-undefined','tan θ',Math.min(W-68,tx+52),y-R*1.52,'math-label math-guide',{width:W,height:H,fontSize:12,note:'정의되지 않음'});
+  }
+
+  g.fillStyle='#f5f7e9';g.strokeStyle='#0a1a12';g.lineWidth=3;
+  g.beginPath();g.arc(px,py,8,0,TAU);g.fill();g.stroke();
+  g.font='bold 14px system-ui';
+  g.textAlign=px>x?'right':'left';
+  g.textBaseline=py<y?'top':'bottom';
+  g.fillText('P',px+(px>x?-12:12),py+(py<y?10:-10));
+
+  let e=S.mode==='special'?currentSpecialDisplay():exact(t);
+  let coordLabel,coordNote='';
+  if(e){
+    coordLabel='P = ('+e.cos+', '+e.sin+')';
+    if(S.showDeg)coordNote=e.deg+'°';
+  }else if(S.showApprox){
+    coordLabel='P ≈ ('+Math.cos(t).toFixed(2)+', '+Math.sin(t).toFixed(2)+')';
+    if(S.showDeg)coordNote=degText(t);
+  }else{
+    coordLabel='P = (cos θ, sin θ)';
+  }
+  placePointCoordinate(coordLabel,px,py,W,H,15,coordNote);
+
+  if(S.activity!=='motion'){
+    let drawnPts=[];
+    for(let f of active()){
+      let rs=roots(f,S.k,0,TAU,false);
+      if(S.activity==='inequality'){
+        let ivs=numericIntervals(f,0,TAU,false);
+        rs=rs.filter(r=>ivs.some(iv=>Math.abs(iv.u-r)<1e-4||Math.abs(iv.v-r)<1e-4));
+      }
+      rs.forEach((r,j)=>{
+        let q=circleCoords(r,x,y,R),xx=q.x,yy=q.y,open=S.activity==='inequality'&&(S.op==='gt'||S.op==='lt');
+        g.fillStyle=open?'#09160f':C[f];
+        g.strokeStyle=C[f];g.lineWidth=2.2;
+        g.beginPath();g.arc(xx,yy,7,0,TAU);g.fill();g.stroke();
+        let dup=drawnPts.filter(pt=>Math.hypot(pt.x-xx,pt.y-yy)<10).length;
+        drawnPts.push({x:xx,y:yy});
+        g.font='bold 10px system-ui';g.fillStyle=C[f];
+        g.textAlign=xx>x?'left':'right';g.textBaseline=yy<y?'bottom':'top';
+        let offY=(yy<y?-8:8)+(dup*(yy<y?-11:11));
+        g.fillText('P'+['₁','₂','₃','₄'][j],xx+(xx>x?9:-9),yy+offY);
+      });
+      if(S.activity==='inequality'&&f==='tan'){
+        for(let asym of [PI/2,3*PI/2]){
+          let nearSat=satisfies('tan',asym-0.02)||satisfies('tan',asym+0.02);
+          if(nearSat){
+            let q=circleCoords(asym,x,y,R);
+            g.fillStyle='#09160f';g.strokeStyle=C.tan;g.lineWidth=2.2;
+            g.beginPath();g.arc(q.x,q.y,6.5,0,TAU);g.fill();g.stroke();
+          }
+        }
+      }
+      if(f==='tan'&&rs.length){
+        if(rs.length>=2){
+          let q0=circleCoords(rs[0],x,y,R),q1=circleCoords(rs[1],x,y,R);
+          g.save();g.strokeStyle=C.tan+'88';g.lineWidth=1.6;g.setLineDash([4,4]);
+          line(g,q0.x,q0.y,q1.x,q1.y);
+          g.restore();
+        }
+        let eqOffset=Math.abs(fval('tan',t)-S.k)<0.22?24:0;
+        drawTanRay(g,x,y,R,Math.atan(S.k),W,H,C.tan,'T(1, '+valText(S.k)+')','tan-eq-guide',eqOffset);
+      }
+    }
+    if(S.common&&active().length>1&&S.activity==='equation'){
+      let fs=active(),crs=roots(fs[0],S.k,0,TAU,false).filter(r=>fs.slice(1).every(f=>Math.abs(fval(f,r)-S.k)<1e-6));
+      for(let cr of crs){
+        let q=circleCoords(cr,x,y,R);
+        g.strokeStyle='#d1ec9a';g.lineWidth=2.6;
+        g.beginPath();g.arc(q.x,q.y,11,0,TAU);g.stroke();
+      }
+    }
+    if(S.revealedRoot!==null&&S.activity==='equation'){
+      let rq=circleCoords(S.revealedRoot,x,y,R);
+      g.save();
+      g.strokeStyle='#d1ec9a';g.lineWidth=3;
+      g.beginPath();g.arc(rq.x,rq.y,13,0,TAU);g.stroke();
+      g.restore();
+      overlayLabel('circle','revealed-root-circle','θ = '+piText(S.revealedRoot),rq.x,rq.y-24,'math-label math-angle',{width:W,height:H,fontSize:13,note:S.showDeg?degText(S.revealedRoot):''});
+    }
+  }
+
+  overlayEnd('circle');
+}
+
+function stepFor(span,target=9){
+  let candidates=[[1,12],[1,8],[1,6],[1,4],[1,3],[1,2],[1,1],[2,1]];
+  for(let m=4;m<=Math.max(4,span/(2*PI));m*=2)candidates.push([m,1]);
+  let ideal=span/Math.max(2,target||9),best=candidates[candidates.length-1],err=Infinity;
+  for(let [num,den]of candidates){
+    let value=PI*num/den,count=span/value;
+    if(count<2||count>target)continue;
+    let e=Math.abs(Math.log(value/ideal));
+    if(e<err){best=[num,den];err=e;}
+  }
+  let [num,den]=best;
+  return{num,den,value:PI*num/den};
+}
+function xText(tick,spec){
+  let n=tick*spec.num,d=spec.den;
+  if(!n)return'0';
+  let z=n<0?'−':'';
+  n=Math.abs(n);
+  let a=gcd(n,d);n/=a;d/=a;
+  return z+(n===1?'':n)+(d===1?'π':'π/'+d);
+}
+function graphTransform(W,H,xMin=S.x0,xMax=S.x1){
+  let p={l:53,r:24,t:22,b:39},pw=W-p.l-p.r,ph=H-p.t-p.b,mid=p.t+ph/2,sy=ph/5.1;
+  return{p,pw,ph,mid,sy,xToPx:x=>p.l+(x-xMin)/(xMax-xMin)*pw,pxToX:px=>xMin+(px-p.l)/pw*(xMax-xMin),yToPx:y=>mid-y*sy,pxToY:py=>(mid-py)/sy};
+}
+function graphDraw(){
+  overlayBegin('graph');
+  let g=cx.graph,{w,h,d}=dim(ca.graph),W=w/d,H=h/d;
+  g.setTransform(d,0,0,d,0,0);
+  g.clearRect(0,0,W,H);
+  let tr=graphTransform(W,H),p=tr.p,pw=tr.pw,ph=tr.ph,mid=tr.mid,X=tr.xToPx,Y=tr.yToPx;
+
+  g.font='11px system-ui';g.textAlign='right';g.textBaseline='middle';
+  for(let y=-2.5;y<=2.5001;y+=.5){
+    let yy=Y(y);
+    g.strokeStyle=Math.abs(y)<EPS?'#90aa96':'#183528';
+    g.lineWidth=Math.abs(y)<EPS?1.5:1;
+    line(g,p.l,yy,W-p.r,yy);
+    overlayLabel('graph','ytick-'+String(y),valText(y),p.l-6,yy,'math-label math-axis',{width:W,height:H,fontSize:12,anchor:'right'});
+  }
+  let targetTicks=Math.max(3,Math.floor(pw/52)),spec=stepFor(S.x1-S.x0,targetTicks),st=spec.value;
+  g.textAlign='center';g.textBaseline='top';
+  for(let i=Math.ceil(S.x0/st-EPS);i*st<S.x1+EPS;i++){
+    let x=i*st,xx=X(x);
+    g.strokeStyle=i%(spec.den/spec.num||1)===0?'#284c37':'#163125';
+    line(g,xx,p.t,xx,H-p.b);
+    overlayLabel('graph','xtick-'+i,xText(i,spec),xx,mid+14,'math-label math-axis',{width:W,height:H,fontSize:13});
+  }
+  g.strokeStyle='#bbd0bd';g.lineWidth=1.5;
+  line(g,p.l,mid,W-p.r,mid);
+  g.fillStyle='#d4dfd4';g.textAlign='left';g.textBaseline='bottom';
+  g.fillText('x (라디안)',W-p.r-64,H-3);
+  g.textAlign='right';g.textBaseline='top';
+  g.fillText('y',p.l-17,p.t);
+
+  let N=Math.min(3600,Math.max(600,Math.floor(pw*1.8),Math.floor((S.x1-S.x0)/PI*140)));
+  let lo=S.domain==='one'?0:S.x0,hi=S.domain==='one'?TAU:S.x1;
+
+  if(S.activity==='inequality'){
+    for(let f of active()){
+      g.save();
+      g.beginPath();g.rect(p.l,p.t,pw,ph);g.clip();
+      g.fillStyle=C[f]+'26';
+      let dx=(S.x1-S.x0)/N,on=false,prevX=null;
+      g.beginPath();
+      for(let i=0;i<=N;i++){
+        let x=S.x0+i*dx,v=fval(f,x);
+        let inDom=x>=lo-EPS&&x<=hi+EPS;
+        let asymCross=f==='tan'&&prevX!==null&&Math.floor((x-PI/2)/PI)!==Math.floor((prevX-PI/2)/PI);
+        if(asymCross&&on){
+          g.lineTo(X(prevX),Y(S.k));
+          g.closePath();g.fill();
+          g.beginPath();on=false;
+        }
+        let ok=inDom&&Number.isFinite(v)&&satisfies(f,x);
+        if(ok){
+          let vc=Math.max(-2.55,Math.min(2.55,v));
+          if(!on){
+            g.moveTo(X(x),Y(S.k));
+            g.lineTo(X(x),Y(vc));
+            on=true;
+          }else{
+            g.lineTo(X(x),Y(vc));
+          }
+        }else if(on){
+          g.lineTo(X(prevX!==null?prevX:x),Y(S.k));
+          g.closePath();g.fill();
+          g.beginPath();on=false;
+        }
+        prevX=x;
+      }
+      if(on){
+        g.lineTo(X(Math.min(S.x1,hi)),Y(S.k));
+        g.closePath();g.fill();
+      }
+      g.restore();
+    }
+  }
+
+  if(S.activity!=='motion'){
+    g.save();
+    g.strokeStyle='#d6ee9a';g.lineWidth=1.8;g.setLineDash([9,6]);
+    line(g,p.l,Y(S.k),W-p.r,Y(S.k));
+    g.setLineDash([]);
+    let kLabelY=Y(S.k)<p.t+28?Y(S.k)+16:Y(S.k)-14;
+    overlayLabel('graph','k-guide','y = k = '+valText(S.k),p.l+10,kLabelY,'math-label math-guide',{width:W,height:H,fontSize:12,anchor:'left'});
+    g.restore();
+  }
+
+  for(let f of active()){
+    g.save();
+    g.beginPath();g.rect(p.l,p.t,pw,ph);g.clip();
+    g.strokeStyle=C[f];
+    g.lineWidth=f==='tan'?2:2.8;
+    let dx=(S.x1-S.x0)/N,on=false,prevX=null;
+    g.beginPath();
+    for(let i=0;i<=N;i++){
+      let x=S.x0+i*dx,v=fval(f,x);
+      let asymCross=f==='tan'&&prevX!==null&&Math.floor((x-PI/2)/PI)!==Math.floor((prevX-PI/2)/PI);
+      if(!Number.isFinite(v)||Math.abs(v)>3.2||asymCross){on=false;prevX=x;continue;}
+      let xx=X(x),yy=Y(v);
+      if(!on){g.moveTo(xx,yy);on=true;}else g.lineTo(xx,yy);
+      prevX=x;
+    }
+    g.stroke();
+
+    if(S.activity==='inequality'){
+      g.strokeStyle=C[f];
+      g.lineWidth=f==='tan'?3.6:4.2;
+      let ivs=numericIntervals(f,Math.max(lo,S.x0),Math.min(hi,S.x1),S.domain==='view');
+      for(let iv of ivs){
+        if(iv.singleton)continue;
+        let segSteps=Math.max(18,Math.ceil((iv.v-iv.u)/((S.x1-S.x0)/N)));
+        let sdx=(iv.v-iv.u)/segSteps,segOn=false,segPrevX=null;
+        g.beginPath();
+        for(let j=0;j<=segSteps;j++){
+          let x=iv.u+j*sdx,v=fval(f,x);
+          let asymCross=f==='tan'&&segPrevX!==null&&Math.floor((x-PI/2)/PI)!==Math.floor((segPrevX-PI/2)/PI);
+          if(!Number.isFinite(v)||Math.abs(v)>3.2||asymCross){segOn=false;segPrevX=x;continue;}
+          let xx=X(x),yy=Y(v);
+          if(!segOn){g.moveTo(xx,yy);segOn=true;}else g.lineTo(xx,yy);
+          segPrevX=x;
+        }
+        g.stroke();
+      }
+    }
+    g.restore();
+  }
+
+  if(S.fn.tan){
+    g.save();
+    g.beginPath();g.rect(p.l,p.t,pw,ph);g.clip();
+    g.strokeStyle='#dd8f8290';g.setLineDash([3,6]);
+    let nStart=Math.ceil((S.x0-PI/2)/PI),nEnd=Math.floor((S.x1-PI/2)/PI),stepN=Math.max(1,Math.ceil((nEnd-nStart)/40));
+    for(let n=nStart;n<=nEnd;n+=stepN){
+      let x=PI/2+n*PI;
+      line(g,X(x),p.t,X(x),H-p.b);
+    }
+    g.setLineDash([]);
+    g.restore();
+    overlayLabel('graph','tan-asymptote','x = π/2 + nπ',W-p.r-10,p.t+16,'math-label math-guide',{width:W,height:H,fontSize:12,note:'tan 점근선',anchor:'right'});
+  }
+
+  if(S.activity==='equation'){
+    g.save();
+    g.beginPath();g.rect(p.l-6,p.t-6,pw+12,ph+12);g.clip();
+    for(let f of active()){
+      for(let r of roots(f,S.k,lo,hi)){
+        if(r<S.x0-EPS||r>S.x1+EPS)continue;
+        let v=fval(f,r);
+        if(Number.isFinite(v)&&Math.abs(v)<=2.5+1e-4){
+          g.fillStyle=C[f];g.strokeStyle='#08130e';g.lineWidth=2;
+          g.beginPath();g.arc(X(r),Y(v),5.6,0,TAU);g.fill();g.stroke();
+        }
+      }
+    }
+    if(S.common&&active().length>1){
+      let fs=active(),crs=roots(fs[0],S.k,lo,hi).filter(r=>fs.slice(1).every(f=>Math.abs(fval(f,r)-S.k)<1e-6));
+      for(let cr of crs){
+        if(cr<S.x0-EPS||cr>S.x1+EPS)continue;
+        g.strokeStyle='#d1ec9a';g.lineWidth=2.5;
+        g.beginPath();g.arc(X(cr),Y(S.k),9.5,0,TAU);g.stroke();
+      }
+    }
+    g.restore();
+  }
+  if(S.activity==='inequality'){
+    g.save();
+    g.beginPath();g.rect(p.l-6,p.t-6,pw+12,ph+12);g.clip();
+    for(let f of active()){
+      let ivs=numericIntervals(f,lo,hi);
+      let rs=roots(f,S.k,lo,hi).filter(r=>ivs.some(iv=>Math.abs(iv.u-r)<1e-4||Math.abs(iv.v-r)<1e-4));
+      for(let r of rs){
+        if(r>=S.x0-EPS&&r<=S.x1+EPS){
+          g.strokeStyle=C[f];g.lineWidth=2;
+          g.fillStyle=(S.op==='gt'||S.op==='lt')?'#09160f':C[f];
+          g.beginPath();g.arc(X(r),Y(S.k),5.7,0,TAU);g.fill();g.stroke();
+        }
+      }
+    }
+    if(S.common&&active().length>1){
+      let fs=active(),civs=commonNumericIntervals(fs,lo,hi);
+      g.strokeStyle='#d1ec9a';g.lineWidth=3.2;
+      for(let iv of civs){
+        if(iv.singleton){
+          if(iv.u>=S.x0-EPS&&iv.u<=S.x1+EPS){
+            g.beginPath();g.arc(X(iv.u),Y(S.k),9.5,0,TAU);g.stroke();
+          }
+        }else{
+          let u0=Math.max(S.x0,iv.u),v0=Math.min(S.x1,iv.v);
+          if(v0>u0){
+            line(g,X(u0),Y(S.k),X(v0),Y(S.k));
+          }
+        }
+      }
+    }
+    g.restore();
+  }
+
+  let showRevealedOnGraph=S.revealedRoot!==null&&S.activity==='equation'&&S.revealedRoot>=S.x0-EPS&&S.revealedRoot<=S.x1+EPS;
+  if(S.theta>=S.x0&&S.theta<=S.x1){
+    let xx=X(S.theta);
+    g.strokeStyle='#eff4e0aa';g.setLineDash([3,5]);
+    line(g,xx,p.t,xx,H-p.b);
+    g.setLineDash([]);
+    for(let f of active()){
+      let v=fval(f,S.theta);
+      if(Number.isFinite(v)&&Math.abs(v)<=2.5){
+        g.fillStyle=C[f];g.strokeStyle='#08130e';g.lineWidth=2;
+        g.beginPath();g.arc(xx,Y(v),5,0,TAU);g.fill();g.stroke();
+      }else if(f==='tan'&&Number.isFinite(v)){
+        let edge=v>0?p.t+14:H-p.b-14;
+        arrowHead(g,xx,edge,v>0?-PI/2:PI/2,C.tan);
+        overlayLabel('graph','tan-offscreen-value','tan θ = '+valText(v),xx,edge+(v>0?18:-18),'math-label math-guide',{width:W,height:H,fontSize:12,note:v>0?'↑':'↓'});
+      }
+    }
+    let e=S.mode==='special'?currentSpecialDisplay():exact(S.theta);
+    if(e&&!(showRevealedOnGraph&&Math.abs(S.theta-S.revealedRoot)<1e-6)){
+      overlayLabel('graph','selected-angle','θ = '+e.angle,xx,mid-18,'math-label math-angle',{width:W,height:H,fontSize:13,note:S.showDeg?e.deg+'°':''});
+    }else if(S.showApprox&&!(showRevealedOnGraph&&Math.abs(S.theta-S.revealedRoot)<1e-6)){
+      overlayLabel('graph','selected-angle','θ ≈ '+S.theta.toFixed(2),xx,mid-18,'math-label math-guide',{width:W,height:H,fontSize:12,note:S.showDeg?degText(S.theta):''});
+    }
+  }
+  if(showRevealedOnGraph){
+    let rx=X(S.revealedRoot),ry=Y(S.k);
+    g.save();
+    g.strokeStyle='#d1ec9a';g.lineWidth=2.8;
+    g.beginPath();g.arc(rx,ry,11,0,TAU);g.stroke();
+    g.restore();
+    overlayLabel('graph','revealed-root-graph','θ = '+piText(S.revealedRoot),rx,Math.max(p.t+18,ry-22),'math-label math-angle',{width:W,height:H,fontSize:13,note:S.showDeg?degText(S.revealedRoot):''});
+  }
+
+  g.strokeStyle='#45644e';g.lineWidth=1;
+  g.strokeRect(p.l,p.t,pw,ph);
+  overlayEnd('graph');
+}
+
+function htmlExact(){
+  let e=S.mode==='special'?currentSpecialDisplay():null;
+  if(!e)return'';
+  let tan=e.tan==='정의되지 않음'?'<b style="color:'+C.tan+'">정의되지 않음</b>':displayMath(e.tan,'math-value');
+  let degStr=S.showDeg?' <span class="muted">('+e.deg+'°)</span>':'';
+  return '<div class="exact-line full">선택한 특수각 <b>'+displayMath(e.angle,'math-value')+degStr+'</b></div><div class="exact-line">점의 좌표 P <b>'+displayMath('('+e.cos+', '+e.sin+')','math-value')+'</b></div><div class="exact-line">사인 · '+displayMath('sin θ','math-value')+'<b>'+displayMath(e.sin,'math-value')+'</b></div><div class="exact-line">코사인 · '+displayMath('cos θ','math-value')+'<b>'+displayMath(e.cos,'math-value')+'</b></div><div class="exact-line full">탄젠트 · '+displayMath('tan θ','math-value')+'<b>'+tan+'</b></div>';
+}
+
+function htmlApprox(){
+  let e=exact(S.theta);
+  if(e){
+    let tan=e.tan==='정의되지 않음'?'<b style="color:'+C.tan+'">정의되지 않음</b>':displayMath(e.tan,'math-value');
+    let degStr=S.showDeg?' <span class="muted">('+e.deg+'°)</span>':'';
+    return '<div class="exact-line full">현재 각도 (특수각 일치) <b>'+displayMath(e.angle,'math-value')+degStr+'</b></div><div class="exact-line">점의 좌표 P <b>'+displayMath('('+e.cos+', '+e.sin+')','math-value')+'</b></div><div class="exact-line">사인 · '+displayMath('sin θ','math-value')+'<b>'+displayMath(e.sin,'math-value')+'</b></div><div class="exact-line">코사인 · '+displayMath('cos θ','math-value')+'<b>'+displayMath(e.cos,'math-value')+'</b></div><div class="exact-line full">탄젠트 · '+displayMath('tan θ','math-value')+'<b>'+tan+'</b></div>';
+  }
+  if(!S.showApprox){
+    return '<div class="exact-line full">연속 각도 기호 모드 <b>'+displayMath('P = (cos θ, sin θ)')+'</b></div><div class="exact-line full"><span class="muted">상단의 [연속 근삿값 ON] 버튼을 켜거나 [특수각 탐구]로 전환하면 수치 값을 확인할 수 있습니다.</span></div>';
+  }
+  let s=Math.sin(S.theta),c=Math.cos(S.theta),tn=fval('tan',S.theta);
+  let degStr=S.showDeg?' <span class="muted">('+degText(S.theta)+')</span>':'';
+  let tanHtml=!Number.isFinite(tn)||Math.abs(tn)>999?'<b style="color:'+C.tan+'">정의되지 않음</b>':'<b style="color:'+C.tan+'">≈ '+tn.toFixed(3)+'</b>';
+  return '<div class="exact-line full">현재 각도 (연속 근삿값) <b>'+displayMath('θ ≈ '+S.theta.toFixed(3)+'\\text{ rad}')+degStr+'</b></div><div class="exact-line">점의 좌표 P <b>('+c.toFixed(3)+', '+s.toFixed(3)+')</b></div><div class="exact-line">사인 · '+displayMath('sin θ')+'<b style="color:'+C.sin+'">≈ '+s.toFixed(3)+'</b></div><div class="exact-line">코사인 · '+displayMath('cos θ')+'<b style="color:'+C.cos+'">≈ '+c.toFixed(3)+'</b></div><div class="exact-line full">탄젠트 · '+displayMath('tan θ')+tanHtml+'</div>';
+}
+
+function renderRoots(){
+  let box=$('roots');box.innerHTML='';
+  if(S.activity==='motion'){
+    let e=S.mode==='special'?currentSpecialDisplay():exact(S.theta);
+    if(e){
+      box.innerHTML='<span class="root-chip">'+formatAngleWithDeg(e.angle,e.rad)+'</span><span class="root-chip">'+displayMath('P = ('+e.cos+', '+e.sin+')','root-angle')+'</span>';
+    }else if(S.showApprox){
+      box.innerHTML='<span class="root-chip">'+displayMath('θ ≈ '+S.theta.toFixed(2))+(S.showDeg?' ('+degText(S.theta)+')':'')+'</span><span class="root-chip">'+displayMath('P ≈ ('+Math.cos(S.theta).toFixed(2)+', '+Math.sin(S.theta).toFixed(2)+')','root-angle')+'</span>';
+    }else{
+      box.innerHTML='<span class="root-chip">연속 각도</span><span class="root-chip">'+displayMath('P = (cos θ, sin θ)','root-angle')+'</span>';
+    }
+    return;
+  }
+  let lo=S.domain==='one'?0:S.x0,hi=S.domain==='one'?TAU:S.x1,fs=active();
+  if(!fs.length){box.textContent='그래프 함수를 하나 이상 선택하세요.';return;}
+  if(S.activity==='equation'){
+    let anyRoots=false;
+    for(let f of fs){
+      let rs=roots(f,S.k,lo,hi);
+      for(let r of rs){
+        anyRoots=true;
+        let b=document.createElement('button');
+        b.type='button';
+        b.className='root-chip'+(S.revealedRoot!==null&&Math.abs(S.revealedRoot-r)<1e-6?' selected-root':'');
+        b.innerHTML='<b style="color:'+C[f]+'">'+f+'</b> '+formatAngleWithDeg(piText(r),r)+' <em>🔍 각 확인</em>';
+        b.addEventListener('click',()=>selectRootAngle(r));
+        box.appendChild(b);
+      }
+    }
+    if(!anyRoots){
+      let emptyChip=document.createElement('span');
+      emptyChip.className='root-chip';
+      emptyChip.innerHTML='교점 해: '+displayMath('∅','root-angle')+' <span class="muted">(해 없음)</span>';
+      box.appendChild(emptyChip);
+    }
+  }else{
+    for(let f of fs){
+      let p=intervals(f,lo,hi),b=document.createElement('span');
+      b.className='root-chip';
+      b.innerHTML='<b style="color:'+C[f]+'">'+f+'</b> '+displayMath('∈ '+(p.join(' ∪ ')||'∅'),'root-interval');
+      box.appendChild(b);
+    }
+  }
+  if(S.common&&fs.length>1){
+    if(S.activity==='equation'){
+      let r=roots(fs[0],S.k,lo,hi).filter(x=>fs.slice(1).every(f=>Math.abs(fval(f,x)-S.k)<1e-6)),b=document.createElement('span');
+      b.className='root-chip';b.style.borderColor='#d6ee9a';
+      b.innerHTML='공통해: '+(r.length?displayMath(r.map(piText).join(', '),'root-angle'):'없음');
+      box.appendChild(b);
+    }else if(S.activity==='inequality'){
+      let cp=commonIntervals(fs,lo,hi),b=document.createElement('span');
+      b.className='root-chip';b.style.borderColor='#d6ee9a';
+      b.innerHTML='공통해 구간: '+displayMath('∈ '+(cp.join(' ∪ ')||'∅'),'root-interval');
+      box.appendChild(b);
+    }
+  }
+}
+
+function draw(){
+  if(!!window.katex!==S.katexReady)renderStaticMath();
+  circleDraw();
+  graphDraw();
+  let e=S.mode==='special'?currentSpecialDisplay():exact(S.theta);
+  $('exactCard').innerHTML=htmlExact();
+  $('approxCard').innerHTML=htmlApprox();
+  $('continuousControls').classList.toggle('hidden',S.mode==='special');
+  $('specialControls').classList.toggle('hidden',S.mode!=='special');
+  $('kSubControls').classList.toggle('inactive-sub',S.activity==='motion');
+  $('resultTitle').textContent=S.activity==='motion'?'각도와 좌표':S.activity==='equation'?'방정식의 해':'부등식의 해 구간';
+
+  if(e){
+    $('angleReadout').innerHTML=displayMath(e.angle)+(S.showDeg?' ('+e.deg+'°)':'');
+  }else if(S.showApprox){
+    $('angleReadout').textContent=S.theta.toFixed(2)+' rad'+(S.showDeg?' ('+degText(S.theta)+')':'');
+  }else{
+    $('angleReadout').textContent='각도 숫자 숨김';
+  }
+
+  let caption=S.revealedRoot!==null&&S.activity==='equation'
+    ?'선택한 해 '+formatAngleWithDeg('θ = '+piText(S.revealedRoot),S.revealedRoot)+'를 단위원과 파형 양쪽에서 강조합니다.'
+    :S.mode==='special'
+      ?'특수각 '+formatAngleWithDeg(e?e.angle:'',e?e.rad:S.theta)+'에서 읽은 정확한 무리수 값입니다.'
+      :S.showApprox
+        ?'연속 탐구 모드입니다. 원 둘레의 특수각 점을 클릭하면 정확한 특수각 값으로 즉시 고정됩니다.'
+        :'연속 각도 숫자를 숨겼습니다. 상단의 [연속 근삿값 ON]을 켜거나 특수각 탐구에서 정확한 값을 확인하세요.';
+  $('resultCaption').innerHTML=caption;
+  $('scopeReadout').innerHTML='해의 정의역: '+(S.domain==='one'?displayMath('[0, 2π)'):('현재 보이는 범위 '+displayMath('['+piText(S.x0)+', '+piText(S.x1)+']')));
+  if($('graphHint'))$('graphHint').textContent=S.activity==='motion'?'빈 곳을 끌어 좌우 이동 · 휠 확대 · 점선(θ)을 끌어 각도 조절':'빈 곳을 끌어 좌우 이동 · 휠 확대 · 수평선(k) 또는 점선(θ) 끌기';
+  $('kRead').innerHTML=displayMath('k = '+valText(S.k));
+  $('kSlider').value=S.k;
+  syncThetaSlider();
+  document.querySelectorAll('#specialAngles button').forEach((b,i)=>b.classList.toggle('active',i===S.si));
+  $('commonSolutions').checked=S.common;
+  renderRoots();
+}
+
+function stopPlayback(clearMsg=false){
+  if(S.playing&&clearMsg)$('status').textContent='';
+  S.playing=false;S.playId++;S.lastTime=0;
+}
+function cancelTween(){S.animId++;S.anim=null;}
+function syncThetaSlider(){
+  let el=$('thetaSlider'),lo=Number(el.min),hi=Number(el.max);
+  if(S.theta<lo)el.min=String(Math.floor(S.theta/TAU)*TAU-TAU);
+  if(S.theta>hi)el.max=String(Math.ceil(S.theta/TAU)*TAU+TAU);
+  el.value=String(S.theta);
+}
+function followTheta(){
+  let w=S.x1-S.x0;
+  if(S.theta<S.x0+w*.06){S.x0=S.theta-w*.28;S.x1=S.x0+w;}
+  else if(S.theta>S.x1-w*.06){S.x0=S.theta-w*.72;S.x1=S.x0+w;}
+}
+function animateTheta(target,preserveUnwrapped=false){
+  cancelTween();
+  let from=S.theta,delta=target-from;
+  if(!preserveUnwrapped){
+    while(delta>PI)delta-=TAU;
+    while(delta<-PI)delta+=TAU;
+    from=target-delta;
+    S.theta=from;
+  }else if(Math.abs(delta)>TAU+1e-6){
+    from=((from%TAU)+TAU)%TAU;
+    S.theta=from;
+    delta=target-from;
+  }
+  let id=S.animId,start=null,duration=Math.max(240,Math.min(620,300*Math.abs(target-from)/PI));
+  S.anim={target,id};
+  function frame(now){
+    if(id!==S.animId)return;
+    if(start===null)start=now;
+    let p=Math.min(1,(now-start)/duration),e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+    S.theta=from+(target-from)*e;
+    if(p>=1){S.theta=target;S.anim=null;}
+    followTheta();syncThetaSlider();draw();
+    if(p<1)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+function setSpecialIndex(i,animate=true){
+  let prevSi=S.si;
+  i=(i+SP.length)%SP.length;
+  stopPlayback(true);cancelTween();
+  S.mode='special';S.si=i;S.revealedRoot=null;
+  $('continuousMode').classList.remove('active');
+  $('specialMode').classList.add('active');
+  let target=SP[i][1];
+  let isWrapBoundary=(prevSi===0&&i===16)||(prevSi===16&&i===0);
+  if(!animate||Math.abs(target-S.theta)<1e-8||isWrapBoundary){
+    S.theta=target;followTheta();syncThetaSlider();draw();
+  }else{
+    let inPrimaryRange=S.theta>=-1e-6&&S.theta<=TAU+1e-6;
+    draw();animateTheta(target,inPrimaryRange);
+  }
+}
+function selectSpecial(i){setSpecialIndex(i,true);}
+function setMode(m){
+  if(m!=='continuous'&&m!=='special')return;
+  stopPlayback(true);cancelTween();
+  S.revealedRoot=null;
+  if(m==='continuous'){
+    S.mode=m;
+    $('continuousMode').classList.add('active');
+    $('specialMode').classList.remove('active');
+    draw();return;
+  }
+  S.si=nearestSpecialIndex(S.theta);
+  S.mode='special';
+  $('continuousMode').classList.remove('active');
+  $('specialMode').classList.add('active');
+  let target=SP[S.si][1];
+  if(Math.abs(target-S.theta)<1e-8){
+    S.theta=target;syncThetaSlider();draw();
+  }else{
+    let inPrimaryRange=S.theta>=-1e-6&&S.theta<=TAU+1e-6;
+    draw();animateTheta(target,inPrimaryRange);
+  }
+}
+function selectRootAngle(r){
+  stopPlayback(true);cancelTween();
+  S.revealedRoot=r;
+  let i=specialIndex(r);
+  if(i===0&&Math.abs(r)>1e-6&&Math.abs(r/TAU-Math.round(r/TAU))<1e-6&&r>0)i=16;
+  if(i>=0&&r>=0&&r<=TAU+1e-6){S.mode='special';S.si=i;}
+  else S.mode='continuous';
+  $('continuousMode').classList.toggle('active',S.mode==='continuous');
+  $('specialMode').classList.toggle('active',S.mode==='special');
+  S.theta=r;followTheta();syncThetaSlider();draw();
+}
+
+function setK(k){
+  if(!Number.isFinite(k))return;
+  let nextK=Math.max(-2.5,Math.min(2.5,k));
+  if(Math.abs(nextK-S.k)>1e-7)S.revealedRoot=null;
+  S.k=nextK;
+  let i=K.findIndex(x=>Math.abs(x[0]-S.k)<1e-6);
+  $('kPreset').value=i<0?'custom':String(i);
+  syncKPreset();
+  draw();
+}
+function setView(a,b){
+  if(!Number.isFinite(a)||!Number.isFinite(b)||b-a<PI/3||b-a>16*PI)return;
+  S.x0=a;S.x1=b;draw();
+}
+function activity(a){
+  if(!['motion','equation','inequality'].includes(a))return;
+  S.activity=a;
+  if(a!=='equation')S.revealedRoot=null;
+  document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b.dataset.mode===a));
+  $('equationControls').classList.toggle('hidden',a!=='equation');
+  $('inequalityControls').classList.toggle('hidden',a!=='inequality');
+  $('operatorRow').classList.toggle('hidden',a!=='inequality');
+  $('taskTitle').textContent=a==='motion'?'관찰할 관계':a==='equation'?'방정식 · y = k':'부등식 · 곡선과 해 구간';
+  $('modeHelp').textContent=a==='motion'?'원점부터 가로 밑변이 cos θ(x좌표), 수직 높이가 sin θ(y좌표), x=1 접선의 높이가 tan θ를 보여줍니다.':a==='equation'?'각 함수와 y = k의 교점이 해입니다. 원의 투영과 접선으로 확인하세요.':'경계선 위·아래의 곡선 구간과 조건을 만족하는 원의 호를 같은 색으로 봅니다.';
+  draw();
+}
+function resize(){draw();}
+function circleRadius(w,h){return Math.min(w*.34,(h*.5-34)/Math.sqrt(3));}
+function cAngle(e){
+  let r=ca.circle.getBoundingClientRect();
+  return Math.atan2(-(e.clientY-r.top-r.height/2),e.clientX-r.left-r.width/2);
+}
+
+// [개선 완료] 단위원 둘레의 특수각 마커 클릭 시 즉시 해당 특수각으로 스냅 + 드래그 시 자석 효과
+ca.circle.addEventListener('pointerdown',e=>{
+  if(e.button!==0)return;
+  stopPlayback(true);cancelTween();
+  ca.circle.setPointerCapture(e.pointerId);
+  let r=ca.circle.getBoundingClientRect(),R=circleRadius(r.width,r.height);
+  let mx=e.clientX-r.left,my=e.clientY-r.top;
+
+  for(let i=0;i<16;i++){
+    let q=circleCoords(SP[i][1],r.width/2,r.height/2,R);
+    if(Math.hypot(mx-q.x,my-q.y)<15){
+      setSpecialIndex(i,true);
+      S.drag={kind:'circle',last:SP[i][1],startX:mx,startY:my,snappedOnDown:true};
+      return;
+    }
+  }
+
+  let a=cAngle(e),delta=a-S.theta;
+  while(delta>PI)delta-=TAU;
+  while(delta<-PI)delta+=TAU;
+  S.theta+=delta;
+  S.revealedRoot=null;
+  if(S.mode!=='continuous')setMode('continuous');
+  S.drag={kind:'circle',last:a,startX:mx,startY:my,snappedOnDown:false};
+  followTheta();syncThetaSlider();draw();
+});
+ca.circle.addEventListener('pointermove',e=>{
+  let r=ca.circle.getBoundingClientRect(),R=circleRadius(r.width,r.height);
+  let mx=e.clientX-r.left,my=e.clientY-r.top;
+  if(!S.drag||S.drag.kind!=='circle'){
+    let cp=circleCoords(S.theta,r.width/2,r.height/2,R);
+    let nearP=Math.hypot(mx-cp.x,my-cp.y)<22;
+    let nearSp=SP.slice(0,16).some(a=>{let q=circleCoords(a[1],r.width/2,r.height/2,R);return Math.hypot(mx-q.x,my-q.y)<14;});
+    ca.circle.style.cursor=(nearP||nearSp)?'pointer':'grab';
+    return;
+  }
+  if(S.drag.snappedOnDown&&Math.hypot(mx-S.drag.startX,my-S.drag.startY)<7)return;
+  S.drag.snappedOnDown=false;
+
+  let a=cAngle(e),delta=a-S.drag.last;
+  while(delta>PI)delta-=TAU;
+  while(delta<-PI)delta+=TAU;
+  S.theta+=delta;
+  S.drag.last=a;
+
+  if(S.snapSpecial){
+    let turn=Math.round(S.theta/TAU)*TAU;
+    let modA=((S.theta%TAU)+TAU)%TAU;
+    for(let i=0;i<16;i++){
+      let diff=Math.abs(Math.atan2(Math.sin(modA-SP[i][1]),Math.cos(modA-SP[i][1])));
+      if(diff<0.028){
+        let baseTurn=Math.floor(S.theta/TAU)*TAU;
+        S.theta=baseTurn+SP[i][1];
+        break;
+      }
+    }
+  }
+
+  S.revealedRoot=null;
+  if(S.mode!=='continuous'){
+    S.mode='continuous';
+    $('specialMode').classList.remove('active');
+    $('continuousMode').classList.add('active');
+  }
+  followTheta();syncThetaSlider();draw();
+});
+
+function gCoord(e){
+  let r=ca.graph.getBoundingClientRect(),tr=graphTransform(r.width,r.height),px=e.clientX-r.left,py=e.clientY-r.top;
+  let thetaPx=tr.xToPx(S.theta);
+  return{x:tr.pxToX(px),y:tr.pxToY(py),px,py,thetaDist:Math.abs(px-thetaPx),inside:px>=tr.p.l&&px<=r.width-tr.p.r&&py>=tr.p.t&&py<=r.height-tr.p.b};
+}
+ca.graph.addEventListener('pointerdown',e=>{
+  if(e.button!==0)return;
+  let q=gCoord(e);
+  ca.graph.setPointerCapture(e.pointerId);
+  if(S.activity!=='motion'&&q.inside&&Math.abs(q.y-S.k)<.22){S.drag={kind:'k'};ca.graph.style.cursor='ns-resize';return;}
+  if(q.inside&&q.thetaDist<12){
+    stopPlayback(true);cancelTween();
+    S.drag={kind:'theta'};
+    ca.graph.style.cursor='ew-resize';
+    return;
+  }
+  S.drag={kind:'pan',clientX:e.clientX};
+  ca.graph.style.cursor='grabbing';
+});
+ca.graph.addEventListener('pointermove',e=>{
+  let q=gCoord(e);
+  if(!S.drag){
+    if(S.activity!=='motion'&&q.inside&&Math.abs(q.y-S.k)<.22)ca.graph.style.cursor='ns-resize';
+    else if(q.inside&&q.thetaDist<12)ca.graph.style.cursor='ew-resize';
+    else ca.graph.style.cursor='grab';
+    return;
+  }
+  if(S.drag.kind==='k'){
+    let nextK=q.y;
+    for(const [kv]of K){if(Math.abs(nextK-kv)<0.024){nextK=kv;break;}}
+    setK(nextK);
+    return;
+  }
+  if(S.drag.kind==='theta'){
+    S.mode='continuous';
+    $('continuousMode').classList.add('active');
+    $('specialMode').classList.remove('active');
+    S.revealedRoot=null;
+    let nextTheta=Math.max(S.x0,Math.min(S.x1,q.x));
+    if(S.snapSpecial){
+      let modA=((nextTheta%TAU)+TAU)%TAU;
+      for(let i=0;i<16;i++){
+        if(Math.abs(modA-SP[i][1])<0.028){
+          nextTheta=Math.floor(nextTheta/TAU)*TAU+SP[i][1];
+          break;
+        }
+      }
+    }
+    S.theta=nextTheta;
+    syncThetaSlider();draw();
+    return;
+  }
+  let rr=ca.graph.getBoundingClientRect(),tr=graphTransform(rr.width,rr.height),dx=(e.clientX-S.drag.clientX)/tr.pw*(S.x1-S.x0);
+  S.x0-=dx;S.x1-=dx;S.drag.clientX=e.clientX;
+  draw();
+});
+for(let c of Object.values(ca)){
+  c.addEventListener('pointerup',()=>{S.drag=null;c.style.cursor='grab';});
+  c.addEventListener('pointercancel',()=>{S.drag=null;c.style.cursor='grab';});
+}
+ca.graph.addEventListener('wheel',e=>{
+  e.preventDefault();
+  let r=ca.graph.getBoundingClientRect(),tr=graphTransform(r.width,r.height),anchor=tr.pxToX(e.clientX-r.left),rel=(anchor-S.x0)/(S.x1-S.x0),f=e.deltaY<0?.82:1.22,w=(S.x1-S.x0)*f;
+  setView(anchor-rel*w,anchor+(1-rel)*w);
+},{passive:false});
+
+function zoom(f){let c=(S.x0+S.x1)/2,w=(S.x1-S.x0)*f;setView(c-w/2,c+w/2);}
+function playFrame(t,id){
+  if(!S.playing||id!==S.playId)return;
+  if(S.lastTime)S.theta+=(t-S.lastTime)*.00055;
+  S.lastTime=t;
+  followTheta();syncThetaSlider();draw();
+  requestAnimationFrame(now=>playFrame(now,id));
+}
+
+function init(){
+  renderStaticMath();
+  $('toggleDeg').addEventListener('click',()=>{
+    S.showDeg=!S.showDeg;
+    $('toggleDeg').classList.toggle('active',S.showDeg);
+    $('toggleDeg').textContent=S.showDeg?'각도(°) 병기 ON':'각도(°) 병기 OFF';
+    buildSpecialAngleButtons();
+    buildCoordinateTable();
+    draw();
+  });
+  $('toggleApprox').addEventListener('click',()=>{
+    S.showApprox=!S.showApprox;
+    $('toggleApprox').classList.toggle('active',S.showApprox);
+    $('toggleApprox').textContent=S.showApprox?'연속 근삿값 ON':'연속 근삿값 OFF';
+    draw();
+  });
+  $('toggleSnap').addEventListener('click',()=>{
+    S.snapSpecial=!S.snapSpecial;
+    $('toggleSnap').classList.toggle('active',S.snapSpecial);
+    $('toggleSnap').textContent=S.snapSpecial?'특수각 자석 ON':'특수각 자석 OFF';
+  });
+
+  $('continuousMode').addEventListener('click',()=>setMode('continuous'));
+  $('specialMode').addEventListener('click',()=>setMode('special'));
+  $('thetaSlider').addEventListener('input',e=>{
+    stopPlayback(true);cancelTween();
+    S.mode='continuous';
+    $('continuousMode').classList.add('active');
+    $('specialMode').classList.remove('active');
+    S.revealedRoot=null;
+    S.theta=Number(e.target.value);
+    followTheta();draw();
+  });
+  $('play').addEventListener('click',()=>{
+    stopPlayback(false);cancelTween();
+    S.mode='continuous';
+    S.revealedRoot=null;
+    $('continuousMode').classList.add('active');
+    $('specialMode').classList.remove('active');
+    S.playing=true;
+    let id=++S.playId;
+    $('status').textContent='각도가 천천히 한 바퀴 움직입니다.';
+    requestAnimationFrame(t=>playFrame(t,id));
+  });
+  $('stop').addEventListener('click',()=>{stopPlayback(false);$('status').textContent='재생을 멈췄습니다.';});
+  $('prevSpecial').addEventListener('click',()=>selectSpecial(S.si-1));
+  $('nextSpecial').addEventListener('click',()=>selectSpecial(S.si+1));
+  document.querySelectorAll('.fun input').forEach(ch=>ch.addEventListener('change',()=>{
+    S.fn[ch.closest('.fun').dataset.f]=ch.checked;
+    if(S.revealedRoot!==null){
+      let lo=S.domain==='one'?0:S.x0,hi=S.domain==='one'?TAU:S.x1;
+      let stillValid=active().some(f=>roots(f,S.k,lo,hi).some(r=>Math.abs(r-S.revealedRoot)<1e-6));
+      if(!stillValid)S.revealedRoot=null;
+    }
+    draw();
+  }));
+  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>activity(b.dataset.mode)));
+  $('kPresetButton').addEventListener('click',()=>{
+    let menu=$('kPresetMenu'),open=menu.classList.contains('hidden');
+    menu.classList.toggle('hidden',!open);
+    $('kPresetButton').setAttribute('aria-expanded',String(open));
+  });
+  $('allCoordinatesToggle').addEventListener('click',()=>{
+    let box=$('allCoordinates'),open=box.classList.contains('hidden');
+    box.classList.toggle('hidden',!open);
+    $('allCoordinatesToggle').setAttribute('aria-expanded',String(open));
+    $('allCoordinatesToggle').textContent=open?'특수각 좌표 숨기기':'특수각 좌표 모두 보기';
+  });
+  document.addEventListener('click',e=>{
+    if(!e.target.closest('.kpreset')){
+      $('kPresetMenu').classList.add('hidden');
+      $('kPresetButton').setAttribute('aria-expanded','false');
+    }
+  });
+  $('kSlider').addEventListener('input',e=>{
+    if(S.activity==='motion')activity('equation');
+    setK(+e.target.value);
+  });
+  document.querySelectorAll('[data-op]').forEach(b=>b.addEventListener('click',()=>{
+    S.op=b.dataset.op;
+    document.querySelectorAll('[data-op]').forEach(x=>x.classList.toggle('active',x===b));
+    draw();
+  }));
+  document.querySelectorAll('[data-domain]').forEach(b=>b.addEventListener('click',()=>{
+    if(S.activity==='motion')activity('equation');
+    S.domain=b.dataset.domain;
+    S.revealedRoot=null;
+    document.querySelectorAll('[data-domain]').forEach(x=>x.classList.toggle('active',x===b));
+    draw();
+  }));
+  $('commonSolutions').addEventListener('change',e=>{
+    if(S.activity==='motion'&&e.target.checked)activity('equation');
+    S.common=e.target.checked;
+    draw();
+  });
+  $('zoomIn').addEventListener('click',()=>zoom(.75));
+  $('zoomOut').addEventListener('click',()=>zoom(1.35));
+  $('resetView').addEventListener('click',()=>{
+    stopPlayback(true);cancelTween();
+    S.revealedRoot=null;
+    let slider=$('thetaSlider');
+    slider.min=String(-TAU);
+    slider.max=String(2*TAU);
+    if(S.theta<-PI||S.theta>3*PI){
+      S.theta=((S.theta%TAU)+TAU)%TAU;
+    }
+    setView(-PI,3*PI);
+  });
+  window.addEventListener('resize',resize);
+  draw();
+}
+
+function state(){
+  return{
+    theta:S.theta,mode:S.mode,special:S.si,activity:S.activity,functions:{...S.fn},k:S.k,operator:S.op,domain:S.domain,view:[S.x0,S.x1],exact:exact(S.theta),
+    roots:Object.fromEntries(active().map(f=>[f,roots(f,S.k,...(S.domain==='one'?[0,TAU]:[S.x0,S.x1]))]))
+  };
+}
+window.UnitCircleLab={
+  getState:state,
+  renderMathFor(label){return renderMath(texFromDisplay(label),label);},
+  renderMathFallback:fallbackMath,
+  refreshMath(){renderStaticMath();draw();},
+  setMode,
+  selectSpecial,
+  getTicks(a=S.x0,b=S.x1){
+    let width=ca.graph.getBoundingClientRect().width-53-24,spec=stepFor(b-a,Math.max(3,Math.floor(width/52))),out=[];
+    for(let i=Math.ceil(a/spec.value-EPS);i*spec.value<b+EPS;i++)out.push({tick:i,x:i*spec.value,label:xText(i,spec),stepNumerator:spec.num,stepDenominator:spec.den});
+    return out;
+  },
+  circleLayout(width,height){
+    let R=circleRadius(width,height);
+    return{cx:width/2,cy:height/2,R,topTan:height/2-Math.sqrt(3)*R,bottomTan:height/2+Math.sqrt(3)*R};
+  },
+  circlePoint(t){return unitPoint(t);},
+  tanFoot(t){let q=tanFoot(t,0,0,1);return q?{x:q.x,y:-q.y,value:q.value}:null;},
+  graphAngleAtPixel(px,width,height){return graphTransform(width,height).pxToX(px);},
+  setContinuous(t){
+    stopPlayback(true);cancelTween();
+    S.mode='continuous';
+    $('continuousMode').classList.add('active');
+    $('specialMode').classList.remove('active');
+    S.revealedRoot=null;
+    S.theta=t;
+    followTheta();syncThetaSlider();draw();
+  },
+  setFunctions(v){
+    for(let f of Object.keys(S.fn))if(f in v){
+      S.fn[f]=!!v[f];
+      $('fn'+f[0].toUpperCase()+f.slice(1)).checked=!!v[f];
+    }
+    draw();
+  },
+  setActivity:activity,
+  setK,
+  setView,
+  resize,
+  draw,
+  rootsFor:roots,
+  exactAt:exact
+};
+init();
+})();
+</script>
+</body>
+</html>

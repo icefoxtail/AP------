@@ -863,6 +863,7 @@ function buildDrawerMenu(roleKey) {
 
             ${drawerSection('수업 자료')}
             ${drawerItem('archive', '아카이브', "closeAppDrawer(); if(typeof openDashboardArchiveWindow==='function') openDashboardArchiveWindow(event); else toast('아카이브를 불러오지 못했습니다.', 'warn');")}
+            ${drawerItem('playground', '🔬 도형·함수 실험실', "closeAppDrawer(); window.open('./playground/teacher-hub.html', '_blank', 'noopener');")}
 
             ${drawerSection('지원')}
             ${drawerItem('manage', '관리', "closeAppDrawer(); if(typeof openAdminOperationMenu==='function') openAdminOperationMenu(); else toast('관리 기능을 불러오지 못했습니다.', 'warn');")}
@@ -887,6 +888,7 @@ function buildDrawerMenu(roleKey) {
         ${drawerItem('material', '수업자료', "closeAppDrawer(); if(typeof openStudyMaterialWrongCenter==='function') openStudyMaterialWrongCenter(); else toast('수업자료 기능을 불러오지 못했습니다.', 'warn');")}
         ${drawerItem('exam', '시험지 보관함', "closeAppDrawer(); window.open(appendArchiveSessionToUrlForUi('../archive/assessment/assessment-mvp.html'), '_blank', 'noopener');")}
         ${drawerItem('clinic', '클리닉', "closeAppDrawer(); if(typeof openClinicCenter==='function') openClinicCenter(); else toast('클리닉 기능을 불러오지 못했습니다.', 'warn');")}
+        ${drawerItem('playground', '🔬 도형·함수 실험실', "closeAppDrawer(); window.open('./playground/teacher-hub.html', '_blank', 'noopener');")}
 
         ${drawerSection('평가')}
         ${drawerItem('report', '리포트 센터', "closeAppDrawer(); if(typeof openReportCenterHome==='function') openReportCenterHome(); else toast('리포트 센터를 불러오지 못했습니다.', 'warn');")}
