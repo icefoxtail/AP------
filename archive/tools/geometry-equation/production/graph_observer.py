@@ -801,13 +801,19 @@ def piecewise_affine_overview_audit(plan,svg,transform):
     except (ValueError,KeyError,TypeError,ZeroDivisionError,ET.ParseError) as error:
         return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'PIECEWISE_SOURCE_OR_SVG_SCHEMA_INVALID']}
 
-def _observed_svg_points(root,transform):
-    sx,sy,display=transform['sx'],transform['sy'],transform['displayScale']
+def _observed_svg_points(root,transform,multiple=False):
+    sx,sy=transform['sx'],transform['sy']
     paths=[node for node in root.iter() if node.tag.split('}')[-1]=='polyline' and node.get('data-role')=='curve']
-    if len(paths)!=1:return [],['GRAPH_CURVE_PRIMITIVE_INVENTORY_MISMATCH']
-    values=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',paths[0].get('points',''))]
-    if len(values)<4 or len(values)%2 or not all(math.isfinite(value) for value in values):return [],['GRAPH_CURVE_POINTS_INVALID']
-    return [((values[i]-transform['originX'])/sx,(transform['originY']-values[i+1])/sy) for i in range(0,len(values),2)],[ ]
+    if multiple:
+        if not paths:return [],['GRAPH_CURVE_PRIMITIVE_INVENTORY_MISMATCH']
+        paths=sorted(paths,key=lambda node:int(re.search(r'-(\d+)$',node.get('id','-0')).group(1)) if re.search(r'-(\d+)$',node.get('id','')) else 0)
+    elif len(paths)!=1:return [],['GRAPH_CURVE_PRIMITIVE_INVENTORY_MISMATCH']
+    points=[]
+    for path in paths:
+        values=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',path.get('points',''))]
+        if len(values)<4 or len(values)%2 or not all(math.isfinite(value) for value in values):return [],['GRAPH_CURVE_POINTS_INVALID']
+        points.extend(((values[i]-transform['originX'])/sx,(transform['originY']-values[i+1])/sy) for i in range(0,len(values),2))
+    return points,[ ]
 
 def _audit_feature_line(root,role,axis,coordinate,transform):
     nodes=[node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('data-role')==role]
@@ -1953,6 +1959,355 @@ def trigonometric_interval_audit(plan,svg,transform):
         return {'status':status,'errors':sorted(set(errors+unsupported)),'features':head,'lines':detail,'curvePoints':len(points),'mathMethod':'SYMPY_EXACT_EXPRESSION_AND_MPMATH_40_DIGIT_ROOT_SCAN_OF_THE_GAP_AND_ITS_DERIVATIVE'}
     except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
 
+# ---- general trigonometric parameters (v2): independent recomputation from the source fields ----------------
+TRIG_V2_MAX_PERIODS=12
+
+def _trig_v2_spec(plan):
+    function=plan.get('function')
+    if function not in {'SIN','COS','TAN'}:raise ValueError('UNSUPPORTED_TRIGONOMETRIC_FUNCTION')
+    coefficients=plan.get('coefficients');rate_field=plan.get('ratePi')
+    if rate_field is not None:
+        rate=_piecewise_rational(rate_field,'INVALID_TRIGONOMETRIC_RATE')
+        if not isinstance(coefficients,list) or len(coefficients)!=2:raise ValueError('TRIG_GRAMMAR_UNSUPPORTED')
+        a,c=(_piecewise_rational(value,'TRIGONOMETRIC_COEFFICIENT_INVALID') for value in coefficients)
+        rate_has_pi=True
+    else:
+        if not isinstance(coefficients,list) or len(coefficients)!=3:raise ValueError('TRIG_GRAMMAR_UNSUPPORTED')
+        a,rate,c=(_piecewise_rational(value,'TRIGONOMETRIC_COEFFICIENT_INVALID') for value in coefficients)
+        rate_has_pi=False
+    phase_pi=plan.get('phasePi');phase_plain=plan.get('phase')
+    if (phase_pi is None)==(phase_plain is None):raise ValueError('INVALID_TRIGONOMETRIC_PHASE')
+    if phase_pi is not None:phase=_piecewise_rational(phase_pi,'INVALID_TRIGONOMETRIC_PHASE');phase_has_pi=True
+    else:phase=_piecewise_rational(phase_plain,'INVALID_TRIGONOMETRIC_PHASE');phase_has_pi=False
+    if a==0 or rate==0:raise ValueError('TRIGONOMETRIC_NONZERO_SCALE_AND_RATE_REQUIRED')
+    return {'function':function,'a':a,'c':c,'rate':rate,'rateHasPi':rate_has_pi,'phase':phase,'phaseHasPi':phase_has_pi}
+
+def _trig_v2_period(spec):
+    return Fraction(2,1)/abs(spec['rate']) if spec['function'] in {'SIN','COS'} else Fraction(1,1)/abs(spec['rate'])
+
+def _trig_v2_interval_source(plan):
+    source=plan.get('sourceDomain')
+    if not isinstance(source,dict) or source.get('kind') not in {'INTERVAL','INTERVAL_PI'}:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    kind=source['kind'];key='range' if kind=='INTERVAL' else 'rangePi'
+    if set(source)-{'kind',key,'states'} or not isinstance(source.get(key),list) or len(source[key])!=2:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    lo,hi=(_piecewise_rational(value,'INVALID_TRIG_INTERVAL') for value in source[key])
+    states=source.get('states',['CLOSED','CLOSED'])
+    if not lo<hi or not isinstance(states,list) or len(states)!=2 or any(state not in INTERVAL_STATE_FILLS for state in states):raise ValueError('INVALID_TRIG_INTERVAL')
+    return kind,lo,hi,list(states)
+
+def _trig_v2_key_rows(spec,lo,hi,states):
+    if spec['function'] not in {'SIN','COS'}:raise ValueError('TRIG_KEY_POINTS_REQUIRE_SIN_COS')
+    if not spec['phaseHasPi']:raise ValueError('TRIG_KEY_POINTS_REQUIRE_RATIONAL_PHASE')
+    function=spec['function'];rate=spec['rate'];phase=spec['phase'];a=spec['a'];c=spec['c']
+    first=math.ceil(float((rate*lo+phase)*2)-1e-12);last=math.floor(float((rate*hi+phase)*2)+1e-12)
+    rows=[]
+    for m in range(first,last+1):
+        x=(Fraction(m,2)-phase)/rate
+        if not lo<x<hi:continue
+        if function=='SIN':factor=Fraction(0) if m%2==0 else (Fraction(1) if m%4==1 else Fraction(-1))
+        else:factor=(Fraction(1) if m%4==0 else Fraction(-1)) if m%2==0 else Fraction(0)
+        y=a*factor+c
+        if factor==0:kind='X_INTERCEPT' if y==0 else 'MIDLINE_CROSSING'
+        else:kind='MAXIMUM' if y>c else 'MINIMUM'
+        rows.append({'id':'key-'+str(m),'kind':kind,'x':str(x),'y':str(y)})
+    return rows
+
+def _trig_v2_pole_rows(spec,lo,hi):
+    if spec['function']!='TAN':return []
+    if not spec['phaseHasPi']:raise ValueError('TRIG_TAN_REQUIRES_PI_PHASE')
+    rate=spec['rate'];phase=spec['phase']
+    first=math.ceil(float(rate*lo+phase-Fraction(1,2))-1e-12);last=math.floor(float(rate*hi+phase-Fraction(1,2))+1e-12)
+    rows=[]
+    for n in range(first,last+1):
+        x=(Fraction(1,2)+n-phase)/rate
+        if x==lo or x==hi:raise ValueError('TRIG_TAN_POLE_AT_INTERVAL_END')
+        if lo<x<hi:rows.append({'id':'pole-'+str(len(rows)+1),'x':str(x),'side':'LEFT' if rate>0 else 'RIGHT'})
+    if not rows:raise ValueError('TRIG_TAN_INTERVAL_NO_POLE')
+    return rows
+
+def _trig_v2_tick_multiples(plan,kind,x0,x1):
+    flag=plan.get('axisTickPi')
+    if flag is None or flag is False:return []
+    if flag is not True:raise ValueError('INVALID_TRIG_TICK_PI_FLAG')
+    if kind!='INTERVAL_PI':raise ValueError('TRIG_TICK_PI_REQUIRES_PI_AXIS')
+    values=plan.get('axisTickValues')
+    if not isinstance(values,dict) or set(values)!={'x','y'} or not isinstance(values.get('x'),list) or not isinstance(values.get('y'),list):raise ValueError('INVALID_TRIG_AXIS_TICK_VALUES')
+    multiples=[]
+    for value in values['x']:
+        multiple=_piecewise_rational(value,'TRIG_PI_TICK_VALUE_INVALID')
+        if multiple==0:raise ValueError('TRIG_PI_TICK_VALUE_INVALID')
+        if not x0<float(multiple)*math.pi<x1:raise ValueError('TRIG_PI_TICK_OUTSIDE_VIEW')
+        multiples.append(multiple)
+    return multiples
+
+def _trig_pi_tick_text(value):
+    multiple=Fraction(value);sign='−' if multiple<0 else '';multiple=abs(multiple)
+    numerator,denominator=multiple.numerator,multiple.denominator
+    head='π' if numerator==1 else f'{numerator}π'
+    return sign+(head if denominator==1 else head+f'/{denominator}')
+
+def _trig_v2_interval_expected(plan):
+    spec=_trig_v2_spec(plan);function=spec['function'];a=spec['a'];rate=spec['rate'];c=spec['c']
+    kind,lo,hi,states=_trig_v2_interval_source(plan)
+    if kind=='INTERVAL' and not spec['rateHasPi']:raise ValueError('TRIG_INTERVAL_REQUIRES_RATE_PI')
+    if kind=='INTERVAL_PI' and spec['rateHasPi']:raise ValueError('TRIG_RATE_PI_REQUIRES_PLAIN_INTERVAL')
+    if kind=='INTERVAL_PI' and not spec['phaseHasPi']:raise ValueError('TRIG_INTERVAL_PI_PHASE_MUST_BE_PI')
+    axis_unit='PI' if kind=='INTERVAL_PI' else 'ONE'
+    period=_trig_v2_period(spec);periods=(hi-lo)/period
+    if periods<Fraction(1,4) or periods>TRIG_V2_MAX_PERIODS:raise ValueError('TRIG_INTERVAL_PERIOD_COUNT_UNSUPPORTED')
+    rate_eff=float(rate)*(math.pi if spec['rateHasPi'] else 1.0);phase_eff=float(spec['phase'])*(math.pi if spec['phaseHasPi'] else 1.0)
+    x0=float(lo)*(math.pi if axis_unit=='PI' else 1.0);x1=float(hi)*(math.pi if axis_unit=='PI' else 1.0)
+    import mpmath
+    trig={'SIN':S.sin,'COS':S.cos,'TAN':S.tan}[function]
+    rat=lambda value:S.Rational(value.numerator,value.denominator)
+    expression=rat(a)*trig(rat(rate)*(S.pi if spec['rateHasPi'] else 1)*x+rat(spec['phase'])*(S.pi if spec['phaseHasPi'] else 1))+rat(c)
+    mpmath.mp.dps=40
+    lines=[]
+    if function!='TAN':
+        lo_f,hi_f=mpmath.mpf(repr(x0)),mpmath.mpf(repr(x1))
+        period_radians=2*math.pi/abs(rate_eff)
+        steps=max(4000,int(1600*max(1e-9,(x1-x0)/period_radians)))
+        for row in plan.get('referenceLines') or []:
+            if not isinstance(row,dict) or not isinstance(row.get('id'),str):raise ValueError('TRIG_REFERENCE_LINES_INVALID')
+            if 'y' in row:slope=Fraction(0);intercept=_piecewise_rational(row['y'],'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
+            else:slope=_piecewise_rational(row.get('slope'),'TRIG_LINE_COEFFICIENT_INVALID:'+row['id']);intercept=_piecewise_rational(row.get('intercept'),'TRIG_LINE_COEFFICIENT_INVALID:'+row['id'])
+            gap=expression-(rat(slope)*x+rat(intercept))
+            g=S.lambdify(x,gap,'mpmath');dg=S.lambdify(x,S.diff(gap,x),'mpmath')
+            grid=[lo_f+(hi_f-lo_f)*i/steps for i in range(steps+1)]
+            values=[g(t) for t in grid];slopes=[dg(t) for t in grid];roots=[]
+            for i in range(steps):
+                if values[i]==0:roots.append(grid[i])
+                elif values[i]*values[i+1]<0:roots.append(_trig_v2_refine(g,grid[i],grid[i+1]))
+            if values[-1]==0:roots.append(grid[-1])
+            for i in range(steps):
+                if slopes[i]*slopes[i+1]<0:
+                    critical=_trig_v2_refine(dg,grid[i],grid[i+1])
+                    if abs(g(critical))<mpmath.mpf(10)**-25:roots.append(critical)
+            unique=[]
+            for r in sorted(roots):
+                if not unique or abs(r-unique[-1])>mpmath.mpf(10)**-12:unique.append(r)
+            eps=mpmath.mpf(10)**-12
+            kept=[r for r in unique if (r>lo_f+eps if states[0]=='OPEN' else r>=lo_f-eps) and (r<hi_f-eps if states[1]=='OPEN' else r<=hi_f+eps)]
+            lines.append({'id':row['id'],'kind':'HORIZONTAL' if 'y' in row else 'SLANTED','slope':slope,'intercept':intercept,'claim':row.get('intersectionCount'),'x':[float(r) for r in kept]})
+    if plan.get('keyPoints') is not None and not isinstance(plan.get('keyPoints'),bool):raise ValueError('INVALID_TRIG_KEY_POINTS')
+    if plan.get('keyPoints') is True and function not in {'SIN','COS'}:raise ValueError('TRIG_KEY_POINTS_REQUIRE_SIN_COS')
+    key_rows=_trig_v2_key_rows(spec,lo,hi,states) if plan.get('keyPoints') is True else []
+    pole_rows=_trig_v2_pole_rows(spec,lo,hi) if function=='TAN' else []
+    ticks=_trig_v2_tick_multiples(plan,kind,x0,x1)
+    f=S.lambdify(x,expression,'mpmath')
+    features={'schemaVersion':'TRIGONOMETRIC_INTERVAL_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'axisUnit':axis_unit,'amplitude':str(a),'midline':str(c),'sourceInterval':{'kind':kind,'lo':str(lo),'hi':str(hi),'states':states},'lines':[{'id':row['id'],'kind':row['kind'],'slope':str(row['slope']),'intercept':str(row['intercept']),'intersections':[{'x':point,'y':float(row['slope'])*point+float(row['intercept'])} for point in row['x']]} for row in lines],'keyPoints':key_rows,'poles':pole_rows}
+    policy={'schemaVersion':'TRIGONOMETRIC_INTERVAL_POLICY_v2','markerRadiusIntrinsicPx':3.2,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':40,'minimumAmplitudeCssPx':20,'minimumPoleApproachGapCssPx':2}
+    return {'spec':spec,'function':function,'a':a,'rate':rate,'c':c,'kind':kind,'lo':lo,'hi':hi,'states':states,'axisUnit':axis_unit,'period':period,'x0':x0,'x1':x1,'rateEff':rate_eff,'phaseEff':phase_eff,'f':f,'lines':lines,'keyPoints':key_rows,'poles':pole_rows,'ticks':ticks,'features':features,'policy':policy,'endY':[float(f(mpmath.mpf(repr(x0)))),float(f(mpmath.mpf(repr(x1))))]}
+
+def _trig_v2_refine(fn,left,right):
+    fl=fn(left)
+    for _ in range(140):
+        mid=(left+right)/2;fm=fn(mid)
+        if fl*fm<=0:right=mid
+        else:left,fl=mid,fm
+    return (left+right)/2
+
+def _observed_curve_branch_list(root,transform):
+    sx,sy=transform['sx'],transform['sy']
+    branches=[]
+    for node in root.iter():
+        if node.tag.split('}')[-1]!='polyline' or node.get('data-role')!='curve':continue
+        values=[float(value) for value in re.findall(r'-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?',node.get('points',''))]
+        if len(values)<4 or len(values)%2 or not all(math.isfinite(value) for value in values):return [],['GRAPH_CURVE_POINTS_INVALID']
+        branches.append([((values[i]-transform['originX'])/sx,(transform['originY']-values[i+1])/sy) for i in range(0,len(values),2)])
+    return branches,[ ]
+
+def _trig_v2_tick_audit(plan,root,transform,expected):
+    errors=[]
+    axes=[node for node in root.iter() if node.tag.split('}')[-1]=='line' and node.get('data-role')=='axis' and node.get('data-axis')=='x']
+    if not axes:return errors
+    labels=[node for node in root.iter() if node.tag.split('}')[-1]=='text' and node.get('data-label-kind')=='TICK_LABEL' and node.get('data-tick-axis')=='x']
+    pi_labels=[node for node in labels if node.get('data-tick-pi-value') is not None]
+    got=[]
+    for node in pi_labels:
+        try:got.append(Fraction(node.get('data-tick-pi-value')))
+        except (ValueError,ZeroDivisionError):errors.append('TRIG_PI_TICK_VALUE_INVALID');continue
+    if sorted(got)!=sorted(expected):errors.append('TRIG_PI_TICK_INVENTORY_MISMATCH')
+    for multiple in expected:
+        node=next((item for item in pi_labels if Fraction(item.get('data-tick-pi-value'))==multiple),None)
+        if node is None:errors.append('TRIG_PI_TICK_LABEL_MISSING:'+str(multiple));continue
+        text=''.join(node.itertext()).strip()
+        if text!=_trig_pi_tick_text(multiple):errors.append('TRIG_PI_TICK_LABEL_TEXT_MISMATCH:'+str(multiple))
+        try:source_x=float(node.get('data-tick-source-x'))
+        except (TypeError,ValueError):errors.append('TRIG_PI_TICK_SOURCE_INVALID:'+str(multiple));continue
+        want=transform['originX']+transform['sx']*float(multiple)*math.pi
+        if abs(source_x-want)*transform['displayScale']>.35:errors.append('TRIG_PI_TICK_POSITION_MISMATCH:'+str(multiple))
+        ticks=[line for line in root.iter() if line.tag.split('}')[-1]=='line' and line.get('data-role')=='tick' and line.get('data-axis')=='x']
+        if not any(abs(float(line.get('data-value'))-float(multiple)*math.pi)<1e-9 for line in ticks if line.get('data-value') is not None):errors.append('TRIG_PI_TICK_PRIMITIVE_MISSING:'+str(multiple))
+    return errors
+
+def trigonometric_interval_v2_audit(plan,svg,transform):
+    errors=[];unsupported=[]
+    try:
+        import mpmath
+        want=_trig_v2_interval_expected(plan);features=plan.get('trigIntervalFeatures');policy=plan.get('trigIntervalPolicy')
+        if plan.get('overviewPolicy')!='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':errors.append('TRIG_OVERVIEW_POLICY_REQUIRED')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='TRIGONOMETRIC_INTERVAL_FEATURES_v2' or not isinstance(policy,dict) or policy.get('schemaVersion')!='TRIGONOMETRIC_INTERVAL_POLICY_v2':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        if {key:value for key,value in features.items() if key!='lines'}!={key:value for key,value in want['features'].items() if key!='lines'}:errors.append('TRIG_FEATURE_INVENTORY_MISMATCH')
+        if policy!=want['policy']:errors.append('TRIG_FEATURE_POLICY_MISMATCH')
+        domain=plan.get('domain')
+        if not isinstance(domain,list) or len(domain)!=2 or any(abs(actual-expected)>1e-9*max(1.0,abs(expected)) for actual,expected in zip(domain,[want['x0'],want['x1']])):errors.append('TRIG_DRAW_WINDOW_MISMATCH')
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        root=ET.fromstring(svg);branches,point_errors=_observed_curve_branch_list(root,transform);errors.extend(point_errors)
+        points=[point for branch in branches for point in branch]
+        if not points:return {'status':'FAIL','errors':sorted(set(errors+['TRIG_FINAL_CURVE_MISSING']))}
+        xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale'];x_tol=.35/max(1e-12,xscale)
+        points=sorted(points,key=lambda point:point[0])
+        if abs(points[0][0]-want['x0'])>x_tol or abs(points[-1][0]-want['x1'])>x_tol:errors.append('TRIG_DRAW_DOMAIN_COVERAGE_FAIL')
+        in_view=plan['viewport'][2]-1e-9<=0<=plan['viewport'][3]+1e-9
+        for branch in branches:
+            if any(right[0]<left[0]-1e-12 for left,right in zip(branch,branch[1:])):errors.append('TRIG_CURVE_NOT_MONOTONE_IN_X');break
+        for px,py in points:
+            if not want['x0']-x_tol<=px<=want['x1']+x_tol:errors.append('TRIG_CURVE_OUTSIDE_INTERVAL');break
+            expected=float(want['f'](mpmath.mpf(px)))
+            if want['function']=='TAN':
+                for pole in want['poles']:
+                    if abs(px-float(Fraction(pole['x']))*(math.pi if want['axisUnit']=='PI' else 1.0))<1e-7:errors.append('TRIG_TAN_CURVE_AT_POLE');break
+                span_y=(plan['viewport'][3]-plan['viewport'][2])*2
+                if expected<plan['viewport'][2]-span_y or expected>plan['viewport'][3]+span_y:continue
+            if not math.isfinite(expected) or abs(py-expected)*yscale>.35:errors.append('TRIG_WRONG_FUNCTION_CURVE');break
+        span=(want['x1']-want['x0'])*xscale
+        if span<want['policy']['minimumPeriodSpanCssPx']:unsupported.append('TRIG_PERIOD_BELOW_PROFILE_FLOOR')
+        if want['function']!='TAN':
+            amplitude=abs(float(want['a']))*yscale
+            if amplitude<want['policy']['minimumAmplitudeCssPx']:unsupported.append('TRIG_AMPLITUDE_BELOW_PROFILE_FLOOR')
+        circles={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle'};line_nodes={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='line'}
+        def read_circle(node_id):
+            node=circles.get(node_id)
+            if node is None:return None
+            try:return ((float(node.get('cx'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('cy')))/transform['sy'],node)
+            except (TypeError,ValueError):return None
+        for side,(wx,wy),state in zip(('start','end'),((want['x0'],want['endY'][0]),(want['x1'],want['endY'][1])),want['states']):
+            got=read_circle('interval-endpoint-'+side)
+            if got is None or abs(got[0]-wx)*xscale>.35 or abs(got[1]-wy)*yscale>.35 or got[2].get('fill') not in INTERVAL_STATE_FILLS[state]:errors.append('TRIG_INTERVAL_END_MARKER_MISMATCH:'+side)
+        frozen=features.get('lines');frozen_ids=[row.get('id') for row in frozen] if isinstance(frozen,list) else None
+        if frozen_ids!=[row['id'] for row in want['lines']]:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
+        detail=[];all_marks=[]
+        for index,row in enumerate(want['lines']):
+            xs=row['x'];count=len(xs)
+            if row['claim']!=count:errors.append('TRIG_LINE_INTERSECTION_COUNT_MISMATCH:'+row['id']+':observer finds '+str(count)+' intersection(s)')
+            slope,intercept=float(row['slope']),float(row['intercept']);ys=[slope*t+intercept for t in xs]
+            if isinstance(frozen,list) and index<len(frozen) and frozen[index].get('id')==row['id']:
+                got=frozen[index].get('intersections')
+                if not isinstance(got,list) or len(got)!=count or any(abs(g['x']-t)>1e-6*max(1.0,abs(t)) or abs(g['y']-v)>1e-6*max(1.0,abs(v)) for g,t,v in zip(got,xs,ys)):errors.append('TRIG_LINE_INTERSECTION_INVENTORY_MISMATCH:'+row['id'])
+                if frozen[index].get('slope')!=str(row['slope']) or frozen[index].get('intercept')!=str(row['intercept']) or frozen[index].get('kind')!=row['kind']:errors.append('TRIG_LINE_INVENTORY_MISMATCH')
+            node=line_nodes.get('line-'+row['id'])
+            if node is None:errors.append('TRIG_LINE_MISSING:'+row['id'])
+            else:
+                try:
+                    p1=((float(node.get('x1'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('y1')))/transform['sy']);p2=((float(node.get('x2'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('y2')))/transform['sy'])
+                    if any(abs(p[1]-(slope*p[0]+intercept))*yscale>.35 for p in (p1,p2)):errors.append('TRIG_LINE_POSITION_MISMATCH:'+row['id'])
+                    if xs and not (min(p1[0],p2[0])<=min(xs)+x_tol and max(p1[0],p2[0])>=max(xs)-x_tol):errors.append('TRIG_LINE_DOES_NOT_SPAN_CROSSINGS:'+row['id'])
+                except (TypeError,ValueError):errors.append('TRIG_LINE_INVALID:'+row['id'])
+            dots=[node_id for node_id in circles if node_id and node_id.startswith('intersection-'+row['id']+'-')]
+            if len(dots)!=count:errors.append('TRIG_INTERSECTION_DOT_COUNT_MISMATCH:'+row['id'])
+            for k,(tx,ty) in enumerate(zip(xs,ys),1):
+                got=read_circle('intersection-'+row['id']+'-'+str(k))
+                if got is None or abs(got[0]-tx)*xscale>.35 or abs(got[1]-ty)*yscale>.35:errors.append('TRIG_INTERSECTION_DOT_MISSING:'+row['id']+'-'+str(k))
+            all_marks.extend(zip(xs,ys));detail.append({'id':row['id'],'kind':row['kind'],'crossings':count,'x':xs})
+        for row in want['keyPoints']:
+            node_id='trig-'+row['id'];got=read_circle(node_id);sx=float(Fraction(row['x']))*(math.pi if want['axisUnit']=='PI' else 1.0);sy=float(Fraction(row['y']))
+            if got is None or abs(got[0]-sx)*xscale>.35 or abs(got[1]-sy)*yscale>.35:errors.append('TRIG_KEY_POINT_MISMATCH:'+row['id'])
+            elif got[2].get('data-feature-kind')!=row['kind']:errors.append('TRIG_KEY_POINT_KIND_MISMATCH:'+row['id'])
+            all_marks.append((sx,sy))
+        for pole in want['poles']:
+            node=line_nodes.get('trig-'+pole['id'])
+            if node is None:errors.append('TRIG_POLE_CUE_MISSING_OR_DUPLICATED:'+pole['id']);continue
+            pole_x=float(Fraction(pole['x']))*(math.pi if want['axisUnit']=='PI' else 1.0)
+            try:
+                x1=(float(node.get('x1'))-transform['originX'])/transform['sx'];x2=(float(node.get('x2'))-transform['originX'])/transform['sx'];y1=(transform['originY']-float(node.get('y1')))/transform['sy'];y2=(transform['originY']-float(node.get('y2')))/transform['sy']
+            except (TypeError,ValueError):errors.append('TRIG_POLE_CUE_INVALID:'+pole['id']);continue
+            if abs(x1-pole_x)*xscale>.35 or abs(x2-pole_x)*xscale>.35 or node.get('stroke-dasharray') not in {'5 4','5,4'}:errors.append('TRIG_POLE_CUE_POSITION_OR_STYLE_FAIL:'+pole['id'])
+        errors.extend(_trig_v2_tick_audit(plan,root,transform,want['ticks']))
+        if any(math.hypot((p[0]-q[0])*xscale,(p[1]-q[1])*yscale)<want['policy']['minimumFeatureSeparationCssPx'] for i,p in enumerate(all_marks) for q in all_marks[i+1:]):unsupported.append('TRIG_INTERSECTIONS_BELOW_PROFILE_FLOOR')
+        status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors+unsupported)),'features':want['features'],'lines':detail,'keyPoints':want['keyPoints'],'poles':want['poles'],'curveBranches':len(branches),'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_MPMATH_40_DIGIT_ROOT_SCAN'}
+    except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError,ET.ParseError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
+
+def _trig_v2_period_expected(plan):
+    spec=_trig_v2_spec(plan);function=spec['function'];a=spec['a'];rate=spec['rate'];c=spec['c']
+    expected={'kind':'ALL_REALS'} if function in {'SIN','COS'} else {'kind':'ALL_REALS_WITH_TAN_POLES'}
+    if plan.get('sourceDomain')!=expected:raise ValueError('TRIGONOMETRIC_SOURCE_DOMAIN_UNSUPPORTED')
+    if not spec['phaseHasPi']:raise ValueError('TRIG_PHASE_RATIONAL_REQUIRES_INTERVAL')
+    rate_eff=float(rate)*(math.pi if spec['rateHasPi'] else 1.0);phase_eff=float(spec['phase'])*(math.pi if spec['phaseHasPi'] else 1.0)
+    center=-phase_eff/rate_eff;radius=math.pi/abs(rate_eff);period=_trig_v2_period(spec)
+    if function in {'SIN','COS'}:
+        lo,hi=center-radius,center+radius;rows=[]
+        for index in range(-2,3):
+            x_pi=(Fraction(index,2)-spec['phase'])/rate
+            if function=='SIN':factor=Fraction(0) if index%2==0 else (Fraction(1) if index%4==1 else Fraction(-1))
+            else:factor=(Fraction(1) if index%4==0 else Fraction(-1)) if index%2==0 else Fraction(0)
+            y=a*factor+c
+            if factor==0:kind='X_INTERCEPT' if y==0 else 'MIDLINE_CROSSING'
+            else:kind='EXTREMUM'
+            row={'id':f'phase-{index+2}','kind':kind,'index':index,'x':str(x_pi),'y':str(y)}
+            if kind=='EXTREMUM':row['extreme']='MAXIMUM' if y>c else 'MINIMUM'
+            rows.append(row)
+        features={'schemaVersion':'TRIGONOMETRIC_FEATURES_v2','function':function,'rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'amplitude':str(a),'midline':str(c),'centerBehavior':('INCREASING' if a*rate>0 else 'DECREASING') if function=='SIN' else ('MAXIMUM' if a>0 else 'MINIMUM'),'phasePoints':rows}
+        policy={'schemaVersion':'TRIGONOMETRIC_FEATURE_POLICY_v2','function':function,'sourceDomain':'ALL_REALS','displayWindow':'ONE_FULL_PERIOD','markerRadiusIntrinsicPx':3.5,'minimumMarkerDiameterCssPx':2.5,'minimumFeatureSeparationCssPx':2,'minimumPeriodSpanCssPx':80,'minimumAmplitudeCssPx':20}
+        domain=[lo,hi]
+    else:
+        epsilon=float(Fraction(3,25)/abs(rate));first_pole=(-spec['phase']-Fraction(1,2))/rate;second_pole=(-spec['phase']+Fraction(1,2))/rate
+        left_pole,right_pole=sorted((first_pole,second_pole));lo=float(left_pole)+epsilon;hi=float(right_pole)-epsilon
+        features={'schemaVersion':'TRIGONOMETRIC_FEATURES_v2','function':'TAN','rate':str(rate),'rateHasPi':spec['rateHasPi'],'phase':str(spec['phase']),'phaseHasPi':spec['phaseHasPi'],'period':str(period),'amplitude':str(a),'midline':str(c),'centerBehavior':'INCREASING' if a*rate>0 else 'DECREASING','referencePoint':{'x':str(-spec['phase']/rate),'y':str(c)},'poles':[{'id':'pole-left','x':str(left_pole)},{'id':'pole-right','x':str(right_pole)}],'sampleBoundaryDistance':'3/25'}
+        policy={'schemaVersion':'TRIGONOMETRIC_FEATURE_POLICY_v2','function':'TAN','sourceDomain':'ALL_REALS_WITH_TAN_POLES','displayWindow':'ONE_COMPLETE_POLE_TO_POLE_BRANCH','markerRadiusIntrinsicPx':3.5,'minimumMarkerDiameterCssPx':2.5,'minimumBoundaryApproachGapCssPx':2,'minimumBranchSpanCssPx':80}
+        domain=[lo,hi]
+    return {'spec':spec,'function':function,'features':features,'policy':policy,'domain':domain,'f':S.lambdify(x,S.Rational(a.numerator,a.denominator)*{'SIN':S.sin,'COS':S.cos,'TAN':S.tan}[function](S.Rational(rate.numerator,rate.denominator)*(S.pi if spec['rateHasPi'] else 1)*x+S.Rational(spec['phase'].numerator,spec['phase'].denominator)*(S.pi if spec['phaseHasPi'] else 1))+S.Rational(c.numerator,c.denominator),'math')}
+
+def trigonometric_period_v2_audit(plan,svg,transform):
+    errors=[];unsupported=[]
+    try:
+        import mpmath
+        want=_trig_v2_period_expected(plan);features=plan.get('trigFeatures');policy=plan.get('trigFeaturePolicy')
+        if plan.get('overviewPolicy')!='TRIGONOMETRIC_PERIODIC_OVERVIEW_v2':errors.append('TRIG_OVERVIEW_POLICY_REQUIRED')
+        if not isinstance(features,dict) or features.get('schemaVersion')!='TRIGONOMETRIC_FEATURES_v2' or not isinstance(policy,dict) or policy.get('schemaVersion')!='TRIGONOMETRIC_FEATURE_POLICY_v2':raise ValueError('TRIG_FEATURE_INVENTORY_REQUIRED')
+        if features!=want['features']:errors.append('TRIG_FEATURE_INVENTORY_MISMATCH')
+        if policy!=want['policy']:errors.append('TRIG_FEATURE_POLICY_MISMATCH')
+        domain=plan.get('domain')
+        if not isinstance(domain,list) or len(domain)!=2 or any(abs(actual-expected)>1e-9*max(1.0,abs(expected)) for actual,expected in zip(domain,want['domain'])):errors.append('TRIG_DRAW_WINDOW_MISMATCH')
+        if set(transform)!={'originX','originY','sx','sy','displayScale'} or any(not math.isfinite(value) for value in transform.values()) or min(transform['sx'],transform['sy'],transform['displayScale'])<=0:return {'status':'FAIL','errors':['INVALID_OBSERVED_TRANSFORM']}
+        root=ET.fromstring(svg);branches,point_errors=_observed_curve_branch_list(root,transform);errors.extend(point_errors)
+        points=[point for branch in branches for point in branch]
+        if not points:return {'status':'FAIL','errors':sorted(set(errors+['TRIG_FINAL_CURVE_MISSING']))}
+        points=sorted(points,key=lambda point:point[0]);xscale=transform['sx']*transform['displayScale'];yscale=transform['sy']*transform['displayScale'];x_tol=.35/max(1e-12,xscale)
+        if abs(points[0][0]-want['domain'][0])>x_tol or abs(points[-1][0]-want['domain'][1])>x_tol:errors.append('TRIG_DRAW_DOMAIN_COVERAGE_FAIL')
+        for px,py in points:
+            expected=float(want['f'](mpmath.mpf(px)))
+            if not math.isfinite(expected) or abs(py-expected)*yscale>.35:errors.append('TRIG_WRONG_FUNCTION_CURVE');break
+        span=(want['domain'][1]-want['domain'][0])*xscale
+        if want['function'] in {'SIN','COS'}:
+            amplitude=abs(float(want['spec']['a']))*yscale
+            if span<policy['minimumPeriodSpanCssPx']:unsupported.append('TRIG_PERIOD_BELOW_PROFILE_FLOOR')
+            if amplitude<policy['minimumAmplitudeCssPx']:unsupported.append('TRIG_AMPLITUDE_BELOW_PROFILE_FLOOR')
+            circles={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle'}
+            for row in features['phasePoints']:
+                node=circles.get('trig-'+row['id'])
+                if node is None:errors.append('TRIG_FEATURE_MARKER_MISSING:'+row['id']);continue
+                try:observed=((float(node.get('cx'))-transform['originX'])/transform['sx'],(transform['originY']-float(node.get('cy')))/transform['sy'])
+                except (TypeError,ValueError):errors.append('TRIG_FEATURE_MARKER_INVALID:'+row['id']);continue
+                wanted=(float(Fraction(row['x'])),float(Fraction(row['y'])))
+                if node.get('data-feature-kind')!=row['kind'] or abs(observed[0]-wanted[0])*xscale>.35 or abs(observed[1]-wanted[1])*yscale>.35:errors.append('TRIG_FEATURE_MARKER_POSITION_OR_KIND_MISMATCH:'+row['id'])
+        else:
+            line_nodes={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='line'}
+            for pole in features['poles']:
+                node=line_nodes.get('trig-'+pole['id'])
+                if node is None:errors.append('TRIG_POLE_CUE_MISSING_OR_DUPLICATED:'+pole['id']);continue
+                expected_x=float(Fraction(pole['x']))
+                try:x1=(float(node.get('x1'))-transform['originX'])/transform['sx'];x2=(float(node.get('x2'))-transform['originX'])/transform['sx']
+                except (TypeError,ValueError):errors.append('TRIG_POLE_CUE_INVALID:'+pole['id']);continue
+                if abs(x1-expected_x)*xscale>.35 or abs(x2-expected_x)*xscale>.35 or node.get('stroke-dasharray') not in {'5 4','5,4'}:errors.append('TRIG_POLE_CUE_POSITION_OR_STYLE_FAIL:'+pole['id'])
+            circles={node.get('id'):node for node in root.iter() if node.tag.split('}')[-1]=='circle'}
+            reference=features['referencePoint']
+            if 'trig-reference-point' not in circles:errors.append('TRIG_REFERENCE_MARKER_MISSING')
+        status='UNSUPPORTED' if unsupported else 'FAIL' if errors else 'PASS'
+        return {'status':status,'errors':sorted(set(errors+unsupported)),'features':features,'curvePoints':len(points),'mathMethod':'EXACT_RATIONAL_PARAMETERS_AND_INDEPENDENT_EVALUATION'}
+    except (ValueError,KeyError,TypeError,ZeroDivisionError,OverflowError) as error:return {'status':'UNSUPPORTED','errors':[str(error) if isinstance(error,ValueError) else 'TRIGONOMETRIC_SOURCE_SCHEMA_INVALID']}
+
 def audit(plan,svg,transform):
     if plan.get('family')=='piecewise-polynomial':
         return piecewise_polynomial_audit(plan,svg,transform)
@@ -1968,6 +2323,8 @@ def audit(plan,svg,transform):
         return exp_log_pair_overview_audit(plan,svg,transform)
     if plan.get('family')=='trigonometric' and plan.get('shapeIntent')=='OVERVIEW':
         if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v1':return trigonometric_interval_audit(plan,svg,transform)
+        if plan.get('overviewPolicy')=='TRIGONOMETRIC_INTERVAL_OVERVIEW_v2':return trigonometric_interval_v2_audit(plan,svg,transform)
+        if plan.get('overviewPolicy')=='TRIGONOMETRIC_PERIODIC_OVERVIEW_v2':return trigonometric_period_v2_audit(plan,svg,transform)
         return trigonometric_overview_audit(plan,svg,transform)
     try:f,den,poly,evaluate,topology=resolve(plan)
     except (ValueError,KeyError,TypeError) as error:return {'status':'UNSUPPORTED','errors':[str(error)]}
