@@ -1,0 +1,461 @@
+{
+  "schemaVersion": "CANDIDATE_CLASSIFICATION_v2",
+  "examTitle": "20_매산고_2학기_중간_고2_확률과통계",
+  "sourceFileName": "20_매산고_2학기_중간_고2_확률과통계.js",
+  "sourceFileDriveId": "1lY6meRYMzgQY03Bi1dEO-SUHx3HE1za8",
+  "sourceSha256": "2c4eb2d91cf8b146ca88eef8bbd587bab2622242cf71cb8b4b405087bfe8ca57",
+  "totalQuestions": 19,
+  "records": [
+    {
+      "questionId": 1,
+      "questionNo": 1,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_DISTRIBUTION_MOMENTS",
+        "CC_BINOMIAL_DISTRIBUTION"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "[이항분포의 평균과 분산 계산]의 1단계 기본 공식 직접 대입: B(12, 1/4)에서 E(X)=12*(1/4)=3, V(X)=12*(1/4)*(3/4)=9/4를 구한 후 합 21/4을 즉시 계산하므로 Bucket 1을 보존한다.",
+      "level": null,
+      "contentSnippet": "1. 확률변수 $X$의 확률분포가 이항분포 $\\mathrm{B}\\left(12, \\frac{1}{4}\\right)$를 따를 때, $X$의 평균과 분산의 합은? [4점]",
+      "hasImage": false
+    },
+    {
+      "questionId": 2,
+      "questionNo": 2,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_CONDITIONAL_PROBABILITY_DEFINITION",
+        "CC_COMPLEMENT_PROBABILITY"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "[여사건과 곱사건을 이용한 조건부확률 산출]의 2단계 표준 연산: P(A∩B)=P(A)-P(A∩B^c)=0.4-0.2=0.2를 구한 뒤 정의식 P(A|B)=P(A∩B)/P(B)=0.2/0.6=1/3을 계산하므로 Bucket 2를 보존한다.",
+      "level": null,
+      "contentSnippet": "2. 두 사건 $A$와 $B$에 대하여\n$$P(A)=0.4, \\quad P(B)=0.6, \\quad P(A \\cap B^C)=0.2$$\n일 때, $P(A|B)$의 값은? [4.1점]",
+      "hasImage": false
+    },
+    {
+      "questionId": 3,
+      "questionNo": 3,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-PERMUTATION",
+      "subUnit": "순열",
+      "problemTypeKey": "PT_COUNTING_REPEATED_ASSIGNMENT",
+      "templateKey": "TPL_REPEATED_PERMUTATION_ASSIGNMENT",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_REPEATED_PERMUTATION",
+        "CC_PRODUCT_RULE"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 1,
+      "difficultyReason": "[중복순열의 기본 경우의 수 산출]의 1단계 직접 연산: 5명의 학생이 각각 3곳의 봉사활동 장소를 택하는 독립 시행의 곱의 법칙 3^5=243을 즉시 도출하므로 Bucket 1을 보존한다.",
+      "level": null,
+      "contentSnippet": "3. 5명의 학생이 3곳의 봉사활동 장소를 택하는 경우의 수는?\n(단, 학생들은 각각 한 장소씩 고르며 장소를 고르지 않은 학생은 없다.) [4.2점]",
+      "hasImage": false
+    },
+    {
+      "questionId": 4,
+      "questionNo": 4,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-ADDITION_THEOREM",
+      "subUnit": "확률의 덧셈정리",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_EVENT_RELATION_COMPLEMENT_ADDITION",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_COMPLEMENT_EVENT",
+        "CC_INDEPENDENT_TRIALS"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "[독립시행과 여사건의 확률 계산]의 2단계 표준 연산: 5번 타석에서 '적어도 1번 안타'의 여사건인 '5번 모두 범타'의 확률 (1/2)^5=1/32를 구하고 1-1/32=31/32를 산출하므로 Bucket 2를 보존한다.",
+      "level": null,
+      "contentSnippet": "4. 2번에 한번 꼴로 안타를 치는 야구선수가 있다. 이 선수가 타석에 다섯 번 섰을 때, 적어도 1번 안타를 칠 확률은? [4.3점]",
+      "hasImage": false
+    },
+    {
+      "questionId": 5,
+      "questionNo": 5,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-02",
+      "standardUnit": "이항정리",
+      "subUnitKey": "H15-PS-02-BINOMIAL_THEOREM",
+      "subUnit": "이항정리",
+      "problemTypeKey": "PT_BINOMIAL_THEOREM",
+      "templateKey": "TPL_BINOMIAL_TERM_COEFFICIENT",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_THEOREM_GENERAL_TERM",
+        "CC_COMBINATION"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "[이항정리 일반항을 이용한 특정 차수 계수 도출]의 2단계 표준 연산: (2a^2-1)^4의 일반항 4Cr*(2a^2)^r*(-1)^(4-r)에서 a^6이 되도록 r=3을 결정하고 4C3*2^3*(-1)^1=-32를 계산하므로 Bucket 2를 보존한다.",
+      "level": null,
+      "contentSnippet": "5. $(2a^2-1)^4$의 전개식에서 $a^6$의 계수는? [4.4점]",
+      "hasImage": false
+    },
+    {
+      "questionId": 6,
+      "questionNo": 6,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DENSITY_FUNCTION_INTEGRATION",
+        "CC_LINEAR_FUNCTION_AREA"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "[확률밀도함수 그래프 아래 사다리꼴 넓이 계산]의 2단계 표준 연산: f(x)=1/3-(1/18)x에서 f(1)=5/18, f(3)=3/18을 구하고 구간 [1, 3]의 사다리꼴 넓이 (1/2)*(5/18+3/18)*2=4/9를 산출하므로 Bucket 2를 보존한다.",
+      "level": null,
+      "contentSnippet": "6. 연속확률변수 $X$의 확률밀도함수가\n$$f(x)=\\frac{1}{3}-\\frac{1}{18}x \\quad (\\text{단}, 0 \\le x \\le 6)$$\n일 때, $P(3 \\le X \\le 6)$의 값을 구하면? [4.5점]",
+      "hasImage": false
+    },
+    {
+      "questionId": 7,
+      "questionNo": 7,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_STANDARDIZATION",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_NORMAL_DISTRIBUTION_STANDARDIZATION",
+        "CC_STANDARD_NORMAL_DISTRIBUTION"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "[정규분포의 표준화와 표준정규분포표 판독]의 2단계 표준 연산: N(15, 10^2)에서 P(-5<=X<=10)을 표준화하여 P(-2<=Z<=-0.5)=P(0.5<=Z<=2)=0.4772-0.1915=0.2857을 산출하므로 Bucket 2를 보존한다.",
+      "level": null,
+      "contentSnippet": "7. 확률변수 $X$가 정규분포 $N(15, 10^2)$를 따를 때, 다음 표준정규분포표를 이용하여 $P(-5 \\le X \\le 10)$의 확률을 구하면? [4.6점]\n\n| $z$ | $P(0 \\le Z \\le z)$ |\n| :---: | :---: |\n| $0.5$ | $0.1915$",
+      "hasImage": false
+    },
+    {
+      "questionId": 8,
+      "questionNo": 8,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-01",
+      "standardUnit": "순열과 조합",
+      "subUnitKey": "H15-PS-01-COMBINATION",
+      "subUnit": "조합",
+      "problemTypeKey": "PT_COUNTING_SELECTION_DISTRIBUTION",
+      "templateKey": "TPL_REPEATED_COMBINATION_DISTRIBUTION",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_REPEATED_COMBINATION",
+        "CC_POLYNOMIAL_TERM_COUNT"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "[중복조합을 이용한 다항식 전개식의 특정 문자 포함 항의 수]의 3단계 복합 연산: (alpha+beta+gamma)^4의 전체 서로 다른 항의 수 3H4=15에서 gamma를 포함하지 않는 항의 수 2H4=5를 차감하여 15-5=10개를 도출하므로 Bucket 3을 보존한다.",
+      "level": null,
+      "contentSnippet": "8. 다항식 $(\\alpha+\\beta+\\gamma)^4$의 전개식에서 $\\gamma$를 꼭 포함하는 서로 다른 항의 개수는? [4.7점]",
+      "hasImage": false
+    },
+    {
+      "questionId": 9,
+      "questionNo": 9,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+        "CC_EXPECTATION_SECOND_MOMENT",
+        "CC_COMBINATION"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 4,
+      "difficultyReason": "[초기하분포 모델링과 이차 적률 기댓값 산출]의 4단계 고난도 연산: 1~10 중 3장을 뽑을 때 소수(2,3,5,7의 4장)의 개수 X(0,1,2,3)의 확률분포 P(X=x)를 10C3 조합으로 각각 계산하고, 각 x에 대해 X^2의 가중합 E(X^2)을 전수 집계하여 9/5를 도출하므로 Bucket 4를 보존한다.",
+      "level": null,
+      "contentSnippet": "9. 1부터 10까지의 자연수가 각각 하나씩 적힌 10장의 카드가 있다. 이 카드 중에서 임의로 3장의 카드를 동시에 택할 때, 소수가 적힌 카드의 개수를 확률변수 $X$라고 하자. 이때, $E(X^2)$의 값은? [4.8점]",
+      "hasImage": false
+    },
+    {
+      "questionId": 10,
+      "questionNo": 10,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_NORMAL_DISTRIBUTION_PERCENTILE",
+        "CC_STANDARD_NORMAL_DISTRIBUTION"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 2,
+      "difficultyReason": "[정규분포에서 상위 백분위 점수 역산]의 2단계 표준 연산: N(60, 15^2)에서 상위 3% 경계가 P(Z>=z)=0.03 (P(|Z|<=2)=0.94에서 z=2)임을 확인하고 x=60+2*15=90점을 산출하므로 Bucket 2를 보존한다.",
+      "level": null,
+      "contentSnippet": "10. 우리 학교 확률과 통계 시험 성적이 평균 60점, 표준편차가 15점인 정규분포를 따른다고 한다. 성적이 상위 3% 이내인 학생의 최저 점수는? (단, $Z$가 표준정규분포표를 따르는 확률변수일 때, $P(|Z| \\le 1.5)=0.86$, $P(|Z| \\le 2)=0.94$로 계",
+      "hasImage": false
+    },
+    {
+      "questionId": 11,
+      "questionNo": 11,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-04",
+      "standardUnit": "조건부확률",
+      "subUnitKey": "H15-PS-04-CONDITIONAL_PROBABILITY",
+      "subUnit": "조건부확률",
+      "problemTypeKey": "PT_CONDITIONAL_PROBABILITY",
+      "templateKey": "TPL_CONDITIONAL_PROBABILITY_DIRECT",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_CONDITIONAL_PROBABILITY_TABLE",
+        "CC_TWO_WAY_FREQUENCY_TABLE"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "[비율 분할 집단에서의 조건부확률 산출]의 3단계 복합 연산: 1, 2, 3학년 인원(180, 210, 110)과 농구 선호 비율(70%, 60%, 50%)로부터 농구 선택 총원 126+126+55=307명을 구하고 2학년 농구 선택자 126명의 조건부확률 126/307을 산출하므로 Bucket 3을 보존한다.",
+      "level": null,
+      "contentSnippet": "11. 1학년이 180명, 2학년이 210명, 3학년이 110명인 A고등학교 학생 전체를 대상으로 야구와 농구에 대한 선호도를 조사하였다. 이 학교 학생의 60%가 야구를 선택하였으며, 나머지 40%는 농구를 선택하였다. 이 학교의 학생 중 임의로 뽑은 1명이 야구를 선택한 1학년 학생",
+      "hasImage": false
+    },
+    {
+      "questionId": 12,
+      "questionNo": 12,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-03",
+      "standardUnit": "확률의 뜻과 활용",
+      "subUnitKey": "H15-PS-03-BASIC_PROBABILITY",
+      "subUnit": "확률의 뜻과 활용",
+      "problemTypeKey": "PT_PROBABILITY_PROPERTIES_APPLICATION",
+      "templateKey": "TPL_PROBABILITY_BASIC_COUNT_RATIO",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_LATTICE_POINTS_COORDINATES",
+        "CC_EUCLIDEAN_DISTANCE_PROBABILITY",
+        "CC_COMBINATION"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "[격자점 집합에서 두 점 사이 거리 조건의 수학적 확률]의 3단계 복합 연산: 3x3 격자의 9개 점에서 서로 다른 두 점을 택하는 9C2=36가지 중 두 점 사이의 거리가 sqrt(5)인 경우(가로 2, 세로 1 또는 가로 1, 세로 2인 직사각형 대각선 2*4=8가지)를 체계적으로 분류 집계하여 8/36=2/9를 도출하므로 Bucket 3을 보존한다.",
+      "level": null,
+      "contentSnippet": "12. 다음 조건을 만족시키는 좌표평면 위의 점 $(a, b)$ 중에서 임의로 서로 다른 두 점을 선택할 때, 선택된 두 점 사이의 거리를 확률변수 $X$라 두자. 이때, $P(X>1)$의 값은? [5.1점]\n\n(가) $a, b$는 자연수\n(나) $1 \\le a \\le 3$, $2 \\l",
+      "hasImage": false
+    },
+    {
+      "questionId": 13,
+      "questionNo": 13,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_DISTRIBUTION_EXPECTATION",
+        "CC_LINEAR_INEQUALITY"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "difficultyBucket": 2,
+      "difficultyReason": "[두 이항분포의 평균 부등식 만족 자연수 범위]의 2단계 표준 연산: E(X)=3n/4, E(Y)=(200-n)/4에서 3n/4 >= (200-n)/4 + 40, 즉 4n >= 360, n >= 90을 유도하여 최솟값 90을 산출하므로 Bucket 2를 보존한다.",
+      "level": null,
+      "contentSnippet": "13. 두 확률변수 $X, Y$가 각각 이항분포 $\\mathrm{B}(n, p)$, $\\mathrm{B}(200-n, q)$를 따른다. $\\mathrm{E}(X) \\ge \\mathrm{E}(Y)$를 만족할 때, $p$의 값이 $\\frac{3}{4}$이라 한다. 이때, $n$의 최솟값은?",
+      "hasImage": false
+    },
+    {
+      "questionId": 14,
+      "questionNo": 14,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DENSITY_FUNCTION_INTEGRATION",
+        "CC_TRAPEZOIDAL_AREA_PROPERTY"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "[확률밀도함수 전 구간 넓이와 부분 사다리꼴 넓이의 연립]의 4단계 고난도 연산: f(x)=mx+1의 [0, 2] 전체 넓이 (1/2)*(1+(2m+1))*2=2m+2=1에서 m=-1/2를 확정하고, f(x)=-1/2x+1에서 P(a<=X<=2)=(1/2)*(2-a)*(-1/2a+1)=1/4을 풀어 a=1을 도출하므로 Bucket 4를 보존한다.",
+      "level": null,
+      "contentSnippet": "14. 확률변수 $X$가 갖는 값의 범위는 $0 \\le X \\le 2$이고 $X$의 확률밀도함수가 $f(x)=mx+1$이다. $0 \\le t \\le 2$에서 정의된 함수 $g(t)$가 $g(t)=P(t \\le X \\le 2)$이고 $f(k)=2g(k)$를 만족할 때, $P(k \\le X",
+      "hasImage": false
+    },
+    {
+      "questionId": 15,
+      "questionNo": 15,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-RANDOM_VARIABLE",
+      "subUnit": "확률변수와 기댓값",
+      "problemTypeKey": "PT_EXPECTATION_VARIANCE",
+      "templateKey": "TPL_EXPECTATION_TRANSFORM",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DISTRIBUTION_TABLE",
+        "CC_EXPECTATION_LINEARITY"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "[이산확률분포표의 확률 합과 기댓값 연립방정식]의 3단계 복합 연산: 확률의 총합 1/3+a+1/2=1에서 a=1/6을 구하고, E(X)=-1/3+2a+b=0에서 b=0을 확정한 후 E(-4X+1/a) = -4E(X)+1/a 또는 선형 변환 값을 산출하므로 Bucket 3을 보존한다.",
+      "level": null,
+      "contentSnippet": "※ [단답형 1~3] 다음은 단답형 문항입니다. 정답을 OMR카드 주관식 답란에 기입하세요.\n\n단답형 1. 확률변수 $X$의 확률분포를 표로 나타내면 아래와 같다. 평균이 $\\frac{1}{4}$일 때, 상수 $a, b$에 대하여 $a+b$의 값을 구하시오. [5점]\n\n| $X$ | $",
+      "hasImage": false
+    },
+    {
+      "questionId": 16,
+      "questionNo": 16,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_PROBABILITY_FORMULA",
+        "CC_PROBABILITY_RATIO_EQUATION"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "[이항분포 인접 확률의 비례 방정식과 분산 계산]의 3단계 복합 연산: 25*P(X=k)=P(X=k+1) 형태의 독립시행 확률 식을 n과 k의 조합식으로 전개하여 미지수 시행 횟수 n을 구하고, V(X)=np(1-p)=n*(1/4)*(3/4)의 값을 768로 산출하므로 Bucket 3을 보존한다.",
+      "level": null,
+      "contentSnippet": "단답형 2. 확률변수 $X$가 이항분포 $\\mathrm{B}\\left(n, \\frac{1}{4}\\right)$를 따르고\n$$2P(X=2)=5P(X=1)$$\n일 때, $V(nX+2)$의 값을 구하시오. [5점]",
+      "hasImage": false
+    },
+    {
+      "questionId": 17,
+      "questionNo": 17,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_RANDOM_VARIABLE_DISTRIBUTION",
+      "templateKey": "TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_PROBABILITY_DENSITY_SYMMETRY",
+        "CC_INTERVAL_PROBABILITY_ADDITION"
+      ],
+      "conditionKeys": [
+        "COND_RANGE"
+      ],
+      "difficultyBucket": 3,
+      "difficultyReason": "[대칭성을 가진 확률밀도함수의 구간 확률 분할]의 3단계 복합 연산: f(x)=f(8-x)의 x=4 대칭성과 P(0<=X<=3)=1/3, P(3<=X<=4) 등을 대칭 구간과 결합하여 P(3<=X<=5)의 확률을 1/6로 산출하므로 Bucket 3을 보존한다.",
+      "level": null,
+      "contentSnippet": "단답형 3. $0 \\le X \\le 8$에서 정의된 연속확률변수 $X$의 확률밀도함수를 $f(x)$라 할 때, $0 \\le x \\le 4$인 모든 $x$에 대하여 $f(x)=f(8-x)$를 만족한다. $P(0 \\le X \\le 5)=\\frac{7}{12}$일 때, $P(3 \\le X \\",
+      "hasImage": false
+    },
+    {
+      "questionId": 18,
+      "questionNo": 18,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_NORMAL_DISTRIBUTION",
+      "templateKey": "TPL_NORMAL_DISTRIBUTION_APPLICATION",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_NORMAL_DISTRIBUTION_SYMMETRY",
+        "CC_CUMULATIVE_DISTRIBUTION_COMPLEMENT"
+      ],
+      "conditionKeys": [],
+      "difficultyBucket": 3,
+      "difficultyReason": "[정규분포의 꼬리확률 함수와 대칭성 서술]의 3단계 서술형 연산: f(x)=P(X>x)의 성질과 표준정규분포 Z=(X-12)/2의 관계를 서술하고, f(6)=P(Z>-3)=P(Z<3) 증명 및 f(a)+f(b)=1을 만족하는 평균 대칭 조건 a+b=24에서 미지수를 서술 산출하므로 Bucket 3을 보존한다.",
+      "level": null,
+      "contentSnippet": "※ [서술형 1~2] 다음은 서술형 문항입니다. 풀이과정과 정답을 정확하게 서술형 답안지에 서술하세요. 풀이 과정이 없는 경우 오답으로 처리합니다.\n\n서술형 1. 정규분포 $\\mathrm{N}(12, 2^2)$을 따르는 확률변수 $X$에 대하여 함수 $f(x)=1-\\mathrm{P}(X",
+      "hasImage": false
+    },
+    {
+      "questionId": 19,
+      "questionNo": 19,
+      "standardCourse": "확률과 통계",
+      "standardUnitKey": "H15-PS-05",
+      "standardUnit": "확률분포",
+      "subUnitKey": "H15-PS-05-PROBABILITY_DISTRIBUTION",
+      "subUnit": "확률분포",
+      "problemTypeKey": "PT_BINOMIAL_DISTRIBUTION",
+      "templateKey": "TPL_BINOMIAL_PARAMETER_MOMENTS",
+      "targetPack": "PROBABILITY_STATISTICS",
+      "pack": "PROBABILITY_STATISTICS",
+      "crossConceptKeys": [
+        "CC_BINOMIAL_DISTRIBUTION_EXPECTATION_VARIANCE",
+        "CC_INDEPENDENT_TRIALS_REPLACEMENT"
+      ],
+      "conditionKeys": [
+        "COND_NATURAL_NUMBER"
+      ],
+      "difficultyBucket": 4,
+      "difficultyReason": "[복원추출 이항분포 모델의 평균·분산 서술형 복합 역산]의 4단계 고난도 서술형: 검은 공 확률 p=k/(k+5), 시행 횟수 m인 B(m, p)에서 E(3X+5)=3mp+5=65 (mp=20)와 V(3X+5)=9mp(1-p)=144 (mp(1-p)=16)를 연립하여 1-p=4/5, p=1/5, k=1/4... k=5/4, 시행 횟수 m을 역산하고 최종 연립 해 900을 서술 도출하므로 Bucket 4를 보존한다.",
+      "level": null,
+      "contentSnippet": "서술형 2. 주머니에 흰 공 5개와 검은공 $k$개가 들어있다. 이 주머니에서 한 개의 공을 꺼내 색을 확인하고 다시 넣는 시행을 $m$번 반복할 때, 검은 공이 나오는 횟수를 확률변수 $X$라 하자.\n$$E\\left(\\frac{1}{9}X+6\\right)=10, \\quad V\\left",
+      "hasImage": false
+    }
+  ]
+}

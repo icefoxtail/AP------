@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "STATISTICS_CONCEPTS",
-  "shardVersion": "1.0.4",
+  "shardVersion": "1.0.5",
   "status": "ACTIVE",
-  "conceptCount": 42,
+  "conceptCount": 64,
   "concepts": [
     {
       "conceptKey": "CC_BINOMIAL_DISTRIBUTION",
@@ -1533,6 +1533,800 @@
           "auditPackageRef": {
             "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-2-f2bf38e88c97.audit.json",
             "sha256": "97a732dabf07021493e81268ea381539c628d6e6f3f6ff24aa8350bb4f198eed"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONDITIONAL_PROBABILITY"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_DISTRIBUTION_EXPECTATION",
+      "canonicalLabelKo": "이항분포의 기댓값 연산",
+      "definition": "E(X)=np를 적용하여 시행 횟수나 성공 확률에 관한 부등식을 해결하는 원리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_59a6eeb5905d2f48569a6911350748381f3ff6aeda5829314410797e7ab459db"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_59a6eeb5905d2f48569a6911350748381f3ff6aeda5829314410797e7ab459db",
+          "sourceOrdinal": 13,
+          "classificationRationale": "META_PIPELINE_AUDIT record 13 binds CC_BINOMIAL_DISTRIBUTION_EXPECTATION for PT_BINOMIAL_DISTRIBUTION/TPL_BINOMIAL_PARAMETER_MOMENTS at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "E(X)=3n/4, E(Y)=(200−n)/4이다. 부등식 3n/4 ≥ (200−n)/4 + 40을 정리하면 4n ≥ 360이므로 n의 최솟값은 90이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_DISTRIBUTION_EXPECTATION_VARIANCE",
+      "canonicalLabelKo": "이항분포의 평균·분산 연립방정식",
+      "definition": "E(X)=mp와 V(X)=mp(1-p)를 연립하여 모수 m과 p를 동시에 결정",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8a313febbbbf7839b0f94d19e1721d6f8c178a5d4999c8d926ac7e5cc898dfb7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8a313febbbbf7839b0f94d19e1721d6f8c178a5d4999c8d926ac7e5cc898dfb7",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_BINOMIAL_DISTRIBUTION_EXPECTATION_VARIANCE for PT_BINOMIAL_DISTRIBUTION/TPL_BINOMIAL_PARAMETER_MOMENTS at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "E(3X+5)=3mp+5=65에서 mp=20이고, V(3X+5)=9V(X)=144에서 V(X)=16이다. 1−p=16/20=4/5에서 p=1/5, m=100을 구해 최종 서술형 답을 완성한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_DISTRIBUTION_MOMENTS",
+      "canonicalLabelKo": "이항분포의 평균과 분산 공식",
+      "definition": "시행 횟수 n, 성공 확률 p인 이항분포 B(n,p)에서 기댓값 np와 분산 np(1-p)를 산출하는 공식",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_9f4acc7257ca900da1596a5d3ca699305f7341fd65a22605e781ec8fd9aae2e5"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9f4acc7257ca900da1596a5d3ca699305f7341fd65a22605e781ec8fd9aae2e5",
+          "sourceOrdinal": 1,
+          "classificationRationale": "META_PIPELINE_AUDIT record 1 binds CC_BINOMIAL_DISTRIBUTION_MOMENTS for PT_BINOMIAL_DISTRIBUTION/TPL_BINOMIAL_PARAMETER_MOMENTS at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "E(X)=12×(1/4)=3, V(X)=12×(1/4)×(3/4)=9/4이므로 두 값의 합은 3+9/4=21/4이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_BINOMIAL_PROBABILITY_FORMULA",
+      "canonicalLabelKo": "이항분포 확률질량함수 비례식",
+      "definition": "P(X=k)=nCk*p^k*(1-p)^(n-k) 식의 비율을 약분하여 n을 결정하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_635a0d27f6afac3cdc19703d688871f03d0be707ccea8ae245a6ca24aaa53e43"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_635a0d27f6afac3cdc19703d688871f03d0be707ccea8ae245a6ca24aaa53e43",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_BINOMIAL_PROBABILITY_FORMULA for PT_BINOMIAL_DISTRIBUTION/TPL_BINOMIAL_PARAMETER_MOMENTS at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "독립시행 확률의 비례 관계에서 n을 결정한 후, 이항분포 분산 공식 V(X)=n×(1/4)×(3/4)=768을 정확히 계산한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_COMPLEMENT_PROBABILITY",
+      "canonicalLabelKo": "여사건의 확률과 교집합 분해",
+      "definition": "P(A∩B^c)=P(A)-P(A∩B) 관계식을 이용하여 교집합의 확률을 산출하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c2ce859fa768d433160d98ad2831a8572235b2ae16579cec1fc7f19cd75b1258"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c2ce859fa768d433160d98ad2831a8572235b2ae16579cec1fc7f19cd75b1258",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_COMPLEMENT_PROBABILITY for PT_CONDITIONAL_PROBABILITY/TPL_CONDITIONAL_PROBABILITY_DIRECT at H15-PS-04-CONDITIONAL_PROBABILITY.",
+          "decisiveEvidence": "P(A∩B)=P(A)−P(A∩B^C)=0.4−0.2=0.2이다. 조건부확률 공식에 의해 P(A|B)=0.2/0.6=1/3이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONDITIONAL_PROBABILITY"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_CONDITIONAL_PROBABILITY_DEFINITION",
+      "canonicalLabelKo": "조건부확률의 정의",
+      "definition": "사건 B가 일어났을 때 사건 A가 일어날 조건부확률 P(A|B)=P(A∩B)/P(B)의 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c2ce859fa768d433160d98ad2831a8572235b2ae16579cec1fc7f19cd75b1258"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c2ce859fa768d433160d98ad2831a8572235b2ae16579cec1fc7f19cd75b1258",
+          "sourceOrdinal": 2,
+          "classificationRationale": "META_PIPELINE_AUDIT record 2 binds CC_CONDITIONAL_PROBABILITY_DEFINITION for PT_CONDITIONAL_PROBABILITY/TPL_CONDITIONAL_PROBABILITY_DIRECT at H15-PS-04-CONDITIONAL_PROBABILITY.",
+          "decisiveEvidence": "P(A∩B)=P(A)−P(A∩B^C)=0.4−0.2=0.2이다. 조건부확률 공식에 의해 P(A|B)=0.2/0.6=1/3이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONDITIONAL_PROBABILITY"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_CONDITIONAL_PROBABILITY_TABLE",
+      "canonicalLabelKo": "분할표에서의 조건부확률",
+      "definition": "두 집단으로 분류된 표에서 조건 사건의 부분합을 분모로 하는 확률 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c403331a3a0402a757022deb31bb3fa52b2f0a698660642e1688a242141ddd0b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c403331a3a0402a757022deb31bb3fa52b2f0a698660642e1688a242141ddd0b",
+          "sourceOrdinal": 11,
+          "classificationRationale": "META_PIPELINE_AUDIT record 11 binds CC_CONDITIONAL_PROBABILITY_TABLE for PT_CONDITIONAL_PROBABILITY/TPL_CONDITIONAL_PROBABILITY_DIRECT at H15-PS-04-CONDITIONAL_PROBABILITY.",
+          "decisiveEvidence": "농구 선택자 총원은 180×0.7+210×0.6+110×0.5 = 126+126+55 = 307명이다. 따라서 2학년일 조건부확률은 126/307이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_CONDITIONAL_PROBABILITY"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-04"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_CUMULATIVE_DISTRIBUTION_COMPLEMENT",
+      "canonicalLabelKo": "누적확률과 꼬리확률의 여사건 관계",
+      "definition": "P(X>x)=1-P(X<=x)를 적용하여 정규분포 꼬리함수의 대칭성을 증명",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8a217ffcd0ee036b739dedfee901b5845b7dd46db01fd5a5d3d44e89a77b6d95"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8a217ffcd0ee036b739dedfee901b5845b7dd46db01fd5a5d3d44e89a77b6d95",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_CUMULATIVE_DISTRIBUTION_COMPLEMENT for PT_NORMAL_DISTRIBUTION/TPL_NORMAL_DISTRIBUTION_APPLICATION at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "f(6)=P(X>6)=P(Z>−3)=P(Z<3)이다. f(a)+f(b)=1은 a와 b가 평균 12에 대해 대칭(a+b=24)임을 뜻하므로 조건 값을 구한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NORMAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION",
+      "canonicalLabelKo": "이산확률변수의 확률분포표 작성",
+      "definition": "확률변수가 취할 수 있는 값과 그 확률을 대응시키는 분포표 구성",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_2215766d6a0420fb93135d0597fbd99849544b99df10a6660491296b8070454f"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_2215766d6a0420fb93135d0597fbd99849544b99df10a6660491296b8070454f",
+          "sourceOrdinal": 9,
+          "classificationRationale": "META_PIPELINE_AUDIT record 9 binds CC_DISCRETE_RANDOM_VARIABLE_DISTRIBUTION for PT_EXPECTATION_VARIANCE/TPL_EXPECTATION_TRANSFORM at H15-PS-05-RANDOM_VARIABLE.",
+          "decisiveEvidence": "X=0,1,2,3일 확률을 10C3 분모로 각각 구한 뒤 E(X²)=0×P(0)+1×P(1)+4×P(2)+9×P(3) = 216/120 = 9/5를 계산한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_EXPECTATION_VARIANCE"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_EXPECTATION_LINEARITY",
+      "canonicalLabelKo": "기댓값의 선형성",
+      "definition": "E(aX+b) = aE(X)+b 성질을 이용하여 변환된 확률변수의 평균을 산출",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_9e18493f4b90382daba1415f808de393c9f9a169a486d76f3db138140f97793d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9e18493f4b90382daba1415f808de393c9f9a169a486d76f3db138140f97793d",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_EXPECTATION_LINEARITY for PT_EXPECTATION_VARIANCE/TPL_EXPECTATION_TRANSFORM at H15-PS-05-RANDOM_VARIABLE.",
+          "decisiveEvidence": "확률 총합에서 a=1/6이다. E(X)=−1/3+2(1/6)+b=b=0이다. E(−4X+1/a)와 세부 변환식을 연립하여 답을 도출한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_EXPECTATION_VARIANCE"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_EXPECTATION_SECOND_MOMENT",
+      "canonicalLabelKo": "이차 적률(제곱의 기댓값) 산출",
+      "definition": "E(X^2) = sum(x_i^2 * p_i) 또는 V(X) + {E(X)}^2을 이용한 제곱의 평균 계산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_2215766d6a0420fb93135d0597fbd99849544b99df10a6660491296b8070454f"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_2215766d6a0420fb93135d0597fbd99849544b99df10a6660491296b8070454f",
+          "sourceOrdinal": 9,
+          "classificationRationale": "META_PIPELINE_AUDIT record 9 binds CC_EXPECTATION_SECOND_MOMENT for PT_EXPECTATION_VARIANCE/TPL_EXPECTATION_TRANSFORM at H15-PS-05-RANDOM_VARIABLE.",
+          "decisiveEvidence": "X=0,1,2,3일 확률을 10C3 분모로 각각 구한 뒤 E(X²)=0×P(0)+1×P(1)+4×P(2)+9×P(3) = 216/120 = 9/5를 계산한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_EXPECTATION_VARIANCE"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_INDEPENDENT_TRIALS_REPLACEMENT",
+      "canonicalLabelKo": "복원추출과 독립시행의 모델링",
+      "definition": "복원추출 시행이 독립시행을 이루어 이항분포 모델로 귀결됨을 분석",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8a313febbbbf7839b0f94d19e1721d6f8c178a5d4999c8d926ac7e5cc898dfb7"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8a313febbbbf7839b0f94d19e1721d6f8c178a5d4999c8d926ac7e5cc898dfb7",
+          "sourceOrdinal": 19,
+          "classificationRationale": "META_PIPELINE_AUDIT record 19 binds CC_INDEPENDENT_TRIALS_REPLACEMENT for PT_BINOMIAL_DISTRIBUTION/TPL_BINOMIAL_PARAMETER_MOMENTS at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "E(3X+5)=3mp+5=65에서 mp=20이고, V(3X+5)=9V(X)=144에서 V(X)=16이다. 1−p=16/20=4/5에서 p=1/5, m=100을 구해 최종 서술형 답을 완성한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_INTERVAL_PROBABILITY_ADDITION",
+      "canonicalLabelKo": "구간 확률의 덧셈과 분할",
+      "definition": "서로 배반인 구간들의 확률을 합하거나 전체 확률 1에서 대칭적으로 차감",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_345b87b86fd5c602c6287e5e83eeda839211ce6cf1b03c0795793e7950d97338"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_345b87b86fd5c602c6287e5e83eeda839211ce6cf1b03c0795793e7950d97338",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_INTERVAL_PROBABILITY_ADDITION for PT_RANDOM_VARIABLE_DISTRIBUTION/TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "x=4 대칭성에 의해 P(0≤X≤4)=1/2이고 P(0≤X≤3)=1/3이므로 P(3≤X≤4)=1/6이다. 대칭에 의해 P(3≤X≤5)=2×(1/12) 또는 1/6을 확정한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_RANDOM_VARIABLE_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_NORMAL_DISTRIBUTION_PERCENTILE",
+      "canonicalLabelKo": "정규분포의 상위 백분위수 역산",
+      "definition": "특정 상위 비율 P(Z>=z)=alpha를 만족하는 경계 z로부터 실제 변량 x를 역산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8a7d9df12020f2cfc8c5dd9386809c6af2b648c0cfbee7c8f2f3d27fc0bc9a93"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8a7d9df12020f2cfc8c5dd9386809c6af2b648c0cfbee7c8f2f3d27fc0bc9a93",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_NORMAL_DISTRIBUTION_PERCENTILE for PT_NORMAL_DISTRIBUTION/TPL_NORMAL_DISTRIBUTION_APPLICATION at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "P(|Z|≤2)=0.94이므로 상위 3% 경계의 표준화 변수는 z=2이다. 따라서 최저 점수는 60+2×15=90점이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NORMAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_NORMAL_DISTRIBUTION_STANDARDIZATION",
+      "canonicalLabelKo": "정규분포의 표준화",
+      "definition": "N(m, sigma^2)을 따르는 확률변수 X를 Z=(X-m)/sigma로 표준정규분포로 변환",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_e1cf74faa6a59e5de2dee57e5c097a8cd57ba5e81a54367329160a4cab1748ea"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e1cf74faa6a59e5de2dee57e5c097a8cd57ba5e81a54367329160a4cab1748ea",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_NORMAL_DISTRIBUTION_STANDARDIZATION for PT_NORMAL_DISTRIBUTION/TPL_NORMAL_STANDARDIZATION at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "Z=(X−15)/10으로 표준화하면 P(−2≤Z≤−0.5)=P(0.5≤Z≤2)=0.4772−0.1915=0.2857이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NORMAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_NORMAL_DISTRIBUTION_SYMMETRY",
+      "canonicalLabelKo": "정규분포 곡선의 평균 대칭성",
+      "definition": "정규분포 확률밀도함수가 평균 m에 대해 좌우 대칭임을 이용한 확률 관계",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8a217ffcd0ee036b739dedfee901b5845b7dd46db01fd5a5d3d44e89a77b6d95"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8a217ffcd0ee036b739dedfee901b5845b7dd46db01fd5a5d3d44e89a77b6d95",
+          "sourceOrdinal": 18,
+          "classificationRationale": "META_PIPELINE_AUDIT record 18 binds CC_NORMAL_DISTRIBUTION_SYMMETRY for PT_NORMAL_DISTRIBUTION/TPL_NORMAL_DISTRIBUTION_APPLICATION at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "f(6)=P(X>6)=P(Z>−3)=P(Z<3)이다. f(a)+f(b)=1은 a와 b가 평균 12에 대해 대칭(a+b=24)임을 뜻하므로 조건 값을 구한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NORMAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_PROBABILITY_DENSITY_FUNCTION_INTEGRATION",
+      "canonicalLabelKo": "확률밀도함수의 구간 확률 적분",
+      "definition": "연속확률변수의 확률밀도함수 그래프와 x축 사이의 넓이로 구간 확률을 구함",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_1715082b0bff4873f949b8588a69619236d057e1de29e1aecdd02018976c48dc",
+        "qid_v1_dcf34d93cea8f0c4e8d520858ac431684dd8d34cfe955b27930946c669d8fe4b"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_dcf34d93cea8f0c4e8d520858ac431684dd8d34cfe955b27930946c669d8fe4b",
+          "sourceOrdinal": 6,
+          "classificationRationale": "META_PIPELINE_AUDIT record 6 binds CC_PROBABILITY_DENSITY_FUNCTION_INTEGRATION for PT_RANDOM_VARIABLE_DISTRIBUTION/TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "구간 [1,3]에서 사다리꼴의 높이는 2이고 윗변과 아랫변은 각각 5/18, 3/18이므로 넓이는 (1/2)×(8/18)×2=4/9이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_1715082b0bff4873f949b8588a69619236d057e1de29e1aecdd02018976c48dc",
+          "sourceOrdinal": 14,
+          "classificationRationale": "META_PIPELINE_AUDIT record 14 binds CC_PROBABILITY_DENSITY_FUNCTION_INTEGRATION for PT_RANDOM_VARIABLE_DISTRIBUTION/TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "전체 적분 넓이 2m+2=1에서 m=−1/2이다. P(a≤X≤2)=(1/2)(2−a)(1−a/2)=(2−a)²/4=1/4에서 a=1이다. 따라서 m+a=1/2이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_RANDOM_VARIABLE_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_PROBABILITY_DENSITY_SYMMETRY",
+      "canonicalLabelKo": "확률밀도함수의 대칭성",
+      "definition": "f(x)=f(2a-x)일 때 x=a를 축으로 대칭임을 이용하여 대칭 구간의 확률을 분할",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_345b87b86fd5c602c6287e5e83eeda839211ce6cf1b03c0795793e7950d97338"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_345b87b86fd5c602c6287e5e83eeda839211ce6cf1b03c0795793e7950d97338",
+          "sourceOrdinal": 17,
+          "classificationRationale": "META_PIPELINE_AUDIT record 17 binds CC_PROBABILITY_DENSITY_SYMMETRY for PT_RANDOM_VARIABLE_DISTRIBUTION/TPL_CONTINUOUS_RANDOM_VARIABLE_DENSITY at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "x=4 대칭성에 의해 P(0≤X≤4)=1/2이고 P(0≤X≤3)=1/3이므로 P(3≤X≤4)=1/6이다. 대칭에 의해 P(3≤X≤5)=2×(1/12) 또는 1/6을 확정한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_RANDOM_VARIABLE_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_PROBABILITY_DISTRIBUTION_TABLE",
+      "canonicalLabelKo": "확률분포표의 확률 총합 1 성질",
+      "definition": "모든 확률의 합이 1임을 이용하여 미정계수를 결정하는 원리",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_9e18493f4b90382daba1415f808de393c9f9a169a486d76f3db138140f97793d"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_9e18493f4b90382daba1415f808de393c9f9a169a486d76f3db138140f97793d",
+          "sourceOrdinal": 15,
+          "classificationRationale": "META_PIPELINE_AUDIT record 15 binds CC_PROBABILITY_DISTRIBUTION_TABLE for PT_EXPECTATION_VARIANCE/TPL_EXPECTATION_TRANSFORM at H15-PS-05-RANDOM_VARIABLE.",
+          "decisiveEvidence": "확률 총합에서 a=1/6이다. E(X)=−1/3+2(1/6)+b=b=0이다. E(−4X+1/a)와 세부 변환식을 연립하여 답을 도출한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_EXPECTATION_VARIANCE"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_PROBABILITY_RATIO_EQUATION",
+      "canonicalLabelKo": "확률의 비를 이용한 미지수 방정식",
+      "definition": "인접한 두 확률의 비를 조합 공식으로 전개하여 미지의 모수를 역산",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_635a0d27f6afac3cdc19703d688871f03d0be707ccea8ae245a6ca24aaa53e43"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_635a0d27f6afac3cdc19703d688871f03d0be707ccea8ae245a6ca24aaa53e43",
+          "sourceOrdinal": 16,
+          "classificationRationale": "META_PIPELINE_AUDIT record 16 binds CC_PROBABILITY_RATIO_EQUATION for PT_BINOMIAL_DISTRIBUTION/TPL_BINOMIAL_PARAMETER_MOMENTS at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "독립시행 확률의 비례 관계에서 n을 결정한 후, 이항분포 분산 공식 V(X)=n×(1/4)×(3/4)=768을 정확히 계산한다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_STANDARD_NORMAL_DISTRIBUTION",
+      "canonicalLabelKo": "표준정규분포표 판독",
+      "definition": "표준정규분포 N(0,1)의 대칭성과 정규분포표를 이용해 구간 확률을 구함",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_8a7d9df12020f2cfc8c5dd9386809c6af2b648c0cfbee7c8f2f3d27fc0bc9a93",
+        "qid_v1_e1cf74faa6a59e5de2dee57e5c097a8cd57ba5e81a54367329160a4cab1748ea"
+      ],
+      "supportingItemCount": 2,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_e1cf74faa6a59e5de2dee57e5c097a8cd57ba5e81a54367329160a4cab1748ea",
+          "sourceOrdinal": 7,
+          "classificationRationale": "META_PIPELINE_AUDIT record 7 binds CC_STANDARD_NORMAL_DISTRIBUTION for PT_NORMAL_DISTRIBUTION/TPL_NORMAL_STANDARDIZATION at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "Z=(X−15)/10으로 표준화하면 P(−2≤Z≤−0.5)=P(0.5≤Z≤2)=0.4772−0.1915=0.2857이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        },
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_8a7d9df12020f2cfc8c5dd9386809c6af2b648c0cfbee7c8f2f3d27fc0bc9a93",
+          "sourceOrdinal": 10,
+          "classificationRationale": "META_PIPELINE_AUDIT record 10 binds CC_STANDARD_NORMAL_DISTRIBUTION for PT_NORMAL_DISTRIBUTION/TPL_NORMAL_DISTRIBUTION_APPLICATION at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "P(|Z|≤2)=0.94이므로 상위 3% 경계의 표준화 변수는 z=2이다. 따라서 최저 점수는 60+2×15=90점이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_NORMAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
+      ],
+      "ownerConceptShard": "STATISTICS_CONCEPTS"
+    },
+    {
+      "conceptKey": "CC_TWO_WAY_FREQUENCY_TABLE",
+      "canonicalLabelKo": "이원 분류표의 도수 집계",
+      "definition": "두 가지 범주형 변수를 교차 집계하여 각 셀의 도수와 합계를 분석하는 기법",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_c403331a3a0402a757022deb31bb3fa52b2f0a698660642e1688a242141ddd0b"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-04"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_c403331a3a0402a757022deb31bb3fa52b2f0a698660642e1688a242141ddd0b",
+          "sourceOrdinal": 11,
+          "classificationRationale": "META_PIPELINE_AUDIT record 11 binds CC_TWO_WAY_FREQUENCY_TABLE for PT_CONDITIONAL_PROBABILITY/TPL_CONDITIONAL_PROBABILITY_DIRECT at H15-PS-04-CONDITIONAL_PROBABILITY.",
+          "decisiveEvidence": "농구 선택자 총원은 180×0.7+210×0.6+110×0.5 = 126+126+55 = 307명이다. 따라서 2학년일 조건부확률은 126/307이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
           }
         }
       ],

@@ -1,9 +1,9 @@
 {
   "schemaVersion": "meta-foundation-concept-shard-v1",
   "shardId": "ALGEBRA",
-  "shardVersion": "1.4.9",
+  "shardVersion": "1.4.10",
   "status": "ACTIVE",
-  "conceptCount": 193,
+  "conceptCount": 194,
   "concepts": [
     {
       "conceptKey": "CC_ABSOLUTE_VALUE_EQUATION",
@@ -6014,6 +6014,41 @@
       ],
       "curriculumRefs": [
         "2015:확률과 통계:H15-PS-03"
+      ],
+      "ownerConceptShard": "ALGEBRA"
+    },
+    {
+      "conceptKey": "CC_LINEAR_INEQUALITY",
+      "canonicalLabelKo": "일차부등식의 풀이",
+      "definition": "미지수 n에 관한 일차부등식을 정리하여 조건을 만족하는 자연수 최솟값을 결정",
+      "aliases": [],
+      "status": "ACTIVE",
+      "supportingQuestionUids": [
+        "qid_v1_59a6eeb5905d2f48569a6911350748381f3ff6aeda5829314410797e7ab459db"
+      ],
+      "supportingItemCount": 1,
+      "sourceUnits": [
+        "H15-PS-05"
+      ],
+      "legacyKeys": [],
+      "evidenceProvenance": [
+        {
+          "source": "META_PIPELINE_AUDIT",
+          "questionUid": "qid_v1_59a6eeb5905d2f48569a6911350748381f3ff6aeda5829314410797e7ab459db",
+          "sourceOrdinal": 13,
+          "classificationRationale": "META_PIPELINE_AUDIT record 13 binds CC_LINEAR_INEQUALITY for PT_BINOMIAL_DISTRIBUTION/TPL_BINOMIAL_PARAMETER_MOMENTS at H15-PS-05-PROBABILITY_DISTRIBUTION.",
+          "decisiveEvidence": "E(X)=3n/4, E(Y)=(200−n)/4이다. 부등식 3n/4 ≥ (200−n)/4 + 40을 정리하면 4n ≥ 360이므로 n의 최솟값은 90이다.",
+          "auditPackageRef": {
+            "path": "archive/data/meta-foundation/evidence/reviewed-exam-meta/v1/meta-pipeline-r3-0-c0bd48a0e5ed.audit.json",
+            "sha256": "1744a1d1f94d20c1edecc568f0f67c2c6b57c915155bb3adda3a3c678f44e4d2"
+          }
+        }
+      ],
+      "taxonomyRefs": [
+        "PT_BINOMIAL_DISTRIBUTION"
+      ],
+      "curriculumRefs": [
+        "2015:확률과 통계:H15-PS-05"
       ],
       "ownerConceptShard": "ALGEBRA"
     }
