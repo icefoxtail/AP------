@@ -1,0 +1,249 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "SOURCE_COORDINATE_AXES_v1",
+   "unit": "source-coordinate",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "O",
+    "op": "NORMALIZATION_ORIGIN",
+    "inputs": [],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "U",
+    "op": "NORMALIZATION_AXIS",
+    "inputs": [],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "6"
+      },
+      {
+       "kind": "integer",
+       "value": "0"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "M",
+    "op": "MIDPOINT",
+    "inputs": [
+     "O",
+     "P"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "k1",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "expression",
+      "op": "mul",
+      "args": [
+       {
+        "kind": "integer",
+        "value": "3"
+       },
+       {
+        "kind": "expression",
+        "op": "sqrt",
+        "args": [
+         {
+          "kind": "integer",
+          "value": "2"
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "k2",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "O"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "6"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "CONCLUSION"
+   },
+   {
+    "id": "k3",
+    "op": "CIRCLE_CENTER_RADIUS",
+    "inputs": [
+     "M"
+    ],
+    "args": {
+     "radius": {
+      "kind": "integer",
+      "value": "3"
+     }
+    },
+    "outputType": "CIRCLE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "XX",
+    "op": "INTERSECTION",
+    "inputs": [
+     "k1",
+     "k3"
+    ],
+    "args": {},
+    "outputType": "POINT_SET",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "T1",
+    "op": "SELECT_POINT",
+    "inputs": [
+     "XX"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "branch": {
+     "kind": "SIDE_OF_ORIENTED_LINE",
+     "refs": [
+      "O",
+      "P"
+     ],
+     "sign": 1
+    }
+   },
+   {
+    "id": "T2",
+    "op": "SELECT_POINT",
+    "inputs": [
+     "XX"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE",
+    "branch": {
+     "kind": "SIDE_OF_ORIENTED_LINE",
+     "refs": [
+      "O",
+      "P"
+     ],
+     "sign": -1
+    }
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [
+  "k1",
+  "k2"
+ ],
+ "displaySegments": [
+  {
+   "id": "sOT1",
+   "refs": [
+    "O",
+    "T1"
+   ]
+  },
+  {
+   "id": "sOT2",
+   "refs": [
+    "O",
+    "T2"
+   ]
+  },
+  {
+   "id": "sPT1",
+   "refs": [
+    "P",
+    "T1"
+   ]
+  },
+  {
+   "id": "sPT2",
+   "refs": [
+    "P",
+    "T2"
+   ]
+  }
+ ],
+ "pointNames": {
+  "T1": "T_1",
+  "T2": "T_2"
+ },
+ "displayPoints": [
+  "O",
+  "P",
+  "T1",
+  "T2"
+ ],
+ "coordinateLabels": [
+  "P",
+  "T1",
+  "T2"
+ ],
+ "caption": "점 P에서 원 x²+y²=18에 그은 두 접선의 접점 T₁, T₂는 OT₁⊥PT₁, OT₂⊥PT₂이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "원 x^2+y^2=18, 반지름 3√2",
+   "mappedTo": [
+    "k1"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "OP=6인 표본점 P(6,0)에서 그은 두 접선의 접점 T1, T2",
+   "mappedTo": [
+    "P",
+    "T1",
+    "T2"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "접점 T₁(3,3), T₂(3,−3)와 반지름 OT₁, OT₂"
+ ],
+ "sourceQuote": "접점을 $T_1,T_2$라 하면 반지름 $OT_1,OT_2$는"
+}

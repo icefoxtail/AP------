@@ -1,0 +1,135 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "0",
+     "-1"
+    ]
+   },
+   {
+    "coefficients": [
+     "0",
+     "-1",
+     "1"
+    ]
+   }
+  ],
+  "breakpoints": [
+   {
+    "x": "0",
+    "y": "0"
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "functionName": "f",
+  "referenceCurves": [
+   {
+    "id": "g",
+    "name": "g",
+    "pieces": [
+     {
+      "coefficients": [
+       "2",
+       "2"
+      ]
+     },
+     {
+      "coefficients": [
+       "0"
+      ]
+     },
+     {
+      "coefficients": [
+       "-2",
+       "2"
+      ]
+     }
+    ],
+    "breakpoints": [
+     {
+      "x": "-1",
+      "y": "0"
+     },
+     {
+      "x": "1",
+      "y": "0"
+     }
+    ],
+    "sourceDomain": {
+     "kind": "ALL_REALS"
+    },
+    "intersectionX": [
+     "0",
+     "1",
+     "2"
+    ]
+   }
+  ],
+  "requiredPoints": [
+   {
+    "id": "A",
+    "x": 0,
+    "y": 0
+   },
+   {
+    "id": "B",
+    "x": 0.5,
+    "y": -0.25
+   },
+   {
+    "id": "C",
+    "x": -1,
+    "y": 0
+   },
+   {
+    "id": "D",
+    "x": 1,
+    "y": 0
+   }
+  ],
+  "exactCoordinates": {
+   "B": [
+    "1/2",
+    "-1/4"
+   ]
+  },
+  "axisTickValues": {
+   "x": [
+    2
+   ],
+   "y": [
+    2
+   ]
+  },
+  "sampleNote": "a=2"
+ },
+ "caption": "a=2일 때 y=f(x)의 그래프와 y=g(x)의 그래프가 x=0, 1, 2의 세 점에서 만난다.",
+ "sourceQuote": "함수 $y=f(x)$의 그래프와 함수 $y=g(x)$의 그래프가",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)는 x<0에서 -x^2, x>=0에서 x^2-x인 구간별 함수",
+   "mappedTo": "graphPlan.pieces"
+  },
+  {
+   "id": "c2",
+   "condition": "g(x)는 x<-1에서 2x+2, -1<=x<1에서 0, x>=1에서 2x-2인 구간별 함수(a=2인 경우)",
+   "mappedTo": "graphPlan.referenceCurves"
+  },
+  {
+   "id": "c3",
+   "condition": "1<a<4에서 두 그래프가 서로 다른 세 점에서 만난다; 그림은 a=2인 경우",
+   "mappedTo": "caption"
+  }
+ ],
+ "newVisualInformation": [
+  "a=2일 때 f와 g가 x=0, x=1, x=2의 세 점에서 만난다는 것",
+  "g가 x=-1, x=1에서 꺾이고 가운데 구간에서 0이라는 것"
+ ]
+}

@@ -160,3 +160,7 @@ Archive 2.0의 화면, 검색·선택, 출력·미리보기, 저장·출제 연�
 ## ROOT production 완성·예외·수정 대체 책임
 
 CURRENT Execution v1.3 §25를 따른다. ROOT는 승인 범위에서 캡처/실제 render 조건을 근거 있게 면제하고 최소 수정·승인 ALIVE 문형 대체·실제 기술 실행 인계·publication을 자율 결정하고 결과를 수납한다. 신규 문항 HOLD를 발행하거나 결함 보고만으로 작업을 종료하지 않는다. 같은 적용 여부를 반복 요청하지 않는다. 완료 기준은 JS/정답/해설/Meta/이미지/SVG, 유효한 R1/R2 및 R3 static integrity, zero item HOLD, 실제 production·remote readback·closeout이다. 캡처만 없다는 이유로 최종 HOLD를 만들지 않는다. ROOT 결정은 ROOT_DELEGATED/ROOT_DIRECTED_STATIC_COMPLETE/NOT_RUN_ROOT_WAIVER와 범위·사유·대체 검수·SHA를 기록한다. actual RENDER_PASS를 가장하지 않으며 알려진 품질 결함을 면제하지 않는다. 일반 ROOT 경로는 archive-codex-root-waiver-intake.mjs 및 RootWaived static/MAIN_DONE validators·stage consumers로 수납한다. 새로운 예외 기능이 미지원일 때만 MASTER의 exact 기술 continuation으로 결속을 보완한다. 원 정상/실패/freeze/capture/권한 provenance는 보존한다.
+
+## SVG 해설 그림 엔진 라인 (2026-10-26)
+
+해설 그림 SVG 엔진(`archive/tools/geometry-equation/`)을 이어서 작업하는 실행자는 먼저 `archive/tools/geometry-equation/HANDOFF_SVG_ENGINE.md`를 끝까지 읽고 그 방식(컨트롤러는 지시·검토·병합, 구현은 opencode DeepSeek 작업자, 짧은 단계·감독 스크립트)과 남은 일 순서를 따른다. 그림 작성 규칙 정본은 `archive/tools/geometry-equation/production/AUTHOR_GUIDE.md`.

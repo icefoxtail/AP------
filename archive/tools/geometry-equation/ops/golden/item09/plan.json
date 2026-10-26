@@ -1,0 +1,37 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["-10", "-3", "1"],
+    "domain": [-4, 7],
+    "viewport": [-5, 8, -14, 20],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [
+      { "id": "A", "x": -2, "y": 0 },
+      { "id": "B", "x": 5, "y": 0 }
+    ],
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "y=(x-5)(x+2)의 그래프는 x축과 (-2, 0), (5, 0)에서 만난다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "이차함수 y=x^2-3x-10이다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "S2",
+      "condition": "그래프와 x축이 만나는 두 점의 x좌표 a, b는 x^2-3x-10=(x-5)(x+2)=0의 두 근 5와 -2이므로 교점은 (-2, 0), (5, 0)이다.",
+      "mappedTo": ["graphPlan.requiredPoints", "graphPlan.viewport"]
+    },
+    {
+      "id": "S3",
+      "condition": "문제 본문, 점수, 보기 1~5, 정답 ①, 풀이 본문은 변경하지 않는다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "그래프가 x축과 만나는 두 점 (-2, 0), (5, 0)의 위치를 보여 준다.",
+    "두 교점의 x좌표 -2와 5를 더한 값이 a+b=3임을 그래프에서 읽을 수 있게 한다."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [ { "coefficients": ["12", "0", "-2"] } ],
+  "sourceDomain": { "kind": "ALL_REALS" },
+  "requiredPoints": [
+   { "id": "V", "x": 0, "y": 12 }
+  ],
+  "axisTickValues": { "x": [], "y": [] },
+  "overlays": {
+   "lines": [
+    { "id": "L", "slope": "4", "intercept": "0" }
+   ],
+   "points": [
+    { "id": "A", "curveX": "-1-sqrt(7)" },
+    { "id": "B", "curveX": "-1+sqrt(7)" },
+    { "id": "C", "axis": "x", "value": "-1-sqrt(7)" },
+    { "id": "D", "axis": "x", "value": "-1+sqrt(7)" },
+    { "id": "O", "x": "0", "y": "0" }
+   ],
+   "polygons": [
+    { "id": "T1", "points": ["A", "O", "C"], "fill": "LIGHT" },
+    { "id": "T2", "points": ["B", "O", "D"], "fill": "LIGHT" }
+   ]
+  }
+ },
+ "caption": "m=12일 때 포물선 y=−2x²+12와 직선 y=4x의 교점 A, B에서 x축에 내린 수선의 발 C, D를 보인다.",
+ "pointNames": { "A": "A", "B": "B", "C": "C", "D": "D", "O": "O" },
+ "sourceConditions": [
+  { "id": "c1", "condition": "y=-2x^2+m과 y=4x의 두 교점 A, B와 x축에 내린 수선의 발 C, D, 삼각형 AOC와 BOD의 넓이 합 32에서 m=12이다.", "mappedTo": ["graphPlan.pieces", "graphPlan.overlays"] },
+  { "id": "c2", "condition": "문제 본문·보기·정답·풀이는 변경하지 않는다.", "mappedTo": "PRESERVED_ARCHIVE_BANK" }
+ ],
+ "newVisualInformation": [
+  "두 교점 A, B와 수선의 발 C, D를 모두 찍어 삼각형 AOC와 BOD를 옅게 칠해 넓이 합의 관계를 보여 준다."
+ ]
+}

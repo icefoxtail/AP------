@@ -1,0 +1,100 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "-12",
+     "-4",
+     "1"
+    ]
+   },
+   {
+    "coefficients": [
+     "12",
+     "4",
+     "-1"
+    ]
+   },
+   {
+    "coefficients": [
+     "-12",
+     "-4",
+     "1"
+    ]
+   }
+  ],
+  "breakpoints": [
+   {
+    "x": "-2",
+    "y": "0"
+   },
+   {
+    "x": "6",
+    "y": "0"
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "formula": "abs(x^2-4x-12)",
+  "referenceLines": [
+   {
+    "id": "k",
+    "slope": "3",
+    "intercept": "10",
+    "intersectionX": [
+     "(7-sqrt(137))/2",
+     "-1",
+     "2",
+     "(7+sqrt(137))/2"
+    ]
+   }
+  ],
+  "requiredPoints": [
+   {
+    "id": "A",
+    "x": -2,
+    "y": 0
+   },
+   {
+    "id": "B",
+    "x": 6,
+    "y": 0
+   },
+   {
+    "id": "C",
+    "x": 2,
+    "y": 16
+   },
+   {
+    "id": "D",
+    "x": -1,
+    "y": 7
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "coordinatePlacement": "PANEL",
+ "caption": "k=10일 때 직선 y=3x+10이 y=|x^2-4x-12|의 그래프와 서로 다른 네 점에서 만난다.",
+ "sourceQuote": "직선 $y=3x+k$가 서로 다른 네 점에서 만나도록 하는 정수 $k$",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "f(x)=|x^2-4x-12|",
+   "mappedTo": "graphPlan.pieces"
+  },
+  {
+   "id": "c2",
+   "condition": "직선 y=3x+k, 네 점에서 만나는 범위(6<k<49/4) 안의 표본 k=10",
+   "mappedTo": "graphPlan.referenceLines"
+  }
+ ],
+ "newVisualInformation": [
+  "6<k<49/4인 k=10에서 안쪽 두 점과 바깥 두 점의 교점 네 개"
+ ]
+}

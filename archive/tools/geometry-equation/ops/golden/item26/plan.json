@@ -1,0 +1,35 @@
+{
+ "capability": "solid-figure-v1",
+ "solids": [
+  {
+   "kind": "CONE",
+   "radius": 3,
+   "height": 9,
+   "orientation": "APEX_DOWN"
+  }
+ ],
+ "section": {
+  "kind": "LEVEL",
+  "at": "1/3"
+ },
+ "dims": [
+  {"radius": "top", "label": "r"},
+  {"radius": "level", "label": "\\frac{1}{3}r"},
+  {"height": true, "label": "h"},
+  {"level": true, "label": "\\frac{1}{3}h"}
+ ],
+ "solidCaption": {
+  "text": "원뿔 모양 그릇의 수면"
+ },
+ "caption": "전체 높이의 1/3까지 물을 채운 원뿔 모양 그릇",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "원뿔 모양 그릇에 일정한 속도로 물을 채우고 전체 높이의 1/3만큼 채우는 데 3초가 걸린다",
+   "mappedTo": "solids+section"
+  }
+ ],
+ "newVisualInformation": [
+  "물이 찬 작은 원뿔과 전체 원뿔의 닮음비 1:3"
+ ]
+}

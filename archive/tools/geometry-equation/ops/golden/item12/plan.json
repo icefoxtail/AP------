@@ -1,0 +1,149 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "nodes": [
+   {
+    "id": "A",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "outputType": "POINT",
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "-5"
+      },
+      {
+       "kind": "integer",
+       "value": "2"
+      }
+     ]
+    },
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "B",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "outputType": "POINT",
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "5"
+      }
+     ]
+    },
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "P",
+    "op": "DIVISION_POINT",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "outputType": "POINT",
+    "args": {
+     "m": {
+      "kind": "integer",
+      "value": "2"
+     },
+     "n": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "mode": "INTERNAL"
+    },
+    "factRole": "CONCLUSION"
+   },
+   {
+    "id": "Q",
+    "op": "DIVISION_POINT",
+    "inputs": [
+     "A",
+     "B"
+    ],
+    "outputType": "POINT",
+    "args": {
+     "m": {
+      "kind": "integer",
+      "value": "2"
+     },
+     "n": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "mode": "EXTERNAL"
+    },
+    "factRole": "CONCLUSION"
+   }
+  ]
+ },
+ "displaySegments": [
+  {
+   "id": "sAQ",
+   "refs": [
+    "A",
+    "Q"
+   ]
+  },
+  {
+   "id": "sPQ",
+   "refs": [
+    "P",
+    "Q"
+   ]
+  }
+ ],
+ "coordinateLabels": [
+  "A",
+  "B",
+  "P",
+  "Q"
+ ],
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "sourceConditions": [
+  {
+   "id": "s1",
+   "condition": "두 점 A(-5,2), B(1,5)가 주어진다.",
+   "mappedTo": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "id": "s2",
+   "condition": "선분 AB를 2:1로 내분하는 점 P와 외분하는 점 Q를 구하며, 풀이에서 P(-1,4), Q(7,8)이다.",
+   "mappedTo": [
+    "P",
+    "Q",
+    "sAQ"
+   ]
+  },
+  {
+   "id": "s3",
+   "condition": "두 점 P, Q 사이의 거리 PQ를 구한다.",
+   "mappedTo": [
+    "sPQ"
+   ]
+  },
+  {
+   "id": "scBank",
+   "condition": "문제 본문, 배점, 보기, 정답, 풀이는 문제은행 원본을 그대로 유지한다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  }
+ ],
+ "newVisualInformation": [
+  "내분점 P는 선분 AB 안, 외분점 Q는 B쪽 선분 바깥에 있다는 위치 관계"
+ ],
+ "caption": "선분 AB의 2:1 내분점 P와 외분점 Q"
+}

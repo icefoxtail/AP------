@@ -1,0 +1,66 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "4",
+     "2"
+    ]
+   },
+   {
+    "coefficients": [
+     "0",
+     "-2",
+     "-1"
+    ]
+   }
+  ],
+  "breakpoints": [
+   {
+    "x": "-2",
+    "y": "0"
+   }
+  ],
+  "sourceDomain": {
+   "kind": "ALL_REALS"
+  },
+  "referenceLines": [
+   {
+    "id": "l",
+    "slope": "6-2*sqrt(7)",
+    "intercept": "23-8*sqrt(7)",
+    "intersectionX": [
+     "(10-2*sqrt(7)-sqrt(216-72*sqrt(7)))/4-2",
+     "-4+sqrt(7)"
+    ]
+   }
+  ],
+  "requiredPoints": [
+   {
+    "id": "A",
+    "x": -2,
+    "y": 0
+   },
+   {
+    "id": "T",
+    "x": "-4+sqrt(7)",
+    "y": "-15+6*sqrt(7)"
+   },
+   {
+    "id": "V",
+    "x": -1,
+    "y": 1
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  }
+ },
+ "coordinatePlacement": "PANEL",
+ "caption": "m=6-2√7일 때 직선 y=m(x+4)-1이 오른쪽 포물선에 점 T에서 접한다.",
+ "sourceQuote": "$m=6-2\\sqrt7$이면 양의 중근 하나가 있고"
+}

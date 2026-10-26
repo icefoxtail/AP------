@@ -1,0 +1,52 @@
+{
+ "capability": "quadratic-inequality-chain-v1",
+ "inequality": {
+  "coefficients": [
+   "-15",
+   "-2",
+   "1"
+  ],
+  "comparator": "<",
+  "variable": "a",
+  "adjoinedPoints": [
+   "-3"
+  ],
+  "integerPoints": true
+ },
+ "graphCaption": {
+  "text": "D/4의 그래프"
+ },
+ "numberLineCaption": {
+  "text": "a의 값의 범위"
+ },
+ "caption": "D/4=(a+3)(a-5)<0 에서 -3<a<5 이고, a=-3 도 조건을 만족하므로 -3≤a<5, 정수 a는 -3부터 4까지이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "(a+3)x^2-2(a+3)x+8>0 이 모든 실수 x에서 성립, a≠-3이면 a+3>0 이고 D/4=(a+3)^2-8(a+3)=(a+3)(a-5)<0",
+   "mappedTo": [
+    "inequality.coefficients",
+    "inequality.comparator"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "a=-3 이면 8>0 이므로 조건을 만족한다",
+   "mappedTo": "inequality.adjoinedPoints"
+  },
+  {
+   "id": "c3",
+   "condition": "정수 a의 값은 -3,-2,-1,0,1,2,3,4 이고 합은 4",
+   "mappedTo": "inequality.integerPoints"
+  },
+  {
+   "id": "c4",
+   "condition": "문제 본문, 보기, 정답, 풀이는 변경하지 않는다",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  }
+ ],
+ "newVisualInformation": [
+  "D/4를 a에 대한 이차함수로 그려 음수가 되는 구간 -3<a<5를 보여 준다",
+  "a=-3을 더한 범위 -3≤a<5와 정수 a 8개를 수직선에 나타낸다"
+ ]
+}

@@ -1,0 +1,36 @@
+{
+  "capability": "polynomial-spike-v1",
+  "graphPlan": {
+    "family": "polynomial",
+    "coefficients": ["10", "-2", "1"],
+    "domain": [-2, 4],
+    "viewport": [-3, 5, -2, 20],
+    "sourceDomain": { "kind": "ALL_REALS" },
+    "requiredPoints": [
+      { "id": "V", "x": 1, "y": 9 }
+    ],
+    "axisTickValues": { "x": [], "y": [] }
+  },
+  "caption": "y=(x-1)²+9의 그래프는 꼭짓점 (1, 9)에서 가장 낮고, 최솟값은 9이다.",
+  "sourceConditions": [
+    {
+      "id": "S1",
+      "condition": "이차함수 y=x^2-2x+10이다.",
+      "mappedTo": "graphPlan.coefficients"
+    },
+    {
+      "id": "S2",
+      "condition": "완전제곱식 y=(x-1)^2+9로 고치면 (x-1)^2=0일 때 최소이므로 꼭짓점 (1, 9)에서 최솟값 9를 갖는다.",
+      "mappedTo": ["graphPlan.requiredPoints", "graphPlan.viewport"]
+    },
+    {
+      "id": "S3",
+      "condition": "문제 본문, 보기 6~10, 정답 ④, 풀이 본문은 변경하지 않는다.",
+      "mappedTo": "PRESERVED_ARCHIVE_BANK"
+    }
+  ],
+  "newVisualInformation": [
+    "꼭짓점 (1, 9)가 그래프에서 가장 낮은 점이며 y좌표 9가 최솟값임을 보여 준다.",
+    "꼭짓점 양쪽으로 두 팔이 위로 올라가는 모양과 x=1에 대한 좌우 대칭을 보여 준다."
+  ]
+}

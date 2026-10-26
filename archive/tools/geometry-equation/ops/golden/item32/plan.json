@@ -1,0 +1,90 @@
+{
+ "capability": "piecewise-polynomial-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-polynomial",
+  "pieces": [
+   {
+    "coefficients": [
+     "0",
+     "-10/3",
+     "2/3"
+    ]
+   }
+  ],
+  "breakpoints": [],
+  "sourceDomain": {
+   "kind": "INTERVAL",
+   "range": [
+    "-2",
+    "3"
+   ],
+   "states": [
+    "CLOSED",
+    "CLOSED"
+   ]
+  },
+  "formula": "2/3*x^2-10/3*x",
+  "functionName": "f",
+  "referenceLines": [
+   {
+    "id": "g",
+    "slope": "-2",
+    "intercept": "2",
+    "intersectionX": [
+     "-1",
+     "3"
+    ]
+   }
+  ],
+  "requiredPoints": [
+   {
+    "id": "vertex",
+    "x": "5/2",
+    "y": "-25/6"
+   }
+  ],
+  "axisTickValues": {
+   "x": [],
+   "y": []
+  },
+  "regions": [
+   {
+    "id": "S1",
+    "upper": "f",
+    "lower": "g",
+    "from": "-2",
+    "to": "-1",
+    "fill": "LIGHT"
+   },
+   {
+    "id": "S2",
+    "upper": "g",
+    "lower": "f",
+    "from": "-1",
+    "to": "3",
+    "fill": "MEDIUM"
+   }
+  ]
+ },
+ "caption": "y=f(x)와 y=g(x)는 x=-1, x=3에서 만나고 f(0)=0, g(0)=2이다. 구간 [-2,3]에서 두 그래프 사이의 영역은 교점 x=-1을 기준으로 위아래가 바뀌므로 두 조각을 나누어 색칠했다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "이차함수 y=f(x)와 직선 y=g(x)가 x=-1, x=3에서 만난다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  },
+  {
+   "id": "c2",
+   "condition": "f(0)=0, g(0)=2이다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  },
+  {
+   "id": "b1",
+   "condition": "문항 본문·보기·정답·해설은 문제은행 원본을 그대로 유지한다.",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  }
+ ],
+ "newVisualInformation": [
+  "두 교점 사이에서 두 그래프의 위아래가 바뀌어 부호 있는 넓이가 상쇄되는 모습"
+ ]
+}

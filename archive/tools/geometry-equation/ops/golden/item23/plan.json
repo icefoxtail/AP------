@@ -1,0 +1,24 @@
+{
+ "capability": "exp-log-pair-spike-v1",
+ "graphPlan": {
+  "family": "exp-log-pair",
+  "curves": [
+   {
+    "id": "f",
+    "family": "logarithmic-affine",
+    "base": "3",
+    "coefficients": ["2", "1", "0", "0"],
+    "sourceDomain": {"kind": "NATURAL_LOG_AFFINE"}
+   },
+   {
+    "id": "g",
+    "family": "exponential-affine",
+    "base": "sqrt(3)",
+    "coefficients": ["1", "1", "0"],
+    "sourceDomain": {"kind": "ALL_REALS"}
+   }
+  ],
+  "identityLine": true
+ },
+ "caption": "y=2log_3 x와 그 역함수 y=(√3)^x의 그래프는 직선 y=x에 대하여 대칭이다."
+}

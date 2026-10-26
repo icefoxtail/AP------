@@ -1,0 +1,91 @@
+{
+ "capability": "number-line-figure-v1",
+ "numberLine": {
+  "parameter": {
+   "name": "a",
+   "value": "-1"
+  },
+  "rows": [
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": null,
+      "hi": {
+       "value": "-1",
+       "state": "OPEN"
+      }
+     },
+     {
+      "lo": {
+       "value": "2",
+       "state": "OPEN"
+      },
+      "hi": null
+     }
+    ]
+   },
+   {
+    "kind": "SET",
+    "pieces": [
+     {
+      "lo": {
+       "param": {
+        "mul": "1",
+        "add": "-2"
+       },
+       "state": "OPEN"
+      },
+      "hi": {
+       "param": {
+        "mul": "1/3",
+        "add": "2/3"
+       },
+       "state": "OPEN"
+      }
+     }
+    ]
+   },
+   {
+    "kind": "RESULT",
+    "integerPoints": true
+   }
+  ]
+ },
+ "numberLineCaption": {
+  "text": "두 해의 공통 범위"
+ },
+ "caption": "첫째 부등식의 해는 x<-1 또는 x>2, 둘째 부등식의 해는 a-2<x<(a+2)/3이다. a=-1일 때 공통 범위 안의 정수는 -2뿐이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "x^2-x-2>0 의 해는 x<-1 또는 x>2",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  },
+  {
+   "id": "c2",
+   "condition": "3x^2-2(2a-2)x+a^2-4<0 의 해는 a-2<x<(a+2)/3",
+   "mappedTo": [
+    "numberLine.rows",
+    "numberLine.parameter"
+   ]
+  },
+  {
+   "id": "c3",
+   "condition": "a<4 일 때 정수해는 x=-2 하나",
+   "mappedTo": [
+    "numberLine.rows"
+   ]
+  },
+  {
+   "id": "c9",
+   "condition": "문제 본문, 보기, 정답, 풀이는 변경하지 않는다",
+   "mappedTo": "PRESERVED_ARCHIVE_BANK"
+  }
+ ],
+ "newVisualInformation": [
+  "끝점이 a에 따라 움직이는 두 근 a-2, (a+2)/3 을 a=-1의 예로 그리고 공통 범위의 정수를 표시한다"
+ ]
+}

@@ -1,0 +1,35 @@
+{
+  "capability": "construction-spike-v1",
+  "mathPlan": {
+    "schemaVersion": "construction-spike-v1",
+    "nodes": [
+      {"id": "A", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "0"}, {"kind": "integer", "value": "3"}]}, "outputType": "POINT", "factRole": "GIVEN"},
+      {"id": "B", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "-1"}, {"kind": "integer", "value": "6"}]}, "outputType": "POINT", "factRole": "CONCLUSION"},
+      {"id": "C", "op": "SOURCE_POINT", "inputs": [], "args": {"coordinates": [{"kind": "integer", "value": "1"}, {"kind": "integer", "value": "0"}]}, "outputType": "POINT", "factRole": "CONCLUSION"},
+      {"id": "lBC", "op": "LINE_THROUGH", "inputs": ["B", "C"], "args": {}, "outputType": "LINE", "factRole": "DERIVED_INTERMEDIATE"}
+    ],
+    "conditionAudits": [
+      {"id": "auCol", "kind": "INCIDENCE_POINT_ON_LINE", "refs": ["A", "lBC"], "sourceConditionId": "scCol"}
+    ]
+  },
+  "displaySegments": [
+    {"id": "sBC", "refs": ["B", "C"]}
+  ],
+  "displayPoints": ["A", "B", "C"],
+  "displayLines": [],
+  "coordinateLabels": ["A", "B", "C"],
+  "axisTickValues": {"x": [], "y": []},
+  "sourceConditions": [
+    {"id": "scA", "condition": "점 A의 좌표는 (0,3)이다.", "mappedTo": ["A"]},
+    {"id": "scB", "condition": "점 B는 A를 x축 방향으로 a, y축 방향으로 3만큼 평행이동한 점 (a,6)이다. 저장된 풀이에서 a=-1이므로 B=(-1,6)이다. 이 값은 저장된 풀이에서 가져온 B의 SOURCE_POINT 좌표 바인딩이다.", "mappedTo": ["B"]},
+    {"id": "scC", "condition": "점 C는 A를 x축 방향으로 1, y축 방향으로 3a만큼 평행이동한 점 (1,3+3a)이다. 저장된 풀이에서 a=-1이므로 C=(1,0)이다. 이 값은 저장된 풀이에서 가져온 C의 SOURCE_POINT 좌표 바인딩이다.", "mappedTo": ["C"]},
+    {"id": "scDistinct", "condition": "세 점 A, B, C는 서로 다른 점이다. 저장된 풀이에서 a=-1일 때 A=(0,3), B=(-1,6), C=(1,0)으로 서로 다르다.", "mappedTo": ["A", "B", "C"]},
+    {"id": "scCol", "condition": "세 점 A, B, C는 한 직선 위에 있다. 저장된 풀이에서 직선 AB와 직선 AC의 기울기가 같다.", "mappedTo": ["lBC", "auCol", "sBC"]},
+    {"id": "scBank", "condition": "문제 본문, 배점, 보기, 정답 ②, 풀이는 문제은행 원본을 그대로 유지한다.", "mappedTo": "PRESERVED_ARCHIVE_BANK"}
+  ],
+  "newVisualInformation": [
+    "a=-1일 때 서로 다른 세 점 A, B, C의 위치와 좌표",
+    "세 점이 한 직선 위에 놓인다는 것"
+  ],
+  "caption": "a=-1일 때 세 점 A, B, C는 서로 다르고 한 직선 위에 있다."
+}

@@ -1,0 +1,27 @@
+{
+ "capability": "piecewise-discontinuous-spike-v1",
+ "graphPlan": {
+  "family": "piecewise-discontinuous",
+  "pieces": [
+   {"coefficients": ["-1", "-2", "1"], "domain": [null, 1], "end": "OPEN"},
+   {"coefficients": ["1", "2", "-1"], "domain": [1, null], "start": "OPEN"}
+  ],
+  "jumpValues": [
+   {"x": "1", "y": "1"}
+  ],
+  "requiredPoints": [
+   {"id": "P", "x": 1, "y": 1}
+  ],
+  "axisTickValues": {"x": [], "y": []}
+ },
+ "caption": "f(x)=x²-2x-1 (x<1), f(x)=1 (x=1), f(x)=-x²+2x+1 (x>1)의 그래프. x=1에서 좌극한 -2, 우극한 2, 함수값 1이다.",
+ "sourceQuote": "$f(x)=\\begin{cases}x^2-2x-1&(x\\lt1)\\\\1&(x=1)\\\\-x^2+2x+1&(x\\gt1)\\end{cases}$",
+ "sourceConditions": [
+  {"id": "c1", "condition": "f(x)=x^2-2x-1 (x<1)", "mappedTo": "graphPlan.pieces[0]"},
+  {"id": "c2", "condition": "f(1)=1", "mappedTo": "graphPlan.jumpValues[0]"},
+  {"id": "c3", "condition": "f(x)=-x^2+2x+1 (x>1)", "mappedTo": "graphPlan.pieces[1]"}
+ ],
+ "newVisualInformation": [
+  "x=1에서 좌극한 -2와 우극한 2가 열린 점 두 개로, 함수값 1이 따로 떨어진 채워진 점 P(1,1)로 나타난다."
+ ]
+}
