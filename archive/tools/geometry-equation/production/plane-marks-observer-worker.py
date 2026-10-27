@@ -72,6 +72,7 @@ def audit(p):
     declared|={('trace',r['id']) for r in marks.get('traces',[])}
     declared|={('arrow',s['id']) for s in p.get('segments',[]) if s.get('arrow')}
     declared|={('region',r['id']) for r in marks.get('regions',[])}
+    declared|={('region-hatch',r['id']) for r in marks.get('regions',[]) if r.get('pattern')=='HATCH'}
     for key in by_mark:
         if key not in declared:errors.append('UNDECLARED_MARK:'+key[0]+':'+str(key[1]))
     label_boxes={}   # label id -> (x,y,w,h) in svg px

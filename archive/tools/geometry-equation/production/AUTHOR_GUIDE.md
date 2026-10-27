@@ -604,7 +604,7 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - **중심은 화면 점이어야 한다.** `planeMarks.arcs.center`와 `loop`의 `arc.center`는 `displayPoints`에 있는 점 id만 가리킬 수 있다(`DISPLAY_ANNOTATION_POINT_NOT_VISIBLE`). 원문이 그 중심을 이름 붙이지 않으면 `MIDPOINT`·`CIRCLE_CENTER_RADIUS` 노드를 `DERIVED_INTERMEDIATE`로 만들고 `displayPoints`에 넣은 뒤 `hiddenPointNames`에 넣어 **이름 없는 점**으로 그린다(4절).
 - **여러 조각을 한 영역으로.** 서로 겹치지 않는 두 활꼴은 같은 region의 shapes에 넣는다. 내부 라벨은 한 조각의 넓이로 오해될 수 있으므로 전체 합계 54 cm²를 한 조각 안에 쓰지 않는다. 바깥쪽 합계 표기가 지원되지 않으면 SVG에는 두 조각과 원래 조건을 남기고, 해설 본문에서 전체 합계를 설명한다.
 - **관측기.** `plane-marks-observer-worker.py` → `plane_regions_observer.py`가 Cindy 점에서 각 호의 중심·반지름·sweep을 다시 계산해 `<path>`의 `A` 명령과 맞추고, 모든 변이 실제 획으로 그려졌는지, 칠이 모든 획·라벨 아래인지, 라벨이 영역 안인지 확인한다(`REGION_ARC_SIDE_MISMATCH`, `REGION_ARC_RADIUS_MISMATCH`, `REGION_BOUNDARY_NOT_DRAWN`, `REGION_LABEL_OUTSIDE`). `highlight:false`인 호는 강조 표식으로 세지 않고 경계 획으로만 검사한다.
-- **한계.** 한글 영역 표지와 빗금이 필요한 원문은 현재 지원 한계로 기록한다. LIGHT/MEDIUM 색이나 접근성 caption만으로 이를 대체하고 시각 PASS를 주장하지 않는다. 넓이 자체는 원문·해설과 독립 대조한다.
+- **한계.** 넓이 자체는 원문·해설과 독립 대조한다. `(가)`·`(나)` 같은 한글 영역 표지와 빗금(해칭)은 3-46절의 `labelKind`·`pattern`으로 그린다.
 
 
 ## 4. 이름과 표기 규칙 (자주 걸리는 것)
@@ -722,6 +722,24 @@ SVG, 좌표 계산 결과, 픽셀 좌표는 직접 쓰지 않는다. 엔진이 p
 - 점 이름은 자기 점 옆에 붙되 곡선·선분·직선·축·다각형 변·다른 이름을 피해 자동 배치된다. 놓을 자리가 없으면 `ELLIPSE_LABEL_NO_ROOM`이다. 이름·길이 라벨은 실제 조판 조각으로 그려지고 최종 SVG에 `data-tex`로 남는다.
 - **독립 검수.** `ellipse_figure_observer.py`는 plan만 보고 초점·꼭짓점·현·접선·접점을 자기 코드로 다시 계산해 **최종 SVG**와 대조한다: 축·화살촉 방향, 타원 중심·두 반지름·같은 배율, 모든 점 표식의 위치, 선분 끝점, 다각형 꼭짓점·채우기, 직선이 식 위에 있는지, 접선 주장의 재증명과 접점 선언, 이름·길이 라벨의 존재·문자·위치, 선언하지 않은 점·선·다각형이 없는지. 하나라도 어긋나면 FAIL이다.
 - 한계·오류 코드: `ELLIPSE_PLAN_INVALID`, `ELLIPSE_CENTER_INVALID`, `ELLIPSE_AXES_INVALID`, `ELLIPSE_MAJOR_AXIS_UNSUPPORTED`, `ELLIPSE_POINT_INVALID`, `ELLIPSE_POINT_ID_INVALID`, `ELLIPSE_POINT_ID_DUPLICATE`, `ELLIPSE_POINT_UNKNOWN`, `ELLIPSE_POINT_NOT_ON_ELLIPSE`, `ELLIPSE_SEGMENT_INVALID`, `ELLIPSE_POLYGON_INVALID`, `ELLIPSE_POLYGON_UNKNOWN_POINT`, `ELLIPSE_LINE_INVALID`, `ELLIPSE_LINE_LABEL_UNSUPPORTED`, `ELLIPSE_LINE_NOT_TANGENT`, `ELLIPSE_LINE_OUTSIDE_VIEWPORT`, `ELLIPSE_FIGURE_TOO_LARGE`, `ELLIPSE_LABEL_NO_ROOM`. 둘째 타원, 회전 타원, 원, 쌍곡선·포물선, 곡선 눈금, 벡터 화살표는 이 capability의 지원 범위가 아니다.
+
+
+### 3-46. 영역 이름 (가)·(나)와 빗금(해칭): `labelKind` · `pattern`
+
+원문 그림이 영역을 **(가)·(나)처럼 이름으로 구분**하거나 **"빗금친 부분"**이라고 말할 때 3-9절 `planeMarks.regions`에 두 필드를 더한다. 3-41절의 두 원 호 영역에도 그대로 쓴다.
+
+```json
+"regions":[
+ {"id":"ring","fill":"LIGHT","pattern":"HATCH","label":"(가) 8πr²","labelKind":"TEXT","factRole":"CONCLUSION",
+  "shapes":[{"loop":{"start":"Q","steps":[{"to":"Q","arc":{"center":"O","side":"FULL"}}]}}],
+  "holes":[{"loop":{"start":"P","steps":[{"to":"P","arc":{"center":"O","side":"FULL"}}]}}]},
+ {"id":"inner","fill":"LIGHT","label":"(나)","labelKind":"TEXT","factRole":"CONCLUSION","shapes":[...]}]
+```
+
+- **`labelKind`.** 기본 `"MATH"`는 지금까지처럼 라벨을 식으로 조판한다(`8πr²`, `16π-32`, `37.5π`). `"TEXT"`는 라벨을 **한글 본문 글꼴의 평문**으로 그린다: `(가)`, `(나)`, `(가) 8πr²`처럼 영역 이름을 학생 눈에 그대로 보여 줄 때 쓴다. 평문 라벨도 40자 이하이고 영역 안 가장 넓은 곳에 놓인다. `labelKind`만 있고 `label`이 없으면 거절된다.
+- **`pattern`.** `"HATCH"`는 그 영역을 **실제 빗금**으로 칠한다: 바탕은 같은 밝은 회색(`fill`)이고 그 위에 45° 대각선을 약 9px 간격의 얇은 선으로 **그 영역의 even-odd 영역 안에만** 긋는다(클립 경로 없이 영역 경계와 교차 계산해 자른다). 원문이 "빗금친 부분"이라고 말하는 영역에만 쓴다. 값은 `"HATCH"` 하나뿐이고(`REGION_PATTERN_UNSUPPORTED`), `fill`은 `LIGHT`/`MEDIUM` 그대로다(`fill:"HATCH"`는 여전히 `REGION_FILL_UNSUPPORTED`). 빗금 선은 영역의 칠로 취급되므로(`data-role="region"`) 라벨이 그 위에 놓일 수 있다.
+- **관측기.** `plane_regions_observer.py`는 빗금에 대해 최종 SVG에서 그 영역의 빗금 선만 모아 ① 3개 이상인지(`REGION_HATCH_MISSING`) ② 양 끝과 중점이 **그 영역의 even-odd 영역 안**(경계 포함, 0.25px)인지(`REGION_HATCH_OUTSIDE`) ③ 모두 같은 방향(0.5°)이고 이웃 간격이 같은지(`REGION_HATCH_UNEVEN`) ④ 영역 폭의 절반 이상을 덮는지(`REGION_HATCH_TOO_SPARSE`) ⑤ 점선이 아닌지(`REGION_HATCH_DASHED`) ⑥ 칠보다 위에 그려졌는지(`REGION_HATCH_COVERED_BY_FILL`) 확인한다. 라벨은 **자기 영역 안에 있고 다른 영역 안에는 없어야** 한다(`REGION_LABEL_OUTSIDE`, `REGION_LABEL_IN_OTHER_REGION`). 선언하지 않은 빗금 선은 `UNDECLARED_MARK`다.
+- **한계.** 빗금 간격·각도는 엔진이 정한다(작성자가 바꾸지 않는다). 작은 영역의 안쪽 여백이 좁으면 `(나) πr²` 같은 긴 표지가 들어가지 않으므로(`LAYOUT_INVENTORY_INCOMPLETE`) 이름만 쓰고 넓이는 `caption`에 적는다. 평문 라벨의 글자 자체는 조판 단계에서 만들어지므로 관측기는 "그 라벨이 자기 영역 안에 있는지"와 "빗금이 영역 안에 있는지"를 보고, 글자 내용의 최종 확인은 실제 렌더 이미지 검토가 맡는다. 빗금 영역의 넓이 값도 관측기가 검산하지 않는다.
 
 
 ## 4. 이름과 표기 규칙 (자주 걸리는 것)

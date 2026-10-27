@@ -1,6 +1,7 @@
 """Independent observer of filled regions on the FINAL SVG (called by plane-marks-observer-worker.py): no producer geometry or layout imports.
 The expected boundary is recomputed from the Cindy peer's points; the drawn <path> must match it vertex by vertex, arc by arc, and every boundary edge
-must be drawn by an actual stroke of the final SVG."""
+must be drawn by an actual stroke of the final SVG. A hatched region must carry diagonal strokes that stay inside that same even-odd area, and a
+region's label must sit inside THAT region and inside no other one."""
 import math
 import re
 
@@ -8,6 +9,11 @@ REGION_FILLS={'LIGHT':'#e4e7ec','MEDIUM':'#c7ccd5'}
 VERTEX_TOLERANCE=0.02   # svg px: a drawn region vertex against the peer point
 DRAWN_TOLERANCE=0.6     # svg px: a region edge against the stroke that draws it
 LABEL_GAP=10.0          # svg px: the least room between a region's label and any other label
+HATCH_TOLERANCE=0.25    # svg px: a hatch stroke against the area it is clipped to
+HATCH_PARALLEL=0.5      # degrees: every hatch stroke of one region runs the same way
+HATCH_SPACING=0.6       # svg px: consecutive hatch strokes keep one gap
+HATCH_MIN_LINES=3       # fewer drawn strokes than this is not a hatch, it is a stray mark
+HATCH_COVERAGE=0.5      # the hatch must cover at least this share of the region's extent along its normal
 
 def tag(node):return node.tag.split('}')[-1]
 def sub(p,q):return (p[0]-q[0],p[1]-q[1])
@@ -80,6 +86,15 @@ def locate(p,poly,eps=1e-6):
         if (a[1]>p[1])!=(b[1]>p[1]) and p[0]<(b[0]-a[0])*(p[1]-a[1])/(b[1]-a[1])+a[0]:inside=not inside
     return 1 if inside else -1
 
+def area_state(point,polygons,eps=1e-6):
+    """1 strictly inside the region's even-odd area, 0 on one of its boundaries, -1 outside."""
+    inside=False;on_edge=False
+    for poly in polygons:
+        state=locate(point,poly,eps)
+        if state==0:on_edge=True
+        elif state==1:inside=not inside
+    return 0 if on_edge else (1 if inside else -1)
+
 def peer_ids(row):
     ids=set()
     for shape in [*row.get('shapes',[]),*row.get('holes',[])]:
@@ -93,6 +108,34 @@ def peer_ids(row):
                     if step.get('arc'):ids.add(step['arc']['center'])
     return ids
 
+def audit_hatch(record,hatch_nodes,order,errors,observations):
+    """A hatched region: its diagonal strokes must be a real hatch of THIS region, clipped to the same even-odd area."""
+    oid=record['oid'];polygons=record['polygons']
+    spans=[]
+    for node in hatch_nodes:
+        try:spans.append(((float(node.get('x1')),float(node.get('y1'))),(float(node.get('x2')),float(node.get('y2')))))
+        except (TypeError,ValueError):errors.append('REGION_HATCH_MISSING:'+oid);return
+    if len(spans)<HATCH_MIN_LINES:errors.append('REGION_HATCH_MISSING:'+oid);return
+    if any(node.get('stroke-dasharray') for node in hatch_nodes):errors.append('REGION_HATCH_DASHED:'+oid)
+    outside=False
+    for a,b in spans:
+        for point in (a,((a[0]+b[0])/2,(a[1]+b[1])/2),b):
+            if area_state(point,polygons,HATCH_TOLERANCE)<0:outside=True;break
+        if outside:break
+    if outside:errors.append('REGION_HATCH_OUTSIDE:'+oid)
+    angles=[math.degrees(math.atan2(b[1]-a[1],b[0]-a[0]))%180.0 for a,b in spans]
+    if max(angles)-min(angles)>HATCH_PARALLEL:errors.append('REGION_HATCH_UNEVEN:'+oid)
+    else:
+        theta=math.radians(sum(angles)/len(angles));nx,ny=-math.sin(theta),math.cos(theta)
+        centres=sorted(nx*(a[0]+b[0])/2+ny*(a[1]+b[1])/2 for a,b in spans)
+        gaps=[hi-lo for lo,hi in zip(centres,centres[1:]) if hi-lo>1e-6]
+        if gaps and max(gaps)-min(gaps)>HATCH_SPACING:errors.append('REGION_HATCH_UNEVEN:'+oid)
+        edge=[nx*x+ny*y for poly in polygons for x,y in poly]
+        extent=max(edge)-min(edge)
+        if extent>1e-6 and centres[-1]-centres[0]<HATCH_COVERAGE*extent:errors.append('REGION_HATCH_TOO_SPARSE:'+oid)
+    if any(order[id(node)]<order[id(record['node'])] for node in hatch_nodes):errors.append('REGION_HATCH_COVERED_BY_FILL:'+oid)
+    observations.append({'id':oid,'type':'REGION_HATCH','strokes':len(spans),'angleDegrees':max(angles)-min(angles)})
+
 def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,observations,label_boxes=None):
     label_boxes=label_boxes or {}
     rows=marks.get('regions',[])
@@ -101,13 +144,18 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
     stroke_lines=[((float(n.get('x1')),float(n.get('y1'))),(float(n.get('x2')),float(n.get('y2')))) for n in elements if tag(n)=='line' and n.get('data-role') in {'line','segment'}]
     stroke_circles=[(float(n.get('cx')),float(n.get('cy')),float(n.get('r'))) for n in elements if tag(n)=='circle' and n.get('data-role')=='circle']
     stroke_arcs=[]
+    hatch_by_id={}
     for n in elements:
         if tag(n)=='polyline' and n.get('data-role')=='circularArc':
             raw=[float(v) for part in n.get('points','').split() for v in part.split(',')];stroke_arcs.append([(raw[i],raw[i+1]) for i in range(0,len(raw)-1,2)])
+        elif tag(n)=='line' and n.get('data-mark')=='region-hatch':
+            hatch_by_id.setdefault(n.get('data-mark-id'),[]).append(n)
+    records=[]
     for row in rows:
         oid=row['id'];nodes=by_mark.get(('region',oid),[])
         if len(nodes)!=1 or tag(nodes[0])!='path':errors.append('REGION_MISSING:'+oid);continue
-        node=nodes[0]
+        node=nodes[0];record={'row':row,'oid':oid,'node':node,'polygons':[],'ok':False}
+        records.append(record)
         try:expected=expand_region(row,{pid:peer_point(pid) for pid in peer_ids(row)})
         except (ValueError,KeyError) as error:errors.append(str(error));continue
         if node.get('fill','').lower()!=REGION_FILLS.get(row.get('fill','LIGHT'),'?'):errors.append('REGION_FILL_MISMATCH:'+oid)
@@ -149,6 +197,7 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
                     poly.append(edge[1])
                 current=edge[1]
             poly.pop();polygons.append(poly)
+        record['polygons']=polygons;record['ok']=ok
         if not ok:continue
         # every boundary edge is drawn by an actual stroke of the final SVG
         for loop in expected:
@@ -180,20 +229,26 @@ def audit_regions(root,marks,peer_point,forward,by_mark,label_clear,errors,obser
                     if not covered:errors.append('REGION_BOUNDARY_NOT_DRAWN:'+oid+':'+a+'-'+b)
         # beneath every stroke and label in the document
         mine=order[id(node)]
-        if any(order[id(n)]<mine and (tag(n) in {'line','circle','polyline','polygon'} or (tag(n)=='path' and n.get('data-mark')!='region') or (tag(n)=='g' and n.get('data-fragment-sha'))) for n in elements):
+        if any(order[id(n)]<mine and n.get('data-mark')!='region-hatch' and (tag(n) in {'line','circle','polyline','polygon'} or (tag(n)=='path' and n.get('data-mark')!='region') or (tag(n)=='g' and n.get('data-fragment-sha'))) for n in elements):
             errors.append('REGION_NOT_BENEATH_STROKES:'+oid)
-        def covered_by(point):
-            hit=False
-            for poly in polygons:
-                if locate(point,poly)==1:hit=not hit
-            return hit
-        if row.get('label') is not None:
-            box=label_clear(oid+'-label')
-            if box is not None and not all(covered_by((x,y)) for x in (box[0],box[0]+box[2]) for y in (box[1],box[1]+box[3])):errors.append('REGION_LABEL_OUTSIDE:'+oid)
-            if box is not None:
-                # a region's own label must not sit right beside another label (a length or an angle): it would read as one text
-                for other,obox in label_boxes.items():
-                    if other==oid+'-label':continue
-                    gap_x=max(obox[0]-(box[0]+box[2]),box[0]-(obox[0]+obox[2]),0.0);gap_y=max(obox[1]-(box[1]+box[3]),box[1]-(obox[1]+obox[3]),0.0)
-                    if math.hypot(gap_x,gap_y)<LABEL_GAP:errors.append('REGION_LABEL_CROWDS_LABEL:'+oid+':'+other)
-        observations.append({'id':oid,'type':'REGION','loops':len(polygons),'areaPx2':sum(abs(0.5*sum(p[0]*q[1]-q[0]*p[1] for p,q in zip(poly,poly[1:]+poly[:1]))) for poly in polygons)})
+        if row.get('pattern')=='HATCH':audit_hatch(record,hatch_by_id.get(oid,[]),order,errors,observations)
+        observations.append({'id':oid,'type':'REGION','loops':len(polygons),'pattern':row.get('pattern'),'labelKind':row.get('labelKind','MATH'),
+                             'areaPx2':sum(abs(0.5*sum(p[0]*q[1]-q[0]*p[1] for p,q in zip(poly,poly[1:]+poly[:1]))) for poly in polygons)})
+    # ---- labels: a region's label belongs to THAT region and to no other one
+    for record in records:
+        row=record['row'];oid=record['oid'];box=label_clear(oid+'-label') if row.get('label') is not None else None
+        if row.get('label') is None:continue
+        if box is None:continue
+        corners=[(box[0],box[1]),(box[0]+box[2],box[1]),(box[0]+box[2],box[1]+box[3]),(box[0],box[1]+box[3])]
+        centre=(box[0]+box[2]/2,box[1]+box[3]/2)
+        if record['ok'] and not all(area_state(corner,record['polygons'])==1 for corner in corners):errors.append('REGION_LABEL_OUTSIDE:'+oid)
+        if record['ok']:
+            for other in records:
+                if other is record or not other['ok']:continue
+                if any(area_state(point,other['polygons'])==1 for point in [*corners,centre]):
+                    errors.append('REGION_LABEL_IN_OTHER_REGION:'+oid+':'+other['oid']);break
+        # a region's own label must not sit right beside another label (a length or an angle): it would read as one text
+        for other,obox in label_boxes.items():
+            if other==oid+'-label':continue
+            gap_x=max(obox[0]-(box[0]+box[2]),box[0]-(obox[0]+obox[2]),0.0);gap_y=max(obox[1]-(box[1]+box[3]),box[1]-(obox[1]+obox[3]),0.0)
+            if math.hypot(gap_x,gap_y)<LABEL_GAP:errors.append('REGION_LABEL_CROWDS_LABEL:'+oid+':'+other)
