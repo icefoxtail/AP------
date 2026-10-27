@@ -1,0 +1,29 @@
+{
+  "capability": "solid-figure-v1",
+  "unit": "cm",
+  "solids": [
+    {
+      "kind": "CONE",
+      "radius": 10,
+      "height": 18,
+      "names": { "center": "O", "apex": "A" }
+    }
+  ],
+  "section": { "kind": "LEVEL", "at": "1/3" },
+  "dims": [
+    { "radius": "bottom" },
+    { "level": true },
+    { "level": "top" },
+    { "radius": "level" }
+  ],
+  "solidCaption": { "text": "밑면에 평행한 평면으로 자른 원뿔" },
+  "caption": "밑면 반지름 10cm, 높이 18cm인 원뿔을 밑면에서 6cm 높이에서 자른 단면",
+  "sourceConditions": [
+    { "id": "c1", "condition": "밑면의 반지름 10cm", "mappedTo": "solids" },
+    { "id": "c2", "condition": "꼭짓점에서 단면까지 12cm, 단면에서 밑면까지 6cm", "mappedTo": "section" }
+  ],
+  "newVisualInformation": [
+    "단면 원의 반지름 20/3cm",
+    "작은 원뿔과 전체 원뿔의 닮음비 2:3"
+  ]
+}
