@@ -1,0 +1,65 @@
+{
+ "capability": "stat-chart-figure-v1",
+ "chart": {
+  "kind": "FREQUENCY_POLYGON",
+  "yKind": "RELATIVE",
+  "boundaries": [
+   "30",
+   "40",
+   "50",
+   "60",
+   "70",
+   "80",
+   "90"
+  ],
+  "series": [
+   {
+    "name": "남학생",
+    "relativeFrequencies": [
+     "0.10",
+     "0.25",
+     "0.30",
+     "0.20",
+     "0.10",
+     "0.05"
+    ]
+   },
+   {
+    "name": "여학생",
+    "relativeFrequencies": [
+     "0.05",
+     "0.10",
+     "0.15",
+     "0.25",
+     "0.35",
+     "0.10"
+    ]
+   }
+  ],
+  "xTitle": "시간(분)",
+  "yTitle": "상대도수",
+  "grid": true
+ },
+ "caption": "남학생 300명과 여학생 200명의 지난주 휴대 전화 사용 시간에 대한 상대도수 분포를 두 개의 꺾은선으로 함께 나타낸 그림",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "계급 30~90분(10분 간격, 6개), 남학생 300명",
+   "mappedTo": "chart.boundaries"
+  },
+  {
+   "id": "c2",
+   "condition": "남학생 상대도수 0.10, 0.25, 0.30, 0.20, 0.10, 0.05",
+   "mappedTo": "chart.series[0]"
+  },
+  {
+   "id": "c3",
+   "condition": "여학생 200명, 상대도수 0.05, 0.10, 0.15, 0.25, 0.35, 0.10",
+   "mappedTo": "chart.series[1]"
+  }
+ ],
+ "newVisualInformation": [
+  "남학생과 여학생의 상대도수 분포를 같은 계급 축에서 직접 비교",
+  "60분 이상 70분 미만 계급에서 두 집단의 상대도수 차이를 읽을 수 있음"
+ ]
+}

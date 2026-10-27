@@ -1,0 +1,649 @@
+{
+ "capability": "construction-spike-v1",
+ "mathPlan": {
+  "schemaVersion": "construction-spike-v1",
+  "realization": {
+   "recipeId": "PLANE_FIGURE_v1",
+   "unit": "source-length",
+   "reflectionEquivalent": false
+  },
+  "nodes": [
+   {
+    "id": "vx",
+    "op": "SOURCE_POINT",
+    "inputs": [],
+    "args": {
+     "coordinates": [
+      {
+       "kind": "integer",
+       "value": "1"
+      },
+      {
+       "kind": "integer",
+       "value": "4"
+      }
+     ]
+    },
+    "outputType": "POINT",
+    "factRole": "GIVEN"
+   },
+   {
+    "id": "b1",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "vx"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "-1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "-4"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "t1",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "vx"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "-1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "vref",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "vx"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "v15",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "vx",
+     "vref"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "15"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lV",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "vx",
+     "v15"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lTop",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "0"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "-5"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "pt",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "lTop",
+     "lV"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "v45",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "vx",
+     "vref"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "315"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lVb",
+    "op": "LINE_THROUGH",
+    "inputs": [
+     "vx",
+     "v45"
+    ],
+    "args": {},
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "lBottom",
+    "op": "SOURCE_LINE",
+    "inputs": [],
+    "args": {
+     "a": {
+      "kind": "integer",
+      "value": "0"
+     },
+     "b": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "c": {
+      "kind": "integer",
+      "value": "0"
+     }
+    },
+    "outputType": "LINE",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "pb",
+    "op": "LINE_INTERSECTION",
+    "inputs": [
+     "lBottom",
+     "lVb"
+    ],
+    "args": {},
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "t2",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "pt",
+     "t1"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "q15",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "pt",
+     "vx"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "b2",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "pb",
+     "b1"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "n1",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "vx"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "11"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "o1",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "vx"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "11"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "-4"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "pn",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "vx"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "13"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "1"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "po",
+    "op": "TRANSLATE_POINT",
+    "inputs": [
+     "vx"
+    ],
+    "args": {
+     "dx": {
+      "kind": "integer",
+      "value": "16"
+     },
+     "dy": {
+      "kind": "integer",
+      "value": "-4"
+     }
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "n2",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "pn",
+     "n1"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "6"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "o2",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "po",
+     "o1"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "3"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "ptop",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "pn",
+     "po"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   },
+   {
+    "id": "pbot",
+    "op": "POLAR_POINT",
+    "inputs": [
+     "po",
+     "pn"
+    ],
+    "args": {
+     "length": {
+      "kind": "integer",
+      "value": "1"
+     },
+     "angleDeg": {
+      "kind": "integer",
+      "value": "180"
+     },
+     "turn": "CCW"
+    },
+    "outputType": "POINT",
+    "factRole": "DERIVED_INTERMEDIATE"
+   }
+  ]
+ },
+ "axisTickValues": {
+  "x": [],
+  "y": []
+ },
+ "displayLines": [],
+ "displayCircles": [],
+ "displaySegments": [
+  {
+   "id": "sBottom",
+   "refs": [
+    "b1",
+    "b2"
+   ]
+  },
+  {
+   "id": "sVt",
+   "refs": [
+    "vx",
+    "pt"
+   ]
+  },
+  {
+   "id": "sVb",
+   "refs": [
+    "vx",
+    "pb"
+   ]
+  },
+  {
+   "id": "sN",
+   "refs": [
+    "n1",
+    "n2"
+   ]
+  },
+  {
+   "id": "sO",
+   "refs": [
+    "o1",
+    "o2"
+   ]
+  },
+  {
+   "id": "sTr",
+   "refs": [
+    "ptop",
+    "pbot"
+   ]
+  },
+  {
+   "id": "sTop",
+   "refs": [
+    "t1",
+    "pt"
+   ]
+  },
+  {
+   "id": "sTopRight",
+   "refs": [
+    "pt",
+    "t2"
+   ]
+  }
+ ],
+ "displayPoints": [
+  "vx",
+  "t1",
+  "b1",
+  "pt",
+  "pb",
+  "t2",
+  "b2",
+  "n1",
+  "o1",
+  "pn",
+  "po",
+  "n2",
+  "o2",
+  "ptop",
+  "pbot"
+ ],
+ "caption": "왼쪽에서 l∥m이므로 꺾인 점의 각은 15°+45°=60°=x이고, 오른쪽에서 n∥o이므로 같은 쪽 안쪽각인 y와 z의 합은 180°이다. 따라서 x+y+z=240°이다.",
+ "sourceConditions": [
+  {
+   "id": "c1",
+   "condition": "l∥m, n∥o, 15°, 45°, y, z",
+   "mappedTo": [
+    "vx",
+    "pt",
+    "pb",
+    "pn",
+    "po"
+   ]
+  }
+ ],
+ "newVisualInformation": [
+  "왼쪽은 15°와 45°가 x로 합쳐지고, 오른쪽은 y+z=180°임이 드러난다."
+ ],
+ "sourceQuote": "다음 그림에서 $l\\parallel m$, $n\\parallel o$일 때",
+ "coordinateCanvas": {
+  "width": 720,
+  "height": 520
+ },
+ "planeMarks": {
+  "angles": [
+   {
+    "id": "a15",
+    "refs": [
+     "t1",
+     "pt",
+     "vx"
+    ],
+    "value": 15,
+    "arcs": 1,
+    "noLabel": true
+   },
+   {
+    "id": "a45",
+    "refs": [
+     "vx",
+     "pb",
+     "b1"
+    ],
+    "value": 45,
+    "label": "45",
+    "arcs": 1
+   },
+   {
+    "id": "ax",
+    "refs": [
+     "pt",
+     "vx",
+     "pb"
+    ],
+    "value": 60,
+    "label": "x",
+    "labelKind": "MATH",
+    "arcs": 1
+   },
+   {
+    "id": "ay",
+    "refs": [
+     "n1",
+     "pn",
+     "po"
+    ],
+    "label": "y",
+    "labelKind": "MATH",
+    "arcs": 1
+   },
+   {
+    "id": "az",
+    "refs": [
+     "o1",
+     "po",
+     "pn"
+    ],
+    "label": "z",
+    "labelKind": "MATH",
+    "arcs": 1
+   }
+  ],
+  "expressionLabels": [
+   {
+    "id": "nTop",
+    "ownerSegment": "sTop",
+    "text": "l"
+   },
+   {
+    "id": "nTopR",
+    "ownerSegment": "sTopRight",
+    "text": "15°"
+   },
+   {
+    "id": "nBottom",
+    "ownerSegment": "sBottom",
+    "text": "m"
+   },
+   {
+    "id": "nRightTop",
+    "ownerSegment": "sN",
+    "text": "n"
+   },
+   {
+    "id": "nRightBottom",
+    "ownerSegment": "sO",
+    "text": "o"
+   }
+  ]
+ },
+ "pointNames": {
+  "vx": "P"
+ },
+ "hiddenPointNames": [
+  "t1",
+  "b1",
+  "pt",
+  "pb",
+  "t2",
+  "b2",
+  "n1",
+  "o1",
+  "pn",
+  "po",
+  "n2",
+  "o2",
+  "ptop",
+  "pbot"
+ ]
+}
