@@ -555,12 +555,115 @@ def plan_is_function(plan):
     return True
 
 
+def audit_table(plan, doc):
+    """Membership table: re-derive every cell from the plan, then read the drawn grid, labels and marks.
+
+    The cell rectangles come from the FINAL SVG (the frame plus the drawn separator lines), never from the producer's
+    layout numbers. A mark is required exactly in the cells where the plan says the element is a member and forbidden
+    everywhere else.
+    """
+    sets = [raw['id'] for raw in plan['sets']]
+    names = {raw['id']: raw.get('name', raw['id']) for raw in plan['sets']}
+    elements = plan.get('elements') or []
+    frames = doc.role('rect', 'table-frame')
+    if len(frames) != 1:
+        fail('SD_TABLE_FRAME')
+    frame = frames[0]
+    x0, y0 = num(frame, 'x'), num(frame, 'y')
+    x1, y1 = x0 + num(frame, 'width'), y0 + num(frame, 'height')
+    vertical_lines = doc.role('line', 'grid-v')
+    horizontal_lines = doc.role('line', 'grid-h')
+    for line in vertical_lines:
+        x, top, bottom = num(line, 'x1'), num(line, 'y1'), num(line, 'y2')
+        if abs(num(line, 'x2') - x) > 0.5 or not (x0 + 2 <= x <= x1 - 2):
+            doc.err('SD_TABLE_GRID')
+        if abs(top - y0) > 1 or abs(bottom - y1) > 1:
+            doc.err('SD_TABLE_GRID')
+    for line in horizontal_lines:
+        y, left, right = num(line, 'y1'), num(line, 'x1'), num(line, 'x2')
+        if abs(num(line, 'y2') - y) > 0.5 or not (y0 + 2 <= y <= y1 - 2):
+            doc.err('SD_TABLE_GRID')
+        if abs(left - x0) > 1 or abs(right - x1) > 1:
+            doc.err('SD_TABLE_GRID')
+    vertical = sorted(num(line, 'x1') for line in vertical_lines)
+    horizontal = sorted(num(line, 'y1') for line in horizontal_lines)
+    if len(vertical) != len(sets) or len(horizontal) != len(elements):
+        doc.err('SD_TABLE_GRID')
+        return {'sets': len(sets), 'elements': len(elements)}
+    xs = [x0] + vertical + [x1]
+    ys = [y0] + horizontal + [y1]
+    if any(b <= a for a, b in zip(xs, xs[1:])) or any(b <= a for a, b in zip(ys, ys[1:])):
+        doc.err('SD_TABLE_GRID')
+        return {'sets': len(sets), 'elements': len(elements)}
+
+    def cell(column, row):
+        # column 0 is the element column; set column j is column j+1. Row 0 is the header row; element i is row i+1.
+        return (xs[column], ys[row], xs[column + 1] - xs[column], ys[row + 1] - ys[row])
+
+    def centred(box, target, code):
+        cx, cy = box[0] + box[2] / 2, box[1] + box[3] / 2
+        tx, ty = target[0] + target[2] / 2, target[1] + target[3] / 2
+        if math.hypot(cx - tx, cy - ty) > 3.0:
+            doc.err(code)
+
+    headers = doc.label_role('col-set')
+    if len(headers) != len(sets):
+        doc.err('SD_TABLE_HEADER')
+    for column, set_id in enumerate(sets):
+        labels = [l for l in headers if l.get('data-set') == set_id]
+        if len(labels) != 1:
+            doc.err('SD_TABLE_HEADER:' + set_id)
+            continue
+        if doc.shown_text(labels[0]) != names[set_id]:
+            doc.err('SD_TABLE_HEADER_TEXT:' + set_id)
+        centred(doc.label_box(labels[0]), cell(column + 1, 0), 'SD_TABLE_HEADER_PLACE:' + set_id)
+    rows = doc.label_role('row-element')
+    if len(rows) != len(elements):
+        doc.err('SD_TABLE_ELEMENT')
+    for index, element in enumerate(elements):
+        labels = [l for l in rows if l.get('data-element') == str(index)]
+        if len(labels) != 1:
+            doc.err('SD_TABLE_ELEMENT:%d' % index)
+            continue
+        if doc.shown_text(labels[0]) != element['text']:
+            doc.err('SD_TABLE_ELEMENT_TEXT:%d' % index)
+        centred(doc.label_box(labels[0]), cell(0, index + 1), 'SD_TABLE_ELEMENT_PLACE:%d' % index)
+
+    marks = {}
+    for mark in doc.role('circle', 'membership'):
+        key = (mark.get('data-element'), mark.get('data-set'))
+        if key in marks:
+            doc.err('SD_TABLE_MARK_DUPLICATE')
+        marks[key] = mark
+    expected = {(str(index), set_id) for index, element in enumerate(elements) for set_id in element.get('in') or []}
+    if set(marks) != expected:
+        doc.err('SD_TABLE_MARK_SET')
+    for (index, set_id), mark in marks.items():
+        if index not in {str(i) for i in range(len(elements))} or set_id not in sets:
+            doc.err('SD_TABLE_MARK_SET')
+            continue
+        column, row = sets.index(set_id) + 1, int(index) + 1
+        box = cell(column, row)
+        cx, cy = num(mark, 'cx'), num(mark, 'cy')
+        if not (box[0] + 1 <= cx <= box[0] + box[2] - 1 and box[1] + 1 <= cy <= box[1] + box[3] - 1):
+            doc.err('SD_TABLE_MARK_PLACE:%s:%s' % (index, set_id))
+        radius = num(mark, 'r')
+        if not 3 <= radius <= 7:
+            doc.err('SD_TABLE_MARK_RADIUS:%s:%s' % (index, set_id))
+    return {'sets': len(sets), 'elements': len(elements), 'marks': len(marks)}
+
+
 def audit(diagram, svg):
     kind = diagram.get('kind') if isinstance(diagram, dict) else None
-    if kind not in ('VENN', 'MAPPING'):
+    if kind not in ('VENN', 'MAPPING', 'MEMBERSHIP_TABLE'):
         fail('SET_KIND_UNSUPPORTED')
     doc = Doc(svg, kind)
-    observed = audit_venn(diagram, doc) if kind == 'VENN' else audit_mapping(diagram, doc)
+    if kind == 'VENN':
+        observed = audit_venn(diagram, doc)
+    elif kind == 'MAPPING':
+        observed = audit_mapping(diagram, doc)
+    else:
+        observed = audit_table(diagram, doc)
     # label boxes may never overlap one another
     boxes = [doc.label_box(label) for label in doc.labels]
     for i in range(len(boxes)):
