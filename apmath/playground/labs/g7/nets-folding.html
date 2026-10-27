@@ -509,6 +509,7 @@
     }
 
     function draw3DLine(p1, p2, color = '#ffffff', width = 2.2, dashed = false, glow = false) {
+      if (netFrameCapture) return;
       const s1 = project3D(p1.x, p1.y, p1.z);
       const s2 = project3D(p2.x, p2.y, p1.z !== undefined ? p2.z : 0);
       ctx.save();
@@ -525,6 +526,7 @@
     }
 
     function draw3DTickMarks(p1, p2, count = 1, color = '#fbbf24', size = 6.5) {
+      if (netFrameCapture) return;
       if (state.conceptSwitch !== 'zipper' && state.conceptSwitch !== 'all') return;
       const s1 = project3D(p1.x, p1.y, p1.z);
       const s2 = project3D(p2.x, p2.y, p2.z);
@@ -551,6 +553,7 @@
     }
 
     function draw3DRightAngle(P, A, B, ratio = 0.22, color = '#38bdf8') {
+      if (netFrameCapture) return;
       const vA = vecSub(A, P), vB = vecSub(B, P);
       const p1 = vecAdd(P, vecScale(vA, ratio));
       const p3 = vecAdd(P, vecScale(vB, ratio));
@@ -574,7 +577,8 @@
       ctx.restore();
     }
 
-    function renderMerged3DVertices(vertList) {
+    function renderMerged3DVertices(vertList, opts = {}) {
+      if (netFrameCapture) return;
       if (state.conceptSwitch !== 'def' && state.conceptSwitch !== 'zipper' && state.conceptSwitch !== 'all') return;
       const groups = [];
       vertList.forEach((v) => {
@@ -595,10 +599,31 @@
 
       const center2D = project3D(0, 0, 0.4);
       const viewport = canvas.parentElement.getBoundingClientRect();
+      const occluders = opts.faces && state.fold > 0.52
+        ? opts.faces.map(face => face.pts.map(p => project3D(p.x,p.y,p.z))) : [];
+      // 면의 평균 깊이 대신 투영된 해당 픽셀에서의 삼각형 보간 깊이를 사용한다.
+      // 이렇게 해야 실제 앞면의 꼭짓점까지 잘못 숨기는 현상을 막는다.
+      function projectedFaceDepth(p, polygon) {
+        let nearest = Infinity;
+        const A = polygon[0];
+        for (let i = 1; i < polygon.length - 1; i++) {
+          const B=polygon[i], C=polygon[i+1];
+          const d=(B.y-C.y)*(A.x-C.x)+(C.x-B.x)*(A.y-C.y);
+          if(Math.abs(d)<1e-5)continue;
+          const a=((B.y-C.y)*(p.x-C.x)+(C.x-B.x)*(p.y-C.y))/d;
+          const b=((C.y-A.y)*(p.x-C.x)+(A.x-C.x)*(p.y-C.y))/d;
+          const t=1-a-b;
+          if(a>=-0.002 && b>=-0.002 && t>=-0.002)
+            nearest=Math.min(nearest,a*A.depth+b*B.depth+t*C.depth);
+        }
+        return nearest;
+      }
       const overlay = canvas.parentElement.querySelector('.absolute.top-3.left-3')?.getBoundingClientRect();
       const labelBoxes = [];
       groups.forEach((g) => {
         const s = project3D(g.pt.x, g.pt.y, g.pt.z);
+        if (occluders.some(f => projectedFaceDepth(s,f) < s.depth - 0.12)) return;
+        if (opts.avoidBanner && s.y > viewport.height - 118) return;
         const isMerged = g.labels.length > 1;
         const joined = isMerged ? g.labels.join('=') : g.labels[0];
         const text = joined.length > 18 ? joined.slice(0, 17) + '…' : joined;
@@ -659,6 +684,7 @@
     }
 
     function drawBottomTapeBanner(rect, titleStr, segments) {
+      if (netFrameCapture) return;
       const by = rect.height - 78;
       const bw = Math.min(530, rect.width - 36);
       const sx = (rect.width - bw) / 2;
@@ -701,7 +727,13 @@
       ctx.restore();
     }
 
+    let netFrameCapture = false;
+    let netCapturedFaces = null;
+    let netVisibleFaces = null;
+    let trackedNetCache = { key:null, data:null };
     function renderSortedFaces(faces) {
+      if (netFrameCapture) { netCapturedFaces = faces; return; }
+      netVisibleFaces = faces;
       window.APBoardRel?.captureFaces(faces);
       const projectedFaces = faces.map((f) => {
         const sPts = f.pts.map((p) => project3D(p.x, p.y, p.z));
@@ -773,6 +805,7 @@
     // 4. 우측 상단 2D 실제 단면 모양 도장 미리보기 창 (단면 스캐너 전용!)
     // -------------------------------------------------------------------------
     function draw2DCrossSectionOverlay(rect, kind, sliceIdx) {
+      if (netFrameCapture) return;
       if (rect.width < 500) return;
       const boxW = 210, boxH = 190;
       const bx = rect.width - boxW - 14;
@@ -1307,6 +1340,7 @@
       const rect = canvas.parentElement.getBoundingClientRect();
       ctx.clearRect(0, 0, rect.width, rect.height);
 
+      netVisibleFaces = null;
       drawFloorGrid();
 
       const m = state.mode;
@@ -1316,10 +1350,101 @@
       else if (m === 4) renderMode4Platonic(rect);
       else if (m === 5) renderMode5Cylinders(rect);
       else if (m === 6) renderMode6ConesAndSlices(rect);
+      renderTrackedNetVertices();
 
       const spec = getSpec();
       updateUI(spec);
       window.APBoardRel?.finish();
+    }
+
+
+    // 전개도(0%)와 완성 겨냥도(100%)를 같은 도형 생성기에서 계산한다.
+    // 한 면 안의 분할점이 아닌 실제 다면체 꼭짓점만 전체 표시한다.
+    // 곡면은 수학적 꼭짓점이 없으므로 이음매·밑면의 대표 경계점만 표시한다.
+    function trackedNetKind() {
+      const m=state.mode, sub=state.subType[m];
+      if (m===2 || m===3) return 'polyhedron';
+      if (m===5) return 'seam';
+      if (m===6 && sub==='frustumCone') return 'seam';
+      return null; // 기존 정육면체·정사면체·정팔면체 이름 보존 / 정십이·이십면체 제외
+    }
+    function capturedNetFrame(fold) {
+      const oldFold = state.fold;
+      netFrameCapture = true;
+      netCapturedFaces = null;
+      try {
+        state.fold=fold;
+        const bounds=canvas.parentElement.getBoundingClientRect();
+        if(state.mode===2) renderMode2Prisms(bounds);
+        else if(state.mode===3) renderMode3Pyramids(bounds);
+        else if(state.mode===5) renderMode5Cylinders(bounds);
+        else if(state.mode===6) renderMode6ConesAndSlices(bounds);
+        return (netCapturedFaces||[]).map(face=>face.pts.map(p=>({...p})));
+      } finally {
+        state.fold=oldFold;
+        netFrameCapture=false;
+        netCapturedFaces=null;
+      }
+    }
+    function distance3D(a,b) { return Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z); }
+    function trackedNetData() {
+      const kind=trackedNetKind();
+      if(!kind) return null;
+      const sub=state.subType[state.mode];
+      const key=[state.mode,sub,state.cylR,state.cylH,state.coneR,state.coneA].join('|');
+      if(trackedNetCache.key===key) return trackedNetCache.data;
+      const open=capturedNetFrame(0), closed=capturedNetFrame(1);
+      const verts=[];
+      open.forEach((face,fi)=>face.forEach((p,vi)=>{
+        let item=verts.find(q=>distance3D(q.flat,p)<0.0001);
+        if(!item){item={flat:p,refs:[]};verts.push(item);}
+        item.refs.push([fi,vi]);
+      }));
+      const chosen = new Set();
+      const choose=(fi,...indices)=>{
+        if(!open[fi])return;
+        indices.forEach(vi=>{
+          const v=verts.findIndex(q=>q.refs.some(([i,j])=>i===fi && j===vi));
+          if(v>=0)chosen.add(v);
+        });
+      };
+      if(kind==='polyhedron') verts.forEach((v,i)=>chosen.add(i));
+      else if(state.mode===5){
+        if(sub==='cylinder'){choose(0,0,3);choose(27,1,2);choose(28,0);choose(29,0);}
+        if(sub==='halfCyl'){choose(0,0,1,2,3);choose(1,0,3);choose(18,1,2);}
+        if(sub==='sectorCyl'){choose(0,0,1,2,3);choose(1,0,1,2,3);choose(2,0,3);choose(13,1,2);}
+        if(sub==='hollowCyl'){choose(0,0,3);choose(46,1,2);choose(1,0,3);choose(47,1,2);}
+      } else if(sub==='frustumCone'){
+        choose(0,0,3);choose(27,1,2);choose(28,0);choose(29,0);
+      }
+      const points=[...chosen].sort((a,b)=>a-b).map((i,order)=>{
+        const v=verts[i], [fi,vi]=v.refs[0];
+        return {label:order<26?String.fromCharCode(65+order):'A'+(order-25),flat:v.flat,refs:v.refs,closed:closed[fi]?.[vi]};
+      }).filter(p=>p.closed);
+      // 동일한 펼친 점은 여러 면에 붙어 있어도 반드시 한 글자만 쓴다.
+      // 완전히 접힌 위치가 실제로 일치하는 경우에만 'A=B' 관계를 인정한다.
+      const groups=[];
+      points.forEach(p=>{
+        let group=groups.find(g=>distance3D(g.center,p.closed)<0.025);
+        if(group)group.labels.push(p.label);
+        else groups.push({center:p.closed,labels:[p.label]});
+      });
+      const seams=groups.filter(g=>g.labels.length>1).map(g=>g.labels.join('='));
+      const mismatched = points.filter(p=>p.refs.some(([fi,vi])=>!closed[fi]||distance3D(closed[fi][vi],p.closed)>0.035));
+      const data={key,kind,points,seams,mismatched:mismatched.length,closedVertices:groups.length,
+        flatVertices:verts.length,frameCount:open.length,closed};
+      trackedNetCache={key,data};
+      return data;
+    }
+    function renderTrackedNetVertices() {
+      const data=trackedNetData();
+      if(!data || data.mismatched || !netVisibleFaces)return;
+      const anchors=data.points.map(v=>{
+        const [fi,vi]=v.refs[0];
+        return {pt:netVisibleFaces[fi]?.pts[vi]||v.flat,label:v.label,
+                color:data.kind==='seam'?'#67e8f9':'#fef08a',highlight:false};
+      });
+      renderMerged3DVertices(anchors,{faces:data.kind==='polyhedron'?netVisibleFaces:null,avoidBanner:true});
     }
 
     // =========================================================================
@@ -1757,8 +1882,8 @@
         }
 
         renderSortedFaces(faces);
-        renderMerged3DVertices(allVerts);
-        drawBottomTapeBanner(rect, `정${n === 3 ? '삼' : n === 4 ? '사' : '오'}각뿔: 펼쳐진 꼭짓점 V₁~V${n}이 접히면 각뿔의 꼭짓점 V 하나로 합체!`);
+        // 모든 전개도 꼭짓점은 공통 좌표 추적기로 표시한다.
+        drawBottomTapeBanner(rect, `정${n === 3 ? '삼' : n === 4 ? '사' : '오'}각뿔: 펼친 꼭짓점 ${n}개가 접힐 때 하나의 꼭짓점으로 합체됩니다!`);
       }
     }
 
@@ -2300,6 +2425,7 @@
           label: secLabel
         }]);
 
+        renderMerged3DVertices(Object.entries(V).map(([label,pt])=>({pt,label,color:'#fef08a'})));
         draw2DCrossSectionOverlay(rect, 'cubeSlice', sliceIdx);
         drawBottomTapeBanner(rect, '🔪 정육면체(6면체) 단면: 정삼각형 · 직사각형 · 등변사다리꼴 · 오각형 · 최대 정육각형 가능 (7각형 불가!)');
         return;
@@ -2486,7 +2612,15 @@
       document.getElementById('formulaBox').innerHTML = spec.formulaHTML;
       const solidNet = state.mode === 4 && ['octa','dodeca','icosa'].includes(state.subType[4]);
       const pairNotes = solidNet ? getRigidNetVertexLabels(state.subType[4]).pairs : [];
-      document.getElementById('intuitionNotes').innerHTML = spec.notes +
+      const traced=trackedNetData();
+      const netNote = traced && !traced.mismatched
+        ? '<div class="mt-2 pt-2 border-t border-emerald-700 text-sky-200">' +
+          '<strong>'+(traced.kind==='polyhedron'?'전개도 → 겨냥도 꼭짓점':'곡면 경계 기준점')+'</strong>: ' +
+          (traced.seams.length?traced.seams.map(s=>s.replaceAll('=',' = ')).join(' / '):'맞닿는 점은 각 면의 경계에 표시') +
+          (traced.kind==='polyhedron'?' · 펼친 점 '+traced.flatVertices+'개 / 완성 꼭짓점 '+traced.closedVertices+'개':
+            ' · 곡면의 분할점 전체가 아닌 경계·이음매만 표시')+
+          '</div>' : '';
+      document.getElementById('intuitionNotes').innerHTML = spec.notes + netNote +
         (solidNet ? '<div class="mt-2 pt-2 border-t border-emerald-700 text-sky-200"><strong>접었을 때 만나는 알파벳:</strong> '+
          pairNotes.map(g=>g.join(' = ')).join(' / ') + '</div>' : '');
 
